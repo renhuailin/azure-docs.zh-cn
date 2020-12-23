@@ -5,13 +5,13 @@ author: ashishnegi
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
-ms.custom: mvc, devcenter
-ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 79ac8e7868b04a63637e24d6dde651b218ce6a46
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497968"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489184"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载高度可用的基于 Service Fabric Reliable Disk 的卷 
 使用容器应用保存状态的常用方法是使用远程存储，例如 Azure 文件存储或 Azure Cosmos DB 等数据库。 这会对远程存储造成长时间读取和写入网络延迟。
@@ -46,6 +46,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>部署模板
 
+>[!NOTE]
+> 自 2020 年 11 月 2 日起，[下载速率限制](https://docs.docker.com/docker-hub/download-rate-limit/)将应用于 Docker 免费计划帐户对 Docker Hub 发出的匿名和经过身份验证的请求，并且由 IP 地址强制执行。 
+> 
+> 此模板可从 Docker 中心使用公共映像。 请注意，速率可能会受到限制。 有关更多详细信息，请参阅[通过 Docker Hub 进行身份验证](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)。
+
 以下命令使用 [counter.sfreliablevolume.linux.json 模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json)部署 Linux 应用程序。 若要部署 Windows 应用程序，请使用 [counter.sfreliablevolume.windows.json 模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json)。 请注意，较大的容器映像可能需要花费较长的时间进行部署。
 
 ```azurecli-interactive
@@ -60,7 +65,7 @@ az group deployment show --name counter.sfreliablevolume.linux --resource-group 
 
 请注意资源类型为 `Microsoft.ServiceFabricMesh/gateways` 的网关资源的名称。 这将用于获取应用的公共 IP 地址。
 
-## <a name="open-the-application"></a>打开应用程序
+## <a name="open-the-application"></a>打开应用
 
 成功部署应用程序后，将获取应用的网关资源的 IP 地址。 使用上述部分中提到的网关名称。
 ```azurecli-interactive

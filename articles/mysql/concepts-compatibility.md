@@ -1,17 +1,17 @@
 ---
 title: 驱动程序和工具兼容性 - Azure Database for MySQL
 description: 本文介绍与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8d222eca76f020703f89dd1bdd5848cec4bc52ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006527"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542637"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具
 本文介绍与 Azure Database for MySQL 兼容的驱动程序和管理工具。

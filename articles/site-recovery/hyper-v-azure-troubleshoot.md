@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426116"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750796"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -29,12 +29,26 @@ ms.locfileid: "89426116"
 4. 检查 VM 的 Hyper-V-VMMS\Admin 登录中显示的问题。 此日志位于“应用程序和服务日志” > “Microsoft” > “Windows”中。
 5. 在来宾 VM 上，验证 WMI 是否已启用并可访问。
    - [了解](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)基本 WMI 测试。
-   - [排查](https://aka.ms/WMiTshooting) WMI 问题。
+   - [排查](/windows/win32/wmisdk/wmi-troubleshooting) WMI 问题。
    - [排查](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) WMI 脚本和服务的问题。
 6. 在来宾 VM 上，确保运行最新版本的 Integration Services。
     - [检查](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)是否安装了最新版本。
     - [始终使用](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)最新的 Integration Services。
-    
+
+### <a name="cannot-enable-protection-as-the-virtual-machine-is-not-highly-available-error-code-70094"></a>无法启用保护，因为虚拟机不具备高可用性 (错误代码 70094) 
+
+为计算机启用复制时，如果遇到错误，指出无法启用复制，因为计算机不具备高可用性，若要解决此问题，请尝试执行以下步骤：
+
+- 在 VMM 服务器上重新启动 VMM 服务。
+- 从群集中删除虚拟机并再次添加。
+
+### <a name="the-vss-writer-ntds-failed-with-status-11-and-writer-specific-failure-code-0x800423f4"></a>VSS 编写器 NTDS 失败，状态为11，编写器特定失败代码0x800423F4
+
+尝试启用复制时，可能会出现一个错误，通知启用复制失败： ast NTDS 失败。 导致此问题的可能原因之一是 Windows Server 2012 中的虚拟机操作系统不是 Windows Server 2012 R2。 若要解决此问题，请尝试以下步骤：
+
+- 升级到已应用4072650的 Windows Server R2。
+- 确保 Hyper-v 主机也是 Windows 2016 或更高版本。
+
 ## <a name="replication-issues"></a>复制问题
 
 按如下步骤排查初始和持续复制的问题：

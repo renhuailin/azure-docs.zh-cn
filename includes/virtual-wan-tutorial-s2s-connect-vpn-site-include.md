@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606618"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856701"
 ---
 1. 选择“连接 VPN 站点”来打开“连接站点”页   。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90606618"
    完成以下字段：
 
    * 输入预共享密钥。 如果未输入密钥，Azure 会自动生成一个。
-   * 选择“协议”和“IPsec 设置”。 请参阅 [默认/自定义 IPSec 详细信息] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
+   * 选择“协议”和“IPsec 设置”。 有关详细信息，请参阅[默认/自定义 IPsec](../articles/virtual-wan/virtual-wan-ipsec.md)。
    * 选择适合“传播默认路由”的选项  。 “启用”选项允许虚拟中心将获知的默认路由传播到此连接  。 只有当虚拟 WAN 中心由于在中心部署防火墙而获知默认路由或另一个连接的站点已启用强制隧道时，此标志才会将默认路由传播到连接。 默认路由不源自虚拟 WAN 中心。
 
 2. 选择“连接”  。

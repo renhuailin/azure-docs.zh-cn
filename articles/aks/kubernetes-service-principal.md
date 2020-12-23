@@ -4,12 +4,12 @@ description: 在 Azure Kubernetes 服务 (AKS) 中为群集创建和管理 Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298542"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614789"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -23,7 +23,7 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 
 如果使用来自另一 Azure AD 租户的服务主体，则还需围绕部署群集时可用的权限进行更多的考虑。 你可能没有读取和写入目录信息的适当权限。 有关详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？][azure-ad-permissions]
 
-还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>自动创建和使用服务主体
 
@@ -73,7 +73,7 @@ az aks create \
 如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。  选择“使用现有”并指定以下值：
 
 - **服务主体客户端 ID** 是你的 *appId*
-- **服务主体客户端机密**是密码值
+- **服务主体客户端机密** 是密码值
 
 ![浏览到 Azure Vote 的图像](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
@@ -100,19 +100,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ### <a name="networking"></a>网络
 
-可以使用高级网络，在该网络中，虚拟网络和子网或公共 IP 地址位于另一资源组中。 分配下列角色权限集之一：
-
-- 创建一个[自定义角色][rbac-custom-role]，并定义以下角色权限：
-  - *Microsoft.Network/virtualNetworks/subnets/join/action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
-  - *Microsoft.Network/publicIPAddresses/join/action*
-  - *Microsoft.Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
-  - 如果[在 Kubenet 群集上使用自定义路由表](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)，请添加以下附加权限：
-    - Microsoft.Network/routeTables/write
-    - Microsoft.Network/routeTables/read
-- 或者，在虚拟网络的子网上分配[网络参与者][rbac-network-contributor]内置角色
+可以使用高级网络，在该网络中，虚拟网络和子网或公共 IP 地址位于另一资源组中。 在虚拟网络中的子网上分配 " [网络参与者][rbac-network-contributor] " 内置角色。 或者，你可以创建具有访问该资源组中的网络资源的权限的 [自定义角色][rbac-custom-role] 。 有关更多详细信息，请参阅 [AKS 服务权限][aks-permissions] 。
 
 ### <a name="storage"></a>存储
 
@@ -134,7 +122,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - Kubernetes 的服务主体是群集配置的一部分。 但是，请勿使用标识来部署群集。
 - 默认情况下，服务主体凭据的有效期为一年。 可以随时[更新或轮换服务主体凭据][update-credentials]。
 - 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 *https://www.contoso.org/example* ）相关联。 应用程序的 URL 不一定是实际的终结点。
-- 指定服务主体**客户端 ID** 时，请使用 `appId` 的值。
+- 指定服务主体 **客户端 ID** 时，请使用 `appId` 的值。
 - 在 Kubernetes 群集的代理节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中
 - 使用 [az aks create][az-aks-create] 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
 - 如果没有在其他 AKS CLI 命令中明确传递服务主体，则将使用位于 `~/.azure/aksServicePrincipal.json` 的默认服务主体。  
@@ -189,3 +177,4 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

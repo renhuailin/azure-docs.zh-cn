@@ -3,23 +3,25 @@ title: 管理 Azure Cosmos DB 中的索引策略
 description: 了解如何管理索引策略、在索引中包括或排除属性、如何使用不同的 Azure Cosmos DB SDK 定义索引
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: f915f86fff340ba3c8c192809ef68997ea3c3fc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330479"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341308"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 在 Azure Cosmos DB 中，数据是按照为每个容器定义的[索引策略](index-policy.md)编制索引的。 新建容器的默认索引策略会对任何字符串或数字强制使用范围索引。 可以使用你自己的自定义索引策略覆盖此策略。
 
 > [!NOTE]
-> 本文所述的更新索引策略的方法仅适用于 Azure Cosmos DB 的 SQL (Core) API。 了解如何在[Azure Cosmos DB Cassandra API 中](cassandra-secondary-index.md) [Azure Cosmos DB 的 API For MongoDB](mongodb-indexing.md)和辅助索引编制索引。
+> 本文所述的更新索引策略的方法仅适用于 Azure Cosmos DB 的 SQL (Core) API。 在 [Azure Cosmos DB API for MongoDB](mongodb-indexing.md) 和 [Azure Cosmos DB Cassandra API 中的辅助索引编制](cassandra-secondary-index.md)中了解索引编制。
 
 ## <a name="indexing-policy-examples"></a>索引策略示例
 
@@ -46,7 +48,7 @@ ms.locfileid: "91330479"
     }
 ```
 
-此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，可以从索引策略中完全省略它们（如上例所示）。
+此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，你应完全从索引策略中省略它们 (如以上示例) 中所示。
 
 ```json
     {
@@ -100,7 +102,7 @@ ms.locfileid: "91330479"
     }
 ```
 
-此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，可以从索引策略中完全省略它们（如上例所示）。
+此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，你应完全从索引策略中省略它们 (如以上示例) 中所示。
 
 ```json
     {
@@ -142,7 +144,7 @@ ms.locfileid: "91330479"
 ```
 
 > [!NOTE]
-> 通常情况下，建议使用**选择退出**索引策略来让 Azure Cosmos DB 主动为可能会添加到模型的任何新属性编制索引。
+> 通常建议使用 **选择退出** 索引策略，让 Azure Cosmos DB 主动为可添加到数据模型中的任何新属性编制索引。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>仅在特定属性路径上使用空间索引
 
@@ -176,7 +178,7 @@ ms.locfileid: "91330479"
 
 ## <a name="composite-indexing-policy-examples"></a>组合索引策略示例
 
-除了包含或排除各属性的路径，还可以指定一个组合索引。 如果要执行具有针对多个属性的 `ORDER BY` 子句的查询，需要使用这些属性上的[组合索引](index-policy.md#composite-indexes)。 此外，对于具有筛选器且对不同属性使用 ORDER BY 子句的查询，组合索引将具有性能优势。
+除了包含或排除各属性的路径，还可以指定一个组合索引。 如果要执行具有针对多个属性的 `ORDER BY` 子句的查询，需要使用这些属性上的[组合索引](index-policy.md#composite-indexes)。 此外，对于具有多个筛选器或筛选器和 ORDER BY 子句的查询，复合索引将具有性能优势。
 
 > [!NOTE]
 > 组合路径具有隐式 `/?`，因为仅索引该路径上的标量值。 组合路径中不支持使用 `/*` 通配符。 不应在组合路径中指定 `/?` 或 `/*`。
@@ -313,7 +315,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>排除所有属性路径，但使索引保持活动状态
 
-当[生存时间 (TTL) 功能](time-to-live.md)处于活动状态但不需要第二索引时（使用 Azure Cosmos DB 作为纯键-值存储），可以使用此策略。
+此策略可用于以下情况： [生存时间 (TTL) 功能](time-to-live.md) 处于活动状态，但不需要额外的索引 (将 Azure Cosmos DB 用作纯键-值存储) 。
 
 ```json
     {
@@ -347,7 +349,7 @@ WHERE c.name = "Tim" AND c.age > 18
 [索引策略更新](index-policy.md#modifying-the-indexing-policy)会触发索引转换。 还可以通过 SDK 跟踪此转换的进度。
 
 > [!NOTE]
-> 更新索引策略时，对 Azure Cosmos DB 的写入不会中断。 了解有关[索引转换](indexing-policy.md#modifying-the-indexing-policy)的详细信息
+> 更新索引策略时，对 Azure Cosmos DB 的写入不会中断。 详细了解[索引转换](index-policy.md#modifying-the-indexing-policy)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -373,7 +375,7 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
-若要创建具有自定义索引策略的容器，请参阅[使用 Powershell 创建具有自定义索引策略的容器](manage-with-powershell.md#create-container-custom-index)
+若要创建具有自定义索引策略的容器，请参阅 [使用 PowerShell 创建具有自定义索引策略的容器](manage-with-powershell.md#create-container-custom-index)
 
 ## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a> 使用 .NET SDK
 
@@ -748,6 +750,13 @@ indexingPolicy['compositeIndexes'] = [
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
+
+从响应标头中检索索引转换进度
+```python
+container_client.read(populate_quota_info = True,
+                      response_hook = lambda h,p: print(h['x-ms-documentdb-collection-index-transformation-progress']))
+```
+
 ---
 
 ## <a name="next-steps"></a>后续步骤

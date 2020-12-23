@@ -1,29 +1,23 @@
 ---
 title: 使用 Azure 门户部署 Azure 专用主机
-description: 使用 Azure 门户将 Vm 和规模集部署到专用主机。
+description: 使用 Azure 门户将 VM 和规模集部署到专用主机。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 09/04/2020
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: a6bef4944207e26f2de93daa89fa1418c5c44c4f
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: b166363a8c64a4a4c5d34efa55dcaefa09d6df49
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373080"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007936"
 ---
 # <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>使用门户将 Vm 和规模集部署到专用主机 
 
 本文介绍了如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。 
 
-
-> [!IMPORTANT]
-> 本文还介绍了自动放置 Vm 和规模集实例。 自动放置当前为公共预览版。
-> 若要参与预览，请完成中的预览加入调查 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
-> 若要在 Azure 门户中浏览预览功能，必须使用此 URL： [https://aka.ms/vmssadh](https://aka.ms/vmssadh) 。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="limitations"></a>限制
 
@@ -42,7 +36,7 @@ ms.locfileid: "91373080"
 在此示例中，我们将使用1个可用性区域和2个容错域创建一个主机组。 
 
 
-1. 打开 [Azure 门户](https://portal.azure.com)。 若要尝试 **自动放置**预览，请使用以下 URL： [https://aka.ms/vmssadh](https://aka.ms/vmssadh) 。
+1. 打开 [Azure 门户](https://portal.azure.com)。 
 1. 选择左上角的“创建资源”。
 1. 搜索“主机组”，然后从结果中选择“主机组”。
 1. 在“主机组”页中，选择“创建”。
@@ -52,7 +46,7 @@ ms.locfileid: "91373080"
 1. 对于“位置”，请选择“美国东部”。
 1. 对于 " **可用性区域**"，选择 " **1**"。
 1. 选择 **2** 作为“容错域计数”。
-1. 如果使用了 **自动放置** URL，请选择此选项以自动将 vm 和规模集实例分配到此组中的可用主机。
+1. 选择 " **自动放置** "，自动将 vm 和规模集实例分配到此组中的可用主机。
 1. 选择“查看 + 创建”，然后等待验证。
 1. 看到“验证通过”消息后，选择“创建”以创建主机组。 
 
@@ -80,38 +74,27 @@ ms.locfileid: "91373080"
 ## <a name="create-a-vm"></a>创建 VM
 
 1. 在 Azure 门户的左上角，选择“创建资源”。
-1. 在 Azure Marketplace 资源列表上方的搜索框中，搜索并选择要使用的映像，然后选择 " **创建**"。
+1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择要使用的映像，然后选择“创建”。
 1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择 myDedicatedHostsRG 作为“资源组” 。 
-1. 在“实例详细信息”**** 下，对于“虚拟机名称”**** 键入 *myVM*，对于“位置”**** 选择“美国东部”**。
+1. 在“实例详细信息”下，对于“虚拟机名称”键入 *myVM*，对于“位置”选择“美国东部”。
 1. 在“可用性选项”中，选择“可用性区域”，然后从下拉列表中选择 1 。
 1. 对于大小，选择“更改大小”。 在可用大小列表中，选择 Esv3 系列其中一个，例如“标准 E2s v3”。 可能需要清除筛选器才能查看所有可用大小。
-1. 根据需要填写 " **基本** 信息" 选项卡上的其余字段。
-1. 在页面顶部，选择“高级”选项卡，然后在“主机”部分，对于“主机组”，选择 myHostGroup，对于“主机”，选择 myHost 。 
+1. 根据需要完成“基本信息”选项卡上的其余字段。
+1. 如果要指定要用于 VM 的主机，则在页面顶部，选择 "**高级**" 选项卡，然后在 "**主机**" 部分中，为主机 "**主机组**" 和 " *myhost 代表*" 选择 **"** *myHostGroup* "。 否则，VM 将自动放置在具有容量的主机上。
     ![选择主机组和主机](./media/dedicated-hosts-portal/advanced.png)
 1. 保留剩余的默认值，然后选择页面底部的“查看 + 创建”按钮。
 1. 显示验证通过的消息时，选择“创建”。
 
 部署 VM 需要数分钟。
 
-## <a name="create-a-scale-set-preview"></a> (预览创建规模集) 
-
-> [!IMPORTANT]
-> 专用主机上的虚拟机规模集目前为公共预览版。
->
-> 若要参与预览，请完成中的预览加入调查 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
->
-> 若要在 Azure 门户中浏览预览功能，必须使用此 URL： [https://aka.ms/vmssadh](https://aka.ms/vmssadh) 。
->
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
->
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+## <a name="create-a-scale-set"></a>创建规模集 
 
 部署规模集时，需要指定主机组。
 
 1. 搜索 " *规模集* "，然后从列表中选择 " **虚拟机规模集** "。
 1. 选择 " **添加** " 以创建新的规模集。
 1. 像往常一样完成 " **基本** 信息" 选项卡上的字段，但请确保选择的 VM 大小来自你为专用主机选择的系列，如 **标准 E2s v3**。
-1. 在 "**高级**" 选项卡上，选择 "**最大分布**" 作为**分配算法**。
+1. 在 "**高级**" 选项卡上，选择 "**最大分布**" 作为 **分配算法**。
 1. 在 " **主机组**" 中，从下拉菜单中选择主机组。 如果最近创建了组，可能需要花费一分钟时间才能将其添加到列表中。
 
 ## <a name="add-an-existing-vm"></a>添加现有 VM 
@@ -140,4 +123,4 @@ ms.locfileid: "91373080"
 
 - [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板，该模板使用区域和容错域来最大限度地提高在某个地区的复原能力。
 
-- 你还可以使用 [Azure CLI](./linux/dedicated-hosts-cli.md) 或 [PowerShell](./windows/dedicated-hosts-powershell.md)部署专用主机。
+- 还可以使用 [Azure CLI](./linux/dedicated-hosts-cli.md) 或 [PowerShell](./windows/dedicated-hosts-powershell.md) 部署专用主机。

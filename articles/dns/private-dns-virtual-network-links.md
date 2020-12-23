@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e43ad35cdaad89d5b9f43007bad8782f358c1a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75646755"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954335"
 ---
 # <a name="what-is-a-virtual-network-link"></a>什么是虚拟网络链接？
 
@@ -23,7 +23,7 @@ ms.locfileid: "75646755"
 
 ## <a name="registration-virtual-network"></a>注册虚拟网络
 
-当你在专用 DNS 区域和虚拟网络之间[创建链接](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)时，可以选择为虚拟机打开 DNS 记录[自动注册](./private-dns-autoregistration.md)。 如果选择此选项，虚拟网络会成为专用 DNS 区域的注册虚拟网络。 将为在网络中部署的虚拟机自动创建 DNS 记录。 将为已在虚拟网络中部署的虚拟机创建 DNS 记录。 从虚拟网络的角度来看，专用 DNS 区域成为该虚拟网络的注册区域。
+当你在专用 DNS 区域和虚拟网络之间[创建链接](./private-dns-getstarted-portal.md#link-the-virtual-network)时，可以选择为虚拟机打开 DNS 记录[自动注册](./private-dns-autoregistration.md)。 如果选择此选项，虚拟网络会成为专用 DNS 区域的注册虚拟网络。 将为在网络中部署的虚拟机自动创建 DNS 记录。 将为已在虚拟网络中部署的虚拟机创建 DNS 记录。 从虚拟网络的角度来看，专用 DNS 区域成为该虚拟网络的注册区域。
 一个专用 DNS 区域可以具有多个注册虚拟网络，但每个虚拟网络只能有一个与其关联的注册区域。
 
 ## <a name="resolution-virtual-network"></a>解析虚拟网络
@@ -33,7 +33,7 @@ ms.locfileid: "75646755"
 
 ## <a name="limits"></a>限制
 
-若要了解注册网络和解析网络的数量，可以链接到专用 DNS 区域，请参阅 [Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+若要了解注册网络和解析网络的数量，可以链接到专用 DNS 区域，请参阅 [Azure DNS 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)
 
 ## <a name="other-considerations"></a>其他注意事项
 
@@ -49,7 +49,7 @@ ms.locfileid: "75646755"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何使用 [Azure 门户](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)将虚拟网络链接到专用 DNS 区域
+* 了解如何使用 [Azure 门户](./private-dns-getstarted-portal.md#link-the-virtual-network)将虚拟网络链接到专用 DNS 区域
 
 * 了解如何使用 [Azure PowerShell](./private-dns-getstarted-powershell.md) 或 [Azure CLI](./private-dns-getstarted-cli.md) 在 Azure DNS 中创建专用区域。
 

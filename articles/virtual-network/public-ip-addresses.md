@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef79844cf2f90ce97ea30a1948a441f909255f98
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329255"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169927"
 ---
 # <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -39,6 +39,8 @@ ms.locfileid: "91329255"
 
 ## <a name="sku"></a>SKU
 
+若要了解有关 SKU 升级的信息，请参阅 [公共 IP 升级](../virtual-network/virtual-network-public-ip-address-upgrade.md)。
+
 使用以下 SKU 之一创建公共 IP 地址：
 
 >[!IMPORTANT]
@@ -52,7 +54,7 @@ ms.locfileid: "91329255"
 - 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
 - 默认情况下为安全的，并且对入站流量关闭。 允许列出[网络安全组](security-overview.md#network-security-groups)的入站流量。
 - 分配给网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 可以是区域冗余的，也可以是可在特定的可用性区域) 中确保的区域性 (。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 可以是) 的所有3个区域中的区域冗余 (advertized，也可以在特定的可用性区域) 中确保区域性 (创建。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **区域冗余 Ip 只能在具有3个 [可用性区域的区域](https://docs.microsoft.com/azure/availability-zones/az-region) 中创建。** 在区域处于活动之前创建的 Ip 不会区域冗余。
  
 > [!NOTE]
 > 在创建并关联[网络安全组](security-overview.md#network-security-groups)且显式允许所需入站流量之前，到标准 SKU 资源的入站通信将会失败。
@@ -114,7 +116,7 @@ ms.locfileid: "91329255"
 
 选择该选项为公共 IP 资源指定 DNS 域名标签。 
 
-此选择将为**domainnamelabel**创建映射。cloudapp.azure.com Azure 托管 DNS 中的公共**IP。** 
+此选择将为 **domainnamelabel** 创建映射。cloudapp.azure.com Azure 托管 DNS 中的公共 **IP。** 
 
 例如，创建公共 IP，其中：
 
@@ -137,7 +139,7 @@ ms.locfileid: "91329255"
 
 ## <a name="virtual-machines"></a>虚拟机
 
-将公共 IP 地址分配到其**网络接口**可将其与 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机相关联。 
+将公共 IP 地址分配到其 **网络接口** 可将其与 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机相关联。 
 
 为公共 IP 地址选择“动态”或“静态” 。 详细了解如何[将 IP 地址分配到网络接口](virtual-network-network-interface-addresses.md)。
 
@@ -160,16 +162,16 @@ ms.locfileid: "91329255"
 
 ## <a name="application-gateways"></a>应用程序网关
 
-将公共 IP 地址分配给网关的**前端**配置可以将其与 Azure [应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)相关联。 
+将公共 IP 地址分配给网关的 **前端** 配置可以将其与 Azure [应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)相关联。 
 
 * 将“动态”基本公共 IP 地址分配给应用程序网关 V1 前端配置。 
 * 将 **静态** 标准 SKU 地址分配到 V2 前端配置。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
 
-[Azure 防火墙](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 允许跨订阅和虚拟网络创建、强制和记录应用程序和网络连接策略。
+[Azure 防火墙](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)使你可以跨订阅和虚拟网络创建、实施和记录应用程序与网络连接策略。
 
-只能将 **静态** 标准公共 IP 地址与防火墙关联。 这允许外部防火墙识别来自虚拟网络的流量。 
+只能将静态标准公共 IP 地址与防火墙关联。 这允许外部防火墙识别源自虚拟网络的流量。 
 
 
 ## <a name="at-a-glance"></a>概览

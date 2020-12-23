@@ -3,20 +3,20 @@ title: 使用 Azure 自动化中的源代码管理集成
 description: 本文介绍如何将 Azure 自动化源代码管理与其他存储库同步。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/10/2019
+ms.date: 11/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c2ddb0143bb9cba0dc2fc48ff9b9df94dc55c29c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229612"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579447"
 ---
 # <a name="use-source-control-integration"></a>使用源代码管理集成
 
  Azure 自动化中的源代码管理集成支持源代码管理存储库中的单向同步。 通过源代码管理，可以使用 GitHub 或 Azure Repos 源代码管理存储库中的脚本使自动化帐户中的 Runbook 保持最新。 此功能可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。
- 
- 使用源代码管理集成可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试和生产自动化帐户。 
+
+ 使用源代码管理集成可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试和生产自动化帐户。
 
 ## <a name="source-control-types"></a>源代码管理类型
 
@@ -47,11 +47,11 @@ Azure 自动化支持三种类型的源代码管理：
 
     ![选择“源代码管理”](./media/source-control-integration/select-source-control.png)
 
-2. 选择“源代码管理类型”，然后单击“身份验证” 。 
+2. 选择“源代码管理类型”，然后单击“身份验证” 。
 
 3. 随即将打开一个浏览器窗口，并提示你登录。 根据提示完成身份验证。
 
-4. 在“源代码管理摘要”页上，使用字段填写下面定义的源代码管理属性。 完成后单击“保存”。 
+4. 在“源代码管理摘要”页上，使用字段填写下面定义的源代码管理属性。 完成后单击“保存”。
 
     |properties  |说明  |
     |---------|---------|
@@ -73,9 +73,9 @@ Azure 自动化支持三种类型的源代码管理：
 
 ### <a name="configure-source-control-in-powershell"></a>在 PowerShell 中配置源代码管理
 
-还可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 要使用 PowerShell cmdlet 执行此操作，需要个人访问令牌 (PAT)。 使用 [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) cmdlet 创建源代码管理连接。 此 cmdlet 需要 PAT 的安全字符串。 要了解如何创建安全字符串，请参阅 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
+还可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 要使用 PowerShell cmdlet 执行此操作，需要个人访问令牌 (PAT)。 使用 [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol) cmdlet 创建源代码管理连接。 此 cmdlet 需要 PAT 的安全字符串。 要了解如何创建安全字符串，请参阅 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)。
 
-以下小节说明如何使用 PowerShell 创建适用于 GitHub、Azure Repos (Git) 和 Azure Repos (TFVC) 的源代码管理连接。 
+以下小节说明如何使用 PowerShell 创建适用于 GitHub、Azure Repos (Git) 和 Azure Repos (TFVC) 的源代码管理连接。
 
 #### <a name="create-source-control-connection-for-github"></a>创建适用于 GitHub 的源代码管理连接
 
@@ -116,13 +116,15 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 |`repo:status`     | 访问提交状态         |
 |`repo_deployment`      | 访问部署状态         |
 |`public_repo`     | 访问公共存储库         |
+|`repo:invite` | 访问存储库邀请 |
+|`security_events` | 读取和写入安全事件 |
 |**`admin:repo_hook`**     |         |
 |`write:repo_hook`     | 写入存储库挂钩         |
 |`read:repo_hook`|读取存储库挂钩|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos 的最低 PAT 权限
 
-下表定义了 Azure Repos 所需的最低 PAT 权限。 如需详细了解如何在 Azure Repos 中创建 PAT，请参阅[使用个人访问令牌进行身份验证访问](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)。
+下表定义了 Azure Repos 所需的最低 PAT 权限。 如需详细了解如何在 Azure Repos 中创建 PAT，请参阅[使用个人访问令牌进行身份验证访问](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
 
 | 范围  |  访问类型  |
 |---------| ----------|
@@ -137,13 +139,13 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 ## <a name="synchronize-with-source-control"></a>与源代码管理同步
 
-请按照以下步骤与源代码管理同步。 
+请按照以下步骤与源代码管理同步。
 
-1. 请从“源代码管理”页面上的表中选择源。 
+1. 请从“源代码管理”页面上的表中选择源。
 
-2. 单击“开始同步”以开始同步过程。 
+2. 单击“开始同步”以开始同步过程。
 
-3. 单击“同步作业”选项卡，查看当前同步作业或之前的同步作业的状态。 
+3. 单击“同步作业”选项卡，查看当前同步作业或之前的同步作业的状态。
 
 4. 在“源代码管理”下拉列表中，选择一个源代码管理机制。
 
@@ -189,13 +191,13 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 1. 在自动化帐户中的“帐户设置”下打开源代码管理 。
 
-2. 选择要删除的源代码管理机制。 
+2. 选择要删除的源代码管理机制。
 
 3. 在“源代码管理摘要”页面上，单击“删除”。
 
 ## <a name="handle-encoding-issues"></a>处理编码问题
 
-如果多人使用不同的编辑器在源代码管理存储库中编辑 Runbook，则可能发生编码问题。 如需详细了解此情况，请参阅[编码问题的常见原因](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues)。
+如果多人使用不同的编辑器在源代码管理存储库中编辑 Runbook，则可能发生编码问题。 如需详细了解此情况，请参阅[编码问题的常见原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)。
 
 ## <a name="update-the-pat"></a>更新 PAT
 

@@ -1,7 +1,7 @@
 ---
 title: 使用 REST 管理 ML 资源
 titleSuffix: Azure Machine Learning
-description: 如何使用 REST API 创建、运行和删除 Azure ML 资源
+description: 如何使用 REST Api 创建、运行和删除 Azure 机器学习资源，如工作区或注册模型。
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322302"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316899"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
 
 
-可通过多种方式管理 Azure ML 资源。 可以使用[门户](https://portal.azure.com/)、[命令行接口](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)或 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。 或者，可以选择 REST API。 REST API 使用 HTTP 谓词以标准方式创建、检索、更新和删除资源。 REST API 适用于可发出 HTTP 请求的任何语言或工具。 REST 具有简单的结构，因此它往往是适合脚本编写环境和 MLOps 自动化的良好选择。 
+可通过多种方式管理 Azure ML 资源。 可以使用[门户](https://portal.azure.com/)、[命令行接口](/cli/azure/?preserve-view=true&view=azure-cli-latest)或 [Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。 或者，可以选择 REST API。 REST API 使用 HTTP 谓词以标准方式创建、检索、更新和删除资源。 REST API 适用于可发出 HTTP 请求的任何语言或工具。 REST 具有简单的结构，因此它往往是适合脚本编写环境和 MLOps 自动化的良好选择。 
 
 在本文中，学习如何：
 
@@ -35,10 +35,10 @@ ms.locfileid: "91322302"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)
-- 一个 [Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- 管理 REST 请求使用服务主体身份验证。 遵循[为 Azure 机器学习资源和工作流设置身份验证](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中的步骤在工作区中创建服务主体
-- **curl** 实用工具。 在[适用于 Linux 的 Windows 子系统](https://aka.ms/wslinstall/)或任何 UNIX 分发版中均已提供了 **curl** 程序。 在 PowerShell 中，**curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
+- 你对其拥有管理权限的 **Azure 订阅** 。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)
+- 一个 [Azure 机器学习工作区](./how-to-manage-workspace.md)
+- 管理 REST 请求使用服务主体身份验证。 遵循[为 Azure 机器学习资源和工作流设置身份验证](./how-to-setup-authentication.md#service-principal-authentication)中的步骤在工作区中创建服务主体
+- **curl** 实用工具。 在 [适用于 Linux 的 Windows 子系统](/windows/wsl/install-win10)或任何 UNIX 分发版中均已提供了 **curl** 程序。 在 PowerShell 中， **curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>检索服务主体身份验证令牌
 
@@ -48,7 +48,7 @@ ms.locfileid: "91322302"
 - 客户端 ID（将与创建的令牌相关联）
 - 客户端机密（应予以保护）
 
-应从创建服务主体的响应中获取这些值。 [为 Azure 机器学习资源和工作流设置身份验证](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)一文介绍了如何获取这些值。 如果使用公司订阅，则可能无权创建服务主体。 在这种情况下，应使用[免费或付费的个人订阅](https://aka.ms/AMLFree)。
+应从创建服务主体的响应中获取这些值。 [为 Azure 机器学习资源和工作流设置身份验证](./how-to-setup-authentication.md#service-principal-authentication)一文介绍了如何获取这些值。 如果使用公司订阅，则可能无权创建服务主体。 在这种情况下，应使用[免费或付费的个人订阅](https://aka.ms/AMLFree)。
 
 若要检索令牌，请执行以下操作：
 
@@ -236,7 +236,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-若要创建或覆盖命名计算资源，需使用 PUT 请求。 在以下代码中，除了像平时一样替换 `your-subscription-id`、`your-resource-group`、`your-workspace-name` 和 `your-access-token` 以外，还需要替换 `your-compute-name`，以及 `location`、`vmSize`、`vmPriority`、`scaleSettings`、`adminUserName` 和 `adminUserPassword` 的值。 根据[机器学习计算 - 创建或更新 SDK 参考](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)中的明确说明，以下命令将创建一个专用的单节点 Standard_D1（基本 CPU 计算资源），该资源在 30 分钟后将会纵向缩减：
+若要创建或覆盖命名计算资源，需使用 PUT 请求。 在以下代码中，除了像平时一样替换 `your-subscription-id`、`your-resource-group`、`your-workspace-name` 和 `your-access-token` 以外，还需要替换 `your-compute-name`，以及 `location`、`vmSize`、`vmPriority`、`scaleSettings`、`adminUserName` 和 `adminUserPassword` 的值。 根据[机器学习计算 - 创建或更新 SDK 参考](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)中的明确说明，以下命令将创建一个专用的单节点 Standard_D1（基本 CPU 计算资源），该资源在 30 分钟后将会纵向缩减：
 
 ```bash
 curl -X PUT \
@@ -279,7 +279,7 @@ curl -X PUT \
 print("Hello, REST!")
 ```
 
-将下一个代码片段保存为 **definition.json**。 确认“Script”值与刚刚压缩的 Python 文件的名称相匹配。 确认“Target”值与可用计算资源的名称相匹配。 
+将下一个代码片段保存为 **definition.json** 。 确认“Script”值与刚刚压缩的 Python 文件的名称相匹配。 确认“Target”值与可用计算资源的名称相匹配。 
 
 ```json
 {
@@ -349,7 +349,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>删除不再需要的资源
 
-某些（但不是所有）资源支持 DELETE 谓词。 在删除用例中提交到 REST API 之前，请查看 [API 参考](https://docs.microsoft.com/rest/api/azureml/)。 例如，若要删除某个模型，可以使用：
+某些（但不是所有）资源支持 DELETE 谓词。 在删除用例中提交到 REST API 之前，请查看 [API 参考](/rest/api/azureml/)。 例如，若要删除某个模型，可以使用：
 
 ```bash
 curl
@@ -422,6 +422,6 @@ Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 执行某些操作
 
 ## <a name="next-steps"></a>后续步骤
 
-- 浏览完整的 [AzureML REST API 参考](https://docs.microsoft.com/rest/api/azureml/)。
-- 了解如何使用设计器 [预测汽车价格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
-- [使用 Jupyter 笔记本探索 Azure 机器学习](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)。
+- 浏览完整的 [AzureML REST API 参考](/rest/api/azureml/)。
+- 了解如何[使用设计器预测汽车价格](./tutorial-designer-automobile-price-train-score.md)。
+- [使用 Jupyter 笔记本探索 Azure 机器学习](..//machine-learning/samples-notebooks.md)。

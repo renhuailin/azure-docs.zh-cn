@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 068586a96ad3655cb70171266bd58f56ed320fc1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 36414c975e97dbaa7d8747da98c31eeb12fbc206
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662855"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636963"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>使用本地 PowerShell 脚本自动安装自承载集成运行时
 若要在本地计算机（而不是在可以通过资源管理器模板实现自动安装的 Azure VM 上）上自动安装自承载集成运行时，可以使用本地 PowerShell 脚本。 本文将介绍两个可用于实现自动安装的脚本。
@@ -31,7 +31,7 @@ ms.locfileid: "83662855"
 ## <a name="scripts-introduction"></a>脚本简介 
 
 > [!NOTE]
-> 以下脚本通过自承载集成运行时中[记录的命令行实用工具](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#set-up-an-existing-self-hosted-ir-via-local-powershell)创建。 如果需要，可以相应地自定义这些脚本以满足其自动化需求。
+> 以下脚本通过自承载集成运行时中[记录的命令行实用工具](./create-self-hosted-integration-runtime.md#set-up-an-existing-self-hosted-ir-via-local-powershell)创建。 如果需要，可以相应地自定义这些脚本以满足其自动化需求。
 > 脚本需要应用于每个节点，因此确保在高可用性设置（2 个或更多节点）的情况下跨所有节点运行脚本。
 
 * 自动安装：使用 [InstallGatewayOnLocalMachine.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1) 安装并注册新的自承载集成运行时节点 - 该脚本可用于安装自承载集成运行时节点，并使用身份验证密钥对其进行注册。 脚本接受两个参数，第一个指定本地磁盘上的[自承载集成运行时](https://www.microsoft.com/download/details.aspx?id=39717)的位置，第二个指定身份验证密钥（用于注册自承载 IR 节点）  。

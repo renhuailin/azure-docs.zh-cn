@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73837125"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364932"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>有关文本分析认知服务的常见问题解答 (FAQ)
 
@@ -29,11 +29,11 @@ ms.locfileid: "73837125"
 
 ## <a name="can-i-add-my-own-training-data-or-models"></a>我可以添加自己的训练数据或模型吗？
 
-不可以，模型是预先训练的。 对上传数据的唯一可用操作是评分、关键短语提取和语言检测。 我们不托管自定义模型。 如果想要创建并托管自定义机器学习模型，请考虑 [Microsoft R Server 中的机器学习功能](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package)。
+不可以，模型是预先训练的。 对上传数据的唯一可用操作是评分、关键短语提取和语言检测。 我们不托管自定义模型。 如果想要创建并托管自定义机器学习模型，请考虑 [Microsoft R Server 中的机器学习功能](/r-server/r/concept-what-is-the-microsoftml-package)。
 
 ## <a name="can-i-request-additional-languages"></a>我可以请求其他语言吗？
 
-情绪分析和关键短语提取可用于[部分语言](text-analytics-supported-languages.md)。 自然语言处理很复杂，需要进行大量测试才能发布新功能。 出于这个原因，我们避免预先宣布支持，这样就不会有人依赖需要更多时间才能成熟的功能。 
+情绪分析和关键短语提取可用于[部分语言](./language-support.md)。 自然语言处理很复杂，需要进行大量测试才能发布新功能。 出于这个原因，我们避免预先宣布支持，这样就不会有人依赖需要更多时间才能成熟的功能。 
 
 为帮助我们确定下一步要处理哪些语言的优先顺序，请在[用户之声](https://cognitive.uservoice.com/forums/555922-text-analytics)上为特定语言投票。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "73837125"
 
 问题是否与缺少功能相关？ 请考虑在我们的 [UserVoice 网站](https://cognitive.uservoice.com/forums/555922-text-analytics)上为其发起请求或投票。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
  [StackOverflow：文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow：认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

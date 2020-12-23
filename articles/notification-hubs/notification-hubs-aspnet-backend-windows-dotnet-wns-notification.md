@@ -16,11 +16,11 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 97a6a45ab01fc113b79a48ba7fcb246d528684be
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090051"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019474"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送通知
 
@@ -227,7 +227,7 @@ ms.locfileid: "90090051"
 
 13. 右键单击“WindowsApp”项目，单击“添加”，然后单击“类”  。 将类命名为 `RegisterClient.cs`，然后单击“确定”以生成该类。
 
-    此类会包装联系应用后端所需的 REST 调用，以便注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](/previous-versions/azure/azure-services/dn743807(v=azure.100))中所述。 它使用单击“登录并注册”按钮时存储在本地存储中的授权令牌。
+    此类会包装联系应用后端所需的 REST 调用，以便注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如 [从应用后端注册](/previous-versions/azure/azure-services/dn743807(v=azure.100))中所述。 它使用单击“登录并注册”按钮时存储在本地存储中的授权令牌。
 14. 在 RegisterClient.cs 文件的顶部添加以下 `using` 语句：
 
     ```csharp

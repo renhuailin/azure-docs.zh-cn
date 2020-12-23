@@ -145,6 +145,10 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: 加入虚拟网络
           href: tutorial-deploy-ssis-virtual-network.md
+    - name: 沿袭
+      items:
+        - name: 将数据工厂世系数据推送到 Azure Purview
+          href: turorial-push-lineage-to-purview.md
     - name: 端到端实验室
       items:
         - name: 使用数据工厂和数据共享实现数据集成
@@ -203,6 +207,8 @@
       href: concepts-roles-permissions.md
     - name: 命名规则
       href: naming-rules.md
+    - name: 数据冗余
+      href: concepts-data-redundancy.md
 - name: 操作指南
   items:
     - name: 作者
@@ -257,7 +263,7 @@
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
-        - name: Azure Synapse Analytics（以前称为 SQL 数据仓库）
+        - name: Azure Synapse Analytics
           href: connector-azure-sql-data-warehouse.md
         - name: Azure 表存储
           href: connector-azure-table-storage.md
@@ -334,6 +340,8 @@
           items:
             - name: MongoDB（旧版）
               href: connector-mongodb-legacy.md
+        - name: MongoDB Atlas
+          href: connector-mongodb-atlas.md
         - name: MySQL
           href: connector-mysql.md
         - name: Netezza
@@ -447,6 +455,8 @@
           href: copy-activity-fault-tolerance.md
         - name: 数据一致性验证
           href: copy-activity-data-consistency.md
+        - name: 复制活动日志
+          href: copy-activity-log.md
         - name: 格式和压缩支持（旧版）
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: 转换数据
@@ -682,6 +692,10 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: 创建翻转窗口触发器依赖项
           href: tumbling-window-trigger-dependency.md
+    - name: 沿袭
+      items:
+        - name: 将数据工厂连接到 Azure Purview
+          href: connect-data-factory-to-azure-purview.md
     - name: 方案
       items:
         - name: Data Lake 与 EDW 的数据迁移
@@ -744,10 +758,14 @@
           href: data-factory-troubleshoot-guide.md
         - name: 连接器
           href: connector-troubleshoot-guide.md
+        - name: 管道触发器
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: 数据流
           href: data-flow-troubleshoot-guide.md
-        - name: 复制数据工具
-          href: copy-data-tool-troubleshoot-guide.md
+        - name: 持续集成和部署
+          href: ci-cd-github-troubleshoot-guide.md
+        - name: 安全性和访问控制
+          href: security-and-access-control-troubleshoot-guide.md
         - name: 自承载集成运行时
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 集成运行时
@@ -781,7 +799,7 @@
     - name: 博客
       href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: 提问 - Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: 提出问题 - Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 请求功能

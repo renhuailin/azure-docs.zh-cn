@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2c4e39ae664c89e4f6d49f2941115e5a7d44cf7b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407109"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929167"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
@@ -22,7 +22,7 @@ ms.locfileid: "87407109"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
-* [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [已安装 Azure CLI](/cli/azure/install-azure-cli)。
 * [已安装 Helm v3][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
@@ -33,7 +33,7 @@ az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-输出类似于以下示例。 记下 ACR 的 *loginServer* 值，因为稍后的步骤会用到它。 在下面的示例中， *myhelmacr.azurecr.io*是*myhelmacr*的*loginServer* 。
+输出类似于以下示例。 记下 ACR 的 *loginServer* 值，因为稍后的步骤会用到它。 在下面的示例中， *myhelmacr.azurecr.io* 是 *myhelmacr* 的 *loginServer* 。
 
 ```console
 {
@@ -113,7 +113,7 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>生成并将示例应用程序推送到 ACR
 
-使用[az acr build][az-acr-build]命令生成映像，并使用上述 Dockerfile 将映像推送到注册表。 命令末尾处的 `.` 设置 Dockerfile 的位置（在本例中为当前目录）。
+使用前面的 Dockerfile 通过 [az acr build][az-acr-build] 命令生成映像并将其推送到注册表。 命令末尾处的 `.` 设置 Dockerfile 的位置（在本例中为当前目录）。
 
 ```azurecli
 az acr build --image webfrontend:v1 \
@@ -129,7 +129,7 @@ az acr build --image webfrontend:v1 \
 helm create webfrontend
 ```
 
-对*webfrontend/yaml*进行以下更新。 替换前面步骤中记下的注册表的 loginServer，例如*myhelmacr.azurecr.io*：
+对 webfrontend/values.yaml 进行以下更新。 替换前面步骤中记下的注册表的 loginServer，例如 *myhelmacr.azurecr.io*：
 
 * 将 `image.repository` 更改为 `<loginServer>/webfrontend`
 * 将 `service.type` 更改为 `LoadBalancer`

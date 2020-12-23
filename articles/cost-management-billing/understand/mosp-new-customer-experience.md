@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 7bec455b804d1f4b13ab7e13677092077214a121
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371736"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965844"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>开始使用更新的 Azure 计费帐户
 
@@ -42,7 +42,7 @@ ms.locfileid: "91371736"
 
 计费配置文件中的角色有权查看和管理发票和付款方式。 这些角色应分配给为发票付款的用户，例如组织中会计团队的成员。 有关详细信息，请参阅[计费配置文件角色和任务](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)。 
 
-帐户更新后，对于你已授予其他人[查看发票](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice)权限的每个订阅，具有所有者、参与者、读者或计费读者 Azure RBAC 角色的用户将在相应的计费配置文件中被赋予读者角色。
+帐户更新后，对于你已授予其他人[查看发票](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice)权限的每个订阅，具有所有者、参与者、读者或计费读者 Azure 角色的用户将在相应的计费对象信息中被赋予读者角色。
 
 ## <a name="invoice-sections"></a>发票科目
 
@@ -104,8 +104,8 @@ ms.locfileid: "91371736"
 
 |API | 更改  |
 |---------|---------|
-|[计费帐户 - 列表](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | 在计费帐户 - 列表 API 中，你的旧计费帐户具有 agreementType“MicrosoftOnlineServiceProgram”，而你的新计费帐户具有 agreementType“MicrosoftCustomerAgreement” 。 如果你依赖于 agreementType，请进行更新。 |
-|[发票 - 按计费订阅列出](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | 此 API 将仅返回在更新帐户之前生成的发票。 必须使用[发票 - 按计费订阅列出](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API 才能获取在新计费帐户中生成的发票。 |
+|[计费帐户 - 列表](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | 在计费帐户 - 列表 API 中，你的旧计费帐户具有 agreementType“MicrosoftOnlineServiceProgram”，而你的新计费帐户具有 agreementType“MicrosoftCustomerAgreement” 。 如果你依赖于 agreementType，请进行更新。 |
+|[发票 - 按计费订阅列出](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | 此 API 将仅返回在更新帐户之前生成的发票。 必须使用[发票 - 按计费订阅列出](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API 才能获取在新计费帐户中生成的发票。 |
 
 ## <a name="additional-information"></a>其他信息
 

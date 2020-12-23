@@ -1,6 +1,6 @@
 ---
-title: 使用 ARM 模板发布 IoT 中心、存储帐户、路由消息
-description: 使用 ARM 模板发布 IoT 中心、存储帐户、路由消息
+title: 使用 ARM 模板发布 Azure IoT 中心、存储帐户、路由消息
+description: 使用 ARM 模板发布 Azure IoT 中心、存储帐户、路由消息
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,18 +8,22 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1b9c576ce03d808fe6a4d0cac5196dfcd1b73eab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89462660"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545474"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>快速入门：使用 ARM 模板部署 Azure IoT 中心和存储帐户
 
 在此快速入门中，你将使用 Azure 资源管理器模板（ARM 模板）创建 IoT 中心以将消息路由到 Azure 存储，并创建存储帐户以保存消息。 将虚拟 IoT 设备手动添加到中心以提交消息后，可在名为“arm-read-write”的应用程序中配置该连接信息，以将该设备的消息提交到中心。 该中心进行了配置，发送到该中心的消息将自动路由到存储帐户。 在本快速入门教程时，你可以打开该存储帐户并查看发送的消息。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +35,10 @@ ms.locfileid: "89462660"
 
 :::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
 
-该模板中定义了两个 Azure 资源： 
-* [Microsoft.Devices/Iothubs](/azure/templates/microsoft.devices/iothubs)
-* [Microsoft.Storage/](/azure/templates/microsoft.storage/allversions)
+该模板中定义了两个 Azure 资源：
+
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+- [Microsoft.Devices/IotHubs](/azure/templates/microsoft.devices/iothubs)
 
 ## <a name="deploy-the-template-and-run-the-sample-app"></a>部署模板并运行示例应用
 
@@ -46,9 +51,9 @@ ms.locfileid: "89462660"
 
     [![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. 下载并解压缩 [IoT C# 示例](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)。
+1. 下载并解压缩 [IoT C# 示例](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)。
 
-1. 打开一个命令窗口并转到你将 IoT C# 示例解压缩到的文件夹。 查找包含 arm-read-write.csproj 文件的文件夹。 可以在此命令窗口中创建环境变量。 登录到 [Azure 门户](https://portal.azure.com ]以获取密钥。 选择“资源组”，然后选择用于此快速入门的资源组。
+1. 打开一个命令窗口并转到你将 IoT C# 示例解压缩到的文件夹。 查找包含 arm-read-write.csproj 文件的文件夹。 可以在此命令窗口中创建环境变量。 登录到 [Azure 门户](https://portal.azure.com)以获取密钥。 选择“资源组”，然后选择用于此快速入门的资源组。
 
    ![选择资源组](./media/horizontal-arm-route-messages/01-select-resource-group.png)
 
@@ -56,12 +61,12 @@ ms.locfileid: "89462660"
 
    ![查看资源组中的资源](./media/horizontal-arm-route-messages/02-view-resources-in-group.png)
 
-1. 需要“中心名称”。 在资源列表中选择中心。 将“IoT 中心”部分顶部的中心名称复制到 Windows 剪贴板。 
- 
+1. 需要“中心名称”。 在资源列表中选择中心。 将“IoT 中心”部分顶部的中心名称复制到 Windows 剪贴板。
+
    ![复制中心名称](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
 
     替换此命令中标记的中心名称，并在命令窗口中执行此命令：
-   
+
     ```cmd
     SET IOT_HUB_URI=<hub name goes here>.azure-devices-net;
     ```
@@ -72,11 +77,11 @@ ms.locfileid: "89462660"
    SET IOT_HUB_URI=ContosoTestHubdlxlud5h.azure-devices-net;
    ```
 
-1. 下一个环境变量是 IoT 设备密钥。 通过从中心的“IoT 中心”菜单中选择“IOT 设备”，将新设备添加到中心。 
+1. 下一个环境变量是 IoT 设备密钥。 通过从中心的“IoT 中心”菜单中选择“IOT 设备”，将新设备添加到中心。
 
    ![选择 IoT 设备](./media/horizontal-arm-route-messages/04-select-iot-devices.png)
 
-1. 在屏幕右侧，选择“+ 新建”以添加新设备。 
+1. 在屏幕右侧，选择“+ 新建”以添加新设备。
 
    填写新设备名称。 此快速入门使用以“Contoso-Test-Device”开头的名称。 保存设备，然后再次打开该屏幕以检索设备密钥。 （关闭窗格时将生成密钥。）选择主要或辅助密钥并将其复制到 Windows 剪贴板。 在命令窗口中，设置要执行的命令，然后按 Enter。 该命令应类似于此命令，但在其中粘贴了设备密钥：
 
@@ -84,10 +89,10 @@ ms.locfileid: "89462660"
    SET IOT_DEVICE_KEY=<device-key-goes-here>
    ```
 
-1. 最后一个环境变量是“设备 ID”。 在命令窗口中，设置并执行命令。 
-   
+1. 最后一个环境变量是“设备 ID”。 在命令窗口中，设置并执行命令。
+
    ```cms
-   SET IOT_DEVICE_ID=<device-id-goes-here> 
+   SET IOT_DEVICE_ID=<device-id-goes-here>
    ```
 
    如以下示例所示：
@@ -100,13 +105,13 @@ ms.locfileid: "89462660"
 
    ![查看环境变量](./media/horizontal-arm-route-messages/06-environment-variables.png)
 
-现在已经设置好环境变量，请从同一命令窗口运行应用程序。 因为使用的是同一个窗口，所以在运行应用程序时，可以在内存中访问这些变量。
+    现在已经设置好环境变量，请从同一命令窗口运行应用程序。 因为使用的是同一个窗口，所以在运行应用程序时，可以在内存中访问这些变量。
 
 1. 若要运行应用程序，请在命令窗口中键入以下命令并按 Enter。
 
     `dotnet run arm-read-write`
 
-   应用程序在将每条消息发送到 IoT 中心时在控制台上生成并显示消息。 该中心在 ARM 模板中配置为具有自动路由。 包含文本“level = storage”的消息将自动路由到存储帐户。 让应用运行 10 到 15 分钟，然后按 Enter 一次或两次，直到它停止运行。
+   应用程序在将每条消息发送到 IoT 中心时在控制台上生成并显示消息。 该中心在 ARM 模板中配置为具有自动路由。 包含文本 `level = storage` 的消息将自动路由到存储帐户。 让应用运行 10 到 15 分钟，然后按 Enter 一次或两次，直到它停止运行。
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
@@ -134,4 +139,4 @@ ms.locfileid: "89462660"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建和部署你的第一个 ARM 模板](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教程：创建和部署你的第一个 ARM 模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

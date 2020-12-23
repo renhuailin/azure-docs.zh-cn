@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: 0b5e6134de2260998e599bad0d1bf6b381898ffd
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e4f6cefd56c12162b370c78b6df2cd29ece030f1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513099"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515706"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
 
@@ -51,13 +51,13 @@ ms.locfileid: "88513099"
 | --- | --- | --- |
 | M416ms_v2，M416s_v2| 16 | 20000 |
 | M208ms_v2，M208s_v2| 8 | 10000 |
-| M128ms、M128s | 16 | 20000 |
+| M128ms, M128s | 16 | 20000 |
 | M64ms、M64ls、M64s | 8 | 10000 |
 | M32ms、M32ls、M32ts、M32s | 4 | 5000 |
 | M16ms、M16s | 2 | 2500 |
 | M8ms、M8s | 1 | 1250 |
 
-IOPS 限制是针对每个 VM 而不是每个磁盘  。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
+IOPS 限制是针对每个 VM 而不是每个磁盘  。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。 附加的磁盘不能超过 VM 的写入加速器 IOPS 限制。 例如，即使附加的磁盘可以执行 30000 IOPS，系统也不允许磁盘超过 20000 IOPS 来进行 M416ms_v2。
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>在特定磁盘上启用写入加速器
 
@@ -77,23 +77,23 @@ Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，
 
 已将新的开关参数 **-WriteAccelerator** 添加到以下 cmdlet：
 
-- [Set-AzVMOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
-- [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
-- [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
-- [Add-AzVmssDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
+- [Set-AzVMOsDisk](/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
+- [Add-AzVMDataDisk](/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzVMDataDisk](/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzVmssDataDisk](/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
 
 不指定该参数会将属性设置为 false，并且会部署不受写入加速器支持的磁盘。
 
 已将新的开关参数 **-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
-- [Set-AzVmssStorageProfile](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
+- [Set-AzVmssStorageProfile](/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
 
 默认情况下，不指定该参数会将属性设置为 false，并且会返回不利用写入加速器的磁盘。
 
 已将新的可选布尔参数（不可为 null） **-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
-- [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
-- [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
+- [Update-AzVM](/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
+- [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
 
 指定 $true 或 $false 可以控制磁盘对 Azure 写入加速器的支持。
 
@@ -168,13 +168,13 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ## <a name="enabling-write-accelerator-using-the-azure-cli"></a>使用 Azure CLI 启用写入加速器
 
-可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 来启用写入加速器。
+可以使用 [Azure CLI](/cli/azure/?view=azure-cli-latest) 来启用写入加速器。
 
-若要在现有磁盘上启用写入加速器，请使用 [az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)；若要将 diskName、VMName 和 ResourceGroup 替换为自己的值，可使用以下示例：`az vm update -g group1 -n vm1 -write-accelerator 1=true`
+若要在现有磁盘上启用写入加速器，请使用 [az vm update](/cli/azure/vm?view=azure-cli-latest#az-vm-update)；若要将 diskName、VMName 和 ResourceGroup 替换为自己的值，可使用以下示例：`az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-若要附加启用了写入加速器的磁盘，请使用 [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)；若要替换为自己的值，可使用以下示例：`az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+若要附加启用了写入加速器的磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)；若要替换为自己的值，可使用以下示例：`az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-若要禁用写入加速器，请使用 [az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update) 将属性设置为 false：`az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+若要禁用写入加速器，请使用 [az vm update](/cli/azure/vm?view=azure-cli-latest#az-vm-update) 将属性设置为 false：`az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>使用 Rest API 启用写入加速器
 
@@ -182,7 +182,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="install-armclient"></a>安装 armclient
 
-若要运行 armclient，需要通过 Chocolatey 安装它。 可以通过 cmd.exe 或 PowerShell 安装该安装。 使用提升的权限执行这些命令（“以管理员身份运行”）。
+若要运行 armclient，需要通过 Chocolatey 安装它。 可以通过 cmd.exe 或 PowerShell 来安装它。 使用提升的权限执行这些命令（“以管理员身份运行”）。
 
 使用 cmd.exe 运行以下命令：`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 

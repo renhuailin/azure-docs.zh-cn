@@ -1,40 +1,43 @@
 ---
-title: 配置 Azure MFA NPS 扩展-Azure Active Directory
+title: 配置 Azure AD MFA NPS 扩展-Azure Active Directory
 description: 安装 NPS 扩展后，请使用以下步骤进行高级配置，如允许的 IP 列表和 UPN 替换。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7dab1d9e46aec64cc3c0fda9e8e6ba503f696b0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 6d436414393d77c83acc835110f17e55e491dce1
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716752"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503483"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>用于多重身份验证的 NPS 扩展的高级配置选项
 
-网络策略服务器 (NPS) 扩展可将基于云的 Azure 多重身份验证扩展至本地基础结构。 本文假设你已安装扩展，并想了解如何为自身需求自定义扩展。 
+网络策略服务器 (NPS) 扩展将基于云的 Azure AD 多重身份验证功能扩展到你的本地基础结构。 本文假设你已安装扩展，并想了解如何为自身需求自定义扩展。
+
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="alternate-login-id"></a>备用登录 ID
 
 由于 NPS 扩展同时连接到本地和云端的目录，因此可能会出现本地用户主体名称 (UPN) 与云中的名称不匹配的问题。 要解决此问题，请使用备用登录 ID。 
 
-在 NPS 扩展中，可以指定一个 Active Directory 属性，用它来替换用于 Azure 多重身份验证的 UPN。 这样就能通过双重验证来保护本地资源，且无需修改本地 UPN。 
+在 NPS 扩展中，可以指定一个 Active Directory 属性，以用于 Azure AD 多重身份验证的 UPN。 这样就能通过双重验证来保护本地资源，且无需修改本地 UPN。 
 
 要配置备用登录 ID，请转至 `HKLM\SOFTWARE\Microsoft\AzureMfa` 并编辑下列注册表值：
 
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | 字符串 | 空 | 指定要使用的 Active Directory 属性（而非 UPN）的名称。 此属性将用作 AlternateLoginId 属性。 如果将此注册表值设置为[有效的 Active Directory 属性](/windows/win32/adschema/attributes-all)（例如 mail 或 displayName），那么将使用该属性的值（而不使用用户的 UPN）来进行身份验证。 如果此注册表值为空或未配置，则将禁用 AlternateLoginId，并使用用户的 UPN 来进行身份验证。 |
-| LDAP_FORCE_GLOBAL_CATALOG | boolean | False | 在查找 AlternateLoginId 时，凭此标记强制使用全局编录执行 LDAP 搜索。 将域控制器配置为全局编录，向全局编录中添加 AlternateLoginId 属性，然后启用此标记。 <br><br> 如果配置了 LDAP_LOOKUP_FORESTS（非空），则无论注册表设置的值为何，都会将此标记强制设为 True****。 在这种情况下，NPS 扩展要求对每个林都使用 AlternateLoginId 属性来配置全局编录。 |
-| LDAP_LOOKUP_FORESTS | 字符串 | 空 | 提供以分号分隔的林列表以供搜索。 例如，contoso.com;foobar.com**。 如果配置了此注册表值，则 NPS 扩展将以迭代的方式、按列表顺序搜索整个林，然后返回第一个成功的 AlternateLoginId 值。 如果未配置此注册表值，则将 AlternateLoginId 的查找范围限制在当前域中。|
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | 空 | 指定要使用的 Active Directory 属性（而非 UPN）的名称。 此属性将用作 AlternateLoginId 属性。 如果将此注册表值设置为[有效的 Active Directory 属性](/windows/win32/adschema/attributes-all)（例如 mail 或 displayName），那么将使用该属性的值（而不使用用户的 UPN）来进行身份验证。 如果此注册表值为空或未配置，则将禁用 AlternateLoginId，并使用用户的 UPN 来进行身份验证。 |
+| LDAP_FORCE_GLOBAL_CATALOG | boolean | False | 在查找 AlternateLoginId 时，凭此标记强制使用全局编录执行 LDAP 搜索。 将域控制器配置为全局编录，向全局编录中添加 AlternateLoginId 属性，然后启用此标记。 <br><br> 如果配置了 LDAP_LOOKUP_FORESTS（非空），则无论注册表设置的值为何，都会将此标记强制设为 True。 在这种情况下，NPS 扩展要求对每个林都使用 AlternateLoginId 属性来配置全局编录。 |
+| LDAP_LOOKUP_FORESTS | string | 空 | 提供以分号分隔的林列表以供搜索。 例如，contoso.com;foobar.com。 如果配置了此注册表值，则 NPS 扩展将以迭代的方式、按列表顺序搜索整个林，然后返回第一个成功的 AlternateLoginId 值。 如果未配置此注册表值，则将 AlternateLoginId 的查找范围限制在当前域中。|
 
 要使用备用登录 ID 排除故障，请对[备用登录 ID 错误](howto-mfa-nps-extension-errors.md#alternate-login-id-errors)执行推荐的步骤。
 
@@ -46,7 +49,7 @@ ms.locfileid: "88716752"
 
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ------------- | ----------- |
-| IP_WHITELIST | 字符串 | 空 | 提供以分号隔开的 IP 地址列表。 包括发出服务请求的计算机的 IP 地址，例如 NAS/VPN 服务器。 不支持 IP 范围和子网。 <br><br> 例如 *10.0.0.1;10.0.0.2;10.0.0.3*。
+| IP_WHITELIST | string | 空 | 提供以分号隔开的 IP 地址列表。 包括发出服务请求的计算机的 IP 地址，例如 NAS/VPN 服务器。 不支持 IP 范围和子网。 <br><br> 例如 *10.0.0.1;10.0.0.2;10.0.0.3*。
 
 > [!NOTE]
 > 此注册表项不是由安装程序默认创建的，并且在重新启动该服务时，AuthZOptCh 日志中会出现错误。 可能会忽略日志中的此错误，但如果创建了此注册表项并在不需要时保留为空，则不会返回错误消息。
@@ -55,4 +58,4 @@ ms.locfileid: "88716752"
 
 ## <a name="next-steps"></a>后续步骤
 
-[解决 Azure 多重身份验证的 NPS 扩展出现的错误消息](howto-mfa-nps-extension-errors.md)
+[解决 Azure AD 多重身份验证的 NPS 扩展的错误消息](howto-mfa-nps-extension-errors.md)

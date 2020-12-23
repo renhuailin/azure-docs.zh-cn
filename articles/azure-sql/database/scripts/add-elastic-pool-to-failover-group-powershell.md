@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 07/16/2019
-ms.openlocfilehash: 95d6066cd13876400ffff934b0b0f3ccdcde1c59
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8326249b48e98eccecb5f0c4953add26e167560
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321495"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594095"
 ---
 # <a name="use-powershell-to-add-an-elastic-pool-to-a-failover-group"></a>使用 PowerShell 将弹性池添加到故障转移组
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

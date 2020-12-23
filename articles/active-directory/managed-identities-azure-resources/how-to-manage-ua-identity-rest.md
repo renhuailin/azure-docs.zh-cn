@@ -12,19 +12,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/26/2018
+ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37fad118fe314b1392c31906a3f0a0989e39d876
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 117f9a1c173f2083dd4621f4f3f41b6e83d1d46b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969402"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546686"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 调用创建、列出或删除用户分配托管标识
-
-[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Azure 资源托管标识使 Azure 服务能够向支持 Azure AD 身份验证的服务进行身份验证，而无需在代码中输入凭据。 
 
@@ -34,9 +32,9 @@ Azure 资源托管标识使 Azure 服务能够向支持 Azure AD 身份验证的
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 你可以在云中或在本地运行本文中的所有命令：
+- 可在云中或在本地运行本文中的所有命令：
     - 若要在云中运行，请使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。
-    - 若要在本地运行，请安装 [卷](https://curl.haxx.se/download.html) 和 [Azure CLI](/cli/azure/install-azure-cli)。
+    - 若要在本地运行，请安装 [curl](https://curl.haxx.se/download.html) 和 [Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="obtain-a-bearer-access-token"></a>获取持有者访问令牌
 
@@ -46,7 +44,7 @@ Azure 资源托管标识使 Azure 服务能够向支持 Azure AD 身份验证的
     az login
     ```
 
-1. 使用[az 帐户 get 访问令牌](/cli/azure/account#az_account_get_access_token)获取访问令牌
+1. 使用 [az account get-access-token](/cli/azure/account#az_account_get_access_token) 获取访问令牌
 
     ```azurecli-interactive
     az account get-access-token

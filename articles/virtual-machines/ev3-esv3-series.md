@@ -1,18 +1,18 @@
 ---
 title: Ev3 系列和 Esv3 系列
 description: Ev3 和 Esv3 系列 VM 的规范。
-author: joelpelley
+author: DavidCBerry13
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.author: lahugh
-ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.author: daberry
+ms.openlocfilehash: 07564955e9cfa6931e461df00ef50a237a66b9b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649569"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500676"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -24,14 +24,14 @@ Ev3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 
 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 ESv3 大小。 ESv3 系列大小的定价和计费标准与 Ev3 系列相同。
 
-Ev3 系列 VM 的 Intel®超线程技术功能。
+Ev3 系列 VM 的 Intel® Hyper-Threading 技术。
 
-[ACU](acu.md)： 160-190<br>
+[ACU](acu.md)：160 - 190<br>
 [高级存储](premium-storage-performance.md)：不支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大网卡数/网络带宽等级 |
@@ -54,17 +54,17 @@ Ev3 系列 VM 的 Intel®超线程技术功能。
 
 Esv3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器上运行，配置了 Intel Turbo Boost Technology 2.0，并使用高级存储。 Esv3 系列实例最适用于内存密集型企业应用程序。
 
-Esv3 系列 VM 的 Intel®超线程技术功能。
+Esv3 系列 VM 的 Intel® Hyper-Threading 技术。
 
 [ACU](acu.md)：160-190<br>
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 <br>
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 缓存突发缓存和临时存储吞吐量： IOPS/MBps<sup>3</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps |  突发未缓存磁盘吞吐量： IOPS/MBps<sup>3</sup>| 最大 NIC 数/预期网络带宽 (Mbps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 突发缓存吞吐量和临时存储吞吐量：IOPS/MBps<sup>3</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps |  突发非缓存磁盘吞吐量：IOPS/MBps<sup>3</sup>| 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_E2s_v3                | 2  | 16  | 32  | 4  | 4000/32 (50)       | 4000/100    | 3200/48    | 4000/100 | 2/1000 |
 | Standard_E4s_v3 <sup>1</sup>   | 4  | 32  | 64  | 8  | 8000/64 (100)      | 8000/200    | 6400/96    | 8000/200 | 2/2000 |
@@ -80,7 +80,7 @@ Esv3 系列 VM 的 Intel®超线程技术功能。
 
 <sup>2</sup> 实例对于专用于单个客户的硬件独立。
 
-<sup>3</sup> Esv3 系列 vm 可能会将其磁盘性能 [爆发](linux/disk-bursting.md) 到最大值，最多可达30分钟。
+<sup>3</sup> Esv3 系列 VM 可通过[突发](./disk-bursting.md)方式提高其磁盘性能，并达到其突发的最大值，一次长达 30 分钟。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -93,7 +93,7 @@ Esv3 系列 VM 的 Intel®超线程技术功能。
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 - [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-- 有关磁盘类型的详细信息，请参阅 [Azure 中的可用磁盘类型](disks-types.md)
+- 有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
 
 ## <a name="next-steps"></a>后续步骤
 

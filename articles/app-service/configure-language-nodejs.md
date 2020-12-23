@@ -1,17 +1,17 @@
 ---
 title: 配置 Node.js 应用
 description: 了解如何在原生 Windows 实例、预构建的 Linux 容器或 Azure 应用服务中配置 Node.js 应用。 本文介绍最常见的配置任务。
-ms.custom: devx-track-js
+ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311829"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696007"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务配置 Node.js 应用
 
@@ -85,6 +85,36 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ::: zone-end
 
+## <a name="get-port-number"></a>获取端口号
+
+Node.js 应用需要侦听正确的端口才能接收传入的请求。
+
+::: zone pivot="platform-windows"  
+
+在 Windows 上的应用服务中，Node.js 应用程序是 [IISNode](https://github.com/Azure/iisnode)托管的，你的 Node.js 应用程序应侦听变量中指定的端口 `process.env.PORT` 。 下面的示例演示如何在简单的快速应用程序中执行此操作：
+
+::: zone-end
+
+::: zone pivot="platform-linux"  
+
+应用服务 `PORT` 在 Node.js 容器中设置环境变量，并将传入请求转发到容器的该端口号。 若要接收请求，应用应使用侦听该端口 `process.env.PORT` 。 下面的示例演示如何在简单的快速应用程序中执行此操作：
+
+::: zone-end
+
+```javascript
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+```
+
 ::: zone pivot="platform-linux"
 
 ## <a name="customize-build-automation"></a>自定义生成自动化
@@ -123,7 +153,7 @@ Node.js 容器附带了 [PM2](https://pm2.keymetrics.io/)（一个生产流程�
 
 ### <a name="run-custom-command"></a>运行自定义命令
 
-应用服务可以使用自定义命令（如 *run.sh*等可执行文件）启动应用。例如，若要运行 `npm run start:prod` ，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+应用服务可以使用自定义命令（如 *run.sh* 等可执行文件）启动应用。例如，若要运行 `npm run start:prod` ，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -237,7 +267,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-该节在末尾处运行 `npm install --production`。 在 `Deployment` 节的末尾添加运行必需工具所需的代码节
+该节在末尾处运行 `npm install --production`。 在 `Deployment` 节的末尾添加运行必需工具所需的代码节：
 
 - [Bower](#bower)
 - [Gulp](#gulp)

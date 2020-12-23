@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
@@ -14,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7914f924492264810acd929cc7d422e0cc780a89
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332910"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358786"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>如何使用 Azure 门户为 Windows 虚拟机预配 SQL Server
 
@@ -43,7 +44,7 @@ ms.locfileid: "91332910"
    还可以选择 " **AZURE SQL** " 旁边的星号将其保存为收藏项，并在左侧导航栏中将其添加为项目。 
 
 1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 可以通过选择“显示详细信息”来查看其他信息。 
-1. 在 " **SQL 虚拟机**" 磁贴上的 SQL Server 图像搜索框中键入*2017* ，然后从下拉框中选择 "**免费 SQL Server 许可证： Windows Server 2016 上的 SQL Server 2017 开发人员**"。 
+1. 在 " **SQL 虚拟机**" 磁贴上的 SQL Server 图像搜索框中键入 *2017* ，然后从下拉框中选择 "**免费 SQL Server 许可证： Windows Server 2016 上的 SQL Server 2017 开发人员**"。 
 
    ![选择 SQL VM 映像](./media/create-sql-vm-portal/select-sql-vm-image-portal.png)
 
@@ -76,14 +77,14 @@ ms.locfileid: "91332910"
 
     1. 输入唯一的虚拟机名称。  
     1. 为“区域”选择一个位置。 
-    1. 为了达到本指南的目的，请将“可用性选项”保留设置为“无需基础结构冗余”。 有关可用性选项的详细信息，请参阅[可用性](../../../virtual-machines/windows/availability.md)。 
+    1. 为了达到本指南的目的，请将“可用性选项”保留设置为“无需基础结构冗余”。 有关可用性选项的详细信息，请参阅[可用性](../../../virtual-machines/availability.md)。 
     1. 在“映像”列表中，选择“免费 SQL Server 许可证:Windows Server 2016 上的 SQL Server 2017 Developer”的映像。  
-    1. 对于虚拟机**大小**，请选择“更改大小”，然后选择“A2 基本”产品/服务。  用完资源后，请务必清理资源，以免产生任何意外的费用。 对于生产工作负荷，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](performance-guidelines-best-practices.md)中建议的计算机大小和配置。
+    1. 对于虚拟机 **大小**，请选择“更改大小”，然后选择“A2 基本”产品/服务。  用完资源后，请务必清理资源，以免产生任何意外的费用。 对于生产工作负荷，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](performance-guidelines-best-practices.md)中建议的计算机大小和配置。
 
     ![实例详细信息](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
-> 在“选择大小”窗口中显示的每月估计成本不包括 SQL Server 许可成本。 此预估费用只是 VM 的成本。 对于 SQL Server 的 Express 和开发人员版本，这是估计的总成本。 对于其他版本，请参阅[“Windows 虚拟机定价”页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)并选择 SQL Server 的目标版本。 另请参阅 [SQL Server Azure VM 的定价指南](pricing-guidance.md)和[虚拟机的大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> 在“选择大小”窗口中显示的每月估计成本不包括 SQL Server 许可成本。 此预估费用只是 VM 的成本。 对于 SQL Server 的 Express 和开发人员版本，这是估计的总成本。 对于其他版本，请参阅[“Windows 虚拟机定价”页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)并选择 SQL Server 的目标版本。 另请参阅 [SQL Server Azure VM 的定价指南](pricing-guidance.md)和[虚拟机的大小](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 * 在 " **管理员帐户**" 下提供用户名和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 
@@ -104,7 +105,7 @@ ms.locfileid: "91332910"
 * 在“高级”的“使用托管磁盘”下，选择“是”  。
 
    > [!NOTE]
-   > Microsoft 建议为 SQL Server 使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关详细信息，请参阅 [Azure 托管磁盘概述](../../../virtual-machines/managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../../../virtual-machines/windows/manage-availability.md)。
+   > Microsoft 建议为 SQL Server 使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关详细信息，请参阅 [Azure 托管磁盘概述](../../../virtual-machines/managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../../../virtual-machines/manage-availability.md)。
 
 ![SQL VM 磁盘设置](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
@@ -164,14 +165,14 @@ ms.locfileid: "91332910"
 
 ### <a name="authentication"></a>身份验证
 
-如果需要 SQL Server 身份验证，请在 " **SQL Server 设置**" 选项卡上选择 " **SQL 身份验证**后**启用**"。
+如果需要 SQL Server 身份验证，请在 " **SQL Server 设置**" 选项卡上选择 " **SQL 身份验证** 后 **启用**"。
 
 ![SQL Server 身份验证](./media/create-sql-vm-portal/azure-sqlvm-authentication.png)
 
 > [!NOTE]
 > 如果你计划通过 internet 访问 SQL Server (公用连接选项) ，则必须在此处启用 SQL 身份验证。 对 SQL Server 的公共访问需要 SQL 身份验证。
 
-如果启用 SQL Server 身份验证，请指定“登录名”和“密码”。  此登录名配置为 SQL Server 身份验证登录名和 **sysadmin** 固定服务器角色的成员。 若要详细了解身份验证模式，请参阅[选择身份验证模式](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)。
+如果启用 SQL Server 身份验证，请指定“登录名”和“密码”。  此登录名配置为 SQL Server 身份验证登录名和 **sysadmin** 固定服务器角色的成员。 若要详细了解身份验证模式，请参阅[选择身份验证模式](/sql/relational-databases/security/choose-an-authentication-mode)。
 
 如果你不想启用 SQL Server 身份验证，则可以使用 VM 上的本地管理员帐户连接到 SQL Server 实例。
 
@@ -183,7 +184,7 @@ ms.locfileid: "91332910"
 
 下表列出了配置 Azure Key Vault (AKV) 集成所需的参数。
 
-| 参数 | DESCRIPTION | 示例 |
+| 参数 | 说明 | 示例 |
 | --- | --- | --- |
 | **密钥保管库 URL** |密钥保管库的位置。 |`https://contosokeyvault.vault.azure.net/` |
 | **主体名称** |Azure Active Directory 服务主体名称。 该名称也称为客户端 ID。 |`fde2b411-33d5-4e11-af04eb07b669ccf2` |
@@ -196,9 +197,9 @@ ms.locfileid: "91332910"
 
 在“SQL Server 设置”选项卡上的“存储配置”下，选择“更改配置”以打开“性能优化存储配置”页并指定存储要求  。
 
-![SQL VM 存储配置](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
+![屏幕截图，其中突出显示了可以更改存储配置的位置。](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
 
-在“ **存储优化目标**”下，选择以下选项之一：
+在“存储优化目标” 下，选择以下选项之一：
 
 * **常规** ：默认设置，支持大多数工作负荷。
 * **事务处理**：针对传统数据库 OLTP 工作负荷优化存储。
@@ -234,7 +235,7 @@ ms.locfileid: "91332910"
 * 备份系统数据库
 * 配置备份计划
 
-若要加密备份，请选择“启用”。 然后指定**密码**。 Azure 创建一个证书来加密备份，并使用指定的密码来保护该证书。 默认情况下将自动设置计划，可以通过选择“手动”来创建手动计划。 
+若要加密备份，请选择“启用”。 然后指定 **密码**。 Azure 创建一个证书来加密备份，并使用指定的密码来保护该证书。 默认情况下将自动设置计划，可以通过选择“手动”来创建手动计划。 
 
 ![SQL VM 自动备份](./media/create-sql-vm-portal/automated-backup.png)
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440011"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309548"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 SQL Server 数据库移到 SQL 数据库
 
@@ -43,17 +43,17 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 * 从 Azure Blob 存储帐户将数据复制到 Azure SQL 数据库。
 
 > [!NOTE]
-> 此处所示的步骤已从 ADF 团队提供的更详细教程中进行了修改： [将数据从 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) ，将在适当的时候提供该主题的相关部分。
+> 此处所示的步骤改编自 ADF 团队提供的更详细教程：[将数据从 SQL Server 数据库复制到 Azure Blob 存储](../../data-factory/tutorial-hybrid-copy-portal.md) 适时提供对该主题相关部分的引用。
 >
 >
 
 ## <a name="prerequisites"></a><a name="prereqs"></a>先决条件
 本教程假设你拥有：
 
-* 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
-* 访问 **Azure SQL 数据库**。 如果必须设置 Azure SQL 数据库，可在主题 [Microsoft Azure SQL 数据库入门](../../sql-database/sql-database-get-started.md)中找到相关信息，了解如何预配 Azure SQL 数据库的新实例。
-* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
+* 一个 **Azure 订阅** 。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 **Azure 存储帐户** 。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
+* 访问 **Azure SQL 数据库** 。 如果必须设置 Azure SQL 数据库，可在主题 [Microsoft Azure SQL 数据库入门](../../azure-sql/database/single-database-create-quickstart.md)中找到相关信息，了解如何预配 Azure SQL 数据库的新实例。
+* 已在本地安装和配置 **Azure PowerShell** 。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 > [!NOTE]
 > 此过程将使用 [Azure 门户](https://portal.azure.com/)。
@@ -66,19 +66,19 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 可将此处提供的流程调整为自己的一组数据，或者使用 NYC 出租车数据集遵循所述的步骤进行操作。 若要将 NYC 出租车数据集上传到 SQL Server 数据库，请按照[将数据批量导入 SQL Server 数据库](sql-walkthrough.md#dbload)中概述的过程进行操作。
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>创建 Azure 数据工厂
-[创建 Azure 数据工厂](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)中提供了在 [Azure 门户](https://portal.azure.com/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp*，将创建的资源组命名为 *adfdsprg*。
+[创建 Azure 数据工厂](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)中提供了在 [Azure 门户](https://portal.azure.com/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp* ，将创建的资源组命名为 *adfdsprg* 。
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>安装和配置 Azure 数据工厂集成运行时
 Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的客户托管的数据集成基础结构。 此运行时以前称为“数据管理网关”。
 
-若要进行设置，请[按照有关创建管道的说明进行操作](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+若要进行设置，请[按照有关创建管道的说明进行操作](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)
 
 ## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>创建链接服务以连接到数据资源
 链接服务定义 Azure 数据工厂连接到数据资源所需的信息。 在此方案中，我们有三个需要链接服务的资源：
 
 1. 本地 SQL Server
 2. Azure Blob 存储
-3. Azure SQL 数据库
+3. Azure SQL Database
 
 [创建链接服务](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)中提供了创建链接服务的分步过程。
 
@@ -87,14 +87,14 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 使用以下基于脚本的过程，创建指定数据集的结构、位置和可用性的表。 可使用 JSON 文件定义表。 若要深入了解这些文件的结构，请参阅[数据集](../../data-factory/concepts-datasets-linked-services.md)。
 
 > [!NOTE]
-> 在执行 [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet 之前，应先执行 `Add-AzureAccount` cmdlet，以确认是否为命令执行选择了正确的 Azure 订阅。 有关此 cmdlet 的文档，请参阅 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)。
+> 在执行 [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) cmdlet 之前，应先执行 `Add-AzureAccount` cmdlet，以确认是否为命令执行选择了正确的 Azure 订阅。 有关此 cmdlet 的文档，请参阅 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)。
 >
 >
 
 表中基于 JSON 的定义使用以下名称：
 
 * SQL Server 中的表名为“nyctaxi_data”
-* Azure Blob 存储帐户中的**容器名**为 containername
+* Azure Blob 存储帐户中的 **容器名** 为 containername
 
 此 ADF 管道所需的表定义有 3 个：
 
@@ -138,7 +138,7 @@ SQL Server 的表定义在以下 JSON 文件中指定：
 
 此处不包括列名称。 可以通过在列名称中包含它们来进行选择， (有关详细信息，请参阅 [ADF 文档](../../data-factory/copy-activity-overview.md) 主题。
 
-将表的 JSON 定义复制到名为 onpremtabledef.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\onpremtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 onpremtabledef.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\onpremtabledef.json* ）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp �
 }
 ```
 
-将表的 JSON 定义复制到名为 bloboutputtabledef.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\bloboutputtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 bloboutputtabledef.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\bloboutputtabledef.json* ）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 }
 ```
 
-将表的 JSON 定义复制到名为 AzureSqlTable.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\AzureSqlTable.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 AzureSqlTable.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\AzureSqlTable.json* ）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -294,7 +294,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 }
 ```
 
-将管道的 JSON 定义复制到名为 *pipelinedef.json* 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\pipelinedef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建管道：
+将管道的 JSON 定义复制到名为 *pipelinedef.json* 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\pipelinedef.json* ）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建管道：
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
@@ -312,4 +312,4 @@ Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactor
 
 在管道执行后，应能看到数据显示在为 blob 选择的容器中，每天一个文件。
 
-我们尚未将 ADF 提供的功能增量用于管道数据。 若要深入了解如何执行此操作以及 ADF 提供的其他功能，请参阅 [ADF 文档](https://azure.microsoft.com/services/data-factory/)。
+我们并未使用 ADF 提供的功能以增量方式对数据进行管道传输。 若要深入了解如何执行此操作以及 ADF 提供的其他功能，请参阅 [ADF 文档](https://azure.microsoft.com/services/data-factory/)。

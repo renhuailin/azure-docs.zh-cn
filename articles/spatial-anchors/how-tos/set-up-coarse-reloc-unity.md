@@ -1,20 +1,20 @@
 ---
 title: Unity 中的粗略重新局部化
 description: 深入解释了如何使用 C# 中的粗略重新局部化来创建和查找定位点。
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42a237caf03d4d3fb6dd9aa70668cbb84ff40072
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 29ff255887dcd5f86f0b5fd72374df920a2618ee
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008618"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96017995"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-c"></a>如何使用 C# 中的粗略重新局部化来创建和查找定位点
 

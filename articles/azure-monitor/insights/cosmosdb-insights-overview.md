@@ -1,17 +1,16 @@
 ---
 title: 使用适用于 Cosmos DB 的 Azure Monitor 监视 Azure Cosmos DB | Microsoft Docs
 description: 本文介绍了适用于 Cosmos DB 的 Azure Monitor 功能。使用此功能，Cosmos DB 所有者能够快速了解其 CosmosDB 帐户的性能和利用率问题。
-ms.subservice: ''
-ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
+ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498910"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608487"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -23,9 +22,9 @@ ms.locfileid: "86498910"
 
 它提供以下功能：
 
-* 在单一位置为你的所有订阅中的 Azure Cosmos DB 资源提供**规模化视角**，并且能够有选择地将评估范围限定于你感兴趣的那些订阅和资源。
+* 在单一位置为你的所有订阅中的 Azure Cosmos DB 资源提供 **规模化视角**，并且能够有选择地将评估范围限定于你感兴趣的那些订阅和资源。
 
-* 对特定的 Azure CosmosDB 资源进行**深化分析**，以便诊断问题或按类别（利用率、故障、容量和操作）进行详细分析。 选择这些选项中的任何一个即可深入了解相关的 Azure Cosmos DB 指标。  
+* 对特定的 Azure CosmosDB 资源进行 **深化分析**，以便诊断问题或按类别（利用率、故障、容量和操作）进行详细分析。 选择这些选项中的任何一个即可深入了解相关的 Azure Cosmos DB 指标。  
 
 * **可自定义** - 此体验是基于 Azure Monitor 工作簿模板构建的，允许你更改要显示的指标，修改或设置与你的限制相符的阈值，然后将其保存到自定义工作簿中。 然后，可以将工作簿中的图表固定到 Azure 仪表板。  
 
@@ -72,7 +71,7 @@ ms.locfileid: "86498910"
 
 ![按 HTTP 请求类型细分的故障的屏幕截图](./media/cosmosdb-insights-overview/failures.png)
 
-| 代码      |  说明       | 
+| 代码 |  说明       | 
 |-----------|:--------------------|
 | `200 OK`  | 下列 REST 操作之一成功： </br>- 对资源执行 GET。 </br> - 对资源执行 PUT。 </br> - 对资源执行 POST。 </br> - 对某个存储过程资源执行 POST 以执行该存储过程。|
 | `201 Created` | 用于创建资源的 POST 操作成功。 |
@@ -120,9 +119,9 @@ ms.locfileid: "86498910"
 
 ![从命令栏启动工作簿库](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
-有关故障排除指南，请参阅专用的基于工作簿的 insights[故障排除一文](troubleshoot-workbooks.md)。
+如需故障排查指南，请参阅[故障排除文章](troubleshoot-workbooks.md)中提供的基于工作簿的专用见解。
 
 ## <a name="next-steps"></a>后续步骤
 

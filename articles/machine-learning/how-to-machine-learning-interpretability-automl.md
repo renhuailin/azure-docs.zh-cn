@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, automl
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: cf1eb1c72cc93fcb72862b15f3884969915c24dd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408009"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360643"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretability：自动机器学习 (预览版中的模型说明) 
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解释性：自动化机器学习（预览版）中的模型说明
 
 
 
@@ -41,12 +41,12 @@ ms.locfileid: "91408009"
 从 `best_run` 中检索解释，其中包括工程特征的解释。
 
 > [!Warning]
-> Interpretability，最佳模型解释不能用于将以下算法作为最佳模型的自动 ML 预测试验： 
+> 可解释性（最佳模型解释）不适用于将以下算法推荐为最佳模型的自动化 ML 预测试验： 
 > * ForecastTCN
 > * 平均值 
 > * Naive
-> * 季节性平均值 
-> * 季节性 Naive
+> * Seasonal Average 
+> * Seasonal Naive
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>从项目存储下载工程特征重要性
 

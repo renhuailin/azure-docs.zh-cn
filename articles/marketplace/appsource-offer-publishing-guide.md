@@ -4,21 +4,21 @@ description: 用于发布应用程序的分步指南和发布清单，用于 Mic
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 68b11c672d362e7af7dfc01e2679d035d9e1e4c9
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484810"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491148"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>为 Microsoft 365、Dynamics 365、Power Apps 和 Power BI 提供发布指南
 
 Microsoft AppSource 包括 Microsoft 365、Dynamics 365、Power Apps 和 Power BI 上构建或扩展的产品/服务。 其中每个产品都有特定的文档，可指导你在发布过程中进行操作。 
 
-AppSource 提供付费、列出和试用版产品/服务，其中列出了 *立即获取*的选项，请 *与我们联系*，然后 *立即试用*。
+AppSource 提供付费、列出和试用版产品/服务，其中列出了 *立即获取* 的选项，请 *与我们联系* ，然后 *立即试用* 。
 
 ## <a name="product-specific-guides"></a>特定于产品的指南
 

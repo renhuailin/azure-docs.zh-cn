@@ -7,12 +7,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 392ecff2ab120e713a07d130493a4a8339dae5ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 67f1f2fe3f6ac1061f1edcd22532bffaf0a1e815
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296189"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366864"
 ---
 # <a name="options"></a>选项 #
 
@@ -102,7 +102,7 @@ Width 属性设置视频的显示宽度。
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-该设置的其他属性 `playbackSpeed` 由 [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) 对象提供。
+该设置的其他属性 `playbackSpeed` 由 [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/playbackspeedoptions) 对象提供。
 
 在 JavaScript 中设置播放速度选项的示例：
 

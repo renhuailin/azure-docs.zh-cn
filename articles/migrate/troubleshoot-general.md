@@ -1,18 +1,18 @@
 ---
 title: 排查 Azure Migrate 问题 | Microsoft 文档
 description: 概述 Azure Migrate 服务中的已知问题，以及常见错误的疑难解答提示。
-author: musa-57
+author: ms-psharma
+ms.author: panshar
 ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: hamusa
-ms.openlocfilehash: 433f3cc29e334a9034fa073d4ace735fc7e7e3ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00802f53f973ad9b5a80b265006943121a0fa763
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75725866"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753393"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "75725866"
 
 ## <a name="machines-arent-discovered"></a>未发现计算机
 
-查看常见发现问题。
+查看 [常见发现问题](common-questions-discovery-assessment.md)。
 
 ## <a name="app-discovery-isnt-working"></a>应用程序发现不起作用
 

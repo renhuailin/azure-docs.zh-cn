@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f3029acd791e7c45eb5943d298189430ac308e99
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8f0274aa15d965a4e06a096c21c0fd282ec1d12a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528448"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522603"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Mimecast Admin Console 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88528448"
 * 让用户使用其 Azure AD 帐户自动登录到 Mimecast Admin Console。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88528448"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Mimecast Admin Console 支持 SP 和 IDP 发起的 SSO
-* 配置 Mimecast Admin Console 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Mimecast Admin Console 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>从库中添加 Mimecast Admin Console
 
@@ -113,7 +113,7 @@ ms.locfileid: "88528448"
     | 澳大利亚       | `https://login-au.mimecast.com/administration/app/#/administration-dashboard`|
     | 海外        | `https://login-jer.mimecast.com/administration/app/#/administration-dashboard`|
 
-1. 单击“ **保存**”。
+1. 单击“ **保存** ”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
@@ -155,23 +155,23 @@ ms.locfileid: "88528448"
 
 1. 导航到“管理” > “服务” > “应用程序”。
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/services.png)
+    ![屏幕截图显示选择了“应用程序”的“Mimecast”窗口。](./media/mimecast-admin-console-tutorial/services.png)
 
 1. 单击“身份验证配置文件”选项卡。
     
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
+    ![屏幕截图显示选择了“身份验证配置文件”的“应用程序”选项卡。](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
 
 1. 单击“新建身份验证配置文件”选项卡。
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
+    ![屏幕截图显示选择了“新建身份验证配置文件”。](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
 
 1. 在“说明”文本框中提供有效说明，并选中“为管理控制台强制执行 SAML 身份验证”复选框。
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
+    ![屏幕截图显示了“为管理控制台强制执行 SAML 身份验证”的位置。](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
 
 1. 在“管理控制台的 SAML 配置”页面上，执行以下步骤：
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/sso-settings.png)
+    ![屏幕截图显示了“管理控制台的 SAML 配置”页面，你可以在其中输入所述值。](./media/mimecast-admin-console-tutorial/sso-settings.png)
 
     a. 对于“提供程序”，从下拉菜单中选择“Azure Active Directory” 。
 
@@ -181,7 +181,7 @@ ms.locfileid: "88528448"
 
     d. 确保取消选中“使用受密码保护上下文”和“使用集成身份验证上下文”复选框。
 
-    e. 单击“ **保存**”。
+    e. 单击“ **保存** ”。
 
 ### <a name="create-mimecast-admin-console-test-user"></a>创建 Mimecast Admin Console 测试用户
 
@@ -189,19 +189,19 @@ ms.locfileid: "88528448"
 
 1. 导航到“管理” > “目录” > “内部目录”。
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/internal-directories.png)
+    ![屏幕截图显示选择了“内部目录”的“Mimecast”窗口。](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
 1. 如果下面提及你的域，请选择该域，否则请通过单击“新域”来创建新域。
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/domain-name.png)
+    ![屏幕截图显示选择了域。](./media/mimecast-admin-console-tutorial/domain-name.png)
 
 1. 单击“新地址”选项卡。
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/new-address.png)
+    ![屏幕截图显示选择了“新建地址”。](./media/mimecast-admin-console-tutorial/new-address.png)
 
 1. 在以下页面提供所需用户信息：
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/user-information.png)
+    ![屏幕截图显示了可以在其中输入所述值的页。](./media/mimecast-admin-console-tutorial/user-information.png)
 
     a. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 `B.Simon@yourdomainname.com`。
 
@@ -211,28 +211,28 @@ ms.locfileid: "88528448"
 
     d. 选中“登录时强制更改”复选框。
 
-    e. 单击“ **保存**”。
+    e. 单击“ **保存** ”。
 
     f. 若要将角色分配给用户，请单击“角色编辑”，并根据组织要求向用户分配所需角色。
 
-    ![Mimecast Admin Console 配置](./media/mimecast-admin-console-tutorial/assign-role.png)
+    ![屏幕截图显示了“地址设置”，你可以在其中选择“角色编辑”。](./media/mimecast-admin-console-tutorial/assign-role.png)
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Mimecast Admin Console 磁贴时，应当会自动登录到已为其设置了 SSO 的 Mimecast Admin Console。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Mimecast Admin Console 磁贴时，应当会自动登录到已为其设置了 SSO 的 Mimecast Admin Console。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [ Azure AD 中试用 Mimecast Admin Console](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Mimecast Admin Console](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Mimecast Admin Console](/cloud-app-security/proxy-intro-aad)

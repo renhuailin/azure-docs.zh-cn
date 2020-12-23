@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441708"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445381"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>什么是 Azure SQL 数据库和 Azure Synapse Analytics 中的逻辑 SQL server？
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "89441708"
 
 此服务器不同于在本地环境中你可能熟悉的 SQL Server 实例。 要说明的一点是，无法确保数据库或数据仓库数据库相对于管理它们的服务器的确切位置。 此外，Azure SQL 数据库和 Azure Synapse 都不会公开任何实例级访问权限或功能。 与此相反，托管实例中实例数据库的物理归置方式与你熟悉的本地或虚拟机环境中的 SQL Server 归置方式相同。
 
-创建服务器时，你将提供一个对该服务器上的 master 数据库以及在该服务器上创建的所有数据库具有管理权限的服务器登录帐户和密码。 这一初始帐户就是 SQL 登录帐户。 Azure SQL 数据库和 Synapse Analytics 支持 SQL 身份验证和使用 Azure Active Directory 身份验证进行身份验证。 若要详细了解登录名和身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](logins-create-manage.md)。 不支持 Windows 身份验证。
+创建服务器时，你将提供一个对该服务器上的 master 数据库以及在该服务器上创建的所有数据库具有管理权限的服务器登录帐户和密码。 这一初始帐户就是 SQL 登录帐户。 Azure SQL Database 和 Azure Synapse Analytics 支持 SQL 身份验证，并 Azure Active Directory 身份验证进行身份验证。 若要详细了解登录名和身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](logins-create-manage.md)。 不支持 Windows 身份验证。
 
 SQL 数据库和 Azure Synapse 中的服务器：
 
@@ -34,7 +34,7 @@ SQL 数据库和 Azure Synapse 中的服务器：
 - 是数据库、弹性池和数据仓库的父资源
 - 为数据库、弹性池和数据仓库数据库提供命名空间
 - 是具有强生存期语义的逻辑容器 - 删除服务器并删除其数据库、弹性池和 SQK 池
-- 参与 [Azure 基于角色的访问控制 (Azure RBAC)](/azure/role-based-access-control/overview) - 服务器中的数据库、弹性池和数据仓库数据库从服务器继承访问权限
+- 参与 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) - 服务器中的数据库、弹性池和数据仓库数据库从服务器继承访问权限
 - 是数据库、弹性池和数据仓库数据库的标识的高阶元素，用于 Azure 资源管理目的（请参阅数据库和池的 URL 方案）
 - 在区域中并置资源
 - 为数据库访问提供连接终结点 (`<serverName>`.database.windows.net)
@@ -83,7 +83,7 @@ SQL 数据库和 Azure Synapse 中的服务器：
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> 仍然支持 PowerShell Azure 资源管理器模块，但所有后续开发都针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> 仍然支持 PowerShell Azure 资源管理器模块，但所有后续开发都针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 若要使用 Azure PowerShell 创建和管理服务器、数据库和防火墙，请使用以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要创建并管理弹性池，请参阅[弹性池](elastic-pool-overview.md)。
 
@@ -96,13 +96,13 @@ SQL 数据库和 Azure Synapse 中的服务器：
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|创建资源组|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|创建服务器|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|返回服务器的相关信息|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|修改服务器的属性|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|修改服务器的属性|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|删除服务器|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|创建服务器级防火墙规则 |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|获取服务器的防火墙规则|
 |[Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule)|修改服务器中的防火墙规则|
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|从服务器中删除防火墙规则。|
-| New-AzSqlServerVirtualNetworkRule | 基于作为虚拟网络服务终结点的子网创建[*虚拟网络规则*](vnet-service-endpoint-rule-overview.md)。 |
+| New-AzSqlServerVirtualNetworkRule | 基于作为虚拟网络服务终结点的子网创建 [*虚拟网络规则*](vnet-service-endpoint-rule-overview.md)。 |
 
 > [!TIP]
 > 有关 PowerShell 快速入门，请参阅[使用 PowerShell 在 Azure SQL 数据库中创建数据库](single-database-create-quickstart.md)。 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 在 Azure SQL 数据库中创建数据库和配置防火墙规则](scripts/create-and-configure-database-powershell.md)和[使用 PowerShell 在 Azure SQL 数据库中监视和缩放数据库](scripts/monitor-and-scale-database-powershell.md)。
@@ -110,7 +110,7 @@ SQL 数据库和 Azure Synapse 中的服务器：
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>使用 Azure CLI 管理服务器、数据库和防火墙
 
-若要使用 [Azure CLI](/cli/azure) 创建和管理服务器、数据库和防火墙，请使用以下 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](elastic-pool-overview.md)。
+若要使用 [Azure CLI](/cli/azure) 创建和管理服务器、数据库和防火墙，请使用以下 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](../../cloud-shell/overview.md) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](elastic-pool-overview.md)。
 
 | Cmdlet | 说明 |
 | --- | --- |
@@ -150,7 +150,7 @@ SQL 数据库和 Azure Synapse 中的服务器：
 |[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | 在 Azure SQL 数据库中新建数据库。 必须连接到 master 数据库才能新建数据库。|
 |[CREATE DATABASE (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | 在 Azure Synapse 中新建数据仓库数据库。 必须连接到 master 数据库才能新建数据库。|
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |修改数据库或弹性池。 |
-|[ (Azure Synapse Analytics 更改数据库) ](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|在 Azure Synapse 中修改数据仓库数据库。|
+|[ALTER DATABASE (Azure Synapse Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|在 Azure Synapse 中修改数据仓库数据库。|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|删除数据库。|
 |[sys.database_service_objectives（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回数据库的版本（服务层）、服务目标（定价层）和弹性池名称（如果有）。 如果登录到服务器的 master 数据库，将返回有关所有数据库的信息。 对于 Azure Synapse，需要连接到 master 数据库。|
 |[sys.dm_db_resource_stats（Azure SQL 数据库）](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 返回 Azure SQL 数据库中数据库的 CPU、IO 和内存消耗。 即使数据库中没有活动，也会每隔 15 秒返回一行数据。|
@@ -173,22 +173,22 @@ SQL 数据库和 Azure Synapse 中的服务器：
 
 | 命令 | 说明 |
 | --- | --- |
-|[服务器 - 创建或更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
-|[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|删除服务器。|
-|[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/get)|获取服务器。|
-|[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/list)|返回服务器列表。|
-|[服务器 - 按资源组列出](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
-|[Servers - Update](https://docs.microsoft.com/rest/api/sql/servers/update)|更新现有服务器。|
-|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
-|[数据库 - 删除](https://docs.microsoft.com/rest/api/sql/databases/delete)|删除数据库。|
-|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/get)|获取数据库。|
-|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新现有的数据库。|
-|[防火墙规则 - 创建或更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
-|[防火墙规则 - 删除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
-|[防火墙规则 - 获取](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|获取防火墙规则。|
-|[防火墙规则 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
+|[服务器 - 创建或更新](/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
+|[Servers - Delete](/rest/api/sql/servers/delete)|删除服务器。|
+|[Servers - Get](/rest/api/sql/servers/get)|获取服务器。|
+|[Servers - List](/rest/api/sql/servers/list)|返回服务器列表。|
+|[服务器 - 按资源组列出](/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
+|[Servers - Update](/rest/api/sql/servers/update)|更新现有服务器。|
+|[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
+|[数据库 - 删除](/rest/api/sql/databases/delete)|删除数据库。|
+|[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
+|[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
+|[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
+|[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
+|[防火墙规则 - 创建或更新](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
+|[防火墙规则 - 删除](/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
+|[防火墙规则 - 获取](/rest/api/sql/firewallrules/get)|获取防火墙规则。|
+|[防火墙规则 - 按服务器列出](/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
 
 ## <a name="next-steps"></a>后续步骤
 

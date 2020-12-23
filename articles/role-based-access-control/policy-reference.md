@@ -1,18 +1,18 @@
 ---
 title: Azure RBAC 的内置策略定义
 description: 列出 Azure RBAC 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 6d8cfec34790a886cb433c01c3bd0cf11ec9d284
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c07a20bbf79ca5b4558bd0c79618120bf938ea33
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822414"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991090"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>Azure RBAC 的 Azure Policy 内置定义
 

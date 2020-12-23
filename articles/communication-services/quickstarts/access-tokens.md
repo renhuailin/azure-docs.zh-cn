@@ -2,28 +2,28 @@
 title: 快速入门 - 创建和管理访问令牌
 titleSuffix: An Azure Communication Services quickstart
 description: 了解如何使用 Azure 通信服务管理客户端库管理标识和访问令牌。
-author: matthewrobertson
-manager: jken
+author: tomaschladek
+manager: nmurav
 services: azure-communication-services
-ms.author: marobert
+ms.author: tchladek
 ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: a76000ecacdf78196ec1b80a60940484f6421641
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 246b8041e7e12ea1a1391cb4690d02892bc31b63
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943488"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325279"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>快速入门：创建和管理访问令牌
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-通过使用通信服务管理客户端库预配和管理访问令牌，开启 Azure 通信服务使用旅程。 访问令牌使聊天和呼叫客户端库能直接对 Azure 通信服务进行身份验证。 这些令牌是在你实现的服务器端令牌预配服务上生成的。 然后，它们用于在客户端设备上初始化通信服务客户端库。
+通过使用通信服务管理客户端库，开始使用 Azure 通信服务。 使用该服务可以创建标识并管理访问令牌。 标识表示 Azure 通信服务（例如，用户或设备）中的应用程序的实体。 访问令牌使聊天和呼叫客户端库能直接对 Azure 通信服务进行身份验证。 建议在服务器端服务上生成访问令牌。 然后，访问令牌用于在客户端设备上初始化通信服务客户端库。
 
-请注意，本教程中的图像中显示的任何价格仅用于示例用途。
+本教程图像中显示的任何价格仅用于演示用途。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [.NET](./includes/user-access-token-net.md)]
@@ -46,15 +46,14 @@ ms.locfileid: "90943488"
 ```console
 Azure Communication Services - Access Tokens Quickstart
 
-Issued a access token with 'voip' scope for identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050:
+Created an identity: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
+
+Issued an access token with 'voip' scope that expires at Fri Nov 27 2020 16:47:05 GMT-0800 (Pacific Standard Time):
 <token signature here>
 
-Issued a access token with 'chat' scope for identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050:
-<token signature here>
+Successfully revoked all access tokens for identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
 
-Successfully deleted the identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050
-
-Deleted the identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050
+Deleted the identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
 ```
 <!---cSpell:enable --->
 
@@ -81,3 +80,4 @@ Deleted the identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-
  - [了解身份验证](../concepts/authentication.md)
  - [向应用中添加聊天](./chat/get-started.md)
  - [了解客户端和服务器体系结构](../concepts/client-and-server-architecture.md)
+ 

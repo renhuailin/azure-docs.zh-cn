@@ -1,22 +1,22 @@
 ---
 title: 在组织外共享（ARM 模板）- Azure Data Share 快速入门
-description: 在本快速入门中，了解如何使用 Azure Data Share 和资源管理器模板与客户和合作伙伴共享数据。
+description: 在本快速入门中，了解如何使用 Azure Data Share 和 Azure 资源管理器模板（ARM 模板）与客户和合作伙伴共享数据。
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654100"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487681"
 ---
-# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>快速入门：使用 Azure Data Share 和资源管理器模板共享数据
+# <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>快速入门：使用 Azure Data Share 和 ARM 模板共享数据
 
-了解如何从 Azure 存储帐户使用 Azure 资源管理器模板设置新的 Azure Data Share，然后开始与 Azure 组织外部的客户和合作伙伴共享数据。 有关支持的数据存储的列表，请参阅 [Azure Data Share 中支持的数据存储](./supported-data-stores.md)。
+了解如何使用 Azure 资源管理器模板（ARM 模板）从 Azure 存储帐户设置新的 Azure Data Share。 并且开始与 Azure 组织外部的客户和合作伙伴共享数据。 有关支持的数据存储的列表，请参阅 [Azure Data Share 中支持的数据存储](./supported-data-stores.md)。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,12 +38,12 @@ ms.locfileid: "88654100"
 
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)：
 * [Microsoft.Storage/storageAccounts/blobServices/containers](/azure/templates/microsoft.storage/storageaccounts/blobservices/containers)
+* [Microsoft.DataShare/accounts](/azure/templates/microsoft.datashare/accounts)
+* [Microsoft.DataShare/accounts/shares](/azure/templates/microsoft.datashare/accounts/shares)
 * [Microsoft.Storage/storageAccounts/providers/roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [Microsoft.DataShare/accounts](/rest/api/datashare/accounts/create)
-* [Microsoft.DataShare/accounts/shares](/rest/api/datashare/shares/create)
-* [Microsoft.DataShare/accounts/shares/dataSets](/rest/api/datashare/datasets/create)
-* [Microsoft.DataShare/accounts/shares/invitations](/rest/api/datashare/invitations/create)
-* [Microsoft.DataShare/accounts/shares/synchronizationSettings](/rest/api/datashare/synchronizationsettings/create)
+* [Microsoft.DataShare/accounts/shares/dataSets](/azure/templates/microsoft.datashare/accounts/shares/datasets)
+* [Microsoft.DataShare/accounts/shares/invitations](/azure/templates/microsoft.datashare/accounts/shares/invitations)
+* [Microsoft.DataShare/accounts/shares/synchronizationSettings](/azure/templates/microsoft.datashare/accounts/shares/synchronizationsettings)
 
 本模板执行以下任务：
 
@@ -56,11 +56,11 @@ ms.locfileid: "88654100"
 
 此模板为学习目的而创建。 实际上，通常现有的存储帐户中有一些数据。 你需要在运行模板或脚本创建数据集之前创建角色分配。 有时，在你部署模板时，可能会收到以下错误消息：
 
-```error message
+```plaintext
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-这是因为部署正在尝试在 RBAC 分配完成之前创建数据集。 尽管出现错误消息，但部署仍可能成功。  你仍然可以浏览[查看部署的资源](#review-deployed-resources)。
+这是因为部署正尝试在 Azure 角色分配完成之前创建数据集。 尽管出现错误消息，但部署仍可能成功。 你仍然可以浏览[查看部署的资源](#review-deployed-resources)。
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -71,7 +71,7 @@ ms.locfileid: "88654100"
 
     * 订阅：选择用于创建数据共享和其他资源的 Azure 订阅。
     * 资源组：选择“新建”以创建新的资源组，或选择现有资源组。
-    * **位置**：选择资源组的位置。
+    * **位置** ：选择资源组的位置。
     * 项目名称：输入项目名称。  项目名称用于生成资源名称。  请参阅上一个模板中的变量定义。
     * 位置：选择资源的位置。  可以为资源组使用相同的位置。
     * 邀请电子邮件：输入数据共享收件人的 Azure 登录电子邮件地址。  电子邮件别名不起作用。

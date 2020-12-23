@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 464439516ee86d2fb6f900c3fcaf179095192acf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408362"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498874"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>安全控制：清单和资产管理
 
@@ -28,11 +28,11 @@ ms.locfileid: "81408362"
 
 尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
-- [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Resource Graph 创建查询](../../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](../../role-based-access-control/overview.md)
 
 ## <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -42,7 +42,7 @@ ms.locfileid: "81408362"
 
 将标记应用到 Azure资源，以便有条理地将元数据组织成某种分类。
 
-- [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -52,11 +52,11 @@ ms.locfileid: "81408362"
 
 在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-- [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何创建管理组](../../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已获批 Azure 资源的清单
 
@@ -74,11 +74,11 @@ ms.locfileid: "81408362"
 
 使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Graph 创建查询](../../governance/resource-graph/first-query-portal.md)
 
 ## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
@@ -88,7 +88,7 @@ ms.locfileid: "81408362"
 
 使用 Azure 虚拟机库存自动收集有关虚拟机上所有软件的信息。 可从 Azure 门户获取软件名称、版本、发布者和刷新时间。 若要获取安装日期和其他信息的访问权限，请启用来宾级别诊断，并将 Windows 事件日志引入 Log Analytics 工作区。
 
-- [如何启用 Azure 虚拟机清单](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [如何启用 Azure 虚拟机清单](../../automation/automation-tutorial-installed-software.md)
 
 ## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
@@ -96,13 +96,13 @@ ms.locfileid: "81408362"
 |--|--|--|
 | 6.7 | 2.5 | 客户 |
 
-使用 Azure 安全中心的文件完整性监视（更改跟踪）和虚拟机清单来识别在虚拟机上安装的所有软件。 可以实现自己的未授权软件删除过程。 还可以使用第三方解决方案来识别未获批软件。
+使用 Azure 安全中心的文件完整性监视 (更改跟踪) 和虚拟机清单来识别虚拟机上安装的所有软件。 可以实现自己的未授权软件删除过程。 还可以使用第三方解决方案来识别未获批软件。
 
-- [如何使用文件完整性监视](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
+- [如何使用文件完整性监视](../../security-center/security-center-file-integrity-monitoring.md)
 
-- [了解 Azure 更改跟踪](https://docs.microsoft.com/azure/automation/change-tracking)
+- [了解 Azure 更改跟踪](../../automation/change-tracking/overview.md)
 
-- [如何启用 Azure 虚拟机清单](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [如何启用 Azure 虚拟机库存](../../automation/automation-tutorial-installed-software.md)
 
 ## <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
@@ -112,7 +112,7 @@ ms.locfileid: "81408362"
 
 使用 Azure 安全中心自适应应用程序控制确保仅执行已授权软件，并阻止所有未授权软件在 Azure 虚拟机上执行。
 
-- [如何使用 Azure 安全中心自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [如何使用 Azure 安全中心自适应应用程序控制](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
@@ -122,11 +122,11 @@ ms.locfileid: "81408362"
 
 使用 Azure Policy 限制可在环境中预配的服务。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../../governance/policy/samples/index.md)
 
-## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护批准的软件标题的清单
+## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|
@@ -136,9 +136,9 @@ ms.locfileid: "81408362"
 
 如果该方案不满足要求，则实施第三方解决方案。
 
-- [如何使用 Azure 安全中心自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [如何使用 Azure 安全中心自适应应用程序控制](../../security-center/security-center-adaptive-application.md)
 
-## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器的交互能力
+## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|
@@ -146,7 +146,7 @@ ms.locfileid: "81408362"
 
 使用 Azure 条件性访问，通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，限制用户与 Azure 资源管理器的交互能力。
 
-- [如何配置条件性访问以阻止访问 Azure 资源管理器](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [如何配置条件访问来阻止对 Azure 资源管理器的访问](../../role-based-access-control/conditional-access-azure-management.md)
 
 ## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
@@ -156,9 +156,9 @@ ms.locfileid: "81408362"
 
 根据脚本的类型，可以使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。  还可以利用 Azure 安全中心自适应应用程序控制来确保仅执行已授权软件，并阻止所有未授权软件在 Azure 虚拟机上执行。
 
-- [如何在 Windows 环境中控制 PowerShell 脚本的执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [如何在 Windows 环境中控制 PowerShell 脚本的执行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-- [如何使用 Azure 安全中心自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [如何使用 Azure 安全中心自适应应用程序控制](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
@@ -168,9 +168,9 @@ ms.locfileid: "81408362"
 
 业务运营所需的软件可能会给组织带来更高的风险，应将其隔离在其自己的虚拟机和/或虚拟网络中，并通过 Azure 防火墙或网络安全组进行充分的保护。
 
-- [如何创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [如何创建虚拟网络](../../virtual-network/quick-create-portal.md)
 
-- [如何创建采用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [如何创建采用安全配置的 NSG](../../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-steps"></a>后续步骤

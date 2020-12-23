@@ -7,7 +7,7 @@
     - name: 快速入门
       href: quickstart-translator.md
     - name: 语言支持
-      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
+      href: language-support.md
     - name: 教程
       items:
         - name: 通过 C# 创建一个使用翻译器的 WPF 应用
@@ -23,7 +23,7 @@
     - name: 操作指南
       items:
         - name: 注册到翻译器
-          href: translator-text-how-to-signup.md
+          href: ./translator-how-to-signup.md
         - name: 迁移到 V3 文本 API
           href: migrate-to-v3.md
         - name: 添加不雅内容筛选
@@ -84,6 +84,8 @@
           href: request-limits.md
     - name: 资源
       items:
+        - name: 支持和帮助选项
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: GitHub 上的代码示例
           href: 'https://aka.ms/TranslatorGitHub'
         - name: 常见问题解答
@@ -94,8 +96,6 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 合规性
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: 自定义翻译
   items:
     - name: 概述
@@ -148,6 +148,8 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: 资源
       items:
+        - name: 支持和帮助选项
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: 术语表
           href: custom-translator/glossary.md
         - name: 常见问题解答
@@ -158,5 +160,3 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 加密
           href: translator-encryption-of-data-at-rest.md
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

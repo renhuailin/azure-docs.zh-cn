@@ -8,16 +8,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: juliemsft
-ms.author: jrasnick
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: 61160943fc5762fd492f61a75a44159f2ef9cab2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448781"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493633"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>使用动态管理视图监视 Microsoft Azure SQL 数据库和 Azure SQL 托管实例性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ Microsoft Azure SQL 数据库和 Azure SQL 托管实例部分支持三种类别�
 - 与执行相关的动态管理视图。
 - 与事务相关的动态管理视图。
 
-有关动态管理视图的详细信息，请参阅[动态管理视图和功能 (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。
+有关动态管理视图的详细信息，请参阅[动态管理视图和功能 (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。
 
 ## <a name="permissions"></a>权限
 
@@ -94,7 +94,7 @@ GO
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>过去发生了 CPU 问题
 
-如果问题是在过去发生的，你想要执行根本原因分析，请使用[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。 拥有数据库访问权限的用户可以使用 T-SQL 对查询存储数据执行查询。 查询存储的默认配置使用 1 小时粒度。 使用以下查询来查看 CPU 消耗量较高的查询的活动。 此查询将返回 CPU 消耗量最高的 15 个查询。 请记得更改 `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`：
+如果问题是在过去发生的，你想要执行根本原因分析，请使用[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。 拥有数据库访问权限的用户可以使用 T-SQL 对查询存储数据执行查询。 查询存储的默认配置使用 1 小时粒度。 使用以下查询来查看 CPU 消耗量较高的查询的活动。 此查询将返回 CPU 消耗量最高的 15 个查询。 请记得更改 `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`：
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -131,7 +131,7 @@ ORDER BY total_cpu_millisec DESC;
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>如果目前已经出现了 IO 问题
 
-使用 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 或 [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) 查看 `wait_type` 和 `wait_time`。
+使用 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 或 [sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) 查看 `wait_type` 和 `wait_time`。
 
 #### <a name="identify-data-and-log-io-usage"></a>识别数据和日志 IO 用量
 
@@ -252,7 +252,7 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>识别 `tempdb` 性能问题
 
-识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步确认 `tempdb` 争用，请使用 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 确认 wait_resource 值是否以 `2:x:y` 开头，其中，`tempdb` 是数据库 ID，`x` 是文件 ID，`y` 是页 ID。  
+识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步确认 `tempdb` 争用，请使用 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 确认 wait_resource 值是否以 `2:x:y` 开头，其中，`tempdb` 是数据库 ID，`x` 是文件 ID，`y` 是页 ID。  
 
 对于 tempdb 争用，常用的方法是减少依赖于 `tempdb` 的重写应用程序代码。  常见的 `tempdb` 使用区域包括：
 
@@ -521,17 +521,17 @@ WHERE c.session_id = @@SPID;
 
 ## <a name="monitor-resource-use"></a>监视资源使用情况
 
-可以使用 [SQL 数据库 Query Performance Insight](query-performance-insight-use.md) 监视 Azure SQL 数据库资源使用情况。 对于 Azure SQL 数据库和 Azure SQL 托管实例，可以使用[查询存储](https://msdn.microsoft.com/library/dn817826.aspx)进行监视。
+可以使用 [SQL 数据库 Query Performance Insight](query-performance-insight-use.md) 监视 Azure SQL 数据库资源使用情况。 对于 Azure SQL 数据库和 Azure SQL 托管实例，可以使用[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)进行监视。
 
 也可以使用以下视图来监视使用情况：
 
 - Azure SQL 数据库：[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 - Azure SQL 托管实例：[sys.server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
-- Azure SQL 数据库和 Azure SQL 托管实例：[sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
+- Azure SQL 数据库和 Azure SQL 托管实例：[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 
 ### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
-可以在每个数据库中使用 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 视图。 **Sys.dm_db_resource_stats** 视图显示相对于服务层级的最新资源使用数据。 CPU、数据 IO、日志写入以及内存的平均百分比每 15 秒记录一次，并保留 1 小时。
+可以在每个数据库中使用 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 视图。 **Sys.dm_db_resource_stats** 视图显示相对于服务层级的最新资源使用数据。 CPU、数据 IO、日志写入以及内存的平均百分比每 15 秒记录一次，并保留 1 小时。
 
 由于此视图提供了更精细的资源使用情况，因此首先将 **sys.dm_db_resource_stats** 用于任何当前状态分析或故障排除。 例如，此查询显示过去一小时的当前数据库平均和最大资源使用情况：
 
@@ -548,7 +548,7 @@ SELECT
 FROM sys.dm_db_resource_stats;  
 ```
 
-有关其他查询，请参阅 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 中的示例。
+有关其他查询，请参阅 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 中的示例。
 
 ### <a name="sysserver_resource_stats"></a>sys.server_resource_stats
 
@@ -568,7 +568,7 @@ HAVING AVG(avg_cpu_percent) >= 80
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
-master 数据库中的 [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图包含的信息可帮助监视数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于数据库使用资源的方式的长期历史分析。
+master 数据库中的 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图包含的信息可帮助监视数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于数据库使用资源的方式的长期历史分析。
 
 下图显示一周内每小时的 P2 计算大小高级数据库的 CPU 资源使用情况。 此图从星期一开始显示，先显示 5 个工作日，然后显示周末，应用程序在周末使用的资源要少得多。
 
@@ -743,11 +743,11 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>监视受阻的查询
 
-缓慢或长时间运行的查询会造成过多的资源消耗并会导致查询受阻。 受阻的原因可能是应用程序设计欠佳、查询计划不良、缺乏有用的索引等。 可以使用 sys.dm_tran_locks 视图来获取有关数据库中当前锁定活动的信息。 有关示例代码，请参阅 [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)。
+缓慢或长时间运行的查询会造成过多的资源消耗并会导致查询受阻。 受阻的原因可能是应用程序设计欠佳、查询计划不良、缺乏有用的索引等。 可以使用 sys.dm_tran_locks 视图来获取有关数据库中当前锁定活动的信息。 有关示例代码，请参阅 [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)。
 
 ### <a name="monitoring-query-plans"></a>监视查询计划
 
-低效的查询计划还可能会增加 CPU 占用率。 下面的示例使用 [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) 视图来确定哪一个查询使用最多的 CPU 累计时间。
+低效的查询计划还可能会增加 CPU 占用率。 下面的示例使用 [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql) 视图来确定哪一个查询使用最多的 CPU 累计时间。
 
 ```sql
 SELECT

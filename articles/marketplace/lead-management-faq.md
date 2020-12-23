@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/01/2020
-ms.openlocfilehash: b88c5d7692efa64349f9dbb01b2d4645ec0eb366
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 681498073a5f111e3babd50443623589ffeec02f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91654117"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330914"
 ---
 # <a name="common-questions-and-troubleshooting-for-lead-configuration"></a>潜在客户配置的常见问题和故障排除
 
@@ -34,7 +34,7 @@ ms.locfileid: "91654117"
 
 ```
 {
-    "UserDetails": {
+    "userDetails": {
       "FirstName": "MSFT_TEST_636573304831318844",
       "LastName": "MSFT_TEST_636573304831318844",
       "Email": "MSFT_TEST_636573304831318844@test.com",

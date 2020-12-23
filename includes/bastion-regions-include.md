@@ -9,11 +9,11 @@ ms.date: 09/11/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 74b5014b6590fc501291355ee4d142c52ceff129
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90045143"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183869"
 ---
 >[!NOTE]
 >我们正在努力添加其他区域。 添加区域时，我们会将其添加到此列表中。

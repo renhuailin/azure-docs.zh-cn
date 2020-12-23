@@ -10,20 +10,20 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/17/2020
+ms.date: 11/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: d79fd60f4fe3786cfe3106329904d9d262078411
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: a5cc0fdf0473cb8ceafd164a34df6f0bd66dd6d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013694"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
-提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用*自动*进行来宾 OS 更新，则不一定要阅读本页面。
+提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用 *自动* 进行来宾 OS 更新，则不一定要阅读本页面。
 
 > [!IMPORTANT]
-> 本页面适用于在来宾 OS 顶层运行的云服务 Web 角色和辅助角色， 而**不适用于** IaaS 虚拟机。
+> 本页面适用于在来宾 OS 顶层运行的云服务 Web 角色和辅助角色， 而 **不适用于** IaaS 虚拟机。
 >
 >
 
@@ -42,7 +42,13 @@ ms.locfileid: "90024207"
 
 ## <a name="news-updates"></a>新闻更新
 
-###### <a name="september-5-2020"></a>**2020年9月5日**
+###### <a name="november-17-2020"></a>**2020年11月17日**
+10 月版来宾 OS 已发布。 
+
+###### <a name="october-10-2020"></a>**2020 年 10 月 10 日**
+9 月版来宾 OS 已发布。 
+
+###### <a name="september-5-2020"></a>2020 年 9 月 5 日
 8 月版来宾 OS 已发布。 
 
 ###### <a name="august-17-2020"></a>**2020 年 8 月 17 日**
@@ -140,9 +146,11 @@ ms.locfileid: "90024207"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-6.22 _202008-02  |  2020年9月5日  |  Post 6.24  |  
-|  WA-GUEST-OS-6.21_202007-01  |  2020 年 8 月 17 日  |  6\.23 版发布后  |  
-|~~WA-GUEST-OS-6.20_202006-02~~|  2020 年 8 月 10 日  |  2020年9月5日  |  
+|  WA-GUEST-OS-6.24 _202010-02 |  2020年11月17日  |  Post 6.26  |  
+|  WA-GUEST-OS-6.23_202009-01  |  2020 年 10 月 10 日  |  6\.25 版发布后  |  
+|~~WA-GUEST-OS-6.22_202008-02~~|  2020 年 9 月 5 日  |  2020年11月17日  |  
+|~~WA-GUEST-OS-6.21_202007-01~~|  2020 年 8 月 17 日  |  2020 年 10 月 10 日  |  
+|~~WA-GUEST-OS-6.20_202006-02~~|  2020 年 8 月 10 日  |  2020 年 9 月 5 日  |  
 |~~WA-GUEST-OS-6.19_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-6.18_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-6.17_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -175,9 +183,11 @@ ms.locfileid: "90024207"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-5.46 _202008-02  |  2020年9月5日  |  Post 5.48  |  
-|  WA-GUEST-OS-5.45_202007-01  |  2020 年 8 月 17 日  |  5\.47 版发布后  |  
-|~~WA-GUEST-OS-5.44_202006-02~~|  2020 年 8 月 10 日  |  2020年9月5日  |  
+|  WA-5.48 _202010-02  |  2020年11月17日  |  Post 5.50  | 
+|  WA-GUEST-OS-5.47_202009-01  |  2020 年 10 月 10 日  |  5\.49 版发布后  | 
+|~~WA-GUEST-OS-5.46_202008-02~~|  2020 年 9 月 5 日  |  2020年11月17日  |  
+|~~WA-GUEST-OS-5.45_202007-01~~|  2020 年 8 月 17 日  |  2020 年 10 月 10 日  |  
+|~~WA-GUEST-OS-5.44_202006-02~~|  2020 年 8 月 10 日  |  2020 年 9 月 5 日  |  
 |~~WA-GUEST-OS-5.43_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-5.42_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-5.41_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -207,9 +217,11 @@ ms.locfileid: "90024207"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-4.81 _202008-02  |  2020年9月5日  |  Post 4.83  | 
-|  WA-GUEST-OS-4.80_202007-01  |  2020 年 8 月 17 日  |  4\.82 版发布后  | 
-|~~WA-GUEST-OS-4.79_202006-02~~|  2020 年 8 月 10 日  |  2020年9月5日  | 
+|  WA-4.83 _202010-02  |  2020年11月17日  |  Post 4.85  | 
+|  WA-GUEST-OS-4.82_202009-01  |  2020 年 10 月 10 日  |  4\.84 版发布后  | 
+|~~WA-GUEST-OS-4.81_202008-02~~|  2020 年 9 月 5 日  |  2020年11月17日  | 
+|~~WA-GUEST-OS-4.80_202007-01~~|  2020 年 8 月 17 日  |  2020 年 10 月 10 日  | 
+|~~WA-GUEST-OS-4.79_202006-02~~|  2020 年 8 月 10 日  |  2020 年 9 月 5 日  | 
 |~~WA-GUEST-OS-4.78_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-4.77_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-4.76_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -239,9 +251,11 @@ ms.locfileid: "90024207"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-3.88 _202008-02  |  2020年9月5日  |  Post 3.90  |  
-|  WA-GUEST-OS-3.87_202007-01  |  2020 年 8 月 17 日  |  3\.89 版发布后  |  
-|~~WA-GUEST-OS-3.86_202006-02~~|  2020 年 8 月 10 日  |  2020年9月5日  |  
+|  WA-PERL-MODULE-PLUGGABLE-3.90-136.EL6 _202010-02  |  2020年11月17日  |  Post 3.92  |  
+|  WA-GUEST-OS-3.89_202009-01  |  2020 年 10 月 10 日  |  3\.91 版发布后  |  
+|~~WA-GUEST-OS-3.88_202008-02~~|  2020 年 9 月 5 日  |  2020年11月17日  |  
+|~~WA-GUEST-OS-3.87_202007-01~~|  2020 年 8 月 17 日  |  2020 年 10 月 10 日  |  
+|~~WA-GUEST-OS-3.86_202006-02~~|  2020 年 8 月 10 日  |  2020 年 9 月 5 日  |  
 |~~WA-GUEST-OS-3.85_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-3.84_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-3.83_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -271,9 +285,11 @@ ms.locfileid: "90024207"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-2.101 _202008-02  |  2020年9月5日  |  Post 2.103  |  
-|  WA-GUEST-OS-2.100_202007-01  |  2020 年 8 月 17 日  |  2\.102 版发布后  |  
-|~~WA-GUEST-OS-2.99_202006-02~~|  2020 年 8 月 10 日  | 2020年9月5日  |  
+|  WA-2.103 _202010-02  |  2020年11月17日  |  Post 2.105  |  
+|  WA-GUEST-OS-2.102_202009-01  |  2020 年 10 月 10 日  |  2\.104 版发布后  |  
+|~~WA-GUEST-OS-2.101_202008-02~~|  2020 年 9 月 5 日  |  2020年11月17日 |    
+|~~WA-GUEST-OS-2.100_202007-01~~|  2020 年 8 月 17 日  |  2020 年 10 月 10 日  |  
+|~~WA-GUEST-OS-2.99_202006-02~~|  2020 年 8 月 10 日  | 2020 年 9 月 5 日  |  
 |~~WA-GUEST-OS-2.98_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-2.97_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-2.96_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -312,11 +328,11 @@ ms.locfileid: "90024207"
 | 1 |版本 1.0+ |
 
 ## <a name="guest-os-release-information"></a>来宾 OS 版本信息
-来宾 OS 发行版有三个重要的日期：**发行日期**、**停用日期**和**失效日期**。 来宾 OS 在门户中可用，并可选作目标来宾 OS。 当来宾 OS 到达**停用**日期时，将从 Azure 中删除。 但是，面向该来宾 OS 的任何云服务仍会正常运行。
+来宾 OS 发行版有三个重要的日期：**发行日期**、**停用日期** 和 **失效日期**。 来宾 OS 在门户中可用，并可选作目标来宾 OS。 当来宾 OS 到达 **停用** 日期时，将从 Azure 中删除。 但是，面向该来宾 OS 的任何云服务仍会正常运行。
 
-在**停用**日期与**失效**日期之间有一个缓冲期，可让你轻松地从一个来宾 OS 版本转换到新的版本。 如果正在使用 *自动更新版* 的来宾 OS，则始终可以获得最新版本，而无需担心失效的问题。
+在 **停用** 日期与 **失效** 日期之间有一个缓冲期，可让你轻松地从一个来宾 OS 版本转换到新的版本。 如果正在使用 *自动更新版* 的来宾 OS，则始终可以获得最新版本，而无需担心失效的问题。
 
-**到期**日期过后，仍旧使用该来宾 OS 的所有云服务将被停止、删除或强行升级。 可以在[此处][retirepolicy]了解有关停用策略的详细信息。
+**到期** 日期过后，仍旧使用该来宾 OS 的所有云服务将被停止、删除或强行升级。 可以在[此处][retirepolicy]了解有关停用策略的详细信息。
 
 ## <a name="guest-os-family-version-explanation"></a>来宾 OS 系列版本解释
 来宾 OS 系列基于发布的 Microsoft Windows Server 版本。 来宾 OS 是运行 Azure 云服务的基本操作系统。 每个来宾 OS 都具有系列、版本和版本号。
@@ -352,26 +368,26 @@ Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的�
 ## <a name="guest-os-supportability-and-retirement-policy"></a>来宾 OS 可支持性和停用策略
 [此处][retirepolicy]解释了来宾 OS 可支持性和停用策略。
 
-[cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
+[cloud updates]: ./cloud-services-update-azure-service.md
 [来宾 OS 更新 RSS 源]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: ./cloud-services-dotnet-install-dotnet.md?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
-[Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
+[Microsoft Security Advisory 3009008]: /security-updates/SecurityAdvisories/2015/3009008
 [ssl3-fixit]: https://go.microsoft.com/?linkid=9863266
-[MS14-066]: https://technet.microsoft.com/library/security/ms14-066.aspx
-[MS14-046]: https://technet.microsoft.com/library/security/ms14-046.aspx
-[retire policy sdk]: https://msdn.microsoft.com/library/dn479282.aspx
+[MS14-066]: /security-updates/SecurityBulletins/2014/ms14-066
+[MS14-046]: /security-updates/SecurityBulletins/2014/ms14-046
+[retire policy sdk]: /previous-versions/azure/reference/dn479282(v=azure.100)
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: https://azure.microsoft.com/support/options/
 [net install pkg]: https://www.microsoft.com/download/details.aspx?id=42643
 [msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
-[restarts]: https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
+[restarts]: /archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[fix]: /security-updates/SecurityBulletins/2017/ms17-010
 [Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
-[详细信息]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  
+[详细信息]: ./applications-dont-support-tls-1-2.md

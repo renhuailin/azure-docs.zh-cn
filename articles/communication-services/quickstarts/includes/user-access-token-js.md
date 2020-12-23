@@ -2,20 +2,20 @@
 title: include 文件
 description: include 文件
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 77b1e9ab245f668ab81741451a5e032f37bc3625
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: tchladek
+ms.openlocfilehash: a64d26ad11911e2cb9dcdec027b3ab3e4d22984b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943492"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584463"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "90943492"
 打开终端或命令窗口，为应用创建一个新目录，并导航到该目录。
 
 ```console
-mkdir user-tokens-quickstart && cd user-tokens-quickstart
+mkdir access-tokens-quickstart && cd access-tokens-quickstart
 ```
 
 运行 `npm init -y` 以使用默认设置创建 package.json 文件。
@@ -65,7 +65,7 @@ npm install @azure/communication-administration --save
 const { CommunicationIdentityClient } = require('@azure/communication-administration');
 
 const main = async () => {
-  console.log("Azure Communication Services - User Access Tokens Quickstart")
+  console.log("Azure Communication Services - Access Tokens Quickstart")
 
   // Quickstart code goes here
 };
@@ -76,9 +76,7 @@ main().catch((error) => {
 })
 ```
 
-1. 将新文件另存为 user-tokens-quickstart 目录中的 issue-token.js。
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
+1. 在 access-tokens-quickstart 目录中将新文件另存为 issue-access-token.js。
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -91,55 +89,66 @@ main().catch((error) => {
 // from an environment variable.
 const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING'];
 
-// Instantiate the user token client
+// Instantiate the identity client
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
-## <a name="create-a-user"></a>创建用户
+## <a name="create-an-identity"></a>创建标识
 
-Azure 通信服务维护轻量级标识目录。 使用 `createUser` 方法可在目录中创建具有唯一 `Id` 的新项。 应维护应用程序的用户与通信服务生成的标识之间的映射（例如，通过将它们存储在应用程序服务器的数据库中）。
+Azure 通信服务维护轻量级标识目录。 使用 `createUser` 方法可在目录中创建具有唯一 `Id` 的新项。 存储收到的标识，并映射到应用程序的用户。 例如，将它们存储在应用程序服务器的数据库中。 稍后颁发访问令牌时需要该标识。
 
 ```javascript
-let userResponse = await identityClient.createUser();
-console.log(`\nCreated a user with ID: ${userResponse.communicationUserId}`);
+let identityResponse = await identityClient.createUser();
+console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
-## <a name="issue-user-access-tokens"></a>颁发用户访问令牌
+## <a name="issue-access-tokens"></a>颁发访问令牌
 
-使用 `issueToken` 方法为通信服务用户颁发访问令牌。 如果未提供可选的 `user` 参数，将创建一个新用户并将其与令牌一起返回。
+使用 `issueToken` 方法为已存在的通信服务标识颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。 参数 `communicationUser` 的新实例可以基于 Azure 通信服务标识的字符串表示形式构造。
 
 ```javascript
-// Issue an access token with the "voip" scope for a new user
-let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
+// Issue an access token with the "voip" scope for an identity
+let tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 const { token, expiresOn } = tokenResponse;
-console.log(`\nIssued a token with 'voip' scope that expires at ${expiresOn}:`);
+console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
 console.log(token);
 ```
 
-用户访问令牌是需要重新颁发的短期凭据，以防止用户遇到服务中断的情况。 `expiresOn` 响应属性指示令牌的生存期。
+访问令牌是短期凭据，需要重新颁发。 如果不重新颁发，可能会导致应用程序用户的体验中断。 `expiresOn` 响应属性指示访问令牌的生存期。
 
-## <a name="revoke-user-access-tokens"></a>调用用户访问令牌
 
-在某些情况下，你可能需要显式撤销用户访问令牌，例如，当用户更改用于向服务进行身份验证的密码时。 这将使用 `revokeTokens` 方法使用户的所有访问令牌无效。
+## <a name="refresh-access-tokens"></a>刷新访问令牌
 
-```javascript  
-await identityClient.revokeTokens(userResponse);
-console.log(`\nSuccessfully revoked all tokens for user with Id: ${userResponse.communicationUserId}`);
-```
-
-## <a name="delete-a-user"></a>删除用户
-
-删除用户将撤销所有活动令牌，并阻止你为标识颁发后续令牌。 它还会删除与用户关联的所有保存的内容。
+刷新访问令牌与调用 `issueToken` 一样简单，使用的标识与用于颁发令牌的相同。 还需要提供已刷新令牌的 `scopes`。 
 
 ```javascript
-await identityClient.deleteUser(userResponse);
-console.log(`\nDeleted the user with Id: ${userResponse.communicationUserId}`);
+// // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
+let refreshedTokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+```
+
+
+## <a name="revoke-access-tokens"></a>撤销访问令牌
+
+在某些情况下可能会显式撤销访问令牌。 例如，当应用程序的用户更改在向服务进行身份验证时所使用的密码时。 `revokeTokens` 方法使颁发给标识的所有活动访问令牌无效。
+
+```javascript  
+await identityClient.revokeTokens(identityResponse);
+console.log(`\nSuccessfully revoked all access tokens for identity with ID: ${identityResponse.communicationUserId}`);
+```
+
+## <a name="delete-an-identity"></a>删除标识
+
+删除标识将撤销所有活动访问令牌，并阻止你为标识颁发访问令牌。 它还会删除与标识关联的所有保存的内容。
+
+```javascript
+await identityClient.deleteUser(identityResponse);
+console.log(`\nDeleted the identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="run-the-code"></a>运行代码
 
-在控制台提示符下，导航到包含 issue-token.js 文件的目录，然后执行以下 `node` 命令来运行应用。
+在控制台提示符下，导航到包含 issue-access-token.js 文件的目录，然后执行以下 `node` 命令来运行应用。
 
 ```console
-node ./issue-token.js
+node ./issue-access-token.js
 ```

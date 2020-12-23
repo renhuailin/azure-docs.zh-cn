@@ -72,7 +72,7 @@
           href: diagnostics-log-analytics-2019.md
     - name: 发布内置应用
       href: publish-apps-2019.md
-    - name: 设置 Azure 多重身份验证
+    - name: 设置 Azure AD 多重身份验证
       href: ../set-up-mfa.md
 - name: 概念
   items:

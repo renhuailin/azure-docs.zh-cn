@@ -9,11 +9,11 @@ ms.date: 04/16/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 8833bb75f5f50372deda3e71c1df90bed9a20054
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81605594"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996334"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>启用事件网格资源提供程序
 

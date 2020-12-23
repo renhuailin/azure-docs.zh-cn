@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658500"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168497"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Monitor 中视图设计器磁贴的参考指南
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
@@ -104,7 +104,7 @@ ms.locfileid: "77658500"
 ## <a name="line-chart-tile"></a>折线图磁贴
 此磁贴是一个折线图，显示一段时间内一个日志查询中的多个系列。 
 
-![折线图和标注磁贴](media/view-designer-tiles/tile-line-chart.png)
+![Azure Monitor 视图设计器中的折线图磁贴的屏幕截图。](media/view-designer-tiles/tile-line-chart.png)
 
 | 设置 | 说明 |
 |:--- |:--- |
@@ -125,7 +125,7 @@ ms.locfileid: "77658500"
 ## <a name="line-chart-and-callout-tile"></a>折线图和标注磁贴
 此磁贴包含一个折线图，其中显示了一段时间内来自一个日志查询中的具有多个系列；另外还包含一个标注，其中显示了汇总值。 
 
-![折线图和标注磁贴](media/view-designer-tiles/tile-line-chart-callout.png)
+![Azure Monitor 视图设计器中的折线图和标注磁贴的屏幕截图。标注通过显示汇总值来增加折线图。](media/view-designer-tiles/tile-line-chart-callout.png)
 
 | 设置 | 说明 |
 |:--- |:--- |

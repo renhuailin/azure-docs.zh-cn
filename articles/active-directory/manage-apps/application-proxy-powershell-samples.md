@@ -12,19 +12,19 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8b0955e67c5a35cbea96490a0395522fa145dad1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85554987"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858359"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD 应用程序代理的 Azure AD PowerShell 示例
 
-下表包含 Azure AD 应用程序代理的 PowerShell 脚本示例的链接。 除非另有说明，否则这些示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)。
+下表包含 Azure AD 应用程序代理的 PowerShell 脚本示例的链接。 除非另有说明，否则这些示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](/powershell/azure/active-directory/install-adv2)或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)。
 
 
-有关这些示例中使用的 cmdlet 的详细信息，请参阅[应用程序代理应用程序管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)和[应用程序代理连接器管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)。
+有关这些示例中使用的 cmdlet 的详细信息，请参阅[应用程序代理应用程序管理](/powershell/module/azuread/#application_proxy_application_management)和[应用程序代理连接器管理](/powershell/module/azuread/#application_proxy_connector_management)。
 
 | 链接 | 说明 |
 |---|---|
@@ -32,7 +32,7 @@ ms.locfileid: "85554987"
 | [列出所有应用程序代理应用的基本信息](scripts/powershell-get-all-app-proxy-apps-basic.md) | 列出有关目录中所有应用程序代理应用的基本信息（AppId、DisplayName、ObjId）。 |
 | [列出所有应用程序代理应用的扩展信息](scripts/powershell-get-all-app-proxy-apps-extended.md) | 列出有关目录中所有应用程序代理应用的扩展信息（AppId、DisplayName、ExternalUrl、InternalUrl、ExternalAuthenticationType）。  |
 | [按连接器组列出所有应用程序代理应用](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | 列出有关目录中所有应用程序代理应用以及应用被分配到哪个连接器组的信息。 |
-| [获取具有令牌生存期策略的所有应用程序代理应用](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | 列出目录中具有令牌生存期策略的所有应用程序代理应用及其详细信息。 此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)。 |
+| [获取具有令牌生存期策略的所有应用程序代理应用](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | 列出目录中具有令牌生存期策略的所有应用程序代理应用及其详细信息。 此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)。 |
 |连接器组||
 | [获取目录中的所有连接器组和连接器](scripts/powershell-get-all-connectors.md) | 列出目录中的所有连接器组和连接器。 |
 | [将分配到某连接器组的所有应用移动到另一个连接器组](scripts/powershell-move-all-apps-to-connector-group.md) | 将当前分配到某连接器组的所有应用程序移动到另一个连接器组。 |

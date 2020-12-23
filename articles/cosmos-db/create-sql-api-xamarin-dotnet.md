@@ -6,17 +6,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d8f51b12c16afbb8a0cf71e99b9b357719db4be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91e89eaf215468f171974e5f3fd383691fdd6ebe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319038"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096966"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入门：通过 Azure Cosmos DB SQL API 帐户使用 Xamarin 生成 ToDo 应用
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -32,15 +33,15 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 > [!NOTE]
 > 在 GitHub 上的[此文档](https://github.com/xamarinhq/app-geocontacts)中，可以找到整个规范示例 Xamarin 应用的示例代码，其中展示了多个 Azure 产品，包括 CosmosDB。 此应用演示如何查看地理分散的联系人，并让这些联系人更新其位置。
 
-本快速入门演示如何使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户、文档数据库和容器。 然后，你将使用 [Xamarin.Forms](https://docs.microsoft.com/xamarin/) 和 [MVVM 体系结构模式](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)生成并部署一个基于 [SQL .NET API](sql-api-sdk-dotnet.md) 和 [Xamarin](https://docs.microsoft.com/xamarin/) 的待办事项列表移动应用。
+本快速入门演示如何使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户、文档数据库和容器。 然后，你将使用 [Xamarin.Forms](/xamarin/) 和 [MVVM 体系结构模式](/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)生成并部署一个基于 [SQL .NET API](sql-api-sdk-dotnet.md) 和 [Xamarin](/xamarin/) 的待办事项列表移动应用。
 
 :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
 
 ## <a name="prerequisites"></a>先决条件
 
-如果是在 Windows 上开发，且尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”和“使用 .NET 进行移动开发”工作负荷。 
+如果是在 Windows 上开发，且尚未安装 Visual Studio 2019，可以下载并使用 **免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”和“使用 .NET 进行移动开发”工作负荷。 
 
-如果使用的是 Mac，则可以下载**免费的** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/)。
+如果使用的是 Mac，则可以下载 **免费的** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -68,7 +69,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为要安装示例应用的新文件夹。
@@ -83,7 +84,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
     ```
 
-4. 然后，在 Visual Studio 中打开 samples/xamarin/ToDoItems 文件夹中的 ToDoItems.sln 文件。
+4. 在 Visual Studio 中，打开 C:\git-samples\azure-cosmos-db-sql-xamarin-getting-started\src\ToDoItems.sln 
 
 ## <a name="obtain-your-api-keys"></a>获取 API 密钥
 
@@ -91,17 +92,23 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB SQL API 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 APIKeys.cs 文件中。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥":::
 
-2. 在 Visual Studio 2019 或 Visual Studio for Mac 中，打开 azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers 文件夹中的 APIKeys.cs 文件。
+2. 在 Visual Studio 中，打开 ToDoItems.Core/Helpers/APIKeys.cs。
 
-3. 从门户中复制 URI 值（使用复制按钮），并在 APIKeys.cs 中将其设为 `CosmosEndpointUrl` 变量的值。
+3. 在 Azure 门户中，使用复制按钮复制 URI 值，并在 APIKeys.cs 中将其设为 `CosmosEndpointUrl` 变量的值。
 
-    `public static readonly string CosmosEndpointUrl = "";`
+    ```csharp
+    //#error Enter the URL of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
+    ```
 
-4. 然后从门户复制“主密钥”的值，并在 APIKeys.cs 中将其设为 `Cosmos Auth Key` 的值。
+4. 在 Azure 门户中，使用复制按钮复制 PRIMARY KEY 值，并在 APIKeys.cs 中将其设为 `Cosmos Auth Key` 变量的值。
 
-    `public static readonly string CosmosAuthKey = "";`
+    ```csharp
+    //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
+    ```
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 
@@ -109,19 +116,22 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 此解决方案演示如何使用 Azure Cosmos DB SQL API 和 Xamarin.Forms 创建 ToDo 应用。 此应用有两个选项卡，第一个选项卡包含一个列表视图，显示尚未完成的代办事项。 第二选项卡显示已完成的代办事项。 除了在第一个选项卡中查看未完成的待办事项，还可以添加新的待办事项、编辑现有的待办事项，以及将待办事项标记为已完成。
 
-:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="通过复制添加 json 数据，然后在 Azure 门户的数据资源管理器中单击“保存”":::
 
 ToDoItems 解决方案中的代码包含：
 
-* ToDoItems.Core：这是一个 .NET Standard 项目，其中包含一个 Xamarin.Forms 项目以及用于在 Azure Cosmos DB 中保留待办事项的共享应用程序逻辑代码。
-* ToDoItems.Android：此项目包含 Android 应用。
-* ToDoItems.iOS：此项目包含 iOS 应用。
+* **ToDoItems.Core**
+   * 这是一个 .NET Standard 项目，其中包含一个 Xamarin.Forms 项目以及用于在 Azure Cosmos DB 中保留待办事项的共享应用程序逻辑代码。
+* **ToDoItems.Android**
+  * 此项目包含 Android 应用。
+* **ToDoItems.iOS**
+  * 此项目包含 iOS 应用。
 
 现在，请快速查看应用如何与 Azure Cosmos DB 通信。
 
 * 需将 [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) NuGet 包添加到所有项目。
-* azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Models 文件夹中的 `ToDoItem` 类为上面创建的 **Items** 容器中的文档建模。 请注意，属性命名区分大小写。
-* azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services 文件夹中的 `CosmosDBService` 类将通信封装到 Azure Cosmos DB。
+* ToDoItems.Core/Models 文件夹中的 `ToDoItem` 类为上面创建的 Items 容器中的文档建模 。 请注意，属性命名区分大小写。
+* ToDoItems.Core/Services 文件夹中的 `CosmosDBService` 类将通信封装到 Azure Cosmos DB。
 * `CosmosDBService` 类中有一个 `DocumentClient` 类型的变量。 `DocumentClient` 用于针对 Azure Cosmos DB 帐户配置和执行请求，并进行实例化：
 
     ```csharp
@@ -161,38 +171,38 @@ ToDoItems 解决方案中的代码包含：
 
     再次请注意这个在创建后传递给 `DocumentClient.DeleteDocumentAsync` 函数的唯一的文档 URI。
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。
 
 以下步骤将演示如何使用 Visual Studio for Mac 调试器来运行应用。
 
 > [!NOTE]
-> Android 版应用的使用完全相同。如果有差异，则会在下面的步骤中指出。 如果希望在 Windows 上使用 Visual Studio 进行调试，可参阅[此处 (iOS)](https://docs.microsoft.com/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) 和[此处 (Android)](https://docs.microsoft.com/xamarin/android/deploy-test/debugging/) 的相关操作文档。
+> Android 版应用的使用完全相同。如果有差异，则会在下面的步骤中指出。 如果希望在 Windows 上使用 Visual Studio 进行调试，可参阅[此处 (iOS)](/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) 和[此处 (Android)](/xamarin/android/deploy-test/debugging/) 的相关操作文档。
 
 1. 首先选择要作为目标的平台，方法是：单击突出显示的下拉列表，然后选择适用于 iOS 的 ToDoItems.iOS 或适用于 Android 的 ToDoItems.Android。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="选择可在 Visual Studio for Mac 中进行调试的平台":::
 
 2. 若要开始调试此应用，请按 cmd+Enter 或单击“开始”按钮。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="开始在 Visual Studio for Mac 中调试":::
 
 3. 当 iOS 模拟器或 Android Emulator 启动完毕，此应用会在屏幕底部 (iOS) 或顶部 (Android) 显示 2 个选项卡。 第一个选项卡显示未完成的待办事项，第二个选项卡显示已完成的代办事项。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="ToDo 应用的启动屏幕":::
 
 4. 若要在 iOS 上完成某个待办事项，请向左滑动，然后点击“完成”按钮。 若要在 Android 上完成某个待办事项，请长按该项，然后点击“完成”按钮。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="完成待办事项":::
 
 5. 若要编辑某个待办事项，请点击该项，此时会出现一个新的屏幕，供你输入新值。 点击“保存”按钮会将所做的更改保存到 Azure Cosmos DB。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="编辑待办事项":::
 
 6. 若要添加待办事项，请点击主屏幕右上角的“添加”按钮，然后就会出现一个新的空白编辑页。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="在 iOS 上运行的 Xamarin ToDo 应用":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="添加待办事项":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

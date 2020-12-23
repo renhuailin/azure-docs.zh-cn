@@ -1,7 +1,7 @@
 ---
 title: 快速入门：诊断 VM 网络流量筛选器问题 - Azure CLI
 titleSuffix: Azure Network Watcher
-description: 本快速入门介绍了如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
+description: 了解如何通过 Azure CLI 使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -18,22 +18,24 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9fcc26d17b9bb1d67d85a1775c4df191fe3524f0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd99fe0ea8a92ad05ad258dcf4d8da6e4685f263
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502046"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492516"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure CLI
 
 在本快速入门中，请先部署虚拟机 (VM)，然后检查到某个 IP 地址和 URL 的通信以及来自某个 IP 地址的通信。 确定通信失败的原因以及解决方法。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 Azure CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 验证 Azure CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本快速入门中的 Azure CLI 命令已设置了格式，以便在 Bash Shell 中运行。
+- 本快速入门需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。 
+
+- 本快速入门中的 Azure CLI 命令已设置了格式，以便在 Bash Shell 中运行。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -132,9 +134,9 @@ az network nic list-effective-nsg \
   --name myVmVMNic
 ```
 
-返回的输出包含 **AllowInternetOutbound** 规则的以下文本，该规则在[使用 IP 流验证](#use-ip-flow-verify)下的前述步骤中允许对 www.bing.com 进行出站访问：
+返回的输出包含 **AllowInternetOutbound** 规则的以下文本，该规则在 [使用 IP 流验证](#use-ip-flow-verify)下的前述步骤中允许对 www.bing.com 进行出站访问：
 
-```
+```console
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -173,9 +175,9 @@ az network nic list-effective-nsg \
 
 可以在上述输出中看到 **destinationAddressPrefix** 为 **Internet**。 尚不清楚 13.107.21.200 与 **Internet** 的关系如何。 可以看到多个地址前缀列在 **expandedDestinationAddressPrefix** 下。 列表中的前缀之一为 **12.0.0.0/6**，它涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在上述输出中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到某个 IP 地址的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
 
-在[使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试发往 172.131.0.100 的出站通信时，输出指示 **DefaultOutboundDenyAll** 规则拒绝了该通信。 **DefaultOutboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllOutBound** 规则：
+在 [使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试发往 172.131.0.100 的出站通信时，输出指示 **DefaultOutboundDenyAll** 规则拒绝了该通信。 **DefaultOutboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllOutBound** 规则：
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -206,9 +208,9 @@ az network nic list-effective-nsg \
 
 该规则将 **0.0.0.0/0** 列为 **destinationAddressPrefix**。 此规则拒绝到 172.131.0.100 的出站通信，因为此地址不在 `az network nic list-effective-nsg` 命令输出中的任何其他出站规则的 **destinationAddressPrefix** 范围内。 若要允许出站通信，可以添加一项优先级更高的安全规则，允许出站流量到达 172.131.0.100 的端口 80。
 
-在[使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试来自 172.131.0.100 的入站通信时，输出指示 **DefaultInboundDenyAll** 规则拒绝了该通信。 **DefaultInboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllInBound** 规则：
+在 [使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试来自 172.131.0.100 的入站通信时，输出指示 **DefaultInboundDenyAll** 规则拒绝了该通信。 **DefaultInboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllInBound** 规则：
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -251,6 +253,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
+在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
 
 即使相应的网络流量筛选器已就位，与 VM 的通信仍可能因路由配置问题而失败。 若要了解如何诊断 VM 网络路由问题，请参阅[诊断 VM 路由问题](diagnose-vm-network-routing-problem-cli.md)；若要使用某个工具诊断出站路由、延迟和流量筛选问题，请参阅[排查连接问题](network-watcher-connectivity-cli.md)。

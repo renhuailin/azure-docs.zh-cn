@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 12/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: d529c5900d851368d60099091bb5745660036dea
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257446"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029883"
 ---
 ::: zone target="docs"
 
@@ -66,18 +66,18 @@ ms.locfileid: "88257446"
     - 如果未引用跟踪号码，UPS 将要求你在提货时支付额外费用。
     - 也可以在最近的卸货位置放置 Data Box Disk，而不是安排提货。
 
-### <a name="europe"></a>[欧洲](#tab/in-europe)
 
-如果在欧洲退回设备，请执行以下步骤。
+### <a name="europe-or-uk"></a>[欧洲或英国](#tab/in-europe-or-uk)
+
+如果在欧洲或英国退回设备，请执行以下步骤。
 
 1. 使用粘贴在包装箱上带有透明塑料套管的退件发货标签。 如果标签受损或丢失：
     - 转至“概述”>“下载发货标签”并下载退件发货标签。
     - 将标签粘贴在设备上。
 
 2. 密封包装箱，并确保退件发货标签可见。
-3. 如果在欧洲使用 DHL 退回设备，请访问 DHL 网站并指定航空运单号，请求 DHL 提货。
-4. 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。
-5. 指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。
+3. 转到国家/地区 DHL Express 网站并选择“安排提货”。 在“是否需要发货标签”下，选择“否” > “我有 DHL 运单号码”  。
+4. 指定运单号码，然后单击“安排提货”以安排提货。
 
 ### <a name="australia"></a>[澳大利亚](#tab/in-australia)
 
@@ -164,23 +164,28 @@ ms.locfileid: "88257446"
 
 2. 密封包装箱，并确保退件发货标签可见。
 
-3. 使用 DHL 预订取件：
+3. 从 Azure Data Box 运营中心请求退货单号。 向数据中心寄回包裹时需要退货单号。 将电子邮件发送到 [adbops@microsoft.com](mailto:adbops@microsoft.com)。 请在退货地址旁边的发货标签上注明此单号，使其清晰可见。
 
-    * 请致电客户服务联系中心，电话为 +27(0) 11 9213600，选择选项 1，然后指定运单号码。
-    * 必须在南非标准时间 (ZA) 下午 2 点前拨打电话才能安排取件。  
-    * 向 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 发送电子邮件以使用以下电子邮件模板组织取件：
+4. 使用以下方法之一通过 DHL 预订取件：
+   * 通过转到 [DHL Express 南非，计划取件](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference)，在线预订取件。
+   * 使用以下模板将电子邮件发送到 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)：
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject:Pickup request for Microsoft Azure
-    Body:  Need pick up for the below shipment
-    *  DHL tracking number (reference number/waybill number)
-    *  Requested pickup date：yyyy/mm/dd; time: HH MM
-    ```
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
-    * 或者，也可以将包裹放在最近的 DHL 服务点。
+    * 或者，将包裹放在最近的 DHL 服务点。
 
-4. 如果遇到任何问题，请向 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 发送电子邮件，说明所遇到的问题的详细信息，并将运单号放入主题行。 还可以致电 +27(0)119213902。
+5. 如果遇到任何问题，请向 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 发送电子邮件，说明所遇到的问题的详细信息，并将运单号放入主题行。 还可以致电 +27(0)119213902。
 
 ### <a name="china"></a>[中国](#tab/in-china)
 

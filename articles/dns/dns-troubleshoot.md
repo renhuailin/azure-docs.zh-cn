@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fae63c61949302e25c9dee2899577fa4f0d2a975
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711181"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965572"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 
 本文介绍有关 Azure DNS 常见问题的故障排除信息。
 
-如果这些步骤未解决遇到的问题，还可以在[用于获取社区支持的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-virtual-network.html)上搜索或发布问题。 或者，可以开立和提交 Azure 支持请求。
+如果这些步骤未解决遇到的问题，还可以在[用于获取社区支持的 Microsoft 问答页](/answers/topics/azure-virtual-network.html)上搜索或发布问题。 或者，可以开立和提交 Azure 支持请求。
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>无法创建 DNS 区域
@@ -34,7 +34,7 @@ ms.locfileid: "84711181"
 ### <a name="recommended-articles"></a>推荐阅读的文章
 
 * [DNS 区域和记录](dns-zones-records.md)
-* [创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
+* [创建 DNS 区域](./dns-getstarted-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>无法创建 DNS 记录
 
@@ -50,7 +50,7 @@ ms.locfileid: "84711181"
 ### <a name="recommended-articles"></a>推荐阅读的文章
 
 * [DNS 区域和记录](dns-zones-records.md)
-* [创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
+* [创建 DNS 区域](./dns-getstarted-portal.md)
 
 
 
@@ -85,13 +85,12 @@ Azure DNS 以记录集方式管理记录，记录集是具有相同名称和类�
 ### <a name="recommended-articles"></a>推荐阅读的文章
 
 * [DNS 区域和记录](dns-zones-records.md)
-* [使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)
+* [使用 Azure 门户创建 DNS 记录集和记录](./dns-getstarted-portal.md)
 * [SRV 记录类型 (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [ Azure DNS 区域和记录](dns-zones-records.md)
-* 若要开始使用 Azure DNS，请了解如何[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)和[创建 DNS 记录](dns-getstarted-create-recordset-portal.md)。
+* 若要开始使用 Azure DNS，请了解如何[创建 DNS 区域](./dns-getstarted-portal.md)和[创建 DNS 记录](./dns-getstarted-portal.md)。
 * 若要迁移现有 DNS 区域，请了解如何[导入和导出 DNS 区域文件](dns-import-export.md)。
-

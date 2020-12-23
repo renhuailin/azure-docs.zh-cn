@@ -1,18 +1,18 @@
 ---
 title: Azure Cache for Redis 的内置策略定义
 description: 列出 Azure Cache for Redis 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 961c3ef7ddcefda59184bb2abf1101cadec43033
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 2f186a7ac33114e7746ee4365fc16706bad06eb2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827074"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991277"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Azure Cache for Redis 的 Azure Policy 内置定义
 

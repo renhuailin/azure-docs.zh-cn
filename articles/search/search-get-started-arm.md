@@ -3,18 +3,18 @@ title: 使用 Azure 资源管理器模板部署服务
 titleSuffix: Azure Cognitive Search
 description: 可以使用 Azure 资源管理器模板快速部署 Azure 认知搜索服务实例。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 07/15/2020
-ms.openlocfilehash: c7d11b9e699ec4cba59d2af9e411692cbce35278
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/17/2020
+ms.openlocfilehash: 12aa7f123ec5e417d710636f2afb4c60231cefc1
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88640168"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746544"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-an-arm-template"></a>快速入门：使用 ARM 模板部署认知搜索
 

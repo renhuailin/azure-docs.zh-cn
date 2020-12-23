@@ -1,5 +1,5 @@
 ---
-title: 自定义 Azure AD 属性映射 | Microsoft Docs
+title: 教程 - 自定义 Azure Active Directory 属性映射
 description: 了解 Azure Active Directory 中有哪些针对 SaaS 应用的属性映射，以及如何修改它们来满足业务需求。
 services: active-directory
 author: kenwith
@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
-ms.date: 09/16/2020
+ms.topic: tutorial
+ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266694"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936975"
 ---
-# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
+# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
 Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、G Suite 等等。 如果为第三方 SaaS 应用程序启用用户预配，Azure 门户将通过属性映射控制其属性值。
 
@@ -107,12 +107,15 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 - Salesforce
 - ServiceNow
-- Workday
+- Workday 到 Active Directory/Workday 到 Azure Active Directory
+- SuccessFactors 到 Azure Active Directory Active Directory/SuccessFactors
 - Azure Active Directory（支持 [Azure AD 图形 API 默认属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）
-- 支持 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的应用（需要添加[核心架构](https://tools.ietf.org/html/rfc7643)中定义的属性）
+- 支持 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的应用
+- 对于到 Workday 或 SuccessFactors 的 Azure Active Directory 写回，支持更新受支持的属性（XPATH 和 JSONPath）的元数据，但不支持添加默认架构所含范围之外的新的 Workday 或 SuccessFactors 属性
+
 
 > [!NOTE]
-> 建议只让自定义了其应用程序和系统的架构，并且原本就知道自定义属性定义方式的管理员来编辑受支持属性的列表。 有时，需要熟悉应用程序或系统提供的 API 和开发人员工具才能执行此操作。
+> 建议只让自定义了其应用程序和系统的架构，并且原本就知道自定义属性定义方式的管理员来编辑受支持属性的列表。 有时，需要熟悉应用程序或系统提供的 API 和开发人员工具才能执行此操作。 默认情况下，编辑受支持的属性列表的功能处于锁定状态，但客户可以通过导航到以下 URL 来启用该功能： https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true 。 然后，可以导航到应用程序以查看属性列表，如[上文](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)所述。 
 
 编辑受支持属性的列表时，将提供以下属性：
 
@@ -129,7 +132,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 - **多值?** - 属性是否支持多个值。
 - **区分大小写?** - 是否以区分大小写的方式计算属性值。
 - API 表达式 - 除非特定预配连接器（例如 Workday）的文档要求使用，否则请不要使用。
-- 引用的对象属性 - 如果这是一个引用类型的属性，则可以通过此菜单在目标应用程序中选择包含与该属性关联的值的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) 进行编辑。
+- 引用的对象属性 - 如果这是一个引用类型的属性，则可以通过此菜单在目标应用程序中选择包含与该属性关联的值的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用 [Microsoft Graph API](/graph/api/resources/synchronization-configure-with-custom-target-attributes) 进行编辑。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>将自定义扩展属性预配到符合 SCIM 的应用程序
 SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行扩展，以满足应用程序的需要。 向 SCIM 应用程序添加自定义属性：
@@ -139,14 +142,11 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
    4. 选择“编辑 AppName 的属性列表”。
    5. 在属性列表底部，在提供的字段中输入有关自定义属性的信息。 然后选择“添加属性”。
 
-对于 SCIM 应用程序，属性名称必须遵循以下示例所示的模式。 可以根据应用程序的要求自定义“CustomExtensionName”和“CustomAttribute”，例如：  
- * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
- * urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute  
- * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
+对于 SCIM 应用程序，属性名称必须遵循以下示例所示的模式。 可根据应用程序的要求自定义“CustomExtensionName”和“CustomAttribute”，例如 urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
 
 这些说明仅适用于启用了 SCIM 的应用程序。 诸如 ServiceNow 和 Salesforce 之类的应用程序不与使用 SCIM 的 Azure AD 集成，因此它们在添加自定义属性时不需要这一特定的命名空间。
 
-自定义属性不能是引用属性或多值属性。 当前，库中的应用程序仅支持自定义多值扩展属性。  
+自定义属性不能是引用属性、多值属性或复杂类型的属性。 当前，库中的应用程序仅支持自定义多值和复杂类型的扩展属性。  
  
 具有扩展属性的用户的示例表示形式：
 
@@ -174,7 +174,7 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
        "displayName": "John Smith"
      }
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "CustomAttribute": "701984",
    },
    "meta": {
@@ -202,7 +202,7 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
   - 注意事项
     - 确保未向用户分配多个角色。 我们无法保证将预配哪个角色。
     
-  - **示例输出** 
+  - **示例请求 (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
    }
    ```
   
+  - **示例输出 (PATCH)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+PATCH 和 POST 中的请求格式有所不同。 若要确保按相同格式发送 POST 和 PATCH，可使用[此处](./application-provisioning-config-problem-scim-compatibility.md#flags-to-alter-the-scim-behavior)所述的功能标志。 
+
 - AppRoleAssignmentsComplex 
   - **何时使用：** 使用 AppRoleAssignmentsComplex 表达式为用户预配多个角色。 
   - **配置方式：** 根据上述说明编辑支持的属性列表，以便为角色包含一个新属性： 
@@ -316,12 +331,12 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
 - Azure AD 预配服务不支持预配 NULL 值。
 - 它们的主键通常为“ID”，不应作为目标属性包含在属性映射中。 
 - 角色属性通常需要使用表达式进行映射，而不是直接映射。 有关角色映射的更多详细信息，请参阅上面的部分。 
-- 尽管可以从映射禁用组，但不支持禁用用户。 
+- 虽然可从映射中禁用组，但不支持禁用用户。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
-- [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
-- [用于用户预配的作用域筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+- [为属性映射编写表达式](functions-for-customizing-application-data.md)
+- [用于用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 - [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](use-scim-to-provision-users-and-groups.md)
 - [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)

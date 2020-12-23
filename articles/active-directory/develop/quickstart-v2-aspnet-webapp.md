@@ -1,6 +1,7 @@
 ---
-title: 向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能 | Azure
-description: 了解如何使用 OpenID Connect 在 ASP.NET Web 应用上实现 Microsoft 登录。
+title: 快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能 | Azure
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍如何使用 OpenID Connect 在 ASP.NET Web 应用上实现 Microsoft 登录。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,19 +9,28 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
+ms.openlocfilehash: 658069f8c8007be2c1b424d8ccff687b986ac237
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691286"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030921"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能
-在本快速入门中，你将通过代码示例了解 ASP.NET Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录个人帐户（hotmail.com、outlook.com 和其他）以及工作和学校帐户。  （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
+
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 ASP.NET Web 应用如何从任何 Azure Active Directory (Azure AD) 组织中登录用户。 
+
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>先决条件
+>
+> * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+> * [.NET Framework 4.7.2+](https://dotnet.microsoft.com/download/visual-studio-sdks)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > 可以使用两个选项来启动快速入门应用程序：
 > * [快速][选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -29,7 +39,7 @@ ms.locfileid: "88691286"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)窗格。
-> 1. 输入应用程序的名称，然后单击“注册”。
+> 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
@@ -37,16 +47,15 @@ ms.locfileid: "88691286"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-> 1. 选择“新注册”。
-> 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
->      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `ASPNET-Quickstart`。
->      - 在“重定向 URI”中添加 `https://localhost:44368/`，然后单击“注册”。
->      - 在“管理”部分下的左侧导航窗格中，选择“身份验证”
->          - 在“隐式授权”子部分下，选择“ID 令牌”。
->          - 然后选择“保存”。
+> 1. 登录 [Azure 门户](https://portal.azure.com)。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
+> 1. 输入应用程序的名称（例如 `ASPNET-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 在“重定向 URI”中添加 `https://localhost:44368/`，然后选择“注册” 。
+> 1. 在“管理”部分下的左侧导航窗格中，选择“身份验证”
+> 1. 在“隐式授权”子部分下，选择“ID 令牌”。
+> 1. 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -62,14 +71,14 @@ ms.locfileid: "88691286"
 > [!div renderon="docs"]
 > [下载 Visual Studio 2019 解决方案](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-> [!div renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > 使用 Visual Studio 2019 运行项目。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [下载代码示例](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
-> 我们已经为项目配置了应用属性的值。 
+> 我们已经为项目配置了应用属性的值。
 
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>步骤 3：运行 Visual Studio 项目
@@ -88,13 +97,13 @@ ms.locfileid: "88691286"
 >    其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 > - `Enter_the_Tenant_Info_Here` - 是下述选项之一：
->   - 如果应用程序支持“仅我的组织”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.onmicrosoft.com）
+>   - 如果应用程序支持“仅我的组织”，请将该值替换为 **租户 ID** 或 **租户名称**（例如 contoso.onmicrosoft.com）
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
 >   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为`common`
 >
 > > [!TIP]
 > > - 若要查找“应用程序 ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到“概览”页。  
-> > - 确保 **Web.config** 中 `redirectUri` 的值与 Azure AD 中为应用注册定义的**重定向 URI** 相对应（如果不对应，请导航到应用注册的“身份验证”菜单，并更新**重定向 URI** 以匹配）
+> > - 确保 **Web.config** 中 `redirectUri` 的值与 Azure AD 中为应用注册定义的 **重定向 URI** 相对应（如果不对应，请导航到应用注册的“身份验证”菜单，并更新 **重定向 URI** 以匹配）
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -109,12 +118,12 @@ ms.locfileid: "88691286"
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN 中间件 NuGet 包
 
-可以将 ASP.NET 中的 OpenID Connect 与 OWIN 中间件包配合使用，通过基于 Cookie 的身份验证设置身份验证管道。 可在 Visual Studio 的**包管理器控制台**中运行以下命令，以便安装这些包：
+可以将 ASP.NET 中的 OpenID Connect 与 OWIN 中间件包配合使用，通过基于 Cookie 的身份验证设置身份验证管道。 可在 Visual Studio 的 **包管理器控制台** 中运行以下命令，以便安装这些包：
 
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb  
+Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 ### <a name="owin-startup-class"></a>OWIN 启动类
@@ -195,13 +204,11 @@ public void SignIn()
 
 可以使用 `[Authorize]` 属性保护控制器或控制器操作。 此属性限制对控制器或操作的访问，其方法是仅允许经身份验证的用户访问控制器中的操作。这意味着，当未经身份验证的用户尝试访问 `[Authorize]` 属性修饰的某个操作或控制器时，会自动进行身份验证质询。
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
 试用 ASP.NET 教程，了解有关构建应用程序和新功能的完整分步指南，包括本快速入门的完整说明。
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>了解创建本快速入门中使用的应用程序的步骤
-
 > [!div class="nextstepaction"]
-> [登录教程](./tutorial-v2-asp-webapp.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [向 ASP.NET Web 应用添加的登录功能](tutorial-v2-asp-webapp.md)

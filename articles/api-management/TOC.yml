@@ -19,6 +19,9 @@
       href: powershell-create-service-instance.md
     - name: 创建实例 - Visual Studio Code
       href: vscode-create-service-instance.md
+    - name: 创建实例 - ARM 模板
+      displayName: Resource Manager
+      href: quickstart-arm-template.md
 - name: 教程
   items:
     - name: 1 - 导入第一个 API
@@ -39,6 +42,8 @@
       href: api-management-get-started-publish-versions.md
     - name: 9 - 自定义开发人员门户
       href: api-management-howto-developer-portal-customize.md
+    - name: 10 - 在 Visual Studio Code 中管理 API
+      href: visual-studio-code-tutorial.md
 - name: 示例
   items:
     - name: 策略
@@ -55,12 +60,12 @@
           href: api-management-howto-policies.md
         - name: 策略参考索引
           href: api-management-policies.md
+        - name: 错误处理
+          href: api-management-error-handling-policies.md
     - name: 安全性
       items:
         - name: 安全基线
           href: security-baseline.md
-        - name: 内置安全控件
-          href: api-management-security-controls.md
     - name: 订阅
       href: api-management-subscriptions.md
     - name: 版本
@@ -69,14 +74,16 @@
       href: api-management-revisions.md
     - name: 使用自动化进行管理
       href: automation-manage-api-management.md
-    - name: 错误处理。
-      href: api-management-error-handling-policies.md
     - name: API 导入限制
       href: api-management-api-import-restrictions.md
     - name: 自托管网关概述
       href: self-hosted-gateway-overview.md
     - name: 可观察性
       href: observability.md
+    - name: 使用 ARM 模板的 CI/CD
+      href: devops-api-development-templates.md
+    - name: 软删除
+      href: soft-delete.md
 - name: 操作指南
   items:
     - name: 定义 API
@@ -103,6 +110,8 @@
       items:
         - name: 容量指标
           href: api-management-capacity.md
+        - name: 计划和管理成本
+          href: plan-manage-costs.md
         - name: 升级和缩放
           href: upgrade-and-scale.md
         - name: 配置自动缩放
@@ -155,6 +164,8 @@
       items:
         - name: 了解开发人员门户
           href: api-management-howto-developer-portal.md
+        - name: 从弃用的门户迁移到新的开发人员门户
+          href: developer-portal-deprecated-migration.md
         - name: 使用 Azure AD 进行身份验证
           href: api-management-howto-aad.md
         - name: 使用 Azure AD B2C 进行身份验证
@@ -165,13 +176,13 @@
           href: api-management-howto-configure-notifications.md
         - name: 启动控制台 OAuth 支持
           href: api-management-howto-oauth2.md
-        - name: 旧门户 - 自定义门户
+        - name: 弃用的门户 - 自定义门户
           href: api-management-customize-styles.md
-        - name: 旧门户 - 修改页面和布局
+        - name: 弃用的门户 - 修改页面和布局
           href: api-management-modify-content-layout.md
-        - name: 旧门户 - 通过模板进行自定义
+        - name: 弃用的门户 - 通过模板进行自定义
           href: api-management-developer-portal-templates.md
-    - name: 旧门户模板
+    - name: 弃用的门户模板
       items:
         - name: 数据模型参考
           href: api-management-template-data-model-reference.md
@@ -209,7 +220,7 @@
           href: api-management-sample-flexible-throttling.md
         - name: 使用外部服务
           href: api-management-sample-send-request.md
-        - name: 使用属性管理密码
+        - name: 使用命名值管理机密
           href: api-management-howto-properties.md
         - name: 访问限制策略
           href: api-management-access-restriction-policies.md
@@ -233,6 +244,8 @@
           href: api-management-howto-create-groups.md
         - name: 检索 IP 地址
           href: api-management-howto-ip-addresses.md
+        - name: 获取 API 分析
+          href: howto-use-analytics.md
         - name: 将事件记录到 Azure 事件中心
           href: api-management-howto-log-event-hubs.md
         - name: 使用 Azure Application Insights 记录请求
@@ -261,8 +274,10 @@
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: 参考
   items:
+    - name: Azure CLI
+      href: /cli/azure/apim
     - name: Azure PowerShell
-      href: /powershell/module/az.apimanagement/?view=azps-2.6.0
+      href: /powershell/module/az.apimanagement/
     - name: REST
       href: /rest/api/apimanagement/
     - name: REST（原始）
@@ -272,6 +287,8 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: 资源日志架构
+      href: gateway-log-schema-reference.md
 - name: 资源
   items:
     - name: 常见问题解答
@@ -294,5 +311,9 @@
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 实现指南
       href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-    - name: 排查“未能更新主机名”错误
-      href: api-management-troubleshoot-cannot-add-custom-domain.md
+    - name: 疑难解答
+      items:
+        - name: 排查“未能更新主机名”错误
+          href: api-management-troubleshoot-cannot-add-custom-domain.md
+        - name: 排查响应超时和错误
+          href: troubleshoot-response-timeout-and-errors.md

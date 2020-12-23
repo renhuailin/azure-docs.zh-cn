@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 4dc28b51e33de6bf08995064404d2d4cc6ca9b58
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619570"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011842"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>在使用分片多租户数据库的 SaaS 应用程序中管理架构
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "91619570"
 - 为所有租户部署引用数据更新。
 - 对包含引用数据的表格重新构建索引。
 
-使用 Azure SQL 数据库的[弹性作业](../../sql-database/elastic-jobs-overview.md)功能跨租户数据库执行这些操作。 此外，还要针对“模板”租户数据库运行作业。 在 Wingtip Tickets 示例应用中，将复制此模板数据库，用于预配新租户数据库。
+使用 Azure SQL 数据库的[弹性作业](./elastic-jobs-overview.md)功能跨租户数据库执行这些操作。 此外，还要针对“模板”租户数据库运行作业。 在 Wingtip Tickets 示例应用中，将复制此模板数据库，用于预配新租户数据库。
 
 本教程介绍如何执行下列操作：
 
@@ -44,20 +44,20 @@ ms.locfileid: "91619570"
 ## <a name="prerequisites"></a>先决条件
 
 - 须已部署 Wingtip Tickets 多租户数据库应用：
-    - 有关说明，请参阅第一篇教程，其中介绍了 Wingtip Tickets SaaS 多租户数据库应用：<br />[部署和浏览使用 Azure SQL 数据库的分片多租户应用程序](../../sql-database/saas-multitenantdb-get-started-deploy.md)。
+    - 有关说明，请参阅第一篇教程，其中介绍了 Wingtip Tickets SaaS 多租户数据库应用：<br />[部署和浏览使用 Azure SQL 数据库的分片多租户应用程序](./saas-multitenantdb-get-started-deploy.md)。
         - 在五分钟内可以完成部署过程。
-    - 必须已安装 Wingtip 的分片多租户版本。** “独立”版本和“基于租户的数据库”版本不支持此教程中的操作。****
+    - 必须已安装 Wingtip 的分片多租户版本。 “独立”版本和“基于租户的数据库”版本不支持此教程中的操作。
 
-- 必须已安装最新版本的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+- 必须已安装最新版本的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](/sql/ssms/download-sql-server-management-studio-ssms)。
 
-- 必须已安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+- 必须已安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
 
 > [!NOTE]
 > 本教程使用的是有限预览版（[弹性数据库作业](elastic-database-client-library.md)）中 Azure SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给“SaaSFeedback\@microsoft.com”，并在邮件主题中注明“Elastic Jobs Preview”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback\@microsoft.com。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
 
-此示例中使用的分片多租户数据库模型使租户数据库能够包含一个或多个租户。 此示例探索将多租户和单租户数据库混用，实现混合租户管理模式的潜在可能性。** 管理这些数据库的更改可能会比较复杂。 [弹性作业](../../sql-database/elastic-jobs-overview.md)有利于大批量数据库的管理。 可以使用作业，以任务的形式安全可靠地针对一组租户数据库运行 T-SQL 脚本。 这些任务不需要用户交互或输入。 可以使用此方法跨应用程序中的所有租户部署对架构和常见引用数据所做的更改。 此外，还可以使用弹性作业来维护数据库的黄金模板副本。 该模板用于创建新租户，始终确保使用最新的架构和引用数据。
+此示例中使用的分片多租户数据库模型使租户数据库能够包含一个或多个租户。 此示例探索将多租户和单租户数据库混用，实现混合租户管理模式的潜在可能性。 管理这些数据库的更改可能会比较复杂。 [弹性作业](./elastic-jobs-overview.md)有利于大批量数据库的管理。 可以使用作业，以任务的形式安全可靠地针对一组租户数据库运行 T-SQL 脚本。 这些任务不需要用户交互或输入。 可以使用此方法跨应用程序中的所有租户部署对架构和常见引用数据所做的更改。 此外，还可以使用弹性作业来维护数据库的黄金模板副本。 该模板用于创建新租户，始终确保使用最新的架构和引用数据。
 
 ![屏幕](./media/saas-multitenantdb-schema-management/schema-management.png)
 
@@ -78,18 +78,18 @@ ms.locfileid: "91619570"
 1. 在 **PowerShell ISE** 中打开 *...\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1*。
 2. 按 **F5** 运行脚本。
 
-Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，目的是在编录服务器上创建名为 _jobagent_ 的数据库。 然后该脚本创建作业代理，将 _jobagent_ 数据库作为参数传递。
+Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目的是在编录服务器上创建名为 _jobagent_ 的数据库。 然后该脚本创建作业代理，将 _jobagent_ 数据库作为参数传递。
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>创建一个将新的引用数据部署到所有租户的作业
 
 #### <a name="prepare"></a>准备
 
-每个租户数据库在 VenueTypes 表中包含一组地点类型。 每个地点类型用于定义可在某个地点托管的事件种类。 这些地点类型对应于在租户事件应用中看到的背景图。  在本练习中，将一个更新部署到所有数据库，以便添加两种额外的地点类型：“赛车”和“游泳俱乐部”****。
+每个租户数据库在 VenueTypes 表中包含一组地点类型。 每个地点类型用于定义可在某个地点托管的事件种类。 这些地点类型对应于在租户事件应用中看到的背景图。  在本练习中，将一个更新部署到所有数据库，以便添加两种额外的地点类型：“赛车”和“游泳俱乐部”。
 
 首先，查看每个租户数据库中包含的地点类型。 连接 SQL Server Management Studio (SSMS) 中的一个租户数据库，并检查 VenueTypes 表。  还可在通过数据库页访问的 Azure 门户的查询编辑器中查询此表。
 
 1. 打开 SSMS 并连接到租户服务器：*tenants1-dpt-&lt;user&gt;.database.windows.net*
-1. 浏览到 tenants1-dpt-&lt;user&gt; 服务器上的 contosoconcerthall 数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”不在结果列表中**** **********。
+1. 浏览到 tenants1-dpt-&lt;user&gt; 服务器上的 contosoconcerthall 数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”不在结果列表中 。
 
 
 
@@ -101,9 +101,9 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 
 1. 在 SSMS 中，请连接到租户服务器：tenants1-mt-&lt;user&gt;.database.windows.net
 
-2. 浏览到 tenants1** 数据库。
+2. 浏览到 tenants1 数据库。
 
-3. 查询 *VenueTypes* 表以确认“赛车”和“游泳俱乐部”是否不在结果列表中。****
+3. 查询 *VenueTypes* 表以确认“赛车”和“游泳俱乐部”是否不在结果列表中。
 
 4. 连接到目录服务器：*catalog-mt-&lt;user&gt;.database.windows.net*。
 
@@ -125,22 +125,22 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
     - *server* 目标成员类型。
         - 这是包含租户数据库的 *tenants1-mt-&lt;user&gt;* 服务器。
         - 包含服务器指包括作业执行时存在的租户数据库。
-    - 位于 catalog-mt-&lt;user&gt;** 服务器上的模板数据库 (basetenantdb**) 的 database** 目标成员类型，
+    - 位于 catalog-mt-&lt;user&gt; 服务器上的模板数据库 (basetenantdb) 的 database 目标成员类型，
     - *database* 目标成员类型，用于包含本教程稍后使用的 *adhocreporting* 数据库。
 
 - **sp\_add\_job** 创建名为“引用数据部署”的新作业。
 
 - **sp\_add\_jobstep** 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新引用表 VenueTypes。
 
-- 脚本中的剩余视图显示存在的对象以及监视作业执行情况。 使用这些查询查看“生命周期”列中的状态值，确定何时作业完成。**** 该作业将更新租户数据库，并更新包含引用表的其他两个数据库。
+- 脚本中的剩余视图显示存在的对象以及监视作业执行情况。 使用这些查询查看“生命周期”列中的状态值，确定何时作业完成。 该作业将更新租户数据库，并更新包含引用表的其他两个数据库。
 
-在 SSMS 中，浏览到 *tenants1-mt-&lt;user&gt;* 服务器上的租户数据库。 查询 *VenueTypes* 表以确认“赛车”和“游泳俱乐部”现在是否已添加到表中。**** 地点类型的总计数应已增加两个。
+在 SSMS 中，浏览到 *tenants1-mt-&lt;user&gt;* 服务器上的租户数据库。 查询 *VenueTypes* 表以确认“赛车”和“游泳俱乐部”现在是否已添加到表中。 地点类型的总计数应已增加两个。
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>创建管理引用表索引的作业
 
 本练习在所有租户数据库上创建了一个作业用于根据引用表主键重建索引。 索引重建是一个典型的数据库管理操作，载入大量数据负载后，管理员可以运行该操作来提高性能。
 
-1. 在 SSMS 中，连接到 catalog-mt-&lt;User&gt;.database.windows.net** 服务器中的 _jobagent_ 数据库。
+1. 在 SSMS 中，连接到 catalog-mt-&lt;User&gt;.database.windows.net 服务器中的 _jobagent_ 数据库。
 
 2. 在 SSMS 中，打开 *...\\Learning Modules\\Schema Management\\OnlineReindex.sql*。
 
@@ -154,14 +154,14 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 
 * sp\_add\_jobstep 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新索引。
 
-* 脚本监视器作业执行中的剩余视图。 使用这些查询查看“生命周期”列中的状态值，确定何时作业成功地在目标组会员上完成****。
+* 脚本监视器作业执行中的剩余视图。 使用这些查询查看“生命周期”列中的状态值，确定何时作业成功地在目标组会员上完成。
 
 ## <a name="additional-resources"></a>其他资源
 
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
-* [管理扩大的云数据库](../../sql-database/elastic-jobs-overview.md)
+* [管理扩大的云数据库](./elastic-jobs-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -172,5 +172,4 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 > * 更新所有租户数据库中的引用数据
 > * 在所有租户数据库中的表上创建索引
 
-接下来，请试用[特别报告教程](../../sql-database/saas-multitenantdb-adhoc-reporting.md)，了解如何跨租户数据库运行分布式查询。
-
+接下来，请试用[特别报告教程](./saas-multitenantdb-adhoc-reporting.md)，了解如何跨租户数据库运行分布式查询。

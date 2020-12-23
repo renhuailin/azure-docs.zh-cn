@@ -3,8 +3,8 @@ title: 使用 Azure .NET SDK 创建数据管道
 description: 了解如何使用数据工厂 SDK 以编程方式创建、监视和管理 Azure 数据工厂。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dd1c7c20441d12600e2101f738904caf6260509e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019889"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496000"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -138,7 +138,7 @@ ms.locfileid: "89019889"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 文件中，更新 " ** &lt; 应用程序 ID &gt; **"、" ** &lt; 密码 &gt; **"、" ** &lt; 订阅 id &gt; **" 和 " ** &lt; 租户 id &gt; ** " 值，并将其作为自己的值。
+5. 在 App.Config 文件中，更新 " **&lt; 应用程序 ID &gt;**"、" **&lt; 密码 &gt;**"、" **&lt; 订阅 id &gt;**" 和 " **&lt; 租户 id &gt;** " 值，并将其作为自己的值。
 6. 将以下 **using** 语句添加到项目中的 **Program.cs** 文件。
 
     ```csharp
@@ -180,7 +180,7 @@ ms.locfileid: "89019889"
    > 将 **resourceGroupName** 的值替换为 Azure 资源组的名称。 可使用 [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建资源组。
    >
    > 将数据工厂的名称 (dataFactoryName) 更新为唯一名称。 数据工厂的名称必须全局唯一。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
-7. 将以下用于创建**数据工厂**的代码添加到 **Main** 方法。
+7. 将以下用于创建 **数据工厂** 的代码添加到 **Main** 方法。
 
     ```csharp
     // create a data factory
@@ -197,7 +197,7 @@ ms.locfileid: "89019889"
         }
     );
     ```
-8. 将以下用于创建 **Azure 存储链接服务**的代码添加到 **Main** 方法。
+8. 将以下用于创建 **Azure 存储链接服务** 的代码添加到 **Main** 方法。
 
    > [!IMPORTANT]
    > 将 **storageaccountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。
@@ -219,11 +219,11 @@ ms.locfileid: "89019889"
         }
     );
     ```
-9. 将以下用于创建**输入和输出数据集**的代码添加到 **Main** 方法。
+9. 将以下用于创建 **输入和输出数据集** 的代码添加到 **Main** 方法。
 
     输入 blob 的 **FolderPath** 设置为 **adftutorial/**，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，然后将文本文件上传到该容器。
 
-    输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}**，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估**切片**。
+    输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}**，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估 **切片**。
 
     ```csharp
     // create input and output datasets
@@ -299,7 +299,7 @@ ms.locfileid: "89019889"
         }
     });
     ```
-10. 将以下用于**创建和激活管道**的代码添加到 **Main** 方法。 此管道包含一个源为 **BlobSource**、接收器为 **BlobSink** 的 **CopyActivity**。
+10. 将以下用于 **创建和激活管道** 的代码添加到 **Main** 方法。 此管道包含一个源为 **BlobSource**、接收器为 **BlobSink** 的 **CopyActivity**。
 
     复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。
 
@@ -426,7 +426,7 @@ ms.locfileid: "89019889"
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。 此方法会弹出要求提供用于登录 Azure 门户的用户名**** 和密码**** 的对话框。
+14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。 此方法会弹出要求提供用于登录 Azure 门户的用户名和密码的对话框。
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -446,7 +446,7 @@ ms.locfileid: "89019889"
     }
     ```
 
-15. 在解决方案资源管理器中，展开项目： **DataFactoryAPITestApp**，右键单击 " **引用**"，然后单击 " **添加引用**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”****。
+15. 在解决方案资源管理器中，展开项目： **DataFactoryAPITestApp**，右键单击 " **引用**"，然后单击 " **添加引用**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
 15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。 
 16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，然后将其上传到 adftutorial 容器。
 

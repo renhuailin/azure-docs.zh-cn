@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705361"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836676"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>使用 Azure AD 快速响应以保护标识
 
@@ -42,12 +42,12 @@ ms.locfileid: "90705361"
 
 安全的标识基础结构涉及许多方面，但此核对清单侧重于安全可靠的、能够让用户以远程方式工作的标识基础结构。 保护标识只是安全工作范畴中的一部分，还要考虑保护数据、应用程序和设备。
 
-### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>Azure AD Free、Office 365 或 Microsoft 365 客户的指南。
+### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>适用于 Azure AD Free、Office 365 或 Microsoft 365 客户的指南。
 
-有很多建议 Azure AD Free、Office 365 或 Microsoft 365 应用客户应采取这些措施来保护其用户身份，下表旨在重点介绍以下许可证订阅的关键操作：
+有很多建议可供 Azure AD Free、Office 365 或 Microsoft 365 应用的客户采纳以保护其用户标识，下表旨在重点介绍针对以下许可证订阅的关键措施：
 
-- Office 365 (Office 365 E1，E3，E5，F1，A1，A3，A5) 
-- Microsoft 365 (业务基本、适用于企业的应用、商业标准、A1) 
+- Office 365（Office 365 E1、E3、E5、F1、A1、A3、A5）
+- Microsoft 365 （商业基本版、商业应用版、商业标准版、商业高级版、A1）
 - Azure AD Free（随 Azure、Dynamics 365、Intune 和 Power Platform 提供）
 
 | 建议的操作 | 详细信息 |
@@ -61,7 +61,7 @@ ms.locfileid: "90705361"
 | 如果) 适用[，则从 SaaS 应用程序中自动执行用户预配和取消设置](../app-provisioning/user-provisioning.md) ( | 自动在云中 (用户需要访问的 SaaS) 应用程序中创建用户标识和角色。 除了创建用户身份外，自动预配还包括将用户标识作为状态或角色的更改进行维护和删除，从而提高组织的安全性。 |
 | [启用安全混合访问：使用现有应用传递控制器和网络保护旧应用 (（](../manage-apps/secure-hybrid-access.md) 如果适用）)  | 通过将本地和云旧式身份验证应用程序连接到现有的应用程序传送控制器或网络 Azure AD 来发布和保护这些应用程序。 |
 | [启用自助式密码重置](../authentication/tutorial-enable-sspr.md)（适用于云专用帐户） | 此功能可减少用户无法登录其设备或应用程序时呼叫支持人员的次数以及生产效率的损失。 |
-| [尽可能使用非全局管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 |
+| [尽可能使用非全局管理角色](../roles/permissions-reference.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 |
 | [启用 Microsoft 的密码指导](https://www.microsoft.com/research/publication/password-guidance/) | 停止要求用户按照设置的计划更改其密码，禁用复杂性要求，用户更倾向于记住他们习惯的密码，并妥善保管其密码。 |
 
 
@@ -75,7 +75,7 @@ ms.locfileid: "90705361"
 
 | 建议的操作 | 详细信息 |
 | --- | --- |
-| [启用 Azure MFA 和 SSPR 的组合注册体验，简化用户注册体验](../authentication/howto-registration-mfa-sspr-combined.md) | 允许用户从 Azure 多重身份验证和自助式密码重置的一个常用体验进行注册。 |
+| [启用 Azure AD MFA 和 SSPR 的组合注册体验，以简化用户注册体验](../authentication/howto-registration-mfa-sspr-combined.md) | 允许用户从一个常见体验注册 Azure AD 多重身份验证和自助密码重置。 |
 | [为组织配置 MFA 设置](../authentication/howto-mfa-getstarted.md) | 使用多重身份验证确保帐户免受危害 |
 | [启用自助服务密码重置](../authentication/tutorial-enable-sspr.md) | 此功能可减少用户无法登录其设备或应用程序时呼叫支持人员的次数以及生产效率的损失 |
 | [实现密码写回](../authentication/tutorial-enable-sspr-writeback.md)（如果使用混合标识） | 允许将云中的密码更改写回到本地 Windows Server Active Directory 环境。 |
@@ -90,8 +90,8 @@ ms.locfileid: "90705361"
 | 如果) 适用[，则从 SaaS 应用程序中自动执行用户预配和取消设置](../app-provisioning/user-provisioning.md) ( | 自动在云中 (用户需要访问的 SaaS) 应用程序中创建用户标识和角色。 除了创建用户身份外，自动预配还包括将用户标识作为状态或角色的更改进行维护和删除，从而提高组织的安全性。 |
 | [启用条件性访问–基于设备](../conditional-access/require-managed-devices.md) | 使用基于设备的条件访问来改进安全性和用户体验。 此步骤可确保用户只能从满足安全和合规性标准的设备进行访问。 这些设备也称为受管理设备。 托管设备可以是与 Intune 兼容的设备，也可以是混合 Azure AD 加入的设备。 |
 | [启用密码保护](../authentication/howto-password-ban-bad-on-premises-deploy.md) | 防止用户使用弱密码和轻松猜测密码。 |
-| [指定多个全局管理员](../users-groups-roles/directory-emergency-access.md) | 至少分配两个仅限云的永久性全局管理员帐户，以便在紧急情况下使用。 这些帐户不是每日使用，应该具有复杂的长密码。 Break Glass 帐户确保你可在紧急情况下访问该服务。 |
-| [尽可能使用非全局管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 |
+| [指定多个全局管理员](../roles/security-emergency-access.md) | 至少分配两个仅限云的永久性全局管理员帐户，以便在紧急情况下使用。 这些帐户不是每日使用，应该具有复杂的长密码。 Break Glass 帐户确保你可在紧急情况下访问该服务。 |
+| [尽可能使用非全局管理角色](../roles/permissions-reference.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 |
 | [启用 Microsoft 的密码指导](https://www.microsoft.com/research/publication/password-guidance/) | 停止要求用户按照设置的计划更改其密码，禁用复杂性要求，用户更倾向于记住他们习惯的密码，并妥善保管其密码。 |
 | [针对来宾用户访问权限创建计划](../external-identities/what-is-b2b.md) | 通过让来宾用户使用其自己的工作、学校或社交标识登录应用和服务，实现与来宾用户的协作。 |
 
@@ -105,11 +105,11 @@ ms.locfileid: "90705361"
 
 | 建议的操作 | 详细信息 |
 | --- | --- |
-| [启用 Azure MFA 和 SSPR 的组合注册体验，简化用户注册体验](../authentication/howto-registration-mfa-sspr-combined.md) | 允许用户从 Azure 多重身份验证和自助式密码重置的一个常用体验进行注册。 |
+| [启用 Azure AD MFA 和 SSPR 的组合注册体验，以简化用户注册体验](../authentication/howto-registration-mfa-sspr-combined.md) | 允许用户从一个常见体验注册 Azure AD 多重身份验证和自助密码重置。 |
 | [为组织配置 MFA 设置](../authentication/howto-mfa-getstarted.md) | 使用多重身份验证确保帐户免受危害 |
 | [启用自助服务密码重置](../authentication/tutorial-enable-sspr.md) | 此功能可减少用户无法登录其设备或应用程序时呼叫支持人员的次数以及生产效率的损失 |
 | [实现密码写回](../authentication/tutorial-enable-sspr-writeback.md)（如果使用混合标识） | 允许将云中的密码更改写回到本地 Windows Server Active Directory 环境。 |
-| [启用 Identity Protection 策略以强制执行 MFA 注册](../identity-protection/howto-identity-protection-configure-mfa-policy.md) |  (MFA) 管理 Azure 多重身份验证的推出。 |
+| [启用 Identity Protection 策略以强制执行 MFA 注册](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | 管理 (MFA) Azure AD 多因素身份验证的推出。 |
 | [启用标识保护用户和登录风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md) | 启用标识保护用户和登录策略。 建议的登录策略是针对中型风险登录，并要求进行 MFA。 对于用户策略，它应以要求密码更改操作的高风险用户为目标。 |
 | 创建和启用条件访问策略 | [为管理员配置 MFA，以保护分配了管理员权限的帐户。](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [阻止旧式身份验证协议，因为与旧式身份验证协议相关的风险日益增加。](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [要求为 Azure 管理配置 MFA，从而通过对任何访问 Azure 资源的用户都要求多重身份验证来保护特权资源。](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [启用密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)（如果使用混合标识） | 为身份验证提供冗余并提高安全性（包括智能锁定、IP 锁定以及发现凭据泄露的功能） |
@@ -122,8 +122,8 @@ ms.locfileid: "90705361"
 | 如果) 适用[，则从 SaaS 应用程序中自动执行用户预配和取消设置](../app-provisioning/user-provisioning.md) ( | 自动在云中 (用户需要访问的 SaaS) 应用程序中创建用户标识和角色。 除了创建用户身份外，自动预配还包括将用户标识作为状态或角色的更改进行维护和删除，从而提高组织的安全性。 |
 | [启用条件性访问–基于设备](../conditional-access/require-managed-devices.md) | 使用基于设备的条件访问来改进安全性和用户体验。 此步骤可确保用户只能从满足安全和合规性标准的设备进行访问。 这些设备也称为受管理设备。 托管设备可以是与 Intune 兼容的设备，也可以是混合 Azure AD 加入的设备。 |
 | [启用密码保护](../authentication/howto-password-ban-bad-on-premises-deploy.md) | 防止用户使用弱密码和轻松猜测密码。 |
-| [指定多个全局管理员](../users-groups-roles/directory-emergency-access.md) | 至少分配两个仅限云的永久性全局管理员帐户，以便在紧急情况下使用。 这些帐户不是每日使用，应该具有复杂的长密码。 Break Glass 帐户确保你可在紧急情况下访问该服务。 |
-| [尽可能使用非全局管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 |
+| [指定多个全局管理员](../roles/security-emergency-access.md) | 至少分配两个仅限云的永久性全局管理员帐户，以便在紧急情况下使用。 这些帐户不是每日使用，应该具有复杂的长密码。 Break Glass 帐户确保你可在紧急情况下访问该服务。 |
+| [尽可能使用非全局管理角色](../roles/permissions-reference.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 |
 | [启用 Microsoft 的密码指导](https://www.microsoft.com/research/publication/password-guidance/) | 停止要求用户按照设置的计划更改其密码，禁用复杂性要求，用户更倾向于记住他们习惯的密码，并妥善保管其密码。 |
 | [针对来宾用户访问权限创建计划](../external-identities/what-is-b2b.md) | 通过让来宾用户使用其自己的工作、学校或社交标识登录应用和服务，实现与来宾用户的协作。 |
 | [启用 Privileged Identity Management](../privileged-identity-management/pim-configure.md) | 让你能够管理、控制和监视对组织中重要资源的访问，从而确保管理员只在需要且得到批准时才有访问权限 |

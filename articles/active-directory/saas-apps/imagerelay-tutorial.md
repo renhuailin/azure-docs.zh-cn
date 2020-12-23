@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b76c2e346adb6c2afd146b0d73c8f20165145bac
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545244"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>教程：Azure Active Directory 与 Image Relay 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88545244"
 * 可让用户使用其 Azure AD 帐户自动登录 Image Relay（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88545244"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "88545244"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Image Relay 客户端支持团队](http://support.imagerelay.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -128,27 +128,27 @@ ms.locfileid: "88545244"
 
 2. 在顶部工具栏中，单击“用户和权限”  工作负荷。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![屏幕截图显示已选择工具栏中的“用户和权限”。](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. 单击“创建新权限”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![屏幕截图显示用于输入“权限”标题的文本框，以及用于选择“权限”类型的选项。](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. 在“单一登录设置”  工作负荷中，选中“此组只能通过单一登录进行登录”  复选框，并单击“保存”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![屏幕截图显示“单一登录设置”，可在其中选择选项。](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. 转到“帐户设置”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![屏幕截图显示“帐户设置”工具栏选项。](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. 转到“单一登录设置”  工作负荷。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![屏幕截图显示“单一登录设置”菜单选项。](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. 在“SAML 设置”  对话框中，执行以下步骤：
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![屏幕截图显示可在其中输入信息的“SAML 设置”对话框。](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -160,19 +160,19 @@ ms.locfileid: "88545244"
 
     e. 在“x.509 证书”下  ，单击“更新证书”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![屏幕截图显示“更新证书”选项。](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. 在记事本中打开下载的证书，复制其内容，然后将其粘贴到“x.509 证书”文本框中  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![屏幕截图显示“X.509 证书”。](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     g. 在“实时用户预配”  部分中，选择“启用实时用户预配”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![屏幕截图显示已选择启用控件的“实时用户预配”部分。](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
-    h. 选择仅允许通过单一登录进行登录的权限组（例如，**SSO 基本**）。
+    h. 选择仅允许通过单一登录进行登录的权限组（例如， **SSO 基本** ）。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![屏幕截图显示已选择“SSO 基本”的“实时用户预配”部分。](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. 单击“保存”  。
 
@@ -237,11 +237,11 @@ ms.locfileid: "88545244"
 
 2. 转到“用户和权限”  ，并选择“创建 SSO 用户”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![屏幕截图显示已选择菜单中的“创建 SSO 用户”。](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. 输入要预配的用户的“电子邮件”  、“名字”  、“姓氏”  和“公司”  ，并选择只能通过单一登录进行登录的权限组（例如，SSO 基本）。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![屏幕截图显示“创建 SSO 用户”页，可在其中输入所需的信息。](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
 4. 单击“创建”。 
 
@@ -249,12 +249,12 @@ ms.locfileid: "88545244"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Image Relay 磁贴时，应会自动登录到为其设置了 SSO 的 Image Relay。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Image Relay 磁贴时，应会自动登录到为其设置了 SSO 的 Image Relay。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565458"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371794"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>使用 Azure Active Directory 在组中添加或删除另一个组
 本文可帮助使用 Azure Active Directory 在其他组中添加和删除组。
@@ -30,7 +30,7 @@ ms.locfileid: "89565458"
 可以将现有安全组添加到其他现有安全组（也称为“嵌套组”），以创建成员组（子组）和父组。 成员组会继承父组的特性和属性，从而节省配置时间。
 
 >[!Important]
->当前不支持：<ul><li>将组添加到与本地 Active Directory 同步的组。</li><li>向 Microsoft 365 组添加安全组。</li><li>将 Microsoft 365 组添加到安全组或其他 Microsoft 365 组。</li><li>将应用分配到嵌套组。</li><li>将许可证应用于嵌套组。</li><li>在嵌套方案中添加通讯组。</li></ul>
+>当前不支持：<ul><li>将组添加到与本地 Active Directory 同步的组。</li><li>将安全组添加到 Microsoft 365 组。</li><li>将 Microsoft 365 组添加到安全组或其他 Microsoft 365 组。</li><li>将应用分配到嵌套组。</li><li>将许可证应用于嵌套组。</li><li>在嵌套方案中添加通讯组。</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>若要将组作为成员添加到其他组
 
@@ -78,6 +78,6 @@ ms.locfileid: "89565458"
 
 - [编辑组设置](active-directory-groups-settings-azure-portal.md)
 
-- [使用组来管理对 SaaS 应用程序的访问](../users-groups-roles/groups-saasapps.md)
+- [使用组来管理对 SaaS 应用程序的访问](../enterprise-users/groups-saasapps.md)
 
-- [在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)
+- [在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题](../enterprise-users/licensing-group-advanced.md#limitations-and-known-issues)

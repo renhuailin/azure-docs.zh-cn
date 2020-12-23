@@ -4,14 +4,13 @@ ms.date: 04/17/2019
 author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
-ms.openlocfilehash: 1b3f9fff835e39c737227d6817c3a1dd901f3c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2242e22ad2815a70be1a56cb77696afbd9a8d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85367558"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975339"
 ---
 > [!NOTE]
 > 本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。
-> 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.3.0)。 有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.3.0)。
-
+> 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](/powershell/azure/new-azureps-module-az?view=azps-3.3.0)。 有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps?view=azps-3.3.0)。

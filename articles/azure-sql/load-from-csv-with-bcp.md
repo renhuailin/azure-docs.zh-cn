@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e59cc056d92206f13b746f040f3563c6c6e0af04
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: d2d501206dcb1fc6b9bb545f9dcf4d5c61af994e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616765"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777871"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>将数据从 CSV 加载到 Azure SQL 数据库或 SQL 托管实例（平面文件）
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -118,8 +118,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 若要迁移 SQL Server 数据库，请参阅 [SQL Server 数据库迁移](database/migrate-to-database-from-sql-server.md)。
 
 <!--MSDN references-->
-[bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[bcp]: /sql/tools/bcp-utility
+[CREATE TABLE syntax]: /sql/t-sql/statements/create-table-azure-sql-data-warehouse
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433

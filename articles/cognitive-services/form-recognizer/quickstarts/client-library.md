@@ -13,16 +13,16 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 表单处理, 自动化数据处理
-ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b024b3fac76e51264e89100e63a3cdc477443157
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318876"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963021"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>快速入门：使用表单识别器客户端库
 
-开始使用以你选择的语言编写的表单识别器客户端库。 Azure 表单识别器是一种认知服务，可让你使用机器学习技术构建自动化数据处理软件。 从表单文档中识别并提取文本、键/值对和表数据 &mdash; 该服务将输出结构化数据（其中包括原始文件中的关系）。 请遵循以下步骤安装 SDK 包并试用基本任务的示例代码。
+开始使用以你选择的语言编写的表单识别器客户端库。 Azure 表单识别器是一种认知服务，可让你使用机器学习技术构建自动化数据处理软件。 从表单文档中识别并提取文本、键/值对和表数据 &mdash; 该服务将输出结构化数据（其中包括原始文件中的关系）。 请遵循以下步骤安装 SDK 包并试用基本任务的示例代码。 表单识别器客户端库当前面向表单识别器服务的 v2.0。
 
 使用表单识别器客户端库执行以下操作：
 

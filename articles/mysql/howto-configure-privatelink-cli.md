@@ -1,31 +1,29 @@
 ---
-title: 专用链接-Azure CLI-Azure Database for MySQL
-description: 了解如何从 Azure CLI 配置 Azure Database for MySQL 的专用链接
-author: kummanish
-ms.author: manishku
+title: 专用链接 - Azure CLI - Azure Database for MySQL
+description: 了解如何从 Azure CLI 为 Azure Database for MySQL 配置专用链接
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8948ed51a9cda3d308046f3b85b6ce338462e82c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: da6a2b97d2656d56fa2aa0e7259fba433bd7b81e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826154"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998577"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>使用 CLI 创建和管理 Azure Database for MySQL 的专用链接
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>使用 CLI 创建和管理用于 Azure Database for MySQL 的专用链接
 
-专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MySQL 服务器中创建 VM。
+专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将学习如何使用 Azure CLI 在 Azure 虚拟网络和带有 Azure 专用终结点的 Azure Database for MySQL 服务器中创建 VM。
 
 > [!NOTE]
-> 专用链接功能仅适用于常规用途或内存优化定价层中的 Azure Database for MySQL 服务器。 请确保数据库服务器是这些定价层中的一种。
+> 专用链接功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 服务器。 请确保数据库服务器位于其中一个定价层中。
 
-## <a name="prerequisites"></a>必备条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果决定在本地安装并使用 Azure CLI，本快速入门要求使用 Azure CLI 2.0.28 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文要求 Azure CLI 版本2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -46,7 +44,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>禁用子网专用终结点策略 
-Azure 会将资源部署到虚拟网络中的子网，因此，需要创建或更新子网，以禁用专用终结点[网络策略](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
+Azure 会将资源部署到虚拟网络中的子网，因此，你需要创建或更新子网，以禁用专用终结点[网络策略](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -66,7 +64,7 @@ az vm create \
 记下 VM 的公共 IP 地址。 在下一步中，此地址将用于从 Internet 连接到 VM。
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>创建 Azure Database for MySQL 服务器 
-使用 az MySQL server create 命令创建 Azure Database for MySQL。 请记住，MySQL 服务器的名称必须在 Azure 中是唯一的，因此请将占位符中的占位符值替换为你自己的唯一值： 
+使用 az mysql server create 命令创建 Azure Database for MySQL。 请记住，MySQL 服务器名称必须在 Azure 中独一无二，因此请将括号中的占位符值替换为你自己的唯一值： 
 
 ```azurecli-interactive
 # Create a server in the resource group 
@@ -81,10 +79,10 @@ az mysql server create \
 
 > [!NOTE]
 > 在某些情况下，Azure Database for MySQL 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
-> - 请确保这两个订阅都注册了**DBforMySQL**资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
+> - 确保两个订阅都注册了 Microsoft.DBforMySQL 资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
 
 ## <a name="create-the-private-endpoint"></a>创建专用终结点 
-在虚拟网络中为 MySQL 服务器创建专用终结点： 
+为虚拟网络中的 MySQL 服务器创建专用终结点： 
 
 ```azurecli-interactive
 az network private-endpoint create \  
@@ -92,13 +90,13 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMySQL/servers" --query "id") \    
+    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMySQL/servers" --query "id" -o tsv) \    
     --group-id mysqlServer \  
     --connection-name myConnection  
  ```
 
 ## <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域 
-为 MySQL server 域创建专用 DNS 区域，并创建与虚拟网络的关联链接。 
+为 MySQL 服务器域创建专用 DNS 区域，并创建一个与虚拟网络关联的链接。 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.mysql.database.azure.com" 
@@ -122,7 +120,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> "Customer DNS" 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
+> 客户 DNS 设置中的 FQDN 未解析为已配置的专用 IP。 必须为配置的 FQDN 设置一个 DNS 区域，如[此处](../dns/dns-operations-recordsets-portal.md)所示。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
@@ -130,13 +128,13 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
+1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开 。
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开 downloaded.rdp** 文件。
+1. 打开 downloaded.rdp 文件。
 
-    1. 出现提示时，选择“连接”。
+    1. 出现提示时，选择“连接”  。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
@@ -149,7 +147,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
-## <a name="access-the-mysql-server-privately-from-the-vm"></a>从 VM 私下访问 MySQL 服务器
+## <a name="access-the-mysql-server-privately-from-the-vm"></a>以私密方式从 VM 访问 MySQL 服务器
 
 1. 在  *myVM* 的远程桌面中打开 PowerShell。
 
@@ -164,24 +162,24 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Address:  10.1.3.4
     ```
 
-3. 使用任何可用的客户端测试 MySQL 服务器的专用链接连接。 在下面的示例中，我使用了[MySQL 工作台](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html)来执行该操作。
+3. 使用任何可用的客户端测试 MySQL 服务器的专用链接连接。 在下面的示例中，我使用了 [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) 来执行该操作。
 
 
-4. 在 "**新建连接**" 中，输入或选择以下信息：
+4. 在“新建连接”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 连接名称| 选择所选的连接名称。|
-    | 主机名 | 选择*mydemoserver.privatelink.mysql.database.azure.com* |
-    | 用户名 | 输入在 *username@servername* 创建 MySQL server 期间提供的用户名。 |
-    | Password | 输入在创建 MySQL server 期间提供的密码。 |
+    | 主机名 | 选择 *mydemoserver.privatelink.mysql.database.azure.com* |
+    | 用户名 | 以 username@servername 形式输入用户名（在创建 MySQL 服务器期间提供）。 |
+    | 密码 | 输入创建 MySQL 服务器期间提供的密码。 |
     ||
 
 5. 选择“连接”。
 
 6. 浏览左侧菜单中的数据库。
 
-7.  (可以选择) 创建或查询 MySQL 数据库中的信息。
+7. （可选）创建或查询 MySQL 数据库中的信息。
 
 8. 关闭与 myVm 的远程桌面连接。
 
@@ -193,7 +191,7 @@ az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[什么是 Azure 专用终结点的](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)详细信息
+- 了解[什么是 Azure 专用终结点的](../private-link/private-endpoint-overview.md)详细信息
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

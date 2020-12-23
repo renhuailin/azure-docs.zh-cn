@@ -1,25 +1,19 @@
 ---
 title: 在 Azure VM 上创建 Oracle 数据库 | Microsoft Docs
 description: 在 Azure 环境中快速创建并运行 Oracle Database 12c 数据库。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 31743fd292bb45ee7107bc17f7d5dc43db8ed3f0
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.reviewer: cynthn
+ms.openlocfilehash: 6468acb598cee26c46b62d64c748f0e393f27271
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728278"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967952"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
 

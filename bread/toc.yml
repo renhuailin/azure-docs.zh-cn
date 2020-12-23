@@ -49,8 +49,8 @@
           tocHref: /azure/active-directory-domain-services/
           topicHref: /azure/active-directory-domain-services/
         - name: 用户、组和角色
-          tocHref: /azure/active-directory/users-groups-roles/
-          topicHref: /azure/active-directory/users-groups-roles/
+          tocHref: /azure/active-directory/roles/groups-concept
+          topicHref: /azure/active-directory/roles/groups-concept
         - name: 标识监管
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
@@ -127,12 +127,6 @@
         - name: 已启用 Arc 的服务器
           tocHref: /azure/azure-arc/servers/
           topicHref: /azure/azure-arc/servers/
-    - name: ASC for IoT
-      tocHref: /azure/asc-for-iot/
-      topicHref: /azure/asc-for-iot/
-    - name: 证明
-      tocHref: /azure/attestation/
-      topicHref: /azure/attestation/
     - name: 自动化
       tocHref: /azure/automation/
       topicHref: /azure/automation/
@@ -470,6 +464,9 @@
         - name: Data Box 联机传输
           tocHref: /azure/databox-online/
           topicHref: /azure/databox-online/
+        - name: Data Box Gateway
+          tocHref: /azure/databox-gateway/
+          topicHref: /azure/databox-gateway/
     - name: 数据目录
       tocHref: /azure/data-catalog/
       topicHref: /azure/data-catalog/
@@ -554,25 +551,6 @@
     - name: Jenkins
       tocHref: /azure/jenkins/
       topicHref: /azure/jenkins/
-    - name: Key Vault
-      tocHref: /azure/key-vault/
-      topicHref: /azure/key-vault
-      items:
-        - name: 常规
-          tocHref: /azure/key-vault/general/
-          topicHref: /azure/key-vault/general/
-        - name: 证书
-          tocHref: /azure/key-vault/certificates/
-          topicHref: /azure/key-vault/certificates/
-        - name: 键
-          tocHref: /azure/key-vault/keys/
-          topicHref: /azure/key-vault/keys/
-        - name: 机密
-          tocHref: /azure/key-vault/secrets/
-          topicHref: /azure/key-vault/secrets/
-        - name: 托管的 HSM
-          tocHref: /azure/key-vault/managed-hsm/
-          topicHref: /azure/key-vault/managed-hsm/
     - name: Azure Kinect DK
       tocHref: /azure/kinect-dk/
       topicHref: /azure/kinect-dk/
@@ -680,6 +658,9 @@
         - name: 防火墙管理器
           tocHref: /azure/firewall-manager/
           topicHref: /azure/firewall-manager/
+        - name: 标准 DDoS 防护
+          tocHref: /azure/ddos-protection/
+          topicHref: /azure/ddos-protection/
         - name: Front Door 服务
           tocHref: /azure/frontdoor/
           topicHref: /azure/frontdoor/
@@ -771,12 +752,37 @@
         - name: 基准
           tocHref: /azure/security/benchmarks/
           topicHref: /azure/security/benchmarks/
-    - name: 安全中心
-      tocHref: /azure/security-center/
-      topicHref: /azure/security-center/
-    - name: Azure Sentinel
-      tocHref: /azure/sentinel/
-      topicHref: /azure/sentinel/
+        - name: Key Vault
+          tocHref: /azure/key-vault/
+          topicHref: /azure/key-vault
+          items:
+            - name: 常规
+              tocHref: /azure/key-vault/general/
+              topicHref: /azure/key-vault/general/
+            - name: 证书
+              tocHref: /azure/key-vault/certificates/
+              topicHref: /azure/key-vault/certificates/
+            - name: 键
+              tocHref: /azure/key-vault/keys/
+              topicHref: /azure/key-vault/keys/
+            - name: 机密
+              tocHref: /azure/key-vault/secrets/
+              topicHref: /azure/key-vault/secrets/
+            - name: 托管的 HSM
+              tocHref: /azure/key-vault/managed-hsm/
+              topicHref: /azure/key-vault/managed-hsm/
+        - name: 安全中心
+          tocHref: /azure/security-center/
+          topicHref: /azure/security-center/
+        - name: Azure Sentinel
+          tocHref: /azure/sentinel/
+          topicHref: /azure/sentinel/
+        - name: Defender for IoT
+          tocHref: /azure/defender-for-iot/
+          topicHref: /azure/defender-for-iot/
+        - name: 证明
+          tocHref: /azure/attestation/
+          topicHref: /azure/attestation/
     - name: Service Fabric
       tocHref: /azure/service-fabric/
       topicHref: /azure/service-fabric/
@@ -905,3 +911,6 @@
         - name: 预留
           tocHref: /azure/cost-management-billing/reservations/
           topicHref: /azure/cost-management-billing/reservations/
+    - name: Purview
+      tocHref: /azure/purview/
+      topicHref: /azure/purview/

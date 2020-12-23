@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254302"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779231"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>教程：设置 Azure CDN 缓存规则
 
 > [!NOTE] 
-> 缓存规则仅适用于 **Verizon 提供的标准 Azure CDN** 和 **Akamai 提供的标准 Azure CDN** 配置文件。 对于 Microsoft 推出的 Azure CDN 配置文件，必须使用[标准规则引擎](cdn-standard-rules-engine-reference.md)。对于 Verizon 提供的高级 Azure CDN 配置文件，必须使用“管理”门户中的 [Verizon 高级规则引擎](cdn-rules-engine.md)来获得类似的功能  。
+> 缓存规则仅适用于 **Verizon 提供的标准 Azure CDN** 和 **Akamai 提供的标准 Azure CDN** 配置文件。 对于 Microsoft 推出的 Azure CDN 配置文件，必须使用[标准规则引擎](cdn-standard-rules-engine-reference.md)。对于 Verizon 提供的高级 Azure CDN 配置文件，必须使用“管理”门户中的 [Verizon 高级规则引擎](./cdn-verizon-premium-rules-engine.md)来获得类似的功能  。
  
 
 本教程介绍如何使用 Azure 内容分发网络 (CDN) 缓存规则，全局性地和根据自定义条件（例如 URL 路径和文件扩展名）设置或修改默认的缓存过期行为。 Azure CDN 提供两种类型的缓存规则：
@@ -114,6 +114,3 @@ ms.locfileid: "81254302"
 
 > [!div class="nextstepaction"]
 > [使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)
-
-
-

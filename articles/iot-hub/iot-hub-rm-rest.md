@@ -9,18 +9,18 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe143b1c172c5d89a7dba33731a378df988b4a47
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014602"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144428"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>使用资源提供程序 REST API 创建 IoT 中心 (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-可以通过编程方式使用 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 创建和管理 Azure IoT 中心。 本教程介绍如何使用 IoT 中心资源提供程序 REST API 通过 C# 程序创建 IoT 中心。
+可以通过编程方式使用 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource) 创建和管理 Azure IoT 中心。 本教程介绍如何使用 IoT 中心资源提供程序 REST API 通过 C# 程序创建 IoT 中心。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "89014602"
 
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* [Azure PowerShell 1.0](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或更高版本。
+* [Azure PowerShell 1.0](/powershell/azure/install-Az-ps) 或更高版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -78,7 +78,7 @@ ms.locfileid: "89014602"
 
 ## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>使用资源提供程序 REST API 创建 IoT 中心
 
-在资源组中使用 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 创建 IoT 中心。 还可以使用资源提供程序 REST API 更改现有的 IoT 中心。
+在资源组中使用 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource) 创建 IoT 中心。 还可以使用资源提供程序 REST API 更改现有的 IoT 中心。
 
 1. 将以下方法添加到 Program.cs：
 
@@ -175,7 +175,7 @@ ms.locfileid: "89014602"
 
 现在，已使用资源提供程序 REST API 部署了一个 IoT 中心，接下来可以进一步进行探索：
 
-* 阅读了解 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 的相关功能。
+* 阅读了解 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource) 的相关功能。
 
 * 若要详细了解 Azure 资源管理器功能，请阅读 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。
 
@@ -187,4 +187,4 @@ ms.locfileid: "89014602"
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/quickstart-linux.md)

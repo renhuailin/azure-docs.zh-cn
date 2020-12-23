@@ -1,24 +1,24 @@
 ---
 title: 选择列转换：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“选择列转换”模块来创建一个转换，以用于选择与给定数据集中相同的列子集。
+description: 了解如何使用 Azure 机器学习设计器中的 "选择列" 转换模块来执行 select 转换。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: f03840e55366d7f105ca4b57bd60061c82833e72
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893616"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420710"
 ---
 # <a name="select-columns-transform"></a>选择列转换
 
-本文介绍如何使用 Azure 机器学习设计器中的 "选择列转换" 模块。 “选择列转换”模块的用途是确保在下游机器学习操作中使用可预测、一致的列集。
+本文介绍如何使用 Azure 机器学习设计器中的“选择列转换”模块。 “选择列转换”模块的用途是确保在下游机器学习操作中使用可预测、一致的列集。
 
 此模块对于需要特定列的任务（例如评分）很有帮助。 可用列中的更改可能会破坏管道或改变结果。
 
@@ -46,8 +46,14 @@ ms.locfileid: "90893616"
 
    *请勿连接输入数据集。* 相反，请添加[应用转换](apply-transformation.md)模块，并连接特征选择转换的输出。
 
+   管道结构应如下所示：
+
+   > [!div class="mx-imgBorder"]
+   > ![示例管道](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > 不能期望将[基于筛选器的特征选择](filter-based-feature-selection.md)应用于评分数据集并获得相同的结果。 由于特征选择基于值，因此它可能会选择一个不同的列集，这将导致评分操作失败。
+    
 7. 提交管道。
 
 保存然后应用列选择的这一过程可以确保使用相同的数据架构进行训练和评分。

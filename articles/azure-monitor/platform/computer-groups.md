@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112106"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302934"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
 使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
@@ -97,13 +97,13 @@ Heartbeat | where Computer contains "srv" | distinct Computer
 通过将计算机组的别名视为函数，可在查询中使用从日志查询创建的计算机组，通常使用以下语法：
 
 ```kusto
-Table | where Computer in (ComputerGroup)`
+Table | where Computer in (ComputerGroup)
 ```
 
 例如，可以使用以下语法仅返回名为 mycomputergroup 的计算机组中的计算机的 UpdateSummary 记录。
 
 ```kusto
-UpdateSummary | where Computer in (mycomputergroup)`
+UpdateSummary | where Computer in (mycomputergroup)
 ```
 
 导入的计算机组及其包含的计算机存储在 ComputerGroup 表中  。  例如，以下查询会从 Active Directory 返回域计算机组中的计算机列表。 

@@ -33,3 +33,9 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+    - name: Azure PowerShell
+      href: /powershell/module/Az.ConnectedKubernetes/
+- name: 资源
+  items:
+    - name: Azure Arc 快速入门
+      href: 'https://github.com/microsoft/azure_arc'

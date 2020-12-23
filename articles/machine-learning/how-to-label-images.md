@@ -1,23 +1,24 @@
 ---
 title: 在标记项目中标记图像
 title.suffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习标记项目中使用数据标记工具。
+description: 了解如何使用数据标记工具在 Azure 机器学习标记项目中快速准备机器学习的数据。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: data4ml
+ms.openlocfilehash: f14e120fb7373cc80b9d6e23f155dd964b37a551
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897572"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347959"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像 
 
-项目管理员在 Azure 机器学习中[创建标记项目](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)后，你可以使用标记工具（公共预览版）为机器学习项目快速准备数据。 本文介绍：
+项目管理员在 Azure 机器学习中[创建标记项目](./how-to-create-labeling-projects.md#create-a-labeling-project)后，你可以使用标记工具为机器学习项目快速准备数据。 本文介绍：
 
 > [!div class="checklist"]
 > * 如何访问标签项目
@@ -119,13 +120,35 @@ ms.locfileid: "90897572"
 
 默认情况下，可以编辑现有的边界框。 “锁定/解锁区域”工具 ![锁定/解锁区域工具](./media/how-to-label-images/lock-bounding-boxes-tool.png) 或“L”可切换该行为。 如果区域已锁定，则只能更改新边界框的形状或位置。
 
-使用“区域操作”工具 ![区域操作工具](./media/how-to-label-images/regions-tool.png) 或“M”来调整现有的边界框。 拖动边或角来调整形状。 在内部单击即可拖动整个边界框。 如果无法编辑某个区域，则很可能已切换了“锁定/解锁区域”工具。
+使用区域操作工具 ![这是区域操作工具图标 - 从中心指向上、下、左、右的四个箭头。](./media/how-to-label-images/regions-tool.png) 或“M”调整现有边界框。 拖动边或角来调整形状。 在内部单击即可拖动整个边界框。 如果无法编辑某个区域，则很可能已切换了“锁定/解锁区域”工具。
 
 使用“基于模板的框”工具 ![模板的框工具](./media/how-to-label-images/template-box-tool.png) 或“T”来创建大小相同的多个边界框。 如果图像没有边界框，并且你激活基于模板的框，则该工具将生成 50x50 像素框。 如果创建边界框，然后激活基于模板的框，任何新边界框将采用上次创建的框的大小。 可以在放置后调整基于模板的框的大小。 调整基于模板的框的大小只会调整该特定框的大小。
 
 若要删除当前图像中的所有边界框，请选择“删除所有区域”工具 ![删除区域工具](./media/how-to-label-images/delete-regions-tool.png)。
 
 创建图像的边界框后，请选择“提交”以保存工作，否则正在进行的工作不会保存。
+
+## <a name="tag-images-and-specify-polygons-for-image-segmentation"></a>标记图像并为图像分段指定多边形 
+
+如果项目的类型为“实例分段(多边形)”，你将在图像中指定一个或多个多边形，并对每个多边形应用标记。 图像都可以有多个边界多边形，每个多边形都具有一个标记。 使用“查看详细说明”来确定项目中是否使用了多个边界多边形。
+
+1. 选择要创建的多边形的标记。
+1. 选择“绘制多边形区域”工具![“绘制多边形区域”工具](./media/how-to-label-images/polygon-tool.png)或选择“P”。
+1. 单击多边形中的每个点。  完成形状后，双击以完成。
+
+    :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="为猫和狗创建多边形":::
+
+若要删除多边形，请在创建后单击多边形旁边显示的 X 形目标。
+
+如果要更改多边形的标记，请选择“移动区域”工具，单击多边形，然后选择正确的标记。
+
+你可以编辑现有多边形。 “锁定/解锁区域”工具![使用“锁定/解锁区域”工具编辑多边形](./media/how-to-label-images/lock-bounding-boxes-tool.png)或“L”可切换该行为。 如果区域已锁定，则只能更改新多边形的形状或位置。
+
+使用“添加或删除多边形顶点”工具![这是“添加或删除多边形顶点”工具图标。](./media/how-to-label-images/add-remove-points-tool.png) 或“U”调整现有多边形。 单击多边形以添加或删除点。 如果无法编辑某个区域，则很可能已切换了“锁定/解锁区域”工具。
+
+若要删除当前图像中的所有多边形，请选择“删除所有区域”工具![“删除所有区域”工具](./media/how-to-label-images/delete-regions-tool.png)。
+
+为图像创建多边形后，请选择“提交”以保存工作，否则正在进行的工作不会保存。
 
 ## <a name="finish-up"></a>完成
 
@@ -135,5 +158,6 @@ ms.locfileid: "90897572"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[在 Azure 中训练图像分类模型](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
+* 了解[在 Azure 中训练图像分类模型](./tutorial-train-models-with-aml.md)
+
 

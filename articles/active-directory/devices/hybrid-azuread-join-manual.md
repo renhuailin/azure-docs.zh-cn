@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5316a1647c96076696b14de157e74e2155a6b368
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268547"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860008"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -169,7 +169,7 @@ cmdlet：
 
 若要详细了解验证域名，请参阅[将自定义域名添加到 Azure Active Directory](../fundamentals/add-custom-domain.md)。
 
-若要获取已验证的公司域的列表，可以使用 [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) cmdlet。
+若要获取已验证的公司域的列表，可以使用 [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain) cmdlet。
 
 ![公司域的列表](./media/hybrid-azuread-join-manual/01.png)
 
@@ -328,7 +328,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 若要详细了解验证域名，请参阅[将自定义域名添加到 Azure Active Directory](../fundamentals/add-custom-domain.md)。  
 
-若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) cmdlet。
+若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](/powershell/module/msonline/get-msoldomain) cmdlet。
 
 ![公司域的列表](./media/hybrid-azuread-join-manual/01.png)
 
@@ -564,17 +564,17 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
 1. 使用[直接链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)进入设备页面。
-2. 有关如何查找设备的信息，请参阅[如何使用 Azure 门户管理设备标识](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)。
+2. 有关如何查找设备的信息，请参阅[如何使用 Azure 门户管理设备标识](./device-management-azure-portal.md#manage-devices)。
 3. 如果“已注册”列显示“挂起”，则表明混合 Azure AD 联接尚未完成。 在联合环境中，只有当注册失败并且 AAD Connect 配置为同步设备时，才会发生这种情况。
 4. 如果“已注册”列包含日期/时间，则表明混合 Azure AD 联接已完成。
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)中包含此 cmdlet。
+使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1)中包含此 cmdlet。
 
 使用 Get-MSolDevice cmdlet 检查服务详细信息时：
 
-- 必须存在其**设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
+- 必须存在其 **设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
 - **DeviceTrustType** 的值为 **Domain Joined**。 此设置相当于 Azure AD 门户中“设备”页上的“已加入混合 Azure AD”状态 。
 - 对于条件访问中使用的设备，**Enabled** 的值为 **True**，**DeviceTrustLevel** 的值为 **Managed**。
 

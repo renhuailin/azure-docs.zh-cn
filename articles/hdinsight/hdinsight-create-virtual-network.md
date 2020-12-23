@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
-ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f604ba2edcc63a245a5e87d3dcb6fdd16a9d050
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074755"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741435"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
 
@@ -27,8 +27,8 @@ ms.locfileid: "87074755"
 
 本文中的示例要求满足的其他先决条件包括：
 
-* 如果使用的是 PowerShell，则需要安装[AZ 模块](https://docs.microsoft.com/powershell/azure/)。
-* 如果要使用 Azure CLI 但尚未安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果使用的是 PowerShell，则需要安装 [AZ 模块](/powershell/azure/)。
+* 如果要使用 Azure CLI 但尚未安装，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]  
 > 如果正在查找有关如何使用 Azure 虚拟网络将 HDInsight 连接到本地网络的分步指南，请参阅[将 HDInsight 连接到本地网络](connect-on-premises-network.md)文档。
@@ -331,7 +331,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     };
     ```
 
-    将 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` 值替换为另一虚拟网络的 DNS 后缀。____ 此项将对远程网络 DNS 后缀的请求路由到该网络中的自定义 DNS。
+    将 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` 值替换为另一虚拟网络的 DNS 后缀。  此项将对远程网络 DNS 后缀的请求路由到该网络中的自定义 DNS。
 
 3. 在两个虚拟网络的自定义 DNS 服务器上，使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
 
@@ -364,7 +364,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
    将 `10.0.0.0/16` 和 `10.1.0.0/16` 值替换为虚拟网络的 IP 地址范围。 此项允许每个网络中的资源发出 DNS 服务器的请求。
 
-    对于虚拟网络的 DNS 后缀（例如，microsoft.com）不是任何请求，都由 Azure 递归解析程序处理。
+    对于虚拟网络的 DNS 后缀不 (的任何请求例如，microsoft.com) 由 Azure 递归解析程序处理。
 
 4. 若要使用此配置，请重启 Bind。 例如，两个 DNS 服务器上的 `sudo service bind9 restart`。
 
@@ -377,6 +377,6 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 * 要了解如何配置 Apache HBase 异地复制，请参阅[在 Azure 虚拟网络中设置 Apache HBase 群集复制](hbase/apache-hbase-replication.md)。
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 
-* 有关网络安全组的详细信息，请参阅[网络安全组](../virtual-network/security-overview.md)。
+* 有关网络安全组的详细信息，请参阅[网络安全组](../virtual-network/network-security-groups-overview.md)。
 
 * 有关用户定义的路由的详细信息，请参阅[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。

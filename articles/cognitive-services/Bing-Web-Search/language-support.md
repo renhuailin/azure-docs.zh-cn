@@ -10,20 +10,25 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6de01d2c12454f43a2802b4a7a979b5f74b46f0e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262818"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340265"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>必应 Web 搜索 API 的语言和区域支持
 
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
+
 必应 Web 搜索 API 支持超过 36 个国家或地区，其中很多具有多种语言。 使用查询指定国家或地区有助于根据对该国家或地区的兴趣来优化搜索结果。 结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
 
-可以使用 `cc` 查询参数指定国家或地区。 指定国家或地区时，必须指定一个或多个带有[ `Accept-Language` 标头](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)的语言代码。 使用[市场表](#markets)获取每个市场支持的语言列表。
+可以使用 `cc` 查询参数指定国家或地区。 指定国家或地区时，必须指定一个或多个带有[ `Accept-Language` 标头](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)的语言代码。 使用[市场表](#markets)获取每个市场支持的语言列表。
 
-或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场****。 指定市场的同时指定国家或地区和首选语言。 可以显式使用 `setLang` 查询参数设置语言。
+或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家或地区和首选语言。 可以显式使用 `setLang` 查询参数设置语言。
 
 ## <a name="countriesregions"></a>国家/地区
 
@@ -76,8 +81,8 @@ ms.locfileid: "91262818"
 |比利时|荷兰语|nl-BE|
 |比利时|法语|fr-BE|
 |巴西|葡萄牙语|pt-BR|
-|Canada|英语|en-CA|
-|Canada|法语|fr-CA|
+|加拿大|英语|en-CA|
+|加拿大|法语|fr-CA|
 |智利|西班牙语|es-CL|
 |丹麦|丹麦语|da-DK|
 |芬兰|芬兰语|fi-FI|
@@ -108,8 +113,8 @@ ms.locfileid: "91262818"
 |台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|United States|英语|zh-CN|
-|United States|西班牙语|es-US|
+|美国|英语|en-US|
+|美国|西班牙语|es-US|
 
 ## <a name="next-steps"></a>后续步骤
 

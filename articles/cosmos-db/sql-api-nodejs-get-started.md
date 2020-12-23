@@ -9,19 +9,20 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: 68a2d354c45820bc9f2b291701deb9066a745235
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297872"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098648"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [Java](sql-api-java-get-started.md)
-> * [异步 Java](sql-api-async-java-get-started.md)
+> * [Java](./create-sql-api-java.md)
+> * [异步 Java](./create-sql-api-java.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
@@ -123,7 +124,7 @@ JavaScript SDK 使用通用术语“容器”和“项”。  容器可以是集
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
 > [!Note]
-> 如果连接到 **Cosmos DB 模拟器**，请为节点进程禁用 TLS 验证：
+> 如果连接到 **Cosmos DB 模拟器** ，请为节点进程禁用 TLS 验证：
 >   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
@@ -221,6 +222,6 @@ node app.js
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [监视 Azure Cosmos DB 帐户](monitor-accounts.md)
+> [监视 Azure Cosmos DB 帐户](./monitor-cosmos-db.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account

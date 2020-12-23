@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567156"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754158"
 ---
 # <a name="speech-services-quotas-and-limits"></a>语音服务配额和限制
 
@@ -26,18 +26,33 @@ ms.locfileid: "91567156"
 ### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>每个语音资源的语音转文本配额和限制
 在下表中，没有“可调”行的参数对于所有价格层都不能进行调整。
 
+#### <a name="online-transcription"></a>联机听录
+
 | Quota | 免费 (F0)<sup>1</sup> | 标准 (S0) |
 |--|--|--|
-| **联机听录并发请求限制（基础模型和自定义模型）** |  |  |
-| 默认值 | 1 | 20 |
+| 并发请求限制（基础模型和自定义模型） | 1 | 20（默认值） |
 | 可调 | 否<sup>2</sup> | Yes<sup>2</sup> |
-| **REST API 请求限制（[API 管理](../../api-management/api-management-key-concepts.md)终结点）** | 每 10 秒 100 个请求 | 每 10 秒 100 个请求 |
-| **数据导入的最大数据集文件大小** | 2 GB | 2 GB |
-| **批量听录的最大输入 Blob 大小** | 空值 | 2.5 GB |
-| **批量听录的最大 Blob 容器大小** | 空值 | 5 GB |
-| **批量听录的每个容器的最大 Blob 数** | 空值 | 10000 |
-| **使用多个内容 Url 作为输入时每个脚本请求的最大文件数 () ** | 空值 | 1000  |
-| **批量听录同时运行作业的最大数量** | 空值 | 2000  |
+
+#### <a name="batch-transcription"></a>批量听录
+| Quota | 免费 (F0)<sup>1</sup> | 标准 (S0) |
+|--|--|--|
+| REST API 限制 | 批量听录不适用于 F0 | 每分钟 300 个请求 |
+| 最大音频输入文件大小 | 空值 | 1 GB |
+| 最大输入 Blob 大小（可能包含多个文件，例如在 zip 存档中；请确保注意上面的文件大小限制） | 空值 | 2.5 GB |
+| 最大 Blob 容器大小 | 空值 | 5 GB |
+| 每个容器的最大 Blob 数 | 空值 | 10000 |
+| 每个听录请求的最大文件数（当使用多个内容 URL 作为输入时） | 空值 | 1000  |
+| 同时运行作业的最大数目 | 空值 | 2000  |
+
+#### <a name="model-customization"></a>模型自定义
+| Quota | 免费 (F0)<sup>1</sup> | 标准 (S0) |
+|--|--|--|
+| REST API 限制 | 每分钟 300 个请求 | 每分钟 300 个请求 |
+| 语音数据集的最大数目 | 2 | 500 |
+| 数据导入的最大声学数据集文件大小 | 2 GB | 2 GB |
+| 数据导入的最大语言数据集文件大小 | 200 MB | 1.5 GB |
+| 数据导入的最大发音数据集文件大小 | 1 KB | 1 MB |
+| `text`在[创建模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/)API 请求中使用参数时的最大文本大小 | 200 KB | 500 KB |
 
 <sup>1</sup> 有关免费 (F0) 定价层，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月限额。<br/>
 <sup>2</sup> 请参阅[其他说明](#detailed-description-quota-adjustment-and-best-practices)、[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)和[调整说明](#speech-to-text-increasing-online-transcription-concurrent-request-limit)。<br/> 
@@ -57,7 +72,7 @@ ms.locfileid: "91567156"
 | **Websocket 特定配额** |  |  |
 |每轮已生成的最大音频长度 | 10 分钟 | 10 分钟 |
 |每轮的最大 SSML 消息大小 |64 KB |64 KB |
-| **REST API 请求限制** | 每分钟 20 个请求 | 每 5 秒 25 个请求 |
+| REST API 限制 | 每分钟 20 个请求 | 每 5 秒 25 个请求 |
 
 
 <sup>3</sup> 有关免费 (F0) 定价层，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月限额。<br/>
@@ -89,7 +104,7 @@ ms.locfileid: "91567156"
 并发请求限制参数的现有值不通过 Azure 门户、命令行工具或 API 请求显示。 若要验证现有值，请创建 Azure 支持请求。
 
 >[!NOTE]
->[语音容器](speech-container-howto.md) 不需要增加并发请求限制，因为容器只受托管它们的硬件的 cpu 的约束。
+>[语音容器](speech-container-howto.md) 不需要增加并发请求限制，因为容器只受托管它们的硬件的 cpu 的约束。 但是，语音容器具有其自己的容量限制，应考虑这些限制。 请参阅 "是否可以 *帮助进行容量规划和本地的语音到文本容器的成本估算？"* 从 [语音容器常见问题解答](speech-container-faq.md)。
 
 #### <a name="have-the-required-information-ready"></a>准备好必需的信息：
 - 对于基础模型：

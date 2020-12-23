@@ -9,26 +9,27 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP，Azure，和，HANA，Azure NetApp 文件，快照
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0df2199a2afdbea1ee1c6c543df324e9fe3cc3e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450692"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967476"
 ---
-# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS 4.1 卷
+# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷
 
-Azure NetApp 文件提供可用于 **/hana/shared**、 **/hana/data**和 **/hana/log** 卷的本机 NFS 共享。 对 **/hana/data** 和 **/hana/log** 卷使用基于和的 NFS 共享需要使用版本 4.1 nfs 协议。 如果在和上基于共享，则不支持使用 NFS 协议 v3 作为 **/hana/data** 和 **/hana/log** 卷。 
+Azure NetApp 文件提供可用于 **/hana/shared**、 **/hana/data** 和 **/hana/log** 卷的本机 NFS 共享。 对 **/hana/data** 和 **/hana/log** 卷使用基于和的 NFS 共享需要使用版本 4.1 nfs 协议。 如果在和上基于共享，则不支持使用 NFS 协议 v3 作为 **/hana/data** 和 **/hana/log** 卷。 
 
 
 > [!IMPORTANT]
-> **不**支持在 Azure NetApp 文件上实现的 NFS v3 协议适用于 **/hana/data**和 **/hana/log**。 从功能角度来看，NFS 4.1 对于 **/hana/data** 和 **/hana/log** 卷是必需的。 但对于 **/hana/shared** 卷，nfs V3 或 nfs v2.0 协议可从功能角度来使用。
+> **不** 支持在 Azure NetApp 文件上实现的 NFS v3 协议适用于 **/hana/data** 和 **/hana/log**。 从功能角度来看，NFS 4.1 对于 **/hana/data** 和 **/hana/log** 卷是必需的。 但对于 **/hana/shared** 卷，nfs V3 或 nfs v2.0 协议可从功能角度来使用。
 
 ## <a name="important-considerations"></a>重要注意事项
 
@@ -91,7 +92,7 @@ LIF 和单个 Linux 会话的最大吞吐量介于1.2 到 1.4 GB/秒之间。
 > [!IMPORTANT]
 > 无论在单个 NFS 卷上部署的容量如何，预计吞吐量都将 1.2-1.4 GB/秒的带宽范围（由虚拟机中的使用者利用）内稳定下来。 这与 ANF 产品/服务的基础体系结构以及围绕 NFS 的相关 Linux 会话限制有关。 [Azure NetApp 文件的性能基准测试结果](../../../azure-netapp-files/performance-benchmarks-linux.md)一文中记录的性能和吞吐量数针对具有多个客户端 VM 的一个共享 NFS 卷而执行，因此具有多个会话。 这种情况不同于我们在 SAP 中测量的情况。 我们针对 NFS 卷衡量单个 VM 的吞吐量的位置。 托管在和上。
 
-为了满足数据和日志的 SAP 最小吞吐量要求，以及 **/hana/shared**的准则，建议的大小如下所示：
+为了满足数据和日志的 SAP 最小吞吐量要求，以及 **/hana/shared** 的准则，建议的大小如下所示：
 
 | 数据量(Volume) | 大小<br /> 高级存储层 | 大小<br /> 超级存储层 | 支持的 NFS 协议 |
 | --- | --- | --- |
@@ -131,7 +132,7 @@ LIF 和单个 Linux 会话的最大吞吐量介于1.2 到 1.4 GB/秒之间。
  
 
 ## <a name="backup"></a>备份
-除了对 [Azure 虚拟机上的 SAP HANA 备份指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)一文中所述的 SAP HANA 数据库进行流式备份和 azure 备份服务备份以外，Azure NetApp 文件也可以用于执行基于存储的快照备份。 
+除了对 [Azure 虚拟机上的 SAP HANA 备份指南](./sap-hana-backup-guide.md)一文中所述的 SAP HANA 数据库进行流式备份和 azure 备份服务备份以外，Azure NetApp 文件也可以用于执行基于存储的快照备份。 
 
 SAP HANA 支持：
 
@@ -195,4 +196,4 @@ root # > azcopy sync '/hana/data/SID/mnt00001/.snapshot' 'https://azacsnaptmytes
 ## <a name="next-steps"></a>后续步骤
 阅读以下文章：
 
-- [Azure 虚拟机的 SAP HANA 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [Azure 虚拟机的 SAP HANA 高可用性](./sap-hana-availability-overview.md)

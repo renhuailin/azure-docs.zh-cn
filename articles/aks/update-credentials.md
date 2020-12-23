@@ -5,12 +5,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 群集更新或重置
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: c787f172bc03e11c574c4de967aee05da9df18aa
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871218"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427507"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 
@@ -22,7 +22,7 @@ ms.locfileid: "88871218"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-需要安装并配置 Azure CLI 2.0.65 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>为 AKS 群集更新或创建新的服务主体
 
@@ -32,7 +32,7 @@ ms.locfileid: "88871218"
 * 创建新服务主体并更新群集以使用这些新凭据。 
 
 > [!WARNING]
-> 如果选择创建 *新* 的服务主体，则更新大型 AKS 群集以使用这些凭据可能需要很长时间才能完成。
+> 如果选择创建新服务主体，那么更新大型 AKS 群集以使用这些凭据可能需要很长时间才能完成。
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>检查服务主体的到期日期
 
@@ -104,7 +104,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret "$SP_SECRET"
+    --client-secret $SP_SECRET
 ```
 
 对于中小型群集，在 AKS 中更新服务主体凭据需要一段时间。

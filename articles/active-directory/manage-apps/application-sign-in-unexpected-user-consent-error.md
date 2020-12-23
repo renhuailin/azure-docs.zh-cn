@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321940"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658479"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
 
-本文介绍对应用程序进行许可期间可能发生的错误。 如果要对不包含任何错误消息的意外许可提示进行故障排除，请参阅 [Azure AD 的身份验证方案](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios)。
+本文介绍对应用程序进行许可期间可能发生的错误。 如果要对不包含任何错误消息的意外许可提示进行故障排除，请参阅 [Azure AD 的身份验证方案](../develop/authentication-vs-authorization.md)。
 
 与 Azure Active Directory 集成的许多应用程序需要获取访问其他资源的权限才能正常工作。 当这些资源也与 Azure Active Directory 集成时，通常使用通用许可框架来请求访问它们的权限。 这会显示许可提示，此情形通常发生在首次使用应用程序时，但也可能发生在后续使用应用程序时。
 
@@ -78,18 +78,18 @@ ms.locfileid: "91321940"
 
     -   从 Azure AD 应用程序库添加应用程序
 
-## <a name="risky-app-error-and-warning"></a>风险应用错误和警告
-* 此应用程序可能会有风险。 如果信任此应用，请让管理员授予你访问权限。
-* 此应用程序可能会有风险。 仅当你信任此应用时才继续。
+## <a name="risky-app-error-and-warning"></a>关于有风险的应用的错误和警告
+* **AADSTS900941:** 管理员同意是必需的。 应用被视为有风险。 (AdminConsentRequiredDueToRiskyApp)
+* 这个应用可能有风险。 如果你信任此应用，请让管理员授予你访问权限。
+* **AADSTS900981:** 有风险的应用收到一个管理员同意请求。 (AdminConsentRequestRiskyAppWarning)
+* 这个应用可能有风险。 仅当你信任此应用时继续。
 
-当 Microsoft 确定同意请求可能会有风险时，将显示这两条消息。 在许多其他因素中，如果已 [验证的发布者](../develop/publisher-verification-overview.md) 尚未添加到应用注册中，则可能会发生这种情况。 禁用 [管理员同意工作流](configure-admin-consent-workflow.md) 时，会向最终用户显示第一条消息。 当管理员同意工作流启用和管理员时，第二条消息会显示给最终用户。 
+当 Microsoft 确定同意请求可能存在风险时，将显示这两条消息。 在许多其他因素中，如果已 [验证的发布者](../develop/publisher-verification-overview.md) 尚未添加到应用注册中，则可能会发生这种情况。 禁用 [管理员同意工作流](configure-admin-consent-workflow.md) 时，会向最终用户显示第一个错误代码和消息。 如果启用管理员同意工作流，则将向最终用户和管理员显示第二个代码和消息。 
 
-最终用户将无法向检测到风险的应用授予许可。 管理员可以，但应评估应用非常 carefuly，并继续小心。 如果在进一步审查时应用看起来可疑，可以通过同意屏幕向 Microsoft 报告。 
+最终用户将无法对检测为有风险的应用授予许可。 管理员可以评估应用，但必须谨慎行事。 如果该应用在进一步审查后看起来可疑，可以从同意屏幕向 Microsoft 报告。 
 
 ## <a name="next-steps"></a>后续步骤 
 
-[Azure Active Directory（v1 终结点）中的应用、权限和许可](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Azure Active Directory（v1 终结点）中的应用、权限和许可](../develop/quickstart-register-app.md)<br>
 
-[Azure Active Directory（v2.0 终结点）中的范围、权限和许可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+[Azure Active Directory（v2.0 终结点）中的范围、权限和许可](../develop/v2-permissions-and-consent.md)

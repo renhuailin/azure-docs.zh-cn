@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631335"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370434"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -29,7 +29,7 @@ ms.locfileid: "91631335"
 
 下图描绘了 Azure VM 上运行的应用程序的典型 Azure 环境：
 
-![客户环境](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![描述 Azure Vm 上运行的应用程序的典型 Azure 环境的关系图。](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 如果使用 Azure ExpressRoute 或从本地网络到 Azure 的 VPN 连接，则环境如下：
 
@@ -40,13 +40,13 @@ ms.locfileid: "91631335"
 >[!IMPORTANT]
 > Site Recovery 不支持使用经过身份验证的代理控制网络连接，并且无法启用复制。
 
+>[!NOTE]
+>- 不应执行基于 IP 地址的筛选来控制出站连接。
+>- 不应在 Azure 路由表中添加 Azure Site Recovery 的 IP 地址来控制出站连接。
 
 ## <a name="outbound-connectivity-for-urls"></a>URL 的出站连接
 
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许以下 Site Recovery URL：
-
->[!NOTE]
-> 不应执行基于 IP 地址的筛选来控制出站连接。
 
 **URL** | **详细信息**
 --- | ---
@@ -59,12 +59,12 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
 ## <a name="outbound-connectivity-using-service-tags"></a>使用服务标记的出站连接
 
-如果使用 NSG 来控制出站连接，需要允许这些服务标记。
+使用 NSG 控制出站连接时，需要允许这些服务标记。
 
 - 对于源区域中的存储帐户：
-    - 为源区域创建基于[存储服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则。
+    - 为源区域创建基于[存储服务标记](../virtual-network/network-security-groups-overview.md#service-tags)的 NSG 规则。
     - 允许这些地址，才能从 VM 将数据写入到缓存存储帐户。
-- 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
+- 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/network-security-groups-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
 - 为目标区域创建基于 EventsHub 服务标记的 NSG 规则，以允许访问 Site Recovery 监视。
 - 创建基于 AzureSiteRecovery 服务标记的 NSG 规则，以允许访问任何区域中的 Site Recovery 服务。
 - 创建基于 AzureKeyVault 服务标记的 NSG 规则。 仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做。

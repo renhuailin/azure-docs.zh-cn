@@ -1,6 +1,6 @@
 ---
 title: 会话管理 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 了解 Threat Modeling Tool 中公开的威胁的会话管理缓解措施。 请参阅缓解信息和查看代码示例。
+description: 了解针对 Threat Modeling Tool 中暴露的威胁的会话管理缓解措施。 请参阅缓解措施信息并查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: c26acb1460516781b34a5dcc861164e9ef87a37a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331618"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518095"
 ---
 # <a name="security-frame-session-management"></a>安全框架：会话管理
 | 产品/服务 | 文章 |
@@ -159,7 +159,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - OnPrem |
-| **参考**              | [httpCookies 元素（ASP.NET 设置架构）](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、[HttpCookie.Secure 属性](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **参考**              | [httpCookies 元素（ASP.NET 设置架构）](/previous-versions/dotnet/netframework-4.0/ms228262(v=vs.100))、[HttpCookie.Secure 属性](/dotnet/api/system.web.httpcookie.secure) |
 | **步骤** | 通常只能从 Cookie 限定到的域访问这些 Cookie。 遗憾的是，“域”的定义不包括协议，因此，通过 HTTPS 创建的 Cookie 可通过 HTTP 访问。 “secure”特性可向浏览器指明，只能通过 HTTPS 使用 Cookie。 请确保通过 HTTPS 设置的所有 Cookie 使用 **secure** 特性。 可在 web.config 文件通过将 requireSSL 属性设置为 true，来强制实施此要求。 这是一种首选方法，因为它会强制所有当前和未来的 Cookie 使用 **secure** 属性，而无需对代码进一步进行更改。|
 
 ### <a name="example"></a>示例
@@ -221,7 +221,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体 |
 | **属性**              | 空值  |
-| **参考**              | [FormsAuthentication.RequireSSL 属性](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
+| **参考**              | [FormsAuthentication.RequireSSL 属性](/dotnet/api/system.web.security.formsauthentication.requiressl) |
 | **步骤** | 可以使用配置元素的 requireSSL 特性，在 ASP.NET 应用程序的配置文件中设置 RequireSSL 属性值。 可通过设置 requireSSL 特性，在 ASP.NET 应用程序的 Web.config 文件中指定是否需要使用传输层安全性 (TLS)（以前称为 SSL（安全套接字层））将窗体身份验证 Cookie 返回到服务器。|
 
 ### <a name="example"></a>示例 
@@ -238,7 +238,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
-| **参考**              | [Windows Identity Foundation (WIF) 配置 – 第 II 部分](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
+| **参考**              | [Windows Identity Foundation (WIF) 配置 – 第 II 部分](/archive/blogs/alikl/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler) |
 | **步骤** | 要为 FedAuth Cookie 设置 httpOnly 特性，应将 hideFromCsript 特性值应设置为 True。 |
 
 ### <a name="example"></a>示例
@@ -358,7 +358,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体 |
 | **属性**              | 空值  |
-| **参考**              | [利用 ASP.NET 内置功能来防范 Web 攻击](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
+| **参考**              | [利用 ASP.NET 内置功能来防范 Web 攻击](/previous-versions/dotnet/articles/ms972969(v=msdn.10)#securitybarriers_topic2) |
 | **步骤** | 可以通过将 ViewStateUserKey 设置为某个随机字符串（该字符串因用户而异，可根据用户 ID 设置，最好是根据会话 ID 设置），来缓解基于 Web 窗体的应用程序中的 CSRF 攻击。 出于技术和社会方面的多种原因，根据会话 ID 设置此属性要好得多，因为会话 ID 不可预测、会超时，并且根据不同的用户而异。|
 
 ### <a name="example"></a>示例
@@ -378,7 +378,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [HttpSessionState.Timeout 属性](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
+| **参考**              | [HttpSessionState.Timeout 属性](/dotnet/api/system.web.sessionstate.httpsessionstate.timeout) |
 | **步骤** | 会话超时是指由于用户在某个间隔时间（由 Web 服务器定义）内未在网站上执行任何操作而发生的事件。 服务器端发生该事件时，会将用户会话的状态更改为“invalid”（即，“不再使用”），并指示 Web 服务器销毁该会话（删除其中包含的所有数据）。 以下代码示例在 Web.config 文件中将超时会话特性设置为 15 分钟。|
 
 ### <a name="example"></a>示例
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体 |
 | **属性**              | 空值  |
-| **参考**              | [身份验证 (ASP.NET 设置架构) 的 Forms 元素 ](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **参考**              | [身份验证 (ASP.NET 设置架构) 的 Forms 元素 ](/previous-versions/dotnet/netframework-4.0/1d3t3c61(v=vs.100)) |
 | **步骤** | 将窗体身份验证票证 Cookie 超时设置为 15 分钟|
 
 ### <a name="example"></a>示例

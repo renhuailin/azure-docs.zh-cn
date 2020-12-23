@@ -1,5 +1,5 @@
 ---
-title: 获取 web 应用中调用 web Api 的令牌 |Microsoft
+title: 获取调用 Web API 的 Web 应用中的令牌 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何获取调用 Web API 的 Web 应用的令牌
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: c8af9ddd3649e2a5757e47ab2a3d8edca1c83929
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396172"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442610"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用：获取应用的令牌
 
@@ -28,11 +28,11 @@ ms.locfileid: "91396172"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-*Microsoft* 将添加扩展方法，这些扩展方法为调用 Microsoft Graph 或下游 Web API 提供便利服务。 这些方法在 [调用 Web api 的 web 应用](scenario-web-app-call-api-call-api.md)中有详细说明：调用 API。 使用这些帮助器方法，你无需手动获取令牌。
+Microsoft.Identity.Web 添加了扩展方法，这些方法为调用 Microsoft Graph 或下游 Web API 提供便利服务。 若要详细了解这些方法，请参阅[调用 Web API 的 Web 应用：调用 API](scenario-web-app-call-api-call-api.md)。 使用这些帮助程序方法，你无需手动获取令牌。
 
-但是，如果你确实想要手动获取一个令牌，以下代码显示了一个示例，说明如何在主控制器中使用*Microsoft。* 使用 REST API (，而不是 Microsoft Graph SDK) 来调用 Microsoft Graph。 若要获取令牌以调用下游 API，请在 `ITokenAcquisition` 控制器的构造函数中将服务注入依赖关系注入 (或页面构造函数（如果你使用 Blazor) ），并在控制器操作中使用它，为用户 () 获取令牌， `GetAccessTokenForUserAsync` 或 `GetAccessTokenForAppAsync` 在后台程序方案中 () 获取应用程序的令牌。
+但是，如果你确实想要手动获取令牌，可以通过以下代码以示例方式了解如何使用 Microsoft.Identity.Web 在主控制器中执行此操作。 它使用 REST API（而不是 Microsoft Graph SDK）调用 Microsoft Graph。 若要获取令牌以调用下游 API，可以通过控制器构造函数（如果使用 Blazor，则为页面构造函数）中的依赖项注入来注入 `ITokenAcquisition` 服务，并在控制器操作中使用该服务，从而为用户 (`GetAccessTokenForUserAsync`) 或守护程序方案中的应用程序本身 (`GetAccessTokenForAppAsync`) 获取令牌。
 
-控制器方法受属性保护，确保 `[Authorize]` 只有经过身份验证的用户才能使用 web 应用。
+控制器方法受 `[Authorize]` 属性的保护，该属性确保只有经过身份验证的用户可使用 Web 应用。
 
 ```csharp
 [Authorize]
@@ -87,7 +87,7 @@ public async Task<IActionResult> Profile()
 - 受 [Authorize] 属性保护的控制器操作会提取控制器的 `ClaimsPrincipal` 成员的租户 ID 和用户 ID。 （ASP.NET 使用 `HttpContext.User`。）
 - 然后，它会构建一个 MSAL.NET `IConfidentialClientApplication` 对象。
 - 最后，它调用机密客户端应用程序的 `AcquireTokenSilent` 方法。
-- 如果需要交互，web 应用需要质询用户 (重新登录) 并要求提供更多声明。
+- 在必须进行交互的情况下，Web 应用需要质询用户（重新登录）并要求提供更多声明。
 
 以下代码片段是从 [ms-identity-aspnet-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.NET MVC 代码示例中的 [HomeController.cs#L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) 提取的：
 
@@ -203,5 +203,4 @@ def graphcall():
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [调用 Web API](scenario-web-app-call-api-call-api.md)
+转到本方案中的下一篇文章， [调用 WEB API](scenario-web-app-call-api-call-api.md)。

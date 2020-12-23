@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 12/07/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf03dffe82d611f10639af2a147bc2d9e9316621
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052768"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779356"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 >
 > 如果你的 IT 团队尚未启用重置自己密码的功能，请联系支持人员以获得更多帮助。
 
-## <a name="how-does-the-password-reset-process-work"></a>密码重置过程是如何工作的？
+## <a name="how-does-the-password-reset-process-work"></a>密码重置过程如何工作？
 
 用户可以使用 [SSPR 门户](https://aka.ms/sspr)来重置或更改其密码。 他们必须首先注册其所需的身份验证方法。 当用户访问 SSPR 门户时，Azure 平台会考虑以下因素：
 
@@ -60,20 +60,17 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 如果前面的所有检查都已成功完成，则指导用户完成重置或更改其密码的过程。
 
 > [!NOTE]
-> SSPR 可能会在密码重置过程中向用户发送电子邮件通知。 使用 SMTP 中继服务发送这些电子邮件，该服务在多个区域的活动-主动模式下运行。
+> SSPR 可能会在密码重置过程中向用户发送电子邮件通知。 这些电子邮件是使用 SMTP 中继服务发送的，该服务跨多个区域以主动-主动模式运行。
 >
-> SMTP 中继服务接收并处理电子邮件正文，但不存储它。 可能包含客户提供的信息的 SSPR 电子邮件正文未存储在 SMTP 中继服务日志中。 日志只包含协议元数据。
+> SMTP 中继服务接收并处理电子邮件正文，但不存储它。 可能包含客户提供的信息的 SSPR 电子邮件正文未存储在 SMTP 中继服务日志中。 这些日志只包含协议元数据。
 
 若要开始使用 SSPR，请完成以下教程：
 
 > [!div class="nextstepaction"]
 > [教程：启用自助式密码重置 (SSPR)](tutorial-enable-sspr.md)
 
-## <a name="registration-options"></a>注册选项
 
-用户必须先注册自己以及要使用的身份验证方法，然后才能使用 SSPR 重置或更改其密码。 如前一部分所述，用户必须注册 SSPR，并应用相应的许可证。
-
-### <a name="require-users-to-register-when-they-sign-in"></a>要求用户在登录时注册
+## <a name="require-users-to-register-when-they-sign-in"></a>要求用户在登录时注册
 
 可以启用此选项在用户使用 Azure AD 登录到任何应用程序时要求用户完成 SSPR 注册。 此工作流包括以下应用程序：
 
@@ -92,7 +89,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 >
 > 如果用户已登录，则用于注册 SSPR 的此中断不会中断用户的连接。
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>设置用户必须在几天后重新确认其身份验证信息
+## <a name="reconfirm-authentication-information"></a>重新确认身份验证信息
 
 为了在需要使用身份验证方法来重置或更改用户的密码时确保身份验证方法正确，你可以要求用户在某段时间过后确认其已注册的信息。 仅当你启用了“要求用户在登录时注册”选项时，此选项才可用。
 
@@ -154,9 +151,9 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 
 | 注册的方法数 | 必选方法数 | 结果 |
 | :---: | :---: | :---: |
-| 大于等于 1 | 1 | 能够重置或解锁**** |
-| 1 | 2 | 不可重置或解锁**** |
-| 2 或更大 | 2 | 能够重置或解锁**** |
+| 大于等于 1 | 1 | 能够重置或解锁 |
+| 1 | 2 | 不可重置或解锁 |
+| 2 或更大 | 2 | 能够重置或解锁 |
 
 更改可用的身份验证方法也可能会给用户带来问题。 如果更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。
 
@@ -195,9 +192,9 @@ Azure AD 会检查当前的混合连接，并在 Azure 门户中提供以下消�
 * 已启动并运行本地写回客户端。
 * Azure AD 处于联机状态并连接到本地写回客户端。 但是，似乎 Azure AD Connect 的已安装版本已经过期了。 请考虑[更新 Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md)，确保拥有最新连接功能和重要 bug 修复。
 * 很遗憾，因为 Azure AD Connect 的已安装版本已过期，我们无法查看你的本地写回客户端状态。 [更新 Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) 可查看连接状态。
-* 很遗憾，现在似乎无法连接到本地写回客户端。 [对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
+* 很遗憾，现在似乎无法连接到本地写回客户端。 [对 Azure AD Connect 进行故障排除](./troubleshoot-sspr-writeback.md)以还原连接。
 * 很遗憾，因为密码写回未正确配置，无法连接到本地写回客户端。 [配置密码写回](./tutorial-enable-sspr-writeback.md)以还原连接。
-* 很遗憾，现在似乎无法连接到本地写回客户端。 这可能是因我们终端的临时问题导致。 如果问题仍然存在，[对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
+* 很遗憾，现在似乎无法连接到本地写回客户端。 这可能是因我们终端的临时问题导致。 如果问题仍然存在，[对 Azure AD Connect 进行故障排除](./troubleshoot-sspr-writeback.md)以还原连接。
 
 若要开始 SSPR 写回，请完成以下教程：
 
@@ -226,8 +223,8 @@ SSPR 在 Active Directory 中执行管理员发起的密码重置的等效操作
 
 所有企业到企业 (B2B) 配置完全支持密码重置和更改。 以下三种情况支持 B2B 用户密码重置：
 
-* **已有 Azure AD 租户的合作伙伴组织中的用户**：如果与你合作的组织已有 Azure AD 租户，我们将遵守该租户中已启用的任何密码重置策略。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR。 Microsoft 365 客户不收取额外费用。
-* 通过自助注册**注册的用户**：如果与你合作的组织使用[自助注册](../users-groups-roles/directory-self-service-signup.md)功能来访问租户，我们会允许他们使用已注册的电子邮件来重置密码。
+* **已有 Azure AD 租户的合作伙伴组织中的用户**：如果与你合作的组织已有 Azure AD 租户，我们将遵守该租户中已启用的任何密码重置策略。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR。 对于 Microsoft 365 客户，不会额外收费。
+* 通过自助注册 **注册的用户**：如果与你合作的组织使用 [自助注册](../enterprise-users/directory-self-service-signup.md)功能来访问租户，我们会允许他们使用已注册的电子邮件来重置密码。
 * **B2B 用户**：使用新的 [Azure AD B2B 功能](../external-identities/what-is-b2b.md)创建的任何新的 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
 
 若要测试此方案，请通过这些合作伙伴用户之一转到 https://passwordreset.microsoftonline.com。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d5aba3638ce19c24841fe5b49b19b1139327b790
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f26f3e6e80bf854ff4f57503aa43de2558f07a1e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578081"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888549"
 ---
 # <a name="client-libraries-and-rest-apis"></a>客户端库和 REST API
 
@@ -39,20 +39,18 @@ Azure 通信服务功能在概念上分为六个区域。 某些区域具有完�
 
 下面详细介绍了单独的客户端库包的发布位置。 
 
-
-| 区域           | JavaScript | .NET | Python | Java | Swift 或 Obj-C | Java (Android) | 其他                          |
+| 领域           | JavaScript | .NET | Python | Java SE | iOS | Android | 其他                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
-| Azure 资源管理器 | -         | [NuGet](https://www.NuGet.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [通过 GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
-| 通用         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Common/)    | 不可用      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [通过 GitHub Swift](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
-| 管理 | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Administration)    | [PyPi](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
-| 聊天           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -  | -  | -                              |
-| SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
-| 调用        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub-C via GitHub](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
-| 参考文档     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | 
-
+| Azure 资源管理器 | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [通过 GitHub 的 Go](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
+| 通用         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | 不适用      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| 管理 | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Administration)    | [PyPi](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
+| 聊天           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
+| SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
+| 调用        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
+| 参考文档     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     |  (Obj) ✔️     | ✔️            | -                              |
 ## <a name="rest-apis"></a>REST API
 
-与 [docs.microsoft.com](https://docs.microsoft.com/rest/api/azure/)中的其他 Azure REST api 一起介绍了通信服务 api。 本文档将说明如何构造 HTTP 消息，并提供使用 Postman 的指导。 此文档在 [GitHub](https://github.com/Azure/azure-rest-api-specs)上也以 Swagger 格式提供。
+与 [docs.microsoft.com](/rest/api/azure/)中的其他 Azure REST api 一起介绍了通信服务 api。 本文档将说明如何构造 HTTP 消息，并提供使用 Postman 的指导。 此文档在 [GitHub](https://github.com/Azure/azure-rest-api-specs)上也以 Swagger 格式提供。
 
 ## <a name="additional-support-details"></a>其他支持详细信息
 
@@ -83,7 +81,7 @@ Azure 通信服务功能在概念上分为六个区域。 某些区域具有完�
 ## <a name="api-stability-expectations"></a>API 稳定性期望 
 
 > [!IMPORTANT]
-> 本部分提供有关标记为 **稳定**的 REST api 和客户端库的指导。 在 **未通知的情况下**，可能更改或弃用标记为预发布、预览或 Beta 的 api。 目前，Azure 通信服务处于 **公共预览阶段**，api 被标记为这样。
+> 本部分提供有关标记为 **稳定** 的 REST api 和客户端库的指导。 在 **未通知的情况下**，可能更改或弃用标记为预发布、预览或 Beta 的 api。 目前，Azure 通信服务处于 **公共预览阶段**，api 被标记为这样。
 
 将来，我们可能会停用通信服务客户端库的版本，我们可能会引入 REST Api 和发布的客户端库的重大更改。 Azure 通信服务 *通常* 会遵循两个可支持性策略来停用服务版本：
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9f432b417140440584bf4dfd01ed45814a746953
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440348"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320918"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -103,5 +103,4 @@ systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
 DSVM 上的 Spark 实例若要访问存储在 Blob 存储或 Azure Data Lake Storage 中的数据，必须根据 $SPARK_HOME/conf/core-site.xml.template 中找到的模板来创建和配置 `core-site.xml` 文件。 必须具有相应的凭据，才能访问 Blob 存储和 Azure Data Lake Storage。 （请注意，这些模板文件使用占位符表示 Blob 存储和 Azure Data Lake Storage 配置。）
 
-若要详细了解如何创建 Azure Data Lake Storage 服务凭据，请参阅 [Azure Data Lake Storage Gen1 身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)。 在 core-site.xml 文件中输入 Blob 存储或 Azure Data Lake Storage 的凭据后，可使用 wasb:// 和 adl:// 这两个 URI 前缀引用存储在这些源中的数据。
-
+若要详细了解如何创建 Azure Data Lake Storage 服务凭据，请参阅 [Azure Data Lake Storage Gen1 身份验证](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)。 在 core-site.xml 文件中输入 Blob 存储或 Azure Data Lake Storage 的凭据后，可使用 wasb:// 和 adl:// 这两个 URI 前缀引用存储在这些源中的数据。

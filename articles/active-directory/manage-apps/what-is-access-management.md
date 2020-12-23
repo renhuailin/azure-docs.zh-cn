@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c73a5ccd9e16fb5efd9fefca6253701f942c3202
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604098"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367782"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 
@@ -94,4 +94,4 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 ## <a name="next-steps"></a>后续步骤
 * [使用条件访问保护应用](../conditional-access/concept-conditional-access-cloud-apps.md)
-* [自助服务组管理/SSAA](../users-groups-roles/groups-self-service-management.md)
+* [自助服务组管理/SSAA](../enterprise-users/groups-self-service-management.md)

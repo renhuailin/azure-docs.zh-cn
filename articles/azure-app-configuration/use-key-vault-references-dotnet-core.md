@@ -3,8 +3,7 @@ title: 关于在 ASP.NET Core 应用中使用 Azure 应用程序配置 Key Vault
 description: 本教程介绍如何在 ASP.NET Core 应用中使用 Azure 应用程序配置的 Key Vault 引用
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/08/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 94bab9506d2bf7c29f997bcbfd400a412d5ac041
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213252"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932228"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用 Key Vault 引用
 
@@ -51,7 +50,7 @@ ms.locfileid: "88213252"
 
 1. 选择 Azure 门户左上角的“创建资源”选项： 
 
-    ![Key Vault 创建完成后的输出](./media/quickstarts/search-services.png)
+    ![屏幕截图显示 Azure 门户中的“创建资源”选项。](./media/quickstarts/search-services.png)
 1. 在搜索框中输入 **Key Vault**。
 1. 在结果列表中，选择左侧的“Key Vault”  。
 1. 在“Key Vault”中选择“添加”。  
@@ -65,7 +64,7 @@ ms.locfileid: "88213252"
 
 目前，只有你的 Azure 帐户有权访问这个新保管库。
 
-![Key Vault 创建完成后的输出](./media/quickstarts/vault-properties.png)
+![屏幕截图显示密钥保管库。](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>向 Key Vault 添加机密
 
@@ -122,7 +121,7 @@ ms.locfileid: "88213252"
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. 添加环境变量以存储 *clientId*、*clientSecret*和 *tenantId* 的值。
+1. 添加环境变量以存储 *clientId*、*clientSecret* 和 *tenantId* 的值。
 
     #### <a name="windows-command-prompt"></a>[Windows 命令提示符](#tab/cmd)
 

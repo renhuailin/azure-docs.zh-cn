@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b260e51321e14a6ea1d1ee75f88ca7564b83d492
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552539"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516735"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>教程：Azure Active Directory 与 N2F - Expense reports 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88552539"
 * 可让用户使用其 Azure AD 帐户自动登录到 N2F - Expense reports（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -61,7 +61,7 @@ ms.locfileid: "88552539"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **N2F - Expense reports**，在结果面板中选择“N2F - Expense reports”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **N2F - Expense reports** ，在结果面板中选择“N2F - Expense reports”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的 N2F - Expense reports](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "88552539"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "88552539"
 
 4. 在“基本 SAML 配置”部分，如果你要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为应用已与 Azure 进行预集成。  
 
-    ![N2F - Expense reports 域和 URL 单一登录信息](common/preintegrated.png)
+    ![屏幕截图显示了“基于 SAML 的登录”页面，其中包含“基本 SAML 配置”。](common/preintegrated.png)
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![N2F - Expense reports 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示了“集成”页面，你可以在其中添加“Azure AD 单一登录”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，键入 URL：`https://www.n2f.com/app/`
 
@@ -127,23 +127,23 @@ ms.locfileid: "88552539"
 
 2. 单击“设置”，然后从下拉列表中选择“高级设置”。  
 
-    ![N2F - Expense reports 配置](./media/n2f-expensereports-tutorial/configure1.png)
+    ![屏幕截图显示选择了“高级设置”。](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. 选择“帐户设置”选项卡。 
 
-    ![N2F - Expense reports 配置](./media/n2f-expensereports-tutorial/configure2.png)
+    ![屏幕截图显示选择了“帐户设置”。](./media/n2f-expensereports-tutorial/configure2.png)
 
 4. 依次选择“身份验证”、“+ 添加身份验证方法”选项卡。  
 
-    ![N2F - Expense reports 配置](./media/n2f-expensereports-tutorial/configure3.png)
+    ![屏幕截图显示了“帐户设置身份验证”，你可以在其中添加身份验证方法。](./media/n2f-expensereports-tutorial/configure3.png)
 
 5. 选择“SAML Microsoft Office 365”作为身份验证方法。 
 
-    ![N2F - Expense reports 配置](./media/n2f-expensereports-tutorial/configure4.png)
+    ![屏幕截图显示了“身份验证方法”，其中选择了“SAML Microsoft Office 365”。](./media/n2f-expensereports-tutorial/configure4.png)
 
 6. 在“身份验证方法”  部分执行以下步骤：
 
-    ![N2F - Expense reports 配置](./media/n2f-expensereports-tutorial/configure5.png)
+    ![屏幕截图显示了“身份验证方法”，你可以在其中输入所述值。](./media/n2f-expensereports-tutorial/configure5.png)
 
     a. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
@@ -212,19 +212,19 @@ ms.locfileid: "88552539"
 
 2. 单击“设置”，然后从下拉列表中选择“高级设置”。  
 
-    ![N2F - Expense - 添加用户](./media/n2f-expensereports-tutorial/configure1.png)
+    ![屏幕截图显示选择了“高级设置”。](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. 在左侧导航面板中选择“用户”选项卡。 
 
-    ![N2F - Expense reports 配置](./media/n2f-expensereports-tutorial/user1.png)
+    ![屏幕截图显示选择了“用户”。](./media/n2f-expensereports-tutorial/user1.png)
 
 4. 选择“+ 新建用户”选项卡。 
 
-    ![N2F - Expense reports 配置](./media/n2f-expensereports-tutorial/user2.png)
+    ![屏幕截图显示了“新用户”选项。](./media/n2f-expensereports-tutorial/user2.png)
 
 5. 在“用户”部分执行以下步骤： 
 
-    ![N2F - Expense reports 配置](./media/n2f-expensereports-tutorial/user3.png)
+    ![屏幕截图显示了你可以在其中输入所述值的部分。](./media/n2f-expensereports-tutorial/user3.png)
 
     a. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com。
 
@@ -243,13 +243,12 @@ ms.locfileid: "88552539"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 N2F - Expense reports 磁贴时，应当会自动登录到你为其设置了 SSO 的 N2F - Expense reports。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 N2F - Expense reports 磁贴时，应当会自动登录到你为其设置了 SSO 的 N2F - Expense reports。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

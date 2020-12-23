@@ -1,42 +1,42 @@
 ---
-title: 将 Azure 多重身份验证用于 NPS-Azure Active Directory
-description: 了解如何结合使用 Azure 多重身份验证功能和现有的网络策略服务器 (NPS) 身份验证基础结构
+title: 使用 NPS 的 Azure AD 多重身份验证-Azure Active Directory
+description: 了解如何在现有网络策略服务器 (NPS) 身份验证基础结构中使用 Azure AD 多重身份验证功能
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f7214668fc63ec8bb2e0c23d264c1aa01c9148ba
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: deb05083ca45c24a58cabf9e923b706575ef093b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368332"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562134"
 ---
-# <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-multi-factor-authentication"></a>通过 Azure 多重身份验证将现有网络策略服务器 (NPS) 基础结构集成
+# <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>将现有网络策略服务器 (NPS) 基础结构与 Azure AD 多重身份验证集成
 
-用于 Azure 多重身份验证的网络策略服务器 (NPS) 扩展将基于云的 MFA 功能添加到使用现有服务器的身份验证基础结构。 使用 NPS 扩展，可将电话呼叫、短信或电话应用验证添加到现有的身份验证流，而无需安装、配置和维护新服务器。
+网络策略服务器 (NPS) 扩展用于 Azure AD 多重身份验证使用现有服务器将基于云的 MFA 功能添加到身份验证基础结构。 使用 NPS 扩展，可将电话呼叫、短信或电话应用验证添加到现有的身份验证流，而无需安装、配置和维护新服务器。
 
-NPS 扩展充当 RADIUS 与基于云的 Azure 多重身份验证之间的适配器，为联合用户或同步用户提供另一因素身份验证。
+NPS 扩展充当 RADIUS 与基于云的 Azure AD 多重身份验证之间的适配器，为联合用户或同步用户提供第二个身份验证因素。
 
 ## <a name="how-the-nps-extension-works"></a>NPS 扩展的工作原理
 
-使用适用于 Azure 多重身份验证的 NPS 扩展时，身份验证流包括以下组件：
+使用 NPS 扩展进行 Azure AD 多重身份验证时，身份验证流程包括以下组件：
 
-1. **NAS/VPN 服务器**接收来自 VPN 客户端的请求，并将其转换为可发往 NPS 服务器的 RADIUS 请求。
-2. **NPS 服务器** 连接到 Active Directory 域服务 (AD DS) 执行 RADIUS 请求的主要身份验证，成功后，将请求传递到任何已安装的扩展。  
-3. **NPS 扩展** 将触发对 Azure 多重身份验证的请求，以便进行辅助身份验证。 该扩展收到响应后，如果 MFA 质询成功，该扩展将通过向 NPS 服务器提供由 Azure STS 颁发的、包含 MFA 声明的安全令牌，来完成身份验证请求。
-4. **AZURE MFA** 与 Azure Active Directory (Azure AD) 来检索用户的详细信息，并使用配置给用户的验证方法执行辅助身份验证。
+1. **NAS/VPN 服务器** 接收来自 VPN 客户端的请求，并将其转换为可发往 NPS 服务器的 RADIUS 请求。
+2. **NPS 服务器** 连接到 Active Directory 域服务 (AD DS) 执行 RADIUS 请求的主要身份验证，成功后，将请求传递到任何已安装的扩展。  
+3. **NPS 扩展** 将触发对 Azure AD 多重身份验证进行辅助身份验证的请求。 该扩展收到响应后，如果 MFA 质询成功，该扩展将通过向 NPS 服务器提供由 Azure STS 颁发的、包含 MFA 声明的安全令牌，来完成身份验证请求。
+4. **AZURE AD MFA** 与 Azure Active Directory (Azure AD) 进行通信以检索用户的详细信息，并使用配置给用户的验证方法执行辅助身份验证。
 
 下图显示了此高级身份验证请求流：
 
-![通过 VPN 服务器到 NPS 服务器和 Azure 多重身份验证 NPS 扩展进行用户身份验证的身份验证流示意图](./media/howto-mfa-nps-extension/auth-flow.png)
+![用户通过 VPN 服务器向 NPS 服务器进行身份验证的身份验证流关系图和 Azure AD 多重身份验证 NPS 扩展](./media/howto-mfa-nps-extension/auth-flow.png)
 
 ### <a name="radius-protocol-behavior-and-the-nps-extension"></a>RADIUS 协议行为和 NPS 扩展
 
@@ -44,27 +44,27 @@ NPS 扩展充当 RADIUS 与基于云的 Azure 多重身份验证之间的适配�
 
 ![NPS 服务器响应超时后的 RADIUS UDP 数据包流和请求的关系图](./media/howto-mfa-nps-extension/radius-flow.png)
 
-NPS 服务器可能不会在连接超时之前响应 VPN 服务器的原始请求，因为 MFA 请求可能仍在进行处理。 用户可能未成功响应 MFA 提示，因此 Azure 多重身份验证 NPS 扩展正在等待该事件完成。 在这种情况下，NPS 服务器会将其他 VPN 服务器请求识别为重复请求。 NPS 服务器会丢弃这些重复的 VPN 服务器请求。
+NPS 服务器可能不会在连接超时之前响应 VPN 服务器的原始请求，因为 MFA 请求可能仍在进行处理。 用户可能未成功响应 MFA 提示，因此 Azure AD 多因素身份验证 NPS 扩展正在等待该事件完成。 在这种情况下，NPS 服务器会将其他 VPN 服务器请求识别为重复请求。 NPS 服务器会丢弃这些重复的 VPN 服务器请求。
 
 ![NPS 服务器的关系图丢弃来自 RADIUS 服务器的重复请求](./media/howto-mfa-nps-extension/discard-duplicate-requests.png)
 
-如果查看 NPS 服务器日志，可能会看到这些附加请求被丢弃。 此行为是为了防止最终用户获取单个身份验证尝试的多个请求而设计的。 NPS 服务器事件日志中的丢弃请求不表示 NPS 服务器或 Azure 多重身份验证 NPS 扩展出现问题。
+如果查看 NPS 服务器日志，可能会看到这些附加请求被丢弃。 此行为是为了防止最终用户获取单个身份验证尝试的多个请求而设计的。 NPS 服务器事件日志中的丢弃请求不表示 NPS 服务器或 Azure AD 多重身份验证 NPS 扩展存在问题。
 
 为了最大限度地减少丢弃的请求，建议配置 VPN 服务器的超时至少为60秒。 如果需要，或要减少事件日志中的丢弃请求，可以将 VPN 服务器超时值提高到90或120秒。
 
-由于此 UDP 协议行为，NPS 服务器可能会收到重复请求并发送另一次 MFA 提示，即使用户已对初始请求做出响应。 若要避免这种计时情况，Azure 多重身份验证 NPS 扩展在将成功的响应发送到 VPN 服务器后，将继续筛选和丢弃最多10秒的重复请求。
+由于此 UDP 协议行为，NPS 服务器可能会收到重复请求并发送另一次 MFA 提示，即使用户已对初始请求做出响应。 为避免出现这种计时情况，Azure AD 多重身份验证 NPS 扩展在将成功的响应发送到 VPN 服务器后，将继续筛选和丢弃长达10秒的重复请求。
 
 ![在返回成功响应后，NPS 服务器的关系图会继续丢弃来自 VPN 服务器的重复请求](./media/howto-mfa-nps-extension/delay-after-successful-authentication.png)
 
-同样，即使在 Azure 多重身份验证提示成功的情况下，也可能会在 NPS 服务器事件日志中看到丢弃的请求。 这是预期的行为，并不表示 NPS 服务器或 Azure 多重身份验证 NPS 扩展出现问题。
+同样，即使 Azure AD 多重身份验证提示已成功，也可能会在 NPS 服务器事件日志中看到丢弃的请求。 这是预期的行为，并不表示 NPS 服务器或 Azure AD 多重身份验证 NPS 扩展的问题。
 
 ## <a name="plan-your-deployment"></a>规划部署
 
 NPS 扩展自动处理冗余，因此无需特殊配置。
 
-你可以根据需要创建任意数量的启用 Azure 多重身份验证的 NPS 服务器。 如果确实安装了多个服务器，应该为其中每个服务器使用不同的客户端证书。 为每个服务器创建一个证书意味着可以单独更新每个证书，而无需担心所有服务器的停机时间。
+您可以根据需要创建多个 Azure AD 多因素身份验证的 NPS 服务器。 如果确实安装了多个服务器，应该为其中每个服务器使用不同的客户端证书。 为每个服务器创建一个证书意味着可以单独更新每个证书，而无需担心所有服务器的停机时间。
 
-VPN 服务器路由身份验证请求，因此它们需要知道新的启用了 Azure 多重身份验证的 NPS 服务器。
+VPN 服务器路由身份验证请求，因此它们需要知道新的 Azure AD 启用多重身份验证的 NPS 服务器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,7 +72,7 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 ### <a name="licenses"></a>许可证
 
-Azure 多重身份验证的 NPS 扩展可供具有 [Azure 多重身份验证许可证的](multi-factor-authentication.md)客户使用。 Azure 多重身份验证的基于消耗的许可证（例如每用户或每个身份验证许可证）与 NPS 扩展不兼容。
+Azure AD 多重身份验证的 NPS 扩展可供具有 [Azure AD 多重身份验证的许可证](./concept-mfa-howitworks.md)的客户使用。 基于消耗的 Azure AD 多重身份验证的许可证（如按用户或按身份验证许可证）与 NPS 扩展不兼容。
 
 ### <a name="software"></a>软件
 
@@ -125,7 +125,7 @@ NPS 服务器必须能够通过端口80和443与以下 Url 通信：
 
 NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角色选择一台服务器。 我们建议选择一台不处理来自其他服务的请求的服务器，因为对于不是 RADIUS 的任何请求，NPS 扩展都会引发错误。 NPS 服务器必须设置为你的环境的主要和辅助身份验证服务器。 不能将 RADIUS 请求通过代理发送到其他服务器。
 
-1. 在服务器上，打开 **服务器管理器**。 从 "*快速*启动" 菜单中选择 "**添加角色和功能向导**"。
+1. 在服务器上，打开 **服务器管理器**。 从 "*快速* 启动" 菜单中选择 "**添加角色和功能向导**"。
 2. 对于安装类型，请选择 " **基于角色或基于功能的安装**"。
 3. 选择“网络策略和访问服务”服务器角色。 此时会弹出一个窗口，告诉你运行此角色所需的其他功能。
 4. 继续执行向导，直到出现 " *确认* " 页。 准备就绪后，选择 " **安装**"。
@@ -150,22 +150,22 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
 
 有两个因素会影响 NPS 扩展部署可以使用哪些身份验证方法：
 
-1. 在 RADIUS 客户端（VPN、Netscaler 服务器或其他客户端）与 NPS 服务器之间使用的密码加密算法。
-   - **PAP** 支持云中的 Azure 多重身份验证的所有身份验证方法：电话呼叫、单向短信、移动应用通知、OATH 硬件令牌和移动应用验证码。
+* 在 RADIUS 客户端（VPN、Netscaler 服务器或其他客户端）与 NPS 服务器之间使用的密码加密算法。
+   - **PAP** 支持在云中 Azure AD 多重身份验证的所有身份验证方法：电话呼叫、单向短信、移动应用通知、OATH 硬件令牌和移动应用验证码。
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。
 
-      > [!NOTE]
-      > 部署 NPS 扩展时，请根据这些因素评估你的用户可使用哪些方法。 如果你的 RADIUS 客户端支持 PAP，但客户端 UX 没有可用于输入验证码的输入字段，则电话呼叫和移动应用通知是两种受支持的选项。
-      >
-      > 此外，如果你的 VPN 客户端 UX 支持输入字段，并且你配置了网络访问策略，则身份验证可能会成功。 但是，在网络策略中配置的 RADIUS 属性都不会同时应用于网络访问设备，如 RRAS 服务器和 VPN 客户端。 因此，VPN 客户端的访问权限可能比所需的更多，或者不能访问。
+    > [!NOTE]
+    > 部署 NPS 扩展时，请根据这些因素评估你的用户可使用哪些方法。 如果你的 RADIUS 客户端支持 PAP，但客户端 UX 没有可用于输入验证码的输入字段，则电话呼叫和移动应用通知是两种受支持的选项。
+    >
+    > 同时，无论 (PAP、CHAP 或 EAP) 使用哪种身份验证协议，如果你的 MFA 方法是基于文本的 (SMS、移动应用验证码或 OATH 硬件令牌) 并要求用户在 "VPN 客户端 UI" 输入字段中输入代码或文本，则身份验证可能会成功。 *但* 在网络访问策略中配置的任何 radius 属性都 *不* 会转发到 RADIUS Telnet (网络访问设备，如 VPN 网关) 。 因此，VPN 客户端的访问权限可能比你需要的访问权限更多，或访问权限更少或无访问权限。
 
-2. 客户端应用程序（VPN、Netscaler 服务器或其他客户端）可以处理的输入方法。 例如，VPN 客户端是否有一些手段允许用户键入通过文本或移动应用收到的验证码？
+* 客户端应用程序（VPN、Netscaler 服务器或其他客户端）可以处理的输入方法。 例如，VPN 客户端是否有一些手段允许用户键入通过文本或移动应用收到的验证码？
 
 可以在 Azure 中[禁用不受支持的身份验证方法](howto-mfa-mfasettings.md#verification-methods)。
 
 ### <a name="register-users-for-mfa"></a>用户注册 MFA
 
-在部署和使用 NPS 扩展之前，需要为 MFA 注册需要执行 Azure 多重身份验证的用户。 若要在部署扩展时对其进行测试，还需要至少一个完全注册到 Azure 多重身份验证的测试帐户。
+在部署和使用 NPS 扩展之前，需要为 MFA 注册需要执行 Azure AD 多重身份验证的用户。 若要在部署扩展时对其进行测试，还需要至少一个完全注册 Azure AD 多重身份验证的测试帐户。
 
 如果需要创建和配置测试帐户，请使用以下步骤：
 
@@ -175,9 +175,9 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
 
 > [!IMPORTANT]
 >
-> 确保用户已成功注册 Azure 多重身份验证。 如果用户以前仅注册了自助式密码重置 (SSPR)，则为其帐户启用 StrongAuthenticationMethods。 配置 StrongAuthenticationMethods 时将强制执行 Azure 多重身份验证，即使用户仅注册了 SSPR。
+> 请确保用户已成功注册 Azure AD 多重身份验证。 如果用户以前仅注册了自助式密码重置 (SSPR)，则为其帐户启用 StrongAuthenticationMethods。 如果配置了 *StrongAuthenticationMethods* ，则即使用户仅注册了 SSPR，也会强制实施多重身份验证。 Azure AD
 >
-> 可以启用合并安全注册，该安全注册可同时配置 SSPR 和 Azure 多重身份验证。 有关详细信息，请参阅[在 Azure Active Directory 中启用合并安全信息注册](howto-registration-mfa-sspr-combined.md)。
+> 可以启用组合的安全注册，同时配置 SSPR 和 Azure AD 多重身份验证。 有关详细信息，请参阅[在 Azure Active Directory 中启用合并安全信息注册](howto-registration-mfa-sspr-combined.md)。
 >
 > 如果用户以前仅启用了 SSPR，也可以[强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。
 
@@ -186,7 +186,7 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
 > [!IMPORTANT]
 > 在不同于 VPN 接入点的服务器上安装 NPS 扩展。
 
-### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>针对 Azure MFA 下载并安装 NPS 扩展
+### <a name="download-and-install-the-nps-extension-for-azure-ad-mfa"></a>下载并安装 Azure AD MFA 的 NPS 扩展
 
 若要下载和安装 NPS 扩展，请完成以下步骤：
 
@@ -200,7 +200,7 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
 
 1. 卸载现有版本。
 1. 运行新的安装程序。
-1. * (IAS) 服务重新启动网络策略服务器*。
+1. *(IAS) 服务重新启动网络策略服务器*。
 
 ### <a name="run-the-powershell-script"></a>运行 PowerShell 脚本
 
@@ -224,6 +224,10 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
    ```
 
 1. 运行安装程序创建的 PowerShell 脚本。
+
+   可能需要首先启用 TLS 1.2 for PowerShell 才能正确连接和下载包：
+   
+   `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
 
    > [!IMPORTANT]
    > 对于使用 Azure 政府版或 Azure 中国世纪互联云的客户，请先 `Connect-MsolService` 在 *AzureMfaNpsExtnConfigSetup.ps1* 脚本中编辑 cmdlet，使其包含所需云的 *AzureEnvironment* 参数。 例如，指定 *-AzureEnvironment USGovernment* 或 *-AzureEnvironment AzureChinaCloud*。
@@ -275,7 +279,7 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
 
 对于 NPS 扩展的 release *1.0.1.32* ，现在支持读取多个证书。 此功能有助于在证书更新过期之前方便滚动。 如果你的组织运行的是早期版本的 NPS 扩展，请升级到版本 *1.0.1.32* 或更高版本。
 
-`AzureMfaNpsExtnConfigSetup.ps1` 脚本创建的证书有效期为 2 年。 监视证书的过期时间。 NPS 扩展的证书放置在 "*个人*" 下的 "*本地计算机*" 证书存储中，并*颁发给*为安装脚本提供的租户 ID。
+`AzureMfaNpsExtnConfigSetup.ps1` 脚本创建的证书有效期为 2 年。 监视证书的过期时间。 NPS 扩展的证书放置在 "*个人*" 下的 "*本地计算机*" 证书存储中，并 *颁发给* 为安装脚本提供的租户 ID。
 
 当证书接近到期日期时，应创建新的证书来替换该证书。  通过再次运行 `AzureMfaNpsExtnConfigSetup.ps1` 并在出现提示时保持相同的租户 ID，可以完成此过程。 应在环境中的每个 NPS 服务器上重复此过程。
 
@@ -287,8 +291,8 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
 
 ### <a name="configuration-limitations"></a>配置限制
 
-- 适用于 Azure 多重身份验证的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。 出于此原因，我们建议将扩展用于新部署，而非现有部署。 如果在现有部署上使用扩展，用户必须重新进行证明才能在云中填充其 MFA 详细信息。  
-- NPS 扩展使用本地 AD DS 环境中的 UPN 来识别 Azure 多重身份验证上用于执行辅助身份验证的用户。可以将该扩展配置为使用其他标识符，例如备用登录 ID 或 UPN 以外的自定义 AD DS 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)一文。
+- 用于 Azure AD 多重身份验证的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。 出于此原因，我们建议将扩展用于新部署，而非现有部署。 如果在现有部署上使用扩展，用户必须重新进行证明才能在云中填充其 MFA 详细信息。  
+- NPS 扩展使用本地 AD DS 环境中的 UPN 来识别 Azure AD 多重身份验证中的用户执行辅助身份验证。可以将该扩展配置为使用其他标识符，例如备用登录 ID 或 UPN 以外的自定义 AD DS 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)一文。
 - 并非所有加密协议都支持所有验证方法。
    - PAP 支持电话呼叫、单向短信、移动应用通知和移动应用验证码
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知
@@ -301,7 +305,7 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
 
 ### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>为未注册 MFA 的用户做好准备
 
-如果你的某些用户未注册 MFA，你可以确定当他们尝试身份验证时要发生什么行为。 若要控制此行为，请使用注册表路径*HKLM\Software\Microsoft\AzureMFA*中的设置*REQUIRE_USER_MATCH* 。 此项设置提供单个配置选项：
+如果你的某些用户未注册 MFA，你可以确定当他们尝试身份验证时要发生什么行为。 若要控制此行为，请使用注册表路径 *HKLM\Software\Microsoft\AzureMFA* 中的设置 *REQUIRE_USER_MATCH* 。 此项设置提供单个配置选项：
 
 | 密钥 | 值 | 默认 |
 | --- | ----- | ------- |
@@ -311,7 +315,7 @@ NPS 服务器连接到 Azure AD 并对 MFA 请求进行身份验证。 为此角
 
 如果将 "密钥" 设置为 " *FALSE* "，且未注册用户，则将继续进行身份验证而不执行 MFA。 如果用户在 MFA 中注册，则即使 *REQUIRE_USER_MATCH* 设置为 *FALSE*，也必须使用 mfa 进行身份验证。
 
-你可以选择在用户加入时创建此密钥并将其设置为 *FALSE* ，并且可能不会全部注册到 Azure 多重身份验证。 但是，由于设置该键允许未注册 MFA 的用户登录，因此应在转到生产环境之前删除该键。
+你可以选择在用户加入时创建此密钥并将其设置为 *FALSE* ，并且可能不会全部注册到 Azure AD 多重身份验证。 但是，由于设置该键允许未注册 MFA 的用户登录，因此应在转到生产环境之前删除该键。
 
 ## <a name="troubleshooting"></a>疑难解答
 
@@ -337,9 +341,9 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
-这些命令会在 PowerShell 会话中列显所有可将你的租户与 NPS 扩展实例相关联的证书。 通过将客户端证书导出为不带私钥的 *64 编码 x.509 ( .cer) * 文件来查找证书，并将其与 PowerShell 中的列表进行比较。
+这些命令会在 PowerShell 会话中列显所有可将你的租户与 NPS 扩展实例相关联的证书。 通过将客户端证书导出为不带私钥的 *64 编码 x.509 ( .cer)* 文件来查找证书，并将其与 PowerShell 中的列表进行比较。
 
-以下命令将在*C：* 驱动器的根目录中创建一个名为*npscertificate*的文件，格式为 *.cer*。
+以下命令将在 *C：* 驱动器的根目录中创建一个名为 *npscertificate* 的文件，格式为 *.cer*。
 
 ```powershell
 import-module MSOnline
@@ -349,7 +353,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 运行此命令后，请在 *C：* 驱动器的根目录中找到该文件，然后双击该文件。 请参阅 "详细信息"，然后向下滚动到 "指纹"。 将服务器上安装的证书的指纹与此证书进行比较。 证书指纹应匹配。
 
-如果命令返回多个证书，则可使用 "*有效开始*时间" 和 "*有效截止*时间" 时间戳（以用户可读形式）来筛选出明显的 valid-from 和 valid-until。
+如果命令返回多个证书，则可使用 "*有效开始* 时间" 和 "*有效截止* 时间" 时间戳（以用户可读形式）来筛选出明显的 valid-from 和 valid-until。
 
 ### <a name="why-cannot-i-sign-in"></a>为什么无法登录？
 
@@ -380,7 +384,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 ### <a name="why-do-i-see-discarded-requests-in-the-nps-server-logs"></a>为什么在 NPS 服务器日志中看到丢弃的请求？
 
-如果超时值太小，VPN 服务器可能会向 NPS 服务器发送重复的请求。 NPS 服务器将检测这些重复的请求并将其丢弃。 此行为是设计造成的，并不表示 NPS 服务器或 Azure 多重身份验证 NPS 扩展出现问题。
+如果超时值太小，VPN 服务器可能会向 NPS 服务器发送重复的请求。 NPS 服务器将检测这些重复的请求并将其丢弃。 此行为是设计引起的，并且不表示 NPS 服务器或 Azure AD 多重身份验证 NPS 扩展的问题。
 
 若要详细了解 NPS 服务器日志中出现丢弃的数据包的原因，请参阅本文开头的 [RADIUS 协议行为和 NPS 扩展](#radius-protocol-behavior-and-the-nps-extension) 。
 
@@ -390,7 +394,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 ### <a name="additional-troubleshooting"></a>更多故障排除方法
 
-可以在本文中找到 [有关 Azure 多重身份验证的 NPS 扩展中的错误消息](howto-mfa-nps-extension-errors.md)。
+有关其他疑难解答指南和可能的解决方案，请参阅 [解决 Azure AD 多重身份验证的 NPS 扩展中的错误消息](howto-mfa-nps-extension-errors.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -400,4 +404,4 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 - 了解如何使用 NPS 扩展来集成[远程桌面网关](howto-mfa-nps-extension-rdg.md)和 [VPN 服务器](howto-mfa-nps-extension-vpn.md)
 
-- [解决 Azure 多重身份验证的 NPS 扩展出现的错误消息](howto-mfa-nps-extension-errors.md)
+- [解决 Azure AD 多重身份验证的 NPS 扩展的错误消息](howto-mfa-nps-extension-errors.md)

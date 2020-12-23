@@ -1,17 +1,15 @@
 ---
 title: 备份和还原 Azure Service Fabric 执行组件
 description: 了解如何在 Azure Service Fabric 执行组件中实现备份和还原。
-author: vturecek
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9646a8c4b1c138d832b209e51898fb013ca810cb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 05dfb7d09e68373f52831a9e5233316df95ee552
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006867"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571328"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>实现 Reliable Actors 备份和还原
 

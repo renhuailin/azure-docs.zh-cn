@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503134"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539473"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>教程：使用 Azure CLI 在 HDInsight 中创建启用 Apache Kafka REST 代理的群集
 
-本教程介绍如何使用 Azure 命令行接口 (CLI) 在 Azure HDInsight 中创建启用 Apache Kafka [REST 代理](./rest-proxy.md)的群集。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。 Kafka REST 代理可让你使用 HTTP 通过 [REST API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) 来与 Kafka 群集交互。 Azure CLI 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。
+本教程介绍如何使用 Azure 命令行接口 (CLI) 在 Azure HDInsight 中创建启用 Apache Kafka [REST 代理](./rest-proxy.md)的群集。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。 Kafka REST 代理可让你使用 HTTP 通过 [REST API](/rest/api/hdinsight-kafka-rest-proxy/) 来与 Kafka 群集交互。 Azure CLI 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。
 
 仅可通过相同虚拟网络内的资源访问 Apache Kafka API。 可以使用 SSH 直接访问群集。 若要将其他服务、网络或虚拟机连接到 Apache Kafka，则必须首先创建虚拟机，然后才能在网络中创建资源。 有关详细信息，请参阅[使用虚拟网络连接到 Apache Kafka](./apache-kafka-connect-vpn-gateway.md)。
 
@@ -27,7 +27,7 @@ ms.locfileid: "87503134"
 > * Kafka REST 代理的先决条件
 > * 使用 Azure CLI 创建 Apache Kafka 群集
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "87503134"
 
 * 一个 Azure AD 安全组，其中包含已注册的应用程序作为成员。 此安全组用于控制允许哪些应用程序与 REST 代理交互。 有关创建 Azure AD 组的详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-* Azure CLI。 确保至少安装版本 2.0.79。 请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* Azure CLI。 确保至少安装版本 2.0.79。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-an-apache-kafka-cluster"></a>创建 Apache Kafka 群集
 
@@ -85,7 +85,7 @@ ms.locfileid: "87503134"
     export componentVersion=kafka=2.1
     ```
 
-1. 输入以下命令[创建资源组](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)：
+1. 输入以下命令[创建资源组](/cli/azure/group#az-group-create)：
 
     ```azurecli
      az group create \
@@ -93,7 +93,7 @@ ms.locfileid: "87503134"
         --name $resourceGroupName
     ```
 
-1. 输入以下命令[创建 Azure 存储帐户](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)：
+1. 输入以下命令[创建 Azure 存储帐户](/cli/azure/storage/account#az-storage-account-create)：
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -106,7 +106,7 @@ ms.locfileid: "87503134"
         --sku Standard_LRS
     ```
 
-1. 输入以下命令从 Azure 存储帐户中[提取主密钥](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)，然后将其存储在某个变量中：
+1. 输入以下命令从 Azure 存储帐户中[提取主密钥](/cli/azure/storage/account/keys#az-storage-account-keys-list)，然后将其存储在某个变量中：
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -115,7 +115,7 @@ ms.locfileid: "87503134"
         --query [0].value -o tsv)
     ```
 
-1. 输入以下命令[创建 Azure 存储容器](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)：
+1. 输入以下命令[创建 Azure 存储容器](/cli/azure/storage/container#az-storage-container-create)：
 
     ```azurecli
     az storage container create \
@@ -124,20 +124,20 @@ ms.locfileid: "87503134"
         --account-name $storageAccount
     ```
 
-1. [创建 HDInsight 群集](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。 输入该命令之前，请注意以下参数：
+1. [创建 HDInsight 群集](/cli/azure/hdinsight#az-hdinsight-create)。 输入该命令之前，请注意以下参数：
 
     1. Kafka 群集所需的参数：
 
         |参数 | 说明|
         |---|---|
-        |--type|值必须是 **Kafka**。|
-        |--workernode-data-disks-per-node|每个工作器节点要使用的数据磁盘数。 HDInsight Kafka 仅支持数据磁盘。 本教程使用的值为 **2**。|
+        |--type|值必须是 **Kafka** 。|
+        |--workernode-data-disks-per-node|每个工作器节点要使用的数据磁盘数。 HDInsight Kafka 仅支持数据磁盘。 本教程使用的值为 **2** 。|
 
     1. Kafka REST 代理所需的参数：
 
         |参数 | 说明|
         |---|---|
-        |--kafka-management-node-size|节点的大小。 本教程使用的值为 **Standard_D4_v2**。|
+        |--kafka-management-node-size|节点的大小。 本教程使用的值为 **Standard_D4_v2** 。|
         |--kafka-client-group-id|Kafka REST 代理的客户端 AAD 安全组 ID。 该值是从变量 **$securityGroupID** 传递的。|
         |--kafka-client-group-name|Kafka REST 代理的客户端 AAD 安全组名称。 该值是从变量 **$securityGroupName** 传递的。|
         |--version|HDInsight 群集版本必须至少为 4.0。 该值是从变量 **$clusterVersion** 传递的。|

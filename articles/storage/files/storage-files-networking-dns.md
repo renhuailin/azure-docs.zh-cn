@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320262"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630186"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>配置 Azure 文件存储的 DNS 转发
 使用 Azure 文件存储可为包含文件共享的存储帐户创建专用终结点。 专用终结点可在许多不同的应用场合下发挥作用，而且特别适合用于通过专用对等互连使用 VPN 或 ExpressRoute 连接从本地网络连接到 Azure 文件共享。 
@@ -43,7 +43,7 @@ Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件�
 
 - 包含要装载的 Azure 文件共享的存储帐户。 若要了解如何创建存储帐户和 Azure 文件共享，请参阅[创建 Azure 文件共享](storage-how-to-create-file-share.md)。
 - 存储帐户的专用终结点。 若要了解如何创建 Azure 文件存储的专用终结点，请参阅[创建专用终结点](storage-files-networking-endpoints.md#create-a-private-endpoint)。
-- [最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)的 Azure PowerShell 模块。
+- [最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell 模块。
 
 > [!Important]  
 > 本指南假设在本地环境中的 Windows Server 内使用 DNS 服务器。 可以使用任何 DNS 服务器（而不仅仅是 Windows DNS 服务器）完成本指南中所述的所有步骤。

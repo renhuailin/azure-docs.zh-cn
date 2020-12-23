@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 97bd079034a39f158e3ca438c484929cb6f00363
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 3d936555a4d9a9c80718a24ba892c762f5a8354a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542251"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608386"
 ---
 # <a name="composite-entity"></a>复合实体
 
 复合实体由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。
 
 > [!CAUTION]
-> 此实体已 **弃用**。 请迁移到 [机器学习实体](reference-entity-machine-learned-entity.md)。
+> 此实体已弃用。 请迁移到[机器学习实体](reference-entity-machine-learned-entity.md)。
 
 **如果数据具有以下特征，则非常适合使用此实体：**
 
@@ -171,7 +171,6 @@ ms.locfileid: "91542251"
 ```
 
 * * *
-
 
 |数据对象|实体名称|Value|
 |--|--|--|

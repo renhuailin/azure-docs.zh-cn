@@ -11,17 +11,17 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 61af7922318514a7b86a349d1970c59d4d168d85
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569461"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023320"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>在 Azure 门户中创建新的 Azure 时序见解 Gen1 环境
 
 > [!CAUTION]
-> 这是一个 Gen1 的文章。
+> 这是一篇 Gen1 文章。
 
 本文介绍如何使用 Azure 门户创建新的 Azure 时序见解环境。
 
@@ -68,9 +68,9 @@ ms.locfileid: "91569461"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [定义数据访问策略](time-series-insights-data-access.md)来保护环境。
+* [定义数据访问策略](./concepts-access-policies.md)来保护环境。
 
-* [将事件中心事件源添加](time-series-insights-how-to-add-an-event-source-eventhub.md)到 Azure 时序见解环境。
+* [将事件中心事件源添加](./how-to-ingest-data-event-hub.md)到 Azure 时序见解环境。
 
 * [发送事件](time-series-insights-send-events.md)到事件源。
 

@@ -5,26 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948379"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169675"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
 
-如[什么是条件访问](overview.md)一文中所述，条件访问策略是一个关于**分配**和**访问控制**的 if-then 语句。 条件访问策略可统合信号，做出决策，并实施组织策略。
+如 [什么是条件访问](overview.md)一文中所述，条件访问策略是一个关于 **分配** 和 **访问控制** 的 if-then 语句。 条件访问策略可统合信号，做出决策，并实施组织策略。
 
-组织如何创建这些策略？ 需要执行哪些操作？
+组织如何创建这些策略？ 需要执行哪些操作？ 这些策略是如何应用的？
 
 ![条件访问（信号 + 决策 + 实施 = 策略）](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+随时可能都会有多个条件访问策略应用于单个用户的情况。 在这种情况下，必须满足所应用的所有策略。 例如，如果一个策略需要多重身份验证 (MFA)，另一个策略需要兼容的设备，则你必须完成 MFA 并使用兼容的设备。 所有分配在逻辑上采用 **AND** 运算符。 如果配置了多个分配，则必须满足所有分配才能触发策略。
+
+所有策略都是在两个阶段中强制实施的：
+
+- 阶段 1：收集会话详细信息 
+   - 收集会话详细信息，例如进行策略评估所需的网络位置和设备标识。 
+   - 针对 [仅报告模式下](concept-conditional-access-report-only.md)的已启用策略和策略进行策略评估的阶段1。
+- 阶段 2：强制 
+   - 使用在第 1 阶段收集的会话详细信息来识别尚未满足的任何要求。 
+   - 如果有一个策略配置为阻止访问，则在使用阻止授权控制的情况下，将在此处停止强制，用户会被阻止。 
+   - 系统会提示用户完成更多的授权控制要求（这些要求未在第 1 阶段按以下顺序满足），直到策略要求已被满足：  
+      - 多重身份验证 
+      - 批准的客户端应用/应用保护策略 
+      - 受管理设备（合规或混合 Azure AD 加入） 
+      - 使用条款 
+      - 自定义控件  
+   - 在满足所有授权控制后，请应用会话控制（应用强制实施的限制、Microsoft Cloud App Security 和令牌生存期） 
+   - 针对所有已启用的策略执行策略评估的第 2 阶段。 
 
 ## <a name="assignments"></a>分配
 
@@ -72,7 +91,7 @@ ms.locfileid: "88948379"
 
 ### <a name="grant"></a>授予
 
-[Grant](concept-conditional-access-grant.md) 为管理员提供了一种策略实施方法，可在其中阻止或授予访问权限。
+[授予](concept-conditional-access-grant.md)为管理员提供了一种策略强制实施方法，使他们可以阻止访问或授予访问权限。
 
 #### <a name="block-access"></a>阻止访问
 
@@ -82,7 +101,7 @@ ms.locfileid: "88948379"
 
 授予控制可以触发一项或多项控制的实施。 
 
-- 要求进行多重身份验证（Azure 多重身份验证）
+- 需要多重身份验证 (Azure AD 多重身份验证) 
 - 要求将设备标记为合规 (Intune)
 - 要求使用加入混合 Azure AD 的设备
 - 需要批准的客户端应用
@@ -95,7 +114,7 @@ ms.locfileid: "88948379"
 
 ### <a name="session"></a>会话
 
-[会话控制](concept-conditional-access-session.md) 可限制体验 
+[会话控制](concept-conditional-access-session.md)可以限制体验 
 
 - 使用应用所强制实施的限制
    - 目前仅适用于 Exchange Online 和 SharePoint Online。
@@ -114,23 +133,25 @@ ms.locfileid: "88948379"
 
 条件访问策略必须至少包含以下内容才能实施：
 
-- 策略的**名称**。
-- **类别**
-   - 要应用策略的**用户和/或组**。
-   - 要应用策略的**云应用或操作**。
-- **访问控制**
-   - **授予**或**阻止**控制
+- 策略的 **名称**。
+- **分配**
+   - 要应用策略的 **用户和/或组**。
+   - 要应用策略的 **云应用或操作**。
+- 访问控制 
+   - **授予** 或 **阻止** 控制
 
 ![空白条件访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-本文 [常见的条件性访问策略](concept-conditional-access-policy-common.md) 包括一些我们认为对大多数组织有用的策略。
+[常用条件访问策略](concept-conditional-access-policy-common.md)一文包含一些我们认为对大多数组织有用的策略。
 
 ## <a name="next-steps"></a>后续步骤
 
+[创建条件访问策略](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json#create-a-conditional-access-policy)
+
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
-[规划基于云的 Azure 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
+[规划基于云的 Azure AD 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 
-[用 Intune 管理设备符合性](/intune/device-compliance-get-started)
+[使用 Intune 管理设备合规性](/intune/device-compliance-get-started)
 
 [Microsoft Cloud App Security 和条件访问](/cloud-app-security/proxy-intro-aad)

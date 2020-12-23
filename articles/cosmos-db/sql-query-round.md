@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 ROUND
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ROUND。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9712aedd3d6748f3bceea67a3270b6c080cc16f2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 41b1372cd5165b3548a4e574e7eb037111188bac
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794292"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341546"
 ---
 # <a name="round-azure-cosmos-db"></a>ROUND (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回一个数值，四舍五入到最接近的整数值。  
   
 ## <a name="syntax"></a>语法

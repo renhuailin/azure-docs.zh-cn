@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: dcc304febe6fcebe3aba3047d1773e695b80f9e2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a674f5f653ad420ab8f28ff73c6b86f9c18b154e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551930"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517746"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Trelica 的集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "88551930"
 * 允许用户使用其 Azure AD 帐户自动登录到 Trelica。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "88551930"
 
 * Trelica 支持 IDP 发起的 SSO。
 * Trelica 支持实时用户预配。
-* 配置 Trelica 后，可以强制实施会话控制。 此控制可实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Trelica 后，可以强制实施会话控制。 此控制可实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-trelica-from-the-gallery"></a>从库中添加 Trelica
 
@@ -101,7 +101,7 @@ ms.locfileid: "88551930"
 1. 在 Azure 门户的最左侧窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。  
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“姓名”字段中输入 **B.Simon**。
+   1. 在“姓名”字段中输入 **B.Simon** 。
    1. 在“用户名”字段中，输入“B.Simon@companydomain.extension”。  例如，B.Simon@contoso.com。
    1. 选中“显示密码”复选框，并记下“密码”框中显示的值。 
    1. 选择“创建”。
@@ -138,18 +138,18 @@ Trelica 支持默认启用的实时用户预配。 在本部分中无需采取�
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“Trelica”磁贴时，将自动登录到已为其设置 SSO 的 Trelica。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在“我的应用”门户中选择“Trelica”磁贴时，将自动登录到已为其设置 SSO 的 Trelica。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Trelica](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Trelica](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Trelica](/cloud-app-security/proxy-intro-aad)

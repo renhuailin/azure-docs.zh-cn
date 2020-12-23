@@ -5,16 +5,17 @@ services: virtual-machines-linux
 author: axayjo
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ffbafb76fd2c6dd06a88bfd79746557889039cd6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448184"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956018"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -39,6 +40,9 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 ## <a name="installing-the-extension-in-your-vm"></a>在 VM 中安装扩展
 
 可以使用 Azure PowerShell cmdlet、Azure CLI 脚本、ARM 模板或 Azure 门户启用此扩展。 有关详细信息，请参阅[扩展功能](features-linux.md)。
+
+>[!NOTE]
+>诊断 VM 扩展的某些组件也随附在 [LOG ANALYTICS VM 扩展](./oms-linux.md)中。 由于此体系结构，如果在同一 ARM 模板中实例化两个扩展，则可能会发生冲突。 若要避免这些安装时冲突，请使用[ `dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)确保按顺序安装扩展。 可以按任意顺序安装这些扩展。
 
 这些安装说明和[可下载示例配置](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)会将 LAD 3.0 配置为：
 
@@ -70,7 +74,30 @@ Linux 诊断扩展支持以下分发和版本。 分发和版本的列表仅适�
 * Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](./update-linux-agent.md)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](/cli/azure/install-azure-cli) 环境。
 * wget 命令（如果尚无此命令，请运行 `sudo apt-get install wget`。
-* 用于存储数据的现有 Azure 订阅和现有常规用途存储帐户。  常规用途存储帐户支持表存储，这是必需的。  Blob 存储帐户将不起作用。
+* 现有 Azure 订阅以及用于存储数据的现有常规用途存储帐户。  常规用途存储帐户支持必需的表存储。  Blob 存储帐户将不起作用。
+* Python 2
+
+### <a name="python-requirement"></a>Python 要求
+
+Linux 诊断扩展需要 Python 2。 如果虚拟机使用的发行版默认情况下不包括 Python 2，则必须进行安装。 以下示例命令将在不同的发行版上安装 Python 2。    
+
+ - Red Hat、CentOS、Oracle：`yum install -y python2`
+ - Ubuntu、Debian：`apt-get install -y python2`
+ - SUSE: `zypper install -y python2`
+
+Python2 可执行文件必须将别名设置为“python”。 下面是可用来设置此别名的一种方法：
+
+1. 运行以下命令以删除所有现有别名。
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. 运行以下命令以创建别名。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>示例安装
 
@@ -219,7 +246,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 1. 如上所述设置相应部分
 1. 单击“生成 SAS”按钮。
 
-![屏幕截图显示 "共享访问签名" 页，其中包含 "生成 S"。](./media/diagnostics-linux/make_sas.png)
+![屏幕截图显示了带有“生成 SAS”的“共享访问签名”页。](./media/diagnostics-linux/make_sas.png)
 
 将生成的 SAS 复制到 storageAccountSasToken 字段中；删除前导问号（“?”）。
 
@@ -462,7 +489,7 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 命名空间 | （可选）应在其中执行查询的 OMI 命名空间。 如果未指定，则默认值为“root/scx”，由 [ System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
 query | 要执行的 OMI 查询。
 表 | （可选）指定存储帐户中的 Azure 存储表（请参阅[受保护的设置](#protected-settings)）。
-frequency | （可选）两次执行查询之间的秒数。 默认值为 300 秒（5 分钟）；最小值为 15 秒。
+频率 | （可选）两次执行查询之间的秒数。 默认值为 300 秒（5 分钟）；最小值为 15 秒。
 sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结果发布到其中的附加接收器的名称。 扩展或 Azure Metrics 不计算这些原始样本的聚合。
 
 必须指定“表”和/或“接收器”。
@@ -777,7 +804,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 使用 Azure 门户查看性能数据或设置警报：
 
-![屏幕截图显示所选 "已用磁盘空间" 指标和生成的图表的 Azure 门户。](./media/diagnostics-linux/graph_metrics.png)
+![屏幕截图显示了 Azure 门户，其中包含已选择的“已用磁盘空间”指标和生成的图表。](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters` 数据始终存储在 Azure 存储表中。 Azure 存储 API 适用于多种语言和平台。
 
@@ -786,11 +813,11 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 此外，可使用这些 UI 工具来访问 Azure 存储中的数据：
 
 * Visual Studio 服务器资源管理器。
-* [屏幕截图显示 Azure 存储资源管理器中的容器和表](https://azurestorageexplorer.codeplex.com/ "Azure 存储资源管理器")。
+* [屏幕截图显示了 Azure 存储资源管理器中的容器和表。](https://azurestorageexplorer.codeplex.com/ "Azure 存储资源管理器")
 
 这是 Microsoft Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-30-configuration)不完全匹配。
 
-![图像](./media/diagnostics-linux/stg_explorer.png)
+![image](./media/diagnostics-linux/stg_explorer.png)
 
 请参阅相关 [EventHubs 文档](../../event-hubs/event-hubs-about.md)，了解如何使用发布到 EventHubs 终结点的消息。
 

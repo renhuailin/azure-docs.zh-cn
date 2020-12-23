@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dfd262c1dc7aa2e6cfa6ae8835210086dd45e4f6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554702"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>教程：Azure Active Directory 与 Mixpanel 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88554702"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Mixpanel（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -76,7 +76,7 @@ ms.locfileid: "88554702"
 2. **[配置 Mixpanel 单一登录](#configure-mixpanel-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **创建 Mixpanel 测试用户[ - 在 Mixpanel 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式](#create-mixpanel-test-user)** 。
+5. **创建 Mixpanel 测试用户 [ - 在 Mixpanel 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式](#create-mixpanel-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -89,7 +89,7 @@ ms.locfileid: "88554702"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "88554702"
     > [!NOTE]
     > 请在 [https://mixpanel.com/register/](https://mixpanel.com/register/) 注册以设置登录凭据并联系 [Mixpanel 支持团队](mailto:support@mixpanel.com)来为租户启用 SSO 设置。 如果需要，还可以从 Mixpanel 支持团队获取登录 URL。 
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -124,21 +124,21 @@ ms.locfileid: "88554702"
 
 1. 在另一个浏览器窗口中，以管理员身份登录到 Mixpanel 应用程序。
 
-2. 在页面底部，单击左下角的小**齿轮**图标。 
+2. 在页面底部，单击左下角的小 **齿轮** 图标。 
    
     ![Mixpanel 单一登录](./media/mixpanel-tutorial/tutorial_mixpanel_06.png) 
 
 3. 单击“访问安全性”选项卡，并单击“更改设置”。  
    
-    ![Mixpanel 设置](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![屏幕截图显示了“访问安全”选项卡，你可以在其中更改设置。](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 4. 在“更改证书”对话框页上，单击“选择文件”上传所下载的证书，然后单击“下一步”    。
    
-    ![Mixpanel 设置](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![屏幕截图显示了“更改证书”对话框，你可以在其中选择证书文件。](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 5.  在“更改身份验证 URL”对话框页的“身份验证 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”的值，然后单击“下一步”    。
    
-    ![Mixpanel 设置](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+    ![屏幕截图显示了“更改身份验证 URL”窗格，你可以在其中复制登录 URL。](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 6. 单击“完成”  。
 
@@ -205,7 +205,7 @@ ms.locfileid: "88554702"
 
 4. 在“团队成员”文本框中，键入 Britta 在 Azure 中的电子邮件地址。 
    
-    ![Mixpanel 设置](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![屏幕截图显示了“团队”选项卡，你可以在其中添加地址以发送邀请。](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. 单击“邀请”。  
 
@@ -216,13 +216,12 @@ ms.locfileid: "88554702"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Mixpanel 磁贴时，应当会自动登录到已为其设置了 SSO 的 Mixpanel。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Mixpanel 磁贴时，应当会自动登录到已为其设置了 SSO 的 Mixpanel。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

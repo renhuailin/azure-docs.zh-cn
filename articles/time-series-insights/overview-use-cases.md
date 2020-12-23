@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5b6233c0978f15aad94b7f66f8935c2d6f6f1c1
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 7d97958c5fd1274495da88c064b63e59e354f691
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666953"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606957"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure 时序见解第 2 代用例
 
@@ -52,13 +52,13 @@ Azure 时序见解第 2 代直观且易于使用。 连一行代码也无需编�
 
 与 Azure 时序见解第 2 代中存储的数据进行交互主要有三种方式：
 
-* 最简单的入门方法是通过 Azure 时序见解 Gen2 资源管理器。 可以使用它在一个位置快速显示所有 IoT 数据。 它提供热度地图等工具，可帮助你发现数据中的异常情况。 它还提供透视视图。 使用它可以在单个仪表板中从一个或多个 Azure 时序见解 Gen2 环境比较最多四个视图。 通过仪表板，可以查看所有位置的时序数据。 详细了解 [Azure 时序见解 Gen2 资源管理器](./time-series-insights-update-explorer.md)。 若要规划环境，请阅读 [Azure 时序见解 Gen2 计划](./time-series-insights-update-plan.md)。
+* 第一种也是最简单的入门方法是使用 Azure 时序见解第 2 代资源管理器。 可以使用它在一个位置快速显示所有 IoT 数据。 它提供热度地图等工具，可帮助你发现数据中的异常情况。 它还提供透视视图。 使用它可以在一个仪表板中比较一个或多个 Azure 时序见解第 2 代环境中的多达四个的视图。 通过仪表板，可以查看所有位置的时序数据。 详细了解 [Azure 时序见解 Gen2 资源管理器](./concepts-ux-panels.md)。 若要规划环境，请参阅 [Azure 时序见解第 2 代规划](./how-to-plan-your-environment.md)。
 
-* 第二种开始方法是使用 JavaScript SDK 在 Web 应用程序中快速嵌入功能强大的图表和图。 只需几行代码，即可编写功能强大的查询。 可使用这些查询填充折线图、饼图、条形图、热度地图和数据网格等。 通过使用 SDK，所有这些元素都是现成可用的。 SDK 还提取 Azure 时序见解第 2 代查询 API。 可以使用它们来创建类似 SQL 的谓词，用于查询要在仪表板上显示的数据。 对于混合表示层解决方案，Azure 时序见解第 2 代提供了参数化 URL。 它们提供与 Azure 时序见解 Gen2 资源管理器之间的无缝连接点，用于将深层深入入数据。
+* 第二种开始方法是使用 JavaScript SDK 在 Web 应用程序中快速嵌入功能强大的图表和图。 只需几行代码，即可编写功能强大的查询。 可使用这些查询填充折线图、饼图、条形图、热度地图和数据网格等。 通过使用 SDK，所有这些元素都是现成可用的。 SDK 还提取 Azure 时序见解第 2 代查询 API。 可以使用它们来创建类似 SQL 的谓词，用于查询要在仪表板上显示的数据。 对于混合表示层解决方案，Azure 时序见解第 2 代提供了参数化 URL。 它们提供与 Azure 时序见解第 2 代资源管理器之间的无缝连接点，适用于深入分析数据。
 
   * 请阅读 [JS 客户端库](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)和[示例客户端](https://github.com/Microsoft/tsiclient)文档，了解有关 JavaScript SDK 的详细信息。
 
-  * 通过查看 [Azure 时序见解 Gen2 资源管理器中的可视化数据](time-series-insights-update-explorer.md)，了解有关共享 url 和新 UI 的详细信息。
+  * 通过查看 [Azure 时序见解 Gen2 资源管理器中的可视化数据](./concepts-ux-panels.md)，了解有关共享 url 和新 UI 的详细信息。
 
 * 第三种开始方法是使用功能强大的 API 查询存储在 Azure 时序见解第 2 代中的数据。 Azure 时序见解第 2 代具有 `from`、`to`、`first` 和 `last` 等时态运算符。 它具有 `average`、`sum`、`min`、`max`、`time-weighted average`、`time-weighted sum` 等聚合与转换。它还允许使用筛选、算术和布尔运算符、标量函数，等等。所有这些运算符使下游应用程序能够快速找到数据中的相关趋势和模式。 可使用它们填充自生成的可视化效果以发现异常。
 
@@ -66,7 +66,7 @@ Azure 时序见解第 2 代直观且易于使用。 连一行代码也无需编�
 
 使用 Azure 时序见解第 2 代可大规模监视设备的运行状况、使用情况和性能，并度量运营效率。 Azure 时序见解第 2 代有助于管理多种不可预测的 IoT 工作负载，且不影响引入或查询性能。
 
-[![屏幕截图显示了 Azure 时序见解 Gen2 中的 "我的 o T 设备/应用程序数据"、"流处理"、"操作效率"、"智能/见解" 和高级分析。](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![屏幕截图显示了 Azure 时序见解第 2 代中的 IoT 设备/应用程序数据、流处理、操作效率、智能/见解和高级分析。](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 如果与正确的技术或解决方案相结合，来自操作过程的数据的流式传输和连续处理可成功地转换任何业务。 这些解决方案通常是多个系统的组合。 它们可以探索和分析不断变化的数据，特别是在 IoT 领域，并且采用相同的模式。
 
@@ -100,6 +100,6 @@ Azure 时序见解第 2 代以两种简单且经济高效的方式在 IoT 数据
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [Azure 时序见解 Gen2 资源管理器](./time-series-insights-update-explorer.md)。
-* 阅读 [Azure 时序见解第 2 代最佳做法](./time-series-insights-update-plan.md)来规划你的环境。
+* 详细了解 [Azure 时序见解 Gen2 资源管理器](./concepts-ux-panels.md)。
+* 阅读 [Azure 时序见解第 2 代最佳做法](./how-to-plan-your-environment.md)来规划你的环境。
 * 阅读[示例客户端](https://github.com/Microsoft/tsiclient)文档。

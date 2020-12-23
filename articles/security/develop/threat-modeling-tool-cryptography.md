@@ -1,6 +1,6 @@
 ---
 title: 加密 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 了解 Threat Modeling Tool 中公开的威胁的密码缓解措施。 请参阅缓解信息和查看代码示例。
+description: 了解针对 Threat Modeling Tool 中暴露的威胁的加密缓解措施。 请参阅缓解措施信息并查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6af4fba8ddf50b795d847a2c7b4e2fbc02fe593f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539945"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587173"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 
-| 产品/服务 | 项目 |
+| 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Web 应用程序** | <ul><li>[只使用批准的对称块加密法和密钥长度](#cipher-length)</li><li>[为对称加密法使用批准的块加密法模式和初始化向量](#vector-ciphers)</li><li>[使用批准的非对称算法、密钥长度和填充](#padding)</li><li>[使用批准的随机数生成器](#numgen)</li><li>[不要使用对称流加密法](#stream-ciphers)</li><li>[使用批准的 MAC/HMAC/键控哈希算法](#mac-hash)</li><li>[只使用批准的加密哈希函数](#hash-functions)</li></ul> |
 | **Database** | <ul><li>[使用强加密算法来加密数据库中的数据](#strong-db)</li><li>[应该对 SSIS 包加密和数字签名](#ssis-signed)</li><li>[将数字签名添加到关键的数据库安全对象](#securables-db)</li><li>[使用 SQL Server EKM 保护加密密钥](#ekm-keys)</li><li>[如果不应向数据库引擎透露加密密钥，请使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |
@@ -119,7 +119,7 @@ ms.locfileid: "87539945"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [选择加密算法](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
+| **参考**              | [选择加密算法](/sql/relational-databases/security/encryption/choose-an-encryption-algorithm) |
 | **步骤** | 加密算法定义了未经授权的用户无法轻松逆转的数据转换。 SQL Server 允许管理员和开发人员从多种算法中选择，包括 DES、三重 DES、TRIPLE_DES_3KEY、RC2、RC4、128 位 RC4、DESX、128 位 AES、192 位 AES 和 256 位 AES |
 
 ## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>应该对 SSIS 包进行加密和数字签名
@@ -130,7 +130,7 @@ ms.locfileid: "87539945"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [使用数字签名标识包源](https://msdn.microsoft.com/library/ms141174.aspx)、[威胁和漏洞缓解措施（集成服务）](https://msdn.microsoft.com/library/bb522559.aspx) |
+| **参考**              | [使用数字签名标识包源](/sql/integration-services/security/identify-the-source-of-packages-with-digital-signatures)、[威胁和漏洞缓解措施（集成服务）](/sql/integration-services/security/security-overview-integration-services) |
 | **步骤** | 包的源是创建包的个人或组织。 运行来自未知或不可信的源的包可能存在风险。 为了防止有人未经授权篡改 SSIS 包，应使用数字签名。 此外，为确保在存储/传输过程中包的机密性，必须将 SSIS 包加密 |
 
 ## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>将数字签名添加到关键的数据库安全对象
@@ -141,7 +141,7 @@ ms.locfileid: "87539945"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **参考**              | [ADD SIGNATURE (Transact-SQL)](/sql/t-sql/statements/add-signature-transact-sql) |
 | **步骤** | 如果必须验证关键数据库安全对象的完整性，应使用数字签名。 可将数据库安全对象（例如存储过程、函数、程序集或触发器）数字签名。 下面是数字签名的一个用例：假设某家 ISV（独立软件供应商）需要向其一个客户提供软件支持。 在提供支持之前，该 ISV 想要确保软件中的数据库安全对象不会因为人为失误或恶意入侵而遭到篡改。 如果将安全对象数字签名，该 ISV 就可以验证其数字签名和完整性。| 
 
 ## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>使用 SQL Server EKM 保护加密密钥
@@ -152,7 +152,7 @@ ms.locfileid: "87539945"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [SQL Server 可扩展密钥管理 (EKM)](https://msdn.microsoft.com/library/bb895340)、[使用 Azure Key Vault (SQL Server) 可扩展密钥管理](https://msdn.microsoft.com/library/dn198405) |
+| **参考**              | [SQL Server 可扩展密钥管理 (EKM)](/sql/relational-databases/security/encryption/extensible-key-management-ekm)、[使用 Azure Key Vault (SQL Server) 可扩展密钥管理](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server) |
 | **步骤** | 使用 SQL Server 可扩展密钥管理可将保护数据库文件的加密密钥存储在智能卡、USB 设备或 EKM/HSM 模块等外部设备中。 这样还能针对数据库管理员（除 sysadmin 组中的成员）来保护数据。 可以通过使用只能由数据库用户通过外部 EKM/HSM 模块访问的加密密钥来实现数据加密。 |
 
 ## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>如果不应向数据库引擎透露加密密钥，请使用 AlwaysEncrypted 功能
@@ -163,7 +163,7 @@ ms.locfileid: "87539945"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12、MsSQL2016 |
-| **参考**              | [Always Encrypted（数据库引擎）](https://msdn.microsoft.com/library/mt163865) |
+| **参考**              | [Always Encrypted（数据库引擎）](/sql/relational-databases/security/encryption/always-encrypted-database-engine) |
 | **步骤** | Always Encrypted 功能旨在保护 Azure SQL 数据库或 SQL Server 数据库中存储的敏感数据，例如信用卡号或国民身份证号（如美国社会安全号码）。 通过 Always Encrypted，客户可在客户端应用程序中加密敏感数据，永远不会向数据库引擎（SQL 数据库或 SQL Server）透露加密密钥。 因此，Always Encrypted 将数据所有者与数据管理者区分开来，前者可查看数据，而后者无权访问数据。 |
 
 ## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>在 IoT 设备上安全存储加密密钥
@@ -174,7 +174,7 @@ ms.locfileid: "87539945"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 设备 OS - Windows IoT Core、设备连接、Azure IoT 设备 SDK |
-| **参考**              | [Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[设置 Windows IoT Core 上的 TPM](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **参考**              | [Windows IoT Core 上的 TPM](/windows/iot-core/secure-your-device/TPM)、[设置 Windows IoT Core 上的 TPM](/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
 | **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm 。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
 
 ### <a name="example"></a>示例
@@ -193,7 +193,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
+| **组件**               | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |

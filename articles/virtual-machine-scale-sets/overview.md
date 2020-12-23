@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dff83159511c6e8a08e8f212c01244e923ad1f5b
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88648660"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376938"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什么是虚拟机规模集？
 使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新大量 VM。 可以使用虚拟机规模集为计算、大数据和容器工作负荷等领域构建大规模的服务。
@@ -61,9 +61,9 @@ Azure 虚拟机规模集为跨多个 VM 运行的应用程序提供管理功能�
 
 使用 Application Insights 启用对[虚拟机规模集应用程序](../azure-monitor/app/azure-vm-vmss-apps.md)的监视，以收集有关应用程序的详细信息，包括页面视图、应用程序请求和异常。 通过配置[可用性测试](../azure-monitor/app/monitor-web-app-availability.md)来模拟用户流量，进一步验证应用程序的可用性。
 
-## <a name="singapore-data-residency"></a>新加坡数据驻留
+## <a name="data-residency"></a>数据驻留
 
-在 Azure 中，将客户数据存储到一个区域的功能目前仅适用于亚太地域的东南亚区域（新加坡）。 对于其他所有区域，客户数据存储在以下地域。 有关详细信息，请参阅[信任中心](https://azuredatacentermap.azurewebsites.net/)。
+在 Azure 中，将客户数据存储到一个区域的功能目前仅适用于亚太地区的东南亚区域（新加坡）和巴西地区的巴西南部区域（圣保罗州）。 对于其他所有区域，客户数据存储在以下地域。 有关详细信息，请参阅[信任中心](https://azuredatacentermap.azurewebsites.net/)。
 
 ## <a name="next-steps"></a>后续步骤
 若要开始，请在 Azure 门户中创建第一个虚拟机规模集。

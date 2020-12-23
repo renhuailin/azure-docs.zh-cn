@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439246"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019032"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器
 借助 [Azure 逻辑应用](../../logic-apps/index.yml) 和 [Power Automate](https://flow.microsoft.com)，可以使用数百个操作为多种服务创建自动化工作流。 使用 Azure Monitor 日志连接器，可以在 Azure Monitor 中生成可从 Log Analytics 工作区或 Application Insights 应用程序检索数据的工作流。 本文介绍该连接器附带的操作，并演练如何使用这些数据生成工作流。
@@ -68,7 +68,7 @@ Azure Monitor 日志连接器具有以下限制：
 
 单击 " **Azure Log Analytics –运行查询并将结果可视化**。
 
-![向逻辑应用设计器中的步骤添加的新操作的屏幕截图。 Azure Monitor 在 "选择操作" 下突出显示日志。](media/logicapp-flow-connector/select-query-action-visualize.png)
+![在逻辑应用设计器的一个步骤中添加新操作的屏幕截图。 Azure Monitor 日志在“选择操作”下突出显示。](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>添加 Azure Monitor 日志操作
@@ -87,7 +87,7 @@ Event
 
 为“时间范围”选择“在查询中设置”，为“图表类型”选择“HTML 表”。  
    
-![新 Azure Monitor 日志操作的屏幕截图，名为 "运行查询" 和 "可视化结果"。](media/logicapp-flow-connector/run-query-visualize-action.png)
+![名为“运行查询并将结果可视化”的新 Azure Monitor 日志操作的设置的屏幕截图。](media/logicapp-flow-connector/run-query-visualize-action.png)
 
 与当前连接关联的帐户将发送邮件。 可以单击“更改连接”来指定另一帐户。
 

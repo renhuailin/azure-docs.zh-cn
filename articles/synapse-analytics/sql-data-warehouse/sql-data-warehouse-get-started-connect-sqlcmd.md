@@ -10,15 +10,15 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: f61f2932ad9c6342a81ec05df335e9ea4d659fce
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212133"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461976"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>使用 sqlcmd 连接到 Synapse SQL 池
+# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>通过 sqlcmd 连接到 Azure Synapse 分析中的 SQL 池
 
 > [!div class="op_single_selector"]
 >
@@ -32,10 +32,10 @@ ms.locfileid: "85212133"
 
 ## <a name="1-connect"></a>1.连接
 
-若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入“sqlcmd”  ，后跟 SQL 池的连接字符串。 连接字符串需要以下参数：
+若要开始使用 [sqlcmd] [sqlcmd]，请打开命令提示符并输入 **sqlcmd** ，后跟 SQL 池的连接字符串。 连接字符串需要以下参数：
 
 * **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
-* **数据库 (-d)：** 数据库名称。
+* **数据库 () ：** SQL 池名称。
 * **启用带引号的标识符 (-I)：** 必须启用带引号的标识符才能连接到 SQL 池实例。
 
 若要使用 SQL Server 身份验证，需添加用户名/密码参数：

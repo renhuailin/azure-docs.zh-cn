@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531332"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131898"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
 
@@ -21,7 +21,7 @@ ms.locfileid: "90531332"
 
 ## <a name="budget-alerts"></a>预算警报
 
-当基于使用情况或成本的支出达到或超出在[预算的警报条件](tutorial-acm-create-budgets.md)中定义的金额时，预算警报会通知你。 成本管理预算通过 Azure 门户或 [Azure 使用情况](https://docs.microsoft.com/rest/api/consumption) API 来创建。
+当基于使用情况或成本的支出达到或超出在[预算的警报条件](tutorial-acm-create-budgets.md)中定义的金额时，预算警报会通知你。 成本管理预算通过 Azure 门户或 [Azure 使用情况](/rest/api/consumption) API 来创建。
 
 在 Azure 门户中，预算按成本来定义。 使用 Azure 使用情况 API 时，预算是按成本或使用情况定义的。 预算警报支持基于成本的和基于使用情况的预算。 预算警报是在预算警报条件得到满足的情况下自动生成的。 可以在 Azure 门户中查看所有成本警报。 警报在生成后会显示在成本警报中。 此外，还会向预算的警报接收者列表中的人员发送警报电子邮件。
 

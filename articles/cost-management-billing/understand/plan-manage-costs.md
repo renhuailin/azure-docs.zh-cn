@@ -9,13 +9,13 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: c8ab6f51daf18802b83508a3e1bbd5af3ee59799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336845"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032807"
 ---
 # <a name="plan-to-manage-azure-costs"></a>计划管理 Azure 成本
 
@@ -24,7 +24,7 @@ ms.locfileid: "91336845"
 - 在添加服务之前通过[定价计算器](https://azure.microsoft.com/pricing/calculator/)、Azure 价目表获取估计成本，也可在添加服务时通过 Azure 门户这样做。
 - 通过[预算](../costs/tutorial-acm-create-budgets.md)、[警报](../costs/cost-mgt-alerts-monitor-usage-spending.md)和[成本分析](../costs/quick-acm-cost-analysis.md)监视成本。
 - 通过与[详细的使用情况文件](../manage/download-azure-invoice-daily-usage-date.md)进行比较，查看发票上的费用。
-- 使用[计费](https://docs.microsoft.com/rest/api/billing/)和[消耗](https://docs.microsoft.com/rest/api/consumption/) API 将计费和成本数据与你自己的报表系统集成。
+- 使用[计费](/rest/api/billing/)和[消耗](/rest/api/consumption/) API 将计费和成本数据与你自己的报表系统集成。
 - 将其他资源和工具用于企业协议 (EA)、云解决方案提供商 (CSP) 和 Azure 赞助客户。
 - [免费使用某些最常用的 Azure 服务 12 个月](../manage/create-free-services.md)，这些服务可通过 [Azure 免费帐户](https://azure.microsoft.com/free/)获取。 请参考下面列出的建议，同时请参阅[避免为免费帐户付费](../manage/avoid-charges-free-account.md)。
 
@@ -125,7 +125,7 @@ ms.locfileid: "91336845"
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>集成计费和消耗 API
 
-使用 Azure [计费](https://docs.microsoft.com/rest/api/billing/)和[消耗](https://docs.microsoft.com/rest/api/consumption/) API 以编程方式获取计费和成本数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](../manage/usage-rate-card-overview.md)。
+使用 Azure [计费](/rest/api/billing/)和[消耗](/rest/api/consumption/) API 以编程方式获取计费和成本数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](../manage/usage-rate-card-overview.md)。
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a>其他资源和特殊情况
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bdbb68e8d8748bc8851720588f8748d788e0cc0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a64abfbdb33a30b41853023af14f54bb88e42c8f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542575"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520704"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>教程：将 RingCentral 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542575"
 * 让用户使用其 Azure AD 帐户自动登录到 RingCentral。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -78,16 +78,16 @@ ms.locfileid: "88542575"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，如果有**服务提供程序元数据文件**，请执行以下步骤：
+1. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件** ，请执行以下步骤：
 
     1. 单击“上传元数据文件”。
     1. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
     1. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”部分  。
 
     > [!Note]
-    > 请在本教程稍后将介绍的“RingCentral SSO 配置”页面上获取**服务提供程序元数据文件**。
+    > 请在本教程稍后将介绍的“RingCentral SSO 配置”页面上获取 **服务提供程序元数据文件** 。
 
-1. 如果没有**服务提供程序元数据文件**，请输入以下字段的值：
+1. 如果没有 **服务提供程序元数据文件** ，请输入以下字段的值：
 
     a. 在“标识符”文本框中，键入一个 URL：
   
@@ -151,19 +151,19 @@ ms.locfileid: "88542575"
 
 1. 在顶部单击“工具”。
 
-    ![image](./media/ringcentral-tutorial/ringcentral1.png)
+    ![显示从 RingCentral 公司站点选择了“工具”的屏幕截图。](./media/ringcentral-tutorial/ringcentral1.png)
 
 1. 导航到“单一登录”。
 
-    ![image](./media/ringcentral-tutorial/ringcentral2.png)
+    ![显示从“工具”菜单选择了“单一登录”的屏幕截图。](./media/ringcentral-tutorial/ringcentral2.png)
 
 1. 在“单一登录”页的“SSO 配置”部分，在“步骤 1”中单击“编辑”，执行以下步骤： 
 
-    ![image](./media/ringcentral-tutorial/ringcentral3.png)
+    ![显示“SSO 配置”页的屏幕截图，可在其中选择“编辑”。](./media/ringcentral-tutorial/ringcentral3.png)
 
 1. 在“设置单一登录”页上，执行以下步骤：
 
-    ![image](./media/ringcentral-tutorial/ringcentral4.png)
+    ![显示“设置单一登录”页的屏幕截图，可在其中上传 IDP 元数据。](./media/ringcentral-tutorial/ringcentral4.png)
 
     a. 单击“浏览”，上传从 Azure 门户下载的元数据文件。
 
@@ -171,21 +171,21 @@ ms.locfileid: "88542575"
 
     c. 在“属性映射”部分，针对“将电子邮件属性映射到”选项选择 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
     e. 在“步骤 2”中单击“下载”以下载“服务提供程序元数据文件”，并在“基本 SAML 配置”部分上传该文件，以便在 Azure 门户中自动填充“标识符”和“回复 URL”值     。
 
-    ![image](./media/ringcentral-tutorial/ringcentral6.png) 
+    ![显示“SSO 配置”页的屏幕截图，可在其中选择“下载”。](./media/ringcentral-tutorial/ringcentral6.png) 
 
     f. 在同一页导航到“启用 SSO”部分，执行以下步骤：
 
-    ![image](./media/ringcentral-tutorial/ringcentral5.png)
+    ![显示“启用 SSO”部分的屏幕截图，可在其中完成配置。](./media/ringcentral-tutorial/ringcentral5.png)
 
     * 选择“启用 SSO 服务”。
 
     * 选择“允许用户使用 SSO 或 RingCentral 凭据登录”。
 
-    * 单击“ **保存**”。
+    * 单击“ **保存** ”。
 
 ### <a name="create-ringcentral-test-user"></a>创建 RingCentral 测试用户
 
@@ -193,14 +193,14 @@ ms.locfileid: "88542575"
 
 ### <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“RingCentral”磁贴时，应会自动登录到设置了 SSO 的 RingCentral。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中选择“RingCentral”磁贴时，应会自动登录到设置了 SSO 的 RingCentral。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 RingCentral](https://aad.portal.azure.com/)

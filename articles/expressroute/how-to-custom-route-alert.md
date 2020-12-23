@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: a960150d68cf2f939e206321a20d98b0e4080313
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766667"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371488"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>配置自定义警报来监视播发路由
 
@@ -42,7 +42,7 @@ ms.locfileid: "91766667"
 
 * 你熟悉 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
 
-* 你熟悉如何使用 Azure PowerShell。 需要使用 Azure PowerShell 在 ExpressRoute 网关上收集网络前缀。 有关一般 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/?view=azps-4.1.0)。
+* 你熟悉如何使用 Azure PowerShell。 需要使用 Azure PowerShell 在 ExpressRoute 网关上收集网络前缀。 有关一般 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/?view=azps-4.1.0)。
 
 ### <a name="notes-and-limitations"></a><a name="limitations"></a>说明和限制
 
@@ -58,7 +58,7 @@ ms.locfileid: "91766667"
 
 * 在 Azure AD 中为应用程序创建服务主体帐户。
 
-* 在使用的 Azure 订阅上为帐户本身分配参与者角色 (RBAC)。 此角色使用 runbook 管理 Azure 资源管理器资源。
+* 为自己分配 "参与者" 角色 (azure 上的 azure RBAC) 使用。 此角色使用 runbook 管理 Azure 资源管理器资源。
 
 若要创建自动化帐户，你需要具有特权和权限。 有关信息，请参阅[创建自动化帐户所需的权限](../automation/automation-create-standalone-account.md#permissions-required-to-create-an-automation-account)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "91766667"
 
 ### <a name="2-assign-the-run-as-account-a-role"></a><a name="about"></a>2.为运行方式帐户分配角色
 
-默认情况下，将为**运行方式**帐户所使用的服务主体分配**参与者**角色。 你可以保留分配给服务主体的默认角色，也可以通过分配[内置角色](../role-based-access-control/built-in-roles.md)（例如，读取者）或[自定义角色](../active-directory/users-groups-roles/roles-create-custom.md)来限制权限。
+默认情况下，将为**运行方式**帐户所使用的服务主体分配**参与者**角色。 你可以保留分配给服务主体的默认角色，也可以通过分配[内置角色](../role-based-access-control/built-in-roles.md)（例如，读取者）或[自定义角色](../active-directory/roles/custom-create.md)来限制权限。
 
  请使用以下步骤来确定分配给运行方式帐户所使用的服务主体的角色：
 
@@ -257,7 +257,7 @@ Write-Output  $jsonResults
 
 * 警报消息：对状态（正常、警报、警告）的详细说明
 
-PowerShell 脚本会将收集的信息转换为 JSON 输出。 runbook 使用 PowerShell cmdlet [Write-Output](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?) 作为输出流，以便将信息传递到客户端。
+PowerShell 脚本会将收集的信息转换为 JSON 输出。 runbook 使用 PowerShell cmdlet [Write-Output](/powershell/module/Microsoft.PowerShell.Utility/Write-Output) 作为输出流，以便将信息传递到客户端。
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4.验证 runbook
 

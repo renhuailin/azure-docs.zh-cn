@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 12e939b8fb66b3cffbee49a4b3bedd74b71d7232
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2174044a1a913663e255b125f2ea89c312f5e9d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341404"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307697"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列
@@ -103,4 +103,4 @@ ms.locfileid: "91341404"
 
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/overview-what-is-azure-ml)
+* [在 Microsoft Azure 上获取机器学习简介](../overview-what-is-azure-ml.md)

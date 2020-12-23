@@ -7,15 +7,15 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: 4b533fa23d3c128b5f9f75737fb88d39aec94905
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 3862a07eea2dcec3e67c0145fcdcff8140d19ec3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950062"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746788"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>使用 Azure AD (先前版本的 Linux Vm) 为 Azure 磁盘加密创建和配置密钥保管库
+# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>使用 Azure AD（以前版本）为 Linux VM 创建和配置用于 Azure 磁盘加密的密钥保管库
 
 **新版本的 Azure 磁盘加密无需提供 Azure AD 应用程序参数即可启用 VM 磁盘加密。使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。所有新 VM 都必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅 [Azure 磁盘加密](disk-encryption-overview.md)。已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。**
 
@@ -135,7 +135,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 若要将加密机密写入指定的 Key Vault，Azure 磁盘加密需要 Azure Active Directory 应用程序的客户端 ID，以及有权将机密写入 Key Vault 的客户端机密。 
 
 > [!NOTE]
-> Azure 磁盘加密要求为 Azure AD 客户端应用程序配置以下访问策略：_WrapKey_ 和 _Set_ 权限。
+> Azure 磁盘加密要求为 Azure AD 客户端应用程序配置以下访问策略： _WrapKey_ 和 _Set_ 权限。
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-powershell"></a><a name="bkmk_KVAPPSH"></a> 使用 Azure PowerShell 为 Azure AD 应用设置密钥保管库访问策略
 Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 来向应用程序授予权限，使用客户端 ID (该 ID 是在注册应用程序时生成的，) 为 _– ServicePrincipalName_ 参数值。 若要了解详细信息，请参阅博客文章 [Azure Key Vault - Step by Step](/archive/blogs/kv/azure-key-vault-step-by-step)（Azure Key Vault - 分步指南）。 

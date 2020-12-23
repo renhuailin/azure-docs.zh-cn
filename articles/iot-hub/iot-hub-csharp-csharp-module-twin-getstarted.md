@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 3d683ada6401c4ba4f2e232948e9712643339fd8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533462"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142510"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT 中心模块标识和模块孪生 (.NET) 入门
 
@@ -181,4 +181,4 @@ ms.locfileid: "91533462"
 
 * [设备管理入门](iot-hub-node-node-device-management-get-started.md)
 
-* [IoT Edge 入门](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Edge 入门](../iot-edge/quickstart-linux.md)

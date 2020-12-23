@@ -5,23 +5,23 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 8f3b144a7790c3122d59d27183b3037998ddadd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565852"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427458"
 ---
 # <a name="configure-authentication"></a>配置身份验证
 
-Azure 远程渲染使用与 [Azure 空间定位点 (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp) 相同的身份验证机制。 客户端需要设置以下*项之一*才能成功调用 REST api：
+Azure 远程渲染使用与 [Azure 空间定位点 (ASA)](../../spatial-anchors/concepts/authentication.md?tabs=csharp) 相同的身份验证机制。 客户端需要设置以下 *项之一* 才能成功调用 REST api：
 
 * **AccountKey**：可在 Azure 门户上的远程呈现帐户的 "密钥" 选项卡中获取。 帐户密钥仅建议用于开发/原型开发。
     ![帐户 ID](./media/azure-account-primary-key.png)
 
-* **AuthenticationToken**：是 Azure AD 标记，可使用[MSAL 库](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)获取。 有多个不同的流可用于接受用户凭据并使用这些凭据获取访问令牌。
+* **AuthenticationToken**：是 Azure AD 标记，可使用 [MSAL 库](../../active-directory/develop/msal-overview.md)获取。 有多个不同的流可用于接受用户凭据并使用这些凭据获取访问令牌。
 
-* **MRAccessToken**：是 MR 令牌，可从 Azure Mixed Reality 安全令牌服务（STS）中获取。 `https://sts.mixedreality.azure.com`使用 REST 调用（类似于下面的调用）从终结点检索：
+* **MRAccessToken**：是 MR 令牌，可从 Azure Mixed Reality 安全令牌服务获取 (STS) 。 `https://sts.mixedreality.azure.com`使用 REST 调用（类似于下面的调用）从终结点检索：
 
     ```rest
     GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
@@ -44,11 +44,11 @@ Azure 远程渲染使用与 [Azure 空间定位点 (ASA)](https://docs.microsoft
 
 建议仅在开发期间使用帐户密钥进行快速原型设计。 建议不要使用嵌入的帐户密钥将应用程序交付到生产。 推荐的方法是使用基于用户或基于服务的 Azure AD 身份验证方法。
 
- Azure AD 身份验证在 [Azure 空间定位点 (ASA)](https://docs.microsoft.com/azure/spatial-anchors/) 服务的 [Azure AD 用户身份验证](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)部分中进行了说明。
+ Azure AD 身份验证在 [Azure 空间定位点 (ASA)](../../spatial-anchors/index.yml) 服务的 [Azure AD 用户身份验证](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)部分中进行了说明。
 
- 有关详细信息，请参阅[教程：保护 Azure 远程呈现和模型存储 Azure Active Directory 身份验证](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
+ 有关详细信息，请参阅 [教程：保护 Azure 远程呈现和模型存储 Azure Active Directory 身份验证](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>基于角色的访问控制
+## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
 若要帮助控制向你的服务授予的访问级别，请在授予基于角色的访问权限时使用以下角色：
 

@@ -1,22 +1,20 @@
 ---
 title: 将 Azure Monitor Application Insights 经典资源迁移到基于工作区的资源 |Microsoft Docs
 description: 了解将 Azure Monitor Application Insights 经典资源升级到新的基于工作区的模型所需的步骤。
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333335"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536517"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>迁移到基于工作区的 Application Insights 资源
 
 本指南将指导你完成将经典 Application Insights 资源迁移到基于工作区的资源的过程。 基于工作区的资源支持 Application Insights 与 Log Analytics 之间的完全集成。 基于工作区的资源将 Application Insights 遥测发送到公共 Log Analytics 工作区，该工作区允许您访问 [Azure Monitor 的最新功能](#new-capabilities) ，同时将应用程序、基础结构和平台日志保持在单个合并位置。
 
-基于工作区的资源实现了基于角色的公共访问控制 (RBAC) 跨资源，消除了跨应用/工作区查询的需要。
+基于工作区的资源可在 Azure RBAC) 跨资源提供常见的 Azure 基于角色的访问 (控制，消除跨应用/工作区查询的需要。
 
 **基于工作区的资源当前在所有商业区域和 Azure 美国政府版中可用**
 
@@ -53,7 +51,7 @@ ms.locfileid: "91333335"
 - 基于工作区的资源不支持连续导出，因此必须禁用。
 迁移完成后，可以使用 [诊断设置](../platform/diagnostic-settings.md) 配置到存储帐户的数据存档或向 Azure 事件中心进行流式传输。  
 
-- 检查**General**  >  Log Analytics 工作区的 "常规**使用情况和估计成本**"  >  **数据保留**期。 此设置将影响迁移 Application Insights 资源后，存储任何新的引入数据的时间。 如果你当前将 Application Insights 的数据存储的时间超过默认的90天，并且想要保留此更长的保留期，则可能需要调整你的工作区保持期设置。
+- 检查 **General**  >  Log Analytics 工作区的 "常规 **使用情况和估计成本**"  >  **数据保留** 期。 此设置将影响迁移 Application Insights 资源后，存储任何新的引入数据的时间。 如果你当前将 Application Insights 的数据存储的时间超过默认的90天，并且想要保留此更长的保留期，则可能需要调整你的工作区保持期设置。
 
 ## <a name="migrate-your-resource"></a>迁移资源
 
@@ -203,7 +201,7 @@ az monitor app-insights component update --app your-app-insights-resource-name -
 
 创建基于工作区的 Application Insights 资源后，可以修改关联的 Log Analytics 工作区。
 
-从 "Application Insights 资源" 窗格中，选择 "**属性**" "  >  **更改工作区**"  >  **Log Analytics 工作**区 "。
+从 "Application Insights 资源" 窗格中，选择 "**属性**" "  >  **更改工作区**"  >  **Log Analytics 工作** 区 "。
 
 ## <a name="troubleshooting"></a>疑难解答
 
@@ -211,7 +209,7 @@ az monitor app-insights component update --app your-app-insights-resource-name -
 
 **错误消息：** *所选工作区配置了基于工作区的访问模式。某些 APM 功能可能会受到影响。在工作区设置中选择另一个工作区或允许基于资源的访问权限。可以使用 CLI 覆盖此错误。* 
 
-要使基于工作区的 Application Insights 资源正常运行，需要将目标 Log Analytics 工作区的访问控制模式改为 **资源或工作区权限** 设置。 此设置位于 "**属性**" "  >  **访问控制" 模式**下的 Log Analytics 工作区 UI 中。 有关详细说明，请参阅 [Log Analytics 配置访问控制模式指南](../platform/manage-access.md#configure-access-control-mode)。 如果访问控制模式设置为 "独占 **要求工作区权限** " 设置，则通过门户迁移体验进行的迁移将保持阻止状态。
+要使基于工作区的 Application Insights 资源正常运行，需要将目标 Log Analytics 工作区的访问控制模式改为 **资源或工作区权限** 设置。 此设置位于 "**属性**" "  >  **访问控制" 模式** 下的 Log Analytics 工作区 UI 中。 有关详细说明，请参阅 [Log Analytics 配置访问控制模式指南](../platform/manage-access.md#configure-access-control-mode)。 如果访问控制模式设置为 "独占 **要求工作区权限** " 设置，则通过门户迁移体验进行的迁移将保持阻止状态。
 
 如果由于当前目标工作区的安全原因无法更改访问控制模式，我们建议创建新的 Log Analytics 工作区以用于迁移。 
 
@@ -225,7 +223,7 @@ az monitor app-insights component update --app your-app-insights-resource-name -
 
     ![连续导出菜单项](./media/convert-classic-resource/continuous-export.png)
 
-2. 选择“禁用”。****
+2. 选择“禁用”。
 
     ![连续导出禁用按钮](./media/convert-classic-resource/disable.png)
 
@@ -239,7 +237,7 @@ az monitor app-insights component update --app your-app-insights-resource-name -
 
 在迁移之前无需进行任何更改，但此消息会提醒你当前 Application Insights 保留期设置未设置为默认的90天保留期。 此警告消息表示，你可能需要在迁移和开始引入新数据之前，修改 Log Analytics 工作区的保留设置。 
 
-你可以在 "**常规**  >  **使用情况" 和**  >  "从 Log Analytics UI 中估计的**数据保留**成本" 下查看当前 Log Analytics 的保留设置。 此设置将影响迁移 Application Insights 资源后，存储任何新的引入数据的时间。
+你可以在 "**常规**  >  **使用情况" 和**  >  "从 Log Analytics UI 中估计的 **数据保留** 成本" 下查看当前 Log Analytics 的保留设置。 此设置将影响迁移 Application Insights 资源后，存储任何新的引入数据的时间。
 
 ## <a name="next-steps"></a>后续步骤
 

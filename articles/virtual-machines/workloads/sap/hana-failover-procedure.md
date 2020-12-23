@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1daba0819e0164602ae78ece87421834f36fb09a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660577"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967816"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>灾难恢复故障转移过程
 
@@ -42,7 +43,7 @@ ms.locfileid: "83660577"
 你还可以测试 DR 故障转移，这不会影响实际的复制关系。 若要执行测试性故障转移，请按照[适用于 Azure SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)的“执行测试性 DR 故障转移 - azure_hana_test_dr_failover”部分中的步骤进行操作。 
 
 >[!IMPORTANT]
->在**测试故障转移**的整个过程中，不要在 DR 站点中创建的实例上运行任何生产事务。 azure_hana_test_dr_failover 命令会创建一组卷，这些卷与主站点没有任何关系。 结果是无法同步回主站点。 
+>在 **测试故障转移** 的整个过程中，不要在 DR 站点中创建的实例上运行任何生产事务。 azure_hana_test_dr_failover 命令会创建一组卷，这些卷与主站点没有任何关系。 结果是无法同步回主站点。 
 
 如果想要测试多个 SAP HANA 实例，请多次运行脚本。 根据请求输入想要测试故障转移的实例的 SAP HANA SID。 
 

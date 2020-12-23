@@ -1,5 +1,5 @@
 ---
-title: Dv2 和 Dsv2 系列 - Azure 虚拟机
+title: Dv2 和 DSv2 系列-Azure 虚拟机
 description: Dv2 和 Dsv2 系列 VM 的规范。
 author: joelpelley
 ms.service: virtual-machines
@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 785e72a47d68bf368e160b1f3bf2a6d762d1f100
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: b1bd2e0360b064a71dd91241d40513d8c37447bb
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649688"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635630"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 和 DSv2 系列
 
-Dv2 和 Dsv2 系列是原 D 系列的后续产品，具有更强大的 CPU 和最优 CPU 到内存配置，使其适合于大多数生产工作负荷。 Dv2 系列比 D 系列快大约 35%。 Dv2 系列在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+Dv2 和 DSv2 系列是原始 D 系列的后续功能，它具有更强大的 CPU 和最佳 CPU 到内存配置，使其适用于大多数生产工作负荷。 Dv2 系列比 D 系列快大约 35%。 Dv2 系列在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
 ## <a name="dv2-series"></a>Dv2 系列
 
@@ -26,8 +26,8 @@ Dv2 系列大小在采用 Intel Turbo Boost Technology 2.0的 Intel® Xeon® Pla
 [高级存储](premium-storage-performance.md)：不支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数 | 吞吐量：IOPS | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
@@ -43,11 +43,11 @@ Dv2 系列大小在采用 Intel Turbo Boost Technology 2.0的 Intel® Xeon® Pla
 DSv2 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，并使用高级存储。
 
 [ACU](acu.md)：210-250<br>
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |

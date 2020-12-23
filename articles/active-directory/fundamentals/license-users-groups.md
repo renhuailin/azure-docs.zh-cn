@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2018
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319519"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504400"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
 
@@ -49,11 +49,18 @@ ms.locfileid: "89319519"
 
 1. 选择“Azure Active Directory”，然后选择“许可证”   。
 
-    ![“许可证”页，显示已购买服务和已分配许可证数量](media/license-users-groups/license-details-blade.png)
+    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="“许可证”页，显示已购买服务和已分配许可证数量":::
 
-1. 选择“已购买项”  链接可查看“产品”  页，以及查看许可计划的“已分配”  数、“可用”数  和“即将过期”  数。
+1. 选择 " **所有产品** " 查看 "所有产品" 页，并查看你的许可计划的 **总**、 **已分配**、 **可用** 和 **即将到期** 的数字。
 
-    ![“服务”页，包含服务许可计划和关联的许可证信息](media/license-users-groups/license-products-blade-with-products.png)
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="服务页-具有服务许可证计划-关联的许可证信息":::
+
+    > [!NOTE]
+    > 这些数字定义为： 
+    > - Total：购买的许可证总数
+    > - 已分配：分配给用户的许可证数
+    > - 可用：可用于分配的许可证的数量，包括即将过期的许可证
+    > - 即将过期：即将过期的许可证数
 
 1. 选择计划名称可查看其已许可的用户和组。
 
@@ -102,11 +109,11 @@ ms.locfileid: "89319519"
 
 1. 在“分配”  页上，选择“用户和组”  ，然后搜索并选择向其分配许可证的组。
 
-    ![“分配许可证”页，突出显示了搜索和“选择”选项](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![“分配许可证”页，其中突出显示了搜索和“选择”选项 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. 选择“分配选项”  ，确保打开了相应的许可证选项，然后选择“确定”  。
 
-    ![“许可证选项”页，显示许可计划中的所有可用选项](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![“许可证选项”页，其中显示了许可计划 2 中的所有可用选项](media/license-users-groups/license-option-blade-group-assignments.png)
 
     “分配许可证”  页会进行更新，以显示选择了用户并且配置了分配。
 
@@ -135,7 +142,7 @@ ms.locfileid: "89319519"
 
 1. 选择“删除许可证”  。
 
-    ![“许可的组”页，突出显示了“删除许可证”选项](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![“许可的组”页，其中突出显示了“删除许可证”选项 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > 当同步到 Azure AD 的本地用户帐户超出了同步的范围，或者当同步被删除时，该用户将在 Azure AD 中被软删除。 发生这种情况时，直接分配给用户或通过基于组的许可分配给用户的许可证将标记为“已挂起”  ，而不是“已删除”  。
@@ -144,10 +151,10 @@ ms.locfileid: "89319519"
 
 分配了许可证之后，可以执行以下过程：
 
-- [识别和解决许可证分配问题](../users-groups-roles/licensing-groups-resolve-problems.md)
+- [识别和解决许可证分配问题](../enterprise-users/licensing-groups-resolve-problems.md)
 
-- [将许可的用户添加到组以进行许可](../users-groups-roles/licensing-groups-migrate-users.md)
+- [将许可的用户添加到组以进行许可](../enterprise-users/licensing-groups-migrate-users.md)
 
-- [在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题](../users-groups-roles/licensing-group-advanced.md)
+- [在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题](../enterprise-users/licensing-group-advanced.md)
 
 - [添加或更改个人资料信息](active-directory-users-profile-azure-portal.md)

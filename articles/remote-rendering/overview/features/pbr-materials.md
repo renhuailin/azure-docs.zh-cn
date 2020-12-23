@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613673"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555560"
 ---
 # <a name="pbr-materials"></a>PBR 材料
 
 *.Pbr 材料* 是 Azure 远程呈现中支持的 [材料类型](../../concepts/materials.md) 之一。 它们用于应该接收真实照明的 [网格](../../concepts/meshes.md) 。
 
-.PBR 代表 **P**hysically **B**ased **R**endering，表示材料以物理上的方式描述图面的视觉对象属性，这样，在所有照明条件下均可获得实际的结果。 大多数新式游戏引擎和内容创建工具都支持 .PBR 材料，因为它们被视为实时渲染的现实世界方案的最佳近似值。
+.PBR 代表 **P** hysically **B** ased **R** endering，表示材料以物理上的方式描述图面的视觉对象属性，这样，在所有照明条件下均可获得实际的结果。 大多数新式游戏引擎和内容创建工具都支持 .PBR 材料，因为它们被视为实时渲染的现实世界方案的最佳近似值。
 
 ![ARR 呈现的 Helmet glTF 示例模型](media/helmet.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "89613673"
 
 这些属性是所有材料共有的：
 
-* **albedoColor：** 此颜色与其他颜色（如*albedoMap*或* :::no-loc text="vertex "::: 颜色*）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
+* **albedoColor：** 此颜色与其他颜色（如 *albedoMap* 或 *:::no-loc text="vertex "::: 颜色* ）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
 
   > [!NOTE]
   > 当某个 .PBR 材料完全透明（如完全透明的玻璃部分）时，它仍会反映该环境。 类似于 sun 的亮点仍在反射中可见。 这不同于 [颜色材料](color-materials.md)。
@@ -37,15 +37,23 @@ ms.locfileid: "89613673"
 
 * **textureCoordinateScale** 和 **textureCoordinateOffset：** 将刻度与 UV 纹理坐标相乘，并向其添加偏移量。 可用于拉伸和移动纹理。 默认小数位数为1，1) ，偏移量为 (0，0)  (。
 
-* **useVertexColor：** 如果网格包含 :::no-loc text="vertex"::: 颜色且已启用此选项，则网格的 :::no-loc text="vertex"::: 颜色将被相乘到 *albedoColor* 和 *albedoMap*中。 默认情况下， *useVertexColor* 处于禁用状态。
+* **useVertexColor：** 如果网格包含 :::no-loc text="vertex"::: 颜色且已启用此选项，则网格的 :::no-loc text="vertex"::: 颜色将被相乘到 *albedoColor* 和 *albedoMap* 中。 默认情况下， *useVertexColor* 处于禁用状态。
 
 * **isDoubleSided：** 如果将 sidedness 设置为 true，则即使相机正在查看背景面，也会呈现带有此材料的三角形。 对于 .PBR 材料，也可以为背面正确计算。 默认情况下，此选项处于禁用状态。 另请参阅[ :::no-loc text="Single-sided"::: 呈现](single-sided-rendering.md)。
 
+* **TransparencyWritesDepth：** 如果对材料设置了 TransparencyWritesDepth 标志，而材料是透明的，则使用此材料的对象也会对最终的深度缓冲区产生影响。 请参阅下一节中的 "不 *透明* " 部分。 如果用例需要更变得合理的 [延迟阶段 reprojection](late-stage-reprojection.md) 完全透明的场景，则建议启用此功能。 对于混合的不透明/透明场景，此设置可能会引入可能 reprojection 行为或 reprojection 项目。 出于此原因，一般用例的默认设置和推荐设置是禁用此标志。 书写的深度值取自离相机最近的对象的每像素深度层。
+
+* **FresnelEffect：** 此材料标志启用对各自材料的加法 [菲涅尔衰减效果](../../overview/features/fresnel-effect.md) 。 此效果的外观由以下所述的其他菲涅尔衰减参数控制。 
+
+* **FresnelEffectColor：** 此材料使用的菲涅尔衰减颜色。 仅当已对此材料设置了菲涅尔衰减效果位时，才 (参阅上面) 。 此属性控制菲涅尔衰减照射 (的基本颜色，请参阅 [菲涅尔衰减效果](../../overview/features/fresnel-effect.md) 以获取完整说明) 。 目前只有 rgb 通道值非常重要，并且 alpha 值将被忽略。
+
+* **FresnelEffectExponent：** 此材料使用的菲涅尔衰减指数。 仅当已对此材料设置了菲涅尔衰减效果位时，才 (参阅上面) 。 此属性控制菲涅尔衰减的照射的传播。 最小值0.01 导致整个对象分布。 最大值10.0 限制仅显示最 gracing 边缘。
+
 ## <a name="pbr-material-properties"></a>.PBR 材料属性
 
-以物理方式呈现的核心概念是使用 *BaseColor*、 *Metalness*和 *粗糙度* 属性来模拟各种真实的资料。 有关 .PBR 的详细说明超出了本文的范围。 有关 .PBR 的详细信息，请参阅 [其他来源](http://www.pbr-book.org)。 以下属性特定于 .PBR 材料：
+以物理方式呈现的核心概念是使用 *BaseColor* 、 *Metalness* 和 *粗糙度* 属性来模拟各种真实的资料。 有关 .PBR 的详细说明超出了本文的范围。 有关 .PBR 的详细信息，请参阅 [其他来源](http://www.pbr-book.org)。 以下属性特定于 .PBR 材料：
 
-* **baseColor：** 在 .PBR 材料中， *albedo 颜色* 称为 *基准颜色*。 在 Azure 远程呈现中， *albedo 颜色* 属性已经通过公共材料属性提供，因此没有其他基本颜色属性。
+* **baseColor：** 在 .PBR 材料中， *albedo 颜色* 称为 *基准颜色* 。 在 Azure 远程呈现中， *albedo 颜色* 属性已经通过公共材料属性提供，因此没有其他基本颜色属性。
 
 * **粗糙度** 和 **roughnessMap：** 粗糙度定义图面的大致程度或平滑程度。 粗糙面使光源的显示方向大于平滑曲面，这使反射模糊而不是清晰。 值范围从 `0.0` 到 `1.0` 。 当 `roughness` 等于时 `0.0` ，反射将会清晰。 当 `roughness` 等于时 `0.5` ，反射将变得模糊。
 
@@ -76,17 +84,17 @@ ms.locfileid: "89613673"
 
 ## <a name="technical-details"></a>技术详细信息
 
-Azure 远程呈现使用带有 GGX NDF、Schlick 菲涅尔衰减和 GGX Smith 相关可见性术语的 Torrance 微小平面 BRDF 和朗伯漫射术语。 此模型是目前事实上的行业标准。 有关更深入的详细信息，请参阅此文章： [基于物理的呈现-可 Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure 远程呈现使用带有 GGX 的 NDF、Schlick 菲涅尔衰减和 GGX Smith 相关可见术语的 Cook-Torrance 微面 BRDF 和朗伯漫射术语。 此模型是目前事实上的行业标准。 有关更深入的详细信息，请参阅此文章： [基于物理的呈现-可 Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  Azure 远程呈现中使用的 *Metalness* .pbr 模型的替代方法是 *反射-光泽* 性 .pbr 模型。 此模型可以表示一系列更广泛的材料。 不过，它的成本更高，通常不适用于实时事例。
-并非始终可以从*反射-光泽*转换为*Metalness* ，因为存在无法转换为* (BaseColor，Metalness) *的* (扩散、镜面) *值对。 其他方向的转换更为简单且更精确，因为所有 * (BaseColor，Metalness) * 对都对应于定义良好的 * (漫射、镜面) * 对。
+并非始终可以从 *反射-光泽* 转换为 *Metalness* ，因为存在无法转换为 *(BaseColor，Metalness)* 的 *(扩散、镜面)* 值对。 其他方向的转换更为简单且更精确，因为所有 *(BaseColor，Metalness)* 对都对应于定义良好的 *(漫射、镜面)* 对。
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # PbrMaterial 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C # RemoteManager CreateMaterial ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
-* [C + + PbrMaterial 类](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
-* [C + + RemoteManager：： CreateMaterial ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C # PbrMaterial 类](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C # RemoteManager CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C + + PbrMaterial 类](/cpp/api/remote-rendering/pbrmaterial)
+* [C + + RemoteManager：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>后续步骤
 

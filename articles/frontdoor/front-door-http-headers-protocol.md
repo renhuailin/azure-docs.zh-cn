@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 12/04/2020
 ms.author: duau
-ms.openlocfilehash: cd721f13ffa128e83072819a20b17f305118b13c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 7f40b48473c04238d504288307039948fcacf90a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91626286"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511138"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure 前门中 HTTP 标头的协议支持
 本文概述了前门在调用路径的各个部分支持的协议 (参阅图像) 。 以下各节提供了有关前门支持的 HTTP 标头的详细信息。
@@ -33,30 +33,38 @@ ms.locfileid: "91626286"
 
 前门包含传入请求的标头，除非由于限制而被删除。 前门还添加以下标头：
 
-| 标头  | 示例和说明 |
+| Header  | 示例和说明 |
 | ------------- | ------------- |
-| Via |  Via： 1.1 Azure </br> 前门添加客户端的 HTTP 版本，后跟 *Azure* 作为 Via 标头的值。 此标头指示客户端的 HTTP 版本，前门是客户端与后端之间的请求的中间接收方。  |
-| X-Azure-ClientIP | X-ClientIP：127.0.0。1 </br> 表示与正在处理的请求关联的客户端 IP 地址。 例如，来自代理的请求可能会添加标头为 X 的标头，以指示原始调用方的 IP 地址。 |
-| X-Azure-SocketIP |  X-SocketIP：127.0.0。1 </br> 表示与当前请求所源自的 TCP 连接关联的套接字 IP 地址。 请求的客户端 IP 地址可能不等于其套接字 IP 地址，因为用户可以随意覆盖它。|
-| X-Azure-引用 |  X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> 标识由前门提供的请求的唯一引用字符串。 它用于搜索访问日志和故障排除的关键。|
-| X-Azure-RequestChain |  X-RequestChain：跃点 = 1 </br> 前门用于检测请求循环的标头，用户不应依赖于该标头。 |
-| X-Azure-FDID | X-FDID：55ce4ed1-4b06-4bf1-b40e-4638452104da<br/> 标识请求的引用字符串来自特定的前门资源。 可以在 Azure 门户中查看此值，也可以使用管理 API 来检索该值。 可以将此标头与 IP Acl 结合使用，将终结点锁定为仅接受来自特定前门资源的请求。 有关[更多详细信息](front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)，请参阅常见问题 |
-| X-Forwarded-For | X 转发的：127.0.0。1 </br> X 转发的 (XFF) HTTP 标头字段通常标识通过 HTTP 代理或负载均衡器连接到 web 服务器的客户端的原始 IP 地址。 如果存在现有的 XFF 标头，则前门会将客户端套接字 IP 追加到该标头，或使用客户端套接字 IP 添加 XFF 标头。 |
-| X-Forwarded-Host | X 转发的主机： contoso.azurefd.net </br> "X 转发的主机 HTTP 标头" 字段是一种常用方法，用于标识宿主 HTTP 请求标头中的客户端请求的原始主机。 这是因为处理请求的后端服务器的前端的主机名可能不同。 |
-| X-Forwarded-Proto | X-转发-Proto： http </br> X 转发的 HTTP 标头字段通常用于标识 HTTP 请求的原始协议，因为基于配置的前端可以使用 HTTPS 与后端通信。 即使向反向代理发出 HTTP 请求也是如此。 |
+| Via |  *Via： 1.1 Azure* </br> 前门添加客户端的 HTTP 版本，后跟 *Azure* 作为 Via 标头的值。 此标头指示客户端的 HTTP 版本，前门是客户端与后端之间的请求的中间接收方。  |
+| X-Azure-ClientIP | *X-ClientIP：127.0.0。1* </br> 表示与正在处理的请求关联的客户端 IP 地址。 例如，来自代理的请求可能会添加标头为 X 的标头，以指示原始调用方的 IP 地址。 |
+| X-Azure-SocketIP |  *X-SocketIP：127.0.0。1* </br> 表示与当前请求所源自的 TCP 连接关联的套接字 IP 地址。 请求的客户端 IP 地址可能不等于其套接字 IP 地址，因为用户可以随意覆盖它。|
+| X-Azure-引用 | *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 标识由前门提供的请求的唯一引用字符串。 它用于搜索访问日志和故障排除的关键。|
+| X-Azure-RequestChain | *X-RequestChain：跃点 = 1* </br> 前门用于检测请求循环的标头，用户不应依赖于该标头。 |
+| X-Azure-FDID | *X-FDID：55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> 标识请求的引用字符串来自特定的前门资源。 可以在 Azure 门户中查看此值，也可以使用管理 API 检索该值。 可以将此标头与 IP Acl 结合使用，将终结点锁定为仅接受来自特定前门资源的请求。 有关[更多详细信息](front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)，请参阅常见问题 |
+| X-Forwarded-For | *X 转发的：127.0.0。1* </br> X 转发的 (XFF) HTTP 标头字段通常标识通过 HTTP 代理或负载均衡器连接到 web 服务器的客户端的原始 IP 地址。 如果存在现有的 XFF 标头，则前门会将客户端套接字 IP 追加到该标头，或使用客户端套接字 IP 添加 XFF 标头。 |
+| X-Forwarded-Host | *X 转发的主机： contoso.azurefd.net* </br> "X 转发的主机 HTTP 标头" 字段是一种常用方法，用于标识宿主 HTTP 请求标头中的客户端请求的原始主机。 这是因为处理请求的后端服务器的前端的主机名可能不同。 |
+| X-Forwarded-Proto | *X-转发-Proto： http* </br> X 转发的 HTTP 标头字段通常用于标识 HTTP 请求的原始协议。 根据配置，前门可能使用 HTTPS 与后端通信。 即使向反向代理发出 HTTP 请求也是如此。 |
 | X-FD-HealthProbe | HealthProbe HTTP 标头字段用于标识来自前门的运行状况探测。 如果此标头设置为1，则请求为运行状况探测。 如果要从特定前门使用 "X 转发主机标头" 字段来严格访问，可以使用。 |
-|X-Azure-FDID | X-FDID 标头：437c82cd-360a-4a54-94c3-5ff707647783 </br> 此字段包含 frontdoorID，可用于标识传入请求来自哪个前门。 此字段由前门服务填充。 | 
-
+| X-Azure-FDID | *X-FDID 标头：437c82cd-360a-4a54-94c3-5ff707647783* </br> 此字段包含 frontdoorID，可用于标识传入请求来自哪个前门。 此字段由前门服务填充。 | 
 
 ## <a name="front-door-to-client"></a>Front Door 到客户端
 
 从后端发送到前门的任何标头也会传递给客户端。 下面是从前门发送到客户端的标头。
 
-| 标头  | 示例 |
+| Header  | 示例和说明 |
 | ------------- | ------------- |
 | X-Azure-引用 |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 这是一个唯一的引用字符串，用于标识由前门提供的请求，这对于疑难解答至关重要，因为它用于搜索访问日志。|
+| X 缓存 | *X 缓存： TCP_HIT* </br> 此标头描述请求的缓存状态，这使你能够确定是否正在从前门的缓存中提供响应内容。 |
+
+需要发送 "X-DebugInfo： 1" 请求标头，以启用以下可选的响应标头。
+
+| Header  | 示例和说明 |
+| ------------- | ------------- |
+| X-Azure-OriginStatusCode |  *X-OriginStatusCode：503* </br> 此标头包含后端返回的 HTTP 状态代码。 使用此标头，可以识别后端中运行的应用程序返回的 HTTP 状态代码，而无需通过后端日志。 此状态代码可能不同于按前门发送到客户端的响应中的 HTTP 状态代码。 此标头可用于确定后端是否有问题，或者是否在前门服务中出现问题。 |
+| X-Azure-InternalError | 此标头包含处理请求时前端遇到的错误代码。 此错误表明问题是前门服务/基础结构的内部问题。 报告要支持的问题。  |
+| X-Azure-ExternalError | *ExternalError：0x830c1011，证书颁发机构不熟悉。* </br> 此标头显示前端服务器建立与后端服务器的连接以处理请求时的错误代码。 此标头有助于识别前门与后端应用程序之间的连接问题。 此标头将包括详细的错误消息，以帮助你确定后端 (的连接问题，例如 DNS 解析、无效证书等。 ) 。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建前门](quickstart-create-front-door.md)
+- [创建 Front Door](quickstart-create-front-door.md)
 - [前门的工作方式](front-door-routing-architecture.md)

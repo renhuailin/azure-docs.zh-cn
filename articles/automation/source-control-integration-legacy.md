@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4dedbcf58e76b8c969f8607db6922e87a85f08e5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187330"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591867"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>在 Azure 自动化中使用源代码管理集成 - 传统
 
@@ -43,11 +43,11 @@ ms.locfileid: "86187330"
    | 选择源 |选择源。 目前仅支持 **GitHub**。 |
    | 授权 |单击“授权”按钮，授予 GitHub 存储库的 Azure 自动化访问权限。 如果已在不同的窗口中登录 GitHub 帐户，将使用该帐户的凭据。 成功授权之后，页面上的“授权属性”下将显示你的 GitHub 用户名。 |
    | 选择存储库 |从可用存储库列表中选择 GitHub 存储库。 |
-   | 选择分支 |从可用分支列表中选择分支。 如果尚未创建任何分支，则只显示 **master** 分支。 |
-   | Runbook 文件夹路径 |Runbook 文件夹路径可指定 GitHub 存储库中的路径，以便从中推送或提取代码。 必须以 **/foldername/subfoldername** 格式输入路径。 只有 Runbook 文件夹路径中的 Runbook 才同步到自动化帐户。 Runbook 文件夹路径的子文件夹中的 Runbook **不会**同步。 使用 **/** 来同步存储库下的所有 Runbook。 |
+   | 选择分支 |从可用分支列表中选择分支。 如果尚未创建任何分支，则只显示 **main** 分支。 |
+   | Runbook 文件夹路径 |Runbook 文件夹路径可指定 GitHub 存储库中的路径，以便从中推送或提取代码。 必须以 **/foldername/subfoldername** 格式输入路径。 只有 Runbook 文件夹路径中的 Runbook 才同步到自动化帐户。 Runbook 文件夹路径的子文件夹中的 Runbook **不会** 同步。 使用 **/** 来同步存储库下的所有 Runbook。 |
 3. 例如，如果有名为 **PowerShellScripts** 的存储库，其中包含名为 **RootFolder** 的文件夹，而该文件夹包含名为 **SubFolder** 的文件夹。 那么，可以使用以下字符串来同步每个文件夹级别：
 
-   1. 若要从**存储库**同步 Runbook，则 Runbook 文件夹路径为 **/** 。
+   1. 若要从 **存储库** 同步 Runbook，则 Runbook 文件夹路径为 **/** 。
    2. 若要从 **RootFolder** 同步 Runbook，则 Runbook 文件夹路径为 **/RootFolder**。
    3. 若要从 **SubFolder** 同步 Runbook，则 Runbook 文件夹路径为 **/RootFolder/SubFolder**。
 4. 配置参数后，它们会显示在“设置源代码管理”页面上。  
@@ -64,7 +64,7 @@ ms.locfileid: "86187330"
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
      | `Type`  |字符串 |
-     | `Value` |{"Branch"： \<*Your branch name*> ，"RunbookFolderPath"： \<*Runbook folder path*> ，"ProviderType"： \<*has a value 1 for GitHub*> ，"存储库"： \<*Name of your repository*> ，"Username"： \<*Your GitHub user name*> } |
+     | `Value` |{"Branch":\<*Your branch name*>,"RunbookFolderPath":\<*Runbook folder path*>,"ProviderType":\<*has a value 1 for GitHub*>,"Repository":\<*Name of your repository*>,"Username":\<*Your GitHub user name*>} |
 
    * 变量 **Microsoft.Azure.Automation.SourceControl.OAuthToken** 包含 OAuthToken 的安全加密值。  
 
@@ -76,7 +76,7 @@ ms.locfileid: "86187330"
 
      ![显示了源代码管理变量的窗口](media/source-control-integration-legacy/automation-Variables.png)  
 
-   * **自动化源代码管理**已作为已授权的应用程序添加到 GitHub 帐户。 若要查看应用程序，请从 GitHub 主页导航到“配置文件” > “设置” > “应用程序”。 此应用程序可让 Azure 自动化将 GitHub 存储库同步到自动化帐户。  
+   * **自动化源代码管理** 已作为已授权的应用程序添加到 GitHub 帐户。 若要查看应用程序，请从 GitHub 主页导航到“配置文件” > “设置” > “应用程序”。 此应用程序可让 Azure 自动化将 GitHub 存储库同步到自动化帐户。  
 
      ![GitHub 中的应用程序设置](media/source-control-integration-legacy/automation-GitApplication.png)
 
@@ -120,7 +120,7 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
     ![显示了针对 GitHub 存储库执行同步作业后的同步结果的窗口](media/source-control-integration-legacy/automation-SyncRunbook.png)
 
     > [!NOTE]
-    > 从源代码管理进行的同步针对当前在源代码管理中的**所有** Runbook，覆盖当前存在于自动化帐户中的 Runbook 草稿版本。 用于同步的 Git 等效命令行指令为 **git pull**
+    > 从源代码管理进行的同步针对当前在源代码管理中的 **所有** Runbook，覆盖当前存在于自动化帐户中的 Runbook 草稿版本。 用于同步的 Git 等效命令行指令为 **git pull**
 
 ![显示了已挂起源代码管理同步作业中的所有日志的窗口](media/source-control-integration-legacy/automation-AllLogs.png)
 
@@ -133,4 +133,4 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要在 Azure 自动化中集成源代码管理，请参阅 [Azure 自动化：Azure 自动化中的源代码管理集成](https://azure.microsoft.com/blog/azure-automation-source-control-13/)。  
-* 若要通过 Visual Studio Online 集成 Runbook 源代码管理，请参阅 [Azure 自动化：使用 Visual Studio Online 集成 Runbook 源代码管理](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)。  
+* 若要使用 Visual Studio Online 集成 Runbook 源代码管理，请参阅 [Azure 自动化：使用 Visual Studio Online 集成 Runbook 源代码管理](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)。  

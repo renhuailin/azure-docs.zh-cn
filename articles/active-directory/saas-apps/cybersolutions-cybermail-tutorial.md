@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: a6136f5d3f72b0e9390a05b9765934f2db9b768d
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 41c0bdf3eaac1a78d4cdef09ba418155a5a0c919
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90063455"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455023"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cybersolutions-cybermail"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CyberSolutions CYBERMAILΣ 的集成
 
@@ -125,7 +125,7 @@ ms.locfileid: "90063455"
 
 ### <a name="create-cybersolutions-cybermail-test-user"></a>创建 CyberSolutions CYBERMAIL 测试用户
 
-在本部分，我们将在 CyberSolutions CYBERMAILΣ 中创建名为 Britta Simon 的用户。 请与  [CyberSolutions CYBERMAILΣ 支持团队](mailto:tech@cybersolutions.co.jp)协作，将用户添加到 CyberSolutions CYBERMAILΣ 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 CyberSolutions CYBERMAILΣ 中创建名为 Britta Simon 的用户。 与 [CyberSolutions CYBERMAILΣ 支持团队](mailto:tech@cybersolutions.co.jp)协作，在 CyberSolutions CYBERMAILΣ 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -141,9 +141,8 @@ ms.locfileid: "90063455"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 CyberSolutions CYBERMAILΣ 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击“访问面板”中的 CyberSolutions CYBERMAILΣ 磁贴时，如果在 SP 模式下配置，则会重定向到应用程序登录页以启动登录流；如果在 IDP 模式下配置，则应自动登录到设置 SSO 的 CyberSolutions CYBERMAILΣ。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击“访问面板”中的 CyberSolutions CYBERMAILΣ 磁贴时，如果在 SP 模式下配置，则会重定向到应用程序登录页以启动登录流；如果在 IDP 模式下配置，则应自动登录到设置 SSO 的 CyberSolutions CYBERMAILΣ。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 CyberSolutions CYBERMAILΣ 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
+配置 CyberSolutions CYBERMAILΣ 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

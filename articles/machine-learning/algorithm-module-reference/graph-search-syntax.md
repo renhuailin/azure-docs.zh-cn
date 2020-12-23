@@ -1,7 +1,7 @@
 ---
 title: Graph 搜索查询语法
 titleSuffix: Azure Machine Learning
-description: 了解如何使用搜索查询语法在管道图中搜索节点。
+description: 了解如何使用 Azure 机器学习设计器中的搜索查询语法在 "管道" 图中搜索节点。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
-ms.openlocfilehash: 166b87159b5ac2434c3ce7a7c66529a4b61ee565
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91290494"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420761"
 ---
 # <a name="graph-search-query-syntax"></a>Graph 搜索查询语法
 
@@ -36,7 +36,7 @@ ms.locfileid: "91290494"
 
  
 - 和/或
-- 使用 ?  和 \* 运算符进行通配符匹配。
+- 使用 ?  和 * *\** _ 运算符。
 
 ### <a name="examples"></a>示例
 
@@ -49,7 +49,7 @@ ms.locfileid: "91290494"
  
 - 通配符匹配： 
     - `machi?e learning`
-    - `mach*ing`
+    - `mach_ing`
  
 >[!NOTE]
 > Lucene 查询的开头不能使用“*”字符。

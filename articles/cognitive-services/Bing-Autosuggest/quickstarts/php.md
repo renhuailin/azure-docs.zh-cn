@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 PHP 建议搜索查询
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
+description: 了解如何使用必应自动建议 API 和 PHP 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6552c345678b6996f4a35e9e1fc7a1838505ff09
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d5a678da127117f6e7af77fed5ad2ef146908cce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930176"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352841"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>快速入门：使用必应自动建议 REST API 和 PHP 建议搜索查询
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 按照此快速入门的要求，学习如何调用必应自动建议 API 并读取 JSON 响应。 这个简单的 PHP 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
@@ -42,8 +47,8 @@ ms.locfileid: "82930176"
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the subscriptionKey string value with your valid subscription key.
 $subscriptionKey = 'enter key here';
@@ -156,4 +161,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ## <a name="see-also"></a>另请参阅
 
 - [什么是必应自动建议？](../get-suggested-search-terms.md)
-- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [必应自动推荐 API v7 参考](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

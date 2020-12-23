@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 41ad240b7232895a83839777f9942011edfaf5f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: subject-armqs
+ms.openlocfilehash: 223006193219afe4179f3161d5e60e6439207b22
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90529377"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896049"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Front Door
 
@@ -26,7 +27,7 @@ ms.locfileid: "90529377"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮****。 Azure 门户中会打开模板。
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
 [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-front-door-create-basic%2Fazuredeploy.json)
 
@@ -39,7 +40,7 @@ ms.locfileid: "90529377"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-front-door-create-basic)。
 
-在本快速入门中，你将创建一个 Front Door 配置，其中包含一个后端和一个与“/*”匹配的默认路径。 
+本快速入门将创建一个 Front Door 配置，其中包含一个后端和一个与 `/*` 匹配的默认路径。
 
 :::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
 
@@ -49,7 +50,7 @@ ms.locfileid: "90529377"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 从以下代码块中选择“试用”，以打开 Azure Cloud Shell，然后按照相关说明登录到 Azure****。 
+1. 从以下代码块中选择“试用”，以打开 Azure Cloud Shell，然后按照相关说明登录到 Azure。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,13 +67,13 @@ ms.locfileid: "90529377"
 
     等到控制台中显示提示。
 
-1. 从上一个代码块中选择“复制”****，以复制 PowerShell 脚本。
+1. 从上一个代码块中选择“复制”，以复制 PowerShell 脚本。
 
-1. 右键单击 shell 控制台窗格，然后选择“粘贴”****。
+1. 右键单击 shell 控制台窗格，然后选择“粘贴”。
 
 1. 输入相应的值。
 
-    模板部署将创建具有单个后端的 Front Door。 在此示例中，<span>microsoft.</span>com 用作 backendAddress。
+    模板部署将创建具有单个后端的 Front Door。 在此示例中，`microsoft.com` 用作 backendAddress。
 
     资源组名称是追加了 **rg** 的项目名称。
 
@@ -89,13 +90,13 @@ ms.locfileid: "90529377"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 从左侧窗格中选择“资源组”****。
+1. 从左侧窗格中选择“资源组”。
 
 1. 选择你在上一部分中创建的资源组。 默认资源组名称是追加了 **rg** 的项目名称。
 
 1. 选择之前创建的 Front Door，并单击“前端主机”链接。 该链接将打开一个 Web 浏览器，将你重定向到创建期间定义的后端 FQDN。
 
-    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Front Door 资源管理器模板 PowerShell 部署输出":::
+    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Front Door 门户概述":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -109,8 +110,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，我们创建了：
-* Front Door
+在本快速入门中，你创建了一个 Front Door。
 
 若要了解如何将自定义域添加到 Front Door，请继续学习 Front Door 教程。
 

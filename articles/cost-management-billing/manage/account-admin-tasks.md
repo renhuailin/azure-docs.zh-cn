@@ -7,14 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447703"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027962"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure 门户中的帐户管理员任务
 
@@ -27,7 +28,7 @@ ms.locfileid: "91447703"
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>导航到订阅的付款方式
 
-1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 以帐户管理员身份登录到 Azure 门户。
 
 1. 搜索“成本管理 + 计费”。 
 
@@ -115,9 +116,9 @@ ms.locfileid: "91447703"
 
 Azure 中的支出限制可以防止支出超过额度金额。 只要 Azure 订阅关联了有效的付款方法，即可随时移除支出限制。 对于具有多个月额度的订阅类型（例如 Visual Studio Enterprise 和 Visual Studio Professional），可以在下个计费周期开始时重新启用支出限制。
 
-支出限制不适用于具有承诺计划或使用即用即付定价的订阅。 请参阅 [Azure 订阅类型以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
+支出限制不适用于具有承诺计划或使用即用即付定价的订阅。
 
-1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 以帐户管理员身份登录到 Azure 门户。
 1. 搜索“成本管理 + 计费”。 
 
     ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/account-admin-tasks/search-bar.png)
@@ -145,7 +146,7 @@ Azure 中的支出限制可以防止支出超过额度金额。 只要 Azure 订
 
 如果你有 Azure 开放许可订阅，可以通过兑换产品密钥或使用信用卡购买额度的方式，向 Azure 门户中的订阅添加额度。
 
-1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 以帐户管理员身份登录到 Azure 门户。
 1. 搜索“成本管理 + 计费”。 
 
     ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/account-admin-tasks/search-bar.png)

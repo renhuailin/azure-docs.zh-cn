@@ -1,22 +1,22 @@
 ---
 title: 教程：从必应地图迁移 Web 服务 | Microsoft Azure Maps
-description: 如何将 Web 服务从必应地图迁移到 Microsoft Azure Maps。
+description: 有关如何将 Web 服务从必应地图迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90107938"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904952"
 ---
-# <a name="migrate-web-service-from-bing-maps"></a>从必应地图迁移 Web 服务
+# <a name="tutorial---migrate-web-service-from-bing-maps"></a>教程 - 从必应地图迁移 Web 服务
 
 Azure Maps 和必应地图都通过 REST Web 服务提供对空间 API 的访问。 这些平台的 API 接口执行类似的功能，但使用不同的命名约定和响应对象。
 
@@ -24,40 +24,40 @@ Azure Maps 和必应地图都通过 REST Web 服务提供对空间 API 的访问
 
 | 必应地图服务 API                 | Azure Maps 服务 API      |
 |---------------------------------------|-----------------------------|
-| 自动建议                           | [搜索](https://docs.microsoft.com/rest/api/maps/search)     |
-| 走向（包括卡车）          | [路线走向](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)                          |
-| 距离矩阵                       | [路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)                          |
-| 图像 - 静态地图                  | [呈现](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                                   |
-| 等时线                            | [路线范围](https://docs.microsoft.com/rest/api/maps/route/getrouterange)                                    |
-| 本地见解                        | [搜索](https://docs.microsoft.com/rest/api/maps/search) + [路线范围](https://docs.microsoft.com/rest/api/maps/route/getrouterange)    |
-| 本地搜索                          | [搜索](https://docs.microsoft.com/rest/api/maps/search)     |
-| 位置识别 (POI)           | [搜索](https://docs.microsoft.com/rest/api/maps/search)     |
-| 位置（正向/反向地理编码） | [搜索](https://docs.microsoft.com/rest/api/maps/search)                                               |
-| 对齐道路                          | [POST 路线走向](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)                         |
-| 空间数据服务 (SDS)           | [搜索](https://docs.microsoft.com/rest/api/maps/search) + [路线](https://docs.microsoft.com/rest/api/maps/route) + 其他 Azure 服务 |
-| 时区                             | [时区](https://docs.microsoft.com/rest/api/maps/timezone)  |
-| 交通事故                     | [交通事件详细信息](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidentdetail)                     |
+| 自动建议                           | [搜索](/rest/api/maps/search)     |
+| 走向（包括卡车）          | [路线走向](/rest/api/maps/route/getroutedirections)                          |
+| 距离矩阵                       | [路线矩阵](/rest/api/maps/route/postroutematrixpreview)                          |
+| 图像 - 静态地图                  | [呈现](/rest/api/maps/render/getmapimage)                                   |
+| 等时线                            | [路线范围](/rest/api/maps/route/getrouterange)                                    |
+| 本地见解                        | [搜索](/rest/api/maps/search) + [路线范围](/rest/api/maps/route/getrouterange)    |
+| 本地搜索                          | [搜索](/rest/api/maps/search)     |
+| 位置识别 (POI)           | [搜索](/rest/api/maps/search)     |
+| 位置（正向/反向地理编码） | [搜索](/rest/api/maps/search)                                               |
+| 对齐道路                          | [POST 路线走向](/rest/api/maps/route/postroutedirections)                         |
+| 空间数据服务 (SDS)           | [搜索](/rest/api/maps/search) + [路线](/rest/api/maps/route) + 其他 Azure 服务 |
+| 时区                             | [时区](/rest/api/maps/timezone)  |
+| 交通事故                     | [交通事件详细信息](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
+| Elevation                             | [高程（预览版）](/rest/api/maps/elevation)
 
 以下服务 API 目前在 Azure Maps 中不可用：
 
--   高程 - 已计划
 -   优化的路线 - 已计划。 Azure Maps 路由 API 支持单个车辆的旅行推销员优化。
 -   图像元数据 - 主要用于在必应地图中获取图块 URL。 Azure Maps 具有用于直接访问地图图块的独立服务。
 
 Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务；
 
--   [Azure Maps Creator](https://docs.microsoft.com/azure/azure-maps/creator-indoor-maps) - 创建建筑和空间的自定义专有数字孪生。
--   [空间操作](https://docs.microsoft.com/rest/api/maps/spatial) - 将复杂的空间计算和操作（例如地理围栏）负载分散到某个服务。
--   [地图图块](https://docs.microsoft.com/rest/api/maps/render/getmaptile) - 通过 Azure Maps 访问光栅和矢量图块形式的道路和图像图块。
--   [批处理路线](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview) - 支持在一段时间内在单个批处理中发出多达 1,000 个路线请求。 路线在服务器上并行计算，以提高处理速度。
--   [交通](https://docs.microsoft.com/rest/api/maps/traffic)流量 - 访问光栅和矢量图块形式的实时交通流量数据。
--   [地理位置 API](https://docs.microsoft.com/rest/api/maps/geolocation/getiptolocationpreview) - 获取 IP 地址的位置。
--   [天气服务](https://docs.microsoft.com/rest/api/maps/weather) - 获取实时和预报天气数据。
+-   [Azure Maps Creator（预览版）](./creator-indoor-maps.md) - 创建建筑和空间的自定义专有数字孪生。
+-   [空间操作](/rest/api/maps/spatial) - 将复杂的空间计算和操作（例如地理围栏）负载分散到某个服务。
+-   [地图图块](/rest/api/maps/render/getmaptile) - 通过 Azure Maps 访问光栅和矢量图块形式的道路和图像图块。
+-   [批处理路线](/rest/api/maps/route/postroutedirectionsbatchpreview) - 支持在一段时间内在单个批处理中发出多达 1,000 个路线请求。 路线在服务器上并行计算，以提高处理速度。
+-   [交通](/rest/api/maps/traffic)流量 - 访问光栅和矢量图块形式的实时交通流量数据。
+-   [地理位置 API（预览版）](/rest/api/maps/geolocation/getiptolocationpreview) - 获取 IP 地址的位置。
+-   [天气服务](/rest/api/maps/weather) - 获取实时和预报天气数据。
 
 请务必查看以下最佳做法指南：
 
--   [有关搜索的最佳做法](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)
--   [路线规划最佳做法](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-routing)
+-   [有关搜索的最佳做法](./how-to-use-best-practices-for-search.md)
+-   [路线规划最佳做法](./how-to-use-best-practices-for-routing.md)
 
 ## <a name="geocoding-addresses"></a>地理编码地址
 
@@ -65,11 +65,11 @@ Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务；
 
 Azure Maps 提供多种方法用于对地址进行地理编码；
 
--   [自由格式的地址地理编码](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)：指定单个地址字符串（如 `"1 Microsoft way, Redmond, WA"`）并立即处理请求。 如果需要快速对各个地址进行地理编码，我们建议使用此服务。
--   [结构化地址地理编码](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured)：指定单个地址的各个部分（例如街道名称、城市、国家/地区和邮政编码），并立即处理请求。 如果需要快速对单个地址进行地理编码，并且数据已分析成各个地址组成部分，则我们建议使用此服务。
--   [批量地址地理编码](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview)：创建最多包含 10,000 个地址的请求，并在一段时间内对其进行处理。 所有地址将在服务器上同时进行地理编码，完成后，可以下载已完成的结果集。 若要对大型数据集进行地理编码，建议使用此服务。
--   [模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别），并立即处理请求。 对于其用户可以从同一文本框搜索地址或兴趣点的应用程序，建议使用此 API。
--   [模糊批量搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
+-   [自由格式的地址地理编码](/rest/api/maps/search/getsearchaddress)：指定单个地址字符串（如 `"1 Microsoft way, Redmond, WA"`）并立即处理请求。 如果需要快速对各个地址进行地理编码，我们建议使用此服务。
+-   [结构化地址地理编码](/rest/api/maps/search/getsearchaddressstructured)：指定单个地址的各个部分（例如街道名称、城市、国家/地区和邮政编码），并立即处理请求。 如果需要快速对单个地址进行地理编码，并且数据已分析成各个地址组成部分，则我们建议使用此服务。
+-   [批量地址地理编码](/rest/api/maps/search/postsearchaddressbatchpreview)：创建最多包含 10,000 个地址的请求，并在一段时间内对其进行处理。 所有地址将在服务器上同时进行地理编码，完成后，可以下载已完成的结果集。 若要对大型数据集进行地理编码，建议使用此服务。
+-   [模糊搜索](/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别），并立即处理请求。 对于其用户可以从同一文本框搜索地址或兴趣点的应用程序，建议使用此 API。
+-   [模糊批量搜索](/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
 
 下表将必应地图 API 参数和 Azure Maps 中的可比较的 API 参数交叉引用，用于结构化和自由格式地址地理编码。
 
@@ -85,9 +85,9 @@ Azure Maps 提供多种方法用于对地址进行地理编码；
 | `maxResults` (`maxRes`)          | `limit`                                           |
 | `includeNeighborhood` (`inclnb`) | N/A - 始终由 Azure Maps 返回（如果可用）。   |
 | `include` (`incl`)               | N/A - 国家/地区 ISO2 代码始终由 Azure Maps 返回。 |
-| `key`                              | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)                  | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。 |
-| `userRegion` (`ur`)              | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。 |
+| `key`                              | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)                  | `language` – 请参阅[支持的语言](./supported-languages.md)文档。 |
+| `userRegion` (`ur`)              | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。 |
 
 Azure Maps 也支持；
 
@@ -103,9 +103,9 @@ Azure Maps 也支持；
 | `maxResults` (`maxRes`)          | `limit`                                |
 | `includeNeighborhood` (`inclnb`) | N/A - 始终由 Azure Maps 返回（如果可用）。  |
 | `include` (`incl`)               | N/A - 国家/地区 ISO2 代码始终由 Azure Maps 返回。  |
-| `key`                              | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)                  | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。  |
-| `userRegion` (`ur`)              | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。 |
+| `key`                              | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)                  | `language` – 请参阅[支持的语言](./supported-languages.md)文档。  |
+| `userRegion` (`ur`)              | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。 |
 
 Azure Maps 也支持；
 
@@ -114,7 +114,7 @@ Azure Maps 也支持；
 -   `lat`/`lon`、`topLeft`/`btmRight`、`radius` - 指定用户位置和区域，以提高结果的本地相关性。
 -   `ofs` - 包含结果和 `maxResults` 参数的页面。
 
-[此处](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)提供了演示如何使用搜索服务的示例。 请务必查看[搜索最佳做法](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)文档。
+[此处](./how-to-search-for-address.md)提供了演示如何使用搜索服务的示例。 请务必查看[搜索最佳做法](./how-to-use-best-practices-for-search.md)文档。
 
 ## <a name="reverse-geocode-a-coordinate-find-a-location-by-point"></a>对坐标进行反向地理编码（按点查找位置）
 
@@ -122,9 +122,9 @@ Azure Maps 也支持；
 
 Azure Maps 提供多种反向地理编码方法；
 
--   [地址反向地理编码器](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)：指定单个地理坐标以获取其大致地址，并立即处理请求。
--   [十字街反向地理编码器](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)：指定单个地理坐标以获取附近的十字街信息（例如，第一个十字街和主街），并立即处理请求。
--   [批量地址反向地理编码器](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatchpreview)：创建最多包含 10,000 个坐标的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
+-   [地址反向地理编码器](/rest/api/maps/search/getsearchaddressreverse)：指定单个地理坐标以获取其大致地址，并立即处理请求。
+-   [十字街反向地理编码器](/rest/api/maps/search/getsearchaddressreversecrossstreet)：指定单个地理坐标以获取附近的十字街信息（例如，第一个十字街和主街），并立即处理请求。
+-   [批量地址反向地理编码器](/rest/api/maps/search/postsearchaddressreversebatchpreview)：创建最多包含 10,000 个坐标的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
 
 下表对必应地图 API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -134,11 +134,11 @@ Azure Maps 提供多种反向地理编码方法；
 | `includeEntityTypes`                 | `entityType` - 请参阅下面的实体类型比较表。    |
 | `includeNeighborhood` (`inclnb`)     | N/A - 始终由 Azure Maps 返回（如果可用）。         |
 | `include` (`incl`)                   | N/A - 国家/地区 ISO2 代码始终由 Azure Maps 返回。    |
-| `key`                                | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)                      | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。   |
-| `userRegion` (`ur`)                  | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。 |
+| `key`                                | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)                      | `language` – 请参阅[支持的语言](./supported-languages.md)文档。   |
+| `userRegion` (`ur`)                  | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。 |
 
-请务必查看[搜索最佳做法](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)文档。
+请务必查看[搜索最佳做法](./how-to-use-best-practices-for-search.md)文档。
 
 Azure Maps 反向地理编码 API 提供必应地图所不能提供的其他一些功能，在迁移应用时，集成这些功能可能会有所帮助：
 
@@ -163,12 +163,12 @@ Azure Maps 反向地理编码 API 提供必应地图所不能提供的其他一�
 
 ## <a name="get-location-suggestions-autosuggest"></a>获取位置建议（自动建议）
 
-可用于自动建议场景的几个 Azure Maps 搜索 API 的支持预测模式。 Azure Maps [模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) API 与必应地图自动建议 API 最相似。 以下 API 还支持预测模式，向查询添加 `&typeahead=true`；
+可用于自动建议场景的几个 Azure Maps 搜索 API 的支持预测模式。 Azure Maps [模糊搜索](/rest/api/maps/search/getsearchfuzzy) API 与必应地图自动建议 API 最相似。 以下 API 还支持预测模式，向查询添加 `&typeahead=true`；
 
--   [自由格式的地址地理编码](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)：指定单个地址字符串（如 `"1 Microsoft way, Redmond, WA"`）并立即处理请求。 如果需要快速对各个地址进行地理编码，我们建议使用此服务。
--   [模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别），并立即处理请求。 对于其用户可以从同一文本框搜索地址或兴趣点的应用程序，建议使用此 API。
--   [POI 搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi)：按名称搜索兴趣点。 例如，`"starbucks"`。
--   [POI 类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)：按类别搜索兴趣点。 例如，“餐厅”。
+-   [自由格式的地址地理编码](/rest/api/maps/search/getsearchaddress)：指定单个地址字符串（如 `"1 Microsoft way, Redmond, WA"`）并立即处理请求。 如果需要快速对各个地址进行地理编码，我们建议使用此服务。
+-   [模糊搜索](/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别），并立即处理请求。 对于其用户可以从同一文本框搜索地址或兴趣点的应用程序，建议使用此 API。
+-   [POI 搜索](/rest/api/maps/search/getsearchpoi)：按名称搜索兴趣点。 例如，`"starbucks"`。
+-   [POI 类别搜索](/rest/api/maps/search/getsearchpoicategory)：按类别搜索兴趣点。 例如，“餐厅”。
 
 ## <a name="calculate-routes-and-directions"></a>计算路线和方向
 
@@ -184,9 +184,9 @@ Azure Maps 可用于计算路线和方向。 Azure Maps 具有许多与必应地
 
 Azure Maps 路线服务提供以下 API 来计算路线；
 
--   [计算路线](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。
--   [批处理路线](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
--   [移动服务](https://docs.microsoft.com/rest/api/maps/mobility)：使用公共交通计算路线和方向。
+-   [计算路线](/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。
+-   [批处理路线](/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
+-   [出行服务（预览版）](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
 
 下表对必应地图 API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -206,9 +206,9 @@ Azure Maps 路线服务提供以下 API 来计算路线；
 | `tolerances` (`tl`)                                        | 空值                                               |
 | `travelMode`                                               | `travelMode`                                      |
 | `waypoint.n` (`wp.n`) 或 `viaWaypoint.n` (`vwp.n`)         | `query` – 采用 `lat0,lon0:lat1,lon1….` 格式的坐标   |
-| `key`                                                      | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)                                            | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。 |
-| `userRegion` (`ur`)                                        | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。 |
+| `key`                                                      | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)                                            | `language` – 请参阅[支持的语言](./supported-languages.md)文档。 |
+| `userRegion` (`ur`)                                        | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。 |
 
 Azure Maps 路线 API 还支持同一 API 中的卡车路线。 下表对其他必应地图卡车路线参数与 Azure Maps 中的类似 API 参数作了交叉引用。
 
@@ -233,7 +233,7 @@ Azure Maps 路线 API 还支持同一 API 中的卡车路线。 下表对其他�
 > [!TIP]
 > 默认情况下，Azure Maps 路由 API 仅返回摘要（距离和时间）以及路线的坐标。 使用 `instructionsType` 参数可检索转弯提示说明。 可以使用 `routeRepresentation` 参数筛选出摘要和路线。
 
-此外，请务必查看[路线规划最佳做法](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-routing)文档。
+此外，请务必查看[路线规划最佳做法](./how-to-use-best-practices-for-routing.md)文档。
 
 Azure Maps 路线 API 提供必应地图所不能提供的其他许多功能，在迁移应用时，集成这些功能可能会有所帮助：
 
@@ -249,13 +249,13 @@ Azure Maps 路线 API 提供必应地图所不能提供的其他许多功能，�
 
 在 Azure Maps 中，有几种方法可以将坐标与道路对齐。
 
--   使用路线方向 API 对齐坐标，并沿道路网络的逻辑路线对齐坐标。
+-   使用路线方向 API 以沿道路网络将坐标对齐到逻辑路线。
 -   使用 Azure Maps Web SDK 将各坐标与矢量图块中最近的道路对齐。
 -   直接使用 Azure Maps 矢量图块对齐各个坐标。
 
 使用路线方向 API 对齐坐标
 
-Azure Maps 可以通过使用[路线方向](https://docs.microsoft.com/rest/api/maps/route/postroutedirections) API 将坐标与道路对齐。 此服务可用于在一组坐标之间重建逻辑路线，并且与必应地图对齐道路 API 相差无几。
+Azure Maps 可以通过使用[路线方向](/rest/api/maps/route/postroutedirections) API 将坐标与道路对齐。 此服务可用于在一组坐标之间重建逻辑路线，并且与必应地图对齐道路 API 相差无几。
 
 可以通过两种不同的方法使用路线方向 API 将坐标与道路对齐。
 
@@ -272,9 +272,9 @@ Azure Maps 可以通过使用[路线方向](https://docs.microsoft.com/rest/api/
 | `includeTruckSpeedLimit`   | 空值                                                                 |
 | `speedUnit`                | 空值                                                                 |
 | `travelMode`               | `travelMode`                                                        |
-| `key`                      | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)            | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。   |
-| `userRegion` (`ur`)        | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。   |
+| `key`                      | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)            | `language` – 请参阅[支持的语言](./supported-languages.md)文档。   |
+| `userRegion` (`ur`)        | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。   |
 
 Azure Maps 路线 API 还支持同一 API 中的卡车路线参数，以确保计算逻辑路径。 下表对其他必应地图卡车路线参数与 Azure Maps 中的类似 API 参数作了交叉引用。
 
@@ -308,11 +308,11 @@ Azure Maps Web SDK 使用矢量图块来呈现地图。 这些矢量图块包含
 
 直接使用 Azure 地图矢量图块对齐坐标
 
-Azure Maps 矢量图块包含原始道路几何数据，可用于计算道路上距离某个坐标最近的点，以执行各个坐标的基本对齐。 所有路段都在缩放级别为 15 的扇区中显示，因此你需要从那里检索图块。 然后，可以使用[四叉树图块棱锥数学](https://docs.microsoft.com/azure/azure-maps/zoom-levels-and-tile-grid)来确定需要的图块，并将图块转换为几何图形。 由此，可以使用空间数学库（如 [turf js](http://turfjs.org/) 或 [NetTopologySuite](https://github.com/NetTopologySuite/NetTopologySuite)）计算最近的路径段。
+Azure Maps 矢量图块包含原始道路几何数据，可用于计算道路上距离某个坐标最近的点，以执行各个坐标的基本对齐。 所有路段都在缩放级别为 15 的扇区中显示，因此你需要从那里检索图块。 然后，可以使用[四叉树图块棱锥数学](./zoom-levels-and-tile-grid.md)来确定需要的图块，并将图块转换为几何图形。 由此，可以使用空间数学库（如 [turf js](http://turfjs.org/) 或 [NetTopologySuite](https://github.com/NetTopologySuite/NetTopologySuite)）计算最近的路径段。
 
 ## <a name="retrieve-a-map-image-static-map"></a>检索地图图像（静态地图）
 
-Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像。 Azure Maps [地图图像呈现](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) API 相当于必应地图中的静态地图 API。
+Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像。 Azure Maps [地图图像呈现](/rest/api/maps/render/getmapimagerytile) API 相当于必应地图中的静态地图 API。
 
 > [!NOTE]
 > Azure Maps 要求中心、所有图钉和路径位置都采用 `longitude,latitude` 格式的坐标，而必应地图则使用 `latitude,longitude` 格式。</p>
@@ -325,7 +325,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 | `centerPoint`            | `center`                                       |
 | `format`                 | `format` – 指定为 URL 路径的一部分。 目前仅支持 PNG。  |
 | `heading`                | N/A - 不支持街景。                |
-| `imagerySet`             | `layer` 和 `style` – 请参阅[支持的地图样式](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)文档。   |
+| `imagerySet`             | `layer` 和 `style` – 请参阅[支持的地图样式](./supported-map-styles.md)文档。   |
 | `mapArea` (`ma`)         | `bbox`                                         |
 | `mapLayer` (`ml`)        | 空值                                            |
 | `mapSize` (`ms`)         | `width` 和 `height` – 最大大小可为 8192x8192。 |
@@ -340,19 +340,19 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 | `highlightEntity` (`he`) | 空值                                            |
 | `style`                  | 空值                                            |
 | 路线参数         | 空值                                            |
-| `key`                    | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)          | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。   |
-| `userRegion` (`ur`)      | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。 |
+| `key`                    | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)          | `language` – 请参阅[支持的语言](./supported-languages.md)文档。   |
+| `userRegion` (`ur`)      | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。 |
 
 > [!NOTE]
 > Azure Maps 使用图块系统，其中的图块大小是必应地图中所用地图图块的两倍。 因此，相比必应地图，Azure Maps 中的缩放级别值看上去要更近一个级别。 在要迁移的请求中将缩放级别减 1 即可补偿这种差异。
 
-有关详细信息，请参阅[有关地图图像呈现 API 的操作指南](https://docs.microsoft.com/azure/azure-maps/how-to-render-custom-data)。
+有关详细信息，请参阅[有关地图图像呈现 API 的操作指南](./how-to-render-custom-data.md)。
 
 除了能够生成静态地图图像以外，Azure Maps 呈现服务还提供直接访问光栅 (PNG) 和矢量格式的地图图块的功能；
 
--   [地图图块](https://docs.microsoft.com/rest/api/maps/render/getmaptile) - 检索基础地图的光栅 (PNG) 和矢量图块（道路、边界、背景）。
--   [地图图像图块](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) - 检索航空和卫星图像图块。
+-   [地图图块](/rest/api/maps/render/getmaptile) - 检索基础地图的光栅 (PNG) 和矢量图块（道路、边界、背景）。
+-   [地图图像图块](/rest/api/maps/render/getmapimagerytile) - 检索航空和卫星图像图块。
 
 ### <a name="pushpin-url-parameter-format-comparison"></a>图钉 URL 参数格式比较
 
@@ -446,7 +446,7 @@ Azure Maps 中添加的图钉样式采用 `optionNameValue` 格式，多个样�
 
 > `&path=pathStyles||pathLocation1|pathLocation2|...`
 
-关于路径位置，Azure Maps 要求坐标采用 `longitude latitude` 格式，而必应地图采用 `latitude,longitude` 格式。 另请注意，在 Azure Maps 中使用空格而不是逗号来分隔经度和纬度。 Azure Maps 当前不支持编码的路径。 可根据[此文档](https://docs.microsoft.com/azure/azure-maps/how-to-render-custom-data#get-data-from-azure-maps-data-storage)所述，将较大的数据集作为 GeoJSON 填充内容上传到 Azure Maps 数据存储 API。
+关于路径位置，Azure Maps 要求坐标采用 `longitude latitude` 格式，而必应地图采用 `latitude,longitude` 格式。 另请注意，在 Azure Maps 中使用空格而不是逗号来分隔经度和纬度。 Azure Maps 当前不支持编码的路径。 可根据[此文档](./how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)所述，将较大的数据集作为 GeoJSON 填充内容上传到 Azure Maps 数据存储 API。
 
 Azure Maps 中添加的路径样式采用 `optionNameValue` 格式，多个样式以竖线 (`|`) 字符分隔，例如 `optionName1Value1|optionName2Value2`。 请注意，不用分隔选项名称和值。 可使用以下样式选项名称来为 Azure Maps 中的路径设置样式：
 
@@ -469,7 +469,7 @@ Azure Maps 中添加的路径样式采用 `optionNameValue` 格式，多个样�
 
 Azure Maps 提供一个 API 用于计算一组的位置之间的行程时间和距离（距离矩阵）。 Azure Maps 距离矩阵 API 相当于必应地图中的距离矩阵 API；
 
--   [路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)：以异步方式计算一组来源和目标的行程时间与距离。 对于每个请求最多支持 700 个单元（来源数乘以目标数）。 考虑到这一限制，可能的矩阵维度示例如下：`700x1`、`50x10`、`10x10`、`28x25`、`10x70`。
+-   [路线矩阵](/rest/api/maps/route/postroutematrixpreview)：以异步方式计算一组来源和目标的行程时间与距离。 对于每个请求最多支持 700 个单元（来源数乘以目标数）。 考虑到这一限制，可能的矩阵维度示例如下：`700x1`、`50x10`、`10x10`、`28x25`、`10x70`。
 
 > [!NOTE]
 > 只能使用在正文中包含来源和目标信息的 POST 请求向距离矩阵 API 发出请求。</p>
@@ -487,9 +487,9 @@ Azure Maps 提供一个 API 用于计算一组的位置之间的行程时间和�
 | `resolution`            | 空值                                                         |
 | `distanceUnit`          | N/A - 所有距离（以米为单位）。                              |
 | `timeUnit`              | N/A - 所有时间（以秒为单位）。                                 |
-| `key`                   | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)         | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。  |
-| `userRegion` (`ur`)     | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。     |
+| `key`                   | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)         | `language` – 请参阅[支持的语言](./supported-languages.md)文档。  |
+| `userRegion` (`ur`)     | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。     |
 
 > [!TIP]
 > Azure Maps 路线 API 中提供的所有高级路线选项（货车路线、引擎规格、避开...）在 Azure Maps 距离矩阵 API 中均受支持。
@@ -498,7 +498,7 @@ Azure Maps 提供一个 API 用于计算一组的位置之间的行程时间和�
 
 Azure Maps 提供了用于计算等时线的 API，这是一个多边形，其中包含一个区域（可在指定的时间内或燃油/电量内从原点沿任意方向前往）。 Azure Maps 路线范围 API 与必应地图中的等时线 API 相差无几；
 
--   [路线](https://docs.microsoft.com/rest/api/maps/route/getrouterange)范围**：计算一个多边形，其中包含一个区域（可在指定的时间、距离内或可用的燃油/电量内从原点沿任意方向前往）。
+-   [路线](/rest/api/maps/route/getrouterange)范围**：计算一个多边形，其中包含一个区域（可在指定的时间、距离内或可用的燃油/电量内从原点沿任意方向前往）。
 
 > [!NOTE]
 > Azure Maps 要求查询原点是坐标。 首先需要对地址进行地理编码。</p>
@@ -516,9 +516,9 @@ Azure Maps 提供了用于计算等时线的 API，这是一个多边形，其�
 | `maxDistance` (`maxDis`)     | `distanceBudgetInMeters`                       |
 | `distanceUnit` (`du`)        | N/A - 所有距离（以米为单位）。                 |
 | `optimize` (`optmz`)         | `routeType`                                    |
-| `key`                        | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)              | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。  |
-| `userRegion` (`ur`)          | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。 |
+| `key`                        | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)              | `language` – 请参阅[支持的语言](./supported-languages.md)文档。  |
+| `userRegion` (`ur`)          | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。 |
 
 > [!TIP]
 > Azure Maps 路线 API 中提供的所有高级路线选项（货车路线、引擎规格、避开...）在 Azure Maps 等时线 API 中均受支持。
@@ -527,21 +527,21 @@ Azure Maps 提供了用于计算等时线的 API，这是一个多边形，其�
 
 在必应地图中可以使用以下 API 搜索兴趣点数据：
 
--   本地搜索：按名称或按实体类型（类别）搜索附近兴趣点（径向搜索）。 Azure Maps [POI 搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi)和 [POI 类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) API 与此 API 的相似度最高。
--   位置识别：搜索位于某个位置特定距离内的兴趣点。 Azure Maps [附近搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) API 与此 API 相似度最高。
--   本地见解：搜索在指定的最大驾驶时间内或距特定坐标的最大距离内的兴趣点。 借助 Azure Maps，通过首先计算等时线，然后将其传递到[在几何图形中搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) API 中来实现这一点。
+-   本地搜索：按名称或按实体类型（类别）搜索附近兴趣点（径向搜索）。 Azure Maps [POI 搜索](/rest/api/maps/search/getsearchpoi)和 [POI 类别搜索](/rest/api/maps/search/getsearchpoicategory) API 与此 API 的相似度最高。
+-   位置识别：搜索位于某个位置特定距离内的兴趣点。 Azure Maps [附近搜索](/rest/api/maps/search/getsearchnearby) API 与此 API 相似度最高。
+-   本地见解：搜索在指定的最大驾驶时间内或距特定坐标的最大距离内的兴趣点。 借助 Azure Maps，通过首先计算等时线，然后将其传递到[在几何图形中搜索](/rest/api/maps/search/postsearchinsidegeometry) API 中来实现这一点。
 
 Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
--   [POI 搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi)：按名称搜索兴趣点。 例如，`"starbucks"`。
--   [POI 类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)：按类别搜索兴趣点。 例如，“餐厅”。
--   [附近搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)：搜索位于某个位置特定距离内的兴趣点。
--   [模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别），并立即处理请求。 对于其用户可以从同一文本框搜索地址或兴趣点的应用程序，建议使用此 API。
--   [在几何图形中搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)：搜索指定几何图形（多边形）中的兴趣点。
--   [沿路线搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchalongroute)：搜索指定路线上的兴趣点。
--   [模糊批量搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
+-   [POI 搜索](/rest/api/maps/search/getsearchpoi)：按名称搜索兴趣点。 例如，`"starbucks"`。
+-   [POI 类别搜索](/rest/api/maps/search/getsearchpoicategory)：按类别搜索兴趣点。 例如，“餐厅”。
+-   [附近搜索](/rest/api/maps/search/getsearchnearby)：搜索位于某个位置特定距离内的兴趣点。
+-   [模糊搜索](/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别），并立即处理请求。 对于其用户可以从同一文本框搜索地址或兴趣点的应用程序，建议使用此 API。
+-   [在几何图形中搜索](/rest/api/maps/search/postsearchinsidegeometry)：搜索指定几何图形（多边形）中的兴趣点。
+-   [沿路线搜索](/rest/api/maps/search/postsearchalongroute)：搜索指定路线上的兴趣点。
+-   [模糊批量搜索](/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
 
-请务必查看[搜索最佳做法](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)文档。
+请务必查看[搜索最佳做法](./how-to-use-best-practices-for-search.md)文档。
 
 ## <a name="get-traffic-incidents"></a>获取交通事件数据
 
@@ -554,11 +554,11 @@ Azure Maps 提供了几个用于检索交通数据的 API。 可以使用两种�
 
 交通数据也整合到 Azure Maps 交互式地图控件中。 Azure Maps 还提供以下交通服务 API；
 
--   [交通流量段](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowsegment)：提供有关距给定坐标最近的路段的速度和行程时间的信息。
--   [交通流量图块](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)：提供包含交通流量数据的光栅和矢量图块。 这些图块可以与 Azure Maps 控件或第三方地图控件（如 Leaflet）结合使用。 矢量图块还可用于高级数据分析。
--   [交通事件详细信息](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidentdetail)：提供边界框、缩放级别和交通模型内的交通事件详细信息。
--   [交通事件图块](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)：提供包含交通事件数据的光栅和矢量图块。
--   [交通事件视区](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidentviewport)：检索请求中所述视区的法律和技术信息，如交通模型 ID。
+-   [交通流量段](/rest/api/maps/traffic/gettrafficflowsegment)：提供有关距给定坐标最近的路段的速度和行程时间的信息。
+-   [交通流量图块](/rest/api/maps/traffic/gettrafficflowtile)：提供包含交通流量数据的光栅和矢量图块。 这些图块可以与 Azure Maps 控件或第三方地图控件（如 Leaflet）结合使用。 矢量图块还可用于高级数据分析。
+-   [交通事件详细信息](/rest/api/maps/traffic/gettrafficincidentdetail)：提供边界框、缩放级别和交通模型内的交通事件详细信息。
+-   [交通事件图块](/rest/api/maps/traffic/gettrafficincidenttile)：提供包含交通事件数据的光栅和矢量图块。
+-   [交通事件视区](/rest/api/maps/traffic/gettrafficincidentviewport)：检索请求中所述视区的法律和技术信息，如交通模型 ID。
 
 下表交叉引用必应地图交通 API 参数与 Azure Maps 中的类似交通事件详细信息 API 参数。
 
@@ -568,15 +568,15 @@ Azure Maps 提供了几个用于检索交通数据的 API。 可以使用两种�
 | `includeLocationCodes`   | 空值                                   |
 | `severity` (`s`)         | N/A - 返回的所有数据               |
 | `type` (`t`)             | N/A - 返回的所有数据               |
-| `key`                    | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)          | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。 |
-| `userRegion` (`ur`)      | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。 |
+| `key`                    | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)          | `language` – 请参阅[支持的语言](./supported-languages.md)文档。 |
+| `userRegion` (`ur`)      | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。 |
 
 ## <a name="get-a-time-zone"></a>获取时区
 
 Azure Maps 提供一个 API 用于检索坐标所在的时区。 Azure Maps 时区 API 相当于必应地图中的时区 API；
 
--   [按坐标获取时区信息](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates)：指定一个坐标，并获取其所在时区的详细信息。
+-   [按坐标获取时区信息](/rest/api/maps/timezone/gettimezonebycoordinates)：指定一个坐标，并获取其所在时区的详细信息。
 
 下表对必应地图 API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -586,17 +586,17 @@ Azure Maps 提供一个 API 用于检索坐标所在的时区。 Azure Maps 时�
 | `query`                 | N/A - 必须先对位置进行地理编码。      |
 | `dateTime`              | `timeStamp`                                  |
 | `includeDstRules`       | N/A - 始终由 Azure Maps 包含在响应中。 |
-| `key`                   | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication)文档。 |
-| `culture` (`c`)         | `language` – 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)文档。  |
-| `userRegion` (`ur`)     | `view` - 请参阅[支持的视图](https://aka.ms/AzureMapsLocalizationViews)文档。  |
+| `key`                   | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
+| `culture` (`c`)         | `language` – 请参阅[支持的语言](./supported-languages.md)文档。  |
+| `userRegion` (`ur`)     | `view` - 请参阅[支持的视图](./supported-languages.md#azure-maps-supported-views)文档。  |
 
 除此之外，Azure Maps 平台还提供其他许多时区 API 来帮助对时区名称和 ID 进行转换；
 
--   [按 ID 获取时区信息](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid)：返回指定 IANA 时区 ID 的当前、历史和将来时区信息。
--   [时区枚举 IANA](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana)：返回 IANA 时区 ID 的完整列表。 对 IANA 服务所做的更新在一天内即会反映在系统中。 
--   [时区枚举 Windows](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows)：返回 Windows 时区 ID 的完整列表。
--   [时区 IANA 版本](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion)：返回 Azure Maps 使用的当前 IANA 版本号。 
--   [与 Windows 时区对应的 IANA](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonewindowstoiana)：在指定有效 Windows 时区 ID 的情况下，返回对应的 IANA ID。 可返回单个 Windows ID 的多个 IANA ID。
+-   [按 ID 获取时区信息](/rest/api/maps/timezone/gettimezonebyid)：返回指定 IANA 时区 ID 的当前、历史和将来时区信息。
+-   [时区枚举 IANA](/rest/api/maps/timezone/gettimezoneenumiana)：返回 IANA 时区 ID 的完整列表。 对 IANA 服务所做的更新在一天内即会反映在系统中。 
+-   [时区枚举 Windows](/rest/api/maps/timezone/gettimezoneenumwindows)：返回 Windows 时区 ID 的完整列表。
+-   [时区 IANA 版本](/rest/api/maps/timezone/gettimezoneianaversion)：返回 Azure Maps 使用的当前 IANA 版本号。 
+-   [与 Windows 时区对应的 IANA](/rest/api/maps/timezone/gettimezonewindowstoiana)：在指定有效 Windows 时区 ID 的情况下，返回对应的 IANA ID。 可返回单个 Windows ID 的多个 IANA ID。
 
 ## <a name="spatial-data-services-sds"></a>空间数据服务 (SDS)
 
@@ -616,11 +616,11 @@ Azure Maps 具有批处理地理编码服务，但它支持在单个请求中传
 
 使用 Azure Maps 对大量地址进行地理编码的另一个方式是向标准搜索 API 发出并行请求。 这些服务对于每个请求只接受一个地址，但可以与 S0 层一起使用，S0 层也提供免费使用限制。 S0 层支持从单个帐户每秒最多向 Azure Maps 平台发出 50 个请求。 因此，如果你处理限制以保持在该限制内，则每小时可以对多达 180,000 个地址进行地理编码。 S1 层对可以从帐户进行的每秒查询数没有记录的限制，因此在使用该定价层时可以更快地处理更多数据，但是使用批处理地理编码服务将有助于减少传输的数据总量，并大大减少网络流量。
 
--   [自由格式的地址地理编码](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)：指定单个地址字符串（如 `"1 Microsoft way, Redmond, WA"`）并立即处理请求。 如果需要快速对各个地址进行地理编码，我们建议使用此服务。
--   [结构化地址地理编码](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured)：指定单个地址的各个部分（例如街道名称、城市、国家/地区和邮政编码），并立即处理请求。 如果需要快速对单个地址进行地理编码，并且数据已分析成各个地址组成部分，则我们建议使用此服务。
--   [批量地址地理编码](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview)：创建最多包含 10,000 个地址的请求，并在一段时间内对其进行处理。 所有地址将在服务器上同时进行地理编码，完成后，可以下载已完成的结果集。 若要对大型数据集进行地理编码，建议使用此服务。
--   [模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别），并立即处理请求。 对于其用户可以从同一文本框搜索地址或兴趣点的应用程序，建议使用此 API。
--   [模糊批量搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
+-   [自由格式的地址地理编码](/rest/api/maps/search/getsearchaddress)：指定单个地址字符串（如 `"1 Microsoft way, Redmond, WA"`）并立即处理请求。 如果需要快速对各个地址进行地理编码，我们建议使用此服务。
+-   [结构化地址地理编码](/rest/api/maps/search/getsearchaddressstructured)：指定单个地址的各个部分（例如街道名称、城市、国家/地区和邮政编码），并立即处理请求。 如果需要快速对单个地址进行地理编码，并且数据已分析成各个地址组成部分，则我们建议使用此服务。
+-   [批量地址地理编码](/rest/api/maps/search/postsearchaddressbatchpreview)：创建最多包含 10,000 个地址的请求，并在一段时间内对其进行处理。 所有地址将在服务器上同时进行地理编码，完成后，可以下载已完成的结果集。 若要对大型数据集进行地理编码，建议使用此服务。
+-   [模糊搜索](/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别），并立即处理请求。 对于其用户可以从同一文本框搜索地址或兴趣点的应用程序，建议使用此 API。
+-   [模糊批量搜索](/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
 
 ### <a name="get-administrative-boundary-data"></a>获取管理边界数据
 
@@ -631,12 +631,12 @@ Azure Maps 还提供对管理边界（国家、州、县、城市和邮政编码
 概括而言：
 
 1.  将要接收的边界的查询传递到以下搜索 API 之一。
-    -   [自由格式的地址地理编码](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)
-    -   [结构化地址地理编码](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured)
-    -   [批量地址地理编码](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview)
-    -   [模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
-    -   [模糊批量搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)
-2.  如果所需的结果具有几何 ID，请将其传递到[搜索多边形 API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)。
+    -   [自由格式的地址地理编码](/rest/api/maps/search/getsearchaddress)
+    -   [结构化地址地理编码](/rest/api/maps/search/getsearchaddressstructured)
+    -   [批量地址地理编码](/rest/api/maps/search/postsearchaddressbatchpreview)
+    -   [模糊搜索](/rest/api/maps/search/getsearchfuzzy)
+    -   [模糊批量搜索](/rest/api/maps/search/postsearchfuzzybatchpreview)
+2.  如果所需的结果具有几何 ID，请将其传递到[搜索多边形 API](/rest/api/maps/search/getsearchpolygon)。
 
 ### <a name="host-and-query-spatial-business-data"></a>托管和查询空间业务数据
 
@@ -648,15 +648,15 @@ Azure Cosmos DB 还提供一组有限的空间功能，这些功能可能够用�
 
 以下是有关在 Azure 中托管和查询空间数据的一些有用资源。
 
--   [Azure SQL 空间数据类型概述](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview)
--   [ - 查询最近的邻近区域](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor)
--   [Azure Cosmos DB 地理空间功能概述](https://docs.microsoft.com/azure/cosmos-db/geospatial)
+-   [Azure SQL 空间数据类型概述](/sql/relational-databases/spatial/spatial-data-types-overview)
+-   [ - 查询最近的邻近区域](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor)
+-   [Azure Cosmos DB 地理空间功能概述](../cosmos-db/sql-query-geospatial-intro.md)
 
 ## <a name="client-libraries"></a>客户端库
 
 Azure Maps 为以下编程语言提供客户端库；
 
--   JavaScript、TypeScript、Node.js – [文档](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module) \| [NPM 包](https://www.npmjs.com/package/azure-maps-rest)
+-   JavaScript、TypeScript、Node.js – [文档](./how-to-use-services-module.md) \| [NPM 包](https://www.npmjs.com/package/azure-maps-rest)
 
 其他编程语言的开源客户端库；
 
@@ -676,7 +676,7 @@ Azure Maps 为以下编程语言提供客户端库；
 > [如何使用服务模块 (Web SDK)](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST 服务 API 参考文档](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps REST 服务 API 参考文档](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](/samples/browse/?products=azure-maps)

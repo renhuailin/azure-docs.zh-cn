@@ -3,12 +3,12 @@ title: 使用用于容器的 Azure Monitor 监视 Kubernetes | Microsoft Docs
 description: 本文介绍如何使用用于容器的 Azure Monitor 查看和分析 Kubernetes 群集的性能。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988130"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905700"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能
 
@@ -161,9 +161,9 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 从展开的节点中，你可以从在节点上运行的 pod 或容器向下钻取到控制器来查看针对该控制器筛选的性能数据。 选择特定节点的“控制器”列下的值。
 
-![屏幕截图显示 "性能" 视图中从节点到控制器的深化](./media/container-insights-analyze/drill-down-node-controller.png)
+![显示性能视图中从节点到控制器的向下钻取的屏幕截图](./media/container-insights-analyze/drill-down-node-controller.png)
 
-从页面顶部选择控制器或容器，查看这些对象的状态和资源使用率。 若要查看内存利用率，可在“指标”下拉列表中选择“内存 RSS”或“内存工作集”  。 仅 Kubernetes 1.8 版和更高版本支持**内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%* ，它表示未定义或无法表示的值的数值数据类型值。
+从页面顶部选择控制器或容器，查看这些对象的状态和资源使用率。 若要查看内存利用率，可在“指标”下拉列表中选择“内存 RSS”或“内存工作集”  。 仅 Kubernetes 1.8 版和更高版本支持 **内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%* ，它表示未定义或无法表示的值的数值数据类型值。
 
 ![容器节点性能视图](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -228,7 +228,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 选择特定控制器的“节点”列下的值。
 
-![性能视图中从节点到控制器的示例向下钻取](./media/container-insights-analyze/drill-down-controller-node.png)
+![性能视图中的 "控制器到" 节点示例向下钻取](./media/container-insights-analyze/drill-down-controller-node.png)
 
 下表描述了查看控制器时显示的信息：
 
@@ -291,38 +291,19 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | ![“已终止”状态图标](./media/container-insights-analyze/containers-terminated-icon.png) | 成功停止或无法停止|
 | ![“已失败”状态图标](./media/container-insights-analyze/containers-failed-icon.png) | “已失败”状态 |
 
+## <a name="monitor-and-visualize-network-configurations"></a>监视和可视化网络配置
+Azure 网络策略管理器包含信息丰富的 Prometheus 指标，可用于监视和更好地了解网络配置。 它在 Azure 门户或 Grafana 实验室中提供了内置的可视化效果。 有关详细信息，请参阅[使用 Azure NPM 监视和可视化网络配置](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm)。
+
+
 ## <a name="workbooks"></a>工作簿
 
-工作簿可将文本、 [日志查询](../log-query/query-language.md)、[指标](../platform/data-platform-metrics.md)和参数合并到丰富的交互式报表中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
+工作簿将文本、日志查询、指标和参数合并为丰富的交互式报表，使你能够分析群集性能。 有关可用于容器 Azure Monitor 的工作簿的说明，请参阅 [容器 Azure Monitor 中的工作簿](container-insights-reports.md) 。
 
-用于容器的 Azure Monitor 包含四个用于入门的工作簿：
-
-- **磁盘容量**：在容器中为每个提供给节点的磁盘提供包含以下方面内容的交互式磁盘使用情况图表：
-
-    - 所有磁盘的磁盘使用率百分比。
-    - 所有磁盘的可用磁盘空间。
-    - 一个网格，显示每个节点磁盘的已使用空间百分比、已使用空间趋势百分比、可用磁盘空间 (GiB)，以及可用磁盘空间趋势 (GiB)。 选择表中的某个行时，会在该行下面显示已使用空间百分比和可用磁盘空间 (GiB)。
-
-- **磁盘 IO**：在容器中为每个提供给节点的磁盘提供包含以下方面内容的交互式磁盘使用率图表：
-
-    - 跨所有磁盘按读取字节数/秒、写入字节数/秒以及读取和写入字节数/秒趋势汇总的磁盘 I/O。
-    - 八个显示关键性能指标的性能图表，用于度量和标识磁盘 I/O 瓶颈。
-
-- **Kubelet**：包括两个显示关键节点操作统计信息的网格：
-
-    - 节点网格的概览汇总了每个节点的总操作数、总错误数、成功的操作数（按百分比），以及趋势。
-    - 操作类型概览汇总了每个操作的总操作数、总错误数、成功的操作数（按百分比），以及趋势。
-
-- **网络**：提供每个节点网络适配器的交互式网络使用率图表，并提供一个表示关键性能指标的网格，用于度量网络适配器的性能。
-
-访问这些工作簿的方法是从“查看工作簿”下拉列表中选择每个工作簿。
-
-![“查看工作簿”下拉列表](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请查看[使用用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)，了解如何针对高 CPU 和内存利用率创建警报以支持 DevOps 或操作流程和过程。
+- 请查看[使用用于容器的 Azure Monitor 创建性能警报](./container-insights-log-alerts.md)，了解如何针对高 CPU 和内存利用率创建警报以支持 DevOps 或操作流程和过程。
 
 - 通过查看[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，可查看预定义的查询和示例，从而对其进行评估或自定义，以便对群集执行警报、可视化或分析操作。
 
-- 查看[监视器群集运行状况](container-insights-health.md)，了解如何查看 Kubernetes 群集的运行状况状态。
+- 查看[监视器群集运行状况](./container-insights-overview.md)，了解如何查看 Kubernetes 群集的运行状况状态。

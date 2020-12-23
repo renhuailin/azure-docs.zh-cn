@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f94a3da96243e30faa90277ce86efec037f54672
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 863d8d87d5de771293199dd60618128b0ac11bba
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436454"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442593"
 ---
 # <a name="a-web-app-that-calls-web-apis-app-registration"></a>调用 Web API 的 Web 应用：应用注册
 
@@ -28,9 +28,8 @@ ms.locfileid: "89436454"
 
 ## <a name="api-permissions"></a>API 权限
 
-Web 应用代表已登录用户调用 API。 为此，它们必须请求委托的权限  。 有关详细信息，请参阅 [添加访问 WEB API 的权限](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)。
+Web 应用代表已登录用户调用 API。 为此，它们必须请求委托的权限  。 有关详细信息，请参阅[添加用于访问 Web API 的权限](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)。
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [调用 Web API 的 Web 应用：代码配置](scenario-web-app-call-api-app-configuration.md)
+转到此方案中的下一篇文章 " [代码配置](scenario-web-app-call-api-app-configuration.md)"。

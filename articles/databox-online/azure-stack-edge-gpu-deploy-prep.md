@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/08/2020
+ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf7719487d4f03b8d9524234e1a58cf792a4843b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899778"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449339"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教程：准备部署 Azure Stack Edge Pro with GPU 
 
@@ -66,14 +66,16 @@ ms.locfileid: "90899778"
 
 在开始之前，请确保：
 
-- 已为你的 Microsoft Azure 订阅启用了 Azure Stack Edge 资源。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。
+- 已为你的 Microsoft Azure 订阅启用了 Azure Stack Edge 资源。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 若要确定你的 Azure 订阅的类型，请参阅[什么是 Azure 产品/服务？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
 - 你在资源组级别拥有对 Azure Stack Edge Pro/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
 
-    - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
-    - 若要创建任何 IoT 中心资源，请确保已注册 Microsoft.Devices 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+    - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 
+    - 你还需要确保已注册 `Microsoft.DataBoxEdge` 和 `MicrosoftKeyVault` 资源提供程序。 若要创建任何 IoT 中心资源，应注册 `Microsoft.Devices` 提供程序。 
+        - 若要注册资源提供程序，请在 Azure 门户中转到“主页”>“订阅”> 你的订阅 >“资源提供程序”。 
+        - 搜索特定资源提供程序（如 `Microsoft.DataBoxEdge`）并将其注册。 
     - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
-- 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
-- 具有 Microsoft Azure 存储帐户和访问凭据。
+- 你需要对 Azure Active Directory Graph API 具有管理员或用户访问权限，以便生成激活密钥或凭据操作，例如使用存储帐户创建共享。 有关详细信息，请参阅 [Azure Active Directory 图形 API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>对于 Azure Stack Edge Pro 设备
 
@@ -124,7 +126,7 @@ ms.locfileid: "90899778"
     |设置  |值  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
-    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。     |
+    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 7. 输入或选择以下“实例详细信息”。 
 
@@ -134,7 +136,6 @@ ms.locfileid: "90899778"
     |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
 
     ![创建资源 5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
-
 
 8. 在完成时选择“下一步:送货地址”。
 
@@ -150,17 +151,24 @@ ms.locfileid: "90899778"
 
 10. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
 
-    ![创建资源 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+    ![创建资源 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+
+    你还会收到通知，了解到在资源创建期间启用了一个托管服务标识 (MSI)，你可通过它对云服务进行身份验证。 只要资源存在，就会存在此标识。
 
 11. 选择“创建”。
 
-创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。
+创建资源需要几分钟时间。 还会创建一个 MSI，Azure Stack Edge 设备可通过它与 Azure 中的资源提供程序进行通信。
+
+成功创建并部署资源后，你会收到通知。 选择“转到资源”。
 
 ![转到 Azure Stack Edge Pro 资源](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
 在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+
+> [!NOTE]
+>如果要一次创建多个订单或克隆现有订单，可以使用 [Azure 示例中的脚本](https://github.com/Azure-Samples/azure-stack-edge-order)。 有关详细信息，请参阅自述文件。
 
 若在处理订单的过程中遇到任何问题，请参阅[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
 
@@ -172,9 +180,16 @@ ms.locfileid: "90899778"
 
     ![选择“设备设置”](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
 
-2. 在“激活”磁贴上，选择“生成密钥”以创建激活密钥。 选择复制图标复制密钥并将其保存供日后使用。
+2. 在“激活”磁贴上，为 Azure Key Vault 提供一个名称，或者接受默认名称。 密钥保管库名称的长度可介于 3 至 24 个字符之间。 
+
+    对于随设备一起激活的每个 Azure Stack Edge 资源，都会创建一个密钥保管库。 通过密钥保管库，可存储和访问机密，例如密钥保管库中存储的服务的通道完整性密钥 (CIK)。 
+
+    指定密钥保管库名称后，请选择“生成密钥”来创建一个激活密钥。 
 
     ![获取激活密钥](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+
+    创建密钥保管库和激活密钥需要几分钟时间，请稍候。 选择复制图标复制密钥并将其保存供日后使用。
+
 
 > [!IMPORTANT]
 > - 生成的激活密钥将在三天后过期。
@@ -192,6 +207,3 @@ ms.locfileid: "90899778"
 
 > [!div class="nextstepaction"]
 > [安装 Azure Stack Edge Pro](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

@@ -1,27 +1,27 @@
 ---
 title: 深度学习与机器学习
 titleSuffix: Azure Machine Learning
-description: 了解深度学习如何与机器学习和 AI 相关。 在 Azure 机器学习中，使用深度学习模型进行欺诈检测、对象检测等。
+description: 了解深度学习与机器学习和 AI 之间的关系。 在 Azure 机器学习中，使用深度学习模型进行欺诈检测、对象检测等操作。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 09/22/2020
-ms.custom: contperfq1
-ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 12/15/2020
+ms.custom: contperf-fy21q1,contperfq1
+ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330122"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617113"
 ---
-# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>深度学习与 Azure 机器学习中的机器学习
+# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
-本文介绍了深度学习与机器学习，以及如何将其调整为更广泛的人工智能。 了解可在 Azure 机器学习上构建的深度学习解决方案，如欺诈检测、语音和面部识别、情绪分析和时序预测。
+本文介绍深度学习与机器学习，以及它们在人工智能这一更广泛的范畴中的适用程度如何。 了解可基于 Azure 机器学习构建的深度学习解决方案，如欺诈检测、语音和人脸识别、情绪分析以及时序预测。
 
-有关为解决方案选择算法的指南，请参阅 [机器学习算法](algorithm-cheat-sheet.md)备忘单。
+有关为解决方案选择算法的指南，请参阅[机器学习算法备忘单](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)。
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>深度学习、机器学习和 AI
 
@@ -29,9 +29,9 @@ ms.locfileid: "91330122"
 
 请查看以下定义来了解深度学习、机器学习与AI：
 
-- **深度学习**是机器学习的子集，它基于人工神经网络。 学习过程之所以是深度性的，是因为人工神经网络的结构由多个输入、输出和隐藏层构成。   每个层包含的单元可将输入数据转换为信息，供下一层用于特定的预测任务。 得益于这种结构，机器可以通过自身的数据处理进行学习。
+- **深度学习** 是机器学习的子集，它基于人工神经网络。 学习过程之所以是深度性的，是因为人工神经网络的结构由多个输入、输出和隐藏层构成。   每个层包含的单元可将输入数据转换为信息，供下一层用于特定的预测任务。 得益于这种结构，机器可以通过自身的数据处理进行学习。
 
-- **机器学习**是人工智能的子集，它采用可让机器凭借经验在任务中做出改善的技术（例如深度学习）。 学习过程基于以下步骤： 
+- **机器学习** 是人工智能的子集，它采用可让机器凭借经验在任务中做出改善的技术（例如深度学习）。 学习过程基于以下步骤： 
 
    1. 将数据馈送到算法中。 （在此步骤中，可向模型提供更多信息，例如，通过执行特征提取。）
    1. 使用此数据训练模型。
@@ -57,11 +57,21 @@ ms.locfileid: "91330122"
 |  **执行时间** | 花费几秒到几小时的相对较少时间进行训练。 | 通常需要很长的时间才能完成训练，因为深度学习算法涉及到许多层。 |
 |  **输出** | 输出通常是一个数值，例如评分或分类。 | 输出可以采用多种格式，例如文本、评分或声音。 |
 
+## <a name="transfer-learning"></a>迁移学习
+
+训练深度学习模型通常需要大量的培训数据、高端计算资源 (GPU、TPU) 和更长的培训时间。 在未提供任何这些功能的情况下，你可以使用称为 "*传输学习*" 的技术来为训练过程提供快捷方式。
+
+传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。
+
+由于神经网络的结构，第一组层通常包含较低级别的功能，而最后一组层包含较高级别的功能，更接近于相关领域。 通过重新调整最终层的大小以在新域或问题中使用，可以显著减少训练新模型所需的时间、数据和计算资源。 例如，如果您已有识别汽车的模型，则可以使用传输学习来重新调整该模型的用途，从而识别卡车、摩托车和其他类型的汽车。
+
+了解如何使用 Azure 机器学习： [使用 Pytorch 模型对图像进行分类](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)，以使用开源框架对图像分类应用传输学习。
+
 ## <a name="deep-learning-use-cases"></a>深度学习用例
 
 由于采用人工神经网络结构，在识别图像、声音、视频和文本等非结构化数据中的模式时，深度学习具有卓越的性能。 出于此原因，深度学习正在快速变革许多行业，包括医疗保健、能源、金融和运输。 这些行业正在反思传统的业务流程。 
 
-以下段落介绍了深度学习的一些最常见应用场合。 在 Azure 机器学习中，你可以使用从开源框架生成的模型，或者使用提供的工具构建模型。
+以下段落介绍了深度学习的一些最常见应用场合。 在 Azure 机器学习中，你可以从开源框架构建模型，也可以使用所提供的工具构建模型。
 
 ### <a name="named-entity-recognition"></a>命名实体识别
 
@@ -69,11 +79,9 @@ ms.locfileid: "91330122"
 
 ### <a name="object-detection"></a>对象检测
 
-深度学习已应用于许多对象检测用例。 对象检测包括两个组成部分：图像分类和图像定位。 图像分类识别图像的对象，例如汽车或人。__ 图像定位提供这些对象的具体位置。__ 
+深度学习已应用于许多对象检测用例。 对象检测包括两个组成部分：图像分类和图像定位。 图像分类识别图像的对象，例如汽车或人。 图像定位提供这些对象的具体位置。 
 
 对象检测已在游戏、零售、旅游和自动驾驶汽车等行业中使用。
-
-了解如何从 Azure 机器学习中的开源框架使用图像分类模型： [使用 Pytorch 模型对图像进行分类](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>图像说明生成
 
@@ -93,8 +101,6 @@ ms.locfileid: "91330122"
 
 公司可以使用深度学习来执行文本分析，以检测内幕交易以及政府法规的合规性。 另一个常见示例是保险欺诈：人们经常使用文本分析来分析大量的文件，以识别欺诈性保险索赔的可能性。 
 
-了解如何在 Azure 机器学习中使用 TensorFlow 模型： [使用 TensorFlow 模型为手写数字分类](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
-
 ## <a name="artificial-neural-networks"></a>人工神经网络
 
 人工神经网络由连接的节点层构成。 深度学习模型使用包含大量层的神经网络。 
@@ -103,13 +109,13 @@ ms.locfileid: "91330122"
 
 ### <a name="feedforward-neural-network"></a>前馈神经网络
 
-Feedforward 神经网络是最简单类型的人工神经网络。 在前馈网络中，信息只朝一个方向移动：从输入层移向输出层。 前馈神经网络通过使某个输入经历一系列隐藏层来转换该输入。 每个层由一组神经元组成，每个层完全连接到前一层中的所有神经元。 最后一个完全连接的层（输出层）代表生成的预测。
+前馈神经网络是最简单的人工神经网络类型。 在前馈网络中，信息只朝一个方向移动：从输入层移向输出层。 前馈神经网络通过使某个输入经历一系列隐藏层来转换该输入。 每个层由一组神经元组成，每个层完全连接到前一层中的所有神经元。 最后一个完全连接的层（输出层）代表生成的预测。
 
 ### <a name="recurrent-neural-network"></a>递归神经网络
 
-递归神经网络是广泛使用的人工神经网络。 这些网络保存层的输出，并将其馈送回到输入层，以帮助预测该层的结果。 递归神经网络具有极高的学习能力。 它们广泛应用于时序预测、学习手写文本和识别语言等复杂任务。
+递归神经网络是广泛使用的人工神经网络。 这些网络保存层的输出，并将其馈送回到输入层，以帮助预测该层的结果。 递归神经网络具有极高的学习能力。 它们广泛用于复杂任务，如时序预测、学习手写和识别语言。
 
-### <a name="convolutional-neural-networks"></a>卷积神经网络
+### <a name="convolutional-neural-network"></a>卷积神经网络
 
 卷积神经网络是特别高效的人工神经网络，它提供独特的体系结构。 层组织成三个维度：宽度、高度和深度。 一个层中的神经元不会连接到下一层中的所有神经元，而只连接到下一层神经元的较小区域。 最终输出化简为沿深度维组织的单个概率评分向量。 
 
@@ -117,8 +123,11 @@ Feedforward 神经网络是最简单类型的人工神经网络。 在前馈网�
 
 ## <a name="next-steps"></a>后续步骤
 
-以下文章介绍了在 [Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)中使用开源深度学习模型的更多选项：
+以下文章介绍了在 [Azure 机器学习](./index.yml?WT.mc_id=docs-article-lazzeri)中使用开源深度学习模型的更多选项：
 
-- [使用 TensorFlow 估算器和 Keras 将手写数字分类](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [使用 Chainer 模型将手写数字分类](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
+- [使用 TensorFlow 模型将手写数字分类](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri) 
+
+- [使用 TensorFlow 估算器和 Keras 将手写数字分类](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
+
+- [使用 Chainer 模型将手写数字分类](./how-to-set-up-training-targets.md)

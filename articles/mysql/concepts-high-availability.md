@@ -1,17 +1,17 @@
 ---
 title: 高可用性 - Azure Database for MySQL
 description: 本文提供了有关 Azure Database for MySQL 中的高可用性的信息
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b301946ce818559510b4e401b1f0aaf7c235d5a3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882555"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242290"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的高可用性
 Azure Database for MySQL 服务提供有保证的高级别可用性，即，提供正常运行时间占比为 [99.99%](https://azure.microsoft.com/support/legal/sla/mysql) 且具有财务支持的服务级别协议 (SLA)。 Azure Database for MySQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for MySQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
@@ -46,7 +46,7 @@ Azure Database for MySQL 设计为在计划内停机操作期间提供高可用�
 意外的故障（包括基础硬件故障、网络问题和软件 bug）可能会导致计划外停机。 如果数据库服务器意外关闭，则会在数秒内自动预配一个新的数据库服务器。 远程存储会自动附加到新的数据库服务器。 MySQL 引擎使用 WAL 和数据库文件执行恢复操作，并打开数据库服务器以允许客户端进行连接。 未提交的事务将丢失，并且必须由应用程序重试。 虽然计划外停机无法避免，但 Azure Database for MySQL 可以通过在数据库服务器和存储层上自动执行恢复操作来减少停机时间，无需人工干预。 
 
 
-:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 中的高可用性的视图":::
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 中的弹性缩放的视图":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>计划外停机：故障场景和服务恢复
 下面介绍了一些故障场景以及 Azure Database for MySQL 如何自动恢复：

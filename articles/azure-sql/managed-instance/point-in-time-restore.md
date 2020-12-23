@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 9b4d0fadf157ce1eef6821ccbc32f5725aea611f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 31be497d017cb60de6f46d7657889c9c1fabef4a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616510"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788343"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>将 Azure SQL 托管实例中的数据库还原到之前的某个时间点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ SQL 托管实例的时间点还原具有以下限制：
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 转到你的 SQL 托管实例，选择要还原的数据库。
 3. 在数据库页上选择“还原”：
 
@@ -67,7 +67,7 @@ SQL 托管实例的时间点还原具有以下限制：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-如果尚未安装 Azure PowerShell，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+如果尚未安装 Azure PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 若要使用 PowerShell 还原数据库，请在以下命令中指定参数值。 然后运行该命令：
 
@@ -106,7 +106,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceName $targetInstanceName 
 ```
 
-有关详细信息，请参阅 [Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)。
+有关详细信息，请参阅 [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-要详细了解可用参数，请参阅[介绍如何在 SQL 托管实例中还原数据库的 CLI 文档](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)。
+要详细了解可用参数，请参阅[介绍如何在 SQL 托管实例中还原数据库的 CLI 文档](/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)。
 
 ---
 
@@ -205,9 +205,9 @@ DROP DATABASE WorldWideImporters;
 
 使用以下方法之一连接到 SQL 托管实例中的数据库：
 
-- [在 Azure 虚拟机中使用 SSMS/Azure Data Studio](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [点到站点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [在 Azure 虚拟机中使用 SSMS/Azure Data Studio](./connect-vm-instance-configure.md)
+- [点到站点](./point-to-site-p2s-configure.md)
+- [公共终结点](./public-endpoint-configure.md)
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -247,9 +247,9 @@ ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 
 使用以下方法之一连接到 SQL 托管实例中的数据库：
 
-- [Azure 虚拟机](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [点到站点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Azure 虚拟机](./connect-vm-instance-configure.md)
+- [点到站点](./point-to-site-p2s-configure.md)
+- [公共终结点](./public-endpoint-configure.md)
 
 ## <a name="next-steps"></a>后续步骤
 

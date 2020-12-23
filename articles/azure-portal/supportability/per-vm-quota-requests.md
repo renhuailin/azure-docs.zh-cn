@@ -5,20 +5,19 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5db3e538a64e275313e1e0ab01f6cc6350eabb77
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117159"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745428"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>标准配额：按 VM 系列提高上限
 
 Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
-* 即*用即付 vm*和*保留 vm 实例*受*标准 vCPU 配额*的限制。
+* 即 *用即付 vm* 和 *保留 vm 实例* 受 *标准 vCPU 配额* 的限制。
 * *污点 vm* 服从 *点 vCPU 配额*。
 
 对于每个区域中的每个订阅，在两个级别上强制实施即用即付和保留虚拟机实例的标准 vCPU 配额：
@@ -30,7 +29,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
 可以通过使用 Azure 门户来请求提高 VM 系列的 vCPU 配额限制。 VM 序列配额增加会自动增加相同数量的区域 vCPU 限制。
 
-若要了解有关标准 vCPU 配额的详细信息，请参阅 [虚拟机 vCPU 配额](../../virtual-machines/windows/quotas.md) 和 [Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-supportability/classic-deployment-model-quota-increase-requests)。
+若要了解有关标准 vCPU 配额的详细信息，请参阅 [虚拟机 vCPU 配额](../../virtual-machines/windows/quotas.md) 和 [Azure 订阅和服务限制](./classic-deployment-model-quota-increase-requests.md)。
 
 若要了解有关为标准配额增加区域的 vCPU 限制的信息，请参阅 [标准配额：按区域增加限制](regional-quota-requests.md)。
 
@@ -53,7 +52,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
     ![创建新的支持请求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额 **。
+1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额**。
 
    ![选择问题类型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
@@ -65,7 +64,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
    ![选择配额类型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. 选择 " **下一步：** 用于打开 **问题详细信息**的解决方案"。 选择 " **提供详细** 信息" 以输入其他信息。
+1. 选择 " **下一步：** 用于打开 **问题详细信息** 的解决方案"。 选择 " **提供详细** 信息" 以输入其他信息。
 
    ![“提供详细信息”链接](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
@@ -99,7 +98,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
 ## <a name="request-a-standard-quota-increase-from-subscriptions"></a>请求从订阅增加标准配额
 
-请求 **订阅**中每个 VM 系列的标准 vCPU 配额增加：
+请求 **订阅** 中每个 VM 系列的标准 vCPU 配额增加：
 
 > [!NOTE]
 > 你还可以通过单个支持案例为多个区域请求增加配额限制。 有关详细信息，请参阅步骤7。

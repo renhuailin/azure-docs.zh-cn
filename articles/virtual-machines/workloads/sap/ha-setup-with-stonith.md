@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: b34a7665770308b45732711f5d8328eb1d0a785f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363114"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965062"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
@@ -64,18 +65,18 @@ ms.locfileid: "91363114"
 8.  测试故障转移过程
 
 ## <a name="1---identify-the-sbd-device"></a>1. 确定 SBD 设备
-本部分将介绍如何在 Microsoft 服务管理团队配置 STONITH 后确定适用于设置的 SBD 设备。 **** 本部分仅适用于现有客户。 如果你是新客户，Microsoft 服务管理团队会向你提供 SBD 设备名称，所以，可以跳过此部分。
+本部分将介绍如何在 Microsoft 服务管理团队配置 STONITH 后确定适用于设置的 SBD 设备。 本部分仅适用于现有客户。 如果你是新客户，Microsoft 服务管理团队会向你提供 SBD 设备名称，所以，可以跳过此部分。
 
-1.1 将 /etc/iscsi/initiatorname.isci 修改为** 
+1.1 将 /etc/iscsi/initiatorname.isci 修改为 
 ``` 
 iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber> 
 ```
 
-Microsoft 服务管理会提供此字符串。 在这两个节点上修改文件，但每个节点上的节点编号不同。****
+Microsoft 服务管理会提供此字符串。 在这两个节点上修改文件，但每个节点上的节点编号不同。
 
 ![屏幕截图显示了一个 initiatorname 文件，其中包含一个节点的 InitiatorName 值。](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 修改 /etc/iscsi/iscsid.conf**: Set node.session.timeo.replacement_timeout=5** 和 node.startup = automatic**。 在这两个节点上修改文件。****
+1.2 修改 /etc/iscsi/iscsid.conf: Set node.session.timeo.replacement_timeout=5 和 node.startup = automatic。 在这两个节点上修改文件。
 
 1.3 执行发现命令，它会显示四个会话。 在两个节点上都运行该脚本。
 
@@ -99,7 +100,7 @@ rescan-scsi-bus.sh
 ```
 ![屏幕截图显示了包含脚本结果的控制台窗口。](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
-1.6 若要获取设备名称，请运行命令 fdisk –l**。 在两个节点上都运行该脚本。 选择大小为 178 MiB 的设备。****
+1.6 若要获取设备名称，请运行命令 fdisk –l。 在两个节点上都运行该脚本。 选择大小为 178 MiB 的设备。
 
 ```
   fdisk –l
@@ -109,14 +110,14 @@ rescan-scsi-bus.sh
 
 ## <a name="2---initialize-the-sbd-device"></a>2. 初始化 SBD 设备
 
-2.1 初始化两个**** 节点上的 SBD 设备
+2.1 初始化两个节点上的 SBD 设备
 
 ```
 sbd -d <SBD Device Name> create
 ```
 ![屏幕截图显示一个控制台窗口，其中包含 s b create 命令的结果。](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
 
-2.2 检查已写入到设备的内容。 在两个**** 节点上都执行该操作
+2.2 检查已写入到设备的内容。 在两个节点上都执行该操作
 
 ```
 sbd -d <SBD Device Name> dump
@@ -125,7 +126,7 @@ sbd -d <SBD Device Name> dump
 ## <a name="3---configuring-the-cluster"></a>3. 配置群集
 本部分介绍设置 SUSE HA 群集的步骤。
 ### <a name="31-package-installation"></a>3.1 包安装
-3.1.1   请确认已安装 ha_sles 和 SAPHanaSR-doc 模式。 如果未安装，请先安装。 在这两个节点上都安装。****
+3.1.1   请确认已安装 ha_sles 和 SAPHanaSR-doc 模式。 如果未安装，请先安装。 在这两个节点上都安装。
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -134,12 +135,12 @@ zypper in SAPHanaSR SAPHanaSR-doc
  ![屏幕截图显示具有 Saphanasr-doc 命令结果的控制台窗口。](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 设置群集
-3.2.1   可以使用 ha-cluster-init 命令或 yast2 向导设置群集。** 这种情况使用 yast2 向导。 仅在主节点上**** 执行此步骤。
+3.2.1   可以使用 ha-cluster-init 命令或 yast2 向导设置群集。 这种情况使用 yast2 向导。 仅在主节点上执行此步骤。
 
 按照 yast2> 高可用性 > 群集 ![ 屏幕截图显示已选择高可用性和群集的 YaST 控制中心。 ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
  ![屏幕截图显示带有 "安装" 和 "取消" 选项的对话框。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-由于已安装 halk2 包，请单击“取消”****。
+由于已安装 halk2 包，请单击“取消”。
 
 ![屏幕截图显示有关 "取消" 选项的消息。](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
@@ -158,7 +159,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 单击 **“确定”**
 
-使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 **** 确保将文件从 node1 复制到 node2。
+使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 确保将文件从 node1 复制到 node2。
 
 ![屏幕截图显示 "群集配置" 对话框，其中包含将密钥复制到群集的所有成员所需的选项。](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
@@ -166,60 +167,60 @@ zypper in SAPHanaSR SAPHanaSR-doc
  ![ 屏幕快照" 将显示 "群集服务" 窗口。](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在默认选项中，启动已关闭，将其更改为“打开”，以便 pacemaker 在启动时开始。 可以基于设置需求做出选择。
-单击“下一步”，完成群集配置。****
+单击“下一步”，完成群集配置。
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4. 设置 Softdog 监视器
 本部分将介绍监视器 (softdog) 的配置。
 
-4.1 将以下行添加到这两个**** 节点上的 /etc/init.d/boot.local**。
+4.1 将以下行添加到这两个节点上的 /etc/init.d/boot.local。
 ```
 modprobe softdog
 ```
 ![屏幕截图显示已添加 softdog 行的启动文件。](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
-4.2 更新这两个节点上的文件 /etc/sysconfig/sbd，如下所示：******
+4.2 更新这两个节点上的文件 /etc/sysconfig/sbd，如下所示：
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
 ![屏幕截图显示了 s b d 文件，其中添加了 S B D_DEVICE 值。](media/HowToHLI/HASetupWithStonith/sbd-device.png)
 
-4.3 通过运行以下命令在这两个**** 节点上加载内核模块
+4.3 通过运行以下命令在这两个节点上加载内核模块
 ```
 modprobe softdog
 ```
 ![屏幕截图使用命令 modprobe softdog 显示控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-4.4 检查并确保该 softdog 在这两个节点上运行，如下所示：****
+4.4 检查并确保该 softdog 在这两个节点上运行，如下所示：
 ```
 lsmod | grep dog
 ```
 ![屏幕截图显示控制台窗口的一部分，其中包含运行 l s mod 命令的结果。](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
 
-4.5 在这两个**** 节点上启动 SBD 设备
+4.5 在这两个节点上启动 SBD 设备
 ```
 /usr/share/sbd/sbd.sh start
 ```
 ![屏幕截图使用 "启动" 命令显示控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
-4.6 在这两个**** 节点上测试 SBD 守护程序。 在这两个**** 节点上进行配置后，会看到两个条目
+4.6 在这两个节点上测试 SBD 守护程序。 在这两个节点上进行配置后，会看到两个条目
 ```
 sbd -d <SBD Device Name> list
 ```
 ![屏幕截图显示了显示两个条目的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4.7 向其中一个**** 节点发送测试消息
+4.7 向其中一个节点发送测试消息
 ```
 sbd  -d <SBD Device Name> message <node2> <message>
 ```
 ![屏幕截图显示了显示两个条目的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4.8 在第二个**** 节点 (node2) 上，可以查看消息状态
+4.8 在第二个节点 (node2) 上，可以查看消息状态
 ```
 sbd  -d <SBD Device Name> list
 ```
 ![屏幕截图显示控制台窗口的一部分，其中一个成员显示另一个成员的测试值。](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
-4.9 若要采用 sbd 配置，请按如下所示更新文件 /etc/sysconfig/sbd**。 在这两个节点上都更新文件。****
+4.9 若要采用 sbd 配置，请按如下所示更新文件 /etc/sysconfig/sbd。 在这两个节点上都更新文件。
 ```
 SBD_DEVICE=" <SBD Device Name>" 
 SBD_WATCHDOG="yes" 
@@ -227,44 +228,44 @@ SBD_PACEMAKER="yes"
 SBD_STARTMODE="clean" 
 SBD_OPTS=""
 ```
-4.10    在主节点**** (node1) 上启动 pacemaker 服务
+4.10    在主节点 (node1) 上启动 pacemaker 服务
 ```
 systemctl start pacemaker
 ```
 ![屏幕截图显示启动 pacemaker 后显示状态的控制台窗口。](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-如果 pacemaker 服务失败**，请参阅“方案 5：Pacemaker 服务失败”**。
+如果 pacemaker 服务失败，请参阅“方案 5：Pacemaker 服务失败”。
 
 ## <a name="5---joining-the-cluster"></a>5. 加入群集
 本部分将介绍如何将节点加入到群集。
 
 ### <a name="51-add-the-node"></a>5.1 添加节点
-在 node2**** 上运行以下命令，以将 node2 加入群集。
+在 node2 上运行以下命令，以将 node2 加入群集。
 ```
 ha-cluster-join
 ```
-如果在加入群集期间收到错误**，请参阅“方案 6：Node2 无法加入群集”**。
+如果在加入群集期间收到错误，请参阅“方案 6：Node2 无法加入群集”。
 
 ## <a name="6---validating-the-cluster"></a>6. 验证群集
 
 ### <a name="61-start-the-cluster-service"></a>6.1 启动群集服务
-查看并选择在这两个**** 节点上首次启动群集。
+查看并选择在这两个节点上首次启动群集。
 ```
 systemctl status pacemaker
 systemctl start pacemaker
 ```
 ![屏幕截图显示了状态为 "pacemaker" 的控制台窗口。](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
 ### <a name="62-monitor-the-status"></a>6.2 监视状态
-运行命令 crm_mon**，以确保这两个**** 节点处于联机状态。 可以在该群集的任意节点**** 上运行该命令
+运行命令 crm_mon，以确保这两个节点处于联机状态。 可以在该群集的任意节点上运行该命令
 ```
 crm_mon
 ```
 ![屏幕截图显示一个控制台窗口，其中包含 c r m_mon 的结果。](media/HowToHLI/HASetupWithStonith/crm-mon.png)
-你还可以登录到 hawk 以检查群集状态 *https:// \<node IP> ： 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd ** 命令更改密码。
+你还可以登录到 hawk 以检查群集状态 *https:// \<node IP> ： 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd 命令更改密码。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. 配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
-在本示例中，设置以下资源，其余资源可以通过参考 SUSE HA 指南进行配置（如果需要）。 仅在其中一个节点中执行配置。**** 在主节点上执行该操作。
+在本示例中，设置以下资源，其余资源可以通过参考 SUSE HA 指南进行配置（如果需要）。 仅在其中一个节点中执行配置。 在主节点上执行该操作。
 
 - 群集启动
 - STONITH 设备
@@ -322,10 +323,10 @@ crm configure load update crm-vip.txt
 
 ### <a name="74-validate-the-resources"></a>7.4 验证资源
 
-在运行命令 crm_mon** 时，可以在那里看到两个资源。
+在运行命令 crm_mon 时，可以在那里看到两个资源。
 ![屏幕截图显示具有两个资源的控制台窗口。](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，可以在 https://\<node IP address>:7630/cib/live/state** 上看到状态
+此外，可以在 https://\<node IP address>:7630/cib/live/state 上看到状态
 
 ![屏幕截图显示两个资源的状态。](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -334,12 +335,12 @@ crm configure load update crm-vip.txt
 ```
 Service pacemaker stop
 ```
-现在，停止 node2**** 上的 pacemaker 服务，资源已故障转移到 node1****
+现在，停止 node2 上的 pacemaker 服务，资源已故障转移到 node1
 
 故障转移前   
 ![屏幕截图显示故障转移之前的两个资源的状态。](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
-故障转移后   
+**故障转移之后**  
 ![屏幕截图显示故障转移后两个资源的状态。](media/HowToHLI/HASetupWithStonith/after-failover.png)  
 ![屏幕截图显示故障转移后具有资源状态的控制台窗口。](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
@@ -448,7 +449,7 @@ Yast2 应能立即打开图形视图，如下所示。
 
 ![屏幕截图显示 "正在执行的安装状态" 页。](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-hte 安装完成后，单击“下一步”****
+hte 安装完成后，单击“下一步”
 
 ![屏幕截图显示安装报告。](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
@@ -504,7 +505,7 @@ sapprdhdb95:/ # tail -f /var/log/messages
 2017-09-28T18:45:01.308066-04:00 sapprdhdb95 CRON[57995]: pam_unix(crond:session): session closed for user root
 ```
 
-若要修复此问题，请删除文件 /usr/lib/systemd/system/fstrim.timer** 中的以下行
+若要修复此问题，请删除文件 /usr/lib/systemd/system/fstrim.timer 中的以下行
 
 ```
 Persistent=true
@@ -514,7 +515,7 @@ Persistent=true
 
 ### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>情景 6：Node2 无法加入群集
 
-在使用 ha-cluster-join** 命令将 node2 加入到现有群集时，发生以下错误。
+在使用 ha-cluster-join 命令将 node2 加入到现有群集时，发生以下错误。
 
 ```
 ERROR: Can’t retrieve SSH keys from <Primary Node>

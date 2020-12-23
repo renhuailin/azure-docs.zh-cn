@@ -8,12 +8,12 @@ ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 62872443c386c45d9821053dc901ad8e0055b74f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090323"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674268"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>常见问题： SRE 与 DevOps 之间的关系是什么？
 
@@ -38,7 +38,7 @@ SRE 与 DevOps 之间的相似之处明显。 这两个方面的真正有趣之�
 
 ### <a name="class-sre-implements-interface-devops"></a>"class SRE implements interface DevOps"
 
-[资源簿列表](../resources/books.md)中 () _的站点可靠性工作簿讨论了_在其第一章中的 SRE 和 DevOps。 本章使用短语 "class SRE implements interface DevOps" 作为其副标题。 这是为了使用面向开发) 人员的短语建议 (，因为 SRE 可以被视为 DevOps 理念的特定实现。 本章节指出，"DevOps 相对无提示地在详细级别运行操作"，而 SRE 的做法更 proscriptive。 对于这两个关系的问题，一个可能的答案就是，可以被视为 DevOps 的许多可能实现之一。
+[资源簿列表](../resources/books.md)中 () _的站点可靠性工作簿讨论了_ 在其第一章中的 SRE 和 DevOps。 本章使用短语 "class SRE implements interface DevOps" 作为其副标题。 这是为了使用面向开发) 人员的短语建议 (，因为 SRE 可以被视为 DevOps 理念的特定实现。 本章节指出，"DevOps 相对无提示地在详细级别运行操作"，而 SRE 的做法更 proscriptive。 对于这两个关系的问题，一个可能的答案就是，可以被视为 DevOps 的许多可能实现之一。
 
 ### <a name="sre-is-to-reliability-as-devops-is-to-delivery"></a>SRE 是 DevOps 要传递的可靠性
 
@@ -50,7 +50,7 @@ SRE 与 DevOps 之间的相似之处明显。 这两个方面的真正有趣之�
 
 这样就可以很容易地说，SRE 的这个词为 "可靠性"。 在名称中间，还可以提供此声明的一些优秀证据。
 
-如果我们从 [Azure DevOps 资源中心](https://docs.microsoft.com/azure/devops/learn/)使用此 DevOps 定义：
+如果我们从 [Azure DevOps 资源中心](/azure/devops/learn/)使用此 DevOps 定义：
 
 > DevOps 是人员、过程和产品的集合体，它让我们可以向最终用户持续交付价值。
 
@@ -60,7 +60,7 @@ SRE 与 DevOps 之间的相似之处明显。 这两个方面的真正有趣之�
 
 ### <a name="direction-of-attention"></a>注意方向
 
-这项答案称为 "Thomas Limoncelli" 的 "解释" 和 "" 中所述的 "_查找 SRE_ "[书籍。](../resources/books.md) 他注意到，DevOps 工程师很大程度上侧重于软件开发生命周期管道，其中包含偶尔的生产运营责任，同时 SREs 重点介绍偶尔产生 SDLC 管道责任的生产运营。
+这项答案称为 "Thomas Limoncelli" 的 "解释" 和 "" 中所述的 " _查找 SRE_ " [书籍。](../resources/books.md) 他注意到，DevOps 工程师很大程度上侧重于软件开发生命周期管道，其中包含偶尔的生产运营责任，同时 SREs 重点介绍偶尔产生 SDLC 管道责任的生产运营。
 
 但更重要的是，他还在一侧就绘制了一个从软件开发流程开始的图表，而生产操作在另一侧。 这两个连接由为从开发人员获取代码而构建的常用管道进行连接，通过所需的测试和阶段进行 shepherd，然后将该代码迁移到生产中。
 
@@ -80,4 +80,4 @@ Limoncelli 说明 DevOps 工程师从开发环境开始，并自动执行生产�
 
 ## <a name="next-steps"></a>后续步骤
 
-想要了解有关站点可靠性工程或 DevOps 的详细信息？ 请查看我们的 [站点可靠性工程中心](../index.yml) 和 [Azure DevOps Resource center](https://docs.microsoft.com/azure/devops/learn/)。
+想要了解有关站点可靠性工程或 DevOps 的详细信息？ 请查看我们的 [站点可靠性工程中心](../index.yml) 和 [Azure DevOps Resource center](/azure/devops/learn/)。

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 25a21107fd4b67a3a67b69a73401540d7b02b6b5
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f944a793d721e93d818723eae25a9ce80d9c15bc
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762070"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96005073"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 通过标签训练表单识别器模型
 
@@ -27,10 +27,10 @@ ms.locfileid: "91762070"
 
 若要完成本快速入门，必须具备以下条件：
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
-- 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
+- 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 下载并提取 sample_data.zip。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
 
 > [!NOTE]
-> 此快速入门使用 URL 访问的远程文档。 若要改用本地文件，请参阅[适用于 v2.0 的参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)和[适用于 v2.1 的参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/TrainCustomModelAsync)。
+> 此快速入门使用 URL 访问的远程文档。 若要改用本地文件，请参阅[适用于 v2.0 的参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)和[适用于 v2.1 的参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/TrainCustomModelAsync)。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -255,7 +255,7 @@ ms.locfileid: "91762070"
 若要使用标记的数据来训练模型，请运行下面的 python 代码来调用 **[训练自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API。 运行该代码之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为表单识别器资源的终结点 URL。
-1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”  。 确保选中“读取”  和“列表”  权限，然后单击“创建”  。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
+1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”  。 确保选中“读取”和“列表”权限，然后单击“创建”。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
 1. 将 `<Blob folder name>` 替换为输入数据所在的 blob 容器中的文件夹名称。 或者，如果数据位于根目录，请将此项留空，并从 HTTP 请求的正文中删除 `"prefix"` 字段。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
@@ -308,7 +308,7 @@ from requests import get, post
 
 # Endpoint URL
 endpoint = r"<Endpoint>"
-post_url = endpoint + r"/formrecognizer/v2.1-preview.1/custom/models"
+post_url = endpoint + r"/formrecognizer/v2.1-preview.2/custom/models"
 source = r"<SAS URL>"
 prefix = "<Blob folder name>"
 includeSubFolders = False
@@ -588,7 +588,7 @@ print("Train operation did not complete within the allocated time.")
   }
 }
 ```
-# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1) 
+# <a name="v-2"></a>[v 2](#tab/v2-1) 
 ```json   
 {
   "status": "succeeded",

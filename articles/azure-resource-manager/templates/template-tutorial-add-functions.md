@@ -1,21 +1,21 @@
 ---
 title: 教程 - 添加模板函数
-description: 将模板函数添加到 Azure 资源管理器模板以构造值。
+description: 将模板函数添加到 Azure 资源管理器模板（ARM 模板）以构造值。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: c6ced832cad6809e7cd016eee132713c6b266480
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613843"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931038"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>教程：将模板函数添加到 ARM 模板
 
-本教程介绍如何向 Azure 资源管理器 (ARM) 模板添加[模板函数](template-functions.md)。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./template-user-defined-functions.md)。 完成本教程需要 **7 分钟**。
+本教程介绍如何向 Azure 资源管理器模板（ARM 模板）添加[模板函数](template-functions.md)。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./template-user-defined-functions.md)。 完成本教程需要 **7 分钟**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "91613843"
 
 ## <a name="use-function"></a>使用函数
 
-如果已完成本系列的上一教程，则你已使用了函数。 在添加 **"[parameters('storageName')]"** 时，你使用了 [parameters](template-functions-deployment.md#parameters) 函数。 括号表示其中的语法是一个[模板表达式](template-expressions.md)。 资源管理器会对语法进行解析，而不是将其视为文本值。
+如果已完成本系列的上一教程，则你已使用了函数。 在添加 `"[parameters('storageName')]"` 时，你使用了 [parameters](template-functions-deployment.md#parameters) 函数。 括号表示其中的语法是一个[模板表达式](template-expressions.md)。 资源管理器会对语法进行解析，而不是将其视为文本值。
 
 函数可以在部署过程中动态获取值，为模板增加了灵活性。 在本教程中，我们使用函数来获取用于部署的资源组的位置。
 
@@ -47,7 +47,7 @@ ms.locfileid: "91613843"
 
 在前面的教程中，你创建的存储帐户位于“美国东部”，但资源组创建于“美国中部”。 在本教程中，存储帐户与资源组在同一区域创建。 请使用位置的默认值，这样就不需提供该参数值。 必须为存储帐户提供新名称，因为是在另一位置创建存储帐户。 例如，使用 **store2** 而不是 **store1** 作为前缀。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据 [第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

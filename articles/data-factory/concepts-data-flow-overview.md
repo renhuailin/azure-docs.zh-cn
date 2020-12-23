@@ -7,17 +7,17 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 09/02/2020
-ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 12/10/2020
+ms.openlocfilehash: 01ee890fe77abebfdec8d3d643773b42cb54187e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370906"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606175"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>在 Azure 数据工厂中映射数据流
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
 
@@ -25,11 +25,11 @@ ms.locfileid: "91370906"
 
 映射数据流提供完全直观的体验，无需编码。 数据流在 ADF 托管的执行群集上运行，用于扩展的数据处理。 Azure 数据工厂处理所有代码转换、路径优化和数据流作业的执行。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 数据流是从 "工厂资源" 窗格（如管道和数据集）创建的。 若要创建数据流，请选择 "**工厂资源**" 旁边的加号，然后选择 "**数据流"。** 
 
-![新建数据流](media/data-flow/new-data-flow.png "新建数据流")
+![新建数据流](media/data-flow/new-data-flow.png)
 
 此操作会将你转到 "数据流" 画布，你可以在其中创建转换逻辑。 选择 " **添加源** " 开始配置源转换。 有关详细信息，请参阅 [源转换](data-flow-source.md)。
 
@@ -37,17 +37,17 @@ ms.locfileid: "91370906"
 
 映射数据流具有独特的创作画布，旨在简化生成转换逻辑。 数据流画布分为三部分：顶栏、图形和配置面板。 
 
-![画布](media/data-flow/canvas1.png "画布")
+![屏幕截图显示带有标记的顶部条形图、图形和配置面板的数据流画布。](media/data-flow/canvas-1.png "画布")
 
 ### <a name="graph"></a>图形
 
 关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择 " **添加源**"。 若要添加新的转换，请选择现有转换右下方的加号。 了解更多有关如何 [管理数据流图形的](concepts-data-flow-manage-graph.md)信息。
 
-![画布](media/data-flow/canvas2.png "画布")
+![屏幕截图使用 "搜索" 文本框显示画布的图形部分。](media/data-flow/canvas-2.png)
 
 ### <a name="configuration-panel"></a>配置面板
 
-"配置" 面板显示特定于当前选定转换的设置。 如果未选择任何转换，则会显示数据流。 在整个数据流配置中，你可以在 " **常规** " 选项卡下编辑名称和说明，或通过 " **参数** " 选项卡添加参数。有关详细信息，请参阅 [映射数据流参数](parameters-data-flow.md)。
+"配置" 面板显示特定于当前选定转换的设置。 如果未选择任何转换，则会显示数据流。 在整个数据流配置中，可以通过 " **参数** " 选项卡添加参数。有关详细信息，请参阅 [映射数据流参数](parameters-data-flow.md)。
 
 每个转换至少包含四个配置选项卡。
 
@@ -99,63 +99,63 @@ Azure 数据工厂团队已经创建了 [性能优化指南](concepts-data-flow-
 
 ## <a name="available-regions"></a>可用区域
 
-可在以下区域中使用映射数据流：
+= = = = = = = 在 ADF 的以下区域中提供映射数据流：
 
-| Azure 区域 | ADF 中的数据流 | Synapse Studio 中的数据流 |
-| ------------ | ----------------- | ---------------------------- |
-|  澳大利亚中部 | | |  
-| 澳大利亚中部 2 | | |
-| 澳大利亚东部 | ✓ |  ✓ |
-| Australia Southeast   | ✓ | ✓ |
-| Brazil South  | ✓ |  |
-| 加拿大中部 | ✓ |  |
-| 印度中部 | ✓ |   ✓ |
-| 美国中部    | ✓ |   ✓ |
-| 中国东部 |      | ✓ |
-| 中国东部 2  |   |    |
-| 中国非区域 | | |
-| 中国北部 |     | |
-| 中国北部 2 | |  |
-| 东亚 | ✓ | |
-| 美国东部   | ✓ | ✓ |
-| 美国东部 2 | ✓ | ✓ |
-| 法国中部 | ✓ | ✓ |
-| 法国南部  | | |
-| 德国中部 (主权)  | | |
-| 德国（非区域性） (主权)  | | |
-|  (公用) 德国北部 | | |
-| 德国东北部 (主权)  | | |
-|  (公用) 德国中西部 |  | ✓ |
-| Japan East | ✓ |  |
-| 日本西部 |  | |
-| 韩国中部 | ✓ |  |
-| 韩国南部 | | |
-| 美国中北部  | ✓ | ✓ |
-| 北欧  | ✓ |    |
-| 挪威东部 | | |
-| 挪威西部 | | |
-| 南非北部    | ✓ | |
-| 南非西部 |  |    |
-| 美国中南部  | | ✓ |
-| 印度南部 | | |
-| Southeast Asia    | ✓ | ✓ |
-| 瑞士北部 |   |  |
-| 瑞士西部 | | |
-| 阿联酋中部 | | |
-| 阿拉伯联合酋长国北部 |  |    |
-| 英国南部  | ✓ |   | ✓ |
-| 英国西部 |     | ✓ |
-| US DoD 中部 | |  |
-| US DoD 东部 | |  |
-| US Gov 亚利桑那州 |      |  |
-| US Gov（非区域性） | |  |
-| US Gov 德克萨斯州 | |  |
-| US Gov 弗吉尼亚州 |     |  |
-| 美国中西部 |     | ✓ |
-| 西欧   | ✓ |   ✓ |
-| 印度西部 | | |
-| 美国西部   | ✓ |   |
-| 美国西部 2 | ✓ |   ✓ | 
+| Azure 区域 | ADF 中的数据流 |
+| ------------ | ----------------- |
+|  澳大利亚中部 | |
+| 澳大利亚中部 2 | |
+| 澳大利亚东部 | ✓ |
+| Australia Southeast   | ✓ |
+| Brazil South  | ✓ |
+| 加拿大中部 | ✓ |
+| 印度中部 | ✓ |
+| 美国中部    | ✓ |
+| 中国东部 |      |
+| 中国东部 2  |   |
+| 中国非区域 | |
+| 中国北部 |     |
+| 中国北部 2 | |
+| 东亚 | ✓ |
+| 美国东部   | ✓ |
+| 美国东部 2 | ✓ |
+| 法国中部 | ✓ |
+| 法国南部  | |
+| 德国中部 (主权)  | |
+| 德国（非区域性） (主权)  | |
+|  (公用) 德国北部 | |
+| 德国东北部 (主权)  | |
+|  (公用) 德国中西部 |  |
+| Japan East | ✓ |
+| 日本西部 |  |
+| 韩国中部 | ✓ |
+| 韩国南部 | |
+| 美国中北部  | ✓ |
+| 北欧  | ✓ |
+| 挪威东部 | |
+| 挪威西部 | |
+| 南非北部    | ✓ |
+| 南非西部 |  |
+| 美国中南部  | |
+| 印度南部 | |
+| Southeast Asia    | ✓ |
+| 瑞士北部 |   |
+| 瑞士西部 | |
+| 阿联酋中部 | |
+| 阿拉伯联合酋长国北部 |  |
+| 英国南部  | ✓ |
+| 英国西部 |     |
+| US DoD 中部 | |
+| US DoD 东部 | |
+| US Gov 亚利桑那州 |      |
+| US Gov（非区域性） | |
+| US Gov 德克萨斯州 | |
+| US Gov 弗吉尼亚州 |     |
+| 美国中西部 |     |
+| 西欧   | ✓ |
+| 印度西部 | |
+| 美国西部   | ✓ |
+| 美国西部 2 | ✓ |
 
 ## <a name="next-steps"></a>后续步骤
 

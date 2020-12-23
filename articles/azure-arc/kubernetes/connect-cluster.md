@@ -8,13 +8,13 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure Arc 连接已启用 Azure Arc 的 Kubernetes 群集
 keywords: Kubernetes, Arc, Azure, K8s, 容器
-ms.custom: references_regions
-ms.openlocfilehash: 74a0de494148f1f3315511c0bf6cb10f40cdc416
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 7f402d86ac1287753bc2deab53b24bb796644992
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854998"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97583926"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>连接已启用 Azure Arc 的 Kubernetes 群集（预览版）
 
@@ -223,16 +223,16 @@ kubectl -n azure-arc get deployments,pods
 **输出：**
 
 ```console
-NAME                                        READY   UP-TO-DATE AVAILABLE AGE
-deployment.apps/cluster-metadata-operator   1/1     1           1        16h
-deployment.apps/clusteridentityoperator     1/1     1           1        16h
-deployment.apps/config-agent                1/1     1           1        16h
-deployment.apps/controller-manager          1/1     1           1        16h
-deployment.apps/flux-logs-agent             1/1     1           1        16h
-deployment.apps/metrics-agent               1/1     1           1        16h
-deployment.apps/resource-sync-agent         1/1     1           1        16h
+NAME                                        READY      UP-TO-DATE  AVAILABLE  AGE
+deployment.apps/cluster-metadata-operator     1/1             1        1      16h
+deployment.apps/clusteridentityoperator       1/1             1        1      16h
+deployment.apps/config-agent                  1/1             1        1      16h
+deployment.apps/controller-manager            1/1             1        1      16h
+deployment.apps/flux-logs-agent               1/1             1        1      16h
+deployment.apps/metrics-agent                 1/1             1        1      16h
+deployment.apps/resource-sync-agent           1/1             1        1      16h
 
-NAME                                            READY   STATUS   RESTART AGE
+NAME                                           READY    STATUS   RESTART AGE
 pod/cluster-metadata-operator-7fb54d9986-g785b  2/2     Running  0       16h
 pod/clusteridentityoperator-6d6678ffd4-tx8hr    3/3     Running  0       16h
 pod/config-agent-544c4669f9-4th92               3/3     Running  0       16h

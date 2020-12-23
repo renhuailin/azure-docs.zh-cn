@@ -7,17 +7,18 @@ author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 340ce84ebe662b976f32048a47fd98d793083065
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652179"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617096"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
@@ -102,7 +103,7 @@ Azure 备份使用称为 [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN
 
 ### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>HANA 备份相比存储快照的优点和缺点
 
-SAP 不会在 HANA 备份与存储快照之间做出优先选择， 而是列出各自的优点与缺点，使用户能够根据情况和适用的存储技术确定要使用哪个服务（请参阅[规划备份和恢复策略](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)）。
+SAP 不会在 HANA 备份与存储快照之间做出优先选择， 而是列出各自的优点与缺点，使用户能够根据情况和适用的存储技术确定要使用哪个服务（请参阅[规划备份和恢复策略](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/ef085cd5949c40b788bba8fd3c65743e.html)）。
 
 在 Azure 上，请注意 Azure blob 快照功能不&#39;提供跨多个磁盘的文件系统一致性 (请参阅在 PowerShell) 中 [使用 blob 快照](/archive/blogs/cie/using-blob-snapshots-with-powershell) 。 
 

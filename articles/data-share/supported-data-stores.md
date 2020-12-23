@@ -1,19 +1,19 @@
 ---
-title: Azure 数据共享中支持的数据存储
+title: Azure Data Share 中支持的数据存储
 description: 了解使用 Azure 数据共享支持的数据存储。
 ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 08/14/2020
-ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 12/16/2020
+ms.openlocfilehash: d45d9a29f671e66c6caba689f49e1748780545e0
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259007"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616739"
 ---
-# <a name="supported-data-stores-in-azure-data-share"></a>Azure 数据共享中支持的数据存储
+# <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share 中支持的数据存储
 
 Azure 数据共享提供了开放式和灵活的数据共享，包括从和到不同数据存储区的能力。 数据访问接口可以共享一种类型的数据存储中的数据，其数据使用者可以选择要将数据接收到的数据存储区。 
 
@@ -23,14 +23,15 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 
 下表详细说明了 Azure 数据共享支持的数据源。 
 
-| 数据存储 | 基于快照的共享 | 就地共享 
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob 存储 |✓ | |
-| Azure Data Lake Storage Gen1 |✓ | |
-| Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Database |公共预览版 | |
-| Azure Synapse Analytics (以前的 Azure SQL DW)  |公共预览版 | |
-| Azure 数据资源管理器 | |✓ |
+| 数据存储 | 基于快照的共享 (完整快照)  | 基于快照的共享 (增量快照)  | 就地共享 
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob 存储 |✓ |✓ | |
+| Azure Data Lake Storage Gen1 |✓ |✓ | |
+| Azure Data Lake Storage Gen2 |✓ |✓ ||
+| Azure SQL 数据库 |✓ | | |
+| Azure Synapse Analytics (以前的 Azure SQL DW)  |✓ | | |
+| Azure Synapse Analytics (工作区) 专用 SQL 池 |✓ | | |
+| Azure 数据资源管理器 | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>数据存储支持矩阵
 
@@ -38,22 +39,23 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 
 下表详细说明了数据使用者在接受和配置其数据共享时具有的不同组合和选择。 有关如何配置数据集映射的详细信息，请参阅 [如何配置数据集映射](how-to-configure-mapping.md)。
 
-| 数据存储 | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL 数据库 | Azure Synapse Analytics | Azure 数据资源管理器
-|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob 存储 | ✓ || ✓ ||
-| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
-| Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
-| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (以前的 Azure SQL DW)  | ✓ | | ✓ | ✓ | ✓ ||
-| Azure 数据资源管理器 |||||| ✓ |
+| 数据存储 | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL 数据库 | Azure Synapse Analytics (以前的 Azure SQL DW)  | Azure Synapse Analytics (工作区) 专用 SQL 池 | Azure 数据资源管理器
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
+| Azure Blob 存储 | ✓ || ✓ |||
+| Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
+| Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
+| Azure SQL 数据库 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure Synapse Analytics (以前的 Azure SQL DW)  | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure Synapse Analytics (工作区) 专用 SQL 池 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure 数据资源管理器 ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>从存储帐户共享
-Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 将覆盖具有相同名称的现有文件。
+Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 快照期间将覆盖具有相同名称的现有文件。 不会在目标上删除从源删除的文件。 
 
 有关详细信息 [，请参阅共享和接收来自 Azure Blob 存储的数据和 Azure Data Lake Storage](how-to-share-from-storage.md) 。
 
 ## <a name="share-from-a-sql-based-source"></a>从基于 SQL 的源共享
-Azure 数据共享支持在以前的 Azure SQL DW) 中共享 Azure SQL 数据库和 Azure Synapse (分析中的表或视图。 数据使用者可以选择接受将数据作为 csv 或 parquet 文件的 Azure Data Lake Storage Gen2 或 Azure Blob 存储，以及作为表的 Azure SQL 数据库和 Azure Synapse 分析。
+Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中共享表和视图 (以前称为 Azure SQL DW) ，以及从 Azure Synapse Analytics (工作区) 专用 SQL 池共享表。 当前不支持从 Azure Synapse Analytics 共享 (工作区) 无服务器 SQL 池。 数据使用者可以选择接受将数据作为 csv 或 parquet 文件的 Azure Data Lake Storage Gen2 或 Azure Blob 存储，以及作为表的 Azure SQL 数据库和 Azure Synapse 分析。
 
 在将数据接收到 Azure Data Lake Store Gen2 或 Azure Blob 存储时，如果已存在，则完全快照将覆盖目标文件的内容。
 当将数据接收到表中，并且如果目标表尚不存在，Azure 数据共享将创建包含源架构的 SQL 表。 如果已存在具有相同名称的目标表，则将删除该目标表并使用最新的完整快照覆盖它。 当前不支持增量快照。

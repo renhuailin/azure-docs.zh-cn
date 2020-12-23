@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613029"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648066"
 ---
 # <a name="manage-your-cache"></a>管理缓存
 
@@ -44,9 +44,9 @@ Azure 门户中的 "缓存概述" 页显示缓存的项目详细信息、缓存�
 
 停止的缓存不响应客户端请求。 应在停止缓存之前卸载客户端。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-" **停止** " 按钮可挂起活动缓存。 当缓存的状态为 "**正常**" 或 "已**降级**" 时，"**停止**" 按钮可用。
+" **停止** " 按钮可挂起活动缓存。 当缓存的状态为 "**正常**" 或 "已 **降级**" 时，"**停止**" 按钮可用。
 
 ![已突出显示 "停止" 操作并显示一条弹出消息，其中显示 "停止" 操作并询问 "是否要继续？" 的顶部按钮的屏幕截图 对于 "是" (默认) 和无按钮](media/stop-cache.png)
 
@@ -58,7 +58,7 @@ Azure 门户中的 "缓存概述" 页显示缓存的项目详细信息、缓存�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 [az hpc-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) 命令暂时挂起缓存。 仅当缓存的状态为 " **正常** " 或 "已 **降级**" 时，此操作才有效。
 
@@ -105,7 +105,7 @@ $ az hpc-cache start --name doc-cache0629
 
 将所有数据保存到存储目标后，该缓存将自动开始重新获取客户端请求。 缓存状态返回为 " **正常**"。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要刷新缓存，请单击 " **刷新** " 按钮，然后单击 **"是"** 确认操作。
 
@@ -113,7 +113,7 @@ $ az hpc-cache start --name doc-cache0629
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 [az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) 强制缓存将所有更改的数据写入存储目标。
 
@@ -155,13 +155,13 @@ $
 
 如果在结束日期通过时缓存停止，缓存将在下一次启动时自动升级软件。  (更新可能不会立即启动，但会在第一小时开始。 ) 
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 单击 " **升级** " 按钮以开始软件更新。 在操作完成之前，缓存状态将更改为 "正在 **升级** "。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 在 Azure CLI 上，缓存状态报表的末尾包含新的软件信息。  (使用 [az hpc-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) 进行检查。 ) 查找消息中的字符串 "upgradeStatus"。
 
@@ -219,13 +219,13 @@ $
 >
 > 若要确保缓存中的所有数据都已写入到长期存储，请在删除之前 [停止缓存](#stop-the-cache) 。 请确保在删除前状态为 " **已停止** "。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 停止缓存后，单击 " **删除** " 按钮永久删除缓存。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 Azure CLI 命令 [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) 永久删除缓存。
 

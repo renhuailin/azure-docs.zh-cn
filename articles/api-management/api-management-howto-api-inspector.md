@@ -1,76 +1,86 @@
 ---
-title: 在 Azure API 管理中使用请求跟踪调试 API | Microsoft Docs
-description: 遵循本教程的步骤了解如何在 Azure API 管理中检查请求处理步骤。
+title: 教程 - 使用请求跟踪在 Azure API 管理中调试 API
+description: 请按照本教程的步骤在 Azure API 管理中启用跟踪和检查请求处理步骤。
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75768515"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542308"
 ---
-# <a name="debug-your-apis-using-request-tracing"></a>使用请求跟踪调试 API
+# <a name="tutorial-debug-your-apis-using-request-tracing"></a>教程：使用请求跟踪调试 API
 
-本教程介绍如何检查请求处理，以帮助对 API 进行调试和故障排除。 
+本教程介绍如何在 Azure API 管理中检查（跟踪）请求处理，帮助你调试 API 和对其进行故障排除。 
 
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 跟踪调用
+> * 跟踪示例调用
+> * 查看请求处理步骤
 
-![API 检查器](media/api-management-howto-api-inspector/api-inspector001.PNG)
+:::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="API 检查器":::
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
++ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
+
+## <a name="verify-allow-tracing-setting"></a>验证“允许跟踪”设置 
+
+必须为用于 API 的订阅启用“允许跟踪”设置。 如果使用的是内置所有访问订阅，则默认启用该设置。 若要在门户中进行验证，请导航至 API 管理实例，然后选择“订阅”。
+
+   :::image type="content" source="media/api-management-howto-api-inspector/allow-tracing.png" alt-text="允许跟踪订阅":::
 
 ## <a name="trace-a-call"></a>跟踪调用
 
-![API 跟踪](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
+1. 登录到 [Azure 门户](https://portal.azure.com)，并导航到 API Management 实例。
+1. 选择“API”。
+1. 在 API 列表中选择“演示会议 API”。
+1. 选择“测试”选项卡。
+1. 选择“GetSpeakers”操作。
+1. 确认 HTTP 请求头包含“Ocp-Apim-Trace:True”和“Ocp-Apim-Subscription-Key”的有效值。 如果不包含，请选择“+ 添加标头”以添加标头。
+1. 选择“发送”以进行 API 调用。
 
-1. 选择“API”。 
-2. 在 API 列表中单击“演示会议 API”。 
-3. 切换到“测试”  选项卡。
-4. 选择“GetSpeakers”操作。 
-5. 请确保包含名为 **Ocp-Apim-Trace**、值设置为 **true** 的 HTTP 标头。
+  :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="配置 API 跟踪":::
 
-   > [!NOTE]
-   > * 如果 Ocp-Apim-Subscription-Key 未自动填充，可以通过转到开发人员门户并在配置文件页面上公开密钥来检索它。
-   > * 若若要在使用 Ocp-Apim-Trace HTTP 标头时获取跟踪，必须启用订阅密钥的“允许跟踪”  设置。 若要配置“允许跟踪”  设置，请在左侧菜单中的“API 管理”  下，选择“订阅”  。
-   >   ![允许在“API 管理订阅”窗格上进行跟踪](media/api-management-howto-api-inspector/allowtracing.png)
+> [!TIP]
+> 如果 HTTP 请求中没有自动填充 Ocp-Apim-Subscription-Key，则可以在门户中检索它。 选择“订阅”，然后打开订阅的上下文菜单 (…) 。 选择“显示/隐藏密钥”。 也可以按需再生成密钥。 然后，将密钥添加到标头。
 
-6. 单击“发送”发出 API 调用。  
-7. 等待调用完成。 
-8. 在“API 控制台”中转到“跟踪”选项卡。   可以单击以下任一链接跳转到详细跟踪信息：“入站”、“后端”或“出站”。   
+## <a name="review-trace-information"></a>查看跟踪信息
 
-    在“入站”部分，可以看到 API 管理从调用方收到的原始请求，以及应用到该请求的所有策略，包括步骤 2 中添加的 rate-limit 和 set-header 策略。 
+1. 调用结束后，转到“HTTP 响应”中的“跟踪”选项卡 。
+1. 选择以下任何链接，跳至详细的跟踪信息：“入站”、“后端”和“出站”  。
 
-    在“后端”部分，可以看到 API 管理发送到 API 后端的请求以及收到的响应。 
+     :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="查看响应跟踪":::
 
-    在“出站”部分，可以看到在将响应发回给调用方之前应用到该响应的所有策略。 
+    * 入站 - 显示从调用方收到的原始请求 API 管理和应用于该请求的策略。 例如，如果在[教程：转换并保护 API](transform-api.md) 中添加了策略，它们将显示在此处。
+
+    * 后端 - 显示 API 管理发送到 API 后端的请求以及收到的响应。
+
+    * 出站 - 显示在将响应发送给调用方之前应用于该响应的策略。
 
     > [!TIP]
     > 每个步骤还显示了自 API 管理收到请求以来消逝的时间。
 
+1. 在“消息”选项卡上，ocp-apim-trace-location 标头显示存储在 Azure blob 存储中的跟踪数据所在的位置 。 如果需要，请转到此位置以检索跟踪。
+
+     :::image type="content" source="media/api-management-howto-api-inspector/response-message.png" alt-text="Azure 存储中的跟踪位置":::
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
-> * 跟踪调用
+> * 跟踪示例调用
+> * 查看请求处理步骤
 
 转到下一教程：
 

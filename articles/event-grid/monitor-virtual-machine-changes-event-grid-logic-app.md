@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461266"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329519"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -107,7 +107,7 @@ ms.locfileid: "87461266"
    | **资源类型** | 是 | <*event-publisher-Azure-resource-type*> | 选择事件发布者的 Azure 资源类型。 有关 Azure 资源类型的详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。 对于本教程，请选择 `Microsoft.Resources.ResourceGroups` 值以监视 Azure 资源组。 |
    | 资源名称 |  是 | <*event-publisher-Azure-resource-name*> | 选择事件发布者的 Azure 资源名称。 此列表依据所选择的资源类型而异。 对于本教程，请选择虚拟机所在的 Azure 资源组的名称。 |
    | **事件类型项** |  否 | <*event-types*> | 选择一个或多个特定事件类型以筛选并发送到事件网格。 例如，可选择添加这些事件类型以检测何时更改或删除了资源： <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>有关详细信息，请参阅以下主题： <p><p>- [资源组的 Azure 事件网格事件架构](../event-grid/event-schema-resource-groups.md) <br>- [了解事件筛选](../event-grid/event-filtering.md) <br>- [筛选事件网格的事件](../event-grid/how-to-filter-events.md) |
-   | 若要添加可选属性，请选择“添加新参数”，然后选择所需属性。 | 否 | {参阅说明} | * **前缀筛选器**：对于本教程，请将此属性留空。 默认行为与所有值匹配。 但是，你可以指定一个前缀字符串作为筛选器，例如，特定资源的路径和参数。 <p>* **后缀筛选器**：对于本教程，请将此属性留空。 默认行为与所有值匹配。 但是，当你仅需要特定文件类型，可以指定一个后缀字符串作为筛选器，例如，文件扩展名。 <p>* **订阅名称**：在本教程中，可提供事件订阅的唯一名称。 |
+   | 若要添加可选属性，请选择“添加新参数”，然后选择所需属性。 | 否 | {参阅说明} | * **前缀筛选器** ：对于本教程，请将此属性留空。 默认行为与所有值匹配。 但是，你可以指定一个前缀字符串作为筛选器，例如，特定资源的路径和参数。 <p>* **后缀筛选器** ：对于本教程，请将此属性留空。 默认行为与所有值匹配。 但是，当你仅需要特定文件类型，可以指定一个后缀字符串作为筛选器，例如，文件扩展名。 <p>* **订阅名称** ：在本教程中，可提供事件订阅的唯一名称。 |
    |||
 
 1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。 若要折叠和隐藏逻辑应用中操作的详细信息，请选择操作的标题栏。
@@ -243,7 +243,7 @@ ms.locfileid: "87461266"
 
 可使用事件网格和逻辑应用监视其他配置更改，例如：
 
-* 虚拟机获取基于角色的访问控制 (RBAC) 权限。
+* 虚拟机获取 Azure 基于角色的访问控制 (Azure RBAC) 权限。
 * 对网络接口 (NIC) 上的网络安全组 (NSG) 进行的更改。
 * 添加或删除虚拟机磁盘。
 * 公共 IP 地址被分配给虚拟机 NIC。

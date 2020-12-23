@@ -1,18 +1,17 @@
 ---
 title: Azure Migrate 中的评估和依赖项可视化的疑难解答
 description: 在 Azure Migrate 中获取有关评估和依赖项可视化的帮助。
-ms.service: azure-migrate
-ms.topic: troubleshooting
-author: musa-57
+author: rashi-ms
+ms.author: rajosh
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576585"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753439"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -26,11 +25,11 @@ ms.locfileid: "91576585"
 **问题** | **修补程序**
 --- | ---
 引导类型不受支持 | Azure 不支持具有 EFI 启动类型的虚拟机。 在运行迁移之前，建议将启动类型转换为 BIOS。 <br/><br/>你可以使用 Azure Migrate 服务器迁移来处理此类 Vm 的迁移。 在迁移过程中，它会将 VM 的启动类型转换为 BIOS。
-有条件支持的 Windows 操作系统 | 操作系统已超过其支持的截止日期，需要自定义支持协议 (CSA) ，以 [支持 Azure 中的支持](https://aka.ms/WSosstatement)。 请考虑在迁移到 Azure 之前升级。
-不受支持的 Windows 操作系统 | Azure 仅支持 [所选的 WINDOWS 操作系统版本](https://aka.ms/WSosstatement)。 请考虑在迁移到 Azure 之前升级计算机。
-有条件认可的 Linux OS | Azure 予以认可仅 [选择 LINUX 操作系统版本](../virtual-machines/linux/endorsed-distros.md)。 请考虑在迁移到 Azure 之前升级计算机。 有关更多详细信息，请参阅 [此处](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) 。
+有条件支持的 Windows 操作系统 | 操作系统已超过其支持的截止日期，需要自定义支持协议 (CSA) ，以 [支持 Azure 中的支持](/troubleshoot/azure/virtual-machines/server-software-support)。 请考虑在迁移到 Azure 之前升级。 [查看]() 有关 [准备运行 Windows Server 2003](prepare-windows-server-2003-migration.md) 以迁移到 Azure 的计算机的信息。
+不受支持的 Windows 操作系统 | Azure 仅支持 [所选的 WINDOWS 操作系统版本](/troubleshoot/azure/virtual-machines/server-software-support)。 请考虑在迁移到 Azure 之前升级计算机。
+有条件认可的 Linux OS | Azure 予以认可仅 [选择 LINUX 操作系统版本](../virtual-machines/linux/endorsed-distros.md)。 请考虑在迁移到 Azure 之前升级计算机。 有关更多详细信息，请参阅 [此处](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) 。
 未经认可的 Linux OS | 计算机可能会在 Azure 中启动，但 Azure 不提供操作系统支持。 在迁移到 Azure 之前，请考虑升级到 [认可的 Linux 版本](../virtual-machines/linux/endorsed-distros.md) 。
-未知操作系统 | 在 vCenter Server 中，将 VM 的操作系统指定为 "其他"。 此行为会阻止 Azure Migrate 验证 VM 的 Azure 准备情况。 在迁移计算机之前，请确保 Azure [支持](https://aka.ms/azureoslist) 该操作系统。
+未知操作系统 | 在 vCenter Server 中，将 VM 的操作系统指定为 "其他"。 此行为会阻止 Azure Migrate 验证 VM 的 Azure 准备情况。 在迁移计算机之前，请确保 Azure [支持](./migrate-support-matrix-vmware-migration.md#azure-vm-requirements) 该操作系统。
 不支持的位版本 | 具有32位操作系统的 Vm 可能会在 Azure 中启动，但建议在迁移到 Azure 之前升级到64位。
 需要 Microsoft Visual Studio 订阅 | 计算机正在运行 Windows 客户端操作系统，该系统仅通过 Visual Studio 订阅支持。
 找不到所需存储性能的 VM | 计算机所需的每秒输入/输出操作数（IOPS）和吞吐量) 的存储性能 (超过了 Azure VM 支持。 在迁移之前，减少计算机的存储需求。
@@ -48,7 +47,7 @@ ms.locfileid: "91576585"
 由于出现内部错误，无法确定一个或多个磁盘的适用性 | 请尝试为组创建一个新评估。
 由于出现内部错误，无法确定一个或多个网络适配器的适用性 | 请尝试为组创建一个新评估。
 找不到产品/服务币种预订实例的 VM 大小 | 标记为 "不适用" 的计算机，原因是找不到所选 RI、产品/服务和货币组合的 VM 大小。 编辑评估属性以选择有效的组合，并重新计算评估。 
-有条件地准备好 Internet 协议 | 仅适用于 Azure VMware 解决方案 (AVS) 评估。 AVS 不支持 IPv6 internet 地址因素。如果检测到你的计算机有 IPv6，请联系 AVS 团队以获取补救指导。
+有条件地准备好 Internet 协议 | 仅适用于 Azure VMware 解决方案 (AVS) 评估。 AVS 不支持 IPv6 internet 地址因素。 如果检测到你的计算机有 IPv6，请联系 AVS 团队以获取补救指导。
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>在基于导入的 AVS 评估中标记为未知的建议迁移工具
 
@@ -61,7 +60,7 @@ ms.locfileid: "91576585"
 - 该间隔使其无法检测本地 Vm 上安装的 Linux 操作系统的次版本。
 - 例如，对于 RHEL 6.10，当前服务器评估只检测到 RHEL 6 作为操作系统版本。 这是因为 vCenter Server ar，Hyper-v 主机不提供 Linux VM 操作系统的内核版本。
 -  由于 Azure 予以认可仅特定版本的 Linux，因此 Linux Vm 当前在服务器评估中被标记为有条件准备就绪。
-- 可以通过查看 [Azure Linux 支持](https://aka.ms/migrate/selfhost/azureendorseddistros)来确定本地 VM 上运行的 Linux 操作系统是否已在 azure 中认可。
+- 可以通过查看 [Azure Linux 支持](../virtual-machines/linux/endorsed-distros.md)来确定本地 VM 上运行的 Linux 操作系统是否已在 azure 中认可。
 -  验证了认可的分发后，可以忽略此警告。
 
 可以通过在 VMware Vm 上启用 [应用程序发现](./how-to-discover-applications.md) 来解决这种缺口。 服务器评估通过提供的来宾凭据来使用从 VM 中检测到的操作系统。 在 Windows 和 Linux Vm 情况下，此操作系统数据会标识正确的操作系统信息。
@@ -91,8 +90,8 @@ ms.locfileid: "91576585"
 
 Azure Migrate Server 评估可能会根据评估类型建议更大的磁盘。
 - 服务器评估中的磁盘大小调整取决于两个评估属性：大小调整条件和存储类型。
-- 如果大小调整条件是 **基于性能**的，并且存储类型设置为 " **自动**"，则在标识目标磁盘类型 (标准 HDD、标准 SSD 或高级) 时，将考虑磁盘的 IOPS 和吞吐量值。 然后建议使用磁盘类型的磁盘 SKU，建议考虑本地磁盘的大小要求。
-- 如果大小调整条件 **基于性能**并且存储类型为 " **高级**"，则建议使用 Azure 中的高级磁盘 SKU，根据本地磁盘的 IOPS、吞吐量和大小需求进行推荐。 当大小调整条件为 **本地** 且存储类型为 **标准 HDD**、 **标准 SSD**或 **高级**时，将使用相同的逻辑来执行磁盘大小调整。
+- 如果大小调整条件是 **基于性能** 的，并且存储类型设置为 " **自动**"，则在标识目标磁盘类型 (标准 HDD、标准 SSD 或高级) 时，将考虑磁盘的 IOPS 和吞吐量值。 然后建议使用磁盘类型的磁盘 SKU，建议考虑本地磁盘的大小要求。
+- 如果大小调整条件 **基于性能** 并且存储类型为 " **高级**"，则建议使用 Azure 中的高级磁盘 SKU，根据本地磁盘的 IOPS、吞吐量和大小需求进行推荐。 当大小调整条件为 **本地** 且存储类型为 **标准 HDD**、 **标准 SSD** 或 **高级** 时，将使用相同的逻辑来执行磁盘大小调整。
 
 例如，如果你有一个具有 32 GB 内存的本地磁盘，但该磁盘的聚合读取和写入 IOPS 为 800 IOPS，则服务器评估建议 (高级磁盘，因为) 的 IOPS 要求较高，然后建议一个可支持所需 IOPS 和大小的磁盘 SKU。 本示例中最接近的匹配项将是 P15（256 GB，1100 IOPS）。 尽管本地磁盘所需的大小为 32 GB，服务器评估建议使用较大的磁盘，因为本地磁盘的 IOPS 要求较高。
 
@@ -107,7 +106,7 @@ Azure Migrate Server 评估可能会根据评估类型建议更大的磁盘。
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>为什么我的评估的置信度分级较低？
 
-根据计算评估所需的[可用数据点](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings)的百分比，为“基于性能”的评估计算置信度评级。 下面是为什么评估可能会获得较低置信度分级的原因：
+根据计算评估所需的[可用数据点](./concepts-assessment-calculation.md#ratings)的百分比，为“基于性能”的评估计算置信度评级。 下面是为什么评估可能会获得较低置信度分级的原因：
 
 - 在创建评估的过程中，你没有对环境进行分析。 例如，如果创建性能持续时间设置为一周的评估，则在对所有数据点启用发现之后，需要等待至少一周才能收集。 如果无法等待这么久，请将性能持续时间缩短，并“重新计算”评估。
  
@@ -115,7 +114,7 @@ Azure Migrate Server 评估可能会根据评估类型建议更大的磁盘。
 
 - 启动服务器评估中的发现之后，基本不再创建 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 在这种情况下，新 VM 的性能数据在整个过程中都不可用，并且置信度分级会较低。
 
-[详细了解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based)置信度分级。
+[详细了解](./concepts-assessment-calculation.md#confidence-ratings-performance-based)置信度分级。
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Azure VM 评估中是否包含操作系统许可证？
 
@@ -126,7 +125,7 @@ Azure Migrate Server 评估目前只考虑 Windows 计算机的操作系统许�
 服务器评估不断收集本地计算机的性能数据，并使用它来针对 Azure 中的 VM SKU 和磁盘 SKU 提出建议。 [了解如何](concepts-assessment-calculation.md#calculate-sizing-performance-based) 收集基于性能的数据。
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>为什么我的评估显示一个警告，指出它是通过无效的预订实例组合、VM 运行时间和折扣 (% ) 来创建的？
-选择 "保留实例" 时，"折扣 (% ) " 和 "VM 运行时间" 属性不适用。 当你的评估创建时使用了这些属性的无效组合时，"编辑" 和 "重新计算" 按钮会被禁用。 请创建新的评估。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2131554)。
+选择 "保留实例" 时，"折扣 (% ) " 和 "VM 运行时间" 属性不适用。 当你的评估创建时使用了这些属性的无效组合时，"编辑" 和 "重新计算" 按钮会被禁用。 请创建新的评估。 [了解详细信息](./concepts-assessment-calculation.md#whats-an-assessment)。
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>我看不到物理服务器上的某些网络适配器的性能数据
 
@@ -156,12 +155,12 @@ Azure 政府版不支持基于代理的依赖项分析。 请使用无代理依�
 
 对于 Windows VM：
 1. 在控制面板中，启动 MMA。
-2. 在**Microsoft Monitoring Agent 属性**"  >  **Azure Log Analytics (OMS) **中，确保工作区的**状态**为绿色。
+2. 在 **Microsoft Monitoring Agent 属性**"  >  **Azure Log Analytics (OMS)** 中，确保工作区的 **状态** 为绿色。
 3. 如果状态不是绿色，请尝试删除工作区，并再次将其添加到 MMA。
 
     ![MMA 状态](./media/troubleshoot-assessment/mma-properties.png)
 
-对于 Linux Vm，请确保 MMA 和依赖关系代理的安装命令已成功。 请参阅 [此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)的更多故障排除指南。
+对于 Linux Vm，请确保 MMA 和依赖关系代理的安装命令已成功。 请参阅 [此处](../azure-monitor/insights/service-map.md#post-installation-issues)的更多故障排除指南。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -199,10 +198,10 @@ Azure Migrate 目前支持在“美国东部”、“东南亚”和“西欧”
 
 收集网络流量日志，如下所示：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 按 F12 开始开发人员工具。 如果需要，请清除 "  **在导航上清除条目** " 设置。
 3. 选择 " **网络** " 选项卡，开始捕获网络流量：
-   - 在 Chrome 中，选择“保留日志”****。 记录应自动启动。 红色圆圈表示正在捕获流量。 如果未显示红色圆圈，请选择要开始的黑色圆圈。
+   - 在 Chrome 中，选择“保留日志”。 记录应自动启动。 红色圆圈表示正在捕获流量。 如果未显示红色圆圈，请选择要开始的黑色圆圈。
    - 在 Microsoft Edge 和 Internet Explorer 中，记录应自动启动。 如果没有，请选择绿色的 "播放" 按钮。
 4. 尝试再现该错误。
 5. 在记录过程中遇到错误后，停止记录，并保存一份已记录的活动：

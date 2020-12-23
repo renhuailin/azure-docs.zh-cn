@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 6a637dc431b0f9cd8c40cfa1c048559a56a6b97f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169355"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518050"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft 威胁建模工具
 
@@ -35,7 +35,7 @@ ms.locfileid: "87169355"
 
 ## <a name="next-steps"></a>后续步骤
 
-下表包含可帮助你开始 Threat Modeling Tool 的重要链接：另请参阅：[系统要求](threat-modeling-tool-releases.md)
+下表包含可帮助你开始 Threat Modeling Tool 的重要链接：另请参阅： [系统要求](threat-modeling-tool-releases.md)
 
 | 步骤  | 说明                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
@@ -49,7 +49,7 @@ ms.locfileid: "87169355"
 
 下面是几篇较旧的文章，仍然与目前的威胁建模相关：
 
-* [有关威胁建模的重要性的文章](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
+* [有关威胁建模的重要性的文章](/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [可信任计算发布的培训](https://www.microsoft.com/download/details.aspx?id=16420)
 
 查看一些威胁建模工具专家已完成的作品：

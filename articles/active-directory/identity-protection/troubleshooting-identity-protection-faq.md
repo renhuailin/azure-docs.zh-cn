@@ -11,40 +11,35 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827896"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558923"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常见问题标识保护
 
 ## <a name="dismiss-user-risk-known-issues"></a>消除用户风险已知问题
 
-消除经典 Identity Protection 中的**用户风险**将标识保护的用户风险历史记录中的执行组件设置为**Azure AD**。
+消除经典 Identity Protection 中的 **用户风险** 将标识保护的用户风险历史记录中的执行组件设置为 **Azure AD**。
 
-消除 Identity Protection 中的**用户风险**将标识保护的用户风险历史记录中的执行组件设置为 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
+消除 Identity Protection 中的 **用户风险** 将标识保护的用户风险历史记录中的执行组件设置为 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
 
 当前已知问题导致用户风险消除流中的延迟。 如果具有“用户风险策略”，则该策略将在单击“消除用户风险”后的几分钟内阻止应用于已消除的用户。 但是，UX 刷新已消除用户的“风险状态”时，存在已知延迟。 要解决此问题，请在浏览器级刷新页面以查看最新的用户“风险状态”。
 
-## <a name="risky-users-report-known-issues"></a>“有风险用户”报告已知问题
 
-username**** 字段上的查询区分大小写，而 Name**** 字段上的查询不区分大小写。
-
-切换“日期显示形式”**** 隐藏“风险上次更新时间”**** 列。 要读取该列，请单击“有风险的用户”边栏选项卡顶部的“列”****。
-
-经典“标识保护”中的“消除所有事件”**** 将风险检测的状态设置为“已关闭(已解决)”****。
-
-## <a name="risky-sign-ins-report-known-issues"></a>“有风险登录”报告已知问题
-
-风险检测上的“解决”**** 将状态设置为“用户已通过基于风险的策略驱动的 MFA”****。
-
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="why-is-a-user-is-at-risk"></a>为什么用户面临风险？
 
 如果你是 Azure AD Identity Protection 的客户，请前往有风险的 [用户](howto-identity-protection-investigate-risk.md#risky-users) 视图，并单击 "有风险的用户"。 在底部的抽屉中，选项卡 "风险历史记录" 将显示导致用户风险更改的所有事件。 若要查看用户的所有有风险的登录，请单击 "用户的危险登录"。 若要查看此用户的所有风险检测，请单击 "用户的风险检测"。
+
+## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>为什么我的登录被阻止，但 Identity Protection 没有生成风险检测？
+由于多种原因，登录可能被阻止。 需要特别注意的是，标识保护仅在身份验证请求中使用正确的凭据时才会生成风险检测。 如果用户使用不正确的凭据，则标识保护将不会对其进行标记，因为如果错误的使用者使用正确的凭据，则不存在凭据泄露的风险。 阻止用户签名但不会生成标识保护检测的一些原因包括：
+* 由于来自 IP 地址的恶意活动， **ip 可能被阻止** 。 IP 阻止消息不区分凭据是否正确。 如果 IP 被阻止并且未使用正确的凭据，则不会生成标识保护检测
+* 在多次尝试失败后，**[智能锁定](../authentication/howto-password-smart-lockout.md)** 会阻止该帐户登录
+* 可以强制实施 **条件性访问策略** ，该策略使用风险级别以外的条件来阻止身份验证请求
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>如何获取特定类型检测的报告？
 
@@ -76,21 +71,23 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
 
 **确认泄漏**（在登录时） - 通知 Azure AD 标识保护，该登录不是由标识所有者执行的，并指示存在泄漏。
 
-- 在收到此反馈后，我们将登录和用户风险状态改为“已确认泄漏”****，并将风险级别改为“高”****。
+- 在收到此反馈后，我们将登录和用户风险状态改为“已确认泄漏”，并将风险级别改为“高”。
 
 - 此外，我们还为我们的机器学习系统提供信息，以便今后改进风险评估。
 
     > [!NOTE]
-    > 如果已对用户采取修正措施，不要单击“确认泄漏”****，因为这会将登录和用户风险状态改为“已确认泄漏”****，并将风险级别改为“高”****。
+    > 如果已对用户采取修正措施，不要单击“确认泄漏”，因为这会将登录和用户风险状态改为“已确认泄漏”，并将风险级别改为“高”。
 
 **确认安全**（在登录时） - 通知 Azure AD 标识保护，登录是由标识所有者执行的，不指示存在泄漏。
 
-- 收到此反馈后，我们将登录（而非用户）风险状态改为“已确认安全”****，将风险级别改为 -****。
+- 收到此反馈后，我们将登录（而非用户）风险状态改为“已确认安全”，将风险级别改为 -。
 
-- 此外，我们还为我们的机器学习系统提供信息，以便今后改进风险评估。
+- 此外，我们还为我们的机器学习系统提供信息，以便今后改进风险评估。 
 
     > [!NOTE]
-    > 如果认为用户没有遭到泄漏，请使用用户级别的“消除用户风险”****，而不是登录级别的“已确认安全”****。 用户级别的“消除用户风险”**** 会关闭用户风险和所有过去的有风险登录和风险检测。
+    >现在，选择 "在登录时确认安全" 不会自行阻止将来使用相同属性的登录进行标记为有风险。 训练系统以了解用户属性的最佳方式是将有风险的登录策略用于 MFA。 当系统提示有风险登录，并且用户成功响应请求时，登录可能会成功，并有助于对系统进行合法用户的行为培训。
+    >
+    > 如果认为用户没有遭到泄漏，请使用用户级别的“消除用户风险”，而不是登录级别的“已确认安全”。 用户级别的“消除用户风险”会关闭用户风险和所有过去的有风险登录和风险检测。
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>即使在“标识保护”中没有显示有风险登录或风险检测，为什么会出现较低（或较高）的用户风险评分？
 
@@ -98,8 +95,4 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>为什么登录的“登录风险(总计)”分数为高，而与之相关的检测结果为低风险或中等风险？
 
-高总计风险评分可能基于登录的其他特性，或者针对该登录触发了多个检测的事实。 反之，登录也可能为中等“登录风险(总计)”，即使与登录相关的检测为高风险。 
-
-### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>为什么链接到有风险的登录的风险级别不同于登录风险级别 (实时) 的情况？ 
-
-我们最近对如何计算实时登录风险进行了改进。 风险检测级别和登录风险级别之间出现的差异是这些更改的结果。 请注意，实时登录风险是在策略实施期间使用的值。 
+高总计风险评分可能基于登录的其他特性，或者针对该登录触发了多个检测的事实。 反之，登录也可能为中等“登录风险(总计)”，即使与登录相关的检测为高风险。

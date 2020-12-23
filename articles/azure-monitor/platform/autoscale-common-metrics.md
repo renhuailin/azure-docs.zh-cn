@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327032"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004630"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor 自动缩放常用指标
 
@@ -24,7 +24,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 可使用 `Get MetricDefinitions` API/PoSH/CLI 查看 VMSS 资源的可用指标。
 
-如果使用 VM 规模集，而且发现特定指标未列出，则可能是诊断扩展已将其*禁用* 。
+如果使用 VM 规模集，而且发现特定指标未列出，则可能是诊断扩展已将其 *禁用* 。
 
 如果特定指标未采样或以所需的频率传输，可以更新诊断配置。
 

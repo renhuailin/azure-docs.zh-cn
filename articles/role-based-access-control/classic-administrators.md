@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/22/2020
+ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c758dca9f6020fd948ad8c3a8cdf014306e8ae7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076444"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343975"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
@@ -58,7 +58,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 - 来宾用户必须存在于你的目录中。 这意味着你邀请了用户加入目录，并且该用户接受了邀请。
 
-要详细了解如何将来宾用户添加到目录，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../active-directory/b2b/add-users-administrator.md)。
+要详细了解如何将来宾用户添加到目录，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../active-directory/external-identities/add-users-administrator.md)。
 
 ### <a name="differences-for-guest-users"></a>来宾用户的差异
 
@@ -71,9 +71,9 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 你希望用户 B 可以管理所有内容。 此区别的原因在于，Microsoft 帐户作为来宾用户（而不是成员用户）添加到订阅。 与成员用户相比，来宾用户在 Azure AD 中具有不同的默认权限。 例如，成员用户可以在 Azure AD 中读取其他用户，而来宾用户不能。 成员用户可以在 Azure AD 中注册新的服务主体，而来宾用户不能。
 
-如果来宾用户需要能够执行这些任务，则可能的解决方案是分配来宾用户所需的特定 Azure AD 角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。 有关为来宾用户授予访问权限的详细信息，请参阅[使用 Azure 门户为外部来宾用户添加或删除 Azure 角色分配](role-assignments-external-users.md)。
+如果来宾用户需要能够执行这些任务，则可能的解决方案是分配来宾用户所需的特定 Azure AD 角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/roles/permissions-reference.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/roles/permissions-reference.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。 有关为来宾用户授予访问权限的详细信息，请参阅[使用 Azure 门户为外部来宾用户添加或删除 Azure 角色分配](role-assignments-external-users.md)。
 
-请注意，[Azure 内置角色](../role-based-access-control/built-in-roles.md)与 [Azure AD 角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)不同。 内置角色不授予对 Azure AD 的任何访问权限。 有关详细信息，请参阅[了解不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
+请注意，[Azure 内置角色](../role-based-access-control/built-in-roles.md)与 [Azure AD 角色](../active-directory/roles/permissions-reference.md)不同。 内置角色不授予对 Azure AD 的任何访问权限。 有关详细信息，请参阅[了解不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 有关比较成员用户和来宾用户的信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。
 
@@ -99,25 +99,25 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 只有帐户管理员可以更改订阅的服务管理员。 默认情况下，当你注册 Azure 订阅时，服务管理员即是帐户管理员。 具有帐户管理员角色的用户无权访问 Azure 门户。 具有服务管理员角色的用户拥有 Azure 门户的完全访问权限。 如果帐户管理员和服务管理员是同一个用户，而你将服务管理员更改为其他用户，则帐户管理员会失去 Azure 门户的访问权限。 但是，帐户管理员可始终使用帐户中心将服务管理员重新更改为自己。
 
-请按照这些步骤在“帐户中心”更改服务管理员。
-
-### <a name="account-center"></a>帐户中心
+请按照以下步骤在 Azure 门户中更改服务管理员。
 
 1. 请查看[服务管理员变更限制](#limitations-for-changing-the-service-administrator)，确保自己的方案受支持。
 
-1. 以帐户管理员身份登录到[帐户中心](https://account.windowsazure.com/subscriptions)。
+1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 单击某个订阅。
+1. 打开 **成本管理 + 计费** ，并选择订阅。
 
-1. 在右侧单击“编辑订阅详细信息”。
+1. 在左侧导航栏中，单击 " **属性**"。
 
-    ![显示帐户中心中“编辑订阅”按钮的屏幕截图](./media/classic-administrators/editsub.png)
+1. 单击 " **服务管理员**"。
 
-1. 在“服务管理员”  框中，输入新服务管理员的电子邮件地址。
+    ![在 Azure 门户中显示订阅属性的屏幕截图](./media/classic-administrators/service-admin.png)
 
-    ![屏幕截图：用于更改服务管理员电子邮件的框](./media/classic-administrators/change-service-admin.png)
+1. 在 " **编辑服务管理员** " 页中，输入新服务管理员的电子邮件地址。
 
-1. 单击勾选标记以保存更改。
+    ![显示 "编辑服务管理员" 页的屏幕截图](./media/classic-administrators/service-admin-edit.png)
+
+1. 单击 **“确定”** 保存更改。
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>服务管理员变更限制
 
@@ -140,9 +140,9 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
+1. 打开 **成本管理 + 计费** ，并选择订阅。
 
-1. 单击“属性”。
+1. 在左侧导航栏中，单击 " **属性**"。
 
     订阅的帐户管理员会显示在“帐户管理员”框中。
 

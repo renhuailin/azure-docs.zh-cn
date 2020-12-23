@@ -1,281 +1,255 @@
 ---
-title: 了解自动化 ML 的结果
+title: 评估 AutoML 试验结果
 titleSuffix: Azure Machine Learning
-description: 了解如何查看和理解每个自动机器学习运行的图表与指标。
+description: 了解如何查看和评估每个自动化机器学习试验运行的图表与指标。
 services: machine-learning
-author: aniththa
-ms.author: anumamah
+author: gregorybchris
+ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 12/05/2019
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, contperf-fy21q2, automl
+ms.openlocfilehash: 747cc88cdea59017483245b59e4b2c56c4b06a40
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315535"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032926"
 ---
-# <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习的结果
+# <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
+在本文中，了解如何评估和比较通过自动化机器学习 (自动 ML) 试验进行定型的模型。 在自动 ML 试验过程中，会创建多个运行，并且每次运行都会创建一个模型。 对于每个模型，自动 ML 会生成评估指标和图表，以帮助你衡量模型的性能。 
 
-本文介绍如何查看和理解每个自动机器学习运行的图表与指标。 
+例如，自动 ML 会根据试验类型生成以下图表。
 
-了解有关以下方面的详细信息：
-+ [分类模型的指标和图表](#classification)
-+ [回归模型的指标和图表](#regression)
-+ [模型可解释性和特征重要性](#explain-model)
+| 分类| 回归/预测 |
+| ----------------------------------------------------------- | ---------------------------------------- |
+| [混淆矩阵](#confusion-matrix)                       | [残差直方图](#residuals)        |
+| [接收方操作特征 (ROC) 曲线](#roc-curve) | [预测与 true](#predicted-vs-true) |
+| [精度-召回 (PR) 曲线](#precision-recall-curve)      |                                          |
+| [提升曲线](#lift-curve)                                   |                                          |
+| [累积收益曲线](#cumulative-gains-curve)           |                                          |
+| [校准曲线](#calibration-curve)                     |                     
+
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+- Azure 订阅。  (如果你没有 Azure 订阅，请在开始前 [创建一个免费帐户](https://aka.ms/AMLFree)) 
+- 使用以下方法之一创建的 Azure 机器学习试验：
+  - [Azure 机器学习 studio](how-to-use-automated-ml-for-ml-models.md) (无需任何代码) 
+  - [Azure 机器学习 PYTHON SDK](how-to-configure-auto-train.md)
 
-* 使用 SDK 或 Azure 机器学习工作室为自动化机器学习运行创建试验。
+## <a name="view-run-results"></a>查看运行结果
 
-    * 使用 SDK 生成[分类模型](how-to-auto-train-remote.md)或[回归模型](tutorial-auto-train-models.md)
-    * 使用 [Azure 机器学习工作室](how-to-use-automated-ml-for-ml-models.md)通过上传相应的数据来创建分类模型或回归模型。
+自动 ML 试验完成后，可以通过以下方式找到运行历史记录：
+  - 使用[Azure 机器学习 studio](overview-what-is-machine-learning-studio.md)的浏览器
+  - 使用[RunDetails Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true)的 Jupyter 笔记本
 
-## <a name="view-the-run"></a>查看运行
+以下步骤和视频演示如何在工作室中查看运行历史记录和模型评估指标和图表：
 
-运行自动化机器学习试验后，可在机器学习工作区中找到运行历史记录。 
+1. [登录到工作室](https://ml.azure.com/)并导航到你的工作区。
+1. 在左侧菜单中，选择 " **试验**"。
+1. 从实验列表中选择试验。
+1. 在页面底部的表中，选择 "自动 ML 运行"。
+1. 在 " **模型** " 选项卡中，选择要计算的模型的 **算法名称** 。
+1. 在 " **度量值** " 选项卡中，使用左侧的复选框来查看度量值和图表。
 
-1. 转到你的工作区。
+![在工作室中查看指标的步骤](./media/how-to-understand-automated-ml/how-to-studio-metrics.gif)
 
-1. 在工作区的左侧面板中，选择“试验”。
+## <a name="classification-metrics"></a>分类指标
 
-   ![试验菜单的屏幕截图](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
+自动 ML 会计算为试验生成的每个分类模型的性能指标。 这些指标基于 scikit-learn 学习实现。 
 
-1. 在试验列表中，选择要探索的试验。
+许多分类度量值是针对两个类上的二元分类定义的，需要对类进行求平均值，以便为多类分类生成一个分数。 Scikit-learn 提供了几个平均方法，其中三个方法自动执行 ML： **宏**、 **微** 和 **加权**。
 
-   [![试验列表](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
+- **宏** -计算每个类的指标并取加权滑动 average
+- **微** 计算指标，方法是计算与) 类无关的总真实正值、假负和误报 (。
+- **加权** -计算每个类的指标，并根据每个类的样本数采用加权平均值。
 
-1. 在底部的表中，选择“运行”。
+虽然每个平均值方法都有其优点，但选择适当的方法时要考虑的一个常见因素是类不平衡。 如果类具有不同的样本数，则使用宏 average 可能更有意义，其中少数类向多数类赋予了相等的权重。 详细了解 [自动 ML 中的二进制与多类指标](#binary-vs-multiclass-classification-metrics)。 
 
-   [![试验运行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
+下表汇总了模型性能指标，这些指标是自动化 ML 针对每个为试验生成的分类模型计算的。 有关更多详细信息，请参阅每个指标的 **计算** 字段中链接的 scikit-learn-了解的文档。 
 
-1. 在“模型”中，选择要进一步探索的模型的“算法名称”。
+|指标|说明|计算|
+|--|--|---|
+|AUC | AUC 是 [接收方操作特征曲线](#roc-curve)下的区域。<br><br> **目标：** 越接近1越好 <br> **范围：** [0，1]<br> <br>支持的指标名称包括、 <li>`AUC_macro`，每个类的 AUC 的算术平均值。<li> `AUC_micro`，通过将每个类中的真正误报和误报进行组合计算得出。 <li> `AUC_weighted`，每个类的分数的算术平均值，由每个类中的真实实例的数目加权。   |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
+|accuracy| 准确性是与真正的类标签完全匹配的预测的比率。 <br> <br>**目标：** 越接近1越好 <br> **范围：** [0，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
+|average_precision|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 <br><br> **目标：** 越接近1越好 <br> **范围：** [0，1]<br> <br>支持的指标名称包括、<li>`average_precision_score_macro`，每个类的平均精度分数的算术平均值。<li> `average_precision_score_micro`，它通过在每个截止时合并真正的正值和假正值进行计算。<li>`average_precision_score_weighted`，每个类的平均精度分数的算术平均值，由每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|
+balanced_accuracy|平衡准确度是每个类的召回率算术平均值。<br> <br>**目标：** 越接近1越好 <br> **范围：** [0，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
+f1_score|F1 评分是精度和召回率的调和平均值。 这是对误报和漏报的合理平衡。 但是，它不会考虑真正的否定。 <br> <br>**目标：** 越接近1越好 <br> **范围：** [0，1]<br> <br>支持的指标名称包括、<li>  `f1_score_macro`：每个类的 F1 分数的算术平均值。 <li> `f1_score_micro`：通过计算总真实正值、假负值和假正值计算得出。 <li> `f1_score_weighted`：每个类的每类 F1 分数的加权平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
+log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 <br><br> **目标：** 越接近0越好 <br> **范围：** [0，inf) |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
+norm_macro_recall| 规范化的宏召回是回调宏的平均和规范化，因此，随机性能的分数为0，理想的性能为1的分数。 <br> <br>**目标：** 越接近1越好 <br> **范围：** [0，1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>其中， `R` 是用于随机预测的的预期值 `recall_score_macro` 。<br><br>`R = 0.5`&nbsp;对于 &nbsp; 二元 &nbsp; 分类。 <br>`R = (1 / C)` 对于 C 类分类问题。|
+matthews_correlation | Matthews 相关系数是精确度的均衡度量值，即使一个类有比另一个类更多的示例，也可以使用该度量值。 系数1表示完美预测，0随机预测，-1 反转预测。<br><br> **目标：** 越接近1越好 <br> **范围：** [-1，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+精准率|精度是指模型避免将负样本标记为正值的能力。 <br><br> **目标：** 越接近1越好 <br> **范围：** [0，1]<br> <br>支持的指标名称包括、 <li> `precision_score_macro`，每个类的精度算术平均值。 <li> `precision_score_micro`，通过计算总的实际正值和假正值来全局计算。 <li> `precision_score_weighted`，每个类的精度的算术平均值，按每个类中的真实实例数为加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
+召回率| 回想一下，模型能够检测所有正的样本。 <br><br> **目标：** 越接近1越好 <br> **范围：** [0，1]<br> <br>支持的指标名称包括、 <li>`recall_score_macro`：每个类的算术平均值。 <li> `recall_score_micro`：通过计算总真实正值、假负值和假正值来全局计算。<li> `recall_score_weighted`：对每个类的回调算术平均值，按每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
+weighted_accuracy|加权准确性是精确的，其中每个样本都按属于同一类的样本总数加权。 <br><br>**目标：** 越接近1越好 <br>**范围：** [0，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
 
-   [![试验模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
+### <a name="binary-vs-multiclass-classification-metrics"></a>二元和多类分类指标
 
-使用 `RunDetails`[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)运行期间，会看到相同的结果。
+自动化 ML 不区分二元分类指标与多类指标。 不管数据集有两个类还是两个以上的类，都会报告相同的验证指标。 但是，某些指标旨在用于多类分类。 正如你所期望的那样，这些指标在应用于二元分类数据集时不会将任何类视为 `true` 类。 明确用于多类的指标以 `micro`、`macro` 或 `weighted` 为后缀。 示例包括 `average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC`。
 
-## <a name="classification-results"></a><a name="classification"></a> 分类结果
+例如，多类平均召回率（`micro`、`macro` 或 `weighted`）不按 `tp / (tp + fn)` 计算召回率，而是对二进制分类数据集的两个类进行平均。 这相当于分别计算 `true` 类和 `false` 类的召回率，然后取二者的平均值。
 
-对于使用 Azure 机器学习的自动化机器学习功能生成的每个分类模型，将提供以下指标和图表
+## <a name="confusion-matrix"></a>混淆矩阵
 
-+ [度量值](#classification-metrics)
-+ [混淆矩阵](#confusion-matrix)
-+ [精度-召回率图表](#precision-recall-chart)
-+ [接收方操作特征 (ROC)](#roc)
-+ [提升曲线](#lift-curve)
-+ [增益曲线](#gains-curve)
-+ [校准图](#calibration-plot)
+混淆矩阵为机器学习模型在分类模型的预测中做出系统错误的方式提供了视觉对象。 名称中的 "混乱" 一词来自模型 "混乱" 或 mislabeling 示例。 混淆矩阵的行 `i` 和列 `j` 中的单元包含属于类 `C_i` 并由模型分类为类的计算数据集中的样本数 `C_j` 。
 
-### <a name="classification-metrics"></a>分类指标
+在工作室中，较暗的单元格表示更多的示例。 选择下拉列表中的 " **规范化** 视图" 将对每个矩阵行进行规范化，以显示 `C_i` 预测为类的类的百分比 `C_j` 。 默认的 **原始** 视图的优点是，您可以查看实际类的分布中的不平衡是否导致模型从少数类中对样本，这是不均衡数据集中的一个常见问题。
 
-在分类任务的每次运行迭代中保存以下指标。
+好模型的混淆矩阵将会沿着对角线方向获得大多数示例。
 
-指标|说明|计算|其他参数
---|--|--|--
-AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
-AUC_micro| AUC 是接收方操作特性曲线下面的区域。 通过组合每个类中的真报率和误报率来全局计算 Micro。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
-AUC_weighted  | AUC 是接收方操作特性曲线下面的区域。 Weighted 是每个类的评分算术平均值，按每个类中的真实实例数加权。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
-accuracy|Accuracy 是与真实标签完全匹配的预测标签百分比。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |无|
-average_precision_score_macro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 Macro 是每个类的平均精度评分算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
-average_precision_score_micro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 通过组合每个交接中的真报率和误报率来全局计算 Micro。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
-average_precision_score_weighted|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 Weighted 是每个类的平均精度评分算术平均值，按每个类中的真实实例数加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="weighted"|
-balanced_accuracy|平衡准确度是每个类的召回率算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-f1_score_macro|F1 评分是精度和召回率的调和平均值。 Macro 是每个类的 F1 评分算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
-f1_score_micro|F1 评分是精度和召回率的调和平均值。 通过统计真报率、漏报率和误报率总值来全局计算 Micro。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
-f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于在 {0,1} 中包含真实标签 yt，且包含 yt=1 的估计概率 yp 的单个样本，对数损失为 -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
-norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 可以通过公式 norm_macro_recall := (recall_score_macro - R)/(1 - R) 来计算此值，其中，R 是随机预测的 recall_score_macro 预期值（例如，对于二元分类，R=0.5；对于 C 类分类问题，R=(1/C)）。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "macro" |
-precision_score_macro|Precision 是正确标记的积极预测元素的百分比。 Macro 是每个类的精度算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
-precision_score_micro|Precision 是正确标记的积极预测元素的百分比。 通过统计真报率和误报率总值来全局计算 Micro。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
-precision_score_weighted|Precision 是正确标记的积极预测元素的百分比。 Weighted 是每个类的精度算术平均值，按每个类中的真实实例数加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
-recall_score_macro|Recall 是特定类的正确标记元素的百分比。 Macro 是每个类的召回率算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-recall_score_micro|Recall 是特定类的正确标记元素的百分比。 通过统计真报率、漏报率和误报率总值来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
-recall_score_weighted|Recall 是特定类的正确标记元素的百分比。 Weighted 是每个类的召回率算术平均值，按每个类中的真实实例数加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
-weighted_accuracy|加权准确度是当分配给每个示例的权重等于该示例的真实类中的真实实例比例时的准确度。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight 是等于目标中每个元素的该类比例的向量|
+### <a name="confusion-matrix-for-a-good-model"></a>良好模型的混淆矩阵 
+![良好模型的混淆矩阵 ](./media/how-to-understand-automated-ml/chart-confusion-matrix-good.png)
 
-### <a name="binary-vs-multiclass-metrics"></a>二元分类指标与多类指标
+### <a name="confusion-matrix-for-a-bad-model"></a>错误模型的混淆矩阵
+![错误模型的混淆矩阵](./media/how-to-understand-automated-ml/chart-confusion-matrix-bad.png)
 
-AutoML 不区分二元分类指标与多类指标。 不管数据集有两个类还是两个以上的类，都会报告相同的验证指标。 但是，某些指标旨在用于多类分类。 正如你所期望的那样，这些指标在应用于二元分类数据集时不会将任何类视为 `true` 类。 明确用于多类的指标以 `micro`、`macro` 或 `weighted` 为后缀。 示例包括 `average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC`。
+## <a name="roc-curve"></a>ROC 曲线
 
-可以通过具体的示例更清楚地了解此区别：多类平均查全率（`micro`、`macro` 或 `weighted`）不按 `tp / (tp + fn)` 计算查全率，而是对二元分类数据集的两个类进行平均。 这相当于分别计算 `true` 类和 `false` 类的查全率，然后取二者的平均值。
+当决策阈值变化时，接收方操作特征 (ROC) 曲线绘制 (TPR) 和误报 (以及) 之间的关系。 如果在具有高类不平衡的数据集上定型模型，则该 ROC 曲线可能会不太丰富，因为多数类可以 drown 少数类的贡献。
 
-<a name="confusion-matrix"></a>
+曲线下的区域 (AUC) 可以解释为正确分类样本的比例。 更准确地说，AUC 是分类器排名随机选择的正样本比随机选择的负样本大的概率。 曲线的形状提供 TPR 和以及之间的关系的直觉作为分类阈值或决策边界的函数。
 
-### <a name="confusion-matrix"></a>混淆矩阵
+接近图表左上角的曲线接近 100% TPR，0% 以及，这是可能的最佳模型。 随机模型将沿 `y = x` 从左下角到右上角的行生成一个 ROC 曲线。 比随机模型更糟糕的是，它的 `y = x`
+> [!TIP]
+> 对于分类试验，为自动 ML 模型生成的每个折线图都可用于评估每类的模型或所有类的平均值。 您可以通过单击图表右侧图例中的类标签，在这些不同视图之间切换。
+### <a name="roc-curve-for-a-good-model"></a>良好模型的 ROC 曲线
+![良好模型的 ROC 曲线](./media/how-to-understand-automated-ml/chart-roc-curve-good.png)
 
-#### <a name="what-is-a-confusion-matrix"></a>什么是混淆矩阵？
-混淆矩阵用于描述分类模型的性能。 每一行显示真实类的实例或数据集中的实际类，每一列表示模型预测的类的实例。 
+### <a name="roc-curve-for-a-bad-model"></a>错误模型的 ROC 曲线
+![错误模型的 ROC 曲线](./media/how-to-understand-automated-ml/chart-roc-curve-bad.png)
 
-#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>自动化 ML 如何处理混淆矩阵？
-对于分类问题，Azure 机器学习会自动为生成的每个模型提供一个混淆矩阵。 对于每个混淆矩阵，自动化 ML 将显示每个预测标签（列）相对于真实标签（行）的频率。 颜色越暗，该特定矩阵部分中的计数越大。 
+## <a name="precision-recall-curve"></a>精度-召回曲线
 
-#### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-我们要将数据集的实际值与模型提供的预测值进行比较。 因此，如果机器学习模型的大部分值沿对角线分布（表示模型预测了正确的值），则该模型具有较高的准确度。 如果模型中的类不平衡，则混淆矩阵可帮助检测有偏差的模型。
+当决策阈值发生变化时，精度召回曲线会绘制精度和召回之间的关系。 回想一下，模型能够检测所有正的样本和精度，这是模型避免将负样本标记为正值的能力。 某些业务问题可能需要更高的召回度和更高的精度，具体取决于避免误报和误报的相对重要性。
+> [!TIP]
+> 对于分类试验，为自动 ML 模型生成的每个折线图都可用于评估每类的模型或所有类的平均值。 您可以通过单击图表右侧图例中的类标签，在这些不同视图之间切换。
+### <a name="precision-recall-curve-for-a-good-model"></a>精确模型的精度召回曲线
+![精确模型的精度召回曲线](./media/how-to-understand-automated-ml/chart-precision-recall-curve-good.png)
 
-##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>示例 1：准确度较差的分类模型
-![准确度较差的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
+### <a name="precision-recall-curve-for-a-bad-model"></a>错误模型的精度召回曲线
+![错误模型的精度召回曲线](./media/how-to-understand-automated-ml/chart-precision-recall-curve-bad.png)
 
-##### <a name="example-2-a-classification-model-with-high-accuracy"></a>示例 2：准确度较高的分类模型 
-![准确度较高的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
+## <a name="cumulative-gains-curve"></a>累积收益曲线
 
-##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>示例 3：准确度较高且模型预测偏差较高的分类模型
-![准确度较高且模型预测偏差较高的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
+累积的增益曲线会将正样本的百分比正确地分类为所考虑的样本百分比的函数，在这种情况下，我们将示例视为预测概率的顺序。
 
-<a name="precision-recall-chart"></a>
-### <a name="precision-recall-chart"></a>精度-召回率图表
-#### <a name="what-is-a-precision-recall-chart"></a>什么是精准率-召回率图表？
-精准率-召回率曲线显示模型的精准率与召回率之间的关系。 术语“精准率”表示模型正确标记所有实例的能力。 “召回率”表示分类器查找特定标签的所有实例的能力。
+若要计算增益，请首先对模型预测的最高和最低概率进行排序。 然后 `x%` ，采用最高的置信度预测。 将其中检测到的正样本数除以 `x%` 正样本总数以获取收益。 累积增益是指在考虑最有可能属于正类的数据的一些百分比时检测到的正样本的百分比。
 
-#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>自动化 ML 如何处理精准率-召回率图表？
+理想的模型将对所有负样本的所有正抽样进行排名，使其具有两个直段组成的累积收益曲线。 第一条是一条从到斜率的线条， `1 / x` `(0, 0)` `(x, 1)` 其中 `x` 是 `1 / num_classes`) 类平衡的情况下，属于正类 (样本的小数部分。 第二个是从到的水平线条 `(x, 1)` `(1, 1)` 。 在第一段中，所有正则样本均已正确分类，累积收益将在 `100%` 考虑的第一个样本中进行 `x%` 。
 
-使用此图表可以比较每个模型的精度-召回率曲线，以确定哪个模型的精度与召回率关系可接受，可以解决特定的业务问题。 此图表显示宏观平均精度-召回率、微观平均精度-召回率，以及与模型的所有类关联的精度-召回率。 
+基线随机模型将产生一条累积的增益曲线，该曲线后面 `y = x` `x%` 仅考虑 `x%` 到已检测到的样本总数。 理想的模型将有一个接近左上角的微平均曲线和一个具有斜度的宏平均线条， `1 / num_classes` 直到累积增益为100%，然后水平滚动，直到数据百分比为100。
+> [!TIP]
+> 对于分类试验，为自动 ML 模型生成的每个折线图都可用于评估每类的模型或所有类的平均值。 您可以通过单击图表右侧图例中的类标签，在这些不同视图之间切换。
+### <a name="cumulative-gains-curve-for-a-good-model"></a>良好模型的累积收益曲线
+![良好模型的累积收益曲线](./media/how-to-understand-automated-ml/chart-cumulative-gains-curve-good.png)
 
-宏观平均将单独计算每个类的指标，然后取平均值，并同等处理所有类。 但，微观平均将聚合所有类的贡献来计算平均值。 如果数据集中存在类不平衡的情况，则最好是使用微观平均。
+### <a name="cumulative-gains-curve-for-a-bad-model"></a>错误模型的累积收益曲线
+![错误模型的累积收益曲线](./media/how-to-understand-automated-ml/chart-cumulative-gains-curve-bad.png)
 
-#### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-根据业务问题的目标，理想的精准率-召回率曲线可能各不相同。 下面给出了一些示例
+## <a name="lift-curve"></a>提升曲线
 
-##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>示例 1：精准率和召回率较低的分类模型
-![精准率和召回率较低的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
+提升曲线显示了模型比随机模型更好地执行多少次。 升降定义为随机模型的累计收益的比率。
 
-##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>示例 2：精准率和召回率大约为 100% 的分类模型 
-![精准率和召回率较高的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
-<a name="roc"></a>
-### <a name="roc-chart"></a>ROC 图
+这种相对性能考虑到在增加类的数量时，分类变得困难。  (随机模型从包含10个类的数据集中错误预测较高部分的样本，其中包含两个类) 
 
-#### <a name="what-is-a-roc-chart"></a>什么是 ROC 图？
-接收方操作特征 (ROC) 是特定模型的正确分类标签与错误分类标签的对比图。 在类失衡严重的情况下基于数据集训练模型时，ROC 曲线提供的信息可能较少，因为多数类可能会掩盖少数类的贡献。
+基线提升曲线是 `y = 1` 模型性能与随机模型的性能一致的行。 通常，好模型的提升曲线在该图上和 x 轴上的位置将会更高，这表明当模型最有把握其预测时，它所执行的时间比随机推测更好。
 
-#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>自动化 ML 如何处理 ROC 图？
-可以按照正确分类的样本的比例将该 ROC 图下的区域可视化。 ROC 图的高级用户可能会查看曲线下区域之外的区域，直观了解以分类阈值或决策边界函数形式表示的真正率和假正率。
+> [!TIP]
+> 对于分类试验，为自动 ML 模型生成的每个折线图都可用于评估每类的模型或所有类的平均值。 您可以通过单击图表右侧图例中的类标签，在这些不同视图之间切换。
+### <a name="lift-curve-for-a-good-model"></a>好模型的提起曲线
+![好模型的提起曲线](./media/how-to-understand-automated-ml/chart-lift-curve-good.png)
+ 
+### <a name="lift-curve-for-a-bad-model"></a>错误模型的提起曲线
+![错误模型的提起曲线](./media/how-to-understand-automated-ml/chart-lift-curve-bad.png)
 
-#### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-最佳模型是 ROC 曲线接近左上角，即真正率为 100%，假正率为 0%。 随机模型将显示为一条从左下角到右上角的平直线。 比随机模型更差的模型会显示在 y=x 这条线的下方。
+## <a name="calibration-curve"></a>校准曲线
 
-##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>示例 1：真报标签较少且误报标签较多的分类模型
-![真报标签较少且误报标签较多的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
+校准曲线根据每个置信度的正样本比例，在其预测中绘制模型的置信度。 校准良好的模型将正确地分类100% 的预测，以将其分配100% 置信度，50% 的预测分配了50% 置信度，20% 的预测分配了20% 的置信度，依此类推。 完全校准的模型会在行的后面有一个校准曲线 `y = x` ，其中的模型可用于预测样本所属的每个类的概率。
 
-##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>示例 2：真报标签较多且误报标签较少的分类模型
-![真报标签较多且误报标签较少的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
-<a name="lift-curve"></a>
-### <a name="lift-chart"></a>提升图
-#### <a name="what-is-a-lift-chart"></a>什么是提升图？
-提升图用于评估分类模型的性能。 提升图显示某个模型的表现优于随机模型的次数。 这里提供的是一个相对表现（考虑到类的数量越多，分类越困难）。 如果一个数据集有十个类，则根据该数据集的样本进行的预测其错误率会高于根据两个类的数据集的样本进行的预测。
-
-#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>自动化 ML 如何处理提升图？
-可以根据基线比较 Azure 机器学习自动生成的模型的性能提升，以查看该特定模型的值增益。
-#### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-
-##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>示例 1：比随机选择模型更差的分类模型
-![比随机选择模型更差的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>示例 2：表现比随机选择模型更好的分类模型
-![表现更好的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
-<a name="gains-curve"></a>
-### <a name="cumulative-gains-chart"></a>累积增益图
-#### <a name="what-is-a-cumulative-gains-chart"></a>什么是累积增益图？
-
-累积增益图按数据的每个部分评估分类模型的表现。 该图按数据集的每个百分位显示已进行准确分类的额外样本数。
-
-#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>自动化 ML 如何处理增益图？
-借助累积增益图，可以使用一个对应于模型所需增益的百分比来选择分类截止值。 此信息提供了查看随附提升图中的结果的另一种方式。
-
-#### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-##### <a name="example-1-a-classification-model-with-minimal-gain"></a>示例 1：增益极低的分类模型
-![增益极低的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
-
-##### <a name="example-2-a-classification-model-with-significant-gain"></a>示例 2：增益很高的分类模型
-![增益很高的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
-<a name="calibration-plot"></a>
-### <a name="calibration-chart"></a>校准图
-
-#### <a name="what-is-a-calibration-chart"></a>什么是校准图？
-校准图用于显示预测模型的置信度。 它通过显示预测概率和实际概率之间的关系来实现，其中“概率”表示一个特定实例属于某个标签的可能性。
-#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>自动化 ML 如何处理校准图？
-对于所有分类问题，可以查看微观平均、宏观平均以及给定预测模型中每个类的校准行。
-
-宏观平均将单独计算每个类的指标，然后取平均值，并同等处理所有类。 但，微观平均将聚合所有类的贡献来计算平均值。 
-#### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-进行了适当校准的模型会与 y=x 这条线吻合，会正确预测样本属于每个类的概率。 置信度过高的模型在预测接近零和一的概率时会出现高估的情况，但很少出现无法确定每个样本的类的情况。
-
-
-##### <a name="example-1-a-well-calibrated-model"></a>示例 1：适当校准的模型
-![ 适当校准的模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
-
-##### <a name="example-2-an-over-confident-model"></a>示例 2：置信度过高的模型
-![置信度过高的模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
-
-## <a name="regression-results"></a><a name="regression"></a> 回归结果
-
-对于使用 Azure 机器学习的自动化机器学习功能生成的每个回归模型，将提供以下指标和图表
-
-+ [度量值](#reg-metrics)
-+ [预测与真实](#pvt)
-+ [残差直方图](#histo)
-
-
-### <a name="regression-metrics"></a><a name="reg-metrics"></a> 回归指标
-
-在回归或预测任务的每次运行迭代中保存以下指标。
-
-|指标|说明|计算|其他参数
---|--|--|--|
-explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 当错误的平均值为0时，它等于确定系数 (参阅) 下面 r2_score。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
-r2_score|R ^ 2 是确定的系数，或与输出平均值的基线模型相比，平方误差的百分比下降。 |[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|
-spearman_correlation|斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，此参数在 -1 和 +1 之间变化，0 表示不相关。 -1 或 +1 相关表示确切的单一关系。 正相关表示 y 随着 x 的递增而递增。 负相关表示 y 随着 x 的递增而递减。|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|无|
-mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|无|
-normalized_mean_absolute_error|规范化平均绝对误差是平均绝对误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|除以数据范围|
-median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|无|
-normalized_median_absolute_error|规范化中间绝对误差是中间绝对误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|除以数据范围|
-root_mean_squared_error|均方根误差是目标与预测之间的预期平方差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|无|
-normalized_root_mean_squared_error|规范化均方根误差是均方根误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|除以数据范围|
-root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|无|
-normalized_root_mean_squared_log_error|规范化均方根对数误差指均方根对数误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以数据范围|
-
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> 预测值与真实值图
-#### <a name="what-is-a-predicted-vs-true-chart"></a>什么是预测值与真实值图？
-预测与“真实”显示回归问题的预测值与其相关真实值之间的关系。 可以使用此图形来衡量模型的性能，因为预测值与 y=x 行越接近，预测模型的准确度就越高。
-
-#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>自动化 ML 如何处理预测值与真实值图？
-每次运行后，可以查看每个回归模型的预测与真实图形。 为了保护数据隐私，值已装箱在一起，每个箱的大小在图表区域的下半部分显示为条形图。 可将预测模型（带有浅色阴影，其中显示了误差边际）与模型的理想值进行比较。
-
-#### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-##### <a name="example-1-a-classification-model-with-low-accuracy"></a>示例 1：准确度较低的分类模型
-![预测准确度较低的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
-
-##### <a name="example-2-a-regression-model-with-high-accuracy"></a>示例 2：准确度较高的回归模型 
-[![预测准确度较高的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
-
-
-
-### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> 残差直方图
-#### <a name="what-is-a-residuals-chart"></a>什么是残差图？
-残差是指预测与实际值之间的差 (`y_pred - y_true`)。 若要显示偏差较小的误差边际，应该以 0 为中心，将残差直方图绘制成钟形曲线。 
-#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>自动化 ML 如何处理残差图？
-自动化 ML 自动提供残差图来显示预测中的误差分布。
-#### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-良好模型的残差通常会接近零。
-
-##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>示例 1：误差中带有偏差的回归模型
-![误差中带有偏差的 SA 回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
-
-##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>示例 2：误差较均匀分布的回归模型
-![误差较均匀分布的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
-
-## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> 模型可解释性和特征重要性
-自动化 ML 为运行提供机器学习可解释性仪表板。
-有关启用可解释性功能的详细信息，请参阅有关在自动化 ML 试验中启用可解释性的[操作指南](how-to-machine-learning-interpretability-automl.md)。
+过度自信的模型将过度预测接近零和一的概率，很少无法确定每个样本的类，并且校准曲线看起来将类似于向后 "S"。 置信度较低的模型将对它所预测的类平均分配一个较低的概率，而关联的校准曲线将类似于 "S"。 校准曲线并不说明模型能否正确地分类，而是使其能够正确地将置信度分配给其预测。 如果模型正确地分配了置信度和高不确定性，则不正确的模型仍可以具有良好的校准曲线。
 
 > [!NOTE]
-> 解释客户端目前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回解释仪表板，并且不支持按需解释运行。
+> 校准曲线对样本的数量很敏感，因此小型验证集可能产生难以解释的干扰结果。 这并不一定意味着模型没有正确校准。
+
+### <a name="calibration-curve-for-a-good-model"></a>好模型的校准曲线
+![好模型的校准曲线](./media/how-to-understand-automated-ml/chart-calibration-curve-good.png)
+
+### <a name="calibration-curve-for-a-bad-model"></a>错误模型的校准曲线
+![错误模型的校准曲线](./media/how-to-understand-automated-ml/chart-calibration-curve-bad.png)
+
+## <a name="regressionforecasting-metrics"></a>回归/预测指标
+
+对于每个生成的模型，自动 ML 会计算相同的性能指标，而不考虑它是回归试验还是预测试验。 这些度量值还会经过规范化，以便在使用不同范围的数据进行定型的模型之间进行比较。 若要了解详细信息，请参阅 [指标规范化](#metric-normalization)。  
+
+下表总结了为回归和预测试验而生成的模型性能指标。 与分类指标一样，这些指标也基于 scikit-learn 学习实现。 相应的 scikit-learn 学习文档在 **计算** 字段中进行了相应的链接。
+
+|指标|说明|计算|
+--|--|--|
+explained_variance|解释的方差用于测量目标变量中的一个模型帐户的变化程度。 它是原始数据方差与误差方差之间的递减百分比。 当误差的平均值为 0 时，它等于确定系数（请参见下面的 r2_score）。 <br> <br> **目标：** 越接近1越好 <br> **范围：** (-inf，1]|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|
+mean_absolute_error|平均绝对误差是目标和预测的绝对值的绝对值值。<br><br> **目标：** 越接近0越好 <br> **范围：** [0，inf)  <br><br> 各种 <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`，mean_absolute_error 除以数据的范围。 | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
+mean_absolute_percentage_error|平均绝对百分比误差 (MAPE) 是预测值与实际值之间的平均差值的度量值。<br><br> **目标：** 越接近0越好 <br> **范围：** [0，inf)  ||
+median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。<br><br> **目标：** 越接近0越好 <br> **范围：** [0，inf) <br><br>各种 <br> `median_absolute_error`<br> `normalized_median_absolute_error`： median_absolute_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
+r2_score|R^2 是确定系数或平方误差与输出平均值的基线模型相比减少的百分比。 <br> <br> **目标：** 越接近1越好 <br> **范围：** (-inf，1]|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+root_mean_squared_error |根平均方形错误 (RMSE) 是目标与预测的预期平方差的平方根。 对于无偏差估计器，RMSE 等于标准偏差。<br> <br> **目标：** 越接近0越好 <br> **范围：** [0，inf) <br><br>各种<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`： root_mean_squared_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
+root_mean_squared_log_error|根平均值方形日志错误是预期的方形对数误差的平方根。<br><br>**目标：** 越接近0越好 <br> **范围：** [0，inf)  <br> <br>各种 <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`： root_mean_squared_log_error 除以数据范围。  |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
+spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，斯皮尔曼在-1 和1之间有所不同，0意味着无关联。 -1 或1的相关性表示完全单调的关系。 <br><br> 斯皮尔曼是一种排名顺序相关性指标，如果预测值或实际值的更改不更改预测值或实际值的排名顺序，则不会更改其结果。<br> <br> **目标：** 越接近1越好 <br> **范围：** [-1，1]|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|
+
+### <a name="metric-normalization"></a>指标标准化
+
+自动 ML 标准化了回归和预测指标，实现了对具有不同范围的数据进行定型的模型之间的比较。 使用较大范围的数据训练的模型的错误比使用较小范围的数据训练的模型更高，除非该错误已规范化。
+
+尽管没有标准化错误度量标准的标准方法，但自动 ML 采用了一种通用的方法将错误划分为数据范围： `normalized_error = error / (y_max - y_min)`
+
+评估时序数据的预测模型时，自动 ML 会执行额外的步骤，以确保每个时序 ID (粒度) 进行标准化，因为每个时序可能会有不同的目标值分布。
+## <a name="residuals"></a>残差
+
+"残差" 图表是预测错误的直方图， (为回归和预测试验生成的残差) 。 为所有样本计算残差 `y_predicted - y_true` ，然后显示为直方图以显示模型偏差。
+
+在此示例中，请注意，这两个模型的预测低于实际值。 这对于具有实际目标的歪斜分布的数据集并不常见，但表明模型性能更差。 良好的模型将有一个残差分布，其峰值为零，最极端的残差。 更糟的模型将有一个分散的残差分布，其中的样本数更少。
+
+### <a name="residuals-chart-for-a-good-model"></a>良好模型的残差图
+![良好模型的残差图](./media/how-to-understand-automated-ml/chart-residuals-good.png)
+
+### <a name="residuals-chart-for-a-bad-model"></a>错误模型的残差图
+![错误模型的残差图](./media/how-to-understand-automated-ml/chart-residuals-bad.png)
+
+## <a name="predicted-vs-true"></a>预测与 true
+
+对于回归和预测试验，预测与真实的图表会绘制目标特征 (true/实际值) 和模型预测之间的关系。 True 值沿 x 轴装箱，对于每个箱，将用误差线绘制平均值预测值。 这使您可以查看模型是否偏离预测某些值。 该行显示平均预测，灰色区域指示围绕该平均值的预测的方差。
+
+通常，最常见的 true 值将具有具有最小方差的最准确预测。 趋势线距理想线条的距离， `y = x` 其中有很少的真实值，是对离群值的模型性能的良好度量。 您可以使用图表底部的直方图来了解实际的数据分布。 包括更多数据样本，其中分布是稀疏的，可以提高对不可见数据的模型性能。
+
+在此示例中，请注意，更好的模型具有更接近理想线条的预测与真行 `y = x` 。
+
+### <a name="predicted-vs-true-chart-for-a-good-model"></a>优秀模型的预测与真实图表
+![优秀模型的预测与真实图表](./media/how-to-understand-automated-ml/chart-predicted-true-good.png)
+
+### <a name="predicted-vs-true-chart-for-a-bad-model"></a>错误模型的预测与真实图表
+![错误模型的预测与真实图表](./media/how-to-understand-automated-ml/chart-predicted-true-bad.png)
+
+## <a name="model-explanations-and-feature-importances"></a>模型说明和功能 importances
+
+虽然模型评估度量值和图表非常适合用于测量模型的总体质量，但检查哪些数据集的特征是在练习负责的 AI 时，用来进行预测的模型是至关重要的。 这就是自动化 ML 提供模型 interpretability 仪表板来度量和报告数据集功能的相对贡献的原因。
+
+![功能 importances](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
+
+若要查看工作室中的 interpretability 仪表板：
+
+1. [登录到工作室](https://ml.azure.com/) 并导航到工作区
+2. 在左侧菜单中，选择 "**试验**"
+3. 从试验列表中选择实验
+4. 在页面底部的表中，选择 "AutoML" 运行
+5. 在 "**模型**" 选项卡中，选择要说明的模型的 **算法名称**
+6. 在 " **说明** " 选项卡中，如果模型是最佳模式，可能会看到已创建的说明
+7. 若要创建新的说明，请选择 " **说明模型** "，然后选择用于计算说明的远程计算
+
+> [!NOTE]
+> ForecastTCN 模型目前不受自动 ML 说明和其他预测模型的支持。
 
 ## <a name="next-steps"></a>后续步骤
-
-+ 详细了解 Azure 机器学习中的[自动化机器学习](concept-automated-ml.md)。
-+ 参阅[自动化机器学习模型解释](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)示例笔记本。
+* 尝试 [自动机器学习模型解释示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。
+* [在自动 ML 中了解有关责任 AI 产品/服务的](how-to-machine-learning-interpretability-automl.md)详细信息。
+* 对于自动 ML 特定问题，请联系 askautomatedml@microsoft.com 。

@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 562185697f8f80fc52b06be80a9f15271f16c0a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 2ba42e5e800ae607631e00aee50954bf2638ae43
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961410"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007121"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>使用 Docker Compose 配置创建多容器（预览版）应用
 
@@ -21,13 +21,13 @@ ms.locfileid: "88961410"
 
 在[用于容器的 Web 应用](overview.md#app-service-on-linux)中可以灵活使用 Docker 映像。 本快速入门介绍如何在 [Cloud Shell](../cloud-shell/overview.md) 中使用 Docker Compose 配置将多容器应用（预览）部署到用于容器的 Web 应用。
 
-你将在 Cloud Shell 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli)（2.0.32 或更高版本）在本地运行这些命令。 
-
 ![用于容器的 Web 应用中的示例多容器应用][1]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+本文需要 Azure CLI 版本 2.0.32 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 下面的示例命令在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。  若要查看**标准**层中 Linux 上的应用服务支持的所有位置，请运行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
+在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group#az-group-create) 命令创建资源组。 下面的示例命令在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。  若要查看 **标准** 层中 Linux 上的应用服务支持的所有位置，请运行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations) 命令。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -67,9 +67,9 @@ az group create --name myResourceGroup --location "South Central US"
 
 ## <a name="create-an-azure-app-service-plan"></a>创建 Azure 应用服务计划
 
-在 Cloud Shell 中，使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 命令在资源组中创建应用服务计划。
+在 Cloud Shell 中，使用 [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) 命令在资源组中创建应用服务计划。
 
-以下示例在**标准**定价层 (`--sku S1`) 和 Linux 容器 (`--is-linux`) 中创建名为 `myAppServicePlan` 的应用服务计划。
+以下示例在 **标准** 定价层 (`--sku S1`) 和 Linux 容器 (`--is-linux`) 中创建名为 `myAppServicePlan` 的应用服务计划。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
@@ -100,7 +100,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 > [!NOTE]
 > 目前，Azure 应用服务上的 Docker Compose 的限制为 4,000 个字符。
 
-在 Cloud Shell 终端中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](overview.md#app-service-on-linux)。 不要忘记将 \<app_name> 替换为唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。
+在 Cloud Shell 终端中，使用 [az webapp create](/cli/azure/webapp#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](overview.md#app-service-on-linux)。 不要忘记将 \<app_name> 替换为唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml

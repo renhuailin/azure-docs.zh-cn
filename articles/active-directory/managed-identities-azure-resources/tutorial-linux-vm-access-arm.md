@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 623aba3616ed95c64612c0e32f6ba0344bb2b464
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 653159c2e40d3375a422f0da14274f57130de1fe
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89255429"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359674"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>使用 Linux VM 系统分配的托管标识访问 Azure 资源管理器
 
@@ -34,14 +34,17 @@ ms.locfileid: "89255429"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- 具备托管标识相关知识。 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
+- 一个 Azure 帐户，[注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
+- 还需要启用了系统分配的托管标识的 Linux 虚拟机。
+  - 如需为本教程创建虚拟机，则可以按照标题为[使用 Azure 门户创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)的文章进行操作
 
-## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>授予 VM 对 Azure 资源管理器中资源组的访问权限 
+## <a name="grant-access"></a>授予访问权限
 
 使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。 Azure 资源管理器 API 支持 Azure AD 身份验证。 首先，需要授予此 VM 标识对 Azure 资源管理器中资源（在此示例中，为包含 VM 的资源组）的访问权限。  
 
 1. 转到“资源组”  选项卡。
-2. 选择之前创建的特定资源组  。
+2. 选择用于虚拟机的特定资源组。
 3. 转到左侧面板中的“访问控制(IAM)”  。
 4. 单击“添加”  ，为 VM 添加新的角色分配。 选择“阅读器”  作为“角色”  。
 5. 在下一个下拉列表中，把“将访问权限分配给”  设置为资源“虚拟机”  。
@@ -50,26 +53,26 @@ ms.locfileid: "89255429"
 
     ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌并使用它来调用资源管理器 
+## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌并使用它来调用资源管理器
 
 若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](/windows/wsl/about)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
-1. 在门户中，转到 Linux VM，并单击“概述”  中的“连接”  。  
-2. 使用所选的 SSH 客户端连接  到 VM。 
-3. 在终端窗口中，使用 `curl` 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure 资源管理器的访问令牌。  
- 
-    下面是对访问令牌的 `curl` 请求。  
+1. 在门户中，转到 Linux VM，并单击“概述”  中的“连接”  。  
+2. 使用所选的 SSH 客户端连接  到 VM。 
+3. 在终端窗口中，使用 `curl` 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure 资源管理器的访问令牌。  
+ 
+    下面是对访问令牌的 `curl` 请求。  
     
     ```bash
-    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]
-    > “resource”参数值必须与 Azure AD 预期值完全一致。  若为资源管理器资源 ID，必须在 URI 的结尾添加斜线。 
+    > “resource”参数值必须与 Azure AD 预期值完全一致。    若为资源管理器资源 ID，必须在 URI 的结尾添加斜线。 
     
-    响应包括访问 Azure 资源管理器所需的访问令牌。 
+    响应包括访问 Azure 资源管理器所需的访问令牌。 
     
-    响应：  
+    响应：  
 
     ```bash
     {"access_token":"eyJ0eXAiOi...",
@@ -78,21 +81,22 @@ ms.locfileid: "89255429"
     "expires_on":"1504130527",
     "not_before":"1504126627",
     "resource":"https://management.azure.com",
-    "token_type":"Bearer"} 
+    "token_type":"Bearer"} 
     ```
     
-    可以使用此访问令牌访问 Azure 资源管理器。例如，读取之前授予此 VM 有权访问的资源组的详细信息。将值 \<SUBSCRIPTION ID\>、\<RESOURCE GROUP\> 和 \<ACCESS TOKEN\> 替换为之前创建的值。 
+    可以使用此访问令牌访问 Azure 资源管理器。例如，读取之前授予此 VM 有权访问的资源组的详细信息。 将值 \<SUBSCRIPTION ID\>、\<RESOURCE GROUP\> 和 \<ACCESS TOKEN\> 替换为之前创建的值。 
     
     > [!NOTE]
-    > URL 区分大小写。因此，请确保大小写与之前在命名资源组时使用的大小写完全相同，并确保“resourceGroup”使用的是大写“G”。  
+    > URL 区分大小写。因此，请确保大小写与之前在命名资源组时使用的大小写完全相同，并确保“resourceGroup”使用的是大写“G”。  
     
     ```bash 
-    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
-    返回的响应包含具体的资源组信息：    
+    返回的响应包含具体的资源组信息： 
+     
     ```bash
-    {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
+    {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
     ```
 
 ## <a name="next-steps"></a>后续步骤

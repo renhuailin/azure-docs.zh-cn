@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9ecf3ad43b46d491d5f15270790251a0bc4e882e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051094"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365357"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>将墨迹数据发送到墨迹识别器 API 
 
@@ -64,7 +64,7 @@ ms.locfileid: "89051094"
 
 ## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>墨迹识别器 API 识别的形状
 
-墨迹识别器 API 可以识别笔记中最常用的形状。 下图显示了一些基本示例。 有关该 API 识别的形状和其他墨迹内容的完整列表，请参阅 [API 参考文章](https://go.microsoft.com/fwlink/?linkid=2089907)。 
+墨迹识别器 API 可以识别笔记中最常用的形状。 下图显示了一些基本示例。 有关该 API 识别的形状和其他墨迹内容的完整列表，请参阅 [API 参考文章](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)。 
 
 ![墨迹识别器 API 识别的形状列表](../media/shapes.png)
 
@@ -84,12 +84,12 @@ ms.locfileid: "89051094"
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>将墨迹识别器 API 与 Windows Ink 集成
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) 提供所需的工具和技术用于在多种不同的设备上实现数字墨迹体验。 可以将 Windows Ink 平台与 Ink 识别器 API 结合起来，以创建显示和解释数字墨笔划的应用程序。
+[Windows Ink](/windows/uwp/design/input/pen-and-stylus-interactions) 提供所需的工具和技术用于在多种不同的设备上实现数字墨迹体验。 可以将 Windows Ink 平台与 Ink 识别器 API 结合起来，以创建显示和解释数字墨笔划的应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是墨迹识别器 API？](../overview.md)
-* [墨迹识别器 REST API 参考](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [墨迹识别器 REST API 参考](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 * 开始使用以下语言发送数字墨迹笔划数据：
     * [C#](../quickstarts/csharp.md)

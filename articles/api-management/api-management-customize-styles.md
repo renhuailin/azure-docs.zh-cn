@@ -11,15 +11,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
-ms.topic: tutorial
+ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0cdad245981ad02d3cdaefba447d131c775e242f
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75430734"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145763"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>自定义开发人员门户页面的样式
 
@@ -31,7 +31,7 @@ ms.locfileid: "75430734"
 
 本文介绍如何自定义旧版开发人员门户页面上元素的样式并查看更改  。
 
-![自定义样式](./media/modify-developer-portal-style/developer_portal.png)
+![显示在旧版开发人员门户中更改设置的位置的屏幕截图。](./media/modify-developer-portal-style/developer_portal.png)
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -49,7 +49,7 @@ ms.locfileid: "75430734"
 2. 单击“概述”窗口顶部的“开发人员门户(旧版)”按钮   。
 3. 在屏幕的左上方，可以看到由两支画笔构成的图标。 将鼠标悬停在此图标上，打开门户自定义菜单。
 
-    ![自定义样式](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+    ![突出显示了由两支画笔构成的图标的屏幕截图。](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
 4. 从菜单中选择“样式”，打开样式自定义窗格。 
 
     可以使用“样式”自定义的所有元素都显示在该页面上 

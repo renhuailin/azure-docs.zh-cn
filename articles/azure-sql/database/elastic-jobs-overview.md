@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409573"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792168"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a> (预览中创建、配置和管理弹性作业) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -51,10 +51,10 @@ ms.locfileid: "91409573"
 设置运行作业所需的适当凭据可能不太容易，因此请注意以下要点：
 
 - 必须在作业数据库中创建数据库范围的凭据。
-- **所有目标数据库必须有一个具有[足够权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)的登录名，否则作业无法成功完成**（下图中的 `jobuser`）。
+- **所有目标数据库必须有一个具有 [足够权限](/sql/relational-databases/security/permissions-database-engine)的登录名，否则作业无法成功完成** （下图中的 `jobuser`）。
 - 凭据可以跨作业反复使用，而凭据密码经过加密后，无法供只能通过只读方式访问作业对象的用户访问。
 
-下图旨在帮助用户了解和设置适当的作业凭据。 **记住在作业需运行的每个数据库（所有目标用户数据库）中创建该用户**。
+下图旨在帮助用户了解和设置适当的作业凭据。 **记住在作业需运行的每个数据库（所有目标用户数据库）中创建该用户** 。
 
 ![弹性作业凭据](./media/elastic-jobs-overview/job-credentials.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "91409573"
 使用弹性作业时的一些最佳做法注意事项：
 
 - 将 API 的使用限制为受信任的个人。
-- 凭据应该具有执行作业步骤所需的最低权限。 有关详细信息，请参阅[授权和权限](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)。
+- 凭据应该具有执行作业步骤所需的最低权限。 有关详细信息，请参阅[授权和权限](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)。
 - 使用服务器和/或池目标组成员时，强烈建议创建另外一个凭据，该凭据有权在 master 数据库上查看/列出数据库，用于在作业执行之前展开服务器和/或池的数据库列表。
 
 ## <a name="agent-performance-capacity-and-limitations"></a>代理性能、容量和限制

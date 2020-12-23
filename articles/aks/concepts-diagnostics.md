@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8921152177d3e4534ca9fb48cf209aed6e1b27c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79126605"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183356"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes Service 诊断 (预览) 概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "79126605"
 
 ## <a name="cluster-insights"></a>群集见解
 
-以下诊断检查在 **群集见解**中可用。
+以下诊断检查在 **群集见解** 中可用。
 
 ### <a name="cluster-node-issues"></a>群集节点问题
 
@@ -82,5 +82,7 @@ CRUD 操作检查可能导致群集中出现问题的任何 CRUD 操作。
 ## <a name="next-steps"></a>后续步骤
 
 收集日志，以帮助你使用 [AKS Periscope](https://aka.ms/aksperiscope)进一步排查群集问题。
+
+阅读 AKS 操作指南的 " [会审实践" 部分](/azure/architecture/operator-guides/aks/aks-triage-practices) 。
 
 通过在标题中添加 "[诊断]"，在 [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) 上发布你的问题或反馈。

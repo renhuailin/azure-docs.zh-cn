@@ -2,14 +2,14 @@
 title: 如何更新用于容器的 Azure Monitor 以启用指标 | Microsoft Docs
 description: 本文介绍如何更新用于容器的 Azure Monitor，以启用支持浏览聚合指标并针对其发出警报的自定义指标功能。
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 2a94f250c83fbd2779620376087a83b8851e583e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618139"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309438"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 以启用指标
 
@@ -26,6 +26,7 @@ ms.locfileid: "91618139"
 | 见解：容器/节点 | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | *节点*度量值包括作为维度的*主机*。 它们还包括<br> 作为 *主机* 维度的值的节点名称。 |
 | 见解/容器 | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | 作为 *pod* 指标，它们包括下列各项： ControllerName、Kubernetes 命名空间、名称和阶段。 |
 | 见解：容器/容器 | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
+| 见解： container/persistentvolumes | pvUsageExceededPercentage | |
 
 若要支持这些新功能，请在 release，版本 **microsoft/oms： ciprod05262020** for AKS and 版本 **microsoft/oms： Ciprod09252020** For Azure Arc enabled Kubernetes 群集中提供了一个新的容器化代理。 新的 AKS 部署自动包含此配置更改和功能。 更新群集以支持此功能可从 Azure 门户、Azure PowerShell 或 Azure CLI 执行。 Azure PowerShell 和 CLI。 你可以为订阅中的每个群集或所有群集启用此项。
 

@@ -1,24 +1,19 @@
 ---
 title: HB-ACCT-WC 系列 VM 概述-Azure 虚拟机 |Microsoft Docs
 description: 了解 Azure 中 HB-ACCT-WC 系列 VM 大小的预览支持。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7c66af5184c4a943fd4b3185a87623112fe0d954
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e37f13bc6e819079c63c583a1eeda12af5e213c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691235"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965453"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB-ACCT-WC 系列虚拟机概述
 
@@ -48,7 +43,7 @@ VM 本身并不知道未向其提供 pNUMA 0。 VM 将 pNUMA 1-15 视为 vNUMA 0
 | 内存                           | 4 GB/核心 (240 GB 总)          |
 | 本地磁盘                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 |
-| Network (网络)                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC |
+| 网络                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC |
 
 ## <a name="software-specifications"></a>软件规范
 

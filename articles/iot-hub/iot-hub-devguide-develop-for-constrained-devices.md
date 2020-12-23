@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733204"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499996"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 针对受限制设备进行开发
 
@@ -30,13 +30,16 @@ C SDK 可通过 apt-get、NuGet 和 MBED 以程序包的形式提供。 若要�
 
 针对受限制设备构建 C SDK。
 
+> [!NOTE]
+> Embedded C SDK 是受约束的设备的替代方法，它支持自带网络 (BYON) 方法。 IoT 开发人员可以自由地将 MQTT 客户端、TLS 和套接字用于创建设备解决方案。 [了解有关 Embedded C SDK 的详细信息](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
+
 ### <a name="prerequisites"></a>先决条件
 
 请按照本 [C SDK 设置指南](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)准备用于构建 C SDK 的开发环境。 在开始执行使用 cmake 进行构建的步骤前，可调用 cmake 标记来删除未使用的功能。
 
 ### <a name="remove-additional-protocol-libraries"></a>删除其他协议库
 
-C SDK 目前支持五个协议：MQTT、基于 Websocket 的 MQTT、AMQP、基于 WebSocket 的 AMQP，以及 HTTPS。 大多数方案需要在客户端上运行一到两个协议，因此可从 SDK 中删除未使用的协议库。 有关为方案选择适当通信协议的其他信息，请参阅[选择 IoT 中心通信协议](iot-hub-devguide-protocols.md)。 例如，MQTT 是一种轻量级协议，通常更适合用于受限制设备。
+C SDK 当前支持五种协议：MQTT、基于 WebSocket 的 MQTT、AMQP、基于 WebSocket 的 AMQP 和 HTTPS。 大多数方案需要在客户端上运行一到两个协议，因此可从 SDK 中删除未使用的协议库。 有关为方案选择适当通信协议的其他信息，请参阅[选择 IoT 中心通信协议](iot-hub-devguide-protocols.md)。 例如，MQTT 是一种轻量级协议，通常更适合用于受限制设备。
 
 可以使用以下 cmake 命令删除 AMQP 和 HTTP 库：
 
@@ -74,11 +77,11 @@ strip -s <Path_to_executable>
 
 ### <a name="avoid-using-the-serializer"></a>避免使用序列化程序
 
-C SDK 具有可选的 [C SDK 序列化程序](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，它允许使用声明式映射表来定义方法和设备孪生属性。 序列化程序旨在简化开发，但也会增加开销，因而对于受限制设备而言不是最优选择。 在这种情况下，请考虑使用原始客户端 API，并使用轻量级分析程序（例如 [parson](https://github.com/kgabis/parson)）分析 JSON。
+C SDK 具有可选的 [C SDK 序列化程序](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，它允许使用声明式映射表来定义方法和设备孪生属性。 序列化程序旨在简化开发，但也会增加开销，因而对于受限制设备而言不是最优选择。 在这种情况下，请考虑使用基元客户端 Api 并使用轻型分析器（如 [parson](https://github.com/kgabis/parson)）分析 JSON。
 
 ### <a name="use-the-lower-layer-_ll_"></a>使用较低层 (_LL_)
 
-C SDK 支持两种编程模型。 其中一组拥有具有 _LL_ 中缀的 API，该中缀代表较低层。 这组 API 权重更轻且不会启动工作线程，这意味着用户必须手动控制调度。 例如，对于设备客户端，可在此[头文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)中找到 _LL_ API。 
+C SDK 支持两种编程模型。 其中一组拥有具有 _LL_ 中缀的 API，该中缀代表较低层。 这组 API 权重更轻且不会启动工作线程，这意味着用户必须手动控制调度。 例如，对于设备客户端，可在此 [头文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)中找到 _LL_ API。 
 
 另一组没有 _LL_ 索引的 API 称为便捷层，工作线程会在其中自动启动。 例如，设备客户端的便捷层 API 可以在此 [IoT 设备客户端头文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)中找到。 对于每个额外的线程会占用大量系统资源的受限制设备，请考虑使用 _LL_ API。
 

@@ -3,16 +3,17 @@ title: 服务开发人员指南-IoT 即插即用 |Microsoft Docs
 description: 面向服务开发人员的 IoT 即插即用说明
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/24/2020
+ms.date: 10/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f082e4d4c6c71e460842f80a5aa17130b6a41279
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+zone_pivot_groups: programming-languages-set-ten
+ms.openlocfilehash: df913716ff34a61e5bde4c0771ea8b7599db3d30
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614217"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521354"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT 即插即用服务开发人员指南
 
@@ -20,7 +21,7 @@ IoT 即插即用允许构建智能设备，将其功能公布到 Azure IoT 应�
 
 IoT 即插即用允许你使用已通过 IoT 中心宣布其模型 ID 的设备。 例如，你可以直接访问设备的属性和命令。
 
-若要使用已连接到 IoT 中心的 IoT 即插即用设备，请使用其中一个 IoT 服务 Sdk 或 IoT 中心 REST API：
+若要使用已连接到 IoT 中心的 IoT 即插即用设备，请使用 IoT 服务 Sdk 之一：
 
 ## <a name="service-sdks"></a>服务 SDK
 
@@ -30,58 +31,38 @@ IoT 即插即用允许你使用已通过 IoT 中心宣布其模型 ID 的设备�
 
 - Iot 中心服务客户端。 此服务将模型 ID 公开为设备克隆的属性。
 
-- 数字孪生服务客户端。 新的数字孪生 API 在定义了数字孪生定义语言模型的高级构造（如组件、属性和命令）上运行。 数字克隆 Api 使解决方案构建者可以更轻松地创建 IoT 即插即用解决方案。
+- 数字孪生客户端。 新的数字孪生 API 操作 [数字孪生定义语言 (DTDL) ](concepts-digital-twin.md) 模型构造，如组件、属性和命令。 数字克隆 Api 使解决方案构建者可以更轻松地创建 IoT 即插即用解决方案。
 
-| 平台 | IoT 中心服务客户端 | 数字孪生服务客户端 |
-| -------- | ---------------------- | ---------------------------- |
-| .NET     | [文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twin.modelid?view=azure-dotnet#Microsoft_Azure_Devices_Shared_Twin_ModelId&preserve-view=true) <br/> [示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [文档](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?view=azure-java-stable&preserve-view=true) <br/> [示例](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [文档](https://docs.microsoft.com/javascript/api/azure-iothub/twin?view=azure-node-latest&preserve-view=true) <br/> 示例 | [文档](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/?view=azure-node-latest&preserve-view=true) <br/> 示例  |
-| Python   | [文档](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?view=azure-python&preserve-view=true) <br/> 示例 | [文档](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?view=azure-python&preserve-view=true) <br/> 示例  |
+:::zone pivot="programming-language-csharp"
 
-## <a name="rest-api"></a>REST API
+[!INCLUDE [iot-pnp-service-devguide-csharp](../../includes/iot-pnp-service-devguide-csharp.md)]
 
-以下示例使用 IoT 中心 REST API 与连接 IoT 即插即用设备交互。 该 API 的当前版本为 `2020-09-30` 。 追加 `?api-version=2020-09-30` 到 REST PI 调用。
+:::zone-end
 
-> [!NOTE]
-> API 目前不支持 Module 孪生 `digitalTwins` 。
+:::zone pivot="programming-language-java"
 
-如果调用恒温器设备 `t-123` ，你将获得设备使用 REST API get 调用实现的所有接口的所有属性：
+[!INCLUDE [iot-pnp-service-devguide-java](../../includes/iot-pnp-service-devguide-java.md)]
 
-```REST
-GET /digitalTwins/t-123
-```
+:::zone-end
 
-此调用将包含 `$metadata.$model` 包含设备所公布的模型 ID 的 Json 属性。
+:::zone pivot="programming-language-javascript"
 
-所有接口上的所有属性都是通过 `GET /DigitalTwin/{device-id}` REST API 模板访问的，其中 `{device-id}` ，是设备的标识符：
+[!INCLUDE [iot-pnp-service-devguide-node](../../includes/iot-pnp-service-devguide-node.md)]
 
-```REST
-GET /digitalTwins/{device-id}
-```
+:::zone-end
 
-可以直接调用 IoT 即插即用设备命令。 如果 `Thermostat` 设备中的组件 `t-123` 有 `restart` 命令，则可以使用 REST API POST 调用来调用它：
+:::zone pivot="programming-language-python"
 
-```REST
-POST /digitalTwins/t-123/components/Thermostat/commands/restart
-```
+[!INCLUDE [iot-pnp-service-devguide-python](../../includes/iot-pnp-service-devguide-python.md)]
 
-通常，可以通过此 REST API 模板调用命令：
-
-- `device-id`：设备的标识符。
-- `component-name`：设备功能模型的实现部分中的接口的名称。
-- `command-name`：命令的名称。
-
-```REST
-/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
-```
+:::zone-end
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已了解设备建模，以下是一些其他资源：
 
 - [数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [C 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [C 设备 SDK](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT REST API](/rest/api/iothub/device)
 - [模型组件](./concepts-components.md)
 - [安装并使用 DTDL 创作工具](howto-use-dtdl-authoring-tools.md)

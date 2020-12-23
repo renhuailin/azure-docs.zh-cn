@@ -1,16 +1,16 @@
 ---
 title: 异地复制注册表
-description: 开始创建和管理异地复制的 Azure 容器注册表，使注册表能够为多个区域提供多主区域副本。 异地复制是高级服务层的一项功能。
+description: 开始创建和管理异地复制的 Azure 容器注册表，使注册表能够为多个区域提供多主区域副本。 异地复制是高级服务层级的一项功能。
 author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116793"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810048"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -18,9 +18,9 @@ ms.locfileid: "87116793"
 
 异地复制注册表有以下优点：
 
-* 单个注册表/映像/标记的名称可跨多个区域使用
-* 由区域部署实现近网络注册表访问
-* 由于是从与容器主机处于相同区域的本地复制注册表中拉取映像，因此无额外传输费用
+* 单个注册表、图像和标记名称可跨多个区域使用
+* 使用网络关闭注册表访问提高区域部署的性能和可靠性
+* 通过从与容器主机相同或邻近的区域中的本地复制注册表中提取映像层，减少数据传输成本
 * 跨多个区域对注册表进行单一管理
 
 > [!NOTE]
@@ -56,8 +56,9 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 使用 Azure 容器注册表的异地复制功能，将实现以下优点：
 
 * 跨所有区域管理单个注册表：`contoso.azurecr.io`
-* 管理多个映像部署的单个配置，因为所有区域使用同一个映像 URL：`contoso.azurecr.io/public/products/web:1.2`
-* 推送到单个注册表，而 ACR 管理异地复制。 可以配置区域性 [Webhook](container-registry-webhook.md) 来通知你特定副本中的事件。
+* 管理映像部署的单个配置，因为所有区域都使用同一映像 URL： `contoso.azurecr.io/public/products/web:1.2`
+* 推送到单个注册表，而 ACR 管理异地复制。 ACR 仅复制唯一层，减少跨区域的数据传输。 
+* 配置区域 [webhook](container-registry-webhook.md) 以通知你特定副本中的事件。
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 
@@ -95,7 +96,7 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 * 当你从异地复制注册表中推送或拉取映像时，后台的 Azure 流量管理器会将请求发送到位于离你最近（就网络延迟而言）的区域中的注册表。
 * 将映像或标记更新推送到最近的区域后，Azure 容器注册表需要一些时间将清单和层复制到你选择加入的其余区域。 较大的映像比较小的映像复制所需的时间更长。 映像和标记通过最终一致性模型在复制区域之间进行同步。
 * 若要管理依赖于异地复制注册表的推送更新的工作流，建议你配置 [Webhook](container-registry-webhook.md) 以响应推送事件。 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
-* 为了提供表示内容层的 blob，Azure 容器注册表使用数据终结点。 可以在注册表的每个异地复制区域中为注册表启用[专用数据终结点](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)。 这些终结点允许配置严格限定范围的防火墙访问规则。 出于故障排除目的，您可以选择[禁用路由到复制](#temporarily-disable-routing-to-replication)，同时保留复制的数据。
+* 为了向表示内容层的 blob 提供服务，Azure 容器注册表使用了数据终结点。 可以在注册表的每个异地复制区域中为注册表启用[专用数据终结点](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)。 这些终结点允许配置严格限定范围的防火墙访问规则。 出于故障排除目的，你可以选择[禁止路由到副本](#temporarily-disable-routing-to-replication)同时维护复制的数据。
 * 如果使用虚拟网络中的专用终结点为注册表配置[专用链接](container-registry-private-link.md)，则默认情况下会启用每个异地复制区域中的专用数据终结点。 
 
 ## <a name="delete-a-replica"></a>删除副本
@@ -121,32 +122,32 @@ az acr replication delete --name eastus --registry myregistry
 
 ## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>使用异地复制注册表对推送操作进行故障排除
  
-将映像推送到异地复制注册表的 Docker 客户端可能不会将所有映像层及其清单推送到单个复制区域。 出现这种情况的原因可能是因为 Azure 流量管理器将注册表请求路由到离网络最近的复制注册表。 如果注册表有两个*附近*的复制区域，则可以将映像层和清单分发到两个站点，并且在验证清单时推送操作将失败。 之所以出现此问题是因为在某些 Linux 主机上解析注册表的 DNS 名称的方式。 这个问题不会发生在 Windows 上，因为 Windows 提供了一个客户端 DNS 缓存。
+将映像推送到异地复制注册表的 Docker 客户端可能不会将所有映像层及其清单推送到单个复制区域。 出现这种情况的原因可能是因为 Azure 流量管理器将注册表请求路由到离网络最近的复制注册表。 如果注册表有两个 *附近* 的复制区域，则可以将映像层和清单分发到两个站点，并且在验证清单时推送操作将失败。 之所以出现此问题是因为在某些 Linux 主机上解析注册表的 DNS 名称的方式。 这个问题不会发生在 Windows 上，因为 Windows 提供了一个客户端 DNS 缓存。
  
 如果出现此问题，一种解决方案是在 Linux 主机上应用客户端 DNS 缓存，比如 `dnsmasq`。 这有助于确保一致地解析注册表的名称。 如果你使用 Azure 中的 Linux VM 推送到注册表，请参阅 [Azure 中 Linux 虚拟机的 DNS 名称解析选项](../virtual-machines/linux/azure-dns.md)中的选项。
 
 若要在推送映像时将 DNS 解析优化到最近的副本，请在推送操作源所在的 Azure 区域中配置异地复制注册表，或者在 Azure 外部工作时配置最近的区域。
 
-### <a name="temporarily-disable-routing-to-replication"></a>暂时禁用到复制的路由
+### <a name="temporarily-disable-routing-to-replication"></a>暂时禁止路由到副本
 
-若要排查使用异地复制的注册表时的操作，可能需要暂时禁用流量管理器到一个或多个复制的路由。 从 Azure CLI 版本2.8 开始，你可以在 `--region-endpoint-enabled` 创建或更新复制的区域时配置选项（预览）。 将复制的 `--region-endpoint-enabled` 选项设置为时 `false` ，流量管理器不再将 docker 推送或拉取请求路由到该区域。 默认情况下，将启用到所有复制的路由，并且无论是启用还是禁用路由，都将对所有复制执行数据同步。
+若要对针对异地复制注册表的操作进行故障排除，可能需要暂时禁止流量管理器路由到一个或多个副本。 从 Azure CLI 版本 2.8 开始，你可以在创建或更新复制区域时配置 `--region-endpoint-enabled` 选项（预览）。 将副本的 `--region-endpoint-enabled` 选项设置为 `false` 时，流量管理器不再将 docker 推送或拉取请求路由到该区域。 默认情况下，允许路由到所有副本，并且无论启用还是禁用路由，都将在所有副本间实现数据同步。
 
-若要禁用到现有复制的路由，请先运行[az acr replication list][az-acr-replication-list]以列出注册表中的复制。 然后，运行[az acr replication update][az-acr-replication-update]并 `--region-endpoint-enabled false` 为特定复制设置。 例如，若要在*myregistry*中配置*westus*复制的设置：
+若要禁止路由到现有副本，请先运行 [az acr replication list][az-acr-replication-list] 以列出注册表中的副本。 然后，运行 [az acr replication update][az-acr-replication-update] 并为特定副本设置 `--region-endpoint-enabled false`。 例如，若要在 *myregistry* 中配置 *westus* 复制的设置：
 
 ```azurecli
 # Show names of existing replications
 az acr replication list --registry --output table
 
 # Disable routing to replication
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled false
 ```
 
-还原到复制的路由：
+若要恢复路由到副本，请执行以下操作：
 
 ```azurecli
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled true
 ```

@@ -3,12 +3,12 @@ title: Azure 事件网格中的事件域
 description: 本文介绍如何使用事件域来管理各种业务组织、客户或应用程序的自定义事件流。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114357"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328821"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
 
@@ -37,13 +37,13 @@ ms.locfileid: "86114357"
 
 ## <a name="access-management"></a>访问管理
 
-使用域，可通过 Azure 的基于角色的访问控制 (RBAC) 精细控制每个主题的授权和身份验证情况。 这些角色可用于将应用程序中的每个租户限制为仅可访问经授权的主题。
+使用域时，可以通过 Azure RBAC)  (的 azure 基于角色的访问控制获取对每个主题的精细授权和身份验证控制。 这些角色可用于将应用程序中的每个租户限制为仅可访问经授权的主题。
 
-事件域中 RBAC 的工作方式与[托管访问控制](security-authorization.md)在事件网格和 Azure 的其余部分中的工作方式相同。 使用 RBAC 在事件域中创建和强制实施自定义角色定义。
+事件域中的 Azure RBAC 的工作方式与在事件网格和 Azure 的其余部分中 [托管访问控制](security-authorization.md) 的工作方式相同。 使用 Azure RBAC 在事件域中创建和强制执行自定义角色定义。
 
 ### <a name="built-in-roles"></a>内置角色
 
-事件网格提供两个内置角色定义，使 RBAC 可更方便地用于事件域。 这些角色是“EventGrid EventSubscription 参与者（预览版）”和“EventGrid EventSubscription 读取者（预览版）”。   将这些角色分配到需要订阅事件域中的主题的用户。 将角色分配的范围仅限于用户需要订阅的主题。
+事件网格具有两个内置角色定义，使 Azure RBAC 更易于处理事件域。 这些角色是“EventGrid EventSubscription 参与者（预览版）”和“EventGrid EventSubscription 读取者（预览版）”。   将这些角色分配到需要订阅事件域中的主题的用户。 将角色分配的范围仅限于用户需要订阅的主题。
 
 有关这些角色的信息，请参阅[事件网格的内置角色](security-authorization.md#built-in-roles)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "86114357"
 - 50 个域范围订阅 
 - 每秒 5,000 个事件的引入速率（引入到域）
 
-如果这些限制无法满足你的需要，请通过打开支持票证或向发送电子邮件来联系产品团队 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 。 
+如果这些限制不适合你，请通过开具支持票证或向 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 发送电子邮件来联系产品团队。 
 
 ## <a name="pricing"></a>定价
 事件域将使用与事件网格中所有其他功能相同的[操作定价](https://azure.microsoft.com/pricing/details/event-grid/)。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534975"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96020154"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -34,7 +34,7 @@ ms.locfileid: "91534975"
 * 文本转语音 REST API 需要授权标头。 这意味着，需要完成令牌交换才能访问该服务。 有关详细信息，请参阅[身份验证](#authentication)。
 
 > [!TIP]
-> 请参阅适用于政府云的 Azure 政府 [文档](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) (FairFax) 终结点。
+> 请参阅适用于政府云的 Azure 政府 [文档](../../azure-government/compare-azure-government-global-azure.md) (FairFax) 终结点。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -222,9 +222,9 @@ Authorization: Bearer [Base64 access_token]
 
 有关特定于语言的示例，请参阅快速入门：
 
-* [.NET Core、C#](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
-* [Node.js](quickstart-nodejs-text-to-speech.md)
+* [.NET Core、C#](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
+* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
+* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP 状态代码
 
@@ -245,5 +245,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>后续步骤
 
 - [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
-- [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [用于长格式音频的异步合成](./long-audio-api.md)
 - [自定义语音入门](how-to-custom-voice.md)

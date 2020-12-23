@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98ecb9ab208b6ead3944455b95f7fe6baa044d35
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f6f8a057651ce56731c180a2ccbb05e35d8fefc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525103"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967544"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA（大型实例）部署 
 
@@ -36,7 +37,7 @@ Microsoft 需要使用以下信息来部署 HANA 大型实例单元：
 - 对于每个 Azure 部署区域：
     - 用于将 Azure 虚拟网络连接到 HANA 大型实例的 ER-P2P 连接的 /29 IP 地址范围。
     - 用于 HANA 大型实例服务器 IP 池的 /24 CIDR 块。
-    - 可选：使用[ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md)启用从本地到 Hana 大型实例单元的直接路由，或在不同 Azure 区域中的 Hana 大型实例单元之间进行路由时，需要保留另一个/29 IP 地址范围。 此特定范围不能与之前定义的任何其他 IP 地址范围重叠。
+    - 可选：使用 [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) 启用从本地到 Hana 大型实例单元的直接路由，或在不同 Azure 区域中的 Hana 大型实例单元之间进行路由时，需要保留另一个/29 IP 地址范围。 此特定范围不能与之前定义的任何其他 IP 地址范围重叠。
 - 对于连接到 HANA 大型实例的每个 Azure 虚拟网络，虚拟网络地址空间属性中使用的 IP 地址范围值。
 - 对于每个 HANA 大型实例系统的数据：
   - 所需主机名，最好是使用完全限定的域名。

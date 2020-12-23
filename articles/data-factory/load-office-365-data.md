@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 05f336af62bc0869249d5b32700ea3515ac5994f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435552"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459697"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Office 365 加载数据
 
@@ -53,7 +53,7 @@ ms.locfileid: "89435552"
  
     ![创建管道](./media/load-office-365-data/create-pipeline-entry.png)
 
-2. 在管道的“常规”  选项卡中，输入“CopyPipeline”作为管道的**名称**。
+2. 在管道的“常规”  选项卡中，输入“CopyPipeline”作为管道的 **名称**。
 
 3. 在“活动”工具箱 >“移动和转换”类别中，将“复制”活动从工具箱拖放到管道设计器图面。  指定“CopyFromOffice365ToBlob”作为活动名称。
 
@@ -79,7 +79,7 @@ ms.locfileid: "89435552"
 
     ![配置 Office 365 数据集 - 表](./media/load-office-365-data/edit-dataset.png)
 
-8. 现在返回到  “管道” > “源”选项卡  ，以继续配置用于 Office 365 数据提取的其他属性。  用户范围和用户范围筛选器是可选谓词，你可以定义这些谓词来限制要从 Office 365 中提取的数据。 有关如何配置这些设置的说明，请参阅 [Office 365 数据集属性](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties)部分。
+8. 现在返回到  “管道” > “源”选项卡  ，以继续配置用于 Office 365 数据提取的其他属性。  用户范围和用户范围筛选器是可选谓词，你可以定义这些谓词来限制要从 Office 365 中提取的数据。 有关如何配置这些设置的说明，请参阅 [Office 365 数据集属性](./connector-office-365.md#dataset-properties)部分。
 
 9. 需要选择一个日期筛选器，并提供开始时间和结束时间值。
 
@@ -147,7 +147,7 @@ _正在提取数据状态：_
 
 ## <a name="next-steps"></a>后续步骤
 
-转到以下文章，了解 Azure Synapse Analytics (以前的 SQL 数据仓库) 支持： 
+请转至下列文章，了解 Azure Synapse Analytics 支持： 
 
 > [!div class="nextstepaction"]
 >[Office 365 连接器](connector-office-365.md)

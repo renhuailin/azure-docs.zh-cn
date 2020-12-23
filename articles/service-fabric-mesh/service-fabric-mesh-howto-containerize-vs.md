@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: a995f30872216a8b704d3d1714bbece4bb8271f8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 2fb6aa7d7c655a1ba4b44dabc33e32ce04ae458f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840058"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489269"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>容器化用于 Service Fabric 网格的现有 .NET 应用
 
@@ -45,12 +45,18 @@ git clone https://github.com/MikkelHegn/ContainersSFLab.git
  
 使用 Service Fabric 网格工具向现有 ASP.NET 或控制台项目添加容器业务流程支持，如下所述：
 
-在 Visual Studio 解决方案资源管理器中，右键单击项目名称（在示例中为 **eShopLegacyWebForms**），然后选择“添加” > “容器业务流程协调程序支持”。********
-此时将显示“添加容器业务流程协调程序支持”对话框。****
+在 Visual Studio 解决方案资源管理器中，右键单击项目名称（在示例中为 **eShopLegacyWebForms**），然后选择“添加” > “容器业务流程协调程序支持”。
+此时将显示“添加容器业务流程协调程序支持”对话框。
 
 ![Visual Studio“添加容器业务流程协调程序”对话框](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-从下拉列表中选择“Service Fabric 网格”****，然后单击“确定”。****
+从下拉列表中选择“Service Fabric 网格”，然后单击“确定”。
+
+
+>[!NOTE]
+> 自 2020 年 11 月 2 日起，[下载速率限制](https://docs.docker.com/docker-hub/download-rate-limit/)将应用于 Docker 免费计划帐户对 Docker Hub 发出的匿名和经过身份验证的请求，并且由 IP 地址强制执行。 有关更多详细信息，请参阅[通过 Docker Hub 进行身份验证](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)。
+>
+> 若要避免速率受限，请确保将 Dockerfile 中的默认值 `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` 替换为 `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base`
 
 然后，该工具将验证是否安装了 Docker，向你的项目中添加一个 Dockerfile，并为该项目拉取一个 Docker 映像。  
 一个 Service Fabric 网格应用程序项目将添加到你的解决方案中。 它包含你的网格发布配置文件和配置文件。 该项目的名称与你的项目名称相同，并且将“Application”连接到末尾，例如 **eShopLegacyWebFormsApplication**。 

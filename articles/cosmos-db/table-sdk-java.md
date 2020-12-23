@@ -1,6 +1,6 @@
 ---
 title: 用于 Java 的 Azure Cosmos DB 表 API
-description: 了解有关 Java 的 Azure Cosmos DB 表 API 的所有信息，包括发布日期、停用日期和每个版本之间所做的更改。
+description: 全面了解用于 Java 的 Azure Cosmos DB 表 API，包括发布日期、停用日期和各版本之间的更改。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
@@ -9,14 +9,16 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: 40722053d28a0479e3f9ebaadd0fd04478a4f1aa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a94064be54c1d957d6e7acb030ffae6a39634f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261883"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101181"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>用于 Java 的 Azure Cosmos DB 表 API：发行说明和资源
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -41,7 +43,7 @@ ms.locfileid: "91261883"
 * 正式发布版
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
-Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
+Microsoft 至少会在停用 SDK 的 **12 个月** 之前发出通知，以便顺利转换到更新的/受支持的版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
 

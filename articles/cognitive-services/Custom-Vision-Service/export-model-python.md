@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: a47475ad55c5e6262dc8ba1a384d89b9721fd2e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875432"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736419"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教程：运行以 Python 编写的 TensorFlow 模型
 
-从自定义影像服务中[导出 TensorFlow 模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)后，本快速入门教程将演示如何在本地使用此模型来分类图像。
+从自定义影像服务中[导出 TensorFlow 模型](./export-your-model.md)后，本快速入门教程将演示如何在本地使用此模型来分类图像。
 
 > [!NOTE]
 > 本教程仅适用于从图像分类项目导出的模型。
@@ -34,7 +34,7 @@ ms.locfileid: "87875432"
 
 接下来，需要安装以下包：
 
-```
+```bash
 pip install tensorflow
 pip install pillow
 pip install numpy
@@ -43,7 +43,7 @@ pip install opencv-python
 
 ## <a name="load-your-model-and-tags"></a>加载模型和标记
 
-下载的 zip 文件包含 model.pb 和 labels.txt。 这些文件表示定型模型和分类标签。 第一步是将模型加载到项目。
+下载的 .zip 文件包含 model.pb 和 labels.txt 文件 。 这些文件表示定型模型和分类标签。 第一步是将模型加载到项目。 将以下代码添加到新的 Python 脚本。
 
 ```Python
 import tensorflow as tf
@@ -126,6 +126,8 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 
 ```
 
+### <a name="add-helper-functions"></a>添加帮助程序函数
+
 上面的步骤使用以下 helper 函数：
 
 ```Python
@@ -191,7 +193,7 @@ with tf.compat.v1.Session() as sess:
         exit(-1)
 ```
 
-## <a name="view-the-results"></a>查看结果
+## <a name="display-the-results"></a>显示结果
 
 然后，通过模型运行的图像 tensor 的结果将需要映射回标签。
 

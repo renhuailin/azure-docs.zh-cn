@@ -1,23 +1,14 @@
 ---
 title: 以编程方式创建 Azure 仪表板
 description: 使用 Azure 门户中的仪表板作为模板以编程方式创建 Azure 仪表板。 包括 JSON 引用。
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: mtillman
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/4/2020
+ms.openlocfilehash: e69d3f3cea0ff63f94e797047eb10b9583678b1b
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764037"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745802"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -55,7 +46,7 @@ ms.locfileid: "84764037"
 
 ![共享仪表板](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-选择“共享”时，系统会提示选择要发布到的订阅和资源组。  必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure 门户添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)。
+选择“共享”时，系统会提示选择要发布到的订阅和资源组。  必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
 
 ![对共享和访问权限进行更改](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
@@ -78,13 +69,13 @@ ms.locfileid: "84764037"
 在 Azure 中创建资源的 API 采用两种方法：
 
 * 命令式 API 一次创建一个资源。 有关详细信息，请参阅[资源](/rest/api/resources/resources)。
-* 基于模板的部署系统使用单个 API 调用来创建多个依赖资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)。
+* 基于模板的部署系统使用单个 API 调用来创建多个依赖资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)。
 
 基于模板的部署支持参数化和模板化。 本文将使用此方法。
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>使用模板部署以编程方式从模板创建仪表板
 
-Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于模板语言会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持。 如果与前述命令式 API 一起使用，则不起作用。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于模板语言会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持。 如果与前述命令式 API 一起使用，则不起作用。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
 
 应使用模板的参数语法来实现参数化。  替换之前找到的所有资源 ID 的实例，如下所示。
 
@@ -125,7 +116,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 配置模板后，使用以下任意方法部署模板：
 
 * [REST API](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure 门户模板部署页](https://portal.azure.com/#create/Microsoft.Template)
 
@@ -658,3 +649,49 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 ```
 
 通过示例了解如何使用参数化模板来部署仪表板后，就可以尝试使用 [Azure 资源管理器 REST API](/rest/api/)、[Azure CLI](/cli/azure) 或 [Azure PowerShell 命令](/powershell/azure/get-started-azureps)来部署模板。
+
+## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>使用 Azure CLI 以编程方式创建仪表板
+
+为 Azure CLI 准备环境。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 这些示例使用以下仪表板： [portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json)。 将尖括号中的内容替换为你的值。
+
+运行 [az portal 仪表板 create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) 命令以创建仪表板：
+
+```azurecli
+az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+   --input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+你可以使用 [az portal 仪表板 update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) 命令更新仪表板：
+
+```azurecli
+az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+--input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+若要查看仪表板的详细信息，请运行 [az portal 仪表板 show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) 命令：
+
+```azurecli
+az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
+```
+
+若要查看当前订阅的所有仪表板，请使用 [az portal 仪表盘 list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)：
+
+```azurecli
+az portal dashboard list
+```
+
+你还可以查看资源组的所有仪表板：
+
+```azurecli
+az portal dashboard list --resource-group myResourceGroup
+```
+
+## <a name="next-steps"></a>后续步骤
+
+有关桌面的详细信息，请参阅 [管理 Azure 门户设置和首选项](set-preferences.md)。
+
+有关仪表板 Azure CLI 支持的详细信息，请参阅 [az 门户仪表板](/cli/azure/ext/portal/portal/dashboard)。

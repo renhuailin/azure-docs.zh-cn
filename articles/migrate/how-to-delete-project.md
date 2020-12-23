@@ -1,24 +1,24 @@
 ---
 title: 删除 Azure Migrate 项目
 description: 本文介绍如何使用 Azure 门户删除 Azure Migrate 项目。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: raynew
-ms.openlocfilehash: c58081e7cf88ac4820aa7d4f367b7344f3340a77
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307868"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754243"
 ---
 # <a name="delete-an-azure-migrate-project"></a>删除 Azure Migrate 项目
 
 本文介绍如何删除 [Azure Migrate](./migrate-services-overview.md) 项目。
 
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 删除项目之前：
 
@@ -26,7 +26,7 @@ ms.locfileid: "91307868"
 - 如果已将 Log Analytics 工作区附加到服务器评估工具进行依赖关系分析，请决定是否要删除工作区。 
     - 不会自动删除此工作区。 请手动删除它。
     - 在删除工作区之前，验证工作区的用途。 同一 Log Analytics 工作区可用于多个方案。
-    - 在删除项目之前，你可以在 OMS 工作区中的 " **Azure Migrate 服务器**  >  **Azure Migrate-服务器评估**" 中找到工作**OMS Workspace**区的链接。
+    - 在删除项目之前，你可以在 OMS 工作区中的 " **Azure Migrate 服务器**  >  **Azure Migrate-服务器评估**" 中找到工作 **OMS Workspace** 区的链接。
     - 若要在删除项目后删除工作区，请在相关资源组中找到工作区，并按照 [这些说明](../azure-monitor/platform/delete-workspace.md)进行操作。
 
 

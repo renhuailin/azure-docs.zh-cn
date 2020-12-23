@@ -2,18 +2,18 @@
 title: 将 Azure 应用配置与 Azure Functions 结合使用的快速入门 | Microsoft Docs
 description: 在本快速入门中，使用 Azure 应用程序配置和 C# 创建 Azure Functions 应用。 创建并连接到应用程序配置存储。 在本地测试函数。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: b62bf900e3e7859437b10b7b45801ee0dc575282
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.author: alkemper
+ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767775"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930783"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Azure Functions 应用
 
@@ -22,7 +22,7 @@ ms.locfileid: "91767775"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/dotnet)
-- 包含 **Azure 开发**工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
+- 包含 **Azure 开发** 工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
 - [Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
@@ -45,9 +45,9 @@ ms.locfileid: "91767775"
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包并将其添加到项目中。 如果找不到，请选择“包含预发行版”复选框****。
+1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包并将其添加到项目中。 如果找不到，请选择“包含预发行版”复选框。
 
-2. 打开 Function1.cs，添加 .NET Core 配置和“应用程序配置”配置提供程序的命名空间**。
+2. 打开 Function1.cs，添加 .NET Core 配置和“应用程序配置”配置提供程序的命名空间。
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -120,7 +120,7 @@ ms.locfileid: "91767775"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个新的应用程序配置存储区，并通过[应用程序配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 Azure Functions 应用。 若要了解如何将 Azure Functions 应用配置为动态刷新配置设置，请继续下一个教程。
+在本快速入门中，你创建了一个新的应用程序配置存储区，并通过[应用程序配置提供程序](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)将其用于 Azure Functions 应用。 若要了解如何将 Azure Functions 应用配置为动态刷新配置设置，请继续下一个教程。
 
 > [!div class="nextstepaction"]
 > [启用动态配置](./enable-dynamic-configuration-azure-functions-csharp.md)

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500345"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313640"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>自动缩放 Azure Synapse Analytics Apache Spark 池
 
@@ -49,7 +49,7 @@ Azure Synapse Analytics Apache Spark 池的自动缩放功能自动缩放群集�
 
 ## <a name="get-started"></a>入门
 
-### <a name="create-a-spark-pool-with-autoscaling"></a>使用自动缩放创建 Spark 池
+### <a name="create-a-serverless-apache-spark-pool-with-autoscaling"></a>使用自动缩放创建无服务器 Apache Spark 池
 
 若要启用自动缩放功能，请在正常池创建过程中完成以下步骤：
 
@@ -67,7 +67,7 @@ Azure Synapse Analytics Apache Spark 池的自动缩放功能自动缩放群集�
 
 完成缩放操作可能需要 1 到 5 分钟。
 
-### <a name="prepare-for-scaling-down"></a>准备缩小
+### <a name="prepare-for-scaling-down"></a>准备进行纵向缩减
 
 在实例缩小过程中，自动缩放会使节点处于解除锁定状态，以便不会在该节点上启动新的执行程序。
 

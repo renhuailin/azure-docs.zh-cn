@@ -3,17 +3,17 @@ title: 使用 Python 的 Azure 存储示例 | Microsoft Docs
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 Python 存储客户端库发现 Blob、队列、表和文件的入门示例。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d1bfd146729a4a0ef94099a0ad79972517b4f42
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f57fa1b668cacdaaceb2026f9e5d7fff0cc56d7f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848179"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371352"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>使用 v12 Python 客户端库的 Azure 存储示例
 
@@ -594,4 +594,5 @@ ms.locfileid: "87848179"
 * .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
 * Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
 * JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
+* C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
 * 所有其他语言：[Azure 存储示例](storage-samples.md)

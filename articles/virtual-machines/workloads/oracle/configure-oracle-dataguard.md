@@ -1,25 +1,19 @@
 ---
 title: 在 Azure Linux 虚拟机上实现 Oracle Data Guard | Microsoft Docs
 description: 快速部署 Oracle Data Guard 并使其在 Azure 环境中运行。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: f8a40f87b8fdaa2adf445392bd598dd8133aae4c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: cc7579b48307325e25d8914ea4c722a9641883f3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335895"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952142"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上实现 Oracle Data Guard 
 
@@ -57,7 +51,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>创建可用性集
 
-创建可用性集是可选的，但我们建议执行此操作。 有关详细信息，请参阅 [Azure 可用性集指南](../../windows/infrastructure-example.md)。
+创建可用性集是可选的，但我们建议执行此操作。 有关详细信息，请参阅 [Azure 可用性集指南](/previous-versions/azure/virtual-machines/windows/infrastructure-example)。
 
 ```azurecli
 az vm availability-set create \

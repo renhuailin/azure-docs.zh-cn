@@ -8,18 +8,18 @@ ms.custom: hdinsightactive, devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: dd0d7a3a05c108f0d7e95719356079633a0e2276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 367b47e8dbe0e1ee56fea620d97109631ba87a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016081"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484876"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-了解如何使用 [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) 管理 HDInsight 群集。
+了解如何使用 [HDInsight.NET SDK](/dotnet/api/overview/azure/hdinsight) 管理 HDInsight 群集。
 
 **先决条件**
 
@@ -268,7 +268,7 @@ foreach (var key in results.Configuration.Keys)
 
 ## <a name="see-also"></a>另请参阅
 
-* [HDInsight .NET SDK 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [HDInsight .NET SDK 参考文档](/dotnet/api/overview/azure/hdinsight)
 * [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)
 * [使用命令行接口管理 HDInsight][hdinsight-admin-cli]
 * [创建 HDInsight 群集][hdinsight-provision]

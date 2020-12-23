@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8b10dd2d87ab7d4cf41a0bf860798f27651294d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258976"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421084"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 保护 Node.js Web API 并授予从单页应用程序访问该 API 的权限
 
@@ -56,11 +56,11 @@ ms.locfileid: "91258976"
 
 若要从另一应用程序调用受保护的 Web API，需授予应用程序访问该 Web API 的权限。
 
-在先决条件教程中，你已创建名为 *webapp1* 的 Web 应用程序。 在本教程中，你要将该应用程序配置为调用在上一部分创建的 Web API：*webapi1*。
+在先决条件教程中，你已创建名为 spaapp1 的单页应用程序。 在本教程中，你要将该应用程序配置为调用在上一部分创建的 Web API：spaapp1。
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-现在，已经为单页 Web 应用程序授予了在指定作用域内对受保护 Web API 的权限。 用户通过 Azure AD B2C 进行身份验证，以使用单页应用程序。 该单页应用使用授权流通过 Azure AD B2C 返回的访问令牌访问受保护的 Web API。
+现在，已经为单页 Web 应用程序授予了在指定作用域内对受保护 Web API 的权限。 用户通过 Azure AD B2C 进行身份验证，以使用单页应用程序。 该单页应用从 Azure AD B2C 获取访问令牌，以访问受保护的 Web API。
 
 ## <a name="configure-the-sample"></a>配置示例
 
@@ -74,14 +74,20 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>配置 Web API
 
-1. 在代码编辑器中打开 config.js 文件。 
+1. 在代码编辑器中打开 config.json 文件。
 1. 修改变量值，以反映前面创建的应用程序注册的值。 另外，使用作为先决条件的一部分创建的用户流更新 `policyName`。 例如 B2C_1_signupsignin1。 
-
-    ```javascript
-    const clientID = "<your-webapi-application-ID>"; // Application (client) ID
-    const b2cDomainHost = "<your-tenant-name>.b2clogin.com";
-    const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (a GUID)
-    const policyName = "B2C_1_signupsignin1";
+    
+    ```json
+    "credentials": {
+        "tenantName": "<your-tenant-name>",
+        "clientID": "<your-webapi-application-ID>"
+    },
+    "policies": {
+        "policyName": "B2C_1_signupsignin1"
+    },
+    "resource": {
+        "scope": ["demo.read"] 
+    },
     ```
 
 #### <a name="enable-cors"></a>启用 CORS
@@ -155,7 +161,7 @@ app.use((req, res, next) => {
 1. 打开另一个控制台窗口，并切换到包含 JavaScript SPA 示例的目录。 例如：
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
+    cd ms-identity-b2c-javascript-spa
     ```
 
 1. 运行以下命令：

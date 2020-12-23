@@ -8,21 +8,21 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650759"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187453"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>流式引入吞吐量限制
 
 Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 > [!TIP]
-> 请阅读[规划 Azure 时序见解第 2 代环境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits)，获取所有限制的完整列表。
+> 请阅读[规划 Azure 时序见解第 2 代环境](./how-to-plan-your-environment.md#review-azure-time-series-insights-gen2-limits)，获取所有限制的完整列表。
 
 ## <a name="per-environment-limitations"></a>基于环境的限制
 
@@ -30,12 +30,12 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 * 设备数 × 事件发射频率 × 每个事件大小  。
 
-默认情况下，对于每个 Azure 时序见解第 2 代环境，Azure 时序见解第 2 代可按**每秒最多 1 兆字节 (MBps)** 的速率引入传入的数据。 存在针对[单个中心分区](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)的其他限制。
+默认情况下，对于每个 Azure 时序见解第 2 代环境，Azure 时序见解第 2 代可按 **每秒最多 1 兆字节 (MBps)** 的速率引入传入的数据。 存在针对[单个中心分区](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)的其他限制。
 
 > [!TIP]
 >
 > * 我们可按请求提供最高 8 MBps 引入速度的环境支持。
-> * 如果需要更高的吞吐量，请通过 Azure 门户提交支持票证来联系我们。
+> * 如果需要更高的吞吐量，请通过在 Azure 门户中提交支持票证来联系我们。
 
 * **示例 1：**
 
@@ -59,7 +59,7 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 分区是中心内保留的有序事件。 分区计数是在中心创建阶段设置的，且不可更改。
 
-有关事件中心分区的最佳做法，请参阅[我需要多少分区？](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)
+有关事件中心分区的最佳做法，请参阅[我需要多少分区？](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
 
 > [!NOTE]
 > 与 Azure 时序见解第 2 代配合使用的大多数 IoT 中心只需要 4 个分区。
@@ -92,9 +92,9 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 若要详细了解如何优化中心吞吐量和分区，请参阅以下资源：
 
-* [IoT 中心规模](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
-* [事件中心规模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
-* [事件中心分区](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
+* [IoT 中心规模](../iot-hub/iot-hub-scaling.md)
+* [事件中心规模](../event-hubs/event-hubs-scalability.md#throughput-units)
+* [事件中心分区](../event-hubs/event-hubs-features.md#partitions)
 
 ## <a name="next-steps"></a>后续步骤
 

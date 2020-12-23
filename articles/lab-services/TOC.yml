@@ -4,6 +4,10 @@
   items:
     - name: 关于实验室服务
       href: lab-services-overview.md
+- name: 快速入门
+  items:
+    - name: 入门
+      href: get-started-manage-labs.md
 - name: 教程
   items:
     - name: 设置实验室帐户
@@ -16,11 +20,11 @@
       href: tutorial-track-usage.md
 - name: 概念
   items:
-    - name: 教室实验室概念
+    - name: 实验室概述
       href: classroom-labs-overview.md
-    - name: 教室实验室概念
+    - name: 实验室概念
       href: classroom-labs-concepts.md
-    - name: 教室实验室体系结构基础知识
+    - name: 实验室体系结构基础知识
       href: classroom-labs-fundamentals.md
     - name: 容量限制
       href: capacity-limits.md
@@ -32,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: 使用实验室服务开展编程马拉松
           href: hackathon-labs.md
-        - name: 教室实验室 - 课程类型
+        - name: 实验室 - 课程类型
           items:
             - name: 课程类型概述
               href: class-types.md
@@ -54,6 +58,24 @@
               href: class-type-matlab.md
             - name: SolidWorks 计算机辅助设计 (CAD)
               href: class-type-solidworks.md
+            - name: 项目导向
+              href: class-type-pltw.md
+        - name: 使用 Teams 中的 Azure 实验室服务
+          items:
+            - name: 概述
+              href: lab-services-within-teams-overview.md
+            - name: 从 Teams 创建实验室
+              href: how-to-get-started-create-lab-within-teams.md
+            - name: 管理用户列表
+              href: how-to-manage-user-lists-within-teams.md
+            - name: 管理 VM 池
+              href: how-to-manage-vm-pool-within-teams.md
+            - name: 删除实验室
+              href: how-to-delete-lab-within-teams.md
+            - name: 日程安排和设置
+              href: how-to-create-schedules-within-teams.md
+            - name: 访问 VM（学生视图）
+              href: how-to-access-vm-for-students-within-teams.md
 - name: 操作指南
   items:
     - name: 管理员指南
@@ -90,9 +112,9 @@
           href: lab-account-owner-support-information.md
         - name: 将自定义映像上传到共享映像库
           href: upload-custom-image-shared-image-gallery.md
-    - name: 创建和配置教室实验室（教师）
+    - name: 创建和配置实验室（教师）
       items:
-        - name: 创建和管理教室实验室
+        - name: 创建和管理实验室
           href: how-to-manage-classroom-labs.md
         - name: 使用仪表板
           href: use-dashboard.md
@@ -128,9 +150,9 @@
           href: lab-creator-support-information.md
         - name: 从教师视图访问学生 VM
           href: instructor-access-virtual-machines.md
-    - name: 连接到课堂实验室中的 VM（学生）
+    - name: 连接到实验室中的 VM（学生）
       items:
-        - name: 访问教室实验室
+        - name: 访问实验室
           href: how-to-use-classroom-lab.md
         - name: 连接到 Linux VM
           href: how-to-use-remote-desktop-linux-student.md
@@ -145,7 +167,7 @@
 - name: 参考
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/labservices/'
+      href: /rest/api/labservices/
     - name: Az.LabServices PowerShell 模块（预览版）
       href: reference-powershell-module.md
 - name: 资源

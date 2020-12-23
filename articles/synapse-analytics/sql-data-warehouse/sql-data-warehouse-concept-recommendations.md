@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL 建议
+title: 专用 SQL 池 Azure 顾问建议
 description: 了解 Synapse SQL 建议及其生成方式
 services: synapse-analytics
 author: kevinvngo
@@ -11,18 +11,18 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482847"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462872"
 ---
-# <a name="synapse-sql-recommendations"></a>Synapse SQL 建议
+# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中针对专用 SQL 池的 azure 顾问建议
 
-本文介绍了通过 Azure 顾问提供的 Synapse SQL 建议。  
+本文介绍 Azure 顾问中提供的专用 SQL 池建议。  
 
-Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负荷的性能。 建议与 [Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在 [Azure 门户](https://aka.ms/Azureadvisor)中为你提供最佳做法。 Synapse SQL 每天收集一次活动工作负荷的遥测和外围应用建议。 下面概述了支持的建议方案，以及如何应用建议的操作。
+专用的 SQL 池提供了一些建议，以确保数据仓库工作负荷的性能一致。 建议与 [Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在 [Azure 门户](https://aka.ms/Azureadvisor)中为你提供最佳做法。 专用 SQL 池为每日节奏的活动工作负荷收集遥测和曲面建议。 下面概述了支持的建议方案，以及如何应用建议的操作。
 
 可以立即[查看你的建议](https://aka.ms/Azureadvisor)！ 
 
@@ -73,4 +73,4 @@ Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负�
 
 ## <a name="data-loading-misconfiguration"></a>数据加载配置错误
 
-应始终从与 SQL 池相同的区域中的存储帐户加载数据，以最大程度地减少延迟。 使用[COPY 语句实现高吞吐量数据引入](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并拆分存储帐户中的暂存文件，以最大限度地提高吞吐量。 如果不能使用 COPY 语句，则可以使用 SqlBulkCopy API 或 bcp，使用较高的批大小，以获得更好的吞吐量。 有关其他数据加载指南，请访问以下[文档](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 
+应始终从与专用 SQL 池相同的区域中的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关其他数据加载指南，请访问以下[文档](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 

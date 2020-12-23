@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362123"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780948"
 ---
 # <a name="replication-to-azure-sql-database"></a>复制到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91362123"
 可以在单向事务或快照复制拓扑中将 Azure SQL 数据库配置为推送订阅服务器。
 
 > [!NOTE]
-> 本文介绍如何在 Azure SQL 数据库中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[活动异地复制](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)无关，后者是一项 Azure SQL 数据库功能，可用于创建单个数据库的完全可读副本。
+> 本文介绍如何在 Azure SQL 数据库中使用[事务复制](/sql/relational-databases/replication/transactional/transactional-replication)。 它与[活动异地复制](./active-geo-replication-overview.md)无关，后者是一项 Azure SQL 数据库功能，可用于创建单个数据库的完全可读副本。
 
 ## <a name="supported-configurations"></a>支持的配置
   
@@ -50,16 +50,16 @@ ms.locfileid: "91362123"
 
 ### <a name="types-of-replication"></a>复制类型
 
-有不同的[复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)：
+有不同的[复制类型](/sql/relational-databases/replication/types-of-replication)：
 
 | 复制 | Azure SQL 数据库 | Azure SQL 托管实例 |
 | :----| :------------- | :--------------- |
-| [**标准事务**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是（仅用作订阅服务器） | 是 | 
-| [**快照**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是（仅用作订阅服务器） | 是|
-| [**合并复制**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
-| [**对等**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
-| [**双向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
-| [**可更新订阅**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
+| [**标准事务**](/sql/relational-databases/replication/transactional/transactional-replication) | 是（仅用作订阅服务器） | 是 | 
+| [**快照**](/sql/relational-databases/replication/snapshot-replication) | 是（仅用作订阅服务器） | 是|
+| [**合并复制**](/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
+| [**对等**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
+| [**双向**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
+| [**可更新订阅**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
 | &nbsp; | &nbsp; | &nbsp; |
 
   
@@ -78,14 +78,14 @@ ms.locfileid: "91362123"
 
 ## <a name="replication-architecture"></a>复制体系结构  
 
-![关系图显示了 Azure SQL 数据库的复制体系结构，其中包含不同区域的几个订阅服务器群集和本地 Azure 虚拟机，其中包含连接到远程群集的发布服务器、Logread.exe 可执行文件和分发服务器可执行文件。](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![此图显示了具有 Azure SQL 数据库的复制体系结构，其中包含位于不同区域的多个订阅服务器群集，以及本地 Azure 虚拟机（其中包含连接到远程群集的发布服务器、日志读取可执行文件和分发服务器可执行文件）。](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>方案  
 
 ### <a name="typical-replication-scenario"></a>典型复制方案  
 
 1. 在 SQL Server 数据库上创建事务复制发布。  
-2. 在 SQL Server 上使用**新建订阅向导**或 Transact-SQL 语句创建一个推送，以便推送到 Azure SQL 数据库的订阅。  
+2. 在 SQL Server 上使用 **新建订阅向导** 或 Transact-SQL 语句创建一个推送，以便推送到 Azure SQL 数据库的订阅。  
 3. 对于 Azure SQL 数据库中的单一数据库和共用数据库，初始数据集是由快照代理创建并由分发代理分发和应用的快照。 使用 SQL 数据库托管实例发布服务器，还可以使用数据库备份来植入 Azure SQL 数据库订阅服务器。
 
 ### <a name="data-migration-scenario"></a>数据迁移方案  
@@ -126,14 +126,14 @@ Azure SQL 数据库订阅不支持以下选项：
 
 创建发布和推送订阅。 有关详细信息，请参阅：
   
-- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- 使用服务器名称作为订阅服务器 (例如**n'azuresqldbdns.database.windows.net "**) ，并使用 Azure SQL 数据库名称作为目标数据库 (例如**AdventureWorks**) ，以[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)。  
+- [创建发布](/sql/relational-databases/replication/publish/create-a-publication)
+- 使用服务器名称作为订阅服务器 (例如 **n'azuresqldbdns.database.windows.net "** ) ，并使用 Azure SQL 数据库名称作为目标数据库 (例如 **AdventureWorks** ) ，以 [创建推送订阅](/sql/relational-databases/replication/create-a-push-subscription/)。  
 
 ## <a name="see-also"></a>另请参阅  
 
 - [事务复制](../managed-instance/replication-transactional-overview.md)
-- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [监视（复制）](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [初始化订阅](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [创建发布](/sql/relational-databases/replication/publish/create-a-publication)
+- [创建推送订阅](/sql/relational-databases/replication/create-a-push-subscription/)
+- [复制类型](/sql/relational-databases/replication/types-of-replication)
+- [监视（复制）](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [初始化订阅](/sql/relational-databases/replication/initialize-a-subscription)

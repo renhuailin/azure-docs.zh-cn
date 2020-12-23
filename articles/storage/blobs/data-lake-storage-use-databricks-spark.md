@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: b5f1d0712098e4fe331607860f6e0ed488d29c1c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5fce5871b4bd6c3e2353f7df04018e88b86ec4c7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848786"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912512"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教程：Azure Data Lake Storage Gen2、Azure Databricks & Spark
 
@@ -33,22 +33,22 @@ ms.locfileid: "87848786"
 
 * 创建 Azure Data Lake Storage Gen2 帐户。
 
-  请参阅[创建 Azure Data Lake Storage Gen2 帐户](data-lake-storage-quickstart-create-account.md)。
+  请参阅[创建用于 Azure Data Lake Storage Gen2 的存储帐户](create-data-lake-storage-account.md)。
 
-* 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)。
+* 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](../common/storage-auth-aad-rbac-portal.md)。
 
-* 安装 AzCopy v10。 请参阅[使用 AzCopy v10 传输数据](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+* 安装 AzCopy v10。 请参阅[使用 AzCopy v10 传输数据](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-* 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+* 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
   在执行该文中的步骤时，需要完成一些特定的事项。
 
-  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
+  :heavy_check_mark:执行该文中[将应用程序分配给角色](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
 
   > [!IMPORTANT]
   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
 
-  :heavy_check_mark:执行本文的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和客户端机密值粘贴到文本文件中。 很快就会需要这些值。
+  :heavy_check_mark:执行本文的[获取用于登录的值](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和客户端机密值粘贴到文本文件中。 很快就会需要这些值。
 
 ### <a name="download-the-flight-data"></a>下载航班数据
 
@@ -138,7 +138,7 @@ ms.locfileid: "87848786"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到你创建的 Azure Databricks 服务，然后选择“启动工作区”。 
 
-2. 在左侧选择“工作区”  。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
+2. 在左侧选择“工作区”  。 在 **工作区** 下拉列表中，选择 **创建** > **笔记本**。
 
     ![在 Databricks 中创建笔记本](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 

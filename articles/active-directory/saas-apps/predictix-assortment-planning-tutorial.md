@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5b7ec1843d279e8c0477ed1c7754746d4f3044ad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: adf00d24c05deab149edb95b8087b8522dbda99a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553625"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515383"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>教程：Azure Active Directory 与 Predictix Assortment Planning 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553625"
 * 可让用户使用其 Azure AD 帐户自动登录到 Predictix Assortment Planning（单一登录）。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 如果没有 Azure 订阅，可以在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -125,11 +125,11 @@ ms.locfileid: "88553625"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL**。
+    1. **登录 URL** 。
 
-    1. **Azure AD 标识符**。
+    1. **Azure AD 标识符** 。
 
-    1. **注销 URL**。
+    1. **注销 URL** 。
 
 ### <a name="configure-predictix-assortment-planning-single-sign-on"></a>配置 Predictix Assortment Planning 单一登录
 
@@ -151,7 +151,7 @@ ms.locfileid: "88553625"
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”框中，输入 **BrittaSimon**。
+    1. 在“姓名”框中，输入 **BrittaSimon** 。
   
     1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
@@ -196,12 +196,12 @@ ms.locfileid: "88553625"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“Predictix Assortment Planning”磁贴时，应会自动登录到设置了 SSO 的 Predictix Assortment Planning 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在访问面板中选择“Predictix Assortment Planning”磁贴时，应会自动登录到设置了 SSO 的 Predictix Assortment Planning 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

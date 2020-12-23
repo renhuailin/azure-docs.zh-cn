@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 83c149e92276265b5b5236ae56c475d7307c18e4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509954"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093904"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>在 Azure 虚拟机上安装 SAP HANA
 ## <a name="introduction"></a>简介
@@ -61,7 +62,7 @@ ms.locfileid: "88509954"
 3. 部署并注册 VM 后，请将最新的修补程序应用到操作系统。 已注册到你自己的订阅。 或者，如果你选择的映像包含操作系统支持，则 VM 应具有对修补程序的访问权限。 
 4. 应用 SAP HANA 所需的微调。 以下 SAP 支持说明中列出了这些技术：
 
-    - [SAP 支持说明 #2694118-Red Hat Enterprise Linux Azure 上的 HA 外接程序](https://launchpad.support.sap.com/#/notes/2694118)
+    - [SAP 支持说明 #2694118-Red Hat Enterprise Linux Azure 上的 HA Add-On](https://launchpad.support.sap.com/#/notes/2694118)
     - [SAP 支持说明 #1984787-SUSE LINUX Enterprise Server 12：安装说明](https://launchpad.support.sap.com/#/notes/1984787) 
     - [SAP 支持说明 #2578899-SUSE Linux Enterprise Server 15：安装说明](https://launchpad.support.sap.com/#/notes/2578899)
     - [SAP 支持说明 #2002167 Red Hat Enterprise Linux 7、windows：安装和升级](https://launchpad.support.sap.com/#/notes/0002002167)
@@ -72,7 +73,7 @@ ms.locfileid: "88509954"
     -  [SAP 支持说明 #2382421 优化 HANA 和操作系统级别的网络配置](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. 选择用于 SAP HANA 的 Azure 存储类型。 在此步骤中，需要决定 SAP HANA 安装的存储布局。 你将使用附加的 Azure 磁盘或本机 Azure NFS 共享。 Azure [虚拟机存储配置 SAP HANA](./hana-vm-operations-storage.md)中介绍了可以使用的 azure 存储类型或支持的不同 azure 存储类型的组合。 采用记录为起始点的配置。 对于非生产系统，可以配置较低的吞吐量或 IOPS。 对于生产用途，可能需要配置更多的吞吐量和 IOPS。
-2. 使用 M 系列或 Mv2 系列 Vm 时，请确保为包含 DBMS 事务日志或重做日志的卷配置 [Azure 写入加速器](../../how-to-enable-write-accelerator.md) 。 请注意写入加速器中所述的限制。
+2. 使用 M 系列或 Mv2-Series Vm 时，请确保为包含 DBMS 事务日志或重做日志的卷配置 [Azure 写入加速器](../../how-to-enable-write-accelerator.md) 。 请注意写入加速器中所述的限制。
 2. 检查是否在部署) 的 (VM 上启用了 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) 。
 
 > [!NOTE]
@@ -87,7 +88,7 @@ ms.locfileid: "88509954"
 -  [SAP NetWeaver 的 Azure 虚拟机部署](./deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>SAP HANA 安装
-部署 Azure 虚拟机并注册并配置操作系统后，你可以根据 SAP 安装 SAP HANA 安装。 若要获取此文档，请从此 SAP 网站[HANA 资源](https://www.sap.com/products/hana/implementation/resources.html)着手
+部署 Azure 虚拟机并注册并配置操作系统后，你可以根据 SAP 安装 SAP HANA 安装。 若要获取此文档，请从此 SAP 网站[HANA 资源](https://www.sap.com/products/s4hana-erp.html?btp=9d3e6f82-d8ab-4122-8d2d-bf4971217afd)着手
 
 有关使用 Azure 高级存储或超磁盘的直接附加磁盘的 SAP HANA 横向扩展配置，请参阅文档中的详细信息 [SAP HANA azure 上的基础结构配置和操作](./hana-vm-operations.md#configuring-azure-infrastructure-for-sap-hana-scale-out)
 

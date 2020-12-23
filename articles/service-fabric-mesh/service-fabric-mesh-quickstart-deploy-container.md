@@ -1,16 +1,16 @@
 ---
 title: 快速入门 - 将 Hello World 部署到 Azure Service Fabric 网格
 description: 本快速入门展示了如何将 Service Fabric 网格应用程序部署到 Azure Service Fabric 网格。
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: 5373cbf76b55b86e4851e1d7c6b53222871faa4c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c81b53b68c689f4b890d2ff628f38b734aea63dc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86254327"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499877"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入门：将 Hello World 部署到 Service Fabric 网格
 
@@ -41,6 +41,12 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-application"></a>部署应用程序
+
+>[!NOTE]
+> 自 2020 年 11 月 2 日起，[下载速率限制](https://docs.docker.com/docker-hub/download-rate-limit/)将应用于 Docker 免费计划帐户对 Docker Hub 发出的匿名和经过身份验证的请求，并且由 IP 地址强制执行。 
+> 
+> 这些模板使用 Docker Hub 中的公共映像。 请注意，速率可能会受到限制。 有关更多详细信息，请参阅[通过 Docker Hub 进行身份验证](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)。
+
 使用 `az mesh deployment create` 命令在资源组中创建应用程序。  运行以下内容：
 
 ```azurecli-interactive
@@ -71,7 +77,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
   }
 ```
 
-## <a name="open-the-application"></a>打开应用程序
+## <a name="open-the-application"></a>打开应用
 在应用程序成功部署后，从 CLI 输出中复制服务终结点的公共 IP 地址。 在 Web 浏览器中打开该 IP 地址。 此时将显示包含 Azure Service Fabric 网格徽标的网页。
 
 ## <a name="check-the-application-details"></a>检查应用程序详细信息

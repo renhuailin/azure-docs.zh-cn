@@ -1,25 +1,19 @@
 ---
 title: 在 Azure 环境下的 Oracle 灾难恢复方案概述 | Microsoft 文档
 description: 在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复方案
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 5a162c0683a953399b48aaf627bbff5bc674e9dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: b8da0b5c55b291af42d9a30db23d6f55f7c0bf2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274555"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022779"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
 
@@ -44,12 +38,12 @@ ms.locfileid: "91274555"
 - 两个具有 Data Guard 的 Oracle 数据库（主数据库和备用数据库）
 - 两个具有 Golden Gate 或 Data Guard 的 Oracle 数据库（仅限主站点）
 - 两个应用程序服务，一个位于主站点，一个位于 DR 站点
-- 一个“可用性集”**，用于主站点上的数据库和应用程序服务
+- 一个“可用性集”，用于主站点上的数据库和应用程序服务
 - 每个站点各有一个 jumpbox，用于限制对专用网络的访问，且仅允许管理员登录
 - 位于不同子网的 jumpbox、应用程序服务、数据库和 VPN 网关
 - 对应用程序和数据库子网强制执行的 NSG
 
-![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![显示 Azure 上的主站点和 DR 站点的示意图。](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>方案 2：本地主站点和 Azure 上的 DR 站点
 
@@ -75,7 +69,7 @@ ms.locfileid: "91274555"
 - NSG 策略/规则，以允许入站 TCP 端口 1521（或用户定义的端口）
 - NSG 策略/规则，以仅限制一个或多个本地 IP 地址（DB 或应用程序）访问虚拟网络
 
-![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![此图显示了在本地与 Azure 之间的直接连接，要求在防火墙上打开 TCP 端口。](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>方式 2：站点到站点 VPN
 使用站点到站点 VPN 是一个比较好的做法。 有关安装 VPN 的详细信息，请参阅[使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)。
@@ -100,7 +94,7 @@ ms.locfileid: "91274555"
 - [在 Azure 上设计和实现 Oracle 数据库](oracle-design.md)
 - [配置 Oracle Data Guard](configure-oracle-dataguard.md)
 - [配置 Oracle Golden Gate](configure-oracle-golden-gate.md)
-- [Oracle 备份和恢复](oracle-backup-recovery.md)
+- [Oracle 备份和恢复](./oracle-overview.md)
 
 
 ## <a name="next-steps"></a>后续步骤

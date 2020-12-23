@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317338"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609048"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 
@@ -24,7 +24,7 @@ ms.locfileid: "91317338"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 如果已熟悉下面的主题，则可以跳过此段落。
 在继续创建之前，您可能需要阅读一些重要的主题：
 - [启用了 Azure Arc 的数据服务概述](overview.md)
@@ -32,7 +32,7 @@ ms.locfileid: "91317338"
 - [存储配置和 Kubernetes 存储概念](storage-configuration.md)
 - [Kubernetes 资源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 
-如果你想要在不自行预配完整环境的情况下试用，请快速开始使用 azure Kubernetes Service 上的 [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) (AKS) 、AWS 弹性 Kubernetes SERVICE (EKS) 、Google Cloud Kubernetes ENGINE (GKE) 或 Azure VM。
+如果你想要在不自行预配完整环境的情况下试用，请快速开始使用 azure Kubernetes Service 上的 [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) (AKS) 、AWS 弹性 Kubernetes SERVICE (EKS) 、Google Cloud Kubernetes ENGINE (GKE) 或 Azure VM。
 
 
 ## <a name="login-to-the-azure-arc-data-controller"></a>登录到 Azure Arc 数据控制器
@@ -130,7 +130,7 @@ azdata arc postgres endpoint list -n <server group name>
 ]
 ```
 
-你可以使用 PostgreSQL 实例终结点从你喜欢的工具连接到 PostgreSQL 超大规模服务器组：  [Azure Data Studio](https://aka.ms/getazuredatastudio)、 [Pgcli](https://www.pgcli.com/) psql、pgAdmin 等。
+你可以使用 PostgreSQL 实例终结点从你喜欢的工具连接到 PostgreSQL 超大规模服务器组：  [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、 [Pgcli](https://www.pgcli.com/) psql、pgAdmin 等。
 
 如果使用 Azure VM 进行测试，请按照以下说明进行操作：
 
@@ -138,7 +138,7 @@ azdata arc postgres endpoint list -n <server group name>
 
 使用 Azure 虚拟机时，终结点 IP 地址将不显示 _公共_ IP 地址。 若要查找公共 IP 地址，请使用以下命令：
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -148,7 +148,7 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 
 若要设置规则，需要知道 NSG 的名称。 使用以下命令确定 NSG：
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -156,7 +156,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 将下面的--destination 端口范围参数的值替换为你在上面的 "azdata arc postgres server list" 命令中获取的端口号。
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
@@ -169,7 +169,7 @@ az network nsg rule create -n db_port --destination-port-ranges 30655 --source-a
 
 请记住，如果你使用的是 Azure VM，你将需要 _公共_ IP 地址，该地址可通过以下命令访问：
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -194,7 +194,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
     * [设计多租户数据库](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [设计实时分析仪表板](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-    > \* 在上述文档中，跳过 **登录到 Azure 门户**的部分，& **创建 Azure Database for PostgreSQL (Citus) **。 在 Azure Arc 部署中执行剩余步骤。 这些章节特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus) ，但文档的其他部分直接适用于启用了 Azure Arc 的 PostgreSQL 超大规模。
+    > \* 在上述文档中，跳过 **登录到 Azure 门户** 的部分，& **创建 Azure Database for PostgreSQL (Citus)**。 在 Azure Arc 部署中执行剩余步骤。 这些章节特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus) ，但文档的其他部分直接适用于启用了 Azure Arc 的 PostgreSQL 超大规模。
 
 - [横向扩展 Azure Database for PostgreSQL 超大规模服务器组](scale-out-postgresql-hyperscale-server-group.md)
 - [存储配置和 Kubernetes 存储概念](storage-configuration.md)

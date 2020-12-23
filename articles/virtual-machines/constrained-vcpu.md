@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: c7852bd1b6d93357c1c9127686d1edbb5c702a3c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 530ae08dabe54ed279a4055e52109aad0ef4f842
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701389"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426147"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>支持受约束 vCPU 的 VM 大小
 
@@ -24,7 +24,7 @@ ms.locfileid: "88701389"
 为 SQL Server 或 Oracle 收取的许可费受限于新的 vCPU 计数，对其他产品应基于新的 vCPU 计数收取费用。 这会导致 VM 规格与活动（可计费）vCPU 数的比率增加 50% 到 75%。 这些新的 VM 大小允许客户工作负荷使用相同的内存、存储和 I/O 带宽，同时优化其软件许可成本。 目前，计算成本（包括 OS 许可）与原始大小保持相同成本。 有关详细信息，请参阅 [Azure VM sizes for more cost-effective database workloads](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)（适用于更经济高效数据库工作负荷的 Azure VM 大小）。
 
 
-| “属性”                | vCPU | 规格           |
+| 名称                | vCPU | 规格           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | 与 M8ms 相同    |
 | Standard_M8-4ms     | 4    | 与 M8ms 相同    |
@@ -63,6 +63,17 @@ ms.locfileid: "88701389"
 | Standard_E32-8ds_v4 | 8    | 与 E32ds_v4 相同|
 | Standard_E64-32ds_v4| 32   | 与 E64ds_v4 相同|
 | Standard_E64-16ds_v4| 16   | 与 E64ds_v4 相同|
+| Standard_E4-2as_v4  | 2    | 与 E4as_v4 相同 |
+| Standard_E8-4as_v4  | 4    | 与 E8as_v4 相同 |
+| Standard_E8-2as_v4  | 2    | 与 E8as_v4 相同 |
+| Standard_E16-8as_v4 | 8    | 与 E16as_v4 相同|
+| Standard_E16-4as_v4 | 4    | 与 E16as_v4 相同|
+| Standard_E32-16as_v4| 16   | 与 E32as_v4 相同|
+| Standard_E32-8as_v4 | 8    | 与 E32as_v4 相同|
+| Standard_E64-32as_v4| 32   | 与 E64as_v4 相同|
+| Standard_E64-16as_v4| 16   | 与 E64as_v4 相同|
+| Standard_E96-48as_v4| 48   | 与 E96as_v4 相同|
+| Standard_E96-24as_v4| 24   | 与 E96as_v4 相同|
 | Standard_GS4-8      | 8    | 与 GS4 相同     |
 | Standard_GS4-4      | 4    | 与 GS4 相同     |
 | Standard_GS5-16     | 16   | 与 GS5 相同     |

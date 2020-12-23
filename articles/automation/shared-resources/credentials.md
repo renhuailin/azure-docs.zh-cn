@@ -3,18 +3,18 @@ title: 在 Azure 自动化中管理凭据
 description: 本文介绍如何创建凭据资产并在 Runbook 或 DSC 配置中使用它们。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004658"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558823"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
-自动化凭据资产包含一个对象，该对象包含用户名和密码等安全凭据。 Runbook 和 DSC 配置使用接受 [PSCredential](/dotnet/api/system.management.automation.pscredential) 对象的 cmdlet 进行身份验证。 或者，他们可以提取 `PSCredential` 对象的用户名和密码，以便提供给某些需要进行身份验证的应用程序或服务。 
+自动化凭据资产包含一个对象，该对象包含用户名和密码等安全凭据。 Runbook 和 DSC 配置使用接受 [PSCredential](/dotnet/api/system.management.automation.pscredential) 对象的 cmdlet 进行身份验证。 或者，他们可以提取 `PSCredential` 对象的用户名和密码，以便提供给某些需要进行身份验证的应用程序或服务。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥进行加密并存储在 Azure 自动化中。 Azure 自动化将密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。 
@@ -44,7 +44,7 @@ ms.locfileid: "90004658"
 
 若要在代码中检索 `PSCredential` 对象，必须导入 `Orchestrator.AssetManagement.Cmdlets` 模块。 有关详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 
-```azurepowershell
+```powershell
 Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ```
 
@@ -68,16 +68,16 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>使用 Azure 门户创建新的凭据资产
 
-1. 在自动化帐户中，在左侧窗格中选择 "**共享资源**" 下的 "**凭据**"。
-1. 在 " **凭据** " 页上，选择 " **添加凭据**"。
-2. 在“新建凭据”窗格中，根据你的命名标准输入合适的凭据名称。
-3. 在“用户名”字段中键入你的访问 ID。
-4. 对于两个密码字段，请输入机密访问密钥。
+1. 在自动化帐户的左侧窗格中，选择“共享资源”下的“凭据” 。
+2. 在“凭据”页上，选择“添加凭据” 。
+3. 在“新建凭据”窗格中，根据你的命名标准输入合适的凭据名称。
+4. 在“用户名”字段中键入你的访问 ID。
+5. 对于两个密码字段，请输入机密访问密钥。
 
     ![创建新凭据](../media/credentials/credential-create.png)
 
-5. 如果选中了“多重身份验证”框，请将其取消选中。
-6. 单击“创建”以保存新的凭据资产。
+6. 如果选中了“多重身份验证”框，请将其取消选中。
+7. 单击“创建”以保存新的凭据资产。
 
 > [!NOTE]
 > Azure 自动化不支持使用多重身份验证的用户帐户。
@@ -106,8 +106,7 @@ Runbook 或 DSC 配置使用内部 `Get-AutomationPSCredential` cmdlet 检索凭
 
 下面的示例演示如何在 Runbook 中使用 PowerShell 凭据。 它检索凭据并将其用户名和密码分配给变量。
 
-
-```azurepowershell
+```powershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCredential.UserName
 $securePassword = $myCredential.Password
@@ -116,14 +115,13 @@ $password = $myCredential.GetNetworkCredential().Password
 
 还可以使用凭据通过 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 向 Azure 进行身份验证。 在大多数情况下，应使用[运行方式帐户](../manage-runas-account.md)并使用 [Get-AzAutomationConnection](../automation-connections.md) 检索连接。
 
-
-```azurepowershell
+```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
-$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
 Connect-AzAccount -Credential $myPsCred
 ```
@@ -132,11 +130,11 @@ Connect-AzAccount -Credential $myPsCred
 
 可以通过在图形编辑器的“库”窗格中右键单击凭据并选择“添加到画布”，将内部 `Get-AutomationPSCredential` cmdlet 的活动添加到图形 Runbook。
 
-![向画布添加凭据 cmdlet](../media/credentials/credential-add-canvas.png)
+![将凭据 cmdlet 添加到画布](../media/credentials/credential-add-canvas.png)
 
 下图显示了在图形 Runbook 中使用凭据的示例。 在本例中，凭据为 runbook 提供针对 Azure 资源的身份验证，如[在 Azure 自动化中使用 Azure AD 以便向 Azure 进行身份验证](../automation-use-azure-ad.md)中所述。 第一个活动检索有权访问 Azure 订阅的凭据。 然后，帐户连接活动使用此凭据为它之后的任何活动提供身份验证。 此处使用了一个[管道链接](../automation-graphical-authoring-intro.md#use-links-for-workflow)，因为 `Get-AutomationPSCredential` 需要单个对象。  
 
-![带有管道链接的凭据工作流示例](../media/credentials/get-credential.png)
+![带有管道链接示例的凭据工作流](../media/credentials/get-credential.png)
 
 ## <a name="use-credentials-in-a-dsc-configuration"></a>在 DSC 配置中使用凭据
 
@@ -145,7 +143,6 @@ Connect-AzAccount -Credential $myPsCred
 ## <a name="use-credentials-in-a-python-2-runbook"></a>在 Python 2 Runbook 中使用凭据
 
 以下示例演示了如何在 Python 2 Runbook 中访问凭据。
-
 
 ```python
 import automationassets

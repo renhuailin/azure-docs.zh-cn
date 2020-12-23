@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e5eaf2d7075ca09aeb3cfaa2dfea81fd0f8d65ad
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022490"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685301"
 ---
-# <a name="what-is-azure-monitor-for-vms"></a>什么是用于 VM 的 Azure Monitor？
+# <a name="overview-of-azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 概述
 
 用于 VM 的 Azure Monitor 监视虚拟机和虚拟机规模集的性能和运行状况，包括其正在运行的进程和其他资源的依赖关系。 它可以通过识别性能瓶颈和网络问题来帮助提供重要应用程序的可预测性能和可用性，还可以帮助你了解问题是否与其他依赖关系相关。
 
@@ -26,8 +26,6 @@ ms.locfileid: "89022490"
 - 托管在其他云环境中的虚拟机
   
 
-
-
 用于 VM 的 Azure Monitor 将其数据存储在 Azure Monitor 日志中，这使得它能够提供强大的聚合和筛选功能，并在一段时间内分析数据趋势。 可以直接从虚拟机的单个 VM 查看此数据，也可以使用 Azure Monitor 提供多个 Vm 的聚合视图。
 
 ![Azure 门户中的虚拟机见解透视图](media/vminsights-overview/vminsights-azmon-directvm.png)
@@ -37,6 +35,7 @@ ms.locfileid: "89022490"
 用于 VM 的 Azure Monitor 不会直接收费，但你需要为 Log Analytics 工作区中的活动付费。 根据在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上发布的定价，将针对以下内容对用于 VM 的 Azure Monitor 进行计费：
 
 - 从代理引入数据，并将其存储在工作区中。
+- 从来宾运行状况收集的运行状况状态 (预览) 
 - 基于日志和运行状况数据的警报规则。
 - 从警报规则发送的通知。
 

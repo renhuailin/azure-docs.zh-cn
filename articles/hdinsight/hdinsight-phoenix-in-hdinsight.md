@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: f98021d1e94b3796b2aeb6ba2e883e4e1380b8ca
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89504326"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004817"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
 
@@ -37,11 +37,11 @@ HBase 使用根据主行键按字典顺序排序的单个索引。 只能通过�
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-与执行单一索引查询相比，此方法可以大幅提升性能。 这种类型的辅助索引是**涵盖索引**，包含查询中包括的所有列。 因此，表查找不是必需的，并且索引满足整个查询的要求。
+与执行单一索引查询相比，此方法可以大幅提升性能。 这种类型的辅助索引是 **涵盖索引**，包含查询中包括的所有列。 因此，表查找不是必需的，并且索引满足整个查询的要求。
 
 ### <a name="views"></a>视图
 
-Phoenix 视图可以克服一项 HBase 限制：创建 100 个以上的物理表时，性能开始下降。 Phoenix 视图可让多个虚拟表共享一个 HBase 基础物理表。**
+Phoenix 视图可以克服一项 HBase 限制：创建 100 个以上的物理表时，性能开始下降。 Phoenix 视图可让多个虚拟表共享一个 HBase 基础物理表。
 
 创建 Phoenix 视图的过程类似于使用标准的 SQL 视图语法。 两者的一项差别在于，除了继承自基表的列以外，还可为视图定义列。 此外，可以添加新的 `KeyValue` 列。
 
@@ -97,9 +97,9 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 ### <a name="salted-tables"></a>加盐表
 
-向 HBase 写入包含顺序键的记录时，可能会出现*区域服务器热点*。 即使群集中包含多个区域服务器，也只会在一个服务器中进行写入。 这种集中化会产生热点问题，即，写入工作负荷不会分散在所有可用的区域服务器之间，而是只有一个服务器处理该负载。 由于每个区域都具有预定义的最大大小，因此当某个区域达到该大小限制时，它将被拆分为两个小区域。 在这种情况下，其中一个新区域会接收所有新记录，因而变成了新的热点。
+向 HBase 写入包含顺序键的记录时，可能会出现 *区域服务器热点*。 即使群集中包含多个区域服务器，也只会在一个服务器中进行写入。 这种集中化会产生热点问题，即，写入工作负荷不会分散在所有可用的区域服务器之间，而是只有一个服务器处理该负载。 由于每个区域都具有预定义的最大大小，因此当某个区域达到该大小限制时，它将被拆分为两个小区域。 在这种情况下，其中一个新区域会接收所有新记录，因而变成了新的热点。
 
-若要缓解此问题并提高性能，请预先拆分表，以便均衡使用所有的区域服务器。 Phoenix 提供加盐表，以透明方式将加盐字节添加到特定表的行键。** 该表已在加盐字节边界上预先拆分，确保在表的初始阶段，在区域服务器之间均衡分配负载。 此方法可在所有可用的区域服务器之间分配写入工作负荷，从而提高了写入和读取性能。 若要给表加盐，请在创建表时指定 `SALT_BUCKETS` 表属性：
+若要缓解此问题并提高性能，请预先拆分表，以便均衡使用所有的区域服务器。 Phoenix 提供加盐表，以透明方式将加盐字节添加到特定表的行键。 该表已在加盐字节边界上预先拆分，确保在表的初始阶段，在区域服务器之间均衡分配负载。 此方法可在所有可用的区域服务器之间分配写入工作负荷，从而提高了写入和读取性能。 若要给表加盐，请在创建表时指定 `SALT_BUCKETS` 表属性：
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -126,11 +126,11 @@ HDInsight HBase 群集提供 [Ambari UI](hdinsight-hadoop-manage-ambari.md) 用�
 
 1. 若要启用或禁用 Phoenix 并控制 Phoenix 的查询超时设置，请使用 Hadoop 用户凭据登录到 Ambari Web UI (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`)。
 
-2. 在左侧菜单中的服务列表内选择“HBase”，然后选择“配置”选项卡。********
+2. 在左侧菜单中的服务列表内选择“HBase”，然后选择“配置”选项卡。
 
     ![Apache Ambari HBase 配置](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
-3. 找到“Phoenix SQL”配置部分，启用或禁用 Phoenix，并设置查询超时。****
+3. 找到“Phoenix SQL”配置部分，启用或禁用 Phoenix，并设置查询超时。
 
     ![Ambari“Phoenix SQL”配置部分](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 

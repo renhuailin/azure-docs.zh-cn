@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.date: 11/25/2020
+ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89596103"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932585"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -56,7 +56,7 @@ ms.locfileid: "89596103"
 
 使用以下步骤通过 Azure 数据工厂 UI 创建自承载 IR。
 
-1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
+1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](./author-management-hub.md)。
 
    ![主页“管理”按钮](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -102,29 +102,28 @@ ms.locfileid: "89596103"
 按如下所示使用该应用程序：
 
 ```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["<password>"] -Loglevel <logLevel> ]
+dmgcmd ACTION args...
 ```
 
-下面是应用程序参数和属性的详细信息： 
+下面是应用程序的操作和参数的详细信息： 
 
-| 属性                                                    | 说明                                                  | 必须 |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | 否       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | 否       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | 在当前节点上启用远程访问以设置高可用性群集。 或者直接对自承载 IR 启用凭据设置，而无需使用 Azure 数据工厂。 如果采用后一种做法，可以在同一网络中的远程计算机上使用 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet。 | 否       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | 启用当节点在容器中运行时以远程方式访问当前节点。 | 否       |
-| **DisableRemoteAccess**                                         | 禁用对当前节点的远程访问。 多节点设置需要远程访问。 即使禁用了远程访问，也仍可正常运行 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet。 只要在自承载 IR 节点所在的同一台计算机上执行该 cmdlet，就可以实现此行为。 | 否       |
-| **Key** "`<AuthenticationKey>`"                                 | 覆盖或更新以前的身份验证密钥。 请谨慎执行此操作。 如果密钥属于新的集成运行时，以前的自承载 IR 节点可能会脱机。 | 否       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | 为当前节点生成备份文件。 备份文件包含节点密钥和数据存储凭据。 | 否       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | 从备份文件还原节点。                          | 否       |
-| **重启**                                                     | 重启自承载集成运行时主机服务。   | 否       |
-| **启动**                                                       | 启动自承载集成运行时主机服务。     | 否       |
-| **停止**                                                        | 停止自承载集成运行时主机服务。        | 否       |
-| **StartUpgradeService**                                         | 启动自承载集成运行时升级服务。       | 否       |
-| **StopUpgradeService**                                          | 停止自承载集成运行时升级服务。        | 否       |
-| **TurnOnAutoUpdate**                                            | 启用自承载集成运行时自动更新。        | 否       |
-| **TurnOffAutoUpdate**                                           | 禁用自承载集成运行时自动更新。       | 否       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | 将 DIAHostService 设置为以新帐户的形式运行。 对系统帐户和虚拟帐户使用空密码 ""。 | 否       |
+|ACTION|args|说明|
+|------|----|-----------|
+|rn<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。|
+|时期<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|在当前节点上启用远程访问以设置高可用性群集。 或者直接对自承载 IR 启用凭据设置，而无需使用 Azure 数据工厂。 如果采用后一种做法，可以在同一网络中的远程计算机上使用 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet。|
+|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|启用当节点在容器中运行时以远程方式访问当前节点。|
+|dra<br/>-DisableRemoteAccess||禁用对当前节点的远程访问。 多节点设置需要远程访问。 即使禁用了远程访问，也仍可正常运行 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet。 只要在自承载 IR 节点所在的同一台计算机上执行该 cmdlet，就可以实现此行为。|
+|温度<br/>-Key|"`<AuthenticationKey>`"|覆盖或更新以前的身份验证密钥。 请谨慎执行此操作。 如果密钥属于新的集成运行时，以前的自承载 IR 节点可能会脱机。|
+|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|为当前节点生成备份文件。 备份文件包含节点密钥和数据存储凭据。|
+|-ibf,<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|从备份文件还原节点。|
+|迅驰<br/>-Restart||重启自承载集成运行时主机服务。|
+|些<br/>-Start||启动自承载集成运行时主机服务。|
+|关心<br/>-Stop||停止自承载集成运行时主机服务。|
+|sus<br/>-StartUpgradeService||启动自承载集成运行时升级服务。|
+|tu<br/>-StopUpgradeService||停止自承载集成运行时升级服务。|
+|-tonau,<br/>-TurnOnAutoUpdate||启用自承载集成运行时自动更新。|
+|-toffau,<br/>-TurnOffAutoUpdate||禁用自承载集成运行时自动更新。|
+|ssa<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|将 DIAHostService 设置为以新帐户的形式运行。 对系统帐户和虚拟帐户使用空密码 ""。|
 
 
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
@@ -138,7 +137,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 数据开发人员使用 PowerShell cmdlet 在 Azure 数据工厂中创建自承载集成运行时。 目前，Azure 门户不支持此功能。
 1. 数据开发人员为本地数据存储创建一个链接服务。 为此，开发人员可以指定服务用来连接数据存储的自承载集成运行时实例。
 1. 自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将凭据保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。
-1. Azure 数据工厂与自承载集成运行时通信，以计划和管理作业。 通信是通过使用共享 [Azure 服务总线中继](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay)连接的控制通道进行的。 需要运行某个活动作业时，数据工厂会将请求以及任何凭据信息排队。 如果凭据尚未存储在自承载集成运行时中，则它就会执行此操作。 自承载集成运行时在轮询队列后启动作业。
+1. Azure 数据工厂与自承载集成运行时通信，以计划和管理作业。 通信是通过使用共享 [Azure 服务总线中继](../azure-relay/relay-what-is-it.md#wcf-relay)连接的控制通道进行的。 需要运行某个活动作业时，数据工厂会将请求以及任何凭据信息排队。 如果凭据尚未存储在自承载集成运行时中，则它就会执行此操作。 自承载集成运行时在轮询队列后启动作业。
 1. 自承载集成运行时在本地存储与云存储之间复制数据。 复制方向取决于复制活动在数据管道中的配置方式。 对于此步骤，自承载集成运行时直接通过安全 HTTPS 通道与基于云的存储服务（如 Azure Blob 存储）通信。
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自承载 IR 的注意事项
@@ -147,11 +146,10 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 在一台计算机上只能安装一个自承载集成运行时实例。 如果有两个数据工厂需要访问本地数据源，请使用[自承载 IR 共享功能](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory)共享自承载集成 IR，或者在两台本地计算机（每个数据工厂一台）上安装自承载 IR。  
 - 自承载集成运行时不需要位于数据源所在的计算机上。 但是，使自承载集成运行时更接近于数据源会减少自承载集成运行时连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装自承载集成运行时。 当自承载集成运行时和数据源位于不同的计算机上时，自承载集成运行时不会与数据源争用资源。
 - 可将不同计算机上的多个自承载集成运行时连接到同一本地数据源。 例如，如果有两个自承载集成运行时为两个数据工厂提供服务，则可以将同一个本地数据源注册到这两个数据工厂。
-- 如果已在计算机中安装了为 Power BI 方案提供服务的网关，那么在其他计算机上安装用于数据工厂的单独自承载集成运行时。
 - 使用自承载集成运行时来支持 Azure 虚拟网络中的数据集成。
 - 即使使用 Azure ExpressRoute，也要将数据源视为本地数据源（位于防火墙之后）。 使用自承载集成运行时将服务连接到数据源。
 - 即使数据存储位于云中的 Azure 基础结构即服务 (IaaS) 虚拟机上，也应该使用自承载集成运行时。
-- 在启用了符合 FIPS 标准的加密的 Windows 服务器上安装的自承载集成运行时中的任务可能会失败。 要解决此问题，请禁用服务器上符合 FIPS 标准的加密。 若要禁用符合 FIPS 标准的加密，请将以下注册表子项的值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。
+- 在启用了符合 FIPS 标准的加密的 Windows 服务器上安装的自承载集成运行时中的任务可能会失败。 若要解决此问题，你有两个选择：将“凭据/机密”值存储在 Azure Key Vault 中，或在服务器上禁用符合 FIPS 规范的加密。 若要禁用符合 FIPS 标准的加密，请将以下注册表子项的值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。 如果使用 [自承载集成运行时作为 SSIS 集成运行时的代理](./self-hosted-integration-runtime-proxy-ssis.md)，则可启用 FIPS 兼容的加密，并在将数据从本地移动到 Azure Blob 存储作为暂存区域时使用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -171,7 +169,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 如果主机计算机进入休眠状态，则自承载集成运行时不会响应数据请求。 安装自承载集成运行时之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则自承载集成运行时安装程序会通过消息发出提示。
 - 只有计算机管理员才能成功安装和配置自承载集成运行时。
 - 复制活动按特定的频率运行。 计算机上的处理器和 RAM 使用率遵循相同的高峰期和空闲期模式。 此外，资源使用率在很大程度上取决于移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
-- 在提取 Parquet、ORC 或 Avro 格式的数据时，任务可能会失败。 有关 Parquet 的详细信息，请参阅 [Azure 数据工厂中的 Parquet 格式](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)。 文件创建活动在自承载集成计算机上运行。 必须满足以下先决条件才能按预期方式运行文件创建活动：
+- 在提取 Parquet、ORC 或 Avro 格式的数据时，任务可能会失败。 有关 Parquet 的详细信息，请参阅 [Azure 数据工厂中的 Parquet 格式](./format-parquet.md#using-self-hosted-integration-runtime)。 文件创建活动在自承载集成计算机上运行。 必须满足以下先决条件才能按预期方式运行文件创建活动：
     - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) 包 (x64)
     - [Adopt OpenJDK](https://adoptopenjdk.net/) 等 JRE 提供商提供的 Java Runtime (JRE) 版本 8。 确保已设置 `JAVA_HOME` 环境变量。
 
@@ -190,7 +188,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 直接运行托管标识文件，或将它保存到硬盘再运行它。
 1. 在“欢迎”窗口中选择语言，然后选择“下一步” 。
 1. 接受 Microsoft 软件许可条款，然后选择“下一步”。
-1. 选择用于安装自承载集成运行时的**文件夹**，然后选择“下一步”。
+1. 选择用于安装自承载集成运行时的 **文件夹**，然后选择“下一步”。
 1. 在“准备安装”页上，选择“安装”。 
 1. 选择“完成”以完成安装。
 1. 使用 PowerShell 获取身份验证密钥。 下面是检索身份验证密钥的 PowerShell 示例：
@@ -205,7 +203,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
     1. 或者选择“显示身份验证密钥”，以查看密钥文本。
 
-    1. 选择“注册”。
+    1. 选择“注册”  。
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
 
@@ -214,7 +212,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 * 更高的自承载集成运行时可用性，使其不再是大数据解决方案或与数据工厂集成的云数据中的单一故障点。 这种可用性有助于确保使用最多 4 个节点来实现连续性。
 * 在本地和云数据存储之间移动数据期间提高了性能和吞吐量。 获取有关[性能比较](copy-activity-performance.md)的更多信息。
 
-可以通过从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时来关联多个节点。 然后，根据[此教程](tutorial-hybrid-copy-powershell.md)中所述，使用通过 **New-AzDataFactoryV2IntegrationRuntimeKey** cmdlet 获取的任一身份验证密钥来注册自承载集成运行时。
+可以通过从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时来关联多个节点。 然后，根据 [此教程](tutorial-hybrid-copy-powershell.md)中所述，使用通过 **New-AzDataFactoryV2IntegrationRuntimeKey** cmdlet 获取的任一身份验证密钥来注册自承载集成运行时。
 
 > [!NOTE]
 > 无需创建新的自承载集成运行时即可关联每个节点。 可以在另一台计算机上安装自承载集成运行时，并使用同一身份验证密钥注册它。
@@ -288,7 +286,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自承载 IR 共享的已知限制
 
-* 要在其中创建链接 IR 的数据工厂必须有一个[托管标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)。 默认情况下，在 Azure 门户或 PowerShell cmdlet 中创建的数据工厂已隐式创建了托管标识。 但是，如果数据工厂是通过 Azure 资源管理器模板或 SDK 创建的，则必须显式设置 **Identity** 属性。 此设置确保资源管理器创建包含托管标识的数据工厂。
+* 要在其中创建链接 IR 的数据工厂必须有一个[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。 默认情况下，在 Azure 门户或 PowerShell cmdlet 中创建的数据工厂已隐式创建了托管标识。 但是，如果数据工厂是通过 Azure 资源管理器模板或 SDK 创建的，则必须显式设置 **Identity** 属性。 此设置确保资源管理器创建包含托管标识的数据工厂。
 
 * 支持此功能的数据工厂 .NET SDK 必须是 1.1.0 或更高版本。
 
@@ -296,7 +294,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 * 共享功能仅适用于同一 Azure AD 租户中的数据工厂。
 
-* 对于 Azure AD [来宾用户](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)，UI 中的搜索功能（通过使用搜索关键字列出所有数据工厂）将[不起作用](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要来宾用户是数据工厂的所有者，你就可以在不使用搜索功能的情况下共享 IR。 对于需要共享 IR 的数据工厂的托管标识，请在“分配权限”框中输入该托管标识，然后在数据工厂 UI 中选择“添加”。
+* 对于 Azure AD [来宾用户](../active-directory/governance/manage-guest-access-with-access-reviews.md)，UI 中的搜索功能（通过使用搜索关键字列出所有数据工厂）将[不起作用](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要来宾用户是数据工厂的所有者，你就可以在不使用搜索功能的情况下共享 IR。 对于需要共享 IR 的数据工厂的托管标识，请在“分配权限”框中输入该托管标识，然后在数据工厂 UI 中选择“添加”。
 
   > [!NOTE]
   > 此功能只能在数据工厂 V2 中使用。
@@ -332,13 +330,13 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 确保在企业防火墙、自承载集成运行时计算机上的 Windows 防火墙和数据存储上正确启用防火墙规则。 启用这些规则可以让自承载集成运行时成功连接到源和接收器。 为复制操作涉及的每个数据存储启用规则。
 
-例如，若要从本地数据存储复制到 SQL 数据库接收器或 Azure Synapse Analytics (以前的 SQL 数据仓库) 接收器，请执行以下步骤：
+例如，若要从本地数据存储复制到 SQL 数据库接收器或 Azure Synapse Analytics 接收器，请执行以下步骤：
 
 1. 对于 Windows 防火墙和企业防火墙，允许 1433 端口上的出站 TCP 通信。
 1. 配置 SQL 数据库的防火墙设置，将自承载集成运行时计算机的 IP 地址添加到允许的 IP 地址列表。
 
 > [!NOTE]
-> 如果防火墙不允许出站端口 1433，则自承载集成运行时无法直接访问 SQL 数据库。 在这种情况下，可以使用 SQL 数据库和 Azure Synapse Analytics 的 [分阶段复制](copy-activity-performance.md) 。 对于此方案，只需将 HTTPS（端口 443）用于数据移动。
+> 如果防火墙不允许出站端口 1433，则自承载集成运行时无法直接访问 SQL 数据库。 在这种情况下，可对 SQL 数据库和 Azure Synapse Analytics 使用[分阶段复制](copy-activity-performance.md)。 对于此方案，只需将 HTTPS（端口 443）用于数据移动。
 
 ## <a name="proxy-server-considerations"></a>代理服务器注意事项
 
@@ -396,7 +394,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
     </system.net>
     ```
 
-    允许在代理标记中使用其他属性，以指定所需的设置（如 `scriptLocation`）。 有关语法，请参阅 [\<proxy\> 元素（网络设置）](https://msdn.microsoft.com/library/sa91de1e.aspx)。
+    允许在代理标记中使用其他属性，以指定所需的设置（如 `scriptLocation`）。 有关语法，请参阅 [\<proxy\> 元素（网络设置）](/dotnet/framework/configure-apps/file-schema/network/proxy-element-network-settings)。
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>

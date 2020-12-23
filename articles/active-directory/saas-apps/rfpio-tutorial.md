@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6732857e278285071c9d36c629920ad9e67368f2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c4e838afa867a7fb1e7fa8f582bc8879c24056a9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528516"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92506014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>教程：Azure Active Directory 与 RFPIO 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88528516"
 * 可以让用户使用其 Azure AD 帐户自动登录到 RFPIO（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88528516"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88528516"
 
 4. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置部分”中执行以下步骤   ：
 
-    ![RFPIO 域和 URL 单一登录信息](common/idp-identifier.png)
+    ![显示“基本 SAML 配置”的屏幕截图，你可以在其中输入“标识符”。](common/idp-identifier.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.rfpio.com`
 
@@ -107,7 +107,7 @@ ms.locfileid: "88528516"
 
     c. 在“中继状态”文本框中输入的字符串值  。 请联系 [RFPIO 支持团队](https://www.rfpio.com/contact/)获取此值。
 
-    ![RFPIO 域和 URL 单一登录信息](common/idp-preintegrated-relay.png)
+    ![显示“设置其他 URL”的屏幕截图。](common/idp-preintegrated-relay.png)
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -138,23 +138,23 @@ ms.locfileid: "88528516"
 
 1. 单击左下角的下拉列表。
 
-    ![配置单一登录](./media/rfpio-tutorial/app1.png)
+    ![显示窗格底部向下键的屏幕截图。](./media/rfpio-tutorial/app1.png)
 
 1. 单击“组织设置”  。 
 
-    ![配置单一登录](./media/rfpio-tutorial/app2.png)
+    ![显示选择了“组织设置”的屏幕截图。](./media/rfpio-tutorial/app2.png)
 
 1. 单击“功能和集成”  。
 
-    ![配置单一登录](./media/rfpio-tutorial/app4.png)
+    ![显示从“设置”选择了“功能和集成”的屏幕截图。](./media/rfpio-tutorial/app4.png)
 
 1. 在 SAML SSO 配置中，单击“编辑”   。
 
-    ![配置单一登录](./media/rfpio-tutorial/app3.png)
+    ![显示“SAML SSO 配置”的屏幕截图，其中着标记显示了“编辑”按钮。](./media/rfpio-tutorial/app3.png)
 
 1. 在本部分中，执行以下操作：
 
-    ![配置单一登录](./media/rfpio-tutorial/app5.png)
+    ![显示启用了“SAML”的“SAML SSO 配置”的屏幕截图。](./media/rfpio-tutorial/app5.png)
     
     a. 复制下载的元数据 XML 文件的内容，然后将其粘贴到“标识配置”字段   。
 
@@ -223,23 +223,23 @@ ms.locfileid: "88528516"
 
 1. 单击左下角的下拉列表。
 
-    ![配置单一登录](./media/rfpio-tutorial/app1.png)
+    ![显示窗格底部向下键的屏幕截图。](./media/rfpio-tutorial/app1.png)
 
 1. 单击“组织设置”  。 
 
-    ![配置单一登录](./media/rfpio-tutorial/app2.png)
+    ![显示选择了“组织设置”的屏幕截图。](./media/rfpio-tutorial/app2.png)
 
 1. 单击“团队成员”  。
 
-    ![配置单一登录](./media/rfpio-tutorial/app6.png)
+    ![显示从“设置”选择了“团队成员”的屏幕截图。](./media/rfpio-tutorial/app6.png)
 
 1. 单击“添加成员”  。
 
-    ![配置单一登录](./media/rfpio-tutorial/app7.png)
+    ![显示“添加成员”按钮的屏幕截图。](./media/rfpio-tutorial/app7.png)
 
 1. 在“添加新成员”部分  。 执行以下操作：
 
-    ![配置单一登录](./media/rfpio-tutorial/app8.png)
+    ![显示“添加新成员”的屏幕截图，你可以在其中输入所述值。](./media/rfpio-tutorial/app8.png)
 
     a. 在“每行输入一个电子邮件”字段输入电子邮件地址   。
 
@@ -254,13 +254,12 @@ ms.locfileid: "88528516"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 RFPIO 磁贴时，应当会自动登录到为其设置了 SSO 的 RFPIO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 RFPIO 磁贴时，应当会自动登录到为其设置了 SSO 的 RFPIO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

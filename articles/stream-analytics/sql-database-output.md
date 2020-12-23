@@ -1,24 +1,24 @@
 ---
-title: Azure 流分析中的 azure SQL 数据库输出
-description: 本文介绍 Azure SQL 数据库作为 Azure 流分析的输出。
+title: Azure 流分析中的 Azure SQL 数据库输出
+description: 本文介绍作为 Azure 流分析的输出的 Azure SQL 数据库。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 4310bd94edd5ebe14eab40b6d19e2bacbdd1b03c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ac2c9cb1710c4b4f67ba2aa06707d08cc45d4907
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906226"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459249"
 ---
-# <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 流分析中的 azure SQL 数据库输出
+# <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 流分析中的 Azure SQL 数据库输出
 
-可以将 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 Azure 流分析作业将写入 SQL 数据库中的现有表。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项将 [Azure Synapse Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) 指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
+可以将 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 Azure 流分析作业将写入到 SQL 数据库的现有表中。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项将 [Azure Synapse Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) 指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
 
-还可以使用 [Azure SQL 托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)作为输出。 必须[在 SQL 托管实例中配置公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 还可以通过手动配置以下设置来支持运行附加了数据库的 SQL Server 的 Azure 虚拟机。
+还可以使用 [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)作为输出。 必须[在 SQL 托管实例中配置公共终结点](../azure-sql/managed-instance/public-endpoint-configure.md)，然后在 Azure 流分析中手动配置以下设置。 还可以通过手动配置以下设置来支持运行附加了数据库的 SQL Server 的 Azure 虚拟机。
 
 ## <a name="output-configuration"></a>输出配置
 
@@ -35,7 +35,7 @@ ms.locfileid: "90906226"
 |继承分区方案| 一个用于继承先前查询步骤的分区方案，以启用具有多个表的写入器的完全并行拓扑的选项。 有关详细信息，请参阅从 [Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。|
 |最大批数| 与每个大容量插入事务一起发送的推荐记录数上限。|
 
-有两个适配器可用于从 Azure 流分析输出到 Azure Synapse Analytics（旧称为 SQL 数据仓库）：SQL 数据库和 Azure Synapse。 如果满足以下任一条件，建议选择 Azure Synapse Analytics 适配器，而不是 SQL 数据库适配器：
+有两个适配器可用于从 Azure 流分析输出到 Azure Synapse Analytics： SQL 数据库和 Azure Synapse。 如果以下任何条件成立，则建议选择 Azure Synapse Analytics 适配器，而不是 SQL 数据库适配器：
 
 * **吞吐量**：如果现在或未来的预期吞吐量大于 10 MB/秒，请使用 Azure Synapse 输出选项来获得更好的性能。
 
@@ -43,11 +43,11 @@ ms.locfileid: "90906226"
 
 ## <a name="partitioning"></a>分区
 
-分区需要启用，并基于查询中的 PARTITION BY 子句。 当 "继承分区" 选项处于启用状态时，它将按照 [完全可并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。 若要详细了解在将数据载入 Azure SQL 数据库时如何提高写入吞吐量性能，请参阅[从 Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。
+需要启用分区，且分区基于查询中的 PARTITION BY 子句。 启用“继承分区”选项后，该选项将遵循[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 若要详细了解在将数据载入 Azure SQL 数据库时如何提高写入吞吐量性能，请参阅[从 Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。
 
 ## <a name="output-batch-size"></a>输出批大小
 
-您可以使用 **最大批处理计数**来配置最大消息大小。 默认的最大值为10000，默认的最小值为每一个大容量插入100行。 有关详细信息，请参阅 [AZURE SQL 限制](../sql-database/sql-database-resource-limits.md)。 每个批最初是按照最大批计数批量插入的。 根据 SQL 的可重试错误对半拆分批（直到达到最小批计数）。
+可以使用“最大批处理计数”来配置最大消息大小。 每次批量插入操作的默认最大值为 10,000 行，最小值为 100 行。 有关详细信息，请参阅 [Azure SQL 限制](../azure-sql/database/resource-limits-logical-server.md)。 每个批最初是按照最大批计数批量插入的。 根据 SQL 的可重试错误对半拆分批（直到达到最小批计数）。
 
 ## <a name="next-steps"></a>后续步骤
 

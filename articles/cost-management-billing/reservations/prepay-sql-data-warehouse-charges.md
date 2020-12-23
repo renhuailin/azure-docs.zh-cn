@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ca83760f09ea29ba0b21a0f7177dd3f3188c44cd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686133"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151527"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>使用预留容量节省 Azure Synapse Analytics 费用成本
 
@@ -27,7 +27,7 @@ ms.locfileid: "88686133"
 
 有关定价信息，请参阅 [Azure Synapse Analytics 预留容量套餐](https://azure.microsoft.com/pricing/details/synapse-analytics/)。
 
-可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中购买 Azure Synapse Analytics 预留容量。 通过[提前付款或按月付款](monthly-payments-reservations.md)的方式为预留付款。 购买预留容量：
+可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中购买 Azure Synapse Analytics 预留容量。 通过[提前付款或按月付款](./prepare-buy-reservation.md)的方式为预留付款。 购买预留容量：
 
 - 你必须拥有至少一个企业或即用即付订阅的“所有者”角色。
 - 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项  。 如果禁用了该设置，则必须是 EA 管理员。

@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89567803"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675698"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>有关教育中心的常见问题
 
@@ -46,7 +46,7 @@ ms.locfileid: "89567803"
 
 ### <a name="what-is-microsoft-learn"></a>什么是 Microsoft Learn？
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) 是一个免费的在线学习平台，在该平台，你可以按自己的节奏来学习 Azure 技术。 学习路径将模块组合在一起，使你能够从基础知识开始，然后转向解决实际难题的高级方法。
+[Microsoft Learn](/learn/) 是一个免费的在线学习平台，在该平台，你可以按自己的节奏来学习 Azure 技术。 学习路径将模块组合在一起，使你能够从基础知识开始，然后转向解决实际难题的高级方法。
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>面向学生的 Azure 是可用于生产，还是只能用于开发？
 
@@ -97,7 +97,7 @@ ms.locfileid: "89567803"
 
 ### <a name="what-is-microsoft-learn"></a>什么是 Microsoft Learn？
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) 是一个免费的在线学习平台，在该平台，你可以按自己的节奏学习 Azure 技术。 学习路径将模块组合在一起，使你能够从基础知识开始，然后转向解决实际难题的高级方法。
+[Microsoft Learn](/learn/) 是一个免费的在线学习平台，在该平台，你可以按自己的节奏学习 Azure 技术。 学习路径将模块组合在一起，使你能够从基础知识开始，然后转向解决实际难题的高级方法。
 
 ## <a name="azure-academic-grant"></a>Azure 学术授权
 
@@ -252,8 +252,8 @@ Windows Server<br>
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>如何查找我的订阅者 ID？
 
-- **首次在计划中注册时**：订阅者 ID 号显示在你接收的订阅欢迎电子邮件中。
-- **如果续订了订阅**：订阅者 ID 显示在订阅管理员接收的续订电子邮件中。
+- **首次在计划中注册时** ：订阅者 ID 号显示在你接收的订阅欢迎电子邮件中。
+- **如果续订了订阅** ：订阅者 ID 显示在订阅管理员接收的续订电子邮件中。
 
 订阅者 ID 也显示在 Visual Studio 订阅门户中。 登录后，可在“我的帐户”页上的“我的订阅”下查看 。
 

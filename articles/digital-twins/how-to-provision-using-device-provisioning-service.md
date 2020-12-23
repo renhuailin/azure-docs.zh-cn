@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 0a18e6cef568afa8a0092fc06d8f6bb526739b2a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561425"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145797"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用设备预配服务 (DPS) 自动管理 Azure 数字孪生中的设备
 
@@ -30,17 +30,17 @@ ms.locfileid: "90561425"
 
 你将在本文后面的设置实例时需要以下值。 如果需要再次收集这些值，请使用下面的链接来了解相关说明。
 * Azure 数字孪生实例主机名（[在门户中查找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)）
-* Azure 事件中心连接字符串 **_连接字符串_** ([在门户中查找](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal)) 
+* Azure 事件中心连接字符串 **_连接字符串_** ( [在门户中查找](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal)) 
 
-此示例还使用设备 **模拟器** ，其中包括使用设备预配服务的预配。 设备模拟器位于此处： [Azure 数字孪生和 IoT 中心集成示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 导航到示例链接，并选择标题下面的 " *下载 ZIP* " 按钮，获取计算机上的示例项目。 解压缩已下载文件夹。
+此示例还使用设备 **模拟器** ，其中包括使用设备预配服务的预配。 设备模拟器位于此处： [Azure 数字孪生和 IoT 中心集成示例](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 导航到示例链接，并选择标题下面的 " *下载 ZIP* " 按钮，获取计算机上的示例项目。 解压缩已下载文件夹。
 
-设备模拟器基于 **Node.js**版本 10.0. x 或更高版本。 [*准备开发环境*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) 介绍如何在 Windows 或 Linux 上安装本教程 Node.js。
+设备模拟器基于 **Node.js** 版本 10.0. x 或更高版本。 [*准备开发环境*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) 介绍如何在 Windows 或 Linux 上安装本教程 Node.js。
 
 ## <a name="solution-architecture"></a>解决方案体系结构
 
 下图演示了此解决方案的体系结构，该解决方案使用 Azure 数字孪生与设备预配服务。 其中显示了设备预配和停用流。
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="在端到端方案中查看设备和多个 Azure 服务。数据在恒温器设备和 DPS 之间来回流动。数据还会从 DPS 流出到 IoT 中心，并通过名为 分配 的 Azure 功能通过 Azure 数字孪生。手动 删除设备 操作中的数据通过 IoT 中心流向 > 事件中心 > Azure Functions > Azure 数字孪生。":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="在端到端方案中查看设备和多个 Azure 服务。数据在恒温器设备和 DPS 之间来回流动。数据还会从 DPS 流出到 IoT 中心，并通过名为 &quot;分配&quot; 的 Azure 功能通过 Azure 数字孪生。手动 &quot;删除设备&quot; 操作中的数据通过 IoT 中心流向 > 事件中心 > Azure Functions > Azure 数字孪生。":::
 
 本文划分为两个部分：
 * [*使用设备预配服务自动设置设备*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ ms.locfileid: "90561425"
 
 在本部分中，会将设备预配服务附加到 Azure 数字孪生，通过以下路径自动设置设备。 这是 [之前](#solution-architecture)所示的完整体系结构的摘录。
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="预配流-解决方案体系结构关系图摘录，其中包含流的数字标签部分。数据在恒温器设备与 DPS (1 之间来回流动，> 设备 > DPS，5用于 DPS 设备) 。数据还会从 DPS 流出到 IoT 中心 (4) ，以及通过标记为 分配 (2) 的 Azure 功能向 Azure 数字孪生 (3) 。":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="预配流-解决方案体系结构关系图摘录，其中包含流的数字标签部分。数据在恒温器设备与 DPS (1 之间来回流动，> 设备 > DPS，5用于 DPS 设备) 。数据还会从 DPS 流出到 IoT 中心 (4) ，以及通过标记为 &quot;分配&quot; (2) 的 Azure 功能向 Azure 数字孪生 (3) 。":::
 
 下面是流程的说明：
 1. 设备联系 DPS 终结点，传递标识信息来证明其身份。
@@ -69,17 +69,17 @@ ms.locfileid: "90561425"
 
 创建将用于预配 IoT 设备的设备预配服务实例。 你可以使用以下 Azure CLI 说明，或使用 Azure 门户： [*快速入门：使用 Azure 门户设置 IoT 中心设备预配服务*](../iot-dps/quick-setup-auto-provision.md)。
 
-以下 Azure CLI 命令将创建设备预配服务。 你将需要指定名称、资源组和区域。 如果[计算机上安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
+以下 Azure CLI 命令将创建设备预配服务。 你将需要指定名称、资源组和区域。 如果[计算机上安装](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
 
-```azurecli
+```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
 ### <a name="create-an-azure-function"></a>创建 Azure 函数
 
-接下来，你将在 function app 中创建一个 HTTP 请求触发的函数。 可以使用端到端教程中创建的函数应用 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 或你自己的解决方案。
+接下来，你将在 function app 中创建一个 HTTP 请求触发的函数。 可以使用端到端教程中创建的函数应用 ( [*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 或你自己的解决方案。
 
-设备预配服务将在预配新设备的 [自定义分配策略](../iot-dps/how-to-use-custom-allocation-policies.md) 中使用此功能。 有关对 Azure 函数使用 HTTP 请求的详细信息，请参阅 [*Azure Functions 的 Azure http 请求触发器*](../azure-functions/functions-bindings-http-webhook-trigger.md)。
+设备预配服务将使用此 [函数来设置](../iot-dps/how-to-use-custom-allocation-policies.md) 新设备。 有关对 Azure 函数使用 HTTP 请求的详细信息，请参阅 [*Azure Functions 的 Azure http 请求触发器*](../azure-functions/functions-bindings-http-webhook-trigger.md)。
 
 在 function app 项目中，添加一个新函数。 同时，将新的 NuGet 包添加到项目： `Microsoft.Azure.Devices.Provisioning.Service` 。
 
@@ -189,7 +189,7 @@ namespace Samples.AdtIothub
             string dtId;
             string query = $"SELECT * FROM DigitalTwins T WHERE $dtId = '{regId}' AND IS_OF_MODEL('{dtmi}')";
             AsyncPageable<string> twins = client.QueryAsync(query);
-            
+
             await foreach (string twinJson in twins)
             {
                 // Get DT ID from the Twin
@@ -214,7 +214,8 @@ namespace Samples.AdtIothub
                 { "$metadata", meta }
             };
             twinProps.Add("Temperature", 0.0);
-            await client.CreateDigitalTwinAsync(dtId, System.Text.Json.JsonSerializer.Serialize<Dictionary<string, object>>(twinProps));
+
+            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(dtId, twinProps);
             log.LogInformation($"Twin '{dtId}' created in DT");
 
             return dtId;
@@ -233,32 +234,25 @@ namespace Samples.AdtIothub
 
 ### <a name="configure-your-function"></a>配置函数
 
-接下来，需要在函数应用中设置环境变量，并在其中包含对已创建的 Azure 数字孪生实例的引用。 如果你使用的是端到端教程 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) ，则将配置此设置。
+接下来，需要在函数应用中设置环境变量，并在其中包含对已创建的 Azure 数字孪生实例的引用。 如果你使用的是端到端教程 ( [*教程：连接端到端解决方案*](tutorial-end-to-end.md)) ，则将配置此设置。
 
 通过此 Azure CLI 命令添加设置：
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 确保为 function app 正确配置了权限和托管标识角色分配，如端对端教程中的向 [*函数应用分配权限*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) 部分中所述。
 
-<!-- 
-* Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
-
-```azurecli
-az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
-``` -->
-
 ### <a name="create-device-provisioning-enrollment"></a>创建设备预配注册
 
-接下来，需要使用 **自定义分配函数**在设备预配服务中创建注册。 按照有关自定义分配策略的设备预配服务一文的 [*创建注册*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) 和 [*派生唯一设备密钥*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) 部分中的说明进行操作。
+接下来，需要使用 **自定义分配函数** 在设备预配服务中创建注册。 按照有关自定义分配策略的设备预配服务一文的 [*创建注册*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) 和 [*派生唯一设备密钥*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) 部分中的说明进行操作。
 
-遍历该流时，你将通过在步骤中 **选择你想要将设备分配给集线器的方式**来将注册链接到刚刚创建的函数。 创建注册后，稍后将使用注册名称和主密钥或辅助 SAS 密钥来配置此项目的设备模拟器。
+遍历该流时，你将通过在步骤中 **选择你想要将设备分配给集线器的方式** 来将注册链接到刚刚创建的函数。 创建注册后，稍后将使用注册名称和主密钥或辅助 SAS 密钥来配置此项目的设备模拟器。
 
 ### <a name="set-up-the-device-simulator"></a>设置设备模拟器
 
-此示例使用设备模拟器，其中包括使用设备预配服务的预配。 设备模拟器位于此处： [Azure 数字孪生和 IoT 中心集成示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 如果尚未下载该示例，请导航到示例链接，并选择标题下面的 " *下载 ZIP* " 按钮，立即获取该示例。 解压缩已下载文件夹。
+此示例使用设备模拟器，其中包括使用设备预配服务的预配。 设备模拟器位于此处： [Azure 数字孪生和 IoT 中心集成示例](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 如果尚未下载该示例，请导航到示例链接，并选择标题下面的 " *下载 ZIP* " 按钮，立即获取该示例。 解压缩已下载文件夹。
 
 打开命令窗口并导航到已下载的文件夹，然后导航到 *设备模拟器* 目录。 使用以下命令安装项目的依赖项：
 
@@ -266,7 +260,7 @@ az functionapp config appsettings set --settings "AdtAppId=<Application (client)
 npm install
 ```
 
-接下来，将该 *. 模板* 文件复制到名为 *env*的新文件，并填写以下设置：
+接下来，将该 *. 模板* 文件复制到名为 *env* 的新文件，并填写以下设置：
 
 ```cmd
 PROVISIONING_HOST = "global.azure-devices-provisioning.net"
@@ -293,7 +287,7 @@ node .\adt_custom_register.js
 
 由于在本文中设置的流的结果，设备将在 Azure 数字孪生中自动注册。 使用以下 [Azure 数字孪生 CLI](how-to-use-cli.md) 命令在创建的 Azure 数字孪生实例中查找设备的克隆。
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -304,7 +298,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 在本部分中，会将 IoT 中心生命周期事件附加到 Azure 数字孪生，通过以下路径自动停用设备。 这是 [之前](#solution-architecture)所示的完整体系结构的摘录。
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="停用设备流-解决方案体系结构图的摘录，其中包含流的数字标签部分。显示的恒温器设备没有连接到关系图中的 Azure 服务。手动 删除设备 操作中的数据通过 IoT 中心流过 (1) > 事件中心 (2) > Azure Functions > Azure 数字孪生 (3) 。":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="停用设备流-解决方案体系结构图的摘录，其中包含流的数字标签部分。显示的恒温器设备没有连接到关系图中的 Azure 服务。手动 &quot;删除设备&quot; 操作中的数据通过 IoT 中心流过 (1) > 事件中心 (2) > Azure Functions > Azure 数字孪生 (3) 。":::
 
 下面是流程的说明：
 1. 外部或手动过程会触发在 IoT 中心内删除设备的操作。
@@ -318,18 +312,18 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 你现在需要创建 Azure [事件中心](../event-hubs/event-hubs-about.md)，该中心将用于接收 IoT 中心生命周期事件。 
 
 使用以下信息完成 [*创建事件中心*](../event-hubs/event-hubs-create.md) 快速入门中所述的步骤：
-* 如果使用的是端到端教程 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) ，可以重复使用为端到端教程创建的资源组。
-* 将你的事件中心命名为 *lifecycleevents*，或选择其他内容，并记住你创建的命名空间。 在接下来的部分中设置生命周期函数和 IoT 中心路由时，将使用这些设置。
+* 如果使用的是端到端教程 ( [*教程：连接端到端解决方案*](tutorial-end-to-end.md)) ，可以重复使用为端到端教程创建的资源组。
+* 将你的事件中心命名为 *lifecycleevents* ，或选择其他内容，并记住你创建的命名空间。 在接下来的部分中设置生命周期函数和 IoT 中心路由时，将使用这些设置。
 
 ### <a name="create-an-azure-function"></a>创建 Azure 函数
 
-接下来，你将在 function app 中创建一个事件中心触发的函数。 可以使用端到端教程中创建的函数应用 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 或你自己的解决方案。 
+接下来，你将在 function app 中创建一个事件中心触发的函数。 可以使用端到端教程中创建的函数应用 ( [*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 或你自己的解决方案。 
 
-命名你的事件中心触发器 *lifecycleevents*，并将事件中心触发器连接到你在上一步中创建的事件中心。 如果使用了不同的事件中心名称，请将其更改为在下面的触发器名称中匹配。
+命名你的事件中心触发器 *lifecycleevents* ，并将事件中心触发器连接到你在上一步中创建的事件中心。 如果使用了不同的事件中心名称，请将其更改为在下面的触发器名称中匹配。
 
 此函数将使用 IoT 中心设备生命周期事件停用现有的设备。 有关生命周期事件的详细信息，请参阅 [*IoT 中心非遥测事件*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。 有关将事件中心与 Azure 函数结合使用的详细信息，请参阅 [*适用于 Azure Functions 的 Azure 事件中心触发器*](../azure-functions/functions-bindings-event-hubs-trigger.md)。
 
-在已发布的函数应用中，添加 " *事件中心触发器*" 类型的新函数类，并粘贴以下代码。
+在已发布的函数应用中，添加 " *事件中心触发器* " 类型的新函数类，并粘贴以下代码。
 
 ```C#
 using System;
@@ -445,17 +439,17 @@ namespace Samples.AdtIothub
 
 ### <a name="configure-your-function"></a>配置函数
 
-接下来，需要在函数应用中设置环境变量，并在其中包含对已创建的 Azure 数字孪生实例的引用以及事件中心。 如果你使用的是端到端教程 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，将已配置第一个设置。
+接下来，需要在函数应用中设置环境变量，并在其中包含对已创建的 Azure 数字孪生实例的引用以及事件中心。 如果你使用的是端到端教程 ( [*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，将已配置第一个设置。
 
-将此设置添加 Azure CLI 命令。 如果[计算机上安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
+将此设置添加 Azure CLI 命令。 如果[计算机上安装](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 接下来，你将需要配置函数环境变量以连接到新创建的事件中心。
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -465,7 +459,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 现在需要设置 IoT 中心路由，以路由设备生命周期事件。 在这种情况下，你将专门侦听由标识的设备删除事件 `if (opType == "deleteDeviceIdentity")` 。 这会触发数字克隆项的删除，并最终确定设备及其数字克隆的停用。
 
-本文介绍了有关创建 IoT 中心路由的说明： [*使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点*](../iot-hub/iot-hub-devguide-messages-d2c.md)。 *非遥测事件*部分说明，你可以使用**设备生命周期事件**作为路由的数据源。
+本文介绍了有关创建 IoT 中心路由的说明： [*使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点*](../iot-hub/iot-hub-devguide-messages-d2c.md)。 *非遥测事件* 部分说明，你可以使用 **设备生命周期事件** 作为路由的数据源。
 
 此设置需要完成的步骤如下：
 1. 创建自定义 IoT 中心事件中心终结点。 此终结点应以 [*创建事件中心*](#create-an-event-hub) 部分中创建的事件中心为目标。
@@ -480,13 +474,13 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 在本文的前半 [部分](#auto-provision-device-using-device-provisioning-service)，已在 IoT 中心创建了一个设备，并在相应的数字克隆中创建了一个。 
 
-现在，请前往 IoT 中心，删除该设备 (你可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) 或在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 中执行此操作。 
+现在，请前往 IoT 中心，删除该设备 (你可以使用 [Azure CLI 命令](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest&preserve-view=true#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) 或在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 中执行此操作。 
 
 设备将自动从 Azure 数字孪生中删除。 
 
 使用以下 [Azure 数字孪生 CLI](how-to-use-cli.md) 命令验证是否已删除 Azure 数字孪生实例中的设备的克隆。
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -497,20 +491,14 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 如果不再需要本文中创建的资源，请按照以下步骤将其删除。
 
-使用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令删除资源组中的所有 Azure 资源。 这将删除资源组;Azure 数字孪生实例;IoT 中心和中心设备注册;事件网格主题和关联的订阅;事件中心命名空间以及这两个 Azure Functions 应用，包括存储等关联资源。
+使用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) 命令删除资源组中的所有 Azure 资源。 这将删除资源组;Azure 数字孪生实例;IoT 中心和中心设备注册;事件网格主题和关联的订阅;事件中心命名空间以及这两个 Azure Functions 应用，包括存储等关联资源。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
-<!-- 
-Next, delete the Azure AD app registration you created for your client app with this command:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-``` -->
 
 然后，删除从本地计算机下载的项目示例文件夹。
 

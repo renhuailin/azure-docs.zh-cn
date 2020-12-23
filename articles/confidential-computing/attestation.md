@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 70a17aacde67744eae74ca263200f2c65fbd300a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 86856d1f66b5b7d723c907c17d7179ffcd2b82ab
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994848"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565664"
 ---
 # <a name="attesting-sgx-enclaves"></a>证明 SGX Enclaves
 
@@ -30,11 +30,11 @@ Azure 上的机密计算提供基于 Intel SGX 的虚拟机，可隔离部分代
 
 必须使用与系统软件和芯片兼容的安全证明服务来实施证明。 可使用的服务示例包括
 
-- [Microsoft Azure 认证 (预览版) ](https://docs.microsoft.com/azure/attestation/overview) 或
+- [Microsoft Azure 认证 (预览版) ](../attestation/overview.md) 或
 - [Intel 的证明和预配服务](https://software.intel.com/sgx/attestation-services)
 
 
 这两者都与 Azure 机密计算兼容 Intel SGX 基础结构。 
 
 ## <a name="next-steps"></a>后续步骤
-尝试 [Microsoft Azure 证明示例 enclave 感知应用](https://docs.microsoft.com/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)。
+尝试 [Microsoft Azure 证明示例 enclave 感知应用](/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)。

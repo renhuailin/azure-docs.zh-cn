@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: f941c394c3dab0e5e6997898a48a248f6a0cfe42
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962003"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352433"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -66,7 +66,8 @@ static void Main(string[] args)
 }
 ```
 
-由于版本 3.x 使用默认的 .NET Core 配置 API，因此没有用于更改连接字符串名称的 API。
+> [!NOTE]
+> 由于版本 3.x 使用默认的 .NET Core 配置 API，因此没有用于更改连接字符串名称的 API。 请参阅 [使用 Visual Studio 开发和部署 Web 作业](webjobs-dotnet-deploy-vs.md)
 
 ### <a name="host-development-settings"></a>主机开发设置
 
@@ -986,7 +987,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-`SamplingPercentageEstimatorSettings` 对象配置[自适应采样](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)。 这意味着，在某些大容量方案中，Application Insights 会向服务器发送选定的遥测数据子集。
+`SamplingPercentageEstimatorSettings` 对象配置[自适应采样](../azure-monitor/app/sampling.md)。 这意味着，在某些大容量方案中，Application Insights 会向服务器发送选定的遥测数据子集。
 
 创建遥测工厂后，可将其传入 Application Insights 日志记录提供程序：
 

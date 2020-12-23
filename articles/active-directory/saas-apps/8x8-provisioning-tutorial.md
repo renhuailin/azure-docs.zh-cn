@@ -8,73 +8,73 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 850db53cbf88968a413d72527d76463e17aa8f5d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: MT
+ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361698"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558855"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教程：为 8x8 配置自动用户预配
 
-本教程介绍了在 8x8 Configuration Manager 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [8x8](https://www.8x8.com) 和取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在 8x8 管理控制台和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [8x8](https://www.8x8.com) 和取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
 > * 在 8x8 中创建用户
 > * 在用户不再有访问需求的情况下，在 8x8 中删除用户
 > * 使用户属性在 Azure AD 和 8x8 之间保持同步
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/8x8virtualoffice-tutorial)到 8x8（推荐）
+> * [单一登录](./8x8virtualoffice-tutorial.md)到 8x8（推荐）
 
 ## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
-* [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* 具有配置预配[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。
+* [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
+* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。
 * 任何级别的 8x8 X 系列订阅。
-* 在 [Configuration Manager](https://vo-cm.8x8.com) 中具有管理员权限的 8x8 用户帐户。
-* 已配置[使用 Azure AD 进行单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/8x8virtualoffice-tutorial)。
+* 在[管理控制台](https://vo-cm.8x8.com) 中具有管理员权限的 8x8 用户帐户。
+* 已配置[使用 Azure AD 进行单一登录](./8x8virtualoffice-tutorial.md)。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
-1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
-2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定[在 Azure AD 与 8x8 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。
+1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
+2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
+3. 确定[在 Azure AD 与 8x8 之间映射](../app-provisioning/customize-application-attributes.md)的数据。
 
 ## <a name="step-2-configure-8x8-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 8x8 以支持通过 Azure AD 进行预配
 
 本部分中的步骤将指导你配置 8x8 以支持通过 Azure AD 进行预配。
 
-### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>要在 8x8 Configuration Manager 中配置用户预配访问令牌，请执行以下操作：
+### <a name="to-configure-a-user-provisioning-access-token-in-8x8-admin-console"></a>若要在 8x8 管理控制台中配置用户预配访问令牌：
 
-1. 登录到 [Configuration Manager](https://vo-cm.8x8.com)。 选择“标识管理”。
+1. 登录到[管理控制台](https://admin.8x8.com)。 选择“标识管理”。
 
-   ![标识管理](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
+   ![管理员](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
 2. 单击“显示用户预配信息”链接以生成令牌。
 
-   ![显示用户预配](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
+   ![显示](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
 3. 复制 8x8 URL 和 8x8 API 令牌值 。 在 Azure 门户的 8x8 应用程序的“预配”选项卡中，将这些值分别输入“租户 URL”和“机密令牌”字段 。
 
-   ![复制 URL 和令牌](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![Token](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 8x8
 
-从 Azure AD 应用程序库添加 8x8，开始管理到 8x8 的预配。 如果以前为 SSO 设置过 8x8，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。
+从 Azure AD 应用程序库添加 8x8，开始管理到 8x8 的预配。 如果之前为 8x8 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 这一选项较为简单，大多数人都在使用。
 
-如果选择仅根据用户或组的属性来定义谁在预配范围内，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
+如果选择仅根据用户或组的属性来定义谁在预配范围内，则可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到 8x8 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 8x8 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
-* 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-8x8"></a>步骤 5。 配置到 8x8 的自动用户预配 
 
@@ -94,17 +94,17 @@ ms.locfileid: "91361698"
 
 3. 选择“预配”选项卡。单击“入门”。
 
-    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
+    ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
    ![“开始”边栏选项卡](./media/8x8-provisioning-tutorial/get-started.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
+    ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分下，将 8x8 URL 从 Configuration Manager 复制到“租户 URL”  。 将 8x8 API 令牌从 Configuration Manager 复制到“机密令牌” 。 单击“测试连接”以确保 Azure AD 可以连接到 8x8。 如果连接失败，请确保 8x8 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分下，将 8x8 URL 从管理控制台复制到“租户 URL”  。 将 8x8 API 令牌从管理控制台复制到“机密令牌” 。 单击“测试连接”以确保 Azure AD 可以连接到 8x8。 如果连接失败，请确保 8x8 帐户具有管理员权限，然后重试。
 
-    ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/8x8-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示“管理员凭据”对话框，可在该框中输入租户 URL 和机密令牌。](./media/8x8-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -114,7 +114,7 @@ ms.locfileid: "91361698"
 
 8. 在“映射”部分下，选择“预配 Azure Active Directory 用户” 。
 
-9. 在“属性映射”部分中，查看从 Azure AD 同步到 8x8 的用户属性。 选为“匹配”属性的特性用于匹配 8x8 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，则需要确保 8x8 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在“属性映射”部分中，查看从 Azure AD 同步到 8x8 的用户属性。 选为“匹配”属性的特性用于匹配 8x8 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 8x8 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|说明|
    |---|---|---|
@@ -132,7 +132,7 @@ ms.locfileid: "91361698"
    |区域设置|字符串|默认情况下未映射|
    |timezone|字符串|默认情况下未映射|
 
-10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 11. 要为 8x8 启用 Azure AD 预配服务，请在“设置”部分将“预配状态”更改为“启用”  。
 
@@ -151,15 +151,15 @@ ms.locfileid: "91361698"
 ## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
 配置预配后，请使用以下资源来监视部署：
 
-1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败。
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)以查看预配周期的状态以及完成进度。
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
+1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败。
+2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)以查看预配周期的状态以及完成进度。
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

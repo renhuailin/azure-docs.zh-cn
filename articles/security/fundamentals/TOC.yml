@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: 数据保护
           href: protection-customer-data.md
+    - name: 平台完整性和安全性
+      href: platform.md
+      items:
+        - name: 固件安全性
+          href: firmware.md
+        - name: 安全启动
+          href: secure-boot.md
+        - name: 度量启动和主机证明
+          href: measured-boot-host-attestation.md
+        - name: Cerberus 项目
+          href: project-cerberus.md
+        - name: 静态加密
+          href: encryption-atrest.md
+        - name: 虚拟机监控程序安全性
+          href: hypervisor.md
     - name: Azure 云中的隔离
       href: isolation-choices.md
 - name: 身份管理
@@ -49,25 +64,27 @@
     - name: 安全清单
       href: steps-secure-identity.md
     - name: 选择无密码
-      href: ad-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md
 - name: 网络安全
   items:
     - name: 安全概述
       href: network-overview.md
     - name: 最佳做法
       href: network-best-practices.md
-    - name: DDoS 保护
-      href: ddos-best-practices.md
+    - name: DDoS 防护最佳做法
+      href: ../../ddos-protection/fundamental-best-practices.md
     - name: DDoS 防护安全基线
       href: ddos-protection-security-baseline.md
     - name: 无关联的 DNS 和子域接管
       href: subdomain-takeover.md
     - name: 安全混合网络体系结构
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
 - name: IaaS 安全
   items:
     - name: Microsoft 反恶意软件
       href: antimalware.md
+    - name: Microsoft Antimalware 代码示例
+      href: antimalware-code-samples.md
     - name: 虚拟机安全性概述
       href: virtual-machines-overview.md
     - name: 最佳做法 - IaaS 工作负荷
@@ -95,13 +112,13 @@
     - name: 数据库安全
       items:
         - name: 概述
-          href: ../../sql-database/sql-database-security-overview.md
+          href: ../../azure-sql/database/security-overview.md
         - name: 最佳做法
-          href: ../../sql-database/sql-database-security-best-practice.md
+          href: ../../azure-sql/database/security-best-practice.md
         - name: 安全清单
           href: database-security-checklist.md
     - name: 存储安全指南
-      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
     - name: 客户密码箱
       href: customer-lockbox-overview.md
     - name: 客户密码箱安全基线

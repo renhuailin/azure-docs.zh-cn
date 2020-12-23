@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4d079a8b6254fc70ca641380ce68aac12eed28d9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827667"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805611"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>将邻近放置组中运行的 Azure 虚拟机复制到另一个区域
 
@@ -29,12 +29,12 @@ ms.locfileid: "87827667"
 -  非托管磁盘不支持适用于邻近放置组的 Site Recovery。
 
 > [!NOTE]
-> Azure Site Recovery 不支持从适用于 Hyper-v 到 Azure 的托管磁盘的故障回复。 因此，不支持从 Azure 到 Hyper-v 的邻近位置组故障回复。
+> Azure Site Recovery 不支持从 Hyper-V 的托管磁盘到 Azure 方案的故障回复。 因此，不支持从 Azure 中的邻近放置组到 Hyper-V 的故障回复。
 
 ## <a name="prerequisites"></a>先决条件
 
 1. 确保已有 Azure PowerShell Az 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
-2. 最小 Azure PowerShell Az 版本应为4.1.0。 若要检查当前版本，请使用以下命令-
+2. 最小的 Azure PowerShell Az 版本应为 4.1.0。 若要检查当前版本，请使用以下命令 -
     ```
     Get-InstalledModule -Name Az
     ```
@@ -42,7 +42,7 @@ ms.locfileid: "87827667"
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>为邻近放置组中的虚拟机设置 Site Recovery
 
 > [!NOTE]
-> 请确保你具有目标邻近组的唯一 ID。 如果要创建新的邻近位置组，请检查[此处](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group)的命令，如果使用现有的邻近位置组，请在[此处](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)使用命令。
+> 确保你随时可以使用目标邻近放置组的唯一 ID。 如果要创建新的邻近放置组，请查看[此处](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group)的命令；如果使用的是现有邻近放置组，请使用[此处](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)的命令。
 
 ### <a name="azure-to-azure"></a>Azure 到 Azure
 
@@ -55,24 +55,27 @@ ms.locfileid: "87827667"
 7. 按照[此处](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)所述，使用[这些](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container)步骤创建主保护容器和恢复保护容器之间的保护容器映射，以及用于故障恢复的保护容器映射。
 8. 通过[这些](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account)步骤创建缓存存储帐户。
 9. 按照[此处](./azure-to-azure-powershell.md#create-network-mappings)所述，创建所需的网络映射。
-10. 若要复制包含托管磁盘的 Azure 虚拟机，请使用以下 PowerShell cmdlet-
+10. 若要复制包含托管磁盘的 Azure 虚拟机，请使用以下 PowerShell cmdlet：
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
 $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+#Make sure to replace the variables $OSdiskName with OS disk name.
 
 #OS Disk
-$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName $OSdiskResourceGroup
+$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName "A2AdemoRG"
 $OSdiskId = $OSdisk.Id
 $RecoveryOSDiskAccountType = $OSdisk.Sku.Name
 $RecoveryReplicaDiskAccountType = $OSdisk.Sku.Name
 
 $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
+#Make sure to replace the variables $datadiskName with data disk name.
+
 #Data disk
-$datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName $datadiskResourceGroup
+$datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName "A2AdemoRG"
 $datadiskId1 = $datadisk[0].Id
 $RecoveryReplicaDiskAccountType = $datadisk[0].Sku.Name
 $RecoveryTargetDiskAccountType = $datadisk[0].Sku.Name
@@ -88,6 +91,13 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
+
+当通过 PPG 启用区域到区域复制时，启动复制的命令将与 PowerShell cmdlet 进行交换-
+
+```azurepowershell
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id -RecoveryAvailabilityZone "2"
+```
+
 成功启动复制操作后，虚拟机数据将复制到恢复区域。
 
 复制过程首先在恢复区域中初始植入虚拟机复制磁盘的副本。 此阶段中称为初始复制阶段。

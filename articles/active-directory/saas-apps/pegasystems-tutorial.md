@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4fb117b7f7b9a0c7a6a67e2714380a01cd53a4e0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549056"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515629"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教程：Azure Active Directory 与 Pega Systems 集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "88549056"
 * 可让用户使用其 Azure AD 帐户自动登录到 Pega Systems（单一登录）。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 如果没有 Azure 订阅，可以在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "88549056"
 
     ![选择“新建应用程序”](common/add-new-app.png)
 
-4. 在搜索框中输入 **Pega Systems**。 在搜索结果中选择“Pega Systems”，然后选择“添加”。  
+4. 在搜索框中输入 **Pega Systems** 。 在搜索结果中选择“Pega Systems”，然后选择“添加”。  
 
      ![搜索结果](common/search-new-app.png)
 
@@ -74,8 +74,8 @@ ms.locfileid: "88549056"
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** ，为用户启用该功能。
 2. 在应用程序端 **[配置 Pega Systems 单一登录](#configure-pega-systems-single-sign-on)** 。
-3. **创建 Azure AD 测试用户[，以测试 Azure AD 单一登录](#create-an-azure-ad-test-user)** 。
-4. **分配 Azure AD 测试用户[，为用户启用 Azure AD 单一登录](#assign-the-azure-ad-test-user)** 。
+3. **创建 Azure AD 测试用户 [，以测试 Azure AD 单一登录](#create-an-azure-ad-test-user)** 。
+4. **分配 Azure AD 测试用户 [，为用户启用 Azure AD 单一登录](#assign-the-azure-ad-test-user)** 。
 5. 创建与用户的 Azure AD 表示形式相链接的 **[Pega Systems 测试用户](#create-a-pega-systems-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** ，验证配置是否正常工作。
 
@@ -166,11 +166,11 @@ ms.locfileid: "88549056"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL**。
+    1. **登录 URL** 。
 
-    1. **Azure AD 标识符**。
+    1. **Azure AD 标识符** 。
 
-    1. **注销 URL**。
+    1. **注销 URL** 。
 
 ### <a name="configure-pega-systems-single-sign-on"></a>配置 Pega Systems 单一登录
 
@@ -186,7 +186,7 @@ ms.locfileid: "88549056"
 
     1. 在“类型”列表中，选择“SAML 2.0”。  
 
-    1. 在“名称”框中输入任意名称（例如 **Azure AD SSO**）。
+    1. 在“名称”框中输入任意名称（例如 **Azure AD SSO** ）。
 
     1. 在“简短说明”框中输入说明。   
 
@@ -228,7 +228,7 @@ ms.locfileid: "88549056"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“姓名”  框中，输入 **BrittaSimon**。
+    a. 在“姓名”  框中，输入 **BrittaSimon** 。
   
     b. 在“用户名”框中，输入 brittasimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
@@ -270,12 +270,12 @@ ms.locfileid: "88549056"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“Pega Systems”磁贴时，应会自动登录到设置了 SSO 的 Pega Systems 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在访问面板中选择“Pega Systems”磁贴时，应会自动登录到设置了 SSO 的 Pega Systems 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

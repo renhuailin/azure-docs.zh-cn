@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b720f7e49fc0679de5c3f430122bab05d5b706f8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551651"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455742"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CloudPassage 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551651"
 * 让用户使用其 Azure AD 帐户自动登录到 CloudPassage。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -85,7 +85,7 @@ ms.locfileid: "88551651"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://portal.cloudpassage.com/saml/consume/accountid`。 可以通过在 CloudPassage 门户的“单一登录设置”部分中单击“SSO 设置文档”来获取此属性的值。  
 
-    ![配置单一登录](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![屏幕截图显示 CloudPassage 门户，其中突出显示了“SSO 设置文档”链接。](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [CloudPassage 客户端支持团队](https://www.cloudpassage.com/company/contact/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -146,15 +146,15 @@ ms.locfileid: "88551651"
 
 1. 在顶部菜单中，单击“设置”，并单击“网站管理”。   
    
-    ![配置单一登录][12]
+    ![屏幕截图显示已选择“网站管理”的 CloudPassage 站点。][12]
 
 1. 单击“身份验证设置”选项卡。  
    
-    ![配置单一登录][13]
+    ![屏幕截图显示已选择“身份验证设置”选项卡的 CloudPassage 站点。][13]
 
 1. 在“单一登录设置”  部分中，执行以下步骤： 
    
-    ![配置单一登录][14]
+    ![屏幕截图显示“单一登录设置”部分，可在其中输入此步骤中的信息。][14]
 
     a. 选中“启用单一登录 (SSO)(SSO 设置文档)”复选框  。
     
@@ -166,7 +166,7 @@ ms.locfileid: "88551651"
   
     e. 在记事本中打开下载的证书，将下载证书的内容复制到剪贴板，然后将其粘贴到“x 509 证书”文本框  。
   
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
 ### <a name="create-cloudpassage-test-user"></a>创建 CloudPassage 测试用户
 
@@ -178,15 +178,15 @@ ms.locfileid: "88551651"
 
 1. 在顶部工具栏中，单击“设置”，并单击“网站管理”。   
    
-    ![创建 CloudPassage 测试用户][22] 
+    ![屏幕截图显示已选择“网站管理”的 CloudPassage。][22] 
 
 1. 单击“用户”选项卡，并单击“添加新用户”。   
    
-    ![创建 CloudPassage 测试用户][23]
+    ![屏幕截图显示 CloudPassage“网站管理”，其中选择了“用户”选项卡和“添加新用户”选项。][23]
 
 1. 在“添加新用户”  部分中，执行以下步骤： 
    
-    ![创建 CloudPassage 测试用户][24]
+    ![屏幕截图显示“添加新用户”部分，可在其中指定用户信息。][24]
     
     a. 在“名字”文本框中，键入“Britta”。  
   
@@ -202,15 +202,15 @@ ms.locfileid: "88551651"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 CloudPassage 磁贴时，应当会自动登录到为其设置了 SSO 的 CloudPassage。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 CloudPassage 磁贴时，应当会自动登录到为其设置了 SSO 的 CloudPassage。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 CloudPassage](https://aad.portal.azure.com/)
 
@@ -223,4 +223,3 @@ ms.locfileid: "88551651"
 [22]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_15.png
 [23]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_16.png
 [24]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_17.png
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f576205246ed90b8e8da91b7dd3074aa2d58d9d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a8e6d92545756e185697b1fb827d7b5f25dcfdd2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547165"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>教程：Azure Active Directory 与 Expiration Reminder 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88547165"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Expiration Reminder（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -89,7 +89,7 @@ ms.locfileid: "88547165"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "88547165"
 
     在“登录 URL”文本框中，键入 URL：`https://app.expirationreminder.net/account/sso` 
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载**证书(原始)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载 **证书(原始)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificateraw.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "88547165"
 
 ### <a name="configure-expiration-reminder-single-sign-on"></a>配置 Expiration Reminder 单一登录
 
-若要在 **Expiration Reminder** 端配置单一登录，需要将下载的**证书(原始)** 以及从 Azure 门户复制的相应 URL 发送给 [Expiration Reminder 支持团队](mailto:support@expirationreminder.net)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Expiration Reminder** 端配置单一登录，需要将下载的 **证书(原始)** 以及从 Azure 门户复制的相应 URL 发送给 [Expiration Reminder 支持团队](mailto:support@expirationreminder.net)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -174,18 +174,18 @@ ms.locfileid: "88547165"
 
 ### <a name="create-expiration-reminder-test-user"></a>创建 Expiration Reminder 测试用户
 
-在本部分，请在 Expiration Reminder 中创建一个名为 Britta Simon 的用户。 请与  [Expiration Reminder 支持团队](mailto:support@expirationreminder.net)协作，将该用户添加到 Expiration Reminder 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分，请在 Expiration Reminder 中创建一个名为 Britta Simon 的用户。 与 [Expiration Reminder 支持团队](mailto:support@expirationreminder.net)协作，在 Expiration Reminder 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Expiration Reminder 磁贴时，应当会自动登录到你为其设置了 SSO 的 Expiration Reminder。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Expiration Reminder 磁贴时，应当会自动登录到你为其设置了 SSO 的 Expiration Reminder。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

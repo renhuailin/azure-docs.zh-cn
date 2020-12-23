@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577503"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594277"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "91577503"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 **Azure SQL** 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择要添加到故障转移组中的数据库。
-1. 在**服务器名称**下选择服务器的名称以打开服务器的设置。
+1. 在 **服务器名称** 下选择服务器的名称以打开服务器的设置。
 
    ![打开单一数据库的服务器](./media/auto-failover-group-configure/open-sql-db-server.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "91577503"
 
 1. 在“故障转移组”页上输入或选择所需的值，然后选择“创建”。 
 
-   - **组中的数据库**：选择要添加到故障转移组中的数据库。 将数据库添加到故障转移组的操作会自动启动异地复制过程。
+   - **组中的数据库** ：选择要添加到故障转移组中的数据库。 将数据库添加到故障转移组的操作会自动启动异地复制过程。
 
    ![将 SQL 数据库添加到故障转移组](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -212,7 +212,7 @@ ms.locfileid: "91577503"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择要添加到故障转移组中的弹性池。
-1. 在“概述”窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
+1. 在“概述”窗格上，选择 **服务器名称** 下的服务器名称以打开服务器的设置。
   
    ![打开弹性池的服务器](./media/auto-failover-group-configure/server-for-elastic-pool.png)
 
@@ -284,7 +284,7 @@ ms.locfileid: "91577503"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择要添加到故障转移组中的弹性池。
-1. 在“概述”窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
+1. 在“概述”窗格上，选择 **服务器名称** 下的服务器名称以打开服务器的设置。
 
    ![打开弹性池的服务器](./media/auto-failover-group-configure/server-for-elastic-pool.png)
 1. 在“设置”窗格下选择“故障转移组”，然后选择在第 2 部分创建的故障转移组。 
@@ -348,7 +348,7 @@ ms.locfileid: "91577503"
 
 需要配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或为每个 SQL 托管实例的虚拟网络创建网关，连接两个网关，然后创建故障转移组。 
 
-出于性能原因，将两个托管实例部署到 [配对区域](../../best-practices-availability-paired-regions.md) 。 与非配对区域相比，位于地域配对区域中的托管实例具有更好的性能。 
+出于性能方面的考虑，将两个托管实例部署到[配对区域](../../best-practices-availability-paired-regions.md)。 与非配对区域相比，位于异地配对区域中的托管实例具有好得多的性能。 
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -357,14 +357,14 @@ ms.locfileid: "91577503"
 - 辅助托管实例必须为空。
 - 辅助虚拟网络的子网范围不得与主虚拟网络的子网范围重叠。
 - 辅助托管实例的排序规则和时区必须与主托管实例的排序规则和时区匹配。
-- 连接两个网关时，两个连接的**共享密钥**应该相同。
+- 连接两个网关时，两个连接的 **共享密钥** 应该相同。
 
 ### <a name="create-primary-virtual-network-gateway"></a>创建主虚拟网络网关
 
 如果尚未配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，则可使用 Azure 门户或 PowerShell 创建主虚拟网关。
 
 > [!NOTE]
-> 网关的 SKU 会影响吞吐量性能。 本文将使用最基本的 SKU () 部署网关 `HwGw1` 。 部署更高版本的 SKU (例如： `VpnGw3`) ，以实现更高的吞吐量。 有关所有可用选项，请参阅 [网关 sku](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) 
+> 网关的 SKU 会影响吞吐量性能。 本文使用最基本的 SKU (`HwGw1`) 来部署网关。 部署更高的 SKU（示例：`VpnGw3`）可实现更高的吞吐量。 有关所有可用选项，请参阅[网关 SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -383,7 +383,7 @@ ms.locfileid: "91577503"
 
    下表显示了主托管实例的网关所需的值：
 
-    | **字段** | 值 |
+    | **字段** | Value |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称。 |
@@ -445,7 +445,7 @@ ms.locfileid: "91577503"
 
 下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | 值 |
+   | **字段** | Value |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 |
@@ -617,7 +617,7 @@ ms.locfileid: "91577503"
 
    ![故障转移后托管实例的角色已交换](./media/auto-failover-group-configure/mi-switched-after-failover.png)
 
-1. 转到新的_辅助_托管实例，再次选择“故障转移”，将主实例故障回复为主角色。
+1. 转到新的 _辅助_ 托管实例，再次选择“故障转移”，将主实例故障回复为主角色。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -663,12 +663,12 @@ ms.locfileid: "91577503"
 
 使用专用链接，可以将逻辑服务器关联到虚拟网络和子网中的特定专用 IP 地址。 
 
-若要将私有链接与故障转移组一起使用，请执行以下操作：
+若要将专用链接用于故障转移组，请执行以下操作：
 
-1. 确保主服务器和辅助服务器在配对的 [区域](/azure/best-practices-availability-paired-regions)中。 
-1. 在每个区域中创建虚拟网络和子网，以承载主服务器和辅助服务器的专用终结点，以使它们具有不重叠的 IP 地址空间。 例如，主虚拟网络地址范围为 10.0.0.0/16，辅助虚拟网络地址范围为 10.0.0.1/16。 有关虚拟网络地址范围的详细信息，请参阅博客 [设计 Azure 虚拟网络](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)。
+1. 请确保主服务器和辅助服务器位于[配对区域](../../best-practices-availability-paired-regions.md)中。 
+1. 在每个区域中创建虚拟网络和子网，以托管主服务器和辅助服务器的专用终结点，使其的 IP 地址空间不重叠。 例如，主虚拟网络地址范围 10.0.0.0/16 与辅助虚拟网络地址范围 10.0.0.1/16 重叠。 有关虚拟网络地址范围的详细信息，请参阅博客：[设计 Azure 虚拟网络](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)。
 1. [为主服务器创建专用终结点和 Azure 专用 DNS 区域](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint)。 
-1. 同时为辅助服务器创建专用终结点，但这次请选择重复使用为主服务器创建的同一专用 DNS 区域。 
+1. 同时为辅助服务器创建专用终结点，但这次选择重复使用为主服务器创建的同一专用 DNS 区域。 
 1. 建立专用链接后，可以按照本文前面所述的步骤创建故障转移组。 
 
 

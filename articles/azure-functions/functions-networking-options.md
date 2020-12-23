@@ -1,15 +1,16 @@
 ---
 title: Azure Functions 网络选项
 description: 在 Azure Functions 中可用的所有网络选项的概述。
+author: jeffhollan
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 10/27/2020
+ms.author: jehollan
+ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530076"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020974"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -29,18 +30,36 @@ ms.locfileid: "90530076"
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>入站 IP 限制
+## <a name="inbound-access-restrictions"></a>入站访问限制
 
-可以使用 IP 限制来定义被允许或拒绝访问应用的 IP 地址的优先级排序列表。 该列表可以包含 IPv4 和 IPv6 地址。 如果存在一个或多个条目，则列表末尾会存在一个隐式的“拒绝所有”。 IP 限制适用于所有函数托管选项。
+可以使用访问限制来定义允许或拒绝其访问应用的 IP 地址的优先级排序列表。 此列表可以包含 IPv4 和 IPv6 地址，或使用 [服务终结点](#use-service-endpoints)的特定虚拟网络子网。 如果存在一个或多个条目，则列表末尾会存在一个隐式的“拒绝所有”。 IP 限制适用于所有函数托管选项。
+
+[高级](functions-premium-plan.md)、[消费](functions-scale.md#consumption-plan)和[应用服务](functions-scale.md#app-service-plan)提供了访问限制。
 
 > [!NOTE]
-> 如果进行了网络限制，则只能从虚拟网络内部使用门户编辑器，或者在已将用于访问 Azure 门户的计算机的 IP 地址加入安全收件人列表之后使用该编辑器。 不过，仍然可以从任何计算机访问“平台功能”选项卡上的任何功能。
+> 在设置了网络限制后，你只能从虚拟网络内部部署，或者在将用于访问 "安全收件人" 列表中的 Azure 门户的计算机的 IP 地址。 不过，你仍然可以使用门户管理该函数。
 
 若要了解详细信息，请参阅 [Azure 应用服务静态访问限制](../app-service/app-service-ip-restrictions.md)。
 
-## <a name="private-site-access"></a>专用站点访问
+### <a name="use-service-endpoints"></a>使用服务终结点
+
+使用服务终结点可以限制对所选 Azure 虚拟网络子网的访问。 若要限制对特定子网的访问，请使用 **虚拟网络** 类型创建限制规则。 然后，可以选择要允许或拒绝访问的订阅、虚拟网络和子网。 
+
+如果未对所选子网启用服务终结点，则会自动启用这些终结点，除非选中 " **忽略缺少的 Microsoft Web 服务终结点** " 复选框。 你可能想要在应用程序上启用服务终结点而不是子网的方案主要取决于你是否有权在子网上启用它们。 
+
+如果需要其他人在子网上启用服务终结点，请选中 " **忽略缺少的 Microsoft Web 服务终结点** " 复选框。 将为服务终结点配置应用，以便在以后的子网中启用它们。 
+
+!["添加 IP 限制" 窗格的屏幕截图，其中选择了虚拟网络类型。](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+不能使用服务终结点限制对在应用服务环境中运行的应用程序的访问。 如果你的应用处于应用服务环境中，你可以通过应用 IP 访问规则来控制对它的访问。 
+
+若要了解如何设置服务终结点，请参阅 [建立 Azure Functions 专用站点访问](functions-create-private-site-access.md)。
+
+## <a name="private-endpoint-connections"></a>专用终结点连接
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+若要调用具有专用终结点连接的其他服务（如存储或服务总线），请确保将应用程序配置为对 [专用终结点进行出站调用](#private-endpoints)。
 
 ## <a name="virtual-network-integration"></a>虚拟网络集成
 
@@ -66,11 +85,33 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 
 若要了解详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>将存储帐户限制到虚拟网络中
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>将存储帐户限制到虚拟网络（预览版）中
 
-创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 当前无法对此帐户使用任何虚拟网络限制。 如果在用于函数应用的存储帐户上配置虚拟网络服务终结点，则该配置会中断应用。
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。  可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。  此预览功能目前仅适用于西欧中的 Windows 高级版计划。  使用限制为专用网络的存储帐户设置函数：
 
-有关详细信息，请参阅[存储帐户要求](./functions-create-function-app-portal.md#storage-account-requirements)。
+> [!NOTE]
+> 仅限在西欧中使用 Windows 的高级功能限制存储帐户
+
+1. 使用未启用服务终结点的存储帐户创建一个函数。
+1. 将该函数配置为连接到你的虚拟网络。
+1. 创建或配置另一存储帐户。  此存储帐户将是我们使用服务终结点保护的存储帐户，可连接我们的函数。
+1. 在受保护的存储帐户中[创建文件共享](../storage/files/storage-how-to-create-file-share.md#create-file-share)。
+1. 为此存储帐户启用服务终结点或专用终结点。  
+    * 如果使用专用终结点连接，则存储帐户将需要用于和子资源的专用终结点 `file` `blob` 。  如果使用某些功能（如 Durable Functions），则还 `queue` 需要 `table` 通过专用终结点连接来访问。
+    * 如果使用服务终结点，请为存储帐户启用专用于 function app 的子网。
+1. （可选）将函数应用存储帐户中的文件和 blob 内容复制到受保护的存储帐户和文件共享。
+1. 复制此存储帐户的连接字符串。
+1. 将函数应用的“配置”下的“应用程序设置”更新为以下内容：
+    - 将 `AzureWebJobsStorage` 更新为受保护存储帐户的连接字符串。
+    - 将 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 更新为受保护存储帐户的连接字符串。
+    - 将 `WEBSITE_CONTENTSHARE` 更新为在受保护存储帐户中创建的文件共享的名称。
+    - 使用名称 `WEBSITE_CONTENTOVERVNET` 和值 `1` 创建新设置。
+    - 如果存储帐户使用的是专用终结点连接，请验证或添加以下设置
+        - `WEBSITE_VNET_ROUTE_ALL` 值为的 `1` 。
+        - `WEBSITE_DNS_SERVER` 值为 `168.63.129.16` 
+1. 保存应用程序设置。  
+
+函数应用会重启，并会立即连接到受保护的存储帐户。
 
 ## <a name="use-key-vault-references"></a>使用 Key Vault 引用
 
@@ -87,7 +128,7 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>具有虚拟网络触发器的高级计划
 
-运行高级计划时，可以将非 HTTP 触发器函数连接到在虚拟网络中运行的服务。 为此，必须为函数应用启用虚拟网络触发器支持。 在**配置** [Azure portal](https://portal.azure.com)函数运行时设置下的 Azure 门户中找到了**运行时缩放监视**设置  >  **Function runtime settings**。
+运行高级计划时，可以将非 HTTP 触发器函数连接到在虚拟网络中运行的服务。 为此，必须为函数应用启用虚拟网络触发器支持。 在 [Azure 门户](https://portal.azure.com)的“配置” > “函数运行时设置”下可以找到“运行时规模监视”设置。
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -96,6 +137,9 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
+
+> [!TIP]
+> 启用虚拟网络触发器可能会影响应用程序的性能，因为应用服务计划实例需要监视触发器来确定何时缩放。 这种影响可能非常小。
 
 版本 2.x 和更高版本的 Functions 运行时支持虚拟网络触发器。 支持以下非 HTTP 触发器类型。
 
@@ -150,6 +194,6 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 * [遵循有关虚拟网络集成入门的教程](./functions-create-vnet.md)
 * [阅读 Functions 网络常见问题解答](./functions-networking-faq.md)
 * [详细了解虚拟网络与应用服务/Functions 的集成](../app-service/web-sites-integrate-with-vnet.md)
-* [了解有关 Azure 中的虚拟网络的详细信息](../virtual-network/virtual-networks-overview.md)
+* [详细了解 Azure 中的虚拟网络](../virtual-network/virtual-networks-overview.md)
 * [在应用服务环境中允许更多的网络功能和控制](../app-service/environment/intro.md)
 * [使用混合连接连接到单独的本地资源而无需更改防火墙](../app-service/app-service-hybrid-connections.md)

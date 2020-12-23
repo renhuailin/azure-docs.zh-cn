@@ -4,19 +4,19 @@ description: 使用 Azure CLI 示例脚本创建两个弹性池，并将 SQL 数
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: a71e3e05e486c09d148062eed210c9f4b21e8226
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9fcb23750137c8286efbc0e1fb7446e324c572dd
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319344"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747349"
 ---
 # <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>使用 Azure CLI 移动 SQL 弹性池中 SQL 数据库中的数据库
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | 服务器命令。 |
 | [az sql elastic-pools](/cli/azure/sql/elastic-pool) | 弹性池命令。 |

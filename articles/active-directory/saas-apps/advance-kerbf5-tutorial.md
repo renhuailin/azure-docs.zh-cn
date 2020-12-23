@@ -1,6 +1,6 @@
 ---
 title: 教程：Azure Active Directory 单一登录与 F5 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 F5 之间配置单一登录。
+description: 本文介绍将 F5 与 Azure Active Directory (Azure AD) 集成所需执行的步骤。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8d24ed014dd66235383b58cbcb7404aaf00f863e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542971"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308967"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory (AD) 单一登录 (SSO) 与 F5 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542971"
 * 让用户使用其 Azure AD 帐户自动登录到 F5。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,8 +39,9 @@ ms.locfileid: "88542971"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* F5 支持 **SP 和 IDP** 发起的 SSO
-* 可通过三种不同的方式配置 F5 SSO。
+F5 支持 SP 和 IDP 发起的 SSO。
+
+可通过三种不同的方式配置 F5 SSO：
 
 - [为 Advanced Kerberos 应用程序配置 F5 单一登录](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 
@@ -145,38 +146,38 @@ ms.locfileid: "88542971"
 
 1. 需要将元数据证书导入到 F5 (Advanced Kerberos) 中，该证书将在稍后的设置过程中使用。 转到“系统”>“证书管理”>“流量证书管理”>>“SSL 证书列表”。 单击右下角的“导入”
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure01.png)
+    ![屏幕截图中突出显示了用于导入元数据证书的“导入”按钮。](./media/advance-kerbf5-tutorial/configure01.png)
  
 1. 若要设置 SAML IDP，请转到“访问”>“联合”>“SAML 服务提供程序”>“创建”>“从元数据”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure02.png)
+    ![屏幕截图中突出显示了如何从元数据创建 SAML IDP。](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure03.png)
+    ![屏幕截图显示了“新建 SAML IdP 连接器”屏幕。](./media/advance-kerbf5-tutorial/configure03.png)
  
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure05.png)
+    ![屏幕截图显示了“单一登录服务设置”屏幕。 ](./media/advance-kerbf5-tutorial/configure05.png)
  
 1. 指定在任务 3 中上传的证书
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure06.png)
+    ![屏幕截图显示了“编辑 SAML IdP 连接器”屏幕。](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure07.png)
+    ![屏幕截图显示了“单一注销服务设置”屏幕。](./media/advance-kerbf5-tutorial/configure07.png)
 
  1. 若要设置 SAML SP，请转到“访问”>“联合”>“SAML 服务联合”>“本地 SP 服务”>“创建”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure08.png)
+    ![屏幕截图显示了创建本地 SP 服务时位于的屏幕。](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. 单击“确定”。
 
 1. 选择 SP 配置，并单击“绑定/取消绑定 IdP 连接器”。
 
-     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure09.png)
+     ![屏幕截图显示了“SAML 服务提供程序”。](./media/advance-kerbf5-tutorial/configure09.png)
  
  
 1. 单击“添加新行”，并选择在上一步骤中创建的**外部 IdP 连接器**。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure10.png)
+    ![屏幕截图中突出显示了“添加新行”按钮。](./media/advance-kerbf5-tutorial/configure10.png)
  
 1. 若要配置 Kerberos SSO，请转到“访问”>“单一登录”>“Kerberos”
 
@@ -187,54 +188,54 @@ ms.locfileid: "88542971"
 
     •   用户领域来源  `session.logon.last.domain`
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure11.png)
+    ![屏幕截图中突出显示了“访问”>“单一登录”。](./media/advance-kerbf5-tutorial/configure11.png)
 
 1. 若要配置访问配置文件，请转到“访问”>“配置文件/策略”>“访问配置文件(按会话策略)”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure12.png)
+    ![屏幕截图中突出显示了“配置文件”/“策略”菜单选项下的“属性”选项卡。](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure13.png)
+    ![屏幕截图显示了“SSO/Auth 域”选项卡。](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure14.png)
+    ![屏幕截图显示了“访问策略”选项卡。](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure15.png)
+    ![屏幕截图显示了“访问策略”上的“属性”选项卡。](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure16.png)
+    ![屏幕截图显示了“变量赋值”的属性。](./media/advance-kerbf5-tutorial/configure16.png)
  
     * session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}
 
     * session.ad.lastactualdomain  TEXT superdemo.live
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure17.png)
+    ![屏幕截图显示了“AD 查询”属性。](./media/advance-kerbf5-tutorial/configure17.png)
 
     * (userPrincipalName=%{session.logon.last.usernameUPN})
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure18.png)
+    ![屏幕截图显示了“分支规则”选项卡和“检查帐户”规则。](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure19.png)
+    ![屏幕截图显示了自定义变量和自定义表达式文本框。](./media/advance-kerbf5-tutorial/configure19.png)
 
     * session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure20.png)
+    ![屏幕截图显示了“SSO 令牌名称”和“SSO 令牌密码”字段中的值。](./media/advance-kerbf5-tutorial/configure20.png)
 
     * mcget {session.logon.last.username}
     * mcget {session.logon.last.password}
 
 1. 若要添加新节点，请转到“本地流量”>“节点”>“节点列表”>“+”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure21.png)
+    ![屏幕截图中突出显示了“本地流量”>“节点”。](./media/advance-kerbf5-tutorial/configure21.png)
  
 1. 若要创建新池，请转到“本地流量”>“池”>“池列表”>“创建”。
 
-     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure22.png)
+     ![屏幕截图中突出显示了“本地流量”>“池”。](./media/advance-kerbf5-tutorial/configure22.png)
 
  1. 若要创建新的虚拟服务器，请转到“本地流量”>“虚拟服务器”>“虚拟服务器列表”>“+”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure23.png)
+    ![屏幕截图中突出显示了“本地流量”>“虚拟服务器”。](./media/advance-kerbf5-tutorial/configure23.png)
 
 1. 指定在上一步骤中创建的访问配置文件。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![屏幕截图显示了指定所创建的访问配置文件时的位置。](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>设置 Kerberos 委托 
 
@@ -263,15 +264,15 @@ ms.locfileid: "88542971"
     * 为 F5 委托帐户设置相应的委托。
     * 以下示例正在为 FRP-App1.superdemo.live 应用配置 KCD 的 APM 委托帐户。
 
-        ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure25.png)
+        ![屏幕截图显示了“APM Delegatio 帐户属性”>“委托”选项卡。](./media/advance-kerbf5-tutorial/configure25.png)
 
 1. 提供上述参考文档中[此部分](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)下面所述的详细信息。
 
 1. 附录 - 下面显示了 SAML 到 F5 BIG-IP 变量的映射：
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure26.png)
+    ![屏幕截图显示了“概述”>“活动会话”选项卡。](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![屏幕截图显示了变量和会话密钥。](./media/advance-kerbf5-tutorial/configure27.png) 
 
 1. 下面是默认 SAML 属性的完整列表。 GivenName 使用以下字符串表示。
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
@@ -319,19 +320,18 @@ ms.locfileid: "88542971"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“F5”磁贴时，应会自动登录到设置了 SSO 的 F5。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“F5”磁贴时，应会自动登录到设置了 SSO 的 F5。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 F5](https://aad.portal.azure.com/)
 
 - [为 Header Based 应用程序配置 F5 单一登录](headerf5-tutorial.md)
 
 - [为 Kerberos 应用程序配置 F5 单一登录](kerbf5-tutorial.md)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: ce5572c4c5aca6f48496250c942d50b90551f36f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 06a4e8aa1ad74f47526f3a39931632953bfaaec2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546897"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>教程：Azure Active Directory 与 Kantega SSO for FishEye/Crucible 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88546897"
 * 可让用户通过其 Azure AD 帐户自动登录到 Kantega SSO for FishEye/Crucible（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -76,7 +76,7 @@ ms.locfileid: "88546897"
 2. **[配置 Kantega SSO for FishEye/Crucible 单一登录](#configure-kantega-sso-for-fisheyecrucible-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **创建 Kantega SSO for FishEye/Crucible 测试用户[ - 在 Kantega SSO for FishEye/Crucible 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份](#create-kantega-sso-for-fisheyecrucible-test-user)** 。
+5. **创建 Kantega SSO for FishEye/Crucible 测试用户 [ - 在 Kantega SSO for FishEye/Crucible 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份](#create-kantega-sso-for-fisheyecrucible-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -89,7 +89,7 @@ ms.locfileid: "88546897"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88546897"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![Kantega SSO for FishEye/Crucible 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”和“回复 URL”文字框，并选择了“保存”按钮。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,43 +134,43 @@ ms.locfileid: "88546897"
 
 1. 将鼠标悬停在小齿轮上，并单击“外接程序”  。
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
+    ![屏幕截图显示选择了“加载项”的齿轮图标。](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
 1. 在“系统设置”部分，单击“查找新外接程序”  。 
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
+    ![屏幕截图显示选择了“查找新加载项”的“系统设置”部分。](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
 1. 搜索“Kantega SSO for Crucible”  ，然后单击“安装”  按钮安装新的 SAML 插件。
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
+    ![屏幕截图显示在搜索框中显示了“Kantega SSO for Crucible”并选择了“安装”按钮的“Attlasian Marketplace for FishEye”页。](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
 1. 插件安装随即开始。 
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
+    ![屏幕截图显示插件的“正在安装”对话框。](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
 1. 安装完成后。 单击“关闭”  。
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
+    ![屏幕截图显示“已安装并准备就绪”对话框，其中已选择“关闭”按钮。](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
 1.  单击“管理”。 
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
+    ![屏幕截图显示“Kantega SSO for Crucible SAML & Kerberos”应用页，其中已选择“管理”按钮。](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
 1. 单击“配置”  配置新的插件。 
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
+    ![屏幕截图显示“用户安装的加载项”页，其中已选择“配置”按钮。](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
 1. 在“SAML”部分中  。 从“添加标识提供者”下拉菜单选择“Azure Active Directory (Azure AD)”   。
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
+    ![屏幕截图显示带有“添加标识提供者”下拉列表的“加载项”-“Kantega 单一登录”页面，其中已选择“Azure Active Directory (Azure AD)”。 ](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
 1. 选择订阅级别为“基本”  。
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
+    ![屏幕截图显示选择了“基本”的“准备 Azure AD”部分。](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
 1. 在“应用属性”部分，执行以下步骤  ：
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
+    ![屏幕截图显示选择了“App ID URI”文本框和“复制”按钮的“应用属性”部分。](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
     a. 复制“应用 ID URI”值并将其用作 Azure 门户中“基本 SAML 配置”部分中的“标识符、回复 URL 和登录 URL”。
 
@@ -178,7 +178,7 @@ ms.locfileid: "88546897"
 
 1. 在“元数据导入”部分，执行以下步骤  ：
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
+    ![屏幕截图显示选择了“电脑上的元数据文件”的“元数据导入”部分。](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
     a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件  。
 
@@ -186,7 +186,7 @@ ms.locfileid: "88546897"
 
 1. 在“名称和 SSO 位置”部分，执行以下步骤  ：
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
+    ![屏幕截图显示突出显示了“标识提供者名称”文本框并选择了“下一步”按钮的“名称和 SSO 位置”。](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
     a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）  。
 
@@ -194,11 +194,11 @@ ms.locfileid: "88546897"
 
 1. 验证签名证书，然后单击“下一步”  。   
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
+    ![屏幕截图显示“签名验证”部分信息，其中已选择“下一步”按钮。](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
 1. 在“FishEye 用户帐户”  部分，执行以下步骤：
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
+    ![屏幕截图显示选择了“根据需要在 FishEye 的内部目录中创建用户”选项和“下一步”按钮的“FishEye 用户帐户”部分。](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
     a. 选择“根据需要在 FishEye 的内部目录中创建用户”  ，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
@@ -206,11 +206,11 @@ ms.locfileid: "88546897"
 
 1. 单击“完成”  。
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
+    ![屏幕截图显示已选择“完成”按钮的“摘要”部分。](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
 1. 在“Azure AD 的已知域”部分，执行以下步骤  ：  
 
-    ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
+    ![屏幕截图显示选择了“保存”按钮的“Azure AD 已知域”部分。](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
     a. 从页的左侧面板中选择“已知域”  。
 
@@ -278,11 +278,11 @@ ms.locfileid: "88546897"
 
 1. 将鼠标悬停在小齿轮上，然后单击“用户”  。
 
-    ![添加员工](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
+    ![屏幕截图显示已选择齿轮图标，并从下拉列表中选择了“用户”。](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 
 1. 在“用户”  选项卡部分，单击“添加用户”  。
 
-    ![添加员工](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
+    ![显示已选择“添加用户”按钮的“用户”部分的屏幕截图。](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
 1. 在“添加新用户”  对话框页上，执行以下步骤：
 
@@ -304,12 +304,12 @@ ms.locfileid: "88546897"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Kantega SSO for FishEye/Crucible 磁贴时，应当会自动登录到为其设置了 SSO 的 Kantega SSO for FishEye/Crucible。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Kantega SSO for FishEye/Crucible 磁贴时，应当会自动登录到为其设置了 SSO 的 Kantega SSO for FishEye/Crucible。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

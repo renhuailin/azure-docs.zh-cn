@@ -2,18 +2,18 @@
 title: 将 Azure 应用配置与 .NET Core 结合使用的快速入门| Microsoft Docs
 description: 在本快速入门中，使用 Azure 应用程序配置创建 .NET Core 应用，集中存储和管理与代码分离的应用程序设置。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.author: alkemper
+ms.openlocfilehash: 1a5e756e05543d9f19775f4e2d1abcee82794f9e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767743"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932058"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "91767743"
 
 ## <a name="create-a-net-core-console-app"></a>创建 .NET Core 控制台应用
 
-你使用 [.NET Core 命令行接口 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 创建新的 .NET Core 控制台应用项目。 通过 Visual Studio 使用 .NET Core CLI 的优点是，它可用于 Windows、macOS 和 Linux 平台。  或者，使用 [Azure Cloud Shell](https://shell.azure.com) 中提供的预安装工具。
+你使用 [.NET Core 命令行接口 (CLI)](/dotnet/core/tools/) 创建新的 .NET Core 控制台应用项目。 通过 Visual Studio 使用 .NET Core CLI 的优点是，它可用于 Windows、macOS 和 Linux 平台。  或者，使用 [Azure Cloud Shell](https://shell.azure.com) 中提供的预安装工具。
 
 1. 为项目新建一个文件夹。
 
@@ -124,7 +124,7 @@ ms.locfileid: "91767743"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何创建新的应用程序配置存储区，以及如何通过[应用程序配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其与 .NET Core 控制台应用配合使用。 若要了解如何配置 .NET Core 应用来动态刷新配置设置，请继续学习下一个教程。
+本快速入门介绍了如何创建新的应用程序配置存储区，以及如何通过[应用程序配置提供程序](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)将其与 .NET Core 控制台应用配合使用。 若要了解如何配置 .NET Core 应用来动态刷新配置设置，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]
 > [启用动态配置](./enable-dynamic-configuration-dotnet-core.md)

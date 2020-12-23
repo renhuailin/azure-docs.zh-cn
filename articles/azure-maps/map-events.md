@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0621e0ecfbb91d151e3cc78d3b345ab92133695c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310367"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890779"
 ---
 # <a name="interact-with-the-map"></a>与地图交互
 
-本文介绍如何使用[地图事件类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)。 该属性突出显示地图上以及地图的不同层上的事件。 还可以在与 HTML 标记交互时突出显示事件。
+本文介绍如何使用[地图事件类](/javascript/api/azure-maps-control/atlas.map#events)。 该属性突出显示地图上以及地图的不同层上的事件。 还可以在与 HTML 标记交互时突出显示事件。
 
 ## <a name="interact-with-the-map"></a>与地图交互
 
@@ -117,4 +117,4 @@ ms.locfileid: "91310367"
 > [使用 Azure Maps 服务模块](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [示例代码](/samples/browse/?products=azure-maps)

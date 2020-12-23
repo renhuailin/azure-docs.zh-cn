@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 19378251408d55868ed844a5505ae48ece55dc3b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551024"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92451472"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>教程：将 Freedcamp 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551024"
 * 让用户使用其 Azure AD 帐户自动登录到 Freedcamp。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -108,11 +108,11 @@ ms.locfileid: "88551024"
 
 4. 在页面的右上角，点击“个人资料”，然后导航至“我的帐户”   。
 
-    ![Freedcamp 配置](./media/freedcamp-tutorial/config01.png)
+    ![显示已选择“个人资料”和“我的帐户”的屏幕截图。](./media/freedcamp-tutorial/config01.png)
 
 5. 在菜单栏的左侧，单击“SSO”，然后在“SSO 连接”页面上执行以下步骤   ：
 
-    ![Freedcamp 配置](./media/freedcamp-tutorial/config02.png)
+    ![屏幕截图显示已在左侧菜单栏中选择“SSO”，在“SSO 连接”页上输入值，并且已选择“提交”按钮。](./media/freedcamp-tutorial/config02.png)
 
     a. 在“标题”文本框中，键入标题  。
 
@@ -162,13 +162,13 @@ ms.locfileid: "88551024"
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录 Freedcamp。
 
-2. 在页面的右上角，点击“个人资料”，然后导航至“管理系统”   。
+2. 在页面的右上角，点击“个人资料”，然后导航至“管理系统” 。
 
     ![Freedcamp 配置](./media/freedcamp-tutorial/config03.png)
 
 3. 在“管理系统”页面的右侧，执行以下步骤：
 
-    ![Freedcamp 配置](./media/freedcamp-tutorial/config04.png)
+    ![显示已选择“添加或邀请用户”按钮的屏幕截图，其中突出显示了“电子邮件”字段并选择了“添加用户”按钮。](./media/freedcamp-tutorial/config04.png)
 
     a. 单击“添加或邀请用户”  。
 
@@ -178,12 +178,12 @@ ms.locfileid: "88551024"
 
 ### <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“Freedcamp”磁贴时，应会自动登录到设置了 SSO 的 Freedcamp。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中选择“Freedcamp”磁贴时，应会自动登录到设置了 SSO 的 Freedcamp。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

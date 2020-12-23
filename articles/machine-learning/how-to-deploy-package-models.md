@@ -1,7 +1,7 @@
 ---
 title: 包模型
 titleSuffix: Azure Machine Learning
-description: 将模型打包为 Dockerfile
+description: 打包模型。 可以将模型打包为 docker 映像，然后就可以下载，也可以创建 Dockerfile 并使用它来生成映像。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,22 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d5fb2539d79c31de5a5e0196a7a4814c02a84602
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.reviewer: larryfr
+ms.custom: deploy
+ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544540"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312633"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>如何使用 Docker 打包注册的模型
 
 本文介绍如何使用 Docker 打包已注册的 Azure 机器学习模型。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
-本文假设你已在机器学习工作区中训练并注册了一个模型。 若要了解如何定型和注册 scikit-learn 模型，请[遵循本教程](how-to-train-scikit-learn.md)。
+本文假设你已在机器学习工作区中训练并注册了一个模型。 若要了解如何训练和注册 scikit-learn 模型，请[遵循本教程](how-to-train-scikit-learn.md)。
 
 
 ## <a name="package-models"></a>包模型
@@ -160,10 +162,10 @@ docker kill mycontainer
 
 ## <a name="next-steps"></a>后续步骤
 
-* [排查失败的部署问题](how-to-troubleshoot-deployment.md)
+* [排查部署失败问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
-* [创建使用 web 服务的客户端应用程序](how-to-consume-web-service.md)
-* [更新 web 服务](how-to-deploy-update-web-service.md)
+* [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
+* [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

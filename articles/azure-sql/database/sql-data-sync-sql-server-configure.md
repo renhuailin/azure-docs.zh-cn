@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 90f1e068bf816ecf72bcc8a3ba9439883e69a069
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: f5192176a6a0e174d5878c51defce70d949c1eb1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616663"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922320"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>教程：设置 Azure SQL 数据库和 SQL Server 的数据库之间的 SQL 数据同步
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,18 +40,18 @@ ms.locfileid: "91616663"
 
 1. 选择要用作数据同步的中心数据库的数据库。
 
-    ![从数据库列表中进行选择，Microsoft Azure 门户](./media/sql-data-sync-sql-server-configure/select-sql-database.png)
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/select-sql-database.png" alt-text = "Select from the database list, Microsoft Azure portal":::
 
     > [!NOTE]
     > 中心数据库是同步拓扑的中央终结点，其中同步组具有多个数据库终结点。 同步组中具有终结点的所有其他成员数据库会与中心数据库进行同步。
 
 1. 在选定数据库的“SQL 数据库”菜单中，选择“同步到其他数据库” 。
 
-    ![同步到其他数据库，Microsoft Azure 门户](./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png)
+    :::image type="content" source="./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png" alt-text = "Sync to other databases, Microsoft Azure portal":::
 
-1. 在“同步到其他数据库”页中，选择“新建同步组” 。 “新建同步组”页随即打开，其中突出显示“创建同步组(步骤 1)” 。
+1. 在“同步到其他数据库”页中，选择“新建同步组” 。 “新建同步组”页随即打开，其中显示“创建同步组(步骤 1)” 。
 
-   ![步骤 1 设置](./media/sql-data-sync-sql-server-configure/stepone.png)
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/new-sync-group-private-link.png" alt-text = "Set up new sync group with private link":::
 
    在“创建数据同步组”页中，请更改以下设置：
 
@@ -61,11 +61,16 @@ ms.locfileid: "91616663"
    | **同步元数据数据库** | 选择创建数据库（推荐）或使用现有数据库。<br/><br/>如果选择“新建数据库”，请选择“创建新数据库” 。 然后在“SQL 数据库”页中，命名并配置新数据库，再选择“确定” 。<br/><br/>如果选择“使用现有数据库”，请从列表中选择数据库。 |
    | **自动同步** | 选择“开”或“关” 。<br/><br/>如果选择“开”，请在“同步频率”部分中输入数字，然后选择“秒”、“分钟”、“小时”或“天”     。<br/> 从保存配置的时间开始，经过所选的间隔时间后，第一次同步开始。|
    | **冲突解决方法** | 选择“中心胜出”或“成员胜出” 。<br/><br/>“中心胜出”表示发生冲突时，中心数据库中的数据将覆盖成员数据库中的冲突数据。<br/><br/>“成员胜出”表示发生冲突时，成员数据库中的数据将覆盖中心数据库中的冲突数据。 |
+   | **使用专用链接** | 选择服务管理的专用终结点，以在同步服务和中心数据库之间建立安全连接。 |
 
    > [!NOTE]
-   > Microsoft 建议新建空的数据库，以用作“同步元数据数据库”****。 SQL 数据同步在此数据库中创建表，并经常运行工作负载。 此数据库共享为选定区域和订阅中所有同步组的同步元数据数据库。 在未删除区域中所有同步组和同步代理的情况下，无法更改数据库或其名称。
+   > Microsoft 建议新建空的数据库，以用作“同步元数据数据库”。 SQL 数据同步在此数据库中创建表，并经常运行工作负载。 此数据库共享为选定区域和订阅中所有同步组的同步元数据数据库。 在未删除区域中所有同步组和同步代理的情况下，无法更改数据库或其名称。
 
    选择“确定”，并等待创建和部署同步组。
+   
+1. 在“新建同步组”页上，如果你选择了“使用专用链接”，则需要批准专用终结点连接 。 信息消息中的链接会将你转到专用终结点连接体验，你可以在那里批准连接。 
+
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link.png" alt-text = "Approve private link":::
 
 ## <a name="add-sync-members"></a>添加同步成员
 
@@ -73,14 +78,14 @@ ms.locfileid: "91616663"
 
 在“中心数据库”部分中，输入中心数据库所在的服务器的现有凭据。 请勿在此部分中输入新凭据。
 
-![步骤 2 设置](./media/sql-data-sync-sql-server-configure/steptwo.png)
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo.png" alt-text = "Enter existing credentials for the hub database server":::
 
 ### <a name="to-add-a-database-in-azure-sql-database"></a>在 Azure SQL 数据库中添加数据库
 
 在“成员数据库”部分中，视需要通过选择“添加 Azure SQL 数据库”，将 Azure SQL 数据库中的数据库添加到同步组中。 此时，“配置 Azure SQL 数据库”页随即打开。
-
-  ![步骤 2 - 配置数据库](./media/sql-data-sync-sql-server-configure/steptwo-configure.png)
-
+  
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/step-two-configure.png" alt-text = "Add a database to the sync group":::
+   
   在“配置 Azure SQL 数据库”页中，更改以下设置：
 
   | 设置                       | 说明 |
@@ -91,6 +96,7 @@ ms.locfileid: "91616663"
   | **Azure SQL 数据库** | 选择 SQL 数据库中的现有数据库。 |
   | **同步方向** | 选择“双向同步”、“向中心同步”或“从中心同步”  。 |
   | “用户名”和“密码”  | 输入成员数据库所在的服务器的现有凭据。 请勿在此部分中输入新凭据。 |
+  | **使用专用链接** | 选择服务管理的专用终结点，以在同步服务和成员数据库之间建立安全连接。 |
 
   选择“确定”，并等待新同步成员创建和部署完成。
 
@@ -102,7 +108,7 @@ ms.locfileid: "91616663"
 
 1. 选择“选择同步代理网关”。 “选择同步代理”页随即打开。
 
-   ![创建同步代理](./media/sql-data-sync-sql-server-configure/steptwo-agent.png)
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo-agent.png" alt-text = "Creating a sync agent":::
 
 1. 在“选择同步代理”页中，选择是使用现有代理还是创建代理。
 
@@ -231,6 +237,10 @@ SQL 数据同步是否能完全创建表？
 
 有关客户端代理的常见问题解答，请参阅[代理常见问题解答](sql-data-sync-agent-overview.md#agent-faq)。
 
+**是否需要手动批准专用链接，然后才能开始使用它？**
+
+是的，你必须在同步组部署期间或通过使用 PowerShell 在 Azure 门户的专用终结点连接页中手动批准服务管理的专用终结点。
+
 ## <a name="next-steps"></a>后续步骤
 
 祝贺。 你已创建了一个包含 SQL 数据库实例和 SQL Server 数据库的同步组。
@@ -239,10 +249,10 @@ SQL 数据同步是否能完全创建表？
 
 - [Azure SQL 数据同步的 Data Sync Agent](sql-data-sync-agent-overview.md)
 - [最佳做法](sql-data-sync-best-practices.md)和[如何解决 Azure SQL 数据同步问题](sql-data-sync-troubleshoot.md)
-- [使用 Azure Monitor 日志监视 SQL 数据同步](sql-data-sync-monitor-sync.md)
+- [使用 Azure Monitor 日志监视 SQL 数据同步](./monitor-tune-overview.md)
 - [使用 Transact-SQL 更新同步架构](sql-data-sync-update-sync-schema.md) 或使用 [PowerShell](scripts/update-sync-schema-in-sync-group.md) 更新同步架构
 
 有关 SQL 数据库的详细信息，请参阅：
 
 - [SQL 数据库概述](sql-database-paas-overview.md)
-- [数据库生命周期管理](https://msdn.microsoft.com/library/jj907294.aspx)
+- [数据库生命周期管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

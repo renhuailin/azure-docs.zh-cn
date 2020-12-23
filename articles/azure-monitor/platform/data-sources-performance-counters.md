@@ -1,25 +1,28 @@
 ---
-title: 在 Azure Monitor 中收集和分析性能计数器 | Microsoft Docs
+title: 在 Azure Monitor 中使用 Log Analytics 代理收集 Windows 和 Linux 性能数据源
 description: 性能计数器由 Azure Monitor 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器收集、这些性能计数器在工作区中的存储详情和如何在 Azure 门户中对其进行分析。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 10/21/2020
+ms.openlocfilehash: 533d4a83ea73b98e26a57febc077a607bcb25465
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955482"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532290"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 和 Linux 性能数据源
-Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
+# <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Windows 和 Linux 性能数据源
+Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期从 Log Analytics 代理收集性能计数器以进行准实时 (NRT) 分析。
+
+> [!IMPORTANT]
+> 本文介绍如何使用 [Log Analytics 代理](log-analytics-agent.md)收集性能数据，该代理是 Azure Monitor 使用的代理之一。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](agents-overview.md)。
 
 ![性能计数器](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>配置性能计数器
-通过[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置性能计数器。
+通过[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)为 Log Analytics 工作区配置性能计数器。
 
 首次为新的工作区配置 Windows 或 Linux 性能计数器时，可以选择快速创建几个通用的计数器。  将这些计数器在一个复选框中依次列出。  请确保已选中所有想要首先创建的计数器，并单击“**添加选定的性能计数器**。
 
@@ -35,7 +38,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 ![配置 Windows 性能计数器](media/data-sources-performance-counters/configure-windows.png)
 
-遵循以下步骤添加要收集的新 Windows 性能计数器。
+遵循以下步骤添加要收集的新 Windows 性能计数器。 请注意，不支持 V2 Windows 性能计数器。
 
 1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。  
 
@@ -47,15 +50,14 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 ### <a name="linux-performance-counters"></a>Linux 性能计数器
 
-![配置 Linux 性能计数器](media/data-sources-performance-counters/configure-linux.png)
+![配置 Linux 性能计数器](media/data-sources-performance-counters/configure-linux-1.png)
 
 遵循以下步骤添加要收集的新 Linux 性能计数器。
 
-1. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，请取消选中“将下面的配置应用到我的 Linux 计算机”框并遵循下面的指南。
-2. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
-3. 单击 **+** 或按 **Enter** 将计数器添加到此对象的其他计数器列表中。
-4. 一个对象的所有计数器使用相同的“**采样间隔**”。  默认为 10 秒。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
-5. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
+1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
+1. 单击 **+** 或按 **Enter** 将计数器添加到此对象的其他计数器列表中。
+1. 一个对象的所有计数器使用相同的“**采样间隔**”。  默认为 10 秒。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
+1. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>在配置文件中配置 Linux 性能计数器
 可以不使用 Azure 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 /etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf 中的配置控制。
@@ -78,8 +80,8 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | parameters | 说明 |
 |:--|:--|
 | object\_name | 收集的对象名称。 |
-| instance\_regex |  用于定义要收集的实例的*正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定 `(crond\|sshd)`。 |
-| counter\_name\_regex | 用于定义要收集的对象计数器的*正则表达式*。 要收集对象的所有计数器，请指定：`.*`。 例如，要仅收集内存对象的交换空间计数器，可以指定 `.+Swap.+` |
+| instance\_regex |  用于定义要收集的实例的 *正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定 `(crond\|sshd)`。 |
+| counter\_name\_regex | 用于定义要收集的对象计数器的 *正则表达式*。 要收集对象的所有计数器，请指定：`.*`。 例如，要仅收集内存对象的交换空间计数器，可以指定 `.+Swap.+` |
 | interval | 收集对象计数器时采用的频率。 |
 
 
@@ -156,7 +158,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 <source>
     type oms_omi
     object_name "Logical Disk"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 5m
 </source>
@@ -164,7 +166,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 <source>
     type oms_omi
     object_name "Processor"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 30s
 </source>
@@ -198,7 +200,7 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="sizing-estimates"></a>大小估计值
  以 10 秒间隔收集特定计数器的粗略估计值约为每个实例每天 1 MB。  可以使用以下公式估计特定计数器的存储要求。
 
-> 1 MB x （计数器数） x （代理数） x （实例数）
+> 1 MB x（计数器数）x（代理数）x（实例数）
 
 ## <a name="log-queries-with-performance-records"></a>使用性能记录的日志查询
 下表提供了检索性能记录的不同日志查询的示例。

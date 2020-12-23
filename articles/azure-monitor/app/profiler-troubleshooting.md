@@ -1,30 +1,33 @@
 ---
 title: 排查 Azure Application Insights Profiler 的问题
-description: 本文提供故障排除步骤和信息，帮助开发人员解决在启用或使用 Application Insights Profiler 时遇到的难题。
+description: 本文介绍了疑难解答步骤和信息，以帮助开发人员启用和使用 Application Insights Profiler。
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 47a452377c8fed9808957f45fcc4ec686fcef87d
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979380"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561029"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
 > [!CAUTION]
-> Azure App Service 上的 ASP.NET Core 应用程序正在运行探查器 bug。 我们有一个修补程序，但需要花费几周的时间来部署全球。 可以通过将 Application Insights SDK 添加到应用程序中，使用 [此处](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的说明来解决该错误。
+> 在 Azure 应用服务中对 ASP.NET Core 应用运行探查器时有一个 bug。 我们有一个修补程序，但需要花费几周的时间来部署全球。 可以按照[此处](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的说明将 Application Insights SDK 添加到应用程序来解决此 bug。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>常规故障排除
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>仅当在运行 Profiler 期间对应用程序发出了请求时，才上传配置文件
 
-Azure Application Insights Profiler 每小时会收集两分钟的分析数据。 当你在“配置 Application Insights Profiler”窗格中选择“立即配置文件”按钮时，它也会收集数据 。 但是，仅当可将分析数据附加到运行 Profiler 期间所发生的请求时，才会上传分析数据。 
+Azure 应用程序 Insights 探查器每小时收集一次数据两分钟。 当你在 "**配置 Application Insights Profiler** " 窗格中选择 "**立即配置文件**" 按钮时，它还可以收集数据。
 
-Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源。 可以使用这些事件来查看 Profiler 的运行方式。 如果你认为 Profiler 应该运行并捕获跟踪，但“性能”窗格中并未显示这些信息，则可以检查 Profiler 的运行方式：
+> [!NOTE]
+> 仅当分析数据可以附加到运行探查器时发生的请求时，才会上载分析数据。 
+
+Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源。 您可以使用这些事件来查看探查器的运行方式：
 
 1. 搜索由 Profiler 发送到 Application Insights 资源的跟踪消息和自定义事件。 可以使用此搜索字符串查找相关的数据：
 
@@ -35,28 +38,30 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
     
    * 在左侧，应用程序在 Profiler 运行时不接收请求。 此消息说明，由于没有发生活动，上传操作已取消。 
 
-   * 在右侧，Profiler 已启动，并在检测到它运行期间发生的请求时发送了自定义事件。 如果显示 ServiceProfilerSample 自定义事件，则表示 Profiler 已将一个跟踪附加到请求，你可以从“Application Insights 性能”窗格查看该跟踪。
+   * 在右侧，Profiler 已启动，并在检测到它运行期间发生的请求时发送了自定义事件。 如果 `ServiceProfilerSample` 显示自定义事件，则表示已捕获某个配置文件，并且该配置文件在 " **Application Insights 性能** " 窗格中可用。
 
-     如果未显示遥测数据，则 Profiler 未运行。 要进行故障排除，请参阅本文后面的特定应用类型的故障排除部分。  
+     如果未显示任何记录，则探查器未运行。 要进行故障排除，请参阅本文后面的特定应用类型的故障排除部分。  
 
      ![搜索 Profiler 遥测数据][profiler-search-telemetry]
-
-1. 如果在 Profiler 运行时发出了请求，请确保应用程序中已启用 Profiler 的组件可以处理该请求。 虽然应用程序有时包括多个组件，但只对一部分组件启用了 Profiler。 “配置 Application Insights Profiler”窗格会显示已上传跟踪的组件。
 
 ### <a name="other-things-to-check"></a>要检查的其他事项
 * 确保应用在 .NET Framework 4.6 上运行。
 * 如果 Web 应用是 ASP.NET Core 应用程序，则必须至少运行 ASP.NET Core 2.0。
 * 如果要查看的数据的期限超过了好几周，请尝试限制时间筛选器并重试。 七天后将删除跟踪。
-* 确保代理或防火墙未阻止对 https://gateway.azureserviceprofiler.net 的访问。
+* 请确保代理或防火墙未阻止访问 https://gateway.azureserviceprofiler.net 。
 * 免费或共享应用服务计划不支持 Profiler。 如果你正在使用这些计划之一，请尝试扩展至其中一个基本计划，并且 Profiler 应开始工作。
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>并行线程的重复计算
 
 在某些情况下，堆栈查看器中的总时间指标大于请求的持续时间。
 
-如果存在与请求关联的两个或更多个线程并且它们正并行运行，则可能会发生这种情况。 在这种情况下，总线程时间就会超过已用时间。 一个线程可能会等待另一个线程完成。 查看器会尝试检测此情况并省略不相关的等待时间。 这样，它会倾向于显示过多信息，而不是省略关键信息。
+当两个或多个并行线程与请求关联时，可能会出现这种情况。 在这种情况下，总线程时间就会超过已用时间。
 
-如果看到跟踪中出现并行线程，请确定哪些线程处于等待状态，以便可以确定请求的关键路径。 通常情况下，快速进入等待状态的线程只是在等待其他线程完成。 请专注于其他线程，忽略等待中线程花费的时间。
+一个线程可能会等待另一个线程完成。 查看器会尝试检测此情况并省略不相关的等待时间。 这样，它会倾向于显示过多信息，而不是省略关键信息。
+
+当你在跟踪中看到并行线程时，确定正在等待的线程，以便你能够确定请求的热路径。
+
+通常情况下，快速进入等待状态的线程只是在等待其他线程完成。 请专注于其他线程，忽略等待中线程花费的时间。
 
 ### <a name="error-report-in-the-profile-viewer"></a>配置文件查看器中的错误报告
 在门户中提交支持票证。 请务必包含错误消息中的相关性 ID。
@@ -79,14 +84,34 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
    1. 在“工具”菜单中，选择“WebJobs 仪表板” 。  
       “WebJobs”窗格随即打开。 
    
-      ![屏幕截图显示 "Web 作业" 窗格，其中显示作业的名称、状态和上次运行时间。][profiler-webjob]   
+      ![屏幕截图显示了 WebJobs 窗格，其中显示了作业的名称、状态和上次运行时间。][profiler-webjob]   
    
    1. 若要查看 webjob 的详细信息（包括日志），请选择“ApplicationInsightsProfiler3”链接。  
      “连续 WebJob 详细信息”窗格随即打开。
 
-      ![屏幕截图显示连续的 WebJob 详细信息窗格。][profiler-webjob-log]
+      ![屏幕截图显示了“连续 WebJob 详细信息”窗格。][profiler-webjob-log]
 
-如果你不明白 Profiler 为何不能正常工作，可以下载日志并将其发送给我们的团队 serviceprofilerhelp@microsoft.com 以获取帮助。 
+如果探查器不能正常工作，可以下载日志并将其发送给我们的团队以获得帮助 serviceprofilerhelp@microsoft.com 。
+
+### <a name="check-the-diagnostic-services-site-extension-status-page"></a>检查 "诊断服务站点扩展" 状态页
+如果通过门户中的 " [Application Insights" 窗格](profiler.md) 启用了探查器，则它是由 "诊断服务" 站点扩展启用的。
+
+可以通过转到以下 url 来查看此扩展的 "状态" 页： `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
+
+> [!NOTE]
+> "状态页" 链接的域将随云的不同而异。
+此域将与应用服务的 Kudu 管理站点相同。
+
+此状态页显示探查器的安装状态和 Snapshot Collector 代理。 如果出现意外错误，则会显示该错误，并显示如何修复此错误。
+
+你可以使用应用服务的 Kudu 管理站点获取此状态页的基 url：
+1. 在 Azure 门户中，打开应用服务应用程序。
+2. 选择 " **高级工具**"，或搜索 **Kudu**。
+3. 选择“转到”。
+4. 进入 Kudu 管理站点后，请在 URL 中 **追加以下项， `/DiagnosticServices` 然后按 enter**。
+ 它将如下所示： `https://<kudu-url>/DiagnosticServices`
+
+它将显示类似于以下内容的状态页： " ![ 诊断服务状态" 页](./media/diagnostic-services-site-extension/status-page.png)
     
 ### <a name="manual-installation"></a>手动安装
 
@@ -107,7 +132,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 ### <a name="too-many-active-profiling-sessions"></a>活动分析会话太多
 
-目前，最多可以对同一服务计划中运行的 4 个 Azure Web 应用和部署槽启用 Profiler。 如果在一个应用服务计划中运行的 Web 应用超过四个，则 Profiler 可能会引发 Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException。 Profiler 为每个 Web 应用单独运行，并尝试为每个应用启动 Windows 事件跟踪 (ETW) 会话。 但是，可以同时处于活动状态的 ETW 会话数量有限。 如果 Profiler webjob 报告活动探查会话太多，请将一些 Web 应用移到另一服务计划。
+最多可对在同一服务计划中运行的四个 Web 应用启用探查器。 如果有四个以上，则探查器可能会引发 *ServiceProfiler。 TooManyETWSessionException*。 若要解决此情况，请将一些 web 应用移到不同的服务计划。
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>部署错误：目录不为空“D:\\home\\site\\wwwroot\\App_Data\\jobs”
 
@@ -115,7 +140,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 *目录不为空“D:\\home\\site\\wwwroot\\App_Data\\jobs”*
 
-如果通过脚本或通过 Azure DevOps 部署管道运行 Web 部署，则会发生此错误。 解决方法是将以下附加部署参数添加到 Web 部署任务：
+如果从脚本或 Azure Pipelines 运行 Web 部署，则会发生此错误。 解决方法是将以下附加部署参数添加到 Web 部署任务：
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
@@ -131,8 +156,8 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 >**云服务 WAD 中附带的探查器中的 bug 已修复。** 用于云服务的最新版本的 WAD (1.12.2.0) 适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但不会立即升级。 若要强制升级，可以重新部署服务或重新启动节点。
 
-若要查看 Azure 诊断是否正确配置了 Profiler，请执行以下三项操作： 
-1. 首先，检查部署的 Azure 诊断配置的内容是否符合预期。 
+若要查看 Azure 诊断是否正确配置了探查器，请执行以下步骤： 
+1. 验证部署的 Azure 诊断配置的内容是否符合你的预期。 
 
 1. 其次，确保 Azure 诊断在 Profiler 命令行上传递正确的 iKey。 
 
@@ -170,7 +195,7 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 1. 使用上述 config.json 文件中的路径检查 Profiler 日志文件 BootstrapN.log。 它将显示表示 Profiler 正在使用的设置的调试信息。 此外，还将显示来自 Profiler 的状态和错误消息。  
 
-    对于 VM，该文件通常位于此处：
+    对于 Vm，文件如下所示：
     ```
     C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
     ```
@@ -187,7 +212,9 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>编辑网络代理或防火墙规则
 
-如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与 Application Insights Profiler 服务进行通信。 Application Insights Profiler 使用的 IP 包含在 Azure Monitor 服务标记中。
+如果你的应用程序通过代理或防火墙连接到 Internet，则可能需要更新规则，以便与探查器服务进行通信。
+
+Application Insights Profiler 使用的 IP 包含在 Azure Monitor 服务标记中。 有关详细信息，请参阅 [服务标记文档](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

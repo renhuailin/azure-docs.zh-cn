@@ -5,18 +5,18 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570507"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606277"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
 本文解答有关 Azure 容器注册表的常见问题和已知问题。
 
-有关注册表疑难解答指南，请参阅：
+有关注册表故障排除指南，请参阅：
 * [注册表登录故障排除](container-registry-troubleshoot-login.md)
 * [排查与注册表相关的网络问题](container-registry-troubleshoot-access.md)
 * [注册表性能故障排除](container-registry-troubleshoot-performance.md)
@@ -37,7 +37,7 @@ ms.locfileid: "91570507"
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中是否提供对映像的安全漏洞扫描？
 
-是的。 请参阅 [Azure 安全中心](../security-center/azure-container-registry-integration.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 中的文档。
+是的。 请参阅 [Azure 安全中心](../security-center/defender-for-container-registries-introduction.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 中的文档。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何使用 Azure 容器注册表配置 Kubernetes？
 
@@ -111,6 +111,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [如何为注册表启用自动映像隔离？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [如何启用匿名拉取访问？](#how-do-i-enable-anonymous-pull-access)
+- [如何实现向注册表推送不可分发的层？](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>如何访问 Docker 注册表 HTTP API V2？
 
@@ -259,10 +260,38 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何实现匿名提取访问？
 
-为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 如果你在注册表中有任何 [范围映射 (用户) 或令牌资源](https://aka.ms/acr/repo-permissions) ，请先删除它们，然后再 (系统范围映射) 。 若要启用公共访问，请在 https://aka.ms/acr/support/create-ticket 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 如果你的注册表中有任何[范围映射（用户）或令牌资源](./container-registry-repository-scoped-permissions.md)，请在提交支持票证之前删除它们（可以忽略系统范围映射）。 若要启用公共访问，请在 https://aka.ms/acr/support/create-ticket 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
 
 > [!NOTE]
-> 仅可匿名访问请求已知映像所需的 Api。 不能匿名访问标记列表或存储库列表等操作的其他 Api。
+> * 仅可匿名访问拉取已知映像所需的 API。 不能匿名访问可以执行标记列表或存储库列表等操作的其他 API。
+> * 尝试匿名拉取操作前，请运行 `docker logout` 以确保清除任何现有 Docker 凭据。
+
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>如何实现向注册表推送不可分发的层？
+
+清单中的不可分发层包含 URL 参数，可以从该 URL 参数获取内容。 启用不可分发的层推送的一些可能用例包括：网络受限制的注册表、具有受限访问权限的气流注册表，或不带 internet 连接的注册表。
+
+例如，如果已设置 NSG 规则，以便 VM 只能从 Azure 容器注册表中提取映像，则 Docker 将会请求外部/非可分发层的故障。 例如，Windows Server Core 映像会在其清单中包含对 Azure 容器注册表的外部层引用，因此无法提取此方案。
+
+若要启用无法再分发的层：
+
+1. 编辑 `daemon.json` 位于 `/etc/docker/` Linux 主机上和 `C:\ProgramData\docker\config\daemon.json` Windows Server 上的文件。 假设文件之前为空，请添加以下内容：
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > 值是注册表地址的数组，用逗号分隔。
+
+2. 保存并退出该文件。
+
+3. 重新启动 Docker。
+
+将映像推送到列表中的注册表时，它们的非可分发层将被推送到注册表。
+
+> [!WARNING]
+> 不可分发的项目通常会限制如何以及在何处分发和共享这些项目。 仅将此功能用于将项目推送到专用注册表。 请确保符合任何涵盖重新分发非分发项目的条款。
 
 ## <a name="diagnostics-and-health-checks"></a>诊断和运行状况检查
 
@@ -443,7 +472,7 @@ curl $redirect_url
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么拉取或推送请求失败，并出现不受允许的操作？
 
 以下是一些可能出现不允许进行操作的情况：
-* 不再支持经典注册表。 请使用 [az acr update](/cli/azure/acr#az-acr-update)或 Azure 门户升级到受支持的[服务层](https://aka.ms/acr/skus)。
+* 不再支持经典注册表。 请使用 [az acr update](/cli/azure/acr#az-acr-update)或 Azure 门户升级到受支持的[服务层](./container-registry-skus.md)。
 * 映像或存储库可能已锁定，因此无法进行删除或更新。 可以使用 [az acr show repository](./container-registry-image-lock.md) 命令来查看当前属性。
 * 如果映像处于隔离状态，则会禁用某些操作。 详细了解[隔离](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 * 注册表可能已达到其[存储限制](container-registry-skus.md#service-tier-features-and-limits)。

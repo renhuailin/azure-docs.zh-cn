@@ -3,16 +3,16 @@ title: 充当事件网格源的 Azure Key Vault
 description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供的属性和架构
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 605502794f2f3aa4f4edd14b49efda5003b91146
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324070"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460404"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault
 
-本文提供 [Azure Key Vault](../key-vault/index.yml)中事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供了 [Azure Key Vault](../key-vault/index.yml) 中事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
 
@@ -31,7 +31,7 @@ Azure Key Vault 帐户生成以下事件类型：
 | Microsoft.KeyVault.SecretNewVersionCreated | 创建的机密新版本 | 创建新机密或新机密版本时触发。 |
 | Microsoft.KeyVault.SecretNearExpiry | 机密即将过期 | 当前版本的机密即将过期时触发。 （此事件在机密到期日期前 30 天触发。） |
 | Microsoft.KeyVault.SecretExpired | 机密已过期 | 机密过期时触发。 |
-| KeyVault. VaultAccessPolicyChanged | 保管库访问策略已更改 | 当 Key Vault 上的访问策略发生更改时触发。 它包括在将 Key Vault 权限模型更改为 Azure RBAC 或从 Azure RBAC 更改时的方案  |
+| Microsoft.KeyVault.VaultAccessPolicyChanged | 保管库访问策略已更改 | 当 Key Vault 上的访问策略发生更改时触发。 它包括将 Key Vault 权限模型更改为 Azure RBAC 或从 Azure RBAC 更改 Key Vault 权限模型时的方案  |
 
 ### <a name="event-examples"></a>事件示例
 
@@ -85,5 +85,5 @@ Azure Key Vault 帐户生成以下事件类型：
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
 * 有关如何创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
-* 有关密钥保管库的详细信息，请参阅 [什么是 Azure Key Vault？](../key-vault/general/overview.md)
+* 有关 Key Vault 的详细信息，请参阅 [什么是 Azure Key Vault？](../key-vault/general/overview.md)
 

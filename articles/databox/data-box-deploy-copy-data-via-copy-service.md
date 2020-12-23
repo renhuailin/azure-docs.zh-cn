@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e664055893bbdef0f7090811b8a160a1b8a4a1fd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219162"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124042"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box（预览）
 
@@ -25,7 +25,7 @@ ms.locfileid: "84219162"
 - 可在中间主机不可用的 NAS 环境中使用。
 - 可用于复制需要花费数周时间来引入和上传其中数据的小型文件。 数据复制服务能够大幅缩减小型文件的引入和上传时间。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 >
@@ -62,7 +62,7 @@ ms.locfileid: "84219162"
 
 3. 在“配置作业并启动”对话框中填写以下字段：
     
-    |字段                          |值    |
+    |字段                          |Value    |
     |-------------------------------|---------|
     |**作业名称**                       |作业的唯一名称，少于 230 个字符。 作业名称中不允许以下字符：\<, \>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
     |**源位置**                |使用 `\\<ServerIPAddress>\<ShareName>` 或 `\\<ServerName>\<ShareName>` 格式提供数据源的 SMB 路径。        |
@@ -71,7 +71,7 @@ ms.locfileid: "84219162"
     |**目标存储帐户**    |从列表中选择要将数据上传到的目标存储帐户。         |
     |**目标类型**       |从列表中选择目标存储类型：“块 Blob”、“页 Blob”或“Azure 文件”。          |
     |**目标容器/共享**    |输入目标存储帐户中要将数据上传到的容器或共享的名称。 该名称可以是共享名称或容器名称。 例如，使用 `myshare` 或 `mycontainer`。 也可以输入 `sharename\directory_name` 或 `containername\virtual_directory_name` 格式的名称。        |
-    |**复制文件匹配模式**    | 可按以下两种方式输入文件名匹配模式：<ul><li>**使用通配符表达式：** 通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 `.vhd` 的所有文件。 类似地，`*.dl?` 匹配扩展名为 `.dl` 或以 `.dl` 开头的所有文件，例如 `.dll`。 同理，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式：** 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
+    |**复制文件匹配模式**    | 可按以下两种方式输入文件名匹配模式：<ul><li>**使用通配符表达式：** 通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 `.vhd` 的所有文件。 类似地，`*.dl?` 匹配扩展名为 `.dl` 或以 `.dl` 开头的所有文件，例如 `.dll`。 同理，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式：** 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
     |**文件优化**              |启用此功能后，引入期间会打包小于 1 MB 的文件。 打包可以加快小型文件的数据复制速度。 如果文件数远远超出目录数，则打包还可以显著节省时间。        |
  
 4. 选择“开始”。 随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。

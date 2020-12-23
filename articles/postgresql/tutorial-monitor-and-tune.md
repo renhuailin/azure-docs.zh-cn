@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: f211ce7e52ccaa6793435159d0ce1c64fe8b63ed
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: a12068259d82e833826bcac5e6c58059fb51c56c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91705275"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336973"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>教程：监视和优化 Azure Database for PostgreSQL（单一服务器）
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL 提供有助于了解和改进服务器性能的�
 > * 分析数据库以获取性能建议
 > * 应用性能建议
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 需要一个使用 PostgreSQL 版本 9.6 或 10 的 Azure Database for PostgreSQL 服务器。 可以按照[创建教程](tutorial-design-database-using-azure-portal.md)中的步骤创建服务器。
 
 > [!IMPORTANT]
@@ -52,7 +52,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 2. “长时间运行查询”  选项卡按平均每次执行持续时间显示前 5 个查询，每隔 15 分钟聚合一次。 
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="查询存储服务器参数":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Query Performance Insight 登陆页面":::
 
    可以通过从“查询数量”  下拉列表中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
 
@@ -64,7 +64,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 6. 选择“等待统计信息”  选项卡以查看服务器中等待次数的相应可视化效果。
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="查询存储服务器参数":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight 等待统计信息":::
 
 ### <a name="permissions"></a>权限
 查看 Query Performance Insight 中查询文本所需的“所有者”  或“参与者”  权限。 读者  可以查看图表和表格，但不能查看查询文本。
@@ -75,7 +75,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 1. 从 PostgreSQL 服务器的 Azure 门户页上的菜单栏的“支持 + 疑难解答”  部分中打开“性能建议”  。
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="查询存储服务器参数":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="性能建议登陆页面":::
 
 2. 选择“分析”  并选择数据库。 随即会开始分析。
 
@@ -85,12 +85,18 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 5. 建议将显示有关相关“数据库”  、“表”  、“列”  和“索引大小”  的信息。
 
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="查询存储服务器参数":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="“性能建议”结果":::
 
 6. 若要实施建议，请复制查询文本并从所选的客户端中运行。
 
 ### <a name="permissions"></a>权限
 使用性能建议功能运行分析所需的  “所有者”或“参与者”  权限。
 
+## <a name="clean-up-resources"></a>清理资源
+
+在前面的步骤中，你已在服务器组中创建了 Azure 资源。 如果你认为以后不需要这些资源，请删除该服务器组。 在服务器组的“概述”页中，按“删除”按钮   。 弹出页面上出现提示时，请确认服务器组的名称，然后单击最后一个“删除”按钮  。
+
 ## <a name="next-steps"></a>后续步骤
-- 了解有关如何在 Azure Database for PostgreSQL 中进行[监视和优化](concepts-monitoring.md)的详细信息。
+
+> [!div class="nextstepaction"]
+> 了解有关如何在 Azure Database for PostgreSQL 中进行[监视和优化](concepts-monitoring.md)的详细信息。

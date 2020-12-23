@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 69525173aa5c4af536105a4e897ee4860f021b6c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 641ed73f507d35d7af548d0164ef8e80979be217
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91267425"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530470"
 ---
 # <a name="what-is-azure-virtual-wan"></a>什么是 Azure 虚拟 WAN？
 
@@ -124,9 +124,9 @@ Azure 虚拟 WAN 提供了加密 ExpressRoute 流量的功能。 此方法通过
 
 路由表现在具有关联和传播功能。 预先存在的路由表是不具有这些功能的路由表。 如果中心路由中有预先存在的路由，并且你希望使用新功能，请考虑以下事项：
 
-* **在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户**：如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后尝试在 Azure 门户中的中心的“路由表”部分创建新的路由表。
+* **在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户**：如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后尝试在 Azure 门户中的中心的“路由表”部分创建新的路由表。 强烈建议对虚拟 WAN 中的所有中心执行删除步骤。
 
-* **在虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
+* **在虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。 强烈建议对虚拟 WAN 中的所有中心执行删除步骤。
 
 ## <a name="faq"></a><a name="faq"></a>常见问题解答
 

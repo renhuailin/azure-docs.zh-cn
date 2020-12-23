@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 2a8f27c0df2224aed5c69c8c38f463a97e3cf294
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 48e2d798a3dcf7354e68d07785c2762ba03f39f8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711155"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011116"
 ---
-下表显示[帐户级别指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)。
+下表显示[帐户级别指标](../articles/azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |

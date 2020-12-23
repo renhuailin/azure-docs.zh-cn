@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 212bd1bc0b15ad985fc8037e99876d78132b2c22
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547930"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教程：Azure Active Directory 与 PolicyStat 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88547930"
 * 可让用户使用其 Azure AD 帐户自动登录到 PolicyStat（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -46,7 +46,7 @@ ms.locfileid: "88547930"
 
 * PolicyStat 支持 **SP** 发起的 SSO
 
-* PolicyStat 支持**实时**用户预配
+* PolicyStat 支持 **实时** 用户预配
 
 ## <a name="adding-policystat-from-the-gallery"></a>从库中添加 PolicyStat
 
@@ -66,7 +66,7 @@ ms.locfileid: "88547930"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **PolicyStat**，在结果面板中选择“PolicyStat”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **PolicyStat** ，在结果面板中选择“PolicyStat”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的“PolicyStat”](common/search-new-app.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "88547930"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "88547930"
 
 5. PolicyStat 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”对话框的屏幕截图，其中选择了“编辑”图标。](common/edit-attribute.png)
 
 6. 除上述属性以外，PolicyStat 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
@@ -128,9 +128,9 @@ ms.locfileid: "88547930"
 
     a. 单击“添加新声明”以打开“管理用户声明”对话框。
     
-    ![image](common/new-save-attribute.png)
+    ![显示“用户声明”部分的屏幕截图，其中突出显示了“添加新声明”和“保存”操作。](common/new-save-attribute.png)
 
-    ![图像](./media/policystat-tutorial/attribute01.png)
+    ![显示“管理用户声明”对话框的屏幕截图，其中突出显示了“名称”、“转换”和“参数”文本框，并选择了“保存”按钮。](./media/policystat-tutorial/attribute01.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
@@ -142,7 +142,7 @@ ms.locfileid: "88547930"
     
     f. 在“参数 1”列表中，键入该行显示的属性值。
 
-    g. 单击“ **保存**”。
+    g. 单击“ **保存** ”。
 
 7. 在“设置 PolicyStat”部分，根据要求复制相应的 URL。
 
@@ -164,7 +164,7 @@ ms.locfileid: "88547930"
 
 3. 单击“IDP 元数据”，并在“IDP 元数据”部分执行以下步骤：
    
-    ![单一登录配置](./media/policystat-tutorial/ic808636.png "单一登录配置")
+    ![显示选择了“IDP 元数据”操作的屏幕截图。](./media/policystat-tutorial/ic808636.png "单一登录配置")
    
     a. 打开下载的元数据文件，复制其内容，然后将其粘贴到“标识提供者元数据”文本框中。
 
@@ -224,12 +224,12 @@ ms.locfileid: "88547930"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“PolicyStat”磁贴时，应会自动登录到设置了 SSO 的 PolicyStat。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“PolicyStat”磁贴时，应会自动登录到设置了 SSO 的 PolicyStat。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

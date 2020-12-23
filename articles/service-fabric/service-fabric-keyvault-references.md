@@ -3,12 +3,12 @@ title: Azure Service Fabric - 使用 Service Fabric 应用程序 KeyVault 引用
 description: 本文介绍如何使用应用程序机密的 Service Fabric KeyVaultReference 支持。
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f2221bb3e8e3ee3181b2cff70107dccc203954cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261135"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313796"
 ---
 # <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 应用程序的 KeyVaultReference 支持（预览版）
 
@@ -18,7 +18,7 @@ ms.locfileid: "91261135"
 > 不建议在生产环境中使用此预览功能。
 
 > [!NOTE]
-> KeyVault 参考预览功能仅支持 [版本控制](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) 的机密。 不支持 Versionless 机密。
+> KeyVault 参考预览功能仅支持 [版本控制](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) 的机密。 不支持 Versionless 机密。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -155,7 +155,7 @@ KeyVaultReference 是容器 RepositoryCredentials 支持的类型。以下示例
         <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 - 需要为 KeyVaultReference 支持启用托管标识，如果在未启用托管标识的情况下使用 KeyVaultReference，应用程序激活将会失败。
 
 - 如果使用系统分配的标识，则只会在部署应用程序之后才创建该标识，而这会造成循环依赖关系。 部署应用程序后，可向系统分配的标识授予对 keyvault 的访问权限。 可按名称 {cluster}/{application name}/{servicename} 查找系统分配的标识。

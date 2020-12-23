@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595217"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566514"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 基于 URL 对 Web 流量进行路由
 
@@ -32,11 +32,11 @@ ms.locfileid: "89595217"
 
 如果你愿意，可以使用 [Azure PowerShell](tutorial-url-route-powershell.md) 或 [Azure 门户](create-url-route-portal.md)完成本过程中的步骤。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教程需要 Azure CLI 版本的2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -76,7 +76,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>使用 URL 映射创建应用网关
 
-使用 `az network application-gateway create` 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet  和 myAGPublicIPAddress  。
+使用 `az network application-gateway create` 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet 和 myAGPublicIPAddress。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -97,7 +97,7 @@ az network application-gateway create \
  创建应用程序网关可能需要几分钟时间。 创建应用程序网关后，可以看到以下新功能：
 
 
-|Feature  |说明  |
+|功能  |说明  |
 |---------|---------|
 |appGatewayBackendPool     |应用程序网关必须至少具有一个后端地址池。|
 |appGatewayBackendHttpSettings     |指定将端口 80 和 HTTP 协议用于通信。|
@@ -183,7 +183,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
 
-在本文中，你将创建三个虚拟机规模集以支持所创建的三个后端池。 你将创建名为 *myvmss1*、*myvmss2* 和 *myvmss3* 的规模集。 每个规模集都包含两个虚拟机实例，将在其上安装 NGINX。
+在本文中，你将创建三个虚拟机规模集以支持所创建的三个后端池。 你将创建名为 *myvmss1* 、 *myvmss2* 和 *myvmss3* 的规模集。 每个规模集都包含两个虚拟机实例，将在其上安装 NGINX。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

@@ -1,5 +1,5 @@
 ---
-title: 用设计器生成 ML 模型
+title: 使用设计器生成 ML 模型
 titleSuffix: Azure Machine Learning
 description: 了解组成 Azure 机器学习设计器的术语、概念和工作流。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883120"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322264"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>什么是 Azure 机器学习设计器？ 
 
@@ -44,7 +44,7 @@ ms.locfileid: "90883120"
 + 将管道[发布](#publish)到 REST 管道终结点，以提交具有不同参数和数据集的新管道运行。
     + 发布训练管道，在更改参数和数据集时重用单个管道训练多个模型。
     + 发布批量推理管道，通过使用以前训练的模型针对新数据进行预测。
-+ 将**实时推理管道**[部署](#deploy)到实时终结点，以便对新数据进行实时预测。
++ 将 **实时推理管道**[部署](#deploy)到实时终结点，以便对新数据进行实时预测。
 
 ![设计器中的训练、批量推理和实时推理的工作流示意图](./media/concept-designer/designer-workflow-diagram.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "90883120"
 
 ## <a name="deploy"></a>部署
 
-若要执行实时推理，必须将管道部署为**实时终结点**。 实时终结点在外部应用程序和评分模型之间创建接口。 对实时端点的调用会将预测结果实时返回给应用程序。 若要调用实时终结点，请传递部署终结点时创建的 API 密钥。 该终结点基于 REST，这是一种流行的 Web 编程项目的体系结构。
+若要执行实时推理，必须将管道部署为 **实时终结点** 。 实时终结点在外部应用程序和评分模型之间创建接口。 对实时端点的调用会将预测结果实时返回给应用程序。 若要调用实时终结点，请传递部署终结点时创建的 API 密钥。 该终结点基于 REST，这是一种流行的 Web 编程项目的体系结构。
 
 必须将实时终结点部署到 Azure Kubernetes 服务群集。
 
@@ -114,7 +114,7 @@ ms.locfileid: "90883120"
 
 已发布的管道在每个模块的管道草稿中定义的计算资源上运行。
 
-设计器创建与 SDK 相同的 [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py&preserve-view=true) 对象。
+设计器创建与 SDK 相同的 [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?preserve-view=true&view=azure-ml-py) 对象。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,21 +3,21 @@ title: 什么是异常检测器 API？
 titleSuffix: Azure Cognitive Services
 description: 使用异常检测器 API 算法对时序数据应用异常情况检测。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/22/2020
-ms.author: aahi
+ms.date: 11/23/2020
+ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319310"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999088"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
@@ -85,6 +85,10 @@ ms.locfileid: "91319310"
 
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
+
+[使用异常检测器容器](anomaly-detector-container-howto.md)在本地部署 API 功能。 借助 Docker 容器，你可使服务更靠近数据，以满足合规性、安全性或其他操作目的。
 
 ## <a name="join-the-anomaly-detector-community"></a>加入“异常检测器”社区
 

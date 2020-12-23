@@ -10,14 +10,15 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2fb3e2031d5656668b9971fdf357f66824179fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6f6994717ff4c730fb27bd26c40d199fb198e528
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975886"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96019950"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用批量执行程序 .NET 库在 Azure Cosmos DB 中执行批量操作
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!NOTE]
 > 本文介绍的这个批量执行工具库是为使用 .NET SDK 2.x 版本的应用程序保留的。 对于新应用程序，可以使用 [.NET SDK 版本 3.x](tutorial-sql-api-dotnet-bulk-import.md) 直接提供的批量支持  ，它不需要任何外部库。 
@@ -32,9 +33,9 @@ ms.locfileid: "90975886"
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
-* 如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，可以将 [Azure Cosmos DB 模拟器](/azure/cosmos-db/local-emulator) 与 `https://localhost:8081` 终结点一起使用。 [对请求进行身份验证](local-emulator.md#authenticate-requests)中提供了主密钥。
+* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，可以将 [Azure Cosmos DB 模拟器](./local-emulator.md) 与 `https://localhost:8081` 终结点一起使用。 [对请求进行身份验证](local-emulator.md#authenticate-requests)中提供了主密钥。
 
 * 使用 .NET 快速入门文章的[创建数据库帐户](create-sql-api-dotnet.md#create-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
 
@@ -114,7 +115,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |maxInMemorySortingBatchSize     |  从在每个阶段中传递给 API 调用的文档枚举器提取的最大文档数。 对于在批量导入之前发生的内存中排序阶段，将此参数设置为 null 会导致库使用默认最小值 (documents.count, 1000000)。       |
    |cancellationToken    |    用于正常退出批量导入操作的取消令牌。     |
 
-   **批量导入响应对象定义**批量导入 API 调用的结果包含以下属性：
+   **批量导入响应对象定义** 批量导入 API 调用的结果包含以下属性：
 
    |**参数**  |**说明**  |
    |---------|---------|
@@ -163,7 +164,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |maxInMemorySortingBatchSize    |    从在每个阶段中传递给 API 调用的更新项枚举器提取的最大更新项数。 对于批量导入之前发生的每个内存中排序阶段，将此参数设置为 null 会导致库使用默认最小值 (updateItems.count, 1000000)。     |
    | cancellationToken|用于正常退出批量更新操作的取消令牌。 |
 
-   **批量更新响应对象定义**批量更新 API 调用的结果包含以下属性：
+   **批量更新响应对象定义** 批量更新 API 调用的结果包含以下属性：
 
    |**参数**  |**说明** |
    |---------|---------|

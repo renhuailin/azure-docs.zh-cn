@@ -1,5 +1,5 @@
 ---
-title: 用 IntelliJ 调试 Spark 作业 Azure 工具包（预览版）-HDInsight
+title: 用 IntelliJ Azure 工具包调试 Spark 作业 (预览版) -HDInsight
 description: 在 Azure Toolkit for IntelliJ 中使用 HDInsight 工具调试应用程序的指南
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebed7d87ba538b2f886155527bb89c1ffd2bcf58
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857416"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545695"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ 进行失败 Spark 作业调试（预览）
 
-本文逐步介绍如何使用 [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) 中的 HDInsight 工具来运行 **Spark 失败调试**应用程序。
+本文逐步介绍如何使用 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij) 中的 HDInsight 工具来运行 **Spark 失败调试** 应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "82857416"
   
 * IntelliJ IDEA。 本文使用 [IntelliJ IDEA Community 版本2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)。
   
-* Azure Toolkit for IntelliJ。 请参阅[安装 Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)。
+* Azure Toolkit for IntelliJ。 请参阅[安装 Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation)。
 
 * 连接到 HDInsight 群集。 请参阅[连接到 HDInsight 群集](apache-spark-intellij-tool-plugin.md)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "82857416"
 
      ![Intellij 创建调试项目](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. 选择“**下一步**”。
+   c. 选择“ **下一步** ”。
 
 2. 在“新建项目”窗口中执行以下步骤：
 
@@ -52,7 +52,7 @@ ms.locfileid: "82857416"
 
    a. 输入项目名称和项目位置。
 
-   b. 在“项目 SDK”下拉列表中，选择适用于 **Spark 2.3.2** 群集的 **Java 1.8**。
+   b. 在“项目 SDK”下拉列表中，选择适用于 **Spark 2.3.2** 群集的 **Java 1.8** 。
 
    c. 在“Spark 版本”下拉列表中，选择“Spark 2.3.2(Scala 2.11.8)”。 
 
@@ -100,7 +100,7 @@ ms.locfileid: "82857416"
 
 1. 打开原始项目，或者创建一个新项目并将其与原始源代码相关联。 目前仅支持对 spark2.3.2 版本进行失败调试。
 
-1. 在 IntelliJ IDEA 中，创建一个 **Spark 失败调试**配置文件，从以前下载的已失败作业的资源中选择与“Spark 作业失败上下文位置”字段对应的 FTD 文件。
+1. 在 IntelliJ IDEA 中，创建一个 **Spark 失败调试** 配置文件，从以前下载的已失败作业的资源中选择与“Spark 作业失败上下文位置”字段对应的 FTD 文件。
 
    ![创建故障配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
@@ -128,19 +128,19 @@ ms.locfileid: "82857416"
 * [Apache Spark 与 BI：使用 HDInsight 中的 Spark 和 BI 工具进行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 与机器学习：通过 HDInsight 中的 Spark 使用 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
-* [使用 HDInsight 中的 Apache Spark 分析网站日志](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [使用 HDInsight 中的 Apache Spark 分析网站日志](./apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序
 
-* [使用 Scala 创建独立的应用程序](../hdinsight-apache-spark-create-standalone-application.md)
+* [使用 Scala 创建独立的应用程序](./apache-spark-create-standalone-application.md)
 * [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和扩展
 
 * [使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)
 * [使用 Azure Toolkit for IntelliJ 通过 VPN 远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具创建 Apache Spark 应用程序](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具创建 Apache Spark 应用程序](./apache-spark-eclipse-tool-plugin.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)

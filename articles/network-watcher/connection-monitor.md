@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/23/2020
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2da675f0836dbb10ce5227e7e93e98d706cc5c64
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76834648"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544796"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
+
+> [!NOTE]
+> 本教程介绍连接监视器（经典版）。 试用经过改进的新[连接监视器](connection-monitor-overview.md)，体验增强的连接监视功能
 
 在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 在本教程中，你将了解如何执行以下操作：
 
@@ -33,6 +36,8 @@ ms.locfileid: "76834648"
 > * 诊断两个 VM 之间的通信问题，并了解如何解决该问题
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -54,7 +59,7 @@ ms.locfileid: "76834648"
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
-    |资源组| 选择“新建”，并输入 myResourceGroup  |
+    |资源组| 选择“新建”，并输入 myResourceGroup|
     |位置| 选择“美国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”  。
@@ -85,7 +90,7 @@ ms.locfileid: "76834648"
 创建一个连接监视器，监视通过 TCP 端口 22 进行的从 *myVm1* 到 *myVm2* 的通信。
 
 1. 在门户左侧选择“所有服务”  。
-2. 首先在“筛选”框中键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
+2. 首先在“筛选”框中键入“网络观察程序”。 搜索结果中出现“网络观察程序”后，将其选中  。
 3. 在“监视”下选择“连接监视器”   。
 4. 选择“+ 添加”  。
 5. 输入或选择要监视的连接信息，然后选择“添加”  。 在下图所示的示例中，将通过端口 22 监视从 *myVm1* VM 到 *myVm2* VM 的连接：
@@ -129,7 +134,7 @@ ms.locfileid: "76834648"
 2. 单击“选择目标”  ，然后选择要作为目标的资源。 选择“订阅”，然后设置“资源类型”   ，以便筛选出要使用的连接监视器。
 
     ![目标为选中状态的警报屏幕](./media/connection-monitor/set-alert-rule.png)
-1. 选中目标资源以后，请选择“添加条件”。  网络观察程序有[创建警报时基于的指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported)。 将“可用信号”  设置为指标 ProbesFailedPercent 和 AverageRoundtripMs：
+1. 选中目标资源以后，请选择“添加条件”。  网络观察程序有[创建警报时基于的指标](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。 将“可用信号”  设置为指标 ProbesFailedPercent 和 AverageRoundtripMs：
 
     ![信号处于选中状态的警报页](./media/connection-monitor/set-alert-signals.png)
 1. 填写警报详细信息，例如警报规则名称、说明和严重性。 也可向警报添加操作组，以便自动完成和自定义警报响应。
@@ -149,8 +154,8 @@ ms.locfileid: "76834648"
     | 设置                 | 值          |
     | ---                     | ---            |
     | 目标端口范围 | 22             |
-    | 操作                  | 拒绝           |
-    | 优先度                | 100            |
+    | 操作                  | Deny           |
+    | 优先级                | 100            |
     | 名称                    | DenySshInbound |
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。    如下图所示，现在的结果有所不同：
@@ -167,9 +172,9 @@ ms.locfileid: "76834648"
 
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”  。
-3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”。 当在搜索结果中看到“myResourceGroup”时，将其选中。
+2. 选择“删除资源组”。
+3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

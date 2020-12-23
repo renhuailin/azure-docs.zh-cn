@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 785381e0a42f2b502e4ea7054753d5f3fb67f385
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616850"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632764"
 ---
 # <a name="data-access-strategies"></a>数据访问策略
 
@@ -28,7 +28,7 @@ ms.locfileid: "91616850"
 * 将用户限制于特定操作和数据的授权机制
 
 > [!TIP]
-> 通过[引入静态 IP 地址范围](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)，现在可以允许列出特定 Azure Integration Runtime 区域的 IP 范围，以确保不必在云数据存储中允许所有 Azure IP 地址。 这样，就可以限制允许访问数据存储的 IP 地址。
+> 通过[引入静态 IP 地址范围](./azure-integration-runtime-ip-addresses.md)，现在可以允许列出特定 Azure Integration Runtime 区域的 IP 范围，以确保不必在云数据存储中允许所有 Azure IP 地址。 这样，就可以限制允许访问数据存储的 IP 地址。
 
 > [!NOTE] 
 > 阻止该 IP 地址范围访问 Azure Integration Runtime，该范围的地址当前仅用于数据移动、管道和外部活动。 启用托管虚拟网络的数据流和 Azure Integration Runtime 现在不使用这些 IP 范围。 
@@ -37,11 +37,11 @@ ms.locfileid: "91616850"
 
 ## <a name="data-access-strategies-through-azure-data-factory"></a>通过 Azure 数据工厂的数据访问策略
 
-* **[专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)** -可以在 Azure 数据工厂托管的虚拟网络中创建 Azure Integration Runtime，它将利用专用终结点安全连接到受支持的数据存储。 托管虚拟网络与数据源之间的流量传播到 Microsoft 主干网络，并且不会公开给公用网络。
-* **[受信任的服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure 存储（Blob、ADLS Gen2）支持允许精选受信任 Azure 平台服务安全访问存储帐户的防火墙配置。 受信任的服务强制实施托管标识身份验证，这可确保任何其他数据工厂都无法连接到此存储，除非使用其托管标识进行批准。 可在[此博客](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)中找到更多详细信息。 因此，这这种方法非常安全，建议使用。 
+* **[专用链接](../private-link/private-link-overview.md)** -可以在 Azure 数据工厂托管的虚拟网络中创建 Azure Integration Runtime，它将利用专用终结点安全连接到受支持的数据存储。 托管虚拟网络与数据源之间的流量传播到 Microsoft 主干网络，并且不会公开给公用网络。
+* **[受信任的服务](../storage/common/storage-network-security.md#exceptions)** - Azure 存储（Blob、ADLS Gen2）支持允许精选受信任 Azure 平台服务安全访问存储帐户的防火墙配置。 受信任的服务强制实施托管标识身份验证，这可确保任何其他数据工厂都无法连接到此存储，除非使用其托管标识进行批准。 可在[此博客](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)中找到更多详细信息。 因此，这这种方法非常安全，建议使用。 
 * **唯一静态 IP** - 需要设置一个自承载集成运行时，以便获取静态 IP 以建立数据工厂连接器。 此机制可确保阻止来自其他所有 IP 地址的访问。 
-* **[静态 IP 范围](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** - 可以使用 Azure Integration Runtime 的 IP 地址，允许在你的存储（如 S3、Salesforce 等）中列出它。 它肯定会限制可连接到数据存储但又依赖于身份验证/授权规则的 IP 地址。
-* **[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** - 服务标记是来自给定 Azure 服务（例如 Azure 数据工厂）的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量简化网络安全规则的频繁更新。 在虚拟网络中筛选 IaaS 托管的数据存储上的数据访问时，此方法非常有用。
+* **[静态 IP 范围](./azure-integration-runtime-ip-addresses.md)** - 可以使用 Azure Integration Runtime 的 IP 地址，允许在你的存储（如 S3、Salesforce 等）中列出它。 它肯定会限制可连接到数据存储但又依赖于身份验证/授权规则的 IP 地址。
+* **[服务标记](../virtual-network/service-tags-overview.md)** - 服务标记是来自给定 Azure 服务（例如 Azure 数据工厂）的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量简化网络安全规则的频繁更新。 在虚拟网络中筛选 IaaS 托管的数据存储上的数据访问时，此方法非常有用。
 * **允许 Azure 服务** - 使用某些服务时，如果选择此选项，可以允许所有 Azure 服务连接到它。 
 
 有关 Azure Integration Runtime 和自承载集成运行时中数据存储上支持的网络安全机制的详细信息，请参阅下面两个表。  
@@ -82,7 +82,7 @@ ms.locfileid: "91616850"
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅以下相关文章：
-* [支持的数据存储](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)
-* [Azure Key Vault“受信任的服务”](https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints#trusted-services)
-* [Azure 存储“受信任的 Microsoft 服务”](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)
-* [数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)
+* [支持的数据存储](./copy-activity-overview.md#supported-data-stores-and-formats)
+* [Azure Key Vault“受信任的服务”](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)
+* [Azure 存储“受信任的 Microsoft 服务”](../storage/common/storage-network-security.md#trusted-microsoft-services)
+* [数据工厂的托管标识](./data-factory-service-identity.md)

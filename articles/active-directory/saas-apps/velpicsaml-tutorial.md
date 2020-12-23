@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 85dfa6b57171ce68c3d962bac27016434d587080
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 81523a1c11b6a3da4e7d1db5d8249921ad5047ff
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532630"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635858"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Velpic SAML 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88532630"
 * 可让用户使用其 Azure AD 帐户自动登录到 Velpic SAML。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -136,23 +136,23 @@ ms.locfileid: "88532630"
 
 4. 单击“管理”选项卡，  转到“集成”部分，  在这里需单击“插件”按钮，创建用于登录的新插件。 
 
-    ![插件](./media/velpicsaml-tutorial/velpic_1.png)
+    ![屏幕截图显示了“集成”页，可在其中选择“插件”。](./media/velpicsaml-tutorial/velpic_1.png)
 
 5. 单击“添加插件”按钮。 
     
-    ![插件](./media/velpicsaml-tutorial/velpic_2.png)
+    ![屏幕截图显示选择了“添加插件”按钮。](./media/velpicsaml-tutorial/velpic_2.png)
 
 6. 单击“添加插件”页中的“SAML”  磁贴。
     
-    ![插件](./media/velpicsaml-tutorial/velpic_3.png)
+    ![屏幕截图显示在“添加插件”页中选择了“SAML”。](./media/velpicsaml-tutorial/velpic_3.png)
 
 7. 输入新 SAML 插件的名称，并单击“添加”  按钮。
 
-    ![插件](./media/velpicsaml-tutorial/velpic_4.png)
+    ![屏幕截图显示了“新增 SAML 插件”对话框，其中输入了“Azure AD”。](./media/velpicsaml-tutorial/velpic_4.png)
 
 8. 输入详细信息，如下所示：
 
-    ![插件](./media/velpicsaml-tutorial/velpic_5.png)
+    ![屏幕截图显示了 Azure AD 页面，可在其中输入所述值。](./media/velpicsaml-tutorial/velpic_5.png)
 
     a. 在“名称”  文本框中，键入 SAML 插件的名称。
 
@@ -164,7 +164,7 @@ ms.locfileid: "88532630"
 
     e. 从文本框复制“单一登录 URL”，然后将其粘贴到 Azure 门户中。 
     
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
 ### <a name="create-velpic-saml-test-user"></a>创建 Velpic SAML 测试用户
 
@@ -198,17 +198,16 @@ ms.locfileid: "88532630"
 
 1. 单击访问面板中的 Velpic SAML 磁贴时，应显示 Velpic SAML 应用程序的登录页。 应该在登录页上显示“使用 Azure AD 登录”按钮。 
 
-    ![插件](./media/velpicsaml-tutorial/velpic_6.png)
+    ![屏幕截图显示了学习门户，其中选择了“使用 Azure AD 登录”。](./media/velpicsaml-tutorial/velpic_6.png)
 
 1. 单击“使用 Azure AD 登录”按钮，使用 Azure AD 帐户登录到 Velpic。 
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Velpic SAML](https://aad.portal.azure.com/)
-

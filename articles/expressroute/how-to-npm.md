@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981323"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201046"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
 
@@ -20,7 +20,7 @@ ms.locfileid: "90981323"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-您可以：
+方法：
 
 * 跨多种 VNet 监视数据丢失和延迟情况并设置警报
 
@@ -54,7 +54,7 @@ ms.locfileid: "90981323"
 1. 在[Azure 门户](https://portal.azure.com)，选择 Vnet 的订阅到 ExpressRoute 线路对等。 然后从市场服务列表中搜索“网络性能监视器”****。 在返回结果中，单击打开“网络性能监视器”页面****。
 
    >[!NOTE]
-   >可以创建新的工作区或使用现有的工作区。 如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息 .。。](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >可以创建新的工作区或使用现有的工作区。 如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息 .。。](../azure-monitor/log-query/log-query-overview.md)
    >
 
    ![portal](./media/how-to-npm/3.png)<br><br>
@@ -92,7 +92,7 @@ ms.locfileid: "90981323"
 我们建议在 ExpressRoute 连接的每一端至少安装两个代理来实现冗余（例如，本地或 Azure VNET）。 必须在 Windows Server（2008 SP1 或更高版本）上安装代理。 不支持使用 Windows 桌面 OS 和 Linux OS 监视 ExpressRoute 线路。 使用以下步骤安装代理：
    
   >[!NOTE]
-  >如果 SCOM 推送的代理（包括 [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)）在 Azure 中托管，可能无法持续检测其位置。 建议不要在 Azure VNET 中使用这些代理来监视 ExpressRoute。
+  >如果 SCOM 推送的代理（包括 [MMA](/previous-versions/system-center/system-center-2012-R2/dn465154(v=sc.12))）在 Azure 中托管，可能无法持续检测其位置。 建议不要在 Azure VNET 中使用这些代理来监视 ExpressRoute。
   >
 
 1. 运行安装程序，在要用于监视 ExpressRoute 的每个服务器上安装代理****。 用于监视的服务器可以是 VM 或本地服务器，并且必须连接 Internet。 需要至少在本地安装一个代理，并在 Azure 中在要监视的每个网络段上安装一个代理。
@@ -118,7 +118,7 @@ ms.locfileid: "90981323"
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3：配置代理设置（可选）
 
-如果要使用 Web 代理访问 Internet，请执行以下步骤为 Microsoft Monitoring Agent 配置代理设置。 针对每个服务器执行这些步骤。 如果需要配置多台服务器，使用脚本自动执行此过程可能更加轻松。 如果是此情况，请参阅[使用脚本为 Microsoft Monitoring Agent 配置代理设置](../log-analytics/log-analytics-windows-agent.md)。
+如果要使用 Web 代理访问 Internet，请执行以下步骤为 Microsoft Monitoring Agent 配置代理设置。 针对每个服务器执行这些步骤。 如果需要配置多台服务器，使用脚本自动执行此过程可能更加轻松。 如果是此情况，请参阅[使用脚本为 Microsoft Monitoring Agent 配置代理设置](../azure-monitor/platform/agent-windows.md)。
 
 使用控制面板为 Microsoft Monitoring Agent 配置代理设置：
 
@@ -138,7 +138,7 @@ ms.locfileid: "90981323"
 3. 单击“Azure Log Analytics”选项卡****。
 4. 在 " **状态** " 列中，应会看到代理成功连接到 Azure Monitor 日志。
 
-   ![状态](./media/how-to-npm/12.png)
+   ![status](./media/how-to-npm/12.png)
 
 ### <a name="25-open-the-firewall-ports-on-the-monitoring-agent-servers"></a><a name="firewall"></a>2.5：打开监视代理服务器上的防火墙端口
 
@@ -161,7 +161,7 @@ ms.locfileid: "90981323"
 
 若要监视 Azure 中的代理服务器，必须配置网络安全组 (NSG) 规则，允许将 NPM 在端口上使用的 TCP 流量用于综合事务。 默认端口为 8084。 通过此操作，Azure VM 上安装的监视代理将可与本地监视代理进行通信。
 
-有关 NSG 的详细信息，请参阅[网络安全组](../virtual-network/virtual-networks-create-nsg-arm-portal.md)。
+有关 NSG 的详细信息，请参阅[网络安全组](../virtual-network/tutorial-filter-network-traffic.md)。
 
 >[!NOTE]
 >请确保已安装代理（包括本地服务器代理和 Azure 服务器代理），并且在执行此步骤前已运行 PowerShell 脚本。

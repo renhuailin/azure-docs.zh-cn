@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: ad49db3eb61b77805b0c7a3e1e9583fb22bd4373
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291964"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962903"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -32,7 +32,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 * 无摩擦迁移中的持续投资。
 
 **问：Azure 数据库迁移服务目前支持哪些源-目标对？**
-该服务目前支持各种源/目标对或迁移方案。 有关每个可用迁移方案的状态的完整列表，请参阅文章 [Azure 数据库迁移服务支持的迁移方案的状态](https://docs.microsoft.com/azure/dms/resource-scenario-status)。
+该服务目前支持各种源/目标对或迁移方案。 有关每个可用迁移方案的状态的完整列表，请参阅文章 [Azure 数据库迁移服务支持的迁移方案的状态](./resource-scenario-status.md)。
 
 其他迁移方案处于预览状态，需要通过 DMS 预览站点提交提名。 有关预览版中的方案的完整列表以及如何注册以参与其中一个产品/服务，请参阅 [DMS 预览站点](https://aka.ms/dms-preview/)。
 
@@ -40,7 +40,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 从 SQL Server 迁移时，Azure 数据库迁移服务支持的源为 SQL Server 2005 至 SQL Server 2019。
 
 **问：使用 Azure 数据库迁移服务时，脱机迁移与联机迁移的区别是什么？**
-可以使用 Azure 数据库迁移服务执行脱机和联机迁移。 使用脱机迁移时，应用程序停机时间从迁移开始时算起。** 使用联机迁移时，停机时间仅限在迁移结束时进行转换的那段时间。** 建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请进行联机迁移。
+可以使用 Azure 数据库迁移服务执行脱机和联机迁移。 使用脱机迁移时，应用程序停机时间从迁移开始时算起。 使用联机迁移时，停机时间仅限在迁移结束时进行转换的那段时间。 建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请进行联机迁移。
 
 > [!NOTE]
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 有关详细信息，请参阅 Azure 数据库迁移服务[定价](https://azure.microsoft.com/pricing/details/database-migration/)页。
@@ -58,11 +58,11 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。
-* 确保虚拟网络的网络安全组规则未阻止以下通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+* 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。
+* 确保虚拟网络的网络安全组规则未阻止以下通信端口：443、53、5671-5672、9350-9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 
-有关使用 Azure 数据库迁移服务来竞争特定迁移方案所需的所有先决条件的列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务 [文档](https://docs.microsoft.com/azure/dms/dms-overview) 中的相关教程。
+有关使用 Azure 数据库迁移服务来竞争特定迁移方案所需的所有先决条件的列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务 [文档](./dms-overview.md) 中的相关教程。
 
 **问：如何查找 Azure 数据库迁移服务的 IP 地址，以便可以创建防火墙规则的允许列表用于访问要迁移的源数据库？**
 可能需要添加防火墙规则，以允许 Azure 数据库迁移服务访问要迁移的源数据库。 该服务的 IP 地址是动态的，但如果你使用 ExpressRoute，则企业网络会专门分配此地址。 标识相应 IP 地址的最简单方法是查看预配的 Azure 数据库迁移服务资源所在的同一个资源组，找到关联的网络接口。 通常，网络接口资源的名称以 NIC 前缀开头，后接唯一的字符和序号，例如 NIC-jj6tnztnmarpsskr82rbndyp。 选择此网络接口资源后，可以看到需要包含在 Azure 门户资源概述页上的允许列表中的 IP 地址。
@@ -86,7 +86,7 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 ```
 
 **：.如何实现设置 Microsoft Azure 虚拟网络？**
-尽管有多个 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中。
+尽管有多个 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)一文中。
 
 ## <a name="usage"></a>使用情况
 
@@ -96,7 +96,7 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 1. 创建目标数据库。
 2. 评估源数据库。
     * 对于同构迁移，使用 [DMA](https://www.microsoft.com/download/details.aspx?id=53595) 评估现有数据库。
-    * 对于异构迁移（从竞争源进行），使用 [SSMA](https://aka.ms/get-ssma) 评估现有数据库。 还可以使用 SSMA 来转换数据库对象，以及将架构迁移到目标平台。
+    * 对于异构迁移（从竞争源进行），使用 [SSMA](/sql/ssma/sql-server-migration-assistant) 评估现有数据库。 还可以使用 SSMA 来转换数据库对象，以及将架构迁移到目标平台。
 3. 创建 Azure 数据库迁移服务的实例。
 4. 创建迁移项目，用于指定源数据库、目标数据库和要迁移的表。
 5. 启动完全加载。

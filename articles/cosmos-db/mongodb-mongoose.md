@@ -9,14 +9,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8958699ae279d2613f8dbadca802ee2137407e75
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324546"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442389"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 本教程演示在 Cosmos DB 中存储数据时如何使用 [Mongoose 框架](https://mongoosejs.com/)。 本演练使用 Azure Cosmos DB 的用于 MongoDB 的 API。 不熟悉该接口的读者应知道，Mongoose 是 Node.js 中适用于 MongoDB 的对象建模框架，提供简单直接的、基于架构的解决方案来为应用程序数据建模。
 
@@ -38,11 +39,11 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 
 ### <a name="create-a-database"></a>创建数据库 
 在此应用程序中，我们将介绍在 Azure Cosmos DB 中创建集合的两种方法： 
-- **将每个对象模型存储在一个单独的集合中**：建议[创建具有专用吞吐量的数据库](set-throughput.md#set-throughput-on-a-database)。 使用此容量模型会更为经济高效。
+- **将每个对象模型存储在一个单独的集合中** ：建议 [创建具有专用吞吐量的数据库](set-throughput.md#set-throughput-on-a-database)。 使用此容量模型会更为经济高效。
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js 教程 - Azure 门户的屏幕截图，其中显示了如何在数据资源管理器中为 Azure Cosmos DB 帐户创建数据库，用于 Mongoose Node 模块":::
 
-- **将所有对象模型存储在单个 Cosmos DB 集合中**：如果希望将所有模型存储在单个集合中，只需在不选择“预配吞吐量”选项的情况下创建新数据库即可。 使用此容量模型时，将为每个对象模型创建每个具有自己的吞吐容量的集合。
+- **将所有对象模型存储在单个 Cosmos DB 集合中** ：如果希望将所有模型存储在单个集合中，只需在不选择“预配吞吐量”选项的情况下创建新数据库即可。 使用此容量模型时，将为每个对象模型创建每个具有自己的吞吐容量的集合。
 
 创建数据库后，将在下面的 `COSMOSDB_DBNAME` 环境变量中使用此名称。
 
@@ -81,7 +82,7 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
     ```JavaScript
    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
-   COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+   COSMOSDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
    COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
@@ -92,7 +93,7 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
-        user: process.env.COSMODDB_USER,
+        user: process.env.COSMOSDB_USER,
         password: process.env.COSMOSDB_PASSWORD
       },
     useNewUrlParser: true,

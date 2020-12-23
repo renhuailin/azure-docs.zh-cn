@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505331"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145746"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -29,6 +29,21 @@ ms.locfileid: "89505331"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="animated-character-identification-improvements"></a>动画字符标识改进  
+
+视频索引器支持通过与认知服务自定义视觉集成来检测、分组和识别动画内容中的字符。 我们在检测和字符识别中为此 AI 算法增加了重大改进，因为这样可以显著提高分析的准确性和识别的字符。
+
+### <a name="planned-video-indexer-website-authenticatication-changes"></a>计划视频索引器网站 authenticatication 更改
+
+从2021年1月1日开始，你将不再能够使用 Facebook 或 LinkedIn (试用版产品/) 服务注册并登录到 [视频索引器](https://www.videoindexer.ai/) 网站。
+
+你将能够使用以下提供程序之一进行注册和登录： Azure AD、Microsoft 和 Google。
+
+> [!NOTE]
+> 建议你在2021年1月1日之前导出内容，因为连接到 LinkedIn 和 Facebook 的帐户将被删除，并且内容将无法再访问。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -92,9 +107,9 @@ ms.locfileid: "89505331"
 
 ### <a name="new-widget-parameters-capabilities"></a>新小组件参数功能
 
-**Insights**小组件包含新参数： `language` 和 `control` 。
+**Insights** 小组件包含新参数： `language` 和 `control` 。
 
-**播放机**小组件具有新 `locale` 参数。 `locale`和 `language` 参数都控制播放机的语言。
+**播放机** 小组件具有新 `locale` 参数。 `locale`和 `language` 参数都控制播放机的语言。
 
 有关详细信息，请参阅 [小组件类型](video-indexer-embed-widgets.md#widget-types) 部分。 
 
@@ -123,7 +138,7 @@ ms.locfileid: "89505331"
     * 将 URL 替换为指向视频索引器小组件 Api 的 URL (例如， [insights 小组件](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)) 
     * 使用视频索引器网站生成新的嵌入 URL：
          
-         按 "**播放**" 转到视频页面-> 单击 " ** &lt; / &gt; 嵌入**" 按钮-> 将 URL 复制到应用程序中：
+         按 " **播放** " 转到视频页面-> 单击 " **&lt; / &gt; 嵌入** " 按钮-> 将 URL 复制到应用程序中：
    
     区域 Url 不受支持，将在未来几周内被阻止。
 
@@ -143,7 +158,7 @@ ms.locfileid: "89505331"
  
 ### <a name="swagger-update"></a>Swagger 更新
 
-视频索引器将统一 **身份验证** 和 **操作** 合并为单个 [视频索引器 OpenAPI 规范 (swagger) ](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 开发人员可以在 [视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中找到 api。
+视频索引器将统一 **身份验证** 和 **操作** 合并为单个 [视频索引器 OpenAPI 规范 (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 开发人员可以在 [视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中找到 api。
 
 ## <a name="december-2019"></a>2019 年 12 月
 

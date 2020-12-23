@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: a14235cb4fc20147accc8eb8a0e421cbc4df90f8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dcc52688cabebaa6eb813e3240150ea8774e716
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533603"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521886"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SumoLogic 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88533603"
 * 让用户使用其 Azure AD 帐户自动登录到 SumoLogic。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -114,7 +114,7 @@ ms.locfileid: "88533603"
     | 角色 | user.assignedroles |
 
     > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)  。
+    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/active-directory-enterprise-app-role-management.md)  。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -168,11 +168,11 @@ ms.locfileid: "88533603"
 
 1. 从“选择配置或创建新配置”  列表中，选择“Azure AD”  ，并单击“配置”  。
 
-    ![配置 SAML 2.0](./media/sumologic-tutorial/ic778558.png "配置 SAML 2.0")
+    ![显示配置 SAML 2.0 的屏幕截图，你可以在其中选择 Azure AD。](./media/sumologic-tutorial/ic778558.png "配置 SAML 2.0")
 
 1. 在“配置 SAML 2.0”  对话框上，执行以下步骤：
 
-    ![配置 SAML 2.0](./media/sumologic-tutorial/ic778559.png "配置 SAML 2.0")
+    ![显示“配置 SAML 2.0”对话框的屏幕截图，你可以在其中输入所述值。](./media/sumologic-tutorial/ic778559.png "配置 SAML 2.0")
 
     a. 在“配置名称”  文本框中，键入“Azure AD”  。
 
@@ -200,11 +200,11 @@ ms.locfileid: "88533603"
 
 1. 转到“管理”\>“用户”  。
 
-    ![用户](./media/sumologic-tutorial/ic778561.png "用户")
+    ![显示从“管理”菜单选择了“用户”的屏幕截图。](./media/sumologic-tutorial/ic778561.png "用户")
 
 1. 单击“添加”  。
 
-    ![用户](./media/sumologic-tutorial/ic778562.png "用户")
+    ![显示“用户”的“添加”按钮的屏幕截图。](./media/sumologic-tutorial/ic778562.png "用户")
 
 1. 在“新建用户”  对话框中，执行以下步骤：
 
@@ -216,7 +216,7 @@ ms.locfileid: "88533603"
   
     c. 对于“状态”  ，选择“活动”  。
   
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 > [!NOTE]
 > 可以使用 SumoLogic 提供的任何其他 SumoLogic 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
@@ -225,14 +225,14 @@ ms.locfileid: "88533603"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 SumoLogic 磁贴时，应会自动登录到为其设置了 SSO 的 SumoLogic。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 SumoLogic 磁贴时，应会自动登录到为其设置了 SSO 的 SumoLogic。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 SumoLogic](https://aad.portal.azure.com/)

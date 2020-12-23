@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 6b717fd15b25ae4abd2af3520dba2e72f8f9f3a4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6fbf84ec3822195f62970dbf08115059ffb7e4a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556223"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122596"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>将文件从设备上传到云
 
@@ -20,7 +20,7 @@ ms.locfileid: "88556223"
 
 IoT Central 允许你将媒体和其他文件从连接的设备上传到云存储。 在 IoT Central 应用程序中配置文件上传功能，然后在设备代码中实现文件上传。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你必须是 IoT Central 应用程序中的管理员才能配置文件上传。
 
@@ -54,7 +54,7 @@ IoT Central 允许你将媒体和其他文件从连接的设备上传到云存�
 
 ## <a name="upload-a-file-from-a-device"></a>从设备上传文件
 
-IoT Central 使用 IoT 中心的文件上传功能来启用设备上传文件。 有关演示如何从设备上传文件的示例代码，请参阅 [IoT Central 文件上传设备示例](https://docs.microsoft.com/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/)。
+IoT Central 使用 IoT 中心的文件上传功能来启用设备上传文件。 有关演示如何从设备上传文件的示例代码，请参阅 [IoT Central 文件上传设备示例](/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/)。
 
 ## <a name="next-steps"></a>后续步骤
 

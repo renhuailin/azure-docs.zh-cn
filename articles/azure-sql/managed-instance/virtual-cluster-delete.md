@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 0b8ceee1260e4209420778d7f327d771b858a899
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 4ed8f6dc90debddd17282f8f96962ffd78055030
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617717"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791658"
 ---
 # <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>删除 SQL 托管实例的托管实例之后删除子网
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91617717"
 
 > [!IMPORTANT]
 > - 若要成功删除，该虚拟群集不能包含任何托管实例。 
-> - 删除虚拟群集是长时间运行的运行时间长达1.5 小时 (请参阅 [托管实例管理操作](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) ，了解最新的虚拟群集删除时间) 。 在此过程完成之前，仍会在门户中显示虚拟群集。
+> - 删除虚拟群集是长时间运行的运行时间长达1.5 小时 (请参阅 [托管实例管理操作](./sql-managed-instance-paas-overview.md#management-operations) ，了解最新的虚拟群集删除时间) 。 在此过程完成之前，仍会在门户中显示虚拟群集。
 
 ## <a name="delete-a-virtual-cluster-from-the-azure-portal"></a>在 Azure 门户中删除虚拟群集
 
@@ -48,7 +48,7 @@ Azure 门户通知会显示确认信息，确认已成功提交删除虚拟群�
 
 ## <a name="delete-a-virtual-cluster-by-using-the-api"></a>使用 API 删除虚拟群集
 
-若要通过 API 删除虚拟群集，请使用[虚拟群集删除方法](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)中指定的 URI 参数。
+若要通过 API 删除虚拟群集，请使用[虚拟群集删除方法](/rest/api/sql/virtualclusters/delete)中指定的 URI 参数。
 
 ## <a name="next-steps"></a>后续步骤
 

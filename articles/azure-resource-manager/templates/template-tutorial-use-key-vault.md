@@ -1,21 +1,21 @@
 ---
 title: 在模板中使用 Azure Key Vault
-description: 了解如何在资源管理器模板部署期间使用 Azure Key Vault 来传递安全参数值
+description: 了解如何在 Azure 资源管理器模板（ARM 模板）部署期间使用 Azure Key Vault 来传递安全参数值。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119270"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929310"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教程：在 ARM 模板部署中集成 Azure Key Vault
 
-了解部署 Azure 资源管理器 (ARM) 模版时如何从 Azure 密钥保管库检索机密并将机密作为参数传递。 该参数值永远不会公开，因为只会引用其密钥保管库 ID。 可以使用静态 ID 或动态 ID 来引用密钥保管库机密。 本教程使用的是静态 ID。 使用静态 ID 方法，可以在模板参数文件（而不是模板文件）中引用密钥保管库。 有关这两种方法的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./key-vault-parameter.md)。
+了解部署 Azure 资源管理器模版（ARM 模版）时如何从 Azure 密钥保管库检索机密并将机密作为参数传递。 该参数值永远不会公开，因为只会引用其密钥保管库 ID。 可以使用静态 ID 或动态 ID 来引用密钥保管库机密。 本教程使用的是静态 ID。 使用静态 ID 方法，可以在模板参数文件（而不是模板文件）中引用密钥保管库。 有关这两种方法的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./key-vault-parameter.md)。
 
 在[设置资源部署顺序](./template-tutorial-create-templates-with-dependent-resources.md)教程中，你需要创建虚拟机 (VM)。 需提供 VM 管理员用户名和密码。 可以不提供密码，而是将密码预先存储在 Azure 密钥保管库中，然后自定义模板，以便在部署过程中从密钥保管库检索密码。
 
@@ -37,7 +37,7 @@ ms.locfileid: "86119270"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 * 若要增强安全性，请使用为 VM 管理员帐户生成的密码。 以下是密码生成示例：
 
     ```console

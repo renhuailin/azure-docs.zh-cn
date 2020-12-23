@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 187ec5c42c733837689de95c8111b557519f8b7b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 717696053a742abae6756655a15416ac81221144
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552829"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459741"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>教程：Azure Active Directory 与 iProva 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552829"
 * 让用户使用其 Azure AD 帐户自动登录到 iProva。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88552829"
 
 * iProva 支持 SP 发起的 SSO 
 
-* 配置 iProva 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 iProva 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-iprova-from-the-gallery"></a>从库中添加 iProva
 
@@ -147,7 +147,7 @@ ms.locfileid: "88552829"
 
 ## <a name="create-iprova-test-user"></a>创建 iProva 测试用户
 
-1. 使用**管理员**帐户登录到 iProva。
+1. 使用 **管理员** 帐户登录到 iProva。
 
 2. 打开“转到”菜单  。
 
@@ -159,7 +159,7 @@ ms.locfileid: "88552829"
 
 6. 在“用户名”文本框中输入用户的用户名（如 `B.Simon@contoso.com`）  。
 
-7. 在“全名”框中输入完整名称，例如 **B.Simon**。 
+7. 在“全名”框中输入完整名称，例如 **B.Simon** 。 
 
 8. 选择“无密码(使用单一登录)”选项  。
 
@@ -169,7 +169,7 @@ ms.locfileid: "88552829"
 
 ## <a name="configure-iprova-sso"></a>配置 iProva SSO
 
-1. 使用**管理员**帐户登录到 iProva。
+1. 使用 **管理员** 帐户登录到 iProva。
 
 2. 打开“转到”菜单  。
 
@@ -187,7 +187,7 @@ ms.locfileid: "88552829"
 
 8. 选择“设置”。 
 
-9. 选择“**下一页**”。
+9. 选择“ **下一页** ”。
 
 10. iProva 会询问是要从 URL 下载联合数据，还是从文件上传联合数据。 选择“从 URL”选项  。
 
@@ -199,7 +199,7 @@ ms.locfileid: "88552829"
 
 13. 下载完成后，将显示确认消息“已下载有效的联合数据文件”  。
 
-14. 选择“**下一页**”。
+14. 选择“ **下一页** ”。
 
 15. 暂时跳过“测试登录”选项，并选择“下一步”   。
 
@@ -213,18 +213,18 @@ ms.locfileid: "88552829"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 iProva 磁贴时，应会自动登录到为其设置了 SSO 的 iProva。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 iProva 磁贴时，应会自动登录到为其设置了 SSO 的 iProva。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 iProva SSO](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 iProva](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 iProva](/cloud-app-security/proxy-intro-aad)

@@ -5,20 +5,22 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 查找有关 Azure Dev Spaces 的一些常见问题的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 739cfdb4f930d384e180ffd0f3ce2311cd41c70a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e83bed86714e4b92c63f4e7b7eb55df7a2a7eaff
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207986"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548828"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>常见问题 Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 这解决了有关 Azure Dev Spaces 的常见问题。
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces 支持哪种版本的 Kubernetes？
 
-Azure Dev Spaces 支持 [AKS 中的所有当前受 (支持的公开) 版本的 Kubernetes][aks-supported-k8s]。
+Azure Dev Spaces 支持 [目前支持的正式发行版 (GA) 版本的 AKS，最高可达 1.18][aks-supported-k8s]。 AKS 上的 Kubernetes 1.19 及更高版本使用 ContainerD 作为容器运行时，该运行时不适用于 Azure Dev Spaces。
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>哪些 Azure 区域当前提供 Azure Dev Spaces？
 
@@ -40,7 +42,7 @@ Azure Dev Spaces 支持 [AKS 中的所有当前受 (支持的公开) 版本的 K
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>能否修改 Azure Dev Spaces 生成的文件？
 
-是的，你可以修改[Azure Dev Spaces 在准备项目时生成][dev-spaces-prep]的*Yaml*文件、Dockerfile 和 Helm 图表。 修改这些文件将更改生成和运行项目的方式。
+是的，你可以修改 [Azure Dev Spaces 在准备项目时生成][dev-spaces-prep]的 *Yaml* 文件、Dockerfile 和 Helm 图表。 修改这些文件将更改生成和运行项目的方式。
 
 ## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>是否可以使用没有公共 IP 地址的 Azure Dev Spaces？
 
@@ -70,9 +72,9 @@ Azure Dev Spaces 支持 [AKS 中的所有当前受 (支持的公开) 版本的 K
 
 是的，一旦允许使用正确的 Fqdn，你就可以在具有 [受限制的群集节点流量的][aks-restrict-egress-traffic] AKS 群集上使用 Azure Dev Spaces。 若要详细了解如何对启用了 Azure Dev Spaces 的群集节点使用具有受限传出流量的 AKS[群集。](configure-networking.md#ingress-and-egress-network-traffic-requirements)
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>能否在启用 RBAC 的 AKS 群集上使用 Azure Dev Spaces？
+## <a name="can-i-use-azure-dev-spaces-on-kubernetes-rbac-enabled-aks-clusters"></a>能否在启用 RBAC 的 AKS 群集上使用 Azure Dev Spaces？
 
-是的，可以在启用了 RBAC 的情况下，在 AKS 群集上使用 Azure Dev Spaces。
+是的，你可以在 AKS 群集上使用 Azure Dev Spaces，Kubernetes 启用 Kubernetes RBAC) ，而不是基于角色的访问 (控制。
 
 ## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>在 Visual Studio 中为项目启用入口后会出现什么情况？
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: cbd1303417f008da476356a274dde30d7d02d36f
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505499"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541938"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
@@ -53,12 +53,12 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 
 ### <a name="azure-storage"></a>Azure 存储
 
-* [Azure 存储 Blob 的软删除](../storage/blobs/storage-blob-soft-delete.md)
-* [取消删除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [Azure 存储 Blob 的软删除](../storage/blobs/soft-delete-blob-overview.md)
+* [取消删除 Blob](/rest/api/storageservices/undelete-blob)
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-[还原-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[还原-AzDataLakeStoreDeletedItem](/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
 
@@ -66,7 +66,7 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 
 ## <a name="trash-purging"></a>清除清除
 
-`fs.trash.interval` **HDFS**  >  **高级核心网站**中的属性应保留为默认值 `0` ，因为不应将任何数据存储在本地文件系统上。 此值不影响 (WASB、ADLS GEN1、ABFS) 的远程存储帐户
+`fs.trash.interval` **HDFS**  >  **高级核心网站** 中的属性应保留为默认值 `0` ，因为不应将任何数据存储在本地文件系统上。 此值不影响 (WASB、ADLS GEN1、ABFS) 的远程存储帐户
 
 ## <a name="next-steps"></a>后续步骤
 

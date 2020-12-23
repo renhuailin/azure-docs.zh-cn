@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure 门户为数据访问分配 Azure 角色
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure 门户通过 azure RBAC)  (azure RBAC 访问控制向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和 Azure 自定义角色进行身份验证。
+description: 了解如何使用 Azure 门户通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和 Azure 自定义角色进行身份验证。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e2d577261a1cea0bad9aab549b3669f8fdef5751
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 40003db9c3bd2c736f9cedd73b8b7a31a77f625f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715844"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854574"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure 门户为 blob 和队列数据分配 Azure 角色
 
@@ -39,14 +39,14 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 
 1. 分配适当的 Azure 存储 Azure 角色，以便授予对 Azure AD 安全主体的访问权限。
 
-1. 可将 Azure 资源管理器[读取者](../../role-based-access-control/built-in-roles.md#reader)角色分配给需要通过 Azure 门户使用其 Azure AD 凭据访问容器或队列的用户。 
+1. 可将 Azure 资源管理器[读取者](../../role-based-access-control/built-in-roles.md#reader)角色分配给需要通过 Azure 门户使用其 Azure AD 凭据访问容器或队列的用户。
 
 以下各部分更详细地说明了其中的每个步骤。
 
 > [!NOTE]
-> 作为 Azure 存储帐户的所有者，系统不会自动向你分配数据访问权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
 >
-> 如果存储帐户启用了分层命名空间，则不能分配限定于容器或队列的角色。
+> 在为自己分配数据访问角色之前，你可以通过 Azure 门户访问你的存储帐户中的数据，因为 Azure 门户还可以使用帐户密钥来访问数据。 有关详细信息，请参阅 [在 Azure 门户中选择如何授权访问 blob 数据](../blobs/authorize-data-operations-portal.md)。
 
 ### <a name="assign-an-azure-built-in-role"></a>分配 Azure 内置角色
 
@@ -64,11 +64,11 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 1. 单击“添加角色分配”  按钮以添加一个新角色。
 1. 在“添加角色分配”窗口中，选择要分配的 Azure 存储角色  。 然后通过搜索找到要为其分配该角色的安全主体。
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="显示容器访问控制设置的屏幕截图":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="显示如何分配 Azure 角色的屏幕截图":::
 
 1. 单击“保存”  。 分配有该角色的标识列出在该角色下。 例如，下图显示添加的用户现在对名为 *sample-container* 的容器中的数据具有读取权限。
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="显示容器访问控制设置的屏幕截图":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="显示已分配到某个角色的用户列表的屏幕截图":::
 
 可以遵循类似的步骤来分配限定为存储帐户、资源组或订阅范围的角色。
 
@@ -93,12 +93,12 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 只有必要对需要使用 Azure 门户访问 Blob 或队列的用户分配“读取者”  角色。
 
 > [!IMPORTANT]
-> Azure 门户中存储资源管理器的预览版本不支持使用 Azure AD 凭据来查看和修改 blob 或队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，必须为用户分配包含 storageAccounts/ **/listkeys/action**的角色。
+> Azure 门户中存储资源管理器的预览版本不支持使用 Azure AD 凭据来查看和修改 blob 或队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，你必须被分配一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关存储资源的 Azure 角色的详细信息，请参阅[使用 Azure Active Directory 验证对 Azure Blob 和队列的访问](storage-auth-aad.md)。 
-- 若要了解有关 Azure RBAC 的详细信息，请参阅 [什么是 AZURE rbac) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。
+- 若要详细了解 Azure RBAC，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)。
 - 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 分配和管理 Azure 角色分配，请参阅以下文章：
     - [使用 Azure PowerShell 模块添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-powershell.md)
     - [使用 Azure CLI 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-cli.md)

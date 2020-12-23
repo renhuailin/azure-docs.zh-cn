@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f312b690ac7743b1574dbbec9d408b3fafbb0194
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263175"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359075"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>在不同的 Azure 区域中配置 SQL Server Always On 可用性组
 
@@ -31,7 +32,7 @@ ms.locfileid: "91263175"
 
 下图显示了 Azure 虚拟机上可用性组的常见部署：
 
-   ![可用性组](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   ![使用 "Windows Server 故障转移群集" 和 "Always On 可用性组" 显示 Azure 负载均衡器和可用性集的关系图。](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 在此部署中，所有虚拟机位于一个 Azure 区域。 在 SQL-1 和 SQL-2 上，可以使用自动故障转移为可用性组副本配置同步提交。 若要构建此体系结构，请参阅[可用性组模板或教程](availability-group-overview.md)。
 
@@ -53,7 +54,7 @@ ms.locfileid: "91263175"
 
 下图显示了数据中心之间的网络通信方式。
 
-   ![可用性组](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![显示了不同 Azure 区域中的两个虚拟网络使用第 P N 网关进行通信的关系图。](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >在 Azure 区域之间复制数据时，使用此体系结构需支付出站数据费用。 请参阅[带宽定价](https://azure.microsoft.com/pricing/details/bandwidth/)。  
@@ -69,7 +70,7 @@ ms.locfileid: "91263175"
    >[!NOTE]
    >在某些情况下，可能需要使用 PowerShell 创建 VNet 到 VNet 连接。 例如，如果使用不同的 Azure 帐户，则无法在门户中配置该连接。 这种情况请参阅[使用 Azure 门户配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 
-1. [在新区域中创建域控制器](../../../active-directory/active-directory-new-forest-virtual-machine.md)。
+1. [在新区域中创建域控制器](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。
 
    如果主站点中的域控制器不可用，此域控制器可提供身份验证。
 
@@ -84,7 +85,7 @@ ms.locfileid: "91263175"
    - 包括后端池，该池只由负载均衡器所在区域中的虚拟机构成。
    - 使用特定于 IP 地址的 TCP 端口探测。
    - 具有特定于同一区域中 SQL Server 的负载均衡规则。  
-   - 如果后端池中的虚拟机不是单个可用性集或虚拟机规模集的一部分，则为标准负载均衡器。 有关其他信息，请查看 [Azure 负载均衡器标准概述](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
+   - 如果后端池中的虚拟机不是单个可用性集或虚拟机规模集的一部分，则为标准负载均衡器。 有关其他信息，请查看 [Azure 负载均衡器标准概述](../../../load-balancer/load-balancer-overview.md)。
 
 1. [向新的 SQL Server 添加故障转移群集功能](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -98,7 +99,7 @@ ms.locfileid: "91263175"
 
    可在故障转移群集管理器中创建 IP 地址资源。 选择群集的名称，然后在“群集核心资源”下右键单击群集名称，并选择“属性”： 
 
-   ![群集属性](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   ![屏幕截图，显示 "故障转移群集管理器"，其中包含群集名称 "服务器名称" 和 "属性"。](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    在“属性”对话框的“IP 地址”下选择“添加”，然后从远程网络区域添加群集名称的 IP 地址。  选择“IP 地址”对话框上的“确定”，然后在“群集属性”对话框中再次选择“确定”，以保存新的 IP 地址   。 
 
@@ -161,7 +162,7 @@ ms.locfileid: "91263175"
 
 远程数据中心内的副本是可用性组的一部分，但位于不同的子网。 如果此副本成为主副本，可能会发生应用程序连接超时。 多子网部署中的本地可用性组也存在相同的行为。 若要允许从客户端应用程序建立连接，请更新客户端连接，或者在群集网络名称资源上配置名称解析缓存。
 
-最好是将客户端连接字符串更新为设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 进行连接](https://msdn.microsoft.com/library/gg471494#Anchor_0)。
+最好是将客户端连接字符串更新为设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 进行连接](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0)。
 
 如果无法修改连接字符串，可以配置名称解析缓存。 请参阅[出现超时错误并且在多子网环境中无法连接到 SQL Server 2012 AlwaysOn 可用性组侦听程序](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
 
@@ -194,12 +195,12 @@ ms.locfileid: "91263175"
 
 有关详细信息，请参阅以下主题：
 
-- [对可用性组执行计划的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
-- [对可用性组执行强制的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
+- [对可用性组执行计划的手动故障转移 (SQL Server)](/sql/database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server)
+- [对可用性组执行强制的手动故障转移 (SQL Server)](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Always On 可用性组](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Always On 可用性组](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
+* [Azure 虚拟机](../../../virtual-machines/windows/index.yml)
 * [Azure 负载均衡器](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
-* [Azure 可用性集](../../../virtual-machines/linux/manage-availability.md)
+* [Azure 可用性集](../../../virtual-machines/manage-availability.md)

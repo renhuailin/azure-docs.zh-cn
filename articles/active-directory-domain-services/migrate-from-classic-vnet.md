@@ -1,20 +1,20 @@
 ---
 title: 从经典虚拟网络迁移 Azure AD 域服务 | Microsoft Docs
 description: 了解如何将现有的 Azure AD 域服务托管域从经典虚拟网络模型迁移到基于资源管理器的虚拟网络。
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.author: iainfou
-ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: justinha
+ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266898"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619362"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>将 Azure Active Directory 域服务从经典虚拟网络模型迁移到资源管理器
 
@@ -139,13 +139,13 @@ Azure AD DS 通常使用地址范围内的前两个可用 IP 地址，但不是�
 
 有关虚拟网络要求的详细信息，请参阅[虚拟网络设计注意事项和配置选项][network-considerations]。
 
-还必须创建网络安全组，以限制托管域的虚拟网络中的流量。 Azure 标准负载均衡器是在迁移过程中创建的，需要使用这些规则。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
+还必须创建网络安全组，以限制托管域的虚拟网络中的流量。 在迁移过程中会创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
 
-有关需要哪些规则的详细信息，请参阅 [AZURE AD DS 网络安全组和所需端口](network-considerations.md#network-security-groups-and-required-ports)。
+若要详细了解哪些规则是必需的，请参阅 [Azure AD DS 网络安全组和所需端口](network-considerations.md#network-security-groups-and-required-ports)。
 
 ### <a name="ldaps-and-tlsssl-certificate-expiration"></a>LDAPS 和 TLS/SSL 证书过期
 
-如果为 LDAPS 配置了托管域，请确认当前的 TLS/SSL 证书的有效期超过30天。 在接下来的30天内过期的证书将导致迁移过程失败。 如果需要，请续订证书，并将其应用于托管域，然后开始迁移过程。
+如果为 LDAPS 配置了托管域，请确认当前的 TLS/SSL 证书的有效期是否超过 30 天。 在接下来的 30 天内过期的证书会导致迁移过程失败。 如果需要，请续订证书，并将其应用于托管域，然后开始迁移过程。
 
 ## <a name="migration-steps"></a>迁移步骤
 
@@ -174,7 +174,7 @@ Azure AD DS 通常使用地址范围内的前两个可用 IP 地址，但不是�
 
     请确保网络设置不会阻止 Azure AD DS 所需的端口。 必须在经典虚拟网络和资源管理器虚拟网络上打开端口。 这些设置包括路由表（虽然不建议使用路由表）和网络安全组。
 
-    Azure AD DS 需要使用网络安全组来保护托管域所需的端口，阻止所有其他的传入流量。 此网络安全组充当一层额外的保护措施，以锁定对托管域的访问。 若要查看必需的端口，请参阅[网络安全组和必需端口][network-ports]。
+    Azure AD DS 需要使用网络安全组来保护托管域所需的端口，阻止所有其他的传入流量。 此网络安全组充当一个额外的保护层，用于锁定对托管域的访问。 若要查看必需的端口，请参阅[网络安全组和必需端口][network-ports]。
 
     如果使用安全 LDAP，请向网络安全组添加规则，以允许 TCP 端口 636 的传入流量。 有关详细信息，请参阅[通过 Internet 锁定安全 LDAP 访问](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 
@@ -360,7 +360,7 @@ Migrate-Aadds `
 [notifications]: notifications.md
 [password-policy]: password-policy.md
 [secure-ldap]: tutorial-configure-ldaps.md
-[migrate-iaas]: ../virtual-machines/windows/migration-classic-resource-manager-overview.md
+[migrate-iaas]: ../virtual-machines/migration-classic-resource-manager-overview.md
 [join-windows]: join-windows-vm.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
 [troubleshoot-domain-join]: troubleshoot-domain-join.md

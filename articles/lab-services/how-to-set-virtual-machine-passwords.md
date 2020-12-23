@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 实验室服务中设置 VM 密码 | Microsoft Docs
-description: 了解如何在 Azure 实验室服务的课堂实验室中为虚拟机 (VM) 设置和重置密码。
+description: 了解如何在 Azure 实验室服务实验室) 为虚拟机 (Vm 设置和重置密码。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334066"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434220"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>设置和管理虚拟机池 
 本文演示如何完成以下任务：
@@ -53,6 +53,7 @@ ms.locfileid: "91334066"
 > 当教师打开学生 VM 时，该学生的配额不会受到影响。 用户配额指定用户在计划上课时间之外可用的实验室小时数。 有关配额的详细信息，请参阅[为用户设置配额](how-to-configure-student-usage.md?#set-quotas-for-users)。
 
 ## <a name="reset-vms"></a>重置 VM
+
 要重置一个或多个 VM，请在列表中将其选中，然后在工具栏上选择“重置”。 
 
 ![重置选定的 VM](./media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
@@ -60,8 +61,6 @@ ms.locfileid: "91334066"
 在“重置虚拟机”对话框中，选择“重置”。 
 
 ![“重置 VM”对话框](./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
-
-
 
 ## <a name="set-password-for-vms"></a>为 VM 设置密码
 实验室所有者（教师）可以在创建实验室（实验室创建向导）时或在“模板”页上创建实验室后，为 VM 设置/重置密码。 
@@ -103,4 +102,4 @@ ms.locfileid: "91334066"
 ## <a name="next-steps"></a>后续步骤
 若要了解你（作为实验室所有者）可以配置的其他学生使用选项，请参阅以下文章：[学生使用配置](how-to-configure-student-usage.md)。
 
-若要了解学生如何重置其 VM 密码，请参阅[为课堂实验室中的虚拟机设置或重置密码（学生）](how-to-set-virtual-machine-passwords-student.md)。
+若要了解学生如何重置其 Vm 的密码，请参阅 [在实验室中为虚拟机设置或重置密码 (学生) ](how-to-set-virtual-machine-passwords-student.md)。

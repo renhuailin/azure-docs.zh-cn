@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 3bc97a932e622838315f717cc7b036a559787805
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777099"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369151"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure 安全基准概述 (V2) 
 
@@ -22,13 +22,13 @@ Azure 安全基准 (审计准则委员会) 提供了说明性的最佳实践和�
 此基准是一组全面的安全指南的一部分，其中包括：
 
 - **云采用框架** –安全指南，包括 [策略](/azure/cloud-adoption-framework/strategy/define-security-strategy)、 [角色和责任](/azure/cloud-adoption-framework/organize/cloud-security)、 [Azure 十大安全最佳做法](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)和 [参考实现](/azure/cloud-adoption-framework/ready/enterprise-scale/)。
-- **Azure 良好构建的框架** –在 azure 上 [保护工作负荷](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) 的指导。
+- **Azure Well-Architected 框架** –在 azure 上 [保护工作负荷](/assessments/?mode=pre-assessment&session=local) 的指导。
 - **Microsoft 安全性最佳做法** - [建议](/security/compass/microsoft-security-compass-introduction) ，以及 Azure 上的示例。
 
- Azure 安全基准侧重于以云为中心的控制领域。 这些控件与已知的安全基准（如中心的 Internet 安全 (CI) 控制版本7.1 和国家研究所标准和技术 (NIST) SP800）一致。
+ Azure 安全基准侧重于以云为中心的控制领域。 这些控件与众所周知的安全性基准（如中心的 Internet 安全 (CI) 控制版本7.1 和国家研究所标准和技术 (NIST) SP 800-53）一致。
 Azure 安全基准中包含以下控件：
 
-| 审计准则委员会控制域 | 说明 
+| 审计准则委员会控制域 | 描述 
 |--|--|
 | [网络 &nbsp; 安全 &nbsp; (NS) ](security-controls-v2-network-security.md) | 网络安全包括用于保护和保护 Azure 网络的控件，包括保护虚拟网络、建立专用连接、阻止和减少外部攻击以及保护 DNS。 |
 | [身份 &nbsp; 管理 &nbsp; (IM) ](security-controls-v2-identity-management.md) | 标识管理涵盖使用 Azure Active Directory 建立安全标识和访问控制的控件，包括使用单一登录、强身份验证、托管标识 (和服务原则) 应用程序、条件性访问和帐户异常监视。 |
@@ -39,16 +39,16 @@ Azure 安全基准中包含以下控件：
 | [事件 &nbsp; 响应 &nbsp; (IR) ](security-controls-v2-incident-response.md) | 事件响应涵盖事件响应生命周期-准备、检测和分析、包含和事件后活动中的控制，包括使用 azure 服务（如 Azure 安全中心和 Sentinel）自动执行事件响应过程。 |
 | [状况 &nbsp; 和 &nbsp; 漏洞 &nbsp; 管理 &nbsp; (PV) ](security-controls-v2-posture-vulnerability-management.md) | 状况和漏洞管理重点介绍用于评估和改进 Azure 安全状况的控制，包括漏洞扫描、渗透测试和修正，以及 Azure 资源中的安全配置跟踪、报告和更正。 |
 | [Endpoint &nbsp; Security &nbsp; (ES) ](security-controls-v2-endpoint-security.md) | Endpoint Security 涵盖终结点检测和响应中的控件，包括在 Azure 环境中使用终结点检测和响应 (EDR) 和反恶意软件服务。 |
-| [&nbsp; &nbsp; &nbsp; (BR) 备份和恢复](security-controls-v2-backup-recovery.md) | 备份和恢复涵盖了控制，以确保执行、验证和保护不同服务层上的数据和配置备份。 |
-| [管理 &nbsp; 和 &nbsp; 策略 &nbsp; (GS) ](security-controls-v2-governance-strategy.md) | 调控和策略提供的指导可确保一致的安全策略和记录的管理方法来指导和维持安全保障，包括为不同的云安全功能、统一的技术策略和支持策略和标准建立角色和责任。 |
+| [&nbsp; &nbsp; &nbsp; (BR) 备份和恢复](security-controls-v2-backup-recovery.md) | 备份和恢复包括用于确保在不同服务层执行、验证和保护数据和配置备份的控制措施。 |
+| [管理 &nbsp; 和 &nbsp; 策略 &nbsp; (GS) ](security-controls-v2-governance-strategy.md) | 治理和策略提供的指导可确保使用一致的安全策略和记录在案的治理方法来指导和维持安全保障，包括为不同的云安全功能、统一的技术策略以及支持策略和标准建立角色和责任。 |
 
 ## <a name="azure-security-benchmark-recommendations"></a>Azure 安全基准检验建议
 
 每项建议都包含以下信息：
 
 - **Azure ID**：与建议对应的 Azure 安全基准检验 ID。
-- **Cis 控制 V2.0 ID (s) **： CIS 控制 v2.0 控件 (s 的) ，与此建议对应。
-- **NIST SP800-53 R4 ID (s) **： NIST SP800-53 r4 (中等) 控制 () ，这对应于此建议。
+- **Cis 控制 V2.0 ID (s)**： CIS 控制 v2.0 控件 (s 的) ，与此建议对应。
+- **NIST sp 800-53 R4 ID (s)**： NIST SP 800-53 r4 (中等) 控制 () ，这对应于此建议。
 - **详细信息**：此建议的原理阐述，以及关于如何实现建议的指南的链接。 如果 Azure 安全中心支持此建议，这些信息也会列出。
 - **责任**：是客户、服务提供商，还是同时负责实现此建议。 安全责任将在公有云中共同分担。 某些安全控制仅适用于云服务提供商，因此提供程序负责解决这些控制。 这些是一般的观测值–对于一些单独的服务，责任将不同于 Azure 安全基准中列出的内容。 单个服务的基线建议中介绍了这些差异。
 - **客户安全利益干系人**：客户组织 [的安全功能](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) ，这些功能可能对各自的控制有责任、责任或咨询。 这可能与组织不同，具体取决于公司的安全组织结构，以及设置的与 Azure 安全性相关的角色和职责。

@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0bd2f6a021baae80dafcc3d544e1062d8e022e8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610602"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653328"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述
 
 FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域名 (FQDN)。 可以在应用程序规则中使用 FQDN 标记，以允许所需出站网络流量通过防火墙。
 
-例如，若要手动允许 Windows 更新网络流量通过防火墙，需要根据 Microsoft 文档创建多个应用程序规则。 使用 FQDN 标记，可以创建一个应用程序规则，其中包括 **Windows 更新**标记，现在到 Microsoft Windows 更新终结点的网络流量可以流经防火墙。
+例如，若要手动允许 Windows 更新网络流量通过防火墙，需要根据 Microsoft 文档创建多个应用程序规则。 使用 FQDN 标记，可以创建一个应用程序规则，其中包括 **Windows 更新** 标记，现在到 Microsoft Windows 更新终结点的网络流量可以流经防火墙。
 
 你无法创建自己的 FQDN 标记，也无法指定标记中包含哪些 FQDN。 Microsoft 管理 FQDN 标记包含的 FQDN，并在 FQDN 更改时更新标记。 
 
@@ -30,14 +30,14 @@ FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域�
 
 |FQDN 标记  |说明  |
 |---------|---------|
-|Windows 更新     |允许出站访问 Microsoft 更新，如[如何为软件更新配置防火墙](https://technet.microsoft.com/library/bb693717.aspx)中所述。|
-|Windows 诊断|允许出站访问所有 [Windows 诊断终结点](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)。|
+|Windows 更新     |允许出站访问 Microsoft 更新，如[如何为软件更新配置防火墙](/mem/configmgr/sum/get-started/install-a-software-update-point)中所述。|
+|Windows 诊断|允许出站访问所有 [Windows 诊断终结点](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)。|
 |Microsoft 主动保护服务 (MAPS)|允许出站访问 [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)。|
 |应用服务环境 (ASE)|允许出站访问 ASE 平台流量。 此标记未涵盖由 ASE 创建的特定于客户的存储和 SQL 终结点。 这些应通过[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用或手动添加。<br><br>有关将 Azure 防火墙与 ASE 集成的详细信息，请参阅[锁定应用服务环境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。|
 |Azure 备份|允许对 Azure 备份服务进行出站访问。|
 |Azure HDInsight|允许出站访问 HDInsight 平台流量。 此标记不会涵盖特定于客户的存储或来自 HDInsight 的 SQL 流量。 使用[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用这些项或手动添加它们。|
-|WindowsVirtualDesktop (WVD)|允许出站 Windows 虚拟桌面平台通信。 此标记不包括由 WVD 创建的部署特定的存储和服务总线终结点。 此外，还需要 DNS 和 KMS 网络规则。 有关将 Azure 防火墙与 WVD 集成的详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](protect-windows-virtual-desktop.md)。|
-|Azure Kubernetes 服务 (AKS)|允许到 AKS 的出站访问。 有关详细信息，请参阅[使用 Azure 防火墙保护 Azure Kubernetes 服务（AKS）部署](protect-azure-kubernetes-service.md)。|
+|WindowsVirtualDesktop (WVD) |允许出站 Windows 虚拟桌面平台通信。 此标记不包括由 WVD 创建的部署特定的存储和服务总线终结点。 此外，还需要 DNS 和 KMS 网络规则。 有关将 Azure 防火墙与 WVD 集成的详细信息，请参阅 [使用 Azure 防火墙保护 Windows 虚拟桌面部署](protect-windows-virtual-desktop.md)。|
+|Azure Kubernetes 服务 (AKS)|允许出站访问 AKS。 有关详细信息，请参阅[使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署](protect-azure-kubernetes-service.md)。|
 
 > [!NOTE]
 > 在应用程序规则中选择 FQDN 标记时，“协议:端口”字段必须设置为 **https**。

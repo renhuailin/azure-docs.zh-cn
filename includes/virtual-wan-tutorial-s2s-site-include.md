@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 7bb4974620323de45fd621ae2ed73d3655244d8b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856700"
 ---
 1. 在虚拟 WAN 的“门户”页上，选择“连接”部分中的“VPN 站点”以开打“VPN 站点”页 。
 2. 在“VPN 站点”页上，单击“+创建站点”。
@@ -26,6 +26,10 @@ ms.locfileid: "90606484"
     * **设备供应商** - VPN 设备供应商的名称（例如：Citrix、Cisco、Barracuda）。 这有助于 Azure 团队更好地了解你的环境，以便将来添加更多的可用优化选项，或帮助你进行故障排除。
     * **边界网关协议** - 启用意味着来自站点的所有连接都将启用 BGP。 最后将从“链路”部分的 VPN 站点设置每条链路的 BGP 信息。 在虚拟 WAN 上配置 BGP 就等同于在 Azure 虚拟网络网关 VPN 上配置 BGP。 本地 BGP 对等节点地址不能与 VPN 到设备的公共 IP 地址或 VPN 站点的 VNet 地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。在表示该位置的相应 VPN 站点中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)。 启用 VPN 站点 BGP 设置后，始终可以编辑 VPN 连接以更新其 BGP 参数（链路上的对等互连 IP 和 AS 编号）。
     * **专用地址空间** - 位于本地站点的 IP 地址空间。 发往此地址空间的流量将路由到本地站点。 如果没有为站点启用 BGP，则必需填写此字段。
+    
+      >[!NOTE]
+      >如果在创建站点后编辑地址空间（例如，添加额外的地址空间），则在重新创建组件时，可能需要 8-10 分钟来更新有效路由。
+      >
     * **中心** - 希望站点连接到的中心。 站点只能连接到具有 VPN 网关的中心。 如果看不到中心，请先在相应的中心内创建 VPN 网关。
 4. 选择“链路”以在分支添加物理链路的信息。 如果有虚拟 WAN 合作伙伴 CPE 设备，请检查该设备，查看是否将此信息作为从其系统设置的分支信息上传的一部分与 Azure 进行交换。
 

@@ -7,16 +7,16 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: baselden
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a786907c5c954aa45de266b6d92dd47867a8445d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526997"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743609"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码 authentication 部署
 
@@ -51,7 +51,7 @@ Microsoft 提供了三种无密码的身份验证选项，涵盖了许多情况�
 
 Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你的组织需要、先决条件以及每种身份验证方法的功能，以选择你的无密码 authentication 战略。 建议使用 Windows 10 设备的每个组织都使用 Windows Hello for Business。 然后，将电话登录 (与 Microsoft Authenticator 应用) 或安全密钥一起添加到其他方案。
 
-| 方案 | 电话身份验证 | 安全密钥 | Windows Hello for Business |
+| 方案 | 电话身份验证 | 安全密钥 | Windows Hello 企业版 |
 | --- | --- | --- | --- |
 | **计算机登录**： <br> 从分配的 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN | **是**<br>带有生物识别识别和或 PIN |
 | **计算机登录**： <br> 从共享 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN  | 否 |
@@ -67,9 +67,9 @@ Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你
 
 | 先决条件 | Authenticator 应用 | FIDO2 安全密钥 |
 | --- | --- | --- |
-| 已启用[Azure 多重身份验证和自助服务密码重置 (SSPR) 的组合注册](howto-registration-mfa-sspr-combined.md) | √ | √ |
-| [用户可以执行 Azure 多重身份验证](howto-mfa-getstarted.md) | √ | √ |
-| [用户已注册 Azure 多重身份验证和 SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| 已启用[Azure AD 多重身份验证和自助服务密码重置 (SSPR) 的组合注册](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| [用户可以执行 Azure AD 多重身份验证](howto-mfa-getstarted.md) | √ | √ |
+| [用户已注册 Azure AD 多重身份验证和 SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [用户已将其移动设备注册到 Azure Active Directory](../devices/overview.md) | √ |   |
 | Windows 10 版本1809或更高版本，使用受支持的浏览器（如 Microsoft Edge 或 Mozilla Firefox） <br>  (版本67或更高版本) 。 <br> *Microsoft 建议采用版本1903或更高版本来提供本机支持*。 |   | √ |
 | 兼容的 FIDO2 安全密钥。 确保使用的是 [经过 Microsoft 测试和验证](./concept-authentication-passwordless.md) 的 FIDO2 安全设备或其他兼容的 FIDO2 安全设备。 |   | √ |
@@ -78,11 +78,11 @@ Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你
 
 Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限云的配置中进行部署。 有关详细信息，请参阅 [Windows Hello 企业版先决条件的完整列表](/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
 
-### <a name="azure-multi-factor-authentication"></a>Azure 多重身份验证
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证
 
-用户将其无密码方法注册为 Azure 多因素身份验证注册流的一部分。 使用用户名和密码以及另一个注册方法的多重身份验证可以作为回退，以防它们在某些情况下无法使用其电话或安全密钥。
+用户将其无密码方法注册为 Azure AD 多重身份验证注册流的一部分。 使用用户名和密码以及另一个注册方法的多重身份验证可以作为回退，以防它们在某些情况下无法使用其电话或安全密钥。
 
-### <a name="licensing"></a>授权 
+### <a name="licensing"></a>许可 
 无密码 authentication 无需额外付费，不过某些先决条件可能需要高级订阅。 [Azure Active Directory 许可页面](https://azure.microsoft.com/pricing/details/active-directory/)中提供详细的功能和许可信息。 
 
 ## <a name="develop-a-plan"></a>制定计划
@@ -93,7 +93,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 下表概述了要在此项目中实现的用例。
 
-| 领域 | 说明 |
+| 区域 | 说明 |
 | --- | --- |
 | **访问** | 在公司网络内部或外部的公司或个人设备中，可以使用无密码登录。 |
 | **审核** | 管理员可使用使用情况数据进行近实时审核。 <br> 使用情况数据至少每29天下载到企业系统，或使用 SIEM 工具。 |
@@ -118,7 +118,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 - [在 Microsoft Authenticator 应用中注册](howto-authentication-passwordless-phone.md)
 - [用手机登录](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft 提供多重身份验证 [通信模板](https://aka.ms/mfatemplates)、自助服务密码重置 (SSPR) [通信模板](https://www.microsoft.com/download/details.aspx?id=56768)和 [最终用户文档](../user-help/security-info-setup-signin.md) ，有助于草拟你的通信。 可以在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以直接注册。
+Microsoft 提供多重身份验证 [通信模板](https://aka.ms/mfatemplates)、Self-Service 密码重置 (SSPR) [通信模板](https://www.microsoft.com/download/details.aspx?id=56768)和 [最终用户文档](../user-help/security-info-setup-signin.md) ，以帮助草拟你的通信。 可以在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以直接注册。
 
 ### <a name="plan-to-pilot"></a>规划试点
 
@@ -126,7 +126,7 @@ Microsoft 提供多重身份验证 [通信模板](https://aka.ms/mfatemplates)�
 
 可以从本地目录或从 Azure AD 同步组。 对试点结果满意后，可以针对所有用户切换无密码 authentication。
 
-请参阅部署计划页上的 [试验最佳实践](https://aka.ms/deploymentplans) 。
+请参阅部署计划页上的 [试验最佳实践](../fundamentals/active-directory-deployment-plans.md) 。
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>通过 Microsoft Authenticator 应用计划无密码 authentication
 
@@ -140,7 +140,7 @@ Microsoft Authenticator 应用可从 Google Play 或 Apple App Store 免费下�
 
 **AD FS 集成** -当用户启用 Microsoft Authenticator 无密码凭据时，针对该用户的身份验证将默认为发送批准通知。 混合租户中的用户被阻止定向到 ADFS 进行登录，除非他们选中 "改用密码"。 此过程还会绕过任何本地条件性访问策略和传递身份验证流。 但是，如果指定了 *login_hint* ，则用户将转发到 ADFS，并跳过使用无密码凭据的选项。
 
-**Azure 多重身份验证服务器** -通过组织的本地 Azure MFA 服务器启用多重身份验证的最终用户可以创建和使用单个无密码手机登录凭据。 如果用户尝试使用凭据升级多个 Microsoft Authenticator) 的 (，则此更改可能会导致错误。
+**Azure AD 多重身份验证服务器** -通过组织的本地 Azure MFA 服务器启用多重身份验证的最终用户可以创建和使用单个无密码手机登录凭据。 如果用户尝试使用凭据升级多个 Microsoft Authenticator) 的 (，则此更改可能会导致错误。
 
 **设备注册** -若要使用验证器应用进行无密码身份验证，设备必须在 Azure AD 租户中注册，并且不能是共享设备。 设备只能在单个租户中注册。 此限制意味着使用验证器应用的手机登录仅支持一个工作或学校帐户。
 
@@ -292,9 +292,9 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="required-administrative-roles"></a>必需的管理角色
 
-| Azure AD 角色 | 说明 |
+| Azure AD 角色 | 描述 |
 | --- | --- |
-| 全局管理员|可实现组合注册体验的最小特权角色。 |
+| 全局管理员角色|可实现组合注册体验的最小特权角色。 |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法。 |
 | 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
 

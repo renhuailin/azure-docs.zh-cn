@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 服务器评估发现 Hyper-V VM
 description: 了解如何使用 Azure Migrate 服务器评估工具发现本地 Hyper-V VM。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb17ba9fc1b68f09f60e857cd20a3f0885bfdb05
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 1b860c739ab9ed9737f9f946cb13c731fa4722db
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603945"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753053"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>教程：使用服务器评估发现 Hyper-V VM
 
@@ -39,7 +42,7 @@ ms.locfileid: "90603945"
 **要求** | **详细信息**
 --- | ---
 **Hyper-V 主机** | VM 所在的 Hyper-V 主机可以是独立的，也可以在群集中。<br/><br/> 主机必须运行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 验证 WinRM 端口 5985 (HTTP) 上是否允许入站连接，使设备可以使用通用信息模型 (CIM) 会话连接到拉取 VM 元数据和性能数据。
-**设备部署** | vCenter Server 需要资源来为设备分配 VM：<br/><br/> - Windows Server 2016<br/><br/> \- 32 GB RAM<br/><br/> - 8 个 vCPU<br/><br/> - 约 80 GB 磁盘存储。<br/><br/> - 外部虚拟交换机。<br/><br/> - VM 直接或通过代理进行 Internet 访问。
+**设备部署** | Hyper-v 主机需要资源来为设备分配 VM：<br/><br/> - Windows Server 2016<br/><br/> -16 GB RAM<br/><br/> - 8 个 vCPU<br/><br/> - 约 80 GB 磁盘存储。<br/><br/> - 外部虚拟交换机。<br/><br/> - VM 直接或通过代理进行 Internet 访问。
 **VM** | VM 可以运行任何 Windows 或 Linux 操作系统。 
 
 开始之前，可以[查看设备在发现期间收集的数据](migrate-appliance.md#collected-data---hyper-v)。
@@ -72,6 +75,8 @@ ms.locfileid: "90603945"
 8. 在“用户设置”中，验证 Azure AD 用户是否可以注册应用程序（默认情况下设置为“是”） 。
 
     ![在用户设置中，验证用户是否可以注册 Active Directory 应用](./media/tutorial-discover-hyper-v/register-apps.png)
+
+9. 或者，租户/全局管理员可将“应用程序开发人员”角色分配给帐户，以允许注册 AAD 应用。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-hyper-v-hosts"></a>准备 Hyper-V 主机
 
@@ -135,7 +140,7 @@ ms.locfileid: "90603945"
 
 2. 运行以下 PowerShell 命令以生成 ZIP 文件的哈希
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
-    - 用法示例：```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+    - 用法示例：```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 3.  验证最新的设备版本和哈希值：
 
@@ -143,13 +148,13 @@ ms.locfileid: "90603945"
 
         **方案** | **下载** | **SHA256**
         --- | --- | ---
-        Hyper-V (10.4 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
+        Hyper-V (8.91 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
 
     - 对于 Azure 政府：
 
-        **方案*** | **下载** | **SHA256**
+        方案_ | _下载* | **SHA256**
         --- | --- | ---
-        Hyper-V (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) |  0769c5f8df1e8c1ce4f685296f9ee18e1ca63e4a111d9aa4e6982e069df430d7
+        Hyper-V (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
 ### <a name="create-the-appliance-vm"></a>创建设备 VM
 
@@ -158,9 +163,9 @@ ms.locfileid: "90603945"
 1. 将压缩的 VHD 文件解压缩到托管设备 VM 的 Hyper-V 主机上的某个文件夹中。 将解压缩三个文件夹。
 2. 打开 Hyper-V 管理器。 在“操作”中，单击“导入虚拟机”。 
 2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。 
-3. 在“查找文件夹”中，指定包含已解压缩的 VHD 的文件夹。**** 然后单击“下一步”。
+3. 在“查找文件夹”中，指定包含已解压缩的 VHD 的文件夹。 然后单击“下一步”。
 1. 在“选择虚拟机”中，单击“下一步”。 
-2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”。
+2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”  。
 3. 在“选择目标”中保留默认设置。 单击“下一步”。
 4. 在“存储文件夹”中保留默认设置。 单击“下一步”。
 5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。
@@ -202,7 +207,7 @@ ms.locfileid: "90603945"
    
    不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。 
-4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](tutorial-prepare-hyper-v.md#prepare-azure)，会启动设备注册。
+4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的权限，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
 
@@ -214,22 +219,22 @@ ms.locfileid: "90603945"
 1. 在设备 VM 上运行此命令。 HyperVHost1/HyperVHost2 是示例主机名。
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. 或者，在设备上的本地组策略编辑器中执行此操作：
     - 在“本地计算机策略” > “计算机配置”中，单击“管理模板” > “系统” > “凭据委托”。    
     - 双击“允许委托新凭据”，并选择“已启用”。 
     - 在“选项”中单击“显示”，将要发现的每台 Hyper-V 主机添加到列表中，并使用 wsman/ 作为前缀。  
-    - 在“凭据委托”中，双击“允许允许新凭据并使用仅限 NTLM 的服务器身份验证”。******** 再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。
+    - 在“凭据委托”中，双击“允许允许新凭据并使用仅限 NTLM 的服务器身份验证”。 再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。
 
 ## <a name="start-continuous-discovery"></a>启动持续发现
 
 从设备连接到 Hyper-V 主机或群集，并启动 VM 发现。
 
-1. 在**步骤 1：提供 Hyper-V 主机凭据**中，单击“添加凭据”以指定凭据的易记名称，为设备将用于发现 VM 的 Hyper-V 主机/群集添加“用户名”和“密码”。 单击“保存” 。
+1. 在 **步骤 1：提供 Hyper-V 主机凭据** 中，单击“添加凭据”以指定凭据的易记名称，为设备将用于发现 VM 的 Hyper-V 主机/群集添加“用户名”和“密码”。 单击“保存” 。
 1. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 Hyper-V VM 发现支持多个凭据。
-1. 在**步骤 2：提供 Hyper-V 主机/群集详细信息**中，单击“添加发现源”，以指定 Hyper-V 主机/群集 IP 地址/FQDN 以及用于连接到主机/群集的凭据的易记名称。
+1. 在 **步骤 2：提供 Hyper-V 主机/群集详细信息** 中，单击“添加发现源”，以指定 Hyper-V 主机/群集 IP 地址/FQDN 以及用于连接到主机/群集的凭据的易记名称。
 1. 可以一次“添加单个项目”，也可以一次“添加多个项目” 。 还有一个选项是通过“导入 CSV”提供 Hyper-V 主机/群集详细信息。
 
 
@@ -253,7 +258,7 @@ ms.locfileid: "90603945"
 发现完成后，可以验证 VM 是否出现在门户中。
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了 **已发现服务器** 计数的图标。
 
 ## <a name="next-steps"></a>后续步骤
 

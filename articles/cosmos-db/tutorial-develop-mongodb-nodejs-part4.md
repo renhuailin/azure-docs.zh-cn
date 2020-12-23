@@ -10,14 +10,15 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: c3026ac25d8da0e21c72ffa2d36f90e44a691aea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4ca7286676c441b2fa96883e0c187497f59d6222
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330496"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082617"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>使用用于 MongoDB 的 Azure Cosmos DB's API 创建 Angular 应用 - 创建 Cosmos 帐户
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 本教程包含多个部分，演示了如何通过 Express 和 Angular 创建以 Node.js 编写的新应用，然后将其连接到[使用 Cosmos DB 的用于 MongoDB 的 API 配置的 Cosmos 帐户](mongodb-introduction.md)。
 
@@ -35,7 +36,7 @@ ms.locfileid: "91330496"
 
 开始教程的此部分之前，请确保已完成教程[第 3 部分](tutorial-develop-mongodb-nodejs-part3.md)的步骤。 
 
-在此教程部分，可以使用 Azure Cloud Shell（位于 Internet 浏览器中），或使用本地安装的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在此教程部分，可以使用 Azure Cloud Shell（位于 Internet 浏览器中），或使用本地安装的 [Azure CLI](/cli/azure/install-azure-cli)。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -64,11 +65,11 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 1. 单击左侧栏中的 Azure Cosmos DB 徽标 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png":::，然后就会显示你的所有 Azure Cosmos DB。
 1. 单击刚创建的 Azure Cosmos DB 帐户，选择“概览”选项卡，向下滚动，以便查看数据库所在的映射。 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure 门户中的新 Azure Cosmos DB 帐户":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="显示 Azure Cosmos DB 概述的屏幕截图。":::
 
 4. 在左侧导航中向下滚动，单击“以全局方式复制数据”选项卡。此时会显示一个映射，可以在其中看到允许将数据复制到其中的不同区域。 例如，可以单击“澳大利亚东南部”或“澳大利亚东部”，然后将数据复制到澳大利亚。 若要详细了解全局复制，可参阅[如何使用 Azure Cosmos DB 在全球范围内分发数据](distribute-data-globally.md)。 至于现在，我们只需保留这一个实例，这样在需要复制时，我们就知道如何去做。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Azure 门户中的新 Azure Cosmos DB 帐户":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="显示选择了“全局复制数据”的 Azure Cosmos DB 帐户的屏幕截图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

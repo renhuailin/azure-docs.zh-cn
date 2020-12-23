@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0a25301bac125cd95b975a5ba1fc0cce47b56abd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 06b03ac1cfe37307a5839be0d5ca3b1003db35af
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954088"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072399"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB。 然后，可使用 Azure Cosmos 数据库作为 MongoDB 应用的数据存储。
 
@@ -34,7 +35,7 @@ ms.locfileid: "85954088"
 1. 在 Internet 浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在 Azure Cosmos DB 边栏选项卡中，选择 API  。
 3. 在“帐户”边栏选项卡左侧窗格中，单击“快速启动”  。
-4. 选择平台（ **.NET**、**Node.js**、**MongoDB Shell**、**Java**、**Python**）。 如果未列出驱动程序或工具，别担心，我们持续记录了更多连接代码片段。 请在下面留言，告知想知道的内容。 若要了解如何创建自己的连接，请阅读[获取该帐户的连接字符串信息](#get-the-mongodb-connection-string-to-customize)。
+4. 选择平台（ **.NET** 、 **Node.js** 、 **MongoDB Shell** 、 **Java** 、 **Python** ）。 如果未列出驱动程序或工具，别担心，我们持续记录了更多连接代码片段。 请在下面留言，告知想知道的内容。 若要了解如何创建自己的连接，请阅读[获取该帐户的连接字符串信息](#get-the-mongodb-connection-string-to-customize)。
 5. 将代码片段复制粘贴到 MongoDB 应用。
 
     :::image type="content" source="./media/connect-mongodb-account/QuickStartBlade.png" alt-text="“快速启动”边栏选项卡":::
@@ -46,7 +47,7 @@ ms.locfileid: "85954088"
 3. 在“帐户”边栏选项卡的左侧窗格中，单击“连接字符串”  。
 4. 此时将打开“连接字符串”边栏选项卡  。 其中显示了使用 MongoDB 驱动程序连接到帐户所需的所有信息，包括预先构造的连接字符串。
 
-   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="“连接字符串”边栏选项卡" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="“快速启动”边栏选项卡" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>连接字符串要求
 

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533514"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648015"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>使用 Python 和 Jupyter 笔记本设置实验室来讲授数据科学
 本文概述如何在实验室服务中设置模板虚拟机 (VM) 使用教授学生的工具如何使用 [Jupyter 笔记本](http://jupyter-notebook.readthedocs.io/)，以及学生如何连接到其虚拟机 (vm) 中的笔记本。
@@ -20,7 +20,7 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
 ## <a name="set-up-the-lab"></a>设置实验室
 
 ### <a name="lab-configuration"></a>实验室配置
-若要设置此实验室，需要访问 Azure 订阅和实验室帐户。 与组织管理员讨论，了解是否可以访问现有的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+若要设置此实验室，需要访问 Azure 订阅和实验室帐户。 与组织管理员讨论，了解是否可以访问现有的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 拥有 Azure 订阅后，请按照教程： [设置实验室帐户](tutorial-setup-lab-account.md)中的说明，在 Azure 实验室服务中创建一个新的实验室帐户。 你还可以使用现有的实验室帐户。
 
@@ -57,7 +57,7 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
 如果要使用 Azure 机器学习中的示例笔记本，请参阅 [如何使用 Jupyter 笔记本配置环境](../machine-learning/how-to-configure-environment.md#jupyter)。 
 
 ### <a name="optional-enable-graphical-desktop-for-linux"></a>可选：启用适用于 Linux 的图形桌面 
-**Data Science Virtual Machine – Ubuntu**映像已经预配了 X2GO 服务器，并已准备好接受客户端连接。 设置模板 VM 时，无需执行其他步骤。 
+**Data Science Virtual Machine – Ubuntu** 映像已经预配了 X2GO 服务器，并已准备好接受客户端连接。 设置模板 VM 时，无需执行其他步骤。 
 
 ### <a name="publish-the-template-machine"></a>发布模板计算机
 发布模板时，注册到实验室的每个学生都将获取模板 VM 的副本，其中包含已在其上设置的所有本地工具和笔记本。
@@ -86,7 +86,7 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
 以下部分提供有关连接到 Jupyter 笔记本的这些方法的详细信息。 
 
 #### <a name="ssh-to-virtual-machine"></a>通过 SSH 连接到虚拟机
-学生可以通过 SSH 连接到其 Linux Vm，并从终端会话进行连接。 有关详细步骤，请参阅 [如何访问教室实验室](how-to-use-classroom-lab.md)。 如果他们使用的是 Windows 客户端计算机，则需要通过从命令提示符下载 [PuTTY](https://www.putty.org/) 或 [在 Windows 中启用 OPENSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) 来启用 ssh 客户端。 
+学生可以通过 SSH 连接到其 Linux Vm，并从终端会话进行连接。 有关详细步骤，请参阅 [如何访问教室实验室](how-to-use-classroom-lab.md)。 如果他们使用的是 Windows 客户端计算机，则需要通过从命令提示符下载 [PuTTY](https://www.putty.org/) 或 [在 Windows 中启用 OPENSSH](/windows-server/administration/openssh/openssh_install_firstuse) 来启用 ssh 客户端。 
 
 1.  启动 VM。
 2.  VM 运行后，单击 " **连接**"，这会弹出一个对话框，其中提供了 SSH 命令字符串，如下面的示例所示：
@@ -100,7 +100,7 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
 学生连接到 Vm 后，可以在本地访问和运行 Jupyter 笔记本。
 
 #### <a name="x2go-to-virtual-machine"></a>X2Go 到虚拟机
-**Data Science Virtual Machine – Ubuntu**映像已经预配了 X2GO 服务器，并已准备好接受客户端连接。 若要连接到 Linux 计算机的图形桌面，学生需按照以下一次性步骤在其客户端计算机上设置 X2Go：
+**Data Science Virtual Machine – Ubuntu** 映像已经预配了 X2GO 服务器，并已准备好接受客户端连接。 若要连接到 Linux 计算机的图形桌面，学生需按照以下一次性步骤在其客户端计算机上设置 X2Go：
 
 1.  下载并安装客户端平台的 [X2Go 客户端](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 。
 2.  在 [Azure 实验室服务门户](https://labs.azure.com)中，确保启动要连接到的 Linux VM。
@@ -116,7 +116,7 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
      - **登录名**：学生
      - **SSH 端口**：12345
      - **会话类型**： XFCE
-6. 选择“确定” 。 
+6. 选择“确定”。 
 
     > [!NOTE]
      > 创建新的 X2Go 会话时，请确保使用 SSH 端口， **而不** 是 RDP 端口。

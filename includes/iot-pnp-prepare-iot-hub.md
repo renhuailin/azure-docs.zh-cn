@@ -4,13 +4,13 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/17/2020
-ms.custom: references_regions
-ms.openlocfilehash: adc621f932462422202d9f16fd539f5ecc7c3d8e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: ea5d4ef26fb14e22b871bb4bfa1054cb749d38e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336884"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673013"
 ---
 ## <a name="prepare-an-iot-hub"></a>准备 IoT 中心
 
@@ -34,9 +34,6 @@ az group create --name my-pnp-resourcegroup \
 az iot hub create --name <YourIoTHubName> \
     --resource-group my-pnp-resourcegroup --sku F1
 ```
-
-> [!NOTE]
-> IoT 即插即用当前在美国中部、北欧和日本东部区域创建的 IoT 中心中提供。 基本层的 IoT 中心不包含 IoT 即插即用支持。
 
 运行以下命令，在 IoT 中心创建设备标识。 将 `<YourIoTHubName>` 和 `<YourDeviceID>` 占位符替换为你自己的“IoT 中心名称”和所选“设备 ID” 。
 

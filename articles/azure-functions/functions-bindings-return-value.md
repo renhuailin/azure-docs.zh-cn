@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 58ee9b682bc97dc4044d811392cf4ff5b51a69fd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212169"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491352"
 ---
 # <a name="using-the-azure-function-return-value"></a>使用 Azure 函数返回值
 
@@ -129,6 +129,27 @@ module.exports = function (context, input) {
     context.log('Node.js script processed queue message', json);
     context.done(null, json);
 }
+```
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+下面是 *function.json* 文件中的输出绑定：
+
+```json
+{
+    "name": "Response",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{blobname}"
+}
+```
+
+下面是使用 http 输出绑定的返回值的 PowerShell 代码：
+
+```powershell
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $blobname
+    })
 ```
 
 # <a name="python"></a>[Python](#tab/python)

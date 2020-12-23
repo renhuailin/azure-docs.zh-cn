@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d663dc4e2bd860ec9494785ecbf6dbf10a4c5b5
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808140"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397750"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>创建具有内部负载均衡器 (ILB) 的应用程序网关
 
@@ -50,7 +50,7 @@ ms.locfileid: "84808140"
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
-确保切换 PowerShell 模式，以便使用 Azure Resource Manager cmdlet。 [将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
+确保切换 PowerShell 模式，以便使用 Azure Resource Manager cmdlet。 [将 Windows PowerShell 与资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)中提供了详细信息。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -258,10 +258,9 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](application-gateway-ssl.md)（配置应用程序网关以进行 SSL 卸载）。
+如果要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](./tutorial-ssl-powershell.md)（配置应用程序网关以进行 SSL 卸载）。
 
 如需大体上更详细地了解负载均衡选项，请参阅：
 
 * [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

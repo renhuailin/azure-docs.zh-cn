@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/09/2020
 ms.author: jeedes
-ms.openlocfilehash: d509bcdca7f37ddb6c471eacb00139e32267e56d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 005e2154f4e33f23a2ec45d6e0b3f620be10c1c6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535743"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453614"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fastly-edge-cloud"></a>教程：Azure Active Directory 与 Fastly Edge Cloud 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88535743"
 * 让用户使用其 Azure AD 帐户自动登录到 Fastly Edge Cloud。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -126,20 +126,20 @@ ms.locfileid: "88535743"
 
 ### <a name="create-fastly-edge-cloud-test-user"></a>创建 Fastly Edge Cloud 测试用户
 
-在本部分中，将在 Fastly Edge Cloud 中创建一个名为 B.Simon 的测试用户。 与  [Fastly Edge Cloud 支持团队](mailto:support@fastly.com)合作，将用户添加到 Fastly Edge Cloud 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Fastly Edge Cloud 中创建一个名为 B.Simon 的测试用户。 与 [Fastly Edge Cloud 支持团队](mailto:support@fastly.com)协作，在 Fastly Edge Cloud 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Fastly Edge Cloud 磁贴时，应当会自动登录到为其设置了 SSO 的 Fastly Edge Cloud。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Fastly Edge Cloud 磁贴时，应当会自动登录到为其设置了 SSO 的 Fastly Edge Cloud。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 Fastly Edge Cloud](https://aad.portal.azure.com/)

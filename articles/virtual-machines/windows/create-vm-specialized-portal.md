@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中的专用 VHD 中创建 Windows VM
+title: 在 Azure 门户中通过专用 VHD 创建 Windows VM
 description: 在 Azure 门户的 VHD 中创建新的 Windows VM。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 5a541dce94cc25958e3c3a6a058e015c8c5e3db0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31677482660a48e2bb4c71b81b04681eba725fcd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283242"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455135"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>使用 Azure 门户在 VHD 中创建 VM
 
@@ -22,11 +22,14 @@ ms.locfileid: "87283242"
 
 - 可从已删除的 VM 的 VHD 创建新的 VM。 例如，如果 Azure VM 运行不正常，则可以删除该 VM，然后使用其 VHD 创建新的 VM。 可以重用同一 VHD，也可以创建 VHD 的副本，方法是：先创建快照，然后根据快照创建新的托管磁盘。 虽然创建快照需要多个步骤，但它可以保留原始 VHD 并提供回退的依据。
 
-- 获取经典 VM，并通过 VHD 创建使用资源管理器部署模型和托管磁盘的新 VM。 为了获得最佳结果，在创建快照之前，请在 Azure 门户中**停止**经典 VM。
+- 获取经典 VM，并通过 VHD 创建使用资源管理器部署模型和托管磁盘的新 VM。 为了获得最佳结果，在创建快照之前，请在 Azure 门户中 **停止** 经典 VM。
  
 - 可以通过上传本地 VHD 并将其附加到新 VM，在本地 VHD 上创建 Azure VM。 可使用 PowerShell 或其他工具将 VHD 上传到存储帐户，然后根据 VHD 创建托管磁盘。 有关详细信息，请参阅[上传专用 VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd)。 
 
-如果想创建多个 VM，请勿使用专用磁盘。 对于较大的部署，应先[创建映像](capture-image-resource.md)，然后[使用该映像创建多个 VM](create-vm-generalized-managed.md)。
+> [!IMPORTANT]
+> 
+> 使用专用磁盘创建新的 VM 时，新 VM 将保留原始 VM 的计算机名。 还会保留其他特定于计算机的信息 (例如 CMID) ，在某些情况下，这种重复信息可能会导致问题。 复制 VM 时，请注意应用程序依赖哪些类型的计算机特定信息。  
+> 因此，如果想要创建多个 Vm，请不要使用专用磁盘。 对于较大的部署，应先[创建映像](capture-image-resource.md)，然后[使用该映像创建多个 VM](create-vm-generalized-managed.md)。
 
 我们建议你将单个快照或 VHD 的并发部署数限制为 20 个 VM。 
 
@@ -39,14 +42,14 @@ ms.locfileid: "87283242"
 3. 选择要使用的磁盘。 此时会显示该磁盘的“磁盘”页  。
 4. 从顶部菜单选择“创建快照”  。 
 5. 输入快照的“名称”  。
-6. 为快照选择一个**资源组**。 可以使用现有资源组，也可以创建新组。
+6. 为快照选择一个 **资源组**。 可以使用现有资源组，也可以创建新组。
 7. 对于“帐户类型”，选择“标准 (HDD)”或“高级 (SSD)”存储    。
 8. 完成后选择“创建”，以便创建快照  。
 9. 创建快照后，选择左侧菜单中的“创建资源”  。
 10. 在搜索框中输入“托管磁盘”，然后从列表中选择“托管磁盘”   。
 11. 在“托管磁盘”页上选择“创建”   。
 12. 输入磁盘的名称  。
-13. 为磁盘选择一个**资源组**。 可以使用现有资源组，也可以创建新组。 该选择也将用作在其中根据磁盘创建 VM 的资源组。
+13. 为磁盘选择一个 **资源组**。 可以使用现有资源组，也可以创建新组。 该选择也将用作在其中根据磁盘创建 VM 的资源组。
 14. 对于“帐户类型”，选择“标准 (HDD)”或“高级 (SSD)”存储    。
 15. 在“源类型”中，确保选中“快照”   。
 16. 在“源快照”  下拉列表中，选择要使用的快照。

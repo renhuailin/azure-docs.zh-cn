@@ -1,19 +1,22 @@
 ---
 title: 通过 Azure Migrate 评估要迁移到 Azure 的大量 VMware Vm
-description: 介绍如何使用 Azure Migrate 服务来评估大量要迁移到 Azure 的 VMware Vm
+description: 介绍如何使用 Azure Migrate 服务评估大量 VMware Vm 以便迁移到 Azure。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 206df399736dbd3b5d1d52531a249bbd37646514
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171917"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753665"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>评估要迁移到 Azure 的大量 VMware Vm
 
 
-本文介绍如何使用 Azure Migrate Server 评估工具评估用于迁移到 Azure 的大量（35000）的本地 VMware Vm。
+本文介绍了如何使用 Azure Migrate 服务器评估工具来评估 (用于迁移到 Azure 的本地 VMware Vm) 大量。
 
 [Azure Migrate](migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。 
 
@@ -26,7 +29,7 @@ ms.locfileid: "87171917"
 
 
 > [!NOTE]
-> 如果要在评估规模之前尝试使用概念证明来评估几个 Vm，请遵循我们的[系列教程](tutorial-prepare-vmware.md)
+> 如果要在评估规模之前尝试使用概念证明来评估几个 Vm，请遵循我们的 [系列教程](./tutorial-discover-vmware.md)
 
 ## <a name="plan-for-assessment"></a>规划评估
 
@@ -37,7 +40,7 @@ ms.locfileid: "87171917"
 - **规划用于发现的帐户**： Azure Migrate 设备使用有权访问 vCenter Server 的帐户，以便发现用于评估和迁移的 vm。 如果发现超过10000个 Vm，请设置多个帐户，因为在项目中从任何两个设备发现的 Vm 之间没有重叠。 
 
 > [!NOTE]
-> 如果要设置多个设备，请确保 vCenter 帐户上的 Vm 之间没有重叠。 此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现和出现问题。
+> 如果要设置多个设备，请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现和出现问题。
 
 ## <a name="planning-limits"></a>规划限制
  
@@ -53,12 +56,12 @@ ms.locfileid: "87171917"
 考虑到这些限制，以下是一些示例部署：
 
 
-**vCenter 服务器** | **服务器上的 Vm** | **建议** | **Action**
+**vCenter 服务器** | **服务器上的 Vm** | 建议 | **操作**
 ---|---|---|---
 一个 | < 10000 | 一个 Azure Migrate 项目。<br/> 一台设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。
-一个 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 为每个 10000 Vm 设置设备。<br/><br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/> <br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
+一个 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 为每个 10000 Vm 设置设备。<br/><br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/> <br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
 多个 | < 10000 |  一个 Azure Migrate 项目。<br/> 多个设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。
-多个 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 如果 vCenter Server 发现 < 10000 Vm，请为每个 vCenter Server 设置一个设备。<br/><br/> 如果 vCenter Server 发现 > 10000 Vm，请为每个 10000 Vm 设置一个设备。<br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/><br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
+多个 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 如果 vCenter Server 发现 < 10000 Vm，请为每个 vCenter Server 设置一个设备。<br/><br/> 如果 vCenter Server 发现 > 10000 Vm，请为每个 10000 Vm 设置一个设备。<br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/><br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
 
 
 
@@ -74,11 +77,11 @@ ms.locfileid: "87171917"
 
 为服务器评估准备 Azure 和 VMware。 
 
-1. 验证[VMware 支持要求和限制](migrate-support-matrix-vmware.md)。
+1. 验证 [VMware 支持要求和限制](migrate-support-matrix-vmware.md)。
 2. 设置你的 Azure 帐户的权限以与 Azure Migrate 进行交互。
 3. 准备 VMware 以进行评估。
 
-按照[本教程](tutorial-prepare-vmware.md)中的说明配置这些设置。
+按照 [本教程](./tutorial-discover-vmware.md) 中的说明配置这些设置。
 
 
 ## <a name="create-a-project"></a>创建一个项目
@@ -88,7 +91,7 @@ ms.locfileid: "87171917"
 1. 创建 Azure Migrate 项目。
 2. 将 Azure Migrate 服务器评估工具添加到项目。
 
-[了解详细信息](how-to-add-tool-first-time.md)
+[了解详细信息](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>创建和查看评估
 
@@ -96,7 +99,7 @@ ms.locfileid: "87171917"
 1. 查看评估以准备迁移规划。
 
 
-按照[本教程](tutorial-assess-vmware.md)中的说明配置这些设置。
+按照 [本教程](./tutorial-assess-vmware-azure-vm.md) 中的说明配置这些设置。
     
 
 ## <a name="next-steps"></a>后续步骤
@@ -109,4 +112,4 @@ ms.locfileid: "87171917"
 > * 创建 Azure Migrate 项目并运行评估
 > * 查看评估以准备迁移。
 
-现在，[了解如何](concepts-assessment-calculation.md)计算评估，以及如何[修改评估](how-to-modify-assessment.md)。
+现在， [了解如何](concepts-assessment-calculation.md) 计算评估，以及如何 [修改评估](how-to-modify-assessment.md)。

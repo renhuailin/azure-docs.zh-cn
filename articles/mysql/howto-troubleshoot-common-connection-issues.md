@@ -2,17 +2,17 @@
 title: 排查连接问题-Azure Database for MySQL
 description: 了解如何排查与 Azure Database for MySQL 的连接问题，包括需要重试的暂时性错误、防火墙问题和服务中断。
 keywords: mysql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da500087aeb4ad5e2bf516c3d0ce3cceaf8396af
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100883"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000277"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>排查 Azure Databases for MySQL 的连接问题
 

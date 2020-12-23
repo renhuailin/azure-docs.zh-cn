@@ -1,22 +1,22 @@
 ---
 title: 本地缓存
-description: 了解本地缓存在 Azure App Service 中的工作原理，以及如何启用、调整大小和查询应用本地缓存的状态。
+description: 了解本地缓存在 Azure 应用服务中的工作方式，以及如何启用应用的本地缓存、调整其大小和查询其状态。
 tags: optional
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080705"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852246"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
 > [!NOTE]
-> 函数应用或容器化应用服务应用中不支持本地缓存，如[Windows 容器](quickstart-custom-container.md?pivots=container-windows)中或[Linux 应用服务](overview.md#app-service-on-linux)。
+> 函数应用或容器化应用服务应用中不支持本地缓存，如 [Windows 容器](quickstart-custom-container.md?pivots=container-windows) 中或 [Linux 应用服务](overview.md#app-service-on-linux)。
 
 
 Azure 应用服务内容将存储在 Azure 存储中，作为内容共享持续呈现。 此设计旨在兼容各种应用，具有以下特点：  
@@ -36,7 +36,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>本地缓存如何改变应用服务的行为
 * D:\home 指向本地缓存，它是应用启动时在 VM 实例上创建的。 D:\local 继续指向特定于临时 VM 的存储。
-* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。    应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 1 GB，但可增至 2 GB。 请注意，随着缓存大小的增加，加载缓存需要的时间也越长。 如果已将本地缓存限制增加到 2 GB，并且复制的文件超过了最大大小 2 GB，应用服务会以无提示方式忽略本地缓存并从远程文件共享读取。 如果未定义任何限制或将限制设置为小于 2 GB 的任何值，并且复制的文件超出了限制，则部署或交换可能会失败并出现错误。
+* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。    应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 1 GB，但可增至 2 GB。 请注意，随着缓存大小的增加，加载缓存需要的时间也越长。 如果已将本地缓存限制增加到 2 GB，并且复制的文件超过了最大大小 2 GB，则应用服务会在不提示的情况下忽略本地缓存，从远程文件共享读取数据。 如果没有定义限制，或者该限制设置为低于 2 GB 的任何值，而复制的文件超出了该限制，则部署或交换可能会失败并出现错误。
 * 本地缓存是可以读写的。 不过，如果应用移动了虚拟机，或者系统重启了应用，则会放弃所做的任何修改。 如果应用在内容存储中存储了任务关键型数据，请不要使用本地缓存。
 * D:\home\LogFiles 和 D:\home\Data 包含日志文件和应用数据。  两个子文件夹本地存储在 VM 实例上，并定期复制到共享内容存储。 应用可以通过将日志文件和数据写入到这些文件夹来保留它们。 但是，复制到共享内容存储是最大努力，因此由于 VM 实例的突然崩溃，日志文件和数据可能会丢失。
 * [日志流式处理](troubleshoot-diagnostic-logs.md#stream-logs)受最大努力副本的影响。 可以在流式传输的日志中观察到最多一分钟的延迟。
@@ -45,7 +45,11 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 * 通过任何支持的方法进行的应用部署都将直接发布到持久共享内容存储。 若要刷新本地缓存中的 D:\home\site 和 D:\home\siteextensions 文件夹，需要重新启动应用。  若要确保无缝的生命周期，请参阅本文后面提供的信息。
 * SCM 站点的默认内容视图仍是共享内容存储的视图。
 
-## <a name="enable-local-cache-in-app-service"></a>在应用服务中启用本地缓存
+## <a name="enable-local-cache-in-app-service"></a>在应用服务中启用本地缓存 
+
+> [!NOTE]
+> F1 或 D1 层不支持本地缓存 。 
+
 组合使用保留的应用设置即可配置本地缓存。 可以通过以下方法配置这些应用设置：
 
 * [Azure 门户](#Configure-Local-Cache-Portal)
@@ -88,8 +92,8 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用应用服务本地缓存的最佳实践
 建议将本地缓存与[过渡环境](../app-service/deploy-staging-slots.md)功能结合在一起使用。
 
-* 将值为 `Always` 的*粘性*应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
-* 创建**过渡**槽，并发布到过渡槽。 如果获得了生产槽的本地缓存优势，则要想通过无缝的“构建-部署-测试”生命周期进行过渡，通常不需要将过渡槽设置为使用本地缓存。
+* 将值为 `Always` 的 *粘性* 应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 添加到 **生产** 槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
+* 创建 **过渡** 槽，并发布到过渡槽。 如果获得了生产槽的本地缓存优势，则要想通过无缝的“构建-部署-测试”生命周期进行过渡，通常不需要将过渡槽设置为使用本地缓存。
 * 针对“过渡”槽来测试站点。  
 * 准备就绪以后，在过渡槽和生产槽之间执行[交换操作](../app-service/deploy-staging-slots.md#Swap)。  
 * 粘性设置包含名称，会粘到某个槽上。 因此，将“过渡”槽交换成“生产”槽以后，该槽会继承本地缓存应用设置。 新交换的“生产”槽会在几分钟后以本地缓存为基础运行，并会在交换后进行槽预热的过程中预热。 因此，在槽交换完成后，“生产”槽会在本地缓存的基础上运行。
@@ -106,7 +110,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 如果应用使用本地缓存，则需重新启动站点才能获取最新更改。 不想将更改发布到生产站点？ 请参阅前述最佳实践部分的槽选项。
 
 > [!NOTE]
-> "[从包运行](deploy-run-package.md)" 部署选项与本地缓存不兼容。
+> [从包运行](deploy-run-package.md)部署选项与本地缓存不兼容。
 
 ### <a name="where-are-my-logs"></a>日志在哪里？
 使用本地缓存时，日志和数据文件夹看起来稍有不同。 但是，子文件夹的结构始终是相同的，区别在于子文件夹嵌套在格式为“唯一 VM 标识符”+ 时间戳的子文件夹下。
@@ -116,3 +120,6 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>本地缓存是否会阻止某些目录被复制到更快的本地驱动器？
 在复制存储内容过程中，将排除任何名为存储库的文件夹。 如果站点内容包含应用日常操作中可能不必要的源控件存储库，则此方法非常有用。 
+
+### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>如何在站点管理操作之后刷新本地缓存日志？
+若要刷新本地缓存日志，请停止并重新启动应用。 此操作清除旧缓存。 

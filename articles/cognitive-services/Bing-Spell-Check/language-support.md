@@ -10,18 +10,23 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97bd6bfc1cb7a0760894faaf3fd0617e6165f58
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66390167"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351191"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>必应拼写检查 API 的语言和区域支持
 
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
+
 必应拼写检查 API 支持以下语言（仅在 `spell` 模式有效）。
 
-请注意，要以 `en-US` 以外的任何语言工作，应将 `mkt` 设置为 `Accept-Language`或将 `setLang` 设置为 [拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)中所述的值
+请注意，要以 `en-US` 以外的任何语言工作，应将 `mkt` 设置为 `Accept-Language`或将 `setLang` 设置为 [拼写检查 API v7 参考](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)中所述的值
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|
@@ -60,13 +65,13 @@ ms.locfileid: "66390167"
 | 俄语     | `ru`          |
 | 西班牙语（阿根廷）    | `es-AR`          |
 | 西班牙语（智利）     | `es-CL`          |
-| 西班牙语(墨西哥)    | `es-MX`          |
+| 西班牙语（墨西哥）    | `es-MX`          |
 | 西班牙语(西班牙)    | `es-ES`          |
 | 西班牙语（美国）    | `es-US`          |
 | 瑞典语     | `sv`          |
 | 土耳其语     | `tr`          |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-- [认知服务文档页面](https://docs.microsoft.com/azure/cognitive-services/)
+- [认知服务文档页面](../index.yml)
 - [认知服务产品页](https://azure.microsoft.com/services/cognitive-services/)

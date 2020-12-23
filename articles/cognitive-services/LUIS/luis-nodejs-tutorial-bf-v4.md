@@ -1,21 +1,21 @@
 ---
 title: 教程：语言理解机器人 Node.js v4
-description: 在本教程中，将使用 Node.js 生成集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用人力资源应用来快速实现一个机器人解决方案。 此机器人是使用 Bot Framework 4 和 Azure Web 应用机器人生成的。
+description: 通过本教程构建一个集成了语言理解的聊天机器人 (LUIS)。 此聊天机器人使用人力资源应用来快速实现一个机器人解决方案。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d6ef0b0d437674d78064e6c5c5a91e1b2b89074a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dd5f97f2b1c2ad51dda3446412cd936e45c5982e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324665"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436889"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教程：通过 Node.js 使用启用了语言理解的 Web 应用机器人
 
-使用 Node.js 生成集成了语言理解的聊天机器人 (LUIS)。 该机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)资源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 构建的。
+使用 Node.js 生成集成了语言理解的聊天机器人 (LUIS)。 该机器人是使用 Azure [Web 应用机器人](/azure/bot-service/)资源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 构建的。
 
 **本教程介绍如何执行下列操作：**
 
@@ -27,7 +27,7 @@ ms.locfileid: "91324665"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [机器人模拟器](https://aka.ms/abs/build/emulatordownload)
+* [Bot Framework Emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
 ## <a name="create-a-web-app-bot-resource"></a>创建 Web 应用机器人资源
@@ -371,22 +371,22 @@ ms.locfileid: "91324665"
 
 ![主页上显示关于你的机器人的信息。](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>使用机器人模拟器测试机器人
+## <a name="use-the-bot-framework-emulator-to-test-the-bot"></a>使用 Bot Framework Emulator 测试机器人
 
 向机器人询问关于预订机票意向的问题。
 
-1. 启动机器人模拟器并选择“打开机器人”。
+1. 打开 Bot Framework Emulator，然后选择“打开机器人”。
 1. 在“打开机器人”弹出对话框中，输入机器人 URL（如 `http://localhost:3978/api/messages`）。 `/api/messages` 路由是机器人的 Web 地址。
 1. 输入在下载的机器人代码根目录下 .env 文件中找到的“Microsoft 应用 ID”和“Microsoft 应用密码”  。
 
-1. 在机器人模拟器中输入 `Book a flight from Seattle to Berlin tomorrow`应可获得基本机器人的答复，与在“通过网上聊天执行测试”中收到的答复相同。
+1. 在 Bot Framework Emulator中，输入 `Book a flight from Seattle to Berlin tomorrow` 并获得与你在网络聊天测试中收到的基本机器人相同的响应。
 
-    [![模拟器中的基础机器人响应](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![屏幕截图显示 Bot Framework Emulator。](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. 请选择“是”。 机器人将以其操作摘要答复你。
-1. 从机器人模拟器的日志中，选择包含 `<- trace LuisV3 Trace` 的行。 这将显示 LUIS 对言语的意图和本质的 JSON 答复。
+1. 从 Bot Framework Emulator 的日志中，选择包含 `<- trace LuisV3 Trace` 的行。 这将显示 LUIS 对言语的意图和本质的 JSON 答复。
 
-    [![模拟器中的基础机器人响应](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![屏幕截图显示 Bot Framework Emulator，其中右侧面板包含 JSON 代码。](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
@@ -395,4 +395,4 @@ ms.locfileid: "91324665"
 查看更多使用聊天机器人的[示例](https://github.com/microsoft/botframework-solutions)。
 
 > [!div class="nextstepaction"]
-> [构建包含自定义使用者域的语言理解应用](luis-quickstart-intents-only.md)
+> [构建包含自定义使用者域的语言理解应用](./tutorial-intents-only.md)

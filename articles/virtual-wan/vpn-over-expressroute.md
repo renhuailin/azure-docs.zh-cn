@@ -1,18 +1,18 @@
 ---
 title: 配置 ExpressRoute 加密： IPsec over ExpressRoute for Azure 虚拟 WAN
-description: 本教程介绍如何使用 Azure 虚拟 WAN 通过 ExpressRoute 专用对等互连创建站点到站点 VPN 连接。
+description: 了解如何使用 Azure 虚拟 WAN 通过 ExpressRoute 专用对等互连创建站点到站点 VPN 连接。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b8dde3ed76587e2343edaec8626287853ec6ef9b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827957"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487501"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute 加密：虚拟 WAN 的基于 ExpressRoute 的 IPsec
 
@@ -76,7 +76,7 @@ ms.locfileid: "91827957"
 >
 
 1. 在浏览器中转到 Azure 门户。 
-1. 选择所创建的中心。 在 "虚拟 WAN 中心" 页的 " **连接**" 下，选择 " **VPN 站点**"。
+1. 选择所创建的中心。 在虚拟 WAN 中心页的“连接性”下，选择“VPN 站点”。 
 1. 在“VPN 站点”页上，选择“+创建站点”。 
 1. 在“创建站点”页上填写以下字段：
    * **订阅**：验证订阅。
@@ -95,9 +95,9 @@ ms.locfileid: "91827957"
 
    如果启用了 BGP，BGP 将应用到在 Azure 中为此站点创建的所有连接。 在虚拟 WAN 上配置 BGP 等同于在 Azure VPN 网关上配置 BGP。 
    
-   本地 BGP 对等方地址不能与连接到设备的 VPN 的 IP 地址或 VPN 站点的虚拟网络地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 但是，该地址不能是 APIPA (169.254.*x*.*x*) 地址。 在代表该位置的相应本地网关中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md)。
+   本地 BGP 对等方地址不能与连接到设备的 VPN 的 IP 地址或 VPN 站点的虚拟网络地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 但是，该地址不能是 APIPA (169.254.*x*.*x*) 地址。 在表示该位置的相应 VPN 站点中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md)。
 
-1. 在完成时选择“下一步:查看 + 创建 >”检查设置值并创建 VPN 站点。 如果选择了要连接的**中心**，则连接将在本地网络与中心 VPN 网关之间建立。
+1. 在完成时选择“下一步:查看 + 创建 >”检查设置值并创建 VPN 站点。 如果选择了要连接的 **中心**，则连接将在本地网络与中心 VPN 网关之间建立。
 
 ## <a name="3-update-the-vpn-connection-setting-to-use-expressroute"></a><a name="hub"></a>3.将 VPN 连接设置更新为使用 ExpressRoute
 
@@ -105,16 +105,16 @@ ms.locfileid: "91827957"
 
 1. 返回到虚拟 WAN 资源页，选择中心资源。 或者从 VPN 站点导航到已连接的中心。
 
-   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="通过 ExpressRoute 建立的 VPN 连接":::
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="选择中心":::
 1. 在“连接”下，选择“VPN (站点到站点)”。 
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="通过 ExpressRoute 建立的 VPN 连接":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="选择“VPN (站点到站点)”":::
 1. 选择通过 ExpressRoute 连接的 VPN 站点对应的省略号 ( **...** )，然后选择“编辑指向此中心的 VPN 连接”。
 
-   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="通过 ExpressRoute 建立的 VPN 连接":::
-1. 对于“使用 Azure 专用 IP 地址”，请选择“是”。  此设置将中心 VPN 网关配置为对此连接使用网关上的中心地址范围内的专用 IP 地址，而不是使用公共 IP 地址。 这将确保来自本地网络的流量通过 ExpressRoute 专用对等互连路径，而不是对此 VPN 连接使用公共 Internet。 以下屏幕截图显示了此设置：
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="“输入配置”菜单":::
+1. 对于“使用 Azure 专用 IP 地址”，请选择“是”。  此设置将中心 VPN 网关配置为对此连接使用网关上的中心地址范围内的专用 IP 地址，而不是使用公共 IP 地址。 这将确保来自本地网络的流量通过 ExpressRoute 专用对等互连路径，而不是对此 VPN 连接使用公共 Internet。 以下屏幕截图显示了该设置：
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="通过 ExpressRoute 建立的 VPN 连接" border="false":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="将专用 IP 地址用于 VPN 连接的设置" border="false":::
 1. 选择“保存” 。
 
 保存更改后，中心 VPN 网关将使用 VPN 网关上的专用 IP 地址，通过 ExpressRoute 来与本地 VPN 设备建立 IPsec/IKE 连接。
@@ -230,11 +230,11 @@ ms.locfileid: "91827957"
 1. 在“概述”页上，地图中的每个点表示一个中心。
 1. 在“中心和连接”部分，可以查看中心、站点、区域和 VPN 连接状态。 还可以查看传入与传出的字节数。
 
-## <a name="6-monitor-a-connection"></a><a name="connectmon"></a>6. 监视连接
+## <a name="6-monitor-a-connection"></a><a name="connectmon"></a>6.监视连接
 
 创建一个连接，用于监视 Azure 虚拟机 (VM) 与远程站点之间的通信。 有关如何设置连接监视器的信息，请参阅[监视网络通信](~/articles/network-watcher/connection-monitor.md)。 源字段是 Azure 中的 VM IP，目标 IP 是站点 IP。
 
-## <a name="7-clean-up-resources"></a><a name="cleanup"></a>7. 清理资源
+## <a name="7-clean-up-resources"></a><a name="cleanup"></a>7.清理资源
 
 不再需要这些资源时，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其包含的所有资源。 运行以下 PowerShell 命令（请将 `myResourceGroup` 替换为资源组的名称）：
 

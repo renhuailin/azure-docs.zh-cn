@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8e44f69965af1987bd5f023644d966b3caf1c77
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505804"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656048"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>连接 Azure DDoS 保护的数据
 
@@ -22,15 +22,15 @@ ms.locfileid: "89505804"
 > Azure Sentinel 中的 Azure DDoS 保护数据连接器目前为公共预览版。
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-分布式拒绝服务 (DDoS) 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。 [Azure DDoS 保护](../virtual-network/ddos-protection-overview.md)与应用程序设计最佳做法相结合，为防范 DDoS 攻击提供了强大的防御。 你可以将 Azure DDoS 保护日志连接到 Azure Sentinel，使你能够查看工作簿中的日志数据，使用它创建自定义警报，并将其合并以改善调查。 
+分布式拒绝服务 (DDoS) 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。 [Azure DDoS 保护](../ddos-protection/ddos-protection-overview.md)与应用程序设计最佳做法相结合，为防范 DDoS 攻击提供了强大的防御。 你可以将 Azure DDoS 保护日志连接到 Azure Sentinel，使你能够查看工作簿中的日志数据，使用它创建自定义警报，并将其合并以改善调查。 
 
 ## <a name="prerequisites"></a>先决条件
 
 - 你必须具有 Azure Sentinel 工作区的读取和写入权限。
 
-- 你必须具有已配置的 [Azure DDoS 标准保护计划](../virtual-network/manage-ddos-protection.md#create-a-ddos-protection-plan)。
+- 你必须具有已配置的 [Azure DDoS 标准保护计划](../ddos-protection/manage-ddos-protection.md#create-a-ddos-protection-plan)。
 
-- 你必须具有已 [启用 Azure DDoS 标准](../virtual-network/manage-ddos-protection.md#enable-ddos-for-a-new-virtual-network)的已配置虚拟网络。
+- 你必须具有已 [启用 Azure DDoS 标准](../ddos-protection/manage-ddos-protection.md#enable-ddos-protection-for-a-new-virtual-network)的已配置虚拟网络。
 
 ## <a name="connect-to-azure-ddos-protection"></a>连接到 Azure DDoS 保护
     
@@ -49,7 +49,7 @@ ms.locfileid: "89505804"
 
        - 选中 " **发送到 Log Analytics** " 复选框。 其中将显示两个新字段。 选择相关 **订阅** ，并 **Log Analytics 工作区** (Azure Sentinel 所在的位置) 。
 
-       - 标记要引入其日志的规则类型的复选框。 建议 **DDoSProtectionNotifications**、 **DDoSMitigationFlowLogs**和 **DDoSMitigationReports**。
+       - 标记要引入其日志的规则类型的复选框。 建议 **DDoSProtectionNotifications**、 **DDoSMitigationFlowLogs** 和 **DDoSMitigationReports**。
 
     1. 单击屏幕顶部的“保存”。  对于已启用 DDoS 保护)  (公共 IP 地址的任何其他防火墙，请重复此过程。
 

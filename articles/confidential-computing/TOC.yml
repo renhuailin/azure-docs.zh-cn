@@ -69,7 +69,7 @@
     - name: 机密计算联盟
       href: 'https://confidentialcomputing.io/'
     - name: Azure 上的虚拟机
-      href: 'https://docs.microsoft.com/azure/virtual-machines/'
+      href: ../virtual-machines/index.yml
     - name: 定价
       href: 'https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2'
     - name: 区域

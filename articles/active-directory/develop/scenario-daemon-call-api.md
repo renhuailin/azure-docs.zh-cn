@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 576eaf2ad9350651e4400d980e6fedce236dfa57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0dfd729a48b7e81028078fd035b3b900f4d7b9bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257599"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444107"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>调用 Web API 的守护程序应用 - 从应用调用 Web API
 
@@ -69,17 +69,14 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [守护程序应用 - 移到生产环境](./scenario-daemon-production.md?tabs=dotnet)
+转到本方案中的下一篇文章， [转到 "生产](./scenario-daemon-production.md?tabs=dotnet)"。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [守护程序应用 - 移到生产环境](./scenario-daemon-production.md?tabs=python)
+转到本方案中的下一篇文章， [转到 "生产](./scenario-daemon-production.md?tabs=python)"。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [守护程序应用 - 移到生产环境](./scenario-daemon-production.md?tabs=java)
+转到本方案中的下一篇文章， [转到 "生产](./scenario-daemon-production.md?tabs=java)"。
 
 ---

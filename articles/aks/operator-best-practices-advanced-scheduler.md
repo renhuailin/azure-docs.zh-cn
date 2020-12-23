@@ -5,12 +5,12 @@ description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的高级计划
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530055"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107340"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -33,8 +33,8 @@ ms.locfileid: "87530055"
 
 Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行的工作负荷。
 
-* 将**排斥**应用到指明了只能计划特定 pod 的节点。
-* 然后，将**容许**应用到可以*容许*节点排斥的 pod。
+* 将 **排斥** 应用到指明了只能计划特定 pod 的节点。
+* 然后，将 **容许** 应用到可以 *容许* 节点排斥的 pod。
 
 将 pod 部署到 AKS 群集时，Kubernetes 只会在容许与排斥相符的节点上计划 pod。 例如，假设你在 AKS 群集中为支持 GPU 的节点创建了一个节点池。 你定义了名称（例如 *gpu*），然后定义了计划值。 如果将此值设置为 *NoSchedule*，当 pod 未定义相应的容许时，Kubernetes 计划程序无法在节点上计划 pod。
 
@@ -52,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -78,7 +78,7 @@ spec:
 升级 AKS 中的节点池时，排斥和容许在应用于新节点时遵循一个设定的模式：
 
 - **使用虚拟机规模集的默认群集**
-  - 可以从 AKS API[破坏 nodepool][taint-node-pool] ，使新扩展的节点接收 API 指定的节点 taints。
+  - 可以从 AKS API [污染节点池][taint-node-pool]，以使新横向扩展的节点接收 API 指定的节点污点。
   - 假设你的群集有两个节点 - *node1* 和 *node2*。 升级节点池。
   - 另外两个节点（node3 和 node4）将被创建，并且排斥会被分别传递。
   - 原始 node1 和 node2 将被删除。
@@ -113,7 +113,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -131,7 +131,7 @@ spec:
 
 ### <a name="node-affinity"></a>节点关联
 
-节点选择器是将 pod 分配到给定节点的基本方法。 使用节点关联可以获得更高的灵活性。 使用节点关联可以定义当 pod 无法与节点匹配时发生的情况。 可以要求 Kubernetes 计划程序与包含标记主机的 pod 相匹配。 或者，可以优先选择匹配，但如果不匹配，则允许在其他主机上计划 pod。
+节点选择器是将 pod 分配到给定节点的基本方法。 使用节点关联可以获得更高的灵活性。 使用节点关联可以定义当 pod 无法与节点匹配时发生的情况。 可以要求 Kubernetes 计划程序与包含标记主机的 pod 相匹配。 或者，如果没有匹配项， *则可以选择* 匹配项，但允许在其他主机上计划 pod。
 
 以下示例将节点关联设置为 *requiredDuringSchedulingIgnoredDuringExecution*。 这种关联要求 Kubernetes 计划使用具有匹配标签的节点。 如果没有可用的节点，则 pod 必须等待计划继续。 若要允许在其他节点上计划 pod，可改为将值设置为 preferredDuringSchedulingIgnoreDuringExecution：
 
@@ -143,7 +143,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5

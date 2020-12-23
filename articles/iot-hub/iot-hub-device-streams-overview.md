@@ -11,16 +11,17 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-azurecli
+ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327678"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792457"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
 
-Azure IoT 中心*设备流*可促进为各种云到设备通信方案创建安全的双向 TCP 隧道。 设备流由 IoT 中心*流式处理终结点*进行调解，该终结点充当设备和服务终结点之间的代理。 此设置如下图所示，当设备位于网络防火墙之后或驻留在专用网络内部时特别有用。 因此，IoT 中心设备流有助于满足客户以防火墙友好方式访问 IoT 设备的需求，而无需广泛开放传入或传出网络防火墙端口。
+Azure IoT 中心 *设备流* 可促进为各种云到设备通信方案创建安全的双向 TCP 隧道。 设备流由 IoT 中心 *流式处理终结点* 进行调解，该终结点充当设备和服务终结点之间的代理。 此设置如下图所示，当设备位于网络防火墙之后或驻留在专用网络内部时特别有用。 因此，IoT 中心设备流有助于满足客户以防火墙友好方式访问 IoT 设备的需求，而无需广泛开放传入或传出网络防火墙端口。
 
 ![“IoT 中心设备流概述”](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
 
@@ -56,7 +57,7 @@ IoT 中心设备流具有以下优点：
 
 1. 设备应用程序会预先注册回叫，以便在向设备发起新设备流时收到通知。 此步骤通常在设备启动并连接到 IoT 中心时发生。
 
-2. 服务端程序在需要时通过提供设备 ID（_而不是_ IP 地址）来发起设备流。
+2. 服务端程序在需要时通过提供设备 ID（ _而不是_ IP 地址）来发起设备流。
 
 3. IoT 中心通过调用步骤 1 中注册的回叫来通知设备端程序。 设备可以接受或拒绝流启动请求。 此逻辑可以特定于应用程序方案。 如果设备拒绝了流请求，则 IoT 中心会相应地通知服务；否则，请执行以下步骤。
 
@@ -103,7 +104,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> 确保已安装 Azure CLI 2.0.57 或更高版本。 可从[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 页下载最新版本。
+> 确保已安装 Azure CLI 2.0.57 或更高版本。 可从[安装 Azure CLI](/cli/azure/install-azure-cli) 页下载最新版本。
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>允许以出站方式连接到设备流式处理终结点
@@ -119,28 +120,28 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> 确保已安装 Azure CLI 2.0.57 或更高版本。 可从[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 页下载最新版本。
+> 确保已安装 Azure CLI 2.0.57 或更高版本。 可从[安装 Azure CLI](/cli/azure/install-azure-cli) 页下载最新版本。
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>通过设备流活动日志排除故障
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>通过设备流资源日志进行故障排除
 
-可以设置 Azure Monitor 日志以收集 IoT 中心内设备流的活动日志。 这在故障排除方案中非常有用。
+可以设置 Azure Monitor 来收集 IoT 中心发出的 [设备流的资源日志](monitor-iot-hub-reference.md#device-streams-preview) 。 这在故障排除方案中非常有用。
 
-按照以下步骤为 IoT 中心的设备流活动配置 Azure Monitor 日志：
+按照以下步骤创建诊断设置，以便将 IoT 中心的设备流日志发送到 Azure Monitor 日志：
 
-1. 导航到 IoT 中心的“诊断设置”选项卡，然后单击“打开诊断”链接   。
+1. 在 Azure 门户中，导航到 IoT 中心。 在左窗格中的 " **监视** " 下，选择 " **诊断设置** "。 然后选择 " **添加诊断设置** "。
 
-   ![“启用诊断日志”](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+2. 提供诊断设置的名称，并从日志列表中选择 " **DeviceStreams** "。 然后选择 " **发送到 Log Analytics** "。 你将指导你选择现有 Log Analytics 工作区或创建一个新工作区。
 
-2. 提供诊断设置的名称，然后选择“发送到 Log Analytics”选项  。 系统将引导你选择现有的 Log Analytics 工作区资源或创建新的资源。 此外，在列表中选中“DeviceStreams”  。
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="启用设备流日志&quot;:::
 
-    ![“启用设备流日志”](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
-
-3. 现在可以在 IoT 中心门户的“日志”选项卡下访问设备流日志  。 设备流活动日志将在 `AzureDiagnostics` 表中显示并具有 `Category=DeviceStreams`。
+3. 创建诊断设置以将设备流日志发送到 Log Analytics 工作区后，可以通过在 Azure 门户的 IoT 中心的左窗格 **中选择 &quot;监视&quot; 下** 的 " **监视** "，来访问日志。 设备流日志会显示在 `AzureDiagnostics` 表中，并具有 `Category=DeviceStreams` 。 请注意，可能需要几分钟时间后，日志才会出现在表中。
 
    如下所示，日志中还提供目标设备的标识和操作的结果。
 
    ![“访问设备流日志”](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+
+若要详细了解如何将 Azure Monitor 与 IoT 中心配合使用，请参阅 [监视 Iot 中心](monitor-iot-hub.md)。 有关可用于 IoT 中心的所有资源日志、指标和表的信息，请参阅 [监视 Azure IoT 中心数据参考](monitor-iot-hub-reference.md)。
 
 ## <a name="regional-availability"></a>区域可用性
 
@@ -156,7 +157,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="iot-hub-device-stream-samples"></a>IoT 中心设备流示例
 
-IoT 中心页上提供两个[快速入门示例](/azure/iot-hub)。 这些示例演示应用程序如何使用设备流。
+IoT 中心页上提供两个[快速入门示例](./index.yml)。 这些示例演示应用程序如何使用设备流。
 
 * *echo* 示例演示如何以编程方式使用设备流（通过直接调用 SDK API）。
 
@@ -182,7 +183,7 @@ IoT 中心页上提供两个[快速入门示例](/azure/iot-hub)。 这些示例
 
 本部分介绍如何使用设备流，以便用户使用 SSH 通过设备流来连接到设备（RDP 或其他客户端/服务器应用程序的情况类似，方法是使用协议的相应端口）。
 
-该设置利用下图所示的两个*本地代理*程序，即*设备本地代理*和*服务本地代理*。 本地代理程序负责使用 IoT 中心执行[设备流启动握手](#device-stream-creation-flow)，并使用常规客户端/服务器套接字与 SSH 客户端和 SSH 守护进程交互。
+该设置利用下图所示的两个 *本地代理* 程序，即 *设备本地代理* 和 *服务本地代理* 。 本地代理程序负责使用 IoT 中心执行[设备流启动握手](#device-stream-creation-flow)，并使用常规客户端/服务器套接字与 SSH 客户端和 SSH 守护进程交互。
 
 ![“SSH/RDP 的设备流代理设置”](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

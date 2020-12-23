@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3ecb2e2022cab80abf6a8692ac8cc3ba54eff1e4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f949d52d4ba461da94153cbbd17ca5fb3eb214d7
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944076"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092080"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>快速入门：配置你的 Azure Defender for IoT 解决方案
 
@@ -42,8 +42,8 @@ Defender for IoT 为基于 Azure 的 IoT 解决方案提供全面的端到端安
 
 若要将新资源添加到 IoT 解决方案，请执行以下操作：
 
-1. 在 Azure 门户中打开你的 **IoT 中心**。
-1. 从左侧菜单的“安全性”部分选择并打开“设置”，然后选择“受监视资源”  。
+1. 在 Azure 门户中打开你的 **IoT 中心** 。
+1. 在“安全性”下，选择“概述”，然后依次选择“设置”和“监视的资源”   。
 1. 选择“编辑”并选择属于 IoT 解决方案的受监视资源。
 1. 单击“添加”  。
 

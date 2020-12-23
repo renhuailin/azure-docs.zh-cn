@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d201f80aea2c22e1bee06c776d2a84fb69f2bd7d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554852"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92452577"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Fluxx Labs 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88554852"
 * 让用户使用其 Azure AD 帐户自动登录到 Fluxx Labs。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88554852"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Fluxx Labs 支持 **IDP** 发起的 SSO
-* 配置 Fluxx Labs 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Fluxx Labs 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-fluxx-labs-from-the-gallery"></a>从库中添加 Fluxx Labs
 
@@ -139,21 +139,21 @@ ms.locfileid: "88554852"
 
 2. 在“设置”部分下，选择“管理员”。
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config1.png)
+    ![显示已选择“管理员”的“设置”部分的屏幕截图。](./media/fluxxlabs-tutorial/config1.png)
 
 3. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已禁用)”  
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config2.png)
+    ![显示“集成”选项卡的屏幕截图，其中已选择“SAML SSO (已禁用)”。](./media/fluxxlabs-tutorial/config2.png)
 
 4. 在属性部分执行以下步骤：
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config3.png)
+    ![显示“属性”部分的屏幕截图，其中已选中“SAML SSO”、字段中已输入值，并且已选择“保存”按钮。](./media/fluxxlabs-tutorial/config3.png)
 
     a. 选中“SAML SSO”复选框。
 
-    b. 在“请求路径”文本框中，键入 **/auth/saml**。
+    b. 在“请求路径”文本框中，键入 **/auth/saml** 。
 
-    c. 在“回调路径”文本框中，键入 **/auth/saml/callback**。
+    c. 在“回调路径”文本框中，键入 **/auth/saml/callback** 。
 
     d. 在“断言使用者服务 URL (单一登录 URL)”文本框中，输入已在 Azure 门户中输入的“回复 URL”值。
 
@@ -165,7 +165,7 @@ ms.locfileid: "88554852"
 
     h. 在“名称标识符格式”文本框中，输入值 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
 
-    i. 单击“ **保存**”。
+    i. 单击“ **保存** ”。
 
     > [!NOTE]
     > 保存内容后，字段会出于安全原因显示空白，但值已保存到配置中。
@@ -178,13 +178,13 @@ ms.locfileid: "88554852"
 
 1. 以管理员身份登录到 Fluxx Labs 公司站点。
 
-2. 单击下面显示的**图标**。
+2. 单击下面显示的 **图标** 。
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config6.png)
+    ![显示管理员选项的屏幕截图，其中已选择“你的仪表板为空”下方的“+”图标。](./media/fluxxlabs-tutorial/config6.png)
 
 3. 在仪表板中，单击下面显示的图标打开“新建人员”卡。
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config4.png)
+    ![显示“联系人管理”菜单的屏幕截图，其中已选择“人员”旁边的“+”图标。](./media/fluxxlabs-tutorial/config4.png)
 
 4. 在“新建人员”部分中，执行以下步骤：
 
@@ -192,24 +192,24 @@ ms.locfileid: "88554852"
 
     a. Fluxx Labs 使用电子邮件作为 SSO 登录名的唯一标识符。 在“SSO UID”字段中填写用户的电子邮件地址，该值与他们进行 SSO 登录时使用的电子邮件地址匹配。
 
-    b. 单击“ **保存**”。
+    b. 单击“ **保存** ”。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Fluxx Labs”磁贴时，应会自动登录到设置了 SSO 的 Fluxx Labs。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Fluxx Labs”磁贴时，应会自动登录到设置了 SSO 的 Fluxx Labs。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Fluxx Labs](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Fluxx Labs](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Fluxx Labs](/cloud-app-security/proxy-intro-aad)

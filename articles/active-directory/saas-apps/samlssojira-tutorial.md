@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe241a3fd74e1421f1bd3d39087fe776ee7b61d9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543459"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Jira by resolution GmbH 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88543459"
 * 可让用户使用 SAML SSO for Jira by resolution GmbH 通过其 Azure AD 帐户自动登录到 Jira（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -45,7 +45,7 @@ ms.locfileid: "88543459"
 
 ## <a name="adding-an-enterprise-application-for-single-sign-on"></a>添加一个企业应用程序用于单一登录
 
-若要在 Azure AD 中设置单一登录，需要添加一个新的企业应用程序。 库中为此预先配置了一个应用程序：**SAML SSO for Jira by resolution GmbH**。
+若要在 Azure AD 中设置单一登录，需要添加一个新的企业应用程序。 库中为此预先配置了一个应用程序： **SAML SSO for Jira by resolution GmbH** 。
 
 **若要从库中添加 SAML SSO for Jira by resolution GmbH，请执行以下步骤：**
 
@@ -61,7 +61,7 @@ ms.locfileid: "88543459"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **SAML SSO for Jira by resolution GmbH**，在结果面板中选择“SAML SSO for Jira by resolution GmbH”，然后单击“添加”按钮添加该应用程序。  还可以更改企业应用的名称。
+4. 在搜索框中键入 **SAML SSO for Jira by resolution GmbH** ，在结果面板中选择“SAML SSO for Jira by resolution GmbH”，然后单击“添加”按钮添加该应用程序。  还可以更改企业应用的名称。
 
      ![结果列表中的 SAML SSO for Jira by resolution GmbH](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88543459"
 
 4. 若要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![SAML SSO for Jira by resolution GmbH 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”和“回复 URL”文字框，并选择了“保存”按钮。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -124,53 +124,53 @@ ms.locfileid: "88543459"
 
 2. 将鼠标悬停在右侧的齿轮图标上，然后单击“管理应用”。
     
-    ![配置单一登录](./media/samlssojira-tutorial/addon1.png)
+    ![屏幕截图显示了指向“齿轮”图标的箭头，其中从下拉列表中选择了“管理应用”。](./media/samlssojira-tutorial/addon1.png)
 
-3. 如果已重定向到“管理员访问”页，请输入**密码**，然后单击“确认”按钮。
+3. 如果已重定向到“管理员访问”页，请输入 **密码** ，然后单击“确认”按钮。
 
-    ![配置单一登录](./media/samlssojira-tutorial/addon2.png)
+    ![屏幕截图显示了“管理员访问权限”页。](./media/samlssojira-tutorial/addon2.png)
 
-4. Jira 通常会将你重定向到 Atlassian 市场。 如果没有，请单击左面板中的“查找新应用”。 搜索 **SAML Single Sign On (SSO) for JIRA**，然后单击“安装”按钮安装 SAML 插件。
+4. Jira 通常会将你重定向到 Atlassian 市场。 如果没有，请单击左面板中的“查找新应用”。 搜索 **SAML Single Sign On (SSO) for JIRA** ，然后单击“安装”按钮安装 SAML 插件。
 
-    ![配置单一登录](./media/samlssojira-tutorial/store.png)
+    ![屏幕截图显示了“Atlassian Marketplace for JIRA”页，其中有一箭头指向“SAML 单一登录(SSO) Jira，SAML/SSO”应用的“安装”按钮。](./media/samlssojira-tutorial/store.png)
 
 5. 插件安装随即开始。 完成后，单击“关闭”按钮。
 
-    ![配置单一登录](./media/samlssojira-tutorial/store-2.png)
+    ![显示“正在安装”对话框的屏幕截图。](./media/samlssojira-tutorial/store-2.png)
 
-    ![配置单一登录](./media/samlssojira-tutorial/store-3.png)
+    ![屏幕截图显示选择了“关闭”操作的 选择了“关闭”按钮的对话框。](./media/samlssojira-tutorial/store-3.png)
 
 6. 然后单击“管理”。
 
-    ![配置单一登录](./media/samlssojira-tutorial/store-4.png)
+    ![屏幕截图显示了“SAML 单一登录(SSO) Jira，SAML/SSO”应用，其中选择了“管理”按钮。](./media/samlssojira-tutorial/store-4.png)
     
 8. 然后，单击“配置”以配置刚刚安装的插件。
 
-    ![配置单一登录](./media/samlssojira-tutorial/store-5.png)
+    ![屏幕截图显示了“管理应用”页，其中选择了“Jira 的 SAML 单一登录”应用的“配置”按钮。](./media/samlssojira-tutorial/store-5.png)
 
 9. 在“SAML 单一登录插件配置”向导中，单击“添加新 IdP”，将 Azure AD 配置为新的标识提供者。 
 
-    ![配置单一登录](./media/samlssojira-tutorial/addon4.png) 
+    ![屏幕截图显示了“欢迎”页，其中选择了“新增 IdP”按钮。](./media/samlssojira-tutorial/addon4.png) 
 
 10. 在“选择 SAML 标识提供者”页上执行以下步骤：
 
-    ![配置单一登录](./media/samlssojira-tutorial/addon5a.png)
+    ![屏幕截图显示了“选择 SAML 标识提供者”页，其中突出显示了“IdP 类型”和“名称”文本框，并选择了“下一步”按钮。](./media/samlssojira-tutorial/addon5a.png)
  
     a. 设置“Azure AD”作为 IdP 类型。
     
-    b. 添加标识提供者的**名称**（例如 Azure AD）。
+    b. 添加标识提供者的 **名称** （例如 Azure AD）。
     
-    c. （可选）添加标识提供者的**说明**（例如 Azure AD）。
+    c. （可选）添加标识提供者的 **说明** （例如 Azure AD）。
     
     d. 单击“下一步”。
     
 11. 在“标识提供者配置”页上，单击“下一步” 。
  
-    ![配置单一登录](./media/samlssojira-tutorial/addon5b.png)
+    ![屏幕截图显示了“标识提供者配置”页。](./media/samlssojira-tutorial/addon5b.png)
 
 12. 在“导入 SAML IdP 元数据”页上，执行以下步骤：
 
-    ![配置单一登录](./media/samlssojira-tutorial/addon5c.png)
+    ![屏幕截图显示了“导入 SAML IdP 元数据”页，其中选择了“选择元数据 XML 文件”操作。](./media/samlssojira-tutorial/addon5c.png)
 
     a. 单击“选择元数据 XML 文件”按钮，然后选择前面下载的“联合身份验证元数据 XML”文件。 
 
@@ -182,19 +182,19 @@ ms.locfileid: "88543459"
     
 13. 在“用户 ID 属性和转换”页上，单击“下一步”按钮。
 
-    ![配置单一登录](./media/samlssojira-tutorial/addon5d.png)
+    ![屏幕截图显示了“用户 ID 属性和转换”页，其中选择了“下一步”按钮。](./media/samlssojira-tutorial/addon5d.png)
     
 14. 在“用户创建和更新”页上，单击“保存”以保存设置，然后单击“下一步”。 
     
-    ![配置单一登录](./media/samlssojira-tutorial/addon6a.png)
+    ![显示选择了“保存并进行下一步”按钮的“用户创建和更新”页的屏幕截图。](./media/samlssojira-tutorial/addon6a.png)
     
 15. 在“测试设置”页上，单击“跳过测试并手动配置”以暂时跳过用户测试。 此测试将在下一部分执行，需要在 Azure 门户中进行某些设置。
     
-    ![配置单一登录](./media/samlssojira-tutorial/addon6b.png)
+    ![显示选择了“跳过测试并手动配置”按钮的“测试设置”页的屏幕截图。](./media/samlssojira-tutorial/addon6b.png)
     
 16. 单击“确定”跳过警告。
     
-    ![配置单一登录](./media/samlssojira-tutorial/addon6c.png)
+    ![屏幕截图显示了警告对话框，其中选择了“确定”按钮。](./media/samlssojira-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -212,11 +212,11 @@ ms.locfileid: "88543459"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中输入 **Britta Simon**。
+    a. 在“名称”字段中输入 **Britta Simon** 。
   
     b. 在“用户名”字段中输入 <b>BrittaSimon@contoso.com</b>。
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
 
     d. 单击“创建”。
 
@@ -228,7 +228,7 @@ ms.locfileid: "88543459"
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，搜索在本教程开头创建的企业应用程序。 如果你一直在遵循本教程中的步骤，该应用程序名为 **SAML SSO for Jira by resolution GmbH**。 如果你指定了其他名称，请搜索该名称。
+2. 在应用程序列表中，搜索在本教程开头创建的企业应用程序。 如果你一直在遵循本教程中的步骤，该应用程序名为 **SAML SSO for Jira by resolution GmbH** 。 如果你指定了其他名称，请搜索该名称。
 
     ![应用程序列表中的 SAML SSO for Jira by resolution GmbH 链接](common/all-applications.png)
 
@@ -248,7 +248,7 @@ ms.locfileid: "88543459"
 
 ### <a name="create-the-test-user-also-in-jira"></a>同样在 Jira 中创建测试用户
 
-要使 Azure AD 用户能够登录到 SAML SSO for Jira by resolution GmbH，必须将其预配到 SAML SSO for Jira by resolution GmbH 中。 对于本教程，必须手动完成预配。 但是，还有其他预配模型可供解决方案的 SAML SSO 插件使用，例如**实时**预配。 请参阅 [SAML SSO by resolution GmbH](https://wiki.resolution.de/doc/saml-sso/latest/all) 提供的文档。 如果遇到相关问题，请联系[解决方案支持](https://www.resolution.de/go/support)。
+要使 Azure AD 用户能够登录到 SAML SSO for Jira by resolution GmbH，必须将其预配到 SAML SSO for Jira by resolution GmbH 中。 对于本教程，必须手动完成预配。 但是，还有其他预配模型可供解决方案的 SAML SSO 插件使用，例如 **实时** 预配。 请参阅 [SAML SSO by resolution GmbH](https://wiki.resolution.de/doc/saml-sso/latest/all) 提供的文档。 如果遇到相关问题，请联系[解决方案支持](https://www.resolution.de/go/support)。
 
 **若要手动预配用户帐户，请执行以下步骤：**
 
@@ -256,15 +256,15 @@ ms.locfileid: "88543459"
 
 2. 将鼠标悬停在齿轮图标上，然后选择“用户管理”。
 
-   ![添加员工](./media/samlssojira-tutorial/user1.png)
+   ![屏幕截图显示了指向“齿轮”图标的箭头，并从下拉列表中选择了“用户管理”。](./media/samlssojira-tutorial/user1.png)
 
-3. 如果已重定向到“管理员访问”页，请输入**密码**，然后单击“确认”按钮。
+3. 如果已重定向到“管理员访问”页，请输入 **密码** ，然后单击“确认”按钮。
 
-    ![添加员工](./media/samlssojira-tutorial/user2.png) 
+    ![屏幕截图显示了“管理员访问”页，其中突出显示了“密码”文本框。](./media/samlssojira-tutorial/user2.png) 
 
 4. 在“用户管理”选项卡部分，单击“创建用户”。
 
-    ![添加员工](./media/samlssojira-tutorial/user3-new.png) 
+    ![屏幕截图显示了“用户管理”选项卡，其中选择了“创建用户”按钮。](./media/samlssojira-tutorial/user3-new.png) 
 
 5. 在“新建用户”对话框页上执行以下步骤。 必须创建与 Azure AD 中完全相同的用户：
 
@@ -272,7 +272,7 @@ ms.locfileid: "88543459"
 
     a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址：<b>BrittaSimon@contoso.com</b>。
 
-    b. 在“全名”文本框中，键入用户的全名： **Britta Simon**。
+    b. 在“全名”文本框中，键入用户的全名： **Britta Simon** 。
 
     c. 在“用户名”文本框中，键入用户的电子邮件地址：<b>BrittaSimon@contoso.com</b>。 
 
@@ -284,18 +284,18 @@ ms.locfileid: "88543459"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“SAML SSO for Jira by resolution GmbH”磁贴时，应当会自动登录到已为其设置了 SSO 的 SAML SSO for Jira by resolution GmbH。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“SAML SSO for Jira by resolution GmbH”磁贴时，应当会自动登录到已为其设置了 SSO 的 SAML SSO for Jira by resolution GmbH。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 如果导航到 `https://<server-base-url>/plugins/servlet/samlsso`，也可以测试单一登录。 请将 \<server-base-url> 替换为 Jira 实例的基 URL。
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>为 Jira 启用单一登录重定向
 
-如前面的部分中所述，目前可以通过两种方式来触发单一登录： 使用 **Azure 门户**或使用 **Jira 实例的特殊链接**。 使用 resolution GmbH 提供的 SAML SSO 插件，还可以简单地通过**访问指向 Jira 实例的任何 URL**，来触发单一登录。
+如前面的部分中所述，目前可以通过两种方式来触发单一登录： 使用 **Azure 门户** 或使用 **Jira 实例的特殊链接** 。 使用 resolution GmbH 提供的 SAML SSO 插件，还可以简单地通过 **访问指向 Jira 实例的任何 URL** ，来触发单一登录。
 
 从本质上讲，访问 Jira 的所有用户在激活该插件中的某个选项后，会重定向到单一登录页。
 
-若要激活 SSO 重定向，请**在 Jira 实例**中执行以下操作：
+若要激活 SSO 重定向，请 **在 Jira 实例** 中执行以下操作：
 
 1. 访问 Jira 中 SAML SSO 插件的配置页。
 1. 单击左面板中的“重定向”。
@@ -313,9 +313,8 @@ ms.locfileid: "88543459"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

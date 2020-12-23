@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 12/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 399cbef4de91623ada1c38de7c6148d22fde94c7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085903"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672394"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
-组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
+组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 (ToU) 的使用条款。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -41,10 +41,10 @@ Azure AD 使用条款提供以下功能：
 - 要求员工或来宾在获取访问权限之前接受使用条款。
 - 要求员工或来宾在获取访问权限之前先在每台设备上接受使用条款。
 - 要求员工或来宾按重复性计划接受使用条款。
-- 要求员工或来宾在 Azure 多重身份验证 (MFA) 中注册安全信息之前接受使用条款。
+- 在 Azure AD 多重身份验证 (MFA) 中注册安全信息之前，要求员工或来宾接受使用条款。
 - 要求员工在 Azure AD 自助服务密码重置 (SSPR) 中注册安全信息之前接受使用条款。
 - 显示针对组织中所有用户的常规使用条款。
-- 显示基于用户属性（例如， [动态组](../users-groups-roles/groups-dynamic-membership.md)中的医生与护士或国内员工和国际员工）的具体使用条款。
+- 显示基于用户属性（例如， [动态组](../enterprise-users/groups-dynamic-membership.md)中的医生与护士或国内员工和国际员工）的具体使用条款。
 - 在用户访问业务影响大的应用程序（例如 Salesforce）时显示特定使用条款。
 - 以不同的语言显示使用条款。
 - 列出已接受或尚未接受使用条款的人员。
@@ -52,14 +52,14 @@ Azure AD 使用条款提供以下功能：
 - 显示使用条款活动的日志，以了解合规性和进行审核。
 - 使用 [Microsoft Graph api](/graph/api/resources/agreement?view=graph-rest-beta) 创建和管理使用条款 (当前) 预览版。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用和配置 Azure AD 使用条款，必须具备以下先决条件：
 
 - Azure AD Premium P1、P2、EMS E3 或 EMS E5 订阅。
    - 如果没有这其中的某个订阅，可以[获取 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) 或[启用 Azure AD Premium 试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
 - 下述适用于需配置目录的管理员帐户之一：
-   - 全局管理员
+   - 全局管理员角色
    - 安全管理员
    - 条件访问管理员
 
@@ -72,23 +72,23 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 完成使用条款文档后，请使用以下过程添加它。
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure。
-1. 在 [https://aka.ms/catou](https://aka.ms/catou) 导航到“使用条款”。****
+1. 在 [https://aka.ms/catou](https://aka.ms/catou) 导航到“使用条款”。
 
-   ![条件访问 -“使用条款”边栏选项卡](./media/terms-of-use/tou-blade.png)
+    ![条件访问 -“使用条款”边栏选项卡](./media/terms-of-use/tou-blade.png)
 
-1. 单击“新建条款”。****
+1. 单击“新建条款”。
 
-   ![用于指定使用条款设置的新使用条款窗格](./media/terms-of-use/new-tou.png)
+    ![用于指定使用条款设置的新使用条款窗格](./media/terms-of-use/new-tou.png)
 
 1. 在 " **名称** " 框中，输入将在 Azure 门户中使用的使用条款的名称。
-1. 在“显示名称”框中，输入用户登录时看到的标题。****
+1. 在“显示名称”框中，输入用户登录时看到的标题。
 1. 对于 **使用条款文档**，请浏览到已完成的使用条款，并选择它。
 1. 选择使用条款文档的语言。 可以通过语言选项上传多个版本的使用条款，每个版本的语言各不相同。 最终用户看到的使用条款版本取决于其浏览器首选项。
 1. 若要要求最终用户在接受使用条款之前查看使用条款，请设置 " **要求用户将使用条款展开** 为 **启用**"。
 1. 若要要求最终用户接受从其访问的每个设备上使用的条款，请设置 "**要求用户在每台设备上同意** **"。** 如果启用此选项，则用户可能需要安装其他应用程序。 有关详细信息，请参阅 [按设备使用条款](#per-device-terms-of-use)。
 1. 如果要按计划使使用条款同意过期，请将 **同意过期** 为 **"开"**。 设置为“打开”时，会显示另外两项计划设置。
 
-   ![用于设置开始日期、频率和持续时间的“使同意状态过期”设置](./media/terms-of-use/expire-consents.png)
+    ![用于设置开始日期、频率和持续时间的“使同意状态过期”设置](./media/terms-of-use/expire-consents.png)
 
 1. 使用 **过期开始时间** 和 **频率** 设置来指定使用期限的计划。 下表显示了几项示例设置的结果：
 
@@ -97,30 +97,30 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
    | 今天的日期  | 每月一次 | 从今天开始，用户必须接受使用条款，并且以后每个月都要接受。 |
    | 将来的日期  | 每月一次 | 从今天开始，用户必须接受使用条款。 到达指定的将来日期时，同意状态将会过期，以后用户必须每个月接受使用条款。  |
 
-   例如，如果将过期开始日期设置为“1 月 1 日”，将频率设置为“每月”，则两个用户的过期计划如下：********
+   例如，如果将过期开始日期设置为“1 月 1 日”，将频率设置为“每月”，则两个用户的过期计划如下：
 
    | 用户 | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
 
-1. 使用 " **重新接受前的持续时间" 需要 (天) ** 设置以指定用户必须面向的使用条款。 这可以让用户遵照自己的计划。 例如，如果将持续时间设置为 **30** 天，则两个用户的计划如下：
+1. 使用 " **reacceptance 前的持续时间" (天)** 设置来指定用户必须面向使用的天数。 这可以让用户遵照自己的计划。 例如，如果将持续时间设置为 **30** 天，则两个用户的计划如下：
 
    | 用户 | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 1 月 31 日 | 3 月 2 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 14 日 | 3 月 16 日 | 4 月 15 日 |
 
-   可以结合使用“使同意状态过期”和“需要重新接受使用条款之前的持续时间(天)”设置，但一般只使用其中的一项。********
+   在 **reacceptance 需要 (天** 后，就可以使用 **过期同意** 和持续时间) 设置，但通常使用其中一种。
 
 1. 在 " **条件性访问**" 下，使用 " **使用条件性访问策略模板** " 列表选择模板以强制使用使用条款。
 
-   ![用于选择策略模板的“条件访问”下拉列表](./media/terms-of-use/conditional-access-templates.png)
+    ![用于选择策略模板的“条件访问”下拉列表](./media/terms-of-use/conditional-access-templates.png)
 
    | 模板 | 说明 |
    | --- | --- |
-   | **所有来宾对云应用的访问权限** | 将会针对所有来宾和所有云应用创建一个条件访问策略。 此策略会影响 Azure 门户。 创建后，可能需要注销再登录。 |
-   | **所有用户对云应用的访问权限** | 将会针对所有用户和所有云应用创建条件访问策略。 此策略会影响 Azure 门户。 创建后，需要注销再登录。 |
+   | **所有来宾对云应用的访问权限** | 将会针对所有来宾和所有云应用创建一个条件访问策略。 此策略会影响 Azure 门户。 创建此项后，可能需要注销并登录。 |
+   | **所有用户对云应用的访问权限** | 将会针对所有用户和所有云应用创建条件访问策略。 此策略会影响 Azure 门户。 创建此项后，你将需要注销并登录。 |
    | **自定义策略** | 选择此使用条款适用的用户、组和应用。 |
    | **稍后创建条件性访问策略** | 此使用条款将显示在创建条件访问策略时弹出的授予控制权列表中。 |
 
@@ -131,7 +131,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
 1. 单击“创建”。
 
-   选择自定义条件访问模板后，会显示一个新的屏幕用于创建自定义的条件访问策略。
+    选择自定义条件访问模板后，会显示一个新的屏幕用于创建自定义的条件访问策略。
 
    ![选择自定义条件访问策略模板时显示的新条件访问窗格](./media/terms-of-use/custom-policy.png)
 
@@ -143,17 +143,17 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
 “使用条款”边栏选项卡会显示接受用户和拒绝用户的计数。 在使用条款有效期内，会存储这些计数以及接受用户/拒绝用户。
 
-1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。****
+1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
 
-   ![列出已接受和拒绝条款的用户数的使用条款边栏选项卡](./media/terms-of-use/view-tou.png)
+    ![列出已接受和拒绝条款的用户数的使用条款边栏选项卡](./media/terms-of-use/view-tou.png)
 
 1. 对于 "使用条款"，请单击 " **被接受** " 或 "已 **拒绝** " 下的数字查看用户的当前状态。
 
-   ![列出已接受条款的用户的使用条款同意窗格](./media/terms-of-use/accepted-tou.png)
+    ![列出已接受条款的用户的使用条款同意窗格](./media/terms-of-use/accepted-tou.png)
 
-1. 若要查看单个用户的历史记录，请依次单击省略号 (**...**)、“查看历史记录”。****
+1. 若要查看单个用户的历史记录，请依次单击省略号 (**...**)、“查看历史记录”。
 
-   ![用户的“查看历史记录”上下文菜单](./media/terms-of-use/view-history-menu.png)
+    ![用户的“查看历史记录”上下文菜单](./media/terms-of-use/view-history-menu.png)
 
    在“查看历史记录”窗格中，可以看到所有接受、拒绝和过期操作状态的历史记录。
 
@@ -161,19 +161,19 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
 ## <a name="view-azure-ad-audit-logs"></a>查看 Azure AD 审核日志
 
-Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次用户许可都会在存储时间为 **30 天**的审核日志中触发一个事件。 可以在门户中查看这些日志，或者将其下载为 .csv 文件。
+Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次用户许可都会在存储时间为 **30 天** 的审核日志中触发一个事件。 可以在门户中查看这些日志，或者将其下载为 .csv 文件。
 
 若要开始使用 Azure AD 审核日志，请执行以下过程：
 
-1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。****
+1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
 1. 选择一个使用条款。
-1. 单击“查看审核日志”。****
+1. 单击“查看审核日志”。
 
-   ![使用条款边栏选项卡，其中突出显示了“查看审核日志”选项](./media/terms-of-use/audit-tou.png)
+    ![使用条款边栏选项卡，其中突出显示了“查看审核日志”选项](./media/terms-of-use/audit-tou.png)
 
 1. 在 Azure AD 审核日志屏幕上，可以使用提供的列表筛选信息，将特定审核日志信息作为目标。
 
-   还可以单击“下载”，将信息下载到可以在本地使用的 .csv 文件中。****
+    还可以单击“下载”，将信息下载到可以在本地使用的 .csv 文件中。
 
    ![Azure AD 审核日志屏幕，其中列出了日期、目标策略、发起者和活动](./media/terms-of-use/audit-logs-tou.png)
 
@@ -201,14 +201,14 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 用户可按以下过程查看已接受的使用条款。
 
-1. 登录 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
-1. 在右上角单击自己的姓名，然后选择“个人资料”。****
+1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
+1. 在右上角单击自己的姓名，然后选择“个人资料”。
 
-   ![“我的应用”站点，其中已打开用户的窗格](./media/terms-of-use/tou14.png)
+    ![“我的应用”站点，其中已打开用户的窗格](./media/terms-of-use/tou14.png)
 
-1. 在“个人资料”页中单击“查看使用条款”。****
+1. 在“个人资料”页中单击“查看使用条款”。
 
-   ![用户的个人资料页，其中显示了“查看使用条款”链接](./media/terms-of-use/tou13a.png)
+    ![用户的个人资料页，其中显示了“查看使用条款”链接](./media/terms-of-use/tou13a.png)
 
 1. 可以在其中查看已接受的使用条款。
 
@@ -216,35 +216,75 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 可以编辑使用条款的某些详细信息，但不能修改现有文档。 以下过程介绍如何编辑详细信息。
 
-1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。****
+1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
 1. 选择要编辑的使用条款。
-1. 单击“编辑条款”。****
-1. 在“编辑使用条款”窗格中，更改名称、显示名称，或要求用户展开值。
+1. 单击“编辑条款”。
+1. 在 "编辑使用条款" 窗格中，可以更改以下各项：
+    - **Name** –这是不与最终用户共享的 ToU 的内部名称
+    - **显示名称** –这是最终用户查看 ToU 时可以看到的名称。
+    - **要求用户扩展使用条款** –如果将此项设置为 **"开** "，则会强制最终用户在接受使用条款文档之前先将其展开。
+    -  (预览) 你可以 **更新现有的使用条款** 文档
+    - 可以将语言添加到现有 ToU
 
    若要更改其他设置（例如，PDF 文档、要求用户在每台设备上同意使用条款、使同意状态过期、重新接受使用条款之前的持续时间，或条件访问策略），必须创建新的使用条款。
 
-   ![“编辑使用条款”窗格，其中显示了名称和展开选项](./media/terms-of-use/edit-tou.png)
+    ![编辑显示不同语言选项 ](./media/terms-of-use/edit-terms-use.png)
 
-1. 单击“保存”以保存更改。
+1. 完成后，单击 " **保存** " 以保存所做的更改。
 
-   保存更改后，用户必须重新接受这些编辑内容。
+## <a name="update-the-version-or-pdf-of-an-existing-terms-of-use"></a>更新现有使用条款的版本或 pdf
+
+1.  登录到 Azure 并导航到 [使用条款](https://aka.ms/catou)
+2.  选择要编辑的使用条款。
+3.  单击“编辑条款”。
+4.  对于要更新新版本的语言，请单击 "操作" 列下的 " **更新** "
+
+    ![“编辑使用条款”窗格，其中显示了名称和展开选项](./media/terms-of-use/edit-terms-use.png)
+
+5.  在右侧窗格中，上传新版本的 pdf
+6.  如果希望要求用户在下次登录时接受此新版本，还 **需要面向** 的切换选项。 如果你需要用户面向，则在下次尝试访问你的条件访问策略中定义的资源时，系统将提示他们接受此新版本。 如果不需要用户进行面向，则其先前同意将保持最新，并且只有或其同意过期的新用户才会看到新版本。
+
+    ![突出显示 "编辑使用条款" "重新接受" 选项](./media/terms-of-use/re-accept.png)
+
+7.  上传新 pdf 并决定面向后，请单击窗格底部的 "添加"。
+8.  现在，你将看到 "文档" 列下的最新版本。
+
+## <a name="view-previous-versions-of-a-terms-of-use"></a>查看使用条款的以前版本
+
+1.  在 https://aka.ms/catou 登录到 Azure 并导航到“使用条款”。
+2.  选择要查看其版本历史记录的使用条款。
+3.  单击 **语言和版本历史记录**
+4.  单击 " **查看以前的版本"。**
+
+    ![文档详细信息，包括语言版本](./media/terms-of-use/document-details.png)
+
+5.  你可以单击文档名称以下载该版本
+
+## <a name="see-who-has-accepted-each-version"></a>查看谁已接受每个版本
+
+1.  在 https://aka.ms/catou 登录到 Azure 并导航到“使用条款”。
+2.  若要查看当前是否接受了 ToU，请单击所需 ToU 的 " **接受** " 列下的编号。
+3.  默认情况下，下一页将显示接受 ToU 的每个用户的当前状态。
+4.  如果你想要查看以前的许可事件，你可以从 "**当前状态**" 下拉菜单中选择 "**全部**"。 现在，你可以在每个版本的详细信息中查看每个用户事件，以及发生了什么情况。
+5.  或者，您可以从 " **版本**  " 下拉选择特定的版本，以查看哪些用户已接受了该特定版本。
+
 
 ## <a name="add-a-terms-of-use-language"></a>添加使用条款语言
 
 以下过程介绍如何添加使用条款语言。
 
-1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。****
+1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
 1. 选择要编辑的使用条款。
-1. 在详细信息窗格中，单击“语言”选项卡。****
-
-   ![选定的使用条款，显示了详细信息窗格中的“语言”选项卡](./media/terms-of-use/languages-tou.png)
-
-1. 单击“添加语言”。****
+1. 单击 "**编辑字词**"
+1. 单击页面底部的 " **添加语言** "。
 1. 在“添加使用条款语言”窗格中，上传已本地化的 PDF 并选择语言。
 
-   ![“添加使用条款语言”窗格，其中显示了用于上传本地化 PDF 的选项](./media/terms-of-use/language-add-tou.png)
+    ![选定的使用条款，显示了详细信息窗格中的“语言”选项卡](./media/terms-of-use/select-language.png)
 
-1. 单击“添加”以添加该语言。****
+1. 单击“添加语言”。
+1. 单击“保存”
+
+1. 单击“添加”以添加该语言。
 
 ## <a name="per-device-terms-of-use"></a>按设备实施的使用条款
 
@@ -295,12 +335,12 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 可以通过以下过程删除旧的使用条款。
 
-1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。****
+1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
 1. 选择你想要删除的使用条款。
-1. 单击“删除条款”。****
-1. 在出现的询问是否需要继续的消息中，单击“是”。****
+1. 单击“删除条款”。
+1. 在出现的询问是否需要继续的消息中，单击“是”。
 
-   ![要求确认删除使用条款的消息](./media/terms-of-use/delete-tou.png)
+    ![要求确认删除使用条款的消息](./media/terms-of-use/delete-tou.png)
 
    你再也看不到自己的使用条款。
 
@@ -318,7 +358,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 > - 在使用条款上启用了条件访问策略
 > - 或创建了第二个使用条款
 
-## <a name="b2b-guests-preview"></a>B2B 来宾（预览版）
+## <a name="b2b-guests"></a>B2B 来宾
 
 大多数组织都有适当的流程，使其员工同意其组织的使用条款和隐私声明。 但是，对于通过 SharePoint 或 Teams 添加的 Azure AD 企业到企业 (B2B) 来宾，如何强制要求他们同样表示同意？ 使用条件性访问和使用条款，你可以直接对 B2B 来宾用户强制实施策略。 在邀请兑换流期间，用户会看到使用条款。 这种支持目前处于预览状态。
 
@@ -326,7 +366,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 ![已选中 "用户和组" 窗格-"包括所有来宾用户的选项卡" 选项](./media/terms-of-use/b2b-guests.png)
 
-## <a name="support-for-cloud-apps-preview"></a>云应用支持（预览版）
+## <a name="support-for-cloud-apps"></a>支持云应用
 
 可对不同的云应用（例如 Azure 信息保护和 Microsoft Intune）使用使用条款。 这种支持目前处于预览状态。
 
@@ -345,10 +385,10 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 > [!NOTE]
 > Intune 注册应用不支持 [按设备使用条款](#per-device-terms-of-use)。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 **问：如何查看用户何时/是否接受了使用条款？**<br />
-答：在“使用条款”边栏选项卡中单击“已接受”下的数字****。 也可在 Azure AD 审核日志中查看或搜索接受活动。 有关详细信息，请参阅“查看接受用户和拒绝用户的报告”以及[查看 Azure AD 审核日志](#view-azure-ad-audit-logs)。
+答：在“使用条款”边栏选项卡中单击“已接受”下的数字。 也可在 Azure AD 审核日志中查看或搜索接受活动。 有关详细信息，请参阅“查看接受用户和拒绝用户的报告”以及[查看 Azure AD 审核日志](#view-azure-ad-audit-logs)。
 
 **问：信息的存储时间为多长？**<br />
 答：用户在使用条款报表中计数，并在使用条款的使用期限内存储接受/拒绝的用户。 Azure AD 审核日志的存储时间为 30 天。
@@ -387,9 +427,8 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 答：如果你已配置 Azure AD 使用条款和 [Intune 条款和条件](/intune/terms-and-conditions-create)，则用户需要接受这两者。 有关详细信息，请参阅[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
 
 **问：使用条款服务使用哪些终结点进行身份验证？**<br />
-答：使用条款利用以下用于身份验证的终结点： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果你的组织针对注册实施 URL 允许列表，则需要将这些终结点以及用于登录的 Azure AD 终结点添加到该允许列表。
+答：使用条款利用以下用于身份验证的终结点： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果你的组织有用于注册的 Url 允许列表，则需要将这些终结点添加到允许列表以及用于登录的 Azure AD 终结点。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：在访问云应用之前要求接受使用条款](require-tou.md)
-- [Azure Active Directory 中的条件性访问的最佳做法](best-practices.md)

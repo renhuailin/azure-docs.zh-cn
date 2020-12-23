@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: b904fcd03247f6e6ae01f51c5048c29826bb8e5a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 46d3a9e961be0717aba75c1f5845b97b52092510
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018461"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931956"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C# IoT Edge 模块
 
@@ -33,7 +33,7 @@ ms.locfileid: "89018461"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>解决方案范围
+## <a name="prerequisites"></a>先决条件
 
 本教程演示如何使用 **Visual Studio 2019** 在 **C#** 中开发模块，以及如何将其部署到 **Windows 设备**。 若要开发适用于 Linux 设备的模块，请转到[开发适用于 Linux 设备的 C# IoT Edge 模块](tutorial-csharp-module.md)。
 
@@ -44,14 +44,12 @@ ms.locfileid: "89018461"
 | **Windows AMD64 开发** | ![在 VS Code 中开发 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) | ![在 Visual Studio 中开发 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 调试** |   | ![在 Visual Studio 中调试 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>先决条件
-
 在开始学习本教程之前，应已完成上一篇教程[开发适用于 Windows 设备的 IoT Edge 模块](tutorial-develop-for-windows.md)来设置开发环境。 完成该教程后，已应准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 一个[运行 Azure IoT Edge 的 Windows 设备](quickstart.md)。
-* 一个容器注册表，例如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
-* 配置了 [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 扩展的 [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。
+* 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
+* 配置了 [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 扩展的 [Visual Studio 2019](/visualstudio/install/install-visual-studio)。
 * 配置为运行 Windows 容器的 [Docker Desktop](https://docs.docker.com/docker-for-windows/install/)。
 
 > [!TIP]
@@ -63,11 +61,11 @@ ms.locfileid: "89018461"
 
 ### <a name="create-a-new-project"></a>创建新项目
 
-Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言提供项目模板。 这些模板包含将工作模块部署到测试 IoT Edge 所需的所有文件和代码，或者提供一个起点让你使用自己的业务逻辑自定义模板。
+Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言提供项目模板。 这些模板包含将工作模块部署到测试 IoT Edge 所需的所有文件和代码，或为你提供使用自己的业务逻辑自定义模板的起点。
 
-1. 启动 Visual Studio 2019 并选择“创建新项目”。
+1. 启动 Visual Studio 2019 并选择“创建新项目”  。
 
-2. 搜索“IoT Edge”，然后选择“Azure IoT Edge (Windows amd64)”项目。 单击“下一步”。
+2. 搜索“IoT Edge”  ，然后选择“Azure IoT Edge (Windows amd64)”项目  。 单击“下一步”。
 
    ![创建新的 Azure IoT Edge 项目](./media/tutorial-csharp-module-windows/new-project.png)
 
@@ -77,7 +75,7 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
 
 4. 使用以下值来配置项目：
 
-   | 字段 | Value |
+   | 字段 | 值 |
    | ----- | ----- |
    | 选择模板 | 选择“C# 模块”。 |
    | 模块项目名称 | 将模块命名为 **CSharpModule**。 |
@@ -85,11 +83,11 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
 
    ![配置目标设备、模块类型和容器注册表的项目](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
-5. 选择“添加”以创建项目。
+5. 选择“添加”  以创建项目。
 
 ### <a name="add-your-registry-credentials"></a>添加注册表凭据
 
-部署清单与 IoT Edge 运行时共享容器注册表的凭据。 此运行时需要这些凭据才能将专用映像拉取到 IoT Edge 设备中。 使用 Azure 容器注册表的“访问密钥”部分提供的凭据。
+部署清单与 IoT Edge 运行时共享容器注册表的凭据。 此运行时需要这些凭据才能将专用映像拉取到 IoT Edge 设备中。 使用 Azure 容器注册表的“访问密钥”部分提供的凭据。 
 
 1. 在 Visual Studio 解决方案资源管理器中打开 **deployment.template.json** 文件。
 
@@ -105,15 +103,15 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
    }
    ```
 
-3. 在模块解决方案中打开 **.env** 文件。 （默认情况下，此文件会隐藏在解决方案资源管理器中，可能需要选择“显示所有文件”按钮才能显示它。）该 .env 文件应包含与你在 deployment.template.json 文件中看到的相同的用户名和密码变量。
+3. 打开模块解决方案中的 **.env** 文件。 （默认情况下，此文件会隐藏在解决方案资源管理器中，可能需要选择“显示所有文件”按钮才能显示它。）  该 .env 文件应包含与你在 deployment.template.json 文件中看到的相同的用户名和密码变量。
 
-4. 从 Azure 容器注册表中添加“用户名”和“密码”值。 
+4. 从 Azure 容器注册表中添加“用户名”和“密码”值。  
 
-5. 保存对 .env 文件所做的更改。
+5. 将更改保存到 .env 文件。
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-默认模块代码接收输入队列中的消息，然后通过输出队列传递这些消息。 让我们添加一些附加的代码，使模块在将消息转发到 IoT 中心之前，先在边缘上对其进行处理。 更新模块，使其分析每条消息中的温度数据，并仅在温度超过特定的阈值时，才将消息发送到 IoT 中心。
+默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些附加的代码，使模块在将消息转发到 IoT 中心之前，先在边缘上对其进行处理。 更新模块，以便分析每条消息中的温度数据，并且只有在温度超过特定阈值时才将消息发送到 IoT 中心。
 
 1. 在 Visual Studio 中，打开“CSharpModule” > “Program.cs”。
 
@@ -299,7 +297,7 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   可能会出现一条安全警告，其中建议使用 `--password-stdin`。 这条最佳做法是针对生产场景建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
+   可能会收到一条安全警告，推荐使用 `--password-stdin`。 这条最佳做法是针对生产方案建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
 
 2. 在 Visual Studio 解决方案资源管理器中，右键单击要生成的项目名称。 默认名称为 **AzureIotEdgeApp1**；由于生成的是 Windows 模块，因此扩展名应是 **Windows.Amd64**。
 
@@ -335,7 +333,7 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
 
 2. 在“操作”列表中，选择“开始监视内置事件终结点”。 
 
-3. 查看抵达 IoT 中心的消息。 消息可能需要在一段时间后才会抵达，因为在发送消息之前，对 CSharpModule 代码所做的更改需要等到机器温度达到 25 度才会生效。 IoT 中心还会将消息类型“警报”添加到达到该温度阈值的任何消息。
+3. 查看抵达 IoT 中心的消息。 消息可能需要在一段时间后才会抵达，因为在发送消息之前，对 CSharpModule 代码所做的更改需要等到机器温度达到 25 度才会生效。 IoT 中心还会将消息类型“警报”添加到达到该温度阈值的任何消息。 
 
    ![查看抵达 IoT 中心的消息](./media/tutorial-csharp-module-windows/view-d2c-message.png)
 
@@ -363,7 +361,7 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已创建一个 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 准备好生成自己的模块时，可以详细了解如何[开发自己的 IoT Edge 模块](module-development.md)或如何[使用 Visual Studio 开发模块](how-to-visual-studio-develop-module.md)。 有关 IoT Edge 模块的示例，包括模拟温度模块，请参阅 [IoT Edge 模块示例](https://github.com/Azure/iotedge/tree/master/edge-modules)。
+在本教程中，你已创建一个 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。
 
 可以继续学习后续教程，了解如何借助 Azure IoT Edge 部署 Azure 云服务，在边缘位置处理和分析数据。
 

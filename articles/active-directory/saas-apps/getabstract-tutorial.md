@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 05138011822b15363b12f2c860f4f459972201a7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550837"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92449738"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>教程：Azure Active Directory 与 Getabstract 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88550837"
 * 可让用户使用其 Azure AD 帐户自动登录到 Getabstract（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -44,16 +44,16 @@ ms.locfileid: "88550837"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Getabstract 支持 SP**** 和 IDP**** 发起的 SSO
+* Getabstract 支持 SP 和 IDP 发起的 SSO
 
-* Getabstract 支持实时**** 用户预配
+* Getabstract 支持实时用户预配
 
 
 ## <a name="adding-getabstract-from-the-gallery"></a>从库添加 Getabstract
 
 要配置 Getabstract 与 Azure AD 的集成，需要从库中将 Getabstract 添加到托管 SaaS 应用的列表。
 
-若要从库中添加 Getabstract，请执行以下步骤：****
+若要从库中添加 Getabstract，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -67,7 +67,7 @@ ms.locfileid: "88550837"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Getabstract”，在结果面板中选择“Getabstract”，然后单击“添加”按钮来添加该应用程序。************
+4. 在搜索框中，键入“Getabstract”，在结果面板中选择“Getabstract”，然后单击“添加”按钮来添加该应用程序。
 
      ![结果列表中的 Getabstract](common/search-new-app.png)
 
@@ -91,11 +91,11 @@ ms.locfileid: "88550837"
 
 若要配置 Getabstract 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Getabstract”应用程序集成页上，选择“单一登录”。********
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Getabstract”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "88550837"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Getabstract 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”和“回复 URL”字段，并选择了“保存”按钮。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中键入 URL：
 
@@ -123,7 +123,7 @@ ms.locfileid: "88550837"
 
     ![Getabstract 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
     
-    在“登录 URL”**** 文本框中，使用以下模式键入 URL：
+    在“登录 URL”文本框中，使用以下模式键入 URL：
 
     对于 Stage/pre_production：`https://int.getabstract.com/portal/<org_username>`
     
@@ -132,11 +132,11 @@ ms.locfileid: "88550837"
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Getabstract 客户端支持团队](https://www.getabstract.com/en/contact)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上****************。
+4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Getabstract”部分中，根据要求复制相应的 URL****。
+6. 在“设置 Getabstract”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "88550837"
 
 ### <a name="configure-getabstract-single-sign-on"></a>配置 Getabstract 单一登录
 
-若要在 Getabstract**** 端配置单一登录，需要将下载的“联合元数据 XML”**** 以及从 Azure 门户复制的相应 URL 发送给 [Getabstract 支持团队](https://www.getabstract.com/en/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Getabstract 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Getabstract 支持团队](https://www.getabstract.com/en/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -179,11 +179,11 @@ ms.locfileid: "88550837"
 
 在本部分中，通过授予 Britta Simon 访问 Getabstract 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Getabstract”************。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Getabstract”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Getabstract”****。
+2. 在应用程序列表中，选择“Getabstract”。
 
     ![应用程序列表中的 Getabstract 链接](common/all-applications.png)
 
@@ -212,13 +212,12 @@ ms.locfileid: "88550837"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Getabstract 磁贴时，应当会自动登录到为其设置了 SSO 的 Getabstract。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Getabstract 磁贴时，应当会自动登录到为其设置了 SSO 的 Getabstract。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

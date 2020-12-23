@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 77e4e2e1548beaa840f46953ef5bb4e94345416f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943352"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545100"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>快速入门：使用 PHP 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据
 
@@ -34,7 +34,7 @@ ms.locfileid: "90943352"
 
 ### <a name="install-php"></a>安装 PHP
 
-在自己的服务器上安装 PHP，或者创建包括 PHP 的 Azure [Web 应用](https://docs.microsoft.com/azure/app-service/overview)。  请参阅[创建和管理防火墙规则](./how-to-manage-firewall-portal.md)，了解如何创建防火墙规则。
+在自己的服务器上安装 PHP，或者创建包括 PHP 的 Azure [Web 应用](../../app-service/overview.md)。  请参阅[创建和管理防火墙规则](./how-to-manage-firewall-portal.md)，了解如何创建防火墙规则。
 
 #### <a name="macos"></a>macOS
 

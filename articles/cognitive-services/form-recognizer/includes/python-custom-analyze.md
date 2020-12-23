@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 88be632e17912012618ab559f22f97487ad26c9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6a6b0d9740d19270f8daa3608bc125edd0fbec37
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88723481"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005074"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析键值对和表的表单
 
 接下来，使用新的经过训练的模型分析文档并从中提取键值对和表。 在新的 Python 脚本中运行以下代码，以便调用[分析表单](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API。 在运行该脚本之前，请进行以下更改：
 
-1. 将 `<file path>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。 此项也可以是远程文件的 URL。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 文件夹下的文件。
+1. 将 `<file path>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。 此项也可以是远程文件的 URL。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)（下载并提取 sample_data.zip）的“测试”文件夹下的文件。
 1. 将 `<model_id>` 替换为在上一部分收到的模型 ID。
 1. 将 `<endpoint>` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
 1. 将 `<file type>` 替换为文件类型。 支持的类型：`application/pdf`、`image/jpeg`、`image/png`、`image/tiff`。
@@ -69,7 +69,7 @@ ms.locfileid: "88723481"
     endpoint = r"<endpoint>"
     apim_key = "<subsription key>"
     model_id = "<model_id>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/custom/models/%s/analyze" % model_id
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/custom/models/%s/analyze" % model_id
     source = r"<file path>"
     params = {
         "includeTextDetails": True
@@ -104,11 +104,11 @@ ms.locfileid: "88723481"
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-analyze.py`。
 
-调用**分析表单** API 时，会收到一个 `201 (Success)` 响应，其中包含 **Operation-Location** 标头。 此标头的值是用于跟踪“分析”操作结果的 ID。 上述脚本将此标头的值输出到控制台。
+调用 **分析表单** API 时，会收到一个 `201 (Success)` 响应，其中包含 **Operation-Location** 标头。 此标头的值是用于跟踪“分析”操作结果的 ID。 上述脚本将此标头的值输出到控制台。
 
 ## <a name="get-the-analyze-results"></a>获取分析结果
 
-将以下代码添加到 Python 脚本的底部。 这样就可以在新的 API 调用中使用来自上一调用的 ID 值，以便检索分析结果。 “分析表单”操作是异步的，因此此脚本会定期调用 API，直到结果可用为止。**** 我们建议调用间隔为一秒或更长时间。
+将以下代码添加到 Python 脚本的底部。 这样就可以在新的 API 调用中使用来自上一调用的 ID 值，以便检索分析结果。 “分析表单”操作是异步的，因此此脚本会定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
 
 ```python 
 n_tries = 15

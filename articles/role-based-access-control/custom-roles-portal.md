@@ -6,18 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511715"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369220"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 自定义角色
 
@@ -31,14 +29,12 @@ ms.locfileid: "86511715"
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>步骤 1：确定所需的权限
 
-Azure 具有数千个权限，你可将这些权限包含在自定义角色中。 可通过以下四种方法来确定要添加到自定义角色的权限：
+Azure 具有数千个权限，你可将这些权限包含在自定义角色中。 下面是一些可帮助你确定要添加到自定义角色的权限的方法：
 
-| 方法 | 说明 |
-| --- | --- |
-| 查看现有角色 | 可以查看现有的角色，以了解正在使用哪些权限。 有关详细信息，请参阅 [Azure 内置角色](built-in-roles.md)。 |
-| 按关键字搜索权限 | 使用 Azure 门户创建自定义角色时，可以按关键字搜索权限。 例如，可以搜索“虚拟机”或“计费”权限。  有关此搜索功能的介绍，请参阅后面的[步骤 4：](#step-4-permissions)权限”。 |
-| 下载所有权限 | 使用 Azure 门户创建自定义角色时，可将所有权限作为 CSV 文件下载，然后搜索此文件。 在“添加权限”窗格中，单击“下载所有权限”按钮下载所有权限。  有关“添加权限”窗格的详细信息，请参阅[步骤 4：](#step-4-permissions)权限”。 |
-| 查看文档中的权限 | 可以在 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)中查看可用的权限。 |
+- 查看现有的 [内置角色](built-in-roles.md)。
+- 列出要授予访问权限的 Azure 服务。
+- 确定 [映射到 Azure 服务的资源提供程序](../azure-resource-manager/management/azure-services-resource-providers.md)。 稍后在 [步骤4：权限](#step-4-permissions)中介绍了搜索方法。
+- 搜索 [可用权限](resource-provider-operations.md) ，查找想要包括的权限。 稍后在 [步骤4：权限](#step-4-permissions)中介绍了搜索方法。
 
 ## <a name="step-2-choose-how-to-start"></a>步骤 2：选择如何开始
 
@@ -204,7 +200,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
 ### <a name="add-wildcard-permissions"></a>添加通配符权限
 
-根据所选的开始创建角色的方式，权限列表中可能存在包含通配符 (`*`) 的权限。 通配符（ `*` ）将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，以下通配符字符串添加了与 Azure 成本管理和导出相关的所有权限。 此通配符权限还包括将来可能要添加的任何导出权限。
+根据所选的开始创建角色的方式，权限列表中可能存在包含通配符 (`*`) 的权限。 通配符 (`*`) 将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，以下通配符字符串添加了与 Azure 成本管理和导出相关的所有权限。 此通配符权限还包括将来可能要添加的任何导出权限。
 
 ```
 Microsoft.CostManagement/exports/*
@@ -331,7 +327,7 @@ Microsoft.CostManagement/exports/delete
 
 1. 单击要删除的自定义角色对应的省略号 ( **...** )，然后单击“删除”。
 
-    ![自定义角色菜单](./media/custom-roles-portal/delete-menu.png)
+    ![显示可选择删除的自定义角色列表的屏幕截图。](./media/custom-roles-portal/delete-menu.png)
 
     可能需要几分钟的时间才能完全删除你的自定义角色。
 
@@ -339,4 +335,4 @@ Microsoft.CostManagement/exports/delete
 
 - [教程：使用 Azure PowerShell 创建 Azure 自定义角色](tutorial-custom-role-powershell.md)
 - [Azure 自定义角色](custom-roles.md)
-- [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)
+- [Azure 资源提供程序操作](resource-provider-operations.md)

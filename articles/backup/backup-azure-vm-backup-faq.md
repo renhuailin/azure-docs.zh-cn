@@ -1,15 +1,14 @@
 ---
 title: 常见问题解答 - 备份 Azure VM
 description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常见问题。
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370821"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008344"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -21,10 +20,10 @@ ms.locfileid: "91370821"
 
 创建 VM 时，可以为运行[受支持操作系统](backup-support-matrix-iaas.md#supported-backup-actions)的 VM 启用备份。
 
-### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>为什么初始备份需要很长时间才能完成？
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>为什么初始备份需要很长的时间才能完成？
 
-初始备份始终是完整备份，并且它将取决于数据的大小以及处理备份的时间。 <br>
-若要提高备份性能，请参阅 [备份最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [备份注意事项](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) 和 [备份性能](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+初始备份始终是完整备份，它取决于数据大小和处理备份的时间。 <br>
+若要提高备份性能，请参阅[备份最佳做法](./backup-azure-vms-introduction.md#best-practices)、[备份注意事项](./backup-azure-vms-introduction.md#backup-and-restore-considerations)和[备份性能](./backup-azure-vms-introduction.md#backup-performance)<br>
 增量备份的总备份时间不超过 24 小时，但是，首次备份可能并非如此。
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>备份成本包含在 VM 成本内吗？
@@ -77,17 +76,21 @@ ms.locfileid: "91370821"
 
 删除锁定，并从该资源组中清除还原点集合，以使将来的备份成功。 [按照这些步骤](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)删除还原点集合。
 
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>我在包含与我的虚拟机相关的所有资源的资源组级别设置了一个锁。 我的备份是否会正常工作？
+
+Azure 备份以 `AzureBackupRG_<geo>_<number>` 格式创建一个单独的资源组，以存储 ResourcePointCollections 对象。 由于此资源组由服务拥有，因此锁定该资源组会导致备份失败。 锁只能应用于客户创建的资源组。
+
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure 备份是否支持标准 SSD 托管磁盘？
 
-是的，Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。
+是的，Azure 备份支持[标准 SSD 托管磁盘](../virtual-machines/disks-types.md#standard-ssd)。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
 
-无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。
+只能对已启用 WA 而不是 OS 磁盘的数据磁盘执行快照。 因此只能保护已启用 WA 的数据磁盘。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>我有一个安装了写入加速器 (WA) 磁盘和 SAP HANA 的 VM。 我该如何备份？
 
-Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排除。 但是，备份不会提供数据库一致性，因为未备份已启用 WA 的磁盘上的信息。 如果需要备份操作系统磁盘和备份未启用 WA 的磁盘，则可以使用此配置备份磁盘。
+Azure 备份可以备份启用了 WA 的数据磁盘。 但备份不会提供数据库一致性。
 
 Azure 备份为 SAP HANA 数据库提供了流式备份解决方案，其 RPO 为 15 分钟。 其通过 SAP 进行了 Backint 认证，利用 SAP HANA 的本机 API 提供本机备份支持。 了解[有关在 Azure VM 中备份 SAP HANA 数据库](./sap-hana-db-about.md)的详细信息。
 
@@ -105,11 +108,11 @@ Azure 虚拟机备份策略支持的最短保持期为 7 天，最长为 9999 �
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>能否备份或还原附加到 VM 的选择性磁盘？
 
-Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。 有关详细信息，请参阅 [Azure vm 的选择性磁盘备份和还原](selective-disk-backup-restore.md)。
+Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。 有关详细信息，请参阅 [Azure VM 的选择性磁盘备份和还原](selective-disk-backup-restore.md)。
 
-### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>如果在备份期间发生了租户更改，是否保留托管标识？
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>如果在备份过程中发生租户更改，是否保留托管标识？
 
-如果发生 [租户更改](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) ，则需要禁用并重新启用 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ，才能使备份再次工作。
+如果发生[租户更改](/azure/devops/organizations/accounts/change-azure-ad-connection)，则需要禁用并重新启用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)才能重新运行备份。
 
 ## <a name="restore"></a>还原
 
@@ -135,11 +138,11 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 [详细了解](backup-azure-vms-automation.md#restore-an-azure-vm)如何在 PowerShell 中执行此操作。
 
-### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>如果还原操作无法创建 VM，则还原中包含的磁盘会发生什么情况？
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>如果还原无法创建 VM，还原中包含的磁盘会发生什么情况？
 
-如果发生托管 VM 还原，即使 VM 创建失败，也仍会还原磁盘。
+如果是托管 VM 还原，则即使 VM 创建失败，也仍会还原磁盘。
 
-### <a name="can-i-restore-a-vm-thats-been-deleted"></a>是否可以还原已删除的 VM？
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>能否还原已删除的 VM？
 
 是的。 即使删除了 VM，也仍可以转到保管库中的相应备份项，然后从恢复点还原。
 
@@ -155,15 +158,24 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 更改已加密 VM 的密钥保管库设置后，备份将继续使用新的详细信息集。 但是，从更改之前的恢复点还原后，必须先在密钥保管库中还原机密，然后才能从中创建 VM。 有关详细信息，请参阅[此文](./backup-azure-restore-key-secret.md)。
 
-机密/密钥回滚等操作不需要此步骤，并且在还原后可以使用相同的密钥保管库。
+机密/密钥滚动更新等操作不需要此步骤，还原后可使用原来的密钥保管库。
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>在还原后我是否由于 VM 与域控制器的关系被破坏而可以访问 VM？
 
-可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](./backup-azure-arm-restore-vms.md#post-restore-steps)
+可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](./backup-azure-arm-restore-vms.md#post-restore-steps)。
 
-### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>为什么还原操作要花很长时间才能完成？
+### <a name="can-i-cancel-an-in-progress-restore-job"></a>能否取消正在进行的还原作业？
+不能，无法取消正在进行的还原作业。
 
-还原的总时间取决于每秒的输入/输出操作 (IOPS) 和存储帐户的吞吐量。 如果目标存储帐户与其他应用程序的读取和写入操作一起加载，则总还原时间可能会受到影响。 若要改善还原操作，请选择一个未与其他应用程序数据一起加载的存储帐户。
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>为什么还原操作需要很长时间才能完成？
+
+总还原时间取决于存储帐户的每秒输入/输出操作次数 (IOPS) 和吞吐量。 如果目标存储帐户加载了其他应用程序读写操作，则总还原时间可能会受到影响。 若要改进还原操作，请选择未加载其他应用程序数据的存储帐户。
+
+### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>如何处理 "创建新的虚拟机"-还原类型与调控策略冲突？
+
+Azure 备份使用从恢复点 "附加" 磁盘，而不查看映像引用或库。 因此，在策略中，可以选中 "osDisk 作为附加"，脚本条件将为：
+
+`if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 
@@ -199,14 +211,14 @@ VM 是使用已修改策略或新策略中的计划和保留设置备份的。
 
 如果需要，旧 VM 的还原点将可用于还原。 如果不需要此备份数据，则可以停止保护具有删除数据的旧 VM。
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>对于可与同一备份策略关联的 VM 数是否有限制？
+### <a name="is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy"></a>对于可与同一备份策略关联的 VM 数是否有限制？
 
 有，可以从门户关联到同一备份策略的 VM 数量限制为 100 个。 我们建议，如果 VM 数超过 100 个，请创建具有相同计划或不同计划的多个备份策略。
 
-### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>如何查看备份的保持期设置？
+### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>如何查看备份的保留设置？
 
-目前，可以根据分配给 VM 的备份策略，在 (VM) 级别的备份项上查看保留设置。
+目前，你可根据分配给 VM 的备份策略来查看备份项 (VM) 级别的保留设置。
 
-查看备份的保持设置的一种方法是，在 Azure 门户中导航到 VM 的 "备份项" [仪表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 选择指向其备份策略的链接可帮助你查看与 VM 关联的所有每日、每周、每月和每年保留点的保留期。
+要查看备份的保留设置，一种方法是在 Azure 门户中导航到 VM 的备份项[仪表板](./backup-azure-manage-vms.md#view-vms-on-the-dashboard)。 选择指向其备份策略的链接有助于查看与 VM 关联的全部每日、每周、每月和每年保留点的保留期。
 
-你还可以使用 [备份资源管理器](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 查看单个窗格内所有 vm 的保留设置。 导航到任何恢复服务保管库中的备份资源管理器，转到 " **备份项** " 选项卡，然后选择 "高级" 视图，查看每个 VM 的详细保留信息。
+还可使用[备份资源管理器](./monitor-azure-backup-with-backup-explorer.md)在单一管理平台查看所有 VM 的保留设置。 从任何恢复服务保管库中导航到备份资源管理器，转到“备份项”选项卡，然后选择“高级视图”，查看每个 VM 的详细保留信息。

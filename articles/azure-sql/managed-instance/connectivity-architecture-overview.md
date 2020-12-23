@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
-ms.date: 03/17/2020
-ms.openlocfilehash: 81d0731f6ea77325b3f33f91bf8d5d1386dab2fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/22/2020
+ms.openlocfilehash: e67376e2ef79f9711f54ce54d0d91623593ca8ea
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283371"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853282"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL 托管实例的连接体系结构
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,14 +104,14 @@ Azure 使用一个管理终结点来管理 SQL 托管实例。 此终结点位�
 - **子网委派**：需要将 SQL 托管实例的子网委托给 `Microsoft.Sql/managedInstances` 资源提供程序。
 - **网络安全组 (NSG)** ：NSG 需与 SQL 托管实例的子网相关联。 当 SQL 托管实例配置为使用重定向连接时，可使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对 SQL 托管实例数据终结点的访问。 该服务会自动预配并保留当前的[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
 - **用户定义的路由 (UDR) 表：** UDR 表需与 SQL 托管实例的子网相关联。 可将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。 服务会自动预配并保留当前的[条目](#user-defined-routes-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
-- **足够的 IP 地址：** SQL 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定 SQL 托管实例的子网大小](vnet-subnet-determine-size.md)。 根据 [SQL 托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](vnet-existing-add-subnet.md)中。 否则，请创建[新的网络和子网](virtual-network-subnet-create-arm-template.md)。
+- **足够的 IP 地址：** SQL 托管实例子网必须具有至少32个 IP 地址。 有关详细信息，请参阅[确定 SQL 托管实例的子网大小](vnet-subnet-determine-size.md)。 根据 [SQL 托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](vnet-existing-add-subnet.md)中。 否则，请创建[新的网络和子网](virtual-network-subnet-create-arm-template.md)。
 
 > [!IMPORTANT]
-> 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。
+> 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。 下面的规则仅用于提供信息，不应使用 ARM 模板/PowerShell/CLI 部署它们。 如果要使用最新的官方模板，你始终可以 [从门户中检索它](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)。
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>采用服务辅助子网配置的必需入站安全规则
 
-| 名称       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |协议|Source           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |允许 |
 |            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |允许 |
@@ -121,7 +121,7 @@ Azure 使用一个管理终结点来管理 SQL 托管实例。 此终结点位�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>采用服务辅助子网配置的必需出站安全规则
 
-| 名称       |端口          |协议|源           |目标|操作|
+| 名称       |端口          |协议|Source           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |允许 |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
@@ -301,6 +301,8 @@ Azure 使用一个管理终结点来管理 SQL 托管实例。 此终结点位�
 
 \* MI SUBNET 是指子网的 IP 地址范围，采用 x.x.x.x/y 格式。 可以在 Azure 门户的“子网属性”中找到此信息。
 
+\** 如果目标地址适用于 Azure 的某个服务，Azure 会通过 Azure 的主干网络直接将流量路由到该服务，而不是将流量路由到 Internet。 Azure 服务之间的流量不跨越 Internet，不管虚拟网络存在于哪个 Azure 区域，也不管 Azure 服务的实例部署在哪个 Azure 区域。 有关更多详细信息，请参阅 [UDR 文档页](../../virtual-network/virtual-networks-udr-overview.md)。
+
 此外，还可以将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。
 
 如果虚拟网络包含自定义 DNS，则自定义 DNS 服务器必须能够解析公共 DNS 记录。 使用其他功能（例如 Azure AD 身份验证）可能需要解析其他 FQDN。 有关详细信息，请参阅[设置自定义 DNS](custom-dns-configure.md)。
@@ -312,221 +314,9 @@ Azure 使用一个管理终结点来管理 SQL 托管实例。 此终结点位�
 SQL 托管实例当前不支持以下虚拟网络功能：
 
 - **Microsoft 对等互连**：如果在与 SQL 托管实例所在的虚拟网络直接或暂时对等互连的 ExpressRoute 线路上启用 [Microsoft 对等互连](../../expressroute/expressroute-faqs.md#microsoft-peering)，会影响虚拟网络内的 SQL 托管实例组件与它依赖的服务之间的流量，从而导致可用性问题。 向已启用 Microsoft 对等互连的虚拟网络部署 SQL 托管实例预计会失败。
-- **全局虚拟网络对等互连**：由于[所记录的负载均衡器约束](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)，跨 Azure 区域的[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)连接对 SQL 托管实例不起作用。
+- **全局虚拟网络对等互连**：跨 Azure 区域的 [虚拟网络对等](../../virtual-network/virtual-network-peering-overview.md) 互连对于放置在9/22/2020 之前创建的子网中的 SQL 托管实例不起作用。
 - **AzurePlatformDNS**：使用 AzurePlatformDNS [服务标记](../../virtual-network/service-tags-overview.md)阻止平台 DNS 解析会导致 SQL 托管实例不可用。 尽管 SQL 托管实例支持将客户定义的 DNS 用于引擎内的 DNS 解析，但平台操作依赖于平台 DNS。
 - **NAT 网关**：使用 [AZURE 虚拟网络 NAT](../../virtual-network/nat-overview.md) 控制与特定公共 IP 地址的出站连接将导致 SQL 托管实例不可用。 SQL 托管实例服务当前仅限于使用基本负载均衡器，该负载均衡器不会通过虚拟网络 NAT 提供入站和出站流的共存。
-
-### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[已弃用] 不采用服务辅助子网配置时的网络要求
-
-在虚拟网络中的专用子网内部署 SQL 托管实例。 该子网必须具有以下特征：
-
-- **专用子网：** SQL 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该 SQL 托管实例以外的其他任何资源，你之后也无法在该子网中添加其他类型的资源。
-- **网络安全组 (NSG)** ：与虚拟网络关联的 NSG 必须在其他任何规则的前面定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 当 SQL 托管实例配置为使用重定向连接时，可使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对 SQL 托管实例数据终结点的访问。
-- **用户定义的路由 (UDR) 表：** 与虚拟网络关联的 UDR 表必须包含特定的[条目](#user-defined-routes)。
-- **没有服务终结点：** 不得将任何服务终结点与 SQL 托管实例的子网相关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
-- **足够的 IP 地址：** SQL 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定 SQL 托管实例的子网大小](vnet-subnet-determine-size.md)。 根据 [SQL 托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](vnet-existing-add-subnet.md)中。 否则，请创建[新的网络和子网](virtual-network-subnet-create-arm-template.md)。
-
-> [!IMPORTANT]
-> 如果目标子网缺少这些特征，则无法部署新的托管实例。 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。
-
-### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
-
-| 名称       |端口                        |协议|源           |目标|操作|
-|------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |允许 |
-|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
-|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |允许 |
-
-### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
-
-| 名称       |端口          |协议|源           |目标|操作|
-|------------|--------------|--------|-----------------|-----------|------|
-|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |允许 |
-|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
-
-> [!IMPORTANT]
-> 确保端口 9000、9003、1438、1440 和 1452 只有一个入站规则，端口 443 和 12000 只有一个出站规则。 如果单独为每个端口配置入站和出站规则，则无法通过 Azure 资源管理器部署预配 SQL 托管实例。 如果这些端口位于不同的规则中，则部署将失败，错误代码为 `VnetSubnetConflictWithIntendedPolicy`。
-
-\* MI SUBNET 是指子网的 IP 地址范围，采用 x.x.x.x/y 格式。 可以在 Azure 门户的“子网属性”中找到此信息。
-
-> [!IMPORTANT]
-> 尽管所需的入站安全规则允许来自端口 9000、9003、1438、1440 和 1452 上的任意资源的流量，但这些端口受内置防火墙的保护。 有关详细信息，请参阅[确定管理终结点地址](management-endpoint-find-ip-address.md)。
-
-> [!NOTE]
-> 如果在 SQL 托管实例中使用事务复制，并且将任何实例数据库用作发布服务器或分发服务器，请在子网的安全规则中打开端口 445（TCP 出站）。 此端口允许访问 Azure 文件共享。
-
-### <a name="user-defined-routes"></a>用户定义的路由
-
-|名称|地址前缀|下一跃点|
-|----|--------------|-------|
-|subnet_to_vnetlocal|MI SUBNET|虚拟网络|
-|mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
-|mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
-|mi-20-33-16-nexthop-internet|20.33.0.0/16|Internet|
-|mi-20-34-15-nexthop-internet|20.34.0.0/15|Internet|
-|mi-20-36-14-nexthop-internet|20.36.0.0/14|Internet|
-|mi-20-40-13-nexthop-internet|20.40.0.0/13|Internet|
-|mi-20-48-12-nexthop-internet|20.48.0.0/12|Internet|
-|mi-20-64-10-nexthop-internet|20.64.0.0/10|Internet|
-|mi-20-128-16-nexthop-internet|20.128.0.0/16|Internet|
-|mi-20-135-16-nexthop-internet|20.135.0.0/16|Internet|
-|mi-20-136-16-nexthop-internet|20.136.0.0/16|Internet|
-|mi-20-140-15-nexthop-internet|20.140.0.0/15|Internet|
-|mi-20-143-16-nexthop-internet|20.143.0.0/16|Internet|
-|mi-20-144-14-nexthop-internet|20.144.0.0/14|Internet|
-|mi-20-150-15-nexthop-internet|20.150.0.0/15|Internet|
-|mi-20-160-12-nexthop-internet|20.160.0.0/12|Internet|
-|mi-20-176-14-nexthop-internet|20.176.0.0/14|Internet|
-|mi-20-180-14-nexthop-internet|20.180.0.0/14|Internet|
-|mi-20-184-13-nexthop-internet|20.184.0.0/13|Internet|
-|mi-20-192-10-nexthop-internet|20.192.0.0/10|Internet|
-|mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
-|mi-51-4-15-nexthop-internet|51.4.0.0/15|Internet|
-|mi-51-8-16-nexthop-internet|51.8.0.0/16|Internet|
-|mi-51-10-15-nexthop-internet|51.10.0.0/15|Internet|
-|mi-51-18-16-nexthop-internet|51.18.0.0/16|Internet|
-|mi-51-51-16-nexthop-internet|51.51.0.0/16|Internet|
-|mi-51-53-16-nexthop-internet|51.53.0.0/16|Internet|
-|mi-51-103-16-nexthop-internet|51.103.0.0/16|Internet|
-|mi-51-104-15-nexthop-internet|51.104.0.0/15|Internet|
-|mi-51-132-16-nexthop-internet|51.132.0.0/16|Internet|
-|mi-51-136-15-nexthop-internet|51.136.0.0/15|Internet|
-|mi-51-138-16-nexthop-internet|51.138.0.0/16|Internet|
-|mi-51-140-14-nexthop-internet|51.140.0.0/14|Internet|
-|mi-51-144-15-nexthop-internet|51.144.0.0/15|Internet|
-|mi-52-96-12-nexthop-internet|52.96.0.0/12|Internet|
-|mi-52-112-14-nexthop-internet|52.112.0.0/14|Internet|
-|mi-52-125-16-nexthop-internet|52.125.0.0/16|Internet|
-|mi-52-126-15-nexthop-internet|52.126.0.0/15|Internet|
-|mi-52-130-15-nexthop-internet|52.130.0.0/15|Internet|
-|mi-52-132-14-nexthop-internet|52.132.0.0/14|Internet|
-|mi-52-136-13-nexthop-internet|52.136.0.0/13|Internet|
-|mi-52-145-16-nexthop-internet|52.145.0.0/16|Internet|
-|mi-52-146-15-nexthop-internet|52.146.0.0/15|Internet|
-|mi-52-148-14-nexthop-internet|52.148.0.0/14|Internet|
-|mi-52-152-13-nexthop-internet|52.152.0.0/13|Internet|
-|mi-52-160-11-nexthop-internet|52.160.0.0/11|Internet|
-|mi-52-224-11-nexthop-internet|52.224.0.0/11|Internet|
-|mi-64-4-18-nexthop-internet|64.4.0.0/18|Internet|
-|mi-65-52-14-nexthop-internet|65.52.0.0/14|Internet|
-|mi-66-119-144-20-nexthop-internet|66.119.144.0/20|Internet|
-|mi-70-37-17-nexthop-internet|70.37.0.0/17|Internet|
-|mi-70-37-128-18-nexthop-internet|70.37.128.0/18|Internet|
-|mi-91-190-216-21-nexthop-internet|91.190.216.0/21|Internet|
-|mi-94-245-64-18-nexthop-internet|94.245.64.0/18|Internet|
-|mi-103-9-8-22-nexthop-internet|103.9.8.0/22|Internet|
-|mi-103-25-156-24-nexthop-internet|103.25.156.0/24|Internet|
-|mi-103-25-157-24-nexthop-internet|103.25.157.0/24|Internet|
-|mi-103-25-158-23-nexthop-internet|103.25.158.0/23|Internet|
-|mi-103-36-96-22-nexthop-internet|103.36.96.0/22|Internet|
-|mi-103-255-140-22-nexthop-internet|103.255.140.0/22|Internet|
-|mi-104-40-13-nexthop-internet|104.40.0.0/13|Internet|
-|mi-104-146-15-nexthop-internet|104.146.0.0/15|Internet|
-|mi-104-208-13-nexthop-internet|104.208.0.0/13|Internet|
-|mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
-|mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
-|mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
-|mi-131-107-16-nexthop-internet|131.107.0.0/16|Internet|
-|mi-131-253-1-24-nexthop-internet|131.253.1.0/24|Internet|
-|mi-131-253-3-24-nexthop-internet|131.253.3.0/24|Internet|
-|mi-131-253-5-24-nexthop-internet|131.253.5.0/24|Internet|
-|mi-131-253-6-24-nexthop-internet|131.253.6.0/24|Internet|
-|mi-131-253-8-24-nexthop-internet|131.253.8.0/24|Internet|
-|mi-131-253-12-22-nexthop-internet|131.253.12.0/22|Internet|
-|mi-131-253-16-23-nexthop-internet|131.253.16.0/23|Internet|
-|mi-131-253-18-24-nexthop-internet|131.253.18.0/24|Internet|
-|mi-131-253-21-24-nexthop-internet|131.253.21.0/24|Internet|
-|mi-131-253-22-23-nexthop-internet|131.253.22.0/23|Internet|
-|mi-131-253-24-21-nexthop-internet|131.253.24.0/21|Internet|
-|mi-131-253-32-20-nexthop-internet|131.253.32.0/20|Internet|
-|mi-131-253-61-24-nexthop-internet|131.253.61.0/24|Internet|
-|mi-131-253-62-23-nexthop-internet|131.253.62.0/23|Internet|
-|mi-131-253-64-18-nexthop-internet|131.253.64.0/18|Internet|
-|mi-131-253-128-17-nexthop-internet|131.253.128.0/17|Internet|
-|mi-132-245-16-nexthop-internet|132.245.0.0/16|Internet|
-|mi-134-170-16-nexthop-internet|134.170.0.0/16|Internet|
-|mi-134-177-16-nexthop-internet|134.177.0.0/16|Internet|
-|mi-137-116-15-nexthop-internet|137.116.0.0/15|Internet|
-|mi-137-135-16-nexthop-internet|137.135.0.0/16|Internet|
-|mi-138-91-16-nexthop-internet|138.91.0.0/16|Internet|
-|mi-138-196-16-nexthop-internet|138.196.0.0/16|Internet|
-|mi-139-217-16-nexthop-internet|139.217.0.0/16|Internet|
-|mi-139-219-16-nexthop-internet|139.219.0.0/16|Internet|
-|mi-141-251-16-nexthop-internet|141.251.0.0/16|Internet|
-|mi-146-147-16-nexthop-internet|146.147.0.0/16|Internet|
-|mi-147-243-16-nexthop-internet|147.243.0.0/16|Internet|
-|mi-150-171-16-nexthop-internet|150.171.0.0/16|Internet|
-|mi-150-242-48-22-nexthop-internet|150.242.48.0/22|Internet|
-|mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
-|mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
-|mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
-|mi-167-105-16-nexthop-internet|167.105.0.0/16|Internet|
-|mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
-|mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
-|mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
-|mi-191-232-13-nexthop-internet|191.232.0.0/13|Internet|
-|mi-192-32-16-nexthop-internet|192.32.0.0/16|Internet|
-|mi-192-48-225-24-nexthop-internet|192.48.225.0/24|Internet|
-|mi-192-84-159-24-nexthop-internet|192.84.159.0/24|Internet|
-|mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
-|mi-192-197-157-24-nexthop-internet|192.197.157.0/24|Internet|
-|mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
-|mi-193-221-113-24-nexthop-internet|193.221.113.0/24|Internet|
-|mi-194-69-96-19-nexthop-internet|194.69.96.0/19|Internet|
-|mi-194-110-197-24-nexthop-internet|194.110.197.0/24|Internet|
-|mi-198-105-232-22-nexthop-internet|198.105.232.0/22|Internet|
-|mi-198-200-130-24-nexthop-internet|198.200.130.0/24|Internet|
-|mi-198-206-164-24-nexthop-internet|198.206.164.0/24|Internet|
-|mi-199-60-28-24-nexthop-internet|199.60.28.0/24|Internet|
-|mi-199-74-210-24-nexthop-internet|199.74.210.0/24|Internet|
-|mi-199-103-90-23-nexthop-internet|199.103.90.0/23|Internet|
-|mi-199-103-122-24-nexthop-internet|199.103.122.0/24|Internet|
-|mi-199-242-32-20-nexthop-internet|199.242.32.0/20|Internet|
-|mi-199-242-48-21-nexthop-internet|199.242.48.0/21|Internet|
-|mi-202-89-224-20-nexthop-internet|202.89.224.0/20|Internet|
-|mi-204-13-120-21-nexthop-internet|204.13.120.0/21|Internet|
-|mi-204-14-180-22-nexthop-internet|204.14.180.0/22|Internet|
-|mi-204-79-135-24-nexthop-internet|204.79.135.0/24|Internet|
-|mi-204-79-179-24-nexthop-internet|204.79.179.0/24|Internet|
-|mi-204-79-181-24-nexthop-internet|204.79.181.0/24|Internet|
-|mi-204-79-188-24-nexthop-internet|204.79.188.0/24|Internet|
-|mi-204-79-195-24-nexthop-internet|204.79.195.0/24|Internet|
-|mi-204-79-196-23-nexthop-internet|204.79.196.0/23|Internet|
-|mi-204-79-252-24-nexthop-internet|204.79.252.0/24|Internet|
-|mi-204-152-18-23-nexthop-internet|204.152.18.0/23|Internet|
-|mi-204-152-140-23-nexthop-internet|204.152.140.0/23|Internet|
-|mi-204-231-192-24-nexthop-internet|204.231.192.0/24|Internet|
-|mi-204-231-194-23-nexthop-internet|204.231.194.0/23|Internet|
-|mi-204-231-197-24-nexthop-internet|204.231.197.0/24|Internet|
-|mi-204-231-198-23-nexthop-internet|204.231.198.0/23|Internet|
-|mi-204-231-200-21-nexthop-internet|204.231.200.0/21|Internet|
-|mi-204-231-208-20-nexthop-internet|204.231.208.0/20|Internet|
-|mi-204-231-236-24-nexthop-internet|204.231.236.0/24|Internet|
-|mi-205-174-224-20-nexthop-internet|205.174.224.0/20|Internet|
-|mi-206-138-168-21-nexthop-internet|206.138.168.0/21|Internet|
-|mi-206-191-224-19-nexthop-internet|206.191.224.0/19|Internet|
-|mi-207-46-16-nexthop-internet|207.46.0.0/16|Internet|
-|mi-207-68-128-18-nexthop-internet|207.68.128.0/18|Internet|
-|mi-208-68-136-21-nexthop-internet|208.68.136.0/21|Internet|
-|mi-208-76-44-22-nexthop-internet|208.76.44.0/22|Internet|
-|mi-208-84-21-nexthop-internet|208.84.0.0/21|Internet|
-|mi-209-240-192-19-nexthop-internet|209.240.192.0/19|Internet|
-|mi-213-199-128-18-nexthop-internet|213.199.128.0/18|Internet|
-|mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
-|mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
-|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
-|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
-|mi-51-13-17-nexthop-internet|51.13.0.0/17|Internet|
-|mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
-|mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
-|mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
-|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|Internet|
-|mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
-|mi-102-37-18-nexthop-internet|102.37.0.0/18|Internet|
-|mi-102-133-16-nexthop-internet|102.133.0.0/16|Internet|
-|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|Internet|
-|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|Internet|
-||||
 
 ## <a name="next-steps"></a>后续步骤
 

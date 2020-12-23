@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 87c24cf61974c284772aae23e48ffc907792895b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c8f85c6dd42f1f4505474e03e378c0fe48d70005
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543476"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Confluence by resolution GmbH 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88543476"
 * 可以让用户通过其 Azure AD 帐户自动登录到 SAML SSO for Confluence by resolution GmbH（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -89,7 +89,7 @@ ms.locfileid: "88543476"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88543476"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤  ：
 
-    ![SAML SSO for Confluence by resolution GmbH 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，其中突出显示了“标识符”和“回复 URL”文字框，并选择了“保存”操作。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -120,87 +120,87 @@ ms.locfileid: "88543476"
 
 ### <a name="configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on"></a>配置 SAML SSO for Confluence by resolution GmbH 单一登录
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **SAML SSO for Confluence by resolution GmbH 管理门户**。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **SAML SSO for Confluence by resolution GmbH 管理门户** 。
 
 2. 将鼠标悬停在小齿轮上，并单击“外接程序”  。
     
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon1.png)
+    ![显示已选择齿轮图标并从下拉列表中选择了“加载项”的屏幕截图。](./media/samlssoconfluence-tutorial/addon1.png)
 
 3. 系统会你将重定向到“管理员访问权限”页。 输入密码  ，并单击“确认”按钮。
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon2.png)
+    ![显示选择了“确认”按钮的“管理员访问”页的屏幕截图。](./media/samlssoconfluence-tutorial/addon2.png)
 
 4. 在“ATLASSIAN MARKETPLACE”  选项卡下，单击“查找新外接程序”  。 
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon.png)
+    ![显示选择了“查找新加载项”的“Attlassian 市场”选项卡的屏幕截图。](./media/samlssoconfluence-tutorial/addon.png)
 
 5. 搜索“SAML Single Sign On (SSO) for Confluence”，并单击“安装”按钮安装新的 SAML 插件。  
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon7.png)
+    ![显示“查找新加载项”页的屏幕截图，其中搜索框中显示了“Confluence 的 SAML 单一登录 (SSO)”并选择了“安装”按钮。](./media/samlssoconfluence-tutorial/addon7.png)
 
 6. 插件安装随即开始。 单击“关闭”  。
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon8.png)
+    ![显示“正在安装”对话框的屏幕截图。](./media/samlssoconfluence-tutorial/addon8.png)
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon9.png)
+    ![屏幕截图显示选择了“关闭”操作的 “已安装并准备就绪!”对话框。](./media/samlssoconfluence-tutorial/addon9.png)
 
-7.  单击“管理”。 
+7.  单击“管理”。
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon10.png)
+    ![显示选择了“管理”按钮的“Confluence 的 SAML 单一登录 (SSO)”应用页的屏幕截图。](./media/samlssoconfluence-tutorial/addon10.png)
     
-8. 单击“配置”  配置新的插件。
+8. 单击“配置”配置新的插件。
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon11.png)
+    ![显示“管理”页的屏幕截图，其中“配置”按钮处于选中状态。](./media/samlssoconfluence-tutorial/addon11.png)
 
 9. 也可在“用户和安全”  选项卡下找到此新插件。
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon3.png)
+    ![显示“用户和安全”选项卡的屏幕截图，其中选择了“SAML SingleSignOn”。](./media/samlssoconfluence-tutorial/addon3.png)
     
-10. 在“SAML 单一登录插件配置”  页上单击“添加新 IdP”  按钮，配置标识提供者的设置。
+10. 在“SAML 单一登录插件配置”页上单击“添加新 IdP”按钮，配置标识提供者的设置。
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon4.png)
+    ![显示选择了“添加新 IdP”按钮的“SAML SingleSignOn 插件配置”页的屏幕截图。](./media/samlssoconfluence-tutorial/addon4.png)
 
-11. 在“选择 SAML 标识提供者”  页上，执行以下步骤：
+11. 在“选择 SAML 标识提供者”页上，执行以下步骤：
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon5a.png)
+    ![显示“选择 SAML 标识提供者”页的屏幕截图，其中突出显示了“IdP 类型”、“名称”和“描述”文本框。](./media/samlssoconfluence-tutorial/addon5a.png)
  
-    a. 设置“Azure AD”  作为 IdP 类型。
+    a. 设置“Azure AD”作为 IdP 类型。
     
-    b. 添加标识提供者（例如 Azure AD）的“名称”  。
+    b. 添加标识提供者（例如 Azure AD）的“名称”。
     
-    c. 添加标识提供者（例如 Azure AD）的“说明”  。
+    c. 添加标识提供者（例如 Azure AD）的“说明”。
     
-    d. 单击“下一步”。 
+    d. 单击“下一步”。
     
-12. 在“标识提供者配置”  页上，单击“下一步”  按钮。
+12. 在“标识提供者配置”页上，单击“下一步”按钮。
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon5b.png)
+    ![显示选择了“下一步”按钮的“标识提供者配置”页的屏幕截图。](./media/samlssoconfluence-tutorial/addon5b.png)
 
-13. 在“导入 SAML IdP 元数据”  页上，执行以下步骤：
+13. 在“导入 SAML IdP 元数据”页上，执行以下步骤：
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon5c.png)
+    ![显示“导入 SAML IdP 元数据”页的屏幕截图，其中选择了“导入”、“加载文件”和“下一步”按钮。](./media/samlssoconfluence-tutorial/addon5c.png)
 
-    a. 单击“加载文件”  按钮，然后选择在步骤 5 中下载的元数据 XML 文件。
+    a. 单击“加载文件”按钮，然后选择在步骤 5 中下载的元数据 XML 文件。
 
-    b. 单击“导入”  按钮。
+    b. 单击“导入”按钮。
     
     c. 在导入成功之前，请等待片刻。
     
-    d. 单击“下一步”按钮。 
+    d. 单击“下一步”按钮。
     
-14. 在“用户 ID 属性和转换”  页上，单击“下一步”  按钮。
+14. 在“用户 ID 属性和转换”页上，单击“下一步”按钮。
 
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon5d.png)
+    ![显示选择了“下一步”按钮的“用户 ID 属性和转换”页的屏幕截图。](./media/samlssoconfluence-tutorial/addon5d.png)
     
-15. 在“用户创建和更新”  页上，单击“保存并下一步”  保存设置。   
+15. 在“用户创建和更新”页上，单击“保存并下一步”保存设置。   
     
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon6a.png)
+    ![显示选择了“保存并进行下一步”按钮的“用户创建和更新”页的屏幕截图。](./media/samlssoconfluence-tutorial/addon6a.png)
     
-16. 在“测试设置”  页上，单击“跳过测试并手动配置”  暂时跳过用户测试。 此测试将在下一部分中执行，并需要在 Azure 门户中进行某些设置。 
+16. 在“测试设置”页上，单击“跳过测试并手动配置”暂时跳过用户测试。 此测试将在下一部分中执行，并需要在 Azure 门户中进行某些设置。 
     
-    ![配置单一登录](./media/samlssoconfluence-tutorial/addon6b.png)
+    ![显示选择了“跳过测试并手动配置”按钮的“测试设置”页的屏幕截图。](./media/samlssoconfluence-tutorial/addon6b.png)
     
-17. 在出现的显示“跳过测试意味着...”对话框中，单击“确定”   。
+17. 在出现的显示“跳过测试意味着...”对话框中，单击“确定”。
     
     ![配置单一登录](./media/samlssoconfluence-tutorial/addon6c.png)
 
@@ -227,17 +227,17 @@ ms.locfileid: "88543476"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 SAML SSO for Confluence by resolution GmbH 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“SAML SSO for Confluence by resolution GmbH”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“SAML SSO for Confluence by resolution GmbH”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，键入并选择“SAML SSO for Confluence by resolution GmbH”  。
+2. 在应用程序列表中，键入并选择“SAML SSO for Confluence by resolution GmbH”。
 
     ![应用程序列表中的 SAML SSO for Confluence by resolution GmbH 链接](common/all-applications.png)
 
@@ -266,19 +266,19 @@ ms.locfileid: "88543476"
 
 2. 将鼠标悬停在小齿轮上，并单击“用户管理”  。
 
-    ![添加员工](./media/samlssoconfluence-tutorial/user1.png) 
+    ![显示已选择齿轮图标并从菜单中选择了“用户管理”的屏幕截图。](./media/samlssoconfluence-tutorial/user1.png) 
 
-3. 在“用户”部分，单击“添加用户”  选项卡。在“添加用户”对话框页上，执行以下步骤： 
+3. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
 
     ![添加员工](./media/samlssoconfluence-tutorial/user2.png) 
 
-    a. 在“用户名”文本框中，键入用户（例如 Britta Simon）的电子邮件地址。 
+    a. 在“用户名”文本框中，键入用户（例如 Britta Simon）的电子邮件地址。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。 
 
     c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
 
-    d. 在“密码”文本框中，键入 Britta Simon 的密码。 
+    d. 在“密码”文本框中，键入 Britta Simon 的密码。
 
     e.  单击“确认密码”，重新输入该密码。
     
@@ -288,13 +288,12 @@ ms.locfileid: "88543476"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“SAML SSO for Confluence by resolution GmbH”磁贴时，应当会自动登录到已为其设置了 SSO 的 SAML SSO for Confluence by resolution GmbH。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“SAML SSO for Confluence by resolution GmbH”磁贴时，应当会自动登录到已为其设置了 SSO 的 SAML SSO for Confluence by resolution GmbH。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

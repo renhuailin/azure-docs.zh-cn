@@ -1,5 +1,5 @@
 ---
-title: Azure AD 应用程序代理常见问题 |Microsoft Docs
+title: Azure Active Directory 应用程序代理常见问题
 description: 了解常见问题的答案 (常见问题解答) 使用 Azure AD 应用程序代理将内部本地应用程序发布到远程用户。
 services: active-directory
 author: kenwith
@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589157"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588584"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 应用程序代理常见问题
 
@@ -48,7 +49,7 @@ ms.locfileid: "88589157"
 
 目前没有，这是不可能的。 注册尝试始终在用户的主租户上进行。
 
-### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>后端应用程序托管在多个 web 服务器上，并要求用户会话持久性 (粘性) 。 如何实现会话暂留？ 
+### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>后端应用程序托管在多个 web 服务器上，并要求用户会话持久性 (粘性) 。 如何实现会话暂留？ 
 
 有关建议，请参阅 [应用程序代理连接器和应用程序的高可用性和负载平衡](application-proxy-high-availability-load-balancing.md)。
 
@@ -57,7 +58,7 @@ ms.locfileid: "88589157"
 应用程序代理连接器对 Azure 执行基于证书的身份验证。 TLS 终止 (TLS/HTTPS 检查或加速) 中断此身份验证方法，并且不受支持。 从连接器到 Azure 的流量必须绕过任何正在执行 TLS 终止的设备。  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>是否所有连接都需要 TLS 1.2？
-是的。 为了向我们的客户提供一流的加密，应用程序代理服务将访问限制为仅允许使用 TLS 1.2 协议。 这些更改已自 2019 年 8 月 31 日起逐步推出并生效。 请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便保持连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) 做准备，了解有用的参考和资源。
+是。 为了向我们的客户提供一流的加密，应用程序代理服务将访问限制为仅允许使用 TLS 1.2 协议。 这些更改已自 2019 年 8 月 31 日起逐步推出并生效。 请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便保持连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) 做准备，了解有用的参考和资源。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>是否可以在连接器服务器 (s) 和后端应用程序服务器之间放置转发代理设备？
 是的，从连接器版本1.5.1526.0 开始支持此方案。 请参阅 [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。
@@ -79,11 +80,12 @@ ms.locfileid: "88589157"
 连接器不需要位于同一子网中。 但是，它需要 (DNS 的名称解析，将文件) 托管到资源，并 (路由到资源、在资源上打开的端口，等等 ) 。 有关建议，请参阅 [使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项](application-proxy-network-topology.md)。
 
 ### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>可以在什么版本的 Windows Server 上安装连接器？
-应用程序代理需要 Windows Server 2012 R2 或更高版本。 目前，Windows Server 2019 的 HTTP2 有限制。 为了成功地在 Windows Server 2019 上使用连接器，你将需要添加以下注册表项并重新启动服务器：
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
 
+应用程序代理需要 Windows Server 2012 R2 或更高版本。 目前，Windows Server 2019 的 HTTP2 有限制。 为了成功地在 Windows Server 2019 上使用连接器，你将需要添加以下注册表项并重新启动服务器：
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+```
 
 ## <a name="application-configuration"></a>应用程序配置
 
@@ -102,7 +104,7 @@ ms.locfileid: "88589157"
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>如何实现更改应用程序加载的登录页？
 
-在应用程序注册页中，可以将主页 URL 更改为登录页的所需外部 URL。 从 "我的应用" 或 Office 365 门户启动应用程序时，将加载指定的页面。 有关配置步骤，请参阅 [使用 Azure AD 应用程序代理为发布的应用设置自定义主页](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-home-page)
+在应用程序注册页中，可以将主页 URL 更改为登录页的所需外部 URL。 从 "我的应用" 或 Office 365 门户启动应用程序时，将加载指定的页面。 有关配置步骤，请参阅 [使用 Azure AD 应用程序代理为发布的应用设置自定义主页](./application-proxy-configure-custom-home-page.md)
 
 ### <a name="can-only-iis-based-applications-be-published-what-about-web-applications-running-on-non-windows-web-servers-does-the-connector-have-to-be-installed-on-a-server-with-iis-installed"></a>只能发布基于 IIS 的应用程序吗？ 什么是在非 Windows web 服务器上运行的 web 应用程序？ 连接器是否必须安装在安装了 IIS 的服务器上？
 
@@ -125,6 +127,12 @@ ms.locfileid: "88589157"
 
 NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可以直接在客户端和已发布的 web 应用程序之间协商 NTLM 身份验证时，才能使用 NTLM 身份验证。 使用 NTLM 身份验证通常会在浏览器中显示登录提示。
 
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>在 B2B IWA 单一登录方案中，是否可以使用登录标识 "本地用户主体名称" 或 "本地 SAM 帐户名"？
+
+不能，这不起作用，原因是 Azure AD 中的来宾用户没有以上提到的任何登录标识所需的属性。
+
+在这种情况下，将回退到 "用户主体名称"。 有关 B2B 方案的更多详细信息，请阅读 [向 B2B 用户授予 Azure AD 访问本地应用程序的权限](../external-identities/hybrid-cloud-to-on-premises.md)。
+
 ## <a name="pass-through-authentication"></a>直通身份验证
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>能否对使用传递身份验证发布的应用程序使用条件性访问策略？
@@ -141,7 +149,7 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 请参阅将 [远程桌面与 Azure AD 应用程序代理一起发布](application-proxy-integrate-with-remote-desktop-services.md)。
 
-### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>能否在远程桌面网关发布方案中使用 Kerberos 约束委派 (单一登录 Windows 集成身份验证) ？
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>能否在远程桌面网关发布方案中使用 Kerberos 约束委派 (单一 Sign-On Windows 集成身份验证) ？
 
 不，不支持此方案。  
 
@@ -165,13 +173,13 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 ### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>能否使用 SharePoint 移动应用 (iOS/Android) 访问已发布的 SharePoint 服务器？
 
-[SharePoint 移动应用程序](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises)当前不支持 Azure Active Directory 预身份验证。
+[SharePoint 移动应用程序](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises)当前不支持 Azure Active Directory 预身份验证。
 
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Active Directory 联合身份验证服务 (AD FS) 发布 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>是否可以使用 Azure AD 应用程序代理作为 AD FS 代理 (，例如 Web 应用程序代理) ？
 
-否。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
+不是。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
 
 ## <a name="websocket"></a>WebSocket
 
@@ -185,9 +193,9 @@ Windows 管理中心中 (事件日志、PowerShell 和远程桌面服务) 的功
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用链接转换是否会影响性能？
 
-是的。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
+是。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
 
-为了获得最佳性能，我们建议通过配置 [自定义域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)来使用相同的内部和外部 url。 如果无法使用自定义域，则可以使用移动设备上的 "我的应用安全登录扩展" 或 "Microsoft Edge 浏览器" 改进链接转换性能。 [有关 Azure AD 应用程序代理发布的应用，请参阅重定向硬编码的链接](application-proxy-configure-hard-coded-link-translation.md)。
+为了获得最佳性能，我们建议通过配置 [自定义域](./application-proxy-configure-custom-domain.md)来使用相同的内部和外部 url。 如果无法使用自定义域，则可以使用移动设备上的 "我的应用安全登录扩展" 或 "Microsoft Edge 浏览器" 改进链接转换性能。 [有关 Azure AD 应用程序代理发布的应用，请参阅重定向硬编码的链接](application-proxy-configure-hard-coded-link-translation.md)。
 
 ## <a name="wildcards"></a>通配符
 
@@ -198,5 +206,5 @@ Windows 管理中心中 (事件日志、PowerShell 和远程桌面服务) 的功
 1. 使用通配符将 HTTP 和 HTTPS Url 发布为单独的应用程序，但为每个 Url 提供不同的自定义域。 此配置将起作用，因为它们具有不同的外部 URL。
 
 2. 通过通配符应用程序发布 HTTPS URL。 使用以下应用程序代理 PowerShell cmdlet 单独发布 HTTP 应用程序：
-   - [应用程序代理应用程序管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [应用程序代理连接器管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [应用程序代理应用程序管理](/powershell/module/azuread/#application_proxy_application_management&preserve-view=true)
+   - [应用程序代理连接器管理](/powershell/module/azuread/#application_proxy_connector_management&preserve-view=true)

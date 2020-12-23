@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f4569a45b9ed0eee7c375e660df97925335313b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d4410a39cc9b04565d7b753b7821e11c8ece2593
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549789"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458534"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>教程：Azure Active Directory 单一登录 (SSO) 与 LinkedIn Elevate 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549789"
 * 让用户使用其 Azure AD 帐户自动登录到 LinkedIn Elevate。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,8 +42,8 @@ ms.locfileid: "88549789"
 
 
 * LinkedIn Elevate 支持 **SP 和 IDP** 发起的 SSO
-* LinkedIn Elevate 支持**实时**用户预配
-* LinkedIn Elevate 支持[**自动**用户预配](linkedinelevate-provisioning-tutorial.md)
+* LinkedIn Elevate 支持 **实时** 用户预配
+* LinkedIn Elevate 支持 [**自动** 用户预配](linkedinelevate-provisioning-tutorial.md)
 
 ## <a name="adding-linkedin-elevate-from-the-gallery"></a>从库中添加 LinkedIn Elevate
 
@@ -53,7 +53,7 @@ ms.locfileid: "88549789"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **LinkedIn Elevate**。 
+1. 在“从库中添加”部分的搜索框中，键入 **LinkedIn Elevate** 。 
 1. 在结果面板中选择“LinkedIn Elevate”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -144,11 +144,11 @@ ms.locfileid: "88549789"
 
 1. 在“帐户中心”  ，单击“设置”  下的“全局设置”  。 此外，请从下拉列表中选择“提升 - 提升 AAD 测试”  。
 
-    ![配置单一登录](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![屏幕截图显示了“全局设置”，你可以在其中选择“提升 AAD 测试”。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
 1. 单击“或单击此处从表单加载并复制单个字段”并执行以下步骤： 
 
-    ![配置单一登录](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![屏幕截图显示了“单一登录”，你可以在其中输入所述值。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
     a. 复制“实体 ID”，并将其粘贴到 Azure 门户上“基本 SAML 配置”中的“标识符”文本框内。   
 
@@ -156,11 +156,11 @@ ms.locfileid: "88549789"
 
 1. 转到“LinkedIn 管理设置”  分区。 单击“上传 XML 文件”选项，上传从 Azure 门户下载的 XML 文件。
 
-    ![配置单一登录](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![屏幕截图显示了“配置 LinkedIn 服务提供商 SSO 设置”，你可以在其中上传 XML 文件。](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. 单击“打开”  启用 SSO。 SSO 状态将从“未连接”  更改为“已连接” 
 
-    ![配置单一登录](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![屏幕截图显示了“单一登录”，你可以在其中选择“自动分配许可证”。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-elevate-test-user"></a>创建 LinkedIn Elevate 测试用户
 
@@ -172,15 +172,14 @@ LinkedIn Elevate 应用程序支持及时用户设置，进行身份验证后，
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“LinkedIn Elevate”磁贴时，应会自动登录到设置了 SSO 的 LinkedIn Elevate。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“LinkedIn Elevate”磁贴时，应会自动登录到设置了 SSO 的 LinkedIn Elevate。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 LinkedIn Elevate](https://aad.portal.azure.com/)
-

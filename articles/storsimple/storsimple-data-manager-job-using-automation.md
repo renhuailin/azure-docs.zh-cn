@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 3d0103857b6f759560129dbe8e693ec6c0d7291e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743601"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961203"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>使用 Azure 自动化来触发作业
 
@@ -26,7 +26,7 @@ ms.locfileid: "91743601"
 
 在开始之前，请确保具备以下条件：
 
-*   安装在客户端计算机上的 Azure PowerShell。 [下载 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
+*   安装在客户端计算机上的 Azure PowerShell。 [下载 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。
 *   资源组内 StorSimple 数据管理器服务中正确配置的作业定义。
 *   [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip)从 GitHub 存储库下载文件。 
 *   [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)从 GitHub 存储库下载脚本。
@@ -35,22 +35,22 @@ ms.locfileid: "91743601"
 
 ### <a name="set-up-the-automation-account"></a>设置自动化帐户
 
-1. 在 Azure 门户中创建 Azure 运行方式自动化帐户。 为此，请转到“Azure 市场”&gt;“所有”，并搜索“自动化”。******** 选择 " **自动化帐户**"。
+1. 在 Azure 门户中创建 Azure 运行方式自动化帐户。 为此，请转到“Azure 市场”&gt;“所有”，并搜索“自动化”。 选择 " **自动化帐户**"。
 
     ![创建自动化运行方式帐户](./media/storsimple-data-manager-job-using-automation/search-automation-account1.png)
 
-2. 若要添加新的自动化帐户，请单击“+ 添加”****。
+2. 若要添加新的自动化帐户，请单击“+ 添加”。
 
     ![创建运行方式自动化帐户2](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
-3. 在“添加自动化”中****：
+3. 在“添加自动化”中：
 
-   1. 提供自动化帐户的“名称”****。
-   2. 选择已链接到 StorSimple 数据管理器服务的“订阅”****。
+   1. 提供自动化帐户的“名称”。
+   2. 选择已链接到 StorSimple 数据管理器服务的“订阅”。
    3. 创建新的资源组，或选择现有的资源组。
-   4. 选择“位置” 。
-   5. 保留选择默认的“创建运行方式帐户”选项。****
-   6. 若要在仪表板上获取快速访问的链接，请选中“固定到仪表板”****。 单击“创建”。
+   4. 选择“位置”  。
+   5. 保留选择默认的“创建运行方式帐户”选项。
+   6. 若要在仪表板上获取快速访问的链接，请选中“固定到仪表板”。 单击“创建”。
 
       ![创建运行方式自动化帐户3](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -58,13 +58,13 @@ ms.locfileid: "91743601"
     
       ![有关自动化帐户部署的通知](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-      有关详细信息，请参阅[创建运行方式帐户](../automation/automation-create-runas-account.md)。
+      有关详细信息，请参阅[创建运行方式帐户](../automation/manage-runas-account.md)。
 
-3. 在新建的帐户中，转到“共享资源”>“模块”并单击“+ 添加模块”。********
+3. 在新建的帐户中，转到“共享资源”>“模块”并单击“+ 添加模块”。
 
     ![导入模块 1](./media/storsimple-data-manager-job-using-automation/import-module-1.png)
 
-4. 从本地计算机浏览到 `DataTransformationApp.zip` 文件的位置，选择并打开模块。 单击“确定”导入模块****。
+4. 从本地计算机浏览到 `DataTransformationApp.zip` 文件的位置，选择并打开模块。 单击“确定”导入模块。
 
     ![导入模块 2](./media/storsimple-data-manager-job-using-automation/import-module-2.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "91743601"
 
    ![导入模块 4](./media/storsimple-data-manager-job-using-automation/import-module-4.png)
 
-5. 将收到正在部署该模块的通知；完成此过程后，还会收到另一个通知。  将“模块”中的状态更改为“可用”********。
+5. 将收到正在部署该模块的通知；完成此过程后，还会收到另一个通知。  将“模块”中的状态更改为“可用”。
 
     ![导入模块 5](./media/storsimple-data-manager-job-using-automation/import-module-5.png)
 
@@ -84,9 +84,9 @@ ms.locfileid: "91743601"
 
     ![添加 Runbook 1](./media/storsimple-data-manager-job-using-automation/add-runbook-1.png)
 
-2. 在“添加 Runbook”中，单击“导入现有的 Runbook”********。
+2. 在“添加 Runbook”中，单击“导入现有的 Runbook”。
 
-3. 指向 Runbook 文件的 Azure PowerShell 脚本文件 `Trigger-DataTransformation-Job.ps1`****。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击“创建”。
+3. 指向 Runbook 文件的 Azure PowerShell 脚本文件 `Trigger-DataTransformation-Job.ps1`。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击“创建”。
 
     ![添加 Runbook 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 
@@ -98,21 +98,21 @@ ms.locfileid: "91743601"
 
     ![添加 Runbook 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
-6. 提供参数，例如 StorSimple 数据管理器服务的名称、已关联的资源组和作业定义的名称。 **开始**测试。 完成运行后，会生成报告。 有关详细信息，请参阅如何 [测试 runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
+6. 提供参数，例如 StorSimple 数据管理器服务的名称、已关联的资源组和作业定义的名称。 **开始** 测试。 完成运行后，会生成报告。 有关详细信息，请参阅如何 [测试 runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook)。
 
     ![添加 Runbook 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
 
-7. 在测试窗格中检查 Runbook 的输出。 如果对结果满意，请关闭窗格。 单击“发布”，出现确认提示时，请确认并发布该 Runbook。****
+7. 在测试窗格中检查 Runbook 的输出。 如果对结果满意，请关闭窗格。 单击“发布”，出现确认提示时，请确认并发布该 Runbook。
 
     ![添加 Runbook 6](./media/storsimple-data-manager-job-using-automation/add-runbook-6.png)
 
-8. 返回到“Runbook”并选择新创建的 Runbook****。
+8. 返回到“Runbook”并选择新创建的 Runbook。
 
     ![添加 Runbook 7](./media/storsimple-data-manager-job-using-automation/add-runbook-7.png)
 
-9. **启动** runbook。 在“启动 Runbook”中，输入所有参数****。 单击“确定”，提交并启动数据转换作业****。
+9. **启动** runbook。 在“启动 Runbook”中，输入所有参数。 单击“确定”，提交并启动数据转换作业。
 
-10. 若要在 Azure 门户中监视作业进程，请转到 StorSimple 数据管理器服务中的“作业”****。 选择并单击作业，查看作业详细信息。
+10. 若要在 Azure 门户中监视作业进程，请转到 StorSimple 数据管理器服务中的“作业”。 选择并单击作业，查看作业详细信息。
 
     ![添加 Runbook 10](./media/storsimple-data-manager-job-using-automation/add-runbook-10.png)
 

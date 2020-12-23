@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887149"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547888"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>在 Azure HDInsight 上排查 Apache HBase 性能问题
 
@@ -73,44 +73,44 @@ ms.locfileid: "75887149"
 
 - 将 `memstore` 大小从默认的 128 MB 增大至 256 MB。 通常建议对繁重写入方案使用此设置。
 
-- 将专门用于压缩的线程数从默认设置 **1** 增大至 **4**。 如果观察到频繁的次要压缩，则此设置是相关的。
+- 将专门用于压缩的线程数从默认设置 **1** 增大至 **4** 。 如果观察到频繁的次要压缩，则此设置是相关的。
 
-- 由于存储限制，请避免阻止 `memstore` 刷新。 若要提供此缓冲区，请将 `Hbase.hstore.blockingStoreFiles` 设置增大至 **100**。
+- 由于存储限制，请避免阻止 `memstore` 刷新。 若要提供此缓冲区，请将 `Hbase.hstore.blockingStoreFiles` 设置增大至 **100** 。
 
 - 若要控制刷新，请使用以下设置：
 
-    - `Hbase.regionserver.maxlogs`：**140**（避免因 WAL 限制而导致的刷新）
+    - `Hbase.regionserver.maxlogs`： **140** （避免因 WAL 限制而导致的刷新）
 
-    - `Hbase.regionserver.global.memstore.lowerLimit`：**0.55**
+    - `Hbase.regionserver.global.memstore.lowerLimit`： **0.55**
 
-    - `Hbase.regionserver.global.memstore.upperLimit`：**0.60**
+    - `Hbase.regionserver.global.memstore.upperLimit`： **0.60**
 
 - 用于线程池优化的 Phoenix 特定配置：
 
-    - `Phoenix.query.queuesize`：**10000**
+    - `Phoenix.query.queuesize`： **10000**
 
-    - `Phoenix.query.threadpoolsize`：**512**
+    - `Phoenix.query.threadpoolsize`： **512**
 
 - 其他 Phoenix 特定配置：
 
-    - `Phoenix.rpc.index.handler.count`：**50**（如果存在大型或众多的索引查找）
+    - `Phoenix.rpc.index.handler.count`： **50** （如果存在大型或众多的索引查找）
 
-    - `Phoenix.stats.updateFrequency`：**1 小时**
+    - `Phoenix.stats.updateFrequency`： **1 小时**
 
-    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`：**1 小时**
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`： **1 小时**
 
-    - `Phoenix.coprocessor.maxmetadatacachesize`：**50 MB**
+    - `Phoenix.coprocessor.maxmetadatacachesize`： **50 MB**
 
-- RPC 超时：**3 分钟**
+- RPC 超时： **3 分钟**
 
    - RPC 超时包括 HBase RPC 超时、HBase 客户端扫描程序超时和 Phoenix 查询超时。 
-   - 请确保在服务器端和客户端端将 `hbase.client.scanner.caching` 参数设置为相同的值。 如果两者不同，此设置会导致 `OutOfOrderScannerException`相关的客户端错误。 对于大型扫描，应将此设置指定为较小值。 我们将此值设置为 **100**。
+   - 请确保在服务器端和客户端端将 `hbase.client.scanner.caching` 参数设置为相同的值。 如果两者不同，此设置会导致 `OutOfOrderScannerException`相关的客户端错误。 对于大型扫描，应将此设置指定为较小值。 我们将此值设置为 **100** 。
 
 ## <a name="other-considerations"></a>其他注意事项
 
 下面是要考虑优化的其他参数：
 
-- `Hbase.rs.cacheblocksonwrite` – 在 HDI 上，此设置默认指定为 **true**。
+- `Hbase.rs.cacheblocksonwrite` – 在 HDI 上，此设置默认指定为 **true** 。
 
 - 用于推迟次要压缩的设置。
 
@@ -124,4 +124,4 @@ ms.locfileid: "75887149"
 
 - 联系 [@AzureSupport](https://twitter.com/azuresupport)。 这是用于改善客户体验的官方 Microsoft Azure 帐户。 它将 Azure 社区连接到适当的资源：答案、支持和专家。
 
-- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 你的 Microsoft Azure 订阅包括对订阅管理和计费支持的访问权限，并且通过一个 [Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 你的 Microsoft Azure 订阅包括对订阅管理和计费支持的访问权限，并且通过一个 [Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

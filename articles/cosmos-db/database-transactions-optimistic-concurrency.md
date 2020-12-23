@@ -4,21 +4,23 @@ description: 本文介绍 Azure Cosmos DB 中的数据库事务和乐观并发�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9d8bd72b6a03164a41e0b7c0ff00ac728cecf7f5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: bdfbe5106f220a9fe4a3568709187b9071bc7917
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355375"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334270"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>事务和乐观并发控制
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 数据库事务提供一种安全且可预测的编程模型来处理数据的并发更改。 利用 SQL Server 等传统关系数据库，你可以使用存储过程和/或触发器编写业务逻辑，然后将其发送到该服务器以便直接在数据库引擎中执行。 使用传统关系数据库时需要处理两种不同的编程语言 - 非事务性应用程序编程语言（例如 JavaScript、Python、C#、Java 等）和由数据库本机执行的事务性编程语言（例如 T-SQL）。
 
-Azure Cosmos DB 中的数据库引擎支持使用快照隔离且完全符合 ACID（原子性, 一致性, 隔离性, 持久性）的事务。 容器[逻辑分区](partition-data.md)范围内的所有数据库操作都以事务方式在分区副本托管的数据库引擎内执行。 这些操作同时包括写入（更新逻辑分区内的一个或多个项）和读取操作。 下表说明了不同的操作和事务类型：
+Azure Cosmos DB 中的数据库引擎支持使用快照隔离且完全符合 ACID（原子性, 一致性, 隔离性, 持久性）的事务。 容器[逻辑分区](partitioning-overview.md)范围内的所有数据库操作都以事务方式在分区副本托管的数据库引擎内执行。 这些操作同时包括写入（更新逻辑分区内的一个或多个项）和读取操作。 下表说明了不同的操作和事务类型：
 
 | **操作**  | **操作类型** | **单项或多项事务** |
 |---------|---------|---------|
@@ -49,9 +51,9 @@ Azure Cosmos DB 中的数据库引擎支持使用快照隔离且完全符合 ACI
 
 ## <a name="optimistic-concurrency-control"></a>乐观并发控制
 
-乐观并发控制可以防止丢失更新和删除。 并发冲突的操作受数据库引擎的常规悲观锁定的限制，该引擎由拥有该项的逻辑分区托管。 如果两个并发操作尝试更新逻辑分区内的一个最新版的项，则其中一个会成功，而另一个将失败。 但是，如果尝试同时更新相同项的一个或两个操作以前读取过该项的较旧值，则该数据库无法确定这一个或两个冲突操作以前读取的值是否确实是项的最新值。 幸运的是，在允许这两个操作进入数据库引擎内的事务边界之前，可以使用**乐观并发控制 (OCC)** 检测这种情况。 OCC 可防止数据意外覆盖其他人所做的更改。 它还可以防止其他人意外覆盖你自己的更改。
+乐观并发控制可以防止丢失更新和删除。 并发冲突的操作受数据库引擎的常规悲观锁定的限制，该引擎由拥有该项的逻辑分区托管。 如果两个并发操作尝试更新逻辑分区内的一个最新版的项，则其中一个会成功，而另一个将失败。 但是，如果尝试同时更新相同项的一个或两个操作以前读取过该项的较旧值，则该数据库无法确定这一个或两个冲突操作以前读取的值是否确实是项的最新值。 幸运的是，在允许这两个操作进入数据库引擎内的事务边界之前，可以使用 **乐观并发控制 (OCC)** 检测这种情况。 OCC 可防止数据意外覆盖其他人所做的更改。 它还可以防止其他人意外覆盖你自己的更改。
 
-基于 Azure Cosmos DB 的通信协议层，项的并发更新受 OCC 限制。 Azure Cosmos 数据库可确保要更新（或删除）项的客户端版本与 Azure Cosmos 容器中该项的版本相同。 这可保证你的写入内容不会被他人的写入内容意外覆盖，反之亦然。 在多用户环境中，乐观并发控制可防止意外删除或更新项的错误版本。 在这种情况下，可防止项出现令人痛恨的“丢失更新”或“丢失删除”问题。
+基于 Azure Cosmos DB 的通信协议层，项的并发更新受 OCC 限制。 Azure Cosmos 数据库可确保要更新（或删除）项的客户端版本与 Azure Cosmos 容器中该项的版本相同。 这确保了写入被其他人意外覆盖了写入，反之亦然。 在多用户环境中，乐观并发控制可防止意外删除或更新项的错误版本。 在这种情况下，可防止项出现令人痛恨的“丢失更新”或“丢失删除”问题。
 
 存储在 Azure Cosmos 容器中的每个项都具有系统定义的 `_etag` 属性。 每次更新项时，`_etag` 的值都由服务器自动生成和更新。 `_etag` 可与客户端提供的 `if-match` 请求标头配合使用，使服务器能够决定是否可以条件性地更新某项。 如果 `if-match` 标头的值与服务器上的 `_etag` 的值匹配，则会更新该项。 如果 `if-match` 请求标头值不再是最新值，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应消息。 然后客户端可重新提取该项，以在服务器上获取该项的当前版本，或用该项自己的 `_etag` 值覆盖服务器中该项的版本。 此外，`_etag` 可以与 `if-none-match` 标头配合使用，以确定是否需要重新提取资源。
 
@@ -61,7 +63,8 @@ Azure Cosmos DB 中的数据库引擎支持使用快照隔离且完全符合 ACI
 
 请通过以下文章详细了解数据库事务和乐观并发控制：
 
-- [使用 Azure Cosmos 数据库、容器和项](databases-containers-items.md)
+- [使用 Azure Cosmos 数据库、容器和项](account-databases-containers-items.md)
 - [一致性级别](consistency-levels.md)
 - [冲突类型和解决策略](conflict-resolution-policies.md)
+- [使用 TransactionalBatch](transactional-batch.md)
 - [存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)

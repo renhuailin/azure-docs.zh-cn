@@ -1,35 +1,37 @@
 ### YamlMime:Landing
-title: Azure DevOps Starter 文档
-summary: Azure DevOps Starter 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
+title: 有关部署到 Azure 的 DevOps Starter 文档
+summary: DevOps Starter 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，来创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道或工作流。 DevOps Starter 现支持创建 GitHub Actions 工作流。
 metadata:
-  title: Azure DevOps Starter 文档
+  title: DevOps Starter 文档
   description: 使用现有的代码和 Git 存储库，或者选择一个示例应用，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
   ms.date: 03/24/2020
-  ms.openlocfilehash: 62e95192f25487be60ed0334054f200447fc64cb
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 2b26d1e35aa99f2c804e74ae3e0da65659cf77a3
+  ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91855933"
+  ms.lasthandoff: 11/30/2020
+  ms.locfileid: "96339891"
 landingContent:
-- title: 关于 Azure DevOps Starter
+- title: 关于 DevOps Starter
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure DevOps Starter？
+    - text: 什么是 DevOps Starter？
       url: overview.md
   - linkListType: video
     links:
-    - text: “通过 Azure DevOps Starter 创建 CI/CD”视频 (8:53)
+    - text: 使用 Azure DevOps 通过 DevOps Starter 创建 CI/CD (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
-- title: 创建 CI/CD 管道
+- title: 配置 CI/CD
   linkLists:
   - linkListType: quickstart
     links:
+    - text: 使用 GitHub Actions 的 Node.js
+      url: ./devops-starter-gh-nodejs.md
     - text: .NET
       url: ./azure-devops-project-aspnet-core.md
     - text: Node.js
@@ -44,10 +46,12 @@ landingContent:
       url: ./azure-devops-project-ruby.md
     - text: Go
       url: ./azure-devops-project-go.md
-- title: 创建发布管道
+- title: 部署到 Azure
   linkLists:
   - linkListType: tutorial
     links:
+    - text: 使用 GitHub Actions 将应用部署到 Azure Web 应用
+      url: devops-starter-gh-web-app.md
     - text: 通过 GitHub 使用自带代码
       url: azure-devops-project-vms.md
     - text: 将 ASP.NET 应用部署到 Azure 虚拟机

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508038"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967969"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>使用 StorSimple Device Manager 服务管理 StorSimple 设备
 
@@ -65,7 +65,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 | 关于访问控制记录</br>创建访问控制记录</br>编辑访问控制记录</br>删除访问控制记录 |[管理访问控制记录](storsimple-8000-manage-acrs.md) |
 | 查看作业详细信息</br>取消作业 |[管理作业](storsimple-8000-manage-jobs-u2.md) |
 | 接收警报通知</br>管理警报</br>查看警报 |[查看和管理 StorSimple 警报](storsimple-8000-manage-alerts.md) |
-| 创建监视图表 |[监视 StorSimple 设备](storsimple-monitor-device.md) |
+| 创建监视图表 |[监视 StorSimple 设备](./storsimple-8000-monitor-device.md) |
 | 添加卷容器</br>修改卷容器</br>删除卷容器 |[管理卷容器](storsimple-8000-manage-volume-containers.md) |
 | 添加卷</br>修改卷</br>使卷脱机</br>删除卷</br>监视卷 |[管理卷](storsimple-8000-manage-volumes-u2.md) |
 | 修改设备设置</br>修改时间设置</br>修改 DNS.md 设置</br>配置网络接口 |[修改 StorSimple 设备的设备配置](storsimple-8000-modify-device-config.md) |
@@ -73,7 +73,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 | 修改设备管理员密码</br>修改 StorSimple Snapshot Manager 密码 |[更改 StorSimple 密码](storsimple-8000-change-passwords.md) |
 | 配置远程管理 |[远程连接到 StorSimple 设备](storsimple-8000-remote-connect.md) |
 | 配置警报设置 |[查看和管理 StorSimple 警报](storsimple-8000-manage-alerts.md) |
-| 为 StorSimple 设备配置 CHAP |[为 StorSimple 设备配置 CHAP](storsimple-configure-chap.md) |
+| 为 StorSimple 设备配置 CHAP |[为 StorSimple 设备配置 CHAP](./storsimple-8000-configure-chap.md) |
 | 添加备份策略</br>添加或修改计划</br>删除备份策略</br>创建手动备份</br>创建包含多个卷和计划的自定义备份策略 |[管理备份策略](storsimple-8000-manage-backup-policies-u2.md) |
 | 停止设备控制器</br>重新启动设备控制器</br>关闭设备控制器</br>将设备重置为出厂默认设置</br>（以上内容仅适用于本地设备） |[维护 StorSimple 设备控制器](storsimple-8000-manage-device-controller.md) |
 | 了解 StorSimple 硬件组件</br>监视硬件状态</br>（以上内容仅适用于本地设备） |[监视硬件组件](storsimple-8000-monitor-hardware-status.md) |
@@ -88,4 +88,3 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 * [使用 StorSimple 监视指示器 LED](storsimple-monitoring-indicators.md)
 
 如果无法解决问题并且需要创建服务请求，请参阅[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
-

@@ -8,42 +8,37 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: df7c27fb0aca6a9b903d29ea4414832fb677b3eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705238"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659448"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL 服务器
 
-本快速入门教程介绍如何在 [Azure Cloud Shell](https://shell.azure.com) 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)在 5 分钟内创建单个 Azure Database for PostgreSQL 服务器。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+本快速入门教程介绍如何在 [Azure Cloud Shell](https://shell.azure.com) 中使用 [Azure CLI](/cli/azure/get-started-with-azure-cli)在 5 分钟内创建单个 Azure Database for PostgreSQL 服务器。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-> [!TIP]
-> 请考虑使用更简单的 [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI 命令（当前为预览版）。 试用[快速入门](./quickstart-create-server-up-azure-cli.md)。
+- 本文需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-## <a name="prerequisites"></a>必备知识
-本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+    > [!TIP]
+    >  请考虑使用更简单的 [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI 命令（当前为预览版）。 试用[快速入门](./quickstart-create-server-up-azure-cli.md)。
 
-需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令登录到你的帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID 。 
+- 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。
 
-```azurecli-interactive
-az login
-```
+    - 记下 az login 输出中的 id 值，以用作命令中 subscription 参数的值  。 
 
-使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 记下 az login 输出中的 id 值，以用作命令中 subscription 参数的值  。 
+        ```azurecli
+        az account set --subscription <subscription id>
+        ```
 
-```azurecli
-az account set --subscription <subscription id>
-```
-
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)。
+    - 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)，然后在此资源组中创建 PostgreSQL 服务器。 应提供唯一名称。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)，然后在此资源组中创建 PostgreSQL 服务器。 应提供唯一名称。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -58,7 +53,7 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 
 **设置** | **示例值** | **说明**
 ---|---|---
-name | mydemoserver | 标识 Azure Database for PostgreSQL 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
+name | mydemoserver | 标识 Azure Database for PostgreSQL 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。 有关详细信息，请参阅 [Azure Database for PostgreSQL 命名规则](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql)。
 resource-group | myresourcegroup | Azure 资源组的名称。
 location | westus | 服务器的 Azure 位置。
 admin-user | myadmin | 用于管理员登录的用户名。 它不能为“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”     。
@@ -66,8 +61,8 @@ admin-password | *安全密码* | 管理员用户的密码。 密码必须包含
 sku-name|GP_Gen5_2| 定价层和计算配置的名称。 请遵循简写约定 {pricing tier} _{compute generation}_ {vCores}。 有关详细信息，请参阅 [Azure Database for PostgreSQL 定价](https://azure.microsoft.com/pricing/details/postgresql/server/)。
 
 >[!IMPORTANT] 
->- 服务器上的默认 PostgreSQL 版本为 9.6。 若要查看支持的所有版本，请参阅[支持的 PostgreSQL 主要版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)。
->- 若要查看 az postgres server create 命令的所有参数，请参阅此[参考文档](https://docs.microsoft.com/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create)。
+>- 服务器上的默认 PostgreSQL 版本为 9.6。 若要查看支持的所有版本，请参阅[支持的 PostgreSQL 主要版本](./concepts-supported-versions.md)。
+>- 若要查看 az postgres server create 命令的所有参数，请参阅此[参考文档](/cli/azure/postgres/server#az-postgres-server-create)。
 >- 默认情况下，服务器上启用 SSL。 有关 SSL 的详细信息，请参阅[配置 SSL 连接](./concepts-ssl-connection-security.md)。
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则 
@@ -153,8 +148,3 @@ az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
-> 
-> [使用 PostgreSQL 部署 Django Web 应用](../app-service/containers/tutorial-python-postgresql-app.md)
->
-> [使用 Node.JS 应用进行连接](./connect-nodejs.md)
-

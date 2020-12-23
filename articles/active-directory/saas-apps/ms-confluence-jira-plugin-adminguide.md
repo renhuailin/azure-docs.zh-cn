@@ -8,15 +8,15 @@ ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
-ms.translationtype: MT
+ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543976"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359151"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 单一登录 (SSO) 插件可让 Microsoft Azur
 
 ## <a name="how-it-works"></a>工作原理
 
-当用户登录到 Atlassian Jira 或 Confluence 应用程序时，登录页上会显示“使用 Azure AD 登录”按钮。**** 当用户选择该按钮时，系统会要求他们使用 Azure AD 组织登录页（即工作或学校帐户）登录。
+当用户登录到 Atlassian Jira 或 Confluence 应用程序时，登录页上会显示“使用 Azure AD 登录”按钮。 当用户选择该按钮时，系统会要求他们使用 Azure AD 组织登录页（即工作或学校帐户）登录。
 
 用户通过身份验证后，应该可以登录到应用程序。 如果他们已使用其工作或学校帐户的 ID 和密码进行身份验证，则会直接登录到应用程序。 
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 单一登录 (SSO) 插件可让 Microsoft Azur
 > [!NOTE]
 > 用户预配不是通过该插件完成的。
 
-## <a name="audience"></a>目标受众
+## <a name="audience"></a>读者
 
 Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进行的 SSO。
 
@@ -67,7 +67,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * Jira 核心和软件：6.0 到 7.12
 * Jira 服务台：3.0.0 到 3.5.0
-* JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](./jira52microsoft-tutorial.md)
 * Confluence：5.0 到 5.10
 * Confluence：6.0.1
 * Confluence：6.1.1
@@ -89,19 +89,19 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 1. 以管理员身份登录到 Jira 或 Confluence 实例。
 
-2. 转到 Jira/Confluence 管理控制台，并选择“加载项”。****
+2. 转到 Jira/Confluence 管理控制台，并选择“加载项”。
 
-3. 从 microsoft 下载中心下载适用于 Confluence 的 Jira microsoft saml sso 插件的[microsoft saml sso 插件](https://www.microsoft.com/download/details.aspx?id=56506) /  [Microsoft SAML SSO Plugin for Confluence](https://www.microsoft.com/download/details.aspx?id=56503)。
+3. 从 Microsoft 下载中心下载[适用于 Jira 的 Microsoft SAML SSO 插件](https://www.microsoft.com/download/details.aspx?id=56506)/ [适用于 Confluence 的 Microsoft SAML SSO 插件](https://www.microsoft.com/download/details.aspx?id=56503)。
 
    相应的插件版本随即显示在搜索结果中。
 
 4. 选择插件和通用插件管理器 (UPM) 并安装。
 
-插件安装后，会显示在“管理加载项”的“用户安装的加载项”部分。********
+插件安装后，会显示在“管理加载项”的“用户安装的加载项”部分。
 
 ## <a name="plug-in-configuration"></a>插件配置
 
-在开始使用插件之前，必须对其进行配置。 选择插件，选择“配置”按钮，并提供配置详细信息。****
+在开始使用插件之前，必须对其进行配置。 选择插件，选择“配置”按钮，并提供配置详细信息。
 
 下图显示了 Jira 和 Confluence 中的配置屏幕：
 
@@ -109,11 +109,11 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * **元数据 URL**：用于从 Azure AD 获取联合元数据的 URL。
 
-* **标识符**：由 Azure AD 用来验证请求源的 URL。 此值映射到 Azure AD 中的“标识符”元素。**** 插件会将此 URL 自动派生为 https:// *\<domain:port>* /。
+* **标识符**：由 Azure AD 用来验证请求源的 URL。 此值映射到 Azure AD 中的“标识符”元素。 插件自动派生此 URL，其格式为 https://\<domain:port>/。
 
-* **回复 URL**：启动 SAML 登录的标识提供者 (IdP) 中的回复 URL。 此值映射到 Azure AD 中的“回复 URL”元素。**** 插件会将此 URL 自动派生为 https:// *\<domain:port>* /plugins/servlet/saml/auth。
+* **回复 URL**：启动 SAML 登录的标识提供者 (IdP) 中的回复 URL。 此值映射到 Azure AD 中的“回复 URL”元素。 插件自动派生此 URL，其格式为 https://\<domain:port>/plugins/servlet/saml/auth。
 
-* **登录 URL**：启动 SAML 登录的 IdP 中的登录 URL。 此值映射到 Azure AD 中的“登录”元素。**** 插件会将此 URL 自动派生为 https:// *\<domain:port>* /plugins/servlet/saml/auth。
+* **登录 URL**：启动 SAML 登录的 IdP 中的登录 URL。 此值映射到 Azure AD 中的“登录”元素。 插件自动派生此 URL，其格式为 https://\<domain:port>/plugins/servlet/saml/auth。
 
 * **IdP 实体 ID**：IdP 使用的实体 ID。 解析元数据 URL 时会填充此框。
 
@@ -185,7 +185,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * Jira 核心和软件：6.0 到 7.12
 * Jira 服务台：3.0.0 到 3.5.0
-* JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](./jira52microsoft-tutorial.md)
 * Confluence：5.0 到 5.10
 * Confluence：6.0.1
 * Confluence：6.1.1

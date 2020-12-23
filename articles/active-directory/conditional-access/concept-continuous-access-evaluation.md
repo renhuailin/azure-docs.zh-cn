@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266053"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860297"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -26,7 +26,9 @@ ms.locfileid: "91266053"
 
 对策略冲突或安全问题的及时响应实际上需要令牌颁发者（如 Azure AD）和依赖方（如 Exchange Online）之间进行“对话”。 这种双向对话提供了两项重要功能。 信赖方可以注意到事情的变化（比如客户端来自一个新的位置），并通知令牌颁发者。 通过此对话，令牌颁发者也可通知信赖方由于帐户泄露、禁用或其他问题而停止遵从给定用户的令牌。 此对话的机制是连续访问评估 (CAE)。 虽然我们的目标是近乎实时地作出响应，但在某些情况下，由于事件传播时间的原因，延迟可能会长达 15 分钟。
 
-连续访问评估的初始实现侧重于 Exchange、Teams 和 SharePoint Online。 
+连续访问评估的初始实现侧重于 Exchange、Teams 和 SharePoint Online。
+
+若要准备应用程序以使用 CAE，请参阅 [如何在应用程序中使用启用了持续存取评估的 api](/azure/active-directory/develop/app-resilience-continuous-access-evaluation)。
 
 ### <a name="key-benefits"></a>主要优点
 
@@ -48,13 +50,13 @@ ms.locfileid: "91266053"
 - 管理员显式撤销用户的所有刷新令牌
 - Azure AD Identity Protection 检测到提升的用户风险
 
-此过程使用户失去了对组织的 SharePoint Online 文件、电子邮件、日历或任务以及团队的访问权限，使其能够在一个或多个关键事件之后 Microsoft 365 的客户端应用。 
+此过程会导致用户在这些关键事件之一发生后的数分钟内失去对 Microsoft 365 客户端应用中的组织 SharePoint Online 文件、电子邮件、日历或任务和 Teams 的访问权限。 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>条件访问策略评估（预览版）
 
 Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以在服务本身中对它们进行评估。
 
-此过程可让用户在网络位置更改后立即失去对组织文件、电子邮件、日历或任务 Microsoft 365 的客户端应用或 SharePoint Online 的访问权限。
+此过程会导致用户在网络位置发生更改后立即失去对 Microsoft 365 客户端应用或 SharePoint Online 中的组织文件、电子邮件、日历或任务的访问权限。
 
 > [!NOTE]
 > 并非所有应用和资源提供程序组合都受支持。 请参阅下表。 Office 指的是 Word、Excel 和 PowerPoint
@@ -103,12 +105,12 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 
 1. 支持 CAE 的客户端向 Azure AD 提供凭据或刷新令牌，要求获得某个资源的访问令牌。
 1. 访问令牌与其他项目一起返回到客户端。
-1. 管理员显式地[撤销用户的所有刷新令牌](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 吊销事件将从 Azure AD 发送到资源提供程序。
+1. 管理员显式地[撤销用户的所有刷新令牌](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)。 吊销事件将从 Azure AD 发送到资源提供程序。
 1. 向资源提供程序提供访问令牌。 资源提供程序评估令牌的有效性，并检查用户是否存在任何吊销事件。 资源提供程序使用此信息来决定是否授予对资源的访问权限。
 1. 在这种情况下，资源提供程序会拒绝访问，并将 401+ 声明质询发送回客户端。
 1. 支持 CAE 的客户端理解 401+ 声明质询。 它绕过缓存并返回到步骤 1，将其刷新令牌和声明质询一起发送回 Azure AD。 然后在此情况下，Azure AD 将重新评估所有条件，并提示用户重新进行身份验证。
 
-### <a name="user-condition-change-flow-preview"></a>用户条件更改流 (预览) ：
+### <a name="user-condition-change-flow-preview"></a>用户条件更改流（预览）：
 
 在下面的示例中，条件访问管理员配置了一个基于位置的条件访问策略，仅允许来自特定 IP 范围的访问：
 
@@ -137,10 +139,10 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 
 ### <a name="supported-location-policies"></a>支持的位置策略
 
-对于 CAE，只能深入了解基于命名 IP 的命名位置。 我们不会深入了解其他位置设置，如 [MFA 受信任的 ip](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或基于国家/地区的位置。 当用户来自受 MFA 信任的 IP 或包含 MFA 受信任的 IP 或国家/地区位置的受信任位置时，用户移到其他位置之后，将不会强制执行 CAE。 在这些情况下，我们将发出1小时的 CAE 令牌，且不进行即时 IP 强制检查。
+对于 CAE，我们只了解基于命名 IP 的命名位置。 我们不了解其他位置设置，例如[受 MFA 信任的 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或基于国家/地区的位置。 如果用户来自受 MFA 信任的 IP 或来自受信任的位置（其中包含受 MFA 信任的 IP 或国家/地区位置），则在用户移到其他位置之后，将不会强制执行 CAE。 在这些情况下，我们会颁发 1 小时 CAE 令牌，不进行即时 IP 强制检查。
 
 > [!IMPORTANT]
-> 配置持续访问评估的位置时，请仅使用 [基于 ip 的条件访问位置条件](../conditional-access/location-condition.md#preview-features) ，并配置可由标识提供者和资源提供程序查看的所有 IP 地址， **包括 IPv4 和 IPv6**。 不要使用国家/地区位置条件，也不要使用 Azure 多重身份验证的服务设置页中提供的受信任的 IP 功能。
+> 在配置连续访问评估的位置时，请仅使用[基于 IP 的条件访问位置条件](../conditional-access/location-condition.md#preview-features)并配置所有 IP 地址（包括 IPv4 和 IPv6），这些地址可通过标识提供者和资源提供程序查看。 不要使用国家/地区位置条件或 Azure AD 多重身份验证的服务设置 "页中提供的受信任的 ip 功能。
 
 ### <a name="ip-address-configuration"></a>IP 地址配置
 
@@ -159,7 +161,7 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 | 半年企业频道 | 如果设置为 enabled 或 1，则不支持 CAE。 | 如果设置为 enabled 或 1，则不支持 CAE。 |
 | 当前频道 <br> or <br> 每月企业频道 | 无论设置如何，都支持 CAE | 无论设置如何，都支持 CAE |
 
-有关 Office 更新通道的说明，请参阅 [Microsoft 365 应用的更新通道概述](https://docs.microsoft.com/deployoffice/overview-update-channels)。 建议组织不要禁用 Web 帐户管理器 (WAM)。
+有关 Office 更新通道的说明，请参阅 [Microsoft 365 应用的更新通道概述](/deployoffice/overview-update-channels)。 建议组织不要禁用 Web 帐户管理器 (WAM)。
 
 ### <a name="policy-change-timing"></a>策略更改计时
 

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 82c800df03826386c8b79d45584f4b26b0bc45e4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 88fd707d769c7aed53160a9f22fefd15cce19a4b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91440653"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340727"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
-本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在 [Azure Monitor 日志](../log-analytics/log-analytics-overview.md) 中，并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
+本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md) 中，并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 

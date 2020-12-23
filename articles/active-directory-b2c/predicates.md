@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203803"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108410"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 
@@ -42,7 +42,7 @@ Predicates 元素包含以下元素：
 
 Predicate 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词的标识符。 其他元素可以在策略中使用此标识符。 |
 | 方法 | 是 | 用于验证的方法类型。 可能的值：[IsLengthRange](#islengthrange)、[MatchesRegex](#matchesregex)、[IncludesCharacters](#includescharacters) 或 [IsDateRange](#isdaterange)。  |
@@ -73,7 +73,7 @@ Parameter 元素包含以下属性：
 
 IsLengthRange 方法检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 谓词元素支持以下参数：
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | 最大值 | 是 | 可输入的最大字符数。 |
 | 最小值 | 是 | 必须输入的最小字符数。 |
@@ -94,7 +94,7 @@ IsLengthRange 方法检查字符串声明值的长度是否在指定的最小和
 
 MatchesRegex 方法检查字符串声明值是否与正则表达式相匹配。 谓词元素支持以下参数：
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | RegularExpression | 是 | 要匹配的正则表达式模式。 |
 
@@ -112,7 +112,7 @@ MatchesRegex 方法检查字符串声明值是否与正则表达式相匹配。 
 
 IncludesCharacters 方法检查字符串声明值是否包含字符集。 谓词元素支持以下参数：
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | CharacterSet | 是 | 可输入的字符集。 例如，小写字符 `a-z`、大写字符 `A-Z`、数字 `0-9`，或 `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` 等一系列符号。 |
 
@@ -130,7 +130,7 @@ IncludesCharacters 方法检查字符串声明值是否包含字符集。 谓词
 
 IsDateRange 方法检查日期声明值是否在指定的最小和最大参数范围内。 谓词元素支持以下参数：
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | 最大值 | 是 | 可输入的最大日期。 日期格式遵循 `yyyy-mm-dd` 约定或 `Today`。 |
 | 最小值 | 是 | 可输入的最小日期。 日期格式遵循 `yyyy-mm-dd` 约定或 `Today`。|
@@ -178,7 +178,7 @@ PredicateValidations 元素包含以下元素：
 
 PredicateValidation 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。 ClaimType 元素可以在策略中使用此标识符。 |
 
@@ -196,7 +196,7 @@ PredicateGroups 元素包含以下元素：
 
 PredicateGroup 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词组的标识符。  |
 
@@ -209,7 +209,7 @@ PredicateGroup 元素包含以下元素：
 
 PredicateReferences 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | MatchAtLeast | 否 | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 如果未指定，则该值必须与所有谓词定义匹配。 |
 
@@ -221,7 +221,7 @@ PredicateReferences 元素包含以下元素：
 
 PredicateReference 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。  |
 
@@ -428,4 +428,4 @@ PredicateReference 元素包含以下属性：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用谓词验证[Azure Active Directory B2C 中的自定义策略配置密码复杂性](custom-policy-password-complexity.md)。
+- 了解如何使用谓词验证 [Azure Active Directory B2C 中的自定义策略配置密码复杂性](password-complexity.md) 。

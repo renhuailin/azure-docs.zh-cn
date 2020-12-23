@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b5de81f5eaf76c16c1ea8fc78075c4567c77aeee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447540"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531967"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>教程：查看 Microsoft 客户协议发票
 
@@ -54,6 +54,8 @@ ms.locfileid: "91447540"
 ![显示属性页中 Microsoft 客户协议的屏幕截图](./media/review-customer-agreement-bill/billing-mca-property.png)
 
 如果有权访问多个计费范围，请检查“计费帐户”列中的类型。 如果任何范围的计费帐户类型为“Microsoft 客户协议”  ，则有权访问 Microsoft 客户协议的计费帐户。
+
+在计费范围页中，选择“计费范围”，然后选择用于支付订阅使用费用的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。
 
 ![显示“计费帐户列表”页中 Microsoft 客户协议的屏幕截图](./media/review-customer-agreement-bill/billing-mca-in-the-list.png)
 
@@ -146,7 +148,7 @@ Azure 订阅页将显示计费配置文件中每个订阅的当月费用和上�
 
 ### <a name="download-your-invoice-and-usage-details"></a>下载发票和使用情况详细信息
 
-根据你的访问权限，可能需要在“成本管理 + 计费”中选择计费帐户或计费对象信息。 在左侧菜单中，选择“账单”  下的“发票”  。 在发票网格中，找到要下载的发票行。 单击行末尾的下载符号或省略号 (...)。 在“下载”  框中，下载使用情况详细信息文件和发票。
+根据你的访问权限，可能需要在“成本管理 + 计费”中选择计费帐户或计费对象信息。 在左侧菜单中，选择“账单”  下的“发票”  。 在发票网格中，找到要下载的发票行。 选择行末尾的下载符号或省略号 (...)。 在“下载”  框中，下载使用情况详细信息文件和发票。
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>按发票科目查看详细使用情况
 

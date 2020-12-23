@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 0874f6aeb74b028e92e10d972757cc5971735e39
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052370"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744306"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密码重置常见问题解答
 
@@ -38,7 +38,7 @@ ms.locfileid: "90052370"
 
   > **答:** 是的。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户(https://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板 (https://myapps.microsoft.com) 来注册。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。 
   >
-  > 如果启用 [组合注册](concept-registration-mfa-sspr-combined.md)，用户可以同时注册 SSPR 和 Azure 多重身份验证。
+  > 如果启用 [组合注册](concept-registration-mfa-sspr-combined.md)，则用户可以同时注册 SSPR 和 Azure AD 多重身份验证。
 * **问：如果为某个组启用密码重置，然后决定为每个人启用它，我的用户是否需要重新注册？**
 
   > **答:** 不是。 已填充身份验证数据的用户不需要重新注册。
@@ -104,7 +104,7 @@ ms.locfileid: "90052370"
   > * 请检查是否对目录中的身份验证数据进行了正确的格式设置，例如，+1 4255551234 或 user\@contoso.com。 
 * **问：密码重置支持哪些语言？**
 
-  > **答：** 密码重置 UI、短信和语音呼叫按照 Microsoft 365 中支持的相同语言进行本地化。
+  > **答:** 密码重置 UI、短信和语音呼叫以 Microsoft 365 支持的相同语言本地化。
   >
   >
 * **问：在自己目录的配置选项卡中设置组织品牌项目后，哪些密码重置体验部分会带有品牌信息？**
@@ -192,7 +192,7 @@ ms.locfileid: "90052370"
 
 * **问：我的用户应当到何处去更改其密码？**
 
-  > **答:** 用户可以在能够看到其个人资料图片或图标的任何位置（例如在其 [Office 365](https://portal.office.com) 门户或[访问面板](https://myapps.microsoft.com)体验的右上角）更改其密码。 用户可以从[访问面板个人资料页](https://account.activedirectory.windowsazure.com/r#/profile)更改其密码。 如果用户的密码已过期，还可以在 Azure AD 登录页上自动要求他们更改其密码。 最后，如果用户希望更改其密码，可以直接浏览到 [Azure AD 密码更改门户](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)。
+  > **答:** 用户可以在能够看到其个人资料图片或图标的任何位置（例如在其 [Office 365](https://portal.office.com) 门户或 [访问面板](https://myapps.microsoft.com)体验的右上角）更改其密码。 用户可以从[访问面板个人资料页](https://account.activedirectory.windowsazure.com/r#/profile)更改其密码。 如果用户的密码已过期，还可以在 Azure AD 登录页上自动要求他们更改其密码。 最后，如果用户希望更改其密码，可以直接浏览到 [Azure AD 密码更改门户](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)。
   >
   >
 * **问：当用户的本地密码过期时，他们是否可以在 Office 门户中收到通知？**
@@ -243,7 +243,7 @@ ms.locfileid: "90052370"
 
 * **问：密码写回如何在后台工作？**
 
-  > **答:** 请参阅[密码写回的工作原理](./tutorial-enable-sspr-writeback.md)一文，了解有关启用密码写回时发生的情况以及数据如何通过系统流回本地环境的说明。
+  > **答:** 请参阅 [密码写回的工作原理](./tutorial-enable-sspr-writeback.md)一文，了解有关启用密码写回时发生的情况以及数据如何通过系统流回本地环境的说明。
   >
   >
 * **问：密码写回需要多长时间才工作？是否和使用密码哈希同步一样也存在同步延迟？**
@@ -263,7 +263,7 @@ ms.locfileid: "90052370"
   >
 * **问：密码写回适用于哪些帐户类型？**
 
-  > **答:** 密码写回适用于从本地 Active Directory 同步到 Azure AD 的用户帐户，包括联合用户、密码哈希同步用户和传递身份验证用户。
+  > **答：** 密码写回适用于从本地 Active Directory 同步到 Azure AD （包括联合身份验证、密码哈希同步和 Pass-Through 身份验证用户）的用户帐户。
   >
   >
 * **问：密码写回是否会强制实施我的域密码策略？**
@@ -289,4 +289,4 @@ ms.locfileid: "90052370"
 * [什么是密码写回？我为什么关心它？](./tutorial-enable-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](./troubleshoot-sspr.md)

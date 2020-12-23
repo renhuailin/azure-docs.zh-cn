@@ -1,17 +1,17 @@
 ---
-title: 管理服务器-Azure 门户-Azure Database for MariaDB
+title: 管理服务器 - Azure 门户 - Azure Database for MariaDB
 description: 了解如何在 Azure 门户中管理 Azure Database for MariaDB 服务器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562445"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005021"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for MariaDB 服务器
 本文介绍如何管理 Azure Database for MariaDB 服务器。 管理任务包括计算和存储缩放、管理员密码重置，以及查看服务器详细信息。
@@ -34,7 +34,7 @@ ms.locfileid: "90562445"
 
 2. 选择“常规用途”或“内存优化”，具体取决于你要缩放到哪一层。   
 
-    ![屏幕截图显示已选择定价层的 Azure 门户，并选择 "内存优化" 值。](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+    ![屏幕截图显示已选择“定价”层和“内存优化”值的 Azure 门户。](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
     > [!NOTE]
     > 更改层级导致服务器重启。
@@ -79,7 +79,7 @@ ms.locfileid: "90562445"
 
 2. 输入新密码并确认。 文本框会就密码复杂性要求提示你。
 
-   ![屏幕截图显示 "重置密码" 对话框以及 "密码" 和 "确认密码"。](./media/howto-create-manage-server-portal/reset-password.png)
+   ![屏幕截图显示“重置密码”对话框以及“密码”和“确认密码”。](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. 选择“确定”以保存新密码。 
 
@@ -90,11 +90,11 @@ ms.locfileid: "90562445"
 
 1. 在 Azure 门户中选择服务器。 在“概览”窗口中，选择“删除”。  
 
-    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
+    ![“删除”](./media/howto-create-manage-server-portal/overview-delete.png)
 
 2. 在输入框中键入服务器名称，确认这是要删除的服务器。
 
-    ![屏幕截图显示一个对话框，该对话框验证是否要删除数据库，这是不可逆的。](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![屏幕截图显示验证是否要删除数据库（该操作不可撤销）的对话框。](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > 删除服务器的操作不可逆。

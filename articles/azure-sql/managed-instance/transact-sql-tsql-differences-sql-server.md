@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 06/02/2020
+ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617853"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368692"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 
 请参阅 [CREATE CERTIFICATE](/sql/t-sql/statements/create-certificate-transact-sql) 和 [BACKUP CERTIFICATE](/sql/t-sql/statements/backup-certificate-transact-sql)。 
  
-**解决方法**：请勿在创建证书备份后再还原该备份，而应[先获取证书二进制文件内容和私钥，将其存储为 .sql 文件，然后从二进制文件创建证书](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)：
+**解决方法**：请勿在创建证书备份后再还原该备份，而应 [先获取证书二进制文件内容和私钥，将其存储为 .sql 文件，然后从二进制文件创建证书](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)：
 
 ```sql
 CREATE CERTIFICATE  
@@ -158,6 +158,8 @@ WITH PRIVATE KEY (<private_key_options>)
 
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
+
+  - 若要使用 EXECUTE AS 语句模拟用户，用户需要直接映射到 Azure AD 服务器主体 (登录) 。 属于映射到 Azure AD 服务器主体的 Azure AD 组成员的用户不能通过 EXECUTE AS 语句有效模拟，即使调用方对指定的用户名具有模拟权限。
 
 - SQL 托管实例中的 Azure AD 用户在使用 [SSMS V18.4 或更高版本](/sql/ssms/download-sql-server-management-studio-ssms)或 [SQLPackage.exe](/sql/tools/sqlpackage-download) 时，可以使用 bacpac 文件进行数据库导出/导入。
   - 使用数据库 bacpac 文件时，可以使用以下配置： 
@@ -220,7 +222,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - 不支持多个日志文件。
 - “常规用途”服务层级不支持内存中对象。 
-- 每个“常规用途”实例限制为 280 个文件，这意味着，每个数据库最多只能有 280 个文件。 “常规用途”层级中的数据文件和日志文件都会计入此限制。 [“业务关键”层级支持每个数据库 32,767 个文件](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
+- 每个“常规用途”实例限制为 280 个文件，这意味着，每个数据库最多只能有 280 个文件。 “常规用途”层级中的数据文件和日志文件都会计入此限制。 [“业务关键”层级支持每个数据库 32,767 个文件](./resource-limits.md#service-tier-characteristics)。
 - 数据库中不能有包含文件流数据的文件组。 如果 .bak 包含 `FILESTREAM` 数据，还原将会失败。 
 - 每个文件都被放置在 Azure Blob 存储中。 每个文件的 IO 和吞吐量取决于每个单独文件的大小。
 
@@ -300,6 +302,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 尚不支持警报。
   - 不支持代理。
 - 不支持 EventLog。
+- 用户必须直接映射到 Azure AD 服务器主体 (登录) ，才能创建、修改或执行 SQL 代理作业。 未直接映射的用户（例如，属于具有创建、修改或执行 SQL 代理作业权限的 Azure AD 组的用户）将无法有效地执行这些操作。 这是因为托管实例模拟并 [执行为限制](#logins-and-users)。
 
 目前不支持以下 SQL 代理功能：
 
@@ -353,7 +356,11 @@ SQL 托管实例不支持 SQL Server 中启用的未记录 DBCC 语句。
 
 ### <a name="distributed-transactions"></a>分布式事务
 
-SQL 托管实例目前不支持 MSDTC 和[弹性事务](../database/elastic-transactions-overview.md)。
+对[分布式事务](../database/elastic-transactions-overview.md)的部分支持目前为公共预览版。 支持的应用场景有：
+* 参与者只包含属于[服务器信任组](./server-trust-group-overview.md)的 Azure SQL 托管实例的事务。
+* 从 .NET（TransactionScope 类）和 Transact-SQL 启动的事务。
+
+Azure SQL 托管实例当前不支持本地或 Azure 虚拟机中的 MSDTC 通常支持的其他应用场景。
 
 ### <a name="extended-events"></a>扩展事件
 
@@ -389,9 +396,9 @@ SQL 托管实例目前不支持 MSDTC 和[弹性事务](../database/elastic-tran
 
 SQL 托管实例中的链接服务器支持有限数量的目标：
 
-- 支持的目标有 SQL 托管实例、SQL 数据库、Azure Synapse SQL 和 SQL Server 实例。 
+- 支持的目标为 SQL 托管实例、SQL 数据库、Azure Synapse SQL [无服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 和专用池，以及 SQL Server 实例。 
 - 链接服务器不支持分布式可写事务 (MS DTC)。
-- 不支持的目标为文件、Analysis Services 和其他 RDBMS。 请尝试使用从 Azure Blob 存储进行本机 CSV 导入（使用 `BULK INSERT` 或 `OPENROWSET`）来代替文件导入操作。
+- 不支持的目标为文件、Analysis Services 和其他 RDBMS。 尝试使用 `BULK INSERT` 或 `OPENROWSET` 作为文件导入的替代方法，或使用 [azure Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)加载文件。
 
 操作： 
 
@@ -399,11 +406,12 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 - 支持使用 `sp_dropserver` 删除链接服务器。 请参阅 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 请参阅 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
 - `OPENDATASOURCE` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 仅支持将 `SQLNCLI`、`SQLNCLI11` 和 `SQLOLEDB` 值用作提供程序。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
-- 不能使用链接服务器从网络共享读取文件（Excel、CSV）。 请尝试使用从 Azure Blob 存储读取 CSV 文件的 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file)。 在[SQL 托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)上跟踪此请求|
+- 不能使用链接服务器从网络共享读取文件（Excel、CSV）。 尝试使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)， [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) ，从 AZURE Blob 存储读取 CSV 文件，或 [在 Synapse ANALYTICS 中引用无服务器 SQL 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)。 在[SQL 托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)上跟踪此请求|
 
 ### <a name="polybase"></a>PolyBase
 
-不支持引用 HDFS 或 Azure Blob 存储中文件的外部表。 有关 PolyBase 的信息，请参阅 [PolyBase](/sql/relational-databases/polybase/polybase-guide)。
+对于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池，公共预览版) 中唯一可用的外部源类型是 RDBMS (。 您可以使用 [外部表引用 Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 作为直接从 Azure 存储空间读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 或 SQL Server 来读取 Azure 存储数据。
+有关 PolyBase 的信息，请参阅 [PolyBase](/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>复制
 
@@ -478,7 +486,7 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
   - `remote proc trans`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
 - 不支持 `xp_cmdshell`。 请参阅 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。
-- 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 请参阅[扩展存储过程](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
+- 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 请参阅[扩展存储过程](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 
 ### <a name="system-functions-and-variables"></a>系统函数和变量
@@ -510,12 +518,11 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 ### <a name="failover-groups"></a>故障转移组
 系统数据库不会复制到故障转移组中的辅助实例。 因此，除非在辅助实例上手动创建系统数据库中的对象，否则依赖于该对象的方案将不可能在辅助实例上出现。
 
-### <a name="failover-groups"></a>故障转移组
-系统数据库不会复制到故障转移组中的辅助实例。 因此，除非在辅助实例上手动创建系统数据库中的对象，否则依赖于该对象的方案将不可能在辅助实例上出现。
-
 ### <a name="tempdb"></a>TEMPDB
-
-在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据 SQL 托管实例存储大小受到限制。 在“常规用途”层级上，`Tempdb` 日志文件大小限制为 120 GB。 如果某些查询需要在 `tempdb` 中为每个核心提供 24 GB 以上的空间，或者生成 120 GB 以上的日志数据，则这些查询可能会返回错误。
+- 在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据 SQL 托管实例存储大小受到限制。 在“常规用途”层级上，`Tempdb` 日志文件大小限制为 120 GB。 如果某些查询需要在 `tempdb` 中为每个核心提供 24 GB 以上的空间，或者生成 120 GB 以上的日志数据，则这些查询可能会返回错误。
+- `Tempdb` 始终拆分为12个数据文件：1个主文件（也称为 master、数据文件和11个非主数据文件）。 无法更改文件结构，并且无法将新文件添加到 `tempdb` 。 
+- 不支持[内存优化的 `tempdb` 元数据](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)（一个新的 SQL Server 2019 内存中数据库功能）。
+- 在模型数据库中创建的对象不能在 `tempdb` 重新启动或故障转移后在中自动创建，因为不 `tempdb` 会从模型数据库获取其初始对象列表。 必须在 `tempdb` 每次重新启动或故障转移后手动创建对象。
 
 ### <a name="msdb"></a>MSDB
 
@@ -523,13 +530,13 @@ SQL 托管实例中的以下 MSDB 架构必须由其相应的预定义角色拥�
 
 - 常规角色
   - TargetServersRole
-- [固定数据库角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [固定数据库角色](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail 角色](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile)：
+- [DatabaseMail 角色](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile)：
   - DatabaseMailUserRole
-- [集成服务角色](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15)：
+- [集成服务角色](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15)：
   - msdb
   - db_ssisltduser
   - db_ssisoperator
@@ -539,7 +546,7 @@ SQL 托管实例中的以下 MSDB 架构必须由其相应的预定义角色拥�
 
 ### <a name="error-logs"></a>错误日志
 
-SQL 托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅 [SQL 托管实例 - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) 或用于 Azure Data Studio 的 [SQL 托管实例扩展（预览版）](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs)。
+SQL 托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅 [SQL 托管实例 - sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) 或用于 Azure Data Studio 的 [SQL 托管实例扩展（预览版）](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs)。
 
 ## <a name="next-steps"></a>后续步骤
 

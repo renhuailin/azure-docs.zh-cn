@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
-ms.openlocfilehash: c170581496241ab3be0fe54bb484549ab4b1f976
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d78f2c8da338a92ef88734371647a48ddb190c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542898"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591185"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ADP 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542898"
 * 让用户可使用其 Azure AD 帐户自动登录到 ADP。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -134,7 +134,7 @@ ms.locfileid: "88542898"
 
 ## <a name="configure-adp-sso"></a>配置 ADP SSO
 
-若要在 **ADP** 端配置单一登录，需要在 [ADP 网站](https://adpfedsso.adp.com/public/login/index.fcc)中上传已下载的**元数据 XML**。
+若要在 **ADP** 端配置单一登录，需要在 [ADP 网站](https://adpfedsso.adp.com/public/login/index.fcc)中上传已下载的 **元数据 XML**。
 
 > [!NOTE]  
 > 此过程可能需要几天时间。
@@ -155,55 +155,55 @@ ms.locfileid: "88542898"
 
     ![单一登录链接属性](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  将“允许用户登录”字段值设置为“是”   。
+    1. 将“允许用户登录”字段值设置为“是”。
 
-    b.  将“需要进行用户分配”字段值设置为“是”。  
+    1. 将“需要进行用户分配”字段值设置为“是”。
 
-    c.  将“对用户可见”字段值设置为“是”。  
+    1. 将“对用户可见”字段值设置为“是”。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“ADP”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
+1. 在 [Azure 门户](https://portal.azure.com/)的“ADP”应用程序集成页上，找到“管理”部分，选择“单一登录”。
 
-1. 在“选择单一登录方法”  对话框中，选择“模式”  作为“链接”  。 将应用程序链接到 **ADP**。
+1. 在“选择单一登录方法”对话框中，选择“模式”作为“链接”。 将应用程序链接到 **ADP**。
 
     ![单一登录已链接](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
 
-1. 导航到“配置登录 URL”  部分，执行以下步骤：
+1. 导航到“配置登录 URL”部分，执行以下步骤：
 
     ![单一登录属性](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a. 粘贴从上述“属性”选项卡  复制的“用户访问 URL”（在 ADP 主应用中）。 
-                                                             
-    b. 以下 5 个不同的应用支持“中继状态 URL”。  必须手动将特定应用程序的相应“中继状态 URL”值追加到“用户访问 URL”。  
-    
-    * **ADP Workforce Now**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
+    1. 粘贴从上述“属性”选项卡复制的“用户访问 URL”（在 ADP 主应用中）。
 
-    * **ADP Workforce Now Enhanced Time**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
-    
-    * **ADP Vantage HCM**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+    1. 以下 5 个不同的应用支持“中继状态 URL”。 必须手动将特定应用程序的相应“中继状态 URL”值追加到“用户访问 URL”。
 
-    * **ADP Enterprise HR**
+        * **ADP Workforce Now**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
-    * **MyADP**
+        * **ADP Workforce Now Enhanced Time**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
 
-9. **保存**更改。
+        * **ADP Vantage HCM**
 
-10. 收到 ADP 代表的确认后，可以开始使用一个或两个用户进行测试。
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
-    a. 将少量的用户分配到 ADP 服务应用，以测试联合访问。
+        * **ADP Enterprise HR**
 
-    b. 如果这些用户能够访问库中的 ADP 服务应用，并且能够访问其 ADP 服务，则表示测试成功。
- 
-11. 确认测试成功后，将联合的 ADP 服务分配到单个用户或用户组（本教程稍后会介绍），并向员工推出该服务。
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+
+        * **MyADP**
+
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+
+1. 单击“保存”以保存更改。
+
+1. 收到 ADP 代表的确认后，可以开始使用一个或两个用户进行测试。
+
+    1. 将少量的用户分配到 ADP 服务应用，以测试联合访问。
+
+    1. 如果这些用户能够访问库中的 ADP 服务应用，并且能够访问其 ADP 服务，则表示测试成功。
+
+1. 确认测试成功后，将联合的 ADP 服务分配到单个用户或用户组（本教程稍后会介绍），并向员工推出该服务。
 
 ### <a name="create-adp-test-user"></a>创建 ADP 测试用户
 
@@ -213,14 +213,12 @@ ms.locfileid: "88542898"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ADP 磁贴时，应当会自动登录到已为其设置了 SSO 的 ADP。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 ADP 磁贴时，应当会自动登录到已为其设置了 SSO 的 ADP。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [通过 Azure AD 试用 ADP](https://aad.portal.azure.com)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

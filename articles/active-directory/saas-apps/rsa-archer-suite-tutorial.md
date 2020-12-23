@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: fa8b150e7b5e1bd5bfc5e05b3b00a13522b52f87
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500479"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181571"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RSA Archer Suite 的集成
 
@@ -82,7 +82,7 @@ ms.locfileid: "89500479"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<BASE_URL>/default.aspx?IDP=<REALM_NAME>` 
 
-    b. 在“标识符(实体 ID)”文本框中，键入值：`RSAArcherSuite_TENANT_STRING`****
+    b. 在“标识符(实体 ID)”文本框中，键入值：`RSAArcherSuite_TENANT_STRING`
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 请联系 [RSA Archer Suite 客户端支持团队](mailto:archersupport@rsa.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -167,9 +167,8 @@ ms.locfileid: "89500479"
 
 2. 直接转到 RSA Archer Suite 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击“RSA Archer Suite”磁贴时，应会自动登录到为其设置了 SSO 的 RSA Archer Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击“RSA Archer Suite”磁贴时，应会自动登录到为其设置了 SSO 的 RSA Archer Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
- 配置 RSA Archer Suite 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
+ 配置 RSA Archer Suite 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

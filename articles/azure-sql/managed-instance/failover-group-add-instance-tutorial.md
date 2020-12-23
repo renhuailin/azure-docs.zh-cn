@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sashan, sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 92d1ce51306e846e2d842bef33bb9782da14019a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617734"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593988"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教程：将 SQL 托管实例添加到故障转移组
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "91617734"
 使用 Azure 门户创建资源组和主托管实例。 
 
 1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入“`Azure SQL`” 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
-1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 可以通过在“数据库”**** 磁贴上选择“显示详细信息”**** 来查看有关不同数据库的其他信息。
+1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 可以通过在“数据库”磁贴上选择“显示详细信息”来查看有关不同数据库的其他信息。
 1. 在“SQL 托管实例”磁贴上选择“创建”。 
 
     ![选择“SQL 托管实例”](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
@@ -161,8 +161,8 @@ ms.locfileid: "91617734"
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set the subscription context
-   Set-AzContext -SubscriptionId $subscriptionId 
+   # Set the subscription context
+   Set-AzContext -SubscriptionId $subscriptionId 
    
    # Create the resource group
    Write-host "Creating resource group..."
@@ -458,7 +458,7 @@ ms.locfileid: "91617734"
 使用 Azure 门户创建辅助托管实例。 
 
 1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入“`Azure SQL`” 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
-1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 可以通过在“数据库”**** 磁贴上选择“显示详细信息”**** 来查看有关不同数据库的其他信息。
+1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 可以通过在“数据库”磁贴上选择“显示详细信息”来查看有关不同数据库的其他信息。
 1. 在“SQL 托管实例”磁贴上选择“创建”。 
 
     ![选择“SQL 托管实例”](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
@@ -936,7 +936,7 @@ ms.locfileid: "91617734"
     1. 选中“建立双向连接”旁边的复选框。 
     1. 保留默认的主连接名称，或将其重命名为所选的值。 
     1. 提供连接的“共享密钥(PSK)”，例如 `mi1m2psk`。 
-    1. 选择“确定”保存设置****。 
+    1. 选择“确定”保存设置。 
 
     ![创建网关连接](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
@@ -1036,7 +1036,7 @@ ms.locfileid: "91617734"
 
    ![故障转移后托管实例的角色已交换](./media/failover-group-add-instance-tutorial/mi-switched-after-failover.png)
 
-1. 转到新的_辅助_托管实例，再次选择“故障转移”，将主实例故障回复为主角色。 
+1. 转到新的 _辅助_ 托管实例，再次选择“故障转移”，将主实例故障回复为主角色。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

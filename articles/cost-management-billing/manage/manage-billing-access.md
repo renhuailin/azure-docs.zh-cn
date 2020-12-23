@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ccdd7b16c7ec292b8f4f4c155a6f9497c606a489
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371807"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166210"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理对 Azure 账单信息的访问权限
 
@@ -53,7 +53,7 @@ ms.locfileid: "91371807"
 
 1. 在“成本管理 + 计费”中进行搜索。
 
-    ![显示了 Azure 门户搜索的屏幕截图](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![突出显示“服务”部分下的“成本管理 + 计费”的屏幕截图。](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
 1. 在左侧窗格中选择“订阅”。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”。
 
@@ -94,7 +94,7 @@ ms.locfileid: "91371807"
 1. 在“选择”文本框中，键入要添加的用户的名称或电子邮件。
 1. 选择用户。
 1. 选择“保存”。
-    ![显示单击“添加角色分配”的屏幕截图](./media/manage-billing-access/billing-save-role-assignment.png)
+    ![突出显示“保存”按钮的屏幕截图。](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. 片刻之后，为用户分配了订阅的“账单读取者”角色。
 

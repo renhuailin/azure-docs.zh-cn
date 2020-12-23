@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277356"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021582"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
@@ -61,13 +61,13 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 1. 在 Azure 门户中，在 Azure Marketplace 中搜索服务列表，然后选择 "Log Analytics 工作区"。
 2. 选择“创建”，然后为以下各项选择选项：
 
-   * **** Log Analytics 工作区：键入工作区的名称。
+   * Log Analytics 工作区：键入工作区的名称。
    * **订阅**：如果有多个订阅，请选择与 CF 部署相同的订阅。
    * **资源组**：可以新建资源组，也可以使用与 CF 部署相同的资源组。
    * **位置**：输入位置。
-   * **定价层**：选择“确定”完成设置。****
+   * **定价层**：选择“确定”完成设置。
 
-有关详细信息，请参阅 [Azure Monitor 日志入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
+有关详细信息，请参阅 [Azure Monitor 日志入门](../azure-monitor/overview.md)。
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>若要通过 Azure 市场中的监测模板创建 Log Analytics 工作区：
 
@@ -76,13 +76,13 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 1. 在搜索窗口中键入“Cloud Foundry”，选择“Cloud Foundry 监视解决方案”。
 1. 将加载 Cloud Foundry 监视解决方案模板首页，单击“创建”以启动模板边栏选项卡。
 1. 输入所需的参数：
-    * **** 订阅：选择 Log Analytics 工作区的 Azure 订阅，通常与 Cloud Foundry 部署相同。
-    * **** 资源组：选择现有资源组或为 Log Analytics 工作区创建新资源组。
-    * **** 资源组位置：选择资源组的位置。
-    * **** OMS_Workspace_Name：输入工作区名称，如果工作区不存在，该模板将创建一个新的工作区。
-    * **** OMS_Workspace_Region：选择工作区的位置。
-    * **** OMS_Workspace_Pricing_Tier：选择 Log Analytics 工作区 SKU。 有关参考信息，请参阅[定价指南](https://azure.microsoft.com/pricing/details/log-analytics/)。
-    * **** 法律条款：单击法律条款，然后单击“创建”以接受法律条款。
+    * 订阅：选择 Log Analytics 工作区的 Azure 订阅，通常与 Cloud Foundry 部署相同。
+    * 资源组：选择现有资源组或为 Log Analytics 工作区创建新资源组。
+    * 资源组位置：选择资源组的位置。
+    * OMS_Workspace_Name：输入工作区名称，如果工作区不存在，该模板将创建一个新的工作区。
+    * OMS_Workspace_Region：选择工作区的位置。
+    * OMS_Workspace_Pricing_Tier：选择 Log Analytics 工作区 SKU。 有关参考信息，请参阅[定价指南](https://azure.microsoft.com/pricing/details/log-analytics/)。
+    * 法律条款：单击法律条款，然后单击“创建”以接受法律条款。
 1. 指定所有参数后，单击“创建”来部署模板。 完成部署后，状态将显示在通知选项卡处。
 
 
@@ -100,7 +100,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 #### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>通过 CF CLI 以管理员身份登录到 CF 部署
 
-运行以下命令：
+运行下面的命令：
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
@@ -124,13 +124,13 @@ uaac member add doppler.firehose ${FIREHOSE_USER}
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>下载最新的 Log Analytics Nozzle 版本
 
-运行以下命令：
+运行下面的命令：
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
 ```
 
-#### <a name="set-environment-variables"></a>设置环境变量
+#### <a name="set-environment-variables"></a>设置环境变量。
 
 现在，可在当前目录中的 manifest.yml 文件内设置环境变量。 下面显示了 Nozzle 的应用清单。 请将值替换为特定的 Log Analytics 工作区信息。
 
@@ -155,7 +155,7 @@ LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azur
 
 ### <a name="push-the-application-from-your-development-computer"></a>从开发计算机推送应用程序
 
-请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行以下命令：
+请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行下面的命令：
 ```
 cf push
 ```
@@ -183,15 +183,15 @@ cf apps
 
 ### <a name="1-import-the-oms-view"></a>1. 导入 OMS 视图
 
-在 OMS 门户中，浏览到 "**查看设计器**  >  " "**导入**  >  " "**浏览**"，然后选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。** 此时，“概述”页上会显示一个磁贴****。 选择此磁贴可查看可视化的指标。
+在 OMS 门户中，浏览到 "**查看设计器**  >  " "**导入**  >  " "**浏览**"，然后选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
 
-可以通过“视图设计器”**** 自定义这些视图或新建视图。
+可以通过“视图设计器”自定义这些视图或新建视图。
 
-“Cloud Foundry.omsview”是预览版的 Cloud Foundry OMS 视图模板。** 这是一个完全配置的默认模板。 如有模板相关的建议或反馈，请在[问题部分](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)中发送。
+“Cloud Foundry.omsview”是预览版的 Cloud Foundry OMS 视图模板。 这是一个完全配置的默认模板。 如有模板相关的建议或反馈，请在[问题部分](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)中发送。
 
 ### <a name="2-create-alert-rules"></a>2. 创建警报规则
 
-可以[创建警报](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)，并视需要自定义查询和阈值。 下面是建议的警报：
+可以[创建警报](../azure-monitor/platform/alerts-overview.md)，并视需要自定义查询和阈值。 下面是建议的警报：
 
 | 搜索查询                                                                  | 基于以下项生成警报 | 说明                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |

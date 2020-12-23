@@ -1,17 +1,17 @@
 ---
 title: 用于代理的资源管理器模板示例
-description: 用于在 Azure Monitor 中部署和配置 Log Analytics 代理和诊断扩展的 Azure 资源管理器模板示例。
+description: 用于在 Azure Monitor 中部署和配置虚拟机代理的 Azure 资源管理器模板示例。
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 8b0673e534826acb5ff2d3747053f58fb39ff285
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 11/17/2020
+ms.openlocfilehash: 00d6635b7bb322d28f0fe3df509ce0cb03e19f3d
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853112"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95308658"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>用于 Azure Monitor 代理的资源管理器模板示例
 本文包含用于在 Azure Monitor 中为虚拟机部署和配置 [Log Analytics 代理](../platform/log-analytics-agent.md)和[诊断扩展](../platform/diagnostics-extension-overview.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -19,10 +19,218 @@ ms.locfileid: "83853112"
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
-## <a name="windows-log-analytics-agent"></a>Windows Log Analytics 代理
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor 代理（预览版）
+Windows 和 Linux 代理上 Azure Monitor 代理（预览版）中的本部分的示例。 这包括在 Azure 中的虚拟机上以及启用了 Azure Arc 的服务器上安装代理。 
+
+### <a name="windows-azure-virtual-machine"></a>Windows Azure 虚拟机
+以下示例将在 Microsoft Azure 虚拟机上安装 Azure Monitor 代理。
+
+#### <a name="template-file"></a>模板文件
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "typeHandlerVersion": "1.0",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>参数文件
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-virtual-machine"></a>Linux Azure 虚拟机
+以下示例将在 Microsoft Azure 虚拟机上安装 Linux Azure Monitor 代理。
+
+#### <a name="template-file"></a>模板文件
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "typeHandlerVersion": "1.5",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>参数文件
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="windows-azure-arc-enabled-server"></a>启用了 Microsoft Azure Arc 的服务器
+以下示例将在启用了 Microsoft Azure Arc 的服务器上安装 Azure Monitor 代理。
+
+#### <a name="template-file"></a>模板文件
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>参数文件
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-arc-enabled-server"></a>启用了 Linux Azure Arc 的服务器
+下面的示例在启用了 Linux Azure Arc 的服务器上安装 Azure Monitor 代理。
+
+#### <a name="template-file"></a>模板文件
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>参数文件
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+## <a name="log-analytics-agent"></a>Log Analytics 代理
+本部分中的示例在 Azure 中的 Windows 和 Linux 虚拟机上安装 Log Analytics 代理，并将其连接到 Log Analytics 工作区。
+
+###  <a name="windows"></a>Windows
 以下示例将在 Windows Azure 虚拟机上安装 Log Analytics 代理。 这可以通过启用[适用于 Windows 的 Log Analytics 虚拟机扩展](../../virtual-machines/extensions/oms-windows.md)来完成。
 
-### <a name="template-file"></a>模板文件
+#### <a name="template-file"></a>模板文件
 
 ```json
 {
@@ -90,7 +298,7 @@ ms.locfileid: "83853112"
 
 ```
 
-### <a name="parameter-file"></a>参数文件
+#### <a name="parameter-file"></a>参数文件
 
 ```json
 {
@@ -114,10 +322,10 @@ ms.locfileid: "83853112"
 ```
 
 
-## <a name="linux-log-analytics-agent"></a>Linux Log Analytics 代理
+### <a name="linux"></a>Linux
 以下示例将在 Linux Azure 虚拟机上安装 Log Analytics 代理。 这可以通过启用[适用于 Windows 的 Log Analytics 虚拟机扩展](../../virtual-machines/extensions/oms-linux.md)来完成。
 
-### <a name="template-file"></a>模板文件
+#### <a name="template-file"></a>模板文件
 
 ```json
 {
@@ -184,7 +392,7 @@ ms.locfileid: "83853112"
 }
 ```
 
-### <a name="parameter-file"></a>参数文件
+#### <a name="parameter-file"></a>参数文件
 
 ```json
 {
@@ -209,10 +417,13 @@ ms.locfileid: "83853112"
 
 
 
-## <a name="windows-diagnostic-extension"></a>Windows 诊断扩展
+## <a name="diagnostic-extension"></a>诊断扩展
+本节中的示例在 Azure 中的 Windows 和 Linux 虚拟机上安装诊断扩展，并对其进行配置以实现数据收集。
+
+### <a name="windows"></a>Windows
 以下示例将在 Windows Azure 虚拟机上启用和配置诊断扩展。 有关该配置的详细信息，请参阅 [Windows 诊断扩展架构](../platform/diagnostics-extension-schema-windows.md)。
 
-### <a name="template-file"></a>模板文件
+#### <a name="template-file"></a>模板文件
 
 ```json
 {
@@ -345,7 +556,7 @@ ms.locfileid: "83853112"
 }
 ```
 
-### <a name="parameter-file"></a>参数文件
+#### <a name="parameter-file"></a>参数文件
 
 ```json
 {
@@ -374,10 +585,10 @@ ms.locfileid: "83853112"
 }
 ```
 
-## <a name="linux-diagnostic-setting"></a>Linux 诊断设置
+### <a name="linux"></a>Linux
 以下示例将在 Linux Azure 虚拟机上启用和配置诊断扩展。 有关该配置的详细信息，请参阅 [Windows 诊断扩展架构](../../virtual-machines/extensions/diagnostics-linux.md)。
 
-### <a name="template-file"></a>模板文件
+#### <a name="template-file"></a>模板文件
 
 ```json
 {
@@ -565,7 +776,7 @@ ms.locfileid: "83853112"
 }
 ```
 
-### <a name="parameter-file"></a>参数文件
+#### <a name="parameter-file"></a>参数文件
 
 ```json
 {

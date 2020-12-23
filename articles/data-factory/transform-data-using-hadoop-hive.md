@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/08/2019
-ms.openlocfilehash: 877c1719a76f23f8446164b641dc2dac84261e0e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 20deb1a235843bf5fe5c42c513e1d8d2117c65c5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849274"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637898"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Hive 活动转换数据
 
@@ -64,7 +64,7 @@ ms.locfileid: "83849274"
 | description         | 描述活动用途的文本                | 否       |
 | type                | 对于 Hive 活动，活动类型是 HDinsightHive        | 是      |
 | linkedServiceName   | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
-| scriptLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的 Hive 脚本。 此处仅支持 [Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)和 [ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) 链接服务 。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。  | 否       |
+| scriptLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的 Hive 脚本。 此处仅支持 [Azure Blob 存储](./connector-azure-blob-storage.md)和 [ADLS Gen2](./connector-azure-data-lake-storage.md) 链接服务 。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。  | 否       |
 | scriptPath          | 提供由 scriptLinkedService 引用的 Azure 存储中存储的脚本文件的路径。 文件名称需区分大小写。 | 是      |
 | getDebugInfo        | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
 | 参数           | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
@@ -80,5 +80,5 @@ ms.locfileid: "83849274"
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
+* [Azure 机器学习 Studio (经典) 批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

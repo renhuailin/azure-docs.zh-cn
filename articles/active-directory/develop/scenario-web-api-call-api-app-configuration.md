@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9fe4d5cfb4b0b31a257dfecdeeb191a9c7920772
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403155"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443783"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
@@ -27,18 +27,18 @@ ms.locfileid: "91403155"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-## <a name="microsoftidentityweb"></a>Web.config
+## <a name="microsoftidentityweb"></a>Microsoft.Identity.Web
 
-Microsoft 建议你在开发 ASP.NET Core 受保护的 API 调用下游 web Api 时使用 [microsoft. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet 包。 请参阅 [受保护的 WEB API：代码配置 |](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) 用于在 WEB API 的上下文中快速显示该库的 web。
+Microsoft 建议在调用下游 Web API 开发 ASP.NET Core 保护的 API 时，使用 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet 包。 请参阅[受保护的 Web API：代码配置 | Microsoft.Identity.Web](scenario-protected-web-api-app-configuration.md#microsoftidentityweb)，在 Web API 的上下文中快速了解该库。
 
 ## <a name="client-secrets-or-client-certificates"></a>客户端密码或客户端证书
 
-鉴于 Web API 现在调用了下游 Web API，你需要在 appsettings.json 文件中提供客户端密码或客户端证书。 你还可以添加一个指定以下内容的部分：
+鉴于 Web API 现在调用了下游 Web API，你需要在 appsettings.json 文件中提供客户端密码或客户端证书。 还可添加一个部分来指定：
 
-- 下游 web API 的 URL
+- 下游 Web API 的 URL
 - 调用 API 所需的范围
 
-在下面的示例中， `GraphBeta` 节指定了这些设置。
+在下面的示例中，`GraphBeta` 部分指定了这些设置。
 
 ```JSON
 {
@@ -88,7 +88,7 @@ Microsoft.Identity.Web 提供了多种通过配置或代码描述证书的方法
 
 ## <a name="startupcs"></a>Startup.cs
 
-Web API 需要获取下游 API 的令牌。 可以通过在后添加行来指定它 `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` 。 此行公开 `ITokenAcquisition` 服务，可在控制器/页面操作中使用。 不过，正如您将在接下来的两个项目符号点中看到的那样，您可以执行更简单的操作。 还需要选择一个令牌缓存实现，例如 `.AddInMemoryTokenCaches()` ，在 *Startup.cs*中：
+Web API 将需要获取下游 API 的令牌。 可通过在 `.AddMicrosoftIdentityWebApi(Configuration)` 后面添加 `.EnableTokenAcquisitionToCallDownstreamApi()` 行来指定它。 此行公开 `ITokenAcquisition` 服务，它可用于控制器/页面操作。 不过，正如你将在接下来的两个要点中看到的那样，可更简单地操作。 还需在 Startup.cs 中选择令牌缓存实现，例如 `.AddInMemoryTokenCaches()`：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -109,14 +109,14 @@ public class Startup
 }
 ```
 
-如果你不想亲自获取令牌，则 *Microsoft* 将提供两种机制用于从另一个 api 调用下游 Web API。 选择的选项取决于您是要调用 Microsoft Graph 还是调用另一个 API。
+如果你不想亲自获取令牌，Microsoft.Identity.Web 提供两种机制来从另一 API 调用下游 Web API。 选择哪种方式取决于你是要调用 Microsoft Graph 还是调用另一个 API。
 
-### <a name="option-1-call-microsoft-graph"></a>选项1：调用 Microsoft Graph
+### <a name="option-1-call-microsoft-graph"></a>选项 1：调用 Microsoft Graph
 
-如果要调用 Microsoft Graph，则可以 `GraphServiceClient` 在 API 操作中直接使用由 MICROSOFT GRAPH SDK) 公开的 (。 公开 Microsoft Graph：
+如果要调用 Microsoft Graph，可通过 Microsoft.Identity.Web 在 API 操作中直接使用 `GraphServiceClient`（由 Microsoft Graph SDK 公开）。 若要公开 Microsoft Graph：
 
-1. 将 [Microsoft.azure.webjobs.extensions.microsoftgraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 包添加到项目。
-1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` 在*Startup.cs*文件中添加 after。 `.AddMicrosoftGraph()` 具有多个重写。 使用将配置节作为参数的替代，代码变为：
+1. 将 [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 包添加到项目中。
+1. 在 *Startup.cs* 文件中 `.EnableTokenAcquisitionToCallDownstreamApi()` 的后面添加 `.AddMicrosoftGraph()`。 `.AddMicrosoftGraph()` 具有多个重写。 如果使用将配置部分作为参数的重写，代码会变为：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -138,9 +138,9 @@ public class Startup
 }
 ```
 
-### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>选项2：调用下游 web API，而不是 Microsoft Graph
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>选项 2：调用下游 Web API，而不是 Microsoft Graph
 
-若要调用 Microsoft Graph 以外的下游 *API，* `.AddDownstreamWebApi()` 请提供，它会请求令牌并调用下游 Web API。
+若要调用下游 Web API 而不是 Microsoft Graph，请使用 Microsoft.Identity.Web 提供的 `.AddDownstreamWebApi()`，它可请求令牌并调用下游 Web API。
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -162,11 +162,11 @@ public class Startup
 }
 ```
 
-与 Web 应用一样，你可以选择各种令牌缓存实现。 有关详细信息，请参阅 GitHub 上的 [Microsoft 标识 Web 令牌缓存序列化](https://aka.ms/ms-id-web/token-cache-serialization) 。
+与 Web 应用一样，你可以选择各种令牌缓存实现。 有关详细信息，请参阅 GitHub 上的 [Microsoft 标识 Web - 令牌缓存序列化](https://aka.ms/ms-id-web/token-cache-serialization)。
 
-下图显示了*Startup.cs* *的各种可能性及其对*文件的影响：
+下图显示 Microsoft.Identity.Web 的各种可能性以及它们对 Startup.cs 文件的影响 ：
 
-:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="显示启动点 C 中的服务配置选项的框图，用于调用 web API 并指定令牌缓存实现":::
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="显示 Startup.cs 中的服务配置选项的框图，说明如何调用 Web API 和指定令牌缓存实现":::
 
 > [!NOTE]
 > 若要完全理解本文中的代码示例，需要熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，尤其是[依赖关系注入](/aspnet/core/fundamentals/dependency-injection)和[选项](/aspnet/core/fundamentals/configuration/options)。
@@ -248,7 +248,7 @@ Python Web API 需要使用一些中间件来验证从客户端接收的持有�
 
 ---
 
-也可以参阅 [Node.js 和 Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61) 中的 OBO 流实现示例。
+也可以参阅 [Node.js 和 Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/Function/MyHttpTrigger/index.js#L61) 中的 OBO 流实现示例。
 
 ## <a name="protocol"></a>协议
 
@@ -256,5 +256,4 @@ Python Web API 需要使用一些中间件来验证从客户端接收的持有�
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)
+转到此方案中的下一篇文章， [获取该应用的令牌](scenario-web-api-call-api-acquire-token.md)。

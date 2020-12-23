@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439967"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532656"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器
 
@@ -90,11 +90,9 @@ Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库�
 
 该服务运行 PostgreSQL 的社区版本。 这样可以实现完全的应用程序兼容性，并且只需最小的重构成本就能将在 PostgreSQL 引擎上开发的现有应用程序迁移到灵活服务器。 
 
-- 转储和还原 - 对于脱机迁移（在此情况下，用户可承受一定的故障时间），使用社区工具（如 Pg_dump 和 Pg_restore）的转储和还原可以提供最快的迁移方式。 有关详细信息，请参阅[使用转储和还原进行迁移](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)。
-- Azure 数据库迁移服务 - 为了在最短的故障时间内实现向灵活服务器的无缝简化迁移，可以利用 Azure 数据库迁移服务。 请参阅[通过门户的 DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) 和[通过 CLI 的 DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)。 可以从 Azure Database for PostgreSQL 单一服务器迁移到灵活服务器。 有关详细信息，请参阅此 [DMS 文章](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal)。
+- 转储和还原 - 对于脱机迁移（在此情况下，用户可承受一定的故障时间），使用社区工具（如 Pg_dump 和 Pg_restore）的转储和还原可以提供最快的迁移方式。 有关详细信息，请参阅[使用转储和还原进行迁移](../howto-migrate-using-dump-and-restore.md)。
+- Azure 数据库迁移服务 - 为了在最短的故障时间内实现向灵活服务器的无缝简化迁移，可以利用 Azure 数据库迁移服务。 请参阅[通过门户的 DMS](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) 和[通过 CLI 的 DMS](../../dms/tutorial-postgresql-azure-postgresql-online.md)。 可以从 Azure Database for PostgreSQL 单一服务器迁移到灵活服务器。 有关详细信息，请参阅此 [DMS 文章](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已阅读 Azure Database for PostgreSQL 灵活服务器部署模式简介，接下来可创建第一个服务器了：[使用 Azure 门户创建 Azure Database for PostgreSQL 灵活服务器](./quickstart-create-server-portal.md)
-
-

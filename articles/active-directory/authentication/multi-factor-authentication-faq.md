@@ -1,29 +1,29 @@
 ---
-title: Azure 多重身份验证常见问题解答 - Azure Active Directory
-description: 与 Azure 多重身份验证相关的常见问题与解答。
+title: Azure AD 多重身份验证常见问题-Azure Active Directory
+description: 与 Azure AD 多重身份验证相关的常见问题和解答。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 1dfe99a2ed57ecc953c69d1bad89e2b2c8816ca3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706262"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741436"
 ---
-# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
+# <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>有关 Azure AD 多重身份验证的常见问题
 
-本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
+此 FAQ 解答有关 Azure AD 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
 
 > [!IMPORTANT]
-> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
+> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望其用户需要多重身份验证的新客户应使用基于云的 Azure AD 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 >
 > 以下与 Azure 多重身份验证服务器相关的信息仅适用于已运行 MFA 服务器的用户。
 >
@@ -37,7 +37,7 @@ ms.locfileid: "90706262"
 
 ### <a name="how-does-azure-multi-factor-authentication-server-handle-user-data"></a>Azure 多重身份验证服务器如何处理用户数据？
 
-在多重身份验证服务器中，用户数据只存储在本地服务器上。 云中不会持久存储任何用户数据。 当用户执行双重验证时，多重身份验证服务器将数据发送到 Azure 多重身份验证云服务执行身份验证。 多重身份验证服务器与多重身份验证云服务之间的通信在出站端口 443 上使用安全套接字层 (SSL) 或传输层安全性 (TLS)。
+在多重身份验证服务器中，用户数据只存储在本地服务器上。 云中不会持久存储任何用户数据。 当用户执行双重验证时，多重身份验证服务器会将数据发送到 Azure AD 多重身份验证云服务进行身份验证。 多重身份验证服务器与多重身份验证云服务之间的通信在出站端口 443 上使用安全套接字层 (SSL) 或传输层安全性 (TLS)。
 
 当身份验证请求发送到云服务时，收集的数据用于身份验证和使用情况报告。 双重验证日志中包含以下数据字段：
 
@@ -56,7 +56,7 @@ ms.locfileid: "90706262"
 
 验证结果（成功或拒绝）和任何拒绝原因（如果有）与身份验证数据一起存储。 可在身份验证和使用情况报告中使用这些数据。
 
-有关详细信息，请参阅 [Azure 多重身份验证的数据驻留和客户数据](concept-mfa-data-residency.md)。
+有关详细信息，请参阅 [数据驻留和客户数据 Azure AD 多重身份验证](concept-mfa-data-residency.md)。
 
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>哪些短信简短代码用于向用户发送短信？
 
@@ -78,19 +78,19 @@ ms.locfileid: "90706262"
 
 ## <a name="billing"></a>计费
 
-大多数计费问题都可以通过参考 [多重身份验证定价页](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) 或 [Azure 多重身份验证的文档版本和消耗计划](concept-mfa-licensing.md)来回答。
+大多数计费问题都可以通过参考 [多重身份验证定价页](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) 或 [Azure AD 多重身份验证版本和消耗计划](concept-mfa-licensing.md)的文档来回答。
 
 * [我的组织是否计费用于发送用于身份验证的电话呼叫和短信？](#is-my-organization-charged-for-sending-the-phone-calls-and-text-messages-that-are-used-for-authentication)
 * [每用户计费模型是为所有启用的用户，还是只对执行双重验证的用户收费？](#does-the-per-user-billing-model-charge-me-for-all-enabled-users-or-just-the-ones-that-performed-two-step-verification)
 * [多重身份验证如何计费？](#how-does-multi-factor-authentication-billing-work)
-* [Azure 多重身份验证是否有免费版本？](#is-there-a-free-version-of-azure-multi-factor-authentication)
+* [Azure AD 多重身份验证是否有免费版本？](#is-there-a-free-version-of-azure-ad-multi-factor-authentication)
 * [我的组织是否可以随时在每个用户和每个身份验证消耗计费模式之间切换？](#can-my-organization-switch-between-per-user-and-per-authentication-consumption-billing-models-at-any-time)
 * [我的组织是否可以随时在基于消耗的计费和订阅之间进行切换 (基于许可证的模型) ？](#can-my-organization-switch-between-consumption-based-billing-and-subscriptions-a-license-based-model-at-any-time)
-* [组织是否必须使用并同步标识才能使用 Azure 多重身份验证？](#does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-multi-factor-authentication)
+* [组织是否必须使用并同步标识才能使用 Azure AD 多重身份验证？](#does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-ad-multi-factor-authentication)
 
 ### <a name="is-my-organization-charged-for-sending-the-phone-calls-and-text-messages-that-are-used-for-authentication"></a>通过电话或短信进行身份验证时，我的组织是否需要付费？
 
-不可以。通过 Azure 多重身份验证向用户发送的各个电话呼叫或短信无需支付费用。 如果使用按身份验证的 MFA 提供程序，则需为每次身份验证付费，但不需要为使用的方法付费。
+不会，不会向通过 Azure AD 多重身份验证发送给用户的各个电话呼叫或短信付费。 如果使用按身份验证的 MFA 提供程序，则需为每次身份验证付费，但不需要为使用的方法付费。
 
 用户可能需要为收到的电话或短信支付费用，取决于个人电话服务。
 
@@ -102,11 +102,11 @@ ms.locfileid: "90706262"
 
 创建按用户或按身份验证计费的 MFA 提供程序时，组织的 Azure 订阅每月根据使用情况计费一次。 此计费模式类似于 Azure 如何使用虚拟机和 Web 应用。
 
-如果购买 Azure 多重身份验证订阅，组织仅支付每个用户每年的许可费用。 MFA 许可证和 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性捆绑以这种方式计费。
+当你购买 Azure AD 多重身份验证的订阅时，你的组织仅支付每个用户的年度许可证费。 MFA 许可证和 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性捆绑以这种方式计费。
 
-有关详细信息，请参阅[如何获取 Azure 多重身份验证](concept-mfa-licensing.md)。
+有关详细信息，请参阅 [如何获取 Azure AD 多重身份验证](concept-mfa-licensing.md)。
 
-### <a name="is-there-a-free-version-of-azure-multi-factor-authentication"></a>Azure 多重身份验证是否有免费版本？
+### <a name="is-there-a-free-version-of-azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证是否有免费版本？
 
 可以在 Azure AD Free 层中启用安全默认设置。 使用安全默认设置，将使用 Microsoft Authenticator 应用为所有用户启用多重身份验证。 不能使用具有安全默认设置的短信或电话验证，只是 Microsoft Authenticator 应用。
 
@@ -124,11 +124,11 @@ ms.locfileid: "90706262"
 
 在某些情况下，是。
 
-如果目录中包含*按用户* Azure 多重身份验证提供程序，则可以添加 MFA 许可证。 拥有许可证的用户不会计入基于使用量的按用户计费。 对于没有许可证的用户，仍可通过 MFA 提供程序启用 MFA。 如果为配置为使用多重身份验证的所有用户购买并分配许可证，可以删除 Azure 多重身份验证提供程序。 如果将来的用户数超过许可证数，始终可以创建另一个按用户的 MFA 提供程序。
+如果目录中包含 *按用户* Azure 多重身份验证提供程序，则可以添加 MFA 许可证。 拥有许可证的用户不会计入基于使用量的按用户计费。 对于没有许可证的用户，仍可通过 MFA 提供程序启用 MFA。 如果为配置为使用多重身份验证的所有用户购买并分配许可证，可以删除 Azure 多重身份验证提供程序。 如果将来的用户数超过许可证数，始终可以创建另一个按用户的 MFA 提供程序。
 
 如果你的目录具有 *每个身份验证* Azure 多重身份验证提供程序，则只要 MFA 提供程序已链接到你的订阅，你就始终需要为每次身份验证付费。 可以将 MFA 许可证分配给用户，但仍要为每个双重验证请求付费，不管该请求是否来自拥有 MFA 许可证的用户。
 
-### <a name="does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-multi-factor-authentication"></a>组织是否必须使用并同步标识才能使用 Azure 多重身份验证？
+### <a name="does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-ad-multi-factor-authentication"></a>组织是否必须使用并同步标识才能使用 Azure AD 多重身份验证？
 
 如果组织使用基于使用量的计费模式，则 Azure Active Directory 是可选而不是必需的。 如果 MFA 提供程序未链接到 Azure AD 租户，则只能在本地部署 Azure 多重身份验证服务器。
 
@@ -159,15 +159,15 @@ ms.locfileid: "90706262"
 
 ### <a name="what-should-i-do-if-one-of-my-users-cant-get-in-to-their-account"></a>如果某个用户无法进入其帐户，我该怎么做？
 
-可以要求用户再次完成注册过程来重置其帐户。 详细了解[管理云中 Azure 多重身份验证的用户和设备设置](howto-mfa-userdevicesettings.md)。
+可以要求用户再次完成注册过程来重置其帐户。 详细了解如何 [在云中 Azure AD 多因素身份验证管理用户和设备设置](howto-mfa-userdevicesettings.md)。
 
 ### <a name="what-should-i-do-if-one-of-my-users-loses-a-phone-that-is-using-app-passwords"></a>如果某个用户丢失了使用应用密码的手机，我该怎么做？
 
-为了防止未经授权的访问，请删除该用户的所有应用密码。 用户购买替代设备后，即可重新创建密码。 详细了解[管理云中 Azure 多重身份验证的用户和设备设置](howto-mfa-userdevicesettings.md)。
+为了防止未经授权的访问，请删除该用户的所有应用密码。 用户购买替代设备后，即可重新创建密码。 详细了解如何 [在云中 Azure AD 多因素身份验证管理用户和设备设置](howto-mfa-userdevicesettings.md)。
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>如果用户无法登录到非浏览器应用，该怎么办？
 
-如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-app-passwords.md)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
+如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-app-passwords.md)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和 *应用密码* 而不是普通的密码登录。
 
 如果你的组织没有旧客户端，则不应允许用户创建应用密码。
 
@@ -182,7 +182,7 @@ ms.locfileid: "90706262"
 
 第三方安全应用程序也可能会阻止验证代码文本消息或电话呼叫。 如果使用第三方安全应用，请尝试禁用保护，然后请求发送另一个 MFA 验证代码。
 
-如果用户在可靠地接收短信时经常遇到问题，请告诉他们使用 Microsoft Authenticator 应用或电话呼叫方法。 Microsoft Authenticator 可以通过手机网络和 Wi-fi 连接接收通知。 此外，即使设备根本没有信号，也可以生成验证码。 Microsoft Authenticator 应用可用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
+如果用户在可靠地接收短信时经常遇到问题，请告诉他们使用 Microsoft Authenticator 应用或电话呼叫方法。 Microsoft Authenticator 可以通过手机网络和 Wi-Fi 连接接收通知。 此外，即使设备根本没有信号，也可以生成验证码。 Microsoft Authenticator 应用可用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
 
 ### <a name="can-i-change-the-amount-of-time-my-users-have-to-enter-the-verification-code-from-a-text-message-before-the-system-times-out"></a>是否可以更改在系统超时之前，用户必须输入短信中验证代码的时限？
 
@@ -191,7 +191,7 @@ ms.locfileid: "90706262"
 对于使用 Azure MFA 服务器 v7.0 或更高版本的单向短信，可以通过设置注册表项来配置超时设置。 在 MFA 云服务发送短信后，验证码（或一次性密码）将返回给 MFA 服务器。 默认情况下，MFA 服务器将验证码存储在内存中，保持期为 300 秒。 如果用户在 300 秒后未输入验证码，身份验证将遭拒。 若要更改默认超时设置，请按照以下步骤操作：
 
 1. 转到  `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor` 。
-2. 创建一个名为*pfsvc_pendingSmsTimeoutSeconds*的**DWORD**注册表项，并设置想要 Azure MFA 服务器存储一次密码的时间（以秒为单位）。
+2. 创建一个名为 *pfsvc_pendingSmsTimeoutSeconds* 的 **DWORD** 注册表项，并设置想要 Azure MFA 服务器存储一次密码的时间（以秒为单位）。
 
 >[!TIP]
 >
@@ -199,7 +199,7 @@ ms.locfileid: "90706262"
 
 如果用户未在定义的超时期内回复短信，身份验证将遭拒。
 
-对于云中的 Azure MFA 的单向短信 (包括 AD FS 适配器或网络策略服务器扩展) ，你无法配置超时设置。 Azure AD 存储验证码 180 秒。
+对于在云中具有 Azure AD MFA 的单向短信 (包括 AD FS 适配器或网络策略服务器扩展) ，你无法配置超时设置。 Azure AD 存储验证码 180 秒。
 
 ### <a name="can-i-use-hardware-tokens-with-azure-multi-factor-authentication-server"></a>是否可以在 Azure 多重身份验证服务器上使用硬件令牌？
 

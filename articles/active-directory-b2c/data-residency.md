@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/06/2020
+ms.date: 10/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840551"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309683"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：区域可用性和数据驻留
 
@@ -59,6 +59,14 @@ Azure AD B2C 将用户数据存储在美国、欧洲或亚太区域中。
 
 > 阿根廷、澳大利亚、巴西、智利、哥伦比亚、厄瓜多尔、伊拉克、新西兰、巴拉圭、秘鲁、乌拉圭和委内瑞拉。
 
+## <a name="remote-profile-solution"></a>远程配置文件解决方案
+
+使用 Azure AD B2C [自定义策略](custom-policy-overview.md)，你可以将与 [RESTful API 服务](custom-policy-rest-api-intro.md)集成，从而允许你从远程 (数据库（如市场营销数据库、CRM 系统或任何业务线应用程序) ）存储和读取用户配置文件。  
+- 在注册和配置文件编辑流期间，Azure AD B2C 会调用自定义 REST API 将用户配置文件持久保存到远程数据源。 用户的凭据存储在 Azure AD B2C 目录中。 
+- 登录时，在使用本地帐户或社交帐户进行凭据验证后，Azure AD B2C 将调用 REST API，这会将用户的唯一标识符作为用户主密钥 (电子邮件地址或用户 objectId) 来发送。 REST API 从远程数据库读取数据并返回用户配置文件。  
+
+注册、配置文件编辑或登录完成后，Azure AD B2C 在返回到应用程序的访问令牌中包括用户配置文件。 有关详细信息，请参阅 GitHub 中的 [Azure AD B2C 远程配置文件示例解决方案](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) 。
+
 ## <a name="preview-tenant"></a>预览租户
 
 如果你在 Azure AD B2c 预览版期间创建了 B2C 租户，则你的 **租户类型** 可能显示为 **预览版租户**。
@@ -70,3 +78,7 @@ Azure AD B2C 将用户数据存储在美国、欧洲或亚太区域中。
 删除预览版 B2C 租户并创建具有相同域名的生产规模 B2C 租户时，存在已知问题。 *必须创建具有不同域名的生产规模 B2C 租户*。
 
 ![作为预览租户的租户类型的屏幕截图。](./media/data-residency/preview-b2c-tenant.png)
+
+## <a name="next-steps"></a>后续步骤
+
+- [创建 Azure AD B2C 租户](tutorial-create-tenant.md)。

@@ -12,38 +12,38 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: 36e5543f09971d8456e79a59fc2e5457171f710b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c4c364a6c448fcee3d3c7ad3b3b2b0c4d32fec92
+  ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91743992"
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96462965"
 highlightedContent:
   items:
   - title: 什么是认知服务？
     itemType: overview
-    url: ./welcome.md
+    url: ./what-are-cognitive-services.md
   - title: Docs 中的新增内容
     itemType: whats-new
     url: whats-new-docs.md
+  - title: 开发选项
+    itemType: concept
+    url: ./cognitive-services-development-options.md
   - title: 认知服务和机器学习
     itemType: concept
     url: ./cognitive-services-and-machine-learning.md
+  - title: 认知服务本地容器
+    itemType: concept
+    url: ./containers/index.yml
+  - title: 带数据库的认知服务
+    itemType: concept
+    url: ./big-data/cognitive-services-for-big-data.md
   - title: 语言支持
     itemType: reference
     url: ./language-support.md
-  - title: 创建资源
-    itemType: how-to-guide
-    url: ./cognitive-services-apis-create-account.md
-  - title: 在容器中使用
-    itemType: concept
-    url: ./cognitive-services-container-support.md
-  - title: 在数据库中使用
-    itemType: concept
-    url: ./big-data/cognitive-services-for-big-data.md
-  - title: 安全性
-    itemType: concept
-    url: cognitive-services-security.md
+  - title: 支持和帮助选项
+    itemType: reference
+    url: ./cognitive-services-support-options.md
 conceptualContent:
   items:
   - title: 影像
@@ -118,9 +118,12 @@ conceptualContent:
   - title: 认知服务容器
     summary: Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可用的 API 一样丰富的 API，并能够灵活地选择在何处部署和托管随 Docker 容器提供的服务。
     links:
+    - url: ./containers/index.yml
+      itemType: overview
+      text: 认知服务容器文档
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: 认知服务容器
+      text: 什么是认知服务容器？
     - url: ./containers/container-reuse-recipe.md
       itemType: learn
       text: 创建要重复使用的容器
@@ -144,7 +147,7 @@ conceptualContent:
       text: 适用于大数据的认知服务
     - url: ./big-data/getting-started.md
       itemType: get-started
-      text: 在 Azure Databricks 和 Synapse Analytics 内使用认知服务
+      text: 在 Azure Databricks 和 Azure Synapse Analytics 中使用认知服务
     - url: ./big-data/samples-python.md
       itemType: reference
       text: Python 示例
@@ -167,24 +170,24 @@ additionalContent:
     - title: SDK 和 REST API
       links:
       - text: C#
-        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
+        url: /dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
       - text: Go
         url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
       - text: Java
-        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
+        url: /java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
       - text: JavaScript
-        url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
+        url: /javascript/api/overview/azure/cognitive-services?view=azure-node-latest
       - text: Python
-        url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python
+        url: /python/api/overview/azure/cognitive-services?view=azure-python
       - text: R
         url: https://github.com/Azure/AzureCognitive
       - text: Apache Spark 和数据库
         url: ./big-data/cognitive-services-for-big-data.md
       - text: 认知服务管理 REST API
-        url: https://docs.microsoft.com/rest/api/cognitiveservices/
+        url: /rest/api/cognitiveservices/
     - title: 工具
       links:
       - text: Azure CLI
-        url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+        url: /cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
-        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
+        url: /powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services

@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 IS_STRING
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 IS_STRING。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bef240563c2b82074cfd1ebf217fbcbf8117c75
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303760"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333896"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回一个布尔值，指示指定表达式的类型是否为字符串。  
   
 ## <a name="syntax"></a>语法

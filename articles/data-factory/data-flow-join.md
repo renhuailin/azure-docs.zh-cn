@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ac84ce17f53145ffd85ffa31b6633d8b4b184962
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683362"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042658"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>映射数据流中的联接转换
 
@@ -108,7 +108,7 @@ ms.locfileid: "83683362"
 
 在数据工厂 UX 中，此转换如下图所示：
 
-![联接示例](media/data-flow/join-script1.png "联接示例")
+![屏幕截图显示转换，其中选择了 "联接设置" 选项卡和 "内部" 联接类型。](media/data-flow/join-script1.png "联接示例")
 
 此转换的数据流脚本位于下面的代码片段中：
 
@@ -130,7 +130,7 @@ TripData, TripFare
 
 在数据工厂 UX 中，此转换如下图所示：
 
-![联接示例](media/data-flow/join-script2.png "联接示例")
+![屏幕截图显示转换，其中选择了 "联接设置" 选项卡和 "自定义 (交叉) 的联接类型。](media/data-flow/join-script2.png "联接示例")
 
 此转换的数据流脚本位于下面的代码片段中：
 

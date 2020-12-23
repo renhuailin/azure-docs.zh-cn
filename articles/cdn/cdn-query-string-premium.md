@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887262"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018590"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 高级层
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "84887262"
 使用 Azure 内容分发网络 (CDN)，可以控制针对包含查询字符串的 Web 请求缓存文件的方式。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如 http:\//www.contoso.com/content.mov?field1=value1&field2=value2。 如果请求的查询字符串中有多个键值对，其顺序并不重要。 
 
 > [!IMPORTANT]
-> 标准和高级 CDN 产品提供相同的查询字符串缓存功能，但用户界面不同。 本文介绍**来自 Verizon 的高级 Azure CDN** 的界面。 有关 Azure CDN 标准产品的查询字符串缓存，请参阅[使用查询字符串控制 Azure CDN 缓存行为 - 标准层](cdn-query-string.md)。
+> 标准和高级 CDN 产品提供相同的查询字符串缓存功能，但用户界面不同。 本文介绍 **来自 Verizon 的高级 Azure CDN** 的界面。 有关 Azure CDN 标准产品的查询字符串缓存，请参阅[使用查询字符串控制 Azure CDN 缓存行为 - 标准层](cdn-query-string.md)。
 >
 
 
@@ -50,17 +50,17 @@ ms.locfileid: "84887262"
     > 如果查询字符串包含随每个请求更改的参数（例如会话 ID 或用户名），请不要使用此模式，因为这会导致缓存命中率降低。
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>为高级 CDN 配置文件更改查询字符串缓存设置
-1. 打开 CDN 配置文件，单击“管理”****。
+1. 打开 CDN 配置文件，单击“管理”。
    
     ![CDN 配置文件管理按钮](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“HTTP 大”选项卡上，然后悬停在“缓存设置”浮出菜单上********。 单击“查询字符串缓存”****。
+2. 将鼠标悬停在“HTTP 大”选项卡上，然后悬停在“缓存设置”浮出菜单上。 单击“查询字符串缓存”。
    
     将显示查询字符串缓存选项。
    
     ![CDN 查询字符串缓存选项](./media/cdn-query-string-premium/cdn-query-string.png)
-3. 选择查询字符串模式，单击“更新”****。
+3. 选择查询字符串模式，单击“更新”。
 
 > [!IMPORTANT]
 > 由于注册通过 CDN 传播需要时间，缓存字符串设置更改不会立即显示。 传播通常在 10 分钟内完成。

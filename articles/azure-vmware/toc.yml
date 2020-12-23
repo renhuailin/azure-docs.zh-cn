@@ -6,10 +6,8 @@
       href: introduction.md
 - name: 快速入门
   items:
-    - name: 预部署过程
+    - name: 0 - 规划部署
       href: production-ready-deployment-steps.md
-    - name: 部署前清单
-      href: pre-deployment-checklist.md
     - name: 1 - 部署 Azure VMware 解决方案
       href: deploy-azure-vmware-solution.md
     - name: 2 - 连接到本地
@@ -44,8 +42,10 @@
       href: concepts-storage.md
     - name: 私有云的访问权限和标识
       href: concepts-identity.md
-    - name: 基于角色的访问控制
+    - name: vSphere 基于角色的访问控制
       href: concepts-role-based-access-control.md
+    - name: 监视和修复私有云
+      href: concepts-monitor-repair-private-cloud.md
     - name: 私有云升级
       href: concepts-upgrades.md
 - name: 操作指南
@@ -61,15 +61,21 @@
     - name: 为 VM 部署灾难恢复
       href: disaster-recovery-for-virtual-machines.md
     - name: 通过内容库部署 VM
-      href: tutorial-deploy-vm-content-library.md
+      href: ./deploy-vm-content-library.md
     - name: 设置 GitHub Enterprise Server
       href: github-enterprise-server.md
+    - name: 公共 IP 使用情况
+      href: public-ip-usage.md
+    - name: 创建 IPSec 隧道
+      href: create-ipsec-tunnel.md
     - name: Azure 本机集成
       items:
         - name: API 管理
           href: concepts-api-management.md
         - name: 中心和分支
           href: concepts-hub-and-spoke.md
+        - name: Azure 安全中心
+          href: azure-security-integration.md
         - name: Azure 备份服务器
           items:
             - name: 设置备份服务器
@@ -82,19 +88,27 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: 流量管理器
           href: deploy-traffic-manager-balance-workloads.md
-        - name: 公共 IP 使用情况
-          href: public-ip-usage.md
     - name: VMware 解决方案
       items:
         - name: 设置 vRealize Operations
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: 部署 VMware Horizon
           href: azure-vmware-solution-horizon.md
+    - name: VMware 生态系统
+      items:
+        - name: VM 的备份解决方案
+          href: ecosystem-back-up-vms.md
 - name: 资源
   items:
     - name: 疑难解答
       items:
-        - name: 获取有关部署或预配失败的帮助
+        - name: 就部署失败发起支持请求
           href: fix-deployment-provisioning-failures.md
     - name: 常见问题解答
       href: faq.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/vmware/vmware
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware/

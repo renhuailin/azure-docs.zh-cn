@@ -8,13 +8,13 @@ ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 547bf111e73813c939caa917c0117dac6c8989e9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328577"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922465"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Windows 设备
 
@@ -22,12 +22,10 @@ ms.locfileid: "91328577"
 
 此快速入门介绍如何：
 
-> [!div class="checklist"]
->
-> * 创建 IoT 中心。
-> * 将 IoT Edge 设备注册到 IoT 中心。
-> * 在虚拟设备上安装并启动 IoT Edge 运行时。
-> * 以远程方式将模块部署到 IoT Edge 设备并将遥测数据发送到 IoT 中心。
+* 创建 IoT 中心。
+* 将 IoT Edge 设备注册到 IoT 中心。
+* 在虚拟设备上安装并启动 IoT Edge 运行时。
+* 以远程方式将模块部署到 IoT Edge 设备并将遥测数据发送到 IoT 中心。
 
 ![关系图 - 设备和云架构的快速入门](./media/quickstart/install-edge-full.png)
 
@@ -35,23 +33,21 @@ ms.locfileid: "91328577"
 
 如果没有可用的 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-你将使用 Azure CLI 完成本快速入门中的许多步骤。 Azure IoT 具有启用附加功能的扩展。
-
-将 Azure IoT 扩展添加到 Cloud Shell 实例。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 ## <a name="prerequisites"></a>先决条件
+
+为 Azure CLI 准备环境。
+
+- 在 PowerShell 环境中使用 [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)。
+
+   [![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)   
+- 如果需要，请[安装](/cli/azure/install-azure-cli) Azure CLI 来运行 CLI 参考命令。
+   - 如果使用的是本地安装，请通过 Azure CLI 使用 [az login](/cli/azure/reference-index#az-login) 命令登录。  若要完成身份验证过程，请遵循终端中显示的步骤。  有关其他登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
+  - 出现提示时，请在首次使用时安装 Azure CLI 扩展。  有关扩展详细信息，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
+  - 运行 [az version](/cli/azure/reference-index?#az_version) 以查找安装的版本和依赖库。 若要升级到最新版本，请运行 [az upgrade](/cli/azure/reference-index?#az_upgrade)。
 
 云资源：
 
-* 一个资源组，用于管理在本快速入门中使用的所有资源。
+- 一个资源组，用于管理在本快速入门中使用的所有资源。
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -59,7 +55,7 @@ ms.locfileid: "91328577"
 
 IoT Edge 设备：
 
-* 充当 IoT Edge 设备的 Windows 虚拟机。 你可通过使用以下命令并将 `{password}` 替换为安全密码来创建此虚拟机：
+- 充当 IoT Edge 设备的 Windows 虚拟机。 你可通过使用以下命令并将 `{password}` 替换为安全密码来创建此虚拟机：
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -76,11 +72,11 @@ IoT Edge 设备：
   使用远程桌面连接打开此文件，以通过用 `az vm create` 指定的管理员姓名和密码连接到 Windows 虚拟机。
 
 > [!NOTE]
-> 你的 Windows 虚拟机的最低版本为 Windows 版本 1809（内部版本 17763），这是最新的 [Windows 长期支持的内部版本](https://docs.microsoft.com/windows/release-information/)。 默认情况下，Windows 每 22 小时自动检查一次更新。 检查虚拟机后，Windows 将推送与 Windows 版 IoT Edge 不兼容的版本更新，从而阻止进一步使用 Windows 版 IoT Edge 功能。 建议将虚拟机的使用时长限制在 22 小时内，或[暂停 Windows 更新](https://support.microsoft.com/help/4028233/windows-10-manage-updates)。
+> 你的 Windows 虚拟机的最低版本为 Windows 版本 1809（内部版本 17763），这是最新的 [Windows 长期支持的内部版本](/windows/release-information/)。 默认情况下，Windows 每 22 小时自动检查一次更新。 检查虚拟机后，Windows 将推送与 Windows 版 IoT Edge 不兼容的版本更新，从而阻止进一步使用 Windows 版 IoT Edge 功能。 建议将虚拟机的使用时长限制在 22 小时内，或[暂停 Windows 更新](https://support.microsoft.com/help/4028233/windows-10-manage-updates)。
 >
 > 为简单起见，本快速入门使用 Windows 桌面虚拟机。 要了解哪些 Windows 操作系统针对生产环境公开发布，请参阅 [Azure IoT Edge 支持的系统](support.md)。
 >
-> 如果你已准备好为 IoT Edge 配置自己的 Windows 设备，包括运行 IoT Core 的设备，请按照[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)中的步骤进行操作。
+> 如果想为 IoT Edge 配置自己的 Windows 设备，包括运行 IoT Core 的设备，请按照[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的步骤进行操作。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -130,7 +126,7 @@ IoT Edge 设备：
 在 IoT Edge 设备上安装 Azure IoT Edge 运行时，并使用设备连接字符串对其进行配置。
 ![关系图 - 在设备上启动运行时](./media/quickstart/start-runtime.png)
 
-IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 每次 IoT Edge 设备启动并通过启动 IoT Edge 代理启动设备时，*IoT Edge 安全守护程序*就会启动。 *IoT Edge 代理*管理 IoT Edge 设备上模块（包括 IoT Edge 中心）的部署和监视。 *IoT Edge 中心*处理 IoT Edge 设备模块之间以及设备和 IoT 中心之间的通信。
+IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 每次 IoT Edge 设备启动并通过启动 IoT Edge 代理启动设备时，*IoT Edge 安全守护程序* 就会启动。 *IoT Edge 代理* 管理 IoT Edge 设备上模块（包括 IoT Edge 中心）的部署和监视。 *IoT Edge 中心* 处理 IoT Edge 设备模块之间以及设备和 IoT 中心之间的通信。
 
 安装脚本还包含一个名为 Moby 的容器引擎，用于管理 IoT Edge 设备上的容器映像。
 
@@ -144,9 +140,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 使用 PowerShell 下载并安装 IoT Edge 运行时。 使用从 IoT 中心检索的设备连接字符串来配置设备。
 
-1. 如果还没有，请按照[注册新的 Azure IoT Edge 设备](how-to-register-device.md)中的步骤注册设备并检索设备连接字符串。
-
-2. 在虚拟机中，以管理员身份运行 PowerShell。
+1. 在虚拟机中，以管理员身份运行 PowerShell。
 
    >[!NOTE]
    >使用 PowerShell 的 AMD64 会话安装 IoT Edge，不要使用 PowerShell (x86)。 如果不确定您使用的是什么会话类型，请运行以下命令：
@@ -155,25 +149,25 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. Deploy-IoTEdge 命令执行以下检查：Windows 计算机使用受支持版本、启用容器功能、下载 Moby 运行时并下载 IoT Edge 运行时。
+2. Deploy-IoTEdge 命令执行以下检查：Windows 计算机使用受支持版本、启用容器功能、下载 Moby 运行时并下载 IoT Edge 运行时。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. 计算机可能会自动重新启动。 如果 Deploy-IoTEdge 命令提示你重启，请重启。
+3. 计算机可能会自动重新启动。 如果 Deploy-IoTEdge 命令提示你重启，请重启。
 
-5. 再次以管理员身份运行 PowerShell。
+4. 再次以管理员身份运行 PowerShell。
 
-6. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。
+5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-7. 当系统提示输入 **DeviceConnectionString** 时，请提供在上一部分复制的字符串。 请勿对连接字符串使用引号。
+6. 当系统提示输入 **DeviceConnectionString** 时，请提供在上一部分复制的字符串。 请勿对连接字符串使用引号。
 
 ### <a name="view-the-iot-edge-runtime-status"></a>查看 IoT Edge 运行时状态
 

@@ -8,18 +8,18 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aeb2c58504d1f058a3b887e02a7b7406c09db5b6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716132"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913141"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2
 
 您可以将数据、工作负荷和应用程序从 Data Lake Storage Gen1 迁移到 Data Lake Storage Gen2 中。
 
-Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introduction.md) 基础之上构建的，提供了一组专用于大数据分析的功能。 [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) 结合了 [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index)中的功能，例如文件系统语义、目录和文件级别安全性，并通过 [Azure Blob 存储](storage-blobs-introduction.md)中的低成本、分层存储、高可用性/灾难恢复功能进行缩放。
+Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introduction.md) 基础之上构建的，提供了一组专用于大数据分析的功能。 [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) 结合了 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml)中的功能，例如文件系统语义、目录和文件级别安全性，并通过 [Azure Blob 存储](storage-blobs-introduction.md)中的低成本、分层存储、高可用性/灾难恢复功能进行缩放。
 
 > [!NOTE]
 > 为了便于阅读，本文使用了术语 *Gen1* 来指代 Azure Data Lake Storage Gen1，术语 *Gen2* 引用 Azure Data Lake Storage Gen2。
@@ -47,9 +47,9 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 3. 查看 [已知问题](data-lake-storage-known-issues.md) 的列表，以评估功能的任何差距。
 
-4. Gen2 支持 Blob 存储功能，如 [诊断日志记录](../common/storage-analytics-logging.md)、 [访问层](storage-blob-storage-tiers.md)和 [blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)。 如果你在使用其中任何功能时感兴趣，请查看 [当前支持级别](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features)。
+4. Gen2 支持 Blob 存储功能，如 [诊断日志记录](../common/storage-analytics-logging.md)、 [访问层](storage-blob-storage-tiers.md)和 [blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)。 如果你在使用其中任何功能时感兴趣，请查看 [当前支持级别](./data-lake-storage-supported-blob-storage-features.md)。
 
-5. 查看 [Azure 生态系统支持](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access) 的当前状态，以确保 Gen2 支持你的解决方案所依赖的任何服务。
+5. 查看 [Azure 生态系统支持](./data-lake-storage-multi-protocol-access.md) 的当前状态，以确保 Gen2 支持你的解决方案所依赖的任何服务。
 
 ### <a name="step-2-prepare-to-migrate"></a>步骤2：准备迁移
 
@@ -69,13 +69,13 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 使用你喜欢的模式迁移数据、工作负荷和应用程序。 建议增量验证方案。
 
-1. [创建存储帐户](data-lake-storage-quickstart-create-account.md) 并启用分层命名空间功能。 
+1. [创建存储帐户](../common/storage-account-create.md) 并启用分层命名空间功能。 
 
 2. 迁移数据。 
 
-3. 将 [工作负荷中的服务](data-lake-storage-integrate-with-azure-services.md) 配置为指向 Gen2 终结点。 
+3. 将 [工作负荷中的服务](./data-lake-storage-supported-azure-services.md) 配置为指向 Gen2 终结点。 
    
-4. 更新应用程序以使用 Gen2 Api。 请参阅适用于 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [Java](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)、 [JavaScript](data-lake-storage-directory-file-acl-javascript.md) 和 [REST](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2)的指南。 
+4. 更新应用程序以使用 Gen2 Api。 请参阅适用于 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [Java](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)、 [JavaScript](data-lake-storage-directory-file-acl-javascript.md) 和 [REST](/rest/api/storageservices/data-lake-storage-gen2)的指南。 
    
 5. 更新脚本以使用 [PowerShell cmdlet](data-lake-storage-directory-file-acl-powershell.md)Data Lake Storage Gen2 和 [Azure CLI 命令](data-lake-storage-directory-file-acl-cli.md)。
    
@@ -97,13 +97,13 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 |---|---|---|
 |数据组织|[分层命名空间](data-lake-storage-namespace.md)<br>文件和文件夹支持|[分层命名空间](data-lake-storage-namespace.md)<br>容器、文件和文件夹支持 |
 |异地冗余| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage)、 [ZRS](../common/storage-redundancy.md#zone-redundant-storage)、 [GRS](../common/storage-redundancy.md#geo-redundant-storage)、 [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|身份验证|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>服务主体|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>服务主体<br>[共享访问密钥](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|身份验证|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>服务主体|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>服务主体<br>[共享访问密钥](/rest/api/storageservices/authorize-with-shared-key)|
 |授权|管理- [AZURE RBAC](../../role-based-access-control/overview.md)<br>数据- [acl](data-lake-storage-access-control.md)|管理- [AZURE RBAC](../../role-based-access-control/overview.md)<br>数据-  [acl](data-lake-storage-access-control.md)， [Azure RBAC](../../role-based-access-control/overview.md) |
-|加密–静态数据|服务器端–与 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的或 [客户管理](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的密钥|服务器端–与 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的或 [客户管理](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的密钥|
+|加密–静态数据|服务器端–与 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的或 [客户管理](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的密钥|服务器端–与 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的或 [客户管理](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的密钥|
 |VNET 支持|[VNET 集成](../../data-lake-store/data-lake-store-network-security.md)|[服务终结点](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)， [专用终结点](../common/storage-private-endpoints.md)|
 |开发人员体验|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、 [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、 [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、 [Python](../../data-lake-store/data-lake-store-data-operations-python.md)、 [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md) [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|公开发布- [REST](/rest/api/storageservices/data-lake-storage-gen2)、 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [Java](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)<br>公共预览版- [JavaScript](data-lake-storage-directory-file-acl-javascript.md)、 [PowerShell](data-lake-storage-directory-file-acl-powershell.md)、 [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |资源日志|经典日志<br>[Azure Monitor 集成](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[经典日志](../common/storage-analytics-logging.md) -正式发布<br>Azure monitor 集成–时间线 TBD|
-|生态系统|[HDInsight (3.6) ](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)， [Azure Databricks (3.1 及更高版本) ](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)， [Azure Synapse Analytics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)， [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0) ](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks (5.1 及更高版本) ](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)、 [Azure Synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|生态系统|[HDInsight (3.6) ](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)， [Azure Databricks (3.1 及更高版本) ](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)， [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)， [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0) ](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks (5.1 及更高版本) ](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)、 [Azure Synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 
@@ -116,21 +116,23 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 |**抬起和移位**|最简单的模式。 如果数据管道可以承受停机，则这是理想之选。|
 |**增量复制**|类似于 *抬起和移位*，但停机时间更少。 适用于需要较长时间进行复制的大量数据。|
 |**双管道**|适用于不能承受停机的管道。|
-|**双向同步**|与 *双管道*类似，但具有更分阶段的方法，适用于更复杂的管道。|
+|**双向同步**|与 *双管道* 类似，但具有更分阶段的方法，适用于更复杂的管道。|
 
 让我们进一步了解每个模式。
  
 ### <a name="lift-and-shift-pattern"></a>抬起和移位模式
 
-这是最简单的模式。
+这是最简单的模式。 
 
 1. 停止所有写入 Gen1。
 
-2. 将数据从 Gen1 移动到 Gen2。 建议 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)。 Acl 与数据一起复制。
+2. 将数据从 Gen1 移动到 Gen2。 建议 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-storage.md)。 Acl 与数据一起复制。
 
 3. 将操作和工作负荷点引入 Gen2。
 
 4. 停止 Gen1。
+
+请查看我们的 "提升" 和 "移动" [迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md)的示例代码。
 
 > [!div class="mx-imgBorder"]
 > ![抬起和移位模式](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
@@ -145,13 +147,16 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 ### <a name="incremental-copy-pattern"></a>增量复制模式
 
-1. 开始将数据从 Gen1 移动到 Gen2。 建议 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)。 Acl 与数据一起复制。
+1. 开始将数据从 Gen1 移动到 Gen2。 建议 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-storage.md)。 Acl 与数据一起复制。
 
 2. 以增量方式复制 Gen1 中的新数据。
 
 3. 复制所有数据后，停止所有写入到 Gen1，并将工作负荷指向 Gen2。
 
 4. 停止 Gen1。
+
+请查看我们的 [增量复制迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md)中的增量复制模式的示例代码。
+
 
 > [!div class="mx-imgBorder"]
 > ![增量复制模式](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
@@ -166,13 +171,15 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 ### <a name="dual-pipeline-pattern"></a>双管道模式
 
-1. 将数据从 Gen1 移动到 Gen2。 建议 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)。 Acl 与数据一起复制。
+1. 将数据从 Gen1 移动到 Gen2。 建议 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-storage.md)。 Acl 与数据一起复制。
 
 2. 将新数据引入 Gen1 和 Gen2。
 
 3. 将工作负荷指向 Gen2。
 
 4. 停止所有写入到 Gen1，并解除 Gen1 的授权。
+
+在 [双管道迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md)中查看双管道模式的示例代码。
 
 > [!div class="mx-imgBorder"]
 > ![双管道模式](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
@@ -193,6 +200,8 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 4. 停止 Gen1。
 
+请在 [双向同步迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md)中查看双向同步模式的示例代码。
+
 > [!div class="mx-imgBorder"]
 > ![双向模式](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
 
@@ -204,6 +213,6 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解为存储帐户设置安全性的各个部分。 请参阅 [Azure 存储安全指南](../common/storage-security-guide.md)。
+- 了解为存储帐户设置安全性的各个部分。 请参阅 [Azure 存储安全指南](./security-recommendations.md)。
 - 优化 Data Lake Store 的性能。 请参阅 [优化 Azure Data Lake Storage Gen2 性能](data-lake-storage-performance-tuning-guidance.md)
 - 查看管理 Data Lake Store 的最佳实践。 请参阅 [使用 Azure Data Lake Storage Gen2 的最佳实践](data-lake-storage-best-practices.md)

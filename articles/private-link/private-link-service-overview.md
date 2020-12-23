@@ -7,27 +7,27 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 27dba675f82c4d34ec793cf492c18b293a6c8c77
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760935"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544252"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
 
-Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服务的引用。 可为 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md)后面运行的服务启用专用链接访问，使该服务的使用者能够从其自己的 VNet 以私密方式访问该服务。 你的客户可在其 VNet 中创建专用终结点，然后将此终结点映射到此服务。 本文解释与服务提供商一方相关的概念。 
+Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服务的引用。 可为 [Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md)后面运行的服务启用专用链接访问，使该服务的使用者能够从其自己的 VNet 以私密方式访问该服务。 你的客户可在其 VNet 中创建专用终结点，然后将此终结点映射到此服务。 本文解释与服务提供商一方相关的概念。 
 
 :::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="专用链接服务工作流" border="true":::
 
-*图： Azure 专用链接服务。*
+*图：Azure 专用链接服务。*
 
 ## <a name="workflow"></a>工作流
 
 ![专用链接服务工作流](media/private-link-service-overview/private-link-service-workflow.png)
 
 
-*图： Azure 私有链接服务工作流。*
+*图：Azure 专用链接服务工作流。*
 
 ### <a name="create-your-private-link-service"></a>创建专用链接服务
 
@@ -57,7 +57,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 |---------|---------|
 |预配状态 (provisioningState)  |一个只读属性，列出专用链接服务的当前预配状态。 适用的预配状态为：“Deleting；Failed；Succeeded；Updating”。 如果预配状态为“Succeeded”，则表示已成功预配专用链接服务。        |
 |别名 (alias)     | 别名是服务的全局唯一只读字符串。 它可以帮助掩码服务的客户数据，同时为服务创建一个易于共享的名称。 创建专用链接服务时，Azure 将为该服务生成可与客户共享的别名。 客户可以使用此别名请求连接到你的服务。          |
-|可见性 (visibility)     | 可见性是控制专用链接服务的公开设置的属性。 服务提供商可以选择将其服务的公开范围限制为具有基于角色的访问控制 (RBAC) 权限的订阅、一组受限的订阅，或所有 Azure 订阅。          |
+|可见性 (visibility)     | 可见性是控制专用链接服务的公开设置的属性。 服务提供商可以选择使用 Azure 基于角色的访问控制 (Azure RBAC) 权限、一组受限的订阅或所有 Azure 订阅，来限制其服务对订阅的暴露程度。          |
 |自动批准 (autoApproval)    |   自动批准控制对专用链接服务的自动访问。 从这些订阅中的专用终结点请求连接时，会自动批准“自动批准”列表中指定的订阅。          |
 |负载均衡器前端 IP 配置 (loadBalancerFrontendIpConfigurations)    |    专用链接服务绑定到标准负载均衡器的前端 IP 地址。 发往服务的所有流量将抵达 SLB 的前端。 可以配置 SLB 规则，以将此流量定向到运行应用程序的相应后端池。 负载均衡器前端 IP 配置不同于 NAT IP 配置。      |
 |NAT IP 配置 (ipConfigurations)    |    此属性引用专用链接服务的 NAT（网络地址转换）IP 配置。 可以从服务提供商虚拟网络中的任何子网选择 NAT IP。 专用链接服务对专用链接流量执行目标端 NAT。 这可以确保源（使用者端）与目标（服务提供商）地址空间之间不会出现 IP 冲突。 在目标端（服务提供商端），NAT IP 地址将显示为服务收到的所有数据包的源 IP，并显示为服务发送的所有数据包的目标 IP。       |
@@ -76,7 +76,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
  
 - 可以从属于不同 VNet、订阅和/或 Active Directory 租户的多个专用终结点访问单个专用链接服务。 连接是通过连接工作流建立的。 
  
-- 可以使用不同的前端 IP 配置在同一个标准负载均衡器上创建多个专用链接服务。 可为每个标准负载均衡器和每个订阅创建的专用链接服务数量有限制。 有关详细信息，请参阅  [Azure 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 可以使用不同的前端 IP 配置在同一个标准负载均衡器上创建多个专用链接服务。 可为每个标准负载均衡器和每个订阅创建的专用链接服务数量有限制。 有关详细信息，请参阅  [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
  
 - 可将多个 NAT IP 配置链接到专用链接服务。 选择多个 NAT IP 配置有助于服务提供商进行缩放。 目前，服务提供商最多可为每个专用链接服务分配八个 NAT IP 地址。 对于每个 NAT IP 地址，可为 TCP 连接分配更多的端口，从而进行横向扩展。将多个 NAT IP 地址添加到专用链接服务后，无法删除 NAT IP 地址。 这是为了确保在删除 NAT IP 地址时活动的连接不会受到影响。
 
@@ -95,7 +95,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 ## <a name="control-service-exposure"></a>控制服务的公开
 
-专用链接服务提供相应的选项用于通过“可见性”设置控制服务的公开。 可将服务设置为私密服务，以便只能从你拥有的不同 VNet 使用（仅限 RBAC 权限）、将公开范围限制为你信任的有限一组订阅，或者将其公开，使所有 Azure 订阅都能在专用链接服务中请求连接。 可见性设置决定了使用者是否可以连接到你的服务。 
+专用链接服务提供相应的选项用于通过“可见性”设置控制服务的公开。 你可以使服务专用于你自己 (的不同 Vnet 中的使用。仅) 、将公开范围限制为你信任的有限订阅集或使其公开，以便所有 Azure 订阅都可以请求专用链接服务上的连接。 可见性设置决定了使用者是否可以连接到你的服务。 
 
 ## <a name="control-service-access"></a>控制服务的访问
 

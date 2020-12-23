@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9d620342d53bdae0b3a520000f6d240eb0e28d15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707401"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180586"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理远程访问本地应用程序
 
@@ -36,7 +36,7 @@ Azure AD 应用程序代理的特性：
 应用程序代理适用于：
 
 * 使用 [Windows 集成身份验证](application-proxy-configure-single-sign-on-with-kcd.md)方法进行身份验证的 Web 应用程序
-* 使用基于窗体或[基于标头](application-proxy-configure-single-sign-on-with-ping-access.md)的访问的 Web 应用程序
+* 使用基于窗体或[基于标头](./application-proxy-configure-single-sign-on-with-headers.md)的访问的 Web 应用程序
 * 想要公开给不同设备上丰富应用程序的 Web API
 * 驻留在[远程桌面网关](application-proxy-integrate-with-remote-desktop-services.md)后面的应用程序
 * 与 Microsoft 身份验证库 (MSAL) 集成的丰富客户端应用
@@ -63,9 +63,9 @@ Azure AD 应用程序代理的特性：
 >
 
 
-| 组件 | 描述 |
+| 组件 | 说明 |
 | --------- | ----------- |
-| 终结点  | 终结点是 URL 或[最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
+| 端点  | 终结点是 URL 或[最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
 | Azure AD | Azure AD 使用存储在云端的租户目录执行身份验证。 |
 | 应用程序代理服务 | 应用程序代理服务作为 Azure AD 的一部分在云中运行。 它将登录令牌从用户传递到应用程序代理连接器。 应用程序代理在收到请求时转发任何可访问的标头，并根据其协议将标头设置为客户端 IP 地址。 如果传入代理的请求已有该标头，则将客户端 IP 地址添加到逗号分隔列表的末尾，该地址为标头的值。|
 | 应用程序代理连接器 | 连接器是可在网络内的 Windows Server 上运行的轻型代理。 连接器管理云端应用程序代理服务与本地应用程序之间的通信。 它只使用出站连接，因此不需要开放任何入站端口或在 DMZ 中放置任何对象。 连接器是无状态的，可根据需要从云中提取信息。 有关连接器的详细信息（例如，它们如何均衡负载和执行身份验证），请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。|
@@ -74,4 +74,3 @@ Azure AD 应用程序代理的特性：
 
 ## <a name="next-steps"></a>后续步骤
 若要开始使用应用程序代理，请参阅 [教程：通过应用程序代理添加用于远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。
-

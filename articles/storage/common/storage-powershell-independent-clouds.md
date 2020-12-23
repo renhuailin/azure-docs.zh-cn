@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b610a5537d110a4046bd42ac86f5c938aeafe953
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072939"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783566"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -51,7 +51,7 @@ Get-AzEnvironment
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-若要访问中国云，请使用环境 **AzureChinaCloud**。 若要访问德国云，请使用 **AzureGermanCloud**。
+若要访问中国云，请使用环境 **AzureChinaCloud** 。 若要访问德国云，请使用 **AzureGermanCloud** 。
 
 此时，如果需要查看可在其中创建存储帐户或其他资源的位置列表，可以使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 查询所选云可用的位置。
 
@@ -69,7 +69,7 @@ Get-AzLocation | select Location, DisplayName
 
 ## <a name="endpoint-suffix"></a>终结点后缀
 
-其中每个环境的终结点后缀不同于 Azure 公有云终结点。 例如，Azure 公有云的 Blob 终结点后缀为 **blob.core.windows.net**。 政府云的 Blob 终结点后缀为 **blob.core.usgovcloudapi.net**。
+其中每个环境的终结点后缀不同于 Azure 公有云终结点。 例如，Azure 公有云的 Blob 终结点后缀为 **blob.core.windows.net** 。 政府云的 Blob 终结点后缀为 **blob.core.usgovcloudapi.net** 。
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>使用 Get-AzEnvironment 获取终结点
 
@@ -92,7 +92,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
+若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix** 。 以下示例适用于德国云。
 
 ```powershell
 Get-AzEnvironment -Name AzureGermanCloud
@@ -167,7 +167,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 * [在不同的 PowerShell 会话中保留用户登录](/powershell/azure/context-persistence)
-* [Azure 政府版存储](../../azure-government/documentation-government-services-storage.md)
+* [Azure 政府版存储](../../azure-government/compare-azure-government-global-azure.md)
 * [Microsoft Azure Government 开发人员指南](../../azure-government/documentation-government-developer-guide.md)
 * [Azure 中国世纪互联应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure 德国版文档](../../germany/germany-welcome.md)

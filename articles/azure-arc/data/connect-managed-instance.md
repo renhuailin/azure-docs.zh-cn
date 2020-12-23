@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934353"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372355"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>连接到启用了 Azure Arc 的 SQL 托管实例
 
@@ -68,7 +68,7 @@ sqlcmd -S 52.229.9.30,30913 -U sa
 
 如果你使用的是 Azure 虚拟机，则终结点 IP 地址将不显示公共 IP 地址。 若要查找外部 IP 地址，请使用以下命令：
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -78,15 +78,15 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 
 若要设置规则，你将需要知道 NSG 的名称，你可以使用以下命令来找出此名称：
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-获得 NSG 的名称后，可以使用以下命令添加防火墙规则。 此处的示例值为端口30913创建 NSG 规则，并允许来自 **任何** 源 IP 地址的连接。  这不是最佳安全做法！  通过指定特定于客户端 IP 地址的源地址前缀值或涵盖团队或组织的 IP 地址的 IP 地址范围，可以更好地锁定事件。
+获得 NSG 的名称后，可以使用以下命令添加防火墙规则。 此处的示例值为端口30913创建 NSG 规则，并允许来自 **任何** 源 IP 地址的连接。  这不是最佳安全做法！  通过指定特定于你的客户端 IP 地址或 IP 地址范围（涵盖你的团队或组织的 IP 地址）的 -source-address-prefixes 值，可以更好地锁定内容。
 
 将下面参数的值替换 `--destination-port-ranges` 为你在上面的 F 命令中获取的端口号 `azdata sql instance list` 。
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30913 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 

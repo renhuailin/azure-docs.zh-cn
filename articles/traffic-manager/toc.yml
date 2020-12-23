@@ -13,6 +13,7 @@
     - name: 创建流量管理器配置文件 - Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
     - name: 创建流量管理器配置文件 - ARM 模板
+      displayName: Resource Manager
       href: quickstart-create-traffic-manager-profile-template.md
   expanded: true
 - name: 教程
@@ -121,7 +122,7 @@
     - name: Ruby
       href: 'https://www.rubydoc.info/gems/azure_mgmt_traffic_manager'
     - name: Python
-      href: 'https://azure.github.io/azure-sdk-for-python/ref/Traffic-Manager.html'
+      href: 'https://azure.github.io/azure-sdk-for-python/trafficmanager.html'
     - name: REST
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: 资源管理器模板

@@ -1,6 +1,6 @@
 ---
-title: 控制 SQL 按需版本（预览版）对存储帐户的访问
-description: 介绍 SQL 按需版本（预览版）如何访问 Azure 存储，以及如何在 Azure Synapse Analytics 中控制 SQL 按需版本对存储的访问。
+title: 控制无服务器 SQL 池对存储帐户的访问
+description: 介绍无服务器 SQL 池如何访问 Azure 存储，以及如何在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储的访问。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,31 +9,31 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449469"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400669"
 ---
-# <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 按需版本（预览版）对存储帐户的访问
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
-SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储中文件的访问权限是在以下两个级别控制的：
+无服务器 SQL 池查询直接从 Azure 存储中读取文件。 对 Azure 存储中文件的访问权限是在以下两个级别控制的：
 - **存储级别** - 用户应具有访问基础存储文件的权限。 你的存储管理员应当允许 Azure AD 主体读取/写入文件，或者生成将用来访问存储的 SAS 密钥。
-- **SQL 服务级别** - 用户应当具有从[外部表](develop-tables-external-tables.md)中读取数据的 `SELECT` 权限或者具有执行 `OPENROWSET` 的 `ADMINISTER BULK ADMIN` 权限，还应当有权使用将用来访问存储的凭据。
+- **SQL 服务级别** - 用户应已被授予使用[外部表](develop-tables-external-tables.md)读取数据或执行 `OPENROWSET` 函数的权限。 在此部分中详细了解[所需权限](develop-storage-files-overview.md#permissions)。
 
 本文介绍可用的凭据类型，以及为 SQL 和 Azure AD 用户进行的凭据查找是如何执行的。
 
 ## <a name="supported-storage-authorization-types"></a>支持的存储授权类型
 
-如果文件不是公开可用的，则已登录到按需 SQL 资源的用户必须被授权访问和查询 Azure 存储中的文件。 可以使用三种授权类型来访问非公共存储 - [用户标识](?tabs=user-identity)、[共享访问签名](?tabs=shared-access-signature)和[托管标识](?tabs=managed-identity)。
+如果文件不是公开可用的，则登录到无服务器 SQL 池的用户必须获得访问和查询 Azure 存储中文件的授权。 可以使用三种授权类型来访问非公共存储 - [用户标识](?tabs=user-identity)、[共享访问签名](?tabs=shared-access-signature)和[托管标识](?tabs=managed-identity)。
 
 > [!NOTE]
-> **Azure AD 直通**是创建工作区时的默认行为。
+> **Azure AD 直通** 是创建工作区时的默认行为。
 
 ### <a name="user-identity"></a>[用户标识](#tab/user-identity)
 
-用户标识（也称为“Azure AD 直通”）是一种授权类型。使用这种授权时，按需登录 SQL 的 Azure AD 用户的标识将用于授予数据访问权限。 在访问数据之前，Azure 存储管理员必须向 Azure AD 用户授予权限。 如下表中所示，SQL 用户类型不支持此授权类型。
+用户标识（也称为“Azure AD 直通”）是一种授权类型。使用这种授权时，登录到无服务器 SQL 池的 Azure AD 用户的标识将用于授予数据访问权限。 在访问数据之前，Azure 存储管理员必须向 Azure AD 用户授予权限。 如下表中所示，SQL 用户类型不支持此授权类型。
 
 > [!IMPORTANT]
 > 需要具有存储 Blob 数据所有者/参与者/读取者角色才能使用自己的标识来访问数据。
@@ -49,7 +49,7 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 可以导航到“Azure 门户”->“存储帐户”->“共享访问签名”->“配置权限”->“生成 SAS 和连接字符串”来获取 SAS 令牌。
 
 > [!IMPORTANT]
-> 生成某个 SAS 令牌时，其开头会包含问号（“?”）。 若要在 SQL 按需版本中使用该令牌，必须在创建凭据时删除问号（“?”）。 例如：
+> 生成某个 SAS 令牌时，其开头会包含问号（“?”）。 若要在无服务器 SQL 池中使用该令牌，必须在创建凭据时删除问号（“?”）。 例如：
 >
 > SAS 令牌：?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
@@ -57,7 +57,7 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
-托管标识也称为 MSI。 它是 Azure Active Directory (Azure AD) 的一项功能，为 SQL 按需版本提供 Azure 服务。 此外，它还会在 Azure AD 中部署一个自动托管的标识。 此标识可用于对有关访问 Azure 存储中的数据的请求授权。
+托管标识也称为 MSI。 它是 Azure Active Directory (Azure AD) 的一项功能，为无服务器 SQL 池提供 Azure 服务。 此外，它还会在 Azure AD 中部署一个自动托管的标识。 此标识可用于对有关访问 Azure 存储中的数据的请求授权。
 
 在访问数据之前，Azure 存储管理员必须向管理标识授予访问数据的权限。 向托管标识授予权限的方式与向任何其他 Azure AD 用户授予权限的方式相同。
 
@@ -83,7 +83,7 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 
 | 授权类型  | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| SAS    | 支持\*      | 不支持   | 支持\*     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | 支持\*      | 不支持   | 支持\*     |
 | [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持      | 支持        | 支持     |
 | [用户标识](?tabs=user-identity#supported-storage-authorization-types)    | 支持\*      | 支持\*        | 支持\*     |
 
@@ -95,7 +95,7 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 
 ## <a name="credentials"></a>凭据
 
-若要查询 Azure 存储中的文件，SQL 按需版本终结点需要一个包含身份验证信息的凭据。 使用两种类型的凭据：
+若要查询 Azure 存储中的文件，无服务器 SQL 池终结点需要一个包含身份验证信息的凭据。 使用两种类型的凭据：
 - 服务器级凭据用于通过 `OPENROWSET` 函数执行的即席查询。 凭据名称必须与存储 URL 匹配。
 - 数据库范围的凭据用于外部表。 外部表使用应当用来访问存储的凭据来引用 `DATA SOURCE`。
 

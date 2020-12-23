@@ -9,14 +9,15 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0b48b8d954b132caab96e5978c90687899ea04c2
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569935"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549219"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
@@ -26,20 +27,20 @@ ms.locfileid: "91569935"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
-> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [批量执行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 这是适用于 SQL API 的原始 Azure Cosmos DB 同步 Java SDK v2，支持同步操作。
 
 > [!IMPORTANT]  
-> 这不是最新的 Azure Cosmos DB Java SDK！ 请考虑将 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) 用于项目。 若要升级，请按照[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南和 [Reactor 与 RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) 指南中的说明进行操作。 
+> 这不是最新的 Azure Cosmos DB Java SDK！ 请考虑将 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) 用于项目。 若要升级，请按照[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南和 [Reactor 与 RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) 指南中的说明进行操作。 
 >
 
 | |  |
@@ -47,14 +48,14 @@ ms.locfileid: "91569935"
 |**SDK 下载**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API 文档**|[Java API 参考文档](/java/api/com.microsoft.azure.documentdb)|
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**入门**|[Java SDK 入门](sql-api-java-get-started.md)|
+|**入门**|[Java SDK 入门](./create-sql-api-java.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-java-application.md)|
 |受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
-* 解决 documentCollection 查询上的主分区缓存问题。
+* 修复了 documentCollection 查询的主分区缓存问题。
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
 * 添加了对 449 重试自定义配置的支持。
@@ -162,8 +163,8 @@ ms.locfileid: "91569935"
 * 解决了 Strong 和 BoundedStaleness 一致性级别存在的问题。
 
 ### <a name="1110"></a><a name="1.11.0"></a>1.11.0
-* 添加了对名为 ConsistentPrefix 的新一致性级别的支持。
-* 修复了在会话模式下读取集合时的 bug。
+* 添加了对称为“ConsistentPrefix”的新一致性级别的支持。
+* 修复了以会话模式读取集合时的 bug。
 
 ### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * 启用了对吞吐量低至 2,500 RU/秒并且缩放增量为 100 RU/秒的分区集合的支持。
@@ -174,7 +175,7 @@ ms.locfileid: "91569935"
 * 修复了会话容器中的一些 Bug，这些 Bug 可能会在创建集合后立即导致“找不到所有者资源”请求异常。
 
 ### <a name="195"></a><a name="1.9.5"></a>1.9.5
-* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](sql-query-aggregates.md)。
+* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](sql-query-aggregate-functions.md)。
 * 添加了对更改源的支持。
 * 通过 RequestOptions.setPopulateQuotaInfo 添加了对集合配额信息的支持。
 * 通过 RequestOptions.setScriptLoggingEnabled 添加了对存储过程脚本日志记录的支持。
@@ -232,7 +233,7 @@ ms.locfileid: "91569935"
 * 对文档添加了生存时间 (TTL) 支持。
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* 实现了[分区集合](partition-data.md)和[用户定义的性能级别](performance-levels.md)。
+* 实现了[分区集合](partitioning-overview.md)和[用户定义的性能级别](performance-levels.md)。
 
 ### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * 修复了 HashPartitionResolver 中的 Bug 以生成 little-endian 格式的哈希值，以便与其他 SDK 保持一致。
@@ -260,12 +261,12 @@ ms.locfileid: "91569935"
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
 
-Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新 SDK 版本。
+Microsoft 至少会在停用 SDK 的 **12 个月** 之前发出通知，以便顺利转换到更新的/受支持的版本。 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新 SDK 版本。
 
 > [!WARNING]
-> 30 2020 月30日后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为 SQL API Azure Cosmos DB Java SDK 的版本1.x 提供支持。 如果你不想升级，则从 1.x 版 SDK 发送的请求将继续由 Azure Cosmos DB 服务处理。
+> 在 2020 年 5 月 30 日之后，Azure Cosmos DB 将不再进行 bug 修复，不再添加新功能，也不再支持 1.x 版的 Azure Cosmos DB Java SDK for SQL API。 如果你不想升级，则从 1.x 版 SDK 发送的请求将继续由 Azure Cosmos DB 服务处理。
 >
-> 2016年2月29日后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为适用于 SQL API 的 Azure Cosmos DB Java SDK 提供版本1.x 支持。 如果不想升级，则从 SDK 的版本4.x 发送的请求将继续由 Azure Cosmos DB 服务提供服务。
+> 在 2016 年 2 月 29 日之后，Azure Cosmos DB 将不再进行 bug 修复，不再添加新功能，也不再支持 0.x 版的 Azure Cosmos DB Java SDK for SQL API。 如果你不想升级，则从 0.x 版 SDK 发送的请求将继续由 Azure Cosmos DB 服务处理。
 
 
 | 版本 | 发布日期 | 停用日期 |
@@ -331,4 +332,3 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。
-

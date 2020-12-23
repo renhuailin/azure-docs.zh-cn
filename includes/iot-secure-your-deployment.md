@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76748928"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010686"
 ---
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
 
@@ -53,7 +53,7 @@ IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在�
 
 * AMQP：基于 SASL PLAIN 和 AMQP 声明的安全性（若是 IoT 中心级别令牌，则为 `{policyName}@sas.root.{iothubName}`；若是设备范围令牌，则为 `{deviceId}`）。
 
-* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”**** 字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”**** 字段中的 SAS 令牌。
+* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”字段中的 SAS 令牌。
 
 * HTTP：有效令牌位于授权请求标头中。
 
@@ -77,21 +77,21 @@ IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控�
 
 ## <a name="securing-the-connection"></a>保护连接安全
 
-使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 按此顺序支持[tls 1.2](https://tools.ietf.org/html/rfc5246)、tls 1.1 和 tls 1.0。 对 TLS 1.0 的支持仅为向后兼容性提供。 请[在 IoT 中心内检查 TLS 支持](../articles/iot-hub/iot-hub-tls-support.md)，了解如何将集线器配置为使用 TLS 1.2，因为它提供了最高的安全性。
+使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 按此顺序支持 [tls 1.2](https://tools.ietf.org/html/rfc5246)、tls 1.1 和 tls 1.0。 对 TLS 1.0 的支持仅为向后兼容性提供。 请 [在 IoT 中心内检查 TLS 支持](../articles/iot-hub/iot-hub-tls-support.md) ，了解如何将集线器配置为使用 TLS 1.2，因为它提供了最高的安全性。
 
 ## <a name="securing-the-cloud"></a>保护云的安全
 
 Azure IoT 中心允许为每个安全密钥定义[访问控制策略](../articles/iot-hub/iot-hub-devguide-security.md)。 它使用以下一组权限向每个 IoT 中心的终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
 
-* **RegistryRead**。 授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **RegistryRead**。 授予对标识注册表的读取访问权限。 有关详细信息，请参阅 [标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
-* **RegistryReadWrite**。 授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **RegistryReadWrite**。 授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅 [标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
 * **ServiceConnect**。 授予对面向云服务的通信和监视终结点的访问权限。 例如，它授权后端云服务接收设备到云的消息、发送云到设备的消息，以及检索对应的传送确认。
 
 * **DeviceConnect**。 授予对面向设备的终结点的访问权限。 例如，它授予发送设备到云的消息和接收云到设备的消息的权限。 此权限由设备使用。
 
-有两种方法可以使用[安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)来获取 IoT 中心的 **DeviceConnect** 权限：使用设备标识密钥，或者使用共享访问密钥。 此外，必须注意的是，可从设备访问的所有功能都故意显示在前缀为 `/devices/{deviceId}` 的终结点上。
+有两种方法可以使用 [安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)来获取 IoT 中心的 **DeviceConnect** 权限：使用设备标识密钥，或者使用共享访问密钥。 此外，必须注意的是，可从设备访问的所有功能都故意显示在前缀为 `/devices/{deviceId}` 的终结点上。
 
 [服务组件只能使用共享访问策略生成安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)，授予适当权限。
 
@@ -109,6 +109,6 @@ Azure IoT 中心引入的数据可供多种服务（例如 Azure 流分析、Azu
 
 * [Azure Blob 存储](https://azure.microsoft.com/services/storage/)：可靠且经济实惠的云存储，适用于设备发送到云的数据。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本文概述了使用 Azure IoT 来设计和部署 IoT 基础结构的实现级别的详细信息。 将每个组件配置为安全状态是保护 IoT 总体基础结构安全的关键。 Azure IoT 中可用的设计选择提供了一定程度的灵活性和选择性；但是，每个选择都可能具有安全隐患。 推荐通过风险/成本评估对这些选择进行评估。

@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 776c207387ee55b998615131baf77e6c13655b49
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297719"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033931"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>更改 Azure 计费帐户的联系人信息
 
@@ -31,7 +31,7 @@ ms.locfileid: "91297719"
 
 ## <a name="update-an-mosp-billing-account-address"></a>更新 MOSP 计费帐户地址
 
-1. 使用具有帐户的帐户管理员权限的电子邮件地址登录 [Azure 门户](https://portal.azure.com/)。
+1. 使用具有帐户的帐户管理员权限的电子邮件地址登录 Azure 门户。
 1. 搜索“成本管理 + 计费”。  
     ![显示在 Azure 门户中的什么位置搜索“成本管理 + 计费”的屏幕截图](./media/change-azure-account-profile/search-cmb.png)
 1. 在左侧选择“属性”。  
@@ -41,7 +41,7 @@ ms.locfileid: "91297719"
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>更新 MCA 计费帐户买方地址
 
-1. 使用具有 Microsoft 客户协议计费帐户所有者或参与者角色的电子邮件地址登录 [Azure 门户](https://portal.azure.com/)。
+1. 使用具有 Microsoft 客户协议计费帐户所有者或参与者角色的电子邮件地址登录 Azure 门户。
 1. 搜索“成本管理 + 计费”。  
     ![显示要在 Azure 门户中什么位置进行搜索的屏幕截图](./media/change-azure-account-profile/search-cmb.png)
 1. 选择左侧的“属性”，然后选择“更新买方”。  
@@ -54,7 +54,7 @@ ms.locfileid: "91297719"
 
 ## <a name="update-an-mca-billing-account-address"></a>更新 MCA 计费帐户地址
 
-1. 使用具有 MCA 计费帐户或计费对象信息的所有者或参与者角色的电子邮件地址登录 [Azure 门户](https://portal.azure.com/)。
+1. 使用具有 MCA 计费帐户或计费对象信息的所有者或参与者角色的电子邮件地址登录 Azure 门户。
 1. 搜索“成本管理 + 计费”。  
 1. 在左侧选择“计费对象信息”。
 1. 选择计费对象信息以更新帐单邮寄地址。  
@@ -67,7 +67,7 @@ ms.locfileid: "91297719"
 
 ## <a name="service-and-marketing-emails"></a>服务和营销电子邮件
 
-系统每隔 90 天就会在 [Azure 门户](https://portal.azure.com)中提示你验证或更新电子邮件地址。 Microsoft 向该电子邮件地址发送包含 Azure 帐户相关信息的电子邮件是出于以下目的：
+系统每隔 90 天就会在 Azure 门户中提示你验证或更新电子邮件地址。 Microsoft 向该电子邮件地址发送包含 Azure 帐户相关信息的电子邮件是出于以下目的：
 
 - 服务通知
 - 安全警报
@@ -86,7 +86,7 @@ ms.locfileid: "91297719"
 
 1. 如果你是 MOSP 帐户的帐户管理员，请按照[更新 MOSP 计费帐户地址](#update-an-mosp-billing-account-address)中的说明进行操作，并在最后一个步骤中选择“更新联系人信息”。 然后输入新的电子邮件地址。
 1. 转到 Azure 门户中的[联系人信息](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)区域，然后输入新的电子邮件地址。 
-1. 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，选择带有你的姓名缩写或图像的图标。 然后，选择上下文菜单 ( **...** )。接下来，从菜单中选择“我的联系人信息”，然后输入新的电子邮件地址。
+1. 在 Azure 门户中，选择带有你的姓名缩写或图像的图标。 然后，选择上下文菜单 ( **...** )。接下来，从菜单中选择“我的联系人信息”，然后输入新的电子邮件地址。
 
 ![在 Azure 中更新电子邮件地址的示例](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "91297719"
 
 ## <a name="update-the-email-address-that-you-sign-in-with"></a>更新用于登录的电子邮件地址
 
-你无法更新用于访问帐户的电子邮件地址。 但是，如果你有一个 MOSP 计费帐户，则可以使用新的电子邮件地址注册另一个帐户，并将订阅的所有权转移到这个新的帐户。 [可以为 MCA 计费帐户提供新的电子邮件地址权限](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
+你无法更新用于访问帐户的电子邮件地址。 但是，如果你有一个 MOSP 计费帐户，则可以使用新的电子邮件地址注册另一个帐户，并将订阅的所有权转移到这个新的帐户。 可以为 MCA 计费帐户提供新的电子邮件地址权限。
 
 ## <a name="update-your-credit-card"></a>更新信用卡
 
@@ -114,7 +114,7 @@ ms.locfileid: "91297719"
 
 ## <a name="change-the-subscription-name"></a>更改订阅名称
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，在左窗格中选择“订阅”，然后选择要重命名的订阅。
+1. 登录到 Azure 门户，在左窗格中选择“订阅”，然后选择要重命名的订阅。
 1. 选择“概览”，然后从命令栏中选择“重命名”。   
     ![重命名 Azure 订阅的示例](./media/change-azure-account-profile/rename-sub.png)
 1. 更改名称之后，请选择“保存”。

@@ -26,18 +26,24 @@
               href: service-bus-resource-manager-namespace-queue.md
         - name: 发送和接收消息
           items:
-            - name: .NET
+            - name: .NET (Azure.Messaging.ServiceBus)
               href: service-bus-dotnet-get-started-with-queues.md
-            - name: Java
+            - name: Java (azure-messaging-servicebus)
               href: service-bus-java-how-to-use-queues.md
-            - name: Node.js
-              href: service-bus-nodejs-how-to-use-queues-new-package.md
+            - name: Python (azure-servicebus)
+              href: service-bus-python-how-to-use-queues.md
+            - name: JavaScript (@azure/service-bus)
+              href: service-bus-nodejs-how-to-use-queues.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
-            - name: Python
-              href: service-bus-python-how-to-use-queues.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-queues.md
+        - name: 发送和接收消息（旧版本/包）
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-get-started-with-queues-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-queues-legacy.md
     - name: 服务总线主题和订阅
       items:
         - name: 创建主题和订阅
@@ -50,24 +56,34 @@
               href: service-bus-resource-manager-namespace-topic.md
         - name: 发布和订阅消息
           items:
-            - name: .NET
+            - name: .NET (Azure.Messaging.ServiceBus)
               href: service-bus-dotnet-how-to-use-topics-subscriptions.md
-            - name: Java
+            - name: Java (azure-messaging-servicebus)
               href: service-bus-java-how-to-use-topics-subscriptions.md
-            - name: Node.js
-              href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
+            - name: Python (azure-servicebus)
+              href: service-bus-python-how-to-use-topics-subscriptions.md
+            - name: JavaScript (@azure/service-bus)
+              href: service-bus-nodejs-how-to-use-topics-subscriptions.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
-            - name: Python
-              href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
+        - name: 发布和订阅消息（旧版本/包）
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
 - name: 教程
   items:
     - name: 更新清单
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: 通过事件网格响应事件
-      href: service-bus-to-event-grid-integration-example.md
+    - name: 通过事件网格处理服务总线事件
+      items:
+        - name: Azure 逻辑应用
+          href: service-bus-to-event-grid-integration-example.md
+        - name: Azure Functions
+          href: service-bus-to-event-grid-integration-function.md
 - name: 示例
   items:
     - name: 服务总线示例
@@ -107,8 +123,6 @@
                   href: service-bus-managed-service-identity.md
                 - name: 通过应用程序进行身份验证
                   href: authenticate-application.md
-        - name: 内置安全控件
-          href: service-bus-messaging-security-controls.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -184,10 +198,6 @@
           href: service-bus-end-to-end-tracing.md
         - name: 构建多层服务总线应用程序
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-        - name: 向队列发送消息和从队列接收消息（旧版 azure-sb）
-          href: service-bus-nodejs-how-to-use-queues.md
-        - name: 发布和订阅消息（旧版 azure-sb）
-          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: 迁移
       items:
         - name: 从 ActiveMQ 迁移到 Azure 服务总线
@@ -243,16 +253,38 @@
   items:
     - name: .NET
       items:
-        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
-          href: /dotnet/api/microsoft.servicebus.messaging
+        - name: 从 Microsoft.Azure.ServiceBus 迁移到 Azure.Messaging.ServiceBus
+          href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md'
+        - name: Azure.Messaging.ServiceBus（.NET Standard - 最新）
+          href: /dotnet/api/azure.messaging.servicebus
         - name: Microsoft.Azure.ServiceBus (.NET Standard)
           href: /dotnet/api/microsoft.azure.servicebus
+        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
+          href: /dotnet/api/microsoft.servicebus.messaging
     - name: Java
-      href: /java/api/overview/azure/servicebus
+      items:
+        - name: 从 azure-servicebus 迁移到 azure-messaging-servicebus
+          href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md'
+        - name: azure-messaging-servicebus（最新）
+          href: /java/api/overview/azure/servicebus?view=azure-java-preview
+        - name: azure-servicebus
+          href: /java/api/overview/azure/servicebus
     - name: Python
-      href: /python/api/overview/azure/servicebus?view=azure-python
-    - name: Node.js
-      href: /javascript/api/overview/azure/service-bus
+      items:
+        - name: 从 azure-servicebus 版本 0.50 迁移到版本 7
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md'
+        - name: azure-servicebus 版本 7
+          href: /python/api/overview/azure/servicebus?view=azure-python-preview
+        - name: azure-servicebus 版本 0.50
+          href: /python/api/overview/azure/servicebus
+    - name: JavaScript
+      items:
+        - name: 从版本 1 迁移到版本 7
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md'
+        - name: azure/service-bus 版本 7
+          href: /javascript/api/overview/azure/service-bus?view=azure-node--preview
+        - name: azure/service-bus 版本 1
+          href: /javascript/api/overview/azure/service-bus?view=azure-node-latest
     - name: PHP
       href: 'https://github.com/Azure/azure-sdk-for-php'
     - name: Ruby
@@ -267,9 +299,9 @@
       href: /azure/templates/microsoft.servicebus/allversions
     - name: 配额
       href: service-bus-quotas.md
-    - name: SQLFilter 语法
+    - name: 订阅规则 SQL 筛选器语法
       href: service-bus-messaging-sql-filter.md
-    - name: SQLRuleAction 语法
+    - name: 订阅规则 SQL 操作语法
       href: service-bus-messaging-sql-rule-action.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'

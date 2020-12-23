@@ -1,17 +1,17 @@
 ---
 title: 计算和存储选项-Azure Database for MySQL-灵活服务器
 description: 本文介绍 Azure Database for MySQL 灵活的服务器中的计算和存储选项。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.date: 10/20/2020
+ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708673"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534664"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的计算和存储选项) 
 
@@ -49,25 +49,25 @@ ms.locfileid: "91708673"
 | 计算大小         | vCore 数 | 内存大小 (GiB)  | 
 |----------------------|--------|-------------------|
 | **可突增**        |        |                   | 
-| B1s                  | 1      | 1                 |  
-| B1ms                 | 1      | 2                 | 
-| B2s                  | 2      | 4                 |  
+| Standard_B1s         | 1      | 1                 |  
+| Standard_B1ms        | 1      | 2                 | 
+| Standard_B2s         | 2      | 4                 |  
 | **常规用途**  |        |                   | 
-| D2ds_v4              | 2      | 8                 |  
-| D4ds_v4              | 4      | 16                | 
-| D8ds_v4              | 8      | 32                | 
-| D16ds_v4             | 16     | 64                | 
-| D32ds_v4             | 32     | 128               |  
-| D48ds_v4             | 48     | 192               |  
-| D64ds_v4             | 64     | 256               | 
+| Standard_D2ds_v4     | 2      | 8                 |  
+| Standard_D4ds_v4     | 4      | 16                | 
+| Standard_D8ds_v4     | 8      | 32                | 
+| Standard_D16ds_v4    | 16     | 64                | 
+| Standard_D32ds_v4    | 32     | 128               |  
+| Standard_D48ds_v4    | 48     | 192               |  
+| Standard_D64ds_v4    | 64     | 256               | 
 | **内存优化** |        |                   |
-| E2ds_v4              | 2      | 16                |
-| E4ds_v4              | 4      | 32                |
-| E8ds_v4              | 8      | 64                |
-| E16ds_v4             | 16     | 128               |
-| E32ds_v4             | 32     | 256               |
-| E48ds_v4             | 48     | 384               |
-| E64ds_v4             | 64     | 504               |
+| Standard_E2ds_v4     | 2      | 16                |
+| Standard_E4ds_v4     | 4      | 32                |
+| Standard_E8ds_v4     | 8      | 64                |
+| Standard_E16ds_v4    | 16     | 128               |
+| Standard_E32ds_v4    | 32     | 256               |
+| Standard_E48ds_v4    | 48     | 384               |
+| Standard_E64ds_v4    | 64     | 504               |
 
 若要获取有关可用计算系列的详细信息，请参阅适用于可突增的 Azure VM 文档 [ (B 系列) ](../../virtual-machines/sizes-b-series-burstable.md)， [常规用途 (Ddsv4 系列) ](../../virtual-machines/ddv4-ddsv4-series.md)和 [内存优化 (](../../virtual-machines/edv4-edsv4-series.md)) 。
 
@@ -110,27 +110,27 @@ ms.locfileid: "91708673"
 | 计算大小         | 最大有效 IOPS  | 
 |----------------------|---------------------|
 | **可突增**        |                     |
-| B1s                  | 320                 |
-| B1ms                 | 640                 |
-| B2s                  | 1280                | 
+| Standard_B1s         | 320                 |
+| Standard_B1ms        | 640                 |
+| Standard_B2s         | 1280                | 
 | **常规用途**  |                     |
-| D2ds_v4              | 3200                |
-| D4ds_v4              | 6400                |
-| D8ds_v4              | 12800               |
-| D16ds_v4             | 20000               |
-| D32ds_v4             | 20000               |
-| D48ds_v4             | 20000               | 
-| D64ds_v4             | 20000               | 
+| Standard_D2ds_v4     | 3200                |
+| Standard_D4ds_v4     | 6400                |
+| Standard_D8ds_v4     | 12800               |
+| Standard_D16ds_v4    | 20000               |
+| Standard_D32ds_v4    | 20000               |
+| Standard_D48ds_v4    | 20000               | 
+| Standard_D64ds_v4    | 20000               | 
 | **内存优化** |                     | 
-| E2ds_v4              | 3200                | 
-| E4ds_v4              | 6400                | 
-| E8ds_v4              | 12800               | 
-| E16ds_v4             | 20000               | 
-| E32ds_v4             | 20000               | 
-| E48ds_v4             | 20000               | 
-| E64ds_v4             | 20000               |  
+| Standard_E2ds_v4     | 3200                | 
+| Standard_E4ds_v4     | 6400                | 
+| Standard_ E8ds_v4    | 12800               | 
+| Standard_ E16ds_v4   | 20000               | 
+| Standard_E32ds_v4    | 20000               | 
+| Standard_E48ds_v4    | 20000               | 
+| Standard_E64ds_v4    | 20000               |  
 
-最大有效 IOPS 取决于每个计算大小的最大可用 IOPS。 请参阅下面的公式，并参考[B 系列](../../virtual-machines/sizes-b-series-burstable.md)、 [Ddsv4 系列](../../virtual-machines/ddv4-ddsv4-series.md)和[Edsv4 系列](../../virtual-machines/edv4-edsv4-series.md)文档中的*最大未缓存磁盘吞吐量： IOPS/MBps* 。
+最大有效 IOPS 取决于每个计算大小的最大可用 IOPS。 请参阅下面的公式，并参考 [B 系列](../../virtual-machines/sizes-b-series-burstable.md)、 [Ddsv4 系列](../../virtual-machines/ddv4-ddsv4-series.md)和 [Edsv4 系列](../../virtual-machines/edv4-edsv4-series.md)文档中的 *最大未缓存磁盘吞吐量： IOPS/MBps* 。
 
 **最大有效 IOPS** = 计算大小的 (最 *大非缓存磁盘吞吐量： IOPS/MBps* ，GiB 中预配的存储 * 3) 
 
@@ -153,7 +153,7 @@ ms.locfileid: "91708673"
 
 ## <a name="pricing"></a>定价
 
-有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/MySQL/)。 若要查看所需配置的开销， [Azure 门户](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) 会根据所选选项，在 " **计算** " 和 "存储" 选项卡上显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/) 网站上，选择 **"添加项**"，展开 " **数据库** " 类别，选择 " **Azure Database for MySQL**"，并选择 " **灵活服务器** " 作为部署类型以自定义选项。
+有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/MySQL/)。 若要查看所需配置的开销， [Azure 门户](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) 会根据所选选项，在 " **计算** " 和 "存储" 选项卡上显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/) 网站上，选择 **"添加项** "，展开 " **数据库** " 类别，选择 " **Azure Database for MySQL** "，并选择 " **灵活服务器** " 作为部署类型以自定义选项。
 
 如果希望优化服务器成本，可以考虑以下提示：
 

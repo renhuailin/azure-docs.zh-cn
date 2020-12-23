@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336524"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938709"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器 (预览) 
 
@@ -35,7 +35,7 @@ Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA �
 * 在无学习曲线的[现有负载均衡器解决方案上构建](#build-cross-region-solution-on-existing-azure-load-balancer)
 
 > [!IMPORTANT]
-> 跨区域负载均衡器目前处于预览阶段，而不是公开发布。  若要访问跨区域负载均衡器的预览，请联系： [crossregionlb@microsoft.com](mailto:crossregionlb@microsoft.com) 。 </br> </br>
+> 跨区域负载均衡器目前处于预览状态，并隐藏在预览门户中。 登录以 **https://preview.portal.azure.com** 查看和部署功能。 </br> </br>
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 跨区域负载均衡提供与区域标准负载均衡器相同的高性能和低延迟的优点。 
@@ -51,7 +51,7 @@ Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA �
 
 通过将全局前端公共 IP 地址添加到现有负载均衡器来配置区域冗余。 
 
-如果一个区域出现故障，则会将流量路由到下一个最近的最接近正常的区域负载均衡器。  
+如果一个区域出现故障，则会将流量路由到下一个最近的正常运行的区域负载均衡器。  
 
 跨区域负载均衡器的运行状况探测每隔20秒收集有关可用性的信息。 如果一个区域负载均衡器将其可用性降到0，则跨区域负载均衡器将检测到失败。 然后，区域负载均衡器会脱离旋转。 
 
@@ -74,7 +74,7 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 
 区域负载均衡器的已配置负载分配模式用于在多个区域负载均衡器用于地域邻近性时做出最终路由决策。
 
-有关详细信息，请参阅[配置 Azure 负载均衡器的分配模式](https://docs.microsoft.com/azure/load-balancer/load-balancer-distribution-mode)。
+有关详细信息，请参阅[配置 Azure 负载均衡器的分配模式](./load-balancer-distribution-mode.md)。
 
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>能够在单个终结点后扩展/缩减
@@ -84,7 +84,7 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
 ### <a name="static-ip"></a>静态 IP
-跨区域负载均衡器附带了静态公共 IP，可确保 IP 地址保持不变。 若要了解有关静态 IP 的详细信息，请参阅 [此处](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#allocation-method)
+跨区域负载均衡器附带了静态公共 IP，可确保 IP 地址保持不变。 若要了解有关静态 IP 的详细信息，请参阅 [此处](../virtual-network/public-ip-addresses.md#allocation-method)
 
 ### <a name="client-ip-preservation"></a>客户端 IP 保留
 跨区域负载均衡器是第4层直通网络负载均衡器。 此传递将保留数据包的原始 IP。  原始 IP 可用于在虚拟机上运行的代码。 此保存使你可以应用特定于 IP 地址的逻辑。
@@ -108,7 +108,7 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 > [!NOTE]
 > 你只能在上述8个区域之一中部署你的跨区域负载均衡器。
 
-**参与区域**是负载均衡器的全局公共 IP 可用的位置。 
+**参与区域** 是负载均衡器的全局公共 IP 可用的位置。 
 
 用户启动的流量将通过 Microsoft core 网络传递到最近的参与区域。 
 
@@ -149,6 +149,6 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
  
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md) ，开始使用负载均衡器。
+- 请参阅 [教程：使用 Azure 门户](tutorial-cross-region-portal.md) 创建跨区域负载均衡器以创建跨区域负载均衡器。
+- 请参阅 [创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md) 以创建标准区域负载均衡器。
 - 详细了解 [Azure 负载均衡器](load-balancer-overview.md)。
-- 负载均衡器 [常见问题](load-balancer-faqs.md)

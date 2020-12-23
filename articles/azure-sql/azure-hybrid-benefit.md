@@ -5,18 +5,18 @@ description: 使用现有 SQL Server 许可证，享受 Azure SQL 数据库和 S
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: features
-ms.custom: sqldbrb=4
+ms.custom: sqldbrb=4, devx-track-azurecli
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: f43d03f722617e88e7a00e71798351c88ce10e98
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 872b36eae9142473885885d5bf5ad3fa10ae5ccb
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327589"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841591"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure 混合权益 - Azure SQL 数据库和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -96,5 +96,5 @@ SQL 数据库客户将获得与面向 SQL Server 的 Azure 混合权益相关的
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要深入了解如何在 Azure SQL 部署选项之间进行选择，请参阅[在 Azure SQL 中选择适当的部署选项](azure-sql-iaas-vs-paas-what-is-overview.md)。
+- 有关选择 Azure SQL 部署选项的帮助，请参阅 [在 AZURE sql 中选择正确的部署选项](azure-sql-iaas-vs-paas-what-is-overview.md)。
 - 有关 SQL 数据库和 SQL 托管实例功能的比较，请参阅 [SQL 数据库和 SQL 托管实例功能](database/features-comparison.md)。

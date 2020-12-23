@@ -7,15 +7,15 @@ metadata:
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: landing-page
-  author: keferna
-  ms.author: keferna
+  author: mingshen-ms
+  ms.author: mingshen
   ms.date: 09/02/2020
-  ms.openlocfilehash: 5bf516cd4492e695e0d58aec8084b941f252a535
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 95903c1068d64545ae025fb5899a80014b8f26f2
+  ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91856630"
+  ms.lasthandoff: 12/06/2020
+  ms.locfileid: "96746380"
 landingContent:
 - title: 使用商业市场
   linkLists:
@@ -45,12 +45,12 @@ landingContent:
     links:
     - text: 来自市场产品/服务的客户线索
       url: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
-    - text: 合作伙伴中心的联合销售选项
-      url: ./partner-center-portal/commercial-marketplace-co-sell.md
+    - text: 商业市场中的联合销售选项
+      url: commercial-marketplace-co-sell.md
     - text: 联合销售合作伙伴参与
       url: ./marketplace-co-sell.md
     - text: 让解决方案在 Microsoft AppSource 和 Office 内可用
-      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
+      url: /office/dev/store/submit-to-appsource-via-partner-center
     - text: 参与 Azure 市场和 AppSource 社区论坛
       url: https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222
     - text: 注册以加入网络研讨会进行讨论或稍后按需观看
@@ -60,15 +60,15 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: “摘要”仪表板
-      url: ./partner-center-portal/summary-dashboard.md
+      url: ./summary-dashboard.md
     - text: 市场见解仪表板
-      url: ./partner-center-portal/insights-dashboard.md
+      url: ./insights-dashboard.md
     - text: 使用情况仪表板
-      url: ./partner-center-portal/usage-dashboard.md
+      url: ./usage-dashboard.md
     - text: 客户仪表板
-      url: ./partner-center-portal/customer-dashboard.md
+      url: ./customer-dashboard.md
     - text: 订单仪表板
-      url: ./partner-center-portal/orders-dashboard.md
+      url: ./orders-dashboard.md
     - text: 下载仪表板
       url: ./partner-center-portal/downloads-dashboard.md
     - text: 评分和评价仪表板
@@ -82,7 +82,7 @@ landingContent:
     - text: 虚拟机产品/服务
       url: ./marketplace-virtual-machines.md
     - text: Azure 应用程序产品/服务
-      url: ./partner-center-portal/create-new-azure-apps-offer.md
+      url: ./create-new-azure-apps-offer.md
     - text: Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务
       url: ./partner-center-portal/create-new-customer-engagement-offer.md
     - text: Dynamics 365 Business Central 产品/服务
@@ -90,7 +90,7 @@ landingContent:
     - text: Dynamics 365 for Operations 产品/服务
       url: ./partner-center-portal/create-new-operations-offer.md
     - text: 更多产品/服务类型
-      url: ./cloud-partner-portal/cpp-marketplace-offers.md
+      url: ./publisher-guide-by-offer-type.md
 - title: 获得付费
   linkLists:
   - linkListType: concept
@@ -104,7 +104,7 @@ landingContent:
     - text: 税项详细信息
       url: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
     - text: 商业市场计费
-      url: ./partner-center-portal/billing-details.md
+      url: ./marketplace-commercial-transaction-capabilities-and-considerations.md
 - title: API 参考
   linkLists:
   - linkListType: reference
@@ -130,7 +130,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 支持选项
-      url: ./partner-center-portal/support.md
+      url: ./support.md
     - text: 排查身份验证错误
       url: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - text: 上市地区和货币

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7b048581b29fa4244c42261810f382b229a627dd
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337137"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985955"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
@@ -54,11 +54,11 @@ IoT Central 为 IoT Edge 设备启用以下功能：
   - 每个模块发送的遥测数据。
   - 每个模块报告的属性。
   - 每个模块响应的命令。
-  - Azure IoT Edge 网关设备功能模型与下游设备功能模型之间的关系。
+  - IoT Edge 网关设备与下游设备之间的关系。
   - 不存储在 IoT Edge 设备上的云属性。
   - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
 
-  有关详细信息，请参阅 "[将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序" 一](./concepts-iot-edge.md)文。
+  有关详细信息，请参阅 " [将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序" 一](./concepts-iot-edge.md) 文。
 
 - 使用 Azure IoT 设备预配服务大规模预配 Azure IoT Edge 设备的功能
 - 规则和操作。
@@ -104,7 +104,7 @@ Azure IoT Central 使用 Azure IoT 中心作为启用设备连接的云网关。
 - 设备管理。
 - 安全的设备连接。
 
-若要详细了解 IoT 中心，请参阅 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)。
+若要详细了解 IoT 中心，请参阅 [Azure IoT 中心](../../iot-hub/index.yml)。
 
 若要详细了解 Azure IoT Central 中的设备连接，请参阅[设备连接](concepts-get-connected.md)。
 
@@ -133,12 +133,12 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ![模板体系结构](media/concepts-architecture/template-architecture.png)
 
-在 IoT Central 应用程序设备模板中包含：
+在 IoT Central [设备模板](concepts-device-templates.md) 中包含：
 
-- **设备功能模型**指定设备的功能，例如它发送的遥测数据、用于定义设备状态的属性，以及设备响应的命令。 设备功能已组织到一个或多个界面中。
-- **云属性**指定 IoT Central 为设备存储的属性。 这些属性只存储在 IoT Central 中，而不会发送到设备。
-- **视图**指定生成器创建的、让操作员监视和管理设备的仪表板和窗体。
-- **自定义项**让生成器替代设备功能模型中的某些定义，使之与 IoT Central 应用程序更相关。
+- 一种 **设备模型** ，用于指定设备的功能，如它发送的遥测、定义设备状态的属性，以及设备所响应的命令。 设备功能已组织到一个或多个界面中。
+- **云属性** 指定 IoT Central 为设备存储的属性。 这些属性只存储在 IoT Central 中，而不会发送到设备。
+- **视图** 指定生成器创建的、让操作员监视和管理设备的仪表板和窗体。
+- **自定义** 使生成器可以覆盖设备模型中的某些定义，使其更与 IoT Central 应用程序相关。
 
 一个应用程序可以有一个或多个基于每个设备模板的模拟设备和真实设备。
 
@@ -152,7 +152,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
-管理员可以使用预定义角色之一或通过创建自定义角色来定义 Azure IoT Central 应用程序的[访问规则](howto-manage-users-roles.md)。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。
+每个 IoT Central 应用程序都有自己的内置 RBAC 系统。 管理员可以使用预定义角色之一或通过创建自定义角色来定义 Azure IoT Central 应用程序的 [访问规则](howto-manage-users-roles.md) 。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。
 
 ## <a name="security"></a>安全性
 
@@ -168,7 +168,7 @@ Azure IoT Central 中的安全功能包括：
 UI Shell 是一个现代的基于 HTML5 浏览器的应用程序，响应速度快。
 管理员可以通过应用自定义主题，并将帮助链接修改为指向你自己的自定义帮助资源，来自定义应用程序的 UI。 若要详细了解 UI 自定义，请参阅[自定义 Azure IoT Central UI](howto-customize-ui.md) 一文。
 
-操作员可以创建个性化的应用程序仪表板。 可以创建多个仪表板用于显示不同的数据，并可以切换这些仪表板。
+操作员可以创建个性化的应用程序仪表板。 可以设置多个仪表板，用于显示不同的数据，并可以在它们之间进行切换。
 
 ## <a name="next-steps"></a>后续步骤
 

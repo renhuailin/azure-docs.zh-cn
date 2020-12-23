@@ -1,25 +1,19 @@
 ---
 title: 在 Azure Linux VM 上实现 Oracle Golden Gate | Microsoft Docs
 description: 在 Azure 环境中快速建立 Oracle Golden Gate 并运行。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 3fff58c240341776a3bb99c059c179cc4f9d96e9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274786"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999138"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
@@ -40,7 +34,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 > |  | **主站点** | **复制站点** |
 > | --- | --- | --- |
 > | **Oracle 版本** |Oracle 12c 版本 2 – (12.1.0.2) |Oracle 12c 版本 2 – (12.1.0.2)|
-> | **计算机名称** |myVM1 |myVM2 |
+> | **计算机名** |myVM1 |myVM2 |
 > | **操作系统** |Oracle Linux 6.x |Oracle Linux 6.x |
 > | **Oracle SID** |CDB1 |CDB1 |
 > | **复制架构** |TEST|TEST |
@@ -68,7 +62,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>创建可用性集
 
-以下步骤是可选的，但建议执行。 有关详细信息，请参阅 [Azure 可用性集指南](../../windows/infrastructure-example.md)。
+以下步骤是可选的，但建议执行。 有关详细信息，请参阅 [Azure 可用性集指南](/previous-versions/azure/virtual-machines/windows/infrastructure-example)。
 
 ```azurecli
 az vm availability-set create \
@@ -395,10 +389,10 @@ SQL> EXIT;
 
 3. 在 PuTTY 密钥生成器中：
 
-   - 若要生成密钥，请选择“生成”按钮。****
+   - 若要生成密钥，请选择“生成”按钮。
    - 将密钥内容复制 (**Ctrl + C**) 。
-   - 选择“保存私钥”按钮。****
-   - 忽略显示的警告，并选择“确定”。****
+   - 选择“保存私钥”按钮。
+   - 忽略显示的警告，并选择“确定”。
 
    ![PuTTY 密钥生成器页屏幕截图](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -410,7 +404,7 @@ SQL> EXIT;
    $ cd .ssh
    ```
 
-5. 创建一个名为 **authorized_keys**的文件。 在此文件中粘贴密钥的内容，然后保存该文件。
+5. 创建一个名为 **authorized_keys** 的文件。 在此文件中粘贴密钥的内容，然后保存该文件。
 
    > [!NOTE]
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
@@ -420,11 +414,11 @@ SQL> EXIT;
 
    ![“设置私钥”页屏幕截图](./media/oracle-golden-gate/setprivatekey.png)
 
-7. 在“类别”**** 窗格中，选择“连接”**** > “SSH”**** > “X11”****。 然后选中“启用 X11 转发”**** 框。
+7. 在“类别”窗格中，选择“连接” > “SSH” > “X11”。 然后选中“启用 X11 转发”框。
 
    ![“启用 X11”页屏幕截图](./media/oracle-golden-gate/enablex11.png)
 
-8. 在“类别”窗格中，转到“会话”。******** 输入主机信息，并选择“打开”。****
+8. 在“类别”窗格中，转到“会话”。 输入主机信息，并选择“打开”。
 
    ![会话页屏幕截图](./media/oracle-golden-gate/puttysession.png)
 
@@ -443,25 +437,25 @@ SQL> EXIT;
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续。
+3. 更改软件位置。 然后选中“启动管理器”框，并输入数据库位置。 选择“下一步”继续操作。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. 更改清单目录，然后选择“下一步”**** 继续。
+4. 更改清单目录，然后选择“下一步”继续。
 
-   ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![显示安装目录的 "选择安装" 页的屏幕截图。](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. 在“摘要”**** 屏幕上，选择“安装”**** 以继续。
+5. 在“摘要”屏幕上，选择“安装”以继续。
 
-   ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![显示 "选择安装" 页和 "安装" 按钮的屏幕截图。](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. 系统可能会提示以“root”身份运行脚本。 如果是这样，则打开单独的会话，通过 ssh 连接到 VM，执行 sudo 操作到 root，然后运行脚本。 选择“确定”**** 继续。
+6. 系统可能会提示以“root”身份运行脚本。 如果是这样，则打开单独的会话，通过 ssh 连接到 VM，执行 sudo 操作到 root，然后运行脚本。 选择“确定”继续。
 
-   ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![显示脚本位置和如何执行配置脚本的屏幕截图。](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. 完成安装后，选择“关闭”**** 完成过程。
+7. 完成安装后，选择“关闭”完成过程。
 
-   ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![显示 "关闭" 按钮的 "选择安装" 页的屏幕截图。](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>在 myVM1（主）上设置服务
 

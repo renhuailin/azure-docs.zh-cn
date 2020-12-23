@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3c1c7ac8fe8b7adf287bcde30a054df5ebaa63d7
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016030"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337434"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -29,7 +29,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 |[适用于 HDInsight 的 CDAP](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP 是第一个用于大数据的统一集成平台，它加速 Hadoop 的价值实现，让 IT 能够提供自助服务数据。 CDAP 采用开源设计且可扩展，消除了创新所面临的障碍。 要求：4 个区域节点，至少需安装 D3 v2。 |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |Datameer 是一个可缩放的自助服务平台，用于准备、浏览和管理要分析的数据，将复杂的多源数据更快地转变成可供业务使用的宝贵信息，在企业级别提供更快、更智能的见解。 |
 |[HDInsight 上的 Dataiku DSS](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop、Spark |Dataiku DSS 位于企业数据科学平台上，可让数据科学家和数据分析师协同合作，更有效地设计和运行新的数据产品和服务，将原始数据转变成有影响力的预测。 |
-|[WANdisco Fusion HDI 应用](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.wandisco-liveanalytics) |Hadoop、Spark、HBase、Storm、Kafka |在分布式环境中保持数据一致性是一个很大的数据操作难题。 企业级软件平台 WANdisco Fusion 可在任一环境中实现非结构化数据的一致性，从而解决了这一问题。 |
+|[WANdisco Fusion HDI 应用](https://community.wandisco.com/s/article/Use-WANdisco-Fusion-for-parallel-operation-of-ADLS-Gen1-and-Gen2) |Hadoop、Spark、HBase、Storm、Kafka |在分布式环境中保持数据一致性是一个很大的数据操作难题。 企业级软件平台 WANdisco Fusion 可在任一环境中实现非结构化数据的一致性，从而解决了这一问题。 |
 |[适用于 HDInsight 的 H2O SparklingWater](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Sparkling Water 支持以下分布式算法：GLM、朴素贝叶斯、分布式随机森林、梯度增强机、深度神经网络、深度学习、K-平均、PCA、广义低阶模型、异常情况检测和自编码器。 |
 |[用于将实时数据集成到 HDInsight 的 Striim](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop、HBase、Storm、Spark、Kafka |Striim（读作“stream”）是一个端到端流式处理数据集成和智能平台，可用于实现不同数据流的持续引入、处理和分析。 |
 |[Jumbune Enterprise - 加速大数据分析](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop、Spark |大致来说，Jumbune 通过以下方式为企业提供帮助：1. 加速基于 Tez、MapReduce 和 Spark 引擎的 Hive、Java 和 Scala 工作负载性能； 2. 主动监视 Hadoop 群集；3. 在分布式文件系统上建立数据质量管理。 |
@@ -104,8 +104,7 @@ HTTP 终结点凭据是针对 HDInsight 群集配置的 HTTP 用户凭据；SSH 
 ## <a name="next-steps"></a>后续步骤
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
 * [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
-* [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
+* [MSDN：安装 HDInsight 应用程序](/rest/api/hdinsight/hdinsight-application)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
 * [使用资源管理器模板在 HDInsight 中创建基于 Linux 的 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)：了解如何调用资源管理器模板创建 HDInsight 群集。
 * [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试 HDInsight 应用程序以及托管 HDInsight 应用程序。
-

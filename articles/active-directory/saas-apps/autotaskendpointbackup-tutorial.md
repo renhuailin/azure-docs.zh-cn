@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 502717621fb9b228a818b67a09a699a2ac1713f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0264baf6a8ff107c4a3aa811b9e8639352dca782
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550208"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>教程：Azure Active Directory 与 Autotask Endpoint Backup 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88550208"
 * 可让用户使用其 Azure AD 帐户自动登录到 Autotask Endpoint Backup（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -89,7 +89,7 @@ ms.locfileid: "88550208"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "88550208"
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Autotask Endpoint Backup 客户端支持团队](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Autotask Endpoint Backup 客户端支持团队](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -124,7 +124,7 @@ ms.locfileid: "88550208"
 
 ### <a name="configure-autotask-endpoint-backup-single-sign-on"></a>配置 Autotask Endpoint Backup 单一登录
 
-若要在 **Autotask Endpoint Backup** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Autotask Endpoint Backup 支持团队](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Autotask Endpoint Backup** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Autotask Endpoint Backup 支持团队](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -179,18 +179,18 @@ ms.locfileid: "88550208"
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>创建 Autotask Endpoint Backup 测试用户
 
-本部分会在 Autotask Endpoint Backup 中创建名为“Britta Simon”的用户。 在  [Autotask Endpoint Backup 支持团队](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)的配合下，将用户添加到 Autotask Endpoint Backup 平台。 使用单一登录前，必须先创建并激活用户。
+本部分会在 Autotask Endpoint Backup 中创建名为“Britta Simon”的用户。 请与 [Autotask Endpoint Backup 支持团队](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)协作，将用户添加到 Autotask Endpoint Backup 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Autotask Endpoint Backup”磁贴时，应会自动登录到设置了 SSO 的 Autotask Endpoint Backup。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Autotask Endpoint Backup”磁贴时，应会自动登录到设置了 SSO 的 Autotask Endpoint Backup。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

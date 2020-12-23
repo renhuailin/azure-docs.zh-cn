@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Blob 为 Microsoft AppSource 和 Azure 市
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 05/01/2020
-ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bd2f3d40b1aea1c0133f95e069ebfd527d30bd59
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121905"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491097"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 存储管理商业市场潜在顾客
 
@@ -33,11 +33,11 @@ ms.locfileid: "86121905"
 3. 在 Azure 门户中，使用以下过程创建存储帐户。  
     1. 选择左侧菜单栏中的“+ 创建资源”。  右侧将显示“新建”窗格（边栏选项卡）。
     2. 在“新建”窗格中选择“存储” 。  右侧将显示“精选”列表。
-    3. 选择“存储帐户”开始创建帐户。  按照[创建存储帐户](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)一文中的说明进行操作。
+    3. 选择“存储帐户”开始创建帐户。  按照[创建存储帐户](../../storage/common/storage-account-create.md?tabs=azure-portal)一文中的说明进行操作。
 
     ![创建 Azure 存储帐户的步骤](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    有关存储帐户的详细信息，请参阅此[快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。  有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+    有关存储帐户的详细信息，请参阅此 [快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。  有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 4. 等待存储帐户预配完成，该过程通常需要几分钟时间。  然后从 Azure 门户的“主页”页面访问你的存储帐户，方法是选择“查看所有资源”或选择 Azure 门户左侧导航菜单栏中的“所有资源”  。
 
@@ -45,21 +45,21 @@ ms.locfileid: "86121905"
 
 5. 从“存储帐户”窗格中，选择“访问密钥”，然后复制该密钥的“连接字符串”值。 保存此值，因为它是接收市场产品/服务潜在顾客时需要在发布门户中提供的“存储帐户连接字符串”值。
 
-     连接字符串的一个示例是：
+     连接字符串的示例如下：
 
      ```sql
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
      ```
 
-    ![Azure 存储密钥](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
+    ![显示 "访问密钥" 页面并突出显示 "连接字符串" 文本框的屏幕截图。](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
 6. 从“存储帐户”页面上，选择 blob。
 
-   ![Azure 存储密钥](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![选择了 Blob 的 Azure 存储帐户页的屏幕截图](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
 7. 在 blob 页上，选择“+ 容器”按钮。
 
-8. 键入新容器的“名称”。 容器名称必须小写，必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and referencing containers, blobs, and metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
+8. 键入新容器的“名称”。 容器名称必须小写，必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and referencing containers, blobs, and metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
 
     保存此值，因为它是接收市场产品/服务潜在顾客时需要在发布门户中提供的“容器名称”值。
 
@@ -91,5 +91,3 @@ ms.locfileid: "86121905"
 
     > [!NOTE]
     > 必须先完成产品/服务其余内容的配置并进行发布，然后才能接收产品/服务的潜在顾客。
-
-

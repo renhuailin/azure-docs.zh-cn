@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92509ff96af0ed2a7d77799edca8447ff6839ab6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019651"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015054"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
 
@@ -79,7 +79,7 @@ dnsClient.SubscriptionId = subscriptionId;
 > [!NOTE]
 > DnsManagementClient 支持三种操作模式：同步 ('CreateOrUpdate')、异步 ('CreateOrUpdateAsync') 或异步但可以访问 HTTP 响应 ('CreateOrUpdateWithHttpMessagesAsync')。  可以选择上述任何一种模式，具体取决于应用程序的需要。
 
-Azure DNS 支持乐观并发，称为 [Etag](dns-getstarted-create-dnszone.md)。 在此示例中，为“If-None-Match”标头指定 "*"，通知 Azure DNS 创建一个 DNS 区域（如果尚不存在）。  如果指定的资源组内已存在具有特定名称的区域，此调用失败。
+Azure DNS 支持乐观并发，称为 [Etag](./dns-getstarted-powershell.md)。 在此示例中，为“If-None-Match”标头指定 "*"，通知 Azure DNS 创建一个 DNS 区域（如果尚不存在）。  如果指定的资源组内已存在具有特定名称的区域，此调用失败。
 
 ```cs
 // Create zone parameters

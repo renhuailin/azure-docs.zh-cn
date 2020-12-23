@@ -1,7 +1,7 @@
 ---
 title: 添加列：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“添加列”模块连接两个数据集。
+description: 了解如何使用拖放 Azure 机器学习设计器中的 "添加列" 模块连接两个数据集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 17882581c4548996c9a8b2a8670b5f720e64da1e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 36de827dff239dbeebc66e330a76b7a65fefb909
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898999"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421951"
 ---
 # <a name="add-columns-module"></a>“添加列”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块连接两个数据集。 将指定为输入的两个数据集中的所有列合并，以便创建一个数据集。 如果需要连接两个以上的数据集，请使用“添加列”的多个实例。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "90898999"
 ### <a name="results"></a>结果
 管道运行后：
 
-- 若要查看新数据集的头几行，请右键单击“添加列”模块，然后选择“可视化”。  或者选择模块并切换到右侧面板中的“输出”  选项卡，单击**端口输出**中的直方图图标以直观显示结果。
+- 若要查看新数据集的头几行，请右键单击“添加列”模块，然后选择“可视化”。  或者选择模块并切换到右侧面板中的“输出”  选项卡，单击 **端口输出** 中的直方图图标以直观显示结果。
 
 新数据集中的列数等于两个输入数据集的列数之和。
 

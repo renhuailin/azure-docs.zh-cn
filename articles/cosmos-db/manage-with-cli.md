@@ -3,23 +3,27 @@ title: 使用 Azure CLI 管理 Azure Cosmos DB 核心 (SQL) API 资源
 description: 使用 Azure CLI 管理 Azure Cosmos DB 核心 (SQL) API 资源。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: b13f5bfffced9afd80663d606e30e028e52643ac
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840585"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563828"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos Core (SQL) API 资源
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-以下指南介绍了使用 Azure CLI 自动管理 Azure Cosmos DB 帐户、数据库和容器的常见命令。 [Azure CLI 参考](https://docs.microsoft.com/cli/azure/cosmosdb)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 还可以在[针对 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)中找到更多示例，包括如何为 MongoDB、Gremlin、Cassandra 和表 API 创建和管理 Cosmos DB 帐户、数据库和容器。
+以下指南介绍了使用 Azure CLI 自动管理 Azure Cosmos DB 帐户、数据库和容器的常见命令。 [Azure CLI 参考](/cli/azure/cosmosdb)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 还可以在[针对 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)中找到更多示例，包括如何为 MongoDB、Gremlin、Cassandra 和表 API 创建和管理 Cosmos DB 帐户、数据库和容器。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 版本2.12.1 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文要求 Azure CLI 版本2.12.1 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+
+有关其他 API 的 Azure CLI 示例，请参阅[适用于 Cassandra 的 CLI 示例](cli-samples-cassandra.md)、[适用于 MongoDB API 的 CLI 示例](cli-samples-mongodb.md)、[适用于 Gremlin 的 CLI 示例](cli-samples-gremlin.md)、[适用于 Table 的 CLI 示例](cli-samples-table.md)
 
 > [!IMPORTANT]
 > 不能重命名 Azure Cosmos DB 资源，因为这违反了 Azure 资源管理器使用资源 Uri 的方式。
@@ -543,5 +547,5 @@ az lock delete --ids $lockid
 有关 Azure CLI 的详细信息，请参阅：
 
 * [安装 Azure CLI](/cli/azure/install-azure-cli)
-* [Azure CLI 参考](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [Azure CLI 参考](/cli/azure/cosmosdb)
 * [针对 Azure Cosmos DB 的其他 Azure CLI 示例](cli-samples.md)

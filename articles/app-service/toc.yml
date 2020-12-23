@@ -11,9 +11,9 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: .NET Core
+    - name: ASP.NET Core
       href: quickstart-dotnetcore.md
-    - name: .NET Framework
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -28,6 +28,7 @@
     - name: 静态 HTML 站点
       href: quickstart-html.md
     - name: ARM 模板
+      displayName: Resource Manager
       href: quickstart-arm-template.md
     - name: 自定义容器
       href: quickstart-custom-container.md
@@ -35,11 +36,25 @@
       href: quickstart-multi-container.md
 - name: 教程
   items:
+    - name: 保护访问存储和 Microsoft Graph 的应用
+      items:
+        - name: 概述
+          href: scenario-secure-app-overview.md
+        - name: 设置应用服务身份验证
+          href: scenario-secure-app-authentication-app-service.md
+        - name: 保护访问存储的应用
+          href: scenario-secure-app-access-storage.md
+        - name: 保护以用户身份访问 Microsoft Graph 的应用
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: 保护以应用身份访问 Microsoft Graph 的应用
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: 清理资源
+          href: scenario-secure-app-clean-up-resources.md
     - name: 将应用与 DB 配合使用
       items:
-        - name: 将 .NET Core 与 SQL DB 配合使用
+        - name: 将 ASP.NET Core 与 SQL DB 配合使用
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: 将 .NET Framework 与 SQL DB 配合使用
+        - name: 将 ASP.NET 与 SQL DB 配合使用
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: 将 PHP 与 MySQL 配合使用
           href: tutorial-php-mysql-app.md
@@ -99,8 +114,8 @@
           href: overview-authentication-authorization.md
         - name: OS 和运行时修补
           href: overview-patch-os-runtime.md
-        - name: 内置安全控件
-          href: app-service-security-controls.md
+        - name: 安全基线
+          href: security-baseline.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -208,6 +223,8 @@
               href: configure-authentication-provider-twitter.md
             - name: 使用 OpenID Connect 提供程序进行身份验证（预览）
               href: configure-authentication-provider-openid-connect.md
+            - name: 使用“Apple 登录”进行验证（预览）
+              href: configure-authentication-provider-apple.md
         - name: 高级身份验证
           href: app-service-authentication-how-to.md
         - name: 限制访问
@@ -315,7 +332,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查间歇性出站连接错误
           href: troubleshoot-intermittent-outbound-connection-errors.md

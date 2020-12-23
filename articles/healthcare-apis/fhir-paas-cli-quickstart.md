@@ -7,22 +7,22 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
-ms.author: matjazl
+ms.author: cavoeg
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e1aa3362217a4edcfcf547c69b9effde00459f7e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3340cd0a39b0f5311487fec5b05d37e3376d433a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87850522"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659244"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure API for FHIR
 
 在本快速入门中，你将了解如何使用 Azure CLI 在 Azure 中部署 Azure API for FHIR。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="add-healthcareapis-extension"></a>添加 HealthcareAPIs 扩展
 
@@ -68,7 +68,10 @@ az group delete --name "myResourceGroup"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门指南中，你已将 Azure API for FHIR 部署到订阅中。 若要在 Azure API for FHIR 中设置其他设置，请转到其他设置操作指南。
+在本快速入门指南中，你已将 Azure API for FHIR 部署到订阅中。 若要在 Azure API for FHIR 中设置其他设置，请转到其他设置操作指南。 如果你已经准备好开始使用 Azure API for FHIR，请阅读有关如何注册应用程序的详细信息。
 
 >[!div class="nextstepaction"]
 >[Azure API for FHIR 中的其他设置](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[注册应用程序概览](fhir-app-registration.md)

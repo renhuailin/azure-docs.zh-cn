@@ -1,7 +1,7 @@
 ---
 title: 交叉验证模型：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“交叉验证模型”模块，通过对数据进行分区来交叉验证分类或回归模型的参数估算值。
+description: 使用 Azure 机器学习设计器中的 "交叉验证模型" 模块来交叉验证分类或回归模型的参数估算值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 63c61b12ad68a3add2e7b40ab0bec38d3c2835e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898571"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421339"
 ---
 # <a name="cross-validate-model"></a>交叉验证模型
 
-本文介绍如何使用 Azure 机器学习设计器中的 "交叉验证模型" 模块。 “交叉验证”技术通常在机器学习中用来评估数据集的可变性，以及通过该数据训练的任何模型的可靠性。  
+本文介绍如何使用 Azure 机器学习设计器中的“交叉验证模型”模块。 “交叉验证”技术通常在机器学习中用来评估数据集的可变性，以及通过该数据训练的任何模型的可靠性。  
 
 “交叉验证模型”模块将带标签的数据集用作输入，与未训练的分类或回归模型一起工作。 它将数据集分割成某个数量的子集（折），在每个折上生成一个模型，然后为每个折返回一组准确度统计信息。 通过比较所有折的准确度统计信息，可以解释数据集的质量。 然后，可以了解模型是否容易受到数据变化的影响。  
 
@@ -109,9 +109,9 @@ ms.locfileid: "90898571"
 
 根据要评估的模型类型，该模块还会包含每个折的以下指标： 
 
-+ **分类模型**：精准率、召回率、F 评分、AUC、准确度  
++ **分类模型** ：精准率、召回率、F 评分、AUC、准确度  
 
-+ **回归模型**：平均绝对误差、平均根方根误差、相对绝对误差、相对平方误差和决定系数。
++ **回归模型** ：平均绝对误差、平均根方根误差、相对绝对误差、相对平方误差和决定系数。
 
 
 ## <a name="technical-notes"></a>技术说明  

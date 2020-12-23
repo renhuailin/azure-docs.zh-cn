@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef5384abd63dcd9aeb4789dc4955f4b80068d330
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921233"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023610"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
-在本教程中，你将生成一个使用 Azure 认知服务通过单个订阅密钥进行文本翻译、语言检测和拼写检查的 [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 应用。 具体而言，该应用将调用“翻译”和[必应拼写检查](https://azure.microsoft.com/services/cognitive-services/spell-check/)中的 API。
+在本教程中，你将生成一个使用 Azure 认知服务通过单个订阅密钥进行文本翻译、语言检测和拼写检查的 [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 应用。 具体而言，该应用将调用“翻译”和[必应拼写检查](https://azure.microsoft.com/services/cognitive-services/spell-check/)中的 API。
 
 什么是 WPF？ WPF 是可以创建桌面客户端应用的 UI 框架。 WPF 开发平台支持广泛的应用开发功能，包括应用模型、资源、控件、图形、布局、数据绑定、文档和安全性。 它是 .NET Framework 的一个子集，因此，如果你以前曾经在 .NET Framework 中使用 ASP.NET 或 Windows 窗体生成过应用，则应会熟悉该编程体验。 WPF 使用可扩展应用标记语言 (XAML) 为应用编程提供声明性模型，后续部分将提供相关介绍。
 
@@ -40,16 +40,16 @@ ms.locfileid: "88921233"
 
 | 服务 | Feature | 说明 |
 |---------|---------|-------------|
-| 转换器 | [获取语言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | 检索文本翻译支持的语言的完整列表。 |
-| 转换器 | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 将文本翻译成 70 多种语言。 |
-| 转换器 | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 检测输入文本的语言。 包含检测置信度评分。 |
-| 必应拼写检查 | [拼写检查](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼写错误以提高翻译准确度。 |
+| 转换器 | [获取语言](./reference/v3-0-languages.md) | 检索文本翻译支持的语言的完整列表。 |
+| 转换器 | [Translate](./reference/v3-0-translate.md) | 将文本翻译成 70 多种语言。 |
+| 转换器 | [Detect](./reference/v3-0-detect.md) | 检测输入文本的语言。 包含检测置信度评分。 |
+| 必应拼写检查 | [拼写检查](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼写错误以提高翻译准确度。 |
 
 ## <a name="prerequisites"></a>先决条件
 
 在继续之前，需要准备好以下各项：
 
-* 一个 Azure 认知服务订阅。 [获取认知服务密钥](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource)。
+* 一个 Azure 认知服务订阅。 [获取认知服务密钥](../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource)。
 * 一台 Windows 计算机
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) - Community 或 Enterprise 版
 
@@ -83,14 +83,14 @@ ms.locfileid: "88921233"
 1. “程序集”选项卡列出了可供引用的所有 .NET Framework 程序集。 使用右上方的搜索栏来搜索引用。
    ![添加程序集引用](media/add-assemblies-2019.png)
 1. 为项目选择以下引用：
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Runtime.Serialization](/dotnet/api/system.runtime.serialization)
+   * [System.Web](/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+   * [System.Windows](/dotnet/api/system.windows)
 1. 添加对项目的这些引用后，可以单击“确定”关闭“引用管理器”。 
 
 > [!NOTE]
-> 若要详细了解程序集引用，请参阅[如何：使用引用管理器添加或删除引用](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)。
+> 若要详细了解程序集引用，请参阅[如何：使用引用管理器添加或删除引用](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)。
 
 ### <a name="install-newtonsoftjson"></a>安装 NewtonSoft.Json
 
@@ -269,7 +269,7 @@ ms.locfileid: "88921233"
 在本部分，我们将对语言资源创建 `GET` 请求，并指定我们希望提供可用于翻译的语言列表。
 
 > [!NOTE]
-> 使用语言资源可以结合以下查询参数筛选语言支持：音译、字典和翻译。 有关详细信息，请参阅 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)。
+> 使用语言资源可以结合以下查询参数筛选语言支持：音译、字典和翻译。 有关详细信息，请参阅 [API 参考](./reference/v3-0-languages.md)。
 
 在继续之前，让我们查看调用语言资源后的示例输出：
 
@@ -581,4 +581,4 @@ private string CorrectSpelling(string text)
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Microsoft 翻译参考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [Microsoft 翻译参考](./reference/v3-0-reference.md)

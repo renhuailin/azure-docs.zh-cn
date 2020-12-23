@@ -1,21 +1,15 @@
 ---
 title: 在 Azure 仪表板上使用自定义 Markdown 磁贴
 description: 了解如何向 Azure 仪表板添加 Markdown 磁贴，以便显示静态内容
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 01/08/2020
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 4e8d7054fb0df265285bda223e360ea61612aaf2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263940"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745751"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容
 
@@ -27,7 +21,7 @@ ms.locfileid: "91263940"
 
    ![屏幕截图，显示门户边栏](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. 如果已创建任何自定义仪表板，请在仪表板视图中通过下拉列表选择会显示自定义 Markdown 磁贴的仪表板。 选择用于打开**磁贴库**的编辑图标。
+1. 如果已创建任何自定义仪表板，请在仪表板视图中通过下拉列表选择会显示自定义 Markdown 磁贴的仪表板。 选择用于打开 **磁贴库** 的编辑图标。
 
    ![屏幕截图，显示仪表板编辑视图](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
@@ -48,9 +42,9 @@ ms.locfileid: "91263940"
       ![屏幕截图，显示输入 URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > 为了增加安全性，可以创建一个 Markdown 文件，将其存储在[启用了加密的 Azure 存储帐户 Blob](../storage/common/storage-service-encryption.md) 中，然后使用 URL 选项指向该文件。 通过存储帐户的加密选项来加密 Markdown 内容。 只有有权访问文件的用户才能查看仪表板上的 Markdown 内容。
+      > 为了增加安全性，可以创建一个 Markdown 文件，将其存储在[启用了加密的 Azure 存储帐户 Blob](../storage/common/storage-service-encryption.md) 中，然后使用 URL 选项指向该文件。 通过存储帐户的加密选项来加密 Markdown 内容。 只有有权访问文件的用户才能查看仪表板上的 Markdown 内容。 你可能需要在存储帐户上设置 [跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 规则，以便 Azure 门户 (_https://portal.azure.com/_) 可以访问 blob 中的 markdown 文件。
 
-1. 选择“完成”，关闭“编辑 Markdown”窗格。   内容会显示在 Markdown 磁贴上，该磁贴可以通过在右下角拖动图柄来重设大小。
+1. 选择“完成”，关闭“编辑 Markdown”窗格。 内容会显示在 Markdown 磁贴上，该磁贴可以通过在右下角拖动图柄来重设大小。
 
    ![屏幕截图，显示自定义 Markdown 磁贴](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 

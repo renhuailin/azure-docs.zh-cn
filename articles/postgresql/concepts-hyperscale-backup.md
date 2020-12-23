@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314924"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485369"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模 (Citus) 中的备份和还原
 
@@ -39,7 +39,7 @@ Azure Database for PostgreSQL –超大规模 (Citus) 会自动创建每个节�
 
 
 > [!IMPORTANT]
-> 无法还原已删除的超大规模 (Citus) 群集。 如果删除群集，则属于该群集的所有节点都将被删除且无法恢复。 若要保护群集资源、部署后、意外删除或意外更改，管理员可以利用 [管理锁](/azure/azure-resource-manager/management/lock-resources)。
+> 无法还原已删除的超大规模 (Citus) 群集。 如果删除群集，则属于该群集的所有节点都将被删除且无法恢复。 若要保护群集资源、部署后、意外删除或意外更改，管理员可以利用 [管理锁](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="point-in-time-restore-pitr"></a>时间点还原 (PITR)
 
@@ -65,5 +65,5 @@ Azure Database for PostgreSQL –超大规模 (Citus) 会自动创建每个节�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [Azure 可用性区域](/azure/availability-zones/az-overview)。
-* 在超大规模 (Citus) 服务器组上设置 [建议的警报](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) 。
+* 了解 [Azure 可用性区域](../availability-zones/az-overview.md)。
+* 在超大规模 (Citus) 服务器组上设置 [建议的警报](./howto-hyperscale-alert-on-metric.md#suggested-alerts) 。

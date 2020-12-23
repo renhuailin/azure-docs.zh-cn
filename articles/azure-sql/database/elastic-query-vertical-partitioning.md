@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443091"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792083"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>跨具有不同架构的云数据库进行查询（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,10 +36,10 @@ ms.locfileid: "91443091"
 > 与水平分区不同，这些 DDL 语句并不依赖于通过弹性数据库客户端库定义包含分片映射的数据层。
 >
 
-1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>创建数据库范围的主密钥和凭据
 
@@ -63,7 +63,7 @@ SECRET = '<password>'
     CREDENTIAL = <credential_name> ) [;]
 
 > [!IMPORTANT]
-> TYPE 参数必须设置为 **RDBMS**。
+> TYPE 参数必须设置为 **RDBMS** 。
 
 ### <a name="example"></a>示例
 
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 弹性查询将扩展现有的外部表语法以定义使用 RDBMS 类型的外部数据源的外部表。 垂直分区的外部表定义涉及以下几个方面：
 
-* **架构**：外部表 DDL 定义了查询可以使用的架构。 外部表定义中提供的架构需要与存储实际数据的远程数据库中的表的架构相匹配。
-* **远程数据库引用**：外部表 DDL 引用外部数据源。 外部数据源指定存储实际表数据的远程数据库的服务器名称和数据库名称。
+* **架构** ：外部表 DDL 定义了查询可以使用的架构。 外部表定义中提供的架构需要与存储实际数据的远程数据库中的表的架构相匹配。
+* **远程数据库引用** ：外部表 DDL 引用外部数据源。 外部数据源指定存储实际表数据的远程数据库的服务器名称和数据库名称。
 
 使用上一节中所述的外部数据源时，用于创建外部表的语法如下：
 
@@ -135,7 +135,7 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**CREATE/DROP EXTERNAL TABLE 的权限**：外部表 DDL 需要 ALTER ANY EXTERNAL DATA SOURCE 权限，在引用基础数据源时也需要该权限。  
+**CREATE/DROP EXTERNAL TABLE 的权限** ：外部表 DDL 需要 ALTER ANY EXTERNAL DATA SOURCE 权限，在引用基础数据源时也需要该权限。  
 
 ## <a name="security-considerations"></a>安全注意事项
 
@@ -163,7 +163,7 @@ DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>用于远程 T-SQL 执行的存储过程：sp\_execute_remote
 
-弹性查询还引入了一个存储过程，以便提供对远程数据库的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于在远程数据库上执行远程存储过程或 T-SQL 代码。 它采用了以下参数：
+弹性查询还引入了一个存储过程，以便提供对远程数据库的直接访问。 该存储过程名为 [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)，可用于在远程数据库上执行远程存储过程或 T-SQL 代码。 它采用了以下参数：
 
 * 数据源名称 (nvarchar)：RDBMS 类型的外部数据源名称。
 * 查询 (nvarchar)：要在远程数据库上执行的 T-SQL 查询。
@@ -195,7 +195,7 @@ sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 * 有关垂直分区的教程，请参阅[跨数据库查询（垂直分区）入门](elastic-query-getting-started-vertical.md)。
 * 有关水平分区（分片）的教程，请参阅[弹性查询入门 - 水平分区（分片）](elastic-query-getting-started.md)。
 * 有关水平分区数据的语法和示例查询，请参阅[查询水平分区数据](elastic-query-horizontal-partitioning.md)
-* 请参阅 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，了解在单个远程 Azure SQL 数据库或在水平分区方案中用作分片的一组数据库中执行 Transact-SQL 语句的存储过程。
+* 请参阅 [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)，了解在单个远程 Azure SQL 数据库或在水平分区方案中用作分片的一组数据库中执行 Transact-SQL 语句的存储过程。
 
 <!--Image references-->
 [1]: ./media/elastic-query-vertical-partitioning/verticalpartitioning.png

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494479"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337502"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box 和 Azure Data Box Heavy 导出订单的跟踪和事件日志记录
 
@@ -25,7 +25,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 | Data Box 出口订单阶段       | 用于跟踪和审核的工具                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| 创建订单               | [通过 RBAC 对订单设置访问控制](#set-up-access-control-on-the-order) <br> [按顺序启用详细日志](#enable-verbose-log-in-the-order)                                                    |
+| 创建订单               | [通过 Azure RBAC 按顺序设置访问控制](#set-up-access-control-on-the-order) <br> [按顺序启用详细日志](#enable-verbose-log-in-the-order)                                                    |
 | 订单已处理            | 通过以下方式[跟踪订单](#track-the-order) <ul><li> Azure 门户 </li><li> 承运商网站 </li><li>电子邮件通知</ul> |
 | 设置设备              | 在[活动日志](#query-activity-logs-during-setup)中记录的设备访问凭据              |
 | 从设备复制数据        | [查看复制日志](#copy-log) <br> 在复制数据之前[查看详细日志](#verbose-log)            |
@@ -39,30 +39,30 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 可为 Azure Data Box 服务定义的两个角色：
 
 - **Data Box 读取者** - 对订单拥有按范围定义的只读访问权限。 他们只能查看订单详细信息。 他们无法访问与存储帐户相关的任何其他详细信息，也无法编辑订单详细信息，例如地址等。
-- **Data Box 参与者** - 仅当已对某个存储帐户拥有写入访问权限时，才能创建一个订单以将数据传输到给定的存储帐户。** 如果他们没有某个存储帐户的访问权限，则无法 Data Box 订单以将数据复制到该帐户。 此角色不会定义任何存储帐户相关的权限，也不授予对存储帐户的访问权限。  
+- **Data Box 参与者** - 仅当已对某个存储帐户拥有写入访问权限时，才能创建一个订单以将数据传输到给定的存储帐户。 如果他们没有某个存储帐户的访问权限，则无法 Data Box 订单以将数据复制到该帐户。 此角色不会定义任何存储帐户相关的权限，也不授予对存储帐户的访问权限。  
 
 若要限制对订单的访问，可以：
 
 - 在订单级别分配一个角色。 用户只拥有角色定义的权限，只能与该特定的 Data Box 订单交互，而没有任何其他权限。
 - 在资源组级别分配一个角色，这样，用户便有权访问资源组中的所有 Data Box 订单。
 
-有关 RBAC 建议用法的详细信息，请参阅 [Azure RBAC 的最佳做法](../role-based-access-control/best-practices.md)。
+有关建议使用的 Azure RBAC 的详细信息，请参阅 [AZURE rbac 的最佳实践](../role-based-access-control/best-practices.md)。
 
 ## <a name="enable-verbose-log-in-the-order"></a>按顺序启用详细日志
 
-在为 Data Box 放置出口订单时，您可以选择启用详细日志的集合。 下面是可以在其中启用详细日志的订单屏幕：
+在为 Data Box 放置出口订单时，可以选择启用详细日志的集合。 下面是可以在其中启用详细日志的订单屏幕：
 
-![选择导出选项](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![选择导出选项](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-当你选择 "**包括详细日志**" 选项时，将在从 Azure 存储帐户复制数据时生成详细日志文件。 此日志包含已成功导出的所有文件的列表。      
+当你选择 " **包括详细日志** " 选项时，将在从 Azure 存储帐户复制数据时生成详细日志文件。 此日志包含已成功导出的所有文件的列表。
 
-有关导出顺序的详细信息，请参阅[为 Data Box 创建导出订单](data-box-deploy-export-ordered.md)
+有关导出顺序的详细信息，请参阅 [为 Data Box 创建导出订单](data-box-deploy-export-ordered.md)
 
 ## <a name="track-the-order"></a>跟踪订单
 
 可以通过 Azure 门户和承运商网站跟踪订单。 随时可以使用以下机制跟踪 Data Box 订单：
 
-- 若要在设备已抵达 Azure 数据中心或你的所在地时跟踪订单，请在 Azure 门户中转到你的 Data Box 订单并选择“概述”。****
+- 若要在设备已抵达 Azure 数据中心或你的所在地时跟踪订单，请在 Azure 门户中转到你的 Data Box 订单并选择“概述”。
 
     ![查看订单状态和跟踪号](media/data-box-logs/overview-view-status-1.png)
 
@@ -73,21 +73,21 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 - 当 Data Box 抵达你的所在地时处于锁定状态。 可以使用 Azure 门户中根据订单提供的设备凭据。  
 
-    如果已安装 Data Box，你可能需要知道谁访问过设备凭据。 若要了解谁访问过“设备凭据”边栏选项卡，可以查询活动日志。****  涉及到访问“设备详细信息”>“凭据”边栏选项卡的任何操作都会作为 `ListCredentials` 操作记录到活动日志。****
+    如果已安装 Data Box，你可能需要知道谁访问过设备凭据。 若要了解谁访问过“设备凭据”边栏选项卡，可以查询活动日志。  涉及到访问“设备详细信息”>“凭据”边栏选项卡的任何操作都会作为 `ListCredentials` 操作记录到活动日志。
 
     ![查询活动日志](media/data-box-logs/query-activity-log-1.png)
 
-- 每次登录 Data Box 都有实时的记录。 但是，此信息仅在订单成功完成后在[保管审核日志链](#chain-of-custody-audit-logs)中可用。
+- 每次登录 Data Box 都有实时的记录。 但是，此信息仅在订单成功完成后在 [保管审核日志链](#chain-of-custody-audit-logs) 中可用。
 
 ## <a name="view-logs-during-data-copy"></a>在数据复制期间查看日志
 
-在从 Data Box 复制数据之前，你可以下载并查看复制到 Data Box 的数据的*复制日志*和*详细日志*。 从 Azure 中的存储帐户将数据复制到 Data Box 时，将生成这些日志。 
+在从 Data Box 复制数据之前，你可以下载并查看复制到 Data Box 的数据的 *复制日志* 和 *详细日志* 。 从 Azure 中的存储帐户将数据复制到 Data Box 时，将生成这些日志。 
 
 ### <a name="copy-log"></a>复制日志
 
-从 Data Box 复制数据之前，请从 "**连接和复制**" 页面下载复制日志。
+从 Data Box 复制数据之前，请从 " **连接和复制** " 页面下载复制日志。
 
-下面是在从 Azure 到 Data Box 设备的数据复制期间，*复制日志*的示例输出。
+下面是在从 Azure 到 Data Box 设备的数据复制期间， *复制日志* 的示例输出。
 
 ```output
 <CopyLog Summary="Summary">
@@ -97,7 +97,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 </CopyLog>
 ``` 
     
-下面是*复制日志*出错并且某些文件未能从 Azure 复制时的示例输出。
+下面是 *复制日志* 出错并且某些文件未能从 Azure 复制时的示例输出。
 
 ```output
 <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -171,7 +171,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
-复制日志路径也会显示在门户的“概述”边栏选项卡上。****
+复制日志路径也会显示在门户的“概述”边栏选项卡上。
 
 <!-- add a screenshot-->
 
@@ -181,7 +181,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 - 验证实际名称以及从 Data Box 复制的文件数。
 - 验证文件的实际大小。
-- 验证*crc64*是否与非零字符串相对应。 循环冗余检查（CRC）计算是在从 Azure 导出过程中完成的。 在将数据从 Data Box 复制到本地服务器后，可以从导出和 CRCs 进行比较。 CRC 不匹配指示相应的文件未能正确地复制。
+- 验证 *crc64* 是否与非零字符串相对应。 循环冗余检查 (CRC) 计算在 Azure 导出期间完成。 在将数据从 Data Box 复制到本地服务器后，可以从导出和 CRCs 进行比较。 CRC 不匹配指示相应的文件未能正确地复制。
 
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>擦除数据后获取监管日志链
@@ -246,13 +246,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>下载订单历史记录
 
-Azure 门户提供订单历史记录。 如果订单处理和设备清理（从磁盘中擦除数据）已完成，请转到设备订单，然后导航到“订单详细信息”。**** “下载订单历史记录”选项可用。**** 有关详细信息，请参阅[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
+Azure 门户提供订单历史记录。 如果订单处理和设备清理（从磁盘中擦除数据）已完成，请转到设备订单，然后导航到“订单详细信息”。 “下载订单历史记录”选项可用。 有关详细信息，请参阅[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
 
 滚动浏览订单历史记录时，可以看到：
 
 - 设备的承运商跟踪信息。
 - 包含 *SecureErase* 活动的事件。 这些事件对应于磁盘上的数据擦除活动。
-- Data Box 日志链接。 会显示审核日志、复制日志和 BOM 文件的路径。** ** **
+- Data Box 日志链接。 会显示审核日志、复制日志和 BOM 文件的路径。  
 
 下面是 Azure 门户中的订单历史记录日志的示例：
 

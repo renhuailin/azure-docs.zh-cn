@@ -6,20 +6,28 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8b0ae7058aecc1813d720a3fbb2a1a1f967cf40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254406"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352589"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>处理数据工厂映射数据流中的 SQL 截断错误行
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-数据工厂中的常见方案是在使用映射数据流时，将转换的数据写入 Azure SQL 数据库中的数据库。 在此方案中，您必须阻止的常见错误条件是可能的列截断。 按照这些步骤来提供不适合目标字符串列的列日志记录，以便在这些情况下数据流继续。
+数据工厂中的常见方案是在使用映射数据流时，将转换的数据写入 Azure SQL 数据库中的数据库。 在此方案中，您必须阻止的常见错误条件是可能的列截断。
+
+在 ADF 数据流中将数据写入数据库接收器时，有两种主要方法可以正常处理错误：
+
+* 处理数据库数据时，将接收器 [错误行处理](./connector-azure-sql-database.md#error-row-handling) 设置为 "出错时继续"。 这是自动捕获全部方法，不需要在数据流中使用自定义逻辑。
+* 或者，按照以下步骤来提供不适合目标字符串列的列日志记录，以允许数据流继续。
+
+> [!NOTE]
+> 当启用自动错误行处理时，与下面编写您自己的错误处理逻辑的方法不同，将会产生较小的性能损失，还会导致 ADF 执行两阶段操作来捕获错误。
 
 ## <a name="scenario"></a>方案
 
@@ -49,6 +57,10 @@ ms.locfileid: "85254406"
 4. 完成的数据流如下所示。 现在，我们可以拆分错误行以避免 SQL 截断错误，并将这些条目放入日志文件中。 同时，成功的行可以继续写入我们的目标数据库。
 
     ![完成数据流](media/data-flow/error2.png)
+
+5. 如果在接收器转换中选择 "错误行处理" 选项并设置 "输出错误行"，则 ADF 会自动生成行数据的 CSV 文件输出以及驱动程序报告的错误消息。 您无需手动将该逻辑添加到具有该替代选项的数据流。 使用此选项时，将会出现一小的性能损失，以便 ADF 可以实现一种两阶段的方法来捕获错误并记录这些错误。
+
+    ![完成包含错误行的数据流](media/data-flow/error-row-3.png)
 
 ## <a name="next-steps"></a>后续步骤
 

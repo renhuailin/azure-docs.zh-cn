@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 599ec041837460c30b4655531b822eab5f0eafa3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81254098"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778908"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>使用 Azure CDN 进行中国内容分发
 
@@ -40,7 +40,7 @@ Azure CDN 全球和 Azure CDN 中国具有以下功能：
 
      - 四个定价层：Microsoft 标准、Verizon 标准、Verizon 高级和 Akamai 标准
 
-     - [文档](https://docs.microsoft.com/azure/cdn/)
+     - [文档](./index.yml)
 
 - Azure CDN 中国：
 
@@ -63,7 +63,4 @@ Azure CDN 全球和 Azure CDN 中国具有以下功能：
 
 - [使用 Azure 内容分发网络](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [在中国可用的 Azure 服务](https://docs.microsoft.com/azure/china/concepts-service-availability)
-
-
-
+- [在中国可用的 Azure 服务](/azure/china/concepts-service-availability)

@@ -3,12 +3,12 @@ title: 将基于事件的视频录制到云中并从云播放教程 - Azure
 description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析将基于事件的视频录制到云中并从云中播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568552"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498296"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将基于事件的视频录制到云中并从云中播放
 
@@ -52,7 +52,7 @@ ms.locfileid: "89568552"
 * Azure IoT 中心
 * Azure 存储帐户
 * Azure 媒体服务帐户
-* Azure 中的 Linux VM，已安装 [IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Azure 中的 Linux VM，已安装 [IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="concepts"></a>概念
 
@@ -107,7 +107,7 @@ ms.locfileid: "89568552"
     借助 IoT 中心连接字符串，可以使用 Visual Studio Code 通过 Azure IoT 中心将命令发送到 Edge 模块。
     
 1. 接下来，浏览到 src/edge 文件夹并创建一个名为 .env 的文件。
-1. 复制 ~/clouddrive/lva-sample/.env 文件中的内容。 文本应如下所示：
+1. 复制 ~/clouddrive/lva-sample/edge-deployment/.env 文件中的内容。 文本应如下所示：
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -187,10 +187,18 @@ ms.locfileid: "89568552"
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="开始监视内置事件终结点开始监视内置事件终结点":::
     
-    ## <a name="run-the-program"></a>运行程序
+## <a name="run-the-program"></a>运行程序
 
-1. 在 Visual Studio Code 中，转到 src/cloud-to-device-console-app/operations.json。
+1. 在 Visual Studio Code 中，打开“扩展”选项卡（或按 Ctrl+Shift+X），然后搜索“Azure IoT 中心”。
+1. 右键单击并选择“扩展设置”。
 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="扩展设置":::
+1. 搜索并启用“显示详细消息”。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="显示详细消息":::
+1. <!--In Visual Studio Code, go-->转到 src/cloud-to-device-console-app/operations.json。
 1. 在 GraphTopologySet 节点下，编辑以下内容：
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
@@ -199,7 +207,6 @@ ms.locfileid: "89568552"
 
     `"topologyName" : "EVRtoAssetsOnObjDetect"`
 1. 选择 F5 以启动调试会话。 在“终端”窗口中，你将看到一些输出的消息。
-
 1. operations.json 文件首先调用 GraphTopologyList 和 GraphInstanceList。 如果在先前的快速入门或教程后清理了资源，此操作会返回空列表，然后暂停以便你能够选择 Enter，如下所示：
 
     ```
@@ -217,7 +224,6 @@ ms.locfileid: "89568552"
     Executing operation WaitForInput
     Press Enter to continue
     ```
-
 1. 在“终端”窗口中选择 Enter 后，会执行下一组直接方法调用 ：
    * 使用上述 topologyUrl 调用 GraphTopologySet
    * 使用以下正文调用 GraphInstanceSet
@@ -251,11 +257,9 @@ ms.locfileid: "89568552"
    * 再次调用 GraphInstanceList 以显示图形实例处于运行状态
      
 1. “终端”窗口中的输出现在会在出现“按 Enter 继续”提示时暂停 。 此时请勿选择 Enter。 向上滚动，查看调用的直接方法的 JSON 响应有效负载。
-
 1. 如果现在切换到 Visual Studio Code 中的“输出”窗口，则将看到 IoT Edge 上的实时视频分析模块向 IoT 中心发送消息。
 
    下节中讨论了这些消息。
-     
 1. 图形实例继续运行并录制视频。 RTSP 模拟器不断循环源视频。 根据下一部分中的介绍审阅这些消息。 然后，若要停止实例，请返回“终端”窗口，并选择 Enter 。 接下来会使用以下方法执行一系列调用，以清理资源：
 
    * 调用 GraphInstanceDeactivate 以停用图形实例。
@@ -420,4 +424,4 @@ applicationProperties 中的 subject 部分引用图形中的资产接收器节�
 ## <a name="next-steps"></a>后续步骤
 
 * 使用支持 RTSP 的 [IP 相机](https://en.wikipedia.org/wiki/IP_camera)，而不是使用 RTSP 模拟器。 可以在 [ONVIF 一致性产品页](https://www.onvif.org/conformant-products/)上查找符合配置文件 G、S 或 T 的设备来搜索支持 RTSP 的 IP 照相机。
-* 使用 AMD64 或 X64 Linux 设备（与使用 Azure Linux VM 相比）。 此设备必须与 IP 相机位于同一网络中。 按照[在 Linux 上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)中的说明进行操作。 然后按照[将首个 IoT Edge 模块部署到虚拟 Linux 设备](../../iot-edge/quickstart-linux.md)快速入门中的说明进行操作，将设备注册到 Azure IoT 中心。
+* 使用 AMD64 或 X64 Linux 设备（与使用 Azure Linux VM 相比）。 此设备必须与 IP 相机位于同一网络中。 按照[在 Linux 上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)中的说明进行操作。 然后按照[将首个 IoT Edge 模块部署到虚拟 Linux 设备](../../iot-edge/quickstart-linux.md)快速入门中的说明进行操作，将设备注册到 Azure IoT 中心。

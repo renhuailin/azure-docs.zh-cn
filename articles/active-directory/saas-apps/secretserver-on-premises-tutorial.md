@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: eeaf6917187c9688bf6a62b98b2fcf64519b1798
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a87bf24c3555f2e6a259064b56b1b630f4abfe27
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543221"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894977"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>教程：Secret Server (On-Premises) 与 Azure Active Directory 的集成 | Microsoft Docs
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543221"
 * 让用户使用其 Azure AD 帐户自动登录到 Secret Server (On-Premises)。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -98,7 +98,7 @@ ms.locfileid: "88543221"
 
 1. 在“设置 SAML 单一登录”页上，单击“编辑”图标打开“SAML 签名证书”对话框。   
 
-    ![签名选项](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
+    ![屏幕截图显示“SAML 签名证书”部分，其中选择了“证书(Base64)”>“下载”操作。](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
 
 1. 选择“签名选项”作为“签名 SAML 响应和断言”   。
 
@@ -144,18 +144,18 @@ ms.locfileid: "88543221"
 
 ### <a name="create-secret-server-on-premises-test-user"></a>创建 Secret Server (On-Premises) 测试用户
 
-在本部分，我们将在 Secret Server (On-Premises) 中创建一个名为 Britta Simon 的用户。 在  [Secret Server (On-Premises) 支持团队](https://thycotic.force.com/support/s/)的配合下，将用户添加到 Secret Server (On-Premises) 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 Secret Server (On-Premises) 中创建一个名为 Britta Simon 的用户。 与 [Secret Server (On-Premises) 支持团队](https://thycotic.force.com/support/s/)协作，在 Secret Server (On-Premises) 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Secret Server (On-Premises)”磁贴时，应会自动登录到设置了 SSO 的 Secret Server (On-Premises)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Secret Server (On-Premises)”磁贴时，应会自动登录到设置了 SSO 的 Secret Server (On-Premises)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

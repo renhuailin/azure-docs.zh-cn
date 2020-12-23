@@ -10,16 +10,16 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: landing-page
-  author: MashaMSFT
-  ms.author: mathoma
-  ms.reviewer: sstein
+  author: stevestein
+  ms.author: sstein
+  ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 0cb1d825c902cb616bfc1feac9274db87ec14342
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 91221735001f55974f6aba4b6fcae39a92834da8
+  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91283847"
+  ms.lasthandoff: 11/13/2020
+  ms.locfileid: "94593886"
 landingContent:
 - title: Azure SQL Database
   linkLists:
@@ -117,6 +117,16 @@ landingContent:
       url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
     - text: 性能准则
       url: virtual-machines/windows/performance-guidelines-best-practices.md
+- title: 从 SQL Server 迁移
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure SQL Database
+      url: migration-guides/database/sql-server-to-sql-database-overview.md
+    - text: Azure SQL 托管实例
+      url: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+    - text: Azure VM 上的 SQL Server
+      url: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
 - title: 连接和查询
   linkLists:
   - linkListType: quickstart
@@ -137,40 +147,6 @@ landingContent:
       url: database/connect-query-dotnet-core.md
     - text: Python
       url: database/connect-query-python.md
-- title: 开发
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 应用程序开发
-      url: database/develop-overview.md
-    - text: 灾难恢复应用设计
-      url: database/designing-cloud-solutions-for-disaster-recovery.md
-    - text: 管理滚动升级 (SQL DB)
-      url: database/manage-application-rolling-upgrade.md
-    - text: 开发策略 (SQL VM)
-      url: virtual-machines/windows/application-patterns-development-strategies.md
-    - text: SaaS 数据库租户模式
-      url: database/saas-tenancy-app-design-patterns.md
-  - linkListType: how-to-guide
-    links:
-    - text: 设计第一个数据库 (SSMS)
-      url: database/design-first-database-tutorial.md
-    - text: 设计第一个数据库 (C#)
-      url: database/design-first-database-csharp-tutorial.md
-- title: 了解 Azure SQL
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: 面向初学者的 Azure SQL
-      url: https://aka.ms/azuresql4beginners
-    - text: Azure SQL 基础知识
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
-    - text: Azure SQL 实操练习
-      url: https://aka.ms/asqlworkshop
-    - text: Azure SQL 集训营
-      url: https://aka.ms/azuresqlbootcamp
-    - text: SQL 教育资源
-      url: /sql/sql-server/educational-sql-resources
 - title: 参考
   linkLists:
   - linkListType: deploy
@@ -198,8 +174,42 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/
+- title: 了解 Azure SQL
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 面向初学者的 Azure SQL
+      url: https://aka.ms/azuresql4beginners
+    - text: Azure SQL 基础知识
+      url: /learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL 实操练习
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL 集训营
+      url: https://aka.ms/azuresqlbootcamp
+    - text: SQL 教育资源
+      url: /sql/sql-server/educational-sql-resources
+- title: 开发
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 应用程序开发
+      url: database/develop-overview.md
+    - text: 灾难恢复应用设计
+      url: database/designing-cloud-solutions-for-disaster-recovery.md
+    - text: 管理滚动升级 (SQL DB)
+      url: database/manage-application-rolling-upgrade.md
+    - text: 开发策略 (SQL VM)
+      url: virtual-machines/windows/application-patterns-development-strategies.md
+    - text: SaaS 数据库租户模式
+      url: database/saas-tenancy-app-design-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: 设计第一个数据库 (SSMS)
+      url: database/design-first-database-tutorial.md
+    - text: 设计第一个数据库 (C#)
+      url: database/design-first-database-csharp-tutorial.md

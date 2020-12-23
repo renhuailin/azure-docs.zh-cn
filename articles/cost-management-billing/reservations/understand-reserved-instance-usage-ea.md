@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 20a9fb6a158134ffc18dc5bbb7eddd34d2b79562
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682002"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545598"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>获取企业协议预留成本和使用情况
 
@@ -55,7 +55,7 @@ Azure 使用情况数据中提供的其他信息已更改：
 - Term - 12 个月或 36 个月。
 - RINormalizationRatio - 在 AdditionalInfo 下提供。 这是预留项应用到使用记录的比率。 如果为预留项启用了实例大小灵活性，则它可应用到其他大小。 该值显示预留项应用到使用记录的比率。
 
-[请参阅字段定义](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[请参阅字段定义](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>使用 API 获取 Azure 消耗量和预留项使用情况数据
 
@@ -71,7 +71,7 @@ Azure 使用情况数据中提供的其他信息已更改：
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-有关 {enrollmentId} 和 {billingPeriodId} 的详细信息，请参阅[使用情况详细信息 - 列出](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API 文章。
+有关 {enrollmentId} 和 {billingPeriodId} 的详细信息，请参阅[使用情况详细信息 - 列出](/rest/api/consumption/usagedetails/list) API 文章。
 
 下表中有关指标和筛选器的信息可帮助解决常见的预留项问题。
 
@@ -140,9 +140,11 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 2. 获取预留成本。 将 _Cost_ 值求和可以得出为预留实例支付的货币价值。 这包括预留项的已用和未用成本。
 3. 从估计的即用即付成本中减去预留成本可以得出估计的节省额。
 
+请记住，如果你的预留未充分利用，ChargeType 的 UnusedReservation 项将成为需要考虑的因素 。 当你的预留被充分利用时，你将实现最大程度的费用节省。 任何 UnusedReservation 数量都将节省费用。
+
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>成本分析中的预留项购买和摊销
 
-[成本分析](https://aka.ms/costanalysis)中提供预留成本。 默认情况下，成本分析会显示“实际成本”，即帐单上显示的成本。  若要查看已细分的并与使用权益的资源关联的预留购买项目，请切换到“摊销成本”： 
+[成本分析](https://aka.ms/costanalysis)中提供预留成本。 默认情况下，成本分析会显示“实际成本”，即帐单上显示的成本。 若要查看已细分的并与使用权益的资源关联的预留购买项目，请切换到“摊销成本”：
 
 ![该示例显示可在成本分析中的哪个位置选择摊销成本](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
@@ -157,7 +159,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
 - [什么是 Azure 预订？](save-compute-costs-reservations.md)
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 预留项](manage-reserved-vm-instance.md)
 - [了解预留折扣的应用方式](../manage/understand-vm-reservation-charges.md)

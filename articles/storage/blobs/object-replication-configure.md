@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715624"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347942"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>为块 blob 配置对象复制
 
@@ -52,7 +52,7 @@ ms.locfileid: "91715624"
 若要在 Azure 门户中创建复制策略，请按照以下步骤操作：
 
 1. 在 Azure 门户中，转到源存储帐户。
-1. 在 **Blob 服务**下，选择 **对象复制**。
+1. 在 **Blob 服务** 下，选择 **对象复制**。
 1. 选择 " **设置复制规则**"。
 1. 选择目标订阅和存储帐户。
 1. 在“容器对”部分中，选择源帐户中的源容器，以及目标帐户中的目标容器。 每个复制策略最多可以创建 10 个容器对。
@@ -65,19 +65,19 @@ ms.locfileid: "91715624"
 
     下图展示了限制在复制规则中复制哪些 blob 的筛选器。
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="展示了复制规则的筛选器的屏幕截图":::
 
 1. 默认情况下，复制范围设置为只复制新对象。 若要复制容器中的所有对象，或从自定义日期和时间开始复制对象，请选择“更改”链接，然后为容器对配置复制范围。
 
     下图显示了从指定的日期和时间开始复制对象的自定义复制范围。
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="展示了对象复制的自定义复制范围的屏幕截图":::
 
 1. 选择“保存并应用”，以创建复制策略，并开始复制数据。
 
 配置对象复制后，Azure 门户会显示复制策略和规则，如下图所示。
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="显示中的对象复制策略的屏幕截图 Azure 门户":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -244,7 +244,7 @@ az storage account or-policy show \
 
 | 为此帐户创建 JSON 文件时 .。。 | 将策略 ID 和规则 Id 设置为此值 .。。 |
 |-|-|
-| 目标帐户 | 字符串值 *默认*值。 Azure 存储将为你创建策略 ID 和规则 Id。 |
+| 目标帐户 | 字符串值 *默认* 值。 Azure 存储将为你创建策略 ID 和规则 Id。 |
 | 源帐户 | 当你将在目标帐户上定义的策略作为 JSON 文件下载时，将返回策略 ID 和规则 Id 的值。 |
 
 下面的示例定义了一个目标帐户的复制策略，该策略包含一个与前缀 *b* 匹配的规则，并为要复制的 blob 设置最小创建时间。 请注意将尖括号中的值替换为你自己的值：
@@ -284,9 +284,16 @@ az storage account or-policy show \
 1. 选择 " **上载复制规则**"。
 1. 上传 JSON 文件。 Azure 门户显示要创建的策略和规则，如下图所示。
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图" **下载规则**"，如下图所示。
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="显示如何上传 JSON 文件以定义复制策略的屏幕截图":::
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
+1. 选择 " **上传** "，在目标帐户上创建复制策略。
+
+然后，你可以下载包含策略定义的 JSON 文件，你可以向其他用户提供该文件来配置源帐户。 若要下载此 JSON 文件，请执行以下步骤：
+
+1. 在 Azure 门户中导航到目标帐户的 **对象复制** 设置。
+1. 选择要下载的策略旁边的 " **更多** " 按钮，然后选择 " **下载规则**"，如下图所示。
+
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="显示如何将复制规则下载到 JSON 文件的屏幕截图":::
 
 1. 将 JSON 文件保存到本地计算机，以便与其他用户共享，以便在源帐户上配置策略。
 
@@ -307,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-若要在 PowerShell 中使用 JSON 文件配置源帐户的复制策略，请检索本地文件，并将 JSON 转换为对象。 然后，调用 [AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 命令在源帐户上配置策略，如以下示例中所示。 请记住，用尖括号替换值，并将文件路径替换为自己的值：
+若要在 PowerShell 中使用 JSON 文件定义源帐户的复制策略，请检索本地文件，并将 JSON 转换为对象。 然后，调用 [AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 命令在源帐户上配置策略，如以下示例中所示。 请记住，用尖括号替换值，并将文件路径替换为自己的值：
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -323,7 +330,7 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 若要从 Azure CLI 将目标帐户的复制策略定义写入 JSON 文件，请调用 [az storage account 或-policy show](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) 命令并输出到文件。
 
-下面的示例将策略定义写入 *policy.js上*的名为的 JSON 文件。 请记住，用尖括号替换值，并将文件路径替换为自己的值：
+下面的示例将策略定义写入 *policy.js上* 的名为的 JSON 文件。 请记住，用尖括号替换值，并将文件路径替换为自己的值：
 
 ```azurecli
 az storage account or-policy show \
@@ -341,6 +348,55 @@ az storage account or-policy create \
 ```
 
 ---
+
+## <a name="check-the-replication-status-of-a-blob"></a>检查 blob 的复制状态
+
+你可以使用 Azure 门户、PowerShell 或 Azure CLI 检查源帐户中的 blob 的复制状态。 复制完成或失败之前，不会填充对象复制属性。
+
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+若要检查 Azure 门户中源帐户的 blob 的复制状态，请执行以下步骤：
+
+1. 导航到 Azure 门户中的源帐户。
+1. 找到包含源 blob 的容器。
+1. 选择要显示其属性的 blob。 如果 blob 已成功复制，则会在 " **对象复制** " 部分看到状态设置为 "已 *完成*"。 还列出了用于管理此容器的对象复制的规则的复制策略 ID 和 ID。
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="显示源帐户中 blob 的复制状态的屏幕截图":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要使用 PowerShell 检查源帐户中 blob 的复制状态，请获取 "对象复制 **ReplicationStatus** " 属性的值，如以下示例中所示。 请注意将尖括号中的值替换为你自己的值：
+
+```powershell
+$ctxSrc = (Get-AzStorageAccount -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName).Context
+$blobSrc = Get-AzStorageBlob -Container $srcContainerName1 `
+    -Context $ctxSrc `
+    -Blob <blob-name>
+$blobSrc.BlobProperties.ObjectReplicationSourceProperties[0].Rules[0].ReplicationStatus
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要使用 Azure CLI 检查源帐户中的 blob 的复制状态，请获取 "对象复制 **状态** " 属性的值，如以下示例中所示：
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
+```
+
+---
+
+如果源帐户中 blob 的复制状态指示失败，则调查以下可能的原因：
+
+- 请确保已在目标帐户上配置对象复制策略。
+- 验证目标容器是否仍然存在。
+- 如果源 blob 已使用客户提供的密钥在写入操作过程中进行了加密，则对象复制将失败。 有关客户提供的密钥的详细信息，请参阅[在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)。
 
 ## <a name="remove-a-replication-policy"></a>删除复制策略
 

@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 09/21/2020
-  ms.openlocfilehash: e4f0ad8a075ce187605bf15a7df414825cc252df
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 11/19/2020
+  ms.openlocfilehash: c460df29183cbf40bee1f539435669121b3ee6ed
+  ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91742292"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96608412"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -32,18 +32,18 @@ landingContent:
       url: concepts-storage.md
     - text: 私有云的访问权限和标识
       url: concepts-identity.md
-    - text: 基于角色的访问控制
+    - text: vSphere 基于角色的访问控制
       url: concepts-role-based-access-control.md
+    - text: 监视和修复私有云
+      url: concepts-monitor-repair-private-cloud.md
     - text: 私有云升级
       url: concepts-upgrades.md
-- title: 部署 Azure VMware 解决方案
+- title: 入门
   linkLists:
-  - linkListType: get-started
+  - linkListType: deploy
     links:
-    - text: 预部署过程
+    - text: 0 - 规划部署
       url: production-ready-deployment-steps.md
-    - text: 部署前清单
-      url: pre-deployment-checklist.md
     - text: 1 - 部署 Azure VMware 解决方案
       url: deploy-azure-vmware-solution.md
     - text: 2 - 连接到本地
@@ -64,14 +64,16 @@ landingContent:
       url: tutorial-nsx-t-network-segment.md
     - text: 从本地对等连接到私有云
       url: tutorial-expressroute-global-reach-private-cloud.md
-    - text: 部署和配置 VMware HCX
-      url: tutorial-deploy-vmware-hcx.md
     - text: 缩放私有云
       url: tutorial-scale-private-cloud.md
 - title: 扩展 Azure VMware 解决方案
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: 启用 Azure VMware 解决方案
+      url: enable-azure-vmware-solution.md
+    - text: 通过预留实例节约成本
+      url: reserved-instance.md
     - text: 迁移评估
       url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - text: 管理 DHCP
@@ -79,6 +81,58 @@ landingContent:
     - text: 为 VM 部署灾难恢复
       url: disaster-recovery-for-virtual-machines.md
     - text: 通过内容库部署 VM
-      url: tutorial-deploy-vm-content-library.md
-    - text: 使用公共 IP 功能
+      url: ./deploy-vm-content-library.md
+    - text: 设置 GitHub Enterprise Server
+      url: github-enterprise-server.md
+    - text: 公共 IP 使用情况
       url: public-ip-usage.md
+    - text: 创建 IPSec 隧道
+      url: create-ipsec-tunnel.md
+- title: Azure 本机集成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: API 管理
+      url: concepts-api-management.md
+    - text: 中心和分支
+      url: concepts-hub-and-spoke.md
+    - text: Azure 安全中心
+      url: azure-security-integration.md
+    - text: Azure 备份服务器
+      url: set-up-backup-server-for-azure-vmware-solution.md
+    - text: VM 的生命周期管理
+      url: lifecycle-management-of-azure-vmware-solution-vms.md
+    - text: 应用程序网关
+      url: protect-azure-vmware-solution-with-application-gateway.md
+    - text: 流量管理器
+      url: deploy-traffic-manager-balance-workloads.md
+- title: VMware 解决方案
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 设置 vRealize Operations
+      url: vrealize-operations-for-azure-vmware-solution.md
+    - text: 部署 VMware Horizon
+      url: azure-vmware-solution-horizon.md
+- title: VMware 生态系统
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: VM 的备份解决方案
+      url: ecosystem-back-up-vms.md
+- title: 资源
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/ext/vmware/vmware
+    - text: Azure PowerShell
+      url: /powershell/module/az.vmware
+    - text: 常见问题解答
+      url: faq.md
+- title: 疑难解答
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 就部署失败发起支持请求
+      url: fix-deployment-provisioning-failures.md

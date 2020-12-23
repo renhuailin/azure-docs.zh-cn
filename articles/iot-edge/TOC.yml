@@ -1,5 +1,7 @@
 - name: Azure IoT Edge 文档
   href: index.yml
+- name: Azure IoT Edge 版本
+  href: version-history.md
 - name: 概述
   items:
     - name: 关于 Azure IoT Edge
@@ -13,13 +15,13 @@
       href: quickstart.md
 - name: 教程
   items:
-    - name: 1. 设置开发环境
+    - name: 设置开发环境
       items:
         - name: 针对 Linux 设备进行开发
           href: tutorial-develop-for-linux.md
         - name: 针对 Windows 设备进行开发
           href: tutorial-develop-for-windows.md
-    - name: 2. 开发自定义代码模块
+    - name: 开发自定义代码模块
       items:
         - name: C
           items:
@@ -39,7 +41,7 @@
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
-    - name: 3. 将 Azure 服务部署为模块
+    - name: 将 Azure 服务部署为模块
       items:
         - name: 使用 Azure Functions 筛选数据
           href: tutorial-deploy-function.md
@@ -51,7 +53,11 @@
           href: tutorial-deploy-custom-vision.md
         - name: 使用 SQL 在本地存储数据
           href: tutorial-store-data-sql-server.md
-    - name: 4. 边缘机器学习的端到端示例
+    - name: 使用 IoT Edge 作为网关
+      items:
+        - name: 创建 IoT Edge 设备的层次结构
+          href: tutorial-nested-iot-edge.md
+    - name: 边缘机器学习的端到端示例
       items:
         - name: 简介
           href: tutorial-machine-learning-edge-01-intro.md
@@ -111,28 +117,26 @@
       href: iot-edge-glossary.md
 - name: 操作指南
   items:
-    - name: 注册 IoT Edge 设备
-      href: how-to-register-device.md
-    - name: 安装和管理 IoT Edge
+    - name: 创建 IoT Edge 设备
       items:
-        - name: Linux
-          href: how-to-install-iot-edge-linux.md
-        - name: Windows
-          href: how-to-install-iot-edge-windows.md
-        - name: Windows 上的 Linux 容器
-          href: how-to-install-iot-edge-windows-with-linux.md
-        - name: Windows Server VM
-          href: how-to-install-iot-edge-windows-server-vm.md
-        - name: Ubuntu VM
-          href: how-to-install-iot-edge-ubuntuvm.md
-        - name: Kubernetes
-          href: how-to-install-iot-edge-kubernetes.md
+        - name: 安装运行时
+          href: how-to-install-iot-edge.md
+        - name: 注册设备并对设备进行身份验证
+          items:
+            - name: 对称密钥身份验证
+              href: how-to-manual-provision-symmetric-key.md
+            - name: X.509 证书身份验证
+              href: how-to-manual-provision-x509.md
+        - name: 更新运行时
+          href: how-to-update-iot-edge.md
         - name: 管理设备证书
           href: how-to-manage-device-certificates.md
         - name: 创建测试证书
           href: how-to-create-test-certificates.md
-        - name: 更新运行时版本
-          href: how-to-update-iot-edge.md
+        - name: Kubernetes 上的 IoT Edge
+          href: how-to-install-iot-edge-kubernetes.md
+        - name: 使用 ARM 模板创建 IoT Edge 虚拟机
+          href: how-to-install-iot-edge-ubuntuvm.md
     - name: 使用 DPS 进行自动预配
       items:
         - name: TPM 证明
@@ -183,18 +187,32 @@
           href: how-to-monitor-module-twins.md
         - name: EdgeAgent 直接方法
           href: how-to-edgeagent-direct-method.md
+        - name: 检索 IoT Edge 日志
+          href: how-to-retrieve-iot-edge-logs.md
+        - name: 访问内置指标
+          href: how-to-access-built-in-metrics.md
     - name: 使用 IoT Edge 设备作为网关
       items:
-        - name: 配置透明网关
-          href: how-to-create-transparent-gateway.md
-        - name: 对下游设备进行身份验证
-          href: how-to-authenticate-downstream-device.md
-        - name: 连接下游设备
-          href: how-to-connect-downstream-device.md
-        - name: Modbus 协议网关
-          href: deploy-modbus-gateway.md
+        - name: IoT 设备的网关
+          items:
+            - name: 配置透明网关
+              href: how-to-create-transparent-gateway.md
+            - name: 对下游设备进行身份验证
+              href: how-to-authenticate-downstream-device.md
+            - name: 连接下游设备
+              href: how-to-connect-downstream-device.md
+            - name: Modbus 协议网关
+              href: deploy-modbus-gateway.md
+        - name: IoT Edge 设备的网关
+          items:
+            - name: 配置 IoT Edge 设备的网关
+              href: how-to-connect-downstream-iot-edge-device.md
+            - name: 配置 API 代理模块
+              href: how-to-configure-api-proxy-module.md
     - name: 配置代理支持
       href: how-to-configure-proxy-support.md
+    - name: 通过 IoT Edge 发布和订阅
+      href: how-to-publish-subscribe.md
     - name: IoT Edge 上的 Azure Blob 存储
       items:
         - name: 了解边缘上的 Blob 存储
@@ -225,36 +243,38 @@
           href: troubleshoot-common-errors.md
 - name: 参考
   items:
+    - name: Windows 设备管理脚本
+      href: reference-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: 资源
   items:
     - name: 支持和帮助选项
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT 服务
       items:
         - name: IoT 中心
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT 中心设备预配服务
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ./index.yml
         - name: IoT 解决方案加速器
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT 即插即用
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: 时序见解
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT 设备 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure IoT 示例
       items:
         - name: C# (.NET)

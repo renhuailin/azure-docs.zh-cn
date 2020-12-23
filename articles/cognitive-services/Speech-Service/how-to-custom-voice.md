@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056680"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025072"
 ---
 # <a name="get-started-with-custom-voice"></a>自定义语音入门
 
@@ -42,7 +42,7 @@ ms.locfileid: "88056680"
 神经语音自定义功能当前提供公共预览，仅向部分客户特供。 填写此[应用程序表单](https://go.microsoft.com/fwlink/?linkid=2108737)以开始使用。
 
 > [!NOTE]
-> Microsoft 承诺设计负责任的 AI，其中包括以保护个人和社会的权利、促进人机交互透明化为目标。 出于此原因，我们未向所有客户正式发布自定义神经语音。 仅当我们评审你的应用程序，并且你承诺在遵守我们的道德原则的条件下使用该应用程序后，你才会获得对该技术的访问权限。 详细了解我们的[应用程序把关流程](https://aka.ms/custom-neural-gating-overview)。
+> Microsoft 承诺设计负责任的 AI，其中包括以保护个人和社会的权利、促进人机交互透明化为目标。 出于此原因，我们未向所有客户正式发布自定义神经语音。 仅当我们评审你的应用程序，并且你承诺在遵守我们的道德原则的条件下使用该应用程序后，你才会获得对该技术的访问权限。 详细了解我们的[应用程序把关流程](./concepts-gating-overview.md)。
 
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
@@ -60,7 +60,7 @@ ms.locfileid: "88056680"
 
 ## <a name="how-to-create-a-project"></a>如何创建项目
 
-数据、模型、测试和终结点等内容在自定义语音门户中组织成**项目**。 每个项目特定于某个国家/语言，以及要创建的语音的性别。 例如，对于呼叫中心的使用美式英语 (en-US) 的聊天机器人，可以创建女性语音项目。
+数据、模型、测试和终结点等内容在自定义语音门户中组织成 **项目**。 每个项目特定于某个国家/语言，以及要创建的语音的性别。 例如，对于呼叫中心的使用美式英语 (en-US) 的聊天机器人，可以创建女性语音项目。
 
 若要创建第一个项目，请选择“文本转语音/自定义语音”选项卡，然后单击“新建项目”。  遵照向导中的说明创建项目。 创建项目后，将看到四个选项卡：“数据”、“训练”、“测试”和“部署”。    使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
 

@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
 ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261866"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011211"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>使用连接的工厂解决方案加速器仪表板中的功能
 
 > [!IMPORTANT]
-> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 [部署基于云的解决方案来管理工业 IoT 设备](quickstart-connected-factory-deploy.md)快速入门演示了如何导航仪表板并响应警报。 本操作说明演示一些可用于监视和管理工业 IoT 设备的其他仪表板功能。
 
 ## <a name="apply-filters"></a>应用筛选器
 
-可以在“工厂位置”面板或“警报”面板筛选仪表板上显示的信息********：
+可以在“工厂位置”面板或“警报”面板筛选仪表板上显示的信息：
 
-1. 单击**漏斗**图标，在工厂位置面板或警报面板中显示可用筛选器的列表。
+1. 单击 **漏斗** 图标，在工厂位置面板或警报面板中显示可用筛选器的列表。
 
 1. 此时会显示筛选器面板：
 
     [![连接工厂解决方案加速器筛选器](./media/iot-accelerators-connected-factory-dashboard/filterpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterpanel-expanded.png#lightbox)
 
-1. 选择所需筛选器，单击“应用”****。 也可在筛选字段中键入自定义文本。
+1. 选择所需筛选器，单击“应用”。 也可在筛选字段中键入自定义文本。
 
 1. 然后应用筛选器。 额外的漏斗图图标表示应用了筛选器：
 
@@ -41,13 +41,13 @@ ms.locfileid: "91261866"
     > [!NOTE]
     > 活动筛选器不影响显示的 OEE 和 KPI 值，仅筛选列表内容。
 
-1. 要清除筛选器，请单击漏斗图，并单击筛选器面板中的“清除”****。
+1. 要清除筛选器，请单击漏斗图，并单击筛选器面板中的“清除”。
 
 ## <a name="browse-an-opc-ua-server"></a>浏览 OPC UA 服务器
 
 部署解决方案加速器时，会自动预配一组模拟 OPC UA 服务器，此类服务器可以从仪表板进行浏览。 模拟服务器可让用户轻松试验解决方案加速器，而不需要部署实际的服务器。
 
-1. 单击仪表板导航栏中的“浏览器”图标****：
+1. 单击仪表板导航栏中的“浏览器”图标：
 
     [![连接工厂解决方案加速器服务器浏览器](./media/iot-accelerators-connected-factory-dashboard/browser-inline.png)](./media/iot-accelerators-connected-factory-dashboard/browser-expanded.png#lightbox)
 
@@ -55,7 +55,7 @@ ms.locfileid: "91261866"
 
     [![已连接的工厂解决方案加速器服务器列表](./media/iot-accelerators-connected-factory-dashboard/serverlist-inline.png)](./media/iot-accelerators-connected-factory-dashboard/serverlist-expanded.png#lightbox)
 
-1. 单击“连接”****，此时会显示一个安全对话框。 就此模拟来说，可以安全地单击“继续”****。
+1. 单击“连接”，此时会显示一个安全对话框。 就此模拟来说，可以安全地单击“继续”。
 
 1. 单击服务器树中的任意节点即可将其展开。 正在发布遥测的节点旁边有一个复选标记：
 
@@ -65,7 +65,7 @@ ms.locfileid: "91261866"
 
 ## <a name="publish-a-node"></a>发布节点
 
-浏览“模拟 OPC UA 服务器”时，还可选择发布新节点。** 可以在解决方案中分析这些节点的遥测。 使用这些模拟 OPC UA 服务器，可以轻松地试验解决方案加速器，不需部署实际的设备**：
+浏览“模拟 OPC UA 服务器”时，还可选择发布新节点。 可以在解决方案中分析这些节点的遥测。 使用这些模拟 OPC UA 服务器，可以轻松地试验解决方案加速器，不需部署实际的设备：
 
 1. 浏览到要发布的 OPC UA 服务器浏览器树中的某个节点。
 
@@ -79,15 +79,15 @@ ms.locfileid: "91261866"
 
 ## <a name="command-and-control"></a>命令和控制
 
-连接工厂允许直接从云对工业设备发出命令并进行控制。 可以通过此功能来响应设备生成的警报。 例如，可以将命令发送到设备以打开泄压阀。 可以在 OPC UA 服务器浏览器树的 **StationCommands** 节点中查找可用命令。 在本方案中，需打开慕尼黑生产线装配站的泄压阀。 要使用命令和控制功能，必须具有“管理员”角色，可部署解决方案加速器****：
+连接工厂允许直接从云对工业设备发出命令并进行控制。 可以通过此功能来响应设备生成的警报。 例如，可以将命令发送到设备以打开泄压阀。 可以在 OPC UA 服务器浏览器树的 **StationCommands** 节点中查找可用命令。 在本方案中，需打开慕尼黑生产线装配站的泄压阀。 要使用命令和控制功能，必须具有“管理员”角色，可部署解决方案加速器：
 
-1. 浏览到慕尼黑生产线 0 装配站的 OPC UA 服务器浏览器树中的 StationCommands 节点****。
+1. 浏览到慕尼黑生产线 0 装配站的 OPC UA 服务器浏览器树中的 StationCommands 节点。
 
-1. 选择要使用的命令。 右键单击 OpenPressureReleaseValve 节点****。 单击“调用”****：
+1. 选择要使用的命令。 右键单击 OpenPressureReleaseValve 节点。 单击“调用”：
 
     [![已连接的工厂解决方案加速器调用命令](./media/iot-accelerators-connected-factory-dashboard/callcommand-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callcommand-expanded.png#lightbox)
 
-1. 此时会显示一个上下文面板，告知要调用的具体方法，以及任何参数详细信息。 单击“调用”****：
+1. 此时会显示一个上下文面板，告知要调用的具体方法，以及任何参数详细信息。 单击“调用”：
 
     [![已连接的工厂解决方案加速器调用参数](./media/iot-accelerators-connected-factory-dashboard/callpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callpanel-expanded.png#lightbox)
 
@@ -97,7 +97,7 @@ ms.locfileid: "91261866"
 
 ## <a name="behind-the-scenes"></a>幕后
 
-部署解决方案加速器时，部署过程会在所选 Azure 订阅中创建多个资源。 可以在 Azure [门户](https://portal.azure.com)中查看这些资源。 部署过程会创建一个“资源组”，其名称基于为解决方案加速器选择的名称****：
+部署解决方案加速器时，部署过程会在所选 Azure 订阅中创建多个资源。 可以在 Azure [门户](https://portal.azure.com)中查看这些资源。 部署过程会创建一个“资源组”，其名称基于为解决方案加速器选择的名称：
 
 [![已连接的工厂解决方案加速器资源组](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-inline.png)](./media/iot-accelerators-connected-factory-dashboard/resourcegroup-expanded.png#lightbox)
 

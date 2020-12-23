@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3d15e5e13b2b0defe45fd45450aee7c262052b4f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547097"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459407"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>教程：Azure Active Directory 与 Jive 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88547097"
 * 让用户使用其 Azure AD 帐户自动登录到 Jive。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,8 +40,8 @@ ms.locfileid: "88547097"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Jive 支持 SP 发起的 SSO
-* Jive 支持[**自动**用户预配](jive-provisioning-tutorial.md)
-* 配置 Jive 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Jive 支持 [**自动** 用户预配](jive-provisioning-tutorial.md)
+* 配置 Jive 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-jive-from-the-gallery"></a>从库中添加 Jive
 
@@ -140,7 +140,7 @@ ms.locfileid: "88547097"
 
 1. 在顶部菜单中，单击“SAML”。
 
-    ![在应用端配置单一登录](./media/jive-tutorial/tutorial_jive_002.png)
+    ![屏幕截图显示选择了“已启用”的“SAML”选项卡。](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. 在“常规”选项卡下选择“已启用”。
 
@@ -148,7 +148,7 @@ ms.locfileid: "88547097"
 
 1. 导航到“IDP 元数据”选项卡。
 
-    ![在应用端配置单一登录](./media/jive-tutorial/tutorial_jive_003.png)
+    ![屏幕截图显示选择了“IDP 元数据”的“SAML”选项卡。](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. 复制下载的元数据 XML 文件的内容，并将其粘贴到“标识提供者(IDP)元数据”文本框中。
 
@@ -156,7 +156,7 @@ ms.locfileid: "88547097"
 
 1. 选择“用户属性映射”选项卡。
 
-    ![在应用端配置单一登录](./media/jive-tutorial/tutorial_jive_004.png)
+    ![屏幕截图显示选择了“用户属性映射”的“SAML”选项卡。](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. 在“电子邮件”文本框中，复制并粘贴“mail”值的属性名称。
 
@@ -174,20 +174,20 @@ ms.locfileid: "88547097"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Jive 磁贴时，应当会自动登录到为其设置了 SSO 的 Jive。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Jive 磁贴时，应当会自动登录到为其设置了 SSO 的 Jive。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 Jive](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
 - [配置用户预配](jive-provisioning-tutorial.md)
 
-- [如何通过高级可见性和控制保护 Jive](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Jive](/cloud-app-security/proxy-intro-aad)

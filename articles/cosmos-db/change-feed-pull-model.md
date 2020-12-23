@@ -4,23 +4,25 @@ description: 了解如何使用 Azure Cosmos DB 更改源拉取模型来读取�
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 12/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 674bb67018fcbf7df6285a66c2e0aeb37d24f409
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015630"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744874"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源拉取模型
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 使用更改源拉取模型，你可以按自己的节奏使用 Azure Cosmos DB 更改源。 正如你使用[更改源处理器](change-feed-processor.md)所做的那样，你可以使用更改源拉取模型来并行处理多个更改源使用者之间的更改。
 
 > [!NOTE]
-> 更改源拉取模型当前[仅在 Azure Cosmos DB .NET SDK 中提供了预览版](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview)。 该预览版尚不可用于其他 SDK 版本。
+> 更改源拉取模型当前[仅在 Azure Cosmos DB .NET SDK 中提供了预览版](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview)。 该预览版尚不可用于其他 SDK 版本。
 
 ## <a name="comparing-with-change-feed-processor"></a>与更改源处理器进行比较
 
@@ -29,13 +31,13 @@ ms.locfileid: "90015630"
 但是，不能将继续标记转换为租赁容器（反之亦然）。
 
 > [!NOTE]
-> 在大多数情况下，如果需要从更改源中读取数据，最简单的方法是使用 [更改源处理器](change-feed-processor.md)。
+> 在大多数情况下，如果需要从更改源中读取数据，最简单的方法是使用[更改源处理器](change-feed-processor.md)。
 
 以下情况应考虑使用拉取模型：
 
-- 读取特定分区键的更改
-- 控制客户端接收更改以进行处理的速度
-- 对更改源中的现有数据执行一次性读取 (例如，执行数据迁移) 
+- 从特定的分区键读取更改
+- 控制客户端接收要处理的更改的速度
+- 对更改源中的现有数据执行一次性读取，以便完成特定目标（例如，进行数据迁移）
 
 下面是更改源处理器与拉取模型之间的一些主要差异：
 
@@ -44,15 +46,19 @@ ms.locfileid: "90015630"
 | 在处理更改源时跟踪当前位置 | 租赁（存储在 Azure Cosmos DB 容器中） | 继续标记（存储在内存中或手动进行保存） |
 | 能够重播过去的更改 | 是（在使用推送模型的情况下） | 是（在使用拉取模型的情况下）|
 | 轮询将来的更改 | 基于用户指定的 `WithPollInterval` 自动检查更改 | 手动 |
+| 未出现新变化的行为 | 自动等待 `WithPollInterval` 并重新检查 | 必须捕获异常并手动重新检查 |
 | 处理整个容器中的更改 | 是的，自动并行处理从同一容器使用更改的多个线程/机器| 是，使用 FeedToken 手动并行化 |
 | 仅处理单个分区键的更改 | 不支持 | 是|
 | 支持级别 | 正式发布 | 预览 |
 
+> [!NOTE]
+> 不同于使用更改源处理器进行读取时，必须显式处理不存在新更改的情况。 
+
 ## <a name="consuming-an-entire-containers-changes"></a>使用整个容器的更改
 
-你可以创建一个 `FeedIterator` 来使用拉取模型处理更改源。 最初创建时 `FeedIterator` ，必须指定一个必需的值， `ChangeFeedStartFrom` 该值由读取更改的起始位置和所需的值组成 `FeedRange` 。 `FeedRange`是一系列分区键值，并指定将使用特定的更改源读取的项 `FeedIterator` 。
+你可以创建一个 `FeedIterator` 来使用拉取模型处理更改源。 最初创建 `FeedIterator` 时，必须指定所需的 `ChangeFeedStartFrom` 值，该值由读取更改的起始位置和所需的 `FeedRange` 组成。 `FeedRange` 是一系列分区键值，它指定将使用该特定 `FeedIterator` 从更改源中读取的项。
 
-您可以选择指定 `ChangeFeedRequestOptions` 以设置 `PageSizeHint` 。 `PageSizeHint`是将在单个页面中返回的最大项数。
+你还可以选择指定 `ChangeFeedRequestOptions` 以设置 `PageSizeHint`。 `PageSizeHint` 是将在单个页面中返回的最大项数。
 
 `FeedIterator` 有两种形式。 除了下述可返回实体对象的示例之外，还可以获取提供 `Stream` 支持的响应。 利用流，你可以在不先将数据反序列化的情况下读取数据，从而节省客户端资源。
 
@@ -68,21 +74,29 @@ FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(Ch
 FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning());
 ```
 
-如果没有提供 `FeedRange` `FeedIterator` ，则可以按自己的节奏处理整个容器的更改源。 下面的示例将从当前时间开始读取所有更改：
+如果没有向 `FeedIterator` 提供 `FeedRange`，则可以按你自己的节奏处理整个容器的更改源。 下面的示例将从当前时间开始读取所有更改：
 
 ```csharp
 FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now());
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorForTheEntireContainer.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorForTheEntireContainer.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
+
+由于更改源实际上是包含所有后续写入和更新的项的无穷列表，因此 `HasMoreResults` 的值始终为 true。 尝试读取更改源并且未出现新变化时，你将收到一个异常。 在上述示例中，通过先等待 5 秒再重新检查更改来处理异常。
 
 ## <a name="consuming-a-partition-keys-changes"></a>使用分区键的更改
 
@@ -93,11 +107,17 @@ FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<Use
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorForThePartitionKey.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorForThePartitionKey.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -112,9 +132,9 @@ while (iteratorForThePartitionKey.HasMoreResults)
 IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 ```
 
-获取容器的 FeedRange 列表时，每个[物理分区](partition-data.md#physical-partitions)你都会获得一个 `FeedRange`。
+获取容器的 FeedRange 列表时，每个[物理分区](partitioning-overview.md#physical-partitions)你都会获得一个 `FeedRange`。
 
-然后可以使用 `FeedRange` 创建一个 `FeedIterator`，以便跨多个计算机或线程并行处理更改源。 与上面演示如何获取 `FeedIterator` 整个容器或单个分区键的的示例不同，可以使用 FeedRanges 获取多个 FeedIterators，它可以并行处理更改源。
+然后可以使用 `FeedRange` 创建一个 `FeedIterator`，以便跨多个计算机或线程并行处理更改源。 与上面展示了如何获取整个容器或单个分区键的 `FeedIterator` 的示例不同，你可以使用 FeedRanges 获取多个 FeedIterator，以便并行处理更改源。
 
 若要使用 FeedRange，需要通过一个业务流程协调程序进程来获取 FeedRange 并将其分发到那些计算机。 该分发可能存在以下情况：
 
@@ -129,11 +149,17 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorA.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorA.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -144,11 +170,17 @@ while (iteratorA.HasMoreResults)
 FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorB.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorA.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -164,13 +196,19 @@ string continuation = null;
 
 while (iterator.HasMoreResults)
 {
-   FeedResponse<User> users = await iterator.ReadNextAsync();
-   continuation = users.ContinuationToken;
+   try { 
+        FeedResponse<User> users = await iterator.ReadNextAsync();
+        continuation = users.ContinuationToken;
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
-    }
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+   }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
+    }   
 }
 
 // Some time later

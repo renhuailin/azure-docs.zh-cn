@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/21/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 24a8d13a364d4d4f3d484beb41404e169420f34a
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 61ce8f178bbdf8bf6cbb981933bed290a20fe04e
+  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91760982"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96749090"
 landingContent:
 - title: 关于 Azure Database for PostgreSQL
   linkLists:
@@ -144,12 +144,12 @@ landingContent:
   - linkListType: deploy
     links:
     - text: 用于常见任务的 Azure CLI 脚本
-      url: /azure/postgresql/sample-scripts-azure-cli
+      url: ./sample-scripts-azure-cli.md
     - text: Azure 资源管理器模板
       url: /azure/templates/microsoft.dbforpostgresql/allversions
   - linkListType: reference
     links:
     - text: Azure CLI 开发人员参考
-      url: /rest/api/postgresql/
-    - text: REST API 开发人员参考
       url: /cli/azure/postgres
+    - text: REST API 开发人员参考
+      url: /rest/api/postgresql/

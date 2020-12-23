@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/06/2020
+ms.date: 12/01/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: cf9f484a3f9285d1be06443b39bd50ec73ccf632
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.custom: has-adal-ref, devx-track-azurecli
+ms.openlocfilehash: 4d7debce83928e21072c981b007e8048bfc4c594
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665287"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460944"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -74,17 +74,57 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 
 否。 如果将订阅移到另一个目录中，则必须手动重新创建托管标识并重新向它们授予 Azure 角色分配。
 - 对于系统分配的托管标识：禁用并重新启用。 
-- 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
+- 对于用户分配的托管标识：删除、重新创建，并再次将它们附加到所需的资源 (例如，虚拟机) 
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
 
-否。 托管标识当前不支持跨目录方案。 
+不是。 托管标识当前不支持跨目录方案。 
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>在资源上进行标识托管需要什么 Azure RBAC 权限？ 
 
 - 系统分配的托管标识：需要针对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 此操作包含在特定于资源的内置角色（如[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)）中。
 - 用户分配的托管标识：需要对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 除了针对托管标识分配的[托管标识操作员](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色外。
 
+### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>如何实现阻止创建用户分配的托管标识？
+
+可以让用户使用[Azure 策略](../../governance/policy/overview.md)来创建用户分配的托管标识
+
+- 导航到 [Azure 门户](https://portal.azure.com) 并转到 " **策略**"。
+- 选择 **定义**
+- 选择 " **+ 策略定义** "，并输入所需的信息。
+- 在策略规则部分粘贴
+
+```json
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {}
+}
+
+```
+
+创建策略后，将其分配给想要使用的资源组。
+
+- 导航到 "资源组"。
+- 查找要用于测试的资源组。
+- 从左侧菜单中选择 " **策略** "。
+- 选择 **分配策略**
+- " **基本** 信息" 部分提供：
+    - **作用域** 用于测试的资源组
+    - **策略定义**：之前创建的策略。
+- 将所有其他设置保留默认值，然后选择 "查看" 和 "**创建**"
+
+此时，在资源组中创建用户分配的托管标识的任何尝试都将失败。
+
+  ![策略冲突](./media/known-issues/policy-violation.png)
 
 ## <a name="known-issues"></a>已知问题
 
@@ -127,9 +167,9 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 对于已移到另一目录的订阅中的托管标识，解决方法是：
 
  - 对于系统分配的托管标识：禁用并重新启用。 
- - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
+ - 对于用户分配的托管标识：删除、重新创建，并再次将它们附加到所需的资源 (例如，虚拟机) 
 
-有关详细信息，请参阅将 [Azure 订阅转移到其他 Azure AD 目录](../../role-based-access-control/transfer-subscription.md)。
+有关详细信息，请参阅[将 Azure 订阅转移到其他 Azure AD 目录](../../role-based-access-control/transfer-subscription.md)。
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>将用户分配的托管标识移动到其他资源组/订阅
 

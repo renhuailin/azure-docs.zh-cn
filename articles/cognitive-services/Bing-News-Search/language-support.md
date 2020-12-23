@@ -10,20 +10,25 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9c7fd03c2239cea05dc79ad4dd1965fe253a2ce9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710552"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341591"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>必应新闻搜索 API 的语言和区域支持
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 必应新闻搜索 API 支持许多个国家/地区，其中很多具有多种语言。 使用查询指定国家/地区主要用于根据对该国家/地区的兴趣来优化搜索结果。 此外，结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
 
 可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
 
-或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场****。 指定市场的同时指定国家/地区和首选语言。 在这种情况下，`setLang` 查询参数可能设置为一个语言代码，通常这与 `mkt` 所指定的语言相同，除非用户希望以另一种语言查看必应。
+或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家/地区和首选语言。 在这种情况下，`setLang` 查询参数可能设置为一个语言代码，通常这与 `mkt` 所指定的语言相同，除非用户希望以另一种语言查看必应。
 
 ## <a name="supported-markets-for-news-search-endpoint"></a>新闻搜索终结点支持的市场
 
@@ -47,7 +52,7 @@ ms.locfileid: "84710552"
 |新西兰|英语|en-NZ|
 |菲律宾共和国|英语|en-PH|
 |新加坡|英语|en-SG|
-|美国|英语|zh-CN|
+|美国|英语|en-US|
 |英语|常规|en-WW|
 |英语|常规|en-XA|
 |南非|英语|en-ZA|
@@ -67,7 +72,7 @@ ms.locfileid: "84710552"
 |香港特别行政区|繁体中文|zh-HK|  
 |台湾|繁体中文|zh-TW|
 |日本|日语|ja-JP|  
-|韩国|韩语|ko-KR|  
+|韩国|朝鲜语|ko-KR|  
 |荷兰|荷兰语|nl-NL|  
 |中华人民共和国|中文|zh-CN|  
 |巴西|葡萄牙语|pt-BR|
@@ -86,7 +91,7 @@ ms.locfileid: "84710552"
 |德国|德语|de-DE|
 |澳大利亚|英语|en-AU|
 |英国|英语|en-GB|
-|美国|英语|zh-CN|
+|美国|英语|en-US|
 |英语|常规|en-WW|
 |智利|西班牙语|es-CL|
 |墨西哥|西班牙语|es-MX|
@@ -108,7 +113,7 @@ ms.locfileid: "84710552"
 |德国|德语|de-DE|
 |澳大利亚|英语|en-AU|
 |英国|英语|en-GB|
-|美国|英语|zh-CN|
+|美国|英语|en-US|
 |加拿大|英语|en-CA|
 |印度|英语|en-IN|
 |法国|法语|fr-FR|
@@ -129,7 +134,7 @@ ms.locfileid: "84710552"
 |奥地利|AT|  
 |比利时|BE|  
 |巴西|BR|  
-|加拿大|CA|  
+|Canada|CA|  
 |智利|CL|  
 |丹麦|DK|  
 |芬兰|FI|  
@@ -156,10 +161,10 @@ ms.locfileid: "84710552"
 |西班牙|ES|  
 |瑞典|SE|  
 |瑞士|CH|  
-|台湾|TW|  
+|中国台湾|TW|  
 |土耳其|TR|  
-|英国|GB|  
-|美国|美国|
+|United Kingdom|GB|  
+|United States|美国|
 
 ## <a name="next-steps"></a>后续步骤
-有关必应新闻搜索终结点的详细信息，请参阅[新闻搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)。
+有关必应新闻搜索终结点的详细信息，请参阅[新闻搜索 API v7 参考](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)。

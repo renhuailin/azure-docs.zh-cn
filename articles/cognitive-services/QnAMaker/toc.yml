@@ -24,26 +24,14 @@
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: 使用 Azure 机器人服务创建 FAQ 机器人
       href: Tutorials/create-faq-bot-with-azure-bot-service.md
-    - name: 使用批处理文件进行测试
-      href: Quickstarts/batch-testing.md
 - name: 概念
   items:
     - name: 规划知识库
       href: Concepts/plan.md
     - name: 规划 QnA Maker 资源
       href: Concepts/azure-resources.md
-    - name: 设计知识库
-      items:
-        - name: 对于语言
-          href: Concepts/design-language-culture.md
-        - name: 对于客户端应用程序
-          href: Concepts/integration-with-other-applications.md
     - name: 数据源和内容
-      items:
-        - name: 从数据源导入
-          href: Concepts/knowledge-base.md
-        - name: 导入的内容类型
-          href: Concepts/content-types.md
+      href: Concepts/data-sources-and-content.md
     - name: 排名程序进程
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -58,22 +46,16 @@
 - name: 操作指南
   items:
     - name: 管理 Azure 资源
-      items:
-        - name: 管理资源
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: 协作
-          href: How-To/collaborate-knowledge-base.md
-        - name: 启用主动学习
-          href: How-To/use-active-learning.md
-        - name: 更改默认答案
-          href: How-To/change-default-answer.md
+      href: How-To/set-up-qnamaker-service-azure.md
+      displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: 管理 QnA Maker 应用
+      href: How-To/manage-qna-maker-app.md
+    - name: 启用主动学习
+      href: How-To/use-active-learning.md
     - name: 管理知识库
       items:
         - name: 创建知识库
           href: How-To/manage-knowledge-bases.md
-        - name: 语言选择
-          href: How-To/language-knowledge-base.md
         - name: 添加聊天内容
           href: How-to/chit-chat-knowledge-base.md
         - name: 迁移到新知识库
@@ -85,6 +67,8 @@
       items:
         - name: 编辑 QnA 对
           href: How-To/edit-knowledge-base.md
+        - name: 添加元数据标记
+          href: Quickstarts/add-question-metadata-portal.md
         - name: 添加跟进提示
           href: How-To/multiturn-conversation.md
           displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
@@ -102,7 +86,7 @@
       href: Overview/language-support.md
     - name: 限制
       href: limits.md
-    - name: 基于角色的访问控制 (RBAC)
+    - name: Azure 基于角色的访问控制 (Azure RBAC)
       href: Concepts/role-based-access-control.md
     - name: 主动学习
       href: Concepts/active-learning-suggestions.md
@@ -112,9 +96,13 @@
       href: troubleshooting.md
     - name: 问答集
       href: Concepts/question-answer-set.md
+    - name: 精确应答
+      href: reference-precise-answering.md
     - name: 添加受保护的 SharePoint 文件
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: 更改默认答案
+      href: How-To/change-default-answer.md
     - name: 服务配置
       href: reference-app-service.md
     - name: 内容和数据格式
@@ -133,18 +121,16 @@
       href: qna-maker-encryption-of-data-at-rest.md
     - name: REST API 参考
       items:
-        - name: 创作 API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
-        - name: GenerateAnswer API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
-        - name: 训练 API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
+        - name: QnA Maker 4.0
+          href: /rest/api/cognitiveservices/qnamaker4.0/alterations
+        - name: QnA Maker 5.0 预览版 1
+          href: /rest/api/cognitiveservices/qnamakerv5.0-preview.1/alterations
     - name: SDK
       items:
         - name: C#
           items:
             - name: 参考文档
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
             - name: NuGet 包
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
             - name: 示例
@@ -160,7 +146,7 @@
         - name: JavaScript
           items:
             - name: 参考文档
-              href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
+              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest
             - name: NPM - 创作
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: NPM - 查询运行时
@@ -170,7 +156,7 @@
         - name: Python
           items:
             - name: 参考文档
-              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python'
+              href: /python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
             - name: 示例
@@ -181,6 +167,8 @@
               href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
 - name: 资源
   items:
+    - name: 支持和帮助选项
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 合规性
@@ -189,12 +177,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价和限制
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
     - name: 搜索
-      href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
+      href: /search/index?search=QnAMaker
     - name: 博客
       href: 'https://blog.botframework.com/category/QnAMaker/'
 - name: QnA Maker 门户

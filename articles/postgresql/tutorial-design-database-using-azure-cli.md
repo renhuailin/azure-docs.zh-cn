@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 475c2dfecbc882575955627d73b7159fa33ac4d7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710169"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331873"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for PostgreSQL - 单个服务器 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
@@ -27,6 +27,9 @@ ms.locfileid: "91710169"
 > * 还原数据
 
 可在浏览器中使用 Azure Cloud Shell，或在自己的计算机上[安装 Azure CLI]( /cli/azure/install-azure-cli)，以运行本教程中的命令。
+
+## <a name="prerequisites"></a>先决条件
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -86,7 +89,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 az postgres server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-结果采用 JSON 格式。 记下 administratorLogin  和 fullyQualifiedDomainName  。
+结果采用 JSON 格式。 记下 administratorLogin 和 fullyQualifiedDomainName。
 ```json
 {
   "administratorLogin": "myadmin",
@@ -190,7 +193,7 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>将数据库还原到以前的时间点
-假设你意外删除了某个表。 这是你不能轻易还原的内容。 使用 Azure Database for PostgreSQL 可以返回到服务器有其备份的任何时间点（由所配置的备份保留期确定），并可将此时间点还原到新服务器。 可以使用此新服务器恢复已删除的数据。 
+假设你意外删除了某个表。 这是不能轻易还原的内容。 使用 Azure Database for PostgreSQL 可以返回到服务器有其备份的任何时间点（由所配置的备份保留期确定），并可将此时间点还原到新服务器。 可以使用此新服务器恢复已删除的数据。 
 
 以下命令将示例服务器还原到添加此表之前的时间点：
 ```azurecli-interactive
@@ -199,9 +202,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore` 命令需以下参数：
 
-| 设置 | 建议的值 | 说明  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  源服务器所在的资源组。  |
+| resource-group |  myresourcegroup |  源服务器所在的资源组。  |
 | name | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可使用自己的本地时区（如 `2017-04-13T05:59:00-08:00`），或使用 UTC Zulu 格式 `2017-04-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
@@ -210,16 +213,21 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 该命令是同步的，且会在服务器还原后返回。 还原完成后，找到创建的新服务器。 验证数据是否按预期还原。
 
+## <a name="clean-up-resources"></a>清理资源
+
+在前面的步骤中，你已在服务器组中创建了 Azure 资源。 如果你认为以后不需要这些资源，请删除该服务器组。 在服务器组的“概述”页中，按“删除”按钮   。 弹出页面上出现提示时，请确认服务器组的名称，然后单击最后一个“删除”按钮  。
+
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍如何使用 Azure CLI（命令行接口）以及其他实用工具完成以下任务：
 > [!div class="checklist"]
 > * 创建 Azure Database for PostgreSQL 服务器
 > * 配置服务器防火墙
-> * 使用 [psql  ](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
+> * 使用 psql 实用工具创建数据库
 > * 加载示例数据
 > * 查询数据
 > * 更新数据
 > * 还原数据
 
-接下来，了解如何使用 Azure 门户执行类似任务，请查看此教程：[使用 Azure 门户设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-portal.md)
+> [!div class="nextstepaction"]
+> [使用 Azure 门户设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-portal.md)

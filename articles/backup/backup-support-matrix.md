@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332706"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008361"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -25,14 +25,14 @@ ms.locfileid: "91332706"
 
 ## <a name="vault-support"></a>保管库支持
 
-Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用保管库来存储备份的数据。
+Azure 备份使用恢复服务保管库来安排和管理以下工作负荷类型的备份-azure vm、Azure Vm 中的 SQL SAP HANA、azure Vm、Azure 文件共享和本地工作负荷使用 Azure 备份代理、Azure 备份服务器和 System Center DPM。 它还使用恢复服务保管库来存储这些工作负荷的已备份数据。
 
 下表介绍恢复服务保管库的功能：
 
 **功能** | **详细信息**
 --- | ---
 **订阅中的保管库数** | 单个订阅中最多可以有 500 个恢复服务保管库。
-**保管库中的计算机数** | 可以在单个保管库中保护所有工作负荷 (（例如 Azure Vm、SQL Server VM、MABS 服务器等) ）上的2000数据源。<br><br>单个保管库中最多可以有 1,000 个 Azure VM。<br/><br/> 单个保管库中最多可注册 50 个 MABS 服务器。
+**保管库中的计算机数** | 可在单个保管库中跨所有工作负荷（如 Azure VM、SQL Server VM、MABS 服务器等）保护最多 2000 个数据源。<br><br>单个保管库中最多可以有 1,000 个 Azure VM。<br/><br/> 单个保管库中最多可注册 50 个 MABS 服务器。
 **数据源** | 单个[数据源](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined)的最大大小为 54,400 GB。 此限制不适用于 Azure VM 备份。 可以备份到保管库的数据总量没有限制。
 **保管库备份** | **Azure VM：** 每天 1 次。<br/><br/>**受 DPM/MABS 保护的计算机：** 一天两次。<br/><br/> **直接使用 MARS 代理备份的计算机：** 一天三次。
 **在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。
@@ -67,7 +67,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 **计算机** | **备份的内容** | **位置** | **功能**
 --- | --- | --- | ---
-**使用 VM 扩展的 Azure VM 备份** | 整个 VM | 备份到保管库。 | 为 VM 启用备份时安装的扩展。<br/><br/> 一天备份一次。<br/><br/> 应用感知型备份适用于 Windows VM；文件一致性备份适用于 Linux VM。 可以使用自定义脚本配置 Linux 计算机的应用一致性。<br/><br/> 还原 VM 或磁盘。<br/><br/> 不能将 Azure VM 备份到本地位置。
+**使用 VM 扩展的 Azure VM 备份** | 整个 VM | 备份到保管库。 | 为 VM 启用备份时安装的扩展。<br/><br/> 一天备份一次。<br/><br/> 应用感知型备份适用于 Windows VM；文件一致性备份适用于 Linux VM。 可以使用自定义脚本配置 Linux 计算机的应用一致性。<br/><br/> 还原 VM 或磁盘。<br/><br/>支持[Active Directory 域控制器的备份和还原](active-directory-backup-restore.md)。<br><br> 不能将 Azure VM 备份到本地位置。
 **使用 MARS 代理的 Azure VM 备份** | 文件、文件夹、系统状态 | 备份到保管库。 | 一天备份三次。<br/><br/> 如果想要备份特定文件或文件夹，而不是备份整个 VM，MARS 代理可以随 VM 扩展运行。
 **装有 DPM 的 Azure VM** | 文件、文件夹、卷、系统状态、应用数据 | 备份到运行 DPM 的 Azure VM 的本地存储。 DPM 然后备份到保管库。 | 应用感知型快照。<br/><br/> 备份和恢复的完整粒度。<br/><br/> 就 VM (Hyper-V/VMware) 来说，支持 Linux。<br/><br/> 不支持 Oracle。
 **装有 MABS 的 Azure VM** | 文件、文件夹、卷、系统状态、应用数据 | 备份到运行 MABS 的 Azure VM 的本地存储。 MABS 然后备份到保管库。 | 应用感知型快照。<br/><br/> 备份和恢复的完整粒度。<br/><br/> 就 VM (Hyper-V/VMware) 来说，支持 Linux。<br/><br/> 不支持 Oracle。
@@ -80,13 +80,13 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 --- | ---
 **直接备份运行 Linux 的本地计算机** | 不支持。 MARS 代理只能安装在 Windows 计算机上。
 **使用代理扩展备份运行 Linux 的 Azure VM** | 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用一致性备份。<br/><br/> 文件级恢复。<br/><br/> 通过从恢复点或磁盘创建 VM 进行还原。
-**使用 DPM 备份运行 Linux 的本地计算机** | Hyper-v 和 VMware 上对 Linux 来宾 Vm 进行文件一致性备份。<br/><br/> Hyper-v 和 VMware Linux 来宾 Vm 的 VM 还原。
-**使用 MABS 备份运行 Linux 的本地计算机** | Hyper-v 和 VMware 上对 Linux 来宾 Vm 进行文件一致性备份。<br/><br/> Hyper-v 和 VMware Linux 来宾 Vm 的 VM 还原。
+**使用 DPM 备份运行 Linux 的本地计算机** | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份。<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原。
+**使用 MABS 备份运行 Linux 的本地计算机** | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份。<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原。
 **使用 MABS 或 DPM 备份 Linux Azure VM** | 不支持。
 
 ## <a name="daylight-saving-time-support"></a>夏令时支持
 
-Azure 备份不支持 Azure VM 备份的夏令时自动时钟调整。 它不会向前或向后移动备份的小时数。 若要确保备份在所需的时间运行，请根据需要手动修改备份策略。
+Azure 备份不支持 Azure VM 备份的夏令时自动时钟调整。 它不会向前或向后移动备份的时间。 若要确保备份在所需的时间运行，请根据需要手动修改备份策略。
 
 ## <a name="disk-deduplication-support"></a>磁盘重复数据删除支持
 
@@ -107,7 +107,7 @@ Azure 备份支持针对传输中数据和静态数据的加密。
 ### <a name="data-security"></a>数据安全性
 
 - 备份数据以加密格式存储在恢复服务保管库中。
-- 当使用 MARS 代理从本地服务器备份数据时，将使用密码对数据进行加密，然后再将其上载到 Azure 备份，并在从 Azure 备份下载后进行解密。
+- 使用 MARS 代理从本地服务器备份数据时，在将数据上传到 Azure 备份之前，将使用密码对数据进行加密，并且仅在从 Azure 备份下载数据后才对其解密。
 - 备份 Azure VM 时，需要在虚拟机内部设置加密。
 - Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。
 - 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
@@ -129,14 +129,14 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
 **直接备份本地 Windows 计算机** | NA | ![是][green]
-**使用 VM 扩展的 Azure VM 备份** | NA | 不可用
+**使用 VM 扩展的 Azure VM 备份** | NA | NA
 **使用 MABS/DPM 在本地计算机/Azure 计算机上备份** | ![是][green] | ![是][green]
 
 ## <a name="retention-limits"></a>保留期限制
 
 **设置** | **限制**
 --- | ---
-** (机或工作负荷的每个受保护实例的最大恢复点) ** | 9,999
+**每个受保护实例（计算机或工作负荷）的恢复点数上限** | 9,999
 **恢复点的最长过期时间** | 无限制
 **备份到 DPM/MABS 时的最高备份频率** | SQL Server 每隔 15 分钟<br/><br/> 其他工作负荷每小时一次
 **备份到保管库时的最高备份频率** | **本地 Windows 计算机或运行 MARS 的 Azure VM：** 每天三次<br/><br/> **DPM/MABS：** 每天两次<br/><br/> **Azure VM 备份：** 每天一次
@@ -150,8 +150,8 @@ Azure 备份添加了跨区域还原功能来增强数据可用性和复原能�
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是的。   支持用于加密的 VM 和磁盘小于 4 TB 的 VM | 所有 Azure 公共区域和主权云。  |
-| SQL/SAP HANA | 是                                                          | 美国西部 2 (WUS2) ，美国中部 (WCUS) ，加拿大中部 (CNC) ，加拿大东部 (CNE) ，美国东部 (EUS) 、美国西部 (WUS) 、日本东部 (JPE) 、日本东部 (JPE)  |
+| Azure VM               | 是的。   支持用于加密的 VM 和磁盘小于 4 TB 的 VM | 所有 Azure 公共区域。  |
+| SQL/SAP HANA | 是                                                          | 除法国以外的所有公共区域 |
 | MARS 代理/本地  | 否                                                           | 空值               |
 |  (Azure 文件共享的 AFS)                  | 否                                                           | 空值               |
 

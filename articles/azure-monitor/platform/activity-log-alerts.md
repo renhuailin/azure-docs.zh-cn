@@ -4,12 +4,12 @@ description: 当活动日志中出现某些事件时，通过 SMS、Webhook、�
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516118"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536075"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报
 
@@ -18,7 +18,7 @@ ms.locfileid: "86516118"
 活动日志警报是新发生的[活动日志事件](activity-log-schema.md) 与警报中指定的条件匹配时激活的警报。 根据 [Azure 活动日志](platform-logs-overview.md)中记录的事件的顺序和数量，将触发警报规则。 活动日志警报规则是 Azure 资源，因此，可使用 Azure 资源管理器模板来创建。 此外，还可以在 Azure 门户中创建、更新或删除它们。 本文介绍活动日志警报背后的概念。 有关创建或使用活动日志警报规则的详细信息，请参阅[创建和管理活动日志警报](alerts-activity-log.md)。
 
 > [!NOTE]
-> **无法**为活动日志的“警报”类别中的事件创建警报。
+> **无法** 为活动日志的“警报”类别中的事件创建警报。
 
 通常，你会在以下情况下创建活动日志警报以接收通知：
 
@@ -40,7 +40,7 @@ ms.locfileid: "86516118"
     - 订阅级别：例如，某个订阅中的所有虚拟机（或）某个订阅中的所有资源
 - **资源组**：默认情况下，警报规则保存在“范围”中定义的目标所在的同一资源组中。 用户也可以定义应存储警报规则的资源组。
 - **资源类型**：资源管理器为警报的目标定义的命名空间。
-- **操作名称**：用于基于角色的访问控制的 [Azure 资源管理器操作](../../role-based-access-control/resource-provider-operations.md)名称。 未在 Azure 资源管理器中注册的操作不能在活动日志警报规则中使用。
+- **操作名称**： [azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md) 名称用于 azure 基于角色的访问控制。 未在 Azure 资源管理器中注册的操作不能在活动日志警报规则中使用。
 - **级别**：事件的严重性级别（信息、警告、错误或严重）。
 - **状态**：事件的状态，通常为“已启动”、“失败”或“成功”。
 - **事件发起者**：也称为“调用方”。 电子邮件地址或执行操作的用户的 Azure Active Directory 标识符。

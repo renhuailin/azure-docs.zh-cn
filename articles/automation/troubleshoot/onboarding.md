@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6b8384193e821e6c41a0d4d979cda51f6c65b3a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801023"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070480"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>排查功能部署问题
 
@@ -68,7 +68,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="resolution"></a>解决方法
 
-请确保你有适当的[功能部署权限](../automation-role-based-access-control.md#feature-setup-permissions)，然后尝试再次部署该功能。 如果收到错误消息 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` ，请参阅以下[疑难解答信息](update-management.md#failed-to-enable-error)。
+请确保你有适当的[功能部署权限](../automation-role-based-access-control.md#feature-setup-permissions)，然后尝试再次部署该功能。 如果收到错误消息“`The solution cannot be enabled on this VM because the permission to read the workspace is missing`”，请参阅以下 [故障排除信息](update-management.md#failed-to-enable-error)。
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>场景：功能部署失败，显示“未能配置自动化帐户进行诊断日志记录”
 
@@ -82,7 +82,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-如果定价层与订阅的计费模型不匹配，则可能导致此错误。 有关详细信息，请参阅[在 Azure Monitor 中监视使用情况和预估成本](https://aka.ms/PricingTierWarning)。
+如果定价层与订阅的计费模型不匹配，则可能导致此错误。 有关详细信息，请参阅[在 Azure Monitor 中监视使用情况和预估成本](../../azure-monitor/platform/usage-estimated-costs.md)。
 
 #### <a name="resolution"></a>解决方法
 
@@ -239,8 +239,8 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你的问题未在本文中列出，或者无法解决问题，请尝试通过以下渠道之一获取更多支持：
+如果未在此处看到你遇到的问题，或者无法解决你遇到的问题，请尝试以下途径之一以获取其他支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的 Microsoft Azure 官方帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可获得解答、支持和专家建议。
+* 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。
 * 提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

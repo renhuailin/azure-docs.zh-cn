@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: e741bd6c87ea32b0d92b1dd53112a1bed3e4cd38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235687"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174911"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 自动用户预配可通过安全地根据业�
 
 请参阅 [利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md) ，以更好地了解功能。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>Learn
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) 自动用户预配可通过安全地根据业�
 
 * **管理风险**。 可以通过基于定义角色和/或访问权限的员工状态或组成员身份来自动执行更改，从而提高安全性。
 
-* **满足合规性和监管要求**。 Azure AD 支持每个用户预配请求的本机审核日志。 在源系统和目标系统中执行请求。 这使你可以从单个屏幕跟踪对应用程序的访问权限。
+* **解决合规性与治理问题**。 Azure AD 支持每个用户预配请求的本机审核日志。 在源系统和目标系统中执行请求。 这使你可以从单个屏幕跟踪对应用程序的访问权限。
 
 * **降低成本**。 自动用户预配通过避免与手动预配相关的低效和人为错误，降低了成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
@@ -99,7 +99,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 在此示例中，用户创建发生在 Azure AD 中，Azure AD 预配服务可管理目标 (SaaS) 应用程序的自动用户预配。
 
-![图片 2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![此图显示了从本地 H R 应用程序通过 Azure A D 预配服务将用户/组创建过程通过 Azure a D 预配服务传递给目标 S 应用程序的过程。](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **工作流的说明：**
 
@@ -113,7 +113,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 在此示例中，用户和或组在云 HR 应用程序（如 Workday 和 SuccessFactors）中创建。 Azure AD 预配服务和 Azure AD Connect 预配代理将用户数据从云 HR 应用租户预配到 AD 中。 在 AD 中更新帐户后，该帐户将通过 Azure AD Connect 与 Azure AD 同步，并且电子邮件地址和用户名属性可以写回到云 HR 应用租户。
 
-![图片 2](./media/plan-auto-user-provisioning/workdayprovisioning.png)
+![图片2](./media/plan-auto-user-provisioning/workdayprovisioning.png)
 
 1.  **Hr 团队** 在 cloud HR app 租户中执行事务。
 2.  **Azure AD 预配服务** 运行来自 cloud HR 应用租户的计划周期，并标识需要处理以便与 AD 同步的更改。
@@ -129,7 +129,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请 [确保参与到正确的利益干系人](https://aka.ms/deploymentplans) ，并通过记录利益干系人及其项目输入和责任来充分了解项目中的利益干系人角色。
+当技术项目失败时，通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请 [确保参与到正确的利益干系人](../fundamentals/active-directory-deployment-plans.md) ，并通过记录利益干系人及其项目输入和责任来充分了解项目中的利益干系人角色。
 
 ### <a name="plan-communications"></a>规划沟通
 
@@ -139,13 +139,13 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 建议自动用户预配的初始配置在测试环境中包含一小部分用户，然后将其扩展到生产中的所有用户。 请参阅运行试验的 [最佳实践](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) 。
 
-#### <a name="best-practices-for-a-pilot"></a>试验的最佳实践  
+#### <a name="best-practices-for-a-pilot"></a>试验的最佳实践  
 
 通过试验，你可以在为每个人部署功能之前，对小型组进行测试。 确保在测试过程中，组织内的每个用例都经过全面测试。
 
 在第一轮中，面向 IT、可用性和其他可测试和提供反馈的适当用户。 使用此反馈，进一步开发您向用户发送的通信和说明，并深入了解支持人员可能会看到的问题类型。
 
-通过增加) 目标组 (的组的范围，将推出扩大到更大的用户组。 这可以通过 [动态组成员身份](../users-groups-roles/groups-dynamic-membership.md)来完成，也可以通过手动将用户添加到目标组 () 。
+通过增加) 目标组 (的组的范围，将推出扩大到更大的用户组。 这可以通过 [动态组成员身份](../enterprise-users/groups-dynamic-membership.md)来完成，也可以通过手动将用户添加到目标组 () 。
 
 ## <a name="plan-application-connections-and-administration"></a>规划应用程序连接和管理
 
@@ -157,7 +157,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 否则，请执行以下步骤：
 
-1. 为预先集成的用户预配连接器[创建请求](../azuread-dev/howto-app-gallery-listing.md)。 我们的团队将与你和应用程序开发人员合作，以将你的应用程序载入到平台（如果它支持 SCIM）。
+1. 为预先集成的用户预配连接器[创建请求](../develop/v2-howto-app-gallery-listing.md)。 我们的团队将与你和应用程序开发人员合作，以将你的应用程序载入到平台（如果它支持 SCIM）。
 
 1. 使用应用的 [BYOA SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 通用用户预配支持。 这是 Azure AD 在没有预先集成的预配连接器的情况下将用户预配到应用程序时所必需的。
 
@@ -207,7 +207,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 Azure AD 通过直接的特性到属性映射、提供常量值或 [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)来支持。 这种灵活性使你可以精细控制将在目标系统的属性中填充的内容。 你可以使用 [MICROSOFT GRAPH API](../app-provisioning/export-import-provisioning-configuration.md) 和图形资源管理器将用户预配属性映射和架构导出到 JSON 文件，然后将其重新导入 Azure AD。
 
-有关详细信息，请参阅 [在 Azure Active Directory 中为 SaaS 应用程序自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
+有关详细信息，请参阅 [在 Azure Active Directory 中为 SaaS 应用程序自定义用户预配 Attribute-Mappings](../app-provisioning/customize-application-attributes.md)。
 
 ### <a name="special-considerations-for-user-provisioning"></a>用户预配的特殊注意事项
 
@@ -264,7 +264,7 @@ Azure AD 通过直接的特性到属性映射、提供常量值或 [为属性映
 
 使用 [Azure 门户](https://portal.azure.com/) 管理自动用户帐户预配，并对支持它的应用程序取消预配。 按照[如何实现设置应用程序的自动预配](../app-provisioning/user-provisioning.md)中的步骤操作？
 
-还可以使用 [Microsoft 图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 配置和管理 Azure AD 用户预配服务。
+还可以使用 [Microsoft 图形 API](/graph/api/resources/synchronization-overview) 配置和管理 Azure AD 用户预配服务。
 
 ## <a name="manage-automatic-user-provisioning"></a>管理自动用户预配
 
@@ -274,7 +274,7 @@ Azure AD 通过直接的特性到属性映射、提供常量值或 [为属性映
 
 在成功完成 [初始循环](../app-provisioning/user-provisioning.md)后，Azure AD 预配服务将按特定于每个应用程序的间隔无限期地运行增量更新，直到发生以下事件之一：
 
-* 手动停止了该服务，并使用 [Azure 门户](https://portal.azure.com/)或使用适当的 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 命令触发了新的初始周期。
+* 手动停止了该服务，并使用 [Azure 门户](https://portal.azure.com/)或使用适当的 [Microsoft Graph API](/graph/api/resources/synchronization-overview) 命令触发了新的初始周期。
 
 * 新初始周期由属性映射或范围筛选器中的更改触发。
 
@@ -300,17 +300,17 @@ Azure AD 可以通过审核日志和报告， [进一步深入](../app-provision
 
 * [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [在为 Azure Active Directory 库应用程序配置用户预配时保存管理员凭据时出现问题](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
+* [在为 Azure Active Directory 库应用程序配置用户预配时保存管理员凭据时出现问题](./user-provisioning.md)
 
 * [没有为任何用户预配 Azure AD 库应用程序](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-* [预配到 Azure AD 库应用程序的用户组错误](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
+* [预配到 Azure AD 库应用程序的用户组错误](../manage-apps/add-application-portal-assign-users.md)
 
 ### <a name="helpful-documentation"></a>有用的文档
 
 * [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Azure AD 同步 API 概述](/graph/api/resources/synchronization-overview)
 
 * [跳过删除超出范围的用户帐户](skip-out-of-scope-deletions.md)
 

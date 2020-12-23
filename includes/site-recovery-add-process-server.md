@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 31e61069c95be9bd1c7a684bb83ebcd93bcb14be
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67172655"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019121"
 ---
 1. 启动 Azure Site Recovery UnifiedSetup.exe
 2. 在“开始之前”中选择“添加额外的进程服务器以扩大部署”。  
@@ -30,7 +30,7 @@ ms.locfileid: "67172655"
      * 如果使用自定义代理，则需指定地址、端口和凭据。
      * 如果使用代理，应事先允许访问该服务 URL。
 
-5. 在“先决条件检查”设置中运行检查，确保安装可以运行。  如果看到有关**全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。 
+5. 在“先决条件检查”设置中运行检查，确保安装可以运行。  如果看到有关 **全局时间同步检查** 的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。 
 
      ![添加进程服务器 4](./media/site-recovery-add-process-server/ps-page-4.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "67172655"
      ![添加进程服务器 5](./media/site-recovery-add-process-server/ps-page-5.png)
 
 7. 在“安装位置”中，选择要安装二进制文件和存储缓存的位置。  所选驱动器必须至少有 5 GB 的可用磁盘空间，但我们建议选择至少有 600 GB 可用空间的缓存驱动器。
-     ![添加进程服务器 5](./media/site-recovery-add-process-server/ps-page-6.png)
+     ![显示二进制文件和缓存存储的安装位置的屏幕截图。](./media/site-recovery-add-process-server/ps-page-6.png)
 
 8. 在“网络选择”  中，指定侦听器（网络适配器和 SSL 端口），以便配置服务器在其上发送和接收复制数据。 端口 9443 是用于发送和接收复制流量的默认端口，但可以根据环境的要求修改此端口号。 除了端口 9443 以外，还要打开端口 443，Web 服务器将使用该端口协调复制操作。 请不要使用端口 443 来发送或接收复制流量。
 

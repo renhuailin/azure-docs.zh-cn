@@ -3,17 +3,19 @@ title: 使用模板部署 Web 应用 - Azure Cosmos DB
 description: 了解如何使用 Azure 资源管理器模板部署 Azure Cosmos 帐户、Azure 应用服务 Web 应用以及示例 Web 应用程序。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362004"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333573"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板从 GitHub 部署 Azure Cosmos DB、Azure 应用服务与 Web 应用
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本教程介绍如何在首次运行时对连接到 Azure Cosmos DB 的 Web 应用程序执行“无接触”部署，而无需在 Azure 门户中将 Azure Cosmos DB 中的任何连接信息剪切并粘贴到 `appsettings.json` 或 Azure 应用服务应用程序设置。 所有这些操作均使用 Azure 资源管理器模板一次性完成。 在此处的示例中，将从 [Web 应用教程](sql-api-dotnet-application.md)部署 [Azure Cosmos DB ToDo 示例](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)。
 
@@ -98,7 +100,7 @@ ms.locfileid: "91362004"
 
 首先，应用程序需要请求 ASP.NET MVC Web 应用程序中 `Startup` 类的 Cosmos DB 终结点和密钥。 [Cosmos DB To Do 示例](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)可在本地运行，可在其中将连接信息输入 appsettings.json。 但在部署时，此文件将与应用一起部署。 如果红色框内的这些行无法从 appsettings.json 访问设置，它将尝试从 Azure 应用服务的应用程序设置中访问。
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="屏幕截图显示了一个方法，其中有多个用红色标记的字符串变量，包括 databaseName、容器名称、帐户和密钥。":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="屏幕截图，显示了一个方法，其中有多个用红色标记的字符串变量，包括 databaseName、containerName、account 和 key。":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>使用特殊的 Azure 资源管理函数
 

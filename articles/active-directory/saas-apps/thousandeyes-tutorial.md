@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b99d5ea33693431fb3811af50385891684a366e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aa3c5115a5255d30decbc66691878ffbe2579a06
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546451"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514582"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ThousandEyes 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546451"
 * 让用户使用其 Azure AD 帐户自动登录到 ThousandEyes。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88546451"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * ThousandEyes 支持 **SP 和 IDP** 发起的 SSO
-* ThousandEyes 支持[**自动**用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+* ThousandEyes 支持 [**自动** 用户预配](./thousandeyes-provisioning-tutorial.md)
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -129,11 +129,11 @@ ms.locfileid: "88546451"
 
 2. 在顶部菜单中，单击“设置”。 
 
-    ![设置](./media/thousandeyes-tutorial/ic790066.png "设置")
+    ![屏幕截图显示了“ThousandEyes”站点，其中选择了“设置”。](./media/thousandeyes-tutorial/ic790066.png "设置")
 
 3. 单击“帐户” 
 
-    ![帐户](./media/thousandeyes-tutorial/ic790067.png "帐户")
+    ![屏幕截图显示从“设置”菜单选择了“帐户”。](./media/thousandeyes-tutorial/ic790067.png "帐户")
 
 4. 单击“安全性和身份验证”  选项卡。
 
@@ -153,7 +153,7 @@ ms.locfileid: "88546451"
 
     e. 在“验证证书”中，单击“选择文件”，然后上传从 Azure 门户下载的证书   。
 
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
 ### <a name="create-thousandeyes-test-user"></a>创建 ThousandEyes 测试用户
 
@@ -165,11 +165,11 @@ ms.locfileid: "88546451"
 
 2. 单击“设置”  。
 
-    ![设置](./media/thousandeyes-tutorial/IC790066.png "设置")
+    ![屏幕截图显示了“ThousandEyes”站点，其中选择了“设置”。](./media/thousandeyes-tutorial/ic790066.png "设置")
 
 3. 单击“帐户”  。
 
-    ![帐户](./media/thousandeyes-tutorial/IC790067.png "帐户")
+    ![屏幕截图显示从“设置”菜单选择了“帐户”。](./media/thousandeyes-tutorial/ic790067.png "帐户")
 
 4. 单击“帐户和用户”  选项卡。
 
@@ -179,7 +179,7 @@ ms.locfileid: "88546451"
 
     ![添加用户帐户](./media/thousandeyes-tutorial/IC790074.png "添加用户帐户")
 
-    a. 在“全名”文本框中，键入用户的名称（例如 **B.Simon**）。 
+    a. 在“全名”文本框中，键入用户的名称（例如 **B.Simon** ）。 
 
     b. 在“电子邮件”文本框中，键入用户的电子邮件，例如 b.simon@contoso.com。 
 
@@ -196,16 +196,16 @@ ms.locfileid: "88546451"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“ThousandEyes”磁贴时，应会自动登录到设置了 SSO 的 ThousandEyes。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“ThousandEyes”磁贴时，应会自动登录到设置了 SSO 的 ThousandEyes。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 ThousandEyes](https://aad.portal.azure.com/)
 
-- [配置用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+- [配置用户预配](./thousandeyes-provisioning-tutorial.md)

@@ -13,16 +13,16 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973892"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 
-每个新的 Azure AD 租户都附带了一个名为* \<domainname> onmicrosoft.com*的初始域名。 无法更改或删除初始域名，但可以添加组织的名称。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain\@contoso.com*。
+每个新的 Azure AD 租户都附带了一个名为 *\<domainname> onmicrosoft.com* 的初始域名。 无法更改或删除初始域名，但可以添加组织的名称。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain\@contoso.com*。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -104,9 +104,9 @@ ms.locfileid: "89321168"
 
   如果无法在注册机构站点上更新记录，请与有权添加条目并验证其正确性的某人共享该条目。
 
-- **确保域名尚未在另一目录中使用。** 只能在一个目录中验证域名。 如果域名当前已在另一个目录中验证，则不再可以在新目录中验证该域名。 若要解决此重复问题，必须从旧目录中删除该域名。 有关删除域名的详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)。
+- **确保域名尚未在另一目录中使用。** 只能在一个目录中验证域名。 如果域名当前已在另一个目录中验证，则不再可以在新目录中验证该域名。 若要解决此重复问题，必须从旧目录中删除该域名。 有关删除域名的详细信息，请参阅[管理自定义域名](../enterprise-users/domains-manage.md)。
 
-- **确保你没有任何未托管的 Power BI 租户。** 如果你的用户通过自助注册激活了 Power BI 并为你的组织创建了一个非托管租户，那么你必须使用 PowerShell 以内部或外部管理员的身份接管管理。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../users-groups-roles/domains-admin-takeover.md)。
+- **确保你没有任何未托管的 Power BI 租户。** 如果你的用户通过自助注册激活了 Power BI 并为你的组织创建了一个非托管租户，那么你必须使用 PowerShell 以内部或外部管理员的身份接管管理。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../enterprise-users/domains-admin-takeover.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -114,6 +114,6 @@ ms.locfileid: "89321168"
 
 - 将用户添加到域。 有关详细信息，请参阅[如何添加或删除用户](add-users-azure-active-directory.md)。
 
-- 在 Azure AD 中管理域名信息。 有关详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)。
+- 在 Azure AD 中管理域名信息。 有关详细信息，请参阅[管理自定义域名](../enterprise-users/domains-manage.md)。
 
 - 若要结合 Azure Active Directory 使用 Windows Server 的本地版本，请参阅[将本地目录与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。

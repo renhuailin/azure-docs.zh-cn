@@ -1,19 +1,19 @@
 ---
 title: 体系结构：全局传输网络体系结构
 titleSuffix: Azure Virtual WAN
-description: 了解 Azure 虚拟 WAN 如何通过在云工作负荷之间启用无处不在的连接来实现全局传输网络体系结构。
+description: 了解 Azure 虚拟 WAN 如何通过支持在云工作负载之间建立无处不在的、任意点到任意点的连接，来实现全局传输网络体系结构。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212700"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563726"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 
@@ -29,7 +29,7 @@ ms.locfileid: "88212700"
 
 ![中心和辐射](./media/virtual-wan-global-transit-network-architecture/figure1.png)
 
-图 1：**全局传输中心辐射型网络**
+图 1： **全局传输中心辐射型网络**
 
 图 1 显示了全局传输网络的逻辑视图，其中的地理分散式用户、物理站点和 VNet 通过云中托管的网络中心互连。 此体系结构可在网络终结点之间实现逻辑单跃点传输连接。
 
@@ -41,19 +41,19 @@ Azure 虚拟 WAN 支持在 VNet 中的全局分布式云工作负荷集、分支
 
 ![Azure 虚拟 WAN](./media/virtual-wan-global-transit-network-architecture/figure2.png)
 
-图 2：**全局传输网络和虚拟 WAN**
+图 2： **全局传输网络和虚拟 WAN**
 
-在 Azure 虚拟 WAN 体系结构中，虚拟 WAN 中心在可将分支、VNet 和远程用户连接到的 Azure 区域中预配。 物理分支站点通过高级 ExpressRoute 或站点到站点 VPN 连接到中心，VNet 通过 VNet 连接连接到中心，远程用户可以使用用户 VPN（点到站点 VPN）直接连接到中心。 虚拟 WAN 还支持跨区域 VNet 连接，其中，一个区域中的 VNet 可以连接到另一个区域中的虚拟 WAN 中心。
+在 Azure 虚拟 WAN 体系结构中，虚拟 WAN 中心在可将分支、VNet 和远程用户连接到的 Azure 区域中预配。 物理分支站点通过高级/标准 ExpressRoute 或站点到站点 VPN 连接到中心，VNet 通过 VNet 连接连接到中心，远程用户可以使用用户 VPN（点到站点 VPN）直接连接到中心。 虚拟 WAN 还支持跨区域 VNet 连接，其中，一个区域中的 VNet 可以连接到另一个区域中的虚拟 WAN 中心。
 
 若要建立虚拟 WAN，可以在包含最多辐射（分支、VNet、用户）的区域中创建单个虚拟 WAN 中心，然后将其他区域中的辐射连接到该中心。 如果企业的运营足迹主要在包括少量几个远程辐射的单个区域内，则这是一个不错的选择。  
   
-## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>集线器到中心连接
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>中心到中心的连接
 
 企业云足迹可以跨多个云区域，最好是从最靠近其物理站点和用户的区域访问云（改善延迟）。 全局传输网络体系结构的重要原则之一是在所有云与本地网络终结点之间实现跨区域连接。 这意味着，与一个区域中的云相连接的分支发出的流量，可以使用 [Azure 全球网络](https://azure.microsoft.com/global-infrastructure/global-network/)实现的中心到中心连接抵达不同区域中的另一个分支或 VNet。
 
 ![跨区域](./media/virtual-wan-global-transit-network-architecture/figure3.png)
 
-图 3：**虚拟 WAN 跨区域连接**
+图 3： **虚拟 WAN 跨区域连接**
 
 在单个虚拟 WAN 中启用多个中心时，中心将通过中心到中心的链接自动互连，从而在跨多个区域分布的分支与 VNet 之间实现全局连接。 
 
@@ -67,7 +67,7 @@ Azure 虚拟 WAN 支持在 VNet 中的全局分布式云工作负荷集、分支
 
 ![任意点到任意点](./media/virtual-wan-global-transit-network-architecture/figure4.png)
 
-图 4：**虚拟 WAN 流量路径**
+图 4： **虚拟 WAN 流量路径**
 
 Azure 虚拟 WAN 支持以下全局传输连接路径。 括号中的字母对应于图 4 中的标识。
 
@@ -87,7 +87,7 @@ Azure 虚拟 WAN 支持以下全局传输连接路径。 括号中的字母对�
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach 和虚拟广域网
 
-ExpressRoute 是将本地网络连接到 Microsoft 云的一种私有且灵活的方式。 虚拟 WAN 支持快速路由线路连接。 使用 Express Route 将分支站点连接到虚拟 WAN 需要 1) 高级线路 2) 线路置于 Global Reach 启用位置。
+ExpressRoute 是将本地网络连接到 Microsoft 云的一种私有且灵活的方式。 虚拟 WAN 支持快速路由线路连接。 使用 Express Route 将分支站点连接到虚拟 WAN 需要 1) Premium 或标准电路 2) 线路置于 Global Reach 启用位置。
 
 ExpressRoute Global Reach 是适用于 ExpressRoute 的附加功能。 使用 Global Reach，你可以将 ExpressRoute 线路链接在一起，以便在本地网络之间建立专用网络。 使用 ExpressRoute 连接到 Azure 虚拟 WAN 的分支要求 ExpressRoute Global Reach 彼此通信。
 
@@ -127,14 +127,14 @@ VNet 到 VNet 传输使 VNet 能够相互连接，以互连跨多个 VNet 实施
 
 Azure 虚拟 WAN 中心将互连整个混合网络中的所有网络终结点，可能会看到所有传输网络流量。 可以在 VWAN 中心内部署 Azure 防火墙以启用基于云的安全、访问和策略控制，将虚拟 WAN 中心转换为安全虚拟中心。 虚拟 WAN 中心内的 Azure 防火墙协调可由 Azure 防火墙管理器执行。
 
-[Azure 防火墙管理器](https://go.microsoft.com/fwlink/?linkid=2107683)提供管理和缩放全局传输网络安全性的功能。 Azure 防火墙管理器提供通过第三方工具和 Azure 防火墙集中管理路由、全局策略和高级 Internet 安全服务的功能。
+[Azure 防火墙管理器](../firewall-manager/index.yml)提供管理和缩放全局传输网络安全性的功能。 Azure 防火墙管理器提供通过第三方工具和 Azure 防火墙集中管理路由、全局策略和高级 Internet 安全服务的功能。
 
 ![使用 Azure 防火墙的安全虚拟中心](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
-图 5：**使用 Azure 防火墙的安全虚拟中心**
+图 5： **使用 Azure 防火墙的安全虚拟中心**
 
 > [!NOTE]
-> 当前不支持与防火墙的集线器。 集线器之间的流量将直接在每个中心绕过 Azure 防火墙。
+> 当前不支持在中心间配置防火墙。 中心之间的流量将直接绕过每个中心的 Azure 防火墙移动。
 
 虚拟 WAN 的 Azure 防火墙支持以下全局安全传输连接路径。 括号中的字母对应于图 5 中的标识。
 
@@ -177,4 +177,4 @@ VNet 到 Internet 使 VNet 能够通过虚拟 WAN 中心内的 Azure 防火墙�
 
 * [使用虚拟 WAN 的站点到站点连接](virtual-wan-site-to-site-portal.md)
 * [使用虚拟 WAN 的 ExpressRoute 连接](virtual-wan-expressroute-portal.md)
-* [用于在 VWAN 中部署 Azure FW 的 azure 防火墙管理器](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [用于在 VWAN 中部署 Azure FW 的 azure 防火墙管理器](../firewall-manager/index.yml)

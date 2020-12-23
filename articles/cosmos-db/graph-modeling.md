@@ -1,20 +1,21 @@
 ---
 title: Azure Cosmos DB Gremlin API 的图形数据建模
 description: 了解如何使用 Azure Cosmos DB Gremlin API 为图形数据库建模。 本文介绍何时使用图形数据库和最佳做法为实体和关系建模。
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: jasonh
-ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.author: chrande
+ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409759"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357039"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 以下文档旨在提供图形数据建模建议。 此步骤对于确保数据变化时图形数据库系统的可伸缩性和性能至关重要。 高效的数据模型对于大型图形尤其重要。
 
@@ -37,7 +38,7 @@ ms.locfileid: "91409759"
 
 如果满足上述条件，则图形数据库方法可能会为查询复杂性、数据模型可伸缩性和查询性能提供优势    。
 
-下一步是确定图形是否将用于分析或事务目的。 如果图形将用于繁重的计算和数据处理工作负载，则值得探索 [Cosmos DB Spark 连接器](https://docs.microsoft.com/azure/cosmos-db/spark-connector)以及 [GraphX 库](https://spark.apache.org/graphx/)的使用。 
+下一步是确定图形是否将用于分析或事务目的。 如果图形将用于繁重的计算和数据处理工作负载，则值得探索 [Cosmos DB Spark 连接器](./spark-connector.md)以及 [GraphX 库](https://spark.apache.org/graphx/)的使用。 
 
 ## <a name="how-to-use-graph-objects"></a>如何使用图形对象
 
@@ -71,13 +72,13 @@ ms.locfileid: "91409759"
 
 一个常见的缺陷是将单个实体的属性映射为单独的顶点。 请考虑下面的示例，其中相同的实体以两种不同的方式表示：
 
-* **基于顶点属性**：在这种方法中，实体使用三个单独的顶点和两个边缘来描述其属性。 虽然这种方法可以减少冗余，但会增加模型复杂性。 模型复杂性的增加可能会导致延迟、查询复杂性和计算成本增加。 此模型还可能在分区方面带来挑战。
+* **基于顶点属性** ：在这种方法中，实体使用三个单独的顶点和两个边缘来描述其属性。 虽然这种方法可以减少冗余，但会增加模型复杂性。 模型复杂性的增加可能会导致延迟、查询复杂性和计算成本增加。 此模型还可能在分区方面带来挑战。
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="具有属性顶点的实体模型。" border="false":::
 
-* **属性嵌入式顶点**：这种方法利用键值对列表来表示顶点内实体的所有属性。 这种方法降低了模型复杂性，使查询更简单、遍历成本更低。
+* **属性嵌入式顶点** ：这种方法利用键值对列表来表示顶点内实体的所有属性。 这种方法降低了模型复杂性，使查询更简单、遍历成本更低。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="具有属性顶点的实体模型。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="关系图显示了上图中的 Luis 顶点，其中包含 i d、label 和 properties。" border="false":::
 
 > [!NOTE]
 > 上面的示例显示了一个简化的图形模型，仅对划分实体属性的两种方法进行了比较。

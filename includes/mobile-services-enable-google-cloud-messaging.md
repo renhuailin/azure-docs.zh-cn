@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b32ff0926aa2b797bdb8dfcbb01cf845080a0ce9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67173542"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376113"
 ---
 1. 导航到[“Google Cloud Console”](https://console.developers.google.com/cloud-resource-manager)，然后使用 Google 帐户凭据登录。 
 2. 在工具栏中选择“创建项目”  。 
@@ -43,7 +43,7 @@ ms.locfileid: "67173542"
     ![“创建凭据”按钮](./media/mobile-services-enable-google-cloud-messaging/create-credentials-button.png)
 11. 在“向项目添加凭据”页上，选择“API 密钥”链接   。 
 
-    ![“创建凭据”按钮](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
+    ![添加凭据](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
 12. 在“API 密钥”页上，选择“创建/保存”   。 在以下示例中，已选中“IP 地址”选项并输入“0.0.0.0/0”作为允许的 IP 地址   。 应该对 API 密钥进行相应的限制。 
 
     ![API 密钥 - “创建”按钮](./media/mobile-services-enable-google-cloud-messaging/api-key-create-button.png)

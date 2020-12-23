@@ -1,18 +1,18 @@
 ---
 title: 管理只读副本 - Azure PowerShell - Azure Database for MariaDB
 description: 了解如何使用 PowerShell 在 Azure Database for MariaDB 中设置和管理只读副本。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e90e9c2ebbc6ba05e5778f618a5c3de02adf3ac
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: a5921026c8f260683f091870850350fcc4619f6b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542353"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538608"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>如何使用 PowerShell 在 Azure Database for MariaDB 中创建和管理只读副本
 
@@ -26,14 +26,14 @@ ms.locfileid: "91542353"
 
 若要完成本操作指南，需要：
 
-- 在本地安装[Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)或在浏览器中[Azure Cloud Shell](https://shell.azure.com/)
+- 在本地安装[Az PowerShell 模块](/powershell/azure/install-az-ps)或在浏览器中[Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > 尽管 Az.MariaDb PowerShell 模块为预览版，但必须使用以下命令从 Az PowerShell 模块单独安装它：`Install-Module -Name Az.MariaDb -AllowPrerelease`。
 > Az.MariaDb PowerShell 模块正式版推出后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
-如果选择在本地使用 PowerShell，请使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
+如果选择在本地使用 PowerShell，请使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "91542353"
 ### <a name="create-a-read-replica"></a>创建只读副本
 
 > [!IMPORTANT]
-> 为没有现有副本的源创建副本时，会先重新启动源以准备复制的副本。 请考虑这一点并在非高峰期执行这些操作。
+> 如果为没有现有副本的源服务器创建副本，源服务器将首先重启，以便为复制做好准备。 请考虑这一点并在非高峰期执行这些操作。
 
 可以使用以下命令创建只读副本服务器：
 
@@ -54,9 +54,9 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMariaDbServerReplica` 命令需要以下参数：
 
-| 设置 | 示例值 | 说明  |
+| 设置 | 示例值 | 说明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  在其中创建副本服务器的资源组。  |
+| ResourceGroupName |  myresourcegroup |  在其中创建副本服务器的资源组。  |
 | 名称 | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 
 若要创建跨区域只读副本，请使用 Location 参数。 以下示例在 **美国西部** 区域创建一个副本。
@@ -68,10 +68,10 @@ Get-AzMariaDbServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。
 
-默认情况下，将使用与源相同的服务器配置来创建读取副本，除非指定了 **Sku** 参数。
+默认情况下，除非指定了 Sku 参数，否则将使用与源服务器相同的服务器配置来创建只读副本。
 
 > [!NOTE]
-> 建议副本服务器的配置应保留为等于或大于源的值，以确保副本能够与主副本保持同步。
+> 建议副本服务器的配置应始终采用与源服务器相同或更大的值，以确保副本能够与主服务器保持一致。
 
 ### <a name="list-replicas-for-a-source-server"></a>列出源服务器的副本
 
@@ -83,9 +83,9 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMariaDReplica` 命令需要以下参数：
 
-| 设置 | 示例值 | 说明  |
+| 设置 | 示例值 | 说明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
+| ResourceGroupName |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | ServerName | mydemoserver | 源服务器的名称或 ID。 |
 
 ### <a name="delete-a-replica-server"></a>删除副本服务器
@@ -101,7 +101,7 @@ Remove-AzMariaDbServer -Name mydemoreplicaserver -ResourceGroupName myresourcegr
 > [!IMPORTANT]
 > 删除源服务器会停止复制到所有副本服务器，并删除源服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
-若要删除源服务器，可运行 `Remove-AzMariaDbServer` cmdlet。
+若要删除源服务器，可以运行 `Remove-AzMariaDbServer` cmdlet。
 
 ```azurepowershell-interactive
 Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup

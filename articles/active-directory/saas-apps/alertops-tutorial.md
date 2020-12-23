@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 094b1a029c8e10abce3ca282de0cc99be34d313a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522326"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318863"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>教程：将 AlertOps 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88522326"
 * 让用户使用其 Azure AD 帐户自动登录到 AlertOps。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -108,11 +108,11 @@ ms.locfileid: "88522326"
 
 4. 在左侧导航面板中单击“帐户设置”  。
 
-    ![AlertOps 配置](./media/alertops-tutorial/configure1.png)
+    ![屏幕截图显示 AlertOps 菜单，其中标注了“帐户设置”。](./media/alertops-tutorial/configure1.png)
 
 5. 在“订阅设置”页上，选择“SSO”并执行以下步骤：  
 
-    ![AlertOps 配置](./media/alertops-tutorial/configure2.png)
+    ![屏幕截图显示 SSO 的“订阅设置”窗口，其中输入了本步骤中所述的值。](./media/alertops-tutorial/configure2.png)
 
     a. 选中“使用单一登录(SSO)”复选框。 
 
@@ -164,15 +164,15 @@ ms.locfileid: "88522326"
 
 2. 在左侧导航面板中单击“用户”。 
 
-    ![AlertOps 配置](./media/alertops-tutorial/user1.png)
+    ![屏幕截图显示 AlertOps 菜单，其中标注了“用户”。](./media/alertops-tutorial/user1.png)
 
 3. 选择“添加用户”。 
 
-    ![AlertOps 配置](./media/alertops-tutorial/user2.png)
+    ![屏幕截图显示“用户”窗口，其中包含“添加用户”按钮。](./media/alertops-tutorial/user2.png)
 
 4. 在“添加用户”对话框中，执行以下步骤： 
 
-    ![AlertOps 配置](./media/alertops-tutorial/user3.png)
+    ![屏幕截图显示“添加用户”窗格，其中输入了本步骤中所述的值。](./media/alertops-tutorial/user3.png)
 
     a. 在“登录用户名”文本框中输入用户的用户名，例如 **Brittasimon**。 
 
@@ -190,12 +190,12 @@ ms.locfileid: "88522326"
 
 ### <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“AlertOps”磁贴时，应会自动登录到设置了 SSO 的 AlertOps。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中选择“AlertOps”磁贴时，应会自动登录到设置了 SSO 的 AlertOps。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

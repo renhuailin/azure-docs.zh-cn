@@ -10,25 +10,25 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532494"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358926"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
 ![索引器阶段](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "索引器阶段")
 
-使用 Azure 认知搜索索引器时，你有时会发现，输入数据与目标索引的架构不完全匹配。 在这种情况下，可以在索引编制过程中使用**字段映射**来调整数据的形状。
+使用 Azure 认知搜索索引器时，你有时会发现，输入数据与目标索引的架构不完全匹配。 在这种情况下，可以在索引编制过程中使用 **字段映射** 来调整数据的形状。
 
 在某些情况下，字段映射会很有用：
 
 * 数据源具有名为 `_id` 的字段，但 Azure 认知搜索不允许字段名称以下划线开头。 使用字段映射可以有效地为字段重命名。
 * 你希望使用同一数据源数据填充索引中的多个字段。 例如，你可能想要将不同的分析器应用到这些字段。
 * 你希望使用多个数据源中的数据填充索引字段，而每个数据源使用不同的字段名称。
-* 需要对数据进行 Base64 编码或解码。 字段映射支持多个**映射函数**，包括用于 Base64 编码和解码的函数。
+* 需要对数据进行 Base64 编码或解码。 字段映射支持多个 **映射函数** ，包括用于 Base64 编码和解码的函数。
 
 > [!NOTE]
 > 索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻量级数据转换。 较复杂的数据可能需要经过预处理，才能将形状调整为有利于编制索引的形式。 可以考虑使用 [Azure 数据工厂](../data-factory/index.yml)。
@@ -81,7 +81,7 @@ api-key: [admin key]
 
 ## <a name="map-fields-using-the-net-sdk"></a>使用 .NET SDK 映射字段
 
-在 .NET SDK 中，使用 [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) 类定义字段映射，该类包含属性 `SourceFieldName` 和 `TargetFieldName`，以及可选的 `MappingFunction` 引用。
+在 .NET SDK 中，使用 [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) 类定义字段映射，该类包含属性 `SourceFieldName` 和 `TargetFieldName`，以及可选的 `MappingFunction` 引用。
 
 可以在构造索引器时指定字段映射，以后也可以通过直接设置 `Indexer.FieldMappings` 属性来指定字段映射。
 

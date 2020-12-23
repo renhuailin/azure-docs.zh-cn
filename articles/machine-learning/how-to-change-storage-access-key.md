@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: dbc00d37b912ce7efb250aade0ea6790a1a227eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296750"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450786"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 
@@ -26,13 +26,14 @@ ms.locfileid: "91296750"
 出于安全考虑，你可能需要更改 Azure 存储帐户的访问密钥。 重新生成访问密钥时，必须更新 Azure 机器学习以使用新密钥。 Azure 机器学习可以将存储帐户同时用作模型存储和数据存储。
 
 > [!IMPORTANT]
-> 注册到数据存储的凭据会保存在与工作区关联的 Azure Key Vault 库中。 如果已为 Key Vault 启用了[软删除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)，请务必按照本文中的步骤更新凭据。 取消注册数据存储并使用相同的名称重新注册将失败。
+
+> 注册到数据存储的凭据会保存在与工作区关联的 Azure Key Vault 中。 如果已为 Key Vault 启用了[软删除](../key-vault/general/soft-delete-overview.md)，请按照本文中的说明更新凭据。 如果取消注册数据存储，然后尝试使用同一名称重新注册，此操作会失败。 若要了解如何在此方案中启用软删除，请参阅[对现有密钥保管库启用软删除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
 
-* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+* [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 
 * [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
@@ -141,4 +142,4 @@ for name, ds in datastores.items():
 
 ## <a name="next-steps"></a>后续步骤
 
-有关注册数据存储的详细信息，请参阅 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true) 类参考。
+有关注册数据存储的详细信息，请参阅 [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) 类参考。

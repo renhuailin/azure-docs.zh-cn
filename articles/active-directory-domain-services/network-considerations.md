@@ -2,20 +2,20 @@
 title: Azure AD 域服务的网络计划和连接 | Microsoft Docs
 description: 了解运行 Azure Active Directory 域服务时的一些虚拟网络设计注意事项以及连接所用的资源。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 6e2b3badcda872db3ddb1d237b813615a1332ad0
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.date: 12/16/2020
+ms.author: justinha
+ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396325"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615811"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的虚拟网络设计注意事项和配置选项
 
@@ -104,19 +104,18 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 
 ## <a name="network-security-groups-and-required-ports"></a>网络安全组和必需端口
 
-[网络安全组 (NSG)](../virtual-network/security-overview.md) 包含一系列规则，这些规则可以允许或拒绝网络流量在 Azure 虚拟网络中流动。 部署托管域时会创建网络安全组，其中包含一系列规则，服务按照些规则提供身份验证和管理功能。 此默认网络安全组与托管域部署到的虚拟网络子网相关联。
+[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 包含一系列规则，这些规则可以允许或拒绝网络流量在 Azure 虚拟网络中流动。 部署托管域时会创建网络安全组，其中包含一系列规则，服务按照些规则提供身份验证和管理功能。 此默认网络安全组与托管域部署到的虚拟网络子网相关联。
 
 需要以下网络安全组规则，托管域才能提供身份验证服务和管理服务。 请勿编辑或删除托管域所部署到的虚拟网络子网中的这些网络安全组规则。
 
 | 端口号 | 协议 | Source                             | 目标 | 操作 | 必须 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允许  | 是      | 与 Azure AD 租户同步。 |
-| 3389        | TCP      | CorpNetSaw                         | 任意         | 允许  | 是      | 用于管理域。 |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允许  | 是      | 用于管理域。 |
+| 3389        | TCP      | CorpNetSaw                         | 任意         | 允许  | 可选      | 支持调试。 |
 
 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。 请勿删除此网络安全组。 如果没有此网络安全组，负载均衡器将无法正常工作。
 
-如果需要，可以 [使用 Azure PowerShell 创建所需的网络安全组和规则](powershell-create-instance.md#create-a-network-security-group)。
+如有需要，可使用 [Azure PowerShell 创建所需的网络安全组和规则](powershell-create-instance.md#create-a-network-security-group)。
 
 > [!WARNING]
 > 请勿手动编辑这些网络资源和配置。 将配置错误的网络安全组或用户定义的路由表与部署了托管域的子网相关联时，Microsoft 可能无法为域提供服务和对其进行管理。 Azure AD 租户与托管域之间的同步也会中断。
@@ -127,12 +126,17 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 >
 > Azure SLA 不适用于这样的部署：应用了配置不当的网络安全组和/或用户定义的路由表，使得 Azure AD DS 无法更新和管理域。
 
-### <a name="port-443---synchronization-with-azure-ad"></a>端口 443 - 与 Azure AD 同步
+### <a name="port-5986---management-using-powershell-remoting"></a>端口 5986 - 使用 PowerShell 远程处理进行管理
 
-* 用于将 Azure AD 租户与托管域同步。
-* 如果不允许访问此端口，则托管域不会与 Azure AD 租户同步。 用户可能无法登录，因为对其密码所做的更改不会同步到托管域。
-* 默认使用 AzureActiveDirectoryDomainServices 服务标记在此端口上限制对 IP 地址的入站访问。
-* 请勿限制由此端口实现的出站访问。
+* 用于通过托管域上的 PowerShell 远程处理来执行管理任务。
+* 如果不允许访问此端口，则无法更新、配置、备份或监视托管域。
+* 对于使用基于资源管理器的虚拟网络的托管域，可以将对此端口的入站访问限制于 AzureActiveDirectoryDomainServices 服务标记。
+    * 对于使用经典虚拟网络的旧版托管域，可以将对此端口的入站访问限制为以下源 IP 地址：52.180.183.8、23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18 和 104.40.87.209        。
+
+    > [!NOTE]
+    > 在 2017 年，Azure AD 域服务变得可以在 Azure 资源管理器网络中托管。 自那时起，我们就能够使用 Azure 资源管理器的新式功能构建更安全的服务。 由于 Azure 资源管理器部署完全取代了经典部署，因此 Azure AD DS 经典虚拟网络部署将于 2023 年 3 月 1 日停用。
+    >
+    > 有关详细信息，请查看[正式的弃用通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ### <a name="port-3389---management-using-remote-desktop"></a>端口 3389 - 使用远程桌面进行管理
 
@@ -149,18 +153,6 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 >
 > `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
 
-### <a name="port-5986---management-using-powershell-remoting"></a>端口 5986 - 使用 PowerShell 远程处理进行管理
-
-* 用于通过托管域上的 PowerShell 远程处理来执行管理任务。
-* 如果不允许访问此端口，则无法更新、配置、备份或监视托管域。
-* 对于使用基于资源管理器的虚拟网络的托管域，可以将对此端口的入站访问限制于 AzureActiveDirectoryDomainServices 服务标记。
-    * 对于使用经典虚拟网络的旧版托管域，可以将对此端口的入站访问限制为以下源 IP 地址：52.180.183.8、23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18 和 104.40.87.209        。
-
-    > [!NOTE]
-    > 在 2017 年，Azure AD 域服务变得可以在 Azure 资源管理器网络中托管。 自那时起，我们就能够使用 Azure 资源管理器的新式功能构建更安全的服务。 由于 Azure 资源管理器部署完全取代了经典部署，因此 Azure AD DS 经典虚拟网络部署将于 2023 年 3 月 1 日停用。
-    >
-    > 有关详细信息，请查看[正式的弃用通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
-
 ## <a name="user-defined-routes"></a>用户定义路由
 
 默认不会创建用户定义的路由，并且 Azure AD DS 无需使用用户定义的路由即可正常运行。 如果需要使用路由表，请避免对 0.0.0.0 路由进行任何更改。 对此路由进行更改会中断 Azure AD DS，并导致托管域不受支持。
@@ -176,4 +168,4 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 
 * [Azure 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
-* [Azure 网络安全组](../virtual-network/security-overview.md)
+* [Azure 网络安全组](../virtual-network/network-security-groups-overview.md)

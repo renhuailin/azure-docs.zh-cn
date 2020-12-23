@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
-ms.openlocfilehash: f4e58f4f510450db13ae13d3beecba4d55e766bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a525d1e14e642a64235c263ba29bf7a181bf9e30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408526"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008144"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
@@ -33,15 +33,7 @@ ms.locfileid: "91408526"
       
     - **输入函数应用的全局唯一名称**：键入在 URL 路径中有效的名称。 将对你键入的名称进行验证，以确保其在 Azure Functions 中是唯一的。
     
-    ::: zone pivot="programming-language-python"
-    - **选择运行时**：选择你一直在本地运行的 Python 版本。 可以使用 `python --version` 命令来检查你的版本。
-    ::: zone-end
-
-    ::: zone pivot="programming-language-javascript,programming-language-typescript"
-    - **选择运行时**：选择你一直在本地运行的 Node.js 版本。 可以使用 `node --version` 命令来检查你的版本。
-    ::: zone-end
-
-    - **选择新资源的位置**：为了获得更好的性能，请选择你附近的[区域](https://azure.microsoft.com/regions/)。 
+    - **选择新资源的位置**：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。 
     
 1.  完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
     

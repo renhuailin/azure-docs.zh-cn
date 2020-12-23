@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 机器学习工作室？
-description: Azure 机器学习工作室是 Azure 机器学习工作区的 Web 门户。 工作室结合了无代码和代码优先体验，以创建包容的数据科学平台。
+description: 该工作室是 Azure 机器学习工作区的 Web 门户。 此工作室将无代码和代码优先体验结合起来，打造包容的数据科学平台。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902920"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565902"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 
@@ -83,12 +83,12 @@ Azure 机器学习工作室是 Azure 机器学习中的 Web 门户，其中包�
 | 功能 | 机器学习工作室（经典版） | Azure 机器学习 |
 |---| --- | --- |
 | 拖放界面 | 经典体验 | 更新的体验 - [Azure 机器学习设计器](concept-designer.md)| 
-| 代码 SDK | 不支持 | 与 [Azure 机器学习 Python](https://docs.microsoft.com/python/api/overview/azure/ml/) 和 [R](tutorial-1st-r-experiment.md) SDK 完全集成 |
+| 代码 SDK | 不支持 | 与 [Azure 机器学习 Python](/python/api/overview/azure/ml/) 和 [R](tutorial-1st-r-experiment.md) SDK 完全集成 |
 | 试验 | 可缩放（10 GB 训练数据限制） | 使用计算目标进行缩放 |
 | 训练计算目标 | 专用计算目标，仅限 CPU 支持 | 各种可自定义的[训练计算目标](concept-compute-target.md#train)。 包括 GPU 和 CPU 支持 | 
 | 部署计算目标 | 专用 Web 服务格式，不可自定义 | 各种可自定义的[部署计算目标](concept-compute-target.md#deploy)。 包括 GPU 和 CPU 支持 |
 | ML 管道 | 不支持 | 生成灵活的模块化[管道](concept-ml-pipelines.md)，用于自动完成工作流 |
-| MLOps | 基本模型管理和部署 | 实体版本控制（模型、数据、工作流）、工作流自动化、与 CICD 工具集成，[等等](concept-model-management-and-deployment.md) |
+| MLOps | 基本模型管理和部署；仅 CPU 部署 | 实体版本控制（模型、数据、工作流）、工作流自动化、与 CICD 工具集成、CPU 和 GPU 部署，[等等](concept-model-management-and-deployment.md) |
 | 模型格式 | 专用格式，仅限工作室（经典） | 多个受支持的格式，具体取决于训练作业类型 |
 | 自动化模型训练和超参数优化 |  不支持 | [受支持](concept-automated-ml.md)。 代码优先和无代码选项。 | 
 | 数据偏移检测 | 不支持 | [支持](how-to-monitor-datasets.md) |
@@ -98,7 +98,9 @@ Azure 机器学习工作室是 Azure 机器学习中的 Web 门户，其中包�
 ## <a name="next-steps"></a>后续步骤
 
 请访问[工作室](https://ml.azure.com)，或浏览以下教程中的不同创作选项：  
-  + [使用 Python 笔记本训练和部署模型](tutorial-1st-experiment-sdk-setup.md)
+
+- + [在自己的开发环境开始使用](tutorial-1st-experiment-sdk-setup-local.md)
+  + [在计算实例上使用 Jupyter 笔记本来训练和部署模型](tutorial-1st-experiment-sdk-setup.md)
   + [使用自动化机器学习训练和部署模型](tutorial-first-experiment-automated-ml.md)  
   + [使用设计器训练和部署模型](tutorial-designer-automobile-price-train-score.md)
-
+  + [在受保护的虚拟网络中使用工作室](how-to-enable-studio-virtual-network.md)

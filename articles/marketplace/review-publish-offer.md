@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 08/12/2020
-ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 10/27/2020
+ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375868"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188745"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>如何查看产品并将其发布到商业应用商店
 
@@ -21,7 +21,7 @@ ms.locfileid: "89375868"
 
 ## <a name="offer-status"></a>产品/服务状态
 
-可以在[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的 "专业 marketplace" 仪表板的 "**概述**" 选项卡上查看产品/服务状态。 每个产品/服务的 " **状态** " 列中会显示以下状态指示之一。
+可以在 [合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的 "专业 marketplace" 仪表板的 "**概述**" 选项卡上查看产品/服务状态。 每个产品/服务的 " **状态** " 列中会显示以下状态指示之一。
 
 | 状态 | 说明 |
 | ------------ | ------------- |
@@ -59,7 +59,7 @@ ms.locfileid: "89375868"
 
 发布过程的第一步是一组自动验证。 每个验证步骤对应于创建产品/服务时选择的功能。 必须先完成每个验证检查，然后才能继续执行发布过程中的下一步。
 
-- 提供 ( # B0 10 分钟) 的**采购流设置**
+- 提供 ( # B0 10 分钟) 的 **采购流设置**
 
    我们确保你的产品/服务可通过 Azure 门户向客户购买。 此步骤仅适用于通过 Microsoft 销售的产品/服务。
 
@@ -77,7 +77,7 @@ ms.locfileid: "89375868"
 
 ## <a name="certification-phase"></a>认证阶段
 
-提交给商业市场的产品/服务必须经过认证才能发布。 提供严格的测试，一些自动和其他手册。 若要了解详细信息，请参阅 [商业应用商店认证策略](https://aka.ms/commercial-marketplace-certification-policies)。
+提交给商业市场的产品/服务必须经过认证才能发布。 提供严格的测试，一些自动和其他手册。 若要了解详细信息，请参阅 [商业应用商店认证策略](/legal/marketplace/certification-policies)。
 
 ### <a name="types-of-validation-that-take-place-during-certification"></a>认证期间发生的验证类型
 
@@ -100,7 +100,7 @@ ms.locfileid: "89375868"
 - 质量屏幕截图和视频
 - 此产品/服务如何利用 Microsoft 平台和工具的说明。
 
-阅读 [一般列表策略](https://aka.ms/commercial-marketplace-certification-policies#100-general)，了解有关内容验证条件的详细信息。
+阅读 [一般列表策略](/legal/marketplace/certification-policies#100-general)，了解有关内容验证条件的详细信息。
 
 #### <a name="technical-validation"></a>技术验证
 
@@ -126,6 +126,19 @@ ms.locfileid: "89375868"
 > [!NOTE]
 > 不要使用预览版观众向组织外部的人员提供产品/服务。 改为使用 "专用产品/服务" 选项。 此时，您的产品/服务尚未经过全面测试和验证，且未准备好进行外部分发。
 
+## <a name="cancel-publishing"></a>取消发布
+
+使用 " **发布正在进行** " 状态取消产品/服务：
+
+1. 选择产品/服务名称以打开 " **产品/服务概述** " 页。
+1. 选择页面右上角的 " **取消发布** "。
+1. 确认要阻止发布产品/服务。
+
+如果希望以后发布该产品/服务，则需要启动发布过程。
+
+> [!NOTE]
+> 仅当该产品/服务尚未执行发布者签收步骤时，才可以停止该产品/服务的发布。 选择 " **开始** 使用" 后，你将不能选择取消发布。
+
 ## <a name="publisher-sign-off-phase"></a>发布服务器签收阶段
 
 当该产品/服务已准备就绪，可供你查看和注销时，我们将向你发送一封电子邮件，请求你查看和批准产品/服务预览版。 您还可以在浏览器中刷新 " **产品/服务概述** " 页，以查看您的产品/服务是否已到达发布者签署阶段。 如果有，则会提供 **"上线" 按钮和** 预览链接。
@@ -143,13 +156,13 @@ ms.locfileid: "89375868"
 
 批准预览版后 **，选择 "上线"** 将产品/服务实时发布到商业市场。 
 
-如果要在预览产品/服务后进行更改，可以编辑并重新提交发布请求。 如果你的产品/服务已处于活动状态，并且在 marketplace 中可供公众使用，则在你选择 **开始*使用之前，你所做的任何更新都不会生效。 有关详细信息，请参阅 [在商业应用商店中更新现有产品/服务](./partner-center-portal/update-existing-offer.md)
+如果要在预览产品/服务后进行更改，可以编辑并重新提交发布请求。 如果你的产品/服务已处于活动状态，并且在 marketplace 中可供公众使用，则在你选择 **开始* 使用之前，你所做的任何更新都不会生效。 有关详细信息，请参阅 [在商业应用商店中更新现有产品/服务](partner-center-portal/update-existing-offer.md)
 
 ## <a name="publish-phase"></a>发布阶段
 
 现在，你已选择开始使用产品/服务，使其在商业应用商店中可用，接下来我们将执行一系列最终验证检查，以确保实时产品/服务的配置与预览版的预览版本一样。
 
-- 提供 ( # B0 10 分钟) 的**采购流设置**
+- 提供 ( # B0 10 分钟) 的 **采购流设置**
 
     我们确保你的产品/服务可通过 Azure 门户向客户购买。 此步骤仅适用于通过 Microsoft 销售的产品/服务。
 
@@ -165,11 +178,89 @@ ms.locfileid: "89375868"
 
     我们确认你的潜在客户管理系统可以根据 **产品/服务设置** 页面上提供的详细信息来接收客户领导。 此步骤仅适用于启用了潜在客户管理的产品/服务。
 
-- **最终发布 ( # B0 30 分钟) **
+- **最终发布 ( # B0 30 分钟)**
 
     我们确保产品/服务在 marketplace 中公开发布。
 
 完成这些验证检查后，你的产品/服务将在 marketplace 中推出。
+
+## <a name="publishing-history"></a>发布历史记录
+
+"合作伙伴中心" 中的 " **历史记录** " 页显示了你的商业 marketplace 产品/服务的发布活动。 对于每个事件，页面将显示启动操作的用户、事件类型和事件日期和时间。 [验证和发布步骤](#validation-and-publishing-steps)与完成日期和时间一起列出。
+
+查看产品/服务的历史记录：
+
+1.    登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+2.    在左侧的导航菜单中，选择 "**商业市场**  >  **概述**"。
+3.    选择产品/服务。
+4.    选择左侧导航菜单中的 " **历史记录** " 选项卡。 此页提供以下事件的详细信息，这些事件适用于你的产品/服务：
+
+|事件    |说明    |
+|---------|---------------|
+|已创建产品/服务    |此产品/服务已在合作伙伴中心创建。 用户选择了产品/服务类型、产品/服务 ID 和 **商业市场** 概述中的产品/服务别名  >  **Overview**。    |
+|已创建计划： *计划名称*    |用户通过在 " **计划概述** " 选项卡中输入计划 ID 和计划名称来创建新的计划。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
+|删除的计划    |用户通过从 "**计划概述**" 页中选择 "**删除草稿**" 删除了尚未发布的草稿计划。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
+|已启动计划停止销售： *计划名称*    |用户通过从 "**计划概述**" 页中选择 "**停止销售**" 来启动计划停止。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
+|撤消计划停止销售： *计划名称*    |用户通过从 "**计划概述**" 页选择 "**撤消停止销售**" 来取消计划停止。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
+|提交的产品/服务预览版    |用户通过从 "**查看并发布**" 页中选择 "**发布**" 来提交要预览的产品/服务。    |
+|已启动提交到预览版的取消    |用户在提交预览版后，通过从 **产品/服务概述** 页中选择 "**取消发布**" 来取消发布产品/服务。</br>*此事件显示为正在处理取消请求*。    |
+|已取消提交以进行预览    |用户通过在提交到预览版后从 **产品/服务概述** 页中选择 "**取消发布**" 来取消发布产品/服务。</br>*成功处理取消请求后，将显示此事件*。    |
+|注销以投入现场    |用户通过从 **产品/服务概述** 页 **中选择 "上线"** ，将产品/服务发布到商业市场。    |
+|已启动发布到 marketplace 的取消    |用户通过从 **产品/服务概述** 页中选择 "**取消发布**" 来取消发布产品/服务。</br>*此事件显示为正在处理取消请求*。    |
+|已取消发布到商业市场    |用户在注销后从 **产品/服务概述** 页中选择 "**取消发布**" 即可取消产品发布。</br>*成功处理取消请求后，将显示此事件*。    |
+|同步专用受众    |用户通过从 "**计划概述**" 页或 "**计划定价 & 可用性**" 页中选择 "**同步专用用户**"，更新并同步了专用受众。</br>*此事件仅适用于支持私有计划的产品/服务类型*。    |
+|停止销售优惠    |用户通过从 **产品/服务概述** 页中选择 "**停止销售**" 停止了产品/服务的销售。    |
+
+> [!NOTE]
+> "历史记录" 页不表示已保存提议草稿。
+
+### <a name="filter-options"></a>筛选器选项
+
+您可以使用筛选器将您的产品/服务的完整历史记录范围缩小到特定发布事件：
+
+1.    选择页面右上角的 "筛选器" 按钮。
+2.    选择一个筛选器，然后选择 " **应用** "，查看与所选条件对应的历史记录事件。
+3.    选择 " **清除筛选器** " 以返回到产品/服务的完整历史记录。
+
+有四种筛选器：
+* 事件
+* 用户
+* Date
+* 页面
+
+当你选择 " **页面** " 筛选器时，可以选择适用于你的产品/服务类型的任何合作伙伴中心页面。 在应用时，" **页面** " 筛选器会显示所有 **提交的产品/服务，以预览** 对所选页面所做的更改。
+
+* 对于所有产品/服务，默认情况下，每个提交事件都包含 " **产品/服务设置** " 页。
+* 对于支持计划的产品/服务，每个提交事件都包含 " **计划概述** " 页。
+* 对于支持测试驱动器的产品/服务，每个提交事件都包含了 " **测试驱动器** " 页。
+
+### <a name="users"></a>用户
+
+如果事件是由用户启动的，则 "历史记录" 页将根据以下方案显示用户：
+
+#### <a name="the-event-was-initiated-by-the-publisher"></a>此事件由发布服务器启动
+
+对产品/服务具有发布权限的用户将为其启动的发布事件显示其名称。
+
+[!["历史记录" 页显示具有发布权限的用户的名称。](./media/review-publish-offer/event-initiated-by-publisher.png)](./media/review-publish-offer/event-initiated-by-publisher.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-microsoft"></a>此事件由 Microsoft 发起
+
+你可以向 Microsoft 管理员授予权限，以代表你启动操作或在出现意外系统错误后采取纠正措施。 将显示 Microsoft 名称和徽标，用于代表你的帐户发布 Microsoft 发起的事件。
+
+[!["历史记录" 页显示 Microsoft 启动的事件的示例。](./media/review-publish-offer/event-initiated-by-microsoft.png)](./media/review-publish-offer/event-initiated-by-microsoft.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-an-unidentified-user"></a>事件由无法识别的用户启动
+
+在提取了其发布权限后，不再与帐户关联的用户将从 "已 **启动** " 列中删除其名称。
+
+[!["历史记录" 页如何显示由未识别用户启动的事件的示例。](./media/review-publish-offer/event-initiated-by-unidentified-user.png)](./media/review-publish-offer/event-initiated-by-unidentified-user.png#lightbox)
+
+#### <a name="validation-and-publishing-steps"></a>验证和发布步骤
+
+对于与 [验证和发布步骤](#validation-and-publishing-steps)对应的系统进程，不会显示任何用户。 这些事件根据事件的完成状态进行颜色编码。
+
+[!["历史记录" 页显示验证和发布步骤的示例。](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

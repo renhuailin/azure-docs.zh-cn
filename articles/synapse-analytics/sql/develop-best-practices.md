@@ -10,17 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: fe00d7f107911e2245041419c20f86e2e32a0480
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321487"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 开发最佳做法
+
 本文介绍在开发数据仓库解决方案时的指导和最佳做法。 
 
-## <a name="sql-pool-development-best-practices"></a>SQL 池开发最佳做法
+## <a name="dedicated-sql-pool-development-best-practices"></a>专用 SQL 池开发最佳做法
 
 ### <a name="reduce-cost-with-pause-and-scale"></a>使用暂停和缩放来降低成本
 
@@ -55,12 +56,12 @@ ms.locfileid: "91289253"
 另请参阅[表概述](develop-tables-overview.md)、[表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[选择表分布](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 以及 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="do-not-over-partition"></a>不要过度分区
-尽管数据分区对于维护数据（通过分区切换）或优化扫描（通过分区排除）很有效，但分区过多会减慢查询速度。  通常，在 SQL Server 上运行良好的高粒度分区策略可能无法在 SQL 池中正常工作。  
+尽管数据分区对于维护数据（通过分区切换）或优化扫描（通过分区排除）很有效，但分区过多会减慢查询速度。  通常，可以很好地处理 SQL Server 的高粒度分区策略可能无法很好地在专用 SQL 池上工作。  
 
 > [!NOTE]
-> 通常，在 SQL Server 上运行良好的高粒度分区策略可能无法在 SQL 池中正常工作。  
+> 通常，可以很好地处理 SQL Server 的高粒度分区策略可能无法很好地在专用 SQL 池上工作。  
 
-如果每个分区的行数少于 1 百万，太多分区还会降低聚集列存储索引的效率。 SQL 池对将数据进行分区，分到 60 个数据库中。 
+如果每个分区的行数少于 1 百万，太多分区还会降低聚集列存储索引的效率。 专用 SQL 池将你的数据分区到60数据库。 
 
 因此，如果创建具有 100 个分区的表，将得到 6000 个分区。  每个工作负荷都不同，因此最佳建议是尝试不同的分区，找出最适合工作负荷的分区。  
 
@@ -95,7 +96,7 @@ ms.locfileid: "91289253"
 
 ### <a name="optimize-clustered-columnstore-tables"></a>优化聚集列存储表
 
-聚集列存储索引是将数据存储在 SQL 池中最有效率的方式之一。  默认情况下，SQL 池中的表创建为聚集列存储。  
+聚集列存储索引是将数据存储在专用 SQL 池中的最有效方法之一。  默认情况下，专用 SQL 池中的表创建为聚集列存储。  
 
 为了让列存储表的查询获得最佳性能，良好的分段质量很重要。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  
 
@@ -103,7 +104,7 @@ ms.locfileid: "91289253"
 
 由于高质量列存储段很重要，因此可以考虑使用中型或大型资源类中的用户 ID 来加载数据。 使用较低的[数据仓库单位](resource-consumption-models.md)值意味着需要向加载用户分配较大的资源类。
 
-由于列存储表通常要等到每个表中的行数超过 100 万且每个 SQL 池表分区成 60 个表之后，才会数据推送到压缩的列存储段，因此除非列存储表中的行数超过 6000 万，否则这种表对查询无益。  
+由于列存储表通常不会将数据推送到压缩的列存储段，因此，每个表中的行数超过1000000，并且每个专用 SQL 池表都分区为60表，除非该表的行数超过了60000000，否则列存储表将不会对查询产生益处。  
 
 > [!TIP]
 > 对于少于 6,000 万行的表，列存储索引可能不是最佳解决方案。  
@@ -116,23 +117,23 @@ ms.locfileid: "91289253"
 
 另请参阅[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[列存储索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[重新生成列存储索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality)。
 
-## <a name="sql-on-demand-development-best-practices"></a>SQL On-Demand 开发最佳做法
+## <a name="serverless-sql-pool-development-best-practices"></a>无服务器 SQL 池开发最佳实践
 
 ### <a name="general-considerations"></a>一般注意事项
 
-借助 SQL On-Demand，可以查询 Azure 存储帐户中的文件。 它没有本地存储或引入功能，这意味着查询面向的所有文件都在 SQL On-Demand 外部。 因此，与从存储读取文件相关的所有内容都可能会影响查询性能。
+无服务器 SQL 池允许查询 Azure 存储帐户中的文件。 它没有本地存储或引入功能，这意味着，查询所面向的所有文件都是无服务器 SQL 池的外部。 因此，与从存储读取文件相关的所有内容都可能会影响查询性能。
 
-### <a name="colocate-azure-storage-account-and-sql-on-demand"></a>归置 Azure 存储帐户和 SQL On-Demand
+### <a name="colocate-azure-storage-account-and-serverless-sql-pool"></a>归置 Azure 存储帐户和无服务器 SQL 池
 
-为了最大限度地减少延迟，请归置 Azure 存储帐户和 SQL On-Demand 终结点。 在创建工作区期间预配的存储帐户和终结点位于同一区域。
+若要最大程度地减少延迟，请归置你的 Azure 存储帐户和无服务器 SQL 池终结点。 在创建工作区期间预配的存储帐户和终结点位于同一区域。
 
-为了获得最佳性能，如果使用 SQL On-Demand 访问其他存储帐户，请确保它们位于同一区域。 如果它们不在同一区域，那么从远程区域到终结点区域的数据网络传输延迟将会增加。
+为了获得最佳性能，如果访问具有无服务器 SQL 池的其他存储帐户，请确保它们位于同一区域。 如果它们不在同一区域，那么从远程区域到终结点区域的数据网络传输延迟将会增加。
 
 ### <a name="azure-storage-throttling"></a>Azure 存储限制
 
-多个应用和服务可以访问你的存储帐户。 当应用程序、服务和 SQL 按需工作负荷生成的组合 IOPS 或吞吐量超过存储帐户的限制时，将发生存储限制。 发生存储限制时，将对查询性能造成严重的负面影响。
+多个应用和服务可以访问你的存储帐户。 当应用程序、服务和无服务器 SQL 池工作负荷生成的组合 IOPS 或吞吐量超过存储帐户的限制时，会进行存储限制。 发生存储限制时，将对查询性能造成严重的负面影响。
 
-一旦检测到存储限制，SQL On-Demand 就会内置处理这种情况。 SQL On-Demand 会以较慢的节奏向存储发出请求，直到限制消除。 
+检测到限制后，无服务器 SQL 池有此方案的内置处理。 无服务器 SQL 池会以较慢的速度向存储请求请求，直到限制得以解决。 
 
 但是，为实现最佳查询执行，建议你不要在执行查询的过程中将存储帐户用于其他工作负荷。
 
@@ -140,7 +141,7 @@ ms.locfileid: "91289253"
 
 如果可以，尽可能准备文件来提升性能：
 
-- 将 CSV 转换为 Parquet（Parquet 是分栏格式）。 由于将进行压缩，因此其文件大小比具有相同数据的 CSV 文件小，且 SQL On-Demand 进行读取所需的时间和存储请求更少。
+- 将 CSV 转换为 Parquet（Parquet 是分栏格式）。 由于它是压缩的，因此它的文件大小比具有相同数据的 CSV 文件的文件大小小，无服务器 SQL 池将需要更少的时间和存储请求来进行读取。
 - 如果查询目标是一个大文件，那么把它拆分为多个较小文件将会让你受益匪浅。
 - 尽量让 CSV 文件大小小于 10GB。
 - 对于单个 OPENROWSET 路径或外部表 LOCATION，最好有相等大小的文件。
@@ -148,17 +149,17 @@ ms.locfileid: "91289253"
 
 ### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>使用 fileinfo 和 filepath 函数定目标到特定分区
 
-数据通常是以分区形式组织。 可以指示 SQL On-Demand 查询特定文件夹和文件。 这样做可以减少查询读取和处理所需的文件数和数据量。 
+数据通常是以分区形式组织。 可以指示无服务器 SQL 池查询特定文件夹和文件。 这样做可以减少查询读取和处理所需的文件数和数据量。 
 
 因此，将获得更好的性能。 有关详细信息，请查看 [filename](query-data-storage.md#filename-function) 和 [filepath](query-data-storage.md#filepath-function) 函数，以及有关如何[查询特定文件](query-specific-files.md)的示例。
 
 如果存储中的数据没有进行分区，可以考虑对其进行分区，以便使用这些函数来优化以这些文件为目标的查询。
 
-由 SQL On-Demand [查询已分区的 Apache Spark for Azure Synapse 外部表](develop-storage-files-spark-tables.md)时，查询将自动仅以所需文件为目标。
+查询无服务器 SQL 池中 [的 Azure Synapse 外部表的分区 Apache Spark](develop-storage-files-spark-tables.md) 时，查询将自动仅针对所需的文件。
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 增强查询性能和联接
 
-[CETAS](develop-tables-cetas.md) 是 SQL On-Demand 中最重要的功能之一。 CETAS 是一种并行操作，用于创建外部表元数据，并将 SELECT 查询的结果导出到存储帐户中的一组文件。
+[CETAS](develop-tables-cetas.md) 是无服务器 SQL 池中可用的最重要的功能之一。 CETAS 是一种并行操作，用于创建外部表元数据，并将 SELECT 查询的结果导出到存储帐户中的一组文件。
 
 可以使用 CETAS 将查询的常用部分（如联接的引用表）存储到一组新的文件中。 接下来，可以联接到这一个外部表，而不是在多个查询中重复常用联接。 
 
@@ -166,7 +167,7 @@ ms.locfileid: "91289253"
 
 ### <a name="next-steps"></a>后续步骤
 
-如果你需要本文中未提供的信息，请使用此页面左侧的 " **搜索 doc** 函数" 以搜索所有 SQL 池文档。  可以在[有关 SQL 池的 Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)上向其他用户和 SQL 池产品组提问。  
+如果你需要本文中未提供的信息，请使用此页面左侧的 " **搜索 doc** 函数" 以搜索所有 SQL 池文档。  [Microsoft 问答&一个用于 Azure Synapse analytics 的问题页](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)，可以向其他用户和 Azure Synapse Analytics 产品组提出问题。 我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
 
-我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  如果更喜欢在 Stack Overflow 上提问，还可以访问 [Azure SQL 池 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)。
+如果你希望在 Stack Overflow 上提出问题，我们还会获得一个 [Azure Synapse Analytics Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)。
  

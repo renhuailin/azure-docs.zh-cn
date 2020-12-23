@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70166674"
 ---
 ## <a name="specifying-formats"></a>指定格式
@@ -21,16 +21,16 @@ Azure 数据工厂支持以下格式类型：
 * [Parquet 格式](#specifying-parquetformat)
 
 ### <a name="specifying-textformat"></a>指定 TextFormat
-若要分析文本文件或以文本格式写入数据，请将 `format` `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
+若要分析文本文件或以文本格式写入数据，请将 `format` `type` 属性设置为 **TextFormat** 。 也可在 `format` 节指定以下 **可选** 属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
-| properties | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中不太可能存在的极少见的不可打印字符：例如，指定“\u0001”表示标题开头 (SOH)。 |只能使用一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
-| rowDelimiter |用于分隔文件中的行的字符。 |只能使用一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
+| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中不太可能存在的极少见的不可打印字符：例如，指定“\u0001”表示标题开头 (SOH)。 |只能使用一个字符。 **默认** 值为 **逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
+| rowDelimiter |用于分隔文件中的行的字符。 |只能使用一个字符。 **默认** 值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
 | escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>示例：如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：“Hello, world”），可以将“$”定义为转义符，在源中使用字符串“Hello$, world”。 |否 |
 | quoteChar |将字符串值用引号括起来的字符。 引号字符内的列和行分隔符将被视为字符串值的一部分。 此属性适用于输入和输出数据集。<br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
-| nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
-| encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](/dotnet/api/system.text.encoding)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
+| nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认** 值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
+| encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](/dotnet/api/system.text.encoding)。 例如：windows-1250 或 shift_jis。 **默认** 值为 **UTF-8** 。 |否 |
 | firstRowAsHeader |指定是否将第一行视为标头。 对于输入数据集，数据工厂将读取第一行作为标头。 对于输出数据集，数据工厂将写入第一行作为标头。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/>**False（默认值）** |否 |
 | skipLineCount |指示从输入文件读取数据时要跳过的行数。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |否 |
 | treatEmptyAsNull |指定是否在从输入文件读取数据时将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
@@ -69,16 +69,16 @@ Azure 数据工厂支持以下格式类型：
 * 要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
 ### <a name="specifying-jsonformat"></a>指定 JsonFormat
-若要**在 Azure Cosmos DB 中按原样导入/导出 JSON 文件**，请参阅 Azure Cosmos DB 连接器中的[导入/导出 JSON 文档](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents)部分，了解详细信息。
+若要 **在 Azure Cosmos DB 中按原样导入/导出 JSON 文件** ，请参阅 Azure Cosmos DB 连接器中的 [导入/导出 JSON 文档](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents)部分，了解详细信息。
 
-若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
+若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` `type` 属性设置为 **JsonFormat** 。 也可在 `format` 节指定以下 **可选** 属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
-| filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
+| filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为： **setOfObjects** 和 **arrayOfObjects** 。 **默认** 值为 **setOfObjects** 。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
 | jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有从 JSON 文件复制数据时，才支持此属性。 | 否 |
 | jsonPathDefinition | 为每个使用自定义列名映射的列指定 JSON 路径表达式（开头为小写）。 只有从 JSON 文件复制数据时，才支持此属性，而且用户可以从对象或数组提取数据。 <br/><br/> 对于根对象下的字段，请以根 $ 开头；对于按 `jsonNodeReference` 属性选择的数组中的字段，请以数组元素开头。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。 | 否 |
-| encodingName |指定编码名称。 有关有效编码名称的列表，请参阅：[Encoding.EncodingName](/dotnet/api/system.text.encoding) 属性。 例如：windows-1250 或 shift_jis。 默认值为  ：**UTF-8**。 |否 |
+| encodingName |指定编码名称。 有关有效编码名称的列表，请参阅：[Encoding.EncodingName](/dotnet/api/system.text.encoding) 属性。 例如：windows-1250 或 shift_jis。 默认值为  ： **UTF-8** 。 |否 |
 | nestingSeparator |用于分隔嵌套级别的字符。 默认值为“.”（点）。 |否 |
 
 #### <a name="json-file-patterns"></a>JSON 文件模式
@@ -213,8 +213,8 @@ Azure 数据工厂支持以下格式类型：
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体地说：
 
-- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅“指定矩形数据集的结构定义”部分，了解更多详细信息。
-- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用**array [x]. 属性**从 xth 对象中提取给定属性的值，也可以使用**array [*]. 属性**从包含此类属性的任何对象中查找值。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为 **可选** ，除非需要进行列映射。 请参阅“指定矩形数据集的结构定义”部分，了解更多详细信息。
+- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 **array [x]. 属性** 从 xth 对象中提取给定属性的值，也可以使用 **array [*]. 属性** 从包含此类属性的任何对象中查找值。
 
 ```json
 "properties": {
@@ -286,8 +286,8 @@ Azure 数据工厂支持以下格式类型：
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体地说：
 
-- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅“指定矩形数据集的结构定义”部分，了解更多详细信息。
-- `jsonNodeReference` 指示进行迭代操作，在**数组**订单行下以同一模式从对象提取数据。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为 **可选** ，除非需要进行列映射。 请参阅“指定矩形数据集的结构定义”部分，了解更多详细信息。
+- `jsonNodeReference` 指示进行迭代操作，在 **数组** 订单行下以同一模式从对象提取数据。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 在以下示例中，"ordernumber"、"orderdate" 和 "city" 位于 JSON 路径以“$.”开头的根对象下，而 "order_pd" 和 "order_price" 在定义时使用的路径派生自没有“$.”的数组元素。
 
 ```json
@@ -355,7 +355,7 @@ Azure 数据工厂支持以下格式类型：
 }
 ```
 
-**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要将属性名称更改为与源列名不同的名称，或者需要嵌套部分属性。
+**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为 **可选** ，除非需要将属性名称更改为与源列名不同的名称，或者需要嵌套部分属性。
 
 ```json
 "properties": {
@@ -387,7 +387,7 @@ Azure 数据工厂支持以下格式类型：
 ```
 
 ### <a name="specifying-avroformat"></a>指定 AvroFormat
-若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat** 。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
@@ -396,14 +396,14 @@ Azure 数据工厂支持以下格式类型：
 }
 ```
 
-若要在 Hive 表中使用 Avro 格式，可以参考[Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
+若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
 
 请注意以下几点：  
 
-* 不支持[复杂数据类型](https://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合和固定）。
+*  (记录、枚举、数组、映射、联合和固定) 不支持[复杂数据类型](https://avro.apache.org/docs/current/spec.html#schema_complex)。
 
 ### <a name="specifying-orcformat"></a>指定 OrcFormat
-若要分析 ORC 文件或以 ORC 格式写入数据，请将 `format` `type` 属性设置为 **OrcFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 ORC 文件或以 ORC 格式写入数据，请将 `format` `type` 属性设置为 **OrcFormat** 。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
@@ -413,7 +413,7 @@ Azure 数据工厂支持以下格式类型：
 ```
 
 > [!IMPORTANT]
-> 如果不是在本地与云数据存储之间**按原样**复制 ORC 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
+> 如果不是在本地与云数据存储之间 **按原样** 复制 ORC 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
 >
 >
 
@@ -423,7 +423,7 @@ Azure 数据工厂支持以下格式类型：
 * ORC 文件有三个[压缩相关的选项](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
 
 ### <a name="specifying-parquetformat"></a>指定 ParquetFormat
-若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat** 。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
@@ -432,7 +432,7 @@ Azure 数据工厂支持以下格式类型：
 }
 ```
 > [!IMPORTANT]
-> 如果不是在本地与云数据存储之间**按原样**复制 Parquet 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
+> 如果不是在本地与云数据存储之间 **按原样** 复制 Parquet 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
 >
 >
 

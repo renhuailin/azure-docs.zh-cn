@@ -1,5 +1,5 @@
 ---
-title: 对所有 Azure Key Vault 启用软删除 | Microsoft Docs
+title: 对所有 Azure 密钥保管库启用软删除 | Microsoft Docs
 description: 使用本文档对所有 Key Vault 采用软删除。
 services: key-vault
 author: ShaneBala-keyvault
@@ -7,19 +7,19 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/15/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0e811cc219002c034afb968be760ce2c249b08f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e512cccdbfdc56500fa7c69372ca38f59d3195c2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825247"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590080"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>对所有 Key Vault 启用软删除
 
 > [!WARNING]
-> 中断性变更：选择退出软删除功能将于今年年底弃用，所有 Key Vault 的软删除保护将自动启用。  Azure Key Vault 用户和管理员应立即对其 Key Vault 启用软删除。
+> 中断性变更：即将弃用选择退出软删除的功能。 Azure Key Vault 用户和管理员应立即对其 Key Vault 启用软删除。
 >
 > 对于托管 HSM，默认情况下启用软删除，并且无法禁用。
 
@@ -29,9 +29,18 @@ ms.locfileid: "91825247"
 
 有关软删除功能的完整详细信息，请参阅 [Azure Key Vault 软删除概述](soft-delete-overview.md)。
 
-## <a name="how-do-i-respond-to-breaking-changes"></a>我如何应对中断性变更
+## <a name="can-my-application-work-with-soft-delete-enabled"></a>启用软删除后，我的应用程序是否可以正常工作？
 
-不能创建与“已软删除”状态下的 Key Vault 对象同名的 Key Vault 对象。  例如，如果你在 Key Vault A 中删除名为 `test key` 的密钥，则在已软删除的 `test key` 对象被清除之前，你无法在 Key Vault A 中创建名为 `test key` 的新密钥。
+> [!Important] 
+> 为密钥保管库启用软删除前，请仔细阅读以下信息
+
+Key Vault 名称是全局独一无二的。 密钥保管库中存储的机密名称也是唯一的。 不能重复使用处于“已软删除”状态的密钥保管库或密钥保管库对象的名称。 
+
+**示例 #1** 如果应用程序以编程方式创建名为“保管库 A”的密钥保管库，然后删除“保管库 A”。 密钥保管库将进入“已软删除”状态。 在从“已软删除”状态清除密钥保管库之前，应用程序无法重新创建名为“保管库 A”的另一个密钥保管库。 
+
+**示例 #2** 如果应用程序在密钥保管库 A 中创建名为 `test key` 的密钥，然后从保管库 A 中删除该密钥，则在从“已软删除”状态中清除 `test key` 对象之前，应用程序无法在密钥保管库 A 中创建名为 `test key` 的新密钥。 
+
+如果你尝试删除一个 Key Vault 对象并使用相同的名称重新创建它，而不先将其从“已软删除”状态中清除，这可能会导致冲突错误。 这可能会导致应用程序或自动化失败。 在进行下面的必要应用程序和管理更改之前，请咨询你的开发团队。 
 
 ### <a name="application-changes"></a>应用程序更改
 
@@ -59,13 +68,14 @@ ms.locfileid: "91825247"
 2. 搜索“Azure Policy”。
 3. 选择“定义”。
 4. 在“类别”下，选择筛选器中的“Key Vault”。
-5. 选择“Key Vault 对象应可恢复”策略。
+5. 选中“密钥保管库应启用软删除”策略。
 6. 单击“分配”。
 7. 将范围设置为你的订阅。
-8. 选择“查看 + 创建”。
-9. 最多需要 24 小时才能完成环境的完整扫描。
-10. 在“Azure Policy”边栏选项卡中，单击“合规性”。
-11. 选择应用的策略。
+8. 请确保策略的效果设置为“审核”。
+9. 选择“查看 + 创建”。
+10. 最多需要 24 小时才能完成环境的完整扫描。
+11. 在“Azure Policy”边栏选项卡中，单击“合规性”。
+12. 选择应用的策略。
 
 现在，你应该能够筛选并查看启用了软删除的 Key Vault（合规资源）以及未启用软删除的 Key Vault（不合规资源）。
 
@@ -106,15 +116,11 @@ ms.locfileid: "91825247"
 
 ### <a name="what-action-do-i-need-to-take"></a>我需要采取哪些措施？
 
-确保无需更改应用程序逻辑。 确认后，对所有 Key Vault 启用软删除。 这样可以确保在年底对所有 Key Vault 启用软删除时，你不会受到中断性变更的影响。
+确保无需更改应用程序逻辑。 确认后，对所有 Key Vault 启用软删除。
 
 ### <a name="by-when-do-i-need-to-take-action"></a>什么时候需要措施？
 
-今年年底我们将对所有 Key Vault 启用软删除。 为确保你的应用程序不受影响，请尽快对 Key Vault 启用软删除。
-
-## <a name="what-will-happen-if-i-dont-take-any-action"></a>如果我不采取任何措施将会怎样？
-
-如果你不采取任何措施，则到今年年底我们将对所有 Key Vault 自动启用软删除。 如果你尝试删除一个 Key Vault 对象并使用相同的名称重新创建它，而不先将其从“已软删除”状态中清除，这可能会导致冲突错误。 这可能会导致应用程序或自动化失败。
+为确保你的应用程序不受影响，请尽快对 Key Vault 启用软删除。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 11/05/2020
+ms.openlocfilehash: b57d55e91918ba612ad42acd5e6059ae0dbd0090
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538781"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422444"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>数据导入概述 - Azure 认知搜索
 
@@ -35,7 +35,7 @@ ms.locfileid: "91538781"
 可以使用以下 API，将单个或多个文档加载到一个索引中：
 
 + [Add, Update, or Delete Documents (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)（添加、更新或删除文档 (REST API)）
-+ [indexAction 类](/dotnet/api/microsoft.azure.search.models.indexaction)或 [indexBatch 类](/dotnet/api/microsoft.azure.search.models.indexbatch) 
++ [IndexDocumentsAction 类](/dotnet/api/azure.search.documents.models.indexdocumentsaction)或 [IndexDocumentsBatch 类](/dotnet/api/azure.search.documents.models.indexdocumentsbatch) 
 
 目前尚没有支持通过门户推送数据的工具。
 
@@ -65,7 +65,7 @@ ms.locfileid: "91538781"
 
 对于 POST 和 GET，都需要在请求 URL 中提供“服务名称”、“索引名称”和“API 版本”。 
 
-GET 的 URL 末尾为*查询字符串*，用于提供查询参数。 有关 URL 格式，请参见以下内容：
+GET 的 URL 末尾为 *查询字符串* ，用于提供查询参数。 有关 URL 格式，请参见以下内容：
 
 ```http
     https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
@@ -82,18 +82,17 @@ POST 的 URL 格式相同，但查询字符串参数包含 `api-version`。
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure VM 上的 Azure SQL 数据库、SQL 托管实例和 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
-索引器将索引连接到数据源（通常是表、视图或等效的结构），将源字段映射到索引中的等效字段。 在执行期间，行集会自动转换为 JSON 并载入指定的索引中。 所有索引器支持计划，使用户能够指定数据的刷新频率。 大多数索引器提供更改跟踪（如果受数据源的支持）。 除了识别新文档外，通过跟踪对现有文档的更改和删除外，索引器免除了主动管理索引中数据的必要。 
-
+索引器将索引连接到数据源（通常是表、视图或等效的结构），将源字段映射到索引中的等效字段。 在执行期间，行集会自动转换为 JSON 并载入指定的索引中。 所有索引器支持计划，使用户能够指定数据的刷新频率。 大多数索引器提供更改跟踪（如果受数据源的支持）。 除了识别新文档外，通过跟踪对现有文档的更改和删除外，索引器免除了主动管理索引中数据的必要。
 
 ### <a name="how-to-pull-data-into-an-azure-cognitive-search-index"></a>如何将数据拉取至 Azure 认知搜索索引
 
-索引器功能已在 [Azure 门户](search-import-data-portal.md)、[REST API](/rest/api/searchservice/Indexer-operations) 和 [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions) 中公开。 
+索引器功能已在 [Azure 门户](search-import-data-portal.md)、[REST API](/rest/api/searchservice/Indexer-operations) 和 [.NET SDK](/dotnet/api/azure.search.documents.indexes.searchindexerclient) 中公开。
 
 使用门户的一个优势在于，Azure 认知搜索通常可以通过读取源数据集的元数据来生成默认的索引架构。 在处理生成的索引之前可对其进行修改，此后，只能编辑不需要重建索引的架构。 如果想要进行的更改会直接影响架构，则需要重建索引。 
 
 ## <a name="verify-data-import-with-search-explorer"></a>使用搜索浏览器验证数据导入
 
-针对文档上传执行初步检查的捷径之一是在门户中使用**搜索浏览器**。 使用资源管理器可以直接查询索引，而无需编写任何代码。 搜索体验取决于默认设置，例如[简单语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](/rest/api/searchservice/search-documents)。 结果以 JSON 格式返回，方便用户检查整个文档。
+针对文档上传执行初步检查的捷径之一是在门户中使用 **搜索浏览器** 。 使用资源管理器可以直接查询索引，而无需编写任何代码。 搜索体验取决于默认设置，例如[简单语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](/rest/api/searchservice/search-documents)。 结果以 JSON 格式返回，方便用户检查整个文档。
 
 > [!TIP]
 > 有大量的 [Azure 认知搜索代码示例](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)包含了嵌入的或随时可用的数据集，帮助用户轻松入门。 门户中还提供了一个示例索引器，以及一个由小型房地产数据集组成的数据源（名为“realestate-us-sample”）。 针对示例数据源运行预配置的索引器时，会创建索引并连同文档一起加载该索引，然后，可以使用搜索浏览器或编写的代码查询该索引。

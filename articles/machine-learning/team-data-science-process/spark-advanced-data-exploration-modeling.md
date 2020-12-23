@@ -11,27 +11,27 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c024b12210d408fe2a9987cba56a08e4b660ae1c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027539"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321342"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
 
-此演练对 NYC 出租车行程和车费 2013 数据的样本使用 HDInsight Spark 进行数据探索，并使用交叉验证和超参数优化训练二元分类和回归模型。 它端到端演练[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)的步骤，使用 HDInsight Spark 群集进行处理并使用 Azure blob 存储数据和模型。 此过程探索并可视化从 Azure 存储 Blob 引入的数据，并使数据为生成预测模型做好准备。 已使用 Python 编写解决方案并显示相关绘图。 这些模型使用 Spark MLlib 工具包生成，用于执行二元分类和回归建模任务。 
+此演练对 NYC 出租车行程和车费 2013 数据的样本使用 HDInsight Spark 进行数据探索，并使用交叉验证和超参数优化训练二元分类和回归模型。 它端到端演练[数据科学过程](./index.yml)的步骤，使用 HDInsight Spark 群集进行处理并使用 Azure blob 存储数据和模型。 此过程探索并可视化从 Azure 存储 Blob 引入的数据，并使数据为生成预测模型做好准备。 已使用 Python 编写解决方案并显示相关绘图。 这些模型使用 Spark MLlib 工具包生成，用于执行二元分类和回归建模任务。 
 
-* **二元分类**任务用于预测某个行程是否会支付小费。 
-* **回归**任务用于根据其他小费特征预测小费的金额。 
+* **二元分类** 任务用于预测某个行程是否会支付小费。 
+* **回归** 任务用于根据其他小费特征预测小费的金额。 
 
 建模步骤还包含显示如何训练、评估和保存每个模型类型的代码。 此主题涵盖某些与[使用 Spark 进行数据探索和建模](spark-data-exploration-modeling.md)主题相同的基础。 但是其内容更“高级”，因为还会涉及如何将交叉验证与超参数扫描结合使用，以训练最准确的分类和回归模型。 
 
 **交叉验证 (CV)** 是评估在已知数据集上训练的模型对预测未经训练的数据集特征的一般化程度的技术。  此处使用的常见实现是将数据集划分为 K 折，然后以轮询机制方式在除一折以外的所有折上训练模型。 模型的准确预测能力在针对此不用来训练模型的折叠中的独立数据集进行测试时受到评估。
 
-**超参数优化**是为学习算法选择一组超参数的问题，通常目标是优化算法在独立数据集上的性能度量值。 **超参数**是必须在模型训练过程之外指定的值。 关于这些值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 支持向量机 (SVM) 需要设置错误分类惩罚项。 
+**超参数优化** 是为学习算法选择一组超参数的问题，通常目标是优化算法在独立数据集上的性能度量值。 **超参数** 是必须在模型训练过程之外指定的值。 关于这些值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 支持向量机 (SVM) 需要设置错误分类惩罚项。 
 
-执行此处使用的超参数优化的常用方法是网格搜索或**参数扫描**。 此搜索是指在超参数空间子集中搜索学习算法。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
+执行此处使用的超参数优化的常用方法是网格搜索或 **参数扫描** 。 此搜索是指在超参数空间子集中搜索学习算法。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
 
 我们使用的模型包括逻辑和线性回归、随机林和梯度提升树：
 
@@ -40,7 +40,7 @@ ms.locfileid: "86027539"
 * [随机林](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
 * [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) 是决策树的整体。 GBTS 以迭代方式训练决策树以最大程度减少损失函数。 GBTS 用于回归和分类，并且可处理分类特征，不需要功能缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
-为二元分类问题显示了使用 CV 和超参数扫描的建模示例。 回归任务的主要主题中显示了更简单的示例（不使用参数扫描）。 但是在附录中，还显示了为线性回归使用弹性网络的验证和为随机林回归使用参数扫描的 CV。 **弹性网络**是用于拟合线性回归模型的正则化回归方法，该方法将 L1 和 L2 指标组合起来，作为 [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) 和 [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) 方法的惩罚。   
+为二元分类问题显示了使用 CV 和超参数扫描的建模示例。 回归任务的主要主题中显示了更简单的示例（不使用参数扫描）。 但是在附录中，还显示了为线性回归使用弹性网络的验证和为随机林回归使用参数扫描的 CV。 **弹性网络** 是用于拟合线性回归模型的正则化回归方法，该方法将 L1 和 L2 指标组合起来，作为 [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) 和 [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) 方法的惩罚。   
 
 <!-- -->
 
@@ -587,14 +587,14 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 每个模型生成代码部分拆分为多个步骤： 
 
-1. 带有一个参数集的**模型训练**数据
-2. 测试数据集上的使用指标的**模型评估**
-3. 在 blob 中**保存模型**以供将来使用
+1. 带有一个参数集的 **模型训练** 数据
+2. 测试数据集上的使用指标的 **模型评估**
+3. 在 blob 中 **保存模型** 以供将来使用
 
 我们介绍如何通过两种方法使用参数扫描进行交叉验证 (CV)：
 
 1. 使用泛型自定义代码，此代码可应用到 MLlib 中的任何算法以及算法中的任何参数集。 
-2. 使用 **pySpark CrossValidator 管道函数**。 CrossValidator 对于 Spark 1.5.0 有几个限制： 
+2. 使用 **pySpark CrossValidator 管道函数** 。 CrossValidator 对于 Spark 1.5.0 有几个限制： 
    
    * 无法保存或保留管道模型以供将来使用。
    * 无法用于模型中的每个参数。
@@ -764,7 +764,7 @@ F1 分数 = 0.984174341679
 
 **绘制 ROC 曲线。**
 
-在上一个单元格中，*predictionAndLabelsDF* 注册为表 *tmp_results*。 *tmp_results* 可用于执行查询并将结果输出到 sqlResults 数据帧中用于绘图。 代码如下。
+在上一个单元格中， *predictionAndLabelsDF* 注册为表 *tmp_results* 。 *tmp_results* 可用于执行查询并将结果输出到 sqlResults 数据帧中用于绘图。 代码如下。
 
 ```python
 # QUERY RESULTS                              
@@ -895,7 +895,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **绘制 ROC 曲线。**
 
-在上一个单元格中，*predictionAndLabelsDF* 注册为表 *tmp_results*。 *tmp_results* 可用于执行查询并将结果输出到 sqlResults 数据帧中用于绘图。 代码如下。
+在上一个单元格中， *predictionAndLabelsDF* 注册为表 *tmp_results* 。 *tmp_results* 可用于执行查询并将结果输出到 sqlResults 数据帧中用于绘图。 代码如下。
 
 ```python
 # QUERY RESULTS
@@ -1039,9 +1039,9 @@ ROC = 0.985336538462 下的面积
 
 简介中介绍了这些模型。 每个模型生成代码部分拆分为多个步骤： 
 
-1. 带有一个参数集的**模型训练**数据
-2. 测试数据集上的使用指标的**模型评估**
-3. 在 blob 中**保存模型**以供将来使用   
+1. 带有一个参数集的 **模型训练** 数据
+2. 测试数据集上的使用指标的 **模型评估**
+3. 在 blob 中 **保存模型** 以供将来使用   
 
 <!-- -->
 
@@ -1504,8 +1504,7 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="whats-next"></a>下一步是什么？
+## <a name="whats-next"></a>后续步骤
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。
 
-**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
-
+**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅 [评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。

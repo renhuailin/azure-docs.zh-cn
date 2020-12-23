@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5dc1f8b8a7c46a3d6ad6f62d93bc91753e42c3ae
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75371932"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545034"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
 
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>配置连接字符串
 
-在 Azure 门户中导航到存储帐户。 在存储帐户的“设置”  下选择“访问密钥”  。 从主密钥或辅助密钥复制**连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 替换以下示例中的“\<storageConnectionString\>”：
+在 Azure 门户中导航到存储帐户。 在存储帐户的“设置”  下选择“访问密钥”  。 从主密钥或辅助密钥复制 **连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 替换以下示例中的“\<storageConnectionString\>”：
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
@@ -62,7 +62,7 @@ setx storageconnectionstring "<storageConnectionString>" /m
 dotnet run
 ```
 
-应用程序创建五个随机命名的容器，并开始将暂存目录中的文件上传到存储帐户。 应用程序将最小线程设置和 [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) 设置为 100，以确保在运行应用程序时允许大量并发连接。
+应用程序创建五个随机命名的容器，并开始将暂存目录中的文件上传到存储帐户。 应用程序将最小线程设置和 [DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 设置为 100，以确保在运行应用程序时允许大量并发连接。
 
 除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
 

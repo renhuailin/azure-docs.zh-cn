@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e1575ee02a520fd39a1c659eadaeda5822207539
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171130"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967578"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什么是 Azure 上的 SAP HANA（大型实例）？
 
@@ -28,7 +29,7 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 
 - **网络**：对于分配了租户的每个客户，通过虚拟网络实现基础结构堆栈中的客户隔离。 一个租户分配给单个客户。 一个客户可以具有多个租户。 租户的网络隔离禁止基础结构模具级别中的租户之间进行网络通信，即使租户属于同一个客户。
 - **存储组件**：通过分配了存储卷的存储虚拟机实现隔离。 存储卷只能分配给一个存储虚拟机。 存储虚拟机以独占方式分配给 SAP HANA TDI 认证的基础结构堆栈中的单个租户。 因此，只能在一个特定相关租户中访问分配给存储虚拟机的存储卷。 这些存储卷在部署的不同租户之间不可见。
-- **服务器或主机**：服务器或主机单元不在客户或租户之间进行共享。 部署到客户的服务器或主机是分配给单个租户的原子裸机计算单元。 不使用硬件分区或软分区，这可能会导致某个客户与其他客户共享主机或服务器。** 分配给特定租户的存储虚拟机的存储卷会装载到这类服务器。 可以按独占方式向一个租户分配具有不同 SKU 的一个到多个服务器单元。
+- **服务器或主机**：服务器或主机单元不在客户或租户之间进行共享。 部署到客户的服务器或主机是分配给单个租户的原子裸机计算单元。 不使用硬件分区或软分区，这可能会导致某个客户与其他客户共享主机或服务器。 分配给特定租户的存储虚拟机的存储卷会装载到这类服务器。 可以按独占方式向一个租户分配具有不同 SKU 的一个到多个服务器单元。
 - 在 Azure 上的 SAP HANA（大型实例）基础结构模具中，会部署许多不同的租户，并通过网络、存储和计算级别上的租户概念使它们相互隔离。 
 
 
@@ -36,10 +37,10 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 
 截止2019年7月，我们将不同的 HANA 大型实例标记和部署位置的两个不同版本区分开来：
 
-- "修订版本 3" （修订版3）：是在2019年7月之前供客户部署的 stamp
-- "修订版本 4" （Rev 4）：在接近 Azure VM 主机的情况中部署的新的戳记设计，到目前为止，在 Azure 区域中发布：
+- "修订版 3" (Rev 3) ：是可供客户在2019年7月之前部署的 stamp
+- 修订版 4)  (Rev 4：在接近 Azure VM 主机的情况附近部署的新的戳记设计，到目前为止，在 Azure 区域中发布这些设计：
     -  美国西部 2 
-    -  East US 
+    -  美国东部 
     -  西欧
     -  北欧
 
@@ -49,14 +50,14 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 
 HANA 大型实例指南的不同文档涵盖以下几个方面：
 
-- [Azure 上的 SAP HANA （大型实例）概述和体系结构](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure 上的 SAP HANA （大型实例）基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA Azure 上的 (大型实例) 概述和体系结构](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA Azure 上的 (大型实例) 基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [安装和配置 Azure 上的 SAP HANA（大型实例）](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure 上的 SAP HANA （大型实例）高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA 在 Azure 上) 高可用性和灾难恢复 (大型实例](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 上的 SAP HANA（大型实例）的故障排除和监视](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [使用 STONITH 在 SUSE 中进行高可用性设置](./ha-setup-with-stonith.md)
 - [修订版3中的 II 类 Sku 的操作系统备份和还原](./os-backup-type-ii-skus.md)
-- [使用 Azure 保留节省 SAP HANA 大型实例](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
+- [使用 Azure 预留节省 SAP HANA 大型实例](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
-**后续步骤**
+后续步骤
 - 请参阅[了解术语](hana-know-terms.md)

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1031c34a44a253c7458ef78c6371b88014e882ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006426"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746476"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中创建端到端的数据管道以派生销售见解
 
@@ -27,13 +27,13 @@ ms.locfileid: "87006426"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure CLI - 至少为版本 2.2.0。 请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* Azure CLI - 至少为版本 2.2.0。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 * jq，一个命令行 JSON 处理程序。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
 * [Azure 内置角色 - 所有者](../role-based-access-control/built-in-roles.md)的一个成员。
 
-* 如果使用 PowerShell 来触发数据工厂管道，则需要 [Az 模块](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell 来触发数据工厂管道，则需要 [Az 模块](/powershell/azure/)。
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller)，用以可视化本教程结束时生成的业务见解。
 
@@ -93,7 +93,7 @@ ms.locfileid: "87006426"
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    如果不确定要指定哪个区域，可以使用 [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) 命令检索你的订阅支持的区域列表。
+    如果不确定要指定哪个区域，可以使用 [az account list-locations](/cli/azure/account#az-account-list-locations) 命令检索你的订阅支持的区域列表。
 
     该命令将部署以下资源：
 

@@ -37,12 +37,34 @@
           href: onboard-service-principal.md
         - name: 通过 PowerShell DSC 将计算机连接到 Azure Arc
           href: onboard-dsc.md
+        - name: 从 Windows Admin Center 连接计算机
+          href: onboard-windows-admin-center.md
+        - name: 通过 PowerShell 将计算机连接到 Azure Arc
+          href: onboard-powershell.md
     - name: 管理
       items:
-        - name: 管理和使用 Azure VM 扩展
-          href: manage-vm-extensions.md
+        - name: VM 扩展
+          items:
+            - name: 概述
+              href: manage-vm-extensions.md
+            - name: 通过门户管理扩展
+              href: manage-vm-extensions-portal.md
+            - name: 使用 CLI 管理扩展
+              href: manage-vm-extensions-cli.md
+            - name: 使用 PowerShell 管理扩展
+              href: manage-vm-extensions-powershell.md
+            - name: 使用 ARM 模板部署扩展
+              href: manage-vm-extensions-template.md
+        - name: 在服务器上使用托管标识
+          href: managed-identity-authentication.md
         - name: 管理代理
           href: manage-agent.md
+    - name: 方案
+      items:
+        - name: 加入 Azure Sentinel
+          href: scenario-onboard-azure-sentinel.md
+        - name: 加入 Azure 安全中心
+          href: ../../security-center/quickstart-onboard-machines.md
     - name: 疑难解答
       items:
         - name: 代理连接问题
@@ -53,8 +75,26 @@
   items:
     - name: 数据驻留
       href: data-residency.md
+    - name: Azure CLI
+      href: /cli/azure/ext/connectedmachine/connectedmachine
+    - name: Azure PowerShell
+      href: /powershell/module/az.connectedmachine
+    - name: .NET
+      href: /dotnet/api/overview/azure/hybridcompute/management
     - name: REST
       href: /rest/api/hybridcompute
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
+    - name: Java
+      href: /java/api/overview/azure/compute/resourcemanagement
+    - name: Javascript
+      href: /javascript/api/%40azure/arm-hybridcompute
+    - name: Python
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: 资源
+  items:
+    - name: Azure Arc 快速入门
+      href: 'https://github.com/microsoft/azure_arc'

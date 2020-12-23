@@ -8,14 +8,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691905"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041628"
 ---
-# <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>将规范化的数据库架构从 Azure SQL 数据库迁移到 Azure CosmosDB 不规范容器
+# <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>将规范化数据库架构从 Azure SQL 数据库迁移到 Azure CosmosDB 非规范化容器
 
 本指南将介绍如何在 Azure SQL 数据库中使用现有的规范化数据库架构，并将其转换为 Azure CosmosDB 不规范架构，以便加载到 Azure CosmosDB。
 
@@ -46,11 +46,11 @@ FROM SalesLT.SalesOrderHeader o;
 
 ## <a name="create-a-pipeline"></a>创建管道
 
-1. 选择 " **+ 新建管道**" 以创建新管道。
+1. 选择 " **+ 新建管道** " 以创建新管道。
 
 2. 添加数据流活动
 
-3. 在 "数据流" 活动中，选择 "**新建映射**数据流"。
+3. 在 "数据流" 活动中，选择 " **新建映射** 数据流"。
 
 4. 我们将在下面构造此数据流图形
 
@@ -96,15 +96,15 @@ FROM SalesLT.SalesOrderHeader o;
 
 19. 在接收器设置中，将键分区为 ```\SalesOrderID``` 并将操作集合为 "重新创建"。 请确保 "映射" 选项卡如下所示：
 
-![接收器设置](media/data-flow/cosmosb7.png)
+![屏幕截图显示 "映射" 选项卡。](media/data-flow/cosmosb7.png)
 
 20. 单击 "数据预览" 以确保你看到将以下32行设置为在新容器中插入新文档：
 
-![接收器设置](media/data-flow/cosmosb8.png)
+![屏幕截图显示 "数据预览" 选项卡。](media/data-flow/cosmosb8.png)
 
 如果一切正常，现在可以创建新的管道，将此数据流活动添加到该管道并执行它。 可以从调试或触发的运行执行。 几分钟后，你的 CosmosDB 数据库中应该有一个名为 "orders" 的新的非规范化容器。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用映射数据流[转换](concepts-data-flow-overview.md)生成数据流逻辑的其余部分。
+* 使用映射数据流 [转换](concepts-data-flow-overview.md)生成数据流逻辑的其余部分。
 * 下载本教程的[已完成管道模板](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/SQL%20Orders%20to%20CosmosDB.zip)，然后将模板导入工厂。

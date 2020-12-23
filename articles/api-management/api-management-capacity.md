@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f4eb90cc0e8867230c7fb1a2a169b5ba0126e46a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205883"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081053"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理实例的容量
 
-**容量**是最重要的 [Azure Monitor 指标](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis)，在是否扩展 API 管理实例以容纳更多负载方面，它可以帮助做出明智的决策。 容量的构造比较复杂，并且会施加特定的行为。
+**容量** 是最重要的 [Azure Monitor 指标](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis)，在是否扩展 API 管理实例以容纳更多负载方面，它可以帮助做出明智的决策。 容量的构造比较复杂，并且会施加特定的行为。
 
-本文介绍**容量**的定义及其行为。 其中介绍了如何在 Azure 门户中访问**容量**指标，并建议何时应考虑扩展或升级 API 管理实例。
+本文介绍 **容量** 的定义及其行为。 其中介绍了如何在 Azure 门户中访问 **容量** 指标，并建议何时应考虑扩展或升级 API 管理实例。
 
 > [!IMPORTANT]
-> 本文介绍如何基于容量指标来监视和缩放 Azure API 管理实例。 但是，同样重要的是要了解当单个 API 管理实例实际上*达到*其容量时会发生什么情况。 Azure API 管理不会应用任何服务级别限制来防止实例的物理过载。 当实例达到其物理容量时，它的行为将类似于任何无法处理传入请求的过载 Web 服务器：延迟将增加，连接将丢弃，将发生超时错误，等等。这意味着 API 客户端应该准备好处理这种可能性，就像处理任何其他外部服务一样（例如，通过应用重试策略）。
+> 本文介绍如何基于容量指标来监视和缩放 Azure API 管理实例。 但是，同样重要的是要了解当单个 API 管理实例实际上 *达到* 其容量时会发生什么情况。 Azure API 管理不会应用任何服务级别限制来防止实例的物理过载。 当实例达到其物理容量时，它的行为将类似于任何无法处理传入请求的过载 Web 服务器：延迟将增加，连接将丢弃，将发生超时错误，等等。这意味着 API 客户端应该准备好处理这种可能性，就像处理任何其他外部服务一样（例如，通过应用重试策略）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,47 +42,47 @@ ms.locfileid: "86205883"
 
 ## <a name="what-is-capacity"></a>什么是容量
 
-![容量指标](./media/api-management-capacity/capacity-ingredients.png)
+![介绍容量指标的关系图。](./media/api-management-capacity/capacity-ingredients.png)
 
-**容量**是 API 管理实例中负载的指标。 它反映资源用量（CPU、内存）和网络队列的长度。 CPU 和内存用量反映以下对象的资源消耗量：
+**容量** 是 API 管理实例中负载的指标。 它反映资源用量（CPU、内存）和网络队列的长度。 CPU 和内存用量反映以下对象的资源消耗量：
 
 + API 管理数据平面服务（如请求处理）可以包括转发请求或运行策略。
 + API 管理管理平面服务，例如通过 Azure 门户或 ARM 应用的管理操作，或者来自[开发人员门户](api-management-howto-developer-portal.md)的负载。
-+ 选择的操作系统进程，包括涉及新连接上的 TLS 握手开销的进程。
++ 选定的操作系统进程，包括在新连接上造成 TLS 握手开销的进程。
 
-总**容量**是 API 管理实例的每个单元中容量自有值的平均值。
+总 **容量** 是 API 管理实例的每个单元中容量自有值的平均值。
 
-虽然**容量指标**旨在显示 API 管理实例出现的问题，但是在某些情况下，问题不会反映在**容量指标**的更改中。
+虽然 **容量指标** 旨在显示 API 管理实例出现的问题，但是在某些情况下，问题不会反映在 **容量指标** 的更改中。
 
 ## <a name="capacity-metric-behavior"></a>容量指标行为
 
-由于这种构造，在现实中，**容量**可能受到多种可变因素的影响，例如：
+由于这种构造，在现实中， **容量** 可能受到多种可变因素的影响，例如：
 
 + 连接模式（是根据请求创建新连接，还是重复使用现有连接）
 + 请求和响应的大小
 + 在每个 API 中配置的策略数，或发送请求的客户端数。
 
-请求中的操作越复杂，**容量**消耗就越高。 例如，复杂转换策略消耗的 CPU 比简单的请求转发要高得多。 后端服务响应速度较慢也会增大消耗量。
+请求中的操作越复杂， **容量** 消耗就越高。 例如，复杂转换策略消耗的 CPU 比简单的请求转发要高得多。 后端服务响应速度较慢也会增大消耗量。
 
 > [!IMPORTANT]
-> **容量**不是所处理请求数量的直接度量值。
+> **容量** 不是所处理请求数量的直接度量值。
 
 ![容量指标高峰](./media/api-management-capacity/capacity-spikes.png)
 
-**容量**还可能会出现间歇性的高峰或大于零，即使未处理任何请求。 之所以发生这种情况，是因为存在系统或平台特定的操作。在决定是否缩放实例时，不应考虑这些因素。
+**容量** 还可能会出现间歇性的高峰或大于零，即使未处理任何请求。 之所以发生这种情况，是因为存在系统或平台特定的操作。在决定是否缩放实例时，不应考虑这些因素。
 
-低**容量指标**并不一定意味着 API 管理实例没有遇到任何问题。
+低 **容量指标** 并不一定意味着 API 管理实例没有遇到任何问题。
   
 ## <a name="use-the-azure-portal-to-examine-capacity"></a>使用 Azure 门户检查容量
   
 ![容量指标](./media/api-management-capacity/capacity-metric.png)  
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 APIM 实例。
-2. 选择“指标”  。
-3. 在紫色部分，从可用指标中选择“容量”，并保留默认的“平均值”聚合。  
+2. 选择“指标”。
+3. 在紫色部分，从可用指标中选择“容量”，并保留默认的“平均值”聚合。 
 
     > [!TIP]
-    > 为避免解释错误，**容量**指标始终按位置分解。
+    > 为避免解释错误， **容量** 指标始终按位置分解。
 
 4. 在绿色部分选择“位置”，以便按维度拆分指标。 
 5. 从该部分的顶部栏中选择所需的时间范围。
@@ -95,11 +95,11 @@ ms.locfileid: "86205883"
 
 ## <a name="use-capacity-for-scaling-decisions"></a>使用容量做出缩放决策
 
-在是否扩展 API 管理实例以容纳更多负载方面，**容量**指标可以帮助做出决策。 请考虑：
+在是否扩展 API 管理实例以容纳更多负载方面， **容量** 指标可以帮助做出决策。 请注意以下几点：
 
 + 查看长期趋势和平均值。
 + 忽略往往与负载提高无关的突发高峰（请参阅“容量指标行为”部分中的说明）。
-+ 当**容量**值长时间（例如 30 分钟）超过 60% 或 70% 时，请升级或扩展实例。 不同的值可能更适合服务或方案。
++ 当 **容量** 值长时间（例如 30 分钟）超过 60% 或 70% 时，请升级或扩展实例。 不同的值可能更适合服务或方案。
 
 >[!TIP]  
 > 如果能够事先估算流量，请在预期的工作负荷上测试 APIM 实例。 可在租户中逐渐增大请求负载，并监视哪个容量指标值对应于峰值负载。 遵循上一部分中的步骤，使用 Azure 门户了解在任意给定时间使用的容量。
@@ -107,4 +107,4 @@ ms.locfileid: "86205883"
 ## <a name="next-steps"></a>后续步骤
 
 - [如何扩展或升级 Azure API 管理服务实例](upgrade-and-scale.md)
-- [优化并节省云支出](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [优化并节省云支出](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

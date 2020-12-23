@@ -10,13 +10,13 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9c742ca2fd9779589a3c8aea7f030460c5db8b5d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 2f57e801720c6b546a58b216422629d192e8d2e6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994136"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843309"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>用 Azure Key Vault 托管 HSM (预览版中存储的客户托管密钥配置加密) 
 
@@ -31,7 +31,7 @@ Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况�
 
 首先，将系统分配的托管标识分配给存储帐户。 你将使用此托管标识向存储帐户授予访问托管 HSM 的权限。 有关系统分配的托管标识的详细信息，请参阅 [Azure 资源的托管标识是什么？](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-若要使用 Azure CLI 分配托管标识，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update)。 请记住，用自己的值替换括号中的占位符值：
+若要使用 Azure CLI 分配托管标识，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update)。 请记得将括号中的占位符值替换为你自己的值：
 
 ```azurecli
 az storage account update \
@@ -64,7 +64,7 @@ az keyvault role assignment create \
 
 最后，使用客户管理的密钥配置 Azure 存储加密，以使用存储在托管 HSM 中的密钥。 支持的密钥类型包括 RSA-HSM 密钥，大小为2048、3072和4096。 安装 Azure CLI 2.12.0 或更高版本，以便在托管 HSM 中将加密配置为使用客户管理的密钥。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-若要自动更新客户托管密钥的密钥版本，请在使用存储帐户的客户托管密钥配置加密时省略密钥版本。 请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update)，以便更新存储帐户的加密设置，如以下示例所示。 包含 `--encryption-key-source parameter` 并将其设置为， `Microsoft.Keyvault` 以便为帐户启用客户管理的密钥。 请记得将括号中的占位符值替换为你自己的值。
+若要自动更新客户管理的密钥的密钥版本，请在使用存储帐户的客户管理的密钥配置加密时省略密钥版本。 请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update)，以便更新存储帐户的加密设置，如以下示例所示。 包含 `--encryption-key-source parameter` 并将其设置为， `Microsoft.Keyvault` 以便为帐户启用客户管理的密钥。 请记得将括号中的占位符值替换为你自己的值。
 
 ```azurecli
 hsmurl = $(az keyvault show \
@@ -92,7 +92,7 @@ az storage account update
     --encryption-key-vault $hsmurl
 ```
 
-手动更新密钥版本时，需要将存储帐户的加密设置更新为使用新版本。 首先，通过调用 [az keyvault show](/cli/azure/keyvault#az-keyvault-show) 查询 Key Vault URI，并通过调用 [az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) 查询密钥版本。 然后调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update) 来更新存储帐户的加密设置，以使用新的密钥版本，如上一示例所示。
+手动更新密钥版本时，需要更新存储帐户的加密设置以使用新版本。 首先，通过调用 [az keyvault show](/cli/azure/keyvault#az-keyvault-show) 查询 Key Vault URI，并通过调用 [az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) 查询密钥版本。 然后调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update) 来更新存储帐户的加密设置，以使用新的密钥版本，如上一示例所示。
 
 ## <a name="next-steps"></a>后续步骤
 

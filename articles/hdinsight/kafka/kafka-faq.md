@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436892"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532538"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>有关 Azure HDInsight 中的 Apache Kafka 的常见问题解答
 
@@ -42,7 +42,7 @@ HDInsight Kafka 群集包含以下资源：
 
 ## <a name="can-i-change-cluster-configurations"></a>是否可以更改群集配置？
 
-是的，可通过 Ambari 门户更改。 门户中的每个组件都附带一个“配置”部分，可在该部分更改组件配置。**** 某些更改可能需要重启代理。
+是的，可通过 Ambari 门户更改。 门户中的每个组件都附带一个“配置”部分，可在该部分更改组件配置。  某些更改可能需要重启代理。
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>对于 Apache Kafka，HDInsight 支持哪种类型的身份验证？
 
@@ -68,7 +68,7 @@ HDInsight Kafka 群集包含以下资源：
 
 ## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kafka 群集是否可与 Databricks 配合使用？ 
 
-是的，Kafka 群集可以与 Databricks 配合使用，但前提是它们位于同一 VNet 中。 若要将 Kafka 群集与 Databricks 配合使用，请创建一个包含 HDInsight Kafka 群集的 VNet，然后在创建 Databricks 工作区并使用 VNet 注入时指定该 VNet。 有关详细信息，请参阅[在 Azure 虚拟网络（VNet 注入）中部署 Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。 创建 Databricks 工作区时，需要提供 Kafka 群集的启动代理名称。 若要了解如何检索 Kafka 代理名称，请参阅[获取 Apache Zookeeper 主机和代理主机信息](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo)。
+是的，Kafka 群集可以与 Databricks 配合使用，但前提是它们位于同一 VNet 中。 若要将 Kafka 群集与 Databricks 配合使用，请创建一个包含 HDInsight Kafka 群集的 VNet，然后在创建 Databricks 工作区并使用 VNet 注入时指定该 VNet。 有关详细信息，请参阅[在 Azure 虚拟网络（VNet 注入）中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。 创建 Databricks 工作区时，需要提供 Kafka 群集的启动代理名称。 若要了解如何检索 Kafka 代理名称，请参阅[获取 Apache Zookeeper 主机和代理主机信息](./apache-kafka-get-started.md#getkafkainfo)。
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>如何获得最大的数据持久性？
 

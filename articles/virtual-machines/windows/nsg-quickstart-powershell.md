@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure PowerShell 打开指向 VM 的端口
-description: 了解如何使用 Azure Resource Manager 部署模型和 Azure PowerShell 在 Windows VM 上打开端口/创建终结点
+description: 了解如何使用 Azure PowerShell 为 VM 打开端口/创建终结点
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0eca3f2fea3cf72b05b301ae307c1179f9bca0be
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a432ce978f6fa9e3a472cb15e9ef9241bc41004d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072360"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891748"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>如何在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>如何使用 PowerShell 打开 VM 的端口和终结点
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>快速命令
@@ -91,5 +91,5 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 在本示例中，创建了简单的规则来允许 HTTP 流量。 下列文章更介绍了有关创建更详细环境的信息：
 
 * [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)
-* [什么是网络安全组？](../../virtual-network/security-overview.md)
+* [什么是网络安全组？](../../virtual-network/network-security-groups-overview.md)
 * [Azure 负载均衡器概述](../../load-balancer/load-balancer-overview.md)

@@ -1,24 +1,24 @@
 ---
-title: 教程 - 使用 Terraform 预配 Azure Spring Cloud 实例
+title: 使用 Terraform 预配 Azure Spring Cloud 实例
 description: 使用 Terraform 预配 Azure Spring Cloud 实例。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 4ef08ea03cab711901225cab227a0f5f84055d7a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906822"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533785"
 ---
-# <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>教程：使用 Terraform 预配 Azure Spring Cloud 实例
+# <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>使用 Terraform 预配 Azure Spring Cloud 实例
 
 本文适用于：✔️ Java ✔️ C#
 
-本教程使用 Terraform 创建 Azure Spring Cloud 实例。 这些过程将引导你完成以下资源的创建：
+本示例使用 Terraform 创建 Azure Spring Cloud 实例。 这些过程将引导你完成以下资源的创建：
 
 > [!div class="checklist"]
 > * 资源组
@@ -33,13 +33,13 @@ ms.locfileid: "90906822"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ## <a name="create-configuration-file"></a>创建配置文件
 
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 打开 [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell)。
+1. 打开 [Azure Cloud Shell](../app-service/quickstart-java.md#use-azure-cloud-shell)。
 
 1. 启动 Cloud Shell 编辑器：
 
@@ -161,7 +161,7 @@ ms.locfileid: "90906822"
 
 如果不再需要本教程中创建的资源，请将其删除。
 
-运行 [terraform destroy](https://www.terraform.io/docs/commands/destroy.html) 命令以删除在本教程中创建的 Azure 资源：
+运行 [terraform destroy](https://www.terraform.io/docs/commands/destroy.html) 命令，删除在本练习中创建的 Azure 资源：
 
 ```bash
 terraform destroy -auto-approve
@@ -170,4 +170,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [安装并配置 Terraform 以预配 Azure 资源](https://docs.microsoft.com/azure/developer/terraform/getting-started-cloud-shell)。
+> [安装并配置 Terraform 以预配 Azure 资源](/azure/developer/terraform/getting-started-cloud-shell)。

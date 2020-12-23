@@ -1,23 +1,19 @@
 ---
 title: HC 系列 VM 大小性能
 description: 了解 Azure 中 HC 系列 VM 大小的性能测试结果。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
-ms.openlocfilehash: 0d63d9770dacf6a200e8b81e8d47d9f807a8a448
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.reviewer: cynthn
+ms.openlocfilehash: e1abe4b87bd5be98dad8e43d604f833eae3854e7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603414"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966949"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC 系列虚拟机大小
 
@@ -26,7 +22,7 @@ ms.locfileid: "90603414"
 | 工作负荷                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | STREAM Triad                                    | 190 GB/s (Intel LIP.MLC AVX-512)   |
-| 高性能 Linpack (HPL.DAT)                   | 3520 GigaFLOPS (Rpeak) ，2970 GigaFLOPS (Rmax)  |
+| High-Performance Linpack (HPL.DAT)                   | 3520 GigaFLOPS (Rpeak) ，2970 GigaFLOPS (Rmax)  |
 | RDMA 延迟 & 带宽                        | 1.05 微秒，96.8 Gb/秒   |
 | 本地 NVMe SSD 上的 FIO                           | 1.3 GB/s 读取，900 MB/秒写入 |  
 | IOR on 4 Azure 高级 SSD (P30 托管磁盘，RAID0) * *  | 780 MB/s 读取，780 MB/写入 |

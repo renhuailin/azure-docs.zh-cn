@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574137"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370689"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保护 Azure Data Lake Storage Gen1 中存储的数据
-保护 Azure Data Lake Storage Gen1 中的数据包含三个步骤。  必须同时设置基于角色的访问控制 (RBAC) 和访问控制列表 (ACL) 才能为用户和安全组完全启用对数据的访问权限。
+保护 Azure Data Lake Storage Gen1 中的数据包含三个步骤。  Azure RBAC) 和访问控制 (列表 (支持 Azure RBAC 的访问控制) 必须设置为完全启用用户和安全组对数据的访问权限。
 
 1. 首先，Azure Active Directory (Azure AD) 中创建安全组。 这些安全组用于实现 Azure RBAC) 在 Azure 门户中的基于角色的访问控制 (。 有关详细信息，请参阅 [AZURE RBAC](../role-based-access-control/role-assignments-portal.md)。
 2. 向 Data Lake Storage Gen1 帐户分配 Azure AD 安全组。 这会控制从门户访问 Data Lake Storage Gen1 帐户的访问权限和从门户或 API 的管理操作。
@@ -39,7 +39,7 @@ ms.locfileid: "91574137"
 有关如何创建 Azure AD 安全组以及如何将用户添加到组的说明，请参阅 [管理 Azure Active Directory 中的安全组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 > [!NOTE] 
-> 可以使用 Azure 门户在 Azure AD 中向组添加用户和其他组。 不过，要将服务主体添加到组，请使用 [Azure AD 的 PowerShell 模块](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)。
+> 可以使用 Azure 门户在 Azure AD 中向组添加用户和其他组。 不过，要将服务主体添加到组，请使用 [Azure AD 的 PowerShell 模块](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)。
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs
@@ -68,7 +68,7 @@ ms.locfileid: "91574137"
     对于数据操作，各个文件系统权限定义用户可执行的操作。 因此，具有 Reader 角色的用户仅可查看与该帐户关联的管理设置，但视向其分配的文件系统权限而定，可能可以读取或写入数据。 Data Lake Storage Gen1 文件系统权限说明参见[将安全组作为 ACL 分配到 Azure Data Lake Storage Gen1 文件系统](#filepermissions)。
 
     > [!IMPORTANT]
-    > 只有“所有者”**** 角色可以自动启用文件系统访问权限。 “参与者”、“读者”和所有其他角色需要通过 ACL 来启用对文件夹和文件的任何级别的访问权限。********  “所有者”角色提供无法通过 ACL 替代的超级用户文件和文件夹权限。**** 有关 RBAC 策略如何映射到数据访问权限的详细信息，请参阅[用于帐户管理的 RBAC](data-lake-store-security-overview.md#rbac-for-account-management)。
+    > 只有“所有者”**** 角色可以自动启用文件系统访问权限。 “参与者”、“读者”和所有其他角色需要通过 ACL 来启用对文件夹和文件的任何级别的访问权限。********  “所有者”角色提供无法通过 ACL 替代的超级用户文件和文件夹权限。**** 有关 Azure RBAC 策略如何映射到数据访问的详细信息，请参阅 [用于帐户管理的 AZURE rbac](data-lake-store-security-overview.md#azure-rbac-for-account-management)。
 
 4. 如果希望添加“添加权限”边栏选项卡中未列出的组/用户,则可以通过在“选择”文本框中键入其电子邮件地址然后从列表中选择他们来邀请他们。********
    
@@ -147,11 +147,11 @@ Data Lake Storage Gen1 允许进一步在网络级别锁定访问权限。 可�
    
     !["访问" 边栏选项卡，其中包含名为 "out" 的数据工程选项和 "访问详细信息" 边栏选项卡和 "删除" 选项。](./media/data-lake-store-secure-data/adl.remove.acl.png "分配权限给组")
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [通过 PowerShell 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-powershell.md)
-* [通过 .NET SDK 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-net-sdk.md)
+* [通过 .NET SDK 开始使用 Data Lake Storage Gen1](data-lake-store-get-started-net-sdk.md)
 * [访问 Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)

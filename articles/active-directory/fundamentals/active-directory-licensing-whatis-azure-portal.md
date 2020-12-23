@@ -14,16 +14,16 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb0c1773a08bc934eebc4f110cec43e4b07e49e
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565049"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369805"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可是什么？
 
-Microsoft 付费的云服务（如 Microsoft 365、企业移动性 + 安全性、Dynamics 365 和其他类似产品）需要许可证。 这些许可证将分配给需要访问这些服务的每个用户。 若要管理许可证，管理员可以使用某种管理门户（Office 或 Azure）和 PowerShell cmdlet。 Azure Active Directory (Azure AD) 是支持所有 Microsoft 云服务的标识管理的底层基础结构。 Azure AD 存储有关用户许可证分配状态的信息。
+Microsoft 付费云服务（如 Microsoft 365、企业移动性 + 安全性、Dynamics 365 及其他类似产品）需要许可证。 这些许可证将分配给需要访问这些服务的每个用户。 若要管理许可证，管理员可以使用某种管理门户（Office 或 Azure）和 PowerShell cmdlet。 Azure Active Directory (Azure AD) 是支持所有 Microsoft 云服务的标识管理的底层基础结构。 Azure AD 存储有关用户许可证分配状态的信息。
 
 到目前为止，只能在单个用户级别分配许可证，因此，大规模管理可能会变得困难。 例如，若要根据组织变化（例如用户加入或离开组织或部门）添加或删除用户许可证，管理员通常必须编写一个复杂的 PowerShell 脚本。 此脚本对云服务进行单独的调用。
 
@@ -32,9 +32,9 @@ Microsoft 付费的云服务（如 Microsoft 365、企业移动性 + 安全性�
 ## <a name="licensing-requirements"></a>许可要求
 必须具有以下许可证之一才能使用基于组的许可：
 
-- Azure AD Premium P1 和更高版本的付费或试用订阅
+- Azure AD Premium P1 及更高版本的付费或试用订阅
 
-- 付费或试用版 Office 365 企业版 E3 或 Office 365 A3 或 office 365 GCC G3 或 Office 365 E3 for GCCH 或 Office 365 E3 for DOD 及更高版本
+- 付费版或试用版 Office 365 企业版 E3 或 Office 365 A3 或 Office 365 GCC G3 或 Office 365 E3 for GCCH 或 Office 365 E3 for DOD 及更高版本
 
 ### <a name="required-number-of-licenses"></a>所需许可证数
 对于分配了许可证的任何组，你还必须具有用于每个唯一成员的许可证。 虽然不是必须为组的每个成员分配一个许可证，但是你必须至少具有足够的许可证来包括所有成员。 例如，如果你的租户中经许可的组有 1,000 个唯一成员，则必须至少具有 1,000 个许可证才满足许可协议。
@@ -45,7 +45,7 @@ Microsoft 付费的云服务（如 Microsoft 365、企业移动性 + 安全性�
 
 - 可以将许可证分配到 Azure AD 中的任何安全组。 可以使用 Azure AD Connect 从本地同步安全组。 还可以在 Azure AD 中直接创建安全组（也称为仅限云的组），或通过 Azure AD 的动态组功能自动创建安全组。
 
-- 将产品许可证分配到组时，管理员可以禁用产品中的一个或多个服务计划。 通常，在组织尚未准备好开始使用产品中包含的服务时会执行此分配。 例如，管理员可能会将 Microsoft 365 分配给某个部门，但会暂时禁用 Yammer 服务。
+- 将产品许可证分配到组时，管理员可以禁用产品中的一个或多个服务计划。 通常，在组织尚未准备好开始使用产品中包含的服务时会执行此分配。 例如，管理员可能会将 Microsoft 365 分配给某个部门，但暂时禁用 Yammer 服务。
 
 - 支持需要用户级许可的所有 Microsoft 云服务。 此支持包括所有 Microsoft 365 产品、企业移动性 + 安全性和 Dynamics 365。
 
@@ -65,9 +65,9 @@ Microsoft 付费的云服务（如 Microsoft 365、企业移动性 + 安全性�
 
 若要详细了解通过基于组的许可进行许可证管理的其他方案，请参阅：
 
-* [将许可证分配到 Azure Active Directory 中的组](../users-groups-roles/licensing-groups-assign.md)
-* [识别和解决 Azure Active Directory 中组的许可问题](../users-groups-roles/licensing-groups-resolve-problems.md)
-* [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](../users-groups-roles/licensing-groups-migrate-users.md)
-* [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Azure Active Directory 基于组的许可的其他方案](../users-groups-roles/licensing-group-advanced.md)
-* [Azure Active Directory 中基于组的许可的 PowerShell 示例](../users-groups-roles/licensing-ps-examples.md)
+* [将许可证分配到 Azure Active Directory 中的组](../enterprise-users/licensing-groups-assign.md)
+* [识别和解决 Azure Active Directory 中组的许可问题](../enterprise-users/licensing-groups-resolve-problems.md)
+* [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](../enterprise-users/licensing-groups-migrate-users.md)
+* [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](../enterprise-users/licensing-groups-change-licenses.md)
+* [Azure Active Directory 基于组的许可的其他方案](../enterprise-users/licensing-group-advanced.md)
+* [Azure Active Directory 中基于组的许可的 PowerShell 示例](../enterprise-users/licensing-ps-examples.md)

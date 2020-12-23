@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 893b2eefc2c4c81e66bf86a1c999a3c4198a3c71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7d7ecf4751e9f3fe2051feb64a94e828e00bf106
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883830"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339486"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>使用 Azure 安全中心加强安全态势
 本文可帮助你加强安全态势。 使用 Azure 安全中心的监视功能，确保资源安全性尽可能严格，并监视策略符合性。
@@ -38,4 +38,4 @@ ms.locfileid: "90883830"
 
 * [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何在 Azure 安全中心配置安全设置。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
-* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状况。
+* [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-integration.md)：了解如何监视合作伙伴解决方案的运行状况。

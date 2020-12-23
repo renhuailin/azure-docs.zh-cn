@@ -1,7 +1,7 @@
 ---
 title: 训练 PyTorch 模型
 titleSuffix: Azure Machine Learning
-description: 学习如何从头开始训练 pytorch 模型或对其进行优化。
+description: 使用 Azure 机器学习设计器中的 "定型 Pytorch 模型" 模块来从头开始定型模型，或对现有模型进行微调。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439094"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420659"
 ---
 # <a name="train-pytorch-model"></a>训练 PyTorch 模型
 
-本文介绍如何使用 Azure 机器学习设计器中的 " **训练 Pytorch" 模型** 模块来训练 Pytorch 模型，如 DenseNet。 训练在你定义模型并设置其参数后进行，并且需要带标签的数据。 
+本文介绍了如何使用 Azure 机器学习设计器中的“训练 Pytorch 模型”模块来训练 pytorch 模型（例如 DenseNet）。 训练在你定义模型并设置其参数后进行，并且需要带标签的数据。 
 
 ## <a name="how-to-use-train-pytorch-model"></a>如何使用“训练 PyTorch 模型” 
 

@@ -8,39 +8,48 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462541"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903983"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
-另请参阅 [已连接的工厂特定常见问题](iot-accelerators-faq-cf.md) 和 [远程监视特定的常见问题](iot-accelerators-faq-rm-v2.md) 。
+另请参阅 [连接工厂特定的常见问题](iot-accelerators-faq-cf.md)。
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>在哪里可以找到此解决方案加速器的源代码？
 
 源代码存储在以下 GitHub 存储库中：
 
-* [远程监视解决方案加速器 (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [远程监视解决方案加速器 (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [预测性维护解决方案加速器](https://github.com/Azure/azure-iot-predictive-maintenance)
 * [连接工厂解决方案加速器](https://github.com/Azure/azure-iot-connected-factory)
+* [设备模拟解决方案加速器](https://github.com/Azure/device-simulation-dotnet)
+
+### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>在哪里可以找到远程监视和预见性维护解决方案加速器？
+
+自2020年12月10日起，远程监视和预测性维护加速器已从 [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators) 站点中删除，不再适用于新部署。 这两个加速器的 GitHub 存储库已存档。 代码仍可供任何人访问，但存储库不会产生任何新的贡献。
+
+### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>现有远程监视和预见性维护部署会发生什么情况？
+
+现有部署不会受到远程监视和预测维护解决方案加速器的删除影响，并且将继续工作。 分叉的存储库也不会受到影响。 GitHub 上的主存储库已存档。
+
+### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>如何实现部署设备模拟解决方案加速器？
+
+若要部署设备模拟解决方案加速器，请参阅 [设备模拟](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) GitHub 存储库。
+
+### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>在哪里可以找到有关已删除解决方案加速器的信息？
+
+请参阅以前版本站点上的以下页面：
+
+* [远程监视](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+* [预测性维护](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>可以使用哪些 SDK 为解决方案加速器开发设备客户端？
 
 可以在 [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub 存储库中找到各种语言（C、NET、Java、Node.js、Python）的 IoT 设备 SDK。
 
 如果使用 DevKit 设备，可以在 [IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub 存储库中找到资源和示例。
-
-### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>新的微服务体系结构是否适用于所有三个解决方案加速器？
-
-目前，只有远程监视解决方案使用微服务体系结构，因为它涵盖最广泛的方案。
-
-### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>基于微服务的新开源体系结构在新的更新中提供哪些优势？
-
-过去两年以来，云体系结构已发生重大的演变。 微服务应运而生，是能够在不降低开发速度的情况下实现可伸缩性和灵活性的极佳模式。 此体系结构模式已在多种 Microsoft 服务内部使用，且获得了出色的可靠性和可伸缩性。 Microsoft 将这些知识付诸解决方案加速器的实践中，以便客户从中受益。
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>我是服务管理员，我想要更改我的订阅与特定 Azure AD 租户之间的目录映射。 如何完成此任务？
 
@@ -63,14 +72,6 @@ ms.locfileid: "89462541"
 
 如果确定拥有 Azure 订阅，请验证订阅的租户映射，并确保在下拉列表中选择正确的租户。 如果租户经验证是正确的，请按照上图，验证订阅与此 Azure AD 租户之间的映射。
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
-
-以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在中找到存档的文档 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 。
-
-### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>新的解决方案加速器是否在现有解决方案所在的同一地理区域中可用？
-
-是的，新的远程监视解决方案可在同一地理区域中使用。
-
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>删除 Azure 门户中的资源组与在 azureiotsolutions.com 中的解决方案加速器上单击 "删除" 之间有何区别？
 
 * 如果删除 [azureiotsolutions.com](https://www.azureiotsolutions.com/)中的解决方案加速器，则会删除在创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
@@ -78,7 +79,7 @@ ms.locfileid: "89462541"
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
 
-可以。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
+是的。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
 
@@ -87,10 +88,6 @@ ms.locfileid: "89462541"
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>在订阅中可以预配多少个 Azure Cosmos DB 实例？
 
 50 个。 可以创建 [Azure 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)提高此限制，但默认情况下，只能对每个订阅预配 50 个 Cosmos DB 实例。
-
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>在订阅中可以设置多少个免费必应地图 API？
-
-两个。 在一个 Azure 订阅中，只能创建两个面向企业的内部事务级别 1 必应地图计划。 默认情况下，远程监视解决方案是使用内部事务级别 1 计划预配的。 因此，如果不进行修改，则在订阅中只能设置最多两个远程监视解决方案。
 
 ### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>如果我有 Microsoft Azure for DreamSpark，是否可以创建解决方案加速器？
 
@@ -101,13 +98,11 @@ ms.locfileid: "89462541"
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>如何删除 Azure AD 租户？
 
-请参阅 Eric Golpe 的博客文章 [Walkthrough of Deleting an Azure AD Tenant](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)（有关删除 Azure AD 租户的演练）。
+请参阅 Eric Golpe 的博客文章 [Walkthrough of Deleting an Azure AD Tenant](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)（有关删除 Azure AD 租户的演练）。
 
 ### <a name="next-steps"></a>后续步骤
 
 还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
-* [探索远程监视解决方案加速器的功能](quickstart-remote-monitoring-deploy.md)
-* [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
 * [部署连接的工厂解决方案加速器](quickstart-connected-factory-deploy.md)
-* [从头保障 IoT 的安全](/azure/iot-fundamentals/iot-security-ground-up)
+* [从头保障 IoT 的安全](../iot-fundamentals/iot-security-ground-up.md)

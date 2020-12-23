@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: sstein
   ms.date: 05/27/2020
-  ms.openlocfilehash: 5e5cb6e8ea2b09272ffcf0387312260fc2a6bf1d
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: f8be335fed98d404687002f8c826e881d93e3a10
+  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91293690"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94556482"
 landingContent:
 - title: Azure VM 上的 SQL Server
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
     - text: 使用 Azure 门户进行管理
       url: windows/manage-sql-vm-portal.md
     - text: 注册到 SQL VM 资源提供程序
-      url: windows/sql-vm-resource-provider-register.md
+      url: windows/sql-agent-extension-manually-register-single-vm.md
     - text: 自动修补
       url: windows/automated-patching.md
     - text: 更改许可证类型
@@ -82,7 +82,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 可用性组 (Az CLI)
-      url: windows/availability-group-az-cli-configure.md
+      url: ./windows/availability-group-az-commandline-configure.md
     - text: 无群集的可用性组
       url: windows/availability-group-clusterless-workgroup-configure.md
     - text: FCI（存储空间直通）
@@ -104,7 +104,7 @@ landingContent:
     - text: 面向初学者的 Azure SQL
       url: https://aka.ms/azuresql4beginners
     - text: Azure SQL 基础知识
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+      url: /learn/paths/azure-sql-fundamentals/
     - text: Azure SQL 实操练习
       url: https://aka.ms/asqlworkshop
     - text: Azure SQL 集训营
@@ -140,8 +140,8 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/

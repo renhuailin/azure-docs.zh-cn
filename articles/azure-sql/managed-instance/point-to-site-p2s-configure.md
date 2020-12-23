@@ -12,25 +12,25 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91617683"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788360"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>快速入门：配置从本地到 Azure SQL 托管实例的点到站点连接
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-本快速入门演示如何使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)，通过点到站点连接从本地客户端计算机连接到 Azure SQL 托管实例。 有关点到站点连接的信息，请参阅[关于点到站点 VPN](../../vpn-gateway/point-to-site-about.md)
+本快速入门演示如何使用 [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)，通过点到站点连接从本地客户端计算机连接到 Azure SQL 托管实例。 有关点到站点连接的信息，请参阅[关于点到站点 VPN](../../vpn-gateway/point-to-site-about.md)
 
 ## <a name="prerequisites"></a>先决条件
 
 本快速入门：
 
 - 从[创建托管实例](instance-create-quickstart.md)中创建的资源着手。
-- 本地客户端计算机需要 PowerShell 5.1 和 Azure PowerShell 1.4.0 或更高版本。 必要时，请根据说明来[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)。
-- 本地客户端计算机上需要最新版本的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)。
+- 本地客户端计算机需要 PowerShell 5.1 和 Azure PowerShell 1.4.0 或更高版本。 必要时，请根据说明来[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps#install-the-azure-powershell-module)。
+- 本地客户端计算机上需要最新版本的 [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms)。
 
 ## <a name="attach-a-vpn-gateway-to-a-virtual-network"></a>将 VPN 网关连接到虚拟网络
 
@@ -80,19 +80,19 @@ ms.locfileid: "91617683"
 
 ## <a name="connect-to-the-vpn-connection"></a>连接到 VPN 连接
 
-1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“SQL 托管实例”虚拟网络，以便建立到此 VNet 的连接。  在下图中，VNet 名为 **MyNewVNet**。
+1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“SQL 托管实例”虚拟网络，以便建立到此 VNet 的连接。  在下图中，VNet 名为 **MyNewVNet** 。
 
     ![VPN 连接](./media/point-to-site-p2s-configure/vpn-connection.png)  
 2. 选择“连接” 。
 3. 在对话框中，选择“连接”。
 
-    ![VPN 连接](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+    ![突出显示“连接”按钮的屏幕截图。](./media/point-to-site-p2s-configure/vpn-connection2.png)  
 4. 当系统提示你连接管理器需要提升的特权才能更新路由表时，请选择“继续”。
 5. 在“用户帐户控制”对话框中选择“是”，继续下一步。
 
    已建立与 SQL 托管实例 VNet 的 VPN 连接。
 
-    ![VPN 连接](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![突出显示建立连接后的“已连接”消息的屏幕截图。](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>使用 SSMS 进行连接
 

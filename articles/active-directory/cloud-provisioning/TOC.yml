@@ -19,7 +19,7 @@
 - name: 概念
   items:
     - name: 什么是密码哈希同步？
-      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: 了解 Azure AD 架构、属性和表达式
       href: concept-attributes.md
     - name: 在 Azure Active Directory 中编写属性映射的表达式
@@ -48,10 +48,14 @@
       items:
         - name: 代理自动升级
           href: how-to-automatic-upgrade.md
+        - name: 代理注册表选项
+          href: how-to-manage-registry-options.md
     - name: 开发
       items:
         - name: 转换
           href: how-to-transformation.md
+        - name: 与 MS Graph API 的入站同步
+          href: how-to-inbound-synch-ms-graph.md
         - name: Azure AD 同步 API
           href: /graph/api/resources/synchronization-overview
     - name: 疑难解答
@@ -62,11 +66,13 @@
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: 参考
   items:
-    - name: Azure AD Connect 云预配代理版本历史记录
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Azure AD Connect 云同步代理版本历史记录
+      href: reference-version-history.md
     - name: Azure AD Connect 云预配常见问题解答
       href: reference-cloud-provisioning-faq.md
+    - name: AADCloudSyncTools PowerShell 模块
+      href: reference-powershell.md
     - name: 同步的属性
-      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: 基本 Active Directory 和 Azure AD 环境
       href: tutorial-basic-ad-azure.md

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899564"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561930"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上启用启用了 Arc 的 Kubernetes 群集的 PHP 留言簿无状态应用程序
 
@@ -25,12 +25,15 @@ ms.locfileid: "90899564"
 
 部署是使用 Azure Stack Edge Pro 设备上启用了 Arc 的 Kubernetes 群集上的 GitOps 来完成的。 
 
-此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
+此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](../azure-arc/kubernetes/overview.md)的概念。
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 在部署无状态应用程序之前，请确保已在设备和将用于访问该设备的客户端上完成以下先决条件：
+
+> [!NOTE]
+> 本文包含对字词从属的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
 
 ### <a name="for-device"></a>对于设备
 
@@ -44,7 +47,7 @@ ms.locfileid: "90899564"
 
 1. 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
   
-    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
@@ -79,7 +82,7 @@ ms.locfileid: "90899564"
 
 1. 请参阅 " **配置** " 并选择 " **+ 添加配置**"。
 
-    ![中转到配置](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
+    ![屏幕截图显示已选中 "添加配置" 的已启用 Azure Arc Kubernetes 群集。](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
 1. 在 " **添加配置**" 中，为字段输入适当的值，并选择 " **应用**"。
 
@@ -100,11 +103,11 @@ ms.locfileid: "90899564"
 
 1. 配置部署开始， **操作员状态** 显示为 " **挂起**"。 
 
-    ![中转到配置](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
+    ![屏幕截图显示在刷新时，启用了 Azure Arc 的 Kubernetes 群集处于挂起状态。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
 1. 部署需花费几分钟时间。 部署完成后， **操作员状态** 显示为 " **已安装**"。
 
-    ![中转到配置](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
+    ![屏幕截图显示处于已安装状态的已启用 Azure Arc Kubernetes 群集。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
 ## <a name="verify-deployment"></a>验证部署

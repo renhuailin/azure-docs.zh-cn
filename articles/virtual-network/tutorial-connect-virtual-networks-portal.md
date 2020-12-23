@@ -14,11 +14,11 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77201292"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017910"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
@@ -51,7 +51,7 @@ ms.locfileid: "77201292"
     |区域| 选择“美国东部”  。|
     |名称|myVirtualNetwork1|
 
-4. 在“IP 地址”  选项卡上，为“地址空间”  字段输入 10.0.0.0/16。 单击下面的“添加子网”  按钮，并输入 *Subnet1* 作为**子网名称**，输入 10.0.0.0/24 作为**子网地址范围**。
+4. 在“IP 地址”  选项卡上，为“地址空间”  字段输入 10.0.0.0/16。 单击下面的“添加子网”  按钮，并输入 *Subnet1* 作为 **子网名称**，输入 10.0.0.0/24 作为 **子网地址范围**。
 5. 选择“查看 + 创建”，然后选择“创建”。  
    
 5. 再次完成步骤 1-5，但需要做出以下更改：

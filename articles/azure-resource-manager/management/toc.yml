@@ -22,6 +22,8 @@
       href: resources-without-resource-group-limit.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: ./security-baseline.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -142,7 +144,7 @@
     - name: EA 订阅
       items:
         - name: 创建
-          href: ../../cost-management-billing/manage/programmatically-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
+          href: ../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: 授予创建权限
           href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: 资源提供程序和类型
@@ -178,6 +180,8 @@
       href: ./policy-reference.md
 - name: 资源
   items:
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-resource-manager
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: 定价计算器

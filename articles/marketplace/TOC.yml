@@ -15,7 +15,7 @@
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
 - name: 概念
   items:
-    - name: 发布选项和注意事项
+    - name: 列表选项
       href: determine-your-listing-type.md
     - name: 在商业市场中进行交易
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
@@ -37,6 +37,10 @@
           href: test-drive-technical-configuration.md
         - name: Azure 资源管理器体验版
           href: azure-resource-manager-test-drive.md
+        - name: 托管体验版的详细配置
+          href: test-drive-hosted-detailed-config.md
+        - name: 为托管体验版设置 Azure 订阅
+          href: test-drive-azure-subscription-setup.md
     - name: Azure 合作伙伴和客户使用情况归因
       href: azure-partner-customer-usage-attribution.md
     - name: 市场推广选项
@@ -46,7 +50,9 @@
         - name: 联合销售合作伙伴参与
           href: marketplace-co-sell.md
         - name: 合作伙伴中心的联合销售选项
-          href: partner-center-portal/commercial-marketplace-co-sell.md
+          href: commercial-marketplace-co-sell.md
+        - name: 从 OCP GTM 迁移联合销售解决方案
+          href: co-sell-solution-migration.md
         - name: 通过 CSP 合作伙伴转售
           href: cloud-solution-providers.md
         - name: 连接计划加入指南
@@ -79,16 +85,38 @@
   items:
     - name: 发布指南（按产品/服务类型）
       href: publisher-guide-by-offer-type.md
-    - name: 允许产品/服务向 Azure AD 进行身份验证
-      href: enable-appsource-marketplace-using-azure-ad.md
     - name: Azure 应用程序产品/服务
       items:
-        - name: 规划解决方案模板产品/服务
-          href: marketplace-solution-templates.md
-        - name: 规划托管应用程序产品/服务
-          href: marketplace-managed-apps.md
+        - name: 规划 Azure 应用程序产品/服务
+          items:
+            - name: 规划 Azure 应用程序产品/服务
+              href: plan-azure-application-offer.md
+            - name: 规划解决方案模板
+              href: plan-azure-app-solution-template.md
+            - name: 规划托管应用程序
+              href: plan-azure-app-managed-app.md
         - name: 创建和发布 Azure 应用程序产品/服务
-          href: partner-center-portal/create-new-azure-apps-offer.md
+          items:
+            - name: 创建 Azure 应用程序产品/服务
+              href: create-new-azure-apps-offer.md
+            - name: 配置 Azure 应用程序产品/服务属性
+              href: create-new-azure-apps-offer-properties.md
+            - name: 配置 Azure 应用程序产品/服务列表
+              href: create-new-azure-apps-offer-listing.md
+            - name: 添加预览受众
+              href: create-new-azure-apps-offer-preview.md
+            - name: 添加技术细节
+              href: create-new-azure-apps-offer-technical.md
+            - name: 创建计划
+              href: create-new-azure-apps-offer-plans.md
+            - name: 创建解决方案模板计划
+              href: create-new-azure-apps-offer-solution.md
+            - name: 创建托管应用程序计划
+              href: create-new-azure-apps-offer-managed.md
+            - name: 测试和发布 Azure 应用程序产品/服务
+              href: create-new-azure-apps-offer-test-publish.md
+        - name: 营销 Azure 应用程序产品/服务
+          href: create-new-azure-apps-offer-marketing.md
         - name: Azure 应用程序按流量计费
           href: partner-center-portal/azure-app-metered-billing.md
         - name: 处理评审反馈
@@ -99,46 +127,58 @@
       items:
         - name: 规划 Azure 容器产品/服务
           href: marketplace-containers.md
+        - name: 准备技术资产
+          href: create-azure-container-technical-assets.md
         - name: 创建和发布 Azure 容器产品/服务
           items:
-            - name: 准备技术资产
-              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: 创建 Azure 容器产品/服务
-              href: partner-center-portal/create-azure-container-offer.md
+              href: create-azure-container-offer.md
     - name: Azure 虚拟机产品/服务
       items:
-        - name: 规划虚拟机产品/服务
+        - name: 规划 VM 产品/服务
           href: marketplace-virtual-machines.md
-        - name: 创建并发布虚拟机产品/服务
+        - name: 创建和发布 VM 产品/服务
           items:
-            - name: 创建 Azure 虚拟机套餐
-              href: partner-center-portal/azure-vm-create-offer.md
-            - name: 创建 Azure VM 技术资产
+            - name: 创建 VM 产品/服务
+              href: azure-vm-create.md
+            - name: 配置 VM 产品/服务属性
+              href: azure-vm-create-properties.md
+            - name: 配置 VM 产品/服务列表
+              href: azure-vm-create-listing.md
+            - name: 添加预览受众
+              href: azure-vm-create-preview.md
+            - name: 创建 VM 计划
+              href: azure-vm-create-plans.md
+            - name: 通过 CSP 转售
+              href: azure-vm-create-resell-csp.md
+            - name: 创建 VM 技术资产
               items:
-                - name: 虚拟机认证 - 问题和解决方案
-                  href: partner-center-portal/vm-certification-issues-solutions.md
-                - name: 创建 Azure VM 技术资产
-                  href: partner-center-portal/create-azure-vm-technical-asset.md
-                - name: Azure VM 技术资产常见问题解答
-                  href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: 测试通过 VHD 部署的虚拟机
-                  href: partner-center-portal/azure-vm-image-certification.md
-                - name: SAS URI
-                  items:
-                    - name: 获取 SAS URI
-                      href: partner-center-portal/get-sas-uri.md
-                    - name: SAS URI 常见问题解答
-                      href: partner-center-portal/common-sas-uri-issues.md
+                - name: 从已批准的基础创建 VM
+                  href: azure-vm-create-using-approved-base.md
+                - name: 使用自己的映像创建 VM
+                  href: azure-vm-create-using-own-image.md
+                - name: 测试 VM 映像
+                  href: azure-vm-image-test.md
+                - name: 获取 SAS URI
+                  href: azure-vm-get-sas-uri.md
+                - name: SAS 故障消息
+                  href: azure-vm-sas-failure-messages.md
+                - name: VM 创建常见问题解答
+                  href: azure-vm-create-faq.md
+                - name: VM 认证故障排除
+                  href: azure-vm-create-certification-faq.md
     - name: 咨询服务
       items:
-        - name: 规划咨询服务套餐
-          href: consulting-services.md
-        - name: 创建并发布咨询服务套餐
-          items:
-            - name: 先决条件
-              href: partner-center-portal/consulting-service-prerequisites.md
-            - name: 创建咨询服务套餐
-              href: partner-center-portal/create-consulting-service-offer.md
+        - name: 计划咨询服务套餐
+          href: plan-consulting-service-offer.md
+        - name: 创建咨询服务套餐
+          href: create-consulting-service-offer.md
+        - name: 配置咨询服务属性
+          href: create-consulting-service-offer-properties.md
+        - name: 配置咨询服务列表
+          href: create-consulting-service-offer-listing.md
+        - name: 配置定价和可用性
+          href: create-consulting-service-pricing-availability.md
     - name: Dynamics 365 产品/服务
       items:
         - name: 规划 Dynamics 365 产品/服务
@@ -155,14 +195,14 @@
                   href: dynamics-365-finance-operations-functional-validation.md
             - name: Dynamics 365 Business Central 产品/服务
               href: partner-center-portal/create-new-business-central-offer.md
-        - name: IoT Edge 模块产品/服务
-          items:
-            - name: 规划 IoT Edge 模块产品/服务
-              href: iot-edge-module.md
-            - name: 创建 IoT Edge 模块产品/服务
-              href: partner-center-portal/azure-iot-edge-module-creation.md
-            - name: 准备 IoT Edge 模块技术资产
-              href: partner-center-portal/create-iot-edge-module-asset.md
+    - name: IoT Edge 模块产品/服务
+      items:
+        - name: 规划 IoT Edge 模块产品/服务
+          href: iot-edge-module.md
+        - name: 创建 IoT Edge 模块产品/服务
+          href: partner-center-portal/azure-iot-edge-module-creation.md
+        - name: 准备 IoT Edge 模块技术资产
+          href: partner-center-portal/create-iot-edge-module-asset.md
     - name: 托管服务产品
       items:
         - name: 创建托管服务产品
@@ -238,21 +278,21 @@
     - name: 商业市场分析
       href: partner-center-portal/analytics.md
     - name: “摘要”仪表板
-      href: partner-center-portal/summary-dashboard.md
+      href: summary-dashboard.md
     - name: 订单仪表板
-      href: partner-center-portal/orders-dashboard.md
+      href: orders-dashboard.md
     - name: 使用情况仪表板
-      href: partner-center-portal/usage-dashboard.md
-    - name: 客户仪表板
-      href: partner-center-portal/customer-dashboard.md
+      href: usage-dashboard.md
+    - name: “客户”仪表板
+      href: customer-dashboard.md
     - name: 市场见解仪表板
-      href: partner-center-portal/insights-dashboard.md
+      href: insights-dashboard.md
     - name: 下载仪表板
       href: partner-center-portal/downloads-dashboard.md
     - name: 评分和评价仪表板
       href: partner-center-portal/ratings-reviews.md
-    - name: 合作伙伴中心分析术语
-      href: partner-center-portal/faq-terminology.md
+    - name: 分析常见问题
+      href: analytics-faq.md
 - name: 策略和条款
   items:
     - name: 关于我们的策略和条款
@@ -299,6 +339,8 @@
           href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: 市场计量服务
       items:
+        - name: 异常情况检测服务
+          href: partner-center-portal/anomaly-detection-service-for-metered-billing.md
         - name: 身份验证策略
           href: partner-center-portal/marketplace-metering-service-authentication.md
         - name: Azure 市场计量服务 API
@@ -309,32 +351,43 @@
       items:
         - name: SaaS 履行 API 概述
           href: partner-center-portal/pc-saas-fulfillment-apis.md
-          items:
-            - name: 注册 SaaS 应用程序
-              href: partner-center-portal/pc-saas-registration.md
-            - name: SaaS 履行 API v2
-              href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-            - name: SaaS 履行 API v1（已弃用）
-              href: partner-center-portal/pc-saas-fulfillment-api-v1.md
-            - name: SaaS 履行 API - 常见问题解答
-              href: partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: 注册 SaaS 应用程序
+          href: partner-center-portal/pc-saas-registration.md
+        - name: SaaS 履行 API v2
+          href: partner-center-portal/pc-saas-fulfillment-api-v2.md
+        - name: SaaS 履行 API v1（已弃用）
+          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+        - name: SaaS 履行 API - 常见问题解答
+          href: partner-center-portal/saas-fulfillment-apis-faq.md
 - name: 资源
   items:
     - name: 商业市场常见问题解答
       href: marketplace-faq-publisher-guide.md
     - name: 云合作伙伴门户迁移常见问题解答
       href: cloud-partner-portal-migration-faq.md
+    - name: 商机办公时间
+      href: 'https://aka.ms/marketplaceofficehours'
+    - name: 技术和发布办公时间
+      href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: 合作伙伴中心支持选项
-      href: partner-center-portal/support.md
+      href: support.md
+    - name: 合作伙伴中心公告
+      href: /partner-center/announcements
+    - name: Microsoft 合作伙伴社区
+      href: 'https://www.microsoftpartnercommunity.com/'
+    - name: 合作伙伴社区论坛
+      href: 'https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222'
     - name: 上市地区和货币
       href: marketplace-geo-availability-currencies.md
+    - name: 查找租户和对象 ID
+      href: find-tenant-object-id.md
     - name: 支持的国家和地区
       href: sell-from-countries.md
+    - name: 联合销售国家和地区代码
+      href: commercial-marketplace-co-sell-countries.md
+    - name: 联合销售状态代码
+      href: commercial-marketplace-co-sell-states.md
+    - name: 类别和子类别
+      href: categories.md
     - name: 支持的 HTML 标记
       href: supported-html-tags.md
-    - name: 联合销售国家和地区代码
-      href: partner-center-portal/commercial-marketplace-co-sell-countries.md
-    - name: 联合销售状态代码
-      href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 论坛、博客和快速链接
-      href: marketplace-roadmap.md

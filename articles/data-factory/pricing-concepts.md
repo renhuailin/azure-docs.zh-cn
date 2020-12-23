@@ -2,20 +2,20 @@
 title: 通过示例了解 Azure 数据工厂定价
 description: 本文使用详细的示例介绍并演示 Azure 数据工厂定价模型
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cea8ae07585f09c644f0ef6e1e6142998ddc7f08
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983619"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497494"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -38,7 +38,7 @@ ms.locfileid: "90983619"
 
 3. 一个计划触发器，用于每隔一小时执行一次管道。
 
-   ![关系图显示具有计划触发器的管道。 在管道中，将活动流复制到输入数据集，该数据集流向 A W S S3 链接服务，复制活动也会流向输出数据集，该数据集流向 Azure 存储链接服务。](media/pricing-concepts/scenario1.png)
+   ![此图显示了具有计划触发器的管道。 在此管道中，复制活动可通过流向输入数据集来流向 AWS S3 链接服务，还可以通过流向输出数据集来流向 Azure 存储链接服务。](media/pricing-concepts/scenario1.png)
 
 | **操作** | **类型和单元** |
 | --- | --- |
@@ -48,7 +48,7 @@ ms.locfileid: "90983619"
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 2 个活动运行（1 个用于触发器运行，1 个用于活动运行） |
 | 复制数据假设：执行时间 = 10 分钟 | 10 \* 4 Azure Integration Runtime（默认 DIU 设置 = 4）有关数据集成单元和副本性能优化的详细信息，请参阅[此文](copy-activity-performance.md) |
-| 监视管道假设：仅发生 1 次运行 | 重试了 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
+| 监视管道假设：仅发生 1 次运行 | 检索到 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
 
 **方案定价总计：$0.16811**
 
@@ -69,7 +69,7 @@ ms.locfileid: "90983619"
 2. 一个用于数据转换的 Azure Databricks 活动。
 3. 一个计划触发器，用于每隔一小时执行一次管道。
 
-![关系图显示具有计划触发器的管道。 在管道中，将活动流复制到输入数据集、输出数据集和 DataBricks 活动，该活动在 Azure Databricks 上运行。 输入数据集流向 A W S S3 链接服务。 输出数据集流向 Azure 存储链接服务。](media/pricing-concepts/scenario2.png)
+![此图显示了具有计划触发器的管道。 在此管道中，复制活动会流向输入数据集、输出数据集和 DataBricks 活动（在 Azure Databricks 上运行）。 输入数据集会流向 AWS S3 链接服务。 输出数据集会流向 Azure 存储链接服务。](media/pricing-concepts/scenario2.png)
 
 | **操作** | **类型和单元** |
 | --- | --- |
@@ -79,7 +79,7 @@ ms.locfileid: "90983619"
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 3 个活动运行（1 个用于触发器运行，2 个用于活动运行） |
 | 复制数据假设：执行时间 = 10 分钟 | 10 \* 4 Azure Integration Runtime（默认 DIU 设置 = 4）有关数据集成单元和副本性能优化的详细信息，请参阅[此文](copy-activity-performance.md) |
-| 监视管道假设：仅发生 1 次运行 | 重试了 3 个监视运行记录（1 个用于管道运行，2 个用于活动运行） |
+| 监视管道假设：仅发生 1 次运行 | 检索到 3 个监视运行记录（1 个用于管道运行，2 个用于活动运行） |
 | 执行 Databricks 活动假设：执行时间 = 10 分钟 | 10 分钟执行外部管道活动 |
 
 **方案定价总计：$0.16916**
@@ -103,7 +103,7 @@ ms.locfileid: "90983619"
 3. 一个用于数据转换的 Azure Databricks 活动。
 4. 一个计划触发器，用于每隔一小时执行一次管道。
 
-![关系图显示具有计划触发器的管道。 在管道中，将活动流复制到输入数据集、输出数据集以及流向 DataBricks 活动的查找活动，该活动在 Azure Databricks 上运行。 输入数据集流向 A W S S3 链接服务。 输出数据集流向 Azure 存储链接服务。](media/pricing-concepts/scenario3.png)
+![此图显示了具有计划触发器的管道。 在此管道中，复制活动会流向输入数据集、输出数据集和查找活动（流向在 Azure Databricks 上运行的 DataBricks 活动）。 输入数据集会流向 AWS S3 链接服务。 输出数据集会流向 Azure 存储链接服务。](media/pricing-concepts/scenario3.png)
 
 | **操作** | **类型和单元** |
 | --- | --- |
@@ -113,7 +113,7 @@ ms.locfileid: "90983619"
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 4 个活动运行（1 个用于触发器运行，3 个用于活动运行） |
 | 复制数据假设：执行时间 = 10 分钟 | 10 \* 4 Azure Integration Runtime（默认 DIU 设置 = 4）有关数据集成单元和副本性能优化的详细信息，请参阅[此文](copy-activity-performance.md) |
-| 监视管道假设：仅发生 1 次运行 | 重试了 4 个监视运行记录（1 个用于管道运行，3 个用于活动运行） |
+| 监视管道假设：仅发生 1 次运行 | 检索到 4 个监视运行记录（1 个用于管道运行，3 个用于活动运行） |
 | 执行查找活动假设：执行时间 = 1 分钟 | 1 分钟执行管道活动 |
 | 执行 Databricks 活动假设：执行时间 = 10 分钟 | 10 分钟执行外部管道活动 |
 
@@ -160,7 +160,7 @@ ms.locfileid: "90983619"
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 2 个活动运行（1 个用于触发器运行，1 个用于活动运行） |
 | 数据流假设：执行时间 = 10 分钟 + 10 分钟 TTL | \*带有 TTL 10 的一般计算的 10 16 核心 |
-| 监视管道假设：仅发生 1 次运行 | 重试了 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
+| 监视管道假设：仅发生 1 次运行 | 检索到 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
 
 **方案总定价： $1.4631**
 
@@ -189,7 +189,7 @@ ms.locfileid: "90983619"
 | 运行管道 | 6活动运行 (2 用于触发器运行，4表示活动运行)  |
 | 执行删除活动：每个执行时间 = 5 分钟第一条管道中的 Delete 活动执行时间为 10:00 AM UTC 到 10:05 AM UTC。 第二个管道中的 Delete 活动执行时间为 10:02 AM UTC 到 10:07 AM UTC。|托管 VNET 中7分钟内的最小活动执行。 在托管 VNET 中，管道活动最多支持50并发。 |
 | 复制数据假设：每次执行时间 = 10 分钟。第一条管道中的复制执行时间为 10:06 AM UTC 到 10:15 AM UTC。 第二个管道中的 Delete 活动执行时间为 10:08 AM UTC 到 10:17 AM UTC。 | 10 * 4 Azure Integration Runtime (默认 DIU 设置 = 4) 有关数据集成单元和优化复制性能的详细信息，请参阅 [此文](copy-activity-performance.md) |
-| 监视管道假设：只发生2个运行 | 6监视运行记录重试 (2 对于管道运行，4表示活动运行)  |
+| 监视管道假设：只发生2个运行 | 6 (2 的监视运行记录检索到管道运行，4表示活动运行)  |
 
 
 **方案总定价： $0.45523**

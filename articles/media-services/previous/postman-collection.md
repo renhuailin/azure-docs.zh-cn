@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 按需流式处理操作导入 Postman 集合
-description: 了解 Postman 集合，该集合包含调用 Azure 媒体服务 REST Api 的分组 HTTP 请求。
+description: 了解 Postman 集合，其中包含调用 Azure 媒体服务 REST API 的分组 HTTP 请求。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3927133b9cbd59a5d085e7406d9dceb177a47637
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 30a139ca0569a2ada4a66befbf7c56a9f8edaab9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268632"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656727"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合
 
@@ -180,7 +180,7 @@ ms.locfileid: "91268632"
                                 ]
                             }
                         }
-                    ],                  
+                    ],
                     "request": {
                         "auth": {
                             "type": "bearer",
@@ -3253,7 +3253,7 @@ ms.locfileid: "91268632"
                                     "key": "access-control-expose-headers",
                                     "value": "request-id, x-ms-request-id",
                                     "name": "access-control-expose-headers",
-                                    "description": "Lets a server whitelist headers that browsers are allowed to access."
+                                    "description": "Lets a server allowlist headers that browsers are allowed to access."
                                 },
                                 {
                                     "key": "request-id",
@@ -3456,7 +3456,7 @@ ms.locfileid: "91268632"
                                     "key": "access-control-expose-headers",
                                     "value": "request-id, x-ms-request-id",
                                     "name": "access-control-expose-headers",
-                                    "description": "Lets a server whitelist headers that browsers are allowed to access."
+                                    "description": "Lets a server allowlist headers that browsers are allowed to access."
                                 },
                                 {
                                     "key": "request-id",
@@ -5591,3 +5591,4 @@ ms.locfileid: "91268632"
     ]
 }
 ```
+

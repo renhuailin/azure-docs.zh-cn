@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 8469f67967f311d4aca98417e8a5a639665b4641
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 93c5aea44586a37ac9d4c4c2647754fb7ba5659d
+  ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90014916"
+  ms.lasthandoff: 11/25/2020
+  ms.locfileid: "96122394"
 landingContent:
 - title: 生成零售解决方案
   linkLists:
@@ -38,7 +38,7 @@ landingContent:
     - text: 创建数字分发中心应用程序
       url: tutorial-iot-central-digital-distribution-center.md
     - text: 创建视频分析应用程序
-      url: tutorial-video-analytics-create-app.md
+      url: tutorial-video-analytics-create-app-yolo-v3.md
   - linkListType: how-to-guide
     links:
     - text: 连接 Rigado Cascade 500
@@ -51,10 +51,8 @@ landingContent:
       url: ../core/overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: 连接设备 (Node.js)
-      url: ../core/tutorial-connect-device-nodejs.md
-    - text: 连接设备 (Python)
-      url: ../core/tutorial-connect-device-python.md
+    - text: 创建和连接设备
+      url: ../core/tutorial-connect-device.md
   - linkListType: concept
     links:
     - text: 设备连接

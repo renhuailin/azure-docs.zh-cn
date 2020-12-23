@@ -1,20 +1,20 @@
 ---
 title: 设置蓝图操作员的环境
 description: 了解如何配置 Azure 环境以与蓝图操作员 Azure 内置角色一起使用。
-ms.date: 08/27/2020
+ms.date: 11/24/2020
 ms.topic: how-to
-ms.openlocfilehash: ae881ac6d0714401f8c80e880b4d288f594b7cf3
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: db8450516feab2fae4136f549959a29b006059aa
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535775"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95804925"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>为蓝图操作员配置环境
 
 可以将蓝图定义和蓝图分配的管理分配给不同的团队。 在运营团队负责管理这些集中控制的蓝图定义的分配时，架构师或调控团队通常负责管理蓝图定义的生命周期管理。
 
-**蓝图运算符**内置角色专用于在此类方案中使用。 角色允许操作类型团队管理组织蓝图定义的分配，但不允许对其进行修改。 执行此操作需要在 Azure 环境中进行一些配置，本文介绍必要的步骤。
+**蓝图运算符** 内置角色专用于在此类方案中使用。 角色允许操作类型团队管理组织蓝图定义的分配，但不允许对其进行修改。 执行此操作需要在 Azure 环境中进行一些配置，本文介绍必要的步骤。
 
 ## <a name="grant-permission-to-the-blueprint-operator"></a>向蓝图运算符授予权限
 
@@ -22,15 +22,17 @@ ms.locfileid: "91535775"
 
 1.  (建议) [创建安全组并添加成员](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. 向帐户或安全组添加**蓝图操作员**[角色分配](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
+1. 向帐户或安全组添加 **蓝图操作员**[角色分配](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
 
 ## <a name="user-assign-managed-identity"></a>用户-分配托管标识
 
 蓝图定义可以使用系统分配的或用户分配的托管标识。 但是，在使用 **蓝图运算符** 角色时，需要将蓝图定义配置为使用用户分配的托管标识。 此外，要向其授予 **蓝图操作员** 角色的帐户或安全组需要向用户分配的托管标识授予 **托管标识操作员** 角色。 如果没有此权限，则蓝图分配由于缺少权限而失败。
 
-1. [创建用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) ，供分配的蓝图使用
+1. [创建用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) ，供分配的蓝图使用。
 
-1. 向帐户或安全组添加**托管标识操作员**的[角色分配](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 将角色分配的范围限定为新的用户分配的托管标识。
+1. 向用户分配的托管标识授予指定范围的蓝图定义所需的任何角色或权限。
+
+1. 向帐户或安全组添加 **托管标识操作员** 的 [角色分配](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 将角色分配的范围限定为新的用户分配的托管标识。
 
 1. 作为 **蓝图运算符**， [分配一个](../create-blueprint-portal.md#assign-a-blueprint) 使用新的用户分配的托管标识的蓝图。
 

@@ -11,59 +11,83 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 042780c313c444062fd512ab0d9f38aaeb6cf170
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b36f52fd97a9f7ff294f14ec394ff9a9f607b5b0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894551"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187147"
 ---
 # <a name="monitor-identity-and-access"></a>监视标识和访问
 
-> [!TIP]
-> 从 2020 年 3 月起，免费定价层上的所有订阅中都包含 Azure 安全中心的标识和访问建议。 如果你有订阅在免费层，则它们的安全功能分数将受到影响，因为它们之前未接受过标识和访问安全性评估。 
+安全边界已从网络边界演进成标识边界。 通过这种发展，安全性越来越少地与如何保护网络相关，而更多地与如何管理应用、数据和用户的安全性相关。
 
-在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
+通过监视与标识相关的活动和配置设置，你可在事件发生之前主动采取措施或事后采取措施来阻止尝试进行的攻击。
 
-安全边界已从网络边界演进成标识边界。 安全性越来越少地与如何保护网络相关，而更多地与如何保护数据，以及如何管理应用和用户的安全性相关。 而现在，随着越来越多的数据和应用移到云中，标识成为新的外围。
+## <a name="what-identity-and-access-safeguards-does-security-center-provide"></a>安全中心提供哪些标识和访问保护？ 
 
-监视标识活动即可在事件发生前主动采取措施，或事后采取针对性措施来阻止攻击尝试。 例如，安全中心可能会标记已弃用的帐户（不再需要且被 Azure Active Directory 阻止登录的帐户），以便删除。 
+Azure 安全中心具有两个专用的安全控件，用于确保满足组织的标识和安全要求： 
 
-你可能会在 Azure 安全中心的“标识和访问资源安全性”部分中看到的建议示例包括：：
+ - **管理访问和权限** - 建议采用 [最小特权访问模式](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)，并确保仅向用户授予完成其工作所需的访问权限。 此控件还包括有关实现 [azure 基于角色的访问控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 以控制对资源的访问权限的建议。
+ 
+ - **启用 MFA** - 启用 [MFA](https://www.microsoft.com/security/business/identity/mfa) 后，帐户将更加安全，用户仍可通过单一登录对几乎所有应用程序进行身份验证。
+
+### <a name="example-recommendations-for-identity-and-access"></a>标识和访问的示例建议
+
+在安全中心的“建议”页上的这两个控件中可能会显示以下示例建议：
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 只多只为订阅指定 3 个所有者
 - 应从订阅中删除拥有读取权限的外部帐户
-- 应从订阅中删除弃用的帐户
+- 应从订阅中删除弃用的帐户（弃用的帐户是不再需要且被 Azure Active Directory 阻止登录的帐户）
 
-有关这些建议的详细信息以及可能在此处看到的建议的完整列表，请参阅[标识和访问建议](recommendations-reference.md#recs-identity)。
+> [!TIP]
+> 有关这些建议以及可能会在这些控件中看到其他建议的详细信息，请参阅[标识和访问建议](recommendations-reference.md#recs-identity)。
 
-> [!NOTE]
-> 如果订阅包含 600 多个帐户，则安全中心无法针对订阅运行标识建议。 未运行的建议列在“不可用的评估”下面。
-安全中心无法针对云解决方案提供商 (CSP) 合作伙伴的管理代理运行标识建议。
->
+### <a name="limitations"></a>限制
 
+安全中心的标识和访问保护存在一些限制：
 
-“建议”页中的两种安全控制提供了所有标识和访问建议：
+- 标识建议不适用于拥有超过 600 个帐户的订阅。 在这种情况下，这些建议将在“不可用的评估”下列出。
+- 标识建议不适用于云解决方案提供商 (CSP) 合作伙伴的管理代理。
+- 标识建议不标识使用特权标识管理 (PIM) 系统管理的帐户。 如果你使用的是 PIM 工具，你可能会在 **管理访问权限和权限** 控制中看到不准确的结果。
 
-- 管理访问和权限 
-- 启用 MFA
+## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>多重身份验证 (MFA) 和 Azure Active Directory 
 
-![包含与标识和访问相关的建议的两种安全控制](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
-
-
-## <a name="enable-multi-factor-authentication-mfa"></a>启用多重身份验证 (MFA)
-
-启用 MFA 需要 [Azure Active Directory (AD) 租户权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。 
+启用 MFA 需要 [Azure Active Directory (AD) 租户权限](../active-directory/roles/permissions-reference.md)。
 
 - 如果拥有高级版 AD，请使用[条件访问](../active-directory/conditional-access/concept-conditional-access-policy-common.md)启用 MFA。
+- 如果使用的是 AD 免费版，请按照 [Azure Active Directory 文档](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)中的说明启用“安全默认值”。
 
-- 如果使用的是 AD 免费版，请在 Azure Active Directory 中启用 **安全默认设置** ，如 [广告文档](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中所述。
+## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>标识未启用多重身份验证 (MFA) 的帐户
+
+若要查看未启用 MFA 的帐户，请使用以下 Azure Resource Graph 查询。 该查询返回建议“应对拥有订阅所有者权限的帐户启用 MFA”的所有运行不正常的资源 - 帐户。 
+
+1. 打开“Azure Resource Graph 资源管理器”。
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="启动 Azure Resource Graph Explorer 建议页面" :::
+
+1. 输入以下查询并选择“运行查询”。
+
+    ```kusto
+    securityresources
+     | where type == "microsoft.security/assessments"
+     | where properties.displayName == "MFA should be enabled on accounts with owner permissions on your subscription"
+     | where properties.status.code == "Unhealthy"
+    ```
+
+1. `additionalData` 属性显示未强制启用 MFA 的帐户的帐户对象 ID 列表。 
+
+    > [!NOTE]
+    > 这些帐户显示为对象 ID 而不是帐户名称，以保护帐户持有者的隐私。
+
+> [!TIP]
+> 或者，可以使用安全中心的 REST API 方法[评估 - 获取](/rest/api/securitycenter/assessments/get)。
 
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下文章：
+若要详细了解适用于其他 Azure 资源类型的建议，请参阅以下文章：
 
 - [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)

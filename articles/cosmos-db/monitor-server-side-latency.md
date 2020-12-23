@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 9c266e42804a12403e446bf024e93fe879497570
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: ec6a9db63504958640137fcd0fcfc904eb01afa5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803256"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074723"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>如何监视 Azure Cosmos DB 容器或帐户中的操作的服务器端延迟
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 适用于 Azure Cosmos DB 的 Azure Monitor 提供一个指标视图，用于监视帐户和创建仪表板。 默认情况下，系统会收集 Azure Cosmos DB 指标，此功能不需要你显式启用或配置任何设置。 服务器端延迟指标用于查看操作的服务器端延迟。 Azure Cosmos DB 为直接连接的点读取/写入操作提供小于 10 ms 的 SLA。 对于点读和写操作，sla 按照 [sla 文档](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)中的详细信息进行计算。
 
@@ -43,9 +44,9 @@ ms.locfileid: "91803256"
 
 ## <a name="filters-for-server-side-latency"></a>服务器端延迟的筛选器
 
-你还可以筛选指标，并获取由特定的 **CollectionName**、 **ConnectionMode**、 **DatabaseName**、 **OperationType**、 **Region**和 **PublicAPIType**显示的图表。 
+你还可以筛选指标，并获取由特定的 **CollectionName** 、 **ConnectionMode** 、 **DatabaseName** 、 **OperationType** 、 **Region** 和 **PublicAPIType** 显示的图表。 
 
-若要筛选度量值，请选择 " **添加筛选器** " 并选择所需属性（如 **PublicAPIType** ），并选择值 **sql**。 为 **OperationType**添加另一个筛选器。 然后，关系图显示所选时间段内不同操作的服务器端延迟。 不会记录通过存储过程执行的操作，因此 OperationType 指标下不会显示这些操作。
+若要筛选度量值，请选择 " **添加筛选器** " 并选择所需属性（如 **PublicAPIType** ），并选择值 **sql** 。 为 **OperationType** 添加另一个筛选器。 然后，关系图显示所选时间段内不同操作的服务器端延迟。 不会记录通过存储过程执行的操作，因此 OperationType 指标下不会显示这些操作。
 
 每个操作的 **服务器端延迟** 指标显示如下图所示：
 

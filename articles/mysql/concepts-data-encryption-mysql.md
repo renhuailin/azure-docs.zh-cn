@@ -1,25 +1,25 @@
 ---
 title: 使用客户托管密钥进行数据加密 - Azure Database for MySQL
 description: 使用客户托管密钥进行 Azure Database for MySQL 数据加密，可创建自己的密钥 (BYOK) 来保护静态数据。 它还允许组织在管理密钥和数据时实现职责分离。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 30c60dbe74835cb67879f7e0cf9bf403dca17fd8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531082"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518798"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客户托管密钥进行 Azure Database for MySQL 数据加密
 
 针对 Azure Database for MySQL 使用客户托管密钥进行数据加密，可创建自己的密钥 (BYOK) 来保护静态数据。 它还允许组织在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
 
-在服务器级别使用客户托管密钥为 Azure Database for MySQL 进行数据加密。 对于给定的服务器，客户托管密钥（称为密钥加密密钥 (KEK)）用于加密服务使用的数据加密密钥 (DEK)。 KEK 是一种非对称密钥，它存储在客户自有和客户管理的 [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) 实例中。 本文稍后将更详细地描述密钥加密密钥 (KEK) 和数据加密密钥 (DEK)。
+在服务器级别使用客户托管密钥为 Azure Database for MySQL 进行数据加密。 对于给定的服务器，客户托管密钥（称为密钥加密密钥 (KEK)）用于加密服务使用的数据加密密钥 (DEK)。 KEK 是一种非对称密钥，它存储在客户自有和客户管理的 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 实例中。 本文稍后将更详细地描述密钥加密密钥 (KEK) 和数据加密密钥 (DEK)。
 
-Key Vault 是一种基于云的外部密钥管理系统。 它具有高可用性，并为 RSA 加密密钥提供可扩展的安全存储，根据需要由 FIPS 140-2 级别 2 验证的硬件安全模块 (HSM) 提供支持。 它不允许直接访问存储的密钥，但为授权实体提供加密和解密服务。 Key Vault 可以生成密钥，并将其导入，或者[从本地 HSM 设备传输密钥](../key-vault/key-Vault-hsm-protected-keys.md)。
+Key Vault 是一种基于云的外部密钥管理系统。 它具有高可用性，并为 RSA 加密密钥提供可扩展的安全存储，根据需要由 FIPS 140-2 级别 2 验证的硬件安全模块 (HSM) 提供支持。 它不允许直接访问存储的密钥，但为授权实体提供加密和解密服务。 Key Vault 可以生成密钥，并将其导入，或者[从本地 HSM 设备传输密钥](../key-vault/keys/hsm-protected-keys.md)。
 
 > [!NOTE]
 > 此功能适用于所有 Azure 区域，其中 Azure Database for MySQL 支持“常规用途”和“内存优化”定价层。 有关其他限制，请参阅 [限制](concepts-data-encryption-mysql.md#limitations) 部分。
@@ -61,15 +61,18 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 下面是配置 Key Vault 的要求：
 
 * Key Vault 和 Azure Database for MySQL 必须属于同一个 Azure Active Directory (Azure AD) 租户。 不支持跨租户的 Key Vault 和服务器交互。 之后移动 Key Vault 资源需要重新配置数据加密。
-* 启用 Key Vault 上的软删除功能，防止在意外删除密钥（或 Key Vault）时丢失数据。 被软删除的资源将保留 90 天，除非用户在此期间恢复或清除它们。 “恢复”和“清除”操作均自带与 Key Vault 访问策略关联的权限。 默认情况下，软删除功能处于关闭状态，但你可以通过 PowerShell 或 Azure CLI 启用它（请注意，无法通过 Azure 门户启用此功能）。
+* 在保留期设置为 **90 天** 的密钥保管库上启用 [软删除](../key-vault/general/soft-delete-overview.md)功能，以便在发生意外的密钥 (或 Key Vault) 删除时防止数据丢失。 默认情况下，软删除的资源将保留90天，除非保持期被显式设置为 <= 90 天。 “恢复”和“清除”操作均自带与 Key Vault 访问策略关联的权限。 软删除功能默认关闭，但你可通过 PowerShell 或 Azure CLI 启用它（请注意，无法通过 Azure 门户启用）。
+* 启用 "密钥保管库" 上的 " [清除保护](../key-vault/general/soft-delete-overview.md#purge-protection) " 功能，保持期设置为 **90 天**。 只有启用软删除后才能启用清除保护。 可以通过 Azure CLI 或 PowerShell 启用此功能。 启用清除保护后，在保留期结束之前，无法清除处于已删除状态的保管库或对象。 软删除的保管库和对象仍可恢复，这可以确保遵循保留策略。 
 * 通过使用其唯一的托管标识授予具有 get、wrapKey 和 unwrapKey 权限的密钥保管库的 Azure Database for MySQL 访问权限。 在 Azure 门户中，当在 MySQL 上启用数据加密时，将自动创建唯一的 "服务" 标识。 有关使用 Azure 门户时的详细分步说明，请参阅[为 MySQL 配置数据加密](howto-data-encryption-portal.md)。
 
 下面是配置客户托管密钥的要求：
 
 * 用于加密 DEK 的客户管理的密钥只能是非对称的 RSA 2048。
-* 密钥激活日期（如果已设置）必须是过去的日期和时间。 到期日期（若已设置）必须是将来的日期和时间。
+* 密钥激活日期（如果已设置）必须是过去的日期和时间。 未设置到期日期。
 * 密钥必须处于“已启用”状态。
-* 如果要将 [现有密钥导入](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) 到密钥保管库中，请确保以支持的文件格式提供该密钥 `.pfx` (`.byok` 、 `.backup`) 。
+* 密钥必须具有将保留期设置为 **90 天** 的 [软删除](../key-vault/general/soft-delete-overview.md)。这会隐式设置所需的键属性 recoveryLevel： "可恢复"。 如果保留期设置为 < 90 天，则 recoveryLevel： "CustomizedRecoverable" 不是必需的，因此请确保将保留期设置为 **90 天**。
+* 密钥必须 [启用清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)。
+* 如果要将 [现有密钥导入](/rest/api/keyvault/ImportKey/ImportKey) 到密钥保管库中，请确保以支持的文件格式提供该密钥 `.pfx` (`.byok` 、 `.backup`) 。
 
 ## <a name="recommendations"></a>建议
 
@@ -80,13 +83,13 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 确保 Key Vault 和 Azure Database for MySQL 位于同一区域，以确保对 DEK 包装和解包操作的更快访问。
 * 将 Azure KeyVault 锁定为仅“专用终结点和所选网络”，并仅允许“受信任的 Microsoft”服务保护资源。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="显示“创建自己的密钥”概述的关系图":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
 下面是客户管理的密钥的配置建议：
 
 * 将客户管理的密钥副本保存在安全的位置，或将其托管到托管服务。
 
-* 如果 Key Vault 生成密钥，请在首次使用该密钥之前创建密钥备份。 只能将备份还原到 Key Vault。 要详细了解备份命令，请参阅 [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyVault/backup-azkeyVaultkey)。
+* 如果 Key Vault 生成密钥，请在首次使用该密钥之前创建密钥备份。 只能将备份还原到 Key Vault。 要详细了解备份命令，请参阅 [Backup-AzKeyVaultKey](/powershell/module/az.keyVault/backup-azkeyVaultkey)。
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>无法访问客户管理的密钥的情形
 
@@ -94,9 +97,9 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 
 * 如果我们为 Azure Database for MySQL 创建已启用数据加密的时间点还原服务器，则新创建的服务器将处于“无法访问”状态。 可以通过 [Azure 门户](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 修复此问题。
 * 如果我们为 Azure Database for MySQL 创建已启用数据加密的只读副本，则副本服务器将处于“无法访问”状态。 可以通过 [Azure 门户](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 修复此问题。
-* 如果删除 KeyVault，Azure Database for MySQL 将无法访问密钥，并将转到“无法访问”状态。 恢复 [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) 并重新验证数据加密，以使服务器“可用”。
-* 如果我们从 KeyVault 中删除密钥，Azure Database for MySQL 将无法访问密钥，并将转到“无法访问”状态。 恢复[密钥](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects)并重新验证数据加密，以使服务器“可用”。
-* 如果存储在 Azure KeyVault 中的密钥过期，则该密钥将变为无效，并且 Azure Database for MySQL 将转换为“无法访问”状态。 使用 [CLI](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-set-attributes) 延长密钥到期日期，然后重新验证数据加密以使服务器“可用”。
+* 如果删除 KeyVault，Azure Database for MySQL 将无法访问密钥，并将转到“无法访问”状态。 恢复 [Key Vault](../key-vault/general/key-vault-recovery.md) 并重新验证数据加密，以使服务器“可用”。
+* 如果我们从 KeyVault 中删除密钥，Azure Database for MySQL 将无法访问密钥，并将转到“无法访问”状态。 恢复[密钥](../key-vault/general/key-vault-recovery.md)并重新验证数据加密，以使服务器“可用”。
+* 如果存储在 Azure KeyVault 中的密钥过期，则该密钥将变为无效，并且 Azure Database for MySQL 将转换为“无法访问”状态。 使用 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) 延长密钥到期日期，然后重新验证数据加密以使服务器“可用”。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>从 Key Vault 意外撤消密钥访问
 
@@ -113,7 +116,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 若要监视数据库状态并在透明数据加密保护程序访问权限丢失时发出警报，请配置以下 Azure 功能：
 
 * [Azure 资源运行状况](../service-health/resource-health-overview.md)：在与数据库的第一次连接遭到拒绝后，已失去客户密钥访问权限的无法访问的数据库将显示为“无法访问”。
-* [活动日志](../service-health/alerts-activity-log-service-notifications.md)：对 Key Vault 中客户管理的密钥访问失败时，活动日志中会添加相应条目。 如果为这些事件创建警报，就可尽快恢复访问。
+* [活动日志](../service-health/alerts-activity-log-service-notifications-portal.md)：对 Key Vault 中客户管理的密钥访问失败时，活动日志中会添加相应条目。 如果为这些事件创建警报，就可尽快恢复访问。
 
 * [操作组](../azure-monitor/platform/action-groups.md)：定义这些组，使其根据首选项向你发送通知和警报。
 
@@ -135,11 +138,11 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 此功能仅在支持高达 16 TB 的存储的区域和服务器上受支持。 有关支持存储最多16TB 的 Azure 区域列表，请参阅[此处](concepts-pricing-tiers.md#storage)文档中的 "存储" 部分
 
     > [!NOTE]
-    > - 在上面列出的区域中创建的所有新 MySQL 服务器都 **提供**对使用客户管理器密钥的加密支持。  (PITR) 服务器或读取副本的还原时间点在理论上是 "新的"。
+    > - 在上面列出的区域中创建的所有新 MySQL 服务器都 **提供** 对使用客户管理器密钥的加密支持。  (PITR) 服务器或读取副本的还原时间点在理论上是 "新的"。
     > - 若要验证预配的服务器是否支持最大16TB，可以在门户中访问 "定价层" 边栏选项卡，并查看预配服务器支持的最大存储大小。 如果可以将滑块向上移动到4TB，则服务器可能不支持通过客户托管的密钥进行加密。 但是，始终使用服务托管密钥对数据进行加密。 AskAzureDBforMySQL@service.microsoft.com如果你有任何疑问，请联系。
 
 * 只有 RSA 2048 加密密钥支持加密。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[通过 Azure 门户使用客户托管密钥为 Azure database for MySQL 设置数据加密](howto-data-encryption-portal.md)。
+了解如何使用 [Azure 门户](howto-data-encryption-portal.md) 和 [Azure CLI](howto-data-encryption-cli.md)，为 Azure database for MySQL 的客户托管密钥设置数据加密。

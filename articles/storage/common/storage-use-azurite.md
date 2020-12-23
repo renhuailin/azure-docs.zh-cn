@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331567"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490775"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模拟器进行本地 Azure 存储开发
 
@@ -282,7 +282,7 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>证书配置 (HTTPS)
 
-**可选** - 默认情况下，Azurite 使用 HTTP 协议。 启用 HTTPS 模式的方法是：向隐私增强邮件 (.pem) 提供路径，或者向 `--cert` 开关提供[个人信息交换 (.pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) 证书文件。
+**可选** - 默认情况下，Azurite 使用 HTTP 协议。 启用 HTTPS 模式的方法是：向隐私增强邮件 (.pem) 提供路径，或者向 `--cert` 开关提供[个人信息交换 (.pfx)](/windows-hardware/drivers/install/personal-information-exchange---pfx--files) 证书文件。
 
 为 PEM 文件提供 `--cert` 时，必须提供相应的 `--key` 开关。
 

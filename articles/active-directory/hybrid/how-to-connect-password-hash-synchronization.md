@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652064"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858733"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -32,7 +32,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 密码哈希同步过程的实际数据流类似于用户数据的同步。 但是，密码的同步频率高于其他属性的标准目录同步窗口。 密码哈希同步过程每隔 2 分钟运行一次。 无法修改此过程的运行频率。 同步某个密码时，该密码将覆盖现有的云密码。
 
-首次启用密码哈希同步功能时，它将对范围内的所有用户执行初始密码同步。 无法显式定义一部分要同步的用户密码。 但是，如果有多个连接器，则可以使用 [ADSyncAADPasswordSyncConfiguration](../../active-directory-domain-services/tutorial-configure-password-hash-sync.md) cmdlet 为某些连接器禁用密码哈希同步，但不允许使用其他连接器。
+首次启用密码哈希同步功能时，它将对范围内的所有用户执行初始密码同步。 无法显式定义一部分要同步的用户密码。 但是，如果有多个连接器，则可以使用 [Set-ADSyncAADPasswordSyncConfiguration](../../active-directory-domain-services/tutorial-configure-password-hash-sync.md) cmdlet 为某些连接器禁用密码哈希同步，但无法为另一些禁用。
 
 更改本地密码时，更新后的密码会同步，此操作基本上在几分钟内就可完成。
 密码哈希同步功能会自动重试失败的同步尝试。 如果尝试同步密码期间出现错误，该错误会被记录在事件查看器中。
@@ -53,10 +53,10 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 1. 每隔两分钟，AD Connect 服务器上的密码哈希同步代理都会从 DC 请求存储的密码哈希（unicodePwd 属性）。  此请求通过用于同步 DC 之间数据的标准 [MS-DRSR](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) 复制协议进行。 服务帐户必须具有“复制目录更改”和“复制所有目录更改”AD 权限（默认情况下，在安装时授予），才能获取密码哈希。
 2. 在发送前，DC 将使用密钥（即 RPC 会话密钥的 [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) 哈希）和 salt 对 MD4 密码哈希进行加密。 然后，它通过 RPC 将结果发送到密码哈希同步代理。 DC 还使用 DC 复制协议将 salt 传递给同步代理，因此该代理能够解密信封。
-3. 密码哈希同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider?view=netcore-3.1)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码哈希同步代理永远无权访问明文密码。 密码哈希同步代理使用 MD5 完全是为了实现与 DC 的复制协议兼容性，并仅在本地的 DC 和密码哈希同步代理之间使用。
+3. 密码哈希同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码哈希同步代理永远无权访问明文密码。 密码哈希同步代理使用 MD5 严格地与 DC 的复制协议兼容性，并且仅在 DC 和密码哈希同步代理之间使用。
 4. 密码哈希同步代理通过先将哈希转换为 32 字节的十六进制字符串，然后使用 UTF-16 编码重新将此字符串转换为二进制，来将 16 字节的二进制密码哈希扩展为 64 字节。
 5. 密码哈希同步代理通过将每个用户的 salt（包含 10 字节长度的 salt）添加到 64 字节的二进制字符串，来进一步保护原始哈希。
-6. 然后，密码哈希同步代理将 MD4 哈希与每个用户的 salt 组合在一起，并将其输入到 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函数。 使用 [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) 键控哈希算法的 1000 次迭代。 
+6. 然后，密码哈希同步代理将 MD4 哈希与每个用户的 salt 组合在一起，并将其输入到 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函数。 使用 [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256) 键控哈希算法的 1000 次迭代。 
 7. 密码哈希同步代理获取生成的 32 字节哈希，将每个用户的 salt 和 SHA256 迭代次数与该哈希连接（以供 Azure AD 使用），然后通过 TLS 将该字符串从 Azure AD Connect 传输到 Azure AD。</br> 
 8. 当用户尝试登录到 Azure AD 并输入其密码时，会通过同一 MD4+salt+PBKDF2+HMAC-SHA256 过程运行密码。 如果生成的哈希与 Azure AD 中存储的哈希匹配，则用户输入的密码正确并进行身份验证。
 
@@ -109,7 +109,7 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-启用后，Azure AD 不会从每个已同步用户的 PasswordPolicies 属性中删除 `DisablePasswordExpiration` 值。 而是当用户下一次在本地 AD 中更改密码时，在同步每个用户的密码期间将此值设置为 `None`。  
+启用后，Azure AD 不会从每个已同步用户的 PasswordPolicies 属性中删除 `DisablePasswordExpiration` 值。 每个用户下次在本地 AD 中更改密码时，会在密码哈希同步期间从 PasswordPolicies 中删除 `DisablePasswordExpiration` 值。
 
 建议在启用密码哈希同步之前启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，以便密码哈希的初始同步不会将 `DisablePasswordExpiration` 值添加到用户的 PasswordPolicies 属性。
 
@@ -142,7 +142,7 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 
 #### <a name="account-expiration"></a>帐户过期
 
-如果组织在用户帐户管理中使用了 accountExpires 属性，此属性不会同步到 Azure AD。 因此，环境中为密码哈希同步配置的过期 Active Directory 帐户仍会在 Azure AD 中处于活动状态。 我们建议，如果帐户已过期，工作流操作应触发一个 PowerShell 脚本以禁用用户的 Azure AD 帐户（使用 [Set-AzureADUser](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet）。 相反，在启用帐户后，Azure AD 实例应该开启。
+如果组织在用户帐户管理中使用了 accountExpires 属性，此属性不会同步到 Azure AD。 因此，环境中为密码哈希同步配置的过期 Active Directory 帐户仍会在 Azure AD 中处于活动状态。 我们建议，如果帐户已过期，工作流操作应触发一个 PowerShell 脚本以禁用用户的 Azure AD 帐户（使用 [Set-AzureADUser](/powershell/module/azuread/set-azureaduser) cmdlet）。 相反，在启用帐户后，Azure AD 实例应该开启。
 
 ### <a name="overwrite-synchronized-passwords"></a>覆盖已同步的密码
 
@@ -161,38 +161,38 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 
 ## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Azure AD 域服务的密码哈希同步过程
 
-如果使用 Azure AD 域服务为需要使用 Kerberos、LDAP 或 NTLM 的应用程序和服务提供旧身份验证，则某些附加的进程是密码哈希同步流的一部分。 Azure AD Connect 使用以下其他过程将密码哈希同步到 Azure AD 以便在 Azure AD 域服务中使用：
+如果使用 Azure AD 域服务为需要使用 Kerberos、LDAP 或 NTLM 的应用程序和服务提供旧式身份验证，则密码哈希同步流需要包含一些额外的流程。 Azure AD Connect 使用以下额外的过程将密码哈希同步到 Azure AD 以便在 Azure AD 域服务中使用：
 
 > [!IMPORTANT]
 > 安装和配置的 Azure AD Connect 应仅用于与本地 AD DS 环境同步。 不支持在 Azure AD DS 托管域中安装 Azure AD Connect 以将对象同步回 Azure AD。
 >
-> 仅当你为 Azure AD 租户启用了 Azure AD DS 时，Azure AD Connect 才会同步旧式密码哈希。 如果只使用 Azure AD Connect 将本地 AD DS 环境与 Azure AD 同步，则不会使用以下步骤。
+> 仅当你为 Azure AD 租户启用了 Azure AD DS 时，Azure AD Connect 才会同步旧式密码哈希。 如果仅使用 Azure AD Connect 将本地 AD DS 环境与 Azure AD 同步，则不会使用以下步骤。
 >
 > 如果旧式应用程序不使用 NTLM 身份验证或 LDAP 简单绑定，则建议你为 Azure AD DS 禁用 NTLM 密码哈希同步。 有关详细信息，请参阅[禁用弱密码套件和 NTLM 凭据哈希同步](../../active-directory-domain-services/secure-your-domain.md)。
 
-1. Azure AD Connect 检索 Azure AD 域服务的租户实例的公钥。
-1. 当用户更改其密码时，本地域控制器会将密码更改的结果存储 (哈希) 在两个属性中：
-    * NTLM 密码哈希的*unicodePwd* 。
-    * Kerberos 密码哈希的*supplementalCredentials* 。
-1. Azure AD Connect 通过目录复制通道检测到需要复制到其他域控制器)  (属性更改的密码更改。
-1. 对于每个更改了其密码的用户，Azure AD Connect 执行以下步骤：
-    * 生成随机 AES 256 位对称密钥。
+1. Azure AD Connect 检索租户的 Azure AD 域服务实例的公钥。
+1. 当用户更改其密码时，本地域控制器将密码更改的结果（哈希）存储在两个属性中：
+    * unicodePwd，用于 NTLM 密码哈希。
+    * supplementalCredentials，用于 Kerberos 密码哈希。
+1. Azure AD Connect 通过目录复制通道来检测密码更改（需要复制到其他域控制器的属性更改）。
+1. 对于其密码发生更改的每个用户，Azure AD Connect 执行以下步骤：
+    * 生成随机的 AES 256 位对称密钥。
     * 生成第一轮加密所需的随机初始化向量。
     * 从 *supplementalCredentials* 属性中提取 Kerberos 密码哈希。
-    * 检查 "Azure AD 域服务安全配置 *SyncNtlmPasswords* " 设置。
-        * 如果禁用此设置，则会生成随机、高熵 NTLM 哈希 (与用户的密码) 不同。 然后，将此哈希与从 *supplementalCrendetials* 属性 Exacted 的 Kerberos 密码哈希合并到一个数据结构中。
-        * 如果启用，则将 *unicodePwd* 属性的值与从 *supplementalCredentials* 属性提取的 Kerberos 密码哈希合并到一个数据结构中。
+    * 检查 Azure AD 域服务安全配置 SyncNtlmPasswords 设置。
+        * 如果禁用此设置，则生成随机的高熵 NTLM 哈希（不同于用户的密码）。 然后，将此哈希与从 supplementalCrendetials 属性提取的 Kerberos 密码哈希合并到一个数据结构中。
+        * 如果启用，则会将 unicodePwd 属性的值与从 supplementalCredentials 属性提取的 Kerberos 密码哈希合并到一个数据结构中。
     * 使用 AES 对称密钥加密单一数据结构。
     * 使用租户的 Azure AD 域服务公钥对 AES 对称密钥进行加密。
-1. Azure AD Connect 将传输加密的 AES 对称密钥、包含密码哈希的加密数据结构以及要 Azure AD 的初始化向量。
+1. Azure AD Connect 会向 Azure AD 传输加密的 AES 对称密钥、包含密码哈希的已加密数据结构，以及初始化向量。
 1. Azure AD 存储加密的 AES 对称密钥、加密的数据结构和用户的初始化向量。
-1. Azure AD 使用通过加密 HTTP 会话的内部同步机制将加密的 AES 对称密钥、加密的数据结构和初始化向量推送到 Azure AD 域服务。
-1. Azure AD 域服务通过 Azure 密钥保管库检索租户实例的私钥。
-1. 对于每个加密的数据集 (表示单个用户的密码更改) ，Azure AD 域服务然后执行以下步骤：
+1. Azure AD 使用基于加密的 HTTP 会话的内部同步机制，将加密的 AES 对称密钥、加密的数据结构以及初始化向量推送到 Azure AD 域服务。
+1. Azure AD 域服务从 Azure Key Vault 中检索租户的实例的私钥。
+1. 然后，对于每个加密的数据集（表示单个用户的密码更改），Azure AD 域服务执行以下步骤：
     * 使用其私钥对 AES 对称密钥进行解密。
-    * 使用带有初始化向量的 AES 对称密钥来解密包含密码哈希的加密数据结构。
-    * 将接收到的 Kerberos 密码哈希写入 Azure AD 域服务域控制器。 哈希将保存到用户对象的 *supplementalCredentials* 属性中，该属性已加密为域服务域控制器的公钥 Azure AD。
-    * Azure AD 域服务将其收到的 NTLM 密码哈希写入 Azure AD 域服务域控制器。 哈希将保存到用户对象的 *unicodePwd* 属性中，该属性已加密为域服务域控制器的公钥 Azure AD。
+    * 使用带有初始化向量的 AES 对称密钥来解密包含密码哈希的已加密数据结构。
+    * 将它接收到的 Kerberos 密码哈希写入 Azure AD 域服务域控制器。 哈希将保存到用户对象的 supplementalCredentials 属性，该属性加密为 Azure AD 域服务域控制器的公钥。
+    * Azure AD 域服务将它接收到的 NTLM 密码哈希写入到 Azure AD 域服务域控制器。 哈希将保存到用户对象的 unicodePwd 属性，该属性加密为 Azure AD 域服务域控制器的公钥。
 
 ## <a name="enable-password-hash-synchronization"></a>启用密码哈希同步
 

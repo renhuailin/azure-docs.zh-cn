@@ -2,26 +2,26 @@
 title: 用于部署的链接模板
 description: 介绍如何使用 Azure Resource Manager 模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 12/07/2020
+ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369308"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852092"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
-若要部署复杂的解决方案，可以将模板分解为许多相关模板，然后通过主模板将它们一起部署。 相关模板可以是嵌入在主模板内的单独文件或模板语法。 本文使用术语“链接模板”来指代一个通过主模板中的链接进行引用的单独模板文件。 它使用术语**嵌套模板**指代主模板内嵌套的模板语法。
+若要部署复杂的解决方案，可以将模板分解为许多相关模板，然后通过主模板将它们一起部署。 相关模板可以是嵌入在主模板内的单独文件或模板语法。 本文使用术语“链接模板”来指代一个通过主模板中的链接进行引用的单独模板文件。 它使用术语 **嵌套模板** 指代主模板内嵌套的模板语法。
 
 对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件。 可以轻松地将这些模板重复用于其他方案。
 
 如需教程，请参阅[教程：创建链接的 Azure 资源管理器模板](./deployment-tutorial-linked-template.md)。
 
 > [!NOTE]
-> 对于链接模板或嵌套模板，只能将部署模式设置为 " [增量](deployment-modes.md)"。 但是，主模板可以在完整模式下进行部署。 如果在 "完整" 模式下部署主模板，并且链接或嵌套的模板以相同的资源组为目标，则在 "完成模式" 部署的评估中包括部署在链接模板或嵌套模板中的资源。 将与资源组中的现有资源进行比较，将在主模板和链接的模板中部署的资源组合在一起。 此组合集合中未包含的所有资源都将被删除。
+> 对于链接模板或嵌套模板，只能将部署模式设置为[增量](deployment-modes.md)。 但是，主模板可以在完整模式下进行部署。 如果在完整模式下部署主模板，并且链接模板或嵌套模板以相同的资源组为目标，则在链接模板或嵌套模板中部署的资源会包括在针对完整模式部署进行的评估中。 将在主模板和链接模板或嵌套模板中部署的资源的合并集合与资源组中的现有资源进行比较。 此合并集合中未包含的任何资源都会被删除。
 >
-> 如果链接或嵌套的模板面向不同的资源组，则该部署使用增量模式。
+> 如果链接模板或嵌套模板针对不同的资源组，则该部署使用增量模式。
 >
 
 ## <a name="nested-template"></a>嵌套模板
@@ -283,7 +283,7 @@ ms.locfileid: "91369308"
 
 ## <a name="linked-template"></a>链接的模板
 
-若要链接模板，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到部署新存储帐户的模板。
+若要链接模板，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到存储帐户中的模板。
 
 ```json
 {
@@ -310,13 +310,17 @@ ms.locfileid: "91369308"
 }
 ```
 
-引用链接模板时，`uri` 的值不能是本地文件或只能在本地网络上使用的文件。 必须提供可下载的 http 或 https 形式的 URI 值。
+引用链接模板时，`uri` 的值不能是本地文件或只能在本地网络上使用的文件。 Azure 资源管理器必须能够访问该模板。 提供可下载的 http 或 https 形式的 URI 值 。 
 
-> [!NOTE]
->
-> 可以使用参数（如 `_artifactsLocation` 参数）来引用模板，例如：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`，这些参数最终会解析为某个使用“http”或“https”的项
+可以使用包含 http 或 https 的参数来引用模板 。 例如，一种常见模式是使用 `_artifactsLocation` 参数。 可以使用如下所示的表达式来设置链接模板：
 
-资源管理器必须能够访问模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
+```json
+"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
+```
+
+如果要链接到 GitHub 中的模板，请使用原始 URL。 链接的格式为：`https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json`。 若要获取原始链接，请选择“原始”。
+
+:::image type="content" source="./media/linked-templates/select-raw.png" alt-text="选择原始 URL":::
 
 ### <a name="parameters-for-linked-template"></a>链接模板的参数
 
@@ -375,6 +379,12 @@ ms.locfileid: "91369308"
 
 - [教程：创建包含链接模板的模板规范](./template-specs-create-linked.md)。
 - [教程：将模板规范部署为链接模板](./template-specs-deploy-linked-template.md)。
+
+## <a name="dependencies"></a>依赖项
+
+与其他资源类型一样，可以在链接模板之间设置依赖关系。 如果一个链接模板中的资源必须部署在第二个链接模板中的资源之前，请设置第二个模板依赖于第一个模板。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/linked-dependency.json" highlight="10,22,24":::
 
 ## <a name="contentversion"></a>contentVersion
 
@@ -468,156 +478,19 @@ ms.locfileid: "91369308"
 
 以下示例演示如何引用链接模板和检索输出值。 链接模板返回一条简单的消息。  首先，让我们看看链接模板：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "greetingMessage": {
-      "value": "Hello World",
-      "type" : "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
 主模板部署链接模板并获取返回值。 请注意，该模板按名称引用部署资源，并使用链接模板返回的属性的名称。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }
-  ],
-  "outputs": {
-    "messageFromLinkedTemplate": {
-      "type": "string",
-      "value": "[reference('linkedTemplate').outputs.greetingMessage.value]"
-    }
-  }
-}
-```
-
-链接模板与其他资源类型一样，你可以在它与其他资源之间设置依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworldparent.json" highlight="10,23":::
 
 以下示例显示一个模板，该模板部署公共 IP 地址并返回该公共 IP 的 Azure 资源的资源 ID：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "publicIPAddresses_name": {
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('publicIPAddresses_name')]",
-      "location": "eastus",
-      "properties": {
-        "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic",
-        "idleTimeoutInMinutes": 4
-      },
-      "dependsOn": []
-    }
-  ],
-  "outputs": {
-    "resourceID": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip.json" highlight="27":::
 
 在部署负载均衡器时，若要使用前面所述模板中的公共 IP 地址，请链接到该模板，并声明对 `Microsoft.Resources/deployments` 资源的依赖性。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "loadBalancers_name": {
-      "defaultValue": "mylb",
-      "type": "string"
-    },
-    "publicIPAddresses_name": {
-      "defaultValue": "myip",
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/loadBalancers",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('loadBalancers_name')]",
-      "location": "eastus",
-      "properties": {
-        "frontendIPConfigurations": [
-          {
-            "name": "LoadBalancerFrontEnd",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                // this is where the output value from linkedTemplate is used
-                "id": "[reference('linkedTemplate').outputs.resourceID.value]"
-              }
-            }
-          }
-        ],
-        "backendAddressPools": [],
-        "loadBalancingRules": [],
-        "probes": [],
-        "inboundNatRules": [],
-        "outboundNatRules": [],
-        "inboundNatPools": []
-      },
-      // This is where the dependency is declared
-      "dependsOn": [
-        "linkedTemplate"
-      ]
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'publicip.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters":{
-          "publicIPAddresses_name":{"value": "[parameters('publicIPAddresses_name')]"}
-        }
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json" highlight="28,41":::
 
 ## <a name="deployment-history"></a>部署历史记录
 

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294707"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608582"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -21,6 +21,9 @@ ms.locfileid: "89294707"
 
 > [!NOTE]
 > 此过程不可用于 StorSimple 云设备。 有关详细信息，请参阅“如何为云设备配置主机服务器”。
+
+> [!NOTE]
+> 本文包含对字词 *黑名单* 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 
 ## <a name="about-multipathing"></a>关于多路径
@@ -64,7 +67,7 @@ multipath.conf 包括五个节：
 本部分详细说明 CentOS 服务器和 StorSimple 设备的配置先决条件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主机上
-1. 确保 CentOS 主机已启用 2 个网络接口。 键入：
+1. 确保 CentOS 主机已启用 2 个网络接口。 类型：
    
     `ifconfig`
    
@@ -104,10 +107,10 @@ multipath.conf 包括五个节：
 1. 在 CentOS 服务器上安装 *iSCSI-initiator-utils*。 执行以下步骤安装 *iSCSI-initiator-utils*。
    
    1. 以 `root` 身份登录到 CentOS 主机。
-   1. 安装 *iSCSI-initiator-utils*。 键入：
+   1. 安装 *iSCSI-initiator-utils*。 类型：
       
        `yum install iscsi-initiator-utils`
-   1. 成功安装 *iSCSI-Initiator-utils* 后，启动 iSCSI 服务。 键入：
+   1. 成功安装 *iSCSI-Initiator-utils* 后，启动 iSCSI 服务。 类型：
       
        `service iscsid start`
       
@@ -127,7 +130,7 @@ multipath.conf 包括五个节：
         ```
       
        从上面的示例可以看到，启动时，iSCSI 环境会在运行级别 2、3、4 和 5 运行。
-1. 安装 *device-mapper-multipath*。 键入：
+1. 安装 *device-mapper-multipath*。 类型：
    
     `yum install device-mapper-multipath`
    
@@ -139,15 +142,15 @@ StorSimple 设备应该：
 * 至少有两个接口已启用 iSCSI。 若要验证 StorSimple 设备上是否有两个接口已启用 iSCSI，请在 StorSimple 设备的 Azure 经典门户中执行以下步骤：
   
   1. 登录 StorSimple 设备的经典门户。
-  1. 选择 StorSimple Manager 服务，单击“设备”，然后选择特定的 StorSimple 设备。**** 单击“配置”并验证网络接口设置。**** 以下屏幕截图显示两个已启用 iSCSI 的网络接口。 下面 DATA 2 和 DATA 3 两个 10 GbE 接口都已启用 iSCSI。
+  1. 选择 StorSimple Manager 服务，单击“设备”，然后选择特定的 StorSimple 设备。 单击“配置”并验证网络接口设置。 以下屏幕截图显示两个已启用 iSCSI 的网络接口。 下面 DATA 2 和 DATA 3 两个 10 GbE 接口都已启用 iSCSI。
      
       ![MPIO StorSimple DATA 2 配置](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
       ![MPIO StorSimple DATA 3 配置](./media/storsimple-configure-mpio-on-linux/IC761348.png)
      
-      在“配置”页中****
+      在“配置”页中
      
-     1. 确定这两个网络接口都已启用 iSCSI。 “已启用 iSCSI”字段应设置为“是”。********
+     1. 确定这两个网络接口都已启用 iSCSI。 “已启用 iSCSI”字段应设置为“是”。
      1. 确保网络接口的速度相同，两者都应是 1 GbE 或 10 GbE。
      1. 请记下已启用 iSCSI 的接口的 IPv4 地址，并保存供稍后在主机上使用。
 * 应该可以从 CentOS 服务器访问 StorSimple 设备上的 iSCSI 接口。
@@ -185,19 +188,19 @@ StorSimple 设备应该：
 ### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>步骤 1：为自动发现配置多路径
 系统可以自动发现和配置多路径支持的设备。
 
-1. 初始化 `/etc/multipath.conf` 文件。 键入：
+1. 初始化 `/etc/multipath.conf` 文件。 类型：
    
      `mpathconf --enable`
    
     上述命令将创建 `sample/etc/multipath.conf` 文件。
-1. 启动多路径服务。 键入：
+1. 启动多路径服务。 类型：
    
     `service multipathd start`
    
     将显示以下输出：
    
     `Starting multipathd daemon:`
-1. 启用多路径自动发现。 键入：
+1. 启用多路径自动发现。 类型：
    
     `mpathconf --find_multipaths y`
    
@@ -214,7 +217,7 @@ StorSimple 设备应该：
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>步骤 2：为 StorSimple 卷配置多路径
 默认情况下，所有设备都已列入 multipath.conf 文件中的方块列表，因而会被绕过。 必须创建方块列表例外，允许 StorSimple 设备中的卷启动多路径。
 
-1. 编辑 `/etc/mulitpath.conf` 文件。 键入：
+1. 编辑 `/etc/mulitpath.conf` 文件。 类型：
    
     `vi /etc/multipath.conf`
 1. 在 multipath.conf 文件中找到 blacklist_exceptions 节。 在此节中，需要将 StorSimple 设备列为方块列表例外。 可按如下所示在此文件中取消注释相关行，以修改此文件（仅使用所用设备的特定型号）：
@@ -235,7 +238,7 @@ StorSimple 设备应该：
 ### <a name="step-3-configure-round-robin-multipathing"></a>步骤 3：配置轮循机制多路径
 此负载均衡算法以均衡的轮循机制方式，使用主动控制器的所有可用多路径。
 
-1. 编辑 `/etc/multipath.conf` 文件。 键入：
+1. 编辑 `/etc/multipath.conf` 文件。 类型：
    
     `vi /etc/multipath.conf`
 1. 在 `defaults` 节下面，将 `path_grouping_policy` 设置为 `multibus`。 `path_grouping_policy` 指定将默认路径分组策略应用到未指定的多路径。 defaults 节如下所示。
@@ -256,7 +259,7 @@ StorSimple 设备应该：
 > 
 
 ### <a name="step-4-enable-multipathing"></a>步骤 4：启用多路径
-1. 重新启动 `multipathd` 守护程序。 键入：
+1. 重新启动 `multipathd` 守护程序。 类型：
    
     `service multipathd restart`
 1. 输出如下所示：
@@ -269,7 +272,7 @@ StorSimple 设备应该：
 ### <a name="step-5-verify-multipathing"></a>步骤 5：验证多路径
 1. 首先确保与 StorSimple 设备建立 iSCSI 连接，如下所示：
    
-   a. 发现 StorSimple 设备。 键入：
+   a. 发现 StorSimple 设备。 类型：
       
     `iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>`
     
@@ -282,7 +285,7 @@ StorSimple 设备应该：
 
     复制上述输出中 StorSimple 设备的 IQN，即 `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`。
 
-   b. 使用目标 IQN 连接到该设备。 此处，StorSimple 设备即是 iSCSI 目标。 键入：
+   b. 使用目标 IQN 连接到该设备。 此处，StorSimple 设备即是 iSCSI 目标。 类型：
 
       `iscsiadm -m node --login -T <IQN of iSCSI target>`
 
@@ -303,7 +306,7 @@ StorSimple 设备应该：
 
 1. 卷通过 StorSimple 设备向 CentOS 服务器公开。 有关详细信息，请参阅[步骤 6：创建卷](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)（通过 StorSimple 设备上的 Azure 门户）。
 
-1. 验证可用路径。 键入：
+1. 验证可用路径。 类型：
 
     `multipath -l`
 
@@ -334,17 +337,17 @@ StorSimple 设备应该：
 ## <a name="troubleshoot-multipathing"></a>排查多路径问题
 如果在配置多路径期间遇到任何问题，请参阅本部分提供的一些有用提示。
 
-Q. `multipath.conf` 文件中的更改未生效。
+问： `multipath.conf` 文件中的更改未生效。
 
 A. 对 `multipath.conf` 文件进行任何更改后，需要重新启动多路径服务。 键入以下命令：
 
 `service multipathd restart`
 
-Q. 我在 StorSimple 设备上启用了两个网络接口并在主机上启用了两个网络接口。 但列出可用路径时，只看到两个路径。 我原本以为能够看到四个可用路径。
+问： 我在 StorSimple 设备上启用了两个网络接口并在主机上启用了两个网络接口。 但列出可用路径时，只看到两个路径。 我原本以为能够看到四个可用路径。
 
 A. 请确保这两个路径位于同一子网且可路由。 如果网络接口位于不同的 vLAN 且不可路由，则只会显示两个路径。 验证方法之一是确定是否可从 StorSimple 设备上的网络接口访问这两个主机接口。 需要[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)，因为这种验证只能通过支持会话完成。
 
-Q. 列出可用路径时，未看到任何输出。
+问： 列出可用路径时，未看到任何输出。
 
 A. 通常情况下，不会看到任何多路径路径会给出有关多路径后台程序的问题，很有可能是该文件中存在问题 `multipath.conf` 。
 
@@ -357,7 +360,7 @@ A. 通常情况下，不会看到任何多路径路径会给出有关多路径�
   
     `$ dmesg | grep sd*`
      
-     Or
+     或
   
     `$ fdisk -l`
   
@@ -377,7 +380,7 @@ A. 通常情况下，不会看到任何多路径路径会给出有关多路径�
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-Q. 我不确定是否允许设备。
+问： 我不确定是否允许设备。
 
 A. 若要验证是否允许您的设备，请使用以下疑难解答交互式命令：
 
@@ -423,7 +426,7 @@ dm-3 devnode blacklisted, unmonitored
 有关详细信息，请参阅多 [路径故障排除](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
 
 ## <a name="list-of-useful-commands"></a>有用命令列表
-| 类型 | Command | 说明 |
+| 类型 | 命令 | 描述 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |启动 iSCSI 服务 |
 | &nbsp; |`service iscsid stop` |停止 iSCSI 服务 |

@@ -1,18 +1,18 @@
 ---
-title: Azure 角色和权限
+title: 注册表角色和权限
 description: 使用 azure RBAC) 和标识和访问管理 (IAM) 中的 Azure 基于角色的访问 (控制，为 Azure 容器注册表中的资源提供精细的权限。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 10/14/2020
+ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661378"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207948"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
 
-Azure 容器注册表服务支持一组内置的 [azure 角色](../role-based-access-control/built-in-roles.md) ，这些角色提供对 Azure 容器注册表的不同级别的权限。 使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/index.yml) 向用户、服务主体或其他需要与注册表进行交互的标识分配特定权限。 你还可以为不同操作的注册表定义具有严格权限的 [自定义角色](#custom-roles) 。
+Azure 容器注册表服务支持一组内置的 [azure 角色](../role-based-access-control/built-in-roles.md) ，这些角色提供对 Azure 容器注册表的不同级别的权限。 使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/index.yml) 向用户、服务主体或其他需要与注册表交互的标识（例如请求或推送容器映像）分配特定权限。 你还可以为不同操作的注册表定义具有严格权限的 [自定义角色](#custom-roles) 。
 
 | 角色/权限       | [访问资源管理器](#access-resource-manager) | [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [删除映像数据](#delete-image-data) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -23,6 +23,12 @@ Azure 容器注册表服务支持一组内置的 [azure 角色](../role-based-ac
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
+
+## <a name="assign-roles"></a>分配角色
+
+请参阅为高级步骤 [添加角色分配](../role-based-access-control/role-assignments-steps.md) 以将角色分配添加到现有用户、组、服务主体或托管标识中的步骤。 你可以使用 Azure 门户、Azure CLI 或其他 Azure 工具。
+
+在创建服务主体时，还会配置其对 Azure 资源（例如容器注册表）的访问权限和权限。 有关使用 Azure CLI 的示例脚本，请参阅 [使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md#create-a-service-principal)。
 
 ## <a name="differentiate-users-and-services"></a>区分用户和服务
 

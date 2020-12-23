@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 04/07/2020
+ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530147"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001960"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
@@ -75,7 +75,7 @@ ms.locfileid: "91530147"
 
 1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Azure:  登录”：
 
-    ![适用于 Visual Studio Code 的 Spark 和 Hive 工具登录](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+   ![适用于 Visual Studio Code 的 Spark 和 Hive 工具登录](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
 2. 按照登录说明登录到 Azure。 连接后，Visual Studio Code 窗口底部的状态栏上会显示 Azure 帐户名称。  
 
@@ -115,8 +115,10 @@ ms.locfileid: "91530147"
 3. 输入通用 livy 终结点。 例如：http\://10.172.41.42:18080。
 
 4. 选择授权类型“基本”或“无”。   如果选择“基本”：  
-    &emsp;a. 输入 Ambari 用户名，默认为 **admin**。  
-    &emsp;b. 输入 Ambari 密码。
+   
+   1. 输入 Ambari 用户名，默认为 **admin**。  
+
+   2. 输入 Ambari 密码。
 
 5. 查看“输出”视图以进行验证。
 
@@ -128,13 +130,13 @@ ms.locfileid: "91530147"
 
 3. 检查“输出”视图。 此视图显示你的链接群集（或多个群集），以及你的 Azure 订阅下的所有群集：
 
-    ![设置默认群集配置](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   ![设置默认群集配置](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="set-the-default-cluster"></a>设置默认群集
 
-1. 重新打开[前面](#open-a-work-folder)所述的 **HDexample** 文件夹（如果已关闭）。  
+1. 重新打开 [前面](#open-a-work-folder)所述的 **HDexample** 文件夹（如果已关闭）。  
 
-2. 选择[前面](#open-a-work-folder)创建的 **HelloWorld.hql** 文件。 它将在脚本编辑器中打开。
+2. 选择 [前面](#open-a-work-folder)创建的 **HelloWorld.hql** 文件。 它将在脚本编辑器中打开。
 
 3. 右键单击脚本编辑器，然后选择“Spark/ Hive:Set Default Cluster”。  
 
@@ -148,15 +150,15 @@ ms.locfileid: "91530147"
 
 通过 Visual Studio Code 的 Spark 和 Hive 工具，可将交互式 Hive 查询和 Hive 批处理脚本提交到群集。
 
-1. 重新打开[前面](#open-a-work-folder)所述的 **HDexample** 文件夹（如果已关闭）。  
+1. 重新打开 [前面](#open-a-work-folder)所述的 **HDexample** 文件夹（如果已关闭）。  
 
-2. 选择[前面](#open-a-work-folder)创建的 **HelloWorld.hql** 文件。 它将在脚本编辑器中打开。
+2. 选择 [前面](#open-a-work-folder)创建的 **HelloWorld.hql** 文件。 它将在脚本编辑器中打开。
 
 3. 将以下代码复制并粘贴到 Hive 文件中，然后保存该文件：
 
-    ```hiveql
-    SELECT * FROM hivesampletable;
-    ```
+   ```hiveql
+   SELECT * FROM hivesampletable;
+   ```
 
 4. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
 
@@ -166,9 +168,9 @@ ms.locfileid: "91530147"
 
    ![交互式 Apache Hive 查询结果](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
-    - “结果”面板：可以将整个结果作为 CSV、JSON、Excel 保存到本地路径，也可以只选择多个行。
+   - “结果”面板：可以将整个结果作为 CSV、JSON、Excel 保存到本地路径，也可以只选择多个行。
 
-    - “消息”面板：选择**行**号会跳转到运行的脚本的第一行。
+   - “消息”面板：选择 **行** 号会跳转到运行的脚本的第一行。
 
 ## <a name="submit-interactive-pyspark-queries"></a>提交交互式 PySpark 查询
 
@@ -177,9 +179,9 @@ ms.locfileid: "91530147"
 ### <a name="using-the-pyspark-interactive-command-in-py-file"></a>在 PY 文件中使用 PySpark Interactive 命令
 使用 PySpark Interactive 命令提交查询时，请执行以下步骤：
 
-1. 重新打开[前面](#open-a-work-folder)所述的 **HDexample** 文件夹（如果已关闭）。  
+1. 重新打开 [前面](#open-a-work-folder)所述的 **HDexample** 文件夹（如果已关闭）。  
 
-2. 遵循[前面](#open-a-work-folder)所述的步骤创建新的 **HelloWorld.py** 文件。
+2. 遵循 [前面](#open-a-work-folder)所述的步骤创建新的 **HelloWorld.py** 文件。
 
 3. 将以下代码复制并粘贴到脚本文件中：
 
@@ -197,100 +199,113 @@ ms.locfileid: "91530147"
         print(sortedCollection[i])
    ```
 
-4. 有关安装 PySpark 内核的提示显示在窗口右下角。 可以单击“安装”按钮继续进行 PySpark 安装，也可以单击“跳过”按钮跳过此步骤。
+4. 窗口右下角显示安装 PySpark/Synapse Pyspark 内核的提示。 可以单击“安装”按钮继续安装 PySpark/Synapse Pyspark；或单击“跳过”按钮跳过此步骤。
 
    ![屏幕截图显示跳过 PySpark 安装的选项。](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
-5. 如果以后需要安装它，可以导航到“文件” > “首选项” > “设置”，然后在设置中取消选中“Hdinsight:允许跳过 Pyspark 安装”。 
+5. 如果以后需要安装，可以导航到 "**文件**  >  **首选项**  >  **设置**"，然后在 "设置" 中取消选中 " **HDInsight： Enable Skip Pyspark 安装**"。 
     
     ![屏幕截图显示用于启用 Skip Pyspark 安装的选项。](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. 如果在步骤 4 中安装成功，则会在窗口右下角显示“已成功安装 PySpark”消息框。 单击“重载”按钮可重载此窗口。
-    ![已成功安装 PySpark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
+   ![已成功安装 PySpark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-8. 选择所有代码，右键单击脚本编辑器并选择“Spark:PySpark Interactive”以提交查询。 或者，使用 Ctrl+Alt+I 快捷键。
+7. 从菜单栏中，导航到“查看” > “命令面板...”或使用 Shift + Ctrl + P 键盘快捷键，然后输入“Python:选择解释器以启动 Jupyter 服务器”。
+
+   ![选择解释器以启动 jupyter 服务器](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
+
+8. 选择下面的 python 选项。
+
+   ![选择下面的选项](./media/hdinsight-for-vscode/choose-the-below-option.png)
+    
+9. 从菜单栏中，导航到“查看” > “命令面板...”或使用 Shift + Ctrl + P 键盘快捷键，然后输入“开发人员:重载窗口”。
+
+   ![重载窗口](./media/hdinsight-for-vscode/reload-window.png)
+
+10. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
+
+11. 选择所有代码，右键单击脚本编辑器，然后选择 " **Spark： PySpark interactive/Synapse： PySpark Interactive** " 以提交查询。 
 
     ![Pyspark Interactive 上下文菜单](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-9. 如果尚未指定默认群集，请选择群集。 不久之后，新选项卡中会显示“Python Interactive 结果”。单击 PySpark 可将内核切换到 **PySpark**，代码将成功运行。 工具还允许使用上下文菜单提交代码块而非整个脚本文件：
+12. 如果尚未指定默认群集，请选择群集。 不久之后，新选项卡中会显示“Python Interactive 结果”。单击 PySpark 可将内核切换到“PySpark/Synapse Pyspark”，代码会成功运行。 如果要切换到 Synapse Pyspark 内核，建议在 Azure 门户中禁用自动设置。 否则，首次使用时，可能需要很长时间才能唤醒群集和设置 synapse 内核。 如果工具还允许使用上下文菜单提交代码块而非整个脚本文件：
 
-   ![pyspark interactive - python interactive 窗口](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
+    ![pyspark interactive - python interactive 窗口](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-10. 输入 **%%info**，然后按 Shift+Enter 查看作业信息（可选）：
+13. 输入 **%%info**，然后按 Shift+Enter 查看作业信息（可选）：
 
     ![pyspark 交互查看作业信息](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
 工具还支持 **Spark SQL** 查询：
 
-   ![pyspark 交互视图结果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
+  ![pyspark 交互视图结果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
 
 
 ### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>使用 #%% 注释在 PY 文件中执行交互式查询
 
 1. 将 **#%%** 添加到 PY 代码之前以获取笔记本体验。
 
-    ![添加 #%%](./media/hdinsight-for-vscode/run-cell.png)
+   ![添加 #%%](./media/hdinsight-for-vscode/run-cell.png)
 
-2. 单击“运行单元格”。 不久之后，Python Interactive 结果会显示在一个新选项卡中。
+2. 单击“运行单元格”。 不久之后，Python Interactive 结果会显示在一个新选项卡中。单击 PySpark 将内核切换为“PySpark/Synapse PySpark”，然后再次单击“运行单元格”，代码将成功运行。
 
    ![“运行单元格”命令的结果](./media/hdinsight-for-vscode/run-cell-get-results.png)
-
-   > [!NOTE]  
-   > 当内核或设置出现混乱情况时，请使用“Python:选择解释器来启动 Jupyter 服务器”命令和“重启 IPython 内核”，然后重载 VSCode，即可解决问题。
 
 ## <a name="leverage-ipynb-support-from-python-extension"></a>利用 Python 扩展中的 IPYNB 支持
 
 1. 若要创建 Jupyter Notebook，可以使用命令面板中的命令，也可以在工作区中创建新的 .ipynb 文件。 有关详细信息，请参阅[在 Visual Studio Code 中使用 Jupyter Notebook](https://code.visualstudio.com/docs/python/jupyter-support)
 
-2. 单击“PySpark”将内核切换到 PySpark，然后单击“运行单元格”，一段时间后，就会显示结果。 
+2. 单击“运行单元格”按钮，按提示“设置默认 Spark 池”（强烈建议每次打开笔记本之前都设置默认群集/池），然后重载窗口。
+
+   ![设置默认 spark 池并重载](./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png)
+
+3. 单击 PySpark 将内核切换为“PySpark/Synapse Pyspark”，然后单击“运行单元格”，一段时间后将显示结果。
 
    ![运行 ipynb 的结果](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
 
 > [!NOTE]
->
->此扩展不支持 2020.5.78807 以上（含）的 Ms-python 版本，这是一个[已知问题](#known-issues)。
+> 此扩展不支持 2020.5.78807 以上（含）的 Ms-python 版本，这是一个[已知问题](#known-issues)。
 
 ## <a name="submit-pyspark-batch-job"></a>提交 PySpark 批处理作业
 
-1. 重新打开[前面](#open-a-work-folder)所述的 **HDexample** 文件夹（如果已关闭）。  
+1. 重新打开 [前面](#open-a-work-folder)所述的 **HDexample** 文件夹（如果已关闭）。  
 
-2. 遵循[前面](#open-a-work-folder)所述的步骤创建新的 **BatchFile.py** 文件。
+2. 遵循 [前面](#open-a-work-folder)所述的步骤创建新的 **BatchFile.py** 文件。
 
 3. 将以下代码复制并粘贴到脚本文件中：
 
-    ```python
-    from __future__ import print_function
-    import sys
-    from operator import add
-    from pyspark.sql import SparkSession
-    if __name__ == "__main__":
-        spark = SparkSession\
-            .builder\
-            .appName("PythonWordCount")\
-            .getOrCreate()
-    
-        lines = spark.read.text('/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv').rdd.map(lambda r: r[0])
-        counts = lines.flatMap(lambda x: x.split(' '))\
-                    .map(lambda x: (x, 1))\
-                    .reduceByKey(add)
-        output = counts.collect()
-        for (word, count) in output:
-            print("%s: %i" % (word, count))
-        spark.stop()
-    ```
+   ```python
+   from __future__ import print_function
+   import sys
+   from operator import add
+   from pyspark.sql import SparkSession
+   if __name__ == "__main__":
+       spark = SparkSession\
+           .builder\
+           .appName("PythonWordCount")\
+           .getOrCreate()
+   
+       lines = spark.read.text('/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv').rdd.map(lambda r: r[0])
+       counts = lines.flatMap(lambda x: x.split(' '))\
+                  .map(lambda x: (x, 1))\
+                   .reduceByKey(add)
+       output = counts.collect()
+       for (word, count) in output:
+           print("%s: %i" % (word, count))
+       spark.stop()
+   ```
 
 4. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
 
-5. 右键单击脚本编辑器，然后选择“Spark:PySpark 批处理”，或使用 Ctrl+Alt+H 快捷键。
+5. 右键单击脚本编辑器，然后选择“Spark:PySpark Batch”或“Synapse:PySpark Batch”。
 
-6. 选择要将 PySpark 作业提交到的群集：
+6. 选择要将 PySpark 作业提交到的群集/spark 池：
 
    ![提交 Python 作业结果输出](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-提交 Python 作业后，提交日志将显示在 Visual Studio Code 的“输出”窗口中。 同时还会显示 Spark UI URL 和 Yarn UI URL。 你可以在 Web 浏览器中打开 URL 以跟踪作业状态。
+提交 Python 作业后，提交日志将显示在 Visual Studio Code 的“输出”窗口中。 同时还会显示 Spark UI URL 和 Yarn UI URL。 如果将批处理作业提交到 Apache Spark 池，则还会显示 Spark 历史记录 UI URL 和 Spark 作业应用程序 UI URL。 你可以在 Web 浏览器中打开 URL 以跟踪作业状态。
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>与 HDInsight Identity Broker (HIB) 集成
 
@@ -306,62 +321,66 @@ ms.locfileid: "91530147"
 
 若要运行 PySpark 批处理作业，可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[提交 PySpark 批处理作业](#submit-pyspark-batch-job)。
 
-
 ## <a name="apache-livy-configuration"></a>Apache Livy 配置
 
 支持 [Apache Livy](https://livy.incubator.apache.org/) 配置。 可在工作空间文件夹中的 **.VSCode\settings.json** 内配置 Apache Livy。 目前，Livy 配置仅支持 Python 脚本。 有关详细信息，请参阅 [Livy 自述文件](https://github.com/cloudera/livy/blob/master/README.rst )。
 
 <a id="triggerlivyconf"></a>**如何触发 Livy 配置**
 
-方法 1  
+### <a name="method-1"></a>方法 1  
+
 1. 从菜单栏中，导航到“文件” > “首选项” > “设置”  。
 2. 在“搜索设置”框中，输入“HDInsight 作业提交: Livy Conf”。  
 3. 选择“在 settings.json 中编辑”以获取相关搜索结果。
 
-方法2：提交文件，并注意 `.vscode` 文件夹自动添加到工作文件夹。 可以通过选择“.vscode\settings.json”来查看 Livy 配置。
+### <a name="method-2"></a>方法 2
 
-+ 项目设置：
+提交一个文件，注意 `.vscode` 文件夹会自动添加到工作文件夹。 可以通过选择“.vscode\settings.json”来查看 Livy 配置。
 
-    ![HDInsight Apache Livy 配置](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
+- 项目设置：
 
-    >[!NOTE]
-    >对于 **driverMemory** 和 **executorMemory** 设置，请设置值和单位。 例如：1g 或 1024m。
+  ![HDInsight Apache Livy 配置](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
-+ 支持的 Livy 配置：
+  >[!NOTE]
+  >对于 **driverMemory** 和 **executorMemory** 设置，请设置值和单位。 例如：1g 或 1024m。
 
-    **POST/batches** 请求正文
+- 支持的 Livy 配置：
 
-    | name | description | type |
-    | --- | --- | --- |
-    | file | 包含要执行的应用程序的文件 | Path（必需） |
-    | proxyUser | 运行作业时要模拟的用户 | String |
-    | className | 应用程序 Java/Spark 主类 | String |
-    | args | 应用程序的命令行参数 | 字符串列表 |
-    | jars | 此会话中要使用的 Jar | 字符串列表 | 
-    | pyFiles | 将在本次会话中使用的 Python 文件 | 字符串列表 |
-    | files | 此会话中要使用的文件 | 字符串列表 |
-    | driverMemory | 用于驱动程序进程的内存量 | String |
-    | driverCores | 用于驱动程序进程的内核数 | int |
-    | executorMemory | 每个执行程序进程使用的内存量 | String |
-    | executorCores | 每个执行程序使用的内核数 | int |
-    | numExecutors | 为此会话启动的执行程序数 | int |
-    | archives | 将在本次会话中使用的存档 | 字符串列表 |
-    | 队列 | 要提交到的 YARN 队列的名称| String |
-    | name | 此会话的名称 | String |
-    | conf | Spark 配置属性 | key=val 的映射 |
+  **POST /batches**
+  
+  **请求正文**
 
-    响应正文：创建的批处理对象。
+  | name | description | type |
+  | --- | --- | --- |
+  | file | 包含要执行的应用程序的文件 | Path（必需） |
+  | proxyUser | 运行作业时要模拟的用户 | String |
+  | className | 应用程序 Java/Spark 主类 | String |
+  | args | 应用程序的命令行参数 | 字符串列表 |
+  | jars | 此会话中要使用的 Jar | 字符串列表 | 
+  | pyFiles | 将在本次会话中使用的 Python 文件 | 字符串列表 |
+  | files | 此会话中要使用的文件 | 字符串列表 |
+  | driverMemory | 用于驱动程序进程的内存量 | String |
+  | driverCores | 用于驱动程序进程的内核数 | int |
+  | executorMemory | 每个执行程序进程使用的内存量 | String |
+  | executorCores | 每个执行程序使用的内核数 | int |
+  | numExecutors | 为此会话启动的执行程序数 | int |
+  | archives | 将在本次会话中使用的存档 | 字符串列表 |
+  | 队列 | 要提交到的 YARN 队列的名称| String |
+  | name | 此会话的名称 | String |
+  | conf | Spark 配置属性 | key=val 的映射 |
 
-    | name | description | type |
-    | --- | ---| --- |
-    | ID | 会话 ID | int |
-    | appId | 此会话的应用程序 ID | String |
-    | appInfo | 详细的应用程序信息 | key=val 的映射 |
-    | log | 日志行 | 字符串列表 |
-    | state |批处理状态 | String |
+  **响应正文** 创建的 Batch 对象。
 
-    > [!NOTE]
-    > 提交脚本时，分配的 Livy 配置将显示在输出窗格中。
+  | name | description | type |
+  | --- | ---| --- |
+  | ID | 会话 ID | int |
+  | appId | 此会话的应用程序 ID | String |
+  | appInfo | 详细的应用程序信息 | key=val 的映射 |
+  | log | 日志行 | 字符串列表 |
+  | state |批处理状态 | String |
+
+  > [!NOTE]
+  > 提交脚本时，分配的 Livy 配置将显示在输出窗格中。
 
 ## <a name="integrate-with-azure-hdinsight-from-explorer"></a>通过资源管理器与 Azure HDInsight 集成
 
@@ -388,15 +407,16 @@ ms.locfileid: "91530147"
    可以将整个结果作为 CSV、JSON、Excel 保存到本地路径，也可以只选择多个行。
 
 - “消息”面板
-   1. 如果表中的行数大于 100，将显示消息：“显示了 Hive 表的前 100 行”。
-   2. 如果表中的行数小于或等于 100，将显示以下消息：“显示了 Hive 表的 60 行”。
-   3. 如果表中没有任何内容，将显示以下消息：“`0 rows are displayed for Hive table.`”
 
-        >[!NOTE]
-        >
-        >在 Linux 中，安装 xclip 用于复制表数据。
-        >
-        >![Linux 中适用于 Visual Studio Code 的 Spark 和 Hive](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
+  1. 如果表中的行数大于 100，将显示消息：“显示了 Hive 表的前 100 行”。
+  2. 如果表中的行数小于或等于 100，将显示以下消息：“显示了 Hive 表的 60 行”。
+  3. 如果表中没有任何内容，将显示以下消息：“`0 rows are displayed for Hive table.`”
+
+     >[!NOTE]
+     >
+     >在 Linux 中，安装 xclip 用于复制表数据。
+     >
+     >![Linux 中适用于 Visual Studio Code 的 Spark 和 Hive](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
 
 ## <a name="additional-features"></a>其他功能
 
@@ -413,7 +433,7 @@ ms.locfileid: "91530147"
 
 ## <a name="reader-only-role"></a>仅限读取者角色
 
-分配有群集“仅限读取者”角色的用户无法将作业提交到 HDInsight 群集，也无法查看 Hive 数据库。 需在 [Azure 门户](https://ms.portal.azure.com/)中联系群集管理员将你的角色升级到 [**HDInsight 群集操作员**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。 如果你有有效的 Ambari 凭据，可遵循以下指导手动链接群集。
+分配有群集“仅限读取者”角色的用户无法将作业提交到 HDInsight 群集，也无法查看 Hive 数据库。 需在 [Azure 门户](https://portal.azure.com/)中联系群集管理员将你的角色升级到 [**HDInsight 群集操作员**](./hdinsight-migrate-granular-access-cluster-configurations.md#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。 如果你有有效的 Ambari 凭据，可遵循以下指导手动链接群集。
 
 ### <a name="browse-the-hdinsight-cluster"></a>浏览 HDInsight 群集  
 
@@ -432,11 +452,11 @@ ms.locfileid: "91530147"
 
    ![适用于 Visual Studio Code 的 Spark 和 Hive 工具 - 密码](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png)
 
-  > [!NOTE]
-  >
-  >可以使用 `Spark / Hive: List Cluster` 来检查链接的群集：
-  >
-  >![适用于 Visual Studio Code 的 Spark 和 Hive 工具 - 链接读取器](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   > [!NOTE]
+   >
+   >可以使用 `Spark / Hive: List Cluster` 来检查链接的群集：
+   >
+   >![适用于 Visual Studio Code 的 Spark 和 Hive 工具 - 链接读取器](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
@@ -467,6 +487,7 @@ ms.locfileid: "91530147"
 在菜单栏中，转到“视图” > “命令面板”，然后输入“Azure:  注销”。
 
 ## <a name="known-issues"></a>已知问题
+
 ### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>此扩展不支持 2020.5.78807 以上（含）的 ms-python 版本 
 
 “无法连接到 Jupyter 笔记本。” 是 2020.5.78807 以上（含）的 python 版本的一个已知问题。 建议用户使用 **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** 版 ms-python 以避免此问题。

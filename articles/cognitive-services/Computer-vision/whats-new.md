@@ -8,18 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 98b8cca95b8815b32fb5de6567adcf4f150551eb
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90904094"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561964"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="computer-vision-api-v31-ga"></a>计算机视觉 API v3.1 GA
+
+正式发布的计算机视觉 API 已升级到 v3.1。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -74,7 +80,7 @@ ms.locfileid: "90904094"
 * 每个已提取单词的置信度分数
 * 使用附加的语言参数同时支持西班牙语和英语
 
-按照[提取文本快速入门](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3)，开始使用 3.0 API。
+按照[提取文本快速入门](./quickstarts/csharp-hand-text.md?tabs=version-3)，开始使用 3.0 API。
 
 ## <a name="cognitive-service-updates"></a>认知服务更新
 

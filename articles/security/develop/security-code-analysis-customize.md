@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816792"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008678"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>配置和自定义生成任务
 
@@ -39,7 +39,7 @@ ms.locfileid: "91816792"
 
 Windows Defender 使用 Windows 更新客户端来下载和安装签名。 如果生成代理上的签名更新失败，Windows 更新可能发送 HRESULT 错误代码。
 
-有关 Windows 更新错误及其缓解措施的详细信息，请参阅[按组件列出的 Windows 更新错误代码](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference)和 TechNet 文章 [Windows 更新代理 - 错误代码](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)。
+有关 Windows 更新错误及其缓解措施的详细信息，请参阅[按组件列出的 Windows 更新错误代码](/windows/deployment/update/windows-update-error-reference)和 TechNet 文章 [Windows 更新代理 - 错误代码](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)。
 
 有关此任务的 YAML 配置的信息，请查看[反恶意软件 YAML 选项](yaml-configuration.md#anti-malware-scanner-task)
 
@@ -143,7 +143,7 @@ Windows Defender 使用 Windows 更新客户端来下载和安装签名。 如�
 >
 >   如果新任务在与原始任务相同的代理上运行，新任务的输出将覆盖 s 源文件夹中的原始任务输出。 尽管生成输出是相同的，我们建议运行 MSBuild，将输出复制到项目分段目录，然后运行 Roslyn 分析器。
 
-有关 Roslyn 分析器任务的其他资源，请参阅 Microsoft Docs 上的[基于 Roslyn 的分析器](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer)。
+有关 Roslyn 分析器任务的其他资源，请参阅 Microsoft Docs 上的[基于 Roslyn 的分析器](/dotnet/standard/analyzers/api-analyzer)。
 
 可以在 NuGet 页 [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) 上找到此生成任务安装并使用的分析器包。
 

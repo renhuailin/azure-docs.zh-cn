@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230103"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022371"
 ---
 # <a name="soft-delete-for-blobs"></a>blob 的软删除
 
 Blob 的软删除可防止意外地或错误地修改或删除数据。 在为存储帐户启用 blob 的软删除后，可以在指定的保持期内恢复这些存储帐户中的 blob、blob 版本和快照。
 
-如果你的数据有可能被应用程序或其他存储帐户用户意外修改或删除，Microsoft 建议启用软删除。 有关启用软删除的详细信息，请参阅[启用和管理 Blob 的软删除](soft-delete-enable.md)。
+如果你的数据有可能被应用程序或其他存储帐户用户意外修改或删除，Microsoft 建议启用软删除。 有关启用软删除的详细信息，请参阅[启用和管理 Blob 的软删除](./soft-delete-blob-enable.md)。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -68,7 +68,7 @@ Blob 软删除适用于新的和现有的常规用途 v2、常规用途 v1 和 B
 
 ![此图显示了在使用“删除 Blob”时，Blob 的快照是如何软删除的。](media/soft-delete-blob-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。调用**Snapshot Blob**时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除*。
+*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。调用 **Snapshot Blob** 时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除*。
 
 如果对基础 blob（本身不是快照的任何 blob）调用“删除 Blob”，该 blob 将被标记为软删除。 与以前的行为一致，对具有活动快照的 blob 调用“删除 Blob”将返回错误。 对具有软删除快照的 blob 调用“删除 Blob”不会返回错误。 启用软删除后，仍可在单个操作中删除 blob 及其所有快照。 执行该操作会将基础 blob 和快照标记为软删除。
 
@@ -107,7 +107,7 @@ Blob 软删除适用于新的和现有的常规用途 v2、常规用途 v1 和 B
 
 ![此图显示了在使用“撤消删除 Blob”时会发生的情况。](media/soft-delete-blob-overview/storage-blob-soft-delete-recover.png)
 
-*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处对 blob B 调用了**撤销删除 Blob**，从而将基础 blob B1 和所有相关快照（此处仅为 B0）还原为活动状态。第二步中将 B0 复制到了基础 blob。此复制操作将生成 B1 的软删除快照*。
+*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处对 blob B 调用了 **撤销删除 Blob**，从而将基础 blob B1 和所有相关快照（此处仅为 B0）还原为活动状态。第二步中将 B0 复制到了基础 blob。此复制操作将生成 B1 的软删除快照*。
 
 若要查看软删除 blob 和 blob 快照，可选择将已删除数据包含在列表 Blob 中。 可选择仅查看软删除的基础 blob，或者也将软删除的 blob 快照包含在内。 对于所有软删除数据，可以查数据删除的时间以及数据永久过期的剩余天数。
 
@@ -149,7 +149,7 @@ Copy a snapshot over the base blob:
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-所有软删除数据按与活动数据相同的费率计费。 不会对在配置的保持期后永久删除的数据计费。 若要深入了解快照以及它们产生费用的方式，请参阅[了解快照如何产生费用](storage-blob-snapshots.md)。
+所有软删除数据按与活动数据相同的费率计费。 不会对在配置的保持期后永久删除的数据计费。 若要深入了解快照以及它们产生费用的方式，请参阅[了解快照如何产生费用](./snapshots-overview.md)。
 
 不会对快照自动生成相关事务进行计费。 将按写入操作费率对“撤销删除 Blob ”事务进行计费。
 
@@ -193,5 +193,5 @@ Azure 虚拟机通过调用“放置页”来写入非托管磁盘，因此不�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为 blob 启用软删除](soft-delete-enable.md)
+- [为 blob 启用软删除](./soft-delete-blob-enable.md)
 - [Blob 版本控制](versioning-overview.md)

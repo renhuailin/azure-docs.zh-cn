@@ -1,6 +1,6 @@
 ---
 title: 使用警报抑制规则在 Azure 安全中心中抑制误报或其他不需要的安全警报。
-description: 本文介绍如何使用 Azure 安全中心的禁止显示规则隐藏不需要的 Azure Defender 警报
+description: 本文介绍如何使用 Azure 安全中心的禁止显示规则隐藏不需要的安全警报
 author: memildin
 manager: rkarlin
 services: security-center
@@ -8,42 +8,42 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448470"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751982"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
 
-此页说明如何使用警报抑制规则禁止来自 Azure Defender 的误报或其他不需要的安全警报。
+此页说明如何使用警报抑制规则抑制来自 Azure Defender 的误报或其他不需要的安全警报。
 
 ## <a name="availability"></a>可用性
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|预览|
-|定价：|免费<br> (大多数安全警报仅适用于 Azure Defender) |
-|所需角色和权限：|**安全管理员** 和 **所有者** 可以创建/删除规则。<br>“安全读取者”和“读取者”可以查看规则 。|
+|发布状态：| 正式发布 |
+|定价：|免费<br>（大多数安全警报仅适用于 Azure Defender）|
+|所需角色和权限：|“安全管理员”和“所有者”可以创建/删除规则 。<br>“安全读取者”和“读取者”可以查看规则 。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 
 ## <a name="what-are-suppression-rules"></a>什么是抑制规则？
 
-各种 Azure Defender 计划在环境的任何区域检测到威胁，并生成安全警报。
+各种 Azure Defender 计划检测环境中任何区域的威胁，并生成安全警报。
 
 当单个警报不感兴趣或不相关时，可以手动关闭它。 或者，使用抑制规则功能在将来自动关闭类似警报。 通常，将使用抑制规则来执行以下操作：
 
-- 禁止显示已标识为误报的警报
+- 抑制已标识为“误报”的警报
 
-- 禁止触发过于频繁触发的警报
+- 抑制过于频繁地触发而失去作用的警报
 
 抑制规则定义了自动取消警报所应遵循的条件。
 
 > [!CAUTION]
-> 抑制安全警报可降低 Azure Defender 的威胁防护效率。 应仔细检查任何抑制规则的潜在影响，并在一段时间内对其进行监视。
+> 抑制安全警报会降低 Azure Defender 的威胁防护效果。 应仔细检查任何抑制规则的潜在影响，并在一段时间内对其进行监视。
 
 :::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="创建警报抑制规则":::
 
@@ -85,24 +85,24 @@ ms.locfileid: "91448470"
 1. 保存规则。 
 
 
-## <a name="edit-a-suppression-rules"></a>编辑禁止显示规则
+## <a name="edit-a-suppression-rules"></a>编辑抑制规则
 
-若要编辑已创建的规则，请使用 "抑制规则" 页。
+若要编辑已创建的规则，请使用“抑制规则”页。
 
 1. 从安全中心的“安全警报”页面中，选择页面顶部的“抑制规则”链接。
-1. 此时将打开 "禁止显示规则" 页，其中包含所选订阅的所有规则。
+1. 此时将打开“抑制规则”页，其中包含选定订阅的所有规则。
 
     [![抑制规则列表](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
 1. 若要编辑单个规则，请打开该规则的省略号菜单 (...) 并选择“编辑”。
 1. 进行必要的更改并选择“应用”。 
 
-## <a name="delete-a-suppression-rule"></a>删除禁止显示规则
+## <a name="delete-a-suppression-rule"></a>删除抑制规则
 
 若要删除已创建的一个或多个规则，请使用“抑制规则”页。
 
 1. 从安全中心的“安全警报”页面中，选择页面顶部的“抑制规则”链接。
-1. 此时将打开 "禁止显示规则" 页，其中包含所选订阅的所有规则。
+1. 此时将打开“抑制规则”页，其中包含选定订阅的所有规则。
 1. 若要删除单个规则，请打开该规则的省略号菜单 (...)，然后选择“删除”。
 1. 若要删除多个规则，请选中要删除的规则的复选框，然后选择“删除”。
     ![删除一个或多个抑制规则](media/alerts-suppression-rules/delete-multiple-alerts.png)
@@ -139,7 +139,7 @@ REST API 中抑制规则的相关 HTTP 方法是：
 
 - **DELETE**：删除现有规则（但不会更改它已消除的警报的状态）。
 
-有关完整的详细信息和使用示例，请参阅 [API 文档](https://docs.microsoft.com/rest/api/securitycenter/)。 
+有关完整的详细信息和使用示例，请参阅 [API 文档](/rest/api/securitycenter/)。 
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -148,4 +148,4 @@ REST API 中抑制规则的相关 HTTP 方法是：
 
 有关 Azure Defender 安全警报的详细信息，请参阅以下页面：
 
-- [安全警报和意向终止链](alerts-reference.md) -可以从 Azure Defender 获取的安全警报的参考指南。
+- [安全警报和意向攻击链](alerts-reference.md) - 可能会从 Azure Defender 获取的安全警报的参考指南。

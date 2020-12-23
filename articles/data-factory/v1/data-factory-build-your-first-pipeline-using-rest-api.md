@@ -3,20 +3,20 @@ title: 生成第一个数据工厂 (REST)
 description: 本教程使用数据工厂 REST API 创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 32705c37685ab03ffa68f805dedb64411d8d9c46
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 835f72df5c0c693c90b0cf7c45f7805b767d2bcb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543123"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496358"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ ms.locfileid: "87543123"
 * 在计算机上安装 [Curl](https://curl.haxx.se/dlwiz/) 。 配合使用 CURL 工具与 REST 命令来创建数据工厂。
 * 遵循 [此文](../../active-directory/develop/howto-create-service-principal-portal.md) 的说明：
   1. 在 Azure Active Directory 中创建名为 **ADFGetStartedApp** 的 Web 应用程序。
-  2. 获取**客户端 ID** 和**机密密钥**。
+  2. 获取 **客户端 ID** 和 **机密密钥**。
   3. 获取 **租户 ID**。
   4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。 
 * 安装 [Azure PowerShell](/powershell/azure/)。
@@ -128,11 +128,11 @@ ms.locfileid: "87543123"
 
 请注意以下几点：
 
-* 数据工厂使用上面的 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
+* 数据工厂使用上面的 JSON 创建 **基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
-* HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。
+* HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建 **默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。
 
-    随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
+    随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf **yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
 
 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 
@@ -162,7 +162,7 @@ ms.locfileid: "87543123"
 }
 ```
 
-该 JSON 定义名为 **AzureBlobInput**的数据集，表示管道中活动的输入数据。 此外，它指定要将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中。
+该 JSON 定义名为 **AzureBlobInput** 的数据集，表示管道中活动的输入数据。 此外，它指定要将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中。
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
@@ -199,7 +199,7 @@ ms.locfileid: "87543123"
 }
 ```
 
-该 JSON 定义名为 **AzureBlobOutput**的数据集，表示管道中活动的输出数据。 此外，它指定要将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
+该 JSON 定义名为 **AzureBlobOutput** 的数据集，表示管道中活动的输出数据。 此外，它指定要将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
 
 ### <a name="pipelinejson"></a>pipeline.json
 > [!IMPORTANT]
@@ -292,21 +292,21 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 
 ## <a name="create-data-factory"></a>创建数据工厂
-本步骤创建名为 **FirstDataFactoryREST**的 Azure 数据工厂。 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来转换数据的 HDInsight Hive 活动。 运行以下命令创建数据工厂：
+本步骤创建名为 **FirstDataFactoryREST** 的 Azure 数据工厂。 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来转换数据的 HDInsight Hive 活动。 运行以下命令创建数据工厂：
 
-1. 将命令分配到名为 **cmd**的变量。
+1. 将命令分配到名为 **cmd** 的变量。
 
-    确认此处指定的名称 (ADFCopyTutorialDF) 与 **datafactory.json**中指定的名称匹配。
+    确认此处指定的名称 (ADFCopyTutorialDF) 与 **datafactory.json** 中指定的名称匹配。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@datafactory.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**运行命令。
+2. 使用 **Invoke-Command** 运行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 查看结果。 如果已成功创建数据工厂， **结果**中会显示数据工厂的 JSON；否则，会显示错误消息。
+3. 查看结果。 如果已成功创建数据工厂， **结果** 中会显示数据工厂的 JSON；否则，会显示错误消息。
 
     ```powershell
     Write-Host $results
@@ -342,17 +342,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 在此步骤中，将 Azure 存储帐户链接到数据工厂。 本教程使用相同的 Azure 存储帐户来存储输入/输出数据和 HQL 脚本文件。
 
-1. 将命令分配到名为 **cmd**的变量。
+1. 将命令分配到名为 **cmd** 的变量。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**运行命令。
+2. 使用 **Invoke-Command** 运行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 查看结果。 如果已成功创建链接服务， **结果**中会显示该链接服务的 JSON；否则，会显示错误消息。
+3. 查看结果。 如果已成功创建链接服务， **结果** 中会显示该链接服务的 JSON；否则，会显示错误消息。
 
     ```powershell
     Write-Host $results
@@ -361,17 +361,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
 在此步骤中，将按需 HDInsight 群集链接到数据工厂。 HDInsight 群集在运行时自动创建，在处理完成之后删除，并且会空闲指定的一段时间。 可以使用自己的 HDInsight 群集，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [Compute Linked Services](data-factory-compute-linked-services.md) （计算链接服务）。
 
-1. 将命令分配到名为 **cmd**的变量。
+1. 将命令分配到名为 **cmd** 的变量。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**运行命令。
+2. 使用 **Invoke-Command** 运行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 查看结果。 如果已成功创建链接服务， **结果**中会显示该链接服务的 JSON；否则，会显示错误消息。
+3. 查看结果。 如果已成功创建链接服务， **结果** 中会显示该链接服务的 JSON；否则，会显示错误消息。
 
     ```powershell
     Write-Host $results
@@ -383,17 +383,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-input-dataset"></a>创建输入数据集
 本步骤创建输入数据集来表示 Azure Blob 存储中存储的输入数据。
 
-1. 将命令分配到名为 **cmd**的变量。
+1. 将命令分配到名为 **cmd** 的变量。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**运行命令。
+2. 使用 **Invoke-Command** 运行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。
+3. 查看结果。 如果已成功创建数据集， **结果** 中会显示该数据集的 JSON；否则，会显示错误消息。
 
     ```powershell
     Write-Host $results
@@ -402,17 +402,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-output-dataset"></a>创建输出数据集
 本步骤创建输出数据集来表示 Azure Blob 存储中存储的输出数据。
 
-1. 将命令分配到名为 **cmd**的变量。
+1. 将命令分配到名为 **cmd** 的变量。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**运行命令。
+2. 使用 **Invoke-Command** 运行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。
+3. 查看结果。 如果已成功创建数据集， **结果** 中会显示该数据集的 JSON；否则，会显示错误消息。
 
     ```powershell
     Write-Host $results
@@ -421,19 +421,19 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ## <a name="create-pipeline"></a>创建管道
 此步骤创建第一个具有 **HDInsightHive** 活动的管道。 每月获取输入切片（frequency：Month；interval：1），每月生成输出切片，活动的计划程序属性也设置为每月。 输出数据集的设置必须与活动计划程序匹配。 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。
 
-确认在 Azure Blob 存储的 **adfgetstarted/inputdata** 文件夹中看到了**input.log** 文件，并运行以下命令部署管道。 由于 **start** 和 **end** 时间设置为过去的时间，**isPaused** 设置为 false，因此管道（管道中的活动）在部署后立即运行。
+确认在 Azure Blob 存储的 **adfgetstarted/inputdata** 文件夹中看到了 **input.log** 文件，并运行以下命令部署管道。 由于 **start** 和 **end** 时间设置为过去的时间，**isPaused** 设置为 false，因此管道（管道中的活动）在部署后立即运行。
 
-1. 将命令分配到名为 **cmd**的变量。
+1. 将命令分配到名为 **cmd** 的变量。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**运行命令。
+2. 使用 **Invoke-Command** 运行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。
+3. 查看结果。 如果已成功创建数据集， **结果** 中会显示该数据集的 JSON；否则，会显示错误消息。
 
     ```powershell
     Write-Host $results
@@ -481,7 +481,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
    1. **Azure 存储** 链接服务，用于将保存输入/输出文件的 Azure Blob 存储链接到数据工厂。
    2. **Azure HDInsight** 按需链接服务，用于将 HDInsight Hadoop 按需群集链接到数据工厂。 Azure 数据工厂实时创建 HDInsight Hadoop 群集来处理输入数据以及生成输出数据。
 3. 创建了两个 **数据集**，描述管道中 HDInsight Hive 活动的输入和输出数据。
-4. 创建了包含 **HDInsight Hive** 活动的**管道**。
+4. 创建了包含 **HDInsight Hive** 活动的 **管道**。
 
 ## <a name="next-steps"></a>后续步骤
 本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。

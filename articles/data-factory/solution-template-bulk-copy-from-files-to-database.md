@@ -7,13 +7,13 @@ ms.author: jingwang
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: c7f4cba10117efef4099b3524b49cae313593a9a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 12/09/2020
+ms.openlocfilehash: e1bd5852ca12ca03e7202cf9cfb89372d076bad9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442704"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920435"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>从文件向数据库进行批量复制
 
@@ -28,9 +28,9 @@ ms.locfileid: "89442704"
 当前，此模板仅支持复制 DelimitedText 格式的数据。 也可以从源数据存储中检索其他数据格式的文件，但不能将这些文件复制到目标数据存储。  
 
 该模板包含三个活动：
-- **获取元数据**活动可从 Azure Data Lake Storage Gen2 中检索文件，然后将其传递给后续的 ForEach 活动。
+- **获取元数据** 活动可从 Azure Data Lake Storage Gen2 中检索文件，然后将其传递给后续的 ForEach 活动。
 - **ForEach** 活动可从获取元数据活动获取文件，并以迭代方式将每个文件传递给复制活动。
-- **复制**活动位于 ForEach 活动中，可将源数据存储中的每个文件复制到目标数据存储。
+- **复制** 活动位于 ForEach 活动中，可将源数据存储中的每个文件复制到目标数据存储。
 
 此模板定义以下两个参数：
 - *SourceContainer* 是从 Azure Data Lake Storage Gen2 中复制数据的根容器路径。 
@@ -55,7 +55,7 @@ ms.locfileid: "89442704"
     ![查看管道](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 如果在上述**步骤 2**中选择**azure Synapse Analytics (以前的 SQL DW) **作为数据目标，则必须根据 azure Synapse ANALYTICS (以前的 SQL 数据仓库) Polybase，为过渡输入连接到 azure Blob 存储。 如以下屏幕截图所示，模板会自动为 Blob 存储生成存储路径。 检查是否在管道运行后创建了容器。
+    > 如果在上述 **步骤 2** 中选择 " **Azure Synapse Analytics** " 作为数据目标，则必须根据 azure Synapse Analytics Polybase 的要求，为过渡输入连接到 azure Blob 存储的连接。 如以下屏幕截图所示，模板会自动为 Blob 存储生成存储路径。 检查是否在管道运行后创建了容器。
         
     ![Polybase 设置](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

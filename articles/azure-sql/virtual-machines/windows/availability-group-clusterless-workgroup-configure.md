@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298821"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359449"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>配置工作组可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,11 +63,11 @@ ms.locfileid: "91298821"
 1. 选择“更多…”以打开“DNS 后缀和 NetBIOS 计算机名”对话框 。 
 1. 在“此计算机的主 DNS 后缀”下键入 DNS 后缀的名称，例如 `ag.wgcluster.example.com`，然后选择“确定” ： 
 
-   ![添加 DNS 后缀](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![屏幕截图显示了 "D N S 后缀和 NetBIOS 计算机名" 对话框，你可以在其中输入值。](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. 确认“完整计算机名”现在已显示 DNS 后缀，然后选择“确定”保存更改 ： 
 
-   ![添加 DNS 后缀](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![屏幕截图显示了在何处查看完整的计算机名称。](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. 当系统提示重启服务器时，请进行重启。 
 1. 在要用于可用性组的任何其他节点上重复这些步骤。 
@@ -291,6 +292,4 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-还可以使用 [Az SQL VM CLI](availability-group-az-cli-configure.md) 配置可用性组。 
-
-
+还可以使用 [Az SQL VM CLI](./availability-group-az-commandline-configure.md) 配置可用性组。

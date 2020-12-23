@@ -9,17 +9,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 1765aaed3c0562da13c539845bfe19f6f85ed4ef
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510821"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369012"
 ---
 # <a name="what-are-trainings-and-models"></a>什么是培训和模型？
 
 模型是为特定语言对提供翻译的系统。
-成功培训的结果即为一种模型。 在训练模型时，需要三个互相排斥的文档类型：定型、优化和测试。 还可以提供字典文档类型。 请参阅 [句子对齐](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)。
+成功培训的结果即为一种模型。 在训练模型时，需要三个互相排斥的文档类型：定型、优化和测试。 还可以提供字典文档类型。 请参阅 [句子对齐](./sentence-alignment.md#suggested-minimum-number-of-sentences)。
 
 如果在对训练进行排队时仅提供定型数据，自定义转换器将自动组装优化和测试数据。 它将使用培训文档中的一个随机句子子集，并从定型数据本身中排除这些句子。
 

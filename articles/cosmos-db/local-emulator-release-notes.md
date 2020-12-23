@@ -1,21 +1,22 @@
 ---
-title: Azure Cosmos 模拟器下载和发行说明
-description: 获取不同版本的 Azure Cosmos 模拟器发行说明并下载信息。
+title: Azure Cosmos DB 模拟器下载和发行说明
+description: 获取不同版本的 Azure Cosmos DB 模拟器发行说明并下载信息。
 ms.service: cosmos-db
 ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566682"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608429"
 ---
-# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
+# <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-本文显示了 Azure Cosmos 模拟器发行说明，其中包含每个发行版中所做的功能更新列表。 它还列出了要下载和使用的模拟器的最新版本。
+本文显示了 Azure Cosmos DB 模拟器发行说明，其中包含每个版本中所做的功能更新列表。 它还列出了要下载和使用的模拟器的最新版本。
 
 ## <a name="download"></a>下载
 
@@ -25,6 +26,20 @@ ms.locfileid: "91566682"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2119-3-december-2020"></a>2.11.9（2020 年 12 月 3 日）
+
+ - 除了反映 Azure Cosmos DB 中的最新功能和改进的常规内容更新，此版本还会处理 Azure Cosmos DB 模拟器功能的几个问题：
+ * 解决在使用直接模式和 Java 客户端应用程序时大型文档有效负载请求会失败的问题。
+ * 解决在由基于 .NET 的应用程序面向时 MongoDB 终结点版本 3.6 出现的连接性问题。
+
+### <a name="2118-6-november-2020"></a>2.11.8（2020 年 11 月 6 日）
+
+ - 此版本包含 Cosmos 仿真器数据资源管理器的更新，并修复了 TLS 1.3 客户端尝试打开数据资源管理器的问题。
+
+### <a name="2116-6-october-2020"></a>2.11.6（2020 年 10 月 6 日）
+
+ - 此版本解决了在可能同时创建多个容器时遇到的与并发相关的问题。 出现此类情况时，仿真器的数据仍为已损坏的状态，而且对该仿真器的终结点的后续 API 请求可能会失败，并出现“服务不可用”错误，这需要重启并重置仿真器的本地数据。
 
 ### <a name="2115-23-august-2020"></a>2.11.5（2020 年 8 月 23 日）
 
@@ -68,7 +83,7 @@ ms.locfileid: "91566682"
 
 ### <a name="246"></a>2.4.6
 
-- 除了[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)中所述的例外情况，此版本提供了与到 2019 年 7 月为止的 Azure Cosmos 服务中的功能同等的功能。 它还修复了与通过命令行调用时模拟器关闭相关的几个 bug，以及使用直接模式连接的 SDK 客户端的内部 IP 地址覆盖。
+- 除了[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)中所述的例外情况，此版本提供了到 2019 年 7 月为止的 Azure Cosmos 服务中的同等功能。 它还修复了与通过命令行调用时模拟器关闭相关的几个 bug，以及使用直接模式连接的 SDK 客户端的内部 IP 地址覆盖。
 
 ### <a name="243"></a>2.4.3
 

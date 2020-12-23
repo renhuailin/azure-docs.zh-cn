@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 048068a74151bb986392b5cb27787385fc0f5363
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723854"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315526"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor (预览版中的数据收集规则) 
 数据收集规则 (DCR) 定义传入 Azure Monitor 的数据，并指定应发送或存储数据的位置。 本文概述了数据收集规则，其中包括内容和结构，以及如何创建和使用它们。
@@ -30,7 +30,7 @@ ms.locfileid: "88723854"
 |:---|:---|
 | 数据源 | 监视数据的唯一源，其自身的格式和公开其数据的方法。 数据源的示例包括 Windows 事件日志、性能计数器和 syslog。 每个数据源都与特定数据源类型匹配，如下所述。 |
 | 流 | 唯一的句柄，描述将被转换并架构化为一种类型的一组数据源。 每个数据源都需要一个或多个流，多个数据源可以使用一个流。 流中的所有数据源共享公用架构。 例如，当您想要将特定数据源发送到同一 Log Analytics 工作区中的多个表时，请使用多个流。 |
-| Destinations | 应将数据发送到的目标集。 示例包括 Log Analytics 工作区、Azure Monitor 指标和 Azure 事件中心。 | 
+| 目标 | 应将数据发送到的目标集。 示例包括 Log Analytics 工作区、Azure Monitor 指标和 Azure 事件中心。 | 
 | 数据流 | 应将哪些流发送到哪些目标的定义。 | 
 
 下图显示了数据收集规则的组件及其关系
@@ -49,26 +49,14 @@ ms.locfileid: "88723854"
 
 
 ## <a name="limits"></a>限制
-下表列出了当前适用于每个数据收集规则的限制。
-
-| 限制 | 值 |
-|:---|:---|
-| 最大数据源数 | 10 |
-| 性能计数器中计数器说明符的最大数目 | 100 |
-| Syslog 中的最大设施名称数 | 20 |
-| 事件日志中的最大 XPath 查询数 | 100 |
-| 数据流的最大数目 | 10 |
-| 数据流的最大数目 | 10 |
-| 最大扩展数量 | 10 |
-| 扩展设置的最大大小 | 32 Kb |
-| Log Analytics 工作区的最大数目 | 10 |
+有关适用于每个数据收集规则的限制，请参阅 [Azure Monitor 服务限制](../service-limits.md#data-collection-rules)。
 
 
 ## <a name="create-a-dcr"></a>创建 DCR
 目前有两种方法可用于创建 DCR：
 
 - [使用 Azure 门户](data-collection-rule-azure-monitor-agent.md) 创建数据收集规则并将其与一个或多个虚拟机相关联。
-- 直接在 JSON 中编辑数据收集规则并 [使用 REST API 进行提交](https://docs.microsoft.com/rest/api/monitor/datacollectionrules)。
+- 直接在 JSON 中编辑数据收集规则并 [使用 REST API 进行提交](/rest/api/monitor/datacollectionrules)。
 
 ## <a name="sample-data-collection-rule"></a>示例数据收集规则
 下面的示例数据收集规则适用于具有 Azure 管理代理的虚拟机，并提供以下详细信息：
@@ -82,7 +70,7 @@ ms.locfileid: "88723854"
 - Syslog
   - 从 cron 设施收集调试、关键和紧急事件。
   - 收集 syslog 设备发出的警报、严重事件和紧急事件。
-- Destinations
+- 目标
   - 将所有数据发送到名为 centralWorkspace 的 Log Analytics 工作区。
 
 ```json

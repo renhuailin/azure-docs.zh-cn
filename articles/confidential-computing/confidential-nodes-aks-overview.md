@@ -7,21 +7,20 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1b945ac9f656a227bcc3335cb0ec995626f98f77
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998306"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564168"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes 服务 (AKS) 上的机密计算节点（公共预览版）
 
-使用敏感数据时，可使用 [Azure 机密计算](overview.md)保护敏感数据。 底层基础结构保护此数据不受其他应用程序、管理员和云提供商影响。 
+使用敏感数据时，可使用 [Azure 机密计算](overview.md)保护敏感数据。 底层基础结构通过硬件支持的受信任执行容器环境保护此数据不受其他应用程序、管理员和云提供商影响。
 
 ## <a name="overview"></a>概述
 
-Azure Kubernetes 服务 (AKS) 支持在 Intel SGX 上添加 [DCsv2 机密计算节点](confidential-computing-enclaves.md)。 这些节点通过允许用户级代码分配内存的专用区域，在基于硬件的可信执行环境 (TEE) 内运行敏感工作负载。 这些专用内存区域称为 enclave。 Enclave 旨在保护代码和数据不受以更高特权运行的进程的影响。 SGX 执行模型删除来宾 OS 和虚拟机监控程序的中间层。 这使你可以直接在 CPU 上执行容器应用程序，同时对特殊内存块进行加密。 
-
+Azure Kubernetes 服务 (AKS) 支持添加由 Intel SGX 提供支持的 [DCsv2 机密计算节点](confidential-computing-enclaves.md)。 这些节点通过允许用户级代码分配内存的专用区域，可在基于硬件的可信执行环境 (TEE) 内运行敏感工作负载。 这些专用内存区域称为 enclave。 Enclave 旨在保护代码和数据不受以更高特权运行的进程的影响。 SGX 执行模型删除来宾 OS、主机 OS 和虚拟机监控程序的中间层。 基于每个容器的硬件独立执行模型允许应用程序直接在 CPU 中执行，同时使特殊的内存块保持加密。 机密计算节点有助于提高 AKS 上容器应用程序的总体安全状况，并对深层防御容器策略提供极大帮助。 
 
 ![sgx 节点概述](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -36,11 +35,11 @@ Azure Kubernetes 服务 (AKS) 支持在 Intel SGX 上添加 [DCsv2 机密计算�
 - 通过 AKS DaemonSet 的进程外证明帮助程序
 - 通过 Ubuntu 18.04 Gen 2 VM 工作器节点的 Linux 容器支持
 
-## <a name="aks-provided-daemon-sets"></a>AKS 提供的守护程序集
+## <a name="aks-provided-daemon-sets-addon"></a>AKS 提供的守护程序集（加载项）
 
 #### <a name="sgx-device-plugin"></a>SGX 设备插件 <a id="sgx-plugin"></a>
 
-SGX 设备插件实现了用于 EPC 内存的 Kubernetes 设备插件接口。 实际上，此插件会使 EPC 内存成为 Kubernetes 中的额外资源类型。 用户可以指定此资源的限制，就像指定其他资源一样。 除了计划函数，设备插件还有助于为机密工作负载容器分配 SGX 设备驱动程序权限。 [此处](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml)有基于 EPC 内存的部署 (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) 的示例实现
+SGX 设备插件实现了用于 EPC 内存的 Kubernetes 设备插件接口。 实际上，此插件会使 EPC 内存成为 Kubernetes 中的额外资源类型。 用户可以指定此资源的限制，就像指定其他资源一样。 除了计划函数，设备插件还有助于为机密工作负载容器分配 SGX 设备驱动程序权限。 [此处](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)有基于 EPC 内存的部署 (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) 的示例实现
 
 #### <a name="sgx-quote-helper-service"></a>SGX 引用帮助程序服务 <a id="sgx-quote"></a>
 
@@ -62,10 +61,10 @@ AKS 支持以下应用程序：编程为在机密节点上运行，并利用 SDK
 
 [机密容器快速入门示例](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU 列表](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+[DCsv2 SKU 列表](../virtual-machines/dcv2-series.md)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation]: ../attestation/index.yml
 
 
 <!-- LINKS - internal -->

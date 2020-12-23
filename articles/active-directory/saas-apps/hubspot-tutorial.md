@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551429"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教程：Azure Active Directory 与 HubSpot 的集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "88551429"
 * 用户可使用其 Azure AD 帐户自动登录到 HubSpot（单一登录）。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -110,7 +110,7 @@ HubSpot 支持以下功能：
     > [!NOTE]
     > 若要设置 URL 的格式，还可参考 Azure 门户的“基本 SAML 配置”窗格中显示的模式  。
 
-1. 若要在 *SP 发起*模式下配置应用程序，请执行以下操作：
+1. 若要在 *SP 发起* 模式下配置应用程序，请执行以下操作：
 
     1. 选择“设置其他 URL”  。
 
@@ -134,7 +134,7 @@ HubSpot 支持以下功能：
 
 1. 在浏览器中打开新选项卡并登录到 HubSpot 管理员帐户。
 
-1. 选择页面右上角的**设置**图标。
+1. 选择页面右上角的 **设置** 图标。
 
     ![HubSpot 中的​​设置图标](./media/hubspot-tutorial/config1.png)
 
@@ -176,7 +176,7 @@ HubSpot 支持以下功能：
 
 1. 在“用户”窗格中完成以下步骤： 
 
-    1. 在“姓名”  框中，输入 **BrittaSimon**。
+    1. 在“姓名”  框中，输入 **BrittaSimon** 。
   
     1. 在“用户名”框中，输入 brittasimon\@\<your-company-domain>.\<extension\> 。 例如，brittasimon\@contoso.com  。
 
@@ -220,7 +220,7 @@ HubSpot 支持以下功能：
 
 1. 以管理员身份登录 HubSpot 公司站点。
 
-1. 选择页面右上角的**设置**图标。
+1. 选择页面右上角的 **设置** 图标。
 
     ![HubSpot 中的​​设置图标](./media/hubspot-tutorial/config1.png)
 
@@ -257,6 +257,6 @@ HubSpot 支持以下功能：
 
 若要了解更多信息，请查看下列文章：
 
-- [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+- [单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

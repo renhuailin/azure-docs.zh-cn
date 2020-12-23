@@ -1,20 +1,20 @@
 ---
-title: 自动执行企业集成任务
-description: 了解如何使用 Azure 逻辑应用以最少的代码自动执行集成应用、数据、服务和系统的工作流，以实现企业集成。
+title: Azure 逻辑应用概述
+description: Azure 逻辑应用是一种云解决方案，用于构建和协调将应用、数据、服务和系统与企业级方案的最低代码集成在一起的自动化工作流。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 3496dfd7813818ced8963175d73ec0f8ef6892d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c4e8c8f809452286fee493e20dbef2cc538c8bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86536226"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921537"
 ---
-# <a name="overview---what-is-azure-logic-apps"></a>概述 - 什么是 Azure 逻辑应用？
+# <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 
 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps)是一项云服务，用于在需要跨企业或组织集成应用、数据、系统和服务时计划、自动执行和协调任务、业务流程和[工作流](#logic-app-concepts)。 逻辑应用可简化可缩放解决方案的设计和生成方式，适用于应用[集成](https://azure.microsoft.com/product-categories/integration/)、数据集成、系统集成、企业应用程序集成 (EAI) 和企业到企业 (B2B) 通信，不管是在云中还是在本地。
 

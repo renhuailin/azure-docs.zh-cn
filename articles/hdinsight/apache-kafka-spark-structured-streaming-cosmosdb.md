@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 387eb4f4c73b2103a7461c0d06c4d0e0562ec9db
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203476"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842458"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用
 
@@ -32,7 +32,7 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 
 ## <a name="create-the-clusters"></a>创建群集
 
-HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的访问权限。 若要与 Kafka 通信，必须与 Kafka 群集中的节点在同一 Azure 虚拟网络中。 在此示例中，Kafka 群集和 Spark 群集都位于一个 Azure 虚拟网络中。 下图显示了这两个群集之间通信的流动方式：
+Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站的权限。 若要与 Kafka 通信，必须与 Kafka 群集中的节点在同一 Azure 虚拟网络中。 在此示例中，Kafka 群集和 Spark 群集都位于一个 Azure 虚拟网络中。 下图显示了这两个群集之间通信的流动方式：
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集的关系图](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
@@ -86,7 +86,7 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
 本文档使用的项目在 Cosmos DB 中存储数据。 运行代码之前，必须首先在 Cosmos DB 实例中创建数据库和集合   。 还必须检索文档终结点，以及用于对 Cosmos DB 的请求进行身份验证的密钥  。
 
-可使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 执行此操作。 以下脚本将创建名为 `kafkadata` 的数据库和名为 `kafkacollection` 的集合。 然后，将返回主键。
+可使用 [Azure CLI](/cli/azure/) 执行此操作。 以下脚本将创建名为 `kafkadata` 的数据库和名为 `kafkacollection` 的集合。 然后，将返回主键。
 
 ```azurecli
 #!/bin/bash

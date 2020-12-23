@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546383"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>教程：Azure Active Directory 与 TurboRater 的集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "88546383"
 * 可让用户使用其 Azure AD 帐户自动登录到 TurboRater（单一登录）。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -187,12 +187,12 @@ TurboRater 支持 IDP 发起的单一登录 (SSO)。
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“TurboRater”时，应自动登录到为其设置了单一登录的 TurboRater 订阅  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在“我的应用”门户中选择“TurboRater”时，应自动登录到为其设置了单一登录的 TurboRater 订阅  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-* [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

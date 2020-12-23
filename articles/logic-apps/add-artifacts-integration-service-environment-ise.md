@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269737"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675210"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中将资源添加到 integration service 环境 (ISE) 
 
@@ -34,7 +34,7 @@ ms.locfileid: "91269737"
 
 若要生成在 integration service 环境中运行的逻辑应用 (ISE) ，请执行以下步骤：
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**逻辑应用**  >  **添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 " **设置** " 下，选择 " **逻辑应用**  >  **添加** "。
 
    ![向 ISE 中添加新的逻辑应用](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -47,10 +47,10 @@ ms.locfileid: "91269737"
    | **名称** | 是 | 要创建的逻辑应用的名称 |
    | **订阅** | 是 | 要使用的 Azure 订阅的名称 |
    | **资源组** | 是 | 要使用的新的或现有)  (Azure 资源组的名称 |
-   | **位置** | 是 | 在 " **Integration service 环境**" 下，选择要使用的 ISE （如果尚未选择）。 <p><p> **重要提示**：若要将逻辑应用与集成帐户一起使用，两者都必须使用相同的 ISE。 |
+   | **位置** | 是 | 在 " **Integration service 环境** " 下，选择要使用的 ISE （如果尚未选择）。 <p><p> **重要提示** ：若要将逻辑应用与集成帐户一起使用，两者都必须使用相同的 ISE。 |
    ||||
 
-1. 完成操作后，选择“创建”  。
+1. 完成操作后，选择“创建”。
 
 1. 继续 [以常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "91269737"
 
 若要创建使用 ISE 的集成帐户，请遵循以下步骤：
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户**" "  >  **添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 " **设置** " 下，选择 " **集成帐户** " "  >  **添加** "。
 
    ![向 ISE 中添加新的集成帐户](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
@@ -80,10 +80,10 @@ ms.locfileid: "91269737"
    | **订阅** | 是 | 要使用的 Azure 订阅的名称 |
    | **资源组** | 是 | 要使用的新的或现有)  (Azure 资源组的名称 |
    | **定价层** | 是 | 要用于集成帐户的定价层 |
-   | **位置** | 是 | 在 " **Integration service 环境**" 下，选择逻辑应用使用的相同 ISE （如果尚未选择）。 <p><p> **重要提示**：若要在逻辑应用中使用集成帐户，两者都必须使用相同的 ISE。 |
+   | **位置** | 是 | 在 " **Integration service 环境** " 下，选择逻辑应用使用的相同 ISE （如果尚未选择）。 <p><p> **重要提示** ：若要在逻辑应用中使用集成帐户，两者都必须使用相同的 ISE。 |
    ||||
 
-1. 完成操作后，选择“创建”  。
+1. 完成操作后，选择“创建”。
 
 1. [以常规方式将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
@@ -95,13 +95,27 @@ ms.locfileid: "91269737"
 
 ## <a name="add-ise-connectors"></a>添加 ISE 连接器
 
-创建 ISE 之后可用的 Microsoft 托管连接器不会自动显示在逻辑应用设计器上的连接器选取器中。 在可以使用这些 ISE 连接器之前，必须手动将这些连接器添加并部署到 ISE，使其显示在逻辑应用设计器中。
+创建 ISE 后，托管 ISE 连接器不会自动显示在逻辑应用设计器上的连接器选取器中。 在可以使用这些 ISE 连接器之前，必须手动将这些连接器添加并部署到 ISE，使其显示在逻辑应用设计器中。
 
-1. 在 ISE 菜单上的 " **设置**" 下，选择 " **托管连接器**"。 在工具栏中选择“添加”。****
+> [!IMPORTANT]
+> 托管 ISE 连接器目前不支持 [标记](../azure-resource-manager/management/tag-support.md)。 如果设置了强制执行标记的策略，尝试添加 ISE 连接器可能会失败并出现类似于以下示例的错误：
+> 
+> ```json
+> {
+>    "error": { 
+>       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
+>       "message": "The tags are not supported in the managed API 'azureblob'."
+>    }
+> }
+> ```
+> 
+> 因此，若要添加 ISE 连接器，必须禁用或删除策略。 
+
+1. 在 ISE 菜单上的 " **设置** " 下，选择 " **托管连接器** "。 在工具栏中选择“添加”。 
 
    ![查看托管连接器](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. 在 " **添加新的托管连接器** " 窗格中，打开 " **查找连接器** " 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建” 。
+1. 在 " **添加新的托管连接器** " 窗格中，打开 " **查找连接器** " 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建”  。
 
    ![选择要在 ISE 中部署的 ISE 连接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -113,17 +127,17 @@ ms.locfileid: "91269737"
 
 若要在 ISE 中使用自定义连接器，请直接在 ISE 中创建这些自定义连接器。
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**自定义连接器**  >  **添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 " **设置** " 下，选择 " **自定义连接器**  >  **添加** "。
 
    ![创建自定义连接器](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 
 1. 为自定义连接器 (新的或现有的) 提供名称、Azure 订阅和 Azure 资源组。
 
-1. 从 " **位置** " 列表中的 " **Integration service 环境** " 部分，选择逻辑应用使用的相同 ISE，然后选择 " **创建**"，例如：
+1. 从 " **位置** " 列表中的 " **Integration service 环境** " 部分，选择逻辑应用使用的相同 ISE，然后选择 " **创建** "，例如：
 
    ![屏幕截图显示 "创建逻辑应用自定义连接器" 窗口，其中包含所选的示例信息。](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
-1. 选择新的自定义连接器，然后选择 " **编辑**"，例如：
+1. 选择新的自定义连接器，然后选择 " **编辑** "，例如：
 
    ![选择和编辑自定义连接器](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 

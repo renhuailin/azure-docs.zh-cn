@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023051"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
 
@@ -39,7 +39,7 @@ ms.locfileid: "91269295"
 
   * 新的函数应用必须使用 .NET 或 JavaScript 作为运行时堆栈。 将新函数添加到现有的函数应用时，可以选择 C# 或 JavaScript。
 
-  * 你的函数使用 **HTTP 触发器**模板。
+  * 你的函数使用 **HTTP 触发器** 模板。
 
     此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 当你向逻辑应用添加 Azure 函数时，逻辑应用设计器会显示 Azure 订阅内基于此模板创建的自定义函数。
 

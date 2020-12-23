@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 91a0ea19f53d1da7631154cb71f96e495cc93857
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449087"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788989"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>用于 Key Vault 的 Azure Defender 简介
 
@@ -55,5 +55,5 @@ Azure Defender 会检测以非寻常和可能有害方式访问或恶意利用�
 如需相关材料，请参阅以下文章： 
 
 - [Key Vault 安全警报](alerts-reference.md#alerts-azurekv) - 所有 Azure 安全中心警报的引用表的 Key Vault 部分
-- [将警报导出到 SIEM](continuous-export.md)
+- [连续导出安全中心数据](continuous-export.md)
 - [禁止来自 Azure Defender 的警报](alerts-suppression-rules.md)

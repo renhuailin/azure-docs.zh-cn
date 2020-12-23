@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 05c3cfc390fed905f4a1b09c221095b56867d540
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030888"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896168"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps 路由覆盖区域
 
 本文提供了有关 Azure Maps 路由的覆盖区域信息。 搜索查询时，Azure Maps 返回从位置 A 到位置 B 的最佳路由。提供准确的旅行时间、旅行信息的实时更新以及路线说明。 你还可以添加其他搜索参数，如当前流量、车辆类型和条件，以避免。 路由的优化取决于区域。 这是因为，Azure Maps 具有不同区域的不同级别的信息和准确性。 下表列出了可为其请求的区域和信息类型。
  
-查看[**地理编码**](geocoding-coverage.md)的覆盖区域。       
-查看[**流量**](traffic-coverage.md)的覆盖区域。  
-查看[呈现](render-coverage.md)的覆盖区域****。
+查看 [**地理编码**](geocoding-coverage.md)的覆盖区域。       
+查看 [**流量**](traffic-coverage.md)的覆盖区域。  
+查看  。
 <br>  
 **图例**
 
@@ -245,4 +245,4 @@ ms.locfileid: "88030888"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Maps 路由的详细信息，请参阅[路由](https://docs.microsoft.com/rest/api/maps/route)引用页。
+有关 Azure Maps 路由的详细信息，请参阅 [路由](/rest/api/maps/route) 引用页。

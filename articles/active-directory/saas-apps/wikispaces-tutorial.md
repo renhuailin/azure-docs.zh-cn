@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 9ae6ff7bff1415b3b5faaaa83560c35d1b298d08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523552"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>教程：Azure Active Directory 与 Wikispaces 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88523552"
 * 可让用户使用其 Azure AD 帐户自动登录到 Wikispaces（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -89,7 +89,7 @@ ms.locfileid: "88523552"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "88523552"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://session.wikispaces.net/<instancename>`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Wikispaces 客户端支持团队](https://www.wikispaces.com/site/help)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Wikispaces 客户端支持团队](https://wikispaces.psu.edu/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -124,7 +124,7 @@ ms.locfileid: "88523552"
 
 ### <a name="configure-wikispaces-single-sign-on"></a>配置 Wikispaces 单一登录
 
-若要在 **Wikispaces** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Wikispaces 支持团队](https://www.wikispaces.com/site/help)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Wikispaces** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Wikispaces 支持团队](https://wikispaces.psu.edu/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -190,11 +190,11 @@ ms.locfileid: "88523552"
 
 3. 单击“邀请他人”  。
    
-    ![邀请人员](./media/wikispaces-tutorial/ic787194.png "邀请人员")
+    ![显示“成员”页的屏幕截图，可在其中选择“邀请人员”。](./media/wikispaces-tutorial/ic787194.png "邀请人员")
 
 4. 在“邀请他人”  部分中，执行以下步骤：
    
-    ![邀请人员](./media/wikispaces-tutorial/ic787208.png "邀请人员")
+    ![显示“邀请人员”部分的屏幕截图，可在其中输入用户数据库。](./media/wikispaces-tutorial/ic787208.png "邀请人员")
    
     a. 在相关文本框中键入要预配的有效 Azure AD 帐户的“用户名或电子邮件地址”  。
    
@@ -210,13 +210,12 @@ ms.locfileid: "88523552"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Wikispaces”磁贴时，应会自动登录到设置了 SSO 的 Wikispaces。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Wikispaces”磁贴时，应会自动登录到设置了 SSO 的 Wikispaces。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

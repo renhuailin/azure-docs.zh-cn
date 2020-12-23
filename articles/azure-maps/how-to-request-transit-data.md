@@ -1,30 +1,35 @@
 ---
-title: Microsoft Azure 映射移动服务请求传输数据
-description: 了解如何使用 Azure Maps 移动服务请求公用传输数据，如地铁区域 Id、传输停止、路由和路由路线。
+title: 'Microsoft Azure 地图移动服务 (预览版请求传输数据) '
+description: 了解如何使用 Azure Maps 移动服务 (预览版) 请求公用传输数据，如地铁区域 Id、传输停止、路由和路由路线。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/22/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ded5f6186d8ccdae0f42ecb9942c70e09f2dd9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310877"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906023"
 ---
-# <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求公共传输数据
+# <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>使用 Azure Maps 移动服务 (预览版请求公共传输数据)  
 
-本文介绍如何使用 Azure Maps [移动服务](https://aka.ms/AzureMapsMobilityService) 来请求公共传输数据。 传输数据包括传输停止、路由信息以及旅行时间估算。
+> [!IMPORTANT]
+> Azure Maps 移动服务目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+
+本文介绍如何使用 Azure Maps [移动服务](/rest/api/maps/mobility) 来请求公共传输数据。 传输数据包括传输停止、路由信息以及旅行时间估算。
 
 在本文中，你将学习如何：
 
-* 使用 "[获取地铁区域 API](https://aka.ms/AzureMapsMobilityMetro) " 获取地铁区域 ID
-* 使用 " [获取附近的传输](https://aka.ms/AzureMapsMobilityNearbyTransit) 服务" 请求附近的传输停止。
-* 查询 [获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute) ，使用公共传输计划路由。
+* 使用 "[获取地铁区域 API](/rest/api/maps/mobility/getmetroareapreview) " 获取地铁区域 ID
+* 使用 " [获取附近的传输](/rest/api/maps/mobility/getnearbytransitpreview) 服务" 请求附近的传输停止。
+* 查询 [获取传输路由 API](/rest/api/maps/mobility/gettransitroutepreview) ，使用公共传输计划路由。
 * 使用 [获取传输路线 API](https://aka.ms/https://azure.microsoft.com/services/azure-maps/)请求传输路由几何和路由的详细计划。
 
 ## <a name="prerequisites"></a>先决条件
@@ -36,9 +41,9 @@ ms.locfileid: "91310877"
 
 ## <a name="get-a-metro-area-id"></a>获取地铁区域 ID
 
-若要为特定大都市区请求有关转口机构和支持的传输类型的详细信息，需要使用 `metroId` 该区域。 " [获取地铁区域 API](https://aka.ms/AzureMapsMobilityMetro) " 允许您请求大都市区域，其中 Azure Maps 移动服务可用。 响应包括详细信息 `metroId` ，如 `metroName` GeoJSON 格式的地铁区域几何的表示形式。
+若要为特定大都市区请求有关转口机构和支持的传输类型的详细信息，需要使用 `metroId` 该区域。 " [获取地铁区域 API](/rest/api/maps/mobility/getmetroareapreview) " 允许您请求大都市区域，其中 Azure Maps 移动服务可用。 响应包括详细信息 `metroId` ，如 `metroName` GeoJSON 格式的地铁区域几何的表示形式。
 
-接下来，让我们请求获取 Tacoma 地铁区域 ID 的地铁区域。 若要请求地铁区域的 ID，请完成以下步骤：
+接下来，我们将请求获取 Seattle-Tacoma 地铁区域 ID 的地铁区域。 若要请求地铁区域的 ID，请完成以下步骤：
 
 1. 打开 Postman 应用，让我们创建一个集合来存储请求。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。
 
@@ -111,9 +116,9 @@ ms.locfileid: "91310877"
 
 ## <a name="request-nearby-transit-stops"></a>请求附近传输停止
 
-Azure Maps [获取附近的传输](https://aka.ms/AzureMapsMobilityNearbyTransit) 服务，可以搜索传输对象。 该 API 将返回传输对象的详细信息，如公用传输停止以及围绕给定位置的共享自行车。 接下来，我们将向服务发出请求，搜索附近的公共传输在给定位置附近的300米的 radius 内停止。
+Azure Maps [获取附近的传输](/rest/api/maps/mobility/getnearbytransitpreview) 服务，可以搜索传输对象。 该 API 将返回传输对象的详细信息，如公用传输停止以及围绕给定位置的共享自行车。 接下来，我们将向服务发出请求，搜索附近的公共传输在给定位置附近的300米的 radius 内停止。
 
-若要向 [附近传输](https://aka.ms/AzureMapsMobilityNearbyTransit)请求，请执行以下步骤：
+若要向 [附近传输](/rest/api/maps/mobility/getnearbytransitpreview)请求，请执行以下步骤：
 
 1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**" 并将其命名为 "**附近停止**"。
 
@@ -216,15 +221,15 @@ Azure Maps [获取附近的传输](https://aka.ms/AzureMapsMobilityNearbyTransit
 
 ## <a name="request-a-transit-route"></a>请求传输路由
 
-Azure Maps [获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute) 允许行程计划。 它会返回从源到目标的最佳路由选项。 此服务提供不同种类的旅行模式，包括行走、biking 和公共交通。 接下来，我们将搜索从最近的总线停止位置到西雅图的空间针塔的路线。
+Azure Maps [获取传输路由 API](/rest/api/maps/mobility/gettransitroutepreview) 允许行程计划。 它会返回从源到目标的最佳路由选项。 此服务提供不同种类的旅行模式，包括行走、biking 和公共交通。 接下来，我们将搜索从最近的总线停止位置到西雅图的空间针塔的路线。
 
 ### <a name="get-location-coordinates-for-destination"></a>获取目标的位置坐标
 
-若要获取太空针塔式的位置坐标，我们将使用 Azure Maps [模糊搜索服务](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。
+若要获取太空针塔式的位置坐标，我们将使用 Azure Maps [模糊搜索服务](/rest/api/maps/search/getsearchfuzzy)。
 
 若要向模糊搜索服务发出请求，请执行以下步骤：
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**并将其命名为**获取位置坐标**"。
+1. 在 Postman 中，单击 "**新建请求**  |  **获取请求** 并将其命名为 **获取位置坐标**"。
 
 2. 在 "生成器" 选项卡上，选择 " **获取** HTTP" 方法，输入以下请求 URL，然后单击 " **发送**"。
 
@@ -232,7 +237,7 @@ Azure Maps [获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
 
-3. 如果仔细查看响应，则它在空间针搜索的结果中包含多个位置。 每个结果**包含位置坐标。** 将和复制到 `lat` `lon` 第一个结果的 **位置** 。
+3. 如果仔细查看响应，则它在空间针搜索的结果中包含多个位置。 每个结果 **包含位置坐标。** 将和复制到 `lat` `lon` 第一个结果的 **位置** 。
 
    ```JSON
    {
@@ -331,13 +336,13 @@ Azure Maps [获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute
 
 若要发出路由请求，请完成以下步骤：
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**并将其命名为**获取路由信息**"。
+1. 在 Postman 中，单击 "**新建请求**  |  **获取请求** 并将其命名为 **获取路由信息**"。
 
 2. 在 "生成器" 选项卡上，选择 " **获取** HTTP" 方法，输入 API 终结点的以下请求 URL，然后单击 " **发送**"。
 
     我们将通过指定和参数来请求总线的公共传输 `modeType` 路由 `transitType` 。 请求 URL 包含之前部分中检索到的位置。 对于 `originType` ，我们现在有了一个 **stopId**。 对于 `destionationType` ，我们有了 **位置**。
 
-    查看可在请求中用于[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)的[URI 参数的列表](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters)。
+    查看可在请求中用于[获取传输路由 API](/rest/api/maps/mobility/gettransitroutepreview)的[URI 参数的列表](/rest/api/maps/mobility/gettransitroutepreview#uri-parameters)。
   
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/route/json?subscription-key={subscription-key}&api-version=1.0&originType=stopId&origin=522---2060603&destionationType=position&destination=47.62039,-122.34928&modeType=publicTransit&transitType=bus
@@ -524,9 +529,9 @@ Azure Maps [获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute
 
 ## <a name="request-fastest-route-itinerary"></a>请求最快路线路线
 
-通过 Azure Maps[获取传输路线](https://aka.ms/AzureMapsMobilityTransitItinerary)服务，可以使用[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)服务返回的路由**行程 ID**请求特定路由的数据。 若要发出请求，请完成以下步骤：
+通过 Azure Maps [获取传输路线](/rest/api/maps/mobility/gettransititinerarypreview)服务，可以使用 [获取传输路由 API](/rest/api/maps/mobility/gettransitroutepreview)服务返回的路由 **行程 ID** 请求特定路由的数据。 若要发出请求，请完成以下步骤：
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**并将其命名为**获取传输信息**"。
+1. 在 Postman 中，单击 "**新建请求**  |  **获取请求** 并将其命名为 **获取传输信息**"。
 
 2. 在 "生成器" 选项卡上，选择 " **获取** HTTP" 方法。 输入 API 终结点的以下请求 URL，然后单击 " **发送**"。
 
@@ -796,12 +801,12 @@ Azure Maps [获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用移动服务请求实时数据：
+了解如何使用移动服务 (预览) 请求实时数据：
 
 > [!div class="nextstepaction"]
 > [如何请求实时数据](how-to-request-real-time-data.md)
 
-浏览 Azure Maps 移动服务 API 文档
+浏览 Azure Maps 移动服务 (预览版) API 文档
 
 > [!div class="nextstepaction"]
-> [移动服务文档](https://aka.ms/AzureMapsMobilityService)
+> [移动服务文档](/rest/api/maps/mobility)

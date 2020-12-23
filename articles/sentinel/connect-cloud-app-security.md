@@ -1,6 +1,6 @@
 ---
 title: 将 Cloud App Security 数据连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何使用 Microsoft Cloud App Security (MCAS) 连接器来流式传输警报并将 MCAS 中的日志 Cloud Discovery 到 Azure Sentinel。 
+description: 了解如何使用 Microsoft Cloud App Security (MCAS) 连接器来流式传输警报并将 MCAS 中的日志 Cloud Discovery 到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9827e93f793ef47a835aa0a5fb2005e2830a0824
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904553"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655708"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>连接 Microsoft Cloud App Security 的数据 
 
-利用 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) 连接器，你可以将警报和 [CLOUD DISCOVERY 日志](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) 从 MCAS 流式传输到 Azure Sentinel。 这使你能够深入了解你的云应用，获取复杂分析来识别和对付以来自2200，并控制数据的传播方式。
+利用 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) 连接器，你可以将警报和 [CLOUD DISCOVERY 日志](/cloud-app-security/tutorial-shadow-it) 从 MCAS 流式传输到 Azure Sentinel。 这使你能够深入了解你的云应用，获取复杂分析来识别和对付以来自2200，并控制数据的传播方式。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 - 你的用户必须具有工作区的读取和写入权限。
 - 用户必须对工作区的租户具有全局管理员或安全管理员权限。
-- 若要将 Cloud Discovery 日志流式传输到 Azure Sentinel，请 [在 Microsoft Cloud App Security 中启用 Azure sentinel 作为你的 SIEM](https://aka.ms/AzureSentinelMCAS)。
+- 若要将 Cloud Discovery 日志流式传输到 Azure Sentinel，请 [在 Microsoft Cloud App Security 中启用 Azure sentinel 作为你的 SIEM](/cloud-app-security/siem-sentinel)。
 
 > [!IMPORTANT]
 > 引入 Cloud Discovery 日志当前为公共预览版。
@@ -38,7 +38,7 @@ ms.locfileid: "90904553"
  
 ## <a name="connect-to-cloud-app-security"></a>连接到 Cloud App Security
 
-如果已有 Cloud App Security，请确保已 [在网络上启用](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security)它。
+如果已有 Cloud App Security，请确保已 [在网络上启用](/cloud-app-security/getting-started-with-cloud-app-security)它。
 如果 Cloud App Security 已部署并引入数据，则可以轻松地将警报数据流式传输到 Azure Sentinel。
 
 
@@ -46,7 +46,7 @@ ms.locfileid: "90904553"
 
 1. 选择要流式传输到 Azure Sentinel 的日志;您可以选择 **警报** 并 **Cloud Discovery 日志** (预览版) 。 
 
-1. 单击“应用更改”****。
+1. 单击“应用更改”。
 
 1. 你可以选择是否希望 azure 安全中心的 Azure Defender 警报在 Azure Sentinel 中自动生成事件。 在 " **创建事件**" 下，选择 " **启用** " 以启用自动根据警报创建事件的默认分析规则。 然后，你可以在 " **分析**" 下的 "  **活动规则** " 选项卡中编辑此规则。
 
@@ -60,4 +60,4 @@ ms.locfileid: "90904553"
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Microsoft Cloud App Security 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 使用 [内置](tutorial-detect-threats.md) 或 [自定义](tutorial-detect-threats-custom.md) 规则开始使用 Azure Sentinel 检测威胁。
+- 使用 [内置](./tutorial-detect-threats-built-in.md) 或 [自定义](tutorial-detect-threats-custom.md) 规则开始使用 Azure Sentinel 检测威胁。

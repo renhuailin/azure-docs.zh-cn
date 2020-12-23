@@ -3,30 +3,30 @@ title: 使用 Azure Cosmos DB 为地理空间数据编制索引
 description: 使用 Azure Cosmos DB 为空间数据编制索引
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/03/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: 546b664c74980b3522fefed82c00eec414641eaa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 47eedf1ddbb155180d364c42ec179b3e01279e44
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326620"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336208"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 为地理空间数据编制索引
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 我们将 Azure Cosmos DB 的数据库引擎设计为真正与架构无关并为 JSON 提供一流的支持。 Azure Cosmos DB 的写入优化数据库引擎原生了解以 GeoJSON 标准表示的空间数据。
 
-简单来说，测地坐标的几何图形会投影在 2D 平面上，并使用**四叉树**以渐进方式划分成单元格。 这些单元格会根据 **Hilbert 空间填充曲线**内的单元格位置映射到 1D，并保留点的位置。 此外，当位置数据进行索引编制后，会经历称为 **分割**的过程，也就是说，在某个位置上相交的所有单元格都会被识别为键并存储在 Azure Cosmos DB 索引中。 在查询时，点和多边形等参数也会经过分割，以提取相关的格子 ID 范围，并用于从索引检索数据。
+简单来说，测地坐标的几何图形会投影在 2D 平面上，并使用 **四叉树** 以渐进方式划分成单元格。 这些单元格会根据 **Hilbert 空间填充曲线** 内的单元格位置映射到 1D，并保留点的位置。 此外，当位置数据进行索引编制后，会经历称为 **分割** 的过程，也就是说，在某个位置上相交的所有单元格都会被识别为键并存储在 Azure Cosmos DB 索引中。 在查询时，点和多边形等参数也会经过分割，以提取相关的格子 ID 范围，并用于从索引检索数据。
 
-如果指定的索引策略包含“/*”（所有路径）的空间索引，则会为容器中找到的所有数据编制索引，以实现高效的空间查询。
+如果指定的索引策略包含 `/*`) 的所有路径 (的空间索引，则在该容器中找到的所有数据都会进行索引以实现高效的空间查询。
 
 > [!NOTE]
-> Azure Cosmos DB 支持为 Point、LineString、Polygon 和 MultiPolygon 编制索引
->
->
+> Azure Cosmos DB 支持对点、Linestring、多边形和 MultiPolygons 的索引。 如果为这些类型中的任何一个编制索引，将自动为所有其他类型建立索引。 换句话说，如果为多边形编制索引，则还将为点、Linestring 和 MultiPolygons 编制索引。 为新的空间类型编制索引不会影响写入 RU 的费用或索引大小，除非你具有该类型的有效 GeoJSON 数据。
 
-## <a name="modifying-geospatial-data-type"></a>修改地理空间数据类型
+## <a name="modifying-geospatial-configuration"></a>修改地理空间配置
 
 在容器中，“地理空间配置”指定如何为空间数据编制索引。 为每个容器指定一个地理空间配置：“地理”或“几何”。
 
@@ -72,7 +72,7 @@ ms.locfileid: "91326620"
 
 ## <a name="geography-data-indexing-examples"></a>地理数据索引示例
 
-以下 JSON 代码片段显示了为**地理**数据类型启用空间索引的索引策略。 它适用于地理数据类型的空间数据，并将为文档中找到的任何 GeoJSON 点、多边形、MultiPolygon 或 LineString 编制索引以便进行空间查询。 如果要使用 Azure 门户修改索引策略，可以为索引策略指定以下 JSON，以便对容器启用空间索引：
+以下 JSON 代码片段显示了为 **地理** 数据类型启用空间索引的索引策略。 它适用于地理数据类型的空间数据，并将为文档中找到的任何 GeoJSON 点、多边形、MultiPolygon 或 LineString 编制索引以便进行空间查询。 如果要使用 Azure 门户修改索引策略，可以为索引策略指定以下 JSON，以便对容器启用空间索引：
 
 **具有地理空间索引功能的容器索引策略 JSON**
 
@@ -111,10 +111,10 @@ ms.locfileid: "91326620"
 
 边界框包括以下属性：
 
-- **xmin**：编制索引的最小 x 坐标
-- **ymin**：编制索引的最小 y 坐标
-- **xmax**：编制索引的最大 x 坐标
-- **ymax**：编制索引的最大 y 坐标
+- **xmin** ：编制索引的最小 x 坐标
+- **ymin** ：编制索引的最小 y 坐标
+- **xmax** ：编制索引的最大 x 坐标
+- **ymax** ：编制索引的最大 y 坐标
 
 边界框是必需的，因为几何图形数据占有的平面可以是无限的。 但是，空间索引需要有限空间。 对于 geography 数据类型，地球是边界，你无需设置边界框。
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 12cf4b029424bbbdb7449e6e1d04684ed485ef97
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81253996"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779010"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -80,7 +80,7 @@ ms.locfileid: "81253996"
 
 4. 在自定义域列表中，选择要为其启用 HTTPS 的自定义域。
 
-    ![自定义域列表](./media/cdn-custom-ssl/cdn-custom-domain.png)
+    ![屏幕截图显示了“自定义域”页，其中包含“使用我自己的证书”选项。](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     此时将显示“自定义域”页。 
 
@@ -128,7 +128,7 @@ ms.locfileid: "81253996"
 
     ![创建新的访问策略](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. 在“选择主体”  中，搜索 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，并选择 **Microsoft.Azure.Cdn**。 单击“选择”  。
+2. 在“选择主体”  中，搜索 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** ，并选择 **Microsoft.Azure.Cdn** 。 单击“选择”  。
 
     ![访问策略设置](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
@@ -176,13 +176,13 @@ ms.locfileid: "81253996"
 
 如果使用的是自己的证书，则不需要对域进行验证。
 
-CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 CDN 终结点主机名：
+CNAME 记录应采用以下格式，其中 *Name* 是自定义域名， *Value* 是 CDN 终结点主机名：
 
 | 名称            | 类型  | 值                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
-有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)。
+有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](./cdn-map-content-to-custom-domain.md)。
 
 如果 CNAME 记录采用正确的格式，DigiCert 会自动验证自定义域名，并为域名创建专用的证书。 DigitCert 不会向你发送验证电子邮件，并且你无需批准请求。 该证书会在一年内有效，并会在过期前自动续订。 转至[等待传播](#wait-for-propagation)。 
 
@@ -194,7 +194,7 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>自定义域未映射到 CDN 终结点
 
 >[!NOTE]
->如果使用的是 **Akamai 的 Azure CDN**，则应设置以下 CNAME 以启用自动域验证。 "_acme-challenge.&lt;custom domain hostname&gt; -> CNAME -> &lt;custom domain hostname&gt;.ak-acme-challenge.azureedge.net"
+>如果使用的是 **Akamai 的 Azure CDN** ，则应设置以下 CNAME 以启用自动域验证。 "_acme-challenge.&lt;custom domain hostname&gt; -> CNAME -> &lt;custom domain hostname&gt;.ak-acme-challenge.azureedge.net"
 
 如果 CNAME 记录条目包含 cdnverify 子域，请按照此步骤中的其余说明进行操作。
 
@@ -296,7 +296,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 1. 谁是证书提供者？使用哪种类型的证书？ 
 
-    对于 **Verizon 的 Azure CDN** 和 **Microsoft 的 Azure CDN**，Digicert 提供的专用/单个证书将用于自定义域。 
+    对于 **Verizon 的 Azure CDN** 和 **Microsoft 的 Azure CDN** ，Digicert 提供的专用/单个证书将用于自定义域。 
 
 2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？ 
 
@@ -337,4 +337,3 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 > [!div class="nextstepaction"]
 > [教程：设置 Azure CDN 缓存规则](cdn-caching-rules-tutorial.md)
-

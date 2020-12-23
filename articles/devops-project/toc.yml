@@ -1,53 +1,63 @@
-- name: Azure DevOps Starter 文档
+- name: DevOps Starter 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure DevOps Starter？
+    - name: 什么是 DevOps Starter？
       href: overview.md
 - name: 快速入门
   expanded: true
   items:
-    - name: .NET
-      href: ./azure-devops-project-aspnet-core.md
-      maintainContext: true
-    - name: Node.js
-      href: ./azure-devops-project-nodejs.md
-      maintainContext: true
-    - name: Java
-      href: ./azure-devops-project-java.md
-      maintainContext: true
-    - name: Python
-      href: ./azure-devops-project-python.md
-      maintainContext: true
-    - name: PHP
-      href: ./azure-devops-project-php.md
-      maintainContext: true
-    - name: Ruby
-      href: ./azure-devops-project-ruby.md
-      maintainContext: true
-    - name: Go
-      href: ./azure-devops-project-go.md
-      maintainContext: true
+    - name: GitHub 操作
+      items:
+        - name: Node.js
+          href: ./devops-starter-gh-nodejs.md
+          maintainContext: true
+    - name: Azure DevOps
+      items:
+        - name: .NET
+          href: ./azure-devops-project-aspnet-core.md
+          maintainContext: true
+        - name: Node.js
+          href: ./azure-devops-project-nodejs.md
+          maintainContext: true
+        - name: Java
+          href: ./azure-devops-project-java.md
+          maintainContext: true
+        - name: Python
+          href: ./azure-devops-project-python.md
+          maintainContext: true
+        - name: PHP
+          href: ./azure-devops-project-php.md
+          maintainContext: true
+        - name: Ruby
+          href: ./azure-devops-project-ruby.md
+          maintainContext: true
+        - name: Go
+          href: ./azure-devops-project-go.md
+          maintainContext: true
 - name: 教程
   items:
-    - name: 1 - GitHub 和 DevOps Starter
+    - name: 使用 GitHub Actions 部署到 Azure Web 应用
+      href: devops-starter-gh-web-app.md
+      maintainContext: true
+    - name: BYOC 与 GitHub
       href: azure-devops-project-github.md
       maintainContext: true
-    - name: 2 - 部署到 VM
+    - name: 通过 Azure DevOps 部署到 VM
       href: azure-devops-project-vms.md
       maintainContext: true
-    - name: 3 - 部署到 Azure SQL 数据库
+    - name: 通过 Azure DevOps 部署到 Azure SQL 数据库
       href: azure-devops-project-sql-database.md
       maintainContext: true
-    - name: 4 - 部署到 AKS
+    - name: 通过 Azure DevOps 部署到 AKS
       href: azure-devops-project-aks.md
       maintainContext: true
-    - name: 5 - 部署到 Azure Service Fabric
+    - name: 通过 Azure DevOps 部署到 Azure Service Fabric
       href: azure-devops-project-service-fabric.md
       maintainContext: true
-    - name: 6 - 部署到 Azure Cosmos DB
+    - name: 通过 Azure DevOps 部署到 Azure Cosmos DB
       href: azure-devops-project-cosmos-db.md
       maintainContext: true
-    - name: 7 - 部署到 Azure Functions
+    - name: 通过 Azure DevOps 部署到 Azure Functions
       href: azure-devops-project-functions.md
       maintainContext: true

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91315076"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370570"
 ---
 # <a name="changelog"></a>更改日志
 
@@ -198,7 +198,7 @@ ms.locfileid: "91315076"
 
 ### <a name="changes"></a>更改 ###
 
-- [更改][实时字幕] 已将 CEA 字幕的 API 名称从 608 更改为 708。 有关详细信息，请参阅 [CEA708 字幕设置](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- [更改][实时字幕] 已将 CEA 字幕的 API 名称从 608 更改为 708。 有关详细信息，请参阅 [CEA708 字幕设置](/javascript/api/azuremediaplayer/cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0（正式发行版） ##
 

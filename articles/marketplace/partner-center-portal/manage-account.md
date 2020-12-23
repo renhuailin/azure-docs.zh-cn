@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 08/27/2020
-ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.date: 11/02/2020
+ms.openlocfilehash: cc853285e193dd3ac4e348525b8bf0db9f8cb023
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400683"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533938"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 
@@ -34,19 +34,21 @@ ms.locfileid: "91400683"
 ## <a name="access-your-account-settings"></a>访问你的帐户设置
 
 如果尚未执行此操作，你（或组织的管理员）应访问合作伙伴中心帐户的[帐户设置](https://partner.microsoft.com/dashboard/account/management)，以便：
-- 检查公司的帐户验证状态
-- 确认 Symantec ID、卖家 ID、Microsoft 合作伙伴网络 (MPN) ID、发布者 ID 和联系人信息，包括公司审批者和卖家联系人
-- 为将在合作伙伴中心使用你的业务帐户的任何人创建用户帐户
 
-### <a name="open-developer-settings"></a>打开开发人员设置
+- 检查公司的帐户验证状态。
+- 确认 Symantec ID、卖方 ID Microsoft 合作伙伴网络 (MPN) ID、发布者 ID 和联系人信息，包括公司审批者和卖方联系人。
+- 为将在合作伙伴中心使用你的业务帐户的任何用户创建用户帐户。
 
-帐户设置位于合作伙伴中心的[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace)的右上角。 选择齿轮图标（位于仪表板的右上角附近），然后选择“开发人员设置” **** 。
+### <a name="open-account-settings"></a>打开帐户设置
+
+在合作伙伴中心的 " [商用 marketplace" 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace) 中，选择右上角的 " **设置** (齿轮" 图标) ，然后选择 " **帐户设置**"。
 
 ![合作伙伴中心的“帐户设置”菜单](./media/dashboard-developer-settings.png)
 
-在“帐户设置”中，你将能够查看：
+在 " **帐户设置** " 中，可以查看：
+
 - 帐户详细信息：帐户类型和帐户状态
-- 发布者 ID：卖家 ID、用户 ID、发布者 ID、Azure AD 租户等。
+- **发布者** id：卖方 ID、用户 Id、发布者 id、Azure AD 租户等
 - 联系人信息：发布者显示名称、卖家联系人姓名、电子邮件、电话和地址
 - 跟踪 GUID：任何跟踪 GUID 都与你的帐户关联
 
@@ -71,7 +73,7 @@ ms.locfileid: "91400683"
 1. 转到合作伙伴中心内的[商业市场概述页](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
 2. 在“配置文件”部分下的“付款配置文件”旁边，选择“更新” 。
 3. 选择付款方式：银行帐户或 PayPal。
-4. 添加付款信息：这可能包括选择帐户类型（支票或储蓄）、输入帐户持有者姓名、帐号和银行代号、帐单邮寄地址、电话号码或 PayPal 电子邮件地址。 *有关使用 PayPal 作为帐户付款方式，以及是否在你的市场区域中支持该付款方式的详细信息，请参阅 [PayPal 信息](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
+4. 添加付款信息：这可能包括选择帐户类型（支票或储蓄）、输入帐户持有者姓名、帐号和银行代号、帐单邮寄地址、电话号码或 PayPal 电子邮件地址。 *有关使用 PayPal 作为帐户付款方式，以及是否在你的市场区域中支持该付款方式的详细信息，请参阅 [PayPal 信息](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
 
 > [!IMPORTANT]
 > 更改付款帐户可能会推迟付款（最多一个付款周期）。 出现此推迟的原因是我们需要验证帐户更改，正如首次设置付款帐户时我们会进行验证。 帐户通过验证后，仍会收到全额款项；当前付款周期应得的任何付款将添加到下一个付款周期。  
@@ -98,7 +100,7 @@ ms.locfileid: "91400683"
 
 如果你不在美国，则可以利用税务协定权益。 这些权益因国家/地区而异，并且可让你减少 Microsoft 预扣的税金。 可以通过填写 W-8BEN 表单的第 II 部分来申报税务协定权益。 建议你与你所在国家或地区的相应资源通信，以确定这些权益是否适合你。
 
-[详细了解 Windows 应用/游戏开发人员和 Azure 市场发布者的税务详细信息](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps)。
+[详细了解 Windows 应用/游戏开发人员和 Azure 市场发布者的税务详细信息](/windows/uwp/publish/tax-details-for-paid-apps)。
 
 #### <a name="payout-hold-status"></a>付款暂停状态
 
@@ -113,7 +115,7 @@ ms.locfileid: "91400683"
 
 ### <a name="devices"></a>设备
 
-设备管理设置仅适用于 UWP 发布。 [了解详细信息](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
+设备管理设置仅适用于 UWP 发布。 [了解详细信息](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
 
 ### <a name="tracking-guids"></a>跟踪 GUID
 
@@ -170,7 +172,7 @@ ms.locfileid: "91400683"
 
 ### <a name="create-new-users"></a>创建新用户
 
-若要创建全新的用户帐户，必须创建具有[全局管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)权限的帐户。
+若要创建全新的用户帐户，必须创建具有[全局管理员](../../active-directory/roles/permissions-reference.md)权限的帐户。
 
 1. 转到“用户”（在“帐户设置”下），选择“添加用户”，然后选择“创建新用户”   。
 1. 输入每个新用户的名字、姓氏和用户名。 
@@ -184,7 +186,7 @@ ms.locfileid: "91400683"
 
 ### <a name="invite-new-users-by-email"></a>通过电子邮件邀请新用户
 
-若要通过电子邮件邀请当前不是公司工作帐户（Azure AD 租户）的一部分的用户，必须创建具有[全局管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)权限的帐户。
+若要通过电子邮件邀请当前不是公司工作帐户（Azure AD 租户）的一部分的用户，必须创建具有[全局管理员](../../active-directory/roles/permissions-reference.md)权限的帐户。
 
 1. 转到“用户”（在“帐户设置”下），选择“添加用户”，然后选择“通过电子邮件邀请用户”   。
 2. 输入一个或多个电子邮件地址，最多 (10 个) ，用逗号或分号分隔。
@@ -196,7 +198,7 @@ ms.locfileid: "91400683"
 如果需要重新发送邀请，请访问“用户”页，在用户列表中查找该邀请，选择其电子邮件地址（或显示“邀请挂起”的文本）。 然后，在页面底部，选择“重新发送邀请”。
 
 > [!NOTE]
-> 如果你的组织使用[目录集成](https://go.microsoft.com/fwlink/p/?LinkID=724033)将本地目录服务与 Azure AD 同步，则无法在合作伙伴中心创建新用户、组或 Azure AD 应用程序。 你（或本地目录中的其他管理员）将需要直接在本地目录中创建它们，然后才能在合作伙伴中心查看并添加它们。
+> 如果你的组织使用[目录集成](/previous-versions/azure/azure-services/jj573653(v=azure.100))将本地目录服务与 Azure AD 同步，则无法在合作伙伴中心创建新用户、组或 Azure AD 应用程序。 你（或本地目录中的其他管理员）将需要直接在本地目录中创建它们，然后才能在合作伙伴中心查看并添加它们。
 
 ### <a name="remove-a-user"></a>删除用户
 
@@ -204,7 +206,7 @@ ms.locfileid: "91400683"
 
 ### <a name="change-a-user-password"></a>更改用户密码
 
-如果你的其中一个用户需要更改密码，他们可以自行完成此操作（如果在创建用户帐户时提供了密码恢复电子邮件地址）。 还可以通过执行以下步骤来更新用户的密码。 若要更改公司工作帐户（Azure AD 租户）中的用户密码，必须登录具有[全局管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)权限的帐户。 这会更改用户在 Azure AD 租户中的密码，以及用于访问合作伙伴中心的密码。
+如果你的其中一个用户需要更改密码，他们可以自行完成此操作（如果在创建用户帐户时提供了密码恢复电子邮件地址）。 还可以通过执行以下步骤来更新用户的密码。 若要更改公司工作帐户（Azure AD 租户）中的用户密码，必须登录具有[全局管理员](../../active-directory/roles/permissions-reference.md)权限的帐户。 这会更改用户在 Azure AD 租户中的密码，以及用于访问合作伙伴中心的密码。
 
 1. 在“用户”页（在“帐户设置”下）上，选择要编辑的用户帐户的名称 。
 2. 选择页面底部的“重置密码”按钮。
@@ -291,7 +293,7 @@ ms.locfileid: "91400683"
 公司的用户可以在合作伙伴中心为商业市场计划分配以下角色和权限：
 
 - **所有者**
-  - "这是首次创建帐户并拥有其完全访问权限的人员，包括创建和编辑所有帐户用户并更改所有财务和帐户设置的功能。 一个帐户通常只有一个所有者。 "
+  - 这是首次创建帐户并具有对其的完全访问权限的人员，包括创建和编辑所有帐户用户以及更改所有财务和帐户设置的功能。 一个帐户通常只有一个所有者。
 - 管理员
   - 可以访问除税务和付款设置之外的所有 Microsoft 帐户功能
   - 可以管理用户、角色和工作帐户（租户）
@@ -302,7 +304,7 @@ ms.locfileid: "91400683"
 > [!NOTE]
 > 对于商业市场计划，不使用全局管理员、业务参与者、财务参与者和营销人员角色。 将这些角色分配给用户不起作用。 只有管理员和开发人员角色向用户授予权限。
 
-有关在合作伙伴中心的其他区域（例如 Azure Active Directory (AD)、云解决方案提供商 (CSP)、控制面板供应商 (CPV),、来宾用户或 Microsoft 合作伙伴网络 (MPN)）中管理角色和权限的详细信息，请参阅[在合作伙伴中心分配用户角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
+有关在合作伙伴中心的其他区域（例如 Azure Active Directory (AD)、云解决方案提供商 (CSP)、控制面板供应商 (CPV),、来宾用户或 Microsoft 合作伙伴网络 (MPN)）中管理角色和权限的详细信息，请参阅[在合作伙伴中心分配用户角色和权限](/partner-center/permissions-overview)。
 
 ## <a name="manage-tenants"></a>管理租户
 

@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: ca76563475dfbf8d35595c1de3cdee37f80e3ce1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690233"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678907"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>计划和管理 Azure 数据工厂的成本
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure 数据工厂是为实现云规模缩放而构建的无服务器和弹性数据集成服务。  也就是不需要为固定大小的计算规划峰值负载；可以指定每个操作按需分配的资源量，从而以可缩放性更强的方式设计 ETL 进程。 此外，ADF 基于消耗计费，即仅为所用的部分付费。
 
@@ -56,13 +56,13 @@ Azure 数据工厂是为实现云规模缩放而构建的无服务器和弹性�
 
 ## <a name="use-budgets-and-cost-alerts"></a>使用预算和成本警报
 
-可以创建[预算](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets)来管理成本，并创建警报以自动通知利益干系人支出异常和超支风险。  警报基于与预算和成本阈值相比的支出。  创建预算时，可以在订阅级别执行此操作，也可以在较低粒度通过添加其他筛选条件（例如资源 ID 和计量名称）来执行此操作。  但不能为工厂中的单个管道创建预算。
+可以创建[预算](../cost-management-billing/costs/tutorial-acm-create-budgets.md)来管理成本，并创建警报以自动通知利益干系人支出异常和超支风险。  警报基于与预算和成本阈值相比的支出。  创建预算时，可以在订阅级别执行此操作，也可以在较低粒度通过添加其他筛选条件（例如资源 ID 和计量名称）来执行此操作。  但不能为工厂中的单个管道创建预算。
 
 ## <a name="monitor-costs-at-factory-level"></a>在工厂级别监视成本
 
-开始使用 Azure 数据工厂时，可以在 Azure 门户的[成本分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis)窗格中看到产生的成本。
+开始使用 Azure 数据工厂时，可以在 Azure 门户的[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)窗格中看到产生的成本。
 
-1. 若要查看[成本分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis)，请打开“成本管理 + 计费”窗口，从菜单中选择“成本管理”，然后选择“打开成本分析”  。
+1. 若要查看[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)，请打开“成本管理 + 计费”窗口，从菜单中选择“成本管理”，然后选择“打开成本分析”  。
 2. 默认视图显示当前月份的累计成本。  可以切换到不同的时间范围和不同的粒度（例如每日或每月）。
 3. 若要缩小范围以查看单项服务（如 Azure 数据工厂）的成本，选择“添加筛选器”，然后选择“服务名称” 。  然后从列表中选择“Azure 数据工厂 v2”。
 4. 可以添加其他筛选器，以分析特定工厂实例和特定的 ADF 计量粒度对应的成本。
@@ -81,7 +81,7 @@ Azure 数据工厂是为实现云规模缩放而构建的无服务器和弹性�
 
 ![管道消耗详细信息](media/plan-manage-costs/pipeline-consumption-details.png)
 
-“管道运行消耗”视图显示特定管道运行的每项 ADF 计量对应的使用量，但它不显示实际费用，因为收取的金额取决于你拥有的 Azure 帐户类型以及使用的货币类型。  若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data)。
+“管道运行消耗”视图显示特定管道运行的每项 ADF 计量对应的使用量，但它不显示实际费用，因为收取的金额取决于你拥有的 Azure 帐户类型以及使用的货币类型。  若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md)。
 
 ## <a name="monitor-consumption-at-activity-run-level"></a>监视管道运行级别的消耗情况
 了解管道运行级别的聚合消耗后，有时需要进一步深入了解并确定管道中成本最高的活动。
@@ -101,5 +101,5 @@ Azure 数据工厂是为实现云规模缩放而构建的无服务器和弹性�
 请参阅以下文章，了解关于 Azure 数据工厂定价方式的详细信息：
 
 - [Azure 数据工厂定价页](https://azure.microsoft.com/pricing/details/data-factory/ssis/)
-- [通过示例了解 Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/pricing-concepts)
+- [通过示例了解 Azure 数据工厂](./pricing-concepts.md)
 - [Azure 数据工厂定价计算器](https://azure.microsoft.com/pricing/calculator/?service=data-factory)

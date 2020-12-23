@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 1b4d1041b9d330227fadf31f6afc1804174ea2ad
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662514"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340843"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD 如何为本地工作负荷提供云管控管理
 
@@ -77,7 +77,7 @@ Azure AD Premium 还包括 Microsoft Identity Manager，可以从其他本地 HC
 
 Azure AD 可以根据需要 [自动为来宾用户创建 ad 中的帐户](../external-identities/hybrid-cloud-to-on-premises.md) ，从而使业务来宾无需其他密码即可访问本地 ad 集成应用程序。 组织可以 [为来宾用户设置多重身份验证 (MFA) 策略](../external-identities/conditional-access.md)，以便在应用程序代理身份验证期间完成 mfa 检查。 此外，在云 B2B 用户上完成的任何 [访问评审](../governance/manage-guest-access-with-access-reviews.md) 都适用于本地用户。 例如，如果通过生命周期管理策略删除了云用户，则本地用户也会被删除。
 
-**Active Directory 帐户的凭据管理** Azure AD 的自助密码重置功能允许已忘记密码的用户重新进行身份验证并重置其密码，并将更改后的密码 [写入本地 Active Directory](../authentication/concept-sspr-writeback.md)。 密码重置过程还可以使用本地 Active Directory 密码策略：当用户重置其密码时，将对其进行检查，确保它满足本地 Active Directory 策略，然后将其提交到该目录。 自助服务密码重置 [部署计划](https://aka.ms/deploymentplans/sspr) 概述了通过 Web 和 Windows 集成体验向用户推出自助密码重置的最佳实践。
+**Active Directory 帐户的凭据管理** Azure AD 的自助密码重置功能允许已忘记密码的用户重新进行身份验证并重置其密码，并将更改后的密码 [写入本地 Active Directory](../authentication/concept-sspr-writeback.md)。 密码重置过程还可以使用本地 Active Directory 密码策略：当用户重置其密码时，将对其进行检查，确保它满足本地 Active Directory 策略，然后将其提交到该目录。 自助服务密码重置 [部署计划](../authentication/howto-sspr-deployment.md) 概述了通过 Web 和 Windows 集成体验向用户推出自助密码重置的最佳实践。
 
 ![Azure AD SSPR 体系结构](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -89,7 +89,7 @@ Azure AD 可以根据需要 [自动为来宾用户创建 ad 中的帐户](../ext
 
 ## <a name="cloud-governed-management-for-on-premises-federation-based-applications"></a>基于本地联合身份验证的应用程序的云管理管理
 
-对于已使用本地标识提供程序的组织，将应用程序移动到 Azure AD 可实现更安全的访问，并为联合管理提供更轻松的管理体验。 Azure AD 允许通过使用 Azure AD 条件访问来配置精细的按应用程序访问控制，包括 Azure 多重身份验证。 Azure AD 支持更多的功能，包括特定于应用程序的令牌签名证书和可配置的证书过期日期。 这些功能、工具和指导使组织能够停用本地标识提供者。 作为一个例子，microsoft 的 IT 人员已将17987应用程序从 Microsoft 的内部 Active Directory 联合身份验证服务 (AD FS) 到 Azure AD。
+对于已使用本地标识提供程序的组织，将应用程序移动到 Azure AD 可实现更安全的访问，并为联合管理提供更轻松的管理体验。 Azure AD 允许使用 Azure AD 条件访问来配置精细的按应用程序访问控制，包括 Azure AD 多重身份验证。 Azure AD 支持更多的功能，包括特定于应用程序的令牌签名证书和可配置的证书过期日期。 这些功能、工具和指导使组织能够停用本地标识提供者。 作为一个例子，microsoft 的 IT 人员已将17987应用程序从 Microsoft 的内部 Active Directory 联合身份验证服务 (AD FS) 到 Azure AD。
 
 ![Azure AD 进化](media/cloud-governed-management-for-on-premises/image5.png)
 
@@ -97,7 +97,7 @@ Azure AD 可以根据需要 [自动为来宾用户创建 ad 中的帐户](../ext
 
 * 这篇文章将 [应用程序迁移到 Azure Active Directory](https://aka.ms/migrateapps/whitepaper)，这带来了迁移的好处，并介绍了如何在四个清晰概括的阶段规划迁移：发现、分类、迁移和持续管理。 你将指导你了解过程，并将项目分解为易于使用的部分。 整个文档为指向重要资源的链接，可全程为你提供帮助。
 
-* 将 [应用程序身份验证从 Active Directory 联合身份验证服务迁移到 Azure Active Directory](https://aka.ms/migrateapps/adfssolutionguide) 中的解决方案指南更详细地探讨了规划和执行应用程序迁移项目的四个阶段。 在本指南中，你将了解如何将这些阶段应用于将应用程序从 Active Directory 联合身份验证服务 (AD FS) 迁移到 Azure AD 的具体目标。
+* 将 [应用程序身份验证从 Active Directory 联合身份验证服务迁移到 Azure Active Directory](../manage-apps/migrate-adfs-apps-to-azure.md) 中的解决方案指南更详细地探讨了规划和执行应用程序迁移项目的四个阶段。 在本指南中，你将了解如何将这些阶段应用于将应用程序从 Active Directory 联合身份验证服务 (AD FS) 迁移到 Azure AD 的具体目标。
 
 * [Active Directory 联合身份验证服务迁移准备情况脚本](https://aka.ms/migrateapps/adfstools)可以在现有的本地 Active Directory 联合身份验证服务 (AD FS) 服务器上运行，以确定要迁移到 Azure AD 的应用程序的准备情况。
 
@@ -107,7 +107,7 @@ Azure AD 可以根据需要 [自动为来宾用户创建 ad 中的帐户](../ext
 
 通常，IT 部门会将访问权限审批决策委托给业务决策人。 此外，IT 部门可能涉及到用户本身的事务。 例如，访问公司位于欧洲的市场营销应用程序中的机密客户数据的用户需要知道该公司的策略。 来宾用户还可能不知道对其受邀组织中数据的处理要求。
 
-组织可以通过诸如 [动态组](../users-groups-roles/groups-dynamic-membership.md)这样的技术自动执行访问生命周期过程，结合使用用户预配到 [SaaS 应用程序](../saas-apps/tutorial-list.md)，或者 [使用系统实现跨域标识管理 (SCIM) 标准集成的应用程序](../app-provisioning/use-scim-to-provision-users-and-groups.md) 。 组织还可以控制哪些 [来宾用户有权访问本地应用程序](../external-identities/hybrid-cloud-to-on-premises.md)。 然后，可以使用 [Azure AD 访问评审](../governance/access-reviews-overview.md)定期评审这些访问权限。
+组织可以通过诸如 [动态组](../enterprise-users/groups-dynamic-membership.md)这样的技术自动执行访问生命周期过程，结合使用用户预配到 [SaaS 应用程序](../saas-apps/tutorial-list.md)，或者 [使用系统实现跨域标识管理 (SCIM) 标准集成的应用程序](../app-provisioning/use-scim-to-provision-users-and-groups.md) 。 组织还可以控制哪些 [来宾用户有权访问本地应用程序](../external-identities/hybrid-cloud-to-on-premises.md)。 然后，可以使用 [Azure AD 访问评审](../governance/access-reviews-overview.md)定期评审这些访问权限。
 
 ## <a name="future-directions"></a>未来发展方向
 

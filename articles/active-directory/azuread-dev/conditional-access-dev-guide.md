@@ -13,16 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b08b07ebcd6e45e95e23dff8686148889e9d4b39
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116287"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173913"
 ---
-# <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory 条件性访问功能的开发人员指南
+# <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory 条件访问功能开发人员指南
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
+
+> [!NOTE]
+> 有关本文的 Microsoft 标识平台版本，请参阅 [开发人员指南，了解 Azure Active Directory 的条件性访问](../develop/v2-conditional-access-dev-guide.md)。
 
 保护应用安全和保护服务的方法有多种，Azure Active Directory (Azure AD) 中的条件访问功能便是其中之一。 通过条件访问功能，可以让开发人员和企业客户以多种方式保护服务的安全，其中包括：
 
@@ -40,7 +43,7 @@ ms.locfileid: "88116287"
 
 ### <a name="app-types-impacted"></a>受影响的应用类型
 
-通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。 只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问“质询”。 此过程可能与执行交互式登录请求一样简单。
+通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。  只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问“质询”。  此过程可能与执行交互式登录请求一样简单。
 
 具体来说，在以下应用场景下需要代码来处理条件访问“质询”：
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c10681a053631a338bd0b9a7d19c5625151a9a5a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543969"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>教程：Azure Active Directory 与 Optimizely 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88543969"
 * 可让用户使用其 Azure AD 帐户自动登录到 Optimizely（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88543969"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "88543969"
 
 5. Optimizely 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”对话框，已选择其右上角的“编辑”图标。](common/edit-attribute.png)
 
 6. 除了上述属性，Optimizely 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
@@ -120,7 +120,7 @@ ms.locfileid: "88543969"
     
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![屏幕截图显示“用户声明”对话框，其中突出显示了“添加新声明”和“保存”操作。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "88543969"
 
     g. 单击“保存”  。
 
-4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -164,7 +164,7 @@ ms.locfileid: "88543969"
 
 4. 单击右上角的帐户名称，并单击“帐户设置”。 
 
-    ![Azure AD 单一登录](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![屏幕截图显示，在右上角选择了帐户名称，并从菜单中选择了“帐户设置”。](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. 在“帐户”选项卡中，选中“概述”部分“单一登录”下的“启用 SSO”框。  
   
@@ -231,7 +231,7 @@ ms.locfileid: "88543969"
 
 2. 单击“新建协作者”  ，向项目添加新协作者。
    
-    ![创建 Azure AD 测试用户](./media/optimizely-tutorial/create_aaduser_10.png)
+    ![屏幕截图显示 Optimizely 主页，其中选择了“协作者”选项卡和“新建协作者”按钮。](./media/optimizely-tutorial/create_aaduser_10.png)
 
 3. 填写电子邮件地址，为其分配角色。 单击“邀请”。 
 
@@ -243,13 +243,12 @@ ms.locfileid: "88543969"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Optimizely 磁贴时，应会自动登录到为其设置了 SSO 的 Optimizely。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Optimizely 磁贴时，应会自动登录到为其设置了 SSO 的 Optimizely。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836502"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338247"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-存储在 Azure Cosmos 帐户中的数据会自动使用由 Microsoft 管理的密钥（服务管理的密钥）进行无缝加密。 还可以选择使用你自己托管的密钥（客户托管密钥****）来添加另一个加密层。
+存储在 Azure Cosmos 帐户中的数据会自动使用由 Microsoft 管理的密钥（服务管理的密钥）进行无缝加密。 还可以选择使用你自己托管的密钥（客户托管密钥）来添加另一个加密层。
 
 :::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="围绕客户数据的加密层":::
 
@@ -28,9 +29,9 @@ ms.locfileid: "87836502"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，转到 Azure 订阅，并在 **“设置”** 选项卡下选择 **“资源提供程序”** ：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="左侧菜单中的资源提供程序条目":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="左侧菜单中的“资源提供程序”项":::
 
-1. 搜索“Microsoft DocumentDB”**** 资源提供程序。 确认该资源提供程序是否标记为已注册。 如果不是，请选择该资源提供程序，然后选择“注册”：****
+1. 搜索“Microsoft DocumentDB”资源提供程序。 确认该资源提供程序是否标记为已注册。 如果不是，请选择该资源提供程序，然后选择“注册”：
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="注册“Microsoft DocumentDB”资源提供程序":::
 
@@ -42,38 +43,38 @@ ms.locfileid: "87836502"
 
 :::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="为新的 Azure Key Vault 实例启用“软删除”和“清除保护”":::
 
-如果使用的是现有 Azure Key Vault 实例，则可以通过查看 Azure 门户中的“属性”**** 部分来验证是否已启用这些属性。 如果未启用任一属性，请参阅以下文章中的“启用软删除”和“启用清除保护”部分：
+如果使用的是现有 Azure Key Vault 实例，则可以通过查看 Azure 门户中的“属性”部分来验证是否已启用这些属性。 如果未启用任一属性，请参阅以下文章中的“启用软删除”和“启用清除保护”部分：
 
-- [如何在 PowerShell 中使用软删除](../key-vault/general/soft-delete-powershell.md)
-- [如何在 Azure CLI 中使用软删除](../key-vault/general/soft-delete-cli.md)
+- [如何在 PowerShell 中使用软删除](../key-vault/general/key-vault-recovery.md)
+- [如何在 Azure CLI 中使用软删除](../key-vault/general/key-vault-recovery.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>将访问策略添加到 Azure Key Vault 实例
 
-1. 在 Azure 门户中，转到你打算用来托管加密密钥的 Azure Key Vault 实例。 在左侧菜单中选择“访问策略”：****
+1. 在 Azure 门户中，转到你打算用来托管加密密钥的 Azure Key Vault 实例。 在左侧菜单中选择“访问策略”：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="从左侧菜单访问策略":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="左侧菜单中的“访问策略”":::
 
-1. 选择“+ 添加访问策略”****。
+1. 选择“+ 添加访问策略”。
 
 1. 在“密钥权限”下拉菜单中，选择“获取”、“解包密钥”和“包装密钥”权限：
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="选择适当的权限":::
 
-1. 在“选择主体”下，选择“未选择任何项”。**** **** 然后，搜索“Azure Cosmos DB”主体并选中（为了更容易查找，还可以按主体 ID `a232010e-820c-4083-83bb-3ace5fc29d0b` 搜索，这适用于任何 Azure 区域，主体 ID 为 `57506a73-e302-42a9-b869-6f12d9ec29e9` 的 Azure 政府区域除外）。 最后，选择底部的“选择”****。 如果列表中没有“Azure Cosmos DB”**** 主体，可能需要根据本文的[注册资源提供程序](#register-resource-provider)部分所述，重新注册 Microsoft.DocumentDB**** 资源提供程序）。
+1. 在“选择主体”下，选择“未选择任何项”。  然后，搜索“Azure Cosmos DB”主体并选中（为了更容易查找，还可以按主体 ID `a232010e-820c-4083-83bb-3ace5fc29d0b` 搜索，这适用于任何 Azure 区域，主体 ID 为 `57506a73-e302-42a9-b869-6f12d9ec29e9` 的 Azure 政府区域除外）。 最后，选择底部的“选择”。 如果列表中没有“Azure Cosmos DB”主体，可能需要根据本文的[注册资源提供程序](#register-resource-provider)部分所述，重新注册 Microsoft.DocumentDB 资源提供程序）。
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="选择 Azure Cosmos DB 主体":::
 
-1. 选择“添加”以添加新的访问策略****。
+1. 选择“添加”以添加新的访问策略。
 
-1. 在 Key Vault 实例上选择 "**保存**" 以保存所有更改。
+1. 在密钥保管库实例上选择“保存”，以保存所有更改。
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>在 Azure Key Vault 中生成密钥
 
-1. 在 Azure 门户中，转到你打算用来托管加密密钥的 Azure Key Vault 实例。 然后，从左侧菜单中选择“密钥”****：
+1. 在 Azure 门户中，转到你打算用来托管加密密钥的 Azure Key Vault 实例。 然后，从左侧菜单中选择“密钥”：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="左侧菜单中的 "项" 项":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="左侧菜单中的“密钥”项":::
 
-1. 选择“生成/导入”****，为新密钥提供名称，并选择一个 RSA 密钥大小。 建议至少使用 3072，以获得最佳安全性。 然后选择“创建”：
+1. 选择“生成/导入”，为新密钥提供名称，并选择一个 RSA 密钥大小。 建议至少使用 3072，以获得最佳安全性。 然后选择“创建”：
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="新建密钥":::
 
@@ -83,7 +84,7 @@ ms.locfileid: "87836502"
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="复制密钥的密钥标识符":::
 
-## <a name="create-a-new-azure-cosmos-account"></a>新建 Azure Cosmos 帐户
+## <a name="create-a-new-azure-cosmos-account"></a>创建新的 Azure Cosmos 帐户
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
@@ -95,9 +96,9 @@ ms.locfileid: "87836502"
 
 使用 PowerShell 创建新的 Azure Cosmos DB 帐户时：
 
-- 在“PropertyObject”**** 中，传递前面在“keyVaultKeyUri”**** 属性下复制的 Azure Key Vault 密钥的 URI。
+- 在“PropertyObject”中，传递前面在“keyVaultKeyUri”属性下复制的 Azure Key Vault 密钥的 URI。
 
-- 使用 2019-12-12**** 或更高版本作为 API 版本。
+- 使用 2019-12-12 或更高版本作为 API 版本。
 
 > [!IMPORTANT]
 > 必须显式设置 `locations` 属性，才能通过客户管理的密钥成功创建帐户。
@@ -135,9 +136,9 @@ Get-AzResource -ResourceGroupName $resourceGroupName -Name $accountName `
 
 通过 Azure 资源管理器模板创建新的 Azure Cosmos 帐户时：
 
-- 在“属性”**** 对象中，传递前面在“keyVaultKeyUri”**** 属性下复制的 Azure Key Vault 密钥的 URI。
+- 在“属性”对象中，传递前面在“keyVaultKeyUri”属性下复制的 Azure Key Vault 密钥的 URI。
 
-- 使用 2019-12-12**** 或更高版本作为 API 版本。
+- 使用 2019-12-12 或更高版本作为 API 版本。
 
 > [!IMPORTANT]
 > 必须显式设置 `locations` 属性，才能通过客户管理的密钥成功创建帐户。
@@ -230,11 +231,11 @@ az cosmosdb show \
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="创建新的密钥版本":::
 
-- 通过更新帐户中的密钥 URI 来交换当前用于完全不同的密钥。 从 Azure 门户中转到 Azure Cosmos 帐户，并从左侧菜单中选择 "**数据加密**"：
+- 通过更新帐户的密钥 URI，将当前使用的密钥与完全不同的密钥交换。 在 Azure 门户中转到你的 Azure Cosmos 帐户，然后在左侧菜单中选择“数据加密”：
 
-    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text=""数据加密" 菜单项":::
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="“数据加密”菜单项":::
 
-    然后，将**密钥 URI**替换为要使用的新密钥，然后选择 "**保存**"：
+    然后，将“密钥 URI”替换为要使用的新密钥，并选择“保存”：
 
     :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="更新密钥 URI":::
 
@@ -279,7 +280,7 @@ az cosmosdb show \
 
 Azure Cosmos 帐户中存储的所有数据都将通过客户托管密钥加密，但以下元数据除外：
 
-- Azure Cosmos DB [帐户、数据库和容器](./account-overview.md#elements-in-an-azure-cosmos-account)的名称
+- Azure Cosmos DB [帐户、数据库和容器](./account-databases-containers-items.md#elements-in-an-azure-cosmos-account)的名称
 
 - [存储过程](./stored-procedures-triggers-udfs.md)的名称
 
@@ -297,11 +298,11 @@ Azure Cosmos 帐户中存储的所有数据都将通过客户托管密钥加密�
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>如何判断是否在 Azure Cosmos 帐户上启用了客户管理的密钥？
 
-在 Azure 门户中，请在左侧菜单中转到你的 Azure Cosmos 帐户并查看**数据加密**条目;如果此条目存在，则会在你的帐户中启用客户托管的密钥：
+在 Azure 门户中，转到 Azure Cosmos 帐户，并在左侧菜单中查看“数据加密”项；如果此项存在，则在帐户中启用了客户管理的密钥：
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text=""数据加密" 菜单项":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="“数据加密”菜单项":::
 
-还可以通过编程方式提取 Azure Cosmos 帐户的详细信息，并查找属性是否存在 `keyVaultKeyUri` 。 请参阅上面的方法，[在 PowerShell 中](#using-powershell)[使用 Azure CLI](#using-azure-cli). 实现此操作。
+还可以通过编程方式提取 Azure Cosmos 帐户的详细信息，并查找 `keyVaultKeyUri` 属性是否存在。 请参阅上面的方法，[在 PowerShell 中](#using-powershell)[使用 Azure CLI](#using-azure-cli). 实现此操作。
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>客户管理的密钥如何影响备份？
 

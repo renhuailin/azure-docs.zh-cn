@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250141"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349950"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -32,7 +32,7 @@ ms.locfileid: "91250141"
 
 以下步骤演示如何创建新的存储库并将文件克隆到计算机。
 
-1. 请确保已登录到 GitHub，并导航到 https://github.com/staticwebdev/vanilla-basic/generate 以创建新的存储库。
+1. 请确保已登录到 GitHub，并导航到 [https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate) 以创建新的存储库。
 1. 在“存储库名称”框中，输入“my-vanilla-api”。
 1. 单击“从模板创建存储库”。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91250141"
 1. 选择 api 文件夹作为项目工作区的目录
 1. 选择“选择”
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="使用 Visual Studio Code 创建新的 Azure Functions":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="屏幕截图显示 P I 文件夹和 &quot;选择&quot; 按钮。":::
 
 1. 根据提示提供以下信息：
 
@@ -90,7 +90,7 @@ Visual Studio Code 使用 HTTP 触发的函数生成 Azure Functions 项目。
 
 接下来，你将更改 `GetMessage` 函数以将消息返回到前端。
 
-1. `GetMessage`用以下代码更新_Api/GetMessage/index.js_下的函数。
+1. `GetMessage`用以下代码更新 _Api/GetMessage/index.js_ 下的函数。
 
     ```javascript
     module.exports = async function (context, req) {
@@ -145,13 +145,13 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 
     核心工具显示 _终端_ 面板中正在运行的应用程序的输出。 作为输出的一部分，可以看到 HTTP 触发函数的 URL 终结点在本地运行。
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="使用 Visual Studio Code 创建新的 Azure Functions":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="屏幕截图显示 &quot;终端&quot; 选项卡，可以在其中看到 U R L。":::
 
 1. 在核心工具运行的情况下，导航到以下 URL 以验证 API 是否正常运行： `http://localhost:7071/api/message` 。
 
    浏览器中的响应应类似于以下示例：
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="使用 Visual Studio Code 创建新的 Azure Functions":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Alt textScreenshot 在浏览器中显示文本响应。":::
 
 1. 按 **Shift + F5** 停止调试会话。
 
@@ -199,7 +199,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 
     你现在应该可以在网页中看到 API 消息。
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="使用 Visual Studio Code 创建新的 Azure Functions":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="屏幕截图在浏览器中显示 P I 消息。":::
 
    > [!NOTE]
    > 可以使用其他 HTTP 服务器或代理来提供 `index.html` 文件。 从 `file:///` 访问 `index.html` 将不起作用。
@@ -221,7 +221,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 1. 导航到 [Azure 门户](https://portal.azure.com)
 1. 单击“创建资源”
 1. 搜索 **静态 Web 应用**
-1. 单击 " **静态 Web 应用 (预览") **
+1. 单击 " **静态 Web 应用 (预览")**
 1. 单击“创建” 
 
 接下来，添加特定于应用的设置。
@@ -235,11 +235,13 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 1. 选择首选组织
 1. 从“存储库”下拉列表中选择“my-vanilla-api”
 1. 从“分支”下拉列表中选择“master”
-1. 单击“下一步:生成 >”按钮以编辑生成配置
+1. 从 " _生成预设_ " 下拉选项中选择用于生成配置的框架
+
+ > 这些字段将反映应用类型的默认项目结构。 更改值以适合你的应用。
 
 接下来，添加以下生成详细信息。
 
-1. **/** 为_应用位置_输入。
+1. **/** 为 _应用位置_ 输入。
 1. 在“API 位置”框中输入“api”。
 1. 清除“应用项目位置”中的默认值，将框留空。
 1. 单击“查看 + 创建”。

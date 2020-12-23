@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 10956953f9ab3a9e32b9da4ab8a3501d38b0e2c3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372300"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369652"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>添加或更改 Azure 订阅管理员
 
@@ -73,7 +73,7 @@ Microsoft 建议你使用 Azure RBAC 来管理对资源的访问权限。 但是
 * [什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
 * [了解 Azure 中的不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [将 Azure 订阅关联或添加到 Azure Active Directory 租户](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
-* [Azure Active Directory 中的管理员角色权限](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+* [Azure Active Directory 中的管理员角色权限](../../active-directory/roles/permissions-reference.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

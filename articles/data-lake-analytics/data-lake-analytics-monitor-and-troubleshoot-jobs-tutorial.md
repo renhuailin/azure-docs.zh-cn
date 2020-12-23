@@ -3,15 +3,14 @@ title: 监视 Azure Data Lake Analytics-Azure 门户
 description: 本文介绍如何使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排除。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: troubleshooting
 ms.date: 12/05/2016
-ms.openlocfilehash: 5445ad61295be3637005ead734cc31126c88a440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ddcf41a333d261bd9c5f669fde724a25eeba670e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132069"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220272"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户监视 Azure Data Lake Analytics 中的作业
 
@@ -42,7 +41,7 @@ ms.locfileid: "87132069"
 
 6. 单击“重复脚本”****。
 
-7. 将**从**路径更新为：`/Samples/Data/SearchLog.tsv`
+7. 将 **从** 路径更新为： `/Samples/Data/SearchLog.tsv`
 
 8. 单击“提交”****。
 

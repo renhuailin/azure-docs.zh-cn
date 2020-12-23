@@ -1,17 +1,17 @@
 ---
 title: 教程 - 删除 Azure Service Fabric 网格中运行的应用
 description: 在本教程中，了解如何删除 Service Fabric 网格中运行的应用程序并删除资源。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 30a43bdaf9e0c6c56e4d75597ff3d80b77314677
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351799"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744328"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>教程：删除应用程序和资源
 

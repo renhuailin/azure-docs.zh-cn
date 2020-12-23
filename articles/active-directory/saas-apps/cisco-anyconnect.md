@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4403d5470f96ead861196f7c9bcb0b9b6af088b0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a89ab7f2304fa51d3e8c7a968d445c9b40a457a3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973118"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456082"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco AnyConnect 集成
 
@@ -47,7 +47,7 @@ ms.locfileid: "90973118"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Cisco AnyConnect**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Cisco AnyConnect** 。 
 1. 在结果面板中选择“Cisco AnyConnect”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso-for-cisco-anyconnect"></a>配置和测试 Cisco AnyConnect 的 Azure AD SSO
@@ -179,8 +179,8 @@ ms.locfileid: "90973118"
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应能够自动登录到为其设置了 SSO 的 Cisco AnyConnect
-* 可以使用 Microsoft 访问面板。 单击访问面板中的 Cisco AnyConnect 磁贴时，应当会自动登录到你为其设置了 SSO 的 Cisco AnyConnect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+* 可以使用 Microsoft 访问面板。 单击访问面板中的 Cisco AnyConnect 磁贴时，应当会自动登录到你为其设置了 SSO 的 Cisco AnyConnect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Cisco AnyConnect 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Cisco AnyConnect 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

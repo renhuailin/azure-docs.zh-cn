@@ -10,14 +10,15 @@ ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a9501df45d598c85f8c694c5d07db4f959615c00
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 89d21e4464cb3c7578b68d68009065ab7848ed19
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90968188"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092528"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本教程说明了如何使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos 容器。 导入后，我们将批量更新文档的某些属性。 
 
@@ -27,7 +28,7 @@ ms.locfileid: "90968188"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。  
 
-* 无需 Azure 订阅即可免费 [试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 。 或者，可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](/azure/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticate-requests)中提供了主密钥。  
+* 无需 Azure 订阅即可免费 [试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 。 或者，可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](./local-emulator.md)。 [对请求进行身份验证](local-emulator.md#authenticate-requests)中提供了主密钥。  
 
 * [Java 开发工具包 (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)  
   - 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。  
@@ -112,7 +113,7 @@ ms.locfileid: "90968188"
    |disableAutomaticIdGeneration     |   用于禁用自动生成 ID 的标志。 此值默认设置为 true。   |
    |maxConcurrencyPerPartitionRange    |  每个分区键范围的最大并发度。 默认值为 20。  |
 
-   **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
+   **批量导入响应对象定义** 批量导入 API 调用的结果包含以下 get 方法：
 
    |**参数**  |**说明**  |
    |---------|---------|
@@ -176,15 +177,15 @@ ms.locfileid: "90968188"
    |---------|---------|
    |maxConcurrencyPerPartitionRange   |  每个分区键范围的最大并发度。 默认值为 20。  |
  
-   **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
+   **批量导入响应对象定义** 批量导入 API 调用的结果包含以下 get 方法：
 
    |**参数** |**说明**  |
    |---------|---------|
    |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
    |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |
    |Duration getTotalTimeTaken()  |   批量更新 API 调用完成执行所花费的总时间。      |
-   |List\<Exception> getErrors()   |       获取与更新操作相关的操作或网络问题的列表。      |
-   |列出 \<BulkUpdateFailure> getFailedUpdates ( # A1   |       获取无法完成的更新列表，以及导致失败的特定异常。|
+   |List\<Exception> getErrors()   |       获取与更新操作相关的操作或网络问题列表。      |
+   |List\<BulkUpdateFailure> getFailedUpdates()   |       获取无法完成的更新列表以及导致失败的特定异常。|
 
 3. 准备好批量更新应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
@@ -215,5 +216,3 @@ ms.locfileid: "90968188"
     
 ## <a name="next-steps"></a>后续步骤
 * 若要了解 maven 包的详细信息以及 Bulk Executor Java 库的发行说明，请参阅 [Bulk Executor SDK 详细信息](sql-api-sdk-bulk-executor-java.md)。
-
-

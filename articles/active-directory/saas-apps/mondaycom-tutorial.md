@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 2128559d8074281c1019d99e1316da34c7ec6797
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30cc4e66f73f0fe7f4c11f84f24312caf4f8a483
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554594"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516754"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>教程：Azure Active Directory 单一登录 (SSO) 与 monday.com 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88554594"
 * 让用户使用其 Azure AD 帐户自动登录到 monday.com。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,14 +88,14 @@ ms.locfileid: "88554594"
 
     c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”部分。  
 
-    ![image](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     > [!Note]
     > 如果“标识符”和“回复 URL”值未自动填充，请手动填充这些值。   “标识符”和“回复 URL”相同，值采用以下模式：`https://<your-domain>.monday.com/saml/saml_callback`  
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOUR_DOMAIN>.monday.com`
 
@@ -104,7 +104,7 @@ ms.locfileid: "88554594"
 
 1. monday.com 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/default-attributes.png)
+    ![屏幕截图显示具有默认值的“用户属性和声明”（如 Givenname user.givenname 和 Emailaddress User.mail）。](common/default-attributes.png)
 
 1. 除了上述属性，monday.com 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
@@ -166,15 +166,15 @@ ms.locfileid: "88554594"
 
 1. 转到页面右上角的“配置文件”，然后单击“管理员”   。
 
-    ![monday.com 配置](./media/mondaycom-tutorial/configuration01.png)
+    ![屏幕截图显示选择了“管理员配置文件”。](./media/mondaycom-tutorial/configuration01.png)
 
 1. 选择“安全性”，并确保单击“SAML”旁边的“打开”   。
 
-    ![monday.com 配置](./media/mondaycom-tutorial/configuration02.png)
+    ![屏幕截图显示了“安全”选项卡，SAML 旁边带有“打开”选项。](./media/mondaycom-tutorial/configuration02.png)
 
 1. 填写 IDP 中的以下详细信息。
 
-    ![monday.com 配置](./media/mondaycom-tutorial/configuration03.png)
+    ![屏幕截图显示了“SAML 提供程序”，你可以在其中输入来自 IDP 的信息。](./media/mondaycom-tutorial/configuration03.png)
 
     > [!NOTE]
     > 有关更多详细信息，请参阅[此文](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642)
@@ -187,14 +187,14 @@ ms.locfileid: "88554594"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 monday.com 磁贴时，应会自动登录到为其设置了 SSO 的 monday.com。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 monday.com 磁贴时，应会自动登录到为其设置了 SSO 的 monday.com。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [试用带有 Azure AD 的 monday.com](https://aad.portal.azure.com/)

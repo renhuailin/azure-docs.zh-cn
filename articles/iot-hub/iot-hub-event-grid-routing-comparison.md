@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fa5c4bc1aae91e9e40b6d14ad5c12b8d1aee68f6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 3f0853261e770b2cba9a243ae66b0b0d766fcd92
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767598"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024681"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>比较 IoT 中心的消息路由和事件网格
 
@@ -32,10 +32,10 @@ Azure IoT 中心可以从已连接的设备流式传输数据并将该数据集�
 
 | Feature | IoT 中心消息路由 | IoT 中心与事件网格的集成 |
 | ------- | --------------- | ---------- |
-| **设备消息和事件** | 是，消息路由可以用于遥测数据、报告设备孪生更改和设备生命周期事件（例如， 创建、删除、连接并断开与 IoT 中心之间的连接时) 和数字克隆更改事件。 | 是，事件网格可用于遥测数据和设备生命周期事件。 但是，事件网格不能用于设备孪生更改事件和数字孪生体更改事件。 |
+| **设备消息和事件** | 是，消息路由可以用于遥测数据、报告设备孪生更改和设备生命周期事件（例如， 何时创建、删除、连接设备以及何时让设备与 IoT 中心断开连接）以及数字孪生体更改事件。 | 是，事件网格可用于遥测数据和设备生命周期事件。 但是，事件网格不能用于设备孪生更改事件和数字孪生体更改事件。 |
 | **中间件排序** | 是，事件顺序保持不变。  | 否，无法保证事件顺序。 | 
 | **筛选** | 对消息应用程序属性、消息系统属性、消息正文、设备孪生标记和设备孪生属性执行的丰富筛选。 筛选不会应用于数字孪生更改事件。 有关示例，请参阅[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)。 | 基于事件类型、使用者类型和每个事件中的属性进行筛选。 有关示例，请参阅[了解在事件网格订阅中筛选事件](../event-grid/event-filtering.md)。 订阅遥测事件时，在发布到事件网格之前，你可以对数据应用其他筛选器来基于你的 IoT 中心内的消息属性、消息正文和设备孪生进行筛选。 请参阅[如何筛选事件](../iot-hub/iot-hub-event-grid.md#filter-events)。 |
-| **Endpoints** | <ul><li>事件中心</li> <li>Azure Blob 存储</li> <li>服务总线队列</li> <li>服务总线主题</li></ul><br>付费 IoT 中心 SKU（S1、S2 和 S3）限制为 10 个自定义终结点。 每个 IoT 中心都可创建 100 个路由。 | <ul><li>Azure Functions</li> <li>Azure 自动化</li> <li>事件中心</li> <li>逻辑应用</li> <li>存储 Blob</li> <li>自定义主题</li> <li>队列存储</li> <li>Microsoft Flow</li> <li>通过 Webhook 的第三方服务</li></ul><br>每个 IoT 中心支持 500 个终结点。 有关最新的终结点列表，请参阅[事件网格事件处理程序](../event-grid/overview.md#event-handlers)。 |
+| **Endpoints** | <ul><li>事件中心</li> <li>Azure Blob 存储</li> <li>服务总线队列</li> <li>服务总线主题</li></ul><br>付费 IoT 中心 SKU（S1、S2 和 S3）限制为 10 个自定义终结点。 每个 IoT 中心都可创建 100 个路由。 | <ul><li>Azure Functions</li> <li>Azure 自动化</li> <li>事件中心</li> <li>逻辑应用</li> <li>存储 Blob</li> <li>自定义主题</li> <li>队列存储</li> <li>Power Automate</li> <li>通过 Webhook 的第三方服务</li></ul><br>每个 IoT 中心支持 500 个终结点。 有关最新的终结点列表，请参阅[事件网格事件处理程序](../event-grid/overview.md#event-handlers)。 |
 | **成本** | 不会针对消息路由单独收费。 仅针对 IoT 中心的遥测数据入口收费。 例如，如果将一条消息路由到三个不同终结点，则只收取一条消息的费用。 | 不收取 IoT 中心费用。 事件网格每月免费提供前 100,000 次操作，之后每百万次操作收取 0.60 美元。 |
 
 ## <a name="similarities"></a>相似性

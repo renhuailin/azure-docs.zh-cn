@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250464"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400839"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -23,9 +23,23 @@ ms.locfileid: "91250464"
 
 <hr width=100%>
 
+## <a name="december-14-2020"></a>2020年12月14日
+此版本是 IoT Edge 上实时视频分析的公共预览版刷新版本。 发行标记为
+
+```
+     mcr.microsoft.com/media/live-video-analytics:2.0.0
+```
+### <a name="module-updates"></a>模块更新
+* 添加了对使用多个 HTTP 扩展处理器和 gRPC 扩展处理器每个图形拓扑的支持。
+* 添加了对接收器节点的磁盘空间管理的支持。
+* `MediaGraphGrpcExtension` 节点现在支持 [extensionConfiguration](grpc-extension-protocol.md) 属性，以便在单个 gRPC 服务器内使用多个 AI 模型。
+* 添加了对以[Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集实时视频分析模块度量值的支持 
+* 帧速率筛选器处理器已 **弃用**。  
+    * 帧速率管理现在在图形扩展处理器节点本身中可用。
+
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
-此模块2020年9月刷新的此版本标记为：
+此发布标记适用于2020年9月刷新的模块：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.4
@@ -36,8 +50,8 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>模块更新
 
-* 新的 "图形扩展" 节点， [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) 可与 " [空间分析](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) " (预览 ") 模块与认知服务集成。
-* 添加了对 Linux ARM64 设备的支持-使用手动部署到此类设备的 [步骤](deploy-iot-edge-device.md) 。
+* 新的 "图形扩展" 节点， [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) 可与 " [空间分析](/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) " (预览 ") 模块与认知服务集成。
+* 添加了对 Linux ARM64 设备的支持 - 使用[手动步骤](deploy-iot-edge-device.md)部署到此类设备。
 
 ### <a name="documentation-updates"></a>文档更新
 
@@ -48,7 +62,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ## <a name="august-19-2020"></a>2020 年 8 月 19 日
 
-此模块 2020 年 8 月刷新的此版本标记为：
+此发布标记适用于8月2020的模块刷新：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.3
@@ -67,13 +81,13 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="bug-fixes"></a>Bug 修复 
 
-* 在设置脚本中删除弃用的 azure 扩展的使用
+* 在设置脚本中删除不推荐使用的 Azure 扩展
 
 <hr width=100%>
 
 ## <a name="july-13-2020"></a>2020 年 7 月 13 日
 
-此模块 2020 年 7 月刷新的此版本标记为：
+此版本标记适用于2020年7月刷新的模块：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.2

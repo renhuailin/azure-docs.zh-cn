@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 06/21/2020
-  ms.openlocfilehash: bdd087a2826c22d03decba231c2d441c99bca974
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 82c4b4e574c66e8f45a2bb408b6bced4c6f195da
+  ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90974298"
+  ms.lasthandoff: 11/25/2020
+  ms.locfileid: "96122444"
 landingContent:
 - title: 关于 Azure IoT Central
   linkLists:
@@ -45,10 +45,8 @@ landingContent:
       url: overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: 连接设备 (Node.js)
-      url: tutorial-connect-device-nodejs.md
-    - text: 连接设备 (Python)
-      url: tutorial-connect-device-python.md
+    - text: 创建和连接设备
+      url: tutorial-connect-device.md
   - linkListType: concept
     links:
     - text: 设备连接
@@ -88,7 +86,7 @@ landingContent:
     - text: 将数据导出到云目标
       url: howto-export-data.md
     - text: 探索 IoT Central API
-      url: https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/
+      url: /learn/modules/manage-iot-central-apps-with-rest-api/
   - linkListType: how-to-guide
     links:
     - text: 创建自定义规则

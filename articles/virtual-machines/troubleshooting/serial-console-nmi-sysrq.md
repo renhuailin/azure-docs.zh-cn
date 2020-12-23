@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074375"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022847"
 ---
 # <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>使用 Azure 串行控制台进行 SysRq 和 NMI 调用
 
 ## <a name="system-request-sysrq"></a>系统请求 (SysRq)
-SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 当无法通过传统的管理执行虚拟机故障排除或恢复时（例如，如果 VM 未响应），通常使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
+SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 如果虚拟机故障排除或恢复无法通过传统的管理 (（例如，VM 未响应) ），通常会使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
 
 传送 SysRq 序列后，内核配置将控制系统的响应方式。 有关启用和禁用 SysRq 的信息，请参阅 *SysRq 管理员指南* [text](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq)。
 
@@ -38,7 +38,7 @@ SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预�
 不能在已停止或者其内核处于无响应状态的虚拟机上使用 SysRq 命令。 （例如内核崩溃）。
 
 ### <a name="enable-sysrq"></a>启用 SysRq
-可按前面提到的 *SysRq 管理员指南*中所述对 SysRq 进行配置，使所有、没有任何或者只有特定的命令可用。 可使用以下步骤启用所有 SysRq 命令，但重新启动后，此配置将会失效。
+可按前面提到的 *SysRq 管理员指南* 中所述对 SysRq 进行配置，使所有、没有任何或者只有特定的命令可用。 可使用以下步骤启用所有 SysRq 命令，但重新启动后，此配置将会失效。
 ```
 echo "1" >/proc/sys/kernel/sysrq
 ```

@@ -4,12 +4,12 @@ description: Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令�
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531671"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144748"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -79,7 +79,7 @@ az login
     
     如上一部分所述，以交互方式登录到 Azure 时，系统会缓存凭据，因此 Azure CLI 可以使用这些相同的凭据将你登录到 Batch 帐户。 如果通过服务主体登录到 Azure，也会使用这些凭据登录到 Batch 帐户。
 
-    Azure AD 的优势是提供基于角色的访问控制 (RBAC)。 使用 RBAC 时，用户的访问权限取决于分配给他们的角色，而不是是否拥有帐户密钥。 可以管理 Azure 角色，并让 Azure AD 处理访问和身份验证，而不是管理帐户密钥。  
+    Azure AD 的优势在于，它) Azure RBAC 提供 Azure 基于角色的访问 (控制。 使用 Azure RBAC，用户的访问权限取决于分配给他们的角色，而不是他们是否拥有帐户密钥。 你可以管理 Azure 角色而不是帐户密钥，让 Azure AD 处理访问权限和身份验证。  
 
      若要使用 Azure AD 登录到 Batch 帐户，请调用 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令： 
 
@@ -107,7 +107,7 @@ az login
 
 ## <a name="script-examples"></a>脚本示例
 
-请参阅 [CLI 脚本示例](cli-samples.md)，了解用于完成常规任务的 Batch。 这些示例涵盖在用于 Batch 的 Azure CLI 中提供的许多命令，这些命令用于创建和管理帐户、池、作业和任务。 
+请参阅 [CLI 脚本示例](./scripts/batch-cli-sample-create-account.md)，了解用于完成常规任务的 Batch。 这些示例涵盖在用于 Batch 的 Azure CLI 中提供的许多命令，这些命令用于创建和管理帐户、池、作业和任务。
 
 ## <a name="json-files-for-resource-creation"></a>用于创建资源的 JSON 文件
 

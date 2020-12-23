@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6064bd2c62922abea44508b8bf6cdfa3e7ecbc92
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384934"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953298"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
 Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect。 在选择要与我们的服务集成的库时，使用开放标准协议可让开发人员有更多的选择。 我们提供了本演练和其他类似文档来帮助开发人员编写可以连接到 Microsoft 标识平台的应用程序。 大部分实现 [RFC6749 OAuth2 规范](https://tools.ietf.org/html/rfc6749)的库都可连接到 Microsoft 标识平台。
 
 > [!WARNING]
-> Microsoft 不提供第三方库的修复程序，且尚未审查这些库。 本示例使用名为 AppAuth 的第三方库，该库经测试可与 Azure AD B2C 的基本方案兼容。 问题和功能请求应重定向到库的开源项目。 有关详细信息，请参阅[此文章](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)。
+> Microsoft 不提供第三方库的修复程序，且尚未审查这些库。 本示例使用名为 AppAuth 的第三方库，该库经测试可与 Azure AD B2C 的基本方案兼容。 问题和功能请求应重定向到库的开源项目。 有关详细信息，请参阅[此文章](../active-directory/develop/reference-v2-libraries.md)。
 >
 >
 
@@ -62,7 +62,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 > AppAuth 支持 iOS 7 和更高版本。  但是，若要在 Google 中支持社交登录，则需要安装 SFSafariViewController，这就需要使用 iOS 9 或更高版本。
 >
 
-### <a name="configuration"></a>配置
+### <a name="configuration"></a>Configuration
 
 可以通过指定授权终结点和令牌终结点 URI，来配置与 Azure AD B2C 的通信。  若要生成这些 URI，需要提供以下信息：
 * 租户 ID（例如 contoso.onmicrosoft.com）
@@ -92,7 +92,7 @@ OIDServiceConfiguration *configuration =
 
 配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：
 
-* 之前记录的客户端 ID（应用程序 ID）。 例如 `00000000-0000-0000-0000-000000000000`。
+* 之前记录的客户端 ID（应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000`。
 * 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
 
 [注册应用](#create-an-application)时应已保存这两项信息。

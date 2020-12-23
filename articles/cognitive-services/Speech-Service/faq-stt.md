@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 32f6a9dae1a5b0be604b53d814ebc85cb7813b91
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397753"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353759"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
-如果在本常见问题解答中找不到你的问题的解答，请检查[其他支持选项](support.md)。
+如果在本常见问题解答中找不到你的问题的解答，请检查[其他支持选项](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
 
 ## <a name="general"></a>常规
 
@@ -29,7 +29,7 @@ ms.locfileid: "91397753"
 
 **问：如果想要使用基线模型，从何处开始？**
 
-**答**：首先，获取[订阅密钥](overview.md#try-the-speech-service-for-free)。 如果想要对预先部署的基线模型进行 REST 调用，请参阅 [REST API](rest-apis.md)。 如果想要使用 WebSocket，请[下载 SDK](speech-sdk.md)。
+**答**：首先，获取 [订阅密钥](overview.md#try-the-speech-service-for-free)。 如果想要对预先部署的基线模型进行 REST 调用，请参阅 [REST API](./overview.md#reference-docs)。 如果想要使用 WebSocket，请[下载 SDK](speech-sdk.md)。
 
 **问：是否始终需要生成自定义语音识别模型？**
 
@@ -71,11 +71,11 @@ ms.locfileid: "91397753"
 
 **问：是否会记录我的请求？**
 
-**答**：默认情况下不记录请求（既不进行音频记录，也不进行听录）。 如果需要，可以在[创建自定义终结点](how-to-custom-speech-deploy-model.md)时选择“从此终结点记录内容”选项以启用跟踪。 然后，请求会记录在 Azure 的安全存储中。
+**答**：默认情况下不记录请求（既不进行音频记录，也不进行听录）。 如果需要，可以在[创建自定义终结点](./how-to-custom-speech-train-model.md)时选择“从此终结点记录内容”选项以启用跟踪。 然后，请求会记录在 Azure 的安全存储中。
 
 **问：我的请求是否受到限制？**
 
-**答**：请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。
+**答**：请参阅 [语音服务配额和限制](speech-services-quotas-and-limits.md)。
 
 **问：双声道音频如何收费？**
 

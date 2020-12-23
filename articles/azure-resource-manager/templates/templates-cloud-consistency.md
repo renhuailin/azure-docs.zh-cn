@@ -1,23 +1,23 @@
 ---
 title: 跨云重用模板
-description: 开发可针对不同的云环境一致地工作的 Azure 资源管理器模板。 创建适用于 Azure Stack 的新模板或更新现有模板。
+description: 开发 Azure 资源管理器模板 (ARM 模板) ，适用于不同的云环境。 创建适用于 Azure Stack 的新模板或更新现有模板。
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356879"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928352"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>开发用于确保云一致性的 ARM 模板
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器 (ARM) 模板可确保部署在全球 Azure、Azure 主权云和 Azure Stack 等环境中保持一致性和可重复性。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
+Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器模板 (ARM 模板) 使你的部署在不同的环境（包括全球 Azure、Azure 主权云和 Azure Stack）之间保持一致且可重复。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
 
 Microsoft 在很多位置提供了面向企业的智能云服务，其中包括：
 
@@ -205,7 +205,7 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 }
 ```
 
-使用此方法，包括配置脚本在内的所有部署项目均可存储在模板本身所在的位置。 若要更改所有链接的位置，只需为 _artifactsLocation 参数_指定其他基 URL。
+使用此方法，包括配置脚本在内的所有部署项目均可存储在模板本身所在的位置。 若要更改所有链接的位置，只需为 _artifactsLocation 参数_ 指定其他基 URL。
 
 ## <a name="factor-in-differing-regional-capabilities"></a>区分区域功能的因素
 
@@ -443,8 +443,8 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 一般情况下，请避免在模板中使用硬编码终结点。 最佳做法是使用引用模板函数动态检索终结点。 例如，最常进行硬编码的终结点是存储帐户的终结点命名空间。 每个存储帐户均有唯一的 FQDN，它通过连接存储帐户的名称与终结点命名空间来构造。 名为 mystorageaccount1 的 blob 存储帐户会因为云的不同而产生不同的 FQDN：
 
-* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net。
-* 在 Azure 中国世纪互联云创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn。
+* `mystorageaccount1.blob.core.windows.net` 在全局 Azure 云上创建时。
+* `mystorageaccount1.blob.core.chinacloudapi.cn` 在 Azure 中国世纪互联云中创建的。
 
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 
@@ -655,7 +655,7 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 下图展示了团队使用集成开发环境 (IDE) 的开发过程的典型示例。 在时间线中的不同阶段执行不同的测试类型。 在这里，两名开发者正在处理同一解决方案，但这种情况同样适用于单个开发者或一个大型团队。 每个开发者通常会创建中央存储库的本地副本，这样每个人都可以处理本地副本，并且不会影响可能使用同一文件的其他用户。
 
-![关系图显示了在本地 I D E 上并行执行的两组单元测试和集成测试，将 C I/C D 开发流程合并到单元测试中，然后进行集成测试，然后测试部署，然后部署。](./media/templates-cloud-consistency/workflow.png)
+![图显示了在本地 I D E 上并行的两组单元测试和集成测试，它们在 C I / C D 开发流中合并为单元测试，然后是集成测试，然后是测试部署，然后是部署。](./media/templates-cloud-consistency/workflow.png)
 
 请考虑以下用于测试和自动化的提示：
 

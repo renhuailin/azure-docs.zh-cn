@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 25571db967608c238bccb1ab44f75a0a163803d5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: bf249046a30e023a2d7b596fb6424c7005c2a875
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90020262"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841931"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure Sentinel 的 azure 安全基线
 
-此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md) 中的指导应用于 azure Sentinel。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的 **安全控件** 进行分组，以及适用于 azure Sentinel 的相关指南。 排除了不适用于 Azure Sentinel 的**控件**。 若要查看 Azure Sentinel 如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure sentinel 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md) 中的指导应用于 azure Sentinel。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的 **安全控件** 进行分组，以及适用于 azure Sentinel 的相关指南。 排除了不适用于 Azure Sentinel 的 **控件**。 若要查看 Azure Sentinel 如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure sentinel 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
-*有关详细信息，请参阅 [Azure 安全基准：网络安全](../security/benchmarks/security-control-network-security.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
@@ -37,7 +37,7 @@ ms.locfileid: "90020262"
 
 - [如何在 Azure Sentinel 中启用审核](resources.md)
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -47,7 +47,7 @@ ms.locfileid: "90020262"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅 [Azure 安全基准：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
@@ -101,13 +101,13 @@ ms.locfileid: "90020262"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-*有关详细信息，请参阅 [Azure 安全基准：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
 **指南**：维护对控制平面具有管理访问权限的用户帐户的清单 (例如，Azure Sentinel 工作区 Azure 门户) 。 
 
-你可以使用订阅 Azure 门户中 (IAM) 窗格的 "标识和访问控制" 来配置 Azure RBAC)  (基于角色的访问控制。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。  Azure Sentinel 还使用 Azure RBAC 来提供可分配给 Azure 中的用户、组和服务的内置管理角色，如 Azure Sentinel 参与者。 
+可以在 Azure 门户中为你的订阅使用“标识和访问控制(IAM)”窗格来配置 Azure 基于角色的访问控制 (Azure RBAC)。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。  Azure Sentinel 还使用 Azure RBAC 来提供可分配给 Azure 中的用户、组和服务的内置管理角色，如 Azure Sentinel 参与者。 
 
 - [了解自定义角色](../role-based-access-control/custom-roles.md)
 
@@ -163,11 +163,11 @@ ms.locfileid: "90020262"
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
-**指导**：使用启用了 Azure 多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录和配置 Azure Sentinel 相关的资源。 
+**指南**：将特权访问工作站 (PAW) 与 Azure AD 多重身份验证 (MFA) 一起使用，以便登录和配置 Azure Sentinel 相关资源。 
 
 - [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [规划基于云的 Azure 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
+- [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -181,7 +181,7 @@ ms.locfileid: "90020262"
 
 - [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 风险检测](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 风险检测](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 安全中心监视**：是
 
@@ -211,7 +211,7 @@ ms.locfileid: "90020262"
 
 **指导**：Azure Active Directory (AD) 提供日志来帮助发现过时的帐户。 此外，请使用 Azure 标识访问评审来有效管理组成员身份、对企业应用程序的访问和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -227,7 +227,7 @@ ms.locfileid: "90020262"
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 可以在 Log Analytics 中配置所需的日志警报。
 
-- [如何将 Azure 活动日志集成到 Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [如何加入 Azure Sentinel](quickstart-onboard.md)
 
@@ -239,7 +239,7 @@ ms.locfileid: "90020262"
 
 **指导**：对于控制平面（例如 Azure 门户）中帐户登录行为的偏差，可使用 Azure AD 标识保护和风险检测功能进行配置，实现在检测到与用户标识相关的可疑操作时自动进行响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -261,13 +261,13 @@ ms.locfileid: "90020262"
 
 ## <a name="data-protection"></a>数据保护
 
-*有关详细信息，请参阅 [Azure 安全基准：数据保护](../security/benchmarks/security-control-data-protection.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
 **指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -277,9 +277,9 @@ ms.locfileid: "90020262"
 
 **指南**：针对开发、测试和生产 Sentinel 工作区实施单独的订阅和/或管理组。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -325,7 +325,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 此外，每个 Sentinel 工作簿都是一个 Azure 资源，你可以将角色分配给用户以管理访问权限。
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [了解自定义角色](../role-based-access-control/custom-roles.md)
 
@@ -341,7 +341,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 **指南**： Azure Sentinel 和 Azure Monitor Log Analytics 工作区当前使用 Microsoft 托管的密钥来加密任何包含的静态数据。 对于 Sentinel，无需完全支持引入你自己的密钥的功能，但会在不久的将来进行。
 
-- [Azure Monitor 客户托管的密钥概述](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview)
+- [Azure Monitor 客户托管的密钥概述](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
 
 - [了解 Azure Sentinel 中客户托管的密钥 (预览) ](customer-managed-keys.md)
 
@@ -361,7 +361,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-*有关详细信息，请参阅 [Azure 安全基准：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -371,7 +371,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -383,7 +383,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 **指导**：将标记应用到 Azure资源，以便有条理地将元数据组织成某种分类。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -398,11 +398,11 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 - 不允许的资源类型
 - 允许的资源类型
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -412,7 +412,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。 
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -431,7 +431,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -449,13 +449,13 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 ## <a name="secure-configuration"></a>安全配置
 
-*有关详细信息，请参阅 [Azure 安全基准：安全配置](../security/benchmarks/security-control-secure-configuration.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
 **指南**：定义和实现与具有 Azure 策略的 Sentinel 工作区关联的 Log Analytics 工作区的标准安全配置。 使用 "Microsoft.operationalinsights" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施 Log Analytics 工作区的配置。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -479,9 +479,9 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 **指南**：如果使用的是自定义 Azure 策略定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -513,9 +513,9 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 - [将 Sentinel 连接到数据源](connect-data-sources.md)
 
-- [如何创建 Key Vault](/azure/key-vault/quick-create-portal) 
+- [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md) 
 
-- [如何使用托管标识提供 Key Vault 身份验证](/azure/key-vault/managed-identity)
+- [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：是
 
@@ -533,13 +533,13 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-*有关详细信息，请参阅 [Azure 安全基准：恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
 **指南**：在支持 azure 服务 (（例如，azure Sentinel 和 Log Analytics) ）的基础主机上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。 
 
-你负责预先扫描要上传到非计算 Azure 资源（包括 Log Analytics 工作区）的任何内容。 Microsoft 无法访问客户数据，因此无法代表你对客户内容执行反恶意软件扫描。
+你需要负责预先扫描要上传到非计算 Azure 资源（包括 Log Analytics 工作区）的任何内容。 Microsoft 无法访问客户数据，因此无法代表你对客户内容执行反恶意软件扫描。
 
 **Azure 安全中心监视**：不适用
 
@@ -547,7 +547,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 ## <a name="data-recovery"></a>数据恢复
 
-*有关详细信息，请参阅 [Azure 安全基准：数据恢复](../security/benchmarks/security-control-data-recovery.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -557,7 +557,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 如果在吊销后恢复访问操作，Azure Sentinel 会在一小时内恢复对数据的访问权限。
 
-- [如何在 Key Vault 中启用“软删除”](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中启用“软删除”](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [了解 Azure Sentinel 中客户托管的密钥](customer-managed-keys.md)
 
@@ -567,7 +567,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 ## <a name="incident-response"></a>事件响应
 
-*有关详细信息，请参阅 [Azure 安全基准：事件响应](../security/benchmarks/security-control-incident-response.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -597,7 +597,7 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
@@ -639,11 +639,11 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-*有关详细信息，请参阅 [Azure 安全基准：渗透测试和 red 团队练习](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：按照参与 Microsoft 云渗透测试规则确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。 
+**指导**：请遵循 Microsoft 云渗透测试互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。 
 
 - [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
@@ -655,5 +655,5 @@ Log Analytics 角色包括 Log Analytics 参与者和 Log Analytics 读者。 Lo
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

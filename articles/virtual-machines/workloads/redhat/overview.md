@@ -1,20 +1,19 @@
 ---
 title: Azure 上的 Red Hat 工作负荷概述 | Microsoft Docs
 description: 了解 Azure 上提供的 Red Hat 产品。
-services: virtual-machines-linux
 author: asinn826
-manager: borisb2015
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.reviewer: cynthn
+ms.openlocfilehash: 3e4a770a33f5cdb3c3b2de09cbcb8431b2fc3fbb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87052118"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968649"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上的 Red Hat 工作负荷
 
@@ -45,7 +44,7 @@ Azure 还提供 Red Hat 黄金映像 (`rhel-byos`)。 对于有现有的 Red Hat
 
 ### <a name="generation-2-images"></a>第 2 代映像
 
-与第 1 代虚拟机 (VM) 相比，第 2 代 VM 提供了许多较新的功能。 有关详细信息，请参阅[第 2 代文档](../../linux/generation-2.md)。 从 RHEL 映像角度来看，主要区别在于第 2 代 VM 使用 UEFI 而非 BIOS 固件接口。 在启动时，它们还使用 GUID 分区表 (GPT) 而非主启动记录 (MBR)。 使用 GPT 将允许 OS 磁盘大小超过 2 TB，并允许更多事项。 此外，[Mv2 系列 VM](../../mv2-series.md) 仅在第 2 代映像上运行。
+与第 1 代虚拟机 (VM) 相比，第 2 代 VM 提供了许多较新的功能。 有关详细信息，请参阅[第 2 代文档](../../generation-2.md)。 从 RHEL 映像角度来看，主要区别在于第 2 代 VM 使用 UEFI 而非 BIOS 固件接口。 在启动时，它们还使用 GUID 分区表 (GPT) 而非主启动记录 (MBR)。 使用 GPT 将允许 OS 磁盘大小超过 2 TB，并允许更多事项。 此外，[Mv2 系列 VM](../../mv2-series.md) 仅在第 2 代映像上运行。
 
 Azure 市场中提供了 RHEL 第 2 代映像。 在使用 Azure CLI 时显示的所有映像的列表中，在映像 SKU 中查找“gen2”。 在 VM 部署过程中，可以转到“高级”选项卡来部署第 2 代 VM。
 

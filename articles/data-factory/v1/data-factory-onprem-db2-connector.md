@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74931791"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001059"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -78,7 +78,7 @@ ms.locfileid: "74931791"
 ## <a name="db2-linked-service-properties"></a>DB2 链接服务的属性
 下表列出了特定于 DB2 链接服务的 JSON 属性。
 
-| Property | 描述 | 必须 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | **type** |必须将此属性设置为 **OnPremisesDb2**。 |是 |
 | 服务器 |DB2 服务器的名称。 |是 |
@@ -92,18 +92,18 @@ ms.locfileid: "74931791"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的各节和属性的列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 所有数据集类型（Azure SQL、Azure Blob 存储、Azure 表存储等）的数据集 JSON 的 **structure**、**availability** 和 **policy** 等节类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | **tableName** |链接服务引用的 DB2 数据库实例中表的名称。 此属性区分大小写。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义复制活动的各节和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 等复制活动属性可用于所有类型的活动。 可在活动的 typeProperties**** 节中使用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
+有关可用于定义复制活动的各节和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 等复制活动属性可用于所有类型的活动。 可在活动的 typeProperties 节中使用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
 
 对于复制活动，当源的类型为 **RelationalSource**（包括 DB2）时，以下属性在 **typeProperties** 节中可用：
 
-| Property | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
 
@@ -111,7 +111,7 @@ ms.locfileid: "74931791"
 > 架构和表名称区分大小写。 在查询语句中，应使用 ""（双引号）括住属性名称。
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON 示例：将数据从 DB2 复制到 Azure Blob 存储
-此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 本示例演示了如何将数据从 DB2 数据库复制到 Azure Blob 存储。 但是，可以使用 Azure 数据工厂复制活动将数据复制到[任何受支持的数据存储接收器类型](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
+此示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 本示例演示了如何将数据从 DB2 数据库复制到 Azure Blob 存储。 但是，可以使用 Azure 数据工厂复制活动将数据复制到[任何受支持的数据存储接收器类型](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
 
 此示例具有以下数据工厂实体：
 
@@ -314,7 +314,7 @@ ms.locfileid: "74931791"
 | Double |Double |
 | Float |Double |
 | 小数 |小数 |
-| DecimalFloat |小数 |
+| DecimalFloat |Decimal |
 | Numeric |小数 |
 | Date |DateTime |
 | 时间 |TimeSpan |
@@ -327,7 +327,7 @@ ms.locfileid: "74931791"
 | 二进制 |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |字符串 |
+| Graphic |String |
 | VarGraphic |String |
 | LongVarGraphic |String |
 | Clob |String |
@@ -340,7 +340,7 @@ ms.locfileid: "74931791"
 | Double |Double |
 | Float |Double |
 | 小数 |小数 |
-| DecimalFloat |小数 |
+| DecimalFloat |Decimal |
 | Numeric |小数 |
 | Date |DateTime |
 | 时间 |TimeSpan |
@@ -352,7 +352,7 @@ ms.locfileid: "74931791"
 若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="repeatable-reads-from-relational-sources"></a>从关系源进行可重复读取
-从关系型数据存储复制数据时，请注意可重复性，以免出现意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试**策略**属性，以便在出现故障时重新运行切片。 无论要重新运行切片几次，或者以哪种方式重新运行切片，都需要确保读取相同的数据。 有关详细信息，请参阅[从关系型数据源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+从关系型数据存储复制数据时，请注意可重复性，以免出现意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试 **策略** 属性，以便在出现故障时重新运行切片。 无论要重新运行切片几次，或者以哪种方式重新运行切片，都需要确保读取相同的数据。 有关详细信息，请参阅[从关系型数据源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 在[复制活动性能和优化指南](data-factory-copy-activity-performance.md)中了解影响复制活动性能的关键因素以及各种性能优化方法。

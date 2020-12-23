@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889185"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009358"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>将现有的 IoT 中心与设备模拟解决方案加速器配合使用
 
@@ -23,11 +23,11 @@ ms.locfileid: "73889185"
 
 如果还没有 IoT 中心，则在 [Azure 门户](https://portal.azure.com)中新建一个即可。
 
-若要使用预先存在的 IoT 中心，则需要 iothubowner**** 共享访问策略的连接字符串。 可从 [Azure 门户](https://portal.azure.com)获取此连接字符串：
+若要使用预先存在的 IoT 中心，则需要 iothubowner 共享访问策略的连接字符串。 可从 [Azure 门户](https://portal.azure.com)获取此连接字符串：
 
-1. 在门户的 IoT 中心配置页上，单击“共享访问策略”****。
+1. 在门户的 IoT 中心配置页上，单击“共享访问策略”。
 
-1. 单击“iothubowner”。****
+1. 单击“iothubowner”。
 
 1. 复制主连接字符串或辅助连接字符串。
 

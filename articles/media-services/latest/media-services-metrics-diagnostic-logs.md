@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296645"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685165"
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>通过 Azure Monitor 监视媒体服务指标和诊断日志
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>监视媒体服务指标和诊断日志 Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -67,8 +67,10 @@ ms.locfileid: "89296645"
 |请求|请求|提供由流式处理终结点提供服务的 HTTP 请求总数。|
 |流出量|流出量|每个流式处理终结点每分钟流出的字节总数。|
 |SuccessE2ELatency|成功端到端延迟|从流式处理终结点收到请求，到发送最后一个响应字节的持续时间。|
+|CPU 使用率| | 高级流式处理终结点的 CPU 使用率。 此数据不可用于标准流式处理终结点。 |
+|出口带宽 | | 出口带宽（位/秒）。|
 
-### <a name="why-would-i-want-to-use-metrics"></a>为何使用指标？
+### <a name="metrics-are-useful"></a>度量值非常有用
 
 以下示例说明监视媒体服务指标如何能够帮助你了解应用的执行情况。 使用媒体服务指标可以解决的部分问题包括：
 
@@ -79,6 +81,8 @@ ms.locfileid: "89296645"
 * 如何查看失败请求的细节以及失败的原因？
 * 如何查看正在从打包程序中提取多少个 HLS 或 DASH 请求？
 * 如何设置警报来了解何时达到了失败请求数的阈值？
+
+并发性对于在一段时间内用于单个帐户的流式处理终结点的数量感到担忧。 需要记住并发流数与复杂的发布参数（如动态打包到多个协议、多个 DRM 加密等）之间的关系。其他每个已发布的实时流都会增加流式处理终结点上的 CPU 和输出带宽。 考虑到这一点，您应该使用 Azure Monitor 密切地观察流式处理终结点的利用率 (CPU 和传出容量) ，以确保在将其适当地进行适当的 (或在多个流式处理终结点之间拆分流量，前提是这种情况非常) 高。
 
 ### <a name="example"></a>示例
 

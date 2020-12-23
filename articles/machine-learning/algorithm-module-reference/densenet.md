@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 DenseNet 算法创建图像分类模型。
+description: 了解如何使用 Azure 机器学习设计器中的 DenseNet 模块，通过 DenseNet 算法创建图像分类模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536624"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421322"
 ---
 # <a name="densenet"></a>DenseNet
 
-本文介绍如何使用 Azure 机器学习设计器中的 **DenseNet** 模块，通过 DenseNet 算法创建图像分类模型。  
+本文介绍如何使用 Azure 机器学习设计器中的 DenseNet 模块通过 DenseNet 算法创建图像分类模型。  
 
 此分类算法是一种监督的学习方法，需要标记的图像目录。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "91536624"
 
 1.  在设计器中将 DenseNet 模块添加到管道。  
 
-2.  对于 " **模型名称**"，请指定特定 DenseNet 结构的名称，并且可以从受支持的 DenseNet 中进行选择： "densenet121"、"densenet161"、"densenet169"、"densenet201"。
+2.  对于 " **模型名称** "，请指定特定 DenseNet 结构的名称，并且可以从受支持的 DenseNet 中进行选择： "densenet121"、"densenet161"、"densenet169"、"densenet201"。
 
 3.  对于“预先训练”，请指定是否使用在 ImageNet 上预先训练的模型。 如果已选择，则可以根据选定的预训练模型来微调模型；如果已取消选择，则可以从头开始训练。
 

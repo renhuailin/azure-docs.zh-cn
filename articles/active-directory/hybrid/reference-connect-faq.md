@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90014627"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836064"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -142,12 +142,12 @@ Azure AD Connect 不支持纯 IPv6 环境。
 **问：如果我收到一封电子邮件，要求我续订 Microsoft 365 证书，我该怎么办？**  
 有关续订证书的指导，请参阅[续订证书](how-to-connect-fed-o365-certs.md)。
 
-**问：我为 Microsoft 365 信赖方设置了 "自动更新信赖方"。当我的令牌签名证书自动滚动时，我是否需要采取任何措施？**  
+**问：我为 Microsoft 365 信赖方设置了“自动更新信赖方”。当我的令牌签名证书自动滚动更新时，我是否需要采取任何措施？**  
 请参考[续订证书](how-to-connect-fed-o365-certs.md)一文中所述的指导。
 
 ## <a name="environment"></a>环境
 **问：安装 Azure AD Connect 之后，是否支持重命名服务器？**  
-否。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
+不是。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
 
 **问：已启用 FIPS 的计算机是否支持下一代加密 (NGC) 同步规则？**  
 否。  不支持。
@@ -155,7 +155,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 **问：如果我在 Azure 门户中禁用了同步设备（例如：HAADJ），为什么要重新启用它？**<br>
 可以在本地创作或掌控同步设备。 如果在本地启用了同步设备，即使管理员之前禁用了该设备，也可能会在 Azure 门户中重新启用它。 若要禁用同步设备，请使用本地 Active Directory 禁用计算机帐户。
 
-**：.如果在 Microsoft 365 或 Azure AD 门户中阻止用户登录，以便同步用户，则在再次登录时取消阻止用户登录？**<br>
+**问：如果我阻止已同步用户在 Microsoft 365 或 Azure AD 门户上登录，为什么再次登录时会取消阻止？**<br>
 可以在本地创作或掌控同步用户。 如果在本地启用了该帐户，则可以取消管理员放置的登录阻止。
 
 ## <a name="identity-data"></a>标识数据
@@ -178,7 +178,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
 
 **问：是否可以使用 Synchronization Service Manager 中的“服务器导出/服务器导入”选项在服务器之间移动配置？**  
-否。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
+不是。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
 
 **问：是否可以为 Azure 登录页缓存密码，这是否会因为包含一个具有 *autocomplete = "false"* 属性的密码输入元素而阻止此缓存？**  
 目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
@@ -187,7 +187,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
 **问：是否有方法来阻止并发会话？**  
-否。
+不是。
 
 ## <a name="auto-upgrade"></a>自动升级
 
@@ -253,15 +253,15 @@ Office 团队会更新 Office 门户，使之反映当前的产品名称。 它�
 是的，可以自动升级暂存模式下的 Azure AD Connect 服务器。
 
 **问：如果自动升级失败而 Azure AD Connect 服务器无法启动，该怎么办？**  
-Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况下，重新启动服务器通常就会解决问题。 如果 Azure AD Connect 服务仍然无法启动，请开具支持票证。 有关详细信息，请参阅 [创建服务请求以联系 Microsoft 365 支持](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)。 
+Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况下，重新启动服务器通常就会解决问题。 如果 Azure AD Connect 服务仍然无法启动，请开具支持票证。 有关详细信息，请参阅[创建服务请求以联系 Microsoft 365 客户支持](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)。 
 
 **问：我不知道升级到新版 Azure AD Connect 后会有什么风险。你们能通过电话帮助我升级吗？**  
-如果需要帮助升级到较新版本的 Azure AD Connect，请在创建服务请求中打开支持票证 [以联系 Microsoft 365 支持](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)部门。
+如果在升级到新版 Azure AD Connect 时需要帮助，请参阅[创建服务请求以联系 Microsoft 365 客户支持](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)创建支持票证。
 
 ## <a name="operational-best-practice"></a>操作方面的最佳做法    
 下面是在 Windows Server Active Directory 和 Azure Active Directory 之间同步时应实施的一些最佳做法。
 
-**为所有已同步的帐户应用多重身份验证** Azure 多重身份验证有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的身份验证方法提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。 有关 MFA 的详细信息，可参阅此文： https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**为所有已同步的帐户应用多重身份验证** Azure AD 多重身份验证可帮助保护对数据和应用程序的访问，同时保持用户的简单性。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的身份验证方法提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。 有关 MFA 的详细信息，可参阅此文： https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
 **遵循 Azure AD Connect 服务器安全指导原则** Azure AD Connect 服务器包含关键标识数据，应将其视为第 0 层组件，如 [Active Directory 管理层模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述。 另请参阅我们的 [AADConnect 服务器安全指南](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)。
 

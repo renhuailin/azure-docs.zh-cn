@@ -15,7 +15,7 @@
 - name: 教程
   expanded: true
   items:
-    - name: Python 第 1 天入门
+    - name: Python 入门（第 1 天）
       expanded: true
       items:
         - name: 1. 设置本地计算机
@@ -84,11 +84,26 @@
           href: tutorial-setup-vscode-extension.md
         - name: 训练并部署 TensorFlow 图像分类模型
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Microsoft Power BI 集成
+      items:
+        - name: 第 1 部分：训练和部署模型
+          items:
+            - name: 使用笔记本（代码）
+              href: tutorial-power-bi-custom-model.md
+            - name: 使用设计器
+              href: tutorial-power-bi-designer-model.md
+            - name: 使用自动化 ML
+              href: tutorial-power-bi-automated-model.md
+        - name: 第 2 部分：在 Power BI 中使用
+          href: /power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context
 - name: 示例
   items:
     - name: Jupyter Notebook
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: 示例存储库
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: 设计器示例和数据集
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
@@ -152,13 +167,31 @@
       href: concept-onnx.md
     - name: ML 管道
       href: concept-ml-pipelines.md
-    - name: 企业就绪情况和安全性
+    - name: 安全
       items:
         - name: 企业安全概述
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: 安全基线
           href: security-baseline.md
+    - name: 负责的 ML
+      items:
+        - name: “负责的 ML”概述
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: 模型可解释性
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: 机器学习中的公平
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: 差异隐私
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
+- name: 操作指南
+  items:
+    - name: 安全性
+      items:
         - name: 标识和访问管理
           items:
             - name: 设置身份验证
@@ -166,6 +199,8 @@
               href: how-to-setup-authentication.md
             - name: 管理用户和角色
               href: how-to-assign-roles.md
+            - name: 将托管标识用于访问控制
+              href: how-to-use-managed-identities.md
             - name: 在 AKS 部署中使用 Azure AD 标识
               href: how-to-use-azure-ad-identity.md
         - name: 网络安全
@@ -188,6 +223,8 @@
             - name: 使用专用链接
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: 使用自定义 DNS
+              href: how-to-custom-dns.md
             - name: 配置安全的 Web 服务
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
@@ -208,25 +245,9 @@
         - name: 审核和管理合规性
           href: how-to-integrate-azure-policy.md
           displayName: policy
-    - name: 负责的 ML
-      items:
-        - name: “负责的 ML”概述
-          displayName: 'responsible,ml'
-          href: concept-responsible-ml.md
-        - name: 模型可解释性
-          displayName: explainability
-          href: how-to-machine-learning-interpretability.md
-        - name: 机器学习中的公平
-          displayName: fairness
-          href: concept-fairness-ml.md
-        - name: 差异隐私
-          displayName: 'differential,privacy'
-          href: concept-differential-privacy.md
-- name: 操作指南
-  items:
     - name: 创建并管理工作区
       items:
-        - name: 使用 Azure 门户
+        - name: 使用 Azure 门户或 Python SDK
           href: how-to-manage-workspace.md
         - name: 使用 Azure CLI
           href: how-to-manage-workspace-cli.md
@@ -387,6 +408,9 @@
           href: how-to-configure-auto-train.md
         - name: 使用自动化 ML（界面）
           href: how-to-use-automated-ml-for-ml-models.md
+        - name: 将自动化 ML 和 Databricks 结合使用
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: 使用远程计算目标
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
@@ -404,6 +428,8 @@
           href: how-to-use-automlstep-in-pipelines.md
         - name: 了解图表和指标
           href: how-to-understand-automated-ml.md
+        - name: 在 .NET 应用程序中使用 ONNX 模型
+          href: how-to-use-automl-onnx-model-dotnet.md
     - name: 部署和提供模型
       items:
         - name: 在何处以及如何部署
@@ -440,6 +466,8 @@
               href: how-to-deploy-fpga-web-service.md
         - name: 排查问题和调试
           href: how-to-troubleshoot-deployment.md
+        - name: 排查问题和调试（本地）
+          href: how-to-troubleshoot-deployment-local.md
         - name: 使用 Web 服务
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
@@ -480,7 +508,7 @@
       displayName: pipelines
       items:
         - name: 创建 ML 管道 (Python)
-          href: how-to-create-your-first-pipeline.md
+          href: how-to-create-machine-learning-pipelines.md
         - name: 将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
           href: how-to-move-data-in-out-of-pipelines.md
         - name: 部署 ML 管道 (Python)
@@ -511,15 +539,14 @@
           href: how-to-debug-pipelines.md
         - name: 将管道数据记录到 Application Insights
           href: how-to-log-pipelines-application-insights.md
-        - name: 使用并行运行步骤
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-use-parallel-run-step.md
         - name: 对并行运行步骤进行调试和故障排除
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
     - name: 用于 CI/CD 的 Azure Pipelines
       displayName: 'continuous, integration, delivery'
       href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
+    - name: 用于 CI/CD 的 GitHub Actions
+      href: how-to-github-actions-machine-learning.md
     - name: 管理资源配额
       displayName: limits
       href: how-to-manage-quotas.md

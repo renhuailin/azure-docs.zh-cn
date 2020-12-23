@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 4773446ec0007ffbed99bc01939d1f92f5823d99
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779060"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562256"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>为标识分配访问权限
 
@@ -77,7 +77,7 @@ az role assignment create --role "<role-name>" --assignee <user-principal-name> 
 
 使用 RBAC 分配共享级别权限后，必须在根目录、目录或文件级别分配正确的 NTFS 权限。 将共享级权限视为用于确定用户是否可以访问共享的高级身份确认程序。 NTFS 权限的作用更精细，以确定用户可以在目录或文件级别执行哪些操作。
 
-Azure 文件支持全套 NTFS 基本和高级权限。 你可以通过装入并使用 Windows 文件资源管理器或运行 Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) 或 [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) 命令来查看和配置 Azure 文件共享中的目录和文件的 NTFS 权限。 
+Azure 文件支持全套 NTFS 基本和高级权限。 你可以通过装入并使用 Windows 文件资源管理器或运行 Windows [icacls](/windows-server/administration/windows-commands/icacls) 或 [Set-ACL](/powershell/module/microsoft.powershell.security/set-acl) 命令来查看和配置 Azure 文件共享中的目录和文件的 NTFS 权限。 
 
 若要使用超级用户权限配置 NTFS，必须使用已加入域的 VM 中的存储帐户密钥装载共享。 按照下一部分中的说明从命令提示符装载 Azure 文件共享，并相应地配置 NTFS 权限。
 
@@ -93,7 +93,7 @@ Azure 文件支持全套 NTFS 基本和高级权限。 你可以通过装入并�
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>从命令提示符装载文件共享
 
-使用 Windows net use**** 命令装载 Azure 文件共享。 请记住，将以下示例中的占位符值替换为自己的值。 有关装载文件共享的详细信息，请参阅 [将 Azure 文件共享用于 Windows](../articles/storage/files/storage-how-to-use-files-windows.md)。 
+使用 Windows net use 命令装载 Azure 文件共享。 请记住，将以下示例中的占位符值替换为自己的值。 有关装载文件共享的详细信息，请参阅 [将 Azure 文件共享用于 Windows](../articles/storage/files/storage-how-to-use-files-windows.md)。 
 
 ```
 $connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
@@ -108,7 +108,7 @@ else
 
 ```
 
-如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件装载错误发布的疑难解答工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我们还提供了有关在阻止端口445时解决方案的 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件装载错误发布的疑难解答工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我们还提供了有关在阻止端口445时解决方案的 [指南](../articles/storage/files/storage-files-faq.md#on-premises-access) 。 
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>为 Windows 文件资源管理器配置 NTFS 权限
@@ -116,13 +116,13 @@ else
 使用 Windows 文件资源管理器向文件共享下的所有目录和文件（包括根目录）授予完全权限。
 
 1. 打开 Windows 文件资源管理器，右键单击文件/目录，然后选择 " **属性**"。
-2. 选择“安全”**** 选项卡。
+2. 选择“安全”选项卡。
 3. 选择 " **编辑"。** 更改权限。
 4. 您可以更改现有用户的权限，也可以选择 " **添加 ...** " 向新用户授予权限。
 5. 在添加新用户的提示窗口中，在 " **输入要选择的对象名称** " 框中输入要向其授予权限的目标用户名，然后选择 " **检查名称** " 以查找目标用户的完整 UPN 名称。
-7.    选择“确定”****。
+7.    选择“确定”  。
 8.    在 " **安全** " 选项卡中，选择要授予新用户的所有权限。
-9.    选择“应用”。
+9.    选择 **应用**。
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>使用 icacls 配置 NTFS 权限
 
@@ -132,7 +132,7 @@ else
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-有关如何使用 icacls 设置 NTFS 权限以及不同类型的支持权限的详细信息，请参阅 [icacls 的命令行参考](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)。
+有关如何使用 icacls 设置 NTFS 权限以及不同类型的支持权限的详细信息，请参阅 [icacls 的命令行参考](/windows-server/administration/windows-commands/icacls)。
 
 ## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>从加入域的 VM 装载文件共享
 
@@ -142,7 +142,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 ![显示用户身份验证的 Azure AD 登录屏幕的屏幕截图](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-使用以下命令装载 Azure 文件共享。 请务必将占位符值替换为你自己的值。 由于已经过身份验证，因此不需要提供存储帐户密钥、本地 AD DS 凭据或 Azure AD DS 凭据。 通过本地 AD DS 或 Azure AD DS 进行身份验证时，支持单一登录体验。 如果遇到 AD DS 凭据装入问题，请参阅 [在 Windows 中对 Azure 文件问题进行故障排除](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) 以获得指导。
+使用以下命令装载 Azure 文件共享。 请务必将占位符值替换为你自己的值。 由于已经过身份验证，因此不需要提供存储帐户密钥、本地 AD DS 凭据或 Azure AD DS 凭据。 通过本地 AD DS 或 Azure AD DS 进行身份验证时，支持单一登录体验。 如果遇到 AD DS 凭据装入问题，请参阅 [在 Windows 中对 Azure 文件问题进行故障排除](../articles/storage/files/storage-troubleshoot-windows-file-connection-problems.md) 以获得指导。
 
 ```
 $connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445

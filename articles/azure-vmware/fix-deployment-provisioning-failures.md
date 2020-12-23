@@ -1,97 +1,129 @@
 ---
-title: 获取有关 Azure VMware 解决方案部署或预配失败的帮助
-description: 如何从 Azure VMware 解决方案私有云获取所需信息，以便为 Azure VMware 解决方案部署或预配故障提供服务请求。
+title: 支持 Azure VMware 解决方案部署或预配失败
+description: 从 Azure VMware 解决方案私有云获取信息，以将服务请求用于 Azure VMware 解决方案部署或预配失败。
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 10/28/2020
+ms.openlocfilehash: 27b645f4ca225fdd74bca6499b6581b3803e41a4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752236"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542399"
 ---
-# <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>获取有关 Azure VMware 解决方案部署或预配失败的帮助
+# <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>针对 Azure VMware 解决方案部署或预配失败提出支持请求
 
-本文介绍如何通过在 Azure 门户中打开服务请求 (SR) ，来帮助你在私有云上部署 Azure VMware 解决方案或预配失败。 但首先，您需要在 Azure 门户中收集一些关键信息。 在大多数情况下，你需要：
+本文介绍如何打开 [支持请求](https://rc.portal.azure.com/#create/Microsoft.Support) ，并提供 Azure VMware 解决方案部署或预配失败的关键信息。 
 
-- 失败部署的相关 ID () 
-- 当尝试使用私有云 ExpressRoute 线路缩放或对现有私有云进行缩放时，ExpressRoute 线路 ID (并且失败) 
+如果私有云发生故障，则需要在 Azure 门户中打开支持请求。 若要打开支持请求，请首先获取 Azure 门户中的一些关键信息：
 
-## <a name="collect-the-correlation-id"></a>收集相关 ID
+- 相关性 ID
+- Azure ExpressRoute 线路 ID
+- 错误消息
+
+## <a name="get-the-correlation-id"></a>获取相关 ID
  
-让我们先看一下相关 ID。 当你在 Azure) 中创建私有云 (或任何资源时，将生成关联的关联 ID。 每个 Azure 资源管理器部署还会生成一个唯一的相关性 ID。 此 ID 可实现更快的 SR 创建和解决。 
+在 Azure 中创建私有云或任何资源时，会自动为资源生成资源的相关 ID。 在支持请求中包含私有云相关性 ID，以更快地打开和解决请求。
+
+在 Azure 门户中，可以通过两种方式获取资源的相关 ID：
+
+* **概述** 窗格
+* 部署日志
  
-下面是失败的私有云部署的输出示例，其中突出显示了相关 ID。
+ ### <a name="get-the-correlation-id-from-the-resource-overview"></a>从资源概述获取相关 ID
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/failed-private-cloud-deployment.png" alt-text="具有相关 ID 的私有云部署失败。":::
+下面是失败的私有云部署的操作详细信息示例，其中已选择相关 ID：
 
-复制并保存要包含在服务请求中的相关 ID。 有关详细信息，请参阅本文末尾的 [创建支持请求](#create-your-support-request) 。
+:::image type="content" source="media/fix-deployment-provisioning-failures/failed-private-cloud-deployment.png" alt-text="显示具有所选相关 ID 的失败私有云部署的屏幕截图。":::
 
-如果在预验证阶段中发生故障，则在部署私有云之前，不会生成相关 ID。 在这种情况下，只需提供在创建 Azure VMware 解决方案私有云时使用的信息，其中包括：
+若要访问私有云 **概述** 窗格中的部署结果，请执行以下操作：
 
-- 位置
-- 资源组
-- 资源名称
+1. 在 Azure 门户中，选择你的私有云。
+
+1. 在左侧菜单中，选择 " **概述** "。
+
+启动部署后，部署的结果将显示在 "私有云 **概述** " 窗格中。
+
+复制并保存要包含在服务请求中的私有云部署相关 ID。
+
+### <a name="get-the-correlation-id-from-the-deployment-log"></a>从部署日志获取相关 ID
+
+可以通过在 Azure 门户中搜索 "部署" 活动日志获取失败的部署的相关 ID。
+
+访问部署日志：
+
+1. 在 Azure 门户中，选择私有云，然后选择 "通知" 图标。
+
+   :::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="显示 Azure 门户中的 &quot;通知&quot; 图标的屏幕截图。":::
+
+1. 在 " **通知** " 窗格中，选择 **"活动日志" 中的 "更多事件"** ：
+
+    :::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="屏幕截图，显示在 &quot;通知&quot; 窗格中选择的 &quot;活动日志&quot; 链接中的更多事件。":::
+
+1. 若要查找失败的部署及其相关 ID，请搜索资源的名称或用于创建资源的其他信息。 
+
+    以下示例显示了名为 pc03 的私有云资源的搜索结果。
  
-### <a name="collect-a-summary-of-errors"></a>收集错误摘要
-
-任何错误的详细信息也有助于解决问题。 在上面的屏幕中，选择 "单击此处 (突出显示的 **详细信息**) 并打开错误摘要，如以下屏幕截图所示。
+    :::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="屏幕截图，显示示例私有云资源的搜索结果以及 &quot;创建或更新 PrivateCloud&quot; 窗格。":::
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="错误的摘要。":::
+1. 在 " **活动日志** " 窗格的搜索结果中，选择失败的部署的操作名称。
 
-同样，复制并保存此摘要，并将其保存到 SR 中。
+1. 在 " **创建或更新 PrivateCloud** " 窗格中，选择 " **JSON** " 选项卡，然后 `correlationId` 在显示的日志中查找。 复制 `correlationId` 值以在支持请求中包含它。 
  
-### <a name="retrieve-past-deployments"></a>检索过去的部署
+## <a name="copy-error-messages"></a>复制错误消息
 
-通过选择 "通知" 图标，可以在访问的部署活动日志中搜索，以检索过去的部署，包括失败的部署。
-
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="打开通知。":::
-
-在 "通知" 中，选择 **"活动日志" 中的 "更多事件"**。
-
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="链接：活动日志中的更多事件。":::
-
-然后搜索资源的名称，或搜索在创建资源时使用的其他唯一信息，以查找失败的部署及其相关 ID。 以下示例显示 (pc03) 的私有云资源上的搜索结果。
+若要帮助解决你的部署问题，请包括 Azure 门户中显示的任何错误消息。 选择一条警告消息以查看错误摘要：
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="查找过去失败的 Azure VMware 解决方案部署。":::
- 
-选择失败的部署的操作名称将打开一个窗口，其中包含详细信息。 选择 "JSON" 选项卡，然后查找 correlationId。 Copy 和 include in。 
- 
-## <a name="collect-the-expressroute-id-uri"></a>收集 ExpressRoute ID (URI) 
- 
-也许你已有一个私有云，尝试使用私有云 ExpressRoute 线路来扩展 it 或对等节点时遇到失败。 在这种情况下，可以在创建 SR 时使用私有云的 ExpressRoute ID 来识别它。
+:::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="屏幕截图，在 &quot;错误&quot; 窗格的 &quot;摘要&quot; 选项卡上显示错误详细信息，并选择 &quot;复制&quot; 图标。":::
 
-在门户中查看私有云时，请选择 " **连接" > ExpressRoute** ，并将 **ExpressRoute ID** 复制到剪贴板。
+若要复制错误消息，请选择 "复制" 图标。 保存要包含在支持请求中的已复制邮件。
+ 
+## <a name="get-the-expressroute-id-uri"></a>获取 ExpressRoute ID (URI) 
+ 
+您可能正在尝试使用私有云 ExpressRoute 线路来扩展或对现有私有云进行缩放，并且失败。 在这种情况下，需要在支持请求中包含 ExpressRoute ID。
+
+复制 ExpressRoute ID：
+
+1. 在 Azure 门户中，选择你的私有云。
+1. 在左侧菜单中的 " **管理** " 下，选择 " **连接** "。 
+1. 在右侧窗格中，选择 " **ExpressRoute** " 选项卡。
+1. 选择 " **EXPRESSROUTE ID** " 的复制图标，并保存要在支持请求中使用的值。
  
 :::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="将 ExpressRoute ID 复制到剪贴板。"::: 
  
-将 ExpressRoute ID 粘贴到新支持请求中的相应字段。 有关详细信息，请参阅下一节 [创建支持请求](#create-your-support-request)。
- 
-> [!NOTE]
-> 有时，预验证检查在部署之前可能会失败，并且唯一可用的信息将是错误和/或失败消息。 这对于一些故障（例如与配额相关的问题）非常有用，在支持请求中包含这些消息很重要。 若要收集这些内容，请参阅前面的 " [收集错误摘要](#collect-a-summary-of-errors)"。
+## <a name="pre-validation-failures"></a>预验证失败
+
+如果在部署) 之前 (你的私有云预验证检查失败，则不会生成相关 ID。 在此方案中，你可以在支持请求中提供以下信息：
+
+- 错误消息和失败消息。 此类消息在许多失败中都很有用，例如，对于与配额相关的问题。 如本文所述，复制这些消息并将其包括在支持请求中是非常重要的。
+- 用于创建 Azure VMware 解决方案私有云的信息，包括：
+  - 位置
+  - 资源组
+  - 资源名称
 
 ## <a name="create-your-support-request"></a>创建支持请求
 
-有关创建支持请求的一般指南，请参阅 [如何创建 Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 
+有关创建支持请求的常规信息，请参阅 [如何创建 Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 
 
-下面是有关创建适用于 Azure VMware 解决方案部署或预配失败的 SR 的其他指导。
+若要创建 Azure VMware 解决方案部署或预配失败的支持请求：
 
-1. 选择 " **帮助** " 图标，然后选择 " **+ 新建支持请求**"。
+1. 在 Azure 门户中，选择 " **帮助** " 图标，然后选择 " **新建支持请求** "。
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="为 SR 收集 ExpressRoute ID。":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Azure 门户中的 &quot;新建支持请求&quot; 窗格的屏幕截图。":::
 
-2. 填写所有必填字段，然后在 " **基本** 信息" 选项卡上：
+1. 输入或选择所需的信息：
 
-    - 对于 " **问题类型**"，请选择 " **配置" 和 "安装问题**"。
+   1. 在“基本信息”选项卡上：
 
-    - 对于 **问题子类型**，请选择 " **预配私有云**"。
+      1. 对于 " **问题类型** "，请选择 " **配置" 和 "安装问题** "。
 
-3. 在 " **详细信息** " 选项卡上：
+      1. 对于 **问题子类型** ，请选择 " **预配私有云** "。
 
-    - 填写所有必填字段。
+   1. 在 " **详细信息** " 选项卡上：
 
-    - 将相关 ID 或 ExpressRoute ID 粘贴到提供的特定字段中。 如果看不到这些字段的特定字段，可将其粘贴到 "**提供有关该问题的详细信息**" 下的文本框中。
+      1. 输入或选择所需信息。
 
-    - 将任何错误详细信息（包括您复制的错误摘要）粘贴到 "**提供有关该问题的详细信息**" 下的文本框中。
+      1. 粘贴请求此信息的相关 ID 或 ExpressRoute ID。 如果看不到这些值的特定文本框，请将其粘贴到 " **提供有关问题的详细信息** " 文本框中。
 
-4. 查看并选择 " **创建** " 来创建 SR。
+    1. 在 " **提供有关问题的详细信息** " 文本框中，粘贴任何错误详细信息，包括复制的错误或失败消息。
+
+1. 查看你的条目，然后选择 " **创建** " 以创建支持请求。

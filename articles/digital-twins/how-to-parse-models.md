@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 69b52be3a3eca2ab48ed09f6401780ea033f223c
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 2e13762698efd8d5df42ab6315c990d4096168cf
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723973"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145525"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>用 DTDL 分析器库分析和验证模型
 
@@ -20,11 +20,11 @@ Azure 数字孪生中的[模型](concepts-models.md)是使用基于 JSON LD 的�
 
 为帮助你执行此操作，NuGet 上提供了一个 .NET 客户端 DTDL 分析库： [**DigitalTwins**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 
 
-您可以直接在 c # 代码中使用分析器库，或使用在分析器库中生成的与语言无关的代码示例项目： [**DTDL 验证器示例**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)。
+您可以直接在 c # 代码中使用分析器库，或使用在分析器库中生成的与语言无关的代码示例项目： [**DTDL 验证器示例**](/samples/azure-samples/dtdl-validator/dtdl-validator)。
 
 ## <a name="use-the-dtdl-validator-sample"></a>使用 DTDL 验证程序示例
 
-[**DTDL 验证**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)程序是一个可以验证模型文档以确保 DTDL 有效的示例项目。 它基于 .NET 分析器库生成，并与语言无关。 可以通过示例链接上的 " *下载 ZIP* " 按钮获取它。
+[**DTDL 验证**](/samples/azure-samples/dtdl-validator/dtdl-validator)程序是一个可以验证模型文档以确保 DTDL 有效的示例项目。 它基于 .NET 分析器库生成，并与语言无关。 可以通过示例链接上的 " *下载 ZIP* " 按钮获取它。
 
 源代码显示了如何使用分析器库的示例。 可以使用验证程序示例作为命令行实用工具来验证 DTDL 文件的目录树。 它还提供交互模式。
 
@@ -36,7 +36,7 @@ Azure 数字孪生中的[模型](concepts-models.md)是使用基于 JSON LD 的�
 DTDLValidator
 ```
 
-利用默认选项，该示例将 `*.json` 在当前目录和所有子目录中搜索文件。 你还可以添加以下选项，使示例搜索位于所指示的目录中，以及扩展名为 *dtdl*的文件的所有子目录：
+利用默认选项，该示例将 `*.json` 在当前目录和所有子目录中搜索文件。 你还可以添加以下选项，使示例搜索位于所指示的目录中，以及扩展名为 *dtdl* 的文件的所有子目录：
 
 ```cmd/sh
 DTDLValidator -d C:\Work\DTDL -e dtdl 
@@ -77,32 +77,50 @@ DTDLValidator -i
 
 为了支持下面的分析器代码示例，请考虑在 Azure 数字孪生实例中定义的多个模型：
 
-> [!TIP] 
-> 该 `dtmi:com:contoso:coffeeMaker` 模型使用 *功能模型* 语法，这意味着它是通过连接用于公开该模型的 PnP 设备在服务中安装的。
-
 ```json
-{
-  "@id": " dtmi:com:contoso:coffeeMaker",
-  "@type": "CapabilityModel",
-  "implements": [
-        { "name": "coffeeMaker", "schema": " dtmi:com:contoso:coffeeMakerInterface" }
-  ]    
-}
-{
-  "@id": " dtmi:com:contoso:coffeeMakerInterface",
-  "@type": "Interface",
-  "contents": [
-      { "@type": "Property", "name": "waterTemp", "schema": "double" }  
-  ]
-}
-{
-  "@id": " dtmi:com:contoso:coffeeBar",
-  "@type": "Interface",
-  "contents": [
-        { "@type": "relationship", "contains": " dtmi:com:contoso:coffeeMaker" },
-        { "@type": "property", "name": "capacity", "schema": "integer" }
-  ]    
-}
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMaker;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Component",
+        "name": "coffeeMaker",
+        "schema": "dtmi:com:contoso:coffeeMakerInterface;1"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMakerInterface;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "waterTemp",
+        "schema": "double"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeBar;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Relationship",
+        "name": "foo",
+        "target": "dtmi:com:contoso:coffeeMaker;1"
+      },
+      {
+        "@type": "Property",
+        "name": "capacity",
+        "schema": "integer"
+      }
+    ]
+  }
+]
 ```
 
 下面的代码演示如何在 c # 中使用分析器库来反映这些定义：
@@ -112,10 +130,10 @@ async void ParseDemo(DigitalTwinsClient client)
 {
     try
     {
-        AsyncPageable<ModelData> mdata = client.GetModelsAsync(null, true);
+        AsyncPageable<DigitalTwinsModelData> mdata = client.GetModelsAsync(new GetModelsOptions { IncludeModelDefinition = true });
         List<string> models = new List<string>();
-        await foreach (ModelData md in mdata)
-            models.Add(md.Model);
+        await foreach (DigitalTwinsModelData md in mdata)
+            models.Add(md.DtdlModel);
         ModelParser parser = new ModelParser();
         IReadOnlyDictionary<Dtmi, DTEntityInfo> dtdlOM = await parser.ParseAsync(models);
 

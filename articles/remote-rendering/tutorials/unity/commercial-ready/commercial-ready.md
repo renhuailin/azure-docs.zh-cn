@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7258b37c9d92f25227eac678dde77963e644e64b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510923"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483311"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>教程：创建可商用的 Azure 远程渲染应用程序
 
@@ -35,8 +35,8 @@ Azure 远程渲染拓宽了混合现实的用途。 将基本要素集成到解�
 
 如需全系统体系结构最佳做法的全面概述，请访问：
 
-* [Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/)
-* [Azure 开发人员入门指南](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)
+* [Azure 体系结构中心](/azure/architecture/)
+* [Azure 开发人员入门指南](../../../../guides/developer/azure-developer-guide.md)
 
 ## <a name="analytics"></a>分析
 
@@ -54,7 +54,7 @@ Azure 远程渲染拓宽了混合现实的用途。 将基本要素集成到解�
 
 要详细了解资源命名和标记，最好先查看：
 
-* [资源命名和标记决策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+* [资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 ### <a name="diagnostics"></a>诊断
 
@@ -62,9 +62,9 @@ Azure 远程渲染拓宽了混合现实的用途。 将基本要素集成到解�
 
 有关详细信息，请访问：
 
-* [创建客户端性能跟踪](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
-* [如何收集 Windows 事件跟踪 (ETW) 数据](https://docs.microsoft.com/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
-* [使用 Windows 设备门户：日志记录](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
+* [创建客户端性能跟踪](../../../how-tos/performance-tracing.md)
+* [如何收集 Windows 事件跟踪 (ETW) 数据](/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
+* [使用 Windows 设备门户：日志记录](/windows/mixed-reality/using-the-windows-device-portal)
 
 ### <a name="usage-analysis"></a>使用情况分析
 
@@ -72,7 +72,7 @@ Azure Application Insights 有助于了解用户如何使用你的 Azure 远程�
 
 有关详细信息，请访问：
 
-* [Application Insights 使用分析](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)
+* [Application Insights 使用分析](../../../../azure-monitor/app/usage-overview.md)
 
 ## <a name="fast-startup-time-strategies"></a>快速启动策略
 
@@ -102,7 +102,7 @@ Azure 远程渲染需要预处理的 3D 模型，而 Azure 当前需要几分钟
 
 要详细了解 Azure 远程渲染会话，请参阅：
 
-* [远程渲染会话](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
+* [远程渲染会话](../../../concepts/sessions.md)
 
 ## <a name="standard-vs-premium-server-size-routing-strategies"></a>标准与高级服务器大小路由策略
 
@@ -164,9 +164,9 @@ Azure 远程渲染需要快速、低延迟的 Internet 连接。 用户的网络
 要详细了解网络分析，请查看：
 
 * [Azure 存储 Blob 下载速度测试](https://www.azurespeed.com/Azure/Download)
-* [Azure 网络往返行程延迟统计信息](https://docs.microsoft.com/azure/networking/azure-network-latency)
-* [服务器端性能跟踪](https://docs.microsoft.com/azure/remote-rendering/overview/features/performance-queries)
-* [客户端性能跟踪](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
+* [Azure 网络往返行程延迟统计信息](../../../../networking/azure-network-latency.md)
+* [服务器端性能跟踪](../../../overview/features/performance-queries.md)
+* [客户端性能跟踪](../../../how-tos/performance-tracing.md)
 
 ## <a name="collaboration-considerations"></a>协作注意事项
 
@@ -192,8 +192,8 @@ Azure 远程渲染的一些最有价值的用途涉及到多名参与者在同�
 
 有关详细信息，请参阅：
 
-* [混合现实中的共享体验](https://docs.microsoft.com/windows/mixed-reality/shared-experiences-in-mixed-reality)
-* [Azure 存储冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [混合现实中的共享体验](/windows/mixed-reality/shared-experiences-in-mixed-reality)
+* [Azure 存储冗余](../../../../storage/common/storage-redundancy.md)
 
 ## <a name="managing-model-access"></a>管理模型访问权限
 
@@ -230,7 +230,7 @@ Azure 远程渲染的一些最有价值的用途涉及到多名参与者在同�
 有关详细信息，请参阅：
 
 * [用于从 OneDrive 复制到 Azure 存储的 Microsoft Power Automate 模板](https://flow.microsoft.com/galleries/public/templates/2f90b5d3-029b-4e2e-ad37-1c0fe6d187fe/when-a-file-is-uploaded-to-onedrive-copy-it-to-azure-storage-container/)
-* [OneDrive 文件存储 API 概述](https://docs.microsoft.com/graph/onedrive-concept-overview)
+* [OneDrive 文件存储 API 概述](/graph/onedrive-concept-overview)
 
 ### <a name="direct-cad-access"></a>直接 CAD 访问
 
@@ -255,7 +255,7 @@ Azure 远程渲染的一些最有价值的用途涉及到多名参与者在同�
 有关详细信息，请参阅：
 
 * [Azure 市场](https://azure.microsoft.com/marketplace/)
-* [教程：在市场中发布 Azure 托管应用程序](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/publish-marketplace-app)
+* [教程：在市场中发布 Azure 托管应用程序](../../../../marketplace/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>安全性
 
@@ -277,6 +277,6 @@ Azure 远程渲染的一些最有价值的用途涉及到多名参与者在同�
 
 有关详细信息，请参阅：
 
-* [Azure AD 服务身份验证](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-service-authentication)
+* [Azure AD 服务身份验证](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [使用 Azure 加强安全态势](https://azure.microsoft.com/overview/security/)
 * [云安全](https://azure.microsoft.com/product-categories/security/)

@@ -3,18 +3,20 @@ title: 在 Azure Cosmos DB 中管理区域之间的冲突
 description: 了解如何在 Azure Cosmos DB 中通过创建“以最后写入者为准”或自定义冲突解决策略来管理冲突
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c158bc176c329fb46d0acde64b043b1b3e669e18
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570685"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339336"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的冲突解决策略
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 对于多区域写入，当多个客户端写入同一项时，可能会发生冲突。 发生冲突时，可以通过使用不同的冲突解决策略来解决冲突。 本文介绍如何管理冲突解决策略。
 
@@ -74,7 +76,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 # <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
 
-[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [： azure：： cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)) 
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -86,7 +88,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[同步 Java V2 SDK](sql-api-sdk-java.md) (Maven [： azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)) 
 
 ```java
 DocumentCollection lwwCollection = new DocumentCollection();
@@ -134,10 +136,10 @@ udp_collection = self.try_create_document_collection(
 
 必须使用下面显示的函数签名实现自定义冲突解决存储过程。 函数名称不需要与使用容器注册存储过程时使用的名称匹配，但它确实可以简化命名。 下面介绍了此存储过程必须实现的参数。
 
-- **incomingItem**：在生成冲突的提交中插入或更新的项。 对于删除操作为 null。
-- **existingItem**：当前已提交的项。 此值在更新中为非 null，对于插入或删除是 null。
-- **isTombstone**：指示 incomingItem 是否与以前删除的项冲突的布尔值。 如果为 true，existingItem 也为 null。
-- **conflictingItems**：容器中所有项目的已提交版本的数组，与 ID 上的 incomingItem 或唯一索引属性冲突。
+- **incomingItem** ：在生成冲突的提交中插入或更新的项。 对于删除操作为 null。
+- **existingItem** ：当前已提交的项。 此值在更新中为非 null，对于插入或删除是 null。
+- **isTombstone** ：指示 incomingItem 是否与以前删除的项冲突的布尔值。 如果为 true，existingItem 也为 null。
+- **conflictingItems** ：容器中所有项目的已提交版本的数组，与 ID 上的 incomingItem 或唯一索引属性冲突。
 
 > [!IMPORTANT]
 > 与任何存储过程一样，自定义冲突解决过程可以访问具有相同分区键的任何数据，并可以执行任何插入、更新或删除操作来解决冲突。
@@ -262,7 +264,7 @@ await container.Scripts.CreateStoredProcedureAsync(
 
 # <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
 
-[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [： azure：： cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)) 
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -274,7 +276,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[同步 Java V2 SDK](sql-api-sdk-java.md) (Maven [： azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)) 
 
 ```java
 DocumentCollection udpCollection = new DocumentCollection();
@@ -377,7 +379,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 # <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
 
-[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [： azure：： cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)) 
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -389,7 +391,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[同步 Java V2 SDK](sql-api-sdk-java.md) (Maven [： azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)) 
 
 ```java
 DocumentCollection manualCollection = new DocumentCollection();
@@ -466,7 +468,7 @@ while (conflictFeed.HasMoreResults)
 
 # <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
 
-[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [： azure：： cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)) 
 
 ```java
 FeedResponse<Conflict> response = client.readConflicts(this.manualCollectionUri, null)
@@ -477,7 +479,7 @@ for (Conflict conflict : response.getResults()) {
 ```
 # <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[同步 Java V2 SDK](sql-api-sdk-java.md) (Maven [： azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)) 
 
 ```java
 Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();
@@ -517,5 +519,5 @@ while conflict:
 - [配置多宿主客户端](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [在 Azure Cosmos DB 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 - [如何 configuremulti 在应用程序中进行区域写入](how-to-multi-master.md)。
-- [分区和数据分布](partition-data.md)
-- [Azure Cosmos DB 中的索引](indexing-policies.md)
+- [分区和数据分布](partitioning-overview.md)
+- [Azure Cosmos DB 中的索引](index-policy.md)

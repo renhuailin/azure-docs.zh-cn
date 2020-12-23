@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: a8f1fa07b94072d37cf83320b6c8956d3b412f12
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948634"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993578"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词
 
@@ -23,7 +23,7 @@ ms.locfileid: "88948634"
 
 ## <a name="create-synonyms"></a>创建同义词
 
-我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议[使用 Postman](search-get-started-postman.md)，并使用此 API 来表述请求：[创建同义词映射](/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 认知搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
+我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议使用以下 API [Postman 或 Visual Studio Code](search-get-started-rest.md) 和表述请求： [创建同义词映射](/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 认知搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
 
 另外，如果使用[客户托管密钥](search-security-manage-encryption-keys.md)进行服务端静态加密，则可对同义词映射的内容应用该保护。
 
@@ -94,13 +94,13 @@ USA, United States, United States of America
 Washington, Wash., WA => WA
 ```
 
-如果需要定义包含逗号的同义词，可以使用反斜杠对其进行转义，如以下示例中所示：
+如果需要定义包含逗号的同义词，可以使用反斜杠对其进行转义，如以下示例所示：
 
 ```
 WA\, USA, WA, Washington
 ```
 
-由于反斜杠本身是其他语言（如 JSON 和 c #）中的特殊字符，因此你可能需要对其进行双重转义。 例如，发送到上述同义词映射的 REST API 的 JSON 如下所示：
+由于反斜杠本身是其他语言（例如 JSON 和 C#）中的特殊字符，因此你可能需要对其进行双重转义。 例如，发送到上述同义词映射的 REST API 的 JSON 如下所示：
 
 ```json
     {

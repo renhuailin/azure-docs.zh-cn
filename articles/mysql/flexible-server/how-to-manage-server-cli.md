@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 7701fe91d0e3f78f9596687bf945ba4b11c2d199
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b58a9dd7901f85c59b09bc4ccb197d012bce2200
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331686"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545049"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure Database for MySQL 灵活的服务器 (预览版) 
 
@@ -23,13 +23,13 @@ ms.locfileid: "91331686"
 ## <a name="prerequisites"></a>先决条件
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。 本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-你将需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登录到你的帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
+你将需要使用 [az login](/cli/azure/reference-index#az-login) 命令登录到你的帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
+使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -53,31 +53,31 @@ az mysql flexible-server update --resource-group myresourcegroup --name mydemose
 name | mydemoserver | 输入 Azure Database for MySQL 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
 resource-group | myresourcegroup | 提供 Azure 资源组的名称。
 sku-name|Standard_D4ds_v4|输入计算层和大小的名称。 遵循以下约定 Standard_ {VM size} （简写形式）。 有关详细信息，请参阅[定价层](../concepts-pricing-tiers.md)。
-storage-size | 6144 | 服务器的存储容量（以 MB 为单位）。 最小5120，增加1024增量。
+storage-size | 6144 | 服务器的存储容量（以 MB 为单位）。 最小值为 5120，以 1024 为增量递增。
 
 > [!Important]
-> - 存储可以向上扩展 (但是，你不能缩小存储) 
+> - 存储可以纵向扩展（但不能纵向缩减）
 
 
 ## <a name="manage-mysql-databases-on-a-server"></a>在服务器上管理 MySQL 数据库。
-您可以使用这些命令中的任何一种来创建、删除、列出和查看服务器上数据库的数据库属性
+可以使用以下任何命令来创建、删除、列出和查看服务器上数据库的数据库属性
 
 | Cmdlet | 使用情况| 说明 |
 | --- | ---| --- |
 |[az mysql 挠性-server db create](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |创建数据库|
-|[az mysql 挠性-server db 删除](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|从服务器中删除数据库。 此命令不会删除你的服务器。 |
+|[az mysql 挠性-server db 删除](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|从服务器中删除数据库。 此命令不会删除服务器。 |
 |[az mysql 挠性-server db 列表](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|列出服务器上的所有数据库|
 |[az mysql 挠性-server db show](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|显示数据库的更多详细信息|
 
 ## <a name="update-admin-password"></a>更新管理员密码
-可以通过以下命令更改管理员角色的密码
+可以使用此命令更改管理员角色的密码
 ```azurecli-interactive
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --admin-password <new-password>
 ```
 
 > [!Important]
->  请确保密码最少8个字符，最多128个字符。
-> 密码必须包含以下类别中的三类：英文大写字母、英文小写字母、数字和非字母数字字符。
+>  请确保密码至少有 8 个字符，至多有 128 个字符。
+> 密码必须包含以下类别中的三个类别的字符：英文大写字母、英文小写字母、数字和非字母数字字符。
 
 ## <a name="delete-a-server"></a>删除服务器
 如果要删除 MySQL 灵活服务器，可以运行 [az MySQL 挠性 server server delete](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_delete) 命令。

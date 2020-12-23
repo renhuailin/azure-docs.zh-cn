@@ -3,12 +3,12 @@ title: 使用用于容器的 Azure Monitor 配置 GPU 监视 | Microsoft Docs
 description: 本文介绍如何使用用于容器的 Azure Monitor 配置具有 NVIDIA 和 AMD GPU 支持的节点的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e391117ab57211aa5d178d11c27b934b4ccd37f8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569690"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905581"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>使用用于容器的 Azure Monitor 配置 GPU 监视
 
@@ -22,10 +22,10 @@ ms.locfileid: "89569690"
 
 - [AMD](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-容器 Azure Monitor 自动开始监视节点上的 GPU 使用情况，并通过以60sec 时间间隔收集以下度量值并将其存储在 **InsightMetrics** 表中来请求 pod 和工作负荷。
+通过以 60 秒的间隔收集以下指标并将其存储在 InsightMetric 表中，用于容器的 Azure Monitor 会自动开始监视节点上的 GPU 使用情况以及 GPU 请求 Pod 和工作负载的情况。
 
 >[!NOTE]
->使用 GPU 节点设置群集后，请确保根据 AKS 的需要安装 [gpu 驱动程序](../../aks/gpu-cluster.md) 以运行 gpu 工作负荷。 容器 Azure Monitor 通过节点中运行的 GPU 驱动程序箱收集 GPU 指标。 
+>预配具有 GPU 节点的群集后，请确保根据 AKS 的要求安装 [GPU 驱动程序](../../aks/gpu-cluster.md)以运行 GPU 工作负载。 用于容器的 Azure Monitor 通过节点中运行的 GPU 驱动程序 Pod 收集 GPU 指标。 
 
 |指标名称 |指标维度（标记） |说明 |
 |------------|------------------------|------------|
@@ -39,7 +39,7 @@ ms.locfileid: "89569690"
 
 ## <a name="gpu-performance-charts"></a>GPU 性能图表 
 
-用于容器的 Azure Monitor 包含表中先前列出的指标的预配置图表，作为每个集群的 GPU 工作簿。 可以通过在左侧窗格中选择“工作簿”直接从 AKS 群集中找到 GPU 工作簿“节点 GPU”，也可以通过 Insight 中的“查看工作簿”下拉列表找到  。
+用于容器的 Azure Monitor 包含表中先前列出的指标的预配置图表，作为每个集群的 GPU 工作簿。 有关可用于容器 Azure Monitor 的工作簿的说明，请参阅 [容器 Azure Monitor 中的工作簿](container-insights-reports.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 

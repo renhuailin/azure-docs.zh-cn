@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943367"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886612"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "90943367"
 
 ### <a name="azure-functions-set-up"></a>Azure Functions 设置
 
-首先设置 Azure 函数的基本结构。 可在此处可以找到有关设置的分步说明：[使用 Visual Studio Code 创建函数](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)
+首先设置 Azure 函数的基本结构。 可在此处可以找到有关设置的分步说明：[使用 Visual Studio Code 创建函数](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)
 
 我们的 Azure 函数需要以下配置：
 
@@ -46,7 +46,7 @@ ms.locfileid: "90943367"
 - 授权级别：匿名（如果你更偏好不同的授权模型，则可以在以后进行切换）
 - 函数名称：用户定义
 
-按照 [Azure Functions 说明](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)进行以上配置之后，你应在 Visual Studio Code 中获得一个用于 Azure 函数的项目，以及包含函数本身的 `index.js` 文件。 此文件内的代码应如下所示：
+按照 [Azure Functions 说明](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)进行以上配置之后，你应在 Visual Studio Code 中获得一个用于 Azure 函数的项目，以及包含函数本身的 `index.js` 文件。 此文件内的代码应如下所示：
 
 ```javascript
 
@@ -128,15 +128,15 @@ module.exports = async function (context, req) {
 
 ## <a name="test-the-azure-function"></a>测试 Azure 函数
 
-使用 `F5` 在本地运行 Azure 函数。 这会在本地初始化 Azure 函数并使其可通过以下方式进行访问：`http://localhost:7071/api/FUNCTION_NAME`。 查看有关[在本地运行](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-locally)的其他文档
+使用 `F5` 在本地运行 Azure 函数。 这会在本地初始化 Azure 函数并使其可通过以下方式进行访问：`http://localhost:7071/api/FUNCTION_NAME`。 查看有关[在本地运行](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-locally)的其他文档
 
 在浏览器中打开 URL，应会看到包含通信用户 Id、令牌和令牌过期时间的响应正文。
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="可信服务体系结构的关系图":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="显示创建的 Azure 函数的响应示例的屏幕截图。":::
 
 ## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 
-若要部署 Azure 函数，可以按照[分布说明](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#sign-in-to-azure)进行操作
+若要部署 Azure 函数，可以按照[分布说明](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure)进行操作
 
 一般而言，需要：
 1. 从 Visual Studio 登录 Azure
@@ -151,4 +151,4 @@ module.exports = async function (context, req) {
 
 可以通过在 Visual Studio Code 中右键单击函数并复制函数 URL 来找到 URL。
 
-有关[运行 Azure 函数](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-in-azure)的详细信息
+有关[运行 Azure 函数](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-in-azure)的详细信息

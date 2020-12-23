@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: b0cc937cae4230d3310b682a51988243f0207fc0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 96f2c96e7770ec7acc690a1d057fef16db5b88ed
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054154"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994428"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>教程：Azure Active Directory 与 Degreed 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "90054154"
 * 可让用户使用其 Azure AD 帐户自动登录到 Degreed（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -46,9 +46,9 @@ ms.locfileid: "90054154"
 
 * Degreed 支持 **SP** 发起的 SSO
 
-* Degreed 支持**恰时**用户预配
+* Degreed 支持 **恰时** 用户预配
 
-* 配置 Degreed 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Degreed 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-degreed-from-the-gallery"></a>从库中添加 Degreed
 
@@ -63,7 +63,7 @@ ms.locfileid: "90054154"
 
 ## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Degreed 的 Azure AD 单一登录。****
+在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Degreed 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Degreed 相关用户之间建立链接关系。
 
 若要配置并测试 Degreed 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -72,7 +72,7 @@ ms.locfileid: "90054154"
     * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
     * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 2. **[配置 Degreed SSO](#configure-degreed-sso)** - 在应用程序端配置单一登录设置。
-    * [创建 Degreed 测试用户](#create-degreed-test-user) - 在 Degreed 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式****。
+    * [创建 Degreed 测试用户](#create-degreed-test-user) - 在 Degreed 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -102,7 +102,7 @@ ms.locfileid: "90054154"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Degreed”部分，根据要求复制相应 URL****。
+6. 在“设置 Degreed”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "90054154"
 在本部分中，你将授予 B.Simon 访问 Degreed 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“Degreed”。****
+1. 在应用程序列表中，选择“Degreed”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
@@ -144,7 +144,7 @@ ms.locfileid: "90054154"
 
 ### <a name="configure-degreed-sso"></a>配置 Degreed SSO
 
-若要在 **Degreed** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Degreed 支持团队](mailto:admin@degreed.com)。**** 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Degreed** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Degreed 支持团队](mailto:sso@degreed.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-degreed-test-user"></a>创建 Degreed 测试用户
 
@@ -153,20 +153,19 @@ ms.locfileid: "90054154"
 此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Degreed 期间创建一个新用户。
 
 > [!NOTE]
-> 如果需要手动创建用户，则需联系 [Degreed 支持团队](mailto:admin@degreed.com)。
+> 如果需要手动创建用户，则需联系 [Degreed 支持团队](mailto:sso@degreed.com)。
 
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Degreed 磁贴时，会自动登录到为其设置了 SSO 的 Degreed。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Degreed 磁贴时，会自动登录到为其设置了 SSO 的 Degreed。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

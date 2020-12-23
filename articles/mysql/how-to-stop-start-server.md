@@ -1,17 +1,17 @@
 ---
 title: 停止/启动-Azure 门户-Azure Database for MySQL 服务器
 description: 本文介绍如何在 Azure Database for MySQL 中停止/启动操作。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 95be6aa576d9d059ce419443f8c7e32af5ff397a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 047a24133dfdf68e2176b20cf31a871d11f0d4f9
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826208"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241151"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>停止/启动 Azure Database for MySQL
 
@@ -80,4 +80,4 @@ ms.locfileid: "91826208"
     > 服务器启动后，所有管理操作现在都可用于单一服务器。
 
 ## <a name="next-steps"></a>后续步骤
-了解 [如何创建有关指标的警报](howto-alert-on-metric.md)。
+了解[如何基于指标创建警报](howto-alert-on-metric.md)。

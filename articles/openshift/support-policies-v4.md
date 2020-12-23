@@ -1,17 +1,17 @@
 ---
 title: Azure Red Hat OpenShift 4 群集支持策略
-description: 了解 Red Hat OpenShift 4 的支持策略要求。
+description: 了解 Red Hat OpenShift 4 的支持策略要求
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 11/23/2020
+ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049955"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521132"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支持策略
 
@@ -23,6 +23,7 @@ Azure Red Hat OpenShift 4 群集的某些配置可能会影响群集的可支持
 ## <a name="cluster-configuration-requirements"></a>群集配置要求
 
 * 所有 OpenShift 群集操作员都必须处于托管状态。 可以通过运行 `oc get clusteroperators` 来返回群集操作员的列表。
+* 群集必须至少有两个工作节点。 不要将群集辅助角色缩放为零，或尝试正常的群集关闭。
 * 请勿删除或修改群集 Prometheus 和 Alertmanager 服务。
 * 请勿删除“服务 Alertmanager”规则。
 * 请勿删除或修改 Azure Red Hat OpenShift 服务日志记录 (mdsd pod)。
@@ -30,6 +31,7 @@ Azure Red Hat OpenShift 4 群集的某些配置可能会影响群集的可支持
 * 所有群集虚拟机须至少具有对 Azure 资源管理器 (ARM) 和服务日志记录 (Geneva) 终结点的直接出站 internet 访问权限。  不支持任何形式的 HTTPS 代理。
 * 请勿修改群集虚拟网络的 DNS 配置。 必须使用默认的 Azure DNS 解析程序。
 * 不要以任何方式重写群集的任何 MachineConfig 对象（例如，kubelet 配置）。
+* 请勿设置任何 unsupportedConfigOverrides 选项。 设置这些选项可防止次版本升级。
 * Azure Red Hat OpenShift 服务通过专用链接服务访问群集。  请勿删除或修改服务访问权限。
 * 不支持非 RHCOS 计算节点。 例如，不能使用 RHEL 计算节点。
 

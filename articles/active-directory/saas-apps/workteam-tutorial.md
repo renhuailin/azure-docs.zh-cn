@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
-ms.openlocfilehash: c95fceaa90ca379519379d37c19fb15dcd1de321
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 077af1e8add63aac9f3d866c5d665ad4a47b133f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546336"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520041"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workteam 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546336"
 * 让用户使用其 Azure AD 帐户自动登录到 Workteam。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -131,7 +131,7 @@ ms.locfileid: "88546336"
 
 3. 若要手动设置 Workteam，请打开新的 Web 浏览器窗口，以管理员身份登录 Workteam 公司站点，并执行以下步骤：
 
-4. 在右上角单击**个人资料徽标**，然后单击“组织设置”。  
+4. 在右上角单击 **个人资料徽标** ，然后单击“组织设置”。  
 
     ![Workteam 设置](./media/workteam-tutorial/tutorial_workteam_settings.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "88546336"
 
     ![Workteam 新用户](./media/workteam-tutorial/tutorial_workteam_newuser.png)
 
-    a. 在“姓名”文本框中，输入用户的名字，例如 **B.Simon**。 
+    a. 在“姓名”文本框中，输入用户的名字，例如 **B.Simon** 。 
 
     b. 在“电子邮件”文本框中，输入用户的电子邮件，如 `B.Simon\@contoso.com`。 
 
@@ -179,15 +179,14 @@ ms.locfileid: "88546336"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Workteam 磁贴时，应当会自动登录到你为其设置了 SSO 的 Workteam。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Workteam 磁贴时，应当会自动登录到你为其设置了 SSO 的 Workteam。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Workteam](https://aad.portal.azure.com/)
-

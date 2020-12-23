@@ -4,7 +4,7 @@
     - name: 什么是视频索引器？
       href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: 概念
-      href: ../../media-services/video-indexer/video-indexer-concepts.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
 - name: 快速入门
   expanded: true
   items:
@@ -13,7 +13,7 @@
 - name: 操作方法指南
   items:
     - name: 从 v1 迁移到 v2
-      href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: 连接到 Azure
       href: ../../media-services/video-indexer/connect-to-azure.md
     - name: 管理连接到 Azure 的帐户
@@ -29,7 +29,7 @@
     - name: 查看和编辑视频索引器见解
       href: ../../media-services/video-indexer/video-indexer-view-edit.md
     - name: 从现有视频创建视频见解
-      href: ../../media-services/video-indexer/video-indexer-create-new.md
+      href: ../../media-services/video-indexer/use-editor-create-project.md
     - name: 将小组件嵌入应用程序
       href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
 - name: 参考

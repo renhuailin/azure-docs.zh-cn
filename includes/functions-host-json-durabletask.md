@@ -7,41 +7,17 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89094118"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013712"
 ---
-[Durable Functions](../articles/azure-functions/durable-functions-overview.md) 的配置设置。
+[Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md) 的配置设置。
 
-### <a name="durable-functions-1x"></a>Durable Functions 1.x
-
-```json
-{
-  "durableTask": {
-    "hubName": "MyTaskHub",
-    "controlQueueBatchSize": 32,
-    "partitionCount": 4,
-    "controlQueueVisibilityTimeout": "00:05:00",
-    "workItemQueueVisibilityTimeout": "00:05:00",
-    "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10,
-    "maxQueuePollingInterval": "00:00:30",
-    "azureStorageConnectionStringName": "AzureWebJobsStorage",
-    "trackingStoreConnectionStringName": "TrackingStorage",
-    "trackingStoreNamePrefix": "DurableTask",
-    "traceInputsAndOutputs": false,
-    "logReplayEvents": false,
-    "eventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
-    "eventGridKeySettingName":  "EventGridKey",
-    "eventGridPublishRetryCount": 3,
-    "eventGridPublishRetryInterval": "00:00:30",
-    "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
-  }
-}
-```
+> [!NOTE]
+> Azure Functions 运行时的所有版本均支持 Durable Functions 的所有主要版本。 但是，根据 Azure Functions 运行时的版本和使用的 Durable Functions 扩展版本，host json 配置的架构略有不同。 以下示例可与 Azure Functions 2.0 和3.0 一起使用。 在这两个示例中，如果使用 Azure Functions 1.0，则可用设置是相同的，但 host.json 的“durableTask”部分应位于 host. json 配置的根目录中，而不是作为“extension”下的字段。
 
 ### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
 
@@ -92,11 +68,40 @@ ms.locfileid: "89094118"
 
 ```
 
-任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则函数应用的默认任务中心名称是 **DurableFunctionsHub**。 有关详细信息，请参阅[任务中心](../articles/azure-functions/durable-functions-task-hubs.md)。
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "hubName": "MyTaskHub",
+      "controlQueueBatchSize": 32,
+      "partitionCount": 4,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "workItemQueueVisibilityTimeout": "00:05:00",
+      "maxConcurrentActivityFunctions": 10,
+      "maxConcurrentOrchestratorFunctions": 10,
+      "maxQueuePollingInterval": "00:00:30",
+      "azureStorageConnectionStringName": "AzureWebJobsStorage",
+      "trackingStoreConnectionStringName": "TrackingStorage",
+      "trackingStoreNamePrefix": "DurableTask",
+      "traceInputsAndOutputs": false,
+      "logReplayEvents": false,
+      "eventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+      "eventGridKeySettingName":  "EventGridKey",
+      "eventGridPublishRetryCount": 3,
+      "eventGridPublishRetryInterval": "00:00:30",
+      "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
+    }
+  }
+}
+```
+
+任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则函数应用的默认任务中心名称是 **DurableFunctionsHub**。 有关详细信息，请参阅[任务中心](../articles/azure-functions/durable/durable-functions-task-hubs.md)。
 
 |properties  |默认 | 说明 |
 |---------|---------|---------|
-|hubName|DurableFunctionsHub|可以使用备用[任务中心](../articles/azure-functions/durable-functions-task-hubs.md)名称将多个 Durable Functions 应用程序彼此隔离，即使这些应用程序使用同一存储后端。|
+|hubName|DurableFunctionsHub|可以使用备用[任务中心](../articles/azure-functions/durable/durable-functions-task-hubs.md)名称将多个 Durable Functions 应用程序彼此隔离，即使这些应用程序使用同一存储后端。|
 |controlQueueBatchSize|32|要从控制队列中一次性拉取的消息数。|
 |controlQueueBufferThreshold|256|一次可以在内存中缓冲的控制队列消息数，此时调度程序将等待，然后再将任何其他消息出队。|
 |partitionCount |4|控制队列的分区计数。 可以是 1 到 16 之间的正整数。|
@@ -119,4 +124,4 @@ ms.locfileid: "89094118"
 |useLegacyPartitionManagement|是|如果设置为 `false`，则将使用分区管理算法，该算法可减少在横向扩展时重复执行函数的可能性。从 v2.3.0 开始可用。 在将来的版本中，默认值将更改为 `false`。|
 |useGracefulShutdown|false|（预览）启用正常关闭以减少主机关闭导致进程内函数执行失败的机会。|
 
-许多此类设置用于优化性能。 有关详细信息，请参阅[性能和规模](../articles/azure-functions/durable-functions-perf-and-scale.md)。
+许多此类设置用于优化性能。 有关详细信息，请参阅[性能和规模](../articles/azure-functions/durable/durable-functions-perf-and-scale.md)。

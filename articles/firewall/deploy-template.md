@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: c8b4102968e4b6b633216e29d5e993a1c98fa1c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 478f3454a728871040cdbbf9f817394cffe6b82f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89071714"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660247"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>快速入门：部署具有可用性区域的 Azure 防火墙 - ARM 模板
 
@@ -93,4 +93,4 @@ Remove-AzResourceGroup -Name MyResourceGroup
 接下来，可以监视 Azure 防火墙日志。
 
 > [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](tutorial-diagnostics.md)
+> [教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)

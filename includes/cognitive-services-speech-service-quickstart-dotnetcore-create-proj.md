@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 777b2608cf5f326556dfaea307f4f3e9346213f8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3f1a24db459cabd65d9ce17b89105c3b9ab8abb7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66482469"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188214"
 ---
 1. 启动 Visual Studio 2019。
 
@@ -29,7 +29,7 @@ ms.locfileid: "66482469"
 
 1. 在右上角的“包源”字段中，选择“nuget.org”   。搜索 `Microsoft.CognitiveServices.Speech` 包，并将其安装到“helloworld”项目中  。
 
-   ![“管理解决方案包”对话框的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "安装 NuGet 包")
+   ![屏幕截图显示“管理解决方案包”对话框。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "安装 NuGet 包")
 
 1. 接受显示的许可证即可开始安装 NuGet 包。
 

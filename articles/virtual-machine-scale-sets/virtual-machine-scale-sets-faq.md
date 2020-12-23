@@ -10,11 +10,11 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016703"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -46,7 +46,7 @@ ms.locfileid: "87080465"
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>如果我将规模集容量从 20 减少到 15，会删除哪些 VM？
 
-默认情况下，虚拟机将在可用性区域（如果规模集部署在区域配置中）和容错域之间均匀地从规模集中删除，以最大限度地提高可用性。 首先删除 ID 最大的 VM。
+默认情况下，如果规模集部署在区域配置) 和容错域中以最大程度地提高可用性，则虚拟机将在可用性区域之间平均地从规模集中删除 (。 首先删除 ID 最大的 VM。
 
 可以通过为规模集指定[横向缩减策略](virtual-machine-scale-sets-scale-in-policy.md)来更改虚拟机删除顺序。
 
@@ -60,11 +60,11 @@ ms.locfileid: "87080465"
 
 ### <a name="do-scale-sets-work-with-azure-availability-sets"></a>规模集是否适用于 Azure 可用性集？
 
-地区（非区域性）规模集使用*放置组*，放置组充当具有五个容错域和五个更新域的隐式可用性集。 VM 多于 100 个的规模集跨多个放置组。 有关放置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
+地区（非区域性）规模集使用 *放置组*，放置组充当具有五个容错域和五个更新域的隐式可用性集。 VM 多于 100 个的规模集跨多个放置组。 有关放置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>规模集是否可以与 Azure 可用性区域配合使用？
 
-正确！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>自动缩放
@@ -227,14 +227,14 @@ az sf cluster create -h
 linuxConfiguration 元素名称 | 必须 | 类型 | 说明
 --- | --- | --- | ---
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
-path | 是 | 字符串 | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
+path | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
 keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 
 有关示例，请参阅 [101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>添加同一个密钥保管库中的多个证书后，运行 `Update-AzVmss` 时看到以下消息：
 
->AzVmss： List secret 包含重复的/subscriptions/ \<my-subscription-id> /resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 实例，这是不允许的。
+>Update-AzVmss：列表机密包含重复的 /subscriptions/\<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, which is disallowed. 实例，这是不允许的。
 
 如果尝试重新添加同一保管库，而不是使用现有源保管库的新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzVmssSecret` 命令无法正常运行。
 
@@ -368,7 +368,7 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>如何将扩展添加到虚拟机规模集中的所有 VM？
 
-如果更新策略设置为**自动**，使用新扩展属性重新部署模板可更新所有 VM。
+如果更新策略设置为 **自动**，使用新扩展属性重新部署模板可更新所有 VM。
 
 如果更新策略设置为“手动”，先更新扩展，并手动更新 VM 中的所有实例。
 

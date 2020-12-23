@@ -3,12 +3,12 @@ title: 在 IoT Edge 设备上部署实时视频分析 - Azure
 description: 本文列出了将帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887239"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498313"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
 
@@ -18,13 +18,13 @@ ms.locfileid: "90887239"
 > IoT Edge 版本和更新版本的实时视频分析中提供了对 ARM64 设备的支持 `1.0.4` 。
 > 支持在 ARM64 设备上运行 Azure IoT Edge 运行时，该支持为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
-* 运行[受支持的 Linux 操作系统](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)之一的 x86 64 或 ARM64 设备
+* 运行[受支持的 Linux 操作系统](../../iot-edge/support.md#operating-systems)之一的 x86 64 或 ARM64 设备
 * 你拥有[所有者权限](../../role-based-access-control/built-in-roles.md#owner)的 Azure 订阅
 * [创建和设置 IoT 中心](../../iot-hub/iot-hub-create-through-portal.md)
-* [注册 IoT Edge 设备](../../iot-edge/how-to-register-device.md)
-* [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [注册 IoT Edge 设备](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)
 * [创建 Azure 媒体服务帐户](../latest/create-account-howto.md)
 
     * 使用以下区域之一：美国东部2、美国东部、美国中部、美国中北部、日本东部、美国西部、美国西部2、美国中部、加拿大东部、英国南部、法国中部、法国南部、瑞士北部、瑞士西部和日本西部。

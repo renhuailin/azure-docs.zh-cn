@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: edfe0a383ab68b640b5bc7e7e0a1fdd038d0fa38
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d9cffcadcb95b6c8c61205d458610f402fa7286d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318324"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964586"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C IoT Edge 模块
 
@@ -33,7 +33,7 @@ ms.locfileid: "91318324"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>解决方案适用范围
+## <a name="prerequisites"></a>先决条件
 
 本教程演示如何使用 **Visual Studio 2019** 在 **C** 中开发模块，以及如何将其部署到 **Windows 设备**。 若要开发适用于 Linux 设备的模块，请转到[开发适用于 Linux 设备的 C IoT Edge 模块](tutorial-c-module.md)。
 
@@ -43,14 +43,12 @@ ms.locfileid: "91318324"
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![在 Visual Studio 中开发 WinAMD64 的 C 模块](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>先决条件
-
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Windows 容器的开发环境：[开发适用于 Windows 设备的 IoT Edge 模块](tutorial-develop-for-windows.md)。 完成该教程后，应已准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 一个[运行 Azure IoT Edge 的 Windows 设备](quickstart.md)。
-* 一个容器注册表，例如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
-* 配置了 [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 扩展的 [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。
+* 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
+* 配置了 [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 扩展的 [Visual Studio 2019](/visualstudio/install/install-visual-studio)。
 * 配置为运行 Windows 容器的 [Docker Desktop](https://docs.docker.com/docker-for-windows/install/)。
 * 通过 vcpkg 安装适用于 Windows x64 的 Azure IoT C SDK：
 
@@ -75,7 +73,7 @@ ms.locfileid: "91318324"
 
 1. 启动 Visual Studio 2019 并选择“创建新项目”  。
 
-2. 搜索“IoT Edge”  ，然后选择“Azure IoT Edge (Windows amd64)”项目  。 单击“下一步”。 
+2. 搜索“IoT Edge”  ，然后选择“Azure IoT Edge (Windows amd64)”项目  。 单击“下一步”。
 
    ![创建新的 Azure IoT Edge 项目](./media/tutorial-c-module-windows/new-project.png)
 
@@ -121,7 +119,7 @@ ms.locfileid: "91318324"
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些额外的代码，以便模块在将消息转发到 IoT 中心之前，在边缘处理消息。 更新模块，以便分析每条消息中的温度数据，并且只有在温度超过特定阈值时才将消息发送到 IoT 中心。
+默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些附加的代码，使模块在将消息转发到 IoT 中心之前，先在边缘上对其进行处理。 更新模块，以便分析每条消息中的温度数据，并且只有在温度超过特定阈值时才将消息发送到 IoT 中心。
 
 1. 在此场景中，来自传感器的数据采用 JSON 格式。 若要筛选 JSON 格式的消息，请导入用于 C 的 JSON 库。本教程使用 Parson。
 
@@ -346,6 +344,7 @@ ms.locfileid: "91318324"
 
 使用 Visual Studio Cloud Explorer 和 Azure IoT Edge Tools 扩展将模块项目部署到 IoT Edge 设备。 你已经为方案准备了部署清单，即 config 文件夹中的 deployment.windows-amd64.json 文件。 现在需要做的就是选择一个设备来接收部署。
 
+
 确保 IoT Edge 设备已启动并运行。
 
 1. 在 Visual Studio Cloud Explorer 中，展开资源以查看 IoT 设备列表。
@@ -396,7 +395,7 @@ ms.locfileid: "91318324"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已创建一个 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 准备好生成自己的模块时，可以详细了解如何[开发自己的 IoT Edge 模块](module-development.md)或如何[使用 Visual Studio 开发模块](how-to-visual-studio-develop-module.md)。 有关 IoT Edge 模块的示例，包括模拟温度模块，请参阅 [IoT Edge 模块示例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT C SDK 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)。
+在本教程中，你已创建一个 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。
 
 可以继续学习后续教程，了解如何借助 Azure IoT Edge 部署 Azure 云服务，在边缘位置处理和分析数据。
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/26/2019
-ms.openlocfilehash: ea7aa7758b5ccf7be02fa8d450ce710dcbef86a4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 66b14e435b777595e23fcf5a98d4820f36d21a1a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087378"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742038"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 
@@ -21,7 +21,7 @@ ms.locfileid: "86087378"
 
 使用 Kafka Connect API 可以实施所需的连接器，用于将数据连续提取到 Kafka，或者将数据从 Kafka 推送到另一个系统。 [Apache Kafka Connect Azure IoT 中心](https://github.com/Azure/toketi-kafka-connect-iothub)是可将数据从 Azure IoT 中心提取到 Kafka 的连接器。 该连接器还能将数据从 Kafka 推送到 IoT 中心。
 
-从 IoT 中心提取数据时，可以使用__源__连接器。 将数据推送到 IoT 中心时，可以使用__接收器__连接器。 IoT 中心连接器同时提供源连接器和接收器连接器。
+从 IoT 中心提取数据时，可以使用 __源__ 连接器。 将数据推送到 IoT 中心时，可以使用 __接收器__ 连接器。 IoT 中心连接器同时提供源连接器和接收器连接器。
 
 下图显示了在使用连接器时，Azure IoT 中心与 Kafka on HDInsight 之间的数据流。
 
@@ -37,7 +37,7 @@ ms.locfileid: "86087378"
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* Azure IoT 中心和设备。 对于本文中的情况，请考虑[将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)。
+* Azure IoT 中心和设备。 对于本文中的情况，请考虑[将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心](../../iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)。
 
 * [Scala 生成工具](https://www.scala-sbt.org/)。
 
@@ -125,7 +125,7 @@ ms.locfileid: "86087378"
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|同上。|
     |空值|`consumer.max.poll.records=10`|添加到文件末尾。 此项更改会将接收器连接器限制为每次处理 10 条记录，防止该连接器发生超时。 有关详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
 
-1. 要保存文件，请使用 __Ctrl + X__、__Y__，并按 __Enter__。
+1. 要保存文件，请使用 __Ctrl + X__ 、 __Y__ ，并按 __Enter__ 。
 
 1. 若要创建连接器使用的主题，请使用以下命令：
 
@@ -149,7 +149,7 @@ ms.locfileid: "86087378"
 
 1. 获取事件中心兼容的终结点，以及 IoT 中心的事件中心兼容终结点名称。 若要获取此信息，请使用以下方法之一：
 
-   * __在 [Azure 门户](https://portal.azure.com/)中__使用以下步骤：
+   * __在 [Azure 门户](https://portal.azure.com/)中__ 使用以下步骤：
 
      1. 导航到 IoT 中心并选择“终结点”。 
      2. 在“内置终结点”中，选择“事件”。  
@@ -162,7 +162,7 @@ ms.locfileid: "86087378"
         > [!IMPORTANT]  
         > 门户中的终结点值可能包含本示例不需要的额外文本。 提取与模式 `sb://<randomnamespace>.servicebus.windows.net/` 匹配的文本。
 
-   * __在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ 中使用以下命令：
+   * __在 [Azure CLI](/cli/azure/get-started-with-azure-cli)__ 中使用以下命令：
 
        ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -176,15 +176,15 @@ ms.locfileid: "86087378"
        "Partitions": 2
        ```
 
-2. 获取__共享访问策略__和__密钥__。 本示例使用__服务__密钥。 若要获取此信息，请使用以下方法之一：
+2. 获取 __共享访问策略__ 和 __密钥__ 。 本示例使用 __服务__ 密钥。 若要获取此信息，请使用以下方法之一：
 
-    * __在 [Azure 门户](https://portal.azure.com/)中__使用以下步骤：
+    * __在 [Azure 门户](https://portal.azure.com/)中__ 使用以下步骤：
 
         1. 依次选择“共享访问策略”、“服务”。  
         2. 复制“主密钥”值。 
         3. 复制“连接字符串 - 主键”  值。
 
-    * __在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ 中使用以下命令：
+    * __在 [Azure CLI](/cli/azure/get-started-with-azure-cli)__ 中使用以下命令：
 
         1. 若要获取主密钥值，请使用以下命令：
 
@@ -231,9 +231,9 @@ ms.locfileid: "86087378"
     |`IotHub.StartTime=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 UTC 日期。 此日期是连接器开始检查消息的时间。 日期格式为 `yyyy-mm-ddThh:mm:ssZ`。|
     |`BatchSize=100`|将 `100` 替换为 `5`。 做出此项更改后，如果 IoT 中心出现五条新消息，则连接器会将消息读入 Kafka。|
 
-    有关示例配置，请参阅[Azure IoT 中心的 Kafka 连接源连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
+    有关示例配置，请参阅 [Azure IoT 中心的 Kafka 连接源连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
-1. 若要保存更改，请依次按 __Ctrl + X__、__Y__、__Enter__。
+1. 若要保存更改，请依次按 __Ctrl + X__ 、 __Y__ 、 __Enter__ 。
 
 有关配置连接器源的详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
@@ -260,9 +260,9 @@ ms.locfileid: "86087378"
     |`topics=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `iotout`。 写入 `iotout` 主题的消息将转发到 IoT 中心。|
     |`IotHub.ConnectionString=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `service` 策略的连接字符串。|
 
-    有关示例配置，请参阅适用[于 Azure IoT 中心的 Kafka 连接接收器连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
+    有关示例配置，请参阅适用 [于 Azure IoT 中心的 Kafka 连接接收器连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
-1. 若要保存更改，请依次按 __Ctrl + X__、__Y__、__Enter__。
+1. 若要保存更改，请依次按 __Ctrl + X__ 、 __Y__ 、 __Enter__ 。
 
 有关配置连接器接收器的详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 

@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255228"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506260"
 ---
 通过使用区域 VNet 集成，你的应用程序可以访问：
 
@@ -23,28 +23,29 @@ ms.locfileid: "91255228"
 
 在同一区域中使用 VNet 与 Vnet 的集成时，可以使用以下 Azure 网络功能：
 
-* **网络安全组 (nsg) **：可以使用放置在集成子网上的 NSG 阻止出站流量。 由于无法使用 VNet 集成来提供应用程序的入站访问权限，因此不会应用入站规则。
-* **路由表 (udr) **：可将路由表放置在集成子网上，以便发送出站流量。
+* **网络安全组 (nsg)**：可以使用放置在集成子网上的 NSG 阻止出站流量。 由于无法使用 VNet 集成来提供应用程序的入站访问权限，因此不会应用入站规则。
+* **路由表 (udr)**：可将路由表放置在集成子网上，以便发送出站流量。
 
 默认情况下，应用仅将流量路由到 VNet 中。 如果要将所有出站流量路由到 VNet，请将应用设置 WEBSITE_VNET_ROUTE_ALL 应用到应用。 配置应用设置：
 
 1. 在应用门户中转到 **配置** UI。 选择“新应用程序设置”。
-1. 在 "**名称**" 框中输入**WEBSITE_VNET_ROUTE_ALL** ，然后在 "**值**" 框中输入**1** 。
+1. 在 "**名称**" 框中输入 **WEBSITE_VNET_ROUTE_ALL** ，然后在 "**值**" 框中输入 **1** 。
 
    ![提供应用程序设置][4]
 
 1. 选择“确定”  。
 1. 选择“保存”。
 
-如果将所有出站流量路由到 VNet，则会受到应用于集成子网的 Nsg 和 Udr 的限制。 当你将所有出站流量路由到 VNet 中时，你的出站地址仍是你的应用程序属性中列出的出站地址，除非你提供将流量发送到其他位置的路由。
+> [!NOTE]
+> 如果将所有出站流量路由到 VNet，则会受到应用于集成子网的 Nsg 和 Udr 的限制。 当你将所有出站流量路由到 VNet 中时，你的出站地址仍是你的应用程序属性中列出的出站地址，除非你提供将流量发送到其他位置的路由。
 
 在同一区域中使用 VNet 与 Vnet 的集成存在一些限制：
 
 * 不能跨全局对等互连连接访问资源。
-* 此功能仅可用于支持 PremiumV2 应用服务计划的更新的 Azure App Service 缩放单位。 请注意， *这并不意味着你的应用程序必须在 PremiumV2 定价层上运行*，只是它必须在 PremiumV2 选项可用 (应用服务计划上运行，这意味着它是一个较新的缩放单位，此时还) 提供此 VNet 集成功能。
+* 此功能可从高级 V2 和高级版 V3 中的所有应用服务缩放单位获得。 它在标准版中也可用，但只能从较新的应用服务缩放单位使用。 如果你使用的是较旧的扩展单元，则只能使用高级 V2 应用服务计划中的功能。 如果希望能够在标准应用服务计划中使用此功能，请在高级 V3 应用服务计划中创建应用。 仅在最新的缩放单位上支持这些计划。 如果需要，可以向下扩展。  
 * 集成子网只能由一个应用服务计划使用。
 * 此功能不能由处于应用服务环境中的独立计划应用程序使用。
-* 此功能需要一个在 Azure 资源管理器 VNet 中具有32地址或更大地址的未使用的子网。
+* 此功能要求 Azure 资源管理器 VNet 中的未使用的子网为/28 或更大。
 * 应用和 VNet 必须位于同一区域。
 * 不能删除具有集成应用的 VNet。 请在删除 VNet 之前删除该集成。
 * 只能将与应用程序在同一订阅中的 Vnet 集成。
@@ -52,7 +53,21 @@ ms.locfileid: "91255228"
 * 当存在使用区域 VNet 集成的应用时，不能更改应用或计划的订阅。
 * 应用无法在不进行配置更改的 Azure DNS 专用区域中解析地址
 
-每个计划实例使用一个地址。 如果将应用扩展到五个实例，则使用5个地址。 由于在分配后无法更改子网大小，因此你必须使用足够大的子网来容纳你的应用程序可能会达到的任何规模。 建议大小为/26，其中包含64地址。 带有64地址的/26 适用于具有30个实例的高级计划。 向上或向下缩放计划时，需要在短时间内使用两个地址。
+VNet 集成依赖于专用子网的使用。  预配子网时，Azure 子网从开始会丢失5个 Ip。 每个计划实例的集成子网中使用一个地址。 如果将应用扩展到四个实例，则使用四个地址。 子网大小的5个地址的借方表示每个 CIDR 块的最大可用地址为：
+
+- /28 包含11个地址
+- /27 有27个地址
+- /26 具有59地址
+
+如果扩展或缩减大小，则需要在短时间内使用双倍的地址。 大小限制意味着每个子网大小的真实可用支持实例为，如果子网是：
+
+- /28，最大水平刻度为5个实例
+- /27，最大水平刻度为13个实例
+- /26，最大水平刻度为29个实例
+
+最大水平刻度上所述的限制假定在某个时间点需要增加或减少一个大小或 SKU。 
+
+由于子网大小在分配后无法更改，因此请使用足够大的子网来容纳应用可能会达到的任何规模。 若要避免子网容量问题，建议使用具有64地址的/26 作为建议大小。  
 
 如果你希望你的应用程序在另一个计划中连接到已连接到的 VNet，请选择与预先存在的 VNet 集成所使用的子网不同的子网。
 
@@ -81,20 +96,29 @@ Windows 和 Linux 应用程序（包括 [自定义容器](../articles/app-servic
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS 专用区域 
 
-在应用程序与 VNet 集成后，它将使用与 VNet 相同的 DNS 服务器。 默认情况下，你的应用程序将不能使用 Azure DNS 专用区域。 若要使用 Azure DNS 专用区域需要添加以下应用设置：
+在应用程序与 VNet 集成后，它将使用与 VNet 相同的 DNS 服务器。 默认情况下，你的应用程序将不能使用 Azure DNS 专用区域。 若要使用 Azure DNS 专用区域，需要添加以下应用设置：
 
-1. 168.63.129.16 值的 WEBSITE_DNS_SERVER 
+
+1. 168.63.129.16 值的 WEBSITE_DNS_SERVER
 1. 值为1的 WEBSITE_VNET_ROUTE_ALL
 
-除了允许应用使用 Azure DNS 专用区域外，这些设置还会将你的应用中的所有出站呼叫发送到 VNet。
+
+除了允许应用使用 Azure DNS 专用区域外，这些设置还会将你的应用中的所有出站呼叫发送到 VNet。   这些设置会将应用中的所有出站呼叫发送到 VNet。 此外，它还会使应用程序能够通过在辅助角色级别查询专用 DNS 区域来使用 Azure DNS。 当正在运行的应用程序访问专用 DNS 区域时，将使用此功能。
+
+> [!NOTE]
+>不 VNET 集成能使用专用 DNS 区域尝试将自定义域添加到 Web 应用。 自定义域验证在控制器级别上完成，而不是在辅助角色级别进行，这会阻止显示 DNS 记录。 若要使用专用 DNS 区域中的自定义域，需要使用应用程序网关或 ILB 应用服务环境绕过验证。
 
 ### <a name="private-endpoints"></a>专用终结点
 
-如果要调用 [专用终结点][privateendpoints]，则需要将与 Azure DNS 专用区域集成，或管理应用所使用的 DNS 服务器中的专用终结点。 
+如果要调用 [专用终结点][privateendpoints]，则需要确保 DNS 查找将解析到专用终结点。 若要确保来自应用的 DNS 查找将指向你的专用终结点，你可以：
+
+* 与 Azure DNS 专用区域集成。 如果 VNet 没有自定义 DNS 服务器，则会自动
+* 管理应用使用的 DNS 服务器中的专用终结点。 若要执行此操作，需要知道专用终结点地址，然后将尝试使用 A 记录连接到该地址的终结点指向该地址。
+* 将自己的 DNS 服务器配置为转发到 Azure DNS 专用区域
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
-[VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[VNETnsg]: /azure/virtual-network/security-overview/
+[privateendpoints]: ../articles/app-service/networking/private-endpoint.md

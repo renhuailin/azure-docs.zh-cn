@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: ab480dd8dae00cd48811473a7b335291fb6300eb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6dbd39b5c56192ad2ca957c5500338b50e8c8963
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555011"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Firmex VDR 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555011"
 * 让用户使用其 Azure AD 帐户自动登录到 Firmex VDR。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88555011"
 
 * Firmex VDR 支持 **SP 和 IDP** 发起的 SSO
 
-* 配置 Firmex 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Firmex 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-firmex-vdr-from-the-gallery"></a>从库中添加 Firmex VDR
 
@@ -51,7 +51,7 @@ ms.locfileid: "88555011"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Firmex VDR**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Firmex VDR** 。 
 1. 在结果面板中选择“Firmex VDR”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -84,7 +84,7 @@ ms.locfileid: "88555011"
 
     在“登录 URL”文本框中，键入 URL：  `https://login.firmex.com`
 
-1. 单击“ **保存**”。
+1. 单击“ **保存** ”。
 
 1. Firmex VDR 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -160,7 +160,7 @@ ms.locfileid: "88555011"
 
 ### <a name="step-2---contact-firmex-support-with-your-domains"></a>步骤 2 - 联系 Firmex 支持人员进行域的配置
 
-向 [Firmex 支持团队](mailto:support@firmex.com)发送电子邮件，或拨打 1888 688 4042 x.11 来联系 Firmex 支持人员。 同时请传递你的域信息。 Firmex 支持人员会将域作为**认领的域**添加到 VDR。 现在，管理员必须配置 SSO。
+向 [Firmex 支持团队](mailto:support@firmex.com)发送电子邮件，或拨打 1888 688 4042 x.11 来联系 Firmex 支持人员。 同时请传递你的域信息。 Firmex 支持人员会将域作为 **认领的域** 添加到 VDR。 现在，管理员必须配置 SSO。
 
 警告：在站点管理员配置认领的域之前，公司用户将无法登录到 VDR。 非公司用户（即来宾用户）仍可以使用其电子邮件/密码登录。 配置过程需要几分钟时间。
 
@@ -180,7 +180,7 @@ ms.locfileid: "88555011"
 
     b. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    c. **公钥证书** - 对于身份验证目的，SAML 消息可由颁发者进行数字签名。 若要验证消息的签名，消息接收方可以使用已知属于颁发者的公钥。 同样，若要加密消息，属于最终接收方的公共加密密钥必须是颁发者已知的密钥。 在这两种情况下（签名和加密），必须提前共享受信任的公钥。  这是**联合元数据 XML** 中的 **X509Certificate**
+    c. **公钥证书** - 对于身份验证目的，SAML 消息可由颁发者进行数字签名。 若要验证消息的签名，消息接收方可以使用已知属于颁发者的公钥。 同样，若要加密消息，属于最终接收方的公共加密密钥必须是颁发者已知的密钥。 在这两种情况下（签名和加密），必须提前共享受信任的公钥。  这是 **联合元数据 XML** 中的 **X509Certificate**
 
     d. 单击“保存”完成 SSO 配置。  更改会立即生效。
 
@@ -194,18 +194,18 @@ ms.locfileid: "88555011"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Firmex VDR”磁贴时，应会自动登录到设置了 SSO 的 Firmex VDR。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Firmex VDR”磁贴时，应会自动登录到设置了 SSO 的 Firmex VDR。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Firmex VDR](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Firmex](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Firmex](/cloud-app-security/proxy-intro-aad)

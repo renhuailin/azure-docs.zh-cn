@@ -6,19 +6,19 @@ metadata:
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   description: 指标顾问是一个时序监视平台，它提供一组用于数据引入、异常检测和诊断的 API，无需了解机器学习即可使用它们。
-  author: aahill
+  author: mrbullwinkle
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: metrics-advisor
   ms.topic: landing-page
   ms.date: 08/13/2020
-  ms.author: aahi
-  ms.openlocfilehash: f30f45b8a683d9403973517ee4558be9cd4be664
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.author: mbullwin
+  ms.openlocfilehash: 62b24a855fca9e12ecd6770f78ef8b4dacc719dd
+  ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90928694"
+  ms.lasthandoff: 11/10/2020
+  ms.locfileid: "94445347"
 landingContent:
 - title: 关于指标顾问
   linkLists:
@@ -28,12 +28,10 @@ landingContent:
       url: overview.md
   - linkListType: quickstart
     links:
-    - text: 浏览演示站点
-      url: quickstarts/explore-demo.md
     - text: 监视你关于 web 的第一个指标
       url: quickstarts/web-portal.md
-    - text: 使用 REST API 自定义解决方案
-      url: quickstarts/rest-api.md
+    - text: 使用 REST API 或客户端库
+      url: quickstarts/rest-api-and-client-library.md
 - title: 操作方法文章
   linkLists:
   - linkListType: how-to-guide
@@ -63,6 +61,12 @@ landingContent:
     - text: 指标顾问 API
       url: https://go.microsoft.com/fwlink/?linkid=2141634
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices
+      url: /powershell/module/az.cognitiveservices
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      url: /cli/azure/cognitiveservices?view=azure-cli-latest
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context

@@ -1,26 +1,26 @@
 ---
 title: Azure 文件常见问题解答 (FAQ) | Microsoft Docs
-description: 获取 Azure 文件常见问题的答案。 可以在云或本地 Windows、Linux 或 macOS 部署上同时装载 Azure 文件共享。
+description: 获取 Azure 文件存储常见问题的解答。 你可以在云或本地的 Windows、Linux 和 macOS 部署上同时装载 Azure 文件共享。
 author: roygara
 ms.service: storage
 ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563686"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492125"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
-[Azure 文件](storage-files-introduction.md) 在云中提供完全托管的文件共享，这些共享可通过行业标准的 [服务器消息块进行访问， (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 和 [网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System) (预览版) 。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
+[Azure 文件](storage-files-introduction.md) 在云中提供完全托管的文件共享，这些共享可通过行业标准的 [服务器消息块进行访问， (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 和 [网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System) (预览版) 。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
 
 本文回答了关于 Azure 文件特性和功能（包括 Azure 文件同步与 Azure 文件的使用）的常见问题。 如果本文未能涵盖你的问题，欢迎通过以下渠道联系我们（以升序排列）：
 
 1. 本文评论部分。
-2. [有关 Azure 存储的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-file-storage.html)。
+2. [有关 Azure 存储的 Microsoft Q&A 问题页面](/answers/topics/azure-file-storage.html)。
 3. [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft 支持部门。 若要创建新的支持请求，请在 Azure 门户中的“帮助”选项卡上，选择“帮助和支持”按钮，然后选择“新建支持请求”。
 
@@ -31,7 +31,7 @@ ms.locfileid: "90563686"
 
 * <a id="file-access-options"></a>
   **访问 Azure 文件中的文件有哪些不同方式？**  
-    可以使用 SMB 3.0 协议将 SMB 文件共享装载到本地计算机上，也可以使用 [存储资源管理器](https://storageexplorer.com/) 之类的工具访问文件共享中的文件。 可通过复制/粘贴 Azure 门户提供的脚本，将 NFS 文件共享装载到本地计算机上。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
+    可以使用 SMB 3.0 协议将 SMB 文件共享装载在本地计算机上，也可以使用[存储资源管理器](https://storageexplorer.com/)之类的工具访问文件共享中的文件。 可通过复制/粘贴 Azure 门户提供的脚本，将 NFS 文件共享装载到本地计算机上。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
 
 * <a id="what-is-afs"></a>
   **什么是 Azure 文件同步？**  
@@ -43,12 +43,12 @@ ms.locfileid: "90563686"
     
     Azure Blob 存储适用于需要存储非结构化数据且具有大规模缩放性的云本机应用程序。 为了更大程度地提升性能和可缩放性，相对于真实的文件系统而言，Azure Blob 存储是更简单的存储抽象。 此外，只可通过基于 REST 的客户端库访问 Azure Blob 存储（或直接通过基于 REST 的协议访问）。
 
-    Azure 文件是一个专门的文件系统， 具有你在使用本地操作系统多年来所熟知和喜爱的所有文件抽象。 例如 Azure Blob 存储，Azure 文件提供了一个 REST 接口和基于 REST 的客户端库。 与 Azure Blob 存储不同，Azure 文件提供对 Azure 文件共享的 SMB 或 NFS 访问权限。 文件共享可以直接安装在 Windows、Linux 或 macOS 上，不管是在本地还是在云 Vm 中，无需编写任何代码或附加任何特殊驱动程序到文件系统。 还可以通过使用 Azure 文件同步进行快速访问来缓存本地文件服务器上的 Azure SMB 文件共享，并接近数据的使用位置。 
+    Azure 文件是一个专门的文件系统， 具有你在使用本地操作系统多年来所熟知和喜爱的所有文件抽象。 例如 Azure Blob 存储，Azure 文件提供了一个 REST 接口和基于 REST 的客户端库。 与 Azure Blob 存储不同，Azure 文件提供对 Azure 文件共享的 SMB 或 NFS 访问权限。 文件共享可以直接装载到本地或云 VM 中的 Windows、Linux 或 macOS，无需编写任何代码，也无效为文件系统附加任何特殊驱动程序。 还可以通过使用 Azure 文件同步进行快速访问来缓存本地文件服务器上的 Azure SMB 文件共享，并接近数据的使用位置。 
    
     有关 Azure 文件和 Azure Blob 存储之间差异的深入描述，请参阅[核心 Azure 存储服务简介](../common/storage-introduction.md)。 若要了解有关 Azure Blob 存储的详细信息，请参阅 [Blob 存储简介](../blobs/storage-blobs-introduction.md)。
 
 * <a id="files-versus-disks"></a>**相对于 Azure 磁盘，我为什么要使用 Azure 文件共享？**  
-    Azure 磁盘中的磁盘只是一个磁盘。 若要充分利用 Azure 磁盘，必须将其与在 Azure 中运行的虚拟机相关联。 Azure 磁盘可用于在本地服务器上使用磁盘的所有内容。 你可将其用作操作系统磁盘、操作系统的交换空间，或者应用程序的专用存储空间。 Azure 磁盘其中一个有趣的用途是，可在云中创建一个文件服务器，以在可能使用 Azure 文件共享的相同位置使用。 在 azure 虚拟机中部署文件服务器是在 Azure 文件中需要当前不支持的部署选项时，在 Azure 中获取文件存储的高性能方法。 
+    Azure 磁盘中的磁盘只是一个磁盘。 若要充分利用 Azure 磁盘，必须将其与在 Azure 中运行的虚拟机相关联。 Azure 磁盘可用于在本地服务器上使用磁盘的所有内容。 你可将其用作操作系统磁盘、操作系统的交换空间，或者应用程序的专用存储空间。 Azure 磁盘其中一个有趣的用途是，可在云中创建一个文件服务器，以在可能使用 Azure 文件共享的相同位置使用。 当需要 Azure 文件存储当前不支持的部署选项时，在 Azure 虚拟机中部署文件服务器则是一种非常行之有效的获取 Azure 中文件存储的方法。 
 
     但是，相比使用 Azure 文件共享，通过将 Azure 磁盘作为后端存储来运行文件服务器的方式，由于多方面的原因，其经济成本通常会更高。 首先，除了为磁盘存储付费之外，还必须为运行一个或多个 Azure VM 的成本付费。 其次，你还必须管理用于运行文件服务器的 VM。 例如，负责操作系统升级。 最后，如果你最终需要在本地缓存数据，则还要自行安装和管理复制技术（例如，分布式文件系统复制 (DFSR)）来实现此目的。
 
@@ -76,11 +76,11 @@ ms.locfileid: "90563686"
     Azure 文件支持两种存储层：高级存储层和标准存储层。 标准文件共享是在常规用途（GPv1 或 GPv2）存储帐户中创建的，高级文件共享是在 FileStorage 存储帐户中创建的。 详细了解如何创建[标准文件共享](storage-how-to-create-file-share.md)和[高级文件共享](storage-how-to-create-premium-fileshare.md)。 
     
     > [!NOTE]
-    > 你无法使用 Blob 存储帐户或高级常规用途（GPv1 或 GPv2）存储帐户创建 Azure 文件共享。 标准 Azure 文件共享必须只能在标准常规用途帐户中创建，高级 Azure 文件共享必须只能在 FileStorage 存储帐户中创建。 高级常规用途（GPv1 和 GPv2）存储帐户仅适用于高级页 Blob。 
+    > 你无法使用 Blob 存储帐户或高级常规用途（GPv1 或 GPv2）存储帐户创建 Azure 文件共享。 标准 Azure 文件共享必须只能在标准常规用途帐户中创建，高级 Azure 文件共享必须只能在 FileStorage 存储帐户中创建。 *高级* 常规用途（GPv1 和 GPv2）存储帐户仅适用于高级页 Blob。 
 
 * <a id="file-locking"></a>
   **Azure 文件是否支持文件锁定？**  
-    是的，Azure 文件完全支持 SMB/Windows 样式文件锁定，[查看详细信息](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)。
+    是的，Azure 文件完全支持 SMB/Windows 样式文件锁定，[查看详细信息](/rest/api/storageservices/managing-file-locks)。
 
 * <a id="give-us-feedback"></a>
   **我非常希望可以将某项特定功能添加到 Azure 文件。你们会添加它吗？**  
@@ -118,7 +118,7 @@ ms.locfileid: "90563686"
     是的，Azure 文件支持本地冗余存储 (LRS) 和异地冗余存储 (GRS)。 如果通过为 GRS 配置的帐户发起配对区域之间的存储帐户故障转移，Microsoft 建议仅将新区域视为数据的备份。 Azure 文件同步不会自动开始与新的主区域进行同步。 
 
 * <a id="sizeondisk-versus-size"></a>
-  **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？ **  
+  **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？**  
   请参阅[了解云分层](storage-sync-cloud-tiering.md#sizeondisk-versus-size)。
 
 * <a id="is-my-file-tiered"></a>
@@ -158,7 +158,7 @@ ms.locfileid: "90563686"
     
 * <a id="afs-resource-move"></a>
   **是否可以将存储同步服务和/或存储帐户移动到其他资源组、订阅或 Azure AD 租户？**  
-   是的，可以将存储同步服务和/或存储帐户移到不同的资源组、订阅或 Azure AD 租户。 移动存储同步服务或存储帐户后，需要为 Storagesync.sys 应用程序授予对存储帐户的访问权限 (参阅 [确保 Azure 文件同步有权访问存储帐户](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)) 。
+   是的，可以将存储同步服务和/或存储帐户移到不同的资源组、订阅或 Azure AD 租户。 移动存储同步服务或存储帐户后，需要为 Storagesync.sys 应用程序授予对存储帐户的访问权限 (参阅 [确保 Azure 文件同步有权访问存储帐户](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)) 。
 
     > [!Note]  
     > 创建云终结点时，存储同步服务和存储帐户必须位于相同的 Azure AD 租户中。 创建云终结点后，可以将存储同步服务和存储帐户移到不同的 Azure AD 租户。
@@ -184,7 +184,7 @@ ms.locfileid: "90563686"
 
     - Azure 文件同步会保留所有自定义 ACL 或 DACL（无论基于 Active Directory 或本地目录），并复制到其同步到的所有服务器终结点。 
     
-    若要全面了解 Azure 存储服务支持的所有协议，可以参考[授权访问 Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
+    若要全面了解 Azure 存储服务支持的所有协议，可以参考[授权访问 Azure 存储](../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
     
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
@@ -209,14 +209,14 @@ ms.locfileid: "90563686"
 * <a id="data-compliance-policies"></a>
 **Azure 文件支持哪些数据符合性策略？**  
 
-   Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)和转到 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
+   Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](../common/storage-compliance-offerings.md)和转到 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
 
 * <a id="file-auditing"></a>
-**如何审核 Azure 文件中的文件访问和更改？**
+**如何审核 Azure 文件存储中的文件访问和更改？**
 
   提供 Azure 文件的审核功能的两个选项：
-  - 如果用户直接访问 Azure 文件共享，则可以使用 [Azure 存储日志 (预览) ](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) 来跟踪文件更改和用户访问权限。 这些日志可用于故障排除，并尽力地记录请求。
-  - 如果用户通过安装了 Azure 文件同步代理的 Windows Server 访问 Azure 文件共享，请使用 [审核策略](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) 或第三方产品来跟踪 Windows server 上的文件更改和用户访问权限。 
+  - 如果用户直接访问 Azure 文件共享，则可以使用 [Azure 存储日志 (预览) ](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) 来跟踪文件更改和用户访问权限。 这些日志可用于故障排除，系统会尽最大努力记录请求。
+  - 如果用户通过安装了 Azure 文件同步代理的 Windows Server 访问 Azure 文件共享，请使用 [审核策略](/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) 或第三方产品来跟踪 Windows server 上的文件更改和用户访问权限。 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS 身份验证
 * <a id="ad-support-devices"></a>
@@ -247,7 +247,7 @@ ms.locfileid: "90563686"
 * <a id="ad-aad-smb-files"></a>
 **如何检查是否已在存储帐户上启用 AD DS 身份验证并检索域信息？**
 
-    有关说明，请参阅[此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)。
+    有关说明，请参阅[此处](./storage-files-identity-ad-ds-enable.md#confirm-the-feature-is-enabled)。
 
 * <a id=""></a>
 **Azure 文件的 Azure AD 身份验证是否支持 Linux VM？**
@@ -257,7 +257,25 @@ ms.locfileid: "90563686"
 * <a id="ad-multiple-forest"></a>
 **用于 Azure 文件共享的本地 AD DS 身份验证是否支持使用多个林与 AD DS 环境集成？**    
 
-    Azure 文件的本地 AD DS 身份验证仅与存储帐户所注册的域服务的对应林集成。 若要支持从其他林进行身份验证，环境必须正确配置林信任。 Azure 文件在 AD DS 中注册的方式与常规文件服务器几乎相同，它在其中创建标识（计算机或服务登录帐户）以用于身份验证。 唯一的区别是，存储帐户的注册 SPN 以“file.core.windows.net”结尾，这与域后缀不匹配。 请咨询域管理员，查看是否需要对 DNS 路由策略进行任何更新，以启用由于域后缀不同而带来的多林身份验证。
+    Azure 文件的本地 AD DS 身份验证仅与存储帐户所注册的域服务的对应林集成。 若要支持从其他林进行身份验证，环境必须正确配置林信任。 Azure 文件在 AD DS 中注册的方式与常规文件服务器几乎相同，它在其中创建标识（计算机或服务登录帐户）以用于身份验证。 唯一的区别是，存储帐户的注册 SPN 以“file.core.windows.net”结尾，这与域后缀不匹配。 请咨询域管理员，查看是否需要对后缀路由策略进行任何更新以启用多林身份验证，因为存在不同的域后缀。 我们提供了下面的示例来配置后缀路由策略。
+    
+    示例：如果林中的用户要访问的文件共享的存储帐户是针对林 B 中的域注册的，则此操作不会自动运行，因为存储帐户的服务主体没有与林中的任何域的后缀相匹配的后缀。我们可以通过手动将后缀路由规则从林 A 配置为 "file.core.windows.net" 的自定义后缀，来解决此问题。
+    首先，必须在林 B 上添加新的自定义后缀。请确保具有相应的管理权限来更改配置，然后执行以下步骤：   
+    1. 登录到已加入到林 B 的计算机域
+    2.  打开 "Active Directory 域和信任" 控制台
+    3.  右键单击 "Active Directory 域和信任"
+    4.  单击 "属性"
+    5.  单击 "添加"
+    6.  添加 "file.core.windows.net" 作为 UPN 后缀
+    7.  单击 "应用"，然后单击 "确定" 关闭向导
+    
+    接下来，在林 A 上添加后缀路由规则，以便将其重定向到林 B。
+    1.  登录到加入林 A 的计算机域
+    2.  打开 "Active Directory 域和信任" 控制台
+    3.  右键单击要访问文件共享的域，然后单击 "信任" 选项卡，然后选择 "林 B 域" "传出信任"。 如果你尚未在两个林之间配置信任，则需要先设置信任
+    4.  单击 "属性 ..."then "名称后缀路由"
+    5.  检查 "*. file.core.windows.net" surffix 是否显示。 如果没有，请单击 "刷新"
+    6.  选择 "file.core.windows.net"，然后单击 "启用" 和 "应用"
 
 * <a id=""></a>
 **哪些区域适用于 Azure 文件 AD DS 身份验证？**
@@ -270,19 +288,14 @@ ms.locfileid: "90563686"
     是的，可以在由 Azure 文件同步管理的文件共享上启用 AD 身份验证。对本地文件服务器上的目录/文件 NTFS ACL 的更改将分层到 Azure 文件，反之亦然。
 
 * <a id="ad-aad-smb-files"></a>
-**如何检查是否已在存储帐户上启用 AD 身份验证并检索 AD 域信息？**
-
-    可以参考[此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)提供的说明，以验证是否在存储帐户上启用了 Azure 文件的 AD 身份验证并检索 AD 域信息。
-
-* <a id="ad-aad-smb-files"></a>
 **在 AD 中创建表示我的存储帐户的计算机帐户或服务登录帐户有何区别？**
 
-    创建[计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认值）或[服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)对 Azure 文件的身份验证方式没有任何区别。 可自行选择如何在 AD 环境中将存储帐户表示为标识。 Join-AzStorageAccountForAuth cmdlet 中的默认 DomainAccountType 设置为计算机帐户。 但是，在 AD 环境中对计算机或服务登录帐户配置的密码过期期限可能不同，因此，在[更新 AD 中存储帐户标识的密码](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)时，需要考虑到这一点。
+    创建[计算机帐户](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认值）或[服务登录帐户](/windows/win32/ad/about-service-logon-accounts)对 Azure 文件的身份验证方式没有任何区别。 可自行选择如何在 AD 环境中将存储帐户表示为标识。 Join-AzStorageAccountForAuth cmdlet 中的默认 DomainAccountType 设置为计算机帐户。 但是，在 AD 环境中对计算机或服务登录帐户配置的密码过期期限可能不同，因此，在[更新 AD 中存储帐户标识的密码](./storage-files-identity-ad-ds-update-password.md)时，需要考虑到这一点。
  
 * <a id="ad-support-rest-apis"></a>
 **是否存在用于支持 Get/Set/Copy directory/file Windows Acl 的 REST Api？**
 
-    是的，支持在使用 [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07)（或更高版本）REST API 时获取、设置或复制目录或文件 NTFS ACL 的 REST API。 我们还支持在基于 REST 的工具中保留 Windows Acl： [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)。
+    是的，支持在使用 [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07)（或更高版本）REST API 时获取、设置或复制目录或文件 NTFS ACL 的 REST API。 我们还支持在基于 REST 的工具中保留 Windows Acl： [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)。
 
 ## <a name="network-file-system"></a>网络文件系统
 
@@ -306,7 +319,7 @@ ms.locfileid: "90563686"
 * <a id="port-445-blocked"></a>
 **我的 ISP 或 IT 阻止了端口 445，这导致 Azure 文件装载失败。我该怎样做？**
 
-    可在此处了解[解决端口 445 受阻问题的各种方法](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。 Azure 文件只允许来自区域或数据中心外部的使用 SMB 3.0（带加密支持）的连接。 SMB 3.0 协议引入了许多安全功能，包括通道加密，在 Internet 上使用非常安全。 但是，由于在较低 SMB 版本中发现漏洞的历史原因，端口 445 可能已被阻止。 理想情况下，应仅针对 SMB 1.0 流量阻止该端口，并且应在所有客户端上关闭 SMB 1.0。
+    可在此处了解[解决端口 445 受阻问题的各种方法](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)。 Azure 文件只允许来自区域或数据中心外部的使用 SMB 3.0（带加密支持）的连接。 SMB 3.0 协议引入了许多安全功能，包括通道加密，在 Internet 上使用非常安全。 但是，由于在较低 SMB 版本中发现漏洞的历史原因，端口 445 可能已被阻止。 理想情况下，应仅针对 SMB 1.0 流量阻止该端口，并且应在所有客户端上关闭 SMB 1.0。
 
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
@@ -318,10 +331,10 @@ ms.locfileid: "90563686"
 
     可以使用 SMB 协议装载文件共享，只要端口 445（TCP 出站）处于打开状态，且客户端支持 SMB 3.0 协议（例如，如果使用的是 Windows 10 或 Windows Server 2016）。 如果端口 445 被组织的策略或 ISP 阻止，则可使用 Azure 文件同步访问 Azure 文件共享。
 
-## <a name="backup"></a>备份
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **如何备份我的 Azure 文件共享？**  
-    可以使用定期[共享快照](storage-snapshots-files.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。 Azure 备份提供 Azure 文件的备份。 深入了解[通过 Azure 备份服务备份 Azure 文件共享](https://docs.microsoft.com/azure/backup/backup-azure-files)。
+    可以使用定期[共享快照](storage-snapshots-files.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。 Azure 备份提供 Azure 文件的备份。 深入了解[通过 Azure 备份服务备份 Azure 文件共享](../../backup/backup-afs.md)。
 
 ## <a name="share-snapshots"></a>共享快照
 
@@ -432,11 +445,11 @@ ms.locfileid: "90563686"
 ## <a name="features-and-interoperability-with-other-services"></a>功能以及与其他服务的互操作性
 * <a id="cluster-witness"></a>
 **是否可以将 Azure 文件共享作为 Windows 服务器故障转移群集的文件共享见证？**  
-    Azure 文件共享目前不支持此配置。 有关如何为 Azure Blob 存储设置此服务的详细信息，请参阅[部署故障转移群集的云见证](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)。
+    Azure 文件共享目前不支持此配置。 有关如何为 Azure Blob 存储设置此服务的详细信息，请参阅[部署故障转移群集的云见证](/windows-server/failover-clustering/deploy-cloud-witness)。
 
 * <a id="containers"></a>
 **是否可以在 Azure 容器实例上装载 Azure 文件共享？**  
-    是，当信息超出容器实例生存期时，通过 Azure 文件共享来保存信息不失为一种绝佳选择。 有关更多信息，请参阅[使用 Azure 容器实例装载 Azure 文件共享](../../container-instances/container-instances-mounting-azure-files-volume.md)。
+    是，当信息超出容器实例生存期时，通过 Azure 文件共享来保存信息不失为一种绝佳选择。 有关更多信息，请参阅[使用 Azure 容器实例装载 Azure 文件共享](../../container-instances/container-instances-volume-azure-files.md)。
 
 * <a id="rest-rename"></a>
 **REST API 中是否有重命名操作？**  

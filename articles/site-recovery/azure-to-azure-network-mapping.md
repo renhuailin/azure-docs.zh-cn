@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Site Recovery 中的两个区域之间映射虚拟网络
-description: 了解如何在两个 Azure 区域之间映射虚拟网络，以便将 Azure VM 灾难恢复与 Azure Site Recovery。
+description: 了解如何在两个 Azure 区域之间映射虚拟网络，以便使用 Azure Site Recovery 进行 Azure VM 灾难恢复。
 author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069486"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811632"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
 
@@ -26,14 +26,14 @@ ms.locfileid: "90069486"
 
 按如下所述映射网络：
 
-1. 在“Site Recovery 基础结构”中，单击“+网络映射”。********
+1. 在“Site Recovery 基础结构”中，单击“+网络映射”。
 
     ![ 创建网络映射](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
-3. 在“添加网络映射”中，选择源和目标位置。**** 在本示例中，源 VM 在“东亚”区域运行，将复制到“东南亚”区域。
+3. 在“添加网络映射”中，选择源和目标位置。 在本示例中，源 VM 在“东亚”区域运行，将复制到“东南亚”区域。
 
     ![选择源和目标](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. 现在，按相反方向创建网络映射。 在本示例中，源现在是“东南亚”，目标是“东亚”。
+3. 现在，创建反方向的网络映射。 在本示例中，源现在是“东南亚”，目标是“东亚”。
 
     ![添加网络映射窗格 - 选择目标网络的源和目标位置](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "90069486"
 
 - 如果可在目标网络中找到与源 VM 子网同名的子网，则为目标 VM 设置该子网。
 - 如果目标网络中没有同名的子网，则按字母顺序设置第一个子网作为目标子网。
-- 可以在 VM 的“计算和网络”设置中修改目标子网。****
+- 可以在 VM 的“计算和网络”设置中修改目标子网。
 
     ![计算和网络计算属性窗口](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
@@ -84,12 +84,12 @@ ms.locfileid: "90069486"
 
 **目标网络** | **详细信息**
 --- | ---
-目标网络是故障转移 VNet | -目标 IP 地址将是具有相同 IP 地址的静态 IP 地址。 <br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。 例如：如果源 IP 地址是 10.0.0.19，故障转移网络使用范围 10.0.0.0/24，则分配给目标 VM 的下一个 IP 地址是 10.0.0.254。
-目标网络不是故障转移 VNet | -目标 IP 地址将是具有相同 IP 地址的静态 IP 地址。<br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。<br/><br/> 例如：如果源静态 IP 地址是 10.0.0.19，故障转移在范围为 10.0.0.0/24 的非故障转移网络中发生，则目标静态 IP 地址将是 10.0.0.0.19（如果该地址可用，否则是 10.0.0.254）。
+目标网络是故障转移 VNet | - 目标 IP 地址将是静态的，使用相同的 IP 地址。 <br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。 例如：如果源 IP 地址是 10.0.0.19，故障转移网络使用范围 10.0.0.0/24，则分配给目标 VM 的下一个 IP 地址是 10.0.0.254。
+目标网络不是故障转移 VNet | - 目标 IP 地址将是静态的，使用相同的 IP 地址。<br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。<br/><br/> 例如：如果源静态 IP 地址是10.0.0.19，故障转移位于不是故障转移网络的网络上，其范围为 10.0.0.0/24，则目标静态 IP 地址将为10.0.0.19 （如果可用），否则将为10.0.0.254。
 
 - 故障转移 VNet 是设置灾难恢复时选择的目标网络。
 - 我们建议始终使用非生产网络进行测试故障转移。
-- 可以在 VM 的“计算和网络”设置中修改目标 IP 地址。****
+- 可以在 VM 的“计算和网络”设置中修改目标 IP 地址。
 
 
 ## <a name="next-steps"></a>后续步骤

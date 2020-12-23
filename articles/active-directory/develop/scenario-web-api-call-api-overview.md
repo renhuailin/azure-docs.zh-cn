@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4dcf377797709b56b4db735dabf4d48cfae4fc06
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee9d879849a94ac255a0967ad4fbc762417f8cd4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257157"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442644"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>方案：调用 Web API 的 Web API
 
@@ -24,7 +24,7 @@ ms.locfileid: "91257157"
 
 ## <a name="prerequisites"></a>先决条件
 
-这种情况下，受保护的 web API 会调用其他 web Api，这种情况在 [方案：受保护的 WEB api](scenario-protected-web-api-overview.md)上构建。
+此方案（受保护的 Web API 调用其他 Web API）基于[方案：受保护的 Web API](scenario-protected-web-api-overview.md)。
 
 ## <a name="overview"></a>概述
 
@@ -40,5 +40,4 @@ ms.locfileid: "91257157"
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [应用注册](scenario-web-api-call-api-app-registration.md)
+转到本方案中的下一篇文章 " [应用注册](scenario-web-api-call-api-app-registration.md)"。

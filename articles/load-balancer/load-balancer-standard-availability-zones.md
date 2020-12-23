@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: fca6b40f4bd871041d14d119eb44e8366d8562ee
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669174"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700454"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
@@ -58,7 +58,7 @@ Azure 标准负载均衡器支持可用性区域方案。 你可以使用标准�
 
 ### <a name="zonal"></a>剖面
 
-可以选择将某个前端指定为保证位于单个区域，这称为局域性前端。**  这种情况意味着，任何入站或出站流都由区域中的单个区域提供服务。  前端的运行状态取决于该局部区域。  区域（保证前端所在的区域除外）中发生故障不会影响数据路径。 可以使用局域性前端来按可用性区域公开 IP 地址。  
+可以选择将某个前端指定为保证位于单个区域，这称为局域性前端。  这种情况意味着，任何入站或出站流都由区域中的单个区域提供服务。  前端的运行状态取决于该局部区域。  区域（保证前端所在的区域除外）中发生故障不会影响数据路径。 可以使用局域性前端来按可用性区域公开 IP 地址。  
 
 此外，还支持在每个区域中直接对负载平衡终结点使用区域前端。 可以使用此配置来公开每个区域负载均衡的终结点，以单独监视每个区域。 对于公用终结点，你可以将它们与 [流量管理器](../traffic-manager/traffic-manager-overview.md) 等 dns 负载平衡产品集成，并使用单个 DNS 名称。
 
@@ -151,11 +151,11 @@ SNAT 端口预先分配算法与或没有可用性区域相同。
   - 当区域发生故障时，你的服务是否能识别此故障，如果状态丢失，你会如何恢复？
   - 当区域恢复正常时，应用程序是否知道如何安全聚合？
 
-查看 [Azure 云设计模式](https://docs.microsoft.com/azure/architecture/patterns/) ，以提高应用程序在故障情况下的复原能力。
+查看 [Azure 云设计模式](/azure/architecture/patterns/) ，以提高应用程序在故障情况下的复原能力。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [可用性区域](../availability-zones/az-overview.md)
-- 详细了解[标准负载均衡器](load-balancer-standard-overview.md)
-- 了解如何[使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](load-balancer-standard-public-zonal-cli.md)
-- 了解如何[使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](load-balancer-standard-public-zone-redundant-cli.md)
-- 了解 [Azure 云设计模式](https://docs.microsoft.com/azure/architecture/patterns/) ，以提高应用程序在故障情况下的复原能力。
+- 详细了解[标准负载均衡器](./load-balancer-overview.md)
+- 了解如何[使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](./quickstart-load-balancer-standard-public-cli.md)
+- 了解如何[使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](./quickstart-load-balancer-standard-public-cli.md)
+- 了解 [Azure 云设计模式](/azure/architecture/patterns/) ，以提高应用程序在故障情况下的复原能力。

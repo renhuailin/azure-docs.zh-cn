@@ -4,12 +4,12 @@ description: 使用异地复制的 Azure 容器注册表中的容器映像将基
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74456104"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148419"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>教程：通过异地复制的 Azure 容器注册表部署 Web 应用
 
@@ -27,7 +27,7 @@ ms.locfileid: "74456104"
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>自动部署到用于容器的 Web 应用
 
-Azure 容器注册表支持直接将容器化应用程序部署到[用于容器的 Web 应用](../app-service/containers/index.yml)。 在本教程中，我们使用 Azure 门户将前一篇教程中创建的容器映像部署到位于不同 Azure 区域中的两个 Web 应用计划。
+Azure 容器注册表支持直接将容器化应用程序部署到[用于容器的 Web 应用](../app-service/index.yml)。 在本教程中，我们使用 Azure 门户将前一篇教程中创建的容器映像部署到位于不同 Azure 区域中的两个 Web 应用计划。
 
 如果通过注册表中的容器映像部署 Web 应用，并且同一区域中有一个异地复制的注册表，则 Azure 容器注册表会创建一个映像部署 [Webhook](container-registry-webhook.md)。 将新映像推送到容器存储库时，该 Webhook 会拾取更改，并自动将新容器映像部署到 Web 应用。
 
@@ -58,7 +58,7 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 选择“创建”，将该 Web 应用预配到“美国西部”区域。  
 
-![Azure 门户中的“Linux 上的 Web 应用”配置][deploy-app-portal-02]
+![屏幕截图显示用于容器的 Web 应用，其中突出显示了“创建”按钮。][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>查看已部署的 Web 应用
 
@@ -68,11 +68,11 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 在“应用服务”概述的右上方选择该 Web 应用的超链接 URL，在浏览器中查看正在运行的应用程序  。
 
-![Azure 门户中的“Linux 上的 Web 应用”配置][deploy-app-portal-04]
+![屏幕截图显示应用服务概述，其中突出显示了 Web 应用 URL。][deploy-app-portal-04]
 
 从异地复制的容器注册表部署 Docker 映像后，站点会显示一个图像，表示托管容器注册表的 Azure 区域。
 
-![在浏览器中查看已部署的 Web 应用程序][deployed-app-westus]
+![屏幕截图显示在浏览器中查看的已部署 Web 应用程序。][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>部署第二个用于容器的 Web 应用实例
 
@@ -88,9 +88,9 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 选择“创建”，将 Web 应用预配到“美国东部”区域。  
 
-![Azure 门户中的“Linux 上的 Web 应用”配置][deploy-app-portal-06]
+![屏幕截图显示用于容器的 Web 应用创建窗口，其中突出显示了“创建”按钮。][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>查看已部署的 Web 应用
+## <a name="view-the-second-deployed-web-app"></a>查看第二个已部署的 Web 应用
 
 如前所述，可在浏览器中导航到应用程序的 URL 来查看正在运行的应用程序。
 

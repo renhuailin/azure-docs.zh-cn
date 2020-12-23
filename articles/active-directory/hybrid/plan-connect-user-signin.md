@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299904"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997777"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，以帮助你选择登录到 Azure AD 时想要使用的标识。
@@ -44,7 +44,7 @@ Azure AD 支持以下身份验证方法：
 
 * **云身份验证** - 如果选择此身份验证方法，Azure AD 将处理用户登录时的身份验证过程。 使用云身份验证时具有两个选择： 
    * **密码哈希同步 (PHS)** - 通过密码哈希同步，用户可以使用与其在本地使用的相同用户名和密码，而无需部署除 Azure AD Connect 以外的其他任何基础结构。 
-   * 直通身份验证 (PTA) - 此选项类似于密码哈希同步，但使用本地软件代理为具有强大安全性和合规性策略的组织提供简单的密码验证****。
+   * 直通身份验证 (PTA) - 此选项类似于密码哈希同步，但使用本地软件代理为具有强大安全性和合规性策略的组织提供简单的密码验证。
 * **联合身份验证** - 如果选择此身份验证方法，Azure AD 会将身份验证过程移交给单独的受信任身份验证系统（例如 AD FS 或第三方联合身份验证服务）来验证用户的登录。 
 
 对于只想让用户登录到 Microsoft 365、SaaS 应用程序和其他基于 Azure AD 的资源的大多数组织，我们建议使用默认的密码哈希同步选项。
@@ -60,7 +60,7 @@ Azure AD 支持以下身份验证方法：
 
 有关详细信息，请参阅[密码哈希同步](how-to-connect-password-hash-synchronization.md)一文。
 
-### <a name="pass-through-authentication"></a>直通身份验证
+### <a name="pass-through-authentication"></a>传递身份验证
 凭借直通身份验证，将针对本地 Active Directory 控制器验证用户的密码。 密码无需以任何形式存在于 Azure AD 中。 此身份验证允许在对云服务进行身份验证的过程中评估本地策略（例如登录时间限制）。
 
 直通身份验证使用本地环境中已加入域的 Windows Server 2012 R2 计算机上的简单代理。 此代理侦听密码验证请求。 它不需要对 Internet 开放的任何入站端口。
@@ -68,7 +68,7 @@ Azure AD 支持以下身份验证方法：
 此外，还可以对公司网络中已加入域的计算机上的用户启用单一登录。 通过单一登录，受支持的用户只需输入用户名即可安全访问云资源。
 ![直通身份验证](./media/plan-connect-user-signin/pta.png)
 
-有关详细信息，请参阅：
+有关详情，请参阅：
 - [直通身份验证](how-to-connect-pta.md)
 - [单一登录](how-to-connect-sso.md)
 
@@ -139,12 +139,12 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 可以单击“刷新”按钮，从 Azure AD 中重新提取自定义域最新的状态。
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>选择 Azure AD 中的用户主体名的属性
-属性 userPrincipalName 是用户登录到 Azure AD 和 Microsoft 365 时所使用的属性。 应在同步处理用户之前对在 Azure AD 中使用的域（也称为 UPN 后缀）进行验证。
+属性 userPrincipalName 是用户登录 Azure AD 和 Microsoft 365 时使用的属性。 应在同步处理用户之前对在 Azure AD 中使用的域（也称为 UPN 后缀）进行验证。
 
 强烈建议保留默认属性 userPrincipalName。 如果此属性不可路由且无法验证，则可以选择另一个属性（例如 email）作为保存登录 ID 的属性。 这就是所谓的备用 ID。 “备用 ID”属性值必须遵循 RFC 822 标准。 可以将备用 ID 与密码 SSO 和联合 SSO 配合使用作为登录解决方案。
 
 > [!NOTE]
-> 使用备用 ID 与所有 Microsoft 365 工作负荷都不兼容。 有关详细信息，请参阅[配置备用登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
+> 所有 Microsoft 365 工作负荷都不允许使用替代 ID。 有关详细信息，请参阅[配置备用登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 >
 >
 

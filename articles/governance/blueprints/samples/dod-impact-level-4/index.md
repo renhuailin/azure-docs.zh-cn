@@ -1,14 +1,14 @@
 ---
 title: DoD 影响级别 4 蓝图示例概述
 description: DoD 影响级别 4 示例的概述。 此蓝图示例可帮助客户评估特定 DoD 影响级别 4 控制要求。
-ms.date: 09/17/2020
+ms.date: 10/26/2020
 ms.topic: sample
-ms.openlocfilehash: 1fbcbbf1ca12e9cb235a79ace0e7de82c3c8cbcc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: faea02bc63b1c05526652b7a27b2339f00106ad7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978386"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669405"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影响级别 4 蓝图示例概述
 

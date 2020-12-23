@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658362"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94407999"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -31,12 +31,12 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-无缝 SSO 可与[密码哈希同步](how-to-connect-password-hash-synchronization.md)或[传递身份验证](how-to-connect-pta.md)登录方法结合使用。 无缝 SSO _不_适用于 Active Directory 联合身份验证服务 (ADFS)。
+无缝 SSO 可与[密码哈希同步](how-to-connect-password-hash-synchronization.md)或[传递身份验证](how-to-connect-pta.md)登录方法结合使用。 无缝 SSO _不_ 适用于 Active Directory 联合身份验证服务 (ADFS)。
 
 ![无缝单一登录](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->无缝 SSO 只要求用户的设备**已加入域**，但不能在[已加入 Azure AD](../devices/concept-azure-ad-join.md) 或[已加入混合 Azure AD](../devices/concept-azure-ad-join-hybrid.md) 的设备上使用。 已加入 Azure AD、已加入混合 Azure AD 的设备以及已注册到 Azure AD 的设备上的 SSO 基于[主刷新令牌](../devices/concept-primary-refresh-token.md)工作。
+>无缝 SSO 只要求用户的设备 **已加入域** ，但不能在 [已加入 Azure AD](../devices/concept-azure-ad-join.md) 或 [已加入混合 Azure AD](../devices/concept-azure-ad-join-hybrid.md) 的设备上使用。 已加入 Azure AD、已加入混合 Azure AD 的设备以及已注册到 Azure AD 的设备上的 SSO 基于[主刷新令牌](../devices/concept-primary-refresh-token.md)工作。
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -64,18 +64,20 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 | 操作系统\浏览器 |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|是\*|是|是|是\*\*\*|空值
-|Windows 8.1|是\*|空值|是|是\*\*\*|空值
+|Windows 8.1|是\*|[\*\*\*|是|是\*\*\*|空值
 |Windows 8|是\*|空值|是|是\*\*\*|空值
 |Windows 7|是\*|空值|是|是\*\*\*|空值
 |Windows Server 2012 R2 或更高版本|是\*\*|空值|是|是\*\*\*|空值
 |Mac OS X|空值|空值|是\*\*\*|是\*\*\*|是\*\*\*
 
 
-\*需要 Internet Explorer 版本 10 或更高版本
+\*需要 Internet Explorer 版本10或更高版本。
 
-\*\*需要 Internet Explorer 版本 10 或更高版本。 禁用增强保护模式
+\*\*需要 Internet Explorer 版本10或更高版本。 禁用增强保护模式。
 
-\*\*\*需要[额外的配置](how-to-connect-sso-quick-start.md#browser-considerations)
+\*\*\*需要 [其他配置](how-to-connect-sso-quick-start.md#browser-considerations)。
+
+\*\*\*\*需要 Microsoft Edge 版本77或更高版本。
 
 >[!NOTE]
 >对于 Windows 10，建议使用 [Azure AD join](../devices/concept-azure-ad-join.md)，以获得最佳的 Azure AD 单一登录体验。
@@ -83,7 +85,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
-- [**部署计划**](https://aka.ms/deploymentplans/sso) - 分步部署计划。
+- [**部署计划**](../manage-apps/plan-sso-deployment.md) - 分步部署计划。
 - [深入技术探究](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
 - [**常见问题**](how-to-connect-sso-faq.md) - 常见问题解答。
 - [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。

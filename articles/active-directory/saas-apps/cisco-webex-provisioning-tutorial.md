@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 2500a22d4d3775f7cfea7afbf4e8d106ec2da139
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: bc05e83ac6c7f0f7c5e9a571c1fa7397af858f44
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647982"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180007"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>教程：为 Cisco Webex 配置自动用户预配
 
@@ -87,25 +87,25 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 3. 选择“预配”  选项卡。
 
-    ![Cisco Webex 预配](common/provisioning.png)
+    :::image type="content" source="common/provisioning.png" alt-text="Azure 门户中菜单的屏幕截图。在“管理”下，突出显示了“预配”。" border="false":::
 
 4. 将“预配模式”  设置为“自动”  。
 
-    ![Cisco Webex 预配](common/provisioning-automatic.png)
+    :::image type="content" source="common/provisioning-automatic.png" alt-text="“预配置”模式列表框的屏幕截图，其中突出显示了“自动”。" border="false":::
 
 5. 在“管理员凭据”  部分下，输入你的 Cisco Webex 帐户的“租户 URL”  和“机密令牌”  。
 
-    ![Cisco Webex 预配](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="“管理员凭据”部分的屏幕截图。其中突出显示了空的“租户 URL”和“机密令牌”框。" border="false":::
 
 6.  在“租户 URL”  字段中，以 `https://api.ciscospark.com/v1/scim/[OrgId]` 的形式输入值。 若要获取 `[OrgId]`，请登录到 [Cisco Webex 控制中心](https://admin.webex.com/login)。 单击左下角的组织名称，并复制“组织 ID”中的值  。 
 
-    * 若要获取“机密令牌”  的值，请导航到此 [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose)。 在出现的 webex 登录页面中，使用组织的完整 Cisco Webex 管理员帐户登录。 出现错误页面，指出无法访问站点，但这是正常情况。
+    * 若要获取“机密令牌”  的值，请导航到此 [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%2f%2flocalhost%253A3000%2fauth%2fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose)。 在出现的 webex 登录页面中，使用组织的完整 Cisco Webex 管理员帐户登录。 出现错误页面，指出无法访问站点，但这是正常情况。
 
-        ![Cisco Webex 预配](./media/cisco-webex-provisioning-tutorial/test.png)
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="显示错误消息的网页的屏幕截图。该消息指示无法访问该站点，并包含一些故障排除提示。" border="false":::
  
     * 复制 URL 中生成的持有者令牌的值，如下所示。 此令牌的有效期为 365 天。
         
-        ![Cisco Webex 预配](./media/cisco-webex-provisioning-tutorial/test1.png)
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="显示长 URL 的屏幕截图。部分地址无法辨认，处于突出显示状态并标记为“持有者令牌”。" border="false":::
 
 7. 填入步骤 5 中所示的字段后，单击“测试连接”确保 Azure AD 可以连接到 Cisco Webex  。 如果连接失败，请确保 Cisco Webex 帐户具有管理员权限，然后重试。
 
@@ -119,11 +119,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 10. 在“映射”部分中，选择“将 Azure Active Directory 用户同步到 Cisco Webex”   。
 
-    ![Cisco Webex 预配](./media/cisco-webex-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Azure 门户中“映射”部分的屏幕截图。在“名称”下，突出显示了“将 Azure Active Directory 用户同步到 CiscoSpark”。" border="false":::
 
 11. 在“属性映射”部分中，查看从 Azure AD 同步到 Cisco Webex 的用户属性  。 选为“匹配”属性的特性用于匹配 Cisco Webex 中的用户帐户以执行更新操作  。 选择“保存”按钮以提交任何更改  。
 
-    ![Cisco Webex 预配](./media/cisco-webex-provisioning-tutorial/usermappingattributes.png)
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="“属性映射”部分的屏幕截图，其中显示 Azure Active Directory 属性、相应的 CiscoSpark 属性和匹配状态。" border="false":::
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

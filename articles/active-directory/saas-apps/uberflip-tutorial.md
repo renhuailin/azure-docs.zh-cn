@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533123"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>教程：Azure Active Directory 与 Uberflip 的集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "88533123"
 * 可让用户使用其 Azure AD 帐户自动登录到 Uberflip（单一登录）。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -96,7 +96,7 @@ Uberflip 支持以下功能：
 
 1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）可打开“基本 SAML 配置”窗格    。
 
-   ![编辑基本 SAML 配置](common/edit-urls.png)
+   ![显示“基本 SAML 配置”的屏幕截图，你可以在其中输入“回复 URL”。](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”窗格中，根据需要配置的 SSO 模式，执行以下步骤之一  ：
 
@@ -113,7 +113,7 @@ Uberflip 支持以下功能：
 
      `https://app.uberflip.com/users/login`
 
-     ![Uberflip 域和 URL 单一登录信息](common/both-signonurl.png)
+     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/both-signonurl.png)
 
 1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以从给定的选项下载“联合元数据 XML”并将其保存在计算机中     。
 
@@ -192,12 +192,12 @@ Uberflip 支持以下功能：
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“Uberflip”时，应自动登录到你为其设置单一登录的 Uberflip 订阅  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在“我的应用”门户中选择“Uberflip”时，应自动登录到你为其设置单一登录的 Uberflip 订阅  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-* [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -1,159 +1,151 @@
 ---
-author: areddish
-ms.author: areddish
+author: PatrickFarley
+ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: a091222b01669c6b83c599787c61dcd6b62b05d0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 10/25/2020
+ms.openlocfilehash: 55360f2f11196d1f6794edec011c008b813288c1
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604939"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625422"
 ---
-本指南提供说明和示例代码，以帮助你开始使用适用于 Python 的自定义视觉客户端库来构建图像分类模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
+适用于 Python 的自定义视觉客户端库入门。 请按照以下步骤安装包并试用用于生成图像分类模型的示例代码。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
 > [!NOTE]
 > 若要在不编写代码的情况下构建和训练分类模型，请改为参阅[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
 
+使用适用于 Python 的自定义视觉客户端库可以：
+
+* 创建新的自定义视觉项目
+* 将标记添加到项目中
+* 上传和标记图像
+* 定型项目
+* 发布当前迭代
+* 测试预测终结点
+
+[参考文档](/python/api/overview/azure/cognitiveservices/customvision?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-customvision/azure/cognitiveservices/vision/customvision) | [包 (PyPI)](https://pypi.org/project/azure-cognitiveservices-vision-customvision/) | [示例](/samples/browse/?languages=python&products=azure&term=vision&terms=vision)
+
 ## <a name="prerequisites"></a>先决条件
 
-- [Python 2.7+ 或 3.5+](https://www.python.org/downloads/)
-- [pip](https://pip.pypa.io/en/stable/installing/) 工具
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* [Python 3.x](https://www.python.org/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title="创建自定义视觉资源"  target="_blank">创建自定义视觉资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以创建训练和预测资源并获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到自定义视觉。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
+## <a name="setting-up"></a>设置
 
-若要使用适用于 Python 的自定义视觉来编写图像分析应用，需要自定义视觉客户端库。 在 PowerShell 中运行以下命令：
+### <a name="install-the-client-library"></a>安装客户端库
+
+若要使用适用于 Python 的自定义视觉来编写图像分析应用，需要自定义视觉客户端库。 安装 Python 后，在 PowerShell 或控制台窗口中运行以下命令：
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
+### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
-[!INCLUDE [python-get-images](../../includes/python-get-images.md)]
+创建新的 Python 文件并导入以下库。
 
-## <a name="add-the-code"></a>添加代码
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_imports)]
 
-在首选项目目录中创建名为 *sample.py* 的新文件。
+> [!TIP]
+> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.py) 上找到它，其中包含此快速入门中的代码示例。
 
-## <a name="create-the-custom-vision-project"></a>创建自定义视觉项目
+为资源的 Azure 终结点和订阅密钥创建变量。
 
-将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 另外，从自定义视觉网站的“设置”页面获取终结点 URL。
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_creds)]
 
-请查看 [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-) 方法，以在创建项目时指定其他选项（在[生成分类器](../../getting-started-build-a-classifier.md) Web 门户指南中进行了说明）。  
+> [!IMPORTANT]
+> 转到 Azure 门户。 如果在“先决条件”部分中创建自定义视觉资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 你需要获取训练和预测密钥。
+>
+> 可以在资源的“概览”选项卡上找到列为“订阅 ID”的预测资源 ID 值 。
+>
+> 请记住在完成后将密钥从代码中删除，永远不要公开发布这些密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
-```Python
-from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry
-from msrest.authentication import ApiKeyCredentials
+## <a name="object-model"></a>对象模型
 
-ENDPOINT = "<your API endpoint>"
+|名称|说明|
+|---|---|
+|[CustomVisionTrainingClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) | 此类处理模型的创建、训练和发布。 |
+|[CustomVisionPredictionClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python)| 此类处理用于图像分类预测的模型查询。|
+|[ImagePrediction](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-python)| 此类定义单一图像上的单一对象预测。 其中包括对象 ID 和名称的属性、对象的边界框位置以及可信度分数。|
 
-# Replace with a valid key
-training_key = "<your training key>"
-prediction_key = "<your prediction key>"
-prediction_resource_id = "<your prediction resource id>"
+## <a name="code-examples"></a>代码示例
 
-publish_iteration_name = "classifyModel"
+这些代码片段演示如何使用适用于 Python 的自定义视觉客户端库执行以下任务：
 
-credentials = ApiKeyCredentials(in_headers={"Training-key": training_key})
-trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
+* [对客户端进行身份验证](#authenticate-the-client)
+* [创建新的自定义视觉项目](#create-a-new-custom-vision-project)
+* [将标记添加到项目中](#add-tags-to-the-project)
+* [上传和标记图像](#upload-and-tag-images)
+* [定型项目](#train-the-project)
+* [发布当前迭代](#publish-the-current-iteration)
+* [测试预测终结点](#test-the-prediction-endpoint)
 
-# Create a new project
-print ("Creating project...")
-project = trainer.create_project("My New Project")
-```
+## <a name="authenticate-the-client"></a>验证客户端
 
-## <a name="create-tags-in-the-project"></a>在项目中创建标记
+使用终结点和密钥来实例化训练和预测客户端。 使用密钥创建 ApiKeyServiceClientCredentials 对象，并将它们与终结点一起使用以创建 [CustomVisionTrainingClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) 和 [CustomVisionPredictionClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python) 对象。
 
-若要在项目中创建分类标记，请将以下代码添加到 *sample.py* 末尾：
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_auth)]
 
-```Python
-# Make two tags in the new project
-hemlock_tag = trainer.create_tag(project.id, "Hemlock")
-cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
-```
+## <a name="create-a-new-custom-vision-project"></a>创建新的自定义视觉项目
+
+将以下代码添加到脚本中以创建新的自定义视觉服务项目。 
+
+请查看 [create_project](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-) 方法，以在创建项目时指定其他选项（在[生成分类器](../../getting-started-build-a-classifier.md) Web 门户指南中进行了说明）。  
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_create)]
+
+## <a name="add-tags-to-the-project"></a>将标记添加到项目中
+
+若要在项目中添加分类标记，请添加以下代码：
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_tags)]
+
 
 ## <a name="upload-and-tag-images"></a>上传和标记图像
 
+首先，下载此项目的示例图像。 将[示例图像文件夹](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)的内容保存到本地设备。
+
 要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。 最多可以在单个批次中上传 64 个图像。
 
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_tags)]
+
 > [!NOTE]
-> 需根据此前下载认知服务 Python SDK 示例存储库的位置更改图像的路径。
+> 需根据将认知服务 Python SDK 示例存储库下载到的位置更改图像的路径。
 
-```Python
-base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
+## <a name="train-the-project"></a>定型项目
 
-print("Adding images...")
+此代码用于创建预测模型的第一次迭代。 
 
-image_list = []
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_train)]
 
-for image_num in range(1, 11):
-    file_name = "hemlock_{}.jpg".format(image_num)
-    with open(base_image_url + "images/Hemlock/" + file_name, "rb") as image_contents:
-        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[hemlock_tag.id]))
+> [!TIP]
+> 使用选定标记进行训练
+>
+> 可以选择只对应用的标记的子集进行训练。 如果你还没有应用足够多的特定标记，但是你确实有足够多的其他标记，则可能需要这样做。 在 [train_project](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#train-project-project-id--training-type-none--reserved-budget-in-hours-0--force-train-false--notification-email-address-none--selected-tags-none--custom-headers-none--raw-false----operation-config-&preserve-view=true) 调用中，将可选参数 selected_tags 设置为要使用的标记的 ID 字符串列表。 模型将训练成只识别该列表中的标记。
 
-for image_num in range(1, 11):
-    file_name = "japanese_cherry_{}.jpg".format(image_num)
-    with open(base_image_url + "images/Japanese Cherry/" + file_name, "rb") as image_contents:
-        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[cherry_tag.id]))
+## <a name="publish-the-current-iteration"></a>发布当前迭代
 
-upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
-if not upload_result.is_batch_successful:
-    print("Image batch upload failed.")
-    for image in upload_result.images:
-        print("Image status: ", image.status)
-    exit(-1)
-```
+在发布迭代之前，迭代在预测终结点中不可用。 以下代码使模型的当前迭代可用于查询。 
 
-## <a name="train-and-publish-the-project"></a>训练并发布项目
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_publish)]
 
-此代码创建预测模型的第一个迭代，然后将该迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
 
-```Python
-import time
-
-print ("Training...")
-iteration = trainer.train_project(project.id)
-while (iteration.status != "Completed"):
-    iteration = trainer.get_iteration(project.id, iteration.id)
-    print ("Training status: " + iteration.status)
-    time.sleep(1)
-
-# The iteration is now trained. Publish it to the project endpoint
-trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, prediction_resource_id)
-print ("Done!")
-```
-
-## <a name="use-the-prediction-endpoint"></a>使用预测终结点
+## <a name="test-the-prediction-endpoint"></a>测试预测终结点
 
 若要将图像发送到预测终结点并检索预测，请将以下代码添加到文件末尾：
 
-```python
-from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-from msrest.authentication import ApiKeyCredentials
-
-# Now there is a trained endpoint that can be used to make a prediction
-prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
-predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
-
-with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents:
-    results = predictor.classify_image(
-        project.id, publish_iteration_name, image_contents.read())
-
-    # Display the results.
-    for prediction in results.predictions:
-        print("\t" + prediction.tag_name +
-              ": {0:.2f}%".format(prediction.probability * 100))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_test)]
 
 ## <a name="run-the-application"></a>运行应用程序
 
-运行 *sample.py*。
+运行 CustomVisionQuickstart.py。
 
 ```powershell
-python sample.py
+python CustomVisionQuickstart.py
 ```
 
 应用程序的输出应类似于以下文本：
@@ -169,16 +161,17 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-然后，可以验证测试图像（在 **<base_image_url>images/Test/** 中找到）是否已正确标记。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
+然后，可以验证是否已正确标记（在 <base_image_location>/images/Test/ 中找到的）测试图像。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已了解如何在代码中完成对象检测过程的每一步。 此示例执行单次训练迭代，但通常需要多次训练和测试模型，以使其更准确。
+现在你已了解如何在代码中完成图像分类过程的每一步。 此示例执行单次训练迭代，但通常需要多次训练和测试模型，以使其更准确。
 
 > [!div class="nextstepaction"]
 > [测试和重新训练模型](../../test-your-model.md)
 
 * 什么是自定义视觉？
-* [SDK 参考文档](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)
+* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.py) 上找到此示例的源代码
+* [SDK 参考文档](/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

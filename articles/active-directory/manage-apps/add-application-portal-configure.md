@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 1cc7d7755d22568b9b66216709dc0c3765d58657
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 18e40d0e62a69954b0e3c1e5770a71c8b0bcba8b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300147"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656677"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中配置应用程序的属性
 
@@ -41,13 +41,10 @@ ms.locfileid: "89300147"
 
 1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要配置的应用程序。
 2. 在“管理”部分中，选择“属性”以打开“属性”窗格进行编辑  。
-
-    ![“属性”屏幕的屏幕截图，其中显示可编辑的应用属性。](media/add-application-portal/edit-properties.png)
-
-3. 请花点时间了解可用于配置的选项：
+3. 请花点时间了解可用选项。 可用选项将取决于应用与 Azure AD 集成的方式。 例如，使用基于 SAML 的单一登录的应用将具有“用户访问 URL”等字段，而使用基于 OIDC 的单一登录的应用则没有这些字段。 另请注意，默认情况下，通过“Azure Active Directory”>“应用注册”添加的应用是基于 OIDC 的应用。 而通过“Azure Active Directory”>“企业应用程序”添加的应用可能会使用多种单一登录标准中的任何一种。 所有应用都将具有用于配置何时显示和使用应用的字段。 这些字段是：
     - “是否启用以供用户登录?”决定分配到应用程序的用户能否登录。
     - “是否需要进行用户分配?”决定了未分配到应用程序的用户能否登录。
-    - “是否对用户可见?”决定分配到应用的用户能否在[我的应用](https://myapps.microsoft.com)和 Office 365 应用启动器中看到该应用。 （请参阅 Office 365 或 Microsoft 365 网站左上角的华夫饼菜单。）
+    - “是否对用户可见?”决定分配到应用的用户能否在[我的应用](https://myapps.microsoft.com)和 Microsoft 365 应用启动器中看到该应用。 （请参阅 Microsoft 365 网站左上角的华夫饼菜单。）
     
     > [!TIP]
     > 在导航的“用户和组”部分分配用户。
@@ -84,9 +81,19 @@ ms.locfileid: "89300147"
 
 
 > [!TIP]
-> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](/graph/application-saml-sso-configure-api)。
 
+## <a name="add-notes"></a>添加注释
 
+可使用“注释”字段来添加与 Azure AD 中的应用程序管理相关的任何信息。 注释是免费文本字段，最大大小为 1024 个字符。
+
+1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要配置的应用程序。
+2. 在“管理”部分中，选择“属性”以打开“属性”窗格进行编辑  。
+3. 更新“注释”字段，然后选择“保存”。
+
+    ![显示如何更改注释的“属性”屏幕的屏幕截图](media/add-application-portal/notes-application.png)
+
+    
 ## <a name="clean-up-resources"></a>清理资源
 
 如果你不打算继续学习快速入门系列，请考虑删除应用以清理测试租户。 本系列中的最后一个快速入门介绍如何删除应用，请参阅[删除应用](delete-application-portal.md)。

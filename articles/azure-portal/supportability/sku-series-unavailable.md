@@ -1,18 +1,16 @@
 ---
-title: 区域或 SKU 系列不可用 - Azure
+title: 区域或 SKU 系列不可用
 description: 对于此区域，某些 SKU 系列不可用于所选订阅，这可能需要订阅管理支持请求。
-services: Azure Supportability
 author: stevendotwang
-ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bbe1dff6bbf8fed481300db95482c46b0e8a7b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763816"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745275"
 ---
 # <a name="region-or-sku-unavailable"></a>区域或 SKU 不可用
 
@@ -80,7 +78,7 @@ Message: This size is currently unavailable in this location for this subscripti
 
 ## <a name="send-us-your-suggestions"></a>向我们发送建议
 
-我们始终乐于接受反馈和建议！ 向我们发送[建议](https://feedback.azure.com/forums/266794-support-feedback)。 此外，你可以在 [Twitter](https://twitter.com/azuresupport) 或 [Microsoft 问答页面](https://docs.microsoft.com/answers/products/azure)上与我们沟通。
+我们始终乐于接受反馈和建议！ 向我们发送[建议](https://feedback.azure.com/forums/266794-support-feedback)。 此外，你可以在 [Twitter](https://twitter.com/azuresupport) 或 [Microsoft 问答页面](/answers/products/azure)上与我们沟通。
 
 ## <a name="learn-more"></a>了解详细信息
 

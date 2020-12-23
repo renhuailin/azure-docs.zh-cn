@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398572"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123314"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>使用工作流将 Azure IoT Central 应用程序与其他云服务相集成
 
@@ -25,14 +25,14 @@ ms.locfileid: "91398572"
 - 当在 Azure IoT Central 应用中触发了某个规则时，该规则可以触发 Power Automate 或 Azure 逻辑应用中的工作流。 这些工作流可以在其他云服务（例如 Microsoft 365 或第三方服务）中运行操作。
 - 其他云服务中的事件（如 Microsoft 365）可以在 Power 自动化或 Azure 逻辑应用中触发工作流。 这些工作流可以从你的 IoT Central 应用程序中运行操作或检索数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本操作方法指南中的步骤需要有效的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 设置解决方案需要版本 3 IoT Central 应用程序。 若要了解如何检查您的应用程序版本，请参阅 [关于您的应用程序](./howto-get-app-info.md)。 若要了解如何创建 IoT Central 应用程序，请参阅 [创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)。
 
 > [!NOTE]
-> 如果使用版本 2 IoT Central 应用程序，请参阅之前版本的文档站点上的使用 [Azure 逻辑应用中的 IoT Central 连接器生成工作流](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) ，并使用 Azure IoT Central V2 连接器
+> 如果使用版本 2 IoT Central 应用程序，请参阅之前版本的文档站点上的使用 [Azure 逻辑应用中的 IoT Central 连接器生成工作流](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) ，并使用 Azure IoT Central V2 连接器
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>从规则触发工作流
 
@@ -75,7 +75,7 @@ ms.locfileid: "91398572"
 1. 在操作列表中，选择要使用的 IoT Central 操作。
 1. 在操作步骤中，完成所选操作的配置。 再选择“保存”。
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="找到 Azure IoT Central V3 连接器并选择一个操作":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="找到“Azure IoT Central - 预览版”连接器并选择触发器":::
 
 ## <a name="list-of-actions"></a>操作列表
 

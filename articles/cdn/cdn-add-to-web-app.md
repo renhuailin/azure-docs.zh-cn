@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079903"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562236"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 
@@ -43,7 +43,7 @@ ms.locfileid: "88079903"
 为完成此教程：
 
 - [安装 Git](https://git-scm.com/)
-- [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [安装 Azure CLI](/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -87,8 +87,8 @@ Azure 将创建配置文件和终结点。 新的终结点显示在“终结点�
 ### <a name="test-the-cdn-endpoint"></a>测试 CDN 终结点
 
  终结点不会立即可供使用，因为注册传播需花时间： 
-   - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
-   - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
+   - 对于 **Microsoft 推出的 Azure CDN 标准版** 配置文件，传播通常可在 10 分钟内完成。 
+   - 对于 **Akamai 的 Azure CDN 标准版** 配置文件，传播通常可在一分钟内完成。 
    - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成 。 
 
 示例应用有一个 index.html 文件，此外还有 css、img 和 js 文件夹，其中包含其他静态资产   。 在 CDN 终结点上，所有这些文件的内容路径是相同的。 例如，以下两个 URL 都可以访问 css 文件夹中的 bootstrap.css 文件： 
@@ -135,7 +135,7 @@ CDN 定期根据生存时间 (TTL) 配置刷新其在源 Web 应用中的资源�
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 完成部署后，浏览到 Web 应用 URL 并查看更改。
@@ -230,7 +230,7 @@ Azure CDN 返回当前的 Web 应用内容，其在标题中包含“V2”。
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
 在浏览器中，转到包含新的查询字符串（例如 `q=2`）的 CDN 终结点 URL。 Azure CDN 获取当前的 index.html 文件并显示“V3” 。 但是，如果使用 `q=1` 查询字符串导航到 CDN 终结点，则会显示“V2”。
@@ -269,5 +269,3 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 > [!div class="nextstepaction"]
 > [教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md)
-
-

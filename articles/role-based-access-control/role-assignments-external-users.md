@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361898"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648372"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 门户为外部来宾用户添加或删除 Azure 角色分配
 
-[Azure 基于角色的访问控制 (RBAC)](overview.md) 可以为大型组织和中小型企业提供更好的安全管理，与中小企业合作的外部协作者、供应商或自由职业者需要访问你环境中的特定资源，但不一定需要访问整个基础架构或任何与计费相关的范围。 你可以使用 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) 中的功能与外部来宾用户合作，并且可以使用 Azure RBAC 仅授予来宾用户在你的环境中需要的权限。
+[Azure 基于角色的访问控制 (RBAC)](overview.md) 可以为大型组织和中小型企业提供更好的安全管理，与中小企业合作的外部协作者、供应商或自由职业者需要访问你环境中的特定资源，但不一定需要访问整个基础架构或任何与计费相关的范围。 你可以使用 [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) 中的功能与外部来宾用户合作，并且可以使用 Azure RBAC 仅授予来宾用户在你的环境中需要的权限。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,13 +49,13 @@ ms.locfileid: "85361898"
 
 按照以下步骤，使用“Azure Active Directory”页将来宾用户添加到你的目录。
 
-1. 请确保你的组织的外部协作设置已配置为允许你邀请来宾。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../active-directory/b2b/delegate-invitations.md)。
+1. 请确保你的组织的外部协作设置已配置为允许你邀请来宾。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../active-directory/external-identities/delegate-invitations.md)。
 
-1. 在 Azure 门户中，单击“Azure Active Directory” > “用户” > “新建来宾用户”。  
+1. 在 Azure 门户中，单击“Azure Active Directory” > “用户” > “新建来宾用户”。
 
     ![Azure 门户中的“新建来宾用户”功能](./media/role-assignments-external-users/invite-guest-user.png)
 
-1. 按照步骤添加新的来宾用户。 有关详细信息，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory)。
+1. 按照步骤添加新的来宾用户。 有关详细信息，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../active-directory/external-identities/add-users-administrator.md#add-guest-users-to-the-directory)。
 
 将来宾用户添加到目录后，你可以向来宾用户发送指向共享应用程序的直接链接，或者来宾用户可以单击邀请电子邮件中的兑换 URL。
 
@@ -65,7 +65,7 @@ ms.locfileid: "85361898"
 
 ![来宾用户邀请审阅权限](./media/role-assignments-external-users/invite-review-permissions.png)
 
-有关邀请过程的详细信息，请参阅 [Azure Active Directory B2B 协作邀请兑换](../active-directory/b2b/redemption-experience.md)。
+有关邀请过程的详细信息，请参阅 [Azure Active Directory B2B 协作邀请兑换](../active-directory/external-identities/redemption-experience.md)。
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>为来宾用户添加角色分配
 
@@ -85,13 +85,13 @@ ms.locfileid: "85361898"
 
 1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。 
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
 
     如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-    ![添加角色分配菜单](./media/shared/add-role-assignment-menu.png)
+    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
-    此时会打开“添加角色分配”窗格。
+    将打开“添加角色分配”窗格。
 
 1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
 
@@ -119,13 +119,13 @@ ms.locfileid: "85361898"
 
 1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。 
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
 
-    ![添加角色分配菜单](./media/shared/add-role-assignment-menu.png)
+    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
-    此时会打开“添加角色分配”窗格。
+    将打开“添加角色分配”窗格。
 
-1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
 1. 在“选择”列表中，键入要邀请的人员的电子邮件地址，然后选择该人员。
 
@@ -145,7 +145,7 @@ ms.locfileid: "85361898"
 
 1. 将邀请链接发送给来宾用户以完成邀请过程。
 
-    有关邀请过程的详细信息，请参阅 [Azure Active Directory B2B 协作邀请兑换](../active-directory/b2b/redemption-experience.md)。
+    有关邀请过程的详细信息，请参阅 [Azure Active Directory B2B 协作邀请兑换](../active-directory/external-identities/redemption-experience.md)。
 
 ## <a name="remove-a-guest-user-from-your-directory"></a>从目录中删除来宾用户
 
@@ -165,7 +165,7 @@ ms.locfileid: "85361898"
 
 1. 在显示的“删除角色分配”消息中，单击“是”。
 
-1. 在左侧导航栏中，单击“Azure Active Directory” > “用户”。 
+1. 在左侧导航栏中，单击“Azure Active Directory” > “用户”。
 
 1. 单击要删除的来宾用户。
 
@@ -183,7 +183,7 @@ ms.locfileid: "85361898"
 
 ![来宾用户无法浏览目录中的用户](./media/role-assignments-external-users/directory-no-users.png)
 
-如果来宾用户在目录中需要额外的权限，则可以向来宾用户分配某个目录角色。 如果你确实希望来宾用户对目录拥有完全读取访问权限，则可以在 Azure AD 中将来宾用户添加到[目录读取者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)角色。 有关详细信息，请参阅[在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限](../active-directory/b2b/add-guest-to-role.md)。
+如果来宾用户在目录中需要额外的权限，则可以向来宾用户分配某个目录角色。 如果你确实希望来宾用户对目录拥有完全读取访问权限，则可以在 Azure AD 中将来宾用户添加到[目录读取者](../active-directory/roles/permissions-reference.md)角色。 有关详细信息，请参阅[在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限](../active-directory/external-identities/add-guest-to-role.md)。
 
 ![分配“目录读取者”角色](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,17 +193,17 @@ ms.locfileid: "85361898"
 
 ![来宾用户无法浏览安全主体来分配角色](./media/role-assignments-external-users/directory-no-browse.png)
 
-如果来宾用户知道某人在目录中的确切登录名，则他们可以授予访问权限。 如果你确实希望来宾用户对目录拥有完全读取访问权限，则可以在 Azure AD 中将来宾用户添加到[目录读取者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)角色。 有关详细信息，请参阅[在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限](../active-directory/b2b/add-guest-to-role.md)。
+如果来宾用户知道某人在目录中的确切登录名，则他们可以授予访问权限。 如果你确实希望来宾用户对目录拥有完全读取访问权限，则可以在 Azure AD 中将来宾用户添加到[目录读取者](../active-directory/roles/permissions-reference.md)角色。 有关详细信息，请参阅[在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限](../active-directory/external-identities/add-guest-to-role.md)。
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>来宾用户无法注册应用程序或创建服务主体
 
-来宾用户的目录权限受到限制。 如果来宾用户需要能够注册应用程序或创建服务主体，你可以在 Azure AD 中将来宾用户添加到[应用程序开发者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)角色。 有关详细信息，请参阅[在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限](../active-directory/b2b/add-guest-to-role.md)。
+来宾用户的目录权限受到限制。 如果来宾用户需要能够注册应用程序或创建服务主体，你可以在 Azure AD 中将来宾用户添加到[应用程序开发者](../active-directory/roles/permissions-reference.md)角色。 有关详细信息，请参阅[在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限](../active-directory/external-identities/add-guest-to-role.md)。
 
 ![来宾用户无法注册应用程序](./media/role-assignments-external-users/directory-access-denied.png)
 
 ### <a name="guest-user-does-not-see-the-new-directory"></a>来宾用户看不到新目录
 
-如果已向来宾用户授予了对某个目录的访问权限，但当他们尝试在其“目录 + 订阅”窗格中切换时，他们看不到新目录在 Azure 门户中列出，则请确保来宾用户已完成邀请过程。 有关邀请过程的详细信息，请参阅 [Azure Active Directory B2B 协作邀请兑换](../active-directory/b2b/redemption-experience.md)。
+如果已向来宾用户授予了对某个目录的访问权限，但当他们尝试在其“目录 + 订阅”窗格中切换时，他们看不到新目录在 Azure 门户中列出，则请确保来宾用户已完成邀请过程。 有关邀请过程的详细信息，请参阅 [Azure Active Directory B2B 协作邀请兑换](../active-directory/external-identities/redemption-experience.md)。
 
 ### <a name="guest-user-does-not-see-resources"></a>来宾用户看不到资源
 
@@ -213,7 +213,7 @@ ms.locfileid: "85361898"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../active-directory/b2b/add-users-administrator.md)
-- [Azure Active Directory B2B 协作用户的属性](../active-directory/b2b/user-properties.md)
-- [B2B 协作邀请电子邮件的元素 - Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../active-directory/external-identities/add-users-administrator.md)
+- [Azure Active Directory B2B 协作用户的属性](../active-directory/external-identities/user-properties.md)
+- [B2B 协作邀请电子邮件的元素 - Azure Active Directory](../active-directory/external-identities/invitation-email-elements.md)
 - [将来宾用户添加为共同管理员](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341660"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319021"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>通过 MLflow 和 Azure 机器学习 (预览版跟踪 Azure Databricks ML 试验) 
 
 本文介绍如何启用 MLflow 的跟踪 URI 和日志记录 API （统称为 [MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)），以将 AZURE DATABRICKS (ADB) 试验、MLflow 和 Azure 机器学习。
 
-[MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，用于记录和跟踪定型运行指标和模型项目。 了解 [Azure Databricks 和 MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/)的详细信息。 
+[MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，用于记录和跟踪定型运行指标和模型项目。 了解 [Azure Databricks 和 MLflow](/azure/databricks/applications/mlflow/)的详细信息。 
 
 有关其他 MLflow 和 Azure 机器学习功能集成，请参阅 [跟踪试验运行和创建终结点，并提供 MLflow 和 Azure 机器学习](how-to-use-mlflow.md) 。
 
@@ -35,8 +35,8 @@ ms.locfileid: "91341660"
 ## <a name="prerequisites"></a>先决条件
 
 * 安装 `azureml-mlflow` 包。 
-    * 此包会自动引入 `azureml-core` [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)，该 SDK 提供 MLflow 的连接以访问工作区。
-* [Azure Databricks 工作区和群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
+    * 此包会自动引入 `azureml-core` [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)，该 SDK 提供 MLflow 的连接以访问工作区。
+* [Azure Databricks 工作区和群集](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 ## <a name="track-azure-databricks-runs"></a>跟踪 Azure Databricks 运行
@@ -58,7 +58,7 @@ ms.locfileid: "91341660"
 
 ## <a name="install-libraries"></a>安装库
 
-若要在群集上安装库，请导航到 "**库**" 选项卡并选择 "**安装新**的"
+若要在群集上安装库，请导航到 " **库** " 选项卡并选择 " **安装新** 的"
 
  ![azure databricks 的 mlflow](./media/how-to-use-mlflow-azure-databricks/azure-databricks-cluster-libraries.png)
 
@@ -70,9 +70,9 @@ ms.locfileid: "91341660"
 
 设置 ADB 群集后， 
 1. 选择左侧导航窗格中的 " **工作区** "。 
-1. 展开 "工作区" 下拉菜单，然后选择 "**导入**"
+1. 展开 "工作区" 下拉菜单，然后选择 " **导入** "
 1. 拖放或浏览查找要导入 ADB 工作区的实验笔记本。
-1. 选择“导入”。 实验笔记本会自动打开。
+1. 选择“导入”  。 实验笔记本会自动打开。
 1. 在左上角的 "笔记本标题" 下，选择要附加到实验笔记本的群集。 
 
 ## <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>连接 Azure Databricks 和 Azure 机器学习工作区
@@ -156,9 +156,9 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 默认情况下，后端跟踪服务器为 Azure Databricks 工作区;除非你选择 [将 MLflow 跟踪设置为仅在 Azure 机器学习工作区中跟踪](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace)，否则后端跟踪服务器将是 Azure 机器学习工作区。   
 
-* **如果名为的已注册模型不存在**，则该方法将注册一个新模型，并创建版本1，并返回一个 ModelVersion MLflow 对象。 
+* **如果名为的已注册模型不存在** ，则该方法将注册一个新模型，并创建版本1，并返回一个 ModelVersion MLflow 对象。 
 
-* **如果已存在具有该名称的已注册模型**，则该方法会创建新的模型版本并返回 version 对象。 
+* **如果已存在具有该名称的已注册模型** ，则该方法会创建新的模型版本并返回 version 对象。 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -172,7 +172,7 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 
 准备好为 ML 模型创建终结点时。 可以将部署为， 
 
-* 一个 Azure 机器学习的请求-响应 web 服务，用于交互式计分。 此部署使你能够利用 Azure 机器学习模型管理和数据偏差检测功能，并将其用于生产模型。 
+* 用于交互式计分的 Azure 机器学习 Request-Response web 服务。 此部署使你能够利用 Azure 机器学习模型管理和数据偏差检测功能，并将其用于生产模型。 
 
 * MLFlow 模型对象，可在流管道或批处理管道中用作 Python 函数或 Pandas Udf Azure Databricks 工作区。
 
@@ -222,7 +222,7 @@ display(preds)
 
 1. 从列表中选择已创建的资源组。
 
-1. 选择“删除资源组”****。
+1. 选择“删除资源组”。
 
 1. 输入资源组名称。 然后选择“删除”。
 
@@ -234,4 +234,4 @@ display(preds)
 
 * [管理模型](concept-model-management-and-deployment.md)。
 * [跟踪试验运行并通过 MLflow 和 Azure 机器学习创建终结点](how-to-use-mlflow.md)。 
-* 了解 [Azure Databricks 和 MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/)的详细信息。
+* 了解 [Azure Databricks 和 MLflow](/azure/databricks/applications/mlflow/)的详细信息。

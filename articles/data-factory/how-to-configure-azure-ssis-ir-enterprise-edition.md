@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 55a49ac13cdfd3f6157ae7495403f76056e734ce
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: be49d56d301c23791777f4d89e8c6c6fd35d7035
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184088"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636300"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时企业版
 
@@ -38,7 +38,7 @@ ms.locfileid: "86184088"
 | Oracle 连接器 | Oracle 连接管理器、源和目标已预装在 Azure-SSIS IR 企业版上。 还需要在 Azure-SSIS IR 上安装 Oracle 调用接口 (OCI) 驱动程序，并在必要时配置 Oracle 传输网络底层 (TNS)。 有关详细信息，请参阅 [Azure-SSIS 集成运行时的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
 | Teradata 连接器 | 需要在 Azure-SSIS IR 企业版上安装 Teradata 连接管理器、源、目标，以及 Teradata 并行传输程序 (TPT) API 和 Teradata ODBC 驱动程序。 有关详细信息，请参阅 [Azure-SSIS 集成运行时的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
 | SAP BW 连接器 | SAP BW 连接管理器、源和目标已预装在 Azure-SSIS IR 企业版上。 还需要在 Azure-SSIS IR 上安装 SAP BW 驱动程序。 这些连接器支持 SAP BW 7.0 或更低版本。 若要连接到更高版本的 SAP BW 或其他 SAP 产品，可以从第三方 ISV 购买 SAP 连接器并将其安装在 Azure-SSIS IR 上。 有关如何安装附加组件的详细信息，请参阅 [Azure-SSIS 集成运行时的自定义安装](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
-| Analysis Services 组件               | 数据挖掘模型定型目标、维度处理目标、分区处理目标以及数据挖掘查询转换已预装在 Azure-SSIS IR 企业版上。 所有这些组件支持 SQL Server Analysis Services (SSAS)，但只有分区处理目标支持 Azure Analysis Services (AAS)。 若要连接到 SSAS，还需要[在 SSISDB 中配置 Windows 身份验证凭据](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)。 除了这些组件以外，Analysis Services 执行 DDL 任务、Analysis Services 处理任务和数据挖掘查询任务也已预装在 Azure-SSIS IR 标准/企业版上。 |
+| Analysis Services 组件               | 数据挖掘模型定型目标、维度处理目标、分区处理目标以及数据挖掘查询转换已预装在 Azure-SSIS IR 企业版上。 所有这些组件支持 SQL Server Analysis Services (SSAS)，但只有分区处理目标支持 Azure Analysis Services (AAS)。 若要连接到 SSAS，还需要[在 SSISDB 中配置 Windows 身份验证凭据](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)。 除了这些组件以外，Analysis Services 执行 DDL 任务、Analysis Services 处理任务和数据挖掘查询任务也已预装在 Azure-SSIS IR 标准/企业版上。 |
 | 模糊分组和模糊查找转换  | 模糊分组和模糊查找转换已预装在 Azure-SSIS IR 企业版上。 这些组件支持使用 SQL Server 和 Azure SQL 数据库来存储参考数据。 |
 | 字词提取和字词查找转换 | 字词提取和字词查找转换已预装在 Azure-SSIS IR 企业版上。 这些组件支持使用 SQL Server 和 Azure SQL 数据库来存储参考数据。 |
 

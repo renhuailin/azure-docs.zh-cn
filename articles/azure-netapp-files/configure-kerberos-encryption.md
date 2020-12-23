@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 9/29/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461472"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410090"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFSv 4.1 Kerberos 加密
 
@@ -40,7 +40,7 @@ Azure NetApp 文件在 Kerberos 模式下支持 NFS 客户端加密 (krb5.conf�
 
 1.  按照为 [Azure NetApp 文件创建 NFS 卷](azure-netapp-files-create-volumes.md) 中的步骤创建 nfsv 4.1 卷。   
 
-    在 "创建卷" 页上，将 NFS 版本设置为 **nfsv 4.1**，并将 Kerberos 设置为 " **已启用**"。
+    在 "创建卷" 页上，将 NFS 版本设置为 **nfsv 4.1** ，并将 Kerberos 设置为 " **已启用** "。
 
     > [!IMPORTANT] 
     > 创建卷后，无法修改 Kerberos 启用选项。
@@ -61,7 +61,7 @@ Azure NetApp 文件在 Kerberos 模式下支持 NFS 客户端加密 (krb5.conf�
 
     Kerberos 要求你至少在 Active Directory 中创建一个计算机帐户。 提供的帐户信息用于创建 SMB *和* Nfsv 4.1 Kerberos 卷的帐户。 创建卷时，将自动创建此计算机。
 
-2.  在 " **Kerberos 领域**" 下，输入 **AD 服务器名称** 和 **KDC IP** 地址。
+2.  在 " **Kerberos 领域** " 下，输入 **AD 服务器名称** 和 **KDC IP** 地址。
 
     AD 服务器和 KDC IP 可以是同一服务器。 此信息用于创建由 Azure NetApp 文件使用的 SPN 计算机帐户。 创建计算机帐户后，Azure NetApp 文件将使用 DNS 服务器记录根据需要定位其他 KDC 服务器。 
 
@@ -75,7 +75,7 @@ Azure NetApp 文件在 Kerberos 模式下支持 NFS 客户端加密 (krb5.conf�
 * SMB 共享的计算机帐户
 * NFSv 4.1 的计算机帐户-可以通过前缀来识别此帐户 `NFS-` 。 
 
-创建第一个 NFSv 4.1 Kerberos 卷后，请使用以下 PowerShell 命令设置加密类型或计算机帐户：
+创建第一个 NFSv 4.1 Kerberos 卷后，请使用以下 PowerShell 命令设置计算机帐户的加密类型：
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -96,11 +96,11 @@ Azure NetApp 文件在 Kerberos 模式下支持 NFS 客户端加密 (krb5.conf�
 3. 为新卷 (装入点) 创建目录。  
 
 4. 为计算机帐户将默认加密类型设置为 AES 256：  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * 对于每个计算机帐户，只需运行一次此命令。
     * 可以从域控制器或安装了 [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) 的 PC 上运行此命令。 
-    * `$COMPUTERACCOUNT`变量是在部署 Kerberos 卷 Active Directory 中创建的计算机帐户。 这是前缀为的帐户 `NFS-` 。 
+    * `$NFSCOMPUTERACCOUNT`变量是在部署 Kerberos 卷 Active Directory 中创建的计算机帐户。 这是前缀为的帐户 `NFS-` 。 
     * `$ANFSERVICEACCOUNT`变量是在创建计算机帐户的组织单位上具有委派控制权限的非特权 Active Directory 用户帐户。 
 
 5. 在主机上装载卷： 

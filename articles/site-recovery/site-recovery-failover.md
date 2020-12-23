@@ -4,12 +4,12 @@ description: 如何使用 Azure Site Recovery 将 VM/物理服务器故障转移
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6737f64773f91ede1631d42cd7f28c7d961c0454
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317882"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368615"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>运行从本地到 Azure 的故障转移
 
@@ -127,8 +127,8 @@ Site Recovery 会处理驱动器号的保留。 如果要在 VM 复制期间排�
 
 **故障转移** | **位置** | **操作**
 --- | --- | ---
-**运行 Windows 的 Azure VM** | 故障转移之后在 Azure VM 上 |  为 VM [添加公共 IP 地址](https://aka.ms/addpublicip)。<br/><br/> 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图。<br/><br/> 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
-**运行 Linux 的 Azure VM** | 故障转移之后在 Azure VM 上 | 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 SSH 端口建立传入连接。<br/><br/> 为 VM [添加公共 IP 地址](https://aka.ms/addpublicip)。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图  。<br/><br/>
+**运行 Windows 的 Azure VM** | 故障转移之后在 Azure VM 上 |  为 VM [添加公共 IP 地址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图。<br/><br/> 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+**运行 Linux 的 Azure VM** | 故障转移之后在 Azure VM 上 | 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 SSH 端口建立传入连接。<br/><br/> 为 VM [添加公共 IP 地址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图  。<br/><br/>
 
 请按照[此处](site-recovery-failover-to-azure-troubleshoot.md)所述的步骤对故障转移后的任何连接问题进行故障排除。
 
@@ -149,4 +149,3 @@ Site Recovery 会处理驱动器号的保留。 如果要在 VM 复制期间排�
 - [准备](vmware-azure-reprotect.md)进行 VMware 重新保护和故障回复。
 - [故障回复](hyper-v-azure-failback.md) Hyper-V VM。
 - [了解](physical-to-azure-failover-failback.md)物理服务器的故障转移和故障回复过程。
-

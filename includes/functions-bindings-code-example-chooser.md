@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/24/2020
 ms.author: glenga
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 33e3e45626818a8786d32d3864b67bb0f9004b91
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 1ff9606d10ac62e0bab15f970a964bfd0b08bee8
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652597"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506312"
 ---
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -23,11 +23,12 @@ ms.locfileid: "91652597"
 | IoT 中心 |[触发器](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=csharp#example)<br/>[输出](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=csharp#example) | |
 | HTTP |[触发器](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#example) | [链接](https://www.serverlesslibrary.net/?language=C%23&filtertext=http) |
 | 队列存储 | [触发器](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#example)<br/>[输出](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp#example) | [链接](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=C%23) |
+| RabbitMQ |[触发器](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=csharp#example)<br/>[输出](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=csharp#example) |
 | SendGrid | [输出](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp#example) | |
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=C%23) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=csharp#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=csharp#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp) | |
-| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=csharp#example) | [链接](https://www.serverlesslibrary.net/?language=C%23&filtertext=timer) |
+| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=csharp)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=csharp) | |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=csharp#example) | [链接](https://www.serverlesslibrary.net/?language=C%23&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=csharp#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=C%23&filtertext=twilio) |
 
 # <a name="java"></a>[Java](#tab/java)
@@ -41,11 +42,12 @@ ms.locfileid: "91652597"
 | IoT 中心 |[触发器](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=java#example)<br/>[输出](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=java#example) | |
 | HTTP |[触发器](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=java#example) | [链接](https://www.serverlesslibrary.net/?language=Java&filtertext=http) |
 | 队列存储 | [触发器](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=java#example)<br/>[输出](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=java#example) | [链接](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=Java) |
+| RabbitMQ |[触发器](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=java#example)<br/>[输出](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=java#example) |
 | SendGrid | [输出](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=java#example) | |
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=java#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=java#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Java) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=java#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=java#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=java) | |
-| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=java#example) | [链接](https://www.serverlesslibrary.net/?language=Java&filtertext=timer) |
+| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=java)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=java) | |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=java#example) | [链接](https://www.serverlesslibrary.net/?language=Java&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=java#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=Java&filtertext=twilio) |
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
@@ -59,11 +61,12 @@ ms.locfileid: "91652597"
 | IoT 中心 |[触发器](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=javascript#example)<br/>[输出](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=javascript#example) | |
 | HTTP |[触发器](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=javascript#example) | [链接](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=http) |
 | 队列存储 | [触发器](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=javascript#example)<br/>[输出](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=javascript#example) | [链接](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=JavaScript) |
+| RabbitMQ |[触发器](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=javascript#example)<br/>[输出](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=javascript#example) |
 | SendGrid | [输出](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=javascript#example) | |
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=javascript#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=javascript#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=JavaScript) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=javascript#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=javascript#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=javascript) | |
-| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=javascript#example) | [链接](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=timer) |
+| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=javascript)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=javascript) | |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=javascript#example) | [链接](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=javascript#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=twilio) |
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -77,11 +80,12 @@ ms.locfileid: "91652597"
 | IoT 中心 |[触发器](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=powershell#example)<br/>[输出](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=powershell#example) | |
 | HTTP |[触发器](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=powershell#example) | [链接](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=http) |
 | 队列存储 | [触发器](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=powershell#example)<br/>[输出](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=powershell#example) | [链接](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=PowerShell) |
+| RabbitMQ |[触发器](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=powershell#example)<br/>[输出](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=powershell#example) |
 | SendGrid | [输出](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=powershell#example) | |
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=powershell#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=powershell#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=PowerShell) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=powershell#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=powershell#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=powershell) | |
-| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=powershell#example) | [链接](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=timer) |
+| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=powershell)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=powershell) | |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=powershell#example) | [链接](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=powershell#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=twilio) |
 
 # <a name="python"></a>[Python](#tab/python)
@@ -95,11 +99,12 @@ ms.locfileid: "91652597"
 | IoT 中心 |[触发器](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=python#example)<br/>[输出](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=python#example) | |
 | HTTP |[触发器](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=python#example) | [链接](https://www.serverlesslibrary.net/?language=Python&filtertext=http) |
 | 队列存储 | [触发器](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=python#example)<br/>[输出](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=python#example) | [链接](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=Python) |
+| RabbitMQ |[触发器](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=python#example)<br/>[输出](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=python#example) |
 | SendGrid | [输出](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=python#example) | |
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=python#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=python#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Python) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=python#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=python#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=python) | |
-| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=python#example) | [链接](https://www.serverlesslibrary.net/?language=Python&filtertext=timer) |
+| 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=python)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=python) | |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=python#example) | [链接](https://www.serverlesslibrary.net/?language=Python&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=python#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=Python&filtertext=twilio)。 |
 
 ---

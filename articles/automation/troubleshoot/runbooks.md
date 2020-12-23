@@ -2,16 +2,16 @@
 title: 排查 Azure 自动化 Runbook 问题
 description: 本文介绍如何排查和解决 Azure 自动化 Runbook 的问题。
 services: automation
-ms.date: 07/28/2020
+ms.date: 11/03/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c7ab093f601ebcd33d184b9a9008f9de447534a1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904796"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368077"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -42,7 +42,7 @@ ms.locfileid: "87904796"
     * 如果运行方式帐户已过期，请[续订证书](../manage-runas-account.md#cert-renewal)。
     * 如果尝试用来启动 Runbook 的 Webhook 已过期，请[续订 Webhook](../automation-webhooks.md#renew-a-webhook)。
     * [检查作业状态](../automation-runbook-execution.md#job-statuses)，确定当前 Runbook 状态以及导致问题的一些可能原因。
-    * [将更多输出添加到](../automation-runbook-output-and-messages.md#monitor-message-streams) Runbook，以确定 Runbook 在暂停之前发生了什么情况。
+    * [将更多输出添加到](../automation-runbook-output-and-messages.md#working-with-message-streams) Runbook，以确定 Runbook 在暂停之前发生了什么情况。
     * [处理由作业引发的任何异常](../automation-runbook-execution.md#exceptions)。
 
 1. 如果混合 Runbook 辅助角色中的 Runbook 作业或环境无响应，请执行此步骤。
@@ -96,7 +96,7 @@ No certificate was found in the certificate store with thumbprint
    Connect-AzAccount –Credential $Cred
    ```
 
-1. 如果无法在本地进行身份验证，则表示尚未正确设置 Azure Active Directory (Azure AD) 凭据。 若要正确设置 Azure AD 帐户，请参阅文章[使用 Azure Active Directory 对 Azure 进行身份验证](../automation-use-azure-ad.md)。
+1. 如果无法在本地进行身份验证，则表示尚未正确设置 Azure Active Directory (Azure AD) 凭据。 若要正确设置 Azure AD 帐户，请参阅文章 [使用 Azure Active Directory 对 Azure 进行身份验证](../automation-use-azure-ad.md)。
 
 1. 如果该错误看上去是暂时性的，请尝试向身份验证例程添加重试逻辑，使身份验证更加可靠。
 
@@ -201,7 +201,7 @@ The subscription named <subscription name> cannot be found.
 执行以下步骤来确定是否已在 Azure 中完成身份验证并有权访问你尝试选择的订阅：
 
 1. 为确保脚本可单独正常运行，请在 Azure 自动化外部对其进行测试。
-1. 确保脚本先运行 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet，再运行 `Select-*` cmdlet。
+1. 确保脚本先运行 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet，再运行 `Select-*` cmdlet。
 1. 将 `Disable-AzContextAutosave –Scope Process` 添加到 runbook 的开头。 此 cmdlet 可以确保任何凭据都仅适用于当前 runbook 的执行。
 1. 如果仍看到该错误消息，请通过为 `Connect-AzAccount` 添加 `AzContext` 参数来修改代码，然后执行代码。
 
@@ -251,7 +251,7 @@ Start-AzAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -AzContext $AzureContext `
+    -AzContext $AzContext `
     –Parameters $params –wait
 ```
 
@@ -271,7 +271,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 ### <a name="resolution"></a>解决方法
 
-若要将经典运行方式帐户用于 Azure 经典部署模型 cmdlet，请参阅[创建经典运行方式帐户以管理 azure 服务](../automation-create-standalone-account.md#create-a-classic-run-as-account)。 若要在 Azure 资源管理器 cmdlet 中使用服务主体，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+若要通过 Azure 经典部署模型 cmdlet 使用经典运行方式帐户，请参阅[创建经典运行方式帐户来管理 Azure 服务](../automation-create-standalone-account.md#create-a-classic-run-as-account)。 若要在 Azure 资源管理器 cmdlet 中使用服务主体，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>场景：Runbook 失败并出现“任务已取消”错误消息
 
@@ -398,7 +398,7 @@ Object reference not set to an instance of an object
 
 ### <a name="resolution"></a>解决方法
 
-实现轮询逻辑，并使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 检索输出。 下面定义了此逻辑的示例：
+实现轮询逻辑，并使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) cmdlet 检索输出。 下面定义了此逻辑的示例：
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -476,14 +476,14 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 ### <a name="cause"></a>原因
 
-从包含多个[详细流](../automation-runbook-output-and-messages.md#monitor-verbose-stream)的 Runbook 中检索作业输出时，可能会发生此错误。
+从包含多个[详细流](../automation-runbook-output-and-messages.md#write-output-to-verbose-stream)的 Runbook 中检索作业输出时，可能会发生此错误。
 
 ### <a name="resolution"></a>解决方法
 
 执行以下操作之一来解决此错误：
 
 * 编辑 Runbook，并减少它发出的作业流数量。
-* 减少运行 cmdlet 时要检索的流数量。 为此，可以设置 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 的 `Stream` 参数值，以仅检索输出流。 
+* 减少运行 cmdlet 时要检索的流数量。 为此，可以设置 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) cmdlet 的 `Stream` 参数值，以仅检索输出流。 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>场景：Runbook 作业因超过了分配的配额而失败
 
@@ -508,7 +508,7 @@ The quota for the monthly total job run time has been reached for this subscript
 1. 选择“设置”，然后选择“定价”。 
 1. 选择页面底部的“启用”，以将帐户升级到“基本”层。
 
-## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>方案： Runbook 输出流大于 1 MB
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>场景：Runbook 输出流大于 1 MB
 
 ### <a name="issue"></a>问题
 
@@ -520,11 +520,11 @@ The runbook job failed due to a job stream being larger than 1MB, this is the li
 
 ### <a name="cause"></a>原因
 
-之所以发生此错误，是因为 runbook 试图将过多的异常数据写入输出流。
+出现此错误是因为 runbook 尝试向输出流写入太多异常数据。
 
 ### <a name="resolution"></a>解决方法
 
-作业输出流的限制为 1 MB。 确保 Runbook 使用 `try` 和 `catch` 块包含对可执行文件或子进程的调用。 如果操作引发异常，请让代码将该异常中的消息写入自动化变量中。 此方法可防止将消息写入作业输出流中。 对于执行的混合 Runbook 辅助角色作业，将显示截断为 1 MB 的输出流，且不显示错误消息。
+作业输出流限制为 1 MB。 确保 Runbook 使用 `try` 和 `catch` 块包含对可执行文件或子进程的调用。 如果操作引发异常，请让代码将该异常中的消息写入自动化变量中。 此方法可防止将消息写入作业输出流中。 对于执行的混合 Runbook 辅助角色作业，将显示截断为 1 MB 的输出流，且不显示任何错误消息。
 
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>场景：已尝试启动 Runbook 作业三次，但每次都失败
 
@@ -576,7 +576,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 可通过两种方法来解决此错误：
 
-* 若要启动 Runbook，请不要使用 [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)，而要使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)。
+* 若要启动 Runbook，请不要使用 [Start-Job](/powershell/module/microsoft.powershell.core/start-job)，而要使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook)。
 * 尝试在混合 Runbook 辅助角色中运行 Runbook。
 
 若要详细了解 Azure 自动化 Runbook 的此行为和其他行为，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
@@ -605,8 +605,8 @@ Runbook 运行时间超出了 Azure 沙盒中公平份额允许的三小时限�
 
 启用子 runbook 方案的 PowerShell cmdlet 是：
 
-* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0)。 此 cmdlet 用于启动 Runbook 并将参数传递给该 Runbook。
-* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0)。 如果在子 Runbook 完成后需要执行操作，可使用此 cmdlet 检查每个子 Runbook 的作业状态。
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook)。 此 cmdlet 用于启动 Runbook 并将参数传递给该 Runbook。
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob)。 如果在子 Runbook 完成后需要执行操作，可使用此 cmdlet 检查每个子 Runbook 的作业状态。
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>场景：作业流中出现有关 get_SerializationSettings 方法的错误
 
@@ -642,7 +642,7 @@ At line:16 char:1
 
 ### <a name="cause"></a>原因
 
-之所以会出现此问题，是因为 Azure 沙盒会阻止访问所有的进程外 COM 服务器。 例如，沙盒应用程序或 Runbook 无法调用 Windows Management Instrumentation (WMI) 或 Windows Installer 服务 (msiserver.exe)。 
+之所以会出现此问题，是因为 Azure 沙盒会阻止访问所有的进程外 COM 服务器。 例如，沙盒应用程序或 Runbook 无法调用 Windows Management Instrumentation (WMI) 或 Windows Installer 服务 (msiserver.exe)。
 
 ### <a name="resolution"></a>解决方法
 

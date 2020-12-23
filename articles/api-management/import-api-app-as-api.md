@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户将 API 应用导入为 API | Microsoft Docs
-description: 本教程演示如何使用 API 管理 (APIM) 将 API 应用导入为 API。
+description: 本文演示如何使用 API 管理 (APIM) 将 API 应用导入为 API。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 007598046ae64b390d44e61438b69bd26024b1c4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91626881"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994734"
 ---
 # <a name="import-an-api-app-as-an-api"></a>将 API 应用导入为 API
 

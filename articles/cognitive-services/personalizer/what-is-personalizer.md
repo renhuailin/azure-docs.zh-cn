@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: personalizer, Azure personalizer, machine learning
-ms.openlocfilehash: ae17b799c2b222525db53d5bb8e0afdbbcf19975
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777235"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094142"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
@@ -29,9 +29,9 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>个性化体验创建服务如何选择最佳内容项目？
 
-个性化体验创建服务使用**强化学习**根据所有用户的集体行为和奖励评分来选择最佳项目（操作）。 操作是内容项，例如新闻文章、特定电影或产品。
+个性化体验创建服务使用 **强化学习** 根据所有用户的集体行为和奖励评分来选择最佳项目（操作）。 操作是内容项，例如新闻文章、特定电影或产品。
 
-**排名**调用可采用操作项以及操作的特征和上下文特征来选择顶级操作项：
+**排名** 调用可采用操作项以及操作的特征和上下文特征来选择顶级操作项：
 
 * **包含特征的操作** - 其特征特定于每个项的内容项
 * **上下文特征** - 使用应用时用户的特征、其上下文或环境
@@ -59,7 +59,7 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
 
 每当应用程序显示内容时，都会调用个性化体验创建服务的排名 [API](https://go.microsoft.com/fwlink/?linkid=2092082)。 这称为“事件”，使用“事件 ID”来标注。
 
-个性化体验创建服务的**奖励** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可以实时调用，也可以延迟，以便更好地适应基础结构。 根据业务需要确定奖励分数。 奖励分介于 0 到 1 之间。 该分数可以是单个值（例如，1 表示“好”，0 表示“差”），也可以是你根据业务目标和指标创建的算法所生成的某个数字。
+个性化体验创建服务的 **奖励** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可以实时调用，也可以延迟，以便更好地适应基础结构。 根据业务需要确定奖励分数。 奖励分介于 0 到 1 之间。 该分数可以是单个值（例如，1 表示“好”，0 表示“差”），也可以是你根据业务目标和指标创建的算法所生成的某个数字。
 
 ## <a name="content-requirements"></a>内容要求
 
@@ -86,7 +86,7 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
     |免费，`F0`| 在非生产环境中尝试联机学习行为|
 
 1. 将个性化体验创建服务添加到应用程序、网站或系统：
-    1. 在应用程序、网站或系统中添加对个性化体验创建服务的**排名**调用，这样就可以在向用户显示内容之前确定最佳的单一内容项。
+    1. 在应用程序、网站或系统中添加对个性化体验创建服务的 **排名** 调用，这样就可以在向用户显示内容之前确定最佳的单一内容项。
     1. 显示最佳的单一内容项，它是为用户返回的奖励操作 ID。
     1. 对收集的有关用户行为的信息应用业务逻辑，确定奖励分数，例如：
 
@@ -96,7 +96,7 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
     |用户选择了其他内容|**0**|
     |用户在选择最佳单一内容项（奖励操作 ID）之前犹豫不决|**0.5**|
 
-    1. 添加一个**奖励**调用，发送的奖励分数在 0 到 1 之间
+    1. 添加一个 **奖励** 调用，发送的奖励分数在 0 到 1 之间
         * 在显示内容后立即这样做
         * 或者稍后在脱机系统中这样做
     1. 使用一段时间后，使用脱机评估来[评估循环](concepts-offline-evaluation.md)。 使用脱机评估，可以在不更改代码或影响用户体验的情况下测试和评估个性化体验创建服务的有效性。
@@ -105,7 +105,7 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
 
 我们提供了适用于 C#、JavaScript 和 Python 的快速入门。 每个快速入门旨在让你了解基本设计模式并帮助你在 10 分钟以内运行代码。 
 
-* [快速入门：如何使用个性化体验创建服务客户端库](sdk-learning-loop.md)
+* [快速入门：如何使用个性化体验创建服务客户端库](./quickstart-personalizer-sdk.md)
 
 有机会开始使用个性化体验创建服务后，请尝试我们的教程，了解如何在 Web 应用程序、聊天机器人或 Azure Notebook 中使用个性化体验创建服务。
 
@@ -115,10 +115,10 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
 
 ## <a name="reference"></a>参考 
 
-* [个性化体验创建服务 C#/.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
-* [个性化体验创建服务 Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
-* [个性化体验创建服务 JavaScript SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
-* [个性化体验创建服务 Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [个性化体验创建服务 C#/.NET SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [个性化体验创建服务 Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)
+* [个性化体验创建服务 JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [个性化体验创建服务 Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>后续步骤

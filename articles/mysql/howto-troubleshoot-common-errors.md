@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ebe9f936e3d0dfafec23842fcdbfd225995d546b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f64d4d2b9acbe0e6585ca546c915b82d2d1dbbc4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88719773"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737197"
 ---
 # <a name="common-errors"></a>常见错误
 
@@ -36,13 +36,13 @@ BEGIN
 END;
 ```
 
-**解决方法**：要解决此错误，请从门户中的[服务器参数](howto-server-parameters.md)边栏选项卡将 log_bin_trust_function_creators 设置为 1，执行 DDL 语句或导入架构来创建所需的对象，并在创建后将 log_bin_trust_function_creators parameter 参数恢复到它之前的值。
+**解决方法** ：要解决此错误，请从门户中的 [服务器参数](howto-server-parameters.md)边栏选项卡将 log_bin_trust_function_creators 设置为 1，执行 DDL 语句或导入架构来创建所需的对象，并在创建后将 log_bin_trust_function_creators parameter 参数恢复到它之前的值。
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>第 101 行出现错误 1227 (42000)：访问被拒绝；需要（至少一项）SUPER 权限才能执行此操作。 操作失败，退出代码为 1
 
 导入转储文件或创建包含[定义程序](https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html)的过程时，可能会出现上述错误。 
 
-**解决方法**：要解决此错误，管理员用户可通过运行 GRANT 命令来授予创建或执行过程的权限，如下例所示：
+**解决方法** ：要解决此错误，管理员用户可通过运行 GRANT 命令来授予创建或执行过程的权限，如下例所示：
 
 ```sql
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
@@ -64,7 +64,7 @@ DELIMITER ;
 
 ## <a name="next-steps"></a>后续步骤
 如果找不到所需的答案，请考虑以下操作：
-- 在 [Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) 上发布问题。
+- 在 [Microsoft Q&A 问题页](/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) 上发布问题。
 - 向 Azure Database for MySQL 团队 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) 发送电子邮件。 此电子邮件地址不是技术支持别名。
 - 若要联系 Azure 支持人员，请[从 Azure 门户提交票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 - 若要提供反馈或请求新功能，请通过 [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) 创建条目。

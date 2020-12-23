@@ -1,18 +1,18 @@
 ---
 title: VPN 网关：用于 OpenVPN 协议 P2S 连接的 VPN 客户端：Azure AD 身份验证
-description: 了解如何使用 P2S VPN 通过 Azure AD authentication 连接到 VNet。
+description: 了解如何使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet。
 services: vpn-gateway
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977834"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565001"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
 
@@ -56,65 +56,65 @@ ms.locfileid: "90977834"
 
 1. 突出显示要导出的 VPN 客户端配置文件，然后依次选择“...”、“导出”。  
 
-    ![导出](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![屏幕截图显示从菜单选择的导出。](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. 选择要将此配置文件保存到的位置，保留默认的文件名，然后选择“保存”以保存 xml 文件。 
 
-    ![导出](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![屏幕截图显示 "另存为" 对话框，你可以在其中输入文件名。](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>导入客户端配置文件
 
 1. 在页面上，选择“导入”。 
 
-    ![进口](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![屏幕截图显示从 plus 菜单中选择的导入。](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. 浏览到 XML 配置文件并将其选中。 选择该文件后，选择“打开”。 
 
-    ![进口](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![屏幕截图显示 "打开" 对话框，你可以在其中选择文件。](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. 指定配置文件的名称，并选择“保存”。 
 
-    ![进口](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![屏幕截图显示添加的连接名称，并选择 "保存" 按钮。](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. 选择“连接”以连接到 VPN。 
 
-    ![进口](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![屏幕截图显示刚刚创建的连接的 "连接" 按钮。](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. 连接后，图标将变为绿色并指示“已连接”。 
 
-    ![进口](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![屏幕截图显示连接状态与 "断开连接" 选项。](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>删除客户端配置文件
 
 1. 选择要删除的客户端配置文件旁边的省略号图标。 然后选择“删除”  。
 
-    ![删除](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![屏幕截图显示从菜单中选择 "删除"。](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. 选择“删除”以删除配置文件。 
 
-    ![删除](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![屏幕截图显示了一个确认对话框，其中包含删除或取消选项。](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>创建连接
 
 1. 在页面上，依次选择 **+** 、“+ 添加”。 
 
-    ![连接](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![屏幕截图显示在加号菜单中选择了 "添加"。](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 填写连接信息。 如果你不确定要输入哪些值，请与管理员联系。 填写值后，选择“保存”。 
 
-    ![连接](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![屏幕截图显示窗格，你可以在其中输入所需的值。](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. 选择“连接”以连接到 VPN。 
 
-    ![连接](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![屏幕截图显示连接的 "连接" 按钮。](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 选择正确的凭据，然后选择“继续”。 
 
-    ![连接](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![屏幕截图显示 "登录" 对话框。](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 成功连接后，图标将变为绿色并指示“已连接”。 
 
-    ![连接](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![屏幕截图显示连接处于连接状态。](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="to-connect-automatically"></a><a name="autoconnect"></a>自动连接
 
@@ -122,37 +122,37 @@ ms.locfileid: "90977834"
 
 1. 在 VPN 客户端的主页上，选择“VPN 设置”。 
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![屏幕截图显示了 V P N 连接，可在其中选择 "V P N" 设置。](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在切换应用对话框中选择“是”。 
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![屏幕截图显示有关切换应用的验证消息。](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 请确保要设置的连接尚未建立连接，然后突出显示该配置文件并选中“自动连接”复选框。 
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![屏幕截图显示 "设置" 对话框，可在其中选择 "自动连接"。](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 选择“连接”启动 VPN 连接。 
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![屏幕截图显示连接按钮。](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>诊断连接问题
 
 1. 若要诊断连接问题，可以使用“诊断”工具。  选择要诊断的 VPN 连接旁边的“...”以显示菜单。  然后选择“诊断”。 
 
-    ![诊断](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![屏幕截图显示从菜单中选择的诊断。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. 在“连接属性”页上，选择“运行诊断”。  
 
-    ![诊断](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![屏幕截图显示连接的 "运行诊断" 按钮。](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. 使用凭据登录。
 
-    ![诊断](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![屏幕截图显示此操作的 "登录" 对话框。](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. 查看诊断结果。
 
-    ![诊断](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+    ![屏幕截图显示诊断结果。](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
 ## <a name="faq"></a>常见问题
 
@@ -192,7 +192,7 @@ ms.locfileid: "90977834"
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD 客户端使用 DNS 名称解析策略表 (NRPT) 条目，这意味着不会在 `ipconfig /all` 的输出下列出 DNS 服务器。 若要确认使用中的 DNS 设置，请使用 PowerShell 中的 [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps)。
+> OpenVPN Azure AD 客户端使用 DNS 名称解析策略表 (NRPT) 条目，这意味着不会在 `ipconfig /all` 的输出下列出 DNS 服务器。 若要确认使用中的 DNS 设置，请使用 PowerShell 中的 [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps)。
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何将自定义路由添加到 VPN 客户端？
@@ -212,7 +212,7 @@ ms.locfileid: "90977834"
 </clientconfig>
 </azvpnprofile>
 ```
-### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>如何实现将所有流量定向到 VPN 隧道 (强制隧道) ？
+### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>如何将所有流量定向到 VPN 隧道（强制隧道）？
 
 可以修改下载的配置文件 XML 文件并添加 \<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes> 标记
 

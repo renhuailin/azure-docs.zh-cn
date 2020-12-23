@@ -4,12 +4,12 @@ description: 了解如何在面向学生的 Azure 入门版订阅中创建 Azure
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f40405c9325743da5d1963e3baea781606d2d8d9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386956"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182523"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>使用面向学生的 Azure 入门版创建函数
 
@@ -100,7 +100,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 现在已完成使用简单的 HTTP 触发器函数创建函数应用的操作。 接下来，可以探索本地工具、更多语言以及监视和集成功能。
 
  * [使用 Visual Studio 创建你的第一个函数](./functions-create-your-first-function-visual-studio.md)
- * [使用 Visual Studio Code 创建第一个函数](./functions-create-first-function-vs-code.md)
+ * [使用 Visual Studio Code 创建第一个函数](./create-first-function-vs-code-csharp.md)
  * [Azure Functions JavaScript 开发人员指南](./functions-reference-node.md)
  * [使用 Azure Functions 连接到 Azure SQL 数据库](./functions-scenario-database-table-cleanup.md)
  * [详细了解 Azure Functions HTTP 绑定](./functions-bindings-http-webhook.md)。

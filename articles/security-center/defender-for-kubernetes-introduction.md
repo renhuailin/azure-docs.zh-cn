@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3308a72421b851402642f12daf56359c7e3c9216
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 04427a1eb2760e44086003a06ed4eb0d5cb473bf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449071"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673318"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 简介
 
@@ -30,8 +30,8 @@ Azure 安全中心和 AKS 构成了最佳的云原生 Kubernetes 安全产品和
 |----|:----|
 |发布状态：|正式发布 (GA)|
 |定价：|适用于 Kubernetes 的 Azure Defender 按[定价页](security-center-pricing.md)中的定价计费|
-|所需角色和权限：|**安全管理员**可以消除警报。<br>**安全读取者**可以查看结果。|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|所需角色和权限：|**安全管理员** 可以消除警报。<br>**安全读取者** 可以查看结果。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 有哪些优点？
@@ -90,6 +90,23 @@ Azure 安全中心和 AKS 构成了最佳的云原生 Kubernetes 安全产品和
 如果你选择不在主机上安装代理，则只能收到一部分威胁防护权益和安全警报。 你仍会收到与网络分析以及与恶意服务器通信相关的警报。
 
 
+### <a name="does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes"></a>AKS 是否允许我在 AKS 节点上安装自定义 VM 扩展？
+
+为使 Azure Defender 能够监视 AKS 节点，它们必须运行 Log Analytics 代理。 
+
+AKS 是一项托管服务，由于 Log Analytics 代理是 Microsoft 托管的扩展，因此也受 AKS 群集支持。
+
+
+
+### <a name="if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too"></a>如果我的群集已经在运行用于容器的 Azure Monitor 代理，我是否也需要 Log Analytics 代理？
+
+为使 Azure Defender 能够监视 AKS 节点，它们必须运行 Log Analytics 代理。
+
+如果群集已经在运行用于容器的 Azure Monitor 代理，则也可以安装 Log Analytics 代理，这两个代理可以彼此协同工作，而不会出现任何问题。
+
+[详细了解用于容器的 Azure Monitor 代理](../azure-monitor/insights/container-insights-manage-agent.md)。
+
+
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了安全中心的 Kubernetes 保护，包括适用于 Kubernetes 的 Azure Defender。 
@@ -97,5 +114,5 @@ Azure 安全中心和 AKS 构成了最佳的云原生 Kubernetes 安全产品和
 如需相关材料，请参阅以下文章： 
 
 - [启用 Azure Defender](security-center-pricing.md)
-- [将警报导出到 Azure Sentinel 或第三方 SIEM](continuous-export.md)
+- [将警报流式传输到 SIEM、SOAR 或 IT 服务管理解决方案](export-to-siem.md)
 - [警报的引用表](alerts-reference.md)

@@ -5,14 +5,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8de2c27ce03c871e60b6437656ad630fc8de8408
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981275"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963697"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces 工作原理
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 开发 Kubernetes 应用程序可能非常困难。 需要 Docker 和 Kubernetes 配置文件。 你需要确定如何在本地测试应用程序并与其他依赖服务进行交互。 你可能需要同时处理多个服务和一组开发人员的开发和测试。
 
@@ -22,7 +24,7 @@ Azure Dev Spaces 提供多种方法来快速循环访问和调试 Kubernetes 应
 
 Azure Dev Spaces 降低了在 AKS 群集的上下文中开发、测试和迭代 Kubernetes 应用程序的工作量。 这种减少的工作量使开发人员可以专注于应用程序的业务逻辑，而不是将其服务配置为在 Kubernetes 中运行。
 
-### <a name="bridge-to-kubernetes"></a>桥接 Kubernetes
+### <a name="bridge-to-kubernetes"></a>Bridge to Kubernetes
 
 通过桥接到 Kubernetes，可以将开发计算机连接到 Kubernetes 群集，这样就可以在开发计算机上运行和调试代码，就像它在群集上运行一样。 桥接 Kubernetes 通过在群集上运行一个可充当远程代理来重定向开发计算机和群集之间的流量的 pod，来重定向已连接的群集之间的流量。 此流量重定向允许开发计算机上的代码和群集中运行的服务进行通信，就像它们位于同一群集中一样。 有关将开发计算机连接到 Kubernetes 群集的详细信息，请参阅 [桥 To Kubernetes 的工作原理][how-it-works-bridge-to-kubernetes]。
 

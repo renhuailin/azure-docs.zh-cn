@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c59b5646e011afa6b8487e8145a1cb07e6e2a8ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207486"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015572"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>从 Splunk 到 Azure Monitor 日志查询
 
@@ -87,7 +87,7 @@ Azure Monitor 日志查询还支持将 `take` 用作 `limit` 的别名。 在 Sp
 
 | | 运算符 | 示例 |
 |:---|:---|:---|
-| **Splunk** | **头** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
+| **Splunk** | **head** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
 | **Azure Monitor** | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>获取按字段/列排序的前 n 个事件/行
@@ -95,7 +95,7 @@ Azure Monitor 日志查询还支持将 `take` 用作 `limit` 的别名。 在 Sp
 
 | | 运算符 | 示例 |
 |:---|:---|:---|
-| **Splunk** | **头** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
+| **Splunk** | **head** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
 | **Azure Monitor** | **返回页首** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>使用新字段/列扩展结果集
@@ -123,7 +123,7 @@ Splunk 似乎没有类似于 `project-away` 的运算符。 可以使用 UI 来�
 | **Azure Monitor** | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>聚合
-有关不同的聚合函数，请参阅 [Azure Monitor 日志查询中的聚合](aggregations.md)。
+有关不同的聚合函数，请参阅 [Azure Monitor 日志查询中的聚合](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)。
 
 | | 运算符 | 示例 |
 |:---|:---|:---|
@@ -131,13 +131,13 @@ Splunk 似乎没有类似于 `project-away` 的运算符。 可以使用 UI 来�
 | **Azure Monitor** | **summarize** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 
 
-### <a name="join"></a>Join
+### <a name="join"></a>联接
 Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果（在部署配置文件中设置），联接形式数目也有限制。
 
 | | 运算符 | 示例 |
 |:---|:---|:---|
-| **Splunk** | **联接** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| **Azure Monitor** | **联接** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
+| **Splunk** | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| **Azure Monitor** | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 
 ### <a name="sort"></a>排序
 在 Splunk 中，若要按升序排序，必须使用 `reverse` 运算符。 Azure Monitor 还支持定义 null 值的放置位置：开头或末尾。
@@ -145,7 +145,7 @@ Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果�
 | | 运算符 | 示例 |
 |:---|:---|:---|
 | **Splunk** | **sort** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
-| **Azure Monitor** | **排序依据** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
+| **Azure Monitor** | **order by** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
 
 ### <a name="multivalue-expand"></a>多值扩展
 此运算符在 Splunk 和 Azure Monitor 中类似。
@@ -161,7 +161,7 @@ Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果�
 | | 运算符 | 示例 |
 |:---|:---|:---|
 | **Splunk** | **字段** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
-| **Azure Monitor** | **各个** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
+| **Azure Monitor** | **facets** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
 
 ### <a name="de-duplicate"></a>重复数据删除
 可以改用 `summarize arg_min()` 来反转记录的选择顺序。

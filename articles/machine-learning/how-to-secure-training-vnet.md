@@ -1,7 +1,7 @@
 ---
-title: 利用虚拟网络保护培训环境
+title: 使用虚拟网络保护训练环境
 titleSuffix: Azure Machine Learning
-description: 使用独立的 Azure 虚拟网络来保护 Azure 机器学习培训环境。
+description: 使用独立的 Azure 虚拟网络保护 Azure 机器学习训练环境。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629720"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029560"
 ---
-# <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习定型环境
+# <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
-本文介绍如何使用 Azure 机器学习中的虚拟网络保护培训环境。
+本文介绍如何在 Azure 机器学习中使用虚拟网络保护训练环境。
 
-本文是5部分系列中的第三部分，指导你完成保护 Azure 机器学习工作流的工作。 强烈建议您通读第 [一部分： VNet 概述](how-to-network-security-overview.md) 以首先了解总体体系结构。 
+本文是由五部分组成的系列文章的第三部分，指导你如何保护 Azure 机器学习工作流。 强烈建议您通读第 [一部分： VNet 概述](how-to-network-security-overview.md) 以首先了解总体体系结构。 
 
 请参阅本系列中的其他文章：
 
@@ -40,14 +40,14 @@ ms.locfileid: "91629720"
 
 + 阅读 [网络安全概述](how-to-network-security-overview.md) 一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
-+ 要用于计算资源的现有虚拟网络和子网。
++ 用于计算资源的现有虚拟网络和子网。
 
-+ 若要将资源部署到虚拟网络或子网中，你的用户帐户必须在 Azure 基于角色的访问控制 (RBAC) 中具有以下操作的权限：
++ 若要将资源部署到虚拟网络或子网，你的用户帐户必须对 azure RBAC)  (azure 基于角色的访问控制具有以下操作的权限：
 
     - “Microsoft.Network/virtualNetworks/join/action”（在虚拟网络资源上）。
     - “Microsoft.Network/virtualNetworks/subnet/join/action”（在子网资源上）。
 
-    若要详细了解如何将 RBAC 与网络配合使用，请参阅[网络内置角色](/azure/role-based-access-control/built-in-roles#networking)
+    有关 Azure RBAC with 网络的详细信息，请参阅 [联网内置角色](../role-based-access-control/built-in-roles.md#networking)
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>计算群集和实例 
@@ -60,8 +60,9 @@ ms.locfileid: "91629720"
 > * 检查对虚拟网络的订阅或资源组实施的安全策略或锁定是否限制了管理虚拟网络所需的权限。 如果你打算通过限制流量来保护虚拟网络，请为计算服务保持打开某些端口。 有关详细信息，请参阅[所需的端口](#mlcports)部分。
 > * 若要将多个计算实例或群集放入一个虚拟网络，可能需要请求提高一个或多个资源的配额。
 > * 如果工作区的一个或多个 Azure 存储帐户也在虚拟网络中受保护，它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络中。 
-> * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许 websocket 连接到 *. instances.azureml.net 和 instances.azureml.ms。
-
+> * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
+> * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或主机文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目，该条目具有工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md) 一文。
+    
 > [!TIP]
 > 机器学习计算实例或群集自动在包含虚拟网络的资源组中分配更多网络资源。 对于每个计算实例或群集，此服务分配以下资源：
 > 
@@ -70,7 +71,7 @@ ms.locfileid: "91629720"
 > * 一个负载均衡器
 > 
 > 对于群集，每当群集纵向缩减为 0 个节点时，这些资源都会被删除（并重新创建）；但对于实例，这些资源会一直保留到实例完全删除（停止并不会删除资源）。 
-> 这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)限制。
+> 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> 所需端口
@@ -110,12 +111,12 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 - 使用 NSG 规则来拒绝出站 Internet 连接。
 
-- 对于__计算实例__或__计算群集__，请将出站流量限制为以下各项：
-   - Azure 存储 - 使用__服务标记__ __Storage.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
-   - Azure 容器注册表 - 使用__服务标记__ __AzureContainerRegistry.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
+- 对于 __计算实例__ 或 __计算群集__，请将出站流量限制为以下各项：
+   - Azure 存储 - 使用 __服务标记__ __Storage.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
+   - Azure 容器注册表 - 使用 __服务标记__ __AzureContainerRegistry.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
    - Azure 机器学习，通过使用服务标记 AzureMachineLearning
    - Azure 资源管理器，通过使用服务标记 AzureResourceManager
-   - Azure Active Directory - 使用__服务标记__ __AzureActiveDirectory__
+   - Azure Active Directory - 使用 __服务标记__ __AzureActiveDirectory__
 
 下图展示了 Azure 门户中的 NSG 规则配置：
 
@@ -153,17 +154,17 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 ### <a name="forced-tunneling"></a>强制隧道
 
-若要将[强制隧道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)与机器学习计算配合使用，必须允许从包含计算资源的子网与公共 Internet 进行通信。 此通信用于计划和访问 Azure 存储的任务。
+若要将[强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)与机器学习计算配合使用，必须允许从包含计算资源的子网与公共 Internet 进行通信。 此通信用于计划和访问 Azure 存储的任务。
 
 可以通过两种方式来实现此目的：
 
 * 使用[虚拟网络 NAT](../virtual-network/nat-overview.md)。 NAT 网关为虚拟网络中的一个或多个子网提供出站 Internet 连接。 有关信息，请参阅[设计使用 NAT 网关资源的虚拟网络](../virtual-network/nat-gateway-resource.md)。
 
-* 将[用户定义的路由 (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加资源所在的 Azure 机器学习服务 IP 地址，因为这是访问计算实例所必需的。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
+* 将[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加资源所在的 Azure 机器学习服务 IP 地址，因为这是访问计算实例所必需的。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
     * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
 
-    * 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 来下载信息。 下面的示例下载 IP 地址信息，并筛选掉美国东部 2 区域的信息：
+    * 使用 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 来下载信息。 下面的示例下载 IP 地址信息，并筛选掉美国东部 2 区域的信息：
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -171,9 +172,9 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
         ```
 
         > [!TIP]
-        > 如果你使用的是美国-弗吉尼亚州、美国东部地区或中国东部-2 区域，则这些命令不会返回任何 IP 地址。 而如果使用以下链接之一下载 IP 地址列表：
+        > 如果你使用的是美国-弗吉尼亚、美国-亚利桑那区域或中国东部 2 区域，则这些命令不会返回任何 IP 地址。 而如果使用以下链接之一下载 IP 地址列表：
         >
-        > * [Azure 政府版的 azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)
+        > * [适用于 Azure 政府的 Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [适用于 Azure 中国的 Azure IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062)
     
     添加 UDR 时，请为每个相关的 Batch IP 地址前缀定义路由，并将“下一跃点类型”设置为“Internet”。  下图显示了 Azure 门户中此 UDR 的示例：
@@ -181,7 +182,7 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
     ![地址前缀的 UDR 示例](./media/how-to-enable-virtual-network/user-defined-route.png)
 
     > [!IMPORTANT]
-    > IP 地址可能会随时间而改变。
+    > IP 地址可能会随时间推移而改变。
 
     除了定义的任何 UDR，还必须通过本地网络设备允许流向 Azure 存储的出站流量。 具体而言，此流量的 URL 采用以下格式：`<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net`。 
 
@@ -272,18 +273,18 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure 机器学习只支持运行 Ubuntu 的虚拟机。
 
-本部分介绍如何在工作区中使用虚拟网络中的虚拟机或 Azure HDInsight 群集。
+本部分介绍如何将虚拟网络中的虚拟机或 Azure HDInsight 群集用于工作区。
 
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>创建 VM 或 HDInsight 群集
 
 使用 Azure 门户或 Azure CLI 创建 VM 或 HDInsight 群集，然后将群集置于 Azure 虚拟网络中。 有关详细信息，请参阅以下文章：
-* [为 Linux VM 创建和管理 Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+* [为 Linux VM 创建和管理 Azure 虚拟网络](../virtual-machines/linux/tutorial-virtual-network.md)
 
-* [使用 Azure 虚拟网络扩展 HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
+* [使用 Azure 虚拟网络扩展 HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md)
 
 ### <a name="configure-network-ports"></a>配置网络端口 
 
-允许 Azure 机器学习与 VM 或群集上的 SSH 端口通信，为网络安全组配置源条目。 SSH 端口通常是端口 22。 若要允许来自此源的流量，请执行以下操作：
+允许 Azure 机器学习与 VM 或群集上的 SSH 端口进行通信，为网络安全组配置源条目。 SSH 端口通常是端口 22。 若要允许来自此源的流量，请执行以下操作：
 
 1. 在“源”下拉列表中，选择“服务标记”。
 
@@ -301,7 +302,7 @@ except ComputeTargetException:
 
 1. 在“操作”下，选择“允许”。 
 
-保留网络安全组的默认出站规则。 有关详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)中的“默认安全规则”。
+保留网络安全组的默认出站规则。 有关详细信息，请参阅[安全组](../virtual-network/network-security-groups-overview.md#default-security-rules)中的“默认安全规则”。
 
 如果你不想要使用默认出站规则，同时想要限制虚拟网络的出站访问，请参阅[限制来自虚拟网络的出站连接](#limiting-outbound-from-vnet)部分。
 
@@ -311,9 +312,9 @@ except ComputeTargetException:
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是由四部分构成的虚拟网络系列中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+本文是由四部分构成的虚拟网络系列文章中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
 * [第1部分：虚拟网络概述](how-to-network-security-overview.md)
-* [第2部分：保护工作区资源](how-to-secure-workspace-vnet.md)
-* [第4部分：保护推断环境](how-to-secure-inferencing-vnet.md)
-* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)
+* [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
+* [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
+* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)

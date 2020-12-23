@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
-keywords: 演讲者识别，语音 biometry
-ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+keywords: 说话人识别, 语音生物测量
+ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397253"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015318"
 ---
-# <a name="what-is-speaker-recognition"></a>什么是说话人识别？
+# <a name="what-is-speaker-recognition-preview"></a>什么是演讲者识别 (预览) ？
 
 演讲者识别服务提供使用语音 biometry 根据其独特的语音特征来验证和识别扬声器的算法。 说话人识别用于回答“谁在说话？”的问题。 你为单个演讲者提供音频定型数据，这将基于演讲者语音的独特特征创建注册配置文件。 然后，您可以对此配置文件交叉检查音频语音样本，验证扬声器 (扬声器验证) ，还是对照一 *组* 已注册的扬声器配置文件交叉检查音频语音样本，以查看它是否与组 (发言人标识) 中的任何配置文件相匹配。 与此相反， [演讲者 Diarization](batch-transcription.md#speaker-separation-diarization) 在批处理操作中对音频段进行分组。
 
@@ -31,11 +31,11 @@ ms.locfileid: "89397253"
 
 :::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="说话人验证流程图。":::
 
-扬声器验证可以是文本相关的，也可以是与文本无关的。 **文本从属** 验证表示扬声器需要选择要在注册和验证阶段中使用的相同通行短语。 与**文本无关**的验证意味着演讲者可以在注册和验证短语中以日常语言说话。
+扬声器验证可以是文本相关的，也可以是与文本无关的。 **文本从属** 验证表示扬声器需要选择要在注册和验证阶段中使用的相同通行短语。 与 **文本无关** 的验证意味着演讲者可以在注册和验证短语中以日常语言说话。
 
 对于 **文本从属** 验证，通过从一组预定义的短语中口述密码来注册演讲者的语音。 语音功能将从音频录音中提取，以形成唯一的语音签名，同时还会识别所选通行短语。 语音签名和通行短语一起用于验证扬声器。 
 
-与**文本无关**的验证在注册期间或在要验证的音频示例中不会有什么限制，因为它仅将语音功能提取到分数相似性。 
+与 **文本无关** 的验证在注册期间或在要验证的音频示例中不会有什么限制，因为它仅将语音功能提取到分数相似性。 
 
 这些 Api 并不用于确定音频是来自活动人员还是模拟/录制的发言人。 
 
@@ -67,13 +67,13 @@ ms.locfileid: "89397253"
 | 依赖文本和与文本无关的验证之间有何区别？ | 与文本相关的验证需要使用特定的传递短语进行注册和识别。 与文本无关的验证需要更长的语音示例进行注册，但可以说出任何内容，包括识别期间。|
 | 支持哪些语言？ | 英语、法语、西班牙语、中文、德语、意大利语、日语和葡萄牙语 |
 | 支持哪些 Azure 区域？ | 演讲者识别为预览版服务，目前仅在美国西部地区可用。|
-| 支持哪些音频格式？ | Mono 16 位，16kHz PCM-编码的 WAV |
+| 支持哪些格式的音频？ | Mono 16 位，16kHz PCM-编码的 WAV |
 | **接受** 和 **拒绝** 响应不准确，如何调整阈值？ | 由于最佳阈值因情况而异，因此 API 决定是根据默认阈值 0.5 "接受" 还是 "拒绝"。 建议高级用户覆盖默认决策，并根据自己的方案对结果进行微调。 |
 | 是否可以多次注册一个扬声器？ | 是的，对于文本相关验证，最多可注册50次扬声器。 对于与文本无关的验证或发言人标识，最多可注册300秒的音频。 |
-| Azure 中存储了哪些数据？ | 注册音频存储在服务中，直到 [删除](speaker-recognition-basics.md#deleting-voice-profile-enrollments)语音配置文件。 不保留或存储识别音频示例。 |
+| Azure 中存储了哪些数据？ | 注册音频存储在服务中，直到 [删除](./get-started-speaker-recognition.md#deleting-voice-profile-enrollments)语音配置文件。 不保留或存储识别音频示例。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> * 完成演讲者识别 [基础知识文章](speaker-recognition-basics.md) ，了解可在应用程序中使用的常见设计模式。
+> * 完成演讲者识别 [基础知识文章](./get-started-speaker-recognition.md) ，了解可在应用程序中使用的常见设计模式。
 > * 请参阅 [视频教程](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) ，了解与文本无关的扬声器验证。

@@ -12,21 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 4cc1eefa93366451b568da789fd48d8a8c658439
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99703acc4965a38337a39fe23cc19cafddd1531d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91618261"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791114"
 ---
 # <a name="what-is-azure-sql"></a>什么是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
 Azure SQL 是一系列智能安全的托管产品，它们使用 Azure 云中的 SQL Server 数据库引擎。
 
-- **Azure SQL 数据库**：支持对智能的托管数据库服务（包括无服务器计算）使用现代云应用程序。 
-- **Azure SQL 托管实例**：大规模地实现现有 SQL Server 应用程序的现代化，其中智能且完全托管的实例用作服务，且与 SQL Server 数据库引擎之间的功能奇偶一致性几乎达 100%。 最适合用于大部分云迁移方案。
-- **Azure VM 中的 SQL Server**：轻松地直接迁移 SQL Server 工作负载，保持 100% 的 SQL Server 兼容性和操作系统级别的访问权限。 
+- **Azure SQL 数据库** ：支持对智能的托管数据库服务（包括无服务器计算）使用现代云应用程序。 
+- **Azure SQL 托管实例** ：大规模地实现现有 SQL Server 应用程序的现代化，其中智能且完全托管的实例用作服务，且与 SQL Server 数据库引擎之间的功能奇偶一致性几乎达 100%。 最适合用于大部分云迁移方案。
+- **Azure VM 中的 SQL Server** ：轻松地直接迁移 SQL Server 工作负载，保持 100% 的 SQL Server 兼容性和操作系统级别的访问权限。 
  
 Azure SQL 是基于熟悉的 SQL Server 引擎构建的，因此你可轻松迁移应用程序，继续使用熟悉的工具、语言和资源。 你的技能和经验同样适用于云，因此你可运用已学知识实现更多目标。 
 
@@ -53,7 +53,7 @@ Azure SQL 是基于熟悉的 SQL Server 引擎构建的，因此你可轻松迁�
 
 Azure 会持续监视你的数据是否受到威胁。 借助 Azure SQL，你可以：
 
-- 通过智能[高级威胁检测](https://docs.microsoft.com/azure/security/fundamentals/threat-detection#advanced-threat-detection-features-other-azure-services)和主动漏洞评估警报，实时修正潜在威胁。 
+- 通过智能[高级威胁检测](../security/fundamentals/threat-detection.md#advanced-threat-detection-features-other-azure-services)和主动漏洞评估警报，实时修正潜在威胁。 
 - 使用[内置安全控件](https://azure.microsoft.com/overview/security/)（包括 T-SQL、身份验证、网络和密钥管理）获得业界领先的多层保护。 
 - 充分利用任何云数据库服务最全面的[符合性](https://azure.microsoft.com/overview/trusted-cloud/compliance/)。 
 
@@ -86,13 +86,13 @@ Azure 会持续监视你的数据是否受到威胁。 借助 Azure SQL，你可
 
 
 Azure SQL 数据库提供了以下部署选项：
-  - 充当自带资源集的[单一数据库](database/single-database-overview.md)，该资源集通过[逻辑 SQL 服务器](database/logical-servers.md)进行托管。 单一数据库类似于 SQL Server 中的[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。 此选项已针对新式应用程序开发进行优化，可用于开发新型的云原生应用程序。 可以使用[超大规模](database/service-tier-hyperscale.md)和[无服务器](database/serverless-tier-overview.md)选项。
+  - 充当自带资源集的[单一数据库](database/single-database-overview.md)，该资源集通过[逻辑 SQL 服务器](database/logical-servers.md)进行托管。 单一数据库类似于 SQL Server 中的[包含的数据库](/sql/relational-databases/databases/contained-databases)。 此选项已针对新式应用程序开发进行优化，可用于开发新型的云原生应用程序。 可以使用[超大规模](database/service-tier-hyperscale.md)和[无服务器](database/serverless-tier-overview.md)选项。
   - [弹性池](database/elastic-pool-overview.md)：一个数据库集合，具有通过[逻辑 SQL 服务器](database/logical-servers.md)管理的一组共享资源。 可以将单一数据库移入或移出弹性池。 此选项已针对新式应用程序开发进行优化，可用于使用多租户 SaaS 应用程序模式开发新型的云原生应用程序。 弹性池提供经济高效的解决方案用于管理使用模式可变的多个数据库的性能。
 
 ### <a name="azure-sql-managed-instance"></a>Azure SQL 托管实例
 
 [Azure SQL 托管实例](managed-instance/sql-managed-instance-paas-overview.md)属于“平台即服务 (PaaS)”行业类别，是大多数云迁移的最佳选择。 SQL 托管实例是系统和用户数据库的集合，包含一组随时可直接迁移的共享资源。  
-- 最适合用于需要使用最新的 SQL Server 稳定功能，并且在进行极少量更改的情况下迁移到云中的新应用程序或现有本地应用程序。 SQL 托管实例的实例与 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview)的实例类似，为数据库和实例范围内的其他功能提供共享资源。 
+- 最适合用于需要使用最新的 SQL Server 稳定功能，并且在进行极少量更改的情况下迁移到云中的新应用程序或现有本地应用程序。 SQL 托管实例的实例与 [Microsoft SQL Server 数据库引擎](/sql/database-engine/sql-server-database-engine-overview)的实例类似，为数据库和实例范围内的其他功能提供共享资源。 
 - SQL 托管实例支持从本地迁移数据库，只要求对数据库进行极少量的更改，甚至根本不需要更改。 此选项提供 Azure SQL 数据库的所有 PaaS 优势，同时还添加了以前只在 SQL Server VM 中提供的功能。 这包括本机虚拟网络，以及与本地 SQL Server 的近乎 100% 的兼容性。 SQL 托管实例的实例提供完全的 SQL Server 访问和功能兼容性，可用于将 SQL Server 迁移到 Azure。
 
 ### <a name="sql-server-on-azure-vm"></a>Azure VM 上的 SQL Server
@@ -116,7 +116,7 @@ Azure SQL 数据库提供了以下部署选项：
 |支持大多数本地数据库级功能。 提供最常用的 SQL Server 功能。<br/>保证 99.995% 的可用性。<br/>内置备份、修补和恢复。<br/>最新稳定的数据库引擎版本。<br/>可将必要的资源（CPU/存储）分配到单个数据库。<br/>内置高级智能和安全性。<br/>联机更改资源（CPU/存储）。| 几乎支持所有的本地实例级和数据库级功能。 与 SQL Server 高度兼容。<br/>保证 99.99% 的可用性。<br/>内置备份、修补和恢复。<br/>最新稳定的数据库引擎版本。<br/>从 SQL Server 轻松迁移。<br/>Azure 虚拟网络中的专用 IP 地址。<br/>内置高级智能和安全性。<br/>联机更改资源（CPU/存储）。| 可以完全控制 SQL Server 引擎。 支持所有本地功能。<br/>高达 99.99% 的可用性。<br/>完全可与匹配的本地 SQL Server 版本搭配使用。<br/>固定的已知数据库引擎版本。<br/>从 SQL Server 轻松迁移。<br/>Azure 虚拟网络中的专用 IP 地址。<br/>可将应用程序或服务部署到 SQL Server 所在的主机上。|
 |可能难以从 SQL Server 迁移。<br/>某些 SQL Server 功能不可用。<br/>不保证确切的维护时间（但几乎是透明的）。<br/>只能使用数据库兼容性级别来实现与 SQL Server 版本的兼容。<br/>[Azure 专用链接](database/private-endpoint-overview.md)支持专用 IP 地址。|仍有极少量的 SQL Server 功能不可用。<br/>不保证确切的维护时间（但几乎是透明的）。<br/>只能使用数据库兼容性级别来实现与 SQL Server 版本的兼容。|需要自行管理备份和修补程序。<br>需要实施高可用性解决方案。<br/>更改资源（CPU/存储）会造成停机|
 | 最多 100 TB 的数据库。 | 最多 8 TB。 | 具有高达 256 TB 存储空间的 SQL Server 实例。 实例可以支持所需数量的数据库。 |
-| 本地应用程序可以访问 Azure SQL 数据库中的数据。 | 使用 Azure Express Route 或 VPN 网关[实现本机虚拟网络](managed-instance/vnet-existing-add-subnet.md)并连接到本地环境。 | 借助 SQL 虚拟机，应用程序可以一部分在云中运行，一部分在本地运行。 例如，可以通过 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，将本地网络和 Active Directory 域扩展到云中。 有关混合云解决方案的详细信息，请参阅[将本地数据解决方案扩展到云](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)。 |
+| 本地应用程序可以访问 Azure SQL 数据库中的数据。 | 使用 Azure Express Route 或 VPN 网关[实现本机虚拟网络](managed-instance/vnet-existing-add-subnet.md)并连接到本地环境。 | 借助 SQL 虚拟机，应用程序可以一部分在云中运行，一部分在本地运行。 例如，可以通过 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，将本地网络和 Active Directory 域扩展到云中。 有关混合云解决方案的详细信息，请参阅[将本地数据解决方案扩展到云](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)。 |
 
 
 ## <a name="cost"></a>成本
@@ -151,7 +151,7 @@ Azure SQL 数据库提供了以下部署选项：
 对许多企业来说，决定过渡到到云服务的关键在于降低管理复杂度。 Azure 使用 IaaS 和 PaaS 管理底层基础结构和自动复制所有数据以提供灾难恢复，配置及升级数据库软件，管理负载均衡，并在数据中心发生服务器故障时执行透明的故障转移。
 
 - 使用 SQL 数据库和 SQL 托管实例时，可继续管理数据库，但无需再管理数据库引擎、操作系统或硬件 。 可以继续管理的项目示例包括数据库和登录、索引和查询优化，以及审核和安全性。 此外，在另一个数据中心配置高可用性只需极少量的配置和管理。
-- 借助 Azure VM 上的 SQL，可完全掌控操作系统和 SQL Server 实例配置。 使用 VM，可以决定何时更新/升级操作系统与数据库软件，以及何时安装任何其他软件（例如防病毒软件）。 提供的某些自动化功能可以大大简化修补、备份和高可用性。 此外，还可以控制 VM 的大小、磁盘数目及其存储配置。 Azure 允许根据需要更改 VM 的大小。 有关信息，请参阅 [Azure 的虚拟机和云服务大小](../virtual-machines/windows/sizes.md)。
+- 借助 Azure VM 上的 SQL，可完全掌控操作系统和 SQL Server 实例配置。 使用 VM，可以决定何时更新/升级操作系统与数据库软件，以及何时安装任何其他软件（例如防病毒软件）。 提供的某些自动化功能可以大大简化修补、备份和高可用性。 此外，还可以控制 VM 的大小、磁盘数目及其存储配置。 Azure 允许根据需要更改 VM 的大小。 有关信息，请参阅 [Azure 的虚拟机和云服务大小](../virtual-machines/sizes.md)。
 
 ## <a name="service-level-agreement-sla"></a>服务级别协议 (SLA)
 
@@ -159,7 +159,7 @@ Azure SQL 数据库提供了以下部署选项：
 
 对于 Azure SQL 数据库和 Azure SQL 托管实例，Microsoft 提供 99.99% 的可用性 SLA。 有关最新信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/sql-database/)。
 
-对于 Azure VM 上的 SQL，Microsoft 提供 99.95% 的可用性 SLA（仅涵盖虚拟机）。 此 SLA 不涵盖 VM 上运行的进程（例如 SQL Server），并且要求你在可用性集中托管至少两个 VM 实例。 有关最新信息，请参阅 [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 为了在 VM 中实现数据库高可用性 (HA)，应在 SQL Server 中配置受支持的高可用性选项之一，例如 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)。 使用支持的高可用性选项不会提供更多 SLA，但使用户能够实现 >99.99% 的数据库可用性。
+对于 Azure VM 上的 SQL，Microsoft 提供 99.95% 的可用性 SLA（仅涵盖虚拟机）。 此 SLA 不涵盖 VM 上运行的进程（例如 SQL Server），并且要求你在可用性集中托管至少两个 VM 实例。 有关最新信息，请参阅 [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 为了在 VM 中实现数据库高可用性 (HA)，应在 SQL Server 中配置受支持的高可用性选项之一，例如 [Always On 可用性组](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)。 使用支持的高可用性选项不会提供更多 SLA，但使用户能够实现 >99.99% 的数据库可用性。
 
 ## <a name="time-to-move-to-azure"></a><a name="market"></a>迁移到 Azure 的时机
 

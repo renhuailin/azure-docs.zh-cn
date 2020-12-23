@@ -3,19 +3,19 @@ title: Azure CLI 脚本示例 - 删除 Azure 应用配置存储区
 titleSuffix: Azure App Configuration
 description: 使用 Azure CLI 脚本示例删除 Azure 应用配置存储区。 请参阅参考文章链接，了解脚本中所用的命令。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e107ba9628eca384f518f7a241be5c00c278ef0a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 49d6a85faa55de5dbf50377998dbe2fc829d9f6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588290"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929780"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>删除 Azure 应用配置存储区
 
@@ -23,9 +23,9 @@ ms.locfileid: "88588290"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教程需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="sample-script"></a>示例脚本
 

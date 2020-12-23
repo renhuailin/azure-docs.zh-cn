@@ -1,17 +1,17 @@
 ---
 title: 审核日志 - Azure Database for MySQL
 description: 介绍了 Azure Database for MySQL 中提供的审核日志，以及用于启用日志记录级别的可用参数。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aac8e6e04b8bac7a1d27fefc780fb9fadb3122dc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362119"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534171"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
 
@@ -20,7 +20,7 @@ ms.locfileid: "85362119"
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 
 >[!IMPORTANT]
-> 建议仅记录审核目的所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
+> 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
 
 默认情况下，审核日志被禁用。 若要启用它，请将 `audit_log_enabled` 设置为 ON。
 

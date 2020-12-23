@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f5db17549c2b95d5dd0dd2f866ca1d1c0e7d8aa
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713794"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965113"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -42,7 +42,7 @@ ms.locfileid: "91713794"
 
 这些人员通过安全中心行使不同的责任。 例如：
 
-**** Jeff（工作负荷所有者）
+Jeff（工作负荷所有者）
 
 * 管理云工作负荷及其相关资源
 * 负责根据公司安全策略实施和维护各种保护措施
@@ -71,14 +71,14 @@ ms.locfileid: "91713794"
 
 安全中心使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。 用户打开安全中心时，只能看到有权访问的资源的相关信息。 这意味着，可以将资源所属的订阅或资源组的“所有者”、“参与者”或“读者”角色分配给用户。 除这些角色外，还有两个特定的安全中心角色：
 
-- 安全读取者****：属于此角色的用户只能查看安全中心配置（包括建议、警报、策略和运行状况），无法进行更改。
-- 安全管理员****：与安全读取者一样，但它还可更新安全策略，消除建议和警报。
+- 安全读取者：属于此角色的用户只能查看安全中心配置（包括建议、警报、策略和运行状况），无法进行更改。
+- 安全管理员：与安全读取者一样，但它还可更新安全策略，消除建议和警报。
 
 上述安全中心角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。
 
-根据上图介绍的人员，需要以下 RBAC：
+根据上图介绍的人员，需要以下 Azure RBAC：
 
-**** Jeff（工作负荷所有者）
+Jeff（工作负荷所有者）
 
 * 资源组所有者/参与者
 
@@ -106,7 +106,7 @@ ms.locfileid: "91713794"
 * 只有订阅所有者/参与者和安全管理员可以编辑安全策略。
 * 只有订阅和资源组的所有者和参与者可以应用针对某个资源的安全建议。
 
-使用安全中心的 RBAC 规划访问控制时，请确保了解组织中的哪些人员会使用安全中心。 另外还需了解这些人员所执行的任务的类型，才能进行相应的 RBAC 配置。
+使用安全中心的 Azure RBAC 规划访问控制时，请确保了解组织中的哪些人员会使用安全中心。 另外还需了解这些人员所执行的任务的类型，才能进行相应的 Azure RBAC 配置。
 
 > [!NOTE]
 > 对于需要完成任务的用户，建议尽可能为其分配权限最小的角色。 例如，如果用户只需查看资源的安全状况信息而不需执行操作（例如应用建议或编辑策略），则应为其分配“读者”角色。
@@ -135,7 +135,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 ### <a name="agent"></a>代理
 
-在安全策略中启用自动预配后，Log Analytics 代理（适用于 [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) 或 [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Log Analytics 代理，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
+在安全策略中启用自动预配后，Log Analytics 代理（适用于 [Windows](../azure-monitor/platform/agent-windows.md) 或 [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Log Analytics 代理，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
 
 适用于 Windows 的 Log Analytics 代理需要使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
 
@@ -152,8 +152,8 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 在 Azure 门户中，可浏览查看 Log Analytics 工作区的列表，其中包括 Azure 安全中心创建的任何工作区。 系统会为新工作区创建相关资源组。 二者均遵循此命名约定：
 
-* 工作区：DefaultWorkspace-[subscription-ID]-[geo]**
-* 资源组：DefaultResourceGroup-[geo]**
+* 工作区：DefaultWorkspace-[subscription-ID]-[geo]
+* 资源组：DefaultResourceGroup-[geo]
 
 对于 Azure 安全中心创建的工作区，数据将保留 30 天。 对于现有工作区，保留期取决于工作区定价层。 还可以根据需要使用现有工作区。
 
@@ -175,7 +175,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 > [!NOTE]
 > 安全中心不会干扰正常的操作过程，而是被动监视部署，根据启用的安全策略提供建议。
 
-如果首次选择为当前 Azure 环境使用安全中心，请务必查看所有建议，此操作可在“建议”页中进行****。
+如果首次选择为当前 Azure 环境使用安全中心，请务必查看所有建议，此操作可在“建议”页中进行。
 
 计划访问威胁智能选项，将其作为日常安全操作的一部分。 可以在其中确定对环境的安全威胁，例如，确定特定计算机是否为僵尸网络的一部分。
 
@@ -217,9 +217,9 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 ![可疑活动](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
-此页显示的详细信息包括攻击发生的时间、源主机名、目标 VM，并提供了建议步骤。 在某些情况下，攻击的源信息可能为空。 阅读 [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) （Azure 安全中心警报中缺少源信息），了解此类行为的详细信息。
+此页显示的详细信息包括攻击发生的时间、源主机名、目标 VM，并提供了建议步骤。 在某些情况下，攻击的源信息可能为空。 阅读 [Missing Source Information in Azure Security Center Alerts](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts) （Azure 安全中心警报中缺少源信息），了解此类行为的详细信息。
 
-确定受损系统后，可以运行以前创建的[工作流自动化](workflow-automation.md)。 这些是在触发警报后可从安全中心执行的步骤的集合。
+确定受攻击的系统后，可以运行以前创建的[工作流自动化](workflow-automation.md)。 这些是在触发警报后可从安全中心执行的步骤的集合。
 
 在[如何利用 Azure 安全中心和 Microsoft Operations Management Suite 进行事件响应](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)视频中，你可查看一些演示，了解如何在每个这样的阶段发挥安全中心的作用。
 
@@ -233,6 +233,6 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
-* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
+* [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-integration.md) - 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure Security Center FAQ](faq-general.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
-* [Azure 安全性博客](https://docs.microsoft.com/archive/blogs/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全性博客](/archive/blogs/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。

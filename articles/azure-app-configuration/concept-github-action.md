@@ -1,17 +1,17 @@
 ---
 title: 将 GitHub 存储库同步到应用程序配置
 description: 使用 GitHub Actions 在更新 GitHub 存储库后自动更新应用程序配置实例。
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 588efd692119c9e2831e16c1ce26c2759898a1e5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371815"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607358"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>将 GitHub 存储库同步到应用程序配置
 
@@ -20,12 +20,12 @@ ms.locfileid: "87371815"
 &nbsp;&nbsp;&nbsp;&nbsp;•   更新配置，而无需重新部署整个应用 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;•   与 Azure 应用服务和 Azure Functions 等服务集成。 
 
-GitHub Actions [工作流](https://help.github.com/articles/about-github-actions#workflow)在 GitHub 存储库中定义自动化流程。 “Azure 应用程序配置同步”操作在源存储库有更改后，触发更新应用程序配置实例。 它使用存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件来定义步骤和参数。 可以在推送、审阅应用程序配置文件或设置其分支后触发配置更新，就像对应用代码所做的那样。
+GitHub Actions [工作流](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)在 GitHub 存储库中定义自动化流程。 “Azure 应用程序配置同步”操作在源存储库有更改后，触发更新应用程序配置实例。 它使用存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件来定义步骤和参数。 可以在推送、审阅应用程序配置文件或设置其分支后触发配置更新，就像对应用代码所做的那样。
 
-若要深入了解 GitHub 工作流和操作，请参阅这篇 GitHub [文档](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)。 
+若要深入了解 GitHub 工作流和操作，请参阅这篇 GitHub [文档](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>在存储库中启用 GitHub Actions
-若要开始使用此 GitHub 操作，请在存储库中选择 "**操作**" 选项卡。选择 "**新建工作流**"，然后**自行设置工作流**。 最后，在市场中搜索“Azure 应用程序配置同步”。
+若要开始使用此 GitHub 操作，请转到存储库，然后选择“操作”选项卡。选择“新建工作流”，然后“自己设置工作流” 。 最后，在市场中搜索“Azure 应用程序配置同步”。
 > [!div class="mx-imgBorder"]
 > ![选择“操作”选项卡](media/find-github-action.png)
 
@@ -35,13 +35,13 @@ GitHub Actions [工作流](https://help.github.com/articles/about-github-actions
 ## <a name="sync-configuration-files-after-a-push"></a>在推送后同步配置文件
 此操作在有更改推送到 `appsettings.json` 后同步 Azure 应用程序配置文件。 在开发人员将更改推送到 `appsettings.json` 后，“应用程序配置同步”操作使用新值来更新应用程序配置实例。
 
-此工作流的第一部分指定，这一操作在包含 `appsettings.json` 的推送推送到主分支后触发。 第二部分列出了在此操作触发后立即运行的作业。 此操作使用作为机密存储在存储库中的连接字符串来签出相关文件，并更新应用程序配置实例。  若要详细了解如何在 GitHub 中使用机密，请参阅这篇关于如何创建和使用加密机密的 [GitHub 文章](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)。
+此工作流的第一部分指定操作 *在* 包含到 main 分支的 *推送* 上触发 `appsettings.json` 。  第二部分列出了在此操作触发后立即运行的作业。 此操作使用作为机密存储在存储库中的连接字符串来签出相关文件，并更新应用程序配置实例。  若要详细了解如何在 GitHub 中使用机密，请参阅这篇关于如何创建和使用加密机密的 [GitHub 文章](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)。
 
 ```json
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -68,7 +68,7 @@ jobs:
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -92,13 +92,13 @@ jobs:
 ```
 ## <a name="sync-multiple-files-in-one-action"></a>在一个操作中同步多个文件 
 
-如果配置位于多个文件中，可以使用下面的模式，以在任何一个文件被修改时触发同步。 此模式使用 glob 库 https://www.npmjs.com/package/glob 。 请注意，如果您的配置文件名称包含逗号，则可以使用反斜杠来转义逗号。 
+如果配置位于多个文件中，可以使用下面的模式，以在任何一个文件被修改时触发同步。 此模式使用 glob 库 https://www.npmjs.com/package/glob 。 请注意，如果你的配置文件名称包含逗号，则可以使用反斜杠来转义逗号。 
 
 ```json
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
       - 'appsettings2.json'
@@ -127,7 +127,7 @@ jobs:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
 
@@ -153,7 +153,7 @@ jobs:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
 
@@ -177,13 +177,13 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>使用动态标签同步
 下面的操作在每个同步中插入一个动态标签，以确保每个同步都能被唯一标识，并可便于代码更改映射到配置更改。
 
-此工作流的第一部分指定，这一操作在包含 `appsettings.json` 的推送推送到主分支后触发。 第二部分运行作业，以根据提交哈希为配置更新创建唯一标签。 然后，此作业使用新值和此更新的唯一标签来更新应用程序配置实例。
+此工作流的第一部分指定操作 *在* 包含到 main 分支的 *推送* 上触发 `appsettings.json` 。  第二部分运行作业，以根据提交哈希为配置更新创建唯一标签。 然后，此作业使用新值和此更新的唯一标签来更新应用程序配置实例。
 
 ```json
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -219,7 +219,7 @@ jobs:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
       - 'secretreferences.json'
@@ -252,7 +252,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>使用最大深度限制 GitHub 操作
 嵌套 JSON 特性的默认行为是平展整个对象。  下面的 JSON 定义了此键值对：
 
-| 密钥 | Value |
+| 密钥 | 值 |
 | --- | --- |
 | Object:Inner:InnerKey | InnerValue |
 
@@ -272,7 +272,7 @@ jobs:
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -295,12 +295,12 @@ jobs:
 
 假设 depth 值为 2，上面的示例现在返回以下键值对：
 
-| 密钥 | Value |
+| 密钥 | 值 |
 | --- | --- |
 | Object:Inner | {"InnerKey":"InnerValue"} |
 
 ## <a name="understand-action-inputs"></a>了解操作输入
-输入参数指定了操作在运行时期间使用的数据。  下表列出了“应用程序配置同步”接受的输入参数，以及每个参数应使用的值。  若要详细了解 GitHub Actions 操作输入，请参阅这篇 GitHub [文档](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs)。
+输入参数指定了操作在运行时期间使用的数据。  下表列出了“应用程序配置同步”接受的输入参数，以及每个参数应使用的值。  若要详细了解 GitHub Actions 操作输入，请参阅这篇 GitHub [文档](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#inputs)。
 
 > [!Note]
 > 输入 ID 不区分大小写。

@@ -11,16 +11,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: c48c59db2d9b830367276d39a82bc7fc8fdc34d3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 24e0fa530b370782af730a2383df1240bbf5c859
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357244"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308655"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 机器学习工作室（经典）REST API 错误代码
 
-**适用于：** ![适用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) 不适 ![ 用于。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 在 Azure 机器学习工作室（经典）Web 服务中执行操作时，可能会返回以下错误代码。
@@ -252,4 +252,3 @@ Web 服务包无效。 请检查提供的 Web 包是否正确，并重试。
 | ---------- |--------------|
 | BackendInitializationTimeout | 无法在允许的时间内完成 Web 服务初始化。 |
 | BackendScoreTimeout | 无法在允许的时间内完成 Web 服务请求执行。 |
- 

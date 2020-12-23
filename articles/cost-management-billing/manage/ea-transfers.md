@@ -6,14 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 11/11/2020
 ms.author: banders
-ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f5555662c6cb5f44be3959ec3d22d1cf1953674d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371892"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030087"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 传输
 
@@ -93,21 +94,25 @@ Azure 预付款不可在注册之间转移。 Azure 预付款余额在契约上�
 
 帐户或注册转移期间不会发生停机。 如果已提供所有必备信息，则转移可以在请求的同一日完成。
 
-## <a name="change-account-owner"></a>更改帐户所有者
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>将 Enterprise 订阅转换为即用即付订阅
 
-Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所有者。 有关详细信息，请参阅[更改帐户所有者](ea-portal-get-started.md#change-account-owner)。
+若要将 Enterprise 订阅转换为采用即用即付费率的单个订阅，必须在 Azure Enterprise 门户中创建新的支持请求。 若要创建支持请求，请在“帮助和支持”区域中选择“+ 新建支持请求”。 
+
+## <a name="change-azure-subscription-or-account-ownership"></a>更改 Azure 订阅或帐户所有权
+
+Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所有者。 有关详细信息，请参阅[更改 Azure 订阅或帐户所有权](ea-portal-administration.md#change-azure-subscription-or-account-ownership)。
 
 ## <a name="subscription-transfer-effects"></a>订阅转移的影响
 
 将 Azure 订阅转移到同一 Azure Active Directory 租户中的某个帐户后，以前拥有 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 权限，可管理资源的所有用户、组和服务主体将保留其访问权限。
 
-若要查看哪些用户对订阅拥有 Azure RBAC 访问权限：
+若要查看哪些用户对订阅拥有 RBAC 访问权限：
 
 1. 在 Azure 门户中，打开 **订阅**。
 2. 选择要查看的订阅，然后选择“访问控制(IAM)”。
-3. 选择“角色分配”。 角色分配页面列出了对订阅拥有 Azure RBAC 访问权限的所有用户。
+3. 选择“角色分配”。 角色分配页将列出对订阅拥有 RBAC 访问权限的所有用户。
 
-如果将订阅转移到了不同 Azure AD 租户中的某个帐户，则之前拥有 [Azure RBAC](../../role-based-access-control/overview.md) 权限，可管理资源的所有用户、组和服务主体将失去其访问权限。 尽管失去了 Azure RBAC 访问权限，但他们可通过安全机制来访问订阅，这些机制包括：
+如果将订阅转移到了不同 Azure AD 租户中的某个帐户，则以前拥有 [RBAC](../../role-based-access-control/overview.md) 权限，可管理资源的所有用户、组和服务主体将失去其访问权限。 尽管失去了 RBAC 访问权限，但他们可以通过安全机制来访问订阅，这些机制包括：
 
 - 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../../cloud-services/cloud-services-certs-create.md)。
 - 存储空间等服务的访问密钥。 有关详细信息，请参阅 [Azure 存储帐户概述](../../storage/common/storage-account-overview.md)。

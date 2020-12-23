@@ -1,26 +1,19 @@
 ---
 title: SAP 解决方案提供商的 Azure Monitor |Microsoft Docs
 description: 本文提供了有关 Azure monitor for SAP 解决方案提供商的常见问题的解答。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: e18d0b84e987e6c36f3f3b4215743025cac76d45
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.reviewer: cynthn
+ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987265"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968598"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>适用于 SAP 解决方案提供商的 Azure monitor (预览版) 
 
@@ -61,13 +54,24 @@ ms.locfileid: "90987265"
 
 ![SAP 解决方案提供商的 Azure Monitor-高可用性群集](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
 
-若要配置高可用性群集提供程序，需要执行两个主要步骤： 
-1. 在 Pacemaker 群集中的*每个*节点上安装[ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 
-    - 客户可以使用 Azure 自动化脚本来部署高可用性群集。 脚本将在每个群集节点上安装 [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 。  
-    - 或客户可以执行手动安装，请按照[此页](https://github.com/ClusterLabs/ha_cluster_exporter)上的步骤进行操作 
-2. 在 Pacemaker 群集中的 *每个* 节点上配置高可用性群集提供程序  
-  若要配置高可用性群集提供程序，需要 Prometheus URL、群集名称、主机名和系统 ID。   
-  建议客户为每个群集节点配置一个提供程序。   
+若要配置高可用性群集提供程序，需要执行两个主要步骤：
+
+1. 在 Pacemaker 群集中的 *每个* 节点上安装 [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 。
+
+   有两个选项可用于安装 ha_cluster_exporter：
+   
+   - 使用 Azure 自动化脚本来部署高可用性群集。 脚本会在每个群集节点上安装 [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 。  
+   - [手动安装](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build)。 
+
+2. 为 Pacemaker 群集中的 *每个* 节点配置高可用性群集提供程序。
+
+   若要配置高可用性群集提供程序，需要以下信息：
+   
+   - **名称**。 此提供程序的名称。 对于 SAP 解决方案实例，这 Azure Monitor 应是唯一的。
+   - **Prometheus 终结点**。 通常是 http \: // \<servername or ip address\> ： 9664/指标。
+   - **SID**。 对于 SAP 系统，请使用 SAP SID。 对于其他系统 (例如，NFS 群集) ，为群集使用三个字符的名称。 SID 必须与受监视的其他群集不同。   
+   - **群集名称**。 创建群集时使用的群集名称。 群集名称可以在群集属性中找到 `cluster-name` 。
+   - **Hostname**。 VM 的 Linux 主机名。  
 
 ## <a name="provider-type-microsoft-sql-server"></a>提供程序类型 Microsoft SQL server
 

@@ -4,16 +4,16 @@ description: 查看、下载和运行 Azure 存储的示例代码和应用程序
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9e3cd6be0da7c6d9401945293283de874c7cd866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322221"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359758"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>使用 v12 Java 客户端库的 Azure 存储示例
 
@@ -453,4 +453,5 @@ ms.locfileid: "87322221"
 * .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
 * Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
 * JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
+* C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
 * 所有其他语言：[Azure 存储示例](storage-samples.md)

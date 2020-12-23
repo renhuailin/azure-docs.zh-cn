@@ -5,18 +5,19 @@ author: MSSedusch
 manager: juergent
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
+ms.openlocfilehash: bd45b0e1070efae7ae69a74ad96e1fa94a136006
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361919"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019389"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -486,18 +487,18 @@ Microsoft Azure 平台是一个多租户平台。 因此，托管 Azure VM 的�
 有关针对操作系统和不同区域的不同服务提供的每个不同产品/服务的定价，请参阅 [Linux 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和 [Windows 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。 有关一年和三年预留实例的详细信息和灵活性，请查看以下文章：
 
 - [什么是 Azure 预订？](../../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [虚拟机预留实例的虚拟机大小灵活性](../../windows/reserved-vm-instance-size-flexibility.md)
+- [虚拟机预留实例的虚拟机大小灵活性](../../reserved-vm-instance-size-flexibility.md)
 - [如何将 Azure 预留折扣应用于虚拟机](../../../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
 有关实时定价的详细信息，请参阅 [Azure 现成虚拟机](https://azure.microsoft.com/pricing/spot/)一文。 同一 VM 类型的定价在不同 Azure 区域之间也可能不同。 对于某些客户而言，有必要将其部署到成本较低的 Azure 区域。
 
-此外，Azure 还提供了专用主机的概念。 专用主机概念使你可以更好地控制由 Azure 执行的修补周期。 可以根据自己的时间表安排修补时间。 此产品/服务专门针对工作负载可能不遵循正常工作负载周期的客户。 若要了解 Azure 专用主机产品/服务的概念，请参阅 [Azure 专用主机](../../windows/dedicated-hosts.md)一文。 SAP 工作负载支持使用此产品/服务，并且希望对 Microsoft 的基础结构修补和最终维护计划有更多控制权的一些 SAP 客户也在使用此产品/服务。 有关 Microsoft 如何维护和修补托管虚拟机的 Azure 基础结构的详细信息，请参阅 [Azure 中虚拟机的维护](../../maintenance-and-updates.md)一文。
+此外，Azure 还提供了专用主机的概念。 专用主机概念使你可以更好地控制由 Azure 执行的修补周期。 可以根据自己的时间表安排修补时间。 此产品/服务专门针对工作负载可能不遵循正常工作负载周期的客户。 若要了解 Azure 专用主机产品/服务的概念，请参阅 [Azure 专用主机](../../dedicated-hosts.md)一文。 SAP 工作负载支持使用此产品/服务，并且希望对 Microsoft 的基础结构修补和最终维护计划有更多控制权的一些 SAP 客户也在使用此产品/服务。 有关 Microsoft 如何维护和修补托管虚拟机的 Azure 基础结构的详细信息，请参阅 [Azure 中虚拟机的维护](../../maintenance-and-updates.md)一文。
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>第 1 代和第 2 代虚拟机
-Microsoft 虚拟机监控程序可以处理两代不同的虚拟机。 这些格式称为“第 1 代”和“第 2 代”。 “第 2 代”是在 2012 年与 Windows Server 2012 虚拟机监控程序一起引入的。 Azure 最初使用第 1 代虚拟机。 部署 Azure 虚拟机时，默认情况下仍使用第 1 代格式。 同时，你也可以部署第 2 代 VM 格式。 [Azure 中对第 2 代 VM 的支持](../../windows/generation-2.md)一文列出了可以部署为第 2 代 VM 的 Azure VM 系列。 本文还列出了第2代虚拟机的重要功能差异，因为它们可以在 Hyper-v 私有云和 Azure 上运行。 更重要的是，本文还列出了第 1 代虚拟机和第 2 代 VM 在 Azure 中运行时的功能差异。
+Microsoft 虚拟机监控程序可以处理两代不同的虚拟机。 这些格式称为“第 1 代”和“第 2 代”。 “第 2 代”是在 2012 年与 Windows Server 2012 虚拟机监控程序一起引入的。 Azure 最初使用第 1 代虚拟机。 部署 Azure 虚拟机时，默认情况下仍使用第 1 代格式。 同时，你也可以部署第 2 代 VM 格式。 [Azure 中对第 2 代 VM 的支持](../../generation-2.md)一文列出了可以部署为第 2 代 VM 的 Azure VM 系列。 本文还列出了第2代虚拟机的重要功能差异，因为它们可以在 Hyper-v 私有云和 Azure 上运行。 更重要的是，本文还列出了第 1 代虚拟机和第 2 代 VM 在 Azure 中运行时的功能差异。
 
 > [!NOTE]
-> 在 Azure 中运行的第 1 代和第 2 代 VM 有功能上的差异。 阅读 [Azure 中对第 2 代 VM 的支持](../../windows/generation-2.md)，以查看这些差异的列表。
+> 在 Azure 中运行的第 1 代和第 2 代 VM 有功能上的差异。 阅读 [Azure 中对第 2 代 VM 的支持](../../generation-2.md)，以查看这些差异的列表。
 
 不能将现有 VM 从一个代移到另一代。 若要更改虚拟机的生成，需要部署所需的新 VM，并重新安装在生成的虚拟机中运行的软件。 此更改只会影响 VM 的基本 VHD 映像，并且不会影响数据磁盘或附加的 NFS 或 SMB 共享。 最初分配到第1代 VM 的数据磁盘、NFS 或 SMB 共享。
 
@@ -767,7 +768,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 打算将某个特定 SAP 系统从本地移至 Azure。 通过将包含 OS、SAP 二进制文件和 DBMS 二进制文件的 VHD，以及包含 DBMS 数据和日志文件的 VHD 上传到 Azure，可以实现此目的。 与[下面的方案 2][planning-guide-5.1.2] 相反，需要将 Azure VM 中的主机名、SAP SID 和 SAP 用户帐户保留为与本地环境中的配置相同。 因此，不需要将映像通用化。 有关本地准备步骤以及向 Azure 上传非通用化 VM 或 VHD 的信息，请参阅本文档的[准备使用非通用化磁盘将 VM 从本地移到 Azure][planning-guide-5.2.1] 一章。 请参阅[方案 3：使用非通用化 Azure VHD 和 SAP 从本地移动 VM][deployment-guide-3.4] 一章（[部署指南][deployment-guide]），了解有关在 Azure 中部署此类映像的详细步骤。
 
-本指南中未详细讨论的另一种方法是使用 Azure Site Recovery 将 SAP NetWeaver 应用程序服务器和 SAP NetWeaver Central 服务复制到 Azure。 建议不要将 Azure Site Recovery 用于数据库层，而是使用数据库特定的复制机制，如 HANA 系统复制。 有关详细信息，请参阅[关于本地应用的灾难恢复](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload)指南的 "[保护 SAP](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload#protect-sap) " 一章。
+本指南中未详细讨论的另一种方法是使用 Azure Site Recovery 将 SAP NetWeaver 应用程序服务器和 SAP NetWeaver Central 服务复制到 Azure。 建议不要将 Azure Site Recovery 用于数据库层，而是使用数据库特定的复制机制，如 HANA 系统复制。 有关详细信息，请参阅[关于本地应用的灾难恢复](../../../site-recovery/site-recovery-workload.md)指南的 "[保护 SAP](../../../site-recovery/site-recovery-workload.md#protect-sap) " 一章。
 
 #### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>使用特定于客户的映像部署虚拟机
 
@@ -894,7 +895,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 * 使用 *az login* 登录到订阅
 * 使用 az account set --subscription `<subscription name or id`> 选择订阅
-* 使用 *az storage blob upload* 上传 VHD - 请参阅[结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
+* 使用 *az storage blob upload* 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
 * （可选）使用 *az disk create* 从 VHD 创建托管磁盘 - 请参阅 https://docs.microsoft.com/cli/azure/disk
 * 使用 az vm create 和参数 --attach-os-disk 创建新的 VM，并将上传的 VHD 或托管磁盘指定为 OS 磁盘 
 * 使用 az vm disk attach 和参数 --new 将数据磁盘添加到新 VM 
@@ -908,7 +909,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 #### <a name="deployment-of-a-vm-image"></a>部署 VM 映像
 若要从本地网络上传现有 VM 或 VHD 以将其用作 Azure VM 映像，这种 VM 或 VHD 需要满足本文档的[准备使用特定于客户的映像为 SAP 部署 VM][planning-guide-5.2.2] 一章中列出的要求。
 
-* 在 Windows 上使用*sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或[如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
+* 在 Windows 上使用 *sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 *Connect-AzAccount* 登录到订阅
 * 使用 *Set-AzContext* 和参数 SubscriptionId 或 SubscriptionName 设置上下文订阅 - 请参阅 <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
 * 使用 *Add-AzVhd* 将 VHD 上传到 Azure 存储帐户 - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
@@ -920,16 +921,16 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 **Azure CLI**
 
-* 在 Windows 上使用*sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或[如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
+* 在 Windows 上使用 *sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 *az login* 登录到订阅
 * 使用 az account set --subscription `<subscription name or id`> 选择订阅
-* 使用 *az storage blob upload* 上传 VHD - 请参阅[结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
+* 使用 *az storage blob upload* 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
 * （可选）使用 *az image create* 从 VHD 创建托管磁盘映像 - 请参阅 https://docs.microsoft.com/cli/azure/image
 * 使用 az vm create 和参数 --image 创建新的 VM，并将上传的 VHD 或托管磁盘映像指定为 OS 磁盘 
 
 **模板**
 
-* 在 Windows 上使用*sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或[如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
+* 在 Windows 上使用 *sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 PowerShell 或 Azure CLI 上传 VHD
 * （可选）使用 PowerShell、Azure CLI 或 Azure 门户从 VHD 创建托管磁盘映像
 * 使用引用映像 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘映像（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
@@ -1076,8 +1077,8 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 
 PS cmdlet 逻辑的基本流程如下所示：
 
-* 使用 *New-AzStorageContext* 创建**源**存储帐户的存储帐户上下文 - 请参阅 <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
-* 使用 *New-AzStorageContext* 创建**目标**存储帐户的存储帐户上下文 - 请参阅 <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* 使用 *New-AzStorageContext* 创建 **源** 存储帐户的存储帐户上下文 - 请参阅 <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* 使用 *New-AzStorageContext* 创建 **目标** 存储帐户的存储帐户上下文 - 请参阅 <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
 * 开始复制
 
 ```powershell
@@ -1186,7 +1187,7 @@ sudo service waagent restart
 
 然后，需要确定是创建新的空磁盘，还是选择以前上传的、现在应该附加到该 VM 的现有磁盘。
 
-**重要说明**：对于 Azure 标准存储，请**不要**使用主机缓存。 因此，应该将“主机缓存首选项”保留为默认值“无”。 使用 Azure 高级存储时，如果 I/O 特征大多数读取为类似对数据库数据文件的一般 I/O 流量，则应该启用“读取缓存”。 在数据库事务日志文件中，不建议使用缓存。
+**重要说明**：对于 Azure 标准存储，请 **不要** 使用主机缓存。 因此，应该将“主机缓存首选项”保留为默认值“无”。 使用 Azure 高级存储时，如果 I/O 特征大多数读取为类似对数据库数据文件的一般 I/O 流量，则应该启用“读取缓存”。 在数据库事务日志文件中，不建议使用缓存。
 
 ---
 > ![Windows 徽标。][Logo_Windows] Windows
@@ -1732,7 +1733,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ![适用于 SAP 的 Azure 扩展 ][planning-guide-figure-2500]
 
-**有关具体的操作方法以及在部署期间使用这些 PowerShell cmdlet 或 CLI 命令的详细步骤，请遵循[部署指南][deployment-guide]中提供的说明。**
+**有关具体的操作方法以及在部署期间使用这些 PowerShell cmdlet 或 CLI 命令的详细步骤，请遵循 [部署指南][deployment-guide]中提供的说明。**
 
 ### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>将 Azure 中的 SAP 实例集成到 SAProuter
 
@@ -1770,7 +1771,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 术语“高可用性 (HA)”通常与一系列技术相关，这些技术通过相同数据中心内受冗余、容错或故障转移保护的组件，为 IT 服务提供业务连续性，以最大程度减少 IT 中断的情况 。 在本例中，我们会在一个 Azure 区域中实现高可用性。
 
-**灾难恢复 (DR)** 的目标也是最大程度地减少 IT 服务中断以及恢复服务，但此目标是通过**不同**的数据中心（通常相距数百公里）实现的。 在本例中，这通常发生同一地缘政治区域内的不同 Azure 区域或客户建立的区域之间。
+**灾难恢复 (DR)** 的目标也是最大程度地减少 IT 服务中断以及恢复服务，但此目标是通过 **不同** 的数据中心（通常相距数百公里）实现的。 在本例中，这通常发生同一地缘政治区域内的不同 Azure 区域或客户建立的区域之间。
 
 ### <a name="overview-of-high-availability"></a>高可用性概述
 
@@ -1805,7 +1806,7 @@ Azure 中的 SAP 高可用性与本地物理或虚拟环境中的 SAP 高可用�
 * 计划内维护事件是指由 Microsoft 对底层 Azure平台进行定期更新，以改进虚拟机运行时所在的平台基础结构的总体可靠性、性能和安全性。
 * 计划外维护事件见于虚拟机所在硬件或物理基础结构出现某类故障的情况。 此类故障可能包括：本地网络故障、本地磁盘故障，或者其他机架级别的故障。 检测到此类故障时，Azure 平台会自动将虚拟机从所在的不健康物理服务器迁移到健康的物理服务器。 此类事件很少见，但也会导致虚拟机重启。
 
-有关更多详细信息，请参阅 [azure 中的 Windows 虚拟机的可用性](../../windows/manage-availability.md) 和 [azure 中 Linux 虚拟机的可用性](../../linux/manage-availability.md)。
+有关更多详细信息，请参阅 [azure 中的 Windows 虚拟机的可用性](../../manage-availability.md) 和 [azure 中 Linux 虚拟机的可用性](../../manage-availability.md)。
 
 #### <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -1832,7 +1833,7 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 
 使用 Azure 基础结构 HA 和存储帐户的 SAP NetWeaver 系统的示例体系结构如下所示：
 
-![利用 Azure 基础结构 HA 来实现 SAP 应用程序的更高可用性][planning-guide-figure-2900]
+![此图显示了使用 Azure 基础结构 HA 和存储帐户的 SAP NetWeaver 系统。][planning-guide-figure-2900]
 
 使用 Azure 基础结构 HA 和托管磁盘的 SAP NetWeaver 系统的示例体系结构如下所示：
 
@@ -1849,11 +1850,11 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 
   即使使用托管磁盘，这些磁盘也会存储在 Azure 存储帐户中，且在出现存储中断时不可用。
 
-* SAP (A)SCS 实例的*更高*可用性
+* SAP (A)SCS 实例的 *更高* 可用性
 
   我们在此处使用 Azure VM 重新启动，来保护已安装 SAP (A)SCS 实例的 VM。 如果 Azure 服务器发生计划内或计划外的停机，则在另一个可用的服务器上重新启动 VM。 如前所述，Azure VM 重新启动主要是保护 Vm 而不是应用程序，在这种情况下， () SCS 实例。 通过 VM 重启，可以间接实现 SAP (A)SCS 实例的更高可用性。 为了确保在 VM 重新启动后自动启动 (A)SCS 实例，请务必设置[对 SAP 实例使用 Autostart][planning-guide-11.5] 一章所述的 (A)SCS 实例启动配置文件中的 Autostart 参数。 这意味着，在单个 VM 上作为单一故障点 (SPOF) 运行的 (A)SCS 实例将是整个 SAP 布局可用性的决定因素。
 
-* DBMS 服务器的*更高*可用性
+* DBMS 服务器的 *更高* 可用性
 
   类似于 SAP (A)SCS 实例使用方案，我们在此使用 Azure VM 重新启动，来保护已安装 DBMS 软件的 VM，并通过 VM 重新启动实现 DBMS 软件的更高可用性。
   在单个 VM 中运行的 DBMS 也是 SPOF，它是整个 SAP 布局可用性的决定因素。
@@ -1892,7 +1893,7 @@ Azure 缩放单元内的 Azure 可用性集可使用不限数目的容错和升�
 
 ##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows 徽标。][Logo_Windows] Windows 上的 HA
 
-![Azure IaaS 中包含 SQL Server 的 SAP NetWeaver 应用程序 HA 体系结构][planning-guide-figure-3200]
+![在 Azure IaaS 中显示 SAP NetWeaver 应用程序 HA 体系 SQL Server 结构的关系图。][planning-guide-figure-3200]
 
 以下 Azure 构造适用于 SAP NetWeaver 系统，可将基础结构问题和主机修补的影响降到最低：
 
@@ -1950,7 +1951,7 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 
 
 还原该状态需要删除基础 VM 以及基础 VM 的原始磁盘和装载的磁盘，将保存的磁盘复制回原始存储帐户或托管磁盘的资源组，然后重新部署系统。
-以下文章举例说明了如何使用 PowerShell 编写此过程的脚本：<http://www.westerndevs.com/azure-snapshots/>
+以下文章举例说明了如何使用 PowerShell 编写此过程的脚本：<https://www.westerndevs.com/_/azure-snapshots/>
 
 请确保安装新的 SAP 许可证，因为如上所述还原 VM 备份会创建新的硬件密钥。
 

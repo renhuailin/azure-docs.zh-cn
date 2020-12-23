@@ -1,15 +1,18 @@
 ---
 title: 发现、评估 Amazon Web Services (AWS) EC2 VM 并将其迁移到 Azure
 description: 本文介绍如何使用 Azure Migrate 将 AWS VM 迁移到 Azure。
+author: deseelam
+ms.author: deseelam
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 10b5f84677deb221bf763870b188ef30ee87e9c2
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651826"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752849"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -40,7 +43,7 @@ ms.locfileid: "89651826"
 
 按如下述设置评估：
 
-1. 按照[教程](./tutorial-prepare-physical.md)设置 Azure 并准备 AWS VM 进行评估。 请注意：
+1. 按照[教程](./tutorial-discover-physical.md)设置 Azure 并准备 AWS VM 进行评估。 请注意：
 
     - Azure Migrate 在发现 AWS 实例时使用密码验证。 AWS 实例默认不支持密码验证。 需要先启用密码验证，才能发现实例。
         - 对于 Windows 计算机，请允许 WinRM 端口 5985 (HTTP)。 这将允许 WMI 调用。
@@ -77,7 +80,7 @@ ms.locfileid: "89651826"
 
 **任务** | **详细信息**
 --- | ---
-**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能[创建新项目](https://docs.microsoft.com/azure/migrate/create-manage-projects)。
 **验证 Azure 帐户的权限** | Azure 帐户需要有权创建 VM 并将数据写入 Azure 托管磁盘。
 
 ### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限
@@ -125,30 +128,6 @@ ms.locfileid: "89651826"
 
 - 复制设备使用 MySQL。 查看在设备上安装 MySQL 的[选项](migrate-replication-appliance.md#mysql-installation)。
 - 查看复制设备访问[公有云](migrate-replication-appliance.md#url-access)和[政府云](migrate-replication-appliance.md#azure-government-url-access)时所需的 Azure URL。
-
-## <a name="add-the-server-migration-tool"></a>添加服务器迁移工具
-
-设置一个 Azure Migrate 项目，并将服务器迁移工具添加到其中。
-
-1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。
-2. 在“服务”下选择“Azure Migrate”。 
-3. 在“概述”中，单击“评估和迁移服务器”。 
-4. 在“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。 
-
-    ![发现和评估服务器](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. 在“发现、评估和迁移服务器”中，单击“添加工具”。 
-6. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。
-7. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置，然后单击“下一步”。  查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
-    - 项目地理位置仅用于存储从 AWS 计算机中收集的元数据。
-    - 运行迁移时，可以选择任一目标区域。
-
-    ![创建 Azure Migrate 项目](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. 在“选择评估工具”中，选择“暂时跳过添加评估工具” > “下一步”。  
-9. 在“选择迁移工具”中，选择“Azure Migrate: 服务器迁移” > “下一步”。
-10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。 
-11. 添加工具后，它会显示在 Azure Migrate 项目的“服务器” > “迁移工具”中。 
 
 ## <a name="set-up-the-replication-appliance"></a>设置复制设备
 
@@ -370,7 +349,7 @@ ms.locfileid: "89651826"
     - 使用 Site Recovery 将 Azure VM 复制到次要区域以保证工作负荷运行且持续可用。 [了解详细信息](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 为提高安全性，请执行以下操作：
     - 使用 [Azure 安全中心 - 适时管理](../security-center/security-center-just-in-time.md)锁定和限制入站流量访问。
-    - 使用[网络安全组](../virtual-network/security-overview.md)限制流入管理终结点的网络流量。
+    - 使用[网络安全组](../virtual-network/network-security-groups-overview.md)限制流入管理终结点的网络流量。
     - 部署[Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
     - 详细了解[保护 IaaS 资源的安全](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。
 - 为了便于监视和管理，请执行以下操作：

@@ -6,14 +6,16 @@ ms.topic: conceptual
 description: 了解如何在使用 Azure Dev Spaces 开发应用程序时，在运行或生成时使用 Kubernetes 机密
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.custom: devx-track-js
-ms.openlocfilehash: b9a9ef2592e7b2aa3630f19e2bc1a47b2b9ef0f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8791480f420dfd76d5291ce82e8ebf7412a41326
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308718"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972962"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>使用 Azure Dev Space 时如何管理机密
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 你的服务可能需要适用于某些服务（例如数据库或其他安全的 Azure 服务）的特定密码、连接字符串和其他机密。 在配置文件中设置这些机密的值即可让其以环境变量的形式在代码中使用。  必须谨慎处理这些配置文件，以避免危及机密的安全性。
 
@@ -141,7 +143,7 @@ configurations:
 在上面的示例中， *mynugetsecret* 是一个现有的机密， *pattoken* 是一个现有密钥。
 
 >[!NOTE]
-> 机密名称和密钥可能包含 `.` 字符。 `\` `.` 在将机密作为生成参数传递时，使用进行转义。 例如，若要传递名为 *foo* 的机密，请使用 *令牌*的密钥： `MYTOKEN: ${secret.foo\.bar.token}` 。 此外，还可以通过前缀和后缀文本来评估机密。 例如 `MYURL: eus-${secret.foo\.bar.token}-version1`。 此外，可以将父代和祖父空间中提供的机密作为生成参数进行传递。
+> 机密名称和密钥可能包含 `.` 字符。 `\` `.` 在将机密作为生成参数传递时，使用进行转义。 例如，若要传递名为 *foo* 的机密，请使用 *令牌*的密钥： `MYTOKEN: ${secret.foo\.bar.token}` 。 此外，还可以通过前缀和后缀文本来评估机密。 例如，`MYURL: eus-${secret.foo\.bar.token}-version1`。 此外，可以将父代和祖父空间中提供的机密作为生成参数进行传递。
 
 在 Dockerfile 中，使用 *ARG* 指令来使用机密，并稍后在 Dockerfile 中使用该相同的变量。 例如：
 

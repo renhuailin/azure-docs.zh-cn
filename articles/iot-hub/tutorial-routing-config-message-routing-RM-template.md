@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084390"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480099"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>教程：使用 Azure 资源管理器模板配置 IoT 中心消息路由
 
@@ -30,7 +30,7 @@ ms.locfileid: "74084390"
 
 在本教程的第二部分，我们将下载并运行一个 Visual Studio 应用程序，以将消息发送到 IoT 中心。 该下载内容的某个文件夹中包含 Azure 资源管理器模板和参数文件，以及 Azure CLI 和 PowerShell 脚本。
 
-现在请继续下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 资源管理器模板和参数文件位于 /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ 中，其文件名分别为 **template_iothub.json** 和 **template_iothub_parameters.json**。
+现在请继续下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 资源管理器模板和参数文件位于 /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ 中，其文件名分别为 **template_iothub.json** 和 **template_iothub_parameters.json** 。
 
 ## <a name="create-your-resources"></a>创建资源
 
@@ -46,49 +46,49 @@ ms.locfileid: "74084390"
 
 其中的大部分参数都具有默认值。 以 **_in** 结尾的参数将与 *randomValue* 相连接，使参数名称全局唯一。 
 
-**randomValue**：此值是基于部署模板时的日期/时间生成的。 此字段不包含在参数文件中，因为它是在模板本身中生成的。
+**randomValue** ：此值是基于部署模板时的日期/时间生成的。 此字段不包含在参数文件中，因为它是在模板本身中生成的。
 
-**subscriptionId**：此字段用于标识要在其中部署模板的订阅。 此字段不包含在参数文件中，因为它是由系统设置的。
+**subscriptionId** ：此字段用于标识要在其中部署模板的订阅。 此字段不包含在参数文件中，因为它是由系统设置的。
 
-**IoTHubName_in**：此字段是基本 IoT 中心名称，与 randomValue 相连接，使名称全局唯一。
+**IoTHubName_in** ：此字段是基本 IoT 中心名称，与 randomValue 相连接，使名称全局唯一。
 
-**location**：此字段是要部署到的 Azure 区域，例如“westus”。
+**location** ：此字段是要部署到的 Azure 区域，例如“westus”。
 
-**consumer_group**：此字段是为通过路由终结点传入的消息设置的使用者组。 它用于筛选 Azure 流分析中的结果。 例如，如果我们想要获取整个流中的所有内容，或者数据通过设置为 **Contoso** 的 consumer_group 传入，则我们可将 Azure 流分析流（和 Power BI 报表）设置为仅显示这些条目。 本教程的第 2 部分将使用此字段。
+**consumer_group** ：此字段是为通过路由终结点传入的消息设置的使用者组。 它用于筛选 Azure 流分析中的结果。 例如，如果我们想要获取整个流中的所有内容，或者数据通过设置为 **Contoso** 的 consumer_group 传入，则我们可将 Azure 流分析流（和 Power BI 报表）设置为仅显示这些条目。 本教程的第 2 部分将使用此字段。
 
-**sku_name**：此字段是 IoT 中心的规模。 此值必须为 S1 或更高；免费层不适用于本教程，因为它不允许多个终结点。
+**sku_name** ：此字段是 IoT 中心的规模。 此值必须为 S1 或更高；免费层不适用于本教程，因为它不允许多个终结点。
 
-**sku_units**：此字段类似于 **sku_name**，表示可以使用的 IoT 中心单位数。
+**sku_units** ：此字段类似于 **sku_name** ，表示可以使用的 IoT 中心单位数。
 
-**d2c_partitions**：此字段表示用于事件流的分区数。
+**d2c_partitions** ：此字段表示用于事件流的分区数。
 
-**storageAccountName_in**：此字段是要创建的存储帐户的名称。 消息将路由到存储帐户中的容器。 此字段与 randomValue 相连接，使名称全局唯一。
+**storageAccountName_in** ：此字段是要创建的存储帐户的名称。 消息将路由到存储帐户中的容器。 此字段与 randomValue 相连接，使名称全局唯一。
 
-**storageContainerName**：此字段是路由到存储帐户的消息的存储容器。
+**storageContainerName** ：此字段是路由到存储帐户的消息的存储容器。
 
-**storage_endpoint**：此字段是消息路由使用的存储帐户终结点的名称。
+**storage_endpoint** ：此字段是消息路由使用的存储帐户终结点的名称。
 
-**service_bus_namespace_in**：此字段是要创建的服务总线命名空间的名称。 此值与 randomValue 相连接，使名称全局唯一。
+**service_bus_namespace_in** ：此字段是要创建的服务总线命名空间的名称。 此值与 randomValue 相连接，使名称全局唯一。
 
-**service_bus_queue_in**：此字段是用于路由消息的服务总线队列的名称。 此值与 randomValue 相连接，使名称全局唯一。
+**service_bus_queue_in** ：此字段是用于路由消息的服务总线队列的名称。 此值与 randomValue 相连接，使名称全局唯一。
 
-**AuthRules_sb_queue**：此字段是服务总线队列的授权规则，用于检索队列的连接字符串。
+**AuthRules_sb_queue** ：此字段是服务总线队列的授权规则，用于检索队列的连接字符串。
 
 ### <a name="variables"></a>变量
 
 这些值将在模板中使用，往往派生自参数。
 
-**queueAuthorizationRuleResourceId**：此字段是服务总线队列的授权规则的 ResourceId。 而 ResourceId 用于检索队列的连接字符串。
+**queueAuthorizationRuleResourceId** ：此字段是服务总线队列的授权规则的 ResourceId。 而 ResourceId 用于检索队列的连接字符串。
 
-**iotHubName**：此字段是连接 randomValue 后的 IoT 中心名称。 
+**iotHubName** ：此字段是连接 randomValue 后的 IoT 中心名称。 
 
-**storageAccountName**：此字段是连接 randomValue 后的存储帐户名称。 
+**storageAccountName** ：此字段是连接 randomValue 后的存储帐户名称。 
 
-**service_bus_namespace**：此字段是连接 randomValue 后的命名空间。
+**service_bus_namespace** ：此字段是连接 randomValue 后的命名空间。
 
-**service_bus_queue**：此字段是连接 randomValue 后的服务总线队列名称。
+**service_bus_queue** ：此字段是连接 randomValue 后的服务总线队列名称。
 
-**sbVersion**：要使用的服务总线 API 版本。 在本例中为“2017-04-01”。
+**sbVersion** ：要使用的服务总线 API 版本。 在本例中为“2017-04-01”。
 
 ### <a name="resources-storage-account-and-container"></a>资源：存储帐户和容器
 
@@ -358,7 +358,7 @@ ms.locfileid: "74084390"
 
 若要上传文件，请在菜单栏中选择“上传/下载文件”图标，然后选择“上传”。 
 
-![Cloud Shell 菜单栏，其中已突出显示“上传/下载文件”](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
+![突出显示“上传/下载文件”图标的屏幕截图。](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
 使用弹出的文件资源管理器找到本地磁盘上的文件并将其选中，然后选择“打开”。 
 

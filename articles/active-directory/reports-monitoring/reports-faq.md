@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015324"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107424"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
@@ -31,13 +31,13 @@ ms.locfileid: "90015324"
 
 **问：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 api 以编程方式将 Azure AD 审核和集成的应用程序使用情况报表纳入到报告系统中。我应该切换到哪些功能？**
 
-**答：** 请查看 [API 参考](https://developer.microsoft.com/graph/)，了解如何[使用 API 访问活动报告](concept-reporting-api.md)。 此终结点有两个报表 (**审核** 和 **登录**) 这些报表提供了在旧 API 终结点中获取的所有数据。 此新的终结点还有一个登录报告，其中包含可用来获取应用使用情况、设备使用情况和用户登录信息的 Azure AD Premium 许可证。
+**答：** 请查看 [API 参考](https://developer.microsoft.com/graph/)，了解如何 [使用 API 访问活动报告](concept-reporting-api.md)。 此终结点有两个报表 (**审核** 和 **登录**) 这些报表提供了在旧 API 终结点中获取的所有数据。 此新的终结点还有一个登录报告，其中包含可用来获取应用使用情况、设备使用情况和用户登录信息的 Azure AD Premium 许可证。
 
 ---
 
 **问：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 api 将 Azure AD 安全报告 (特定类型的检测，如泄露的凭据或从匿名 IP 地址登录) 以编程方式登录到我们的报告系统。我应该切换到哪些功能？**
 
-**答：** 你可以使用 [Identity Protection 风险检测 API](../identity-protection/howto-identity-protection-graph-api.md)   通过 Microsoft Graph 访问安全检测。 这种新格式可让你更灵活地查询数据、高级筛选、字段选择等，并将风险检测标准化为一种类型，以便更轻松地集成到 Siem 和其他数据收集工具。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 但是， [新的 api 使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，这是 Microsoft 365 或 Azure AD 这类 Api 的 Microsoft 标准。 因此，所需的工作可以扩展当前的 Microsoft Graph 投资，也可以帮助您开始过渡到这个新的标准平台。
+**答：** 你可以使用 [Identity Protection 风险检测 API](../identity-protection/howto-identity-protection-graph-api.md) 通过 Microsoft Graph 访问安全检测。 这种新格式可让你更灵活地查询数据、高级筛选、字段选择等，并将风险检测标准化为一种类型，以便更轻松地集成到 Siem 和其他数据收集工具。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 但是， [新的 api 使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，这是 Microsoft 365 或 Azure AD 这类 Api 的 Microsoft 标准。 因此，所需的工作可以扩展当前的 Microsoft Graph 投资，也可以帮助您开始过渡到这个新的标准平台。
 
 ---
 
@@ -49,7 +49,7 @@ ms.locfileid: "90015324"
 
 **问：获得高级许可证后多久能看见活动数据？**
 
-**答：** 如果获得免费许可证时已有活动数据，则可以立即看到这些数据。 如果没有任何数据，则需要在一到两天后，数据才会显示在报告中。
+**答：** 如果获得免费许可证时已有活动数据，则可以立即看到这些数据。 如果没有任何数据，则报表中显示的数据最多需要3天。
 
 ---
 
@@ -61,7 +61,7 @@ ms.locfileid: "90015324"
 
 **问：若要查看到 Azure 门户的活动登录或通过 API 获取数据，是否需要是全局管理员？**
 
-**答：** 否。如果你是租户的**安全读取者**或**安全管理员**，也可以通过门户或 API 访问报告数据。 当然，**全局管理员**也有权访问这些数据。
+**答：** 否。如果你是租户的 **安全读取者** 或 **安全管理员**，也可以通过门户或 API 访问报告数据。 当然，**全局管理员** 也有权访问这些数据。
 
 ---
 
@@ -95,7 +95,7 @@ ms.locfileid: "90015324"
 
 **问：可从 Azure 门户下载多少条记录？**
 
-**答：** 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间** 进行排序，默认情况下获取的是最近 5000 条记录。
+**答：** 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，默认情况下获取的是最近 5000 条记录。
 
 ---
 
@@ -107,7 +107,7 @@ ms.locfileid: "90015324"
 
 ---
 
-问：如何了解 Azure 门户中被标记为存在风险的用户或登录的原因？****
+问：如何了解 Azure 门户中被标记为存在风险的用户或登录的原因？
 
 **答：** 如果有 **Azure AD Premium** 订阅，可以通过在 "已 **标记为风险的用户** " 中选择用户或在 "有 **风险的登录** " 报表中选择一个记录来了解有关底层风险检测的详细信息。 如果你有 **免费** 订阅或 **基本** 订阅，则可以查看 "有风险的用户和有风险的登录" 报表，但看不到基础风险检测信息。
 
@@ -115,7 +115,7 @@ ms.locfileid: "90015324"
 
 **问：在登录和有风险的登录报告中，IP 地址是如何计算的？**
 
-答：**** IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 有多种因素会导致映射 IP 地址进一步变得复杂，例如，从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。 
+答：IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 有多种因素会导致映射 IP 地址进一步变得复杂，例如，从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。 
 
 ---
 

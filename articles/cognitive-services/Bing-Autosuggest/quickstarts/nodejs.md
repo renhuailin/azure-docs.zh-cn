@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 Node.js 建议搜索查询
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
+description: 了解如何使用必应自动建议 API 和 Node.js 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,20 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6a78c2ae4145a65739d5db56a70dca498d7d6a82
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 03545aafa1cbf6efa82ae063e7e966443b1d5e8b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406480"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106115"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>快速入门：使用必应自动建议 REST API 和 Node.js 建议搜索查询
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 按照此快速入门的要求，学习如何调用必应自动建议 API 并读取 JSON 响应。 这个简单的 Node.js 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) 上获得
 
@@ -38,7 +43,7 @@ ms.locfileid: "87406480"
     let https = require ('https');
     ```
 
-2. 为 API 终结点主机和路径、订阅密钥、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和搜索词创建变量。 使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+2. 为 API 终结点主机和路径、订阅密钥、[市场代码](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和搜索词创建变量。 使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -81,14 +86,13 @@ ms.locfileid: "87406480"
         //...
         let req = https.request(request_params, response_handler);
         req.end();
-        ```
+    ```
 
-## Create a search handler
+## <a name="create-a-search-handler"></a>创建搜索处理程序
 
-1. Define a function named `response_handler` that takes an HTTP call, `response`, as a parameter. 
-Do the following steps within this function:
+1. 定义一个名为 `response_handler` 的函数，该函数使用 HTTP 调用 `response` 作为参数。 在此函数内，执行以下步骤：
     
-    1. Define a variable to contain the body of the JSON response.  
+    1. 定义一个包含 JSON 响应的正文的变量。  
 
         ```javascript
         let response_handler = function (response) {
@@ -96,7 +100,7 @@ Do the following steps within this function:
         };
         ```
 
-    2. Store the body of the response when the `data` flag is called
+    2. 调用 `data` 标志时，存储响应的正文
         
         ```javascript
         response.on ('data', function (d) {
@@ -104,7 +108,7 @@ Do the following steps within this function:
         });
         ```
 
-    3. When an `end` flag is signaled, use `JSON.parse()` and `JSON.stringify()` to print the response.
+    3. 指示 `end` 标志时，使用 `JSON.parse()` 和 `JSON.stringify()` 输出响应。
     
         ```javascript
         response.on ('end', function () {
@@ -117,11 +121,11 @@ Do the following steps within this function:
         });
         ```
 
-2. Call `get_suggestions()` to send the request to the Bing Autosuggest API.
+2. 调用 `get_suggestions()` 将请求发送到必应自动建议 API。
 
-## Example JSON response
+## <a name="example-json-response"></a>示例 JSON 响应
 
-A successful response is returned in JSON, as shown in the following example: 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -193,4 +197,4 @@ A successful response is returned in JSON, as shown in the following example:
 > [创建单页 Web 应用](../tutorials/autosuggest.md)
 
 - [什么是必应自动建议？](../get-suggested-search-terms.md)
-- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [必应自动推荐 API v7 参考](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

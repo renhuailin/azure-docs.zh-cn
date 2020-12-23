@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539391"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92166584"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中视图设计器可视化部件的参考指南
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
@@ -44,7 +44,7 @@ ms.locfileid: "86539391"
 ## <a name="list-of-queries-part"></a>查询列表部分
 查询列表部件显示日志查询的列表。 可以选择每个查询以显示其结果。 默认情况下，视图将包括单个查询，可以选择“+ 查询”添加其他查询  。
 
-![查询列表视图](media/view-designer-parts/view-list-queries.png)
+![Azure Monitor 视图设计器中的查询可视化部分列表的屏幕截图。](media/view-designer-parts/view-list-queries.png)
 
 | 设置 | 说明 |
 |:--- |:--- |
@@ -60,7 +60,7 @@ ms.locfileid: "86539391"
 ## <a name="number-and-list-part"></a>数字和列表部件
 标头具有单个数字，用于表示来自日志查询中的记录数。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
 
-![查询列表视图](media/view-designer-parts/view-number-list.png)
+![Azure Monitor 视图设计器中的数字和列表可视化部分的屏幕截图。](media/view-designer-parts/view-number-list.png)
 
 | 设置 | 说明 |
 |:--- |:--- |
@@ -318,7 +318,7 @@ ms.locfileid: "86539391"
 例如，考虑一个名为 *Location* 的属性，该属性包括 *Redmond-Building 41* 和 *Bellevue-Building 12* 等值。 可以指定短划线 (–) 作为名称和值分隔符，指定 *City-Building* 作为名称。 此方法会将每个值分析为两个称作 *City* 和 *Building* 的属性。
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>点击导航
-点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在[Log Analytics](../log-query/log-query-overview.md)中打开查询或启动其他视图。
+点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在 [Log Analytics](../log-query/log-query-overview.md) 中打开查询或启动其他视图。
 
 下表描述了点击导航的设置。
 
@@ -330,7 +330,7 @@ ms.locfileid: "86539391"
 
 
 
-### <a name="sparklines"></a><a name="sparklines"></a>迷你图
+### <a name="sparklines"></a><a name="sparklines"></a>分
 迷你图是一种小型折线图，表明一时间段内列表项的值。 对于具有列表的可视化部件，可选择是显示水平条（指示数值列的相关值）还是迷你图（指示其在一时间段内的值）。
 
 下表描述迷你图的设置：

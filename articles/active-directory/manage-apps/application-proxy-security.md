@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825892"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649562"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -49,7 +49,7 @@ Azure AD 应用程序代理依赖于使用 Azure AD 安全令牌服务 (STS) 执
 
 使用[条件访问](../conditional-access/concept-conditional-access-cloud-apps.md)可以定义对允许用户访问应用程序的方式的限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
 
-还可以使用条件访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 此外，还可以通过 Azure AD 条件访问将应用程序路由到 Microsoft Cloud App Security，以便通过[访问](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略提供实时监视和控制
+还可以使用条件访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 此外，还可以通过 Azure AD 条件访问将应用程序路由到 Microsoft Cloud App Security，以便通过[访问](/cloud-app-security/access-policy-aad)和[会话](/cloud-app-security/session-policy-aad)策略提供实时监视和控制
 
 ### <a name="traffic-termination"></a>流量终止
 
@@ -61,7 +61,7 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 无需向企业网络打开入站连接。
 
-应用程序代理连接器仅与 Azure AD 应用程序代理服务建立出站连接，这意味着无需为传入连接打开防火墙端口。 传统代理要求部署外围网络（也称为 *DMZ*、*外围安全区域*或*屏蔽子网*），并在网络边缘允许未经身份验证的连接进行访问。 此方案需要投资开发 Web 应用程序防火墙产品，用于分析流量并保护环境。 使用应用程序代理，不需要部署外围网络，因为所有连接都是出站的，并且是通过安全通道建立的。
+应用程序代理连接器仅与 Azure AD 应用程序代理服务建立出站连接，这意味着无需为传入连接打开防火墙端口。 传统代理要求部署外围网络（也称为 *DMZ*、*外围安全区域* 或 *屏蔽子网*），并在网络边缘允许未经身份验证的连接进行访问。 此方案需要投资开发 Web 应用程序防火墙产品，用于分析流量并保护环境。 使用应用程序代理，不需要部署外围网络，因为所有连接都是出站的，并且是通过安全通道建立的。
 
 有关连接器的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。
 
@@ -69,7 +69,7 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 获得一流的安全保护。
 
-由于属于 Azure Active Directory，因此应用程序代理可以利用 [Azure AD 标识保护](../active-directory-identityprotection.md)（数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 我们会共同主动发现遭到入侵的帐户，并提供保护，以免出现高风险登录威胁。我们会考虑许多因素，以确定哪些登录尝试有高风险。 这些因素包括标记为受感染设备、对网络进行匿名化处理，以及非典型或不太可能的位置。
+由于属于 Azure Active Directory，因此应用程序代理可以利用 [Azure AD 标识保护](../identity-protection/overview-identity-protection.md)（数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 我们会共同主动发现遭到入侵的帐户，并提供保护，以免出现高风险登录威胁。我们会考虑许多因素，以确定哪些登录尝试有高风险。 这些因素包括标记为受感染设备、对网络进行匿名化处理，以及非典型或不太可能的位置。
 
 其中的许多报告与事件已通过某个 API 提供，便于与安全信息与事件管理 (SIEM) 系统集成。
 
@@ -107,8 +107,8 @@ Azure AD 应用程序代理由两个部分组成：
 
 首次设置连接器时会发生以下流量事件：
 
-1. 在安装连接器的过程中，将连接器注册到服务。 系统会提示用户输入其 Azure AD 管理员凭据。 从此身份验证获取令牌，并将其提供给 Azure AD 应用程序代理服务。
-2. 应用程序代理服务评估该令牌。 它检查用户是否为租户中的公司管理员。 如果用户不是管理员，则终止此过程。
+1. 在安装连接器的过程中，将连接器注册到服务。 系统会提示用户输入其 Azure AD 管理员凭据。  从此身份验证获取令牌，并将其提供给 Azure AD 应用程序代理服务。
+2. 应用程序代理服务评估该令牌。 它检查用户是否为租户中的公司管理员。  如果用户不是管理员，则终止此过程。
 3. 连接器生成客户端证书请求，并将此请求连同令牌一起传递给应用程序代理服务。 该服务转而验证令牌并为客户端证书请求签名。
 4. 以后，连接器将使用此客户端证书来与应用程序代理服务通信。
 5. 连接器使用其客户端证书从服务执行初始的系统配置数据提取，并准备好接收请求。
@@ -173,7 +173,7 @@ Azure AD 应用程序代理由两个部分组成：
 
 收到响应后，连接器将与应用程序代理服务建立出站连接，以返回标头详细信息并开始流式传输返回的数据。
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5.服务将数据流式传输给用户。 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5.服务将数据流式传输给用户。 
 
 此时可能会发生某些应用程序处理活动。 如果已将应用程序代理配置为转换应用程序中的标头或 URL，则会在此步骤中根据需要进行该项处理。
 

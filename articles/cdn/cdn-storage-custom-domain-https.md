@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5b6fe2b2704f101a7775b7eb700375105b0a9eca
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6061de0a330518baaa829a9a1c8a05f196d68dcb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81259878"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777837"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>教程：通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob
 
@@ -37,7 +37,7 @@ ms.locfileid: "81259878"
 通过在自定义域上使用 HTTPS 协议，可以确保数据在 Internet 中通过 TLS/SSL 加密安全地进行分发。 Web 浏览器通过 HTTPS 连接到网站时，它会验证网站的安全证书并验证该证书是否是由合法的证书颁发机构颁发的。 若要在自定义域上配置 HTTPS，请按此教程中的说明操作：[在 Azure CDN 自定义域上配置 HTTPS](cdn-custom-ssl.md)。
 
 ## <a name="shared-access-signatures"></a>共享访问签名
-如果 Blob 存储终结点配置为不允许进行匿名读取访问，则应在向自定义域发出的每个请求中提供一个[共享访问签名 (SAS)](cdn-sas-storage-support.md) 令牌。 默认情况下，Blob 存储终结点不允许进行匿名读取访问。 有关 SAS 的详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../storage/blobs/storage-manage-access-to-resources.md)。
+如果 Blob 存储终结点配置为不允许进行匿名读取访问，则应在向自定义域发出的每个请求中提供一个[共享访问签名 (SAS)](cdn-sas-storage-support.md) 令牌。 默认情况下，Blob 存储终结点不允许进行匿名读取访问。 有关 SAS 的详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../storage/blobs/anonymous-read-access-configure.md)。
 
 Azure CDN 会忽略添加到 SAS 令牌的任何限制。 例如，所有 SAS 令牌都有过期时间，这意味着仍然可以使用过期的 SAS 访问该内容，直至从 CDN 接入点 (POP) 服务器中清除该内容。 可以通过设置缓存响应标头来控制数据在 Azure CDN 上的缓存时间。 有关详细信息，请参阅[管理 Azure CDN 中的 Azure 存储 Blob 的过期](cdn-manage-expiration-of-blob-content.md)。
 
@@ -61,7 +61,3 @@ Azure CDN 会忽略添加到 SAS 令牌的任何限制。 例如，所有 SAS �
 
 ## <a name="next-steps"></a>后续步骤
 [教程：设置 Azure CDN 缓存规则](cdn-caching-rules-tutorial.md)
-
-
-
-

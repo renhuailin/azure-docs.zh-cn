@@ -6,24 +6,24 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6c364cf84bada2a951ef3f224ea836885f0e3c1e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831611"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636310"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教程：通过 Azure IoT 中心接收设备数据
 
-通过适用于 FHIR 的 Azure IoT 连接器*，你能够将来自医疗物联网 (IoMT) 设备的数据引入 Azure API for FHIR。 [使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）](iot-fhir-portal-quickstart.md)快速入门展示了一个示例设备，该设备由[将遥测发送到适用于 FHIR 的 Azure IoT 连接器](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot)的 Azure IoT Central 管理。 适用于 FHIR 的 Azure IoT 连接器还可用于通过 Azure IoT 中心预配和管理的设备。 本教程提供连接 Azure IoT 中心的设备数据并将其路由到适用于 FHIR 的 Azure IoT 连接器的过程。
+适用于 Fast Healthcare Interoperability Resources (FHIR&#174;) 的 Azure IoT 连接器* 使你能够将来自医疗物联网 (IoMT) 设备的数据引入 Azure API for FHIR。 [使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）](iot-fhir-portal-quickstart.md)快速入门展示了一个示例设备，该设备由[将遥测发送到适用于 FHIR 的 Azure IoT 连接器](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot)的 Azure IoT Central 管理。 适用于 FHIR 的 Azure IoT 连接器还可用于通过 Azure IoT 中心预配和管理的设备。 本教程提供连接 Azure IoT 中心的设备数据并将其路由到适用于 FHIR 的 Azure IoT 连接器的过程。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 有效的 Azure 订阅 - [免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 包含至少一个适用于 FHIR 的 Azure IoT 连接器的 Azure API for FHIR 资源 - [使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）](iot-fhir-portal-quickstart.md)
-- 与真实或模拟设备连接的 Azure IoT 中心资源 - [使用 Azure 门户创建 IoT 中心](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+- 与真实或模拟设备连接的 Azure IoT 中心资源 - [使用 Azure 门户创建 IoT 中心](../iot-hub/quickstart-send-telemetry-dotnet.md)
 
 > [!TIP]
 > 如果你使用的是 Azure IoT 中心模拟设备应用程序，则可以从采用各种不同支持语言和系统的应用程序中进行选择。
@@ -36,15 +36,15 @@ Azure IoT 中心需要一个连接字符串，以便与适用于 FHIR 的 Azure 
 
 ## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>使用适用于 FHIR 的 Azure IoT 连接器（预览版）连接 Azure IoT 中心
 
-Azure IoT 中心支持[消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)功能，该功能可将设备数据发送到各种 Azure 服务（例如事件中心、存储帐户和服务总线）。 适用于 FHIR 的 Azure IoT 连接器利用此功能连接到 Azure IoT 中心中的设备数据并将其发送到事件中心终结点。
+Azure IoT 中心支持[消息路由](../iot-hub/iot-hub-devguide-messages-d2c.md)功能，该功能可将设备数据发送到各种 Azure 服务（例如事件中心、存储帐户和服务总线）。 适用于 FHIR 的 Azure IoT 连接器利用此功能连接到 Azure IoT 中心中的设备数据并将其发送到事件中心终结点。
 
 > [!NOTE] 
-> 目前只能使用 PowerShell 或 CLI 命令[创建消息路由](https://docs.microsoft.com/azure/iot-hub/tutorial-routing)，因为适用于 FHIR 的 Azure IoT 连接器的事件中心不在客户订阅上托管，因此不会通过 Azure 门户显示。 但是，在使用 PowerShell 或 CLI 添加消息路由对象之后，这些对象将在 Azure 门户上可见，并可以从其中进行管理。
+> 目前只能使用 PowerShell 或 CLI 命令[创建消息路由](../iot-hub/tutorial-routing.md)，因为适用于 FHIR 的 Azure IoT 连接器的事件中心不在客户订阅上托管，因此不会通过 Azure 门户显示。 但是，在使用 PowerShell 或 CLI 添加消息路由对象之后，这些对象将在 Azure 门户上可见，并可以从其中进行管理。
 
 消息路由的设置包括两个步骤。
 
 ### <a name="add-an-endpoint"></a>添加终结点
-此步骤定义一个终结点，IoT 中心会将数据路由到该终结点。 可根据偏好使用 [Add-AzIotHubRoutingEndpoint](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell 命令或 [az iot hub routing-endpoint create](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?#az-iot-hub-routing-endpoint-create) CLI 命令创建此终结点。
+此步骤定义一个终结点，IoT 中心会将数据路由到该终结点。 可根据偏好使用 [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell 命令或 [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) CLI 命令创建此终结点。
 
 下面是用于创建终结点的命令的参数列表：
 
@@ -59,9 +59,9 @@ Azure IoT 中心支持[消息路由](https://docs.microsoft.com/azure/iot-hub/io
 |ConnectionString|connection-string|适用于 FHIR 的 Azure IoT 连接器的连接字符串。 使用在上一步中获得的值。|
 
 ### <a name="add-a-message-route"></a>添加消息路由
-此步骤使用上面创建的终结点定义消息路由。 可根据偏好使用 [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell 命令或 [az iot hub route create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI 命令创建路由。
+此步骤使用上面创建的终结点定义消息路由。 可根据偏好使用 [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell 命令或 [az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI 命令创建路由。
 
-下面是用于创建终结点的命令的参数列表：
+下面是可以与添加消息路由的命令配合使用的参数列表：
 
 |PowerShell 参数|CLI 参数|说明|
 |---|---|---|
@@ -113,6 +113,4 @@ Azure IoT 中心支持[消息路由](https://docs.microsoft.com/azure/iot-hub/io
 >[!div class="nextstepaction"]
 >[适用于 FHIR 的 Azure IoT 连接器映射模板](iot-mapping-templates.md)
 
-*在 Azure 门户中，适用于 FHIR 的 Azure IoT 连接器称为 IoT Connector（预览版）。
-
-FHIR 是 HL7 的注册商标，经 HL7 许可使用。
+*在 Azure 门户中，适用于 FHIR 的 Azure IoT 连接器称为 IoT Connector（预览版）。 FHIR 是 HL7 的注册商标，经 HL7 许可使用。

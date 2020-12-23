@@ -5,16 +5,16 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
-ms.openlocfilehash: 180af30f57a8123b6e90cc8b11848b92b3c86db1
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: bd69710b6e4404a76d3cca385b6c07ea7c1f3f5c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802168"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201811"
 ---
 # <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>在 Unity 中使用全息远程处理和远程渲染
 
-[全息远程处理](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) 和 Azure 远程呈现在一个应用程序中互相排斥。 同样，也无法使用 [Unity 播放模式](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) 。
+[全息远程处理](/windows/mixed-reality/holographic-remoting-player) 和 Azure 远程呈现在一个应用程序中互相排斥。 同样，也无法使用 [Unity 播放模式](/windows/mixed-reality/unity-play-mode) 。
 
 对于每次运行 Unity 编辑器，只能使用其中一种。 若要使用其他帐户，请先重新启动 Unity。
 

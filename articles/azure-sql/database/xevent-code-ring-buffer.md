@@ -7,23 +7,23 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619825"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487297"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL 数据库中扩展事件的环形缓冲区目标代码
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。 扩展事件数据最简单的目标是[环形缓冲区目标](https://msdn.microsoft.com/library/ff878182.aspx)。
+需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。 扩展事件数据最简单的目标是[环形缓冲区目标](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130))。
 
 本主题演示一个 Transact-SQL 代码示例：
 
@@ -46,11 +46,11 @@ ms.locfileid: "91619825"
 * Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可在其中创建表的任何数据库。
   
-  * 或者，也可以在几分钟内[创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
+  * 或者，也可以在几分钟内 [创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
 * SQL Server Management Studio (ssms.exe)，最好是每月最新更新版。
   可从以下位置下载最新的 ssms.exe：
   
-  * 标题为[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 的主题。
+  * 标题为[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 的主题。
   * [直接指向下载位置的链接。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>代码示例
@@ -349,6 +349,6 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

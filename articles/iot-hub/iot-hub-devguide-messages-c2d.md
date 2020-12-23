@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.custom: mqtt
-ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-azurecli
+ms.openlocfilehash: ba58f7897827cf7ce7f6156df1434733d89d7f42
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81730000"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844448"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -83,7 +83,7 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 
 如果 **Ack** 值为 *full*，且未收到反馈消息，则意味着反馈消息已过期。 该服务无法了解原始消息的经历。 实际上，服务应该确保它可以在反馈过期之前对其进行处理。 最长过期时间是两天，因此当发生故障时，有时间让服务再次运行。
 
-如[终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 */messages/servicebound/feedback* 以消息方式传送反馈。 接收反馈的语义与云到设备消息的语义相同。 可能的话，消息反馈将放入单个消息中，其格式如下：
+如 [终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 */messages/servicebound/feedback* 以消息方式传送反馈。 接收反馈的语义与云到设备消息的语义相同。 可能的话，消息反馈将放入单个消息中，其格式如下：
 
 | 属性     | 说明 |
 | ------------ | ----------- |
@@ -147,7 +147,7 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 
     ![在门户中为云到设备消息设置配置选项](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**：使用 [az iot hub update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) 命令：
+* **Azure CLI**：使用 [az iot hub update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) 命令：
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

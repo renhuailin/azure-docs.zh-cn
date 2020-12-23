@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 16f55dc88ed2d2d019a2fed355a14741263c20af
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723990"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397597"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
@@ -47,8 +47,8 @@ ms.locfileid: "88723990"
 
 1. 在“基本信息”选项卡上，输入这些值作为以下应用程序网关设置  ：
 
-   - **资源组**：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的  。
-   - **应用程序网关名称**：输入 *myAppGateway* 作为应用程序网关的名称。
+   - **资源组** ：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的  。
+   - **应用程序网关名称** ：输入 *myAppGateway* 作为应用程序网关的名称。
 
      :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="创建应用程序网关":::
 
@@ -56,13 +56,13 @@ ms.locfileid: "88723990"
 
     在“配置虚拟网络”下，选择“新建”以创建新的虚拟网络   。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网  ：
 
-    - **Name**：输入 *myVNet* 作为虚拟网络的名称。
+    - **Name** ：输入 *myVNet* 作为虚拟网络的名称。
 
-    - **子网名称**（应用程序网关子网）：子网网关将显示名为“默认值”的子网   。 将此子网的名称更改为 myAGSubnet  。<br>应用程序网关子网只能包含应用程序网关。 不允许其他资源。
+    - **子网名称** （应用程序网关子网）：子网网关将显示名为“默认值”的子网   。 将此子网的名称更改为 myAGSubnet  。<br>应用程序网关子网只能包含应用程序网关。 不允许其他资源。
 
-    - **子网名称**（后端服务器子网）：在子网网关的第二行中，在“子网名称”列输入“myBackendSubnet”    。
+    - **子网名称** （后端服务器子网）：在子网网关的第二行中，在“子网名称”列输入“myBackendSubnet”    。
 
-    - **地址范围**（后端服务器子网）：在子网网格的第二行中，输入不会与 myAGSubnet 的地址范围重叠的地址范围   。 例如，如果 myAGSubnet 的地址范围为 10.0.0.0/24，则为 myBackendSubnet 的地址范围输入 10.0.1.0/24    。
+    - **地址范围** （后端服务器子网）：在子网网格的第二行中，输入不会与 myAGSubnet 的地址范围重叠的地址范围   。 例如，如果 myAGSubnet 的地址范围为 10.0.0.0/24，则为 myBackendSubnet 的地址范围输入 10.0.1.0/24    。
 
     选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置   。
 
@@ -74,13 +74,13 @@ ms.locfileid: "88723990"
 
 1. 在“前端”选项卡上，验证“IP 地址类型”是否设置为“公共”    。 <br>可以根据用例将前端 IP 配置为公共或专用。 本示例将选择公共前端 IP。
    > [!NOTE]
-   > 对于应用程序网关 v2 SKU，只能选择**公共**前端 IP 配置。 目前尚未为此 v2 SKU 启用专用前端 IP 配置。
+   > 对于应用程序网关 v2 SKU，只能选择 **公共** 前端 IP 配置。 目前尚未为此 v2 SKU 启用专用前端 IP 配置。
 
 2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定”     。 
 
      :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="创建另一个 VNet":::
 
-3. 在完成时选择“下一步:**后端**。
+3. 在完成时选择“下一步: **后端** 。
 
 ### <a name="backends-tab"></a>“后端”选项卡
 
@@ -90,8 +90,8 @@ ms.locfileid: "88723990"
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
-    - **Name**：输入“contosoPool”  作为后端池的名称。
-    - **添加不包含目标的后端池**：选择“是”以创建不包含目标的后端池  。 你将在创建应用程序网关之后添加后端目标。
+    - **Name** ：输入“contosoPool”  作为后端池的名称。
+    - **添加不包含目标的后端池** ：选择“是”以创建不包含目标的后端池  。 你将在创建应用程序网关之后添加后端目标。
 
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡    。
 4. 现在添加另一个名为“fabrikamPool”  的后端池。
@@ -110,12 +110,12 @@ ms.locfileid: "88723990"
 
 3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，输入侦听器的以下值   ：
 
-    - **侦听器名称**：输入“contosoListener”  作为侦听器的名称。
-    - **前端 IP**：选择“公共”，以选择为前端创建的公共 IP  。
+    - **侦听器名称** ：输入“contosoListener”  作为侦听器的名称。
+    - **前端 IP** ：选择“公共”，以选择为前端创建的公共 IP  。
 
    在“其他设置”  下：
-   - **侦听器类型**：多个站点
-   - **主机名**：**www.contoso.com**
+   - **侦听器类型** ：多个站点
+   - **主机名** ： **www.contoso.com**
 
    接受“侦听器”选项卡上其他设置的默认值，然后选择“后端目标”选项卡以配置剩余的传递规则   。
 
@@ -154,13 +154,13 @@ ms.locfileid: "88723990"
 2. 选择“计算”，然后在“常用”列表中选择“Windows Server 2016 Datacenter”    。 此时会显示“创建虚拟机”页。<br>应用程序网关可以将流量路由到其后端池中使用的任何类型的虚拟机。 在此示例中，可以使用 Windows Server 2016 Datacenter。
 3. 对于以下虚拟机设置，请在“基本信息”选项卡中输入相应值：
 
-    - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
-    - **虚拟机名称**：输入“contosoVM”  作为虚拟机的名称。
-    - **用户名**：为管理员用户名输入一个名称。
+    - **资源组** ：选择 **myResourceGroupAG** 作为资源组名称。
+    - **虚拟机名称** ：输入“contosoVM”  作为虚拟机的名称。
+    - **用户名** ：为管理员用户名输入一个名称。
     - 密码：输入管理员的密码。
-1. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
-2. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
-3. 在“网络”  选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”  设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
+1. 接受其他默认值，然后选择“下一步: **磁盘”** 。  
+2. 接受“磁盘” **选项卡的默认值** ，然后选择“下一步: **网络”** 。
+3. 在“网络”  选项卡上，验证是否已选择 **myVNet** 作为 **虚拟网络** ，以及是否已将“子网”  设置为 **myBackendSubnet** 。 接受其他默认值，然后选择“下一步: **管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
 4. 在“管理”  选项卡上，将“启动诊断”  设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
 5. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
 6. 等待虚拟机创建完成，然后再继续操作。
@@ -169,7 +169,7 @@ ms.locfileid: "88723990"
 
 本示例在虚拟机上安装 IIS，只为验证 Azure 是否已成功创建应用程序网关。
 
-1. 打开 [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)。 为此，请在 Azure 门户的顶部导航栏中选择“Cloud Shell”，然后从下拉列表中选择“PowerShell”。 
+1. 打开 [Azure PowerShell](../cloud-shell/quickstart-powershell.md)。 为此，请在 Azure 门户的顶部导航栏中选择“Cloud Shell”，然后从下拉列表中选择“PowerShell”。 
 
     ![安装自定义扩展](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -195,7 +195,7 @@ ms.locfileid: "88723990"
 
 2. 从左侧菜单中选择“后端池”。
 
-3. 选择 **contosoPool**。
+3. 选择 **contosoPool** 。
 
 4. 在“目标”  下，从下拉列表中选择“虚拟机”。
 
@@ -242,4 +242,4 @@ ms.locfileid: "88723990"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [详细了解 Azure 应用程序网关的作用](application-gateway-introduction.md)
+> [详细了解 Azure 应用程序网关的作用](./overview.md)

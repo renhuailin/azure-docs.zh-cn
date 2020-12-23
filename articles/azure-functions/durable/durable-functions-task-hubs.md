@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 26234039c77601bc1d29beeebd3fcb8461d6d6c9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432695"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009511"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) 中的*任务中心*是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
+[Durable Functions](durable-functions-overview.md) 中的 *任务中心* 是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
 
-如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用**。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
+如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
 
 ![说明共享和专用存储帐户的关系图。](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "87432695"
 * 以字母开头
 * 最小长度为 3 个字符，最大长度为 45 个字符
 
-任务中心名称在 host.json 文件中声明，如以下示例所示**：
+任务中心名称在 host.json 文件中声明，如以下示例所示：
 
 ### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 
@@ -159,13 +159,13 @@ public static async Task<HttpResponseMessage> Run(
 
 | Durable 扩展版本 | 默认的任务中心名称 |
 | - | - |
-| 2.x | 在 Azure 中部署时，任务中心名称派生自函数应用__ 的名称。 在 Azure 外部运行时，默认的任务中心名称为 `TestHubName`。 |
+| 2.x | 在 Azure 中部署时，任务中心名称派生自函数应用的名称。 在 Azure 外部运行时，默认的任务中心名称为 `TestHubName`。 |
 | 1.x | 所有环境的默认任务中心名称为 `DurableFunctionsHub`。 |
 
 有关扩展版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 > [!NOTE]
-> 当共享存储帐户中有多个任务中心时，名称用于将一个任务中心与其他任务中心区分开来。 如果有多个函数应用共享一个共享存储帐户，则必须在 host.json** 文件中为每个任务中心显式配置不同的名称。 否则多个函数应用会相互竞争消息，这可能会导致未定义的行为，例如业务流程意外“卡”在 `Pending` 或 `Running` 状态。
+> 当共享存储帐户中有多个任务中心时，名称用于将一个任务中心与其他任务中心区分开来。 如果有多个函数应用共享一个共享存储帐户，则必须在 host.json 文件中为每个任务中心显式配置不同的名称。 否则多个函数应用会相互竞争消息，这可能会导致未定义的行为，例如业务流程意外“卡”在 `Pending` 或 `Running` 状态。
 
 ## <a name="next-steps"></a>后续步骤
 

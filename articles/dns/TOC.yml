@@ -18,6 +18,7 @@
         - name: 创建公用区域 - CLI
           href: dns-getstarted-cli.md
         - name: 创建公用区域 - ARM 模板
+          displayName: Resource Manager
           href: dns-get-started-template.md
     - name: 专用 DNS
       items:
@@ -79,7 +80,7 @@
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: 常见问题解答
           href: dns-faq-private.md
-- name: 如何
+- name: 操作指南
   items:
     - name: 公共 DNS
       items:
@@ -150,7 +151,7 @@
         - name: Ruby
           href: 'https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0'
         - name: Python
-          href: 'https://azure.github.io/azure-sdk-for-python/ref/DNS.html'
+          href: 'https://azure.github.io/azure-sdk-for-python/dns.html'
         - name: REST
           href: /rest/api/dns/
         - name: 资源管理器模板
@@ -172,7 +173,7 @@
     - name: 功能请求
       href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: 网络博客
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: 定价

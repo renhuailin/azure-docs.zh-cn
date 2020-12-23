@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 76d8c84fd1dd403c88e8261cf49e3620f3a6ec14
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 18de1f445990f167041c755aa5e7d909819319b1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903616"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446463"
 ---
 # <a name="azure-stack-edge-pro-power-cord-specifications"></a>Azure Stack Edge Pro 电源线规格
 
@@ -158,4 +158,4 @@ Azure Stack Edge Pro 设备需要电源线，这会因 Azure 区域而异。
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack Edge Pro 技术规范](data-box-edge-technical-specifications-compliance.md)
+[Azure Stack Edge Pro 技术规范](./azure-stack-edge-technical-specifications-compliance.md)

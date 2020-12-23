@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 76dc7693b1773038d610f9ed42eddad2c81e3eaf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226975"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126628"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何将 Azure Monitor 工作簿用于 Azure Active Directory 报表
 
@@ -174,7 +174,7 @@ ms.locfileid: "89226975"
 
 对于已禁用登录，可以按条件访问状态进行细分。
 
-![条件访问状态](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![屏幕截图显示条件访问状态和最近的登录。](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
 ## <a name="conditional-access-insights"></a>条件访问见解
@@ -194,12 +194,12 @@ ms.locfileid: "89226975"
 
 - **数据视图**
 
-![条件访问状态](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+![屏幕截图显示条件访问窗格，可在其中选择条件性访问策略。](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
 影响摘要显示所选策略对其产生特定结果的用户或登录数。 总计显示在选定时间范围内针对选定策略计算的用户或登录数。 单击磁贴可以按该结果类型筛选工作簿中的数据。 
 
-![条件访问状态](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+![屏幕截图显示用于筛选结果的磁贴，如合计、成功和失败。](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
 该工作簿还按以下六项条件细分显示所选策略造成的影响： 
 - **设备状态**
@@ -209,15 +209,11 @@ ms.locfileid: "89226975"
 - **位置**
 - **应用程序**
 
-![条件访问状态](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+![屏幕截图显示了 "登录总数" 筛选器的详细信息。](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
 你还可以调查按工作簿中所选参数进行筛选的单个登录。 搜索按登录频率排序的单个用户，并查看其相应的登录事件。 
 
-![条件访问状态](./media/howto-use-azure-monitor-workbooks/filtered.png)
-
-
-
-
+![屏幕截图显示你可以查看的单个登录。](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 ## <a name="sign-ins-by-grant-controls"></a>登录情况（按授权控制）
 

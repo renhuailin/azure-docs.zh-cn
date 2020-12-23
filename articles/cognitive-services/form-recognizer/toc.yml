@@ -38,6 +38,10 @@
           items:
             - name: Python
               href: quickstarts/python-business-cards.md
+        - name: 使用预生成的发票模型
+          items:
+            - name: Python
+              href: quickstarts/python-invoices.md
         - name: 获取文本布局信息
           items:
             - name: Python
@@ -45,15 +49,19 @@
 - name: 教程
   items:
     - name: 将表单识别器与认知搜索搭配使用
-      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+      href: ../../search/cognitive-search-custom-skill-form.md
     - name: 将表单识别器与 AI Builder 搭配使用
       href: tutorial-ai-builder.md
 - name: 概念
   items:
+    - name: 布局提取
+      href: concept-layout.md
     - name: Receipts
       href: concept-receipts.md
     - name: 名片
       href: concept-business-cards.md
+    - name: 发票
+      href: concept-invoices.md
 - name: 操作指南
   items:
     - name: 生成训练数据集
@@ -70,28 +78,32 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: 使用容器实例
           href: deploy-form-recognizer-on-container-instances.md
+        - name: 认知服务容器文档
+          href: ../containers/index.yml
     - name: 备份和恢复模型
       href: disaster-recovery.md
 - name: 参考
   items:
     - name: 表单识别器 API v2.1 预览
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync'
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
     - name: 表单识别器 API v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre'
+          href: /dotnet/api/overview/azure/ai.formrecognizer-readme
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer'
+          href: /python/api/azure-ai-formrecognizer/?view=azure-python
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre'
+          href: /java/api/overview/azure/ai-formrecognizer-readme
         - name: JavaScript
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre'
+          href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: 资源
   items:
+    - name: 支持和帮助选项
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: 定价和限制
-      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/form-recognizer/'
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
     - name: Stack Overflow

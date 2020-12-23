@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7393c36099795bbc989ae4b690100284d53f08e5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323700"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678391"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
-Impact 可以分析加载时间和其他属性对应用的各个部件的转换率造成的影响。 更准确地说，Impact 可以发现**页面视图**的**任何维度**、**自定义事件**或**请求**对不同**页面视图**或**自定义事件**造成的影响。 
+Impact 可以分析加载时间和其他属性对应用的各个部件的转换率造成的影响。 更准确地说，Impact 可以发现 **页面视图** 的 **任何维度** 、 **自定义事件** 或 **请求** 对不同 **页面视图** 或 **自定义事件** 造成的影响。 
 
 ![Impact 工具](./media/usage-impact/0001-impact.png)
 
@@ -36,7 +36,7 @@ Impact 可以分析加载时间和其他属性对应用的各个部件的转换�
 
 若要开始使用 Impact 工具解答问题，请选择初始页面视图、自定义事件或请求。
 
-![Impact 工具](./media/usage-impact/0002-dropdown.png)
+![显示在何处选择初始页面视图、自定义事件或请求的屏幕截图。](./media/usage-impact/0002-dropdown.png)
 
 1. 从“针对页面视图”下拉列表中选择一个页面视图。
 2. 将“分析依据”下拉列表中的选择保留为“持续时间”（在此上下文中，“持续时间”是“页面加载时间”的别名）。
@@ -65,18 +65,18 @@ Impact 支持标准和自定义的属性与度量值。 可以任意使用这两
 
 简单而言，Impact Analysis 工作原理的分解如下：
 
-让 _A_ = 在第一个下拉列表中选择的主要页面视图/自定义事件/请求。 （**针对页面视图**）。
+让 _A_ = 在第一个下拉列表中选择的主要页面视图/自定义事件/请求。 （ **针对页面视图** ）。
 
-让 _B_ = 选择的次要页面视图/自定义事件（**影响以下对象的使用**）。
+让 _B_ = 选择的次要页面视图/自定义事件（ **影响以下对象的使用** ）。
 
-Impact 会查找选定时间范围内所有用户会话的样本。 对于每个会话，它会查找出现的每个 _A_。
+Impact 会查找选定时间范围内所有用户会话的样本。 对于每个会话，它会查找出现的每个 _A_ 。
 
 然后，根据以下两个条件之一，将会话分解成两种不同的子会话：
 
 - 转换后的子会话包括以 _B_ 事件结尾的会话，并包含 _B_ 前面发生的所有 _A_ 事件。
 - 如果所有 _A_ 事件是在未发生终结性 _B_ 的情况下发生的，则发生未转换的子会话。
 
-Impact 最终计算方式根据是按指标还是按维护分析而异。 使用指标时，将求子会话中所有 _A_ 的平均值。 使用维度时，每个 _A_ 的值为 _B_ 的赋值贡献 _1/N_，其中 _N_ 是子会话中 _A_ 的数目。
+Impact 最终计算方式根据是按指标还是按维护分析而异。 使用指标时，将求子会话中所有 _A_ 的平均值。 使用维度时，每个 _A_ 的值为 _B_ 的赋值贡献 _1/N_ ，其中 _N_ 是子会话中 _A_ 的数目。
 
 ## <a name="next-steps"></a>后续步骤
 

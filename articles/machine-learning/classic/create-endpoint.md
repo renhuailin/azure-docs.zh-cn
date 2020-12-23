@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 5f06374e67d1aad689662c77084fa593bb09c8ef
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 1032a90a35e60643e2ce937ed457a1fe3493d4d7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362463"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322889"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>为部署的 Azure 机器学习工作室（经典）Web 服务创建终结点
 
-**适用于：** ![适用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) 不适 ![ 用于。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 > [!NOTE]
@@ -35,7 +35,7 @@ Web 服务中的每个终结点都是独立处理、限制和托管的。 每个
 > 如果 Web 服务已添加其他终结点，则无法删除默认终结点。
 
 1. 在机器学习工作室（经典）的左侧导航栏中，单击“Web 服务”。
-2. 在“Web 服务”仪表板的底部，单击“管理终结点”****。 Azure 机器学习 Web 服务门户可打开 Web 服务的终结点页。
+2. 在“Web 服务”仪表板的底部，单击“管理终结点”。 Azure 机器学习 Web 服务门户可打开 Web 服务的终结点页。
 3. 单击 **“新建”** 。
 4. 键入新终结点的名称及说明。 终结点名称的长度必须少于或等于 24 个字符，并且必须由小写字母或数字组成。 选择日志记录级别以及是否启用示例数据。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 

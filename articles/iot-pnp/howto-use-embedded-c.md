@@ -7,16 +7,16 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610069"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042807"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>在受限制的设备上实施 IoT 即插即用
 
-如果要为 *受约束的设备*进行开发，可以将 IoT 即插即用与 azure SDK 配合使用，使用 [适用于嵌入的 C IoT 客户端库](https://aka.ms/embeddedcsdk) 或 [azure rto](https://docs.microsoft.com/azure/rtos/overview-rtos)。 本文包括这些约束方案的链接和资源。
+如果要为 *受约束的设备*进行开发，可以将 IoT 即插即用与 azure SDK 配合使用，使用 [适用于嵌入的 C IoT 客户端库](https://aka.ms/embeddedcsdk) 或 [azure rto](/azure/rtos/overview-rtos)。 本文包括这些约束方案的链接和资源。
 
 ## <a name="use-the-sdk-for-embedded-c"></a>使用 SDK 进行嵌入式 C
 
@@ -24,7 +24,7 @@ ms.locfileid: "91610069"
 
 ### <a name="use-a-real-device"></a>使用真实设备
 
-若要获取完整的端到端教程，使用适用于嵌入的 C 的 SDK、设备预配服务和 IoT 即插即用在实际设备上，请参阅重新 [调整 PIC-Iot Wx 开发板，通过 IoT 中心设备预配服务连接到 Azure](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx)。
+若要获取完整的端到端教程，使用适用于嵌入的 C 的 SDK、设备预配服务和 IoT 即插即用在实际设备上，请参阅重新 [调整 PIC-IoT Wx 开发板的用途，以通过 IoT 中心设备预配服务连接到 Azure](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx)。
 
 ### <a name="introductory-samples"></a>介绍性示例
 
@@ -39,7 +39,7 @@ SDK for Embedded C 存储库包含 [几个示例](https://github.com/Azure/azure
 
 ## <a name="using-azure-rtos"></a>使用 Azure RTO
 
-Azure RTO 包含一个轻型层，可将本机连接添加到 Azure IoT 云服务。 此层提供一种简单的机制，用于将受限制的设备连接到 Azure IoT，同时使用 Azure RTO 的高级功能。 若要了解详细信息，请参阅 [什么是 MICROSOFT AZURE rto](https://docs.microsoft.com/azure/rtos/overview-rtos)。
+Azure RTO 包含一个轻型层，可将本机连接添加到 Azure IoT 云服务。 此层提供一种简单的机制，用于将受限制的设备连接到 Azure IoT，同时使用 Azure RTO 的高级功能。 若要了解详细信息，请参阅 [什么是 MICROSOFT AZURE rto](/azure/rtos/overview-rtos)。
 
 ### <a name="toolchains"></a>工具链
 

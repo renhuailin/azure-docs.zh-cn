@@ -1,27 +1,27 @@
 ---
-title: Azure 多重身份验证的登录事件详细信息 - Azure Active Directory
-description: 了解如何查看 Azure 多重身份验证事件和状态消息的登录活动。
+title: Azure AD 多重身份验证的登录事件详细信息-Azure Active Directory
+description: 了解如何查看 Azure AD 多重身份验证事件和状态消息的登录活动。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 05/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bc07dc4a46327981c432cf8982f0c3a646fda0d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068909"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861232"
 ---
-# <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>使用登录报告查看 Azure 多重身份验证事件
+# <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>使用 "登录" 报告查看 Azure AD 多重身份验证事件
 
-若要查看和了解 Azure 多重身份验证事件，可以使用 Azure Active Directory (Azure AD) 登录报告。 此报告显示提示用户进行多重身份验证时事件的身份验证详细信息，以及是否正在使用任何条件访问策略。 有关登录报告的详细信息，请参阅 [Azure AD 中的登录活动报告概述](../reports-monitoring/concept-sign-ins.md)。
+若要查看和了解 Azure AD 多重身份验证事件，可以使用 Azure Active Directory (Azure AD) 登录 "报告。 此报告显示提示用户进行多重身份验证时事件的身份验证详细信息，以及是否正在使用任何条件访问策略。 有关登录报告的详细信息，请参阅 [Azure AD 中的登录活动报告概述](../reports-monitoring/concept-sign-ins.md)。
 
 本文介绍如何查看 Azure 门户中的 Azure AD 登录报告，然后查看 MSOnline V1 PowerShell 模块。
 
@@ -91,7 +91,7 @@ ms.locfileid: "89068909"
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>针对已注册 MFA 用户的 PowerShell 报告
 
-首先，请确保已安装 [MSOnline V1 PowerShell 模块](/powershell/azure/active-directory/overview?view=azureadps-1.0)。
+首先，请确保已安装 [MSOnline V1 PowerShell 模块](/powershell/azure/active-directory/overview)。
 
 使用后面的 PowerShell 标识已注册 MFA 的用户。 这一组命令会排除已禁用的用户，因为这些帐户无法针对 Azure AD 进行身份验证：
 
@@ -121,34 +121,34 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 | 呼叫结果 | 说明 | 广泛说明 |
 | --- | --- | --- |
-| SUCCESS_WITH_PIN | 已输入 PIN | 用户已输入 PIN。  如果身份验证成功，则用户输入了正确的 PIN。  如果身份验证被拒绝，则他们输入的 PIN 不正确或用户被设置为标准模式。 |
+| SUCCESS_WITH_PIN | 已输入 PIN | 用户已输入 PIN。   如果身份验证成功，则用户输入了正确的 PIN。   如果身份验证被拒绝，则他们输入的 PIN 不正确或用户被设置为标准模式。 |
 | SUCCESS_NO_PIN | 仅输入 # | 如果用户被设置为 PIN 模式且身份验证被拒绝，这表示用户没有输入自己的 PIN，而仅输入了 #。  如果用户被设置为标准模式且身份验证成功，这表示用户仅输入了 #，这在标准模式下是正确的做法。 |
-| SUCCESS_WITH_PIN_BUT_TIMEOUT | 输入后未按 # | 由于未输入 #，因此用户未发送任何 DTMF 数字。  除非已输入 # 表明输入完成，否则不会发送已输入的其他数字。 |
-|SUCCESS_NO_PIN_BUT_TIMEOUT | 无电话输入 - 已超时 | 呼叫已被接听，但是无人应答。  这通常表明呼叫由语音信箱接听。 |
+| SUCCESS_WITH_PIN_BUT_TIMEOUT | 输入后未按 # | 由于未输入 #，因此用户未发送任何 DTMF 数字。   除非已输入 # 表明输入完成，否则不会发送已输入的其他数字。 |
+|SUCCESS_NO_PIN_BUT_TIMEOUT | 无电话输入 - 已超时 | 呼叫已被接听，但是无人应答。   这通常表明呼叫由语音信箱接听。 |
 | SUCCESS_PIN_EXPIRED | PIN 已到期且未更改 | 用户的 PIN 已到期且系统已提示用户更改 PIN，但他们未成功完成对 PIN 的更改。 |
 | SUCCESS_USED_CACHE | 已用缓存 | 未进行多重身份验证调用即身份验证成功，因为在配置的缓存时间范围内，先前已对同一用户名进行过成功的身份验证。 |
-| SUCCESS_BYPASSED_AUTH | 已免身份验证 | 已使用为用户发起的免验证一次成功进行身份验证。  有关免验证的详细信息，请参阅“免验证用户的历史记录”报告。 |
+| SUCCESS_BYPASSED_AUTH | 已免身份验证 | 已使用为用户发起的免验证一次成功进行身份验证。  有关免验证的详细信息，请参阅“免验证用户的历史记录”报告。 |
 | SUCCESS_USED_IP_BASED_CACHE | 已用的基于 IP 的缓存 | 未进行多重身份验证调用即身份验证成功，因为在配置的缓存时间范围内，先前已对同一用户名、身份验证类型、应用程序名称和 IP 进行过成功的身份验证。 |
 | SUCCESS_USED_APP_BASED_CACHE | 已用的基于应用的缓存 | 未进行多重身份验证调用即身份验证成功，因为在配置的缓存时间范围内，先前已对同一用户名、身份验证类型和应用程序名称进行过成功的身份验证。 |
-| SUCCESS_INVALID_INPUT | 电话输入无效 | 通过电话发送的响应无效。  这可能是因为响应来自传真机或调制解调器，或者用户可能将 * 作为其 PIN 的一部分进行输入。 |
-| SUCCESS_USER_BLOCKED | 用户被阻止 | 用户的电话号码被阻止。  被阻止的号码可以由用户在身份验证调用期间启动，也可以由管理员使用 Azure 门户启动。 <br> 注意：  欺诈警告还会导致号码被阻止。 |
+| SUCCESS_INVALID_INPUT | 电话输入无效 | 通过电话发送的响应无效。   这可能是因为响应来自传真机或调制解调器，或者用户可能将 * 作为其 PIN 的一部分进行输入。 |
+| SUCCESS_USER_BLOCKED | 用户被阻止 | 用户的电话号码被阻止。   被阻止的号码可以由用户在身份验证调用期间启动，也可以由管理员使用 Azure 门户启动。 <br> 注意：  欺诈警告还会导致号码被阻止。 |
 | SUCCESS_SMS_AUTHENTICATED | 已通过短信进行身份验证 | 对于双向测试消息，用户正确地使用了其一次性密码 (OTP) 或 OTP + PIN 进行回复。 |
-| SUCCESS_SMS_SENT | 已发送短信 | 对于短信，已成功发送包含一次性密码 (OTP) 的短信。  用户将在应用程序中输入 OTP 或 OTP + PIN 以完成身份验证。 |
+| SUCCESS_SMS_SENT | 已发送短信 | 对于短信，已成功发送包含一次性密码 (OTP) 的短信。   用户将在应用程序中输入 OTP 或 OTP + PIN 以完成身份验证。 |
 | SUCCESS_PHONE_APP_AUTHENTICATED | 已通过移动应用进行身份验证 | 用户已成功通过移动应用进行身份验证。 |
 | SUCCESS_OATH_CODE_PENDING | OATH 代码待处理 | 系统提示用户输入其 OATH 代码，但用户未做出响应。 |
 | SUCCESS_OATH_CODE_VERIFIED | 已验证 OATH 代码 | 出现提示后，用户输入了有效的 OATH 代码。 |
 | SUCCESS_FALLBACK_OATH_CODE_VERIFIED | 已验证回退 OATH 代码 | 用户被拒绝使用其主要多重身份验证方法进行身份验证，并向用户提供了有效的 OATH 代码以进行回退。 |
 | SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | 已回答回退安全问题 | 用户被拒绝使用其主要多重身份验证方法进行身份验证，并正确回答了其安全问题以进行回退。 |
-| FAILED_PHONE_BUSY | 身份验证已在进行 | 多重身份验证已在处理此用户的身份验证。  这通常是由 RADIUS 客户端导致的，在同一登录期间，这些客户端会发送多个身份验证请求。 |
-| CONFIG_ISSUE | 无法接通电话 | 已尝试呼叫，但无法发出呼叫或未应答。  这包括忙信号、快忙信号（已断开连接）、三连音（号码已不在服务中）、振铃时超时等。 |
-| FAILED_INVALID_PHONENUMBER | 电话号码格式无效 | 电话号码格式无效。  电话号码必须为数字，且对于国家/地区代码为 +1（美国及加拿大）的必须为 10 位数。 |
+| FAILED_PHONE_BUSY | 身份验证已在进行 | 多重身份验证已在处理此用户的身份验证。   这通常是由 RADIUS 客户端导致的，在同一登录期间，这些客户端会发送多个身份验证请求。 |
+| CONFIG_ISSUE | 无法接通电话 | 已尝试呼叫，但无法发出呼叫或未应答。   这包括忙信号、快忙信号（已断开连接）、三连音（号码已不在服务中）、振铃时超时等。 |
+| FAILED_INVALID_PHONENUMBER | 电话号码格式无效 | 电话号码格式无效。   电话号码必须为数字，且对于国家/地区代码为 +1（美国及加拿大）的必须为 10 位数。 |
 | FAILED_USER_HUNGUP_ON_US | 用户已挂断电话 | 用户接听了电话，但没有按任何按钮就挂断了电话。 |
-| FAILED_INVALID_EXTENSION | 分机号无效 | 分机号包含无效字符。  只允许使用数字、逗号、* 和 #。  还可以使用 @ 前缀。 |
+| FAILED_INVALID_EXTENSION | 分机号无效 | 分机号包含无效字符。   只允许使用数字、逗号、* 和 #。   还可以使用 @ 前缀。 |
 | FAILED_FRAUD_CODE_ENTERED | 已输入欺诈行为代码 | 用户在通话期间选择举报欺诈行为，导致身份验证被拒绝且电话号码被阻止。| 
 | FAILED_SERVER_ERROR | 无法发出呼叫 | 多重身份验证服务无法发出呼叫。 |
-| FAILED_SMS_NOT_SENT | 无法发送短信 | 无法发送短信。  身份验证被拒绝。 |
-| FAILED_SMS_OTP_INCORRECT | 短信 OTP 不正确 | 用户从收到的短信中输入的一次性密码 (OTP) 不正确。  身份验证被拒绝。 |
-| FAILED_SMS_OTP_PIN_INCORRECT | 短信 OTP + PIN 不正确 | 用户输入的一次性密码 (OTP) 和/或用户 PIN 不正确。  身份验证被拒绝。 |
+| FAILED_SMS_NOT_SENT | 无法发送短信 | 无法发送短信。   身份验证被拒绝。 |
+| FAILED_SMS_OTP_INCORRECT | 短信 OTP 不正确 | 用户从收到的短信中输入的一次性密码 (OTP) 不正确。   身份验证被拒绝。 |
+| FAILED_SMS_OTP_PIN_INCORRECT | 短信 OTP + PIN 不正确 | 用户输入的一次性密码 (OTP) 和/或用户 PIN 不正确。   身份验证被拒绝。 |
 | FAILED_SMS_MAX_OTP_RETRY_REACHED | 已超出短信 OTP 最大尝试次数 | 用户已超出一次性密码 (OTP) 最大尝试次数。 |
 | FAILED_PHONE_APP_DENIED | 已拒绝移动应用 | 用户通过按“拒绝”按钮，拒绝了在移动应用中进行身份验证。 |
 | FAILED_PHONE_APP_INVALID_PIN | 移动应用 PIN 无效 | 在移动应用中进行身份验证时，用户所输入的 PIN 无效。 |

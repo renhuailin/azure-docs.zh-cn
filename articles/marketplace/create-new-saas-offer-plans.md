@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 63629f32c97611fa8bc57ecdac968552375125f4
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380684"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746431"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>如何为 SaaS 产品/服务创建计划
 
 通过 Microsoft 商业市场销售的产品/服务必须具有至少一个计划。 您可以使用相同的产品/服务创建各种不同的计划。 这些计划 (有时称为 Sku) 不同于版本、盈利或服务层。 有关计划的详细指南，请参阅 [商用 marketplace 产品/服务的计划和定价](plans-pricing.md)。
 
 > [!NOTE]
-> 如果选择单独处理事务，则不会看到此选项。 相反，请跳到 [如何推销 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
+> 如果选择单独处理事务，则不会看到此选项。 相反，请跳到 [如何出售 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
 
 ## <a name="create-a-plan"></a>创建计划
 
@@ -30,7 +30,7 @@ ms.locfileid: "89380684"
 
 1. 在 " **计划名称** " 框中，输入此计划的唯一名称。 最多使用50个字符。
 
-1. 选择“创建” 。
+1. 选择“创建”。
 
 ## <a name="define-the-plan-listing"></a>定义计划列表
 
@@ -69,7 +69,7 @@ ms.locfileid: "89380684"
 
 此选项仅在选择了 "单层费率定价" 时可用。 有关详细信息，请参阅 [使用商业 marketplace 计量服务的 SaaS 计费计费](./partner-center-portal/saas-metered-billing.md)。
 
-1. 在 " **Marketplace 计量服务维度**" 下，选择 " **添加自定义计量维度 (最多 30) ** " 链接。
+1. 在 " **Marketplace 计量服务维度**" 下，选择 " **添加自定义计量维度 (最多 30)** " 链接。
 1. 在 " **ID** " 框中，输入不可变标识符引用，同时发出使用事件。
 1. 在 " **显示名称** " 框中，输入与维度关联的显示名称。 例如，"发送短信"。
 1. 在 " **度量单位** " 框中，输入计费单位的说明。 例如，"每短信" 或 "每100电子邮件"。
@@ -130,12 +130,12 @@ ms.locfileid: "89380684"
 ### <a name="use-a-csv-file-for-a-private-plan"></a>使用。专用计划的 CSV 文件
 
 1. 在 " **计划可见性**" 下，选择 " **这是专用计划** " 框。
-2. 选择 " **导出访问群体 (csv) ** " 链接。
+2. 选择 " **导出访问群体 (csv)** " 链接。
 3. 打开。CSV 文件，并添加要向其授予对专用产品/服务的访问 **权限的 Azure** id。
 4. （可选）在 " **说明** " 列中为每个受众输入描述。
 5. 在 " **类型** " 列中，为每个具有 Azure ID 的行添加 "TenantID"。
 6. 保存。CSV 文件。
-7. 在 " **定价和可用性** " 选项卡上的 " **计划可见性**" 下，选择 " **导入访问群体 (csv) ** " 链接。
+7. 在 " **定价和可用性** " 选项卡上的 " **计划可见性**" 下，选择 " **导入访问群体 (csv)** " 链接。
 8. 在出现的对话框中，选择 **"是"**。
 9. 选择。CSV 文件，然后选择 " **打开**"。
 10. 选择 " **保存草稿**"，然后在选项卡的左上方，选择 " **计划概述** " 以返回到 " **计划概述** " 选项卡。
@@ -152,5 +152,5 @@ ms.locfileid: "89380684"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何通过**与 Microsoft 共同销售**并**转售 csp**计划，[为你的 SaaS 产品/服务投放市场](create-new-saas-offer-marketing.md)。
+- 了解如何通过 **与 Microsoft 共同销售** 并 **转售 csp** 计划，[销售 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
 - [如何测试 SaaS 产品并将其发布到商业市场](test-publish-saas-offer.md)。

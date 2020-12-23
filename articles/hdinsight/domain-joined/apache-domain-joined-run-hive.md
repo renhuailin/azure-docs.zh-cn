@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397821"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544930"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 
@@ -21,8 +21,8 @@ ms.locfileid: "91397821"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 具有企业安全性套餐的 HDInsight 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](apache-domain-joined-configure.md)。
-* 一个工作站，具有适用于企业、Office 2016、Office 2013 Professional Plus、Excel 2013 独立版或 Office 2010 Professional Plus 的 Microsoft 365 应用。
+* 具有企业安全性套餐的 HDInsight 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
+* 一个装有 Microsoft 365 企业应用版、Office 2016、Office 专业增强版 2013、Excel 2013 Standalone 或 Office 专业增强版 2010 的工作站。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>连接到 Apache Ranger 管理 UI
 **连接到 Ranger 管理 UI**
@@ -87,7 +87,7 @@ ms.locfileid: "91397821"
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
- | 端口 | 使用 **443**。 （此端口已从 563 更改为 443。） |
+ | 端口 | 使用 **443** 。 （此端口已从 563 更改为 443。） |
  | 数据库 | 使用“默认”。 |
  | Hive 服务器类型 | 选择“Hive Server 2” |
  | 机制 | 选择“Azure HDInsight 服务” |
@@ -109,7 +109,7 @@ ms.locfileid: "91397821"
 
 1. 在下拉列表中，选择在上一部分创建的数据源名称，然后选择“确定”。
 
-1. 第一次使用时，将打开“ODBC 驱动程序”对话框。 从左侧菜单中选择 **Windows**。 然后选择“连接”以打开“导航器”窗口。
+1. 第一次使用时，将打开“ODBC 驱动程序”对话框。 从左侧菜单中选择 **Windows** 。 然后选择“连接”以打开“导航器”窗口。
 
 1. 等待“选择数据库和表”对话框打开  。 这可能需要几秒钟时间。
 
@@ -158,7 +158,7 @@ ms.locfileid: "91397821"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用企业安全性套餐配置 HDInsight 群集的信息，请参阅[使用 ESP 配置 HDInsight 群集](apache-domain-joined-configure.md)。
+* 有关使用企业安全性套餐配置 HDInsight 群集的信息，请参阅[使用 ESP 配置 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 * 有关管理具有 ESP 的 HDInsight 群集的信息，请参阅[管理具有 ESP 的 HDInsight 群集](apache-domain-joined-manage.md)。
 * 有关在具有 ESP 的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。
 * 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Apache Hive on Azure HDInsight using the Hive JDBC driver](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Apache Hive）

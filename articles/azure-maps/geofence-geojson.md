@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037399"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897188"
 ---
 # <a name="geofencing-geojson-data"></a>地理围栏 GeoJSON 数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "88037399"
 * `expiredTime` 是地理围栏数据的过期日期和时间。 如果请求中 `userTime` 的值晚于此值，则将相应的地理围栏数据视为过期的数据，且不会查询这些数据。 基于这一点，此地理围栏数据的 geometryId 将包含在地理围栏响应中的 `expiredGeofenceGeometryId` 数组内。
 * `validityPeriod` 是地理围栏有效时段的列表。 如果请求中 `userTime` 的值超出有效时段，则将相应的地理围栏数据视为无效，且不会查询这些数据。 此地理围栏数据的 geometryId 包含在地理围栏响应中的 `invalidPeriodGeofenceGeometryId` 数组内。 下表显示了 validityPeriod 元素的属性。
 
-| 名称 | 类型 | 必须  | 说明 |
+| 名称 | 类型 | 必需  | 说明 |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | datetime  | 是 | 有效时段的开始日期时间。 |
 | endTime   | datetime  | 是 |  有效时段的结束日期时间。 |
@@ -40,7 +40,7 @@ ms.locfileid: "88037399"
 
 * 所有坐标值都表示为中定义的 "经度，纬度" `WGS84` 。
 * 对于包含 `MultiPoint`、`MultiLineString`、`MultiPolygon` 或 `GeometryCollection` 的每个特征，属性将应用到所有元素。 例如：中的所有点 `MultiPoint` 都将使用相同的半径形成多个圆形地域隔离区内。
-* 在点圆方案中，可以使用具有[扩展 GeoJSON 几何图形](https://docs.microsoft.com/azure/azure-maps/extend-geojson)中所述属性的 `Point` 几何对象来表示圆几何图形。      
+* 在点圆方案中，可以使用具有[扩展 GeoJSON 几何图形](./extend-geojson.md)中所述属性的 `Point` 几何对象来表示圆几何图形。      
 
 以下地理围栏的示例请求正文表示为在 `GeoJSON` 中使用中心点和半径的圆形地理围栏几何图形。 该地理围栏数据的有效时段为从 2018年 10 月 22 日上午 9 点到下午 5 点，除周末外，每天都会重复。 `expiredTime` 指示如果请求中的 `userTime` 晚于 `2019-01-01`，则将此地理围栏数据视为过期。  
 

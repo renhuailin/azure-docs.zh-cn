@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 697e0f7031e55cd924352fe1e1fdbd480f8e411b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943495"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888719"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure 通信服务中的事件处理
 
@@ -22,13 +22,13 @@ ms.locfileid: "90943495"
 
 Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)集成，从而以可靠、可缩放且安全的方式提供实时事件通知。 本文旨在帮助你将应用程序配置为侦听通信服务事件。 例如，你可能要更新数据库、创建工作项以及在每次通过与通信服务资源关联的电话号码收到短信时传递推送通知。
 
-Azure 事件网格是一种完全托管的事件路由服务，它使用发布-订阅模型。 事件网格提供对 Azure 服务（如 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 和 [Azure 逻辑应用](https://docs.microsoft.com/azure/azure-functions/functions-overview)）的内置支持。 它可以使用 Webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](https://docs.microsoft.com/azure/event-grid/overview)。
+Azure 事件网格是一种完全托管的事件路由服务，它使用发布-订阅模型。 事件网格提供对 Azure 服务（如 [Azure Functions](../../azure-functions/functions-overview.md) 和 [Azure 逻辑应用](../../azure-functions/functions-overview.md)）的内置支持。 它可以使用 Webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../../event-grid/overview.md)。
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="显示 Azure 事件网格的事件模型的关系图。":::
 
 ## <a name="events-types"></a>事件类型
 
-事件网格使用[事件订阅](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)将事件消息路由到订阅方。 
+事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 
 
 Azure 通信服务发出以下事件类型：
 
@@ -36,7 +36,7 @@ Azure 通信服务发出以下事件类型：
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft.Communication.SMSReceived                         | 当通过与通信服务关联的电话号码收到短信时发布。 |
 | Microsoft.Communication.SMSDeliveryReportReceived           | 当收到通信服务发送的短信的传递报告时发布。     |
-| Microsoft.Communication.ChatMessageReceived                 | 当用户在其所属的聊天线程中收到消息时发布。        |
+| Microsoft.Communication.ChatMessageReceived                | 当用户在其所属的聊天线程中收到消息时发布。        |
 | Microsoft.Communication.ChatMessageEdited                   | 当在用户所属的聊天线程中编辑消息时发布。                |
 | Microsoft.Communication.ChatMessageDeleted                  | 当在用户所属的聊天线程中删除消息时发布。               |
 | Microsoft.Communication.ChatThreadCreatedWithUser           | 当用户在聊天线程创建期间添加为成员时发布。           |
@@ -47,9 +47,10 @@ Azure 通信服务发出以下事件类型：
 
 可以使用 Azure 门户或 Azure CLI 订阅通信服务资源发出的事件。 可通过查看[如何在通信服务中处理短信事件](../quickstarts/telephony-sms/handle-sms-events.md)，来开始处理事件
 
+
 ## <a name="event-subjects"></a>事件主题
 
-所有通信服务事件的 `subject` 字段都标识事件的目标用户、电话号码或实体。 公共前缀用于允许进行简单[事件网格筛选](https://docs.microsoft.com/azure/event-grid/event-filtering)。
+所有通信服务事件的 `subject` 字段都标识事件的目标用户、电话号码或实体。 公共前缀用于允许进行简单[事件网格筛选](../../event-grid/event-filtering.md)。
 
 | 主题前缀                              | 通信服务实体 |
 | ------------------------------------------- | ---------------------------- |
@@ -350,6 +351,6 @@ Azure 通信服务发出以下事件类型：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](https://docs.microsoft.com/azure/event-grid/overview)
-* 有关 Azure 事件网格概念的简介，请参阅[事件网格中的概念？](https://docs.microsoft.com/azure/event-grid/concepts)
-* 有关 Azure 事件网格系统主题的简介，请参阅 [Azure 事件网格中的系统主题？](https://docs.microsoft.com/azure/event-grid/system-topics)
+* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](../../event-grid/overview.md)
+* 有关 Azure 事件网格概念的简介，请参阅[事件网格中的概念？](../../event-grid/concepts.md)
+* 有关 Azure 事件网格系统主题的简介，请参阅 [Azure 事件网格中的系统主题？](../../event-grid/system-topics.md)

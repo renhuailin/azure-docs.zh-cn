@@ -1,58 +1,94 @@
 ---
-title: 使用 Azure Site Recovery 运行 Azure VM 灾难恢复演练
-description: 了解如何使用 Azure Site Recovery 服务针对 Azure VM 的次要区域运行灾难恢复演练。
+title: 教程：使用 Azure Site Recovery 运行 Azure VM 灾难恢复演练
+description: 在本教程中，使用 Site Recovery 对其他区域运行 Azure VM 灾难恢复演练。
 services: site-recovery
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 11/05/2020
 ms.custom: mvc
-ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c7cd1898f27f3b7255009efb40f6bcc8938dbf9e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76166179"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395572"
 ---
-# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>对 Azure VM 的次要区域运行灾难恢复演练
+# <a name="tutorial-run-a-disaster-recovery-drill-for-azure-vms"></a>教程：针对 Azure VM 运行灾难恢复演练
 
-[Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外停机期间使商业应用程序保持启动和运行可用状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
-
-本教程演示如何使用测试故障转移从一个 Azure 区域到另一个 Azure 区域对 Azure VM 运行灾难恢复演练。 演练如何在不丢失数据或不停机的情况下验证复制策略，并且不影响生产环境。 在本教程中，你将了解如何执行以下操作：
+了解如何针对使用 [Azure Site Recovery](site-recovery-overview.md) 进行复制的 Azure VM 对其他 Azure 区域运行灾难恢复演练。 本文内容：
 
 > [!div class="checklist"]
-> * 检查先决条件
-> * 为单个 VM 运行测试故障转移
+> * 验证先决条件
+> * 在进行演练之前，请检查 VM 设置
+> * 运行测试故障转移
+> * 演练完成之后进行清理
+
 
 > [!NOTE]
-> 本教程将帮助你以最少的步骤执行灾难恢复演练。 若要详细了解与执行灾难恢复演练相关的各种功能，请参阅与 Azure VM [复制](azure-to-azure-how-to-enable-replication.md)、[网络](azure-to-azure-about-networking.md)、[自动化](azure-to-azure-powershell.md)或[故障排除](azure-to-azure-troubleshoot-errors.md)相关的文档。
+> 本教程提供了运行灾难恢复演练所需的最基本步骤。 如果要通过完整的基础架构测试来运行演练，请了解 Azure VM [网络](azure-to-azure-about-networking.md)、[自动化](azure-to-azure-powershell.md)和[故障排除](azure-to-azure-troubleshoot-errors.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-在尝试学习本教程之前，请检查以下各项：
+开始本教程之前，必须为一个或多个 Azure VM 启用灾难恢复。 为此，请完成本教程系列的[第一个教程](azure-to-azure-tutorial-enable-replication.md)。
 
-- 在运行测试故障转移之前，建议你检查 VM 的属性，以确保为其配置灾难恢复。 转到 VM 的“操作” > “灾难恢复” > “属性”来查看复制和故障转移属性。   
-- **建议使用单独的 Azure VM 网络进行测试故障转移**，而不是使用启用复制时设置的默认网络。
-- 根据每个 NIC 的源网络配置，你可以在执行灾难恢复演练之前，在“计算机和网络”中的测试故障转移设置下指定“子网”、“专用 IP 地址”、“公用 IP”、“网络安全组”或“负载均衡器”来连接到每个 NIC。      
+## <a name="verify-vm-settings"></a>验证 VM 设置
+
+1. 在保管库中 >“复制的项”，选择 VM  。
+
+    ![用于在 VM 属性中打开“灾难恢复”页面的选项](./media/azure-to-azure-tutorial-dr-drill/vm-settings.png)
+
+2. 在“概述”页面上，检查 VM 是否受保护且运行正常。
+3. 运行测试故障转移时，请在目标区域中选择一个 Azure 虚拟网络。 故障转移后创建的 Azure VM 将置于此网络中。 
+
+    - 在本教程中，在运行测试故障转移时选择一个现有网络。
+    - 建议为演练选择非生产网络，以便 IP 地址和网络组件在生产网络中保持可用。
+   - 你也可以预配置要用于测试故障转移的网络设置。 可以为每个 NIC 分配的精细设置包括子网、专用 IP 地址、公用 IP 地址、负载均衡器和网络安全组。 此处未使用此方法，但你可[查看本文](azure-to-azure-customize-networking.md#customize-failover-and-test-failover-networking-configurations)了解详细信息。
+
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 
-此示例展示了如何使用恢复服务保管库执行 VM 测试故障转移。
 
-1. 选择一个保管库，转到“受保护的项” > “复制的项”并选择一个 VM。  
-1. 在“测试故障转移”中，选择要用于故障转移的恢复点  ：
-   - **最新**：处理 Site Recovery 中的所有数据，并提供最低的 RTO（恢复时间目标）。
-   - **最新处理**：将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO 会较低。
-   - **最新的应用一致**：此选项将所有 VM 故障转移到最新的应用一致恢复点。 将显示时间戳。
-   - **自定义**：故障转移到特定的恢复点。 自定义仅在对单个 VM 进行故障转移时可用，对使用恢复计划进行的故障转移不可用。
-1. 选择辅助区域中的 Azure VM 在故障转移后要连接到的目标 Azure 虚拟网络。
+1. 在“概述”页面上，选择“测试故障转移” 。
 
-   > [!NOTE]
-   > 如果为复制的项预先配置了测试故障转移设置，则将不会显示用于选择 Azure 虚拟网络的下拉列表。
+    
+    ![复制项的测试故障转移按钮](./media/azure-to-azure-tutorial-dr-drill/test-failover-button.png)
 
-1. 若要启动故障转移，请选择“确定”。  若要通过保管库跟踪进度，请转到“监视” > “Site Recovery 作业”并选择“测试故障转移”作业。   
-1. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户中的“虚拟机”中。  请确保 VM 正在运行、大小适当并已连接到相应的网络。
-1. 若要删除在测试故障转移期间创建的 VM，请选择复制的项或恢复计划上的“清理测试故障转移”。  在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。 
+2. 在“测试故障转移”中，选择一个恢复点。 使用来自此恢复点的数据在目标区域中创建 Azure VM。
+  
+   - **最新处理**：使用由 Site Recovery 处理的最新恢复点。 将显示时间戳。 无需费时处理数据，因此恢复时间目标 (RTO) 会较低。
+   -  **最新**：处理发送到 Site Recovery 的所有数据，为每个 VM 创建恢复点，然后将其故障转移到该恢复点。 提供最低的恢复点目标 (RPO)，因为触发故障转移时，所有数据都将复制到 Site Recovery 中。
+   - **最新的应用一致**：此选项将 VM 故障转移到最新的应用一致恢复点。 将显示时间戳。
+   - **自定义**：故障转移到特定的恢复点。 自定义仅在对单个 VM 进行故障转移且不使用恢复计划时可用。
+
+3. 在 Azure 虚拟网络中，选择将故障转移后创建的 Azure VM 放置在其中的目标网络。 如果可以，请选择非生产网络，而不是启用复制时创建的网络。
+
+    ![“测试故障转移设置”页](./media/azure-to-azure-tutorial-dr-drill/test-failover-settings.png)    
+
+4. 若要启动故障转移，请选择“确定”。
+5. 在通知中监视测试故障转移。
+
+    ![进度通知](./media/azure-to-azure-tutorial-dr-drill/notification-start-test-failover.png) ![成功通知](./media/azure-to-azure-tutorial-dr-drill/notification-finish-test-failover.png)     
+
+
+5. 故障转移完成后，在目标区域中创建的 Azure VM 将显示在 Azure 门户“虚拟机”中。 确保 VM 正在运行、大小合适且已连接到所选网络。
+
+## <a name="clean-up-resources"></a>清理资源
+
+1. 在“基本功能”页面中，选择“清除测试故障转移” 。
+
+    ![用于开始清理过程的按钮](./media/azure-to-azure-tutorial-dr-drill/select-cleanup.png)
+
+2. 在“测试故障转移清理” > “说明”中，记录并保存与测试故障转移相关的任何观测结果 。 
+3. 选择“测试完成”，删除在测试故障转移过程中创建的 VM。
+
+    ![带有清理选项的页面](./media/azure-to-azure-tutorial-dr-drill/cleanup-failover.png)
+
+4. 在通知中监视清理进度。
+
+    ![清理进度通知](./media/azure-to-azure-tutorial-dr-drill/notification-start-cleanup.png) ![清理成功通知](./media/azure-to-azure-tutorial-dr-drill/notification-finish-cleanup.png)
 
 ## <a name="next-steps"></a>后续步骤
+
+在本教程中，运行了灾难恢复演练来检查故障转移是否按预期方式工作。 现在，可以尝试进行完整的故障转移。
 
 > [!div class="nextstepaction"]
 > [运行生产故障转移](azure-to-azure-tutorial-failover-failback.md)

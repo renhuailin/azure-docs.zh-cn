@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf90909cdd3bd3013dc43d50a9589945f5215c7
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7229dabd690e5932fbd297992e09782eda85a002
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532592"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744136"
 ---
 # <a name="authentication-methods-in-azure-active-directory---security-questions"></a>Azure Active Directory 安全问题中的身份验证方法
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: c9cfe05b6547cbdc61a1c8cc6223f08900cf09d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f77c0fb09dddd884335d31d630904ea6aeafeaf5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341287"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495196"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习工作室（经典）Web 服务
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 可以使用 Azure 机器学习工作室（经典）构建和测试预测分析解决方案。 然后，可以将该解决方案部署为 Web 服务。
@@ -36,7 +36,7 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 * **[创建训练实验]** - 在工作室（经典）中，你可以通过大量内置的机器学习算法使用你提供的训练数据来对预测分析模型进行训练和测试。
 * **[将其转换为预测试验]** - 利用现有数据定型模型后，你就可以使用它来对新数据进行评分，为预测准备并简化你的试验。
-* 将其**部署**为 **[新 Web 服务]** 或 **[经典 Web 服务]** - 将预测实验部署为 Azure Web 服务时，用户可以将数据发送到模型并接收模型的预测。
+* 将其 **部署** 为 **[新 Web 服务]** 或 **[经典 Web 服务]** - 将预测实验部署为 Azure Web 服务时，用户可以将数据发送到模型并接收模型的预测。
 
 ## <a name="create-a-training-experiment"></a>创建训练实验
 
@@ -71,7 +71,7 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 1. 它将已训练模型保存在模块调色板的“已训练模型”部分（位于实验画布左侧）。 然后，它会将机器学习算法和[训练模型][train-model]模块替换为保存的已训练模型。
 2. 它会分析实验，删除那些显然只用于训练且不再需要的模块。
-3. 它会将 _Web 服务输入_和_输出_模块插入实验中的默认位置（这些模块接受并返回用户数据）。
+3. 它会将 _Web 服务输入_ 和 _输出_ 模块插入实验中的默认位置（这些模块接受并返回用户数据）。
 
 例如，以下试验使用示例人口普查数据，训练双类提升的决策树模型：
 
@@ -124,7 +124,7 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 
 #### <a name="add-optional-web-service-parameters"></a>添加其他 Web 服务参数
-在某些情况下，可能希望 web 服务用户在访问该服务时可以更改模块的行为。 *Web 服务参数*允许执行此操作。
+在某些情况下，可能希望 web 服务用户在访问该服务时可以更改模块的行为。 *Web 服务参数* 允许执行此操作。
 
 常见示例为设置[导入数据][import-data]模块，以便访问 Web 服务时，已部署的 Web 服务的用户能够指定其他数据源。 或配置[导出数据][export-data]模块以指定其他目标。
 
@@ -138,7 +138,7 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 现在，预测实验已准备就绪，可以将其部署为新的（基于资源管理器的）Azure Web 服务。 使用 web 服务，用户可以将数据发送到模型，该模型将返回其预测。
 
-若要部署预测实验，请单击实验画布底部的“运行”。 实验运行完毕后，单击“部署 Web 服务”或 **部署 Web 服务[全新]** 。  机器学习工作室（经典）Web 服务门户的部署页随即打开。
+若要部署预测实验，请单击实验画布底部的“运行”。 实验运行完毕后，单击“部署 Web 服务”或 **部署 Web 服务 [全新]** 。  机器学习工作室（经典）Web 服务门户的部署页随即打开。
 
 > [!NOTE] 
 > 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
@@ -188,7 +188,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 从机器学习工作室（经典）部署 Web 服务后，可以采用编程方式向服务发送数据并接收响应。
 
-**使用**页提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问。
+**使用** 页提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问。
 
 有关访问机器学习工作室（经典）Web 服务的详细信息，请参阅[如何使用 Azure 机器学习工作室（经典）Web 服务](consume-web-services.md)。
 
@@ -212,7 +212,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 6. 从“资源组”下拉列表中，选择适用于该计划的资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 7. 在“计划名称”中，键入计划的名称。
 8. 在“计划选项”中，单击新计划的计费级别。
-9. 单击**创建**。
+9. 单击 **创建**。
 
 #### <a name="deploy-the-web-service-to-another-region"></a>将 Web 服务部署到另一个区域
 
@@ -250,7 +250,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 在“配置”页上，可以更改服务的显示名称并提供说明。 名称和说明会显示在 [Azure 门户](https://portal.azure.com/)中，可以在其中管理 Web 服务。
 
-可通过在**输入架构**、**输出架构**和 **Web 服务参数**下为每列输入字符串来为输入数据、输出数据和 Web 服务参数提供描述。 这些描述用于为 Web 服务提供的示例代码文档中。
+可通过在 **输入架构**、**输出架构** 和 **Web 服务参数** 下为每列输入字符串来为输入数据、输出数据和 Web 服务参数提供描述。 这些描述用于为 Web 服务提供的示例代码文档中。
 
 可启用日志记录来诊断在访问 Web 服务时遇到的任何故障。 有关详细信息，请参阅[为机器学习工作室（经典）Web 服务启用日志记录](web-services-logging.md)。
 
@@ -282,7 +282,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 > [!NOTE]
 > 如果在原始 Web 服务中进行了配置更改，例如输入新的显示名称或描述，则需要重新输入这些值。
 
-更新 Web 服务的一种方法是以编程方式重新训练模型。 有关详细信息，请参阅[以编程方式重新训练机器学习工作室（经典）模型](/azure/machine-learning/studio/retrain-machine-learning-model)。
+更新 Web 服务的一种方法是以编程方式重新训练模型。 有关详细信息，请参阅[以编程方式重新训练机器学习工作室（经典）模型](./retrain-machine-learning-model.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -305,11 +305,11 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 [webserviceparameters]: web-service-parameters.md
 [deploy]: deploy-a-machine-learning-web-service.md
-[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[export-data]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
+[clean-missing-data]: /azure/machine-learning/studio-module-reference/clean-missing-data
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[export-data]: /azure/machine-learning/studio-module-reference/export-data

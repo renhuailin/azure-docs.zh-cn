@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b7a5953edd9aec96a7f75e747c39e8f07f7210bb
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243762"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017831"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>将文本分析容器部署到 Azure Kubernetes 服务
 
-了解如何将 Azure 认知服务[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)容器映像部署到 Azure Kubernetes 服务 (AKS)。 该过程展示了创建文本分析资源的方法、创建关联的情绪分析映像的方法，以及在浏览器中练习前两项的相关业务流程的方法。 使用容器可以将你的关注点从管理基础结构转移到应用程序开发上。
+了解如何将 Azure 认知服务[文本分析](./text-analytics-how-to-install-containers.md)容器映像部署到 Azure Kubernetes 服务 (AKS)。 该过程展示了创建文本分析资源的方法、创建关联的情绪分析映像的方法，以及在浏览器中练习前两项的相关业务流程的方法。 使用容器可以将你的关注点从管理基础结构转移到应用程序开发上。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "88243762"
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
 * 文本编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
-* 已安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 已安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * 已安装 [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
     * 仅具有 F0 或标准定价层的 Azure 文本分析资源。
@@ -55,9 +55,9 @@ ms.locfileid: "88243762"
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-***
+**_
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用更多 [认知服务容器](../../cognitive-services-container-support.md)
-* 使用[文本分析连接服务](../vs-text-connected-service.md)
+_ 使用更多[认知服务容器](../../cognitive-services-container-support.md)
+* 使用[文本分析连接服务](../index.yml)

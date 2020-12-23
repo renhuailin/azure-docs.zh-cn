@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8557c830aec2dd30de0a99a19d7950928d36e894
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544598"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456014"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>教程：Azure Active Directory 单一登录与 Citrix NetScaler（基于 Kerberos 的身份验证）集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544598"
 * 让用户使用其 Azure AD 帐户自动登录到 Citrix NetScaler。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,13 +41,13 @@ ms.locfileid: "88544598"
 
 * 用于 Citrix NetScaler 的 **SP 发起的** SSO
 
-* 用于 Citrix NetScaler 的**恰时**用户预配
+* 用于 Citrix NetScaler 的 **恰时** 用户预配
 
 * [用于 Citrix NetScaler 的基于 Kerberos 的身份验证](#publish-the-web-server)
 
 * [Citrix NetScaler 的基于标头的身份验证](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-* 配置 Citrix NetScaler 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Citrix NetScaler 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>从库中添加 Citrix NetScaler
 
@@ -239,9 +239,9 @@ ms.locfileid: "88544598"
 
 1. 在“创建身份验证策略”窗格中，输入或选择以下值： 
 
-    * **Name**：输入身份验证策略的名称。
-    * **操作**：输入 **SAML**，然后选择“添加”。 
-    * **表达式**：输入 **true**。     
+    * **Name** ：输入身份验证策略的名称。
+    * **操作** ：输入 **SAML** ，然后选择“添加”。 
+    * **表达式** ：输入 **true** 。     
     
     ![Citrix NetScaler 配置 -“创建身份验证策略”窗格](./media/citrix-netscaler-tutorial/policy01.png)
 
@@ -318,7 +318,7 @@ ms.locfileid: "88544598"
 
 ### <a name="create-a-kerberos-delegation-account-for-citrix-adc"></a>为 Citrix ADC 创建 Kerberos 委托帐户
 
-1. 创建用户帐户（在此示例中，我们使用 _AppDelegation_）。
+1. 创建用户帐户（在此示例中，我们使用 _AppDelegation_ ）。
 
     ![Citrix NetScaler 配置 -“属性”窗格](./media/citrix-netscaler-tutorial/kerberos01.png)
 
@@ -337,7 +337,7 @@ ms.locfileid: "88544598"
     ![Citrix NetScaler 配置 -“属性”窗格下的“委托”](./media/citrix-netscaler-tutorial/kerberos02.png)
 
     > [!NOTE]
-    > 在屏幕截图示例中，运行 Windows 集成身份验证 (WIA) 站点的内部 Web 服务器名称是 _CWEB2_。
+    > 在屏幕截图示例中，运行 Windows 集成身份验证 (WIA) 站点的内部 Web 服务器名称是 _CWEB2_ 。
 
 ### <a name="citrix-netscaler-aaa-kcd-kerberos-delegation-accounts"></a>Citrix NetScaler AAA KCD（Kerberos 委托帐户）
 
@@ -347,16 +347,16 @@ ms.locfileid: "88544598"
 
 1.  选择“添加”  ，然后输入或选择以下值：
 
-    * **Name**：输入 KCD 帐户的名称。
+    * **Name** ：输入 KCD 帐户的名称。
 
-    * **领域**：以大写形式输入域和扩展。
+    * **领域** ：以大写形式输入域和扩展。
 
-    * **服务 SPN**：`http/<host/fqdn>@<DOMAIN.COM>`。
+    * **服务 SPN** ：`http/<host/fqdn>@<DOMAIN.COM>`。
     
         > [!NOTE]
         > `@DOMAIN.COM` 是必需的，必须大写。 示例：`http/cweb2@IDENTT.WORK`。
 
-    * **委托的用户**：输入委托的用户名。
+    * **委托的用户** ：输入委托的用户名。
 
     * 选中“委托用户的密码”复选框，输入并确认密码。 
 
@@ -376,11 +376,11 @@ ms.locfileid: "88544598"
 
 1.  若要配置流量配置文件，请输入或选择以下值。
 
-    * **Name**：输入流量配置文件的名称。
+    * **Name** ：输入流量配置文件的名称。
 
-    * **单一登录**：选择“启用”。 
+    * **单一登录** ：选择“启用”。 
 
-    * **KCD 帐户**：选择在上一部分创建的 KCD 帐户。
+    * **KCD 帐户** ：选择在上一部分创建的 KCD 帐户。
 
 1. 选择“确定”  。
 
@@ -392,11 +392,11 @@ ms.locfileid: "88544598"
 
 1.  若要配置流量策略，请输入或选择以下值：
 
-    * **Name**：输入流量策略的名称。
+    * **Name** ：输入流量策略的名称。
 
-    * **配置文件**：选择在上一部分创建的流量配置文件。
+    * **配置文件** ：选择在上一部分创建的流量配置文件。
 
-    * **表达式**：输入 **true**。
+    * **表达式** ：输入 **true** 。
 
 1. 选择“确定”  。
 
@@ -447,20 +447,20 @@ ms.locfileid: "88544598"
 
 在本部分，我们将使用访问面板测试 Azure AD SSO 配置。
 
-在访问面板中选择“Citrix NetScaler”磁贴时，应会自动登录到设置了 SSO 的 Citrix NetScaler。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中选择“Citrix NetScaler”磁贴时，应会自动登录到设置了 SSO 的 Citrix NetScaler。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Citrix NetScaler](https://aad.portal.azure.com/)
 
 - [为基于标头的身份验证配置 Citrix NetScaler 单一登录](header-citrix-netscaler-tutorial.md)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Citrix NetScaler](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Citrix NetScaler](/cloud-app-security/proxy-intro-aad)

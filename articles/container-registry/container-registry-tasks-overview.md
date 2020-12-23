@@ -3,12 +3,12 @@ title: ACR 任务概述
 description: 介绍 ACR 任务。ACR 任务是 Azure 容器注册表中的功能套件，它在云中提供安全、自动化的容器映像的生成、管理和修补。
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488637"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562848"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 任务自动执行容器映像的生成和维护
 
@@ -16,7 +16,7 @@ ms.locfileid: "89488637"
 
 ## <a name="what-is-acr-tasks"></a>什么是 ACR 任务？
 
-**ACR 任务**是 Azure 容器注册表中的一个功能套件。 它为 Linux、Windows 和 ARM 等[平台](#image-platforms)提供基于云的容器映像生成，并可以针对 Docker 容器自动执行 [OS 和框架修补](#automate-os-and-framework-patching)。 ACR 任务不仅可以使用按需容器映像生成将“内部循环”开发周期扩展到云，而且还能启用源代码更新、容器基础映像或计时器更新所触发的自动生成。 例如，使用基本映像更新触发器，可以自动执行 OS 和应用程序框架修补工作流，在遵守不可变容器原则的前提下维护安全的环境。
+**ACR 任务** 是 Azure 容器注册表中的一个功能套件。 它为 Linux、Windows 和 ARM 等[平台](#image-platforms)提供基于云的容器映像生成，并可以针对 Docker 容器自动执行 [OS 和框架修补](#automate-os-and-framework-patching)。 ACR 任务不仅可以使用按需容器映像生成将“内部循环”开发周期扩展到云，而且还能启用源代码更新、容器基础映像或计时器更新所触发的自动生成。 例如，使用基本映像更新触发器，可以自动执行 OS 和应用程序框架修补工作流，在遵守不可变容器原则的前提下维护安全的环境。
 
 ## <a name="task-scenarios"></a>任务方案
 
@@ -105,13 +105,13 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | 上下文位置 | 说明 | 示例 |
 | ---------------- | ----------- | ------- |
 | 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
-| GitHub 主分支 | 公共或专用 GitHub 存储库的主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub main 分支 | 公共或专用 GitHub 存储库的主 (或其他默认) 分支中的文件。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub 分支 | 公共或专用 GitHub 存储库的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub 子文件夹 | 公共或专用 GitHub 存储库中某个子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub 提交 | 公共或专用 GitHub 存储库中的特定提交。 示例显示了提交哈希 (SHA) 和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps 子文件夹 | 公共或专用 Azure 存储库中某个子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | 远程 tarball | 远程 Web 服务器上某个压缩存档中的文件。 | `http://remoteserver/myapp.tar.gz` |
-| 容器注册表中的项目 | 容器注册表存储库中的[OCI 项目](container-registry-oci-artifacts.md)文件。 | `oci://myregistry.azurecr.io/myartifact:mytag` |
+| 容器注册表中的项目 | 容器注册表存储库中的 [OCI 项目](container-registry-oci-artifacts.md)文件。 | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > 使用专用 Git 存储库作为任务的上下文时，需要提供个人访问令牌 (PAT)。
@@ -138,10 +138,6 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 可以选择安装[适用于 Visual Studio Code 的 Docker 扩展](https://code.visualstudio.com/docs/azure/docker)以及适用于 Azure 容器注册表的 [Azure 帐户](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)扩展。 通过 Azure 容器注册表拉取和推送映像，或者运行 ACR 任务，这一切都可以在 Visual Studio Code 中进行。
 
 <!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 

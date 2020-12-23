@@ -6,18 +6,19 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 467cbe91f4e516dc6facd2d30c38da1483308b77
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68c7805136a7361a64a6ff6dfbb9e7d910b2ea9b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316964"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357936"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 中的 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +31,7 @@ ms.locfileid: "91316964"
 ## <a name="remarks"></a>备注
 
 - 建议使用 [**SQL 虚拟机**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源来查看和管理 Azure 中的 SQL Server vm。 但，SQL 虚拟机资源目前不支持管理[已终止支持](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 要管理已终止支持的 SQL Server VM 的设置，请改用已弃用的 [SQL Server 配置选项卡](#access-the-sql-server-configuration-tab)。 
-- SQL 虚拟机资源仅可用于[已向 SQL VM 资源提供程序注册的](sql-vm-resource-provider-register.md) SQL Server VM。 
+- **Sql 虚拟机** 资源仅适用于已 [注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)的 SQL Server vm。 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>访问 SQL 虚拟机资源
@@ -57,7 +58,7 @@ ms.locfileid: "91316964"
 > SQL 虚拟机资源用于专用的 SQL Server 设置。 选择“虚拟机”框中的 VM 名称，以打开特定于该 VM 但不专用于 SQL Server 的设置。 
 
 ## <a name="access-the-sql-server-configuration-tab"></a>访问 SQL Server 配置选项卡
-“SQL Server 配置”选项卡已被弃用。 目前，它是用于管理已[终止支持](sql-server-2008-extend-end-of-support.md)的 SQL Server VM 以及还未[向 SQL VM 资源提供程序注册的](sql-vm-resource-provider-register.md) SQL Server VM 的唯一方法。
+“SQL Server 配置”选项卡已被弃用。 目前，这是唯一一种方法，用于管理 SQL Server Vm 的 [结尾](sql-server-2008-extend-end-of-support.md) ，以及 SQL Server 未 [注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)中的 vm。
 
 要访问已弃用的“SQL Server 配置”选项卡，请转到“虚拟机”资源 。 请使用以下步骤：
 

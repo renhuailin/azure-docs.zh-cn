@@ -3,19 +3,19 @@ title: 在 SQL 托管实例上手动启动故障转移
 description: 了解如何在 Azure SQL 托管实例上手动对主要副本和次要副本进行故障转移。
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 08/31/2020
-ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.date: 12/16/2020
+ms.openlocfilehash: 7f30ff70e0219a803051b0f8e1208740c359863a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617751"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605388"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 
@@ -37,12 +37,12 @@ ms.locfileid: "91617751"
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 托管实例上启动手动故障转移
 
-### <a name="rbac-permissions-required"></a>需要 RBAC 权限
+### <a name="azure-rbac-permissions-required"></a>需要 Azure RBAC 权限
 
-启动故障转移的用户需要具有下列 RBAC 角色之一：
+启动故障转移的用户需要具有以下 Azure 角色之一：
 
-- 订阅所有者角色或
-- 托管实例参与者角色，或
+- “订阅所有者”角色或
+- “托管实例参与者”角色或
 - 具有以下权限的自定义角色：
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -62,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-将 PowerShell 命令 [Invoke-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) 与以下示例结合使用以启动主节点的故障转移（适用于 BC 和 GP 服务层）。
+将 PowerShell 命令 [Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) 与以下示例结合使用以启动主节点的故障转移（适用于 BC 和 GP 服务层）。
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -96,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>使用 REST API
 
-对于可能需要对其 SQL 托管实例进行自动故障转移以实现持续测试管道的高级用户，或是自动性能缓冲器，可以通过使用 API 调用启动故障转移来实现此功能。 有关详细信息，请参阅[托管实例 - 故障转移 REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)。
+对于可能需要对其 SQL 托管实例进行自动故障转移以实现持续测试管道的高级用户，或是自动性能缓冲器，可以通过使用 API 调用启动故障转移来实现此功能。 有关详细信息，请参阅[托管实例 - 故障转移 REST API](/rest/api/sql/managed%20instances%20-%20failover/failover)。
 
 若要使用 REST API 调用启动故障转移，请首先使用所选的 API 客户端生成身份验证令牌。 生成的身份验证令牌将用作 API 请求标头中的授权属性，它是必需的。
 
@@ -140,7 +140,7 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 > [!IMPORTANT]
 > 用户启动的手动故障转移的功能限制如下：
-> - 每 30 分钟在同一托管实例上可能会启动一次 (1) 故障转移。
+> - 在同一托管实例上，每 **15 分钟** 可能会启动一次 (1) 故障转移。
 > - 对于 BC 实例，若要使故障转移请求得到接受，必须存在仲裁副本。
 > - 对于 BC 实例，不能指定要在其上启动故障转移的可读辅助副本。
 

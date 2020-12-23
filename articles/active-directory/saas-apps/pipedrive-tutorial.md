@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: b3b2032d8cefe881e59fe339786877c4f03c9305
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f85cb97406e8b6cbb4811268696fc36f47ec3adb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553778"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Pipedrive 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553778"
 * 让用户使用其 Azure AD 帐户自动登录到 Pipedrive。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88553778"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Pipedrive 支持 **SP 和 IDP** 发起的 SSO
-* 配置 Pipedrive SSO 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Pipedrive SSO 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 
 ## <a name="adding-pipedrive-from-the-gallery"></a>从库中添加 Pipedrive
@@ -51,7 +51,7 @@ ms.locfileid: "88553778"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Pipedrive**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Pipedrive** 。 
 1. 在结果面板中选择“Pipedrive”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-pipedrive"></a>配置并测试 Pipedrive 的 Azure AD 单一登录
@@ -144,15 +144,15 @@ ms.locfileid: "88553778"
 
 1. 单击“用户配置文件”并选择“设置”。  
 
-    ![Pipedrive 配置](./media/pipedrive-tutorial/configure1.png)
+    ![显示从“用户个人资料”菜单选择了“设置”的屏幕截图。](./media/pipedrive-tutorial/configure1.png)
 
 1. 向下滚动到“安全中心”，然后选择“单一登录”。 
 
-    ![Pipedrive 配置](./media/pipedrive-tutorial/configure2.png)
+    ![显示在“安全中心”中选择了“单一登录”的屏幕截图。](./media/pipedrive-tutorial/configure2.png)
 
 1. 在“Pipedrive 的 SAML 配置”部分执行以下步骤： 
 
-    ![Pipedrive 配置](./media/pipedrive-tutorial/configure3.png)
+    ![显示“Pipedrive 的 SAML 配置”部分的屏幕截图，其中突出显示了所有文本框。](./media/pipedrive-tutorial/configure3.png)
 
     a. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值。  
 
@@ -168,11 +168,11 @@ ms.locfileid: "88553778"
 
 1. 向下滚动到“公司”，然后选择“管理用户”。 
 
-    ![Pipedrive 配置](./media/pipedrive-tutorial/user1.png)
+    ![显示从“公司”菜单选择了“管理用户”的屏幕截图。](./media/pipedrive-tutorial/user1.png)
 
 1. 单击“添加用户”。 
     
-    ![Pipedrive 配置](./media/pipedrive-tutorial/user2.png)
+    ![显示在右侧选择了“添加用户”按钮的“管理用户”页的屏幕截图。](./media/pipedrive-tutorial/user2.png)
 
 1. 在“管理用户”部分执行以下步骤： 
 
@@ -190,16 +190,16 @@ ms.locfileid: "88553778"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Pipedrive”磁贴时，应会自动登录到设置了 SSO 的 Pipedrive。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Pipedrive”磁贴时，应会自动登录到设置了 SSO 的 Pipedrive。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Pipedrive](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

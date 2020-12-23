@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75435399"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022711"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大规模流式处理
 
@@ -39,7 +39,7 @@ Apache Storm 是经过优化的分布式容错开源计算系统，可以配合 
 
 Spark Streaming 是 Spark 的一个扩展，可让你重复使用执行批处理时所用的相同代码。 可以在同一个应用程序中结合使用批处理和交互式查询。 与风暴不同，Spark 流式处理只提供一次处理语义的状态。 与 [Kafka 直接 API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)结合使用时，这可确保 Spark 流式处理只接收一次 Kafka 的所有数据，可以完全实现一次端到端保证。 Spark Streaming 的优点之一体现在其容错功能。在群集中使用多个节点时，它可以快速恢复有故障的节点。
 
-有关详细信息，请参阅[什么是 Apache Spark Streaming？](hdinsight-spark-streaming-overview.md)。
+有关详细信息，请参阅[什么是 Apache Spark Streaming？](./spark/apache-spark-streaming-overview.md)。
 
 ## <a name="scaling-a-cluster"></a>缩放群集
 

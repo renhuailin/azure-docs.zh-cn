@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 347fde86b2a37aa0f82c09c94d6aa2f9e405da9d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6abcca9d9888dc8968d7233e7aee6cd76aa215f7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075590"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965742"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何使用 PowerShell 管理 DNS 区域
 
 > [!div class="op_single_selector"]
 > * [门户](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure 经典 CLI](dns-operations-dnszones-cli-nodejs.md)
+> * [Azure 经典 CLI](./dns-operations-dnszones-cli.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 本文介绍如何使用 Azure PowerShell 管理 DNS 区域。 也可使用跨平台的 [Azure CLI](dns-operations-dnszones-cli.md) 或 Azure 门户管理 DNS 区域。
@@ -174,4 +174,3 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 了解如何[将域委派给 Azure DNS](dns-domain-delegation.md)。
 <br>
 查看 [Azure DNS PowerShell 参考文档](/powershell/module/azurerm.dns)。
-

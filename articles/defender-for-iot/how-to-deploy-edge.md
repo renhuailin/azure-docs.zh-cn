@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 06836673f1a567f64217d49cf8e0ca82e132111f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75a9d1267a8824801e3c24fc25c687f29a808187
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933563"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339925"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在 IoT Edge 设备上部署安全模块
 
@@ -32,9 +32,9 @@ ms.locfileid: "90933563"
 
 使用以下步骤为 IoT Edge 部署用于 IoT 安全模块的 Defender。
 
-### <a name="prerequisites"></a>必备知识
+### <a name="prerequisites"></a>先决条件
 
-1. 在 IoT 中心中，确保你的设备已 [注册为 IoT Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。
+1. 在 IoT 中心中，确保你的设备已 [注册为 IoT Edge 设备](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device)。
 
 1. Defender for IoT Edge module 要求在 IoT Edge 设备上安装 [审核 framework](https://linux.die.net/man/8/auditd) 。
 
@@ -57,7 +57,7 @@ ms.locfileid: "90933563"
 
 1. 单击 " **创建** " 以配置部署。
 
-1. 选择 IoT 中心的 Azure **订阅** ，并选择 **iot 中心**。<br>选择 " **部署到设备** " 以面向单个设备，或选择 " **大规模部署** " 以面向多个设备，并单击 " **创建**"。 有关大规模部署的详细信息，请参阅 [如何部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)。
+1. 选择 IoT 中心的 Azure **订阅** ，并选择 **iot 中心**。<br>选择 " **部署到设备** " 以面向单个设备，或选择 " **大规模部署** " 以面向多个设备，并单击 " **创建**"。 有关大规模部署的详细信息，请参阅 [如何部署](../iot-edge/how-to-deploy-at-scale.md)。
 
     >[!Note]
     >如果选择了 " **大规模部署**"，请添加设备名称和详细信息，然后继续执行以下说明中的 " **添加模块** " 选项卡。
@@ -105,14 +105,14 @@ ms.locfileid: "90933563"
      }
    ```
     
-   有关配置代理的详细信息，请参阅 [配置安全代理](https://docs.microsoft.com/azure/defender-for-iot/how-to-agent-configuration)。
+   有关配置代理的详细信息，请参阅 [配置安全代理](./how-to-agent-configuration.md)。
 
-1. 选择“更新”  。
+1. 选择“更新”。
 
 #### <a name="step-2-runtime-settings"></a>步骤2：运行时设置
 
 1. 选择“运行时设置”。
-1. 在 **Edge 中心**下，将 **图像** 更改为 **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**。
+1. 在 **Edge 中心** 下，将 **图像** 更改为 **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**。
 1. 验证 " **创建选项** " 设置为以下配置：
 
     ``` json
@@ -175,7 +175,7 @@ ms.locfileid: "90933563"
 
 1. 验证以下容器是否正在运行：
 
-   | 名称 | 图像 |
+   | 名称 | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

@@ -1,26 +1,19 @@
 ---
 title: SAP 解决方案概述和体系结构的 Azure Monitor |Microsoft Docs
 description: 本文提供有关 Azure monitor for SAP 解决方案的常见问题的解答
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 8d97c713dfec574a8ef7f3f0dde4701ddea0e98b
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.reviewer: cynthn
+ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669008"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484390"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>适用于 SAP 解决方案的 Azure monitor (预览版) 
 
@@ -42,7 +35,7 @@ SAP 解决方案的 Azure Monitor 通过 Azure Marketplace 提供。 它提供�
 - SAP HANA 数据库
 - Microsoft SQL server
 
-SAP 解决方案的 Azure Monitor 利用现有 [Azure Monitor](../../../azure-monitor/overview.md) 功能（如 Log Analytics 和 [工作簿](../../../azure-monitor/platform/workbooks-overview.md) ）的强大功能来提供其他监视功能。 客户可以通过编辑 SAP 解决方案 Azure Monitor 提供的默认工作簿来创建 [自定义可视化效果](../../../azure-monitor/platform/workbooks-overview.md#getting-started) ，使用 Azure Log Analytics 工作区编写 [自定义查询](../../../azure-monitor/log-query/get-started-portal.md) 并创建 [自定义警报](../../../azure-monitor/learn/tutorial-response.md) ，利用 [灵活的保留期](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 并将监视数据与票证系统连接。
+SAP 解决方案的 Azure Monitor 利用现有 [Azure Monitor](../../../azure-monitor/overview.md) 功能（如 Log Analytics 和 [工作簿](../../../azure-monitor/platform/workbooks-overview.md) ）的强大功能来提供其他监视功能。 客户可以通过编辑 SAP 解决方案 Azure Monitor 提供的默认工作簿来创建 [自定义可视化效果](../../../azure-monitor/platform/workbooks-overview.md#getting-started) ，使用 Azure Log Analytics 工作区编写 [自定义查询](../../../azure-monitor/log-query/log-analytics-tutorial.md) 并创建 [自定义警报](../../../azure-monitor/learn/tutorial-response.md) ，利用 [灵活的保留期](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 并将监视数据与票证系统连接。
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>SAP 解决方案 Azure Monitor 收集哪些数据？
 
@@ -114,5 +107,5 @@ SAP 解决方案的 Azure Monitor 是免费的产品 (无许可费) 。 客户�
 
 了解提供程序并为 SAP 解决方案资源创建第一个 Azure Monitor。
  - 了解有关[提供程序](./azure-monitor-providers.md)的详细信息
- - [通过 Azure PowerShell 为 SAP 解决方案部署 Azure Monitor](azure-monitor-sap-quickstart-powershell.md)
+ - [使用 Azure PowerShell 部署 Azure Monitor for SAP Solutions](azure-monitor-sap-quickstart-powershell.md)
  - 对于 SAP 解决方案 Azure Monitor 是否有疑问？ 检查 [FAQ](./azure-monitor-faq.md) 部分

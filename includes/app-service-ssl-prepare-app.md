@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b3c1992a1cff18390f9d1332103e0650af418e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78300990"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347706"
 ---
 ## <a name="prepare-your-web-app"></a>准备 Web 应用
 
-若要为应用服务应用创建自定义安全绑定或启用客户端证书，[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于“基本”  、“标准”  、“高级”  或“独立”  层级。 在此步骤中，请确保 Web 应用位于受支持的定价层。
+若要为应用服务应用创建自定义 TLS/SSL 绑定或启用客户端证书，[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于“基本”、“标准”、“高级”或“独立”层级   。 在此步骤中，请确保 Web 应用位于受支持的定价层。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "78300990"
 
 在“应用服务”页上，选择 Web 应用的名称  。
 
-![在门户中导航到 Azure 应用](./media/app-service-ssl-prepare-app/select-app.png)
+![Azure 门户中应用服务页面的屏幕截图，其中显示一个包含所有正在运行的 Web 应用的列表，且突出显示了列表中的第一个应用。](./media/app-service-ssl-prepare-app/select-app.png)
 
 你已登录到 Web 应用的管理页。  
 

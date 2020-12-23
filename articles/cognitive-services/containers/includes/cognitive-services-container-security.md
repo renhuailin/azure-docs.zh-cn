@@ -7,37 +7,37 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91544974"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574119"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure 认知服务容器安全性
 
 开发应用程序时，安全性是主要关注因素。 安全性重要是因为它是成功的指标。 构建包含认知服务容器的软件解决方案时，必须了解你所受的限制和能够使用的功能。 有关网络安全的详细信息，请参阅 [配置 Azure 认知服务虚拟网络][az-security]。
 
 > [!IMPORTANT]
-> 默认情况下，认知服务容器 API 上没有安全措施。** 之所以这样设置，是因为大多数情况下容器会作为 Pod 的一部分运行，而 Pod 受网络桥的保护，与外部隔离。 但是，可以启用与访问 [基于云的认知服务][request-authentication]时所使用的身份验证相同的身份验证。
+> 默认情况下，认知服务容器 API 上没有安全措施。 之所以这样设置，是因为大多数情况下容器会作为 Pod 的一部分运行，而 Pod 受网络桥的保护，与外部隔离。 但是，可以在启用身份验证时，让其工作起来与访问[基于云的认知服务][request-authentication]时使用的身份验证完全相同。
 
-下图演示了默认的**非安全**方法：
+下图演示了默认的 **非安全** 方法：
 
 ![容器安全性](../media/container-security.svg)
 
-认知服务容器的所有者可以通过一个前置组件来增强容器，让容器终结点保持专用，这是一种替代的安全** 方法。 让我们考虑一个方案，在该方案中，我们使用 [Istio][istio] 作为入口网关。 Istio 支持 HTTPS/TLS 和客户端证书身份验证。 在这种情况下，Istio 前端将公开容器访问权限，并显示通过 Istio 预先批准的客户端证书。
+认知服务容器的所有者可以通过一个前置组件来增强容器，让容器终结点保持专用，这是一种替代的安全方法。 让我们考虑一个方案，在该方案中，我们使用 [Istio][istio] 作为入口网关。 Istio 支持 HTTPS/TLS 和客户端证书身份验证。 在此方案中，Istio 前端会公开容器访问权限，提供的客户端证书已事先通过 Istio 获得批准。
 
 在同一类别中，[Nginx][nginx] 是另一常用的选择。 Istio 和 Nginx 都充当服务网格，并提供其他功能，例如负载均衡、路由和速率控制。
 
 ### <a name="container-networking"></a>容器网络
 
-若要提交计费所需的计量信息，则需要认知服务容器。 唯一例外是脱机容器，因为后者遵循不同的计费方法。** 如果无法允许列出认知服务容器依赖的各种网络通道，则容器不能正常运行。
+若要提交计费所需的计量信息，则需要认知服务容器。 如果无法允许列出认知服务容器依赖的各种网络通道，则容器不能正常运行。
 
 #### <a name="allow-list-cognitive-services-domains-and-ports"></a>允许列出认知服务域和端口
 
-主机应该允许列出**端口 443** 和以下域：
+主机应该允许列出 **端口 443** 和以下域：
 
 * `*.cognitive.microsoft.com`
 * `*.cognitiveservices.azure.com`

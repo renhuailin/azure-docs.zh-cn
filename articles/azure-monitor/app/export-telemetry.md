@@ -3,12 +3,12 @@ title: 从 Application Insights 连续导出遥测数据 | Microsoft Docs
 description: 将诊断和使用情况数据导出到 Microsoft Azure 中的存储，然后从中下载这些数据。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324329"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674131"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
@@ -24,7 +24,7 @@ ms.locfileid: "87324329"
 * [Analytics](../log-query/log-query-overview.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](./export-power-bi.md)，无需使用连续导出也可以做到。
 * 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
-* 还可以[通过 PowerShell 访问设置连续导出](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
+* 也可以访问“[通过 Powershell 连续导出](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)”设置。
 
 连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](./data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。
 
@@ -37,6 +37,9 @@ ms.locfileid: "87324329"
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> 创建连续导出
+
+> [!NOTE]
+> 应用程序每日导出的数据不能超过3TB。 如果导出的3TB 超过个，将禁用导出。 若要在没有限制的情况下导出，请使用 [基于诊断设置的导出](#diagnostic-settings-based-export)。
 
 1. 在应用左侧配置下的 Application Insights 资源中，打开“连续导出”，并选择“添加”：
 
@@ -52,7 +55,7 @@ ms.locfileid: "87324329"
 4. 在存储中创建或选择一个容器。
 
 > [!NOTE]
-> 创建导出后，新引入的数据将开始流向 Azure Blob 存储。 连续导出只会在启用连续导出后传输创建/引入的新遥测数据。 启用连续导出之前存在的任何数据都不会被导出，且不支持使用连续导出以追溯性方式导出先前创建的数据。
+> 创建导出后，新引入的数据将开始流向 Azure Blob 存储。 连续导出只传输在启用连续导出后创建/引入的新遥测数据。 启用连续导出之前存在的任何数据都不会被导出，且不支持使用连续导出以追溯性方式导出先前创建的数据。
 
 数据出现在存储中之前可能有大约一小时的延迟。
 
@@ -98,7 +101,7 @@ ms.locfileid: "87324329"
 ## <a name="inspect-the-data"></a><a name="get"></a> 检查数据
 可以直接在门户中检查存储。 单击最左侧菜单中的“主页”，在顶部显示“Azure 服务”处选择“存储帐户”，选择存储帐户名称，在“概述”页的服务下，选择“Blob”，最后选择容器名称。
 
-若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。  （如果没有此菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开 Visual C#/云/并选择“用于 .NET 的 Microsoft Azure SDK”。）
+若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。 （如果没有此菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开 Visual C#/云/并选择“用于 .NET 的 Microsoft Azure SDK”。）
 
 打开 Blob 存储后，会看到包含一组 Blob 文件的容器。 每个文件的 URI 派生自 Application Insights 的资源名称、其检测密钥、遥测类型/日期/时间。 （资源名称为全小写形式，检测密钥不包含连字符。）
 
@@ -120,7 +123,7 @@ $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}
 ## <a name="data-format"></a><a name="format"></a> 数据格式
 * 每个 Blob 是一个文本文件，其中包含多个以“\n”分隔的行。 它包含大约半分钟时间内处理的遥测数据。
 * 每行代表遥测数据点，例如请求或页面视图。
-* 每行是未设置格式的 JSON 文档。 若要查看这些行，请在 Visual Studio 中打开该 blob，然后选择 "**编辑**" "  >  **高级**  >  **格式文件**"：
+* 每行是未设置格式的 JSON 文档。 如果要查看行，请在 Visual Studio 中打开 blob，然后选择“编辑” > “高级” > “设置文件格式”  ：
 
    ![使用适当的工具查看遥测数据](./media/export-telemetry/06-json.png)
 
@@ -207,6 +210,19 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 * [流分析示例](export-stream-analytics.md)
 * [使用流分析导出到 SQL][exportasa]
 * [属性类型和值的详细数据模型参考。](export-data-model.md)
+
+## <a name="diagnostic-settings-based-export"></a>基于诊断设置的导出
+
+基于诊断设置的导出使用的架构不同于连续导出。 它还支持连续导出的功能，但不像这样：
+
+* 具有 vnet、防火墙和专用链接的 Azure 存储帐户。
+* 导出到事件中心。
+
+迁移到基于诊断设置的导出：
+
+1. 禁用当前连续导出。
+2. [将应用程序迁移到基于工作区的](convert-classic-resource.md)。
+3. [启用诊断设置导出](create-workspace-resource.md#export-telemetry)。 选择 "诊断设置" > 从 Application Insights 资源中 **添加 "诊断设置** "。
 
 <!--Link references-->
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448882"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123279"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
 
@@ -25,9 +25,9 @@ ms.locfileid: "87448882"
 
 2.  检查输入数据。
 
-    1. 对每个输出使用[示例数据](stream-analytics-sample-data-input.md)按钮。 下载输入示例数据。
+    1. 对每个输出使用[示例数据](./stream-analytics-test-query.md)按钮。 下载输入示例数据。
         
-    1. 检查示例数据，了解架构和[数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
+    1. 检查示例数据，了解架构和[数据类型](/stream-analytics-query/data-types-azure-stream-analytics)。
     
     1. 检查[事件中心指标](../event-hubs/event-hubs-metrics-azure-monitor.md)，确保正在发送事件。 如果事件中心正在接收消息，则消息指标应大于零。
 
@@ -139,9 +139,9 @@ FROM data
 
 对于有三个或三个以上输入连接到同一事件中心的查询，请创建单独的使用者组。 这需要创建额外的流分析输入。
 
-### <a name="create-separate-inputs-with-different-consumer-groups"></a>使用不同的使用者组创建单独的输入
+### <a name="create-separate-inputs-with-different-consumer-groups"></a>使用不同的使用者组创建不同的输入
 
-你可以使用不同的使用者组为同一事件中心创建不同的输入。 以下联合查询是一个示例，其中*InputOne*和*InputTwo*引用相同的事件中心源。 任何查询都可以具有不同的使用者组的单独输入。 UNION 查询只是一个示例。
+你可以使用不同的使用者组为同一事件中心创建不同的输入。 下面的 UNION 查询是一个示例，其中 InputOne 和 InputTwo 指代同一事件中心源 。 任何查询都可以使用不同的使用者组创建不同的输入 UNION 查询只是一个示例。
 
 ```sql
 WITH 
@@ -161,18 +161,18 @@ SELECT foo FROM DataTwo
 
 ```
 
-## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>每个分区的读取者超过 IoT 中心限制
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>每个分区的读取器数超过 IoT 中心限制
 
-流分析作业使用 IoT 中心内置的[与事件中心兼容的终结点](../iot-hub/iot-hub-devguide-messages-read-builtin.md)连接和读取 IoT 中心的事件。 如果每个分区的读取超过 IoT 中心的限制，则可以使用[事件中心的解决方案](#readers-per-partition-exceeds-event-hubs-limit)来解决该问题。 可以通过 IoT 中心门户终结点会话或通过[Iot 中心 SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)为内置终结点创建使用者组。
+流分析作业使用 IoT 中心内置的[事件中心集线器兼容终结点](../iot-hub/iot-hub-devguide-messages-read-builtin.md)从 IoT 中心连接和读取事件。 如果每个分区的读取数超过了 IoT 中心的限制，则可以使用[事件中心的解决方案](#readers-per-partition-exceeds-event-hubs-limit)来解决它。 可以通过 IoT 中心门户终结点会话或通过[IoT 中心 SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)为内置终结点创建使用者组。
 
 ## <a name="get-help"></a>获取帮助
 
-如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)

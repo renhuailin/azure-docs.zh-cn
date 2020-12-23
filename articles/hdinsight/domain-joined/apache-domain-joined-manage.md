@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 3dcb5d7ed75bda8422ba3bd461b08d3bfb2d974f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595778"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541003"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 
@@ -87,13 +87,13 @@ Connection string: -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 非 ESP HDInsight 群集具有两个在群集创建期间创建的用户帐户：
 
-- **Ambari 管理员**：此帐户也称为 Hadoop 用户 或 HTTP 用户。 此帐户可用于在 `https://CLUSTERNAME.azurehdinsight.net` 上登录到 Ambari。 也可将其用于在 Ambari 视图上运行查询、通过外部工具（例如 PowerShell、Templeton、Visual Studio）执行作业，以及使用 Hive ODBC 驱动程序和 BI 工具（例如 Excel、Power BI 或 Tableau）进行身份验证。
+- **Ambari 管理员** ：此帐户也称为 Hadoop 用户 或 HTTP 用户。 此帐户可用于在 `https://CLUSTERNAME.azurehdinsight.net` 上登录到 Ambari。 也可将其用于在 Ambari 视图上运行查询、通过外部工具（例如 PowerShell、Templeton、Visual Studio）执行作业，以及使用 Hive ODBC 驱动程序和 BI 工具（例如 Excel、Power BI 或 Tableau）进行身份验证。
 
 使用 ESP 的 HDInsight 群集除 Ambari 管理员之外，还有三个新用户。
 
-- **Ranger 管理员**：此帐户是本地的 Apache Ranger 管理员帐户。 它不是 Active Directory 域用户。 此帐户可用于设置策略和让其他用户成为管理员或委托管理员（这些用户则可管理策略）。 默认情况下，则该用户名是 *admin* ，密码与 Ambari 管理员密码相同。 可以通过 Ranger 中的“设置”页更新密码。
+- **Ranger 管理员** ：此帐户是本地的 Apache Ranger 管理员帐户。 它不是 Active Directory 域用户。 此帐户可用于设置策略和让其他用户成为管理员或委托管理员（这些用户则可管理策略）。 默认情况下，则该用户名是 *admin* ，密码与 Ambari 管理员密码相同。 可以通过 Ranger 中的“设置”页更新密码。
 
-- **群集管理员域用户**：此帐户是指定为 Hadoop 群集管理员的 Active Directory 域用户（包括 Ambari 和 Ranger）。 群集创建过程中必须提供用户的凭据。 此用户具有以下权限：
+- **群集管理员域用户** ：此帐户是指定为 Hadoop 群集管理员的 Active Directory 域用户（包括 Ambari 和 Ranger）。 群集创建过程中必须提供用户的凭据。 此用户具有以下权限：
     - 将计算机加入到域，并将其放入在群集创建期间指定的 OU 中。
     - 在群集创建期间指定的 OU 中创建服务主体。
     - 创建反向 DNS 条目。
@@ -102,7 +102,7 @@ Connection string: -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
     群集内有一些终结点不受 Ranger 管理（如 Templeton），因此不安全。 对于除群集管理员域用户以外的其他所有用户，这些终结点已锁定。
 
-- **常规**：群集创建期间，可提供多个 Active Directory 组。 这些组中的用户将同步到 Ranger 和 Ambari。 这些用户为域用户，仅对由 Ranger 管理的终结点（例如，Hiveserver2）具有访问权限。 所有 RBAC 策略和审核都适用于这些用户。
+- **常规** ：群集创建期间，可提供多个 Active Directory 组。 这些组中的用户将同步到 Ranger 和 Ambari。 这些用户为域用户，仅对由 Ranger 管理的终结点（例如，Hiveserver2）具有访问权限。 所有 RBAC 策略和审核都适用于这些用户。
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>使用 ESP 的 HDInsight 群集的角色
 
@@ -173,5 +173,5 @@ HDInsight 企业安全性套餐具有以下角色：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用企业安全性套餐配置 HDInsight 群集的信息，请参阅[使用 ESP 配置 HDInsight 群集](apache-domain-joined-configure.md)。
+- 有关使用企业安全性套餐配置 HDInsight 群集的信息，请参阅[使用 ESP 配置 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 - 有关如何配置 Hive 策略和运行 Hive 查询的信息，请参阅[使用 ESP 配置 HDInsight 群集的 Apache Hive 策略](apache-domain-joined-run-hive.md)。

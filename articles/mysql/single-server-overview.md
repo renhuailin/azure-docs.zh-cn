@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 38cf9f5d5102fa4cc322b1a9c7134db85de87814
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943448"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543808"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器
 
@@ -20,7 +20,7 @@ ms.locfileid: "90943448"
 - 单台服务器 
 - 灵活服务器（预览版）
 
-本文概述和介绍了单一服务器部署模型的核心概念。 若要了解灵活服务器部署模式，请参阅[灵活服务器概述](flexible-server/index.yml)
+本文概述和介绍了单一服务器部署模型的核心概念。 若要了解灵活服务器部署模式，请参阅[灵活服务器概述](flexible-server/index.yml) 若要了解如何确定适合工作负荷的部署选项，请参阅[在 Azure 中选择合适的 MySQL 服务器选项](select-right-deployment-type.md)。
 
 ## <a name="overview"></a>概述
 
@@ -55,7 +55,7 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>几秒钟内调整性能和规模
 
-单一服务器服务在三个 SKU 层中提供：“基本”、“常规用途”和“内存优化”。 基本层最适合用于低成本开发和低并发工作负载。 常规用途和内存优化更适用于需要高并发性、缩放性和可预测性能的生产工作负载。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 存储缩放是联机的，支持存储自动增长。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需为所使用的资源付费。 有关详细信息，请参阅 [定价层](concepts-service-tiers.md)。
+单一服务器服务在三个 SKU 层中提供：“基本”、“常规用途”和“内存优化”。 基本层最适合用于低成本开发和低并发工作负载。 常规用途和内存优化更适用于需要高并发性、缩放性和可预测性能的生产工作负载。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 存储缩放是联机的，支持存储自动增长。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需为所使用的资源付费。 有关详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。
 
 ## <a name="enterprise-grade-security-compliance-and-governance"></a>企业级安全性、合规性和治理
 
@@ -63,7 +63,7 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 
 该服务允许使用[专用链接](concepts-data-access-security-private-link.md)对服务器进行专用访问，并提供[高级威胁防护](concepts-data-access-and-security-threat-protection.md)功能。 高级威胁防护可检测异常活动，指出在访问或利用数据库时的异常行为和可能有害的尝试。
 
-除了本机身份验证外，单一服务器服务还支持 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 身份验证。 Azure AD 身份验证是一种使用 Azure AD 中定义和管理的标识连接到 MySQL 服务器的机制。 通过 Azure AD 身份验证，可以在一个中心位置集中管理数据库用户标识和其他 Azure 服务，从而简化和集中访问控制。
+除了本机身份验证外，单一服务器服务还支持 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 身份验证。 Azure AD 身份验证是一种使用 Azure AD 中定义和管理的标识连接到 MySQL 服务器的机制。 通过 Azure AD 身份验证，可以在一个中心位置集中管理数据库用户标识和其他 Azure 服务，从而简化和集中访问控制。
 
 [审核日志记录](concepts-audit-logs.md)可用于跟踪所有数据库级别活动。 
 
@@ -80,7 +80,7 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 该服务运行 MySQL 的社区版本。 这样可以实现完全的应用程序兼容性，并且只需最小的重构成本就能将在 MySQL 引擎上开发的现有应用程序迁移到单一服务器服务。 可以使用以下任一选项来执行向单一服务器的迁移：
 
 - 转储和还原 - 对于脱机迁移（在此情况下，用户可承受一定的故障时间），使用社区工具（如 mysqldump/mydumper）的转储和还原可以提供最快的迁移方式。 有关详细信息，请参阅[使用转储和还原进行迁移](concepts-migrate-dump-restore.md)。 
-- Azure 数据库迁移服务 - 为了在最短的故障时间内实现向单一服务器的无缝简化迁移，可以利用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)。 
+- Azure 数据库迁移服务 - 为了在最短的故障时间内实现向单一服务器的无缝简化迁移，可以利用 [Azure 数据库迁移服务](../dms/tutorial-mysql-azure-mysql-online.md)。 
 - **数据传入复制** - 为在最短的停机时间内进行迁移，还可以利用数据传入复制，它依靠基于 binlog 的复制。 对于希望对迁移进行更多控制的实操专业人员来说，数据传入复制是实现停机时间最短的迁移的首选。 有关详细信息，请参阅[数据传入复制](concepts-data-in-replication.md)。
 
 ## <a name="contacts"></a>联系人
@@ -108,4 +108,3 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
   - [PHP](./connect-php.md)
   - [.NET (C#)](./connect-csharp.md)
   - [Go](./connect-go.md)
-  

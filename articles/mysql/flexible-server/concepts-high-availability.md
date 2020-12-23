@@ -1,24 +1,24 @@
 ---
 title: Azure Database for MySQL 灵活的服务器的区域冗余高可用性概述
 description: 了解 Azure Database for MySQL 灵活的服务器的区域冗余高可用性的概念
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933360"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241178"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的高可用性概念) 
 
 > [!IMPORTANT] 
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-Azure Database for MySQL 灵活的服务器 (预览版) ，允许使用 **区域冗余** 高可用性选项通过自动故障转移来配置高可用性。 当部署在区域冗余配置中时，灵活的服务器会自动预配和管理不同可用性区域中的备用副本。 使用存储级复制，数据将 **同步复制** 到辅助区域中的备用服务器，以在故障转移后实现零数据丢失。 故障转移是从客户端应用程序完全透明的，无需任何用户操作。 备用服务器不适用于任何读取或写入操作，而是被动备用，可实现快速故障转移。 故障转移时间通常范围为60-120 秒。
+Azure Database for MySQL 灵活的服务器 (预览版) ，允许使用 **区域冗余** 高可用性选项通过自动故障转移来配置高可用性。 当采用区域冗余配置进行部署时，灵活服务器会自动在不同的可用性区域中预配和管理备用副本。 使用存储级复制，数据将 **同步复制** 到辅助区域中的备用服务器，以在故障转移后实现零数据丢失。 故障转移是从客户端应用程序完全透明的，无需任何用户操作。 备用服务器不适用于任何读取或写入操作，而是被动备用，可实现快速故障转移。 故障转移时间通常范围为60-120 秒。
 
 区域冗余高可用性配置在计划事件（例如用户启动的规模计算操作）和计划外事件（例如基础硬件和软件故障、网络故障，甚至是可用性区域故障）期间启用自动故障转移。
 
@@ -100,5 +100,5 @@ Azure Database for MySQL 灵活的服务器 (预览版) ，允许使用 **区域
 ## <a name="next-steps"></a>后续步骤
 
 -   了解 [业务连续性](./concepts-business-continuity.md)
--   了解 [区域冗余高可用性](./concepts-high-availability.md)
+-   了解 [区域冗余高可用性](./concepts-high-availability.md)
 -   了解 [备份和恢复](./concepts-backup-restore.md)

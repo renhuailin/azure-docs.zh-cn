@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892143"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122887"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>使用 Visual Studio Code 通过实时流输入在本地测试流分析查询
 
@@ -29,7 +29,7 @@ ms.locfileid: "90892143"
 
    ![从“输入”文件夹添加输入](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-   还可以选择 **Ctrl+Shift+P** 以打开命令面板，然后输入 **ASA:Add Input**。
+   还可以选择 **Ctrl+Shift+P** 以打开命令面板，然后输入 **ASA:Add Input** 。
 
    ![在 Visual Studio Code 中添加流分析输入](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -73,4 +73,4 @@ ms.locfileid: "90892143"
 
 * [使用 Visual Studio Code（预览版）浏览 Azure 流分析作业](visual-studio-code-explore-jobs.md)
 
-* [使用 npm 包设置 CI/CD 管道](setup-cicd-vs-code.md)
+* [使用 npm 包设置 CI/CD 管道](./cicd-overview.md)

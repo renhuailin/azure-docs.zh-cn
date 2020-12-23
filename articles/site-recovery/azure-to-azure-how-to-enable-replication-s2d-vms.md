@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135760"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424831"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>将运行存储空间直通的 Azure VM 复制到另一区域
 
@@ -49,12 +49,12 @@ ms.locfileid: "86135760"
 1. 选择复制策略，同时禁用应用程序一致性*（仅支持故障一致性）
 1. 启用复制
 
-   ![storagespacesdirect 保护](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![显示在何处配置复制设置的屏幕截图。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
 2. 转到已复制的项，可以看到两个虚拟机的状态。
 3. 两个虚拟机均受到保护，并显示为属于多 VM 一致性组。
 
-   ![storagespacesdirect 保护](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![显示虚拟机受保护并且属于多 VM 一致性组的屏幕截图。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>创建恢复计划
 恢复计划支持在故障转移期间将多层应用程序中的各个层排序。 排序有助于保持应用程序一致性。 为多层 Web 应用程序创建恢复计划时，请完成[使用 Site Recovery 创建恢复计划](site-recovery-create-recovery-plans.md)中所述的步骤。

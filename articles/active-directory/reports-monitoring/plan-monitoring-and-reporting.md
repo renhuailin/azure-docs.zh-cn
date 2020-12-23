@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331193"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362393"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>规划 Azure Active Directory 报告和监视部署
 
@@ -73,7 +73,7 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题，请 [确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 还要确保通过记录利益干系人及其项目输入和责任，充分了解项目中的利益干系人角色。
+当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题，请 [确保您参与到了正确的利益干系人](../fundamentals/active-directory-deployment-plans.md)。 还要确保通过记录利益干系人及其项目输入和责任，充分了解项目中的利益干系人角色。
 
 ### <a name="plan-communications"></a>规划沟通
 
@@ -102,7 +102,7 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 |区域 |说明 |
 |-|-|
 |保留| **日志保留期超过30天**。 由于法律或业务要求，需要将审核日志和登录日志 Azure AD 超过30天。 |
-|分析| **日志需要可搜索**。 存储的日志需要能够与分析工具一起搜索。 |
+|Analytics| **日志需要可搜索**。 存储的日志需要能够与分析工具一起搜索。 |
 | 操作见解| **各种团队的见解**。 需要为不同的用户提供访问权限，以获取 operational insights，如应用程序使用情况、登录错误、自助服务使用、趋势等。 |
 | 安全见解| **各种团队的见解**。 需要为不同的用户提供访问权限，以获取 operational insights，如应用程序使用情况、登录错误、自助服务使用情况、趋势等。 |
 | SIEM 系统中的集成      | **SIEM 集成**。 需要将 Azure AD 登录日志和审核日志集成并流式传输到现有的 SIEM 系统。 |
@@ -133,7 +133,7 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 通过将日志路由到 Azure 事件中心，可与第三方 SIEM 工具集成。 可以通过此集成将 Azure AD 活动日志数据与其他由 SIEM 托管的数据组合起来，获取更丰富的有关环境的见解。 
 
-了解如何[将日志流式传输到事件中心](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)。
+了解如何[将日志流式传输到事件中心](./tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>规划 Azure AD 报告和监视的操作和安全性
 
@@ -151,7 +151,7 @@ Azure AD 角色使你能够根据你的角色委托配置和查看 Azure AD 报�
 
 * 报表读取者
 
-详细了解 [Azure AD 管理角色](../users-groups-roles/directory-assign-admin-roles.md)。
+详细了解 [Azure AD 管理角色](../roles/permissions-reference.md)。
 
 *始终应用最小特权的概念以降低帐户泄露的风险*。 请考虑实施 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) ，进一步保护你的组织。
 

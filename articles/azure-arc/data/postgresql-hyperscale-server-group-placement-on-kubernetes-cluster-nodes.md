@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 1fc768890e932d1f17ad111b4681b75721ae1e06
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628411"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148107"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>启用 Azure Arc PostgreSQL 超大规模服务器组放置
 
@@ -67,8 +67,8 @@ postgres01-2         3/3     Running   0          9h
 其中每个盒都托管一个 PostgreSQL 实例。 它们共同构成了已启用 Azure Arc PostgreSQL 超大规模服务器组：
 
 ```output
-Pod name    Role in the server group
-postgres01-0            Coordinator
+Pod name        Role in the server group
+postgres01-0  Coordinator
 postgres01-1    Worker
 postgres01-2    Worker
 ```
@@ -121,7 +121,7 @@ Containers:
 
 已启用 Azure Arc 的 PostgreSQL 超大规模服务器组中的每个 pod 承载以下三个容器：
 
-|容器|说明
+|容器|描述
 |----|----|
 |`Fluentbit` |数据 * 日志收集器： https://fluentbit.io/
 |`Postgres`|启用了 Azure Arc PosgreSQL 超大规模服务器组的 PostgreSQL 实例部分

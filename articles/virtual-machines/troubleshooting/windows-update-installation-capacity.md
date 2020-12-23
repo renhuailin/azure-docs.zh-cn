@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999099"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635699"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>操作系统启动疑难解答 - Windows 更新安装容量
 
@@ -62,8 +62,6 @@ ms.locfileid: "86999099"
 
 1. 检查磁盘是否已满。 如果磁盘大小小于 1 TB，请[使用 PowerShell](../windows/expand-os-disk.md) 将其扩展到最大 1 TB。
 1. 如果磁盘已是 1 TB，则需要执行磁盘清理。
-   1. [从已损坏的 VM 中](../windows/detach-disk.md)分离数据磁盘。
-   1. 将数据磁盘附加[到正常运行的 VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
    1. 使用[磁盘清理工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)来释放空间。
 1. 完成大小调整和清理后，使用以下命令对驱动器进行碎片整理：
 
@@ -75,12 +73,12 @@ ms.locfileid: "86999099"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>启用串行控制台和内存转储集合
 
-**建议**：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
+**建议** ：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
 
 1. 以管理员身份打开权限提升的命令提示符会话。
 1. 运行以下命令：
 
-   **启用串行控制台**：
+   **启用串行控制台** ：
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -99,7 +97,7 @@ ms.locfileid: "86999099"
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **在 ControlSet001 上启用**：
+   **在 ControlSet001 上启用** ：
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -107,7 +105,7 @@ ms.locfileid: "86999099"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **在 ControlSet002 上启用**：
+   **在 ControlSet002 上启用** ：
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -115,7 +113,7 @@ ms.locfileid: "86999099"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **卸载损坏的 OS 磁盘**：
+   **卸载损坏的 OS 磁盘** ：
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

@@ -7,16 +7,22 @@ ms.author: b-trconn
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5c568f056a99187a0e7a78a6f89b206f2d8dec
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063180"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220238"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure Red Hat OpenShift 中管理安全上下文约束 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure Red Hat OpenShift 中管理安全上下文约束
 
-安全上下文约束（Scc）允许群集管理员控制 pod 的权限。 若要了解有关此 API 类型的详细信息，请参阅[scc 的体系结构文档](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 你可以通过使用 CLI，将实例中的 Scc 作为常规 API 对象进行管理。
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 将在年6月 30 2022 日停用。 支持创建新的 Azure Red Hat OpenShift 3.11 群集持续到30年 11 2020 月30日。 停用后，剩余的 Azure Red Hat OpenShift 3.11 群集将关闭，以防出现安全漏洞。
+> 
+> 按照本指南 [创建 Azure Red Hat OpenShift 4 群集](tutorial-create-cluster.md)。
+> 如果有特定问题， [请](mailto:arofeedback@microsoft.com)联系我们。
+
+ (Scc 的安全上下文约束) 允许群集管理员控制 pod 的权限。 若要了解有关此 API 类型的详细信息，请参阅 [scc 的体系结构文档](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 你可以通过使用 CLI，将实例中的 Scc 作为常规 API 对象进行管理。
 
 ## <a name="list-security-context-constraints"></a>列出安全上下文约束
 
@@ -37,7 +43,7 @@ restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs 
 
 ## <a name="examine-an-object-for-security-context-constraints"></a>检查对象的安全上下文约束
 
-若要检查特定 SCC，请使用 `oc get` 、 `oc describe` 或 `oc edit` 。  例如，若要检查**受限制**的 SCC，请使用此命令：
+若要检查特定 SCC，请使用 `oc get` 、 `oc describe` 或 `oc edit` 。  例如，若要检查 **受限制** 的 SCC，请使用此命令：
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

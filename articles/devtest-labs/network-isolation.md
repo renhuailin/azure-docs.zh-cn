@@ -3,12 +3,12 @@ title: Azure 开发测试实验室中的网络隔离
 description: 了解 Azure 开发测试实验室中的网络隔离。
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875657"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352926"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>开发测试实验室中的网络隔离
 
@@ -49,7 +49,7 @@ ms.locfileid: "88875657"
 
 ### <a name="steps-to-follow-post-lab-creation"></a>完成实验室创建后的步骤
 
-1. 在实验室的 "主页" 页上，选择 "**概述**" 页上的**资源组**。 应会看到包含实验室的资源组的 " **资源组** " 页。 
+1. 在实验室的 "主页" 页上，选择 "**概述**" 页上的 **资源组**。 应会看到包含实验室的资源组的 " **资源组** " 页。 
  
    > [!div class="mx-imgBorder"]
    > ![Contoso 实验室](./media/network-isolation/contoso-lab.png)
@@ -57,7 +57,7 @@ ms.locfileid: "88875657"
  
    > [!div class="mx-imgBorder"]
    > ![Contoso 测试](./media/network-isolation/contoso-test.png)
-1. 在存储帐户上，请参阅 "防火墙和虚拟网络"，并确保选中 "允许受信任的 Microsoft 服务访问此存储帐户" 复选框。 由于 [开发测试实验室是受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)，此选项可让实验室在网络隔离模式下正常运行。 
+1. 在存储帐户上，请参阅 "防火墙和虚拟网络"，并确保选中 "允许受信任的 Microsoft 服务访问此存储帐户" 复选框。 由于 [开发测试实验室是受信任的 Microsoft 服务](../storage/common/storage-network-security.md#trusted-microsoft-services)，此选项可让实验室在网络隔离模式下正常运行。 
 
    > [!div class="mx-imgBorder"]
    > ![Contoso 实验室防火墙](./media/network-isolation/contoso-lab-firewalls-vnets.png)
@@ -74,7 +74,7 @@ ms.locfileid: "88875657"
 
 你还可以选择自动执行这些步骤，为多个实验室配置此设置。 
 
-[详细了解如何使用 PowerShell 和 CLI 管理 Azure 存储的默认网络访问规则](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=/azure/virtual-network/toc.json#powershell)
+[详细了解如何使用 PowerShell 和 CLI 管理 Azure 存储的默认网络访问规则](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>在网络隔离模式下使用实验室时要记住的问题
 
@@ -82,7 +82,7 @@ ms.locfileid: "88875657"
 
 在网络隔离实验室中，对于将 VHD 上传到实验室的存储帐户以从其创建自定义映像的操作，实验室所有者需要显式启用从允许的终结点访问存储帐户。 为此，可以创建一个虚拟机，并从该虚拟机安全地访问实验室的存储帐户。 
 
-[详细了解如何从虚拟机访问存储帐户](../private-link/create-private-endpoint-storage-portal.md)
+[详细了解如何从虚拟机访问存储帐户](../private-link/tutorial-private-endpoint-storage-portal.md)
 
 ### <a name="exporting-usage-data-from-the-lab"></a>从实验室导出使用情况数据 
 

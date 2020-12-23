@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
-ms.date: 01/26/2018
+ms.topic: tutorial
+ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: dc3f307a21b746981a84b1c0747c4b22c448541f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317423"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349899"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教程：为 DocuSign 配置自动用户预配
 
@@ -35,7 +35,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 在配置和启用预配服务前，需确定 Azure AD 中哪些用户和/或组表示需要访问 DocuSign 应用的用户。 确定后，可按照此处的说明将这些用户分配到 DocuSign 应用：
 
-[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>将用户分配到 DocuSign 的重要提示
 
@@ -57,42 +57,48 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 本部分的目的是概述如何对 DocuSign 启用 Active Directory 用户帐户的用户预配。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Azure Active Directory > 企业应用 > 所有应用程序** "部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-1. 如果已为 DocuSign 配置单一登录，请使用搜索字段搜索 DocuSign 实例。 否则，请选择“添加”****，然后在应用程序库中搜索“DocuSign”****。 从搜索结果中选择 DocuSign，并将其添加到应用程序列表。
+1. 如果已为 DocuSign 配置单一登录，请使用搜索字段搜索 DocuSign 实例。 否则，请选择“添加”，然后在应用程序库中搜索“DocuSign”。 从搜索结果中选择 DocuSign，并将其添加到应用程序列表。
 
-1. 选择 DocuSign 实例，然后选择“预配”**** 选项卡。
+1. 选择 DocuSign 实例，然后选择“预配”选项卡。
 
-1. 将“预配模式”设置为“自动”。 
+1. 将“预配模式”  设置为“自动”  。 
 
-    ![Azure 门户中的 DocuSign 的 "设置" 选项卡的屏幕截图。 预配模式设置为 "自动"，并且突出显示 "管理员用户名"、"密码" 和 "测试连接"。](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Azure 门户中 DocuSign“预配”选项卡的屏幕截图。 将“预配模式”设置为“自动”，并且突出显示“管理员用户名”、“密码”和“测试连接”。](./media/docusign-provisioning-tutorial/provisioning.png)
 
-1. 在“管理员凭据”**** 部分中，提供以下配置设置：
+1. 在“管理员凭据”部分中，提供以下配置设置：
    
-    a. 在“管理员用户名”**** 文本框中，键入在 DocuSign.com 中已分配“系统管理员”**** 配置文件的 DocuSign 帐户名称。
+    a. 在“管理员用户名”文本框中，键入在 DocuSign.com 中已分配“系统管理员”配置文件的 DocuSign 帐户名称。
    
-    b. 在“管理员密码”**** 文本框中，键入此帐户的密码。
+    b. 在“管理员密码”文本框中，键入此帐户的密码。
 
 > [!NOTE]
-> 如果设置了 SSO 和用户设置，则需要将用于预配的授权凭据配置为使用 SSO 和用户名/密码。
+> 如果同时设置了 SSO 和用户设置，则需要将用于预配的授权凭据配置为使用 SSO 和用户名/密码。
 
-1. 在 Azure 门户中，单击“测试连接”****，确保 Azure AD 可以连接到 DocuSign 应用。
+1. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 DocuSign 应用。
 
-1. 在“通知电子邮件”**** 字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中复选框。
-
-1. 单击“保存” 
-
-1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 DocuSign”****。
-
-1. 在“属性映射”**** 部分中，查看从 Azure AD 同步到 DocuSign 的用户属性。 选为“匹配”**** 属性的特性用于匹配 DocuSign 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
-
-1. 若要为 DocuSign 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”**** 更改为“启用”****
+1. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中复选框。
 
 1. 单击“保存” 
 
-此操作会对“用户和组”部分中分配到 DocuSign 的任何用户启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”**** 部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 DocuSign 应用执行的所有操作。
+1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 DocuSign”。
+
+1. 在“属性映射”部分中，查看从 Azure AD 同步到 DocuSign 的用户属性。 选为“匹配”属性的特性用于匹配 DocuSign 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+
+1. 若要为 DocuSign 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+
+1. 单击“保存” 
+
+此操作会对“用户和组”部分中分配到 DocuSign 的任何用户启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 DocuSign 应用执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+
+## <a name="troubleshooting-tips"></a>疑难解答指南
+* 通过 [switch](../app-provisioning/functions-for-customizing-application-data.md#switch) 和 [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) 函数在属性映射中使用表达式，可以实现在 Docusign 中为用户预配角色或者权限配置文件。 例如，当用户在 Azure AD 中分配了“DS Admin”角色时，以下表达式将预配 ID“8032066”。 如果用户未在 Azure AD 端分配有角色，则不会预配任何权限配置文件。 可从 DocuSign [门户](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)检索该 ID。
+
+Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "8032066", "DS Admin")
+
 
 ## <a name="additional-resources"></a>其他资源
 

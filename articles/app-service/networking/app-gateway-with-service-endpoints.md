@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
-ms.custom: seodec18
-ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958927"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560887"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>应用程序网关与服务终结点的集成
 应用服务有三种变体，需要对它们采用略微不同的配置，才能使其与 Azure 应用程序网关集成。 这些变体包括普通应用服务（也称为多租户）、内部负载均衡器 (ILB) 应用服务环境 (ASE) 和外部 ASE。 本文逐步介绍如何使用应用服务（多租户）对其进行配置，并讨论有关 ILB 和外部 ASE 的注意事项。
@@ -27,7 +27,7 @@ ms.locfileid: "88958927"
 ## <a name="integration-with-app-service-multi-tenant"></a>与应用服务（多租户）集成
 应用服务（多租户）具有面向 Internet 的公共终结点。 使用[服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)可以只允许来自 Azure 虚拟网络中特定子网的流量，并阻止其他所有流量。 在以下方案中，我们将使用此功能来确保应用服务实例只能接收来自特定应用程序网关实例的流量。
 
-![应用程序网关与应用服务的集成](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+![关系图显示了在 Azure 虚拟网络中流向应用程序网关的 Internet，并通过防火墙图标在应用服务中通过防火墙图标流向应用程序实例。](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
 
 除了创建应用服务和应用程序网关以外，此配置还包括两个部分。 第一个部分是在部署应用程序网关的虚拟网络子网中启用服务终结点。 服务终结点确保所有离开子网发往应用服务的所有网络流量通过特定的子网 ID 进行标记。 第二个部分是设置特定 Web 应用的访问限制，以确保仅允许通过此特定子网 ID 标记的流量。 可以根据偏好使用不同的工具完成此项配置。
 
@@ -36,11 +36,11 @@ ms.locfileid: "88958927"
 1. 参考应用服务文档中的某篇快速入门（例如 [.Net Core 快速入门](../quickstart-dotnetcore.md)）创建应用服务
 2. 参考[门户快速入门](../../application-gateway/quick-create-portal.md)创建应用程序网关，但请跳过“添加后端目标”部分。
 3. [将应用服务配置为应用程序网关中的后端](../../application-gateway/configure-web-app-portal.md)，但请跳过“限制访问”部分。
-4. 最后，[使用服务终结点创建访问限制](../../app-service/app-service-ip-restrictions.md#service-endpoints)。
+4. 最后，[使用服务终结点创建访问限制](../../app-service/app-service-ip-restrictions.md#use-service-endpoints)。
 
 现在，可以通过应用程序网关访问应用服务，但如果尝试直接访问应用服务，将会收到 403 HTTP 错误，表示网站已停止。
 
-![应用程序网关与应用服务的集成](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![屏幕截图显示错误403的文本-此 web 应用已停止。](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
 
 ## <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 [资源管理器部署模板][template-app-gateway-app-service-complete]将预配完整方案。 此方案包括使用服务终结点和访问限制锁定的应用服务实例，以便仅从应用程序网关接收流量。 该模板包含许多智能默认值，以及添加到资源名称的唯一后缀（以简化模板）。 若要替代这些内容，必须克隆存储库，或下载模板并对其进行编辑。 

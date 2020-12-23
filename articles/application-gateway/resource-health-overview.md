@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
-ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e30a93f8270cfaf8910130cc1e2633bb80c2b8e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67659497"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397166"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure 应用程序网关资源运行状况概述
 
@@ -27,13 +27,13 @@ ms.locfileid: "67659497"
 
 ## <a name="available"></a>可用
 
-状态为“可用”**** 表示服务尚未检测到影响资源运行状况的任何事件。 如果过去 24 小时内网关在计划外停机后进行了恢复，则会看到“最近已解决”**** 通知。
+状态为“可用”表示服务尚未检测到影响资源运行状况的任何事件。 如果过去 24 小时内网关在计划外停机后进行了恢复，则会看到“最近已解决”通知。
 
 ![可用的运行状况状态](media/resource-health-overview/available-full.png)
 
-## <a name="unavailable"></a>不可用
+## <a name="unavailable"></a>Unavailable
 
-状态为“不可用”**** 表示服务已检测到影响网关运行状况的正在发生的平台或非平台事件。
+状态为“不可用”表示服务已检测到影响网关运行状况的正在发生的平台或非平台事件。
 
 ### <a name="platform-events"></a>平台事件
 
@@ -47,18 +47,18 @@ ms.locfileid: "67659497"
 
 此 **Unknown** 运行状况状态指示资源运行状况未收到此网关的相关信息已超过 10 分钟。 此状态不是网关状态的最终指示， 但它是故障排除过程中一个重要的数据点。
 
-如果网关正在按预期方式运行，状态会在几分钟后更改为“可用”。****
+如果网关正在按预期方式运行，状态会在几分钟后更改为“可用”。
 
-如果你遇到问题，则请注意，“未知”运行状态可能表示平台中的事件正在影响网关。****
+如果你遇到问题，则请注意，“未知”运行状态可能表示平台中的事件正在影响网关。
 
 ![状态未知](media/resource-health-overview/unknown.png)
 
 ## <a name="degraded"></a>已降级
 
-“已降级”运行状况状态指示网关检测到性能降低，虽然资源仍可供使用。****
+“已降级”运行状况状态指示网关检测到性能降低，虽然资源仍可供使用。
 
 ![退化状态](media/resource-health-overview/degraded.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关应用程序网关 Web 应用程序防火墙 (WAF) 的疑难解答，请参阅 [Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 疑难解答](web-application-firewall-troubleshoot.md)。
+若要了解有关应用程序网关 Web 应用程序防火墙 (WAF) 的疑难解答，请参阅 [Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 疑难解答](../web-application-firewall/ag/web-application-firewall-troubleshoot.md)。

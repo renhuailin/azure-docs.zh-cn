@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527167"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023184"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？
 
@@ -71,7 +71,7 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 基础结构需要满足以下要求才能支持 Windows 虚拟桌面：
 
-* 一个 [Azure Active Directory](/azure/active-directory/)。
+* 一个 [Azure Active Directory](../active-directory/index.yml)。
 * 一个与 Azure Active Directory 同步的 Windows Server Active Directory。 可以使用 Azure AD Connect（对于混合组织）或 Azure AD 域服务（对于混合或云组织）来配置此项。
   * 一个与 Azure Active Directory 同步的 Windows Server AD。 用户来自 Windows Server AD，Windows 虚拟桌面 VM 已加入 Windows Server AD 域。
   * 一个与 Azure Active Directory 同步的 Windows Server AD。 用户源自 Windows Server AD，Windows 虚拟桌面 VM 已加入 Azure AD 域服务域。
@@ -85,7 +85,7 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须：
 
-* [已加入标准域](../active-directory-domain-services/active-directory-ds-comparison.md)，或[已加入混合 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虚拟机不能加入 Azure AD。
+* [已加入标准域](../active-directory-domain-services/compare-identity-solutions.md)，或[已加入混合 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虚拟机不能加入 Azure AD。
 * 运行以下[受支持的 OS 映像](#supported-virtual-machine-os-images)之一。
 
 >[!NOTE]
@@ -100,6 +100,8 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 * 从客户端网络到部署主机池的 Azure 区域的往返 (RTT) 延迟应小于 150 毫秒。 使用[体验评估器](https://azure.microsoft.com/services/virtual-desktop/assessment)查看连接运行状况和建议的 Azure 区域。
 * 当托管桌面和应用的 VM 连接到管理服务时，网络流量可能会流到国家/地区的边界以外。
 * 为了优化网络性能，我们建议将会话主机的 VM 共置到管理服务所在的同一 Azure 区域。
+
+你可以在我们的[体系结构文档](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)中看到适用于企业的 Windows 虚拟桌面的典型体系结构设置。
 
 ## <a name="supported-remote-desktop-clients"></a>支持的远程桌面客户端
 

@@ -61,50 +61,82 @@
       href: security-baselines-overview.md
     - name: API 管理安全基线
       href: ../../api-management/security-baseline.md
+    - name: 应用服务安全基线
+      href: ../../app-service/security-baseline.md
     - name: 应用程序网关安全基线
       href: ../../application-gateway/security-baseline.md
     - name: 自动化安全基线
       href: ../../automation/security-baseline.md
+    - name: Azure 顾问安全基线
+      href: ../../advisor/security-baseline.md
+    - name: Azure 应用程序配置安全基线
+      href: ../../azure-app-configuration/security-baseline.md
     - name: Azure 备份安全基线
       href: ../../backup/security-baseline.md
+    - name: Azure Bastion 安全基线
+      href: ../../bastion/security-baseline.md
+    - name: Azure 机器人网络安全基线
+      href: /azure/bot-service/security-baseline?view=azure-bot-service-4.0
     - name: Azure Cache for Redis 安全基线
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Azure 认知搜索安全基线
       href: ../../search/security-baseline.md
+    - name: Azure Cosmos DB 安全基线
+      href: ../../cosmos-db/security-baseline.md
     - name: Azure Data Box 安全基线
       href: ../../databox/security-baseline.md
     - name: Azure 数据资源管理器安全基线
       href: /azure/data-explorer/security-baseline
     - name: Azure 数据工厂安全基线
       href: ../../data-factory/security-baseline.md
+    - name: Azure Data Share 安全基线
+      href: ../../data-share/security-baseline.md
     - name: Azure Database for MySQL 安全基线
       href: ../../mysql/security-baseline.md
     - name: Azure Database for MariaDB 安全基线
       href: ../../mariadb/security-baseline.md
-    - name: Azure Database for PostgreSQL - 单一服务器安全基线
-      href: ../../postgresql/security-baseline.md
+    - name: Azure 数据库迁移服务安全基线
+      href: ../../dms/security-baseline.md
     - name: Azure Database for PostgreSQL - 超大规模服务器安全基线
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
+    - name: Azure Database for PostgreSQL - 单一服务器安全基线
+      href: ../../postgresql/security-baseline.md
     - name: Azure Databricks 安全基线
-      href: ../../azure-databricks/security-baseline.md
-    - name: Azure DNS 安全基线
-      href: ../../dns/security-baseline.md
+      href: /azure/databricks/scenarios/security-baseline
+    - name: Azure DDOS 防护标准安全基线
+      href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: Azure Defender for IoT 安全基线
+      href: ../../defender-for-iot/security-baseline.md
     - name: Azure 开发测试实验室安全基线
       href: ../../devtest-labs/security-baseline.md
+    - name: Azure DNS 安全基线
+      href: ../../dns/security-baseline.md
     - name: Azure 防火墙安全基线
       href: ../../firewall/security-baseline.md
+    - name: Azure 防火墙管理器安全基线
+      href: ../../firewall-manager/security-baseline.md
+    - name: Azure Front Door 安全基线
+      href: ../../frontdoor/security-baseline.md
     - name: Azure Functions 安全基线
       href: ../../azure-functions/security-baseline.md
-    - name: Azure IoT 中心安全基线
-      href: ../../iot-hub/security-baseline.md
+    - name: Azure HPC 缓存安全基线
+      href: ../../hpc-cache/security-baseline.md
+    - name: Azure 信息保护安全基线
+      href: /azure/information-protection/security-baseline
     - name: Azure Kubernetes 服务安全基线
       href: ../../aks/security-baseline.md
+    - name: Azure Lighthouse 安全基线
+      href: ../../lighthouse/security-baseline.md
     - name: Azure 负载均衡器安全基线
       href: ../../load-balancer/security-baseline.md
-    - name: Azure Monitor 安全基线
-      href: ../../azure-monitor/security-baseline.md
     - name: Azure 机器学习安全基线
       href: ../../machine-learning/security-baseline.md
+    - name: Azure 托管应用程序安全基线
+      href: ../../azure-resource-manager/managed-applications/security-baseline.md
+    - name: Azure Monitor 安全基线
+      href: ../../azure-monitor/security-baseline.md
+    - name: Azure Migrate 安全基线
+      href: ../../migrate/security-baseline.md
     - name: Azure Policy 安全基线
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure 专用链接安全基线
@@ -113,30 +145,38 @@
       href: ../../virtual-network/public-ip-security-baseline.md
     - name: Azure Resource Graph 安全基线
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure 资源管理器安全基线
+      href: ../../azure-resource-manager/management/security-baseline.md
     - name: Azure Sentinel 安全基线
       href: ../../sentinel/security-baseline.md
+    - name: Azure SignalR 服务安全基线
+      href: ../../azure-signalr/security-baseline.md
     - name: Azure SQL 数据库安全基线
-      href: ../../sql-database/security-baseline.md
+      href: ../../azure-sql/database/security-baseline.md
     - name: Azure 存储安全基线
       href: ../../storage/common/security-baseline.md
-    - name: Azure 流量管理器安全基线
-      href: ../../traffic-manager/security-baseline.md
+    - name: Azure Web 应用程序防火墙安全基线
+      href: ../../web-application-firewall/security-baseline.md
     - name: Batch 安全基线
       href: ../../batch/security-baseline.md
+    - name: 云服务的安全基线
+      href: ../../cloud-services/security-baseline.md
+    - name: Cloud Shell 安全基线
+      href: ../../cloud-shell/security-baseline.md
     - name: 认知服务的安全基线
       href: ../../cognitive-services/security-baseline.md
     - name: 容器实例安全基线
       href: ../../container-instances/security-baseline.md
     - name: 容器注册表安全基线
       href: ../../container-registry/security-baseline.md
-    - name: Cosmos DB 安全基线
-      href: ../../cosmos-db/security-baseline.md
+    - name: 内容分发网络安全基线
+      href: ../../cdn/security-baseline.md
+    - name: 成本管理安全基线
+      href: ../../cost-management-billing/security-baseline.md
     - name: 客户密码箱安全基线
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Data Lake Analytics 安全基线
       href: ../../data-lake-analytics/security-baseline.md
-    - name: DDOS 防护安全基线
-      href: ../fundamentals/ddos-protection-security-baseline.md
     - name: 事件网格安全基线
       href: ../../event-grid/security-baseline.md
     - name: 事件中心安全基线
@@ -145,22 +185,34 @@
       href: ../../expressroute/security-baseline.md
     - name: HDInsight 安全基线
       href: ../../hdinsight/security-baseline.md
+    - name: IoT 中心安全基线
+      href: ../../iot-hub/security-baseline.md
     - name: Key Vault 安全基线
-      href: ../../key-vault/security-baseline.md
+      href: ../../key-vault/general/security-baseline.md
     - name: 逻辑应用安全基线
       href: ../../logic-apps/security-baseline.md
+    - name: Microsoft Cloud App Security 基线
+      href: 'https://docs.microsoft.com/cloud-app-security/security-baseline'
+    - name: Microsoft Defender for Identity 安全基线
+      href: 'https://docs.microsoft.com/defender-for-identity/security-baseline'
     - name: 网络观察程序安全基线
       href: ../../network-watcher/security-baseline.md
+    - name: Power BI 基线
+      href: /power-bi/fundamentals/security-baseline
     - name: 安全中心基线
       href: ../../security-center/security-baseline.md
     - name: 服务总线基线
       href: ../../service-bus-messaging/security-baseline.md
     - name: Service Fabric 基线
       href: ../../service-fabric/security-baseline.md
+    - name: Site Recovery 基线
+      href: ../../site-recovery/security-baseline.md
     - name: 流分析基线
       href: ../../stream-analytics/security-baseline.md
-    - name: Synapse Analytics 安全基线
+    - name: Azure Synapse Analytics 安全基线
       href: ../../synapse-analytics/security-baseline.md
+    - name: 流量管理器安全基线
+      href: ../../traffic-manager/security-baseline.md
     - name: 虚拟机规模集安全基线
       href: ../../virtual-machine-scale-sets/security-baseline.md
     - name: 虚拟机 Linux 安全基线
@@ -169,5 +221,9 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: 虚拟网络安全基线
       href: ../../virtual-network/security-baseline.md
+    - name: 虚拟网络 NAT 安全基线
+      href: ../../virtual-network/nat-security-baseline.md
+    - name: 虚拟 WAN 安全基线
+      href: ../../virtual-wan/security-baseline.md
     - name: VPN 网关安全基线
       href: ../../vpn-gateway/security-baseline.md

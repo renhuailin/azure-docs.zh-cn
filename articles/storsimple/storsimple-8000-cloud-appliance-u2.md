@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d78051c1a5af82a986152c8244d25b68dd65d552
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021369"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968836"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
 
@@ -45,9 +45,9 @@ StorSimple 云设备以两种型号提供：标准 8010（前身为 1100）和�
 | 设备型号 | 8010<sup>1</sup> | 8020 |
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
-| **Azure VM** |Standard_A3（4 核，7 GB 内存）| Standard_DS3（4 核，14 GB 内存）|
-| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的 Azure 区域<br></br>请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。******** |
-| **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br> |
+| Azure VM  |Standard_A3（4 核，7 GB 内存）| Standard_DS3（4 核，14 GB 内存）|
+| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的 Azure 区域<br></br>请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。 |
+| **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-account-create.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br> |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案 <br></br>低延迟和更高性能工作负载<br></br>用于灾难恢复的辅助设备 |
 
 <sup>1</sup> *前身为 1100*。
@@ -81,7 +81,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 在预配云设备之前，需要在 Azure 环境中做好以下准备：
 
 * 确保在数据中心部署并运行 StorSimple 8000 系列物理设备（型号为 8100 或 8600）。 将此设备注册到要为其创建 StorSimple 云设备的 StorSimple 设备管理器服务。
-* 对于云设备，[在 Azure 中配置虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域是对应于[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/services/)的磁盘存储行的区域。
+* 对于云设备，[在 Azure 中配置虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域是对应于 [按区域列出的 Azure 服务](https://azure.microsoft.com/regions/services/)的磁盘存储行的区域。
 * 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建云设备会失败。
 * 点到站点和站点到站点连接是可选的，而不是必需的。 如果需要，可以针对更高级方案配置这些选项。
 * 可以在可使用云设备公开的卷的虚拟网络中创建 [Azure 虚拟机](../virtual-machines/windows/quick-create-portal.md)（主机服务器）。 这些服务器必须满足以下要求：
@@ -96,7 +96,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 创建云设备之前，请对 StorSimple Device Manager 服务进行以下更新：
 
 * 针对要用作云设备主机服务器的 VM 添加[访问控制记录](storsimple-8000-manage-acrs.md)。
-* 使用与云设备位于同一区域中的[存储帐户](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)。 使用不同区域中的存储帐户可能导致性能不佳。 可以将标准或高级存储帐户用于云设备。 有关如何创建[标准存储帐户](../storage/common/storage-create-storage-account.md)的详细信息。
+* 使用与云设备位于同一区域中的[存储帐户](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)。 使用不同区域中的存储帐户可能导致性能不佳。 可以将标准或高级存储帐户用于云设备。 有关如何创建[标准存储帐户](../storage/common/storage-account-create.md)的详细信息。
 * 用于创建云设备的存储帐户应该与用于存储数据的存储帐户不同。 使用相同的存储帐户可能会导致性能不佳。
 
 在开始之前，请确保已准备好以下信息：
@@ -191,11 +191,11 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 若要将云设备连接到同一虚拟网络中的主机服务器，需使用云设备的内部或专用 IP 地址。 执行以下步骤，获取云设备的专用 IP 地址
 
-1. 转到云设备的底层虚拟机。 虚拟机名称与云设备名称相同。 转到“所有资源”，提供云设备和订阅的名称，并选择“虚拟机”作为类型。**** 在提供的虚拟机列表中，选择并单击对应于云设备的虚拟机。
+1. 转到云设备的底层虚拟机。 虚拟机名称与云设备名称相同。 转到“所有资源”，提供云设备和订阅的名称，并选择“虚拟机”作为类型。 在提供的虚拟机列表中，选择并单击对应于云设备的虚拟机。
 
      ![选择云设备的虚拟机](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
 
-2. 转到“设置”>“网络”****。 在右窗格中，可看到云设备的专用 IP 地址。 记下该名称。
+2. 转到“设置”>“网络”。 在右窗格中，可看到云设备的专用 IP 地址。 记下该名称。
 
     ![获取云设备的专用 IP 地址](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 
@@ -231,12 +231,12 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 有关分步过程，请转到 [停用和删除 StorSimple 设备](storsimple-8000-deactivate-and-delete-device.md)。
 
-云设备在 StorSimple 设备管理器服务边栏选项卡上显示为已停用后，可以从“设备”**** 边栏选项卡上的设备列表中删除该云设备。
+云设备在 StorSimple 设备管理器服务边栏选项卡上显示为已停用后，可以从“设备”边栏选项卡上的设备列表中删除该云设备。
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>停止、启动和重新启动云设备
 不同于 StorSimple 物理设备，StorSimple 云设备上没有开机或关机按钮。 但是，有时可能需要停止和重新启动云设备。
 
-若要启动、停止和重启云设备，最简单的方法是使用“虚拟机服务”边栏选项卡。 转到“虚拟机服务”。 从 VM 列表中，找出与云设备对应的 VM（名称相同），并单击该 VM 名称。 在查看虚拟机边栏选项卡时，可以看到云设备状态为“正在运行”****，因为它在创建之后已默认启动。 可以随时启动、停止和重新启动虚拟机。
+若要启动、停止和重启云设备，最简单的方法是使用“虚拟机服务”边栏选项卡。 转到“虚拟机服务”。 从 VM 列表中，找出与云设备对应的 VM（名称相同），并单击该 VM 名称。 在查看虚拟机边栏选项卡时，可以看到云设备状态为“正在运行”，因为它在创建之后已默认启动。 可以随时启动、停止和重新启动虚拟机。
 
 [!INCLUDE [Stop and restart cloud appliance](../../includes/storsimple-8000-stop-restart-cloud-appliance.md)]
 
@@ -267,7 +267,7 @@ DR 的先决条件如下：
 ## <a name="troubleshoot-internet-connectivity-errors"></a>对 Internet 连接错误进行故障排除
 创建云设备时，如果没有 Internet 连接，则创建步骤会失败。 若要排查 Internet 连接故障，请在 Azure 门户中执行以下步骤：
 
-1. [在 Azure 门户中创建 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)。 此虚拟机应使用与云设备相同的存储帐户、VNet 和子网。 如果 Azure 中存在使用相同存储帐户、VNet 和子网的现有 Windows Server 主机，也可以使用它来排除 Internet 连接故障。
+1. [在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)。 此虚拟机应使用与云设备相同的存储帐户、VNet 和子网。 如果 Azure 中存在使用相同存储帐户、VNet 和子网的现有 Windows Server 主机，也可以使用它来排除 Internet 连接故障。
 2. 远程登录到上一步中创建的虚拟机。
 3. 打开虚拟机内的命令窗口（Win + R，并键入 `cmd`）。
 4. 在提示符处运行以下 cmd。

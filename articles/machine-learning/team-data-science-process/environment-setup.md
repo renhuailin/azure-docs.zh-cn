@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6b5571f24cc7acfd35cf2979318110ba2eecbb0e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 557550627fe2c39571a848723e5d716324fee240
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320534"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321171"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>设置在团队数据科学过程中使用的数据科学环境
 团队数据科学过程使用各种数据科学环境来完成数据的存储、处理和分析。 它们包括 Azure Blob 存储、几种类型的 Azure 虚拟机、HDInsight (Hadoop) 群集和 Azure 机器学习工作区。 关于要使用的环境类型的决策具体取决于要建模的数据类型和数量以及云中数据的目标目的地。 
@@ -27,7 +27,7 @@ ms.locfileid: "91320534"
 以下文章介绍如何设置团队数据科学过程使用的各种数据科学环境。
 
 * [Azure 存储帐户](../../storage/common/storage-account-create.md)
-* [HDInsight (Hadoop) 群集](customize-hadoop-cluster.md)
+* [HDInsight (Hadoop) 群集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
 * [Azure 机器学习工作室(经典)工作区](../classic/create-workspace.md)
 
 **Microsoft 数据科学虚拟机 (DSVM)** 同时也可用作 Azure 虚拟机 (VM) 映像。 此 VM 使用几种常用工具（通常用于数据分析和机器学习）进行预安装和配置。 Windows 和 Linux 上均可使用 DSVM。 有关详细信息，请参阅[基于云的 Data Science Virtual Machine for Linux and Windows 简介](../data-science-virtual-machine/overview.md)。
@@ -36,4 +36,4 @@ ms.locfileid: "91320534"
 
 - [Windows DSVM](../data-science-virtual-machine/provision-vm.md)
 - [Ubuntu DSVM](../data-science-virtual-machine/dsvm-ubuntu-intro.md)
-- [CentOS DSVM](../data-science-virtual-machine/linux-dsvm-intro.md)
+- [CentOS DSVM](../data-science-virtual-machine/release-notes.md)

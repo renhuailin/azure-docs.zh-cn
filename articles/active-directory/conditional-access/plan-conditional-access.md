@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258670"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837475"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -73,7 +73,7 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 * [How to deploy Conditional Access?](https://youtu.be/c_izIRNJNuk)（如何部署条件访问？）
 * [How to roll out CA policies to end users?](https://youtu.be/0_Fze7Zpyvc)（如何向最终用户推出 CA 策略？）
 * [Conditional Access with device controls](https://youtu.be/NcONUf-jeS4)（使用设备控件的条件访问）
-* [Conditional Access with Azure MFA](https://youtu.be/Tbc-SU97G-w)（使用 Azure MFA 的条件访问）
+* [使用 Azure AD MFA 的条件性访问](https://youtu.be/Tbc-SU97G-w)
 * [Conditional Access in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)（企业移动性 + 安全性中的条件访问）
 
 
@@ -89,7 +89,7 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-如果技术项目失败，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 为避免这些缺陷，请[确保你正在吸引正确的利益干系人](https://aka.ms/deploymentplans)，并确保项目角色明确。
+如果技术项目失败，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 为避免这些缺陷，请[确保你正在吸引正确的利益干系人](../fundamentals/active-directory-deployment-plans.md)，并确保项目角色明确。
 
 ### <a name="plan-communications"></a>规划沟通
 
@@ -220,7 +220,7 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 
 ### <a name="set-up-emergency-access-accounts"></a>设置紧急访问帐户
 
-如果你错误配置了策略，则该策略会将组织锁在 Azure 门户之外。 通过在组织中创建两个或更多[紧急访问帐户](../users-groups-roles/directory-emergency-access.md)，可缓解意外锁定管理员造成的影响。
+如果你错误配置了策略，则该策略会将组织锁在 Azure 门户之外。 通过在组织中创建两个或更多[紧急访问帐户](../roles/security-emergency-access.md)，可缓解意外锁定管理员造成的影响。
 
 * 创建专用于策略管理并从所有策略中排除的用户帐户。
 
@@ -262,7 +262,7 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 
 * 何时应用（如果适用）
 
-![显示策略命名标准的屏幕截图。](media/plan-conditional-access/11.png)
+![显示策略的命名标准的屏幕截图。](media/plan-conditional-access/11.png)
 
 示例：对于从外部网络访问 Dynamics CRP 应用的营销用户要求 MFA 的策略可能是：
 
@@ -291,11 +291,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 ### <a name="plan-your-policy-deployment"></a>规划策略部署
 
-当新策略为你的环境准备就绪时，请确保在发布策略之前检查每个策略，以避免产生不良结果。 请参阅以下文档，了解有关如何应用策略以及如何避免问题的重要信息
-
-* [应了解的内容](best-practices.md)
-
-* [应避免的操作](best-practices.md)
+当新策略为你的环境准备就绪时，请确保在发布策略之前检查每个策略，以避免产生不良结果。
 
 ## <a name="common-policies"></a>常用策略
 
@@ -448,7 +444,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 使用以下管理选项来控制和管理 CA 策略：
 
-![屏幕截图显示了用于 C 策略的管理选项，其中包括命名位置、自定义控件、使用条款、V P N 连接性以及所选的经典策略。](media/plan-conditional-access/manage-access.png)
+![显示用于 CA 策略的“管理”选项的屏幕截图，其中包括命名位置、自定义控件、使用条款、VPN 连接性以及所选的经典策略。](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>命名位置
@@ -462,10 +458,6 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 ### <a name="terms-of-use"></a>使用条款
 
 在访问环境中的某些云应用之前，你可能希望通过使用条款 (ToU) 来获取用户的同意。 请按照以下[快速入门创建使用条款](require-tou.md)。
-
-### <a name="classic-policies"></a>经典策略
-
-在 [Azure 门户](https://portal.azure.com/)中，你可以在“Azure Active Directory”>“安全性”>“条件访问”下找到 CA 策略。 你的组织还可能具有不是使用此页创建的旧 CA 策略。 这些策略称为“经典策略”。 我们建议你[考虑将这些经典策略迁移到 Azure 门户中](best-practices.md)。
 
 ## <a name="troubleshoot-conditional-access"></a>排查条件访问问题
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962530"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997335"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -25,7 +25,7 @@ ms.locfileid: "88962530"
 
 所有 ASE、外部组件和 ILB 都有一个公共 VIP，该 VIP 用于入站管理流量，从 ASE 对 Internet 发出调用时，它还用作来源地址。 从 ASE 发出的、转到 Internet 的所有调用将通过分配给 ASE 的 VIP 离开 VNet。 此 VIP 的公共 IP 将成为从 ASE 发出的、转到 Internet 的所有调用的源 IP。 如果 ASE 中的应用调用了 VNet 中的资源或通过 VNet 发出调用，则源 IP 是 ASE 使用的子网中的某个 IP。 由于 ASE 在 VNet 中，因此也可以访问 VNet 中的资源，而不需要进行任何额外配置。 如果 VNet 连接到本地网络，则 ASE 中的应用也可访问此处的资源，不需其他配置。
 
-![外部 ASE][1] 
+![外部 ASE][1] 
 
 如果拥有外部 ASE，则公共 VIP 还是 ASE 应用针对下述项解析到的终结点：
 
@@ -106,7 +106,7 @@ ASE 在以下端口上与可通过 Internet 访问的地址通信：
 
 ## <a name="portal-dependencies"></a>门户依赖项 ##
 
-除了 ASE 功能依赖项，还有其他几项与门户体验相关。 Azure 门户中的某些功能依赖于对 _SCM 站点_的直接访问。 Azure 应用服务中的每个应用都有两个 URL。 第一个 URL 用于访问你的应用。 第二个 URL 用于访问 SCM 站点（也称为 _Kudu 控制台_）。 使用 SCM 站点的功能包括：
+除了 ASE 功能依赖项，还有其他几项与门户体验相关。 Azure 门户中的某些功能依赖于对 _SCM 站点_ 的直接访问。 Azure 应用服务中的每个应用都有两个 URL。 第一个 URL 用于访问你的应用。 第二个 URL 用于访问 SCM 站点（也称为 _Kudu 控制台_）。 使用 SCM 站点的功能包括：
 
 -   Web 作业
 -   函数
@@ -118,7 +118,7 @@ ASE 在以下端口上与可通过 Internet 访问的地址通信：
 
 使用 ILB ASE 时，无法从 VNet 外部访问 SCM 站点。 某些功能无法从应用门户运行，因为它们需要访问应用的 SCM 站点。 可以直接连接到 SCM 站点，而不使用门户。 
 
-如果 ILB ASE 是域名 *contoso.appserviceenvironment.net* ，而你的应用名称为 *testapp*，则会在 *testapp.contoso.appserviceenvironment.net*上访问应用。 在 *testapp.scm.contoso.appserviceenvironment.net*上访问了与之配合的 SCM 站点。
+如果 ILB ASE 是域名 *contoso.appserviceenvironment.net* ，而你的应用名称为 *testapp*，则会在 *testapp.contoso.appserviceenvironment.net* 上访问应用。 在 *testapp.scm.contoso.appserviceenvironment.net* 上访问了与之配合的 SCM 站点。
 
 ## <a name="ase-ip-addresses"></a>ASE IP 地址 ##
 
@@ -161,7 +161,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 * 发往端口 53 上所有 IP 的 UDP 流量
 * 发往端口 123 上所有 IP 的 UDP 流量
 * 发往端口 80、443 上所有 IP 的 TCP 流量
-* 发往端口 1433 上 IP 服务标记 AzureSQL 的 TCP 流量
+* 端口 1433 上 IP 服务标记 `Sql` 的 TCP
 * 发往端口 12000 上所有 IP 的 TCP 流量
 * 在所有端口上允许发往 ASE 子网的流量
 
@@ -180,9 +180,9 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 ![入站安全规则][4]
 
-默认规则允许 VNet 中的 IP 与 ASE 子网对话。 另一条默认规则允许负载均衡器（亦称为公共 VIP）与 ASE 通信。 选择“添加”图标旁边的“默认规则”即可查看此规则。******** 如果在默认规则的前面放置一条拒绝其他任何流量的规则，则会阻止 VIP 与 ASE 之间的流量。 要阻止来自 Vnet 内部的流量，请自行添加规则以允许入站。 使用等效于 AzureLoadBalancer 的源，其目标为“任何”，端口范围为 \*。******** 由于 ASE 子网将应用 NSG 规则，因此无需指定具体的目标。
+默认规则允许 VNet 中的 IP 与 ASE 子网对话。 另一条默认规则允许负载均衡器（亦称为公共 VIP）与 ASE 通信。 选择“添加”图标旁边的“默认规则”即可查看此规则。 如果在默认规则的前面放置一条拒绝其他任何流量的规则，则会阻止 VIP 与 ASE 之间的流量。 要阻止来自 Vnet 内部的流量，请自行添加规则以允许入站。 使用等效于 AzureLoadBalancer 的源，其目标为“任何”，端口范围为 \*。 由于 ASE 子网将应用 NSG 规则，因此无需指定具体的目标。
 
-若向应用分配了 IP 地址，请确保端口保持打开。 可在“应用服务环境” > “IP 地址”中查看端口。   
+若向应用分配了 IP 地址，请确保端口保持打开。 若要查看端口，请选择“应用服务环境”>“IP 地址”。  
 
 下列出站规则中显示的所有项均是必需项，最后一项除外。 使用这些端口可以通过网络访问本文前面所述的 ASE 依赖项。 阻止其中的任意一个，ASE 都将停止工作。 列表中的最后一项可让 ASE 与 VNet 中的其他资源通信。
 
@@ -203,7 +203,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 3. 在路由表 UI 中选择“路由” > “添加”。 
 
-4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。**************** 选择“保存” 。
+4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。 选择“保存” 。
 
     然后将看到如下内容：
 
@@ -241,7 +241,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop

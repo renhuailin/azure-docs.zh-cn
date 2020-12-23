@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 234f772b4a77b780f0b0c1faf307c93847e5caf2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aa5c2a0070ea0c3a0963f97fc1a04670eeaa4827
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310712"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701885"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>什么是自动检测或无代码附加 - Azure Monitor Application Insights？
 
@@ -23,17 +23,17 @@ Application Insights 与各种资源提供程序集成，可在不同的环境�
 
 随着我们添加越来越多的集成，自动检测功能矩阵变得很复杂。 下表显示了与各种资源提供程序、语言和环境的支持相对应的项目的当前状态。
 
-|环境/资源提供程序 | .NET            | .NET Core       | Java            | Node.js         |
-|------------------------------|-----------------|-----------------|-----------------|-----------------|
-|Windows 上的 Azure 应用服务  | GA，OnBD*       | GA，选择加入      | 个人预览版 | 个人预览版 |
-|Linux 上的 Azure 应用服务    | 空值             | 不支持   | 公共预览版  | 公共预览版  |
-|AKS 上的 Azure 应用服务      | 空值             | 设计中       | 设计中       | 设计中       |
-|Azure Functions - 基本       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       |
-|Azure Functions - 依赖项| 不支持   | 不支持   | 公共预览版  | 不支持   |
-|Azure Kubernetes 服务      | 空值             | 设计中       | 通过代理   | 设计中       |
-|Azure VM (Windows)             | 公共预览版  | 不支持   | 不支持   | 不支持   |
-|本地 VM (Windows)       | GA，选择加入      | 不支持   | 通过代理   | 不支持   |
-|独立代理 - 任何环境   | 不支持   | 不支持   | 公共预览版  | 不支持   |
+|环境/资源提供程序          | .NET            | .NET Core       | Java            | Node.js         |
+|---------------------------------------|-----------------|-----------------|-----------------|-----------------|
+|Windows 上的 Azure 应用服务           | GA，OnBD*       | GA，选择加入      | 个人预览版 | 个人预览版 |
+|Linux 上的 Azure 应用服务             | 空值             | 不支持   | 个人预览版 | 公共预览版  |
+|AKS 上的 Azure 应用服务               | 空值             | 设计中       | 设计中       | 设计中       |
+|Azure Functions - 基本                | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       |
+|Azure Functions Windows 依赖项 | 不支持   | 不支持   | 公共预览版  | 不支持   |
+|Azure Kubernetes 服务               | 空值             | 设计中       | 通过代理   | 设计中       |
+|Azure VM (Windows)                      | 公共预览版  | 不支持   | 不支持   | 不支持   |
+|本地 VM (Windows)                | GA，选择加入      | 不支持   | 通过代理   | 不支持   |
+|独立代理 - 任何环境            | 不支持   | 不支持   | GA              | 不支持   |
 
 *OnBD 是 On by Default（默认启用）的缩写 - 当你在受支持的环境中部署应用后，系统会自动启用 Application Insights。 
 

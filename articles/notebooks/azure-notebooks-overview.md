@@ -3,12 +3,12 @@ title: Azure Notebooks 预览版概述
 description: 使用免费的 Azure Notebooks 预览版服务在云中运行 Jupyter 笔记本，不需要进行设置或配置。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85831397"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845129"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 预览版概述
 
@@ -111,4 +111,4 @@ Azure Notebooks 预配置了以下 Jupyter 扩展：
   - [演示幻灯片放映](present-jupyter-notebooks-slideshow.md)
   - [处理数据文件](work-with-project-data-files.md)
   - [访问数据资源](access-data-resources-jupyter-notebooks.md)
-  - [使用 Azure 机器学习](use-machine-learning-services-jupyter-notebooks.md)
+  - [使用 Azure 机器学习](../machine-learning/samples-notebooks.md)

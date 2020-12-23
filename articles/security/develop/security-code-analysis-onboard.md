@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4fe13c418452a7a88dcd97939d6e853039f3fb64
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543021"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517064"
 ---
 # <a name="onboarding-and-installing"></a>加入和安装
 
@@ -44,24 +44,24 @@ Microsoft 安全代码分析入门的先决条件：
 
 **后续步骤：**
 
-如果你满足上述资格，请联系以下列表中的合作伙伴，以购买 Microsoft 安全代码分析扩展。 否则，请联系[Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)。
+如果你满足上述资格，请联系以下列表中的合作伙伴，以购买 Microsoft 安全代码分析扩展。 否则，请联系 [Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)。
 
 >**群体**
 
-- 区域–联系详细信息：cloudsupport@zones.com
-- Wortell –联系详细信息：info@wortell.nl
-- Logicalis –联系详细信息：logicalisleads@us.logicalis.com
+- 区域–联系详细信息： cloudsupport@zones.com
+- Wortell –联系详细信息： info@wortell.nl
+- Logicalis –联系详细信息： logicalisleads@us.logicalis.com
 
 ### <a name="become-a-partner"></a>成为合作伙伴
 
-Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支持的加入合作伙伴。 合作伙伴将通过向要购买客户的客户销售扩展来帮助 Azure DevOps 客户更安全地进行开发，但不会与 Microsoft 建立企业支持协议。 相关合作伙伴可[在此处](http://www.microsoftpartnersupport.com/msrd/opin)注册。
+Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支持的加入合作伙伴。 合作伙伴将通过向要购买客户的客户销售扩展来帮助 Azure DevOps 客户更安全地进行开发，但不会与 Microsoft 建立企业支持协议。 相关合作伙伴可 [在此处](http://www.microsoftpartnersupport.com/msrd/opin)注册。
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>安装 Microsoft 安全代码分析扩展
 
 1. 将扩展与 Azure DevOps 组织共享后，请参阅 Azure DevOps 组织页。 此类页的示例 URL 是 `https://dev.azure.com/contoso` 。
-1. 选择名称旁边的右上角的 "购物袋" 图标，然后选择 "**管理扩展**"。
-1. 选择 "**共享**"。
-1. 选择 Microsoft 安全代码分析扩展，然后选择 "**安装**"。
+1. 选择名称旁边的右上角的 "购物袋" 图标，然后选择 " **管理扩展** "。
+1. 选择 " **共享** "。
+1. 选择 Microsoft 安全代码分析扩展，然后选择 " **安装** "。
 1. 从下拉列表中，选择要在其上安装扩展的 Azure DevOps 组织。
 1. 选择“安装”  。 安装完成后，可以开始使用扩展。
 
@@ -73,11 +73,11 @@ Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支�
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>将特定生成任务添加到 Azure DevOps 管道
 
 1. 在 Azure DevOps 组织中打开团队项目。
-1. 选择**管道**  >  **生成**。
+1. 选择 **管道**  >  **生成** 。
 1. 选择要向其中添加扩展生成任务的管道：
-   - 新管道：选择 "**新建**"，然后按照详细介绍的步骤创建新管道。
-   - 编辑管道：选择现有管道，然后选择 "**编辑**" 开始编辑管道。
-1. 选择 **+** 并打开 "**添加任务**" 窗格。
+   - 新管道：选择 " **新建** "，然后按照详细介绍的步骤创建新管道。
+   - 编辑管道：选择现有管道，然后选择 " **编辑** " 开始编辑管道。
+1. 选择 **+** 并打开 " **添加任务** " 窗格。
 1. 从列表或使用 "搜索" 框中，找到要添加的生成任务。 选择 **添加** 。
 1. 指定任务所需的参数。
 1. 将新的生成排队。
@@ -90,10 +90,10 @@ Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支�
 > - 对于安全开发生成任务，始终选择 **"出错时继续"** 。 即使某个工具出现故障，其他工具也能运行。 工具之间没有任何依赖关系。
 > - 仅当工具无法成功运行时，Microsoft 安全代码分析生成任务才会失败。 但即使工具在代码中发现问题，它们仍会成功。 使用后期分析生成任务，可以将生成配置为在工具识别代码中的问题时失败。
 > - 通过发布管道运行时，不支持某些 Azure DevOps 生成任务。 更具体地说，Azure DevOps 不支持在发布管道内发布项目的任务。
-> - 有关可指定为参数的 Azure DevOps Team Build 中预定义变量的列表，请参阅[Azure DevOps Build variables](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)。
+> - 有关可指定为参数的 Azure DevOps Team Build 中预定义变量的列表，请参阅 [Azure DevOps Build variables](/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关配置生成任务的详细信息，请参阅我们的[配置指南](security-code-analysis-customize.md)或[YAML 配置指南](yaml-configuration.md)。
+有关配置生成任务的详细信息，请参阅我们的 [配置指南](security-code-analysis-customize.md) 或 [YAML 配置指南](yaml-configuration.md)。
 
 对于所提供的扩展和工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.md)。

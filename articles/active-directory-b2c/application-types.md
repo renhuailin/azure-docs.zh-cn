@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07897823a3ba3b83e240e8e8dc005ea13b036fce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84295416"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952040"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
-
+ 
 Azure Active Directory B2C (Azure AD B2C) 支持各种新式应用程序体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 为基础。 本文介绍可独立于首选语言或平台构建的应用程序类型。 在开始构建应用程序之前，不妨从中了解一些高级方案。
 
 必须通过 [Azure 门户](https://portal.azure.com/)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](tutorial-create-tenant.md)中。 应用程序注册过程将收集和分配一些值，例如：
 
-* 用于唯一标识应用程序的应用程序 ID  。
-* 可用于将响应定向回应用程序的**回复 URL**。
+* 用于唯一标识应用程序的应用程序 ID。
+* 可用于将响应定向回应用程序的 **回复 URL**。
 
-发送到 Azure AD B2C 的每个请求都指定了**用户流**（内置策略）或用于控制 Azure AD B2C 行为的**自定义策略**。 两种策略类型都可以用来创建一系列自定义程度很高的用户体验。
+发送到 Azure AD B2C 的每个请求都指定了 **用户流**（内置策略）或用于控制 Azure AD B2C 行为的 **自定义策略**。 两种策略类型都可以用来创建一系列自定义程度很高的用户体验。
 
 每个应用程序的交互遵循类似的高级模式：
 
@@ -75,6 +75,26 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 除了简化登录，Web 服务器应用程序可能还需要访问后端 Web 服务。 在此情况下，Web 应用程序可以执行稍有不同的 [OpenID Connect 流](openid-connect.md)，使用授权代码和刷新令牌来获取令牌。 以下 [Web API 部分](#web-apis)描述了此方案。
 
+## <a name="single-page-applications"></a>单页应用程序
+许多新式 Web 应用程序都构建为客户端单页应用程序 (SPA)。 开发人员使用 JavaScript 或 SPA 框架（例如 Angular、Vue 和 React）来编写它们。 这些应用程序在 Web 浏览器上运行，与传统的服务器端 Web 应用程序相比，它们具有不同的身份验证特征。
+
+Azure AD B2C 提供了两个选项，用于允许单页应用程序让用户登录并获取用于访问后端服务或 Web API 的令牌：
+
+### <a name="authorization-code-flow-with-pkce"></a>授权代码流（带有 PKCE）
+- [OAuth 2.0 授权代码流（使用 PKCE）](./authorization-code-flow.md)。 授权代码流允许应用程序用授权代码来交换 **ID** 令牌（表示已经过身份验证的用户），以及交换调用受保护 API 所需的 **访问** 令牌。 此外，它还返回 **刷新** 令牌，这类令牌提供以用户身份长期访问资源而无需与这些用户交互的权限。 
+
+这是 **建议的** 做法。 拥有使用期有限的刷新令牌可以帮助你的应用适应 Safari ITP 之类的[新式浏览器 cookie 隐私限制](../active-directory/develop/reference-third-party-cookies-spas.md)。
+
+若要利用此流，应用程序可以使用支持它的身份验证库，如 [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)。
+
+<!-- ![Single-page applications-auth](./media/tutorial-single-page-app/spa-app-auth.svg) -->
+![单页应用程序 - 授权](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
+
+### <a name="implicit-grant-flow"></a>隐式授予流
+- [OAuth 2.0 隐式流](implicit-flow-single-page-application.md)。 某些框架（如 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)）仅支持隐式授权流。 隐式授权流允许应用程序获取 **ID** 和 **访问** 令牌。 与授权代码流不同，隐式授权流不会返回 **刷新令牌**。 
+
+此身份验证流不包括使用 Electron 和 React-Native 之类的跨平台 JavaScript 框架的应用程序方案。 这些方案需要更多功能才能与本机平台进行交互。
+
 ## <a name="web-apis"></a>Web API
 
 可使用 Azure AD B2C 保护 Web 服务，例如应用程序的 RESTful Web API。 Web API 可以使用 OAuth 2.0 保护其数据，使用令牌对传入的 HTTP 请求进行身份验证。 Web API 的调用方在 HTTP 请求的授权标头中附加一个令牌：
@@ -85,7 +105,7 @@ Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
 Accept: application/json
 ...
-```
+``` 
 
 然后，Web API 就可以使用此令牌来验证 API 调用方的标识，并从令牌中编码的声明里提取调用方的相关信息。 请参阅 [Azure AD B2C token reference](tokens-overview.md)（Azure AD B2C 令牌参考），详细了解应用可用的令牌和声明类型。
 
@@ -119,9 +139,9 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 包含长时运行进程或不需要用户操作的应用程序还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用程序可使用应用程序的标识（而不是用户的委派标识）并使用 OAuth 2.0 客户端凭据流来进行身份验证和获取令牌。 客户端凭据流与代表流不同，代表流不会应用于服务器到服务器的身份验证。
 
-尽管 Azure AD B2C 身份验证服务当前不直接支持 OAuth 2.0 客户端凭据授予流，但你可以使用 Azure AD B2C 租户中的应用程序的 Azure AD 和 Microsoft 标识平台/token 终结点设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。
+尽管 Azure AD B2C 身份验证服务目前不直接支持 OAuth 2.0 客户端凭据授予流，但你可以使用 Azure AD 和 Microsoft 标识平台/令牌终结点为 Azure AD B2C 租户中的应用程序设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。
 
-若要设置客户端凭据流，请参阅 [Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)。 如 [Azure AD 令牌参考](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)中所述，身份验证成功后会收到格式化的令牌，以便 Azure AD 可使用它。
+若要设置客户端凭据流，请参阅 [Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 如 [Azure AD 令牌参考](../active-directory/develop/id-tokens.md)中所述，身份验证成功后会收到格式化的令牌，以便 Azure AD 可使用它。
 
 有关注册管理应用程序的说明，请参阅[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
 
@@ -135,7 +155,7 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 请勿以这些方式编辑 Azure AD B2C 应用程序：
 
-- 在其他应用程序管理门户（如 [应用程序注册门户](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)）中编辑。
+- 在其他应用程序管理门户（如[应用程序注册门户](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)）中编辑。
 - 使用图形 API 或 PowerShell 编辑。
 
 如果在 Azure 门户外部编辑 Azure AD B2C 应用程序，它将成为出错的应用程序，并且不再可用于 Azure AD B2C。 删除应用程序，然后重新创建它。

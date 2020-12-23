@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: patricka
 ms.openlocfilehash: ad96affd48ed9c05bb4ad92a359f48910d3fb535
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226857"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027209"
 ---
 > [!IMPORTANT]
 > Azure 区块链解决方案模板采用公共预览。

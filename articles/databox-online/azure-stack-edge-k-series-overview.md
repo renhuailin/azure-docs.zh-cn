@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 23ec79b7e3989c9749edf98d930ad8305324c9da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318547"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454010"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>什么是 Azure Stack Edge Mini R？
 
@@ -45,7 +45,7 @@ Azure Stack Edge Mini R 具有以下功能：
 
 下面介绍各种方案，其中 Azure Stack Edge Mini R 可用于加快边缘的机器学习 (ML) 推理并对数据进行预处理，然后再将该数据发送到 Azure。
 
-- 使用 Azure 机器学习进行推理 - 借助 Azure Stack Edge Mini R，可以运行 ML 模型以获得可在将数据发送到云之前执行的快速结果。 可以选择传输完整的数据集以继续重新训练并改进 ML 模型。 有关如何在 Azure Stack Edge Mini R 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Azure Stack Edge Mini R 上部署 Azure ML 硬件加速模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)。
+- 使用 Azure 机器学习进行推理 - 借助 Azure Stack Edge Mini R，可以运行 ML 模型以获得可在将数据发送到云之前执行的快速结果。 可以选择传输完整的数据集以继续重新训练并改进 ML 模型。 有关如何在 Azure Stack Edge Mini R 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Azure Stack Edge Mini R 上部署 Azure ML 硬件加速模型](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)。
 
 - 预处理数据 - 在将数据发送到 Azure 之前通过计算选项（如容器或虚拟机）转换数据，以创建更具操作性的数据集。 使用预处理可以：
 
@@ -73,7 +73,7 @@ Azure Stack Edge Mini R 解决方案包括 Azure Stack Edge 资源、Azure Stack
 
 将数据传输到其中的 Azure Stack Edge Mini R 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
 
-- **资源可用性** - 有关 Azure Stack Edge 资源可用的所有区域的列表，请转到[各区域提供的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 
+- **资源可用性** - 有关 Azure Stack Edge 资源可用的所有区域的列表，请转到 [各区域提供的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 
 
 - **设备可用性** - 有关 Azure Stack Edge Mini R 设备可供使用的所有国家/地区的列表，请转到 [Azure Stack Edge Mini R 定价](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeMiniR)的“Azure Stack Edge Mini R”选项卡中的“可用性”部分。
 
@@ -83,5 +83,3 @@ Azure Stack Edge Mini R 解决方案包括 Azure Stack Edge 资源、Azure Stack
 ## <a name="next-steps"></a>后续步骤
 
 - 查看 [Azure Stack Edge Mini R 系统要求](azure-stack-edge-gpu-system-requirements.md)。
-
-

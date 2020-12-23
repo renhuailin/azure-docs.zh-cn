@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
-ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883083"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151641"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对移动设备进行开发
 
-物联网 (Internet of Things) 中的物 (Things) 指的是具有不同功能的各种设备：传感器、微控制器、智能设备、工业网关甚至移动设备。  移动设备可以是 IoT 设备，它发送设备到云遥测数据并且由云管理。  它还可以是运行后端服务应用程序的设备，它管理其他 IoT 设备。  在这两种情况下，都可以使用 [Azure IoT 中心 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 来开发适用于移动设备的应用程序。  
+物联网 (Internet of Things) 中的物 (Things) 指的是具有不同功能的各种设备：传感器、微控制器、智能设备、工业网关甚至移动设备。  移动设备可以是 IoT 设备，它发送设备到云遥测数据并且由云管理。  它还可以是运行后端服务应用程序的设备，它管理其他 IoT 设备。  在这两种情况下，都可以使用 [Azure IoT 中心 SDK](./iot-hub-devguide-sdks.md) 来开发适用于移动设备的应用程序。  
 
 ## <a name="develop-for-native-ios-platform"></a>针对原生 iOS 平台进行开发
 
@@ -52,5 +52,5 @@ Azure IoT 中心 Java SDK 支持 Android 平台。  对于测试的特定 API �
 
 ## <a name="next-steps"></a>后续步骤
 
-* [IoT 中心 REST API 参考](https://docs.microsoft.com/rest/api/iothub/)
+* [IoT 中心 REST API 参考](/rest/api/iothub/)
 * [Azure IoT C SDK 源代码](https://github.com/Azure/azure-iot-sdk-c)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: b6416438b8c970f4a92f73004e67f90a28210500
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335460"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107583"
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。
@@ -79,7 +79,7 @@ ms.locfileid: "91335460"
     -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。
 - [Dapr 集成策略](api-management-dapr-policies.md)
     - 向[服务发送请求](api-management-dapr-policies.md#invoke)-使用 Dapr 运行时找到 Dapr 微服务并可靠地与之通信。
-    -  [将消息发送到发布/订阅主题](api-management-dapr-policies.md#pubsub) -使用 Dapr 运行时将消息发布到发布/订阅主题。发布-订阅消息传送/readme.txt) 来了解有关 Dapr 中发布/订阅消息传送的详细信息。
+    -  [将消息发送到发布/订阅主题](api-management-dapr-policies.md#pubsub) -使用 Dapr 运行时将消息发布到发布/订阅主题。
     -  [触发器输出绑定](api-management-dapr-policies.md#bind) -使用 Dapr 运行时通过输出绑定调用外部系统。
 
 ## <a name="next-steps"></a>后续步骤
@@ -87,4 +87,4 @@ ms.locfileid: "91335460"
 
 + [API 管理中的策略](api-management-howto-policies.md)
 + [转换 API](transform-api.md)
-+ [策略示例](policy-samples.md)
++ [策略示例](./policy-reference.md)

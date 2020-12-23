@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684705"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132374"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 查看订阅计费
 
@@ -32,7 +32,7 @@ Authorization: Bearer
 
 `{subscriptionID}` 参数是必需的，用于标识目标订阅。
 
-`{billingPeriod}` 参数是必需的，用于指定当前[计费周期](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
+`{billingPeriod}` 参数是必需的，用于指定当前[计费周期](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
 
 `${startDate}` 和 `${endDate}` 参数对于此示例是必需的，但对于终结点是可选的。 它们以 YYYY-MM-DD 形式将日期范围指定为字符串（例如：`'20180501'` 和 `'20180615'`）。
 
@@ -41,7 +41,7 @@ Authorization: Bearer
 |请求标头|说明|
 |--------------------|-----------------|
 |Content-Type： |必需。 设置为 `application/json`。|
-|Authorization： |必需。 设置为有效的`Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+|Authorization： |必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 ## <a name="response"></a>响应
 
@@ -85,7 +85,7 @@ Authorization: Bearer
 |**meterDetails** | 有关使用的详细信息。 |
 |**nextLink**| 设置时，指定一个 URL 作为详细信息的下一“页”。 当页面为最后一个页面时为空。 |
 
-此示例已经过缩略；请参阅[列出使用情况详细信息](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy)以了解每个响应字段的完整说明。
+此示例已经过缩略；请参阅[列出使用情况详细信息](/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy)以了解每个响应字段的完整说明。
 
 其他状态代码指示错误条件。 在这些情况下，响应对象解释请求失败的原因。
 
@@ -101,6 +101,6 @@ Authorization: Bearer
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 查看 [Enterprise Reporting 概述](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- 详细研究[企业计费 REST API](https://docs.microsoft.com/rest/api/billing/)
-- [Azure REST API 入门](https://docs.microsoft.com/rest/api/azure/)
+- 查看 [Enterprise Reporting 概述](./enterprise-api.md)
+- 详细研究[企业计费 REST API](/rest/api/billing/)
+- [Azure REST API 入门](/rest/api/azure/)

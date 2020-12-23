@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 5ef67580928a45609f50d3fe798eb9d054265c0a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75752174"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375991"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
 ### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>如果在使用证书身份验证进行连接时收到指示证书不匹配的消息，我该怎么办？
 
-取消选中“通过验证证书来验证服务器的标识”  ，或在手动创建配置文件时**将服务器 FQDN 随证书一起添加**。 为此，可以在命令提示符下运行 **rasphone**，并从下拉列表中选择配置文件。
+取消选中“通过验证证书来验证服务器的标识”  ，或在手动创建配置文件时 **将服务器 FQDN 随证书一起添加** 。 为此，可以在命令提示符下运行 **rasphone** ，并从下拉列表中选择配置文件。
 
 通常不建议绕过服务器标识验证，但在使用 Azure 证书身份验证的情况下，会在 VPN 隧道协议 (IKEv2/SSTP) 和 EAP 协议中将同一证书用于服务器验证。 由于服务器证书和 FQDN 已通过 VPN 隧道协议进行验证，因此在 EAP 中再次验证同一证书就是多余的。
 
-![点到站点](./media/vpn-gateway-faq-p2s-all-include/servercert.png "服务器证书")
+![点到站点身份验证](./media/vpn-gateway-faq-p2s-all-include/servercert.png "服务器证书")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>是否可以使用自己的内部 PKI 根 CA 来生成用于点到站点连接的证书？
 
@@ -39,7 +39,7 @@ ms.locfileid: "75752174"
 
 ### <a name="are-there-instructions-for-certificate-settings-and-parameters"></a><a name="certsettings"></a>是否有证书设置和参数的说明？
 
-* **内部 PKI/企业 PKI 解决方案：** 请参阅[生成证书](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)的步骤。
+* **内部 PKI/企业 PKI 解决方案：** 请参阅 [生成证书](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)的步骤。
 
 * **Azure PowerShell：** 请参阅 [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) 一文了解相关步骤。
 
@@ -52,4 +52,4 @@ ms.locfileid: "75752174"
     * 对于客户端证书：
 
       * 创建私钥时，请将长度指定为 4096。
-      * 创建证书时，对于 *-extensions* 参数，指定 *usr_cert*。
+      * 创建证书时，对于 *-extensions* 参数，指定 *usr_cert* 。

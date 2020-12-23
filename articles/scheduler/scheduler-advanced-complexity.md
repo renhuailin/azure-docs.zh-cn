@@ -9,12 +9,12 @@ ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a74240e3f116121c0aaddd11c186e6e674ea26a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898590"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368173"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 计划程序中为作业生成高级计划和重复周期
 
@@ -54,11 +54,11 @@ ms.locfileid: "78898590"
 
 若要使用 [Azure 计划程序 REST API](/rest/api/scheduler) 创建基本计划，请执行以下步骤：
 
-1. 使用[注册操作 - 资源管理器 REST API](https://docs.microsoft.com/rest/api/resources/providers) 向资源提供程序注册 Azure 订阅。 Azure 计划程序服务的提供程序名称为 **Microsoft.Scheduler**。 
+1. 使用[注册操作 - 资源管理器 REST API](/rest/api/resources/providers) 向资源提供程序注册 Azure 订阅。 Azure 计划程序服务的提供程序名称为 **Microsoft.Scheduler**。 
 
-1. 使用计划程序 REST API 中的[为作业集合创建或更新操作](https://docs.microsoft.com/rest/api/scheduler/jobcollections)创建作业集合。 
+1. 使用计划程序 REST API 中的[为作业集合创建或更新操作](/rest/api/scheduler/jobcollections)创建作业集合。 
 
-1. 使用[为作业创建或更新操作](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate)创建作业。 
+1. 使用[为作业创建或更新操作](/rest/api/scheduler/jobs/createorupdate)创建作业。 
 
 ## <a name="job-schema-elements"></a>作业架构元素
 

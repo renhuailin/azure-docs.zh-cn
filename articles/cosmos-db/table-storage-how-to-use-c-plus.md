@@ -1,6 +1,6 @@
 ---
 title: 通过 C++ 使用 Azure 表存储和 Azure Cosmos DB 表 API
-description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
+description: 通过 C++ 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: cpp
@@ -8,14 +8,15 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 3d38fa2afe35976283e5129eab7d7f8ef3a1103b
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236482"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489873"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>如何通过 C++ 使用 Azure 表存储或 Azure Cosmos DB 表 API
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -49,7 +50,7 @@ ms.locfileid: "88236482"
 
 若要安装适用于 C++ 的 Azure 存储客户端库，请使用以下方法：
 
-* **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件：在 Linux 上开始使用](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)页中提供的说明操作。
+* **Linux：** 按照 [适用于 C++ 的 Azure 存储客户端库自述文件：在 Linux 上开始使用](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)页中提供的说明操作。
 * **Windows：** 在 Windows 中，使用 [vcpkg](https://github.com/microsoft/vcpkg) 作为依赖项管理员。 按照[快速入门](https://github.com/microsoft/vcpkg#quick-start)初始化 vcpkg。 然后使用以下命令安装库：
 
 ```powershell
@@ -78,7 +79,7 @@ Azure 存储客户端或 Cosmos DB 客户端使用连接字符串来存储用于
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-使用 `<your_storage_account>` 的存储帐户名称。 对于 <your_storage_account_key>，请使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的访问密钥。 有关存储帐户和访问密钥的信息，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)。
+使用 `<your_storage_account>` 的存储帐户名称。 对于 <your_storage_account_key>，请使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的访问密钥。 有关存储帐户和访问密钥的信息，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>设置 Azure Cosmos DB 连接字符串
 
@@ -94,11 +95,11 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 若要在基于 Windows 的本地计算机中测试应用程序，可以使用随 [Azure SDK](https://azure.microsoft.com/downloads/) 一起安装的 Azure 存储模拟器。 存储模拟器是一种用于模拟本地开发计算机上提供的 Azure Blob、队列和表服务的实用工具。 以下示例演示如何声明一个静态字段以将连接字符串保存到本地存储模拟器：  
 
 ```cpp
-// Define the connection string with Azure storage emulator.
+// Define the connection string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-若要启动 Azure 存储模拟器，请从 Windows 桌面选择“开始”按钮或 Windows 键。 输入并运行 Microsoft Azure 存储模拟器**。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../storage/common/storage-use-emulator.md)。
+若要启动 Azure 存储模拟器，请从 Windows 桌面选择“开始”按钮或 Windows 键。 输入并运行 Microsoft Azure 存储模拟器。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../storage/common/storage-use-emulator.md)。
 
 ### <a name="retrieve-your-connection-string"></a>检索连接字符串
 
@@ -138,7 +139,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>将实体添加到表
 
-若要将实体添加到表，请创建新的 `table_entity` 对象并将其传递给 `table_operation::insert_entity`。 以下代码使用客户的名字作为行键，并使用姓氏作为分区键。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度可能快于查询分区键不同的实体的速度。 使用不同的分区键可提升并行操作可伸缩性。 有关详细信息，请参阅 [Microsoft Azure 存储性能和可伸缩性清单](../storage/common/storage-performance-checklist.md)。
+若要将实体添加到表，请创建新的 `table_entity` 对象并将其传递给 `table_operation::insert_entity`。 以下代码使用客户的名字作为行键，并使用姓氏作为分区键。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度可能快于查询分区键不同的实体的速度。 使用不同的分区键可提升并行操作可伸缩性。 有关详细信息，请参阅 [Microsoft Azure 存储性能和可伸缩性清单](../storage/blobs/storage-performance-checklist.md)。
 
 下面的代码将创建 `table_entity` 的新实例，其中包含一些可存储的客户数据。 接下来，该代码调用 `table_operation::insert_entity` 来创建 `table_operation` 对象，以便将实体插入表中，并将新的表实体与之关联。 最后，该代码会在 `cloud_table` 对象上调用 `execute` 方法。 新的 `table_operation` 向表服务发送请求，以此将新的客户实体插入 `people` 表中。  
 

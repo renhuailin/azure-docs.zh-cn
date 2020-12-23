@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819965"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289679"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -47,15 +47,15 @@ Key Vault 最初是根据 [Azure Key Vault 服务限制](service-limits.md)中�
 
 如果增加容量已获批准，请注意容量增加后的以下考虑因素：
 1. 数据一致性模型更改。 将吞吐量容量更高的保管库加入允许列表后，Key Vault 服务数据一致性保证会发生更改（需要满足更大量的 RPS，因为底层 Azure 存储服务无法跟进）。  简而言之：
-  1. **不使用允许列表**：Key Vault 服务在后续调用（例如 SecretGet、KeySign）中会立即反映写入操作（例如 SecretSet、CreateKey）的结果。
-  1. **使用允许列表**：Key Vault 服务在 60 秒内在后续调用（例如 SecretGet、KeySign）中反映写入操作（例如 SecretSet、CreateKey）的结果。
+  1. **不使用允许列表** ：Key Vault 服务在后续调用（例如 SecretGet、KeySign）中会立即反映写入操作（例如 SecretSet、CreateKey）的结果。
+  1. **使用允许列表** ：Key Vault 服务在 60 秒内在后续调用（例如 SecretGet、KeySign）中反映写入操作（例如 SecretSet、CreateKey）的结果。
 1. 客户端代码必须遵循 429 次重试的退避策略。 调用 Key Vault 服务的客户端代码在收到 429 响应代码时，不得立即重试 Key Vault 请求。  此处发布的 Azure Key Vault 限制指导建议在收到 429 Http 响应代码时立即应用指数退避。
 
 如果出现限制值较高的有效业务用例，请与我们联系。
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>如何针对服务限制来限制应用
 
-以下是在服务受到限制时应实施的**最佳做法**：
+以下是在服务受到限制时应实施的 **最佳做法** ：
 - 减少每个请求的操作数。
 - 减少请求频率。
 - 避免立即重试。 
@@ -96,7 +96,6 @@ SecretClientOptions options = new SecretClientOptions()
 
 此时，应不会收到 HTTP 429 响应代码。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-若要深入了解 Microsoft 云中的限制，请参阅[限制模式](https://docs.microsoft.com/azure/architecture/patterns/throttling)。
-
+若要深入了解 Microsoft 云中的限制，请参阅[限制模式](/azure/architecture/patterns/throttling)。

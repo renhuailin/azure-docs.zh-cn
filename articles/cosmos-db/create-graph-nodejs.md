@@ -1,22 +1,23 @@
 ---
 title: 使用 Gremlin API 构建 Azure Cosmos DB Node.js 应用程序
 description: 演示了一个可以用来连接到 Azure Cosmos DB 并进行查询的 Node.js 代码示例
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
-ms.author: jasonh
+ms.author: chrande
 ms.custom: devx-track-js
-ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0b88456bd245f79c38d7829dca76de702f768c06
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409368"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360133"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 Node.js 应用程序
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin 控制台](create-graph-gremlin-console.md)
@@ -95,7 +96,7 @@ ms.locfileid: "91409368"
 
     ```
 
-  配置均位于 *config.js* 中，可以在[以下部分](#update-your-connection-string)中编辑该文件。
+  配置均位于 *config.js* 中，可以在 [以下部分](#update-your-connection-string)中编辑该文件。
 
 * 将定义一系列函数以执行不同 Gremlin 操作。 以下是其中一个函数：
 
@@ -161,7 +162,7 @@ ms.locfileid: "91409368"
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="在 Azure 门户的“概述”页面中，查看并复制访问密钥":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure 门户“密钥”边栏选项卡":::
 
 4. 输入数据库名称和图形（容器）名称作为 config.database 和 config.collection 的值。 
 

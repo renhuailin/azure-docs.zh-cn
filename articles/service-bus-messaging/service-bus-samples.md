@@ -3,32 +3,46 @@ title: Azure 服务总线消息传送示例概述
 description: 服务总线消息传送示例演示 Azure 服务总线消息传送方面的关键功能。 提供指向 GitHub 上的示例的链接。
 author: spelluru
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 10/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 2f2392630c0023c8d6321a5716075a65e8127dd0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f8729d0a947ebf2fd918a478fb3354e6d84fe1e3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326263"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95803100"
 ---
 # <a name="service-bus-messaging-samples"></a>服务总线消息传送示例
 服务总线消息传送示例演示[服务总线消息传送](https://azure.microsoft.com/services/service-bus/)中的关键功能。 目前，可以在以下两个位置找到这些示例：
 
-| 编程语言 | SDK 或示例位置 |
+## <a name="net-samples"></a>.NET 示例
+
+| 程序包 | 示例位置 | 
+| ------- | ---------------- | 
+| Azure. (最新)  | https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/ | 
+|  (旧)  |  https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus |
+
+## <a name="java-samples"></a>Java 示例
+| 程序包 | 示例位置 | 
+| ------- | ---------------- | 
+| azure 消息传送- (最新)  | https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/ |
+| azure- (旧)  | https://github.com/Azure/azure-service-bus/tree/master/samples/Java |
+
+## <a name="python-samples"></a>Python 示例
+| 程序包 | 示例位置 |
 | -------------------- | ----------------------- |
-| .NET、Java 和管理 | https://github.com/Azure/azure-service-bus/ |
-| Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples |
-| Python | https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus |
-| Go| https://github.com/Azure/azure-service-bus-go/ |
+| azure。 | https://docs.microsoft.com/samples/azure/azure-sdk-for-python/servicebus-samples/ |
 
-## <a name="service-bus-explorer"></a>服务总线资源管理器
+## <a name="javascript-samples"></a>JavaScript 示例
+| 程序包 | 示例位置 | 
+| ------- | ---------------- | 
+| azure/服务总线 | https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/ | 
 
-此外， [服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)是在 GitHub 上托管的示例，可用于连接到服务总线服务命名空间并轻松管理消息实体。 该工具提供了各种高级功能，例如导入/导出功能以及测试消息实体和中继服务的功能。 可以在 [GitHub](https://github.com/paolosalvatori/ServiceBusExplorer) 上找到完整的服务总线资源管理器源代码和文档。
+## <a name="go-samples"></a>Go 示例
+| 程序包 | 示例位置 | 
+| ------- | ---------------- | 
+| azure 服务总线-中转 | https://github.com/Azure/azure-service-bus-go/ |
 
-## <a name="next-steps"></a>后续步骤
+## <a name="management-samples"></a>管理示例
+你可以在 GitHub 上的中找到管理示例 https://github.com/Azure/azure-service-bus/tree/master/samples/Management 。
 
-有关服务总线的概念性概述，请参阅以下主题。
-
-* [服务总线消息传送概述](service-bus-messaging-overview.md)
-* [服务总线体系结构](./service-bus-messaging-overview.md)

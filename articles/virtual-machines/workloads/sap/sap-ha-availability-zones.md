@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ad9820cc3227c788582a9c2a452abe1886a4a2d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653590"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019321"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
 [Azure 可用性区域](../../../availability-zones/az-overview.md)是 Azure 提供的高可用性功能之一。 使用可用性区域可提高 Azure 上 SAP 工作负荷的整体可用性。 此功能已在某些 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出。 今后会在更多的区域中推出。
@@ -30,7 +31,7 @@ ms.locfileid: "88653590"
 
 ![标准高可用性配置](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP 应用程序层部署在一个 Azure [可用性集](../../windows/manage-availability.md)内。 若要实现 SAP Central Services 的高可用性，可在单独的可用性集中部署两个 VM。 使用 Windows Server 故障转移群集或 Pacemaker (Linux) 作为高可用性框架，并在出现基础结构或软件问题时自动进行故障转移。 若要了解有关这些部署的详细信息，请参阅：
+SAP 应用程序层部署在一个 Azure [可用性集](../../manage-availability.md)内。 若要实现 SAP Central Services 的高可用性，可在单独的可用性集中部署两个 VM。 使用 Windows Server 故障转移群集或 Pacemaker (Linux) 作为高可用性框架，并在出现基础结构或软件问题时自动进行故障转移。 若要了解有关这些部署的详细信息，请参阅：
 
 - [使用群集共享磁盘在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [使用文件共享在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集](./sap-high-availability-guide-wsfc-file-share.md)
@@ -124,7 +125,7 @@ SAP 应用程序层部署在一个 Azure [可用性集](../../windows/manage-ava
 
 
 ## <a name="activepassive-deployment"></a>主动/被动部署
-如果发现一个区域中的网络延迟与跨区域网络流量的网络延迟差不可接受，可部署的体系结构从 SAP 应用层的角度来看应该具有主动/被动特征。 定义一个主动区域，在其中部署完整的应用层，并尝试运行主动 DBMS 实例和主动 SAP Central Services 实例**。 使用此类配置时，需要根据作业是否在主动 DBMS 实例所在区域中运行，确保业务事务与批处理作业的运行时差异不会过大。
+如果发现一个区域中的网络延迟与跨区域网络流量的网络延迟差不可接受，可部署的体系结构从 SAP 应用层的角度来看应该具有主动/被动特征。 定义一个主动区域，在其中部署完整的应用层，并尝试运行主动 DBMS 实例和主动 SAP Central Services 实例。 使用此类配置时，需要根据作业是否在主动 DBMS 实例所在区域中运行，确保业务事务与批处理作业的运行时差异不会过大。
 
 该体系结构的基本布局如下所示：
 

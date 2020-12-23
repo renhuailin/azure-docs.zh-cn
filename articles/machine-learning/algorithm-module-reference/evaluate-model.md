@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 6dfee84c44643823a4ec76c32e750febc6646be5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908054"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323796"
 ---
 # <a name="evaluate-model-module"></a>“评估模型”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块可以度量已训练模型的准确度。 提供包含通过模型生成的评分的数据集后，“评估模型”模块将计算一组符合行业标准的评估指标。
   
@@ -30,7 +30,7 @@ ms.locfileid: "90908054"
 
 
 > [!TIP]
-> 如果你还不熟悉模型评估，我们建议观看 Stephen Elston 博士的视频系列，该系列是 EdX [机器学习课程](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/)的一部分. 
+> 如果你还不熟悉模型评估，我们建议观看 Stephen Elston 博士的视频系列，该系列是 EdX [机器学习课程](/archive/blogs/machinelearning/new-edx-course-data-science-machine-learning-essentials)的一部分. 
 
 
 ## <a name="how-to-use-evaluate-model"></a>如何使用“评估模型”
@@ -39,6 +39,14 @@ ms.locfileid: "90908054"
     > 如果使用“在数据集中选择列”等模块来选择部分输入数据集，请确保存在“实际标签”列（用于模型训练）、“评分概率”列和“评分标签”列以计算指标（如 AUC、二进制分类/异常检测的准确性）。
     > 存在“实际标签”列、“评分标签”列以计算多类分类/回归的指标。
     > 存在“赋值”列、“DistancesToClusterCenter no.X”列（X 是重心索引，范围为 0，...，重心数量 -1）以计算聚类分析的指标。
+
+    > [!IMPORTANT]
+    > + 若要计算结果，输出数据集应包含符合评估模型模块要求的特定分数列名称。
+    > + `Labels`该列将被视为实际标签。
+    > + 对于回归任务，要计算的数据集必须设一个列，名为 `Regression Scored Labels`，表示评分标签。
+    > + 对于二进制分类任务，要计算的数据集必须具有两列，名为 `Binary Class Scored Labels`、`Binary Class Scored Probabilities`，分别表示评分标签和概率。
+    > + 对于多分类任务，要计算的数据集必须设一个列，名为 `Multi Class Scored Labels`，表示评分标签。
+    > 如果上游模块的输出没有这些列，则需要根据上述要求进行修改。
 
 2. [可选] 将[评分模型](./score-model.md)的“得分数据集”输出或第二个模型的“将数据分配到聚类”的“结果数据集”输出连接到“评估模型”的右侧输入端口  。 你可以在相同数据上轻松比较两个不同模型的结果。 两个输入算法应为同一算法类型。 你也可以使用不同的参数对相同数据运行两次，然后比较两次运行的评分。
 
@@ -134,4 +142,4 @@ ms.locfileid: "90908054"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。

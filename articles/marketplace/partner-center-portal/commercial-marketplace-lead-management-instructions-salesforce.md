@@ -4,15 +4,15 @@ description: 了解如何使用 Salesforce 为 Microsoft AppSource 和 Azure 市
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: c3667de6a9bf85109a94201aa8e144869e4b033f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 73caf848ab5c6f8e973469066ce4612a075a52f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117109"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489312"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>为 Salesforce 配置潜在顾客管理
 

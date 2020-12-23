@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 48a1e50d451abb429e9bc33308909b368283644f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661429"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458602"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Lenses.io DataOps 门户集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88661429"
 * 让用户使用其 Azure AD 帐户自动登录到 Lenses。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解软件即服务 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure AD 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解软件即服务 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure AD 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "88661429"
 
 * Lenses.io 支持服务提供商 (SP) 发起的 SSO。
 
-* 配置 Lenses.io 后，可以强制实施会话控制。 会话控制可实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Lenses.io 后，可以强制实施会话控制。 会话控制可实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-lensesio-from-the-gallery"></a>从库中添加 Lenses.io
 
@@ -80,11 +80,11 @@ ms.locfileid: "88661429"
 
 1. 在“基本 SAML 配置”部分中，在以下文本输入框中输入值：
 
-    a. **登录 URL**：输入采用以下模式的 URL：`https://<CUSTOMER_LENSES_BASE_URL>`。 例如 `https://lenses.my.company.com`。
+    a. **登录 URL** ：输入采用以下模式的 URL：`https://<CUSTOMER_LENSES_BASE_URL>`。 例如 `https://lenses.my.company.com`。
 
     b. **标识符(实体 ID)** ：输入采用以下模式的 URL：`https://<CUSTOMER_LENSES_BASE_URL>`。 例如 `https://lenses.my.company.com`。
 
-    c. **回复 URL**：输入采用以下模式的 URL：`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`。 例如 `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`。
+    c. **回复 URL** ：输入采用以下模式的 URL：`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`。 例如 `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`。
 
     > [!NOTE]
     > 这些不是实际值。 使用实际的登录 URL、回复 URL 和 Lenses 门户实例基 URL 的标识符更新这些值。 请参阅 [Lenses.io SSO 文档](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)以了解详细信息。
@@ -106,7 +106,7 @@ ms.locfileid: "88661429"
 1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”  。
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”框中，输入 **B.Simon**。  
+   1. 在“名称”框中，输入 **B.Simon** 。  
    1. 在“用户名”框中，输入 username@companydomain.extension。 例如，B.Simon@contoso.com。
    1. 选中“显示密码”复选框。 记下“密码”框中显示的密码。
    1. 选择“创建”。
@@ -145,8 +145,8 @@ ms.locfileid: "88661429"
    ![显示“添加用户”链接的屏幕截图。](common/add-assign-user.png)
 
 1. 在“添加分配”对话框中选择“用户和组”。
-1. 在“用户和组”对话框的“用户”列表中，选择“B.Simon” 。 然后单击屏幕底部的“选择”按钮。****
-1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 然后单击屏幕底部的“选择”按钮。****
+1. 在“用户和组”对话框的“用户”列表中，选择“B.Simon” 。 然后单击屏幕底部的“选择”按钮。 
+1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 然后单击屏幕底部的“选择”按钮。 
 1. 在“添加分配”对话框中，选择“分配”按钮。 
 
 ## <a name="configure-lensesio-sso"></a>配置 Lenses.io SSO
@@ -164,20 +164,20 @@ ms.locfileid: "88661429"
 
 在本部分，使用访问面板测试 Azure AD SSO 配置。
 
-选择访问面板中的 Lenses.io 磁贴时，应会自动登录到 Lenses.io 门户。 有关详细信息，请参阅[访问面板简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+选择访问面板中的 Lenses.io 磁贴时，应会自动登录到 Lenses.io 门户。 有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 - [在 Lenses.io 实例中设置 SSO](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [有关如何将 SaaS 应用程序与 Azure AD 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用程序与 Azure AD 集成的教程列表](./tutorial-list.md)
 
-- [Azure AD 的应用程序访问与 SSO 是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure AD 的应用程序访问与 SSO 是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure AD 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure AD 中的条件访问是什么？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Lenses.io](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Lenses.io](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Lenses.io](/cloud-app-security/proxy-intro-aad)

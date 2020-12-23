@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91707925"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485437"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL 中的高可用性–单一服务器
 Azure Database for PostgreSQL –单服务器服务可提供有保证的高级别可用性，其中包含 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 运行时间 (SLA) 的财务支持服务级别协议。 Azure Database for PostgreSQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for PostgreSQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
@@ -40,8 +40,8 @@ Azure Database for PostgreSQL 设计为在计划内停机操作期间提供高�
 | ------------ | ----------- |
 | <b>计算纵向扩展/缩减 | 当用户执行计算纵向扩展/缩减操作时，将使用缩放的计算配置来预配新的数据库服务器。 在旧的数据库服务器中，将允许处于活动状态的检查点完成，客户端连接将排空，所有未提交的事务将取消，然后将关闭该服务器。 然后会从旧数据库服务器分离存储并将其附加到新的数据库服务器。 当客户端应用程序重试连接或尝试建立新连接时，网关会将连接请求定向到新的数据库服务器。|
 | <b>纵向扩展存储 | 纵向扩展存储是一种联机操作，不会中断数据库服务器。|
-| <b>新软件部署 (Azure) | 新功能的推出或 bug 修复会自动在服务的计划内维护过程中发生。 有关详细信息，请参阅[文档](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
-| <b>次要版本升级 | Azure Database for PostgreSQL 会自动将数据库服务器修补到 Azure 确定的次要版本。 这是在服务的计划内维护过程中发生的。 这会导致短暂的停机（以秒为单位），并且会自动重启装有新次要版本的数据库服务器。 有关详细信息，请参阅[文档](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
+| <b>新软件部署 (Azure) | 新功能的推出或 bug 修复会自动在服务的计划内维护过程中发生。 有关详细信息，请参阅[文档](./concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
+| <b>次要版本升级 | Azure Database for PostgreSQL 会自动将数据库服务器修补到 Azure 确定的次要版本。 这是在服务的计划内维护过程中发生的。 这会导致短暂的停机（以秒为单位），并且会自动重启装有新次要版本的数据库服务器。 有关详细信息，请参阅[文档](./concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>缓解计划外停机
@@ -68,8 +68,8 @@ Azure Database for PostgreSQL 设计为在计划内停机操作期间提供高�
 
 | **方案** | **恢复计划** |
 | ---------- | ---------- |
-| <b> 区域故障 | 区域故障非常少见。 但是，如果需要在发生区域故障时获得保护，则可在其他区域中配置一个或多个用于灾难恢复 (DR) 的只读副本。 （请参阅[此文](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)，详细了解如何创建和管理只读副本）。 如果出现区域级故障，可以手动将其他区域上配置的只读副本提升为生产数据库服务器。 |
-| <b> 逻辑/用户错误 | 在发生用户错误（例如，意外删除了表或错误地更新了数据）后进行的恢复涉及到执行[时间点恢复](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR)，方法是将数据还原并恢复到发生错误之前的那个时间点。<br> <br>  如果只需还原部分数据库或特定的表，而不是还原数据库服务器中的所有数据库，则可在新实例中还原数据库服务器，通过 [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) 导出表，然后使用 [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) 将这些表还原到数据库中。 |
+| <b> 区域故障 | 区域故障非常少见。 但是，如果需要在发生区域故障时获得保护，则可在其他区域中配置一个或多个用于灾难恢复 (DR) 的只读副本。 （请参阅[此文](./howto-read-replicas-portal.md)，详细了解如何创建和管理只读副本）。 如果出现区域级故障，可以手动将其他区域上配置的只读副本提升为生产数据库服务器。 |
+| <b> 逻辑/用户错误 | 在发生用户错误（例如，意外删除了表或错误地更新了数据）后进行的恢复涉及到执行[时间点恢复](./concepts-backup.md) (PITR)，方法是将数据还原并恢复到发生错误之前的那个时间点。<br> <br>  如果只需还原部分数据库或特定的表，而不是还原数据库服务器中的所有数据库，则可在新实例中还原数据库服务器，通过 [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) 导出表，然后使用 [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) 将这些表还原到数据库中。 |
 
 
 

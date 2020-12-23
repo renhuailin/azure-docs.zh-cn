@@ -4,12 +4,12 @@ description: Azure 区块链服务概述
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc716b475fe85170d595463e0785743591e398c1
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076948"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874553"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -45,7 +45,7 @@ Azure 区块链服务提供两种服务层：“基本”和“标准” 。 每
 
 此外，Azure 区块链服务通过 Azure Monitor 服务提供丰富的指标，使你能够深入了解节点的 CPU、内存和存储使用情况。  Azure Monitor 还提供关于区块链网络活动（例如挖掘的事务和区块、事务队列深度和活动连接）的有用见解。  可以自定义指标，以提供对区块链应用程序至关重要的见解的视图。  此外，可以通过警报定义阈值，使用户能够触发操作，例如发送电子邮件或短信，运行逻辑应用、Azure Functions 或发送到自定义 Webhook。
 
-![指标](./media/overview/metrics.png)
+![显示监视的屏幕截图，其中包括块数、事务数、挂起的事务数以及已处理的请求数的值。](./media/overview/metrics.png)
 
 通过 Azure Log Analytics，用户可以查看与 Quorum 账本相关的日志或其他重要信息，例如尝试与事务节点建立的连接。
 
@@ -77,7 +77,7 @@ Azure 区块链服务提供两种服务层：“基本”和“标准” 。 每
 
 * [有关 Azure Blockchain 服务的 Microsoft Q&A 问题页面](/answers/topics/azure-blockchain-service.html)
 * [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-service)
 
 ## <a name="next-steps"></a>后续步骤
 

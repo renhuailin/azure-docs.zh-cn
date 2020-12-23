@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: ba46d4dbe90b696398ed4c78383e127861c1a066
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e5cfc9beb5473917a76f822862ce3d61675d6493
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86050483"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406758"
 ---
 1. 若要创建 Azure SignalR 服务资源，请先登录到 [Azure 门户](https://portal.azure.com)。 在页面的左上角，选择“+ 创建资源”  。 在“搜索市场”文本框中，输入“SignalR 服务”。  
 
@@ -30,9 +30,11 @@ ms.locfileid: "86050483"
     | 定价层 | *免费* | 目前可以使用“免费”和“标准”选项。   |
     | 固定到仪表板 | ✔ | 选中此框可将资源固定到仪表板，以方便查找。 |
 
-4. 选择“创建”  。 部署可能需要几分钟时间才能完成。
+4. 选择“查看 + 创建”。 等待验证完成。 
 
-5. 部署完成后，在“设置”下选择“密钥”。   复制主密钥的连接字符串。 稍后要使用此字符串将应用配置为使用 Azure SignalR 服务资源。
+5. 选择“创建”。 部署可能需要几分钟时间才能完成。
+
+6. 部署完成后，在“设置”下选择“密钥”。 复制主密钥的连接字符串。 稍后要使用此字符串将应用配置为使用 Azure SignalR 服务资源。
 
     该连接字符串采用以下格式：
     

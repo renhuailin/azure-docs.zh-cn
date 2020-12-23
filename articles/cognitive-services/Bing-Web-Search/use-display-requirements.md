@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60499879"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351838"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>必应搜索 API 使用和显示要求
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 这些使用和显示要求适用于来自以下必应搜索 API 的内容和关联信息的任何实现，其中包括关系、元数据和其他信号。
 
@@ -34,7 +39,7 @@ ms.locfileid: "60499879"
 ## <a name="definitions"></a>定义
 
 
-|术语  |说明  |
+|术语  |描述  |
 |---------|---------|
 |答案     | 响应中返回的一类结果。 例如，从必应 Web 搜索 API 返回的响应可能包括网页结果、图片、视频、视觉对象和新闻类别的答复。 |
 |响应     | 在响应针对搜索 API 的单个调用时收到的任何答复和关联的数据。 |
@@ -99,7 +104,7 @@ ms.locfileid: "60499879"
 ### <a name="notices-and-branding"></a>通知和品牌推广 
 应做事项：
 
-- 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)功能性超链接。 将该超链接标记为 Microsoft 隐私声明****。
+- 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)功能性超链接。 将该超链接标记为 Microsoft 隐私声明。
 
 - 在每个用户体验点（用户可输入搜索查询）附近，以醒目方式显示必应品牌推广（应符合[必应商标使用准则](https://go.microsoft.com/fwlink/?linkid=833278)要求）。 此类品牌推广必须向用户明确表明 Microsoft 为该 Internet 搜索体验提供支持。
 
@@ -167,5 +172,4 @@ ms.locfileid: "60499879"
 
 ## <a name="gdpr-compliance"></a>GDPR 符合性  
 
-对于受《欧盟一般数据保护条例》(GDPR) 约束的任何个人数据以及与调用搜索 API、必应拼写检查 API 或必应自动推荐 API 相关的处理数据，你了解你和 Microsoft 是受 GDPR 约束的独立数据控制者。 你独立地对 GDPR 符合性承担责任。  
-
+对于受《欧盟一般数据保护条例》(GDPR) 约束的任何个人数据以及与调用搜索 API、必应拼写检查 API 或必应自动推荐 API 相关的处理数据，你了解你和 Microsoft 是受 GDPR 约束的独立数据控制者。 你独立地对 GDPR 符合性承担责任。

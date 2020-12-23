@@ -3,12 +3,12 @@ title: 在不录制的情况下分析实时视频 - Azure
 description: 使用媒体图，可以仅从实时视频流中提取分析，而不在边缘或云中进行录制。 本文讨论了这一概念。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 25a7cadc47603b726542fa391d441e1fbca78908
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893042"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97398954"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>在不录制的情况下分析实时视频
 
@@ -35,9 +35,11 @@ ms.locfileid: "90893042"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="基于外部推理模块的实时视频分析":::
 
-在此媒体图中，帧速率筛选器处理器节点会降低传入实时视频流的帧速率，然后将其发送到 [HTTP 扩展处理器程序](media-graph-concept.md#http-extension-processor)节点，该节点会通过 REST 将图像帧（以 JPEG、BMP 或 PNG 格式）发送到外部推理服务。 来自外部推理服务的结果由 HTTP 扩展节点检索，并通过 IoT 中心消息接收器节点中继到 IoT Edge 中心。 这种类型的媒体图可用于为各种场景构建解决方案，例如了解路口车辆的时序分布、了解零售商店中的消费者流量模式等。
+在此媒体图中，RTSP 源的视频输入将发送到 [HTTP 扩展处理器](media-graph-concept.md#http-extension-processor) 节点，该节点将以 JPEG、BMP 或 PNG 格式 (的图像帧发送) 到外部推理服务而不是 REST。 来自外部推理服务的结果由 HTTP 扩展节点检索，并通过 IoT 中心消息接收器节点中继到 IoT Edge 中心。 这种类型的媒体图可用于为各种场景构建解决方案，例如了解路口车辆的时序分布、了解零售商店中的消费者流量模式等。
+>[!TIP]
+> 你可以使用字段在 HTTP 扩展处理器节点内管理帧速率， `samplingOptions` 然后再将其发送到下游。
 
-增强此示例的一种方法是，在抵达帧速率筛选器处理器节点之前使用动作检测器处理器。 这将减少推理服务上的负载，因为仅在视频中有运动活动时使用它。
+此示例的增强功能是在 HTTP 扩展处理器节点之前使用运动检测程序处理器。 这将减少推理服务上的负载，因为仅在视频中有运动活动时使用它。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="基于通过外部推理模块实现的运动检测帧的实时视频分析":::

@@ -1,6 +1,6 @@
 ---
 title: 有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
-description: 有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
+description: 有关从经典部署模型迁移到 Azure 资源管理器的常见问题。
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855839"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498389"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
 
@@ -22,11 +22,11 @@ ms.locfileid: "88855839"
 
 ## <a name="what-is-azure-service-manager-and-what-does-it-mean-by-classic"></a>什么是 Azure Service Manager，“经典”的含义是什么？
 
-IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM) 托管的 VM。 Azure Service Manager (ASM) 是 Azure 的旧控制平面，负责创建、管理、删除 Vm 和执行其他控制平面操作。 
+IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM) 托管的 VM。 Azure Service Manager (ASM) 是 Azure 的旧控制平面，负责创建、管理、删除 VM 和执行其他控制平面操作。 
 
 ## <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
-[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) 是 azure 的最新控制面，负责创建、管理、删除 vm 和执行其他控制平面操作。 
+[Azure 资源管理器](../azure-resource-manager/management/overview.md) 是 Azure 的最新控制平面，负责创建、管理、删除 VM 和执行其他控制平面操作。 
 
 ## <a name="what-is-the-time-required-for-migration"></a>迁移需要多长时间？
 
@@ -34,7 +34,7 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM（经典版）新客户的定义是什么？
 
-在2020年2月 (，在年2月) 的订阅中没有 IaaS Vm (经典) 的客户被视为新客户。 
+2020 年 2 月（开始弃用之前的一个月）的订阅中没有 IaaS VM（经典版）的客户则视为新客户。 
 
 ## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS 虚拟机（经典版）现有客户的定义是什么？
 
@@ -42,15 +42,17 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>为什么会收到“NewClassicVMCreationNotAllowedForSubscription”这样的错误信息？
 
-停用过程开始后，IaaS VM（经典版）不再适用于新客户。 我们已将你识别为新客户，因此你无权执行该操作。 我们强烈推荐使用[使用 ARM 的 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果无法通过 ARM 使用 Azure VM，请联系支持人员，以将订阅加入允许列表。
+停用过程开始后，IaaS VM（经典版）不再适用于新客户。 我们已将你识别为新客户，因此你无权执行该操作。 强烈建议使用 Azure 资源管理器。 如果无法使用 azure 资源管理器使用 Azure Vm，请联系支持人员，将订阅添加到允许列表。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
-2023 年 3 月 1 日前都是 IaaS VM （经典版），所以不会产生影响。 在正式版中，IaaS VM（经典）是完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。 在 2023 年 3 月 1 日，将完全停用这些 VM，且会停止并解除分配任何活动的或已分配的 VM。 这不会影响其他经典资源，如云服务（经典）、存储帐户（经典）等。   
+2023 年 3 月 1 日前都是 IaaS VM （经典版），所以不会产生影响。 IaaS VM（经典版）是公开上市的完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。 2023 年 3 月 1 日起会全面停用这些 VM，并且会停止或解除分配任何活跃的或分配的 VM。
+
+这不会影响到其他经典的资源，如云服务（经典版）、存储帐户（经典版）等。
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我近期不打算迁移，我的 VM 会发生什么情况？ 
 
-在 2023 年 3 月 1 日，将完全停用 IaaS VM（经典），且会停止并解除分配任何活动的或已分配的 VM。 为避免影响业务，我们强烈建议现在就开始计划迁移并在 2023 年 3 月 1 日之前完成迁移。 我们近期不会淘汰现有的经典 API、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 我们建议现在开始计划将这些资源迁移到 Azure 资源管理器。 
+2023 年 3 月 1 日起会全面停用 IaaS VM（经典版），并且会停止或解除分配任何活跃的或分配的 VM。 为避免影响业务，我们强烈建议现在就开始计划迁移并在 2023 年 3 月 1 日之前完成迁移。 我们近期不会淘汰现有的经典 API、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 我们建议现在开始计划将这些资源迁移到 Azure 资源管理器。 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>对于我现有的工具而言，此迁移计划有何意义？ 
 
@@ -70,11 +72,11 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必须使用 Resource Manager 下的 IaaS，是否必须购买其他 ExpressRoute 线路？ 
 
-不是。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
+不是。 我们近期实现了 [将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
 
-## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置基于角色的访问控制策略，该怎么办？ 
+## <a name="what-if-i-had-configured-azure-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置了 Azure 基于角色的访问控制策略，该怎么办？ 
 
-在迁移期间，资源从经典资源转换为 Resource Manager 资源。 因此，建议计划需要在迁移之后进行的 RBAC 策略更新。
+在迁移期间，资源从经典资源转换为 Resource Manager 资源。 因此，建议你计划需要在迁移之后进行的 Azure RBAC 策略更新。
 
 ## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>我已在保管库中备份了经典 VM。 是否可以将 VM 从经典模式迁移到 Resource Manager 模式并在恢复服务保管库中保护它们？
 
@@ -105,7 +107,7 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="how-do-i-report-an-issue"></a>如何报告问题？ 
 
-请使用关键字 ClassicIaaSMigration 将迁移相关的问题发布到[有关 VM 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)。 建议将所有问题都发布在此论坛上。 如果有支持协定，也欢迎你记录支持票证。
+请使用关键字 ClassicIaaSMigration 将迁移相关的问题发布到[有关 VM 的 Microsoft 问答页](/answers/topics/azure-virtual-machines.html)。 建议将所有问题都发布在此论坛上。 如果有支持协定，也欢迎你记录支持票证。
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>如果我不喜欢平台在迁移期间选择的资源名称，该怎么做？ 
 
@@ -124,20 +126,20 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 对于 Linux：
 
-* [平台支持的从经典部署模型到 Azure Resource Manager 部署模型的 IaaS 资源迁移概述](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [规划从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移](./linux/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [查看最常见的迁移错误](./linux/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [平台支持的从经典部署模型到 Azure Resource Manager 部署模型的 IaaS 资源迁移概述](./migration-classic-resource-manager-overview.md)
+* [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](migration-classic-resource-manager-deep-dive.md)
+* [规划从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移](migration-classic-resource-manager-plan.md)
+* [使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](migration-classic-resource-manager-ps.md)
+* [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](migration-classic-resource-manager-cli.md)
+* [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](migration-classic-resource-manager-community-tools.md)
+* [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
 
 对于 Windows：
 
-* [平台支持的从经典部署模型到 Azure Resource Manager 部署模型的 IaaS 资源迁移概述](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [规划从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移](./windows/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [查看最常见的迁移错误](./windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [平台支持的从经典部署模型到 Azure Resource Manager 部署模型的 IaaS 资源迁移概述](migration-classic-resource-manager-overview.md)
+* [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](migration-classic-resource-manager-deep-dive.md)
+* [规划从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移](migration-classic-resource-manager-plan.md)
+* [使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](migration-classic-resource-manager-ps.md)
+* [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](migration-classic-resource-manager-cli.md)
+* [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](migration-classic-resource-manager-community-tools.md)
+* [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)

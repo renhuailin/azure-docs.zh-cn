@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 5b34c559c8320961a2e96a663d88001400c572d3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360151"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397512"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>创建应用程序网关自定义错误页
 
@@ -48,8 +48,8 @@ ms.locfileid: "91360151"
 
 1. 在门户中导航到“应用程序网关”，并选择一个应用程序网关。
 
-    ![屏幕截图显示应用程序网关的 "概述" 页。](media/custom-error/ag-overview.png)
-2. 单击“侦听器”**** 并导航到你要在其中指定错误页的特定侦听器。
+    ![显示应用程序网关的“概述”页的屏幕截图。](media/custom-error/ag-overview.png)
+2. 单击“侦听器”并导航到你要在其中指定错误页的特定侦听器。
 
     ![应用程序网关侦听器](media/custom-error/ag-listener.png)
 3. 在侦听器级别为 403 WAF 错误或 502 维护页配置一个自定义错误页。
@@ -57,7 +57,7 @@ ms.locfileid: "91360151"
     > [!NOTE]
     > 目前不支持从 Azure 门户中创建全局级别的自定义错误页。
 
-4. 为给定的错误状态代码指定一个可公开访问的 blob URL，然后单击“保存”。**** 现在，应用程序网关已经配置了自定义错误页。
+4. 为给定的错误状态代码指定一个可公开访问的 blob URL，然后单击“保存”。 现在，应用程序网关已经配置了自定义错误页。
 
    ![应用程序网关错误代码](media/custom-error/ag-error-codes.png)
 
@@ -81,7 +81,7 @@ $listener01 = Get-AzApplicationGatewayHttpListener -Name <listener-name> -Applic
 $updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl "http://<website-url>"
 ```
 
-有关详细信息，请参阅 [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) 和 [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)。
+有关详细信息，请参阅 [Add-AzApplicationGatewayCustomError](/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) 和 [Add-AzApplicationGatewayHttpListenerCustomError](/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 10/21/2020
+ms.openlocfilehash: e068ad01c07af4e5833399c0053da3362cd6aaa6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516684"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185634"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教程：使用 Azure AD 应用程序创建 Azure AD 用户
 
@@ -62,12 +62,12 @@ ms.locfileid: "88516684"
     Set-AzSqlServer -ResourceGroupName <resource group> -ServerName <server name> -AssignIdentity
     ```
 
-    有关详细信息，请参阅 [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) 命令。
+    有关详细信息，请参阅 [Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) 命令。
 
     > [!IMPORTANT]
-    > 如果已为 Azure SQL 逻辑服务器设置了 Azure AD 标识，则必须向该标识授予[目录读取者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)权限。 我们将在下一部分中指导你完成此步骤。 请勿跳过此步骤，因为 Azure AD 身份验证将停止工作。
+    > 如果已为 Azure SQL 逻辑服务器设置了 Azure AD 标识，则必须向该标识授予[目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)权限。 我们将在下一部分中指导你完成此步骤。 请勿跳过此步骤，因为 Azure AD 身份验证将停止工作。
 
-    - 如果过去已将带有参数 `AssignIdentity` 的 [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) 命令用于创建新的 SQL Server，则之后需要将 [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) 命令作为单独的命令执行，以便在 Azure 结构中启用此属性。
+    - 如果过去已将带有参数 `AssignIdentity` 的 [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) 命令用于创建新的 SQL Server，则之后需要将 [Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) 命令作为单独的命令执行，以便在 Azure 结构中启用此属性。
 
 1. 检查是否已成功分配服务器标识。 执行以下 PowerShell 命令：
 
@@ -101,13 +101,13 @@ ms.locfileid: "88516684"
 - 将 `<server name>` 替换为你的 SQL 逻辑服务器名称。 如果服务器名称为 `myserver.database.windows.net`，请将 `<server name>` 替换为 `myserver`。
 
 ```powershell
-# This script grants Azure “Directory Readers” permission to a Service Principal representing the Azure SQL logical server
-# It can be executed only by a "Global Administrator" or “Privileged Roles Administrator” type of user.
-# To check if the “Directory Readers" permission was granted, execute this script again
+# This script grants Azure "Directory Readers" permission to a Service Principal representing the Azure SQL logical server
+# It can be executed only by a "Global Administrator" or "Privileged Roles Administrator" type of user.
+# To check if the "Directory Readers" permission was granted, execute this script again
 
-Import-Module AzureAd
-connect-azuread -TenantId "<TenantId>"     #Enter your actual TenantId
- $AssignIdentityName = "<server name>"     #Enter Azure SQL logical server name
+Import-Module AzureAD
+Connect-AzureAD -TenantId "<TenantId>"    #Enter your actual TenantId
+$AssignIdentityName = "<server name>"     #Enter Azure SQL logical server name
  
 # Get Azure AD role "Directory Users" and create if it doesn't exist
 $roleName = "Directory Readers"
@@ -122,14 +122,13 @@ if ($role -eq $null) {
 # Get service principal for managed instance
 $roleMember = Get-AzureADServicePrincipal -SearchString $AssignIdentityName
 $roleMember.Count
-if ($roleMember -eq $null)
-{
-    Write-Output "Error: No Service Principals with name '$    ($AssignIdentityName)', make sure that AssignIdentityName parameter was     entered correctly."
+if ($roleMember -eq $null) {
+    Write-Output "Error: No Service Principals with name '$($AssignIdentityName)', make sure that AssignIdentityName parameter was entered correctly."
     exit
 }
-if (-not ($roleMember.Count -eq 1))
-{
-    Write-Output "Error: More than one service principal with name pattern '$    ($AssignIdentityName)'"
+
+if (-not ($roleMember.Count -eq 1)) {
+    Write-Output "Error: More than one service principal with name pattern '$($AssignIdentityName)'"
     Write-Output "Dumping selected service principals...."
     $roleMember
     exit
@@ -137,21 +136,18 @@ if (-not ($roleMember.Count -eq 1))
  
 # Check if service principal is already member of readers role
 $allDirReaders = Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
-$selDirReader = $allDirReaders | where{$_.ObjectId -match     $roleMember.ObjectId}
+$selDirReader = $allDirReaders | where{$_.ObjectId -match $roleMember.ObjectId}
  
-if ($selDirReader -eq $null)
-{
+if ($selDirReader -eq $null) {
     # Add principal to readers role
-    Write-Output "Adding service principal '$($msName)' to     'Directory Readers' role'..."
-    Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId     $roleMember.ObjectId
-    Write-Output "'$($AssignIdentityName)' service principal added to     'Directory Readers' role'..."
+    Write-Output "Adding service principal '$($AssignIdentityName)' to 'Directory Readers' role'..."
+    Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember.ObjectId
+    Write-Output "'$($AssignIdentityName)' service principal added to 'Directory Readers' role'..."
  
     #Write-Output "Dumping service principal '$($AssignIdentityName)':"
     #$allDirReaders = Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
     #$allDirReaders | where{$_.ObjectId -match $roleMember.ObjectId}
-}
-else
-{
+} else {
     Write-Output "Service principal '$($AssignIdentityName)' is already member of 'Directory Readers' role'."
 }
 ```
@@ -167,20 +163,30 @@ else
 
     请确保添加应用程序权限以及委托的权限。
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="aad-apps":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="显示了 Azure Active Directory 的“应用注册”页的屏幕截图。突出显示了显示名称为“AppSP”的应用。":::
 
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="api-permissions":::
 
-2. 还需要创建用于登录的客户端密码。 请按照此处的指南[上传证书或创建用于登录的机密](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)。
+2. 还需要创建用于登录的客户端密码。 请按照此处的指南[上传证书或创建用于登录的机密](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)。
 
 3. 记录应用程序注册中的以下信息。 应在“概述”窗格中提供该信息：
     - **应用程序 ID**
     - 租户 ID - 这应与前面的相同
 
-在本教程中，我们将使用 AppSP 作为主服务主体，使用 myapp 作为将在 Azure SQL 中通过 AppSP 创建的第二个服务主体用户。 需要创建两个应用程序：AppSP 和 myapp。
+本教程将使用 AppSP 作为主服务主体，使用 myapp 作为将在 Azure SQL 中通过 AppSP 创建的第二个服务主体用户  。 需要创建两个应用程序：AppSP 和 myapp 。
 
 有关如何创建 Azure AD 应用程序的详细信息，请参阅文章[如何使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
+### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>设置或取消设置 Azure AD 管理员所需的权限
+
+为了使服务主体为 Azure SQL 设置或取消设置 Azure AD 管理员，需要额外的 API 权限。 需要将 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) 应用程序 API 权限添加到 Azure AD 中的应用程序。
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Azure AD 中的 Directory.Reader.All 权限":::
+
+服务主体还需要适用于 SQL 数据库的 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)角色，或适用于 SQL 托管实例的 [SQL 托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)角色 。
+
+> [!NOTE]
+> 尽管 Azure AD Graph API 将被弃用，但 Directory.Reader.All 权限仍适用于本教程。 Microsoft Graph API 不适用于本教程。
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>在 Azure SQL 数据库中创建服务主体用户
 
@@ -200,7 +206,7 @@ else
     GO
     ```
 
-    有关详细信息，请参阅 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)
+    有关详细信息，请参阅 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)
 
     或者，可以授予 `ALTER ANY USER` 权限，而不是授予 `db_owner` 角色。 这将允许服务主体添加其他 Azure AD 用户。
 
@@ -305,5 +311,5 @@ else
 - [如何使用应用服务和 Azure Functions 的托管标识](../../app-service/overview-managed-identity.md)
 - [对 SQL DB 进行Azure AD 服务主体身份验证 - 代码示例](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)
-- [使用 Azure PowerShell 创建 Azure 服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [使用 Azure PowerShell 创建 Azure 服务主体](/powershell/azure/create-azure-service-principal-azureps)
 - [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 7ae7e20c32836d595d6e0fb4162a895407beeb5d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828044"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620985"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,12 +40,12 @@ ms.locfileid: "91828044"
 - **分析** 报告。 可以查找可疑事件、异常活动和趋势。
 
 > [!IMPORTANT]
-> Azure SQL 数据库审核已针对可用性和性能进行优化。 在活动量极高的情况下，Azure SQL 数据库或 Azure Synapse 允许操作继续进行，可能不会记录某些已审核的事件。
+> 针对 Azure SQL 数据库和 Azure Synapse 的审核针对可用性和性能进行了优化。 在非常高的活动或高网络负载期间，Azure SQL Database 和 Azure Synapse 允许操作继续执行，并且可能不会记录某些审核的事件。
 
 ### <a name="auditing-limitations"></a>审核限制
 
 - 目前不支持高级存储 。
-- **Azure Data Lake Storage Gen2 存储帐户**的**分层命名空间**目前**不受支持**。
+- **Azure Data Lake Storage Gen2 存储帐户** 的 **分层命名空间** 目前 **不受支持**。
 - 不支持在已暂停的 Azure Synapse 上启用审核。 若要启用审核，请恢复运行 Azure Synapse。
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>定义服务器级和数据库级审核策略
@@ -66,6 +66,18 @@ ms.locfileid: "91828044"
    >
    > 否则，建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
 
+#### <a name="remarks"></a>备注
+
+- 审核日志将写入到 Azure 订阅的 Azure Blob 存储中的追加 Blob
+- 审核日志的格式为 .xel，可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 打开。
+- 若要为服务器或数据库级审核事件配置不可变的日志存储，请遵循 [Azure 存储提供的说明](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。 确保在配置不可变的 blob 存储时，选择了“允许额外追加”。
+- 可以将审核日志写入到 VNet 或防火墙后面的 Azure 存储帐户。 有关具体说明，请参阅[将审核写入 VNet 和防火墙后面的存储帐户](audit-write-storage-account-behind-vnet-firewall.md)。
+- 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](./audit-log-format.md)。
+- 对[只读副本](read-scale-out.md)的审核会自动启用。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](audit-log-format.md)。
+- 使用 Azure AD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
+- 通过网关将登录名路由到数据库所在的特定实例。  对于 AAD 登录，在尝试使用该用户登录到请求的数据库之前，将验证凭据。  如果出现故障，则永远不会访问请求的数据库，因此不会进行审核。  对于 SQL 登录，将根据请求的数据对凭据进行验证，因此在这种情况下，可以对其进行审核。  在这两种情况下都会审核成功的登录，这显然是在数据库中找到的。
+- 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](threat-detection-overview.md)。
+
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>为服务器设置审核
 
 默认审核策略包括所有操作和下列操作组集合，将用于审核针对数据库执行的所有查询和存储过程以及成功和失败的登录：
@@ -76,23 +88,41 @@ ms.locfileid: "91828044"
   
 可以按照[使用 Azure PowerShell 管理 SQL 数据库审核](#manage-auditing)部分中所述，使用 PowerShell 配置不同类型的操作和操作组的审核。
 
-Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段的 4000 个字符的数据。 当可审核操作返回的**语句**或 **data_sensitivity_information** 值包含超过 4000 个的字符时，超出前 4000 个字符的任何数据将**被截去不进行审核**。
+Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段的 4000 个字符的数据。 当可审核操作返回的 **语句** 或 **data_sensitivity_information** 值包含超过 4000 个的字符时，超出前 4000 个字符的任何数据将 **被截去不进行审核**。
 以下部分介绍如何使用 Azure 门户配置审核。
 
   > [!NOTE]
-  > 不能对已暂停的 Synapse SQL 池启用审核。 若要启用审核，请取消暂停 Synapse SQL 池。 了解有关 [SYNAPSE SQL 池](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool)的详细信息。
+  > 不能对已暂停的专用 SQL 池启用审核。 若要启用审核，请取消暂停专用 SQL 池。 了解有关 [专用 SQL 池](../..//synapse-analytics/sql/best-practices-sql-pool.md)的详细信息。
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 导航到“SQL 数据库”或“SQL Server”窗格中“安全性”标题下的“审核”  。
 3. 如果想设置服务器审核策略，可以选择数据库审核页中的“查看服务器设置”链接。 然后，可查看或修改服务器审核设置。 服务器审核策略应用于此服务器上所有现有和新建数据库。
 
-    ![屏幕截图，显示 "数据库审核" 页上突出显示的 "查看服务器设置" 链接。](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![屏幕截图显示在数据库审核页上突出显示的“查看服务器设置”链接。](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. 如果希望在数据库级别启用审核，请将“审核”切换到“启用”。 如果启用了服务器审核，数据库配置的审核将与服务器审核并存。
 
 5. 你有多个选项，用于配置将在其中写入审核日志的位置。 可将日志写入 Azure 存储帐户、写入 Log Analytics 工作区（供 Azure Monitor 日志（预览版）使用）或写入事件中心（通过事件中心（预览版）使用）。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
   
    ![存储选项](./media/auditing-overview/auditing-select-destination.png)
+
+### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft 支持操作审核（预览）
+
+使用 Azure SQL Server Microsoft 支持部门)  (操作的审核功能，可以在支持请求期间审核 Microsoft 支持工程师的操作。 将此功能与审核结合使用，可以提高工作人员的透明度，并可以进行异常情况检测、趋势可视化和数据丢失防护。
+
+若要启用 Microsoft 支持操作审核（预览），请导航到“Azure SQL 服务器”窗格中“安全”标题下的“审核”，并将“Microsoft 支持操作审核(预览)”切换到“启用”   。
+
+  > [!IMPORTANT]
+  > Microsoft 支持操作审核（预览）不支持存储帐户目标。 若要启用此功能，必须配置 Log Analytics 工作区或事件中心目标。
+
+![Microsoft 支持操作的屏幕截图](./media/auditing-overview/support-operations.png)
+
+若要查看 Log Analytics 工作区中 Microsoft 支持部门操作的审核日志，请使用以下查询：
+
+```kusto
+AzureDiagnostics
+| where Category == "DevOpsOperationsAudit"
+```
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>对存储目标的审核
 
@@ -103,24 +133,13 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 
   ![存储帐户](./media/auditing-overview/auditing_select_storage.png)
 
-#### <a name="remarks"></a>备注
-
-- 审核日志将写入到 Azure 订阅的 Azure Blob 存储中的追加 Blob
-- 审核日志的格式为 .xel，可以使用 [SQL Server Management Studio (SSMS) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)打开。
-- 若要为服务器或数据库级审核事件配置不可变的日志存储，请遵循 [Azure 存储提供的说明](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)。 确保在配置不可变的 blob 存储时，选择了“允许额外追加”。
-- 可以将审核日志写入到 VNet 或防火墙后面的 Azure 存储帐户。 有关具体说明，请参阅[将审核写入 VNet 和防火墙后面的存储帐户](audit-write-storage-account-behind-vnet-firewall.md)。
-- 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](threat-detection-overview.md)。
-- 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
-- 使用 AAD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
-- 对[只读副本](read-scale-out.md)的审核会自动启用。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](audit-log-format.md)。
-
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>对 Log Analytics 目标的审核
   
 若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics (预览版)”，并打开“Log Analytics 详细信息”。  选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-有关 Azure Monitor Log Analytics 工作区的更多详细信息，请参阅 [设计 Azure Monitor 日志部署](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
+有关 Azure Monitor Log Analytics 工作区的更多详细信息，请参阅[设计 Azure Monitor 日志部署](../../azure-monitor/platform/design-logs-deployment.md)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>对事件中心目标的审核
 
@@ -160,11 +179,11 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 
 如果选择将审核日志写入到 Azure 存储帐户，可以使用多种方法来查看日志：
 
-- 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](https://go.microsoft.com/fwlink/?linkid=829599)。
+- 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](./audit-log-format.md)。
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
-    ![屏幕截图，显示在 "数据库审核" 页上突出显示的 "查看审核日志" 按钮。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![屏幕截图显示在数据库审核页上突出显示的“查看审核日志”按钮。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     此时会打开“审核记录”，可在其中查看日志。
 
@@ -172,14 +191,14 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
   - 可以通过切换“审核源”在服务器审核策略和数据库审核策略创建的审核记录之间进行切换。
   - 通过选中“仅显示 SQL 注入的审核记录”复选框，可以仅查看与 SQL 注入相关的审核记录。
 
-       ![显示用于查看审核记录的选项的屏幕截图。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![屏幕截图显示查看审核记录的选项。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - 使用系统函数 **sys.fn_get_audit_file** (T-SQL) 以表格格式返回审核日志数据。 有关使用此函数的详细信息，请参阅 [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
 - 使用 SQL Server Management Studio 中的“合并审核文件”选项（从 SSMS 17 开始）：
     1. 在 SSMS 菜单中，选择“文件” > “打开” > “合并审核文件”。
 
-        ![显示 "合并审核文件" 菜单选项的屏幕截图。](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![屏幕截图显示“合并审核文件”菜单选项。](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. 此时会打开“添加审核文件”对话框。 通过“添加”选项，选择是合并本地磁盘中的审核文件还是从 Azure 存储中导入。 需要提供 Azure 存储详细信息和帐户密钥。
 
     3. 添加要合并的所有文件后，单击“确定”完成合并操作。
@@ -194,9 +213,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 - 其他方法：
 
   - 下载多个文件或包含日志文件的子文件夹后，可以按照前述 SSMS 合并审核文件说明在本地合并它们。
-  - 以编程方式查看 blob 审核日志：
-
-    - 使用 PowerShell [查询扩展事件文件](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/)。
+  - 以编程方式查看 blob 审核日志：使用 PowerShell [查询扩展事件文件](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) 。
 
 ## <a name="production-practices"></a><a id="production-practices"></a>生产做法
 
@@ -219,7 +236,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 
 1. 打开“存储详细信息”。 在“存储访问密钥”框中，选择“辅助”并单击“确定”。 然后单击“审核配置”页顶部的“保存”。
 
-    ![显示用于选择辅助存储访问密钥的过程的屏幕截图。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![屏幕截图显示选择辅助存储访问密钥的过程。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. 转到存储配置页，重新生成主访问密钥。
 
     ![导航窗格](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

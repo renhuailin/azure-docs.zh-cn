@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 队列 Java v12 库创建队列并向队�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 09/10/2020
+ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c96b84aa53d2a9f4d6e44ac84cf0ce9e0ecac04
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90015018"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491921"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure 队列存储客户端库 v12
 
@@ -21,26 +21,26 @@ ms.locfileid: "90015018"
 
 使用适用于 Java 的 Azure 队列存储客户端库 v12：
 
-* 创建队列
-* 向队列添加消息
-* 查看队列中的消息
-* 更新队列中的消息
-* 接收和删除队列中的消息
-* 删除队列
+- 创建队列
+- 向队列添加消息
+- 查看队列中的消息
+- 更新队列中的消息
+- 接收和删除队列中的消息
+- 删除队列
 
 其他资源：
 
-* [API 参考文档](/java/api/overview/azure/storage-queue-readme)
-* [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
-* [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [示例](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+- [API 参考文档](/java/api/overview/azure/storage-queue-readme)
+- [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+- [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
+- [示例](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本
-* [Apache Maven](https://maven.apache.org/download.cgi)
-* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-* Azure 存储帐户 - [创建存储帐户](/azure/storage/common/storage-quickstart-create-account)
+- [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本
+- [Apache Maven](https://maven.apache.org/download.cgi)
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>设置
 
@@ -52,13 +52,29 @@ ms.locfileid: "90015018"
 
 1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 queues-quickstart-v12 的新控制台应用。 键入以下“mvn”命令，创建“Hello World!” Java 项目。
 
-   ```console
-   mvn archetype:generate -DgroupId=com.queues.quickstart \
-                          -DartifactId=queues-quickstart-v12 \
-                          -DarchetypeArtifactId=maven-archetype-quickstart \
-                          -DarchetypeVersion=1.4 \
-                          -DinteractiveMode=false
-   ```
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    mvn archetype:generate `
+        --define interactiveMode=n `
+        --define groupId=com.queues.quickstart `
+        --define artifactId=queues-quickstart-v12 `
+        --define archetypeArtifactId=maven-archetype-quickstart `
+        --define archetypeVersion=1.4
+    ```
+
+    # <a name="bash"></a>[Bash](#tab/bash)
+
+    ```bash
+    mvn archetype:generate \
+        --define interactiveMode=n \
+        --define groupId=com.queues.quickstart \
+        --define artifactId=queues-quickstart-v12 \
+        --define archetypeArtifactId=maven-archetype-quickstart \
+        --define archetypeVersion=1.4
+    ```
+
+    ---
 
 1. 生成项目的输出应如下所示：
 
@@ -151,9 +167,9 @@ public class App
 
 Azure 队列存储是一个可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供三种类型的资源：
 
-* 存储帐户
-* 存储帐户中的队列
-* 队列中的消息
+- 存储帐户
+- 存储帐户中的队列
+- 队列中的消息
 
 以下图示显示了这些资源之间的关系。
 
@@ -161,22 +177,22 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 使用以下 Java 类与这些资源进行交互：
 
-* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder)：`QueueClientBuilder` 类配置并实例化一个 `QueueClient` 对象。
-* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient)：通过 `QueueServiceClient` 可管理存储帐户中的所有队列。
-* [QueueClient](/java/api/com.azure.storage.queue.queueclient)：通过 `QueueClient` 类可管理和操纵单个队列及其消息。
-* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem)：`QueueMessageItem` 类表示在队列中调用 [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) 时返回的各个对象。
+- [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder)：`QueueClientBuilder` 类配置并实例化一个 `QueueClient` 对象。
+- [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient)：通过 `QueueServiceClient` 可管理存储帐户中的所有队列。
+- [QueueClient](/java/api/com.azure.storage.queue.queueclient)：通过 `QueueClient` 类可管理和操纵单个队列及其消息。
+- [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem)：`QueueMessageItem` 类表示在队列中调用 [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) 时返回的各个对象。
 
 ## <a name="code-examples"></a>代码示例
 
 这些示例代码片段演示如何使用适用于 Java 的 Azure 队列存储客户端库执行以下操作：
 
-* [获取连接字符串](#get-the-connection-string)
-* [创建队列](#create-a-queue)
-* [向队列添加消息](#add-messages-to-a-queue)
-* [查看队列中的消息](#peek-at-messages-in-a-queue)
-* [更新队列中的消息](#update-a-message-in-a-queue)
-* [接收和删除队列中的消息](#receive-and-delete-messages-from-a-queue)
-* [删除队列](#delete-a-queue)
+- [获取连接字符串](#get-the-connection-string)
+- [创建队列](#create-a-queue)
+- [向队列添加消息](#add-messages-to-a-queue)
+- [查看队列中的消息](#peek-at-messages-in-a-queue)
+- [更新队列中的消息](#update-a-message-in-a-queue)
+- [接收和删除队列中的消息](#receive-and-delete-messages-from-a-queue)
+- [删除队列](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>获取连接字符串
 
@@ -202,7 +218,6 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 > [!IMPORTANT]
 > 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 有关命名队列的详细信息，请参阅[命名队列和元数据](/rest/api/storageservices/naming-queues-and-metadata)。
-
 
 创建 [QueueClient](/java/api/com.azure.storage.queue.queueclient) 类的实例。 然后，调用 [create](/java/api/com.azure.storage.queue.queueclient.create) 方法，以便在存储帐户中创建队列。
 
@@ -266,7 +281,7 @@ System.out.println("\nUpdating the third message in the queue...");
 // Update a message using the result that
 // was saved when sending the message
 queueClient.updateMessage(result.getMessageId(),
-                          result.getPopReceipt(), 
+                          result.getPopReceipt(),
                           "Third message has been updated",
                           Duration.ofSeconds(1));
 ```
@@ -374,4 +389,4 @@ Done
 > [!div class="nextstepaction"]
 > [面向 Java 云开发人员的 Azure](/azure/developer/java/)
 
-* 若要查看更多 Azure 队列存储示例应用，请继续阅读 [Azure 队列存储 SDK v12 Java 客户端库示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。
+- 若要查看更多 Azure 队列存储示例应用，请继续阅读 [Azure 队列存储 SDK v12 Java 客户端库示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。

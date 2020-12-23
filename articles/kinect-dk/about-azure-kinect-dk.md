@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.topic: overview
 ms.date: 06/26/2019
 keywords: azure, kinect, 概述, 开发人员工具包, DK, 设备, 深度, 人体跟踪, 语音, 认知服务, SDK, 固件
-ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d188d37c0247aebb16f51b4404da81d469136468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80421950"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359647"
 ---
 # <a name="about-azure-kinect-dk"></a>关于 Azure Kinect DK
 
@@ -86,7 +86,7 @@ Azure Kinect 传感器 SDK 提供低级别传感器访问用于完成 Azure Kine
 >[!NOTE]
 >Azure Kinect DK 没有扬声器。
 
-有关更多详细信息，请访问[语音服务文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/)。
+有关更多详细信息，请访问[语音服务文档](../cognitive-services/speech-service/index.yml)。
 
 ## <a name="vision-services"></a>视觉服务
 

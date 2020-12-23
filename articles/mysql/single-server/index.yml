@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/20/2020
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 796e76c7e7251924865fbea63c2b30ff9aa90ce1
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: a2ae6e91481da51c77f3c73f4fd9b5d31169952d
+  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91713075"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96749124"
 landingContent:
 - title: 关于单服务器
   linkLists:
@@ -117,7 +117,7 @@ landingContent:
       url: ../howto-data-in-replication.md
     - text: 使用 Azure 门户还原服务器
       url: ../howto-restore-server-portal.md
-    - text: 使用 Azure 门户还原服务器
+    - text: 使用 Azure CLI 还原服务器
       url: ../howto-restore-server-cli.md
 - title: 参考
   linkLists:
@@ -130,7 +130,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: 用于常见任务的 Azure CLI 脚本
-      url: /azure/mysql/sample-scripts-azure-cli
+      url: ../sample-scripts-azure-cli.md
     - text: Azure 资源管理器模板
       url: /azure/templates/microsoft.dbformysql/allversions
   - linkListType: reference
@@ -140,4 +140,4 @@ landingContent:
     - text: REST API 开发人员参考
       url: /rest/api/mysql/
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.mysql
+      url: /powershell/module/az.mysql

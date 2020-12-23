@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 2ad148579daa30d62da01aded0a01ace56f3dcbc
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e87be0db65cf12a265566e0c05815722ce3cc609
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760557"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578869"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 生成和部署 HPC 解决方案
 
@@ -43,7 +43,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 
 * arm-templates 文件夹，其中包含大量 Azure 资源管理器模板。 本文介绍了这些模板。
 * client-application 文件夹，这是示例[使用 ffmpeg 进行 Azure Batch .NET 文件处理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)的副本。 本文不需要这样做。
-* **Hpc 应用程序**文件夹，是[Ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip)的 Windows 64 位版本。
+* **Hpc 应用程序** 文件夹，是 [Ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08)的 Windows 64 位版本。
 * 管道文件夹。 此文件夹包含一个 YAML 文件，其中概述了生成过程。 本文对此进行了讨论。
 
 本部分假定你熟悉版本控制和资源管理器模板设计。 如果你不熟悉这些概念，请参阅以下页面获取详细信息。
@@ -300,7 +300,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 * 存储“基础结构即代码”的 arm-templates 文件夹
 * 包含 ffmpeg 的二进制文件的 hpc-application 文件夹
 * 包含生成管道定义的 pipelines 文件夹。
-* **可选**：存储 .NET 应用程序代码的 client-application 文件夹。 我们不会在示例中使用它，但在你自己的项目中，你有可能需要通过客户端应用程序执行 HPC Batch 应用程序的运行。
+* **可选** ：存储 .NET 应用程序代码的 client-application 文件夹。 我们不会在示例中使用它，但在你自己的项目中，你有可能需要通过客户端应用程序执行 HPC Batch 应用程序的运行。
 
 > [!NOTE]
 > 这只是基本代码结构的一个示例。 此方法用于显示应用程序、基础结构和管道代码存储在同一存储库中。
@@ -387,15 +387,15 @@ Azure Pipelines 还用于部署应用程序和底层基础结构。 [发布管�
 
 1. 导航到变量部分。 建议在管道中创建多个变量，以便不会在多个任务中输入相同的信息。 下面是此示例中使用的变量，以及它们如何影响部署。
 
-    * **applicationStorageAccountName**：用于保存 HPC 应用程序二进制文件的存储帐户的名称
-    * **batchAccountApplicationName**：Azure Batch 帐户中的应用程序名称
-    * **batchAccountName**：Azure Batch 帐户的名称
-    * **batchAccountPoolName**：执行处理的 VM 池的名称
-    * **batchApplicationId**：Azure Batch 应用程序的唯一 ID
-    * **batchApplicationVersion**：批处理应用程序的语义版本（即 ffmpeg 二进制文件）
-    * **location**：要部署的 Azure 资源的位置
-    * **resourceGroupName**：要创建的资源组的名称，以及要将资源部署到的位置
-    * **storageAccountName**：保存链接资源管理器模板的存储帐户的名称
+    * **applicationStorageAccountName** ：用于保存 HPC 应用程序二进制文件的存储帐户的名称
+    * **batchAccountApplicationName** ：Azure Batch 帐户中的应用程序名称
+    * **batchAccountName** ：Azure Batch 帐户的名称
+    * **batchAccountPoolName** ：执行处理的 VM 池的名称
+    * **batchApplicationId** ：Azure Batch 应用程序的唯一 ID
+    * **batchApplicationVersion** ：批处理应用程序的语义版本（即 ffmpeg 二进制文件）
+    * **location** ：要部署的 Azure 资源的位置
+    * **resourceGroupName** ：要创建的资源组的名称，以及要将资源部署到的位置
+    * **storageAccountName** ：保存链接资源管理器模板的存储帐户的名称
 
     ![为 Azure Pipelines 发布设置的变量示例](media/batch-ci-cd/Release-4.jpg)
 
@@ -413,34 +413,34 @@ Azure Pipelines 还用于部署应用程序和底层基础结构。 [发布管�
     添加 Azure 资源组部署任务，并设置以下属性：
     * **显示名称：** 为资源管理器模板部署存储帐户
     * **Azure 订阅：** 选择适当的 Azure 订阅
-    * **操作**：创建或更新资源组
-    * **资源组**：$(resourceGroupName)
-    * **位置**：$(location)
-    * **模板**：$(System.ArtifactsDirectory)/{YourAzureRepoArtifactSourceAlias}/arm-templates/storageAccount.json
-    * **替代模板参数**：-accountName $(storageAccountName)
+    * **操作** ：创建或更新资源组
+    * **资源组** ：$(resourceGroupName)
+    * **位置** ：$(location)
+    * **模板** ：$(System.ArtifactsDirectory)/{YourAzureRepoArtifactSourceAlias}/arm-templates/storageAccount.json
+    * **替代模板参数** ：-accountName $(storageAccountName)
 
 1. 将项目从源代码管理上传到存储帐户。 有一个 Azure 管道任务可用于执行此操作。 在此任务中，可以将存储帐户容器 URL 和 SAS 令牌输出到 Azure Pipelines 中的变量。 这意味着可以在此代理阶段重复使用它。
 
     添加 Azure 文件复制任务，并设置以下属性：
     * **源：** ：$(System.ArtifactsDirectory)/{YourAzureRepoArtifactSourceAlias}/arm-templates/
-    * **Azure 连接类型**：Azure 资源管理器
+    * **Azure 连接类型** ：Azure 资源管理器
     * **Azure 订阅：** 选择适当的 Azure 订阅
-    * **目标类型**：Azure Blob
-    * **RM 存储帐户**：$(storageAccountName)
-    * **容器名称**：templates
-    * **存储容器 URI**：templateContainerUri
-    * **存储容器 SAS 令牌**：templateContainerSasToken
+    * **目标类型** ：Azure Blob
+    * **RM 存储帐户** ：$(storageAccountName)
+    * **容器名称** ：templates
+    * **存储容器 URI** ：templateContainerUri
+    * **存储容器 SAS 令牌** ：templateContainerSasToken
 
 1. 部署业务流程协调程序模板。 再次调用之前的业务流程协调程序模板，你会注意到除了 SAS 令牌外，还存在存储帐户容器 URL 的参数。 应注意到，资源管理器模板中所需的变量已保存在发布定义的变量部分中，或已在另一 Azure Pipelines 任务（例如，Azure Blob 复制任务的一部分）中进行了设置。
 
     添加 Azure 资源组部署任务，并设置以下属性：
     * **显示名称：** 部署 Azure Batch
     * **Azure 订阅：** 选择适当的 Azure 订阅
-    * **操作**：创建或更新资源组
-    * **资源组**：$(resourceGroupName)
-    * **位置**：$(location)
-    * **模板**：$(System.ArtifactsDirectory)/{YourAzureRepoArtifactSourceAlias}/arm-templates/deployment.json
-    * **替代模板参数**：```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **操作** ：创建或更新资源组
+    * **资源组** ：$(resourceGroupName)
+    * **位置** ：$(location)
+    * **模板** ：$(System.ArtifactsDirectory)/{YourAzureRepoArtifactSourceAlias}/arm-templates/deployment.json
+    * **替代模板参数** ：```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 常见的做法是使用 Azure Key Vault 任务。 如果服务主体（与 Azure 订阅的连接）设置了适当的访问策略，则它可以从 Azure Key Vault 下载机密，并可在管道中用作变量。 将使用关联值设置机密名称。 例如，可以在发布定义中使用 $(sshPassword) 来引用 sshPassword 的机密。
 
@@ -449,16 +449,16 @@ Azure Pipelines 还用于部署应用程序和底层基础结构。 [发布管�
     添加 Azure CLI 任务，并设置以下属性：
     * **显示名称：** 在 Azure Batch 帐户中创建应用程序
     * **Azure 订阅：** 选择适当的 Azure 订阅
-    * **脚本位置**：内联脚本
-    * **内联脚本**：```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **脚本位置** ：内联脚本
+    * **内联脚本** ：```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. 第二步用于将关联包上传到应用程序。 在本例中为 ffmpeg 文件。
 
     添加 Azure CLI 任务，并设置以下属性：
     * **显示名称：** 将包上传到 Azure Batch 帐户
     * **Azure 订阅：** 选择适当的 Azure 订阅
-    * **脚本位置**：内联脚本
-    * **内联脚本**：```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **脚本位置** ：内联脚本
+    * **内联脚本** ：```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > 应用程序包的版本号设置为变量。 如果可以有效覆盖包的早期版本，并且想要手动控制推送到 Azure Batch 的包的版本号，这会很方便。

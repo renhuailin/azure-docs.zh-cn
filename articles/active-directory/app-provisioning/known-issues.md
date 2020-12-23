@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/11/2020
+ms.date: 12/14/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052371"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509540"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 
@@ -28,7 +28,7 @@ ms.locfileid: "90052371"
 
 **成功连接测试后无法保存**
 
-如果可以成功测试连接，但无法保存，则已超出允许的凭据存储限制。 若要了解详细信息，请参阅 [保存管理员凭据时出现问题](application-provisioning-config-problem-storage-limit.md)。
+如果可以成功测试连接，但无法保存，则已超出允许的凭据存储限制。 若要了解详细信息，请参阅 [保存管理员凭据时出现问题](./user-provisioning.md)。
 
 **无法保存**
 
@@ -57,6 +57,10 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 
 特性映射表达式最多可以有10000个字符。 
 
+**范围筛选器不受支持**
+
+不支持将目录扩展、appRoleAssignments、userType 和 accountExpires 作为范围筛选器。
+
 
 ## <a name="service-issues"></a>服务问题 
 
@@ -64,7 +68,8 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 
 - 不支持预配密码。 
 - 不支持预配嵌套组。 
-- 由于租户规模的原因，不支持预配到 B2C 租户。 
+- 由于租户规模的原因，不支持预配到 B2C 租户。
+- 并非所有云都提供所有预配应用。 例如，Atlassian 在政府版中尚不可用。 我们正与应用程序开发人员合作，将其应用程序载入所有云。
 
 **基于 OIDC 的应用程序无法使用自动预配**
 
@@ -72,7 +77,7 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 
 **预配间隔已修复**
 
-预配周期的间隔 [时间](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) 当前不可配置。 
+预配周期的间隔 [时间](./application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) 当前不可配置。 
 
 **更改不会从目标应用移动到 Azure AD**
 
@@ -86,6 +91,9 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 
 当某个组处于范围内并且某个成员超出范围时，将设置该组。 不会设置超出范围的用户。 如果成员返回到范围中，服务将不会立即检测到更改。 重新启动预配将解决此问题。 建议定期重启服务，以确保所有用户均已正确设置。  
 
+**管理器未预配**
+
+如果用户及其经理都处于预配的范围内，则该服务将预配用户，然后更新管理器。 但是，如果在第一天，用户处于范围内，并且管理器超出范围，我们将在不进行经理引用的情况下预配用户。 当经理进入作用域时，在重新启动预配并导致服务重新评估所有用户之前，将不会更新管理器引用。 
 
 ## <a name="next-steps"></a>后续步骤
 - [预配工作原理](how-provisioning-works.md)

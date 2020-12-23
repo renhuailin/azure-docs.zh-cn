@@ -3,17 +3,19 @@ title: 在 Azure Cosmos DB 中使用数组和对象
 description: 了解用于在 Azure Cosmos DB 中创建数组和对象的 SQL 语法。 本文还提供了一些对数组对象执行操作的示例
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/08/2020
 ms.author: tisande
-ms.openlocfilehash: 2b882e1e39f035d27fc6d09d1a9d0c04691b499c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f65d179baa2c0a08e2c1dca1716c9691797fc242
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426242"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106286"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。
 
@@ -52,7 +54,7 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
-## <a name="iteration"></a><a id="Iteration"></a>迭代
+## <a name="iteration"></a><a id="Iteration"></a>次数
 
 SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关键字](sql-query-keywords.md#in)添加一个新的构造。 在以下示例中：
 
@@ -141,7 +143,7 @@ WHERE c.grade = 8
 还可基于数组迭代的结果进行聚合。 例如，以下查询计数所有家庭中的孩子数目。
 
 ```sql
-SELECT COUNT(child)
+SELECT COUNT(1) AS Count
 FROM child IN Families.children
 ```
 
@@ -150,7 +152,7 @@ FROM child IN Families.children
 ```json
 [
   {
-    "$1": 3
+    "Count": 3
   }
 ]
 ```

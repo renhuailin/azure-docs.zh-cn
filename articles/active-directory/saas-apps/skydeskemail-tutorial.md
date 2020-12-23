@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 71150ea5ba7d6f25b07a9afaa1f1dc60adcb3e24
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30e94c9737241ff49c29898adcc5e50c6b73a9b1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518632"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>教程：Azure Active Directory 与 SkyDesk Email 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88518632"
 * 可让用户使用其 Azure AD 帐户自动登录到 SkyDesk Email（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -76,7 +76,7 @@ ms.locfileid: "88518632"
 2. **[配置 SkyDesk Email 单一登录](#configure-skydesk-email-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **创建 SkyDesk Email 测试用户[ - 在 SkyDesk Email 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户](#create-skydesk-email-test-user)** 。
+5. **创建 SkyDesk Email 测试用户 [ - 在 SkyDesk Email 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户](#create-skydesk-email-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -89,7 +89,7 @@ ms.locfileid: "88518632"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "88518632"
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.jp/apps/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -126,32 +126,32 @@ ms.locfileid: "88518632"
 
 1. 在顶部菜单中，单击“设置”，并选择“组织”   。
 
-    ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![显示从“设置”菜单中选择了“组织”的屏幕截图。](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
 1. 在左侧面板中，单击“域”  。
 
-    ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![显示从“控制面板”中选择了“域”的屏幕截图。](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
 1. 单击“添加域”  。
 
-    ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![显示已选择“添加域”的屏幕截图。](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. 输入域名，并验证域。
 
-    ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![显示“添加域”选项卡的屏幕截图，可在其中输入域。](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
 1. 在左侧面板中，单击“SAML 身份验证”  。
 
-    ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![显示从“控制面板”中选择了“SAML 身份验证”的屏幕截图。](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. 在“SAML 身份验证”  对话框页上，执行以下步骤：
 
-    ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![显示“SAML 身份验证详细信息”对话框的屏幕截图，可在其中输入所述的值。](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
-    > 若要使用基于 SAML 的身份验证，应已**验证域**或已设置**门户 URL**。 可以设置具有唯一名称的门户 URL。
+    > 若要使用基于 SAML 的身份验证，应已 **验证域** 或已设置 **门户 URL** 。 可以设置具有唯一名称的门户 URL。
 
-    ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![显示“门户 URL”的屏幕截图，可在其中输入名称。](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -161,7 +161,7 @@ ms.locfileid: "88518632"
 
     d. 单击“从文件获取密钥”，从 Azure 门户选择已下载的证书，并单击“打开”上传证书   。
 
-    e. 选择“RSA”，作为**算法**。
+    e. 选择“RSA”，作为 **算法** 。
 
     f. 单击“确定”以保存更改  。
 
@@ -222,7 +222,7 @@ ms.locfileid: "88518632"
 
 在 SkyDesk Email 的左侧面板中，单击“用户访问”  ，并输入用户名。
 
-![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![显示从“控制面板”中选择了“用户访问权限”的屏幕截图。](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > 如果需要批量创建用户，则需要联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.jp/apps/support/)。
@@ -231,13 +231,12 @@ ms.locfileid: "88518632"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 SkyDesk Email 磁贴时，应会自动登录到为其设置了 SSO 的 SkyDesk Email。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 SkyDesk Email 磁贴时，应会自动登录到为其设置了 SSO 的 SkyDesk Email。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

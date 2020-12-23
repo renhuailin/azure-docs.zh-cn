@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 9781369e862c74afe5a8a94cafafff7ef35e68e1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 775e2fad573832dd29fc45985c6d6bd0a50fdf3c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078344"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546086"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure Monitor 日志监视 HDInsight 群集
 
 了解如何启用 Azure Monitor 日志监视 HDInsight 中的 Hadoop 群集操作。 以及如何添加 HDInsight 监视解决方案。
 
-[Azure Monitor 日志](../log-analytics/log-analytics-overview.md) 是用来监视云和本地环境的 Azure Monitor 服务。 该监视服务用于维持上述环境的可用性和性能。 它将收集云、本地环境和其他监视工具中由资源生成的数据。 而数据用于提供跨多个源的分析。
+[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md) 是用来监视云和本地环境的 Azure Monitor 服务。 该监视服务用于维持上述环境的可用性和性能。 它将收集云、本地环境和其他监视工具中由资源生成的数据。 而数据用于提供跨多个源的分析。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -40,9 +40,9 @@ ms.locfileid: "89078344"
 
   有关如何创建 HDInsight 群集的说明，请参阅 [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。  
 
-* 如果使用 PowerShell，则需要 [Az 模块](https://docs.microsoft.com/powershell/azure/)。 确保已安装了最新版本。 如有必要，请运行 `Update-Module -Name Az`。
+* 如果使用 PowerShell，则需要 [Az 模块](/powershell/azure/)。 确保已安装了最新版本。 如有必要，请运行 `Update-Module -Name Az`。
 
-* 如果想要使用 Azure CLI，但尚未安装，请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果想要使用 Azure CLI，但尚未安装，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 > [!NOTE]  
 > 建议将 HDInsight 群集和 Log Analytics 工作区放置在同一区域中，以实现更好的性能。 Azure Monitor 日志并非在所有 Azure 区域中均可用。
@@ -65,7 +65,7 @@ ms.locfileid: "89078344"
 
 ## <a name="enable-azure-monitor-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure Monitor
 
-可以使用 Azure PowerShell Az 模块 [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) cmdlet 来启用 Azure Monitor 日志。
+可以使用 Azure PowerShell Az 模块 [Enable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) cmdlet 来启用 Azure Monitor 日志。
 
 ```powershell
 # Enter user information
@@ -97,7 +97,7 @@ Get-AzHDInsightMonitoring `
     -Name $cluster
 ```
 
-若要禁用，请使用 [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) cmdlet：
+若要禁用，请使用 [Disable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) cmdlet：
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
@@ -105,7 +105,7 @@ Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 
 ## <a name="enable-azure-monitor-using-azure-cli"></a>使用 Azure CLI 启用 Azure Monitor
 
-可以使用 Azure CLI `[az hdinsight monitor enable`](https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-enable) 命令来启用 Azure Monitor 日志。
+可以使用 Azure CLI `[az hdinsight monitor enable` ] (/cli/azure/hdinsight/monitor # az-enable) 命令启用 Azure Monitor 日志。
 
 ```azurecli
 # set variables
@@ -120,7 +120,7 @@ az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --wo
 az hdinsight monitor show --name $cluster --resource-group $resourceGroup
 ```
 
-若要禁用，请使用 [`az hdinsight monitor disable`](https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-disable) 命令。
+若要禁用，请使用 [`az hdinsight monitor disable`](/cli/azure/hdinsight/monitor#az-hdinsight-monitor-disable) 命令。
 
 ```azurecli
 az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
@@ -128,7 +128,7 @@ az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>安装 HDInsight 群集管理解决方案
 
-HDInsight 提供特定于群集的管理解决方案，可为 Azure Monitor 日志添加这些解决方案。 [管理解决方案](../log-analytics/log-analytics-add-solutions.md)为 Azure Monitor 日志添加各种功能，从而提供额外的数据和分析工具。 这些解决方案从 HDInsight 群集中收集重要的性能指标。 并且提供工具用于搜索指标。 这些解决方案还为 HDInsight 支持的大多数群集类型提供可视化和仪表板。 使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。
+HDInsight 提供特定于群集的管理解决方案，可为 Azure Monitor 日志添加这些解决方案。 [管理解决方案](../azure-monitor/insights/solutions.md)为 Azure Monitor 日志添加各种功能，从而提供额外的数据和分析工具。 这些解决方案从 HDInsight 群集中收集重要的性能指标。 并且提供工具用于搜索指标。 这些解决方案还为 HDInsight 支持的大多数群集类型提供可视化和仪表板。 使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。
 
 可用的 HDInsight 解决方案：
 
@@ -147,7 +147,7 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Monitor 日�
 
 ## <a name="configuring-performance-counters"></a>配置性能计数器
 
-Azure monitor 支持收集并分析群集中节点的性能指标。 有关详细信息，请参阅 [Azure Monitor 中的 Linux 性能数据源](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)。
+Azure monitor 支持收集并分析群集中节点的性能指标。 有关详细信息，请参阅 [Azure Monitor 中的 Linux 性能数据源](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters)。
 
 ## <a name="cluster-auditing"></a>群集审核
 

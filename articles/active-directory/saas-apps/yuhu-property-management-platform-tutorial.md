@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.openlocfilehash: b2427d474f4a36dc518680518a10cace290c0136
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2b5e852e3a32c4fb40dbe7ebc50a00302b4b82b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546117"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Yuhu Property Management Platform 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546117"
 * 让用户使用其 Azure AD 帐户自动登录到 Yuhu Property Management Platform。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -140,20 +140,20 @@ ms.locfileid: "88546117"
 
 ### <a name="create-yuhu-property-management-platform-test-user"></a>创建 Yuhu Property Management Platform 测试用户
 
-本部分将在 Yuhu Property Management Platform 中创建名为 B.Simon 的用户。 请与  [Yuhu Property Management Platform 支持团队](mailto:hello@yuhu.io)协作，将用户添加到 Yuhu Property Management Platform 平台中。 使用单一登录前，必须先创建并激活用户。
+本部分将在 Yuhu Property Management Platform 中创建名为 B.Simon 的用户。 与 [Yuhu Property Management Platform 支持团队](mailto:hello@yuhu.io)协作，在 Yuhu Property Management Platform 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 Yuhu Property Management Platform 磁贴时，应会自动登录到设置了 SSO 的 Yuhu Property Management Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击 Yuhu Property Management Platform 磁贴时，应会自动登录到设置了 SSO 的 Yuhu Property Management Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Yuhu Property Management Platform](https://aad.portal.azure.com/)

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72754252"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904136"
 ---
 # <a name="define-and-use-moderation-workflows"></a>定义和使用审查工作流
 
@@ -23,11 +23,11 @@ ms.locfileid: "72754252"
 
 ## <a name="create-a-new-workflow"></a>创建新工作流
 
-转到[内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)并登录。 在“设置”**** 选项卡中，选择“工作流”****。
+转到[内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)并登录。 在“设置”选项卡中，选择“工作流”。
 
 ![“工作流”设置](images/2-workflows-0.png)
 
-在下一个屏幕上选择“添加工作流”****。
+在下一个屏幕上选择“添加工作流”。
 
 ![添加工作流](images/2-workflows-1.png)
 
@@ -39,9 +39,9 @@ ms.locfileid: "72754252"
 
 ### <a name="define-evaluation-criteria"></a>定义评估标准
 
-在下一个屏幕上，转到“If”部分****。 在顶部的下拉菜单中，选择“条件”****。 可通过此选项配置工作流将采取操作所依据的条件。 如果要使用多个条件，请改为选择“组合”****。 
+在下一个屏幕上，转到“If”部分。 在顶部的下拉菜单中，选择“条件”。 可通过此选项配置工作流将采取操作所依据的条件。 如果要使用多个条件，请改为选择“组合”。 
 
-接下来，选择一个连接器。 本示例使用“内容审查器”****。 根据所选的连接器，你将获得不同的数据输出选项。 请参阅“审阅工具”设置指南的[连接器](./configure.md#connectors)部分，了解如何设置其他连接器。
+接下来，选择一个连接器。 本示例使用“内容审查器”。 根据所选的连接器，你将获得不同的数据输出选项。 请参阅“审阅工具”设置指南的[连接器](./configure.md#connectors)部分，了解如何设置其他连接器。
 
 ![选择工作流连接器](images/image-workflow-connect-to.PNG)
 
@@ -51,21 +51,21 @@ ms.locfileid: "72754252"
 
 ### <a name="define-the-action"></a>定义操作
 
-转到“Then”部分，在其中选择操作****。 下面的示例创建图像审阅并分配标记。 此外，还可以添加替代（其他）路径，并同样为其设置操作。
+转到“Then”部分，在其中选择操作。 下面的示例创建图像审阅并分配标记。 此外，还可以添加替代（其他）路径，并同样为其设置操作。
 
 ![定义工作流操作](images/image-workflow-action.PNG)
 
 ### <a name="save-the-workflow"></a>保存工作流
 
-记下工作流名称；需要使用该名称通过工作流 API 来启动审查作业（见下文）。 最后，使用页面顶部的“保存”按钮来保存工作流****。
+记下工作流名称；需要使用该名称通过工作流 API 来启动审查作业（见下文）。 最后，使用页面顶部的“保存”按钮来保存工作流。
 
 ## <a name="test-the-workflow"></a>测试工作流
 
-定义自定义工作流之后，接下来即可使用示例内容对其进行测试。 转到“工作流”，选择相应的“执行工作流”按钮**** ****。
+定义自定义工作流之后，接下来即可使用示例内容对其进行测试。 转到“工作流”，选择相应的“执行工作流”按钮 。
 
 ![工作流测试](images/image-workflow-execute.PNG)
 
-将此[示例图像](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)保存到本地驱动器。 然后选择“选择一个或多个文件”****，并将图像上传到工作流。
+将此[示例图像](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)保存到本地驱动器。 然后选择“选择一个或多个文件”，并将图像上传到工作流。
 
 ![跑步者图像并叠加有引文](images/sample-text.jpg)
 
@@ -77,10 +77,10 @@ ms.locfileid: "72754252"
 
 ### <a name="verify-workflow-action"></a>验证工作流操作
 
-转到“审阅”下的“图像”选项卡，然后验证是否存在新创建的图像审阅**** ****。
+转到“审阅”下的“图像”选项卡，然后验证是否存在新创建的图像审阅 。
 
 ![审阅图像](images/image-workflow-review.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 
-本指南介绍了如何从内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com)设置和使用审查工作流。 接下来，请参阅 [REST API 指南](../try-review-api-workflow.md)，了解如何以编程方式创建工作流。
+本指南介绍了如何从内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com)设置和使用审查工作流。 接下来，请参阅 [API 控制台指南](../try-review-api-workflow.md) 以了解如何以编程方式创建工作流。

@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 7924409a1760d59f4ecc88a736f7b8238fbd647b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613742"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205857"
 ---
 # <a name="debug-rendering"></a>调试渲染
 
@@ -77,7 +77,7 @@ void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C + + RemoteManager：:D ebugRenderingSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
+* [C + + RemoteManager：:D ebugRenderingSettings ( # B1 ](/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
 
 ## <a name="next-steps"></a>后续步骤
 

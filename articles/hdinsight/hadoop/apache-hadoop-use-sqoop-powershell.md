@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 3f8a5bdc9e1240303216df1dec31c78a560c55eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 781c19edb9261b13f31bebecb6bc74bf2b616b47
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086488"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546970"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>在 HDInsight 中使用 Azure PowerShell 运行 Apache Sqoop 作业
 
@@ -23,7 +23,7 @@ ms.locfileid: "87086488"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个安装有 Azure PowerShell [AZ 模块](https://docs.microsoft.com/powershell/azure/)的工作站。
+* 一个安装有 Azure PowerShell [AZ 模块](/powershell/azure/)的工作站。
 
 * 已完成[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)一文中的[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)步骤。
 
@@ -271,7 +271,7 @@ Get-AzHDInsightJobOutput `
 
 基于 Linux 的 HDInsight 存在以下限制：
 
-* 大容量导出：用于将数据导出到 SQL 的 Sqoop 连接器目前不支持大容量插入。
+* 批量导出：用于将数据导出到 SQL 的 Sqoop 连接器目前不支持批量插入。
 
 * 批处理：如果在执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
 

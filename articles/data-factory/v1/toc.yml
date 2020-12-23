@@ -139,9 +139,9 @@
           href: data-factory-hadoop-streaming-activity.md
         - name: HDInsight Spark 活动
           href: data-factory-spark.md
-        - name: 机器学习批处理执行活动
+        - name: Azure 机器学习工作室（经典）批处理执行活动
           href: data-factory-azure-ml-batch-execution-activity.md
-        - name: 机器学习更新资源活动
+        - name: Azure 机器学习工作室（经典）更新资源活动
           href: data-factory-azure-ml-update-resource-activity.md
         - name: 存储过程活动
           href: data-factory-stored-proc-activity.md
@@ -200,7 +200,7 @@
     - name: 案例研究
       href: data-factory-customer-case-studies.md
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: 定价计算器

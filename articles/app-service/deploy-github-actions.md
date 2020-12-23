@@ -6,22 +6,22 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 2d28d8f1f09814822b29e9d45d4e75283c8955cc
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618737"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604917"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
-通过 [Github 操作](https://help.github.com/en/articles/about-github-actions) 开始，可自动执行工作流，并从 GitHub 部署到 [Azure App Service](overview.md) 。 
+通过 [Github 操作](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) 开始，可自动执行工作流，并从 GitHub 部署到 [Azure App Service](overview.md) 。 
 
 ## <a name="prerequisites"></a>先决条件 
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 一个 GitHub 帐户。 如果没有，请 [免费](https://github.com/join)注册。  
+- 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。  
 - 有效 Azure App Service 应用。 
     - .NET： [在 Azure 中创建 ASP.NET Core web 应用](quickstart-dotnetcore.md)
     - ASP.NET： [在 Azure 中创建 ASP.NET Framework web 应用](quickstart-dotnet-framework.md)
@@ -31,15 +31,13 @@ ms.locfileid: "91618737"
 
 ## <a name="workflow-file-overview"></a>工作流文件概述
 
-Azure App Service 工作流文件包含三个部分：
-
 工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含组成工作流的各种步骤和参数。
 
 此文件包含三个部分：
 
 |部分  |任务  |
 |---------|---------|
-|**身份验证** | 1. 定义服务主体或发布配置文件。 <br /> 2. 创建 GitHub 机密。 |
+|**身份验证** | 1. 定义服务主体或发布配置文件。 <br /> 2.创建 GitHub 机密。 |
 |**生成** | 1. 设置环境。 <br /> 2. 生成 web 应用。 |
 |**部署** | 1. 部署 web 应用。 |
 
@@ -49,7 +47,7 @@ Azure App Service 工作流文件包含三个部分：
 
 1. 导航到 Azure 门户中的 webapp
 1. 在左侧，单击 "**部署中心**"
-1. 在 " **连续部署 (CI/CD") **中，选择 **GitHub**
+1. 在 " **连续部署 (CI/CD")** 中，选择 **GitHub**
 1. 接下来，选择 **GitHub 操作**
 1. 使用 dropdown 选择 GitHub 存储库、分支和应用程序堆栈
     - 如果所选分支受到保护，则仍可继续添加工作流文件。 继续操作之前，请务必查看分支保护。
@@ -57,15 +55,15 @@ Azure App Service 工作流文件包含三个部分：
 
 这会将工作流文件提交到存储库。 用于生成和部署应用的工作流将立即启动。
 
-## <a name="set-up-a-work-manually"></a>手动设置工作
+## <a name="set-up-a-workflow-manually"></a>手动设置工作流
 
 你还可以在不使用部署中心的情况下部署工作流。 为此，需要首先生成部署凭据。 
 
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
-使用 GitHub 操作 Azure 应用服务进行身份验证的建议方法是使用发布配置文件。 你还可以使用服务主体进行身份验证，但该过程需要更多步骤。 
+使用 GitHub 操作 Azure 应用服务进行身份验证的建议方法是使用发布配置文件。 也可以使用服务主体进行身份验证，但该过程需要更多步骤。 
 
-保存你的发布配置文件凭据或服务主体作为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets) ，以便在 Azure 中进行身份验证。 你将可以访问工作流中的机密。 
+将发布配置文件凭据或服务主体另存为 [GitHub 机密](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)，以便使用 Azure 进行身份验证。 你将在工作流中访问机密。 
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/applevel)
 
@@ -77,9 +75,12 @@ Azure App Service 工作流文件包含三个部分：
 
 1. 保存下载的文件。 你将使用该文件的内容来创建 GitHub 机密。
 
+> [!NOTE]
+> 从2020年10月起，Linux web 应用在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下载发布配置文件之前**，需要将应用设置设置为。 此要求将在将来删除。
+
 # <a name="service-principal"></a>[服务主体](#tab/userlevel)
 
-可以在[Azure CLI](/cli/azure/)中使用[az ad sp 创建-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true)命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 使用 Azure 门户中 [Azure Cloud Shell](https://shell.azure.com/) 或选择 " **试用** " 按钮来运行此命令。
+可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -87,7 +88,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --sdk-auth
 ```
 
-在上面的示例中，将占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是一个具有角色分配凭据的 JSON 对象，该对象提供对应用服务应用的访问权限，如下所示。 稍后复制此 JSON 对象。
+在上面的示例中，请将占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是一个 JSON 对象，包含的角色分配凭据可提供对应用服务应用的访问权限，如下所示。 复制此 JSON 对象供以后使用。
 
 ```output 
   {
@@ -109,7 +110,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/applevel)
 
-在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密**。
+在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
 
 若要使用 [应用级凭据](#generate-deployment-credentials)，请将下载的发布配置文件的内容粘贴到机密的值字段中。 命名机密 `AZURE_WEBAPP_PUBLISH_PROFILE` 。
 
@@ -123,11 +124,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="service-principal"></a>[服务主体](#tab/userlevel)
 
-在 [GitHub](https://github.com/)中，浏览存储库，选择 " **设置" > 机密 > 添加新机密**。
+在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
 
-要使用 [用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
+要使用 [用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称 `AZURE_CREDENTIALS`。
 
-以后配置工作流文件时，请使用机密来输入 `creds` Azure 登录操作。 例如：
+以后配置工作流文件时，请使用该机密作为 Azure 登录操作的输入 `creds`。 例如：
 
 ```yaml
 - uses: azure/login@v1
@@ -191,7 +192,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v1
       with:
@@ -304,7 +305,7 @@ jobs:
 
     steps:
       # Checkout the repo
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       
       # Setup .NET Core SDK
       - name: Setup .NET Core
@@ -348,7 +349,7 @@ jobs:
     runs-on: windows-latest
     steps:
 
-    - uses: actions/checkout@master  
+    - uses: actions/checkout@main  
     
     - name: Install Nuget
       uses: nuget/setup-nuget@v1
@@ -414,7 +415,7 @@ jobs:
         package: my/target/*.war
 ```
 
-### <a name="javascript"></a>JavaScript 
+### <a name="javascript"></a>Javascript 
 
 使用应用的发布配置文件构建 Node.js 应用并将其部署到 Azure。 `publish-profile`输入将引用 `AZURE_WEBAPP_PUBLISH_PROFILE` 前面创建的机密。
 
@@ -434,7 +435,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v1
       with:
@@ -483,7 +484,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Building web app
-      uses: azure/appservice-build@v2-beta
+      uses: azure/appservice-build@v2
     - name: Deploy web App using GH Action azure/webapps-deploy
       uses: azure/webapps-deploy@v2
       with:
@@ -515,7 +516,7 @@ jobs:
 
     steps:
       # Checkout the repo
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
@@ -566,7 +567,7 @@ jobs:
     steps:
 
     # checkout the repo
-    - uses: actions/checkout@master  
+    - uses: actions/checkout@main
     
     - uses: azure/login@v1
       with:
@@ -635,7 +636,7 @@ jobs:
         az logout
 ```
 
-### <a name="javascript"></a>JavaScript 
+### <a name="javascript"></a>Javascript 
 
 使用 Azure 服务主体构建 Node.js 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用 `AZURE_CREDENTIALS` 前面创建的机密。
 
@@ -656,7 +657,7 @@ jobs:
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
+      uses: actions/checkout@main
    
     - uses: azure/login@v1
       with:
@@ -745,7 +746,7 @@ jobs:
 
 - [Docker 登录/注销](https://github.com/Azure/docker-login)
 
-- [触发工作流的事件](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [触发工作流的事件](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s 部署](https://github.com/Azure/k8s-deploy)
 

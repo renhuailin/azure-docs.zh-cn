@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587627"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461016"
 ---
 # <a name="understand-event-data"></a>了解事件数据
 
@@ -103,7 +103,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 下面是生命周期通知正文中的字段。
 
-| 名称 | 值 |
+| 名称 | “值” |
 | --- | --- |
 | `id` | 通知的标识符，如由服务维护的 UUID 或计数器。 `source` + `id` 对于每个 distinct 事件都是唯一的。 |
 | `source` | IoT 中心或 Azure 数字孪生实例的名称，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -189,7 +189,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 下面是边缘更改通知正文中的字段。
 
-| 名称    | 值 |
+| 名称    | “值” |
 | --- | --- |
 | `id` | 通知的标识符，如由服务维护的 UUID 或计数器。 `source` + `id` 对于每个 distinct 事件都是唯一的 |
 | `source` | Azure 数字孪生实例的名称，如 *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -202,7 +202,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 #### <a name="body-details"></a>正文详细信息
 
-主体是关系的负载，也是 JSON 格式。 它与 `GET` 通过 [DigitalTwins API](how-to-use-apis-sdks.md)对关系的请求使用相同的格式。 
+主体是关系的负载，也是 JSON 格式。 它与 `GET` 通过 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins)对关系的请求使用相同的格式。 
 
 "更新关系" 意味着关系的属性已更改。 
 
@@ -245,7 +245,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 下面是数字克隆更改通知正文中的字段。
 
-| 名称    | 值 |
+| 名称    | “值” |
 | --- | --- |
 | `id` | 通知的标识符，如由服务维护的 UUID 或计数器。 `source` + `id` 对于每个 distinct 事件都是唯一的 |
 | `source` | IoT 中心或 Azure 数字孪生实例的名称，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net*

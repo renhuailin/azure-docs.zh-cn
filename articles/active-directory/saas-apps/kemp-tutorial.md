@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7ac50acbf9b1b4371ac17f997828f9b8818e53b0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549959"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459105"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>教程：Azure Active Directory SSO 与 Kemp LoadMaster Azure AD 集成的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549959"
 * 让用户使用其 Azure AD 帐户自动登录到 Kemp LoadMaster Azure AD 集成。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88549959"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Kemp LoadMaster Azure AD 集成支持 IDP 发起的 SSO
-* 配置 Kemp LoadMaster Azure AD 集成后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Kemp LoadMaster Azure AD 集成后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>从库中添加 Kemp LoadMaster Azure AD 集成
 
@@ -139,13 +139,13 @@ ms.locfileid: "88549959"
 
 ### <a name="create-a-virtual-service"></a>创建虚拟服务 
 
-1. 转到 Kemp LoadMaster Azure AD 集成 Load Master Web UI >“虚拟服务”>“新增”。
+1. 转到 Kemp LoadMaster Azure AD 集成 LoadMaster Web UI >“虚拟服务”>“新增”。
 
 1. 单击“新增”。
 
 1. 指定虚拟服务的参数。
 
-    ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-1.png)
+    ![屏幕截图显示“请指定虚拟服务的参数”页面，框中有示例值。](./media/kemp-tutorial/kemp-1.png)
 
     a. 虚拟地址
     
@@ -161,7 +161,7 @@ ms.locfileid: "88549959"
 
 1. 指定实际服务器的参数。
     
-    ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-2.png)
+    ![屏幕截图显示“请指定实际服务器的参数”页面，框中有示例值。](./media/kemp-tutorial/kemp-2.png)
 
     a. 选择“允许远程地址”
     
@@ -197,13 +197,13 @@ ms.locfileid: "88549959"
 
 ### <a name="ssl-acceleration"></a>SSL 加速
  
-1. 转到 Kemp Load Master Web UI >“虚拟服务”>“虚拟服务”。
+1. 转到 Kemp LoadMaster Web UI >“虚拟服务”>“查看/修改服务”。
 
 1. 在“操作”下单击“修改”。
 
-1. 在“tcp/x.x.x.:443 (ID:6)的属性”下（在第 7 层运行），单击“SSL 属性”。
+1. 单击“SSL 属性”（在第 7 层运行）。
     
-    ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-3.png)
+    ![屏幕截图显示选择了“SSL 加速”-“已启用”和一个示例证书的“SSL 属性”部分。](./media/kemp-tutorial/kemp-3.png)
     
     a. 在“SSL 加速”中单击“已启用”。
     
@@ -222,7 +222,7 @@ ms.locfileid: "88549959"
 
 1. 在“证书和颁发机构”下单击“中间证书”。
 
-    ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-6.png)
+    ![屏幕截图显示选择了一个示例证书的“当前已安装的中间证书”部分。](./media/kemp-tutorial/kemp-6.png)
 
     a. 在“添加新的中间证书”中单击“选择文件”。
     
@@ -238,7 +238,7 @@ ms.locfileid: "88549959"
  
 转到“虚拟服务”下的“管理 SSO”。
 
-   ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-7.png)
+   ![屏幕截图显示“管理 SSO”页。](./media/kemp-tutorial/kemp-7.png)
    
    a. 在为其提供名称之后，单击“添加新客户端配置”下的“添加”。
 
@@ -268,7 +268,7 @@ ms.locfileid: "88549959"
 
 1. 单击“修改”，然后导航到“ESP 选项”。
     
-    ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-8.png)
+    ![屏幕截图显示展开了“ESP 选项”和“实际服务器”部分的“视图/修改服务”页。](./media/kemp-tutorial/kemp-8.png)
 
     a. 单击“启用 ESP”。
     
@@ -286,7 +286,7 @@ ms.locfileid: "88549959"
 
 此时应显示租户登录页，而不是之前未经身份验证的访问。 
 
-![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-9.png)
+![屏幕截图显示租户的“登录”页。](./media/kemp-tutorial/kemp-9.png)
 
 ## <a name="configuring-kerberos-based-authentication"></a>配置基于 Kerberos 的身份验证 
  
@@ -294,7 +294,7 @@ ms.locfileid: "88549959"
 
 1. 创建用户帐户（在此示例中为 AppDelegation）。
     
-    ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-10.png)
+    ![屏幕截图显示选择了“帐户”选项卡的“kcd 用户属性”窗口。](./media/kemp-tutorial/kemp-10.png)
 
 
     a. 选择“属性编辑器”选项卡。
@@ -311,7 +311,7 @@ ms.locfileid: "88549959"
 
 1. 选择“委派”选项卡。
 
-    ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-11.png)
+    ![屏幕截图显示选择了“委派”选项卡的“kcd 用户属性”窗口。](./media/kemp-tutorial/kemp-11.png)
 
     a. 选择“仅信任此用户作为指定服务的委派”。
 
@@ -332,7 +332,7 @@ ms.locfileid: "88549959"
 
 转到 Kemp LoadMaster Azure AD 集成 Web 控制台 >“虚拟服务”>“管理 SSO”。
 
-![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-12.png)
+![屏幕截图显示“管理 SSO”-“管理域”页。](./media/kemp-tutorial/kemp-12.png)
 
 a. 导航到“服务器端单一登录配置”。
 
@@ -378,18 +378,18 @@ d. 在“服务器端配置”下，选择以前创建的服务器端配置文�
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Kemp LoadMaster Azure AD 集成”磁贴时，应会自动登录到设置了 SSO 的 Kemp LoadMaster Azure AD 集成。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Kemp LoadMaster Azure AD 集成”磁贴时，应会自动登录到设置了 SSO 的 Kemp LoadMaster Azure AD 集成。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Kemp LoadMaster Azure AD 集成](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 Kemp LoadMaster Azure AD 集成](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用高级可见性和控制保护 Kemp LoadMaster Azure AD 集成](/cloud-app-security/proxy-intro-aad)

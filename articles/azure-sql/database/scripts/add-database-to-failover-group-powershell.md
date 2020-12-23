@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 07/16/2019
-ms.openlocfilehash: 65acde9ff6f9c6d2d32e5ac2cd2a19081665e8b7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34d296e51f25c492d7f66347a2e2b190c39e83f1
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321542"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594124"
 ---
 # <a name="use-powershell-to-add-a-database-to-a-failover-group"></a>使用 PowerShell 将数据库添加到故障转移组
 

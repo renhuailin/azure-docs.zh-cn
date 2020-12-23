@@ -6,14 +6,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: ed5c7eee1e8261c65decba4748e1d9c6a4d7212b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: b29e0f99cb4549370be49dc5a1b11d367e30d8c0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91459806"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029135"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用资源日志排查 Azure 流分析问题
 
@@ -38,45 +38,45 @@ ms.locfileid: "91459806"
 
 活动日志在默认情况下处于启用状态，提供对流分析作业执行的操作的深入见解。 活动日志中存在的信息可帮助找到影响作业的问题的根本原因。 执行以下步骤，在流分析中使用活动日志：
 
-1. 登录 Azure 门户并选择“概述”下的“活动日志”**** ****。
+1. 登录 Azure 门户并选择“概述”下的“活动日志” 。
 
    ![流分析活动日志](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
 
 2. 可看到已执行的操作的列表。 导致作业失败的所有操作都有一个红色信息气泡。
 
-3. 单击操作以查看其摘要视图。 此处的信息通常是有限的。 若要了解有关操作的更多详细信息，请单击“JSON”****。
+3. 单击操作以查看其摘要视图。 此处的信息通常是有限的。 若要了解有关操作的更多详细信息，请单击“JSON”。
 
    ![流分析活动日志操作摘要](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. 向下滚动到 JSON 的“属性”部分，其中提供导致失败操作的错误的详细信息****。 在本示例中，失败的原因在于超出范围的纬度值的运行时错误。 流分析作业处理的数据不一致会导致数据错误。 你可以了解不同的[输入和输出数据错误及其发生原因](https://docs.microsoft.com/azure/stream-analytics/data-errors)。
+4. 向下滚动到 JSON 的“属性”部分，其中提供导致失败操作的错误的详细信息。 在本示例中，失败的原因在于超出范围的纬度值的运行时错误。 流分析作业处理的数据不一致会导致数据错误。 你可以了解不同的[输入和输出数据错误及其发生原因](./data-errors.md)。
 
    ![JSON 错误详细信息](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
 5. 可以根据 JSON 中的错误消息采取纠正措施。 在本示例中，检查以确保纬度值介于 -90 度到 90 度之间，并需要将其添加到查询中。
 
-6. 如果活动日志中的错误消息对于识别根本原因没有帮助，请启用资源日志并使用 Azure Monitor 日志。
+6. 如果活动日志中的错误消息对于确定根本原因没有帮助，请启用资源日志并使用 Azure Monitor 日志。
 
 ## <a name="send-diagnostics-to-azure-monitor-logs"></a>将诊断发送到 Azure Monitor 日志
 
-强烈建议打开资源日志并将它们发送到 Azure Monitor 日志。 默认情况下，它们处于“关闭”**** 状态。 若要打开它们，请完成以下步骤：
+强烈建议打开资源日志并将它们发送到 Azure Monitor 日志。 默认情况下，它们处于“关闭”状态。 若要打开它们，请完成以下步骤：
 
-1.  如果还没有 Log Analytics 工作区，请创建一个。 建议将 Log Analytics 工作区置于流分析作业所在的同一区域。
+1.  如果你还没有 Log Analytics 工作区，请创建一个。 建议将 Log Analytics 工作区与流分析作业位于同一区域中。
 
-2.  登录 Azure 门户，导航到流分析作业。 在“监视”**** 下，选择“诊断日志”****。 然后选择“启用诊断”****。
+2.  登录 Azure 门户，导航到流分析作业。 在“监视”下，选择“诊断日志”。 然后选择“启用诊断”。
 
     ![在边栏选项卡中导航到资源日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在 "**诊断设置**" "名称" 中提供一个**名称**，并在 "**日志**" 下选中 "**执行**和**创作**" 框，然后**在 "** **AllMetrics** " 然后选择 " **发送到 Log Analytics** " 并选择工作区。 单击“ **保存**”。
+2.  在“诊断设置名称”中提供“名称”，并选中“日志”下的“执行”和“授权”复选框，以及“指标”下的“AllMetrics”复选框      。 然后选择“发送到 Log Analytics”并选择工作区。 单击“ **保存**”。
 
     ![资源日志设置](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
-3. 流分析作业开始时，资源日志会被路由到 Log Analytics 工作区。 若要查看作业的资源日志，请在“监视”部分下选择“日志”**** ****。
+3. 流分析作业开始时，资源日志会被路由到 Log Analytics 工作区。 若要查看作业的资源日志，请在“监视”部分下选择“日志” 。
 
-   ![“监视”下的“资源日志”](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
+   ![显示“常规”菜单的屏幕截图，其中已选择“日志”](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. 流分析提供预定义的查询，使你可以轻松搜索感兴趣的日志。 您可以在左窗格中选择任意预定义的查询，然后选择 " **运行**"。 你将在底部窗格中看到查询结果。 
+4. 流分析提供预定义的查询，使你可以轻松搜索感兴趣的日志。 可以在左侧窗格中选择任意预定义的查询，然后选择“运行”。 底部窗格将显示查询结果。 
 
-   ![“监视”下的“资源日志”](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
+   ![显示流分析作业的“日志”的屏幕截图。](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>资源日志类别
 
@@ -99,10 +99,10 @@ Azure 流分析捕获两种类别的资源日志：
 ------- | -------
 time | 日志时间戳（采用 UTC）。
 ResourceId | 发生操作的资源的 ID，采用大写格式。 其中包括订阅 ID、资源组和作业名称。 例如， **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
-category | 日志类别，“执行”**** 或“创作”****。
+category | 日志类别，“执行”或“创作”。
 operationName | 被记录的操作的名称。 例如，**发送事件：SQL 输出写入到 mysqloutput 失败**。
-状态 | 操作的状态。 例如，“失败”**** 或“成功”****。
-level | 日志级别。 例如，“错误”****、“警告”**** 或“信息性消息”****。
+状态 | 操作的状态。 例如，“失败”或“成功”。
+level | 日志级别。 例如，“错误”、“警告”或“信息性消息”。
 properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 有关详细信息，请参阅本文的以下部分。
 
 ### <a name="execution-log-properties-schema"></a>执行日志属性架构
@@ -111,24 +111,24 @@ properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 
 
 ### <a name="data-errors"></a>数据错误
 
-作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。 你可以详细了解各种[输入和输出数据错误](https://docs.microsoft.com/azure/stream-analytics/data-errors)的原因。
+作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。 你可以详细了解各种[输入和输出数据错误](./data-errors.md)的原因。
 
 名称 | 说明
 ------- | -------
 Source | 发生错误的作业输入或输出的名称。
 Message | 与错误关联的消息。
-类型 | 错误类型。 例如，DataConversionError****、CsvParserError**** 和 ServiceBusPropertyColumnMissingError ****。
+类型 | 错误类型。 例如，DataConversionError、CsvParserError 和 ServiceBusPropertyColumnMissingError 。
 数据 | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
 
-数据错误根据 operationName**** 值采用以下架构：
+数据错误根据 operationName 值采用以下架构：
 
-* 事件读取操作期间会发生**序列化事件**。 当输入的数据由以下任一原因而不满足查询架构时会发生此类事件：
+* 事件读取操作期间会发生 **序列化事件**。 当输入的数据由以下任一原因而不满足查询架构时会发生此类事件：
 
    * *事件序列化/反序列化期间类型不匹配*：标识导致出错的字段。
 
    * *无法读取事件，序列化无效*：列出输入数据中发生错误的相关位置信息。 包括用于 blob 输入的 blob 名称、偏移量和数据示例。
 
-* 写入操作期间发生**发送事件**。 它们标识导致错误的流式处理事件。
+* 写入操作期间发生 **发送事件**。 它们标识导致错误的流式处理事件。
 
 ### <a name="generic-events"></a>泛型事件
 
@@ -138,10 +138,10 @@ Message | 与错误关联的消息。
 -------- | --------
 错误 | （可选）错误信息。 通常情况下，这是异常信息（如果存在）。
 Message| 日志消息。
-类型 | 消息类型。 映射到错误的内部分类。 例如，JobValidationError**** 或 BlobOutputAdapterInitializationFailure****。
-相关性 ID | GUID 。 从作业开始到作业停止期间所有的执行日志条目具有相同的“相关 ID”**** 值。
+类型 | 消息类型。 映射到错误的内部分类。 例如，JobValidationError 或 BlobOutputAdapterInitializationFailure。
+相关性 ID | GUID 。 从作业开始到作业停止期间所有的执行日志条目具有相同的“相关 ID”值。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [流分析数据错误](https://docs.microsoft.com/azure/stream-analytics/data-errors)
-* [流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [流分析数据错误](./data-errors.md)
+* [流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)

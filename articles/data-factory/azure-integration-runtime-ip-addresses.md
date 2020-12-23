@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 55d8b5ebdfb226247f8a500f36e6df3ae02ea58a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: fb83be59a3ccb11ea8bbd88307596937caa2b354
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619037"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638289"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 地址
 
@@ -31,12 +31,12 @@ Azure 集成运行时使用的 IP 地址取决于 Azure 集成运行时所在的
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure 集成运行时 IP 地址：特定的区域
 
-对于资源所在的特定 Azure 区域中的 Azure Integration Runtime ，允许来自为其列出的 IP 地址的流量。 可以从[服务标记 IP 范围下载链接](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)中获取服务标记的 IP 范围列表。 例如，如果 Azure 区域为**AustraliaEast**，则可以从 DATAFACTORY 获取 IP 范围列表 **。**
+对于资源所在的特定 Azure 区域中的 Azure Integration Runtime ，允许来自为其列出的 IP 地址的流量。 可以从[服务标记 IP 范围下载链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)中获取服务标记的 IP 范围列表。 例如，如果 Azure 区域为 **AustraliaEast** ，则可以从 DATAFACTORY 获取 IP 范围列表 **。**
 
 
 ## <a name="known-issue-with-azure-storage"></a>Azure 存储的已知问题
 
-* 当连接到 Azure 存储帐户时，IP 网络规则对从存储帐户所在区域的 Azure 集成运行时发出请求不起作用。 有关更多详细信息，请[参阅此文](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)。 
+* 当连接到 Azure 存储帐户时，IP 网络规则对从存储帐户所在区域的 Azure 集成运行时发出请求不起作用。 有关更多详细信息，请[参阅此文](../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range)。 
 
   因此，我们建议[在连接到 Azure 存储时改用受信任的服务](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)。 
 

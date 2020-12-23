@@ -4,12 +4,12 @@ description: 本文提供有关在组织中协调 Azure 开发测试实验室的
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0438445f99a22ed9fd239156044d6b3f6b477edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480841"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330608"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>协调 Azure 开发测试实验室的实施
 本文提供快速部署和实施 Azure 开发测试实验室的建议方法。 下图突出显示了整个过程（规范性指导），同时反映了支持各种行业要求和方案的灵活性。
@@ -36,7 +36,7 @@ ms.locfileid: "85480841"
 
 1. 创建初始开发测试实验室环境。
 2. 确定允许在实验室中使用的 VM 映像和大小。 确定是否可将自定义映像上传到 Azure，以便在开发测试实验室中使用。
-3. 通过为实验室（实验室所有者和实验室用户）创建初始的基于角色的访问控制 (RBAC) 来保护对实验室的访问。 我们建议对开发测试实验室的标识结合使用同步的 Active Directory 帐户和 Azure Active Directory。
+3. 通过为实验室 (实验室所有者和实验室用户) 创建初始 Azure 基于角色的访问控制 (Azure RBAC) 来安全地访问实验室。 我们建议对开发测试实验室的标识结合使用同步的 Active Directory 帐户和 Azure Active Directory。
 4. 将开发测试实验室配置为使用计划、成本管理、可认领 VM、自定义映像或公式等策略。
 5. 建立 Azure Repos/Git 等联机存储库。
 6. 确定是要使用公共存储库、专用存储库，还是两者的组合。 组织用于部署和长期保留的 JSON 模板。

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 8faf4ca8e27b280a60750d5f349ab0282ed593bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b750659bf22e856ee8ad7368e3fea64dd7245df
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999490"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960353"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>使用 StorSimple 设备管理器服务监视硬件组件和状态
 
 ## <a name="overview"></a>概述
-本文介绍本地 StorSimple 8000 系列设备中的各种物理和逻辑组件。 此外，说明如何使用 StorSimple 设备管理器服务中的“状态和硬件运行状况”边栏选项卡监视设备组件状态。****
+本文介绍本地 StorSimple 8000 系列设备中的各种物理和逻辑组件。 此外，说明如何使用 StorSimple 设备管理器服务中的“状态和硬件运行状况”边栏选项卡监视设备组件状态。
 
-“状态和硬件运行状况”边栏选项卡显示所有 StorSimple 设备组件的硬件状态。****
+“状态和硬件运行状况”边栏选项卡显示所有 StorSimple 设备组件的硬件状态。
 
 在 8100 的组件列表下有三个部分，分别描述了：
 
-* **共享组件**-这些组件不是控制器的一部分，如磁盘驱动器、机箱、电源和冷却模块（pcm）组件和 PCM 温度、线路电压和线路电流传感器。
+* **共享组件** -这些组件不是控制器的一部分，例如磁盘驱动器、机箱、电源和冷却模块 (PCM) 组件和 PCM 温度、线路电压和线路电流传感器。
 * **控制器 0 组件** - 驻留在控制器 0 上的组件（例如控制器、SAS 扩展器和连接器、控制器温度传感器和各种网络接口）。
 * **控制器 1 组件** - 构成控制器 1 的组件，类似于上面详述的控制器 0 组件。
 
@@ -47,34 +47,34 @@ ms.locfileid: "86999490"
 ## <a name="monitor-the-hardware-status"></a>监视硬件状态
 可以执行以下步骤来查看设备组件的硬件状态：
 
-1. 导航到“设备”，并选择一个特定的 StorSimplete 设备。**** 转到“监视器”>“硬件运行状况”****。
+1. 导航到“设备”，并选择一个特定的 StorSimplete 设备。 转到“监视器”>“硬件运行状况”。
 
     ![显示设备管理器服务的 "设置" 边栏选项卡的屏幕截图。 在 "监视" 下，选择 "硬件运行状况"。](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
-2. 找到“硬件组件”部分并从可用组件中进行选择。**** 只需单击组件标签即可展开列表并查看各种设备组件的状态。 请参阅[主机箱的详细组件列表](#component-list-for-primary-enclosure-of-storsimple-device)和 [EBOD 机箱的详细组件列表](#component-list-for-ebod-enclosure-of-storsimple-device)。
+2. 找到“硬件组件”部分并从可用组件中进行选择。 只需单击组件标签即可展开列表并查看各种设备组件的状态。 请参阅[主机箱的详细组件列表](#component-list-for-primary-enclosure-of-storsimple-device)和 [EBOD 机箱的详细组件列表](#component-list-for-ebod-enclosure-of-storsimple-device)。
 
     ![显示在硬件组件部分中选择的一个组件的屏幕截图。 相邻的边栏选项卡会显示该组件部件的名称和状态。](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
 3. 使用以下颜色编码方案解释组件状态：
    
-   * **绿色对号** – 表示组件运行状况良好，处于“正常”状态。****
-   * **黄色** – 表示组件已降级，处于“警告”状态。****
-   * **红色感叹号** – 表示组件有故障，处于“故障”状态。****
+   * **绿色对号** – 表示组件运行状况良好，处于“正常”状态。
+   * **黄色** – 表示组件已降级，处于“警告”状态。
+   * **红色感叹号** – 表示组件有故障，处于“故障”状态。
    * **白底黑字** – 表示组件不存在。
    
-   以下屏幕截图显示设备中的组件分别处于“正常”、“警告”和“故障”状态时的情况。************
+   以下屏幕截图显示设备中的组件分别处于“正常”、“警告”和“故障”状态时的情况。
        
    ![显示硬件组件部分中三个组件的屏幕截图：一个处于 "正常" 状态，一个处于 "失败" 状态，另一个处于警告状态。](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
-   展开“共享组件列表”可以看到，NVRAM 和群集已降级。****
+   展开“共享组件列表”可以看到，NVRAM 和群集已降级。
 
    ![显示选定的共享组件项的屏幕截图。 在相邻的边栏选项卡中，N V R A M 和群集处于警告状态。](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
-   展开“控制器 1 组件”列表可以看到，群集节点已发生故障。****  
+   展开“控制器 1 组件”列表可以看到，群集节点已发生故障。  
 
    ![显示选定的 "控制器1组件" 项的屏幕截图。 在相邻的边栏选项卡中，群集节点处于 "失败" 状态。](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. 如果遇到了未处于**正常**状态的组件，请联系 Microsoft 支持部门。 如果在设备上启用了警报，将收到电子邮件警报。 如果需要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
+4. 如果遇到了未处于 **正常** 状态的组件，请联系 Microsoft 支持部门。 如果在设备上启用了警报，将收到电子邮件警报。 如果需要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](./storsimple-8000-hardware-component-replacement.md)。
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple 设备的主机箱的组件列表
 下表概述了本地 StorSimple 设备的主机箱（在 8100 和 8600 中配备）中包含的物理和逻辑组件。
@@ -146,6 +146,5 @@ ms.locfileid: "86999490"
 ## <a name="next-steps"></a>后续步骤
 * 若要使用 StorSimple 设备管理器服务管理设备，请转到[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
 * 如果需要排除处于降级或故障状态的设备组件的故障，请参阅 [StorSimple 监视指示器](storsimple-monitoring-indicators.md)。
-* 若要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
+* 若要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](./storsimple-8000-hardware-component-replacement.md)。
 * 如果继续遇到设备问题，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
-

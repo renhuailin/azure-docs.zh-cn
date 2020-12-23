@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 98cec9fc30b4840a763358c0b3cd76659ff865d7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 4c7ba5806707e818f0ef13717d5f00b542c37614
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070337"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092731"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -37,9 +37,9 @@ ms.locfileid: "89070337"
 
 3. 选择“标识”。
 
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“保存” 。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“ **保存**”。
 
-    ![应用服务中的托管标识](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+    ![屏幕截图，显示要将状态切换到的位置，然后选择 "保存"。](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
@@ -109,7 +109,7 @@ ms.locfileid: "89070337"
 
 1. 根据需要按照 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
-2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/?view=azps-4.1.0#functions)：
+2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/#functions)：
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ tenantId 属性标识该标识所属的 Azure AD 租户。 principalId 是应用
 
 1. 根据需要按照 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
-2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下面的脚本还利用了 `New-AzUserAssignedIdentity`，必须根据[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)单独安装它。
+2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](/powershell/module/az.functions/#functions)。 下面的脚本还利用了 `New-AzUserAssignedIdentity`，必须根据[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)单独安装它。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -308,7 +308,7 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 可能需要配置目标资源，允许从应用程序进行访问。 例如，如果请求用于访问 Key Vault 的令牌，需要确保已添加包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持 Azure Active Directory 令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 > [!IMPORTANT]
-> 用于托管标识的后端服务将为每个资源 URI 维护缓存约 8 小时。 如果你更新特定目标资源的访问策略并立即检索该资源的令牌，则可以继续获取具有过时权限的缓存令牌，直到该令牌过期。 目前无法强制刷新令牌。
+> 托管标识的后端服务会在24小时内维护每个资源 URI 的缓存。 如果你更新特定目标资源的访问策略并立即检索该资源的令牌，则可以继续获取具有过时权限的缓存令牌，直到该令牌过期。 目前无法强制刷新令牌。
 
 在应用服务和 Azure Functions 中，使用简单的 REST 协议获取令牌。 此协议可用于所有应用程序和语言。 对于 .NET 和 Java，Azure SDK 提供了对此协议的抽象，并有助于本地开发体验。
 
@@ -345,7 +345,7 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 > | expires_on    | 访问令牌过期的时间范围。 该日期表示为自“1970-01-01T0:0:0Z UTC”开始的秒数（对应于令牌的 `exp` 声明）。                                                                                |
 > | not_before    | 访问令牌生效且可被接受的时间范围。 该日期表示为自“1970-01-01T0:0:0Z UTC”开始的秒数（对应于令牌的 `nbf` 声明）。                                                      |
 > | resource      | 请求访问令牌时所针对的资源，与请求的 `resource` 查询字符串参数匹配。                                                                                                                               |
-> | token_type    | 指示令牌类型值。 Azure AD 支持的唯一一个类型是 FBearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+> | token_type    | 指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 
 此响应与 [Azure AD 服务到服务访问令牌请求的响应](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
 
@@ -395,7 +395,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
         uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,
@@ -440,7 +440,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>使用用于.NET 的 Microsoft.Azure.Services.AppAuthentication 库
 
-对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 在云中托管时，将默认使用系统分配的标识，但你可以使用引用用户分配的标识的客户端 ID 的连接字符串环境变量自定义此行为。 有关此库的开发选项的详细信息，请参阅 [microsoft.azure.services.appauthentication 参考]。 本部分演示如何开始在代码中使用此库。
+对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 在云中托管时，将默认使用系统分配的标识，但可通过使用引用用户分配的标识的客户端 ID 的连接字符串环境变量对此行为进行自定义。 若要详细了解此库的开发选项，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]。 本部分演示如何开始在代码中使用此库。
 
 1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和任何其他必需 NuGet 包的引用。 以下示例还使用 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)。
 
@@ -522,7 +522,8 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [使用托管标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
+- [使用托管标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
+- [使用托管标识安全访问 Azure 存储](scenario-secure-app-access-storage.md)
+- [使用托管标识安全调用 Microsoft Graph](scenario-secure-app-access-microsoft-graph-as-app.md)
 
-[Microsoft.Azure.Services.AppAuthentication 参考]: https://go.microsoft.com/fwlink/p/?linkid=862452
+[Microsoft.Azure.Services.AppAuthentication 参考]: ../key-vault/general/service-to-service-authentication.md

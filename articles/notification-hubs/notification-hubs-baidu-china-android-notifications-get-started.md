@@ -16,11 +16,11 @@ ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
 ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003960"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009090"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
 
@@ -416,8 +416,8 @@ ms.locfileid: "89003960"
 
 可以在 [Azure 门户]中快速测试通知接收情况：使用通知中心配置屏幕中的“发送”  按钮，如以下屏幕所示：
 
-![Azure 门户的屏幕截图，其中包含红色的 "测试发送" 选项和一个指向它的红色箭头。 ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
- ![Azure 门户中的 "百度测试发送" 页的屏幕截图。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![Azure 门户的屏幕截图，其中“测试发送”选项以红色框标出，并有一个红色箭头指向它。](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+![Azure 门户中百度“测试发送”页的屏幕截图。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 通常，推送通知是在后端服务（例如，移动服务，或者使用兼容库的 ASP.NET）中发送的。 如果后端没有可用的库，则可直接使用 REST API 发送通知消息。
 
@@ -428,7 +428,7 @@ ms.locfileid: "89003960"
 * **REST 接口**：可以使用 [REST 接口](/previous-versions/azure/reference/dn223264(v=azure.100))在任何后端平台上支持通知。
 * **Microsoft Azure 通知中心 .NET SDK**：在适用于 Visual Studio 的 Nuget 包管理器中，运行 [NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-push-notification-tutorial.md)。
-* **移动应用**：有关如何从通知中心集成的 Azure 应用服务移动应用后端发送通知的示例，请参阅[将推送通知添加到移动应用](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)。
+* **移动应用**：有关如何从通知中心集成的 Azure 应用服务移动应用后端发送通知的示例，请参阅 [将推送通知添加到移动应用](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)。
 * **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>（可选）通过 .NET 控制台应用发送通知。
@@ -437,7 +437,7 @@ ms.locfileid: "89003960"
 
 1. 创建新的 Visual C# 控制台应用程序：
 
-    !["新建项目" 对话框的屏幕截图，其中突出显示了 "控制台应用程序" "Visual c #" 选项。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![“新建项目”对话框的屏幕截图，其中突出显示了控制台应用程序 Visual C# 选项。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，并在控制台窗口中执行以下命令： 
 
@@ -447,7 +447,7 @@ ms.locfileid: "89003960"
 
     此指令会使用 [Microsoft.Azure.Notification Hubs NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)添加对 Azure 通知中心 SDK 的引用。
 
-    !["程序包管理器控制台" 对话框的屏幕截图，其中包含以红色圆圈的 "发送到通知中心" 选项。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![“包管理器控制台”对话框的屏幕截图，其中“发送到通知中心”选项用红圈圈出。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. 打开 `Program.cs` 文件并添加以下 using 语句：
 

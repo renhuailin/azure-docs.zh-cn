@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb7b7da4ed5268e66260e48d6367bbe02f0845a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797570"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371828"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除组成员
 使用 Azure Active Directory，可继续添加和删除组成员。
@@ -61,6 +61,6 @@ ms.locfileid: "87797570"
 
 - [使用组管理对资源的访问权限](active-directory-manage-groups.md)
 
-- [管理组中用户的动态规则](../users-groups-roles/groups-create-rule.md)
+- [管理组中用户的动态规则](../enterprise-users/groups-create-rule.md)
 
 - [将 Azure 订阅关联或添加到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

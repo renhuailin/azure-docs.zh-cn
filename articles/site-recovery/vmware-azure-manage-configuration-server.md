@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361477"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546341"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理配置服务器以便进行 VMware VM/物理服务器灾难恢复
 
@@ -29,7 +29,7 @@ ms.locfileid: "91361477"
 可以访问配置服务器，如下所示：
 
 * 登录到部署了配置服务器的 VM，然后从桌面快捷方式启动 Azure Site Recovery 配置管理器。
-* 或者，你可以从 https://*ConfigurationServerName*/： 44315/远程访问配置服务器。 使用管理员凭据登录。
+* 或者，可以从 https:// *ConfigurationServerName* /:44315/ 远程访问配置服务器。 使用管理员凭据登录。
 
 ## <a name="modify-vmware-server-settings"></a>修改 VMware 服务器设置
 
@@ -71,7 +71,7 @@ ms.locfileid: "91361477"
 
 1. 在[登录](#access-configuration-server)后，选择“管理虚拟机凭据”。
 2. 单击“添加虚拟机凭据”。
-    ![屏幕截图显示 "管理虚拟机凭据" 窗格和 "添加虚拟机凭据" 链接。](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![显示“管理虚拟机凭据”窗格的屏幕截图，其中包含“添加虚拟机凭据”链接。](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. 输入新凭据，单击“添加”。
 
 还可以通过 CSPSConfigtool.exe 添加凭据。
@@ -169,12 +169,12 @@ ms.locfileid: "91361477"
 - 如果运行的是 9.7、9.8、9.9 或 9.10 版，可以直接升级到 9.11 版。
 - 如果运行的是 9.6 版或更早版本并且想要升级到 9.11 版，则必须先升级到 9.7 版， 然后再升级到 9.11 版。
 
-有关 Azure Site Recovery 组件支持声明的详细指南，请参阅[此处](https://aka.ms/asr_support_statement)。
-[此处](https://aka.ms/asr_update_rollups)提供了用于升级到配置服务器的所有版本的更新汇总的链接。
+有关 Azure Site Recovery 组件支持声明的详细指南，请参阅[此处](./service-updates-how-to.md#support-statement-for-azure-site-recovery)。
+[此处](./service-updates-how-to.md#links-to-currently-supported-update-rollups)提供了用于升级到配置服务器的所有版本的更新汇总的链接。
 
 > [!IMPORTANT]
 > 对于每一新版“N”的已发布 Azure Site Recovery 组件，“N-4”以下的所有版本都被视为不受支持。 始终建议升级到可用的最新版本。</br>
-> 有关 Azure Site Recovery 组件支持声明的详细指南，请参阅[此处](https://aka.ms/asr_support_statement)。
+> 有关 Azure Site Recovery 组件支持声明的详细指南，请参阅[此处](./service-updates-how-to.md#support-statement-for-azure-site-recovery)。
 
 按如下所示升级服务器：
 
@@ -183,16 +183,16 @@ ms.locfileid: "91361477"
     ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 将更新安装程序文件下载到配置服务器上。
 
-    ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![显示在何处单击以下载更新安装程序文件的屏幕截图。](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. 双击以运行安装程序。
 5. 安装程序检测计算机上运行的当前版本。 单击“是”开始升级。
 6. 升级完成时，验证服务器配置。
 
-    ![更新](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![显示已完成的服务器验证配置的屏幕截图。](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. 单击“完成”关闭安装程序。
-8. 若要升级其余的 Site Recovery 组件，请参阅我们的[升级指南](https://aka.ms/asr_vmware_upgrades)。
+8. 若要升级其余的 Site Recovery 组件，请参阅我们的[升级指南](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)。
 
 ## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>从命令行升级配置服务器/进程服务器
 

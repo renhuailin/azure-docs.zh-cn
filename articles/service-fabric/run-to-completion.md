@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: 6f2f6aa4380fcf6909957118bf682275350ce68c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261206"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000260"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 

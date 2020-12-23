@@ -4,12 +4,12 @@ description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206208"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672659"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -17,12 +17,13 @@ ms.locfileid: "88206208"
 
 本文介绍了如何在 .NET 类库中使用 C# 开发 Azure Functions。
 
+作为 C# 开发人员，你可能还会对以下文章之一感兴趣：
+
+| 入门 | 概念| 引导式学习/示例 |
+| -- | -- | -- | 
+| <ul><li>[使用 Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[使用 Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[使用命令行工具](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[托管选项](functions-scale.md)</li><li>[性能注意事项](functions-best-practices.md)</li><li>[Visual Studio 开发](functions-develop-vs.md)</li><li>[依赖关系注入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[C# 示例](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+
 Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在 Azure 门户中使用 C#](functions-create-function-app-portal.md) 的指南，请参阅 [C# 脚本 (.csx) 开发人员参考](functions-reference-csharp.md)。
-
-本文假设你已阅读了以下文章：
-
-* [Azure Functions 开发人员指南](functions-reference.md)
-* [Azure Functions Visual Studio 2019 工具](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>支持的版本
 
@@ -137,7 +138,7 @@ public static class BindingExpressionsExample
 
 生成过程会在生成文件中的一个函数文件夹中创建一个 *function.json* 文件。 如前所述，此文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 
 
-此文件的用途是向缩放控制器提供信息以用于针对 [消耗计划的缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
+此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
 
 生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 下面是一个示例：
 
@@ -164,18 +165,7 @@ public static class BindingExpressionsExample
 
 Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目和 2.x 项目的不同之处在于目标框架。 以下是 csproj  文件的相关部分，其中显示了不同的目标框架和相同的 `Sdk` 包：
 
-**Functions 1.x**
-
-```xml
-<PropertyGroup>
-  <TargetFramework>net461</TargetFramework>
-</PropertyGroup>
-<ItemGroup>
-  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
-</ItemGroup>
-```
-
-**Functions 2.x**
+# <a name="v2x"></a>[v2.x+](#tab/v2)
 
 ```xml
 <PropertyGroup>
@@ -186,6 +176,19 @@ Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目
   <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
 </ItemGroup>
 ```
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+---
+
 
 `Sdk` 包的依赖关系是触发器和绑定。 1\.x 项目是指 1.x 触发器和绑定，因为这些触发器和绑定面向 .NET Framework，而 2.x 触发器和绑定面向 .NET Core。
 
@@ -205,11 +208,11 @@ Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install
 
 ## <a name="readytorun"></a>ReadyToRun
 
-可以将函数应用编译为 [ReadyToRun 二进制文件](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)。 ReadyToRun 是一种预先编译的形式，它可以提高启动性能，从而有助于降低 [冷启动](functions-scale.md#cold-start) 在 [消耗计划](functions-scale.md#consumption-plan)中运行时的影响。
+可以将函数应用编译为 [ReadyToRun 二进制文件](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)。 ReadyToRun 是一种预先编译形式，可以提高启动性能，帮助降低在[消耗计划](functions-scale.md#consumption-plan)中运行时的[冷启动](functions-scale.md#cold-start)的影响。
 
-ReadyToRun 在 .NET 3.0 中提供，并且需要 [3.0 版本的 Azure Functions 运行时](functions-versions.md)。
+ReadyToRun 在 .NET 3.0 中提供，并且需要 [Azure Functions 运行时版本 3.0](functions-versions.md)。
 
-若要将你的项目编译为 ReadyToRun，请通过添加和元素更新你的项目文件 `<PublishReadyToRun>` `<RuntimeIdentifier>` 。 下面是用于发布到 Windows 32 位函数应用的配置。
+若要将项目编译为 ReadyToRun，请通过添加 `<PublishReadyToRun>` 和 `<RuntimeIdentifier>` 元素来更新项目文件。 以下是用于发布到 Windows 32 位函数应用的配置。
 
 ```xml
 <PropertyGroup>
@@ -221,9 +224,9 @@ ReadyToRun 在 .NET 3.0 中提供，并且需要 [3.0 版本的 Azure Functions 
 ```
 
 > [!IMPORTANT]
-> ReadyToRun 当前不支持交叉编译。 必须在与部署目标相同的平台上生成应用。 另外，请注意函数应用中配置的 "位数"。 例如，如果 Azure 中的 function app 为 Windows 64 位，则必须在 Windows 上编译应用 `win-x64` 作为 [运行时标识符](/dotnet/core/rid-catalog)。
+> ReadyToRun 目前不支持交叉编译。 必须在与部署目标相同的平台上生成应用。 此外，请注意函数应用中配置的“位数”。 例如，如果 Azure 中的函数应用为 Windows 64 位，则在 Windows 上编译应用时必须使用 `win-x64` 作为[运行时标识符](/dotnet/core/rid-catalog)。
 
-还可以从命令行通过 ReadyToRun 生成应用。 有关详细信息，请参阅 `-p:PublishReadyToRun=true` 中的选项 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 。
+也可以通过命令行使用 ReadyToRun 生成应用。 有关详细信息，请参阅 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 中的 `-p:PublishReadyToRun=true` 选项。
 
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 
@@ -258,25 +261,6 @@ public static class ICollectorExample
     }
 }
 ```
-
-## <a name="logging"></a>日志记录
-
-若要使用 C# 将输出记录到流式传输日志中，请包括 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`，如下例所示：  
-
-```csharp
-public static class SimpleExample
-{
-    [FunctionName("QueueTrigger")]
-    public static void Run(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        ILogger log)
-    {
-        log.LogInformation($"C# function processed: {myQueueItem}");
-    }
-} 
-```
-
-避免在 Azure Functions 中使用 `Console.Write`。 有关详细信息，请参阅“监视 Azure Functions”文章中的[使用 C# 函数编写日志](functions-monitoring.md#write-logs-in-c-functions)****。
 
 ## <a name="async"></a>异步
 
@@ -328,6 +312,239 @@ public static class CancellationTokenExample
 }
 ```
 
+## <a name="logging"></a>日志记录
+
+在函数代码中，可以将输出写入日志，这些日志在 Application Insights 中显示为跟踪。 若要将内容写入日志，建议的方法是包括一个 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数（通常名为 `log`）。 Functions 运行时的版本 1.x 使用了 `TraceWriter`，后者也将内容写入 Application Insights，但不支持结构化日志记录。 不要使用 `Console.Write` 来写入日志，因为 Application Insights 不会捕获此数据。 
+
+### <a name="ilogger"></a>ILogger
+
+在函数定义中包括一个 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 参数，该参数支持[结构化日志记录](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
+
+使用 `ILogger` 对象，可以调用 [ILogger 上的 `Log<level>` 扩展方法](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods)来创建日志。 以下代码会写入类别为“`Function.<YOUR_FUNCTION_NAME>.User.`”的 `Information` 日志：
+
+```cs
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
+{
+    logger.LogInformation("Request for item with key={itemKey}.", id);
+```
+
+若要了解有关函数如何实现 `ILogger` 的详细信息，请参阅 [收集遥测数据](functions-monitoring.md#collecting-telemetry-data)。 前缀为的类别 `Function` 假设你使用的是 `ILogger` 实例。 如果选择改为使用 `ILogger<T>` ，则类别名称可能基于 `T` 。  
+
+### <a name="structured-logging"></a>结构化日志记录
+
+占位符的顺序（而不是其名称）确定日志消息中使用的参数。 假设有以下代码：
+
+```csharp
+string partitionKey = "partitionKey";
+string rowKey = "rowKey";
+logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionKey, rowKey);
+```
+
+如果保留相同的消息字符串并颠倒参数的顺序，则生成的消息文本将在错误的位置生成值。
+
+以这种方式处理占位符，以便可以执行结构化日志记录。 Application Insights 存储参数名称值对和消息字符串。 结果是消息参数变为可以查询的字段。
+
+如果记录器方法调用类似于前面的示例，则可以查询字段 `customDimensions.prop__rowKey`。 添加 `prop__` 前缀以确保运行时添加的字段和函数代码添加的字段之间没有冲突。
+
+此外，可以通过引用字段 `customDimensions.prop__{OriginalFormat}` 查询原始消息字符串。  
+
+下面是 `customDimensions` 数据的示例 JSON 表示形式：
+
+```json
+{
+  "customDimensions": {
+    "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
+    "Category":"Function",
+    "LogLevel":"Information",
+    "prop__message":"c9519cbf-b1e6-4b9b-bf24-cb7d10b1bb89"
+  }
+}
+```
+
+## <a name="log-custom-telemetry-in-c-functions"></a>在 C# 函数中记录自定义遥测
+
+Functions 特定版本的 Application Insights SDK 可用于将自定义遥测数据从函数发送到 Application Insights：[Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights)。 在命令提示符中使用以下命令来安装此包：
+
+# <a name="command"></a>[命令](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+在此命令中，将 `<VERSION>` 替换为此包的版本，该版本支持 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/) 的已安装版本。 
+
+以下 C# 示例使用[自定义遥测 API](../azure-monitor/app/api-custom-events-metrics.md)。 示例针对的是 .NET 类库，但对于 C# 脚本，Application Insights 代码是相同的。
+
+# <a name="v2x"></a>[v2.x+](#tab/v2)
+
+版本 2.x 和更高版本运行时使用 Application Insights 中的较新功能自动将遥测与当前操作进行关联。 不需要手动设置操作 `Id`、`ParentId` 或 `Name` 字段。
+
+```cs
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public class HttpTrigger2
+    {
+        private readonly TelemetryClient telemetryClient;
+
+        /// Using dependency injection will guarantee that you use the same configuration for telemetry collected automatically and manually.
+        public HttpTrigger2(TelemetryConfiguration telemetryConfiguration)
+        {
+            this.telemetryClient = new TelemetryClient(telemetryConfiguration);
+        }
+
+        [FunctionName("HttpTrigger2")]
+        public Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
+            HttpRequest req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.Query
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Write an event to the customEvents table.
+            var evt = new EventTelemetry("Function called");
+            evt.Context.User.Id = name;
+            this.telemetryClient.TrackEvent(evt);
+
+            // Generate a custom metric, in this case let's use ContentLength.
+            this.telemetryClient.GetMetric("contentLength").TrackValue(req.ContentLength);
+
+            // Log a custom dependency in the dependencies table.
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            dependency.Context.User.Id = name;
+            this.telemetryClient.TrackDependency(dependency);
+
+            return Task.FromResult<IActionResult>(new OkResult());
+        }
+    }
+}
+```
+
+在此示例中，自定义指标数据在发送到 customMetrics 表之前由主机聚合。 若要了解详细信息，请参阅 Application Insights 中的 [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) 文档。 
+
+在本地运行时，必须使用 Application Insights 键将 `APPINSIGHTS_INSTRUMENTATIONKEY` 设置添加到 [local.settings.json](functions-run-local.md#local-settings-file) 文件中。
+
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```cs
+using System;
+using System.Net;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.WebJobs;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public static class HttpTrigger2
+    {
+        private static string key = TelemetryConfiguration.Active.InstrumentationKey = 
+            System.Environment.GetEnvironmentVariable(
+                "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
+
+        private static TelemetryClient telemetryClient = 
+            new TelemetryClient() { InstrumentationKey = key };
+
+        [FunctionName("HttpTrigger2")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+            HttpRequestMessage req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.GetQueryNameValuePairs()
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Get request body
+            dynamic data = await req.Content.ReadAsAsync<object>();
+
+            // Set name to query string or body data
+            name = name ?? data?.name;
+         
+            // Track an Event
+            var evt = new EventTelemetry("Function called");
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
+            
+            // Track a Metric
+            var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
+            
+            // Track a Dependency
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
+        }
+        
+        // Correlate all telemetry with the current Function invocation
+        private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
+        {
+            context.Operation.Id = functionContext.InvocationId.ToString();
+            context.Operation.ParentId = functionContext.InvocationId.ToString();
+            context.Operation.Name = functionContext.FunctionName;
+            context.User.Id = userName;
+        }
+    }    
+}
+```
+---
+
+请勿调用 `TrackRequest` 或 `StartOperation<RequestTelemetry>`，因为将显示函数调用的重复请求。  Functions 运行时自动跟踪请求。
+
+不要设置 `telemetryClient.Context.Operation.Id`。 当多个函数同时运行时，这种全局设置会导致不正确的关联。 请改为创建新的遥测实例（`DependencyTelemetry`、`EventTelemetry`）并修改其 `Context` 属性。 然后将遥测实例传入到 `TelemetryClient` 的相应 `Track` 方法（`TrackDependency()`、`TrackEvent()`、`TrackMetric()`）。 此方法可确保遥测具有当前函数调用的正确关联详细信息。
+
+
 ## <a name="environment-variables"></a>环境变量
 
 若要获取环境变量或应用设置值，请使用 `System.Environment.GetEnvironmentVariable`，如以下代码示例所示：
@@ -343,7 +560,7 @@ public static class EnvironmentVariablesExample
         log.LogInformation(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
     }
 
-    public static string GetEnvironmentVariable(string name)
+    private static string GetEnvironmentVariable(string name)
     {
         return name + ": " +
             System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
@@ -357,11 +574,11 @@ public static class EnvironmentVariablesExample
 
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
-在 C# 和其他 .NET 语言中，可以使用[命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定模式，而不是在属性中使用“声明性”[*绑定*](https://en.wikipedia.org/wiki/Declarative_programming) 。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 通过此模式，可以在函数代码中动态绑定到受支持的输入和输出绑定。
+在 C# 和其他 .NET 语言中，可以使用 [命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定模式，而不是在属性中使用“声明性”[*绑定*](https://en.wikipedia.org/wiki/Declarative_programming) 。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 通过此模式，可以在函数代码中动态绑定到受支持的输入和输出绑定。
 
 如下所示定义命令性绑定：
 
-- **不要**在函数签名中包括用于所需的命令性绑定的属性。
+- **不要** 在函数签名中包括用于所需的命令性绑定的属性。
 - 传递输入参数 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
 - 使用下面的 C# 模式执行数据绑定。
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 520ad8f68e0f995ea05456ebcf6de4c1ba3f9418
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262095"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030299"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-本文介绍如何开始创建使用媒体服务的 Azure Functions。 本文中定义的 Azure Function 可监视新 MP4 文件中名为“输入”的存储帐户容器  。 将文件放入存储容器后，blob 触发器就会执行此函数。 要查看 Azure 函数，请参阅 Azure 函数部分的[概述](../../azure-functions/functions-overview.md)和其他主题  。
+本文介绍如何开始创建使用媒体服务的 Azure Functions。 本文中定义的 Azure Function 可监视新 MP4 文件中名为“输入”的存储帐户容器  。 将文件放入存储容器后，blob 触发器就会执行此函数。 若要查看 Azure Functions，请参阅 **Azure Functions** 部分中的 [概述](../../azure-functions/functions-overview.md)和其他主题。
 
 如果你想要浏览并部署使用 Azure Media Services 的现有 Azure 功能，请查看[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。 此存储库包含几个示例，示例中将使用媒体服务来演示有关直接从 Blob 存储引入内容、编码以及将内容写回 Blob 存储的工作流。 此存储库还包含演示如何通过 WebHook 和 Azure 队列监视作业通知的示例。 也可根据[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) 存储库中的示例进行 Functions 开发。 若要部署此函数，请按“部署到 Azure”  按钮。
 
@@ -61,17 +61,17 @@ ms.locfileid: "89262095"
 
 ## <a name="create-a-function"></a>创建函数
 
-部署 Function App 后，可在**应用服务** Azure Functions 中找到它。
+部署 Function App 后，可在 **应用服务** Azure Functions 中找到它。
 
 1. 选择 Function App，然后单击“新建函数”。 
 2. 选择“C#”  语言和“数据处理”  方案。
-3. 选择“BlobTrigger”  模板。 只要将 blob 上传到输入容器，就会触发此函数  。 下一步的“路径”中指定了**输入**名称。
+3. 选择“BlobTrigger”  模板。 只要将 blob 上传到输入容器，就会触发此函数  。 下一步的“路径”中指定了 **输入** 名称。
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![屏幕截图显示了 "选择模板" 对话框，其中选择了 BlobTrigger。](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. 选择“BlobTrigger”后，页面上会显示更多控件  。
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![屏幕截图显示 "为函数命名" 对话框。](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. 单击“创建”。  
 
@@ -79,7 +79,7 @@ ms.locfileid: "89262095"
 
 Azure 函数与代码文件以及本部分所述的其他文件相关联。 当使用 Azure 门户创建函数时，将为你创建 function.json 和 run.csx   。 需要添加或上传 project.json 文件  。 本文剩余部分对每个文件进行了简要介绍，并说明其定义。
 
-![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![屏幕截图显示项目中的 json 文件。](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
@@ -129,7 +129,7 @@ project.json 文件包含依赖项。 下面是一个 **project.json** 文件示
     
 ### <a name="runcsx"></a>run.csx
 
-这是函数的 C# 代码。  下方定义的函数可监视新 MP4 文件中名为**输入**的存储帐户容器（即路径中指定的容器）。 将文件放入存储容器后，blob 触发器就会执行此函数。
+这是函数的 C# 代码。  下方定义的函数可监视新 MP4 文件中名为 **输入** 的存储帐户容器（即路径中指定的容器）。 将文件放入存储容器后，blob 触发器就会执行此函数。
     
 本部分定义的示例演示了 
 
@@ -333,7 +333,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ## <a name="test-your-function"></a>测试函数
 
-要测试函数，需将 MP4 文件上传到连接字符串中所指定存储帐户的**输入**容器中。  
+要测试函数，需将 MP4 文件上传到连接字符串中所指定存储帐户的 **输入** 容器中。  
 
 1. 选择在 StorageConnection 环境变量中指定的存储帐户  。
 2. 单击“Blob”  。

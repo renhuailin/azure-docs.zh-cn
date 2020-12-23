@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: c581eb79a158dcb2645bcb9fd830a4f83dba1e0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f44c1529055458f341fa6c4c5285560d878d2d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87100693"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674967"
 ---
 # <a name="azure-for-students-starter"></a>面向学生的 Azure 入门版
 
@@ -37,4 +37,4 @@ ms.locfileid: "87100693"
 - [获取有关登录错误的帮助](troubleshoot-login.md)
 - [下载软件（面向学生的 Azure 入门版）](download-software.md)
 - [面向学生的 Azure 计划](azure-students-program.md)
-- [Microsoft Learn：免费联机学习平台](https://docs.microsoft.com/learn/)
+- [Microsoft Learn：免费联机学习平台](/learn/)

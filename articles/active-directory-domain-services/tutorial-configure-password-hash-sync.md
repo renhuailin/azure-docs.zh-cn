@@ -1,20 +1,20 @@
 ---
 title: 启用 Azure AD 域服务的密码哈希同步 | Microsoft Docs
 description: 本教程介绍如何使用 Azure AD Connect 来启用与 Azure Active Directory 域服务托管域之间的密码哈希同步。
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 02828e0c159e2d30dacc5759f1239dae1268dac5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: justinha
+ms.openlocfilehash: e83d8941d1be7fd36f53a881a21716252ad01954
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491776"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618342"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教程：在混合环境的 Azure Active Directory 域服务中启用密码同步
 

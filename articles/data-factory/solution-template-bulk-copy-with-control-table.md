@@ -10,30 +10,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 12/09/2020
+ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441062"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920887"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库进行大容量复制
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-若要将数据从 Oracle 服务器、Netezza、Teradata 或 SQL Server 中的数据仓库复制到 Azure Synapse 分析 (以前的 SQL 数据仓库) ，则必须从多个表加载大量数据。 通常情况下，必须在每个表中对数据分区，以便使用多个线程从单个表并行加载行。 本文介绍可以在这些方案中使用的模板。
+若要将数据从 Oracle Server、Netezza、Teradata 或 SQL Server 中的数据仓库复制到 Azure Synapse Analytics，必须从多个表中加载大量数据。 通常情况下，必须在每个表中对数据分区，以便使用多个线程从单个表并行加载行。 本文介绍可以在这些方案中使用的模板。
 
- >!注意如果要将包含相对较小数据量的少量表中的数据复制到 Azure Synapse Analytics，使用 [Azure 数据工厂复制数据工具](copy-data-tool.md)会更有效。 本文介绍的模板超出你对该方案的需求。
+ >!NOTE 如果要从数据量相对较小的少数几个表中将数据复制到 Azure Synapse Analytics，则使用 [Azure 数据工厂复制数据工具](copy-data-tool.md)会更高效。 本文介绍的模板超出你对该方案的需求。
 
 ## <a name="about-this-solution-template"></a>关于此解决方案模板
 
 此模板可从外部控制表检索用于复制的源数据库分区的列表。 然后，它会循环访问源数据库中的每个分区，并将数据复制到目标。
 
 该模板包含三个活动：
-- **查找**可从外部控制表检索源数据库分区的列表。
+- **查找** 可从外部控制表检索源数据库分区的列表。
 - **ForEach** 可从查找活动中获取分区列表，然后针对复制活动循环访问每个分区。
-- **复制**可将每个分区从源数据库存储复制到目标存储。
+- **复制** 可将每个分区从源数据库存储复制到目标存储。
 
 模板定义以下参数：
 - *Control_Table_Name* 是外部控制表，用于存储源数据库的分区列表。
@@ -44,7 +44,7 @@ ms.locfileid: "89441062"
 - *Data_Destination_Container* 是将数据复制到目标存储时使用的根文件夹路径。 
 - *Data_Destination_Directory* 是将数据复制到目标存储中时使用的根下的目录路径。 
 
-仅当所选目标是基于文件的存储时，最后三个参数（定义目标存储中的路径）才可见。 如果选择“Azure Synapse Analytics (以前称为 SQL DW)”作为目标存储，则不需要这些参数。 但是，Azure Synapse 分析中的表名和架构必须与源数据库中的表名和架构相同。
+仅当所选目标是基于文件的存储时，最后三个参数（定义目标存储中的路径）才可见。 如果选择 "Azure Synapse Analytics" 作为目标存储，则不需要这些参数。 但 Azure Synapse Analytics 中的表名和架构必须与源数据库中的表名和架构相同。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
@@ -94,7 +94,7 @@ ms.locfileid: "89441062"
 
     ![查看结果](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9.  (可选) 如果选择了 "Azure Synapse Analytics (以前的 SQL DW) " 作为数据目标，则必须根据 Azure Synapse Analytics Polybase 的要求，输入一个连接到 Azure Blob 存储进行过渡。 模板会自动为 Blob 存储生成容器路径。 检查是否在管道运行后创建了容器。
+9.  (可选) 如果选择了 "Azure Synapse Analytics" 作为数据目标，则必须根据 Azure Synapse Analytics Polybase 的要求，为过渡输入连接到 Azure Blob 存储。 模板会自动为 Blob 存储生成容器路径。 检查是否在管道运行后创建了容器。
     
     ![Polybase 设置](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

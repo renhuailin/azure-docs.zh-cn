@@ -9,7 +9,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 AKS 群集
+    - name: 部署 AKS 群集
       expanded: true
       items:
         - name: 使用 Azure CLI
@@ -142,18 +142,24 @@
           href: upgrade-cluster.md
         - name: 使用运行时间 SLA
           href: uptime-sla.md
-        - name: 使用邻近放置组（预览版）
+        - name: 使用邻近放置组
           href: reduce-latency-ppg.md
         - name: 升级节点映像
           href: node-image-upgrade.md
+        - name: 使用 GitHub Actions 自动升级节点映像
+          href: node-upgrade-github-actions.md
         - name: 处理节点 OS 更新
           href: node-updates-kured.md
         - name: 配置 AKS 群集
           href: cluster-configuration.md
+        - name: 自定义节点配置（预览）
+          href: custom-node-configuration.md
         - name: 将 ACR 与 AKS 群集集成
           href: cluster-container-registry-integration.md
         - name: 创建虚拟节点
           items:
+            - name: 使用虚拟节点
+              href: virtual-nodes.md
             - name: 使用 Azure CLI
               href: virtual-nodes-cli.md
             - name: 使用 Azure 门户
@@ -166,14 +172,14 @@
           items:
             - name: 使用多个节点池
               href: use-multiple-node-pools.md
-            - name: 使用点节点池（预览版）
+            - name: 使用现成节点池
               href: spot-node-pool.md
             - name: 使用系统节点池
               href: use-system-pools.md
         - name: 使用 Terraform 部署 AKS
-          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: 使用 Kubernetes 资源查看器（预览版）
+        - name: Azure 门户 Kubernetes 资源视图
           href: kubernetes-portal.md
         - name: 使用 Kubernetes 仪表板
           href: kubernetes-dashboard.md
@@ -250,6 +256,8 @@
           href: kubernetes-service-principal.md
         - name: 使用托管标识
           href: use-managed-identity.md
+        - name: 使用 AAD Pod 标识（预览）
+          href: use-azure-ad-pod-identity.md
         - name: 限制对群集配置文件的访问
           href: control-kubeconfig-access.md
         - name: 使用网络策略保护 Pod 流量
@@ -325,8 +333,10 @@
           href: spark-job.md
         - name: 使用 GPU
           href: gpu-cluster.md
-        - name: 使用 Azure Database for PostgreSQL
-          href: ../postgresql/concepts-aks.md
+        - name: 使用 PostgreSQL 生成应用
+          href: ../postgresql/flexible-server/tutorial-django-aks-database.md
+        - name: 使用 MySQL 生成应用
+          href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
         - name: 使用 Azure API 管理
           href: ../api-management/api-management-kubernetes.md
@@ -358,10 +368,10 @@
     - name: DevOps
       items:
         - name: 使用 Ansible 创建 AKS 群集
-          href: /azure/ansible/ansible-create-configure-aks
+          href: /azure/developer/ansible/aks-configure-clusters
           maintainContext: true
         - name: Jenkins 持续部署
-          href: jenkins-continuous-deployment.md
+          href: /azure/developer/jenkins/deploy-from-github-to-aks
         - name: Azure DevOps 项目
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true

@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
-ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069673"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367967"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>将网络安全组与 Azure Site Recovery 配合使用
 
-网络安全组用于限制发往虚拟网络中的资源的网络流量。 [网络安全组 (NSG)](../virtual-network/security-overview.md#network-security-groups) 包含一个安全规则列表，这些规则可根据源或目标 IP 地址、端口和协议允许或拒绝入站或出站网络流量。
+网络安全组用于限制发往虚拟网络中的资源的网络流量。 [网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) 包含一个安全规则列表，这些规则可根据源或目标 IP 地址、端口和协议允许或拒绝入站或出站网络流量。
 
 在资源管理器部署模型下，可以将 NSG 关联到子网或单个网络接口。 将 NSG 关联到子网时，规则适用于连接到该子网的所有资源。 通过将 NSG 与已经拥有关联 NSG 的子网内的单个网络接口关联，可进一步限制流量。
 
@@ -37,7 +37,7 @@ ms.locfileid: "90069673"
 
 这样可实现粒度级的安全规则应用。 例如，你可能希望允许对子网下几个应用程序 VM（例如前端 VM）的入站 Internet 访问，但限制对其他 VM（例如数据库和其他后端 VM）的入站 Internet 访问。 在这种情况下，可以在子网 NSG 上设置更宽松的规则，允许 Internet 流量，并通过在 VM NSG 中拒绝访问来限制对特定 VM 的访问。 同样的规则可应用于出站流量。
 
-设置此类 NSG 配置时，请确保将正确的优先级应用于[安全规则](../virtual-network/security-overview.md#security-rules)。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。
+设置此类 NSG 配置时，请确保将正确的优先级应用于[安全规则](../virtual-network/network-security-groups-overview.md#security-rules)。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。
 
 将网络安全组同时应用到网络接口和子网时，你不一定总能察觉得到。 可通过查看网络接口的[有效安全规则](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules)，验证已应用到网络接口的聚合规则。 还可使用 [Azure 网络观察程序](../network-watcher/network-watcher-monitoring-overview.md)中的 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)功能来确定是否允许发往或发自网络接口的通信。 该工具会告知通信是否受允许，以及哪个网络安全规则允许或拒绝流量。
 
@@ -72,7 +72,7 @@ Site Recovery 不会在故障转移操作中创建或复制 NSG。 建议在启�
 创建并配置 NSG 后，建议运行[测试故障转移](azure-to-azure-tutorial-dr-drill.md)来验证脚本化的 NSG 关联和故障转移后的 VM 连接。
 
 ## <a name="next-steps"></a>后续步骤
--    详细了解[网络安全组](../virtual-network/security-overview.md#network-security-groups)。
--    详细了解 NSG [安全规则](../virtual-network/security-overview.md#security-rules)。
+-    详细了解[网络安全组](../virtual-network/network-security-groups-overview.md#network-security-groups)。
+-    详细了解 NSG [安全规则](../virtual-network/network-security-groups-overview.md#security-rules)。
 -    详细了解 NSG 的[高效安全规则](../virtual-network/diagnose-network-traffic-filter-problem.md)。
 -    详细了解如何使用[恢复计划](site-recovery-create-recovery-plans.md)自动执行应用程序故障转移。

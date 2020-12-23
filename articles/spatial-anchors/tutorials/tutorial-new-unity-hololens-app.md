@@ -1,19 +1,19 @@
 ---
 title: 教程：创建新的 HoloLens Unity 应用
 description: 本教程介绍如何使用 Azure 空间定位点创建新的 HoloLens Unity 应用。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 08/17/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535866"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95996248"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 HoloLens Unity 应用的分步说明
 
@@ -25,7 +25,7 @@ ms.locfileid: "89535866"
 
 1. 具有通用 Windows 平台开发工作负荷和 Windows 10 SDK（10.0.18362.0 或更新版本）组件以及<a href="https://git-scm.com/download/win" target="_blank">适用于 Windows 的 Git</a> 且安装了 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a> 的 Windows 计算机。
 2. 适用于 Visual Studio 的 [C++/WinRT Visual Studio 扩展 (VSIX)](https://aka.ms/cppwinrt/vsix) 应从 [Visual Studio Marketplace](https://marketplace.visualstudio.com/) 安装。
-3. 启用了[开发人员模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)的 HoloLens 设备。 本文需要包含 [Windows 2018 年 10 月 10 日更新](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 )（也称为 RS5）的 HoloLens 设备。 要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”按钮  。
+3. 启用了[开发人员模式](/windows/mixed-reality/using-visual-studio)的 HoloLens 设备。 本文需要包含 [Windows 2020 年 5 月 10 日更新](/windows/mixed-reality/whats-new/release-notes-may-2020)的 HoloLens 设备。 要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”按钮  。
 
 ## <a name="getting-started"></a>入门
 
@@ -84,12 +84,12 @@ ms.locfileid: "89535866"
 1. 转到“GameObject” -> “3D 对象” -> “球体”。
 2. 在“检查器”中，将其刻度设置为“0.25、0.25、0.25”。
 3. 在“层次结构”窗格中找到“球体” 。 单击该球体，并将其拖到“项目”窗格的“资产”文件夹中 。
-4. 右键单击已在“层次结构”窗格中创建的原始球体，并将其**删除** 。
+4. 右键单击已在“层次结构”窗格中创建的原始球体，并将其 **删除** 。
 
 现在，应该在“项目”窗格中具有球体预制项。
 
 ## <a name="trying-it-out"></a>体验一下
-若要测试一切设置是否有效，请在“Unity”中生成应用，并从“Visual Studio”进行部署 。 按照 [**MR 基础知识 100：Unity 入门**课程](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)中第 6 章进行操作。 应会显示 Unity 启动屏幕，然后是清晰的显示屏。
+若要测试一切设置是否有效，请在“Unity”中生成应用，并从“Visual Studio”进行部署 。 按照 [**MR 基础知识 100：Unity 入门** 课程](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)中第 6 章进行操作。 应会显示 Unity 启动屏幕，然后是清晰的显示屏。
 
 ## <a name="place-an-object-in-the-real-world"></a>将对象放入真实世界
 让我们使用该应用创建并放置一个对象。 打开[部署应用程序](#trying-it-out)时创建的 Visual Studio 解决方案。
@@ -204,11 +204,11 @@ ms.locfileid: "89535866"
 
 获取 Azure 空间定位点帐户标识符、密钥和域后，将 `Account Id` 粘贴到 `SpatialAnchorsAccountId`，将 `Account Key` 粘贴到 `SpatialAnchorsAccountKey`并将 `Account Domain` 粘贴到 `SpatialAnchorsAccountDomain`。
 
-最后，让我们将所有元素挂接到一起。 在 `SpawnNewAnchoredObject()` 方法中添加以下代码。 创建球体后，此代码将立即调用 `CreateAnchorAsync()` 方法。 该方法返回后，以下代码将最后一次更新球体，将其颜色更改为蓝色。
+最后，让我们将所有元素挂接到一起。 在 `CreateAndSaveSphere()` 方法中添加以下代码。 创建球体后，此代码将立即调用 `CreateAnchorAsync()` 方法。 该方法返回后，以下代码将最后一次更新球体，将其颜色更改为蓝色。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-再次从“Visual Studio”运行应用。 在头部移动，然后隔空敲击以放置球体。 收集到足够的帧后，球体将变为黄色，并且云上传操作将会开始。 上传完成后，球体将变为蓝色。 （可选）也可以使用 Visual Studio 中的“输出”窗口来监视应用发送的日志消息。 可以观察 `RecommendedForCreateProgress`，上传完成后，你将能够看到从云返回的定位点标识符。
+再次从“Visual Studio”运行应用。 在头部移动，然后隔空敲击以放置球体。 收集到足够的帧后，球体将变为黄色，并且云上传操作将会开始。 上传完成后，球体将变为蓝色。 （可选）在 Visual Studio 中进行调试时，还可以使用[“输出”窗口](/visualstudio/ide/reference/output-window)来监视应用发送的日志消息。 请确保从 Visual Studio 部署应用的 `Debug` 配置，以查看日志消息。 可以观察 `RecommendedForCreateProgress`，上传完成后，你将能够看到从云返回的定位点标识符。
 
 > [!NOTE]
 > 如果收到“DllNotFoundException：无法加载 DLL ‘AzureSpatialAnchors’：找不到指定的模块。”，需再次“清除”并“生成”解决方案 。

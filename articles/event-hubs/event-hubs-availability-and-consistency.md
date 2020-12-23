@@ -4,12 +4,12 @@ description: 如何使用分区为 Azure 事件中心提供最大程度的可用
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 774332b8f2d5c336f1a22d717516ae35a62b341f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000628"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902895"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中心内的可用性和一致性
 
@@ -40,7 +40,9 @@ Brewer 的定理按如下所示定义一致性和可用性：
 对于需要最大运行时间的用例，此模型是首选模型。
 
 ## <a name="consistency"></a>一致性
-在某些方案中，事件的排序可能十分重要。 例如，可能希望后端系统先处理更新命令，再处理删除命令。 在这种情况下，可以在事件上设置分区键，也可以使用 `PartitionSender` 对象（如果使用的是旧 Microsoft.Azure.Messaging 库）仅将事件发送到某个分区。 这样做可确保从分区读取这些事件时，按顺序读取它们。 如果使用的是 Azure.Messaging.EventHubs  库，有关详细信息，请参阅[将代码从 PartitionSender 迁移到 EventHubProducerClient，以便将事件发布到分区](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)。
+在某些方案中，事件的排序可能十分重要。 例如，可能希望后端系统先处理更新命令，再处理删除命令。 在这种情况下，可以在事件上设置分区键，也可以使用 `PartitionSender` 对象（如果使用的是旧 Microsoft.Azure.Messaging 库）仅将事件发送到某个分区。 这样做可确保从分区读取这些事件时，按顺序读取它们。 
+
+如果使用的是较新的 **EventHubs** 库，请参阅将 [代码从 PartitionSender 迁移到 EventHubProducerClient，将事件发布到分区](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)。
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs（5.0.0 或更高版本）](#tab/latest)
 

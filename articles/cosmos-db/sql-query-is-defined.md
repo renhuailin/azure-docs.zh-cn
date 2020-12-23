@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 IS_DEFINED
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 IS_DEFINED。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a5fcaf52d8e9e6b942a95f0b0c43f3f654c5d5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b45e09fe7cd9165487f1c9f142a1338a1e6db44
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303845"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338681"
 ---
 # <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回一个布尔，它指示属性是否已经分配了值。  
   
 ## <a name="syntax"></a>语法

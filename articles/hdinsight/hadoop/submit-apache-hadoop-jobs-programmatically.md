@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce53e02c587086a34a9967bb09ba047858af52e8
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75435699"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628926"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中提交 Apache Hadoop 作业
 
@@ -40,6 +40,6 @@ ms.locfileid: "75435699"
   - [在 HDInsight 中将 Apache Sqoop 与 Apache Hadoop 配合使用](apache-hadoop-use-sqoop-powershell.md)
   - [使用 PowerShell 通过 HDInsight 中的 Apache Hadoop 运行 MapReduce 作业](apache-hadoop-use-mapreduce-powershell.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-- [Azure HDInsight 文档](https://docs.microsoft.com/azure/hdinsight/)
+- [Azure HDInsight 文档](../index.yml)

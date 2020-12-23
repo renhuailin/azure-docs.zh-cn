@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 0c1b0b5ac0c5c71dc5c98cb91d86f879a82809bc
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708448"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488004"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
@@ -32,11 +32,11 @@ Azure Database for PostgreSQL 对数据文件和事务日志进行备份。 根�
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>具有高达 16 TB 存储空间的服务器
 
-在 [Azure 区域](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)的子集中，所有新预配的服务器都可支持高达 16 TB 的存储。 这些大型存储服务器上的备份基于快照。 第一次完整快照备份在创建服务器后立即进行计划。 此第一个完整快照备份将保留为服务器的基准备份。 后续快照备份仅为差异备份。 差异快照备份不按固定计划进行。 一天内执行三个差异快照备份。 事务日志备份每五分钟进行一次。 
+在 [Azure 区域](./concepts-pricing-tiers.md#storage)的子集中，所有新预配的服务器都可支持高达 16 TB 的存储。 这些大型存储服务器上的备份基于快照。 第一次完整快照备份在创建服务器后立即进行计划。 此第一个完整快照备份将保留为服务器的基准备份。 后续快照备份仅为差异备份。 差异快照备份不按固定计划进行。 一天内执行三个差异快照备份。 事务日志备份每五分钟进行一次。 
 
 ### <a name="backup-retention"></a>备份保留
 
-根据服务器上的备份保持期设置来保留备份。 可以选择 7 到 35 天的保留期。 默认保持期为 7 天。 可以在服务器创建期间或以后通过使用 [Azure 门户](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration)或 [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration) 更新备份配置来设置保留期。 
+根据服务器上的备份保持期设置来保留备份。 可以选择 7 到 35 天的保留期。 默认保持期为 7 天。 可以在服务器创建期间或以后通过使用 [Azure 门户](./howto-restore-server-portal.md#set-backup-configuration)或 [Azure CLI](./howto-restore-server-cli.md#set-backup-configuration) 更新备份配置来设置保留期。 
 
 备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 从恢复的角度来看，备份保留期也可以视为恢复时段。 在备份保留期间内执行时间点还原所需的所有备份都保留在备份存储中。 例如，如果备份保留期设置为 7 天，则认为恢复时段是最近 7 天。 在这种情况下，将保留在过去 7 天内还原服务器所需的所有备份。 具有7天的备份保留时段：
 - 具有最多 4 TB 存储空间的服务器将保留最多2个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
@@ -44,7 +44,7 @@ Azure Database for PostgreSQL 对数据文件和事务日志进行备份。 根�
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
-使用 Azure Database for PostgreSQL 时，可以灵活地在“常规用途”层和“内存优化”层中选择本地冗余或异地冗余备份存储。 当备份存储在异地冗余备份存储中时，这些备份不仅会存储在托管服务器所在的区域中，还会复制到[配对的数据中心](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 这样可以在发生灾难时提供更好的保护，并且可以将服务器还原到其他区域。 “基本”层仅提供本地冗余备份存储。
+使用 Azure Database for PostgreSQL 时，可以灵活地在“常规用途”层和“内存优化”层中选择本地冗余或异地冗余备份存储。 当备份存储在异地冗余备份存储中时，这些备份不仅会存储在托管服务器所在的区域中，还会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)。 这样可以在发生灾难时提供更好的保护，并且可以将服务器还原到其他区域。 “基本”层仅提供本地冗余备份存储。
 
 > [!IMPORTANT]
 > 只能在服务器创建期间为备份配置本地冗余或异地冗余存储。 预配服务器以后，不能更改备份存储冗余选项。
@@ -69,7 +69,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
 
 > [!IMPORTANT]
-> 已删除的服务器**无法**还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 已删除的服务器**无法**还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 

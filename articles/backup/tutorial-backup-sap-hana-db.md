@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: b43fd5c432b06902de0a898fc4bb0f114143b3ba
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375272"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695208"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -65,7 +65,7 @@ ms.locfileid: "89375272"
 
 ### <a name="nsg-tags"></a>NSG 标记
 
-如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD 和 Azure 存储创建类似的 [NSG 规则](../virtual-network/security-overview.md#service-tags)，以便在连接后进行身份验证和数据传输。  以下步骤介绍了为 Azure 备份标记创建规则的过程：
+如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD (AzureActiveDirectory) 和 Azure 存储（存储）创建类似的 [NSG 规则](../virtual-network/network-security-groups-overview.md#service-tags)，以便在连接后进行身份验证和数据传输。 以下步骤介绍了为 Azure 备份标记创建规则的过程：
 
 1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
 
@@ -75,7 +75,7 @@ ms.locfileid: "89375272"
 
 1. 选择“添加”，保存新创建的出站安全规则。
 
-同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。 有关服务标记的详细信息，请参阅[此文](../virtual-network/service-tags-overview.md)。
+同样，可以为 Azure 存储和 Azure AD 创建 [NSG 出站安全规则](../virtual-network/network-security-groups-overview.md#service-tags)。 有关服务标记的详细信息，请参阅[此文](../virtual-network/service-tags-overview.md)。
 
 ### <a name="azure-firewall-tags"></a>Azure 防火墙标记
 
@@ -107,9 +107,10 @@ ms.locfileid: "89375272"
 * 执行与 Azure 备份服务器和相关服务（例如 Azure Active Directory 和 Azure 存储）之间的出站网络连接检查。
 * 使用[先决条件](#prerequisites)中列出的用户密钥登录到 HANA 系统。 此用户密钥用于在 HANA 系统中创建备份用户 (AZUREWLBACKUPHANAUSER)，成功运行预注册脚本后，可以删除该用户密钥。
 * 为 AZUREWLBACKUPHANAUSER 分配了以下必需的角色和权限：
-  * 数据库管理员（如果使用的是 MDC）和备份管理员（如果使用的是 SDC）：在还原期间创建新数据库。
+  * 对于 MDC：数据库管理员和备份管理员（从 HANA 2.0 SPS05 开始）：在还原期间创建新数据库。
+  * 对于 SDC：备份管理员：在还原期间创建新数据库。
   * 目录读取：读取备份目录。
-  * SAP_INTERNAL_HANA_SUPPORT：访问一些专用表。
+  * SAP_INTERNAL_HANA_SUPPORT：访问一些专用表。 仅对于 HANA 2.0 SPS04 Rev 46 以下的 SDC 和 MDC 版本是必需的。 对于 HANA 2.0 SPS04 Rev 46 和更高版本不是必需的，因为我们现在会通过 HANA 团队提供的修补程序从公共表中获取所需的信息。
 * 此脚本在 **hdbuserstore** 中为 HANA 备份插件的 AZUREWLBACKUPHANAUSER 添加一个密钥，以便处理所有操作（数据库查询、还原操作、配置和运行备份）。
 
 >[!NOTE]
@@ -209,7 +210,7 @@ hdbuserstore list
 
    ![输入新策略的名称](./media/tutorial-backup-sap-hana-db/new-policy.png)
 
-2. 在“完整备份策略”中选择一个**备份频率**。 可以选择“每日”或“每周” 。 对于本教程，我们选择了“每日”备份。
+2. 在“完整备份策略”中选择一个 **备份频率**。 可以选择“每日”或“每周” 。 对于本教程，我们选择了“每日”备份。
 
    ![选择备份频率](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
 
@@ -226,11 +227,16 @@ hdbuserstore list
    ![差异备份策略](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >目前不支持增量备份。
+   >增量备份现在提供公共预览版。 可以选择差异备份或增量备份作为每日备份，但不能同时选择两者。
    >
+7. 在“增量备份策略”中，选择“启用”以打开频率和保留控件 。
+    * 每天最多可以触发一次增量备份。
+    * 增量备份最多可以保留 180 天。 如果需要保留更长时间，必须使用完整备份。
 
-7. 选择“确定”保存策略，并返回“备份策略”主菜单。  
-8. 请选择“日志备份”，以添加事务日志备份策略。
+    ![增量备份策略](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
+
+8. 选择“确定”保存策略，并返回“备份策略”主菜单。  
+9. 请选择“日志备份”，以添加事务日志备份策略。
    * “日志备份”默认设为“启用” 。 由于 SAP HANA 管理所有日志备份，此类备份无法被禁用。
    * 我们已将备份计划设置为 2 小时，保持期为 15 天 。
 
@@ -240,8 +246,8 @@ hdbuserstore list
    > 日志备份仅在成功完成一次完整备份之后进行。
    >
 
-9. 选择“确定”保存策略，并返回“备份策略”主菜单。  
-10. 完成定义备份策略后，选择“确定”。
+10. 选择“确定”保存策略，并返回“备份策略”主菜单。  
+11. 完成定义备份策略后，选择“确定”。
 
 现已成功为 SAP HANA 数据库配置备份。
 

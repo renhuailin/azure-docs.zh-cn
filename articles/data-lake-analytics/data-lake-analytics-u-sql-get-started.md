@@ -1,18 +1,16 @@
 ---
 title: Azure Data Lake Analytics U-SQL 语言入门
 description: 了解有关 Azure Data Lake Analytics 中 U-SQL 语言的基础知识。 使用变量编写你的第一个查询、转换行集和聚合数据。
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128839"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219915"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 入门
 
@@ -21,7 +19,7 @@ U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处�
 ## <a name="learning-resources"></a>学习资源
 
 * [U-SQL 教程](https://aka.ms/usqltutorial)提供大部分 U-SQL 语言的指导性演练。 对于要了解 U-SQL 的所有开发人员，建议阅读本文档。
-* 有关 **U-SQL 语言语法**的详细信息，请参阅 [U-SQL 语言参考](https://docs.microsoft.com/u-sql/)。
+* 有关 **U-SQL 语言语法**的详细信息，请参阅 [U-SQL 语言参考](/u-sql/)。
 * 若要了解 **U-SQL 设计理念**，请参阅 Visual Studio 博客文章 [U-SQL（使大数据处理更轻松的语言）简介](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
 ## <a name="prerequisites"></a>先决条件

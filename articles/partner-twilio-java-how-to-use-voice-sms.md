@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: f2f30230418637b53826bd314e395e760db7087f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5e44ae3280d3ca0f8d5052be10d0955ba342352f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306008"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652868"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>如何通过 Java 使用 Twilio 实现语音和短信功能
-本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
+本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅 [后续步骤](#NextSteps) 部分。
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>什么是 Twilio？
 Twilio 是一种电话 Web 服务 API，可方便用户利用现有 Web 语言和技能生成语音和短信应用程序。 Twilio 属于第三方服务（而非 Azure 功能和 Microsoft 产品）。
 
-利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 应用程序可以使用 **Twilio SMS** 发出和接收 SMS 消息。 应用程序可以通过 **Twilio 客户端**使用现有 Internet 连接（包括移动连接）启用语音通信。
+利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 应用程序可以使用 **Twilio SMS** 发出和接收 SMS 消息。 应用程序可以通过 **Twilio 客户端** 使用现有 Internet 连接（包括移动连接）启用语音通信。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定价和特惠套餐
 [Twilio 定价][twilio_pricing]中提供了有关 Twilio 定价的信息。 Azure 客户可享受[特惠套餐][special_offer]：1000 条信息的免费信用额度或 1000 分钟的入站。 若要注册此优惠或获取详细信息，请访问 [https://ahoy.twilio.com/azure][special_offer] 。
@@ -37,21 +37,21 @@ Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 谓词
-API 利用了 Twilio 谓词;例如， ** &lt; 口述 &gt; **谓词指示 Twilio 在调用时呼叫时传递一条消息。
+API 利用了 Twilio 谓词;例如， **&lt; 口述 &gt;** 谓词指示 Twilio 在调用时呼叫时传递一条消息。
 
 下面是 Twilio 谓词的列表。
 
-* ** &lt; 拨 &gt; **：将呼叫方连接到其他电话。
-* ** &lt; 收集 &gt; **：收集在电话键盘上输入的数字。
-* ** &lt; 挂断 &gt; **：结束呼叫。
-* ** &lt; Play &gt; **：播放音频文件。
-* ** &lt; Queue &gt; **：将添加到调用方的队列中。
-* ** &lt; 暂停 &gt; **：在指定的秒数后自动等待。
-* ** &lt; 记录 &gt; **：记录调用方的声音并返回包含该记录的文件的 URL。
-* ** &lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
-* ** &lt; 拒绝 &gt; **：拒绝对 Twilio 号码的传入呼叫而不向你计费。
-* ** &lt; 例如 &gt; **：将文本转换为在调用时发出的语音。
-* ** &lt; Sms &gt; **：发送短信。
+* **&lt; 拨 &gt;**：将呼叫方连接到其他电话。
+* **&lt; 收集 &gt;**：收集在电话键盘上输入的数字。
+* **&lt; 挂断 &gt;**：结束呼叫。
+* **&lt; Play &gt;**：播放音频文件。
+* **&lt; Queue &gt;**：将添加到调用方的队列中。
+* **&lt; 暂停 &gt;**：在指定的秒数后自动等待。
+* **&lt; 记录 &gt;**：记录调用方的声音并返回包含该记录的文件的 URL。
+* **&lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
+* **&lt; 拒绝 &gt;**：拒绝对 Twilio 号码的传入呼叫而不向你计费。
+* **&lt; 例如 &gt;**：将文本转换为在调用时发出的语音。
+* **&lt; Sms &gt;**：发送短信。
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
@@ -72,11 +72,11 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>创建 Twilio 帐户
 准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 ID 和身份验证令牌会分别显示在 [Twilio 控制台][twilio_console]上标记为“帐户 SID”**** 和“身份验证令牌”**** 的字段中。
+注册 Twilio 帐户时，将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 ID 和身份验证令牌会分别显示在 [Twilio 控制台][twilio_console]上标记为“帐户 SID”和“身份验证令牌”的字段中。
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>创建 Java 应用程序
-1. 获取 Twilio JAR 并将其添加到 Java 生成路径和 WAR 部署程序集。 在 [https://github.com/twilio/twilio-java][twilio_java] 中，你可以下载 GitHub 源并创建自己的 jar，或下载预生成的 jar （有或没有依赖项）。
-2. 确保 JDK 的 **cacerts** 密钥库包含带有 MD5 指纹 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4（序列号为 35:DE:F4:CF，SHA1 指纹为 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A）的 Equifax 安全证书颁发机构证书。 这是服务的证书颁发机构（CA）证书 [https://api.twilio.com][twilio_api_service] ，在使用 Twilio api 时调用。 有关如何确保 JDK 的 **cacerts** 密钥库包含正确 CA 证书的信息，请参阅[将证书添加到 Java CA 证书存储][add_ca_cert]。
+1. 获取 Twilio JAR 并将其添加到 Java 生成路径和 WAR 部署程序集。 在 [https://github.com/twilio/twilio-java][twilio_java] 中，你可以下载 GitHub 源并创建自己的 jar，或下载具有或不具有依赖关系) 的预建 jar (。
+2. 确保 JDK 的 **cacerts** 密钥库包含带有 MD5 指纹 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4（序列号为 35:DE:F4:CF，SHA1 指纹为 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A）的 Equifax 安全证书颁发机构证书。 这是服务 (CA) 证书的证书颁发机构 [https://api.twilio.com][twilio_api_service] ，在使用 Twilio api 时将调用该证书颁发机构。 有关如何确保 JDK 的 **cacerts** 密钥库包含正确 CA 证书的信息，请参阅 [将证书添加到 Java CA 证书存储][add_ca_cert]。
 
 [如何在 Azure 上的 Java 应用程序中使用 Twilio 发起电话呼叫][howto_phonecall_java]中提供了有关使用适用于 Java 的 Twilio 客户端库的详细说明。
 
@@ -99,12 +99,12 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
     import="com.twilio.rest.api.*"
     import="com.twilio.type.*"
     import="com.twilio.twiml.*"
- ```
- 
+```
+
 根据要使用的 Twilio 包或类，**import** 语句可能有差别。
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>如何拨打传出呼叫
-以下代码演示了如何使用 **Call** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 将你的值替换为 "**从**" 和 "**到**" 电话号码，并确保在运行代码之前验证 Twilio 帐户**的 "电话号码"** 。
+以下代码演示了如何使用 **Call** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 将你的值替换为 " **从** " 和 " **到** " 电话号码，并确保在运行代码之前验证 Twilio 帐户 **的 "电话号码"** 。
 
 ```java
     // Use your account SID and authentication token instead
@@ -133,7 +133,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用自己的网站来提供 TwiML 响应；有关详细信息，请参阅[如何在 Azure 上的 Java 应用程序中提供 TwiML 响应](#howto_provide_twiml_responses)。
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>如何发送短信
-以下代码演示了如何使用 **Message** 类发送短信。 **发件**人号码**4155992671**由 Twilio 提供，供试用帐户用来发送短信。 在运行代码前，必须为 Twilio 帐户验证“被呼叫方”号码。****
+以下代码演示了如何使用 **Message** 类发送短信。 **发件** 人号码 **4155992671** 由 Twilio 提供，供试用帐户用来发送短信。 在运行代码前，必须为 Twilio 帐户验证“被呼叫方”号码。
 
 ```java
     // Use your account SID and authentication token instead
@@ -157,7 +157,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 有关传入 **Message.creator** 方法的参数的详细信息，请参阅 [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms]。
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>如何从自己的网站提供 TwiML 响应
-当应用程序启动对 Twilio API 的调用时（例如通过 **CallCreator.create** 方法），Twilio 会将请求发送到应该返回 TwiML 响应的 URL。 上面的示例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 （虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击 [https://twimlets.com/message][twimlet_message_url] 以查看空** &lt; &gt; 响应**元素; 再单击以查看 [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] 包含** &lt; 口述 &gt; **元素的** &lt; 响应 &gt; **元素。）
+当应用程序启动对 Twilio API 的调用时（例如通过 **CallCreator.create** 方法），Twilio 会将请求发送到应该返回 TwiML 响应的 URL。 上面的示例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 （虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击 [https://twimlets.com/message][twimlet_message_url] 以查看空的 **&lt; 响应 &gt;** 元素; 作为另一个示例，单击 [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] 以查看包含 contains **&lt; &gt;** 元素的 **&lt; response &gt;** 元素。 ) 
 
 可以创建自己的返回 HTTP 响应的 URL 网站，而不用依赖 Twilio 提供的 URL。 可以用任何语言创建返回 HTTP 响应的网站；本主题假定在 JSP 页面中承载 URL。
 
@@ -184,7 +184,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
     </Response>
 ```
 
-**ApiVersion** 参数以 Twilio 语音请求（非 SMS 请求）的形式提供。 若要查看 Twilio 语音和 SMS 请求的可用请求参数，请分别参阅 <https://www.twilio.com/docs/api/twiml/twilio_request> 和 <https://www.twilio.com/docs/api/twiml/sms/twilio_request>。 **RoleName** 环境变量作为 Azure 部署的一部分提供。 （如果要添加自定义环境变量以便能够从 **System.getenv** 中选取它们，请参阅[其他角色配置设置][misc_role_config_settings]中的环境变量部分。）
+**ApiVersion** 参数以 Twilio 语音请求（非 SMS 请求）的形式提供。 若要查看 Twilio 语音和 SMS 请求的可用请求参数，请分别参阅 <https://www.twilio.com/docs/api/twiml/twilio_request> 和 <https://www.twilio.com/docs/api/twiml/sms/twilio_request>。 **RoleName** 环境变量作为 Azure 部署的一部分提供。 （如果要添加自定义环境变量以便能够从 **System.getenv** 中选取它们，请参阅 [其他角色配置设置][misc_role_config_settings]中的环境变量部分。）
 
 将 JSP 页面设置为提供 TwiML 响应后，请使用 JSP 页面的 URL 作为传入到 **Call.creator** 方法中的 URL。 例如，如果将名为 MyTwiML 的 Web 应用程序部署到 Azure 托管服务，且 JSP 页面的名称为 mytwiml.jsp，则可将 URL 传递到 **Call.creator**，如下所示：
 
@@ -217,9 +217,9 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: java-add-certificate-ca-store.md
+[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [howto_phonecall_java]: partner-twilio-java-phone-call-example.md
-[misc_role_config_settings]: https://msdn.microsoft.com/library/windowsazure/hh690945.aspx
+[misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message
 [twimlet_message_url_hello_world]: https://twimlets.com/message?Message%5B0%5D=Hello%20World%21
 [twilio_rest_making_calls]: https://www.twilio.com/docs/api/rest/making-calls

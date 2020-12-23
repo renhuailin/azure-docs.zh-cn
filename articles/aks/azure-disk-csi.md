@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: dfbef8da1349c2b86595f520e173aee9d455e3a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299572"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683125"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>使用 azure Kubernetes Service 中的 Azure 磁盘容器存储接口 (CSI) 驱动程序 (AKS)  (预览版) 
 Azure 磁盘容器存储接口 (CSI) 驱动程序是一个符合 [CSI 规范](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驱动程序，由 Azure Kubernetes SERVICE (AKS) 用于管理 azure 磁盘的生命周期。
@@ -275,7 +275,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ## <a name="shared-disk"></a>共享磁盘
 
-[Azure 共享磁盘](../virtual-machines/windows/disks-shared.md) 是一项 azure 托管磁盘功能，可同时将 azure 磁盘附加到代理节点。 例如，将托管磁盘附加到多个代理节点可以将现有的群集应用程序部署到 Azure 或将其迁移到 Azure。
+[Azure 共享磁盘](../virtual-machines/disks-shared.md) 是一项 azure 托管磁盘功能，可同时将 azure 磁盘附加到代理节点。 例如，将托管磁盘附加到多个代理节点可以将现有的群集应用程序部署到 Azure 或将其迁移到 Azure。
 
 > [!IMPORTANT] 
 > 目前， `volumeMode: Block` Azure 磁盘 CSI 驱动程序仅支持原始块设备 () 。 应用程序应管理共享磁盘上的写入、读取、锁、缓存、装载和防护的协调和控制，它作为原始块设备公开。
@@ -339,7 +339,7 @@ spec:
     spec:
       containers:
         - name: deployment-azuredisk
-          image: nginx
+          image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
           volumeDevices:
             - name: azuredisk
               devicePath: /dev/sdx
@@ -360,11 +360,10 @@ deployment/deployment-azuredisk created
 最后，让我们检查 pod 内的块设备：
 
 ```console
-# kubectl exec -it deployment-sharedisk-7454978bc6-xh7jp bash
-root@deployment-sharedisk-7454978bc6-xh7jp:/# dd if=/dev/zero of=/dev/sdx bs=1024k count=100
+# kubectl exec -it deployment-sharedisk-7454978bc6-xh7jp sh
+/ # dd if=/dev/zero of=/dev/sdx bs=1024k count=100
 100+0 records in
-100+0 records out
-104857600 bytes (105 MB, 100 MiB) copied, 0.0502999 s, 2.1 GB/s
+100+0 records out/s
 ```
 
 ## <a name="windows-containers"></a>Windows 容器
@@ -408,7 +407,7 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

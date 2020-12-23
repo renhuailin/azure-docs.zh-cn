@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 21c2329ec58e414ebfedaa4c49d5f690f47cac72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825307"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913885"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 
@@ -34,35 +34,35 @@ Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用
 
 适用于 web 和 Android 的 Azure Maps 交互式地图控件支持25个缩放级别，其编号为0到24。 尽管仅当磁贴可用时，路上数据才会出现在中的缩放级别。
 
-下表提供了缩放级别的值的完整列表，其中图块大小为512像素正方形：
+下表提供了缩放级别的值的完整列表，其中，磁贴大小为512像素正方形，位于纬度0：
 
 |缩放级别|计量/像素|计量/磁贴边|
 |--- |--- |--- |
-|0|156543|40075008|
-|1|78271.5|20037504|
-|2|39135.8|10018764.8|
-|3|19567.9|5009382.4|
-|4|9783.9|2504678.4|
-|5|4892|1252352|
-|6|2446|626176|
-|7|1223|313088|
-|8|611.5|156544|
-|9|305.7|78259.2|
-|10|152.9|39142.4|
-|11|76.4|19558.4|
-|12|38.2|9779.2|
-|13|19.1|4889.6|
-|14|9.6|2457.6|
-|15|4.8|1228.8|
-|16|2.4|614.4|
-|17|1.2|307.2|
-|18|0.6|152.8|
-|19|0.3|76.4|
-|20|0.15|38.2|
-|21|0.075|19.1|
-|22|0.0375|9.55|
-|23|0.01875|4.775|
-|24|0.009375|2.3875|
+| 0 | 156543 | 40075017 |
+| 1 | 78271.5 | 20037508 |
+| 2 | 39135.8 | 10018754 |
+| 3 | 19567.88 | 5009377.1 |
+| 4 | 9783.94 | 2504688.5 |
+| 5 | 4891.97 | 1252344.3 |
+| 6 | 2445.98 | 626172.1 |
+| 7 | 1222.99 | 313086.1 |
+| 8 | 611.5 | 156543 |
+| 9 | 305.75 | 78271.5 |
+| 10 | 152.87 | 39135.8 |
+| 11 | 76.44 | 19567.9 |
+| 12 | 38.219 | 9783.94 |
+| 13 | 19.109 | 4891.97 |
+| 14 | 9.555 | 2445.98 |
+| 15 | 4.777 | 1222.99 |
+| 16 | 2.3887 | 611.496 |
+| 17 | 1.1943 | 305.748 |
+| 18 | 0.5972 | 152.874 |
+| 19 | 0.14929 | 76.437 |
+| 20 | 0.14929 | 38.2185 |
+| 21 | 0.074646 | 19.10926 |
+| 22 | 0.037323 | 9.55463 |
+| 23 | 0.0186615 | 4.777315 |
+| 24 | 0.00933075 | 2.3886575 |
 
 ## <a name="pixel-coordinates"></a>像素坐标
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-由于地图的宽度和高度在每个缩放级别都不同，因此是像素坐标。 地图左上角的像素始终具有像素坐标 (0，0) 。 地图右下角的像素坐标 * (width-1、height-1) *或引用上一部分中的方程式， * (tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>– 1) *。 例如，在级别2使用512正方形磁贴时，像素坐标范围为 (0，0) 到 (2047，2047) ，如下所示：
+由于地图的宽度和高度在每个缩放级别都不同，因此是像素坐标。 地图左上角的像素始终具有像素坐标 (0，0) 。 地图右下角的像素坐标 *(width-1、height-1)* 或引用上一部分中的方程式， *(tileSize \* 2 <sup>zoom</sup>–1，tileSize \* 2 <sup>zoom</sup>– 1)* 。 例如，在级别2使用512正方形磁贴时，像素坐标范围为 (0，0) 到 (2047，2047) ，如下所示：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="世界地图磁贴":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-为每个图块指定了 XY 坐标，范围为从左上角的 (0，0) 到右下角 * (2<sup>zoom</sup>–1、2<sup>zoom</sup>-1) * 。 例如，在缩放级别3，磁贴坐标范围从 (0，0) 到 (7、7) 如下：
+为每个图块指定了 XY 坐标，范围为从左上角的 (0，0) 到右下角 *(2 <sup>zoom</sup>–1、2 <sup>zoom</sup>-1)* 。 例如，在缩放级别3，磁贴坐标范围从 (0，0) 到 (7、7) 如下：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="世界地图磁贴":::
 
@@ -114,7 +114,7 @@ var tileY = Math.floor(pixelY / tileSize);
 
 磁贴由缩放级别调用。 X 和 y 坐标对应于该缩放级别在网格上的位置。
 
-确定要使用的缩放级别时，请记住每个位置都在其磁贴上的固定位置。 因此，显示给定范围的区域所需的磁贴数取决于世界地图上缩放网格的特定位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。** 但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
+确定要使用的缩放级别时，请记住每个位置都在其磁贴上的固定位置。 因此，显示给定范围的区域所需的磁贴数取决于世界地图上缩放网格的特定位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。  但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="世界地图磁贴":::
 
@@ -933,20 +933,20 @@ module AzureMaps {
 
 > [!NOTE]
 > Azure Maps SDK 中的交互式地图控件包含 helper 函数，用于在地理空间位置和视区之间进行转换。 
-> - [Web SDK：地图像素和位置计算](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web SDK：地图像素和位置计算](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>后续步骤
 
 直接从 Azure Maps REST 服务访问地图磁贴：
 
 > [!div class="nextstepaction"]
-> [获取地图磁贴](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [获取地图磁贴](/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [获取流量磁贴](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [获取流量磁贴](/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [获取流量事件磁贴](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [获取流量事件磁贴](/rest/api/maps/traffic/gettrafficincidenttile)
 
 详细了解地理空间概念：
 

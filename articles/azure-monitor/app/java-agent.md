@@ -3,30 +3,34 @@ title: Java Web 应用性能监视 - Azure Application Insights
 description: 使用 Application Insights 监视 Java 网站的扩展性能和使用情况。
 ms.topic: conceptual
 ms.date: 01/10/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.author: jgol
+ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371356"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601282"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
+> [!IMPORTANT]
+> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
-如果已[使用 Application Insights 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
+如果已 [使用 APPLICATION INSIGHTS SDK 检测了 java web 应用][java]，则可以使用 Java 代理获得更深入的见解，无需进行任何代码更改：
 
-* **依赖项：** 有关应用程序对其他组件的调用数据，包括：
-  * 捕获通过 Apache HttpClient、OkHttp 和 `java.net.HttpURLConnection` 进行的**传出 HTTP 调用**。
-  * 捕获通过 Jedis 客户端进行的 **Redis 调用**。
+* **依赖项：** 有关应用程序对其他组件的调用的数据，包括：
+  * 捕获通过 Apache HttpClient、OkHttp 和 `java.net.HttpURLConnection` 进行的 **传出 HTTP 调用**。
+  * 捕获通过 Jedis 客户端发出的 **Redis 调用**。
   * **JDBC 查询** - 对于 MySQL 和 PostgreSQL，如果调用花费的时间长于 10 秒，代理将报告查询计划。
 
-* **应用程序日志记录：** 捕获应用程序日志并将其与 HTTP 请求和其他遥测数据相关联
+* **应用程序日志记录：** 捕获应用程序日志，并将其与 HTTP 请求和其他遥测数据关联
   * **Log4j 1.2**
   * **Log4j2**
   * **Logback**
 
-* **更好的操作命名：** （用于在门户中对请求进行聚合）
+* **更好的操作命名：**（用于在门户中对请求进行聚合）
   * **Spring** - 基于 `@RequestMapping`。
   * **JAX-RS** - 基于 `@Path`。 
 
@@ -85,12 +89,12 @@ ms.locfileid: "87371356"
 * 选择“设置”>“应用程序设置”
 * 在“应用设置”下添加新的键/值对：
 
-注册表项：`JAVA_OPTS` 值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Key： `JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
 有关 Java 代理的最新版本，请在[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
 )查看版本。 
 
-代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到“开发工具”   > “高级工具”   > “调试控制台”  并查看站点目录的内容，确认你的代理处于正确的应用服务目录中。    
+代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到 "**开发工具**" "  >  **高级工具**"  >  **调试控制台** 并检查站点目录的内容来确认代理是否处于正确的应用服务目录中。    
 
 * 保存设置并重启应用。 （这些步骤仅适用于 Windows 上运行的应用程序服务。）
 
@@ -114,7 +118,7 @@ ms.locfileid: "87371356"
 
 理想情况下，所有服务都已更新为支持 W3C 协议的较新版 SDK 时，就会出现这种情况。 强烈建议尽快迁移到提供 W3C 支持的新版 SDK。
 
-请确保[传入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)和传出（代理）配置完全相同  。
+请确保[传入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)和传出（代理）配置完全相同。
 
 ## <a name="view-the-data"></a>查看数据
 在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示在[“性能”磁贴下][metrics]。

@@ -3,12 +3,12 @@ title: 在 Azure 门户中导出模板
 description: 使用 Azure 门户从订阅中的资源导出 Azure 资源管理器模板。
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ee97953a337bbb7cc9a8d1f042a3beae7bccdcae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423229"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185685"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>在 Azure 门户中将单资源和多资源导出到模板
 
@@ -49,11 +49,13 @@ ms.locfileid: "87423229"
 
 从资源组或资源进行导出时，将通过每种资源类型的[已发布架构](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas)生成导出的模板。 有时，架构没有资源类型的最新版本。 检查导出的模板，确保其包含所需的属性。 如有必要，请编辑导出的模板，以使用所需的 API 版本。
 
-导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](https://aka.ms/exportTemplateViaAdf)。
+导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](../../data-factory/copy-clone-data-factory.md)。
 
-若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](https://aka.ms/migrateclassicresourcetoarm)。
+若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
-如果在导出的模板指出未导出资源类型时收到警告，仍可以发现该资源的属性。 若要了解查看资源属性的不同选项，请参阅[发现资源属性](view-resources.md)。 你还可以查看该资源类型的[Azure REST API](/rest/api/azure/) 。
+如果在导出模板时收到警告，指示未导出某个资源类型，则仍然可以发现该资源的属性。 若要了解用于查看资源属性的不同选项，请参阅[发现资源属性](view-resources.md)。 还可以查看该资源类型的 [Azure REST API](/rest/api/azure/)。
+
+为其创建导出模板的资源组中存在 200 个资源的限制。 如果尝试导出超过 200 个资源的资源组，则会显示“`Export template is not supported for resource groups more than 200 resources`”错误消息。
 
 ## <a name="export-template-from-a-resource-group"></a>从资源组导出模板
 
@@ -61,7 +63,7 @@ ms.locfileid: "87423229"
 
 1. 选择包含所要导出的资源的资源组。
 
-1. 通过选中相应的复选框选择一个或多个资源。  若要全选，请选中**名称**左侧的复选框。 “导出模板”**** 菜单项只有在你选择了至少一个资源之后才会启用。
+1. 通过选中相应的复选框选择一个或多个资源。  若要全选，请选中 **名称** 左侧的复选框。 “导出模板”菜单项只有在你选择了至少一个资源之后才会启用。
 
    ![导出所有资源](./media/export-template-portal/select-all-resources.png)
 
@@ -72,7 +74,7 @@ ms.locfileid: "87423229"
 
    ![显示模板](./media/export-template-portal/show-template.png)
 
-   ****“包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请切换此复选框，使其不包括在内。
+   “包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请切换此复选框，使其不包括在内。
 
 ## <a name="export-template-from-a-resource"></a>从资源导出模板
 
@@ -82,11 +84,11 @@ ms.locfileid: "87423229"
 
 1. 选择要导出的资源以打开资源。
 
-1. 在左窗格中选择该资源对应的“导出模板”。****
+1. 在左窗格中选择该资源对应的“导出模板”。
 
    ![导出资源](./media/export-template-portal/export-single-resource.png)
 
-1. 此时将显示导出的模板，并且该模板可供下载和部署。 模板只包含单个资源。 ****“包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请切换此复选框，使其不包括在内。
+1. 此时将显示导出的模板，并且该模板可供下载和部署。 模板只包含单个资源。 “包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请切换此复选框，使其不包括在内。
 
 ## <a name="export-template-before-deployment"></a>在部署之前导出模板
 
@@ -94,7 +96,7 @@ ms.locfileid: "87423229"
 
 1. 填写新服务的值。
 
-1. 在通过验证之后、开始部署之前，请选择“下载自动化模板”。****
+1. 在通过验证之后、开始部署之前，请选择“下载自动化模板”。
 
    ![下载模板](./media/export-template-portal/download-before-deployment.png)
 
@@ -107,7 +109,7 @@ ms.locfileid: "87423229"
 
 1. 选择要导出的资源组。
 
-1. 选择“部署”**** 下的链接。
+1. 选择“部署”下的链接。
 
    ![选择部署历史记录](./media/export-template-portal/select-deployment-history.png)
 
@@ -115,7 +117,7 @@ ms.locfileid: "87423229"
 
    ![选择部署](./media/export-template-portal/select-details.png)
 
-1. 选择**模板**。 随后，用于此部署的模板将会显示，并可供下载。
+1. 选择“模板”。 随后，用于此部署的模板将会显示，并可供下载。
 
    ![选择模板](./media/export-template-portal/show-template-from-history.png)
 

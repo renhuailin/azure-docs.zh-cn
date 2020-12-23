@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503117"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289733"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>教程：在 Azure Key Vault 中导入证书
 
@@ -86,7 +86,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 收到证书已成功导入的消息后，可以单击列表中的该证书以查看其属性。 
 
-![证书属性](../media/certificates/tutorial-import-cert/current-version-hidden.png)
+![显示证书属性查看位置的屏幕截图。](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
 ## <a name="import-a-certificate-using-azure-cli"></a>使用 Azure CLI 导入证书
 
@@ -104,9 +104,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-详细了解[参数](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)。
+详细了解[参数](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)。
 
-导入证书后，可以使用 [certificate show](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) 来查看证书
+导入证书后，可以使用 [certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) 来查看证书
 
 
 ```azurecli
@@ -135,7 +135,7 @@ Import-AzureKeyVaultCertificate
       [<CommonParameters>]
 ```
 
-详细了解[参数](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)。
+详细了解[参数](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)。
 
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -152,6 +152,6 @@ Import-AzureKeyVaultCertificate
 
 在本教程中，你创建了一个 Key Vault 并在其中导入了一个证书。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
-- 详细了解如何[在 Azure Key Vault 中管理证书创建](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)
+- 详细了解如何[在 Azure Key Vault 中管理证书创建](./create-certificate-scenarios.md)
 - 参阅[使用 REST API 导入证书](/rest/api/keyvault/importcertificate/importcertificate)的示例
 - 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)

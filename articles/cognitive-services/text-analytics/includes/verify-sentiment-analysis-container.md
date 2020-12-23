@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: d0a5e09f1d697c2f5f842edfb06be4b13229d095
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779124"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009842"
 ---
 ### <a name="verify-the-sentiment-analysis-container-instance"></a>验证情绪分析容器实例
 

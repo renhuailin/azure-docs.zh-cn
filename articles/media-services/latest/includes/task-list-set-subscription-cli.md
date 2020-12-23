@@ -4,17 +4,17 @@ ms.service: media-services
 ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
-ms.custom: CLI
-ms.openlocfilehash: aa76f7b85302651f6874747610c3355f0572a7ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: CLI, devx-track-azurecli
+ms.openlocfilehash: 94df457cc93a059de3f9bb294bd1c568b095781c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556221"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94884847"
 ---
 <!-- List and set subscriptions -->
 
-1. 使用 [az account list](/cli/azure/account#az-account-list) 命令获取订阅列表：
+1. 使用 [az account list](/cli/azure/account#az-account-list) 命令获取订阅列表。
 
     ```
     az account list --output table

@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cce42cdb63fcfcb9a5841f2f2199daf2bb92304
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604166"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286207"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
 强调安全性的大型组织需要移动到 Microsoft 365 之类的云服务，但需要知道其用户只能访问已批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果软件即服务 (SaaS) 应用在公有云中托管并在类似于 [outlook.office.com](https://outlook.office.com/) 和 [login.microsoftonline.com](https://login.microsoftonline.com/) 的共享域名中运行，则这种做法会失败。 阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
 
-为了解决这个难题，Azure Active Directory (Azure AD) 解决方案推出了一项称作“租户限制”的功能。 借助租户限制，组织可以根据应用程序用于单一登录的 Azure AD 租户来控制对 SaaS 云应用程序的访问。 例如，你可能想要允许访问你的组织的 Microsoft 365 应用程序，同时阻止对这些同一应用程序的其他组织实例的访问。  
+为了解决这个难题，Azure Active Directory (Azure AD) 解决方案推出了一项称作“租户限制”的功能。 借助租户限制，组织可以根据应用程序用于单一登录的 Azure AD 租户来控制对 SaaS 云应用程序的访问。 例如，你可能想要允许访问你的组织的 Microsoft 365 应用程序，同时阻止对这些同一应用程序的其他组织实例的访问。  
 
 借助租户限制，组织可以指定其用户有权访问的租户的列表。 然后，Azure AD 只会授予对这些允许的租户的访问权限。
 
@@ -33,13 +33,13 @@ ms.locfileid: "90604166"
 
 总体解决方案由以下组件构成：
 
-1. **Azure AD**：如果指定了 `Restrict-Access-To-Tenants: <permitted tenant list>`，Azure AD 只会针对允许的租户颁发安全令牌。
+1. **Azure AD** ：如果 `Restrict-Access-To-Tenants: <permitted tenant list>` 标头存在，Azure AD 只为允许的租户颁发安全令牌。
 
-2. **本地代理服务器基础结构**：此基础结构是能够进行传输层安全性 (TLS) 检查的代理设备。 必须将代理配置为在发往 Azure AD 的流量中插入包含允许租户列表的标头。
+2. **本地代理服务器基础结构** ：此基础结构是能够进行传输层安全性 (TLS) 检查的代理设备。 必须将代理配置为在发往 Azure AD 的流量中插入包含允许租户列表的标头。
 
-3. **客户端软件**：为了支持租户限制，客户端软件必须直接从 Azure AD 请求令牌，使代理基础结构能够截获流量。 基于浏览器的 Microsoft 365 应用程序当前支持租户限制，因为使用新式身份验证的 Office 客户端 (例如 OAuth 2.0) 。
+3. **客户端软件** ：为了支持租户限制，客户端软件必须直接从 Azure AD 请求令牌，使代理基础结构能够截获流量。 基于浏览器的 Microsoft 365 应用程序当前支持租户限制，因为使用新式身份验证的 Office 客户端 (例如 OAuth 2.0) 。
 
-4. **新式身份验证**：云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许租户的访问。 默认情况下，你必须将 Microsoft 365 云服务配置为使用新式身份验证协议。 有关新式验证 Microsoft 365 支持的最新信息，请阅读 [更新的 Office 365 新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
+4. **新式身份验证** ：云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许租户的访问。 默认情况下，你必须将 Microsoft 365 云服务配置为使用新式身份验证协议。 有关新式验证 Microsoft 365 支持的最新信息，请阅读 [更新的 Office 365 新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
 
 下图演示了大致的流量流。 租户限制要求仅对要 Azure AD 的流量进行 TLS 检查，而不需要对 Microsoft 365 云服务进行 TLS 检测。 这种区别很重要，因为 Azure AD 的身份验证流量通常比 SaaS 应用程序（如 Exchange Online 和 SharePoint Online）的流量要小得多。
 
@@ -51,7 +51,7 @@ ms.locfileid: "90604166"
 
 ### <a name="urls-and-ip-addresses"></a>URL 和 IP 地址
 
-要使用租户限制，客户端必须能够连接到以下 Azure AD URL 进行身份验证：[login.microsoftonline.com](https://login.microsoftonline.com/)、[login.microsoft.com](https://login.microsoft.com/) 和 [login.windows.net](https://login.windows.net/)。 此外，要访问 Office 365，客户端还必须能够连接到 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中定义的完全限定域名 (FQDN)、URL 和 IP 地址。 
+要使用租户限制，客户端必须能够连接到以下 Azure AD URL 进行身份验证：[login.microsoftonline.com](https://login.microsoftonline.com/)、[login.microsoft.com](https://login.microsoft.com/) 和 [login.windows.net](https://login.windows.net/)。 此外，要访问 Office 365，客户端还必须能够连接到 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中定义的完全限定域名 (FQDN)、URL 和 IP 地址。 
 
 ### <a name="proxy-configuration-and-requirements"></a>代理配置和要求
 
@@ -63,7 +63,7 @@ ms.locfileid: "90604166"
 
 - 客户端必须信任代理提供的用于 TLS 通信的证书链。 例如，如果使用了来自内部[公钥基础结构 (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) 的证书，则必须信任内部根证书颁发机构颁发的证书。
 
-- Microsoft 365 订阅中包含此功能，但如果你想要使用租户限制来控制对其他 SaaS 应用的访问权限，则需要 Azure AD Premium 1 个许可证。
+- 使用租户限制需要 Azure AD Premium 1 许可证。 
 
 #### <a name="configuration"></a>配置
 
@@ -76,12 +76,14 @@ ms.locfileid: "90604166"
 
 这些标头应包含以下元素：
 
-- 对于 " *限制访问到租户*"，请使用的值 \<permitted tenant list\> ，它是要允许用户访问的租户的逗号分隔列表。 已注册到某个租户的任何域都可用于在此列表中标识该租户。 例如，若要允许访问 Contoso 和 Fabrikam 租户，名称/值对如下所示： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- 对于 " *限制访问到租户* "，请使用的值 \<permitted tenant list\> ，它是要允许用户访问的租户的逗号分隔列表。 注册到租户的任何域都可用于标识此列表中的租户，以及目录 ID 本身。 有关描述租户的所有三种方法的示例，名称/值对允许 Contoso、Fabrikam 和 Microsoft 如下所示： `Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47`
 
-- 对于 Restrict-Access-Context，应使用单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为设置租户限制策略的租户，名称/值对如下所示： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+- 对于 Restrict-Access-Context，应使用单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为设置租户限制策略的租户，名称/值对如下所示： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` 。  你 **必须** 在此位置使用自己的目录 ID。
 
 > [!TIP]
-> 可在 [Azure Active Directory 门户](https://aad.portal.azure.com/)中找到该目录 ID。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。 
+> 可在 [Azure Active Directory 门户](https://aad.portal.azure.com/)中找到该目录 ID。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。  
+>
+> 若要验证目录 ID 或域名是否引用了同一个租户，请使用此 URL 中的 ID 或域代替 <tenant> ： `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` 。  如果包含域和 ID 的结果相同，则它们将引用同一个租户。 
 
 为了防止用户插入其自己的包含未批准租户的 HTTP 标头，代理需要替换 Restrict-Access-To-Tenants 标头（如果传入的请求中已提供此标头）。
 
@@ -106,12 +108,12 @@ ms.locfileid: "90604166"
 
 2. 在左窗格中选择“Azure Active Directory”。 随即显示 Azure Active Directory 概述页面。
 
-3. 在 "概述" 页上，选择 " **租户限制**"。
+3. 在 "概述" 页上，选择 " **租户限制** "。
 
 Restricted-Access-Context 租户的管理员可以使用此报告来查看由于租户限制策略而被阻止的登录，包括使用的标识和目标目录 ID。 如果设置限制的租户是登录的用户租户或资源租户，则会包含登录。
 
 > [!NOTE]
-> 当 Restricted-Access-Context 租户之外的其他租户中的用户登录时，该报告可能包含有限的信息，例如目标目录 ID。 在这种情况下，将屏蔽用户身份信息（如名称和用户主体名称），以保护其他租户中的用户数据。
+> 当 Restricted-Access-Context 租户之外的其他租户中的用户登录时，该报告可能包含有限的信息，例如目标目录 ID。 在这种情况下，将屏蔽用户身份信息（如名称和用户主体名称），以保护其他租户中的用户数据 ( " 00000000-0000-0000-0000-00000000@domain.com " )  
 
 与使用 Azure 门户中的其他报告时一样，可以使用筛选器来指定报告的范围。 可以根据特定的时间间隔、用户、应用程序、客户端或状态进行筛选。 如果选择“列”按钮，则可以选择通过任意组合以下字段来显示数据：
 
@@ -120,8 +122,8 @@ Restricted-Access-Context 租户的管理员可以使用此报告来查看由于
 - **Status**
 - **Date**
 - **日期(UTC)** （其中 UTC 是协调世界时）
-- **MFA 身份验证方法**（多重身份验证方法）
-- **MFA 身份验证详细信息**（多重身份验证详细信息）
+- **MFA 身份验证方法** （多重身份验证方法）
+- **MFA 身份验证详细信息** （多重身份验证详细信息）
 - **MFA 结果**
 - **IP 地址**
 - **客户端**

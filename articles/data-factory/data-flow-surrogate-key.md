@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/08/2020
-ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/30/2020
+ms.openlocfilehash: d1f8993b1adc297b1bfadba114df76a66e59afa2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606296"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147160"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>映射数据流中的代理键转换 
 
@@ -21,7 +21,7 @@ ms.locfileid: "81606296"
 
 使用代理键转换向每个数据行添加递增的键值。 在星型架构分析数据模型中设计维度表时，这非常有用。 在星型架构中，维度表中的每个成员都需要唯一键，这是一个非业务键。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ![代理键转换](media/data-flow/surrogate.png "代理键转换")
 
@@ -31,9 +31,9 @@ ms.locfileid: "81606296"
 
 ## <a name="increment-keys-from-existing-sources"></a>从现有源增加密钥
 
-若要从源中存在的值启动序列，请使用代理键转换后的派生列转换将两个值相加：
+若要从源中存在的值开始序列，我们建议使用缓存接收器来保存该值，并使用派生列转换将两个值相加。 使用缓存的查找获取输出，并将其追加到生成的键。 有关详细信息，请了解 [缓存接收器](data-flow-sink.md#cache-sink) 和 [缓存的查找](concepts-data-flow-expression-builder.md#cached-lookup)。
 
-![SK 添加 Max](media/data-flow/sk006.png "代理键转换添加 Max")
+![代理键查找](media/data-flow/cached-lookup-example.png "代理键查找")
 
 ### <a name="increment-from-existing-maximum-value"></a>从现有的最大值开始递增
 
@@ -41,19 +41,18 @@ ms.locfileid: "81606296"
 
 #### <a name="database-sources"></a>数据库源
 
-使用 SQL 查询选项可选择源中的 MAX （）。 例如，`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+使用 SQL 查询选项可选择源中的最大 ( # A1。 例如 `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`。
 
-![代理键查询](media/data-flow/sk002.png "代理键转换查询")
+![代理键查询](media/data-flow/surrogate-key-max-database.png "代理键转换查询")
 
 #### <a name="file-sources"></a>文件源
 
 如果以前的最大值位于文件中，则使用 `max()` 聚合转换中的函数获取上一个最大值：
 
-![代理键文件](media/data-flow/sk008.png "代理键文件")
+![代理键文件](media/data-flow/surrogate-key-max-file.png "代理键文件")
 
-在这两种情况下，你都必须将传入的新数据与包含之前的最大值的源一起加入。
+在这两种情况下，都需要写入缓存接收器并查找值。 
 
-![代理键联接](media/data-flow/sk004.png "代理键联接")
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -83,4 +82,4 @@ AggregateDayStats
 
 ## <a name="next-steps"></a>后续步骤
 
-这些示例使用[联接](data-flow-join.md)和[派生列](data-flow-derived-column.md)转换。
+这些示例使用 [联接](data-flow-join.md) 和 [派生列](data-flow-derived-column.md) 转换。

@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79e2ca71d6b8178be63c3429edba89cf3bb523e2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67133661"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029977"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -21,21 +21,21 @@ ms.locfileid: "67133661"
 
 Azure 订阅中必须具有 Azure 容器注册表才能完成此教程。 如果需要注册表，请参阅[前面教程](../articles/container-registry/container-registry-tutorial-quick-task.md)，或[快速入门：使用 Azure CLI 创建容器注册表](../articles/container-registry/container-registry-get-started-azure-cli.md)。
 
-## <a name="create-a-github-personal-access-token"></a>创建 GitHub 个人访问令牌
+### <a name="create-a-github-personal-access-token"></a>创建 GitHub 个人访问令牌
 
 若要在向 Git 存储库提交内容时触发任务，ACR 任务需要用于访问存储库的个人访问令牌 (PAT)。 如果还没有 PAT，请按照以下步骤在 GitHub 中生成一个：
 
 1. 导航到 GitHub 上的 PAT 创建页面 https://github.com/settings/tokens/new
-1. 输入令牌的简短**说明**，例如“ACR 任务演示”
+1. 输入令牌的简短 **说明**，例如“ACR 任务演示”
 1. 选择 ACR 的作用域以访问存储库。 要像本教程一样访问公共存储库，请在“存储库”下方，启用“存储库:状态”和“public_repo”   
 
    ![GitHub 中个人访问令牌生成页面的屏幕截图][build-task-01-new-token]
 
    > [!NOTE]
-   > 若要生成 PAT 以访问专用  存储库，请选择完全**存储库**控制的作用域。
+   > 若要生成 PAT 以访问专用  存储库，请选择完全 **存储库** 控制的作用域。
 
 1. 选择“生成令牌”按钮（可能会要求你确认密码） 
-1. 将生成的令牌复制并保存到**安全位置**（在后续部分定义任务时会使用此令牌）
+1. 将生成的令牌复制并保存到 **安全位置**（在后续部分定义任务时会使用此令牌）
 
    ![GitHub 中已生成的个人访问令牌的屏幕截图][build-task-02-generated-token]
 

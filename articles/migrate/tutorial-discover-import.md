@@ -1,14 +1,17 @@
 ---
 title: 使用导入的 CSV 文件通过 Azure Migrate 服务器评估来评估本地服务器
 description: 描述如何在 Azure Migrate 服务器评估中使用导入的 CSV 文件来发现要迁移到 Azure 的本地服务器
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604217"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753102"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>教程：使用导入的 CSV 文件评估服务器
 
@@ -184,7 +187,7 @@ IP 地址 | 否 | 服务器地址。
 在发现完成后，若要验证服务器是否出现在 Azure 门户中，请执行以下操作：
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页面上，选择显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页面上，选择显示了 **已发现服务器** 计数的图标。
 3. 选择“基于导入”选项卡。
 
 
@@ -203,4 +206,4 @@ Apple Mac OS X 10<br/>Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentO
 
 > [!div class="checklist"]
 > * 创建 Azure Migrate 项目 
-> * 使用导入的 CSV 文件发现服务器。 现在，为[到 Azure VM 的 VMware VM 迁移](tutorial-assess-vmware.md)运行评估。
+> * 使用导入的 CSV 文件发现服务器。 现在，为[到 Azure VM 的 VMware VM 迁移](./tutorial-assess-vmware-azure-vm.md)运行评估。

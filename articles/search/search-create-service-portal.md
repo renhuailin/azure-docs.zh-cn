@@ -3,17 +3,17 @@ title: 在门户中创建搜索服务
 titleSuffix: Azure Cognitive Search
 description: 本门户快速入门介绍如何在 Azure 门户中设置 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/05/2020
-ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.date: 10/14/2020
+ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741000"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102806"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -94,7 +94,7 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
 ### <a name="requirements"></a>要求
 
- 如果使用 AI 扩充，请在认知服务所在的相同区域中创建搜索服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
+ 如果使用 AI 扩充，请在认知服务所在的相同区域中创建搜索服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件* 。
 
  具有业务连续性和灾难恢复 (BCDR) 要求的客户应在[区域对](../best-practices-availability-paired-regions.md#azure-regional-pairs)中创建其服务。 例如，如果你在北美运营，则可以为每个服务选择“美国东部和美国西部”或“美国中北部和美国中南部”。
 
@@ -102,9 +102,9 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
 如果使用多个 Azure 服务，请选择同时托管数据或应用程序服务的区域。 这样做可以最大程度地减少或避免出站数据的带宽费用（当服务位于同一区域时，出站数据没有任何费用）。
 
-## <a name="choose-a-pricing-tier-sku"></a>选择定价层 (SKU)
+## <a name="choose-a-pricing-tier"></a>选择一个定价层
 
-[Azure 认知搜索当前以多个定价层提供](https://azure.microsoft.com/pricing/details/search/)：免费、基本或标准。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层或 SKU](search-sku-tier.md)。
+Azure 认知搜索当前以[多个定价层](https://azure.microsoft.com/pricing/details/search/)提供：免费、基本、标准或存储优化。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层](search-sku-tier.md)。
 
 “基本”和“标准”是生产工作负荷的最常用选项，但大多数客户会从“免费”服务开始。 各个层之间的主要差别在于分区大小和速度，以及可创建的对象数限制。
 
@@ -136,9 +136,9 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
 预配服务后，可以对其进行扩展以满足需求。 如果为 Azure 认知搜索服务选择了“标准”层，则可以采用两个维度扩展服务：副本和分区。 如果已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
 
-***分区***允许服务存储和搜索更多文档。
+***分区*** 允许服务存储和搜索更多文档。
 
-***副本***允许服务处理负载更高的搜索查询。
+***副本*** 允许服务处理负载更高的搜索查询。
 
 添加资源会增加每月账单费用。 可以通过[定价计算器](https://azure.microsoft.com/pricing/calculator/)来了解添加资源对账单明细的影响。 请记住，可以根据负载来调整资源。 例如，可以通过增加资源来创建完整的初始索引，在以后再将资源减少到与增量索引编制相适应的某个程度。
 

@@ -3,12 +3,12 @@ title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Micro
 description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 5c49f8f87d8d399cda33a332f7464ed340ae3a0f
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761492"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369584"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供与 Apache Kafka®制造者和使用者 Api 兼容的终结点，大多数现有 Apache Kafka 客户端应用程序可以使用这些 Api 作为运行自己 Apache Kafka 群集的替代方法。 事件中心支持版本1.0 及更高版本的 Apache Kafka 的生成者和使用者 Api 客户端。
@@ -60,9 +60,9 @@ Azure 事件中心提供了多个选项来授予对安全资源的访问权限�
 - 共享访问签名 (SAS)
 
 #### <a name="oauth-20"></a>OAuth 2.0
-事件中心与 Azure Active Directory (Azure AD) ，后者提供与 **OAuth 2.0** 兼容的集中授权服务器。 使用 Azure AD，可以通过基于角色的访问控制 (RBAC) 向客户端标识授予细粒度权限。 可以指定“SASL_SSL”作为协议，并指定“OAUTHBEARER”作为机制，通过这种方式将此功能用于 Kafka 客户端。 有关 Azure 角色和范围访问级别的详细信息，请参阅[使用 Azure AD 授予访问权限](authorize-access-azure-active-directory.md)。
+事件中心与 Azure Active Directory (Azure AD) ，后者提供与 **OAuth 2.0** 兼容的集中授权服务器。 使用 Azure AD，可以使用 Azure RBAC)  (Azure 基于角色的访问控制向客户端标识授予精细的权限。 可以指定“SASL_SSL”作为协议，并指定“OAUTHBEARER”作为机制，通过这种方式将此功能用于 Kafka 客户端。 有关 Azure 角色和范围访问级别的详细信息，请参阅[使用 Azure AD 授予访问权限](authorize-access-azure-active-directory.md)。
 
-```xml
+```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=OAUTHBEARER
@@ -73,15 +73,19 @@ sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 #### <a name="shared-access-signature-sas"></a>共享访问签名 (SAS)
 事件中心还提供了共享访问签名 (SAS)，方便你对用于 Kafka 的事件中心资源进行委派访问。 与 SAS 相比，使用 OAuth 2.0 基于令牌的机制授予访问权限具有更好的安全性和易用性。 内置角色还可以消除基于 ACL 的授权（用户必须对其进行维护和管理）的需要。 可以指定“SASL_SSL”作为协议，并指定“PLAIN”作为机制，通过这种方式将此功能用于 Kafka 客户端。 
 
-```xml
+```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!IMPORTANT]
+> 将 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 替换为事件中心命名空间的连接字符串。 有关获取连接字符串的说明，请参阅 [获取事件中心连接字符串](event-hubs-get-connection-string.md)。 下面是一个示例配置： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 > [!NOTE]
 > 对 Kafka 客户端使用 SAS 身份验证时，在重新生成 SAS 密钥时，已建立的连接不会断开。 
+
 
 #### <a name="samples"></a>示例 
 有关创建事件中心并使用 SAS 或 OAuth 对其进行访问的分步说明教程，请参阅[快速入门：使用 Kafka 协议通过事件中心进行数据流式传输](event-hubs-quickstart-kafka-enabled-event-hubs.md)。
@@ -128,7 +132,7 @@ Azure 事件中心客户要求提供 Kafka 流支持的最常见原因是，他�
 
 - [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)
 - [通过事件中心捕获 (的 Azure Synapse 分析) ](../event-grid/event-grid-event-hubs-integration.md)
-- [Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/databricks-stream-from-eventhubs)
+- [Azure Databricks](/azure/databricks/scenarios/databricks-stream-from-eventhubs)
 - [Apache Samza](https://samza.apache.org/learn/documentation/latest/connectors/eventhubs)
 - [Apache Storm](event-hubs-storm-getstarted-receive.md)
 - Apache Spark[](event-hubs-kafka-spark-tutorial.md)

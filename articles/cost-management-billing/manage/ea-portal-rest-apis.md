@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c277da54e56fcd0ce68444d499b17e84f706ad03
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442490"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132578"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 
@@ -25,15 +25,15 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 ### <a name="available-apis"></a>可用 API
 
-**余额和摘要** - [余额和摘要 API](../../billing/billing-enterprise-api-balance-summary.md) 提供关于余额、新购买、Azure 市场服务费用、调整和超额费用信息的每月摘要。 有关详细信息，请参阅[适用于企业客户的报告 API - 余额和摘要](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)。
+**余额和摘要** - [余额和摘要 API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) 提供关于余额、新购买、Azure 市场服务费用、调整和超额费用信息的每月摘要。 有关详细信息，请参阅[适用于企业客户的报告 API - 余额和摘要](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)。
 
-**使用情况详细信息** - [使用情况详细信息 API](../../billing/billing-enterprise-api-usage-detail.md) 提供消耗数量和注册估计费用的日常明细。 结果还包括有关实例、计量和部门信息。 可以按照计费周期或指定的开始日期和结束日期查询 API。 有关详细信息，请参阅[适用于企业客户的报告 API - 使用情况详细信息](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)。
+**使用情况详细信息** - [使用情况详细信息 API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) 提供消耗数量和注册估计费用的日常明细。 结果还包括有关实例、计量和部门信息。 可以按照计费周期或指定的开始日期和结束日期查询 API。 有关详细信息，请参阅[适用于企业客户的报告 API - 使用情况详细信息](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)。
 
-**市场应用商店费用** - [市场应用商店费用 API](../../billing/billing-enterprise-api-marketplace-storecharge.md) 按指定计费周期的天或开始和结束日期返回基于使用情况的市场费用明细。 有关详细信息，请参阅[适用于企业客户的报告 API - 市场应用商店费用](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)。
+**市场应用商店费用** - [市场应用商店费用 API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) 按指定计费周期的天或开始和结束日期返回基于使用情况的市场费用明细。 有关详细信息，请参阅[适用于企业客户的报告 API - 市场应用商店费用](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)。
 
 **价目表** - [价目表 API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) 为注册和计费周期的每个计量提供适用的费率。 有关详细信息，请参阅[适用于企业客户的报告 API - 价目表](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)。
 
-**计费周期** - [计费周期 API](../../billing/billing-enterprise-api-billing-periods.md) 以倒序顺序为注册返回具有消耗数据的计费周期列表。 每个周期都有一个属性指向以下四个数据集的 API 路由：BalanceSummary、UsageDetails、Marketplace Charge 和 PriceSheet。 有关详细信息，请参阅[适用于企业客户的报告 API - 计费周期](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
+**计费周期** - [计费周期 API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) 以倒序顺序为注册返回具有消耗数据的计费周期列表。 每个周期都有一个属性指向以下四个数据集的 API 路由：BalanceSummary、UsageDetails、Marketplace Charge 和 PriceSheet。 有关详细信息，请参阅[适用于企业客户的报告 API - 计费周期](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
 
 ### <a name="enable-api-data-access"></a>启用 API 数据访问
 

@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: f963f4c3538146b7f9929960092a18294659be5d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 61d6556467bc6f1494e11ce3a01bf5266b740f3f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045240"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305776"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure 流分析外部错误代码
 
@@ -19,77 +19,77 @@ ms.locfileid: "86045240"
 
 ## <a name="adapterinitializationerror"></a>AdapterInitializationError
 
-* **原因**：初始化适配器时出错。
+* **原因** ：初始化适配器时出错。
 
 ## <a name="adapterfailedtowriteevents"></a>AdapterFailedToWriteEvents
 
-* **原因**：将数据写入适配器时出错。
+* **原因** ：将数据写入适配器时出错。
 
 ## <a name="azurefunctionhttperror"></a>AzureFunctionHttpError
 
-* **原因**：Azure 函数返回了一个 HTTP 错误。
+* **原因** ：Azure 函数返回了一个 HTTP 错误。
 
 ## <a name="azurefunctionfailedtosendmessage"></a>AzureFunctionFailedToSendMessage
 
-* **原因**：流分析未能将事件写入 Azure Functions。
+* **原因** ：流分析未能将事件写入 Azure Functions。
 
 ## <a name="azurefunctionredirecterror"></a>AzureFunctionRedirectError
 
-* **原因**：输出到 Azure Functions 时出现重定向错误。
+* **原因** ：输出到 Azure Functions 时出现重定向错误。
 
 ## <a name="azurefunctionclienterror"></a>AzureFunctionClientError
 
-* **原因**：输出到 Azure Functions 时出现客户端错误。
+* **原因** ：输出到 Azure Functions 时出现客户端错误。
 
 ## <a name="azurefunctionservererror"></a>AzureFunctionServerError
 
-* **原因**：输出到 Azure Functions 时出现服务器错误。
+* **原因** ：输出到 Azure Functions 时出现服务器错误。
 
 ## <a name="azurefunctionhttptimeouterror"></a>AzureFunctionHttpTimeOutError
 
-* **原因**：写入 Azure 函数失败，原因是 http 请求超时。 
-* **建议**：检查 Azure Functions 日志中是否存在潜在延迟。
+* **原因** ：写入 Azure 函数失败，原因是 http 请求超时。 
+* **建议** ：检查 Azure Functions 日志中是否存在潜在延迟。
 
 ## <a name="eventhubargumenterror"></a>EventHubArgumentError
 
-* **原因**：输入偏移量无效。 这可能是由于故障转移造成的。
-* **建议**：从上次输出时间重新启动流分析作业。
+* **原因** ：输入偏移量无效。 这可能是由于故障转移造成的。
+* **建议** ：从上次输出时间重新启动流分析作业。
 
 ## <a name="eventhubfailedtowriteevents"></a>EventHubFailedToWriteEvents
 
-* **原因**：向事件中心发送数据时出错。
+* **原因** ：向事件中心发送数据时出错。
 
 ## <a name="cosmosdbconnectionfailureaftermaxretries"></a>CosmosDBConnectionFailureAfterMaxRetries
 
-* **原因**：在最大重试次数后，流分析无法连接到 Cosmos DB 帐户。
+* **原因** ：在最大重试次数后，流分析无法连接到 Cosmos DB 帐户。
 
 ## <a name="cosmosdbfailureaftermaxretries"></a>CosmosDBFailureAfterMaxRetries
 
-* **原因**：在最大重试次数后，流分析无法查询 Cosmos DB 数据库和集合。
+* **原因** ：在最大重试次数后，流分析无法查询 Cosmos DB 数据库和集合。
 
 ## <a name="cosmosdbfailedtocreatestoredprocedure"></a>CosmosDBFailedToCreateStoredProcedure
 
-* **原因**：多次重试后，CosmosDB 无法创建存储过程。
+* **原因** ：多次重试后，CosmosDB 无法创建存储过程。
 
 ## <a name="cosmosdboutputrequesttimeout"></a>CosmosDBOutputRequestTimeout
 
-* **原因**：upsert 存储过程返回一个错误。 
+* **原因** ：upsert 存储过程返回一个错误。 
 
 ## <a name="sqldatabaseoutputinitializationerror"></a>SQLDatabaseOutputInitializationError
 
-* **原因**：流分析无法初始化 SQL 数据库输出。
+* **原因** ：流分析无法初始化 SQL 数据库输出。
 
 ## <a name="sqldatabaseoutputwriteerror"></a>SQLDatabaseOutputWriteError
 
-* **原因**：流分析无法将事件写入 SQL 数据库输出。
+* **原因** ：流分析无法将事件写入 SQL 数据库输出。
 
 ## <a name="sqldwoutputinitializationerror"></a>SQLDWOutputInitializationError
 
-* **原因**：初始化 Synapse SQL 池输出时出错。
+* **原因** ：初始化专用 SQL 池输出时出错。
 
 ## <a name="sqldwoutputwriteerror"></a>SQLDWOutputWriteError
 
-* **原因**：将输出写入 Synapse SQL 池时出错。
+* **原因** ：将输出写入专用 SQL 池时出错。
 
 ## <a name="next-steps"></a>后续步骤
 

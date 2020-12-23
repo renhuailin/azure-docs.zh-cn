@@ -2,14 +2,14 @@
 title: 自动缩放 Azure Batch 池中的计算节点
 description: 对云池启用自动缩放功能可以动态调整池中计算节点的数目。
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91849786"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737286"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动公式
 
@@ -135,6 +135,9 @@ $NodeDeallocationOption = taskcompletion;
 > [!TIP]
 > 这些只读的服务定义变量是对象，它们提供了各种方法来访问与其关联的数据。 有关详细信息，请参阅本文稍后的[获取样本数据](#obtain-sample-data)。
 
+> [!NOTE]
+> `$RunningTasks`基于在某个时间点运行的任务数进行缩放时，以及 `$ActiveTasks` 基于要运行的任务数进行缩放时使用。
+
 ## <a name="types"></a>类型
 
 自动缩放公式支持以下类型：
@@ -169,7 +172,7 @@ $NodeDeallocationOption = taskcompletion;
 
 | 操作 | 支持的运算符 | 结果类型 |
 | --- | --- | --- |
-| double *operator* double |+, -, *, / |double |
+| double *operator* double |+, -, *, / |Double |
 | double *operator* timeinterval |* |timeinterval |
 | doubleVec *operator* double |+, -, *, / |doubleVec |
 | doubleVec *operator* doubleVec |+, -, *, / |doubleVec |
@@ -180,39 +183,39 @@ $NodeDeallocationOption = taskcompletion;
 | timestamp *operator* timestamp |- |timeinterval |
 | *operator* double |-, ! |Double |
 | *operator* timeinterval |- |timeinterval |
-| double *operator* double |<, <=, ==, >=, >, != |double |
+| double *operator* double |<, <=, ==, >=, >, != |Double |
 | string *operator* string |<, <=, ==, >=, >, != |Double |
 | timestamp *operator* timestamp |<, <=, ==, >=, >, != |Double |
 | timeinterval *operator* timeinterval |<, <=, ==, >=, >, != |Double |
-| double *operator* double |&&, &#124;&#124; |double |
+| double *operator* double |&&, &#124;&#124; |Double |
 
 使用三元运算符 (`double ? statement1 : statement2`) 测试双精度值时，非零值为 **true**，零值为 **false**。
 
 ## <a name="functions"></a>函数
 
-在定义自动缩放公式时，可以使用这些预定义的**函数**。
+在定义自动缩放公式时，可以使用这些预定义的 **函数**。
 
 | 函数 | 返回类型 | 说明 |
 | --- | --- | --- |
-| avg(doubleVecList) |double |返回 doubleVecList 中所有值的平均值。 |
+| avg(doubleVecList) |Double |返回 doubleVecList 中所有值的平均值。 |
 | len(doubleVecList) |Double |返回从 doubleVecList 创建的向量的长度。 |
-| lg(double) |double |返回 double 的对数底数 2。 |
+| lg(double) |Double |返回 double 的对数底数 2。 |
 | lg(doubleVecList) |doubleVec |返回 doubleVecList 的分量对数底数 2。 必须为参数显式传递 vec(double)。 否则会采用 double lg(double) 版本。 |
 | ln(double) |Double |返回 double 的自然对数。 |
 | ln(doubleVecList) |doubleVec |返回 double 的自然对数。 |
 | log(double) |Double |返回 double 的对数底数 10。 |
 | log(doubleVecList) |doubleVec |返回 doubleVecList 的分量对数底数 10。 对于单一的 double 参数，必须显式传递 vec(double)。 否则会采用 double log(double) 版本。 |
-| max(doubleVecList) |double |返回 doubleVecList 中的最大值。 |
-| min(doubleVecList) |double |返回 doubleVecList 中的最小值。 |
+| max(doubleVecList) |Double |返回 doubleVecList 中的最大值。 |
+| min(doubleVecList) |Double |返回 doubleVecList 中的最小值。 |
 | norm(doubleVecList) |Double |返回从 doubleVecList 创建的向量的二范数。 |
-| percentile(doubleVec v, double p) |double |返回向量 v 的百分位元素。 |
-| rand() |double |返回介于 0.0 和 1.0 之间的随机值。 |
-| range(doubleVecList) |double |返回 doubleVecList 中最小值和最大值之间的差。 |
-| std(doubleVecList) |double |返回 doubleVecList 中值的样本标准偏差。 |
+| percentile(doubleVec v, double p) |Double |返回向量 v 的百分位元素。 |
+| rand() |Double |返回介于 0.0 和 1.0 之间的随机值。 |
+| range(doubleVecList) |Double |返回 doubleVecList 中最小值和最大值之间的差。 |
+| std(doubleVecList) |Double |返回 doubleVecList 中值的样本标准偏差。 |
 | stop() | |停止对自动缩放表达式求值。 |
-| sum(doubleVecList) |double |返回 doubleVecList 的所有组成部分之和。 |
+| sum(doubleVecList) |Double |返回 doubleVecList 的所有组成部分之和。 |
 | time(string dateTime="") |timestamp |如果未传递参数，则返回当前时间的时间戳；如果传递了参数，则返回 dateTime 字符串的时间戳。 支持的 dateTime 格式为 W3C-DTF 和 RFC 1123。 |
-| val(doubleVec v, double i) |double |返回在起始索引为零的向量 v 中，位置 i 处的元素的值。 |
+| val(doubleVec v, double i) |Double |返回在起始索引为零的向量 v 中，位置 i 处的元素的值。 |
 
 上表中描述的某些函数可以接受列表作为参数。 逗号分隔列表为 *double* 和 *doubleVec* 的任意组合。 例如：
 
@@ -255,7 +258,7 @@ $NodeDeallocationOption = taskcompletion;
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Task</b></td>
+    <td><b>任务</b></td>
     <td><p>任务指标基于任务的状态（例如活动、挂起和已完成）。 以下服务定义的变量可用于根据任务度量值调整池大小：</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -381,7 +384,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 > [!NOTE]
-> 可以根据需要在公式字符串中包含注释和分行符。
+> 可以根据需要在公式字符串中包含注释和分行符。 还要注意，缺少分号可能会导致计算错误。
 
 ## <a name="automatic-scaling-interval"></a>自动缩放间隔
 
@@ -423,7 +426,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> 创建启用自动缩放的池时，请不要在 **CreatePool** 调用中指定 _targetDedicatedNodes_ 参数或 _targetLowPriorityNodes_ 参数。 应该指定池中的 **AutoScaleEnabled** 和**AutoScaleFormula** 属性。 这些属性的值确定每种类型的节点的目标数。
+> 创建启用自动缩放的池时，请不要在 **CreatePool** 调用中指定 _targetDedicatedNodes_ 参数或 _targetLowPriorityNodes_ 参数。 应该指定池中的 **AutoScaleEnabled** 和 **AutoScaleFormula** 属性。 这些属性的值确定每种类型的节点的目标数。
 >
 > 若要手动重设启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePoolAsync](/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync) 来重设大小），必须先禁用该池的自动缩放，然后重设其大小。
 
@@ -649,7 +652,7 @@ Error:
 ```
 
 ## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>使用池自动缩放事件获取自动缩放运行历史记录
-还可以通过查询 [PoolAutoScaleEvent](batch-pool-autoscale-event.md)来检查自动缩放历史记录。 此事件由 Batch 服务发出，用于记录自动缩放公式计算和执行的每个匹配项，这有助于解决潜在问题。
+你还可以通过查询 [PoolAutoScaleEvent](batch-pool-autoscale-event.md) 来查看自动缩放历史记录。 此事件由 Batch 服务发出，用于记录每次自动缩放公式计算和执行的情况，这有助于排查潜在问题。
 
 PoolAutoScaleEvent 的示例事件：
 ```json
@@ -709,7 +712,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>示例 3：考虑并行任务
 
-此 C# 示例根据任务数调整池大小。 此公式还考虑为池设置的 [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 值。 在对池启用了[并行任务执行](batch-parallel-node-tasks.md)的情况下，此方法特别有效。
+此 C# 示例根据任务数调整池大小。 此公式还考虑了为池设置的 [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 值。 在对池启用了[并行任务执行](batch-parallel-node-tasks.md)的情况下，此方法特别有效。
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past

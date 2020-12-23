@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825961"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393670"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理过时设备
 
@@ -37,7 +37,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 ## <a name="detect-stale-devices"></a>检测陈旧的设备
 
-由于陈旧设备定义为已注册的、但在特定的时间范围内未曾用来访问过任何云应用的设备，因此，检测陈旧设备需要时间戳相关的属性。 在 Azure AD 中，此属性称为 **ApproximateLastLogonTimestamp** 或**活动时间戳**。 如果某个设备的当前时间与**活动时间戳**值之间的差超过了为活动设备定义的时间范围，则将该设备视为陈旧设备。 此**活动时间戳**目前以公共预览版提供。
+由于陈旧设备定义为已注册的、但在特定的时间范围内未曾用来访问过任何云应用的设备，因此，检测陈旧设备需要时间戳相关的属性。 在 Azure AD 中，此属性称为 **ApproximateLastLogonTimestamp** 或 **活动时间戳** 。 如果某个设备的当前时间与 **活动时间戳** 值之间的差超过了为活动设备定义的时间范围，则将该设备视为陈旧设备。 此 **活动时间戳** 目前以公共预览版提供。
 
 ## <a name="how-is-the-value-of-the-activity-timestamp-managed"></a>如何管理活动时间戳的值？  
 
@@ -53,13 +53,13 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 可通过两个选项检索活动时间戳的值：
 
-- Azure 门户中[设备页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)上的“活动”列****
+- Azure 门户中[设备页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)上的“活动”列
 
-    ![活动时间戳](./media/manage-stale-devices/01.png)
+    :::image type="content" source="./media/manage-stale-devices/01.png" alt-text="Azure 门户列出设备上的名称、所有者和其他信息的页面屏幕截图。一列列出活动时间戳。" border="false":::
 
 - [Get-azureaddevice](/powershell/module/azuread/Get-AzureADDevice) cmdlet
 
-    ![活动时间戳](./media/manage-stale-devices/02.png)
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="显示命令行输出的屏幕截图。将突出显示一行，并列出 ApproximateLastLogonTimeStamp 值的时间戳。" border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>规划陈旧设备的清理
 
@@ -147,7 +147,7 @@ Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, Displa
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>要点

@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: f941f67105227b3973386b015344d5fa787c3485
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f8d8ffe8c1802a5cf67b7dc2b0fb071b572d76e8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84317516"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994345"
 ---
-要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](../articles/active-directory-b2c/app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
@@ -43,4 +43,4 @@ ms.locfileid: "84317516"
 1. 输入应用程序的名称。 例如，ROPC_Auth_app。
 1. 对于“本机客户端”，请选择“是” 。
 1. 保留其他值不变，然后选择“创建”。
-1. 记录**应用程序 ID**，以便在以后的步骤中使用。
+1. 记录 **应用程序 ID**，以便在以后的步骤中使用。

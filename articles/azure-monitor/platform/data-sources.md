@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 8ef498a51f25a6b084a0d048661f3d18a5881644
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: c6b976ca1beb9beb78f7c56d7ae512c1f499c2c5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802051"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186518"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
 Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[通用监视数据平台](data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
@@ -20,7 +20,7 @@ Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platfo
 
 ## <a name="application-tiers"></a>应用程序层
 
-Azure 应用程序中的监视数据源可以组织为层，最高的层是应用程序本身，较低的层是 Azure 平台的组件。 从每个层访问数据的方法各不相同。 下表汇总了应用层，后续部分将介绍每个层中的监视数据源。 有关每个数据位置的说明以及如何访问其中的数据，请参阅 [Azure 中的监视数据位置](data-locations.md)。
+Azure 应用程序中的监视数据源可以组织为层，最高的层是应用程序本身，较低的层是 Azure 平台的组件。 从每个层访问数据的方法各不相同。 下表汇总了应用层，后续部分将介绍每个层中的监视数据源。 有关每个数据位置的说明以及如何访问其中的数据，请参阅 [Azure 中的监视数据位置](../monitor-reference.md)。
 
 
 ![监视层](../media/overview/overview.png)
@@ -54,7 +54,7 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | 配置要在 Azure Monitor 中收集 Azure AD 日志，以便用其他监视数据对其进行分析。 | [将 Azure AD 日志与 Azure Monitor 日志集成（预览版）](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
+| Azure Monitor 日志 | 将 Azure AD 日志配置为在 Azure Monitor 中收集，以结合其他监视数据对其进行分析。 | [将 Azure AD 日志与 Azure Monitor 日志集成（预览版）](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
 | Azure 存储 | 将 Azure AD 日志导出到 Azure 存储进行存档。 | [教程：将 Azure AD 日志存档到 Azure 存储帐户（预览版）](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
 | 事件中心 | 使用事件中心将 Azure AD 日志流式传输到其他位置。 | [教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心（预览版）](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
 
@@ -99,7 +99,7 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 | 事件中心 | 使用事件中心将指标流式传输到其他位置。 |[将 Azure 监视数据流式传输到事件中心以便外部工具使用](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>资源日志
-[资源日志](platform-logs-overview.md)提供 Azure 资源的_内部_运行情况的见解。  资源日志是自动创建的，但你必须创建诊断设置以指定目标，从而可以针对各个资源收集这些日志。
+[资源日志](platform-logs-overview.md)提供 Azure 资源的 _内部_ 运行情况的见解。  资源日志是自动创建的，但你必须创建诊断设置以指定目标，从而可以针对各个资源收集这些日志。
 
 资源日志的配置要求和内容因资源类型而异，然而并非所有服务都创建资源日志。 有关每个服务的详细信息和详细配置过程的链接，请参阅 [Azure 资源日志支持的服务、架构和类别](./resource-logs-schema.md)。 如果某个服务未在本文中列出，则该服务当前不会创建资源日志。
 
@@ -164,7 +164,7 @@ Azure Monitor 中的详细应用程序监视是通过 [Application Insights](/az
 |            | 针对一部分异常捕获的调试快照数据存储在 Azure 存储中。 可使用 Azure 门户中 Application Insights 将其下载到本地进行分析。  | [快照的工作原理](../app/snapshot-debugger.md#how-snapshots-work) |
 
 ## <a name="monitoring-solutions-and-insights"></a>监视解决方案和见解
-[监视解决方案](../insights/solutions.md)和[见解](../insights/insights-overview.md)通过收集数据来提供针对特定服务或应用程序的更多操作见解。 它们可以解决不同应用层甚至多个层中的资源需求。
+[监视解决方案](../insights/solutions.md)和[见解](../monitor-reference.md)通过收集数据来提供针对特定服务或应用程序的更多操作见解。 它们可以解决不同应用层甚至多个层中的资源需求。
 
 ### <a name="monitoring-solutions"></a>监视解决方案
 
@@ -208,4 +208,4 @@ Azure 中的其他服务将数据写入到 Azure Monitor 数据平台。 这样�
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 [Azure Monitor 收集的监视数据的类型](data-platform.md)以及如何查看和分析此数据。
-- 列出 [Azure 资源存储数据的不同位置](data-locations.md)以及数据的访问方式。 
+- 列出 [Azure 资源存储数据的不同位置](../monitor-reference.md)以及数据的访问方式。

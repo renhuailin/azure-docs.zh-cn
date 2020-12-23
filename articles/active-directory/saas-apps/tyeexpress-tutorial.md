@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a601b7ec7e2615053203e23ea61fc6d2efc85bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f44a67b4943c6897f82aedf47d493b36e5e2d3b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533410"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>教程：Azure Active Directory 与 T&E Express 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88533410"
 * 可以让用户使用其 Azure AD 帐户自动登录到 T&E Express（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88533410"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -128,11 +128,11 @@ ms.locfileid: "88533410"
 
 1. 在“管理员”  选项卡下，单击“SAML 域”  打开 SAML 设置页。
 
-    ![配置单一登录](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![显示从“管理员”菜单选择了“SAML 域”的屏幕截图。](./media/tyeexpress-tutorial/tye-SAML.png)
 
 1. 将“Activar(Activate)”  选项从“No”  更改为“SI(Yes)”  。 在“标识提供程序元数据”  文本框中，粘贴从 Azure 门户下载的元数据 XML。
 
-    ![配置单一登录](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![显示域 SAML 页面的屏幕截图，你可以在其中输入元数据。](./media/tyeexpress-tutorial/tyeAdmin.png)
 
 1. 单击“Guardar(Save)”  按钮保存设置。
 
@@ -197,29 +197,28 @@ ms.locfileid: "88533410"
 
 1. 在管理员标签下，单击“用户”打开用户母版页。
 
-    ![添加员工](./media/tyeexpress-tutorial/tye-adminusers.png)
+    ![显示从“管理员”菜单选择了“用户”的屏幕截图。](./media/tyeexpress-tutorial/tye-adminusers.png)
 
 1. 在主页上单击“+”添加用户。
 
-    ![添加员工](./media/tyeexpress-tutorial/tye-usershome.png)
+    ![显示用于添加用户的加号图标的屏幕截图。](./media/tyeexpress-tutorial/tye-usershome.png)
 
 1. 输入表单中所有必须填写的详细信息，并单击保存按钮进行保存。
 
-    ![添加员工](./media/tyeexpress-tutorial/tye-usersadd.png)
+    ![显示“用户信息”部分的屏幕截图，你可以在其中输入相应值。](./media/tyeexpress-tutorial/tye-usersadd.png)
 
-    ![添加员工](./media/tyeexpress-tutorial/tye-userssave.png)
+    ![显示“审批者和助手”部分的屏幕截图，你可以在其中输入相应值。](./media/tyeexpress-tutorial/tye-userssave.png)
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 T&E Express 磁贴时，应当会自动登录到为其设置了 SSO 的 T&E Express。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 T&E Express 磁贴时，应当会自动登录到为其设置了 SSO 的 T&E Express。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

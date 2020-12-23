@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
+ms.date: 11/11/2020
 ms.author: jingwang
-ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253955"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005123"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
 
@@ -81,7 +81,7 @@ ms.locfileid: "85253955"
 在此步骤中，请先创建数据工厂，然后启动数据工厂 UI，在该数据工厂中创建一个管道。
 
 1. 打开 **Microsoft Edge** 或 **Google Chrome**。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-2. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”。
+2. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  。
 3. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
    Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 （例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
@@ -97,7 +97,7 @@ ms.locfileid: "85253955"
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
 6. 在“版本”下选择“V2”。 
 7. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
-8. 选择“创建”。
+8. 选择“创建” 。
 9. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。
 10. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
 
@@ -117,15 +117,15 @@ ms.locfileid: "85253955"
 
 1. 1. 在“常规”面板的“属性”中，将“名称”指定为 CopyPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
 
-1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖放到管道设计器图面。   指定 **CopyFromBlobToSql** 作为**名称**。
+1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖放到管道设计器图面。   指定 **CopyFromBlobToSql** 作为 **名称**。
 
     ![复制活动](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 
 ### <a name="configure-source"></a>配置源
 
 >[!TIP]
->本教程使用“帐户密钥”作为源数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“SAS URI”、“服务主体”和“托管标识”。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)中的相应部分。
->为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+>本教程使用“帐户密钥”作为源数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“SAS URI”、“服务主体”和“托管标识”。 有关详细信息，请参阅[此文](./connector-azure-blob-storage.md#linked-service-properties)中的相应部分。
+>为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](./store-credentials-in-key-vault.md)。
 
 1. 转到“源”选项卡。选择“+ 新建”创建源数据集。
 
@@ -141,14 +141,14 @@ ms.locfileid: "85253955"
 
 1. 导航到 adftutorial/input 文件夹，选择 emp.txt 文件，然后选择“确定”。
 
-1. 选择“确定”。 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。  若要预览此页上的数据，请选择“预览数据”。
+1. 选择“确定” 。 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。  若要预览此页上的数据，请选择“预览数据”。
 
     ![源数据集](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
 ### <a name="configure-sink"></a>配置接收器
 >[!TIP]
->本教程使用“SQL 身份验证”作为接收器数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“服务主体”和“托管标识”。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)中的相应部分。
->为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+>本教程使用“SQL 身份验证”作为接收器数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“服务主体”和“托管标识”。 有关详细信息，请参阅[此文](./connector-azure-sql-database.md#linked-service-properties)中的相应部分。
+>为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](./store-credentials-in-key-vault.md)。
 
 1. 转到“接收器”选项卡，选择“+ 新建”，创建一个接收器数据集。 
 
@@ -224,19 +224,17 @@ ms.locfileid: "85253955"
 
     a. 在“名称”下输入 **RunEveryMinute**。
 
-    b. 在“结束”下选择“在特定日期”。 
+    b. 更新触发器的“开始日期”。 如果该日期早于当前日期时间，发布更改之后，触发器将开始生效。 
 
-    c. 在“结束日期”下选择下拉列表。
+    c. 在“时区”下选择下拉列表。
 
-    d. 选择“当天”选项。 默认情况下，结束日期设置为第二天。
+    d. 将“重复周期”设置为每分钟一次 。
 
-    e. 更新“结束时间”部分，使之超过当前的日期/时间数分钟。 触发器只会在发布所做的更改后激活。 如果将其设置为仅数分钟后激活，而到时又不进行发布，则看不到触发器运行。
+    e. 选择“指定结束日期”的复选框，并将“结束时间”部分更新为晚于当前日期时间几分钟 。 触发器只会在发布所做的更改后激活。 如果将其设置为仅数分钟后激活，而到时又不进行发布，则看不到触发器运行。
 
-    f. 选择“确定”。
+    f. 对于“已激活”选项，请选择“是”。 
 
-    g. 对于“已激活”选项，请选择“是”。 
-
-    h. 选择“确定”。
+    g. 选择“确定”。
 
     > [!IMPORTANT]
     > 每个管道运行都有相关联的成本，因此请正确设置结束日期。

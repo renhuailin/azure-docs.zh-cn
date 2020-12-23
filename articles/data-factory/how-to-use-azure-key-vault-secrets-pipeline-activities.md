@@ -10,22 +10,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013881"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管道活动中使用 Azure Key Vault 机密
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-可以在 Azure Key Vault 中存储凭据或机密值，并在管道执行过程中将其用于传递到活动。
+可以在 Azure Key Vault 中存储凭据或机密值，并在管道执行过程中使用它们来传递到活动。
 
 ## <a name="prerequisites"></a>先决条件
 
-此功能依赖于数据工厂托管标识。  了解它如何从 [用于数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) 进行工作，并确保你的数据工厂有一个关联的。
+此功能依赖于数据工厂托管标识。  了解它如何从 [用于数据工厂的托管标识](./data-factory-service-identity.md) 进行工作，并确保你的数据工厂有一个关联的。
 
 ## <a name="steps"></a>步骤
 
@@ -51,7 +51,7 @@ ms.locfileid: "91537389"
 
     |属性  |值  |
     |---------|---------|
-    |安全输出     |正确         |
+    |安全输出     |True         |
     |URL     |[机密 URI 值]？ api 版本 = 7。0         |
     |方法     |GET         |
     |身份验证     |MSI         |
@@ -65,10 +65,10 @@ ms.locfileid: "91537389"
     > [!CAUTION]
     > 将 Secure Output 选项设置为 true，以防止机密值以纯文本格式记录。  使用此值的任何其他活动都应将其“安全输入”选项设置为 true。
 
-5. 若要使用另一个活动中的值，请使用以下代码表达式** @activity ( "Web1" ) **。
+5. 若要使用另一个活动中的值，请使用以下代码表达式 **@activity ( "Web1" )**。
 
     ![代码表达式](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何使用 Azure Key Vault 存储数据存储和计算的凭据，请参阅 [在 Azure Key Vault 中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+若要了解如何使用 Azure Key Vault 存储数据存储和计算的凭据，请参阅 [在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)

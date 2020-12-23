@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73b9ecd03875b60ed2d9b9d4c8e8a3a0c8de3cfa
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60531049"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956596"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 系列更新 2.2 发行说明
 
@@ -63,14 +63,14 @@ ms.locfileid: "60531049"
 ## <a name="known-issues-in-update-22"></a>更新 2.2 中的已知问题
 下表提供了此版本中已知问题的摘要。
 
-| 不是。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不是。 | Feature | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，则会使存储池脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 2 |错误的控制器 ID |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要任何用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
 | 3 |存储帐户 |此版本不支持使用存储服务删除存储帐户， 否则会导致无法检索用户数据。 | |是 |是 |
 | 4 |设备故障转移 |不支持从同一源设备将某个卷容器多次故障转移到不同的目标设备。 从单个不活动的设备故障转移到多个设备，会使第一个故障转移设备上卷容器丢失数据所有权。 进行此类故障转移后，在 Azure 经典门户中查看这些卷容器时，会发现它们的显示或表现有所不同。 | |是 |否 |
 | 5 |安装 |安装 StorSimple Adapter for SharePoint 期间，需要提供设备 IP 才能成功完成安装。 | |是 |否 |
-| 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转到[配置设备的 Web 代理](storsimple-configure-web-proxy.md)。 |是 |否 |
+| 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转到[配置设备的 Web 代理](./storsimple-8000-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web 代理 |如果在注册的设备上配置并启用 Web 代理，将需要重新启动设备上的主动控制器。 | |是 |否 |
 | 8 |云高延迟和高 I/O 工作负载 |当 StorSimple 设备同时遇到非常高的云延迟（秒级）和高 I/O 工作负载情况时，设备卷将进入降级状态，并且 I/O 可能会出现故障，发生“设备未就绪”错误。 |需要手动重新启动设备控制器或执行设备故障转移，才可以从这种情况中恢复。 |是 |否 |
 | 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
@@ -90,11 +90,10 @@ ms.locfileid: "60531049"
 ## <a name="controller-and-firmware-updates-in-update-22"></a>更新 2.2 中的控制器和固件更新
 此版本仅提供软件更新。 但是，如果从更新 2 之前的版本更新，将需要在设备上安装驱动程序、Storport、Spaceport 和（在某些情况下）磁盘固件更新。
 
-有关如何安装驱动程序、Storport、Spaceport 和磁盘固件更新的详细信息，请参阅在 StorSimple 设备上[安装更新 2.2](storsimple-install-update-21.md)。
+有关如何安装驱动程序、Storport、Spaceport 和磁盘固件更新的详细信息，请参阅在 StorSimple 设备上[安装更新 2.2](./storsimple-8000-install-update-5.md)。
 
 ## <a name="virtual-device-updates-in-update-22"></a>更新 2.2 中的虚拟设备更新
 此更新不能应用于虚拟设备。 将需要新建虚拟设备。 
 
 ## <a name="next-step"></a>后续步骤
-了解如何在 StorSimple 设备上[安装更新 2.2](storsimple-install-update-21.md)。
-
+了解如何在 StorSimple 设备上[安装更新 2.2](./storsimple-8000-install-update-5.md)。

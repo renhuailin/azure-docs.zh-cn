@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934758"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937655"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器的限制
 
@@ -73,10 +73,12 @@ PostgreSQL 连接（即使处于空闲状态）可能占用大约 10 MB 内存�
 - VNET 不支持防火墙规则，而是可以使用网络安全组。
 - 公共访问数据库服务器可以连接到公共 internet，例如通过 `postgres_fdw` ，无法限制此访问。 基于 VNET 的服务器可以使用网络安全组限制出站访问。
 
-### <a name="high-availability"></a>高可用性
+### <a name="high-availability-ha"></a>高可用性 (HA) 
 
-- 可突增服务器当前不支持区域冗余 HA。
+- 可突增服务器当前不支持 HA Zone-Redundant。
 - 服务器故障转移到 HA 备用服务器时，数据库服务器的 IP 地址会发生变化。 确保使用 DNS 记录而不是服务器 IP 地址。
+- 如果为逻辑复制配置了 HA 配置灵活的服务器，则在故障转移到备用服务器时，不会将逻辑复制槽复制到备用服务器。 
+- 有关区域冗余 HA 包括限制的更多详细信息，请参阅 [概念-HA 文档](concepts-high-availability.md) 页。
 
 ### <a name="availability-zones"></a>可用性区域
 
@@ -114,6 +116,7 @@ PostgreSQL 连接（即使处于空闲状态）可能占用大约 10 MB 内存�
 
 * 目前尚不支持 Azure AD 身份验证。 如果需要 Azure AD 身份验证，我们建议使用 " [单一服务器](../overview-single-server.md) " 选项。
 * 尚不支持读取副本。 如果需要读取副本，我们建议使用 " [单一服务器](../overview-single-server.md) " 选项。
+* 不支持将资源移动到另一个订阅。 
 
 
 ## <a name="next-steps"></a>后续步骤

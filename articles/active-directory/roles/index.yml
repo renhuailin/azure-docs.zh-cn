@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Azure AD 角色文档 - Azure AD
+summary: Azure AD 基于角色的访问控制可管理对 Azure AD 资源的访问。 创建自定义角色，分配使用管理单元来限制控制范围的角色，将应用程序访问权限分配给组或用户，使用 Privileged Identity Management (PIM) 管理资格，或者委托用于分发标识管理任务的权限。
+metadata:
+  title: Azure Active Directory 角色文档
+  description: 了解如何使用 Azure AD 角色来管理组织中的访问权限。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: roles
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 8dd6ac6fef0dbc84c77ccacfd048b2af21771f6a
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96499197"
+landingContent:
+- title: 关于 Azure AD 角色
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD 基于角色的访问控制概述
+      url: custom-overview.md
+  - linkListType: concept
+    links:
+    - text: 了解 Azure AD 角色
+      url: concept-understand-roles.md
+    - text: 了解 Azure AD 中的管理单元
+      url: administrative-units.md
+    - text: 使用云组来管理角色分配
+      url: groups-concept.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 授权创建无限数目的应用注册的权限
+      url: quickstart-app-registration-limits.md
+- title: 委托角色
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 按任务委托角色
+      url: delegate-by-task.md
+    - text: 委托应用程序管理权限
+      url: delegate-app-roles.md
+- title: 向用户分配角色
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建自定义角色
+      url: custom-create.md
+    - text: 使用 Graph API 分配角色
+      url: custom-assign-graph.md
+    - text: 使用 PowerShell 进行分配
+      url: custom-assign-powershell.md
+    - text: 使用 Graph API 分配角色
+      url: custom-assign-graph.md
+- title: 向组分配角色
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建可分配角色的组
+      url: groups-create-eligible.md
+    - text: 向云组分配角色
+      url: groups-assign-role.md
+    - text: 使组符合 PIM
+      url: groups-pim-eligible.md
+    - text: 查看组的分配
+      url: groups-view-assignments.md
+- title: 使用管理单元来管理范围
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 添加和删除管理单元
+      url: admin-units-manage.md
+    - text: 将用户分配到单元
+      url: admin-units-add-manage-users.md
+    - text: 将组分配到单元
+      url: admin-units-add-manage-groups.md
+    - text: 分配具有范围的组
+      url: admin-units-assign-roles.md

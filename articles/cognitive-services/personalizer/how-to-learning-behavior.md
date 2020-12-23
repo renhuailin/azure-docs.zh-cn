@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
-ms.openlocfilehash: 10e98cd2f0ad4793aa43f9bb3316c522b44f1d2c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303530"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579285"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>配置 Personalizer 学习行为
 
@@ -22,7 +22,7 @@ ms.locfileid: "91303530"
 
 1. 登录到 Personalizer 资源的 [Azure 门户](https://portal.azure.com)。
 
-1. 在 " **配置** " 页上的 " **学习行为** " 选项卡上，选择 " **返回基线操作"，学习为 Apprentice，** 然后选择 " **保存**"。
+1. 在 " **配置** " 页上的 " **学习行为** " 选项卡上，选择 " **返回基线操作"，学习为 Apprentice，** 然后选择 " **保存** "。
 
 > [!div class="mx-imgBorder"]
 > ![在 Azure 门户中配置 apprentice 模式学习行为的屏幕截图](media/settings/configure-learning-behavior-azure-portal.png)
@@ -37,35 +37,31 @@ ms.locfileid: "91303530"
 
 1. 在你确定操作列表及其功能的现有应用程序逻辑中的点后面添加 [排名 API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) 调用。 操作列表中的第一个操作需要是现有逻辑选择的操作。
 
-1. 配置代码以显示与排名 API 响应的 **奖励操作 ID**相关联的操作。
+1. 配置代码以显示与排名 API 响应的 **奖励操作 ID** 相关联的操作。
 
 ### <a name="configure-your-application-to-call-reward-api"></a>配置应用程序以调用奖励 API
 
 1. 使用现有业务逻辑计算所显示操作的 **奖励** 。 该值必须介于0到1之间。 使用 [奖励 API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)向 Personalizer 发送此奖励。 回报值不应立即出现，可以在某个时间段延迟，具体取决于你的业务逻辑。
 
-1. 如果未在配置的 " **奖励等待时间**" 内返回奖励，则将改用默认的奖励。
+1. 如果未在配置的 " **奖励等待时间** " 内返回奖励，则将改用默认的奖励。
 
 ## <a name="evaluate-apprentice-mode"></a>评估 Apprentice 模式
 
-在 Azure 门户的 Personalizer 资源的 " **评估** " 页上，查看当前的 **学习行为性能**。
+在 Azure 门户的 Personalizer 资源的 " **评估** " 页上，查看当前的 **学习行为性能** 。
 
 > [!div class="mx-imgBorder"]
 > ![查看 Azure 门户中的 apprentice 模式学习行为评估的屏幕截图](media/settings/evaluate-apprentice-mode.png)
 
-Apprentice 模式提供下列 **评估指标**：
-* **基线–平均奖励**：应用程序默认 (基准) 的平均收益。
-* **Personalizer –平均奖励**：可能已达到的总奖励 Personalizer 平均数。
-* **优于最近1000个事件的成就率**：基线和 Personalizer 奖励的比率–在最近的1000事件上标准化。
-
-## <a name="evaluate-apprentice-mode-features"></a>评估 Apprentice 模式功能
-
-使用 [脱机评估](how-to-offline-evaluation.md)来评估功能。
+Apprentice 模式提供下列 **评估指标** ：
+* **基线–平均奖励** ：应用程序默认 (基准) 的平均收益。
+* **Personalizer –平均奖励** ：可能已达到的总奖励 Personalizer 平均数。
+* **优于最近1000个事件的成就率** ：基线和 Personalizer 奖励的比率–在最近的1000事件上标准化。
 
 ## <a name="switch-behavior-to-online-mode"></a>将行为切换到联机模式
 
 确定 Personalizer 的平均使用百分比为75-85% 时，该模型已准备好切换到联机模式。
 
-在 Personalizer 资源 Azure 门户中，在 " **配置** " 页上的 " **学习行为** " 选项卡上，选择 " **返回最佳操作"** ，然后选择 " **保存**"。
+在 Personalizer 资源 Azure 门户中，在 " **配置** " 页上的 " **学习行为** " 选项卡上，选择 " **返回最佳操作"** ，然后选择 " **保存** "。
 
 不需要对排名和奖励 API 调用进行任何更改。
 

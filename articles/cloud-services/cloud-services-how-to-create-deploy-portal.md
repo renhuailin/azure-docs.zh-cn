@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142377"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164158"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
 Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和*自定义创建*。
@@ -56,7 +56,7 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击“创建资源”>“计算”  ，向下滚动到“云服务”并单击它  。
 
-    ![发布云服务](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![在 "创建资源 > 计算" 下突出显示 "云服务" 选项的屏幕截图。](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. 在新的“云服务”  窗格中，输入“DNS 名称”  的值。
 4. 创建一个新“资源组”  或选择一个现有的资源组。
 5. 选择“位置”  。
@@ -74,7 +74,7 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 2. 单击“附加证书”  ，然后在“添加证书”  窗格上单击“确定”  。
 3. 在“云服务”  窗格上单击“创建”  。 当部署达到“就绪”  状态时，可以继续执行后续步骤。
 
-    ![发布云服务](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![突出显示上载证书过程的屏幕截图。](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>确认部署已成功完成
 1. 单击云服务实例。
@@ -84,13 +84,10 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: ./cloud-services-choose-me.md
 
 ## <a name="next-steps"></a>后续步骤
 * [云服务的常规配置](cloud-services-how-to-configure-portal.md)。
 * 配置 [自定义域名](cloud-services-custom-domain-name-portal.md)。
 * [管理云服务](cloud-services-how-to-manage-portal.md)。
 * 配置 [TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
-
-
-

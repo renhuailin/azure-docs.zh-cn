@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 921d9e2138c8aa9c09535a673a7cd2d32e9cddad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270641"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928386"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C 的标识保护和条件访问
 
@@ -60,7 +60,7 @@ Azure AD B2C 中的标识保护和条件访问通常与 Azure AD 中的工作方
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-还可以使用 Microsoft Graph API 来管理 Azure AD B2C 中的条件访问策略。 如需了解详情，请参阅[条件访问文档](../active-directory/conditional-access/overview.md)和 [Microsoft Graph 参考](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)。
+还可以使用 Microsoft Graph API 来管理 Azure AD B2C 中的条件访问策略。 如需了解详情，请参阅[条件访问文档](../active-directory/conditional-access/overview.md)和 [Microsoft Graph 参考](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: dc08df7390285f9b6e4701bb1ca5c4227b19f1da
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739684"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445024"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -25,7 +25,7 @@ ms.locfileid: "91739684"
 在 Azure 订阅中创建密钥保管库时，该密钥保管库自动与订阅的 Azure AD 租户关联。 尝试管理或检索保管库内容的任何人都必须通过 Azure AD 进行身份验证。
 
 - 身份验证可确定调用方的身份。
-- 授权可确定调用方能够执行的操作。 Key Vault 中的授权使用了[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 和 Azure Key Vault 访问策略的组合。
+- 授权可确定调用方能够执行的操作。 Key Vault 中的授权结合使用 [azure 基于角色的访问控制 (AZURE RBAC) ](../../role-based-access-control/overview.md) 和 Azure Key Vault 访问策略。
 
 ### <a name="access-model-overview"></a>访问模型概述
 
@@ -34,7 +34,7 @@ ms.locfileid: "91739684"
 - 管理平面是管理 Key Vault 本身的地方，也是用于创建和删除保管库的接口。 还可以读取密钥保管库属性并管理访问策略。
 - 数据平面支持处理密钥保管库中存储的数据。 可以添加、删除和修改密钥、机密及证书。
 
-若要在任一平面中访问密钥，所有调用方（用户或应用程序）都必须进行身份验证并获得授权。 对于身份验证，这两个平面都使用 Azure Active Directory (Azure AD)。 对于授权，管理平面使用基于角色的访问控制 (RBAC)，而数据平面使用密钥保管库访问策略。
+若要在任一平面中访问密钥，所有调用方（用户或应用程序）都必须进行身份验证并获得授权。 对于身份验证，这两个平面都使用 Azure Active Directory (Azure AD)。 对于授权，管理平面使用 Azure RBAC)  (Azure 基于角色的访问控制，而数据平面使用 Key Vault 访问策略。
 
 对这两种平面使用单一身份验证机制模型具有多个优点：
 
@@ -46,11 +46,11 @@ ms.locfileid: "91739684"
 
 在资源组中创建密钥保管库时，使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 可以通过分配适当的 Azure 角色在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下范围级别分配给 Azure 角色：
 
-- **订阅**：在订阅级别分配的 Azure 角色适用于该订阅中的所有资源组和资源。
-- **资源组**：在资源组级别分配的 Azure 角色适用于该资源组中的所有资源。
-- **特定资源**：为特定资源分配的 Azure 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
+- **订阅** ：在订阅级别分配的 Azure 角色适用于该订阅中的所有资源组和资源。
+- **资源组** ：在资源组级别分配的 Azure 角色适用于该资源组中的所有资源。
+- **特定资源** ：为特定资源分配的 Azure 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
 
-有多种预定义角色。 如果预定义角色不符合需求，可以定义自己的角色。 有关详细信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
+有多种预定义角色。 如果预定义角色不符合需求，可以定义自己的角色。 有关详细信息，请参阅 [AZURE RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
 > [!IMPORTANT]
 > 如果用户具有密钥保管库管理平面的 `Contributor` 权限，则该用户可以通过设置密钥保管库访问策略来授予自己对数据平面的访问权限。 应严格控制对密钥保管库具有 `Contributor` 角色访问权限的用户。 请确保仅授权的人员才能访问和管理 Key Vault、密钥、机密和证书。
@@ -79,7 +79,7 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 
 *   Key Vault 前端 (数据平面) 是一个多租户服务器。 这意味着来自不同客户的密钥保管库可以共享相同的公共 IP 地址。 为了实现隔离，每个 HTTP 请求都将进行身份验证和授权，而与其他请求无关。
 *   你可以确定 TLS 的旧版本来报告漏洞，但由于公共 IP 地址是共享的，因此密钥保管库服务团队无法在传输级别为单独的密钥保管库禁用旧版本的 TLS。
-*   HTTPS 协议允许客户端参与 TLS 协商。 **客户端可以强制使用最新版本的 TLS**，只要客户端这样做，整个连接就会使用相应的级别保护。 但 Key Vault 仍支持旧的 TLS 版本，则不会影响使用较新的 TLS 版本的连接的安全性。
+*   HTTPS 协议允许客户端参与 TLS 协商。 **客户端可以强制使用最新版本的 TLS** ，只要客户端这样做，整个连接就会使用相应的级别保护。 但 Key Vault 仍支持旧的 TLS 版本，则不会影响使用较新的 TLS 版本的连接的安全性。
 *   尽管 TLS 协议中存在已知的漏洞，但当攻击者使用具有漏洞的 TLS 版本启动连接时，不会有任何已知的攻击允许恶意代理从密钥保管库中提取任何信息。 攻击者仍需要对自身进行身份验证和授权，只要合法的客户端始终使用最新的 TLS 版本进行连接，就无法从旧的 TLS 版本泄露凭据。
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
@@ -91,4 +91,4 @@ Key Vault 日志记录会保存保管库中所执行活动的相关信息。 有
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)
-- [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)
+- [Azure RBAC：内置角色](../../role-based-access-control/built-in-roles.md)

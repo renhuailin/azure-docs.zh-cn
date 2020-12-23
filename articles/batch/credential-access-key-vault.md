@@ -2,18 +2,18 @@
 title: 使用 Batch 安全地访问 Key Vault
 description: 了解如何使用 Azure Batch 以编程方式从 Key Vault 访问凭据。
 ms.topic: how-to
-ms.date: 02/13/2020
+ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6938d0fcd2357efcf03053b0c9b2bde3954270b7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079432"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350681"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>使用 Batch 安全地访问 Key Vault
 
-本文将介绍如何设置 Batch 节点，以安全地访问存储在 Azure Key Vault 中的凭据。 无需将管理员凭据放入 Key Vault，然后对凭据进行硬编码以从脚本访问 Key Vault。 解决方案是使用授予 Batch 节点对 Key Vault 的访问权限的证书。 只需执行几个步骤，即可为 Batch 实现安全密钥存储。
+本文介绍如何设置 Batch 节点，以便安全地访问 [Azure Key Vault](../key-vault/general/overview.md) 中存储的凭据。 无需将管理员凭据放入 Key Vault，然后对凭据进行硬编码以从脚本访问 Key Vault。 解决方案是使用授予 Batch 节点对 Key Vault 的访问权限的证书。
 
 若要从 Batch 节点向 Azure Key Vault 进行身份验证，需要：
 
@@ -46,12 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-将对 Key Vault 的访问权限授予用户或服务主体。  若要以编程方式访问 Key Vault，请结合使用服务主体和我们在上一步中创建的证书。
-
-有关 Azure 服务主体的详细信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)。
-
-> [!NOTE]
-> 服务主体必须与 Key Vault 位于同一 Azure AD 租户中。
+将对 Key Vault 的访问权限授予用户或服务主体。  若要以编程方式访问 Key Vault，请将[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)与上一步中创建的证书一起使用。 服务主体必须与 Key Vault 位于同一 Azure AD 租户中。
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -68,11 +63,11 @@ $newADApplication = New-AzureRmADApplication -DisplayName "Batch Key Vault Acces
 $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplication.ApplicationId
 ```
 
-应用程序的 URL 并不重要，因为我们只是将其用于 Key Vault 访问。
+应用程序的 URL 并不重要，因为我们只是将其用于访问 Key Vault。
 
 ## <a name="grant-rights-to-key-vault"></a>授予 Key Vault 的权限
 
-在上一步中创建的服务主体需要权限才能从 Key Vault 检索机密。 可以通过 Azure 门户或使用以下 PowerShell 命令来授予权限。
+在上一步中创建的服务主体需要权限才能从 Key Vault 检索机密。 可以通过 [Azure 门户](../key-vault/general/assign-access-policy-portal.md) 或使用以下 PowerShell 命令来授予权限。
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -82,13 +77,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 创建 Batch 池，然后转到该池中的“证书”选项卡，并分配所创建的证书。 证书现在位于所有 Batch 节点上。
 
-接下来，我们需要将证书分配给 Batch 帐户。 通过将证书分配给帐户，我们可以将其分配给池，然后分配给节点。 执行此操作最简单的方法是，转到门户中的 Batch 帐户，导航到“证书”，然后选择“添加”。  上传我们在[获取证书`.pfx`中生成的 ](#obtain-a-certificate) 文件并提供密码。 完成后，相应的证书将添加到列表，你可以验证指纹。
+接下来，将该证书分配到 Batch 帐户。 将证书分配到帐户之后，Batch 就可以将其分配到池，然后分配到节点。 执行此操作最简单的方法是，转到门户中的 Batch 帐户，导航到“证书”，然后选择“添加”。  上传先前生成的 `.pfx` 文件，并提供密码。 完成后，相应的证书将添加到列表，你可以验证指纹。
 
-现在，在创建 Batch 池时，可以导航到池中的证书，并将创建的证书分配给该池。 执行此操作时，请确保选择存储位置 LocalMachine。 证书将加载到池中的所有 Batch 节点上。
+现在，在创建 Batch 池时，可以导航到池中的“证书”，并将创建的证书分配到该池。 执行此操作时，请确保选择存储位置 LocalMachine。 证书将加载到池中的所有 Batch 节点上。
 
 ## <a name="install-azure-powershell"></a>安装 Azure PowerShell
 
-如果计划在节点上使用 PowerShell 脚本访问 Key Vault，则需要安装 Azure PowerShell 库。 有几种方法可以实现此目的，如果你的节点安装了 Windows Management Framework (WMF) 5，则可以使用 install-module 命令下载它。 如果你使用的节点没有 WMF 5，最简单的安装方法是将 Azure PowerShell `.msi` 文件与 Batch 文件捆绑在一起，然后将安装程序作为 Batch 启动脚本的第一部分进行调用。 有关详细信息，请参阅此示例：
+如果计划在节点上使用 PowerShell 脚本访问 Key Vault，则需要安装 Azure PowerShell 库。 如果节点安装了 Windows Management Framework (WMF) 5，则可使用 install-module 命令下载该库。 如果你使用的节点不是 WMF 5，则安装它的最简单方法是将 Azure PowerShell `.msi` 文件与批处理文件捆绑在一起，然后将安装程序作为批处理启动脚本的第一部分进行调用。 有关详细信息，请参阅此示例：
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh
@@ -99,7 +94,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>访问密钥保管库
 
-现在，我们可以访问在 Batch 节点上运行的脚本中的 Key Vault。 若要从脚本访问 Key Vault，你只需使用证书对脚本针对 Azure AD 进行身份验证。 若要在 PowerShell 中执行此操作，请使用以下示例命令。 为“指纹”、“应用 ID”（服务主体的 ID）和“租户 ID”（服务主体所在的租户）指定相应的 GUID。  
+现在可以通过在 Batch 节点上运行的脚本访问 Key Vault 了。 若要从脚本访问 Key Vault，你只需使用证书对脚本针对 Azure AD 进行身份验证。 若要在 PowerShell 中执行此操作，请使用以下示例命令。 为“指纹”、“应用 ID”（服务主体的 ID）和“租户 ID”（服务主体所在的租户）指定相应的 GUID。  
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId
@@ -112,3 +107,9 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 ```
 
 这些是要在脚本中使用的凭据。
+
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解 [Azure Key Vault](../key-vault/general/overview.md)。
+- 查看[适用于 Batch 的 Azure 安全基线](security-baseline.md)。
+- 了解批处理功能，如[使用 Linux 计算节点](batch-linux-nodes.md)[配置对计算节点的访问权限](pool-endpoint-configuration.md)，以及[使用专用终结点](private-connectivity.md)。

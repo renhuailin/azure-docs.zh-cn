@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086477"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010106"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
@@ -61,19 +61,19 @@ ms.locfileid: "86086477"
 > [!WARNING]
 > 安装在空边缘节点上的自定义组件将从 Microsoft 得到商业上合理的支持。 这或许可解决遇到的问题。 或者也可参考社区资源，获取更多帮助。 以下是一些可获得社区帮助的最活跃站点：
 >
-> * [有关 HDInsight 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-hdinsight.html
+> * [Microsoft Q&HDInsight 的问题页面] (/answers/topics/azure-hdinsight.html
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > 如果在使用 Apache 技术，可通过 [https://apache.org](https://apache.org) 上的 Apache 项目站点（如 [Apache Hadoop](https://hadoop.apache.org/) 站点）获取帮助。
 
 > [!IMPORTANT]
-> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，运行的群集（包括边缘节点）不进行自动修补****。 客户必须使用脚本操作或其他机制来修补正在运行的群集。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
+> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，运行的群集（包括边缘节点）不进行自动修补。 客户必须使用脚本操作或其他机制来修补正在运行的群集。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>将边缘节点添加到现有群集
 
 本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/) 中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。该脚本不执行任何操作。  它只是演示如何从资源管理器模板调用脚本操作。
 
-1. 选择以下图像以登录到 Azure，并在 Azure 门户中打开 Azure 资源管理器模板。
+1. 选择以下图像登录到 Azure，并在 Azure 门户中打开 Azure 资源管理器模板。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
@@ -86,7 +86,7 @@ ms.locfileid: "86086477"
     |位置|选择现有 HDInsight 群集的位置。|
     |群集名称|输入现有 HDInsight 群集的名称。|
 
-1. 选中“我同意上述条款和条件”****，并选择“购买”**** 以创建边缘节点。
+1. 选中“我同意上述条款和条件”，并选择“购买”以创建边缘节点。
 
 > [!IMPORTANT]  
 > 请确保选择现有 HDInsight 群集的 Azure 资源组。  否则，会收到错误消息“无法对嵌套资源执行请求的操作。 父资源 '&lt;ClusterName>' 未找到。”
@@ -117,11 +117,11 @@ ms.locfileid: "86086477"
 
     某些属性已硬编码在模板中：群集类型、群集工作节点计数、边缘节点大小和边缘节点名称。
 
-1. 选中“我同意上述条款和条件”****，并选择“购买”**** 以创建包含该边缘节点的群集。
+1. 选中“我同意上述条款和条件”，并选择“购买”以创建包含该边缘节点的群集。
 
 ## <a name="add-multiple-edge-nodes"></a>添加多个边缘节点
 
-可以向一个 HDInsight 群集添加多个边缘节点。  只能使用 Azure 资源管理器模板进行多边缘节点配置。  请参阅本文开头的模板示例。  更新“targetInstanceCount”，以反映要创建的边缘节点数****。
+可以向一个 HDInsight 群集添加多个边缘节点。  只能使用 Azure 资源管理器模板进行多边缘节点配置。  请参阅本文开头的模板示例。  更新“targetInstanceCount”，以反映要创建的边缘节点数。
 
 ## <a name="access-an-edge-node"></a>访问边缘节点
 
@@ -133,7 +133,7 @@ ms.locfileid: "86086477"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
-3. 选择“应用程序”。**** 此时显示该边缘节点。  默认名称为 **new-edgenode**。
+3. 选择“应用程序”。 此时显示该边缘节点。  默认名称为 **new-edgenode**。
 4. 选择该边缘节点。 此时显示 SSH 终结点。
 
 **在边缘节点上使用 Hive**
@@ -158,9 +158,9 @@ ms.locfileid: "86086477"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
-3. 选择“应用程序”。**** 此时显示边缘节点的列表。  
-4. 右键单击要删除的边缘节点，并选择“删除”****。
-5. 请选择“是”以确认。****
+3. 选择“应用程序”。 此时显示边缘节点的列表。  
+4. 右键单击要删除的边缘节点，并选择“删除”。
+5. 请选择“是”以确认。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -169,6 +169,6 @@ ms.locfileid: "86086477"
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)：了解如何在群集上安装 HDInsight 应用程序。
 * [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md)（安装自定义 HDInsight 应用程序）：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
 * [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
-* [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
+* [MSDN：安装 HDInsight 应用程序](/rest/api/hdinsight/hdinsight-application)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
 * [使用资源管理器模板在 HDInsight 中创建基于 Linux 的 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)：了解如何调用资源管理器模板创建 HDInsight 群集。

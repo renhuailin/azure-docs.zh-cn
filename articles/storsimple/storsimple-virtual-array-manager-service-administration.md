@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967085"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列
 ![安装流程](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -34,7 +34,7 @@ ms.locfileid: "85515437"
 * 通过 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列
 
 > [!NOTE]
-> 若要查看可用于 StorSimple 8000 系列设备的管理选项，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
+> 若要查看可用于 StorSimple 8000 系列设备的管理选项，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](./storsimple-8000-manager-service-administration.md)。
 > 
 > 
 
@@ -42,7 +42,7 @@ ms.locfileid: "85515437"
 StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 StorSimple 虚拟阵列。 用户将使用在浏览器中运行的中央 Microsoft Azure 门户管理这些设备。 若要连接到 StorSimple Device Manager 服务，请执行以下操作。
 
 #### <a name="to-connect-to-the-service"></a>连接到服务
-1. 转到[https://ms.portal.azure.com](https://ms.portal.azure.com)。
+1. 转到 [https://ms.portal.azure.com](https://ms.portal.azure.com)。
 2. 使用 Microsoft 帐户凭据，登录到 Microsoft Azure 门户（位于窗格右上角）。
 3. 在 StorSimple Device Manager 中导航到“浏览”->“筛选器”，以查看给定订阅中的所有设备管理器。
 
@@ -78,4 +78,3 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Web UI 以及如何使用它的信息，请转到[使用 StorSimple Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-

@@ -5,19 +5,25 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: c00daccfaf31e455a1ff5e055489b19f4ca4203d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 1a14c6d5d96726033694d8fc88cc4b6eead87221
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262324"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023241"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-如果还没有 Azure 订阅，可以在开始前**创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** 。
+如果还没有 Azure 订阅，可以在开始前 **创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** 。
 
-此外，在开始之前，请在开发计算机上**按照 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 版本 16.5 或更高版本**。 如果已安装了较旧的版本，可以在计算机上打开 *Visual Studio 安装程序*应用，然后按照提示更新安装。
+此外，在开始之前，请在开发计算机上 **按照 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 版本 16.5 或更高版本**。 如果已安装了较旧的版本，可以在计算机上打开 *Visual Studio 安装程序* 应用，然后按照提示更新安装。
 
-本教程由一个使用 C# 编写的示例项目驱动。 示例如下所示：[Azure 数字孪生示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 导航到示例链接，然后选择标题下方的“下载 ZIP”按钮，在你的计算机上获取示例项目。
+本教程由一个使用 C# 编写的示例项目驱动。 示例如下所示：[Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 导航到示例链接，然后选择标题下方的“下载 ZIP”按钮，在你的计算机上获取示例项目。
 
-[!INCLUDE [Azure Digital Twins tutorials: instance prereq](digital-twins-tutorial-prereq-instance.md)]
+这会将 .ZIP 文件夹以 Azure_Digital_Twins_end_to_end_samples.zip 的形式下载到计算机上。 解压缩文件夹并提取文件。
+
+### <a name="prepare-an-azure-digital-twins-instance"></a>准备 Azure 数字孪生实例
+
+[!INCLUDE [Azure Digital Twins: instance prereq](digital-twins-prereq-instance.md)]
+
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](digital-twins-local-credentials-outer.md)]

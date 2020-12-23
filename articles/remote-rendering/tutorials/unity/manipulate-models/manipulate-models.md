@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018852"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559127"
 ---
 # <a name="tutorial-manipulating-models"></a>教程：操作模型
 
@@ -161,7 +161,7 @@ ms.locfileid: "89018852"
 
 1. 再次运行应用程序。 模型加载后不久，你会看到远程对象的边界。 你会看到类似以下值的内容：
 
-     ![边界已更新](./media/updated-bounds.png)
+     ![显示远程对象边界示例的屏幕截图。](./media/updated-bounds.png)
 
 现在，我们在 Unity 对象上有了一个配置了准确边界的本地 BoxCollider。 这些边界允许使用与本地渲染对象相同的策略进行可视化和交互。 例如，应用可更改“转换”、物理数据等的脚本。
 
@@ -176,7 +176,7 @@ ms.locfileid: "89018852"
 1. 按下 Unity 的播放按钮以播放场景，并打开 AppMenu 中的“模型工具”菜单 。
 ![视图控制器](./media/model-with-view-controller.png)
 
-AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定的视图控制器 。 当 GameObject 包含 RemoteBounds 组件时，视图控制器将添加 [BoundingBox](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) 组件，该组件是一个 MRTK 组件，使用 BoxCollider 渲染围绕对象的边界框  。 [ObjectManipulator](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator)，负责手势交互。 通过组合运用这些脚本，我们可以移动、旋转和缩放远程渲染的模型。
+AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定的视图控制器 。 当 GameObject 包含 RemoteBounds 组件时，视图控制器将添加 [BoundingBox](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) 组件，该组件是一个 MRTK 组件，使用 BoxCollider 渲染围绕对象的边界框  。 [ObjectManipulator](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html)，负责手势交互。 通过组合运用这些脚本，我们可以移动、旋转和缩放远程渲染的模型。
 
 1. 将鼠标移到游戏面板，然后单击游戏面板内部使其拥有焦点。
 1. 使用 [MRTK 的手势模拟](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)，按住左 Shift 键。
@@ -237,7 +237,7 @@ AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定
     ```
 
     > [!NOTE]
-    > Unity 有一个名为 [RaycastHit](https://docs.unity3d.com/ScriptReference/RaycastHit.html) 的类，Azure 远程渲染有一个名为 [RayCastHit](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.raycasthit) 的类 。 大写 C 是用于避免编译错误的一个重要区分信息。
+    > Unity 有一个名为 [RaycastHit](https://docs.unity3d.com/ScriptReference/RaycastHit.html) 的类，Azure 远程渲染有一个名为 [RayCastHit](/dotnet/api/microsoft.azure.remoterendering.raycasthit) 的类 。 大写 C 是用于避免编译错误的一个重要区分信息。
 
     RemoteRayCaster 提供了用于将远程光线投射到当前会话的通用访问点。 具体而言，我们接下来将实现 MRTK 指针处理程序。 该脚本将实现 `IMixedRealityPointerHandler` 接口，该接口会告诉 MRTK 我们想要该脚本侦听[混合现实指针](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/Input/Pointers.html)事件。
 
@@ -308,7 +308,7 @@ AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定
 
 在单击时发送光线投射请求是查询远程对象的有效策略。 但是，这不是理想的用户体验，因为是光标与框碰撞体发生碰撞，而不是模型本身。
 
-还可以创建一个新的 MRTK 指针，该指针在远程会话中更频繁地投射光线。 虽然这是一种更复杂的方法，但用户体验会更好。 此策略超出了本教程的范围，但可以在“展示”应用中查看此方法的示例，可通过 [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)获取。
+还可以创建一个新的 MRTK 指针，该指针在远程会话中更频繁地投射光线。 虽然这是一种更复杂的方法，但用户体验会更好。 此策略超出了本教程的范围，但可以在“展示”应用中查看此方法的示例，可通过 [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase)获取。
 
 如果在 RemoteRayCastPointerHandler 中成功完成光线投射，则会从 `OnRemoteEntityClicked` Unity 事件发出命中的 `Entity`。 为了响应该事件，我们将创建一个帮助程序脚本，用于接受 `Entity` 并对其执行操作。 首先让脚本将 `Entity` 的名称打印到调试日志。
 

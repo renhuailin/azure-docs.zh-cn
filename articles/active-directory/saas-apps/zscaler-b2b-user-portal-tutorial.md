@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: jeedes
-ms.openlocfilehash: f8eda6eec4251e373ad08be8623a9f11407c1476
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f6b7fb79b5aab1ee3ea6b5b710c766c1a34b099c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545941"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519803"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-b2b-user-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler B2B User Portal 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545941"
 * 让用户使用其 Azure AD 帐户自动登录到 Zscaler B2B User Portal。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "88545941"
 
 * Zscaler B2B User Portal 支持实时用户预配
 
-* 配置 Zscaler B2B User Portal 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Zscaler B2B User Portal 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-zscaler-b2b-user-portal-from-the-gallery"></a>从库中添加 Zscaler B2B User Portal
 
@@ -147,13 +147,13 @@ ms.locfileid: "88545941"
 
     a. 在“IdP 元数据文件上传”字段中单击“选择文件”，上传从 Azure AD 下载的元数据文件。
 
-    b. 它会从 Azure AD 读取 **IdP 元数据**，并填充所有字段信息，如下所示。
+    b. 它会从 Azure AD 读取 **IdP 元数据** ，并填充所有字段信息，如下所示。
 
     ![Zscaler Private Access Administrator 配置](./media/zscaler-b2b-user-tutorial/config.png)
 
     c. 从“域”字段中选择域。
     
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 ### <a name="create-zscaler-b2b-user-portal-test-user"></a>创建 Zscaler B2B User Portal 测试用户
 
@@ -163,16 +163,16 @@ ms.locfileid: "88545941"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Zscaler B2B User Portal”磁贴时，应会自动登录到设置了 SSO 的 Zscaler B2B User Portal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Zscaler B2B User Portal”磁贴时，应会自动登录到设置了 SSO 的 Zscaler B2B User Portal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Zscaler B2B User Portal](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

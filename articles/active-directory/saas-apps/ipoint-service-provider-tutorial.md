@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: b7c1fa0f66a68f3ff87cec15018af3f2ec882ce1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e45b9c2f8732d95c8c7784a7798b9ae2e9f1dab9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552871"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459809"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipoint-service-provider"></a>教程：Azure Active Directory 与 iPoint Service Provider 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552871"
 * 让用户使用其 Azure AD 帐户自动登录到 iPoint Service Provider。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88552871"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * iPoint Service Provider 支持 **SP 和 IDP** 发起的 SSO
-* 配置 iPoint Service Provider 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 iPoint Service Provider 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-ipoint-service-provider-from-the-gallery"></a>从库中添加 iPoint Service Provider
 
@@ -88,7 +88,7 @@ ms.locfileid: "88552871"
     https://<CUSTOMERNAME>.ipoint-systems.com/authserver/saml/ssoLogin
     ```
 
-1. 单击“ **保存**”。
+1. 单击“ **保存** ”。
 
 1. iPoint Service Provider 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -140,7 +140,7 @@ ms.locfileid: "88552871"
 
 ## <a name="configure-ipoint-service-provider-sso"></a>配置 iPoint Service Provider SSO
 
-若要在 **iPoint Service Provider** 端配置单一登录，需要将下载的**证书(Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [iPoint Service Provider 支持团队](mailto:support@ipoint-systems.de)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **iPoint Service Provider** 端配置单一登录，需要将下载的 **证书(Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [iPoint Service Provider 支持团队](mailto:support@ipoint-systems.de)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-ipoint-service-provider-test-user"></a>创建 iPoint Service Provider 测试用户
 
@@ -150,18 +150,18 @@ ms.locfileid: "88552871"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“iPoint Service Provider”磁贴时，应会自动登录到设置了 SSO 的 iPoint Service Provider。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“iPoint Service Provider”磁贴时，应会自动登录到设置了 SSO 的 iPoint Service Provider。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 iPoint Service Provider](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 iPoint Service Provider](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 iPoint Service Provider](/cloud-app-security/proxy-intro-aad)

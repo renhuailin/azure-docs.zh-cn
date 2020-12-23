@@ -1,7 +1,7 @@
 ---
 title: 转换为指示器值
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“转换为指示器值”模块，将包含分类值的列转换为一系列二元指示器列。
+description: 使用 Azure 机器学习设计器中的 "转换为指示器值" 模块将分类列转换为一系列二进制指示器列。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81b3c113f46428327842c1555fdd1934e9ae8762
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477657"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420846"
 ---
 # <a name="convert-to-indicator-values"></a>转换为指示器值
 本文介绍 Azure 机器学习设计器的某个模块。
@@ -33,7 +33,7 @@ ms.locfileid: "79477657"
 
 1. 选择“编辑列”以选择一个或多个分类列。
 
-1. 如果你**只想**输出新的布尔值列，请选择“覆盖分类列”选项。 此选项默认已关闭。
+1. 如果你 **只想** 输出新的布尔值列，请选择“覆盖分类列”选项。 此选项默认已关闭。
     
 
     > [!TIP]
@@ -71,8 +71,8 @@ ms.locfileid: "79477657"
 
 模块将返回两个输出：
 
-- **结果数据集**：包含转换的指示器值列的数据集。 也会“传递”未选择进行清理的列。
-- **指示器值转换**：用于转换为指示器值的数据转换，这些值可以保存在工作区中，并在以后应用于新数据。
+- **结果数据集** ：包含转换的指示器值列的数据集。 也会“传递”未选择进行清理的列。
+- **指示器值转换** ：用于转换为指示器值的数据转换，这些值可以保存在工作区中，并在以后应用于新数据。
 
 ## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>将保存的指示器值操作应用于新数据
 

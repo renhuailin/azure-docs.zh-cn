@@ -1,14 +1,14 @@
 ---
 title: 修正不符合资源
 description: 本指南将指导你完成对 Azure Policy 中不符合策略的资源的修正。
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 76d2e57c1b5df965c81c88506ff2c2f70b2cb1f8
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269839"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876322"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -17,7 +17,7 @@ ms.locfileid: "91269839"
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
 当 Azure Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
-Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 使用 SDK 时，必须手动将角色授予托管标识。 托管标识的位置不会影响它对 Azure Policy 的操作。
+Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则会在分配策略或计划时显示错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 使用 SDK 时，必须手动将角色授予托管标识。 托管标识的位置不会影响它对 Azure Policy 的操作。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="缺少对托管标识的已定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
 
@@ -129,11 +129,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 在 Azure 门户中选择“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务 。
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="在“所有服务”中搜索“Policy”的屏幕截图。" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="缺少对托管标识的已定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
 
 1. 选择“Azure Policy”页左侧的“修正”。
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="“Policy”页中“修正”节点的屏幕截图。" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="缺少对托管标识的已定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
 
 1. “要修正的策略”选项卡和数据表中包含所有具有不合规的资源的 deployIfNotExists 和 modify 策略分配。 选择其中一个具有不符合资源的策略。 “新修正任务”页随即打开。
 
@@ -142,17 +142,17 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 在“新修正任务”页上，通过使用“范围”省略号从分配策略的位置选取子资源（包括下面的单个资源对象）来筛选要修正的资源。 此外，使用“位置”下拉列表来进一步筛选资源。 仅对表中列出的资源进行修正。
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="“修正”节点和要修正的资源的网格的屏幕截图。" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="缺少对托管标识的已定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
 
 1. 筛选资源后，通过选择“修正”来启动修正任务。 “策略符合性”页将打开到“修正任务”选项卡，以显示任务进度的状态。 由修正任务创建的部署将立即开始。
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="“修正任务”选项卡和现有修正任务的进度的屏幕截图。" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="缺少对托管标识的已定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
 
 1. 选择“策略合规性”页中的“修正任务”以获取有关进度的详细信息。 任务所使用的筛选与正在修正的资源列表一同显示。
 
 1. 从“修正任务”页中，右键单击资源以查看修正任务的部署或资源。 在行末尾，选择“相关事件”以查看诸如错误消息之类的详细信息。
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="“修正任务”选项卡上的资源上下文菜单的屏幕截图。" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="缺少对托管标识的已定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
 
 通过“修正任务”部署的资源将添加到“策略符合性”页上的“部署的资源”选项卡。
 

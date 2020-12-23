@@ -1,7 +1,7 @@
 ---
 title: 双类神经网络：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“双类神经网络”模块创建一个神经网络模型，该模型可用于预测只有两个值的目标。
+description: 了解如何在 Azure 机器学习中使用 Two-Class 神经网络模块来创建二进制分类器。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 2ad4fc575a6e9d07e4e24c2d570f68edbbea46c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9131a2439facef00cae818bffef38e536a40a2fd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907675"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421152"
 ---
 # <a name="two-class-neural-network-module"></a>“双类神经网络”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块，可以创建一个神经网络模型，该模型可用于预测只有两个值的目标。
 
@@ -38,17 +38,17 @@ ms.locfileid: "90907675"
   
 ## <a name="how-to-configure"></a>配置方式
 
-1.  向你的管道中添加**双类神经网络**模块。 可以在“机器学习”、“初始化”下的“分类”类别中找到此模块。  
+1.  向你的管道中添加 **双类神经网络** 模块。 可以在“机器学习”、“初始化”下的“分类”类别中找到此模块。  
   
 2.  通过设置“创建训练程序模式”选项，指定要如何对模型进行训练。  
   
-    -   **单个参数**：如果已知如何配置模型，请选择此选项。
+    -   **单个参数** ：如果已知如何配置模型，请选择此选项。
 
-    -   **参数范围**：如果不确定最佳参数，可以使用[优化模型超参数](tune-model-hyperparameters.md)模块来找到最佳参数。 你提供某个值范围，然后训练程序就会循环访问多个设置组合，以确定可产生最佳结果的值组合。  
+    -   **参数范围** ：如果不确定最佳参数，可以使用 [优化模型超参数](tune-model-hyperparameters.md)模块来找到最佳参数。 你提供某个值范围，然后训练程序就会循环访问多个设置组合，以确定可产生最佳结果的值组合。  
 
 3.  对于“隐藏层规范”，请选择要创建的网络体系结构的类型。  
   
-    -   **完全连接的情况**：使用为双类神经网络定义的默认神经网络体系结构，如下所述：
+    -   **完全连接的情况** ：使用为双类神经网络定义的默认神经网络体系结构，如下所述：
   
         -   有一个隐藏层。
   
@@ -96,7 +96,7 @@ ms.locfileid: "90907675"
 
 + 若要保存已训练模型的快照，请选择“训练模型”模块右侧面板中的“输出”选项卡。 选择“注册数据集”图标将模型保存为可重用模块。
 
-+ 若要使用模型进行评分，请向管道中添加**评分模型**模块。
++ 若要使用模型进行评分，请向管道中添加 **评分模型** 模块。
 
 
 ## <a name="next-steps"></a>后续步骤

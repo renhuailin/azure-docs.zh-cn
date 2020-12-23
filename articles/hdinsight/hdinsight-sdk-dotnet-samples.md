@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 12/06/2019
-ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c748c7c1887f46df6f2a49c0d92cfc91a94a90c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74951558"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080407"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight：.NET 示例
 
@@ -33,7 +33,7 @@ ms.locfileid: "74951558"
 
 ## <a name="prerequisite"></a>先决条件
 
-[用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+[用于 .NET 的 Azure HDInsight SDK](/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>群集管理 - 创建
 
@@ -46,4 +46,4 @@ ms.locfileid: "74951558"
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-在[用于 .NET 的 HDInsight SDK 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)中，可找到这一附加 SDK 功能的代码片段。
+在[用于 .NET 的 HDInsight SDK 参考文档](/dotnet/api/overview/azure/hdinsight)中，可找到这一附加 SDK 功能的代码片段。

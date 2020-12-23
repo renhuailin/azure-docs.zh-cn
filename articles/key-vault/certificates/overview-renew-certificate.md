@@ -10,27 +10,35 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88588797"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287687"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>续订 Azure Key Vault 证书
 
-通过 Azure Key Vault，可轻松地为网络预配、管理和部署数字证书，并支持应用程序的安全通信。 若要了解证书的详细信息，请参阅[关于 Azure Key Vault 证书](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)。
+通过 Azure Key Vault，可轻松地为网络预配、管理和部署数字证书，并支持应用程序的安全通信。 若要了解证书的详细信息，请参阅[关于 Azure Key Vault 证书](./about-certificates.md)。
 
 通过使用生存期较短的证书或增加证书轮换的频率，可以帮助防止未经授权的用户访问应用程序。
 
 本文介绍如何续订 Azure Key Vault 证书。
 
-## <a name="get-notified-about-certificate-expirations"></a>获取有关证书过期的通知
-若要在证书即将过期时收到通知，请执行以下操作：
+## <a name="get-notified-about-certificate-expiration"></a>获取有关证书过期的通知
+若要获取有关证书生存期事件的通知，需要添加证书联系人。 证书联系人包含联系人信息以发送由证书生存期事件触发的通知。 密钥保管库中的所有证书共享联系人信息。 如果保管库中的任何证书发生事件，所有指定联系人都会收到通知。
 
-首先，使用 PowerShell cmdlet [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) 将证书联系人添加到密钥保管库。
+### <a name="steps-to-set-certificate-notifications"></a>证书通知的设置步骤：
+首先，将证书联系人添加到密钥保管库中。 可使用 Azure 门户或 PowerShell cmdlet [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) 进行添加。
 
-其次，配置希望收到证书过期通知的时间。 若要配置证书的生命周期属性，请参阅[在 Key Vault 中配置证书自动轮换](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)。
+其次，配置希望收到证书过期通知的时间。 若要配置证书的生命周期属性，请参阅[在 Key Vault 中配置证书自动轮换](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)。
+
+如果证书的策略设置为自动续订，则在发生以下事件时发送通知。
+
+- 证书续订之前
+- 证书续订之后，指出是否已成功续订证书，或是否存在错误，需要手动续订证书。  
+
+  如果你将证书策略设置为手动续订（仅限电子邮件），系统会在你需要续订证书时发送通知。  
 
 在 Key Vault 中，有三种类别的证书：
 -   通过集成证书颁发机构 (CA)（如 DigiCert 或 GlobalSign）创建的证书
@@ -38,7 +46,7 @@ ms.locfileid: "88588797"
 -   自签名证书
 
 ## <a name="renew-an-integrated-ca-certificate"></a>续订集成 CA 证书 
-Azure Key Vault 处理由受信任的 Microsoft 证书颁发机构 DigiCert 和 GlobalSign 颁发的证书的端到端维护。 了解如何[将受信任的 CA 与 Key Vault 集成](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)。
+Azure Key Vault 处理由受信任的 Microsoft 证书颁发机构 DigiCert 和 GlobalSign 颁发的证书的端到端维护。 了解如何[将受信任的 CA 与 Key Vault 集成](./how-to-integrate-certificate-authority.md)。
 
 ## <a name="renew-a-nonintegrated-ca-certificate"></a>续订非集成 CA 证书 
 通过使用 Azure Key Vault，可导入来自任何 CA 的证书，这一优点使你能够与多个 Azure 资源集成并简化部署。 如果你担心无法跟踪证书的到期日期，或者更糟的是，你发现某个证书已过期，那么你的密钥保管库可帮助你保持最新状态。 对于非集成 CA 证书，密钥保管库允许你设置即将过期的电子邮件通知。 此类通知也可为多个用户设置。
@@ -62,7 +70,7 @@ Azure Key Vault 处理由受信任的 Microsoft 证书颁发机构 DigiCert 和 
 
 ## <a name="renew-a-self-signed-certificate"></a>续订自签名证书
 
-Azure Key Vault 还处理自签名证书的自动续订。 若要详细了解如何更改颁发策略和更新证书的生命周期属性，请参阅[在 Key Vault 中配置证书自动轮换](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)。
+Azure Key Vault 还处理自签名证书的自动续订。 若要详细了解如何更改颁发策略和更新证书的生命周期属性，请参阅[在 Key Vault 中配置证书自动轮换](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)。
 
 ## <a name="troubleshoot"></a>疑难解答
 如果颁发的证书在 Azure 门户中处于“已禁用”状态，转到“证书操作”查看该证书的错误消息。

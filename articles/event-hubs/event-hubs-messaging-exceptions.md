@@ -1,22 +1,22 @@
 ---
-title: 'Azure 事件中心-异常 (旧) '
+title: Azure 事件中心 - 异常（旧版）
 description: 本文提供 Azure 事件中心消息传送异常和建议的操作列表。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/02/2020
+ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318477"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340961"
 ---
-# <a name="event-hubs-messaging-exceptions---net-legacy"></a>事件中心消息传送异常-.NET (旧) 
+# <a name="event-hubs-messaging-exceptions---net-legacy"></a>事件中心消息传送异常 - .NET（旧版）
 本部分列出了 .NET Framework API 生成的 .NET 异常。 
 
 > [!IMPORTANT]
-> 本文中列出的一些例外仅适用于旧版事件中心 .NET 库。 例如： node.js. * 异常。
+> 本文中列出的一些异常仅适用于旧版事件中心 .NET 库。 例如：Microsoft.ServiceBus.* 异常。
 > 
-> 有关新 .NET 库引发的 EventHubsException 的信息，请参阅 [EventHubsException-.net](exceptions-dotnet.md)
+> 有关新 .NET 库引发的 EventHubsException 的信息，请参阅 [EventHubsException - .NET](exceptions-dotnet.md)
 
 ## <a name="exception-categories"></a>异常类别
 
@@ -64,7 +64,7 @@ ms.locfileid: "91318477"
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
 | [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) |服务器在 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 控制的指定时间内未响应请求的操作。 服务器可能已完成请求的操作。 此异常可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。<br /> 请参阅 [TimeoutException](#timeoutexception)。 | 在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
 | [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1&preserve-view=true) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 例如，如果在 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式下收到消息，则 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 将生成此异常。 | 检查代码和文档。 确保请求的操作有效。 | 重试没有帮助。 |
-| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1&preserve-view=true) | 尝试对已关闭、中止或释放的对象调用某个操作。 在极少数的情况下，已释放环境事务。 | 检查代码并确保代码不会对已释放的对象调用操作。 | 重试没有帮助。 |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1&preserve-view=true) | 尝试对已关闭、中止或释放的对象调用某个操作。 在极少数情况下，环境事务已释放。 | 检查代码并确保代码不会对已释放的对象调用操作。 | 重试没有帮助。 |
 | [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1&preserve-view=true) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 对象无法获取令牌，该令牌无效，或者令牌不包含执行操作所需的声明。 | 确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 | 在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
 | [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) | 提供给该方法的一个或多个参数均无效。 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 包含路径段。 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 方案无效。 属性值大于 32 KB。 | 检查调用代码并确保参数正确。 | 重试不会解决问题。 |
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | 与操作关联的实体不存在或已被删除。 | 确保该实体存在。 | 重试不会解决问题。 |
@@ -89,14 +89,14 @@ ms.locfileid: "91318477"
 
 对于事件中心，超时作为连接字符串的一部分指定，或通过 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder) 指定。 错误消息本身可能会有所不同，但它始终包含当前操作的指定超时值。 
 
-超时应在维护操作期间或内发生（例如事件中心服务更新），或者在运行该服务的资源上 (或) OS 更新。 在 OS 更新期间，会移动实体，并更新或重新启动节点，这可能会导致超时。 有关 Azure 事件中心服务的服务级别协议 (SLA) 详细信息，请参阅 [事件中心的 sla](https://azure.microsoft.com/support/legal/sla/event-hubs/)。 
+预计会在维护操作（例如，事件中心服务更新或运行服务的资源上的 OS 更新）期间或操作间隙发生超时。 在 OS 更新期间，实体会四处移动，节点会更新或重启，这可能会导致超时。 有关 Azure 事件中心服务的服务级别协议 (SLA) 详细信息，请参阅[事件中心的 SLA](https://azure.microsoft.com/support/legal/sla/event-hubs/)。 
 
 
 ### <a name="common-causes"></a>常见原因
 此错误有两个常见的原因：配置不正确或暂时性服务错误。
 
 - **配置不正确** 运行条件下的操作超时值可能太小。 客户端 SDK 的操作超时默认值为 60 秒。 请查看代码是否将该值设置得过小。 网络和 CPU 使用率的状况可能会影响完成特定操作所用的时间，因此，操作超时不应设置为很小的值。
-- **暂时性服务错误**有时，事件中心服务在处理请求时会遇到延迟，例如，高流量时段。 在这种情况下，可以在延迟后重试操作，直到操作成功为止。 如果多次尝试同一操作后仍然失败，请访问 [Azure 服务状态站点](https://azure.microsoft.com/status/)，看是否有任何已知的服务中断。
+- **暂时性服务错误** 有时，事件中心服务在处理请求时会遇到延迟，例如，高流量时段。 在这种情况下，可以在延迟后重试操作，直到操作成功为止。 如果多次尝试同一操作后仍然失败，请访问 [Azure 服务状态站点](https://azure.microsoft.com/status/)，看是否有任何已知的服务中断。
 
 ## <a name="serverbusyexception"></a>ServerBusyException
 
@@ -111,7 +111,19 @@ ms.locfileid: "91318477"
 
 - 事件中心命名空间没有足够的吞吐量单位（可以通过在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间窗口中的“指标”屏幕来确认）。 门户显示聚合（1 分钟）信息，但我们实时测量吞吐量 - 因此，这只是一个估计值。
 
-    **解决方法**：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”窗口中执行此操作。 或者，可以使用[自动膨胀](event-hubs-auto-inflate.md)。
+    **解决方法**：增加命名空间上的吞吐量单位可有所帮助。 
+
+    你可以在 Azure 门户的 **事件中心命名空间** 页面的 "**缩放** 页面" 或 "**概述**" 页上配置吞吐量单位。 或者，可以使用 [自动](event-hubs-auto-inflate.md)扩展，它会通过增加吞吐量单位数来自动扩展，以满足使用量需求。
+
+     (Tu) 的吞吐量单位适用于事件中心命名空间中的所有事件中心。 这意味着，TU 是在命名空间级别购买的，并在该命名空间下的事件中心之间共享。 每个 TU 为命名空间赋予以下功能：
+
+    - 入口事件（发送到事件中心的事件）最多为每秒 1 MB，但每秒不超过 1000 个入口事件、管理操作或控制 API 调用。
+    - 出口事件（从事件中心使用的事件）最多达每秒 2 MB，但不超过 4096 个。
+    - 事件存储空间最多为 84 GB（对于默认的 24 小时保留期而言已足够）。
+    
+    在 " **概述** " 页上的 " **显示度量值** " 部分中，切换到 " **吞吐量** " 选项卡。选择图表以在 x 轴上以1分钟为间隔在较大窗口中打开它。 查看高峰值并将其除以60，以获取传入字节/秒或传出字节数/秒。 在 " **请求** " 选项卡上，使用类似的方法计算每秒的请求数。 
+
+    如果你看到的值大于 Tu * 限制 (每秒 1 MB/秒的入口或1000请求，则出口) 为每秒 2 MB，通过使用事件中心命名空间的左侧菜单) 页面上的 " **缩放** " (，增加 tu 的数量，以手动扩展或使用事件中心的 [自动](event-hubs-auto-inflate.md) 扩展功能。 请注意，自动陀螺只能增加到20个 TU。 若要将 TU 提升到正好 40 个，请提交一个支持请求。
 
 ### <a name="error-code-50001"></a>错误代码 50001
 
@@ -130,4 +142,4 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 
 * [事件中心概述](./event-hubs-about.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)

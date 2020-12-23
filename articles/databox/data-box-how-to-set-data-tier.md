@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Data Box/Azure Data Box Heavy 将数据发送到 "热"、"冷"、"存档" blob 层
+title: 通过 Azure Data Box/Azure Data Box Heavy 将数据发送到热、冷、存档 blob 层
 description: 介绍如何使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的块 Blob 存储层（如热、冷或存档存储层）
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80c4d8a70454c007ac45f588e59c03ef45f10933
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608700"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125058"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的 Azure 存储 Blob 层
 
@@ -29,11 +29,11 @@ Azure Data Box 通过向你发送专有存储设备来将大量数据移动到 A
 
 冷存储层适用于需要存储至少 30 天的不经常访问的数据。 冷存储层成本低于热存储层，但数据访问费用较高。
 
-Azure 存档存储层是脱机的，其存储成本最低，但访问成本最高。 此层适用于要在存档存储中保留至少 180 天的数据。 有关这些层级和定价模型的详细信息，请转到[存储层的比较](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)。
+Azure 存档存储层是脱机的，其存储成本最低，但访问成本最高。 此层适用于要在存档存储中保留至少 180 天的数据。 有关这些层级和定价模型的详细信息，请转到[存储层的比较](../storage/blobs/storage-blob-storage-tiers.md)。
 
 Data Box 或 Data Box Heavy 中的数据会上传到与存储帐户关联的存储层。 创建存储帐户时，可以将访问层指定为“热”或“冷”。 根据工作负荷和成本的访问模式，可以将数据从默认层级移动到另一个存储层。
 
-只能在 Blob 存储或常规用途 v2 (GPv2) 帐户中对对象存储数据分层。 常规用途 v1 (GPv1) 帐户不支持分层。 若要为数据选择适当的存储层，请查看 [Azure Blob 存储：高级、热、冷和存档存储层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)中详细介绍的注意事项。
+只能在 Blob 存储或常规用途 v2 (GPv2) 帐户中对对象存储数据分层。 常规用途 v1 (GPv1) 帐户不支持分层。 若要为数据选择适当的存储层，请查看 [Azure Blob 存储：高级、热、冷和存档存储层](../storage/blobs/storage-blob-storage-tiers.md)中详细介绍的注意事项。
 
 ## <a name="set-a-default-blob-tier"></a>设置默认 Blob 层
 
@@ -41,14 +41,14 @@ Data Box 或 Data Box Heavy 中的数据会上传到与存储帐户关联的存�
 
 如果在订购 Data Box 或 Data Box Heavy 时尝试创建新帐户，则无法指定层级。 创建帐户后，可以在门户中修改帐户以设置默认访问层。
 
-或者使用指定的访问层属性先创建存储帐户。 在创建 Data Box 或 Data Box Heavy 订单时，请选择现有存储帐户。 有关如何在存储帐户创建过程中设置默认 Blob 层的详细信息，请转到[在 Azure 门户中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)。
+或者使用指定的访问层属性先创建存储帐户。 在创建 Data Box 或 Data Box Heavy 订单时，请选择现有存储帐户。 有关如何在存储帐户创建过程中设置默认 Blob 层的详细信息，请转到[在 Azure 门户中创建存储帐户](../storage/common/storage-account-create.md?tabs=portal)。
 
 ## <a name="move-data-to-a-non-default-tier"></a>将数据移到非默认层
 
 Data Box 设备中的数据上传到默认层后，可能需要将数据移到非默认层。 可通过两种方法将数据移动到非默认层。
 
-- Azure Blob 存储生命周期管理 - 可以使用基于策略的方法自动将数据分层，或使其在生命周期结束时过期  。 有关详细信息，请转到[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)。
-- 脚本 - 可以通过 Azure PowerShell 使用脚本的方法来启用 Blob 级别分层  。 可以调用 `SetBlobTier` 操作在 Blob 上设置层。
+- Azure Blob 存储生命周期管理 - 可以使用基于策略的方法自动将数据分层，或使其在生命周期结束时过期。 有关详细信息，请转到[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。
+- 脚本 - 可以通过 Azure PowerShell 使用脚本的方法来启用 Blob 级别分层。 可以调用 `SetBlobTier` 操作在 Blob 上设置层。
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>使用 Azure PowerShell 设置 Blob 层
 
@@ -116,5 +116,4 @@ Data Box 设备中的数据上传到默认层后，可能需要将数据移到�
 
 ## <a name="next-steps"></a>后续步骤
 
--  了解如何[使用生命周期策略规则解决通用数据分层方案](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)
-
+-  了解如何[使用生命周期策略规则解决通用数据分层方案](../storage/blobs/storage-lifecycle-management-concepts.md#examples)

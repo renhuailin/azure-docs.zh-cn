@@ -9,23 +9,32 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997874"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932313"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教程：通过透明网关发送数据
-
-> [!NOTE]
-> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
 本文将再次使用开发 VM 作为模拟设备， 但不会直接将数据发送到 IoT 中心，而是通过该设备将数据发送到配置为透明网关的 IoT Edge 设备。
 
 当模拟设备正在发送数据时，我们将监视 IoT Edge 设备的运行情况。 设备完成运行后，我们将查看存储帐户中的数据，以验证一切是否按预期方式工作。
 
 此步骤通常由云或设备开发人员执行。
+
+本教程的此部分介绍了如何：
+
+> [!div class="checklist"]
+>
+> * 构建并运行叶设备。
+> * 验证生成的数据是否存储在 Azure Blob 存储中。
+> * 验证机器学习模型是否对设备数据进行了分类。
+
+## <a name="prerequisites"></a>先决条件
+
+有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="review-device-harness"></a>查看设备的装备
 
@@ -236,7 +245,7 @@ ms.locfileid: "88997874"
 
 在本文中，我们已使用开发 VM 模拟了一个向 IoT Edge 设备发送传感器和操作数据的叶设备。 我们通过检查边缘设备的实时操作并查看上传到存储帐户的文件，验证了该设备上的模块可以路由、分类、持久保存和上传数据。
 
-在以下页面上可以找到更多信息：
+若要继续了解 IoT Edge 功能，请尝试下一教程：
 
-* [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)
-* [使用 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据](how-to-store-data-blob.md)
+> [!div class="nextstepaction"]
+> [创建 IoT Edge 设备的层次结构（预览版）](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

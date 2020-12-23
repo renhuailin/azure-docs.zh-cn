@@ -1,5 +1,5 @@
 ---
-title: 更改 Azure Blob 存储中的源 |Microsoft Docs
+title: Azure Blob 存储中的更改源 | Microsoft Docs
 description: 了解 Azure Blob 存储中的更改源日志以及如何使用这些日志。
 author: normesta
 ms.author: normesta
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 7174f7dd53387de9a569a5ddcadc08c32692c749
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568228"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997097"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
 
@@ -21,7 +21,7 @@ ms.locfileid: "89568228"
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-更改源作为 [Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 存储在存储帐户中的特殊容器内，按标准的 [Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)计费。 你可以根据要求控制这些文件的保留期（请参阅当前版本的[条件](#conditions)）。 更改事件根据 [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 格式（一种简洁且快速的二进制格式，通过内联架构提供丰富的数据结构）规范以记录的形式追加到更改源。 这种格式广泛用于 Hadoop 生态系统、流分析和 Azure 数据工厂。
+更改源作为 [Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 存储在存储帐户中的特殊容器内，按标准的 [Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)计费。 你可以根据要求控制这些文件的保留期（请参阅当前版本的[条件](#conditions)）。 更改事件根据 [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 格式（一种简洁且快速的二进制格式，通过内联架构提供丰富的数据结构）规范以记录的形式追加到更改源。 这种格式广泛用于 Hadoop 生态系统、流分析和 Azure 数据工厂。
 
 可通过异步、增量或整体方式处理这些日志。 任意数目的客户端应用程序都可以按照自身的步调单独并行读取更改源。 分析应用程序（例如 [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) 或 [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html)）可以直接将日志用作 Avro 文件，使你能够以较低的成本和较高的带宽处理这些日志，而无需编写自定义应用程序。
 
@@ -82,7 +82,7 @@ ms.locfileid: "89568228"
 
 2. 关闭 PowerShell 控制台，然后重新将其打开。
 
-3. 安装**2.5.0 模块的版本。**
+3. 安装 Az.Storage 模块 2.5.0 版或更高版本。
 
    ```powershell
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
@@ -139,7 +139,7 @@ ms.locfileid: "89568228"
 更改源生成多个元数据文件和日志文件。 这些文件位于存储帐户的 $blobchangefeed 容器中。 
 
 > [!NOTE]
-> 在当前版本中，$blobchangefeed 容器在 Azure 存储资源管理器或 Azure 门户中不可见。 目前，在调用 ListContainers API 时无法看到 $blobchangefeed 容器，但可以直接对容器调用 ListBlobs API 来查看 Blob。
+> 在当前版本中，$blobchangefeed 容器仅在 Azure 门户中可见，而在 Azure 存储资源管理器中不可见。 目前，在调用 ListContainers API 时无法看到 $blobchangefeed 容器，但可以直接对容器调用 ListBlobs API 来查看 Blob
 
 客户端应用程序可以通过更改源处理器 SDK 随附的 Blob 更改源处理器库来使用更改源。 
 
@@ -206,7 +206,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 更改源文件包含一系列更改事件记录。 每条更改事件记录对应于单个 Blob 发生的一项更改。 使用 [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 格式规范序列化记录并将其写入文件。 可以使用 Avro 文件格式规范读取记录。 有多个库可用于处理该格式的文件。
 
-更改源文件以[追加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 的形式存储在 `$blobchangefeed/log/` 虚拟目录中。 每个路径下的第一个更改源文件的文件名包含 `00000`（例如 `00000.avro`）。 添加到该路径的每个后续日志文件的名称编号将递增 1（例如：`00001.avro`）。
+更改源文件以[追加 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 的形式存储在 `$blobchangefeed/log/` 虚拟目录中。 每个路径下的第一个更改源文件的文件名包含 `00000`（例如 `00000.avro`）。 添加到该路径的每个后续日志文件的名称编号将递增 1（例如：`00001.avro`）。
 
 更改源记录中捕获以下事件类型：
 - BlobCreated
@@ -243,7 +243,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 }
 ```
 
-有关每个属性的说明，请参阅 [Blob 存储的 Azure 事件网格事件架构](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)。 BlobPropertiesUpdated 和 BlobSnapshotCreated 事件当前是更改源独有的事件，尚不支持用于 Blob 存储事件。
+有关每个属性的说明，请参阅 [Blob 存储的 Azure 事件网格事件架构](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)。 BlobPropertiesUpdated 和 BlobSnapshotCreated 事件当前是更改源独有的事件，尚不支持用于 Blob 存储事件。
 
 > [!NOTE]
 > 创建某个段后，该段的更改源文件不会立即显示。 延迟时长处于正常的更改源发布延迟间隔范围内，而该间隔为更改后的几分钟内。
@@ -290,7 +290,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="conditions-and-known-issues"></a>条件和已知问题
 
-本部分介绍更改源的当前版本中的已知问题和条件。 
+本部分介绍当前的更改源版本中的已知问题和条件。 
 
 - 任何一项更改的更改事件记录可能会在更改源中出现多次。
 - 暂时无法通过对更改源日志文件设置基于时间的保留策略来管理其生存期，且无法删除 Blob。

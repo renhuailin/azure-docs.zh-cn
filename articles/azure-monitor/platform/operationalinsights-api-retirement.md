@@ -1,72 +1,72 @@
 ---
 title: Azure Monitor API 停用
-description: 介绍旧版本的 Microsoft.operationalinsights 资源提供程序 API 的停用。
+description: 介绍旧版 Microsoft.operationalinsights 资源提供程序 API 的停用信息。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/02/2020
-ms.openlocfilehash: 708901dbc37daa075cf38d3f9ef046ae658ea979
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.date: 10/29/2020
+ms.openlocfilehash: e2b12d7a2206ab369328563af438c6ef1ea39327
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744762"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184104"
 ---
-# <a name="operationalinsights-api-version-retirement"></a>Microsoft.operationalinsights API 版本停用
-Microsoft 将在停用 API 之前至少12个月提供通知，以便顺利过渡到较新的/受支持的版本。 我们发布了新版本 (2020-08-01) **microsoft.operationalinsights** 资源提供程序 api，并将在2023年10月31日停用任何早期的 API 版本。 由于新特性和功能以及优化仅添加到当前 API，因此应尽早升级到最新的 API 版本。
+# <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API 版本停用
+Microsoft 至少会在停用 API 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。 我们发布了 OperationalInsights 资源提供程序 API 新版本 (2020-08-01)，并将于 2024 年 2 月 29 日停用任何早期的 API 版本。
 
-2023年10月31日之后 Azure Monitor 将不再支持比2020-08-01 更早的 Api 版本。 如果你不想升级，则在2023年10月31日之前，将继续由 Azure Monitor 服务提供从早期版本发送的请求。
+我们鼓励你立即开始使用版本2020-08-01，以获得新功能的优点，如 [专用群集](../log-query/logs-dedicated-clusters.md)、 [客户管理的密钥](./customer-managed-keys.md)、 [专用链接](./private-link-security.md) 和 [数据导出](./logs-data-export.md)。 此外，新特性、功能和优化仅添加到最新的 API 中。
 
-根据所使用的配置方法，应按照以下示例更新 REST 请求中的新版本，并资源管理器模板：
+2024 年 2 月 29 日后，Azure Monitor 将不再支持 2020-08-01 之前的早期 API 版本。 如果不想升级，则 Azure Monitor 服务在 2024 年 2 月 29 日之前，将继续处理从早期版本发送的请求。
+
+## <a name="migration-steps"></a>迁移步骤
+根据所使用的配置方法，你应该在 REST 请求和资源管理器模板中更新新版本 。 请按照以下示例更新 API 版本：
+
+1. REST API 请求在请求的 URL 中使用该 API 版本。 将该版本替换为最新版本 (2020-08-01)，如下面的示例中所示。
+
+    ```rest
+    https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2020-08-01
+    ```
+
+2. Azure 资源管理器模板使用资源的 apiVersion 属性中的 API 版本。 将该版本替换为最新版本 (2020-08-01)，如下面的示例中所示。
 
 
-## <a name="rest"></a>REST
-REST API 请求在请求的 URL 中使用 API 版本。 将该版本替换为最新版本，如下面的示例中所示。
-
-```rest
-https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2020-08-01
-```
-
-## <a name="azure-resource-manager"></a>Azure Resource Manager
-资源管理器模板在资源的 **apiVersion** 属性中使用 API 版本。 将该版本替换为最新版本，如下面的示例中所示。
-
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "workspaceName": {
-            "type": "string",
-            "metadata": {
-              "description": "Name of the workspace."
-            }
-        },
-        "resources": [
-        {
-            "type": "Microsoft.OperationalInsights/workspaces",
-            "name": "[parameters('workspaceName')]",
-            "apiVersion": "2020-08-01",
-            "location": "westus",
-            "properties": {
-                "sku": {
-                    "name": "pergb2018"
-                },
-                "retentionInDays": 30,
-                "features": {
-                    "searchVersion": 1,
-                    "legacy": 0,
-                    "enableLogAccessUsingOnlyResourcePermissions": true
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "workspaceName": {
+                "type": "string",
+                "metadata": {
+                "description": "Name of the workspace."
+                }
+            },
+            "resources": [
+            {
+                "type": "Microsoft.OperationalInsights/workspaces",
+                "name": "[parameters('workspaceName')]",
+                "apiVersion": "2020-08-01",
+                "location": "westus",
+                "properties": {
+                    "sku": {
+                        "name": "pergb2018"
+                    },
+                    "retentionInDays": 30,
+                    "features": {
+                        "searchVersion": 1,
+                        "legacy": 0,
+                        "enableLogAccessUsingOnlyResourcePermissions": true
+                    }
                 }
             }
-        }
-    ]
-  }
-}
-```
+        ]
+    }
+    }
+    ```
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [MICROSOFT.OPERATIONALINSIGHTS API 参考](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/allversions)。
+- 请参阅 [OperationalInsights 工作区 API 参考](/rest/api/loganalytics/workspaces)。

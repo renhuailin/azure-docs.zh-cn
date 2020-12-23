@@ -4,12 +4,12 @@ ms.topic: include
 ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
-ms.openlocfilehash: c0fcdf1cf69c55f63288138bc7377a78295cb2be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34848b638ff0c7f7b9d1a2f3e5894339f8310ccc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013340"
 ---
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
@@ -17,13 +17,13 @@ ms.locfileid: "86544022"
 
 1. 在 Azure 门户的“adftutorial”容器页中选择“刷新”，查看输出文件夹。  
     
-    ![刷新](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    ![屏幕截图显示了可在其中刷新页面的容器页。](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
 
 2. 在文件夹列表中，选择“output”。 
 
 3. 确认 **emp.txt** 已复制到 output 文件夹。 
 
-    ![刷新](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    ![屏幕截图显示了输出文件夹内容。](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

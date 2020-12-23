@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e930e5d125a8f1ee90448e293e2e0ca2c5c28465
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760183"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913664"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查 Facebook 帖子和评论
 
@@ -39,7 +39,7 @@ ms.locfileid: "91760183"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 内容审查器的订阅密钥。 遵照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器服务并获取密钥。
+- 内容审查器的订阅密钥。 遵照[创建认知服务帐户](../cognitive-services-apis-create-account.md)中的说明订阅内容审查器服务并获取密钥。
 - 一个 [Facebook 帐户](https://www.facebook.com/)。
 
 ## <a name="create-a-review-team"></a>创建评审团队
@@ -48,11 +48,11 @@ ms.locfileid: "91760183"
 
 ## <a name="configure-image-moderation-workflow"></a>配置图像审查工作流
 
-请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南，以创建自定义图像工作流。 内容审查器将使用此工作流自动检查 Facebook 上的图像，并将一些图像发送到评审工具。 记下工作流的**名称**。
+请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南，以创建自定义图像工作流。 内容审查器将使用此工作流自动检查 Facebook 上的图像，并将一些图像发送到评审工具。 记下工作流的 **名称** 。
 
 ## <a name="configure-text-moderation-workflow"></a>配置文本审查工作流
 
-同样请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南；这一次将创建自定义文本工作流。 内容审查器将使用此工作流自动检查文本内容。 记下工作流的**名称**。
+同样请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南；这一次将创建自定义文本工作流。 内容审查器将使用此工作流自动检查文本内容。 记下工作流的 **名称** 。
 
 ![配置文本工作流](images/text-workflow-configure.PNG)
 
@@ -64,14 +64,14 @@ ms.locfileid: "91760183"
 
 登录到 [Azure 门户](https://portal.azure.com/)并执行以下步骤：
 
-1. 按照 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) 页面所示，创建 Azure Function App。
+1. 按照 [Azure Functions](../../azure-functions/functions-create-function-app-portal.md) 页面所示，创建 Azure Function App。
 1. 打开新建的函数应用。
 1. 在该应用中，转到“平台功能”选项卡并选择“配置” 。 在下一页的“应用程序设置”部分中，选择“新的应用程序设置”来添加以下键/值对 ：
     
     | 应用设置名称 | 值   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | 内容审查器 TeamId  | 
-    | `cm:SubscriptionKey` | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) |
+    | `cm:SubscriptionKey` | 内容审查器的订阅密钥 - 请参阅[凭据](./review-tool-user-guide/configure.md#credentials) |
     | `cm:Region` | 内容审查器的区域名称，不含空格。 可以在 Azure 资源“概述”选项卡的“位置”字段中找到此名称 。|
     | `cm:ImageWorkflow` | 对图像运行的工作流的名称 |
     | `cm:TextWorkflow` | 对文本运行的工作流的名称 |

@@ -4,15 +4,15 @@ description: 了解如何使用 Excel 连接到 Azure Analysis Services 服务�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fccb919a7eac79080fefeac70326b8aa7a967622
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361551"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499464"
 ---
 # <a name="connect-with-excel"></a>使用 Excel 进行连接
 
@@ -26,7 +26,7 @@ ms.locfileid: "85361551"
 
 可通过使用 Excel 2016 及更高版本中的“获取数据”在 Excel 中连接到服务器。 不支持使用 Power Pivot 中的“导入表向导”进行连接。 
 
-1. 在 Excel 的“数据”功能区上，单击“获取外部数据” > “从其他源获取” > “从 Analysis Services 获取”   。
+1. 在 Excel 的 "**数据**" 功能区上，单击 "从数据库 **获取数据**"  >  **From Database**  >  **Analysis Services**。
 
 2. 在“数据连接向导”的“服务器名称”中，输入服务器名称，包括协议和 URI。  例如，asazure://westcentralus.asazure.windows.net/advworks。 然后，在“登录凭据”  中，选择“使用以下用户名和密码”  ，并键入组织的用户名（例如 nancy@adventureworks.com）和密码。
 
@@ -42,7 +42,5 @@ ms.locfileid: "85361551"
 
 ## <a name="see-also"></a>另请参阅
 
-[客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
-[管理服务器](analysis-services-manage.md)     
-
-
+[客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)   
+[管理服务器](analysis-services-manage.md)

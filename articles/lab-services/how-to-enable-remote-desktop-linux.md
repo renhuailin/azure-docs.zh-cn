@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中启用适用于 Linux 的图形远程桌面 |
 description: 了解如何在 Azure 实验室服务的实验室中启用适用于 Linux 虚拟机的远程桌面。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251603"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647947"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>在 Azure 实验室服务中启用适用于 Linux 虚拟机的图形远程桌面
 本文演示如何完成以下任务：
@@ -38,13 +38,13 @@ X2Go 使用已为 SSH 启用的相同端口。  因此，无需进行额外配�
 > 在某些情况下，例如使用 Ubuntu LTS 18.04 时，X2Go 可提供更好的性能。  如果使用 RDP 并在与图形桌面环境交互时注意到延迟，请考虑尝试 X2Go，因为它可能会提高性能。
 
 > [!IMPORTANT]
->  一些市场映像已经安装了图形桌面环境和远程桌面服务器。  例如，[适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 已安装 [XFCE 和 X2Go 服务器，并配置为接受客户端连接](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go)。
+>  一些市场映像已经安装了图形桌面环境和远程桌面服务器。  例如，[适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 已安装 [XFCE 和 X2Go 服务器，并配置为接受客户端连接](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go)。
 
 ## <a name="enable-remote-desktop-connection-for-rdp"></a>为 RDP 启用远程桌面连接
 
 仅在使用 RDP 进行连接时需要执行此步骤。  如果计划使用 X2Go，则可以跳到下一部分，因为 X2Go 使用 SSH 端口。
 
-1.  在实验室创建期间，讲师可以选择“启用远程桌面连接”。  讲师必须**启用**此选项才能打开 Linux VM 上 RDP 远程桌面会话所需的端口。  否则，如果禁用此选项，则仅会打开用于 SSH 的端口。
+1.  在实验室创建期间，讲师可以选择“启用远程桌面连接”。  讲师必须 **启用** 此选项才能打开 Linux VM 上 RDP 远程桌面会话所需的端口。  否则，如果禁用此选项，则仅会打开用于 SSH 的端口。
   
     ![使用 "启用远程桌面连接" 选项显示 "新建实验室" 窗口的屏幕截图。](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
@@ -73,7 +73,7 @@ X2Go 使用已为 SSH 启用的相同端口。  因此，无需进行额外配�
     ![SSH 连接字符串](./media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
 4. 安装 RDP 或 X2Go 以及所选的图形桌面环境。  请参阅以下说明：
-    - [安装和配置 RDP](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)
+    - [安装和配置 RDP](../virtual-machines/linux/use-remote-desktop.md)
     - [安装和配置 X2Go](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/X2GoRemoteDesktop)
 
 ## <a name="connect-to-the-template-vm-via-the-gui"></a>通过 GUI 连接到模板 VM
@@ -82,7 +82,7 @@ X2Go 使用已为 SSH 启用的相同端口。  因此，无需进行额外配�
 
 ### <a name="microsoft-remote-desktop-rdp-client"></a>Microsoft 远程桌面 (RDP) 客户端
 
-Microsoft 远程桌面 (RDP) 客户端用于连接到已配置 RDP 的模板 VM。  远程桌面客户端可用于 Windows、Chromebook、Mac 等设备。  有关更多详细信息，请参阅有关[远程桌面客户端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)的文章。
+Microsoft 远程桌面 (RDP) 客户端用于连接到已配置 RDP 的模板 VM。  远程桌面客户端可用于 Windows、Chromebook、Mac 等设备。  有关更多详细信息，请参阅有关[远程桌面客户端](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)的文章。
 
 根据用于连接模板 VM 的计算机的类型，执行以下步骤：
 

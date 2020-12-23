@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: d6b1085d51d7345b233087986127cbc97c0597e1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 2fb03721baa80e77a5fd387600a272e6b1cfc7d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362055"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013647"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>从语音翻译 API 迁移到语音服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "91362055"
 
 ## <a name="comparison-of-features"></a>功能比较
 
-| 功能                                           | 语音翻译 API                                  | 语音服务 | 详细信息                                                                                                                                                                                                                                                                            |
+| Feature                                           | 语音翻译 API                                  | 语音服务 | 详细信息                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 翻译为文本                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 翻译为语音                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -37,7 +37,7 @@ ms.locfileid: "91362055"
 | 在一个请求中翻译多种语言 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 可用 SDK                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 请参阅适用于 Sdk 的 [语音服务文档](index.yml) 。                                                                                                                                                    |
 | WebSocket 连接                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| 语言 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 语音服务支持 " [转换器语言参考](../translator-speech/languages-reference.md) " 一文中所述的相同语言范围。 |
+| 语言 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 语音服务支持 " [转换器语言参考]() " 一文中所述的相同语言范围。 |
 | 猥亵内容筛选器和标记                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | .WAV/PCM 作为输入                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 其他文件类型作为输入                         | :heavy_minus_sign:                                              | :heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -62,9 +62,9 @@ ms.locfileid: "91362055"
 ## <a name="next-steps"></a>后续步骤
 
 * [免费试用语音服务](overview.md#try-the-speech-service-for-free)
-* [快速入门：使用语音 SDK 在 UWP 应用中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [快速入门：使用语音 SDK 在 UWP 应用中识别语音](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>另请参阅
 
 * [什么是语音服务](overview.md)
-* [语音服务和语音 SDK 文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [语音服务和语音 SDK 文档](./speech-devices-sdk-quickstart.md?pivots=platform-android)

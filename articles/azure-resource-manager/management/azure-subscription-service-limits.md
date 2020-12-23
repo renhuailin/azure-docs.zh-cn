@@ -3,18 +3,18 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 3b4185fb90aec68eda600b67c95529e6b80b09e4
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665582"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547842"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。
 
-若要详细了解 Azure 定价，请参阅 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以转到特定服务的定价详细信息页，例如 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../cost-management-billing/manage/getting-started.md)。
+若要详细了解 Azure 定价，请参阅 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以转到特定服务的定价详细信息页，例如 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../cost-management-billing/cost-management-billing-overview.md)。
 
 ## <a name="managing-limits"></a>管理限制
 
@@ -27,7 +27,7 @@ ms.locfileid: "91665582"
 >
 > 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
 >
-> 术语 " *软* 限制" 和 " *硬限制* " 通常用于非正式地描述 (软限制) 的可调整的限制， (硬限制) 的最大限制。 如果无法调整某个限制，则不会有软限制，只是硬性限制。
+> 术语“软限制”和“硬限制”通常非正式地用于描述当前可调整的限制（软限制）和最大限制（硬限制）。 如果某个限制不可调整，则不会有软限制，只有硬限制。
 >
 
 [免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p) 不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将 [Azure 免费试用版订阅升级到即用即付订阅](../../cost-management-billing/manage/upgrade-azure-subscription.md) 和 [免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
@@ -78,7 +78,7 @@ ms.locfileid: "91665582"
 
 [!INCLUDE [automation-limits](../../../includes/azure-automation-service-limits.md)]
 
-## <a name="azure-app-configuration"></a>Azure 应用配置
+## <a name="azure-app-configuration"></a>Azure 应用程序配置
 
 [!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
@@ -155,6 +155,10 @@ ms.locfileid: "91665582"
 ### <a name="action-groups"></a>操作组
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-action-groups.md)]
+
+### <a name="autoscale"></a>自动缩放
+
+[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-autoscale.md)]
 
 ### <a name="log-queries-and-language"></a>日志查询和语言
 
@@ -285,7 +289,11 @@ ms.locfileid: "91665582"
 
 ### <a name="virtual-network-gateway-limits"></a>虚拟网络网关限制
 
-[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+[!INCLUDE [virtual-network-gateway-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
+### <a name="nat-gateway-limits"></a>NAT 网关限制
+
+[!INCLUDE [nat-gateway-limits](../../../includes/azure-nat-gateway-limits.md)]
 
 ### <a name="virtual-wan-limits"></a>虚拟 WAN 限制
 
@@ -303,6 +311,10 @@ ms.locfileid: "91665582"
 ### <a name="private-link-limits"></a>专用链接限制
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
+
+## <a name="purview-limits"></a>监控范围限制
+
+可以在[Azure 监控范围配额页](../../purview/how-to-manage-quotas.md)中找到 azure 监控范围配额的最新值
 
 ### <a name="traffic-manager-limits"></a>流量管理器限制
 
@@ -390,7 +402,7 @@ ms.locfileid: "91665582"
 
 #### <a name="disk-encryption-sets"></a>磁盘加密集
 
-每个区域、每个订阅有 50 个磁盘加密集的限制。 有关更多信息，请参阅 [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
+每个区域、每个订阅有 50 个磁盘加密集的限制。 有关更多信息，请参阅 [Linux](../../virtual-machines/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
 
 ### <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 

@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e7b818de12a968869d655a80917572ddf5f2c210
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012752"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323004"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建和加速 ML 模型
 
@@ -29,9 +29,9 @@ Microsoft 和合作伙伴社区创建了 ONNX 作为表示机器学习模型的�
 [ONNX 运行时](https://onnxruntime.ai)是一种用于将 ONNX 模型部署到生产环境的高性能推理引擎。 它针对云和 Edge 进行了优化，适用于 Linux、Windows 和 Mac。 它使用 C++ 编写，还包含 C、Python、C#、Java 和 Javascript (Node.js) API，可在各种环境中使用。 ONNX 运行时同时支持 DNN 和传统 ML 模型，并与不同硬件上的加速器（例如，NVidia GPU 上的 TensorRT、Intel 处理器上的 OpenVINO、Windows 上的 DirectML 等）集成。 通过使用 ONNX 运行时，可以从大量的生产级优化、测试和不断改进中受益。
 
 ONNX 运行时用于大规模 Microsoft 服务，如必应、Office 和 Azure 认知服务。 性能提升取决于许多因素，但这些 Microsoft 服务的 CPU 平均起来可实现 2 倍的性能提升。 除了 Azure 机器学习服务外，ONNX 运行时还在支持机器学习工作负荷的其他产品中运行，包括：
-+ Windows:该运行时作为 [Windows 机器学习](https://docs.microsoft.com/windows/ai/windows-ml/)的一部分内置于 Windows 中，在数亿台设备上运行。 
-+ Azure SQL 产品系列：针对 [Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) 和 [Azure SQL 托管实例](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview)中的数据运行本机评分。
-+ ML.NET：[在 ML.NET 中运行 ONNX 模型](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx)。
++ Windows:该运行时作为 [Windows 机器学习](/windows/ai/windows-ml/)的一部分内置于 Windows 中，在数亿台设备上运行。 
++ Azure SQL 产品系列：针对 [Azure SQL Edge](../azure-sql-edge/onnx-overview.md) 和 [Azure SQL 托管实例](../azure-sql/managed-instance/machine-learning-services-overview.md)中的数据运行本机评分。
++ ML.NET：[在 ML.NET 中运行 ONNX 模型](/dotnet/machine-learning/tutorials/object-detection-onnx)。
 
 
 [![ONNX 流程图，其中显示了训练、转换器和部署](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
@@ -42,7 +42,7 @@ ONNX 运行时用于大规模 Microsoft 服务，如必应、Office 和 Azure �
 + 通过 Azure 机器学习（参见本文底部的示例）或[自动机器学习功能](concept-automated-ml.md#automl--onnx)训练新的 ONNX 模型
 + 将现有模型从其他格式转换为 ONNX（请参阅 [教程](https://github.com/onnx/tutorials)） 
 + 从 [ONNX 模型 Zoo](https://github.com/onnx/models) 获取预先定型的 ONNX 模型
-+ 从 [Azure 自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)生成自定义 ONNX 模型 
++ 从 [Azure 自定义影像服务](../cognitive-services/custom-vision-service/index.yml)生成自定义 ONNX 模型 
 
 许多模型（包括图像分类、对象检测和文本处理）都可以表示为 ONNX 模型。 如果遇到无法成功转换的模型的问题，请在所用的相应转换器的 GitHub 中提出问题。 可以继续使用现有的格式模型，直到问题得到解决。
 
@@ -98,5 +98,3 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 详细了解 ONNX 运行时或参与项目：
 + [ONNX 运行时项目网站](https://onnxruntime.ai)
 + [ONNX 运行时 GitHub 存储库](https://github.com/Microsoft/onnxruntime)
-
-

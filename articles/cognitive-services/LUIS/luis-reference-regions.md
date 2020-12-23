@@ -4,15 +4,17 @@ description: Azure 门户中指定的区域就是你将在其中发布 LUIS 应�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/19/2019
-ms.openlocfilehash: 134f71e957b39cf35b4e45e42c2101fbce233f05
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/09/2020
+ms.openlocfilehash: 5f65c5e1e1c8d306a70be3fdd7a07f18f8ebbd9f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277149"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368641"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
+
+[!INCLUDE [LUIS Free account](includes/luis-portal-note.md)]
 
 相应的 LUIS 门户支持三个创作区域。 若要将 LUIS 应用发布到多个区域，每个区域至少需要一个密钥。
 
@@ -23,16 +25,16 @@ ms.locfileid: "91277149"
 
 |LUIS|创作区域|Azure 区域名称|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[previous.luis.ai](https://previous.luis.ai)|美国<br>非欧洲<br>非澳大利亚| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[previous.au.luis.ai](https://previous.au.luis.ai)|澳大利亚| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai] <br>[previous.eu.luis.ai](https://previous.eu.luis.ai)|欧洲|`westeurope`|
+|[www.luis.ai][www.luis.ai] |美国<br>非欧洲<br>非澳大利亚| `westus`|
+|[au.luis.ai][au.luis.ai] |澳大利亚| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] |欧洲|`westeurope`|
 
-创作区域具有[配对故障转移区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+创作区域具有[配对故障转移区域](../../best-practices-availability-paired-regions.md)。
 
 <a name="regions-and-azure-resources"></a>
 
 ## <a name="publishing-regions-and-azure-resources"></a>发布区域和 Azure 资源 
-该应用将发布到与 LUIS 门户中添加的 LUIS 资源关联的所有区域。 例如，对于在 [www.luis.ai][www.luis.ai] 上创建的应用，如果你在 **westus** 中创建 LUIS 或认知服务资源并[将其作为资源添加到该应用](luis-how-to-azure-subscription.md)，则该应用将发布到此区域中。
+该应用将发布到与 LUIS 门户中添加的 LUIS 资源关联的所有区域。 例如，对于在 [www.luis.ai][www.luis.ai] 上创建的应用，如果你在 **westus** 中创建 LUIS 或认知服务资源并 [将其作为资源添加到该应用](luis-how-to-azure-subscription.md)，则该应用将发布到此区域中。
 
 ## <a name="public-apps"></a>公共应用
 公共应用在所有区域中发布，以便有基于区域的 LUIS 资源密钥的用户可以在与其资源密钥关联的任何区域中访问该应用。
@@ -102,7 +104,7 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 
 每个区域都有一个要故障转移到的次要区域。 欧洲内的进行故障转移，并且澳大利亚在澳大利亚内发生故障。
 
-创作区域具有[配对故障转移区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+创作区域具有[配对故障转移区域](../../best-practices-availability-paired-regions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

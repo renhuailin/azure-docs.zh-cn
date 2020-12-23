@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: c4a4af81c6a216119ae2e1b0221c06ddc349452f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115469"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478127"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
 
@@ -65,13 +65,13 @@ ms.locfileid: "88115469"
     
     2. 用户将看到传统许可提示。
 
-        ![方案 1b 的许可提示](./media/application-consent-experience/consent_prompt_1b.png)
+        ![显示传统许可提示的屏幕截图。](./media/application-consent-experience/consent_prompt_1b.png)
 
 2. 个人访问应用，该应用需要至少一项超出个人授权范围的权限。
     1. 管理员将看到与上面所示的 1.i 相同的提示。
     2. 将阻止用户向该应用程序授予许可，并将告知用户向其管理员索要对该应用的访问权限。 
                 
-        ![方案 1b 的许可提示](./media/application-consent-experience/consent_prompt_2b.png)
+        ![许可提示屏幕截图，告诉用户要求管理员访问应用。](./media/application-consent-experience/consent_prompt_2b.png)
 
 3. 个人导航或定向到管理员许可流。
     1. 管理员用户将看到管理员许可提示。 此提示上的标题和权限说明已更改，这些更改强调了一个事实：接受此提示即表示授予应用代表整个租户访问所请求数据的权限。

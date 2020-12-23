@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: bef120e754c84798b2d1b48f4f00fbb8f5fb3c1d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997607"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理配置自定义域
 
@@ -26,7 +26,7 @@ ms.locfileid: "88587763"
 
 如果可能，最好为应用设置自定义域。 使用自定义域的部分原因包括：
 
-- 应用之间的链接在公司网络外部仍然有效。 没有自定义域的话，如果你的应用具有硬编码指向应用程序代理外部目标的内部链接，且这些链接不可在外部解析，那么这些链接将失效。 当内部和外部 URL 相同时，请避免出现此问题。 如果无法使用自定义域，请参阅[使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接](../application-proxy-link-translation.md)，获取可解决此问题的其他方法。 
+- 应用之间的链接在公司网络外部仍然有效。 没有自定义域的话，如果你的应用具有硬编码指向应用程序代理外部目标的内部链接，且这些链接不可在外部解析，那么这些链接将失效。 当内部和外部 URL 相同时，请避免出现此问题。 如果无法使用自定义域，请参阅[使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接](./application-proxy-configure-hard-coded-link-translation.md)，获取可解决此问题的其他方法。 
   
 - 用户的体验将更简单，因为他们可在你的网络内部或外部使用相同的 URL 访问应用。 他们无需了解不同的内部和外部 URL，也无需跟踪其当前位置。 
 

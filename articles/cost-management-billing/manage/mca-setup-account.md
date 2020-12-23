@@ -5,19 +5,21 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/20/2020
 ms.author: banders
-ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 7e930ca938b2531fb001c327132f79f703b2ea74
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371790"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316413"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
 
-如果你的企业协议注册已过期或即将过期，可以签署一份 Microsoft 客户协议以续订该注册。 本文介绍在完成设置后如何对现有计费进行更改，并引导你完成新计费帐户的设置。 续订过程包括以下步骤：
+如果你的直接企业协议注册已过期或即将过期，可以签署一份 Microsoft 客户协议以续订该注册。 本文介绍在完成设置后如何对现有计费进行更改，并引导你完成新计费帐户的设置。 目前，不能使用 Microsoft 客户协议续订过期的间接企业协议。
+
+续订过程包括以下步骤：
 
 1. 接受新的 Microsoft 客户协议。 咨询 Microsoft 现场代表，以了解详情并接受新协议。
 2. 对为新的 Microsoft 客户协议创建的新计费帐户进行设置。
@@ -28,7 +30,7 @@ ms.locfileid: "91371790"
 - 你每月会收到一份数字版的费用发票。 可以在“Azure 成本管理 + 计费”页中查看和分析该发票。
 - 需使用新帐户中的计费结构和范围，而不是企业协议注册中的部门和帐户，来管理和组织计费。
 
-在开始设置之前，我们建议做好以下准备工作：
+在开始设置之前，我们建议执行以下操作：
 
 - **了解新的计费帐户**
   - 新帐户将会简化组织的计费。 [获取新计费帐户的简要概述](../understand/mca-overview.md)
@@ -100,7 +102,7 @@ ms.locfileid: "91371790"
 
 新帐户仅支持在签署 Microsoft 客户协议时选择的租户中的用户。 如果对企业协议拥有管理权限的用户属于该租户，则他们在设置期间有权访问新的计费帐户。 如果他们不属于该租户，则除非你发出邀请，否则他们无权访问新的计费帐户。
 
-邀请用户时，会将他们作为来宾用户添加到租户，然后他们将有权访问计费帐户。 若要邀请用户，必须为租户启用来宾访问。 有关详细信息，请参阅[在 Azure Active Directory 中控制来宾访问](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)。 如果来宾访问已禁用，请联系租户的全局管理员将它启用。 <!-- Todo - How can they find their global administrator -->
+邀请用户时，会将他们作为来宾用户添加到租户，然后他们将有权访问计费帐户。 若要邀请用户，必须为租户启用来宾访问。 有关详细信息，请参阅[在 Azure Active Directory 中控制来宾访问](/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)。 如果来宾访问已禁用，请联系租户的全局管理员将它启用。 <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-replaced-features"></a>查看已取代的功能
 
@@ -164,7 +166,7 @@ ms.locfileid: "91371790"
 
 ### <a name="closing-your-browser-during-setup"></a>在设置期间关闭浏览器
 
-在单击“开始转换”之前，可以关闭浏览器。  可以使用电子邮件中收到的链接返回到设置，并开始转换。 开始转换后，如果关闭浏览器，转换过程仍会继续运行。 返回到转换状态页可以监视转换过程的最新状态。 转换完成后，你会收到一封电子邮件。
+在选择“开始转换”之前，可以关闭浏览器。 可以使用电子邮件中收到的链接返回到设置，并开始转换。 开始转换后，如果关闭浏览器，转换过程仍会继续运行。 返回到转换状态页可以监视转换过程的最新状态。 转换完成后，你会收到一封电子邮件。
 
 ## <a name="complete-the-setup-in-the-azure-portal"></a>在 Azure 门户中完成设置
 
@@ -201,7 +203,7 @@ ms.locfileid: "91371790"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
-3. 选择计费帐户。 计费帐户的类型为 **Microsoft 客户协议**。
+3. 选择计费帐户。 计费帐户的类型为 **Microsoft 客户协议** 。
 
 4. 在左侧选择“Azure 订阅”。 
 
@@ -221,7 +223,7 @@ ms.locfileid: "91371790"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
-3. 选择 **Microsoft 客户协议**的计费帐户。
+3. 选择 **Microsoft 客户协议** 的计费帐户。
 
 4. 在左侧选择“访问控制(IAM)”。 
 

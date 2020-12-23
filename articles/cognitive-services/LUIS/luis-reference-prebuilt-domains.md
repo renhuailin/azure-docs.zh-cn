@@ -9,19 +9,19 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.openlocfilehash: e93822f4a2992f619b598474082caa56562b6e36
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 73b279f98011181b329cdb010041022ab0da57f0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538358"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018627"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS 应用的预构建的域参考
-此参考提供有关[预构建的域](luis-how-to-use-prebuilt-domains.md)的信息，这些参考是 LUIS 提供的意向和实体的预构建集合。
+此参考提供有关[预构建的域](./howto-add-prebuilt-models.md)的信息，这些参考是 LUIS 提供的意向和实体的预构建集合。
 
 相比之下，[自定义域](luis-how-to-start-new-app.md)从无意向和模型开始。 可将任何预构建的域意向和实体添加到自定义模型中。
 
-## <a name="prebuilt-domains-per-language"></a>预生成的域/语言
+## <a name="prebuilt-domains-per-language"></a>每种语言的预生成域
 
 下表汇总了当前支持的域。 英语区域支持的域通常比其他语言区域更多。
 
@@ -39,7 +39,7 @@ ms.locfileid: "91538358"
 | 天气        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Web    | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 
-预生成域在以下语言区域**不受支持**：
+预生成域在以下语言区域 **不受支持**：
 
 * 加拿大法语
 * Hindi

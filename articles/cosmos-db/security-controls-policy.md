@@ -1,20 +1,21 @@
 ---
 title: Azure Cosmos DB 的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure Cosmos DB 的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: be9dc3e583d179536a1df35677ec4d3a1ce0b541
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: aa1cbff7dc3f97d8826e0ec1cd608338ee743f4c
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827333"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984885"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure Policy 法规遵从性控制
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 [Azure Policy 中的法规遵从性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的“合规性域”和“安全控制”提供由 Microsoft 创建和管理的计划定义，称为“内置项” 。 此页列出 Azure Cosmos DB 的“符合域”和“安全控件” 。 可以分别为“安全控件”分配内置项，以帮助 Azure 资源符合特定的标准。
 

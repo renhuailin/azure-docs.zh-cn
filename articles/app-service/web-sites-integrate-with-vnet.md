@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999416"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
-本文介绍 Azure 应用服务 VNet 集成功能，并介绍如何为 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中的应用设置此功能。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。 使用 VNet 集成功能，你的应用可通过 VNet 访问中的资源。 VNet 集成不允许私下访问应用。
+本文介绍 Azure 应用服务 VNet 集成功能，并介绍如何为 [Azure 应用服务](./overview.md)中的应用设置此功能。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。 使用 VNet 集成功能，你的应用可通过 VNet 访问中的资源。 VNet 集成不允许私下访问应用。
 
 Azure App Service 在 VNet 集成功能上有两种变化形式：
 
@@ -149,6 +149,10 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 * **VPN 网关费用**：点到站点 VPN 所需的虚拟网关会产生费用。 有关详细信息，请参阅 [VPN 网关定价][VNETPricing]。
 
 ## <a name="troubleshooting"></a>疑难解答
+
+> [!NOTE]
+> 应用服务中的 Docker Compose 方案不支持 VNET 集成。
+>
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

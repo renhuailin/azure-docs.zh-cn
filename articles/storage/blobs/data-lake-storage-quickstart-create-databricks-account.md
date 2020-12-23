@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 482d703689ca6cfc34dd5d78574ae52e4def2b1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86109767"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912818"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>快速入门：使用 Databricks 分析数据
 
@@ -23,7 +23,7 @@ ms.locfileid: "86109767"
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* Azure Data Lake Gen2 存储帐户的名称。 [创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)。
+* 已启用分层命名空间功能的存储帐户。 若要创建一个帐户，请参阅[创建用于 Azure Data Lake Storage Gen2 的存储帐户](create-data-lake-storage-account.md)。
 
 * 分配有角色“存储 Blob 数据参与者”  的 Azure 服务主体的租户 ID、应用 ID 和密码。 [创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "86109767"
 
 在本部分，使用 Azure 门户创建 Azure Databricks 工作区。
 
-1. 在 Azure 门户中，选择“创建资源”   >   “分析” >   “Azure Databricks”。
+1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
@@ -84,9 +84,9 @@ ms.locfileid: "86109767"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到所创建的 Azure Databricks 工作区，然后选择“启动工作区”。 
 
-2. 在左窗格中选择“工作区”  。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
+2. 在左窗格中选择“工作区”  。 在 **工作区** 下拉列表中，选择 **创建** > **笔记本**。
 
-    ![在 Databricks 中创建笔记本](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "在 Databricks 中创建笔记本")
+    ![屏幕截图显示了如何在 Databricks 中创建笔记本，并突出显示了“创建 > 笔记本”菜单选项。](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 
 3. 在“创建 Notebook”对话框中，输入 Notebook 的名称。  选择“Scala”作为语言，然后选择前面创建的 Spark 群集。 
 
@@ -170,7 +170,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
 5. 在“自定义绘图”中，按屏幕截图中所示拖放值。 
 
-    ![自定义条形图](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "自定义条形图")
+    ![屏幕截图显示了“自定义绘图”屏幕和可以拖放的值。](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "自定义条形图")
 
     - 将“键”设置为“性别”。  
     - 将“序列分组”设置为“级别”。  
@@ -198,7 +198,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 请继续学习下一篇文章，了解如何使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。
 
 > [!div class="nextstepaction"]
->[使用 Azure Databricks 提取、转换和加载数据](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md)。
+>[使用 Azure Databricks 提取、转换和加载数据](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse)。
 
 - 若要了解如何将其他数据源中的数据导入 Azure Databricks，请参阅 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)。
 

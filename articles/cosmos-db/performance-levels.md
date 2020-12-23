@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4cb07d9d19d85cd8dff9a52eeeb7e173b60f4d6d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020875"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080764"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>停用 S1、S2 和 S3 性能级别
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT] 
 > 本文所述的 S1、S2 和 S3 性能级别即将停用，在新的 Azure Cosmos DB 帐户中将不再提供。
@@ -82,7 +83,7 @@ S1、S2 和 S3 性能级别无法提供标准 Azure Cosmos DB 产品提供的灵
 
 ## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果需要 20 GB 以上的存储，应该怎么做？
 
-无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储空间都是 20 GB。可以使用 Azure Cosmos DB 数据迁移工具将数据迁移到存储空间几乎无限的分区集合。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](sql-api-partition-data.md)。 
+无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储空间都是 20 GB。可以使用 Azure Cosmos DB 数据迁移工具将数据迁移到存储空间几乎无限的分区集合。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](partitioning-overview.md)。 
 
 <a name="change-before"></a>
 
@@ -116,12 +117,12 @@ S1、S2 和 S3 性能级别无法提供标准 Azure Cosmos DB 产品提供的灵
     await client.ReplaceOfferAsync(offer);
 ```
 
-请访问 [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 以查看其他示例并了解更多有关服务方法的信息：
+请访问 [MSDN](/dotnet/api/microsoft.azure.documents.client.documentclient) 以查看其他示例并了解更多有关服务方法的信息：
 
-* [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
-* [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
-* [**ReplaceOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
-* [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
+* [**ReadOfferAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync)
+* [**ReadOffersFeedAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.readoffersfeedasync)
+* [**ReplaceOfferAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync)
+* [**CreateOfferQuery**](/previous-versions/azure/dn975114(v=azure.100))
 
 <a name="ea-customer"></a>
 
@@ -132,6 +133,6 @@ EA 客户在当前合同到期之前，价格将受到保护。
 ## <a name="next-steps"></a>后续步骤
 若要了解更多有关 Azure Cosmos DB 的定价和管理数据的信息，请浏览以下资源：
 
-1.  [对 Cosmos DB 中的数据进行分区](sql-api-partition-data.md)。 了解单区容器与分区容器的差异，以及有关实施分区策略以进行无缝缩放的提示。
+1.  [对 Cosmos DB 中的数据进行分区](partitioning-overview.md)。 了解单区容器与分区容器的差异，以及有关实施分区策略以进行无缝缩放的提示。
 2.  [Cosmos DB 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)。 了解预配吞吐量和使用存储的费用。
 3.  [请求单位](request-units.md)。 了解不同操作类型（例如读取、写入和查询）的吞吐量消耗。

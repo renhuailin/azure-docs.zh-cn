@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: 9f0ed5265bc4371169097d2fedcbfcddb62d3bff
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c19e6c7e05a3478007505ee4f02f12a7eade5eb6
+  ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "86045427"
+  ms.lasthandoff: 10/30/2020
+  ms.locfileid: "93130232"
 landingContent:
 - title: 关于沉浸式阅读器
   linkLists:
@@ -79,3 +79,11 @@ landingContent:
     links:
     - text: JavaScript SDK
       url: reference.md
+    - text: 发行说明
+      url: release-notes.md
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context

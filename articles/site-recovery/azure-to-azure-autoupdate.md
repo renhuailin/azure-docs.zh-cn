@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: sideeksh
-ms.openlocfilehash: 53c5dc4920b6c50ee3c900db9626f4d283f7b846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 42d3c74229ab7eeec0ac716073a9e631775fd002
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426412"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187334"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制的自动更新移动服务
 
@@ -56,8 +56,8 @@ Site Recovery 可以通过多种方式来管理扩展更新：
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>在保管库内切换扩展更新设置
 
-1. 在恢复服务保管库中，请参阅**管理**  >  **Site Recovery 基础结构**。
-1. 在 "**适用于 Azure 虚拟机的**  >  **扩展更新**  >  **Site Recovery**设置" 中，选择 **"打开**"。
+1. 在恢复服务保管库中，请参阅 **管理**  >  **Site Recovery 基础结构**。
+1. 在 "**适用于 Azure 虚拟机的**  >  **扩展更新**  >  **Site Recovery** 设置" 中，选择 **"打开**"。
 
    若要手动管理扩展，请选择 " **关闭**"。
 
@@ -69,7 +69,7 @@ Site Recovery 可以通过多种方式来管理扩展更新：
 > 选择 " **允许 Site Recovery 管理**" 时，该设置将应用到保管库中的所有 vm。
 
 > [!NOTE]
-> 任一选项都通知你用于管理更新的自动化帐户。 如果是首次在保管库中使用此功能，则默认情况下会创建一个新的自动化帐户。 或者，可以自定义设置，并选择现有的自动化帐户。 在同一保管库中启用复制的所有后续操作都将使用以前创建的自动化帐户。 目前，下拉菜单将仅列出与保管库位于同一资源组中的自动化帐户。
+> 任一选项都通知你用于管理更新的自动化帐户。 如果是首次在保管库中使用此功能，则默认情况下会创建一个新的自动化帐户。 或者，可以自定义设置，并选择现有的自动化帐户。 一旦定义后，在同一保管库中启用复制的所有后续操作都将使用该所选自动化帐户。 目前，下拉菜单将仅列出与保管库位于同一资源组中的自动化帐户。
 
 > [!IMPORTANT]
 > 需要在自动化帐户的上下文中运行以下脚本。

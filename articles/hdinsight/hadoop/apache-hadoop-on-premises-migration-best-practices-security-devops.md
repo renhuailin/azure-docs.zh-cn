@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6fd59a346a36a304f699894c493d8ba9800489b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751281"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545253"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -79,12 +79,12 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 **加密**
     - 使用 Microsoft 托管的密钥或客户管理的密钥进行透明的服务器端加密。
-    - 使用客户端加密、https 和 TLS 的传输加密。
+    - 使用 Client-Side encryption、https 和 TLS 传输加密。
 
 有关详细信息，请参阅下列文章：
 
 - [Azure 虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
-- [Azure 网络安全组概述](../../virtual-network/security-overview.md)
+- [Azure 网络安全组概述](../../virtual-network/network-security-groups-overview.md)
 - [Azure 虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)
 - [Azure 存储安全指南](../../storage/blobs/security-recommendations.md)
 - [Azure 存储服务静态加密](../../storage/common/storage-service-encryption.md)
@@ -122,4 +122,4 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读有关 [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction)的详细信息。
+阅读有关 [HDInsight 4.0](./apache-hadoop-introduction.md)的详细信息。

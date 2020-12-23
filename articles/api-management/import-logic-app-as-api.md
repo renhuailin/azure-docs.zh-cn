@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户将逻辑应用导入为 API | Microsoft Docs
-description: 本教程介绍如何使用 API 管理 (APIM) 将逻辑应用导入为 API。
+description: 本文演示如何使用 API 管理 (APIM) 将逻辑应用导入为 API。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: b107b4a54b7d013da160119b16bd646a79cce696
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0dd460bce01b86c72d0b8fd70351fdcc85c69bd4
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91626830"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146954"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>将逻辑应用导入为 API
 

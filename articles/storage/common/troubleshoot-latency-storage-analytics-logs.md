@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075949"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785589"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用存储分析日志排查延迟问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "87075949"
 
 ## <a name="recommended-steps"></a>建议的步骤
 
-1. 下载[存储分析日志](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)。
+1. 下载[存储分析日志](./storage-analytics-logging.md#download-storage-logging-log-data)。
 
 2. 使用以下 PowerShell 脚本将原始格式的日志转换为表格格式：
 
@@ -93,20 +93,20 @@ ms.locfileid: "87075949"
 
    * 客户端延迟 = 端到端延迟 – 服务器延迟
 
-        示例：8453– 391 = 8062ms
+        示例：8453 – 391 = 8062ms
 
    下表提供了有关高延迟 OperationType 和 RequestStatus 结果的信息：
 
-   | Blob 类型 |RequestStatus=<br>Success|RequestStatus=<br>(SAS)NetworkError|建议|
+   | Blob 类型 |RequestStatus=<br>成功|RequestStatus=<br>(SAS)NetworkError|建议|
    |---|---|---|---|
    |GetBlob|是|否|[**GetBlob 操作：** RequestStatus = Success](#getblob-operation-requeststatus--success)|
-   |GetBlob|否|是|[**GetBlob 操作：** RequestStatus = （SAS） NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|否|是|[**GetBlob 操作：** RequestStatus = (SAS)NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
    |PutBlob|是|否|[**Put 操作：** RequestStatus = Success](#put-operation-requeststatus--success)|
-   |PutBlob|否|是|[**Put 操作：** RequestStatus = （SAS） NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|否|是|[**Put 操作：** RequestStatus = (SAS)NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>状态结果
 
-### <a name="getblob-operation-requeststatus--success"></a>GetBlob 操作： RequestStatus = Success
+### <a name="getblob-operation-requeststatus--success"></a>GetBlob 操作：RequestStatus = Success
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
@@ -114,14 +114,14 @@ ms.locfileid: "87075949"
 * 服务器延迟
 * 客户端延迟
 
-在 **RequestStatus = Success** 的 **GetBlob 操作**中，如果在 **Client-Latency** 中花费了 **Max Time**，则这表明 Azure 存储在将数据写入到客户端时花费了大量时间。 此延迟表明客户端存在问题。
+在 **RequestStatus = Success** 的 **GetBlob 操作** 中，如果在 **Client-Latency** 中花费了 **Max Time** ，则这表明 Azure 存储在将数据写入到客户端时花费了大量时间。 此延迟表明客户端存在问题。
 
 **建议：**
 
 * 在客户端中调查代码。
 * 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
 
-### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 操作： RequestStatus = （SAS） NetworkError
+### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 操作：RequestStatus = (SAS)NetworkError
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
@@ -129,14 +129,14 @@ ms.locfileid: "87075949"
 * 服务器延迟
 * 客户端延迟
 
-在 **RequestStatus = (SAS)NetworkError** 的 **GetBlob 操作**中，如果在 **Client-Latency** 中花费了 **Max Time**，则最常见的问题是客户端在存储服务超时之前断开连接。
+在 **RequestStatus = (SAS)NetworkError** 的 **GetBlob 操作** 中，如果在 **Client-Latency** 中花费了 **Max Time** ，则最常见的问题是客户端在存储服务超时之前断开连接。
 
 **建议：**
 
 * 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。
 * 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
 
-### <a name="put-operation-requeststatus--success"></a>Put 操作： RequestStatus = Success
+### <a name="put-operation-requeststatus--success"></a>Put 操作：RequestStatus = Success
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
@@ -144,14 +144,14 @@ ms.locfileid: "87075949"
 * 服务器延迟
 * 客户端延迟
 
-在 **RequestStatus = Success** 的 **Put 操作**中，如果在 **Client-Latency** 中花费了 **Max Time**，则这表明客户端在将数据发送到 Azure 存储时花费了更多时间。 此延迟表明客户端存在问题。
+在 **RequestStatus = Success** 的 **Put 操作** 中，如果在 **Client-Latency** 中花费了 **Max Time** ，则这表明客户端在将数据发送到 Azure 存储时花费了更多时间。 此延迟表明客户端存在问题。
 
 **建议：**
 
 * 在客户端中调查代码。
 * 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
 
-### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put 操作： RequestStatus = （SAS） NetworkError
+### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put 操作：RequestStatus = (SAS)NetworkError
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
@@ -159,10 +159,9 @@ ms.locfileid: "87075949"
 * 服务器延迟
 * 客户端延迟
 
-在 **RequestStatus = (SAS)NetworkError** 的 **PutBlob 操作**中，如果在 **Client-Latency** 中花费了 **Max Time**，则最常见的问题是客户端在存储服务超时之前断开连接。
+在 **RequestStatus = (SAS)NetworkError** 的 **PutBlob 操作** 中，如果在 **Client-Latency** 中花费了 **Max Time** ，则最常见的问题是客户端在存储服务超时之前断开连接。
 
 **建议：**
 
 * 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。
 * 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
-

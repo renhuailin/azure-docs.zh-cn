@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 232bc43440979a08da4a0e77d9b49bf56fdb0ae4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 9d62195759de2d43e863c1cb2c4c3ef911bb52c6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374026"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498517"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>适用于 Linux 虚拟机的 Azure 磁盘加密常见问题解答
 
@@ -57,14 +57,14 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 
 ## <a name="what-is-storage-server-side-encryption"></a>什么是存储服务器端加密？
 
-存储服务器端加密会在 Azure 存储中加密 Azure 托管磁盘。 默认情况下，托管磁盘使用平台托管密钥通过服务器端加密进行加密（从 2017 年 6 月 10 日开始）。 指定一个由客户托管的密钥，即可实现对使用自己的密钥加密托管磁盘的管理。 有关详细信息，请参阅：[Azure 托管磁盘的服务器端加密](disk-encryption.md)。
+存储服务器端加密会在 Azure 存储中加密 Azure 托管磁盘。 默认情况下，托管磁盘使用平台托管密钥通过服务器端加密进行加密（从 2017 年 6 月 10 日开始）。 指定一个由客户托管的密钥，即可实现对使用自己的密钥加密托管磁盘的管理。 有关详细信息，请参阅：[Azure 托管磁盘的服务器端加密](../disk-encryption.md)。
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure 磁盘加密与使用客户托管的密钥的存储服务器端加密有何不同，分别应于何时使用这两种解决方案？
 
 Azure 磁盘加密使用客户托管的密钥提供对 OS 磁盘、数据磁盘和临时磁盘的端对端加密。
 - 如果你的要求包括对上述各项加密和端到端加密，请使用 Azure 磁盘加密。 
-- 如果你的要求是使用客户托管的密钥仅对静态数据加密，请采用[使用客户托管密钥的服务器端加密](disk-encryption.md)。 不能既使用 Azure 磁盘加密又使用采用了客户托管密钥的存储服务器端加密来加密磁盘。 
-- 如果你的 Linux 发行版未列在[支持 Azure 磁盘加密的操作系统](disk-encryption-overview.md#supported-operating-systems)下，或者使用的是在 [Windows 不支持的方案](disk-encryption-linux.md#unsupported-scenarios)中调出的方案，请考虑使用[客户托管密钥的服务器端加密](disk-encryption.md)。
+- 如果你的要求是使用客户托管的密钥仅对静态数据加密，请采用[使用客户托管密钥的服务器端加密](../disk-encryption.md)。 不能既使用 Azure 磁盘加密又使用采用了客户托管密钥的存储服务器端加密来加密磁盘。 
+- 如果你的 Linux 发行版未列在[支持 Azure 磁盘加密的操作系统](disk-encryption-overview.md#supported-operating-systems)下，或者使用的是在 [Windows 不支持的方案](disk-encryption-linux.md#unsupported-scenarios)中调出的方案，请考虑使用[客户托管密钥的服务器端加密](../disk-encryption.md)。
 - 如果组织的策略允许你使用 Azure 托管密钥加密静态内容，则无需执行任何操作，因为系统默认加密这些内容。 对于托管磁盘而言，默认在服务器端加密中使用平台托管密钥来加密存储内的内容。 该密钥是由 Azure 存储服务托管的。 
 
 
@@ -164,5 +164,5 @@ Azure 备份提供一个机制，可以用来备份和还原同一订阅与区�
 本文档详细描述了有关 Azure 磁盘加密的最常见问题。 有关此服务的详细信息，请参阅以下文章：
 
 - [Azure 磁盘加密概述](disk-encryption-overview.md)
-- [在 Azure 安全中心应用磁盘加密](../../security-center/security-center-virtual-machine-protection.md)
+- [在 Azure 安全中心应用磁盘加密](../../security-center/asset-inventory.md)
 - [Azure 静态数据加密](../../security/fundamentals/encryption-atrest.md)

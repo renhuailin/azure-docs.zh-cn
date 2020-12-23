@@ -19,10 +19,18 @@
   items:
     - name: 共享数据
       href: share-your-data.md
+      displayName: 'Azure CLI, az datashare account create, az datashare create'
     - name: 接受和接收数据
       href: subscribe-to-data-share.md
+      displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: 概念
   items:
+    - name: 安全性
+      items:
+        - name: 安全概述
+          href: security.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: Azure Data Share 术语
       href: terminology.md
     - name: 角色和要求
@@ -31,8 +39,6 @@
       href: concepts-pricing.md
 - name: 示例
   items:
-    - name: 代码示例
-      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
 - name: 操作指南
@@ -41,15 +47,11 @@
       items:
         - name: 从 Azure 存储进行共享
           href: how-to-share-from-storage.md
-        - name: 从 Azure SQL 数据库或 Synapse Analytics 进行共享
+        - name: 从 Azure SQL 数据库或 Azure Synapse Analytics 进行共享
           href: how-to-share-from-sql.md
         - name: 从 Azure 数据资源管理器进行共享
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: 监视
-      href: how-to-monitor.md
-    - name: 疑难解答
-      href: data-share-troubleshoot.md
     - name: 添加数据集
       href: how-to-add-datasets.md
     - name: 配置数据集映射
@@ -60,24 +62,26 @@
       href: how-to-delete-invitation.md
     - name: 撤销共享订阅
       href: how-to-revoke-share-subscription.md
-    - name: 安全性
-      href: security.md
+    - name: 监视
+      href: how-to-monitor.md
     - name: 灾难恢复
       href: disaster-recovery.md
+    - name: 疑难解答
+      href: data-share-troubleshoot.md
 - name: 参考
   items:
     - name: .NET
       href: /dotnet/api/overview/azure/datashare
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
+      href: /powershell/module/az.datashare/?view=azps-2.6.0
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
+      href: /cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest
 - name: 资源
   items:
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
+      href: /answers/topics/azure-data-share.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: 博客

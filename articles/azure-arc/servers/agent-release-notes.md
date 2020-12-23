@@ -2,13 +2,13 @@
 title: 启用 Azure Arc 服务器代理的新增功能
 description: 本文提供了适用于 Azure Arc 的服务器代理的发行说明。 对于许多汇总问题，还提供了其他详细信息的链接。
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 12/14/2020
+ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908162"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505641"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>启用 Azure Arc 服务器代理的新增功能
 
@@ -18,6 +18,31 @@ ms.locfileid: "90908162"
 - 已知问题
 - Bug 修复
 
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="new-feature"></a>新功能
+
+添加了对 Windows Server 2008 R2 的支持
+
+### <a name="fixed"></a>固定
+
+已解决的问题导致无法成功安装 Linux 上的自定义脚本扩展。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="fixed"></a>固定
+
+解决了在基于 RPM 的分发上升级后，代理配置可能丢失的问题。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="fixed"></a>固定
+
+- 修复了用于处理备用 GC daemon 单元文件位置的代理脚本。
+- GuestConfig 代理可靠性更改。
+- US Gov 弗吉尼亚州区域的 GuestConfig 代理支持。
+- 在出现故障时，GuestConfig 代理扩展报告消息更详细。
+
 ## <a name="september-2020"></a>2020 年 9 月
 
 版本： 1.0 (公开上市) 
@@ -26,7 +51,7 @@ ms.locfileid: "90908162"
 
 - 在将来的服务更新中，支持预览代理 (低于 1.0) 的所有版本。
 - 已删除对回退终结点的支持 `.azure-automation.net` 。 如果有代理，则需要允许使用终结点 `*.his.arc.azure.com` 。
-- 如果在 Azure 中托管的虚拟机上安装了已连接的计算机代理，则无法从启用了 Arc 的服务器资源安装或修改 VM 扩展。 这是为了避免从虚拟机的**HybridCompute**资源**执行的扩展**操作冲突。 对于所有扩展操作，请使用计算机的 **计算** 资源。
+- 如果在 Azure 中托管的虚拟机上安装了已连接的计算机代理，则无法从启用了 Arc 的服务器资源安装或修改 VM 扩展。 这是为了避免从虚拟机的 **HybridCompute** 资源 **执行的扩展** 操作冲突。 对于所有扩展操作，请使用计算机的 **计算** 资源。
 - 来宾配置过程的名称已更改，从 *gcd* 到 *gcad* on Linux， *gcservice* 到 *gcarcservice* on Windows。
 
 ### <a name="new-feature"></a>新功能
@@ -56,7 +81,7 @@ ms.locfileid: "90908162"
 
 ### <a name="known-issues"></a>已知问题
 
-如果使用的是较旧版本的 Linux 代理并将其配置为使用代理服务器，则需要在升级后重新配置代理服务器设置。 要执行此操作，请运行 `sudo azcmagent_proxy add http://proxyserver.local:83`。
+如果你使用的是较旧版本的 Linux 代理并且其配置为使用代理服务器，则需要在升级后重新配置代理服务器设置。 要执行此操作，请运行 `sudo azcmagent_proxy add http://proxyserver.local:83`。
 
 ## <a name="next-steps"></a>后续步骤
 

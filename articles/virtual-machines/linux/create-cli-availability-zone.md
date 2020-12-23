@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828993"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016397"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建 Linux 虚拟机
 
@@ -52,9 +52,9 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。  
+使用 [az group create](/cli/azure/group) 命令创建资源组。  
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”** 区域中创建了名为“myResourceGroupVM”** 的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”区域中创建了名为“myResourceGroupVM”的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
 
 ```azurecli 
 az group create --name myResourceGroupVM --location eastus2
@@ -66,7 +66,7 @@ az group create --name myResourceGroupVM --location eastus2
 
 使用 [az vm create](/cli/azure/vm) 命令创建虚拟机。 
 
-创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为“myVM”** 的运行 Ubuntu Server 的虚拟机。 在可用性区域 *1* 中创建了一个 VM。 默认情况下，创建的 VM 大小为 *Standard_DS1_v2*。
+创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为“myVM”的运行 Ubuntu Server 的虚拟机。 在可用性区域 *1* 中创建了一个 VM。 默认情况下，创建的 VM 大小为 *Standard_DS1_v2*。
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
@@ -92,7 +92,7 @@ az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 -
 
 当 VM 部署在可用性区域中时，将在同一可用性区域中创建 VM 的托管磁盘。 默认情况下，还会在该区域中创建一个公共 IP 地址。 以下示例可获取有关这些资源的信息。
 
-若要验证 VM 的托管磁盘是否在可用性区域中，请使用[az VM show](/cli/azure/vm)命令返回磁盘 ID。 在此示例中，磁盘 ID 存储在稍后的步骤中使用的变量中。 
+若要验证 VM 的托管磁盘是否在可用性区域中，请使用 [az VM show](/cli/azure/vm) 命令返回磁盘 ID。 在此示例中，磁盘 ID 存储在稍后的步骤中使用的变量中。 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -188,4 +188,4 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](../availability.md)。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的 [可用性](../availability.md) 。

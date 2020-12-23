@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/10/2020
+ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428131"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108665"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -25,34 +25,48 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>注册或登录页面元素
 
-以下 ID 用于包含 `api.signuporsignin` ID 的内容定义。
+以下 ID 用于 ID 为 `api.signuporsignin` 的内容定义和[自断言技术配置文件](self-asserted-technical-profile.md)。
 
-| ID | 默认值 |
-| -- | ------------- |
-| **local_intro_email** | 使用现有帐户登录 |
-| **logonIdentifier_email** | 电子邮件地址 |
-| **requiredField_email** | 请输入电子邮件地址 |
-| **invalid_email** | 请输入有效的电子邮件地址 |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&'' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
-| **local_intro_username** | 使用用户名登录 |
-| **logonIdentifier_username** | 用户名 |
-| **requiredField_username** | 请输入用户名 |
-| **password** | 密码 |
-| **requiredField_password** | 请输入密码 |
-| **invalid_password** | 你输入的密码格式不正确。 |
-| **forgotpassword_link** | 忘记密码了? |
-| **createaccount_intro** | 没有帐户？ |
-| **createaccount_link** | 立即注册 |
-| **divider_title** | OR |
-| **cancel_message** | 用户忘记了密码 |
-| **button_signin** | 登录 |
-| **social_intro** | 使用社交帐户登录 |
-  **remember_me** |使我保持登录状态|
-| **unknown_error** | 登录时遇到问题。 请稍后重试。 |
+| ID | 默认值 | 页面布局版本 |
+| -- | ------------- | ------ |
+| **forgotpassword_link** | 忘记密码了? | `All` |
+| **createaccount_intro** | 没有帐户？ | `All` |
+| **button_signin** | 登录 | `All` |
+| **social_intro** | 使用社交帐户登录 | `All` |
+| **remember_me** |使我保持登录状态。 | `All` |
+| **unknown_error** | 登录时遇到问题。 请稍后重试。 | `All` |
+| **divider_title** | OR | `All` |
+| **local_intro_email** | 使用现有帐户登录 | `< 2.0.0` |
+| **logonIdentifier_email** | 电子邮件地址 | `< 2.0.0` |
+| **requiredField_email** | 请输入电子邮件地址 | `< 2.0.0` |
+| **invalid_email** | 请输入有效的电子邮件地址 | `< 2.0.0` |
+| **email_pattern** | ^ [A-za-z0-9.！# $% & "" \* +/=？ ^ \_ \` { \| } ~-] + @ [a-za-z0-9-] + (？： \\ . [-zA-A-za-z0-9-] +) \* $ |`< 2.0.0` |
+| **local_intro_username** | 使用用户名登录 | `< 2.0.0` |
+| **logonIdentifier_username** | 用户名 | `< 2.0.0` |
+| **requiredField_username** | 请输入用户名 | `< 2.0.0` |
+| **password** | 密码 | `< 2.0.0` |
+| **requiredField_password** | 请输入密码 | `< 2.0.0` |
+| **createaccount_link** | 立即注册 | `< 2.0.0` |
+| **cancel_message** | 用户忘记了密码 | `< 2.0.0` |
+| **invalid_password** | 你输入的密码格式不正确。 | `< 2.0.0` |
+| **createaccount_one_link** | 立即注册 | `>= 2.0.0` |
+| **createaccount_two_links** | 注册 {0} 或 {1} | `>= 2.0.0` |
+| **createaccount_three_links** | 注册 {0} 、 {1} 或 {2} | `>= 2.0.0` |
+| **local_intro_generic** | 登录 {0} | `>= 2.1.0` |
+| **requiredField_generic** | 请输入 {0} | `>= 2.1.0` |
+| **invalid_generic** | 请输入有效的 {0} | `>= 2.1.1` |
+| **目** | 登录 | `>= 2.1.1` |
+
+
+> [!NOTE]
+> * 如的占位符 {0} 将自动填充为的 `DisplayName` 值 `ClaimType` 。 
+> * 若要了解如何进行本地化 `ClaimType` ，请参阅 [注册或登录示例](#signupsigninexample)。
 
 下面的示例演示如何在注册或登录页中使用某些用户界面元素：
 
-![注册或登录页面 UX 元素](./media/localization-string-ids/localization-susi.png)
+:::image type="content" source="./media/localization-string-ids/localization-susi-2.png" alt-text="屏幕截图，显示注册或登录页 U X 元素。":::
+
+### <a name="sign-up-or-sign-in-identity-providers"></a>注册或登录标识提供者
 
 标识提供者的 ID 在用户旅程 ClaimsExchange 元素中配置。 若要本地化标识提供者的标题，请将 ElementType 设置为 `ClaimsProvider`，同时将 StringId 设置为 `ClaimsExchange` 的 ID。
 
@@ -84,6 +98,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | ID | 默认值 |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | 密码不正确。 |
+| **UserMessageIfPasswordExpired**| 你的密码已过期。|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | 似乎找不到你的帐户。 |
 | **UserMessageIfOldPasswordUsed** | 你可能使用的是旧密码。 |
 | **DefaultMessage** | 无效的用户名或密码。 |
@@ -91,9 +106,44 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **UserMessageIfUserAccountLocked** | 帐户暂时锁定以防止未经授权的使用。 请稍后再试。 |
 | **AADRequestsThrottled** | 目前请求过多。 请等待一段时间，然后重试。 |
 
+<a name="signupsigninexample"></a>
+### <a name="sign-up-or-sign-in-example"></a>注册或登录示例
+
+```xml
+<LocalizedResources Id="api.signuporsignin.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="heading">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="social_intro">Sign in with your social account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Sign in with your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_password">Please enter your password</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_generic">Please enter your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_generic">Please enter a valid {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_one_link">Sign up now</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_two_links">Sign up with {0} or {1}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_three_links">Sign up with {0}, {1}, or {2}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="unknown_error">We are having trouble signing you in. Please try again later.</LocalizedString>
+    <!-- Uncomment the remember_me only if the keep me signed in is activated. 
+    <LocalizedString ElementType="UxElement" StringId="remember_me">Keep me signed in</LocalizedString> -->
+    <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfOldPasswordUsed">Looks like you used an old password.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="DefaultMessage">Invalid username or password.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfUserAccountDisabled">Your account has been locked. Contact your support person to unlock it, then try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfUserAccountLocked">Your account is temporarily locked to prevent unauthorized use. Try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="AADRequestsThrottled">There are too many requests at this moment. Please wait for some time and try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>注册和自断言页用户界面元素
 
-以下是包含 `api.localaccountsignup` ID 的内容定义或任何以 `api.selfasserted` 开头的内容定义的 ID，如 `api.selfasserted.profileupdate` 和 `api.localaccountpasswordreset`。
+以下 ID 适用于 ID 为 `api.localaccountsignup` 的内容定义或任何以 `api.selfasserted` 开头的内容定义，例如 `api.selfasserted.profileupdate` 和 `api.localaccountpasswordreset`，以及[自断言技术配置文件](self-asserted-technical-profile.md)。
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -152,10 +202,61 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ![注册页电子邮件验证 UX 元素](./media/localization-string-ids/localization-email-verification.png)
 
+## <a name="sign-up-and-self-asserted-pages-example"></a>注册和自断言页示例
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Email address that can be used to contact you.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="DisplayName">New Password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="UserHelpText">Enter new password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="newPassword" StringId="PatternHelpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="DisplayName">Confirm New Password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="UserHelpText">Confirm new password</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="reenterPassword" StringId="PatternHelpText">#8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="displayName" StringId="DisplayName">Display Name</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="displayName" StringId="UserHelpText">Your display name.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="surname" StringId="DisplayName">Surname</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="surname" StringId="UserHelpText">Your surname (also known as family name or last name).</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="givenName" StringId="DisplayName">Given Name</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="givenName" StringId="UserHelpText">Your given name (also known as first name).</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_continue">Create</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_fieldIncorrect">One or more fields are filled out incorrectly. Please check your entries and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_passwordEntryMismatch">The password entry fields do not match. Please enter the same password in both fields and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_requiredFieldMissing">A required field is missing. Please fill out all required fields and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="helplink_text">What is this?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="initial_intro">Please provide the following details.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="preloader_alt">Please wait</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="required_field">This information is required.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_edit">Change e-mail</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_resend">Send new code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_send">Send verification code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_but_verify">Verify code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_code_expired">That code is expired. Please request a new code.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_no_retry">You've made too many incorrect attempts. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_retry">That code is incorrect. Please try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_server">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_fail_throttled">There have been too many requests to verify this email address. Please wait a while, then try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_info_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_input">Verification code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="ver_success_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="ServiceThrottled">There are too many requests at this moment. Please wait for some time and try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimNotVerified">Claim not verified: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">A user with the specified ID already exists. Please choose a different one.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfIncorrectPattern">Incorrect pattern for: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidInput">{0} has invalid input.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMissingRequiredElement">Missing required element: {0}</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfValidationError">Error in validation by: {0}</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>电话身份验证页用户界面元素
 
-以下是包含 `api.phonefactor` ID 的内容定义的 ID。
+以下 ID 适用于 ID 为 `api.phonefactor` 的内容定义以及[电话因素技术配置文件](phone-factor-technical-profile.md)。
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -190,22 +291,103 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **number_label** | 电话号码 |
 | **error_tryagain** | 你提供的电话号码占线或不可用。 请检查号码并重试。 |
 | **error_incorrect_code** | 你输入的验证码与我们的记录不一致。 请重试，或请求获取新验证码。 |
-| **countryList** | 请参阅[国家/地区列表](#countries-list)。 |
+| **countryList** | 请参阅[国家/地区列表](#phone-factor-authentication-page-example)。 |
 | **error_448** | 你提供的电话号码打不通。 |
 | **error_449** | 用户已超出重试次数上限。 |
 | **verification_code_input_placeholder_text** | 验证码 |
 
 下面的示例演示如何在 MFA 注册页中使用某些用户界面元素：
 
-![注册页电子邮件验证 UX 元素](./media/localization-string-ids/localization-mfa1.png)
+![电话因素身份验证注册 UX 元素](./media/localization-string-ids/localization-mfa1.png)
 
 下面的示例演示如何在 MFA 验证页中使用某些用户界面元素：
 
-![注册页电子邮件验证 UX 元素](./media/localization-string-ids/localization-mfa2.png)
+![电话因素身份验证验证 UX 元素](./media/localization-string-ids/localization-mfa2.png)
+
+## <a name="phone-factor-authentication-page-example"></a>电话因素身份验证页示例
+
+```xml
+<LocalizedResources Id="api.phonefactor.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="button_verify">Call Me</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="country_code_label">Country Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has canceled multi-factor authentication</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="text_button_send_second_code">Send a new code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="code_pattern">\d{6}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_mixed">We have the following number on record for you. We can send a code via SMS or phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_mixed_p">We have the following numbers on record for you. Choose a number that we can phone or send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_code">Please enter the verification code you received</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_code">Please enter the 6-digit code you received</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_number_input_placeholder_text">Phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_retry">Retry</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="alternative_text">I don't have my phone</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_phone_p">We have the following numbers on record for you. Choose a number that we can phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_phone">We have the following number on record for you. We will phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="enter_code_text_intro">Enter your verification code below, or</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_phone">Enter a number below that we can phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_sms">Enter a number below that we can send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_number">Please enter a valid phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_sms">We have the following number on record for you. We will send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_entry_mixed">Enter a number below that we can send a code via SMS or phone to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="number_pattern">^\+(?:[0-9][\x20-]?){6,14}[0-9]$</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="intro_sms_p">We have the following numbers on record for you. Choose a number that we can send a code via SMS to authenticate you.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_countryCode">Please select your country code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_number">Please enter your phone number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="country_code_input_placeholder_text">Country or region</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="number_label">Phone Number</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_tryagain">The phone number you provided is busy or unavailable. Please check the number and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_incorrect_code">The verification code you have entered does not match our records. Please try again, or request a new code.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="countryList">{"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_448">The phone number you provided is unreachable.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_449">User has exceeded the number of retry attempts.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_code_input_placeholder_text">Verification code</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="strongAuthenticationPhoneNumber" StringId="DisplayName">Phone Number</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+
+```
 
 ## <a name="verification-display-control-user-interface-elements"></a>验证显示控件用户界面元素
 
-以下是[验证显示控件](display-control-verification.md)的 ID
+以下是[页面布局版本](page-layout.md)为 2.1.0 或更高版本的[验证显示控件](display-control-verification.md)的 ID。
+
+| ID | 默认值 |
+| -- | ------------- |
+|intro_msg| 验证是必需的。 请单击“发送”按钮。|
+|success_send_code_msg | 验证码已发送到收件箱。 请将其复制到下面的输入框。|
+|failure_send_code_msg | 我们无法验证你的电子邮件地址。 请输入有效的电子邮件地址，然后重试。|
+|success_verify_code_msg | 已验证电子邮件地址。 现在可以继续。|
+|failure_verify_code_msg | 我们无法验证你的电子邮件地址。 请重试。|
+|but_send_code | 发送验证代码|
+|but_verify_code | 验证验证码|
+|but_send_new_code | 发送新验证码|
+|but_change_claims | 更改电子邮件|
+
+### <a name="verification-display-control-example"></a>验证显示控件示例
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>验证显示控件用户界面元素（已弃用）
+
+以下是[页面布局版本](page-layout.md)为 2.0.0 的[验证显示控件](display-control-verification.md)的 ID。
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -217,7 +399,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 |verification_control_but_verify_code |验证验证码 |
 |verification_control_code_sent| 已发送验证码。 请将其复制到下面的输入框。 |
 
-### <a name="example"></a>示例
+### <a name="verification-display-control-example-deprecated"></a>验证显示控件示例（已弃用）
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -245,7 +427,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 |UserMessageIfRequestTimeout | 未能在 {0} 秒的超时限制内建立与 Restful 服务终结点的连接。 Restful 服务 URL：{1} |
 
 
-### <a name="example"></a>示例
+### <a name="restful-service-example"></a>Restful 服务示例
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -258,9 +440,9 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 </LocalizedResources>
 ```
 
-## <a name="azure-mfa-error-messages"></a>Azure MFA 错误消息
+## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA 错误消息
 
-以下是 [Azure MFA 技术配置文件](multi-factor-auth-technical-profile.md)错误消息的 ID：
+下面是 [AZURE AD MFA 技术配置文件](multi-factor-auth-technical-profile.md) 的 id 错误消息：
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -271,7 +453,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 |UserMessageIfThrottled | 请求被阻止，请稍后重试。|
 |UserMessageIfWrongCodeEntered|输入的代码错误，请重试。|
 
-### <a name="example"></a>示例
+### <a name="azure-ad-mfa-example"></a>Azure AD MFA 示例
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -288,18 +470,18 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="azure-ad-sspr"></a>Azure AD SSPR
 
-下面是[AZURE AD SSPR 技术配置文件](aad-sspr-technical-profile.md)的 id 错误消息：
+以下是 [Azure AD SSPR 技术配置文件](aad-sspr-technical-profile.md)错误消息的 ID：
 
 | ID | 默认值 |
 | -- | ------------- |
 |UserMessageIfChallengeExpired | 代码已过期。|
 |UserMessageIfInternalError | 电子邮件服务遇到内部错误，请稍后重试。|
 |UserMessageIfThrottled | 你发送的请求过多，请稍后重试。|
-|UserMessageIfVerificationFailedNoRetry | 你已超过最大验证尝试次数。|
+|UserMessageIfVerificationFailedNoRetry | 已超过最大的验证尝试次数。|
 |UserMessageIfVerificationFailedRetryAllowed | 验证失败，请重试。|
 
 
-### <a name="example"></a>示例
+### <a name="azure-ad-sspr-example"></a>Azure AD SSPR 示例
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -325,13 +507,13 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 |UserMessageIfInvalidCode |所提供的用于验证的一次性密码不正确 |
 |UserMessageIfVerificationFailedRetryAllowed |验证码不正确。 请重试。 | 
 
-### <a name="example"></a>示例
+### <a name="one-time-password-example"></a>一次性密码示例
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
@@ -349,7 +531,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 声明值比较失败：提供的左操作数大于右操作数。|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | 使用 StringComparison“OrdinalIgnoreCase”的声明值比较失败。|
 
-### <a name="example"></a>示例
+### <a name="claims-transformations-example"></a>声明转换示例
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -361,17 +543,9 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 </LocalizedResources>
 ```
 
-## <a name="countries-list"></a>国家/地区列表
-
-以下是多重身份验证使用的 countryList 值。
-
-```JSON
-{"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}
-```
-
 ## <a name="next-steps"></a>后续步骤
 
 有关本地化示例，请参阅以下文章：
 
-- [在 Azure Active Directory B2C 中使用自定义策略进行语言自定义](custom-policy-localization.md)
-- [在 Azure Active Directory B2C 中使用用户流进行语言自定义](user-flow-language-customization.md)
+- [在 Azure Active Directory B2C 中使用自定义策略进行语言自定义](language-customization.md)
+- [在 Azure Active Directory B2C 中使用用户流进行语言自定义](language-customization.md)

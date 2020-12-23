@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f92ff60dacd78687207c7523504182521700a7b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 423ac882c81582f2843eeba37d11c660662ad6e2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554492"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netvision Compas 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88554492"
 * 让用户使用其 Azure AD 帐户自动登录到 Netvision Compas。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88554492"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Netvision Compas 支持 **SP 和 IDP** 发起的 SSO
-* 配置 Netvision Compas 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Netvision Compas 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 
 ## <a name="adding-netvision-compas-from-the-gallery"></a>从库中添加 Netvision Compas
@@ -51,7 +51,7 @@ ms.locfileid: "88554492"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Netvision Compas**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Netvision Compas** 。 
 1. 在结果面板中选择“Netvision Compas”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -146,7 +146,7 @@ ms.locfileid: "88554492"
 1. 为“显示名称”和“说明”字段输入有意义的值。  
 1. 将 Netvision Compas 用户分配到 IDP，方法是：在“可用用户”列表中选择用户，然后选择“添加所选项”按钮。    还可以遵循以下预配过程将用户分配到 IDP。
 1. 对于“元数据”SAML 选项，请单击“选择文件”按钮，然后选择以前保存在计算机上的元数据文件。  
-1. 单击“ **保存**”。
+1. 单击“ **保存** ”。
 
     ![编辑 IDP](media/netvision-compas-tutorial/idp-edit.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "88554492"
 
 ### <a name="using-the-access-panel-idp-initiated"></a>使用访问面板（IDP 发起模式）。
 
-在访问面板中单击“Netvision Compas”磁贴时，应会自动登录到设置了 SSO 的 Netvision Compas。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Netvision Compas”磁贴时，应会自动登录到设置了 SSO 的 Netvision Compas。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ### <a name="directly-accessing-netvision-compas-sp-initiated"></a>直接访问 Netvision Compas（SP 发起模式）。
 
@@ -184,12 +184,12 @@ ms.locfileid: "88554492"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Netvision Compas](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

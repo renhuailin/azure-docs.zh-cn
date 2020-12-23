@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806764"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396934"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
@@ -133,7 +133,7 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
 
 有关如何导入证书并将其上传为 IIS 上的服务器证书的说明，请参阅[如何：在 Windows Server 2003 中的 Web 服务器上安装导入的证书](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)。
 
-有关 TLS 绑定说明，请参阅[如何在 IIS 7 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)。
+有关 TLS 绑定说明，请参阅[如何在 IIS 7 上设置 SSL](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)。
 
 ### <a name="apache"></a>Apache
 
@@ -273,4 +273,3 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关应用程序网关上的 SSL\TLS 的详细信息，请参阅[应用程序网关的 TLS 终止和端到端 TLS 概述](ssl-overview.md)。
-

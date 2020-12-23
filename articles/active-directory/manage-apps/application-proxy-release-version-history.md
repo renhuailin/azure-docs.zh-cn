@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8000d07824c27f60dd5d8d6a457521691fe2b7d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210865"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658394"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 应用程序代理：版本发布历史记录
 本文列出了已发布) 应用程序代理 Azure AD Azure Active Directory (的版本和功能。 Azure AD 团队定期更新具有新特性和功能的应用程序代理。 发布新版本时，应用程序代理连接器会自动更新。 
@@ -38,7 +38,7 @@ Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https:/
 2020年7月22日：已发布以便下载此版本仅可通过下载页面安装。 此版本的自动升级版本将在以后发布。
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
--   改进了对 Azure 政府云环境的支持。 有关如何正确安装 Azure 政府云连接器的步骤，请查看 [先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) 和 [安装步骤](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。
+-   改进了对 Azure 政府云环境的支持。 有关如何正确安装 Azure 政府云连接器的步骤，请查看 [先决条件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) 和 [安装步骤](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)。
 - 支持将远程桌面服务 web 客户端与应用程序代理配合使用。 有关更多详细信息，请参阅 [通过 Azure AD 应用程序代理发布远程桌面](application-proxy-integrate-with-remote-desktop-services.md) 。
 - 提高了 websocket 扩展协商。 
 
@@ -83,7 +83,7 @@ Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https:/
 - 添加了对 QlikSense 应用程序的 WebSocket 支持。 若要了解有关如何将 QlikSense 与应用程序代理集成的详细信息，请参阅此 [演练](application-proxy-qlik.md)。 
 - 改进了安装向导，使其更易于配置出站代理。 
 - 将 TLS 1.2 设置为连接器的默认协议。 
--  (EULA) 中添加了新的最终用户许可协议。  
+-  (EULA) 中添加了新的 End-User 许可协议。  
 
 ### <a name="fixed-issues"></a>已修复的问题
 

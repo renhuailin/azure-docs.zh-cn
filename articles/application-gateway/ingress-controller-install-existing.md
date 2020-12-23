@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807106"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018692"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>安装使用现有应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -29,24 +29,24 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 
 ## <a name="prerequisites"></a>先决条件
 本文档假设已安装以下工具和基础结构：
-- 已启用[高级网络](https://docs.microsoft.com/azure/aks/configure-azure-cni)的 [AKS](https://azure.microsoft.com/services/kubernetes-service/)
-- AKS 所在的同一虚拟网络中的[应用程序网关 v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant)
+- 已启用[高级网络](../aks/configure-azure-cni.md)的 [AKS](https://azure.microsoft.com/services/kubernetes-service/)
+- AKS 所在的同一虚拟网络中的[应用程序网关 v2](./tutorial-autoscale-ps.md)
 - 已在 AKS 群集上安装 [AAD Pod Identity](https://github.com/Azure/aad-pod-identity)
-- [Cloud Shell](https://shell.azure.com/)是 Azure Shell 环境， `az` 安装了 CLI、 `kubectl` 和 `helm` 。 需要使用这些工具来运行下面所述的命令。
+- [Cloud Shell](https://shell.azure.com/) 是 Azure Shell 环境， `az` 安装了 CLI、 `kubectl` 和 `helm` 。 需要使用这些工具来运行下面所述的命令。
 
-在安装 AGIC 之前，请__备份应用程序网关的配置__：
+在安装 AGIC 之前，请 __备份应用程序网关的配置__：
   1. 使用 [Azure 门户](https://portal.azure.com/)导航到 `Application Gateway` 实例
   2. 在 `Export template` 中单击 `Download`
 
 下载的 zip 文件包含 JSON 模板、bash 和 PowerShell 脚本，如果需要，可使用它们来还原应用程序网关
 
 ## <a name="install-helm"></a>安装 Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 是 Kubernetes 的包管理器。 我们将利用它来安装 `application-gateway-kubernetes-ingress` 包。
-使用[Cloud Shell](https://shell.azure.com/)安装 Helm：
+[Helm](../aks/kubernetes-helm.md) 是 Kubernetes 的包管理器。 我们将利用它来安装 `application-gateway-kubernetes-ingress` 包。
+使用 [Cloud Shell](https://shell.azure.com/) 安装 Helm：
 
-1. 安装 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
+1. 安装 [Helm](../aks/kubernetes-helm.md) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
 
-    - 已启用 RBAC 的 AKS 群集 
+    - *已启用 KUBERNETES RBAC* AKS 群集
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -54,7 +54,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-    - 已禁用 RBAC 的 AKS 群集 
+    - *已禁用 KUBERNETES RBAC* AKS 群集
 
     ```bash
     helm init
@@ -72,14 +72,14 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
 
 ## <a name="set-up-aad-pod-identity"></a>设置 AAD Pod Identity
 
-[AAD Pod Identity](https://github.com/Azure/aad-pod-identity) 是一个类似于 AGIC 的控制器，它也在 AKS 上运行。 它将 Azure Active Directory 标识绑定到 Kubernetes pod。 Kubernetes pod 中的应用程序需有标识才能与其他 Azure 组件通信。 在这种特定的情况下，我们需要授权 AGIC pod 向 [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 发出 HTTP 请求。
+[AAD Pod Identity](https://github.com/Azure/aad-pod-identity) 是一个类似于 AGIC 的控制器，它也在 AKS 上运行。 它将 Azure Active Directory 标识绑定到 Kubernetes pod。 Kubernetes pod 中的应用程序需有标识才能与其他 Azure 组件通信。 在这种特定的情况下，我们需要授权 AGIC pod 向 [ARM](../azure-resource-manager/management/overview.md) 发出 HTTP 请求。
 
 请根据 [AAD Pod Identity 安装说明](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra)将此组件添加到 AKS。
 
 接下来，需要创建一个 Azure 标识并向其授予对 ARM 的权限。
-使用[Cloud Shell](https://shell.azure.com/)运行以下所有命令并创建标识：
+使用 [Cloud Shell](https://shell.azure.com/) 运行以下所有命令并创建标识：
 
-1. **在 AKS 节点所在的同一个资源组**中创建 Azure 标识。 选取正确的资源组十分重要。 以下命令中所需的资源组不是 AKS 门户窗格中提到的资源组，** 而是 `aks-agentpool` 虚拟机的资源组。 通常，该资源组以 `MC_` 开头并包含 AKS 的名称。 例如：`MC_resourceGroup_aksABCD_westus`
+1. **在 AKS 节点所在的同一个资源组** 中创建 Azure 标识。 选取正确的资源组十分重要。 以下命令中所需的资源组不是 AKS 门户窗格中提到的资源组， 而是 `aks-agentpool` 虚拟机的资源组。 通常，该资源组以 `MC_` 开头并包含 AKS 的名称。 例如：`MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
@@ -128,7 +128,7 @@ armAuth:
 ```
 
 ## <a name="install-ingress-controller-as-a-helm-chart"></a>以 Helm 图表的形式安装入口控制器
-前几个步骤将在 Kubernetes 群集上安装 Helm 的 Tiller。 使用[Cloud Shell](https://shell.azure.com/)安装 AGIC Helm 包：
+前几个步骤将在 Kubernetes 群集上安装 Helm 的 Tiller。 使用 [Cloud Shell](https://shell.azure.com/) 安装 AGIC Helm 包：
 
 1. 添加 `application-gateway-kubernetes-ingress` Helm 存储库并执行 Helm 更新
 
@@ -187,7 +187,7 @@ armAuth:
     #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --sdk-auth | base64 -w0" >>
     
     ################################################################################
-    # Specify if the cluster is RBAC enabled or not
+    # Specify if the cluster is Kubernetes RBAC enabled or not
     rbac:
         enabled: false # true/false
     
@@ -237,7 +237,7 @@ armAuth:
 ## <a name="multi-cluster--shared-application-gateway"></a>多群集/共享应用程序网关
 默认情况下，AGIC 对它所链接到的应用程序网关拥有完全所有权。 AGIC 0.8.0 和更高版本可与其他 Azure 组件共享单个应用程序网关。 例如，我们可以对虚拟机规模集上托管的某个应用以及某个 AKS 群集使用同一个应用程序网关。
 
-在启用此设置之前，请__备份应用程序网关的配置__：
+在启用此设置之前，请 __备份应用程序网关的配置__：
   1. 使用 [Azure 门户](https://portal.azure.com/)导航到 `Application Gateway` 实例
   2. 在 `Export template` 中单击 `Download`
 
@@ -296,7 +296,7 @@ appgw:
 kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
 ```
 
-顾名思义，`prohibit-all-targets` 对象将禁止 AGIC 更改任何主机和路径的配置。**
+顾名思义，`prohibit-all-targets` 对象将禁止 AGIC 更改任何主机和路径的配置。
 使用 `appgw.shared=true` 的 Helm 安装将部署 AGIC，但不会对应用程序网关进行任何更改。
 
 
@@ -323,7 +323,7 @@ kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>为现有的 AGIC 安装启用
-假设我们的群集中已有一个正常运行的 AKS、应用程序网关且已配置 AGIC。 我们有 `prod.contosor.com` 的入口，并且能够成功地从 AKS 为它提供流量。 我们想要将 `staging.contoso.com` 添加到现有的应用程序网关，但需要将此网关托管在 [VM](https://azure.microsoft.com/services/virtual-machines/) 上。 我们将重复使用现有的应用程序网关，并为 `staging.contoso.com` 手动配置侦听器和后端池。 但是，手动调整应用程序网关配置（通过[门户](https://portal.azure.com)、[ARM API](https://docs.microsoft.com/rest/api/resources/) 或 [Terraform](https://www.terraform.io/)）将与 AGIC 拥有完全所有权的事实相冲突。 应用更改后不久，AGIC 将会覆盖或删除这些更改。
+假设我们的群集中已有一个正常运行的 AKS、应用程序网关且已配置 AGIC。 我们有 `prod.contosor.com` 的入口，并且能够成功地从 AKS 为它提供流量。 我们想要将 `staging.contoso.com` 添加到现有的应用程序网关，但需要将此网关托管在 [VM](https://azure.microsoft.com/services/virtual-machines/) 上。 我们将重复使用现有的应用程序网关，并为 `staging.contoso.com` 手动配置侦听器和后端池。 但是，手动调整应用程序网关配置（通过[门户](https://portal.azure.com)、[ARM API](/rest/api/resources/) 或 [Terraform](https://www.terraform.io/)）将与 AGIC 拥有完全所有权的事实相冲突。 应用更改后不久，AGIC 将会覆盖或删除这些更改。
 
 我们可以禁止 AGIC 对一部分配置进行更改。
 
@@ -344,4 +344,4 @@ kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
     kubectl get AzureIngressProhibitedTargets
     ```
 
-3. 通过门户修改应用程序网关配置-添加侦听器、路由规则、后端等。我们创建的新对象（ `manually-configured-staging-environment` ）将禁止 AGIC 覆盖与相关的应用程序网关配置 `staging.contoso.com` 。
+3. 通过门户修改应用程序网关配置-添加侦听器、路由规则、后端等。我们创建 () 的新对象 `manually-configured-staging-environment` 将禁止 AGIC 覆盖与相关的应用程序网关配置 `staging.contoso.com` 。

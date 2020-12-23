@@ -13,6 +13,7 @@
     - name: 创建公共负载均衡器 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
     - name: 创建公共负载均衡器 - ARM 模板
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
     - name: 创建内部负载均衡器 - 门户
       href: quickstart-load-balancer-standard-internal-portal.md
@@ -21,6 +22,7 @@
     - name: 创建内部负载均衡器 - Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
     - name: 创建内部负载均衡器 - ARM 模板
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: 教程
@@ -31,6 +33,8 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: 在负载均衡器中配置端口转发
       href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: 创建跨区域负载均衡器 - 门户
+      href: tutorial-cross-region-portal.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -45,7 +49,7 @@
       href: whats-new.md
     - name: 组件
       href: components.md
-    - name: 概念
+    - name: 负载均衡算法
       href: concepts.md
     - name: SKU
       href: skus.md
@@ -53,9 +57,11 @@
       items:
         - name: 运行状况探测
           href: load-balancer-custom-probe-overview.md
+        - name: 针对负载均衡器的 Azure Monitor 见解
+          href: load-balancer-insights.md
         - name: 标准负载均衡器指标和诊断
           href: load-balancer-standard-diagnostics.md
-        - name: 基本负载均衡器的 Azure Monitor 日志
+        - name: 负载均衡器的 Azure Monitor 日志
           href: load-balancer-monitor-log.md
         - name: 使用 REST 获取负载均衡器指标
           href: load-balancer-query-metrics-rest-api.md
@@ -63,9 +69,11 @@
       href: load-balancer-ha-ports-overview.md
     - name: 多个前端
       href: load-balancer-multivip-overview.md
-    - name: 出站连接
+    - name: 用于出站连接到 Internet 的 SNAT
       href: load-balancer-outbound-connections.md
-    - name: TCP 重置和 TCP 空闲超时
+    - name: 配置出站规则
+      href: outbound-rules.md
+    - name: 在空闲超时的情况下重置 TCP
       href: load-balancer-tcp-reset.md
     - name: 标准负载均衡器和可用性区域
       href: load-balancer-standard-availability-zones.md
@@ -79,7 +87,7 @@
       href: backend-pool-management.md
     - name: 标准负载均衡器和虚拟机规模集
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: 如何
+- name: 操作说明
   items:
     - name: 门户设置
       href: manage.md
@@ -102,13 +110,13 @@
     - name: 使用 IPv6 创建公共负载均衡器
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
+          href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
-          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
-        - name: Azure 资源管理器模板
-          href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
+          href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+        - name: Azure Resource Manager 模板
+          href: ../virtual-network/ipv6-configure-standard-load-balancer-template-json.md
           displayName: ARM
-    - name: 配置负载均衡器的 TCP 空闲超时
+    - name: 配置 TCP 重置和空闲超时
       href: load-balancer-tcp-idle-timeout.md
     - name: 配置负载均衡器的分布模式
       href: load-balancer-distribution-mode.md
@@ -134,7 +142,7 @@
       href: egress-only.md
     - name: 疑难解答
       items:
-        - name: 对 Azure 负载均衡器进行故障排除
+        - name: 排查 Azure 负载均衡器问题
           href: load-balancer-troubleshoot.md
         - name: 排查常见部署错误
           href: load-balancer-common-deployment-errors.md
@@ -161,9 +169,9 @@
     - name: Python
       href: /python/api/azure-mgmt-network/azure.mgmt.network.v2019_02_01.operations.loadbalancersoperations
     - name: REST
-      href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+      href: /rest/api/load-balancer/loadbalancers
     - name: 资源管理器模板
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
+      href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
 - name: 资源
   items:

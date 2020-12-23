@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021317"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207523"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教程：保护 Azure 远程渲染和模型存储
 
@@ -163,7 +163,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     ```
 
     此代码将另外三个字符串变量添加到 RemoteRenderingCoordinator 组件。
-    ![链接模型](./media/storage-account-linked-model.png)
+    ![屏幕截图，其中突出显示了“存储帐户名称”、“Blob 容器名称”和 RemoteRenderingCoordinator 组件的“模型路径”。](./media/storage-account-linked-model.png)
 
 1. 将值添加到 RemoteRenderingCoordinator 组件。 按照[模型转换快速入门](../../../quickstarts/convert-model.md)进行操作后，你的值应为：
 
@@ -188,11 +188,11 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory (Azure AD) 身份验证
 
-使用 AAD 身份验证，可以通过更可控的方式确定使用 ARR 的个人或组。 ARR 内置了对接受[访问令牌](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)的支持，而不是对使用帐户密钥的支持。 可以将访问令牌看作是一个有时间限制的、特定于用户的密钥，它只解锁所请求的特定资源的某些部分。
+使用 AAD 身份验证，可以通过更可控的方式确定使用 ARR 的个人或组。 ARR 内置了对接受[访问令牌](../../../../active-directory/develop/access-tokens.md)的支持，而不是对使用帐户密钥的支持。 可以将访问令牌看作是一个有时间限制的、特定于用户的密钥，它只解锁所请求的特定资源的某些部分。
 
 RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托，该委托包含一个返回 AzureFrontendAccountInfo 对象的方法，该对象用于配置远程会话管理  。 可以为 ARRCredentialGetter 分配不同的方法，以便能够使用 Azure 登录流，从而生成包含 Azure 访问令牌的 AzureFrontendAccountInfo 对象 。 此访问令牌特定于正在登录的用户。
 
-1. 请按照[如何：配置身份验证 - 已部署的应用程序的身份验证](../../../how-tos/authentication.md#authentication-for-deployed-applications)进行操作，具体来说，需要遵循 Azure 空间定位点文档 [Azure AD 用户身份验证](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)中列出的说明。 这涉及到注册新的 Azure Active Directory 应用程序并配置对 ARR 实例的访问。
+1. 请按照[如何：配置身份验证 - 已部署的应用程序的身份验证](../../../how-tos/authentication.md#authentication-for-deployed-applications)进行操作，具体来说，需要遵循 Azure 空间定位点文档 [Azure AD 用户身份验证](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)中列出的说明。 这涉及到注册新的 Azure Active Directory 应用程序并配置对 ARR 实例的访问。
 1. 配置新的 AAD 应用程序后，请检查你的 AAD 应用程序是否如下图所示：
 
     AAD 应用程序 -> 身份验证 ![应用身份验证](./media/app-authentication-public.png)
@@ -361,7 +361,7 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
 
 代码首先尝试使用 AquireTokenSilent 以无提示方式获取令牌。 如果用户之前已经对此应用程序进行了身份验证，此操作会成功。 如果不成功，请转到用户涉及度更高的策略。
 
-对于此代码，我们使用[设备代码流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)来获取访问令牌。 通过此流，用户可在计算机或移动设备上登录其 Azure 帐户，并将生成的令牌发送回 HoloLens 应用程序。
+对于此代码，我们使用[设备代码流](../../../../active-directory/develop/v2-oauth2-device-code.md)来获取访问令牌。 通过此流，用户可在计算机或移动设备上登录其 Azure 帐户，并将生成的令牌发送回 HoloLens 应用程序。
 
 从 ARR 的角度来看，此类最重要的部分是这一行：
 
@@ -392,12 +392,13 @@ return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRe
     * Active 租户 ID 是在 AAD 应用注册中找到的目录(租户) ID（请参阅下图）。
     * Azure 远程渲染帐户 ID 与用于 RemoteRenderingCoordinator 的帐户 ID 相同  。
 
-    ![AAD 身份验证组件](./media/app-overview-data.png)
+    ![屏幕截图，其中突出显示了“应用程序(客户端)ID”和“目录(租户) ID”。](./media/app-overview-data.png)
 
 1. 在 Unity 编辑器中按“播放”并同意运行会话。
     由于 AADAuthentication 组件有一个视图控制器，它将在会话授权模式面板后自动挂钩以显示提示。
 1. 请按照 AppMenu 右边面板中的说明操作。
-    看到的内容应该如下所示：![AAD 身份验证组件](./media/device-flow-instructions.png) 在辅助设备（或同一设备上的浏览器）上输入提供的代码并使用凭据登录后，一个访问令牌会返回到发出请求的应用程序中（在本例中为 Unity 编辑器）。
+    看到的内容应该如下所示：![显示在 AppMenu 右侧显示的“指令”面板的插图。](./media/device-flow-instructions.png)
+    在辅助设备（或同一设备上的浏览器）上输入提供的代码并使用凭据登录后，一个访问令牌会返回到发出请求的应用程序中（在本例中为 Unity 编辑器）。
 1. 此后，应用程序中的所有内容应会正常运行。 如果没有按照预期的方式完成各个阶段，请检查 Unity 控制台是否有任何错误。
 
 ## <a name="build-to-device"></a>在设备上构建

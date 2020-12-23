@@ -2,14 +2,14 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 12/10/2020
 ms.author: wolfma
-ms.openlocfilehash: c8e6c11771ae4cd216b3b1e43f3db7924dca81cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 329241c2660ff7828f57fb21daeb6de20caedc43
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168177"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504451"
 ---
 | 地理位置 | 区域 | 区域标识符 |
 | ----- | ----- | ----- |
@@ -22,12 +22,12 @@ ms.locfileid: "77168177"
 | 美洲 | 美国西部 | `westus` |
 | 美洲 | 美国西部 2 | `westus2` |
 | 美洲 | 加拿大中部 | `canadacentral` |
-| 美洲 | 巴西南部 | `brazilsouth` |
+| 美洲 | Brazil South | `brazilsouth` |
 | 亚太区 | 东亚 | `eastasia` |
-| 亚太区 | 东南亚 | `southeastasia` |
+| 亚太区 | Southeast Asia | `southeastasia` |
 | 亚太区 | 澳大利亚东部 | `australiaeast` |
 | 亚太区 | 印度中部 | `centralindia` |
-| 亚太区 | 日本东部 | `japaneast` |
+| 亚太区 | Japan East | `japaneast` |
 | 亚太区 | 日本西部 | `japanwest` |
 | 亚太区 | 韩国中部 | `koreacentral` |
 | 欧洲 | 北欧 | `northeurope` |

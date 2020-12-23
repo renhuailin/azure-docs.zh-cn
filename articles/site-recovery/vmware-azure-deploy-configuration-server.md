@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287729"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359809"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -59,7 +59,7 @@ ms.locfileid: "87287729"
 4. 下载配置服务器的 OVA 模板。
 
    > [!TIP]
-   >你还可以直接从[Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器模板。
+   >你还可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器模板。
 
 > [!NOTE]
 > 通过 OVA 模板提供的许可证是有效期为 180 天的评估许可证。 此期限过后，必须购买许可证。
@@ -98,7 +98,7 @@ ms.locfileid: "87287729"
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>将配置服务器注册到 Azure Site Recovery 服务
 
-1. 从 VMware vSphere 客户端控制台中，打开 VM。
+1. 通过 VMware vSphere 客户端控制台打开 VM。
 2. VM 将启动并进入 Windows Server 2016 安装体验。 接受许可协议，然后输入管理员密码。
 3. 安装完成后，以管理员身份登录到 VM。
 4. 首次登录时，会在数秒内启动 Azure Site Recovery 配置工具。
@@ -112,7 +112,7 @@ ms.locfileid: "87287729"
 ### <a name="configure-settings"></a>配置设置
 
 1. 在配置服务器管理向导中，选择“设置连接”。  在下拉框中，首先选择内置进程服务器用于发现的 NIC，并将移动服务的安装推送到源计算机上。 然后选择配置服务器用来与 Azure 建立连接的 NIC。 选择“保存”  。 配置后无法更改此设置。 不要更改配置服务器的 IP 地址。 确保分配给配置服务器的 IP 是静态 IP，而不是 DHCP IP。
-2. 在 "**选择恢复服务保管库**" 上，使用向[Azure Site Recovery 服务注册配置服务器](#register-the-configuration-server-with-azure-site-recovery-services)的步骤6中使用的凭据登录到 Microsoft Azure。
+2. 在 " **选择恢复服务保管库**" 上，使用向 [Azure Site Recovery 服务注册配置服务器](#register-the-configuration-server-with-azure-site-recovery-services)的步骤6中使用的凭据登录到 Microsoft Azure。
 3. 登录后，选择你的 Azure 订阅以及相关的资源组和保管库。
 
     > [!NOTE]
@@ -146,7 +146,7 @@ ms.locfileid: "87287729"
 
 参阅我们的[故障排除文章](vmware-azure-troubleshoot-configuration-server.md)来解决部署和连接问题。
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 * 通过 OVF 部署在配置服务器上的许可证有效期是多长？ 如果不重新激活许可证会发生什么情况？
 
@@ -166,7 +166,7 @@ ms.locfileid: "87287729"
     若要详细了解配置服务器及其功能，请参阅 [VMware 到 Azure 的复制的体系结构](vmware-azure-architecture.md)。
 * 在哪里可以找到最新版本的配置服务器？
 
-    有关通过门户升级配置服务器的步骤，请参阅[升级配置服务器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的说明，请参阅 [Site Recovery 中的服务更新](https://aka.ms/asr_how_to_upgrade)。
+    有关通过门户升级配置服务器的步骤，请参阅[升级配置服务器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的说明，请参阅 [Site Recovery 中的服务更新](./service-updates-how-to.md)。
 * 在哪里可以下载配置服务器的密码？
 
     若要下载通行短语，请参阅[管理用于 VMware VM 灾难恢复的配置服务器](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)。

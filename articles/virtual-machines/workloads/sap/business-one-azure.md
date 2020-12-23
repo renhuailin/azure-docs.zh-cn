@@ -1,26 +1,19 @@
 ---
 title: Azure 虚拟机上的 SAP Business One | Microsoft Docs
 description: Azure 上的 SAP Business One。
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.reviewer: cynthn
+ms.openlocfilehash: 1201ff91634a1f63c8fe0e545ca6d6dee33abe35
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654644"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957378"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP Business One
 本文档提供在 Azure 虚拟机上部署 SAP Business One 的指南。 本文档不能替代 SAP Business One 的安装文档。 本文档涵盖运行 Business One 应用程序所在的 Azure 基础结构的基本规划和部署指南。
@@ -95,7 +88,7 @@ Business One 是一个具有两层的应用程序：
 提供的简化配置中引入了允许控制和限制路由的多个安全实例。 这首先需要 
 
 - 客户本地端上的路由器/防火墙。
-- 下一个实例是 [Azure 网络安全组](../../../virtual-network/security-overview.md)，可以使用该安全组为在其中运行 SAP Business one 配置的 Azure VNet 引入路由和安全规则。
+- 下一个实例是 [Azure 网络安全组](../../../virtual-network/network-security-groups-overview.md)，可以使用该安全组为在其中运行 SAP Business one 配置的 Azure VNet 引入路由和安全规则。
 - 为了避免 Business One 客户端的用户也可以看到运行 Business One 服务器（该服务器运行数据库）的服务器，应该将托管 Business One 客户端的 VM 和 Business One 服务器分离在 VNet 内的两个不同子网中。
 - 再次使用分配给两个不同子网的 Azure NSG，以便限制对 Business one 服务器的访问。
 
@@ -111,7 +104,7 @@ Business One 是一个具有两层的应用程序：
 
 已在特定和通用的数据库文档中强调过，你需要熟悉：
 
-- [在 Azure 中管理 Windows 虚拟机的可用性](../../windows/manage-availability.md)和[在 Azure 中管理 Linux 虚拟机的可用性](../../linux/manage-availability.md)
+- [在 Azure 中管理 Windows 虚拟机的可用性](../../manage-availability.md)和[在 Azure 中管理 Linux 虚拟机的可用性](../../manage-availability.md)
 - [虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 这些文档应该对选择存储类型和高可用性配置有所帮助。
@@ -147,7 +140,7 @@ SQL Server 的 DBMS 端的粗略大小估算值为：
 
  
 ### <a name="business-one-client-server"></a>Business One 客户端服务器
-对于这些组件，存储注意事项不是主要关注的问题。 不过，你需要有一个可靠的平台。 因此，应该对此 VM 使用 Azure 高级存储，即使对于基本 VHD 也是如此。 使用 [SAP Business One 硬件需求指南](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)中给出的数据调整 VM 的大小。 对于 Azure，需要关注文档第 2.4 章中所述的要求并按照这些要求计算。 在计算要求时，需要将它们针对以下文档进行比较，以便找到理想的 VM：
+对于这些组件，存储注意事项不是主要关注的问题。 不过，你需要有一个可靠的平台。 因此，应该对此 VM 使用 Azure 高级存储，即使对于基本 VHD 也是如此。 使用 [SAP Business One 硬件需求指南](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)中给出的数据调整 VM 的大小。 对于 Azure，需要关注文档第 2.4 章中所述的要求并按照这些要求计算。 在计算要求时，需要将它们针对以下文档进行比较，以便找到理想的 VM：
 
 - [Azure 中 Windows 虚拟机的大小](../../sizes.md)
 - [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)

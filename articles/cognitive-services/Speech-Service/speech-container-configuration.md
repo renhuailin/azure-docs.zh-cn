@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900283"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012163"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
-语音容器使客户能够构建一个经过优化的语音应用程序体系结构，以利用强大的云功能和边缘位置。 现在，我们支持的五个语音容器为： **语音到文本**、 **自定义语音到文本**、 **文本到语音**转换、 **神经文本到语音转换** 和 **自定义文本到语音转换**。
+语音容器使客户能够构建一个经过优化的语音应用程序体系结构，以利用强大的云功能和边缘位置。 现在，我们支持的五个语音容器为： **语音到文本**、 **自定义语音到文本**、 **文本到语音** 转换、 **神经文本到语音转换** 和 **自定义文本到语音转换**。
 
-**语音**容器运行时环境使用 `docker run` 命令参数进行配置。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。
+**语音** 容器运行时环境使用 `docker run` 命令参数进行配置。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -32,11 +32,11 @@ ms.locfileid: "90900283"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的语音__ 资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的语音资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-- Azure 门户：**语音的**资源管理，在 "**密钥**" 下
+- Azure 门户：**语音的** 资源管理，在 "**密钥**" 下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -44,7 +44,7 @@ ms.locfileid: "90900283"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器的账单信息的语音__ 资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上语音__ 资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器的账单信息的语音资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上语音资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
@@ -104,7 +104,7 @@ ms.locfileid: "90900283"
 此命令将主机 _C:\input_ 目录装载到容器 _/usr/local/models_ 目录中。
 
 > [!IMPORTANT]
-> 卷装入设置仅适用于 **自定义语音到文本** 的和 **自定义的文本到语音转换** 容器。 **语音到文本**、**神经文本到语音**转换和**文本到语音**转换容器不使用卷装入。
+> 卷装入设置仅适用于 **自定义语音到文本** 的和 **自定义的文本到语音转换** 容器。 **语音到文本**、**神经文本到语音** 转换和 **文本到语音** 转换容器不使用卷装入。
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
@@ -124,13 +124,13 @@ ms.locfileid: "90900283"
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。 有关详细信息，请参阅[计费](#billing-configuration-setting)。
-> ApiKey 值是来自“ Azure 语音资源密钥”页的“密钥”****。
+> ApiKey 值是来自“ Azure 语音资源密钥”页的“密钥”。
 
 ## <a name="speech-container-docker-examples"></a>语音容器 Docker 示例
 
 以下 Docker 示例适用于语音容器。
 
-## <a name="speech-to-text"></a>[语音到文本](#tab/stt)
+## <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>语音到文本的基本示例
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="text-to-speech"></a>[文本到语音转换](#tab/tss)
+## <a name="text-to-speech"></a>[文本转语音](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>文本到语音转换的基本示例
 
@@ -230,7 +230,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="neural-text-to-speech"></a>[神经文本到语音转换](#tab/ntts)
+## <a name="neural-text-to-speech"></a>[神经文本转语音](#tab/ntts)
 
 ### <a name="basic-example-for-neural-text-to-speech"></a>神经文本到语音转换的基本示例
 

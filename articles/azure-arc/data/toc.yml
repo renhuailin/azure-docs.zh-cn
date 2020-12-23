@@ -24,7 +24,7 @@
       items:
         - name: 安装客户端工具
           href: install-client-tools.md
-        - name: azdata
+        - name: Azure Data CLI (azdata)
           items:
             - name: 安装
               href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
@@ -42,13 +42,13 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: 创建数据控制器
       items:
-        - name: 创建数据控制器 (Azure Data Studio)
+        - name: Azure Data Studio
           href: create-data-controller-azure-data-studio.md
-        - name: 创建数据控制器资源（门户）
+        - name: Azure 门户
           href: create-data-controller-resource-in-azure-portal.md
-        - name: 创建数据控制器 (azdata)
+        - name: Azure Data CLI (azdata)
           href: create-data-controller-using-azdata.md
-        - name: 使用 Kubernetes 创建数据控制器
+        - name: Kubernetes 工具
           href: create-data-controller-using-kubernetes-native-tools.md
     - name: 在已启用 Azure Arc 的数据服务中的常见体验
       items:
@@ -66,12 +66,22 @@
       items:
         - name: 使用 Grafana 和 Kibana 进行监视
           href: monitor-grafana-kibana.md
-        - name: 上传指标和日志
-          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: 上传到 Azure Monitor
+          items:
+            - name: 上传先决条件
+              href: upload-metrics-and-logs-to-azure-monitor.md
+            - name: 上传日志
+              href: upload-logs.md
+            - name: 上传指标
+              href: upload-metrics.md
+            - name: 上传使用数据
+              href: upload-usage-data.md
         - name: 库存数据库实例
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: 获取数据控制器用户名和密码
           href: retrieve-the-username-password-for-data-controller.md
+        - name: 更新服务主体凭据
+          href: update-service-principal-credentials.md
     - name: 疑难解答
       items:
         - name: 指南
@@ -108,6 +118,8 @@
           items:
             - name: 备份和还原
               href: backup-restore-postgresql-hyperscale.md
+            - name: 更改 PostgreSQL 端口
+              href: change-postgresql-port.md
             - name: 配置和缩放
               items:
                 - name: 显示配置
@@ -218,3 +230,7 @@
           href: /sql/azdata/reference/reference-azdata-arc-sql-mi?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: arc-sql-mi-config
           href: /sql/azdata/reference/reference-azdata-arc-sql-mi-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+- name: 资源
+  items:
+    - name: Azure Arc 快速入门
+      href: 'https://github.com/microsoft/azure_arc'

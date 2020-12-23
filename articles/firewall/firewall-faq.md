@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 3e6ea6692a81a06bbf3180904dfb465a88b105d1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611171"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653413"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -50,7 +50,7 @@ Azure 防火墙支持入站和出站筛选。 入站保护通常用于非 HTTP/S
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure 防火墙支持哪些日志记录和分析服务？
 
-Azure 防火墙与 Azure Monitor 集成，可用于查看和分析防火墙日志。 日志可发送到 Log Analytics、Azure 存储或事件中心。 它们可在 Log Analytics 中进行分析，也可通过 Excel 和 Power BI 等不同工具进行分析。 有关详细信息，请参阅[教程：监视 Azure 防火墙日志](tutorial-diagnostics.md)。
+Azure 防火墙与 Azure Monitor 集成，可用于查看和分析防火墙日志。 日志可发送到 Log Analytics、Azure 存储或事件中心。 它们可在 Log Analytics 中进行分析，也可通过 Excel 和 Power BI 等不同工具进行分析。 有关详细信息，请参阅[教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)。
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure 防火墙的工作原理与市场中现有的服务（例如 NVA）有何不同？
 
@@ -119,7 +119,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>是否在专用网络之间进行 Azure 防火墙出站 SNAT？
 
-如果目标 IP 地址是符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 范围，Azure 防火墙不会执行 SNAT。 如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。 可以将 Azure 防火墙配置为**不** SNAT 公共 IP 地址范围。 有关详细信息，请参阅 [Azure 防火墙 SNAT 专用 IP 地址范围](snat-private-range.md)。
+如果目标 IP 地址是符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 范围，Azure 防火墙不会执行 SNAT。 如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。 可以将 Azure 防火墙配置为 **不** SNAT 公共 IP 地址范围。 有关详细信息，请参阅 [Azure 防火墙 SNAT 专用 IP 地址范围](snat-private-range.md)。
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>是否支持强制隧道/链接到网络虚拟设备？
 
@@ -135,13 +135,13 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
-否。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>应用程序规则目标 FQDN 中的通配符有什么作用？
 
-当前只能在 FQDN 的左侧使用通配符。 例如，***. contoso.com** 和 ***contoso.com**。
+目前只能在 FQDN 的左侧使用通配符。 例如，**_. contoso.com_* 和 **_contoso.com_*。
 
-如果配置 * **.contoso.com**，则允许 *anyvalue*.contoso.com，但不允许 contoso.com（域顶点）。 如果希望允许域顶点，必须显式将其配置为目标 FQDN。
+如果配置 **_. contoso.com_*，则允许 *anyvalue* contoso.com，但不允许 contoso.com (域顶点) 。 如果希望允许域顶点，必须显式将其配置为目标 FQDN。
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>“预配状态:失败”意味着什么？
 
@@ -164,7 +164,7 @@ Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时，防火墙子网大小是否需要更改？
 
-否。 Azure 防火墙不需要大于 /26 的子网。
+不是。 Azure 防火墙不需要大于 /26 的子网。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙吞吐量？
 
@@ -172,13 +172,13 @@ Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火墙横向扩展需要多长时间？
 
-当平均吞吐量或 CPU 消耗达到 60% 时，Azure 防火墙就会逐渐扩展。 默认部署最大吞吐量约为 2.5 Gbps，并在达到该数字的60% 时开始横向扩展。 横向扩展需要 5 到 7 分钟。 
+当平均吞吐量或 CPU 消耗达到 60% 时，Azure 防火墙就会逐渐扩展。 默认部署最大吞吐量约为 2.5 - 3 Gbps，并在达到该数字的 60% 时开始横向扩展。 横向扩展需要 5 到 7 分钟。 
 
 进行性能测试时，请确保至少测试 10 到 15 分钟，并启动新连接以利用新创建的防火墙节点。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
 
-否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+不是。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
 
 ## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
 
@@ -205,7 +205,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>为什么 TCP ping 和类似工具可以成功连接到目标 FQDN，即使 Azure 防火墙上没有允许该流量的规则也是如此？
 
-TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的透明代理侦听端口 80/443 上的出站流量。 TCP ping 与防火墙建立连接后，防火墙删除数据包并记录连接。 此行为不会对安全性产生任何影响。 但是，为了避免混淆，我们正在调查这种行为的潜在变化。
+TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的透明代理侦听端口 80/443 上的出站流量。 TCP ping 将与防火墙建立连接，然后该防火墙会丢弃数据包。 此行为不会对安全性产生任何影响。 但是，为了避免混淆，我们正在调查这种行为的潜在变化。
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP 组支持的 IP 地址数量是否有限制？
 
@@ -217,12 +217,12 @@ TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的�
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火墙的 TCP 空闲超时是多长时间？
 
-网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有活动时迅速将其关闭。 Azure 防火墙 TCP 空闲超时为 4 分钟。 此设置不可配置。 如果处于非活动状态的时间超过超时值，则不能保证维持 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
+网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有活动时迅速将其关闭。 Azure 防火墙 TCP 空闲超时为 4 分钟。 此设置不可配置。 如果处于非活动状态的时间超过超时值，则不能保证维持 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](/dotnet/api/system.net.servicepoint.settcpkeepalive?view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
 
-## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以部署没有公共 IP 地址的 Azure 防火墙？
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以在不使用公共 IP 地址的情况下部署 Azure 防火墙？
 
-不可以。目前，你必须使用公共 IP 地址部署 Azure 防火墙。
+否。目前，必须使用公共 IP 地址部署 Azure 防火墙。
 
 ## <a name="where-does-azure-firewall-store-customer-data"></a>Azure 防火墙将客户数据存储在何处？
 
-Azure 防火墙不会将客户数据从它所部署到的区域中移出或存储。
+Azure 防火墙不会将客户数据移动或存储到部署了该防火墙的区域之外。

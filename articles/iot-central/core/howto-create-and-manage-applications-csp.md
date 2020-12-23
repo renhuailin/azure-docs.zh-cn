@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653343"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123107"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>从 CSP 门户创建和管理 Azure IoT Central 应用程序
 
@@ -63,7 +63,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择页面上的 Azure 
 
 Azure Active Directory 租户包含用户标识、凭据和其他组织信息。 可能会有多个 Azure 订阅与单个 Azure Active Directory 租户相关联。
 
-有关详细信息，请参阅 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)。
+有关详细信息，请参阅 [Azure Active Directory](../../active-directory/index.yml)。
 
 ## <a name="azure-subscription"></a>Azure 订阅
 
@@ -71,7 +71,7 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 
 如果没有 Azure 订阅，则可在 Microsoft 合作伙伴中心创建一个。 创建 Azure 订阅以后，请导航回“创建应用程序”页。  新订阅显示在“Azue 订阅”  下拉列表中。
 
-若要了解详细信息，请参阅 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)。
+若要了解详细信息，请参阅 [Azure 订阅](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)。
 
 ## <a name="location"></a>位置
 

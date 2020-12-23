@@ -3,15 +3,15 @@ title: 使用 Azure Site Recovery 为灾难恢复启用 VMware VM
 description: 本文介绍如何使用 Azure Site Recovery 服务启用本地 VMware VM 的复制，以便进行灾难恢复
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 04/01/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129923"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616603"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -61,7 +61,7 @@ ms.locfileid: "86129923"
 1. 在“源”页 >“源”中，选择配置服务器。
 1. 对于“计算机类型”，请选择“虚拟机”或“物理机”。  
 1. 在“vCenter/vSphere 虚拟机监控程序”中，选择管理 vSphere 主机的 vCenter 服务器，或选择该主机。 如果要复制物理计算机，则此设置无关紧要。
-1. 选择进程服务器。 如果未创建任何其他进程服务器，则下拉菜单中将提供配置服务器的内置进程服务器。 根据建议的限制和其他参数显示每个进程服务器的运行状况状态。 选择一个正常运行的进程服务器。 不能选择[有严重错误的](vmware-physical-azure-monitor-process-server.md#process-server-alerts)进程服务器。 你可以[进行故障排除并解决](vmware-physical-azure-troubleshoot-process-server.md)错误**或者**设置一个[横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md)。
+1. 选择进程服务器。 如果未创建任何其他进程服务器，则下拉菜单中将提供配置服务器的内置进程服务器。 根据建议的限制和其他参数显示每个进程服务器的运行状况状态。 选择一个正常运行的进程服务器。 不能选择[有严重错误的](vmware-physical-azure-monitor-process-server.md#process-server-alerts)进程服务器。 你可以 [进行故障排除并解决](vmware-physical-azure-troubleshoot-process-server.md)错误 **或者** 设置一个 [横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md)。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/ps-selection.png" alt-text="“启用复制源”窗口":::
 
@@ -95,6 +95,41 @@ ms.locfileid: "86129923"
 
 1. 选择“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度   。 在“完成保护”作业运行之后，虚拟机就可以进行故障转移了。
 
+## <a name="monitor-initial-replication"></a>监视初始复制
+
+受保护的项的 "启用复制" 完成后，Azure Site Recovery 将 (同义词同步) 从源计算机到目标区域中的数据进行同步复制。 在此期间，将创建源磁盘的副本。 只有在完成复制原始磁盘后，才会将增量更改复制到目标区域。 复制原始磁盘所需的时间取决于多个参数，例如：
+
+- 源计算机磁盘的大小
+- 用于将数据传输到 Azure 的带宽 (你可以利用部署规划器来确定所需的最佳带宽) 
+- 处理服务器资源，如内存、可用磁盘空间、缓存可用的 CPU & 处理从受保护项接收的数据 (确保进程服务器 [正常](vmware-physical-azure-monitor-process-server.md#monitor-proactively)) 
+
+若要跟踪初始复制的进度，请导航到 Azure 门户-> 复制项中的恢复服务保管库-> 监视器的 "状态" 列值 "复制的项"。 状态显示初始复制的完成百分比。 将鼠标悬停在状态上方时，"传输的总数据数" 将可用。 单击 "状态" 时，将打开一个上下文页面，并显示以下参数：
+
+- 上次刷新时间-指示服务刷新了整个计算机的复制信息的最晚时间。
+- 已完成百分比-表示虚拟机的初始复制完成百分比
+- 传输的总数据量-从 VM 传输到 Azure 的数据量
+
+    :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="复制状态" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+
+- 同步进度 (跟踪磁盘级别的详细信息) 
+    - 复制状态
+      - 如果复制尚未启动，则状态将更新为 "在队列中"。 在初始复制期间，一次只复制三个磁盘。 遵循此机制以避免进程服务器上的限制。
+      - 开始复制后，状态将更新为 "正在进行"。
+      - 完成初始复制后，状态将标记为 "已完成"。        
+   - Site Recovery 读取原始磁盘、将数据传输到 Azure 并在磁盘级别捕获进度。 请注意，Site Recovery 跳过磁盘的未占用大小的复制，并将其添加到已完成的数据中。 因此，在所有磁盘上传输的数据的总和可能不会在 VM 级别添加到 "传输的总数据数"。
+   - 单击磁盘上的信息气球后，你可以获取有关何时为磁盘触发了同步) 的复制 (同义的详细信息，并在最近15分钟内将数据传输到 Azure，最后刷新了时间戳。 此时间戳指示 Azure 服务从源计算机接收信息的最晚时间-:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-info-balloon.png" alt-text="复制-信息-气球-详细" lightbox="media/vmware-azure-enable-replication/initial-replication-info-balloon.png":::信息
+   - 显示每个磁盘的运行状况
+      - 如果复制速度比预期要慢，则磁盘状态将变为警告
+      - 如果复制没有进展，则磁盘状态将变为 "严重"
+
+如果运行状况处于严重/警告状态，请确保计算机和 [进程服务器](vmware-physical-azure-monitor-process-server.md) 的复制运行状况正常。 
+
+一旦启用复制作业完成，复制进度将为0%，并且传输的总数据将为 NA。 单击时，针对每个标识的磁盘的数据将为 "NA"。这表示复制尚未启动，Azure Site Recovery 尚未接收最新的统计信息。 将按30分钟的间隔刷新进度。
+
+> [!NOTE]
+> 请确保将配置服务器、横向扩展进程服务器和移动代理更新到版本9.36 或更高版本，以确保捕获准确的进度，并将其发送到 Site Recovery 服务。
+
+
 ## <a name="view-and-manage-vm-properties"></a>查看和管理 VM 属性
 
 接下来，验证源虚拟机的属性。 请记住，Azure VM 名称需要符合 [Azure 虚拟机要求](vmware-physical-azure-support-matrix.md#replicated-machines)。
@@ -107,8 +142,8 @@ ms.locfileid: "86129923"
 
    - **Azure VM 名称**：根据需要修改名称以使其符合 Azure 要求。
    - **目标 VM 大小或 VM 类型**：基于一些参数选择默认 VM 大小，这些参数包括目标 Azure 区域中的磁盘计数、NIC 计数、CPU 核心计数、内存和可用 VM 角色大小。 Azure Site Recovery 将选取满足所有条件的第一个可用 VM 大小。 在故障转移之前，随时可以根据需要选择不同的 VM 大小。 VM 磁盘大小还取决于源磁盘大小，并且它只能在故障转移后进行更改。 在 [Windows 上的 VM 磁盘的可伸缩性和性能目标](../virtual-machines/windows/disk-scalability-targets.md)中了解磁盘大小和 IOPS 速率。
-   - **资源组**：可以选择虚拟机会在故障转移后成为其中一部分的[资源组](../azure-resource-manager/management/overview.md#resource-groups)。 在故障转移之前，随时可以更改此设置。 故障转移之后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
-   - **可用性集**：如果需要虚拟机在故障转移后成为某个[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)的一部分，可以选择一个可用性集。 选择可用性集时，请注意以下信息：
+   - **资源组**：可以选择虚拟机会在故障转移后成为其中一部分的 [资源组](../azure-resource-manager/management/overview.md#resource-groups)。 在故障转移之前，随时可以更改此设置。 故障转移之后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
+   - **可用性集**：如果需要虚拟机在故障转移后成为某个 [可用性集](../virtual-machines/windows/tutorial-availability-sets.md)的一部分，可以选择一个可用性集。 选择可用性集时，请注意以下信息：
      - 仅会列出属于指定资源组的可用性集。
      - 位于不同虚拟网络中的 VM 不能属于同一个可用性集。
      - 仅大小相同的虚拟机可以属于同一可用性集。

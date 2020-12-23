@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ff1abd48282a4ec9278d7182fea286178b5bd3ca
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 469fdbced4601c6ffb4b6aa35e8f943bcb5dde1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495907"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965776"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 区域
 
@@ -43,11 +43,11 @@ ms.locfileid: "87495907"
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 安装最新版本的 Azure CLI（在 Windows、Linux 或 MAC 中可用）。 有关详细信息，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)。
+* 安装最新版本的 Azure CLI（在 Windows、Linux 或 MAC 中可用）。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-az-cli2)。
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
-打开控制台窗口并使用凭据进行身份验证。 有关详细信息，请阅读[从 Azure CLI 登录 Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+打开控制台窗口并使用凭据进行身份验证。 有关详细信息，请阅读[从 Azure CLI 登录 Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 
 ```
 az login
@@ -193,7 +193,6 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 DNS 区域中[管理记录集和记录](dns-getstarted-create-recordset-cli.md)。
+了解如何在 DNS 区域中[管理记录集和记录](./dns-getstarted-cli.md)。
 
 了解如何[将域委派给 Azure DNS](dns-domain-delegation.md)。
-

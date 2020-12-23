@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 19c5c5280b8ff4fb997366375b4300958d694d6c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e8502b1d01e0f3fbf5d42e924511cc978690bce4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293653"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342186"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 获取与 Azure 上 Microsoft 认知服务必应图像搜索 API 有关的概念、代码和方案的常见问题解答。
 
@@ -25,7 +30,7 @@ ms.locfileid: "89293653"
 
 下面列出了必应图像搜索 API 的可能响应头。
 
-| Attribute           | 说明   |
+| 特性           | 描述   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |必应分配给用户的唯一 ID |
 | `BingAPIs-Market`   |用于完成请求的市场 |
@@ -66,6 +71,6 @@ cors-proxy-server
 
 问题是否与缺少功能相关？ 不妨在我们的 [用户之声网站](https://cognitive.uservoice.com/forums/555907-bing-search)上申请或投票支持相应功能。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
  [Stack Overflow：认知服务](https://stackoverflow.com/questions/tagged/bing-api)

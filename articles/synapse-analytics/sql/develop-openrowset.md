@@ -1,6 +1,6 @@
 ---
-title: 如何使用 SQL 按需版本（预览版）中的 OPENROWSET
-description: 本文介绍 SQL 按需版本（预览版）中 OPENROWSET 的语法，并说明如何使用参数。
+title: 如何在无服务器 SQL 池中使用 OPENROWSET
+description: 本文介绍无服务器 SQL 池中 OPENROWSET 的语法，并说明如何使用参数。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289015"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446682"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何使用 SQL 按需版本（预览版）中的 OPENROWSET
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
-`OPENROWSET(BULK...)` 函数可用于访问 Azure 存储中的文件。 `OPENROWSET` 函数读取远程数据源（例如文件）的内容，并将内容作为行集返回。 在 SQL 按需版本（预览版）资源中，可以通过调用 OPENROWSET 函数并指定 BULK 选项，来访问 OPENROWSET BULK 行集提供程序。  
+`OPENROWSET(BULK...)` 函数可用于访问 Azure 存储中的文件。 `OPENROWSET` 函数读取远程数据源（例如文件）的内容，并将内容作为行集返回。 在无服务器 SQL 池资源中，可以通过调用 OPENROWSET 函数并指定 BULK 选项来访问 OPENROWSET BULK 行集提供程序。  
 
 `OPENROWSET` 函数可以在查询的 `FROM` 子句中引用，就好象它是表名 `OPENROWSET` 一样。 该函数通过内置的 BULK 提供程序（用于从文件中读取数据并将数据作为行集返回）支持批量操作。
 
@@ -84,7 +84,7 @@ OPENROWSET
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
-WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })  
+WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
  
 <bulk_options> ::=  
@@ -95,6 +95,8 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
+[ , HEADER_ROW = { TRUE | FALSE } ]
+[ , DATAFILETYPE = { 'char' | 'widechar' } ]
 ```
 
 ## <a name="arguments"></a>参数
@@ -111,7 +113,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 - 采用格式“\<prefix>://\<storage_account_path>/\<storage_path>”的绝对路径使用户能够直接读取文件。
 - 相对路径的格式为“<storage_path>”，必须与 `DATA_SOURCE` 参数一起使用，它描述 `EXTERNAL DATA SOURCE` 定义的 <storage_account_path> 位置中的文件模式。 
 
- 在下面可以找到相关的 <storage account path> 值，用于链接到特定的外部数据源。 
+在下面可以找到相关的 <storage account path> 值，用于链接到特定的外部数据源。 
 
 | 外部数据源       | 前缀 | 存储帐户路径                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -124,18 +126,20 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 '\<storage_path>'
 
- 指定存储中的路径，该路径指向所要读取的文件夹或文件。 如果路径指向某个容器或文件夹，则会读取该特定容器或文件夹中的所有文件。 不包括子文件夹中的文件。 
+指定存储中的路径，该路径指向所要读取的文件夹或文件。 如果路径指向某个容器或文件夹，则会读取该特定容器或文件夹中的所有文件。 不包括子文件夹中的文件。 
 
- 可以使用通配符将目标指定为多个文件或文件夹。 允许使用多个不连续的通配符。
+可以使用通配符将目标指定为多个文件或文件夹。 允许使用多个不连续的通配符。
 下面的示例从以“/csv/population”开头的所有文件夹中读取以“population”开头的所有 csv 文件：    
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-如果将 unstructured_data_path 指定为某个文件夹，则 SQL 按需版本查询将从该文件夹中检索文件。 
+如果将 unstructured_data_path 指定为某个文件夹，则无服务器 SQL 池查询将从该文件夹中检索文件。 
+
+可以通过在路径末尾指定 /* 来指示无服务器 SQL 池遍历文件夹，如示例中所示：`https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> 与 Hadoop 和 PolyBase 不同，SQL 按需版本不返回子文件夹。 此外，与 Hadoop 和 PolyBase 不同，SQL 按需版本会返回文件名以下划线 (_) 或句点 (.) 开头的文件。
+> 与 Hadoop 和 PolyBase 不同，无服务器 SQL 池不返回子文件夹，除非在路径末尾指定 /**。 此外，与 Hadoop 和 PolyBase 不同，无服务器 SQL 池会返回文件名以下划线 (_) 或句点 (.) 开头的文件。
 
-在以下示例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，则 SQL 按需版本查询将返回 mydata.txt 和 _hidden.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
+在以下示例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，则无服务器 SQL 池查询将返回 mydata.txt 和 _hidden.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
 
 ![外部表的递归数据](./media/develop-openrowset/folder-traversal.png)
 
@@ -143,15 +147,16 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 使用 WITH 子句可以指定要从文件中读取的列。
 
-- 对于 CSV 数据文件，若要读取所有列，请提供列名及其数据类型。 如果需要列的子集，请使用序号按顺序从来源数据文件中选取列。 列将按序号指定值绑定。 
-
-    > [!IMPORTANT]
-    > 对于 CSV 文件，WITH 子句是必需的。
-    >
+- 对于 CSV 数据文件，若要读取所有列，请提供列名及其数据类型。 如果需要列的子集，请使用序号按顺序从来源数据文件中选取列。 列将按序号指定值绑定。 如果使用 HEADER_ROW = TRUE，则列绑定是按列名而不是按顺序位置来完成的。
+    > [!TIP]
+    > 对于 CSV 文件，你也可以省略 WITH 子句。 将从文件内容自动推断数据类型。 可以使用 HEADER_ROW 参数来指定是否存在标题行，在这种情况下，将从标题行中读取列名称。 有关详细信息，请查看[自动架构发现](#automatic-schema-discovery)。
     
-- 对于 Parquet 数据文件，请提供与来源数据文件中的列名匹配的列名。 列将按名称绑定。 如果省略 WITH 子句，将返回 Parquet 文件中的所有列。
+- 对于 Parquet 数据文件，请提供与来源数据文件中的列名匹配的列名。 列将按名称绑定，并区分大小写。 如果省略 WITH 子句，将返回 Parquet 文件中的所有列。
+    > [!IMPORTANT]
+    > Parquet 文件中的列名称区分大小写。 如果指定的列名称的大小写不同于 Parquet 文件中的列名称大小写，则该列将返回 NULL 值。
 
-column_name = 输出列的名称。 如果提供此名称，此名称将替代源文件中的列名。
+
+column_name = 输出列的名称。 如果提供，则此名称将替代源文件中的列名和 JSON 路径中提供的列名称（如果有）。 如果未提供 json_path，它将自动添加为“$.column_name”。 检查 json_path 参数的行为。
 
 column_type = 输出列的数据类型。 将在此处发生隐式数据类型转换。
 
@@ -165,6 +170,11 @@ WITH (
     --[population] bigint
 )
 ```
+
+json_path = 列或嵌套属性的 [JSON 路径表达式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)。 默认的[路径模式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE)为宽松。
+
+> [!NOTE]
+> 在严格模式下，如果提供的路径不存在，则查询将失败并显示错误。 在宽松模式下，查询将成功，并且 JSON 路径表达式的计算结果将为 NULL。
 
 **\<bulk_options>**
 
@@ -192,9 +202,9 @@ FIELDQUOTE = 'field_quote'
 
 DATA_COMPRESSION = 'data_compression_method'
 
-指定压缩方法。 支持以下压缩方法：
+指定压缩方法。 仅在 PARSER_VERSION='1.0' 时受支持。 支持以下压缩方法：
 
-- org.apache.hadoop.io.compress.GzipCodec
+- GZIP
 
 PARSER_VERSION = 'parser_version'
 
@@ -205,29 +215,111 @@ PARSER_VERSION = 'parser_version'
 
 CSV 分析器版本 1.0 是默认版本且功能丰富。 版本 2.0 是为提高性能而构建的，并不支持所有选项和编码。 
 
+CSV 分析器版本 1.0 详细信息：
+
+- 不支持以下选项：HEADER_ROW。
+
 CSV 分析器版本 2.0 详细信息：
 
 - 不是所有数据类型都受支持。
 - 最大行大小限制为 8 MB。
 - 不支持以下选项：DATA_COMPRESSION。
 - 带引号的空字符串 ("") 被解释为空字符串。
+- DATE 数据类型支持的格式：YYYY-MM-DD
+- TIME 数据类型支持的格式：HH:MM:SS[.fractional seconds]
+- DATETIME2 数据类型支持的格式：YYYY-MM-DD HH:MM:SS[.fractional seconds]
+
+HEADER_ROW = { TRUE | FALSE }
+
+指定 CSV 文件是否包含标题行。 默认值为 FALSE。 在 PARSER_VERSION='2.0' 时受支持。 如果为 TRUE，则根据 FIRSTROW 参数从第一行读取列名称。 如果为 TRUE 且使用 WITH 指定了架构，则列名的绑定将按列名而不是按顺序位置来完成。
+
+DATAFILETYPE = { 'char' | 'widechar' }
+
+指定编码：char 用于 UTF8，widechar 用于 UTF16 文件。
+
+## <a name="fast-delimited-text-parsing"></a>带分隔符的文本的快速分析
+
+可以使用两种带分隔符的文本分析器版本。 CSV 分析器版本 1.0 是默认版本且功能丰富，而分析器版本 2.0 是为提高性能而构建的。 分析器 2.0 的性能改进来自高级分析技术和多线程处理。 随着文件大小的增大，速度差异会更大。
+
+## <a name="automatic-schema-discovery"></a>自动架构发现
+
+通过省略 WITH 子句，无需了解或指定架构，即可轻松查询 CSV 和 Parquet 文件。 将从文件中推断列名称和数据类型。
+
+Parquet 文件包含要读取的列元数据，可在 [Parquet 的类型映射](#type-mapping-for-parquet)中找到类型映射。 有关示例，请查看[在不指定架构的情况下读取 Parquet 文件](#read-parquet-files-without-specifying-schema)。
+
+对于 CSV 文件，可以从标题行读取列名称。 可以使用 HEADER_ROW 参数指定是否存在标题行。 如果 HEADER_ROW = FALSE，将使用通用列名称：C1, C2, ...Cn，其中 n 是文件中的列数。 将从前 100 个数据行推断数据类型。 有关示例，请查看[在不指定架构的情况下读取 CSV 文件](#read-csv-files-without-specifying-schema)。
+
+> [!IMPORTANT]
+> 在有些情况下，由于缺少信息而无法推断出适当的数据类型，将改用较大的数据类型。 这会造成性能开销，并且对于将推断为 varchar(8000) 的字符列尤其重要。 为了获得最佳性能，请[查看推断的数据类型](best-practices-sql-on-demand.md#check-inferred-data-types)并[使用适当的数据类型](best-practices-sql-on-demand.md#use-appropriate-data-types)。
+
+### <a name="type-mapping-for-parquet"></a>Parquet 的类型映射
+
+Parquet 文件包含每一列的类型说明。 下表介绍了如何将 Parquet 类型映射到 SQL 本机类型。
+
+| Parquet 类型 | Parquet 逻辑类型（批注） | SQL 数据类型 |
+| --- | --- | --- |
+| BOOLEAN | | bit |
+| BINARY/BYTE_ARRAY | | varbinary |
+| DOUBLE | | float |
+| FLOAT | | real |
+| INT32 | | int |
+| INT64 | | bigint |
+| INT96 | |datetime2 |
+| FIXED_LEN_BYTE_ARRAY | |binary |
+| BINARY |UTF8 |varchar \*（UTF8 排序规则） |
+| BINARY |STRING |varchar \*（UTF8 排序规则） |
+| BINARY |ENUM|varchar \*（UTF8 排序规则） |
+| FIXED_LEN_BYTE_ARRAY |UUID |uniqueidentifier |
+| BINARY |DECIMAL |Decimal |
+| BINARY |JSON |varchar(8000) \*（UTF8 排序规则） |
+| BINARY |BSON | 不支持 |
+| FIXED_LEN_BYTE_ARRAY |DECIMAL |Decimal |
+| BYTE_ARRAY |INTERVAL | 不支持 |
+| INT32 |INT(8, true) |smallint |
+| INT32 |INT(16, true) |smallint |
+| INT32 |INT(32, true) |int |
+| INT32 |INT(8, false) |tinyint |
+| INT32 |INT(16, false) |int |
+| INT32 |INT(32, false) |bigint |
+| INT32 |DATE |date |
+| INT32 |DECIMAL |Decimal |
+| INT32 |TIME (MILLIS)|time |
+| INT64 |INT(64, true) |bigint |
+| INT64 |INT(64, false) |decimal(20,0) |
+| INT64 |DECIMAL |Decimal |
+| INT64 |TIME (MICROS) |time - 不支持 TIME(NANOS) |
+|INT64 |TIMESTAMP (MILLIS/MICROS) |datetime2 - 不支持 TIMESTAMP(NANOS) |
+|[复杂类型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |列表 |varchar(8000)，序列化为 JSON |
+|[复杂类型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(8000)，序列化为 JSON |
 
 ## <a name="examples"></a>示例
 
-以下示例仅返回 population*.csv 文件中序号为 1 和 4 的两列。 由于文件中没有标题行，因此该示例从第一行开始读取：
+### <a name="read-csv-files-without-specifying-schema"></a>在不指定架构的情况下读取 CSV 文件
+
+以下示例在不指定列名称和数据类型的情况下读取包含标题行的 CSV 文件： 
 
 ```sql
-SELECT * 
+SELECT 
+    *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
-        FORMAT = 'CSV',
-        FIRSTROW = 1
-    )
-WITH (
-    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
-    [population] bigint 4
-) AS [r]
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0',
+    HEADER_ROW = TRUE) as [r]
 ```
+
+以下示例在不指定列名称和数据类型的情况下读取不包含标题行的 CSV 文件： 
+
+```sql
+SELECT 
+    *
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0') as [r]
+```
+
+### <a name="read-parquet-files-without-specifying-schema"></a>在不指定架构的情况下读取 Parquet 文件
 
 以下示例在不指定列名和数据类型的情况下，以 Parquet 格式返回人口普查数据集中第一行的所有列： 
 
@@ -241,6 +333,68 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-specific-columns-from-csv-file"></a>从 CSV 文件中读取特定列
+
+以下示例仅返回 population*.csv 文件中序号为 1 和 4 的两列。 由于文件中没有标题行，因此该示例从第一行开始读取：
+
+```sql
+SELECT 
+    * 
+FROM OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
+        FORMAT = 'CSV',
+        FIRSTROW = 1
+    )
+WITH (
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
+    [population] bigint 4
+) AS [r]
+```
+
+### <a name="read-specific-columns-from-parquet-file"></a>从 Parquet 文件中读取特定列
+
+以下示例以 Parquet 格式仅返回人口普查数据集内第一行的两列： 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    [stateName] VARCHAR (50),
+    [population] bigint
+) AS [r]
+```
+
+### <a name="specify-columns-using-json-paths"></a>使用 JSON 路径指定列
+
+以下示例演示了如何在 WITH 子句中使用 [JSON 路径表达式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)，并说明了严格和宽松路径模式之间的区别： 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    --lax path mode samples
+    [stateName] VARCHAR (50), -- this one works as column name casing is valid - it targets the same column as the next one
+    [stateName_explicit_path] VARCHAR (50) '$.stateName', -- this one works as column name casing is valid
+    [COUNTYNAME] VARCHAR (50), -- STATEname column will contain NULLs only because of wrong casing - it targets the same column as the next one
+    [countyName_explicit_path] VARCHAR (50) '$.COUNTYNAME', -- STATEname column will contain NULLS only because of wrong casing and default path mode being lax
+
+    --strict path mode samples
+    [population] bigint 'strict $.population' -- this one works as column name casing is valid
+    --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
+)
+AS [r]
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 文件格式。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。
+有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 文件格式。 查看[最佳做法](best-practices-sql-on-demand.md)以获得最佳性能。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。

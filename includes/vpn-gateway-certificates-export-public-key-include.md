@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f71703dcb6afb5ce7610bf1c5374de1cc98816b0
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 12e9bec0c560f1b068b07a1b6afe218a112e439f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606575"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553209"
 ---
 创建自签名根证书之后，导出根证书公用密钥 .cer 文件（不导出私钥）。 稍后要将此文件上传到 Azure。 以下步骤可帮助你导出自签名根证书的 .cer 文件：
 
 1. 若要获取证书 .cer 文件，请打开“管理用户证书”  。 找到自签名根证书（通常位于“Certificates - Current User\Personal\Certificates”中），并右键单击。 单击“所有任务”  ，并单击“导出”  。 此操作将打开“证书导出向导”  。 如果在 Current User\Personal\Certificates 下找不到证书，可能会意外地打开“Certificates - Local Computer”而不是“Certificates - Current User”）。 如果想要使用 PowerShell 在当前用户范围内打开证书管理程序，请在控制台窗口中键入“certmgr”  。
 
-   ![屏幕截图显示具有所选证书的当前用户的 "证书" 窗口，并显示带有所有任务的上下文菜单，然后选择 "导出"。](./media/vpn-gateway-certificates-export-public-key-include/export.png)
+   ![屏幕截图显示已选择证书的当前用户的 "证书" 窗口，以及从 "所有任务" 中选择 "导出" 的上下文菜单。](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. 在向导中，单击“下一步”  。
 
    ![导出证书](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
@@ -34,7 +34,7 @@ ms.locfileid: "90606575"
    ![屏幕截图显示 "证书导出向导"，其中包含 "文件名" 文本框和 "浏览" 选项。](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. 单击“完成”  导出证书。
 
-   ![屏幕截图显示 "证书导出向导" 最后一页，其中包含所选的设置。](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
+   ![屏幕截图显示具有所选设置的 "证书导出向导"。](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
 7. 证书已成功导出。
 
    ![屏幕截图显示导出成功的消息。](./media/vpn-gateway-certificates-export-public-key-include/success.png)

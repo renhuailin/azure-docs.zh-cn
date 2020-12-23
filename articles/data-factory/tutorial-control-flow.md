@@ -2,8 +2,8 @@
 title: Azure 数据工厂管道中的分支
 description: 了解如何通过分支和链接活动控制 Azure 数据工厂中的数据流。
 services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ab7d17ee61d733483b6d3573e9bd69b1628c7940
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983405"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496936"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -40,7 +40,7 @@ ms.locfileid: "90983405"
 > * 启动管道运行
 > * 监视管道和活动运行
 
-本教程使用 .NET SDK。 可以使用其他机制来与 Azure 数据工厂交互。 有关数据工厂的快速入门，请参阅 [5 分钟快速入门](/azure/data-factory/quickstart-create-data-factory-portal)。
+本教程使用 .NET SDK。 可以使用其他机制来与 Azure 数据工厂交互。 有关数据工厂的快速入门，请参阅 [5 分钟快速入门](./quickstart-create-data-factory-portal.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
@@ -336,7 +336,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 此 JSON 内容与前一部分中创建的 `EmailRequest` 类相符。
 
-添加 `Office 365 Outlook – Send an email` 操作。 对于“发送电子邮件”操作，请使用传入请求**正文** JSON 架构的属性来自定义如何设置电子邮件的格式。 下面是一个示例：
+添加 `Office 365 Outlook – Send an email` 操作。 对于“发送电子邮件”操作，请使用传入请求 **正文** JSON 架构的属性来自定义如何设置电子邮件的格式。 下面是一个示例：
 
 ![逻辑应用设计器 - 发送电子邮件操作](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -610,7 +610,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +753,7 @@ Press any key to exit...
 在本教程中，你已执行以下任务：
 
 > [!div class="checklist"]
-> * 创建数据工厂
+> 创建数据工厂
 > * 创建 Azure 存储链接服务
 > * 创建 Azure Blob 数据集
 > * 创建包含复制活动和 Web 活动的管道

@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c341ba20ece26e15255faf086e5bd2904fbaa797
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226576"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098537"
 ---
-本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription-service.md)设备。
+本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription.md)设备。
 
-本指南需要一个包含语音服务资源的 [Azure 认知服务](../get-started.md)帐户。
+本指南需要一个包含语音服务资源的 [Azure 认知服务](../overview.md#try-the-speech-service-for-free)帐户。
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
@@ -24,18 +24,18 @@ ms.locfileid: "88226576"
 
 - 按[开发工具包](../get-speech-devices-sdk.md)中提供的说明启动设备。
 
-- 下载[语音设备 SDK](https://aka.ms/sdsdk-download) 的最新版本，并将 .zip 提取到工作目录。
+- 下载[语音设备 SDK](../speech-devices-sdk.md) 的最新版本，并将 .zip 提取到工作目录。
 
   > [!NOTE]
   > 本快速入门假设应用已解压缩到 C:\SDSDK\Android-Sample-Release
 
-- 获取[语音服务的 Azure 订阅密钥](../get-started.md)
+- 获取[语音服务的 Azure 订阅密钥](../overview.md#try-the-speech-service-for-free)
 
 - 如果计划使用对话听录，则必须使用[圆形麦克风设备](../get-speech-devices-sdk.md)，该功能目前在“centralus”和“eastasia”区域中仅提供“en-US”和“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
 
-- 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
+- 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](../../luis/luis-how-to-azure-subscription.md) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](../how-to-recognize-intents-from-speech-csharp.md)。
 
-  可[创建一个简单的 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://aka.ms/sdsdk-luis)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://www.luis.ai/home)。
+  可[创建一个简单的 LUIS 模型](../../luis/index.yml)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://aka.ms/sdsdk-luis)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://www.luis.ai/home)。
 
 - 在电脑上安装 [Android Studio](https://developer.android.com/studio/) 和 [Vysor](https://vysor.io/download/)。
 
@@ -96,7 +96,7 @@ ms.locfileid: "88226576"
     通过将以下行添加到 dependencies 节来更新 **build.gradle(Module:app)** 。 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.14.0'
     ```
     
 1. 将语音订阅密钥添加到源代码。 如果想要尝试意向识别，还需要添加[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)订阅密钥和应用程序 ID。
@@ -122,7 +122,7 @@ ms.locfileid: "88226576"
 1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，C:\SDSDK\Android-Sample-Release\keyword\Computer 包含用于关键字“Computer”的文件。
 
    > [!TIP]
-   > 还可以[创建自定义关键字](../speech-devices-sdk-create-kws.md)。
+   > 还可以[创建自定义关键字](../custom-keyword-basics.md)。
 
    要使用新的关键字，请更新 `MainActivity.java` 中的下面两行，并将关键字包复制到应用。 例如，若要使用关键字包 kws-machine.zip 中的关键字“Machine”，请执行以下操作：
 
@@ -162,7 +162,7 @@ ms.locfileid: "88226576"
 
    ![示例语音设备 SDK 的示例应用程序和选项](../media/speech-devices-sdk/qsg-8.png)
 
-1. 试用新的“对话听录”演示。 使用“启动会话”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入设备上的 `/video/participants.properties` 文件中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 试用新的“对话听录”演示。 使用“启动会话”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入设备上的 `/video/participants.properties` 文件中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription.md)。
 
    ![演示对话听录应用程序](../media/speech-devices-sdk/qsg-15.png)
 

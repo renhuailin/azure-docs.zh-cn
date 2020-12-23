@@ -1,18 +1,18 @@
 ---
 title: Azure 虚拟 WAN 合作伙伴自动化指南 |Microsoft Docs
-description: 设置自动化环境，为 Azure 虚拟 WAN 连接和配置本地 VPN 或 SD-WAN CPE 或分支设备。
+description: 设置自动化环境以连接和配置 Azure 虚拟 WAN 的本地 VPN 或 SD-WAN CPE 或分支设备。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208347"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566463"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>适用于虚拟 WAN 合作伙伴的自动化指南
 
@@ -33,9 +33,9 @@ ms.locfileid: "88208347"
 
 ### <a name="additional-information"></a><a name ="additional"></a>其他信息
 
-* 用来自动创建虚拟中心的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)
-* 用来为虚拟 WAN 自动实现 Azure VPN 网关的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways)
-* 用来将 VPNSite 连接到 Azure VPN 中心的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)
+* 用来自动创建虚拟中心的 [REST API](/rest/api/virtualwan/virtualhubs)
+* 用来为虚拟 WAN 自动实现 Azure VPN 网关的 [REST API](/rest/api/virtualwan/vpngateways)
+* 用来将 VPNSite 连接到 Azure VPN 中心的 [REST API](/rest/api/virtualwan/vpnconnections)
 * [默认的 IPsec 策略](#default)
 
 ## <a name="customer-experience"></a><a name ="ae"></a>客户体验
@@ -63,11 +63,11 @@ ms.locfileid: "88208347"
 
 ###  <a name="upload-branch-device-information"></a><a name="branch"></a>上传分支设备信息
 
-应设计可将分支（本地站点）信息上传到 Azure 的用户体验。 可以将 VPNSite 的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) 用于在虚拟 WAN 中创建站点信息。 可提供所有分支 SDWAN/VPN 设备，或根据需要选择设备自定义。
+应设计可将分支（本地站点）信息上传到 Azure 的用户体验。 可以将 VPNSite 的 [REST API](/rest/api/virtualwan/vpnsites) 用于在虚拟 WAN 中创建站点信息。 可提供所有分支 SDWAN/VPN 设备，或根据需要选择设备自定义。
 
 ### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>设备配置下载和连接
 
-此步骤包括下载 Azure 配置，并设置从分支设备到 Azure 虚拟 WAN 的连接。 在此步骤中，未使用提供程序的客户将手动下载 Azure 配置并将其应用于本地 SDWAN/VPN 设备。 作为提供商，你应自动执行此步骤。 有关其他信息，请查看下载的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download)。 设备控制器可调用“GetVpnConfiguration”REST API 来下载 Azure 配置。
+此步骤包括下载 Azure 配置，并设置从分支设备到 Azure 虚拟 WAN 的连接。 在此步骤中，未使用提供程序的客户将手动下载 Azure 配置并将其应用于本地 SDWAN/VPN 设备。 作为提供商，你应自动执行此步骤。 有关其他信息，请查看下载的 [REST API](/rest/api/virtualwan/vpnsitesconfiguration/download)。 设备控制器可调用“GetVpnConfiguration”REST API 来下载 Azure 配置。
 
 **配置说明**
 
@@ -204,7 +204,7 @@ ms.locfileid: "88208347"
    }
   ```
 
-## <a name="connectivity-details"></a><a name="default"></a>连接详细信息
+## <a name="connectivity-details"></a><a name="default"></a>连接性详细信息
 
 本地 SDWAN/VPN 设备或 SD-WAN 配置必须匹配或包含在 Azure IPsec/IKE 策略中指定的以下算法和参数。
 

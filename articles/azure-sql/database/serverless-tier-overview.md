@@ -4,19 +4,19 @@ description: 本文介绍新的无服务器计算层，并将它与现有的 Azu
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: test sqldbrb=1
+ms.custom: test sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 9/17/2020
-ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 12/8/2020
+ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321401"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97687407"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 ### <a name="performance-configuration"></a>性能配置
 
 - “最小 vCore 数”和“最大 vCore 数”是可配置的参数，用于定义数据库可用的计算容量范围。  内存和 IO 限制与指定的 vCore 范围成正比。  
-- **自动暂停延迟**是可配置的参数，用于定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下次登录或其他活动时，数据库会自动恢复。  或者，可以禁用自动暂停。
+- **自动暂停延迟** 是可配置的参数，用于定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下次登录或其他活动时，数据库会自动恢复。  或者，可以禁用自动暂停。
 
 ### <a name="cost"></a>成本
 
@@ -97,7 +97,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 在无服务器数据库和预配的计算数据库中，如果使用了所有可用内存，则可能会逐出缓存条目。
 
-请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，在内存回收之前，可能会有额外的延迟，因为后台进程会定期响应先前的用户活动。  例如，"删除操作" 和 "QDS 清除任务" 生成标记为删除的虚影记录，但在虚影清除进程运行之前不会将其物理删除，这可能涉及到将数据页读入缓存。
+请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，在内存回收之前，可能会有额外的延迟，因为后台进程会定期响应先前的用户活动。  例如，删除操作和 QDS 清除任务会生成标记为“需删除”的虚影记录，但在虚影清除进程运行（这可能涉及到将数据页读入缓存）之前不会进行物理删除。
 
 #### <a name="cache-hydration"></a>缓存合成
 
@@ -114,7 +114,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 如有需要，系统也提供了禁用自动暂停的选项。
 
-以下功能不支持自动暂停，但支持自动缩放。  如果使用了下列任一功能，则应禁用 autopausing 并且数据库将保持联机状态，而不考虑数据库的非活动持续时间：
+以下功能不支持自动暂停，但支持自动缩放。  如果使用了以下任意功能，那么无论数据库处于不活动状态的时间有多长，都应禁用自动暂停，让数据库保持联机状态：
 
 - 异地复制（活动异地复制和自动故障转移组）。
 - 长期备份保留 (LTR)。
@@ -135,9 +135,10 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 |数据发现和分类|添加、修改、删除或查看敏感度标签|
 |审核|查看审核记录。<br>更新或查看审核策略。|
 |数据屏蔽|添加、修改、删除或查看数据屏蔽规则|
-|透明数据加密|查看透明数据加密的状况或状态|
+|透明数据加密|查看透明数据加密的状态或状态|
 |漏洞评估|如果启用，则为临时扫描和定期扫描|
 |查询（性能）数据存储|修改或查看查询存储设置|
+|性能建议|查看或应用性能建议|
 |自动优化|自动优化建议的应用和验证，例如自动索引|
 |数据库复制|创建数据库作为副本。<br>导出到 BACPAC 文件。|
 |SQL 数据同步|按照可配置的时间表或手动执行中心和成员数据库之间的同步|
@@ -195,7 +196,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
-  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+  -e GeneralPurpose -f Gen5 --min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
 

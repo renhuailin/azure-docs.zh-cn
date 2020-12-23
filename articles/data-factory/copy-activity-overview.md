@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440586"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96902148"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -186,10 +186,11 @@ ms.locfileid: "89440586"
 除了将数据从源数据存储复制到接收器外，还可以进行配置，以便添加要一起复制到接收器的其他数据列。 例如：
 
 - 从基于文件的源复制时，将相对文件路径存储为一个附加列，用以跟踪数据来自哪个文件。
+- 将指定的源列复制为另一列。 
 - 添加包含 ADF 表达式的列，以附加 ADF 系统变量（例如管道名称/管道 ID），或存储来自上游活动输出的其他动态值。
 - 添加一个包含静态值的列以满足下游消耗需求。
 
-可以在复制活动源选项卡上找到以下配置： 
+可以在“复制活动源”选项卡上找到以下配置。也可以照常使用定义的列名在复制活动[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)中映射这些附加列。 
 
 ![在复制活动中添加其他列](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
 
@@ -200,7 +201,7 @@ ms.locfileid: "89440586"
 
 | 属性 | 说明 | 必需 |
 | --- | --- | --- |
-| additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>- **表达式**<br>- **静态值** | 否 |
+| additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>-  **`$$COLUMN:<source_column_name>`** - 保留变量模式指示将指定的源列复制为另一个列<br>- **表达式**<br>- **静态值** | 否 |
 
 **示例：**
 
@@ -218,6 +219,10 @@ ms.locfileid: "89440586"
                     {
                         "name": "filePath",
                         "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "newColName",
+                        "value": "$$COLUMN:SourceColumnA"
                     },
                     {
                         "name": "pipelineName",
@@ -245,11 +250,11 @@ ms.locfileid: "89440586"
 
 将数据复制到 SQL 数据库/Azure Synapse Analytics 时，如果目标表不存在，则复制活动支持基于源数据自动创建该表。 它旨在帮助快速开始加载数据并评估 SQL 数据库/Azure Synapse Analytics。 进行数据引入之后，可以根据需要查看和调整接收器表架构。
 
-将数据从任何源复制到以下接收器数据存储时，支持此功能。 可以在 *ADF 创作 UI* （> *复制活动接收器* – > *表选项* – > *自动创建表*或 `tableOption` 复制活动接收器负载中的属性）中找到选项。
+将数据从任何源复制到以下接收器数据存储时，支持此功能。 可以在 *ADF 创作 UI* （> *复制活动接收器* – > *表选项* – > *自动创建表* 或 `tableOption` 复制活动接收器负载中的属性）中找到选项。
 
 - [Azure SQL 数据库](connector-azure-sql-database.md)
 - [Azure SQL 数据库托管实例](connector-azure-sql-managed-instance.md)
-- [Azure Synapse Analytics（以前称为 SQL 数据仓库）](connector-azure-sql-data-warehouse.md)
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![创建接收器表](media/copy-activity-overview/create-sink-table.png)
@@ -257,6 +262,13 @@ ms.locfileid: "89440586"
 ## <a name="fault-tolerance"></a>容错
 
 默认情况下，如果源数据行与接收器数据行不兼容，复制活动将停止复制数据，并返回失败结果。 要使复制成功，可将复制活动配置为跳过并记录不兼容的行，仅复制兼容的数据。 有关详细信息，请参阅[复制活动容错](copy-activity-fault-tolerance.md)。
+
+## <a name="data-consistency-verification"></a>数据一致性验证
+
+当你将数据从源存储移动到目标存储时，Azure 数据工厂复制活动提供了一个选项，供你执行额外的数据一致性验证，以确保数据不仅成功地从源存储复制到目标存储，而且验证了源存储和目标存储之间的一致性。 在数据移动过程中发现不一致的文件后，可以中止复制活动，或者通过启用容错设置跳过不一致的文件来继续复制其余文件。 通过在复制活动中启用会话日志设置，可以获取跳过的文件名称。 有关详细信息，请参阅[复制活动中的数据一致性验证](copy-activity-data-consistency.md)。
+
+## <a name="session-log"></a>会话日志
+你可以记录复制的文件名，这样就可以通过检查复制活动会话日志来进一步确保数据不仅成功地从源存储复制到目标存储，而且在源存储和目标存储之间一致。 有关详细信息，请参阅[复制活动中的会话日志](copy-activity-log.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下快速入门、教程和示例：

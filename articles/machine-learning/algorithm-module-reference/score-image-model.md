@@ -1,5 +1,5 @@
 ---
-title: 使用 "分数图像模型" 模块
+title: 使用“为图像模型评分”模块
 titleSuffix: Azure Machine Learning
 description: 了解如何通过已定型图像模型使用 Azure 机器学习中的“为图像模型评分”模块生成预测。
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 88ca997e2d22283babf582b10d9b0eeb7de122c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fe57a9e8ce9b14f7d1346d819965576770afef3b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905183"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324891"
 ---
 # <a name="score-image-model"></a>为图像模型评分
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 对输入图像数据使用此模块可以通过已定型图像模型生成预测。
 
@@ -38,8 +38,8 @@ ms.locfileid: "90905183"
 
 ### <a name="publish-scores-as-a-web-service"></a>将评分发布为 Web 服务
 
-评分的一个常见用途是在预测 Web 服务中返回输出。 有关详细信息，请参阅[此教程](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)，了解如何在 Azure 机器学习设计器中基于管道部署实时终结点。
+评分的一个常见用途是在预测 Web 服务中返回输出。 有关详细信息，请参阅[此教程](../tutorial-designer-automobile-price-deploy.md)，了解如何在 Azure 机器学习设计器中基于管道部署实时终结点。
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。

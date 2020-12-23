@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 9/03/2019
-ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 12/09/2020
+ms.openlocfilehash: e65c8c8574edc10f9366611c5b41ba93f609c7e3
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442831"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008216"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure 数据工厂提供一种功能强大、稳健且经济高效的机制，用于从本地 Netezza 服务器大规模将数据迁移到 Azure 存储帐户或 Azure Synapse Analytics (以前的 SQL 数据仓库（) 数据库）。 
+Azure 数据工厂提供一种功能强大、稳健且经济高效的机制，用于从本地 Netezza 服务器大规模将数据迁移到 Azure 存储帐户或 Azure Synapse 分析数据库。 
 
 本文提供面向数据工程师和开发人员的以下信息：
 
@@ -41,13 +41,13 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 上面的示意图可以解释为：
 
-- 单个复制活动可以利用可缩放的计算资源。 使用 Azure Integration Runtime 时，能够以无服务器方式为每个复制活动指定[最多 256 个 DIU](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units)。 使用自承载集成运行时（自承载 IR）时，可以手动纵向扩展计算机或横向扩展为多个计算机（[最多 4 个节点](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)），单个复制活动将在所有节点之间分布其分区。 
+- 单个复制活动可以利用可缩放的计算资源。 使用 Azure Integration Runtime 时，能够以无服务器方式为每个复制活动指定[最多 256 个 DIU](./copy-activity-performance.md#data-integration-units)。 使用自承载集成运行时（自承载 IR）时，可以手动纵向扩展计算机或横向扩展为多个计算机（[最多 4 个节点](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)），单个复制活动将在所有节点之间分布其分区。 
 
 - 单个复制活动使用多个线程读取和写入数据存储。 
 
-- Azure 数据工厂控制流可以同时启动多个复制活动。 例如，它可以使用 [For Each 循环](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)启动这些活动。 
+- Azure 数据工厂控制流可以同时启动多个复制活动。 例如，它可以使用 [For Each 循环](./control-flow-for-each-activity.md)启动这些活动。 
 
-有关详细信息，请参阅[复制活动性能和可伸缩性指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)。
+有关详细信息，请参阅[复制活动性能和可伸缩性指南](./copy-activity-performance.md)。
 
 ## <a name="resilience"></a>复原能力
 
@@ -57,7 +57,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 ## <a name="network-security"></a>网络安全 
 
-默认情况下，Azure 数据工厂将数据从本地 Netezza 服务器传输到 Azure 存储帐户或 Azure Synapse Analytics 数据库，方法是使用通过超文本传输协议安全 (HTTPS) 的加密连接。 HTTPS 提供传输中数据加密，并可防止窃听和中间人攻击。
+默认情况下，Azure 数据工厂通过安全超文本传输协议 (HTTPS)，使用加密的连接将数据从本地 Netezza 服务器传输到 Azure 存储帐户或 Azure Synapse Analytics 数据库。 HTTPS 提供传输中数据加密，并可防止窃听和中间人攻击。
 
 如果你不希望通过公共 Internet 传输数据，可以通过 Azure Express Route 使用专用对等互连链路传输数据，借此提高安全性。 
 
@@ -95,43 +95,43 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 ### <a name="manage-authentication-and-credentials"></a>管理身份验证和凭据 
 
-- 若要对 Netezza 进行身份验证，可以使用[通过连接字符串进行的 ODBC 身份验证](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties)。 
+- 若要对 Netezza 进行身份验证，可以使用[通过连接字符串进行的 ODBC 身份验证](./connector-netezza.md#linked-service-properties)。 
 
 - 若要对 Azure Blob 存储进行身份验证： 
 
-   - 我们强烈建议使用 [Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)。 托管标识构建在 Azure Active Directory (Azure AD) 中自动管理的 Azure 数据工厂标识基础之上，使你无需在链接服务定义中提供凭据，即可配置管道。  
+   - 我们强烈建议使用 [Azure 资源的托管标识](./connector-azure-blob-storage.md#managed-identity)。 托管标识构建在 Azure Active Directory (Azure AD) 中自动管理的 Azure 数据工厂标识基础之上，使你无需在链接服务定义中提供凭据，即可配置管道。  
 
-   - 或者，可以使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共享访问签名](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)或[存储帐户密钥](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)对 Azure Blob 存储进行身份验证。 
+   - 或者，可以使用[服务主体](./connector-azure-blob-storage.md#service-principal-authentication)、[共享访问签名](./connector-azure-blob-storage.md#shared-access-signature-authentication)或[存储帐户密钥](./connector-azure-blob-storage.md#account-key-authentication)对 Azure Blob 存储进行身份验证。 
 
 - 若要对 Azure Data Lake Storage Gen2 进行身份验证： 
 
-   - 我们强烈建议使用 [Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)。
+   - 我们强烈建议使用 [Azure 资源的托管标识](./connector-azure-data-lake-storage.md#managed-identity)。
    
-   - 也可以使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)或[存储帐户密钥](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)。 
+   - 也可以使用[服务主体](./connector-azure-data-lake-storage.md#service-principal-authentication)或[存储帐户密钥](./connector-azure-data-lake-storage.md#account-key-authentication)。 
 
-- 若要对 Azure Synapse Analytics 进行身份验证：
+- 若要向 Azure Synapse Analytics 进行身份验证：
 
-   - 我们强烈建议使用 [Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)。
+   - 我们强烈建议使用 [Azure 资源的托管标识](./connector-azure-sql-data-warehouse.md#managed-identity)。
    
-   - 也可以使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication)或 [SQL 身份验证](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)。
+   - 也可以使用[服务主体](./connector-azure-sql-data-warehouse.md#service-principal-authentication)或 [SQL 身份验证](./connector-azure-sql-data-warehouse.md#sql-authentication)。
 
-- 如果不使用 Azure 资源的托管标识，则我们强烈建议[在 Azure Key Vault 中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)，以便更轻松地集中管理和轮换密钥，而无需修改 Azure 数据工厂链接服务。 这也是 [CI/CD 的最佳做法](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)之一。 
+- 如果不使用 Azure 资源的托管标识，则我们强烈建议[在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)，以便更轻松地集中管理和轮换密钥，而无需修改 Azure 数据工厂链接服务。 这也是 [CI/CD 的最佳做法](./continuous-integration-deployment.md#best-practices-for-cicd)之一。 
 
 ### <a name="migrate-initial-snapshot-data"></a>迁移初始快照数据 
 
 对于小型表（即，卷大小小于 100 GB，或者可以在两小时内迁移到 Azure 的表），可使每个复制作业加载每个表的数据。 若要提高吞吐量，可以运行多个 Azure 数据工厂复制作业来同时加载不同的表。 
 
-在每个复制作业中，若要运行并行查询并按分区复制数据，还可以通过将[ `parallelCopies` 属性设置](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)用于以下任一数据分区选项来达到一定程度的并行度：
+在每个复制作业中，若要运行并行查询并按分区复制数据，还可以结合以下任一数据分区选项使用 [`parallelCopies` 属性设置](./copy-activity-performance.md#parallel-copy)来达到一定的并行度：
 
 - 为帮助实现更高的效率，我们建议从数据切片开始。  确保 `parallelCopies` 设置中的值小于 Netezza 服务器上的表中的数据切片分区总数。  
 
 - 如果每个数据切片分区的卷仍然很大（例如，10 GB 或更大），我们建议切换到动态范围分区。 使用此选项可以更灵活地定义分区数目，并按分区列定义每个分区的卷（上限和下限）。
 
-对于大型表（即，卷大于 100 GB，或者在两小时内无法迁移到 Azure 的表），我们建议按自定义查询将数据分区，然后使每个复制作业每次复制一个分区。** 若要提高吞吐量，可以同时运行多个 Azure 数据工厂复制作业。 要使每个复制作业目标按自定义查询加载一个分区，可以通过数据切片或动态范围启用并行度来提高吞吐量。 
+对于大型表（即，卷大于 100 GB，或者在两小时内无法迁移到 Azure 的表），我们建议按自定义查询将数据分区，然后使每个复制作业每次复制一个分区。  若要提高吞吐量，可以同时运行多个 Azure 数据工厂复制作业。 要使每个复制作业目标按自定义查询加载一个分区，可以通过数据切片或动态范围启用并行度来提高吞吐量。 
 
 如果网络或数据存储的暂时性问题导致任何复制作业失败，你可以重新运行失败的复制作业，以从表中加载特定的分区。 加载其他分区的其他复制作业不受影响。
 
-将数据加载到 Azure Synapse Analytics 数据库时，建议使用 Azure Blob 存储作为暂存，在复制作业中启用 PolyBase。
+将数据加载到 Azure Synapse Analytics 数据库时，我们建议在复制作业中启用 PolyBase，并使用 Azure Blob 存储作为暂存存储。
 
 ### <a name="migrate-delta-data"></a>迁移增量数据 
 
@@ -162,7 +162,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 ### <a name="estimate-your-pricing"></a>估算定价 
 
-请考虑使用以下管道，它构造用于将数据从本地 Netezza 服务器迁移到 Azure Synapse Analytics 数据库：
+考虑构建了以下管道用于将数据从本地 Netezza 服务器迁移到 Azure Synapse Analytics 数据库：
 
 ![定价管道](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
@@ -185,25 +185,25 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 ![定价表](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
 
 > [!NOTE]
-> 上表中显示的定价是假构的。 实际定价取决于环境中的实际吞吐量。 不包括 Windows 计算机（装有自承载 IR）的价格。 
+> 上表中显示的定价是假构的。 实际价格取决于环境中的实际吞吐量。 不包括 Windows 计算机（装有自承载 IR）的价格。 
 
 ### <a name="additional-references"></a>其他参考
 
 有关详细信息，请参阅以下文章和指南：
 
 - [使用 Azure 数据工厂将数据从本地关系数据仓库数据库迁移到 Azure](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
-- [Netezza 连接器](https://docs.microsoft.com/azure/data-factory/connector-netezza)
-- [ODBC 连接器](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob 存储连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2 连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure Synapse Analytics 连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [复制活动性能和优化指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [自承载集成运行时的高可用性和可伸缩性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [数据移动安全注意事项](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [在 Azure 密钥保管库中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [以增量方式从一个表复制数据](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [以增量方式从多个表复制数据](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Netezza 连接器](./connector-netezza.md)
+- [ODBC 连接器](./connector-odbc.md)
+- [Azure Blob 存储连接器](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2 连接器](./connector-azure-data-lake-storage.md)
+- [Azure Synapse Analytics 连接器](./connector-azure-sql-data-warehouse.md)
+- [复制活动性能和优化指南](./copy-activity-performance.md)
+- [创建和配置自承载集成运行时](./create-self-hosted-integration-runtime.md)
+- [自承载集成运行时的高可用性和可伸缩性](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [数据移动安全注意事项](./data-movement-security-considerations.md)
+- [在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)
+- [以增量方式从一个表复制数据](./tutorial-incremental-copy-portal.md)
+- [以增量方式从多个表复制数据](./tutorial-incremental-copy-multiple-tables-portal.md)
 - [Azure 数据工厂定价页](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>后续步骤

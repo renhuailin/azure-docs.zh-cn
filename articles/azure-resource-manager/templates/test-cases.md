@@ -2,15 +2,15 @@
 title: 测试工具包的测试用例
 description: 介绍由 ARM 模板测试工具包运行的测试。
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378111"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674036"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM 模板测试工具包的默认测试用例
 
@@ -102,13 +102,13 @@ ms.locfileid: "89378111"
 }
 ```
 
-## <a name="environment-urls-cant-be-hardcoded"></a>环境 Url 不能硬编码
+## <a name="environment-urls-cant-be-hardcoded"></a>环境 URL 不能硬编码
 
-测试名称： **DeploymentTemplate 不能包含硬编码 Uri**
+测试名称：**DeploymentTemplate 不得包含硬编码 Uri**
 
-不要在模板中硬编码环境 Url。 请改用 [环境函数](template-functions-deployment.md#environment) 在部署期间动态获取这些 url。 有关被阻止的 URL 主机的列表，请参阅该 [测试用例](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1)。
+请勿在模板中对环境 URL 进行硬编码。 请改用[环境函数](template-functions-deployment.md#environment)在部署期间动态获取这些 URL。 有关被阻止的 URL 主机的列表，请参阅[测试用例](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1)。
 
-下面的示例将 **无法** 进行此测试，因为 URL 是硬编码的。
+下面的示例未通过此测试，因为 URL 已进行硬编码。
 
 ```json
 "variables":{
@@ -116,7 +116,7 @@ ms.locfileid: "89378111"
 }
 ```
 
-与[concat](template-functions-string.md#concat)或[uri](template-functions-string.md#uri)一起使用时，该测试也**会失败**。
+与 [concat](template-functions-string.md#concat) 或 [uri](template-functions-string.md#uri) 一起使用时，此测试也会失败。
 
 ```json
 "variables":{
@@ -137,9 +137,11 @@ ms.locfileid: "89378111"
 
 测试名称：不应硬编码位置
 
-模板用户可访问的模板区域可能有限。 将资源位置设置为 `"[resourceGroup().location]"` 时，可能会在其他用户无法访问的区域中创建资源组。 这会导致这些用户无法使用模板。
+模板应具有名为 location 的参数。 使用此参数设置模板中资源的位置。 在) 上名为 azuredeploy.js的主模板 (或 mainTemplate.js上，此参数可以默认为资源组位置。 在链接模板或嵌套模板中，location 参数不应具有默认位置。
 
-定义每个资源的位置时，请使用默认为资源组位置的参数。 提供此参数后，用户可以在方便的情况下使用默认值，也可以指定其他位置。
+模板用户可访问的模板区域可能有限。 如果对资源位置进行硬编码，则可能会阻止用户在该区域中创建资源。 即使将资源位置设置为，用户也可能被阻止 `"[resourceGroup().location]"` 。 资源组可能是在其他用户无法访问的区域中创建的。 这会导致这些用户无法使用模板。
+
+通过提供默认为资源组位置的 location 参数，用户可以在方便的情况下使用默认值，但也可以指定其他位置。
 
 下面的示例未通过此测试，因为资源上的位置设置为 `resourceGroup().location`。
 
@@ -195,7 +197,7 @@ ms.locfileid: "89378111"
 }
 ```
 
-应创建一个默认为资源组位置但允许用户提供不同值的参数。 下面的示例通过了此测试。
+应创建一个默认为资源组位置但允许用户提供不同值的参数。 下面的示例在模板用作主模板时 **传递** 此测试。
 
 ```json
 {
@@ -228,13 +230,15 @@ ms.locfileid: "89378111"
 }
 ```
 
+但是，如果前面的示例用作链接模板，则测试将 **失败**。 作为链接模板使用时，删除默认值。
+
 ## <a name="resources-should-have-location"></a>资源应具有位置
 
 测试名称：资源应具有位置
 
 应将资源的位置设置为[模板表达式](template-expressions.md)或 `global`。 模板表达式通常使用上一测试中所述的位置参数。
 
-下面的示例将 **无法** 进行此测试，因为位置不是表达式或 `global` 。
+下面的示例未通过此测试，因为该位置不是表达式或 `global`。
 
 ```json
 {
@@ -382,9 +386,9 @@ ms.locfileid: "89378111"
 
 ## <a name="artifacts-parameter-defined-correctly"></a>项目参数定义正确
 
-Test name： **伪像参数**
+测试名称：项目参数
 
-当包含 `_artifactsLocation` 和 `_artifactsLocationSasToken` 的参数时，请使用正确的默认值和类型。 必须满足以下条件才能通过此测试：
+当包含 `_artifactsLocation` 和 `_artifactsLocationSasToken` 的参数时，请使用正确的默认值和类型。 若要通过此测试，必须满足以下条件：
 
 * 如果提供一个参数，就必须提供另一个参数
 * `_artifactsLocation` 必须是字符串
@@ -545,9 +549,9 @@ Test name： **伪像参数**
 
 对于 `reference` 和 `list*`，当使用 `concat` 构造资源 ID 时，无法通过测试。
 
-## <a name="dependson-best-practices"></a>dependsOn 最佳实践
+## <a name="dependson-best-practices"></a>dependsOn 最佳做法
 
-测试名称： **DependsOn 最佳实践**
+测试名称：DependsOn 最佳做法
 
 设置部署依赖项时，不要使用 [if](template-functions-logical.md#if) 函数来测试某个条件。 如果一个资源依赖于[基于条件部署](conditional-resource-deployment.md)的资源，设置依赖项时应与任何其他资源一样。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
@@ -603,7 +607,7 @@ Test name： **伪像参数**
 
 ## <a name="use-stable-vm-images"></a>使用稳定的 VM 映像
 
-测试名称： **虚拟机不应为预览版**
+测试名称：虚拟机不应为预览版
 
 虚拟机不应使用预览映像。
 
@@ -689,4 +693,5 @@ Test name： **伪像参数**
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何运行测试工具包，请参阅[使用 ARM 模板测试工具包](test-toolkit.md)。
+- 若要了解如何运行测试工具包，请参阅[使用 ARM 模板测试工具包](test-toolkit.md)。
+- 有关使用测试工具包的 Microsoft Learn 模块，请参阅 [使用假设和 ARM 模板测试工具包预览更改和验证 Azure 资源](/learn/modules/arm-template-test/)。

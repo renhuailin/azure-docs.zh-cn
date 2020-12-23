@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: d7433da99fa1aa607b8c85ce6c8f44adcc6c6f89
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f155868483a0b00ed5ecb6f02ad3ee5440e6e45a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87375643"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625210"
 ---
 在本快速入门中，你将使用必应图像搜索客户端库（它是 API 的包装器并包含相同的功能）进行你的第一次图像搜索。 这个简单的 Java 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 
@@ -22,7 +22,7 @@ ms.locfileid: "87375643"
 
 ## <a name="prerequisites"></a>先决条件
 
-最新版的 [Java 开发工具包](https://aka.ms/azure-jdks) (JDK)
+最新版的 [Java 开发工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK)
 
 通过使用 Maven、Gradle 或其他依赖项管理系统安装必应图像搜索客户端库依赖项。 Maven POM 文件需要以下声明：
 
@@ -92,12 +92,12 @@ else {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应图像搜索单页应用教程](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [必应图像搜索单页应用教程](../../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>另请参阅
 
-* [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [什么是必应图像搜索？](../../overview.md)  
 * [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Azure 认知服务 SDK 的 Java 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
-* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure 认知服务文档](../../../index.yml)
+* [必应图像搜索 API 参考](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

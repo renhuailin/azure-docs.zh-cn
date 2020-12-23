@@ -3,12 +3,12 @@ title: 管理 Azure Service Fabric 群集中的证书
 description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更新证书和从群集中删除证书。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 6dd4440d76bed9d110c13baab9f4e67b3a5c64c0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869739"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660893"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
@@ -18,7 +18,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure 资源管理器创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
 > [!NOTE]
-> 对于安全群集，始终需要至少部署一个有效的（未吊销或过期）群集证书（主要或辅助），否则，群集无法正常运行。 在所有有效证书过期前的 90 天，系统将针对节点生成警告跟踪和警告运行状况事件。 Service Fabric 当前不会针对此文发送电子邮件或其他任何通知。 
+> 对于安全群集，始终需要至少部署一个有效的（未吊销或过期）群集证书（主要或辅助），否则，群集无法正常运行。 90天，在所有有效证书过期之前，系统将在节点上生成警告跟踪和警告运行状况事件。 这些是目前 Service Fabric 发送有关证书过期的通知。
 > 
 > 
 
@@ -26,7 +26,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>使用门户添加辅助群集证书
-无法通过 Azure 门户使用 Azure powershell 添加辅助群集证书。 稍后在本文档中对该过程进行概述。
+无法通过 Azure 门户添加辅助群集证书;使用 Azure PowerShell。 稍后在本文档中对该过程进行概述。
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>使用门户删除群集证书
 对安全群集，始终需要至少一个有效（未撤销且未过期）证书。 将使用具有最远过期日期的已部署证书，并且删除该证书会导致群集停止运行；请确保仅删除过期的证书或最快过期的未使用证书。
@@ -52,7 +52,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 
 1. 打开用于部署群集的 Resource Manager 模板。 （如果已从上述存储库下载此示例，则使用 5-VM-1-NodeTypes-Secure_Step1.JSON 部署安全群集，并打开该模板）。
 
-2. 向模板的参数部分添加**两个新参数**“secCertificateThumbprint”和“secCertificateUrlValue”，类型为“string”。 可复制以下代码片段，并将其添加到该模板。 根据具体的模板源，可能已经存在这些定义，如果是这样，请转至下一步。 
+2. 向模板的参数部分添加 **两个新参数**“secCertificateThumbprint”和“secCertificateUrlValue”，类型为“string”。 可复制以下代码片段，并将其添加到该模板。 根据具体的模板源，可能已经存在这些定义，如果是这样，请转至下一步。 
  
     ```json
        "secCertificateThumbprint": {
@@ -93,7 +93,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
          }
     ``` 
 
-    如果要**滚动更新证书**，请将新证书指定为主要证书，并将当前的主要证书移为辅助证书。 这样就可以通过一个部署步骤，将当前主要证书滚动更新为新证书。
+    如果要 **滚动更新证书**，请将新证书指定为主要证书，并将当前的主要证书移为辅助证书。 这样就可以通过一个部署步骤，将当前主要证书滚动更新为新证书。
     
     ```JSON
           "properties": {
@@ -104,7 +104,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
          }
     ``` 
 
-4. 对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 滚动到 "publisher":"Microsoft.Azure.ServiceFabric"，位于 "virtualMachineProfile" 下。
+4. 对 **所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 滚动到 "publisher":"Microsoft.Azure.ServiceFabric"，位于 "virtualMachineProfile" 下。
 
     在 Service Fabric 发布服务器设置中，应看到类似如下的内容。
     
@@ -125,7 +125,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
     
     ![Json_Pub_Setting2][Json_Pub_Setting2]
     
-    如果要**滚动更新证书**，请将新证书指定为主要证书，并将当前的主要证书移为辅助证书。 这样就可以通过一个部署步骤，将当前证书滚动更新为新证书。     
+    如果要 **滚动更新证书**，请将新证书指定为主要证书，并将当前的主要证书移为辅助证书。 这样就可以通过一个部署步骤，将当前证书滚动更新为新证书。     
 
     ```json
                    "certificate": {
@@ -142,7 +142,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
     属性现在应如下所示    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. 对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 滚动到 "vaultCertificates":，位于 "OSProfile" 下。 应该会看到类似下面的屏幕。
+5. 对 **所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 滚动到 "vaultCertificates":，位于 "OSProfile" 下。 应该会看到类似下面的屏幕。
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
@@ -208,7 +208,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-下面是已填充数据的同一个 Powershell 命令示例。
+下面是相同 PowerShell 的填写示例。
 
 ```powershell
 $ResourceGroup2 = "chackosecure5"
@@ -260,7 +260,7 @@ Get-ServiceFabricClusterHealth
 
 可以添加两种客户端证书 - 管理员或只读。 这些证书稍后可用于在群集上控制对管理员操作和查询操作的访问。 默认情况下，群集证书将添加到允许的管理员证书列表中。
 
-可以指定任意数量的客户端证书。 每个添加/删除操作都会导致对 Service Fabric 群集的配置更新。
+可以指定任意数量的客户端证书。 每次执行添加/删除操作都会更新 Service Fabric 群集的配置。
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>通过门户添加客户端证书 - 管理员或只读
@@ -277,7 +277,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>向虚拟机规模集添加应用程序证书
 
-若要将用于应用程序的证书部署到群集，请参阅[此示例 Powershell 脚本](scripts/service-fabric-powershell-add-application-certificate.md)。
+若要将用于应用程序的证书部署到群集，请参阅 [此示例 PowerShell 脚本](scripts/service-fabric-powershell-add-application-certificate.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关群集管理的详细信息，请阅读以下文章：

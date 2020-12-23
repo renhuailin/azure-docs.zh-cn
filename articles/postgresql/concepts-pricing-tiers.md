@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 5760d5e140919c9309b22f6f597e73c88f7a9069
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.date: 10/14/2020
+ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710271"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123246"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
@@ -51,7 +51,7 @@ ms.locfileid: "91710271"
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS |
 
 > [!NOTE]
-> 以下区域支持存储最多16TB 和 20000 IOPS：美国东部、美国东部2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部、美国西部2和美国西部。
+> 以下区域支持存储最多16TB 和 20000 IOPS：美国东部、美国东部2、巴西南部、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东部、日本东部、澳大利亚东部、澳大利亚东南部、美国西部2、美国中部、加拿大东部和加拿大中部。
 >
 > 所有其他区域支持最高4TB 的存储和 6000 IOPS。
 >

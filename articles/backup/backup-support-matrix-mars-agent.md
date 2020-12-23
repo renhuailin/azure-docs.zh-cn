@@ -3,12 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332672"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997233"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -45,7 +45,7 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 --- | ---
 大小 |  缓存文件夹中的可用空间应至少为备份数据总大小的 5% 到 10%。
 位置 | 缓存文件夹必须存储在要备份的计算机本地，并且该计算机必须联机。 缓存文件夹不应位于网络共享、可移动媒体或脱机卷上。
-文件夹 | 不应在删除了重复数据的卷上加密缓存文件夹，也不能对压缩后的文件夹进行加密，即稀疏文件或具有重新分析点的文件夹。
+文件夹 | 不应在已删除重复数据的卷、已压缩文件夹、稀疏文件夹或具有重分析点的文件夹中加密缓存文件夹。
 位置更改 | 可以通过停止备份引擎 (`net stop bengine`)，并将缓存文件夹复制到新驱动器来更改缓存位置。 （确保新驱动器有足够的空间。）然后，将 **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** 下的两个注册表项（**Config/ScratchLocation** 和 **Config/CloudBackupProvider/ScratchLocation**）更新为新位置，并重启引擎。
 
 ## <a name="networking-and-access-support"></a>网络和访问支持
@@ -67,14 +67,14 @@ MARS 代理需要以下 URL 的访问权限：
 
 对上面列出的所有 URL 和 IP 地址的访问都使用端口 443 上的 HTTPS 协议。
 
-使用 MARS 代理在 Azure Vm 中备份文件和文件夹时，还需要将 Azure 虚拟网络配置为允许访问。 如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD (*AzureActiveDirectory*) 和 Azure 存储 (*存储*) 创建类似的[NSG 规则](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags)，以允许进行身份验证和数据传输连接。 以下步骤介绍了为 Azure 备份标记创建规则的过程：
+使用 MARS 代理从 Azure VM 备份文件和文件夹时，还需要将 Azure 虚拟网络配置为允许访问。 如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD (AzureActiveDirectory) 和 Azure 存储（存储）创建类似的 [NSG 规则](../virtual-network/network-security-groups-overview.md#service-tags)，以便在连接后进行身份验证和数据传输。 以下步骤介绍了为 Azure 备份标记创建规则的过程：
 
 1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
 2. 在“设置”下选择“出站安全规则”。
-3. 选择“添加”  。 根据[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
-4. 选择 " **添加** " 以保存新创建的出站安全规则。
+3. 选择 **添加** 。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
+4. 选择“添加”，保存新创建的出站安全规则。
 
-同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。 有关服务标记的详细信息，请参阅[此文](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。 有关服务标记的详细信息，请参阅[此文](../virtual-network/service-tags-overview.md)。
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 
@@ -90,7 +90,7 @@ MARS 代理需要以下 URL 的访问权限：
 
 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 
-- Azure 备份 (根据恢复服务保管库的位置) 
+- Azure 备份（根据恢复服务保管库的位置）
 - Azure Active Directory (12076:5060)
 - Azure 存储（根据恢复服务保管库的位置）
 
@@ -99,21 +99,21 @@ MARS 代理需要以下 URL 的访问权限：
 >[!NOTE]
 >对于新线路，公共对等互连已弃用。
 
-### <a name="private-endpoint-support"></a>私有终结点支持
+### <a name="private-endpoint-support"></a>专用终结点支持
 
-你现在可以使用专用终结点将数据从服务器安全备份到恢复服务保管库。 由于 Azure Active Directory 当前不支持私有终结点，因此需要对 Azure Active Directory 所需的 Ip 和 Fqdn 进行单独的出站访问。
+现在可以使用专用终结点将数据从服务器安全地备份到恢复服务保管库。 由于 Azure Active Directory 目前不支持专用终结点，因此需要分别允许 Azure Active Directory 所需的 IP 和 FQDN 进行出站访问。
 
-使用 MARS 代理备份本地资源时，请确保包含要备份的资源的本地网络 () 与包含保管库的专用终结点的 Azure VNet 对等互连。 然后，你可以继续安装 MARS 代理并配置备份。 但是，必须确保仅通过对等互连网络进行备份的所有通信。
+使用 MARS 代理备份本地资源时，请确保已将本地网络（包含要备份的资源）与包含保管库的专用终结点的 Azure VNet 对等互连。 然后可以继续安装 MARS 代理并配置备份。 但必须确保仅通过对等互连网络进行所有备份通信。
 
-如果在向保管库注册了 MARS 代理后，删除该保管库的专用终结点，则需要使用保管库重新注册该容器。 不需要停止对它们的保护。
+如果在某个 MARS 代理注册到保管库后删除了该保管库的专用终结点，则需要向该保管库重新注册容器。 不需要停止对它们的保护。
 
-阅读有关 [Azure 备份的专用终结点的](private-endpoints.md)详细信息。
+了解有关 [Azure 备份的专用终结点](private-endpoints.md)的详细信息。
 
 ### <a name="throttling-support"></a>限制支持
 
 **功能** | **详细信息**
 --- | ---
-带宽控制 | 。 在 MARS 代理中，使用“更改属性”来调整带宽。****
+带宽控制 | 。 在 MARS 代理中，使用“更改属性”来调整带宽。
 网络限制 | 不适用于运行 Windows Server 2008 R2、Windows Server 2008 SP2 或 Windows 7 的备份计算机。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
@@ -141,19 +141,19 @@ Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | - .NET
 
 有关详细信息，请参阅[支持的 MABS 和 DPM 操作系统](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
 
-### <a name="operating-systems-at-end-of-support"></a>支持的操作系统
+### <a name="operating-systems-at-end-of-support"></a>结束支持的操作系统
 
-以下操作系统已结束支持，强烈建议升级操作系统以继续保持受保护状态。
+以下操作系统已结束支持，强烈建议升级操作系统以继续受到保护。
 
-如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure Vm 并利用 Azure VM 备份来继续保护。 有关迁移 Windows server 的详细信息，请访问 [此处的迁移页面](https://azure.microsoft.com/migration/windows-server/) 。
+如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure VM，并利用 Azure VM 备份继续受到保护。 访问[此处的迁移页面](https://azure.microsoft.com/migration/windows-server/)，以获取有关迁移 Windows 服务器的详细信息。
 
-对于本地或托管环境，在无法升级操作系统或迁移到 Azure 的情况下，请为计算机激活扩展的安全更新以继续保护并支持。 请注意，只有特定版本有资格进行扩展安全更新。 请访问 [FAQ 页面](https://www.microsoft.com/windows-server/extended-security-updates) 了解更多。
+对于无法升级操作系统或迁移到 Azure 的本地或托管环境，请激活计算机的扩展安全更新，以继续受到保护和支持。 请注意，仅特定版本才有资格获得扩展安全更新。 访问[常见问题解答页面](https://www.microsoft.com/windows-server/extended-security-updates)以了解详细信息。
 
 | **操作系统**                                       | **文件/文件夹** | **系统状态** | **软件/模块要求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (旗舰版、企业版、专业版、家庭高级版/基本版、初学者)  | 是               | 否                 | 检查软件/模块要求的相应服务器版本 |
-| Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation)  | 是               | 是                | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) |
-| Windows Server 2008 SP2 (Standard、Datacenter、Foundation)   | 是               | 否                 | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) <br>  -Virtual Server 2005 base + KB KB948515 |
+| Windows 7（Ultimate、Enterprise、Pro、Home Premium/Basic、Starter） | 是               | 否                 | 检查软件/模块要求的相应服务器版本 |
+| Windows Server 2008 R2（Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | - .NET 3.5、.NET 4.5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) |
+| Windows Server 2008 SP2（Standard、Datacenter、Foundation）  | 是               | 否                 | - .NET 3.5、.NET 4.5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) <br>  - Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>备份限制
 
@@ -169,15 +169,26 @@ Windows Server 2008 SP2| 1,700 GB
 Windows 8 或更高版本| 54,400 GB
 Windows 7| 1,700 GB
 
+### <a name="minimum-retention-limits"></a>最小保持期限制
+
+以下是可为不同恢复点设置的最小保持期：
+
+|恢复点 |持续时间  |
+|---------|---------|
+|每日恢复点    |   7 天      |
+|每周恢复点     |    4 周     |
+|每月恢复点    |   3 个月      |
+|每年恢复点  |      1 年   |
+
 ### <a name="other-limitations"></a>其他限制
 
-- MARS 不支持对单个保管库具有相同名称的多个计算机的保护。
+- MARS 不支持在单个保管库中保护多台同名计算机。
 
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 
 **类型** | **支持**
 --- | ---
-过<sup>*</sup>| 。
+已加密<sup>*</sup>| 。
 Compressed | 。
 稀疏 | 。
 压缩和稀疏 |。
@@ -189,7 +200,7 @@ Compressed | 。
 OneDrive（同步的文件是稀疏流）| 不支持。
 已启用 DFS 复制的文件夹 | 不支持。
 
-\* 确保 MARS 代理有权访问所需的证书来访问加密的文件。 将跳过不可访问的文件。
+\* 确保 MARS 代理有权访问所需的证书，以便访问加密的文件。 无法访问的文件将被跳过。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>支持备份的驱动器或卷
 
@@ -200,12 +211,12 @@ OneDrive（同步的文件是稀疏流）| 不支持。
 网络共享| 不支持 |卷必须位于服务器本地。
 BitLocker 锁定卷| 不支持 |必须先解锁卷才能开始备份。
 文件系统标识| 不支持 |仅支持 NTFS。
-可移动媒体| 不支持 |所有备份项源必须处于固定状态。**
+可移动媒体| 不支持 |所有备份项源必须处于固定状态。
 已删除重复数据的驱动器 | 支持 | Azure 备份将删除了重复项的数据转换为正常数据。 它可以优化、加密、存储数据并将其发送到保管库。
 
 ## <a name="support-for-initial-offline-backup"></a>初始脱机备份支持
 
-Azure 备份支持“脱机种子设定”，以使用磁盘将初始备份数据传输到 Azure。** 如果初始备份的大小可能会达到 TB 量级，则此项支持很有帮助。 支持以下脱机备份：
+Azure 备份支持“脱机种子设定”，以使用磁盘将初始备份数据传输到 Azure。 如果初始备份的大小可能会达到 TB 量级，则此项支持很有帮助。 支持以下脱机备份：
 
 - 直接备份运行 MARS 代理的本地计算机上的文件和文件夹。
 - 备份 DPM 服务器或 MABS 中的工作负荷和文件。

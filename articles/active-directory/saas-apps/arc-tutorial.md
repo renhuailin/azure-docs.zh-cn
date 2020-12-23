@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a28e81a0631db75107405576507fba36bdbfd11c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8227ea4df6ccce6a0e287e861ed9dc8efade1086
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540518"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457752"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-publishing---sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Arc Publishing - SSO 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88540518"
 * 让用户使用其 Azure AD 帐户自动登录到 Arc Publishing - SSO。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "88540518"
 
 
 * Arc Publishing - SSO 支持 **SP 和 IDP** 发起的 SSO
-* Arc Publishing - SSO 支持**恰时**用户预配
+* Arc Publishing - SSO 支持 **恰时** 用户预配
 
 
 ## <a name="adding-arc-publishing---sso-from-the-gallery"></a>从库中添加 Arc Publishing - SSO
@@ -53,7 +53,7 @@ ms.locfileid: "88540518"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Arc Publishing - SSO**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Arc Publishing - SSO** 。 
 1. 在结果面板中选择“Arc Publishing - SSO”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -108,7 +108,7 @@ ms.locfileid: "88540518"
     | 组 | user.assignedroles |
 
     > [!NOTE]
-    > 此处使用 user.assignedroles 映射组属性   。 这些是在 Azure AD 中创建的自定义角色，以将组名称映射回应用程序。 可在[此处](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)找到有关如何在 Azure AD 中创建自定义角色的更多指导
+    > 此处使用 user.assignedroles 映射组属性   。 这些是在 Azure AD 中创建的自定义角色，以将组名称映射回应用程序。 可在[此处](../develop/active-directory-enterprise-app-role-management.md)找到有关如何在 Azure AD 中创建自定义角色的更多指导
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -163,15 +163,14 @@ ms.locfileid: "88540518"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Arc Publishing - SSO 磁贴时，应当会自动登录到为其设置了 SSO 的 Arc Publishing - SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Arc Publishing - SSO 磁贴时，应当会自动登录到为其设置了 SSO 的 Arc Publishing - SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Arc Publishing - SSO](https://aad.portal.azure.com/)
-

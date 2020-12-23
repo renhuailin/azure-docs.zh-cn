@@ -9,14 +9,15 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 2229eea7b91168507ea9568a1e53930cf983b1df
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2d0c8433fff58854cb77a4e806058eae1937e71b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171938"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101113"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>如何通过 Ruby 使用 Azure 表存储或 Azure Cosmos DB 表 API
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -41,7 +42,7 @@ ms.locfileid: "87171938"
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 获取该程序包
 
-1. 使用命令行接口，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
+1. 使用命令行接口，例如 **PowerShell** (Windows)、 **Terminal** (Mac) 或 **Bash** (Unix)。
 2. 在命令窗口中键入“gem install azure-storage-blob”以安装 gem 和依赖项  。
 
 ### <a name="import-the-package"></a>导入包
@@ -97,7 +98,7 @@ end
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
 
-要添加实体，应首先创建一个定义了实体属性的哈希对象。 请注意，必须为每个实体指定 **PartitionKey** 和 **RowKey**。 这些值是实体的唯一标识符，并且查询它们比查询其他属性快很多。 Azure 存储使用 **PartitionKey** 将表的实体自动分发到多个存储节点。 具有相同 **PartitionKey** 的实体存储在同一个节点上。 **RowKey** 是实体在其所属分区内的唯一 ID。
+要添加实体，应首先创建一个定义了实体属性的哈希对象。 请注意，必须为每个实体指定 **PartitionKey** 和 **RowKey** 。 这些值是实体的唯一标识符，并且查询它们比查询其他属性快很多。 Azure 存储使用 **PartitionKey** 将表的实体自动分发到多个存储节点。 具有相同 **PartitionKey** 的实体存储在同一个节点上。 **RowKey** 是实体在其所属分区内的唯一 ID。
 
 ```ruby
 entity = { "content" => "test entity",

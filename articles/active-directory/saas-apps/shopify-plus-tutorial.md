@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 61d2eb05f7953cda16664f6b4e3317feb46aa8ad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d7a5d160fa8a0209478fe81d2880e8956828350d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548559"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Shopify Plus 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548559"
 * 让用户使用其 Azure AD 帐户自动登录 Shopify Plus。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88548559"
 
 * Shopify Plus 支持 SP 和 IDP 发起的 SSO
 
-* 配置 Shopify Plus 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Shopify Plus 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-shopify-plus-from-the-gallery"></a>从库中添加 Shopify Plus
 
@@ -138,7 +138,7 @@ ms.locfileid: "88548559"
 
 要查看全部步骤，请参阅 [Shopify 有关设置 SAML 集成的文档](https://help.shopify.com/en/manual/shopify-plus/saml)。
 
-若要在“Shopify Plus”端配置单一登录，请从 Azure Active Directory 复制“应用联合元数据 URL” 。 然后，登录[组织管理员](https://shopify.plus)并转到“用户” > “安全性” 。 选择“设置配置”，然后将应用联合元数据 URL 粘贴到“标识提供者元数据 URL”部分中********。 若要完成此步骤，请选择“添加”。
+若要在“Shopify Plus”端配置单一登录，请从 Azure Active Directory 复制“应用联合元数据 URL” 。 然后，登录[组织管理员](https://shopify.plus)并转到“用户” > “安全性” 。 选择“设置配置”，然后将应用联合元数据 URL 粘贴到“标识提供者元数据 URL”部分中 ****。 若要完成此步骤，请选择“添加”。
 
 ### <a name="create-shopify-plus-test-user"></a>创建 Shopify Plus 测试用户
 
@@ -151,7 +151,7 @@ ms.locfileid: "88548559"
 
 单独用户：
 1. 通过由 Azure AD 管理并在 Shopify Plus 中进行验证的电子邮件域，转到 Shopify Plus 中的单独用户页面。
-1. 在“SAML 身份验证”部分中，选择“编辑”，再选择“必需”，然后选择“保存”******** 。
+1. 在“SAML 身份验证”部分中，选择“编辑”，再选择“必需”，然后选择“保存”**** 。
 1. 测试此用户是否可以通过 IdP 启动和 SP 启动的流成功登录。
 
 对于电子邮件域下的所有用户：
@@ -166,18 +166,18 @@ ms.locfileid: "88548559"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Shopify Plus”磁贴时，应会自动登录到设置了 SSO 的 Shopify Plus。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Shopify Plus”磁贴时，应会自动登录到设置了 SSO 的 Shopify Plus。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Shopify Plus](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 Shopify Plus](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用高级可见性和控制保护 Shopify Plus](/cloud-app-security/proxy-intro-aad)

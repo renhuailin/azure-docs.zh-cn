@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257531"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443103"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>方案：用于调用 Web API 的移动应用程序
 
@@ -26,11 +26,11 @@ ms.locfileid: "91257531"
 
 ## <a name="getting-started"></a>入门
 
-如果尚未创建第一个应用程序，请先完成快速入门：
+如果尚未创建你的首个应用程序，请完成以下快速入门进行创建：
 
 - [快速入门：获取令牌并从 Android 应用中调用 Microsoft Graph API](./quickstart-v2-android.md)
 - [快速入门：获取令牌并从 iOS 应用中调用 Microsoft Graph API](./quickstart-v2-ios.md)
-- [快速入门：从 Xamarin iOS 和 Android 应用 (GitHub 获取令牌并调用 MICROSOFT GRAPH API](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)) 
+- [快速入门：获取令牌并从 Xamarin iOS 和 Android 应用中调用 Microsoft Graph API](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) (GitHub)
 
 ## <a name="overview"></a>概述
 
@@ -40,10 +40,10 @@ ms.locfileid: "91257531"
 
 移动应用的注意事项：
 
-- **关键在于用户体验**：在要求用户登录之前，让用户了解应用的价值。 只请求所需的权限。
-- **支持所有用户配置**：许多移动业务用户必须遵循条件访问策略和设备合规性策略。 请务必支持这些关键方案。
+- **关键在于用户体验** ：在要求用户登录之前，让用户了解应用的价值。 只请求所需的权限。
+- **支持所有用户配置** ：许多移动业务用户必须遵循条件访问策略和设备合规性策略。 请务必支持这些关键方案。
 - **实现单一登录 (SSO)** ：使用 MSAL 和 Microsoft 标识平台即可通过设备的浏览器或 Microsoft Authenticator（以及 Android 上的 Intune 公司门户）进行单一登录。
-- **实现共享设备模式**：使应用程序可以在共享设备场景（例如医院、制造、零售和金融）中使用。 [阅读有关支持共享设备模式的详细信息](msal-shared-devices.md)。
+- **实现共享设备模式** ：使应用程序可以在共享设备场景（例如医院、制造、零售和金融）中使用。 [阅读有关支持共享设备模式的详细信息](msal-shared-devices.md)。
 
 ## <a name="specifics"></a>详情
 
@@ -59,5 +59,4 @@ ms.locfileid: "91257531"
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [应用注册](scenario-mobile-app-registration.md)
+转到本方案中的下一篇文章 " [应用注册](scenario-mobile-app-registration.md)"。

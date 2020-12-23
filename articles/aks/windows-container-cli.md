@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 的 
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a14659b64bbc86cfc50cbf8a377c0245fba25065
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421223"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886237"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -19,9 +19,9 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 本文假定你对 Kubernetes 概念有基本的了解。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ### <a name="limitations"></a>限制
 
@@ -43,7 +43,7 @@ Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建
 
 > [!NOTE]
 > 本文使用 Bash 语法作为本教程中的命令。
-> 如果使用 Azure Cloud Shell，请确保将 Cloud Shell 窗口左上角的下拉列表设置为**Bash**。
+> 如果使用 Azure Cloud Shell，请确保将 Cloud Shell 窗口左上角的下拉列表设置为 **Bash**。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -70,7 +70,7 @@ az group create --name myResourceGroup --location eastus
 若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 此命令将创建必要的网络资源（如果这些资源不存在）。
 
 * 集群配置了两个节点
-* *Windows 管理员密码*和*windows 管理员用户名*参数设置在群集上创建的任何 windows server 容器的管理员凭据，并且必须满足[windows server 密码要求][windows-server-password]。
+* Windows-admin-password 和 windows-admin-username 参数为群集上创建的任何 Windows Server 容器设置管理员凭据，并且必须满足 [Windows Server 密码要求][windows-server-password] 。
 * 节点池使用 `VirtualMachineScaleSets`
 
 > [!NOTE]
@@ -94,7 +94,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> 如果出现密码验证错误，请验证*windows 管理员密码*参数是否满足[windows Server 密码要求][windows-server-password]。 如果你的密码符合要求，请尝试在另一个区域中创建资源组。 然后尝试创建包含新资源组的群集。
+> 如果出现密码验证错误，请验证 *windows-admin-password* 参数是否符合 [Windows Server 密码要求][windows-server-password]。 如果密码符合要求，请尝试在另一个区域中创建资源组。 然后尝试创建包含新资源组的群集。
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 有时，预配群集所需的时间可能不止几分钟。 在这种情况下，最多需要 10 分钟。
 
@@ -268,7 +268,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[aks-monitor]: https://aka.ms/coingfonboarding
+[aks-monitor]: ../azure-monitor/insights/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az-aks-browse
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

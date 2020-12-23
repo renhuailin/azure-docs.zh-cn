@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MariaDB 的内置策略定义
 description: 列出 Azure Database for MariaDB 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: reference
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-reference
-ms.openlocfilehash: fb2d8815c6584561135bb2b186e6cee27cb62b9a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: db1c9c2e9f33c201fd325410a4c0a9c3502bcb04
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827518"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992586"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 的 Azure Policy 内置定义
 

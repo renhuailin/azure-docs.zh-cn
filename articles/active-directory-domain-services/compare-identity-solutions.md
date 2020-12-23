@@ -2,20 +2,20 @@
 title: Azure 中基于 Active Directory 的服务的比较 | Microsoft Docs
 description: 本概述文章对 Active Directory 域服务、Azure Active Directory 和 Azure Active Directory 域服务的标识产品/服务做了比较。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: iainfou
-ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: justinha
+ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489582"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620182"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自我管理型 Azure Active Directory 域服务、Azure Active Directory 和托管型 Azure Active Directory 域服务的比较
 
@@ -26,7 +26,7 @@ ms.locfileid: "87489582"
 * **Active Directory 域服务 (AD DS)** - 随时可在企业中部署的轻型目录访问协议 (LDAP) 服务器，提供标识和身份验证、计算机对象管理、组策略和信任等关键功能。
     * AD DS 是使用本地 IT 环境的众多组织中的一个中心组件，提供核心用户帐户身份验证和计算机管理功能。
     * 有关详细信息，请参阅 [Windows Server 文档中的 Active Directory 域服务概述][overview-adds]。
-* **Azure Active Directory (Azure AD)** - 基于云的标识和移动设备管理，为 Office 365、Azure 门户或 SaaS 应用程序等资源提供用户帐户和身份验证服务。
+* **Azure Active Directory (Azure AD)** - 基于云的标识和移动设备管理，为 Microsoft 365、Azure 门户或 SaaS 应用程序等资源提供用户帐户和身份验证服务。
     * Azure AD 可与本地 AD DS 环境同步，以便为原本就在云中工作的用户提供单个标识。
     * 有关 Azure AD 的详细信息，请参阅[什么是 Azure Active Directory？][whatis-azuread]
 * **Azure Active Directory 域服务 (Azure AD DS)** - 为托管域服务提供一部分完全兼容的传统 AD DS 功能，例如域加入、组策略、LDAP 和 Kerberos/NTLM 身份验证。
@@ -114,6 +114,9 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 | 管理                      | Intune 等移动设备管理 (MDM) 软件 | 组策略                                                              |
 | 网络                      | 通过 Internet 工作                             | 必须连接到部署管理域的虚拟网络或与其对等互连 |
 | 非常适合用于...                    | 最终用户移动设备或台式机设备                  | 在 Azure 中部署的服务器 VM                                              |
+
+
+如果使用 ADFS 将本地 AD DS 和 Azure AD 配置为联合身份验证，则 Azure DS 中没有可用的（当前/有效）密码哈希。 在实施联合身份验证之前创建的 Azure AD 用户帐户可能有旧密码哈希，但这可能与其本地密码的哈希不匹配。 因此，Azure AD DS 将无法验证用户凭据
 
 ## <a name="next-steps"></a>后续步骤
 

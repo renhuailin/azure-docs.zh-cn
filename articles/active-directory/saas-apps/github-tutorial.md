@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 与 GitHub 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 GitHub 之间配置单一登录。
+title: 教程：Azure Active Directory 与 GitHub Enterprise Cloud 组织集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 GitHub Enterprise Cloud 组织之间配置单一登录。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,25 +11,25 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 67a17aaa647d9aa6943b37d54fc0e3308ad8955f
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985893"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558532"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 的单一登录 (SSO) 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>教程：Azure Active Directory 单一登录 (SSO) 与 GitHub Enterprise Cloud 组织的集成
 
-本教程介绍如何将 GitHub 与 Azure Active Directory (Azure AD) 集成。 将 GitHub 与 Azure AD 集成后，可以：
+本教程介绍如何将 GitHub Enterprise Cloud 组织与 Azure Active Directory (Azure AD) 集成。 将 GitHub Enterprise Cloud 组织与 Azure AD 集成，可以实现以下目的：
 
 * 在 Azure AD 中控制谁有权访问 GitHub Enterprise Cloud Organization。
 * 在一个中心位置管理对 GitHub Enterprise Cloud Organization 的访问 - Azure 门户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 GitHub 的集成，需要以下项：
+若要配置 Azure AD 与 GitHub Enterprise Cloud 组织的集成，需要以下项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 * 一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织
@@ -40,8 +40,8 @@ ms.locfileid: "90985893"
 
 * GitHub 支持 **SP** 发起的 SSO
 
-* GitHub 支持[**自动**用户预配（组织邀请）](github-provisioning-tutorial.md)
-* 配置 GitHub 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* GitHub 支持 [**自动** 用户预配（组织邀请）](github-provisioning-tutorial.md)
+* 配置 GitHub 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>从库中添加 GitHub
 
@@ -52,7 +52,7 @@ ms.locfileid: "90985893"
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分中，在搜索框中键入“GitHub” 。
-1. 从结果面板中选择“GitHub”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
+1. 从结果面板中选择“GitHub Enterprise Cloud - 组织”，然后添加应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>配置并测试 GitHub 的 Azure AD 单一登录
 
@@ -91,9 +91,9 @@ ms.locfileid: "90985893"
 
 5. GitHub 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中“唯一用户标识符(名称 ID)”通过 user.userprincipalname 进行映射 。 GitHub 应用程序要求通过 user.mail 对“唯一用户标识符(名称 ID)”进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”部分的屏幕截图，其中已选择“编辑”图标。](common/edit-attribute.png)
 
-6. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -149,11 +149,11 @@ ms.locfileid: "90985893"
 
 2. 导航“设置”并单击“安全性”。 
 
-    ![设置](./media/github-tutorial/security.png)
+    ![显示 GitHub“组织设置”菜单的屏幕截图，其中已选择“安全性”。](./media/github-tutorial/security.png)
 
 3. 选中“启用 SAML 身份验证”框，显示“单一登录”配置字段。 执行以下步骤：
 
-    ![设置](./media/github-tutorial/saml-sso.png)
+    ![显示“SAML 单一登录”部分的屏幕截图，其中突出显示了“启用 SAML 身份验证”和 URL 文本框。](./media/github-tutorial/saml-sso.png)
 
     a. 复制“单一登录 URL”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”的“登录 URL”文本框中  。
     
@@ -161,7 +161,7 @@ ms.locfileid: "90985893"
 
 4. 配置以下字段：
 
-    ![设置](./media/github-tutorial/configure.png)
+    ![显示“登录 URL”、“颁发者”和“公共证书”文本框的屏幕截图。](./media/github-tutorial/configure.png)
 
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
@@ -208,7 +208,7 @@ ms.locfileid: "90985893"
 
     b. 单击“发送邀请”。
 
-    ![邀请人员](./media/github-tutorial/send-invitation.png "邀请人员")
+    ![显示“邀请成员”对话框页的屏幕截图，其中已选择“成员”和“发送邀请”按钮。](./media/github-tutorial/send-invitation.png "邀请人员")
 
     > [!NOTE]
     > Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。
@@ -217,16 +217,16 @@ ms.locfileid: "90985893"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 GitHub 磁贴时，应当会自动登录到已为其设置了 SSO 的 GitHub。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 GitHub 磁贴时，应当会自动登录到已为其设置了 SSO 的 GitHub。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 GitHub](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

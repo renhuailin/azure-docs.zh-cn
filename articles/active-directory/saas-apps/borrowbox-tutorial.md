@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: d7cab94520464662589ca952e9d50102f450ab8d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 29163bf30807b6deac397217475d76e29695f1eb
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548258"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>教程：Azure Active Directory 与 BorrowBox 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88548258"
 * 可让用户使用其 Azure AD 帐户自动登录 BorrowBox（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -90,7 +90,7 @@ ms.locfileid: "88548258"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -100,11 +100,11 @@ ms.locfileid: "88548258"
 
 4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
 
-    ![[应用程序名称] 域和 URL 单一登录信息](common/preintegrated.png)
+    ![[屏幕截图显示“基本 SAML 配置”。] 域和 URL单一登录信息](common/preintegrated.png)
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![[应用程序名称] 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![[屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。] 域和 URL单一登录信息](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>`
 
@@ -189,18 +189,18 @@ ms.locfileid: "88548258"
 在本部分中，我们会在 BorrowBox 中创建一个名为 Britta Simon 的用户。 BorrowBox 支持默认启用的即时用户预配。 此部分不存在任何操作项。 如果 BorrowBox 中不存在用户，则会在身份验证后创建一个新用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系  [BorrowBox 支持团队](mailto:borrowbox@bolinda.com)。
+> 如果需要手动创建用户，请联系 [BorrowBox 支持团队](mailto:borrowbox@bolinda.com)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 BorrowBox 磁贴时，应会自动登录到为其设置了 SSO 的 BorrowBox。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 BorrowBox 磁贴时，应会自动登录到为其设置了 SSO 的 BorrowBox。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

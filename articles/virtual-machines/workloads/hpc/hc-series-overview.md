@@ -1,24 +1,19 @@
 ---
 title: HC 系列 VM 概述-Azure 虚拟机 |Microsoft Docs
 description: 了解 Azure 中 HC 系列 VM 大小的预览支持。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: de6051e8880bbe3df42031a0d0d7b60abc27d2b0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 672175d5bb92c8ab6dc347ece5ad6b14d8232ef4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689793"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024072"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虚拟机概述
 
@@ -48,7 +43,7 @@ Intel （r）白金、黄金和银 Cpu 还引入了一个片上的2D 网格网�
 | 内存                           | 8 GB/核心 (352 总)             |
 | 本地磁盘                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5   |
-| Network (网络)                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC    |
+| 网络                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC    |
 
 ## <a name="software-specifications"></a>软件规范
 

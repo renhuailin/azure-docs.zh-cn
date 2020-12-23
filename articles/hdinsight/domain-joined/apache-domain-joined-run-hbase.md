@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73044649"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993629"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略
 
@@ -45,7 +45,7 @@ ms.locfileid: "73044649"
 
 ## <a name="create-domain-users"></a>创建域用户
 
-访问[使用企业安全性套餐创建 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)，以了解如何创建 **sales_user1** 和 **marketing_user1** 域用户。 在生产方案中，域用户来自你的 Active Directory·租户。
+访问 [使用企业安全性套餐创建 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)，以了解如何创建 **sales_user1** 和 **marketing_user1** 域用户。 在生产方案中，域用户来自你的 Active Directory·租户。
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>创建 HBase 表并导入示例数据
 
@@ -95,7 +95,7 @@ ms.locfileid: "73044649"
 
 为 **sales_user1** 和 **marketing_user1** 创建 Ranger 策略。
 
-1. 打开“Ranger 管理 UI”  。 单击“HBase”下的“\<群集名称 >_hbase”。  
+1. 打开“Ranger 管理 UI”  。 在“HBase”下，单击“\<ClusterName>_hbase”。
 
    ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 

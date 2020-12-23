@@ -9,21 +9,18 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 部署适用于 FHIR 的 Azure API - 门户
-      href: fhir-paas-portal-quickstart.md
-    - name: 部署适用于 FHIR 的 Azure API - PowerShell
-      href: fhir-paas-powershell-quickstart.md
-    - name: 部署适用于 FHIR 的 Azure API - CLI
-      href: fhir-paas-cli-quickstart.md
-    - name: 部署 Azure API for FHIR - ARM 模板
-      href: fhir-paas-arm-template-quickstart.md
-      displayName: deploy azure resource manager template
-    - name: 部署适用于 Azure 的 FHIR Server - 门户
-      href: fhir-oss-portal-quickstart.md
-    - name: 部署适用于 Azure 的 FHIR Server - PowerShell
-      href: fhir-oss-powershell-quickstart.md
-    - name: 部署适用于 Azure 的 FHIR Server - CLI
-      href: fhir-oss-cli-quickstart.md
+    - name: 部署 Azure API for FHIR
+      expanded: false
+      items:
+        - name: 使用门户
+          href: fhir-paas-portal-quickstart.md
+        - name: 使用 PowerShell
+          href: fhir-paas-powershell-quickstart.md
+        - name: 使用 CLI
+          href: fhir-paas-cli-quickstart.md
+        - name: 使用 ARM 模板
+          displayName: Resource Manager
+          href: fhir-paas-arm-template-quickstart.md
     - name: 部署适用于 FHIR 的 Azure IoT 连接器（预览版）- 门户
       href: iot-fhir-portal-quickstart.md
 - name: 教程
@@ -77,20 +74,29 @@
         - name: 配置数据库设置
           href: configure-database.md
         - name: 配置客户管理的密钥
-          href: bring-your-own-key.md
+          href: customer-managed-key.md
         - name: 配置 CORS
           href: configure-cross-origin-resource-sharing.md
         - name: 配置导出
           href: configure-export-data.md
+        - name: 配置专用链接
+          href: configure-private-link.md
     - name: 导出数据
       expanded: false
       items:
         - name: 导出数据
           href: export-data.md
+        - name: 去标识化导出
+          href: de-identified-export.md
     - name: 查找标识对象 ID
       href: find-identity-object-ids.md
-    - name: 在 Azure API for FHIR® 中启用诊断日志记录
-      href: enable-diagnostic-logging.md
+    - name: 诊断日志记录和指标
+      expanded: false
+      items:
+        - name: 在 Azure API for FHIR 中启用诊断日志记录
+          href: enable-diagnostic-logging.md
+        - name: 显示和配置适用于 FHIR 的 Azure IoT 连接器（预览版）指标
+          href: iot-metrics-display.md
     - name: 为适用于 FHIR 的 Azure API 获取令牌 - CLI
       href: get-healthcare-apis-access-token-cli.md
     - name: 排查适用于 FHIR 的 Azure IoT 连接器（预览版）中的故障

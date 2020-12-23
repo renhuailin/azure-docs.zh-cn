@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 813fc7db2a028590797bef1c54fff20b231c3d7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206017"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965895"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>适用于 Windows 的网络观察程序代理虚拟机扩展
 
@@ -34,7 +35,7 @@ ms.locfileid: "86206017"
 
 ### <a name="operating-system"></a>操作系统
 
-适用于 Windows 的网络观察程序代理扩展可以针对 Windows Server 2008 R2、2012、2012 R2、2016和2019版本运行。 目前不支持 Nano Server。
+可以在 Windows Server 2008 R2、2012、2012 R2、2016 和 2019 版本中运行适用于 Windows 的网络观察程序代理扩展。 目前不支持 Nano Server。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 

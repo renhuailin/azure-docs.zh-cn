@@ -1,17 +1,17 @@
 ---
-title: 管理 Azure 实验室服务中的教室实验室 | Microsoft Docs
-description: 了解如何创建和配置教室实验室、如何查看所有教室实验室、如何与实验室用户共享注册链接，或者如何删除实验室。
+title: 管理 Azure 实验室服务中的实验室 |Microsoft Docs
+description: 了解如何创建和配置教室实验室，查看所有实验室，与实验室用户共享注册链接，或删除实验室。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251671"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434203"
 ---
-# <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
-本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
+# <a name="manage-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的实验室 
+本文介绍如何创建和删除教室实验室。 还介绍了如何在实验室帐户中查看所有实验室。 
 
 ## <a name="prerequisites"></a>先决条件
 若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以按照以下文章中的步骤将其他用户添加到“实验室创建者”角色：[将用户添加到“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
@@ -24,9 +24,9 @@ ms.locfileid: "91251671"
     
     ![创建课堂实验室](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 1. 在“新建实验室”窗口中，执行以下操作：： 
-    1. 指定实验室的**名称**。 
+    1. 指定实验室的 **名称**。 
     1. 选择类所需的“虚拟机大小”。 有关可用大小列表，请参阅 [VM 大小](#vm-sizes)部分。 
-    1. 选择要用于课堂实验室的“虚拟机映像”。 如果选择 Linux 映像，可以看到一个用于**启用远程桌面连接**的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
+    1. 选择要用于课堂实验室的“虚拟机映像”。 如果选择 Linux 映像，可以看到一个用于 **启用远程桌面连接** 的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
 
         如果使用实验室帐户所有者凭据登录，则会看到一个选项，可为实验室启用更多映像。 有关详细信息，请参阅[在创建实验室时启用映像](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)。
     1. 查看页面上显示的“每小时总价”。 
@@ -37,12 +37,12 @@ ms.locfileid: "91251671"
         > [!NOTE]
         > 如果实验室帐户配置为[允许实验室创建者选取实验室位置](allow-lab-creator-pick-lab-location.md)选项，则会显示一个用于选择实验室位置的选项。 
 4. 在“虚拟机凭据”页上，指定实验室中所有 VM 的默认凭据。
-    1. 指定实验室中所有 VM 的**用户名**。
-    2. 指定用户的**密码**。 
+    1. 指定实验室中所有 VM 的 **用户名**。
+    2. 指定用户的 **密码**。 
 
         > [!IMPORTANT]
         > 记下用户名和密码。 这些信息不会再次显示。
-    3. 如果希望学生设置自己的密码，请禁用“为所有虚拟机使用同一密码”选项。 此步骤是**可选的**。 
+    3. 如果希望学生设置自己的密码，请禁用“为所有虚拟机使用同一密码”选项。 此步骤是 **可选的**。 
 
         教师可以选择对实验室中的所有 VM 使用相同的密码，或允许学生为其 VM 设置密码。 默认情况下，所有 Windows 和 Linux 映像（Ubuntu 除外）均启用此设置。 选择“Ubuntu” VM 时，此设置将禁用，因此在学生首次登录时，会提示他们设置密码。  
 
@@ -58,13 +58,13 @@ ms.locfileid: "91251671"
 5. 此时会看到以下屏幕，显示模板 VM 的创建状态。 在实验室中创建模板最长需要 20 分钟时间。 
 
     ![模板 VM 的创建状态](./media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
-8. 在“模板”页上执行以下步骤：对于此教程来说，这些步骤是**可选**的。
+8. 在“模板”页上执行以下步骤：对于此教程来说，这些步骤是 **可选** 的。
 
     1. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 GUI 远程桌面来建立连接。  使用 GUI 远程桌面需要附加设置。 有关详细信息，请参阅[为 Linux 虚拟机启用图形远程桌面](how-to-use-remote-desktop-linux-student.md)。
     1. 选择“重置密码”以重置 VM 的密码。 
     1. 在模板 VM 上安装并配置软件。 
     1. **停止** VM。  
-    1. 输入模板的**说明**
+    1. 输入模板的 **说明**
 9.  在“模板”页上的工具栏中选择“发布”。 
 
     ![“发布模板”按钮](./media/tutorial-setup-classroom-lab/template-page-publish-button.png)
@@ -74,7 +74,7 @@ ms.locfileid: "91251671"
 10. 在“发布模板”页上，输入要在实验室中创建的虚拟机的数目，然后选择“发布”。 
 
     ![发布模板 - VM 数](./media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
-11. 可以在页面上查看模板的**发布状态**。 此过程最长可能需要花费一小时。 
+11. 可以在页面上查看模板的 **发布状态**。 此过程最长可能需要花费一小时。 
 
     ![发布模板 - 进度](./media/tutorial-setup-classroom-lab/publish-template-progress.png)
 12. 选择左侧菜单上的“虚拟机”或选择“虚拟机”磁贴，切换到“虚拟机池”页。 确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
@@ -103,22 +103,26 @@ ms.locfileid: "91251671"
 > [!NOTE]
 > 创建课堂实验室时，列表中可能不会显示某些 VM 大小。 根据实验室位置的当前容量填充列表。 如果实验室帐户创建者[允许实验室创建者选取实验室位置](allow-lab-creator-pick-lab-location.md)，则可以尝试为实验室选择其他位置，并查看 VM 大小是否可用。 
 
+## <a name="view-all-labs"></a>查看所有实验室
 
-## <a name="view-all-classroom-labs"></a>查看所有教室实验室
 1. 导航到 [Azure 实验室服务门户](https://labs.azure.com)。
-2. 选择“登录”。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码 。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
-3. 确认在所选实验室帐户中看到所有实验室。 在实验室磁贴上，你会看到实验室中的虚拟机数和每个用户的配额（在计划时间之外）。
+1. 选择“登录”。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码 。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
+
+    [!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+1. 确认在所选实验室帐户中看到所有实验室。 在实验室磁贴上，你会看到实验室中的虚拟机数和每个用户的配额（在计划时间之外）。
 
     ![所有实验室](./media/how-to-manage-classroom-labs/all-labs.png)
-3. 使用顶部的下拉列表选择另一实验室帐户。 此时会在所选实验室帐户中看到实验室。 
+1. 使用顶部的下拉列表选择另一实验室帐户。 此时会在所选实验室帐户中看到实验室。 
 
 ## <a name="delete-a-classroom-lab"></a>删除教室实验室
+
 1. 在实验室对应的磁贴中，选择角落里的三个点 (...)，然后选择“删除”。 
 
     ![“删除”按钮](./media/how-to-manage-classroom-labs/delete-button.png)
-3. 在“删除实验室”对话框中，选择“删除”以继续删除操作。 
+1. 在“删除实验室”对话框中，选择“删除”以继续删除操作。 
 
 ## <a name="switch-to-another-classroom-lab"></a>切换到另一教室实验室
+
 若要从当前教室实验室切换到另一教室实验室，请在顶部的实验室帐户中选择实验室下拉列表。
 
 ![从顶部的下拉列表中选择实验室](./media/how-to-manage-classroom-labs/switch-lab.png)
@@ -135,5 +139,5 @@ ms.locfileid: "91251671"
 
 - [以实验室所有者身份设置并发布模板](how-to-create-manage-template.md)
 - [以实验室所有者身份配置并控制实验室的使用](how-to-configure-student-usage.md)
-- [以实验室用户身份访问教室实验室](how-to-use-classroom-lab.md)
+- [作为实验室用户，访问实验室](how-to-use-classroom-lab.md)
 

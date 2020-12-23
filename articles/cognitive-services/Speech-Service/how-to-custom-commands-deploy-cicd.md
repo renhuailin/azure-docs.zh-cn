@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 6dda50a443babca88a0a650fde60df0744d0a1d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839242"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021824"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>使用 Azure DevOps 持续部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "91839242"
 > [!div class = "checklist"]
 > * 用于开发 (开发的自定义命令应用程序) 
 > * 生产 (生产) 的自定义命令应用程序
-> * 注册 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
+> * 注册 [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
 
 ## <a name="exportimportpublish"></a>导出/导入/发布
 
@@ -83,7 +83,7 @@ ms.locfileid: "91839242"
 1. 在右上角 "运行" 按钮旁，选择 " **变量**"。 单击 " **新建变量**"。
 1. 添加以下变量：
     
-    | 变量 | 描述 |
+    | 变量 | 说明 |
     | ------- | --------------- | ----------- |
     | SourceAppId | 开发应用程序的 ID |
     | TargetAppId | 生产应用程序的 ID |
@@ -99,7 +99,7 @@ ms.locfileid: "91839242"
 
 ## <a name="deploy-from-source-code"></a>从源代码进行部署
 
-如果要将应用程序的定义保留在存储库中，我们提供了来自源代码的部署的脚本。 由于脚本在 bash 中，因此，如果您使用的是 Windows，则需要安装 [Linux 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。
+如果要将应用程序的定义保留在存储库中，我们提供了来自源代码的部署的脚本。 由于脚本在 bash 中，因此，如果您使用的是 Windows，则需要安装 [Linux 子系统](/windows/wsl/install-win10)。
 
 脚本托管于 [认知服务语音助手-自定义命令](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/custom-commands)。 将 bash 目录中的脚本克隆到存储库。 请确保保留相同的路径。
 
@@ -110,7 +110,7 @@ ms.locfileid: "91839242"
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | 参数 | 描述 |
+    | 自变量 | 说明 |
     | ------- | --------------- | ----------- |
     | region | 应用程序的区域，即 westus2。 |
     | subscriptionkey | 语音资源的订阅密钥。 |
@@ -159,7 +159,7 @@ ms.locfileid: "91839242"
 1. 在右上角 "运行" 按钮旁，选择 " **变量**"。 单击 " **新建变量**"。
 1. 添加以下变量：
 
-    | 变量 | 描述 |
+    | 变量 | 说明 |
     | ------- | --------------- | ----------- |
     | TargetAppId | 生产应用程序的 ID |
     | SubscriptionKey | 用于这两个应用程序的订阅密钥 |

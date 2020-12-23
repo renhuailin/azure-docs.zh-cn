@@ -7,22 +7,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901685"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130657"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>为 Azure 流分析配置事件排序策略
 
-本文介绍如何在 Azure 流分析中设置和使用延期抵达和失序事件策略。 仅当在查询中使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句时，才会应用这些策略，这些策略仅应用于云输入源。
+本文介绍如何在 Azure 流分析中设置和使用延期抵达和失序事件策略。 仅当在查询中使用 [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句时，才会应用这些策略，这些策略仅应用于云输入源。
 
 ## <a name="event-time-and-arrival-time"></a>事件时间和抵达时间
 
-流分析作业可以根据事件时间或抵达时间处理事件。  **事件/应用程序时间**是事件有效负载中的时间戳（生成事件的时间）。 **抵达时间**是输入源（事件中心/IoT 中心/Blob 存储）收到事件时的时间戳。 
+流分析作业可以根据事件时间或抵达时间处理事件。  **事件/应用程序时间** 是事件有效负载中的时间戳（生成事件的时间）。 **抵达时间** 是输入源（事件中心/IoT 中心/Blob 存储）收到事件时的时间戳。 
 
-默认情况下，流分析按抵达时间处理事件，但你可以通过在查询中使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句，来按事件时间处理事件。  仅当按事件时间处理事件时，延期抵达和失序策略才适用。 配置这些设置时，应考虑方案的延迟要求和正确性要求。 
+默认情况下，流分析按抵达时间处理事件，但你可以通过在查询中使用 [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句，来按事件时间处理事件。  仅当按事件时间处理事件时，延期抵达和失序策略才适用。 配置这些设置时，应考虑方案的延迟要求和正确性要求。 
 
 ## <a name="what-is-late-arrival-policy"></a>什么是延期抵达策略？
 
@@ -76,11 +76,11 @@ ms.locfileid: "87901685"
 1. 确保事件中心/IoT 中心的所有分区都收到输入。 
 2. 在查询中使用 Partition by PartitionID 子句。 
 
-## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>即使将 "延迟到达" 策略设置为0，也会出现5秒的延迟？
-如果有一个输入分区从未接收到任何输入，就会发生这种情况。 可以按分区验证输入指标以验证此行为。 
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>为什么即使将延迟到达策略设置为 0 时，也会出现 5 秒的延迟？
+如果有一个输入分区从未接收到任何输入，就会发生这种情况。 你可以按分区验证输入指标，以验证此行为。 
 
-如果分区没有超过配置的延迟到达阈值的任何数据，流分析会按照 "事件排序注意事项" 部分中所述的方式提升应用程序时间戳。 这需要预计的到达时间。 如果分区决不包含任何数据，流分析会将到达时间估算为*本地时间5秒*。 由于此分区从不包含任何数据，因此可能会将水印延迟显示5秒。  
+如果分区没有超过配置的延迟到达阈值的任何数据，则流分析将按照事件排序注意事项部分中的说明推进应用程序时间戳。 这需要预计的到达时间。 如果分区从未有过任何数据，则流分析会将到达时间估算为本地时间 - 5 秒。 出于此原因，从未有过任何数据的分区可能会显示 5 秒的水印延迟。  
 
 ## <a name="next-steps"></a>后续步骤
 * [时间处理注意事项](stream-analytics-time-handling.md)
-* [可以在流分析中使用的指标](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [可以在流分析中使用的指标](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

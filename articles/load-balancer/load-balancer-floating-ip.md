@@ -1,5 +1,5 @@
 ---
-title: Azure 负载均衡器的浮动 IP 配置
+title: Azure 负载均衡器浮动 IP 配置
 description: Azure 负载均衡器浮动 IP 概述
 services: load-balancer
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: e15aab3ebfe82fa97f5716769b5ff9675b4b3dc4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 01cca2f2233ed5cdfb3003bb44c40f481bcf9bda
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91637148"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699400"
 ---
-# <a name="azure-load-balancer-floating-ip-configuration"></a>Azure 负载均衡器的浮动 IP 配置
+# <a name="azure-load-balancer-floating-ip-configuration"></a>Azure 负载均衡器浮动 IP 配置
 
 负载均衡器针对 UDP 和 TCP 应用程序提供了多种功能。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91637148"
 
 ## <a name="limitations"></a><a name = "limitations"></a>限制
 
-- 对于负载平衡方案，辅助 IP 配置当前不支持浮动 IP
+- 对于负载均衡方案，辅助 IP 配置当前不支持浮动 IP
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -45,4 +45,4 @@ ms.locfileid: "91637148"
 - 详细了解 [Azure 负载均衡器](load-balancer-overview.md)。
 - 了解[运行状况探测](load-balancer-custom-probe-overview.md)。
 - 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
-- 详细了解[网络安全组](../virtual-network/security-overview.md)。
+- 详细了解[网络安全组](../virtual-network/network-security-groups-overview.md)。

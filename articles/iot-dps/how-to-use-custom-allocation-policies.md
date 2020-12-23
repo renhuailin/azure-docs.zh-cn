@@ -7,13 +7,13 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.custom: devx-track-csharp
-ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530890"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571634"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -44,23 +44,23 @@ ms.locfileid: "90530890"
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+- [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
-* 已安装最新版本的 [Git](https://git-scm.com/download/)。
+- 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>创建预配服务和两个部门 IoT 中心
 
 在本部分中，将使用 Azure Cloud Shell 创建预配服务，并使用两个 IoT 中心来表示 **Contoso 烤面包机分部** 和 **contoso 热度泵**。
 
 > [!TIP]
-> 本文中使用的命令在 "美国西部" 位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以通过一个词或多字格式指定位置;例如： westus、美国西部、美国西部等。此值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
+> 本文中使用的命令在 "美国西部" 位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
 >
 
 1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-    以下示例在*westus*区域中创建名为 " *contoso-us-资源组*" 的资源组。 建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
+    以下示例在 *westus* 区域中创建名为 " *contoso-us-资源组*" 的资源组。 建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location westus
@@ -68,7 +68,7 @@ ms.locfileid: "90530890"
 
 2. 使用 " [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) " 命令通过 Azure Cloud Shell 创建设备预配服务。 该预配服务将添加到 *contoso-us-resource-group*。
 
-    以下示例在*westus*位置创建名为 " *contoso-预配-1098* " 的预配服务。 必须使用唯一的服务名称。 在服务名称中的 **1098** 位置构成你自己的后缀。
+    以下示例在 *westus* 位置创建名为 " *contoso-预配-1098* " 的预配服务。 必须使用唯一的服务名称。 在服务名称中的 **1098** 位置构成你自己的后缀。
 
     ```azurecli-interactive 
     az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
@@ -76,9 +76,9 @@ ms.locfileid: "90530890"
 
     此命令可能需要花费几分钟时间完成。
 
-3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区**** IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
+3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
 
-    以下示例在*westus*位置创建名为*1098 烤面包机*的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
+    以下示例在 *westus* 位置创建名为 *1098 烤面包机* 的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -86,9 +86,9 @@ ms.locfileid: "90530890"
 
     此命令可能需要花费几分钟时间完成。
 
-4. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区**** IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
+4. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
 
-    以下示例在*westus*位置创建名为*1098 heatpumps*的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
+    以下示例在 *westus* 位置创建名为 *1098 heatpumps* 的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -114,7 +114,7 @@ ms.locfileid: "90530890"
 
     **运行时堆栈**：从下拉列表中选择“.NET Core”。 
 
-    **区域**：选择你的资源组所在的同一区域。 此示例使用 **美国西部**。
+    **区域**：选择你的资源组所在的同一区域。 此示例使用“美国西部”。
 
     > [!NOTE]
     > 默认已启用 Application Insights。 本文不需要 Application Insights，但它可以帮助你了解和调查处理自定义分配时遇到的任何问题。 如果需要，可以禁用 Application Insights，方法是选择“监视”选项卡，然后对“启用 Application Insights”选择“否”。   
@@ -133,7 +133,7 @@ ms.locfileid: "90530890"
 
 7. 在下一页上，对于“创建函数”步骤，请选择“Webhook + API”磁贴，然后选择“创建”。    随即会创建名为 **HttpTrigger1** 的函数，门户将显示 **run.csx** 代码文件的内容。
 
-8. 引用所需的 NuGet 包。 为了创建初始设备孪生，自定义分配函数将使用必须载入托管环境的两个 Nuget 包中定义的类。 在 Azure Functions 中，Nuget 包是使用 *function.host* 文件引用的。 此步骤将保存并上传 *function.host* 文件。
+8. 引用所需的 NuGet 包。 若要创建初始设备克隆，自定义分配函数使用在必须加载到宿主环境中的两个 NuGet 包中定义的类。 使用 Azure Functions，将使用 *函数主机* 文件引用 NuGet 包。 此步骤将保存并上传 *function.host* 文件。
 
     1. 将以下行复制到你偏好的编辑器中，并将文件作为 *function.host* 保存在计算机上。
 
@@ -410,7 +410,7 @@ ms.locfileid: "90530890"
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装 **之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
 2. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
 
@@ -437,7 +437,7 @@ ms.locfileid: "90530890"
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    如果 `cmake` 找不到 C++ 编译器，则在运行该命令时可能会出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。
+    如果 `cmake` 找不到 C++ 编译器，则在运行该命令时可能会出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。
 
     生成成功后，最后的几个输出行如下所示：
 
@@ -591,4 +591,4 @@ ms.locfileid: "90530890"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
-* 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
+* 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md)

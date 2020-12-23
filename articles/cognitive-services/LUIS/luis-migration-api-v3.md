@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541333"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018780"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改
 
@@ -60,7 +60,7 @@ V3 在从预览版过渡到正式版的过程中进行了以下更改：
 
 ### <a name="bing-spell-check"></a>必应拼写检查
 
-V3 预测终结点不支持此 API-继续使用 V2 API 预测终结点进行拼写更正。 如果在使用 V3 API 时需要拼写更正，请让客户端应用程序调用 [必应拼写检查](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) api，并将文本发送到 LUIS api 之前，将文本更改为正确的拼写。
+V3 预测终结点不支持此 API-继续使用 V2 API 预测终结点进行拼写更正。 如果在使用 V3 API 时需要拼写更正，请让客户端应用程序调用 [必应拼写检查](../bing-spell-check/overview.md) api，并将文本发送到 LUIS api 之前，将文本更改为正确的拼写。
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework 和 Azure 机器人服务客户端应用程序
 
@@ -212,7 +212,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
-在 V2 中，实体由实体名称以及用作对象属性的角色进行标识：__
+在 V2 中，实体由实体名称以及用作对象属性的角色进行标识：
 
 ```JSON
 "entities":[
@@ -227,7 +227,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 ]
 ```
 
-在 V3 中，如果预测针对角色，则实体由实体角色引用：__
+在 V3 中，如果预测针对角色，则实体由实体角色引用：
 
 ```JSON
 "entities":{

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322748"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142757"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>将 IoT 设备连接到 Azure：IoT 中心和事件中心
 
@@ -26,7 +26,7 @@ Azure 提供了专为各种类型的连接和通信开发的服务来帮助你�
 
 Azure IoT 中心是连接 IoT 设备的云网关，它会收集数据并促成业务见解和自动化。 此外，IoT 中心还提供了用来丰富设备与后端系统之间关系的功能。 双向通信功能表示既可以从设备接收数据，也可以将命令和策略发回到设备。 例如，使用云到设备的消息传送可以更新属性或调用设备管理操作。 借助云到设备的通信，还可以使用 Azure IoT Edge 将云中情报发送到边缘设备。 IoT 中心提供的唯一设备级标识有助于更好地保护 IoT 解决方案免受潜在攻击。 
 
-[Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)是 Azure 的大数据流式处理服务。 它是为高吞吐量数据流式处理方案设计的，在这种场景中，客户每天可能会发送数十亿个请求。 事件中心使用分区的使用者模型来横向扩展流并且集成到 Azure 的大数据和分析服务中，这些服务包括 Databricks、流分析、ADLS 和 HDInsight。 此服务设计用来为大数据应用和解决方案提供支持，它提供事件中心捕获和自动扩张之类的功能。 此外，IoT 中心还将事件中心用于其遥测数据流路径，因此，IoT 解决方案也会受益于事件中心的强大功能。
+[Azure 事件中心](../event-hubs/event-hubs-about.md)是 Azure 的大数据流式处理服务。 它是为高吞吐量数据流式处理方案设计的，在这种场景中，客户每天可能会发送数十亿个请求。 事件中心使用分区的使用者模型来横向扩展流并且集成到 Azure 的大数据和分析服务中，这些服务包括 Databricks、流分析、ADLS 和 HDInsight。 此服务设计用来为大数据应用和解决方案提供支持，它提供事件中心捕获和自动扩张之类的功能。 此外，IoT 中心还将事件中心用于其遥测数据流路径，因此，IoT 解决方案也会受益于事件中心的强大功能。
 
 概括而言，这两个解决方案都适合大规模的数据引入。 仅凭 IoT 中心就能提供丰富的 IoT 特定功能，使客户在将 IoT 设备连接到 Azure 云后可以最大程度地提高企业价值。  如果你的 IoT 之旅刚刚开始，请一开始就使用 IoT 中心来为数据引入方案提供支持，这将确保当业务和技术方面需要 IoT 功能时有完善的这类功能可供立即访问。
 

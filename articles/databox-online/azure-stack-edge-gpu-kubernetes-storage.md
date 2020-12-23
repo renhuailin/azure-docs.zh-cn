@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899274"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448706"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的 Kubernetes 存储管理
 
@@ -33,17 +33,17 @@ Kubernetes pod 是无状态的，但其运行的应用程序通常有状态。 �
 
 若要了解如何为 Kubernetes 管理存储，需要了解两个 API 资源： 
 
-- **PersistentVolume (PV) **：这是 Kubernetes 群集中的一部分存储。 可以静态方式将 Kubernetes 存储设置为 `PersistentVolume` 。 它也可以动态设置为  `StorageClass` 。
+- **PersistentVolume (PV)**：这是 Kubernetes 群集中的一部分存储。 可以静态方式将 Kubernetes 存储设置为 `PersistentVolume` 。 它也可以动态设置为  `StorageClass` 。
 
-- **PersistentVolumeClaim (PVC) **：这是用户对存储的请求。 Pvc 使用 PV 资源。 Pvc 可以请求特定的大小和访问模式。 
+- **PersistentVolumeClaim (PVC)**：这是用户对存储的请求。 Pvc 使用 PV 资源。 Pvc 可以请求特定的大小和访问模式。 
 
     由于用户需要 `PersistentVolumes` 具有不同的属性来解决不同的问题，因此群集管理员需要能够提供多种不同于 `PersistentVolumes` 大小和访问模式的方式。 为了满足这些需求，需要 `StorageClass` 资源。
 
 存储设置可以是静态或动态的。 以下各节讨论了每种设置类型。
 
-## <a name="staticprovisioning"></a>静态预配
+## <a name="static-provisioning"></a>静态预配
 
-Kubernetes 群集管理员可以通过静态方式预配存储。 为此，他们可以使用基于 SMB/NFS 文件系统的存储后端，或者使用在本地环境中通过网络本地附加的 iSCSI 磁盘，甚至可以在云中使用 Azure 文件或 Azure 磁盘。 默认情况下不设置此存储类型，并且群集管理员必须计划和管理此设置。 
+Kubernetes 群集管理员可静态地配置存储。 为此，他们可以使用基于 SMB/NFS 文件系统的存储后端，或者使用在本地环境中通过网络本地附加的 iSCSI 磁盘，甚至可以在云中使用 Azure 文件或 Azure 磁盘。 默认情况下不设置此存储类型，并且群集管理员必须计划和管理此设置。 
  
 以下图表描述了如何在 Kubernetes 中使用静态预配的存储： 
 
@@ -55,10 +55,10 @@ Kubernetes 群集管理员可以通过静态方式预配存储。 为此，他�
 
 1. **声明存储**：提交请求存储的 PVC 部署。 此存储声明是 PersistentVolumeClaim (PVC) 。 如果 PV 的大小和访问模式与 PVC 的大小和访问模式相匹配，则 PVC 将绑定到 PV。 PVC 和 PV 映射一对一映射。
 
-1. 将**Pvc 装载到容器**：将 pvc 绑定到 PV 后，可以将该 pvc 装载到容器中的路径上。 当容器中的应用程序逻辑从/向此路径中读取/写入数据时，数据将写入 SMB 存储。
+1. 将 **Pvc 装载到容器**：将 pvc 绑定到 PV 后，可以将该 pvc 装载到容器中的路径上。 当容器中的应用程序逻辑从/向此路径中读取/写入数据时，数据将写入 SMB 存储。
  
 
-## <a name="dynamicprovisioning"></a>动态预配
+## <a name="dynamic-provisioning"></a>动态预配
 
 以下图表描述了如何在 Kubernetes 中使用静态预配的存储： 
 
@@ -104,6 +104,26 @@ spec:
 ```
 
 有关详细信息，请参阅 [通过 kubectl 在 Azure Stack Edge Pro 上通过静态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
+
+若要访问同一静态预配的存储，适用于 IoT 的存储绑定的相应卷装载选项如下所示。 `/home/input`是在容器中可访问的卷的路径。
+
+```
+{
+"HostConfig": {
+"Mounts": [
+{
+"Target": "/home/input",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+},
+{
+"Target": "/home/output",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+}]
+}
+}
+```
 
 Azure Stack Edge Pro 还具有一个 `StorageClass` 名为 `ase-node-local` 的内置，它使用附加到 Kubernetes 节点的数据磁盘存储。 这 `StorageClass` 支持动态设置。 您可以 `StorageClass` 在 pod 应用程序中进行引用，并为您自动创建 PV。 有关详细信息，请参阅 [Kubernetes 仪表板](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) 以查询 `ase-node-local StorageClass` 。
 

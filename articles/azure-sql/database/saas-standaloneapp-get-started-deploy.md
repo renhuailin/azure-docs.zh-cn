@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: 1545f9cde15f010ba3d7d52c6fea1ef233d2fac5
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619463"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793273"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的独立单租户应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "91619463"
 
 为提供的三个租户部署应用：
 
-1. 单击每个蓝色的“部署到 Azure”按钮，在 [Azure 门户](https://portal.azure.com)中打开部署模板****。 每个模板要求两个参数值；新资源组的名称和用于区分该部署和应用中其他部署的用户名。 下一个步骤提供了设置这些值的详细信息。
+1. 单击每个蓝色的“部署到 Azure”按钮，在  。 每个模板要求两个参数值；新资源组的名称和用于区分该部署和应用中其他部署的用户名。 下一个步骤提供了设置这些值的详细信息。
 
    **Contoso 音乐厅**   
    [![图像显示标记为“部署到 Azure”的按钮。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
@@ -57,21 +57,21 @@ ms.locfileid: "91619463"
 2. 输入每个部署所需的参数值。
 
     > [!IMPORTANT]
-    > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 为每个应用程序部署创建新的资源组****。  不要使用现有资源组。 不要使用该应用程序及其创建的任何资源进行生产。 使用完该应用程序时请删除所有资源组，停止相关计费。
+    > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 为每个应用程序部署创建新的资源组  。  不要使用现有资源组。 不要使用该应用程序及其创建的任何资源进行生产。 使用完该应用程序时请删除所有资源组，停止相关计费。
 
     最好在资源名称中仅使用小写字母、数字和连字符。
-    * 对于“资源组”，请选择“新建”，然后为资源组提供一个小写的名称****。 **wingtip-sa-\<venueName\>-\<user\>** 是建议的模式。  对于 \<venueName\>，请将场所名称替换为不带空格的名称。 对于 \<user\>，请将其替换为下面的用户值。  使用此模式，资源组名称可能是 wingtip-sa-contosoconcerthall-af1、wingtip-sa-dogwooddojo-af1、wingtip-sa-fabrikamjazzclub-af1******。
-    * 从下拉列表中选择一个**位置**。
+    * 对于“资源组”，请选择“新建”，然后为资源组提供一个小写的名称  。 **wingtip-sa-\<venueName\>-\<user\>** 是建议的模式。  对于 \<venueName\>，请将场所名称替换为不带空格的名称。 对于 \<user\>，请将其替换为下面的用户值。  使用此模式，资源组名称可能是 wingtip-sa-contosoconcerthall-af1、wingtip-sa-dogwooddojo-af1、wingtip-sa-fabrikamjazzclub-af1  。
+    * 从下拉列表中选择一个 **位置** 。
 
-    * 对于“用户”，建议使用较短的用户值，例如在缩写后加上数字：af1******。
+    * 对于“用户”，建议使用较短的用户值，例如在缩写后加上数字：af1  。
 
 
-3. **部署应用程序**。
+3. **部署应用程序** 。
 
     * 单击“我同意上述条款和条件”。
     * 单击“购买”。
 
-4. 通过单击“通知”（搜索框右侧的钟形图标）监视所有三个部署的状态****。 部署应用大约需要五分钟。
+4. 通过单击“通知”（搜索框右侧的钟形图标）监视所有三个部署的状态  。 部署应用大约需要五分钟。
 
 
 ## <a name="run-the-applications"></a>运行应用程序
@@ -91,9 +91,9 @@ ms.locfileid: "91619463"
 该应用使用 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 每个租户特定的应用实例将租户名称用作 URL 中域名的一部分。 所有租户 URL 包含特定的 **User** 值。 URL 采用以下格式：
 - http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
 
-每个租户的数据库**位置**包含在部署的相应应用的应用设置中。
+每个租户的数据库 **位置** 包含在部署的相应应用的应用设置中。
 
-在生产环境中，通常要创建一条 CNAME DNS 记录，[*将公司 Internet 域指向*](../../traffic-manager/traffic-manager-point-internet-domain.md)流量管理器配置文件的 URL。
+在生产环境中，通常要创建一条 CNAME DNS 记录， [*将公司 Internet 域指向*](../../traffic-manager/traffic-manager-point-internet-domain.md)流量管理器配置文件的 URL。
 
 
 ## <a name="explore-the-servers-and-tenant-databases"></a>浏览服务器和租户数据库
@@ -102,16 +102,16 @@ ms.locfileid: "91619463"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到资源组列表。
 2. 应能看到三个租户资源组。
-3. 打开 wingtip-sa-fabrikam-&lt;user&gt; 资源组，其中包括“Fabrikam 爵士乐俱乐部”这一部署的资源****。  fabrikamjazzclub-&lt;user&gt; 服务器包括 fabrikamjazzclub 数据库********。
+3. 打开 wingtip-sa-fabrikam-&lt;user&gt; 资源组，其中包括“Fabrikam 爵士乐俱乐部”这一部署的资源  。  fabrikamjazzclub-&lt;user&gt; 服务器包括 fabrikamjazzclub 数据库  。
 
 每个租户数据库都是一个 50 DTU 的 独立数据库。
 
 ## <a name="additional-resources"></a>其他资源
 
 <!--
-* Additional [tutorials that build on the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* Additional [tutorials that build on the Wingtip SaaS application](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](elastic-pool-overview.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](../../sql-database/elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](./elastic-jobs-overview.md)
 -->
 
 - 若要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
@@ -131,5 +131,3 @@ ms.locfileid: "91619463"
 > * 如何删除示例资源以停止相关计费。
 
 接下来，请尝试[预配和目录](saas-standaloneapp-provision-and-catalog.md)教程，你将在其中了解租户目录的用途，该目录可实现一系列跨租户方案，如架构管理和租户分析。
- 
-

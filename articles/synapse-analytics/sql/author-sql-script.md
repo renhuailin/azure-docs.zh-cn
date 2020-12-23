@@ -1,23 +1,24 @@
 ---
-title: 'Azure Synapse Studio 中的 SQL 脚本 (预览版) '
-description: 介绍 Azure Synapse Studio (预览版) SQL 脚本
+title: Synapse Studio 中的 SQL 脚本
+description: Azure Synapse Analytics 中的 Synapse Studio SQL 脚本简介。
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 9d130c2a2db9ccead7180b6248398a84fcb34c3f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8d4c1928ae1fac9b840245756c4bf5fe22a83f0f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441232"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590505"
 ---
-# <a name="using-sql-script-in-azure-synapse-studio-preview"></a>使用 Azure Synapse Studio 中的 SQL 脚本 (预览版) 
+# <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Synapse Studio SQL 脚本 
 
-Azure Synapse Studio (预览版) 提供了一个 SQL 脚本 web 界面供你编写 SQL 查询。 可以 (预览版) 或按需 (预览) 连接到 SQL 池。 
+Synapse Studio 提供了一个用于编写 SQL 查询的 SQL 脚本 web 界面。 
 
 ## <a name="begin-authoring-in-sql-script"></a>开始在 SQL 脚本中创作 
 
@@ -25,33 +26,26 @@ Azure Synapse Studio (预览版) 提供了一个 SQL 脚本 web 界面供你编�
 
 1. 从 "开发" 菜单中，选择 **"+"** 图标，然后选择 " **SQL 脚本**"。
 
-![新的 sql 脚本](media/author-sql-script/newsqlscript.png)
-
 2. 从 " **操作** " 菜单中，选择 " **新建 SQL 脚本**"。
-> [!div class="mx-imgBorder"]
-> ![新建 sql 脚本2操作](media/author-sql-script/newsqlscript2actions.png)
-
-此外，也可以： 
 
 3. 从 "开发 SQL 脚本" 下的 "**操作**" 菜单中选择 "**导入**"。 从本地存储中选择现有的 SQL 脚本。
-![新的 sql 脚本3操作](media/author-sql-script/newsqlscript3actions.png)
+![新的 sql 脚本3操作](media/author-sql-script/new-sql-script-3-actions.png)
 
 ## <a name="create-your-sql-script"></a>创建 SQL 脚本
 
 1. 选择 " **属性** " 按钮并替换分配给 sql 脚本的默认名称，以选择 sql 脚本的名称。 
-![新的 sql 脚本重命名](media/author-sql-script/newsqlscriptrename.png)
+![新的 sql 脚本重命名](media/author-sql-script/new-sql-script-rename.png)
 
-2. 从 " **连接到** " 下拉菜单中选择特定 sql 池或 sql 点播。 如果需要，请选择 " **使用数据库**" 数据库。 
-![新建 sql 选择池](media/author-sql-script/newsqlchoosepool.png)
+2. 从 " **连接到** " 下拉菜单中选择特定专用 sql 池或无服务器 SQL 池。 如果需要，请选择 " **使用数据库**" 数据库。 
+![新建 sql 选择池](media/author-sql-script/new-sql-choose-pool.png)
 
 3. 开始使用 intellisense 功能创作你的 SQL 脚本。
-![新的 sql intellisense](media/author-sql-script/newsqlintellisense.png)
 
 ## <a name="run-your-sql-script"></a>运行 SQL 脚本
 
 选择 " **运行** " 按钮以执行您的 SQL 脚本。 默认情况下，表中会显示结果。
 
-![新的 sql 脚本结果表](media/author-sql-script/newsqlscriptresultstable.png)
+![新的 sql 脚本结果表](media/author-sql-script/new-sql-script-results-table.png)
 
 ## <a name="export-your-results"></a>导出结果
 
@@ -59,13 +53,13 @@ Azure Synapse Studio (预览版) 提供了一个 SQL 脚本 web 界面供你编�
 
 还可以通过选择 " **图表** " 按钮，将图表中的 SQL 脚本结果可视化。 选择 "图表类型" 和 " **类别" 列**。 可以通过选择 " **另存为图像**" 将图表导出到图片中。 
 
-![新的 sql 脚本结果图表](media/author-sql-script/newsqlscriptresultschart.png)
+![新的 sql 脚本结果图表](media/author-sql-script/new-sql-script-results-chart.png)
 
 ## <a name="explore-data-from-a-parquet-file"></a>浏览 Parquet 文件中的数据
 
 可以使用 SQL 脚本浏览存储帐户中的 Parquet 文件，以预览文件内容。
 
-![新脚本 sqlod parquet](media/author-sql-script/newscriptsqlodparquet.png)
+![新脚本 sqlod parquet](media/author-sql-script/new-script-sqlod-parquet.png)
 
 ## <a name="sql-tables-external-tables-views"></a>SQL 表、外部表、视图
 
@@ -76,9 +70,21 @@ Azure Synapse Studio (预览版) 提供了一个 SQL 脚本 web 界面供你编�
 - CREATE
 - DROP 和 CREATE 
  
-通过右键单击 SQL 池和 SQL 点播节点上的节点来浏览可用的手势。
+通过右键单击 SQL 数据库的节点来浏览可用的手势。
  
-![新建脚本数据库](media/author-sql-script/newscriptdatabase.png)
+![新建脚本数据库](media/author-sql-script/new-script-database.png)
+
+## <a name="create-folders-and-move-sql-scripts-into-a-folder"></a>创建文件夹并将 SQL 脚本移动到文件夹中
+
+从 "开发 SQL 脚本" 下的 "操作" 菜单中，从 "开发 SQL 脚本" 下的 "操作" 菜单中选择 "新建文件夹"。 并在弹出窗口中键入新文件夹的名称。 
+
+> [!div class="mx-imgBorder"] 
+> ![显示选定了 "新文件夹" 的 SQL 脚本示例的屏幕截图。](./media/author-sql-script/new-sql-script-create-folder.png)
+
+若要将 SQL 脚本移动到文件夹中，您可以选择该 sql 脚本，然后从 "操作" 菜单中选择 "移到"。 然后在新窗口中查找目标文件夹，并将 sql 脚本移动到选定文件夹中。你还可以快速地将 sql 脚本拖放到文件夹中。  
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-move-folder.png)
 
 ## <a name="next-steps"></a>后续步骤
 

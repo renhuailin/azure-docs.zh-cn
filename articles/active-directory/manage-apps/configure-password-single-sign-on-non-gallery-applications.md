@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 1b647e15d3fc99a7f15fbc24e2b6050fdfdc6e93
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598341"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654705"
 ---
 # <a name="understand-password-based-single-sign-on"></a>了解基于密码的单一登录
 
@@ -29,22 +29,22 @@ ms.locfileid: "91598341"
 
 - 支持需要多个登录字段的应用程序，这适用于不只需要用户名和密码字段才能登录的应用程序
 
-- 自定义用户在输入其凭据时在 [我的应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) 上看到的 "用户名" 和 "密码" 字段的标签
+- 自定义用户在输入其凭据时在 [我的应用](../user-help/my-apps-portal-end-user-access.md) 上看到的 "用户名" 和 "密码" 字段的标签
 
 - 允许用户为手动键入的任何现有应用程序帐户提供自己的用户名和密码。
 
-- 允许业务组的成员使用[自助应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)功能指定分配给用户的用户名和密码
+- 允许业务组的成员使用[自助应用程序访问](./manage-self-service-access.md)功能指定分配给用户的用户名和密码
 
 -   允许管理员指定个人或组在使用更新凭据功能登录到应用程序时使用的用户名和密码 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 使用 Azure AD 作为标识提供者 (IdP) 并配置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能用几个操作进行配置。 其他人需要深入配置。 若要快速增加知识，请在应用程序管理中演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
 
 > [!IMPORTANT] 
-> 在某些情况下，" **单一登录** " 选项将不会出现在 " **企业应用**程序" 中的应用程序的导航中。 
+> 在某些情况下，" **单一登录** " 选项将不会出现在 " **企业应用** 程序" 中的应用程序的导航中。 
 >
-> 如果使用 **应用注册** 注册了应用程序，则默认情况下，单一登录功能将配置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用 **应用注册** 添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅 [Azure Active Directory 应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要了解有关 SSO 标准的详细信息，请参阅 [使用 Microsoft 标识平台进行身份验证和授权](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
+> 如果使用 **应用注册** 注册了应用程序，则默认情况下，单一登录功能将配置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用 **应用注册** 添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅 [Azure Active Directory 应用程序清单](../develop/reference-app-manifest.md)。 若要了解有关 SSO 标准的详细信息，请参阅 [使用 Microsoft 标识平台进行身份验证和授权](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)。 
 >
 > 当应用程序托管在另一个租户中，或者如果你的帐户没有服务主体) 的所需权限 (全局管理员、云应用程序管理员、应用程序管理员或所有者时，导航中将缺少 **单一登录** 。 权限还可能会导致出现这样的情况：你可以打开 **单一登录** 但无法保存。 若要详细了解 Azure AD 管理角色，请参阅 (https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 
@@ -60,14 +60,14 @@ ms.locfileid: "91598341"
 
 输入 URL 后，选择 " **保存**"。 Azure AD 分析用户名和密码输入字段的登录页的 HTML。 如果尝试成功，则已完成。
  
-下一步是 [将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)。 分配用户和组后，你可以提供凭据，以便在用户登录到应用程序时使用。 选择 " **用户和组**"，选中用户或组所在行的复选框，然后选择 " **更新凭据**"。 最后，输入要用于该用户或组的用户名和密码。 否则，系统将在启动时提示用户输入凭据。
+下一步是 [将用户或组分配到应用程序](./assign-user-or-group-access-portal.md)。 分配用户和组后，你可以提供凭据，以便在用户登录到应用程序时使用。 选择 " **用户和组**"，选中用户或组所在行的复选框，然后选择 " **更新凭据**"。 最后，输入要用于该用户或组的用户名和密码。 否则，系统将在启动时提示用户输入凭据。
  
 
 ## <a name="manual-configuration"></a>手动配置
 
 如果 Azure AD 的分析尝试失败，你可以手动配置登录。
 
-1. 在 " ** \<application name> 配置**" 下，选择 "**配置 \<application name> 密码" "单一登录设置**" 以显示 "**配置登录**" 页。 
+1. 在 " **\<application name> 配置**" 下，选择 "**配置 \<application name> 密码" "单一登录设置**" 以显示 "**配置登录**" 页。 
 
 2. 选择 **"手动检测登录字段"**。 将显示说明手动检测登录字段的其他说明。
 
@@ -88,5 +88,5 @@ ms.locfileid: "91598341"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)
+- [将用户或组分配到应用程序](./assign-user-or-group-access-portal.md)
 - [配置用户帐户自动预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)

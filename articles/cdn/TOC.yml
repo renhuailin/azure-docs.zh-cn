@@ -35,6 +35,10 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
 - name: 概念
   items:
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 缓存工作原理
       href: cdn-how-caching-works.md
     - name: 中国内容分发
@@ -64,6 +68,8 @@
           href: cdn-create-endpoint-how-to.md
         - name: 使用 Azure PowerShell 进行管理
           href: cdn-manage-powershell.md
+        - name: 载入根或顶点域
+          href: onboard-apex-domain.md
         - name: 按国家或地区限制访问
           href: cdn-restrict-access-by-country.md
         - name: 通过压缩文件来提高性能
@@ -105,8 +111,8 @@
     - name: 分析
       href: cdn-log-analysis.md
       items:
-        - name: HTTP 原始日志
-          href: enable-raw-logs.md
+        - name: 监视、指标和访问日志
+          href: monitoring-and-access-log.md
         - name: Azure 诊断日志
           href: cdn-azure-diagnostic-logs.md
         - name: Verizon 中用于 Azure CDN 的分析工具
@@ -187,7 +193,7 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-cdn.html'
+      href: /answers/topics/azure-cdn.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: 定价计算器

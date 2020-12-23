@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 45baee286fede0ab16da62b7c2e84008d58690b1
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 5cf4dc5123040fd2af8efe54153867a8709fe1ef
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91626490"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652222"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 到 Azure 的灾难恢复体系结构
 
@@ -45,7 +45,7 @@ ms.locfileid: "91626490"
 
 | **名称**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允许 VM 与 Site Recovery 服务进行通信。 |
 | 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
@@ -131,7 +131,7 @@ Site Recovery 按如下所述创建快照：
 
 **说明** | **详细信息** | 建议
 --- | --- | ---
-应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用 "仅复制备份" (VSS_BT_COPY 不更改 Microsoft SQL 事务日志备份时间和序列号的) 方法 </br></br> 2) 启动快照时，VSS 在卷上执行写入时复制 (牛) 操作。<br/><br/>   3) 在执行牛之前，VSS 会通知计算机上的每个应用程序需要将内存驻留数据刷新到磁盘。<br/><br/>   4) VSS 之后，在这种情况下，备份/灾难恢复应用程序 (Site Recovery) 读取快照数据并继续操作。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
+应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用 "仅复制备份" (VSS_BT_COPY 不更改 Microsoft SQL 事务日志备份时间和序列号的) 方法 </br></br> 2) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   3) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存常驻数据刷新到磁盘。<br/><br/>   4) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
 
 ## <a name="failover-and-failback-process"></a>故障转移和故障回复过程
 

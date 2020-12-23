@@ -2,19 +2,17 @@
 title: Azure Monitor 工作簿文本参数
 description: 使用预生成和自定义的参数化工作簿简化复杂的报表。 详细了解工作簿文本参数。
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ac4c348b776cee2356f77424698b078947f4ad3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687330"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143572"
 ---
 # <a name="workbook-text-parameters"></a>工作簿文本参数
 
@@ -87,5 +85,5 @@ ms.locfileid: "81687330"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](workbooks-visualizations.md)详细了解工作簿丰富的可视化效果选项。
+* [开始](./workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
 * [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。

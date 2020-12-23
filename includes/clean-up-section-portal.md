@@ -4,18 +4,18 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 04/14/2020
 ms.author: cephalin
-ms.openlocfilehash: 88ebda7fcdd3fbdf148c9870ee3190b4824ff0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47f72bb49e9bbb27be18a08ec396789091afeab2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83121378"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182490"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 
 在前面的步骤中，你在资源组中创建了 Azure 资源。 如果将来不再需要这些资源，可以通过删除资源组来删除它们。
  
-从 Azure 门户菜单或**主**页中选择“资源组”，  然后在“资源组”页中选择“myResourceGroup”。  
+从 Azure 门户菜单或“主页”页上，选择“资源组” 。 然后，在“资源组”页上，选择“myResourceGroup” 。
 
 在“myResourceGroup”页中，确保列出的资源是要删除的资源。 
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330394"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449226"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 在 Azure Stack Edge Pro 设备上使用 PersistentVolume 运行 Kubernetes 有状态应用程序
 
@@ -37,7 +37,7 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MyS
 ### <a name="for-client-accessing-the-device"></a>对于访问设备的客户端
 
 - 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
-    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
@@ -343,7 +343,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```                                                                                         
 
-在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 执行以下步骤：
+在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 执行以下步骤:
 
 1. 卸载共享。 在 Azure 门户中，请 > "共享" 中转到 **Azure Stack Edge 资源** ，并选择并单击要卸载的共享。 选择 " **卸载** "，然后确认操作。 等待共享卸载。 卸载 (会释放共享，因此 Kubernetes 群集中的关联 PersistentVolume) 。 
 

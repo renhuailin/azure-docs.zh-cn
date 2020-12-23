@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892891"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737237"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>教程：在 Azure 虚拟网络中部署 Azure Spring Cloud（VNet 注入）
 
@@ -27,10 +27,11 @@ ms.locfileid: "90892891"
 * 授权客户控制 Azure Spring Cloud 的入站和出站网络通信
 
 ## <a name="prerequisites"></a>先决条件
-必须根据说明[在 Azure 门户上注册资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)或运行以下 az CLI 命令来注册 Azure Spring Cloud 资源提供程序 `Microsoft.AppPlatform`：
+必须根据说明[在 Azure 门户上注册资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)或运行以下 az CLI 命令来注册 Azure Spring Cloud 资源提供程序 Microsoft.AppPlatform 和 Microsoft.ContainerService ：
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
+az provider register --namespace Microsoft.ContainerService
 ```
 ## <a name="virtual-network-requirements"></a>虚拟网络要求
 将 Azure Spring Cloud 服务实例部署到其中的虚拟网络必须满足以下要求：
@@ -66,7 +67,7 @@ az provider register --namespace Microsoft.AppPlatform
 
 1. 选择“添加子网”，然后输入 service-runtime-subnet 作为“子网名称”，输入 10.1.0.0/24 作为“子网地址范围” 。 然后单击“添加”  。
 
-1. 再次选择“添加子网”，然后输入 apps-subnet 作为“子网名称”，输入 10.1.1.0/24 作为“子网地址范围” 。  单击“添加”。
+1. 再次选择“添加子网”，然后输入“子网名称”和“子网地址范围”，例如“apps-subnet”和“10.1.1.0/24”  。  单击“添加”。
 
 1. 单击“查看 + 创建”。 将剩余的字段保留为默认值，然后单击“创建”。
 
@@ -135,11 +136,11 @@ az role assignment create \
 
 部署后，订阅中将创建另外两个资源组来托管 Azure Spring Cloud 服务实例的网络资源。  导航到“主页”，然后从顶部菜单项中选择“资源组”，以查找以下新资源组 。
 
-名为 azure-spring-cloud-service-runtime_{service instance name}_{service instance region} 的资源组包含服务实例的服务运行时网络资源。
+名为 ap-svc-rt_{service instance name}_{service instance region} 的资源组包含服务实例的服务运行时网络资源。
 
   ![服务运行时](./media/spring-cloud-v-net-injection/service-runtime-resource-group.png)
 
-名为 azure-spring-cloud-service-runtime_{service instance name}_{service instance region} 的资源组包含服务实例的 Spring Boot 微服务应用程序网络资源。
+名为 ap-app_{service instance name}_{service instance region} 的资源组包含服务实例的 Spring Boot 微服务应用程序网络资源。
 
   ![应用资源组](./media/spring-cloud-v-net-injection/apps-resource-group.png)
 

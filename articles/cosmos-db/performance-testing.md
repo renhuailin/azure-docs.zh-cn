@@ -3,18 +3,20 @@ title: 执行 Azure Cosmos DB 缩放和性能测试
 description: 了解如何执行 Azure Cosmos DB 缩放和性能测试。 然后可为高性能应用方案评估 Azure Cosmos DB 的功能。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: ffe368d763ee93d1864f0f807cbe18b8ebfe41c9
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: cb0dd8eb879c5511da3c79a3dee6a715fb1275e4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851674"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358633"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>执行 Azure Cosmos DB 缩放和性能测试
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 性能和规模测试是应用程序开发过程中的关键步骤。 对许多应用程序而言，数据库层对整体性能和可伸缩性有重大影响。 因此，它是性能测试的关键组成部分。 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 专为弹性缩放和可预测性能而构建。 这些功能使它非常适合需要高性能数据库层的应用程序。 
 
@@ -25,7 +27,7 @@ ms.locfileid: "85851674"
 * 在哪里可以找到可用于 Azure Cosmos DB 性能测试的示例 .NET 客户端应用程序？ 
 * 如何从客户端应用程序实现 Azure Cosmos DB 的高吞吐量级别？
 
-若要开始处理代码，请从 [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下载项目。 
+若要开始处理代码，请从 [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)下载项目。 
 
 > [!NOTE]
 > 此应用程序的目标是演示如何使用少量的客户端计算机从 Azure Cosmos DB 中获得更佳性能。 此示例的目标不是实现 Azure Cosmos DB 的峰值吞吐量容量（可以不受限制地缩放）。
@@ -35,9 +37,9 @@ ms.locfileid: "85851674"
 ## <a name="run-the-performance-testing-application"></a>运行性能测试应用程序
 最快的入门方法是根据下列步骤编译并运行 .NET 示例。 也可以查看源代码，然后在自己的客户端应用程序中实施类似的配置。
 
-**步骤1：** 从[Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下载项目，或派生 GitHub 存储库。
+**步骤 1：** 从 [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)下载项目，或创建 GitHub 存储库分支。
 
-**步骤2：** 在 App.config 中修改 EndpointUrl、AuthorizationKey、CollectionThroughput 和 DocumentTemplate （可选）的设置。
+**步骤 2：** 在 App.config 中修改 EndpointUrl、AuthorizationKey、CollectionThroughput 和 DocumentTemplate（可选）的设置。
 
 > [!NOTE]
 > 为集合预配高吞吐量之前，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)估算每个集合的成本。 Azure Cosmos DB 按小时对存储和吞吐量单独计费。 可在测试完成后，删除或降低 Azure Cosmos 容器的吞吐量以节省成本。
@@ -87,7 +89,7 @@ DocumentDBBenchmark completed successfully.
 Press any key to exit...
 ```
 
-**步骤 4（如有必要）：** 工具报告的吞吐量（RU/秒）应该等于或大于为某个集合或一组集合预配的吞吐量。 如果情况并非如此，以较小的增量提高 DegreeOfParallelism 可帮助达到该限制。 如果客户端应用的吞吐量达到持平状态，请在其他客户端计算机上启动多个应用实例。 如果需要此步骤的帮助，请使用[Azure 门户](https://portal.azure.com)中的支持票证。
+**步骤 4（如有必要）：** 工具报告的吞吐量（RU/秒）应该等于或大于为某个集合或一组集合预配的吞吐量。 如果情况并非如此，以较小的增量提高 DegreeOfParallelism 可帮助达到该限制。 如果客户端应用的吞吐量达到持平状态，请在其他客户端计算机上启动多个应用实例。 如需此步骤的帮助，请通过 [Azure 门户](https://portal.azure.com)开具支持票证。
 
 应用处于运行状态后，可以尝试不同的[编制索引策略](index-policy.md)和[一致性级别](consistency-levels.md)，以了解它们对吞吐量和延迟的影响。 也可以查看源代码，并在自己的测试套件或生产应用程序中实施类似的配置。
 
@@ -95,8 +97,8 @@ Press any key to exit...
 
 本文介绍了如何使用 .NET 控制台应用对 Azure Cosmos DB 执行性能和缩放测试。 有关详细信息，请参阅以下文章：
 
-* [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)
 * [用于提高 Azure Cosmos DB 性能的客户端配置选项](performance-tips.md)
-* [Azure Cosmos DB 中的服务器端分区](partition-data.md)
+* [Azure Cosmos DB 中的服务器端分区](partitioning-overview.md)
 
 

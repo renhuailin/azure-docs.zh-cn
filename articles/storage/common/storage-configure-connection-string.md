@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087248"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783872"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
 
@@ -35,17 +35,17 @@ ms.locfileid: "87087248"
 
 * 可以将连接字符串存储在环境变量中。
 * 在桌面或设备上运行的应用程序可在 **app.config** 或 **web.config** 文件中存储连接字符串。 将连接字符串添加到这些文件中的 **AppSettings** 节。
-* 在 Azure 云服务中运行的应用程序可在 [Azure 服务配置架构 (.cscfg) 文件](https://msdn.microsoft.com/library/ee758710.aspx)中存储连接字符串。 将连接字符串添加到服务配置文件的 **ConfigurationSettings** 节。
+* 在 Azure 云服务中运行的应用程序可在 [Azure 服务配置架构 (.cscfg) 文件](/previous-versions/azure/reference/ee758710(v=azure.100))中存储连接字符串。 将连接字符串添加到服务配置文件的 **ConfigurationSettings** 节。
 
-在配置文件中存储连接字符串可以轻松地更新连接字符串，以便在[Azurite 存储模拟器](../common/storage-use-azurite.md)与云中的 Azure 存储帐户之间切换。 只需编辑连接字符串，使其指向目标环境。
+在一个配置文件中存储连接字符串可以轻松地更新连接字符串，从而在 [Azurite 存储模拟器](../common/storage-use-azurite.md)和云中的 Azure 存储帐户之间切换。 只需编辑连接字符串，使其指向目标环境。
 
 可以使用 [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) 在运行时访问连接字符串，而不考虑应用程序在何处运行。
 
-## <a name="configure-a-connection-string-for-azurite"></a>配置 Azurite 的连接字符串
+## <a name="configure-a-connection-string-for-azurite"></a>为 Azurite 配置连接字符串
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-有关 Azurite 的详细信息，请参阅[将 Azurite 模拟器用于本地 Azure 存储开发](../common/storage-use-azurite.md)。
+有关 Azurite 的详细信息，请参阅[使用 Azurite 模拟器进行本地 Azure 存储开发](../common/storage-use-azurite.md)。
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>为 Azure 存储帐户配置连接字符串
 
@@ -57,7 +57,7 @@ ms.locfileid: "87087248"
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-尽管 Azure 存储支持在连接字符串中使用 HTTP 和 HTTPS，但我们*强烈建议使用 HTTPS*。
+尽管 Azure 存储支持在连接字符串中使用 HTTP 和 HTTPS，但我们 *强烈建议使用 HTTPS* 。
 
 > [!TIP]
 > 可以在 [Azure 门户](https://portal.azure.com)中找到存储帐户的连接字符串。 在存储帐户的菜单边栏选项卡中导航到“设置” > “访问密钥”，即可看到主访问密钥和辅助访问密钥的连接字符串。 
@@ -110,9 +110,10 @@ AccountKey=<account-key>
 
 如果已将某个存储终结点映射到自定义域并在连接字符串中省略该终结点，则无法使用该连接字符串从代码访问该服务中的数据。
 
+有关为 Azure 存储配置自定义域的详细信息，请参阅将 [自定义域映射到 Azure Blob 存储终结点](../blobs/storage-custom-domain-name.md)。
+
 > [!IMPORTANT]
-> 连接字符串中的服务终结点值必须是格式正确的 URI，包括 `https://`（推荐）或 `http://`。 由于 Azure 存储尚不支持对自定义域使用 HTTPS，因此，*必须*为指向自定义域的任何终结点 URI 指定 `http://`。
->
+> 连接字符串中的服务终结点值必须是格式正确的 URI，包括 `https://`（推荐）或 `http://`。
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>创建带有终结点后缀的连接字符串
 
@@ -140,6 +141,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将 Azurite 模拟器用于本地 Azure 存储开发](../common/storage-use-azurite.md)
+* [使用 Azurite 模拟器进行本地 Azure 存储开发](../common/storage-use-azurite.md)
 * [Azure 存储资源管理器](storage-explorers.md)
 * [使用共享访问签名 (SAS)](storage-sas-overview.md)

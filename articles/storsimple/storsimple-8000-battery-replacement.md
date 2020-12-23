@@ -7,11 +7,11 @@ ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 17a6a07d117557cdee23634bd211a14cf90d49e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508973"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023765"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的备用电池模块
 
@@ -32,7 +32,7 @@ Microsoft Azure StorSimple 设备上的主机箱电源和散热模块 (PCM) 使�
 StorSimple 设备的备用电池模块是可现场更换的单元。 将其安装在 PCM 中之前，电池模块应存放在原包装中。 按以下步骤移除备用电池。
 
 #### <a name="to-remove-the-backup-battery-module"></a>移除备用电池模块
-1. 在 Azure 门户中，转到“StorSimple Device Manager 服务”边栏选项卡。 转到“设备”****，然后从设备列表中选择设备。 导航到 "**监视**  >  **硬件运行状况**"。 在 **“共享组件”** 下，查看电池的状态。
+1. 在 Azure 门户中，转到“StorSimple Device Manager 服务”边栏选项卡。 转到“设备”，然后从设备列表中选择设备。 导航到 "**监视**  >  **硬件运行状况**"。 在 **“共享组件”** 下，查看电池的状态。
 2. 确定其中的电池发生故障的 PCM。 图 1 显示 StorSimple 设备的背面。
    
     ![设备主机箱模块底板](./media/storsimple-battery-replacement/IC740994.png)
@@ -46,7 +46,7 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
    | 3 |控制器 0 |
    | 4 |控制器 1 |
    
-    如图 2 中的编号 3 所示，与“电池故障”相对应的 PCM 0 上的监控指示灯 LED 应亮起。****
+    如图 2 中的编号 3 所示，与“电池故障”相对应的 PCM 0 上的监控指示灯 LED 应亮起。
    
     ![设备 PCM 监控指示灯 LED 底板](./media/storsimple-battery-replacement/IC740992.png)
    
@@ -76,22 +76,22 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
 1. 按正确方向将备用电池模块置于 PCM 中。
 2. 按下电池模块把手，直至连接器就位。
 3. 按[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md)中的指导更换主机箱中的 PCM。
-4. 替换完成后，请切换到你的设备，然后**Monitor**  >  在 Azure 门户中进行 "监视" "**硬件运行状况**"。 验证电池的状态，确保安装成功。 状态为绿色表示电池功能正常。
+4. 替换完成后，请切换到你的设备，然后 **Monitor**  >  在 Azure 门户中进行 "监视" "**硬件运行状况**"。 验证电池的状态，确保安装成功。 状态为绿色表示电池功能正常。
 
 ## <a name="maintain-the-backup-battery-module"></a>维护备用电池模块
 在 StorSimple 设备中，备用电池模块在断电时为控制器供电。 有了该模块，StorSimple 设备就可以以可控方式在关机前保存关键数据。 由于 PCM 中有两个完全充电的电池，因此系统可以应对连续断电两次的情况。
 
-在 Azure 门户中，“监视器”边栏选项卡下的“硬件运行状况”指示电池是否功能不良，以及电池寿命是否即将到头。******** 在 **“共享组件”** 下会指示电池状态为 **“电池处于 PCM 0”** 或 **“电池处于 PCM 1”**。 如果电池寿命即将到头，此边栏选项卡会显示“已降级”状态；如果电池寿命已到头，此边栏选项卡会显示“故障”状态。********
+在 Azure 门户中，“监视器”边栏选项卡下的“硬件运行状况”指示电池是否功能不良，以及电池寿命是否即将到头。 在 **“共享组件”** 下会指示电池状态为 **“电池处于 PCM 0”** 或 **“电池处于 PCM 1”**。 如果电池寿命即将到头，此边栏选项卡会显示“已降级”状态；如果电池寿命已到头，此边栏选项卡会显示“故障”状态。
 
 > [!NOTE]
-> 电池可能会在只需充电的情况下报告“故障”。****
+> 电池可能会在只需充电的情况下报告“故障”。
 
 
-如果出现“已降级”状态，则建议执行以下步骤的操作：****
+如果出现“已降级”状态，则建议执行以下步骤的操作：
 
 * 系统可能最近遇到断电的情况，或者电池可能正在进行定期维护。 继续操作之前，请观察系统 12 小时。
   
-  * 如果已连续 12 小时连接到 AC 电源且控制器和 PCM 在运行，而状态仍为“已降级”，则需更换电池。**** 请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)，了解如何更换备用电池模块。
+  * 如果已连续 12 小时连接到 AC 电源且控制器和 PCM 在运行，而状态仍为“已降级”，则需更换电池。 请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)，了解如何更换备用电池模块。
   * 如果状态在 12 小时后变为“正常”，说明电池功能正常，只需进行维护性充电。
 * 如果并没有发生 AC 电源中断的情况，同时 PCM 已启用并连接到 AC 电源，则需更换电池。 [联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)，订购更换用备用电池模块。
 

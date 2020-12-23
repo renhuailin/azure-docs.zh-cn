@@ -3,18 +3,20 @@ title: 使用更改源估算器 - Azure Cosmos DB
 description: 了解如何使用更改源估算器分析更改源处理器的进度
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997211"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339829"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用更改源估算器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文介绍如何监视[更改源处理器](./change-feed-processor.md)实例在读取更改源时的进度。
 
@@ -42,7 +44,7 @@ ms.locfileid: "88997211"
 
 其中的处理器和估算器共享同一 `leaseContainer` 和同一名称。
 
-另外有两个参数，一个是委托，其接收的数字表示**有多少更改待处理器读取**，另一个是需要进行该度量的时间间隔。
+另外有两个参数，一个是委托，其接收的数字表示 **有多少更改待处理器读取** ，另一个是需要进行该度量的时间间隔。
 
 例如，下面是用于接收估算的委托：
 
@@ -64,4 +66,4 @@ ms.locfileid: "88997211"
 现在，可以通过以下文章继续详细了解更改源处理器：
 
 * [更改源处理器概述](change-feed-processor.md)
-* [更改源处理器开始时间](how-to-configure-change-feed-start-time.md)
+* [更改源处理器开始时间](./change-feed-processor.md#starting-time)

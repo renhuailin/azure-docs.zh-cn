@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 786c6309f685af6b8e42108c490ce86c7844bc81
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521835"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92443096"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>教程：Azure Active Directory 与 Hosted Graphite 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88521835"
 * 可让用户使用其 Azure AD 帐户自动登录到 Hosted Graphite（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -90,7 +90,7 @@ ms.locfileid: "88521835"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "88521835"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Hosted Graphite 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.hostedgraphite.com/metadata/<user id>`
 
@@ -108,14 +108,14 @@ ms.locfileid: "88521835"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Hosted Graphite 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.hostedgraphite.com/login/saml/<user id>/`
 
     > [!NOTE]
     > 请注意，这些不是实际值。 必须使用实际标识符、回复 URL 和登录 URL 更新这些值。 若要获取这些值，可以转到应用程序端上的“访问”->“SAML 设置”或联系 [Hosted Graphite 支持团队](mailto:help@hostedgraphite.com)。
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -135,23 +135,23 @@ ms.locfileid: "88521835"
 
 2. 转到侧栏中的“SAML 设置页”  （ **“访问”->“SAML 设置”** ）。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
+    ![屏幕截图显示已选定“SAML 设置”的“访问”菜单。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
 3. 确认这些 URl 与在 Azure 门户的“基本 SAML 配置”  部分上完成的配置相匹配。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
+    ![屏幕截图显示“基本 SAML 配置”。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
 4. 在“实体或颁发者 ID”  文本框和“SSO 登录 URL”  文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”  和“服务 URL”  值。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+    ![屏幕截图显示“标识提供者”的条目。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
 5. 选择“只读”  作为“默认用户角色”  。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
+    ![屏幕截图显示“默认用户角色”，该角色为只读。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
 6. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“X.509 证书”文本框  。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
+    ![屏幕截图显示“X.509 证书”。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
 7. 单击“保存”按钮  。
 
@@ -217,13 +217,12 @@ ms.locfileid: "88521835"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Hosted Graphite 磁贴时，应当会自动登录到为其设置了 SSO 的 Hosted Graphite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Hosted Graphite 磁贴时，应当会自动登录到为其设置了 SSO 的 Hosted Graphite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

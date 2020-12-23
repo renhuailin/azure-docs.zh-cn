@@ -2,19 +2,21 @@
 title: 将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据
 description: 本文介绍了将 Azure Cosmos DB 连接到 Qlik Sense 并可视化数据所需执行的步骤。
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2401786a82b6a3e5bf6c6a893a8e7cd3656f3402
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263341"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996945"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并到单个视图。 Qlik Sense 对数据中每种可能的关系编制了索引，以便可以快速深入了解数据。 可以使用 Qlik Sense 可视化 Azure Cosmos DB 数据。 本文介绍了将 Azure Cosmos DB 连接到 Qlik Sense 并可视化数据所需执行的步骤。 
 
@@ -52,25 +54,25 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>将 Qlik Sense 连接到 Cosmos DB
 
-1. 打开 Qlik Sense，然后选择“创建新应用”****。 为应用提供一个名称，然后选择“创建”****。
+1. 打开 Qlik Sense，然后选择“创建新应用”。 为应用提供一个名称，然后选择“创建”。
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="创建新的 Qlik Sense 应用":::
 
-2. 成功创建新应用后，选择“打开应用”****，然后选择“添加来自文件和其他源的数据”****。 
+2. 成功创建新应用后，选择“打开应用”，然后选择“添加来自文件和其他源的数据”。 
 
-3. 从数据源中，选择“ODBC”**** 以打开新的连接设置窗口。 
+3. 从数据源中，选择“ODBC”以打开新的连接设置窗口。 
 
-4. 切换到“用户 DSN”****，然后选择之前创建的 ODBC 连接。 为连接提供一个名称，然后选择“创建”****。 
+4. 切换到“用户 DSN”，然后选择之前创建的 ODBC 连接。 为连接提供一个名称，然后选择“创建”。 
 
-   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="创建新的 Qlik Sense 应用":::
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="创建新连接":::
 
 5. 创建连接后，可以选择数据库、电子游戏机数据所在的集合，然后进行预览。
 
-   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="创建新的 Qlik Sense 应用"::: 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="选择数据库和集合"::: 
 
-6. 接下来，选择“添加数据”**** 以将数据加载到 Qlik Sense。 将数据加载到 Qlik Sense 后，可以生成见解并对数据执行分析。 可以使用见解，也可以自行生成用来浏览电子游戏机销售的应用。 下图显示 
+6. 接下来，选择“添加数据”以将数据加载到 Qlik Sense。 将数据加载到 Qlik Sense 后，可以生成见解并对数据执行分析。 可以使用见解，也可以自行生成用来浏览电子游戏机销售的应用。 下图显示 
 
-   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="创建新的 Qlik Sense 应用":::
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="可视化数据":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>使用 ODBC 连接时的限制 
 

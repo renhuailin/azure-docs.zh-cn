@@ -4,12 +4,12 @@ ms.service: static-web-apps
 ms.topic: include
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 102e2f8685128f42350dd775e600fb82cc7d6722
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06a54456a076ae425866c1fa502bd97c505e41c6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88752556"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356437"
 ---
 ## <a name="create-a-repository"></a>创建存储库
 
@@ -17,8 +17,8 @@ ms.locfileid: "88752556"
 
 # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
 
-1. 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库：
-    1. https://github.com/staticwebdev/vanilla-basic/generate
+1. 导航到以下位置以创建新存储库：
+    1. [https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate)
 1. 将存储库命名为 my-first-static-web-app
 
 > [!NOTE]
@@ -26,20 +26,20 @@ ms.locfileid: "88752556"
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-1. 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库：
-    1. https://github.com/staticwebdev/angular-basic/generate
+1. 导航到以下位置以创建新存储库：
+    1. [https://github.com/staticwebdev/angular-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Fangular-basic%2Fgenerate)
 1. 将存储库命名为 my-first-static-web-app
 
 # <a name="react"></a>[React](#tab/react)
 
-1. 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库：
-    1. https://github.com/staticwebdev/react-basic/generate
+1. 导航到以下位置以创建新存储库：
+    1. [https://github.com/staticwebdev/react-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Freact-basic%2Fgenerate)
 1. 将存储库命名为 my-first-static-web-app
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-1. 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库：
-    1. https://github.com/staticwebdev/vue-basic/generate
+1. 导航到以下位置以创建新存储库：
+    1. [https://github.com/staticwebdev/vue-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Fvue-basic%2Fgenerate)
 1. 将存储库命名为 my-first-static-web-app
 
 ---

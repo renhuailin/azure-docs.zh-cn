@@ -1,7 +1,7 @@
 ---
-title: 使用授权代码在 JavaScript 单页应用 (SPA) 中登录用户 | Azure
+title: 快速入门：使用授权代码在 JavaScript 单页应用 (SPA) 中登录用户 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 JavaScript 单页应用程序 (SPA) 如何通过授权代码流使用个人帐户、工作帐户和学校帐户将用户登录。
+description: 在本快速入门中，了解 JavaScript 单页应用程序 (SPA) 如何通过授权代码流使用个人帐户、工作帐户和学校帐户将用户登录。
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 224ce2ea64016db7b632ac36193f39e679c8da4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f7bd3822a0acaffe98c1a86eda5e10fe97ab4361
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257973"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762578"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 JavaScript SPA 中登录用户并获取访问令牌
 
-本快速入门通过一个代码示例演示 JavaScript 单页应用程序 (SPA) 如何通过使用授权代码流使用个人帐户、工作帐户和学校帐户将用户登录。 此代码示例还演示如何获取访问令牌来调用 Web API，在本例中为 Microsoft Graph API。 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript 单页应用程序 (SPA) 如何使用授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。 
+
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 本快速入门将 MSAL.js 2.0 与授权代码流配合使用。 若要查看将 MSAL 1.0 与隐式流结合使用的类似快速入门，请参阅 [快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-javascript.md)。
-
-[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,12 +52,12 @@ ms.locfileid: "91257973"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
 > 1. 登录 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
-> 1. 选择[“应用注册”](https://go.microsoft.com/fwlink/?linkid=2083908)。
-> 1. 选择“新注册”。
-> 1. “注册应用程序”页显示后，请输入应用程序的名称。
-> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
-> 1. 选择“注册”。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
+> 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
+> 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在已注册的应用程序的左窗格中，选择“身份验证”。
 > 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
 > 1. 将“重定向 URI”值设为 `http://localhost:3000/`
@@ -112,7 +112,7 @@ ms.locfileid: "91257973"
 > 修改 `msalConfig` 部分中的值，如下所述：
 >
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
-> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于**国家**云（例如“中国”云），请参阅[国家云](authentication-national-cloud.md)。
+> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 设置为以下选项之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为“`organizations`”。
@@ -202,4 +202,4 @@ npm install @azure/msal-browser
 若要查看生成本快速入门中使用的应用程序的详细分步指南，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [有关登录和调用 MS Graph 的教程 >](./tutorial-v2-javascript-auth-code.md)
+> [有关登录和调用 MS Graph 的教程](./tutorial-v2-javascript-auth-code.md)

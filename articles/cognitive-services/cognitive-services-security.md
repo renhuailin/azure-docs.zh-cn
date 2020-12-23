@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326807"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368774"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
 
@@ -33,7 +33,7 @@ ms.locfileid: "91326807"
 
 ## <a name="authentication"></a>身份验证
 
-在讨论身份验证时，存在几种常见的误解。 身份验证和授权常常互相混淆。 标识也是安全性的主要组件。 标识是有关<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主体 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的信息的集合。 标识提供者 (IdP) 为身份验证服务提供标识。 身份验证是验证用户身份的行为。 授权指为给定身份指定对资源的访问权限和特权。 有多种认知服务产品/服务，包括基于角色的访问控制 (RBAC)。 RBAC 可用于简化与人工管理主体有关的一些仪式。 有关更多详细信息，请参阅 [Azure 资源的基于角色的访问控制](../role-based-access-control/overview.md)。
+在讨论身份验证时，存在几种常见的误解。 身份验证和授权常常互相混淆。 标识也是安全性的主要组件。 标识是有关<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主体 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的信息的集合。 标识提供者 (IdP) 为身份验证服务提供标识。 身份验证是验证用户身份的行为。 授权指为给定身份指定对资源的访问权限和特权。 一些认知服务产品，包括 Azure RBAC)  (Azure 基于角色的访问控制。 Azure RBAC 可用于简化手动管理主体所涉及的某些工作人员。 有关更多详细信息，请参阅 azure [资源的 azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
 有关使用订阅密钥进行身份验证、访问令牌和 Azure Active Directory (AAD) 的详细信息，请参阅对<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure 认知 <span class="docon docon-navigate-external x-hidden-focus"></span> 服务的请求进行身份验证</a>。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91326807"
 环境变量是存储在特定环境中的名称/值对。 为敏感数据使用硬编码值的一种更安全的替代选项是使用环境变量。 硬编码值不安全，应避免使用。
 
 > [!CAUTION]
-> **不要**为敏感数据使用硬编码值，此行为会导致重大安全漏洞。
+> **不要** 为敏感数据使用硬编码值，此行为会导致重大安全漏洞。
 
 > [!NOTE]
 > 尽管环境变量以纯文本格式存储，但它们与环境隔离。 如果环境受到破坏，环境中的变量也会受到破坏。
@@ -60,7 +60,7 @@ ms.locfileid: "91326807"
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-在命令提示符**** 的新实例中，读取环境变量。
+在命令提示符的新实例中，读取环境变量。
 
 ```CMD
 :: Prints the env var value
@@ -76,7 +76,7 @@ echo %ENVIRONMENT_VARIABLE_KEY%
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-在 Windows PowerShell**** 的新实例中，读取环境变量。
+在 Windows PowerShell 的新实例中，读取环境变量。
 
 ```powershell
 # Prints the env var value
@@ -92,7 +92,7 @@ echo %ENVIRONMENT_VARIABLE_KEY%
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-在 Bash**** 的新实例中，读取环境变量。
+在 Bash 的新实例中，读取环境变量。
 
 ```Bash
 # Prints the env var value
@@ -197,7 +197,7 @@ NSString* value =
 
 ## <a name="customer-lockbox"></a>客户密码箱
 
-[Microsoft Azure 的客户密码箱](../security/fundamentals/customer-lockbox-overview.md) 提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此方法。 有关如何启动、跟踪和存储客户密码箱请求以便以后查看和审核的信息，请参阅 [客户密码箱](../security/fundamentals/customer-lockbox-overview.md)。 
+[Microsoft Azure 的客户密码箱](../security/fundamentals/customer-lockbox-overview.md) 提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。 有关如何启动、跟踪和存储客户密码箱请求以便以后查看和审核的信息，请参阅 [客户密码箱](../security/fundamentals/customer-lockbox-overview.md)。 
 
 此认知服务提供客户密码箱：
 
@@ -211,7 +211,7 @@ NSString* value =
 * 个性化体验创建服务
 
 > [!IMPORTANT]
-> 对于 **窗体识别器**，Microsoft 工程师将无法访问2020年7月10日之后创建的资源中的任何客户数据。
+> 对于 **窗体识别器** ，Microsoft 工程师将无法访问2020年7月10日之后创建的资源中的任何客户数据。
 
 若要请求使用 E0 SKU，请填写并提交此 [请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 E0 SKU 用于 LUIS 后，需要从 Azure 门户创建新资源，并选择 E0 作为定价层。 用户无法从 F0 升级到新的 E0 SKU。
 
@@ -222,5 +222,5 @@ NSString* value =
 
 ## <a name="next-steps"></a>后续步骤
 
-* 探索各种[认知服务](welcome.md)
+* 探索各种[认知服务](./what-are-cognitive-services.md)
 * 详细了解 [认知服务虚拟网络](cognitive-services-virtual-networks.md)

@@ -3,12 +3,12 @@ title: 使用服务终结点限制访问
 description: 使用 Azure 虚拟网络中的服务终结点限制对 Azure 容器注册表的访问。 服务终结点访问是高级服务层级的一项功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488655"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026218"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虚拟网络中的服务终结点限制对容器注册表的访问
 
@@ -49,13 +49,11 @@ ms.locfileid: "89488655"
 
 ## <a name="configure-network-access-for-registry"></a>为注册表配置网络访问
 
-在本部分中，将容器注册表配置为允许从 Azure 虚拟网络中的子网进行访问。 我们提供了使用 Azure CLI 和 Azure 门户的等效步骤。
+在本部分中，将容器注册表配置为允许从 Azure 虚拟网络中的子网进行访问。 使用 Azure CLI 提供步骤。
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>允许从虚拟网络进行访问 - CLI
+### <a name="add-a-service-endpoint-to-a-subnet"></a>将服务终结点添加到子网
 
-#### <a name="add-a-service-endpoint-to-a-subnet"></a>将服务终结点添加到子网
-
-创建 VM 时，Azure 默认情况下会在同一个资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如，如果将虚拟机命名为 myDockerVM，则默认虚拟网络名称为 myDockerVMVNET，且子网名为 myDockerVMSubnet。 在 Azure 门户中对此进行验证或使用 [az network vnet list][az-network-vnet-list] 命令验证：
+创建 VM 时，Azure 默认情况下会在同一个资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如，如果将虚拟机命名为 myDockerVM，则默认虚拟网络名称为 myDockerVMVNET，且子网名为 myDockerVMSubnet。 使用 [az network vnet list][az-network-vnet-list] 命令验证此内容：
 
 ```azurecli
 az network vnet list \
@@ -101,15 +99,15 @@ az network vnet subnet show \
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>更改默认网络对注册表的访问权限
+### <a name="change-default-network-access-to-registry"></a>更改默认网络对注册表的访问权限
 
-默认情况下，Azure 容器注册表允许来自任何网络上的主机的连接。 要将访问权限仅授予所选网络，请将默认操作更改为拒绝访问。 在以下 [az acr update][az-acr-update] 命令中，替换注册表的名称：
+默认情况下，Azure 容器注册表允许来自任何网络上的主机的连接。 要将访问权限仅授予所选网络，请将默认操作更改为拒绝访问。 请将以下 [az acr update][az-acr-update] 命令中的占位符替换为你的注册表名称：
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>向注册表添加网络规则
+### <a name="add-network-rule-to-registry"></a>向注册表添加网络规则
 
 使用 [az acr network-rule add][az-acr-network-rule-add] 命令向注册表添加允许从 VM 子网进行访问的网络规则。 使用以下命令替换容器注册表的名称和子网的资源 ID： 
 
@@ -143,11 +141,9 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 
 ## <a name="restore-default-registry-access"></a>还原默认注册表访问
 
-若要将注册表还原为默认允许访问，请删除配置的所有网络规则。 然后，设置默认操作以允许访问。 我们提供了使用 Azure CLI 和 Azure 门户的等效步骤。
+若要将注册表还原为默认允许访问，请删除配置的所有网络规则。 然后，设置默认操作以允许访问。 
 
-### <a name="restore-default-registry-access---cli"></a>还原默认注册表访问 - CLI
-
-#### <a name="remove-network-rules"></a>删除网络规则
+### <a name="remove-network-rules"></a>删除网络规则
 
 若要查看为注册表配置的网络规则列表，请运行以下 [az acr network-rule list][az-acr-network-rule-list] 命令：
 
@@ -166,7 +162,7 @@ az acr network-rule remove \
   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="allow-access"></a>允许访问
+### <a name="allow-access"></a>允许访问
 
 在以下 [az acr update][az-acr-update] 命令中，替换注册表的名称：
 ```azurecli
@@ -175,13 +171,11 @@ az acr update --name myContainerRegistry --default-action Allow
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果所有 Azure 资源都是在同一资源组中创建的并且不再需要，你以选择使用单个 [az group delete](/cli/azure/group) 命令删除资源：
+如果在同一资源组中创建了所有 Azure 资源，并且不再需要这些资源，则可以选择使用单个 [az group delete](/cli/azure/group) 命令删除资源：
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
-
-若要在门户中清理资源，请导航到 myResourceGroup 资源组。 加载资源组后，单击“删除资源组”以删除该资源组和其中存储的资源。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -195,7 +189,6 @@ az group delete --name myResourceGroup
 
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

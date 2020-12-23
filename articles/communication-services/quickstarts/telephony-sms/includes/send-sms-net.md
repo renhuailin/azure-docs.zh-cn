@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c044e9dc7b8ee622b157a93726e7700e62ba2dfa
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: a084295aec2cafadd07d47e85a0116a89d37c985
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779490"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816847"
 ---
 通过使用通信服务 C# 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -59,7 +59,7 @@ dotnet build
 仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信服务短信客户端库。
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.2
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.3
 ```
 
 将 `using` 指令添加到 Program.cs 顶部以包括 `Azure.Communication` 命名空间。
@@ -117,3 +117,7 @@ smsClient.Send(
 ```console
 dotnet run
 ```
+
+## <a name="sample-code"></a>代码示例
+
+可以从 [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/SendSMS) 下载示例应用

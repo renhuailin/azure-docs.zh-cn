@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6e0612a017650f0c6e4c9f63d9a5fd097b0b92c4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304064"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559883"
 ---
 ## <a name="update-resources"></a>更新资源
 
@@ -36,7 +36,7 @@ ms.locfileid: "89304064"
 
 如果打算添加副本区域，请勿删除源托管映像。 源托管映像是将映像版本复制到其他区域所需的。 
 
-若要更新库的说明，请使用 [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)。
+若要更新库的说明，请使用 [Update-AzGallery](/powershell/module/az.compute/update-azgallery)。
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-此示例演示如何使用 [Update-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) 来更新映像定义的生命周期结束日期。
+此示例演示如何使用 [Update-AzGalleryImageDefinition](/powershell/module/az.compute/update-azgalleryimagedefinition) 来更新映像定义的生命周期结束日期。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-此示例演示如何使用 [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。 
+此示例演示如何使用 [Update-AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。 
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -65,7 +65,7 @@ Update-AzGalleryImageVersion `
    -PublishingProfileExcludeFromLatest
 ```
 
-此示例显示了如何使用 [AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 将此映像版本纳入考虑到 *最新* 映像。
+此示例显示了如何使用 [AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) 将此映像版本纳入考虑到 *最新* 映像。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -103,4 +103,3 @@ Remove-AzGallery `
 
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-

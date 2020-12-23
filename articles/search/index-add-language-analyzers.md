@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 11/05/2020
+ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935871"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656030"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
@@ -68,64 +68,64 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 ## <a name="language-analyzer-list"></a>语言分析器列表 
  下面是受支持语言的列表以及 Lucene 和 Microsoft 分析器名称。  
 
-|语言|Microsoft 分析器名称|Lucene 分析器名称|  
-|--------------|-----------------------------|--------------------------|  
-|阿拉伯语|ar.microsoft|ar.lucene|  
-|亚美尼亚语||hy.lucene|  
-|Bangla|bn.microsoft||  
-|巴斯克语||eu.lucene|  
-|保加利亚语|bg.microsoft|bg.lucene|  
-|加泰罗尼亚语|ca.microsoft|ca.lucene|  
-|简体中文|zh-Hans.microsoft|zh-Hans.lucene|  
-|中文(繁体)|zh-Hant.microsoft|zh-Hant.lucene|  
-|克罗地亚语|hr.microsoft||  
-|捷克语|cs.microsoft|cs.lucene|  
-|丹麦语|da.microsoft|da.lucene|  
-|荷兰语|nl.microsoft|nl.lucene|  
-|英语|en.microsoft|en.lucene|  
-|爱沙尼亚语|et.microsoft||  
-|芬兰语|fi.microsoft|fi.lucene|  
-|法语|fr.microsoft|fr.lucene|  
-|加利西亚语||gl.lucene|  
-|德语|de.microsoft|de.lucene|  
-|希腊语|el.microsoft|el.lucene|  
-|古吉拉特语|gu.microsoft||  
-|希伯来语|he.microsoft||  
-|Hindi|hi.microsoft|hi.lucene|  
-|匈牙利语|hu.microsoft|hu.lucene|  
-|冰岛语|is.microsoft||  
-|印度尼西亚语|id.microsoft|id.lucene|  
-|爱尔兰语||ga.lucene|  
-|意大利语|it.microsoft|it.lucene|  
-|日语|ja.microsoft|ja.lucene|  
-|卡纳达语|kn.microsoft||  
-|朝鲜语|ko.microsoft|ko.lucene|  
-|拉脱维亚语|lv.microsoft|lv.lucene|  
-|立陶宛语|lt.microsoft||  
-|马拉雅拉姆语|ml.microsoft||  
-|马来语(拉丁语系)|ms.microsoft||  
-|马拉地语|mr.microsoft||  
-|挪威语|nb.microsoft|no.lucene|  
-|波斯语||fa.lucene|  
-|波兰语|pl.microsoft|pl.lucene|  
-|葡萄牙语（巴西）|pt-Br.microsoft|pt-Br.lucene|  
-|葡萄牙语(葡萄牙)|pt-Pt.microsoft|pt-Pt.lucene|  
-|旁遮普语|pa.microsoft||  
-|罗马尼亚语|ro.microsoft|ro.lucene|  
-|俄语|ru.microsoft|ru.lucene|  
-|塞尔维亚语（西里尔）|sr-cyrillic.microsoft||  
-|塞尔维亚语（拉丁）|sr-latin.microsoft||  
-|斯洛伐克语|sk.microsoft||  
-|斯洛文尼亚语|sl.microsoft||  
-|西班牙语|es.microsoft|es.lucene|  
-|瑞典语|sv.microsoft|sv.lucene|  
-|泰米尔语|ta.microsoft||  
-|泰卢固语|te.microsoft||  
-|泰语|th.microsoft|th.lucene|  
-|土耳其语|tr.microsoft|tr.lucene|  
-|乌克兰语|uk.microsoft||  
-|乌尔都语|ur.microsoft||  
-|越南语|vi.microsoft||  
+| 语言 | Microsoft 分析器名称 | Lucene 分析器名称 |  |
+|--|--|--|--|
+| 阿拉伯语 | ar.microsoft | ar.lucene |  |
+| 亚美尼亚语 |  | hy.lucene |  |
+| Bangla | bn.microsoft |  |  |
+| 巴斯克语 |  | eu.lucene |  |
+| 保加利亚语 | bg.microsoft | bg.lucene |  |
+| 加泰罗尼亚语 | ca.microsoft | ca.lucene |  |
+| 简体中文 | zh-Hans.microsoft | zh-Hans.lucene |  |
+| 中文(繁体) | zh-Hant.microsoft | zh-Hant.lucene |  |
+| 克罗地亚语 | hr.microsoft |  |  |
+| 捷克语 | cs.microsoft | cs.lucene |  |
+| 丹麦语 | da.microsoft | da.lucene |  |
+| 荷兰语 | nl.microsoft | nl.lucene |  |
+| 英语 | en.microsoft | en.lucene |  |
+| 爱沙尼亚语 | et.microsoft |  |  |
+| 芬兰语 | fi.microsoft | fi.lucene |  |
+| 法语 | fr.microsoft | fr.lucene |  |
+| 加利西亚语 |  | gl.lucene |  |
+| 德语 | de.microsoft | de.lucene |  |
+| 希腊语 | el.microsoft | el.lucene |  |
+| 古吉拉特语 | gu.microsoft |  |  |
+| 希伯来语 | he.microsoft |  |  |
+| Hindi | hi.microsoft | hi.lucene |  |
+| 匈牙利语 | hu.microsoft | hu.lucene |  |
+| 冰岛语 | is.microsoft |  |  |
+| 印度尼西亚语 | id.microsoft | id.lucene |  |
+| 爱尔兰语 |  | ga.lucene |  |
+| 意大利语 | it.microsoft | it.lucene |  |
+| 日语 | ja.microsoft | ja.lucene |  |
+| 卡纳达语 | kn.microsoft |  |  |
+| 朝鲜语 | ko.microsoft | ko.lucene |  |
+| 拉脱维亚语 | lv.microsoft | lv.lucene |  |
+| 立陶宛语 | lt.microsoft |  |  |
+| 马拉雅拉姆语 | ml.microsoft |  |  |
+| 马来语(拉丁语系) | ms.microsoft |  |  |
+| 马拉地语 | mr.microsoft |  |  |
+| 挪威语 | nb.microsoft | no.lucene |  |
+| 波斯语 |  | fa.lucene |  |
+| 波兰语 | pl.microsoft | pl.lucene |  |
+| 葡萄牙语（巴西） | pt-Br.microsoft | pt-Br.lucene |  |
+| 葡萄牙语(葡萄牙) | pt-Pt.microsoft | pt-Pt.lucene |  |
+| 旁遮普语 | pa.microsoft |  |  |
+| 罗马尼亚语 | ro.microsoft | ro.lucene |  |
+| 俄语 | ru.microsoft | ru.lucene |  |
+| 塞尔维亚语（西里尔） | sr-cyrillic.microsoft |  |  |
+| 塞尔维亚语（拉丁） | sr-latin.microsoft |  |  |
+| 斯洛伐克语 | sk.microsoft |  |  |
+| 斯洛文尼亚语 | sl.microsoft |  |  |
+| 西班牙语 | es.microsoft | es.lucene |  |
+| 瑞典语 | sv.microsoft | sv.lucene |  |
+| 泰米尔语 | ta.microsoft |  |  |
+| 泰卢固语 | te.microsoft |  |  |
+| 泰语 | th.microsoft | th.lucene |  |
+| 土耳其语 | tr.microsoft | tr.lucene |  |
+| 乌克兰语 | uk.microsoft |  |  |
+| 乌尔都语 | ur.microsoft |  |  |
+| 越南语 | vi.microsoft |  |  |
 
  名称带有 **Lucene** 批注的所有分析器都由 [Apache Lucene 的语言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )提供支持。
 
@@ -133,4 +133,4 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
 + [创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/create-index)  
 
-+ [AnalyzerName Class](/dotnet/api/microsoft.azure.search.models.analyzername)（AnalyzerName 类）
++ [LexicalAnalyzerName Class](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)

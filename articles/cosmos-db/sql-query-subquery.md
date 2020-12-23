@@ -3,17 +3,19 @@ title: Azure Cosmos DB 的 SQL 子查询
 description: 了解 Azure Cosmos DB 中的 SQL 子查询及其常见用例以及不同类型的子查询
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5f209229d17a2587258d21ee90e7560e629d082
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870558"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340849"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查询示例
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 子查询是嵌套在另一个查询中的查询。 子查询也称为内部查询或内部选择。 包含子查询的语句通常称为外部查询。
 
@@ -23,16 +25,16 @@ ms.locfileid: "74870558"
 
 有两种主要类型的子查询：
 
-* **相关**：引用外部查询中的值的子查询。 将针对外部查询处理的每个行求值该子查询一次。
-* **非相关**：独立于外部查询的子查询。 它可以独立运行，而不依赖于外部查询。
+* **相关** ：引用外部查询中的值的子查询。 将针对外部查询处理的每个行求值该子查询一次。
+* **非相关** ：独立于外部查询的子查询。 它可以独立运行，而不依赖于外部查询。
 
 > [!NOTE]
 > Azure Cosmos DB 仅支持相关子查询。
 
 可以根据子查询返回的行数和列数进一步分类子查询。 有三种类型：
-* **Table**：返回多个行和多个列。
-* **多值**：返回多个行和单个列。
-* **标量**：返回单个行和单个列。
+* **Table** ：返回多个行和多个列。
+* **多值** ：返回多个行和单个列。
+* **标量** ：返回单个行和单个列。
 
 Azure Cosmos DB 中的 SQL 查询始终返回单个列（一个简单的值，或一个复杂文档）。 因此，Azure Cosmos DB 中仅适用多值子查询和标量子查询。 只能在 FROM 子句中将多值子查询用作关系表达式。 可以在 SELECT 或 WHERE 子句中将标量子查询用作标量表达式，或者在 FROM 子句中用作关系表达式。
 

@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
-ms.reviewer: nacanuma
+ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705854"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453605"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -34,7 +34,7 @@ ms.locfileid: "90705854"
 
 本指南演示如何登录到工作和学校帐户，获取访问令牌，并在 [Azure 政府版云](https://azure.microsoft.com/global-infrastructure/government/) 环境中调用 Microsoft Graph API。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下先决条件。
 
@@ -49,13 +49,13 @@ ms.locfileid: "90705854"
 
 ### <a name="get-an-azure-government-subscription"></a>获取 Azure 政府版订阅
 
-若要获取 Azure 政府版订阅，请参阅 [在 Azure 政府版中管理和连接到你的订阅](../../azure-government/documentation-government-manage-subscriptions.md)。
+若要获取 Azure 政府版订阅，请参阅 [在 Azure 政府版中管理和连接到你的订阅](../../azure-government/compare-azure-government-global-azure.md)。
 
 如果你没有 Azure 政府版订阅，请在开始前创建一个 [免费帐户](https://azure.microsoft.com/global-infrastructure/government/request/) 。
 
 若要详细了解如何使用特定编程语言的国家/地区云，请选择与你的语言相匹配的选项卡：
 
-## <a name="net"></a>[.NET](#tab/donet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 可以使用 MSAL.NET 登录用户、获取令牌并在国家/地区云中调用 Microsoft Graph API。
 
@@ -79,8 +79,8 @@ ms.locfileid: "90705854"
 1. “注册应用程序”页显示后，请输入应用程序的名称。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 1. 在 " **重定向 URI** " 部分中，选择 **web** 平台，并基于你的 Web 服务器将值设置为应用程序的 URL。 有关如何在 Visual Studio 和节点中设置和获取重定向 URL 的说明，请参阅后续部分。
-1. 选择“注册”。
-1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值。********
+1. 选择“注册”  。
+1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值。
 1. 本教程要求你启用 [隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
 1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框   。 ID 令牌和访问令牌是必需的，因为此应用需要登录用户并调用 API。
 1. 选择“保存”。
@@ -89,7 +89,7 @@ ms.locfileid: "90705854"
 
 - 下载本地 web 服务器（如 Node）的[项目文件](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 
-  或
+  or
 
 - [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)。
 
@@ -150,9 +150,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅 [Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+- 调用 Microsoft Graph API 需要一个特定于所使用的云的终结点 URL。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅 [Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
-    下面是一个具有作用域的图形终结点示例：
+    下面是 Microsoft Graph 终结点的示例，范围如下：
 
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -173,7 +173,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅 [Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+- 调用 Microsoft Graph API 需要一个特定于所使用的云的终结点 URL。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅 [Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
 下面是一个具有作用域的图形终结点示例：
 
@@ -222,9 +222,10 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关以下方面的详细信息：
+有关每个云的 Azure 门户 Url 和令牌终结点的列表，请参阅 [国家云身份验证终结点](authentication-national-cloud.md) 。
 
-- [国家/地区云中的身份验证](authentication-national-cloud.md)
+国家/地区云文档：
+
 - [Azure Government](../../azure-government/index.yml)
 - [Azure 中国世纪互联](/azure/china/)
 - [Azure 德国](../../germany/index.yml)

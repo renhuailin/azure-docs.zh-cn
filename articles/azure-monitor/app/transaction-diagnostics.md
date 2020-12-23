@@ -4,12 +4,12 @@ description: Application Insights 端到端事务诊断
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318906"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746091"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 
@@ -72,27 +72,25 @@ ms.locfileid: "87318906"
 
 ![探查器集成](media/transaction-diagnostics/profilerTraces.png)
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
-图中只显示了一个组件，其余组件仅显示为外部依赖项，没有显示有关这些组件内发生的情况的详细信息**。
+图中只显示了一个组件，其余组件仅显示为外部依赖项，没有显示有关这些组件内发生的情况的详细信息。
 
 可能的原因：
 
 * 是否使用 Application Insights 检测了其他组件？
 * 是否使用了最新的稳定 Application Insights SDK？
-* 如果这些组件是单独的 Application Insights 资源，你是否具有访问其遥测的所需权限？
+* 如果这些组件单独 Application Insights 资源，则如果有访问权限，并且使用最新的 Application Insights Sdk 来检测组件，则需要 [访问权限](resources-roles-access-control.md) ，请通过右上方的反馈渠道告知我们。
 
-如果确实具有权限，且使用了最新的 Application Insights SDK 来检测组件，请通过右上方的反馈通道告知我们。
-
-*我看到依赖项的重复行。这是不是吗？*
+依赖项具有重复的行。这是正常情况吗？
 
 当前，出站依赖项调用与入站请求分开显示。 通常情况下，这两种调用大致相同，但持续时间值因网络往返而不同。 可通过前导图标和样式不同的持续时间条来区分它们。 这份数据演示文稿是否包含令人困惑的内容？ 欢迎提供反馈！
 
-不同组件实例间的时钟偏差情况如何？**
+不同组件实例间的时钟偏差情况如何？
 
 在事务图中针对时钟偏差调整了时间线。 可以在详细信息窗格中查看确切的时间戳，或使用“Analytics”进行查看。
 
-为什么新体验中缺少大部分相关项查询？**
+为什么新体验中缺少大部分相关项查询？
 
 这是设计的结果。 所有组件的全部相关项都已显示在左侧（顶部和底部）。 新体验中有两个左侧未包含的相关项：此事件发生前后五分钟内的所有遥测，以及用户时间线。
 

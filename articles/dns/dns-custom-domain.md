@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84693106"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487392"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
 
@@ -103,7 +103,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 导航回到为自定义域名配置的应用服务。 依次单击“自定义域”、“主机名”。   若要添加所创建的 CNAME 记录，请单击“+ 添加主机名”。 
 
-![图 1](./media/dns-custom-domain/figure1.png)
+![突出显示 "+ 添加主机名" 按钮的屏幕截图。](./media/dns-custom-domain/figure1.png)
 
 完成此过程后，请运行 **nslookup** 来验证名称解析是否正常工作。
 
@@ -126,17 +126,17 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
 
 
-|Property  |“值”  |描述  |
+|properties  |值  |描述  |
 |---------|---------|---------|
-|“属性”     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 asverify.adatumfunctiona9ed.blob.core.windows.net DNS 名称。        |
 
-导航回到存储帐户，方法是单击 "**存储**  >  " "存储**帐户**"，选择存储帐户，然后单击 "**自定义域**"。 在文本框中键入您创建的别名，并选中 "**使用间接 CNAME 验证**"，然后单击 "**保存**"。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
+导航回到存储帐户，方法是单击 "**存储**  >  " "存储**帐户**"，选择存储帐户，然后单击 "**自定义域**"。 在文本框中键入您创建的别名，并选中 " **使用间接 CNAME 验证**"，然后单击 " **保存**"。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
 
-![Blob 存储自定义域](./media/dns-custom-domain/indirectvalidate.png)
+![显示 "自定义域" 页的屏幕截图。](./media/dns-custom-domain/indirectvalidate.png)
 
 运行 `nslookup` 验证 DNS 解析
 
@@ -154,9 +154,9 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
 
-|Property  |“值”  |描述  |
+|properties  |值  |描述  |
 |---------|---------|---------|
-|“属性”     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |

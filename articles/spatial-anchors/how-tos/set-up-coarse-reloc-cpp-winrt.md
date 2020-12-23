@@ -1,19 +1,19 @@
 ---
 title: C++/WinRT 中的粗略重新局部化
 description: 深入解释了如何使用 C++/WinRT 中的粗略重新局部化来创建和查找定位点。
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7068ecb7fcfe888118396523e0e3d997e5a59e9a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76548282"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96005004"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>如何使用 C++/WinRT 中的粗略重新局部化来创建和查找定位点
 
@@ -31,7 +31,7 @@ Azure 空间定位点可以将设备上的定位传感器数据与所创建的�
 
 若要完成本指南，请确保做好以下准备：
 
-- 具备 C++ 和 <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows 运行时 API</a> 的基本知识。
+- 具备 C++ 和 <a href="/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows 运行时 API</a> 的基本知识。
 - 通读 [Azure 空间定位点概述](../overview.md)。
 - 完成 [5 分钟快速入门](../index.yml)之一。
 - 通读[创建并找到定位点操作说明](../create-locate-anchors-overview.md)。

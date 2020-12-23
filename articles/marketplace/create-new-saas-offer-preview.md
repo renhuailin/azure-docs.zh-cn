@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: ed0c7ef98e70774350c9a3ff12b0cc3f4186e1bb
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380681"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746414"
 ---
 # <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>如何添加 SaaS 产品/服务的预览受众
 
 当你在合作伙伴中心创建 "软件即服务" (SaaS) 产品/服务时，你需要定义预览观众，他们可以在现场之前查看你的产品/服务列表。 本文介绍如何配置预览受众。
 
 > [!NOTE]
-> 如果选择单独处理事务，则不会看到此选项。 相反，请跳到 [如何推销 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
+> 如果选择单独处理事务，则不会看到此选项。 相反，请跳到 [如何出售 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
 
 ## <a name="define-a-preview-audience"></a>定义预览受众
 
@@ -38,13 +38,13 @@ ms.locfileid: "89380681"
 
 ### <a name="add-email-addresses-using-the-csv-file"></a>使用 CSV 文件添加电子邮件地址
 
-1. 在 " **预览观众** " 页上，选择 " **导出访问群体 (csv) ** " 链接。
+1. 在 " **预览观众** " 页上，选择 " **导出访问群体 (csv)** " 链接。
 1. 打开。应用程序（例如 Microsoft Excel）中的 CSV 文件。
 1. 在。"CSV 文件" 的 " **ID** " 列中，输入要添加到预览受众的电子邮件地址。
 1. 在 " **说明** " 列中，可以选择性地为每个电子邮件地址添加描述。
 1. 在 " **类型** " 列中，将 **MixedAadMsaId** 添加到具有电子邮件地址的每一行。
 1. 将该文件另存为。CSV 文件。
-1. 在 " **预览受众** " 页上，选择 " **导入访问群体 (csv) ** " 链接。
+1. 在 " **预览受众** " 页上，选择 " **导入访问群体 (csv)** " 链接。
 1. 在 " **确认** " 对话框中，选择 **"是"**。
 1. 选择。CSV 文件，然后选择 " **打开**"。
 1. 选择 " **保存草稿** "，然后继续下一个选项卡： **技术配置**。

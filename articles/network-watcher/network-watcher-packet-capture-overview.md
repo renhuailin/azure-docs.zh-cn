@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c458508dbf8d98349ec8549af32e3dd48bbd09b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76840802"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966422"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure 网络观察程序中的可变数据包捕获简介
 
@@ -25,7 +25,7 @@ ms.locfileid: "76840802"
 数据包捕获是通过网络观察程序远程启动的虚拟机扩展。 此功能可减轻手动在所需虚拟机上运行数据包捕获的负担，从而可节省宝贵的时间。 可以通过门户、PowerShell、CLI 或 REST API 触发数据包捕获。 触发数据包捕获方式的一个示例是使用虚拟机警报。 为捕获会话提供了筛选器以确保捕获要监视的流量。 筛选器基于 5 元组（协议、本地 IP 地址、远程 IP 地址、本地端口和远程端口）信息。 捕获的数据存储在本地磁盘或存储 blob 中。 每个区域每个订阅限制为 10 个数据包捕获会话。 此限制仅适用于会话，不适用于本地 VM 或存储帐户中已保存的数据包捕获文件。
 
 > [!IMPORTANT]
-> 数据包捕获需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
+> 数据包捕获需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/extensions/network-watcher-windows.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/extensions/network-watcher-linux.md)。
 
 要将捕获的信息减少到仅为所需的信息，可以将以下选项用于数据包捕获会话：
 
@@ -55,16 +55,3 @@ ms.locfileid: "76840802"
 
 <!--Image references-->
 [1]: ./media/network-watcher-packet-capture-overview/figure1.png
-
-
-
-
-
-
-
-
-
-
-
-
-

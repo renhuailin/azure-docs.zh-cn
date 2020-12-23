@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a2cbd2dd4dd32be137e461985e9f10fd07ed8a60
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334831"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325632"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -44,7 +44,7 @@ ms.locfileid: "91334831"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -80,7 +80,7 @@ ms.locfileid: "91334831"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -298,11 +298,11 @@ ms.locfileid: "91334831"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指导**：在 Azure 备份中执行关键操作时，必须输入 Azure 门户中提供的安全 PIN。 启用 Azure 多重身份验证相当于增加了一个安全层。 只有获得授权、具有有效 Azure 凭据且通过第二台设备进行身份验证的用户能够访问 Azure 门户。
+**指导**：在 Azure 备份中执行关键操作时，必须输入 Azure 门户中提供的安全 PIN。 启用 Azure AD 多重身份验证会添加一个安全层。 只有获得授权、具有有效 Azure 凭据且通过第二台设备进行身份验证的用户能够访问 Azure 门户。
 
 - [Azure 备份中的多重身份验证](./backup-azure-security-feature.md)
 
-- [规划基于云的 Azure 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
+- [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 安全中心监视**：是
 
@@ -310,17 +310,17 @@ ms.locfileid: "91334831"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指导**：使用配置了 Azure 多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录和配置启用了 Azure 备份的资源。
+**指南**：将特权访问工作站 (PAW) 与 Azure AD 多因素身份验证 (MFA) 配置为登录并配置支持 Azure 备份的资源。
 
 - [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [规划基于云的 Azure 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
+- [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
 
 **指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
 
@@ -436,7 +436,7 @@ ms.locfileid: "91334831"
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -480,13 +480,13 @@ Microsoft 管理 Azure 备份的底层基础结构，并实施了严格的控制
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**： azure RBAC) 的 azure 基于角色的访问控制支持对 azure 进行细致的访问管理 (。 使用 Azure RBAC，可以在团队中实现职责分离，仅向用户授予他们执行作业所需的访问权限。
+**指导**：Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 进行细致的访问管理。 使用 Azure RBAC，可以在团队中实现职责分离，仅向用户授予他们执行作业所需的访问权限。
 
 Azure 备份提供三个用于控制备份管理操作的内置角色：备份参与者、备份操作员和备份读取者。 可以将备份内置角色映射到各种备份管理操作。
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [使用基于角色的访问控制管理 Azure 备份恢复点](./backup-rbac-rs-vault.md)
+- [使用 Azure 基于角色的访问控制管理 Azure 备份恢复点](./backup-rbac-rs-vault.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -534,7 +534,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色：备份�
 
 Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备份可用的安全控制，以减少与服务配置相关的漏洞。
 
-- [了解 Azure 备份可用的安全控制](./backup-security-controls.md)
+- [了解 Azure 备份可用的安全控制]()
 
 **Azure 安全中心监视**：目前不可用
 
@@ -580,7 +580,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
-**指南**：使用 Azure 资源关系图可查询/发现订阅 () 中的所有资源 (如计算、存储、网络、端口和协议) 。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议）。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
 尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
@@ -612,7 +612,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -632,7 +632,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -706,7 +706,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -818,9 +818,9 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 - [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [如何向 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
+* [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 
-* [如何分配 Key Vault 访问策略](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+* [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -862,13 +862,13 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指导**：在支持 Azure 服务（例如 Azure 备份）的底层主机上已启用 Microsoft Antimalware，但是，该软件不会针对你的内容运行。
 
-预先扫描上传到非计算 Azure 资源（例如应用服务、Data Lake Storage 和 Blob 存储）的任何文件。
+预扫描任何要上传到非计算 Azure 资源（例如应用服务、Data Lake Storage 和 Blob 存储）的文件。
 
 使用 Azure 安全中心的数据服务威胁检测来检测上传到存储帐户的恶意软件。
 
 - [了解适用于 Azure 云服务和虚拟机的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
-- [了解 Azure 安全中心的数据服务威胁检测](../security-center/threat-protection.md)
+- [了解 Azure 安全中心的数据服务威胁检测](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -924,7 +924,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指导**：对于本地备份，使用在备份到 Azure 时提供的密码提供静态加密。 对于 Azure VM，使用存储服务加密 (SSE) 对数据进行静态加密。 可以在密钥保管库中启用软删除，以防止意外删除或恶意删除密钥。
 
-- [如何在密钥保管库中启用软删除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [如何在密钥保管库中启用软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：是
 
@@ -962,7 +962,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 

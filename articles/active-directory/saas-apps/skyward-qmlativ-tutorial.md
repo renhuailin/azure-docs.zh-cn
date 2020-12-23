@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ae28a796d7f58583e2e9f7874f53adbcf115fbdb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c57205fda785e3b925e648fee548f7e31a2322d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528102"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyward-qmlativ"></a>教程：Azure Active Directory 与 Skyward Qmlativ 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88528102"
 * 可让用户使用其 Azure AD 帐户自动登录到 Skyward Qmlativ（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -61,7 +61,7 @@ ms.locfileid: "88528102"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Skyward Qmlativ**，在结果面板中选择“Skyward Qmlativ”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Skyward Qmlativ** ，在结果面板中选择“Skyward Qmlativ”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“Skyward Qmlativ”](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "88528102"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -169,19 +169,18 @@ ms.locfileid: "88528102"
 
 ### <a name="create-skyward-qmlativ-test-user"></a>创建 Skyward Qmlativ 测试用户
 
-在本部分，我们将在 Skyward Qmlativ 中创建名为 Britta Simon 的用户。 在  [Skyward Qmlativ 支持团队](mailto:steveb@skyward.com)的配合下，将用户添加到 Skyward Qmlativ 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 Skyward Qmlativ 中创建名为 Britta Simon 的用户。 请与 [Skyward Qmlativ 支持团队](mailto:steveb@skyward.com)协作，将用户添加到 Skyward Qmlativ 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Skyward Qmlativ”磁贴时，应会自动登录到设置了 SSO 的 Skyward Qmlativ。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Skyward Qmlativ”磁贴时，应会自动登录到设置了 SSO 的 Skyward Qmlativ。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

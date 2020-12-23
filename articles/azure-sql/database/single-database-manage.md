@@ -4,19 +4,19 @@ description: 了解如何使用 Azure 门户、PowerShell、Azure CLI、Transact
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254984"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319279"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理服务器和单一数据库
 
@@ -58,7 +58,7 @@ ms.locfileid: "85254984"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 若要使用 Azure PowerShell 创建并管理服务器、单一数据库和共用数据库以及服务器级防火墙，请运行以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
@@ -74,17 +74,17 @@ ms.locfileid: "85254984"
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|创建资源组|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|创建服务器|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|返回服务器的相关信息|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|修改服务器的属性|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|修改服务器的属性|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|删除服务器|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|创建服务器级防火墙规则 |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|获取服务器的防火墙规则|
 |[Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule)|修改服务器中的防火墙规则|
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|从服务器中删除防火墙规则。|
-| New-AzSqlServerVirtualNetworkRule | 基于作为虚拟网络服务终结点的子网创建[*虚拟网络规则*](vnet-service-endpoint-rule-overview.md)。 |
+| New-AzSqlServerVirtualNetworkRule | 基于作为虚拟网络服务终结点的子网创建 [*虚拟网络规则*](vnet-service-endpoint-rule-overview.md)。 |
 
 ## <a name="the-azure-cli"></a>Azure CLI
 
-若要使用 [Azure CLI](/cli/azure) 创建并管理服务器、数据库和防火墙，请运行以下 [Azure CLI](/cli/azure/sql/db) 命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](elastic-pool-overview.md)。
+若要使用 [Azure CLI](/cli/azure) 创建并管理服务器、数据库和防火墙，请运行以下 [Azure CLI](/cli/azure/sql/db) 命令。 使用 [Cloud Shell](../../cloud-shell/overview.md) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](elastic-pool-overview.md)。
 
 > [!TIP]
 > 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 创建单一 Azure SQL 数据库](az-cli-script-samples-content-guide.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 在 Azure SQL 数据库中创建数据库和配置 SQL 数据库防火墙规则](scripts/create-and-configure-database-cli.md)和[使用 CLI 监视和缩放 Azure SQL 数据库中的数据库](scripts/monitor-and-scale-database-cli.md)。
@@ -123,10 +123,10 @@ ms.locfileid: "85254984"
 
 | 命令 | 说明 |
 | --- | --- |
-|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|新建单一数据库。 必须连接到 master 数据库才能新建数据库。|
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |修改数据库或弹性池。 |
+|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)|新建单一数据库。 必须连接到 master 数据库才能新建数据库。|
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |修改数据库或弹性池。 |
 |[DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql)|删除数据库。|
-|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回 Azure SQL 数据库或 Azure Synapse Analytics SQL 池的版本（服务层级）、服务目标（定价层）和弹性池名称（若有）。 如果已登录到 SQL 数据库服务器中的 master 数据库，则会返回所有数据库的相关信息。 对于 Azure Synapse Analytics，必须连接到 master 数据库。|
+|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|对于 Azure SQL 数据库或 Azure Synapse Analytics 中的专用 SQL 池，返回 service 层) 、服务目标 (定价层) 和弹性池名称（如果有）的 (版本。 如果已登录到 SQL 数据库服务器中的 master 数据库，则会返回所有数据库的相关信息。 对于 Azure Synapse Analytics，必须连接到 master 数据库。|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 返回 Azure SQL 数据库中数据库的 CPU、IO 和内存消耗量。 即使数据库中没有活动，也会每隔 15 秒返回一行数据。|
 |[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|返回 Azure SQL 数据库中数据库的 CPU 使用率和存储数据。 在五分钟间隔内收集并聚合数据。|
 |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|包含“SQL 数据库”连接事件的统计信息，提供数据库连接成功和失败状态的概述。 |
@@ -144,22 +144,22 @@ ms.locfileid: "85254984"
 
 | 命令 | 说明 |
 | --- | --- |
-|[服务器 - 创建或更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
-|[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|删除 SQL Server。|
-|[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/get)|获取服务器。|
-|[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/list)|返回订阅中的服务器列表。|
-|[服务器 - 按资源组列出](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
-|[Servers - Update](https://docs.microsoft.com/rest/api/sql/servers/update)|更新现有服务器。|
-|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
-|[数据库 - 删除](https://docs.microsoft.com/rest/api/sql/databases/delete)|删除数据库。|
-|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/get)|获取数据库。|
-|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新现有的数据库。|
-|[防火墙规则 - 创建或更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
-|[防火墙规则 - 删除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
-|[防火墙规则 - 获取](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|获取防火墙规则。|
-|[防火墙规则 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
+|[服务器 - 创建或更新](/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
+|[Servers - Delete](/rest/api/sql/servers/delete)|删除 SQL Server。|
+|[Servers - Get](/rest/api/sql/servers/get)|获取服务器。|
+|[Servers - List](/rest/api/sql/servers/list)|返回订阅中的服务器列表。|
+|[服务器 - 按资源组列出](/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
+|[Servers - Update](/rest/api/sql/servers/update)|更新现有服务器。|
+|[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
+|[数据库 - 删除](/rest/api/sql/databases/delete)|删除数据库。|
+|[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
+|[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
+|[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
+|[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
+|[防火墙规则 - 创建或更新](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
+|[防火墙规则 - 删除](/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
+|[防火墙规则 - 获取](/rest/api/sql/firewallrules/get)|获取防火墙规则。|
+|[防火墙规则 - 按服务器列出](/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
 
 ## <a name="next-steps"></a>后续步骤
 

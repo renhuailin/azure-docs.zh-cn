@@ -1,17 +1,17 @@
 ---
 title: 基础结构双加密-Azure Database for PostgreSQL
 description: 了解如何使用基础结构双加密，通过服务托管的密钥来添加另一层的加密。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 03d52611c89012d1132b4a27820f7f47e6cdd512
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537899"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242018"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL 基础结构双加密
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL 使用 Microsoft 的托管密钥对数据进行 [�
 基础结构双加密使用服务托管密钥增加了另一层的加密。 它使用 FIPS 140-2 验证的加密模块，但使用不同的加密算法。 这为静态数据提供额外的保护层。 在基础结构双加密中使用的密钥也由 Azure Database for PostgreSQL 服务管理。 默认情况下不启用基础结构双加密，因为其他加密层可能会影响性能。
 
 > [!NOTE]
-> 此功能适用于所有 Azure Database for PostgreSQL 支持 "常规用途" 和 "内存优化" 定价层的 Azure 区域。
+> 仅 Azure Database for PostgreSQL 中的 "常规用途" 和 "内存优化" 定价层支持此功能。
 
 基础结构层加密具有在离存储设备或网络线路最近的层实现的好处。 Azure Database for PostgreSQL 使用服务托管密钥来实现两个加密层。 尽管从技术上讲，在服务层中，它非常接近存储静态数据的硬件。 你仍可以使用预配的 PostgreSQL 服务器的 [客户托管密钥](concepts-data-encryption-postgresql.md) 来启用静态数据加密。  
 

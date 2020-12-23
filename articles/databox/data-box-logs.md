@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498797"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147941"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box 和 Azure Data Box Heavy 导入顺序的跟踪和事件日志记录
 
@@ -23,7 +23,7 @@ Data Box 或 Data Box Heavy 导入顺序完成以下步骤：订单、设置、�
 
 | Data Box 导入订单阶段       | 用于跟踪和审核的工具                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| 创建订单               | [通过 RBAC 对订单设置访问控制](#set-up-access-control-on-the-order)                                                    |
+| 创建订单               | [通过 Azure RBAC 按顺序设置访问控制](#set-up-access-control-on-the-order)                                                    |
 | 订单已处理            | 通过以下方式[跟踪订单](#track-the-order) <ul><li> Azure 门户 </li><li> 承运商网站 </li><li>电子邮件通知</ul> |
 | 设置设备              | 在[活动日志](#query-activity-logs-during-setup)中记录的设备访问凭据                                              |
 | 将数据复制到设备        | [查看 *error.xml* 文件](#view-error-log-during-data-copy)了解数据复制状态                                                             |
@@ -47,7 +47,7 @@ Data Box 或 Data Box Heavy 导入顺序完成以下步骤：订单、设置、�
 - 在订单级别分配一个角色。 用户只拥有角色定义的权限，只能与该特定的 Data Box 订单交互，而没有任何其他权限。
 - 在资源组级别分配一个角色，这样，用户便有权访问资源组中的所有 Data Box 订单。
 
-有关 RBAC 建议用法的详细信息，请参阅 [Azure RBAC 的最佳做法](../role-based-access-control/best-practices.md)。
+有关建议使用的 Azure RBAC 的详细信息，请参阅 [AZURE rbac 的最佳实践](../role-based-access-control/best-practices.md)。
 
 ## <a name="track-the-order"></a>跟踪订单
 

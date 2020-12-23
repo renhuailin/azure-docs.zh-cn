@@ -2,13 +2,13 @@
 title: 设置诊断日志 - Azure 事件中心 | Microsoft Docs
 description: 了解如何为 Azure 中的事件中心设置活动日志和诊断日志。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/27/2020
+ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927725"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912593"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -64,7 +64,7 @@ ms.locfileid: "88927725"
 `TaskName` | 描述失败的任务
 `ActivityId` | 用于跟踪的内部 ID
 `trackingId` | 用于跟踪的内部 ID
-`resourceId` | Azure Resource Manager 资源 ID
+`resourceId` | Azure 资源管理器资源 ID
 `eventHub` | 事件中心的完整名称（包括命名空间名称）
 `partitionId` | 要写入到的事件中心分区
 `archiveStep` | 可能值：ArchiveFlushWriter、DestinationInit
@@ -101,7 +101,7 @@ ms.locfileid: "88927725"
 ------- | -------
 `ActivityId` | 内部 ID，用于跟踪目的 |
 `EventName` | 操作名称 |
-`resourceId` | Azure Resource Manager 资源 ID |
+`resourceId` | Azure 资源管理器资源 ID |
 `SubscriptionId` | 订阅 ID |
 `EventTimeString` | 操作时间 |
 `EventProperties` | 操作属性 |
@@ -151,7 +151,7 @@ Kafka 协调器日志 JSON 包括下表列出的元素：
 | 名称 | 说明 |
 | ---- | ----------- | 
 | `RequestId` | 请求 ID，用于跟踪目的 |
-| `ResourceId` | Azure Resource Manager 资源 ID |
+| `ResourceId` | Azure 资源管理器资源 ID |
 | `Operation` | 组协调期间执行的操作的名称 |
 | `ClientId` | 客户端 ID |
 | `NamespaceName` | 命名空间名称 | 
@@ -188,7 +188,6 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 | `Message` | 信息性消息，提供有关错误的详细信息 |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>事件中心虚拟网络连接事件架构
-
 事件中心虚拟网络 (VNet) 连接事件 JSON 包含下表列出的元素：
 
 | 名称 | 说明 |
@@ -200,6 +199,8 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 | `Reason` | 提供执行操作的原因 |
 | `Count` | 给定操作的发生次数 |
 | `ResourceId` | Azure 资源管理器资源 ID。 |
+
+仅当命名空间允许从 **所选网络** 或从 **特定 ip 地址** 进行访问时，才会生成虚拟网络日志)  (ip 筛选器规则。 如果不想使用这些功能限制对命名空间的访问，但仍希望获取虚拟网络日志来跟踪连接到事件中心命名空间的客户端的 IP 地址，可以使用以下解决方法。 启用 IP 筛选，并将 "可寻址 IPv4 范围" (1.0.0.0/1-255.0.0.0/1) 中添加。 事件中心不支持 IPv6 范围。 
 
 ### <a name="example"></a>示例
 

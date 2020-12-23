@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: inhenkel
 ms.openlocfilehash: 409acdc4812f3e8ccf53e7df6712ffb289f44f9f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254096"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971180"
 ---
 <Token>![媒体服务徽标 v3](../media/media-services-api-logo/azure-media-services-logo-v3.svg)<br><hr color="#5ea0ef" size="10"></Token>

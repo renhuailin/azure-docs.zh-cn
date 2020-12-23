@@ -5,18 +5,18 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226508"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920817"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
-通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和内置请求触发器和响应操作，你可以创建可通过 HTTPS 接收入站请求的自动化任务和工作流。 若要改为发送出站请求，请使用内置 [HTTP 触发器或 http 操作](../connectors/connectors-native-http.md)。
+借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置的请求触发器和响应操作，可以创建可通过 HTTPS 接收入站请求的自动化任务和工作流。 若要改为发送出站请求，请使用内置 [HTTP 触发器或 HTTP 操作](../connectors/connectors-native-http.md)。
 
 例如，使用逻辑应用，你可以完成以下操作：
 
@@ -26,9 +26,9 @@ ms.locfileid: "89226508"
 
 * 接收来自其他逻辑应用的 HTTPS 调用并对其作出响应。
 
-本文介绍如何使用 "请求触发器和响应" 操作，以便逻辑应用可以接收和响应入站调用。
+本文介绍如何使用请求触发器和响应操作，以便逻辑应用可以接收和响应入站调用。
 
-有关对逻辑应用的入站调用的加密、安全和授权（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前称为安全套接字层 (SSL) ），或 [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
+有关对逻辑应用的入站调用的安全、授权和加密的详细信息（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，以前称为安全套接字层 (SSL) ）， [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，使用 Azure API 管理公开逻辑应用，或限制发起入站调用的 IP 地址，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,14 +40,13 @@ ms.locfileid: "89226508"
 
 ## <a name="add-request-trigger"></a>添加请求触发器
 
-此内置触发器创建 *只能处理 HTTPS* 上的入站请求的手动可调用终结点。 当调用方将请求发送到此终结点时， [请求触发器](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) 将触发并运行逻辑应用。 有关如何调用此触发器的详细信息，请参阅 [在 Azure 逻辑应用中通过 HTTPS 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
+此内置触发器创建可手动调用的终结点，该终结点只能处理 HTTPS 上的入站请求。 当调用方将请求发送到此终结点时，[请求触发器](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)会激发并运行逻辑应用。 有关如何调用此触发器的详细信息，请参阅[在 Azure 逻辑应用中使用 HTTPS 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
-逻辑应用使入站请求仅在 [有限时间](../logic-apps/logic-apps-limits-and-config.md#request-limits)打开。 假定逻辑应用包含 [响应操作](#add-response)，如果逻辑应用在这段时间过后未向调用方发送响应，则逻辑应用会 `504 GATEWAY TIMEOUT` 向调用方返回状态。 如果逻辑应用不包括响应操作， 
-> 逻辑应用会立即将 `202 ACCEPTED` 状态返回给调用方。
+逻辑应用仅在[有限的时间](../logic-apps/logic-apps-limits-and-config.md#http-limits)内使入站请求保持打开状态。 假设逻辑应用包含[响应操作](#add-response)，如果逻辑应用在此时间之后未向调用方发回响应，则逻辑应用会将 `504 GATEWAY TIMEOUT` 状态返回给调用方。 如果逻辑应用不包含“响应”操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 状态。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
 
-1. 逻辑应用设计器打开后，在搜索框中，输入 `http request` 作为筛选器。 从 "触发器" 列表中，选择 " **收到 HTTP 请求时** " 触发器。
+1. 逻辑应用设计器打开后，在搜索框中，输入 `http request` 作为筛选器。 从触发器列表中选择“当收到 HTTP 请求时”触发器。
 
    ![选择请求触发器](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -55,7 +54,7 @@ ms.locfileid: "89226508"
 
    ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，用于调用逻辑应用 |
    | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
@@ -127,11 +126,11 @@ ms.locfileid: "89226508"
 
    1. 在请求触发器中，选择“使用示例有效负载生成架构”。
 
-      ![选择了 "使用示例有效负载生成架构" 的屏幕截图](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      ![选择了“使用示例有效负载生成架构”的屏幕截图](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
    1. 输入示例有效负载，然后选择“完成”。
 
-      ![输入用于生成架构的示例负载](./media/connectors-native-reqres/enter-payload.png)
+      ![输入示例有效负载以生成架构](./media/connectors-native-reqres/enter-payload.png)
 
       下面是示例有效负载：
 
@@ -162,7 +161,7 @@ ms.locfileid: "89226508"
 
 1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | 否 | 传入的请求在调用逻辑应用时必须使用的方法 |
    | **相对路径** | `relativePath` | 否 | 逻辑应用终结点 URL 可接受的参数的相对路径 |
@@ -180,7 +179,7 @@ ms.locfileid: "89226508"
 
    例如，可以通过[添加响应操作](#add-response)来响应请求，该响应操作可用于返回自定义响应，本主题后面部分将介绍此相关内容。
 
-   逻辑应用仅在[有限的时间](../logic-apps/logic-apps-limits-and-config.md#request-limits)内使传入请求保持打开状态。 假设逻辑应用工作流包含响应操作，如果该逻辑应用在此时间之后没有返回响应，则逻辑应用会将 `504 GATEWAY TIMEOUT` 返回给调用方。 否则，如果逻辑应用不包含响应操作，则逻辑应用会立即将 `202 ACCEPTED` 响应返回给调用方。
+   逻辑应用仅在[有限的时间](../logic-apps/logic-apps-limits-and-config.md#http-limits)内使传入请求保持打开状态。 假设逻辑应用工作流包含响应操作，如果该逻辑应用在此时间之后没有返回响应，则逻辑应用会将 `504 GATEWAY TIMEOUT` 返回给调用方。 否则，如果逻辑应用不包含响应操作，则逻辑应用会立即将 `202 ACCEPTED` 响应返回给调用方。
 
 1. 完成后，保存逻辑应用。 在设计器工具栏上选择“保存”。
 
@@ -191,9 +190,11 @@ ms.locfileid: "89226508"
    > [!NOTE]
    > 若要在调用请求触发器时在 URI 中包含哈希符号或井号（“#”），请改用此编码版本：`%25%23`
 
-1. 若要触发逻辑应用，请将 HTTP POST 发送到生成的 URL。
+1. 若要测试逻辑应用，请将 HTTP 请求发送到生成的 URL。
 
-   例如，可以使用 [Postman](https://www.getpostman.com/) 等工具来发送 HTTP POST。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅以下主题：[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[通过 Azure 逻辑应用中的 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
+   例如，你可以使用 [Postman](https://www.getpostman.com/) 之类的工具来发送 HTTP 请求。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅以下主题：[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[通过 Azure 逻辑应用中的 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
+
+有关对逻辑应用的入站调用的安全、授权和加密的详细信息（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，以前称为安全套接字层 (SSL) ）， [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，使用 Azure API 管理公开逻辑应用，或限制发起入站调用的 IP 地址，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
 ## <a name="trigger-outputs"></a>触发器输出
 
@@ -201,15 +202,15 @@ ms.locfileid: "89226508"
 
 | JSON 属性名称 | 数据类型 | 说明 |
 |--------------------|-----------|-------------|
-| `headers` | 对象 | 描述请求中的标头的 JSON 对象 |
-| `body` | 对象 | 描述请求中的正文内容的 JSON 对象 |
+| `headers` | Object | 描述请求中的标头的 JSON 对象 |
+| `body` | Object | 描述请求中的正文内容的 JSON 对象 |
 ||||
 
 <a name="add-response"></a>
 
 ## <a name="add-a-response-action"></a>添加响应操作
 
-使用请求触发器处理入站请求时，可以使用内置 [响应操作](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)对响应进行建模并将负载结果发送回调用方。 *只能将响应操作用于*请求触发器。 这种与 "请求触发器" 和 "响应" 操作的结合会创建 [请求-响应模式](https://en.wikipedia.org/wiki/Request%E2%80%93response)。 除了 Foreach 循环和循环之间以及并行分支以外，还可以在工作流中的任意位置添加响应操作。
+使用请求触发器处理入站请求时，可以使用内置[响应操作](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)对响应进行建模并将有效负载结果发送回调用方。 只能将响应操作与请求触发器配合使用。 这种与 "请求触发器" 和 "响应" 操作的结合会创建 [请求-响应模式](https://en.wikipedia.org/wiki/Request%E2%80%93response)。 除了 Foreach 循环和循环内以及并行分支以外，可以在工作流中的任意位置添加响应操作。
 
 > [!IMPORTANT]
 > 如果响应操作包含这些标头，则逻辑应用会从生成的响应消息中删除这些标头，且不显示任何警告或错误：
@@ -232,7 +233,7 @@ ms.locfileid: "89226508"
 
    若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-1. 在 " **选择操作**" 下的 "搜索" 框中，输入 `response` 作为筛选器，然后选择 " **响应** " 操作。
+1. 在“选择操作”下的搜索框中，输入 `response` 作为筛选器，然后选择“响应”操作。
 
    ![选择“响应”操作](./media/connectors-native-reqres/select-response-action.png)
 
@@ -265,5 +266,5 @@ ms.locfileid: "89226508"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [对基于请求的触发器的入站调用进行安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [保护访问和数据 - 对基于请求的触发器的入站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [适用于逻辑应用的连接器](../connectors/apis-list.md)

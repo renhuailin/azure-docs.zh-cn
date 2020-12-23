@@ -1,17 +1,18 @@
 ---
-title: 如何使用 Azure 磁盘加密调整加密的逻辑卷管理磁盘的大小
+title: 如何调整使用 Azure 磁盘加密加密的磁盘大小
 description: 本文介绍如何使用逻辑卷管理调整 ADE 加密磁盘的大小。
 author: jofrance
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a3e9b7406e11261aff12d77d9fbeed5debbe938
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 732a2ef3c6c33d0b17deaf3b9bdc5d1ac5e5934c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744264"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498908"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>如何调整使用 Azure 磁盘加密的逻辑卷管理设备的大小
 
@@ -31,13 +32,13 @@ ms.locfileid: "91744264"
 
 本文假设用户具备以下条件：
 
-- 现有的 LVM 配置。 有关详细信息，请参阅 [在 LINUX VM 上配置 LVM](configure-lvm.md)。
+- 现有的 LVM 配置。 有关详细信息，请参阅 [在 LINUX VM 上配置 LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm)。
 
 - 已由 Azure 磁盘加密加密的磁盘。 有关详细信息，请参阅 [在加密设备上配置 LVM 和 RAID](how-to-configure-lvm-raid-on-crypt.md)。
 
 - 使用 Linux 和 LVM 的经验。
 
-- 在 Azure 上使用数据磁盘的 */dev/disk/scsi1/* 路径体验。 有关详细信息，请参阅 [排查 LINUX VM 设备名称问题](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems)。 
+- 在 Azure 上使用数据磁盘的 */dev/disk/scsi1/* 路径体验。 有关详细信息，请参阅 [排查 LINUX VM 设备名称问题](../troubleshooting/troubleshoot-device-names-problems.md)。 
 
 ## <a name="scenarios"></a>方案
 
@@ -317,7 +318,7 @@ lvdisplay lvname
 
 #### <a name="extend-a-traditional-lvm-volume-by-resizing-an-existing-pv"></a>通过调整现有 PV 的大小来扩展传统的 LVM 卷
 
-Im 在某些情况下，你的限制可能要求你调整现有磁盘的大小。 以下是操作方法：
+Im 在某些情况下，你的限制可能要求你调整现有磁盘的大小。 方法如下：
 
 1. 确定加密磁盘：
 

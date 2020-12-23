@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure Migrate 服务器迁移工具将 Hyper-V VM 迁移到 Azure
 description: 了解如何使用 Azure Migrate 服务器迁移工具将本地 Hyper-V VM 迁移到 Azure
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 10e17a4fba1adbccf71497c54060fda2f60088ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 48fe0c737cf7005676a5c803107b4402c7039141
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90525331"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752737"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -43,23 +46,8 @@ ms.locfileid: "90525331"
 2. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) Hyper-V 主机迁移要求，以及迁移 VM 时 Hyper-V 主机和群集需要访问的 Azure URL。
 3. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)要迁移到 Azure 的 Hyper-V VM 要求。
 4. 建议在评估 [Hyper-V VM](tutorial-assess-hyper-v.md) 后将其迁移到 Azure，但不强制要求这样做。
-
-   
-## <a name="add-the-azure-migrateserver-migration-tool"></a>添加 Azure Migrate:服务器迁移工具
-
-添加 Azure Migrate:服务器迁移工具。 如果还没有 Azure Migrate 项目，请先[创建项目](how-to-add-tool-first-time.md)，以设置 Azure Migrate 项目。 创建项目时，请添加 Azure Migrate:服务器迁移工具。
-
-如果已设置项目，请如下所述添加工具：
-
-1. 在 Azure Migrate 项目中，单击“概述”。 
-2. 在“发现、评估和迁移服务器”中，单击“评估和迁移服务器”。 
-3. 在“迁移工具”中，选择“准备好迁移时单击此处添加迁移工具”。 
-
-    ![选择工具](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
-
-4. 在“工具”列表中，选择“Azure Migrate:服务器迁移” > “添加工具”
-
-    ![服务器迁移工具](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
+5. 转到已创建的项目或[创建新项目](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+6. 验证 Azure 帐户的权限 - Azure 帐户需要有权创建 VM 并将数据写入 Azure 托管磁盘。
 
 ## <a name="download-and-install-the-provider"></a>下载并安装提供程序
 
@@ -120,7 +108,7 @@ ms.locfileid: "90525331"
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
 10. 在“Azure 混合权益”中：
 
-    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
+    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。 
     - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”  。
 
     ![目标设置](./media/tutorial-migrate-hyper-v/target-settings.png)
@@ -133,7 +121,7 @@ ms.locfileid: "90525331"
 
     ![VM 计算设置](./media/tutorial-migrate-hyper-v/compute-settings.png)
 
-12. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”  。
+12. 在“磁盘”中，指定需要复制到 Azure 的 VM 磁盘。 然后单击“下一步”  。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 
@@ -151,7 +139,7 @@ ms.locfileid: "90525331"
 - **服务总线**：“Azure Migrate:服务器迁移使用服务总线将复制业务流程消息发送到设备。
 - **网关存储帐户**：“Azure Migrate:服务器迁移使用网关存储帐户存储有关所要复制的 VM 的状态信息。
 - **日志存储帐户**：Azure Migrate 设备将 VM 的复制日志上传到日志存储帐户。 Azure Migrate 将复制信息应用到副本托管磁盘。
-- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在[准备 Azure](tutorial-prepare-hyper-v.md#prepare-azure) 以进行 Hyper-V VM 评估和迁移时，应该已设置密钥保管库访问存储帐户所需的权限。 
+- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在[准备 Azure](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) 以进行 Hyper-V VM 评估和迁移时，应该已设置密钥保管库访问存储帐户所需的权限。 
 
 
 ## <a name="track-and-monitor"></a>跟踪和监视
@@ -232,7 +220,7 @@ ms.locfileid: "90525331"
     - 使用 Site Recovery 将 Azure VM 复制到次要区域以保证工作负荷运行且持续可用。 [了解详细信息](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 为提高安全性，请执行以下操作：
     - 使用 [Azure 安全中心 - 适时管理](../security-center/security-center-just-in-time.md)锁定和限制入站流量访问。
-    - 使用[网络安全组](../virtual-network/security-overview.md)限制流入管理终结点的网络流量。
+    - 使用[网络安全组](../virtual-network/network-security-groups-overview.md)限制流入管理终结点的网络流量。
     - 部署[Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
     - 详细了解[保护 IaaS 资源的安全](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。
 - 为了便于监视和管理，请执行以下操作：

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420064"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590454"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>管理映射数据流图表
 
@@ -21,13 +21,13 @@ ms.locfileid: "89420064"
 
 映射数据流是使用设计图面来编写的，它被视为数据流图表。 在图形中，转换逻辑是从左向右构建的，而其他数据流则自上而下地添加。 若要添加新的转换，请选择现有转换右下方的加号。
 
-![画布](media/data-flow/canvas2.png "画布")
+![画布](media/data-flow/canvas-2.png)
 
 随着您的数据流变得更加复杂，使用以下机制来有效地浏览和管理数据流图表。 
 
 ## <a name="moving-transformations"></a>移动转换
 
-在映射数据流时，一组已连接的转换逻辑称为 " **流**"。 **传入流**字段规定哪个数据流正在传输当前转换。 每个转换都有一个或两个传入流，具体取决于其函数并表示一个输出流。 传入流的输出架构确定哪些列元数据可由当前转换引用。
+在映射数据流时，一组已连接的转换逻辑称为 " **流**"。 **传入流** 字段规定哪个数据流正在传输当前转换。 每个转换都有一个或两个传入流，具体取决于其函数并表示一个输出流。 传入流的输出架构确定哪些列元数据可由当前转换引用。
 
 ![移动节点](media/data-flow/move-nodes.png "移动节点")
 
@@ -39,7 +39,7 @@ ms.locfileid: "89420064"
 
 ![隐藏图形](media/data-flow/hide-graph.png "隐藏关系图")
 
-隐藏关系图后，可以通过单击 " **下一步** " 或 " **上一**步" 在流内的转换之间移动。 单击向下的 v 形 v 形 v 形图标以显示图表。
+隐藏关系图后，可以通过单击 " **下一步** " 或 " **上一** 步" 在流内的转换之间移动。 单击向下的 v 形 v 形 v 形图标以显示图表。
 
 ![显示关系图](media/data-flow/show-graph.png "显示关系图")
 
@@ -47,11 +47,11 @@ ms.locfileid: "89420064"
 
 若要在关系图中快速找到转换，请单击 "缩放" 设置上方的 **搜索** 图标。
 
-![搜索](media/data-flow/search-1.png "搜索关系图")
+![屏幕截图显示 "搜索" 按钮。](media/data-flow/search-1.png "搜索关系图")
 
 您可以按转换名称或说明进行搜索以查找转换。
 
-![搜索](media/data-flow/search-2.png "搜索关系图")
+![屏幕截图显示 "搜索" 文本框。](media/data-flow/search-2.png "搜索关系图")
 
 ## <a name="hide-reference-nodes"></a>隐藏引用节点
 

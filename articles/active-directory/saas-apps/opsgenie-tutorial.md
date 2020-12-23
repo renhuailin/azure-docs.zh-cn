@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebcb746e10ae910c695e52fb053fc5d0b316e70
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a71c29032730e0724213f9f5ef17f7336c188741
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543901"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516675"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>教程：Azure Active Directory 单一登录 (SSO) 与 OpsGenie 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543901"
 * 让用户使用其 Azure AD 帐户自动登录到 OpsGenie。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88543901"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * OpsGenie 支持 IDP 发起的 SSO 
-* 配置 OpsGenie 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 OpsGenie 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-opsgenie-from-the-gallery"></a>从库中添加 OpsGenie
 
@@ -133,15 +133,15 @@ ms.locfileid: "88543901"
 
 3. 若要启用 SSO，请选择“启用”。 
    
-    ![OpsGenie 设置](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
+    ![屏幕截图显示选择了“已启用”复选框。](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. 在“提供程序”部分，单击“Azure Active Directory”选项卡。  
    
-    ![OpsGenie 设置](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
+    ![屏幕截图显示“提供程序”部分，其中选择了“Azure Active Directory”选项卡。](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. 在“Azure Active Directory”对话框页上，执行以下步骤：
    
-    ![OpsGenie 设置](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
+    ![屏幕截图显示了“单一登录”部分，其中包含“启用单一登录”开关、“SAML 2.0 终结点”和“元数据 URL”。](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
     a. 复制“应用 ID URI”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符(实体 ID)”文本框中。   
 
@@ -149,7 +149,7 @@ ms.locfileid: "88543901"
 
     a. 在“SAML 2.0 终结点”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
     
-    b. 在“元数据 URL:”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值。 
+    b. 在“元数据 URL:”文本框中，粘贴从 Azure 门户复制的 **应用联合元数据 URL** 值。 
     
     c. 若要启用 SSO，请将“启用单一登录”开关切换为打开。 
 
@@ -169,13 +169,13 @@ ms.locfileid: "88543901"
 
 4. 在“添加用户”对话框中，执行以下步骤： 
    
-    ![OpsGenie 设置](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
+    ![屏幕截图显示了“添加用户”对话框，其中突出显示了“电子邮件”和“全名”文本框，并已选择“保存”按钮。](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
     a. 在“电子邮件”文本框中，键入 B.Simon 在 Azure Active Directory 中使用的电子邮件地址。 
    
     b. 在“全名”文本框中，键入 B.Simon。  
    
-    c. 单击“ **保存**”。 
+    c. 单击“ **保存** ”。 
 
 > [!NOTE]
 > B.Simon 会收到一封电子邮件，其中包含个人资料设置说明。
@@ -184,16 +184,16 @@ ms.locfileid: "88543901"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 OpsGenie 磁贴时，应当会自动登录到你为其设置了 SSO 的 OpsGenie。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 OpsGenie 磁贴时，应当会自动登录到你为其设置了 SSO 的 OpsGenie。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 OpsGenie](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

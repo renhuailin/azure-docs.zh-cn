@@ -1,108 +1,105 @@
 ---
-title: 通过人工评审审查视频 - 内容审查器
+title: 使用评审工具来审查视频 - 内容审查器
 titleSuffix: Azure Cognitive Services
-description: 使用计算机辅助视频审核和审阅工具来适中不合适的内容
+description: 使用计算机辅助视频审核和审阅工具来审核是否有不当内容
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81404237"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853492"
 ---
-# <a name="video-moderation-with-human-review"></a>通过人工评审审查视频
+# <a name="video-moderation-with-the-review-tool"></a>使用评审工具来审查视频
 
-使用内容审查器的计算机辅助[视频审核](video-moderation-api.md)和[查看工具](Review-Tool-User-Guide/human-in-the-loop.md)来对成人（明确）和猥亵（暗示性）内容进行适中的视频和脚本，以获得最佳业务效果。
+使用内容审查器的计算机辅助[视频审核](video-moderation-api.md)和[审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)，审核视频和脚本是否有成人（明示）和挑逗性（暗示）内容，以获得最佳业务效果。
 
-## <a name="video-trained-classifier-preview"></a>视频定型分类器（预览）
+## <a name="view-videos-under-review"></a>观看正在评审的视频
 
-计算机辅助视频分类是通过图像定型模型或视频定型模型实现。 与图像定型视频分类器不同，Microsoft 的成人和挑逗性视频分类器是通过视频进行定型。 这种方法提高了匹配质量。
+在仪表板上，选择视频内容类型中的任意评审队列。 这将启动评审并打开视频内容审查页面。
 
-## <a name="shot-detection"></a>镜头检测
+> [!div class="mx-imgBorder"]
+> ![在内容审查器 (Preview) 上，滑块将突出显示并设置为4个评论。 "全部模糊" 和 "黑白" 和 "白色" 开关均已设置。](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
-输出分类详细信息时，附加视频智能有助于更灵活地分析视频。 Microsoft 视频审查服务提供镜头级信息，而不是仅仅输出帧。 现在可以视需要选择是在镜头一级，还是在帧一级分析视频。
+### <a name="review-count"></a>Review count
 
-## <a name="key-frame-detection"></a>关键帧检测
+使用右上角的滑块设置要在页面上显示的评审数量。
 
-视频审查服务仅识别和输出可能完整（良好）的帧，而不是定期输出帧。 借助这种功能，可以高效生成帧，从而实现帧级成人内容和挑逗性内容分析。
+### <a name="view-type"></a>视图类型
 
-下面摘取的代码行展示了包含潜在镜头、关键帧以及成人内容和挑逗性内容分数的部分响应：
+你可以采用磁贴或详细视图形式查看不同的内容项。 “详细信息”视图可用来查看关键帧以及有关选定视频的其他信息。 
 
-```json
-"fragments":[  
-  {  
-    "start":0,
-    "duration":18000
-  },
-  {  
-    "start":18000,
-    "duration":3600,
-    "interval":3600,
-    "events":[  
-      [  
-        {  
-          "reviewRecommended":false,
-          "adultScore":0.00001,
-          "racyScore":0.03077,
-          "index":5,
-          "timestamp":18000,
-          "shotIndex":0
-        }
-      ]
-    ]
-  },
-  {  
-    "start":18386372,
-    "duration":119149,
-    "interval":119149,
-    "events":[  
-      [  
-        {  
-          "reviewRecommended":true,
-          "adultScore":0.00000,
-          "racyScore":0.91902,
-          "index":5085,
-          "timestamp":18386372,
-          "shotIndex":62
-        }
-      ]
-    ]
-```
+> [!NOTE]
+> 视频审查服务仅识别和输出可能完整（良好）的帧，而不是定期输出帧。 可以借助此功能高效地生成帧，以便对帧级成人内容和不雅内容进行分析。
 
-## <a name="visualization-for-human-reviews"></a>方便人工审阅的直观界面
+“平铺”视图会将每个视频显示为单个磁贴。 选择视频帧上方的展开按钮可以放大该视频并隐藏其他视频。
 
-对于更注意细微差别的情况，企业需要有人工审阅解决方案，用于呈现视频及其帧和计算机分配的标记。 审阅视频和帧的人工审查方可以全面了解见解、更改标记和提交决定。
+### <a name="content-obscuring-effects"></a>内容遮掩效果
 
-![视频“审阅”工具的默认视图](images/video-review-default-view.png)
+使用“全部模糊”和“黑白”开关来设置这些内容遮掩效果。 默认情况下，它们处于启用状态。 在“平铺”视图中，你可以单独切换每个视频的效果。
 
-## <a name="player-view-for-video-level-review"></a>方便视频级审阅的播放器视图
+## <a name="check-video-details"></a>检查视频详细信息
 
-视频播放器视图可显示潜在成人内容和挑逗性内容帧，方便做出视频级二进制决定。 人工审阅者使用各种速度选项来导航视频，从而检查场景。 他们通过切换标记来确认自己的决定。
+在“详细信息”视图中，右窗格会显示多个选项卡，其中显示有关视频的详细信息。
 
-![视频“审阅”工具的播放器视图](images/video-review-player-view.PNG)
+* 选择“注释”选项卡，向视频添加自定义注释。
+* 选择“脚本”选项卡以查看视频脚本&mdash;服务会自动提取视频中任何语音的脚本。 当你选择某个部分的文本时，视频播放器会跳转到视频的该部分。
+* 选择“元数据”选项卡可查看视频文件元数据。
+* 选择“历史记录”选项卡可查看评审历史记录，例如创建时间和修改情况。
 
-## <a name="frames-view-for-detailed-reviews"></a>方便细致审阅的帧视图
+> [!div class="mx-imgBorder"]
+> ![将突出显示右窗格，并选择 "注释" 选项卡。 有一个标记为 "添加注释" 的测试区域。](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
-借助基于帧的视图，可以执行细致视频审阅，从而逐帧分析。 人工审阅者审阅并选择一个或多个帧，并通过切换标记来确认自己的决定。 下一步是，根据需要对冒犯性帧或内容进行编修。
+## <a name="apply-moderation-tags"></a>应用审查标记
 
-![视频“审阅”工具的帧视图](images/video-review-frames-view-apply-tags.PNG)
+视频评审的主要任务是在视频中或部分视频中应用或删除审查标记。
 
-## <a name="transcript-moderation"></a>脚本审查
+### <a name="bulk-tagging"></a>批量标记
 
-视频通常有旁白，也需要审查旁白是否有冒犯性语音内容。 可以使用 Azure Media Indexer 服务将语音转文本，并使用内容审查器的审阅 API 提交脚本，以供在“审阅”工具中执行文本审查。
+使用“批量标记”工具栏，可以一次向多个选定的视频添加标记。 选择一个或多个视频，然后选择要应用的标记，并单击“提交”。 
 
-![视频“审阅”工具的脚本视图](images/video-review-transcript-view.png)
+> [!div class="mx-imgBorder"]
+> !["+" 按钮在 "批量标记" 窗格中突出显示。](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+
+
+### <a name="key-frame-tagging"></a>关键帧标记
+
+你还可以向特定的关键帧添加审查标记。 从关键帧磁贴窗格中选择帧，然后选择“关键帧标记 +”以应用所需的标记。
+
+> [!NOTE]
+> 如果服务无法提取关键帧，则关键帧磁贴窗格会显示“没有可用的帧”，并且选择关键帧的选项会灰显。在这种情况下，你只能将标记应用于整个视频（使用“视频标记 +”按钮）。
+
+> [!div class="mx-imgBorder"]
+> ![磁贴窗格、视频播放器、关键帧标记窗格和视频标记窗格都显示出来。 将突出显示 "关键帧标记 +" 和 "视频标记 +" 按钮。](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+
+## <a name="put-a-review-on-hold"></a>暂停评审
+
+通过视频窗格底部的“暂停”按钮，你可以暂停评审，以便以后检索并完成它。 对于需要咨询当前没有时间的其他团队成员或经理的评审，你可以执行此操作。 
+
+你可以通过单击屏幕顶部的“暂停”按钮来观看暂停的视频。 “暂停”窗格显示在右侧。 从这里，你可以选择多个暂停的评审，并将其释放回队列，或设置其过期时间。 在经过预先配置的时长后，暂停的评审会释放回队列。 选择“保存”将从当前选定的过期时间开始倒计时。
+
+> [!div class="mx-imgBorder"]
+> ![在 "视频" 窗格上，突出显示 "保留" 按钮。 在窗格底部，将突出显示 "保留时间" 组合框以及 "发布" 和 "保存" 按钮。](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+
+## <a name="submit-a-review"></a>提交评审
+
+应用标记后，选择视频窗格底部的“提交”按钮。 如果你标记了多个视频，则可以在单个评审中提交它们，也可以在各个独立的评审中提交它们。
+
+## <a name="limbo-state"></a>Limbo 状态
+
+提交评审后，视频会转为“Limbo”状态，可以通过选择屏幕顶部的“Limbo”按钮来查看此状态。 视频在预先配置的一段时间（可以在底部菜单中进行更改）内保持 Limbo 状态，直到再次评审或手动提交它们。
+
+视频过期（脱离 Limbo 状态）后，其评审会被标记为完成。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 开始学习[视频审查快速入门](video-moderation-api.md)。
 - 了解如何根据审查输出为人工审阅者生成[视频审阅](video-reviews-quickstart-dotnet.md)。
 - 向视频审阅添加[视频脚本审阅](video-transcript-reviews-quickstart-dotnet.md)。
-- 查看有关如何开发[完整视频审查解决方案](video-transcript-moderation-review-tutorial-dotnet.md)的详细教程。

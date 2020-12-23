@@ -1,6 +1,6 @@
 ---
 title: 数据加载最佳做法
-description: 将数据加载到 Synapse SQL 的建议和性能优化
+description: 用于将数据加载到专用 SQL pool Azure Synapse Analytics 的建议和性能优化。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289225"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024021"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>为数据仓库加载数据的最佳做法
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>将数据加载到专用 SQL pool Azure Synapse Analytics 的最佳实践
 
 在本文中，你将找到用于加载数据的建议和性能优化。
 
 ## <a name="prepare-data-in-azure-storage"></a>在 Azure 存储中准备数据
 
-若要最大程度地减少延迟，请归置存储层和数据仓库。
+若要最大程度地减少延迟，请将存储层和专用 SQL 池归置。
 
 将数据导出为 ORC 文件格式时，如果存在较大的文本列，可能会收到“Java 内存不足”错误。 若要解决此限制方面的问题，请仅导出列的一个子集。
 
@@ -36,13 +36,13 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="run-loads-with-enough-compute"></a>运行具有足够计算的负载
 
-若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果预期的加载作业较大，可以考虑在加载前纵向扩展 SQL 池。
+若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果需要较大的加载作业，请考虑在负载之前向上扩展专用的 SQL 池。
 
 若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给一个特定的资源类或工作负载组。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 该负载使用用户的资源类运行。  与尝试根据当前的资源类需求更改用户的资源类相比，此方法更简单。
 
 ### <a name="create-a-loading-user"></a>创建加载用户
 
-此示例为 staticrc20 资源类创建加载用户。 第一步是**连接到主服务器**并创建登录名。
+此示例为 staticrc20 资源类创建加载用户。 第一步是 **连接到主服务器** 并创建登录名。
 
 ```sql
    -- Connect to master

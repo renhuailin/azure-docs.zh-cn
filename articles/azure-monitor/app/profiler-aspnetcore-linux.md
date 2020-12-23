@@ -7,20 +7,20 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6ef52e946edb5db8074a9b4e3ce5e4a81ae0bde5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930377"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561046"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
-此功能目前处于预览状态。
+此功能目前以预览版提供。
 
 使用 [Application Insights](./app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights Profiler 现在可用于 Azure 应用服务上的 Linux 中托管的 ASP.NET Core Web 应用。 本指南提供了有关如何为 ASP.NET Core Linux Web 应用收集探查器跟踪的分步说明。
 
-完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。** **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
+完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。 **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
 
 ![探查器跟踪](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "88930377"
 
     ![设置 Git 存储库](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-有关更多部署选项，请参阅 [应用服务文档](https://docs.microsoft.com/azure/app-service)。
+有关更多部署选项，请参阅 [应用服务文档](../../app-service/index.yml)。
 
 ## <a name="deploy-your-project"></a>部署项目
 
@@ -117,13 +117,13 @@ ms.locfileid: "88930377"
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
-    * 使用创建部署凭据时所用的**用户名**。
-    * 使用通过 Linux 上的应用服务创建 Web 应用时所用的**应用名称**。
+    * 使用创建部署凭据时所用的 **用户名**。
+    * 使用通过 Linux 上的应用服务创建 Web 应用时所用的 **应用名称**。
 
 2. 通过将更改推送到 Azure 来部署项目：
 
     ```console
-    git push azure master
+    git push azure main
     ```
 
     应会看到与如下示例类似的输出：
@@ -134,7 +134,7 @@ ms.locfileid: "88930377"
     Compressing objects: 100% (8/8), done.
     Writing objects: 100% (9/9), 1.78 KiB | 911.00 KiB/s, done.
     Total 9 (delta 3), reused 0 (delta 0)
-    remote: Updating branch 'master'.
+    remote: Updating branch 'main'.
     remote: Updating submodules.
     remote: Preparing deployment for commit id 'd7369a99d7'.
     remote: Generating deployment script.
@@ -162,7 +162,7 @@ ms.locfileid: "88930377"
 
 4. 等待 2-5 分钟，以便将事件聚合到 Application Insights。
 
-5. 在 Azure 门户中浏览到 Application Insights 的“性能”窗格。**** 可以在窗格右下角查看探查器跟踪。
+5. 在 Azure 门户中浏览到 Application Insights 的“性能”窗格。 可以在窗格右下角查看探查器跟踪。
 
     ![查看探查器跟踪](./media/profiler-aspnetcore-linux/view-traces.png)
 
@@ -172,4 +172,3 @@ ms.locfileid: "88930377"
 如果使用 Azure 应用服务托管的自定义容器，请遵照[为容器化 ASP.NET Core 应用程序启用服务探查器](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)中的说明启用 Application Insights Profiler。
 
 报告有关 Application Insights GitHub 存储库的任何问题或提出建议：[ApplicationInsights-Profiler-AspNetCore：问题](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)
-

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 1a75c083015d1f10a3ed3dba15480430747756eb
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ea55762aa40360d8eea94223a030f08aad504206
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90525010"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95485386"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>教程：构建 Blazor Server 聊天应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "90525010"
    
    在 Visual Studio 中，选择“新建项目”->“Blazor 应用”->（命名应用并选择一个文件夹）->“Blazor Server 应用”。 确保已安装 .NET Core SDK 3.0+，使 Visual Studio 可正确识别目标框架。
 
-   [ ![blazor-chat-create](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
+   [ ![在“创建新项目”中，Blazor 应用程序模板处于选中状态。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
    
    或者，运行 cmd
    ```dotnetcli
@@ -96,7 +96,7 @@ ms.locfileid: "90525010"
    dotnet add package Microsoft.AspNetCore.SignalR.Client --version 3.1.7
    ```
 
-1. 在 `Pages` 文件夹下创建 `ChartRoom.razor` 以实现 SignalR 客户端。 按以下步骤操作，或直接复制 [ChatRoom.razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor)。
+1. 在 `Pages` 文件夹下创建 `ChatRoom.razor` 以实现 SignalR 客户端。 按以下步骤操作，或直接复制 [ChatRoom.razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor)。
 
    1. 添加页面链接和引用。
       
@@ -285,7 +285,7 @@ ms.locfileid: "90525010"
    </li>
    ```
    
-1. 更新 `site.css` 以优化图表区域气泡视图。 将代码追加到末尾。
+1. 更新 `site.css` 以优化聊天区域气泡视图。 将代码追加到末尾。
 
    ```css
    /* improved for chat text box */
@@ -355,13 +355,13 @@ ms.locfileid: "90525010"
 
 1. 单击 <kbd>F5</kbd> 运行应用。 你将可以如下所示进行聊天。
 
-   [ ![blazor-chat](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   [ ![显示了 Bob 和 Alice 之间的动态聊天。Alice 说“你好”，Bob 回复“你好”。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
    
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsblazor)
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
-   目前为止，Blazor 应用正在使用本地 SignalR，在部署到 Azure 应用服务时，建议使用 [Azure SignalR 服务](https://docs.microsoft.com/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service)，该服务允许将 Blazor Server 应用扩展为大量的并发 SignalR 连接。 此外，SignalR 服务的全球覆盖和高性能数据中心可帮助显著减少由于地理位置造成的延迟。
+   目前为止，Blazor 应用正在使用本地 SignalR，在部署到 Azure 应用服务时，建议使用 [Azure SignalR 服务](/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service)，该服务允许将 Blazor Server 应用扩展为大量的并发 SignalR 连接。 此外，SignalR 服务的全球覆盖和高性能数据中心可帮助显著减少由于地理位置造成的延迟。
 
 > [!IMPORTANT]
 > 在 Blazor Server 应用中，UI 状态是在服务器端进行维护，这意味着在这种情况下需要确保服务器粘性。 如果只有一个应用服务器，则服务器粘性可得到确保，这是设计使然。 但如果有多个应用服务器，则客户端协商和连接可能会转到不同服务器，并导致 Blazor 应用出现 UI 错误。 因此，需要在 `appsettings.json` 中实现服务器粘性，如下所示：
@@ -375,23 +375,23 @@ ms.locfileid: "90525010"
    * 特定目标：支持所有类型的 Azure 应用服务。
    * 应用服务：新建应用服务或选择现有的应用服务。
 
-   [ ![blazor-chat-profile](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
+   [ ![动画显示选择 Azure 作为目标，然后选择 Azure 应用服务作为特定目标。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
 
 1. 添加 Azure SignalR 服务依赖项
 
    创建发布配置文件后，可以在“服务依赖项”下看到一条推荐消息。 单击“配置”以在面板中新建或选择现有的 Azure SignalR 服务。
 
-   [ ![blazor-chat-dependency](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
+   [ ![在“发布”中，突出显示了“配置”链接。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 
    服务依赖项将执行以下操作，确保应用在 Azure 上时自动切换到 Azure SignalR 服务。
 
-   * 更新 [`HostingStartupAssembly`](https://docs.microsoft.com/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) 以使用 Azure SignalR 服务。
+   * 更新 [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) 以使用 Azure SignalR 服务。
    * 添加 Azure SignalR 服务 NuGet 包引用。
    * 更新配置文件属性以保存依赖项设置。
    * 根据你的选择，配置机密存储。
    * 添加 `appsettings` 配置，确保应用面向所选的 Azure SignalR 服务。
 
-   [ ![blazor-chat-dependency-summary](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
+   [ ![在“更改摘要”上，复选框用于选中所有依赖项。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
 
 1. 发布应用
 
@@ -400,7 +400,7 @@ ms.locfileid: "90525010"
    > 由于 Azure 应用服务部署启动延迟，因此应用首次访问页面时可能无法立即正常工作，请尝试刷新页面，稍等一段时间。
    > 此外，你还可以使用浏览器调试器模式与 <kbd>F12</kbd>，以验证流量是否已重定向到 Azure SignalR 服务。
 
-   [ ![blazor-chat-azure](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   [ ![Blazor SignalR 聊天示例包含一个用于填写姓名的文本框和一个用于开始聊天的 Chat! 按钮。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
    
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsblazor)
 
@@ -423,10 +423,10 @@ ms.locfileid: "90525010"
    }
    ```
 
-1. 在 `appsetting.json` 中或使用[机密管理器](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=visual-studio#secret-manager)工具配置 Azure SignalR 服务 `ConnectionString`
+1. 在 `appsetting.json` 中或使用[机密管理器](/aspnet/core/security/app-secrets?tabs=visual-studio&view=aspnetcore-3.1#secret-manager)工具配置 Azure SignalR 服务 `ConnectionString`
 
 > [!NOTE]
-> 可以对 SignalR SDK 使用 [`HostingStartupAssembly`](https://docs.microsoft.com/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) 来替换步骤 2。
+> 可以对 SignalR SDK 使用 [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) 来替换步骤 2。
 > 
 > 1. 添加配置以启用 `appsetting.json` 中的 Azure SignalR 服务
 >    ```js
@@ -470,4 +470,4 @@ ms.locfileid: "90525010"
 
 ## <a name="additional-resources"></a>其他资源
 
-* [ASP.NET Core Blazor](https://docs.microsoft.com/aspnet/core/blazor)
+* [ASP.NET Core Blazor](/aspnet/core/blazor)

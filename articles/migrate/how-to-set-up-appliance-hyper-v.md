@@ -1,14 +1,17 @@
 ---
 title: 为 Hyper-v 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 Hyper-v Vm。
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 5c5fdd1423d806bcc4d2f124310112a3e407e416
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448090"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751115"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 
@@ -27,10 +30,10 @@ ms.locfileid: "91448090"
 
 使用 VHD 模板设置设备：
 
-- 提供设备名称并在门户中生成 Azure Migrate 项目项。
+- 提供设备名称，并在门户中生成 Azure Migrate 项目密钥。
 - 从 Azure 门户下载压缩的 Hyper-V VHD。
 - 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
-- 第一次配置设备，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
+- 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
 
 ### <a name="generate-the-azure-migrate-project-key"></a>生成 Azure Migrate 项目密钥
 
@@ -74,9 +77,9 @@ ms.locfileid: "91448090"
     ![部署 VHD](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
 2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。 
-3. 在“查找文件夹”中，指定包含已解压缩的 VHD 的文件夹。**** 然后单击“下一步”。
+3. 在“查找文件夹”中，指定包含已解压缩的 VHD 的文件夹。 然后单击“下一步”。
 1. 在“选择虚拟机”中，单击“下一步”。 
-2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”。
+2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”  。
 3. 在“选择目标”中保留默认设置。 单击“下一步”。
 4. 在“存储文件夹”中保留默认设置。 单击“下一步”。
 5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。
@@ -118,7 +121,7 @@ ms.locfileid: "91448090"
    
    不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。 
-4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](tutorial-prepare-hyper-v.md#prepare-azure)，会启动设备注册。
+4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account)，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
 
@@ -137,15 +140,15 @@ ms.locfileid: "91448090"
     - 在“本地计算机策略” > “计算机配置”中，单击“管理模板” > “系统” > “凭据委托”。    
     - 双击“允许委托新凭据”，并选择“已启用”。 
     - 在“选项”中单击“显示”，将要发现的每台 Hyper-V 主机添加到列表中，并使用 wsman/ 作为前缀。  
-    - 在“凭据委托”中，双击“允许允许新凭据并使用仅限 NTLM 的服务器身份验证”。******** 再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。
+    - 在“凭据委托”中，双击“允许允许新凭据并使用仅限 NTLM 的服务器身份验证”。 再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。
 
 ## <a name="start-continuous-discovery"></a>启动持续发现
 
 从设备连接到 Hyper-V 主机或群集，并启动 VM 发现。
 
-1. 在**步骤 1：提供 Hyper-V 主机凭据**中，单击“添加凭据”以指定凭据的易记名称，为设备将用于发现 VM 的 Hyper-V 主机/群集添加“用户名”和“密码”。 单击“保存” 。
+1. 在 **步骤 1：提供 Hyper-V 主机凭据** 中，单击“添加凭据”以指定凭据的易记名称，为设备将用于发现 VM 的 Hyper-V 主机/群集添加“用户名”和“密码”。 单击“保存” 。
 1. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 Hyper-V VM 发现支持多个凭据。
-1. 在**步骤 2：提供 Hyper-V 主机/群集详细信息**中，单击“添加发现源”，以指定 Hyper-V 主机/群集 IP 地址/FQDN 以及用于连接到主机/群集的凭据的易记名称。
+1. 在 **步骤 2：提供 Hyper-V 主机/群集详细信息** 中，单击“添加发现源”，以指定 Hyper-V 主机/群集 IP 地址/FQDN 以及用于连接到主机/群集的凭据的易记名称。
 1. 可以一次“添加单个项目”，也可以一次“添加多个项目” 。 还有一个选项是通过“导入 CSV”提供 Hyper-V 主机/群集详细信息。
 
     ![对于添加发现源的选择](./media/tutorial-assess-hyper-v/add-discovery-source-hyperv.png)
@@ -170,7 +173,7 @@ ms.locfileid: "91448090"
 发现完成后，可以验证 VM 是否出现在门户中。
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了 **已发现服务器** 计数的图标。
 
 
 ## <a name="next-steps"></a>后续步骤

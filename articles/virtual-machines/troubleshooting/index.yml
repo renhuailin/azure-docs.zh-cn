@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: df855334f91899ab23625f7161792d0bec416782
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 4f1fd0f88c7165a409644029f247b090df285138
+  ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88816594"
+  ms.lasthandoff: 11/11/2020
+  ms.locfileid: "94506033"
 landingContent:
 - title: 排查部署失败问题
   linkLists:
@@ -126,7 +126,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 排查共享映像库复制速度缓慢问题
-      url: ../windows/troubleshooting-shared-images.md#replication-is-slow
+      url: ../troubleshooting-shared-images.md#replication-speed
 - title: VM 扩展问题
   linkLists:
   - linkListType: how-to-guide

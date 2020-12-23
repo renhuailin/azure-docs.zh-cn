@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085729"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995584"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑
 
@@ -21,7 +21,7 @@ ms.locfileid: "86085729"
 
 ## <a name="prerequisites"></a>必备条件
 
-* HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
+* HDInsight 上的 Apache Storm 群集。 请参阅 [使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为 **群集类型**。
 
 * （可选）熟悉安全外壳 (SSH) 和安全复制 (SCP)。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "86085729"
     > [!NOTE]  
     > Azure Data Lake 和流分析工具以前称为 HDInsight Tools for Visual Studio。
     >
-    > Azure Data Lake 和适用于 Visual Studio 的流分析工具包含在 Visual Studio 2019 的 **Azure 开发**工作负荷中。
+    > Azure Data Lake 和适用于 Visual Studio 的流分析工具包含在 Visual Studio 2019 的 **Azure 开发** 工作负荷中。
 
 1. 启动 Visual Studio。
 
@@ -44,7 +44,7 @@ ms.locfileid: "86085729"
 
 1. 在“创建新项目”窗口中，选择搜索框并输入 `Storm`。 从结果列表中选择“Storm 示例”，然后选择“下一步”。  
 
-1. 在“配置新项目”窗口输入一个**项目名称**，然后转到或创建一个**位置**用于保存新项目。 然后选择“创建”  。
+1. 在“配置新项目”窗口输入一个 **项目名称**，然后转到或创建一个 **位置** 用于保存新项目。 然后选择“创建”  。
 
     ![“配置新项目”窗口，Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -193,8 +193,8 @@ Storm UI 主页类似于以下网页：
 | 拓扑摘要 | 有关拓扑的基本信息。 |
 | 拓扑操作| 可对拓扑执行的管理操作。 本部分稍后将介绍可用的操作。 |
 | 拓扑统计信息 | 有关拓扑的统计信息。 若要为此部分中的某个条目设置期限，请在“窗口”列中选择其对应的链接。  |
-| Spout *（时间范围）* | 拓扑使用的 Spout。 若要查看有关特定 Spout 的详细信息，请在“ID”列中选择其对应的链接。  |
-| 螺栓 *（时间范围）* | 拓扑使用的 Bolt。 若要查看有关特定 Bolt 的详细信息，请在“ID”列中选择其对应的链接。  |
+| Spout *(时间范围)* | 拓扑使用的 Spout。 若要查看有关特定 Spout 的详细信息，请在“ID”列中选择其对应的链接。  |
+| 螺栓 *(时间范围)* | 拓扑使用的 Bolt。 若要查看有关特定 Bolt 的详细信息，请在“ID”列中选择其对应的链接。  |
 | 辅助角色资源 | 辅助角色资源的列表。 若要查看有关特定辅助角色资源的详细信息，请在“主机”列中选择其对应的链接。  |
 | 拓扑可视化效果 | “拓扑可视化效果”按钮，用于显示拓扑的可视化效果。  |
 | 拓扑配置 | 所选拓扑的配置。 |
@@ -224,10 +224,10 @@ Storm 拓扑摘要页类似于以下网页：
 | 组件摘要 | 有关 Spout 或 Bolt 的基本信息。 |
 | 组件操作 | “调试”和“停止调试”按钮。   |
 | Spout 统计信息或螺栓统计 | 有关 Spout 或 Bolt 的统计信息。 若要为此部分中的某个条目设置期限，请在“窗口”列中选择其对应的链接。  |
-| （仅适用于 Bolt）<br/>输入统计信息（期限）** | 有关 Bolt 使用的输入流的信息。 |
-| 输出统计信息 *（时间范围）* | 有关 Spout 或 Bolt 所发出的流的信息。 |
+| （仅适用于 Bolt）<br/>输入统计信息（期限） | 有关 Bolt 使用的输入流的信息。 |
+| 输出统计信息 *(时间范围)* | 有关 Spout 或 Bolt 所发出的流的信息。 |
 | 分析和调试 | 用于在此页上分析和调试组件的控件。 可以设置“状态/超时(分钟)”值，还可以选择“JStack”、“重启辅助角色”和“堆”对应的按钮。     |
-| 执行器 *（时间范围）* | 有关 Spout 或 Bolt 实例的信息。 若要查看针对此实例生成的诊断信息的日志，请选择特定执行器的“端口”项。  还可以查看与特定执行器关联的辅助角色资源，只需在“主机”列中选择此执行器对应的链接即可。  |
+| 执行器 *(时间范围)* | 有关 Spout 或 Bolt 实例的信息。 若要查看针对此实例生成的诊断信息的日志，请选择特定执行器的“端口”项。  还可以查看与特定执行器关联的辅助角色资源，只需在“主机”列中选择此执行器对应的链接即可。  |
 | 错误 | Spout 或 Bolt 的任何错误信息。 |
 
 Storm Bolt 摘要页类似于以下网页：
@@ -260,7 +260,7 @@ Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行�
 对 REST API 的请求必须使用基本身份验证，因此必须使用 HDInsight 群集的管理员名称和密码。 
 
 > [!NOTE]  
-> 由于基本身份验证使用明文发送，因此*始终*应该使用 HTTPS 来保护与群集之间的通信。
+> 由于基本身份验证使用明文发送，因此 *始终* 应该使用 HTTPS 来保护与群集之间的通信。
 
 ### <a name="return-values"></a>返回值
 

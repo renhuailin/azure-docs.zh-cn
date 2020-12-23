@@ -1,22 +1,25 @@
 ---
 title: 将 Azure 事件中心（预览版）上的 Apache Kafka Connect 与 Debezium 集成进行变更数据捕获
-description: 本文提供了有关如何将 Debezium 与 Azure 事件中心一起用于 Kafka 的信息。
+description: 本文介绍如何将 Debezium 与适用于 Kafka 的 Azure 事件中心配合使用。
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061676"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505403"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>将 Azure 事件中心（预览版）上的 Apache Kafka Connect 支持与 Debezium 集成进行变更数据捕获
 
 **变更数据捕获 (CDC)** 是一项技术，用来跟踪为响应创建、更新和删除操作而在数据库表中进行的行级更改。 [Debezium](https://debezium.io/) 是一个基于不同数据库中提供的变更数据捕获功能（例如，[PostgreSQL 中的逻辑解码](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)）构建的分布式平台。 它提供了一组 [Kafka Connect 连接器](https://debezium.io/documentation/reference/1.2/connectors/index.html)，这些连接器会深入探索数据库表中的行级更改，然后将它们转换为事件流，这些事件流随后会发送到 [Apache Kafka](https://kafka.apache.org/)。
 
-本教程介绍了如何使用 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-about?WT.mc_id=devto-blog-abhishgu)（适用于 Kafka）、[Azure DB for PostgreSQL](../postgresql/overview.md) 和 Debezium 在 Azure 上设置基于变更数据捕获的系统。 它将使用 [Debezium PostgreSQL 连接器](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)将数据库修改从 PostgreSQL 流式传输到 Azure 事件中心内的 Kafka 主题。
+本教程介绍了如何使用 [Azure 事件中心](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu)（适用于 Kafka）、[Azure DB for PostgreSQL](../postgresql/overview.md) 和 Debezium 在 Azure 上设置基于变更数据捕获的系统。 它将使用 [Debezium PostgreSQL 连接器](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)将数据库修改从 PostgreSQL 流式传输到 Azure 事件中心内的 Kafka 主题。
+
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 在本教程中，我们将执行以下步骤：
 
@@ -99,6 +102,10 @@ consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModul
 plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka release
 ```
 
+> [!IMPORTANT]
+> 将 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 替换为事件中心命名空间的连接字符串。 有关获取连接字符串的说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 下面是一个配置示例：`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
+
 ### <a name="run-kafka-connect"></a>运行 Kafka Connect
 此步骤在本地以分布式模式启动了一个 Kafka Connect 辅助角色，使用事件中心来保留群集状态。
 
@@ -109,7 +116,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 > [!NOTE]
 > Kafka Connect 使用 Kafka AdminClient API 自动创建具有建议配置（包括压缩）的主题。 在 Azure 门户中快速查看命名空间就可以发现，Connect 辅助角色的内部主题已自动创建。
 >
-> Kafka Connect 内部主题**必须使用压缩**。  如果未正确配置内部连接主题，事件中心团队不负责修复不正确的配置。
+> Kafka Connect 内部主题 **必须使用压缩**。  如果未正确配置内部连接主题，事件中心团队不负责修复不正确的配置。
 
 ### <a name="configure-and-start-the-debezium-postgresql-source-connector"></a>配置并启动 Debezium PostgreSQL 源连接器
 

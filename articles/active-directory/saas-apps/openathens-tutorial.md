@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc2d1c5dca4265bc0f0c26dd0a6c62a7e1698a38
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543935"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621461"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>教程：Azure Active Directory 单一登录 (SSO) 与 OpenAthens 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543935"
 * 让用户使用其 Azure AD 帐户自动登录到 OpenAthens。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88543935"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * OpenAthens 支持 **IDP** 发起的 SSO
-* OpenAthens 支持**实时**用户预配
+* OpenAthens 支持 **实时** 用户预配
 
 ## <a name="adding-openathens-from-the-gallery"></a>从库中添加 OpenAthens
 
@@ -76,7 +76,7 @@ ms.locfileid: "88543935"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，上传**服务提供程序元数据文件**，本教程下文中介绍了相关的步骤。
+1. 在“基本 SAML 配置”  部分中，上传 **服务提供程序元数据文件**，本教程下文中介绍了相关的步骤。
 
     a. 单击“上传元数据文件”  。
 
@@ -86,7 +86,7 @@ ms.locfileid: "88543935"
 
     ![Openathens 浏览上传元数据](common/browse-upload-metadata.png)
 
-    c. 成功上传元数据文件后，**标识符**值会自动填充在“基本 SAML 配置”  部分的文本框中：
+    c. 成功上传元数据文件后，**标识符** 值会自动填充在“基本 SAML 配置”  部分的文本框中：
 
     ![OpenAthens 域和 URL 单一登录信息](common/idp-identifier.png)
 
@@ -134,54 +134,54 @@ ms.locfileid: "88543935"
 
 1. 在“管理”  选项卡下的列表中选择“连接”  。
 
-    ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![屏幕截图显示从“管理”选项卡中选择了“连接”的“OpenAthens”公司网页。](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
 1. 选择“SAML 1.1/2.0”，再选择“配置”按钮。  
 
-    ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![屏幕截图显示选择了“SAML 1.1/2.0”和“配置”按钮的 “选择本地身份验证系统类型。”对话框。](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
-1. 若要添加配置，请选择“浏览”按钮上传已从 Azure 门户下载的元数据 .xml 文件，再选择“添加”。  
+1. 若要添加配置，请选择“浏览”按钮上传已从 Azure 门户下载的元数据 .xml 文件，再选择“添加”。
 
-    ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![屏幕截图显示选择了“浏览”操作和“添加”按钮的 “添加 SAML 身份验证系统。”对话框。](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-1. 在“详细信息”  选项卡下执行以下步骤。
+1. 在“详细信息”选项卡下执行以下步骤。
 
     ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
-    a. 在“显示名称映射”  中，选择“使用属性”  。
+    a. 在“显示名称映射”中，选择“使用属性”。
 
-    b. 在“显示名称属性”  文本框中，输入值 `http://schema.microsoft.com/identity/claims/displayname`。
+    b. 在“显示名称属性”文本框中，输入值 `http://schemas.microsoft.com/identity/claims/displayname`。
 
-    c. 在“唯一用户映射”  中，选择“使用属性”  。
+    c. 在“唯一用户映射”中，选择“使用属性”。
 
-    d. 在“唯一用户属性”  文本框中，输入值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    d. 在“唯一用户属性”文本框中，输入值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
-    e. 在“状态”  中，选中所有三个复选框。
+    e. 在“状态”中，选中所有三个复选框。
 
-    f. 在“创建本地帐户”  中，选择“自动”  。
+    f. 在“创建本地帐户”中，选择“自动”。
 
-    g. 选择“保存更改”。 
+    g. 选择“保存更改”。
 
-    h. 在“信赖方”  选项卡上，复制**元数据 URL** 并在浏览器中将其打开以下载 **SP 元数据 XML** 文件。 在 Azure AD 中的“基本 SAML 配置”  部分中上传此 SP 元数据文件。
+    h. 在“信赖方”选项卡上，复制 **元数据 URL** 并在浏览器中将其打开以下载 **SP 元数据 XML** 文件。 在 Azure AD 中的“基本 SAML 配置”部分中上传此 SP 元数据文件。
 
-    ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![屏幕截图显示已选择“信赖方”选项卡，并突出显示了“元数据 URL”。](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>创建 OpenAthens 测试用户
 
-在本部分中，我们将在 OpenAthens 中创建一个名为 Britta Simon 的用户。 OpenAthens 支持默认情况下启用的**实时用户预配**。 此部分不存在任何操作项。 如果 OpenAthens 中尚不存在用户，则会在身份验证后创建一个新用户。
+在本部分中，我们将在 OpenAthens 中创建一个名为 Britta Simon 的用户。 OpenAthens 支持默认情况下启用的 **实时用户预配**。 此部分不存在任何操作项。 如果 OpenAthens 中尚不存在用户，则会在身份验证后创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 OpenAthens 磁贴时，应当会自动登录到你为其设置了 SSO 的 OpenAthens。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 OpenAthens 磁贴时，应当会自动登录到你为其设置了 SSO 的 OpenAthens。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [使用 Azure AD 试用 OpenAthens](https://aad.portal.azure.com/)

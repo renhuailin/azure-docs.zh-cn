@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88590449"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508265"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>排查 Azure 专用 HSM 服务问题
 
@@ -71,7 +71,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>在已预配的情况下，如何查看 HSM？
 专用 HSM 是一项已加入允许列表的服务，因此在 Azure 门户中被视为“隐藏类型”。 若要查看 HSM 资源，必须勾选“显示隐藏的类型”复选框，如下所示。 HSM 始终带有 NIC 资源。在使用 SSH 进行连接之前，可以在该资源中找出 HSM 的 IP 地址。
 
-![子网委托](./media/troubleshoot/hsm-provisioned.png)
+![突出显示“显示隐藏的类型”复选框的屏幕截图](./media/troubleshoot/hsm-provisioned.png)
 
 ## <a name="networking-resources"></a>网络资源
 
@@ -85,7 +85,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 
 为专用 HSM 提供的示例模板假设可以自动从给定的子网范围中获取 HSM IP。 可以通过 ARM 模板中的“NetworkInterfaces”属性指定 HSM 的显式 IP 地址。 
 
-![子网委托](./media/troubleshoot/private-ip-address.png)
+![显示专用 HSM 的示例模板的屏幕截图。](./media/troubleshoot/private-ip-address.png)
 
 ## <a name="hsm-initialization"></a>HSM 初始化
 

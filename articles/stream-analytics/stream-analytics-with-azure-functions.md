@@ -7,18 +7,21 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006884"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861997"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 
 可将 Functions 配置为流分析作业的输出接收器之一，以便通过 Azure 流分析运行 Azure Functions。 Functions 是事件驱动的按需计算体验，它允许实现由 Azure 或第三方服务中出现的事件所触发的代码。 Functions 响应触发的这一功能使其成为流分析作业的自然输出。
 
 流分析通过 HTTP 触发调用 Functions。 通过 Functions 输出适配器，用户可以将 Functions 连接到流分析，以便基于流分析查询触发事件。 
+
+> [!NOTE]
+> 不支持从多租户群集中运行的流分析作业连接到虚拟网络 (VNet) 内的 Azure Functions。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -130,11 +133,11 @@ ms.locfileid: "89006884"
  
 4. 返回到 Azure 门户。 从“平台功能”  选项卡，浏览到你的函数。 在“开发工具”  下方，选择“应用服务编辑器”  。 
  
-   ![应用服务编辑器的屏幕截图](./media/stream-analytics-with-azure-functions/image3.png)
+   ![屏幕截图显示“平台功能”选项卡，其中选择了“应用服务编辑器”。](./media/stream-analytics-with-azure-functions/image3.png)
 
 5. 在应用服务编辑器中，右键单击根目录，并上传 project.json  文件。 上传成功后，刷新页面。 现在，应可看到名为 project.lock.json  的自动生成文件。 该自动生成文件包含对 project.json 文件中指定 .dll 文件的引用。  
 
-   ![应用服务编辑器的屏幕截图](./media/stream-analytics-with-azure-functions/image4.png)
+   ![屏幕截图显示从菜单选择了“上传文件”。](./media/stream-analytics-with-azure-functions/image4.png)
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>更新流分析作业，以函数作为输出
 
@@ -192,13 +195,15 @@ ms.locfileid: "89006884"
 如果在将事件发送到 Azure Functions 时失败，流分析会重试大多数操作。 将会重试所有 http 异常，直至成功，但 http 错误 413（实体太大）除外。 实体太大错误被视为数据错误，遵循[重试或删除策略](stream-analytics-output-error-policy.md)。
 
 > [!NOTE]
-> 从流分析到 Azure Functions 的 HTTP 请求的超时设置为 100 秒。 如果 Azure Functions 应用处理批处理所用的时间超过100 秒，则流分析会出错。
+> 从流分析到 Azure Functions 的 HTTP 请求的超时设置为 100 秒。 如果 Azure Functions 应用处理批处理所用的时间超过 100 秒，则流分析会出错并重试批处理。
+
+重试超时可能会导致向输出接收器写入重复事件。 流分析重试失败的批处理时，会重试批处理中的所有事件。 例如，假设从流分析发送一批事件（20 个）到 Azure Functions。 假定 Azure Functions 需要 100 秒来处理该批次中的前 10 个事件。 经过 100 秒后，流分析会暂停该请求，因为它尚未收到来自 Azure Functions 的肯定响应，并且另一个请求针对同一批次发送。 Azure Functions 会再次处理该批次中的前 10 个事件，这会导致重复。 
 
 ## <a name="known-issues"></a>已知问题
 
 在 Azure 门户中，尝试将最大批次大小/最大批次数值重置为空（默认），值将在保存时改回上次输入的值。 这时，请手动输入这些字段的默认值。
 
-流分析当前不支持在 Azure Functions 上使用 [HTTP 路由](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)。
+流分析当前不支持在 Azure Functions 上使用 [HTTP 路由](/sandbox/functions-recipes/routes?tabs=csharp)。
 
 不支持连接到虚拟网络中托管的 Azure Functions。
 
@@ -207,7 +212,7 @@ ms.locfileid: "89006884"
 若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止它，等到以后需要时再重启它。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击已创建资源的名称。  
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。  
+2. 在资源组页上单击“删除”  ，在文本框中键入要删除的资源的名称，并单击“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

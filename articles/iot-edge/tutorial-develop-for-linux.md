@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056221"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920851"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教程：开发适用于 Linux 设备的 IoT Edge 模块
 
@@ -22,7 +22,7 @@ ms.locfileid: "88056221"
 
 在快速入门中，你已使用 Linux 虚拟机创建了 IoT Edge 设备，并部署了来自 Azure 市场的模块。 本教程逐步介绍如何开发自己的代码并将其部署到 IoT Edge 设备。 本文是学习其他教程的有用先决条件，其他教程将更详细地介绍特定编程语言或 Azure 服务。
 
-本教程使用**将 C# 模块部署到 Linux 设备**的示例。 之所以选择此示例，是因为它是 IoT Edge 解决方案中最常见的开发人员方案。 即使你计划使用其他语言或部署 Azure 服务，本教程仍然有助于了解开发工具和概念。 阅读开发过程的介绍，然后选择偏好的语言或 Azure 服务来深入了解细节。
+本教程使用 **将 C# 模块部署到 Linux 设备** 的示例。 之所以选择此示例，是因为它是 IoT Edge 解决方案中最常见的开发人员方案。 即使你计划使用其他语言或部署 Azure 服务，本教程仍然有助于了解开发工具和概念。 阅读开发过程的介绍，然后选择偏好的语言或 Azure 服务来深入了解细节。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -32,30 +32,6 @@ ms.locfileid: "88056221"
 > * 使用适用于 Visual Studio Code 的 IoT Edge Tools 创建新项目。
 > * 将项目作为容器生成并将其存储在 Azure 容器注册表中。
 > * 将代码部署到 IoT Edge 设备。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="key-concepts"></a>关键概念
-
-本教程详细介绍如何开发 IoT Edge 模块。 IoT Edge 模块有时简称模块，它是一个包含可执行代码的容器   。 可以将一个或多个模块部署到 IoT Edge 设备。 模块执行特定的任务，例如，从传感器引入数据、清理和分析数据，或者将消息发送到 IoT 中心。 有关详细信息，请参阅[了解 Azure IoT Edge 模块](iot-edge-modules.md)。
-
-开发 IoT Edge 模块时，了解开发计算机和最终将部署模块的目标 IoT Edge 设备之间的差异非常重要。 为保存模块代码而生成的容器必须与*目标设备*的操作系统 (OS) 匹配。 例如，最常见的方案是在 Windows 计算机上开发面向运行 IoT Edge 的 Linux 设备的模块。 在这种情况下，容器操作系统将为 Linux。 在学习本教程的过程中，请记住*开发计算机 OS* 和*容器 OS* 之间的差异。
-
-本教程针对运行 IoT Edge 的 Linux 设备。 只要开发计算机可以运行 Linux 容器，就可以使用首选操作系统。 我们建议使用 Visual Studio Code 进行 Linux 设备开发，这也是本教程将使用的工具。 还可以使用 Visual Studio，但这两个工具提供的支持存在差异。
-
-下表列出了 Visual Studio Code 和 Visual Studio 支持的 **Linux 容器**开发方案。
-
-|   | Visual Studio Code | Visual Studio 2017/2019 |
-| - | ------------------ | ------------------ |
-| **Linux 设备体系结构** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
-| **Azure 服务** | Azure Functions <br> Azure 流分析 <br> Azure 机器学习 |   |
-| **语言** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **详细信息** | [适用于 Visual Studio Code 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [适用于 Visual Studio 2017 的 Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [适用于 Visual Studio 2019 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
-
->[!NOTE]
->[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中提供对 Linux ARM64 设备的支持。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
-
-本教程讲解适用于 Visual Studio Code 的开发步骤。 如果想要使用 Visual Studio，请参阅[使用 Visual Studio 2019 为 Azure IoT Edge 开发和调试模块](how-to-visual-studio-develop-module.md)中的说明。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -77,6 +53,29 @@ Linux 上的 Azure IoT Edge 设备：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="key-concepts"></a>关键概念
+
+本教程详细介绍如何开发 IoT Edge 模块。 IoT Edge 模块有时简称模块，它是一个包含可执行代码的容器   。 可以将一个或多个模块部署到 IoT Edge 设备。 模块执行特定的任务，例如，从传感器引入数据、清理和分析数据，或者将消息发送到 IoT 中心。 有关详细信息，请参阅[了解 Azure IoT Edge 模块](iot-edge-modules.md)。
+
+开发 IoT Edge 模块时，了解开发计算机和最终将部署模块的目标 IoT Edge 设备之间的差异非常重要。 为保存模块代码而生成的容器必须与 *目标设备* 的操作系统 (OS) 匹配。 例如，最常见的方案是在 Windows 计算机上开发面向运行 IoT Edge 的 Linux 设备的模块。 在这种情况下，容器操作系统将为 Linux。 在学习本教程的过程中，请记住 *开发计算机 OS* 和 *容器 OS* 之间的差异。
+
+本教程针对运行 IoT Edge 的 Linux 设备。 只要开发计算机可以运行 Linux 容器，就可以使用首选操作系统。 我们建议使用 Visual Studio Code 进行 Linux 设备开发，这也是本教程将使用的工具。 还可以使用 Visual Studio，但这两个工具提供的支持存在差异。
+
+下表列出了 Visual Studio Code 和 Visual Studio 支持的 **Linux 容器** 开发方案。
+
+|   | Visual Studio Code | Visual Studio 2017/2019 |
+| - | ------------------ | ------------------ |
+| **Linux 设备体系结构** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
+| **Azure 服务** | Azure Functions <br> Azure 流分析 <br> Azure 机器学习 |   |
+| **语言** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
+| **详细信息** | [适用于 Visual Studio Code 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [适用于 Visual Studio 2017 的 Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [适用于 Visual Studio 2019 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+
+>[!NOTE]
+>[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中提供对 Linux ARM64 设备的支持。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
+
+本教程讲解适用于 Visual Studio Code 的开发步骤。 如果想要使用 Visual Studio，请参阅[使用 Visual Studio 2019 为 Azure IoT Edge 开发和调试模块](how-to-visual-studio-develop-module.md)中的说明。
 ## <a name="install-container-engine"></a>安装容器引擎
 
 IoT Edge 模块被打包为容器，因此，需要在开发计算机上安装容器引擎来生成和管理容器。 Docker Desktop 提供广泛的功能支持且非常流行，因此我们建议使用它进行开发。 使用 Windows 上的 Docker Desktop 可在 Linux 容器和 Windows 容器之间切换，以便轻松地为不同类型的 IoT Edge 设备开发模块。
@@ -143,7 +142,7 @@ Azure IoT Edge Tools 扩展为 Visual Studio Code 中支持的所有 IoT Edge �
 * **.vscode** 文件夹包含名为 **launch.json** 的文件，该文件用于调试模块。
 * **modules** 文件夹包含用于解决方案中每个模块的文件夹。 现在应该只有 **SampleModule**，或为模块提供的任何名称。 SampleModule 文件夹包含主程序代码、模块元数据和多个 Docker 文件。
 * **.env** 文件保存容器注册表凭据。 这些凭据与 IoT Edge 设备共享，以便它可以访问并拉取容器映像。
-* **deployment.debug.template.json** 文件和 **deployment.template.json** 文件是帮助创建部署清单的模板。 *部署清单*是一个文件，可准确定义想要在设备上部署的模块、应如何配置它们以及它们如何相互通信及与云通信。 模板文件使用指针来表示某些值。 将模板转换为真正的部署清单时，指针将替换为从其他解决方案文件中获取的值。 找到部署模板中的两个常用占位符：
+* **deployment.debug.template.json** 文件和 **deployment.template.json** 文件是帮助创建部署清单的模板。 *部署清单* 是一个文件，可准确定义想要在设备上部署的模块、应如何配置它们以及它们如何相互通信及与云通信。 模板文件使用指针来表示某些值。 将模板转换为真正的部署清单时，指针将替换为从其他解决方案文件中获取的值。 找到部署模板中的两个常用占位符：
 
   * 在“注册表凭据”部分中，将根据创建解决方案时提供的信息自动填充地址。 但是，用户名和密码引用 .env 文件中存储的变量。 此配置是出于安全考量，因为 .env 文件被 Git 忽略，但部署模板未被忽略。
   * 在“SampleModule”部分中，即使在创建解决方案时提供了映像存储库，也未填充容器映像。 此占位符指向 SampleModule 文件夹中的 **module.json** 文件。 如果转到该文件，将看到“映像”字段确实包含存储库，但也包含由容器的版本和平台组成的标记值。 可以在开发周期中手动迭代版本，并使用我们在本部分稍后介绍的开关选择容器平台。
@@ -175,21 +174,21 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 
 创建的解决方案模板包含 IoT Edge 模块的示例代码。 此示例模块仅接收消息，然后传递消息。 管道功能演示 IoT Edge 中的一个重要概念，即模块之间相互通信的方式。
 
-每个模块可以在其代码中声明多个*输入*和*输出*队列。 在设备上运行的 IoT Edge 中心将来自一个模块的输出的消息路由到一个或多个模块的输入。 用于声明输入和输出的特定代码因语言而异，但所有模块的概念都相同。 有关在模块之间路由的详细信息，请参阅[声明路由](module-composition.md#declare-routes)。
+每个模块可以在其代码中声明多个 *输入* 和 *输出* 队列。 在设备上运行的 IoT Edge 中心将来自一个模块的输出的消息路由到一个或多个模块的输入。 用于声明输入和输出的特定代码因语言而异，但所有模块的概念都相同。 有关在模块之间路由的详细信息，请参阅[声明路由](module-composition.md#declare-routes)。
 
-项目模板附带的示例 C# 代码使用适用于 .NET 的 IoT 中心 SDK 中的 [ModuleClient 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)。
+项目模板附带的示例 C# 代码使用适用于 .NET 的 IoT 中心 SDK 中的 [ModuleClient 类](/dotnet/api/microsoft.azure.devices.client.moduleclient)。
 
 1. 打开 **Program.cs** 文件，该文件位于 **modules/SampleModule/** 文件夹中。
 
 2. 在 program.cs 中，找到 **SetInputMessageHandlerAsync** 方法。
 
-3. [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) 方法会设置一个输入队列，用来接收传入消息。 查看此方法，并了解它如何初始化名为 **input1** 的输入队列。
+3. [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) 方法会设置一个输入队列，用来接收传入消息。 查看此方法，并了解它如何初始化名为 **input1** 的输入队列。
 
    ![在 SetInputMessageCallback 构造函数中找到输入名称](./media/tutorial-develop-for-linux/declare-input-queue.png)
 
 4. 接下来，找到 **SendEventAsync** 方法。
 
-5. [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) 方法会处理收到的消息，并设置一个输出队列，用来传递这些消息。 查看此方法，可以看到它会初始化名为 **output1** 的输出队列。
+5. [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) 方法会处理收到的消息，并设置一个输出队列，用来传递这些消息。 查看此方法，可以看到它会初始化名为 **output1** 的输出队列。
 
    ![在 SendEventToOutputAsync 中找到输出名称](./media/tutorial-develop-for-linux/declare-output-queue.png)
 
@@ -201,7 +200,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 
 8. 在文件底部，找到 **$edgeHub** 模块的所需属性。
 
-   IoT Edge 中心模块的其中一个函数可在部署中的所有模块之间路由消息。 查看 **routes** 属性中的值。 一个路由 SampleModuleToIoTHub 使用通配符 (\*) 指示来自 SampleModule 模块中任何输出队列的任何消息。 这些消息进入 *$upstream*，后者是指示 IoT 中心的保留名称。 另一个路由 sensorToSampleModule 接收来自 SimulatedTemperatureSensor 模块的消息，并将它们路由到在 SampleModule 代码中初始化的 input1 输入队列。
+   IoT Edge 中心模块的其中一个函数可在部署中的所有模块之间路由消息。 查看 **routes** 属性中的值。 一个路由 SampleModuleToIoTHub 使用通配符 (\*) 来指示来自 SampleModule 模块中任何输出队列的任何消息。 这些消息进入 $upstream（用于指示 IoT 中心的预留名称）。 另一个路由 sensorToSampleModule 接收来自 SimulatedTemperatureSensor 模块的消息，并将它们路由到在 SampleModule 代码中初始化的 input1 输入队列。
 
    ![查看 deployment.template.json 中的路由](./media/tutorial-develop-for-linux/deployment-routes.png)
 

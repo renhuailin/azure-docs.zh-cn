@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91306457"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362444"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
@@ -58,7 +58,7 @@ Identity Governance 可帮助组织在以下需求之间实现平衡：工作效
 
 通常，IT 部门会将访问权限审批决策委托给业务决策人。  此外，IT 部门可能涉及到用户本身的事务。  例如，访问公司位于欧洲的市场营销应用程序中的机密客户数据的用户需要知道该公司的策略。 来宾用户可能不知道他们受邀访问的组织的数据处理要求。
 
-组织可以通过[动态组](../users-groups-roles/groups-dynamic-membership.md)等技术，并结合 [SaaS 应用](../saas-apps/tutorial-list.md)的用户预配或者[与 SCIM集成的应用](../app-provisioning/use-scim-to-provision-users-and-groups.md)，将访问生命周期过程自动化。  组织还可以控制哪些[来宾用户有权访问本地应用程序](../external-identities/hybrid-cloud-to-on-premises.md)。  然后，可以使用 [Azure AD 访问评审](access-reviews-overview.md)定期评审这些访问权限。   使用 [Azure AD 权利管理](entitlement-management-overview.md)还可以定义不同组、团队成员身份、应用程序角色以及 SharePoint Online 角色的用户如何请求访问权限。
+组织可以通过[动态组](../enterprise-users/groups-dynamic-membership.md)等技术，并结合 [SaaS 应用](../saas-apps/tutorial-list.md)的用户预配或者[与 SCIM集成的应用](../app-provisioning/use-scim-to-provision-users-and-groups.md)，将访问生命周期过程自动化。  组织还可以控制哪些[来宾用户有权访问本地应用程序](../external-identities/hybrid-cloud-to-on-premises.md)。  然后，可以使用 [Azure AD 访问评审](access-reviews-overview.md)定期评审这些访问权限。   使用 [Azure AD 权利管理](entitlement-management-overview.md)还可以定义不同组、团队成员身份、应用程序角色以及 SharePoint Online 角色的用户如何请求访问权限。
 
 当用户尝试访问应用程序时，Azure AD 会实施[条件访问](../conditional-access/index.yml)策略。 例如，条件访问策略可以显示[使用条款](../conditional-access/terms-of-use.md)，并确保用户在访问应用程序之前[同意这些条款](../conditional-access/require-tou.md)。
 
@@ -100,7 +100,7 @@ Identity Governance 可帮助组织在以下需求之间实现平衡：工作效
 尽管我们不能为每个客户提供完美的解决方案或建议，但以下配置指南提供了 Microsoft 推荐的基准策略，遵循这些策略，可提高安全性和员工工作效率。
 
 - [标识和设备访问权限配置](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [保护特权访问](../users-groups-roles/directory-admin-roles-secure.md)
+- [保护特权访问](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>附录 - 在 Identity Governance 功能中进行管理所需的最低特权角色
 

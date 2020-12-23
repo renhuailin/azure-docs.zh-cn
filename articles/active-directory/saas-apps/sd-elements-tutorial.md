@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 323d6324bc99028a3df4cb9cada133ad8cd990aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543255"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893569"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SD Elements 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543255"
 * 让用户使用其 Azure AD 帐户自动登录到 SD Elements。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -143,7 +143,7 @@ ms.locfileid: "88543255"
 
 1. 在顶部菜单中，单击“系统”，然后单击“单一登录”   。
 
-    ![配置单一登录](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![显示选择了“系统”并从下拉列表所选了“单一登录”的屏幕截图。](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
 1. 在“单一登录设置”  对话框上，执行以下步骤：
 
@@ -155,7 +155,7 @@ ms.locfileid: "88543255"
 
     c. 在“标识提供者单一登录服务”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 ### <a name="create-sd-elements-test-user"></a>创建 SD Elements 测试用户
 
@@ -167,11 +167,11 @@ ms.locfileid: "88543255"
 
 1. 在顶部菜单中，单击“用户管理”，然后单击“用户”   。
 
-    ![创建 SD Elements 测试用户](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    ![显示从“用户管理”下拉列表选择了“用户”的屏幕截图。](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. 单击“添加新用户”。 
 
-    ![创建 SD Elements 测试用户](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    ![显示选中了“添加新用户”按钮的屏幕截图。](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
 1. 在“添加新用户”对话框中，执行以下步骤  ：
 
@@ -191,14 +191,14 @@ ms.locfileid: "88543255"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 SD Elements 磁贴时，应当会自动登录到为其设置了 SSO 的 SD Elements。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 SD Elements 磁贴时，应当会自动登录到为其设置了 SSO 的 SD Elements。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 SD Elements](https://aad.portal.azure.com/)

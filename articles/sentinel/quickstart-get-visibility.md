@@ -1,6 +1,6 @@
 ---
 title: 快速入门：Azure Sentinel 入门
-description: 本快速入门介绍如何使用 Azure Sentinel 快速查看和监视整个环境中发生的情况。 
+description: 本快速入门介绍如何使用 Azure Sentinel 快速查看和监视整个环境中发生的情况。
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889134"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188575"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入门：Azure Sentinel 入门
 
@@ -26,7 +26,7 @@ ms.locfileid: "90889134"
 
 ## <a name="get-visualization"></a>获取可视化效果
 
-若要可视化和分析环境中发生的情况，请先查看概述仪表板，以大致了解组织的安全态势。 可以单击这些磁贴的每个元素，向下钻取到创建这些元素时所依据的原始数据。 为了帮助降低干扰并尽量减少需要检查和调查的警报数目，Azure Sentinel 使用一种融合技术将警报关联到事件。 **事件**是相关警报的分组，它们共同创建了可以调查和解决的可处理事件。
+若要可视化和分析环境中发生的情况，请先查看概述仪表板，以大致了解组织的安全态势。 可以单击这些磁贴的每个元素，向下钻取到创建这些元素时所依据的原始数据。 为了帮助降低干扰并尽量减少需要检查和调查的警报数目，Azure Sentinel 使用一种融合技术将警报关联到事件。 “事件”是相关警报的分组，它们共同创建了可以调查和解决的可处理事件。
 
 - 在 Azure 门户中选择“Azure Sentinel”，然后选择要监视的工作区。
 
@@ -66,7 +66,7 @@ ms.locfileid: "90889134"
       ![Palo Alto 仪表板](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-可以通过编辑主要查询![查询编辑按钮](./media/qs-get-visibility/edit-query-button.png)来自定义工作簿。 可以单击按钮 ![Log Analytics 按钮](./media/qs-get-visibility/go-to-la-button.png)转到 [Log Analytics 以编辑查询](../azure-monitor/log-query/get-started-portal.md)；可以选择省略号 (...) 并选择“自定义磁贴数据”，以编辑主要时间筛选器，或者从工作簿中删除特定的磁贴。
+可以通过编辑主要查询![查询编辑按钮](./media/qs-get-visibility/edit-query-button.png)来自定义工作簿。 可以单击按钮 ![Log Analytics 按钮](./media/qs-get-visibility/go-to-la-button.png)转到 [Log Analytics 以编辑查询](../azure-monitor/log-query/log-analytics-tutorial.md)；可以选择省略号 (...) 并选择“自定义磁贴数据”，以编辑主要时间筛选器，或者从工作簿中删除特定的磁贴。
 
 有关使用查询的详细信息，请参阅[教程：Log Analytics 中的视觉数据](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -80,10 +80,10 @@ ms.locfileid: "90889134"
 可以从头开始创建新工作簿，或者基于某个内置工作簿创建新工作簿。
 
 1. 若要从头开始创建新工作簿，请选择“工作簿”，然后选择“+新建工作簿”。 
-2. 选择要在其中创建该工作簿的订阅，并为其指定一个描述性的名称。 与其他任何元素一样，每个工作簿都是一个 Azure 资源，可为其分配角色 (RBAC) 以定义和限制哪些用户可以访问它。 
+2. 选择要在其中创建该工作簿的订阅，并为其指定一个描述性的名称。 与其他任何元素一样，每个工作簿都是一个 Azure 资源，你可为其分配角色 (Azure RBAC) 以定义和限制哪些用户可以访问它。 
 3. 若要使其显示在要将可视化效果固定到的工作簿中，必须将其共享。 依次单击“共享”、“管理用户”。  
  
-1. 像设置其他任何 Azure 资源一样，使用“检查访问权限”和“角色分配”。  有关详细信息，请参阅[使用 RBAC 共享 Azure 工作簿](../azure-portal/azure-portal-dashboard-share-access.md)。
+1. 像设置其他任何 Azure 资源一样，使用“检查访问权限”和“角色分配”。  有关详细信息，请参阅[使用 Azure RBAC 共享 Azure 工作簿](../azure-portal/azure-portal-dashboard-share-access.md)。
 
 
 ## <a name="new-workbook-examples"></a>新工作簿示例
@@ -91,12 +91,11 @@ ms.locfileid: "90889134"
 使用以下示例查询可以比较不同周次的流量趋势。 可以轻松切换要对其运行查询的设备供应商和数据源。 此示例使用来自 Windows 的 SecurityEvent。可将其切换为针对其他任何防火墙中的 AzureActivity 或 CommonSecurityLog 运行。
 
 ```console
- |where DeviceVendor == "Palo Alto Networks":
-  // week over week query
-  SecurityEvent
-  | where TimeGenerated > ago(14d)
-  | summarize count() by bin(TimeGenerated, 1d)
-  | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+// week over week query
+SecurityEvent
+| where TimeGenerated > ago(14d)
+| summarize count() by bin(TimeGenerated, 1d)
+| extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 ```
 
 可以创建一个查询用于合并多个源中的数据。 可以创建一个查询，用于在 Azure Active Directory 审核日志中查找刚刚创建的新用户，然后检查 Azure 日志，以确定该用户在创建后的 24 小时内，是否开始进行角色分配更改。 该可疑活动会显示在此仪表板上：
@@ -129,4 +128,3 @@ AuditLogs
 本快速入门介绍了如何开始使用 Azure Sentinel。 请继续学习有关[如何检测威胁](tutorial-detect-threats-built-in.md)的教程。
 > [!div class="nextstepaction"]
 > [创建自定义威胁检测规则](tutorial-detect-threats-custom.md)，以便自动针对威胁做出响应。
-

@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330632"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376634"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
@@ -49,33 +49,41 @@ Chit-支持以下语言的聊天数据集：
 |德国|
 |意大利语|
 |日语|
-|朝鲜语|
+|韩语|
 |葡萄牙语|
 |西班牙语|
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>在 KB 创建过程中添加聊天内容
-在知识库创建过程中，在添加源 URL 和文件以后，就会有一个添加聊天内容的选项。 选择需要用作聊天内容库的个性。 如果不希望添加聊天内容，或者数据源中已经有聊天内容支持，请选择“无”。****
+在知识库创建过程中，在添加源 URL 和文件以后，就会有一个添加聊天内容的选项。 选择需要用作聊天内容库的个性。 如果不希望添加聊天内容，或者数据源中已经有聊天内容支持，请选择“无”。
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>向现有 KB 添加聊天内容
-选择 KB，导航到“设置”页。**** 有一个链接，指向所有采用相应 **.tsv** 格式的聊天内容数据集。 下载所需个性，然后将其作为文件源上传。 请确保在下载和上传文件时不编辑格式或元数据。
+选择 KB，导航到“设置”页。 有一个链接，指向所有采用相应 **.tsv** 格式的聊天内容数据集。 下载所需个性，然后将其作为文件源上传。 请确保在下载和上传文件时不编辑格式或元数据。
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
 
 ![向现有 KB 添加聊天内容](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+
+![添加 chit-聊天到现有知识库预览版](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
+
+---
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>编辑聊天内容的问题和解答
 编辑 KB 时，会看到一个适用于聊天内容的新源，具体取决于所选个性。 现在可以添加更改的问题或编辑响应，就像使用任何其他的源一样。
 
 ![编辑聊天内容 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-若要查看元数据，请在工具栏中选择 " **查看选项** "，然后选择 " **显示元数据**"。
+若要查看元数据，请在工具栏中选择 " **查看选项** "，然后选择 " **显示元数据** "。
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>添加其他的聊天内容问题和解答
-可以添加不在预定义数据集中的新 chit/聊天 QnA 对。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。**** 若要确保 ranker 了解这是 chit 聊天，请添加元数据键/值对 "社论： chitchat"，如下图所示：
+可以添加不在预定义数据集中的新 chit/聊天 QnA 对。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。 若要确保 ranker 了解这是 chit 聊天，请添加元数据键/值对 "社论： chitchat"，如下图所示：
 
 :::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="添加聊天内容 QnA" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>从现有 KB 中删除聊天内容
-选择 KB，导航到“设置”页。**** 特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。
+选择 KB，导航到“设置”页。 特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。
 
 ![从 KB 中删除聊天内容](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
 
@@ -84,6 +92,6 @@ Chit-支持以下语言的聊天数据集：
 > [!div class="nextstepaction"]
 > [导入知识库](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [QnA Maker 概述](../Overview/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: fdc598a5afed5eb29e285b279eced98ad06e296c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 29040795f16ee804e2413b52d2692b38ab0f814c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500480"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92510553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raumfrraum"></a>教程：Azure Active Directory 单一登录 (SSO) 与 raum]für[raum 的集成
 
@@ -157,7 +157,7 @@ ms.locfileid: "89500480"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 raum]für[raum 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 raum]für[raum 磁贴时，如果在配置时采用 SP 模式，则会重定向至应用程序登录页以启动登录流，如果在配置时采用 IDP 模式，则应自动登录到设置 SSO 的 raum]für[raum。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 raum]für[raum 磁贴时，如果在配置时采用 SP 模式，则会重定向至应用程序登录页以启动登录流，如果在配置时采用 IDP 模式，则应自动登录到设置 SSO 的 raum]für[raum。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
-配置 raum]für[raum 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 raum]für[raum 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

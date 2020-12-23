@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 09/30/2020
+ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 111e5310f1dac01053eebc6592d7b56105358c41
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739725"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630082"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -35,10 +35,12 @@ Azure Lighthouse 允许更灵活地管理多个客户的资源，而无需登录
 
 Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription) 显示 `HomeTenantId` `ManagedByTenantIds` 每个订阅的和属性，使你能够确定返回的订阅是属于托管租户还是属于你的管理租户。
 
-同样，Azure CLI 命令（如 [az account list](/cli/azure/account#az-account-list) ）会显示 `homeTenantId` 和 `managedByTenants` 属性。
+同样，Azure CLI 命令（如 [az account list](/cli/azure/account#az-account-list) ）会显示 `homeTenantId` 和 `managedByTenants` 属性。 如果在使用 Azure CLI 时看不到这些值，请尝试通过先运行 `az account clear` 再运行 `az login --identity` 来清除缓存。
 
-> [!TIP]
-> 如果在使用 Azure CLI 时看不到这些值，请尝试通过先运行 `az account clear` 再运行 `az login --identity` 来清除缓存。
+在 Azure REST API 中， [订阅-获取](/rest/api/resources/subscriptions/get) 和 [订阅-列出](/rest/api/resources/subscriptions/list) 命令包括 `ManagedByTenant` 。
+
+> [!NOTE]
+> 除了与 Azure Lighthouse 相关的租户信息之外，这些 Api 显示的租户还可能反映 Azure Databricks 或 Azure 托管应用程序的合作伙伴租户。
 
 我们还提供了特定于执行 Azure Lighthouse 任务的 Api。 有关详细信息，请参阅“参考”部分。
 
@@ -68,21 +70,36 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 - 使用[备份资源管理器](../../backup/monitor-azure-backup-with-backup-explorer.md)可以查看备份项（包括尚未配置用于备份的 Azure 资源）的操作信息以及委托订阅的监视信息（作业和警报）。 备份资源管理器当前仅可用于 Azure VM 数据。
 - 跨委托订阅使用[备份报告](../../backup/configure-reports.md)来跟踪历史趋势、分析备份存储消耗，以及审核备份和还原。
 
+[Azure 蓝图](../../governance/blueprints/index.yml)：
+
+- 使用 Azure 蓝图协调资源模板和其他项目的部署 (需要额外的 [访问权限](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) 才能准备客户订阅) 
+
 [Azure 成本管理 + 计费](../../cost-management-billing/index.yml)：
 
 - 从管理租户中，CSP 合作伙伴可以查看、管理和分析预计费的消耗成本 (不包含在 Azure 计划下的客户) 购买。 费用将基于零售价和 Azure 基于角色的访问控制， (合作伙伴对客户订阅的 Azure RBAC) 访问权限。
 
+[Azure Key Vault](../../key-vault/general/index.yml)：
+
+- 在客户租户中创建密钥保管库
+- 使用托管标识在客户租户中创建密钥保管库
+
 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)：
 
 - 管理托管的 Kubernetes 环境并部署和管理客户租户中的容器化应用程序
+- 部署和管理客户租户中的群集
+-   使用用于容器的 Azure Monitor 跨客户租户监视性能
+
+[Azure Migrate](../../migrate/index.yml)：
+
+- 在客户租户中创建迁移项目并迁移 Vm
 
 [Azure Monitor](../../azure-monitor/index.yml)：
 
-- 查看委派订阅的警报，并能够查看所有订阅的警报
+- 查看委派的订阅的警报，能够查看和刷新所有订阅中的警报
 - 查看委派订阅的活动日志详细信息
 - Log analytics：从多个租户中的远程工作区查询数据
 - 在通过 webhook 管理租户中触发自动化的客户租户（如 Azure 自动化 runbook 或 Azure Functions）中创建警报
-- 在客户租户中创建诊断设置，以将资源日志发送到管理租户中的工作区
+- 在客户租户中创建 [诊断设置](../..//azure-monitor/platform/diagnostic-settings.md) ，以将资源日志发送到管理租户中的工作区
 - 对于 SAP 工作负荷，请 [使用跨客户租户的聚合视图监视 Sap 解决方案指标](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure 网络](../../networking/networking-overview.md)：
@@ -94,7 +111,6 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 [Azure Policy](../../governance/policy/index.yml)：
 
-- 符合性快照显示委派订阅中分配的策略的详细信息
 - 在委派的订阅中创建和编辑策略定义
 - 在委派的订阅中分配客户定义的策略定义
 - 客户将看到由服务提供商和自己创建的策略
@@ -147,14 +163,14 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 支持请求：
 
-- 在委派资源的 Azure 门户中[打开支持请求**Help + support** ](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) ， (选择可用于委派的作用域的支持计划) 
+- 在委派资源的 Azure 门户中[打开支持请求 ](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) ， (选择可用于委派的作用域的支持计划) 
 
 ## <a name="current-limitations"></a>当前限制
 
 对于所有方案，都请注意以下当前限制：
 
 - 可以使用 Azure Lighthouse 来执行 Azure 资源管理器处理的请求。 这些请求的操作 URI 都以 `https://management.azure.com` 开头。 但是，Azure Lighthouse 不支持 Key Vault 机密访问或存储数据访问)  (资源类型实例处理的请求。 这些请求的操作 URI 通常以实例特有的地址开头，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 后者通常也是数据操作，而不是管理操作。
-- 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](../../role-based-access-control/built-in-roles.md)。 除所有者或具有权限的任何内置角色外，Azure 委托资源管理当前支持所有内置角色 [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) 。 仅在[向托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)时才支持使用用户访问管理员角色。  不支持自定义角色和[经典订阅管理员角色](../../role-based-access-control/classic-administrators.md)。
+- 角色分配必须使用 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。 除所有者或具有权限的任何内置角色外，Azure 委托资源管理当前支持所有内置角色 [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) 。 仅在[向托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)时才支持使用用户访问管理员角色。  不支持自定义角色和[经典订阅管理员角色](../../role-based-access-control/classic-administrators.md)。
 - 尽管你可以加入使用 Azure Databricks 的订阅，但管理租户中的用户目前无法在委托订阅上启动 Azure Databricks 工作区。
 - 尽管可以加入具有资源锁的订阅和资源组，但这些锁定不会阻止管理租户中的用户执行操作。 用于保护系统管理资源（例如由 Azure 托管应用程序或 Azure 蓝图创建的资源）的[拒绝分配](../../role-based-access-control/deny-assignments.md)（系统分配的拒绝分配）会阻止管理租户中的用户对这些资源进行操作；但是，目前客户租户中的用户无法创建自己的拒绝分配（用户分配的拒绝分配）。
 

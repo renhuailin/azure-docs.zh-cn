@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089543"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999206"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
 
@@ -90,11 +90,11 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 此表显示 Windows 和非 Windows VM 数及其 DR 演练计算成本。
 
 ### <a name="settings"></a>设置 
-**使用托管磁盘**：此设置指定是否在 DR 演练时使用托管磁盘。 默认值为“是”。 如果已将 **-UseManagedDisks** 设置为“No”，则会使用非托管磁盘价格来计算成本。****
+**使用托管磁盘**：此设置指定是否在 DR 演练时使用托管磁盘。 默认值为“是”。 如果已将 **-UseManagedDisks** 设置为“No”，则会使用非托管磁盘价格来计算成本。
 
-**货币**：生成报表时使用的货币。
+**货币**：生成报告时使用的货币。
 
-**成本持续时间**：可以查看一个月或一整年的所有成本。 
+**成本持续时间**：可以查看每月或整年的所有成本。 
 
 ## <a name="detailed-cost-analysis-table"></a>详细成本分析表
 ![详细成本分析](media/hyper-v-azure-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png)
@@ -103,31 +103,31 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 若要手动添加 VM，请执行以下操作：
 
-1. 选择“插入行”，在“开始”行与“结束”行之间插入新行。************
+1. 选择“插入行”，在“开始”行与“结束”行之间插入新行。
 
 1. 根据与此配置相符的大致 VM 大小和 VM 数填充以下列： 
 
     a. **Vm 数**
 
-    b. **IaaS 大小（你的选择）**
+    b. **你的选择 (IaaS 大小)**
 
-    c. **存储类型(标准/高级)**
+    c. **存储类型标准/高级**
 
     d. **VM 总存储大小(GB)**
 
-    e. **一年的 DR 演练次数**
+    e. **一年中的 DR-Drills 数**
 
-    f. **每次 DR 演练的持续时间（天）**
+    f. **每个 DR-Drill 持续时间 (天)**
 
     g. **OS 类型**
 
-    h.如果该值不存在，请单击“添加行”。 **数据冗余**
+    h. **数据冗余**
 
     i. **Azure 混合使用权益**
 
-1. 可以将同一值应用到表中的所有 VM，只需针对“一年的 DR 演练次数”、“每次 DR 演练的持续时间(天)”、“数据冗余”、“Azure 混合使用权益”选择“应用到所有项”即可。********************
+1. 可以将同一值应用到表中的所有 VM，只需针对“一年的 DR 演练次数”、“每次 DR 演练的持续时间(天)”、“数据冗余”、“Azure 混合使用权益”选择“应用到所有项”即可。
 
-1. 选择“重新计算成本”即可更新成本。****
+1. 选择“重新计算成本”即可更新成本。
 
 **VM 名称**：VM 的名称。
 
@@ -141,15 +141,15 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **VM 总存储大小(GB)**：VM 的总存储。
 
-**一年的 DR 演练次数**：一年中进行 DR 演练的次数， 默认为一年 4 次。 可以修改特定 VM 的期间，或者对所有 VM 应用新值。 在顶行中输入新值，然后选择“应用到所有项”。**** 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。 
+**一年的 DR 演练次数**：一年中进行 DR 演练的次数， 默认为一年 4 次。 可以修改特定 VM 的期间，或者对所有 VM 应用新值。 在顶行中输入新值，然后选择“应用到所有项”。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。 
 
-**每次 DR 演练的持续时间(天)**：每次 DR 演练的持续时间。 默认情况下，根据[灾难恢复软件保障权益](https://azure.microsoft.com/pricing/details/site-recovery)的规定，每 90 天演练一次，每次演练的持续时间为 7 天。 可以修改特定 VM 的期间，也可以对所有 VM 应用新值。 在顶行中输入新值，然后选择“应用到所有项”。**** 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。
+**每次 DR 演练的持续时间(天)**：每次 DR 演练的持续时间。 默认情况下，根据[灾难恢复软件保障权益](https://azure.microsoft.com/pricing/details/site-recovery)的规定，每 90 天演练一次，每次演练的持续时间为 7 天。 可以修改特定 VM 的期间，也可以对所有 VM 应用新值。 在顶行中输入新值，然后选择“应用到所有项”。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。
  
 **OS 类型**：VM 的操作系统 (OS) 类型。 可以是 Windows 或 Linux。 如果 OS 类型为 Windows，则可将 Azure 混合使用权益应用到该 VM。 
 
-**数据冗余**：可以是本地冗余存储、异地冗余存储或读取访问异地冗余存储。 默认为本地冗余存储。 可以根据特定 VM 的存储帐户来更改类型，也可以将新类型应用到所有 VM。 更改顶部行的类型，然后选择“应用到所有项”。**** 根据所选数据冗余的价格来计算复制的存储成本。 
+**数据冗余**：可以是本地冗余存储、异地冗余存储或读取访问异地冗余存储。 默认为本地冗余存储。 可以根据特定 VM 的存储帐户来更改类型，也可以将新类型应用到所有 VM。 更改顶部行的类型，然后选择“应用到所有项”。 根据所选数据冗余的价格来计算复制的存储成本。 
 
-**Azure 混合使用权益**：可以在适用情况下将 Azure 混合使用权益应用到 Windows VM。 默认值为“是”。 可以更改特定 VM 的设置，也可以更新所有 VM。 选择“应用到所有项”。****
+**Azure 混合使用权益**：可以在适用情况下将 Azure 混合使用权益应用到 Windows VM。 默认值为“是”。 可以更改特定 VM 的设置，也可以更新所有 VM。 选择“应用到所有项”。
 
 **总 Azure 使用量**：用于 DR 的计算、存储和 Site Recovery 许可证成本。 此项会根据你的选择显示每月或每年的成本。
 

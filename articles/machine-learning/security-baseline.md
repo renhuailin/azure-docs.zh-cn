@@ -3,16 +3,17 @@ title: Azure 机器学习的 Azure 安全基线
 description: Azure 机器学习安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d29bef20bef6de576b9b531952c48173819a5fa1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: f3f66209b2d0a1bae18364e38790c237952e729f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461013"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458255"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure 机器学习的 Azure 安全基线
 
@@ -20,7 +21,7 @@ ms.locfileid: "91461013"
 
 ## <a name="network-security"></a>网络安全性
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](/azure/security/benchmarks/security-control-network-security)。
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
@@ -70,11 +71,11 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 
 在组织的每个网络边界上部署 Azure 防火墙，启用基于威胁情报的筛选并将其配置为针对恶意网络流量执行“发出警报并拒绝”操作。
 
-- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 - [将 Azure 防火墙后的工作区用于 Azure 机器学习](how-to-access-azureml-behind-firewall.md)
 
-- [详细了解 Azure 安全中心威胁检测](/azure/security-center/security-center-alerts-service-layer)
+- [详细了解 Azure 安全中心威胁检测](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：是
 
@@ -94,7 +95,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 
 **指导**：在组织的每个网络边界上部署所选的防火墙解决方案，以检测并/或阻止恶意流量。
 
-从 Azure Marketplace 中选择一个产品/服务，该产品/服务支持具有负载检查功能的 ID/IPS 功能。  如果不需要进行有效负载检查，则可以使用 Azure 防火墙威胁情报。 使用基于 Azure 防火墙威胁情报的筛选功能，针对进出已知恶意 IP 地址和域的流量发出警报并/或阻止该流量。 IP 地址和域源自 Microsoft 威胁智能源。
+从 Azure 市场中选择一种产品/服务，该产品/服务应支持包含有效负载检查功能的 IDS/IPS 功能。  如果不需要进行有效负载检查，则可以使用 Azure 防火墙威胁情报。 使用基于 Azure 防火墙威胁情报的筛选功能，针对进出已知恶意 IP 地址和域的流量发出警报并/或阻止该流量。 IP 地址和域源自 Microsoft 威胁智能源。
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -144,7 +145,7 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 对于 Azure 机器学习虚拟网络中支持“说明”字段的资源，请使用它来记录允许进出某个网络的流量的规则。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -154,7 +155,7 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 机器学习相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -164,7 +165,7 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](/azure/security/benchmarks/security-control-logging-monitoring)。
+[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -176,7 +177,7 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指导**：通过 Azure Monitor 引入日志来聚合由 Azure 机器学习生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。
+**指导**：通过 Azure Monitor 引入日志来聚合由 Azure 机器学习生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全信息和事件管理 (SIEM)。
 
 - [如何配置 Azure 机器学习的诊断日志](monitor-azure-machine-learning.md#configuration)
 
@@ -196,7 +197,7 @@ Azure 机器学习服务在虚拟网络中记录其计算目标的服务标记�
 
 - [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
 
-- [在 Azure 机器学习中启用日志记录](/azure/machine-learning/how-to-enable-logging)
+- [在 Azure 机器学习中启用日志记录](./how-to-track-experiments.md)
 
 - [监视 Azure 机器学习](monitor-azure-machine-learning.md)
 
@@ -232,15 +233,15 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 **指导**：分析和监视日志中的异常行为，并定期审查来自 Azure 机器学习的结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
 
-或者，你可以将和机载数据启用到 Azure Sentinel 或第三方 SIEM。 
+或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。 
 
 - [如何在 Log Analytics 工作区中对 Azure 机器学习执行查询](monitor-azure-machine-learning.md#analyzing-log-data)
 
-- [在 Azure 机器学习中启用日志记录](/azure/machine-learning/how-to-enable-logging)
+- [在 Azure 机器学习中启用日志记录](./how-to-track-experiments.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -252,7 +253,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 **指导**：在 Azure Monitor 中，配置与活动日志和机器学习诊断设置中的 Azure 机器学习相关的日志，以将日志发送到 Log Analytics 工作区供查询或发送到某个存储帐户进行长期存档存储。 使用 Log Analytics 工作区针对安全日志和事件中的异常活动创建警报。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。
+或者，可以启用数据并将其载入 Azure Sentinel。
 
 - [详细了解 Azure 机器学习警报](monitor-azure-machine-learning.md#alerts)
 
@@ -298,19 +299,19 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。
+[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指导**：可以使用 Azure 门户中资源的“标识和访问管理”选项卡配置基于角色的访问控制 (RBAC)，并维护有关 Azure 机器学习资源的库存。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
+**指南**：你可以使用 Azure 门户中的资源的 "标识和访问管理" 选项卡来配置 azure RBAC)  (基于角色的访问控制，并在 Azure 机器学习资源上维护库存。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
 
-Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置的 RBAC。 在 Azure Active Directory (Azure AD) 中创建了配置文件的个人可将这些 RBAC 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对资源和 Azure 机器学习资源操作的访问权限。
+Azure 机器学习在 Azure 机器学习中为常见管理方案提供内置角色。 在 Azure Active Directory (Azure AD) 中具有配置文件的个人可以将这些角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure 机器学习资源的资源和操作的访问权限。
 
 还可以使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。
 
-- [了解 Azure 机器学习中基于角色的访问控制](how-to-assign-roles.md)
+- [了解 Azure 中基于角色的访问控制 Azure 机器学习](how-to-assign-roles.md)
 
-- [如何使用 PowerShell 获取 Azure Active Directory 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure Active Directory 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 **Azure 安全中心监视**：是
 
@@ -326,13 +327,13 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指南**：在创建新的工作区时，Azure 机器学习附带三个默认角色，创建有关使用所有者帐户的标准操作过程。
+**指导**：当创建新的工作区时，Azure 机器学习附带了三个默认角色，并创建与所有者帐户的使用相关的标准操作规程。
 
 还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用对管理帐户的即时访问权限。 
 
 - [详细了解机器学习默认角色](how-to-assign-roles.md#default-roles)
 
-- [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 安全中心监视**：是
 
@@ -376,7 +377,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
 
 **指导**：使用 Azure Active Directory 安全报告和监视来检测环境中何时发生可疑活动或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
 
-- [如何确定标记为存在风险活动的 Azure AD 用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
@@ -416,11 +417,11 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
  
 当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 生成日志和警报。
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
-- [部署 Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [部署 Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure 安全中心监视**：是
 
@@ -433,7 +434,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。
  
  
-- [如何将 Azure 活动日志与 Azure Monitor 集成](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志与 Azure Monitor 集成](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -441,9 +442,9 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
+**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
  
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
  
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
  
@@ -463,13 +464,13 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
 
 ## <a name="data-protection"></a>数据保护
 
-[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](/azure/security/benchmarks/security-control-data-protection)。
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
 **指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
  
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -479,11 +480,11 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
 
 **指导**：使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure RBAC 来控制对 Azure 资源的访问。
  
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
  
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -525,9 +526,10 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 管理对资源的访问
 
-**指导**：Azure 机器学习支持使用 Azure Active Directory (Azure AD) 授权对机器学习资源的请求。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (RBAC) 授予对安全主体的访问权限，该安全主体可能是用户，也可能是应用程序服务主体。
+**指导**：Azure 机器学习支持使用 Azure Active Directory (Azure AD) 授权对机器学习资源的请求。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (Azure RBAC) 向安全主体授予权限，该安全主体可能是用户，也可能是应用程序服务主体。
 
 - [管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)
+- [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -553,7 +555,7 @@ Microsoft 会管理机器学习的底层基础结构，并实施了严格的控�
 
 - [了解 Azure 中的静态加密](../security/fundamentals/encryption-atrest.md)
 
-- [如何配置客户管理的加密密钥](../storage/common/storage-encryption-keys-portal.md)
+- [如何配置客户管理的加密密钥](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -571,7 +573,7 @@ Microsoft 会管理机器学习的底层基础结构，并实施了严格的控�
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理](/azure/security/benchmarks/security-control-vulnerability-management)。
+[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -579,7 +581,7 @@ Microsoft 会管理机器学习的底层基础结构，并实施了严格的控�
 
 Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，请遵循 Azure 安全中心提供的关于在 Azure 虚拟机、容器映像和 SQL 服务器上执行漏洞评估的建议。
 
-- [如何实现 Azure 安全中心漏洞评估建议](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -591,9 +593,9 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的任何计算资源，请使用 Azure 自动化更新管理确保在 Windows 和 Linux VM 上安装最新的安全更新。 对于 Windows 虚拟机，请确保已启用 Windows 更新并将其设置为自动更新。
 
-- [如何在 Azure 中为虚拟机配置更新管理](/azure/automation/automation-update-management)
+- [如何在 Azure 中为虚拟机配置更新管理](../automation/update-management/overview.md)
 
-- [了解通过安全中心监视的 Azure 安全策略](../security-center/security-center-policy-definitions.md)
+- [了解通过安全中心监视的 Azure 安全策略](../security-center/policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -611,7 +613,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 **指导**：Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，请遵循 Azure 安全中心提供的关于在 Azure 虚拟机、容器映像和 SQL 服务器上执行漏洞评估的建议。 以一致的间隔导出扫描结果，并将结果与以前的扫描进行比较以验证漏洞是否已修复。 使用 Azure 安全中心建议的漏洞管理建议时，可以转到选定解决方案的门户查看历史扫描数据。
 
-- [如何实现 Azure 安全中心漏洞评估建议](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -627,7 +629,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
+[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -637,7 +639,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -649,7 +651,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 **指导**：将标记应用于 Azure 资源，添加元数据以便根据分类有条理地进行组织。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -661,15 +663,15 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
  
  
  
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
  
  
  
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
  
  
  
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -720,7 +722,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 - [如何使用文件完整性监视](../security-center/security-center-file-integrity-monitoring.md)
 
-- [了解 Azure 自动化更改跟踪和库存](../automation/change-tracking.md)
+- [了解 Azure 自动化更改跟踪和库存](../automation/change-tracking/overview.md)
 
 - [如何启用 Azure 虚拟机库存](../automation/automation-tutorial-installed-software.md)
 
@@ -783,7 +785,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 **指导**：Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，根据脚本的类型，可以使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。  你还可以利用 Azure 安全中心自适应应用程序控制来确保仅执行已授权软件，并阻止所有未授权软件在 Azure 虚拟机上执行。
 
-- [如何在 Windows 环境中控制 PowerShell 脚本的执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [如何在 Windows 环境中控制 PowerShell 脚本的执行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 - [如何使用 Azure 安全中心自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
@@ -801,7 +803,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ## <a name="secure-configuration"></a>安全配置
 
-[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](/azure/security/benchmarks/security-control-secure-configuration)。
+[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -813,7 +815,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 Azure 机器学习完全支持用于跟踪工作的 Git 存储库；你可以将存储库直接克隆到共享工作区文件系统上，在本地工作站上使用 Git，并确保将安全的配置作为机器学习环境的一部分应用于代码资源。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [教程：创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 
@@ -869,7 +871,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 注意，由 Microsoft 发布的 Azure 市场虚拟机映像由 Microsoft 管理和维护。 
 
-- [如何实现 Azure 安全中心漏洞评估建议](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
 - [如何从 ARM 模板创建 Azure 虚拟机](../virtual-machines/windows/ps-template.md)
 
@@ -891,9 +893,9 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 Azure 机器学习完全支持用于跟踪工作的 Git 存储库；你可以将存储库直接克隆到共享工作区文件系统上，在本地工作站上使用 Git，并确保将安全的配置作为机器学习环境的一部分应用于代码资源。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -901,15 +903,17 @@ Azure 机器学习完全支持用于跟踪工作的 Git 存储库；你可以将
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指导**：Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，请使用 Azure 基于角色的访问控制 (RBAC) 来确保只有经过授权的用户才能访问你的自定义映像。 使用 Azure 共享映像库，可以将映像共享给组织内的不同用户、服务主体或 Azure AD 组。 将容器映像存储在 Azure 容器注册表中，并使用 RBAC 来确保只有经过授权的用户才能进行访问。
+**指导**：Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，请使用 azure RBAC)  (Azure 基于角色的访问控制，以确保只有经过授权的用户可以访问你的自定义映像。 使用 Azure 共享映像库，可以将映像共享给组织内的不同用户、服务主体或 Azure AD 组。 将容器映像存储在 Azure 容器注册表中，并使用 Azure RBAC 确保只有获得授权的用户才有权访问。
 
-- [了解 Azure 中的 RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [了解 Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [了解容器注册表的 RBAC](../container-registry/container-registry-roles.md)
+- [了解容器注册表的 Azure RBAC](../container-registry/container-registry-roles.md)
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [共享映像库概述](../virtual-machines/windows/shared-image-galleries.md)
+
+- [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -957,7 +961,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，请使用 Azure 安全中心的“计算和应用”，按照适用于 VM 和服务器以及容器的建议进行操作。
 
-- [了解 Azure 安全中心容器建议](/azure/security-center/security-center-container-recommendations)
+- [了解 Azure 安全中心容器建议](../security-center/container-security.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -977,11 +981,11 @@ Azure 机器学习支持使用客户管理的密钥进行数据存储加密，�
 
 - [如何使用 Azure 资源的托管标识](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [如何创建 Key Vault](/azure/key-vault/quick-create-portal)
+- [如何创建 Key Vault](../key-vault/general/quick-create-portal.md)
 
-- [如何向 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
+- [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 
-- [如何分配 Key Vault 访问策略](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+- [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：是
 
@@ -1012,7 +1016,7 @@ Azure 机器学习支持使用客户管理的密钥进行数据存储加密，�
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-[有关详细信息，请参阅 *Azure 安全基线：* 恶意软件防护](/azure/security/benchmarks/security-control-malware-defense)。
+[有关详细信息，请参阅 *Azure 安全基线：* 恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -1022,7 +1026,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 - [如何为 Azure 配置 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
-- [Azure 安全中心的威胁防护](../security-center/threat-protection.md)
+- [Azure 安全中心的威胁防护](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1052,7 +1056,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ## <a name="data-recovery"></a>数据恢复
 
-[有关详细信息，请参阅 *Azure 安全基线：* 数据恢复](/azure/security/benchmarks/security-control-data-recovery)。
+[有关详细信息，请参阅 *Azure 安全基线：* 数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
@@ -1069,7 +1073,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 **指导**：机器学习服务中的数据备份是通过已连接的数据存储上的数据管理进行的。 请为 VM 启用 Azure 备份，并配置所需的频率和保留期。 在 Azure Key Vault 中备份客户管理的密钥。
 
 - [如何从 Azure 虚拟机备份恢复文件](../backup/backup-azure-restore-files-from-vm.md)
-- [如何在 Azure 中还原 Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中还原 Key Vault 密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 安全中心监视**：不适用
 
@@ -1087,16 +1091,16 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指导**：对于本地备份，请使用备份到 Azure 时提供的密码提供静态加密。 使用基于角色的访问控制来保护备份和客户管理的密钥。 
+**指导**：对于本地备份，请使用备份到 Azure 时提供的密码提供静态加密。 使用 Azure 基于角色的访问控制来保护备份和客户管理的密钥。 
 
 在 Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。 如果将 Azure 存储用于存储备份，请启用软删除以在 blob 或 blob 快照被删除时保存和恢复数据。
  
  
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-- [如何在 Key Vault 中启用软删除和清除保护](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中启用软删除和清除保护](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Azure Blob 存储的软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Blob 存储的软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 
@@ -1104,7 +1108,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ## <a name="incident-response"></a>事件响应
 
-[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](/azure/security/benchmarks/security-control-incident-response)。
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -1128,7 +1132,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -1178,7 +1182,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
@@ -1194,5 +1198,5 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

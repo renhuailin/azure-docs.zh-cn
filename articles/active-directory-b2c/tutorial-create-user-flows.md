@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/30/2020
+ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041b1766ae6a64f51d922de128ef316cc0ed8260
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922163"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614262"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -28,7 +28,7 @@ ms.locfileid: "87922163"
 > * 创建配置文件编辑用户流
 > * 创建密码重置用户流
 
-本教程介绍如何使用 Azure 门户创建一些建议的用户流。 若要了解如何在应用程序中设置资源所有者密码凭据 (ROPC) 流，请参阅[在 Azure AD B2C 中配置资源所有者密码凭据流](configure-ropc.md)。
+本教程介绍如何使用 Azure 门户创建一些建议的用户流。 若要了解如何在应用程序中设置资源所有者密码凭据 (ROPC) 流，请参阅[在 Azure AD B2C 中配置资源所有者密码凭据流](add-ropc-policy.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "87922163"
 
     ![在 Azure 门户中创建用户流页面（其中，属性突出显示）](./media/tutorial-create-user-flows/select-version.png)
 
-1. 输入该用户流的**名称**。 例如 *signupsignin1*。
+1. 输入该用户流的 **名称**。 例如 *signupsignin1*。
 1. 对于“标识提供者”，请选择“电子邮件注册”。
 1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击“确定”。
 
@@ -82,6 +82,9 @@ ms.locfileid: "87922163"
 1. 选择所在的国家和地区，输入要显示的名称，输入邮政编码，然后单击“创建”。 令牌将返回到 `https://jwt.ms` 并显示出来。
 1. 现在可以再次运行用户流，你应该可以使用创建的帐户登录。 返回的令牌包含所选国家/地区、名称和邮政编码的声明。
 
+> [!NOTE]
+> “运行用户流”体验当前与使用授权代码流的 SPA 回复 URL 类型不兼容。 若要将“运行用户流”体验与这些类型的应用结合使用，请注册类型为“Web”的回复 URL，并启用隐式流，如[此处](tutorial-register-spa.md)所述。
+
 ## <a name="create-a-profile-editing-user-flow"></a>创建配置文件编辑用户流
 
 如果希望用户能够在你的应用程序中编辑其个人资料，请使用个人资料编辑用户流。
@@ -89,7 +92,7 @@ ms.locfileid: "87922163"
 1. 在 Azure AD B2C 租户概述页面的菜单中，选择“用户流”，然后选择“新建用户流”。
 1. 在“创建用户流”页面上，选择“个人资料编辑”用户流 。 
 1. 在“选择版本”下，选择“建议”，然后选择“创建”  。
-1. 输入该用户流的**名称**。 例如 *profileediting1*。
+1. 输入该用户流的 **名称**。 例如 *profileediting1*。
 1. 对于“标识提供者”，请选择“本地帐户登录”。
 2. 对于“用户属性”，请选择你希望客户能够在其个人资料中编辑的属性。 例如，选择“显示更多”，然后选择“显示名称”和“职务”所对应的属性和声明。 单击 **“确定”** 。
 3. 单击“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
@@ -108,7 +111,7 @@ ms.locfileid: "87922163"
 1. 在 Azure AD B2C 租户概述菜单中，选择“用户流”，然后选择“新建用户流”。
 1. 在“创建用户流”页面上，选择“密码重置”用户流 。 
 1. 在“选择版本”下，选择“建议”，然后选择“创建”  。
-1. 输入该用户流的**名称**。 例如 *passwordreset1*。
+1. 输入该用户流的 **名称**。 例如 *passwordreset1*。
 1. 对于“标识提供者”，请启用“使用电子邮件地址重置密码”。
 2. 在“应用程序声明”下单击“显示更多”，并选择你希望在发回到应用程序的授权令牌中返回的声明。 例如，选择“用户的对象 ID”。
 3. 单击 **“确定”** 。

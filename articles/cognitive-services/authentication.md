@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232740"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363317"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
 对 Azure 认知服务的每个请求都必须包含身份验证标头。 此标头传递订阅密钥或访问令牌，用于验证服务或服务组订阅。 本文介绍三种对请求进行身份验证的方法以及每种方法的要求。
 
-* 使用[单个服务](#authenticate-with-a-single-service-subscription-key)或[多服务](#authenticate-with-a-multi-service-subscription-key)订阅密钥进行身份验证
+* 使用 [单个服务](#authenticate-with-a-single-service-subscription-key) 或 [多服务](#authenticate-with-a-multi-service-subscription-key) 订阅密钥进行身份验证
 * 使用[令牌](#authenticate-with-an-authentication-token)进行身份验证
 * [ (AAD) Azure Active Directory](#authenticate-with-azure-active-directory)进行身份验证
 
@@ -65,7 +65,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>使用多服务订阅密钥进行身份验证
 
 >[!WARNING]
-> 目前，以下服务**** 不支持多服务密钥：QnA Maker、语音服务、自定义视觉和异常检测器。
+> 目前，以下服务不支持多服务密钥：QnA Maker、语音服务、自定义视觉和异常检测器。
 
 此选项仍使用订阅密钥对请求进行身份验证。 主要区别在于订阅密钥未绑定到特定服务，而单个密钥可用于对多个认知服务的请求进行身份验证。 有关区域可用性、支持的功能和定价的信息，请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
@@ -125,7 +125,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 * 语音服务：文本转语音 REST API
 
 >[!NOTE]
-> QnA Maker 也使用授权标头，但需要终结点密钥。 有关详细信息，请参阅[QnA Maker：从知识库获取答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
+> QnA Maker 也使用授权标头，但需要终结点密钥。 有关详细信息，请参阅 [QnA Maker：从知识库获取答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
 
 >[!WARNING]
 > 支持身份验证令牌的服务可能会随时间而变化，请在使用此身份验证方法之前检查服务的 API 参考。
@@ -177,6 +177,6 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ## <a name="see-also"></a>另请参阅
 
-* [什么是认知服务？](welcome.md)
+* [什么是认知服务？](./what-are-cognitive-services.md)
 * [认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)
 * [自定义子域](cognitive-services-custom-subdomains.md)

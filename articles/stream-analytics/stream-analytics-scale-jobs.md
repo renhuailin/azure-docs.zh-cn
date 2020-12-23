@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: c12c4b9f4a3757a3974e4aff7699d0265bfd7840
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488501"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124367"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>扩展 Azure 流分析作业以增加吞吐量
 本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
@@ -40,7 +40,7 @@ ms.locfileid: "89488501"
 如果查询不是易并行，则可以执行以下步骤。
 1.  首先使用不带 PARTITION BY 的查询来避免分区复杂性，然后使用 6 SU 运行查询，以度量最大负载，如[案例 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) 中所示。
 2.  如果能在吞吐量方面达到预期负载，则操作完成。 或者，你可以选择度量在 3 SU 和 1 SU 上运行的相同作业，以找到适用于你方案的 SU 的最小数目。
-3.  如果不能实现所需的吞吐量，请尝试尽可能地将查询分解为多个步骤，如果没有多个步骤，则在查询中为每个步骤分配最多6 个 SU。 例如，如果有 3 个步骤，则在“规模”选项中分配 18 个 SU。
+3.  如果不能实现所需的吞吐量，请尝试尽可能地将查询分解为多个步骤，如果没有多个步骤，则在查询中为每个步骤分配最多6 个 SU。 例如，如果你有 3 个步骤，则在“规模”选项中分配 18 个 SU。
 4.  在运行此类作业时，流分析会将各步骤分配到自己包含专用 6 SU 资源的节点上。 
 5.  如果仍未实现负载目标，可以尝试使用 PARTITION BY，从更接近输入的步骤开始。 对于不可自然分区的 GROUP BY 运算符，可以使用本地/全局聚合模式来执行分区的 GROUP BY，然后执行非分区 GROUP BY。 例如，如果想要计算每 3 分钟有多少车辆通过每个收费站，以及超出 6 SU 能够处理范围的数据量。
 
@@ -78,13 +78,13 @@ ms.locfileid: "89488501"
 
 
 ## <a name="get-help"></a>获取帮助
-如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)
 
 <!--Image references-->
 
@@ -97,10 +97,9 @@ ms.locfileid: "89488501"
 <!--Link references-->
 
 [microsoft.support]: https://support.microsoft.com
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

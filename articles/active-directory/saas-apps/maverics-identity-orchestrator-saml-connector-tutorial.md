@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a4bfe2b87f3f2242189a78d9a31a89d82720fd37
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758132"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862048"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>教程：将 Azure AD 单一登录与 Maverics Identity Orchestrator SAML Connector 集成
 
@@ -158,14 +158,14 @@ secrets:
 
 **使用 Azure 门户**
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. [创建新的密钥保管库](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault)。
-1. [将机密添加到密钥保管库](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault)。
-1. [将应用程序注册到 Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)。
-1. [授权应用程序使用机密](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault)。
+1. [创建新的密钥保管库](../../key-vault/general/quick-create-portal.md)。
+1. [将机密添加到密钥保管库](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
+1. [将应用程序注册到 Azure AD](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。
+1. [授权应用程序使用机密](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
 
 **使用 Azure CLI**
 
-1. 打开 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，然后输入以下命令：
+1. 打开 [Azure CLI](/cli/azure/install-azure-cli)，然后输入以下命令：
 
     ```shell
     az login

@@ -7,18 +7,18 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574273"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329996"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>模型中的 IoT 即插即用组件
 
-在 IoT 即插即用约定中，如果设备连接到 IoT 中心时，它会 (DTDL) 型号，则该设备为 IoT 即插即用设备。
+在 IoT 即插即用约定中，如果设备在连接到 IoT 中心时显示其数字孪生定义语言 (DTDL) 模型 ID，则该设备为 IoT 即插即用设备。
 
-以下代码片段演示了一些示例模型 Id：
+以下代码片断显示一些示例模型 ID：
 
 ```json
  "@id": "dtmi:com:example:TemperatureController;1"
@@ -69,7 +69,7 @@ ms.locfileid: "91574273"
 对于具有一组遥测、属性和命令的设备或 IoT Edge 模块，不含组件的 DTDL 模型是非常有用的。 不使用组件的模型使你可以轻松地将现有设备或模块迁移为 IoT 即插即用设备或模块-创建 DTDL 模型来描述你的实际设备或模块，而无需定义任何组件。
 
 > [!TIP]
-> 模块可以是设备 [module] (。/iot-hub/iot-hub-devguide-module-twins.md 或 [IoT Edge 模块](../iot-edge/about-iot-edge.md)。
+> 模块可以是设备 [模块](../iot-hub/iot-hub-devguide-module-twins.md) 或 [IoT Edge 模块](../iot-edge/about-iot-edge.md)。
 
 ## <a name="multiple-components"></a>多个组件
 

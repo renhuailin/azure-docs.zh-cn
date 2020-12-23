@@ -6,13 +6,13 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.custom: legacy
-ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: legacy, devx-track-azurecli
+ms.openlocfilehash: f92f286fc9d9438331617cb567272a331834af42
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654406"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735394"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和托管磁盘创建 Azure Linux VM 的副本
 
@@ -31,7 +31,7 @@ ms.locfileid: "88654406"
 ## <a name="stop-the-source-vm"></a>停止源 VM
 
 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除分配源 VM。
-以下示例解除分配资源组*myResourceGroup* 中名为 *myVM* 的 VM：
+以下示例解除分配资源组 *myResourceGroup* 中名为 *myVM* 的 VM：
 
 ```azurecli
 az vm deallocate \
@@ -93,7 +93,7 @@ az vm deallocate \
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建公共 IP。 以下示例创建一个名为 *myPublicIP* 的公共 IP，其 DNS 名称为 *mypublicdns*。 （由于 DNS 名称必须唯一，因此请提供唯一名称。）
+1.  使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建公共 IP。 以下示例创建一个名为 *myPublicIP* 的公共 IP，其 DNS 名称为 *mypublicdns* 。 （由于 DNS 名称必须唯一，因此请提供唯一名称。）
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \

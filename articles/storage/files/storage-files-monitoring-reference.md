@@ -9,24 +9,24 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 11f89a0a42a42fd84d1dc0c8606128f5af9e751e
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 3a3f4faf8278553153ae2186ea74d20702c603b3
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711228"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780920"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure 文件监视数据引用
 
 有关收集和分析 Azure 文件的监视数据的详细信息，请参阅 [监视 Azure 文件](storage-files-monitoring.md) 。
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 下表列出了为 Azure 文件收集的平台指标。 
 
-### <a name="capacity-metrics"></a>容量度量值
+### <a name="capacity-metrics"></a>容量指标
 
-容量指标每隔一小时发送到 Azure Monitor。 值每日刷新。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
+容量指标值每日刷新 (最多24小时) 。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
 
 Azure 文件在 Azure Monitor 中提供了以下容量指标。
 
@@ -36,7 +36,7 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 
 #### <a name="azure-files"></a>Azure 文件
 
-下表显示了 [Azure 文件指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)。
+下表显示了 [Azure 文件指标](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
@@ -68,7 +68,7 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 ## <a name="resource-logs-preview"></a>资源日志（预览版）
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中用于预览测试。 若要注册预览版，请参阅[此页](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。  此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 不支持经典存储帐户。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中用于预览测试。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 不支持经典存储帐户。
 
 下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure 存储资源日志时这些资源日志的属性。 属性描述了操作、服务以及用来执行该操作的授权类型。
 
@@ -85,7 +85,7 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - 有关监视 Azure 存储的说明，请参阅 [监视 Azure 文件](storage-files-monitoring-reference.md) 。
 - 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。

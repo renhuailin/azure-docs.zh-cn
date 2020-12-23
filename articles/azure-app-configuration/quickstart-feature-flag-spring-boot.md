@@ -1,29 +1,29 @@
 ---
 title: 有关使用 Azure 应用程序配置将功能标志添加到 Spring Boot 的快速入门
 description: 将功能标志添加到 Spring Boot 应用并使用 Azure 应用配置对其进行管理
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/18/2020
-ms.author: lcozzens
+ms.date: 08/06/2020
+ms.author: alkemper
 ms.custom: devx-track-java
-ms.openlocfilehash: 220d446990a9c362c30b3352e247af2b76d3d128
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e931b974fc48d07237b2698e7782c48be20745d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767675"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930700"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入门：将功能标志添加到 Spring Boot 应用
 
 在本快速入门中，你要将 Azure 应用程序配置合并到 Spring Boot Web 应用中，以创建功能管理的端到端实现。 可以使用应用程序配置服务集中存储所有功能标志并控制其状态。
 
-Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架。 这些库**不**依赖于任何 Azure 库。 它们可以通过其 Spring Boot 配置提供程序无缝集成到应用程序配置。
+Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架。 这些库 **不** 依赖于任何 Azure 库。 它们可以通过其 Spring Boot 配置提供程序无缝集成到应用程序配置。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-* 支持的 [Java 开发工具包 SDK](https://docs.microsoft.com/java/azure/jdk) 版本 8。
+* 支持的 [Java 开发工具包 SDK](/java/azure/jdk) 版本 8。
 * [Apache Maven](https://maven.apache.org/download.cgi) 版本 3.0 或更高版本。
 
 ## <a name="create-an-app-configuration-instance"></a>创建应用程序配置实例
@@ -228,7 +228,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
         </header>
         <div class="container body-content">
             <h1 class="mt-5">Welcome</h1>
-            <p>Learn more about <a href="https://github.com/microsoft/spring-cloud-azure/blob/master/spring-cloud-azure-feature-management/README.md">Feature Management with Spring Cloud Azure</a></p>
+            <p>Learn more about <a href="https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/appconfiguration/azure-spring-cloud-feature-management/README.md">Feature Management with Spring Cloud Azure</a></p>
 
         </div>
         <footer class="footer">
@@ -286,7 +286,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 1. 打开浏览器窗口，访问 URL：`http://localhost:8080/welcome`。
 
-    ![本地启动应用快速入门](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![屏幕截图显示一个浏览器窗口，其中显示了“欢迎”消息。](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
 1. 在应用程序配置门户中选择“功能管理器”，并将“Beta”密钥的状态更改为“打开”：   
 
@@ -296,7 +296,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 1. 刷新浏览器页面，查看新的配置设置。
 
-    ![本地启动应用快速入门](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![屏幕截图显示一个浏览器窗口，其中显示了“欢迎”消息和标注的 Beta 链接。](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -304,7 +304,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建一个新的应用程序配置存储，并已使用它来通过[功能管理库](https://go.microsoft.com/fwlink/?linkid=2074664)管理 Spring Boot Web 应用中的功能。
+在本快速入门中，你已创建一个新的应用程序配置存储，并已使用它来通过[功能管理库](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)管理 Spring Boot Web 应用中的功能。
 
 * 详细了解[功能管理](./concept-feature-management.md)。
 * [管理功能标志](./manage-feature-flags.md)。

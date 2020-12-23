@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022558"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -40,7 +40,7 @@ uname -r
 * <a id="install-cifs-utils"></a>**确保已安装 cifs-utils 包。**  
     可在所选的 Linux 分发版上使用包管理器安装 cifs-utils 包。 
 
-    在 **Ubuntu** 和**基于 Debian** 的分发版上，请使用 `apt` 包管理器：
+    在 **Ubuntu** 和 **基于 Debian** 的分发版上，请使用 `apt` 包管理器：
 
     ```bash
     sudo apt update
@@ -67,9 +67,9 @@ uname -r
 
     在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **最新版本的 Azure 命令行接口 (CLI)。** 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 并选择操作系统。 如果你想要在 PowerShell 6+ 中使用 Azure PowerShell 模块，也可以使用，不过，下面的说明适用于 Azure CLI。
+* **最新版本的 Azure 命令行接口 (CLI)。** 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 并选择操作系统。 如果你想要在 PowerShell 6+ 中使用 Azure PowerShell 模块，也可以使用，不过，下面的说明适用于 Azure CLI。
 
-* **确保端口 445 处于打开状态**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。  替换 `<your-resource-group>` ， `<your-storage-account>` 然后运行以下脚本：
+* **确保端口 445 处于打开状态**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。  替换 `<your-resource-group>` 和 `<your-storage-account>`，然后运行以下脚本：
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -202,7 +202,7 @@ uname -r
 
     可在所选的 Linux 分发版上使用包管理器安装 utofs 包。 
 
-    在 **Ubuntu** 和**基于 Debian** 的分发版上，请使用 `apt` 包管理器：
+    在 **Ubuntu** 和 **基于 Debian** 的分发版上，请使用 `apt` 包管理器：
     ```bash
     sudo apt update
     sudo apt install autofs
@@ -326,5 +326,5 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 请参阅以下链接，获取有关 Azure 文件的更多信息：
 
 * [规划 Azure 文件部署](storage-files-planning.md)
-* [常见问题](../storage-files-faq.md)
+* [常见问题](./storage-files-faq.md)
 * [故障排除](storage-troubleshoot-linux-file-connection-problems.md)

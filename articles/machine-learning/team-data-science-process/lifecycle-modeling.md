@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4719bd21bc6299373f9dabfe4733541c6fa27b94
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336439"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740175"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期建模阶段
 
@@ -67,14 +67,12 @@ ms.locfileid: "91336439"
 > 
 > 
 
-我们提供包含 TDSP 的[自动化建模和报告工具](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling)，该工具能够运行多个算法和参数扫描以生成基准模型。 它还会生成基准建模报表，该报表汇总每个模型的性能和参数组合，包括变量重要性。 此过程可以进一步促进功能设计，因为它也是可以迭代的。 
-
 ## <a name="artifacts"></a>项目
 在此阶段中生成的项目包括：
 
    * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：“数据定义”报表的“功能集”部分介绍了为建模开发的功能 。 它包括指向代码以生成功能的指针，以及说明如何生成功能的描述。
    * [模型报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md)：对于尝试过的每个模型，都会根据模板生成一个标准报表，用于详细介绍每次试验。
-   * **检查点决策**：评估模型是否足以用于生产。 要提出的一些关键问题有：
+   * **检查点决策**：评估模型的性能是否足以用于生产。 要提出的一些关键问题有：
      * 在给定测试数据的情况下，模型是否能充分地回答问题？ 
      * 是否应尝试备用方法？ 是否应收集其他数据、进行更多的功能设计或使用其他算法进行试验？
 
@@ -90,4 +88,4 @@ ms.locfileid: "91336439"
 
 我们还提供了完整的演练，演示特定方案过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
 
-有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。 
+有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](./index.yml)。

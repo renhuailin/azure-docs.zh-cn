@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 40b8ff01a5c8d00d3234af31877ea58c471026e8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494745"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955746"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>导出包含 VM 扩展的资源组
 
@@ -33,7 +34,7 @@ ms.locfileid: "86494745"
 
 以下扩展可以使用自动化脚本功能导出。
 
-> Acronis 备份，Acronis 备份 Linux，Bg Info，BMC CTM 代理 Linux，BMC CTM Agent Windows，Chef 客户端，自定义脚本，自定义脚本扩展，适用于 Linux 的自定义脚本，Datadog Linux Agent，Datadog Windows 代理，Docker 扩展，DSC 扩展，Dynatrace Linux，Dynatrace Windows，HPE 安全应用程序，Linux 诊断，适用于 Linux 的 OS 修补程序，、Site 24x7 Linux 服务器、站点 24x7 Windows Server、趋势微 DSA、趋势微 DSA Linux、适用于 Linux 的 VM 访问、适用于 Linux 的 VM 访问、VM 快照、vm 快照 Linux
+> Acronis Backup、Acronis Backup Linux、Bg Info、BMC CTM Agent Linux、BMC CTM Agent Windows、Chef Client、自定义脚本、自定义脚本扩展、适用于 Linux 的自定义脚本、Datadog Linux 代理、Datadog Windows 代理、Docker 扩展、DSC 扩展、Dynatrace Linux、Dynatrace Windows、HPE Security Application Defender、IaaS Antimalware、IaaS Diagnostics、Linux Chef Client、Linux 诊断、OS Patching For Linux、Puppet 代理、Site 24x7 Apm Insight、Site 24x7 Linux Server、Site 24x7 Windows Server、Trend Micro DSA、Trend Micro DSA Linux、VM Access For Linux、适用于 Linux 的 VM 访问权限、VM Snapshot、VM Snapshot Linux
 
 ## <a name="export-the-resource-group"></a>导出资源组
 

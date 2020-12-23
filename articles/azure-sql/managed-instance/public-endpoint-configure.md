@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619978"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788275"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>在 Azure SQL 托管实例中配置公共终结点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-使用[托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)的公共终结点可以从[虚拟网络](../../virtual-network/virtual-networks-overview.md)外部对托管实例进行数据访问。 可以从多租户 Azure 服务（例如 Power BI、Azure 应用服务）或本地网络访问托管实例。 如果使用托管实例上的公共终结点，则无需使用 VPN，这有助于避免 VPN 吞吐量问题。
+使用[托管实例](./sql-managed-instance-paas-overview.md)的公共终结点可以从[虚拟网络](../../virtual-network/virtual-networks-overview.md)外部对托管实例进行数据访问。 可以从多租户 Azure 服务（例如 Power BI、Azure 应用服务）或本地网络访问托管实例。 如果使用托管实例上的公共终结点，则无需使用 VPN，这有助于避免 VPN 吞吐量问题。
 
 本文介绍如何执行以下操作：
 
@@ -41,7 +41,7 @@ ms.locfileid: "91619978"
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>在 Azure 门户中为托管实例启用公共终结点
 
 1. 启动 Azure 门户 (<https://portal.azure.com/.>)
-1. 打开包含托管实例的资源组，然后选择要在其上配置公共终结点的 **SQL 托管实例**。
+1. 打开包含托管实例的资源组，然后选择要在其上配置公共终结点的 **SQL 托管实例** 。
 1. 在“安全性”设置中，选择“虚拟网络”选项卡。 
 1. 在虚拟网络配置页中选择“启用”，然后选择“保存”图标以更新配置。 
 
@@ -82,17 +82,17 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>在网络安全组上允许公共终结点流量
 
-1. 如果托管实例的配置页仍处于打开状态，请导航到“概述”选项卡。否则，请返回 **SQL 托管实例**资源。 选择“虚拟网络/子网”链接，转到虚拟网络配置页。
+1. 如果托管实例的配置页仍处于打开状态，请导航到“概述”选项卡。否则，请返回 **SQL 托管实例** 资源。 选择“虚拟网络/子网”链接，转到虚拟网络配置页。
 
-    ![屏幕截图显示 "虚拟网络配置" 页，可以在其中找到虚拟网络/子网值。](./media/public-endpoint-configure/mi-overview.png)
+    ![屏幕截图显示了“虚拟网络配置”页，可在其中找到虚拟网络/子网值。](./media/public-endpoint-configure/mi-overview.png)
 
-1. 在虚拟网络的左侧配置窗格中选择“子网”选项卡，并记下托管实例的**安全组**。
+1. 在虚拟网络的左侧配置窗格中选择“子网”选项卡，并记下托管实例的 **安全组** 。
 
-    ![屏幕截图显示 "子网" 选项卡，你可以在其中获取托管实例的安全组。](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![屏幕截图显示了“子网”选项卡，可在其中获取托管实例的安全组。](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
-1. 返回包含你的托管实例的资源组。 应会看到上面记下的**网络安全组**名称。 请选择该名称转到网络安全组配置页。
+1. 返回包含你的托管实例的资源组。 应会看到上面记下的 **网络安全组** 名称。 请选择该名称转到网络安全组配置页。
 
-1. 选择“入站安全规则”选项卡，并**添加**一个优先级高于 **deny_all_inbound** 规则且采用以下设置的规则： </br> </br>
+1. 选择“入站安全规则”选项卡，并 **添加** 一个优先级高于 **deny_all_inbound** 规则且采用以下设置的规则： </br> </br>
 
     |设置  |建议的值  |说明  |
     |---------|---------|---------|
@@ -104,7 +104,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**操作**     |允许         |允许入站流量通过公共终结点传送到托管实例 |
     |**Priority**     |1300         |请确保此规则的优先级高于 **deny_all_inbound** 规则 |
 
-    ![屏幕截图显示 deny_all_inbound 规则之上的新 public_endpoint_inbound 规则的入站安全规则。](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![屏幕截图显示了入站安全规则，其中新的 public_endpoint_inbound 规则位于 deny_all_inbound 规则之上。](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > 端口 3342 用来与托管实例建立公共终结点连接，暂时不可更改。
@@ -112,9 +112,9 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>获取托管实例公共终结点的连接字符串
 
 1. 导航到为公共终结点启用的托管实例配置页。 选择“设置”配置下的“连接字符串”选项卡。 
-1. 请注意，公用终结点主机名的格式 <mi_name>。**public**<dns_zone> database.windows.net，用于连接的端口为3342。
+1. 请注意，公用终结点主机名的格式 <mi_name>。 **public** <dns_zone> database.windows.net，用于连接的端口为3342。
 
-    ![屏幕截图显示公共和专用终结点的连接字符串。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![屏幕截图显示了公共终结点和专用终结点的连接字符串。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>后续步骤
 

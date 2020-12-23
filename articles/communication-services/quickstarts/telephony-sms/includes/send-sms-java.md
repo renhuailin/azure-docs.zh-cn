@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 76aae596c145c736ae75e65f7f72fdbdcead5919
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: cb8e6934125630590a337ed7bf7f4c81b2b73bb3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779504"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915478"
 ---
 通过使用通信服务 Java 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -28,7 +28,7 @@ ms.locfileid: "91779504"
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java 开发工具包 (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 8 或更高版本。
+- [Java 开发工具包 (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../../create-communication-resource.md)。
 - 启用短信的电话号码。 [获取电话号码](../get-phone-number.md)。
@@ -52,13 +52,13 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 
 ### <a name="install-the-package"></a>安装包
 
-在文本编辑器中打开 pom.xml 文件****。 将以下依赖项元素添加到依赖项组。
+在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。
 
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.2</version>
+    <version>1.0.0-beta.3</version>
 </dependency>
 ```
 
@@ -85,7 +85,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.azure.communication.common.CommunicationClientCredential;
 import com.azure.communication.common.PhoneNumber;
 import com.azure.communication.sms.SmsClient;
 import com.azure.communication.sms.SmsClientBuilder;
@@ -113,7 +112,6 @@ public class App
 | SmsClientBuilder              | 此类创建 SmsClient。 向其提供终结点、凭据和 http 客户端。 |
 | SmsClient                    | 所有短信功能都需要此类。 用其发送短信。                |
 | SendSmsResponse               | 此类包含来自短信服务的响应。                                          |
-| CommunicationClientCredential | 此类处理签名请求。                                                            |
 | PhoneNumber                   | 此类包含电话号码信息
 
 ## <a name="authenticate-the-client"></a>验证客户端
@@ -123,20 +121,32 @@ public class App
 将以下代码添加到 `main` 方法中：
 
 ```java
+// Your can find your endpoint and access key from your resource in the Azure Portal
+String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
+String accessKey = "SECRET";
+
 // Create an HttpClient builder of your choice and customize it
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
-
-CommunicationClientCredential credential = new CommunicationClientCredential(accessKey);
 
 // Configure and build a new SmsClient
 SmsClient client = new SmsClientBuilder()
     .endpoint(endpoint)
-    .credential(credential)
+    .accessKey(accessKey)
     .httpClient(httpClient)
     .buildClient();
 ```
 
-可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端来初始化客户端。 上面的代码演示了如何使用 `azure-core` 提供的 [Azure Core Netty HTTP 客户端](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true)。
+可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端来初始化客户端。 上面的代码演示了如何使用 `azure-core` 提供的 [Azure Core Netty HTTP 客户端](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable)。
+
+你还可以使用 connectionString() 函数提供整个连接字符串，而不是提供终结点和访问密钥。 
+```java
+// Your can find your connection string from your resource in the Azure Portal
+String connectionString = "<connection_string>";
+SmsClient client = new SmsClientBuilder()
+    .connectionString(connectionString)
+    .httpClient(httpClient)
+    .buildClient();
+```
 
 ## <a name="send-an-sms-message"></a>发送短信
 

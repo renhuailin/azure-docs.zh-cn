@@ -9,16 +9,16 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b362a81fc9b533fe00987a74d7e25dbba61a2589
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846014"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398243"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Azure API for FHIR 的 Azure Active Directory 标识配置
 
-处理医疗保健数据时，一个重要目标是确保数据安全且数据无法由未经授权的用户或应用程序访问。 FHIR 服务器使用 [OAuth 2.0](https://oauth.net/2/) 来确保这些数据的安全。 [Azure API for FHIR](https://azure.microsoft.com/services/azure-api-for-fhir/) 通过 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)（OAuth 2.0 标识提供者的一个示例）受到保护。 本文概要地介绍了 FHIR 服务器授权，以及获取用于访问 FHIR 服务器的令牌所需执行的步骤。 这些步骤适用于任何 FHIR 服务器和任何标识提供者，不过，本文将会针对用作 FHIR 服务器的 Azure API for FHIR，以及用作标识提供者的 Azure AD 讲解这些步骤。
+处理医疗保健数据时，一个重要目标是确保数据安全且数据无法由未经授权的用户或应用程序访问。 FHIR 服务器使用 [OAuth 2.0](https://oauth.net/2/) 来确保这些数据的安全。 [Azure API for FHIR](https://azure.microsoft.com/services/azure-api-for-fhir/) 通过 [Azure Active Directory](../active-directory/index.yml)（OAuth 2.0 标识提供者的一个示例）受到保护。 本文概要地介绍了 FHIR 服务器授权，以及获取用于访问 FHIR 服务器的令牌所需执行的步骤。 这些步骤适用于任何 FHIR 服务器和任何标识提供者，不过，本文将会针对用作 FHIR 服务器的 Azure API for FHIR，以及用作标识提供者的 Azure AD 讲解这些步骤。
 
 ## <a name="access-control-overview"></a>访问控制概述
 
@@ -26,12 +26,12 @@ ms.locfileid: "87846014"
 
 可通过多种方式获取令牌，但 Azure API for FHIR 并不关心令牌的获取方式，只要该令牌是使用正确声明以适当方式签名的令牌即可。 
 
-使用[授权代码流](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)作为示例，访问 FHIR 服务器需要完成以下四个步骤：
+使用[授权代码流](../active-directory/azuread-dev/v1-protocols-oauth-code.md)作为示例，访问 FHIR 服务器需要完成以下四个步骤：
 
 ![FHIR 授权](media/azure-ad-hcapi/fhir-authorization.png)
 
-1. 客户端向 Azure AD 的 `/authorize` 终结点发送请求。 Azure AD 将客户端重定向到登录页，在此页中，用户将使用适当的凭据进行身份验证（例如，进行用户名和密码身份验证或双重身份验证）。 请参阅有关[获取授权代码](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code)的详细信息。 成功完成身份验证后，会将一个授权代码返回给客户端。  Azure AD 只允许将此授权代码返回给客户端应用程序注册中配置的已注册回复 URL（请参阅下文）。
-1. 客户端应用程序在 Azure AD 的 `/token` 终结点上，使用该授权代码来交换访问令牌。 请求令牌时，客户端应用程序可能需要提供客户端机密（应用程序密码）。 请参阅有关[获取访问令牌](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)的详细信息。
+1. 客户端向 Azure AD 的 `/authorize` 终结点发送请求。 Azure AD 将客户端重定向到登录页，在此页中，用户将使用适当的凭据进行身份验证（例如，进行用户名和密码身份验证或双重身份验证）。 请参阅有关[获取授权代码](../active-directory/azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)的详细信息。 成功完成身份验证后，会将一个授权代码返回给客户端。  Azure AD 只允许将此授权代码返回给客户端应用程序注册中配置的已注册回复 URL（请参阅下文）。
+1. 客户端应用程序在 Azure AD 的 `/token` 终结点上，使用该授权代码来交换访问令牌。 请求令牌时，客户端应用程序可能需要提供客户端机密（应用程序密码）。 请参阅有关[获取访问令牌](../active-directory/azuread-dev/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)的详细信息。
 1. 客户端向 Azure API for FHIR 发出请求，例如，发出 `GET /Patient` 来搜索所有患者。 发出请求时，客户端会在 HTTP 请求标头中包含该访问令牌，例如 `Authorization: Bearer eyJ0e...`，其中 `eyJ0e...` 表示 Base64 编码的访问令牌。
 1. Azure API for FHIR 验证该令牌是否包含适当的声明（令牌中的属性）。 如果所有内容符合要求，则 Azure API for FHIR 将完成请求，并将包含结果的 FHIR 捆绑包返回给客户端。
 
@@ -89,7 +89,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvaWQiOiIxMjMiLCAiaXNzIjoiaHR0cHM6Ly9pc3N
 
 ## <a name="obtaining-an-access-token"></a>获取访问令牌
 
-如前所述，可通过多种方法从 Azure AD 获取令牌。 [Azure AD 开发人员文档](https://docs.microsoft.com/azure/active-directory/develop/)中详细介绍了这些方法。
+如前所述，可通过多种方法从 Azure AD 获取令牌。 [Azure AD 开发人员文档](../active-directory/develop/index.yml)中详细介绍了这些方法。
 
 Azure AD 使用 OAuth 2.0 终结点的两个不同版本，称为 `v1.0` 和 `v2.0`。 这两个版本都是 OAuth 2.0 终结点，名称 `v1.0` 和 `v2.0` 只是表示 Azure AD 实现该标准的方式的差异。 
 
@@ -98,11 +98,11 @@ Azure AD 使用 OAuth 2.0 终结点的两个不同版本，称为 `v1.0` 和 `v2
 Azure AD 文档的相关部分如下：
 
 * `v1.0` 终结点：
-    * [授权代码流](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)。
-    * [客户端凭据流](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)。
+    * [授权代码流](../active-directory/azuread-dev/v1-protocols-oauth-code.md)。
+    * [客户端凭据流](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)。
 * `v2.0` 终结点：
-    * [授权代码流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)。
-    * [客户端凭据流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)。
+    * [授权代码流](../active-directory/develop/v2-oauth2-auth-code-flow.md)。
+    * [客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。
 
 还可以通过其他方法（例如代理流）获取令牌。 有关详细信息，请查看 Azure AD 文档。 使用 Azure API for FHIR 时，还可以[使用 Azure CLI](get-healthcare-apis-access-token-cli.md) 通过一些捷径获取访问令牌（用于调试目的）。
 

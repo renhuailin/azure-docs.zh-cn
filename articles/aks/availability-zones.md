@@ -2,15 +2,15 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中使用可用性区域
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中创建跨可用性区域分发节点的群集
 services: container-service
-ms.custom: fasttrack-edit, references_regions
+ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: b6162249592bf470c3b8e52686abd44b813d5606
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 15f66e836a2900349007fb5068a172b89f39d4de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489130"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352790"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -22,16 +22,17 @@ Azure Kubernetes 服务 (AKS) 群集跨基础 Azure 基础结构的逻辑部分�
 
 ## <a name="before-you-begin"></a>开始之前
 
-需要安装并配置 Azure CLI 2.0.76 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.76 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="limitations-and-region-availability"></a>限制和地区可用性
 
 目前可以在以下地区使用可用性区域创建 AKS 群集：
 
 * 澳大利亚东部
+* 加拿大中部
 * 美国中部
+* 美国东部 
 * 美国东部 2
-* 美国东部
 * 法国中部
 * 日本东部
 * 北欧
@@ -51,11 +52,11 @@ Azure Kubernetes 服务 (AKS) 群集跨基础 Azure 基础结构的逻辑部分�
 
 使用 Azure 托管磁盘的卷当前不是区域冗余资源。 卷不能跨区域附加，并且必须与承载目标 pod 的给定节点位于同一区域中。
 
-如果必须运行有状态的工作负载，请使用 pod 规范中的节点池排斥和容许将 pod 计划分组到磁盘所在的同一区域中。 另外，还可以使用基于网络的存储（如 Azure 文件存储），在区域间对该存储进行调度时可将其附加到 pod。
+自1.12 版起，Kubernetes 知道 Azure 可用性区域。 你可以在多区域 AKS 群集中部署引用 Azure 托管磁盘的 PersistentVolumeClaim 对象，并且 [Kubernetes 将负责计划](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) 在正确的可用性区域中声明此 PVC 的所有 pod。
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS 群集的可用性区域概述
 
-可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 这些区域是 Azure 地区中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中必须至少有三个单独的区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可保护应用程序和数据。
+可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 这些区域是 Azure 地区中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为了确保复原能力，所有启用区域的区域中始终有多个区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可保护应用程序和数据。
 
 有关详细信息，请参阅 [Azure 中的可用性区域是什么？][az-overview]。
 
@@ -67,7 +68,7 @@ Azure Kubernetes 服务 (AKS) 群集跨基础 Azure 基础结构的逻辑部分�
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>跨可用性区域创建 AKS 群集
 
-使用 [az aks create][az-aks-create] 命令创建群集时，`--zones` 参数定义代理节点部署到的区域。 如果在创建群集时定义 `--zones` 参数，则控制平面组件（如 etcd）将分布在三个区域。 控制平面组件所分布到的特定区域与为初始节点池选择的显式区域无关。
+使用 [az aks create][az-aks-create] 命令创建群集时，`--zones` 参数定义代理节点部署到的区域。 如果在创建群集时定义参数，则控制平面组件（如 etcd 或 API）将分散到区域中的可用区域 `--zones` 。 控制平面组件所分布到的特定区域与为初始节点池选择的显式区域无关。
 
 如果在创建 AKS 群集时未为默认代理池定义任何区域，则不能保证控制平面组件分布到可用性区域。 可以使用 [az aks nodepool add][az-aks-nodepool-add] 命令添加更多节点池，并为新节点指定 `--zones`，但这不会更改控制平面在各个区域中的分布方式。 可用性区域设置只能在群集或节点池创建时定义。
 
@@ -119,7 +120,20 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 向代理池添加其他节点时，Azure 平台会自动在指定的可用性区域内分发基础 VM。
 
-请注意，在新的 Kubernetes 版本（1.17.0 及更高版本）中，除了已弃用的 `failure-domain.beta.kubernetes.io/zone` 之外，AKS 还使用新标签 `topology.kubernetes.io/zone`。
+请注意，在新的 Kubernetes 版本（1.17.0 及更高版本）中，除了已弃用的 `failure-domain.beta.kubernetes.io/zone` 之外，AKS 还使用新标签 `topology.kubernetes.io/zone`。 通过运行以下脚本，可以获得与上述相同的结果：
+
+```console
+kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
+```
+
+这将为你带来更简洁的输出：
+
+```console
+NAME                                REGION   ZONE
+aks-nodepool1-34917322-vmss000000   eastus   eastus-1
+aks-nodepool1-34917322-vmss000001   eastus   eastus-2
+aks-nodepool1-34917322-vmss000002   eastus   eastus-3
+```
 
 ## <a name="verify-pod-distribution-across-zones"></a>验证跨区域的 pod 分布
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 410b73d3f9011f9384fafa18394d9318e3eafa67
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864872"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504485"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -151,7 +151,7 @@ def get_token(subscription_key):
 
 应将访问令牌作为 `Authorization: Bearer <TOKEN>` 标头发送到服务。 每个访问令牌的有效期为 10 分钟。 随时可以获取新令牌，但是，为了最大限度地减少流量和延迟，我们建议使用同一令牌 9 分钟。
 
-下面是向文本转语音 REST API 发出的示例 HTTP 请求：
+下面是用于短音频的语音到文本 REST API 的示例 HTTP 请求：
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

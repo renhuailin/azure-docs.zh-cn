@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/27/2019
-ms.openlocfilehash: a9f5bac475fd019b294f79abf0acdfaff198f52b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442754"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593971"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,14 +55,14 @@ ms.locfileid: "91442754"
     ![选择弹性池](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. 使用以下值配置弹性池：
-   - **名称**：提供弹性池的唯一名称，例如 `myElasticPool`。
-   - **订阅**：从下拉列表中选择订阅。
-   - **ResourceGroup**：从下拉菜单中选择在第 1 部分创建的资源组 `myResourceGroup`。
-   - **服务器**：从下拉菜单中选择在第 1 部分创建的服务器。  
+   - **名称** ：提供弹性池的唯一名称，例如 `myElasticPool`。
+   - **订阅** ：从下拉列表中选择订阅。
+   - **ResourceGroup** ：从下拉菜单中选择在第 1 部分创建的资源组 `myResourceGroup`。
+   - **服务器** ：从下拉菜单中选择在第 1 部分创建的服务器。  
 
        ![为弹性池创建新服务器](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **计算 + 存储**：选择“配置弹性池”以配置计算和存储，并将单一数据库添加到弹性池中。 在“池设置”选项卡上，保留默认值“第 5 代”、2 个 vCore 和 32GB 存储。
+   - **计算 + 存储** ：选择“配置弹性池”以配置计算和存储，并将单一数据库添加到弹性池中。 在“池设置”选项卡上，保留默认值“第 5 代”、2 个 vCore 和 32GB 存储。
 
 1. 在“配置”页上选择“数据库”选项卡，然后选择“添加数据库”。   选择在第 1 部分创建的数据库，然后选择“应用”将其添加到弹性池中。 再次选择“应用”以应用弹性池设置并关闭“配置”页。 
 
@@ -135,7 +135,7 @@ ms.locfileid: "91442754"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 **Azure SQL** 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择在上一部分中创建的弹性池，例如 `myElasticPool`。
-1. 在“概述”窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
+1. 在“概述”窗格上，选择 **服务器名称** 下的服务器名称以打开服务器的设置。
   
     ![打开弹性池的服务器](./media/failover-group-add-elastic-pool-tutorial/server-for-elastic-pool.png)
 
@@ -144,11 +144,11 @@ ms.locfileid: "91442754"
     ![添加新的故障转移组](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
 1. 在“故障转移组”页上输入或选择以下值，然后选择“创建”： 
-    - **故障转移组名称**：键入唯一的故障转移组名称，例如 `failovergrouptutorial`。
-    - **辅助服务器**：选择“配置所需设置”选项，然后选择“创建新服务器”。 或者，可以选择现有的服务器作为辅助服务器。 为新的辅助服务器输入以下值之后，选择“选择”。
-        - **服务器名称**：键入辅助服务器的唯一名称，例如 `mysqlsecondary`。
-        - **服务器管理员登录名**：键入 `azureuser`
-        - **密码**：键入符合密码要求的复杂密码。
+    - **故障转移组名称** ：键入唯一的故障转移组名称，例如 `failovergrouptutorial`。
+    - **辅助服务器** ：选择“配置所需设置”选项，然后选择“创建新服务器”。 或者，可以选择现有的服务器作为辅助服务器。 为新的辅助服务器输入以下值之后，选择“选择”。
+        - **服务器名称** ：键入辅助服务器的唯一名称，例如 `mysqlsecondary`。
+        - **服务器管理员登录名** ：键入 `azureuser`
+        - **密码** ：键入符合密码要求的复杂密码。
         - 位置：从下拉列表中选择一个位置，例如 `East US`。 此位置不能与主服务器的位置相同。
 
        > [!NOTE]
@@ -256,7 +256,7 @@ ms.locfileid: "91442754"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 **Azure SQL** 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择在上一部分中创建的弹性池，例如 `myElasticPool`。
-1. 在**服务器名称**下选择服务器的名称以打开服务器的设置。
+1. 在 **服务器名称** 下选择服务器的名称以打开服务器的设置。
 
     ![打开弹性池的服务器](./media/failover-group-add-elastic-pool-tutorial/server-for-elastic-pool.png)
 

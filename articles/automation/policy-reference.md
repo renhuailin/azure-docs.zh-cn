@@ -1,15 +1,15 @@
 ---
 title: Azure 自动化的内置策略定义
 description: 列出 Azure 自动化的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ade53f1e2f38b9bef82067c1e9909e879cb4737d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c90dd3191d4ee408eae8c1cafee3042dd2c1d906
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827927"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991464"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-automation"></a>Azure 自动化的 Azure Policy 内置定义
 

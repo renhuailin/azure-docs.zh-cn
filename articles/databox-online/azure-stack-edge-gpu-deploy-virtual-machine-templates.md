@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93df80cd6fcd6f5553ea509a4778a155299bb057
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899709"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449034"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>通过模板在 Azure Stack Edge Pro GPU 设备上部署 Vm
 
@@ -76,7 +76,7 @@ ms.locfileid: "90899709"
     
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源（例如存储帐户、磁盘、托管磁盘）的逻辑容器。
+使用 [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源（例如存储帐户、磁盘、托管磁盘）的逻辑容器。
 
 > [!IMPORTANT]
 > 所有资源都在与设备相同的位置创建，并且位置设置为 **DBELocal**。
@@ -141,7 +141,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ### <a name="add-blob-uri-to-hosts-file"></a>将 blob URI 添加到 hosts 文件
 
-请确保已在用于连接到 Blob 存储的客户端的 hosts 文件中添加 blob URI。 以**管理员身份运行记事本**，并为中的 blob URI 添加以下条目 `C:\windows\system32\drivers\etc\hosts` ：
+请确保已在用于连接到 Blob 存储的客户端的 hosts 文件中添加 blob URI。 以 **管理员身份运行记事本**，并为中的 blob URI 添加以下条目 `C:\windows\system32\drivers\etc\hosts` ：
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
@@ -149,7 +149,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ### <a name="optional-install-certificates"></a> (可选) 安装证书
 
-如果你将通过存储资源管理器使用 *http*进行连接，请跳过此步骤。 如果使用的是 *https*，则需要在存储资源管理器中安装适当的证书。 在这种情况下，请安装 blob 端点证书。 有关详细信息，请参阅如何在 " [管理证书](azure-stack-edge-j-series-manage-certificates.md)" 中创建和上载证书。 
+如果你将通过存储资源管理器使用 *http* 进行连接，请跳过此步骤。 如果使用的是 *https*，则需要在存储资源管理器中安装适当的证书。 在这种情况下，请安装 blob 端点证书。 有关详细信息，请参阅如何在 " [管理证书](azure-stack-edge-j-series-manage-certificates.md)" 中创建和上载证书。 
 
 ### <a name="create-and-upload-a-vhd"></a>创建并上传 VHD
 
@@ -185,11 +185,11 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![连接到 Azure 存储1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 选择“使用存储帐户名称和密钥”****。 选择“**下一页**”。
+5. 选择“使用存储帐户名称和密钥”。 选择“**下一页**”。
 
     ![连接到 Azure 存储2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称**和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“**下一页**”。
+6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称** 和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“**下一页**”。
 
     ![用名称和密钥连接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
@@ -201,7 +201,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![上载 VHD 文件1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-1.png)
 
-10. 在 **选定的文件**中浏览并指向要上传的 VHD。 选择 " **blob 类型** " 作为 **页面 blob** ，然后选择 " **上传**"。
+10. 在 **选定的文件** 中浏览并指向要上传的 VHD。 选择 " **blob 类型** " 作为 **页面 blob** ，然后选择 " **上传**"。
 
     ![上载 VHD 文件2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-2.png)
 
@@ -249,7 +249,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
               "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
         },
         "imageName": {
-            "value": "<Name for the VM iamge>"
+            "value": "<Name for the VM image>"
         },
         "imageUri": {
               "value": "<Path to the VHD that you uploaded in the Storage account>"
@@ -441,7 +441,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 
 1. 提供唯一名称、网络接口名称和 ipconfig 名称。 
 1. 输入用户名、密码和受支持的 VM 大小。
-1. 为 **VnetName**、 **subnetName**和 **ImageName** 提供与参数中指定的相同的名称 `CreateImageAndVnet.parameters.json` 。 例如，如果已将 VnetName、subnetName 和 ImageName 指定为 **vnet1**、 **subnet1**和 **image1**，还应为此模板中的参数保留这些值相同的值。
+1. 为 **VnetName**、 **subnetName** 和 **ImageName** 提供与参数中指定的相同的名称 `CreateImageAndVnet.parameters.json` 。 例如，如果已将 VnetName、subnetName 和 ImageName 指定为 **vnet1**、 **subnet1** 和 **image1**，还应为此模板中的参数保留这些值相同的值。
 1. 现在，你将需要一个静态 IP 地址，以分配给上面定义的子网网络中的 VM。 将 **PrivateIPAddress** 替换为参数文件中的此地址。 若要让 VM 从本地 DCHP 服务器获取 IP 地址，请将值保留 `privateIPAddress` 为空。  
     
     ```json
@@ -550,7 +550,8 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
         
         PS C:\07-30-2020>
     ```   
-还可以 `New-AzureRmResourceGroupDeployment` 通过参数异步运行命令 `–AsJob` 。 下面是在后台运行 cmdlet 时的示例输出。 然后，可以查询使用 cmdlet 创建的作业的状态 `Get-Job` 。
+
+    还可以 `New-AzureRmResourceGroupDeployment` 通过参数异步运行命令 `–AsJob` 。 下面是在后台运行 cmdlet 时的示例输出。 然后，可以查询使用 cmdlet 创建的作业的状态 `Get-Job` 。
 
     ```powershell   
     PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
@@ -568,7 +569,6 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
      
     Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
     --     ----            -------------   -----         -----------     --------             -------
-    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
     ```
 
 7. 检查 VM 是否已成功预配。 运行以下命令：
@@ -615,7 +615,7 @@ On the client used to access your Azure Stack Edge Pro device, set up a global v
 
 ### On Windows client 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### On Linux client
 
@@ -629,4 +629,4 @@ To verify if the environment variable for AzCopy was set correctly, take the fol
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 资源管理器 cmdlet](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure 资源管理器 cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

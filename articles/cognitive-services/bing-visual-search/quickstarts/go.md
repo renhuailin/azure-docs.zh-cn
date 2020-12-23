@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 Go 获取图像见解 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
-description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
+description: 了解如何使用必应视觉搜索 API 和 Go 上传图像，并获取有关该图像的见解。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: a0fb6bc96441fe36713d931e561c6d1e272b7819
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: baa0c66508e63fc4363fbf72f01ed7016f2a30eb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872616"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499095"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>快速入门：使用必应视觉搜索 REST API 和 Go 获取图像见解
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 使用本快速入门来使用 Go 编程语言首次调用必应视觉搜索 API。 POST 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
 

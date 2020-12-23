@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511977"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629676"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 文件共享 - 无法从 Azure 文件共享中删除文件
 
@@ -34,7 +34,7 @@ ms.locfileid: "85511977"
 
 ## <a name="cause"></a>原因
 
-在要装载文件共享的计算机上，如果达到文件允许的并发打开句柄上限，便会出现错误 1816。 有关详细信息，请参阅 [Azure 存储性能和可伸缩性清单](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)。
+在要装载文件共享的计算机上，如果达到文件允许的并发打开句柄上限，便会出现错误 1816。 有关详细信息，请参阅 [Azure 存储性能和可伸缩性清单](../blobs/storage-performance-checklist.md)。
 
 ## <a name="resolution"></a>解决方法
 
@@ -44,7 +44,7 @@ ms.locfileid: "85511977"
 
 ### <a name="install-the-latest-azure-powershell-module"></a>安装最新的 Azure PowerShell 模块
 
-* [安装 Azure Powershell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [安装 Azure Powershell 模块](/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>连接到 Azure：
 

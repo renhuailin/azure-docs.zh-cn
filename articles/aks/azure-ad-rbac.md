@@ -1,20 +1,20 @@
 ---
-title: 将 Azure AD 和 RBAC 用于群集
+title: 使用群集的 Azure AD 和 Kubernetes RBAC
 titleSuffix: Azure Kubernetes Service
-description: 了解如何使用 Azure Active Directory 组成员身份在 Azure Kubernetes 服务 (AKS) 中通过基于角色的访问控制 (RBAC) 来限制对群集资源的访问
+description: '了解如何使用 Azure Active Directory 组成员身份使用 Kubernetes 基于角色的访问控制来限制对群集资源的访问权限 (Azure Kubernetes 服务中的 Kubernetes RBAC)  (AKS) '
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 89bf785a082ff479dcd824a773123fcd061dc22d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006836"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576105"
 ---
-# <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
+# <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>使用 Kubernetes 基于角色的访问控制和 Azure Kubernetes 服务中的 Azure Active Directory 标识控制对群集资源的访问
 
-可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 还可以根据用户标识或目录组成员身份配置 Kubernetes 基于角色的访问控制 (RBAC)，以限制对群集资源的访问。
+可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 你还可以配置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) ，以根据用户的标识或组成员身份限制对群集资源的访问权限。
 
 本文介绍如何使用 Azure AD 组成员身份在 AKS 群集中通过 Kubernetes RBAC 来控制对命名空间和群集资源的访问。 将在 Azure AD 中创建示例组和用户，然后在 AKS 群集中创建角色和角色绑定，以授予创建和查看资源的相应权限。
 
@@ -79,7 +79,7 @@ az role assignment create \
 
 ## <a name="create-demo-users-in-azure-ad"></a>在 Azure AD 中创建演示用户
 
-在 Azure AD 中为应用程序开发人员和 SRE 创建两个示例组后，接下来让我们创建两个示例用户。 在本文结束时若要测试 RBAC 集成，需要使用这些帐户登录到 AKS 群集。
+在 Azure AD 中为应用程序开发人员和 SRE 创建两个示例组后，接下来让我们创建两个示例用户。 若要测试本文末尾的 Kubernetes RBAC 集成，请用这些帐户登录到 AKS 群集。
 
 使用 [az ad user create][az-ad-user-create] 命令在 Azure AD 中创建第一个用户帐户。
 
@@ -129,7 +129,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ad
 kubectl create namespace dev
 ```
 
-在 Kubernetes 中，角色定义要授予的权限，角色绑定将这些权限应用到所需的用户或组。  这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
+在 Kubernetes 中，角色定义要授予的权限，角色绑定将这些权限应用到所需的用户或组。  这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅 [Using KUBERNETES RBAC authorization][rbac-authorization]。
 
 首先，为 *dev* 命名空间创建一个角色。 此角色授予对命名空间的完全权限。 在生产环境中，可为不同的用户或组指定更精细的权限。
 
@@ -164,7 +164,7 @@ kubectl apply -f role-dev-namespace.yaml
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-现在，为 *appdev* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-dev-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将*g*替换为上一命令中的组对象 ID 输出：
+现在，为 *appdev* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-dev-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将 *g*  替换为上一命令中的组对象 ID 输出：
 
 ```yaml
 kind: RoleBinding
@@ -229,7 +229,7 @@ kubectl apply -f role-sre-namespace.yaml
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-为 *opssre* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-sre-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将*g*替换为上一命令中的组对象 ID 输出：
+为 *opssre* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-sre-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将 *g*  替换为上一命令中的组对象 ID 输出：
 
 ```yaml
 kind: RoleBinding
@@ -410,5 +410,5 @@ az ad group delete --group opssre
 [az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
 [az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a4c758c1f4dc790e9d5cba1e205956affd58f63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4e8ca83a4f7ab9d255c6081b89b3e02f0e744a29
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535065"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458827"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kronos 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88535065"
 * 让用户使用其 Azure AD 帐户自动登录到 Kronos。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -86,21 +86,21 @@ ms.locfileid: "88535065"
 
 1. Kronos 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 1. 在“用户属性”  对话框的“用户声明”  部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
     a. 单击“编辑图标”，打开“管理用户声明”对话框   。
 
-    ![image](./media/kronos-tutorial/tutorial_usermail.png)
+    ![屏幕截图显示已选择“编辑”图标的“用户属性和声明”。](./media/kronos-tutorial/tutorial_usermail.png)
 
-    ![image](./media/kronos-tutorial/tutorial_usermailedit.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](./media/kronos-tutorial/tutorial_usermailedit.png)
 
     b. 从“转换”列表中，选择“ExtractMailPrefix()”   。
 
     c. 从“参数 1”列表中选择“user.userprincipalname”   。
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -146,20 +146,20 @@ ms.locfileid: "88535065"
 
 ### <a name="create-kronos-test-user"></a>创建 Kronos 测试用户
 
-在本部分中，会在 Kronos 中创建一个名为“Britta Simon”的用户。 请与  [Kronos 支持团队](https://www.kronos.in/contact/en-in/form)协作，将用户添加到 Kronos 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Kronos 中创建一个名为“Britta Simon”的用户。 请与 [Kronos 支持团队](https://www.kronos.in/contact/en-in/form)协作，将用户添加到 Kronos 平台。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Kronos 磁贴时，应当会自动登录到你为其设置了 SSO 的 Kronos。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Kronos 磁贴时，应当会自动登录到你为其设置了 SSO 的 Kronos。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Kronos](https://aad.portal.azure.com/)

@@ -5,23 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/21/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 7285325d92949a331833968b8f71fbeffd6543f4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy20q4, azuread-video-2020
+ms.openlocfilehash: 9c5f7684083ec533c8100785787572ebe4456bcc
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89437898"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030240"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
 新式安全外围网络现已超出组织网络的范围，其中涵盖了用户和设备标识。 在做出访问控制决策过程中，组织可以利用这些标识信号。 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-AD-Conditional-Access/player]
 
 Azure Active Directory 使用条件访问作为一种工具来统合信号、做出决策，以及实施组织策略。 条件访问是新的标识驱动控制平面的核心。
 
@@ -78,17 +80,10 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 - 要求具有管理角色的用户执行多重身份验证
 - 要求在运行 Azure 管理任务时执行多重身份验证
 - 阻止用户尝试使用旧式身份验证协议登录
-- 要求在受信任的位置注册 Azure 多重身份验证
+- 要求在受信任的位置注册 Azure AD 多重身份验证
 - 阻止或允许来自特定位置的访问
 - 阻止有风险的登录行为
 - 要求在组织管理的设备上使用特定的应用程序
-
-## <a name="customer-case-studies"></a>客户案例研究
-
-了解其他组织如何使用 Azure AD 条件访问来定义和实施自动化的访问控制决策。 以下特选案例演示了如何满足这些客户的需求。
-
-* [Wipro 通过 Microsoft 云安全工具提高出差人员的工作效率，以改善客户的参与度。](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Azure AD 中的条件访问策略使公司能够与受信任的外部实体共享文档、资源和应用程序（这些实体可以使用自己的凭据），同时保持对自身企业数据的控制。
-* [跨国物流和运输公司 Aramex Delivery Limited 使用标识和访问管理解决方案设立了与云联网的办事处](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)。 确保 Aramex 远程工作者的安全访问特别困难。 该公司目前正在应用条件访问，使这些远程工作者能够从网络外部访问其 SaaS 应用程序。 条件访问规则将确定是否强制实施多重身份验证，只向适当的人员提供适当的访问权限。
 
 ## <a name="license-requirements"></a>许可要求
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 4116028cc8c4668c897d7de7bbffb607b5e5daba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43de832095e2c2dd674a156da914ed26f1e472d0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310537"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892938"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
@@ -27,7 +27,7 @@ ms.locfileid: "91310537"
 * 天气雷达图
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)是在地图上覆盖图像的一种简单方法。 请注意，浏览器在加载大图像时可能会遇到困难。 在这种情况下，请考虑将图像分解为磁贴，并将其作为 [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)加载到地图中。
+> [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)是在地图上覆盖图像的一种简单方法。 请注意，浏览器在加载大图像时可能会遇到困难。 在这种情况下，请考虑将图像分解为磁贴，并将其作为 [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)加载到地图中。
 
 图像层支持以下图像格式：
 
@@ -38,7 +38,7 @@ ms.locfileid: "91310537"
 
 ## <a name="add-an-image-layer"></a>添加图像层
 
-下面的代码在地图上覆盖 [1922 的纽瓦克、New Jersey 的图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) 的图像。 可以通过将 URL 传递到图像来创建 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) ，并以格式表示四个角的坐标 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
+下面的代码在地图上覆盖 [1922 的纽瓦克、New Jersey 的图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) 的图像。 可以通过将 URL 传递到图像来创建 [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) ，并以格式表示四个角的坐标 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -64,7 +64,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 此示例演示如何将 KML 地面叠加信息添加为地图上的图像层。 KML 地面叠加提供北方、南部、东和西坐标以及逆时针旋转。 但图像层需要图像每个角的坐标。 本示例中的 KML 地面覆盖适用于 Chartres cathedral，其来源为 [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 
-该代码使用 `getCoordinatesFromEdges` [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) 类中的静态函数。 它使用 "KML" 地面叠加的 "北部"、"东南"、"东部"、"西部" 和 "旋转" 信息来计算图像的四个角。
+该代码使用 `getCoordinatesFromEdges` [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) 类中的静态函数。 它使用 "KML" 地面叠加的 "北部"、"东南"、"东部"、"西部" 和 "旋转" 信息来计算图像的四个角。
 
 <br/>
 
@@ -85,10 +85,10 @@ map.layers.add(new atlas.layer.ImageLayer({
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+> [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 > [!div class="nextstepaction"]
-> [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions)
+> [ImageLayerOptions](/javascript/api/azure-maps-control/atlas.imagelayeroptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

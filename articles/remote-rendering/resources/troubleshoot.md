@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803817"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203664"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -88,7 +88,7 @@ H265 编解码器未安装：
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>使用 MRC 录制的视频未反映实时体验的质量
 
-可以通过 [混合现实捕获 (MRC) ](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)在 HoloLens 上记录视频。 但是，由于以下两个原因，所生成视频的质量不如实时体验：
+可以通过 [混合现实捕获 (MRC) ](/windows/mixed-reality/mixed-reality-capture-for-developers)在 HoloLens 上记录视频。 但是，由于以下两个原因，所生成视频的质量不如实时体验：
 * 视频帧速率上限为 30 Hz，而不是 60 Hz。
 * 视频图像未经历[后期阶段重新投影](../overview/features/late-stage-reprojection.md)处理步骤，因此视频显得断断续续。
 

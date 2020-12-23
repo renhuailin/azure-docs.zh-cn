@@ -11,20 +11,20 @@ ms.date: 02/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 157f01008636c61d95d479c396cf82d833b3b44d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259656"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275278"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 OAuth 2.0 授权代码流
 
-可使用 OAuth 2.0 授权代码向设备上安装的应用授权，获取访问受保护资源（例如 Web API）的权限。 通过使用 OAuth 2.0 的 Azure Active Directory B2C (Azure AD B2C) 实现，可向移动应用和桌面应用添加注册、登录和其他标识管理任务。 本文与语言无关。 本文介绍在不使用任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
+可使用 OAuth 2.0 授权代码向设备上安装的应用授权，获取访问受保护资源（例如 Web API）的权限。 通过使用 OAuth 2.0) 实现 Azure Active Directory B2C (Azure AD B2C，可以将注册、登录和其他标识管理任务添加到单页应用、移动应用和桌面应用。 本文与语言无关。 本文介绍在不使用任何开放源代码库的情况下，如何发送和接收 HTTP 消息。 如果可能，我们建议使用 (MSAL) 支持的 Microsoft 身份验证库。查看 [使用 MSAL 的示例应用](code-samples.md)。
 
-[OAuth 2.0 规范第 4.1 部分](https://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权代码流。 可在大多数[应用程序类型](application-types.md)中将其用于身份验证和授权，包括 Web 应用和本机安装的应用程序。 可使用 OAuth 2.0 授权代码流安全地获取应用程序的访问令牌和刷新令牌，这些令牌可用于访问受到[授权服务器](protocols-overview.md)保护的资源。  刷新令牌允许客户端在访问令牌到期后（通常在一小时后）获取新的访问（和刷新）令牌。
+[OAuth 2.0 规范第 4.1 部分](https://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权代码流。 在大多数 [应用程序类型](application-types.md)（包括 web 应用程序、单页应用程序和本机安装的应用程序）中，可以使用它进行身份验证和授权。 可使用 OAuth 2.0 授权代码流安全地获取应用程序的访问令牌和刷新令牌，这些令牌可用于访问受到[授权服务器](protocols-overview.md)保护的资源。  刷新令牌允许客户端在访问令牌到期后（通常在一小时后）获取新的访问（和刷新）令牌。
 
-本文重点介绍**公共客户端** OAuth 2.0 授权代码流。 公共客户端是那些不能被信任以安全维护机密密码完整性的任何客户端应用程序。 这包括移动应用、桌面应用程序，以及在设备上运行并需要获取访问令牌的几乎所有应用程序。
+本文重点介绍**公共客户端** OAuth 2.0 授权代码流。 公共客户端是那些不能被信任以安全维护机密密码完整性的任何客户端应用程序。 这包括单页应用程序、移动应用程序、桌面应用程序，以及本质上不在服务器上运行的任何应用程序。
 
 > [!NOTE]
 > 若要使用 Azure AD B2C 向 Web 应用添加标识管理，请使用 [OpenID Connect](openid-connect.md)，而不要使用 OAuth 2.0。
@@ -36,6 +36,12 @@ Azure AD B2C 扩展了标准 OAuth 2.0 流，使其功能远远超出了简单�
 1. 将 `{tenant}` 替换为 Azure AD B2C 租户的名称。
 1. 将 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` 替换为之前在 Azure AD B2C 租户中注册的应用程序的应用程序 ID。
 1. 将 `{policy}` 替换为在租户中创建的策略的名称，例如 `b2c_1_sign_in`。
+
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>单页应用所需的重定向 URI 设置
+
+单页应用程序的授权代码流需要一些其他设置。  按照[创建单页应用程序](tutorial-register-spa.md)的说明将重定向 URI 正确地标记为已为 CORS 启用。 若要更新现有的重定向 URI 以启用 CORS，可以在 **应用注册**的 " **身份验证** " 选项卡的 "Web" 部分中单击 "迁移" 提示。或者，您可以打开 **应用注册清单编辑器** ，然后将 `type` 重定向 URI 的字段设置为 `spa` `replyUrlsWithType` 。
+
+`spa` 重定向类型与隐式流向后兼容。 当前使用隐式流来获取令牌的应用可以移动到 `spa` 重定向 URI 类型，而不会出现问题，并会继续使用隐式流。
 
 ## <a name="1-get-an-authorization-code"></a>1.获取授权代码
 授权代码流始于客户端将用户定向到 `/authorize` 终结点。 这是授权代码流中用户会执行操作的交互部分。 在此请求中，客户端指示在 `scope` 参数中需要从用户处获取的权限。 下面有三个示例（为方便阅读，提供了换行符），每个示例都使用不同的用户流。
@@ -49,8 +55,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_mode=query
 &scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
 ```
-
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
@@ -63,8 +70,8 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_mode |建议 |用于将生成的授权代码发回应用的方法。 可以是 `query`、`form_post` 或 `fragment`。 |
 | state |建议 |请求中包含的值，可以是要使用的任何内容的字符串。 随机生成的唯一值通常用于防止跨网站请求伪造攻击。 它还可用于在身份验证请求发生前，对有关用户在应用中的状态信息进行编码。 例如，用户所处的页面或要执行的用户流。 |
 | prompt |可选 |需要的用户交互类型。 目前，唯一有效的值为 `login`，这会强制用户在该请求中输入其凭据。 单一登录不会生效。 |
-| code_challenge  | 可选 | 用于通过 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
-| code_challenge_method | 可选 | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是以下值之一：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Azure AD B2C 同时支持 `plain` 和 `S256` 。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| code_challenge  | 建议/必需 | 用于通过 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 现在建议用于所有应用程序类型 - 本机应用、SPA 和机密客户端（如 Web 应用）。 | 
+| `code_challenge_method` | 建议/必需 | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 它应该为 `S256`，但是如果客户端出于某种原因不能支持 SHA256，则该规范允许使用 `plain`。 <br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 这是[使用授权代码流的单页应用](tutorial-register-spa.md)所必需的。|
 
 此时，要求用户完成用户流的工作流。 这可能涉及用户输入其用户名和密码、使用社交标识登录、注册目录，或任何其他步骤。 用户操作取决于用户流是如何定义的。
 
@@ -98,8 +105,8 @@ error=access_denied
 | error_description |帮助识别身份验证错误根本原因的特定错误消息。 |
 | state |请参阅上表中的完整说明。 如果请求中包含 `state` 参数，则响应中应显示相同的值。 应用需验证请求和响应中的 `state` 值是否相同。 |
 
-## <a name="2-get-a-token"></a>2. 获取令牌
-现在，已获取授权代码，可将 POST 请求发送到 `/token` 终结点，兑换 `code` 来获取所需资源的令牌。 在 Azure AD B2C 中，可以通过在请求中指定其作用域 () s，来照常 [请求其他 API 的访问令牌](access-tokens.md#request-a-token) 。
+## <a name="2-get-an-access-token"></a>2. 获取访问令牌
+现在，已获取授权代码，可将 POST 请求发送到 `/token` 终结点，兑换 `code` 来获取所需资源的令牌。 在 Azure AD B2C 中，可以像往常一样通过在请求中指定其他 API 的范围来[为这些 API 请求访问令牌](access-tokens.md#request-a-token)。
 
 还可以按照将应用的客户端 ID 用作所请求范围（这将导致具有该客户端 ID 的访问令牌作为“受众”）的约定，为应用自己的后端 Web API 请求访问令牌：
 
@@ -108,21 +115,20 @@ POST https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0
 
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
-
+grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 ```
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|{tenant}| 必需 | Azure AD B2C 租户的名称|
+|{tenant}| 必须 | Azure AD B2C 租户的名称|
 |{policy}| 必需| 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 |
-| client_id |必需 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。|
+| client_id |必须 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。|
 | client_secret | 是，在 Web 应用中 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 客户端密码在此流中用于 Web 应用场景，在其中客户端可以安全地存储客户端密码。 对于本机应用（公共客户端）场景，客户端密码不能安全地存储，因此不能在此调用中使用。 如果使用客户端密码，请定期更改。 |
 | grant_type |必需 |授权的类型。 对于授权代码流，授权类型必须为 `authorization_code`。 |
 | scope |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
 | code |必需 |在流的第一个阶段获取的授权代码。 |
 | redirect_uri |必需 |在其中收到授权代码的应用程序的重定向 URI。 |
-| code_verifier | 可选 | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| code_verifier | 建议 | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 成功令牌响应如下所示：
 
@@ -159,7 +165,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
 | error_description |帮助识别身份验证错误根本原因的特定错误消息。 |
 
-## <a name="3-use-the-token"></a>3. 使用令牌
+## <a name="3-use-the-token"></a>3.使用令牌
 现在你已成功获取访问令牌，可通过在 `Authorization` 标头中加入令牌的方式，在后端 Web API 请求中使用该令牌：
 
 ```http
@@ -168,7 +174,7 @@ Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="4-refresh-the-token"></a>4. 刷新令牌
+## <a name="4-refresh-the-token"></a>4.刷新令牌
 访问令牌和 ID 令牌的生存期较短。 过期后，必须将其刷新才能继续访问资源。 若要执行此操作，请向 `/token` 终结点提交另一个 POST 请求。 这次提供的是 `refresh_token` 而不是 `code`：
 
 ```http
@@ -181,9 +187,9 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|{tenant}| 必需 | Azure AD B2C 租户的名称|
+|{tenant}| 必须 | Azure AD B2C 租户的名称|
 |{policy} |必需 |用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 |
-| client_id |必需 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
+| client_id |必须 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | client_secret | 是，在 Web 应用中 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 客户端密码在此流中用于 Web 应用场景，在其中客户端可以安全地存储客户端密码。 对于本机应用（公共客户端）场景，客户端密码不能安全地存储，因此不能在此调用中使用。 如果使用客户端密码，请定期更改。 |
 | grant_type |必需 |授权的类型。 对于授权代码流的此阶段，授权类型必须为 `refresh_token`。 |
 | scope |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 作用域表示应用需要刷新令牌才能获得访问资源的长生存期。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |

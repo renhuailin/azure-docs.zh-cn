@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 922cea49179e63e2481a7f15b1e78bd8bf6c4848
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 2b4ac8f87e8e19d3487859849ba37272c501751d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773920"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744374"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -28,13 +28,13 @@ ms.locfileid: "91773920"
 
 当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供了以下三个无密码身份验证选项，这些选项与 Azure Active Directory (Azure AD) ：
 
-- Windows Hello for Business
+- Windows Hello 企业版
 - Microsoft Authenticator 应用
 - FIDO2 安全密钥
 
 ![身份验证：安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello for Business
+## <a name="windows-hello-for-business"></a>Windows Hello 企业版
 
 Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 凭据直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 利用公钥基础结构 (PKI) 集成和内置支持单一登录 (SSO) ，Windows Hello 企业版提供了一种方便的方法，可用于无缝访问本地和云中的公司资源。
 
@@ -62,7 +62,7 @@ Windows Hello 企业版 [规划指南](/windows/security/identity-protection/hel
 
 验证器应用会将任何 iOS 或 Android 手机变成强、无密码凭据。 用户可以通过以下方式登录到任何平台或浏览器：向其手机发送通知，将屏幕上显示的数字与电话上的一个数字匹配，然后使用其生物识别 (触摸或面部) 或 PIN 以确认。 有关安装的详细信息，请参阅 [下载并安装 Microsoft Authenticator 应用](../user-help/user-help-auth-app-download-install.md) 。
 
-无密码 Microsoft Authenticator 应用登录到 Azure AD 目前处于预览阶段。 使用 Microsoft Authenticator 应用进行 Azure 多重身份验证的辅助身份验证、自助服务密码重置 (SSPR) 或 OATH 软件令牌为 GA。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+无密码 Microsoft Authenticator 应用登录到 Azure AD 目前处于预览阶段。 使用 Microsoft Authenticator 应用进行辅助身份验证 Azure AD 多重身份验证、自助服务密码重置 (SSPR) 或 OATH 软件令牌为 GA。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用验证器应用的无密码 authentication 遵循与 Windows Hello 企业版相同的基本模式。 这会稍微复杂一些，因为需要识别用户，以便 Azure AD 可以找到正在使用的 Microsoft Authenticator 应用程序版本：
 
@@ -128,14 +128,18 @@ FIDO2 安全密钥可用于登录到其 Azure AD 或混合 Azure AD 加入 Windo
 | 提供程序 | 联系人 |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
-| Feitian | [https://shop.ftsafe.us/pages/microsoft](https://shop.ftsafe.us/pages/microsoft) |
+| Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | TrustKey 解决方案 | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto 身份 (Thales 组)  | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc。 | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
-| IDmelon 技术 Inc。 | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
+| IDmelon 技术 Inc。 | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) |
+| Hypersecu | [https://www.hypersecu.com/hyperfido](https://www.hypersecu.com/hyperfido) |
+| VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
+| KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
+| Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
 
 > [!NOTE]
 > 如果你购买并计划使用基于 NFC 的安全密钥，则需要为安全密钥提供支持的 NFC 读卡器。 NFC 读卡器不是 Azure 要求或限制。 有关支持的 NFC 读卡器的列表，请与供应商联系以获取基于 NFC 的安全密钥。
@@ -164,7 +168,7 @@ Azure AD 无密码登录功能当前以预览版提供。 请注意以下事项�
 
 下面是在选择 Microsoft 无密码技术时要考虑的一些因素：
 
-||**Windows Hello for Business**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
+||**Windows Hello 企业版**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
 |**必备组件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>电话 (运行 Android 6.0 或更高版本的 iOS 和 Android 设备。 ) |Windows 10 版本1903或更高版本<br>Azure Active Directory|
 |**模式**|平台|软件|硬件|

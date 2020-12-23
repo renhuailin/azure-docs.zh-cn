@@ -7,38 +7,38 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 27b0485fdd7b3c352a85fe7eb39fba33c53bf727
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654848"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519206"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight 的 Apache HBase 加速写入
 
-本文提供有关 Azure HDInsight 中 Apache HBase 的**加速写入**功能的背景信息，以及如何使用它来有效提高写入性能。 **加速写入**使用 [Azure 高级 SSD 托管磁盘](../../virtual-machines/disks-types.md#premium-ssd)来提高 Apache HBase 预写日志 (WAL) 的性能。 有关 Apache HBase 的详细信息，请参阅 [HDInsight 中的 Apache HBase 是什么](apache-hbase-overview.md)。
+本文提供有关 Azure HDInsight 中 Apache HBase 的 **加速写入** 功能的背景信息，以及如何使用它来有效提高写入性能。 **加速写入** 使用 [Azure 高级 SSD 托管磁盘](../../virtual-machines/disks-types.md#premium-ssd)来提高 Apache HBase 预写日志 (WAL) 的性能。 有关 Apache HBase 的详细信息，请参阅 [HDInsight 中的 Apache HBase 是什么](apache-hbase-overview.md)。
 
 ## <a name="overview-of-hbase-architecture"></a>HBase 体系结构概述
 
-在 HBase 中，**行**由一个或多个**列**构成，并由**行键**标识。 多个行构成了一个**表**。 列包含**单元格** - 该列中的值的带时间戳版本。 列分组成**列系列**，列系列中的所有列一起存储在名为 **HFile** 的存储文件中。
+在 HBase 中，**行** 由一个或多个 **列** 构成，并由 **行键** 标识。 多个行构成了一个 **表**。 列包含 **单元格** - 该列中的值的带时间戳版本。 列分组成 **列系列**，列系列中的所有列一起存储在名为 **HFile** 的存储文件中。
 
-HBase 中的**区域**用于平衡数据处理负载。 HBase 最初在单个区域中存储表的行。 随着表中的数据量不断增大，行将分散到多个区域。 **区域服务器**可以处理多个区域的请求。
+HBase 中的 **区域** 用于平衡数据处理负载。 HBase 最初在单个区域中存储表的行。 随着表中的数据量不断增大，行将分散到多个区域。 **区域服务器** 可以处理多个区域的请求。
 
 ## <a name="write-ahead-log-for-apache-hbase"></a>Apache HBase 的预写日志
 
 HBase 最初会将数据更新写入到一种名为“预写日志”(WAL) 的提交日志中。 更新存储到 WAL 后，将写入到内存中的 **MemStore**。 当内存中的数据达到其最大容量时，将作为 **HFile** 写入到磁盘中。
 
-如果在刷写 MemStore 之前**区域服务器**崩溃或不可用，可以使用预写日志来重放更新。 在不使用 WAL 的情况下，如果在将更新刷写到 **HFile** 之前**区域服务器**崩溃，所有这些更新都会丢失。
+如果在刷写 MemStore 之前 **区域服务器** 崩溃或不可用，可以使用预写日志来重放更新。 在不使用 WAL 的情况下，如果在将更新刷写到 **HFile** 之前 **区域服务器** 崩溃，所有这些更新都会丢失。
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Azure HDInsight 中 Apache HBase 的加速写入功能
 
-加速写入功能解决了使用云存储中的预写日志导致写入延迟增大的问题。  HDInsight Apache HBase 群集的加速写入功能将高级 SSD 托管磁盘附加到每个区域服务器（工作器节点）。 然后，预写日志将写入到这些高级托管磁盘中装载的 Hadoop 文件系统 (HDFS)，而不是写入到云存储。  高级托管磁盘使用固态硬盘 (SSD)，提供卓越的 I/O 性能和容错能力。  与非托管磁盘不同，如果一个存储单元出现故障，则它不会影响同一可用性集中的其他存储单元。  因此，托管磁盘可为应用程序提供较低的写入延迟和更好的复原能力。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/managed-disks-overview.md)。
+加速写入功能解决了使用云存储中的预写日志导致写入延迟增大的问题。  HDInsight Apache HBase 群集的加速写入功能将高级 SSD 托管磁盘附加到每个区域服务器（工作器节点）。 然后，预写日志将写入到这些高级托管磁盘中装载的 Hadoop 文件系统 (HDFS)，而不是写入到云存储。  高级托管磁盘使用固态硬盘 (SSD)，提供卓越的 I/O 性能和容错能力。  与非托管磁盘不同，一个存储单元发生故障不会影响到同一个可用性集中的其他存储单元。  因此，托管磁盘可为应用程序提供较低的写入延迟和更好的复原能力。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/managed-disks-overview.md)。
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>如何启用 HDInsight 中 HBase 的加速写入
 
-若要使用加速写入功能创建新的 HBase 群集，请执行[在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)中的步骤，直到“步骤 3：存储”。  在“元存储设置”下，选中“启用 HBase 加速写入”旁边的复选框。   然后，继续执行剩余的步骤创建群集。
+若要使用加速写入功能创建新的 HBase 群集，请按照在 [HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)中的步骤进行操作。 在 " **基本** 信息" 选项卡上，选择 "群集类型" 作为 HBase，指定组件版本，然后单击 " **启用 HBase 加速写入**" 旁边的复选框。 然后，继续执行剩余的步骤创建群集。
 
-![启用 HDInsight Apache HBase 的加速写入选项](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
+![启用 HDInsight Apache HBase 的加速写入选项](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 
 ## <a name="other-considerations"></a>其他注意事项
 

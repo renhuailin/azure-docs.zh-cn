@@ -1,14 +1,14 @@
 ---
 title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
-ms.date: 08/07/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756684"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347874"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -18,12 +18,11 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 - 应用程序配置或状态
 - 环境设置
 
-目前，大多数 Azure Policy 来宾配置策略仅审核计算机内的设置。
-它们不会应用配置。 例外情况是[下面引用的一个内置策略](#applying-configurations-using-guest-configuration)。
+目前，大部分 Azure Policy Guest Configuration 策略定义只会审核计算机内部的设置。 它们不会应用配置。 例外情况是[下面引用的一个内置策略](#applying-configurations-using-guest-configuration)。
 
 ## <a name="enable-guest-configuration"></a>启用来宾配置
 
-若要审核环境中计算机的状态，包括在 Azure 和 Arc 连接的计算机中的计算机，请查看以下详细信息。
+若要审核环境中计算机（包括 Azure 中的计算机和 Arc 连接的计算机）的状态，请查看以下详细信息。
 
 ## <a name="resource-provider"></a>资源提供程序
 
@@ -59,20 +58,19 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 ## <a name="supported-client-types"></a>支持的客户端类型
 
-来宾配置策略包含新版本。 如果来宾配置代理不兼容，则会排除 Azure Marketplace 中可用的较旧版本的操作系统。
-下表显示了 Azure 映像上支持的操作系统列表：
+来宾配置策略定义包含新版本。 如果来宾配置代理不兼容，则会排除 Azure 市场中提供的旧版操作系统。 下表显示了 Azure 映像上支持的操作系统列表：
 
 |发布者|名称|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04 及更高版本|
+|Canonical|Ubuntu Server|14.04-18.04|
 |Credativ|Debian|8 及更高版本|
 |Microsoft|Windows Server|2012 及更高版本|
 |Microsoft|Windows 客户端|Windows 10|
 |OpenLogic|CentOS|7.3 及更高版本|
-|Red Hat|Red Hat Enterprise Linux|7.4-7。8|
+|Red Hat|Red Hat Enterprise Linux|7.4 - 7.8|
 |Suse|SLES|12 SP3-SP5|
 
-来宾配置策略支持自定义虚拟机映像，只要它们是上表中的操作系统之一。
+来宾配置策略定义支持自定义虚拟机映像，只要它们是上表中的操作系统之一。
 
 ## <a name="network-requirements"></a>网络要求
 
@@ -82,11 +80,11 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>通过 Azure 中的虚拟网络进行通信
 
-使用虚拟网络进行通信的虚拟机将需要对端口上的 Azure 数据中心的出站访问 `443` 。 如果在 Azure 中使用不允许出站流量的专用虚拟网络，请使用网络安全组规则配置例外。 服务标记“GuestAndHybridManagement”可用于引用来宾配置服务。
+使用虚拟网络通信的虚拟机将需要在端口 `443` 上对 Azure 数据中心进行出站访问。 如果在 Azure 中使用不允许出站流量的专用虚拟网络，请使用网络安全组规则配置例外。 服务标记“GuestAndHybridManagement”可用于引用来宾配置服务。
 
 ### <a name="communicate-over-private-link-in-azure"></a>通过 Azure 中的专用链接进行通信
 
-虚拟机可以使用 [专用链接](../../../private-link/private-link-overview.md) 来与来宾配置服务通信。 将标记应用到名称 `EnablePrivateNeworkGC` 和值 `TRUE` 以启用此功能。 在将来宾配置策略应用到计算机之前或之后，可以应用标记。
+虚拟机可以使用 [专用链接](../../../private-link/private-link-overview.md) 来与来宾配置服务通信。 `EnablePrivateNeworkGC`在网络) 和值中将名称为 (的标记应用为 "t"， `TRUE` 以启用此功能。 在将来宾配置策略定义应用到计算机之前或之后，可以应用标记。
 
 流量使用 Azure [虚拟公共 IP 地址](../../../virtual-network/what-is-ip-address-168-63-129-16.md) 进行路由，用 azure 平台资源建立经过身份验证的安全通道。
 
@@ -94,7 +92,7 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 
 位于 Azure 的外部的节点通过 Azure Arc 连接需要连接到来宾配置服务。 有关 [Azure Arc 文档](../../../azure-arc/servers/overview.md)中提供的网络和代理要求的详细信息。
 
-要与 Azure 中的来宾配置资源提供程序通信，计算机需要对端口**443**上的 Azure 数据中心进行出站访问。 如果 Azure 中的网络不允许出站流量，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置异常。 [服务标记](../../../virtual-network/service-tags-overview.md)“GuestAndHybridManagement”可用于引用来宾配置服务。
+要与 Azure 中的来宾配置资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心进行出站访问。 如果 Azure 中的网络不允许出站流量，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置异常。 [服务标记](../../../virtual-network/service-tags-overview.md)“GuestAndHybridManagement”可用于引用来宾配置服务。
 
 对于专用数据中心内的 Arc 连接服务器，允许使用以下模式的流量：
 
@@ -103,7 +101,7 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 
 ## <a name="managed-identity-requirements"></a>托管标识要求
 
-计划中的策略定义 [部署先决条件若要在虚拟机上启用来宾配置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) ，请启用系统分配的托管标识（如果不存在）。 计划中有两个管理标识创建的策略定义。 策略定义中的 IF 条件基于 Azure 中计算机资源的当前状态确保行为正确。
+[部署先决条件以在虚拟机上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)计划中的策略定义会启用系统分配的托管标识（如果不存在）。 计划中有两个管理标识创建的策略定义。 策略定义中的 IF 条件基于 Azure 中计算机资源的当前状态确保行为正确。
 
 如果计算机当前没有任何托管标识，则有效策略将为：[\[预览版\]:添加系统分配的托管标识，在没有标识的虚拟机上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
@@ -111,16 +109,14 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
-来宾配置策略使用 **AuditIfNotExists** 效果。 分配定义后，后端服务会自动处理 `Microsoft.GuestConfiguration` Azure 资源提供程序中的所有要求的生命周期。
+来宾配置策略定义使用 AuditIfNotExists 效果。 分配定义后，后端服务会自动处理 `Microsoft.GuestConfiguration` Azure 资源提供程序中所有要求的生命周期。
 
-在计算机上满足所有要求之前， **AuditIfNotExists** 策略将不会返回符合性结果。 [Azure 虚拟机的部署要求](#deploy-requirements-for-azure-virtual-machines)一节中介绍了要求
+满足计算机中的所有要求后，AuditIfNotExists 策略定义才会返回合规性结果。 [部署 Azure 虚拟机的要求](#deploy-requirements-for-azure-virtual-machines)部分描述了这些要求
 
 > [!IMPORTANT]
-> 在以前版本的来宾配置中，需要计划 **DeployIfNoteExists** 和 **AuditIfNotExists** 定义。 不再需要**DeployIfNotExists**定义。 已标记定义和 intiaitives， `[Deprecated]` 但现有分配将继续工作。
->
-> 需要手动步骤。 如果以前已在类别中分配策略计划 `Guest Configuration` ，请删除策略分配，并分配新定义。 来宾配置策略具有如下所示的名称模式： `Audit <Windows/Linux> machines that <non-compliant condition>`
+> 在旧版来宾配置中，需要计划以合并 DeployIfNoteExists 和 AuditIfNotExists 定义 。 不再需要 DeployIfNotExists 定义。 定义和计划标记为 `[Deprecated]`，但现有分配将继续发挥作用。 有关信息，请参阅博客文章：[为来宾配置审核策略发布了重要更改](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
-Azure 策略使用来宾配置资源提供程序 **complianceStatus** 属性在 **符合性** 节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
+Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“合规性”节点中报告合规性 。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>按照行业基线审核操作系统设置
 
@@ -135,20 +131,20 @@ Azure Policy 中的一个计划提供了按照“基线”审核操作系统设�
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用来宾配置应用配置
 
-只有定义在 _Windows 计算机上配置_ 时区会通过配置时区来更改计算机。 不支持在计算机内配置设置的自定义策略定义。
+只有“在 Windows 计算机上配置时区”这一定义通过配置时区对计算机进行更改。 不支持用于在计算机内配置设置的自定义策略定义。
 
 分配以“配置”开头的定义时，还必须分配定义“部署必备组件以在 Windows VM 上启用来宾配置策略”。 如果需要，可将这些定义合并到一个计划中。
 
 > [!NOTE]
-> 内置时区策略是唯一支持在计算机内配置设置的定义，而不支持在计算机内配置设置的自定义策略。
+> 内置时区策略是唯一支持在计算机内配置设置的定义，而在计算机内配置设置的自定义策略定义则不受支持。
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>将策略分配给 Azure 之外的计算机
 
-适用于来宾配置的审核策略包括 Microsoft.HybridCompute/计算机资源类型。 将自动包括载入到策略分配范围内的 [Azure Arc for servers](../../../azure-arc/servers/overview.md) 的任何计算机。
+适用于来宾配置的审核策略定义包括 **HybridCompute/计算机** 资源类型。 将自动包括载入到策略分配范围内的 [Azure Arc for servers](../../../azure-arc/servers/overview.md) 的任何计算机。
 
 ### <a name="multiple-assignments"></a>多个分配
 
-来宾配置策略目前仅支持对每台计算机分配相同的来宾分配，即使策略分配使用不同的参数也是如此。
+来宾配置策略定义目前仅支持为每台计算机分配相同的来宾分配，即使 Policy 分配使用不同的参数，也是如此。
 
 ## <a name="client-log-files"></a>客户端日志文件
 

@@ -4,19 +4,19 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91745725"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531973"
 ---
-| 资源 | 免费 | 共享 | 基本 | Standard | 高级 (v3) | 隔离 </th> |
+| 资源 | 免费 | 共享 | 基本 | Standard | 高级 (v1-v3) | 隔离 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | 每个 [Azure 应用服务计划](../articles/app-service/overview-hosting-plans.md)的 [Web 应用、移动应用或 API 应用数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup>|
 | [应用服务计划](../articles/app-service/overview-hosting-plans.md) |每个区域仅 10 个 |每个资源组 10 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个|
 | 计算实例类型 |共享 |共享 |专用<sup>3</sup> |专用<sup>3</sup> |专用<sup>3</sup></p> |专用<sup>3</sup>|
-| [横向扩展](../articles/app-service/manage-scale-up.md)（最大实例数） |1 个共享 |1 个共享 |3 个专用<sup>3</sup> |10 个专用<sup>3</sup> |30 个专用<sup>3</sup>|100 个专用<sup>4</sup>|
+| [横向扩展](../articles/app-service/manage-scale-up.md)（最大实例数） |1 个共享 |1 个共享 |3 个专用<sup>3</sup> |10 个专用<sup>3</sup> | 20 个专用于 v1 和 v2；30 个专用于 v3。<sup>3</sup>|100 个专用<sup>4</sup>|
 | 存储<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> 如果超过 250 GB，请提交支持请求。 |1 TB<sup>5</sup> <br/><br/> 可用存储配额为 999 GB。 |
 | CPU 时间（5 分钟）<sup>6</sup> |3 分钟 |3 分钟 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费|
 | CPU 时间（天）<sup>6</sup> |60 分钟 |240 分钟 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |
@@ -32,6 +32,7 @@ ms.locfileid: "91745725"
 | 混合连接 | | | 每个计划 5 个 | 每个计划 25 个 | 每个应用 200 个 | 每个应用 200 个 |
 | [虚拟网络集成](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | 集成负载均衡器 | |X |X |X |X |X<sup>10</sup> |
+| [访问限制](../articles/app-service/networking-features.md#access-restrictions) | 每个应用 512 条规则 | 每个应用 512 条规则 | 每个应用 512 条规则 | 每个应用 512 条规则 | 每个应用 512 条规则 | 每个应用 512 条规则 |
 | [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [计划备份](../articles/app-service/manage-backup.md) | | | | 计划备份每 2 小时一次，每天最多 12 次备份（手动 + 计划） | 计划备份每小时一次，每天最多 50 次备份（手动 + 计划） | 计划备份每小时一次，每天最多 50 次备份（手动 + 计划） |
 | [自动缩放](../articles/app-service/manage-scale-up.md) | | | |X |X |X |

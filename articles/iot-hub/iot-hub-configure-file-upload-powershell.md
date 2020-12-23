@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b106e64aed08b0586575d4d77602329454a673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60318425"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536005"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 配置 IoT 中心文件上传
 
@@ -27,17 +27,17 @@ ms.locfileid: "60318425"
 
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* [Azure PowerShell cmdlet](/powershell/azure/install-Az-ps)。
 
-* Azure IoT 中心。 如果没有 IoT 中心，可以使用 [New-AzIoTHub cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) 创建一个，或者使用门户[创建一个 IoT 中心](iot-hub-create-through-portal.md)。
+* Azure IoT 中心。 如果没有 IoT 中心，可以使用 [New-AzIoTHub cmdlet](/powershell/module/az.iothub/new-aziothub) 创建一个，或者使用门户[创建一个 IoT 中心](iot-hub-create-through-portal.md)。
 
-* 一个 Azure 存储帐户。 如果没有 Azure 存储帐户，可以使用 [Azure 存储 PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.storage/) 创建一个，或使用门户[创建存储帐户](../storage/common/storage-create-storage-account.md)
+* 一个 Azure 存储帐户。 如果没有 Azure 存储帐户，可以使用 [Azure 存储 PowerShell cmdlet](/powershell/module/az.storage/) 创建一个，或使用门户[创建存储帐户](../storage/common/storage-account-create.md)
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登录并设置 Azure 帐户
 
 登录到 Azure 帐户，并选择订阅。
 
-1. 在 PowerShell 提示符下，运行 **Connect-AzAccount**：
+1. 在 PowerShell 提示符下，运行 **Connect-AzAccount** ：
 
     ```powershell
     Connect-AzAccount
@@ -58,7 +58,7 @@ ms.locfileid: "60318425"
 
 ## <a name="retrieve-your-storage-account-details"></a>检索存储帐户详细信息
 
-以下步骤假设已使用 **Resource Manager** 部署模型而不**经典**部署模型创建了存储帐户。
+以下步骤假设已使用 **Resource Manager** 部署模型而不 **经典** 部署模型创建了存储帐户。
 
 若要从设备配置文件上传，需要 Azure 存储帐户的连接字符串。 存储帐户必须与 IoT 中心位于同一订阅中。 还需要存储帐户中 Blob 容器的名称。 使用以下命令检索存储帐户密钥：
 
@@ -99,15 +99,15 @@ Get-AzStorageAccountKey `
 
 配置需要以下值：
 
-* **存储容器**：当前 Azure 订阅中要与 IoT 中心关联的 Azure 存储帐户中的 Blob 容器。 检索在上一部分中必要的存储帐户信息。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
+* **存储容器** ：当前 Azure 订阅中要与 IoT 中心关联的 Azure 存储帐户中的 Blob 容器。 检索在上一部分中必要的存储帐户信息。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
 * 接收已上传文件的通知：启用或禁用文件上传通知。 
 
-* **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时。
+* **SAS TTL** ：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时。
 
-* **文件通知设置默认 TTL**：文件上传通知到期前的生存时间。 默认设置为一天。
+* **文件通知设置默认 TTL** ：文件上传通知到期前的生存时间。 默认设置为一天。
 
-* **文件通知最大传送数**：IoT 中心将尝试传送文件上传通知的次数。 默认设置为 10。
+* **文件通知最大传送数** ：IoT 中心将尝试传送文件上传通知的次数。 默认设置为 10。
 
 使用以下 PowerShell cmdlet 在 IoT 中心内配置上传文件设置：
 
@@ -130,11 +130,10 @@ Set-AzIotHub `
 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [批量管理 IoT 设备](iot-hub-bulk-identity-mgmt.md)
-* [IoT 中心指标](iot-hub-metrics.md)
-* [操作监视](iot-hub-operations-monitoring.md)
+* [监视 IoT 中心](monitor-iot-hub.md)
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南](iot-hub-devguide.md)
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/quickstart-linux.md)
 * [从根本上保护 IoT 解决方案](../iot-fundamentals/iot-security-ground-up.md)

@@ -6,17 +6,17 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 04/15/2020
+ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 2b8dbd20e79b9a6f48ca2d39079ebb452a3b46b2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 5f9733866e85d79bdb85b8a24d1878e1169c2479
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530805"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586034"
 ---
-# <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio (预览) 来监视你的 Apache Spark 应用程序
+# <a name="how-to-use-synapse-studio-to-monitor-your-apache-spark-applications"></a>如何使用 Synapse Studio 监视 Apache Spark 应用程序
 
 使用 Azure Synapse Analytics，可以使用 Spark 在工作区中的 Spark 池上运行笔记本、作业和其他类型的应用程序。
 
@@ -34,15 +34,13 @@ ms.locfileid: "90530805"
 
 选择 **Apache Spark 应用程序** 以查看 Apache Spark 应用程序的列表。
 
- ![选择 Spark 应用程序](./media/how-to-monitor-spark-applications/monitor-hub-nav-sparkapplications.png)
+ ![选择 Spark 应用程序](./media/how-to-monitor-spark-applications/monitor-hub-nav-spark-applications.png)
 
 ## <a name="filter-your-apache-spark-applications"></a>筛选 Apache Spark 应用程序
 
 你可以将 Apache Spark 应用程序的列表筛选为你感兴趣的应用程序的列表。 使用屏幕顶部的筛选器，可以指定要筛选的字段。
 
 例如，你可以筛选视图以便仅查看包含名称 "sales" 的 Apache Spark 应用程序：
-
-![“筛选器”按钮](./media/common/filter-button.png)
 
 ![示例筛选器](./media/how-to-monitor-spark-applications/filter-example.png)
 

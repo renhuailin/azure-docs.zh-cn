@@ -10,16 +10,15 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302088"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886441"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
-
 
 在本文中，你将了解如何对 Azure 机器学习数据集进行版本控制和跟踪，以实现可再现性。 数据集版本控制是为数据状态设置书签的一种方法，方便为将来的试验应用数据集的特定版本。
 
@@ -32,7 +31,7 @@ ms.locfileid: "91302088"
 
 对于本教程的内容，你需要：
 
-- [安装了适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 此 SDK 包括 [azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py&preserve-view=true) 包。
+- [安装了适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 此 SDK 包括 [azureml-datasets](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py) 包。
     
 - [Azure 机器学习工作区](concept-workspace.md)。 通过运行以下代码检索现有的工作区，或者[创建新的工作区](how-to-manage-workspace.md)。
 
@@ -63,7 +62,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>按名称检索数据集
 
-默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
+默认情况下，`Dataset` 类中的 [get_by_name()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
 
 下面的代码获取 `titanic_ds` 数据集的版本 1。
 
@@ -116,11 +115,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>对管道输出数据集进行版本控制
+## <a name="version-an-ml-pipeline-output-dataset"></a>版本 ML 管道输出数据集
 
-可以使用数据集作为每个机器学习管道步骤的输入和输出。 重新运行管道时，每个管道步骤的输出将注册为一个新的数据集版本。
+您可以使用数据集作为每个 [ML 管道](concept-ml-pipelines.md) 步骤的输入和输出。 重新运行管道时，每个管道步骤的输出将注册为一个新的数据集版本。
 
-因为机器学习管道每次重新运行时，管道都会将每个步骤的输出填充到一个新文件夹中，所以带版本的输出数据集是可再现的。 详细了解 [管道中的数据集](how-to-create-your-first-pipeline.md#steps)。
+每次管道重新运行时，ML 管道将每个步骤的输出填充到新文件夹中。 此行为允许可重现已进行版本管理的输出数据集。 详细了解 [管道中的数据集](how-to-create-your-first-pipeline.md#steps)。
 
 ```Python
 from azureml.core import Dataset
@@ -154,11 +153,38 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>在试验中跟踪数据集
+## <a name="track-data-in-your-experiments"></a>跟踪试验中的数据
 
-对于每个机器学习试验，可以通过试验 `Run` 对象轻松跟踪用作输入的数据集。
+Azure 机器学习在实验中跟踪数据的输入和输出数据集。  
 
-下面的代码使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) 方法跟踪试验运行时使用哪些输入数据集：
+以下情况下，你的数据将作为 **输入数据集** 进行跟踪。 
+
+* 在 `DatasetConsumptionConfig` `inputs` `arguments` `ScriptRunConfig` 提交实验运行时通过对象的或参数作为对象。 
+
+* 如这样的方法，则在脚本中调用 get_by_name ( # A1 或 get_by_id ( # A3。 对于此方案，在将数据集注册到工作区时，分配给该数据集的名称是显示的名称。 
+
+以下情况下，你的数据将作为 **输出数据集** 进行跟踪。  
+
+* 在 `OutputFileDatasetConfig` `outputs` `arguments` 提交实验性运行时通过或参数传递对象。 `OutputFileDatasetConfig` 对象也可用于在管道步骤之间保留数据。 请参阅 [在 ML 管道间移动数据步骤。](how-to-move-data-in-out-of-pipelines.md)
+    > [!TIP]
+    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 是包含 [实验](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) 预览功能的公共预览版，随时可能会更改。
+
+* 在脚本中注册数据集。 对于此方案，在将数据集注册到工作区时，分配给该数据集的名称是显示的名称。 在下面的示例中， `training_ds` 是将显示的名称。
+
+    ```Python
+   training_ds = unregistered_ds.register(workspace = workspace,
+                                     name = 'training_ds',
+                                     description = 'training data'
+                                     )
+    ```
+
+* 使用脚本中未注册的数据集提交子运行。 这会导致匿名保存的数据集。
+
+### <a name="trace-datasets-in-experiment-runs"></a>试验运行中的跟踪数据集
+
+对于每个机器学习试验，你都可以轻松地使用试验对象跟踪用作输入的数据集 `Run` 。
+
+以下代码使用 [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) 方法来跟踪试验运行时所使用的输入数据集：
 
 ```Python
 # get input datasets
@@ -169,9 +195,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-还可以使用 https://ml.azure.com/ 从试验中查找 `input_datasets`。 
+还可以 `input_datasets` 通过使用 [Azure 机器学习 studio]()查找试验。 
 
-下图展示了在 Azure 机器学习工作室中从何处查找试验的输入数据集。 对于此示例，请转到“试验”窗格，并打开试验 `keras-mnist` 的特定运行的“属性”选项卡。
+下图显示了在何处查找 Azure 机器学习 studio 中实验的输入数据集。 对于此示例，请转到“试验”窗格，并打开试验 `keras-mnist` 的特定运行的“属性”选项卡。
 
 ![输入数据集](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,9 +209,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-注册后，可以使用 Python 或转到 https://ml.azure.com/ 查看已注册到数据集中的模型列表。
+注册后，可以使用 Python 查看向数据集注册的模型的列表，也可以使用该程序[集。](https://ml.azure.com/)
 
-以下视图来自“资产”下的“数据集”   窗格。 选择数据集，然后选择“模型”  选项卡以获取向数据集注册的模型的列表。 
+以下视图来自“资产”下的“数据集”窗格。 选择数据集，然后选择“模型”选项卡以获取向数据集注册的模型的列表。 
 
 ![输入数据集模型](./media/how-to-version-track-datasets/dataset-models.png)
 

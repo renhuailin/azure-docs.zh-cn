@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更改
+title: Azure AD Connect 同步：更改默认配置
 description: 介绍如何对 Azure AD Connect 同步中的配置进行更改。
 services: active-directory
 author: billmath
@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2044653673da10de59d5ff125da44ac1f89e22f9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662572"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861844"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -113,7 +113,7 @@ ms.locfileid: "89662572"
 前面部分介绍了如何更改属性流。 本部分提供了另外一些示例。 虽然创建同步规则的步骤已缩简，但可以在前面部分中找到完整步骤。
 
 ### <a name="use-an-attribute-other-than-the-default"></a>使用其他属性而不是默认属性
-在此 Fabrikam 方案中，有对名字、姓氏和显示名称使用本地字母的林。 以拉丁字母表示的这些属性可在扩展属性中找到。 为了构建 Azure AD 和 Microsoft 365 中的全局地址列表，组织要改为使用这些属性。
+在此 Fabrikam 方案中，有对名字、姓氏和显示名称使用本地字母的林。 以拉丁字母表示的这些属性可在扩展属性中找到。 为了在 Azure AD 和 Microsoft 365 中构建全局地址列表，组织希望改用这些属性。
 
 使用默认配置时，本地林中的对象如下所示：  
 ![属性流 1](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)
@@ -200,11 +200,11 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 - Azure AD 只接受 UserType 属性的两个值：**Member** 和 **Guest**。
 - 如果没有在 Azure AD Connect 中启用 UserType 属性同步，则通过目录同步创建的 Azure AD 用户的 UserType 属性将设置为 **Member**。
-- 在版本 1.5.30.0 之前，Azure AD 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 在旧版本中，只能在创建 Azure AD 用户期间设置，并 [通过 PowerShell 更改](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
+- 在版本 1.5.30.0 之前，Azure AD 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 在旧版本中，只能在创建 Azure AD 用户时设置该属性并[通过 PowerShell 进行更改](/powershell/module/azuread/set-azureaduser)。
 
 在启用 UserType 属性同步之前，必须首先确定如何从本地 Active Directory 派生属性。 下面是最常见的方法：
 
-- 指定要用作源属性的尚未使用的本地 AD 属性（例如 extensionAttribute1）。 指定的本地 AD 属性应为**字符串**类型，具有单值，且包含值 **Member** 或 **Guest**。 
+- 指定要用作源属性的尚未使用的本地 AD 属性（例如 extensionAttribute1）。 指定的本地 AD 属性应为 **字符串** 类型，具有单值，且包含值 **Member** 或 **Guest**。 
 
     如果选择此方法，在启用 UserType 属性同步之前，必须确保指定的属性中填充了本地 Active Directory 中已同步到 Azure AD 的所有现有用户对象的正确值。
 
@@ -272,7 +272,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
     | 链接类型 | **Join** |  |
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
-5. 转到“范围筛选器”选项卡，并添加包含以下子句的**单个范围筛选器组**：
+5. 转到“范围筛选器”选项卡，并添加包含以下子句的 **单个范围筛选器组**：
 
     | 属性 | 运算符 | Value |
     | --- | --- | --- |
@@ -314,7 +314,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
     | 链接类型 | **Join** ||
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
-5. 转到“范围筛选器”选项卡，并添加包含两个子句的**单个范围筛选器组**：
+5. 转到“范围筛选器”选项卡，并添加包含两个子句的 **单个范围筛选器组**：
 
     | 属性 | 运算符 | Value |
     | --- | --- | --- |
@@ -338,7 +338,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 可使用以下步骤手动运行完全同步周期所构成的步骤时验证更改。
 
-1. 在**本地 AD 连接器**上运行**完全导入**：
+1. 在 **本地 AD 连接器** 上运行 **完全导入**：
 
    1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
    2. 右键单击“本地 AD 连接器”，并选择“运行”。 
@@ -348,7 +348,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
       > [!NOTE]
       > 如果源属性已包含在导入属性列表中，则可以在本地 AD 连接器上跳过“完全导入”。 换而言之，在执行[步骤 2：将源属性添加到本地 AD 连接器架构](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema)的过程中不需要进行任何更改。
 
-2. 在 **Azure AD 连接器**上运行“完全导入”：
+2. 在 **Azure AD 连接器** 上运行“完全导入”：
 
    1. 右键单击“Azure AD 连接器”，并选择“运行”。 
    2. 在弹出对话框中，选择“完全导入”，并单击“确定”。 
@@ -358,15 +358,15 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     源属性已从本地 Active Directory 和 Azure AD 中的 UserType 导入相应的连接器空间。 在继续执行完全同步之前，请在本地 AD 连接器空间中的现有用户对象上执行“预览”。 选择的对象应具有填充的源属性。
     
-    成功**预览**填充 metaverse 中 UserType 是一个很好的指标，表示已配置同步规则正确。 有关如何执行**预览**的信息，请参阅[验证更改](#verify-the-change)部分。
+    成功 **预览** 填充 metaverse 中 UserType 是一个很好的指标，表示已配置同步规则正确。 有关如何执行 **预览** 的信息，请参阅 [验证更改](#verify-the-change)部分。
 
-4. 在**本地 AD 连接器**上运行**完全同步**：
+4. 在 **本地 AD 连接器** 上运行 **完全同步**：
 
    1. 右键单击“本地 AD 连接器”，并选择“运行”。 
    2. 在弹出对话框中，选择“完全同步”，并单击“确定”。 
    3. 等待操作完成。
 
-5. 验证 Azure AD 的**挂起的导出**：
+5. 验证 Azure AD 的 **挂起的导出**：
 
    1. 右键单击“Azure AD连接器”，并选择“搜索连接器空间”。 
    2. 在“搜索连接器空间”弹出对话框中：
@@ -376,7 +376,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
       - 单击“搜索”按钮获取要导出其更改的对象列表。 若要检查给定对象的更改，请双击该对象。
       - 验证更改是否符合需要。
 
-6. 在**Azure AD 连接器**上运行**导出**：
+6. 在 **Azure AD 连接器** 上运行 **导出**：
 
    1. 右键单击“Azure AD 连接器”，并选择“运行”。 
    2. 在“运行连接器”弹出对话框中选择“导出”，并单击“确定”。  

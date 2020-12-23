@@ -1,19 +1,19 @@
 ---
 title: 快速入门：创建 Unity iOS 应用
 description: 在此快速入门中，将了解如何通过空间定位点使用 Unity 生成 iOS 应用。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 08/14/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4d5ec2411b7b1a65da9a1f4262822cb85a3b386e
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b278ac6c824b1583e90cfc9152264f61357dd228
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536239"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95971485"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity iOS 应用
 
@@ -56,7 +56,11 @@ ms.locfileid: "89536239"
 
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
-按照应用中的说明，放置并重新调用定位点。
+在应用中，使用箭头选择“BasicDemo”，然后按“开始!” 按钮以运行演示。 按说明放置并重新调用定位点。
+
+![屏幕截图 1](./media/get-started-unity-ios/screenshot-1.jpg)
+![屏幕截图 2](./media/get-started-unity-ios/screenshot-2.jpg)
+![屏幕截图 3](./media/get-started-unity-ios/screenshot-3.jpg)
 
 完成后，通过在 Xcode 中按“停止”来停止应用。
 

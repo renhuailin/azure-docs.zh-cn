@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0a77faba971f328c6ae1c5a03f8faf7ccfcf60d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936820"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351480"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>快速入门：使用 C# 向必应实体搜索 REST API 发送搜索请求
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 使用本快速入门，对必应实体搜索 API 进行第一次调用并查看 JSON 响应。 这个简单的 C# 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs) 上提供了此应用程序的源代码。
 
@@ -28,21 +33,20 @@ ms.locfileid: "88936820"
 ## <a name="prerequisites"></a>先决条件
 
 - 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
-
-- [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。 若要在 Visual Studio 中安装 NuGet 包，请执行以下操作：
-
-   1. 在“解决方案资源管理器”中右键单击项目。
-   2. 选择“管理 NuGet 包”。
-   3. 搜索并选择 Newtonsoft.Json，然后安装该包。
-
-- 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
+- 或者，如果使用的是 Linux 或 MacOS，则可以使用 [Visual Studio Code](https://code.visualstudio.com/) 和 [.NET Core](/dotnet/core/install/macos) 遵循此快速入门操作
+- [免费的 Azure 帐户](https://azure.microsoft.com/free/dotnet)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在 Visual Studio 中创建一个新的 C# 控制台解决方案。 然后将以下命名空间添加到主代码文件：
+1. 在 Visual Studio 中创建一个新的 C# 控制台解决方案。 
+1. 添加 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) NuGet 包。
+    1. 在“解决方案资源管理器”中右键单击项目。
+    2. 选择“管理 NuGet 包”。
+    3. 搜索并选择 Newtonsoft.Json，然后安装该包。
+1. 然后将以下命名空间添加到主代码文件：
     
     ```csharp
     using Newtonsoft.Json;
@@ -181,4 +185,4 @@ ms.locfileid: "88936820"
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什么是必应实体搜索 API？](../overview.md )
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。
+* [必应实体搜索 API 参考](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

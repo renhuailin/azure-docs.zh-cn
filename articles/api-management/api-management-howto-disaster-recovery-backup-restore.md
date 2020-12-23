@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 489a1afd8e247b69761d521f51e16310176e31f5
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564077"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779577"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -68,7 +68,7 @@ ms.locfileid: "90564077"
 4. 输入应用程序的名称。
 5. 对于应用程序类型，选择“本机”。 
 6. 输入占位符 URL，例如，为“重定向 URI”  输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框以保存应用程序。
-7. 单击**创建**。
+7. 单击 **创建**。
 
 ### <a name="add-an-application"></a>添加应用程序
 
@@ -152,7 +152,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 订阅的 ID，该订阅包含的 API 管理服务是你尝试备份的
 -   `resourceGroupName` - Azure API 管理服务的资源组名称
 -   `serviceName` - 正在创建其备份的 API 管理服务的名称，在创建时指定
--   `api-version` - 替换为 `2018-06-01-preview`
+-   `api-version` - 替换为 `2019-12-01`
 
 在请求正文中，指定目标 Azure 存储帐户名称、访问密钥、blob 容器名称和备份名称：
 
@@ -169,26 +169,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
 
-#### <a name="constraints-when-making-backup-or-restore-request"></a>进行备份或还原请求时的约束
-
--   请求正文中指定的**容器** **必须存在**。
--   当备份正在进行时，请**避免在服务中进行管理更改**，例如 SKU 升级或降级、域名更改等。
--   从创建时开始，**备份还原仅保证 30 天**。
--   备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改** **可能不包含在备份中，会丢失**。
--   允许  从控制平面访问 Azure 存储帐户，前提是它已启用[防火墙][azure-storage-ip-firewall]。 客户应在其存储帐户上打开一组 [Azure API 管理控制平面 IP 地址][control-plane-ip-address]，以便将数据备份到其中或从其中还原数据。 这是因为对 Azure 存储的请求不会通过“计算”>（Azure API 管理控制平面）以 SNAT 方式转换成公共 IP。 跨区域存储请求将进行 SNAT 转换。
-
-#### <a name="what-is-not-backed-up"></a>不备份的内容
--   用于创建分析报表的**用法数据** **不包括**在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
--   [自定义域 TLS/SSL](configure-custom-domain.md) 证书
--   [自定义 CA 证书](api-management-howto-ca-certificates.md) ，包括客户上传的中间或根证书
--   [虚拟网络](api-management-using-with-vnet.md) 集成设置。
--   [托管标识](api-management-howto-use-managed-service-identity.md) 配置。
--   [Azure Monitor 诊断](api-management-howto-use-azure-monitor.md) Configuration.
--   [协议和密码](api-management-howto-manage-protocols-ciphers.md) 设置。
--   [开发人员门户](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) 内容。
-
-执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
-
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>还原 API 管理服务
 
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
@@ -202,7 +182,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 订阅 ID，该订阅包含的 API 管理服务是需要将备份还原到其中的
 -   `resourceGroupName` - 资源组的名称，该资源组包含的 Azure API 管理服务是需要将备份还原到其中的
 -   `serviceName` - 要将备份还原到其中的 API 管理服务的名称，在创建时指定
--   `api-version` - 替换为 `2018-06-01-preview`
+-   `api-version` - 替换为 `api-version=2019-12-01`
 
 在请求正文中，指定备份文件位置。 也就是说，添加 Azure 存储帐户名称、访问密钥、Blob 容器名称和备份名称：
 
@@ -222,12 +202,34 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 > [!IMPORTANT]
 > 要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
 >
-> 还原操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改** **可能会被覆盖**。
+> 还原操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的 **更改** **可能会被覆盖**。
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
 > 也可分别使用 PowerShell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) 和 [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) 命令，执行备份和还原操作。
+
+## <a name="constraints-when-making-backup-or-restore-request"></a>发出备份请求或还原请求时的限制
+
+-   请求正文中指定的 **容器** **必须存在**。
+-   当备份正在进行时，请 **避免在服务中进行管理更改**，例如 SKU 升级或降级、域名更改等。
+-   从创建时开始，**备份还原仅保证 30 天**。
+-   在备份操作正在进行时对服务配置 (（例如，Api、策略和开发人员门户) 外观）所做的 **更改****可能会从备份中排除，并将丢失**。
+-   如果 Azure 存储帐户已启用 [防火墙][azure-storage-ip-firewall] ，则客户必须 **允许** 其存储帐户上的 [AZURE API 管理控制平面 IP 地址][control-plane-ip-address] 集，以便备份到或从中进行还原。 Azure 存储帐户可以位于任意 Azure 区域中，API 管理服务所在的区域除外。 例如，如果 API 管理服务位于美国西部，则 Azure 存储帐户可以位于美国西部2，客户需要在防火墙中打开13.64.39.16 为美国西部) 的控制平面 IP (API 管理控制平面 IP。 这是因为，对 Azure 存储空间的请求不会 Snat 转换成 Azure Api 管理控制平面) 同一 Azure 区域中的计算 (。 跨区域存储请求将被 Snat 转换成到公共 IP 地址。
+-   **不** 应在 Azure 存储帐户中的 Blob 服务上启用 [跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 。
+-   要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
+
+## <a name="what-is-not-backed-up"></a>不备份的内容
+-   用于创建分析报表的 **用法数据** **不包括** 在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
+-   [自定义域 TLS/SSL](configure-custom-domain.md) 证书
+-   [自定义 CA 证书](api-management-howto-ca-certificates.md)，包括客户上传的中间或根证书
+-   [虚拟网络](api-management-using-with-vnet.md)集成设置。
+-   [托管的标识](api-management-howto-use-managed-service-identity.md)配置。
+-   [Azure Monitor 诊断](api-management-howto-use-azure-monitor.md)配置。
+-   [协议和密码](api-management-howto-manage-protocols-ciphers.md)设置。
+-   [开发人员门户](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management)内容。
+
+执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -235,7 +237,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 -   [复制 Azure API 管理帐户](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [使用逻辑应用自动执行 API 管理备份和还原](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API 管理：备份和还原配置](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
+-   [Azure API 管理：备份和还原配置](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
      Stuart 详述的方法与官方指南不匹配，但非常有趣。 
 
 [backup an api management service]: #step1

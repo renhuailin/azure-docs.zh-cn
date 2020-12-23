@@ -6,14 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/23/2020
 ms.author: banders
-ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371348"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409190"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企业角色
 
@@ -34,6 +35,86 @@ ms.locfileid: "91371348"
 例如，如果初始身份验证类型设置为“混合”，则 EA 将被添加为 Microsoft 帐户，而“收票方”联系人将具有只读 EA 管理员权限。 如果 EA 管理员未批准现有“收票方”联系人的 Microsoft 帐户授权，EA 管理员可能会删除相关用户，并要求客户将用户重新添加为只读管理员，只在 EA 门户中的注册级别设置工作或学校帐户。
 
 这些角色专用于管理 Azure 企业协议，是在 Azure 用于控制资源访问权限的内置角色的基础上添加的。 有关详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+
+## <a name="azure-enterprise-portal-hierarchy"></a>Azure Enterprise 门户层次结构
+
+Azure Enterprise 门户的层次结构包括：
+
+- **Azure Enterprise 门户** - 一个在线管理门户，可帮助你管理 Azure EA 服务的成本。 可以：
+
+  - 创建包含部门、帐户和订阅的 Azure EA 层次结构。
+  - 核对所用服务的成本、下载使用情况报表，以及查看价目表。
+  - 创建用于注册的 API 密钥。
+
+- “部门”可帮助你将成本细分为逻辑分组。 使用部门可在部门级别设置预算或配额。
+
+- “帐户”是 Azure Enterprise 门户中的一个组织单位。 可以使用帐户来管理订阅和访问报表。
+
+- “订阅”是 Azure Enterprise 门户中的最小单位。 它们是服务管理员管理的 Azure 服务的容器。
+
+下图演示了简单的 Azure EA 层次结构。
+
+![简单 Azure EA 层次结构示意图](./media/understand-ea-roles/ea-hierarchies.png)
+
+## <a name="enterprise-user-roles"></a>企业用户角色
+
+以下管理用户角色是企业注册的一部分：
+
+- 企业管理员
+- 部门管理员
+- 帐户所有者
+- 服务管理员
+- 通知联系人
+
+角色用于在两个不同的门户中完成任务。 可以使用 [Azure Enterprise 门户](https://ea.azure.com)来管理计费和成本，使用 [Azure 门户](https://portal.azure.com)来管理 Azure 服务。
+
+用户角色与用户帐户相关联。 为了验证用户真实性，每个用户必须具有有效的工作、学校或 Microsoft 帐户。 请确保每个帐户与某个实际受监视的电子邮件地址相关联。 帐户通知将发送到该电子邮件地址。
+
+设置用户时，可将多个帐户分配到企业管理员角色。 但是，只能将一个帐户分配到帐户所有者角色。 此外，可向单个帐户同时分配企业管理员和帐户所有者角色。
+
+### <a name="enterprise-administrator"></a>企业管理员
+
+具有此角色的用户拥有最高级别的访问权限。 他们可以：
+
+- 管理帐户和帐户所有者。
+- 管理其他企业管理员。
+- 管理部门管理员。
+- 管理通知联系人。
+- 查看所有帐户的使用情况。
+- 查看所有帐户的未开单费用。
+
+可以在一个企业注册中分配多个企业管理员。 可以向企业管理员授予只读访问权限。 这些管理员全部继承部门管理员角色。
+
+### <a name="department-administrator"></a>部门管理员
+
+具有此角色的用户可以：
+
+- 创建和管理部门。
+- 创建新的帐户所有者。
+- 查看他们所管理的部门的使用情况详细信息。
+- 查看成本（如果拥有所需的权限）。
+
+可为每个企业注册分配多个部门管理员。
+
+编辑或新建部门管理员时，可以向部门管理员授予只读访问权限。 将只读选项设置为“是”。
+
+### <a name="account-owner"></a>帐户所有者
+
+具有此角色的用户可以：
+
+- 创建和管理订阅。
+- 管理服务管理员。
+- 查看订阅的使用情况。
+
+每个帐户需要唯一的工作、学校或 Microsoft 帐户。 有关 Azure Enterprise 门户管理角色的详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](understand-ea-roles.md)。
+
+### <a name="service-administrator"></a>服务管理员
+
+服务管理员角色有权在 Azure 门户中管理服务，以及将用户分配到共同管理员角色。
+
+### <a name="notification-contact"></a>通知联系人
+
+通知联系人接收注册相关的使用情况通知。
 
 以下部分介绍每个角色的限制和功能。
 
@@ -69,7 +150,7 @@ ms.locfileid: "91371348"
 
 ## <a name="add-a-new-enterprise-administrator"></a>添加新的企业管理员
 
-企业管理员拥有管理 Azure EA 注册的大部分特权。 设置 EA 协议时，会创建初始的 Azure EA 管理员。 但是，你随时可以添加或删除新管理员。 新管理员只能由现有的管理员添加。 有关添加更多企业管理员的详细信息，请参阅[创建另一个企业管理员](ea-portal-get-started.md#create-another-enterprise-administrator)。有关计费配置文件角色和任务的详细信息，请参阅[计费配置文件角色和任务](understand-mca-roles.md#billing-profile-roles-and-tasks)。
+企业管理员拥有管理 Azure EA 注册的大部分特权。 设置 EA 协议时，会创建初始的 Azure EA 管理员。 但是，你随时可以添加或删除新管理员。 新管理员只能由现有的管理员添加。 有关添加更多企业管理员的详细信息，请参阅[创建另一个企业管理员](ea-portal-administration.md#create-another-enterprise-administrator)。有关计费配置文件角色和任务的详细信息，请参阅[计费配置文件角色和任务](understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
 ## <a name="update-account-owner-state-from-pending-to-active"></a>将帐户所有者状态从“挂起”更新为“活动”
 
@@ -79,7 +160,7 @@ ms.locfileid: "91371348"
 
 Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管理员并将每个管理员关联到某个部门。 部门管理员可以创建新帐户。 需要添加新帐户才能创建 Azure EA 订阅。
 
-有关添加部门管理员的详细信息，请参阅[创建 Azure EA 部门管理员](ea-portal-get-started.md#add-a-department-administrator)。
+有关添加部门管理员的详细信息，请参阅[创建 Azure EA 部门管理员](ea-portal-administration.md#add-a-department-administrator)。
 
 ## <a name="usage-and-costs-access-by-role"></a>按角色访问使用情况和成本
 
@@ -114,12 +195,12 @@ Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管�
 |帐户所有者或部门管理员|✘ 已禁用 |none|无定价|
 |无|不适用 |所有者|零售定价|
 
-在企业门户中设置企业管理员角色和视图费用策略。 Azure 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+在企业门户中设置企业管理员角色和视图费用策略。 Azure 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [管理对 Azure 账单信息的访问权限](manage-billing-access.md)
-- [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)
+- [使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)
 - [Azure 内置角色](../../role-based-access-control/built-in-roles.md)

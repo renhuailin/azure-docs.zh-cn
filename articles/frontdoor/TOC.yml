@@ -14,6 +14,7 @@
     - name: 创建 Front Door - CLI
       href: quickstart-create-front-door-cli.md
     - name: 创建 Front Door - ARM 模板
+      displayName: Resource Manager
       href: quickstart-create-front-door-template.md
 - name: 教程
   items:
@@ -35,10 +36,16 @@
       href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 后端和后端池
       href: front-door-backend-pool.md
     - name: 使用 Front Door 进行缓存
       href: front-door-caching.md
+    - name: DDoS 防护
+      href: front-door-ddos.md
     - name: Front Door 常见问题解答
       href: front-door-faq.md
     - name: 地区筛选

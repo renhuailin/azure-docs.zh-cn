@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9ee3b447b2b5f6dfa8972749c3c46ae01f79bfdc
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004338"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327502"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Redis 缓存中导入和导出数据
 导入/导出是一种 Azure Redis 缓存数据管理操作，可用于通过从高级缓存导入 Azure Redis 缓存数据库 (RDB) 快照以及将 Azure Redis 缓存数据库 (RDB) 快照导出到 Azure 存储帐户中的 blob 来相应地将数据导入到 Azure Redis 缓存以及从 Azure Redis 缓存导出数据。
@@ -32,7 +32,7 @@ ms.locfileid: "88004338"
 导入可用于从任何云或环境中运行的任何 Redis 服务器引入与 Redis 兼容的 RDB 文件，包括在 Linux、Windows 上运行的 Redis 或任何云提供程序（如 Amazon Web Services 等）。 导入数据是使用预先填充的数据创建缓存的简单方式。 在导入过程中，Azure Redis 缓存从 Azure 存储将 RDB 文件加载到内存中，再将密钥插入到缓存中。
 
 > [!NOTE]
-> 在开始导入操作之前，请确保 Redis 数据库 (RDB) 文件已上传到 Azure 存储的页 blob 或块 blob 中，并与 Azure Redis 缓存实例在同一区域和订阅中。 有关详细信息，请参阅 [Azure Blob 存储入门](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 如果已使用 [Azure Redis 缓存导出](#export)功能导出 RDB 文件，则 RDB 文件已存储在页 blob 中并已准备好进行导入。
+> 在开始导入操作之前，请确保 Redis 数据库 (RDB) 文件已上传到 Azure 存储的页 blob 或块 blob 中，并与 Azure Redis 缓存实例在同一区域和订阅中。 有关详细信息，请参阅 [Azure Blob 存储入门](../storage/blobs/storage-quickstart-blobs-dotnet.md)。 如果已使用 [Azure Redis 缓存导出](#export)功能导出 RDB 文件，则 RDB 文件已存储在页 blob 中并已准备好进行导入。
 >
 >
 
@@ -66,7 +66,7 @@ ms.locfileid: "88004338"
 
 1. 若要将缓存的当前内容导出到存储，请在 Azure 门户中[浏览到缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，然后在“资源”菜单中单击“导出数据”。
 
-    ![选择存储容器](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
+    ![在 contoso5premium 的导航窗格中，将突出显示管理列表中的 "导出数据" 选项。](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
 2. 单击“选择存储容器”并选择所需的存储帐户  。 存储帐户必须与缓存在同一订阅和区域中。
 
    > [!IMPORTANT]
@@ -76,7 +76,7 @@ ms.locfileid: "88004338"
     ![存储帐户](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
 3. 选择所需的 blob 容器，并单击“选择”  。 要使用新容器，请单击“添加容器”，先添加容器，再从列表中选择容器  。
 
-    ![选择存储容器](./media/cache-how-to-import-export-data/cache-export-data-container.png)
+    ![在 contoso55 的容器上，将突出显示 "+ 容器" 选项。 列表中有一个容器 cachesaves，并选中并突出显示。 选择选项并突出显示。](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. 键入 Blob 名称前缀，并单击“导出”以开始导出过程   。 blob 名称前缀用作此导出操作生成的文件名的前缀。
 
     ![Export](./media/cache-how-to-import-export-data/cache-export-data.png)
@@ -152,6 +152,6 @@ The request to import data into cache 'contoso55' failed with status 'error' and
 导出仅适用于以页 blob 形式存储的 RDB 文件。 目前不支持其他 blob 类型，包括带有热层和冷层的 Blob 存储帐户。 有关详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 Azure Cache for Redis 功能。
+了解有关 Azure Cache for Redis 功能的详细信息。
 
-* [适用于 Redis 服务层的 Azure 缓存](cache-overview.md#service-tiers)
+* [Azure Cache for Redis 服务层](cache-overview.md#service-tiers)

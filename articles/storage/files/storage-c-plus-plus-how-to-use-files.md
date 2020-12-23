@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515389"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629693"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
 
@@ -32,7 +32,7 @@ ms.locfileid: "85515389"
 * 若一个文件使用在共享中定义的共享访问策略，则为该文件创建一个共享访问签名（SAS 密钥）。
 
 > [!Note]  
-> 由于 Azure 文件可以通过 SMB 进行访问，因此可以编写简单的应用程序，通过标准的 C++ I/O 类和函数来访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 C++ SDK 的应用程序，该 SDK 使用 [文件 REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) 与 Azure 文件通信。
+> 由于 Azure 文件可以通过 SMB 进行访问，因此可以编写简单的应用程序，通过标准的 C++ I/O 类和函数来访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 C++ SDK 的应用程序，该 SDK 使用 [文件 REST API](/rest/api/storageservices/file-service-rest-api) 与 Azure 文件通信。
 
 ## <a name="create-a-c-application"></a>创建 C++ 应用程序
 
@@ -40,8 +40,8 @@ ms.locfileid: "85515389"
 
 若要安装用于 C++ 的 Azure 存储客户端 2.4.0，可以使用以下方法之一：
 
-* **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows：** 在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“程序包管理器控制台”。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Linux：** 按照 [适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
+* **Windows：** 在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“程序包管理器控制台”。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER** 。
   
 
 ```powershell
@@ -103,7 +103,7 @@ if (share.create_if_not_exists()) {
 }
 ```
 
-此时，**share** 保留对名为 **my-sample-share** 的共享的引用。
+此时， **share** 保留对名为 **my-sample-share** 的共享的引用。
 
 ## <a name="delete-an-azure-file-share"></a>删除 Azure 文件共享
 
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>枚举 Azure 文件共享中的文件和目录
 
-通过针对 **cloud_file_directory** 引用调用 **list_files_and_directories**，可以轻松获取共享内文件和目录的列表。 若要访问返回的 **list_file_and_directory_item** 的丰富属性和方法集，必须调用 **list_file_and_directory_item.as_file** 方法以获取 **cloud_file** 对象，或调用 **list_file_and_directory_item.as_directory** 方法以获取 **cloud_file_directory** 对象。
+通过针对 **cloud_file_directory** 引用调用 **list_files_and_directories** ，可以轻松获取共享内文件和目录的列表。 若要访问返回的 **list_file_and_directory_item** 的丰富属性和方法集，必须调用 **list_file_and_directory_item.as_file** 方法以获取 **cloud_file** 对象，或调用 **list_file_and_directory_item.as_directory** 方法以获取 **cloud_file_directory** 对象。
 
 下面的代码演示如何检索和输出共享的根目录中每一项的 URI。
 

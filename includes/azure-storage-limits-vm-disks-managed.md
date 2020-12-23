@@ -5,26 +5,26 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 11/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2766ea87544f2a21fb654f687eb62dee3c0714ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: b7db9749adab9a6d6d7b8c350648603f42d0b43d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334707"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574026"
 ---
-**标准 HDD 托管磁盘**  
+### <a name="standard-hdd-managed-disks"></a>标准 HDD 托管磁盘
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**标准 SSD 托管磁盘**  
+### <a name="standard-ssd-managed-disks"></a>标准 SSD 托管磁盘
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**高级 SSD 托管磁盘：每磁盘限制**  
+### <a name="premium-ssd-managed-disks-per-disk-limits"></a>高级 SSD 托管磁盘：每磁盘限制 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**高级 SSD 托管磁盘：每个 VM 的限制**
+### <a name="premium-ssd-managed-disks-per-vm-limits"></a>高级 SSD 托管磁盘：每个 VM 的限制
 
 | 资源 | 限制 |
 | --- | --- |

@@ -1,14 +1,14 @@
 ---
 title: 获取资源更改
 description: 了解如何查找资源的更改时间，获取已更改属性的列表以及评估差异。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 70213caeaf71e1adc5a11ec0e9cbadfea032dca4
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056561"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203460"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -28,7 +28,7 @@ ms.locfileid: "88056561"
 本文介绍如何通过 Resource Graph 的 SDK 收集此信息。 若要在 Azure 门户中查看此信息，请参阅 Azure Policy 的[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history)或 Azure 活动日志[更改历史记录](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)。 有关从基础结构层对应用程序所做的更改的详细信息，请参阅 Azure Monitor 中的[使用应用程序更改分析（预览版）](../../../azure-monitor/app/change-analysis.md)。
 
 > [!NOTE]
-> Resource Graph 中的更改详细信息适用于资源管理器属性。 若要跟踪虚拟机内的更改，请参阅 Azure 自动化的[更改跟踪](../../../automation/change-tracking.md)或 Azure Policy 的 [VM 来宾配置](../../policy/concepts/guest-configuration.md)。
+> Resource Graph 中的更改详细信息适用于资源管理器属性。 若要跟踪虚拟机内的更改，请参阅 Azure 自动化的[更改跟踪](../../../automation/change-tracking/overview.md)或 Azure Policy 的 [VM 来宾配置](../../policy/concepts/guest-configuration.md)。
 
 > [!IMPORTANT]
 > Azure Resource Graph 中的更改历史记录目前以公共预览版提供。
@@ -279,7 +279,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-beforeSnapshot 和 afterSnapshot 分别提供快照创建时间以及当时的属性。 更改是在这些快照之间的某个时间点发生的。 在以上示例中我们可以看到，更改的属性是 supportsHttpsTrafficOnly。
+beforeSnapshot 和 afterSnapshot 分别提供快照创建时间以及当时的属性。 更改是在这些快照之间的某个时间点发生的。 查看前面的示例，可以看到更改的属性是 **supportsHttpsTrafficOnly**的。
 
 若要对结果进行比较，请使用 resourceChanges 中的 changes 属性，或评估 resourceChangeDetails 中每个快照的 content 部分，以确定差异。    如果对快照进行比较，timestamp 始终会显示为差异，不过这符合预期。
 

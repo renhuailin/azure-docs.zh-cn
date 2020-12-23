@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: 2c1f61dbb060f9df0b88f301008e3fd45a91fe8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 5c17c1b7fed50c311d356aadcb7ca2837cc20abd
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609365"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741739"
 ---
 1. 确保已安装了最新的 [Azure CLI](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 

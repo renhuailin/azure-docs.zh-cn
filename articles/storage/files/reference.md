@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: cbbd4960a498516182323748e6609b834b1d4884
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 4fe6befbfc3c6f12cf804841052795647cd1f76a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90014678"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629829"
 ---
 # <a name="azure-files-reference"></a>Azure 文件存储参考
 
@@ -25,7 +25,7 @@ ms.locfileid: "90014678"
 |  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [适用于 .NET 的 Azure 文件客户端库 v12](/dotnet/api/overview/azure/storage.files.shares-readme) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
-| 11.x | [Microsoft.Azure.Storage.File 命名空间](/dotnet/api/microsoft.azure.storage.file) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [使用 .NET 针对 Azure 文件进行开发](/azure/storage/files/storage-dotnet-how-to-use-files) |
+| 11.x | [Microsoft.Azure.Storage.File 命名空间](/dotnet/api/microsoft.azure.storage.file) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [使用 .NET 针对 Azure 文件进行开发](./storage-dotnet-how-to-use-files.md) |
 
 ### <a name="storage-management"></a>存储管理
 
@@ -50,7 +50,7 @@ ms.locfileid: "90014678"
 |  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [适用于 Java 的 Azure 文件客户端库](/java/api/overview/azure/storage-file-share-readme) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
-| 8.x | [com.microsoft.azure.storage.file](/java/api/com.microsoft.azure.storage.file) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [使用 Java 针对 Azure 文件进行开发](/azure/storage/files/storage-java-how-to-use-file-storage) |
+| 8.x | [com.microsoft.azure.storage.file](/java/api/com.microsoft.azure.storage.file) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [使用 Java 针对 Azure 文件进行开发](./storage-java-how-to-use-file-storage.md) |
 
 ### <a name="storage-management"></a>存储管理
 
@@ -67,7 +67,7 @@ ms.locfileid: "90014678"
 |  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [适用于 Python 的 Azure 存储客户端库 v12](/azure/developer/python/sdk/storage/overview) | [包 (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [示例](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [适用于 Python 的 Azure 存储客户端库 v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [包 (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [使用 Python 针对 Azure 文件进行开发](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 2.x | [适用于 Python 的 Azure 存储客户端库 v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [包 (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [使用 Python 针对 Azure 文件进行开发](./storage-python-how-to-use-file-storage.md) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript 客户端库
 

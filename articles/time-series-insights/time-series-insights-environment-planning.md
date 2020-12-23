@@ -11,17 +11,17 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569448"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016201"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>规划 Azure 时序见解 Gen1 环境
 
 > [!CAUTION]
-> 这是一个 Gen1 的文章。
+> 这是一篇 Gen1 文章。
 
 本文介绍如何根据预期入口速率和数据保留要求规划 Azure 时序见解 Gen1 环境。
 
@@ -55,7 +55,7 @@ ms.locfileid: "91569448"
 
 Azure 时序见解具有两种模式：
 
-- 一种模式针对最新数据进行了优化。 它强制执行**清除旧数据**的策略，使实例可以使用最新数据。 此模式默认已启用。
+- 一种模式针对最新数据进行了优化。 它强制执行 **清除旧数据** 的策略，使实例可以使用最新数据。 此模式默认已启用。
 - 其他模式将优化数据，使其保持低于配置的保留限制。 “暂停流入”  可防止新数据在被选为“超出存储限制时的行为”  时流入。
 
 可在 Azure 门户的环境配置页中调整保留期并在这两种模式之间切换。
@@ -92,7 +92,7 @@ Azure 时序见解具有两种模式：
 
 例如，如果你使用单个 S1 SKU，流入数据的速率为每分钟 720 个事件，数据流入高峰的速率为 1,440 个事件（或更少）且持续时间不到 1 小时，则环境中不会出现明显的延迟。 但是，如果速率大于每分钟 1,440 个事件且超过 1 小时，则可能会发生数据延迟，这可在环境中查看并查询。
 
-你可能无法提前知道想要推送多少数据。 在这种情况下，可以在 Azure 门户订阅的 [Azure IoT 中心](../iot-hub/iot-hub-metrics.md)和 [Azure 事件中心](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/)查找遥测数据。 这些遥测数据有助于确定如何预配环境。 在 Azure 门户使用相应事件源的“指标”页查看遥测数据  。 如果你了解数据源指标，便可以更有效地规划和预配 Azure 时序见解环境。
+你可能无法提前知道想要推送多少数据。 在这种情况下，可以在 Azure 门户订阅的 [Azure IoT 中心](../iot-hub/monitor-iot-hub.md)和 [Azure 事件中心](/archive/blogs/cloud_solution_architect/using-the-azure-rest-apis-to-retrieve-event-hub-metrics)查找遥测数据。 这些遥测数据有助于确定如何预配环境。 在 Azure 门户使用相应事件源的“指标”页查看遥测数据  。 如果你了解数据源指标，便可以更有效地规划和预配 Azure 时序见解环境。
 
 ### <a name="calculate-ingress-requirements"></a>计算入口需求
 
@@ -128,6 +128,6 @@ Azure 时序见解具有两种模式：
 
 - 开始[在 Azure 门户中创建新的 Azure 时序见解环境](time-series-insights-get-started.md)。
 
-- 了解如何[向 Azure 时序见解添加事件中心事件源](time-series-insights-how-to-add-an-event-source-eventhub.md)。
+- 了解如何[向 Azure 时序见解添加事件中心事件源](./how-to-ingest-data-event-hub.md)。
 
-- 了解如何[配置 IoT 中心事件源](time-series-insights-how-to-add-an-event-source-iothub.md)。
+- 了解如何[配置 IoT 中心事件源](./how-to-ingest-data-iot-hub.md)。

@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e5793d21f27128162095e2d86e13006c5b6e7b7c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715402"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007987"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
-[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
+[Azure 应用服务](./overview.md)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
@@ -23,7 +23,7 @@ ms.locfileid: "91715402"
 
 ### <a name="in-the-cloud-shell"></a>在 Cloud Shell 中
 
-若要在 [Cloud Shell](https://shell.azure.com) 中配置部署用户，请运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 将 \<username> 和 \<password> 替换为部署用户的用户名和密码。 
+若要在 [Cloud Shell](https://shell.azure.com) 中配置部署用户，请运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) 命令。 将 \<username> 和 \<password> 替换为部署用户的用户名和密码。 
 
 - 用户名在 Azure 中必须唯一，并且为了本地Git推送，不能包含“@”符号。 
 - 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。 
@@ -76,7 +76,7 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 
 ## <a name="disable-basic-authentication"></a>禁用基本身份验证
 
-某些组织需要满足安全要求，并通过 FTP 或 WebDeploy 禁用访问。 这样，组织的成员就只能通过 Azure Active Directory (Azure AD) 控制的 Api 来访问其应用服务。
+一些组织需要满足安全要求，因此宁愿禁用通过 FTP 或 WebDeploy 进行的访问。 这样一来，组织的成员就只能通过 Azure Active Directory (Azure AD) 控制的 API 访问其应用服务。
 
 ### <a name="ftp"></a>FTP
 
@@ -86,7 +86,7 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-若要确认 FTP 访问被阻止，可以尝试使用 FTP 客户端（如 FileZilla）进行身份验证。 若要检索发布凭据，请前往网站的 "概述" 边栏选项卡，并单击 "下载发布配置文件"。 使用文件的 FTP 主机名、用户名和密码进行身份验证，你将收到401错误响应，指出你未获得授权。
+若要确认 FTP 访问被阻止，可以尝试使用 FTP 客户端（如 FileZilla）进行身份验证。 若要检索发布凭据，请转到站点的概览边栏选项卡，然后单击“下载发布配置文件”。 使用该文件的 FTP 主机名、用户名和密码进行身份验证，你会收到 401 错误响应，指示你未获得授权。
 
 ### <a name="webdeploy-and-scm"></a>WebDeploy 和 SCM
 
@@ -96,13 +96,13 @@ az resource update --resource-group <resource-group> --name ftp --namespace Micr
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-若要确认在 WebDeploy 上阻止发布配置文件凭据，请尝试 [使用 Visual Studio 2019 发布 web 应用](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)。
+若要确认发布配置文件凭据在 WebDeploy 上被阻止，请尝试[使用 Visual Studio 2019 发布 Web 应用](/visualstudio/deployment/quickstart-deploy-to-azure)。
 
-### <a name="disable-access-to-the-api"></a>禁用对 API 的访问
+### <a name="disable-access-to-the-api"></a>禁止对 API 的访问
 
-上一部分中的 API 是 azure RBAC)  (Azure 基于角色的访问控制，这意味着，你可以 [创建自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) 并将 priveldged 的用户分配给角色，使其无法在任何站点上启用基本身份验证。 若要配置自定义角色，请 [遵循这些说明](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
+上一部分的 API 支持 Azure 基于角色的访问控制 (Azure RBAC)，这意味着你可以[创建一个自定义角色](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)，并将权限较低的用户分配给该角色，这样这些用户就无法在任何站点上启用基本身份验证。 若要配置自定义角色，请[按照这些说明进行操作](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
 
-你还可以使用 [Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) 审核任何成功的身份验证请求，并使用 [Azure 策略](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) 对订阅中的所有站点实施此配置。
+你还可以使用 [Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) 审核任何成功的身份验证请求，并使用 [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) 对订阅中的所有站点强制实施此配置。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 9a52596aa0dd5fa7b9a7226d2ae57259dab08d37
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449004"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285729"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>了解实时 (JIT) VM 访问
 
@@ -40,14 +40,14 @@ ms.locfileid: "91449004"
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>JIT 如何与网络安全组和 Azure 防火墙一起运行
 
-启用实时 VM 访问时，可以选择 VM 上要阻止入站流量的端口。 安全中心确保你选择的端口在[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) 和 [Azure 防火墙规则](https://docs.microsoft.com/azure/firewall/rule-processing)中有“拒绝所有入站流量”规则。 这些规则限制对 Azure VM 管理端口的访问，并防止其受到攻击。 
+启用实时 VM 访问时，可以选择 VM 上要阻止入站流量的端口。 安全中心确保你选择的端口在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) 和 [Azure 防火墙规则](../firewall/rule-processing.md)中有“拒绝所有入站流量”规则。 这些规则限制对 Azure VM 管理端口的访问，并防止其受到攻击。 
 
 如果所选端口已有了其他规则，则现有的这些规则优先于新的“拒绝所有入站流量”规则。 如果所选端口没有现有的规则，则新规则在 NSG 和 Azure 防火墙中的优先级最高。
 
-当用户请求访问 VM 时，安全中心会检查用户是否对该 VM 具有 [Azure 基于角色的访问控制 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 权限。 如果请求获得批准，安全中心将配置网络安全组 (NSG) 和 Azure 防火墙，以便允许在指定的时间量内从相关 IP 地址（或范围）发往所选端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 已经建立的连接不会中断。
+当用户请求访问 VM 时，安全中心会检查用户是否对该 VM 具有 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果请求获得批准，安全中心将配置网络安全组 (NSG) 和 Azure 防火墙，以便允许在指定的时间量内从相关 IP 地址（或范围）发往所选端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 已经建立的连接不会中断。
 
 > [!NOTE]
-> JIT 不支持由 [Azure 防火墙管理器](https://docs.microsoft.com/azure/firewall-manager/overview)控制的 Azure 防火墙保护的 VM。
+> JIT 不支持由 [Azure 防火墙管理器](../firewall-manager/overview.md)控制的 Azure 防火墙保护的 VM。
 
 
 
@@ -67,6 +67,10 @@ ms.locfileid: "91449004"
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>配置和使用 JIT 时需要哪些权限？
 
+JIT 要求在订阅上启用 [服务器的 Azure Defender](defender-for-servers-introduction.md) 。 
+
+“读取者”角色和“安全读取者”角色都可以查看 JIT 状态和参数。
+
 如果要创建可用于 JIT 的自定义角色，则需要下表中的详细信息。
 
 > [!TIP]
@@ -74,9 +78,9 @@ ms.locfileid: "91449004"
 
 | 使用户能够： | 要设置的权限|
 | --- | --- |
-| 配置或编辑 VM 的 JIT 策略 | *将这些“操作”分配给角色：*  <ul><li>在与 VM 关联的订阅或资源组的范围内：<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> 在 VM 的订阅或资源组的范围内： <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+|配置或编辑 VM 的 JIT 策略 | *将这些“操作”分配给角色：*  <ul><li>在与 VM 关联的订阅或资源组的范围内：<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> 在 VM 的订阅或资源组的范围内： <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |请求 JIT 对 VM 的访问权限 | *将这些“操作”分配给用户：*  <ul><li>在与 VM 关联的订阅或资源组的范围内：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>在与 VM 关联的订阅或资源组的范围内：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  在订阅、资源组或 VM 的范围内：<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  在订阅、资源组或 VM 的范围内：<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
-|读取 JIT 策略| *将这些“操作”分配给用户：*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|
+|读取 JIT 策略| *将这些“操作”分配给用户：*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Security/pricings/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|
 |||
 
 

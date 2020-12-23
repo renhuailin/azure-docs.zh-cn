@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 468d21abc861e905472d1d15405b1c8ba9e5be74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7d8905fbdcfc03f2683698cca57ab6c066e77863
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904872"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205925"
 ---
 # <a name="cut-planes"></a>剪切平面
 
@@ -94,8 +94,8 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # CutPlaneComponent 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
-* [C + + CutPlaneComponent 类](https://docs.microsoft.com/cpp/api/remote-rendering/cutplanecomponent)
+* [C # CutPlaneComponent 类](/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
+* [C + + CutPlaneComponent 类](/cpp/api/remote-rendering/cutplanecomponent)
 
 ## <a name="next-steps"></a>后续步骤
 

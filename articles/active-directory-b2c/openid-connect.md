@@ -7,22 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf70d4381a7d128f7a2716540b1318b39cd729b8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602126"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509795"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
 OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用于将用户安全登录到 Web 应用程序。 通过使用 OpenID Connect 的 Azure Active Directory B2C (Azure AD B2C) 实现，可以将 Web 应用程序中的注册、登录和其他标识管理体验转移到 Azure Active Directory (Azure AD) 中。 本指南演示如何使用与语言无关的方式执行此操作。 介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，将其用作*身份验证*协议。 使用此身份验证协议可以执行单一登录。 它引入了 ID 令牌的概念，可让客户端验证用户的标识，并获取有关用户的基本配置文件信息。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权* 协议，将其用作 *身份验证* 协议。 使用此身份验证协议可以执行单一登录。 它引入了 ID 令牌的概念，可让客户端验证用户的标识，并获取有关用户的基本配置文件信息。
 
 因为 OpenID Connect 扩展了 OAuth 2.0，因此，它还能使应用程序安全地获取访问令牌。 可以使用 access_token 访问由[授权服务器](protocols-overview.md)保护的资源。 如果要生成的 Web 应用程序托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。 有关令牌的详细信息，请参阅 [Azure Active Directory B2C 中的令牌概述](tokens-overview.md)
 
@@ -124,7 +124,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 
 - 确保用户/组织已注册应用程序。
 - 确保用户拥有正确的授权/权限。
-- 确保执行了一定强度的身份验证，例如 Azure 多重身份验证。
+- 确保执行了一定强度的身份验证，例如 Azure AD 多重身份验证。
 
 验证 ID 令牌后，可以开始与用户的会话。 在应用程序中，可以使用 ID 令牌中的声明来获取用户的相关信息。 此信息的用途包括显示、记录和授权。
 
@@ -219,7 +219,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | {policy} | 是 | 用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | client_secret | 是，在 Web 应用中 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 客户端密码在此流中用于 Web 应用场景，在其中客户端可以安全地存储客户端密码。 对于本机应用（公共客户端）场景，客户端密码不能安全地存储，因此不能用于此调用。 如果使用客户端密码，请定期更改。 |
-| grant_type | 是 | 授权的类型，必须是 `refresh_token` 授权代码流的此部分。 |
+| grant_type | 是 | 授予类型，该类型必须是这一部分授权代码流的 `refresh_token`。 |
 | refresh_token | 是 | 在流的第二部分获取的原始刷新令牌。 必须在授权和令牌请求中使用范围 `offline_access`，才能接收刷新令牌。 |
 | redirect_uri | 否 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
 | scope | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可以用于向应用程序的后端 Web API 发送令牌，该令牌使用和客户端相同的应用程序 ID 表示。 `offline_access` 范围表示应用程序需要使用刷新令牌来长期访问资源。 |
@@ -262,7 +262,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 ## <a name="send-a-sign-out-request"></a>发送注销请求
 
-如果想要从应用程序中注销用户，只是清除应用程序的 Cookie 或者结束与用户的会话是不够的。 需将用户重定向到 Azure AD B2C 进行注销。如果没有这么做，那么用户可能可以在应用程序中重新进行身份验证，且无需再次输入其凭据。 有关详细信息，请参阅 [Azure AD B2C 会话](session-overview.md)。
+如果想要从应用程序中注销用户，只是清除应用程序的 Cookie 或者结束与用户的会话是不够的。 需将用户重定向到 Azure AD B2C 进行注销。如果没有这么做，那么用户可能可以在应用程序中重新进行身份验证，且无需再次输入其凭据。 有关详细信息，请参阅 [Azure AD B2C 会话](session-behavior.md)。
 
 若要将用户注销，请将用户重定向到前面所述的 OpenID Connect 元数据文档中列出的 `end_session` 终结点：
 
@@ -274,13 +274,17 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | {tenant} | 是 | Azure AD B2C 租户的名称 |
 | {policy} | 是 | 想要用于从应用程序中注销用户的用户流。 |
-| id_token_hint| 否 | 以前颁发的 ID 令牌，该令牌将作为有关最终用户当前与客户端建立的身份验证会话的提示传递给注销终结点。 `id_token_hint` 确保 `post_logout_redirect_uri` 是 Azure AD B2C 应用程序设置中的已注册回复 URL。 |
+| id_token_hint| 否 | 以前颁发的 ID 令牌，该令牌将作为有关最终用户当前与客户端建立的身份验证会话的提示传递给注销终结点。 `id_token_hint` 确保 `post_logout_redirect_uri` 是 Azure AD B2C 应用程序设置中的已注册回复 URL。 有关详细信息，请参阅[保护注销重定向](#secure-your-logout-redirect)。 |
 | client_id | 否* | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。<br><br>\*使用 `Application` 隔离 SSO 配置并且注销请求中的所需 ID 令牌设置为 `No` 时，这是必需的。 |
 | post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 除非提供 `id_token_hint`，否则不应在 Azure AD B2C 应用程序设置中将此 URL 注册为回复 URL。 |
 | state | 否 | 如果请求中包含 `state` 参数，响应中就应该出现相同的值。 应用程序需验证请求和响应中的 `state` 值是否相同。 |
 
 ### <a name="secure-your-logout-redirect"></a>保护注销重定向
 
-注销后，用户将重定向到 `post_logout_redirect_uri` 参数中指定的 URI，而不管为应用程序指定的回复 URL 为何。 但是，如果传递了有效的 `id_token_hint`，则在执行重定向之前，Azure AD B2C 将验证 `post_logout_redirect_uri` 的值是否与应用程序的某个已配置重定向 URI 相匹配。 如果没有为应用程序配置匹配的回复 URL，则会显示一条错误消息，而用户不会重定向。
+注销后，用户将重定向到 `post_logout_redirect_uri` 参数中指定的 URI，而不管为应用程序指定的回复 URL 为何。 但是，如果传递了有效的 `id_token_hint` 并启用了“注销请求中需要 ID 令牌”，则在执行重定向之前，Azure AD B2C 将验证 `post_logout_redirect_uri` 的值是否与应用程序的某个已配置重定向 URI 相匹配。 如果没有为应用程序配置匹配的回复 URL，则会显示一条错误消息，而用户不会重定向。
 
+若要在注销请求中设置所需的 ID 令牌，请参阅 [在 Azure Active Directory B2C 中配置会话行为](session-behavior.md#secure-your-logout-redirect)。
 
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解 [Azure AD B2C 会话](session-behavior.md)。

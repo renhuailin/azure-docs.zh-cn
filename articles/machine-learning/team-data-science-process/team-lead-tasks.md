@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864275"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000022"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process 团队主管的任务
 
@@ -29,7 +29,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 
 ![团队主管任务工作流](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
-1. 在小组所在组织的 Azure DevOps 中创建**团队项目**。 
+1. 在小组所在组织的 Azure DevOps 中创建 **团队项目**。 
   
 1. 将默认的团队存储库重命名为 **TeamUtilities**。
   
@@ -37,7 +37,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
   
 1. 将小组的 **GroupUtilities** 和 **GroupProjectTemplate** 存储库的内容导入 **TeamUtilities** 和 **TeamTemplate** 存储库。 
   
-1. 通过添加团队成员并配置其权限来设置**安全控制**。
+1. 通过添加团队成员并配置其权限来设置 **安全控制**。
   
 1. 根据需要创建团队数据和分析资源：
    - 将团队特定的实用工具添加到 **TeamUtilities** 存储库。 
@@ -61,9 +61,9 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 
 - Azure 订阅。
 - 计算机上安装的 Git。 如果要使用 DSVM，则需预安装 Git。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
-- 如果要使用 DSVM，需要在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](/azure/machine-learning/data-science-virtual-machine/)。
-- 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”**********。 从安装程序页下载 .exe 安装程序并运行它**。 
-- 对于 Linux DSVM，需要在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的“创建 SSH 公钥”**** 部分。 
+- 如果要使用 DSVM，需要在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](../data-science-virtual-machine/index.yml)。
+- 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”。 从安装程序页下载 .exe 安装程序并运行它。 
+- 对于 Linux DSVM，需要在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的“创建 SSH 公钥”部分。 
 
 ## <a name="create-a-team-project-and-repositories"></a>创建团队项目和存储库
 
@@ -77,7 +77,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 - 没有多个数据科学团队的小型数据科学小组。 
 - 具有多个数据科学团队的较大型数据科学小组，不过，该科学小组希望通过小组级冲刺规划等活动来优化团队间协作。 
 
-如果团队选择将团队特定的存储库置于单个组项目下，则团队主管应使用类似于* \<TeamName> 模板*和* \<TeamName> 实用工具*的名称创建存储库。 例如： *TeamATemplate* 和 *TeamAUtilities*。 
+如果团队选择将团队特定的存储库置于单个组项目下，则团队主管应使用类似于 *\<TeamName> 模板* 和 *\<TeamName> 实用工具* 的名称创建存储库。 例如： *TeamATemplate* 和 *TeamAUtilities*。 
 
 在任何情况下，团队主管都需要让其团队成员知道要设置和克隆哪个模板和实用工具存储库。 项目主管应当按照[数据科学团队的项目主管任务](project-lead-tasks.md)所述在单独的项目下或者在单个项目下创建项目存储库。 
 
@@ -85,46 +85,46 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 
 为团队创建单独的项目：
 
-1. 在 web 浏览器中，在 URL *https： \/ / \<server name> / \<organization name> *，中转到你的组的 Azure DevOps 组织主页，然后选择 "**新建项目**"。 
+1. 在 web 浏览器中，在 URL *https： \/ / \<server name> / \<organization name>*，中转到你的组的 Azure DevOps 组织主页，然后选择 "**新建项目**"。 
    
    ![选择“新建项目”](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. 在“创建项目”对话框中的“项目名称”下输入团队名称（例如 *MyTeam*），然后选择“高级”。************ 
+1. 在“创建项目”对话框中的“项目名称”下输入团队名称（例如 *MyTeam*），然后选择“高级”。 
    
-1. 在“版本控制”下选择“Git”，然后在“工作项流程”下选择“敏捷”。**************** 然后选择“创建”。 
+1. 在“版本控制”下选择“Git”，然后在“工作项流程”下选择“敏捷”。 然后选择“创建”  。 
    
    ![创建项目](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-此时将打开 "团队项目**摘要**" 页，其中包含页 URL *https： \/ / \<server name> / \<organization name> / \<team name> *。
+此时将打开 "团队项目 **摘要**" 页，其中包含页 URL *https： \/ / \<server name> / \<organization name> / \<team name>*。
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>将 MyTeam 默认存储库重命名为 TeamUtilities
 
-1. 在“MyTeam”项目“摘要”页上的“要从哪个服务开始?”下，选择“存储库”。**************** 
+1. 在“MyTeam”项目“摘要”页上的“要从哪个服务开始?”下，选择“存储库”。 
    
    ![选择“存储库”](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
    
-1. 在“MyTeam”存储库页的顶部选择“MyTeam”存储库，然后从下拉列表中选择“管理存储库”。************ 
+1. 在“MyTeam”存储库页的顶部选择“MyTeam”存储库，然后从下拉列表中选择“管理存储库”。 
    
    ![选择“管理存储库”](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
-1. 在“项目设置”页上，选择“MyTeam”存储库旁边的“...”，然后选择“重命名存储库”。**************** 
+1. 在“项目设置”页上，选择“MyTeam”存储库旁边的“...”，然后选择“重命名存储库”。 
    
    ![选择“重命名存储库”](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
    
-1. 在“重命名 MyTeam 存储库”弹出窗口中输入 *TeamUtilities*，然后选择“重命名”。******** 
+1. 在“重命名 MyTeam 存储库”弹出窗口中输入 *TeamUtilities*，然后选择“重命名”。 
 
 ### <a name="create-the-teamtemplate-repository"></a>创建 TeamTemplate 存储库
 
-1. 在“项目设置”页上，选择“新建存储库”。******** 
+1. 在“项目设置”页上，选择“新建存储库”。 
    
    ![选择“新建存储库”](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
    
-   或者，从“MyTeam”项目“摘要”页的左侧导航窗格中选择“存储库”，选择页面顶部的存储库，然后从下拉列表中选择“新建存储库”。****************
+   或者，从“MyTeam”项目“摘要”页的左侧导航窗格中选择“存储库”，选择页面顶部的存储库，然后从下拉列表中选择“新建存储库”。
    
-1. 在“创建新存储库”对话框中，确保已在“类型”下选择“Git”。************ 在“存储库名称”下输入 *TeamTemplate*，然后选择“创建”。********
+1. 在“创建新存储库”对话框中，确保已在“类型”下选择“Git”。 在“存储库名称”下输入 *TeamTemplate*，然后选择“创建”。
    
    ![创建存储库](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
    
-1. 确认可以在项目设置页上看到两个存储库：“TeamUtilities”和“TeamTemplate”。******** 
+1. 确认可以在项目设置页上看到两个存储库：“TeamUtilities”和“TeamTemplate”。 
    
    ![两个团队存储库](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
 
@@ -132,21 +132,21 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 
 若要在团队存储库中填充小组经理设置的小组通用存储库的内容：
 
-1. 在 **MyTeam** 项目主页中，从左侧导航窗格中选择“存储库”****。 如果有消息指出找不到 **MyTeam** 模板，请选择“否则请导航到默认的 TeamTemplate 存储库”中的链接。**** 
+1. 在 **MyTeam** 项目主页中，从左侧导航窗格中选择“存储库”。 如果有消息指出找不到 **MyTeam** 模板，请选择“否则请导航到默认的 TeamTemplate 存储库”中的链接。 
    
    此时将打开默认的 **TeamTemplate** 存储库。 
    
-1. 在“TeamTemplate 为空”页上，选择“导入”。******** 
+1. 在“TeamTemplate 为空”页上，选择“导入”。 
    
    ![选择“导入”](./media/team-lead-tasks/import-repo.png)
    
-1. 在“导入 Git 存储库”对话框中，选择“Git”作为“源类型”，然后在“克隆 URL”下输入小组通用模板存储库的 URL。**************** URL 为*https： \/ / \<server name> / \<organization name> /_git/ \<repository name> *。 例如：*https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
+1. 在“导入 Git 存储库”对话框中，选择“Git”作为“源类型”，然后在“克隆 URL”下输入小组通用模板存储库的 URL。 URL 为 *https： \/ / \<server name> / \<organization name> /_git/ \<repository name>*。 例如：*https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
    
-1. 选择“导入”。 小组模板存储库的内容随即会导入到团队模板存储库中。 
+1. 选择“导入”  。 小组模板存储库的内容随即会导入到团队模板存储库中。 
    
    ![导入小组通用模板存储库](./media/team-lead-tasks/import-repo-2.png)
    
-1. 在项目的“存储库”页的顶部，选择“TeamUtilities”存储库。********
+1. 在项目的“存储库”页的顶部，选择“TeamUtilities”存储库。
    
 1. 重复导入过程，将小组通用实用工具存储库（例如 *GroupUtilities*）的内容导入 **TeamUtilities** 存储库。 
    
@@ -158,37 +158,37 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 
 若要直接在 Azure DevOps 中修改、上传或者创建文件或文件夹：
 
-1. 在“MyTeam”项目的“摘要”页上，选择“存储库”。************ 
+1. 在“MyTeam”项目的“摘要”页上，选择“存储库”。 
    
 1. 在页面顶部，选择要自定义的存储库。
 
 1. 在存储库目录结构中，导航到要更改的文件夹或文件。 
    
-   - 若要创建新的文件夹或文件，请选择“新建”旁边的箭头****。 
+   - 若要创建新的文件夹或文件，请选择“新建”旁边的箭头。 
      
      ![创建新文件](./media/team-lead-tasks/new-file.png)
      
-   - 若要上传文件，请选择“上传文件”****。 
+   - 若要上传文件，请选择“上传文件”。 
      
      ![上传文件](./media/team-lead-tasks/upload-files.png)
      
-   - 若要编辑现有文件，请导航到该文件，然后选择“编辑”****。 
+   - 若要编辑现有文件，请导航到该文件，然后选择“编辑”。 
      
      ![编辑文件](./media/team-lead-tasks/edit-file.png)
      
-1. 添加或编辑文件后，选择“提交”****。
+1. 添加或编辑文件后，选择“提交”。
    
    ![提交更改](./media/team-lead-tasks/commit.png)
 
-若要在本地计算机或 DSVM 上使用存储库，请先将存储库复制或克隆到本地计算机，然后将所做的更改提交并推送到共享的团队存储库**。 
+若要在本地计算机或 DSVM 上使用存储库，请先将存储库复制或克隆到本地计算机，然后将所做的更改提交并推送到共享的团队存储库。 
 
 若要克隆存储库：
 
-1. 在“MyTeam”项目的“摘要”页上选择“存储库”，然后在页面顶部选择要克隆的存储库************。
+1. 在“MyTeam”项目的“摘要”页上选择“存储库”，然后在页面顶部选择要克隆的存储库。
    
-1. 在“存储库”页上，选择右上方的“克隆”****。
+1. 在“存储库”页上，选择右上方的“克隆”。
    
-1. 在“克隆存储库”对话框中的“命令行”下，为 HTTP 连接选择“HTTPS”，或者为 SSH 连接选择“SSH”，然后将克隆 URL 复制到剪贴板****************。
+1. 在“克隆存储库”对话框中的“命令行”下，为 HTTP 连接选择“HTTPS”，或者为 SSH 连接选择“SSH”，然后将克隆 URL 复制到剪贴板。
    
    ![复制克隆 URL](./media/team-lead-tasks/clone.png)
    
@@ -238,30 +238,30 @@ git push
 
 若要向团队添加成员：
 
-1. 在 Azure DevOps 的 **MyTeam** 项目主页中，从左侧导航窗格中选择“项目设置”****。 
+1. 在 Azure DevOps 的 **MyTeam** 项目主页中，从左侧导航窗格中选择“项目设置”。 
    
-1. 在“项目设置”左侧导航窗格中选择“团队”，然后在“团队”页上选择“MyTeam 团队”****************。 
+1. 在“项目设置”左侧导航窗格中选择“团队”，然后在“团队”页上选择“MyTeam 团队”。 
    
    ![配置团队](./media/team-lead-tasks/teams.png)
    
-1. 在“团队资料”页上，选择“添加”********。
+1. 在“团队资料”页上，选择“添加”。
    
    ![添加到 MyTeam 团队](./media/team-lead-tasks/add-to-team.png)
    
-1. 在“添加用户和组”对话框中，搜索并选择要添加到组的成员，然后选择“保存更改”********。 
+1. 在“添加用户和组”对话框中，搜索并选择要添加到组的成员，然后选择“保存更改”。 
    
    ![添加用户和组](./media/team-lead-tasks/add-users.png)
    
 
 若要配置团队成员的权限：
 
-1. 在“项目设置”左侧导航窗格中，选择“权限”********。 
+1. 在“项目设置”左侧导航窗格中，选择“权限”。 
    
-1. 在“权限”页上，选择要向其中添加成员的组****。 
+1. 在“权限”页上，选择要向其中添加成员的组。 
    
-1. 在该组的页面上选择“成员”，然后选择“添加”********。 
+1. 在该组的页面上选择“成员”，然后选择“添加”。 
    
-1. 在“邀请成员”弹出菜单中，搜索并选择要添加到组的成员，然后选择“保存”********。 
+1. 在“邀请成员”弹出菜单中，搜索并选择要添加到组的成员，然后选择“保存”。 
    
    ![为成员授予权限](./media/team-lead-tasks/grant-permissions.png)
 

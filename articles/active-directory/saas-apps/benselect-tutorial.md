@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 714e293220317e46113c4ffdda2e207da62be6c1
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537101"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457242"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BenSelect 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88537101"
 * 让用户使用其 Azure AD 帐户自动登录到 BenSelect。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,7 +53,7 @@ ms.locfileid: "88537101"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **BenSelect**。 
+1. 在“从库中添加”部分的搜索框中，键入 **BenSelect** 。 
 1. 在结果面板中选择“BenSelect”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -89,15 +89,15 @@ ms.locfileid: "88537101"
 
 1. BenSelect 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/edit-attribute.png)
+    ![显示具有默认属性的“用户属性”（如 givenname user.givenname 和 emailaddress user.mail）的屏幕截图。](common/edit-attribute.png)
 
 1. 单击“编辑”图标以编辑名称标识符值   。
 
-    ![image](media/benselect-tutorial/mail-prefix1.png)
+    ![显示“用户属性和声明”窗格的屏幕截图，其中标出了“编辑”图标。](media/benselect-tutorial/mail-prefix1.png)
 
 1. 在“管理用户声明”部分执行以下步骤： 
 
-    ![image](media/benselect-tutorial/mail-prefix2.png)
+    ![显示“管理用户声明”对话框的屏幕截图，可在其中输入此步骤所述的值。](media/benselect-tutorial/mail-prefix2.png)
 
     a. 选择“转换”作为“源”   。
 
@@ -105,7 +105,7 @@ ms.locfileid: "88537101"
 
     c. 在“参数 1”下拉列表中，选择“user.userprincipalname”   。
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -154,21 +154,20 @@ ms.locfileid: "88537101"
 
 ### <a name="create-benselect-test-user"></a>创建 BenSelect 测试用户
 
-本部分需在 BenSelect 中创建名为 Britta Simon 的用户。 在  [BenSelect 支持团队](mailto:support@selerix.com)的配合下，将用户添加到 BenSelect 平台。 使用单一登录前，必须先创建并激活用户。
+本部分需在 BenSelect 中创建名为 Britta Simon 的用户。 与 [BenSelect 支持团队](mailto:support@selerix.com)协作，在 BenSelect 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“BenSelect”磁贴时，应会自动登录到设置了 SSO 的 BenSelect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“BenSelect”磁贴时，应会自动登录到设置了 SSO 的 BenSelect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 BenSelect](https://aad.portal.azure.com/)
-

@@ -1,18 +1,18 @@
 ---
 title: 快速入门：创建服务器 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure 门户在大约五分钟内快速创建示例 Azure Database for MariaDB 服务器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: e5801f46745b3fda28af19c11e323b9497ebe98a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b27bff50b4e2cfa57e41919552086ba1d31f217
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88185241"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188728"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure Database for MariaDB 服务器
 

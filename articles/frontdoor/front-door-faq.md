@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2020
+ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: e28c995a0fb574f2e7319f8ee540f49d1bbed4dd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819033"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656897"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -71,7 +71,7 @@ Azure 前门是一种全局服务，不与任何特定的 Azure 区域相关联�
 
 ### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure 前门的 POP 位置有哪些？
 
-Azure 前门与 Microsoft 中的 Azure CDN 具有相同的 POP (点列表) 位置。 有关 Pop 的完整列表，请参阅 [Microsoft AZURE CDN pop 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。
+Azure 前门与 Microsoft 中的 Azure CDN 具有相同的 POP (点列表) 位置。 有关 Pop 的完整列表，请参阅 [Microsoft AZURE CDN pop 位置](../cdn/cdn-pop-locations.md)。
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure 前门是应用的专用部署，还是在客户之间共享？
 
@@ -91,9 +91,8 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 - 为后端配置 IP Acl，以接受来自 Azure 前门的后端 IP 地址空间和 Azure 的基础结构服务的流量。 请参阅下面的 IP 详细信息，以 Acl 后端：
  
-    - 请参阅 Azure IP 范围中的*AzureFrontDoor* ，并为前门的 IPv4 后端 IP 地址范围提供[服务标记，](https://www.microsoft.com/download/details.aspx?id=56519)或者也可以使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服务标记*AzureFrontDoor* 。
-    - 在服务标记中涵盖的前端的 **IPv6** 后端 IP 空间未在 Azure IP 范围 JSON 文件中列出。 如果正在查找显式 IPv6 地址范围，则它当前限制为 `2a01:111:2050::/44`
-    - Azure 的 [基本基础结构服务](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) ，通过虚拟化主机 IP 地址： `168.63.129.16` 和 `169.254.169.254`
+    - 请参阅 Azure IP 范围中的 *AzureFrontDoor* ，并为前门的 IPv4 后端 IP 地址范围提供 [服务标记，](https://www.microsoft.com/download/details.aspx?id=56519)或者也可以使用 [网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)中的服务标记 *AzureFrontDoor* 。
+    - Azure 的 [基本基础结构服务](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) ，通过虚拟化主机 IP 地址： `168.63.129.16` 和 `169.254.169.254`
 
     > [!WARNING]
     > 前端的后端 IP 空间可能会更改，但在此之前，我们将确保我们已与 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)集成。 建议订阅 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519) 以进行任何更改或更新。
@@ -156,11 +155,15 @@ Azure 前门 (AFD) 需要公共 IP 或可公开解析的 DNS 名称来路由流�
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure 前门有哪些不同的超时和限制？
 
-了解 Azure 前门的所有已记录的 [超时和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)。
+了解 Azure 前门的所有已记录的 [超时和限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits)。
 
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>将规则添加到前门规则引擎后，规则需要多长时间？
 
 规则引擎配置需要大约10到15分钟的时间来完成更新。 当更新完成后，你可能会希望该规则生效。 
+
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-vice-versa"></a>能否在前门配置文件后配置 Azure CDN，反之亦然？
+
+Azure 前门和 Azure CDN 无法一起配置，因为在响应请求时，这两种服务都利用相同的 Azure 边缘站点。 
 
 ## <a name="performance"></a>性能
 
@@ -179,7 +182,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure 前门支持哪些证书？
 
 若要启用 HTTPS 协议以安全地在前门自定义域上传递内容，你可以选择使用 Azure 前门管理的证书或使用你自己的证书。
-前门托管选项通过 Digicert 预配标准的 TLS/SSL 证书，并将其存储在前门的 Key Vault 中。 如果选择使用你自己的证书，则可以从受支持的 CA 载入证书，并且可以是标准 TLS、扩展验证证书，甚至是通配符证书。 不支持自签名证书。 了解 [如何为自定义域启用 HTTPS](https://aka.ms/FrontDoorCustomDomainHTTPS)。
+前门托管选项通过 Digicert 预配标准的 TLS/SSL 证书，并将其存储在前门的 Key Vault 中。 如果选择使用你自己的证书，则可以从受支持的 CA 载入证书，并且可以是标准 TLS、扩展验证证书，甚至是通配符证书。 不支持自签名证书。 了解 [如何为自定义域启用 HTTPS](./front-door-custom-domain-https.md)。
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>前门是否支持证书 autorotation？
 
@@ -220,7 +223,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 ### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>能否配置 TLS 策略来控制 TLS 协议版本？
 
-你可以通过 Azure 门户或 [azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)在 azure 前门中配置最小 TLS 版本。 目前，可以在1.0 和1.2 之间进行选择。
+你可以通过 Azure 门户或 [azure REST API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)在 azure 前门中配置最小 TLS 版本。 目前，可以在1.0 和1.2 之间进行选择。
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>是否可以将前门配置为仅支持特定密码套件？
 
@@ -232,7 +235,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure 前门是否还支持向后端重新加密流量？
 
-是的，Azure 前门支持 TLS/SSL 卸载和端到端 TLS，这会将流量重新加密到后端。 事实上，因为到后端的连接通过其公共 IP 发生，所以建议将前门配置为使用 HTTPS 作为转发协议。
+是的，Azure 前门支持 TLS/SSL 卸载和端到端 TLS，这会将流量重新加密到后端。 事实上，由于连接到后端的公共 IP 发生了连接，因此建议将前门配置为使用 HTTPS 作为转发协议。
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>前门是否支持 HTTPS 连接的后端上的自签名证书？
 
@@ -247,11 +250,11 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 1. **证书使用者名称不匹配**：对于 HTTPS 连接，前门要求后端从有效 CA 提供证书，该证书的使用者名称 (s) 与后端主机名匹配。 例如，如果后端主机名设置为 `myapp-centralus.contosonews.net` ，并且在 TLS 握手期间后端提供的证书既没有也没有 `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` 使用者名称，则前门将拒绝连接，并导致错误。 
     1. **解决方案**：尽管不建议从符合性的角度考虑，但你可以通过对前门禁用证书使用者名称检查来解决此错误。 这存在于 Azure 门户中的 "设置" 下，并且位于 API 中的 "BackendPoolsSettings" 下。
-2. **后端承载无效 CA 颁发的证书**：只有 [有效 ca](/azure/frontdoor/front-door-troubleshoot-allowed-ca) 中的证书才能在前门上用于前门。 不允许来自内部 Ca 或自签名证书的证书。
+2. **后端承载无效 CA 颁发的证书**：只有 [有效 ca](./front-door-troubleshoot-allowed-ca.md) 中的证书才能在前门上用于前门。 不允许来自内部 Ca 或自签名证书的证书。
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>能否对 Azure 前门使用客户端/相互身份验证？
 
-否。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
+错误。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 

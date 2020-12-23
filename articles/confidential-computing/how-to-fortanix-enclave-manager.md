@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b2c266d31a3aacc5bc97434de2246bfb1285a1ee
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462422"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565698"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>如何：使用 Fortanix Enclave Manager 运行应用程序 
 
@@ -28,7 +28,7 @@ Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure �
 
 
 
-本教程介绍如何将应用程序映像转换为机密的计算保护映像。 此环境使用由 Azure 的 DCsv2 系列支持 Intel SGX 的虚拟机提供支持的 [Fortanix](https://www.fortanix.com/) 软件。 此解决方案协调重要的安全策略，如身份验证和数据访问控制。
+本教程介绍如何将应用程序映像转换为机密的计算保护映像。 此环境使用 Azure DCsv2-Series 支持支持 SGX 的虚拟机提供支持的 [Fortanix](https://www.fortanix.com/) 软件。 此解决方案协调重要的安全策略，如身份验证和数据访问控制。
 
  有关特定于 Fortanix 的支持，请加入 [Fortanix 时差社区](https://fortanix.com/community/) ，并使用频道 #enclavemanager。
 
@@ -60,39 +60,39 @@ Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure �
 
 6. 在本教程中，我们将为示例应用程序使用 Fortanix 的 docker 注册表。 填写以下信息中的详细信息。 使用专用 docker 注册表保留输出图像。 
  
-    - **应用程序名称**： Python 应用程序服务器
-    - **说明**： Python Flask 服务器
-    - **输入图像名称**： fortanix/python-flask
-    - **输出映像名称**： fortanx/python-flask-sgx
-    - **ISVPRODID**：1
-    - **ISVSVM**：1
-    - **内存大小**： 1 GB
-    - **线程计数**：128
+    - **应用程序名称** ： Python 应用程序服务器
+    - **说明** ： Python Flask 服务器
+    - **输入图像名称** ： fortanix/python-flask
+    - **输出映像名称** ： fortanx/python-flask-sgx
+    - **ISVPRODID** ：1
+    - **ISVSVM** ：1
+    - **内存大小** ： 1 GB
+    - **线程计数** ：128
 
-    *可选*：运行该应用程序。
-    - **Docker 中心**： [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
-    - **应用**： fortanix/python-flask
+    *可选* ：运行该应用程序。
+    - **Docker 中心** ： [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
+    - **应用** ： fortanix/python-flask
 
-        运行以下命令：
+        运行下面的命令：
          ```bash
             sudo docker run fortanix/python-flask
          ```
 
-1. 添加证书。 使用以下详细信息填写信息，然后选择 " **下一步**"：
-    - **域**： myapp. dom
-    - **类型**： Enclave Manager 颁发的证书 
-    - **密钥路径**：/appkey.pem
-    - **密钥类型**： RSA
-    - **证书路径**：/appcert.pem
-    - **RSA 密钥大小**：2048位
+1. 添加证书。 使用以下详细信息填写信息，然后选择 " **下一步** "：
+    - **域** ： myapp. dom
+    - **类型** ： Enclave Manager 颁发的证书 
+    - **密钥路径** ：/appkey.pem
+    - **密钥类型** ： RSA
+    - **证书路径** ：/appcert.pem
+    - **RSA 密钥大小** ：2048位
     
 
 ## <a name="create-an-image"></a>创建映像
 Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与一个 enclave 哈希 (MRENCLAVE) 相关联。 
-1. 在 "**添加映像**" 页上，输入**输出映像名称**的**注册表凭据**。 这些凭据用于访问将在其中推送映像的专用 docker 注册表。 
+1. 在 " **添加映像** " 页上，输入 **输出映像名称** 的 **注册表凭据** 。 这些凭据用于访问将在其中推送映像的专用 docker 注册表。 
 
     ![创建映像](media/how-to-fortanix-enclave-manager/create-image.png)
-1. 提供图像标记，然后选择 " **创建**"。
+1. 提供图像标记，然后选择 " **创建** "。
 
     ![添加标记](media/how-to-fortanix-enclave-manager/add-tag.png)
 
@@ -113,14 +113,14 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 创建 Fortanix 节点代理会将虚拟机、网络接口、虚拟网络、网络安全组和公共 IP 地址部署到 Azure 资源组中。 对于虚拟机，你的 Azure 订阅将按小时计费。 在创建 Fortanix 节点代理之前，请查看 DCsv2 系列的 Azure [虚拟机定价页](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 。 删除不使用的 Azure 资源。 
 
 1. 请前往 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) ，并以 azure 凭据登录。
-1. 在搜索栏中，键入 " **Fortanix 机密计算节点代理**"。 选择在名为 **Fortanix** 的搜索框中显示的应用程序，以导航到该产品的主页。 
+1. 在搜索栏中，键入 " **Fortanix 机密计算节点代理** "。 选择在名为 **Fortanix** 的搜索框中显示的应用程序，以导航到该产品的主页。 
      ![搜索 marketplace](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
-1. 选择 " **立即获取**"，根据需要填写信息，并选择 " **继续**"。 你将重定向到 Azure 门户。 
+1. 选择 " **立即获取** "，根据需要填写信息，并选择 " **继续** "。 你将重定向到 Azure 门户。 
 1. 选择 " **创建** " 以输入 "Fortanix 保密计算节点代理部署" 页。
-1. 在此页上，你将输入用于部署虚拟机的信息。 具体而言，此 VM 是安装了 Fortanix Node Agent 软件的 Azure 中的 DCsv2 系列启用了 Intel SGX 的虚拟机。 节点代理将允许转换的映像在 Azure 中的 Intel SGX 节点上安全运行。  选择要在其中部署虚拟机和关联资源的 **订阅** 和 **资源组** 。 
+1. 在此页上，你将输入用于部署虚拟机的信息。 具体而言，此 VM 是安装了 Fortanix 节点代理软件的 Azure 中 DCsv2-Series 支持 Intel SGX 的虚拟机。 节点代理将允许转换的映像在 Azure 中的 Intel SGX 节点上安全运行。  选择要在其中部署虚拟机和关联资源的 **订阅** 和 **资源组** 。 
  
     > [!NOTE]
-    > 在 Azure 中部署 DCsv2 系列虚拟机时存在一些限制。 可能需要请求额外内核的配额。 有关详细信息，请参阅 [Azure vm 上的机密计算解决方案](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) 。 
+    > 在 Azure 中部署 DCsv2-Series 虚拟机时存在一些限制。 可能需要请求额外内核的配额。 有关详细信息，请参阅 [Azure vm 上的机密计算解决方案](./virtual-machine-solutions.md) 。 
 
 1. 选择可用区域。
 1. 在 " **节点名称** " 字段中输入虚拟机的名称。 
@@ -130,7 +130,7 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
      ![部署资源](media/how-to-fortanix-enclave-manager/deploy-fortanix-node-agent.png)
 
-1. 选择“查看 + 创建”。 确保验证通过，然后选择 " **创建**"。 部署所有资源后，计算节点现已在 Enclave Manager 中注册。 
+1. 选择“查看 + 创建”  。 确保验证通过，然后选择 " **创建** "。 部署所有资源后，计算节点现已在 Enclave Manager 中注册。 
 
 ## <a name="run-the-application-image-on-the-compute-node"></a>在计算节点上运行应用程序映像
 通过执行以下命令来运行应用程序。 请确保将节点 IP、端口和转换后的映像名称更改为你的特定应用程序的输入。 
@@ -148,7 +148,7 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 其中： 
 - *52.152.206.164* 是节点代理主机 IP
 - *9092* 是节点代理侦听的端口
-- *fortanix/flask-sgx*是转换后的应用，可在 Fortanix Enclave 管理 Web 门户的**images**表中 "**映像名称**" 列下的 "映像" 选项卡中找到。 
+- *fortanix/flask-sgx* 是转换后的应用，可在 Fortanix Enclave 管理 Web 门户的 **images** 表中 " **映像名称** " 列下的 "映像" 选项卡中找到。 
     
 ## <a name="verify-and-monitor-the-running-application"></a>验证并监视正在运行的应用程序
 1. 转到 [Fortanix Enclave Manager](https://em.fortanix.com/console)
@@ -162,11 +162,11 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
 如果不再需要资源组、虚拟机和关联的资源，可以将其删除。 删除资源组将取消注册与转换后的映像相关联的节点。 
 
-选择虚拟机的资源组，然后选择“删除”。 确认资源组名称，以完成资源删除。
+选择虚拟机的资源组，然后选择“删除”  。 确认资源组名称，以完成资源删除。
 
-若要删除创建的 Fortanix Enclave 管理器帐户，请在 Enclave 管理器中转到 " [帐户" 页](https://em.fortanix.com/accounts) 。 将鼠标悬停在要删除的帐户上。 选择右上角的黑色黑色点，然后选择 " **删除帐户**"。
+若要删除创建的 Fortanix Enclave 管理器帐户，请在 Enclave 管理器中转到 " [帐户" 页](https://em.fortanix.com/accounts) 。 将鼠标悬停在要删除的帐户上。 选择右上角的黑色黑色点，然后选择 " **删除帐户** "。
 
-  ![删除](media/how-to-fortanix-enclave-manager/delete-account.png)
+  ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -174,4 +174,4 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
 若要了解有关 Azure 机密计算产品/服务的详细信息，请参阅 [azure 机密计算概述](overview.md)
 
- 了解如何使用 Azure 上的其他第三方产品（例如 [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) 和 [Scone](https://sconedocs.github.io)）完成类似的任务。  
+ 了解如何使用 Azure 上的其他第三方产品（例如 [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) 和 [Scone](https://sconedocs.github.io)）完成类似的任务。

@@ -3,54 +3,58 @@ title: 配置 Azure 应用程序 Insights 的 ASP.NET 监视 |Microsoft Docs
 description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和用户行为分析工具。
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91838936"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028982"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站配置 Application Insights
 
-此过程将 ASP.NET Web 应用配置为将遥测发送到 [Azure Application Insights](./app-insights-overview.md) 服务。 它适用于托管在本地或云中的 IIS 服务器中的 ASP.NET 应用。 
+此过程将 ASP.NET Web 应用配置为将遥测发送到 [Azure Application Insights](./app-insights-overview.md) 服务。 它适用于托管在你自己的本地或云中 IIS 服务器上的 ASP.NET 应用。 
 
 ## <a name="prerequisites"></a>先决条件
 若要要将 Application Insights 添加到 ASP.NET 网站，需要：
 
-- 安装适用于 Windows 的最新版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/) ，其工作负荷如下：
-    - ASP.NET 和 web 开发。
+- 安装最新版本的[用于 Windows 的 Visual Studio 2019](https://www.visualstudio.com/downloads/)，其中包含以下工作负载：
+    - ASP.NET 和 Web 开发。
     - Azure 开发
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 - 创建 [基于 Application Insights 工作区的资源](create-workspace-resource.md)。
 
-## <a name="create-a-basic-aspnet-web-app"></a>创建基本 ASP.NET web 应用
+> [!IMPORTANT]
+> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+
+
+## <a name="create-a-basic-aspnet-web-app"></a>创建基本的 ASP.NET Web 应用
 
 1. 启动 Visual Studio 2019。
 2. 选择“文件” > “新建” > “项目”  。
-3. 选择 **ASP.NET Web 应用程序 ( .NET Framework) c #**。
-4. 输入项目名称 > **选择 "创建**"。
-5. 选择 " **MVC**  >  **创建**"。 
+3. 选择“ASP.NET Web 应用程序(.NET Framework) C#”。
+4. 输入项目名称 > 选择“创建”。
+5. 选择“MVC” > “创建” 。 
 
 ## <a name="add-application-insights-automatically"></a>自动添加 Application Insights
 
-本部分将指导你完成将 Application Insights 自动添加到基于模板的 ASP.NET web 应用。 从 Visual Studio 中的 ASP.NET web 应用项目中：
+本部分将指导你将 Application Insights 自动添加到基于模板的 ASP.NET Web 应用。 在 Visual Studio 中的 ASP.NET Web 应用项目中，请执行以下操作：
 
-1. 选择 "**添加 Application Insights 遥测**  >  **Application Insights" Sdk (本地) **"  >  **下一步**  >  **结束**"  >  **Close**。
+1. 选择“添加 Application Insights 遥测” > “Application Insights Sdk (本地)” > “下一步” > “完成” > “关闭”    。
 2. 打开 `ApplicationInsights.config` 文件。 
-3. 在结束标记之前，请 `</ApplicationInsights>` 为你的 Application Insights 资源添加包含检测密钥的行。  你的检测密钥可以在你创建的新 Application Insights 资源的 "概述" 窗格中找到，作为本文的先决条件的一部分。
+3. 在结束标记 `</ApplicationInsights>` 之前，添加一行，其中包含 Application Insights 资源的检测密钥。  可以在新建的 Application Insights 资源（作为本文先决条件之一而创建）的“概述”窗格中找到检测密钥。
 
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
-4. 选择 "**项目**" "  >  **管理 NuGet 包**"  >  **更新**> 将每个 `Microsoft.ApplicationInsights` NuGet 包更新到最新稳定版本。   
-5. 通过选择 " **IIS Express**" 运行应用程序。 将启动基本的 ASP.NET 应用。 导航站点上的页面时，遥测数据将发送到 Application Insights。
+4. 选择“项目” > “管理 NuGet 包” > “更新”>“将每个 `Microsoft.ApplicationInsights` NuGet 包更新到最新的稳定版本”  。   
+5. 通过选择“IIS Express”来运行应用程序。 将启动基本 ASP.NET 应用。 浏览站点上的页面时，遥测将发送到 Application Insights。
 
 ## <a name="add-application-insights-manually"></a>手动添加 Application Insights
 
-本部分将指导你手动将 Application Insights 添加到基于模板的 ASP.NET web 应用。 本部分假定你使用的是基于标准 ASP.NET Framework MVC web 应用程序模板的 web 应用。
+本部分将指导你将 Application Insights 手动添加到基于模板的 ASP.NET Web 应用。 本部分假定你使用的是基于标准 ASP.NET Framework MVC Web 应用模板的 Web 应用。
 
 1. 将以下 NuGet 包及其依赖项添加到项目中：
 
@@ -58,7 +62,7 @@ ms.locfileid: "91838936"
     - [`Microsoft.ApplicationInsights.Web`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
     - [`Microsoft.AspNet.TelemetryCorrelation`](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation)
 
-2. 在某些情况下， `ApplicationInsights.config` 将自动为您创建该文件。 如果文件已存在，请跳到步骤 #4。 如果不是自动创建的，则需要自行创建。 在项目中与文件相同的级别上 `Global.asax` ，创建一个名为的新文件 `ApplicationInsights.config`
+2. 在某些情况下，将自动为你创建 `ApplicationInsights.config` 文件。 如果该文件已存在，请跳到步骤 #4。 如果没有自动创建，则需要自行创建。 在项目中与 `Global.asax` 文件相同的级别上，创建一个名为 `ApplicationInsights.config` 的新文件
 
 3. 将以下 XML 配置复制到新创建的文件中：
 
@@ -204,13 +208,13 @@ ms.locfileid: "91838936"
     </ApplicationInsights>
      ```
 
-4. 在结束 `</ApplicationInsights>` 标记之前，为 Application Insights 资源添加检测密钥。  你的检测密钥可以在你创建的新 Application Insights 资源的 "概述" 窗格中找到，作为本文的先决条件的一部分。
+4. 在结束标记 `</ApplicationInsights>` 之前，添加 Application Insights 资源的检测密钥。  可以在新建的 Application Insights 资源（作为本文先决条件之一而创建）的“概述”窗格中找到检测密钥。
 
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
 
-5. 在项目的同一级别上 `ApplicationInsights.config` ， `ErrorHandler` 使用名为的新 c # 文件创建一个名为的文件夹 `AiHandleErrorAttribute.cs` 。 文件的内容如下所示：
+5. 在项目中与 `ApplicationInsights.config` 文件相同的级别上，创建名为 `ErrorHandler` 的文件夹，其中包含名为 `AiHandleErrorAttribute.cs` 的新 C# 文件。 文件的内容将如下所示：
 
     ```csharp
     using System;
@@ -240,7 +244,7 @@ ms.locfileid: "91838936"
     
     ```
 
-6. 在该 `App_Start` 文件夹中，打开 `FilterConfig.cs` 文件并将其更改为与示例匹配：
+6. 在 `App_Start` 文件夹中，打开 `FilterConfig.cs` 文件并进行更改，使其与示例相匹配：
 
     ```csharp
     using System.Web;
@@ -336,29 +340,29 @@ ms.locfileid: "91838936"
     
     ```
 
-你现在已成功配置服务器端应用程序监视。 如果你运行 web 应用，你将能够看到遥测数据会开始出现在 Application Insights 中。
+现在已成功配置服务器端应用程序监视。 如果运行 Web 应用，将能够看到遥测开始出现在 Application Insights 中。
 
 ## <a name="add-client-side-monitoring"></a>添加客户端监视
 
-前面几节提供了有关自动和手动配置服务器端监视的方法的指导。 要添加客户端监视，你将需要使用我们的 [客户端 JAVASCRIPT SDK](javascript.md)。 可以通过在页面的 HTML 的结束标记前面添加 [JavaScript 代码段](javascript.md#snippet-based-setup) 来监视任何网页的客户端事务 `</head>` 。 
+前面几个部分提供了有关自动和手动配置服务器端监视的方法的指导。 若要添加客户端监视，将需要使用[客户端 JavaScript SDK](javascript.md)。 可以通过在页面 HTML 的结束标记 `</head>` 之前添加 [JavaScript 代码片段](javascript.md#snippet-based-setup)来监视任何网页的客户端事务。 
 
-尽管可以手动将代码片段添加到每个 HTML 页面的标头，但建议改为将代码段添加到主页面，这会将代码段插入到站点的所有页面中。 对于本文中基于模板的 ASP.NET MVC 应用，需要编辑的文件称为 `_Layout.cshtml` ，它位于 "共享**视图**" 下  >  **Shared**。
+尽管可以手动将代码片段添加到每个 HTML 页面的标头，但建议改为将代码片段添加到主页，这样可以将代码片段插入网站的所有页面中。 对于本文中基于模板的 ASP.NET MVC 应用，需要编辑位于“视图” > “共享”下名为 `_Layout.cshtml` 的文件 。
 
-若要添加客户端监视，请打开 `_Layout.cshtml` 文件并按照客户端 JAVASCRIPT SDK 配置一文中的 [基于代码段的设置说明](javascript.md#snippet-based-setup) 进行操作。
+若要添加客户端监视，请打开 `_Layout.cshtml` 文件，然后按照客户端 JavaScript SDK 配置文章中[基于代码片段的设置说明](javascript.md#snippet-based-setup)进行操作。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-当前版本的 Visual Studio 2019 中存在一个已知问题，即，将检测密钥存储在用户机密中对于基于 .NET Framework 的应用而言是损坏的，因此，最终必须将密钥硬编码到 applicationinsights.config 文件中，以解决此错误。 本文旨在通过不使用用户机密来完全避免此问题。  
+当前版本的 Visual Studio 2019 中存在一个已知问题，即对于基于 .NET Framework 的应用而言，将检测密钥存储在用户机密中时，该密钥将被损坏，最终必须将该密钥硬编码到 applicationinsights.config 文件中，才能解决此 bug。 本文旨在通过不使用用户机密来完全避免此问题。  
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
 * [阅读代码或为其做出贡献](https://github.com/microsoft/ApplicationInsights-dotnet)
 
-有关最新的更新和 bug 修复， [请参阅发行说明](./release-notes.md)。
+有关最新的更新和 bug 修复，请[参阅发行说明](./release-notes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 添加综合事务，以测试你的网站在世界各地的 [可用性监视](monitor-web-app-availability.md)。
-* [配置采样](sampling.md) 以帮助降低遥测流量和数据存储费用。
+* 添加综合事务，以通过[可用性监视](monitor-web-app-availability.md)来测试你的网站是否可从世界各地进行访问。
+* [配置采样](sampling.md)以帮助降低遥测流量和数据存储费用。
 
 

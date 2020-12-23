@@ -1,6 +1,7 @@
 ---
-title: 向 Microsoft 标识平台 Python Web 应用添加 Microsoft 登录功能 | Azure
-description: 了解如何使用 OAuth2 在 Python Web 应用中实现 Microsoft 登录
+title: 快速入门：向 Python Web 应用添加 Microsoft 登录功能 | Azure
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍 Python Web 应用如何让用户登录、从 Microsoft 标识平台获取访问令牌以及调用 Microsoft Graph API。
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,23 +12,22 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 6b58e927952b2a51289c3017455cc7d66545fe86
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a8d851d2e70850155950786c6aa67c1d5086eb2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120314"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993867"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入门：向 Python Web 应用添加 Microsoft 登录功能
 
-本快速入门介绍如何将 Python Web 应用程序与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Python Web 应用程序如何让用户登录并获取访问令牌来调用 Microsoft Graph API。 拥有个人 Microsoft 帐户或任何 Azure Active Directory (Azure AD) 组织中的帐户的用户都能登录到该应用程序。
 
-完成本指南后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要运行此示例，需要：
-
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Python 2.7+](https://www.python.org/downloads/release/python-2713) 或 [Python 3+](https://www.python.org/downloads/release/python-364/)
 - [Flask](http://flask.pocoo.org/)、[Flask-Session](https://pypi.org/project/Flask-Session/)、[请求](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
@@ -55,13 +55,13 @@ ms.locfileid: "88120314"
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 > 1. 选择“新注册”。
 > 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
->      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `python-webapp`。
+>      - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `python-webapp`。
 >      - 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
->      - 选择“注册”。
+>      - 选择“注册”  。
 >      - 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 从菜单中选择“身份验证”，然后添加以下信息：
 >    - 添加 **Web** 平台配置。 添加 `http://localhost:5000/getAToken` 作为“重定向 URI”。
->    - 选择“保存” 。
+>    - 选择“保存”。 
 > 1. 在左侧菜单中选择“证书和机密”，然后在“客户端机密”部分单击“新建客户端机密”：  
 >
 >      - 键入（实例应用机密）的密钥说明。
@@ -97,7 +97,7 @@ ms.locfileid: "88120314"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 下载项目并将 zip 文件解压缩到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [下载代码示例](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -119,7 +119,7 @@ ms.locfileid: "88120314"
 > 其中：
 >
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
-> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”中为注册的应用程序创建的**客户端密码**。
+> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”中为注册的应用程序创建的 **客户端密码**。
 > - `Enter_the_Tenant_Name_Here` - 是注册的应用程序的目录（租户）ID 值。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -162,11 +162,11 @@ pip install msal
 import msal
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-详细了解登录用户然后调用 Web API 的 Web 应用：
+有关可将用户登录的 Web 应用的详细信息，请参阅我们的多部分方案系列。
 
 > [!div class="nextstepaction"]
-> [场景：登录用户的 Web 应用](scenario-web-app-sign-user-overview.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [场景：可将用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)

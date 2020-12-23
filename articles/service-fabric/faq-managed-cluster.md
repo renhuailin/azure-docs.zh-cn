@@ -6,14 +6,14 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728992"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319826"
 ---
-# <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric 托管群集常见问题解答
+# <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric 托管群集常见问题
 
 有很多关于 Service Fabric 托管群集 (预览版) 可以执行哪些操作以及如何使用它们的常见问题。 本文档包含其中的许多常见问题及其解答。
 
@@ -41,7 +41,7 @@ SLA 不会与当前 Service Fabric 资源模型发生更改。
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>基本和标准 SKU 群集之间的区别是什么？
 
-基本 SKU 群集是指 Service Fabric 资源提供程序提供的大多数配置。 基本 SKU 群集旨在用于测试和预生产环境。 标准 SKU 群集允许用户将群集配置为专门满足其需求。 有关详细信息，请参阅 [Service Fabric 托管群集 sku](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) 了解更多详细信息。
+基本 SKU 群集是指 Service Fabric 资源提供程序提供的大多数配置。 基本 SKU 群集旨在用于测试和预生产环境。 标准 SKU 群集允许用户将群集配置为专门满足其需求。 有关详细信息，请参阅 [Service Fabric 托管群集 sku](./overview-managed-cluster.md#service-fabric-managed-cluster-skus) 了解更多详细信息。
 
 ## <a name="cluster-deployment-and-management"></a>群集部署和管理
 
@@ -66,7 +66,7 @@ SLA 不会与当前 Service Fabric 资源模型发生更改。
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Service Fabric 托管群集是否存在本地开发体验？
 
-本地开发体验在现有 Service Fabric 群集中保持不变。 有关详细信息，请参阅 [创建 .Net 应用程序](https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-dotnet) 以获取有关本地开发体验的更多详细信息。
+本地开发体验在现有 Service Fabric 群集中保持不变。 有关详细信息，请参阅 [创建 .Net 应用程序](./service-fabric-quickstart-dotnet.md) 以获取有关本地开发体验的更多详细信息。
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>我可以将应用程序部署为 Azure 资源管理器资源吗？
 

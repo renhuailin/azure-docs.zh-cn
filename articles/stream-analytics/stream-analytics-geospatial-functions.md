@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75426229"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130402"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>流分析地理空间函数的简介
 
@@ -53,7 +53,7 @@ FROM input
 
  {"type" : "LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
 
-若要了解详细信息，请访问 [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) 引用。
+若要了解详细信息，请访问 [CreateLineString](/stream-analytics-query/createlinestring) 引用。
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -80,7 +80,7 @@ FROM input
   
  {"type" : "Point", "coordinates" : [20.2321, -87.33]}  
 
-若要了解详细信息，请访问 [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) 引用。
+若要了解详细信息，请访问 [CreatePoint](/stream-analytics-query/createpoint) 引用。
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -107,7 +107,7 @@ FROM input
  
  {"type" : "Polygon", "coordinates" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
 
-若要了解详细信息，请访问 [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) 引用。
+若要了解详细信息，请访问 [CreatePolygon](/stream-analytics-query/createpolygon) 引用。
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
@@ -121,7 +121,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-若要了解详细信息，请访问 [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) 引用。
+若要了解详细信息，请访问 [ST_DISTANCE](/stream-analytics-query/st-distance) 引用。
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS` 函数比较两个多边形。 如果多边形重叠，函数将返回 1。 如果多边形不重叠，函数将返回 0。 
@@ -142,7 +142,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-若要了解详细信息，请访问 [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) 引用。
+若要了解详细信息，请访问 [ST_OVERLAPS](/stream-analytics-query/st-overlaps) 引用。
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
 `ST_INTERSECTS` 函数比较两个 LineString。 如果 LineString 相交，函数将返回 1。 如果 LineString 不相交，函数将返回 0。
@@ -168,7 +168,7 @@ FROM input
   
  0  
 
-若要了解详细信息，请访问 [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) 引用。
+若要了解详细信息，请访问 [ST_INTERSECTS](/stream-analytics-query/st-intersects) 引用。
 
 ## <a name="st_within"></a>ST_WITHIN
 `ST_WITHIN` 函数确定一个点或多边形位于另一个多边形内。 如果多边形包含点或多边形，函数将返回 1。 如果点或多边形位于所声明的多边形之外，函数将返回 0。
@@ -194,12 +194,12 @@ FROM input
   
  1  
 
-若要了解详细信息，请访问 [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) 引用。
+若要了解详细信息，请访问 [ST_WITHIN](/stream-analytics-query/st-within) 引用。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)

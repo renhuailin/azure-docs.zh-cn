@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: a96ff0e329fb00888645949f2eab5652d15cb941
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87540846"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96489677"
 highlightedContent:
   items:
   - title: Azure 安全性简介
@@ -30,7 +30,7 @@ highlightedContent:
     url: ./fundamentals/best-practices-and-patterns.md
   - title: 什么是 Azure 安全中心？
     itemType: overview
-    url: ../security-center/security-center-intro.md
+    url: ../security-center/security-center-introduction.md
 conceptualContent:
   items:
   - title: 基本
@@ -52,7 +52,7 @@ conceptualContent:
     - url: ./develop/secure-dev-overview.md
       itemType: overview
       text: 安全开发最佳做法
-    - url: ./develop/secure-web-app.md
+    - url: /previous-versions/azure/security/develop/secure-web-app
       itemType: tutorial
       text: 开发安全的 Web 应用
     - url: ./develop/threat-modeling-tool.md
@@ -74,17 +74,17 @@ conceptualContent:
       text: 查看详细信息
   - title: 机密和密钥
     links:
-    - url: ../key-vault/key-vault-overview.md
+    - url: ../key-vault/general/overview.md
       itemType: overview
       text: 什么是 Azure 密钥保管库？
-    - url: ../key-vault/quick-create-cli.md
+    - url: ../key-vault/secrets/quick-create-cli.md
       itemType: quickstart
       text: 设置和检索机密
     - url: ../dedicated-hsm/overview.md
       itemType: overview
       text: 什么是 Azure 专用 HSM？
     footerLink:
-      url: /azure/key-vault/
+      url: ../key-vault/index.yml
       text: 查看详细信息
   - title: 数据保护
     links:
@@ -102,7 +102,7 @@ conceptualContent:
       text: 查看详细信息
   - title: 身份管理
     links:
-    - url: ./fundamentals/choose-ad-authn.md
+    - url: ../active-directory/hybrid/choose-ad-authn.md
       itemType: concept
       text: 选择正确的身份验证方法
     - url: ./fundamentals/steps-secure-identity.md
@@ -126,17 +126,17 @@ conceptualContent:
       itemType: how-to-guide
       text: 使用安全策略
     footerLink:
-      url: /azure/security-center/
+      url: ../security-center/index.yml
       text: 查看详细信息
   - title: IoT 安全监视
     links:
-    - url: ../asc-for-iot/overview.md
+    - url: ../defender-for-iot/overview.md
       itemType: overview
       text: 适用于 IoT 的 Azure 安全中心简介
-    - url: ../asc-for-iot/architecture.md
+    - url: ../defender-for-iot/architecture.md
       itemType: how-to-guide
       text: 适用于 IoT 的 Azure 安全中心体系结构
-    - url: ../asc-for-iot/getting-started.md
+    - url: ../defender-for-iot/getting-started.md
       itemType: how-to-guide
       text: 适用于 IoT 的 Azure 安全中心入门
     footerLink:
@@ -154,17 +154,17 @@ conceptualContent:
       itemType: quickstart
       text: Azure Sentinel 预览版入门
     footerLink:
-      url: /azure/sentinel/
+      url: ../sentinel/index.yml
       text: 查看详细信息
   - title: 威胁防护
     links:
     - url: ../security-center/security-center-alerts-overview.md
       itemType: concept
       text: Azure 安全中心的安全警报
-    - url: ../storage/common/storage-advanced-threat-protection.md
+    - url: ../storage/common/azure-defender-storage-configure.md
       itemType: concept
       text: Azure 存储的高级威胁防护
-    - url: ../sql-database/sql-database-threat-detection-overview.md
+    - url: ../azure-sql/database/threat-detection-overview.md
       itemType: concept
       text: Azure SQL 数据库的高级威胁防护
     footerLink:
@@ -179,7 +179,7 @@ conceptualContent:
       itemType: overview
       text: 管理和监视概述
     footerLink:
-      url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
+      url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
       text: 搜索更多内容
   - title: 网络安全
     links:
@@ -189,7 +189,7 @@ conceptualContent:
     - url: ./fundamentals/network-best-practices.md
       itemType: concept
       text: 安全最佳做法
-    - url: ./fundamentals/ddos-best-practices.md
+    - url: ../ddos-protection/fundamental-best-practices.md
       itemType: concept
       text: DDoS 保护
   - title: 基础结构安全性
@@ -221,7 +221,7 @@ conceptualContent:
     links:
     - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
       itemType: overview
-      text: 数据安全
+      text: 数据安全性
     - url: ./fundamentals/paas-applications-using-sql.md
       itemType: concept
       text: 适用于 PaaS 数据库的最佳做法
@@ -237,5 +237,5 @@ conceptualContent:
       itemType: overview
       text: Azure 蓝图服务
     footerLink:
-      url: /azure/governance/
+      url: ../governance/index.yml
       text: 查看详细信息

@@ -6,17 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: general
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 11/08/2019
+ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e24f1e546de1ce01896e271dbc9155c47f6c2bb6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3407b9539047b5c683f304549977eace7b57341
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100817"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778982"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>快速入门：使用 PowerShell 创建密钥保管库
 
@@ -53,13 +52,13 @@ New-AzResourceGroup -Name 'myResourceGroup" -Location "EastUS"
 - 位置：EastUS。
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name "&lt;your-unique-key-vault-name&gt; -ResourceGroupName "myResourceGroup" -Location "East US"
+New-AzKeyVault -Name "<your-unique-key-vault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 此 cmdlet 的输出显示新创建的密钥保管库的属性。 请记下下面列出的两个属性：
 
 - **保管库名称**：为上面的 --name 参数提供的名称。
-- **保管库 URI**：在本示例中为 https://&lt;your-unique-keyvault-name&gt;.vault.azure.net/。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
+- **保管库 URI**：在本示例中为 https://<your-unique-keyvault-name>.vault.azure.net/。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户才有权对这个新保管库执行任何操作。
 
@@ -75,8 +74,8 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了 Key Vault 并在其中存储了一个机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
+在本快速入门中，你使用 Azure PowerShell 创建了 Key Vault。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
 - 阅读 [Azure Key Vault 概述](overview.md)
-- 请参阅 [Azure PowerShell Key Vault cmdlet](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault) 参考
+- 请参阅 [Azure PowerShell Key Vault cmdlet](/powershell/module/az.keyvault/) 参考
 - 查看 [Azure Key Vault 最佳做法](best-practices.md)

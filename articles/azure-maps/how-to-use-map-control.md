@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db7006c01f59e8a11872d99b3a16f24f65ef7588
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335324"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413371"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps 地图控件
 
 Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功能呈现到你的 web 或移动应用程序中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 若要在网页中使用 Map Control，必须具备以下先决条件之一：
 
 * [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account) 并 [获取主要订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也称为主密钥或订阅密钥。
 
-* 获取 Azure Active Directory (具有 [身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)的 AAD) 凭据。
+* 获取 Azure Active Directory (具有 [身份验证选项](/javascript/api/azure-maps-control/atlas.authenticationoptions)的 AAD) 凭据。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>在网页中创建新地图
 
@@ -75,7 +75,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
     </style>
    ```
 
-4. 在页面的正文中，添加一个 `<div>` 元素并将其 `id` 指定为 **myMap**。
+4. 在页面的正文中，添加一个 `<div>` 元素并将其 `id` 指定为 **myMap** 。
 
    ```HTML
     <body onload="InitMap()">
@@ -83,7 +83,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
     </body>
    ```
 
-5. 现在，我们将初始化地图控件。 若要对控件进行身份验证，你需要拥有 Azure Maps 订阅密钥，或使用具有 [身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)的 AZURE ACTIVE DIRECTORY (AAD) 凭据。
+5. 现在，我们将初始化地图控件。 若要对控件进行身份验证，你需要拥有 Azure Maps 订阅密钥，或使用具有 [身份验证选项](/javascript/api/azure-maps-control/atlas.authenticationoptions)的 AZURE ACTIVE DIRECTORY (AAD) 凭据。
 
     如果使用订阅密钥进行身份验证，请复制以下脚本元素，并将其粘贴到 `<head>` 元素内和第一个 `<script>` 元素之下。 `<Your Azure Maps Key>`将替换为 Azure Maps 的主订阅密钥。
 
@@ -99,8 +99,8 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
                 }
-            }
-        });
+            });
+       }
     </script>
     ```
 
@@ -120,8 +120,8 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
                     aadAppId: '<Your AAD App Id>',
                     aadTenant: '<Your AAD Tenant Id>'
                 }
-            }
-        });
+            });
+        }
     </script>
    ```
 
@@ -254,12 +254,12 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 
 ## <a name="javascript-frameworks"></a>JavaScript 框架
 
-如果使用 JavaScript 框架进行开发，以下开源项目之一可能会很有用：
+如果使用 JavaScript 框架进行开发，则下述某一开源项目可能很有用：
 
-- [ng-azure](https://github.com/arnaudleclerc/ng-azure-maps) maps-围绕 azure maps 的10个包装。
-- [AzureMapsControl](https://github.com/arnaudleclerc/AzureMapsControl.Components) -Azure Maps Blazor 组件。
-- [Azure Maps 响应组件](https://github.com/WiredSolutions/react-azure-maps) -Azure Maps 控件的响应包装。
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) -Vue 应用程序的一个 Azure Maps 组件。
+- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - 围绕 Azure Maps 的 Angular 10 包装器。
+- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor 组件。
+- [Azure Maps React 组件](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps 控件的 React 包装器。
+- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue 应用程序的 Azure Maps 组件。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -279,7 +279,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 > [创建地图](map-create.md)
 
 > [!div class="nextstepaction"]
-> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](/samples/browse/?products=azure-maps)
 
 有关显示如何将 Azure Active Directory (AAD) 与 Azure Maps 集成的示例列表，请参阅：
 

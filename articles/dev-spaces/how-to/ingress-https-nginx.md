@@ -5,15 +5,17 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 NGINX 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.custom: devx-track-js
-ms.openlocfilehash: 23bad8d7def12f4454986fb005158c3a65acd33e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 873057e88809c1aaa8047ac02129d83ca8e9a478
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276258"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608548"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自定义 NGINX 入口控制器并配置 HTTPS
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 本文介绍如何将 Azure Dev Spaces 配置为使用自定义 NGINX 入口控制器。 本文还介绍如何将该自定义入口控制器配置为使用 HTTPS。
 
@@ -56,7 +58,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> 上面的示例为入口控制器创建一个公共终结点。 如果需要改用入口控制器的专用终结点，请添加 *--set controller。helm install 命令的 \\ \\ kubernetes \\ /azure-load--internal "= true*参数。 *helm install* 例如：
+> 上面的示例为入口控制器创建一个公共终结点。 如果需要改用入口控制器的专用终结点，请添加 *--set controller。helm install 命令的 \\ \\ kubernetes \\ /azure-load--internal "= true* 参数。 *helm install* 例如：
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
@@ -156,7 +158,7 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 通过 `azds list-uris` 命令打开公共 URL，导航到 *bikesharingweb* 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
 
 > [!NOTE]
-> 如果看到错误页面而不是*bikesharingweb*服务，请验证是否已在*yaml*文件**中更新** *kubernetes.io/ingress.class*批注和主机。
+> 如果看到错误页面而不是 *bikesharingweb* 服务，请验证是否已在 *yaml* 文件 **中更新** *kubernetes.io/ingress.class* 批注和主机。
 
 使用 `azds space select` 命令在 " *开发* " 下创建子空间，并列出用于访问子开发人员空间的 url。
 
@@ -174,7 +176,7 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-通过从命令中打开公共 URL，导航到*azureuser1*子 dev 空间中的*bikesharingweb*服务 `azds list-uris` 。 在上面的示例中， *azureuser1*子开发人员空间中*bikesharingweb*服务的公共 URL 是 `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` 。
+通过从命令中打开公共 URL，导航到 *azureuser1* 子 dev 空间中的 *bikesharingweb* 服务 `azds list-uris` 。 在上面的示例中， *azureuser1* 子开发人员空间中 *bikesharingweb* 服务的公共 URL 是 `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` 。
 
 ## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>将 NGINX 入口控制器配置为使用 HTTPS
 
@@ -208,7 +210,7 @@ spec:
 ```
 
 > [!NOTE]
-> 对于测试，还有一个可用于*ClusterIssuer*的[过渡服务器][letsencrypt-staging-issuer]。
+> 对于测试，还有一个可用于 *ClusterIssuer* 的 [过渡服务器][letsencrypt-staging-issuer]。
 
 使用 `kubectl` 应用 `letsencrypt-clusterissuer.yaml` 。
 
@@ -277,7 +279,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-使用*url*包的依赖项更新[上的 BikeSharingWeb/package.js][package-json] 。
+使用 *url* 包的依赖项更新 [上的 BikeSharingWeb/package.js][package-json] 。
 
 ```json
 {
@@ -289,7 +291,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-更新[BikeSharingWeb/lib/helpers.js][helpers-js]中的*getApiHostAsync*方法，以使用 HTTPS：
+更新 [BikeSharingWeb/lib/helpers.js][helpers-js]中的 *getApiHostAsync* 方法，以使用 HTTPS：
 
 ```javascript
 ...
@@ -326,7 +328,7 @@ azds up
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830438"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779764"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
@@ -26,7 +26,7 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 > [!WARNING]
 > - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅 [使用 Azure AD 进行 Azure 磁盘加密（以前版本）](disk-encryption-overview-aad.md)。 
 > - 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外的许可或订阅成本。 必须具有有效的活动 Azure 订阅，才能在 Azure 的受支持区域中创建资源。
-> - 目前，第 2 代 VM 不支持 Azure 磁盘加密。 有关详细信息，请参阅 [Azure 中对第 2 代 VM 的支持](../windows/generation-2.md)。
+> - 目前，第 2 代 VM 不支持 Azure 磁盘加密。 有关详细信息，请参阅 [Azure 中对第 2 代 VM 的支持](../generation-2.md)。
 
 只需花几分钟时间学习[使用 Azure CLI 创建 Linux VM 并对其进行加密快速入门](disk-encryption-cli-quickstart.md)或者[使用 Azure PowerShell 创建 Linux VM 并对其进行加密快速入门](disk-encryption-powershell-quickstart.md)，即可了解适用于 Linux 的 Azure 磁盘加密的基础知识。
 
@@ -46,7 +46,9 @@ Linux VM 具有[各种大小](../sizes.md)。 Azure 磁盘加密不适用于[基
 
 Azure 磁盘加密还可用于使用高级存储的 VM。
 
-Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2-capabilities) 和 [Lsv2 系列 VM](../lsv2-series.md) 上不可用。 有关更多特例，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-linux.md#unsupported-scenarios)。
+Azure 磁盘加密不适用于 [第2代 vm](../generation-2.md#generation-1-vs-generation-2-capabilities) 和 [Lsv2 系列 vm](../lsv2-series.md)。 有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-linux.md#unsupported-scenarios)。
+
+Azure 磁盘加密不能用于没有 temp 磁盘 (Dv4、Dsv4、Ev4 和 Esv4) 的 VM 映像。  请参阅 [没有本地临时磁盘的 AZURE VM 大小](../azure-vms-no-temp-disk.md)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -65,7 +67,7 @@ Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2
 | Canonical | Ubuntu 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS 和数据磁盘 |
 | RedHat | RHEL 7。8 | 7.8 | RedHat： RHEL：7.8：最新 | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.7 | 7.7 | RedHat:RHEL:7.7:latest | OS 和数据磁盘（请参阅下面的注释） |
-| RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | OS 和数据磁盘（请参阅下面的注释） |
+| RedHat | RHEL 7-LVM | 7-LVM | RedHat： RHEL： 7-LVM：7.8.2020111201 | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.5 | 7.5 | RedHat:RHEL:7.5:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.4 | 7.4 | RedHat:RHEL:7.4:latest | OS 和数据磁盘（请参阅下面的注释） |
@@ -73,8 +75,9 @@ Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2
 | RedHat | RHEL 7.2 | 7.2 | RedHat:RHEL:7.2:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 6.8 | 6.8 | RedHat:RHEL:6.8:latest | 数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | 数据磁盘（请参阅下面的注释） |
+| OpenLogic | CentOS 7。8 | 7.8 | OpenLogic： CentOS：7_8：最新 | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.7 | 7.7 | OpenLogic:CentOS:7.7:latest | OS 和数据磁盘 |
-| OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | OS 和数据磁盘 |
+| OpenLogic | CentOS 7-LVM | 7-LVM | OpenLogic： CentOS-LVM： 7-LVM：7.8.2020111100 | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.5 | 7.5 | OpenLogic:CentOS:7.5:latest | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.4 | 7.4 | OpenLogic:CentOS:7.4:latest | OS 和数据磁盘 |
@@ -94,7 +97,7 @@ Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2
 
 ## <a name="additional-vm-requirements"></a>其他 VM 要求
 
-Azure 磁盘加密要求系统上存在 dm-crypt 和 vfat 模块。 在默认映像中删除或禁用 vfat 会阻止系统读取密钥卷，以及在后续重新启动时获取用于解锁磁盘的密钥。 从系统中删除 vfat 模块或强制扩展数据驱动器上的 OS 装载点/文件夹的系统强化步骤与 Azure 磁盘加密不兼容。 
+Azure 磁盘加密要求系统上存在 dm-crypt 和 vfat 模块。 在默认映像中删除或禁用 vfat 会阻止系统读取密钥卷，以及在后续重新启动时获取用于解锁磁盘的密钥。 从系统中删除 vfat 模块或强制扩展数据驱动器上的 OS 装入点/文件夹的系统强化步骤与 Azure 磁盘加密不兼容。 
 
 在启用加密之前，必须在 /etc/fstab 中正确列出要加密的数据磁盘。 创建条目时，请使用“nofail”选项，然后选择一个永久性的块设备名称（因为采用“/dev/sdX”格式的设备名称在重启期间可能不会与同一磁盘关联，尤其是在加密之后。有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](../troubleshooting/troubleshoot-device-names-problems.md)）。
 
@@ -108,8 +111,8 @@ Azure 磁盘加密要求系统上存在 dm-crypt 和 vfat 模块。 在默认映
 下面是用于装载数据磁盘和创建必要的 /etc/fstab 条目的命令示例：
 
 ```bash
-UUID0="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun0)"
-UUID1="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun1)"
+UUID0="$(blkid -s UUID -o value /dev/sda1)"
+UUID1="$(blkid -s UUID -o value /dev/sda2)"
 mkdir /data0
 mkdir /data1
 echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab

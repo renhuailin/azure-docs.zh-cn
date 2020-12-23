@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/13/2019
 ms.author: jeedes
-ms.openlocfilehash: e6c7b112e8ac60833b22f07590e357e096ba859c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1cec7b181f2630caa90d3e518b74605f5b8871e1
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525303"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460540"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>教程：将 HyperAnna 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88525303"
 * 让用户使用其 Azure AD 帐户自动登录到 HyperAnna。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "88525303"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **HyperAnna**。 
+1. 在“从库中添加”部分的搜索框中，键入 **HyperAnna** 。 
 1. 在结果面板中选择“HyperAnna”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 
@@ -137,19 +137,18 @@ ms.locfileid: "88525303"
 
 ### <a name="create-hyperanna-test-user"></a>创建 HyperAnna 测试用户
 
-本部分需在 HyperAnna 中创建名为“Britta Simon”的用户。 请与  [HyperAnna 支持团队](mailto:support@hyperanna.com)协作，将用户添加到 HyperAnna 平台中。 使用单一登录前，必须先创建并激活用户。
+本部分需在 HyperAnna 中创建名为“Britta Simon”的用户。 请与 [HyperAnna 支持团队](mailto:support@hyperanna.com)协作，将用户添加到 HyperAnna 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的HyperAnna 磁贴时，应会自动登录到为其设置了 SSO 的 HyperAnna。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的HyperAnna 磁贴时，应会自动登录到为其设置了 SSO 的 HyperAnna。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

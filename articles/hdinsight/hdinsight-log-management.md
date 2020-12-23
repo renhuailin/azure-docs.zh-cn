@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997551"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546018"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 群集的日志
 
@@ -42,7 +42,7 @@ HDInsight 日志管理的典型步骤如下：
 * 群集状态，包括上次状态更改的详细信息
 * 为主节点、核心节点和任务节点指定的 HDInsight 实例的类型和数量
 
-可以使用 Azure 门户获取其中的大多数顶级信息。  或者，可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 获取有关 HDInsight 群集的信息：
+可以使用 Azure 门户获取其中的大多数顶级信息。  或者，可以使用 [Azure CLI](/cli/azure/) 获取有关 HDInsight 群集的信息：
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -69,7 +69,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 * 考虑监视解决方案或服务是否能够带来好处。 Microsoft System Center 提供了 [HDInsight 管理包](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259)。 可以使用 Apache Chukwa 和 Ganglia 等第三方工具收集和集中处理日志。 许多公司提供用于监视基于 Hadoop 的大数据解决方案的服务，例如：Centerity、Compuware APM、Sematext SPM 和 Zettaset Orchestrator。
 
-## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>步骤2：管理群集服务版本和查看日志
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>步骤 2：管理群集服务版本和查看日志
 
 典型的 HDInsight 群集使用多个服务和开源软件包（例如 Apache HBase、Apache Spark 等）。 对于某些工作负荷（例如生物信息学应用），除了作业执行日志以外，可能还需要保留服务配置日志历史记录。
 
@@ -109,7 +109,7 @@ log4j.logger.alerts=DEBUG,alerts
 
 ### <a name="access-the-hadoop-log-files"></a>访问 Hadoop 日志文件
 
-HDInsight 将其日志文件存储在群集文件系统和 Azure 存储中。 若要检查群集中的日志文件，可与群集建立 [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 连接并浏览文件系统，或者在远程头节点服务器上使用 Hadoop YARN 状态门户。 可以使用可从 Azure 存储空间访问和下载数据的任何工具检查 Azure 存储中的日志文件。 这些工具包括 [AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) 和 Visual Studio 服务器资源管理器。 此外，可以使用 PowerShell 和 Azure 存储客户端库或 Azure.NET SDK 访问 Azure Blob 存储中的数据。
+HDInsight 将其日志文件存储在群集文件系统和 Azure 存储中。 若要检查群集中的日志文件，可与群集建立 [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 连接并浏览文件系统，或者在远程头节点服务器上使用 Hadoop YARN 状态门户。 可以使用可从 Azure 存储空间访问和下载数据的任何工具检查 Azure 存储中的日志文件。 这些工具包括 [AzCopy](../storage/common/storage-use-azcopy-v10.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) 和 Visual Studio 服务器资源管理器。 此外，可以使用 PowerShell 和 Azure 存储客户端库或 Azure.NET SDK 访问 Azure Blob 存储中的数据。
 
 Hadoop 在群集中的各个节点上以“任务尝试”的形式运行作业。  HDInsight 可以启动推测任务尝试，终止任何其他尚未完成的任务尝试。 这会即时生成大量的活动并将其记录到控制器、stderr 和 syslog 日志文件。 此外，多个任务尝试会同时运行，但日志文件只能以线性方式显示结果。
 
@@ -150,7 +150,7 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 完成前面的步骤后，便了解了 HDInsight 群集生成的日志文件的类型和数量。
 
-接下来，请分析一段时间内关键日志存储位置中的日志数据量。 例如，可以分析 30-60-90 天内的数据量和增长率。  在电子表格中或使用其他工具（例如 Visual Studio、Azure 存储资源管理器或 Power Query for Excel）记录此信息。 有关详细信息，请参阅[分析 HDInsight 日志](hdinsight-debug-jobs.md)。  
+接下来，请分析一段时间内关键日志存储位置中的日志数据量。 例如，可以分析 30-60-90 天内的数据量和增长率。  在电子表格中或使用其他工具（例如 Visual Studio、Azure 存储资源管理器或 Power Query for Excel）记录此信息。 ```
 
 现在，我们已获得足够的信息来为关键日志创建日志管理策略。  使用电子表格（或所选的工具）预测日志大小增长率，以及后续的 Azure 服务日志存储费用。  还应考虑要检查的日志集的所有日志保留要求。  现在，reforecast 在确定哪些日志文件可以删除)  (，在确定哪些日志文件可以删除后，可以将其，并将哪些日志保留并存档到成本较低的 Azure 存储。
 
@@ -186,6 +186,6 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 ## <a name="next-steps"></a>后续步骤
 
-* [适用于 HDInsight 的监视和日志记录做法](https://msdn.microsoft.com/library/dn749790.aspx)
+* [适用于 HDInsight 的监视和日志记录做法](/previous-versions/msp-n-p/dn749790(v=pandp.10))
 * [在基于 Linux 的 HDInsight 中访问 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [如何控制各种 Apache Hadoop 组件的日志文件大小](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

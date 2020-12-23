@@ -7,14 +7,14 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
-ms.openlocfilehash: 046116addf643d6c0eb0faf2f821b6ef78d440c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "77050624"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453006"
 ---
-# <a name="choose-the-right-iot-solution"></a>选择正确的 IoT 解决方案
+# <a name="what-is-the-right-iot-solution-for-your-business"></a>适用于企业的 IoT 解决方案是什么？
 
 若要为企业构建 IoT 解决方案，通常可以选择使用平台服务或托管应用平台方法。  
 
@@ -75,4 +75,4 @@ ms.locfileid: "77050624"
 
 若要详细了解成功 IoT 解决方案的关键特性，请参阅[成功 IoT 解决方案的 8 大特性](https://aka.ms/8attributes)白皮书。
 
-有关 IoT 体系结构的深入介绍，请参阅 [Microsoft Azure IoT 参考体系结构](https://aka.ms/iotrefarchitecture)。
+有关 IoT 体系结构的深入介绍，请参阅 [Microsoft Azure IoT 参考体系结构](/azure/architecture/reference-architectures/iot)。

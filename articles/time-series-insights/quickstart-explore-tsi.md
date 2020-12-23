@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/02/2020
-ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666528"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016218"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>快速入门：浏览 Azure 时序见解 Gen2 演示环境
 
@@ -127,9 +127,9 @@ Azure 时序见解 Gen2 资源管理器演示历史数据和根本原因分析�
 已准备好创建自己的 Azure 时序见解 Gen2 环境。 若要开始，请执行以下操作：
 
 > [!div class="nextstepaction"]
-> [规划 Azure 时序见解 Gen2 环境](time-series-insights-update-plan.md)
+> [规划 Azure 时序见解 Gen2 环境](./how-to-plan-your-environment.md)
 
 了解如何使用演示及其功能：
 
 > [!div class="nextstepaction"]
-> [Azure 时序见解 Gen2 资源管理器](time-series-insights-update-explorer.md)
+> [Azure 时序见解 Gen2 资源管理器](./concepts-ux-panels.md)

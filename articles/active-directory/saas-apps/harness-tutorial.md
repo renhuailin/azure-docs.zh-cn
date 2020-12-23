@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6a6c8b49582b34c2603e0ddf78b76736f97c183
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551381"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445573"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Harness 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551381"
 * 让用户使用其 Azure AD 帐户自动登录到 Harness。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -126,7 +126,7 @@ ms.locfileid: "88551381"
 
 ## <a name="configure-harness-sso"></a>配置 Harness SSO
 
-1. 若要在 Harness 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
+1. 若要在 Harness 中自动执行配置，需要通过单击“安装扩展”  来安装 **我的应用安全登录浏览器扩展** 。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
@@ -138,15 +138,15 @@ ms.locfileid: "88551381"
 
 4. 在页面右上角，单击“持续安全性”   > “访问管理”   > “身份验证设置”  。
 
-    ![Harness 配置](./media/harness-tutorial/configure01.png)
+    ![屏幕截图显示了“连续安全”菜单，其中已选择“访问管理”和“身份验证设置”。](./media/harness-tutorial/configure01.png)
 
 5. 在“SSO 提供程序”  部分中，单击“+ 添加 SSO 提供程序”   > “SAML”  。
 
-    ![Harness 配置](./media/harness-tutorial/configure03.png)
+    ![屏幕截图显示了“SSO 提供程序”，其中已选择“+ 添加 SSO 提供程序 - SAML”。](./media/harness-tutorial/configure03.png)
 
 6. 在“SAML 提供程序”  弹出窗口中，执行以下步骤：
 
-    ![Harness 配置](./media/harness-tutorial/configure02.png)
+    ![屏幕截图显示了“SAML 提供程序”弹出窗口，其中突出显示了“URL”和“显示名称”字段，且已选择“选择文件”和“提交”按钮。](./media/harness-tutorial/configure02.png)
 
     a. 复制“在 SSO 提供程序中，请启用基于 SAML 的登录，然后输入以下 URL”  实例，并将其粘贴到 Azure 门户上“基本 SAML 配置”  部分的“答复 URL”文本框中。
 
@@ -166,11 +166,11 @@ ms.locfileid: "88551381"
 
 1. 在页面右上角，单击“持续安全性”   > “访问管理”   > “用户”  。
 
-    ![Harness 配置](./media/harness-tutorial/configure04.png)
+    ![屏幕截图显示了“连续安全”菜单，其中已选择“访问管理”和“用户”。](./media/harness-tutorial/configure04.png)
 
 1. 在页面右侧，单击“+ 添加用户”。 
 
-    ![Harness 配置](./media/harness-tutorial/configure05.png)
+    ![屏幕截图显示了“用户”页面，其中选择了“+ 添加用户”操作。](./media/harness-tutorial/configure05.png)
 
 1. 在“添加用户”弹出窗口中，执行以下步骤  ：
 
@@ -186,15 +186,14 @@ ms.locfileid: "88551381"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Harness 磁贴时，应当会自动登录到设置了 SSO 的 Harness。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Harness 磁贴时，应当会自动登录到设置了 SSO 的 Harness。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Harness](https://aad.portal.azure.com/)
-

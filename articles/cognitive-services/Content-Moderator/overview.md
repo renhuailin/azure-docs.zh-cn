@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-keywords: 内容审查器, azure 内容审查器, 联机审查器, 内容筛选软件, 内容审核服务
-ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: 内容审查器, azure 内容审查器, 联机审查器, 内容筛选软件, 内容审查服务, 内容审查
+ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309648"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560367"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
@@ -81,4 +81,4 @@ Azure 内容审查器是一种 AI 服务，可用于处理可能的冒犯性、�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始在 Web 门户上使用内容审查器，请按照[尝试在 Web 上使用内容审查器](quick-start.md)进行操作。 或者，完成[客户端库快速入门](client-libraries.md)以实现代码中的基本方案。
+若要开始在 Web 门户上使用内容审查器，请按照[尝试在 Web 上使用内容审查器](quick-start.md)进行操作。 或者，完成一个[客户端库或 EST API 快速入门](client-libraries.md)以实现代码中的基本方案。

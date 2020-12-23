@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318311"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505267"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
 Log Analytics 是一种可能存有个人数据的数据存储。 Application Insights 将其数据存储在 Log Analytics 分区中。 本文讨论通常在 Log Analytics 和 Application Insights 中的哪些位置可找到此类数据，以及可用于处理此类数据的功能。
 
 > [!NOTE]
-> 在本文中，_日志数据_指的是发送到 Log Analytics 工作区的数据，而_应用程序数据_指的是 Application Insights 收集的数据。
+> 在本文中，_日志数据_ 指的是发送到 Log Analytics 工作区的数据，而 _应用程序数据_ 指的是 Application Insights 收集的数据。
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -26,7 +26,7 @@ Log Analytics 是一种可能存有个人数据的数据存储。 Application In
 
 下面介绍了一些可行的方法，不过最终将由你和你的公司来决定用于处理私人数据（如有）的策略。 我们从技术角度出发，按偏好顺序（偏好度从高到低）列出了这些方法：
 
-* 如果可行，应停止收集、混淆或匿名处理私人数据，或停止以其他方式调整所收集的数据，使其不再被视为“私人数据”。 这是_目前为止_的首选方法，无需创建非常昂贵且影响很大的数据处理策略。
+* 如果可行，应停止收集、混淆或匿名处理私人数据，或停止以其他方式调整所收集的数据，使其不再被视为“私人数据”。 这是 _目前为止_ 的首选方法，无需创建非常昂贵且影响很大的数据处理策略。
 * 如果不可行，请尝试规范化数据，减少对数据平台和性能的影响。 例如，不记录显式用户 ID，而是创建查找数据，将用户名及其详细信息关联到可随后在其他位置记录的内部 ID。 这样一来，如果某个用户要求删除其个人信息，则只需删除查找表中对应于该用户的行就足够了。 
 * 最后，如果必须收集私人数据，请就清除 API 路径和现有查询 API 路径构建相关流程，以履行在导出和删除与用户关联的任何私人数据时可能需要承担的任何义务。 
 
@@ -72,7 +72,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 
 ## <a name="how-to-export-and-delete-private-data"></a>如何导出和删除私人数据
 
-如前面的[个人数据处理策略](#strategy-for-personal-data-handling)部分所述，如果可行，__强烈__建议重新构建数据收集策略，以禁止收集、混淆或匿名处理私人数据，或禁止以其他方式对其进行修改，使其不再被视为“私人数据”。 处理数据首先需要你和你的团队定义和自动化策略，为客户构建一个界面，以便与数据交互，并且还需持续承担维护成本。 此外，Log Analytics 和 Application Insights 的计算成本很高，大量并发查询或清除 API 调用可能会对与 Log Analytics 功能的所有其他交互产生负面影响。 尽管如此，在某些情况下，确实必须收集私人数据。 对于这些情况，数据应按本部分所述进行处理。
+如前面的 [个人数据处理策略](#strategy-for-personal-data-handling)部分所述，如果可行，__强烈__ 建议重新构建数据收集策略，以禁止收集、混淆或匿名处理私人数据，或禁止以其他方式对其进行修改，使其不再被视为“私人数据”。 处理数据首先需要你和你的团队定义和自动化策略，为客户构建一个界面，以便与数据交互，并且还需持续承担维护成本。 此外，Log Analytics 和 Application Insights 的计算成本很高，大量并发查询或清除 API 调用可能会对与 Log Analytics 功能的所有其他交互产生负面影响。 尽管如此，在某些情况下，确实必须收集私人数据。 对于这些情况，数据应按本部分所述进行处理。
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
@@ -81,16 +81,19 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 对于查看和导出数据请求，应使用 [Log Analytics 查询 API](https://dev.loganalytics.io/) 或 [Application Insights 查询 API](https://dev.applicationinsights.io/quickstart)。 将数据形状转换为适当形状以提供给用户时，将由你实现相关逻辑。 [Azure Functions](https://azure.microsoft.com/services/functions/) 非常适合托管此类逻辑。
 
 > [!IMPORTANT]
->  虽然绝大多数清除操作完成起来会比 SLA 快得多，但由于其对所用数据平台造成的严重影响，因此**完成清除操作所需的正式 SLA 设置为 30 天**。 这是一个自动化过程；无法请求以更快的速度处理操作。
+>  虽然绝大多数清除操作完成起来会比 SLA 快得多，但由于其对所用数据平台造成的严重影响，因此 **完成清除操作所需的正式 SLA 设置为 30 天**。 此 SLA 满足 GDPR 的要求。 这是一个自动化过程，因此无法请求处理操作的速度更快。 
 
 ### <a name="delete"></a>删除
 
 > [!WARNING]
 > Log Analytics 中的删除操作具有破坏性且不可逆！ 执行时请特别小心。
 
-我们已在隐私处理中提供*清除* API 路径。 使用此路径会带来一定的风险和潜在的性能影响，并有可能导致 Log Analytics 数据的所有聚合、度量和其他方面发生偏差，因此应谨慎使用。 有关处理私人数据的替代方法，请参阅[个人数据处理策略](#strategy-for-personal-data-handling)部分。
+我们已在隐私处理中提供 *清除* API 路径。 使用此路径会带来一定的风险和潜在的性能影响，并有可能导致 Log Analytics 数据的所有聚合、度量和其他方面发生偏差，因此应谨慎使用。 有关处理私人数据的替代方法，请参阅[个人数据处理策略](#strategy-for-personal-data-handling)部分。
 
-清除是一项高特权操作，如果未向 Azure 中的应用或用户显式授予 Azure 资源管理器中的某个角色，则任何应用或用户（甚至包括资源所有者）都无权执行该操作。 此角色为_数据清除程序_，由于可能会丢失数据，应谨慎委托。 
+> [!NOTE]
+> 执行清除操作后，在 [清除操作状态](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) 为 " *挂起*" 时，无法访问数据。 
+
+清除是一项高特权操作，如果未向 Azure 中的应用或用户显式授予 Azure 资源管理器中的某个角色，则任何应用或用户（甚至包括资源所有者）都无权执行该操作。 此角色为 _数据清除程序_，由于可能会丢失数据，应谨慎委托。 
 
 > [!IMPORTANT]
 > 若要管理系统资源，清除请求被限制为每小时 50 个请求。 应该通过发送一条命令并在其谓词中包含所有需要清除的用户标识，批量执行清除请求。 使用 [in 运算符](/azure/kusto/query/inoperator)来指定多个标识。 在执行清除请求之前，应运行查询来验证结果是否符合预期。 
@@ -109,7 +112,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
     ```
 
 > [!IMPORTANT]
->  虽然我们预计绝大多数清除操作完成起来都比我们的 SLA 快得多，但由于这些操作会对 Log Analytics 使用的数据平台造成严重影响，因此**我们将完成清除操作所需的正式 SLA 设置为 30 天**。 
+>  虽然我们预计绝大多数清除操作完成起来都比我们的 SLA 快得多，但由于这些操作会对 Log Analytics 使用的数据平台造成严重影响，因此 **我们将完成清除操作所需的正式 SLA 设置为 30 天**。 
 
 #### <a name="application-data"></a>应用程序数据
 
@@ -121,7 +124,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
    ```
 
 > [!IMPORTANT]
->  虽然绝大多数清除操作完成起来会比 SLA 快得多，但由于其对 Application Insights 使用的数据平台造成的严重影响，因此**将完成清除操作所需的正式 SLA 设置为 30 天**。
+>  虽然绝大多数清除操作完成起来会比 SLA 快得多，但由于其对 Application Insights 使用的数据平台造成的严重影响，因此 **将完成清除操作所需的正式 SLA 设置为 30 天**。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要详细了解如何收集、处理和保护 Log Analytics 数据，请参阅 [Log Analytics 数据安全性](./data-security.md)。

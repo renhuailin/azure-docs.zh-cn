@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e876ca028532bb3721146e90a91d68c4c12bf79f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557624"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096069"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>将数据迁移到 Azure Cosmos DB 表 API 帐户
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 本教程说明如何导入要在 Azure Cosmos DB [表 API](table-introduction.md) 中使用的数据。 如果已将数据存储在 Azure 表存储中，可以使用数据迁移工具或 AzCopy 将数据导入 Azure Cosmos DB 表 API。 如果已将数据存储在 Azure Cosmos DB 表 API（预览版）帐户中，则必须使用数据迁移工具来迁移数据。 
 
@@ -66,11 +67,11 @@ ms.locfileid: "85557624"
 * **/s.Filter：** 可选。 要应用的筛选器字符串
 * **/s.Projection：** 可选。 要选择的列的列表
 
-在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” > “帐户” > “访问密钥”，然后使用复制按钮复制**连接字符串**。  
+在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” > “帐户” > “访问密钥”，然后使用复制按钮复制 **连接字符串** 。  
 
-:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="HBase 源选项的屏幕截图":::
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="显示“存储帐户”>“帐户”>“访问密钥”选项并突出显示“复制”按钮的屏幕截图。":::
 
-在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” > “帐户” > “访问密钥”，然后使用复制按钮复制**连接字符串**。  
+在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” > “帐户” > “访问密钥”，然后使用复制按钮复制 **连接字符串** 。  
 
 :::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="HBase 源选项的屏幕截图":::
 
@@ -110,7 +111,7 @@ dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=
 
 ## <a name="migrate-data-by-using-azcopy"></a>使用 AzCopy 迁移数据
 
-使用 AzCopy 命令行实用工具是将数据从 Azure 表存储迁移到 Azure Cosmos DB 表 API 的另一个选项。 若要使用 AzCopy，首先需要根据[从表存储导出数据](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage)中所述导出数据，然后根据 [Azure Cosmos DB 表 API](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage) 中所述将数据导入到 Azure Cosmos DB。
+使用 AzCopy 命令行实用工具是将数据从 Azure 表存储迁移到 Azure Cosmos DB 表 API 的另一个选项。 若要使用 AzCopy，首先需要根据[从表存储导出数据](/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage)中所述导出数据，然后根据 [Azure Cosmos DB 表 API](/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage) 中所述将数据导入到 Azure Cosmos DB。
 
 在执行到 Azure Cosmos DB 的导入时，请参阅以下示例。 注意，/Dest 值使用的是 cosmosdb，而不是 core。
 

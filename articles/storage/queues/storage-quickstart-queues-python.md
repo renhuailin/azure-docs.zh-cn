@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 12c2652b4dcef46c5affde2c3fb9ef9288176eb9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a19b7bc448e9a03afd122dab749352dfa21eaa5b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87852253"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491887"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>快速入门：适用于 Python 的 Azure 队列存储客户端库 v12
 
@@ -21,26 +21,26 @@ ms.locfileid: "87852253"
 
 使用适用于 Python 的 Azure 队列存储客户端库 v12 完成以下操作：
 
-* 创建队列
-* 向队列添加消息
-* 查看队列中的消息
-* 更新队列中的消息
-* 从队列接收消息
-* 删除队列中的消息
-* 删除队列
+- 创建队列
+- 向队列添加消息
+- 查看队列中的消息
+- 更新队列中的消息
+- 从队列接收消息
+- 删除队列中的消息
+- 删除队列
 
 其他资源：
 
-* [API 参考文档](https://docs.microsoft.com/python/api/azure-storage-queue/index)
-* [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
-* [包（Python 包索引）](https://pypi.org/project/azure-storage-queue/)
-* [示例](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+- [API 参考文档](/python/api/azure-storage-queue/index)
+- [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
+- [包（Python 包索引）](https://pypi.org/project/azure-storage-queue/)
+- [示例](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-* Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 适用于你的操作系统的 [Python](https://www.python.org/downloads/) - 2.7、3.5 或更高版本
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
+- 适用于你的操作系统的 [Python](https://www.python.org/downloads/) - 2.7、3.5 或更高版本
 
 ## <a name="setting-up"></a>设置
 
@@ -101,9 +101,9 @@ pip install azure-storage-queue
 
 Azure 队列存储是一个可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供三种类型的资源：
 
-* 存储帐户
-* 存储帐户中的队列
-* 队列中的消息
+- 存储帐户
+- 存储帐户中的队列
+- 队列中的消息
 
 以下图示显示了这些资源之间的关系。
 
@@ -111,22 +111,22 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 使用以下 Python 类与这些资源进行交互：
 
-* [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient)：通过 `QueueServiceClient` 可管理存储帐户中的所有队列。
-* [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient)：通过 `QueueClient` 类可管理和操纵单个队列及其消息。
-* [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage)：`QueueMessage` 类表示在队列上调用 [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 时返回的单个对象。
+- [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient)：通过 `QueueServiceClient` 可管理存储帐户中的所有队列。
+- [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient)：通过 `QueueClient` 类可管理和操纵单个队列及其消息。
+- [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage)：`QueueMessage` 类表示在队列上调用 [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 时返回的单个对象。
 
 ## <a name="code-examples"></a>代码示例
 
 这些示例代码片段演示如何使用适用于 Python 的 Azure 队列存储客户端库执行以下操作：
 
-* [获取连接字符串](#get-the-connection-string)
-* [创建队列](#create-a-queue)
-* [向队列添加消息](#add-messages-to-a-queue)
-* [查看队列中的消息](#peek-at-messages-in-a-queue)
-* [更新队列中的消息](#update-a-message-in-a-queue)
-* [从队列接收消息](#receive-messages-from-a-queue)
-* [从队列中删除消息](#delete-messages-from-a-queue)
-* [删除队列](#delete-a-queue)
+- [获取连接字符串](#get-the-connection-string)
+- [创建队列](#create-a-queue)
+- [向队列添加消息](#add-messages-to-a-queue)
+- [查看队列中的消息](#peek-at-messages-in-a-queue)
+- [更新队列中的消息](#update-a-message-in-a-queue)
+- [从队列接收消息](#receive-messages-from-a-queue)
+- [从队列中删除消息](#delete-messages-from-a-queue)
+- [删除队列](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>获取连接字符串
 
@@ -149,9 +149,9 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 确定新队列的名称。 以下代码将 UUID 值追加到队列名称，从而确保其是唯一的。
 
 > [!IMPORTANT]
-> 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 有关命名队列的详细信息，请参阅[命名队列和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata)。
+> 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 有关命名队列的详细信息，请参阅[命名队列和元数据](/rest/api/storageservices/naming-queues-and-metadata)。
 
-创建 [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) 类的实例。 然后，调用 [create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) 方法在存储帐户中创建队列。
+创建 [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient) 类的实例。 然后，调用 [create_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) 方法在存储帐户中创建队列。
 
 将此代码添加到 `try` 块的末尾：
 
@@ -171,7 +171,7 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 ### <a name="add-messages-to-a-queue"></a>向队列添加消息
 
-以下代码片段通过调用 [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法，将消息添加到队列。 它还保存从第三个 `send_message` 调用返回的 [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage)。 `saved_message` 用于在稍后的程序中更新消息内容。
+以下代码片段通过调用 [send_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法，将消息添加到队列。 它还保存从第三个 `send_message` 调用返回的 [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage)。 `saved_message` 用于在稍后的程序中更新消息内容。
 
 将此代码添加到 `try` 块的末尾：
 
@@ -186,7 +186,7 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 ### <a name="peek-at-messages-in-a-queue"></a>查看队列中的消息
 
-通过调用 [peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) 方法，查看队列中的消息。 `peek_messages` 方法从队列前面检索一条或多条消息，但不更改消息的可见性。
+通过调用 [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) 方法，查看队列中的消息。 `peek_messages` 方法从队列前面检索一条或多条消息，但不更改消息的可见性。
 
 将此代码添加到 `try` 块的末尾：
 
@@ -203,7 +203,7 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 ### <a name="update-a-message-in-a-queue"></a>更新队列中的消息
 
-通过调用 [update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) 方法来更新消息的内容。 `update_message` 方法可以更改消息的可见性超时和内容。 消息内容必须是最大为 64 KB 的 UTF-8 编码字符串。 除了新内容，还会传入代码中之前保存的消息中的值。 `saved_message` 值标识要更新的消息。
+通过调用 [update_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) 方法来更新消息的内容。 `update_message` 方法可以更改消息的可见性超时和内容。 消息内容必须是最大为 64 KB 的 UTF-8 编码字符串。 除了新内容，还会传入代码中之前保存的消息中的值。 `saved_message` 值标识要更新的消息。
 
 ```python
     print("\nUpdating the third message in the queue...")
@@ -215,7 +215,7 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 ### <a name="receive-messages-from-a-queue"></a>从队列接收消息
 
-通过调用 [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 方法，下载以前添加的消息。
+通过调用 [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 方法，下载以前添加的消息。
 
 将此代码添加到 `try` 块的末尾：
 
@@ -249,7 +249,7 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 ### <a name="delete-a-queue"></a>删除队列
 
-以下代码使用 [delete_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) 方法来删除队列，以便清除该应用所创建的资源。
+以下代码使用 [delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) 方法来删除队列，以便清除该应用所创建的资源。
 
 将此代码添加到 `try` 块的末尾并保存文件：
 
@@ -314,7 +314,7 @@ Done
 有关教程、示例、快速入门和其他文档，请访问：
 
 > [!div class="nextstepaction"]
-> [面向 Python 开发人员的 Azure](https://docs.microsoft.com/azure/python/)
+> [面向 Python 开发人员的 Azure](/azure/python/)
 
-* 若要了解详细信息，请参阅[适用于 Python 的 Azure 存储库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)。
-* 若要查看更多 Azure 队列存储示例应用，请继续学习 [Azure 队列存储 v12 Python 客户端库示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)。
+- 若要了解详细信息，请参阅[适用于 Python 的 Azure 存储库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)。
+- 若要查看更多 Azure 队列存储示例应用，请继续学习 [Azure 队列存储 v12 Python 客户端库示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)。

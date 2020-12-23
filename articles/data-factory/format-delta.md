@@ -5,23 +5,20 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 12/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 794c9a0768a7b649ce4fb123c85f6cc0120764c8
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276494"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854965"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure 数据工厂中的增量格式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文重点介绍如何使用增量格式将数据复制到 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) 或 [Azure Blob 存储](connector-azure-blob-storage.md) 中存储的增量 lake。 此连接器作为 [内联数据集](data-flow-source.md#inline-datasets) 提供，同时将数据流映射为源和接收器。
-
-> [!NOTE]
-> 用于映射数据流的增量格式连接器目前以公共预览版的形式提供。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
@@ -33,11 +30,11 @@ ms.locfileid: "91276494"
 
 下表列出了增量源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `delta` | 是 | `delta` | format |
-| 文件系统 | Delta lake 的容器/文件系统 | 是 | String | fileSystem |
-| 文件夹路径 | 增量 lake 的直接 | 是 | String | folderPath |
+| 文件系统 | Delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
+| 文件夹路径 | 增量 lake 的直接 | 是 | 字符串 | folderPath |
 | 压缩类型 | 增量表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 旅行时间 | 选择是否要查询增量表的旧快照 | 否 | 按时间戳查询：时间戳 <br> 按版本查询：整数 | timestampAsOf <br> versionAsOf |
@@ -70,15 +67,15 @@ source(output(movieId as integer,
 
 下表列出了增量接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必选 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `delta` | 是 | `delta` | format |
-| 文件系统 | Delta lake 的容器/文件系统 | 是 | String | fileSystem |
-| 文件夹路径 | 增量 lake 的直接 | 是 | String | folderPath |
+| 文件系统 | Delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
+| 文件夹路径 | 增量 lake 的直接 | 是 | 字符串 | folderPath |
 | 压缩类型 | 增量表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 清空 | 以小时为单位指定旧版本表的保留阈值。 值0或小于30天 | 是 | Integer | 度 |
-| Update 方法 | 指定增量 lake 允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | 删除 <br> 可插入 <br> 更新 <br> upsertable |
+| Update 方法 | 指定增量 lake 允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | 删除 <br> 可插入 <br> 更新 <br> merge |
 
 ### <a name="delta-sink-script-example"></a>增量接收器脚本示例
 

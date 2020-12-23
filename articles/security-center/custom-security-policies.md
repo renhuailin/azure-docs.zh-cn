@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/22/2020
+ms.date: 12/03/2020
 ms.author: memildin
-ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448387"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559025"
 ---
 # <a name="using-custom-security-policies"></a>使用自定义安全策略
 
@@ -21,7 +21,7 @@ ms.locfileid: "91448387"
 
 你可以利用此功能添加自己的自定义计划。 如果环境未遵循所创建的策略，则你会收到建议。 你创建的任何自定义计划将连同内置计划一起显示在法规符合性仪表板中，如教程[改善法规符合性](security-center-compliance-dashboard.md)中所述。
 
-如 [Azure Policy 文档](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location)中所述，当你为自定义计划指定位置时，该位置必须是某个管理组或订阅。 
+如 [Azure Policy 文档](../governance/policy/concepts/definition-structure.md#definition-location)中所述，当你为自定义计划指定位置时，该位置必须是某个管理组或订阅。 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>将自定义计划添加到订阅 
 
@@ -38,7 +38,7 @@ ms.locfileid: "91448387"
 
 1. 在“安全策略”页中的“你的自定义计划”下，单击“添加自定义计划”。
 
-    [![单击 "添加自定义计划"](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![单击“添加自定义计划”](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     此时会显示以下页：
 
@@ -69,7 +69,7 @@ ms.locfileid: "91448387"
 
     [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>利用详细信息增强你的自定义建议
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>利用详细信息增强自定义建议
 
 Azure 安全中心提供的内置建议包括严重性级别和修正说明等详细信息。 如果要将此类信息添加到自定义建议，使其显示在 Azure 门户中或任何可供访问建议的位置，则需要使用 REST API。 
 
@@ -84,7 +84,7 @@ Azure 安全中心提供的内置建议包括严重性级别和修正说明等�
  "metadata": {
     "securityCenter": {
         "RemediationDescription": "Custom description goes here",
-        "Severity": "High",
+        "Severity": "High"
     },
 ```
 
@@ -99,8 +99,8 @@ Azure 安全中心提供的内置建议包括严重性级别和修正说明等�
     "description": "Audit required resource groups lock",
     "metadata": {
         "securityCenter": {
-            "remediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
-            "severity": "High"
+            "RemediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
+            "Severity": "High"
         }
     },
     "parameters": {
@@ -136,7 +136,7 @@ Azure 安全中心提供的内置建议包括严重性级别和修正说明等�
 }
   ```
 
-有关使用 securityCenter 属性的另一个示例，请参阅 [REST API 文档的此部分](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)。
+有关使用 securityCenter 属性的另一个示例，请参阅 [REST API 文档的此部分](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -146,4 +146,4 @@ Azure 安全中心提供的内置建议包括严重性级别和修正说明等�
 如需其他相关材料，请参阅以下文章： 
 
 - [安全策略概述](tutorial-security-policy.md)
-- [内置安全策略列表](security-center-policy-definitions.md)
+- [内置安全策略列表](./policy-reference.md)

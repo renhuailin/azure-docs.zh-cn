@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 79fd6c5212b2ad956259f2cfbfb36ec3e7e92844
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523791"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636776"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Watch by Colors 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523791"
 * 让用户使用其 Azure AD 帐户自动登录到 Watch by Colors。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -129,19 +129,19 @@ ms.locfileid: "88523791"
 
 4. 在页面右上角，单击“个人资料”   > “帐户设置”   > “SSO (单一登录)”  。
 
-    ![Watch by Colors 配置](./media/watch-by-colors-tutorial/config01.png)
+    ![显示可在其中禁用 SSO 的“帐户设置”页的屏幕截图。](./media/watch-by-colors-tutorial/config01.png)
 
 5. 在“SSO (单一登录)”  页上，执行以下步骤：
 
-    ![Watch by Colors 配置](./media/watch-by-colors-tutorial/config02.png)
+    ![显示可在其中启用 SAML 的“SAML 设置”选项卡的屏幕截图。](./media/watch-by-colors-tutorial/config02.png)
 
     a. 将“启用 SAML”  切换到“开”  。
 
-    b. 在“URL”文本框中，粘贴从 Azure 门户复制的**联合元数据 URL**。 
+    b. 在“URL”文本框中，粘贴从 Azure 门户复制的 **联合元数据 URL** 。 
 
     c. 单击“导入”  ，页面上将自动填充以下字段。
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 ### <a name="create-watch-by-colors-test-user"></a>创建 Watch by Colors 测试用户
 
@@ -153,11 +153,11 @@ ms.locfileid: "88523791"
 
 1. 在页面右上角，单击“个人资料”   > “用户”   > “添加用户”  。
 
-    ![Watch by Colors 配置](./media/watch-by-colors-tutorial/config03.png)
+    ![显示“用户”页的屏幕截图。](./media/watch-by-colors-tutorial/config03.png)
 
 1. 在“用户详细信息”  页上，执行以下步骤：
 
-    ![Watch by Colors 配置](./media/watch-by-colors-tutorial/config04.png)
+    ![显示“用户详细信息”的屏幕截图，你可以在其中输入所述值。](./media/watch-by-colors-tutorial/config04.png)
 
     a. 在“名字”文本框中，输入用户的名字，例如 B   。
 
@@ -167,23 +167,22 @@ ms.locfileid: "88523791"
 
     d. 在“密码”文本框中，输入密码  。
 
-    e. 根据组织选择**帐户权限**。
+    e. 根据组织选择 **帐户权限** 。
 
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Watch by Colors 磁贴时，应当会自动登录到设置了 SSO 的 Watch by Colors。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Watch by Colors 磁贴时，应当会自动登录到设置了 SSO 的 Watch by Colors。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Watch by Colors](https://aad.portal.azure.com/)
-

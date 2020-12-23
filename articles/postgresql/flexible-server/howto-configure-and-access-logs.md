@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934213"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492346"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>在 Azure Database for PostgreSQL 灵活的服务器中配置和访问日志
 
@@ -44,7 +44,7 @@ PostgreSQL 日志在灵活服务器的每个节点上都可用。 可以将日�
 
 ### <a name="access-resource-logs"></a>访问资源日志
 
-访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../../azure-monitor/platform/resource-logs-collect-storage.md)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
+访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)一文。
 
 Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **AzureDiagnostics** 收集模式，因此可以从 AzureDiagnostics 表查询它们。 下面描述了该表中的字段。 在 [Azure Monitor 日志查询](../../azure-monitor/log-query/log-query-overview.md)概述中详细了解查询和警报。
 
@@ -71,5 +71,5 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Log analytics 查询入门](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-- 了解 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-about)
+- [Log analytics 查询入门](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- 了解 [Azure 事件中心](../../event-hubs/event-hubs-about.md)

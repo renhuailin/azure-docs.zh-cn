@@ -3,8 +3,8 @@ title: 数据工厂使用案例 - 产品建议
 description: 了解通过 Azure 数据工厂以及其他服务实现的使用案例。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3d9d41e80f78af7087c80592d927c193e494eab8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fc1e0398f98dc72d57039530dce9751af012f154
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442388"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495287"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
@@ -41,7 +41,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 ## <a name="solution-overview"></a>解决方案概述
 在此示例中，实际 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务解决和实现使用案例，包括 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 和 [Power BI](https://powerbi.microsoft.com/)。
 
-在线零售商在整个工作流中使用 Azure Blob 存储、本地 SQL Server、Azure SQL 数据库和关系数据市场作为其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息和在 Azure Synapse Analytics 中存储于本地的产品目录 (以前的 SQL 数据仓库) 。 
+在线零售商在整个工作流中使用 Azure Blob 存储、本地 SQL Server、Azure SQL 数据库和关系数据市场作为其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息和在 Azure Synapse Analytics 中本地存储的产品目录。 
 
 用户在网站上浏览目录中的产品时，所有数据会汇总起来并输送到产品建议系统以基于客户兴趣和行为提供个性化的建议。 客户还会看到另外一种与寻找的产品相关的产品，这种产品以网站整体使用模式为基础，并不是以一个用户为基础。
 

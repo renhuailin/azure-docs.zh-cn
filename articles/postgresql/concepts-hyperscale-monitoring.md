@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 30be9cbba7fe702d12285fe13794290c4820fd53
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314804"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487987"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>监视和优化 Azure Database for PostgreSQL-超大规模 (Citus) 
 
@@ -22,7 +22,7 @@ ms.locfileid: "91314804"
 
 超大规模 (Citus) 为服务器组中的每个节点提供度量值。 这些指标有助于深入了解支持资源的行为。 每项指标以一分钟为频率发出，历史记录长达 30 天。
 
-除了查看指标图形，还可以配置警报。 有关分步指南，请参阅[如何设置警报](howto-hyperscale-alert-on-metric.md)。  其他任务包括设置自动操作、运行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+除了查看指标图形，还可以配置警报。 有关分步指南，请参阅[如何设置警报](howto-hyperscale-alert-on-metric.md)。  其他任务包括设置自动操作、运行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="list-of-metrics"></a>指标列表
 
@@ -32,7 +32,7 @@ ms.locfileid: "91314804"
 |---|---|---|---|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
-|iops|IOPS|Count|请参阅 [IOPS 定义](../virtual-machines/premium-storage-performance.md#iops) 和 [超大规模 (Citus) 吞吐量](concepts-hyperscale-configuration-options.md)|
+|iops|IOPS|计数|请参阅 [IOPS 定义](../virtual-machines/premium-storage-performance.md#iops) 和 [超大规模 (Citus) 吞吐量](concepts-hyperscale-configuration-options.md)|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|

@@ -6,18 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.date: 10/28/2020
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755086"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031889"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
-了解如何使用 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 在 HDInsight 上运行 Apache Hive 查询。
+本文介绍如何使用命令行 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 客户端通过 SSH 连接创建和执行 Apache Hive 查询。
+
+## <a name="background"></a>背景
 
 Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 要连接到 HDInsight 群集上安装的 Beeline 客户端，或在本地安装 Beeline，请参阅[连接到或安装 Apache Beeline](connect-install-beeline.md)。 Beeline 使用 JDBC 连接到 HiveServer2，后者是 HDInsight 群集上托管的一项服务。 还可以使用 Beeline 通过 Internet 远程访问 Hive on HDInsight。 以下示例提供用于从 Beeline 连接到 HDInsight 的最常见连接字符串。
 
@@ -27,9 +29,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
 * 请记下群集主存储的 URI 方案。 例如，对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储启用了安全传输，则 URI 将为 `wasbs://`。 有关详细信息，请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
-* 选项 1：SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本文档中的大多数步骤都假设使用的是从 SSH 会话到群集的 Beeline。
-
-* 选项 2：本地 Beeline 客户端。
+* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本文档中的大多数步骤都假定你从连接到群集的 SSH 会话使用 Beeline。 还可以使用本地 Beeline 客户端，但本文未介绍这些步骤。
 
 ## <a name="run-a-hive-query"></a>运行 Hive 查询
 
@@ -110,7 +110,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
     |语句 |说明 |
     |---|---|
     |DROP TABLE|如果该表存在，则将其删除。|
-    |CREATE EXTERNAL TABLE|在 Hive 中创建一个**外部**表。 外部表只会在 Hive 中存储表定义。 数据保留在原始位置。|
+    |CREATE EXTERNAL TABLE|在 Hive 中创建一个 **外部** 表。 外部表只会在 Hive 中存储表定义。 数据保留在原始位置。|
     |ROW FORMAT|如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。|
     |STORED AS TEXTFILE LOCATION|数据存储的位置和文件格式。|
     |SELECT|选择 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此查询返回值 **3**，因为有三行包含此值。|
@@ -119,7 +119,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
    > [!NOTE]  
    > 如果希望通过外部源更新基础数据，应使用外部表。 例如，自动化数据上传进程或 MapReduce 操作。
    >
-   > 删除外部表**不会**删除数据，只会删除表定义。
+   > 删除外部表 **不会** 删除数据，只会删除表定义。
 
     此命令的输出类似于以下文本：
 

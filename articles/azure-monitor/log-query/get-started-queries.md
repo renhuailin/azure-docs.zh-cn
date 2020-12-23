@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: a949c9b34e299e0dc4eccbb62f4b4ebb38d6ccb9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874055"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186705"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
 > [!NOTE]
-> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，其中包含大量示例数据。  如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](saved-queries.md)。
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，其中包含大量示例数据。  如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](./example-queries.md)。
 
 在本教程中，你将学习在 Azure Monitor 中编写日志查询。 具体内容包括：
 
@@ -28,7 +28,7 @@ ms.locfileid: "87874055"
 - 定义和使用自定义字段
 - 聚合和分组结果
 
-有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](get-started-portal.md)。<br>
+有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](./log-analytics-tutorial.md)。<br>
 有关 Azure Monitor 中日志查询的更多详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。
 
 以下随附本教程的视频版本：
@@ -74,7 +74,7 @@ search in (SecurityEvent) "Cryptographic"
 > 搜索查询通常比基于表的查询慢，因为它们必须处理更多数据。 
 
 ## <a name="sort-and-top"></a>sort 和 top
-虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列**排序**：
+虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列 **排序**：
 
 ```Kusto
 SecurityEvent   
@@ -156,7 +156,7 @@ SecurityEvent
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>投影和扩展：选择和计算列
 
-使用**投影**可以选择要包含在结果中的特定列：
+使用 **投影** 可以选择要包含在结果中的特定列：
 
 ```Kusto
 SecurityEvent 
@@ -168,10 +168,10 @@ SecurityEvent
 
 ![查询投影结果](media/get-started-queries/project.png)
 
-还可以使用**投影**来重命名列，并定义新列。 以下示例使用项目执行以下操作：
+还可以使用 **投影** 来重命名列，并定义新列。 以下示例使用项目执行以下操作：
 
 * 仅选择 *Computer* 和 *TimeGenerated* 原始列。
-* 将 *Activity* 列重命名为 *EventDetails*。
+* 将 Activity 列显示为 EventDetails 。
 * 创建名为 *EventCode* 的新列。 **substring()** 函数用于仅获取 Activity 字段中的前四个字符。
 
 
@@ -244,7 +244,7 @@ Perf
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关在日志查询中使用字符串数据的详细信息，请参阅[在 Azure Monitor 日志查询中使用字符串](string-operations.md)。
-- 有关在日志查询中聚合数据的详细信息，请参阅 [Azure Monitor 日志查询中的高级聚合](advanced-aggregations.md)。
-- 有关如何联接多个表中的数据的信息，请参阅 [Azure Monitor 日志查询中的联接](joins.md)。
+- 有关在日志查询中使用字符串数据的详细信息，请参阅[在 Azure Monitor 日志查询中使用字符串](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)。
+- 有关在日志查询中聚合数据的详细信息，请参阅 [Azure Monitor 日志查询中的高级聚合](/azure/data-explorer/write-queries#advanced-aggregations)。
+- 有关如何联接多个表中的数据的信息，请参阅 [Azure Monitor 日志查询中的联接](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)。
 - 在 [KQL 语言参考](/azure/kusto/query/)中获取有关完整 Kusto 查询语言的文档。

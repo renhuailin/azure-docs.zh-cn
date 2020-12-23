@@ -1,15 +1,15 @@
 ---
 title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
-ms.date: 09/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
-ms.custom: contperfq1
-ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 9f23a279733169f17f0f82cb80aa08bfafcd45d0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91533799"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030665"
 ---
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
@@ -95,7 +95,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 |所有者                       | X      | X      | X        | X      | X             | X             | X     |
 |参与者                 | X      | X      | X        | X      |               |               | X     |
 |MG 参与者\*            | X      | X      | X        | X      |               |               | X     |
-|读者                      |        |        |          |        |               |               | X     |
+|读取器                      |        |        |          |        |               |               | X     |
 |MG 读者\*                 |        |        |          |        |               |               | X     |
 |资源策略参与者 |        |        |          |        |               | X             |       |
 |用户访问管理员   |        |        |          |        | X             | X             |       |
@@ -150,7 +150,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 
 例如，让我们看看某个视觉对象的层次结构的一小部分。
 
-:::image type="complex" source="./media/subtree.png" alt-text="示例管理组层次结构的图。" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="部分示例管理组层次结构的图。" border="false":::
    该图重点介绍了具有子 IT 和营销管理组的根管理组。 IT 管理组具有一个名为“生产”的子管理组，而营销管理组则具有两个免费试用版子订阅。
 :::image-end:::
 
@@ -171,7 +171,11 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
  - 在新角色的可分配范围中，只能定义一个管理组。 设置此限制是为了减少出现角色定义和角色分配不关联的情况的次数。 将进行了角色分配的订阅或管理组移到另一个没有该角色定义的父项时，会出现此情况。  
  - 不能在管理组自定义角色中定义资源提供程序数据平面操作。 存在此限制是因为，在更新数据平面资源提供程序时存在延迟问题。
    我们会解决此延迟问题，并会在角色定义中禁用这些操作以降低风险。
- - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。 即使存在拼写错误或者列出的管理组 ID 不正确，仍会创建角色定义。  
+ - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。 即使存在拼写错误或者列出的管理组 ID 不正确，仍会创建角色定义。
+
+> [!IMPORTANT]
+> 将管理组添加到 `AssignableScopes` 的功能目前为预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。
+> 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="moving-management-groups-and-subscriptions"></a>移动管理组和订阅 
 
@@ -194,7 +198,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 
 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)支持管理组。 可以搜索到与其他 Azure 资源相同的中心位置中的管理组发生的所有事件。 例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
 
-:::image type="content" source="./media/al-mg.png" alt-text="示例管理组层次结构的图。" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="与所选管理组相关的活动日志和操作的屏幕截图。" border="false":::
 
 如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示： **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
 
@@ -202,6 +206,6 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 
 若要了解有关管理组的详细信息，请参阅：
 
-- [创建管理组来组织 Azure 资源](./create.md)
+- [创建管理组来组织 Azure 资源](./create-management-group-portal.md)
 - [如何更改、删除或管理管理组](./manage.md)
 - 请参阅[如何保护资源层次结构](./how-to/protect-resource-hierarchy.md)的选项

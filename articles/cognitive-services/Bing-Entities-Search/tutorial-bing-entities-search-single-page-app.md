@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 58bbda6d3b02042c6e512e03e108cd69fbd7ed51
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277319"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366527"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 必应实体搜索 API 用于在 Web 中搜索实体和场所的信息。  可以在给定查询中请求一种或两种结果。 场所和实体的定义在下面提供。
 
@@ -52,7 +57,7 @@ ms.locfileid: "91277319"
 
 教程页是完全独立的；它不使用任何外部框架、样式表，甚至也不使用外部图像文件， 而仅使用广泛支持的 JavaScript 语言功能，并且适用于所有主要 Web 浏览器的当前版本。
 
-在本教程中，我们只讨论源代码的选定部分。 完整的源代码[在单独页上](tutorial-bing-entities-search-single-page-app-source.md)提供。 请将此代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
+在本教程中，我们只讨论源代码的选定部分。 完整的源代码[在单独页上]()提供。 请将此代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
 
 > [!NOTE]
 > 本教程大致类似于[单页必应 Web 搜索应用教程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)，但只涉及实体搜索结果。
@@ -257,7 +262,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-除了纬度和经度，必应实体搜索查询还需要一个 *radius*（半径），用于指示位置信息的精确度。 我们使用在必应地图响应中提供的边界框来计算半径。 边界框是一个将整个位置包围住的矩形。 例如，如果用户输入 `NYC`，则结果大致包含纽约市的中心坐标以及一个围绕该市的边界框。 
+除了纬度和经度，必应实体搜索查询还需要一个 *radius* （半径），用于指示位置信息的精确度。 我们使用在必应地图响应中提供的边界框来计算半径。 边界框是一个将整个位置包围住的矩形。 例如，如果用户输入 `NYC`，则结果大致包含纽约市的中心坐标以及一个围绕该市的边界框。 
 
 首先使用函数 `haversineDistance()`（未显示）计算从主坐标分别到边界框的四个角的距离。 在这四个距离中，使用最大的一个作为半径。 最小半径为一公里。 如果响应中未提供边界框，则此值也会用作默认值。
 
@@ -400,7 +405,7 @@ function handleBingResponse() {
 
 ## <a name="displaying-search-results"></a>显示搜索结果
 
-必应实体搜索 API [要求按指定顺序显示结果](use-display-requirements.md)。 由于 API 可能返回两种不同类型的响应，在 JSON 响应中循环访问顶级 `Entities` 或 `Places` 集合并显示这些结果会显得不够。 （如果只需一种类型的结果，请使用 `responseFilter` 查询参数。）
+必应实体搜索 API [要求按指定顺序显示结果](../bing-web-search/use-display-requirements.md)。 由于 API 可能返回两种不同类型的响应，在 JSON 响应中循环访问顶级 `Entities` 或 `Places` 集合并显示这些结果会显得不够。 （如果只需一种类型的结果，请使用 `responseFilter` 查询参数。）
 
 请在搜索结果中改用 `rankingResponse` 集合，对要显示的结果排序。 此对象是指 `Entitiess` 和/或 `Places` 集合中的项。
 

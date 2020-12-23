@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 TRUNC
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 TRUNC。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8bad33f593bae2679c83d59ae4567dcab4a64809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc6370e9183f897edb65ceb129cd7600729a85aa
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78304219"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341511"
 ---
 # <a name="trunc-azure-cosmos-db"></a>TRUNC (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回一个数值，截断到最接近的整数值。  
   
 ## <a name="syntax"></a>语法

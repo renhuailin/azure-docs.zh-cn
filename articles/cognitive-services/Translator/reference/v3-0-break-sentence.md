@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 27069cf38da2567a3af3ed0fb65baead43665186
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903997"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369471"
 ---
 # <a name="translator-30-breaksentence"></a>翻译器 3.0：BreakSentence
 
@@ -43,7 +43,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 | 头文件 | 说明 |
 | ------- | ----------- |
-| 身份验证标头 <img width=200/>  | 必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
+| 身份验证标头 <img width=200/>  | 必需的请求标头。<br/>请参阅<a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
 | Content-Type | 必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
 | Content-Length    | 必需的请求标头。<br/>请求正文的长度。  | 
 | X-ClientTraceId   | 可选。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。  | 
@@ -61,7 +61,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 以下限制适用：
 
 * 数组最多可具有 100 个元素。
-* 数组元素的文本值不能超过50000个字符，包括空格。
+* 数组元素的文本值不能超过 50,000 个字符（包括空格）。
 * 请求中包含的整个文本不能超过 50,000 个字符（包括空格）。
 * 如果指定了 `language` 查询参数，则所有数组元素必须采用同一语言。 否则，将分别向每个数组元素应用语言自动检测。
 
@@ -141,7 +141,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 翻译器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 翻译器参考页](./v3-0-reference.md#errors)上找到。 
 
 ## <a name="examples"></a>示例
 
@@ -150,4 +150,3 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"
 ```
-

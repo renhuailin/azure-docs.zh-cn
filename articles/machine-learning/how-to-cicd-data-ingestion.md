@@ -1,31 +1,31 @@
 ---
 title: 数据引入管道的 DevOps
 titleSuffix: Azure Machine Learning
-description: 了解如何应用 DevOps 实践来构建数据引入管道，以便准备用于 Azure 机器学习的数据。 引入管道使用 Azure 数据工厂和 Azure Databricks。 Azure 管道用于为引入管道创建持续集成和交付过程。
+description: 了解如何应用 DevOps 实践来构建数据引入管道，以便使用 Azure 数据工厂和 Azure Databricks 来准备数据。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971265"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358620"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>数据引入管道的 DevOps
 
 在大多数方案中，数据引入解决方案是脚本、服务调用以及协调所有活动的管道的复合体。 本文介绍如何将 DevOps 做法应用到常用数据引入管道的开发生命周期，以便准备数据来进行机器学习模型训练。 管道是使用以下 Azure 服务构建的：
 
-* __Azure 数据工厂__：读取原始数据并协调数据准备。
-* __Azure Databricks__：运行转换数据的 Python 笔记本。
-* __Azure Pipelines__：实现持续集成和开发过程的自动化。
+* __Azure 数据工厂__ ：读取原始数据并协调数据准备。
+* __Azure Databricks__ ：运行转换数据的 Python 笔记本。
+* __Azure Pipelines__ ：实现持续集成和开发过程的自动化。
 
 ## <a name="data-ingestion-pipeline-workflow"></a>数据引入管道工作流
 
@@ -78,12 +78,11 @@ Azure 数据工厂管道的源代码是 Azure 数据工厂工作区生成的 JSO
 
 ### <a name="python-notebook-ci"></a>Python 笔记本 CI
 
-Python 笔记本的 CI 过程从协作分支（例如 ***master*** 或 ***develop***）获取代码并执行以下活动：
-* 代码检查
+Python 笔记本的 CI 过程从协作分支获取代码 (例如，* **master** _ 或 _*_开发_*_ ) 并执行以下活动： _ code linting
 * 单元测试
 * 将代码保存为项目
 
-以下代码片段演示如何在 Azure DevOps ***yaml*** 管道中实现这些步骤：
+以下代码片段演示了如何在 Azure DevOps * **yaml** _ 管道中实现这些步骤：
 
 ```yaml
 steps:
@@ -99,7 +98,7 @@ steps:
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
-    testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
+    testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
     testRunTitle: 'Linting & Unit tests'
     failTaskOnFailedTests: true
   displayName: 'Publish linting and unit test results'
@@ -116,13 +115,13 @@ steps:
 
 ### <a name="azure-data-factory-ci"></a>Azure 数据工厂 CI
 
-Azure 数据工厂管道的 CI 过程是数据引入管道的瓶颈。 不会执行持续集成。 Azure 数据工厂的可部署项目是 Azure 资源管理器模板的集合。 生成这些模板的唯一方式是单击 Azure 数据工厂工作区中的“发布”按钮。
+Azure 数据工厂管道的 CI 过程是数据引入管道的瓶颈。 不会执行持续集成。 Azure 数据工厂的可部署项目是 Azure 资源管理器模板的集合。 生成这些模板的唯一方式是单击 "Azure 数据工厂" 工作区中的 " **发布** " 按钮。
 
-1. 数据工程师将源代码从其功能分支合并到协作分支（例如 ***master*** 或 ***develop***）。 
-1. 已被授予权限的人员单击“发布”按钮，从协作分支中的源代码生成 Azure 资源管理器模板。 
-1. 工作区将验证管道（将其视为 Lint 分析和单元测试），生成 Azure 资源管理器模板（将其视为生成），并将生成的模板保存到同一代码存储库中的技术分支 ***adf_publish***（将其视为发布项目）。 此分支由 Azure 数据工厂工作区自动创建。 
+1. 数据工程师将源代码从其功能分支合并到协作分支（例如 _*_master_*_ 或 _*_开发_*_ ）中。 
+1. 具有 "已授予" 权限的人员单击 " _*_发布_*_ " 按钮，通过协作分支中的源代码生成 Azure 资源管理器模板。 
+1. 工作区在 linting 和单元测试) 的情况下验证管道 (将其视为，生成 Azure 资源管理器模板 (将其视为构建) ，并将生成的模板保存到相同代码存储库中的技术分支 _*_adf_publish_*_ ， (将生成的模板保存到) 发布项目。 此分支由 Azure 数据工厂工作区自动创建。 
 
-有关此过程的详细信息，请参阅 [Azure 数据工厂中的持续集成和交付](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)。
+有关此过程的详细信息，请参阅 [Azure 数据工厂中的持续集成和交付](../data-factory/continuous-integration-deployment.md)。
 
 必须确保生成的 Azure 资源管理器模板不区分环境。 这意味着，所有在不同环境中可能会有所不同的值均会参数化。 Azure 数据工厂足够智能，可将大多数此类值作为参数公开。 例如，在以下模板中，Azure 机器学习工作区的连接属性将作为参数公开：
 
@@ -166,7 +165,7 @@ labels = np.array(data['target'])
 ...
 ```
 
-此名称对于 ***Dev***、***QA***、***UAT*** 和 ***PROD*** 环境是不同的。 在包含多个活动的复杂管道中，可能存在多个自定义属性。 最好是将所有这些值收集到一个位置，并将其定义为管道变量：
+对于 _*_开发_*_ 、 _*_QA_*_ 、 _*_UAT_*_ 和 _*_生产_*_ 环境，此名称是不同的。 在包含多个活动的复杂管道中，可能存在多个自定义属性。 最好在一个位置收集所有这些值，并将其定义为管道 _*_变量_*_ ：
 
 ![屏幕截图显示名为 "PrepareData" 和 "M L execute 管道" 的笔记本，其中包含下面选定的 "变量" 选项卡，其中包含一个用于添加新变量的选项，其中每个都有一个名称、类型和默认值。](media/how-to-cicd-data-ingestion/adf-variables.png)
 
@@ -174,13 +173,13 @@ labels = np.array(data['target'])
 
 ![屏幕截图显示了名为 "PrepareData" 和 "M L execute 管道" 的笔记本，其中包含下面选定的 "设置" 选项卡。](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请将 `"Microsoft.DataFactory/factories/pipelines"` [默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) 的部分更新为以下代码片段，并将结果 json 文件放置在源文件夹的根目录中：
+默认情况下，Azure 数据工厂工作区 _*_不会_*_ 将管道变量作为 azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](../data-factory/continuous-integration-deployment.md#default-parameterization-template)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请将 `"Microsoft.DataFactory/factories/pipelines"` [默认参数化模板](../data-factory/continuous-integration-deployment.md#default-parameterization-template) 的部分更新为以下代码片段，并将结果 json 文件放置在源文件夹的根目录中：
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
         "properties": {
             "variables": {
-                "*": {
+                "_": {
                     "defaultValue": "="
                 }
             }
@@ -188,7 +187,7 @@ Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理�
     }
 ```
 
-这样，在单击“发布”按钮时，会强制 Azure 数据工厂工作区将变量添加到参数列表中：
+如果单击 * " **发布** " 按钮，此操作将强制 Azure 数据工厂工作区将变量添加到参数列表：
 
 ```json
 {
@@ -212,18 +211,18 @@ JSON 文件中的值是在管道定义中配置的默认值。 部署 Azure 资�
 
 持续交付过程提取项目并将其部署到第一个目标环境。 它通过运行测试来确保解决方案可正常运行。 如果测试成功，则继续部署到下一个环境。 
 
-CD Azure 管道由多个表示环境的阶段组成。 每个阶段包含[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)，以及执行以下步骤的[作业](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml)：
+CD Azure 管道由多个表示环境的阶段组成。 每个阶段包含[部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true)，以及执行以下步骤的[作业](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true)：
 
-* 将 Python 笔记本部署到 Azure Databricks 工作区
+_ 将 Python 笔记本部署到 Azure Databricks 工作区
 * 部署 Azure 数据工厂管道 
 * 运行管道
 * 检查数据引入结果
 
-可以使用[审批](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass)和[门限](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops)（就部署过程如何在环境链中递进提供额外的控制）来配置管道阶段。
+可以使用[审批](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true)和[门限](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true)（就部署过程如何在环境链中递进提供额外的控制）来配置管道阶段。
 
 ### <a name="deploy-a-python-notebook"></a>部署 Python 笔记本
 
-以下代码片段定义一个将 Python 笔记本复制到 Databricks 群集的 Azure 管道[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)：
+以下代码片段定义一个将 Python 笔记本复制到 Databricks 群集的 Azure 管道[部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true)：
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -259,13 +258,13 @@ CD Azure 管道由多个表示环境的阶段组成。 每个阶段包含[部署
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-CI 生成的项目将自动复制到部署代理，并在 `$(Pipeline.Workspace)` 文件夹中提供。 在本例中，部署任务引用包含 Python 笔记本的 `di-notebooks` 项目。 此[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)使用 [Databricks Azure DevOps 扩展](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)将笔记本文件复制到 Databricks 工作区。
+CI 生成的项目将自动复制到部署代理，并在 `$(Pipeline.Workspace)` 文件夹中提供。 在本例中，部署任务引用包含 Python 笔记本的 `di-notebooks` 项目。 此[部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true)使用 [Databricks Azure DevOps 扩展](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)将笔记本文件复制到 Databricks 工作区。
 
 `Deploy_to_QA` 阶段包含对 Azure DevOps 项目中定义的 `devops-ds-qa-vg` 变量组的引用。 此阶段中的步骤引用此变量组中的变量（例如 `$(DATABRICKS_URL)` 和 `$(DATABRICKS_TOKEN)`）。 其思路是，下一阶段（例如 `Deploy_to_UAT`）将使用其自己的 UAT 范围内的变量组中定义的相同变量名称运行。
 
 ### <a name="deploy-an-azure-data-factory-pipeline"></a>部署 Azure 数据工厂管道
 
-Azure 数据工厂的可部署项目是一个 Azure 资源管理器模板。 它将通过“Azure 资源组部署”任务来部署，如以下代码片段所示：
+Azure 数据工厂的可部署项目是一个 Azure 资源管理器模板。 将通过 * **Azure 资源组部署** _ 任务进行部署，如以下代码片段所示：
 
 ```yaml
   - deployment: "Deploy_to_ADF"
@@ -286,11 +285,11 @@ Azure 数据工厂的可部署项目是一个 Azure 资源管理器模板。 它
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-数据文件名参数的值取自 QA 阶段变量组中定义的 `$(DATA_FILE_NAME)` 变量。 同样，可以重写 ***ARMTemplateForFactory.json*** 中定义的所有参数。 如果未重写，则使用默认值。
+数据文件名参数的值取自 QA 阶段变量组中定义的 `$(DATA_FILE_NAME)` 变量。 同样，在 _*_ARMTemplateForFactory.js上_*_ 定义的所有参数都可以被重写。 如果未重写，则使用默认值。
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>运行管道并检查数据引入结果
 
-下一步是确保部署的解决方案可正常运行。 以下作业定义使用 [PowerShell 脚本](https://github.com/microsoft/DataOps/tree/master/adf/utils)运行 Azure 数据工厂管道，并在 Azure Databricks 群集上执行一个 Python 笔记本。 笔记本检查是否已正确引入数据，并验证结果数据文件的 `$(bin_FILE_NAME)` 名称。
+下一步是确保部署的解决方案可正常运行。 以下作业定义使用 [PowerShell 脚本](https://github.com/microsoft/DataOps/tree/master/adf/utils)运行 Azure 数据工厂管道，并在 Azure Databricks 群集上执行一个 Python 笔记本。 该笔记本检查是否已正确引入数据，并验证名称为 `$(bin_FILE_NAME)` 的结果数据文件。
 
 ```yaml
   - job: "Integration_test_job"
@@ -335,15 +334,14 @@ Azure 数据工厂的可部署项目是一个 Azure 资源管理器模板。 它
 
 ## <a name="putting-pieces-together"></a>将各个部分组合到一起
 
-完整的 CI/CD Azure 管道包括以下阶段：
-* CI
+完整的 CI/CD Azure 管道包括以下阶段： _ CI
 * 部署到 QA
     * 部署到 Databricks + 部署到 ADF
     * 集成测试
 
-此管道包含许多“部署”阶段，阶段数目与现有的目标环境数目相同。 每个“部署”阶段包含两个并行运行的[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)，以及一个在部署后运行的、用于在环境中测试解决方案的[作业](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml)。
+它包含与你拥有的目标环境数相等的多个 " **部署** " 阶段。 每个 _*_部署_*_ 阶段都包含两个并行运行的 [部署](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) 和一个在部署后运行的 [作业](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) ，用于在环境中测试解决方案。
 
-以下 ***yaml*** 代码片段中汇编了该管道的示例实现：
+管道的示例实现组合在以下 _*_yaml_*_ 代码片段中：
 
 ```yaml
 variables:
@@ -378,7 +376,7 @@ stages:
     - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
-        testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
+        testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
         testRunTitle: 'Linting & Unit tests'
         failTaskOnFailedTests: true
     displayName: 'Publish linting and unit test results'    
@@ -480,6 +478,6 @@ stages:
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 数据工厂中的源代码管理](https://docs.microsoft.com/azure/data-factory/source-control)
-* [Azure 数据工厂中的持续集成和持续交付](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)
+* [Azure 数据工厂中的源代码管理](../data-factory/source-control.md)
+* [Azure 数据工厂中的持续集成和持续交付](../data-factory/continuous-integration-deployment.md)
 * [Azure Databricks 的 DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

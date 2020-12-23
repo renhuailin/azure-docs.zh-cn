@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9f8fba617eb0274a8db7adc5d36c6ff50be10924
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 09dbe0fbefb8b90b4c4e1ddef57abf3b13856183
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761373"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148086"
 ---
 # <a name="security-recommendations-for-app-service"></a>适用于应用服务的安全建议
 
@@ -56,7 +56,7 @@ ms.locfileid: "91761373"
 
 | 建议 | 注释 |
 |-|-|
-|使用 Azure 安全中心标准层 | [Azure 安全中心](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction)以原生方式集成 Azure 应用服务。 它可以运行评估并提供安全建议。 |
+|使用 Azure 安全中心标准层 | [Azure 安全中心](../security-center/defender-for-app-service-introduction.md)以原生方式集成 Azure 应用服务。 它可以运行评估并提供安全建议。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320757"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494981"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>设置 Azure 数字孪生实例和 (CLI 的身份验证) 
 
@@ -24,7 +24,9 @@ ms.locfileid: "91320757"
 * 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本： [*如何：设置实例和身份验证 (门户) *](how-to-set-up-instance-portal.md)。
 * 若要通过使用部署脚本示例的自动安装运行，请参阅本文的脚本编写版本： how [*to： Set a instance and authentication (script) *](how-to-set-up-instance-scripted.md)。
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-cloud-shell-session"></a>设置 Cloud Shell 会话
@@ -34,7 +36,7 @@ ms.locfileid: "91320757"
 
 在本部分中，将使用 Cloud Shell 命令 **创建 Azure 数字孪生的新实例** 。 需要提供：
 * 要在其中部署该资源的资源组。 如果尚未记住现有的资源组，可以使用以下命令创建一个资源组：
-    ```azurecli
+    ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * 部署的区域。 若要查看哪些区域支持 Azure 数字孪生，请访问 [*按区域提供的 azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
@@ -42,7 +44,7 @@ ms.locfileid: "91320757"
 
 在以下命令中使用这些值来创建实例：
 
-```azurecli
+```azurecli-interactive
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
@@ -65,8 +67,8 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 
 使用以下命令分配角色 (必须由在 Azure 订阅) 中具有 [足够权限](#prerequisites-permission-requirements) 的用户运行。 命令要求用户在应分配角色的用户的 Azure AD 帐户上传递 *用户主体名称* 。 在大多数情况下，这将与 Azure AD 帐户上的用户电子邮件匹配。
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Data Owner"
 ```
 
 此命令的结果将输出有关已创建的角色分配的信息。
@@ -86,73 +88,13 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
 
-现在，你已准备好使用 Azure 数字孪生实例，并已分配了管理它的权限。 接下来，你将设置对客户端应用程序的访问权限。
-
-## <a name="set-up-access-permissions-for-client-applications"></a>设置客户端应用程序的访问权限
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-若要创建应用注册，需要提供 Azure 数字孪生 Api 的资源 Id，以及 API 的基准权限。
-
-在工作目录中，创建一个新文件，并输入以下 JSON 代码片段来配置这些详细信息： 
-
-```json
-[{
-    "resourceAppId": "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
-    "resourceAccess": [
-     {
-       "id": "4589bd03-58cb-4e6c-b17f-b580e39652f8",
-       "type": "Scope"
-     }
-    ]
-}]
-``` 
-
-将此文件保存为 _**manifest.js**_。
-
-> [!NOTE] 
-> 在某些位置，"友好" 的可读字符串 `https://digitaltwins.azure.net` 可用于 Azure 数字孪生资源应用 ID 而不是 GUID `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` 。 例如，在此文档集中，许多示例将使用 MSAL 库进行身份验证，并且可以使用友好字符串。 但是，在创建应用注册的这一步中，需要 ID 的 GUID 格式，如上面所示。 
-
-接下来，将此文件上传到 Cloud Shell。 在 Cloud Shell 窗口中，单击 "上传/下载文件" 图标，然后选择 "上传"。
-
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口":::
-导航到刚刚创建的 *manifest.js* ，并单击 "打开"。
-
-接下来，运行以下命令以创建应用注册，并使用 *公用客户端/本机 (移动 & 桌面) * 回复 URL `http://localhost` 。 根据需要替换占位符：
-
-```azurecli
-az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
-```
-
-下面是此命令的输出摘录，显示已创建的注册的相关信息：
-
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口":::
-
-### <a name="verify-success"></a>验证是否成功
-
-[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
-
-接下来，请验证注册上已正确设置上传的 *manifest.js* 的设置。 为此，请从菜单栏中选择 " *清单* "，以查看应用注册的清单代码。 滚动到代码窗口的底部，然后在下面的 *manifest.js* 中查找字段 `requiredResourceAccess` ：
-
-[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
-
-### <a name="collect-important-values"></a>收集重要值
-
-接下来，从菜单栏中选择 " *概述* " 以查看应用注册的详细信息：
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口":::
-
-记下**在页面上显示的***应用程序 (客户端) id*和*目录 (租户) id* 。 稍后将需要这些值对 [Azure 数字孪生 api 的客户端应用进行身份验证](how-to-authenticate-client.md)。 如果您不是将为此类应用程序编写代码的人，则需要与将要进行共享的人员共享这些值。
-
-### <a name="other-possible-steps-for-your-organization"></a>组织的其他可能步骤
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+现在，你已准备好使用 Azure 数字孪生实例，并已分配了管理它的权限。
 
 ## <a name="next-steps"></a>后续步骤
 
 使用 Azure 数字孪生 CLI 命令测试实例上的单个 REST API 调用： 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
 
-或者，请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：
+或者，请参阅如何使用身份验证代码将客户端应用程序连接到实例：
 * [*操作说明：编写应用身份验证代码*](how-to-authenticate-client.md)

@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 85d1880479a514ffb002e4894066734690480457
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141272"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443120"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
@@ -221,7 +221,7 @@ catch(MsalUiRequiredException)
 
 `WithPrompt()` 参数通过指定提示来控制与用户的交互。
 
-![显示提示结构中的字段的图像。 这些常量值通过定义 WithPrompt ( # A1 参数显示的提示类型来控制与用户的交互。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![显示“提示”结构中的字段的图像。 这些常量值通过定义由 WithPrompt() 参数显示的提示的类型来控制与用户的交互。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 该类定义以下常量：
 
@@ -294,5 +294,4 @@ client_id=<CLIENT_ID>
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [调用 Web API](scenario-mobile-call-api.md)
+在此方案中，请转到下一篇文章， [调用 WEB API](scenario-mobile-call-api.md)。

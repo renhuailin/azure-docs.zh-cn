@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: d9ef069291f010db510d626ceda959a0342c39e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 235c5c19c9a6e587106b3fd41691a3f775caa84f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91305777"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656609"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)
 
@@ -53,17 +53,17 @@ ms.locfileid: "91305777"
 
 1. 选择“SAML”以打开“SSO 配置”页。 在此示例中，我们配置进行 SSO 的应用程序是 GitHub。 设置 GitHub 后，用户可以使用 Azure AD 租户中自己的凭据登录 GitHub。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="屏幕截图显示 Azure AD 门户中的“单一登录配置”页。":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="屏幕截图显示 GitHub 上的“单一登录配置”页。":::
 
-1. 将应用程序配置为使用 Azure AD 进行基于 SAML 的 SSO 的过程因应用程序而异。 本文提供指向 GitHub 指南的链接。 若要查找其他应用的指南，请参阅[有关将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/saas-apps/)。
+1. 将应用程序配置为使用 Azure AD 进行基于 SAML 的 SSO 的过程因应用程序而异。 本文提供指向 GitHub 指南的链接。 若要查找其他应用的指南，请参阅[有关将 SaaS 应用程序与 Azure Active Directory 集成的教程](/azure/active-directory/saas-apps/)。
 1. 请按照指南为应用程序设置 SSO。 许多应用程序对 SSO 功能都有特定的订阅要求。 例如，GitHub 需要企业订阅。
     > [!TIP]
     > 若要详细了解 SAML 配置选项，请参阅[配置基于 SAML 的单一登录](configure-saml-single-sign-on.md)。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="屏幕截图显示 Azure AD 门户中的“单一登录配置”页。":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="屏幕截图显示 GitHub 定价页面的企业订阅中的“单一登录”选项。":::
 
 > [!TIP]
-> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](/graph/application-saml-sso-configure-api)。
 
 
 ## <a name="clean-up-resources"></a>清理资源

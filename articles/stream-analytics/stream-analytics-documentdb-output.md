@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: e8b8c89b94b2fbb191eee0ea57e957802a54204e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596561"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126968"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
-Azure 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档包括用于实现此配置的一些最佳做法。
+Azure 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档包括用于实现此配置的一些最佳做法。 建议在使用 Azure Cosmos DB 作为输出时，将作业设置为兼容性级别1.2。
 
-如果不熟悉 Azure Cosmos DB，请参阅 [Azure Cosmos DB 文档](https://docs.microsoft.com/azure/cosmos-db/)了解入门知识。 
+如果不熟悉 Azure Cosmos DB，请参阅 [Azure Cosmos DB 文档](../cosmos-db/index.yml)了解入门知识。 
 
 > [!Note]
 > 目前，流分析只支持通过 SQL API 连接到 Azure Cosmos DB。
@@ -27,7 +27,7 @@ Azure 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/servic
 ## <a name="basics-of-azure-cosmos-db-as-an-output-target"></a>作为输出目标的 Azure Cosmos DB 的基础知识
 使用流分析中的 Azure Cosmos DB 输出可以将流处理结果作为 JSON 输出写入到 Azure Cosmos DB 容器中。 
 
-流分析不会在数据库中创建容器。 而是需要预先创建它们。 然后，你可以控制 Azure Cosmos DB 容器的计费成本。 还可以使用 [Azure Cosmos DB APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) 直接调整容器的性能、一致性和容量。
+流分析不会在数据库中创建容器。 而是需要预先创建它们。 然后，你可以控制 Azure Cosmos DB 容器的计费成本。 还可以使用 [Azure Cosmos DB APIs](/rest/api/cosmos-db/) 直接调整容器的性能、一致性和容量。
 
 > [!Note]
 > 必须从 Azure Cosmos DB 防火墙中将 0.0.0.0 添加到允许的 IP 列表。
@@ -61,7 +61,7 @@ Azure 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/servic
 如果要保存“所有”文档（包括具有重复 ID 的文档），请重命名查询中的 ID 字段（使用“AS”关键字）。 让 Azure Cosmos DB 创建 ID 字段，或用另一列的值替换 ID（使用“AS”关键字，或者使用“文档 ID”设置） 。
 
 ## <a name="data-partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的数据分区
-Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用[无限](../cosmos-db/partition-data.md)容器作为数据分区方式。 当流分析写入到无限制的容器时，它会使用先前查询步骤或输入分区方案中一样多的并行写入器。
+Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用[无限](../cosmos-db/partitioning-overview.md)容器作为数据分区方式。 当流分析写入到无限制的容器时，它会使用先前查询步骤或输入分区方案中一样多的并行写入器。
 
 > [!NOTE]
 > Azure 流分析仅支持顶级分区键的无限制容器。 例如，支持 `/region`。 不支持嵌套分区键（例如 `/region/name`）。 
@@ -72,9 +72,9 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 
 请务必选择包含许多不同值的分区键属性，并跨这些值均匀分配工作负载。 作为分区的自然项目，涉及同一分区键的请求受到单个分区的最大吞吐量的限制。 
 
-属于同一分区键值的文档的存储大小限制为 20 GB ([物理分区大小限制](../cosmos-db/partition-data.md) 为 50 gb) 。 [理想的分区键](../cosmos-db/partitioning-overview.md#choose-partitionkey)是指经常作为查询中的筛选器，并且具有足够的基数以确保解决方案是可缩放的。
+属于同一分区键值的文档的存储大小限制为 20 GB ([物理分区大小限制](../cosmos-db/partitioning-overview.md) 为 50 gb) 。 [理想的分区键](../cosmos-db/partitioning-overview.md#choose-partitionkey)是指经常作为查询中的筛选器，并且具有足够的基数以确保解决方案是可缩放的。
 
-用于流分析查询和 Cosmos DB 的分区键不需要完全相同。 完全并行拓扑建议使用 *输入分区键*， `PartitionId` 作为流分析查询的分区键，但这可能不是 Cosmos DB 容器的分区键的建议选项。
+用于流分析查询和 Cosmos DB 的分区键不需要完全相同。 完全并行拓扑建议使用 *输入分区键* ， `PartitionId` 作为流分析查询的分区键，但这可能不是 Cosmos DB 容器的分区键的建议选项。
 
 分区键也是 Cosmos DB 的存储过程和触发器中的事务处理的边界。 选择分区键时，应确保在事务中同时出现的文档使用相同的分区键值。 如需详细了解如何选择分区键，请参阅 [Azure Cosmos DB 中的分区](../cosmos-db/partitioning-overview.md)一文。
 
@@ -89,7 +89,7 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 
 在 1.2 之前的级别，流分析需使用自定义的存储过程将文档按分区键批量更新插入到 Azure Cosmos DB 中。 其中的批作为事务写入。 即使只有一条记录遇到暂时性错误（限制），也必须重试整个批。 因此，即使受到合理限制的方案的运行速度也会变得相对缓慢。
 
-以下示例显示了从同一 Azure 事件中心输入读取数据的两个相同流分析作业。 这两个流分析作业已使用直通查询[完全分区](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs)，并写入到相同的 Azure Cosmos DB 容器。 左侧的指标来自配置了兼容性级别 1.0 的作业。 右侧的指标来自配置了版本 1.2 的作业。 Azure Cosmos DB 容器的分区键是来自输入事件的唯一 GUID。
+以下示例显示了从同一 Azure 事件中心输入读取数据的两个相同流分析作业。 这两个流分析作业已使用直通查询[完全分区](./stream-analytics-parallelization.md#embarrassingly-parallel-jobs)，并写入到相同的 Azure Cosmos DB 容器。 左侧的指标来自配置了兼容性级别 1.0 的作业。 右侧的指标来自配置了版本 1.2 的作业。 Azure Cosmos DB 容器的分区键是来自输入事件的唯一 GUID。
 
 ![流分析指标比较](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-3.png)
 
@@ -117,9 +117,9 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 |容器名称 | 容器名称，如 `MyContainer`。 必须存在名为 `MyContainer` 的容器。  |
 |文档 ID     | 可选。 输出事件中用作唯一键的列名称，插入或更新操作必须基于该键。 如果将其保留为空，则插入所有事件，但不使用更新选项。|
 
-配置 Azure Cosmos DB 输出后，可以在查询中将其用作 [INTO 语句](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)的目标。 当使用这种方式进行 Azure Cosmos DB 输出时，[需要显式设置分区键](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks)。 
+配置 Azure Cosmos DB 输出后，可以在查询中将其用作 [INTO 语句](/stream-analytics-query/into-azure-stream-analytics)的目标。 当使用这种方式进行 Azure Cosmos DB 输出时，[需要显式设置分区键](./stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)。 
 
-输出记录必须包含一个区分大小写的列，该列以 Azure Cosmos DB 中的分区键命名。 若要实现更大的并行化，该语句可能需要使用同一列的 [PARTITION BY 子句](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs)。
+输出记录必须包含一个区分大小写的列，该列以 Azure Cosmos DB 中的分区键命名。 若要实现更大的并行化，该语句可能需要使用同一列的 [PARTITION BY 子句](./stream-analytics-parallelization.md#embarrassingly-parallel-jobs)。
 
 下面是一个示例查询：
 
@@ -137,3 +137,17 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 - NotFound（HTTP 错误代码 404）
 - Forbidden（HTTP 错误代码 403）
 - BadRequest（HTTP 错误代码 400）
+
+## <a name="common-issues"></a>常见问题
+
+1. 将唯一索引约束添加到集合，流分析中的输出数据将违反此约束。 确保流分析的输出数据不违反唯一约束或删除约束。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键约束](../cosmos-db/unique-keys.md)。
+
+2. `PartitionKey`列不存在。
+
+3. `Id`列不存在。
+
+## <a name="next-steps"></a>后续步骤
+
+* [了解 Azure 流分析的输出](stream-analytics-define-outputs.md) 
+* [从 Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)
+* [Azure 流分析自定义 blob 输出分区](stream-analytics-custom-path-patterns-blob-storage-output.md)

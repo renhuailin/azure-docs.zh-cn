@@ -8,17 +8,18 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 4a102fc805750f7dd460c1878a730b9ca4ce1c37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360780"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359364"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 中 SQL Server 的备份和还原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,7 +61,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 ## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>适用于 SQL VM 的 Azure 备份
 
-[Azure 备份](/azure/backup/)为 Azure VM 上的 SQL Server 提供企业级备份功能。 在恢复服务保管库中存储和管理所有备份。 此解决方案提供许多优势，尤其是针对企业：
+[Azure 备份](../../../backup/index.yml)为 Azure VM 上的 SQL Server 提供企业级备份功能。 在恢复服务保管库中存储和管理所有备份。 此解决方案提供许多优势，尤其是针对企业：
 
 - **零基础结构备份**：无需管理备份服务器或存储位置。
 - **缩放**：保护大量的 SQL VM 和数千个数据库。
@@ -71,7 +72,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 - **15 分钟恢复点目标 (RPO)** ：最多可将 SQL 事务日志备份频率配置为每隔 15 分钟备份一次。
 - **时间点还原**：使用门户将数据库恢复到特定的时间点，无需手动还原多个完整备份、差异备份和日志备份。
 - **合并的故障电子邮件警报**：针对任何故障配置合并的电子邮件通知。
-- **基于角色的访问控制**：确定谁可以通过门户管理备份和还原操作。
+- **Azure 基于角色的访问控制**：确定谁可以通过门户管理备份和还原操作。
 
 有关此解决方案工作原理的简要概述和演示，请观看以下视频：
 
@@ -83,19 +84,19 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 若要手动管理 SQL VM 上的备份和还原操作，可以根据所用的 SQL Server 版本使用多个选项。 有关备份和还原的概述，请根据所用的 SQL Server 版本参阅以下文章之一：
 
-- [适用于 SQL Server 2016 和更高版本的备份和还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
-- [适用于 SQL Server 2014 的备份和还原](https://msdn.microsoft.com/library/ms187048%28v=sql.120%29.aspx)
-- [适用于 SQL Server 2012 的备份和还原](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx)
-- [适用于 SQL Server 2008 R2 的备份和还原](https://msdn.microsoft.com/library/ms187048%28v=sql.105%29.aspx)
-- [适用于 SQL Server 2008 的备份和还原](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx)
+- [适用于 SQL Server 2016 和更高版本的备份和还原](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
+- [适用于 SQL Server 2014 的备份和还原](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases?viewFallbackFrom=sql-server-2014)
+- [适用于 SQL Server 2012 的备份和还原](/previous-versions/sql/sql-server-2012/ms187048(v=sql.110))
+- [适用于 SQL Server 2008 R2 的备份和还原](/previous-versions/sql/sql-server-2008-r2/ms187048(v=sql.105))
+- [适用于 SQL Server 2008 的备份和还原](/previous-versions/sql/sql-server-2008/ms187048(v=sql.100))
 
 以下部分更详细地介绍多个手动备份和还原选项。
 
 ### <a name="backup-to-attached-disks"></a>备份到附加的磁盘
 
-对于 Azure VM 上的 SQL Server，可以使用 VM 上附加的磁盘作为备份文件目标，通过本机备份和还原技术实现此目的。 不过，你只能根据[虚拟机的大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，将有限数量的磁盘附加到 Azure 虚拟机。 磁盘管理开销也是一个考虑因素。
+对于 Azure VM 上的 SQL Server，可以使用 VM 上附加的磁盘作为备份文件目标，通过本机备份和还原技术实现此目的。 不过，你只能根据[虚拟机的大小](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，将有限数量的磁盘附加到 Azure 虚拟机。 磁盘管理开销也是一个考虑因素。
 
-有关如何使用 SQL Server Management Studio (SSMS) 或 Transact-SQL 手动创建完整数据库备份的示例，请参阅[创建完整数据库备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)。
+有关如何使用 SQL Server Management Studio (SSMS) 或 Transact-SQL 手动创建完整数据库备份的示例，请参阅[创建完整数据库备份](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)。
 
 ### <a name="backup-to-url"></a>备份到 URL
 
@@ -104,13 +105,13 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 | 2016 增强功能 | 详细信息 |
 | --- | --- |
 | **条带化** |备份到 Microsoft Azure Blob 存储时，SQL Server 2016 支持备份到多个 Blob，以便能够备份高达 12.8 TB 的大型数据库。 |
-| **快照备份** |通过使用 Azure 快照，SQL Server 文件快照备份为使用 Azure Blob 存储服务存储的数据库文件提供近实时备份和快速还原。 使用此功能可简化备份和还原策略。 文件快照备份还支持时间点还原。 有关详细信息，请参阅 [Azure 中针对数据库文件的快照备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)。 |
+| **快照备份** |通过使用 Azure 快照，SQL Server 文件快照备份为使用 Azure Blob 存储服务存储的数据库文件提供近实时备份和快速还原。 使用此功能可简化备份和还原策略。 文件快照备份还支持时间点还原。 有关详细信息，请参阅 [Azure 中针对数据库文件的快照备份](/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)。 |
 
 有关详细信息，请根据所用的 SQL Server 版本参阅以下文章之一：
 
-- **SQL Server 2016/2017**：[SQL Server 备份到 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014**：[SQL Server 2014 备份到 URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
-- **SQL Server 2012**：[SQL Server 2012 备份到 URL](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
+- **SQL Server 2016/2017**：[SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**：[SQL Server 2014 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
+- **SQL Server 2012**：[SQL Server 2012 备份到 URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
 
 ### <a name="managed-backup"></a>托管备份
 
@@ -120,8 +121,8 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 有关详细信息，请根据所用的 SQL Server 版本参阅以下文章之一：
 
-- [在 Microsoft Azure 中对 SQL Server 2016 和更高版本进行托管备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)
-- [在 Microsoft Azure 中对 SQL Server 2014 进行托管备份](https://msdn.microsoft.com/library/dn449496%28v=sql.120%29.aspx)
+- [在 Microsoft Azure 中对 SQL Server 2016 和更高版本进行托管备份](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)
+- [在 Microsoft Azure 中对 SQL Server 2014 进行托管备份](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?viewFallbackFrom=sql-server-2014)
 
 ## <a name="decision-matrix"></a>决策矩阵
 

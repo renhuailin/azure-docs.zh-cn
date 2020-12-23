@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 12/03/2020
+ms.openlocfilehash: 79ba186351cc145e012658abc30572e99b123dbb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935766"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573980"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分字词搜索和包含特殊字符（通配符、正则表达式、模式）的模式
+# <a name="partial-term-search-and-patterns-with-special-characters-hyphens-wildcard-regex-patterns"></a>部分术语搜索和带有特殊字符的模式 (连字符、通配符、正则表达式、模式) 
 
-部分字词搜索是指由字词片段组成的查询，其中没有包含整个字词，而可能只是包含字词的开头、中间部分或末尾（有时称为前缀查询、中缀查询或后缀查询）  。 部分字词搜索可能包括片段的组合，其中通常包含特殊字符，例如属于查询字符串一部分的短划线或斜杠。 常见的用例包括电话号码、URL、代码或带连字符的组合词的一部分。
+部分字词搜索是指由字词片段组成的查询，其中没有包含整个字词，而可能只是包含字词的开头、中间部分或末尾（有时称为前缀查询、中缀查询或后缀查询）  。 部分术语搜索可能包括片段的组合，通常包含特殊字符，如作为查询字符串的一部分的连字符、短划线或斜线。 常见的用例包括电话号码、URL、代码或带连字符的组合词的一部分。
 
 如果索引未采用预期格式的标记，则包含特殊字符的部分字词搜索和查询字符串可能会出现问题。 在编制索引的[词法分析阶段](search-lucene-query-architecture.md#stage-2-lexical-analysis)（假设使用默认的标准分析器），会丢弃特殊字符，拆分复合词，并删除空格；找不到任何匹配项时，所有这些操作都可能会导致查询失败。 例如，类似于 `+1 (425) 703-6214` 的电话号码（标记化为 `"1"`、`"425"`、`"703"`、`"6214"`）不会显示在 `"3-62"` 查询中，因为该内容并不实际存在于索引中。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "88935766"
 > [!TIP]
 > 如果你熟悉 Postman 和 REST API，请[下载查询示例集合](https://github.com/Azure-Samples/azure-search-postman-samples/)以查询本文中所述的部分字词和特殊字符。
 
-## <a name="what-is-partial-term-search-in-azure-cognitive-search"></a>什么是 Azure 认知搜索中的部分字词搜索
+## <a name="about-partial-term-search"></a>关于部分术语搜索
 
 Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部分字词查找匹配项，除非你包括通配符占位符运算符（`*` 和 `?`）或将查询格式设置为正则表达式。 部分字词是使用以下方法指定的：
 
@@ -45,15 +45,15 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 
 如果需要根据片段、模式或特殊字符进行搜索，可将默认分析器替代为自定义分析器，后者按照更简单的标记化规则运行，在索引中保留整个字符串。 退一步讲，该方法如下所述：
 
-+ 定义一个字段，用于存储字符串的原有版本（假设在查询时需要已分析的和未分析的文本）
-+ 对各种可在适当粒度级别发出标记的分析器进行评估和选择
-+ 将分析器分配到字段
-+ 生成并测试索引
+1. 定义一个字段，用于存储字符串的原有版本（假设在查询时需要已分析的和未分析的文本）
+1. 对各种可在适当粒度级别发出标记的分析器进行评估和选择
+1. 将分析器分配到字段
+1. 生成并测试索引
 
 > [!TIP]
 > 评估分析器是需要频繁重建索引的迭代过程。 可以使用 Postman 以及[创建索引](/rest/api/searchservice/create-index)、[删除索引](/rest/api/searchservice/delete-index)、[加载文档](/rest/api/searchservice/addupdate-or-delete-documents)和[搜索文档](/rest/api/searchservice/search-documents) REST API 来简化此步骤。 使用“加载文档”时，请求正文应包含要测试的小型代表性数据集（例如，包含电话号码或产品代码的字段）。 在同一 Postman 集合中使用这些 API 可以快速循环执行这些步骤。
 
-## <a name="duplicate-fields-for-different-scenarios"></a>不同方案的重复字段
+## <a name="1---create-a-dedicated-field"></a>1-创建专用字段
 
 分析器将确定如何在索引中标记化字词。 由于分析器是按字段分配的，因此你可以在索引中创建字段，以针对不同的方案进行优化。 例如，可以定义“featureCode”和“featureCodeRegex”，这样就可以先执行常规的全文搜索，再进行高级模式匹配。 分配给每个字段的分析器将确定如何在索引中标记化每个字段的内容。  
 
@@ -74,7 +74,9 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 },
 ```
 
-## <a name="choose-an-analyzer"></a>选择分析器
+<a name="set-an-analyzer"></a>
+
+## <a name="2---set-an-analyzer"></a>2-设置分析器
 
 选择可生成完整字词标记的分析器时，以下分析器是常用选项：
 
@@ -98,7 +100,7 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
    }
     ```
 
-1. 评估响应，以查看文本如何在索引中标记化。 注意每个字词如何转换为小写和分解。 只有与这些标记匹配的查询才会在结果中返回此文档。 包含“10-NOR”的查询会失败。
+1. 评估响应，以查看文本如何在索引中标记化。 请注意每个术语如何小写、删除连字符和子字符串划分为单独的标记。 只有与这些标记匹配的查询才会在结果中返回此文档。 包含“10-NOR”的查询会失败。
 
     ```json
     {
@@ -152,7 +154,7 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 > [!Important]
 > 请注意，在生成查询树时，查询分析程序往往会将搜索表达式中的字词小写。 如果使用的分析器在编制索引期间不会将文本输入小写，并且你未获得预期的结果，则原因可能就在于此。 解决方法是根据下面的“使用自定义分析器”部分所述添加小写标记筛选器。
 
-## <a name="configure-an-analyzer"></a>配置分析器
+## <a name="3---configure-an-analyzer"></a>3-配置分析器
  
 无论你是在评估分析器还是继续进行特定的配置，都需要在字段定义中指定分析器，如果未使用内置分析器，则可能还需要配置分析器本身。 交换分析器时，通常需要重建索引（删除、重新创建并重新加载）。 
 
@@ -160,7 +162,7 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 
 可以在字段定义的 `analyzer` 属性中按名称指定内置或预定义的分析器，不需要在索引中进行其他配置。 以下示例演示如何在字段中设置 `whitespace` 分析器。 
 
-有关其他方案以及其他内置分析器的详细信息，请参阅[预定义分析器列表](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)。 
+有关其他方案以及其他内置分析器的详细信息，请参阅[预定义分析器列表](./index-add-custom-analyzers.md#predefined-analyzers-reference)。 
 
 ```json
     {
@@ -177,7 +179,7 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 
 如果使用[自定义分析器](index-add-custom-analyzers.md)，请在索引中使用用户定义的组合（其中包含标记器、标记筛选器和可能的配置设置）来定义该分析器。 接下来，在字段定义中引用它，就像引用内置分析器一样。
 
-如果目标是完整字词标记化，我们建议使用一个由**关键字标记器**和**小写标记筛选器**组成的自定义分析器。
+如果目标是完整字词标记化，我们建议使用一个由 **关键字标记器** 和 **小写标记筛选器** 组成的自定义分析器。
 
 + 关键字标记器为字段的整个内容创建单个标记。
 + 小写标记筛选器将大写字母转换为小写文本。 查询分析程序通常将任何大写文本输入小写。 小写过程可将包含标记化字词的输入均匀化。
@@ -216,7 +218,7 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 > [!NOTE]
 > `keyword_v2` 标记器和 `lowercase` 令牌筛选器对于系统是已知的，它们使用默认配置，正因如此，可以按名称引用它们，而无需先定义它们。
 
-## <a name="build-and-test"></a>生成和测试
+## <a name="4---build-and-test"></a>4-生成和测试
 
 使用支持方案的分析器和字段定义定义索引后，请加载包含代表性字符串的文档，以便可以测试部分字符串查询。 
 
@@ -228,7 +230,7 @@ Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部�
 
 + “[加载文档](/rest/api/searchservice/addupdate-or-delete-documents)”会导入与索引具有相同结构的文档以及可搜索的内容。 完成此步骤后，索引便可供查询或测试。
 
-+ [选择分析器](#choose-an-analyzer)中介绍了[测试分析器](/rest/api/searchservice/test-analyzer)。 请使用各种分析器来测试索引中的一些字符串，以了解字词的标记化方式。
++ 在[设置分析器](#set-an-analyzer)中引入了[测试分析器](/rest/api/searchservice/test-analyzer)。 请使用各种分析器来测试索引中的一些字符串，以了解字词的标记化方式。
 
 + [搜索文档](/rest/api/searchservice/search-documents)中介绍了如何使用通配符和正则表达式的[简单语法](query-simple-syntax.md)或[完整 Lucene 语法](query-lucene-syntax.md)来构造查询请求。
 

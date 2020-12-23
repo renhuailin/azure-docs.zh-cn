@@ -3,19 +3,19 @@ title: 什么是指标顾问服务？
 titleSuffix: Azure Cognitive Services
 description: 什么是指标顾问？
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 408bdd948977218d9b39a39bf97391a4141e545c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 0de93eff0fc422bc28fe7b2c42c295c8d8b1acc4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943398"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344464"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>什么是指标顾问（预览版）？ 
 
@@ -53,16 +53,14 @@ ms.locfileid: "90943398"
 此工作流非常简单：载入数据后，可以微调异常检测，并创建适合场景的配置。
 
 1. 为指标顾问[创建 Azure 资源](../cognitive-services-apis-create-account.md)。 
-2. 尝试使用演示网站查看具有预配置示例数据的示例指标顾问实例。 
-3. 使用 Web 门户生成首个监视器。
+2. 使用 Web 门户生成首个监视器。
     1. 载入数据
     2. 微调异常情况检测
     3. 订阅警报
     4. 查看诊断见解
-1. 使用 REST API 自定义实例。
+3. 使用 REST API 自定义实例。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 尝试[演示网站](quickstarts/explore-demo.md)。
 * 浏览快速入门：[监视你关于 web 的第一个指标](quickstarts/web-portal.md)。
-* 浏览快速入门：[使用 REST API 自定义解决方案](quickstarts/rest-api.md)。
+* 浏览快速入门：[使用 REST API 自定义解决方案](./quickstarts/rest-api-and-client-library.md)。

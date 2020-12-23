@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
-ms.openlocfilehash: b4a6c9b5dafcb46d942fd02fc2653e051005b32d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 741009b1d92d185678080c60078b272d7fb85558
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551874"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92509278"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tripactions"></a>教程：Azure Active Directory 与 TripActions 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551874"
 * 让用户使用其 Azure AD 帐户自动登录到 TripActions。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88551874"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * TripActions 支持 **SP 和 IDP** 发起的 SSO
-* TripActions 支持**实时**用户预配
+* TripActions 支持 **实时** 用户预配
 
 ## <a name="adding-tripactions-from-the-gallery"></a>从库中添加 TripActions
 
@@ -82,7 +82,7 @@ ms.locfileid: "88551874"
 
     在“登录 URL”文本框中，键入 URL：  `https://app.tripactions.com`
 
-1. 单击“ **保存**”。
+1. 单击“ **保存** ”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -134,14 +134,14 @@ ms.locfileid: "88551874"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 TripActions 磁贴时，应当会自动登录到已为其设置了 SSO 的 TripActions。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 TripActions 磁贴时，应当会自动登录到已为其设置了 SSO 的 TripActions。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 TripActions](https://aad.portal.azure.com/)

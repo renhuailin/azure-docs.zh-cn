@@ -1,5 +1,5 @@
 ---
-title: 使用客户端证书身份验证保护后端服务
+title: 使用客户端证书身份验证确保后端服务安全
 titleSuffix: Azure API Management
 description: 了解如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全。
 services: api-management
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 980d3ca52016c65301ea72e4e669c4bafea4c053
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250186"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077177"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
 API 管理允许你使用客户端证书保护对 API 后端服务的访问。 本指南介绍如何在 Azure 门户的 Azure API 管理服务实例中管理证书。 它还说明了如何配置 API 以使用证书来访问后端服务。
 
-有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 证书实体</a>。
+有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 <a href="/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 证书实体</a>。
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>先决条件
 
@@ -43,8 +43,8 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 1. 在 Azure 门户中导航到 Azure API 管理服务实例。
 2. 从菜单中选择“证书”  。
-3. 单击“ **+ 添加**”按钮。
-    ![添加客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+3. 单击“ **+ 添加** ”按钮。
+    ![突出显示 "+ 添加" 按钮的屏幕截图。](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. 浏览证书，提供其 ID 和密码。
 5. 单击“创建”。 
 
@@ -73,7 +73,7 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 2. 在“设计”  选项卡上，单击“后端”  部分的铅笔图标。
 3. 将“网关凭据”  更改为“客户端证书”  ，然后从下拉列表中选择证书。
-    ![启用客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+    ![屏幕截图，显示在何处更改网关凭据并选择证书。](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
 4. 单击“保存”  。
 

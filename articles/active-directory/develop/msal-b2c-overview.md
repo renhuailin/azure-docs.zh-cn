@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119779"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107866"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>通过适用于 JavaScript 的 Microsoft 身份验证库来使用 Azure AD B2C
 
@@ -56,16 +56,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>步骤 3：配置身份验证
 
-1. 在示例中打开 `config.js` 文件。
+1. 打开示例中的 config.json 文件。
 
-2. 注册应用程序时，请使用前面获取的应用程序凭据配置示例。 更改以下代码行：将值替换为你的 clientID、主机、tenantId 和策略的名称。
+2. 注册应用程序时，请使用前面获取的应用程序凭据配置示例。 更改以下代码行：将值替换为你的租户名称、客户端 ID 和策略名称。
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 有关详细信息，请查看此 [Node.js B2C Web API 示例](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)。
 
@@ -203,7 +209,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C 显示的密码重置流屏幕" border="false":::
 
-    有关错误代码和异常处理的详细信息，请参阅 [MSAL 错误和异常代码](msal-handling-exceptions.md)。
+    有关错误代码和异常处理的详细信息，请参阅 [MSAL 错误和异常代码](msal-error-handling-js.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -211,4 +217,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 - [用户流](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [自定义策略](../../active-directory-b2c/custom-policy-get-started.md)
-- [UX 自定义](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [UX 自定义](../../active-directory-b2c/configure-user-input.md)

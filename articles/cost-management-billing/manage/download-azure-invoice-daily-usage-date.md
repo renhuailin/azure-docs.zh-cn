@@ -7,15 +7,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/28/2020
 ms.author: banders
-ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e380aa1f4d50e6ced34254ceca9d899022142f6d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270893"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911284"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
 
@@ -136,9 +136,7 @@ ms.locfileid: "91270893"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索“成本管理 + 计费”。 
-
-    ![显示了 Azure 门户搜索的屏幕截图](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
-
+1. 如果有权访问多个计费帐户，请为 EA 计费帐户选择计费范围。
 1. 选择“使用情况 + 费用”。 
 1. 针对要下载的月份，选择“下载”。 
 
@@ -165,10 +163,6 @@ ms.locfileid: "91270893"
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
-
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
-
-如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 

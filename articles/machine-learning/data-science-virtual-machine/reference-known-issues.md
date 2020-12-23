@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 864b5e519875029149e93df248aa5953f62ec51e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78206514"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322954"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 的已知问题和故障排除方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "78206514"
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Ubuntu DSVM 上的磁盘加密失败
 
-Ubuntu DSVM 目前不支持 (ADE) 的 Azure 磁盘加密。 作为一种解决方法，请考虑配置 [Azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)。
+Ubuntu DSVM 目前不支持 (ADE) 的 Azure 磁盘加密。 作为一种解决方法，请考虑配置 [Azure 托管磁盘的服务器端加密](../../virtual-machines/disk-encryption.md)。
 
 ## <a name="tool-appears-disabled"></a>工具显示为已禁用
 
@@ -46,4 +46,3 @@ Hyper-v 最初无法在 Windows 上运行，这是预期的行为。 对于启�
 最终屏幕应如下所示：
 
    ![启用 Hyper-V](./media/workaround/hyperv-enable-dsvm.png)
-

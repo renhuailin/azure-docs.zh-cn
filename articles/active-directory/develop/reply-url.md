@@ -5,18 +5,18 @@ description: 说明 Microsoft 标识平台对重定向 URI（回复 URL）格式
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 08/07/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
-ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.reviewer: marsma, lenalepa, manrath
+ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030304"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752774"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重定向 URI（回复 URL）限制和局限
 
@@ -24,7 +24,7 @@ ms.locfileid: "90030304"
 
  重定向 URI 存在以下限制：
 
-* 重定向 URI 必须以方案 `https` 开头。
+* 重定向 URI 必须以方案 `https` 开头。 有一些 [localhost 重定向 URI 例外](#localhost-exceptions)。
 
 * 重定向 URI 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在重定向 URI 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此在重定向到大小写不匹配的 `.../ABC/response-oidc` URL 时，可能会排除与 `.../abc/response-oidc` 关联的 cookie。
 
@@ -51,24 +51,32 @@ Azure Active Directory (Azure AD) 应用程序模型目前同时支持 HTTP 和 
 
 [RFC 8252 8.3 节](https://tools.ietf.org/html/rfc8252#section-8.3)和 [7.3](https://tools.ietf.org/html/rfc8252#section-7.3) 节指出，“环回”或“localhost”重定向 URI 有两个特殊的注意事项：
 
-1. `http` URI 方案是可接受的，因为重定向绝不会离开设备。 因此，下面这两个都是可接受的：
-    - `http://127.0.0.1/myApp`
-    - `https://127.0.0.1/myApp`
-1. 由于原生应用程序经常需要临时端口范围，因此，在匹配重定向 URI 时会忽略端口组件（例如 `:5001` 或 `:443`）。 因此，下面所有这些都被视为等效项：
-    - `http://127.0.0.1/MyApp`
-    - `http://127.0.0.1:1234/MyApp`
-    - `http://127.0.0.1:5000/MyApp`
-    - `http://127.0.0.1:8080/MyApp`
+1. `http` URI 方案是可接受的，因为重定向绝不会离开设备。 因此，这两个 Uri 都是可接受的：
+    - `http://localhost/myApp`
+    - `https://localhost/myApp`
+1. 由于原生应用程序经常需要临时端口范围，因此，在匹配重定向 URI 时会忽略端口组件（例如 `:5001` 或 `:443`）。 因此，所有这些 Uri 都视为等效：
+    - `http://localhost/MyApp`
+    - `http://localhost:1234/MyApp`
+    - `http://localhost:5000/MyApp`
+    - `http://localhost:8080/MyApp`
 
 从开发的角度来看，这意味着：
 
-* 不要注册多个只有端口不同的重定向 URI。 登录服务器会任意选择一个，并使用与该重定向 URI 关联的行为（例如，是 `web` 类型的、`native` 类型的还是 `spa` 类型的重定向）。
-* 如果需要在 localhost 上注册多个重定向 URI，以在开发过程中测试不同的流，请使用 URI 的 *path* 组件来区分它们。 例如，`http://127.0.0.1/MyWebApp` 与 `http://127.0.0.1/MyNativeApp` 不匹配。
-* 根据 RFC 指导，不应在重定向 URI 中使用 `localhost`， 而应使用实际环回 IP 地址 `127.0.0.1`。 这可防止应用被错误配置的防火墙或重命名的网络接口破坏。
+* 不要注册多个只有端口不同的重定向 URI。 登录服务器将任意选择一个，并使用与该重定向 URI 相关联的行为， (例如，它是 `web` -、 `native` 或类型的 `spa` 重定向) 。
 
-    若要将 `http` 方案与环回地址 (127.0.0.1) 而不是 localhost 一起使用，必须编辑 [应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute)。 
+    当你希望在相同的应用程序注册中使用不同的身份验证流时，这一点尤其重要，例如授权代码授予和隐式流。 若要将正确的响应行为与每个重定向 URI 相关联，登录服务器必须能够区分重定向 Uri，并且仅当端口不同时才能这样做。
+* 如果需要在 localhost 上注册多个重定向 URI，以在开发过程中测试不同的流，请使用 URI 的 *path* 组件来区分它们。 例如，`http://localhost/MyWebApp` 与 `http://localhost/MyNativeApp` 不匹配。
+* 当前不支持 IPv6 环回地址 (`[::1]`)。
 
-    当前不支持 IPv6 环回地址 (`[::1]`)。
+#### <a name="prefer-127001-over-localhost"></a>更倾向于 localhost over 127.0.0。1
+
+若要防止应用被错误配置的防火墙或重命名的网络接口中断，请使用重定向 URI 中的 IP 文本环回地址 `127.0.0.1`，而不是使用 `localhost`。 例如，`https://127.0.0.1`。
+
+不过，您不能使用 Azure 门户中的 " **重定向 uri** " 文本框来添加使用方案的基于环回的重定向 URI `http` ：
+
+:::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="显示不允许基于 http 的环回重定向 URI 的 Azure 门户中的错误对话框":::
+
+若要添加将 `http` 方案与环回地址一起使用的重定向 URI `127.0.0.1` ，当前必须修改[应用程序清单](reference-app-manifest.md)中的[replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute)属性。
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>重定向 URI 中对通配符的限制
 
@@ -78,9 +86,9 @@ Azure Active Directory (Azure AD) 应用程序模型目前同时支持 HTTP 和 
 
 若要将具有通配符的重定向 URI 添加到用于登录工作帐户或学校帐户的应用注册，需要使用 Azure 门户的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)中的应用程序清单编辑器。 尽管可以使用清单编辑器来设置具有通配符的重定向 URI，但我们强烈建议你遵循 [RFC 6749 的 3.1.2 节](https://tools.ietf.org/html/rfc6749#section-3.1.2)的要求，仅使用绝对 URI。
 
-如果方案所需的重定向 URI 数目超过允许的最大限制，请考虑[以下方法](#use-a-state-parameter)，而不要添加通配符重定向 URI。
+如果方案所需的重定向 URI 数目超过允许的最大限制，请考虑以下[状态参数方法](#use-a-state-parameter)，而不要添加通配符重定向 URI。
 
-### <a name="use-a-state-parameter"></a>使用状态参数
+#### <a name="use-a-state-parameter"></a>使用状态参数
 
 如果你有多个子域，并且你的方案要求在身份验证成功时将用户重定向到开始操作时所在的页面，则使用状态参数可能有帮助。
 

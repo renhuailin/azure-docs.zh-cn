@@ -1,7 +1,7 @@
 ---
 title: 图像分类教程：部署模型
 titleSuffix: Azure Machine Learning
-description: 本教程（由两部分组成的系列教程的第二部分）介绍如何通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 部署图像分类模型。
+description: 本教程介绍如何通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 部署图像分类模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0d78fc55ca60fa883c742885acf2fa98ede61ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ee6529f36c302cba1dc7b5a4b53aaf96ce58e4a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896574"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532777"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 
@@ -45,7 +45,7 @@ ms.locfileid: "90896574"
 > 本文的其余部分包含的内容与在笔记本中看到的内容相同。  
 >
 > 如果要在运行代码时继续阅读，请立即切换到 Jupyter 笔记本。
-> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”  来运行整个笔记本。
+> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter** 。 或者，通过从顶部工具栏中选择“全部运行”  来运行整个笔记本。
 
 ## <a name="set-up-the-environment"></a><a name="start"></a>设置环境
 
@@ -358,6 +358,6 @@ service.delete()
 
 + 了解 [Azure 机器学习的所有部署选项](how-to-deploy-and-where.md)。
 + 了解如何[创建 Web 服务的客户端](how-to-consume-web-service.md)。
-+  以异步方式[对大量数据进行预测](how-to-use-parallel-run-step.md)。
++  以异步方式[对大量数据进行预测](./tutorial-pipeline-batch-scoring-classification.md)。
 + 使用 [Application Insights](how-to-enable-app-insights.md) 监视 Azure 机器学习模型。
-+ 尝试学习[自动算法选择](tutorial-auto-train-models.md)教程。 
++ 尝试学习[自动算法选择](tutorial-auto-train-models.md)教程。

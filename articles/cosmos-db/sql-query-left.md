@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 LEFT
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 LEFT。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 647bee87283f26b0d1ce832b2b2aaac690c05b92
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303743"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333726"
 ---
 # <a name="left-azure-cosmos-db"></a>LEFT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回具有指定字符数的字符串的左侧部分。  
   
 ## <a name="syntax"></a>语法

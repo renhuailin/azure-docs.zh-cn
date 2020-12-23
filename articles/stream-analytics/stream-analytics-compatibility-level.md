@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056510"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348927"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -33,12 +33,12 @@ Azure 流分析目前支持三种兼容性级别：
 
 ## <a name="set-the-compatibility-level"></a>设置兼容性级别
 
-可以使用 Azure 门户或[创建作业 REST API 调用](/rest/api/streamanalytics/stream-analytics-job)来设置流分析作业的兼容性级别。
+可以使用 Azure 门户或[创建作业 REST API 调用](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel)来设置流分析作业的兼容性级别。
 
 若要在 Azure 门户中更新作业的兼容性级别：
 
 1. 使用 [Azure 门户](https://portal.azure.com)定位到你的流分析作业。
-2. **停止**该作业，然后更新兼容性级别。 如果作业处于运行状态，则无法更新兼容性级别。
+2. **停止** 该作业，然后更新兼容性级别。 如果作业处于运行状态，则无法更新兼容性级别。
 3. 在“配置”标题下，选择“兼容性级别”。  
 4. 选择所需的兼容性级别值。
 5. 选择页面底部的“保存”  。
@@ -53,7 +53,7 @@ Azure 流分析目前支持三种兼容性级别：
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP 消息传递协议
 
-**1.2 级别**：Azure 流分析使用[高级消息队列协议 (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) 消息传递协议将内容写入服务总线队列和主题。 通过 AMQP 可使用开放标准协议构建跨平台的混合应用程序。
+**1.2 级别** ：Azure 流分析使用 [高级消息队列协议 (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) 消息传递协议将内容写入服务总线队列和主题。 通过 AMQP 可使用开放标准协议构建跨平台的混合应用程序。
 
 ### <a name="geospatial-functions"></a>地理空间函数
 
@@ -65,7 +65,7 @@ Azure 流分析支持地理空间参考数据索引编制。 可为包含地理�
 
 更新的地理空间函数提供已知文本 (WKT) 地理空间格式的完整表达能力。 可以指定以前在 GeoJson 中所不支持的其他地理空间组件。
 
-有关详细信息，请参阅 [Azure 流分析中的地理空间功能更新 - 云和 IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
+有关详细信息，请参阅 [Azure 流分析中的地理空间功能更新-云和 IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
 
 ### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>针对使用多个分区的输入源的并行执行查询
 
@@ -77,13 +77,13 @@ Azure 流分析支持地理空间参考数据索引编制。 可为包含地理�
 
 **以前的级别：** 更新插入行为是“插入或合并”。 
 
-**1.2 级别：** 与 CosmosDB 输出的本机批量 API 集成可以最大程度地提高吞吐量，并有效地处理限制请求。 有关详细信息，请参阅[从 Azure 流分析输出到 Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12) 页。
+**1.2 级别：** 与 CosmosDB 输出的本机批量 API 集成可以最大程度地提高吞吐量，并有效地处理限制请求。 有关详细信息，请参阅[从 Azure 流分析输出到 Azure Cosmos DB](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12) 页。
 
 更新插入行为是“插入或替换”。 
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>写入到 SQL 输出时的 DateTimeOffset
 
-**以前的级别：** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 类型已调整为 UTC。
+**以前的级别：** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql) 类型已调整为 UTC。
 
 **1.2 级别：** 不再调整 DateTimeOffset。
 
@@ -142,13 +142,13 @@ Azure 流分析支持地理空间参考数据索引编制。 可为包含地理�
 
 **1.1 级别：** CREATE TABLE 允许指定强架构。 流分析引擎验证数据是否符合此架构。 使用这一模型，该命令可以通过 NaN 值筛选事件。
 
-### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>禁止在入口处将 datetime 字符串自动转换为 DateTime 类型
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>对于 JSON，在入口处禁用日期/时间字符串到 DateTime 类型的自动转换
 
-**1.0 级别：** JSON 分析器会自动将包含日期/时间/时区信息的字符串值转换为传入的日期时间类型，因此值立即丢失其原始格式和时区信息。 由于这是在入口上完成的，即使该字段未在查询中使用，也会转换为 UTC 日期时间。
+**1.0 级别：** JSON 分析器会在入口处将包含日期/时间/区域信息的字符串值自动转换为 DATETIME 类型，使该值立即丢失其原始格式和时区信息。 因为这是在入口处完成的，所以即使查询中没有使用该字段，它也会转换为 UTC DateTime。
 
-**1.1 级别：** 不会自动将包含日期/时间/时区信息的字符串值转换为 DATETIME 类型。 因此，将保留时区信息和原始格式设置。 但是，如果在查询中使用的 NVARCHAR (MAX) 字段 (DATEADD 函数的一部分（例如) ），则它将转换为 DATETIME 类型以执行计算，并将丢失其原始形式。
+**1.1 级别：** 没有将包含日期/时间/区域信息的字符串值自动转换为 DATETIME 类型。 因此，时区信息和原始格式保持不变。 但是，如果在查询中使用 NVARCHAR(MAX) 字段作为 DATETIME 表达式的一部分（例如 DATEADD 函数），它将被转换为 DATETIME 类型来执行计算，并且会失去其原始形式。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析输入的故障排除](stream-analytics-troubleshoot-input.md)
-* [流分析资源运行状况](stream-analytics-resource-health.md)
+* [流分析资源运行状况](./stream-analytics-troubleshoot-query.md)

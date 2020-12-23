@@ -1,6 +1,6 @@
 ---
 title: 共享元数据表
-description: Azure Synapse Analytics 提供了一个共享的元数据模型，如果使用该模型在 Apache Spark 中创建一个表，则可以从该表的 SQL 按需版本（预览版）和 SQL 池引擎访问该表，而无需复制数据。
+description: Azure Synapse Analytics 提供了一个共享的元数据模型，如果使用该模型在无服务器 Apache Spark 池中创建一个表，则可以从无服务器 SQL 池和专用 SQL 池访问该表，而无需复制数据。
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,30 +10,29 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018733"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461382"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共享元数据表
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics 允许不同的工作区计算引擎在其 Apache Spark 池（预览版）和 SQL 按需版本（预览版）引擎之间共享数据库和 Parquet 支持的表。
+Azure Synapse Analytics 允许不同的工作区计算引擎在其 Apache Spark 池和无服务器 SQL 池之间共享数据库和 Parquet 支持的表。
 
 Spark 作业创建数据库后，你可以通过 Spark，在该数据库中创建使用 Parquet 作为存储格式的表。 这些表将立即可供任何 Azure Synapse 工作区 Spark 池查询。 还可以在任何 Spark 作业中按权限使用这些表。
 
-Spark 创建的表、托管表和外部表还可以使用相同名称在 SQL 按需版本的相应已同步数据库中以外部表形式提供。 [在 SQL 中公开 Spark 表](#expose-a-spark-table-in-sql)提供了有关表同步的更多详细信息。
+Spark 创建的表、托管表和外部表还可以使用相同名称在无服务器 SQL 池的相应已同步数据库中以外部表形式提供。 [在 SQL 中公开 Spark 表](#expose-a-spark-table-in-sql)提供了有关表同步的更多详细信息。
 
-由于表以异步方式同步到 SQL 按需版本，因此这些表出现的时间会有延迟。
+由于表以异步方式同步到无服务器 SQL 池，因此这些表出现的时间会有延迟。
 
 ## <a name="manage-a-spark-created-table"></a>管理 Spark 创建的表
 
-使用 Spark 管理 Spark 创建的数据库。 例如，通过 Spark 池作业删除数据库，通过 Spark 在数据库中创建表。
+使用 Spark 管理 Spark 创建的数据库。 例如，通过无服务器 Apache Spark 池作业删除数据库，通过 Spark 在数据库中创建表。
 
-如果通过 SQL 按需版本在此类数据库中创建对象，或者尝试删除数据库，则该操作将会成功，但原始 Spark 数据库不会更改。
+如果通过无服务器 SQL 池在此类数据库中创建对象，或者尝试删除数据库，则该操作将会成功，但原始 Spark 数据库不会更改。
 
 ## <a name="expose-a-spark-table-in-sql"></a>使用 SQL 公开 Spark 表
 
@@ -74,12 +73,12 @@ Spark 表与 Synapse SQL 引擎提供的数据类型不同。 下表将 Spark �
 | `decimal`      | `decimal`        |<!-- need precision and scale-->|
 | `timestamp` |    `datetime2`      |<!-- need precision and scale-->|
 | `date`      | `date`           ||
-| `string`    |    `varchar(max)`   | 使用排序规则 `Latin1_General_CP1_CI_AS_UTF8` |
+| `string`    |    `varchar(max)`   | 使用排序规则 `Latin1_General_100_BIN2_UTF8` |
 | `binary`    |    `varbinary(max)` ||
 | `boolean`   |    `bit`            ||
-| `array`     |    `varchar(max)`   | 使用排序规则 `Latin1_General_CP1_CI_AS_UTF8` 序列化为 JSON |
-| `map`       |    `varchar(max)`   | 使用排序规则 `Latin1_General_CP1_CI_AS_UTF8` 序列化为 JSON |
-| `struct`    |    `varchar(max)`   | 使用排序规则 `Latin1_General_CP1_CI_AS_UTF8` 序列化为 JSON |
+| `array`     |    `varchar(max)`   | 使用排序规则 `Latin1_General_100_BIN2_UTF8` 序列化为 JSON |
+| `map`       |    `varchar(max)`   | 使用排序规则 `Latin1_General_100_BIN2_UTF8` 序列化为 JSON |
+| `struct`    |    `varchar(max)`   | 使用排序规则 `Latin1_General_100_BIN2_UTF8` 序列化为 JSON |
 
 <!-- TODO: Add precision and scale to the types mentioned above -->
 
@@ -95,9 +94,9 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式将在基础
 
 ## <a name="examples"></a>示例
 
-### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>在 Spark 中创建 Parquet 支持的托管表并从 SQL 按需版本进行查询
+### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>在 Spark 中创建 Parquet 支持的托管表并从无服务器 SQL 池进行查询
 
-在此场景中，你有一个名为 `mytestdb` 的 Spark 数据库。 请参阅[使用按需 SQL 创建并连接到 Spark 数据库](database.md#create-and-connect-to-spark-database-with-sql-on-demand)。
+在此场景中，你有一个名为 `mytestdb` 的 Spark 数据库。 请参阅[使用无服务器 SQL 池创建并连接到 Spark 数据库](database.md#create-and-connect-to-spark-database-with-serverless-sql-pool)。
 
 运行以下命令，使用 SparkSQL 创建托管的 Spark 表：
 
@@ -105,7 +104,7 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式将在基础
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-这会在数据库 `mytestdb` 中创建表 `myParquetTable`。 在短暂的延迟后，可以在 SQL 按需版本中看到该表。 例如，在 SQL 按需版本中运行以下语句。
+此命令在数据库 `mytestdb` 中创建表 `myParquetTable`。 在短暂的延迟后，可以在无服务器 SQL 池中看到该表。 例如，在无服务器 SQL 池中运行以下语句。
 
 ```sql
     USE mytestdb;
@@ -140,7 +139,7 @@ var df = spark.CreateDataFrame(data, schema);
 df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
 ```
 
-现在，可按如下所示从 SQL 按需版本读取数据：
+现在，可以从无服务器 SQL 池中读取数据，如下所示：
 
 ```sql
 SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
@@ -154,7 +153,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>在 Spark 中创建 Parquet 支持的外部表并从按需 SQL 进行查询
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>在 Spark 中创建 Parquet 支持的外部表并从无服务器 SQL 池进行查询
 
 此示例基于在前一个托管表示例中创建的 Parquet 数据文件创建一个外部 Spark 表。
 
@@ -168,7 +167,7 @@ CREATE TABLE mytestdb.myExternalParquetTable
 
 请将占位符 `<fs>` 替换为表示工作区默认文件系统的文件系统名称，并将占位符 `<synapse_ws>` 替换为运行此示例所用的 synapse 工作区的名称。
 
-以上示例在数据库 `mytestdb` 中创建表 `myExtneralParquetTable`。 在短暂的延迟后，可以在 SQL 按需版本中看到该表。 例如，在 SQL 按需版本中运行以下语句。
+以上示例在数据库 `mytestdb` 中创建表 `myExtneralParquetTable`。 在短暂的延迟后，可以在无服务器 SQL 池中看到该表。 例如，在无服务器 SQL 池中运行以下语句。
 
 ```sql
 USE mytestdb;
@@ -177,7 +176,7 @@ SELECT * FROM sys.tables;
 
 请验证结果中是否包含 `myExternalParquetTable`。
 
-现在，可按如下所示从 SQL 按需版本读取数据：
+现在，可以从无服务器 SQL 池中读取数据，如下所示：
 
 ```sql
 SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';

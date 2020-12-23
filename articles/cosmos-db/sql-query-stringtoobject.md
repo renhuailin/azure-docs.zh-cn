@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 StringToObject
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 StringToObject。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 369c86c8fc2ef4d125c3f13db4eb3af88b7e726e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78296375"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337840"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回已转换为对象的表达式。 如果表达式无法转换，则返回未定义的表达式。  
   
 ## <a name="syntax"></a>语法

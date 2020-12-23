@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91848902"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564100"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 机密计算常见问题解答
 
@@ -32,14 +32,14 @@ ms.locfileid: "91848902"
 
 **是否所有 OS 映像均可与 Azure 机密计算配合工作？**
 
-不是。 只能在装有 Ubuntu Server 18.04、Ubuntu Server 16.04、Windows Server 2019 Datacenter 或 Windows Server 2016 Datacenter 的第 2 代操作计算机上部署虚拟机。 详细了解 [Linux](../virtual-machines/linux/generation-2.md) 和 [Windows](../virtual-machines/windows/generation-2.md) 上的第 2 代 VM
+不是。 只能在装有 Ubuntu Server 18.04、Ubuntu Server 16.04、Windows Server 2019 Datacenter 或 Windows Server 2016 Datacenter 的第 2 代操作计算机上部署虚拟机。 详细了解 [Linux](../virtual-machines/generation-2.md) 和 [Windows](../virtual-machines/generation-2.md) 上的第 2 代 VM
 
 **DCsv2 虚拟机在门户中灰显，我无法选择此类虚拟机**
 
 根据 VM 旁边的信息气泡执行不同的操作：
-   -    **UnsupportedGeneration**：将虚拟机映像的代系更改为“Gen2”。
-   -    **NotAvailableForSubscription**：此区域尚不可用于你的订阅。 选择可用区域。
-   -    **InsufficientQuota**：[创建支持请求以提高配额](../azure-portal/supportability/per-vm-quota-requests.md)。 免费试用订阅没有提供机密计算 VM 配额。 
+   -    **UnsupportedGeneration** ：将虚拟机映像的代系更改为“Gen2”。
+   -    **NotAvailableForSubscription** ：此区域尚不可用于你的订阅。 选择可用区域。
+   -    **InsufficientQuota** ： [创建支持请求以提高配额](../azure-portal/supportability/per-vm-quota-requests.md)。 免费试用订阅没有提供机密计算 VM 配额。 
 
 **当我尝试在门户上的大小选择器中搜索 DCsv2 虚拟机时，未显示此类虚拟机**
 

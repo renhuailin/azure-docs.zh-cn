@@ -7,11 +7,11 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020195"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998237"
 ---
 # <a name="report-and-check-service-health"></a>报告和检查服务运行状况
 当服务发生问题时，必须能够快速检测问题，才能响应并修复所有事件和中断。 如果从服务代码向 Azure Service Fabric 运行状况管理器报告问题和失败，可以使用 Service Fabric 提供的标准运行状况监视工具来检查运行状况。
@@ -39,7 +39,7 @@ ms.locfileid: "89020195"
 
 ## <a name="to-deploy-an-application-and-check-its-health"></a>部署应用程序并检查其运行状况
 1. 以管理员的身份打开 Visual Studio。
-1. 使用**有状态服务**模板创建一个项目。
+1. 使用 **有状态服务** 模板创建一个项目。
    
     ![创建包含有状态服务的 Service Fabric 应用程序](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
 1. 按 **F5** 以调试模式运行应用程序。 应用程序将部署到本地群集。
@@ -56,7 +56,7 @@ ms.locfileid: "89020195"
 ## <a name="to-add-custom-health-events-to-your-service-code"></a>将自定义运行状况事件添加到服务代码
 Visual Studio 中的 Service Fabric 项目模板包含相同的代码。 以下步骤说明如何从服务代码报告自定义运行状况事件。 此类报告会自动显示在 Service Fabric 提供的标准运行状况监视工具中，例如 Service Fabric Explorer、Azure 门户运行状况视图以及 PowerShell。
 
-1. 在 Visual Studio 中重新打开前面创建的应用程序，或者使用**有状态服务** Visual Studio 模板创建新应用程序。
+1. 在 Visual Studio 中重新打开前面创建的应用程序，或者使用 **有状态服务** Visual Studio 模板创建新应用程序。
 1. 打开 Stateful1.cs 文件并在 `RunAsync` 方法中找到 `myDictionary.TryGetValueAsync` 调用。 可以看到，此方法将返回保存当前计数器值的 `result`，因为此应用程序中的关键逻辑是使计数保持运行。 如果此应用程序是一个实际的应用程序，并且缺少结果即意味着失败，那么，可以标记该事件。
 1. 若要在缺少结果代表失败时报告运行状况事件，请添加以下步骤。
    
@@ -119,7 +119,7 @@ Visual Studio 中的 Service Fabric 项目模板包含相同的代码。 以下�
 1. 运行应用程序后，打开 Service Fabric Explorer 检查应用程序的运行状况。 这一次，Service Fabric Explorer 显示应用程序状况不正常。 应用程序之所以显示为运行不正常是因为我们之前添加的代码报告了错误。
    
     ![Service Fabric Explorer 中运行状况不正常的应用程序](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
-1. 如果在 Service Fabric Explorer 的树视图中选择主副本，会看到**运行状况**也显示为出错。 Service Fabric Explorer 还显示已添加到代码中 `HealthInformation` 参数的运行状况报告详细信息。 可以在 PowerShell 和 Azure 门户中查看相同的运行状况报告。
+1. 如果在 Service Fabric Explorer 的树视图中选择主副本，会看到 **运行状况** 也显示为出错。 Service Fabric Explorer 还显示已添加到代码中 `HealthInformation` 参数的运行状况报告详细信息。 可以在 PowerShell 和 Azure 门户中查看相同的运行状况报告。
    
     ![Service Fabric Explorer 中的副本运行状况](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
 

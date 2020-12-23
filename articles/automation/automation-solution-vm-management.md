@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317355"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372151"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
@@ -78,8 +78,8 @@ ms.locfileid: "91317355"
 
 可以使用新的自动化帐户和 Log Analytics 工作区为“在空闲时间启动/停止 VM”功能启用 VM。 在这种情况下，需要具有上一部分中定义的权限以及本部分中定义的权限。 还需要以下角色：
 
-- 订阅上的共同管理员。 如果要管理经典 VM，则需要此角色才能创建“经典运行方式帐户”。 默认情况下，不再创建[经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
-- [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) 应用程序开发人员角色中的成员身份。 有关配置运行方式帐户的详细信息，请参阅[用于配置运行方式帐户的权限](manage-runas-account.md#permissions)。
+- 订阅上的 Co-Administrator。 如果要管理经典 VM，则需要此角色才能创建“经典运行方式帐户”。 默认情况下，不再创建[经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
+- [Azure AD](../active-directory/roles/permissions-reference.md) 应用程序开发人员角色中的成员身份。 有关配置运行方式帐户的详细信息，请参阅[用于配置运行方式帐户的权限](manage-runas-account.md#permissions)。
 - 订阅的参与者或以下权限。
 
 | 权限 |范围|
@@ -154,16 +154,16 @@ ms.locfileid: "91317355"
 
 ### <a name="schedules"></a>计划
 
-下表列出了在自动化帐户中创建的每个默认计划。 你可以修改默认计划或创建自己的自定义计划。 默认情况下，除了 Scheduled_StartVM 和 Scheduled-StopVM 计划，所有计划都是禁用的 。
+下表列出了在自动化帐户中创建的每个默认计划。  你可以修改默认计划或创建自己的自定义计划。  默认情况下，除了 Scheduled_StartVM 和 Scheduled-StopVM 计划，所有计划都是禁用的 。
 
 请勿启用所有计划，因为此操作可能会创建重叠的计划操作。 最好确定希望执行哪些优化，然后再进行相应的修改。 请参阅概述部分的示例方案以查看进一步解释。
 
 |计划名称 | 频率 | 说明|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每隔 8 小时 | 每隔 8 小时运行一次 AutoStop_CreateAlert_Parent runbook，这反过来会停止 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames` 和 `External_ExcludeVMNames` 变量中基于 VM 的值。 或者，可以使用 `VMList` 参数指定以逗号分隔的 VM 列表。|
-|Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 `Stop` 参数的 ScheduledStopStart_Parent runbook。 自动停止所有满足通过变量资产定义的规则的 VM。 启用相关计划 Scheduled-StartVM。|
-|Scheduled_StartVM | 用户定义，每天 | 每天在指定的时间运行带有 `Start` 参数值的 ScheduledStopStart_Parent runbook。 自动启动所有满足通过变量资产定义的规则的 VM。 启用相关计划 Scheduled-StopVM。|
-|Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 每个星期五在指定的时间运行带有 `Stop` 参数值的 Sequenced_StopStop_Parent runbook。 将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅 [Runbook](#runbooks)。 启用相关计划 Sequenced-StartVM。|
+|Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 `Stop` 参数的 ScheduledStopStart_Parent runbook。  自动停止所有满足通过变量资产定义的规则的 VM。  启用相关计划 Scheduled-StartVM。|
+|Scheduled_StartVM | 用户定义，每天 | 每天在指定的时间运行带有 `Start` 参数值的 ScheduledStopStart_Parent runbook。 自动启动所有满足通过变量资产定义的规则的 VM。  启用相关计划 Scheduled-StopVM。|
+|Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 每个星期五在指定的时间运行带有 `Stop` 参数值的 Sequenced_StopStop_Parent runbook。  将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅 [Runbook](#runbooks)。  启用相关计划 Sequenced-StartVM。|
 |Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每个星期一在指定的时间运行带有 `Start` 参数值的 SequencedStopStart_Parent runbook。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和变量资产的详细信息，请参阅 [Runbook](#runbooks)。 启用相关计划 Sequenced-StopVM。
 
 ## <a name="use-the-feature-with-classic-vms"></a>将该功能与经典 VM 配合使用

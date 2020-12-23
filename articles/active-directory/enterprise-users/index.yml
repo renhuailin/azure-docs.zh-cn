@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: 企业用户管理文档 - Azure AD
+summary: Azure AD 提供了用户管理服务（例如组和许可证），可帮助你快速完成主要的用户管理任务。 分配许可证，将应用程序访问权限分配给组或用户，并添加或管理域名。
+metadata:
+  title: Azure Active Directory 用户、组、许可证和域文档
+  description: 了解如何使用组、域名和许可证来管理 Azure AD 组织中的用户身份验证。
+  services: active-directory
+  ms.service: active-directory
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: a919a9785163776cfbcfb52a378405c0ac870035
+  ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 11/23/2020
+  ms.locfileid: "95503045"
+landingContent:
+- title: 关于企业用户管理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 用户、组、域和许可证
+      url: directory-overview-user-model.md
+    - text: 自定义角色概述
+      url: ../roles/custom-overview.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+  - linkListType: concept
+    links:
+    - text: Azure AD 组织独立性
+      url: licensing-directory-independence.md
+    - text: 使用组管理访问权限
+      url: ../fundamentals/active-directory-manage-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 添加用户
+      url: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: 设置组的过期策略
+      url: groups-quickstart-expiration.md
+    - text: 将许可证分配给用户
+      url: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: 管理 Azure AD 域名
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 添加自定义域名
+      url: ../fundamentals/add-custom-domain.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: 管理自定义域名
+      url: domains-manage.md
+- title: 管理组
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建动态组
+      url: groups-create-rule.md
+    - text: PowerShell 中的组设置
+      url: groups-settings-v2-cmdlets.md
+    - text: 设置组的命名策略
+      url: groups-naming-policy.md
+- title: 添加域
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 添加自定义域名
+      url: ../fundamentals/add-custom-domain.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: 管理自定义域名
+      url: domains-manage.md

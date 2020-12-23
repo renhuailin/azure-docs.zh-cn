@@ -4,17 +4,17 @@ description: 使用 Azure Data Studio 创建 Azure SQL 托管实例
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: twright-msft
-ms.author: twright
+author: vin-yu
+ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 651811384a8e831c41c48ca8c4849e5ee3852054
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311523"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280470"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>创建 SQL 托管实例-使用 Azure Data Studio 的 Azure Arc
 
@@ -49,7 +49,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - 在 "连接" 选项卡上，单击左上角的三个点，然后选择 "新建部署"
 - 从 "部署选项" 中，选择 " **AZURE SQL 托管实例-Azure Arc** " 
   > [!NOTE]
-  > 如果当前未安装 azdata CLI，系统可能会提示您安装它。
+  > 如果当前未安装，系统可能会提示你安装 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 。
 - 接受隐私和许可条款，并单击底部的 " **选择** "
 
 
@@ -88,7 +88,7 @@ Name          Replicas    ServerEndpoint     State
 sqlinstance1  1/1         25.51.65.109:1433  Ready
 ```
 
-- 在 Azure Data Studio 的 "**连接**" 选项卡下，单击 "**服务器**" 视图上的 "**新建" 连接**
+- 在 Azure Data Studio 的 " **连接** " 选项卡下，单击 " **服务器** " 视图上的 " **新建" 连接**
 - 在 " **连接** " 边栏选项卡中，将 ServerEndpoint 粘贴到 "服务器" 文本框中
 - 选择 " **SQL 登录名** " 作为 "身份验证类型"
 - 输入 *sa* 作为用户名

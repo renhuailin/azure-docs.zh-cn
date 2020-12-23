@@ -6,14 +6,14 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: c2d35a6f379b0d7cf3c4c7d61e5e679553e5302f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1afd851f5511ce7b880727c36ffb76a7f4c6d5fe
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326879"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376980"
 ---
-# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序本地监视 - Azure Monitor Application Insights -公 共预览版
+# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights"></a>Java 无代码置备应用程序监视本地 Azure Monitor Application Insights
 
 Java 无代码应用程序监视非常简单 - 不需要更改代码，只需更改几个配置就可以启用 Java 代理。
 

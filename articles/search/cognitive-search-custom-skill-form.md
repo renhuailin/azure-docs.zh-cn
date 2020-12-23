@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935426"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011959"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>示例：创建窗体识别器自定义技能
 
@@ -43,7 +43,7 @@ ms.locfileid: "88935426"
 * `FORMS_RECOGNIZER_RETRY_DELAY` 值设置为1000。 此值是程序重试查询前等待的时间（以毫秒为单位）。
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS` 值设置为100。 此值是程序在尝试获取成功响应时将查询服务的次数。
 
-接下来，打开 _AnalyzeForm.cs_ 并找到 `fieldMappings` 变量，该变量引用文件 * 上的field-mappings.js* 。 此文件 (和引用它的变量) 定义要从窗体中提取的键的列表，以及每个键的自定义标签。 例如，如果值为，则 `{ "Address:", "address" }, { "Invoice For:", "recipient" }` 表示脚本将仅保存检测到的 `Address:` 和字段的值 `Invoice For:` ，并且将分别使用和标记这些 `"address"` 值 `"recipient"` 。
+接下来，打开 _AnalyzeForm.cs_ 并找到 `fieldMappings` 变量，该变量引用文件 *上的field-mappings.js* 。 此文件 (和引用它的变量) 定义要从窗体中提取的键的列表，以及每个键的自定义标签。 例如，如果值为，则 `{ "Address:", "address" }, { "Invoice For:", "recipient" }` 表示脚本将仅保存检测到的 `Address:` 和字段的值 `Invoice For:` ，并且将分别使用和标记这些 `"address"` 值 `"recipient"` 。
 
 最后，请记下 `contentType` 变量。 此脚本在 URL 引用的远程文档上运行给定的窗体识别器模型，因此内容类型为 `application/json` 。 如果要通过在 HTTP 请求中包含字节流来分析本地文件，则需要将更改 `contentType` 为文件的相应 [MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) 。
 
@@ -109,13 +109,13 @@ POST https://localhost:7071/api/analyze-form
 
 ## <a name="publish-the-function-to-azure"></a>将函数发布到 Azure
 
-对函数行为感到满意后，可以将其发布。
+当你对函数行为满意时，可将其发布。
 
 1. 在 Visual Studio 的 " **解决方案资源管理器** 中，右键单击项目，然后选择" **发布**"。 选择 "**新建**  >  **发布**"。
-1. 如果尚未将 Visual Studio 连接到 Azure 帐户，请选择“添加帐户...”****
-1. 请按照屏幕上的提示操作。 为应用服务、Azure 订阅、资源组、托管计划以及要使用的存储帐户指定唯一名称。 如果还没有存储帐户，可以创建新的资源组和新的托管计划，并创建新的存储帐户。 完成后，选择“创建”  。
+1. 如果尚未将 Visual Studio 连接到 Azure 帐户，请选择“添加帐户...”
+1. 请按照屏幕上的提示操作。 为应用服务、Azure 订阅、资源组、托管计划以及要使用的存储帐户指定唯一名称。 如果还没有存储帐户，可以创建新的资源组和新的托管计划，并创建新的存储帐户。 完成后，请选择“创建”。
 1. 部署完成后，请记下站点 URL。 此 URL 是 Azure 中函数应用的地址。 将其保存到临时位置。
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找 `AnalyzeForm` 已发布的函数。 在“管理”部分下，应可看到主机密钥****。 复制 *默认* 主机密钥并将其保存到临时位置。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找 `AnalyzeForm` 已发布的函数。 在“管理”部分下，应可看到主机密钥。 复制 *默认* 主机密钥并将其保存到临时位置。
 
 ## <a name="connect-to-your-pipeline"></a>连接到管道
 
@@ -165,7 +165,7 @@ POST https://localhost:7071/api/analyze-form
 本指南介绍了如何从 Azure 窗体识别器服务创建自定义的技能。 若要了解有关自定义技能的详细信息，请参阅以下资源。 
 
 * [Azure 搜索的强大技能：定制技能的存储库](https://github.com/Azure-Samples/azure-search-power-skills)
-* [向 AI 扩充管道添加自定义技能](cognitive-search-custom-skill-interface.md)
+* [将自定义技能添加到 AI 扩充管道](cognitive-search-custom-skill-interface.md)
 * [定义技能集](cognitive-search-defining-skillset.md)
 * [创建技能组合 (REST) ](/rest/api/searchservice/create-skillset)
 * [映射充实字段](cognitive-search-output-field-mapping.md)

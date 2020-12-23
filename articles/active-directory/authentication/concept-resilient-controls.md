@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049564"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861283"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -28,10 +28,10 @@ ms.locfileid: "89049564"
 
 本文档为组织提供了策略方面的指导，组织可采用这些策略来提供复原能力，以降低意外中断期间的锁定风险，具体方案如下：
 
- 1. 组织可以通过实施缓解策略或应急计划，**在中断之前**提高其复原能力，以降低锁定风险。
- 2. 组织可以通过制定缓解策略和应急计划，**在中断期间**继续访问他们选择的应用和资源。
- 3. 组织应确保**在中断之后**以及在回滚其实施的任何应急计划之前保留日志等信息。
- 4. 尚未实施预防策略或备选计划的组织可能能够实施**紧急选项**来应对中断。
+ 1. 组织可以通过实施缓解策略或应急计划，**在中断之前** 提高其复原能力，以降低锁定风险。
+ 2. 组织可以通过制定缓解策略和应急计划，**在中断期间** 继续访问他们选择的应用和资源。
+ 3. 组织应确保 **在中断之后** 以及在回滚其实施的任何应急计划之前保留日志等信息。
+ 4. 尚未实施预防策略或备选计划的组织可能能够实施 **紧急选项** 来应对中断。
 
 ## <a name="key-guidance"></a>重要指导
 
@@ -55,21 +55,21 @@ ms.locfileid: "89049564"
 
 ### <a name="administrator-lockout-contingency"></a>管理员锁定应急计划
 
-若要解锁管理员对租户的访问权限，应创建紧急访问帐户。 这些紧急访问帐户（也称为*不受限*帐户）允许在正常的特权帐户访问过程不可用时通过访问 Azure AD 配置来对其进行管理。 应遵循[紧急访问帐户建议]( ../users-groups-roles/directory-emergency-access.md)创建至少两个紧急访问帐户。
+若要解锁管理员对租户的访问权限，应创建紧急访问帐户。 这些紧急访问帐户（也称为 *不受限* 帐户）允许在正常的特权帐户访问过程不可用时通过访问 Azure AD 配置来对其进行管理。 应遵循[紧急访问帐户建议]( ../users-groups-roles/directory-emergency-access.md)创建至少两个紧急访问帐户。
 
 ### <a name="mitigating-user-lockout"></a>缓解用户锁定风险
 
- 若要降低用户锁定的风险，请使用具有多个控件的条件性访问策略，使用户能够选择如何访问应用和资源。 通过为用户提供多种选择，例如，使用 MFA 登录**或**从受管理设备登录**或**从公司网络登录，用户可以在其中一种访问控制不可用时，使用其他选项来继续工作。
+ 若要降低用户锁定的风险，请使用具有多个控件的条件性访问策略，使用户能够选择如何访问应用和资源。 通过为用户提供多种选择，例如，使用 MFA 登录 **或** 从受管理设备登录 **或** 从公司网络登录，用户可以在其中一种访问控制不可用时，使用其他选项来继续工作。
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
 在组织现有的条件性访问策略中合并以下访问控制：
 
-1. 为每个用户预配依赖于不同信道的多种身份验证方法，例如基于 Internet 的 Microsoft Authenticator 应用、在设备上生成的 OATH 令牌和手机短信。 下面的 PowerShell 脚本将帮助你提前标识，用户应注册的其他方法： [AZURE MFA 身份验证方法分析的脚本](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
+1. 为每个用户预配依赖于不同信道的多种身份验证方法，例如基于 Internet 的 Microsoft Authenticator 应用、在设备上生成的 OATH 令牌和手机短信。 下面的 PowerShell 脚本将帮助你提前标识，你的用户应该注册哪些其他方法： [AZURE AD MFA 身份验证方法分析的脚本](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
 2. 在 Windows 10 设备上部署 Windows Hello for Business，以便直接通过设备登录满足 MFA 要求。
 3. 通过 [Azure AD 混合联接](../devices/overview.md)或 [Microsoft Intune 受管理设备](/intune/planning-guide)使用受信任的设备。 受信任的设备将改善用户体验，因为受信任的设备本身就能满足策略的强身份验证要求，无需向用户发出 MFA 质询。 而在注册新设备以及从不受信任的设备访问应用或资源时，需使用 MFA。
 4. 当用户或登录面临风险时，使用“Azure AD 标识保护”基于风险的策略来阻止访问，而不是使用固定的 MFA 策略。
-5. 如果要使用 Azure MFA NPS 扩展来保护 VPN 访问，请考虑将 VPN 解决方案作为 [SAML 应用](../manage-apps/view-applications-portal.md) 进行联合，并按建议确定应用类别。 
+5. 如果要使用 Azure AD MFA NPS 扩展来保护 VPN 访问权限，请考虑将 VPN 解决方案作为 [SAML 应用](../manage-apps/view-applications-portal.md) 进行联合，并按建议确定应用类别。 
 
 >[!NOTE]
 > 基于风险的策略需要 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。
@@ -112,7 +112,7 @@ ms.locfileid: "89049564"
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
-应急条件访问策略是省略 Azure MFA、第三方 MFA、基于风险或设备的控制的 **备份策略** 。 为了最大限度地减少启用应急策略时出现的意外中断，策略应在不使用时保持为仅报告模式。 管理员可以使用条件性访问见解工作簿来监视其应急策略的潜在影响。 当你的组织决定激活你的应变计划时，管理员可以启用策略并禁用常规的基于控制的策略。
+"应急条件访问策略" 是一种用于省略 Azure AD MFA、第三方 MFA、基于风险或基于设备的控制的 **备份策略** 。 为了最大限度地减少启用应急策略时出现的意外中断，策略应在不使用时保持为仅报告模式。 管理员可以使用条件性访问见解工作簿来监视其应急策略的潜在影响。 当你的组织决定激活你的应变计划时，管理员可以启用策略并禁用常规的基于控制的策略。
 
 >[!IMPORTANT]
 > 启用应急计划时，禁用对用户强制执行安全措施的策略（即使只是暂时的）会对你的安全状况造成威胁。
@@ -124,13 +124,13 @@ ms.locfileid: "89049564"
   * 配置一个将受限会话声明发送到 Exchange 和 SharePoint 的备用策略。
   * 如果组织使用 Microsoft Cloud App Security，请考虑回退到使用 MCAS 的策略，MCAS 允许只读访问但不允许上传。
 * 请将策略命名，以确保在中断期间能够轻松找到它们。 在策略名称中包含以下元素：
-  * 策略的标签编号。**
+  * 策略的标签编号。
   * 要显示的文本。此策略仅用于紧急情况。 例如： **在紧急情况下启用**
-  * 策略应用到的中断。** 例如： **在 MFA 中断期间**
-  * 一个序号，用于指示策略的激活顺序。**
-  * 策略应用到的应用。**
-  * 策略应用到的控制措施。**
-  * 策略要求满足的条件。**
+  * 策略应用到的中断。 例如： **在 MFA 中断期间**
+  * 一个序号，用于指示策略的激活顺序。
+  * 策略应用到的应用。
+  * 策略应用到的控制措施。
+  * 策略要求满足的条件。
   
 应变策略的此命名标准如下： 
 
@@ -138,7 +138,7 @@ ms.locfileid: "89049564"
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-下面的示例： **一个用于还原对关键任务的协作应用程序的访问的应急 CA 策略示例**，是典型的公司应急措施。 在此场景中，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问执行 MFA，此示例中的中断是指客户的 MFA 提供程序发生中断（无论是 Azure MFA、本地 MFA 提供程序还是第三方 MFA）。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 然后，目标用户将会获取 Exchange Online 和 SharePoint Online 的访问权限，而其他用户仍由于服务中断而无法访问应用。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。 
+下面的示例： **一个用于还原对关键任务的协作应用程序的访问的应急 CA 策略示例**，是典型的公司应急措施。 在这种情况下，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问进行 MFA，而在这种情况下，客户端的 MFA 提供程序发生中断， (是 Azure AD MFA、本地 MFA 提供程序还是第三方 MFA) 。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 然后，目标用户将会获取 Exchange Online 和 SharePoint Online 的访问权限，而其他用户仍由于服务中断而无法访问应用。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。 
 
 **示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略：**
 
@@ -208,20 +208,20 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>用户从本地资源中锁定 (NPS 扩展的紧急情况) 
 
-如果要使用 Azure MFA NPS 扩展来保护 VPN 访问，请考虑将 VPN 解决方案作为 [SAML 应用](../manage-apps/view-applications-portal.md) 进行联合，并按建议确定应用类别。 
+如果要使用 Azure AD MFA NPS 扩展来保护 VPN 访问权限，请考虑将 VPN 解决方案作为 [SAML 应用](../manage-apps/view-applications-portal.md) 进行联合，并按建议确定应用类别。 
 
 如果已部署 Azure AD MFA NPS 扩展，以使用 MFA 保护本地资源（例如 VPN 和远程桌面网关），则在紧急情况下，你应该提前考虑禁用 MFA。
 
 在这种情况下，你可以禁用 NPS 扩展，因此，NPS 服务器仅验证主要身份验证，而不会对用户强制执行 MFA。
 
 禁用 NPS 扩展： 
--   将 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 注册表项导出为备份。 
+-   将 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 注册表项作为备份导出。 
 -   删除 "AuthorizationDLLs" 和 "ExtensionDLLs" 的注册表值，而不是参数键。 
 -    (IAS) 服务重新启动网络策略服务，使更改生效 
 -   确定 VPN 的主要身份验证是否成功。
 
 一旦该服务已恢复，并且你已准备好在用户上强制执行 MFA，请启用 NPS 扩展： 
--   从备份 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 导入注册表项 
+-   从备份导入注册表项 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -    (IAS) 服务重新启动网络策略服务，使更改生效 
 -   确定主要身份验证以及 VPN 的辅助身份验证是否成功。
 -   查看 NPS 服务器和 VPN 日志，确定在紧急时段内登录的用户。
@@ -266,7 +266,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 3. 回滚在中断期间所做的并进行了记录的任何其他更改。
 4. 如果使用了紧急访问帐户，请记住重新生成凭据并以物理方式保护新凭据的详细信息，以作为紧急访问帐户过程的一部分。
 5. 继续会审发生可疑活动中断后 [报告的所有风险检测](../reports-monitoring/concept-sign-ins.md) 。
-6. 撤销[使用 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户非常重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
+6. 撤销[使用 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户非常重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
 
 ## <a name="emergency-options"></a>紧急选项
 
@@ -280,14 +280,14 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
  > 如果你放宽了受信任的 IP 地址以取消阻止访问，则与 IP 地址关联的风险检测 (例如，不会生成无法进行的旅行或不熟悉的位置) 。
 
 >[!NOTE]
- > 只有使用 [Azure AD Premium 许可证](./concept-mfa-licensing.md)才能为 Azure MFA 配置[受信任的 IP](./howto-mfa-mfasettings.md)。
+ > 为 Azure AD MFA 配置 [受信任的 ip](./howto-mfa-mfasettings.md) 仅适用于 [Azure AD Premium 许可证](./concept-mfa-licensing.md)。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 * [Azure AD 身份验证文档](./howto-mfaserver-iis.md)
-* [在 Azure AD 中管理紧急访问管理账户](../users-groups-roles/directory-emergency-access.md)
+* [在 Azure AD 中管理紧急访问管理账户](../roles/security-emergency-access.md)
 * [在 Azure Active Directory 中配置命名位置](../reports-monitoring/quickstart-configure-named-locations.md)
-  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [如何配置联接到混合 Azure Active Directory 的设备](../devices/hybrid-azuread-join-plan.md)
 * [Windows Hello for Business 部署指南](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [密码指南 - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)

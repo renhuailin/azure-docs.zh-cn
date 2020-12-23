@@ -1,20 +1,20 @@
 ---
 title: ARM 模板测试工具包
-description: 描述如何在模板上运行 ARM 模板测试工具包。 使用该工具包可以查看是否已实现了建议的做法。
+description: 描述如何在模板上运行 Azure 资源管理器模板 (ARM 模板) 测试工具包。 使用该工具包可以查看是否已实现了建议的做法。
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439554"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674006"
 ---
 # <a name="use-arm-template-test-toolkit"></a>使用 ARM 模板测试工具包
 
-[Azure 资源管理器 (ARM) 模板测试工具包](https://aka.ms/arm-ttk)检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 通过使用测试工具包，可以了解如何避免模板开发中的常见问题。
+[Azure 资源管理器模板 (ARM 模板) 测试工具包](https://aka.ms/arm-ttk)检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 通过使用测试工具包，可以了解如何避免模板开发中的常见问题。
 
 测试工具包提供[一组默认测试](test-cases.md)。 这些测试是建议，而不是要求。 你可以确定哪些测试与目标相关，并自定义要运行哪些测试。
 
@@ -24,15 +24,15 @@ ms.locfileid: "89439554"
 
 ## <a name="install-on-windows"></a>在 Windows 上安装
 
-1. 如果尚未安装 PowerShell，请 [在 Windows 上安装 powershell](/powershell/scripting/install/installing-powershell-core-on-windows)。
+1. 如果还没有 PowerShell，请[在 Windows 上安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows)。
 
-1. 下载测试工具包的[最新 .zip 文件](https://aka.ms/arm-ttk-latest)并将其解压缩。
+1. [下载测试工具包的最新 .zip 文件](https://aka.ms/arm-ttk-latest)，并将其解压缩。
 
 1. 启动 PowerShell。
 
-1. 导航到在其中提取了测试工具包的文件夹。 在该文件夹中，导航到 " **ttk** " 文件夹。
+1. 导航到在其中解压缩测试工具包的文件夹。 在该文件夹中，导航到 arm-ttk 文件夹。
 
-1. 如果 [执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies) 阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保位于 **ttk** 文件夹中。
+1. 如果[执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies)阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保处于 arm-ttk 文件夹中。
 
    ```powershell
    Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
@@ -52,9 +52,9 @@ ms.locfileid: "89439554"
 
 ## <a name="install-on-linux"></a>在 Linux 上安装
 
-1. 如果尚未安装 PowerShell，请 [在 Linux 上安装 powershell](/powershell/scripting/install/installing-powershell-core-on-linux)。
+1. 如果还没有 PowerShell，请[在 Linux 上安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-linux)。
 
-1. 下载测试工具包的[最新 .zip 文件](https://aka.ms/arm-ttk-latest)并将其解压缩。
+1. [下载测试工具包的最新 .zip 文件](https://aka.ms/arm-ttk-latest)，并将其解压缩。
 
 1. 启动 PowerShell。
 
@@ -62,9 +62,9 @@ ms.locfileid: "89439554"
    pwsh
    ```
 
-1. 导航到在其中提取了测试工具包的文件夹。 在该文件夹中，导航到 " **ttk** " 文件夹。
+1. 导航到在其中解压缩测试工具包的文件夹。 在该文件夹中，导航到 arm-ttk 文件夹。
 
-1. 如果 [执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies) 阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保位于 **ttk** 文件夹中。
+1. 如果[执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies)阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保处于 arm-ttk 文件夹中。
 
    ```powershell
    Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
@@ -84,7 +84,7 @@ ms.locfileid: "89439554"
 
 ## <a name="install-on-macos"></a>在 macOS 上安装
 
-1. 如果尚未安装 PowerShell，请 [在 macOS 上安装 powershell](/powershell/scripting/install/installing-powershell-core-on-macos)。
+1. 如果还没有 PowerShell，请[在 macOS 上安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-macos)。
 
 1. 安装 `coreutils`：
 
@@ -92,7 +92,7 @@ ms.locfileid: "89439554"
    brew install coreutils
    ```
 
-1. 下载测试工具包的[最新 .zip 文件](https://aka.ms/arm-ttk-latest)并将其解压缩。
+1. [下载测试工具包的最新 .zip 文件](https://aka.ms/arm-ttk-latest)，并将其解压缩。
 
 1. 启动 PowerShell。
 
@@ -100,9 +100,9 @@ ms.locfileid: "89439554"
    pwsh
    ```
 
-1. 导航到在其中提取了测试工具包的文件夹。 在该文件夹中，导航到 " **ttk** " 文件夹。
+1. 导航到在其中解压缩测试工具包的文件夹。 在该文件夹中，导航到 arm-ttk 文件夹。
 
-1. 如果 [执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies) 阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保位于 **ttk** 文件夹中。
+1. 如果[执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies)阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保处于 arm-ttk 文件夹中。
 
    ```powershell
    Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
@@ -282,4 +282,5 @@ param(
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解默认测试，请参阅[工具包的测试用例](test-cases.md)。
+- 若要了解默认测试，请参阅 [ARM 模板测试工具包的默认测试用例](test-cases.md)。
+- 有关使用测试工具包的 Microsoft Learn 模块，请参阅 [使用假设和 ARM 模板测试工具包预览更改和验证 Azure 资源](/learn/modules/arm-template-test/)。

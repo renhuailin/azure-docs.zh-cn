@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: dc1d217dba64c36aa219abbd4d2220a494347689
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657646"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912750"
 ---
 # <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage 查询加速
 
@@ -50,7 +50,7 @@ ms.locfileid: "89657646"
 
 查询加速通过减少应用程序传输和处理的数据量来优化性能。
 
-为了计算聚合值，应用程序通常会检索文件中的 **所有** 数据，然后在本地处理和筛选数据。 分析用于分析工作负荷的输入/输出模式，显示应用程序通常只需要读取的20% 的数据来执行给定的计算。 即使在应用 [分区修剪](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query#hive-partitioning)后，也会进行此统计信息。 这意味着，80% 的数据不会在网络上传输并通过应用程序进行分析和筛选。 此模式本质上用于删除不需要的数据，产生了大量的计算成本。  
+为了计算聚合值，应用程序通常会检索文件中的 **所有** 数据，然后在本地处理和筛选数据。 分析用于分析工作负荷的输入/输出模式，显示应用程序通常只需要读取的20% 的数据来执行给定的计算。 即使在应用 [分区修剪](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md#hive-partitioning)后，也会进行此统计信息。 这意味着，80% 的数据不会在网络上传输并通过应用程序进行分析和筛选。 此模式本质上用于删除不需要的数据，产生了大量的计算成本。  
 
 即使 Azure 具有业界领先的网络（在吞吐量和延迟方面），通过该网络不必要地传输数据在应用程序性能方面仍成本高昂。 通过在存储请求期间筛选掉不需要的数据，查询加速消除了这一成本。
 
@@ -76,5 +76,3 @@ ms.locfileid: "89657646"
 
 - [使用 Azure Data Lake Storage 查询加速来筛选数据](data-lake-storage-query-acceleration-how-to.md)
 - [查询加速 SQL 语言参考](query-acceleration-sql-reference.md)
-
-

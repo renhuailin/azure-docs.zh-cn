@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602279"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524243"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支持在 Azure 区域之间移动 Azure Vm
 
@@ -101,13 +101,13 @@ SUSE Linux Enterprise Server 15 和 15 SP1 |  支持所有库存 SUSE 15 和 15 
 **设置** | **支持** | **详细信息**
 --- | --- | ---
 大小 | 至少具有两个 CPU 内核和 1 GB RAM 的任何 Azure VM 大小 | 验证 [Azure 虚拟机大小](../virtual-machines/sizes-general.md)。
-可用性集 | 目前不支持 | 如果使用默认选项将具有可用性集的 Azure VM 添加到移动集合，则准备过程将失败。 可以选择将 VM 移到可用性区域，或将其作为单个实例 VM 来移动。 你可以在 "编辑目标属性" 页中修改这些设置。
+可用性集 | 支持 | 。
 可用性区域 | 支持 | 支持，具体取决于目标区域支持。
 Microsoft (发布 Azure 库映像)  | 支持 | 如果 VM 在受支持的操作系统上运行，则支持该配置。
  (第三方发布的 Azure 库映像)   | 支持 | 如果 VM 在受支持的操作系统上运行，则支持该配置。
  (第三方发布的自定义映像) | 支持 | 如果 VM 在受支持的操作系统上运行，则支持该配置。
 使用 Site Recovery 的 Vm | 不支持 | 使用后端 Site Recovery 在虚拟机区域之间移动资源。 如果已在使用 Site Recovery，请禁用复制，然后启动准备进程。
-RBAC 策略 | 不支持 | 基于角色的访问控制 (在虚拟机上的 RBAC) 策略不会复制到目标区域中的 VM。
+Azure RBAC 策略 | 不支持 | Azure RBAC 中的 azure RBAC) 策略 (azure RBAC 的访问控制不会复制到目标区域中的 VM。
 扩展 | 不支持 | 扩展不会复制到目标区域中的 VM。 移动完成后，手动安装它们。
 
 
@@ -121,11 +121,11 @@ RBAC 策略 | 不支持 | 基于角色的访问控制 (在虚拟机上的 RBAC) 
 
 **组件** | **支持** | **详细信息**
 --- | --- | ---
-OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows/managed-disks-overview.md)VM 磁盘相关信息。
-临时磁盘 | 不支持 | 临时磁盘始终从准备进程中排除。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/windows/managed-disks-overview.md#temporary-disk)。
+OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed-disks-overview.md)VM 磁盘相关信息。
+临时磁盘 | 不支持 | 临时磁盘始终从准备进程中排除。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/managed-disks-overview.md#temporary-disk)。
 数据磁盘的最大大小 | 托管磁盘为 8192 GB
 数据磁盘最小大小 |  托管磁盘为 2 GB |
-数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](../virtual-machines/windows/sizes.md)VM 大小相关信息。
+数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](../virtual-machines/sizes.md)VM 大小相关信息。
 数据磁盘更改率 | 每个高级存储的磁盘最大为 10 MBps。 每个标准存储的磁盘最大为 2 MBps。 | 如果磁盘上的平均数据更改率连续高于最大值，则准备工作不会赶上。<br/><br/>  但是，如果最大值不确定，准备可能会赶上，但你可能会看到稍微延迟的恢复点。
 数据磁盘 (标准存储帐户)  | 不支持。 | 将存储类型更改为托管磁盘，然后尝试移动 VM。
 数据磁盘 (高级存储帐户)  | 不支持 | 将存储类型更改为托管磁盘，然后尝试移动 VM。
@@ -155,7 +155,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 NIC | 支持 | 指定目标区域中的现有资源，或在准备过程中创建新的资源。 
 内部负载均衡器 | 支持 | 指定目标区域中的现有资源，或在准备过程中创建新的资源。  
 公共负载均衡器 | 目前不支持 | 指定目标区域中的现有资源，或在准备过程中创建新的资源。  
-公共 IP 地址 | 支持 | 指定目标区域中的现有资源，或在准备过程中创建新的资源。  
+公共 IP 地址 | 支持 | 指定目标区域中的现有资源，或在准备过程中创建新的资源。<br/><br/> 公共 IP 地址是特定于区域的，在移动后不会保留在目标区域中。 修改网络设置 (包括目标位置) 的负载均衡规则时，请记住这一点。
 网络安全组 | 支持 | 指定目标区域中的现有资源，或在准备过程中创建新的资源。  
 保留（静态）IP 地址 | 支持 | 当前无法配置此设置。 该值默认为源值。 <br/><br/> 如果源 VM 上的 NIC 具有静态 IP 地址，并且目标子网具有相同的可用 IP 地址，则会将其分配给目标 VM。<br/><br/> 如果目标子网没有相同的 IP 地址，则 VM 的启动移动会失败。
 动态 IP 地址 | 支持 | 当前无法配置此设置。 该值默认为源值。<br/><br/> 如果源上的 NIC 具有动态 IP 寻址，则默认情况下，目标 VM 上的 NIC 也是动态的。

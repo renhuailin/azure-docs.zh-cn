@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: d1e7fa1ed1649508f0d4923db8817d17ad556ca1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 55b545471cbe45fe35e28879270e4340cf9d3834
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67172880"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027017"
 ---
 将资源部署到 Azure 时，可以灵活选择想要部署的资源类型、资源的位置以及对它们的设置方式。 但是，除了你想要在组织中允许的选项，这种灵活性可能还会开放更多其他选项。 在考虑将资源部署到 Azure 时，你可能想知道以下问题：
 
@@ -30,4 +30,4 @@ ms.locfileid: "67172880"
 > * 锁定系统中的关键资源。
 > * 标记资源，以便按它们对组织的价值进行跟踪。
 
-本文重点介绍实现管理需要完成的任务。 请参阅 [Azure 中的监管](../articles/security/governance-in-azure.md)，查看对相关概念更广泛的讨论。 
+本文重点介绍实现管理需要完成的任务。 请参阅 [Azure 中的监管](../articles/governance/index.yml)，查看对相关概念更广泛的讨论。

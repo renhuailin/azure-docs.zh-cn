@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da68e21aa279ea2503a21ce35eee52f8e49d1434
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 81f4407ee7721332a4143952d1720151bb70d8c9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049088"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837532"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件访问：保护安全信息注册
 
-现在可以使用条件访问策略中的用户操作保护用户注册 Azure 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于已启用[合并注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 如果要使用受信任的网络位置等条件来限制对注册 Azure 多重身份验证和自助密码重置 (SSPR) 的访问权限，组织可能会启用此功能。 有关可用条件的详细信息，请参阅[条件访问：条件](concept-conditional-access-conditions.md)一文。
+使用条件性访问策略中的用户操作，可以确保用户注册 Azure AD 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于已启用[合并注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 如果要使用受信任的网络位置等条件来限制对注册 Azure AD 多重身份验证和自助服务密码重置 (SSPR) ，则可以在组织中启用此功能。 有关可用条件的详细信息，请参阅[条件访问：条件](concept-conditional-access-conditions.md)一文。
 
 ## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建需要从受信任位置注册的策略
 

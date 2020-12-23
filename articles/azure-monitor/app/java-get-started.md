@@ -2,24 +2,24 @@
 title: 快速入门：使用 Azure Application Insights 进行 Java Web 应用分析
 description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
 ms.topic: conceptual
-author: lgayhardt
+ms.date: 11/22/2020
+author: MS-jgol
 ms.custom: devx-track-java
-ms.author: lagayhar
-ms.date: 05/24/2019
-ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.author: jgol
+ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602459"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919421"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
 
-> [!IMPORTANT]
-> 监视 Java 应用程序的建议方法是使用自动检测，无需更改代码。 请按照 [Application Insights Java 3.0 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)的指南进行操作。
+> [!CAUTION]
+> 从2020年11月起，对于监视 Java 应用程序，我们建议使用 Azure Monitor Application Insights Java 3.0 代理进行自动检测。 有关如何入门的详细信息，请参阅 [Application Insights Java 3.0 agent](./java-in-process-agent.md)。
 
-在本快速入门中，你将使用 Application Insights SDK 来检测请求、跟踪依赖项和收集性能计数器，诊断性能问题和异常，并编写代码来跟踪用户对应用执行的操作。
+在本快速入门中，你将使用 Application Insights SDK 检测请求、跟踪依赖项、收集性能计数器、诊断性能问题和异常，并编写代码以跟踪用户对应用执行的操作。
 
 Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
@@ -30,6 +30,8 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>获取 Application Insights 检测密钥
 
+> [!IMPORTANT]
+> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=java) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户中，创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
 
@@ -197,9 +199,9 @@ Application Insights SDK 按以下顺序查找密钥：
 
     （此组件启用性能计数器。）
 
-## <a name="azure-app-service-aks-vms-config"></a>Azure App Service、AKS、Vm 配置
+## <a name="azure-app-service-aks-vms-config"></a>Azure 应用服务、AKS、VM 配置
 
-若要监视任何 Azure 资源提供程序上运行的应用程序，最佳且最简单的方法是通过 [Java 3.0 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)使用 Application Insights 自动检测。
+若要监视在任何 Azure 资源提供程序上运行的应用程序，最佳、最简单的方法是通过 [Java 3.0 代理](./java-in-process-agent.md)使用 Application Insights 自动检测。
 
 
 ## <a name="exceptions-and-request-failures"></a>异常和请求失败
@@ -313,4 +315,3 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

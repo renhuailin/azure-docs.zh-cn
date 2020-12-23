@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: e8bce1ca10e9175b699bd548d9241b78bce3b5cf
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 9b5693ddef5e512b0a95c87a700fd12acd4b5fae
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89504853"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654636"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>使用 .NET SDK for Apache HBase
 
@@ -23,7 +23,7 @@ ms.locfileid: "89504853"
 
 ## <a name="install-the-sdk"></a>安装 SDK
 
-HBase .NET SDK 以 NuGet 包的形式提供，可以使用以下命令通过 Visual Studio **NuGet 包管理器控制台**进行安装：
+HBase .NET SDK 以 NuGet 包的形式提供，可以使用以下命令通过 Visual Studio **NuGet 包管理器控制台** 进行安装：
 
 ```console
 Install-Package Microsoft.HBase.Client
@@ -114,7 +114,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase 实现了 [Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下图所示：
+HBase 可实现 [Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下图所示：
 
 ![Apache HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
@@ -190,4 +190,4 @@ finally
 ## <a name="next-steps"></a>后续步骤
 
 * [HDInsight 中的 Apache HBase 入门示例](apache-hbase-tutorial-get-started-linux.md)
-* 根据[使用 Apache HBase 分析实时 Twitter 观点](../hdinsight-hbase-analyze-twitter-sentiment.md)中的说明，生成端到端应用程序
+* 根据[使用 Apache HBase 分析实时 Twitter 观点](./apache-hbase-tutorial-get-started-linux.md)中的说明，生成端到端应用程序

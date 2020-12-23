@@ -1,195 +1,220 @@
 ---
-title: 快速入门：通过 Python 使用 Azure 服务总线主题和订阅
-description: 本文介绍如何创建 Azure 服务总线主题、订阅、向主题发送消息以及从订阅接收消息。
+title: 通过 Python azure-servicebus 包版本 7.0.0 使用 Azure 服务总线主题和订阅
+description: 本文介绍如何使用 Python 向主题发送消息并从订阅接收消息。
 documentationcenter: python
 author: spelluru
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 43f633e427e20cfb0b044bd42b77f866e4cc0c61
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88064377"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489405"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入门：通过 Python 使用服务总线主题和订阅
-
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
-
-本文介绍如何将 Python 与服务总线主题和订阅配合使用。 示例使用 [Azure Python SDK][Azure Python package] 包执行以下操作： 
-
-- 创建主题以及对主题的订阅
-- 创建订阅筛选器和规则
-- 将消息发送到主题 
-- 从订阅接收消息
-- 删除主题和订阅
+# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (Python)
+本文介绍如何使用 Python 向服务总线主题发送消息，并从该主题的订阅接收消息。 
 
 ## <a name="prerequisites"></a>先决条件
 - Azure 订阅。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-- 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的命名空间名称、共享访问密钥名称和主密钥值，以便稍后在本快速入门中使用。 
-- 装有 [Azure Python SDK][Azure Python package] 包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/developer/python/azure-sdk-install)。
-
-## <a name="create-a-servicebusservice-object"></a>创建 ServiceBusService 对象
-
-可以通过某个 **ServiceBusService** 对象来使用主题以及对主题的订阅。 若要以编程方式访问服务总线，请将以下行添加到 Python 文件的顶部附近：
-
-```python
-from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
-```
-
-添加以下代码以创建 **ServiceBusService** 对象。 请将 `<namespace>`、`<sharedaccesskeyname>` 和 `<sharedaccesskeyvalue>` 替换为你的服务总线命名空间名称、共享访问签名 (SAS) 密钥名称和主密钥值。 可以在 [Azure 门户][Azure portal]上服务总线命名空间中的“共享访问策略”下找到这些值。
-
-```python
-bus_service = ServiceBusService(
-    service_namespace='<namespace>',
-    shared_access_key_name='<sharedaccesskeyname>',
-    shared_access_key_value='<sharedaccesskeyvalue>')
-```
-
-## <a name="create-a-topic"></a>创建主题
-
-以下代码使用 `create_topic` 方法创建名为 `mytopic` 且采用默认设置的服务总线主题：
-
-```python
-bus_service.create_topic('mytopic')
-```
-
-可以使用主题选项来重写默认主题设置，例如消息生存时间 (TTL) 或最大主题大小。 以下示例创建名为 `mytopic` 的主题，其最大主题大小为 5 GB，默认消息 TTL 为 1 分钟：
-
-```python
-topic_options = Topic()
-topic_options.max_size_in_megabytes = '5120'
-topic_options.default_message_time_to_live = 'PT1M'
-
-bus_service.create_topic('mytopic', topic_options)
-```
-
-## <a name="create-subscriptions"></a>创建订阅
-
-也可以使用 **ServiceBusService** 对象创建对主题的订阅。 订阅可以包含筛选器，用于限制传送至其虚拟队列的消息集。 如果未指定筛选器，新订阅将使用默认的 **MatchAll** 筛选器，该筛选器会将发布到主题的所有消息置于订阅的虚拟队列中。 以下示例创建名为 `AllMessages` 的对 `mytopic` 的订阅，该订阅使用 **MatchAll** 筛选器：
-
-```python
-bus_service.create_subscription('mytopic', 'AllMessages')
-```
-
-### <a name="use-filters-with-subscriptions"></a>对订阅使用筛选器
-
-使用 **ServiceBusService** 对象的 `create_rule` 方法来筛选订阅中显示的消息。 可以在创建订阅时指定规则，或将规则添加到现有订阅。
-
-最灵活的筛选器类型是 **SqlFilter**，它使用 SQL-92 的子集。 SQL 筛选器基于发布到主题的消息的属性运行。 有关可用于 SQL 筛选器的表达式的详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
-
-由于 **MatchAll** 默认筛选器会自动应用到所有新订阅，因此，必须先从要筛选的订阅中删除该筛选器，否则 **MatchAll** 会重写指定的任何其他筛选器。 可以使用 ServiceBusService 对象的 `delete_rule` 方法删除默认规则。
-
-以下示例创建名为 `HighMessages` 的对 `mytopic` 的订阅，该订阅使用名为 `HighMessageFilter`的 **SqlFilter** 规则。 `HighMessageFilter` 规则仅选择自定义 `messageposition` 属性大于 3 的消息：
-
-```python
-bus_service.create_subscription('mytopic', 'HighMessages')
-
-rule = Rule()
-rule.filter_type = 'SqlFilter'
-rule.filter_expression = 'messageposition > 3'
-
-bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
-bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
-```
-
-以下示例创建名为 `LowMessages` 的对 `mytopic` 的订阅，该订阅使用名为 `LowMessageFilter`的 **SqlFilter** 规则。 `LowMessageFilter` 规则仅选择 `messageposition` 属性小于或等于 3 的消息：
-
-```python
-bus_service.create_subscription('mytopic', 'LowMessages')
-
-rule = Rule()
-rule.filter_type = 'SqlFilter'
-rule.filter_expression = 'messageposition <= 3'
-
-bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
-bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
-```
-
-`AllMessages`、`HighMessages` 和 `LowMessages` 都生效后，发送到 `mytopic` 的消息始终会传送到 `AllMessages` 订阅的接收方。 也可以根据消息的 `messageposition` 属性值，选择性地将消息传送到 `HighMessages` 或 `LowMessages` 订阅。 
+- 遵循[快速入门：使用 Azure 门户创建一个服务总线主题和多个对该主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 记下连接字符串、主题名称和订阅名称。 本快速入门仅需使用一个订阅。 
+- Python 2.7 或更高版本，且安装了 [Azure Python SDK][Azure Python package] 包。 有关详细信息，请参阅 [Python 安装指南](/azure/developer/python/azure-sdk-install)。
 
 ## <a name="send-messages-to-a-topic"></a>将消息发送到主题
 
-应用程序使用 **ServiceBusService** 对象的 `send_topic_message` 方法将消息发送到服务总线主题。
+1. 添加以下 import 语句。 
 
-以下示例将 5 条测试消息发送到 `mytopic` 主题。 自定义 `messageposition` 属性值取决于循环的迭代，确定哪些订阅接收消息。 
+    ```python
+    from azure.servicebus import ServiceBusClient, ServiceBusMessage
+    ```
+2. 添加以下常量。 
 
-```python
-for i in range(5):
-    msg = Message('Msg {0}'.format(i).encode('utf-8'),
-                  custom_properties={'messageposition': i})
-    bus_service.send_topic_message('mytopic', msg)
-```
+    ```python
+    CONNECTION_STR = "<NAMESPACE CONNECTION STRING>"
+    TOPIC_NAME = "<TOPIC NAME>"
+    SUBSCRIPTION_NAME = "<SUBSCRIPTION NAME>"
+    ```
+    
+    > [!IMPORTANT]
+    > - 将 `<NAMESPACE CONNECTION STRING>` 替换为命名空间的连接字符串。
+    > - 将 `<TOPIC NAME>` 替换为主题名称。
+    > - 将 `<SUBSCRIPTION NAME>` 替换为主题的订阅名称。 
+3. 添加一个方法以发送一条消息。
 
-### <a name="message-size-limits-and-quotas"></a>消息大小限制和配额
+    ```python
+    def send_single_message(sender):
+        # create a Service Bus message
+        message = ServiceBusMessage("Single Message")
+        # send the message to the topic
+        sender.send_messages(message)
+        print("Sent a single message")
+    ```
 
-服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 主题中可以包含的消息数量不受限制，但主题包含的消息总大小有上限。 可以在创建时定义主题大小，上限为 5 GB。 
+    发送方是一个对象，充当你创建的主题的客户端。 稍后将创建它，并将其作为参数发送到此函数。 
+4. 添加一个方法以发送一列消息。
 
-有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
+    ```python
+    def send_a_list_of_messages(sender):
+        # create a list of messages
+        messages = [ServiceBusMessage("Message in list") for _ in range(5)]
+        # send the list of messages to the topic
+        sender.send_messages(messages)
+        print("Sent a list of 5 messages")
+    ```
+5. 添加一个方法以发送一批消息。
 
+    ```python
+    def send_batch_message(sender):
+        # create a batch of messages
+        batch_message = sender.create_message_batch()
+        for _ in range(10):
+            try:
+                # add a message to the batch
+                batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+            except ValueError:
+                # ServiceBusMessageBatch object reaches max_size.
+                # New ServiceBusMessageBatch object can be created here to send more data.
+                break
+        # send the batch of messages to the topic
+        sender.send_messages(batch_message)
+        print("Sent a batch of 10 messages")
+    ```
+6. 创建一个服务总线客户端，然后创建一个主题发送方对象来发送消息。
+
+    ```python
+    # create a Service Bus client using the connection string
+    servicebus_client = ServiceBusClient.from_connection_string(conn_str=CONNECTION_STR, logging_enable=True)
+    with servicebus_client:
+        # get a Topic Sender object to send messages to the topic
+        sender = servicebus_client.get_topic_sender(topic_name=TOPIC_NAME)
+        with sender:
+            # send one message        
+            send_single_message(sender)
+            # send a list of messages
+            send_a_list_of_messages(sender)
+            # send a batch of messages
+            send_batch_message(sender)
+    
+    print("Done sending messages")
+    print("-----------------------")
+    ```
+ 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
-
-应用程序对 **ServiceBusService** 对象使用 `receive_subscription_message` 方法来从订阅接收消息。 以下示例从 `LowMessages` 订阅接收消息，并在读取消息后删除消息：
-
-```python
-msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
-print(msg.body)
-```
-
-`receive_subscription_message` 的 `peek_lock` 可选参数确定服务总线在从订阅读取消息后是否删除消息。 默认的消息接收模式是 *PeekLock* 或设置为 **True** 的 `peek_lock`，后者在读取（扫视）后锁定消息，而不会从订阅中删除消息。 然后，必须显式完成每个消息以将其从订阅中删除。
-
-若要在从订阅读取消息后删除消息，可将 `peek_lock` 参数设置为 **False**，如前面的示例所示。 在执行接收操作过程中删除消息是最简单的模型，仅当应用程序在发生失败的情况下能够容许消息缺失时，该模型才能正常工作。 为了理解此行为，可以设想这样一种情形：应用程序发出接收请求，但在处理该请求之前发生崩溃。 如果在接收消息时它已被删除，当应用程序重启并重新开始使用消息时，它便缺少了在发生崩溃之前收到的消息。
-
-如果应用程序不能容许消息缺失，则接收过程将变成由两个阶段组成的操作。 PeekLock 查找要使用的下一个消息，将其锁定以防其他使用方接收它，然后将该消息返回给应用程序。 处理或存储消息后，应用程序通过对 **Message** 对象调用 `complete` 方法完成接收过程的第二个阶段。  `complete` 方法会将消息标记为已使用，并将其从订阅中删除。
-
-以下示例演示了 peek lock 方案：
+在 print 语句的后面添加以下代码。 此代码将持续接收新消息，直到在 5 (`max_wait_time`) 秒内未收到任何新消息。 
 
 ```python
-msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
-if msg.body is not None:
-    print(msg.body)
-    msg.complete()
+with servicebus_client:
+    # get the Subscription Receiver object for the subscription    
+    receiver = servicebus_client.get_subscription_receiver(topic_name=TOPIC_NAME, subscription_name=SUBSCRIPTION_NAME, max_wait_time=5)
+    with receiver:
+        for msg in receiver:
+            print("Received: " + str(msg))
+            # complete the message so that the message is removed from the subscription
+            receiver.complete_message(msg)
 ```
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>处理应用程序崩溃和不可读消息
-
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 **Message** 对象调用 `unlock` 方法。 服务总线解锁订阅中的消息，并使其能够重新被同一个或另一个使用方应用程序接收。
-
-订阅中锁定的消息还存在超时。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁消息，让它再次可供接收。
-
-如果应用程序在处理消息之后，但在调用 `complete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。 每条消息将至少处理一次，但在某些情况下，可能会重新传送同一消息。 如果方案无法容许重复处理，可以使用消息的 **MessageId** 属性（多次尝试传送时，该属性保持不变）来处理重复消息传送。 
-
-## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
-
-若要删除主题和订阅，请使用 [Azure 门户][Azure portal]或 `delete_topic` 方法。 以下代码删除名为 `mytopic` 的主题：
+## <a name="full-code"></a>完整代码
 
 ```python
-bus_service.delete_topic('mytopic')
+from azure.servicebus import ServiceBusClient, ServiceBusMessage
+
+CONNECTION_STR = "<NAMESPACE CONNECTION STRING>"
+TOPIC_NAME = "<TOPIC NAME>"
+SUBSCRIPTION_NAME = "<SUBSCRIPTION NAME>"
+
+def send_single_message(sender):
+    message = ServiceBusMessage("Single Message")
+    sender.send_messages(message)
+    print("Sent a single message")
+
+def send_a_list_of_messages(sender):
+    messages = [ServiceBusMessage("Message in list") for _ in range(5)]
+    sender.send_messages(messages)
+    print("Sent a list of 5 messages")
+
+def send_batch_message(sender):
+    batch_message = sender.create_message_batch()
+    for _ in range(10):
+        try:
+            batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+        except ValueError:
+            # ServiceBusMessageBatch object reaches max_size.
+            # New ServiceBusMessageBatch object can be created here to send more data.
+            break
+    sender.send_messages(batch_message)
+    print("Sent a batch of 10 messages")
+
+servicebus_client = ServiceBusClient.from_connection_string(conn_str=CONNECTION_STR, logging_enable=True)
+
+with servicebus_client:
+    sender = servicebus_client.get_topic_sender(topic_name=TOPIC_NAME)
+    with sender:
+        send_single_message(sender)
+        send_a_list_of_messages(sender)
+        send_batch_message(sender)
+
+print("Done sending messages")
+print("-----------------------")
+
+with servicebus_client:
+    receiver = servicebus_client.get_subscription_receiver(topic_name=TOPIC_NAME, subscription_name=SUBSCRIPTION_NAME, max_wait_time=5)
+    with receiver:
+        for msg in receiver:
+            print("Received: " + str(msg))
+            receiver.complete_message(msg)
 ```
 
-删除主题会删除对该主题的所有订阅。 也可以单独删除订阅。 以下代码从 `mytopic` 主题删除名为 `HighMessages` 的订阅：
+## <a name="run-the-app"></a>运行应用
+运行应用程序时，应显示以下输出： 
 
-```python
-bus_service.delete_subscription('mytopic', 'HighMessages')
+```console
+Sent a single message
+Sent a list of 5 messages
+Sent a batch of 10 messages
+Done sending messages
+-----------------------
+Received: Single Message
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
 ```
 
-默认情况下，主题和订阅是持久性的，在删除之前会一直存在。 若要在特定的时间段过后自动删除订阅，可对订阅设置 [auto_delete_on_idle](/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) 参数。 
+在 Azure 门户中，导航到你的服务总线命名空间。 在“概述”页上，验证传入和传出消息计数是否为 16  。 如果没有看到这些消息，请等待几分钟后再刷新页面。 
 
-> [!TIP]
-> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 可以使用服务总线资源管理器连接到服务总线命名空间并轻松管理消息传送实体。 该工具提供高级功能，例如导入/导出功能，以及用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+:::image type="content" source="./media/service-bus-python-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="传入和传出消息计数":::
+
+在底部窗格中选择主题，以查看主题的“服务总线主题”页。 在此页上，应会在“消息”图表中看到三条传入消息和三条传出消息。 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-topics-subscriptions/topic-page-portal.png" alt-text="传入和传出消息":::
+
+在此页上，如果选择一个订阅，则将转到“服务总线订阅”页。 可以在此页上查看活动消息计数、死信消息计数等。 在此示例中，所有消息均已接收，因此活动消息计数为零。 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-topics-subscriptions/active-message-count.png" alt-text="活动消息计数":::
+
+如果注释掉接收代码，则会看到活动消息计数为 16。 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-topics-subscriptions/active-message-count-2.png" alt-text="活动消息计数 - 无接收":::
 
 ## <a name="next-steps"></a>后续步骤
+请参阅以下文档和示例： 
 
-了解有关服务总线主题的基础知识后，请单击以下链接获取更多信息：
-
-* [队列、主题和订阅][Queues, topics, and subscriptions]
-* [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 参考
-
-[Azure portal]: https://portal.azure.com
-[Azure Python package]: https://pypi.python.org/pypi/azure
-[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
-[Service Bus quotas]: service-bus-quotas.md
+- [适用于 Python 的 Azure 服务总线客户端库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
+- [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
+    - sync_samples 文件夹包含一些示例，这些示例演示如何以同步方式与服务总线交互。 本快速入门就使用了此方法。 
+    - async_samples 文件夹包含一些示例，这些示例演示如何以异步方式与服务总线交互。 
+- [azure-servicebus 参考文档](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)

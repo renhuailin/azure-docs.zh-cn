@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087157"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305704"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 
@@ -28,9 +28,9 @@ ms.locfileid: "86087157"
 
 此 API 可以检测时序数据中以下类型的异常模式：
 
-* **正值和负值趋势**：例如，监视计算向上趋势过程中的内存使用率可能会很有趣，因为可能会显示内存泄漏，
-* **值的动态范围的更改**：例如，在监视云服务引发的异常情况时，值在动态范围内的任何更改可能表示该服务的运行状况不稳定，
-* **峰值和低值**：例如，监视服务中的登录失败次数或电子商务网站中的签出数，其峰值和低值可以预测非正常行为。
+* **正值和负值趋势** ：例如，监视计算向上趋势过程中的内存使用率可能会很有趣，因为可能会显示内存泄漏，
+* **值的动态范围的更改** ：例如，在监视云服务引发的异常情况时，值在动态范围内的任何更改可能表示该服务的运行状况不稳定，
+* **峰值和低值** ：例如，监视服务中的登录失败次数或电子商务网站中的签出数，其峰值和低值可以预测非正常行为。
 
 这些机器学习检测程序跟踪值的更改，并将正在进行的更改报告为异常分数。 它们不需要临时阈值优化，分数可用于控制误报率。 API 在几种情形中非常有用：通过跟踪 KPI 的服务监视、通过度量值（如大量搜索、点击）监视使用情况和通过计数器（如内存、CPU、文件读取等）监视性能。
 
@@ -46,13 +46,13 @@ ms.locfileid: "86087157"
 -->
 
 ## <a name="api-deployment"></a>API 部署
-要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Azure AI 库](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)执行此操作。  这会将两个 Azure 机器学习工作室（经典）Web 服务（及其相关资源）部署到 Azure 订阅：一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [Azure 机器学习工作室（经典）Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](/azure/machine-learning/studio/manage-new-webservice)提供了更详细的说明。
+要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Azure AI 库](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)执行此操作。  这会将两个 Azure 机器学习工作室（经典）Web 服务（及其相关资源）部署到 Azure 订阅：一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [Azure 机器学习工作室（经典）Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](../classic/manage-new-webservice.md)提供了更详细的说明。
 
 ## <a name="scaling-the-api"></a>缩放 API
 默认情况下，部署将使用一个免费的开发/测试计费计划，其中包括 1,000 次交易/月和 2 个计算小时/月。  可以根据需求升级到其他计划。  在[此处](https://azure.microsoft.com/pricing/details/machine-learning/)的“生产 Web API 定价”下提供了有关不同计划的定价的详细信息。
 
 ## <a name="managing-aml-plans"></a>管理 AML 计划
-可以在[此处](https://services.azureml.net/plans/)管理计费计划。  计划名称将基于在部署 API 时选择的资源组名称，再加上一个订阅所独有的字符串。  在[此处](/azure/machine-learning/studio/manage-new-webservice)的“管理计费计划”部分下提供了有关如何升级计划的说明。
+可以在[此处](https://services.azureml.net/plans/)管理计费计划。  计划名称将基于在部署 API 时选择的资源组名称，再加上一个订阅所独有的字符串。  在[此处](../classic/manage-new-webservice.md)的“管理计费计划”部分下提供了有关如何升级计划的说明。
 
 ## <a name="api-definition"></a>API 定义
 该 Web 服务提供 HTTPS 上基于 REST 的 API，可以不同方式使用该 API，包括 Web 或移动应用程序、R、Python、Excel 等。可将时间系列数据通过 REST API 调用发送到此服务，此服务将运行下面介绍的三种异常类型的组合。
@@ -197,4 +197,3 @@ API 在时间系列数据上运行所有检测程序，并及时返回异常的�
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png
-

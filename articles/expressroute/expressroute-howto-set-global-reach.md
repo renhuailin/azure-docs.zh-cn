@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
-ms.openlocfilehash: dd4c6f0b9d518acf06f7d018a65cc2b9b92db33d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2365317d83a4c11fa17cb5c449a25b70da17c2eb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395445"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368360"
 ---
 # <a name="configure-expressroute-global-reach"></a>配置 ExpressRoute Global Reach
 
 本文帮助你使用 PowerShell 配置 ExpressRoute Global Reach。 有关详细信息，请参阅 [ExpressRouteRoute Global Reach](expressroute-global-reach.md)。
 
- ## <a name="before-you-begin"></a>准备阶段
+ ## <a name="before-you-begin"></a>准备工作
 
 在开始配置之前，请确认以下事项：
 
@@ -105,17 +105,17 @@ ms.locfileid: "89395445"
 
 使用以下命令验证在其中进行了配置的线路（例如，上例中的线路 1）的配置。
 ```azurepowershell-interactive
-$ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+$ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 ```
 
-如果直接在 PowerShell 中运行 *$ckt1*，则会在输出中看到 *CircuitConnectionStatus*。 它指明连接已建立（“Connected”）还是未建立（“Disconnected”）。 
+如果只是在 PowerShell 中运行 *$ckt _1* ，则会在输出中看到 *CircuitConnectionStatus* 。 它指明连接已建立（“Connected”）还是未建立（“Disconnected”）。 
 
 ## <a name="disable-connectivity"></a>禁用连接
 
 若要禁用本地网络之间的连接，请对在其中进行配置的线路运行命令 (例如，) 上一示例中的 "线路 1"。
 
 ```azurepowershell-interactive
-$ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+$ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -ExpressRouteCircuit $ckt_1
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```

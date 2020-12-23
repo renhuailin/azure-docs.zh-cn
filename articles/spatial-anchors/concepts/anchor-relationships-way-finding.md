@@ -1,19 +1,19 @@
 ---
-title: 定位点关系和方式-查找
+title: 定位点关系和路径查找
 description: 了解定位点关系背后的概念模型。 了解如何在空间内连接定位点，以及如何使用附近的 API 来实现一种查找方案。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006023"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496879"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>定位关系和在 Azure 空间锚中查找的方式
 
@@ -32,7 +32,7 @@ ms.locfileid: "83006023"
 
 ## <a name="set-up-way-finding"></a>设置方法-查找
 
-使用直线方向和锚点之间的距离的应用使用*方法查找*提供指导。 方法-查找不同于轮流导航。 在轮流导航中，用户通过门和地面之间的指导。 通过方法查找，用户获取有关目标的一般方向的提示。 但是，对空间的推理或了解还有助于用户在结构和目标之间导航。
+使用直线方向和锚点之间的距离的应用使用 *方法查找* 提供指导。 方法-查找不同于轮流导航。 在轮流导航中，用户通过门和地面之间的指导。 通过方法查找，用户获取有关目标的一般方向的提示。 但是，对空间的推理或了解还有助于用户在结构和目标之间导航。
 
 若要构建一个方法查找体验，请首先为体验准备空间，并开发用户将与之交互的应用。 概念性步骤如下：
 
@@ -65,7 +65,7 @@ ms.locfileid: "83006023"
 若要连接多个会话的定位点：
 
 1. 应用程序在一个 CloudSpatialAnchorSession 中创建了一些定位点。
-2. 在其他时间，应用程序使用新的 CloudSpatialAnchorSession 查找其中一个定位点（例如，定位 A）。
+2. 在其他时间，应用程序将查找其中一个定位点 (例如，使用新 CloudSpatialAnchorSession 定位) 。
 3. 转到新位置。 底层混合现实或扩充现实平台跟踪移动。
 4. 使用相同的 CloudSpatialAnchorSession 创建定位点 C。 当前已连接锚点 A、B 和 C。 空间锚定服务维护此关系。
 
@@ -82,4 +82,4 @@ ms.locfileid: "83006023"
 
 ### <a name="find-sample-code"></a>查找示例代码
 
-若要查找演示如何连接定位点和执行附近查询的示例代码，请参阅[空间锚的示例应用](https://github.com/Azure/azure-spatial-anchors-samples)。
+若要查找演示如何连接定位点和执行附近查询的示例代码，请参阅 [空间锚的示例应用](https://github.com/Azure/azure-spatial-anchors-samples)。

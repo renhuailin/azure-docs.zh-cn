@@ -1,14 +1,14 @@
 ---
 title: 模板概述
-description: 介绍使用 Azure 资源管理器模板部署资源的好处。
+description: 介绍使用 Azure 资源管理器模板 (ARM 模板) 部署资源的优点。
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 12/17/2020
+ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119355"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657305"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -16,7 +16,7 @@ ms.locfileid: "86119355"
 
 为了解决这些难题，可将部署自动化，并运用基础结构即代码。 在代码中定义需要部署的基础结构。 基础结构代码将成为项目的一部分。 与应用程序代码一样，可将基础结构代码存储在源存储库中，并控制其版本。 团队中的任何人都可以运行该代码并部署类似的环境。
 
-若要针对 Azure 解决方案实现基础结构即代码，请使用 Azure 资源管理器 (ARM) 模板。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
+若要实现 Azure 解决方案的基础结构代码，请使用 Azure 资源管理器模板 (ARM 模板) 。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
 
 ## <a name="why-choose-arm-templates"></a>为什么选择 ARM 模板？
 
@@ -34,11 +34,11 @@ ms.locfileid: "86119355"
 
 * **创建任何 Azure 资源**：可以立即在模板中使用新的 Azure 服务和功能。 一旦资源提供程序引入了新资源，你就可以通过模板立即部署这些资源。 在使用新服务之前，无需等待工具或模块完成更新。
 
-* **扩展性**：使用[部署脚本](deployment-script-template.md)时，可以将 PowerShell 或 Bash 脚本添加到模板。 使用部署脚本可扩展在部署过程中设置资源的功能。 脚本可以包含在模板中，也可存储在外部源中并在模板中引用。 使用部署脚本可以在单个 ARM 模板中完成端到端环境设置。
+* **扩展性**：使用 [部署脚本](deployment-script-template.md)时，可以将 PowerShell 或 Bash 脚本添加到模板。 使用部署脚本可扩展在部署过程中设置资源的功能。 脚本可以包含在模板中，也可存储在外部源中并在模板中引用。 使用部署脚本可以在单个 ARM 模板中完成端到端环境设置。
 
 * **测试**：可以使用 ARM 模板工具包 (arm-ttk) 对模板进行测试，确保模板符合建议的准则。 此测试工具包是一个 PowerShell 脚本，可从 [GitHub](https://github.com/Azure/arm-ttk) 下载。 使用此工具包，可以更轻松地使用模板语言开发专门技术。
 
-* **预览更改**：可以使用[模拟操作](template-deploy-what-if.md)在部署模板前预览更改。 通过模拟，你可看到将创建、更新或删除哪些资源，以及将更改的任何资源属性。 模拟操作会检查环境的当前状态，因此无需管理状态。
+* **预览更改**：可以使用 [模拟操作](template-deploy-what-if.md)在部署模板前预览更改。 对于-if，你会看到将创建、更新或删除的资源以及任何将更改的资源属性。 模拟操作会检查环境的当前状态，因此无需管理状态。
 
 * **内置验证**：只有在通过验证后才会部署模板。 资源管理器在开始部署之前会检查模板，以确保部署成功。 部署不太可能会在半完成状态时停止。
 
@@ -48,13 +48,13 @@ ms.locfileid: "86119355"
 
 * **策略即代码**：[Azure Policy](../../governance/policy/overview.md) 是一个用于自动化监管的策略即代码框架。 如果使用 Azure 策略，在通过模板进行部署时，将会针对不合规的资源执行策略修正。
 
-* **部署蓝图**：你可以利用 Microsoft 提供的[蓝图](../../governance/blueprints/overview.md)来满足法规和合规性标准。 这些蓝图包括用于各种体系结构的预建模板。
+* **部署蓝图**：你可以利用 Microsoft 提供的 [蓝图](../../governance/blueprints/overview.md) 来满足法规和合规性标准。 这些蓝图包括用于各种体系结构的预建模板。
 
 * **CI/CD 集成**：可以将模板集成到持续集成和持续部署 (CI/CD) 工具中，这些工具可以自动执行发布管道，以实现快速可靠的应用程序和基础结构更新。 通过 Azure DevOps 和资源管理器模板任务，可以使用 Azure Pipelines 持续生成和部署 ARM 模板项目。 若要了解详细信息，请参阅[使用管道的 VS 项目](add-template-to-azure-pipelines.md)和[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](./deployment-tutorial-pipeline.md)。
 
 * **可导出的代码**：可以通过导出资源组的当前状态或查看特定部署所用的模板，来获取现有资源组的模板。 查看[导出的模板](export-template-portal.md)是了解模板语法的有用方法。
 
-* **创作工具**：可以使用 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 和模板工具扩展来创作模板。 你将获得 Intellisense、语法突出显示、内联帮助以及其他许多语言功能。 除了 Visual Studio code 以外，还可以使用 [Visual Studio](create-visual-studio-deployment-project.md)。
+* **创作工具**：可以使用 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 和模板工具扩展来创作模板。 你将获得 Intellisense、语法突出显示、内联帮助以及其他许多语言功能。 除了 Visual Studio Code 以外，还可以使用 [Visual Studio](create-visual-studio-deployment-project.md)。
 
 ## <a name="template-file"></a>模板文件
 
@@ -80,13 +80,13 @@ ms.locfileid: "86119355"
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2016-01-01",
+    "apiVersion": "2019-04-01",
     "name": "mystorageaccount",
     "location": "westus",
     "sku": {
       "name": "Standard_LRS"
     },
-    "kind": "Storage",
+    "kind": "StorageV2",
     "properties": {}
   }
 ]
@@ -96,17 +96,19 @@ ms.locfileid: "86119355"
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2019-04-01
 REQUEST BODY
 {
   "location": "westus",
   "sku": {
     "name": "Standard_LRS"
   },
-  "kind": "Storage",
+  "kind": "StorageV2",
   "properties": {}
 }
 ```
+
+请注意，在该资源的模板中设置的 **apiVersion** 用作 REST 操作的 API 版本。 你可以重复部署模板并自信地使用它。 使用相同的 API 版本，你无需担心可能在更高版本中引入的重大更改。
 
 ## <a name="template-design"></a>模板设计
 
@@ -127,6 +129,7 @@ REQUEST BODY
 ## <a name="next-steps"></a>后续步骤
 
 * 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
+* 若要通过 Microsoft Learn 上的一组指导性模板了解 ARM 模板，请参阅 [使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
 * 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
-* 有关常见问题的解答，请参阅[有关 ARM 模板](frequently-asked-questions.md)的常见问题。
+* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。

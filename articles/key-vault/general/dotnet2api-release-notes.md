@@ -1,6 +1,6 @@
 ---
 title: 密钥保管库 .NET 2.x API 发行说明 | Microsoft Docs
-description: '了解如何更新为 Azure Key Vault 早期版本编写的应用程序，以使用适用于 c # 和 .NET 的2.0 版 Azure Key Vault 库。'
+description: 了解如何更新为早期版本的 Azure Key Vault 编写的应用，以便使用适用于 C# 和 .NET 的 Azure Key Vault 库的 2.0 版本。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189833"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013949"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 密钥保管库 .NET 2.0 - 发行说明和迁移指南
 以下信息有助于迁移到 C# 和 .NET 的 Azure Key Vault 库版本 2.0。  针对早期版本所编写的应用需进行更新，以支持最新版本。  为完全支持新增和改进的功能（如 Key Vault 证书），这些更改是必需的  。
@@ -38,7 +38,7 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 ## <a name="namespaces"></a>命名空间
 
-* **模型**的命名空间从 **Microsoft.Azure.KeyVault** 更改为 **Microsoft.Azure.KeyVault.Models**。
+* **模型** 的命名空间从 **Microsoft.Azure.KeyVault** 更改为 **Microsoft.Azure.KeyVault.Models**。
 * **Microsoft.Azure.KeyVault.Internal** 命名空间被弃用。
 * 以下 Azure SDK 依赖项命名空间的更改 
 
@@ -54,7 +54,7 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 ## <a name="return-types"></a>返回类型
 
-* KeyList 和 SecretList 将返回 IPage\<T> 而不是 ListKeysResponseMessage************
+* KeyList 和 SecretList 将返回 IPage\<T> 而不是 ListKeysResponseMessage
 * 生成的 BackupKeyAsync 将返回 BackupKeyResult，其中包含“值”（备份 blob）    。 以前，此方法会包装且仅返回值。
 
 ## <a name="exceptions"></a>异常

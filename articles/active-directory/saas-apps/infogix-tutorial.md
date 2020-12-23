@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: c46fe09691c270338e7ce60f8f0753e8c9b84948
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553017"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>教程：Azure Active Directory 与 Infogix Data3Sixty Govern 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553017"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Infogix Data3Sixty Govern（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -42,7 +42,7 @@ ms.locfileid: "88553017"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Infogix Data3Sixty Govern 支持 SP 和 IDP 发起的 SSO 
-* Infogix Data3Sixty Govern 支持**恰时**用户预配
+* Infogix Data3Sixty Govern 支持 **恰时** 用户预配
 
 ## <a name="adding-infogix-data3sixty-govern-from-the-gallery"></a>从库添加 Infogix Data3Sixty Govern
 
@@ -64,7 +64,7 @@ ms.locfileid: "88553017"
 
 4. 在搜索框中，键入“Infogix Data3Sixty Govern”，在结果面板中选择“Infogix Data3Sixty Govern”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 Infogix Data3Sixty Govern](common/search-new-app.png)
+    ![结果列表中的 Infogix Data3Sixty Govern](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -90,7 +90,7 @@ ms.locfileid: "88553017"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "88553017"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Infogix Data3Sixty Govern 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中键入 URL：`https://data3sixty.com/ui`
 
@@ -108,7 +108,7 @@ ms.locfileid: "88553017"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Infogix Data3Sixty Govern 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.data3sixty.com`
 
@@ -117,21 +117,21 @@ ms.locfileid: "88553017"
 
 6. Infogix Data3Sixty Govern 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
 
     | 名称 | 源属性|
     | -----------| -------------- |
     | 名  | user.givenname |
-    | 姓   | user.surname |
-    | username   | user.mail    |
+    | 姓 | user.surname |
+    | username | user.mail |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![屏幕截图显示“用户声明”以及“添加新声明”选项。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -145,7 +145,7 @@ ms.locfileid: "88553017"
 
     g. 单击“ **保存**”。
 
-8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载**证书(原始)** 并将其保存在计算机上。
+8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载 **证书(原始)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificateraw.png)
 
@@ -180,7 +180,7 @@ ms.locfileid: "88553017"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -219,19 +219,18 @@ ms.locfileid: "88553017"
 在本部分，我们会在 Infogix Data3Sixty Govern 中创建一个名为 Britta Simon 的用户。 Infogix Data3Sixty Govern 支持在默认情况下启用的恰时用户预配。 此部分不存在任何操作项。 如果 Infogix Data3Sixty Govern 中不存在用户，则会在身份验证后创建一个新用户。
 
 > [!Note]
-> 如需手动创建用户，请联系  [Infogix Data3Sixty Govern 支持团队](mailto:data3sixtysupport@infogix.com)。
+> 如需手动创建用户，请联系 [Infogix Data3Sixty Govern 支持团队](mailto:data3sixtysupport@infogix.com)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Infogix Data3Sixty Govern 磁贴时，应当会自动登录到你为其设置了 SSO 的 Infogix Data3Sixty Govern。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Infogix Data3Sixty Govern 磁贴时，应当会自动登录到你为其设置了 SSO 的 Infogix Data3Sixty Govern。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -5,27 +5,29 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 07/30/2020
-ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
+ms.date: 11/23/2020
+ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499545"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033368"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和管理逻辑应用
 
-本快速入门演示如何使用 [Azure CLI 逻辑应用扩展](/cli/azure/ext/logic/logic?view=azure-cli-latest) (`az logic`) 创建和管理逻辑应用。 在命令行中，可以使用逻辑应用工作流定义的 JSON 文件来创建逻辑应用。 然后，可以通过从命令行运行 `list`、`show` (`get`)、`update` 和 `delete` 等操作来管理逻辑应用。
+本快速入门演示如何使用 [Azure CLI 逻辑应用扩展](/cli/azure/ext/logic/logic) (`az logic`) 创建和管理逻辑应用。 在命令行中，可以使用逻辑应用工作流定义的 JSON 文件来创建逻辑应用。 然后，可以通过从命令行运行 `list`、`show` (`get`)、`update` 和 `delete` 等操作来管理逻辑应用。
 
 > [!WARNING]
 > Azure CLI 逻辑应用扩展当前是试验性的，未涵盖在客户支持中 。 请谨慎使用此 CLI 扩展，尤其是在生产环境中选择使用扩展时。
 
+如果你不熟悉逻辑应用，还可以了解如何[通过 Azure 门户](quickstart-create-first-logic-app-workflow.md)创建第一个逻辑应用，以及如何[在 Visual Studio 中](quickstart-create-logic-apps-with-visual-studio.md)和[在 Visual Studio Code 中](quickstart-create-logic-apps-visual-studio-code.md)创建第一个逻辑应用。
+
 ## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 在本地计算机上安装的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* 在计算机上安装的[逻辑应用 Azure CLI 扩展](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest)。 若要安装此扩展，请使用此命令：`az extension add --name logic`
+* 在本地计算机上安装的 [Azure CLI](/cli/azure/install-azure-cli)。
+* 在计算机上安装的[逻辑应用 Azure CLI 扩展](/cli/azure/azure-cli-extensions-list)。 若要安装此扩展，请使用此命令：`az extension add --name logic`
 * 要在其中创建逻辑应用的 [ Azure 资源组](#example---create-resource-group)。
 
 ### <a name="prerequisite-check"></a>先决条件检查
@@ -33,8 +35,8 @@ ms.locfileid: "87499545"
 开始之前验证环境：
 
 * 登录 Azure 门户，并通过运行 `az login` 来检查订阅是否处于活动状态。
-* 通过运行 `az --version` 在终端或命令窗口中检查 Azure CLI 版本。 有关最新版本，请参阅[最新发行说明](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest)。
-  * 如果没有最新版本，请按照[适用于你操作系统或平台的安装指南](/cli/azure/install-azure-cli?view=azure-cli-latest)来更新安装。
+* 通过运行 `az --version` 在终端或命令窗口中检查 Azure CLI 版本。 有关最新版本，请参阅[最新发行说明](/cli/azure/release-notes-azure-cli?tabs=azure-cli)。
+  * 如果没有最新版本，请按照[适用于你操作系统或平台的安装指南](/cli/azure/install-azure-cli)来更新安装。
 
 ### <a name="example---create-resource-group"></a>示例 - 创建资源组
 
@@ -67,7 +69,7 @@ az group create --name testResourceGroup --location westus
 
 ## <a name="create-logic-apps-from-cli"></a>从 CLI 创建逻辑应用
 
-可以使用命令 [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) 以及定义的 JSON 文件，从 Azure CLI 创建逻辑应用工作流。
+可以使用命令 [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) 以及定义的 JSON 文件，从 Azure CLI 创建逻辑应用工作流。
 
 ```azurecli
 
@@ -84,7 +86,7 @@ az logic workflow create --definition
 
 ```
 
-命令必须包含以下[必需参数](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-required-parameters)：
+命令必须包含以下[必需参数](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters)：
 
 | 参数 | 值 | 说明 |
 | --------- | ----- | ----------- |
@@ -93,7 +95,7 @@ az logic workflow create --definition
 | 名称 | `--name -n` | 逻辑应用的名称。 名称只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号 (`()`) 和句点 (`.`)。 该名称还必须在区域间唯一。 |
 | 资源组名称 | `--resource-group -g` | 要在其中创建逻辑应用的 [Azure 资源组](../azure-resource-manager/management/overview.md)。 如果还没有用于逻辑应用的资源组，请在开始之前[创建一个资源组](#example---create-resource-group)。 |
 
-还可以包含其他[可选参数](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters)以配置逻辑应用的访问控制、终结点、集成帐户、集成服务环境、状态和资源标记。
+还可以包含其他[可选参数](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters)以配置逻辑应用的访问控制、终结点、集成帐户、集成服务环境、状态和资源标记。
 
 ### <a name="example---create-logic-app"></a>示例 - 创建逻辑应用
 
@@ -109,9 +111,9 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ## <a name="update-logic-apps-from-cli"></a>从 CLI 更新逻辑应用
 
-还可以使用命令 [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create)，从 Azure CLI 更新逻辑应用工作流。
+还可以使用命令 [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create)，从 Azure CLI 更新逻辑应用工作流。
 
-命令必须包含与[创建逻辑应用](#create-logic-apps-from-cli)时相同的[必需参数](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-required-parameters)。 还可以添加与创建逻辑应用时相同的[可选参数](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters)。
+命令必须包含与[创建逻辑应用](#create-logic-apps-from-cli)时相同的[必需参数](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters)。 还可以添加与创建逻辑应用时相同的[可选参数](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters)。
 
 ```azurecli
 
@@ -142,16 +144,16 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ## <a name="delete-logic-apps-from-cli"></a>从 CLI 删除逻辑应用
 
-可以使用命令 [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete)，从 Azure CLI 删除逻辑应用工作流。
+可以使用命令 [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete)，从 Azure CLI 删除逻辑应用工作流。
 
-命令必须包含以下[必需参数](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-required-parameters)：
+命令必须包含以下[必需参数](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-required-parameters)：
 
 | 参数 | 值 | 说明 |
 | --------- | ----- | ----------- |
 | 名称 | `--name -n` | 逻辑应用的名称。 |
 | 资源组名称 | `-resource-group -g` | 逻辑应用所在的资源组。 |
 
-还可以包含一个[可选参数](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-optional-parameters)以跳过确认提示 `--yes -y`。
+还可以包含一个[可选参数](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-optional-parameters)以跳过确认提示 `--yes -y`。
 
 ```azurecli
 
@@ -185,7 +187,7 @@ az logic workflow delete --resource-group "testResourceGroup" --name "testLogicA
 
 ## <a name="show-logic-apps-in-cli"></a>在 CLI 中显示逻辑应用
 
-可以使用命令 [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) 获取特定逻辑应用工作流。
+可以使用命令 [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show) 获取特定逻辑应用工作流。
 
 ```azurecli
 
@@ -194,7 +196,7 @@ az logic workflow show --name
 
 ```
 
-命令必须包含以下[必需参数](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show-required-parameters)
+命令必须包含以下[必需参数](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show-required-parameters)
 
 | 参数 | 值 | 说明 |
 | --------- | ----- | ----------- |
@@ -213,9 +215,9 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 
 ## <a name="list-logic-apps-in-cli"></a>在 CLI 中列出逻辑应用
 
-可以使用命令 [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-list) 按订阅列出逻辑应用。 此命令返回逻辑应用工作流的 JSON 代码。
+可以使用命令 [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list) 按订阅列出逻辑应用。 此命令返回逻辑应用工作流的 JSON 代码。
 
-可以按以下[可选参数](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-list-optional-parameters)来筛选结果：
+可以按以下[可选参数](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list-optional-parameters)来筛选结果：
 
 | 参数 | 值 | 说明 |
 | --------- | ----- | ----------- |
@@ -265,7 +267,7 @@ Expecting value: line 1 column 1 (char 0)
 
 | 参数 | 值 | 说明 |
 | --------- | ----- | ----------- |
-| 输出格式 | `--output -o` | 从默认 JSON 更改[输出格式](/cli/azure/format-output-azure-cli?view=azure-cli-latest)。 |
+| 输出格式 | `--output -o` | 从默认 JSON 更改[输出格式](/cli/azure/format-output-azure-cli)。 |
 | 仅显示错误 | `--only-show-errors` | 取消显示警告，仅显示错误。 |
 | “详细” | `--verbose` | 显示详细日志。 |
 | 调试 | `--debug` | 显示所有调试日志。 |
@@ -274,8 +276,11 @@ Expecting value: line 1 column 1 (char 0)
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/?view=azure-cli-latest)。
-
-有关如何通过 CLI 创建基本逻辑应用的示例，请参阅[示例脚本和工作流定义](sample-logic-apps-cli-script.md)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/)。
 
 可以在 [Microsoft 代码示例浏览器](/samples/browse/?products=azure-logic-apps)中找到其他逻辑应用 CLI 脚本示例。
+
+接下来，可以使用示例脚本和工作流定义通过 Azure CLI 创建示例应用逻辑。
+
+> [!div class="nextstepaction"]
+> [使用示例脚本创建逻辑应用](sample-logic-apps-cli-script.md)。

@@ -1,14 +1,14 @@
 ---
 title: 快速入门：第一个 REST API 查询
 description: 在此快速入门中，将按照以下步骤调用 REST API 的 Resource Graph 终结点并运行第一个查询。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85802541"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566072"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>快速入门：使用 REST API 运行你的第一个 Resource Graph 查询
 
@@ -49,7 +49,8 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-替换上面 $restUri 变量中的 `{subscriptionId}`，以获取订阅的相关信息。 $Response 变量可保留 `Invoke-RestMethod` cmdlet 的结果，后者可使用 [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 之类的 cmdlet 进行分析。 如果 REST API 服务终结点需要请求正文，请向 `Invoke-RestMethod` 的 `-Body` 参数提供 JSON 格式的变量。
+替换 `$restUri` 变量中的 `{subscriptionId}`，以获取订阅的相关信息。
+`$response` 变量可保留 `Invoke-RestMethod` cmdlet 的结果，后者可使用 [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 之类的 cmdlet 进行分析。 如果 REST API 服务终结点需要请求正文，请向 `Invoke-RestMethod` 的 `-Body` 参数提供 JSON 格式的变量。
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
@@ -75,7 +76,6 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5"
-         }
      }
      ```
 
@@ -98,7 +98,6 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5 | order by name asc"
-         }
      }
      ```
 
@@ -121,7 +120,6 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | order by name asc | limit 5"
-         }
      }
      ```
 

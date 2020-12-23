@@ -1,6 +1,6 @@
 ---
 title: 工作负荷重要性
-description: 有关在 Azure Synapse Analytics 中设置 Synapse SQL 池查询重要性的指南。
+description: 在 Azure Synapse 分析中设置专用 SQL 池查询的重要性的指南。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b2c71d7bf9e796af77e9a2a4a3a31152f2ca884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07c781672874bff306c9d25a464ec66414ebc9f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212337"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322122"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics 工作负载重要性
 
-本文介绍了工作负载重要性如何影响 Azure Synapse 中 Synapse SQL 池请求的执行顺序。
+本文介绍工作负荷重要性如何影响 Azure Synapse 中专用 SQL 池请求的执行顺序。
 
 ## <a name="importance"></a>重要性
 
@@ -38,7 +38,7 @@ ms.locfileid: "85212337"
 
 ### <a name="locking"></a>锁定
 
-访问读取和写入活动锁是自然争用的一个方面。 [分区切换](sql-data-warehouse-tables-partition.md)或 [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 等活动需要权限提升的锁。  如果没有工作负载重要性，Azure Synapse 中的 Synapse SQL 池会针对吞吐量进行优化。 针对吞吐量进行优化意味着，当正在运行的和排队的请求具有相同的锁定需求，并且资源可用时，排队的请求可能会绕过提前抵达请求队列的、具有更高锁定需求的请求。 将工作负荷重要性应用到具有较高锁定需求的请求后， 会先运行具有较高重要性的请求，然后再运行具有较低重要性的请求。
+访问读取和写入活动锁是自然争用的一个方面。 [分区切换](sql-data-warehouse-tables-partition.md)或 [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 等活动需要权限提升的锁。  如果没有工作负荷重要性，Azure Synapse 中的专用 SQL 池会优化吞吐量。 针对吞吐量进行优化意味着，当正在运行的和排队的请求具有相同的锁定需求，并且资源可用时，排队的请求可能会绕过提前抵达请求队列的、具有更高锁定需求的请求。 将工作负荷重要性应用到具有较高锁定需求的请求后， 会先运行具有较高重要性的请求，然后再运行具有较低重要性的请求。
 
 请考虑以下示例：
 
@@ -50,7 +50,7 @@ ms.locfileid: "85212337"
 
 ### <a name="non-uniform-requests"></a>非统一请求
 
-另一个可以借助重要性满足查询需求的场景是提交了具有不同资源类的请求。  如前所述，在重要性相同的情况下，Azure Synapse 中的 Synapse SQL 池会针对吞吐量进行优化。 如果混合大小请求（例如 smallrc 或 mediumrc）已排队，则 Synapse SQL 池会选择可用资源能满足的最早到达请求。 如果应用了工作负荷重要性，则计划执行的下一个请求是重要性最高的请求。
+另一个可以借助重要性满足查询需求的场景是提交了具有不同资源类的请求。  如前所述，在同一重要性中，Azure Synapse 中的专用 SQL 池会优化吞吐量。 当混合大小请求 (如 smallrc 或 mediumrc) 排队时，专用 SQL 池将选择适合可用资源的最早到达请求。 如果应用了工作负荷重要性，则计划执行的下一个请求是重要性最高的请求。
   
 请考虑 DW500c 中的以下示例：
 

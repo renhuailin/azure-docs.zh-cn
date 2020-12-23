@@ -11,16 +11,20 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: c70028319fc0ed148fe7d102a925c4a07f2ab0f0
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 60c51de4e4549649c681c961c6ddc1acdb12e698
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757108"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659686"
 ---
 # <a name="quickstart-send-an-sms-message"></a>快速入门：发送短信
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> 可以将短信发送到美国电话号码，也可以从美国电话号码接收短信。 通信服务短信尚不支持其他地理位置的电话号码。
+> 有关详细信息，请参阅[规划电话服务和短信解决方案](../../concepts/telephony-sms/plan-solution.md)。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET client library](./includes/send-sms-net.md)]
@@ -37,6 +41,10 @@ ms.locfileid: "91757108"
 ::: zone pivot="programming-language-java"
 [!INCLUDE [Send SMS with Java client library](./includes/send-sms-java.md)]
 ::: zone-end
+
+## <a name="troubleshooting"></a>疑难解答
+
+若要对与短信发送相关的问题进行故障排除，可以[使用事件网格启用短信发送报告](./handle-sms-events.md)，捕获有关发送的详细信息。
 
 ## <a name="clean-up-resources"></a>清理资源
 

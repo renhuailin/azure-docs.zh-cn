@@ -2,15 +2,15 @@
 title: 配置 ASP.NET 应用
 description: 了解如何在 Azure 应用服务中配置 ASP.NET 应用。 本文介绍最常见的配置任务。
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961697"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744168"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>为 Azure 应用服务配置 ASP.NET 应用
 

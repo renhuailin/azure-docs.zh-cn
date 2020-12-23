@@ -1,6 +1,6 @@
 ---
 title: 源代码管理集成
-description: 使用 Azure Repos（Git 和 GitHub）进行本机源代码管理集成的 SQL 池的企业级数据库 DevOps 体验。
+description: 使用 Azure Repos（Git 和 GitHub）进行本机源代码管理集成的专用 SQL 池的企业级数据库 DevOps 体验。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89441263"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296834"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>SQL 池的源代码管理集成
+# <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的源代码管理集成
 
-本教程概述了如何将 SQL Server Data tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 Azure Synapse Analytics 中的 SQL 池资源构建持续集成和部署管道的第一步。
+本教程概述了如何将 SQL Server Data Tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 Azure Synapse Analytics 中的专用 SQL 池资源构建持续集成和部署管道的第一步。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -38,11 +38,13 @@ ms.locfileid: "89441263"
    ![管理连接](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "管理连接")
 
 3. 通过依次选择“管理连接”、“连接到项目”连接到你的项目 。
- ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "连接")
+ 
+    ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "连接")
 
 
 4. 找到你在步骤 1 中创建的项目，选择“连接”。
-![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "连接")
+ 
+    ![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "连接")
 
 
 3. 将项目中的 Azure DevOps 存储库克隆到本地计算机。
@@ -85,8 +87,8 @@ ms.locfileid: "89441263"
 
    ![验证](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "验证更改")
 
-4. （**可选**）使用“架构比较”并使用 SSDT 更新对目标数据仓库的更改，以确保 Azure Repo 存储库和本地存储库中的对象定义反映数据仓库。
+4. （可选）使用“架构比较”并使用 SSDT 更新对目标专用 SQL 池的更改，以确保 Azure Repo 存储库和本地存储库中的对象定义反映专用 SQL 池。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [针对 SQL 池进行开发](sql-data-warehouse-overview-develop.md)
+- [针对专用 SQL 池进行开发](sql-data-warehouse-overview-develop.md)

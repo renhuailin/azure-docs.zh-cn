@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87276908"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783974"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>灾难恢复和存储帐户故障转移
 
@@ -25,7 +25,7 @@ Azure 存储支持异地冗余存储帐户的故障转移。 通过帐户故障�
 
 帐户故障转移适用于常规用途 v1、常规用途 v2 以及使用 Azure 资源管理器部署的 Blob 存储帐户类型。 所有公共区域都支持帐户故障转移，但目前在主权或国内云中不可用。
 
-本文介绍了帐户故障转移所涉及的概念和过程，以及如何让存储帐户做好恢复准备，且造成的客户影响最小。 若要了解如何在 Azure 门户或 PowerShell 中启动帐户故障转移，请参阅[启动帐户故障转移](storage-initiate-account-failover.md)。
+本文介绍了帐户故障转移所涉及的概念和过程，以及如何让存储帐户做好恢复准备，且造成的客户影响最小。 若要了解如何在 Azure 门户或 PowerShell 中启动帐户故障转移，请参阅 [启动帐户故障转移](storage-initiate-account-failover.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -33,9 +33,9 @@ Azure 存储支持异地冗余存储帐户的故障转移。 通过帐户故障�
 
 Azure 存储将维护存储帐户的多个副本，以确保持续性和高可用性。 为帐户选择哪个冗余选项取决于所需的复原能力水平。 为了防止区域中断，请为你的帐户配置异地冗余存储，无论是否选择从次要区域进行读取访问：  
 
-**异地冗余存储（GRS）或异地冗余存储（GZRS）** 会以异步方式将数据复制到介于数百英里之外的两个地理区域。 如果主要区域遭遇服务中断，次要区域便会成为数据的冗余源。 可以通过启动故障转移，将辅助终结点转换为主终结点。
+**异地冗余存储 (GRS) 或地域冗余存储 (GZRS)** 以两个地理区域（至少介于数百英里之间）异步复制数据。 如果主要区域遭遇服务中断，次要区域便会成为数据的冗余源。 可以通过启动故障转移，将辅助终结点转换为主终结点。
 
-**读取访问异地冗余存储（GRS）或读取访问地域冗余存储（GZRS）** 提供了异地冗余存储，并具有对辅助终结点的读取访问权限。 如果主终结点发生中断，配置为对辅助终结点进行读取访问并设计为高度可用的应用程序可以继续从辅助终结点读取数据。 Microsoft 建议 GZRS 以实现应用程序的最高可用性和持久性。
+**读取访问地域冗余存储 (ra-GRS) 或读取访问地域冗余存储 (GZRS)** 提供异地冗余存储，具有对辅助终结点的读取访问权限。 如果主终结点发生中断，配置为对辅助终结点进行读取访问并设计为高度可用的应用程序可以继续从辅助终结点读取数据。 Microsoft 建议 GZRS 以实现应用程序的最高可用性和持久性。
 
 有关 Azure 存储中冗余的详细信息，请参阅 [Azure 存储冗余](storage-redundancy.md)。
 
@@ -54,9 +54,9 @@ Azure 存储将维护存储帐户的多个副本，以确保持续性和高可�
 此外，还请注意下面这些可保持 Azure 存储数据高可用性的最佳做法：
 
 - **磁盘：** 利用 [Azure 备份](https://azure.microsoft.com/services/backup/)备份 Azure 虚拟机使用的 VM 磁盘。 还建议在发生区域灾难时使用 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) 保护 VM。
-- **块 blob：** 启用[软删除](../blobs/storage-blob-soft-delete.md)以防发生对象级删除和覆盖，或使用 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](/powershell/module/az.storage/) 或 [Azure 数据移动库](storage-use-data-movement-library.md)将块 blob 复制到其他区域中的另一个存储帐户内。
-- **文件：** 使用 [AzCopy](storage-use-azcopy.md) 或 [Azure PowerShell](/powershell/module/az.storage/) 将文件复制到其他区域中的另一个存储帐户内。
-- **表：** 使用 [AzCopy](storage-use-azcopy.md) 将表数据导出到其他区域中的另一个存储帐户内。
+- **块 blob：** 启用 [软删除](../blobs/soft-delete-blob-overview.md)以防发生对象级删除和覆盖，或使用 [AzCopy](./storage-use-azcopy-v10.md)、 [Azure PowerShell](/powershell/module/az.storage/) 或 [Azure 数据移动库](storage-use-data-movement-library.md)将块 blob 复制到其他区域中的另一个存储帐户内。
+- **文件：** 使用 [AzCopy](./storage-use-azcopy-v10.md) 或 [Azure PowerShell](/powershell/module/az.storage/) 将文件复制到其他区域中的另一个存储帐户内。
+- **表：** 使用 [AzCopy](./storage-use-azcopy-v10.md) 将表数据导出到其他区域中的另一个存储帐户内。
 
 ## <a name="track-outages"></a>跟踪服务中断
 
@@ -98,11 +98,11 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 如果强制执行故障转移，主要区域中的所有数据就会在次要区域成为新的主要区域且存储帐户配置为本地冗余时丢失。 发生故障转移时，已复制到辅助副本的所有数据都将保留。 但是，写入到未复制到辅助副本的主副本的任何数据都将永久丢失。
 
-“上次同步时间”**** 属性表示，最近一次保证已将主要区域中的数据写入次要区域的时间。 上次同步时间之前写入的所有数据都已复制到次要区域中，而在上次同步时间之后写入的数据则可能尚未写入次要区域并发生丢失。 在发生服务中断时，使用此属性可估计启动帐户故障转移可能会造成的数据丢失量。
+“上次同步时间”  属性表示，最近一次保证已将主要区域中的数据写入次要区域的时间。 上次同步时间之前写入的所有数据都已复制到次要区域中，而在上次同步时间之后写入的数据则可能尚未写入次要区域并发生丢失。 在发生服务中断时，使用此属性可估计启动帐户故障转移可能会造成的数据丢失量。
 
 最佳做法是，将应用程序设计为，可以使用上次同步时间来评估预期数据丢失。 例如，若要记录所有写入操作，可以比较上次写入操作时间与上次同步时间，以确定哪些写入操作尚未同步到次要区域。
 
-有关检查 "**上次同步时间**" 属性的详细信息，请参阅[检查存储帐户的 "上次同步时间" 属性](last-sync-time-get.md)。
+有关检查 " **上次同步时间** " 属性的详细信息，请参阅 [检查存储帐户的 "上次同步时间" 属性](last-sync-time-get.md)。
 
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>谨慎故障回复到原始主要区域
 
@@ -110,11 +110,11 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 为存储帐户重新配置异地冗余后，可以启动另一个故障转移，从新的主要区域故障回复到新的次要区域。 在这种情况下，故障转移发生前的原始主要区域重新成为主要区域，并配置为本地冗余。 故障转移完成后的主要区域（即原始次要区域）中的所有数据都会丢失。 如果在故障回复之前，存储帐户中的大部分数据尚未复制到新的辅助数据库，则可能会丢失重大数据。
 
-为了避免大量数据丢失，请在故障回复前检查“上次同步时间”**** 属性的值。 若要评估预期数据丢失，请比较上次同步时间与数据上次写入新的主要区域时间。 
+为了避免大量数据丢失，请在故障回复前检查“上次同步时间”  属性的值。 若要评估预期数据丢失，请比较上次同步时间与数据上次写入新的主要区域时间。 
 
 ## <a name="initiate-an-account-failover"></a>启动帐户故障转移
 
-可以从 Azure 门户、PowerShell、Azure CLI 或 Azure 存储资源提供程序 API 启动帐户故障转移。 有关如何启动故障转移的详细信息，请参阅[启动帐户故障转移](storage-initiate-account-failover.md)。
+可以从 Azure 门户、PowerShell、Azure CLI 或 Azure 存储资源提供程序 API 启动帐户故障转移。 有关如何启动故障转移的详细信息，请参阅 [启动帐户故障转移](storage-initiate-account-failover.md)。
 
 ## <a name="additional-considerations"></a>其他注意事项
 
@@ -128,11 +128,11 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 故障转移完成后，客户端可再次读取并写入新的主要区域中的 Azure 存储数据。 但是，Azure 存储资源提供程序不会进行故障转移，因此资源管理操作仍必须在主要区域中发生。 如果主要区域不可用，将无法对存储帐户执行管理操作。
 
-由于 Azure 存储资源提供程序不进行故障转移，因此在故障转移完成后， [Location](/dotnet/api/microsoft.azure.management.storage.models.trackedresource.location)属性将返回原始主位置。
+由于 Azure 存储资源提供程序不进行故障转移，因此在故障转移完成后， [Location](/dotnet/api/microsoft.azure.management.storage.models.trackedresource.location) 属性将返回原始主位置。
 
 ### <a name="azure-virtual-machines"></a>Azure 虚拟机
 
-Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 如果主要区域不可用且你故障转移到次要区域，那么就需要在故障转移完成后重新创建所有 VM。 此外，还可能会丢失与帐户故障转移相关联的数据。 Microsoft 建议特定于 Azure 中的虚拟机的以下[高可用性](../../virtual-machines/windows/manage-availability.md)和[灾难恢复](../../virtual-machines/windows/backup-recovery.md)指南。
+Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 如果主要区域不可用且你故障转移到次要区域，那么就需要在故障转移完成后重新创建所有 VM。 此外，还可能会丢失与帐户故障转移相关联的数据。 Microsoft 建议特定于 Azure 中的虚拟机的以下 [高可用性](../../virtual-machines/manage-availability.md) 和 [灾难恢复](../../virtual-machines/backup-recovery.md) 指南。
 
 ### <a name="azure-unmanaged-disks"></a>Azure 非托管磁盘
 
@@ -143,7 +143,7 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 1. 开始前，先记下所有非托管磁盘的名称、逻辑单元号 (LUN) 和附加到的 VM。 此操作可便于在故障转移完成后更轻松地重新附加磁盘。
 2. 关闭 VM。
 3. 删除 VM，但保留非托管磁盘的 VHD 文件。 记下 VM 删除时间。
-4. 等到“上次同步时间”**** 已更新且晚于 VM 删除时间。 这一步很重要，因为如果在故障转移发生时辅助终结点尚未使用 VHD 文件完全更新，那么 VM 可能无法在新的主要区域中正常运行。
+4. 等到“上次同步时间”  已更新且晚于 VM 删除时间。 这一步很重要，因为如果在故障转移发生时辅助终结点尚未使用 VHD 文件完全更新，那么 VM 可能无法在新的主要区域中正常运行。
 5. 启动帐户故障转移。
 6. 等到帐户故障转移完成，且次要区域已成为新的主要区域。
 7. 在新的主要区域中创建 VM，并重新附加 VHD。
@@ -156,13 +156,13 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 帐户故障转移不支持以下功能和服务：
 
 - Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。
-- 此时不支持 ADLS Gen2 存储帐户（已启用分层命名空间的帐户）。
+- 此时不支持 ADLS Gen2 存储帐户 () 启用了分层命名空间的帐户。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
-- 不能对包含任何启用了[蠕虫永久性策略](../blobs/storage-blob-immutable-storage.md)的容器的存储帐户进行故障转移。 已解锁/锁定的基于时间的保留或法律封存策略阻止故障转移，以便保持符合性。
+- 不能对包含任何启用了 [蠕虫永久性策略](../blobs/storage-blob-immutable-storage.md) 的容器的存储帐户进行故障转移。 已解锁/锁定的基于时间的保留或法律封存策略阻止故障转移，以便保持符合性。
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>除了故障转移外，还可以复制数据
 
-如果将存储帐户配置为对辅助副本进行读访问，则可以将应用程序设计为从辅助终结点读取。 如果不希望在主要区域发生服务中断时进行故障转移，可使用 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](/powershell/module/az.storage/) 或 [Azure 数据移动库](../common/storage-use-data-movement-library.md)等工具，将数据从次要区域中的存储帐户复制到未受影响区域中的另一个存储帐户。 然后，可以将应用程序指向此存储帐户，以进行读写操作。
+如果将存储帐户配置为对辅助副本进行读访问，则可以将应用程序设计为从辅助终结点读取。 如果不希望在主要区域发生服务中断时进行故障转移，可使用 [AzCopy](./storage-use-azcopy-v10.md)、[Azure PowerShell](/powershell/module/az.storage/) 或 [Azure 数据移动库](../common/storage-use-data-movement-library.md)等工具，将数据从次要区域中的存储帐户复制到未受影响区域中的另一个存储帐户。 然后，可以将应用程序指向此存储帐户，以进行读写操作。
 
 > [!CAUTION]
 > 不应在数据迁移策略中使用帐户故障转移。

@@ -1,6 +1,6 @@
 ---
-title: 使用 Apache Spark 将 Synapse Link for Azure Cosmos DB 数据复制到 SQL 池
-description: 将数据加载到 Spark 数据帧中、策展数据并将其加载到 SQL 池表中
+title: 使用 Apache Spark 将 Synapse Link for Azure Cosmos DB 数据复制到专用 SQL 池
+description: 将数据加载到 Spark 数据帧中、策展数据并将其加载到专用 SQL 池表中
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,35 +9,35 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88962d63519cfeb78be694c4f702b05ed4e7d3df
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658318"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309225"
 ---
-# <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>使用 Apache Spark 将数据从 Azure Cosmos DB 复制到 SQL 池
+# <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>使用 Apache Spark 将数据从 Azure Cosmos DB 复制到专用 SQL 池
 
 Azure Synapse Link for Azure Cosmos DB 使用户能够对 Azure Cosmos DB 中的操作数据运行准实时分析。 但是，有时需要聚合和丰富某些数据，以便为数据仓库用户提供服务。 只需通过笔记本中的几个单元格即可策展和导出 Synapse Link 数据。
 
 ## <a name="prerequisites"></a>必备知识
 * [为 Synapse 工作区预配](../quickstart-create-workspace.md)以下内容：
-    * [Spark 池](../quickstart-create-apache-spark-pool-studio.md)
-    * [SQL 池](../quickstart-create-sql-pool-studio.md)
+    * [无服务器 Apache Spark 池](../quickstart-create-apache-spark-pool-studio.md)
+    * [专用 SQL 池](../quickstart-create-sql-pool-studio.md)
 * [为 Cosmos DB 帐户预配包含数据的 HTAP 容器](../../cosmos-db/configure-synapse-link.md)
 * [将 Azure Cosmos DB HTAP 容器连接到工作区](./how-to-connect-synapse-link-cosmos-db.md)
-* [使用正确的设置将数据从 Spark 导入 SQL 池](../spark/synapse-spark-sql-pool-import-export.md)
+* [使用正确的设置将数据从 Spark 导入专用 SQL 池](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>步骤
-在本教程中，你将连接到分析存储，因此不会对事务存储产生任何影响（它不会使用任何请求单位）。 我们将完成以下步骤：
+在本教程中，你将连接到分析存储，因此不会对事务存储产生任何影响（它不会消耗任何请求单位）。 我们将执行以下步骤：
 1. 将 Cosmos DB HTAP 容器读入 Spark 数据帧
 2. 在新数据帧中聚合结果
-3. 将数据引入 SQL 池中
+3. 将数据引入专用 SQL 池中
 
-[![从 Spark 到 SQL 的步骤](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
+[![从 Spark 到 SQL 的步骤 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>数据
-在该示例中，我们使用名为“RetailSales”的 HTAP 容器。 它属于名为“ConnectedData”的链接服务，且具有以下架构：
+在该示例中，我们使用名为“RetailSales”的 HTAP 容器。 它属于名为“ConnectedData”的链接服务，具有以下架构：
 * _rid: string (nullable = true)
 * _ts: long (nullable = true)
 * logQuantity: double (nullable = true)
@@ -50,7 +50,7 @@ Azure Synapse Link for Azure Cosmos DB 使用户能够对 Azure Cosmos DB 中的
 * weekStarting: long (nullable = true)
 * _etag: string (nullable = true)
 
-为实现报告目的，我们将按“productCode”和“weekStarting”汇总销售额（数量、收入 [价格 x 数量]）   。 最后，我们会将该数据导入名为“dbo.productsales”的 SQL 池表。
+为了进行报告，我们将按“productCode”和“weekStarting”聚合销售额（数量、收入 [价格 x 数量]）   。 最后，我们会将该数据导入名为“dbo.productsales”的专用 SQL 池表。
 
 ## <a name="configure-a-spark-notebook"></a>配置 Spark 笔记本
 创建一个 Spark 笔记本，以 Scala as Spark (Scala) 作为主要语言。 使用笔记本的默认会话设置。
@@ -67,7 +67,7 @@ val df_olap = spark.read.format("cosmos.olap").
 
 ## <a name="aggregate-the-results-in-a-new-dataframe"></a>在新数据帧中聚合结果
 
-在第二个单元格中，在将新数据帧加载到 SQL 池数据库之前，先运行它所需的转换和聚合。
+在第二个单元格中，在将新数据帧加载到专用 SQL 池数据库之前，先运行它所需的转换和聚合。
 
 ```java
 // Select relevant columns and create revenue
@@ -77,12 +77,12 @@ val df_olap_aggr = df_olap_step1.groupBy("productCode","weekStarting").agg(sum("
     withColumn("AvgPrice",col("Sum_revenue")/col("Sum_quantity"))
 ```
 
-## <a name="load-the-results-into-a-sql-pool"></a>将结果加载到 SQL 池中
+## <a name="load-the-results-into-a-dedicated-sql-pool"></a>将结果加载到专用 SQL 池中
 
-在第三个单元格中，将数据加载到 SQL 池中。 它将自动创建一个临时外部表、外部数据源和外部文件格式，作业完成后会删除这些内容。
+在第三个单元格中，将数据加载到专用 SQL 池中。 它将自动创建一个临时外部表、外部数据源和外部文件格式，作业完成后会删除这些内容。
 
 ```java
-df_olap_aggr.write.sqlanalytics("arnaudpool.dbo.productsales", Constants.INTERNAL)
+df_olap_aggr.write.sqlanalytics("userpool.dbo.productsales", Constants.INTERNAL)
 ```
 
 ## <a name="query-the-results-with-sql"></a>通过 SQL 查询结果
@@ -97,7 +97,7 @@ SELECT  [productCode]
  FROM [dbo].[productsales]
 ```
 
-查询会以图表模式显示以下结果：[![从 Spark 到 SQL 的步骤](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
+查询会以图表模式显示以下结果：[![从 Spark 到 SQL 的步骤 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Apache Spark 查询 Azure Cosmos DB 分析存储](./how-to-query-analytical-store-spark.md)

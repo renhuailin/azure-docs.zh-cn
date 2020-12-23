@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90980604"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463263"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>教程：部署和演练智能库存管理应用程序模板
 
@@ -35,22 +35,19 @@ ms.locfileid: "90980604"
 
 1. 导航到 Azure IoT Central 应用程序管理器网站。 从左侧导航栏中选择“生成”，然后单击“零售”选项卡   。
 
-    > [!div class="mx-imgBorder"]
-    > ![显示如何选择智能库存管理应用程序模板的屏幕截图](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png" alt-text="显示如何选择智能库存管理应用程序模板的屏幕截图":::
 
 2. 选择“零售”选项卡，然后在“智能库存管理”下选择“创建应用”   
 
 3. “创建应用”将打开“新建应用程序”窗体，并按如下所示填写所需的详细信息  。
-   **应用程序名称**：可以使用默认的建议名称，也可以输入易记的应用程序名称。
-   **URL**：可以使用建议的默认 URL，也可以输入唯一且容易记住的 URL。 接下来，如果已经具有 Azure 订阅，则建议使用默认设置。 你可以从 7 天免费试用定价计划开始，然后选择在免费试用过期之前随时转换为标准定价计划。
-   **计费信息**：必须提供目录、Azure 订阅和区域详细信息才能配置资源。
-   **创建**：选择页面底部的“创建”以部署应用程序。
+    **应用程序名称**：可以使用默认的建议名称，也可以输入易记的应用程序名称。
+    **URL**：可以使用建议的默认 URL，也可以输入唯一且容易记住的 URL。 接下来，如果已经具有 Azure 订阅，则建议使用默认设置。 你可以从 7 天免费试用定价计划开始，然后选择在免费试用过期之前随时转换为标准定价计划。
+    **计费信息**：必须提供目录、Azure 订阅和区域详细信息才能配置资源。
+    **创建**：选择页面底部的“创建”以部署应用程序。
 
-    > [!div class="mx-imgBorder"]
-    > ![显示如何从智能库存管理应用程序模板创建应用的屏幕截图](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png" alt-text="显示如何从智能库存管理应用程序模板创建应用的屏幕截图":::
 
-    > [!div class="mx-imgBorder"]
-    > ![显示创建应用程序时的计费选项的屏幕截图](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png" alt-text="显示创建应用程序时的计费选项的屏幕截图":::
 
 ## <a name="walk-through-the-application"></a>演练应用程序 
 

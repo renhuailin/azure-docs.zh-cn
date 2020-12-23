@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0fae7a62f062478c5fee45d172b88d0132f3a8f8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447090"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546125"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中管理外部用户的访问权限
 
@@ -84,7 +84,7 @@ Azure AD 权利管理利用 [Azure AD 企业对企业 (B2B) 解决方案](../ext
 - 允许来宾将其他来宾邀请到你的目录意味着来宾邀请可以在权利管理外部进行。 建议将“来宾可邀请”设置为“否” ，只允许正确控制的邀请。
 - 如果你使用的是 B2B 允许列表，则必须确保将你需要通过权利管理与之合作的任何域添加到该列表中。 另外，如果你使用的是 B2B 拒绝列表，则必须确保不将你需要与之合作的任何域添加到该列表中。
 - 如果为 **所有用户** 创建了权利管理策略 (所有连接的组织 +) 的所有外部用户，并且用户不属于目录中的已连接组织，则在请求包时将自动为其创建连接的组织。 你拥有的任何 B2B 允许或拒绝列表设置优先。 因此，请务必将要包含在此策略中的域添加到允许列表（如果你使用的是允许列表），或将其从拒绝列表中排除（如果你使用的是拒绝列表）。
-- 如果你想要创建包含所有 **用户** (所有连接的组织以及) 的所有外部用户的授权管理策略，则必须首先为你的目录启用电子邮件一次性密码身份验证。 有关详细信息，请参阅 [电子邮件一次性密码身份验证 (预览) ](../external-identities/one-time-passcode.md#opting-in-to-the-preview)。
+- 如果你想要创建包含所有 **用户** (所有连接的组织以及) 的所有外部用户的授权管理策略，则必须首先为你的目录启用电子邮件一次性密码身份验证。 有关详细信息，请参阅 [电子邮件一次性密码身份验证 (预览) ](../external-identities/one-time-passcode.md)。
 - 有关 Azure AD B2B 外部协作设置的详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../external-identities/delegate-invitations.md)。
 
     ![Azure AD 外部协作设置](./media/entitlement-management-external-users/collaboration-settings.png)
@@ -109,7 +109,7 @@ Azure AD 权利管理利用 [Azure AD 企业对企业 (B2B) 解决方案](../ext
 
 - 如果希望外部用户能够访问与 Microsoft 365 组关联的 SharePoint Online 站点和资源，请确保启用 SharePoint Online 外部共享。 有关详细信息，请参阅[打开或关闭外部共享](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
 
-- 若要了解如何在 PowerShell 中在目录级别设置 Microsoft 365 组的来宾策略，请参阅[示例：在目录级别配置组的来宾策略](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)。
+- 若要了解如何在 PowerShell 中在目录级别设置 Microsoft 365 组的来宾策略，请参阅[示例：在目录级别配置组的来宾策略](../enterprise-users/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)。
 
 ### <a name="review-your-teams-sharing-settings"></a>查看 Teams 共享设置
 
@@ -123,7 +123,7 @@ Azure AD 权利管理利用 [Azure AD 企业对企业 (B2B) 解决方案](../ext
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在“权利管理”部分的左侧菜单中，单击“设置”。********
+1. 在“权利管理”部分的左侧菜单中，单击“设置”。
 
 1. 单击 **“编辑”** 。
 

@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 859a4f199e65dd0c3aee9424029f6060683d5fbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018486"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836081"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect：版本发布历史记录存档
 
@@ -167,7 +167,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 
 - Azure AD Connect 中的 Ping Federate 集成现已公开发布。 [深入了解如何将 Azure AD 与 Ping Federate 联合](./plan-connect-user-signin.md#federation-with-pingfederate)
-- Azure AD Connect 现在每次更新时都可在 AD FS 中创建 Azure AD 信任的备份，并将其存储在单独的文件中以便轻松还原（如果需要）。 [详细了解 Azure AD Connect 中的新增功能和 Azure AD 信任管理](https://aka.ms/fedtrustinaadconnect)。
+- Azure AD Connect 现在每次更新时都可在 AD FS 中创建 Azure AD 信任的备份，并将其存储在单独的文件中以便轻松还原（如果需要）。 [详细了解 Azure AD Connect 中的新增功能和 Azure AD 信任管理](./how-to-connect-azure-ad-trust.md)。
 - 新的故障排除工具有助于解决更改主要电子邮件地址和隐藏全局地址列表中的帐户的问题
 - 已更新 Azure AD Connect，以包括最新版 SQL Server 2012 本机客户端
 - 如果在“更改用户登录”任务中将用户登录切换为“密码哈希同步”或“直通身份验证”，将默认启用“无缝单一登录”复选框。
@@ -229,7 +229,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 - Azure AD Connect 向导：AD 域和 Azure AD 验证域存在任何不匹配时，在 Azure AD 登录页面上显示验证复选框
 - 自动升级 PowerShell 修补程序，以在尝试自动升级后的某些情况下正确设置自动升级状态。
 - Azure AD Connect 向导：更新遥测以捕获之前缺失的信息
-- Azure AD Connect 向导：当使用**更改用户登录**任务从 AD FS 切换到直通身份验证时，已进行以下更改：
+- Azure AD Connect 向导：当使用 **更改用户登录** 任务从 AD FS 切换到直通身份验证时，已进行以下更改：
     - 在我们将域从联盟域转换为托管域之前，直通身份验证代理已安装在 Azure AD Connect 服务器上，并且直通身份验证功能处于已启用状态。
     - 用户不再从联盟用户转换为托管用户。 只有域会被转换。
 - Azure AD Connect 向导：当用户 UPN 更新 ' 特殊字符正则表达式以支持特殊字符时，AD FS 多域正则表达式不正确
@@ -362,7 +362,7 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 *   删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。 我们希望在处理 SELF 时默认权限保持不变。
 *   分配以下特定权限：
 
-类型     | 名称                          | 访问               | 应用到
+类型     | 名称                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | 完全控制         | 此对象  |
 Allow    | 企业管理员             | 完全控制         | 此对象  |
@@ -425,7 +425,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 #### <a name="fixed-issues"></a>修复的问题
 * 修复了 Azure AD Connect 向导中的“更改用户登录”任务：
 
-  * 如果存在一个**已启用**密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。 在应用更改之前，向导会错误地显示“禁用密码同步”提示。 但是，在应用更改之后，密码同步仍保持启用状态。 通过这项修复，向导不再显示该提示。
+  * 如果存在一个 **已启用** 密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。 在应用更改之前，向导会错误地显示“禁用密码同步”提示。 但是，在应用更改之后，密码同步仍保持启用状态。 通过这项修复，向导不再显示该提示。
 
   * 根据设计，在使用“更改用户登录”任务更新用户登录方法时，向导不会禁用密码同步。 这是为了避免干扰想要保留密码同步的客户，即使他们启用直通身份验证或联合身份验证作为其主要用户登录方法。
 
@@ -435,7 +435,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * 修复了 Azure AD Connect 向导中的“更改用户登录”任务：
 
-  * 如果存在一个**已禁用**密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。 在应用更改后，向导会同时启用直通身份验证和密码同步。 通过这项修复，向导不再启用密码同步。
+  * 如果存在一个 **已禁用** 密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。 在应用更改后，向导会同时启用直通身份验证和密码同步。 通过这项修复，向导不再启用密码同步。
 
   * 过去，密码同步是启用直通身份验证的先决条件。 将用户登录方法设置为“直通身份验证”时，向导会同时启用直通身份验证和密码同步。 最近，已去除“密码同步”这项先决条件。 Azure AD Connect 版本 1.1.557.0 中对 Azure AD Connect 做了更改，在将用户登录方法设置为“直通身份验证”时，不会启用密码同步。 但是，该项更改只会应用到 Azure AD Connect 安装。 通过这项修复，相同的更改也会应用到“更改用户登录”任务。
 
@@ -608,7 +608,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ### <a name="pass-through-authentication"></a>直通身份验证
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
-* 直通身份验证所需代理的名称已从 *Microsoft Azure AD 应用程序代理连接器*更改为 *Microsoft Azure AD Connect 身份验证代理*。
+* 直通身份验证所需代理的名称已从 *Microsoft Azure AD 应用程序代理连接器* 更改为 *Microsoft Azure AD Connect 身份验证代理*。
 
 * 启用直通身份验证不再会默认启用密码哈希同步。
 
@@ -653,7 +653,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
   * 只会针对将 objectGuid 用作源锚点属性的现有部署显示此选项。
   * 配置此选项时，向导会验证本地 Active Directory 目录中 ms-DS-ConsistencyGuid 属性的状态。 如果未在目录中的任何用户对象上配置此属性，则向导会将 ms-DS-ConsistencyGuid 用作 sourceAnchor 属性。 如果已在目录中的一个或多个用户对象上配置了该属性，向导就会认为该属性正由其他应用程序使用，不适合用作 sourceAnchor 属性，并且不允许执行源锚点更改。 如果确定该属性未由现有应用程序使用，则需联系支持部门，了解如何取消显示该错误。
 
-* 特定于设备对象上的 **userCertificate** 属性，Azure AD Connect 现在会查找[将已加入域的设备连接到 Azure AD 以获得 Windows 10 体验](../devices/hybrid-azuread-join-plan.md)所需的证书值，并且会在同步到 Azure AD 之前将其余的筛选掉。 为了启用此行为，已更新了现成的同步规则“Out to AAD - Device Join SOAInAD”。
+* 特定于设备对象上的 **userCertificate** 属性，Azure AD Connect 现在会查找 [将已加入域的设备连接到 Azure AD 以获得 Windows 10 体验](../devices/hybrid-azuread-join-plan.md)所需的证书值，并且会在同步到 Azure AD 之前将其余的筛选掉。 为了启用此行为，已更新了现成的同步规则“Out to AAD - Device Join SOAInAD”。
 
 * Azure AD Connect 现在支持将 Exchange Online **cloudPublicDelegates** 属性写回到本地 AD **publicDelegates** 属性。 这允许向拥有本地 Exchange 邮箱的用户授予对 Exchange Online 邮箱的 SendOnBehalfTo 权限。 为了支持此功能，已添加了新的现成的同步规则“Out to AD – User Exchange Hybrid PublicDelegates writeback”。 只有当启用了 Exchange 混合功能时才会将此同步规则添加到 Azure AD Connect。
 
@@ -1023,7 +1023,7 @@ AD FS 管理
 **新功能：**
 
 * 适用于快速设置客户的[自动升级](how-to-connect-install-automatic-upgrade.md)功能。
-* 使用安装向导中的 Azure 多重身份验证和 Privileged Identity Management 来提供全局管理员支持。
+* 使用安装向导中 Azure AD 多重身份验证和 Privileged Identity Management 来支持全局管理员。
   * 如果使用多重身份验证，则代理也需要允许发往 https://secure.aadcdn.microsoftonline-p.com 的流量。
   * 需要将 https://secure.aadcdn.microsoftonline-p.com 添加到受信任的站点列表，这样多重身份验证才能正常工作。
 * 允许在初始安装之后更改用户的登录方法。

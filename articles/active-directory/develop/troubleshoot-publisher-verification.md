@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256885"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169165"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 
@@ -33,7 +33,7 @@ ms.locfileid: "91256885"
 ## <a name="common-issues"></a>常见问题
 下面介绍在此过程中可能会出现的一些常见问题。 
 
-- 我不知道我的 Microsoft 合作伙伴网络 ID (MPN ID)，也不知道谁是该帐户的主要联系人 
+- **我不知道 Microsoft 合作伙伴网络 ID (MPN ID) 或者不知道该帐户的主要联系人是谁** 
     1. 导航到 [MPN 注册页](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. 使用组织的主要 Azure AD 租户中的用户帐户登录 
     1. 如果 MPN 帐户已存在，则会识别此帐户，并将你添加到该帐户 
@@ -51,14 +51,14 @@ ms.locfileid: "91256885"
     1. 转到[合作伙伴配置文件](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)并验证： 
         - MPN ID 正确无误。 
         - 未显示错误或“挂起的操作”，并且“法律业务配置文件”和“合作伙伴信息”下的验证状态均显示为“已授权”或“成功”。
-    1. 转到[“MPN 租户管理”页](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，确认该应用所注册的租户，并确认登录所使用的用户帐号位于关联租户列表中。 如果需要添加其他租户，请按照 [此处](https://docs.microsoft.com/partner-center/multi-tenant-account)的说明进行操作。 请注意，你添加的任何租户的所有全局管理员都将被授予对你的合作伙伴中心帐户的全局管理员权限。
-    1. 请在 [MPN 用户管理页](https://partner.microsoft.com/pcv/users) 上，确认你登录的用户是全局管理员、MPN 管理员或帐户管理员。如果需要将用户添加到合作伙伴中心中的角色，请按照 [此处](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)的说明进行操作。
+    1. 转到[“MPN 租户管理”页](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，确认该应用所注册的租户，并确认登录所使用的用户帐号位于关联租户列表中。 如果需要添加其他租户，请按照 [此处](/partner-center/multi-tenant-account)的说明进行操作。 请注意，你添加的任何租户的所有全局管理员都将被授予对你的合作伙伴中心帐户的全局管理员权限。
+    1. 请在 [MPN 用户管理页](https://partner.microsoft.com/pcv/users) 上，确认你登录的用户是全局管理员、MPN 管理员或帐户管理员。如果需要将用户添加到合作伙伴中心中的角色，请按照 [此处](/partner-center/create-user-accounts-and-set-permissions)的说明进行操作。
 
 - 当我登录到 Azure AD 门户时，我看不到任何已注册的应用程序。**为什么？** 
     你的应用注册可能是使用此租户中的其他用户帐户创建的，也可能是个人/使用者帐户或其他租户。 确保在创建应用注册的租户中使用正确的帐户登录。
 
 - **我收到了与多重身份验证相关的错误。我该怎么办？** 
-    请确保已启用 [多因素身份验证](../fundamentals/concept-fundamentals-mfa-get-started.md) ，并且在此方案中登录的用户需要该身份验证。 例如，MFA 可以是：
+    请确保已启用 [多因素身份验证](../fundamentals/concept-fundamentals-mfa-get-started.md) ，并且在此方案中登录的用户 **需要** 该身份验证。 例如，MFA 可以是：
     - 你用来登录的用户始终需要
     - [Azure 管理是必需的](../conditional-access/howto-conditional-access-policy-azure-management.md)。
     - [需要为](../conditional-access/howto-conditional-access-policy-admin-mfa.md) 你用来登录的管理员类型。
@@ -226,7 +226,9 @@ Microsoft 使用者帐户不支持此功能。 仅支持由 Azure AD 用户在 A
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-在尝试将已验证的发布服务器添加到应用之前未执行多重身份验证时发生。 有关详细信息，请参阅 [常见问题](#common-issues) 。
+在尝试将已验证的发布服务器添加到应用之前未执行多重身份验证时发生。 有关详细信息，请参阅 [常见问题](#common-issues) 。 注意：尝试添加已验证的发布服务器时，必须在同一会话中执行 MFA。 如果已启用 MFA，但不需要在会话中执行，请求将失败。   
+
+显示的错误消息为： "由于管理员所做的配置更改，或你已移动到新位置，因此你必须使用多重身份验证才能继续。"
 
 ## <a name="next-steps"></a>后续步骤
 

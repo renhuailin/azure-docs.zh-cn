@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305624"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353707"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教程：为自动用户预配配置工具
 
@@ -45,19 +45,19 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 * 建议分配单个 Azure AD 用户来测试自动用户预配配置。 稍后可以分配其他用户或组。
 
-* 将用户分配到工具时，必须在 " **分配** " 对话框中选择 ") 可用时" (的任何特定于应用程序的有效角色。 具有“默认访问权限”角色的用户排除在预配之外。
+* 将用户分配到工具时，必须在 " **分配** " 对话框中选择 ") 可用时" (的任何特定于应用程序的有效角色。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="set-up-harness-for-provisioning"></a>设置用于预配的工具
 
-1. 登录到你的[工具管理控制台](https://app.harness.io/#/login)，然后再进入 "**持续安全**  >  **访问管理**"。
+1. 登录到你的 [工具管理控制台](https://app.harness.io/#/login)，然后再进入 " **持续安全**  >  **访问管理** "。
 
     ![工具管理控制台](media/harness-provisioning-tutorial/admin.png)
 
-1. 选择 " **API 密钥**"。
+1. 选择 " **API 密钥** "。
 
     ![工具 API 密钥链接](media/harness-provisioning-tutorial/apikeys.png)
 
-1. 选择 " **添加 API 密钥**"。 
+1. 选择 " **添加 API 密钥** "。 
 
     ![工具添加 API 密钥链接](media/harness-provisioning-tutorial/addkey.png)
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
    a. 在 " **名称** " 框中，为密钥提供名称。  
    b. 在 " **继承自** " 下拉列表中，选择一个选项。 
    
-1. 选择“提交”。 
+1. 选择“提交”。
 
 1. 复制 **密钥** 以便以后在本教程中使用。
 
@@ -78,7 +78,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 在配置用于 Azure AD 的自动用户预配的工具之前，需要将 Azure AD 应用程序库中的工具集添加到托管 SaaS 应用程序列表。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择 " **Azure Active Directory**"。
+1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”  。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
@@ -90,7 +90,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-1. 在搜索框中，输入 " **工具**"，在结果列表中选择 " **工具** "，然后选择 " **添加** " 按钮添加该应用程序。
+1. 在搜索框中，输入 " **工具** "，在结果列表中选择 " **工具** "，然后选择 " **添加** " 按钮添加该应用程序。
 
     ![结果列表中的工具](common/search-new-app.png)
 
@@ -99,30 +99,30 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 本部分将指导你完成配置 Azure AD 预配服务，以便基于 Azure AD 中的用户或组分配来创建、更新和禁用环境中的用户或组的步骤。
 
 > [!TIP]
-> 还可以按照 " [工具单一登录" 教程](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)中的说明，选择启用基于 SAML 的单一登录。 你可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
+> 还可以按照 " [工具单一登录" 教程](./harness-tutorial.md)中的说明，选择启用基于 SAML 的单一登录。 你可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
 > [!NOTE]
 > 若要了解有关工具 SCIM 终结点的详细信息，请参阅工具 [API 密钥](https://docs.harness.io/article/smloyragsm-api-keys) 这篇文章。
 
 若要为 Azure AD 中的工具配置自动用户预配，请执行以下操作：
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序**" "  >  **所有应用程序**"。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 " **企业应用程序** " "  >  **所有应用程序** "。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-1. 在应用程序列表中，选择“Harness”。****
+1. 在应用程序列表中，选择“Harness”。 
 
     ![应用程序列表中的 "工具" 链接](common/all-applications.png)
 
-1. 选择 " **预配**"。
+1. 选择 " **预配** "。
 
     !["设置" 按钮](common/provisioning.png)
 
-1. 在 " **预配模式** " 下拉列表中，选择 " **自动**"。
+1. 在 " **预配模式** " 下拉列表中，选择 " **自动** "。
 
     !["预配模式" 下拉列表](common/provisioning-automatic.png)
 
-1. 在 " **管理员凭据**" 下，执行以下操作：
+1. 在 " **管理员凭据** " 下，执行以下操作：
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
  
@@ -136,29 +136,29 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 选择“保存”。
 
-1. 在 " **映射**" 下，选择 " **同步用户要利用的 Azure Active Directory**。
+1. 在 " **映射** " 下，选择 " **同步用户要利用的 Azure Active Directory** 。
 
     ![利用 "将 Azure Active Directory 用户同步到工具" 链接](media/harness-provisioning-tutorial/usermappings.png)
 
-1. 在 " **属性映射**" 下，查看从 Azure AD 同步到工具的用户属性。 选为 " *匹配* " 的属性用于匹配用于更新操作的工具中的用户帐户。 选择“保存”，提交所有更改。
+1. 在 " **属性映射** " 下，查看从 Azure AD 同步到工具的用户属性。 选为 " *匹配* " 的属性用于匹配用于更新操作的工具中的用户帐户。 选择“保存”，提交所有更改。
 
     ![工具用户 "属性映射" 窗格](media/harness-provisioning-tutorial/userattributes.png)
 
-1. 在 " **映射**" 下，选择 " **同步 Azure Active Directory 组" 以进行控制**。
+1. 在 " **映射** " 下，选择 " **同步 Azure Active Directory 组" 以进行控制** 。
 
     ![利用 "将 Azure Active Directory 组同步到工具" 链接](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. 在 " **属性映射**" 下，查看从 Azure AD 同步到工具的组属性。 选为 " *匹配* " 属性的属性用于匹配用于更新操作的工具中的组。 选择“保存”，提交所有更改。
+1. 在 " **属性映射** " 下，查看从 Azure AD 同步到工具的组属性。 选为 " *匹配* " 属性的属性用于匹配用于更新操作的工具中的组。 选择“保存”，提交所有更改。
 
     ![工具组 "属性映射" 窗格](media/harness-provisioning-tutorial/groupattributes.png)
 
 1. 若要配置范围筛选器，请参阅 [基于属性的应用程序预配和范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
-1. 在 "设置" 下，为 " **设置**" 启用 "Azure AD 预配服务"，将 **设置状态** 切换到 **"打开**"。
+1. 在 "设置" 下，为 " **设置** " 启用 "Azure AD 预配服务"，将 **设置状态** 切换到 **"打开** "。
 
     ![预配状态切换切换到 "打开"](common/provisioning-toggle-on.png)
 
-1. 在 " **设置**" 下的 " **作用域** " 下拉列表中，选择要将正在设置的用户或组同步到的方式。
+1. 在 " **设置** " 下的 " **作用域** " 下拉列表中，选择要将正在设置的用户或组同步到的方式。
 
     ![预配范围](common/provisioning-scope.png)
 

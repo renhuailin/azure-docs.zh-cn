@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883920"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342444"
 ---
 # <a name="protect-your-network-resources"></a>保护你的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
@@ -48,7 +48,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 1. 在安全中心的菜单中，打开 "Azure Defender" 仪表板，然后选择 " **网络映射**"。
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="从 Azure Defender 仪表板打开网络映射" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="资产清单网络资源类型" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. 选择 " **层** " 菜单选择 " **拓扑**"。
  
@@ -120,4 +120,4 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：
 
-- [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
+- [在 Azure 安全中心保护计算机和应用程序](./asset-inventory.md)

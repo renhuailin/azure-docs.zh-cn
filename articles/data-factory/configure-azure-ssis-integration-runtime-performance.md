@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276656"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635314"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -122,7 +122,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性。 Integration Ru
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量。 如果要增加最大值，则需要使用 Azure PowerShell 来更新 **AzureSSISMaxParallelExecutionsPerNode**。 可以基于包的成本和辅助角色节点的以下配置估计合适的值。 有关详细信息，请参阅[常规用途虚拟机大小](../virtual-machines/windows/sizes-general.md)。
+已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量。 如果要增加最大值，需要使用 Azure PowerShell 更新 AzureSSISMaxParallelExecutionsPerNode。 可以基于包的成本和辅助角色节点的以下配置估计合适的值。 有关详细信息，请参阅[常规用途虚拟机大小](../virtual-machines/sizes-general.md)。
 
 | 大小             | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -161,7 +161,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性。 Integration Ru
 
 -   如果日志记录级别设置为“详细”，则选择更强大的数据库，如 S3。 根据我们的非正式内部测试，S3 定价层可以支持具有 2 个节点、128 个并行计数和详细日志记录级别的 SSIS 包执行。
 
-还可以基于 Azure 门户上提供的[数据库事务单元](../sql-database/sql-database-what-is-a-dtu.md) (DTU) 使用情况信息调整数据库定价层。
+还可以基于 Azure 门户上提供的[数据库事务单元](../azure-sql/database/service-tiers-dtu.md) (DTU) 使用情况信息调整数据库定价层。
 
 ## <a name="design-for-high-performance"></a>高性能设计
 设计要在 Azure 上运行的 SSIS 包不同于设计本地执行的包。 不是将多个独立任务组合在同一包中，而是将它们分离到多个包中，从而提升在 Azure-SSIS IR 中执行的效率。 为每个包创建包执行，使它们不用等待彼此完成。 此方法受益于 Azure-SSIS Integration Runtime 的可伸缩性并提升整体吞吐量。

@@ -5,14 +5,14 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: overview
-ms.date: 04/24/2020
+ms.date: 11/13/2020
 ms.custom: mvc
-ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1bf3141876ee56ee1361f19a67689ca3b2f4f89a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82628514"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685284"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -28,11 +28,15 @@ Azure Red Hat OpenShift 由 Red Hat 和 Microsoft 共同设计、运营和支持
 
 ## <a name="access-security-and-monitoring"></a>访问权限、安全性和监视
 
-为了改进安全性和管理，Azure Red Hat OpenShift 让你与 Azure Active Directory (Azure AD) 集成，并使用基于 Kubernetes 角色的访问控制 (RBAC)。 也可监视群集和资源的运行状况。
+为了改进安全性和管理，Azure Red Hat OpenShift 允许你与 Azure Active Directory (Azure AD) 集成，并使用基于 Kubernetes 角色的访问控制 (Kubernetes RBAC)。 也可监视群集和资源的运行状况。
 
 ## <a name="cluster-and-node"></a>群集和节点
 
 Azure Red Hat OpenShift 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod，并升级群集组件。
+
+## <a name="service-level-agreement"></a>服务级别协议
+
+Azure Red Hat OpenShift 提供服务级别协议来保证服务在 99.95% 的时间可用。 有关 SLA 的详细信息，请参阅 [Azure Red Hat OpenShift SLA](https://azure.microsoft.com/en-au/support/legal/sla/openshift/v1_0/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,13 +3,12 @@ title: 保护 Azure Service Fabric 群集
 description: 了解有关 Azure Service Fabric 群集的安全性方案，以及用于实现它们的各种技术。
 ms.topic: conceptual
 ms.date: 08/14/2018
-ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261064"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573062"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 
@@ -19,7 +18,7 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 * 节点到节点安全性
 * 客户端到节点安全性
-* 基于角色的访问控制 (RBAC)
+* Service Fabric 基于角色的访问控制
 
 ## <a name="node-to-node-security"></a>节点到节点安全性
 
@@ -33,7 +32,7 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 创建群集时，Service Fabric 将使用指定为节点类型配置一部分的 X.509 服务器证书。 本文末尾概述了这些证书是什么，以及如何获取或创建这些证书。
 
-证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 Service Fabric SDK 的默认行为是将证书部署到最远的时间，并将其安装到将来的到期日期;经典行为允许定义主证书和辅助证书，以允许手动启动的翻转，不建议在新功能上使用。 将要使用的距离未来到期日期最远的主证书应与为[客户端到节点安全性](#client-to-node-security)设置的管理员客户端和只读客户端证书不同。
+证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 Service Fabric SDK 的默认行为是部署并安装距未来过期日期最远的证书；经典行为允许定义主要证书和次要证书，因此允许手动发起的变换，故不推荐将其用于新功能之上。 将要使用的距离未来到期日期最远的主证书应与为[客户端到节点安全性](#client-to-node-security)设置的管理员客户端和只读客户端证书不同。
 
 若要了解如何在群集中为 Azure 设置证书安全性，请参阅[使用 Azure 资源管理器模板设置群集](service-fabric-cluster-creation-via-arm.md)。
 
@@ -44,7 +43,7 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 > [!NOTE]
 > Windows 身份验证基于 Kerberos。 不支持使用 NTLM 作为身份验证类型。
 >
-> 请尽可能对 Service Fabric 群集使用 x.509 证书身份验证。
+> 请尽可能对 Service Fabric 群集使用 X.509 证书身份验证。
 
 若要了解如何为独立 Windows Server 群集设置 Windows 安全性，请参阅[通过使用 Windows 安全性在 Windows 上保护独立群集](service-fabric-windows-cluster-windows-security.md)。
 
@@ -54,13 +53,13 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 ![客户端到节点通信示意图][Client-to-Node]
 
-在 Azure 上运行的群集和在 Windows 上运行的独立群集可以使用[证书安全性](/previous-versions/msp-n-p/ff649801(v=pandp.10))或[windows 安全性](/previous-versions/msp-n-p/ff649396(v=pandp.10))，但建议尽可能使用 x.509 证书身份验证。
+在 Azure 上运行的群集和在 Windows 上运行的独立群集都可以使用[证书安全性](/previous-versions/msp-n-p/ff649801(v=pandp.10))或 [Windows 安全性](/previous-versions/msp-n-p/ff649396(v=pandp.10))，尽管我们建议你尽可能使用 X.509 证书身份验证。
 
 ### <a name="client-to-node-certificate-security"></a>客户端到节点的证书安全性
 
 客户端到节点证书安全性是在通过 Azure 门户、资源管理器模板或独立的 JSON 模板创建群集时设置的。 要创建证书，请指定管理员客户端证书或用户客户端证书。 作为最佳做法，指定的管理员客户端证书和用户客户端证书应该不同于为[节点到节点安全性](#node-to-node-security)指定的主证书和辅助证书。 群集证书与客户端管理员证书具有相同的权限。 但是，它们只应由群集使用，而不应作为安全最佳做法由管理用户使用。
 
-客户端如果使用管理员证书连接到群集，则拥有管理功能的完全访问权限。 客户端如果使用只读的用户客户端证书连接到群集，则只拥有管理功能的只读访问权限。 这些证书用于本文中后面介绍的 RBAC。
+客户端如果使用管理员证书连接到群集，则拥有管理功能的完全访问权限。 客户端如果使用只读的用户客户端证书连接到群集，则只拥有管理功能的只读访问权限。 这些证书用于 Service Fabric RBAC，本文稍后将对此进行介绍。
 
 若要了解如何在群集中为 Azure 设置证书安全性，请参阅[使用 Azure 资源管理器模板设置群集](service-fabric-cluster-creation-via-arm.md)。
 
@@ -85,13 +84,13 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 对于独立 Windows Server 群集，如果有 Windows Server 2012 R2 和 Windows Active Directory，建议结合使用 Windows 安全性和组托管服务帐户。 否则，可以结合使用 Windows 安全性和 Windows 帐户。
 
-## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
+## <a name="service-fabric-role-based-access-control"></a>Service Fabric 基于角色的访问控制
 
 可以使用访问控制限制对不同用户组的某些群集操作的访问。 这就使得群集更加安全。 连接到群集的客户端支持两种访问控制类型：管理员角色和用户角色。
 
 被分配为管理员角色的用户对管理功能（包括读取和写入功能）拥有完全访问权限。 默认情况下，被分配为用户角色的用户只有管理功能的读取访问权限（例如查询功能）， 以及解析应用程序和服务的能力。
 
-创建群集时，请设置管理员和用户客户端角色。 通过提供单独的标识（例如使用证书或 Azure AD），为每种角色类型分配角色。 若要详细了解默认访问控制设置以及如何更改默认设置，请参阅 [Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
+创建群集时，请设置管理员和用户客户端角色。 通过提供单独的标识（例如使用证书或 Azure AD），为每种角色类型分配角色。 有关默认访问控制设置以及如何更改默认设置的详细信息，请参阅 [Service Fabric Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 证书和 Service Fabric
 
@@ -134,7 +133,7 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 
 ### <a name="client-authentication-certificates-optional"></a>客户端身份验证证书（可选）
 
-可以指定任意数量的其他证书用于管理员客户端操作或用户客户端操作。 客户端可以在需要相互身份验证时使用此类证书。 客户端证书通常不由第三方 CA 颁发。 当前用户位置的“个人”存储通常包含由根证书颁发机构放置的客户端证书。 此证书的“预期目的”值应为“客户端身份验证” 。  
+可以指定任意数量的其他证书用于管理员客户端操作或用户客户端操作。 客户端可以在需要相互身份验证时使用这些证书。 客户端证书通常不由第三方 CA 颁发。 当前用户位置的“个人”存储通常包含由根证书颁发机构放置的客户端证书。 此证书的“预期目的”值应为“客户端身份验证” 。  
 
 默认情况下，群集证书具有管理客户端的特权。 这些其他客户端证书不应安装到集群中，而应被指定为允许在群集配置中使用。  但是，客户端证书需要安装在客户端计算机上，以便连接到群集并执行操作。
 

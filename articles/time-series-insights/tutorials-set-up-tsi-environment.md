@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: eeb3de2fc3f0e3e0be9c98002f11e470eaf04f8c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597666"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020923"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>教程：设置 Azure 时序见解 Gen2 环境
 
@@ -38,7 +38,7 @@ ms.locfileid: "91597666"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 必须至少具有 Azure 订阅的参与者角色。 有关详细信息，请阅读[使用基于角色的访问控制和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
+* 必须至少具有 Azure 订阅的参与者角色。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="create-a-device-simulation"></a>创建设备模拟
 
@@ -91,8 +91,8 @@ ms.locfileid: "91597666"
     | **资源组** | 为 Azure 时序见解 Gen2 环境资源选择现有的资源组或创建新的资源组。 资源组是 Azure 资源的容器。 最佳做法是使用与设备模拟器创建的其他 IoT 资源相同的资源组。 |
     | **位置** | 为 Azure 时序见解 Gen2 环境选择数据中心区域。 为了避免额外的延迟，最好是在设备模拟器创建的 IoT 中心所在的区域中创建 Azure 时序见解 Gen2 环境。 |
     | **层** |  选择 Gen2(L1)。 这是 Azure 时序见解 Gen2 产品的 SKU。 |
-    | **时序 ID 属性名称** | 输入属性名称，需包含唯一标识时序实例的值。 以后不能更改在“属性名称”框中作为时序 ID 输入的值。 在本教程中，请输入 ***iothub-connection-device-id***。若要详细了解包含复合时序 ID 的时序 ID，请阅读[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 |
-    | **存储帐户名称** | 为新存储帐户输入全局唯一名称。|
+    | **时序 ID 属性名称** | 输入属性名称，需包含唯一标识时序实例的值。 以后不能更改在“属性名称”框中作为时序 ID 输入的值。 在本教程中，请输入 iothub-connection-device-id。 若要详细了解包含复合时序 ID 的时序 ID，请阅读[选择时序 ID 的最佳做法](./how-to-select-tsid.md)。 |
+    | 存储帐户名称* | 为新存储帐户输入全局唯一名称。|
     | **存储帐户类型** | 为新的存储帐户选择存储类型。 建议选择 StorageV2|
     | **存储帐户复制** | 为新的存储帐户选择存储类型。 根据你的位置选择，你可以选择 LRS、GRS 或 ZRS。 对于本教程，你可选择 LRS|
     | **分层命名空间** |选择 StorageV2 存储类型后，可以选择此选项。 默认禁用此项。 对于本教程，你可将其保留为默认禁用状态|
@@ -117,7 +117,7 @@ ms.locfileid: "91597666"
    | **IoT 中心名称** | 选择为设备模拟器创建的 IoT 中心名称。 |
    | **Iot 中心访问策略** | 选择“iothubowner”。 |
    | **IoT 中心使用者组** | 选择“新建”，输入唯一名称，然后选择“+ 添加” 。 在 Azure 时序见解 Gen2 中，使用者组必须是唯一值。 |
-   | **时间戳属性** | 此值用于标识传入遥测数据中的**时间戳**属性。 在本教程中，请将此框留空。 此模拟器使用 IoT 中心的传入时间戳，Azure 时序见解 Gen2 默认使用该时间戳。 |
+   | **时间戳属性** | 此值用于标识传入遥测数据中的 **时间戳** 属性。 在本教程中，请将此框留空。 此模拟器使用 IoT 中心的传入时间戳，Azure 时序见解 Gen2 默认使用该时间戳。 |
 
 1. 选择“查看 + 创建”。
 
@@ -143,7 +143,7 @@ ms.locfileid: "91597666"
 
    1. 验证凭据是否已列出：
 
-      如果未列出你的凭据，则必须通过选择“添加”并搜索自己的凭据来授予自己访问该环境的权限。 若要详细了解如何设置权限，请参阅[授予数据访问权限](./time-series-insights-data-access.md)。
+      如果未列出你的凭据，则必须通过选择“添加”并搜索自己的凭据来授予自己访问该环境的权限。 若要详细了解如何设置权限，请参阅[授予数据访问权限](./concepts-access-policies.md)。
 
 ## <a name="stream-data"></a>流式传输数据
 
@@ -177,7 +177,7 @@ ms.locfileid: "91597666"
 
 ## <a name="analyze-data"></a>分析数据
 
-在此部分，使用 [Azure 时序见解 Gen2 资源管理器](./time-series-insights-update-explorer.md)对时序数据进行基本的分析。
+在此部分，使用 [Azure 时序见解 Gen2 资源管理器](./concepts-ux-panels.md)对时序数据进行基本的分析。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的资源页上选择相应的 URL，转到 Azure 时序见解 Gen2 资源管理器。
 
@@ -185,7 +185,7 @@ ms.locfileid: "91597666"
 
 1. 在 Azure 时序见解 Gen2 资源管理器中，将显示横跨屏幕顶部的一个栏。 这是可用性选取器。 确保至少选择了两个 2m，并在需要时通过选中选取器控点并将其向左和向右拖动来扩展期限。
 
-1. **时序实例**将显示在左侧。
+1. **时序实例** 将显示在左侧。
 
     [![无父级实例的列表。](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
@@ -255,7 +255,7 @@ ms.locfileid: "91597666"
         [![添加类型变量。](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
     1. 选择“应用”。 
-    1. 选择“保存”。  此时将创建并显示三个变量。
+    1. 选择“保存”。 此时将创建并显示三个变量。
 
         [![添加类型后，可在“模型”视图中查看它。](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -268,7 +268,7 @@ ms.locfileid: "91597666"
         | **名称** | 输入“位置层次结构”。 |
         |**级别**| 输入“国家/地区”作为第一级的名称 <br /> 选择“+ 添加级别” <br /> 输入“城市”作为第二级，然后选择“+ 添加级别” <br /> 输入“建筑”作为第三级和最后一个级别的名称 |
 
-   1. 选择“保存”。 
+   1. 选择“保存”。
 
         [![在“模型”视图中显示新的层次结构。](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -291,7 +291,7 @@ ms.locfileid: "91597666"
         | **城市** | 输入“西雅图” |
         | **建筑物** | 输入“太空针塔” |
 
-    1. 选择“保存”。 
+    1. 选择“保存”。
 
 1. 使用以下值重复上一步骤和其他两个实例：
 

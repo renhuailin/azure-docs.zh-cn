@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3fc16a869c176074467a0b21880937d7753602b2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553933"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515519"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>教程：Azure Active Directory 与 Perception United States (Non-UltiPro) 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553933"
 * 可让用户使用其 Azure AD 帐户自动登录到 Perception United States (Non-UltiPro)（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88553933"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -133,17 +133,17 @@ ms.locfileid: "88553933"
 
 2. 在主工具栏中，单击“帐户设置”  。
 
-    ![Perception United States (Non-UltiPro) 用户](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![屏幕截图显示从主工具栏选择了“帐户设置”。](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
 3. 在“帐户设置”  页上，执行以下步骤：
 
     ![Perception United States (Non-UltiPro) 用户](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. 在“公司名称”文本框中，键入**公司**的名称。
+    a. 在“公司名称”文本框中，键入 **公司** 的名称。
     
-    b. 在“帐户名”文本框中，键入**帐户**的名称。
+    b. 在“帐户名”文本框中，键入 **帐户** 的名称。
 
-    c. 在“默认收件人电子邮件”文本框中，键入有效的**电子邮件**。
+    c. 在“默认收件人电子邮件”文本框中，键入有效的 **电子邮件** 。
 
     d. 选择“SAML 2.0”作为“SSO 标识提供者”。  
 
@@ -153,7 +153,7 @@ ms.locfileid: "88553933"
 
     a. 选择“电子邮件”作为“SAML NameID 类型”。  
 
-    b. 在“SSO 配置名称”文本框中，键入**配置**的名称。
+    b. 在“SSO 配置名称”文本框中，键入 **配置** 的名称。
     
     c. 在“标识提供者名称”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。 
 
@@ -221,13 +221,12 @@ ms.locfileid: "88553933"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Perception United States (Non-UltiPro)”磁贴时，应会自动登录到设置了 SSO 的 Perception United States (Non-UltiPro)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Perception United States (Non-UltiPro)”磁贴时，应会自动登录到设置了 SSO 的 Perception United States (Non-UltiPro)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8ff7f6468b5556b56c5c2aeaba6107cac48d1ed4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530250"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456443"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>教程：Azure Active Directory 与 Catchpoint 的单一登录集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88530250"
 * 为具有 Azure AD 帐户的用户启用 Catchpoint 自动登录。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88530250"
 
 * Catchpoint 支持 SP 和 IDP 发起的 SSO。
 * Catchpoint 支持实时 (JIT) 用户预配。
-* 配置 Catchpoint 后，可以强制实施会话控制。 此预防措施可以实时保护组织的敏感数据免于外泄和渗透。 会话控制是条件访问的扩展。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Catchpoint 后，可以强制实施会话控制。 此预防措施可以实时保护组织的敏感数据免于外泄和渗透。 会话控制是条件访问的扩展。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-catchpoint-from-the-gallery"></a>从库中添加 Catchpoint
 
@@ -51,7 +51,7 @@ ms.locfileid: "88530250"
 1. 在左侧窗格中选择“Azure Active Directory”服务。 
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Catchpoint**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Catchpoint** 。 
 1. 在结果面板中选择“Catchpoint”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-catchpoint"></a>配置并测试 Catchpoint 的 Azure AD 单一登录
@@ -80,10 +80,10 @@ ms.locfileid: "88530250"
 
 1. 配置 Catchpoint 的发起模式：
    - 对于“IDP”发起的模式，请输入以下字段的值： 
-     - **标识符**：`https://portal.catchpoint.com/SAML2`
-     - **回复 URL**：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - **标识符** ：`https://portal.catchpoint.com/SAML2`
+     - **回复 URL** ：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
    - 对于“SP”发起的模式，请选择“设置其他 URL”并输入以下值：  
-     - **登录 URL**：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - **登录 URL** ：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
 
 1. Catchpoint 应用程序需要特定格式的 SAML 断言。 请将自定义属性映射添加到 SAML 令牌属性的配置中。 下表包含默认属性的列表：
 
@@ -104,7 +104,7 @@ ms.locfileid: "88530250"
     | namespace | user.assignedrole |
 
     > [!NOTE]
-    > `namespace` 声明需要通过帐户名称进行映射。 应当为此帐户名称设置 Azure AD 中的、要在 SAML 响应中传回的某个角色。 有关 Azure AD 中的角色的详细信息，请参阅[为企业应用程序配置 SAML 令牌中颁发的角色声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)。
+    > `namespace` 声明需要通过帐户名称进行映射。 应当为此帐户名称设置 Azure AD 中的、要在 SAML 响应中传回的某个角色。 有关 Azure AD 中的角色的详细信息，请参阅[为企业应用程序配置 SAML 令牌中颁发的角色声明](../develop/active-directory-enterprise-app-role-management.md)。
 
 1. 转到“设置 SAML 单一登录”页。  在“SAML 签名证书”部分中，找到“证书(Base64)”。   选择“下载”以将证书保存到计算机上。 
 
@@ -175,7 +175,7 @@ Catchpoint 支持默认已启用的实时用户预配。 本部分中没有操�
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“Catchpoint”磁贴时，应会自动登录到配置了 SSO 的 Catchpoint 应用。 有关“我的应用”门户的详细信息，请参阅[从“我的应用”门户登录和启动应用](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
+在“我的应用”门户中选择“Catchpoint”磁贴时，应会自动登录到配置了 SSO 的 Catchpoint 应用。 有关“我的应用”门户的详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
 
 > [!NOTE]
 > 通过登录页面登录到 Catchpoint 应用程序时，请在提供“Catchpoint 凭据”后，在“公司凭据(SSO)”字段中输入有效的“命名空间”值，然后选择“登录”。    
@@ -184,12 +184,12 @@ Catchpoint 支持默认已启用的实时用户预配。 本部分中没有操�
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Catchpoint](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

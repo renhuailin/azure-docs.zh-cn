@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 7c7268aa361c77f1d466ab7a58b74aa91090dc4b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84708563"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325108"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL 托管实例入门
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,16 +44,16 @@ ms.locfileid: "84708563"
   > - 也可以从本地网络使用 Express Route 或站点到站点连接，但这些方法不在这些快速入门的讨论范围内。
   > - 请注意，如果将保持期从 0（无限制保留）更改为任意其他值，“保留”将仅适用于保留值更改后所写入的日志（仍保留在保留值设置为“无限制”的期间所写入的日志，即使启用了前述保留）。
 
-作为手动创建 SQL 托管实例的替代方法，可使用 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、[带资源管理器模板的 PowerShell](scripts/create-powershell-azure-resource-manager-template.md) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) 来编写脚本并自动执行此过程。
+作为手动创建 SQL 托管实例的替代方法，可使用 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、[带资源管理器模板的 PowerShell](scripts/create-powershell-azure-resource-manager-template.md) 或 [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) 来编写脚本并自动执行此过程。
 
 ### <a name="migrate-your-databases"></a>迁移数据库
 
-创建 SQL 托管实例并配置访问权限后，可以开始迁移 SQL Server 数据库。 如果要迁移的源数据库中存在一些不受支持的功能，则迁移可能会失败。 若要避免失败并检查兼容性，可以使用[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 来对 SQL Server 上的数据库进行分析并找出可能会阻止迁移到 SQL 托管实例的任何问题，例如，是否存在 [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) 或多个日志文件。 解决这些问题后，即可将数据库迁移到 SQL 托管实例。 [数据库实验助手](/sql/dea/database-experimentation-assistant-overview)是另一个有用的工具，它可以记录 SQL Server 上的工作负载，并在 SQL 托管实例上重放该工作负载，以便可以确定在迁移到 SQL 托管实例时是否会出现任何性能问题。
+创建 SQL 托管实例并配置访问权限后，可以开始迁移 SQL Server 数据库。 如果要迁移的源数据库中存在一些不受支持的功能，则迁移可能会失败。 若要避免失败并检查兼容性，可以使用[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 来对 SQL Server 上的数据库进行分析并找出可能会阻止迁移到 SQL 托管实例的任何问题，例如，是否存在 [FileStream](/sql/relational-databases/blob/filestream-sql-server) 或多个日志文件。 解决这些问题后，即可将数据库迁移到 SQL 托管实例。 [数据库实验助手](/sql/dea/database-experimentation-assistant-overview)是另一个有用的工具，它可以记录 SQL Server 上的工作负载，并在 SQL 托管实例上重放该工作负载，以便可以确定在迁移到 SQL 托管实例时是否会出现任何性能问题。
 
 确保可将数据库迁移到 SQL 托管实例后，可以使用本机 SQL Server 还原功能通过 `.bak` 文件将数据库还原到 SQL 托管实例。 可以使用此方法从本地安装的 SQL Server 数据库引擎或 Azure 虚拟机迁移数据库。 请参阅快速入门[从备份还原到 SQL 托管实例](restore-sample-database-quickstart.md)。 此快速入门介绍了如何使用 `RESTORE` Transact-SQL 命令从 Azure Blob 存储中存储的 `.bak` 文件还原。
 
 > [!TIP]
-> 若要使用 `BACKUP` Transact-SQL 命令创建 Azure Blob 存储中数据库的备份，请参阅 [SQL Server 备份到 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)。
+> 若要使用 `BACKUP` Transact-SQL 命令创建 Azure Blob 存储中数据库的备份，请参阅 [SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)。
 
 参考这些快速入门可以快速创建、配置数据库备份并将其还原到 SQL 托管实例。 在某些情况下，需要自定义或自动化 SQL 托管实例和所需网络环境的部署。 下面将会介绍这些方案。
 
@@ -72,7 +72,7 @@ ms.locfileid: "84708563"
 但是，若要迁移生产数据库，甚至迁移用于某些性能测试的开发/测试数据库，则需要考虑使用其他技术，例如：
 
 - 性能测试 - 测量源 SQL Server 实例的基线性能指标，并将其与迁移数据库的目标 SQL 托管实例上的性能指标进行比较。 详细了解[性能比较的最佳做法](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210)。
-- 联机迁移 - 使用本文所述的本机 `RESTORE` 时，必须等待数据库还原完毕（如果该数据库尚未存储在 Azure Blob 存储中，还要等待复制到其中）。 这会导致应用程序出现一段停机时间，尤其是数据库较大时。 若要移动生产数据库，请使用[数据迁移服务 (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json)，它可以在尽量缩短停机时间的情况下迁移数据库。 为实现这种迁移，DMS 会以增量方式将源数据库中发生的更改推送到所要还原的 SQL 托管实例数据库。 这样，便可以在尽量缩短停机时间的前提下，快速将应用程序从源数据库切换到目标数据库。
+- 联机迁移 - 使用本文所述的本机 `RESTORE` 时，必须等待数据库还原完毕（如果该数据库尚未存储在 Azure Blob 存储中，还要等待复制到其中）。 这会导致应用程序出现一段停机时间，尤其是数据库较大时。 若要移动生产数据库，请使用[数据迁移服务 (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%2fazure%2fsql-database%2ftoc.json)，它可以在尽量缩短停机时间的情况下迁移数据库。 为实现这种迁移，DMS 会以增量方式将源数据库中发生的更改推送到所要还原的 SQL 托管实例数据库。 这样，便可以在尽量缩短停机时间的前提下，快速将应用程序从源数据库切换到目标数据库。
 
 详细了解[建议的迁移过程](migrate-to-instance-from-sql-server.md)。
 

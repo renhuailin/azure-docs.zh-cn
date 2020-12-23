@@ -1,19 +1,19 @@
 ---
 title: 使用映射数据流转换数据
 description: 本教程提供有关使用 Azure 数据工厂转换包含映射数据流的数据的分步说明
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.date: 11/09/2019
+ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569878"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497038"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -36,14 +36,14 @@ ms.locfileid: "91569878"
 * **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**。 使用 ADLS 存储作为 *源* 和 *接收器* 数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。
 
-本教程中我们要转换的文件是 MoviesDB.csv 的，可在 [此处](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)找到。 若要从 GitHub 检索该文件，请将内容复制到所选的文本编辑器，以将本地保存为 .csv 文件。 若要将文件上传到存储帐户，请参阅 [通过 Azure 门户上传 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。 这些示例将引用名为 "sample data" 的容器。
+本教程中我们要转换的文件是 MoviesDB.csv 的，可在 [此处](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)找到。 若要从 GitHub 检索该文件，请将内容复制到所选的文本编辑器，以将本地保存为 .csv 文件。 若要将文件上传到存储帐户，请参阅 [上传 Azure 门户的 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。 这些示例将引用名为 "sample data" 的容器。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
 在此步骤中，您将创建一个数据工厂，并打开数据工厂 UX，以在数据工厂中创建管道。
 
 1. 打开 **Microsoft Edge** 或 **Google Chrome**。 目前，只有 Microsoft Edge 和 Google Chrome web 浏览器支持数据工厂 UI。
-2. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：  
+2. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ：
 
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -55,12 +55,12 @@ ms.locfileid: "91569878"
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于“资源组”，请执行以下步骤之一：
 
-    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
+    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
 
     b. 选择“新建”，并输入资源组的名称。 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
-6. 在“版本”下选择“V2”。
+6. 在“版本”下选择“V2”。 
 7. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据存储 (例如，Azure 存储和 SQL 数据库) 并计算 (例如，数据工厂使用的 Azure HDInsight) 可以位于其他区域。
 8. 选择“创建”。
 9. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。
@@ -138,7 +138,7 @@ ms.locfileid: "91569878"
 1. 提取 **数据预览** ，验证筛选器是否正常工作。
 
     ![显示您提取的数据预览的屏幕截图。](media/tutorial-data-flow/filter3.png)
-1. 要添加的下一个转换是**架构修饰符**下的**聚合**转换。
+1. 要添加的下一个转换是 **架构修饰符** 下的 **聚合** 转换。
 
     ![显示聚合架构修饰符的屏幕截图。](media/tutorial-data-flow/agg1.png)
 1. 将聚合转换命名为 **AggregateComedyRatings**。 在 " **分组依据** " 选项卡中，从下拉列表中选择 " **年** "，以便按电影的年份对聚合分组。
@@ -147,7 +147,7 @@ ms.locfileid: "91569878"
 1. 请参阅 " **聚合** " 选项卡。在左侧文本框中，将聚合列命名为 **AverageComedyRating**。 单击右侧的 "表达式" 框，通过表达式生成器输入聚合表达式。
 
     ![在 "聚合设置" 下的 "聚合" 选项卡中显示 "年份" 选项的屏幕截图。](media/tutorial-data-flow/agg3.png)
-1. 若要获取列 **分级**的平均值，请使用 ```avg()``` 聚合函数。 由于 " **分级** " 是一个字符串并 ```avg()``` 采用数字输入，因此必须通过函数将该值转换为数字 ```toInteger()``` 。 表达式如下所示：
+1. 若要获取列 **分级** 的平均值，请使用 ```avg()``` 聚合函数。 由于 " **分级** " 是一个字符串并 ```avg()``` 采用数字输入，因此必须通过函数将该值转换为数字 ```toInteger()``` 。 表达式如下所示：
 
     ```avg(toInteger(Rating))```
 
@@ -157,7 +157,7 @@ ms.locfileid: "91569878"
 1. 转到 " **数据预览** " 选项卡以查看转换输出。 请注意，只有两列是 " **年** " 和 " **AverageComedyRating**"。
 
     ![聚合](media/tutorial-data-flow/agg3.png)
-1. 接下来，您需要在 "**目标**" 下添加**接收器**转换。
+1. 接下来，您需要在 "**目标**" 下添加 **接收器** 转换。
 
     ![显示在 "目标" 下添加接收器转换的位置的屏幕截图。](media/tutorial-data-flow/sink1.png)
 1. 命名接收器 **接收器**。 单击 " **新建** " 以创建接收器数据集。
@@ -169,7 +169,7 @@ ms.locfileid: "91569878"
 1. 选择 **DelimitedText**。 单击“继续”(Continue)。
 
     ![数据集](media/tutorial-data-flow/dataset2.png)
-1. 将接收器数据集命名为 **MoviesSink**。 对于 "链接服务"，请选择在步骤6中创建的 ADLS gen2 链接服务。 输入要向其写入数据的输出文件夹。 在本教程中，我们将写入 "示例-数据" 容器中的文件夹 "输出"。 文件夹不需要事先存在，可以动态创建。 将**第一行设置为标头**为 true，并为**导入架构**选择 "**无**"。 单击“完成”。
+1. 将接收器数据集命名为 **MoviesSink**。 对于 "链接服务"，请选择在步骤6中创建的 ADLS gen2 链接服务。 输入要向其写入数据的输出文件夹。 在本教程中，我们将写入 "示例-数据" 容器中的文件夹 "输出"。 文件夹不需要事先存在，可以动态创建。 将 **第一行设置为标头** 为 true，并为 **导入架构** 选择 "**无**"。 单击“完成”。
 
     ![接收器](media/tutorial-data-flow/sink3.png)
 

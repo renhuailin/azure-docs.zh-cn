@@ -5,19 +5,21 @@ author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85483289"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339659"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Cosmos DB 和容器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 使用 Azure Cosmos DB，可以快速创建和查询键/值数据库、文档数据库和图形数据库。 本快速入门重点介绍部署用以创建 Azure Cosmos 数据库的 Azure 资源管理器模板（ARM 模板）以及在该数据库内创建容器的过程。 稍后你可以在该容器中存储数据。
+Azure Cosmos DB 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何规模的开放式 API。 使用 Azure Cosmos DB，可以快速创建和查询键/值数据库、文档数据库和图形数据库。 本快速入门重点介绍部署用以创建 Azure Cosmos 数据库的 Azure 资源管理器模板（ARM 模板）以及在该数据库内创建容器的过程。 稍后你可以在该容器中存储数据。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -57,28 +59,28 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 2. 选择或输入以下值。
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="部署到 Azure":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM 模板, Azure Cosmos DB 集成, 部署门户":::
 
     除非另有指定，否则请使用默认值创建 Azure Cosmos 资源。
 
     * 订阅：选择一个 Azure 订阅。
     * 资源组：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
     * 位置：选择一个位置。  例如“美国中部”。
-    * **帐户名称**：输入 Azure Cosmos 帐户的名称。 它必须全局唯一。
-    * **位置**：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。
-    * **主要区域**：Azure Cosmos 帐户的主要副本区域。
-    * **次要区域**：Azure Cosmos 帐户的次要副本区域。
-    * **默认一致性级别**：Azure Cosmos 帐户的默认一致性级别。
-    * **最大过期前缀**：最大过时请求数。 对于 BoundedStaleness 是必需的。
-    * **以秒为单位的最大间隔**：最大延迟时间。 对于 BoundedStaleness 是必需的。
-    * **数据库名称**：Azure Cosmos 数据库的名称。
-    * **容器名称**：Azure Cosmos 容器的名称。
-    * **吞吐量**：容器的吞吐量，最小吞吐量值为 400 RU/秒。
-    * **我同意上述条款和条件**：选中。
+    * **帐户名称** ：输入 Azure Cosmos 帐户的名称。 它必须全局唯一。
+    * **位置** ：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。
+    * **主要区域** ：Azure Cosmos 帐户的主要副本区域。
+    * **次要区域** ：Azure Cosmos 帐户的次要副本区域。
+    * **默认一致性级别** ：Azure Cosmos 帐户的默认一致性级别。
+    * **最大过期前缀** ：最大过时请求数。 对于 BoundedStaleness 是必需的。
+    * **以秒为单位的最大间隔** ：最大延迟时间。 对于 BoundedStaleness 是必需的。
+    * **数据库名称** ：Azure Cosmos 数据库的名称。
+    * **容器名称** ：Azure Cosmos 容器的名称。
+    * **吞吐量** ：容器的吞吐量，最小吞吐量值为 400 RU/秒。
+    * **我同意上述条款和条件** ：选中。
 
 3. 选择“购买”。 成功部署 Azure Cosmos 帐户后，你会收到通知：
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="部署到 Azure":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM 模板, Cosmos DB 集成, 部署门户通知":::
 
 使用 Azure 门户部署模板。 除了 Azure 门户，还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-powershell.md)。
 
@@ -136,4 +138,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - 阅读 [Azure Cosmos DB 概述](introduction.md)
 - 了解有关 [Azure 资源管理器](../azure-resource-manager/management/overview.md)的详细信息
-- 获取其他 [Azure Cosmos DB 资源管理器模板](resource-manager-samples.md)
+- 获取其他 [Azure Cosmos DB 资源管理器模板](./templates-samples-sql.md)

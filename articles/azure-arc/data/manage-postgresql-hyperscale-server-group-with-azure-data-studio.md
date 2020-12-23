@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934822"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320237"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>使用 Azure Data Studio 管理启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 
@@ -25,10 +25,10 @@ ms.locfileid: "90934822"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 - [安装 azdata、Azure Data Studio 和 Azure CLI](install-client-tools.md)
-- 在 **Azure 数据 CLI** 和 **Azure Arc** 和 **PostgreSQL** 扩展中安装 Azure Data Studio
+- 在中安装 Azure Data Studio **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** 和 **Azure Arc** 和 **PostgreSQL** 扩展
 - 创建 [Azure Arc 数据控制器](create-data-controller-using-azdata.md)
 - 启动 Azure Data Studio
 
@@ -61,9 +61,8 @@ PostgreSQL 仪表板视图：
 
 此窗格左侧列出了多个仪表板：
 
-- **概述：** 显示有关实例的摘要信息，如名称、Azure 订阅 ID、配置、数据库引擎版本、Grafana 和 Kibana 的终结点 .。。
+- **概述：** 显示有关实例的摘要信息，例如 name、PostgreSQL admin user name、Azure 订阅 ID、configuration、数据库引擎版本、Grafana 的终结点和 Kibana .。。
 - **连接字符串：** 显示连接到 PostgreSQL 实例所需的各种连接字符串，例如 psql、Node.js、PHP、Ruby .。。
-- **属性：** 显示不同的属性，例如 PostgreSQL 管理员用户名、阴影资源的关联资源组 .。。
 - **诊断并解决问题：** 是登陆页面，您可以在其中找到各种资源，这些资源将帮助您在展开故障排除笔记本时对实例进行故障排除
 - **新的支持请求：** 是一个登陆页面，你将能够从我们的支持服务中请求协助，并从公共预览版公告开始。
 
@@ -93,5 +92,5 @@ PostgreSQL 仪表板视图：
 - **展开服务器的显示，并浏览/处理数据库中的对象**
 - **...**
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 [监视你的服务器组](monitor-grafana-kibana.md)

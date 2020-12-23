@@ -3,19 +3,19 @@ title: Azure CLI 脚本示例 - 从 Azure 应用配置存储区导出
 titleSuffix: Azure App Configuration
 description: 使用 Azure CLI 脚本从 Azure 应用配置中导出配置
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 991471f43c92b12073062db1e4e5fdb32fb4b0f6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: be3fac17ba99194a76b27c78040a76cce43405a0
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494785"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931106"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>从 Azure 应用配置存储区导出
 
@@ -23,9 +23,9 @@ ms.locfileid: "87494785"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教程需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -42,7 +42,7 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 此脚本使用以下命令从应用程序配置存储区导出。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az appconfig kv export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | 从应用程序配置存储区资源导出。 |
 

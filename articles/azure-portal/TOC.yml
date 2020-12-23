@@ -14,6 +14,8 @@
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
     - name: 创建仪表板
       items:
+        - name: Azure CLI
+          href: quickstart-portal-dashboard-azure-cli.md
         - name: Azure PowerShell
           href: quickstart-portal-dashboard-powershell.md
         - name: ARM 模板
@@ -21,10 +23,11 @@
           href: quick-create-template.md
 - name: 概念
   items:
-    - name: 使用基于角色的访问控制共享仪表板
+    - name: 使用 Azure 基于角色的访问控制共享仪表板
       href: azure-portal-dashboard-share-access.md
     - name: 以编程方式创建 Azure 仪表板
       href: azure-portal-dashboards-create-programmatically.md
+      displayName: 'Azure CLI, az portal dashboard, az portal'
 - name: 操作指南
   items:
     - name: 管理 Azure 门户设置和首选项
@@ -81,6 +84,9 @@
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
       href: /cli/azure/ext/portal/portal
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: Azure 路线图

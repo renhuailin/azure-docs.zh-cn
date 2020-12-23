@@ -3,12 +3,12 @@ title: 部署澳大利亚政府 ISM PROTECTED 蓝图示例
 description: 澳大利亚政府 ISM PROTECTED 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 13d378132c928dd673cb5cb98b59abcecb321785
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 4d38a5ad6790b8b2ef09476f4779ef596be9734b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038716"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950510"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>部署澳大利亚政府 ISM PROTECTED 蓝图示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "90038716"
 
 1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
 
 1. 在“其他示例”下找到“ISM PROTECTED”蓝图示例，然后选择“使用此示例”。
 
@@ -44,7 +44,7 @@ ms.locfileid: "90038716"
 
 现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其**发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能不符合 ISM PROTECTED 控制要求。
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 在左侧选择“蓝图定义”页。 使用筛选器找到蓝图示例的副本，然后选择它。
 
@@ -94,7 +94,7 @@ ms.locfileid: "90038716"
 |项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应为 VM 配置的 Log Analytics 工作区 ID|这是应为 VM 配置的 Log Analytics 工作区的 ID (GUID)。|
-|\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
+|\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 资源日志类别](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应该从 Windows VM 管理员组中排除的用户的列表|以分号分隔的应从管理员本地组中排除的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应该包括在 Windows VM 管理员组中的用户的列表|以分号分隔的应包括在管理员本地组中的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|Linux VM 规模集 (VMSS) 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
@@ -158,7 +158,7 @@ ms.locfileid: "90038716"
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应只能通过 HTTPS v2 访问函数应用  |有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应该通过漏洞评估解决方案修复漏洞  |有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|Azure 订阅应有用于活动日志的日志配置文件  |有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|
-|\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
+|\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 资源日志类别](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应在计算机上安装系统更新|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应为应用服务使用最新 TLS 版本|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|
 |\[预览\]：审核澳大利亚政府 ISM PROTECTED 控件，并部署特定 VM 扩展来支持审核要求|策略分配|应对订阅中拥有写入权限的帐户启用 MFA|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|

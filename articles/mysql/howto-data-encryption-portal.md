@@ -1,18 +1,18 @@
 ---
 title: 数据加密-Azure 门户-Azure Database for MySQL
 description: 了解如何使用 Azure 门户设置和管理 Azure Database for MySQL 的数据加密。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 201459f4a7d2d23b384435493d6272e569698933
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887163"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519053"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>使用 Azure 门户 Azure Database for MySQL 的数据加密
 
@@ -34,17 +34,30 @@ ms.locfileid: "90887163"
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * 保留天数设置为90天
+  
+    ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * 此密钥必须具有以下属性以用作客户管理的密钥：
   * 无过期日期
   * 未禁用
-  * 能够执行“获取”、“包装密钥”和“解包密钥”操作  
+  * 执行 **get**、 **wrap**、 **解包** 操作
+  * recoverylevel 属性设置为 **可恢复** (这需要启用软删除，保持期设置为90天) 
+  * 清除保护已启用
+
+可以通过使用以下命令来验证密钥的上述特性：
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>为密钥操作设置正确的权限
 
 1. 在 Key Vault 中，选择 "**访问策略**" "  >  **添加访问策略**"。
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="突出显示了 "访问策略" 和 "添加访问策略" Key Vault 屏幕截图":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="突出显示了 &quot;访问策略&quot; 和 &quot;添加访问策略&quot; Key Vault 屏幕截图":::
 
 2. 选择 " **密钥权限**"，然后选择 " **获取**"、" **换行**"、" **解包**" 和 " **主体**"，即 MySQL 服务器的名称。 如果在现有主体列表中找不到你的服务器主体，则需要注册它。 当你首次尝试设置数据加密时，系统将提示你注册服务器主体，并且失败。
 
@@ -80,9 +93,9 @@ ms.locfileid: "90887163"
 
 2. 还原操作完成后，创建的新服务器将用主服务器的密钥进行加密。 但服务器上的功能和选项已禁用，并且服务器不可访问。 这会阻止任何数据操作，因为尚未向新服务器的标识授予访问密钥保管库的权限。
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="突出显示状态为 "不可访问" 的 Azure Database for MySQL 屏幕截图":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="突出显示状态为 &quot;不可访问&quot; 的 Azure Database for MySQL 屏幕截图":::
 
-3. 若要使服务器可访问，请重新验证已还原服务器上的密钥。 选择 "**数据加密**重新  >  **验证密钥**"。
+3. 若要使服务器可访问，请重新验证已还原服务器上的密钥。 选择 "**数据加密** 重新  >  **验证密钥**"。
 
    > [!NOTE]
    > 重新验证的第一次尝试将失败，因为需要为新服务器的服务主体授予对密钥保管库的访问权限。 若要生成服务主体，请选择 "重新 **验证密钥**"，它将显示错误，但会生成服务主体。 之后，请参阅本文前面的 [步骤](#set-the-right-permissions-for-key-operations) 。

@@ -1,5 +1,5 @@
 ---
-title: 使用功能所需的 RBAC 权限
+title: 使用功能所需的 Azure RBAC 权限
 titleSuffix: Azure Network Watcher
 description: 了解使用网络观察程序功能需要哪些 Azure 基于角色的访问控制权限。
 services: network-watcher
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 548db64bd93dd561f9c69e9f594d01f4c0825db9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497301"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948334"
 ---
-# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的基于角色的访问控制权限
+# <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的 Azure 基于角色的访问控制权限
 
-使用 azure 基于角色的访问控制（Azure RBAC），可以仅向组织中的成员分配完成其已分配职责所需的特定操作。 若要使用网络观察程序功能，登录 Azure 所使用的帐户必须分配给[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)内置角色，或分配给[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)（已向自定义角色分配了以下各节中为每个网络观察程序功能列出的操作）。 若要了解有关网络观察程序的功能的详细信息，请参阅[什么是网络观察程序？](network-watcher-monitoring-overview.md)。
+通过 Azure 基于角色的访问控制 (Azure RBAC)，你可以将具体操作仅分配给需要完成其分配的职责的组织成员。 若要使用网络观察程序功能，登录 Azure 所使用的帐户必须分配给[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)内置角色，或分配给[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)（已向自定义角色分配了以下各节中为每个网络观察程序功能列出的操作）。 若要了解有关网络观察程序的功能的详细信息，请参阅[什么是网络观察程序？](network-watcher-monitoring-overview.md)。
 
 ## <a name="network-watcher"></a>网络观察程序
 
@@ -90,6 +90,7 @@ ms.locfileid: "87497301"
 | 操作                                                              | 说明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | 获取拓扑                                                   |
+| NetworkWatchers/拓扑/读取                     | 同上                                                  |
 
 ## <a name="reachability-report"></a>可访问性报表
 
@@ -107,7 +108,7 @@ ms.locfileid: "87497301"
 | Microsoft.Authorization/\*/Read                                     | 用于提取 Azure 角色分配和策略定义          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | 用于枚举订阅中的所有资源组    |
 | Microsoft.Storage/storageAccounts/Read                              | 用于获取指定存储帐户的属性   |
-| Microsoft.Storage/storageAccounts/listServiceSas/Action, </br> Microsoft.Storage/storageAccounts/listAccountSas/Action, <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用于获取共享访问签名 (SAS)，启用[对存储帐户的安全访问](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)并写入存储帐户 |
+| Microsoft.Storage/storageAccounts/listServiceSas/Action, </br> Microsoft.Storage/storageAccounts/listAccountSas/Action, <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用于获取共享访问签名 (SAS)，启用[对存储帐户的安全访问](../storage/common/storage-sas-overview.md)并写入存储帐户 |
 | Microsoft.Compute/virtualMachines/Read, </br> Microsoft.Compute/virtualMachines/Write| 用于登录到 VM、执行数据包捕获，并将其上传到存储帐户|
 | Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| 用于检查网络观察程序扩展是否存在，并在需要时进行安装 |
 | Microsoft.Compute/virtualMachineScaleSets/Read, </br> Microsoft.Compute/virtualMachineScaleSets/Write| 用于访问虚拟机规模集、执行数据包捕获并将其上传到存储帐户|

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 83ae2fdea2ffe586a626f8a45cba74a22c07ae7b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3151da4375c440bec44523711448149f51440d5c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87100676"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676538"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>设置 Azure Dev Tools 的访问权限
 
@@ -30,7 +30,7 @@ ms.locfileid: "87100676"
 ## <a name="for-students-faculty-and-administrators"></a>面向学生、教职员工和管理员
 学生可以通过[教育中心](https://aka.ms/devtoolsforteaching)访问 Azure Dev Tools。
 
-学生和教职员工都可以通过教育中心获得所有软件的下载权益。 教育中心在 Azure 门户中构建，它使学生可以轻松访问整个软件目录，也可轻松访问 [Microsoft Learn](https://docs.microsoft.com/learn/) 目录。
+学生和教职员工都可以通过教育中心获得所有软件的下载权益。 教育中心在 Azure 门户中构建，它使学生可以轻松访问整个软件目录，也可轻松访问 [Microsoft Learn](/learn/) 目录。
 
 ## <a name="next-steps"></a>后续步骤
 - [管理学生帐户](manage-students.md)

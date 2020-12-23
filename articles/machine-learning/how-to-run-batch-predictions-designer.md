@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure 机器学习设计器运行批量预测
 titleSuffix: Azure Machine Learning
-description: 了解如何使用设计器训练模型并设置批量预测管道。 将管道部署为参数化 Web 服务，该服务可从任何 HTTP 库触发。
+description: 了解如何创建批处理预测管道。 将管道部署为参数化 web 服务，并从任何 HTTP 库触发它。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883092"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553940"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器运行批量预测
 
@@ -29,7 +29,7 @@ ms.locfileid: "90883092"
 > * 使用管道终结点
 > * 管理终结点版本
 
-要了解如何使用 SDK 设置批量评分服务，请参阅随附的[操作指南](how-to-run-batch-predictions.md)。
+要了解如何使用 SDK 设置批量评分服务，请参阅随附的[操作指南](./tutorial-pipeline-batch-scoring-classification.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,9 +74,9 @@ ms.locfileid: "90883092"
     > [!div class="mx-imgBorder"]
     > ![将数据集设置为管道参数](./media/how-to-run-batch-predictions-designer/set-dataset-as-pipeline-parameter.png)
 
-## <a name="publish-your-batch-inference-pipeline"></a>发布批处理推理管道
+## <a name="publish-your-batch-inference-pipeline"></a>发布批量推理管道
 
-现在，你已准备好部署推理管道。 下面的操作将部署管道，使其可供其他人使用。
+现已准备好部署推理管道。 下面的操作将部署管道，使其可供其他人使用。
 
 1. 选择“发布”按钮。
 
@@ -129,7 +129,7 @@ ms.locfileid: "90883092"
 
 在“运行概述”面板中可以找到管道终结点的 REST 终结点。 通过调用终结点，将使用其默认的已发布管道。
 
-另外，还可以在“已发布管道”页中使用已发布的管道。 选择已发布的管道，可以在关系图右侧的 " **已发布管道概述** " 面板中找到它的 REST 终结点。 
+另外，还可以在“已发布管道”页中使用已发布的管道。 选择一个已发布的管道，然后就可以在图右侧的“已发布管道概览”面板中找到该管道的 REST 终结点。 
 
 若要进行 REST 调用，需要 OAuth 2.0 持有者类型身份验证标头。 请参阅以下[教程部分](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)，以详细了解如何设置工作区的身份验证并进行参数化 REST 调用。
 

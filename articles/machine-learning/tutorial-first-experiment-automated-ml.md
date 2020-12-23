@@ -10,12 +10,13 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: ebc3899c98a09b64443b129dde52cb597fac9eff
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: automl
+ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976655"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921885"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
 
@@ -44,7 +45,7 @@ ms.locfileid: "90976655"
 
 Azure 机器学习工作区是云中的基础资源，用于试验、训练和部署机器学习模型。 它将 Azure 订阅和资源组关联到服务中一个易于使用的对象。 
 
-通过 Azure 门户创建工作区，该门户是用于管理 Azure 资源的基于 Web 的控制台。
+可以通过许多[方法来创建工作区](how-to-manage-workspace.md)。 本教程将通过 Azure 门户创建工作区，该门户是用于管理 Azure 资源的基于 Web 的控制台。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -59,7 +60,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 选择创建的订阅和工作区。
 
-1. 选择“开始”。
+1. 选择“开始”。 
 
 1. 在左窗格的“创作”部分，选择“自动化 ML” 。
 
@@ -240,7 +241,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 > [使用 Web 服务](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
-+ 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。
++ 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md)一文。
 + 详细了解[特征化](how-to-configure-auto-features.md#featurization)。
 + 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 

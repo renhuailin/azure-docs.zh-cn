@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 9f90125edeee453dc9e8b8b80f8eb09d9fc6e84c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971535"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358416"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>使用托管标识建立到 Azure SQL 数据库的索引器连接
 
@@ -29,7 +29,7 @@ ms.locfileid: "90971535"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - 打开系统分配的托管标识
 
-启用系统分配的托管标识后，Azure 将为搜索服务创建一个标识，该标识可用于对同一租户和订阅中的其他 Azure 服务进行身份验证。 然后，可以在基于角色的访问控制 (RBAC) 分配中使用此标识，该分配允许在编制索引期间访问数据。
+启用系统分配的托管标识后，Azure 将为搜索服务创建一个标识，该标识可用于对同一租户和订阅中的其他 Azure 服务进行身份验证。 然后，你可以在 Azure 基于角色的访问控制中使用此标识， (允许在索引过程中访问数据的 Azure RBAC) 分配。
 
 ![打开系统分配的托管标识](./media/search-managed-identities/turn-on-system-assigned-identity.png "打开系统分配的托管标识")
 
@@ -94,7 +94,7 @@ ms.locfileid: "90971535"
 
 ### <a name="5---create-the-data-source"></a>5 - 创建数据源
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource)支持托管标识连接字符串。 下面是一个示例，说明如何使用 [REST API](/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源，以便为 Azure SQL 数据库中的数据编制索引。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)支持托管标识连接字符串。 下面是一个示例，说明如何使用 [REST API](/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源，以便为 Azure SQL 数据库中的数据编制索引。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
 
 使用 [REST API](/rest/api/searchservice/create-data-source)创建数据源时，数据源必须具有以下必需属性：
 
@@ -103,7 +103,7 @@ ms.locfileid: "90971535"
 * **凭据**
     * 使用托管标识进行身份验证时，凭据格式与不使用托管标识时不同。 在这里，你将提供初始目录或数据库名称以及没有帐户密钥或密码的 ResourceId。 ResourceId 必须包括 Azure SQL 数据库的订阅 ID、SQL 数据库的资源组和 SQL 数据库的名称。 
     * 托管标识连接字符串格式：
-        * Initial Catalog|Database=database name;ResourceId=/subscriptions/your subscription ID/resourceGroups/your resource group name/providers/Microsoft.Sql/servers/your SQL Server name/;Connection Timeout=connection timeout length;*    *
+        * Initial Catalog|Database=database name;ResourceId=/subscriptions/your subscription ID/resourceGroups/your resource group name/providers/Microsoft.Sql/servers/your SQL Server name/;Connection Timeout=connection timeout length; **
 * “容器”指定要编制索引的表或视图的名称。
 
 如何使用 [REST API](/rest/api/searchservice/create-data-source) 创建 Azure SQL 数据源对象的示例：

@@ -9,17 +9,17 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b004bb4fbca768d782863f73d83ec5443bc66ae3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 405fa04a3b6af7f0c87888aa48aba9bdffeaf282
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320603"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366949"
 ---
 # <a name="configure-opc-publisher"></a>配置 OPC 发布服务器
 
 > [!IMPORTANT]
-> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 你可以配置 OPC 发布服务器以指定：
 
@@ -144,7 +144,7 @@ OPC 发布服务器实现以下 Azure IoT 中心直接方法调用：
 - ExitApplication
 - GetInfo
 
-方法请求和响应的 JSON 有效负载的格式在 [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs) 中定义。
+方法请求和响应的 JSON 有效负载的格式在 [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/tree/master/opcpublisher) 中定义。
 
 如果对模块调用一个未知的方法，它会用一个字符串来响应，表示该方法无法实现。 可以调用一种未知方法作为对模块执行 Ping 操作的方法。
 

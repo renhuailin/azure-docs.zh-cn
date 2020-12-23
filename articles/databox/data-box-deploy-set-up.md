@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924150"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335462"
 ---
 ::: zone target="docs"
 
@@ -119,16 +119,16 @@ ms.locfileid: "87924150"
 2. 连接到设备的 MGMT 端口并访问其位于 https\://192.168.100.10 的本地 Web UI。 从打开设备算起，进行此连接可能需要长达 5 分钟的时间。
 3. 单击“详细信息”，然后单击“转到网页”。
 
-   ![连接到本地 Web UI](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
+   ![连接到本地 Web UI](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
 4. 此时将显示本地 Web UI 的“登录”页面。 确保设备序列号在门户 UI 和本地 Web UI 中匹配。 设备此时处于锁定状态。
 5. 登录到 [Azure 门户](https://portal.azure.com)。
-6. 从门户下载设备凭据。 转到“常规”>“设备详细信息”。 复制**设备密码**。 设备密码绑定到门户中的特定订单。 
+6. 从门户下载设备凭据。 转到“常规”>“设备详细信息”。 复制 **设备密码** 。 设备密码绑定到门户中的特定订单。 
 
     ![获取设备凭据](media/data-box-deploy-set-up/data-box-device-credentials.png)
     
     
-7. 提供你在上一步骤中从 Azure 门户获取的设备密码来登录到设备的本地 Web UI。 单击**登录**。
+7. 提供你在上一步骤中从 Azure 门户获取的设备密码来登录到设备的本地 Web UI。 单击 **登录** 。
 8. 在“仪表板”上，确保已配置了网络接口。 
    - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 
    - 如果未启用 DHCP，请转到“设置网络接口”，并根据需要分配静态 IP。

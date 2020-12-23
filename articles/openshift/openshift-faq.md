@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816229"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964705"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "88816229"
 
 ### <a name="which-azure-regions-are-supported"></a>支持哪些 Azure 区域？
 
-有关 Azure Red Hat OpenShift 4.x 支持的区域的列表，请参阅 [可用区域](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)。
+有关 Azure Red Hat OpenShift 4.x 支持的区域的列表，请参阅 [可用区域](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)。
 
 有关 Azure Red Hat OpenShift 3.11 支持的区域的列表，请参阅 [可用产品（按区域](supported-resources.md#azure-regions)）。
 
@@ -186,13 +186,13 @@ oc adm policy \
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>IaaS) 中 (哪些 UNIX 权限可用于主机/基础节点/应用节点？
 
-对于4.x 群集，可以通过群集管理角色访问节点。 有关详细信息，请参阅 [RBAC 概述](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
+对于4.x 群集，可以通过群集管理角色访问节点。 有关详细信息，请参阅 [KUBERNETES RBAC 概述](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
 
 对于3.11 群集，禁止访问节点。
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>我们有哪些 OCP 权限？ 群集管理？ 项目-管理员？
 
-对于4.x 群集，群集管理角色可用。 有关详细信息，请参阅 [RBAC 概述](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
+对于4.x 群集，群集管理角色可用。 有关详细信息，请参阅 [KUBERNETES RBAC 概述](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
 
 有关3.11 群集的详细信息，请参阅 [群集管理概述](https://docs.openshift.com/aro/admin_guide/index.html) 。
 

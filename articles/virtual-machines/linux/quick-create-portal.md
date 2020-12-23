@@ -9,11 +9,11 @@ ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499970"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016040"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -30,7 +30,7 @@ ms.locfileid: "87499970"
 1. 在搜索中键入“虚拟机”。
 1. 在“服务”下，选择“虚拟机” 。
 1. 在“虚拟机”页上，选择“添加” 。 此时将打开“创建虚拟机”页。
-1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup。 
+1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择 **新建** 资源组。 对于名称.*，请键入 myResourceGroup。 
 
     ![“项目详细信息”部分的屏幕截图，显示为虚拟机选择 Azure 订阅和资源组的位置](./media/quick-create-portal/project-details.png)
 

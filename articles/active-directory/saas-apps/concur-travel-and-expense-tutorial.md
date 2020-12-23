@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 6797d169dbdfdd63ae9cc96ac9fed133bc8d1adc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 525c70c18354e35998e564680c68a975bdb3ec54
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544462"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455436"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Concur Travel and Expense 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544462"
 * 让用户使用其 Azure AD 帐户自动登录到 Concur Travel and Expense。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -85,7 +85,7 @@ ms.locfileid: "88544462"
     > [!NOTE]
     > “标识符(实体 ID)”和“URL (断言使用者服务 URL)”特定于区域。 请根据 Concur 实体的数据中心进行选择。 如果不知道 Concur 实体的数据中心，请联系 Concur 支持部门。 
 
-5. 在“设置 SAML 单一登录”页上，单击与“用户属性”对应的编辑/笔形图标以编辑设置   。 唯一用户标识符需与 Concur 用户 login_id 匹配。 通常应将 **user.userprincipalname** 更改为 **user.mail**。
+5. 在“设置 SAML 单一登录”页上，单击与“用户属性”对应的编辑/笔形图标以编辑设置   。 唯一用户标识符需与 Concur 用户 login_id 匹配。 通常应将 **user.userprincipalname** 更改为 **user.mail** 。
 
     ![编辑用户属性](common/edit-attribute.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "88544462"
 
 1. 单击“添加”  。
 1. 输入 IdP 的自定义名称，例如“Azure AD (US)”。 
-1. 单击“上传 XML 文件”，  ，然后附加以前下载的**联合元数据 XML**。
+1. 单击“上传 XML 文件”，  ，然后附加以前下载的 **联合元数据 XML** 。
 1. 单击“添加元数据”，保存所做的更改。 
 
     ![Concur SSO 自助工具屏幕截图](./media/concur-travel-and-expense-tutorial/add-metadata-concur-self-service-tool.png)
@@ -142,11 +142,11 @@ ms.locfileid: "88544462"
 > B.Simon 的 Concur 登录 ID 需与 B.Simon 在 Azure AD 中的唯一标识符匹配。 例如，如果 B.Simon 的 Azure AD 唯一标识符为 `B.Simon@contoso.com`， 则 B.Simon 的 Concur 登录 ID 也需要是 `B.Simon@contoso.com`。 
 
 ## <a name="configure-concur-mobile-sso"></a>配置 Concur Mobile SSO
-若要启用 Concur Mobile SSO，需向 Concur 支持团队提供**用户访问 URL**。 按以下步骤从 Azure AD 获取**用户访问 URL**：
+若要启用 Concur Mobile SSO，需向 Concur 支持团队提供 **用户访问 URL** 。 按以下步骤从 Azure AD 获取 **用户访问 URL** ：
 1. 转到“企业应用程序” 
 1. 单击“Concur Travel and Expense” 
 1. 单击“属性” 
-1. 复制**用户访问 URL**，将该 URL 提供给 Concur 支持部门
+1. 复制 **用户访问 URL** ，将该 URL 提供给 Concur 支持部门
 
 > [!NOTE]
 > 用于配置 SSO 的自助选项不可用，因此请联系 Concur 支持团队，让其启用移动 SSO。 
@@ -155,15 +155,14 @@ ms.locfileid: "88544462"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Concur Travel and Expense 磁贴时，应会自动登录到为其设置了 SSO 的 Concur Travel and Expense。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Concur Travel and Expense 磁贴时，应会自动登录到为其设置了 SSO 的 Concur Travel and Expense。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试集成 Concur Travel and Expense 和 Azure AD](https://aad.portal.azure.com/)
-

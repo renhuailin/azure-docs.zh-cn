@@ -14,12 +14,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 0aee3fef5c2b9e7e1d8cdd8c3d27192b17161351
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+- devx-track-azurecli
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251875"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572518"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -38,11 +39,9 @@ ms.locfileid: "91251875"
 > * 使用所需属性将状态信息发送到模拟设备。
 > * 使用报告属性从模拟设备接收状态信息。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
@@ -119,7 +118,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 ### <a name="sample-desired-properties"></a>所需属性示例
 
-可以使用对应用程序有利的任何方式来构建所需属性。 本示例使用一个名为 **fanOn** 的顶级属性，并将剩余的属性分组到单独的**组件**中。 以下 JSON 片段显示了本教程所用的所需属性的结构：
+可以使用对应用程序有利的任何方式来构建所需属性。 本示例使用一个名为 **fanOn** 的顶级属性，并将剩余的属性分组到单独的 **组件** 中。 以下 JSON 片段显示了本教程所用的所需属性的结构：
 
 [!code[Sample desired properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/desired.json "Sample desired properties")]
 
@@ -147,7 +146,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 从后端发送的所需属性并不会指示当前正在对特定的所需属性执行哪个操作。 代码需要根据当前存储在本地的所需属性集，以及中心发送的更改来推断操作。
 
-以下片段演示模拟设备如何处理针对所需属性中的**组件**列表执行的插入、更新和删除操作。 可以查看如何使用 **null** 值来指示应删除某个组件：
+以下片段演示模拟设备如何处理针对所需属性中的 **组件** 列表执行的插入、更新和删除操作。 可以查看如何使用 **null** 值来指示应删除某个组件：
 
 [!code-javascript[Handle components](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=components&highlight=2,6,13 "Handle components")]
 
@@ -191,11 +190,11 @@ node ServiceClient.js "{your service connection string}"
 
 以下屏幕截图显示模拟设备应用程序的输出，并突出显示它如何处理对 **maxTemperature** 所需属性做出的更新。 可以看到顶级处理程序和气候组件处理程序的运行方式：
 
-![模拟设备](./media/tutorial-device-twins/SimulatedDevice1.png)
+![屏幕截图显示了顶级处理程序和气候组件处理程序的运行方式。](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 以下屏幕截图显示后端应用程序的输出，并突出显示它如何发送对 **maxTemperature** 所需属性做出的更新：
 
-![后端应用程序](./media/tutorial-device-twins/BackEnd1.png)
+![屏幕截图显示了后端应用程序的输出，并突出显示了它如何发送更新。](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>接收状态信息
 

@@ -5,24 +5,24 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399425"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490102"
 ---
 # <a name="what-are-security-partner-providers"></a>什么是安全合作伙伴提供程序？
 
-Azure 防火墙管理器中的安全合作伙伴提供程序可让你使用熟悉的同类最佳第三方安全即服务 (SECaaS) 产品/服务来保护用户的 Internet 访问。
+使用 Azure 防火墙管理器中的 *安全合作伙伴提供程序*，你可以将熟悉的同类最佳的第三方安全作为服务 (SECaaS) 产品/服务，以保护用户的 Internet 访问。
 
 通过快速配置，你可以使用受支持的安全合作伙伴保护中心的安全，并从虚拟网络 (VNet) 或区域中的分支位置路由和筛选 Internet 流量。 可以通过自动路由管理来完成此操作，而无需设置和管理用户定义的路由 (Udr) 。
 
 可以在多个 Azure 区域中部署配置有所选安全合作伙伴的安全中心，使全球任何地方的用户可以在这些区域中进行连接并获得安全性。 通过将安全合作伙伴的产品/服务用于 Internet/SaaS 应用程序流量并将 Azure 防火墙用于安全中心中的专用流量，现在，你可以开始在 Azure 上构建与全球分布的用户和应用程序非常接近的安全边缘。
 
-受支持的安全合作伙伴为 ZScaler、Check Point（预览）和 iboss（预览）  。
+受支持的安全合作伙伴是 **Zscaler**、 **[检查点](check-point-overview.md)** 和 **iboss**。
 
 ![安全合作伙伴提供程序](media/trusted-security-partners/trusted-security-partners.png)
 

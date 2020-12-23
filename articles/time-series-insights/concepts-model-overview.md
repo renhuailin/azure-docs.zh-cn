@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: a61dd6c17ad4d11c6dd7294c9a4f96270748c16a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630655"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021756"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 时序见解第 2 代中的时序模型
 
@@ -24,7 +24,7 @@ ms.locfileid: "91630655"
 > [!TIP]
 >
 > * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
-> * 通过 Azure 时序见解资源管理器了解[如何使用时序模型](/azure/time-series-insights/how-to-edit-your-model)。
+> * 通过 Azure 时序见解资源管理器了解[如何使用时序模型](./how-to-edit-your-model.md)。
 
 ## <a name="summary"></a>摘要
 
@@ -47,7 +47,7 @@ ms.locfileid: "91630655"
 * 如果能够将数据关联且合并一个可方便查看的视图，则可以证明数据可视化的作用。 例如，将电压传感器与温度传感器一起显示。
 * 既要管理多个实体的多维数据，同时又要提供比较、缩放和时间范围功能，可能很难实现。
 
-时序模型为此虚构示例中出现的许多场景提供一个**便利的解决方案**：
+时序模型为此虚构示例中出现的许多场景提供一个 **便利的解决方案**：
 
 [![时序模型智能烤箱图表示例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
@@ -75,7 +75,7 @@ ms.locfileid: "91630655"
 
 [![时序模型概述图表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-可以通过 [Azure 时序见解资源管理器](/azure/time-series-insights/concepts-model-overview)来创建和管理时序模型。 可以通过[模型设置 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) 来管理时序模型设置。
+可以通过 [Azure 时序见解资源管理器]()来创建和管理时序模型。 可以通过[模型设置 API](/rest/api/time-series-insights/reference-model-apis) 来管理时序模型设置。
 
 ## <a name="time-series-model-instances"></a>时序模型实例
 
@@ -101,7 +101,7 @@ ms.locfileid: "91630655"
 | --- | ---|
 | timeSeriesId | 与实例关联的时序的唯一 ID。 在大多数情况下，实例由诸如 deviceId 或 assetId 等属性唯一标识。 在某些情况下，可以使用组合了最多 3 个属性的更具体的复合 ID。 |
 | typeId | 与实例关联的时序模型类型的区分大小写的唯一字符串 ID。 默认情况下，所有已发现的新实例都会关联到默认类型。
-| name | **name** 属性可选，区分大小写。 如果未提供 **name**，则默认值为 **timeSeriesId**。 如果提供了名称， **timeSeriesId** [仍将可用。](time-series-insights-update-explorer.md#4-time-series-well) |
+| name | **name** 属性可选，区分大小写。 如果未提供 **name**，则默认值为 **timeSeriesId**。 如果提供了名称， **timeSeriesId** [仍将可用。](./concepts-ux-panels.md#4-time-series-well) |
 | description | 实例的文本说明。 |
 | hierarchyIds | 定义实例所属的层次结构。 |
 | instanceFields | 实例的属性，并且是定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。 |
@@ -129,7 +129,7 @@ ms.locfileid: "91630655"
 ```
 
 > [!TIP]
-> 有关实例 API 创建、读取、更新和删除 (CRUD) 支持，请阅读[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[实例 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api)。
+> 有关实例 API 创建、读取、更新和删除 (CRUD) 支持，请阅读[数据查询](./concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[实例 API REST 文档](/rest/api/time-series-insights/reference-model-apis#instances-api)。
 
 ## <a name="time-series-model-hierarchies"></a>时序模型层次结构
 
@@ -186,7 +186,7 @@ ms.locfileid: "91630655"
 * `ManufactureDate` 定义包含父级 `year` 和子级 `month` 的层次结构。 每个 `ManufactureDate` 可以包含多个 `years`，而后者又可以包含多个 `months`。
 
 > [!TIP]
-> 有关层次结构 API 创建、读取、更新和删除 (CRUD) 支持，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[层次结构 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api)。
+> 有关层次结构 API 创建、读取、更新和删除 (CRUD) 支持，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[层次结构 API REST 文档](/rest/api/time-series-insights/reference-model-apis#hierarchies-api)。
 
 ### <a name="hierarchy-example"></a>层次结构示例
 
@@ -216,7 +216,7 @@ ms.locfileid: "91630655"
 | ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | “building”、“floor”和“room”均未设置。 |
 
-时序**ID1**和**ID4**在[Azure 时序见解资源管理器](time-series-insights-update-explorer.md)中作为层次结构**H1**的一部分显示，因为它们具有完全定义且正确排序的*生成*、*楼层*和*房间*参数。
+时序 **ID1** 和 **ID4** 在 [Azure 时序见解资源管理器](./concepts-ux-panels.md)中作为层次结构 **H1** 的一部分显示，因为它们具有完全定义且正确排序的 *生成*、*楼层* 和 *房间* 参数。
 
 其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。
 
@@ -231,7 +231,7 @@ ms.locfileid: "91630655"
 [![时序模型类型示例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> 有关类型 API 创建、读取、更新和删除 (CRUD) 支持，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[类型 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api)。
+> 有关类型 API 创建、读取、更新和删除 (CRUD) 支持，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[类型 API REST 文档](/rest/api/time-series-insights/reference-model-apis#types-api)。
 
 ### <a name="type-properties"></a>Type 属性
 
@@ -288,7 +288,7 @@ ms.locfileid: "91630655"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何通过 API 编辑模型，请阅读[时序模型](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)参考文档。
+* 若要详细了解如何通过 API 编辑模型，请阅读[时序模型](/rest/api/time-series-insights/reference-model-apis)参考文档。
 
 * 探究可以使用[时序模型变量](./concepts-variables.md)创建的公式和计算
 

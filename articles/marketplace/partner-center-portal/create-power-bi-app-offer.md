@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710645"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131490"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用套餐
 
@@ -55,10 +55,10 @@ ms.locfileid: "91710645"
 
 它包含用于根据你所做的选择对此产品/服务执行操作的链接。 例如：
 
-- 如果产品/服务是草稿 - [删除草稿产品/服务](update-existing-offer.md#delete-a-draft-offer)
+- 如果产品/服务是草稿 - 删除草稿产品/服务
 - 如果产品/服务已上线 - [停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- 如果产品/服务为预览版 - [投入使用](publishing-status.md#publisher-approval)
-- 如果尚未完成发布- [取消发布](update-existing-offer.md#cancel-publishing)
+- 如果产品/服务为预览版 - [投入使用](../review-publish-offer.md#previewing-and-approving-your-offer)
+- 如果还没有完成发布者注销 - [取消发布](../review-publish-offer.md#cancel-publishing)。
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -97,7 +97,7 @@ ms.locfileid: "91710645"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用** "。
 
 请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
@@ -142,8 +142,8 @@ ms.locfileid: "91710645"
 6. 使用条款
 7. 隐私策略
 8. 产品名称
-9. 总结
-10. 说明
+9. 摘要
+10. 描述
 11. 屏幕截图/视频
 
 ### <a name="name"></a>名称
@@ -234,7 +234,7 @@ ms.locfileid: "91710645"
 
 ## <a name="technical-configuration"></a>技术配置
 
-将 Power BI 服务中的应用提升到生产环境，并提供使客户可以安装应用的 Power BI 应用安装程序链接。 有关详细信息，请参阅[在 Power BI 中发布使用仪表板和报表的应用](https://docs.microsoft.com/power-bi/service-create-distribute-apps)。
+将 Power BI 服务中的应用提升到生产环境，并提供使客户可以安装应用的 Power BI 应用安装程序链接。 有关详细信息，请参阅[在 Power BI 中发布使用仪表板和报表的应用](/power-bi/service-create-distribute-apps)。
 
 ## <a name="supplemental-content"></a>补充内容
 
@@ -260,4 +260,4 @@ ms.locfileid: "91710645"
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线** "。

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892540"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089972"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>教程：如何使用警报和操作组监视 Spring Cloud 资源
 
@@ -113,7 +113,7 @@ Azure Spring Cloud 警报支持根据可用存储、请求速率或数据用量�
 本教程介绍了如何为 Azure Spring Cloud 应用程序设置警报和操作组。 若要详细了解操作组，请参阅：
 
 > [!div class="nextstepaction"]
-> [在 Azure 门户中创建和管理器操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [在 Azure 门户中创建和管理器操作组](../azure-monitor/platform/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [操作组中的短信警报行为](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [操作组中的短信警报行为](../azure-monitor/platform/alerts-sms-behavior.md)

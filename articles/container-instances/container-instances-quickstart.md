@@ -9,12 +9,12 @@ ms.custom:
 - mvc
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 41e064d34f9fdb004feb72d7becdb08fe377aec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91271199"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100178"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure 中部署容器实例
 
@@ -24,17 +24,17 @@ ms.locfileid: "91271199"
 
 ![在浏览器中显示已部署到 Azure 容器实例的应用][aci-app-browser]
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本快速入门。 如果想要在本地使用它，建议使用 2.0.55 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+- 本快速入门需要 Azure CLI 2.0.55 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
 Azure 容器实例（例如所有 Azure 资源）都必须部署到资源组中。 使用资源组可以组织和管理相关的 Azure 资源。
 
-首先，使用以下 [az group create][az-group-create] 命令在 eastus  位置中创建一个名为“myResourceGroup”  的资源组：
+首先，使用以下 [az group create][az-group-create] 命令在 eastus 位置中创建一个名为“myResourceGroup”的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +66,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中转到其 FQDN。 如果看到类似于下图的网页，那么恭喜你！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
+如果容器的 `ProvisioningState` 为 **Succeeded** ，则在浏览器中转到其 FQDN。 如果看到类似于下图的网页，那么恭喜你！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
 
 ![在浏览器中显示已部署到 Azure 容器实例的应用][aci-app-browser]
 
@@ -101,7 +101,7 @@ listening on port 80
 az container attach --resource-group myResourceGroup --name mycontainer
 ```
 
-附加后，刷新浏览器数次，以生成其他一些输出。 完成后，使用 `Control+C` 分离控制台。 会得到类似于下面的输出：
+附加后，刷新浏览器数次，以生成其他一些输出。 完成后，使用 `Control+C` 分离控制台。 应该会看到与下面类似的输出：
 
 ```output
 Container 'mycontainer' is in state 'Running'...
@@ -122,7 +122,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>清理资源
 
-使用完容器后，可使用 [az container delete][az-container-delete] 命令将其删除：
+完成容器的操作后，可使用 [az container delete][az-container-delete] 命令将其删除：
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -134,7 +134,7 @@ az container delete --resource-group myResourceGroup --name mycontainer
 az container list --resource-group myResourceGroup --output table
 ```
 
-mycontainer 容器不应出现在命令的输出中  。 如果资源组中没有任何其他容器，则不会显示任何输出。
+mycontainer 容器不应出现在命令的输出中。 如果资源组中没有任何其他容器，则不会显示任何输出。
 
 如果已使用完 *myResourceGroup* 资源组及其包含的所有资源，请使用 [az group delete][az-group-delete] 命令将其删除：
 

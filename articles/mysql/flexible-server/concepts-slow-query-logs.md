@@ -1,17 +1,17 @@
 ---
 title: 慢查询日志-Azure Database for MySQL-灵活服务器
 description: 介绍 Azure Database for MySQL 灵活的服务器中可用的慢速查询日志。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399204"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543011"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的查询日志速度缓慢) 
 
@@ -23,14 +23,14 @@ ms.locfileid: "91399204"
 有关 MySQL 慢速查询日志的详细信息，请参阅 MySQL 引擎文档中的 [慢速查询日志部分](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) 。
 
 ## <a name="configure-slow-query-logging"></a>配置慢查询日志记录 
-默认情况下，慢速查询日志处于禁用状态。 若要启用日志，请将 `slow_query_log` 服务器参数设置为 *ON*。 这可以使用 Azure 门户或 Azure CLI 进行配置。 <!-- add link to server parameter-->. 
+默认情况下，慢速查询日志处于禁用状态。 若要启用日志，请将 `slow_query_log` 服务器参数设置为 *ON* 。 这可以使用 Azure 门户或 Azure CLI 进行配置。 <!-- add link to server parameter-->. 
 
 可以调整以控制慢速查询日志记录行为的其他参数包括：
 
-- **long_query_time**：记录查询是否需要超过 `long_query_time` (秒的时间才能完成) 。 默认值为 10 秒。
-- **log_slow_admin_statements**：确定管理语句是否 (例如。 `ALTER_TABLE``ANALYZE_TABLE`记录) 。
-- **log_queries_not_using_indexes**：确定是否记录不使用索引的查询。
-- **log_throttle_queries_not_using_indexes**：限制可以写入慢查询日志的非索引查询数。 当 `log_queries_not_using_indexes` 设置为*ON*时，此参数生效
+- **long_query_time** ：记录查询是否需要超过 `long_query_time` (秒的时间才能完成) 。 默认值为 10 秒。
+- **log_slow_admin_statements** ：确定管理语句是否 (例如。 `ALTER_TABLE``ANALYZE_TABLE`记录) 。
+- **log_queries_not_using_indexes** ：确定是否记录不使用索引的查询。
+- **log_throttle_queries_not_using_indexes** ：限制可以写入慢查询日志的非索引查询数。 当 `log_queries_not_using_indexes` 设置为 *ON* 时，此参数生效
 
 > [!IMPORTANT]
 > 如果表未编制索引，则将 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 参数设置为 **ON** 可能会影响 MySQL 性能，因为对这些非索引表运行的所有查询都将写入慢查询日志。

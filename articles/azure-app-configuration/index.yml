@@ -4,17 +4,17 @@ summary: 了解如何使用 Azure 应用配置（一项托管服务，可帮助�
 metadata:
   title: Azure 应用配置文档
   description: 了解如何使用 Azure 应用配置（一项托管服务，可帮助开发人员轻松且安全地集中管理其应用程序和功能设置）。
-  author: lisaguthrie
-  ms.author: lcozzens
+  author: AlexandraKemperMS
+  ms.author: alkemper
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 598fb9fa8c780219de13af668f0a1c35cba9b40c
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 45b249dbe8e95a063cdeb30c3b7389eb1dcf2001
+  ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89421588"
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96929525"
 landingContent:
 - title: 关于 Azure 应用配置
   linkLists:
@@ -74,6 +74,8 @@ landingContent:
       url: enable-dynamic-configuration-dotnet.md
     - text: 在 Azure Functions 应用中使用动态配置
       url: enable-dynamic-configuration-azure-functions-csharp.md
+    - text: 在 Spring Boot 中使用动态配置
+      url: enable-dynamic-configuration-java-spring-app.md
   - linkListType: tutorial
     links:
     - text: 与 CI/CD 管道集成
@@ -113,9 +115,9 @@ landingContent:
   - linkListType: reference
     links:
     - text: .NET Core 库
-      url: https://go.microsoft.com/fwlink/?linkid=2091700
+      url: /dotnet/api/microsoft.featuremanagement
     - text: .NET Core 筛选器库
-      url: https://go.microsoft.com/fwlink/?linkid=2091601
+      url: /dotnet/api/microsoft.featuremanagement.featurefilters
 - title: 配置 SDK 和示例
   linkLists:
   - linkListType: sample
@@ -125,13 +127,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest
+      url: /cli/azure/appconfig?view=azure-cli-latest
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.appconfiguration/
+      url: /powershell/module/az.appconfiguration/
     - text: Terraform
       url: https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html
     - text: .NET Core 提供程序
-      url: https://go.microsoft.com/fwlink/?linkid=2074664
+      url: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
     - text: Spring Boot 提供程序
       url: https://github.com/microsoft/spring-cloud-azure/tree/master/
     - text: 用于 Java 的 Azure SDK
@@ -141,4 +143,4 @@ landingContent:
     - text: 用于 JavaScript 的 Azure SDK
       url: https://go.microsoft.com/fwlink/?linkid=2103664
     - text: REST
-      url: https://go.microsoft.com/fwlink/?linkid=2078296
+      url: rest-api.md

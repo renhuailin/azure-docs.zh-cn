@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 7b11d7f577f0a2ceb7284d9f78ccf83a64c72fd3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ecab0ee67dd1d5cee3fd9927c00c9f9d827b2f47
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258106"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910043"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流
 
@@ -51,7 +51,7 @@ ms.locfileid: "89258106"
 ## <a name="create-a-channel"></a>创建频道
 1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…”  。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
+    ![屏幕截图显示从菜单中选择的 "创建频道"。](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
 2. 指定频道名称，说明字段为选填字段。 在“频道设置”下针对“实时编码”选项选择“标准”，将“输入协议”设置为“RTMP”。 所有其他设置可保留原样。
 
@@ -59,7 +59,7 @@ ms.locfileid: "89258106"
 
 3. 单击“创建频道” 。
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
+   ![屏幕截图显示 "创建动态通道" 对话框。](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 > [!NOTE]
 > 启动频道可能需要长达 20 分钟的时间。
@@ -76,7 +76,7 @@ ms.locfileid: "89258106"
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />配置 Telestream Wirecast 编码器
 在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
-**视频**：
+**视频** ：
 
 * 编解码器：H.264
 * 配置文件：高（级别 4.0）
@@ -84,7 +84,7 @@ ms.locfileid: "89258106"
 * 关键帧：2 秒（60 秒）
 * 帧速率：30
 
-**音频**：
+**音频** ：
 
 * 编解码器：AAC (LC)
 * 比特率：192 kbps
@@ -100,7 +100,7 @@ ms.locfileid: "89258106"
 
     编码配置文件已预先选择为 **Azure H.264 720p 16:9 (1280x720)** 。 若要自定义这些设置，请选择下拉列表右侧的齿轮图标，并选择“新建预设”。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
+    ![屏幕截图显示了 "选择模板" 对话框，其中选择了 BlobTrigger。](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. 配置编码器预设。
 
     为预设命名，并查看是否存在下列建议的设置：
@@ -118,7 +118,7 @@ ms.locfileid: "89258106"
    * 目标比特率：192 kbits/秒
    * 采样率：44.100 kHz
 
-     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
+     ![屏幕截图显示了 AzureTest1 的编码器预设。](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. 按“保存” 。
 
     “编码”字段现在有新建的配置文件可供选择。
@@ -130,15 +130,15 @@ ms.locfileid: "89258106"
 
     频道正在运行时，右键单击频道名称，向下导航，将鼠标悬停在“将输入 URL 复制到剪贴板”上方，然后选择“主要输入 URL”。  
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
+    ![屏幕截图显示 "将输入 U R L 复制到剪贴板" 选项，以获取主输入 U R L。](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
 8. 在 Wirecast 的“输出设置”窗口中，将此信息粘贴到输出部分的“地址”字段，然后指定一个流名称。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
+    ![屏幕截图显示输出设置。](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. 选择“确定” 。
 2. 在“Wirecast”主屏幕上，确认视频和音频的输入源已就绪，并单击左上角的“流”。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![屏幕截图显示 "Wirecast 流" 按钮。](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > 在单击“流”之前，必须确保频道已就绪。
@@ -150,7 +150,7 @@ ms.locfileid: "89258106"
 
 导航回 AMSE 工具，并右键单击要测试的频道。 在菜单中，将鼠标悬停在“播放预览”上方，然后选择“使用 Azure Media Player”。  
 
-![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![屏幕截图显示 "播放 Azure Media Player" 选择的 "预览"。](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 如果流出现在播放器中，则编码器已正确配置，可以连接到 AMS。
 
@@ -159,7 +159,7 @@ ms.locfileid: "89258106"
 ## <a name="create-a-program"></a>创建节目
 1. 确认频道可以播放后，即可创建节目。 在 AMSE 工具的“实时”选项卡下，右键单击节目区域，并选择“创建新节目”。  
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
+    ![屏幕截图显示选定的 "创建程序" 选项。](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. 为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。  
 3. 选中“立即启动节目”  框。
 4. 单击“创建节目” 。  

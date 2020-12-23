@@ -1,17 +1,17 @@
 ---
 title: 创建用户 - Azure Database for MariaDB
 description: 本文介绍如何创建新的用户帐户，以与 Azure Database for MariaDB 服务器进行交互。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 7a3515850027963dcabbf2cef4efd8bf43802cbe
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 882c8365bda87e97bfbc3bee9bdd320b312b4114
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653054"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542705"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中创建用户 
 本文介绍如何在 Azure Database for MariaDB 中创建用户。
@@ -30,7 +30,7 @@ ms.locfileid: "91653054"
 
 > [!NOTE]
 > 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privileges--data-manipulation-support)，以了解服务中不支持的权限。<br><br>
-> 服务不支持密码插件，如 "validate_password" 和 "caching_sha2_password"。
+> 该服务不支持密码插件，例如“validate_password”和“caching_sha2_password”。
 
 ## <a name="create-additional-admin-users"></a>创建其他管理员用户
 1. 获取连接信息和管理员用户名。
@@ -94,7 +94,7 @@ ms.locfileid: "91653054"
 
 ## <a name="azure_superuser"></a>azure_superuser
 
-所有 Azure Database for MySQL 服务器都是使用名为 "azure_superuser" 的用户创建的。 这是由 Microsoft 创建的系统帐户，用于管理服务器以执行监视、备份和其他定期维护。 待命工程师还可以使用此帐户在使用证书身份验证的情况下访问服务器，并且必须使用实时 (JIT) 过程请求访问。
+所有 Azure Database for MySQL 服务器都是使用名为“azure_superuser”的用户创建的。 这是由 Microsoft 创建的系统帐户，用于管理服务器以执行监视、备份和其他定期维护。 待命工程师还可以使用此帐户在发生证书身份验证事件期间访问服务器，并且必须使用实时 (JIT) 进程请求访问。
 
 ## <a name="next-steps"></a>后续步骤
 针对新用户计算机的 IP 地址打开防火墙，使其能够连接：[使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则](howto-manage-firewall-portal.md)  

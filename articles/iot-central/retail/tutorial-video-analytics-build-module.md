@@ -1,5 +1,5 @@
 ---
-title: 教程 - 修改 IoT Edge 实时视频分析模块
+title: 教程 - 修改 Azure IoT Edge 实时视频分析模块
 description: 本教程说明如何修改和生成视频分析 - 对象和运动检测应用程序模板所使用的实时视频分析网关模块。
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037854"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124888"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>教程：修改和生成实时视频分析网关模块
 
@@ -28,8 +28,8 @@ ms.locfileid: "88037854"
 * [Node.js](https://nodejs.org/en/download/) v10 或更高版本
 * 已安装 [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 扩展的 [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Docker](https://www.docker.com/products/docker-desktop) 引擎
-* 用于承载模块版本的 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
-* [Azure 媒体服务](https://docs.microsoft.com/azure/media-services/)帐户。 如果已完成之前的教程，可以再次使用之前创建的项。
+* 用于承载模块版本的 [Azure 容器注册表](../../container-registry/index.yml)。
+* [Azure 媒体服务](../../media-services/index.yml)帐户。 如果已完成之前的教程，可以再次使用之前创建的项。
 
 ## <a name="clone-the-repository"></a>克隆存储库
 
@@ -50,7 +50,7 @@ git clone https://github.com/Azure/live-video-analytics
 1. 编辑 `LvaEdgeGatewayModule` 模块部分，以将映像名称和 AMS 帐户名称添加到 `env:amsAccountName:value`。
 1. 编辑 `lvaYolov3` 模块部分并添加映像的名称。
 1. 编辑 `lvaEdge` 模块部分并添加映像的名称。
-1. 有关如何完成配置的详细信息，请参阅[在 Azure IoT Central 中创建视频分析应用程序](tutorial-video-analytics-create-app.md)。
+1. 有关如何完成配置的详细信息，请参阅[在 Azure IoT Central 中创建视频分析应用程序](tutorial-video-analytics-create-app-yolo-v3.md)。
 
 ## <a name="build-the-code"></a>生成代码
 

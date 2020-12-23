@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587948"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181401"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>教程：Azure Active Directory 与 Spotinst 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88587948"
 * 让用户使用其 Azure AD 帐户自动登录到 Spotinst。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -99,7 +99,7 @@ ms.locfileid: "88587948"
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 Spotinst”部分中，根据你的需要复制相应 URL****。
+1. 在“设置 Spotinst”部分中，根据你的需要复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "88587948"
 在本部分中，将通过授予 B.Simon 访问 Spotinst 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“Spotinst”****。
+1. 在应用程序列表中，选择“Spotinst”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
@@ -137,17 +137,17 @@ ms.locfileid: "88587948"
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Spotinst。
 
-2. 单击屏幕右上方的用户图标，再单击“设置”********。
+2. 单击屏幕右上方的用户图标，再单击“设置”。
 
-    ![Spotinst 设置](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![屏幕截图显示从“用户”图标选择了“设置”。](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-3. 单击顶部的“安全性”选项卡，然后选择“标识提供者”并执行以下步骤********：
+3. 单击顶部的“安全性”选项卡，然后选择“标识提供者”并执行以下步骤：
 
     ![Spotinst 安全性](./media/spotinst-tutorial/tutorial_spotinst_security.png)
 
-    a. 复制实例的“中继状态”值并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“中继状态”文本框************。
+    a. 复制实例的“中继状态”值并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“中继状态”文本框。
 
-    b. 单击“浏览”，上传从 Azure 门户下载的元数据 xml 文件****
+    b. 单击“浏览”，上传从 Azure 门户下载的元数据 xml 文件
 
     c. 单击 **“保存”**。
 
@@ -155,43 +155,42 @@ ms.locfileid: "88587948"
 
 本部分旨在 Spotinst 中创建名为 Britta Simon 的用户。
 
-1. 如果已在启用了 SP 的模式下配置应用程序，请执行以下步骤****：
+1. 如果已在启用了 SP 的模式下配置应用程序，请执行以下步骤：
 
    a. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Spotinst。
 
-   b. 单击屏幕右上方的用户图标，再单击“设置”********。
+   b. 单击屏幕右上方的用户图标，再单击“设置”。
 
-    ![Spotinst 设置](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![屏幕截图显示从“用户”图标选择了“设置”。](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-    c. 单击“用户”，然后选择“添加用户”********。
+    c. 单击“用户”，然后选择“添加用户”。
 
-    ![Spotinst 设置](./media/spotinst-tutorial/adduser1.png)
+    ![屏幕截图显示从“用户”选择了“添加用户”。](./media/spotinst-tutorial/adduser1.png)
 
     d. 在“添加用户”部分中，执行以下步骤：
 
-    ![Spotinst 设置](./media/spotinst-tutorial/adduser2.png)
+    ![屏幕截图显示了“添加用户”部分，你可以在其中输入所述值。](./media/spotinst-tutorial/adduser2.png)
 
-    * 在“全名”文本框中输入用户的全名，例如 BrittaSimon********。
+    * 在“全名”文本框中输入用户的全名，例如 BrittaSimon。
 
-    * 在“电子邮件”文本框中，输入用户的电子邮件地址（如 `brittasimon\@contoso.com`）****。
+    * 在“电子邮件”文本框中，输入用户的电子邮件地址（如 `brittasimon\@contoso.com`）。
 
-    * 为组织角色、帐户角色和帐户选择组织特定的详细信息****。
+    * 为组织角色、帐户角色和帐户选择组织特定的详细信息。
 
-2. 如果已在启用了 IDP 的模式下配置应用程序，则此部分中没有操作项****。 Spotinst 支持实时预配（该预配默认启用）。 尝试访问 Spotinst 期间，如果尚不存在用户，则会创建一个新用户。
+2. 如果已在启用了 IDP 的模式下配置应用程序，则此部分中没有操作项。 Spotinst 支持实时预配（该预配默认启用）。 尝试访问 Spotinst 期间，如果尚不存在用户，则会创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Spotinst 磁贴时，应会自动登录到为其设置了 SSO 的 Spotinst。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Spotinst 磁贴时，应会自动登录到为其设置了 SSO 的 Spotinst。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 Spotinst](https://aad.portal.azure.com/)
-

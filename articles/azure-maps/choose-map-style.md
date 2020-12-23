@@ -9,29 +9,29 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285156"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680017"
 ---
 # <a name="change-the-style-of-the-map"></a>更改地图的样式
 
-地图控件支持多种不同的地图 [样式选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) 和 [基本地图样式](supported-map-styles.md)。 在初始化地图控件时，可以设置所有样式。 或者，您可以使用地图控件的函数设置样式 `setStyle` 。 本文说明如何使用这些样式选项来自定义地图的外观。 此外，您还将学习如何在您的地图中实现样式选取器控件。 样式选取器控件允许用户在不同的基本样式之间切换。
+地图控件支持多种不同的地图 [样式选项](/javascript/api/azure-maps-control/atlas.styleoptions) 和 [基本地图样式](supported-map-styles.md)。 在初始化地图控件时，可以设置所有样式。 或者，您可以使用地图控件的函数设置样式 `setStyle` 。 本文说明如何使用这些样式选项来自定义地图的外观。 此外，您还将学习如何在您的地图中实现样式选取器控件。 样式选取器控件允许用户在不同的基本样式之间切换。
 
 ## <a name="set-map-style-options"></a>设置地图样式选项
 
-可以在 web 控件初始化期间设置样式选项。 或者，您可以通过调用地图控件的函数来更新样式选项 `setStyle` 。 若要查看所有可用样式选项，请参阅 [样式选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)。
+可以在 web 控件初始化期间设置样式选项。 或者，您可以通过调用地图控件的函数来更新样式选项 `setStyle` 。 若要查看所有可用样式选项，请参阅 [样式选项](/javascript/api/azure-maps-control/atlas.styleoptions)。
 
 ```javascript
 //Set the style options when creating the map.
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -50,7 +50,7 @@ map.setStyle({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="地图样式选项" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>映射样式 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>映射样式 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="set-a-base-map-style"></a>设置基本地图样式
@@ -82,7 +82,7 @@ var map = new atlas.Map('map', {
 map.setStyle({ style: 'satellite' });
 ```
 
-在下面的代码中，在加载映射实例之后， `grayscale_dark` `satellite` 使用 [system.windows.forms.control.setstyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) 函数将映射样式从更新为。
+在下面的代码中，在加载映射实例之后， `grayscale_dark` `satellite` 使用 [system.windows.forms.control.setstyle](/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) 函数将映射样式从更新为。
 
 <br/>
 
@@ -93,7 +93,7 @@ map.setStyle({ style: 'satellite' });
 
 "样式选取器" 控件提供了一个带有飞出面板的 "轻松使用" 按钮，最终用户可以使用该按钮在基本样式之间切换。
 
-样式选择器具有两个不同的布局选项： `icon` 和 `list` 。 此外，样式选取器允许你选择两个不同的样式选取器控件 `style` 选项： `light` 和 `dark` 。 在此示例中，样式选取器使用 `icon` 布局，并以图标的形式显示基本地图样式的选择列表。 样式控件选取器包括以下基本样式集： `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` 。 有关样式选取器控件选项的详细信息，请参阅 [样式控制选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)。
+样式选择器具有两个不同的布局选项： `icon` 和 `list` 。 此外，样式选取器允许你选择两个不同的样式选取器控件 `style` 选项： `light` 和 `dark` 。 在此示例中，样式选取器使用 `icon` 布局，并以图标的形式显示基本地图样式的选择列表。 样式控件选取器包括以下基本样式集： `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` 。 有关样式选取器控件选项的详细信息，请参阅 [样式控制选项](/javascript/api/azure-maps-control/atlas.stylecontroloptions)。
 
 下图显示了布局中显示的样式选取器控件 `icon` 。
 
@@ -118,21 +118,24 @@ map.setStyle({ style: 'satellite' });
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Map](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
+> [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)
 
 > [!div class="nextstepaction"]
-> [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol)
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)
 
 > [!div class="nextstepaction"]
-> [StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)
+> [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-将控件添加到地图：
+有关可向地图添加的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
 > [添加地图控件](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [添加图钉](map-add-pin.md)
+> [添加符号层](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [添加气泡层](map-add-bubble-layer.md)

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799034d9060e8afe101e86e7b98ac7e01c28d191
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70078849"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019304"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>跨 Azure 区域的 SAP HANA 可用性
 
@@ -74,13 +75,13 @@ SAP 使用 HANA 2.0 SPS3 引入了[多目标系统复制](https://help.sap.com/v
 
 如果组织对第二个 (DR) Azure 区域的高可用性就绪性有要求，那么体系结构将如下所示：
 
-![三个 VM 在两个区域上的多目标图](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![此图显示了在第二个 (DR) Azure 区域中满足高可用性准备情况的组织。](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
 使用 logreplay 作为操作模式时，此配置在主要区域内提供低 RTO 的 RPO=0。 如果需要转移到第二个区域，此配置还能提供更低的 RPO。 第二个区域的 RTO 时间取决于是否预加载数据。 许多客户使用次要区域中的 VM 来运行测试系统。 在这种用例中，无法预加载数据。
 
 > [!IMPORTANT]
-> 不同层之间的操作模式需要是同类的。 不能**** 使用 logreply 作为第 1 层与第 2 层之间的操作模式，同时使用 delta_datashipping 提供第 3 层。 只能选择一种或另一种操作模式，需要对所有层保持一致。 由于 delta_datashipping 不适合提供 RPO=0，因此对于这类多层配置，唯一合理的操作模式仍是 logreplay。 有关操作模式和某些限制的详细信息，请参阅 SAP 文章 [SAP HANA 系统复制的操作模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)。 
+> 不同层之间的操作模式需要是同类的。 不能使用 logreply 作为第 1 层与第 2 层之间的操作模式，同时使用 delta_datashipping 提供第 3 层。 只能选择一种或另一种操作模式，需要对所有层保持一致。 由于 delta_datashipping 不适合提供 RPO=0，因此对于这类多层配置，唯一合理的操作模式仍是 logreplay。 有关操作模式和某些限制的详细信息，请参阅 SAP 文章 [SAP HANA 系统复制的操作模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)。 
 
 ## <a name="next-steps"></a>后续步骤
 

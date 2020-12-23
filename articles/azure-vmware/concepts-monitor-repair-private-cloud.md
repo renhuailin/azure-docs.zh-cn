@@ -2,13 +2,14 @@
 title: 概念-监视和修复 Azure VMware 解决方案私有云
 description: 了解 Azure VMware 解决方案如何监视和修复 Azure VMware 解决方案私有云上的 VMware ESXi 服务器。
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: bee08304cd14f2aeec6995203638b5a37d9a861c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperf-fy21q2
+ms.date: 11/20/2020
+ms.openlocfilehash: 7f367a6ef9b86f235a16a698735cfb58a11f6862
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341523"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033589"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>监视和修复 Azure VMware 解决方案私有云
 
@@ -42,4 +43,10 @@ Azure VMware 解决方案监视主机上的以下故障情况：
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 [Azure VMware 解决方案私有云升级](concepts-upgrades.md)。  
+下面是一些你可能想要了解的有关的主题：
+
+- [Azure VMware 解决方案私有云升级](concepts-upgrades.md)
+- [Azure VMware 解决方案 Vm 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm](azure-security-integration.md)
+- [备份具有 Azure 备份服务器的 Azure VMware 解决方案 Vm](backup-azure-vmware-solution-virtual-machines.md)
+- [使用 Azure VMware 解决方案完成虚拟机灾难恢复](disaster-recovery-for-virtual-machines.md)

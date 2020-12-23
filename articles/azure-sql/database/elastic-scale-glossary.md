@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362608"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330455"
 ---
 # <a name="elastic-database-tools-glossary"></a>弹性数据库工具词汇表
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "91362608"
 
 **多租户**和**单租户**：下面显示的是单租户数据库和多租户数据库：
 
-![单租户数据库和多租户数据库](./media/elastic-scale-glossary/multi-single-simple.png)
+![显示单租户数据库和多租户数据库的屏幕截图。](./media/elastic-scale-glossary/multi-single-simple.png)
 
 下面显示的是 **分片** 单租户数据库和多租户数据库。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "91362608"
 
 **分片映射管理器**：包含分片映射、分片位置和一个或多个分片集的映射的管理对象和数据存储。
 
-![关系图显示了与 shardmaps_global、shards_global 和 shard_mappings_global 相关联的分片映射管理器。][2]
+![此图显示了与 shardmaps_global、shards_global 和 shard_mappings_global 关联的分片映射管理器。][2]
 
 ## <a name="verbs"></a>动词
 **横向缩放**：通过将分片添加到分片映射或删除分片，向外（或向内）扩展分片集合的行为。

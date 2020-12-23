@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646be410cceb214efad19757378c74f086e58578
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8166e2a937b905ae153e6b86cb026ff2be2415a8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89263056"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360541"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系统分配的托管标识访问资源管理器
 
@@ -37,6 +37,7 @@ ms.locfileid: "89263056"
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>授予 VM 对资源管理器中资源组的访问权限
+
 使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  Azure 资源管理器支持 Azure AD 身份验证。  首先，需要向此 VM 的系统分配的托管标识授予对资源管理器中资源（在本例中为包含 VM 的资源组）的访问权限。  
 
 1.  转到“资源组”选项卡。 
@@ -51,7 +52,7 @@ ms.locfileid: "89263056"
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌并使用它来调用 Azure 资源管理器 
 
-在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell**，请从[此处](/powershell/azure/)下载。 
+在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell** ，请从 [此处](/powershell/azure/)下载。 
 
 1.  在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。 
 2.  输入创建 Windows VM 时添加的用户名和密码。 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 78324cfa58a8ac015b085052bdec7e3793befc1b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539702"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>教程：Azure Active Directory 与 Signagelive 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88539702"
 * 可让用户使用其 Azure AD 帐户自动登录到 Signagelive（单一登录）。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -177,19 +177,18 @@ ms.locfileid: "88539702"
 
 ### <a name="create-a-signagelive-test-user"></a>创建 Signagelive 测试用户
 
-本部分需在 Signagelive 中创建名为“Britta Simon”的用户。 在  [Signagelive 支持团队](mailto:support@signagelive.com)的配合下，将用户添加到 Signagelive 平台。 必须先创建并激活用户，然后才能使用单一登录。
+本部分需在 Signagelive 中创建名为“Britta Simon”的用户。 请与 [Signagelive 支持团队](mailto:support@signagelive.com)协作，将用户添加到 Signagelive 平台。 必须先创建并激活用户，然后才能使用单一登录。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分，我们将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“Signagelive”磁贴时，应会自动登录到 Signagelive。  有关“我的应用”门户的详细信息，请参阅[什么是“我的应用”门户？](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在“我的应用”门户中选择“Signagelive”磁贴时，应会自动登录到 Signagelive。  有关“我的应用”门户的详细信息，请参阅[什么是“我的应用”门户？](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

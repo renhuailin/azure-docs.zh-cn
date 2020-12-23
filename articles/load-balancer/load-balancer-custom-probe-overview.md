@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051349"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780937"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -66,7 +66,7 @@ ms.locfileid: "89051349"
 
 可以通过一个示例来进一步演示该行为。 如果将探测响应数设置为 2，将间隔设置为 5 秒，则意味着，必须在 10 秒间隔内观测到 2 次探测超时失败。  由于在应用程序更改状态时发送探测的时间未同步，因此我们可以分两种情况来界定检测时间：
 
-1. 如果应用程序在第一个探测抵达之前的那一刻开始生成超时探测响应，则这些事件的检测需要 10 秒（2 x 5 秒间隔），加上应用程序发出超时信号到第一个探测抵达时的持续时间。  可以假设此项检测花费的时间略微超过 10 秒。
+1. 如果你的应用程序在第一次探测到达之前开始生成超时探测响应，则这些事件的检测将需要10秒 (2 x 5 秒的时间间隔) 加上应用程序在第一次探测到达后开始向超时发出信号的时间。  可以假设此项检测花费的时间略微超过 10 秒。
 2. 如果应用程序在第一个探测抵达之后的那一刻开始生成超时的探测响应，则这些事件的检测只会在下一个探测（和超时）抵达时加上额外 10 秒（2 x 5 秒间隔）持续时间之后才开始。  可以假设此项检测花费的时间略少于 15 秒。
 
 对于此示例，一旦发生检测，平台就会花费少量的时间对此更改做出反应。  这意味着，根据以下条件 
@@ -121,7 +121,7 @@ TCP 探测通过使用定义的端口执行三方开放式 TCP 握手来初始�
 ### <a name="http--https-probe"></a><a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP/HTTPS 探测
 
 >[!NOTE]
->HTTPS 探测仅适用于[标准负载均衡器](load-balancer-standard-overview.md)。
+>HTTPS 探测仅适用于[标准负载均衡器](./load-balancer-overview.md)。
 
 HTTP 和 HTTPS 探测构建在 TCP 探测的基础之上，发出包含指定路径的 HTTP GET。 这两个探测都支持 HTTP GET 的相对路径。 与 HTTP 探测一样，HTTPS 探测中也添加了传输层安全性（TLS，前称为 SSL）包装器。 如果实例在超时期限内做出响应并返回 HTTP 状态 200，则将运行状况探测标记为运行。  默认情况下，运行状况探测每隔 15 秒尝试检查配置的运行状况探测端口。 最小探测间隔为 5 秒。 所有间隔的总持续时间不能超过 120 秒。
 
@@ -169,7 +169,7 @@ HTTP 和 HTTPS 探测构建在 TCP 探测的基础之上，发出包含指定路
 
 来宾代理探测是对 VM 中来宾代理执行的检查。 仅当实例处于“就绪”状态时，负载均衡器才侦听并响应“HTTP 200 正常”响应。 （其他状态包括“繁忙”、“正在回收”或“正在停止”。）
 
-有关详细信息，请参阅[配置运行状况探测的服务定义文件 (csdef)](https://msdn.microsoft.com/library/azure/ee758710.aspx) 或[开始为云服务创建公共负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services)。
+有关详细信息，请参阅[配置运行状况探测的服务定义文件 (csdef)](/previous-versions/azure/reference/ee758710(v=azure.100)) 或[开始为云服务创建公共负载均衡器](/previous-versions/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services)。
 
 如果来宾代理无法使用“HTTP 200 正常”响应，则负载均衡器会将实例标记为无响应。 然后停止向该实例发送流。 负载均衡器继续检查实例。 
 
@@ -215,7 +215,7 @@ UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果任何�
 
 负载均衡器对其内部运行状况模型使用分布式探测服务。 探测服务驻留在每个 VM 主机上，可按需编程，以根据客户的配置生成运行状况探测。 运行状况探测流量直接在生成运行状况探测的探测服务与客户 VM 之间传送。 所有负载均衡器运行状况探测源自 IP 地址 168.63.129.16（源）。  可以使用 VNet 中不属于 RFC1918 空间的 IP 地址空间。  使用全局保留的、由 Microsoft 拥有的 IP 地址可以减少某个 IP 地址与 VNet 中使用的 IP 地址空间发生冲突的可能性。  此 IP 地址在所有区域中相同且不会改变，不会造成安全风险，因为只有内部 Azure 平台组件可以从此 IP 地址探寻数据包。 
 
-AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-overview.md)中标识此源 IP 地址，默认允许运行状况探测流量。
+AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/network-security-groups-overview.md)中标识此源 IP 地址，默认允许运行状况探测流量。
 
 除了负载均衡器运行状况探测外，[以下操作也使用此 IP 地址](../virtual-network/what-is-ip-address-168-63-129-16.md)：
 
@@ -233,15 +233,15 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 
 对于 UDP 负载均衡，应从后端终结点生成自定义运行状况探测信号，并使用面向相应侦听器的 TCP、HTTP 或 HTTPS 运行状况探测来反映 UDP 应用程序的运行状况。
 
-对[标准负载均衡器](load-balancer-standard-overview.md)使用 [HA 端口负载均衡规则](load-balancer-ha-ports-overview.md)时，将对所有端口进行负载均衡个运行状况探测响应必须反映整个实例的状态。
+对[标准负载均衡器](./load-balancer-overview.md)使用 [HA 端口负载均衡规则](load-balancer-ha-ports-overview.md)时，将对所有端口进行负载均衡个运行状况探测响应必须反映整个实例的状态。
 
 不要通过接收运行状况探测的实例在 VNet 中的另一个实例上转换或代理某个运行状况探测，因为此配置可能导致方案中出现连锁故障。  考虑以下方案：在负载均衡器资源后端池中部署一组第三方设备，以便为设备提供可伸缩性和冗余；配置运行状况探测来探测由第三方设备代理或转换成设备后面的其他虚拟机的端口。  如果探测用于将请求转换或代理到设备后面的其他虚拟机的同一端口，来自设备后面单个虚拟机的任何探测响应会将设备本身标记为完全停止。 此配置可能导致整个应用程序方案因设备后面的单个后端终结点而发生连锁故障。  触发器可能是一种间歇性探测故障，该故障导致负载均衡器将原始目标（设备实例）标记为停止，从而可能禁用整个应用程序方案。 请改为探测设备本身的运行状况。 选择用于确定运行状况信号的探测是网络虚拟设备 (NVA) 方案的重要考虑因素，必须咨询应用程序供应商，以了解哪种运行状况信号适合此类方案。
 
 如果在防火墙策略中不允许探测的[源 IP](#probesource)，运行状况探测将会失败，因为它无法访问实例。  而由于发生运行状况探测失败，负载均衡器会将实例标记为关闭。  这种错误的配置可能导致负载均衡的应用程序方案失败。
 
-要使负载均衡器的运行状况探测将实例标记为运行，**必须**在任何 Azure [网络安全组](../virtual-network/security-overview.md)和本地防火墙策略中允许此 IP 地址。  默认情况下，每个网络安全组都包含[服务标记](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer，以允许运行状况探测流量。
+要使负载均衡器的运行状况探测将实例标记为运行，**必须** 在任何 Azure [网络安全组](../virtual-network/network-security-groups-overview.md)和本地防火墙策略中允许此 IP 地址。  默认情况下，每个网络安全组都包含[服务标记](../virtual-network/network-security-groups-overview.md#service-tags) AzureLoadBalancer，以允许运行状况探测流量。
 
-若要测试运行状况探测故障或者将单个实例标记为停止，可以使用[网络安全组](../virtual-network/security-overview.md)显式阻止该运行状况探测（目标端口或[源 IP](#probesource)），并模拟探测故障。
+若要测试运行状况探测故障或者将单个实例标记为停止，可以使用[网络安全组](../virtual-network/network-security-groups-overview.md)显式阻止该运行状况探测（目标端口或[源 IP](#probesource)），并模拟探测故障。
 
 不要使用包含 168.63.129.16 的、使用 Microsoft 拥有的 IP 地址范围来配置 VNet。  这种配置与运行状况探测的 IP 地址冲突，可能导致方案失败。
 
@@ -251,7 +251,7 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 
 ## <a name="monitoring"></a>监视
 
-公共和内部[标准负载均衡器](load-balancer-standard-overview.md)通过 Azure Monitor 将每个终结点和后端终结点运行状况探测状态公开为多维指标。 这些指标可由其他 Azure 服务或合作伙伴应用程序使用。 
+公共和内部[标准负载均衡器](./load-balancer-overview.md)通过 Azure Monitor 将每个终结点和后端终结点运行状况探测状态公开为多维指标。 这些指标可由其他 Azure 服务或合作伙伴应用程序使用。 
 
 基本公共负载均衡器通过 Azure Monitor 日志公开针对每个后端池汇总的运行状况探测状态。  Azure Monitor 日志不适用于内部基本负载均衡器。  可以使用 [Azure Monitor 日志](load-balancer-monitor-log.md)来检查公共负载均衡器探测运行状况和探测计数。 可以配合 Power BI 或 Azure Operation Insights 使用日志记录，以提供有关负载均衡器运行状况的统计信息。
 
@@ -262,7 +262,7 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[标准负载均衡器](load-balancer-standard-overview.md)
+- 详细了解[标准负载均衡器](./load-balancer-overview.md)
 - [使用 PowerShell 在资源管理器中开始创建公共负载均衡器](quickstart-load-balancer-standard-public-powershell.md)
-- [运行状况探测的 REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- [运行状况探测的 REST API](/rest/api/load-balancer/loadbalancerprobes/)
 - 通过[负载均衡器的 Uservoice](https://aka.ms/lbuservoice) 请求新的运行状况探测功能

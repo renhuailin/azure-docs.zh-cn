@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3b1b86e47164ce4c1a13a3dfe037c0ecc659fbee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310027"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896865"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
 
-Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 此数据可以在地图上直观显示，或生成在实际驾驶条件下作为因素考虑的更智能路线。
+Azure Maps 以交通 **流** 和 **事件** 的形式提供丰富的交通信息。 此数据可以在地图上直观显示，或生成在实际驾驶条件下作为因素考虑的更智能路线。
 
 但对于所有国家或地区，地图没有相同级别的信息和准确性。 下表提供了可从每个国家或地区请求的通信信息类型的相关信息： 
 
@@ -27,12 +27,12 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
-|Canada     |✓         |✓         |
+|加拿大     |✓         |✓         |
 |智利     |✓         |✓         |
 |哥伦比亚      |✓         |✓         |
 |墨西哥     |✓         |✓         |
 |秘鲁       |✓         |✓         | 
-|United States     |✓         |✓        |
+|美国     |✓         |✓        |
 |+波多黎各     |✓         |✓         |
 |乌拉圭 |✓         |✓         |
 
@@ -135,4 +135,4 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Maps 交通数据的详细信息，请参阅[交通](https://docs.microsoft.com/rest/api/maps/traffic)参考页面。
+有关 Azure Maps 交通数据的详细信息，请参阅[交通](/rest/api/maps/traffic)参考页面。

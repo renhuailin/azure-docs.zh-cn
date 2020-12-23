@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798017"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124806"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>在“我的应用”门户中执行访问评审
 
@@ -45,7 +45,7 @@ ms.locfileid: "88798017"
 
     此时将显示“应用”页面，其中显示组织拥有并可供你使用的所有基于云的应用。
 
-    ![“我的应用”门户中的“应用”页](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![“我的应用”门户中的“应用”页](media/my-apps-portal/my-apps-home.png)
 
 3. 选择“访问评审”磁贴，查看等待批准的访问评审列表。
 
@@ -76,5 +76,5 @@ ms.locfileid: "88798017"
 ## <a name="next-steps"></a>后续步骤
 
 - [访问并使用“我的应用”门户上的应用](my-apps-portal-end-user-access.md)
-- [更改个人资料信息](my-apps-portal-end-user-update-profile.md)
+- [更改个人资料信息](./my-account-portal-settings.md)
 - [查看和更新与组相关的信息](my-apps-portal-end-user-groups.md)

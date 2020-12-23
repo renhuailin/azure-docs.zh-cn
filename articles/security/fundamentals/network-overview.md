@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a82fd6e6dc1bea0804c429f3af46884f004de69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80811109"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489762"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -63,25 +63,25 @@ Azure 支持多种类型的网络访问控制，例如：
 任何安全部署都需要某种程度的网络访问控制。 网络访问控制的目的是将虚拟机通信限制为必要的系统。 将阻止其他通信尝试。
 
 > [!NOTE]
-> 要了解存储防火墙，请参阅 [Azure 存储安全概述](storage-overview.md)一文
+> 要了解存储防火墙，请参阅 [Azure 存储安全概述](../../storage/blobs/security-recommendations.md)一文
 
 #### <a name="network-security-rules-nsgs"></a>网络安全规则 (NSG)
 
 如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），可使用网络安全组 (NSG)。 NSG 是基本的静态数据包筛选防火墙，你可使用它来基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。 NSG 包含的功能可以简化管理，并减少配置错误的可能性：
 
-* **扩充式安全规则**简化了 NSG 规则定义，并允许创建复杂规则，而无需创建多个简单规则来实现相同的结果。
-* **服务标记**是 Microsoft 创建的标签，表示一组 IP 地址。 这些标记会动态更新，以包含符合在标签中定义包含项的条件的 IP 范围。 例如，如果你要创建一个应用到东部区域的所有 Azure 存储的规则，可以使用 Storage.EastUS
-* **应用程序安全组**可用于将资源部署到应用程序组，并通过创建使用这些应用程序组的规则来控制对这些资源的访问。 例如，如果 Web 服务器已部署到“Webservers”应用程序组，则你可以创建一个规则，以便将允许来自 Internet 的 443 流量的 NSG 应用到“Webservers”应用程序组中的所有系统。
+* **扩充式安全规则** 简化了 NSG 规则定义，并允许创建复杂规则，而无需创建多个简单规则来实现相同的结果。
+* **服务标记** 是 Microsoft 创建的标签，表示一组 IP 地址。 这些标记会动态更新，以包含符合在标签中定义包含项的条件的 IP 范围。 例如，如果你要创建一个应用到东部区域的所有 Azure 存储的规则，可以使用 Storage.EastUS
+* **应用程序安全组** 可用于将资源部署到应用程序组，并通过创建使用这些应用程序组的规则来控制对这些资源的访问。 例如，如果 Web 服务器已部署到“Webservers”应用程序组，则你可以创建一个规则，以便将允许来自 Internet 的 443 流量的 NSG 应用到“Webservers”应用程序组中的所有系统。
 
 NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
 了解详细信息：
 
-* [网络安全组](../../virtual-network/security-overview.md)
+* [网络安全组](../../virtual-network/network-security-groups-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC 实时 VM 访问
 
-[Azure 安全中心](../../security-center/security-center-intro.md) 可以管理 vm 上的 nsg 并锁定对 vm 的访问，直到具有适当的基于角色的访问控制 [RBAC](/azure/role-based-access-control/overview) 权限的用户请求访问。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
+[Azure 安全中心](../../security-center/security-center-introduction.md) 可以管理 vm 上的 nsg 并锁定对 vm 的访问，直到具有相应 azure 基于角色的访问控制的用户 [azure RBAC](../../role-based-access-control/overview.md) 权限请求访问权限。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
 
 了解详细信息：
 
@@ -141,7 +141,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 了解详细信息：
 
-* [Azure 防火墙概述](/azure/firewall/overview)
+* [Azure 防火墙概述](../../firewall/overview.md)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>安全远程访问和跨界连接
 
@@ -202,7 +202,7 @@ Azure 网络支持以下安全远程访问方案：
 
 一个选择是通过 Internet 以“环回”方式将一个虚拟网络上的服务连接到另一个虚拟网络上的服务。 该连接将在一个虚拟网络上开始，通过 Internet，再回到目标虚拟网络。 此选项会导致连接存在任何基于 Internet 的通信所固有的安全问题。
 
-创建两个虚拟网络之间相互连接的站点到站点 VPN 可能是最佳选择。 此方法与上述的跨界站点到站点 VPN 连接使用相同的 [IPSec 隧道模式](https://technet.microsoft.com/library/cc786385.aspx)协议。
+创建两个虚拟网络之间相互连接的站点到站点 VPN 可能是最佳选择。 此方法与上述的跨界站点到站点 VPN 连接使用相同的 [IPSec 隧道模式](/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))协议。
 
 此方法的优点是通过 Azure 网络结构建立 VPN 连接，而不是通过 Internet 进行连接。 与通过 Internet 连接的站点到站点 VPN 相比，这提供了额外的安全层。
 
@@ -237,7 +237,7 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 
 了解详细信息：
 
-* [应用程序网关概述](/azure/application-gateway/application-gateway-introduction)
+* [应用程序网关概述](../../application-gateway/overview.md)
 
 ### <a name="network-level-load-balancing"></a>网络级别负载均衡
 
@@ -252,8 +252,8 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 
 了解详细信息：
 
-* [多个虚拟机或服务之间的面向 Internet 的负载均衡器](/azure/load-balancer/load-balancer-internet-overview)
-* [内部负载均衡器概述](/azure/load-balancer/load-balancer-internal-overview)
+* [多个虚拟机或服务之间的面向 Internet 的负载均衡器](../../load-balancer/load-balancer-overview.md)
+* [内部负载均衡器概述](../../load-balancer/load-balancer-overview.md)
 
 ### <a name="global-load-balancing"></a>全局负载均衡
 
@@ -315,7 +315,7 @@ Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS �
 ## <a name="azure-ddos-protection"></a>Azure DDoS 防护
 
 分布式拒绝服务 (DDoS) 攻击是将应用程序移动到云的客户所面临的一些最大的可用性和安全性问题。 DDoS 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。
-Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。**** 此防护功能是免费的，包含针对常见网络级攻击的不间断监视和实时缓解。 除了“基本”DDoS 防护随附的保护以外，还可以启用“标准”选项。******** DDoS 保护标准功能包括：
+Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。 此防护功能是免费的，包含针对常见网络级攻击的不间断监视和实时缓解。 除了“基本”DDoS 防护随附的保护以外，还可以启用“标准”选项。 DDoS 保护标准功能包括：
 
 * **本机平台集成：** 本机集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
 * **统包保护：** 一旦启用 DDoS 保护标准，简化后的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
@@ -332,7 +332,7 @@ Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。**** �
 
 了解详细信息：
 
-* [DDOS 防护概述](../../virtual-network/ddos-protection-overview.md)
+* [DDOS 防护概述](../../ddos-protection/ddos-protection-overview.md)
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
@@ -381,7 +381,7 @@ Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure �
 
 了解详细信息：
 
-* [Azure 安全中心简介](../../security-center/security-center-intro.md)
+* [Azure 安全中心简介](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>虚拟网络 TAP
 

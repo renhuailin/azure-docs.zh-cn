@@ -1,31 +1,24 @@
 ---
 title: 常见问题解答-SAP 解决方案的 Azure Monitor |Microsoft Docs
-description: 本文介绍常见问题的答案 (常见问题解答) 有关 Azure monitor for SAP 解决方案的常见问题解答。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
+description: 本文介绍有关 SAP 解决方案的 Azure Monitor 常见问题)  (常见问题的解答。
 author: rdeltcheva
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.reviewer: cynthn
+ms.openlocfilehash: 204b809966fbf63a48f6d1ce1d80f87f706c9a56
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987235"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968564"
 ---
-# <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Azure monitor for SAP 解决方案常见问题 (预览版) 
+# <a name="azure-monitor-for-sap-solutions-faq-preview"></a>SAP 解决方案的 Azure Monitor 常见问题解答 (预览版) 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-本文提供常见问题的解答 (常见问题解答) 有关 Azure monitor for SAP 解决方案的常见问题解答。  
+本文提供常见问题的解答 (常见问题解答) SAP 解决方案的 Azure Monitor。  
 
  - **我是否必须为 SAP 解决方案的 Azure Monitor 付费？**  
 对于 SAP 解决方案的 Azure Monitor，没有许可费。  

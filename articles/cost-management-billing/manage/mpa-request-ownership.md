@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: aaa94f66f1b0441e025013369b3b674d799d4847
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371008"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203256"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
 
@@ -21,15 +21,15 @@ ms.locfileid: "91371008"
 
 此功能仅适用于以 [Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 形式认证的 CSP 直接计费合作伙伴。 它遵循 Microsoft 的治理和策略规定，某些客户可能需要评审和批准。
 
-若要请求计费所有权，你必须拥有“全局管理员”或“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
+若要请求计费所有权，你必须拥有“全局管理员”或“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](/partner-center/permissions-overview)。
 
 本文适用于 Microsoft 合作伙伴协议的计费帐户。 这些帐户是为云解决方案提供商 (CSP) 创建的，用于在新的商业体验中管理其客户的计费。 新体验仅适用于特定的合作伙伴，他们至少有一个接受 Microsoft 客户协议 (MCA) 且有 Azure 计划的客户。 [检查你是否有权访问 Microsoft 合作伙伴协议](#check-access-to-a-microsoft-partner-agreement)。
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 与客户建立[经销商关系](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer)。 查看 [CSP 区域授权概述](https://docs.microsoft.com/partner-center/regional-authorization-overview)，确保客户和合作伙伴租户在同一个获得授权的区域内。
-1. [确认客户已接受 Microsoft 客户协议](https://docs.microsoft.com/partner-center/confirm-customer-agreement)。
-1. 为客户设置 [Azure 计划](https://docs.microsoft.com/partner-center/purchase-azure-plan)。 如果客户通过多个经销商进行购买，则需为客户和经销商的每种组合设置 Azure 计划。
+1. 与客户建立[经销商关系](/partner-center/request-a-relationship-with-a-customer)。 查看 [CSP 区域授权概述](/partner-center/regional-authorization-overview)，确保客户和合作伙伴租户在同一个获得授权的区域内。
+1. [确认客户已接受 Microsoft 客户协议](/partner-center/confirm-customer-agreement)。
+1. 为客户设置 [Azure 计划](/partner-center/purchase-azure-plan)。 如果客户通过多个经销商进行购买，则需为客户和经销商的每种组合设置 Azure 计划。
 
 ## <a name="request-billing-ownership"></a>请求计费所有权
 
@@ -115,7 +115,7 @@ ms.locfileid: "91371008"
 
 ### <a name="azure-resources-transfer"></a>Azure 资源转移
 
-订阅中的所有资源（例如 VM、磁盘和网站）都会转移。
+订阅中的所有资源（例如 VM、磁盘和网站）都会转移。 传输时，将保留订阅 ID 和资源 ID。 
 
 ### <a name="azure-marketplace-products-transfer"></a>Azure 市场产品转移
 
@@ -123,13 +123,13 @@ ms.locfileid: "91371008"
 
 ### <a name="azure-reservations-transfer"></a>Azure 预留项转移
 
-Azure 预留项不会随订阅一起自动移动。 可以在其他订阅的 EA 中保留预留，或者[取消预留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)，合作伙伴可以在 CSP 中重新购买。
+Azure 预留项不会随订阅一起自动移动。 可以在其他订阅的 EA 中保留预留，或者[取消预留](../reservations/exchange-and-refund-azure-reservations.md)，合作伙伴可以在 CSP 中重新购买。
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 
 在转换期间，使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 为现有用户、组或服务主体分配的访问权限不受影响。 合作伙伴不会获得对订阅的任何新的 Azure RBAC 访问权限。
 
-合作伙伴应协助客户获取对订阅的访问权限。 合作伙伴需获取[代表管理员 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) 访问权限才能开具支持票证。
+合作伙伴应协助客户获取对订阅的访问权限。 合作伙伴需获取[代表管理员 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](../../lighthouse/concepts/cloud-solution-provider.md) 访问权限才能开具支持票证。
 
 ### <a name="azure-support-plan"></a>Azure 支持计划
 
@@ -155,13 +155,13 @@ SaaS 产品不会随订阅一起转移。 请让用户[联系 Azure 支持人员
 
 转移的 Azure 订阅目录必须与 CSP 关系建立过程中选择的客户目录匹配。
 
-如果这两个目录不匹配，则无法转移这些订阅。 你必须通过选择 Azure 订阅的目录建立与客户的全新 CSP 经销商关系，或者更改 Azure 订阅的目录，使之与客户 CSP 关系目录匹配。 有关详细信息，请参阅[将现有订阅关联到 Azure AD 目录](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory)。
+如果这两个目录不匹配，则无法转移这些订阅。 你必须通过选择 Azure 订阅的目录建立与客户的全新 CSP 经销商关系，或者更改 Azure 订阅的目录，使之与客户 CSP 关系目录匹配。 有关详细信息，请参阅[将现有订阅关联到 Azure AD 目录](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)。
 
-### <a name="ea-subscription-in-the-non-orgnization-directory"></a>非组织目录中的 EA 订阅
+### <a name="ea-subscription-in-the-non-organization-directory"></a>非组织目录中的 EA 订阅
 
 只要非组织目录与 CSP 有经销商关系，就可以传输来自该目录的 EA 订阅。 如果目录没有经销商关系，则需要确保目录中的组织用户是可以接受合作伙伴关系的全局管理员。 用户名的域名部分必须是初始默认域名“[domain name]. onmicrosoft.com”或者是经过验证的非联合自定义域名，例如“contoso.com.”  
 
-若要将新用户添加到目录中，请参阅[快速入门：向 Azure Active Directory 添加新用户以将新用户添加到 AAD 目录](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)。
+若要将新用户添加到目录中，请参阅[快速入门：向 Azure Active Directory 添加新用户以将新用户添加到目录](../../active-directory/fundamentals/add-users-azure-active-directory.md)。
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>检查对 Microsoft 合作伙伴协议的访问权限
 
@@ -174,4 +174,4 @@ SaaS 产品不会随订阅一起转移。 请让用户[联系 Azure 支持人员
 ## <a name="next-steps"></a>后续步骤
 
 * Azure 订阅的计费所有权现已转移给你。 可在 [Azure 门户](https://portal.azure.com)中跟踪这些订阅的费用。
-* 协助客户获取对已转移的 Azure 订阅的访问权限。 [使用 Azure 门户添加或删除 Azure 角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+* 协助客户获取对已转移的 Azure 订阅的访问权限。 [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。

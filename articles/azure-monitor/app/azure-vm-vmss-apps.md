@@ -3,12 +3,12 @@ title: 监视 Azure VM 的性能 - Azure Application Insights
 description: 针对 Azure VM 和 Azure 虚拟机规模集进行应用程序性能监视 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6bc70b3d9a1a7a2d3fffb71ad28f2cf64cbd323b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024626"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461729"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
 
@@ -17,15 +17,15 @@ ms.locfileid: "87024626"
 本文逐步讲解如何通过 Application Insights 代理启用 Application Insights 监视，并提供有关如何自动完成大规模部署过程的初步指导。
 
 > [!IMPORTANT]
-> 用于 .NET 的 Azure Application Insights 代理目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，我们不建议将其用于生产工作负荷。 有些功能可能不受支持，有些功能可能受到限制。
+> 在 **Azure vm 和 VMSS** 上运行的 ASP.NET 应用程序的 Azure 应用程序 Insights 代理目前处于公共预览状态。 若要监视 **本地** 运行的 ASP.Net 应用程序，请使用适用 [于本地服务器的 Azure 应用程序 Insights 代理](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)，该代理公开发布且完全受支持。
+> 提供的 Azure Vm 和 VMSS 的预览版本没有服务级别协议，不建议用于生产工作负荷。 有些功能可能不受支持，有些功能可能受到限制。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
 可通过两种方法为 Azure 虚拟机和 Azure 虚拟机规模集托管的应用程序启用应用程序监视：
 
-* 通过 Application Insights 代理执行的“无代码”**** 方法
+* 通过 Application Insights 代理执行的“无代码”  方法
     * 这是启用监视的最简单方法，无需完成任何高级配置。 这种监视通常称为“运行时”监视。
 
     * 对于 Azure 虚拟机和 Azure 虚拟机规模集，建议至少启用此级别的监视。 然后，可以根据具体情况评估是否需要手动检测。
@@ -34,19 +34,19 @@ ms.locfileid: "87024626"
         > [!NOTE]
         > 目前仅支持 .Net IIS 托管的应用程序。 请使用 SDK 检测托管在 Azure 虚拟机和虚拟机规模集上的 ASP.NET Core、Java 和 Node.js 应用程序。
 
-* **** 通过 SDK 执行的“基于代码”方法
+*  通过 SDK 执行的“基于代码”方法
 
     * 此方法的可自定义性要高得多，但需要[添加 Application Insights SDK NuGet 包中的一个依赖项](./asp-net.md)。 使用此方法还需要自行管理对最新版本的包的更新。
 
     * 如果需要发出自定义 API 调用来跟踪基于代理的监视在默认情况下不会捕获的事件/依赖项，则需要使用此方法。 有关详细信息，请查看 [自定义事件和指标的 API](./api-custom-events-metrics.md) 一文。
 
 > [!NOTE]
-> 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会遵循手动检测设置， 这是为了防止发送重复数据。 若要了解详细信息，请参阅下面的[故障排除部分](#troubleshooting)。
+> 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会遵循手动检测设置， 这是为了防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](#troubleshooting)。
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>使用 PowerShell 在 Azure 虚拟机上管理用于 .NET 应用程序的 Application Insights 代理
 
 > [!NOTE]
-> 安装 Application Insights 代理之前，需要一个连接字符串。 [创建新的 Application Insights 资源](./create-new-resource.md)，或者从现有的 application Insights 资源复制连接字符串。
+> 在安装 Application Insights 代理之前，需要一个连接字符串。 [创建新的 Application Insights 资源](./create-new-resource.md)，或从现有 Application Insights 资源复制连接字符串。
 
 > [!NOTE]
 > 不熟悉 PowerShell？ 请查看[入门指南](/powershell/azure/get-started-azureps?view=azps-2.5.0)。
@@ -99,10 +99,10 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-你还可以在门户的 " [Azure 虚拟机" 边栏选项卡](../../virtual-machines/extensions/overview.md)中查看已安装的扩展。
+你还可以在门户中的 [Azure 虚拟机边栏选项卡](../../virtual-machines/extensions/overview.md)中查看已安装的扩展。
 
 > [!NOTE]
-> 通过单击与用于部署 Application Insights 代理扩展的连接字符串关联的 Application Insights 资源中的实时指标流来验证安装。 如果从多个虚拟机发送数据，请在“服务器名称”下选择目标 Azure 虚拟机。 可能需要等待长达一分钟的时间数据才会开始流动。
+> 验证安装的方法是：单击与你在部署 Application Insights 代理扩展时使用的连接字符串相关联的 Application Insights 资源中的“实时指标流”。 如果从多个虚拟机发送数据，请在“服务器名称”下选择目标 Azure 虚拟机。 可能需要等待长达一分钟的时间数据才会开始流动。
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在 Azure 虚拟机规模集上管理用于 .NET 应用程序的 Application Insights 代理
 

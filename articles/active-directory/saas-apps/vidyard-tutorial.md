@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c6b88e9c59fa7195e77275ad193975924df137f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4176c92d48b67b9f9207f22ebd8939b5ec1437ee
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532058"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>教程：Azure Active Directory 与 Vidyard 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88532058"
 * 可让用户使用其 Azure AD 帐户自动登录到 Vidyard（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -43,7 +43,7 @@ ms.locfileid: "88532058"
 
 * Vidyard 支持 **SP** 和 **IDP** 发起的 SSO
 
-* Vidyard 支持**实时**用户预配
+* Vidyard 支持 **实时** 用户预配
 
 ## <a name="adding-vidyard-from-the-gallery"></a>从库中添加 Vidyard
 
@@ -91,7 +91,7 @@ ms.locfileid: "88532058"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "88532058"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![Vidyard 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://secure.vidyard.com/sso/saml/<unique id>/metadata`
 
@@ -109,14 +109,14 @@ ms.locfileid: "88532058"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Vidyard 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://secure.vidyard.com/sso/saml/<unique id>/login`
 
     > [!NOTE]
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -136,15 +136,15 @@ ms.locfileid: "88532058"
 
 2. 从 Vidyard 仪表板中，选择“组” > “安全性”
 
-    ![Vidyard 配置](./media/vidyard-tutorial/configure1.png)
+    ![屏幕截图显示从 Vidyard Software 站点的“群组”中选择了“安全性”。](./media/vidyard-tutorial/configure1.png)
 
 3. 单击“新建配置文件”选项卡。 
 
-    ![Vidyard 配置](./media/vidyard-tutorial/configure2.png)
+    ![屏幕截图显示了“新建配置文件”按钮。](./media/vidyard-tutorial/configure2.png)
 
 4. 在“SAML 配置”  部分中，执行以下步骤：
 
-    ![Vidyard 配置](./media/vidyard-tutorial/configure3.png)
+    ![屏幕截图显示了“SAML 配置”部分，可在其中输入所述值。](./media/vidyard-tutorial/configure3.png)
 
     a. 请在“配置文件名称”文本框中输入常规配置文件名称。 
 
@@ -162,18 +162,18 @@ ms.locfileid: "88532058"
 
 5. 从“单一登录”选项卡中，选择某个现有配置文件旁边的“分配” 
 
-    ![Vidyard 配置](./media/vidyard-tutorial/configure4.png)
+    ![屏幕截图显示了 Azure AD SSO 配置文件的“分配”按钮。](./media/vidyard-tutorial/configure4.png)
 
     > [!NOTE]
     > 在创建 SSO 配置文件后，将其分配给用户需要通过 Azure 访问的任何组。 如果用户未存在于它们分配到的组中，则 Vidyard 将自动实时创建一个用户帐户并分配其角色。
 
 6. 选择你的组织组，它显示在“可分配的组”  中。
 
-    ![Vidyard 配置](./media/vidyard-tutorial/configure5.png)
+    ![屏幕截图显示了“向组织分配 SAML 配置”部分，可在其中选择组。](./media/vidyard-tutorial/configure5.png)
 
 7. 可以在“当前分配的组”下看到已分配的组。  根据你的组织为组选择一个角色，然后单击“确认”。 
 
-    ![Vidyard 配置](./media/vidyard-tutorial/configure6.png)
+    ![屏幕截图显示了“向组织分配 SAML 配置”部分，可在其中选择角色。](./media/vidyard-tutorial/configure6.png)
 
     > [!NOTE]
     > 有关详细信息，请参阅[此文档](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard)。
@@ -239,13 +239,12 @@ ms.locfileid: "88532058"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Vidyard”磁贴时，应会自动登录到设置了 SSO 的 Vidyard。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Vidyard”磁贴时，应会自动登录到设置了 SSO 的 Vidyard。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

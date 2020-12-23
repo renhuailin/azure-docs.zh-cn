@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 025b9b7e503f38a111bd158f17b7fbeec5b23579
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684977"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131082"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>创建和管理 Azure 成本分摊规则（预览版）
 
@@ -58,16 +58,16 @@ ms.locfileid: "88684977"
 
 当分配与总成本成正比的成本时，按当前计费月份所选目标的总和或总成本分配比例百分比。
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="显示分摊百分比的示例" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="演示如何创建规则名称的示例" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 设置后，将修复定义的预填充百分比。 它们用于所有正在进行的分摊。 只有手动更新规则时，该百分比才会更改。
 
 1. 在“预填充百分比”列表中选择以下选项之一。
     - **均匀分摊** - 每个目标接受的总成本的百分比比例相等。
     - **总成本** - 根据目标的总成本创建与目标成正比的比率。 该比率用于分摊来自选定源的成本。
-    - **计算成本** - 根据目标的 Azure 计算成本（[Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions) 命名空间中的资源类型）创建与目标成正比的比率。该比率用于分摊来自选定源的成本。
-    - **存储成本** - 根据目标的 Azure 存储成本（[Microsoft.Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) 命名空间中的资源类型）创建与目标成正比的比率。 该比率用于分摊来自选定源的成本。
-    - **网络成本** - 根据目标的 Azure 网络成本（[Microsoft.Network](https://docs.microsoft.com/azure/templates/microsoft.network/allversions) 命名空间中的资源类型）创建与目标成正比的比率。 该比率用于分摊来自选定源的成本。
+    - **计算成本** - 根据目标的 Azure 计算成本（[Microsoft.Compute](/azure/templates/microsoft.compute/allversions) 命名空间中的资源类型）创建与目标成正比的比率。该比率用于分摊来自选定源的成本。
+    - **存储成本** - 根据目标的 Azure 存储成本（[Microsoft.Storage](/azure/templates/microsoft.storage/allversions) 命名空间中的资源类型）创建与目标成正比的比率。 该比率用于分摊来自选定源的成本。
+    - **网络成本** - 根据目标的 Azure 网络成本（[Microsoft.Network](/azure/templates/microsoft.network/allversions) 命名空间中的资源类型）创建与目标成正比的比率。 该比率用于分摊来自选定源的成本。
     - **自定义** - 允许手动指定整数百分比。 指定的总比例必须等于 100%。
 1. 配置规则后，选择“创建”。
 
@@ -84,7 +84,7 @@ ms.locfileid: "88684977"
 
 在成本分析中查看分摊规则的影响。 在 Azure 门户中，转到 [订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 在活动成本分摊规则的目标列表中选择一个订阅。 然后在菜单中选择“成本分析”。 在“成本分析”中，选择“分组条件”，然后选择“成本分摊”。 生成的视图显示订阅生成的快速成本细分。 此外，还会显示分摊给订阅的成本，如下图所示。
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="显示成本细分的示例" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="演示如何创建规则名称的示例" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>查看资源组的成本分摊
 
@@ -94,7 +94,7 @@ ms.locfileid: "88684977"
 
 在 Azure 门户中，导航到“成本管理 + 计费” > “成本管理” > “成本分析”  。 在“成本分析”中，选择“添加筛选器”。 选择“标记”，然后选择标记键和已向其分摊成本的标记值。
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="显示标记项成本的示例" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="演示如何创建规则名称的示例" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>编辑现有的成本分摊规则
 
@@ -112,10 +112,10 @@ ms.locfileid: "88684977"
 成本分摊公共预览版当前不支持以下项：
 
 - 计划的[导出](tutorial-export-acm-data.md)
-- [使用情况详细信息](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API 公开的数据
+- [使用情况详细信息](/rest/api/consumption/usagedetails/list) API 公开的数据
 - 计费订阅区域
 - [成本管理 Power BI 应用](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
-- [Power BI Desktop 连接器](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
+- [Power BI Desktop 连接器](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
 ### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>成本是否已分解为预算和预测视图？
 <a name="budgets-forecast"></a>
@@ -144,5 +144,5 @@ ms.locfileid: "88684977"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用[成本分摊 Rest API](https://go.microsoft.com/fwlink/?linkid=2135004) 创建或更新分摊规则
+- 使用[成本分摊 Rest API](/rest/api/cost-management/costallocationrules) 创建或更新分摊规则
 - 详细了解[如何通过 Azure 成本管理优化云投资](cost-mgt-best-practices.md)

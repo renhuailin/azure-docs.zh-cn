@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3cfe75edcf338f5248baf396147a5b77803fbfb3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004062"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655928"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
 
@@ -56,7 +56,7 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
 
 6. 在 Visual Studio 中，创建一个 U-SQL 项目。
 
-   !创建 U-SQL 项目](./media/iot-hub-query-avro-data/query-avro-data-6.png)
+   ![创建 U-SQL 项目](./media/iot-hub-query-avro-data/query-avro-data-6.png)
 
 7. 将以下脚本的内容粘贴到新创建的文件中。 修改三个突出显示的部分：Data Lake Analytics 帐户、关联的 DLL 文件路径，以及存储帐户的正确路径。
 
@@ -154,10 +154,10 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
         
         @cnt =
             SELECT message["message"] AS iotmessage,
-                   message["event"] AS msgevent,
-                   message["object"] AS msgobject,
-                   message["status"] AS msgstatus,
-                   message["host"] AS msghost
+                message["event"] AS msgevent,
+                message["object"] AS msgobject,
+                message["status"] AS msgstatus,
+                message["host"] AS msghost
             FROM @jsonify;
             
         OUTPUT @cnt TO @output_file USING Outputters.Text();
@@ -171,7 +171,7 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
 
 在本教程中，你已学习了如何查询 Avro 数据以高效地将消息从 Azure IoT 中心路由到 Azure 服务。
 
-有关使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器文档](/azure/iot-accelerators)。
+有关使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器文档](../iot-accelerators/index.yml)。
 
 若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。
 

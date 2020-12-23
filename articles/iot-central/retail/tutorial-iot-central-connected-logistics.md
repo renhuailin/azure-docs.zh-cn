@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 398441123d5ad309d9c2d506a75b80b58a6d56d0
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90980689"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346208"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>教程：部署并演练互联物流应用程序模板
 
@@ -41,9 +41,9 @@ ms.locfileid: "90980689"
 
     :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="互联物流模版":::
 
-2. 选择“互联物流应用程序”下的“创建应用” 。
+1. 选择“互联物流应用程序”下的“创建应用” 。
 
-3. 创建应用将打开“新建应用程序”窗体 。 输入以下详细信息：
+1. 创建应用将打开“新建应用程序”窗体 。 输入以下详细信息：
 
 
     * **应用程序名称**：可以使用默认的建议名称，也可以输入易记的应用程序名称。
@@ -51,9 +51,9 @@ ms.locfileid: "90980689"
     * **计费信息**：预配资源需要目录、Azure 订阅和区域详细信息。
     * **创建**：选择页面底部的“创建”以部署应用程序。
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="互联物流模版":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="互联物流应用模版":::
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="互联物流模版":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="互联物流计费信息":::
 
 ## <a name="walk-through-the-application"></a>演练应用程序
 
@@ -81,13 +81,13 @@ ms.locfileid: "90980689"
 * 查看卡车装运的物流路线以及海运地点详细信息。
 * 查看网关状态和其他相关信息。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="互联物流模版":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="互联物流仪表板":::
 
 * 可以跟踪网关、活动和未知标记的总数。
 * 可以执行设备管理操作，例如更新固件、禁用和启用传感器、更新传感器阈值、更新遥测间隔时间和更新设备服务协定。
 * 查看设备电池消耗。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="互联物流模版":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="互联物流仪表板状态":::
 
 #### <a name="device-template"></a>设备模板
 
@@ -95,11 +95,11 @@ ms.locfileid: "90980689"
 
 **网关遥测与属性** - 此接口定义与传感器、位置和设备信息相关的所有遥测数据。 该接口还定义了设备孪生属性功能，如传感器阈值和更新间隔。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="互联物流模版":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="遥测和属性接口":::
 
 **网关命令** - 此接口组织所有网关命令功能：
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="互联物流模版":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="网关命令接口":::
 
 ### <a name="rules"></a>规则
 
@@ -109,13 +109,13 @@ ms.locfileid: "90980689"
 
 **网关不响应**：如果网关长时间未向云报告，则会触发此规则。 网关可能会因低电量、连接丢失，或设备损坏而无响应。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="互联物流模版":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="规则定义":::
 
 ### <a name="jobs"></a>作业
 
 选择“作业”选项卡，查看此应用程序中的作业：
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="互联物流模版":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="要运行的作业":::
 
 可以使用作业执行应用程序范围内的操作。 此应用程序中的作业使用设备命令和孪生功能来执行各种任务，如在整个网关上禁用特定传感器，或根据装运模式和路线修改传感器阈值：
 
@@ -127,7 +127,7 @@ ms.locfileid: "90980689"
 
 如果不打算继续使用此应用程序，请访问“管理” > “应用程序设置”并选择“删除”，以删除应用程序模板  。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="互联物流模版":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="模板清理":::
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解以下内容 

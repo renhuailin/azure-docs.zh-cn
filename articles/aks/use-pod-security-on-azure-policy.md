@@ -4,15 +4,14 @@ description: '了解如何在 Azure Kubernetes Service 上通过 Azure 策略保
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-author: jluk
-ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368849"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348519"
 ---
-# <a name="secure-pods-with-azure-policy"></a>带有 Azure 策略的安全箱
+# <a name="secure-pods-with-azure-policy"></a>使用 Azure Policy 保护 Pod
 
 若要提高 AKS 群集的安全性，可以控制要授予哪些功能，以及根据公司策略运行的任何功能。 此访问通过 [用于 AKS 的 Azure 策略外接程序][kubernetes-policy-reference]提供的内置策略定义。 通过提供对 pod 规范安全方面（如 root 权限）的更多控制，可实现更严格的安全遵从性并了解群集中部署的内容。 如果 pod 不满足策略中指定的条件，Azure 策略可以禁止 pod 启动或标记冲突。 本文介绍如何使用 Azure 策略来限制 AKS 中 pod 的部署。
 
@@ -61,7 +60,7 @@ ms.locfileid: "91368849"
 以下限制仅适用于 AKS 的 Azure 策略外接程序：
 
 - [AKS Pod 安全策略 (预览) ](use-pod-security-policies.md) 并且用于 AKS 的 Azure 策略外接程序不能同时启用。 
-- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_、 _gatekeeper-system_ _aks 和 periscope_。
+- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_ 、 _gatekeeper-system_ _aks 和 periscope_ 。
 
 ### <a name="recommendations"></a>建议
 
@@ -76,8 +75,8 @@ ms.locfileid: "91368849"
 
 - 使用带有破坏的系统节点池 `CriticalAddonsOnly` 来计划网关守卫。 有关详细信息，请参阅 [使用系统节点池](use-system-pools.md#system-and-user-node-pools)。
 - AKS 群集的安全出站流量。 有关详细信息，请参阅 [控制群集节点的出口流量](limit-egress-traffic.md)。
-- 如果已启用群集 `aad-pod-identity` ，节点托管标识 (NMI) 盒修改节点的 iptables，以截获对 Azure 实例元数据终结点的调用。 此配置意味着对元数据终结点发出的任何请求都将被 NMI 截获，即使 pod 不使用也是如此 `aad-pod-identity` 。 可以将 AzurePodIdentityException .CRD 配置为通知来自与 `aad-pod-identity` 在 .crd 中定义的标签相匹配的 pod 的元数据终结点的任何请求都应该在无 NMI 处理的情况下代理。 `kubernetes.azure.com/managedby: aks` _Kube_命名空间中带标签的系统箱应 `aad-pod-identity` 通过配置 AzurePodIdentityException .crd 排除在中。 有关详细信息，请参阅 [禁用特定 pod 或应用程序的 aad-pod 标识](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)。
-  若要配置异常，请安装 [mic-EXCEPTION YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
+- 如果群集启用了 `aad-pod-identity`，节点托管标识 (NMI) pod 将修改节点的 iptable，以拦截对 Azure 实例元数据终结点的调用。 此配置意味着对元数据终结点发出的任何请求都将被 NMI 拦截，即使 pod 不使用 `aad-pod-identity`。 可以将 AzurePodIdentityException CRD 配置为通知 `aad-pod-identity` 应在不使用 NMI 进行出任何处理的情况下，代理与 CRD 中定义的标签匹配的 pod 所发起的对元数据终结点的任何请求。 应通过配置 AzurePodIdentityException CRD 在 `aad-pod-identity` 中排除在 _kube-system_ 命名空间中具有 `kubernetes.azure.com/managedby: aks` 标签的系统 pod。 有关详细信息，请参阅[禁用特定 pod 或应用程序的 aad-pod-identity](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)。
+  若要配置例外情况，请安装 [mic-exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
 
 Azure 策略外接程序需要 CPU 和内存资源才能运行。 当群集的大小增加时，这些要求会增加。 有关使用 Azure 策略外接程序的一般指南，请参阅 [Azure 策略建议][policy-recommendations] 。
 
@@ -128,7 +127,7 @@ Azure 策略中的计划是一系列策略定义，旨在实现单一的总体�
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>托管 AKS 群集不支持的内置策略
 
 > [!NOTE]
-> **AKS 中不支持**以下3个策略，因为自定义由 AKS 作为托管服务管理和保护的方面。 这些策略专门针对具有非托管控制平面的 Azure Arc 连接群集构建。
+> **AKS 中不支持** 以下3个策略，因为自定义由 AKS 作为托管服务管理和保护的方面。 这些策略专门针对具有非托管控制平面的 Azure Arc 连接群集构建。
 
 |[Pod 安全策略控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
 |---|
@@ -150,7 +149,7 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > 管理员命名空间中的 pod （如 kube）必须运行才能使群集保持正常运行，从默认的已排除命名空间列表中删除所需的命名空间可能会因为所需的系统 pod 而触发策略冲突。
 
-AKS 要求在群集上运行系统 pod 以提供关键服务，例如 DNS 解析。 限制 pod 功能的策略可能会影响系统 pod 的稳定性。 因此，在 **创建、更新和策略审核过程中，将在许可请求期间排除**以下命名空间。 这会强制从 Azure 策略中排除这些命名空间的新部署。
+AKS 要求在群集上运行系统 pod 以提供关键服务，例如 DNS 解析。 限制 pod 功能的策略可能会影响系统 pod 的稳定性。 因此，在 **创建、更新和策略审核过程中，将在许可请求期间排除** 以下命名空间。 这会强制从 Azure 策略中排除这些命名空间的新部署。
 
 1. kube-系统
 1. 网关守卫-系统
@@ -209,7 +208,7 @@ metadata:
 spec:
   containers:
     - name: nginx-privileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         privileged: true
 ```
@@ -244,7 +243,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令创建 Pod，并指定 YAML 清单的名称：
@@ -275,7 +274,7 @@ kubectl delete -f nginx-unprivileged.yaml
 删除基准计划：
 
 1. 导航到 Azure 门户上的 "策略" 窗格
-1. 从左窗格中选择**分配**
+1. 从左窗格中选择 **分配**
 1. 单击 "..."基线配置文件旁边的按钮
 1. 选择 "删除分配"
 
@@ -299,7 +298,7 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 
 下面概述了 pod 安全策略与 Azure 策略之间的行为更改。
 
-|方案| Pod 安全策略 | Azure Policy |
+|场景| Pod 安全策略 | Azure Policy |
 |---|---|---|
 |安装|启用 pod 安全策略功能 |启用 Azure 策略外接程序
 |部署策略| 部署 pod 安全策略资源| 将 Azure 策略分配到订阅或资源组作用域。 Azure 策略外接程序是 Kubernetes 资源应用程序所必需的。
@@ -330,13 +329,13 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity
-[aad-pod-identity-exception]: https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md
+[aad-pod-identity-exception]: https://azure.github.io/aad-pod-identity/docs/configure/application_exception
 
 <!-- LINKS - internal -->
 [policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md
 [policy-limitations]: ../governance/policy/concepts/policy-for-kubernetes.md?#limitations
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
-[policy-samples]: policy-samples.md#microsoftcontainerservice
+[policy-samples]: ./policy-reference.md#microsoftcontainerservice
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

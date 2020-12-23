@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539123"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027153"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
@@ -40,6 +40,28 @@ ms.locfileid: "91539123"
 对于不实施预先聚合的 SDK（即，早期版本的 Application Insights SDK 或用于浏览器检测的 SDK），Application Insights 后端仍会通过聚合 Application Insights 事件收集终结点收到的事件来填充新指标。 这意味着，尽管不能减少通过网络传输的数据量，但仍可以使用预先聚合的指标并改善性能，同时，在收集期间，可以使用不预先聚合指标的 SDK 来支持近实时维度警报。
 
 值得一提的是，收集终结点会在引入采样之前预先聚合事件，这意味着，[引入采样](./sampling.md)永远不会影响预先聚合的指标，不管对应用程序使用哪个 SDK 版本。  
+
+### <a name="sdk-supported-pre-aggregated-metrics-table"></a>SDK 支持的预聚合度量值表
+
+| 当前生产 Sdk | 标准指标 (SDK 预聚合)  | 无 SDK 预聚合) 的自定义指标 ( | 自定义指标 (与 SDK 预聚合) |
+|------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
+| .NET Core 和 .NET Framework | 支持的 (V 2.13.1 +) | 通过[TrackMetric](api-custom-events-metrics.md#trackmetric)支持| 支持的 (V 2.7.2 +) via [GetMetric](get-metric.md) |
+| Java                         | 不支持       | 通过[TrackMetric](api-custom-events-metrics.md#trackmetric)支持| 不支持                           |
+| Node.js                      | 不支持       | 通过[TrackMetric](api-custom-events-metrics.md#trackmetric)支持| 不支持                           |
+| Python                       | 不支持       | 支持                                 | 通过[OpenCensus](opencensus-python.md#metrics)支持 |  
+
+
+### <a name="codeless-supported-pre-aggregated-metrics-table"></a>无代码置备支持的预聚合度量值表
+
+| 当前生产 Sdk | 标准指标 (SDK 预聚合)  | 无 SDK 预聚合) 的自定义指标 ( | 自定义指标 (与 SDK 预聚合) |
+|-------------------------|--------------------------|-------------------------------------------|-----------------------------------------|
+| ASP.NET                 | 支持 <sup> 1<sup>    | 不支持                             | 不支持                           |
+| ASP.NET Core            | 支持 <sup> 2<sup>    | 不支持                             | 不支持                           |
+| Java                    | 不支持            | 不支持                             | [支持](java-in-process-agent.md#metrics) |
+| Node.js                 | 不支持            | 不支持                             | 不支持                           |
+
+1. 应用服务上的 ASP.NET 无代码置备附加仅在 "完整" 监视模式下发出指标。 ASP.NET 无代码置备附加应用服务、VM/VMSS 和本地发出无维度的标准指标。 SDK 对于所有维度都是必需的。
+2. 应用服务上 ASP.NET Core 无代码置备附加无维度的情况下发出标准指标。 SDK 对于所有维度都是必需的。
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>对 Application Insights 自定义指标使用预先聚合
 

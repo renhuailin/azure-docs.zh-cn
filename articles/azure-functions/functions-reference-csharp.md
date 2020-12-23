@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205437"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164833"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -249,7 +249,17 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> 有关可以用来代替 `TraceWriter` 的较新的日志记录框架，请参阅**监视 Azure Functions** 一文中的[以 C# 函数写入日志](functions-monitoring.md#write-logs-in-c-functions)。
+> 有关可用于而不是的更高日志记录框架的信息 `TraceWriter` ，请参阅 .net 类库开发人员指南中的 [ILogger](functions-dotnet-class-library.md#ilogger) 文档。
+
+### <a name="custom-metrics-logging"></a>自定义指标日志记录
+
+您可以使用 `LogMetric` 中的扩展方法 `ILogger` 在 Application Insights 中创建自定义指标。 下面是示例方法调用：
+
+```csharp
+logger.LogMetric("TestMetric", 1234);
+```
+
+此代码是一种替代方法，使用适用于 .NET 的 Application Insights API 调用 `TrackMetric`。
 
 ## <a name="async"></a>异步
 

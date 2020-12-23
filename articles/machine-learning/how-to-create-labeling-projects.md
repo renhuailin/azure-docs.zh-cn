@@ -1,19 +1,20 @@
 ---
 title: 创建数据标记项目
 titleSuffix: Azure Machine Learning
-description: 了解如何创建和运行标记项目，以标记用于机器学习的数据。  这些工具包括 ML 辅助标记，或用于协助完成任务的“人在回路”标记。
+description: 了解如何创建和运行标记项目，以标记用于机器学习的数据。  使用 ML 辅助标记，或“人机共生”标记，以协助完成任务。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: data4ml
+ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898007"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346650"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -77,8 +78,8 @@ ms.locfileid: "90898007"
 若要基于已存储在 Azure Blob 存储中的数据创建数据集：
 
 1. 选择“创建数据集” > “从数据存储”。
-1. 为数据集指定一个**名称**。
-1. 选择“文件”作为**数据集类型**。  仅支持文件数据集类型。
+1. 为数据集指定一个 **名称**。
+1. 选择“文件”作为 **数据集类型**。  仅支持文件数据集类型。
 1. 选择数据存储。
 1. 如果数据位于 Blob 存储中的子文件夹中，请选择“浏览”以选择相应的路径。
     * 将“/**”追加到路径中可以包括所选路径的子文件夹中的所有文件。
@@ -93,8 +94,8 @@ ms.locfileid: "90898007"
 若要直接上传数据：
 
 1. 选择“创建数据集” > “从本地文件”。
-1. 为数据集指定一个**名称**。
-1. 选择“文件”作为**数据集类型**。
+1. 为数据集指定一个 **名称**。
+1. 选择“文件”作为 **数据集类型**。
 1. *可选：* 选择“高级设置”可以自定义数据存储、容器，以及数据的路径。
 1. 选择“浏览”选择要上传的本地文件。
 1. 提供数据集的说明。
@@ -109,7 +110,7 @@ ms.locfileid: "90898007"
 
 若要将更多图像添加到项目中，请使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)上载到 blob 存储中的相应文件夹。 
 
-如果希望项目持续监视数据存储中的新数据，请选中“启用增量刷新”框。
+如果希望项目持续监视数据存储中的新数据，请选中“启用增量刷新”框。 启用后，此数据将每天一次提取到你的项目中。
 
 如果不希望数据存储中的新图像添加到项目，请取消选中此框。
 
@@ -149,12 +150,15 @@ ms.locfileid: "90898007"
 在“ML 辅助标记”页中可以触发自动机器学习模型，以加速完成标记任务。 在标记项目的开头，图像将按随机顺序排列，以减少潜在的偏差。 但是，数据集中的任何偏差都会反映在训练的模型中。 例如，如果 80% 的图像属于单个类，则用于训练模型的大约 80% 的数据将属于该类。 此训练不包括主动学习。
 
 选择“启用 ML 辅助标记”并指定 GPU，以启用由以下两个阶段构成的辅助标记过程：
-* 群集功能
+* 群集
 * 预先标记
 
 启动辅助标记所需的确切标记图像数目不是固定的。  它可能根据标记项目的不同而有很大的差异。 对于某些项目，在手动标记 300 个图像后，有时可能会看到预先标记或聚类任务。 ML 辅助标记使用称为“迁移学习”的技术，该技术使用预先训练的模型来直接启动训练过程。 如果数据集的类类似于预先训练的模型中的类，则只有在手动标记数百个图像之后，才能使用预先标签。 如果数据集与用于预先训练模型的数据有很大的不同，此时间可能要长得多。
 
 由于最终的标签仍依赖于标记人员的输入，因此，此技术有时称为“人在回路”标记。
+
+> [!NOTE]
+> ML 辅助数据标记不支持在[虚拟网络](how-to-network-security-overview.md)后面受保护的默认存储帐户。 对于 ML 辅助数据标记，必须使用非默认存储帐户。 可在虚拟网络后面保护非默认存储帐户。 
 
 ### <a name="clustering"></a>群集功能
 
@@ -247,7 +251,7 @@ ms.locfileid: "90898007"
 
 ## <a name="export-the-labels"></a>导出标签
 
-随时可以导出标签数据以进行机器学习试验。 可以使用 [COCO 格式](http://cocodataset.org/#format-data)导出图像标签，或将其导出为 Azure 机器学习数据集。 使用标记项目的“项目详细信息”页上的“导出”按钮。
+随时可以导出标签数据以进行机器学习试验。 可以使用 [COCO 格式](http://cocodataset.org/#format-data)导出图像标签，或将其导出为[带有标签的 Azure 机器学习数据集](how-to-use-labeled-dataset.md)。 使用标记项目的“项目详细信息”页上的“导出”按钮。 
 
 COCO 文件是在 Azure 机器学习工作区的默认 Blob 存储中创建的，该存储位于 *export/coco* 内的某个文件夹中。 可以在机器学习的“数据集”部分访问导出的 Azure 机器学习数据集。 数据集详细信息页还提供了演示如何从 Python 访问标签的示例代码。
 
@@ -257,4 +261,4 @@ COCO 文件是在 Azure 机器学习工作区的默认 Blob 存储中创建的�
 
 * [教程：创建第一个图像分类标记项目](tutorial-labeling.md)。
 * 标记图像以进行[图像分类或对象检测](how-to-label-images.md)
-* 详细了解 [Azure 机器学习和机器学习工作室（经典）](compare-azure-ml-to-studio-classic.md)
+* 详细了解 [Azure 机器学习和机器学习工作室（经典）](./overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)

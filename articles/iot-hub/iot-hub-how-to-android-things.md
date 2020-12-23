@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6008ca1549629bcbb582f38de2ab1b453cd73a99
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78673385"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843751"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对 Android Things 平台进行开发
 
-[Azure IoT 中心 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 为 Windows、Linux、OSX、MBED 等流行平台，以及 Android 和 iOS 等移动平台提供第一层支持。  作为我们在 IoT 部署中实现更多选择和灵活性的承诺的一部分，Java SDK 还支持 [Android Things](https://developer.android.com/things/) 平台。  使用 [Azure IoT 中心](about-iot-hub.md)作为可扩展到数百万个同时连接的设备的中央消息中心时，开发人员可以在设备端利用 Android Things 操作系统的好处。
+[Azure IoT 中心 SDK](./iot-hub-devguide-sdks.md) 为 Windows、Linux、OSX、MBED 等流行平台，以及 Android 和 iOS 等移动平台提供第一层支持。  作为我们在 IoT 部署中实现更多选择和灵活性的承诺的一部分，Java SDK 还支持 [Android Things](https://developer.android.com/things/) 平台。  使用 [Azure IoT 中心](about-iot-hub.md)作为可扩展到数百万个同时连接的设备的中央消息中心时，开发人员可以在设备端利用 Android Things 操作系统的好处。
 
 本教程概述使用 Azure IoT Java SDK 在 Android Things 上构建设备端应用程序的步骤。
 
@@ -28,7 +28,7 @@ ms.locfileid: "78673385"
 
 * 最新版本的 [Git](https://git-scm.com/)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -87,7 +87,7 @@ ms.locfileid: "78673385"
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
+可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端 **事件** 终结点。 扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
 在 Azure Cloud Shell 中运行以下命令，并将 `YourIoTHubName` 替换为 IoT 中心的名称：
 

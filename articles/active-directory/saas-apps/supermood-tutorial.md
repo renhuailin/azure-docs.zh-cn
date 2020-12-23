@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2019
 ms.author: jeedes
-ms.openlocfilehash: f30dea768e7b3a0376ebdf6c3d80e98eaba6f760
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b1f8fb4c6586281352b6da05978c6ca4dac23ce5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533378"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504790"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-supermood"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Supermood 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88533378"
 * 让用户使用其 Azure AD 帐户自动登录到 Supermood。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88533378"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Supermood 支持启用了 **SP 和 IDP** 的 SSO
-* Supermood 支持**实时**用户预配
+* Supermood 支持 **实时** 用户预配
 
 ## <a name="adding-supermood-from-the-gallery"></a>从库中添加 Supermood
 
@@ -86,7 +86,7 @@ ms.locfileid: "88533378"
 
     在“登录 URL”文本框中，键入 URL：  `https://supermood.co/app/#!/loginv2`
 
-1. 单击“ **保存**”。
+1. 单击“ **保存** ”。
 
 1. Supermood 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 
@@ -151,7 +151,7 @@ ms.locfileid: "88533378"
 
     a. 在“此标识提供者的电子邮件域”  文本框中，键入你的域名。
 
-    b. 在“使用元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**。 
+    b. 在“使用元数据 URL”文本框中，粘贴从 Azure 门户复制的 **应用联合元数据 URL** 。 
 
     c. 单击“添加”  。
 
@@ -163,14 +163,14 @@ ms.locfileid: "88533378"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Supermood 磁贴时，应会自动登录到为其设置了 SSO 的 Supermood。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Supermood 磁贴时，应会自动登录到为其设置了 SSO 的 Supermood。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Supermood](https://aad.portal.azure.com/)

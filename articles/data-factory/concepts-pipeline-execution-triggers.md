@@ -3,20 +3,20 @@ title: Azure 数据工厂中的管道执行和触发器
 description: 本文介绍了如何在 Azure 数据工厂中按需执行管道，或者通过创建触发器来执行管道。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c72538de8aba60ce7ed880561b55773c22737f97
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83996969"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498619"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 
@@ -179,7 +179,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="schedule-trigger"></a>计划触发器
 计划触发器按时钟计划运行管道。 此触发器支持定期和高级日历选项。 例如，此触发器支持“每周”或“星期一下午 5:00 和星期四晚上 9:00”之类的时间间隔。 计划触发器很灵活，因为数据集模式与数据类型无关，该触发器不区分时序数据和非时序数据。
 
-如需计划触发器的详细信息和示例，请参阅[创建计划触发器](how-to-create-schedule-trigger.md)。
+有关计划触发器和示例的详细信息，请参阅 [创建按计划运行管道的触发器](how-to-create-schedule-trigger.md)。
 
 ## <a name="schedule-trigger-definition"></a>计划触发器定义
 创建计划触发器时，请使用 JSON 定义指定计划和定期触发。
@@ -239,7 +239,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | --- | --- |
 | **startTime** | 一个日期时间值。 对于基本的计划，**startTime** 属性的值适用于第一个匹配项。 对于复杂的计划，触发器的启动时间不早于指定的 **startTime** 值。 |
 | **endTime** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 <!-- This property is optional. --> |
-| **timeZone** | 时区。 目前仅支持 UTC 时区。 |
+| **timeZone** | 时区。 有关支持的时区的列表，请参阅 [创建按计划运行管道的触发器](how-to-create-schedule-trigger.md#time-zone-option)。 |
 | **recurrence** | 一个 recurrence 对象，指定触发器的定期触发规则。 recurrence 对象支持 **frequency**、**interval**、**endTime**、**count** 和 **schedule** 元素。 定义 recurrence 对象时，**frequency** 元素是必需的。 recurrence 对象的其他元素为可选元素。 |
 | **frequency** | 触发器定期触发的频率单位。 支持的值包括 "minute"、"hour"、"day"、"week" 和 "month"。 |
 | **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔。 **frequency** 值决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为 "week"，则触发器每三周定期触发一次。 |

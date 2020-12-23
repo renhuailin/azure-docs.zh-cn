@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360338"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075036"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "75360338"
 ## <a name="update-an-azure-service"></a>更新 Azure 服务
 Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD) 是角色实例的逻辑集，将以组的方式进行更新。  Azure 每次更新一个 UD 的一个云服务，使其他 UD 中的实例能够继续处理流量。
 
-升级域的默认数量为 5 个。 可以通过在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性，指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息，请参阅 [Azure 云服务定义架构（.csdef 文件）](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)。
+升级域的默认数量为 5 个。 可以通过在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性，指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息，请参阅 [Azure 云服务定义架构（.csdef 文件）](./schema-csdef-file.md)。
 
 在为你的服务中的一个或多个角色执行就地更新时，Azure 会根据所属的升级域更新角色实例集。 Azure 更新给定升级域中的所有实例（停止这些实例，更新这些实例并将它们重新联机），并移到下一个域上。 通过仅停止在当前升级域中运行的实例，Azure 确保在执行更新时将对运行的服务造成的影响降到最低。 有关详细信息，请参阅本文后面的 [如何进行更新](#howanupgradeproceeds) 。
 
@@ -134,7 +134,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
   1. Locked 元素用于检测何时可以在给定部署上调用变动操作。
   2. RollbackAllowed 元素用于检测何时可以在给定部署上调用[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))操作。
 
-  要执行回滚，不需要检查 Locked 和 RollbackAllowed 元素。 确认 RollbackAllowed 设置为 true 就足够了。 只有在使用设置为“x-ms-version:2011-10-01”或更高版本的请求标头调用这些方法时，才会返回这些元素。 有关版本控制标头的详细信息，请参阅 [服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
+  要执行回滚，不需要检查 Locked 和 RollbackAllowed 元素。 确认 RollbackAllowed 设置为 true 就足够了。 只有在使用设置为“x-ms-version:2011-10-01”或更高版本的请求标头调用这些方法时，才会返回这些元素。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
 
 在某些情况下，不支持回滚更新或升级，这些情况包括：
 
@@ -142,24 +142,24 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 * 配额限制 - 如果更新减少操作，可能没有足够的计算配额来完成回滚操作。 每个 Azure 订阅具有关联的配额，指定属于该订阅的所有托管服务可以使用的最大核心数。 如果执行给定更新的回退操作而导致订阅超过配额，则不会启用回退。
 * 争用情况 - 如果初始更新已完成，则无法进行回滚。
 
-回滚更新可能是非常有用的，其中的一个例子是，在手动模式下使用[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))操作来控制为你的 Azure 托管服务部署主要就地升级的速度。
+回滚更新可能是非常有用的，其中的一个例子是，在手动模式下使用“[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))”操作来控制为 Azure 托管服务部署主要就地升级的速度。
 
-在升级部署期间，你可以在手动模式下调用[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))并开始依次更新升级域。 在监视升级时，如果你在某些时候注意到检查的第一批升级域中的某些角色实例停止响应，则可以在部署上调用[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))操作，这会将尚未升级的实例保持不变，并将已升级的实例回滚到以前的服务包和配置。
+在升级部署期间，可以在手动模式下调用“[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))”并开始依次更新升级域。 在监视升级时，如果在某些时候注意到检查的第一批升级域中的某些角色实例停止响应，则可以在部署上调用“[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))”操作，这会将尚未升级的实例保持不变，并将已升级的实例回滚到以前的服务包和配置。
 
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>在进行的部署上启动多个变动操作
-在某些情况下，可能需要在进行的部署上启动多个同时的变动操作。 例如，你可能执行一个服务更新，并在服务中部署该更新的同时希望进行一些更改，例如，回滚更新，应用不同的更新，甚至删除部署。 一种可能需要执行此操作的情况是，服务升级包含错误的代码，而导致升级的角色实例反复崩溃。 在这种情况下，Azure 结构控制器无法继续应用该升级，因为升级域中的正常实例数不足。 这种状态称为 *卡住的部署*。 可以回滚更新或应用全新的更新以覆盖失败的更新，从而纠正卡住的部署状态。
+在某些情况下，可能需要在进行的部署上启动多个同时的变动操作。 例如，你可能执行一个服务更新，并在服务中部署该更新的同时希望进行一些更改，例如，回滚更新，应用不同的更新，甚至删除部署。 一种可能需要执行此操作的情况是，服务升级包含错误的代码，而导致升级的角色实例反复崩溃。 在这种情况下，Azure 结构控制器无法继续应用该升级，因为升级域中的正常实例数不足。 这种状态称为*卡住的部署*。 可以回滚更新或应用全新的更新以覆盖失败的更新，从而纠正卡住的部署状态。
 
 在 Azure 结构控制器收到更新或升级服务的初始请求后，可以启动后续的变动操作。 也就是说，不必等待初始操作完成，即可启动其他变动操作。
 
-在进行第一个更新的同时启动第二个更新操作会以类似回滚操作的方式执行。 如果第二个更新是在自动模式下执行的，将立即升级第一个升级域，这可能会导致多个升级域中的实例在同一时刻处于脱机状态。
+在进行第一个更新的同时启动第二个更新操作以类似回滚操作的方式执行。 如果第二个更新是在自动模式下执行的，将立即升级第一个升级域，这可能会导致多个升级域中的实例在同一时刻处于脱机状态。
 
-变动操作如下：[更改部署配置](/previous-versions/azure/reference/ee460809(v=azure.100))、[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))、[更新部署状态](/previous-versions/azure/reference/ee460808(v=azure.100))、[删除部署](/previous-versions/azure/reference/ee460815(v=azure.100))和[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))。
+变动操作如下：“[更改部署配置](/previous-versions/azure/reference/ee460809(v=azure.100))”、“[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))”、“[更新部署状态](/previous-versions/azure/reference/ee460808(v=azure.100))”、“[删除部署](/previous-versions/azure/reference/ee460815(v=azure.100))”和“[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))”。
 
-[获取部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[获取云服务属性](/previous-versions/azure/reference/ee460806(v=azure.100))这两个操作返回 Locked 标志，可以通过检查该标志确定是否可以在给定部署上调用变动操作。
+“[获取部署](/previous-versions/azure/reference/ee460804(v=azure.100))”和“[获取云服务属性](/previous-versions/azure/reference/ee460806(v=azure.100))”这两个操作返回 Locked 标志，可以通过检查该标志，以确定是否可以在给定部署上调用变动操作。
 
-要调用返回 Locked 标志的这些方法版本，必须将请求标头设置为“x-ms-version:2011-10-01”或更高版本。 有关版本控制标头的详细信息，请参阅 [服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
+要调用返回 Locked 标志的这些方法版本，必须将请求标头设置为“x-ms-version: 2011-10-01”或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
 
 <a name="distributiondfroles"></a>
 
@@ -182,7 +182,4 @@ Azure 在设置的升级域数之间平均分配角色的实例，可以将升�
 ## <a name="next-steps"></a>后续步骤
 [如何管理云服务](cloud-services-how-to-manage-portal.md)  
 [如何监视云服务](cloud-services-how-to-monitor.md)  
-[如何配置云服务](cloud-services-how-to-configure-portal.md)  
-
-
-
+[如何配置云服务](cloud-services-how-to-configure-portal.md)

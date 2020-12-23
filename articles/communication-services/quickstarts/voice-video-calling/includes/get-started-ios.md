@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f604847faf01d1b267e6cbb73481d57ef397bd9
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376612"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95563416"
 ---
 本快速入门将介绍如何使用适用于 iOS 的 Azure 通信服务呼叫客户端库开始呼叫。
 
@@ -32,22 +32,23 @@ ms.locfileid: "91376612"
 
 :::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="显示 Xcode 中“新建项目”窗口的屏幕截图。":::
 
-### <a name="install-the-package"></a>安装包
+### <a name="install-the-package-and-dependencies-with-cocoapods"></a>使用 CocoaPods 安装包和依赖项
 
-将 Azure 通信服务呼叫客户端库及其依赖项（AzureCore.framework 和 AzureCommunication.framework）添加到你的项目。
+1. 为应用程序创建 Podfile，如下所示：
 
-> [!NOTE]
-> 随着 AzureCommunicationCalling SDK 的发布，你会找到一个 bash 脚本 `BuildAzurePackages.sh`。 运行 `sh ./BuildAzurePackages.sh` 时，该脚本会提供生成的框架包的路径，需要在下一步中将该路径导入到示例应用中。 请注意，在运行该脚本之前，需要设置 Xcode 命令行工具（如果未设置）：启动 Xcode，选择“首选项 -> 位置”。 选择命令行工具的 Xcode 版本。 **BuildAzurePackages.sh 脚本仅适用于 Xcode 11.5 及更高版本**
+   ```
+   platform :ios, '13.0'
+   use_frameworks!
 
-1. [下载](https://github.com/Azure/Communication/releases)适用于 iOS 的 Azure 通信服务呼叫客户端库。
-2. 在 Xcode 中，单击项目文件，并选择生成目标以打开项目设置编辑器。
-3. 在“常规”选项卡下，滚动到“框架、库和嵌入内容”部分，然后单击“+”图标  。
-4. 在对话框的左下角，使用下拉框选择“添加文件”，导航到解压缩的客户端库包的 AzureCommunicationCalling.framework 目录 。
-    1. 重复最后一步，以便添加 AzureCore.framework 和 AzureCommunication.framework 。
-5. 打开项目设置编辑器的“生成设置”选项卡，滚动到“搜索路径”部分 。 为包含 AzureCommunicationCalling.framework 的目录添加新的“框架搜索路径”条目 。
-    1. 添加另一个指向包含依赖项的文件夹的“框架搜索路径”条目。
+   target 'AzureCommunicationCallingSample' do
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.5'
+     pod 'AzureCommunication', '~> 1.0.0-beta.5'
+     pod 'AzureCore', '~> 1.0.0-beta.5'
+   end
+   ```
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="显示 Xcode 中“新建项目”窗口的屏幕截图。":::
+2. 运行 `pod install`。
+3. 使用 Xcode 打开 `.xcworkspace`。
 
 ### <a name="request-access-to-the-microphone"></a>请求访问麦克风
 
@@ -74,9 +75,9 @@ import AVFoundation
 ```swift
 struct ContentView: View {
     @State var callee: String = ""
-    @State var callClient: ACSCallClient?
-    @State var callAgent: ACSCallAgent?
-    @State var call: ACSCall?
+    @State var callClient: CallClient?
+    @State var callAgent: CallAgent?
+    @State var call: Call?
 
     var body: some View {
         NavigationView {
@@ -136,7 +137,7 @@ do {
     return
 }
 
-self.callClient = ACSCallClient()
+self.callClient = CallClient()
 
 // Creates the call agent
 self.callClient?.createCallAgent(userCredential) { (agent, error) in
@@ -165,13 +166,13 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUser(identifier: self.callee)]
-            self.call = self.callAgent?.call(callees, options: ACSStartCallOptions())
+            self.call = self.callAgent?.call(callees, options: StartCallOptions())
         }
     }
 }
 ```
 
-还可以使用 `ACSStartCallOptions` 中的属性来设置呼叫的初始选项（例如，它允许在麦克风静音的情况下开始呼叫）。
+还可以使用 `StartCallOptions` 中的属性来设置呼叫的初始选项（例如，它允许在麦克风静音的情况下开始呼叫）。
 
 ## <a name="end-a-call"></a>结束呼叫
 
@@ -180,7 +181,7 @@ func startCall()
 ```swift
 func endCall()
 {    
-    self.call!.hangup(ACSHangupOptions()) { (error) in
+    self.call!.hangup(HangupOptions()) { (error) in
         if (error != nil) {
             print("ERROR: It was not possible to hangup the call.")
         }
@@ -192,7 +193,7 @@ func endCall()
 
 可以通过选择“产品” > “运行”或使用 (&#8984;-R) 键盘快捷方式，在 iOS 模拟器上生成并运行应用。
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="显示 Xcode 中“新建项目”窗口的屏幕截图。":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="快速入门应用的最终外观":::
 
 可以通过在“文本”字段中提供用户 ID 并点击“开始呼叫”按钮，建立出站 VOIP 呼叫。 呼叫 `8:echo123` 会将你连接到回显机器人，这对于入门和验证音频设备是否正常运行非常有用。 
 
@@ -201,4 +202,4 @@ func endCall()
 
 ## <a name="sample-code"></a>代码示例
 
-可以从 [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/iOS/Swift) 下载示例应用
+可以从 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling) 下载示例应用

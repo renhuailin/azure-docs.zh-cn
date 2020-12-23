@@ -3,13 +3,13 @@ title: 将 Java 应用部署到 Azure 中的 Service Fabric 群集
 description: 本教程介绍如何将 Java Service Fabric 应用程序部署到 Azure Service Fabric 群集。
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3e00e478e20fbd0bc4ff6ed17b330f0d16488be6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532052"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738904"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教程：将 Java 应用程序部署到 Azure 中的 Service Fabric 群集
 
@@ -148,7 +148,7 @@ ms.locfileid: "91532052"
     }
     ```
 
-11. 运行 *eventhubssastoken.py* 脚本，为创建的 EventHubs 资源生成 SAS URL。 此 SAS URL 由 Service Fabric 群集用来将日志发送到事件中心。 因此，**发送方**策略用于生成此 URL。 此脚本返回事件中心资源的 SAS URL，该资源用在以下步骤中：
+11. 运行 *eventhubssastoken.py* 脚本，为创建的 EventHubs 资源生成 SAS URL。 此 SAS URL 由 Service Fabric 群集用来将日志发送到事件中心。 因此， **发送方** 策略用于生成此 URL。 此脚本返回事件中心资源的 SAS URL，该资源用在以下步骤中：
 
     ```python
     python3 eventhubssastoken.py 'testeventhubs' 'testeventhubs' 'sender' '[PRIMARY-KEY]'
@@ -176,10 +176,10 @@ ms.locfileid: "91532052"
     }
     ```
 
-13. 打开 **sfdeploy.parameters.json**。 更改以下参数，然后保存文件。
-    - **clusterName**。 只使用小写字母和数字。
-    - **adminUserName**（更改为非空值）
-    - **adminPassword**（更改为非空值）
+13. 打开 **sfdeploy.parameters.json** 。 更改以下参数，然后保存文件。
+    - **clusterName** 。 只使用小写字母和数字。
+    - **adminUserName** （更改为非空值）
+    - **adminPassword** （更改为非空值）
 
 14. 运行以下命令，创建 Service Fabric 群集
 

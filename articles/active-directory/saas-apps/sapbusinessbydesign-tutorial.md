@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 6959b7e819ad906f04a18661d6bd4aa2d82f8984
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d04601cb11e57f50c82680077793aef1b816bfa
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543347"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>教程：将 Azure Active Directory 与 SAP Business ByDesign 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88543347"
 * 可以让用户使用其 Azure AD 帐户自动登录到 SAP Business ByDesign（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88543347"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -110,11 +110,11 @@ ms.locfileid: "88543347"
 
 5. SAP Business ByDesign 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”对话框的屏幕截图，其中已选择“编辑”按钮。](common/edit-attribute.png)
 
 6. 单击“编辑”图标以编辑名称标识符值   。
 
-    ![image](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
+    ![屏幕截图显示了“用户属性和声明”页，其中选择了“编辑”图标。](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
 7. 在“管理用户声明”部分中，执行以下步骤：![图像](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
@@ -148,9 +148,9 @@ ms.locfileid: "88543347"
 
 3. 单击“新建标识提供者”，并选择从 Azure 门户下载的元数据 XML 文件  。 导入元数据时，系统会自动上传所需的签名证书和加密证书。
 
-    ![配置单一登录](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![屏幕截图显示了“配置单一登录”页，其中选择了“标识提供者”选项卡，以及“新建标识提供者”操作。](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
-4. 若要在 SAML 请求中包括**断言使用者服务 URL**，请选择“包括断言使用者服务 URL”  。
+4. 若要在 SAML 请求中包括 **断言使用者服务 URL** ，请选择“包括断言使用者服务 URL”  。
 
 5. 单击“激活单一登录”  。
 
@@ -158,7 +158,7 @@ ms.locfileid: "88543347"
 
 7. 单击“我的系统”  选项卡。
 
-    ![配置单一登录](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![屏幕截图显示了“配置单一登录”页，其中选择了“我的系统”选项卡。](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
 8. 在“Azure AD 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -244,12 +244,12 @@ ms.locfileid: "88543347"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 SAP Business ByDesign 磁贴时，应当会自动登录到为其设置了 SSO 的 SAP Business ByDesign。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 SAP Business ByDesign 磁贴时，应当会自动登录到为其设置了 SSO 的 SAP Business ByDesign。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

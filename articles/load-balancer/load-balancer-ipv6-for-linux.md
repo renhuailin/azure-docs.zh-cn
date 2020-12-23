@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: d8bd62bab627beb70a8fcba276bf8c2eca309c45
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259725"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006740"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 
@@ -142,13 +142,13 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
 
 Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 SUSE 映像，请执行以下步骤：
 
-1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换 `#BOOTPROTO='dhcp4'` 参数**：
+1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换 `#BOOTPROTO='dhcp4'` 参数：
 
     ```config
     BOOTPROTO='dhcp'
     ```
 
-2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数**：
+2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数：
 
     ```config
     DHCLIENT6_MODE='managed'
@@ -164,7 +164,7 @@ Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这�
 
 Azure 中最新的 CoreOS 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 CoreOS 映像，请执行以下步骤：
 
-1. 编辑 /etc/systemd/network/10_dhcp.network 文件**：
+1. 编辑 /etc/systemd/network/10_dhcp.network 文件：
 
     ```config
     [Match]

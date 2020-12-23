@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446455"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131456"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 预算管理成本
 
-成本控制是最大化云投资价值的关键部分。 以下几种方案中，成本可见性、报告和基于成本的业务流程对于持续的业务操作至关重要。 [Azure 成本管理 API](https://docs.microsoft.com/rest/api/consumption/) 提供了一组 API，用于支持每种方案。 这些 API 提供使用情况详细信息，可让你查看更精确的实例级成本。
+成本控制是最大化云投资价值的关键部分。 以下几种方案中，成本可见性、报告和基于成本的业务流程对于持续的业务操作至关重要。 [Azure 成本管理 API](/rest/api/consumption/) 提供了一组 API，用于支持每种方案。 这些 API 提供使用情况详细信息，可让你查看更精确的实例级成本。
 
-成本控制中通常会用到预算。 可在 Azure 中限制预算范围。 例如，可根据订阅、资源组或资源集合缩小预算视图。 除了使用预算 API 在达到预算阈值时通过电子邮件进行通知外，还可使用 [Azure Monitor 操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)来触发由于预算事件而安排的一组操作。
+成本控制中通常会用到预算。 可在 Azure 中限制预算范围。 例如，可根据订阅、资源组或资源集合缩小预算视图。 除了使用预算 API 在达到预算阈值时通过电子邮件进行通知外，还可使用 [Azure Monitor 操作组](../../azure-monitor/platform/action-groups.md)来触发由于预算事件而安排的一组操作。
 
 对于运行非关键工作负载的客户，如果他们想要管理预算，并在查看月度发票时预测成本，可能会使用常见的预算方案。 这种方案需要一些基于成本的资源业务流程，这些资源属于 Azure 环境。 在此方案中，每月的订阅预算设置为 1000 美元。 另外，通知阈值设置为触发几个业务流程。 此方案的成本阈值开始为 80%，这会停止“可选”资源组中的所有 VM  。 然后，达到 100% 成本阈值时，将停止所有 VM 实例。
 
@@ -35,7 +35,7 @@ ms.locfileid: "91446455"
 
 ## <a name="create-an-azure-automation-runbook"></a>创建 Azure 自动化 Runbook
 
-[Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)是一种服务，可用于编写大部分资源管理任务并按计划或按需运行这些任务。 你将创建用于停止 VM 的 [Azure 自动化 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types)，作为此方案的一部分。 请使用[库](https://docs.microsoft.com/azure/automation/automation-runbook-gallery)中的[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 图形 Runbook 来构建此方案。 通过将此 Runbook 导入 Azure 帐户并发布，可以在达到预算阈值时停止 VM。
+[Azure 自动化](../../automation/automation-intro.md)是一种服务，可用于编写大部分资源管理任务并按计划或按需运行这些任务。 你将创建用于停止 VM 的 [Azure 自动化 Runbook](../../automation/automation-runbook-types.md)，作为此方案的一部分。 请使用[库](../../automation/automation-runbook-gallery.md)中的[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 图形 Runbook 来构建此方案。 通过将此 Runbook 导入 Azure 帐户并发布，可以在达到预算阈值时停止 VM。
 
 ### <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 
@@ -49,7 +49,7 @@ ms.locfileid: "91446455"
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>导入“停止 Azure V2 VM”runbook
 
-使用 [Azure 自动化 runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types)，从库中导入[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 图形 runbook。
+使用 [Azure 自动化 runbook](../../automation/automation-runbook-types.md)，从库中导入[停止 Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) 图形 runbook。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com/)。
 1. 选择“所有服务” > “自动化帐户”，以打开自动化帐户   。 然后，选择“自动化帐户”。
@@ -60,7 +60,7 @@ ms.locfileid: "91446455"
 1. Runbook 完成导入过程后，选择“编辑”以显示图形 runbook 编辑器和发布选项  。  
     ![Azure - 编辑图形 Runbook](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. 选择“发布”以发布该 Runbook，并在出现提示时选择“是”   。 发布 runbook 时，可以用草稿版本替代任何现有的已发布版本。 在本例中，还没有已发布版本，因为才创建了 Runbook。
-    有关发布 runbook 的详细信息，请参阅[创建图形 runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical)。
+    有关发布 runbook 的详细信息，请参阅[创建图形 runbook](../../automation/learn/automation-tutorial-runbook-graphical.md)。
 
 ## <a name="create-webhooks-for-the-runbook"></a>为 runbook 创建 Webhook
 
@@ -91,7 +91,7 @@ ms.locfileid: "91446455"
 
 ## <a name="create-an-azure-logic-app-for-orchestration"></a>为业务流程创建 Azure 逻辑应用
 
-逻辑应用有助于生成、计划和自动完成工作流形式的流程，适合跨企业或组织集成应用、数据、系统和服务。 在此方案中，所创建的[逻辑应用](https://docs.microsoft.com/azure/logic-apps/)只会调用创建的自动化 Webhook。
+逻辑应用有助于生成、计划和自动完成工作流形式的流程，适合跨企业或组织集成应用、数据、系统和服务。 在此方案中，所创建的[逻辑应用](../../logic-apps/index.yml)只会调用创建的自动化 Webhook。
 
 可将“预算”设置为在达到指定的阈值时触发通知。 可提供触发通知的多个阈值，逻辑应用将为你演示基于达到的阈值执行不同操作的能力。 本示例将设置一个方案，其中你会收到两个通知，达到预算的 80% 时会收到第一个通知，达到预算的 100% 时会收到第二个通知。 逻辑应用将用于关闭资源组中的所有 VM。 首先，将达到“Optional”阈值的 80%，然后达到第二个阈值，此时将关闭订阅中的所有 VM  。
 
@@ -122,11 +122,11 @@ ms.locfileid: "91446455"
 每个逻辑应用都必须从触发器开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来启动并运行工作流。 操作是在触发器之后发生的所有步骤。
 
 1. 在“逻辑应用设计器”区域的“模板”下，选择“空白逻辑应用”    。
-1. 添加[触发器](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)，具体方法是在“逻辑应用设计器”搜索框中输入“http request”，查找并选择名为“请求 - 收到 HTTP 请求时”的触发器   。  
+1. 添加[触发器](../../logic-apps/logic-apps-overview.md#logic-app-concepts)，具体方法是在“逻辑应用设计器”搜索框中输入“http request”，查找并选择名为“请求 - 收到 HTTP 请求时”的触发器   。  
     ![Azure - 逻辑应用 - Http 触发器](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
 1. 选择“新建步骤”   > “添加操作”  。  
     ![Azure - 新建步骤 - 添加操作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-1. 在“逻辑应用设计器”搜索框中搜索“分析 JSON”，查找并选择“数据操作 - 分析 JSON”[操作](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)   。  
+1. 在“逻辑应用设计器”搜索框中搜索“分析 JSON”，查找并选择“数据操作 - 分析 JSON”[操作](../../logic-apps/logic-apps-overview.md#logic-app-concepts)   。  
     ![Azure - 逻辑应用 - 添加“分析 JSON”操作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 1. 输入“Payload”作为 Parse JSON 有效负载的 **Content** 名称，或使用动态内容中的“Body”标记。
 1. 在“分析 JSON”框中，选择“使用有效负载示例生成架构”选项   。  
@@ -311,7 +311,7 @@ ms.locfileid: "91446455"
     ```
 1. 按“发送”，以发送请求  。
 
-现在你已经拥有调用[预算 API](https://docs.microsoft.com/rest/api/consumption/budgets) 所需的所有信息。 预算 API 引用包含关于特定请求的其他详细信息，其中包括：
+现在你已经拥有调用[预算 API](/rest/api/consumption/budgets) 所需的所有信息。 预算 API 引用包含关于特定请求的其他详细信息，其中包括：
 
 - **budgetName** - 支持多个预算。  预算名称必须是唯一的。
 - **类别** - 必须是“成本”或“使用情况”   。 API 支持成本和使用情况预算。

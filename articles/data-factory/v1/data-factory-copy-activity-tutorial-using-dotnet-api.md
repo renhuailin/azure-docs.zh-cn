@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d047a45d678918541eb3c2d2c45e4519a34bdd57
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254848"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608674"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ ms.locfileid: "85254848"
 9. 获取应用程序 ID。
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication
     ```
     记下输出中的应用程序 ID (applicationID)。
 
@@ -190,7 +190,7 @@ ms.locfileid: "85254848"
    >
    > 将数据工厂的名称 (dataFactoryName) 更新为唯一名称。 数据工厂的名称必须全局唯一。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 
-7. 将以下用于创建**数据工厂**的代码添加到 **Main** 方法。
+7. 将以下用于创建 **数据工厂** 的代码添加到 **Main** 方法。
 
     ```csharp
     // create a data factory
@@ -209,7 +209,7 @@ ms.locfileid: "85254848"
     ```
 
     数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
-8. 将以下用于创建 **Azure 存储链接服务**的代码添加到 **Main** 方法。
+8. 将以下用于创建 **Azure 存储链接服务** 的代码添加到 **Main** 方法。
 
    > [!IMPORTANT]
    > 将 **storageaccountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。
@@ -237,7 +237,7 @@ ms.locfileid: "85254848"
     因此，请创建两个分别名为 AzureStorageLinkedService 和 AzureSqlLinkedService 的链接服务，其类型分别为：AzureStorage 和 AzureSqlDatabase。  
 
     AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 已根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，在此存储帐户中创建了一个容器并上传了数据。
-9. 将以下用于创建 **Azure SQL 链接服务**的代码添加到 **Main** 方法。
+9. 将以下用于创建 **Azure SQL 链接服务** 的代码添加到 **Main** 方法。
 
    > [!IMPORTANT]
    > 将“servername”、“databasename”、“username”和“password”分别替换为服务器名称、数据库名称、用户名和密码   。
@@ -261,7 +261,7 @@ ms.locfileid: "85254848"
     ```
 
     AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob 存储复制的数据存储在该数据库中。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)在该数据库中创建了 emp 表。
-10. 将以下用于创建**输入和输出数据集**的代码添加到 **Main** 方法。
+10. 将以下用于创建 **输入和输出数据集** 的代码添加到 **Main** 方法。
 
     ```csharp
     // create input and output datasets
@@ -346,7 +346,7 @@ ms.locfileid: "85254848"
     本步骤在 AzureStorageLinkedService 链接服务代表的 Azure 存储中创建名为 InputDataset 的数据集，该数据集指向 Blob 容器 (adftutorial) 根文件夹中的 Blob 文件 (emp.txt)。 如果不指定 fileName 的值（或者跳过此步骤），则会将输入文件夹中的所有 Blob 复制到目标。 在本教程中，请为 fileName 指定一个值。    
 
     本步骤创建名为 **OutputDataset** 的输出数据集。 此数据集指向数据库中 AzureSqlLinkedService 所代表的 SQL 表。
-11. 将以下用于**创建和激活管道**的代码添加到 **Main** 方法。 本步骤创建管道，其中包含使用 InputDataset 作为输入和使用 OutputDataset 作为输出的复制活动。
+11. 将以下用于 **创建和激活管道** 的代码添加到 **Main** 方法。 本步骤创建管道，其中包含使用 InputDataset 作为输入和使用 OutputDataset 作为输出的复制活动。
 
     ```csharp
     // create a pipeline

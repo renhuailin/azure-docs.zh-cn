@@ -3,12 +3,12 @@ title: 创建 Service Fabric 项目的后续步骤
 description: 了解刚才在 Visual Studio 中创建的应用程序项目。  了解如何使用教程生成服务以及有关开发 Service Fabric 服务的详细信息。
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01a69016e0c299fba0365fab5332b572fd2ca87a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349399"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314472"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric 应用程序和后续步骤
 已创建 Azure Service Fabric 应用程序。 本文介绍了一些试验教程、项目的组成、你可能感兴趣的其他信息以及有可能执行的后续步骤。
@@ -24,7 +24,7 @@ ms.locfileid: "75349399"
 - [基于 Windows 的来宾可执行服务](quickstart-guest-app.md) 
 - [Windows 容器应用程序](service-fabric-get-started-containers.md) 
 
-还可以尝试[示例应用程序](https://aka.ms/servicefabricsamples)。
+还可以尝试[示例应用程序](/samples/browse/?products=azure)。
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>还有任何疑问或反馈？  需要报告问题？
 请浏览[常见问题](service-fabric-common-questions.md)，了解有关 Service Fabric 的功能及用法方面的解答。
@@ -62,5 +62,3 @@ Service Fabric 应用程序由不同的服务组成，其中每个服务执行�
 - [在 Azure 中创建 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 - 使用 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 可视化群集（包括已部署的应用程序和物理布局）。
 - [对服务进行版本控制和升级](service-fabric-application-upgrade-tutorial.md)
-
-

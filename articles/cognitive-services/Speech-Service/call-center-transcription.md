@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630145"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021960"
 ---
 # <a name="speech-service-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -60,7 +60,7 @@ ms.locfileid: "91630145"
 
 ### <a name="translation"></a>翻译
 
-某些公司正在试验提供从外语支持呼叫翻译的听录内容，使交付经理能够了解其客户的全球体验。 我们的[翻译](/azure/cognitive-services/speech-service/speech-translation)功能非常优秀。 我们可以针对大量区域设置将音频翻译成音频，或者将音频翻译成文本。
+某些公司正在试验提供从外语支持呼叫翻译的听录内容，使交付经理能够了解其客户的全球体验。 我们的[翻译](./speech-translation.md)功能非常优秀。 我们可以针对大量区域设置将音频翻译成音频，或者将音频翻译成文本。
 
 ### <a name="text-to-speech"></a>文本到语音转换
 
@@ -94,7 +94,7 @@ ms.locfileid: "91630145"
 
 - 使用语音服务将语音转录为文本。 若要使用批量听录 API，需要具备语音服务的标准订阅 (S0)。 免费订阅 (F0) 不可用。
 - 使用 [Azure 存储](https://azure.microsoft.com/services/storage/)来存储电话数据以及批量听录 API 返回的听录内容。 此存储帐户应使用通知，特别是添加新文件时。 这些通知用于触发听录过程。
-- 使用 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) 来为每个录制内容创建共享访问签名 (SAS) URI，以及触发启动听录的 HTTP POST 请求。 此外，Azure Functions 用于创建通过批量听录 API 检索和删除听录内容的请求。
+- 使用 [Azure Functions](../../azure-functions/index.yml) 来为每个录制内容创建共享访问签名 (SAS) URI，以及触发启动听录的 HTTP POST 请求。 此外，Azure Functions 用于创建通过批量听录 API 检索和删除听录内容的请求。
 
 在内部，我们使用上述技术来支持批量模式的 Microsoft 客户呼叫。
 :::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="用于支持批量模式的 Microsoft 客户呼叫的技术。":::
@@ -111,7 +111,7 @@ ms.locfileid: "91630145"
 
 ## <a name="a-word-on-ivrs"></a>有关 IVR 的说明
 
-使用[语音 SDK](speech-sdk.md) 或 [REST API](rest-apis.md) 可以轻松将语音服务集成到任何解决方案中。 但是，呼叫中心听录可能需要额外的技术。 通常，需要在 IVR 系统与 Azure 之间建立连接。 尽管我们不提供此类组件，但提供 IVR 连接所涉及的说明。
+使用[语音 SDK](speech-sdk.md) 或 [REST API](./overview.md#reference-docs) 可以轻松将语音服务集成到任何解决方案中。 但是，呼叫中心听录可能需要额外的技术。 通常，需要在 IVR 系统与 Azure 之间建立连接。 尽管我们不提供此类组件，但提供 IVR 连接所涉及的说明。
 
 有多种 IVR 或电话服务产品（例如 Genesys 或 AudioCodes）可以提供集成功能，利用这些功能可与 Azure 服务建立入站和出站音频直通连接。 简单而言，自定义的 Azure 服务可以提供一个特定的接口用于定义电话呼叫会话（例如“呼叫开始”或“呼叫结束”），并公开一个 WebSocket API 用于接收与语音服务一起使用的入站流音频。 出站响应（例如对话听录或者与 Bot Framework 的连接）可与 Microsoft 文本转语音服务合成，并返回到 IVR 进行播放。
 
@@ -123,10 +123,10 @@ ms.locfileid: "91630145"
 
 | 语音服务 | 型号 | 说明 |
 | -------------- | ----- | ----------- |
-| 语音转文本 | [声学模型](how-to-customize-acoustic-models.md) | 为特定环境（例如汽车或工厂车间）中使用的应用程序、工具或设备创建自定义声学模型，每个模型具有特定的录制条件。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
-|                | [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善行业特定的词汇和语法的听录，例如医疗术语中或 IT 行话。 |
-|                | [发音模型](how-to-customize-pronunciation.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 `.txt` 文件）即可。 |
-| 文本转语音 | [语音字体](how-to-customize-voice-font.md) | 使用自定义语音字体可为自有品牌创建可识别的独一无二的声音。 只需使用少量的数据即可开始创建。 提供的数据越多，语音字体就越自然，且越接近人类语音。 |
+| 语音转文本 | [声学模型](./how-to-custom-speech-train-model.md) | 为特定环境（例如汽车或工厂车间）中使用的应用程序、工具或设备创建自定义声学模型，每个模型具有特定的录制条件。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
+|                | [语言模型](./how-to-custom-speech-train-model.md) | 创建自定义语言模型来改善行业特定的词汇和语法的听录，例如医疗术语中或 IT 行话。 |
+|                | [发音模型](./how-to-custom-speech-train-model.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 `.txt` 文件）即可。 |
+| 文本转语音 | [语音字体](./how-to-custom-voice-create-voice.md) | 使用自定义语音字体可为自有品牌创建可识别的独一无二的声音。 只需使用少量的数据即可开始创建。 提供的数据越多，语音字体就越自然，且越接近人类语音。 |
 
 ## <a name="sample-code"></a>代码示例
 
@@ -138,7 +138,7 @@ GitHub 中提供了每个语音服务功能的示例代码。 这些示例涵盖
 
 ## <a name="reference-docs"></a>参考文档
 
-- [语音 SDK](speech-sdk-reference.md)
+- [语音 SDK](./speech-sdk.md)
 - [语音设备 SDK](speech-devices-sdk.md)
 - [REST API：语音转文本](rest-speech-to-text.md)
 - [REST API：文本转语音](rest-text-to-speech.md)

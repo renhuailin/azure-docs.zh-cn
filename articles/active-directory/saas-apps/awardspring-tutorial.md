@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: f9d88e160460fd40ba4369811d5fd49a091f3956
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a92bf7a10861658ddc3a60154708de266de8904d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550063"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457456"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>教程：Azure Active Directory 与 AwardSpring 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88550063"
 * 让用户使用其 Azure AD 帐户自动登录到 AwardSpring。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88550063"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * AwardSpring 支持 **SP 和 IDP** 发起的 SSO
-* AwardSpring 支持**恰时**用户预配
+* AwardSpring 支持 **恰时** 用户预配
 
 ## <a name="adding-awardspring-from-the-gallery"></a>从库中添加 AwardSpring
 
@@ -146,7 +146,7 @@ ms.locfileid: "88550063"
 
 ## <a name="configure-awardspring-sso"></a>配置 AwardSpring SSO
 
-若要在 **AwardSpring** 端配置单一登录，需要将下载的**联合元数据 XML** 以及从 Azure 门户复制的相应 URL 发送给 [AwardSpring 支持团队](mailto:support@awardspring.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **AwardSpring** 端配置单一登录，需要将下载的 **联合元数据 XML** 以及从 Azure 门户复制的相应 URL 发送给 [AwardSpring 支持团队](mailto:support@awardspring.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-awardspring-test-user"></a>创建 AwardSpring 测试用户
 
@@ -159,15 +159,14 @@ ms.locfileid: "88550063"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 AwardSpring 磁贴时，应当会自动登录到已为其设置了 SSO 的 AwardSpring。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 AwardSpring 磁贴时，应当会自动登录到已为其设置了 SSO 的 AwardSpring。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 AwardSpring](https://aad.portal.azure.com/)
-

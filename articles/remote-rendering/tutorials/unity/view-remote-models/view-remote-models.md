@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006459"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574728"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教程：查看远程渲染的模型
 
@@ -79,7 +79,7 @@ ms.locfileid: "89006459"
 :::image type="content" source="./media/confirm-packages.png" alt-text="确认包导入":::
 
 如果包未加载，检查 Unity 控制台中是否存在错误。 如果没有任何错误，但在 Packages 文件夹下仍然看不到任何包，请检查包可见性切换按钮。
-![Unity 相机属性](./media/unity-package-visibility.png)
+![屏幕截图，其中箭头指向“包可见性”切换按钮。](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>确保已安装最新版本的包
 
@@ -120,7 +120,7 @@ ms.locfileid: "89006459"
 
 1. 在左侧列表菜单中，选择“图形”
 1. 将“可编写脚本的渲染管道”设置更改为“HybridRenderingPipeline”。
-    ![更改项目图形设置](./media/settings-graphics-render-pipeline.png)\
+    ![屏幕截图，指出了将可编写脚本的渲染管道设置更改为 HybridRenderingPipeline 的位置。](./media/settings-graphics-render-pipeline.png)\
     有时 UI 不会填充包中可用的管道类型列表。 如果发生这种情况，需要将 HybridRenderingPipeline 资产手动拖动到该字段上：
     ![更改项目图形设置](./media/hybrid-rendering-pipeline.png)
 
@@ -220,7 +220,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
@@ -597,7 +597,7 @@ public async void InitializeSessionService()
 1. 将组件拖到其自己的事件上，以引用其自身。
 ![绕过身份验证](./media/bypass-authorization-add-event.png)\
 1. 在下拉列表中，选择“RemoteRenderingCoordinator”->“BypassAuthorization”。
-![绕过身份验证](./media/bypass-authorization-event.png)
+![屏幕截图，显示所选的“RemoteRenderingCoordinator.BypassAuthorization”选项。](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>创建或加入远程会话
 
@@ -724,7 +724,7 @@ private void LateUpdate()
 
 设置好所需的基础结构后，就可以将模型加载到远程会话并开始接收帧了。
 
-![ARR 堆栈 4](./media/remote-render-stack-4.png)
+![显示准备加载和查看模型的流程的图表。](./media/remote-render-stack-4.png)
 
 LoadModel 方法的作用是接受模型路径、进度处理程序和父转换。 这些参数用于将模型加载到远程会话中，向用户更新加载进度，并基于父转换确定远程渲染模型的方向。
 

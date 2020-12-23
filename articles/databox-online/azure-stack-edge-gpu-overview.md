@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/07/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: c17cd17dfc3462d5a55753e6a4a364c14f9e2b62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899080"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937060"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>什么是 Azure Stack Edge Pro with GPU？
 
@@ -25,7 +25,7 @@ Azure Stack Edge Pro with GPU 是一种硬件即服务解决方案。 Microsoft 
 
 下面介绍各种方案，其中 Azure Stack Edge Pro 可用于加快边缘的机器学习 (ML) 推理并对数据进行预处理，然后再将该数据发送到 Azure。
 
-- 使用 Azure 机器学习进行推理 - 借助 Azure Stack Edge Pro，可以运行 ML 模型以获得可在将数据发送到云之前执行的快速结果。 可以选择传输完整的数据集以继续重新训练并改进 ML 模型。 有关如何在 Azure Stack Edge Pro 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Azure Stack Edge Pro 上部署 Azure ML 硬件加速模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)。
+- 使用 Azure 机器学习进行推理 - 借助 Azure Stack Edge Pro，可以运行 ML 模型以获得可在将数据发送到云之前执行的快速结果。 可以选择传输完整的数据集以继续重新训练并改进 ML 模型。 有关如何在 Azure Stack Edge Pro 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Azure Stack Edge Pro 上部署 Azure ML 硬件加速模型](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)。
 
 - **预处理数据** - 在将数据发送到 Azure 之前通过计算选项（如容器化工作负载和虚拟机）转换数据，以创建更具操作性的数据集。 使用预处理可以： 
 
@@ -44,15 +44,14 @@ Azure Stack Edge Pro 具有以下功能：
 |---------|---------|
 |加速 AI 推断| 由内置 GPU 启用（一个或两个取决于型号）。|
 |边缘计算      |支持 VM 和容器化工作负载，以允许分析、处理和筛选数据。 |
-|高性能 | 高性能计算和数据传输。|
 |数据访问     | 使用云 API 从 Azure 存储 Blob 和 Azure 文件中直接访问数据，以便在云中进行其他数据处理。 设备带有本地缓存，以便快速访问最近使用的文件。|
 |云托管     |设备和服务通过 Azure 门户进行管理。  |
 |离线上传     | 离线模式支持离线上传方案。|
-|支持的存储协议     | 支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关受支持版本的详细信息，请参阅 [Azure Stack Edge Pro 系统要求](azure-stack-edge-system-requirements.md)。|
+|支持的文件传输协议      | 支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关受支持版本的详细信息，请参阅 [Azure Stack Edge Pro 系统要求](azure-stack-edge-system-requirements.md)。|
 |数据刷新     | 可以使用云中的最新内容刷新本地文件。|
 |加密    | BitLocker 支持本地加密数据，并通过 *http* 安全地将数据传输到云中。|
 |带宽限制| 中止以限制在高峰时段使用带宽。|
-<!--|ExpressRoute | 通过 ExpressRoute 增加了安全性。 使用对等互连配置，从本地设备到云存储终结点的流量将通过 ExpressRoute 传输。 有关详细信息，请参阅 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)。-->
+<!--|ExpressRoute | 通过 ExpressRoute 增加了安全性。 使用对等互连配置，从本地设备到云存储终结点的流量将通过 ExpressRoute 传输。 有关详细信息，请参阅 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)。|-->
 
 ## <a name="components"></a>组件
 
@@ -73,6 +72,8 @@ Azure Stack Edge Pro 解决方案包括 Azure Stack Edge 资源、Azure Stack Ed
 将数据传输到其中的 Azure Stack Edge Pro 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
 
 - **资源可用性** - 对于此预览版，美国东部、欧洲西部和东南亚地区中可使用此资源。
+
+- **设备可用性** - 有关 Azure Stack Edge Pro 设备可用的所有国家/地区的列表，请转到 [Azure Stack Edge Pro 定价](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)的“Azure Stack Edge Pro”选项卡中的“可用性”部分 。
     
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 存储帐户存储 Azure Stack Edge Pro 数据的区域应靠近设备所在位置，以便获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。
 

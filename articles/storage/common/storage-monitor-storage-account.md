@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034662"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782002"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -27,7 +27,7 @@ ms.locfileid: "88034662"
 >
 > Azure 文件目前支持存储分析指标，但尚不支持日志记录。
 >
-> 高级性能块 blob 存储帐户不支持存储分析指标，但支持日志记录。 可以通过 REST API 或客户端库以编程方式启用日志记录。 若要使用高级性能 blob 存储帐户查看指标，不妨参阅 [Azure Monitor 中的 Azure 存储指标](storage-metrics-in-azure-monitor.md)。
+> 高级性能块 blob 存储帐户不支持存储分析指标，但支持日志记录。 可以通过 REST API 或客户端库以编程方式启用日志记录。 若要使用高级性能 blob 存储帐户查看指标，不妨参阅 [Azure Monitor 中的 Azure 存储指标](../blobs/monitor-blob-storage.md)。
 >
 > 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)。
 >
@@ -37,7 +37,7 @@ ms.locfileid: "88034662"
 1. 在 [Azure 门户](https://portal.azure.com)中选择“存储帐户”，并单击存储帐户名称打开帐户仪表板。
 1. 在菜单边栏选项卡的“监视”部分选择“诊断”。
 
-    ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
+    ![屏幕截图，突出显示了 "监视 (经典) " 部分下 (经典) "选项的诊断设置。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. 选择要监视的每个服务的指标数据类型，以及数据的保留策略。 还可以通过将“状态”设置为“关闭”来禁用监视。
 
@@ -139,9 +139,9 @@ ms.locfileid: "88034662"
 1. 确保“状态”设置为“打开”，选择要为其启用日志记录的服务。
 
     ![在 Azure 门户中配置日志记录。](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. 单击“保存” 。
+1. 单击“ **保存** ”。
 
-诊断日志保存在存储帐户下名为 $logs 的 Blob 容器中。 你可以使用存储资源管理器（如[Microsoft Azure 存储资源管理器](https://storageexplorer.com)）或使用存储客户端库或 PowerShell 以编程方式查看日志数据。
+诊断日志保存在存储帐户下名为 $logs 的 Blob 容器中。 可以使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)等存储资源管理器来查看日志数据，也可以使用存储客户端库或 PowerShell 以编程方式这样做。
 
 有关如何访问 $logs 容器的信息，请参阅[存储分析日志记录](storage-analytics-logging.md)。
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: c658f0a4f700a4588b238f2bb009b263da94e753
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: d1e40793e12f1c74a2a6f5e6945dc449dc63bbc0
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759973"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504295"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入门：将表单识别器 REST API 与 Python 结合使用来提取回执数据
 
@@ -84,7 +84,7 @@ ms.locfileid: "91759973"
         quit()
 ```
     
-# <a name="v21-preview1"></a>[v2.1-preview.1](#tab/v2-1)    
+# <a name="v21-preview2"></a>[v2.1-preview.2](#tab/v2-1)    
 ```python
     ########### Python Form Recognizer Async Receipt #############
 
@@ -95,7 +95,7 @@ ms.locfileid: "91759973"
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze"
     source = r"<path to your receipt>"
     
     headers = {
@@ -141,9 +141,9 @@ ms.locfileid: "91759973"
 ```console
 https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
-# <a name="v21-preview1"></a>[v2.1-preview.1](#tab/v2-1)    
+# <a name="v21-preview2"></a>[v2.1-preview.2](#tab/v2-1)    
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 ---
 
@@ -183,7 +183,7 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>检查响应
 
-脚本会向控制台输出响应，直到**分析收据**操作完成。 然后，它将以 JSON 格式输出已提取的文本数据。 `"readResults"` 字段包含已从回执中提取的每行文本，而 `"documentResults"` 字段包含该回执最相关部分的键/值信息。
+脚本会向控制台输出响应，直到 **分析收据** 操作完成。 然后，它将以 JSON 格式输出已提取的文本数据。 `"readResults"` 字段包含已从回执中提取的每行文本，而 `"documentResults"` 字段包含该回执最相关部分的键/值信息。
 
 请查看以下回执图像及其相应的 JSON 输出。 为可读起见，已将该输出缩短。
 

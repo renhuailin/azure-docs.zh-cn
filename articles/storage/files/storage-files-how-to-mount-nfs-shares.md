@@ -4,16 +4,16 @@ description: 了解如何装载网络文件系统共享。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8a993d9c1de35132198de5e3becc4f16d6a2a437
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707435"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621291"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>如何装载 NFS 文件共享
 
@@ -58,6 +58,10 @@ ms.locfileid: "90707435"
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="文件共享连接边栏选项卡的屏幕截图":::
 
 现已装载 NFS 共享。
+
+### <a name="validate-connectivity"></a>验证连接
+
+如果安装失败，则可能是专用终结点未正确设置或无法访问。 有关确认连接性的详细信息，请参阅网络终结点一文中的 " [验证连接](storage-files-networking-endpoints.md#verify-connectivity) " 一节。
 
 ## <a name="next-steps"></a>后续步骤
 

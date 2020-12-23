@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884164"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445144"
 ---
 # <a name="hierarchical-state-override"></a>分层状态替代
 
@@ -28,26 +28,33 @@ ms.locfileid: "90884164"
 
 可以替代的一组固定状态为：
 
-* **`Hidden`**：场景图中的相应网格将隐藏或显示。
-* **`Tint color`**：呈现的对象可以使用其各自的淡色颜色和色调粗细进行彩色着色。 下图显示了对轮缘进行颜色淡化。
+* **`Hidden`** ：场景图中的相应网格将隐藏或显示。
+* **`Tint color`** ：呈现的对象可以使用其各自的淡色颜色和色调粗细进行彩色着色。 下图显示了对轮缘进行颜色淡化。
   
   ![用于使对象变为绿色的色调颜色](./media/color-tint.png)
 
-* **`See-through`**：几何图形以半透明方式呈现，例如，用于显示对象的内部部件。 下图显示了整个汽车以透视模式呈现，红色制动钳除外：
+* **`See-through`** ：几何图形以半透明方式呈现，例如，用于显示对象的内部部件。 下图显示了整个汽车以透视模式呈现，红色制动钳除外：
 
   ![用于使选定对象透明的 "查看" 模式](./media/see-through.png)
 
   > [!IMPORTANT]
   > 仅当使用“TileBasedComposition”[渲染模式](../../concepts/rendering-modes.md)时，透视效果才起作用。
 
-* **`Selected`**：使用 [选择轮廓](outlines.md)呈现几何。
+* **`Shell`** ：几何图形呈现为透明的反饱和 shell。 此模式允许淡出场景的非重要部分，同时仍保留一种形状和相对定位。 若要更改 shell 呈现的外观，请使用 [ShellRenderingSettings](shell-effect.md) 状态。 请参阅下图，了解完全由外壳呈现的汽车模型，但蓝色弹簧除外：
+
+  ![用于淡化特定对象的 Shell 模式](./media/shell.png)
+
+  > [!IMPORTANT]
+  > Shell 效果仅在使用 *TileBasedComposition* [呈现模式](../../concepts/rendering-modes.md) 时有效。
+
+* **`Selected`** ：使用 [选择轮廓](outlines.md)呈现几何。
 
   ![用于突出显示选定部分的大纲选项](./media/selection-outline.png)
 
-* **`DisableCollision`**：几何图形从 [空间查询](spatial-queries.md)中免除。 该 **`Hidden`** 标志不会影响冲突状态标志，因此，这两个标志通常一起设置。
+* **`DisableCollision`** ：几何图形从 [空间查询](spatial-queries.md)中免除。 该 **`Hidden`** 标志不会影响冲突状态标志，因此，这两个标志通常一起设置。
 
-* **`UseCutPlaneFilterMask`**：使用单个筛选器位掩码来控制切口面选择。 此标志确定是否应使用单个筛选器掩码或从其父筛选器继承。 筛选器位掩码本身通过 `CutPlaneFilterMask` 属性设置。 有关筛选的工作方式的详细信息，请参阅 [选择性剪切平面段落](cut-planes.md#selective-cut-planes)。
-![选择性剪切平面](./media/selective-cut-planes.png)
+* **`UseCutPlaneFilterMask`** ：使用单个筛选器位掩码来控制切口面选择。 此标志确定是否应使用单个筛选器掩码或从其父筛选器继承。 筛选器位掩码本身通过 `CutPlaneFilterMask` 属性设置。 有关筛选的工作方式的详细信息，请参阅 [选择性剪切平面段落](cut-planes.md#selective-cut-planes)。 请参阅以下示例，其中只有轮胎和边缘在场景的其余部分保持不受影响时才会被剪切。
+![选择性剪切平面](./media/selective-cut-planes-hierarchical-override.png)
 
 
 > [!TIP]
@@ -101,12 +108,12 @@ component->SetState(
 
 `HierarchicalStateOverrideComponent` 本身的实例不会增加很多运行时开销。 但是，保持较低的活动组件数量始终是一个好习惯。 例如，在实现突出显示所选对象的选择系统时，建议在删除突出显示时删除该组件。 无相关功能的组件会迅速累积。
 
-透明渲染比标准渲染在服务器 GPU 上增加了更多工作负载。 如果场景图的大型部分切换到 *see-through*，且几何结构多个层次可见，则可能会成为性能瓶颈。 这对于具有[选择轮廓](../../overview/features/outlines.md#performance)的对象而言也是如何。
+透明渲染比标准渲染在服务器 GPU 上增加了更多工作负载。 如果场景图的大型部分切换到 *see-through* ，且几何结构多个层次可见，则可能会成为性能瓶颈。 对于具有 [选择轮廓](../../overview/features/outlines.md#performance) 的对象和 [shell 渲染](../../overview/features/shell-effect.md#performance) ，这一点都是有效的。 
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # HierarchicalStateOverrideComponent 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
-* [C + + HierarchicalStateOverrideComponent 类](https://docs.microsoft.com/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
+* [C # HierarchicalStateOverrideComponent 类](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [C + + HierarchicalStateOverrideComponent 类](/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>后续步骤
 

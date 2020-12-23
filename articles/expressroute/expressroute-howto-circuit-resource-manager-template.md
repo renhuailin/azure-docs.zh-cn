@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566171"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202049"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ExpressRoute 线路
 
@@ -25,7 +25,7 @@ ms.locfileid: "89566171"
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
 
-了解如何使用 Azure PowerShell 部署 Azure 资源管理器模板，以便创建 ExpressRoute 线路。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.network/expressroutecircuits)。
+了解如何使用 Azure PowerShell 部署 Azure 资源管理器模板，以便创建 ExpressRoute 线路。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](../azure-resource-manager/index.yml)和[模板参考](/azure/templates/microsoft.network/expressroutecircuits)。
 
 ## <a name="before-you-begin"></a>在开始之前
 
@@ -63,7 +63,7 @@ ms.locfileid: "89566171"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU 层** 确定 ExpressRoute 线路为 [本地](expressroute-faqs.md#expressroute-local)、标准还是 [高级](expressroute-faqs.md#expressroute-premium)。 您可以指定 *本地*、* 标准或 *高级*。 不能将 SKU 从 " *标准"/"高级* " 更改为 " *本地*"。
+   * **SKU 层** 确定 ExpressRoute 线路为 [本地](expressroute-faqs.md#expressroute-local)、标准还是 [高级](expressroute-faqs.md#expressroute-premium)。 你可以指定本地版、*标准版或高级版 。 不能将 SKU 从“标准”/“高级”更改为“本地” 。
    * **SKU 系列** 确定计费类型。 可以指定“Metereddata”** 以获取数据流量套餐，指定“Unlimiteddata”** 以获取无限制流量套餐。 可以将计费类型从“Metereddata”** 更改为“Unlimiteddata”**，但不能将类型从“Unlimiteddata”** 更改为“Metereddata”**。 “本地”** 线路仅为 Unlimiteddata**。
    * “对等互连位置”**** 是与 Microsoft 建立对等互连的实际位置。
 

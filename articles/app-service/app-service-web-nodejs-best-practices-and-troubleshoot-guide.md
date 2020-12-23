@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961884"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763938"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
@@ -121,13 +121,13 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 许多应用程序想要在其定期操作中进行出站连接。 例如，请求传入时，节点应用程序会想连接别处的 REST API，并获取一些信息来处理请求。 建议在进行 http 或 https 调用时使用保持连接代理。 可在进行这些出站调用时，使用 agentkeepalive 模块作为保持连接代理。
 
-agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 在每个出站请求中创建新套接字会增大应用程序的开销。 让应用程序对出站请求重复使用套接字可确保应用程序不会超过为每个 VM 分配的 maxSockets。 对于 Azure 应用服务的建议是将 agentKeepAlive maxSockets 值设置为每个 VM 总共 160 个套接字（4 个 node.exe 实例 \* 每个实例 40 个 maxSockets）。
+agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 在每个出站请求中创建新套接字会增大应用程序的开销。 让应用程序对出站请求重复使用套接字可确保应用程序不会超过为每个 VM 分配的 maxSockets。 Azure App Service 上的建议是将 agentKeepAlive maxSockets 值设置为 \* 每个 VM 每个 node.exe 32 maxSockets/instance) 128 插槽的 (4 个实例。
 
 [agentKeepALive 配置](https://www.npmjs.com/package/agentkeepalive)示例：
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000
@@ -140,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>节点应用程序消耗过多的 CPU
 
-门户上可能会显示 Azure 应用服务针对高 CPU 消耗量提供的建议。 也可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../azure-monitor/app/web-monitor-performance.md)上检查 CPU 使用率时，请检查 CPU 的最大值，这样才不会错过峰值。
+门户上可能会显示 Azure 应用服务针对高 CPU 消耗量提供的建议。 也可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../azure-monitor/platform/metrics-charts.md)上检查 cpu 使用率时，请检查 CPU 的最大值，以便不会错过峰值值。
 如果你认为应用程序消耗了过多的 CPU，但又无法做出解释，可以分析 Node 应用程序来找出原因。
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>在 Azure 应用服务中使用 V8 探查器分析 node 应用程序
@@ -213,7 +213,7 @@ http.createServer(function (req, res) {
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>node 应用程序消耗过多的内存
 
-如果应用程序消耗过多的内存，门户中会显示 Azure 应用服务针对高内存消耗量提供的建议。 可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../azure-monitor/app/web-monitor-performance.md)上检查内存使用率时，请务必检查内存的最大值，这样才不会错过峰值。
+如果应用程序消耗过多的内存，门户中会显示 Azure 应用服务针对高内存消耗量提供的建议。 可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../azure-monitor/platform/metrics-charts.md)上检查内存使用率时，请务必检查内存的最大值，这样就不会错过峰值值。
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>node.js 的泄漏检测和堆区分
 

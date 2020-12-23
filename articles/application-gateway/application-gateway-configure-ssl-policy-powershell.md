@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808245"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397886"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>在应用程序网关上配置 TLS 策略版本和密码套件
 
@@ -217,4 +217,4 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>后续步骤
 
-请访问[应用程序网关重定向概述](application-gateway-redirect-overview.md)，了解如何将 HTTP 流量重定向至 HTTPS 终结点。
+请访问[应用程序网关重定向概述](./redirect-overview.md)，了解如何将 HTTP 流量重定向至 HTTPS 终结点。

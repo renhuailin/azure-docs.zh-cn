@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c8ec4b68dc774b52ad621ff3e965481de680b6ff
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079993"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181384"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>教程：将 Wandera RADAR Admin 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "89079993"
 * 让用户使用其 Azure AD 帐户自动登录到 Wandera RADAR Admin。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "89079993"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Wandera RADAR Admin 支持 IDP 发起的 SSO
-* 配置 Wandera RADAR Admin 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Wandera RADAR Admin 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-wandera-radar-admin-from-the-gallery"></a>从库中添加 Wandera RADAR Admin
 
@@ -88,13 +88,13 @@ ms.locfileid: "89079993"
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 SAML 单一登录”页上，单击与“SAML 签名证书”对应的编辑/笔形图标以编辑设置********。
+1. 在“设置 SAML 单一登录”页上，单击与“SAML 签名证书”对应的编辑/笔形图标以编辑设置。
 
     ![签名选项](common/signing-option.png)
 
-    1. 选择“签名选项”作为“签名 SAML 响应和断言”********。
+    1. 选择“签名选项”作为“签名 SAML 响应和断言”。
 
-    1. 将“SHA-256”选为“签名算法”********。
+    1. 将“SHA-256”选为“签名算法”。
 
 1. 在“设置 Wandera RADAR Admin”部分中，根据要求复制相应的 URL。
 
@@ -146,29 +146,28 @@ ms.locfileid: "89079993"
 
     ![Wandera RADAR Admin 配置](./media/wandera-tutorial/config01.png)
 
-    a. 单击**或手动输入必填字段**。
+    a. 单击 **或手动输入必填字段**。
 
-    b. 在“IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值********。
+    b. 在“IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
-    c. 在记事本中打开“联合元数据 XML”，复制其内容并将其粘贴到“IdP 公共 X.509 证书”**** 文本框中。
+    c. 在记事本中打开“联合元数据 XML”，复制其内容并将其粘贴到“IdP 公共 X.509 证书”文本框中。
 
     d. 单击“ **保存**”。
 
 ### <a name="create-wandera-radar-admin-test-user"></a>创建 Wandera RADAR Admin 测试用户
 
-在本部分中，你将在 Wandera RADAR Admin 中创建名为 B.Simon 的用户。在  [Wandera RADAR Admin 支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)的配合下，将用户添加到 Wandera RADAR Admin 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，你将在 Wandera RADAR Admin 中创建名为 B.Simon 的用户。请与 [Wandera RADAR Admin 支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)协作，将用户添加到 Wandera RADAR Admin 平台。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Wandera RADAR Admin 磁贴时，应当会自动登录到设置了 SSO 的 Wandera RADAR Admin。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Wandera RADAR Admin 磁贴时，应当会自动登录到设置了 SSO 的 Wandera RADAR Admin。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

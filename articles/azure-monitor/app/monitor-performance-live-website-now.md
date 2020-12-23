@@ -4,12 +4,12 @@ description: 在不重新部署网站的情况下监视网站性能。 使用托
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758657"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186297"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "91758657"
 
 |  | 构建时 | 运行时 |
 | --- | --- | --- |
-| **请求 & 异常** |是 |是 |
+| **请求和异常** |是 |是 |
 | **[更详细异常](./asp-net-exceptions.md)** | |是 |
 | **[依赖项诊断](./asp-net-dependencies.md)** |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
 | **[系统性能计数器](./performance-counters.md)** |是 |是 |
@@ -93,7 +93,7 @@ ms.locfileid: "91758657"
 
 - 确认 applicationInsights.config 文件在目标应用目录中并且包含 ikey。
 
-- 如果怀疑缺失数据，可在 [Analytics](../log-query/get-started-portal.md) 中运行查询，列出目前正在发送遥测数据的所有云角色。
+- 如果怀疑缺失数据，可在 [Analytics](../log-query/log-analytics-tutorial.md) 中运行查询，列出目前正在发送遥测数据的所有云角色。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -340,4 +340,3 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 [qna]: ../faq.md
 [roles]: ./resources-roles-access-control.md
 [usage]: ./javascript.md
-

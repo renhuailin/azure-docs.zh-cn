@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988258"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043430"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory (AD) 租户
 
@@ -53,13 +53,13 @@ P2S 配置定义连接远程客户端的参数。
 
 2. 选择要将 VPN 服务器配置关联到的中心，然后单击省略号图标 (...)。
 
-    ![新建站点](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
+    ![屏幕截图显示从菜单中选择 "编辑虚拟中心"。](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
 
 3. 单击“编辑虚拟中心”。
 
 4. 选中“包括点到站点网关”复选框，然后选择所需的网关缩放单元。
 
-    ![新建站点](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
+    ![屏幕截图显示 "编辑虚拟中心" 对话框，在该对话框中可以选择网关缩放单位。](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
 
 5. 输入用于为 VPN 客户端分配 IP 地址的“地址池”  。
 
@@ -101,51 +101,51 @@ P2S 配置定义连接远程客户端的参数。
 
 1. 在页面上，选择“导入”。 
 
-    ![进口](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
+    ![屏幕截图显示从 plus 菜单中选择的导入。](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
 2. 浏览到 XML 配置文件并将其选中。 选择该文件后，选择“打开”。 
 
-    ![进口](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
+    ![屏幕截图显示 "打开" 对话框，你可以在其中选择文件。](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
 3. 指定配置文件的名称，并选择“保存”。 
 
-    ![进口](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
+    ![屏幕截图显示添加的连接名称，并选择 "保存" 按钮。](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
 4. 选择“连接”以连接到 VPN。 
 
-    ![进口](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
+    ![屏幕截图显示刚刚创建的连接的 "连接" 按钮。](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
 5. 连接后，图标将变为绿色并指示“已连接”。 
 
-    ![进口](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
+    ![屏幕截图显示连接状态与 "断开连接" 选项。](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>删除客户端配置文件
 
 1. 选择要删除的客户端配置文件旁边的省略号图标 (...)。 然后选择“删除”  。
 
-    ![删除](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![屏幕截图显示从菜单中选择 "删除"。](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. 选择“删除”以删除配置文件。 
 
-    ![删除](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![屏幕截图显示了一个确认对话框，其中包含删除或取消选项。](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>诊断连接问题
 
 1. 若要诊断连接问题，可以使用“诊断”工具。  选择要诊断的 VPN 连接旁边的省略号图标 (...) 以显示菜单。 然后选择“诊断”。 
 
-    ![诊断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
+    ![屏幕截图显示从菜单中选择的诊断。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
 2. 在“连接属性”页上，选择“运行诊断”。  
 
-    ![诊断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+    ![屏幕截图显示连接的 "运行诊断" 按钮。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 
 3. 使用凭据登录。
 
-    ![诊断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+    ![屏幕截图显示此操作的 "登录" 对话框。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
 
 4. 查看诊断结果。
 
-    ![诊断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
+    ![屏幕截图显示诊断结果。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
 
 ## <a name="10-view-your-virtual-wan"></a><a name="viewwan"></a>10.查看虚拟 WAN
 

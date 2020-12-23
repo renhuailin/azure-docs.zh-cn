@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284007"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999565"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建、监视和管理 FTP 文件
 
@@ -29,15 +29,15 @@ ms.locfileid: "87284007"
 
 * FTP 连接器仅支持显式 FTP over TLS/SSL (FTPS)，与隐式 FTPS 不兼容。
 
-* 默认情况下，FTP 操作可以读取或写入 *50 MB 或更小*的文件。 若要处理大于 50 MB 的文件，FTP 操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 **获取文件内容**操作隐式使用分块。
+* 默认情况下，FTP 操作可以读取或写入 *50 MB 或更小* 的文件。 若要处理大于 50 MB 的文件，FTP 操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 **获取文件内容** 操作隐式使用分块。
 
 * FTP 触发器不支持分块。 请求文件内容时，触发器仅选择 50 MB 或更小的文件。 若要获取大于 50 MB 的文件，请遵循以下模式：
 
   * 使用返回文件属性的 FTP 触发器，如“添加或修改文件时(仅属性)”。
 
-  * 跟随触发器执行 FTP **获取文件内容**操作，该操作读取完整文件并隐式使用分块。
+  * 跟随触发器执行 FTP **获取文件内容** 操作，该操作读取完整文件并隐式使用分块。
 
-* 如果你有本地 FTP 服务器，请考虑创建[集成服务环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)或使用[Azure App Service 混合连接](../app-service/app-service-hybrid-connections.md)，这两者都允许你在不使用本地数据网关的情况下访问本地数据源。
+* 如果你有本地 FTP 服务器，请考虑使用 (ISE) 或[Azure App Service 混合连接](../app-service/app-service-hybrid-connections.md)创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，这两者都允许你在不使用本地数据网关的情况下访问本地数据源。
 
 ## <a name="how-ftp-triggers-work"></a>FTP 触发器的工作原理
 
@@ -174,7 +174,7 @@ FTP 触发器的工作原理是轮询 FTP 文件系统并查找自上次轮询�
 有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/ftpconnector/)。
 
 > [!NOTE]
-> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的基于 ise 标记的版本改为使用 [ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
 ## <a name="next-steps"></a>后续步骤
 

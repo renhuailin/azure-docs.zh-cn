@@ -1,29 +1,29 @@
 ---
 title: 为部署为 Web 服务的模型创建客户端
 titleSuffix: Azure Machine Learning
-description: 了解如何调用从 Azure 机器学习部署模型时生成的 Web 服务终结点。 该终结点公开一个 REST API，可以调用它来执行模型推理。 使用所选的编程语言为此 API 创建客户端。
+description: 了解如何调用从 Azure 机器学习部署模型时生成的 Web 服务终结点。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.custom: how-to, devx-track-python, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: fa1b19ef4ece3011c97c3158d54edd1d39efc09d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756664"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832630"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
 
 将 Azure 机器学习模型部署为 Web 服务可创建 REST API 终结点。 可将数据发送到此终结点，并接收模型返回的预测。 本文档介绍了如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
 
-将模型部署到本地环境、Azure 容器实例、Azure Kubernetes 服务或现场可编程门阵列 (FPGA) 时，你将创建一个 Web 服务。 你将使用 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 检索用来访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥或令牌。
+将模型部署到本地环境、Azure 容器实例、Azure Kubernetes 服务或现场可编程门阵列 (FPGA) 时，你将创建一个 Web 服务。 你将使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 检索用来访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥或令牌。
 
 用于创建使用机器学习 Web 服务的客户端的常规工作流为：
 
@@ -39,14 +39,16 @@ ms.locfileid: "91756664"
 > [!NOTE]
 > 使用 Azure 机器学习 SDK 获取 Web 服务信息。 这是一个 Python SDK。 可以使用任何语言来为服务创建客户端。
 
-[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) 类提供了创建客户端所需的信息。 创建客户端应用程序时，以下 `Webservice` 属性非常有用：
+[azureml.core.Webservice](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) 类提供了创建客户端所需的信息。 创建客户端应用程序时，以下 `Webservice` 属性非常有用：
 
 * `auth_enabled` - 如果启用了密钥身份验证，则为 `True`；否则为 `False`。
 * `token_auth_enabled` - 如果启用了令牌身份验证，则为 `True`；否则为 `False`。
 * `scoring_uri` - REST API 地址。
 * `swagger_uri` - OpenAPI 规范的地址。 如果已启用自动生成架构，则可以使用此 URI。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
-可通过三种方式检索已部署的 Web 服务的此信息：
+可通过几种方式检索已部署的 Web 服务的此信息：
+
+# <a name="python"></a>[Python](#tab/python)
 
 * 部署模型时，会返回包含有关服务的信息的 `Webservice` 对象：
 
@@ -57,7 +59,7 @@ ms.locfileid: "91756664"
     print(service.swagger_uri)
     ```
 
-* 可以使用 `Webservice.list` 检索工作区中为模型部署的 Web 服务列表。 可以添加筛选器，以缩小返回的信息列表范围。 有关可以筛选的对象的详细信息，请参阅 [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true) 参考文档。
+* 可以使用 `Webservice.list` 检索工作区中为模型部署的 Web 服务列表。 可以添加筛选器，以缩小返回的信息列表范围。 有关可以筛选的对象的详细信息，请参阅 [Webservice.list](/python/api/azureml-core/azureml.core.webservice.webservice.webservice?preserve-view=true&view=azure-ml-py) 参考文档。
 
     ```python
     services = Webservice.list(ws)
@@ -72,6 +74,30 @@ ms.locfileid: "91756664"
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+如果知道已部署服务的名称，请使用 [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) 命令：
+
+```azurecli
+az ml service show -n <service-name>
+```
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+在 Azure 机器学习工作室中，选择“终结点”，“实时终结点”，然后选择终结点名称。 在终结点的详细信息中，“REST 终结点”字段包含评分 URI。 __Swagger URI__ 包含 swagger URI。
+
+---
+
+下表显示了这些 URI 的外观：
+
+| URI 类型 | 示例 |
+| ----- | ----- |
+| 评分 URI | `http://104.214.29.152:80/api/v1/service/<service-name>/score` |
+| Swagger UI | `http://104.214.29.152/api/v1/service/<service-name>/swagger.json` |
+
+> [!TIP]
+> 你的部署的 IP 地址会有所不同。 每个 AKS 群集都会有自己的 IP 地址，此地址由部署共享到该群集。
 
 ### <a name="secured-web-service"></a>受保护的 Web 服务
 
@@ -93,7 +119,7 @@ Azure 机器学习提供了两种方法来控制对 Web 服务的访问。
 
 将请求发送到由密钥或令牌保护的服务时，请使用 __Authorization__ 标头来传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
 
-密钥和令牌的主要区别在于，密钥是静态的且能手动重新生成，而令牌需要在到期时刷新 。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署****。 请参阅身份验证[操作说明](how-to-setup-authentication.md#web-service-authentication)，了解更多信息和特定代码示例。
+密钥和令牌的主要区别在于，密钥是静态的且能手动重新生成，而令牌需要在到期时刷新 。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署。 有关配置身份验证的详细信息，请参阅为 [部署为 web 服务的模型配置身份验证](how-to-authenticate-web-service.md)。
 
 
 #### <a name="authentication-with-keys"></a>使用密钥进行身份验证
@@ -113,7 +139,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如需重新生成密钥，请使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true)。
+> 如需重新生成密钥，请使用 [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py)。
 
 #### <a name="authentication-with-tokens"></a>使用令牌进行身份验证
 
@@ -268,7 +294,7 @@ namespace MLWebServiceClient
 
 ## <a name="call-the-service-go"></a>调用服务 (Go)
 
-此示例演示如何使用 Go 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)示例创建的 Web 服务：
+此示例演示如何使用 Go 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)示例创建的 Web 服务：
 
 ```go
 package main
@@ -360,7 +386,7 @@ func main() {
 
 ## <a name="call-the-service-java"></a>调用服务 (Java)
 
-此示例演示如何使用 Java 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)示例创建的 Web 服务：
+此示例演示如何使用 Java 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)示例创建的 Web 服务：
 
 ```java
 import java.io.IOException;
@@ -440,7 +466,7 @@ public class App {
 
 ## <a name="call-the-service-python"></a>调用服务 (Python)
 
-此示例演示如何使用 Python 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)示例创建的 Web 服务：
+此示例演示如何使用 Python 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)示例创建的 Web 服务：
 
 ```python
 import requests
@@ -501,7 +527,7 @@ print(resp.text)
 
 ## <a name="web-service-schema-openapi-specification"></a>Web 服务架构（OpenAPI 规范）
 
-如果在部署中使用了自动生成架构，则可以通过使用 [swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)获取服务的 OpenAPI 规范的地址。 （例如 `print(service.swagger_uri)`。）使用 GET 请求，或在浏览器中打开 URI 以检索规范。
+如果在部署中使用了自动生成架构，则可以通过使用 [swagger_uri 属性](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)获取服务的 OpenAPI 规范的地址。 （例如 `print(service.swagger_uri)`。）使用 GET 请求，或在浏览器中打开 URI 以检索规范。
 
 以下 JSON 文档是为部署生成的架构（OpenAPI 规范）示例：
 
@@ -643,15 +669,15 @@ print(resp.text)
 
 
 > [!TIP]
-> 部署服务后，可以检索架构 JSON 文档。 使用部署的 Web 服务中的 [swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)（例如 `service.swagger_uri`）获取本地 Web 服务的 Swagger 文件的 URI。
+> 部署服务后，可以检索架构 JSON 文档。 使用部署的 Web 服务中的 [swagger_uri 属性](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)（例如 `service.swagger_uri`）获取本地 Web 服务的 Swagger 文件的 URI。
 
 ## <a name="consume-the-service-from-power-bi"></a>通过 Power BI 使用服务
 
 Power BI 支持使用 Azure 机器学习 Web 服务，以通过预测来扩充 Power BI 中的数据。 
 
-若要生成支持在 Power BI 中使用的 Web 服务，架构必须支持 Power BI 所需的格式。 [了解如何创建 Power BI 支持的架构](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script)。
+若要生成支持在 Power BI 中使用的 Web 服务，架构必须支持 Power BI 所需的格式。 [了解如何创建 Power BI 支持的架构](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint)。
 
-在部署 Web 服务后，可通过 Power BI 数据流来使用它。 [了解如何通过 Power BI 使用 Azure 机器学习 Web 服务](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
+在部署 Web 服务后，可通过 Power BI 数据流来使用它。 [了解如何通过 Power BI 使用 Azure 机器学习 Web 服务](/power-bi/service-machine-learning-integration)。
 
 ## <a name="next-steps"></a>后续步骤
 

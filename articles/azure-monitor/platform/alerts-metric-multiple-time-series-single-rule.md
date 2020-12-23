@@ -4,14 +4,14 @@ description: 针对多个时序使用单个警报规则进行大规模警报
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 10/04/2020
+ms.date: 11/12/2020
 ms.subservice: alerts
-ms.openlocfilehash: 81e09e6d9c6a57339f1d6f1eb5ce4f494555fa19
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91704474"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566497"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>监视单个指标警报规则中的多个时序
 
@@ -43,7 +43,7 @@ ms.locfileid: "91704474"
 
 
 对于此警报规则，将监视单个指标时序：
--   *Resource*= ' myVM1 ' > 70% 的 CPU 百分比
+-   *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
 
 ![单个时间系列上的预警规则](media/alerts-metric-multiple-time-series-single-rule/simple-alert-rule.png)
 
@@ -65,18 +65,18 @@ ms.locfileid: "91704474"
 -   阈值： *70*
 
 对于此警报规则，单独监视两个指标时间系列：
--   *Resource*= ' myVM1 ' > 70% 的 CPU 百分比
--   *Resource*= ' myVM2 ' > 70% 的 CPU 百分比
+-   *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
+-   *Resource* = ' myVM2 ' > 70% 的 CPU 百分比
 
 ![多资源警报规则](media/alerts-metric-multiple-time-series-single-rule/multi-resource-alert-rule.png)
  
 在多资源警报规则中，对于每个资源) 的每个指标时序对应， **分别** 为每个资源 (或更精确地评估该条件。 这意味着，还会为每个资源单独触发警报。
 
 例如，假设我们已将上面的警报规则设置为对高于70% 的 CPU 进行监视。 在计算的时间段 (即，最后5分钟) 
--   *MyVM1*的*CPU 百分比*大于70% 
--   *MyVM2*的*CPU 百分比*为50%
+-   *MyVM1* 的 *CPU 百分比* 大于70% 
+-   *MyVM2* 的 *CPU 百分比* 为50%
 
-警报规则在 *myVM1*（而不是 *myVM2*）上触发。 这些触发的警报是独立的。 它们还可以在不同的时间进行解析，具体取决于每个虚拟机的各个行为。
+警报规则在 *myVM1* （而不是 *myVM2* ）上触发。 这些触发的警报是独立的。 它们还可以在不同的时间进行解析，具体取决于每个虚拟机的各个行为。
 
 有关多资源警报规则以及此功能支持的资源类型的详细信息，请参阅 [Azure Monitor 中的使用指标警报进行大规模监视](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。
 
@@ -101,8 +101,8 @@ ms.locfileid: "91704474"
 
 对于此警报规则，将监视两个指标时序：
 
-- *Resource*= ' myVM1 ' > 70% 的 CPU 百分比
-- 总网络，其中 *Resource*= ' myVM1 ' > 20 MB
+- *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
+- 总网络，其中 *Resource* = ' myVM1 ' > 20 MB
 
 ![多条件警报规则](media/alerts-metric-multiple-time-series-single-rule/multi-condition-alert-rule.png)
  
@@ -114,7 +114,7 @@ ms.locfileid: "91704474"
 
 ## <a name="multiple-dimensions-multi-dimension"></a>多维度 (多维度) 
 
-单个指标警报规则还可以监视指标的多个维度值。 指标的维度是包含附加数据的名称-值对，用于描述指标值。 例如，存储帐户的 **事务** 度量值具有一个名为 " **api 名称**" 的维度，描述每个事务调用的 api 的名称 (例如，GetBlob、DeleteBlob、PutPage) 。 维度的使用是可选的，但它允许筛选度量值并仅监视特定的时间序列，而不是将度量值作为所有维度值的聚合组合在一起。 
+单个指标警报规则还可以监视指标的多个维度值。 指标的维度是包含附加数据的名称-值对，用于描述指标值。 例如，存储帐户的 **事务** 度量值具有一个名为 " **api 名称** " 的维度，描述每个事务调用的 api 的名称 (例如，GetBlob、DeleteBlob、PutPage) 。 维度的使用是可选的，但它允许筛选度量值并仅监视特定的时间序列，而不是将度量值作为所有维度值的聚合组合在一起。 
 
 例如，你可以选择在所有 API 名称的数量较高的情况下触发警报， (这是聚合数据) ，或者进一步将其分解为仅在事务数高为特定 API 名称时发出警报。 
 
@@ -129,9 +129,9 @@ ms.locfileid: "91704474"
 
 对于此警报规则，将监视三个指标时序：
 
-- *资源*= "myStorage1"、 *API 名称*= "GetBlob" > 70 的事务
-- *资源*= "myStorage1"、 *API 名称*= "DeleteBlob" > 70 的事务
-- *资源*= "myStorage1"、 *API 名称*= "PutPage" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "GetBlob" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "DeleteBlob" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "PutPage" > 70 的事务
 
 ![包含一个维度中的值的多维度预警规则](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-1.png)
 
@@ -149,12 +149,12 @@ ms.locfileid: "91704474"
 
 对于此警报规则，单独监视六个指标时间系列：
 
-- *资源*= "myStorage1"、 *API 名称*= "GetBlob" 和*Authentication*= "SAS" > 70 的事务
-- *资源*= "myStorage1"、 *API 名称*= "GetBlob" 和*Authentication*= "AccountKey" > 70 的事务
-- *资源*= "myStorage1"、 *API 名称*= "DeleteBlob" 和*Authentication*= "SAS" > 70 的事务
-- *资源*= "myStorage1"、 *API 名称*= "DeleteBlob" 和*Authentication*= "AccountKey" > 70 的事务
-- *资源*= "myStorage1"、 *API 名称*= "PutPage" 和*Authentication*= "SAS" > 70 的事务
-- *资源*= "myStorage1"、 *API 名称*= "PutPage" 和*Authentication*= "AccountKey" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "GetBlob" 和 *Authentication* = "SAS" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "GetBlob" 和 *Authentication* = "AccountKey" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "DeleteBlob" 和 *Authentication* = "SAS" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "DeleteBlob" 和 *Authentication* = "AccountKey" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "PutPage" 和 *Authentication* = "SAS" > 70 的事务
+- *资源* = "myStorage1"、 *API 名称* = "PutPage" 和 *Authentication* = "AccountKey" > 70 的事务
 
 ![具有多个维度中的值的多维度预警规则](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-2.png)
  
@@ -163,6 +163,7 @@ ms.locfileid: "91704474"
 1.  **选择所有当前和未来的维度** -可以选择监视维度的所有可能值，包括未来值。 此类警报规则将自动缩放以监视维度的所有值，而无需在每次添加或删除维度值时修改警报规则。
 2.  **排除维度** –为维度值选择 "≠" ("排除") 运算符等效于选择该维度的所有其他值，包括未来值。
 3.  **新维度和自定义维度** -Azure 门户中显示的维度值基于在过去三天内收集的指标数据。 如果您要查找的维度值尚未发出，则可以添加自定义维度值。
+4. **与前缀匹配的维度** -可以选择使用 "始于" 运算符并输入自定义前缀来监视以特定模式开头的所有维度值。
 
 ![高级多维度功能](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)
 

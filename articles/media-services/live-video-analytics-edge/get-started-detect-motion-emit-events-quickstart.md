@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析入门 - Azure
 description: 本快速入门演示如何开始使用 IoT Edge 上的实时视频分析。 了解如何检测实时视频流中的运动。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884932"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511869"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入门：入门 - IoT Edge 上的实时视频分析
 
@@ -18,6 +18,10 @@ ms.locfileid: "90884932"
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="基于运动检测的实时视频分析":::
+
+可以查看以下视频，其中包含有关如何开始使用 IoT Edge 上的实时视频分析的详细步骤：
+
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +39,7 @@ ms.locfileid: "90884932"
 * IoT 中心
 * 存储帐户
 * Azure 媒体服务帐户
-* Azure 中的 Linux VM，已安装 [IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Azure 中的 Linux VM，已安装 [IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)
 
 在本快速入门中，我们建议你使用[实时视频分析资源设置脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)在 Azure 订阅中部署所需资源。 为此，请执行下列步骤：
 
@@ -43,8 +47,8 @@ ms.locfileid: "90884932"
 1. 如果你是第一次使用 Cloud Shell，系统将提示你选择一个订阅以创建存储帐户和 Microsoft Azure 文件存储共享。 选择“创建存储”，创建用于存储 Cloud Shell 会话信息的存储帐户。 此存储帐户不同于脚本将要创建的与 Azure 媒体服务帐户配合使用的帐户。
 1. 在 Cloud Shell 窗口左侧的下拉菜单中，选择“Bash”作为环境。
 
-    ![环境选择器](./media/quickstarts/env-selector.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="环境选择器":::
 1. 运行以下命令。
 
     ```
@@ -76,7 +80,16 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 按照以下说明使用 Azure IoT Tools 扩展连接到 IoT 中心。
 
-1. 在 Visual Studio Code 中选择“视图” > “资源管理器”。 或是选择 Ctrl+Shift+E。
+1. 在 Visual Studio Code 中，打开“扩展”选项卡（或按 Ctrl+Shift+X），然后搜索“Azure IoT 中心”。
+1. 右键单击并选择“扩展设置”。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="扩展设置":::
+1. 搜索并启用“显示详细消息”。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="显示详细消息":::
+1. 选择”查看” > ”资源管理器”， 或选择 Ctrl+Shift+E。
 1. 在“资源管理器”选项卡的左下角，选择“Azure IoT 中心”。
 1. 选择“更多选项”图标以查看上下文菜单。 然后选择“设置 IoT 中心连接字符串”。
 1. 输入框出现时，在其中输入 IoT 中心连接字符串。 在 Cloud Shell 中，可以从 ~/clouddrive/lva-sample/appsettings.json 获取连接字符串。
@@ -102,7 +115,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 
@@ -128,7 +141,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "MotionDetection",
     "properties": {
         "description": "Analyzing live video to detect motion and emit events",
@@ -291,7 +304,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```
@@ -389,7 +402,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1",
     "properties" : {
         "topologyName" : "MotionDetection",
@@ -449,7 +462,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -473,7 +486,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
  {
-     "@apiVersion" : "1.0",
+     "@apiVersion" : "2.0",
      "name" : "Sample-Graph-1"
  }
  ```
@@ -606,7 +619,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -632,7 +645,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -656,7 +669,7 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```

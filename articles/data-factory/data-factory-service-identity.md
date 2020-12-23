@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7134fc5d591fffdfb9aea13767e597dddc92b038
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 819f84eeb7540050fb001111690fb6d2ba484b2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434939"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452308"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -32,7 +32,7 @@ ms.locfileid: "89434939"
 数据工厂的托管标识对以下功能有益：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)，在这种情况下，数据工厂托管标识用于 Azure Key Vault 身份验证。
-- 连接器包括 [Azure Blob 存储](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure SQL 数据库](connector-azure-sql-database.md)和 [azure Synapse Analytics (以前的 SQL 数据仓库) ](connector-azure-sql-data-warehouse.md)。
+- 连接器（包括 [Azure Blob 存储](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure SQL 数据库](connector-azure-sql-database.md)和 [azure Synapse 分析](connector-azure-sql-data-warehouse.md)）。
 - [Web 活动](control-flow-web-activity.md)。
 
 ## <a name="generate-managed-identity"></a>生成托管标识
@@ -57,7 +57,7 @@ ms.locfileid: "89434939"
 
 ### <a name="generate-managed-identity-using-powershell"></a>使用 PowerShell 生成托管标识
 
-再次调用 **Set-AzDataFactoryV2** 命令，然后你会看到正在生成新的 "identity" 字段：
+调用 Set-AzDataFactoryV2 命令，然后你会看到正在生成新的“标识”字段：
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -252,4 +252,4 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
 - [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
 
-有关数据工厂托管标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](/azure/active-directory/managed-identities-azure-resources/overview)。 
+有关数据工厂托管标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)。

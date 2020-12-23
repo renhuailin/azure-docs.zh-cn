@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c80ed02e137ea092bae1346260dba71cd417bed9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688923"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151536"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>通过预留容量节省 Azure 独立应用服务印花费
 
@@ -39,7 +39,7 @@ ms.locfileid: "88688923"
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>购买独立印花预留容量
 
-可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)中购买独立印花预留容量。 通过[提前付款或按月付款](monthly-payments-reservations.md)的方式为预留付款。 若要购买预留容量，你必须拥有至少一个企业订阅的所有者角色，或者拥有使用即用即付费率的单个订阅的所有者角色。
+可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)中购买独立印花预留容量。 通过[提前付款或按月付款](./prepare-buy-reservation.md)的方式为预留付款。 若要购买预留容量，你必须拥有至少一个企业订阅的所有者角色，或者拥有使用即用即付费率的单个订阅的所有者角色。
 
 - 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项  。 或者，如果禁用了该设置，则必须是 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 Azure Synapse Analytics 预留容量。

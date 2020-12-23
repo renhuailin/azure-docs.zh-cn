@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.author: metan
-ms.openlocfilehash: ddae4a99964e438c003fe0ff0db91c5808fa7631
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.author: metang
+ms.openlocfilehash: 31c1ef8d75b4c12e4dd6a360852feb27857ac412
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761101"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636538"
 ---
 # <a name="how-to-store-user-preferences"></a>如何存储用户首选项
 
-本文演示如何通过[-首选项](./reference.md#options)和[-OnPreferencesChanged](./reference.md#options)沉浸式读者 SDK 选项来存储用户的 UI 设置（正式称为**用户首选项**）。
+本文演示如何通过 [-首选项](./reference.md#options)和 [-OnPreferencesChanged](./reference.md#options)沉浸式读者 SDK 选项来存储用户的 UI 设置（正式称为 **用户首选项** ）。
 
-当 [CookiePolicy](./reference.md#cookiepolicy-options) SDK 选项设置为 " *已启用*" 时，沉浸式读取器应用程序将 **用户首 (选项** 设置为 cookie 中的) （在特定浏览器和设备本地）。 用户每次在同一浏览器和设备上启动沉浸式阅读器时，都将在该设备上的最后一个会话中打开用户的首选项。 但是，如果用户在不同的浏览器或设备上打开沉浸式阅读器，则最初将使用沉浸式读者的默认设置来配置这些设置，并且用户必须再次设置其首选项，并在每个设备上使用。 `-preferences` `-onPreferencesChanged` 使用沉浸式读者 SDK 选项，应用程序可以在各种浏览器和设备之间漫游用户的首选项，使用户在使用该应用程序的任何位置都拥有一致的体验。
+当 [CookiePolicy](./reference.md#cookiepolicy-options) SDK 选项设置为 " *已启用* " 时，沉浸式读取器应用程序将 **用户首 (选项** 设置为 cookie 中的) （在特定浏览器和设备本地）。 用户每次在同一浏览器和设备上启动沉浸式阅读器时，都将在该设备上的最后一个会话中打开用户的首选项。 但是，如果用户在不同的浏览器或设备上打开沉浸式阅读器，则最初将使用沉浸式读者的默认设置来配置这些设置，并且用户必须再次设置其首选项，并在每个设备上使用。 `-preferences` `-onPreferencesChanged` 使用沉浸式读者 SDK 选项，应用程序可以在各种浏览器和设备之间漫游用户的首选项，使用户在使用该应用程序的任何位置都拥有一致的体验。
 
 首先，通过在 `-onPreferencesChanged` 启动沉浸式读取器应用程序时提供回调 SDK 选项，沉浸式读取器会将 `-preferences` 字符串发送回主机应用程序，每次用户在沉浸式读卡器会话期间更改其首选项。 然后，主机应用程序负责在其自己的系统中存储用户首选项。 然后，当该用户再次启动沉浸式读者时，主机应用程序可以从存储中检索该用户的首选项，并 `-preferences` 在启动沉浸式阅读器应用程序时将其作为字符串 SDK 选项提供，以便还原用户的首选项。
 

@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool 版本 2019/4/9
 titleSuffix: Azure
-description: 记录威胁建模工具 release 7.1.60408.1 的发行说明。
+description: 阐述 Threat Modeling Tool 7.1.60408.1 版的发行说明。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 8d24eb868a13e7b2d9ff3d2b625302c1c1fcb908
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 69dd2c6cdba41779849b4eb6b889cde9b1d6e5c9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318001"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913562"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool 更新版本 7.1.60408.1 - 2019/4/9
 
@@ -28,7 +28,7 @@ Microsoft Threat Modeling Tool (TMT) 的版本 7.1.60408.1 于 2019 年 4 月 9 
 
 ### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>适用于 Azure Key Vault 和 Azure 流量管理器的新模具
 
-![Azure Key Vault 模具](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
+![屏幕截图显示 Azure Key Vault 和 Azure 流量管理器的图标。](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
 
 已将适用于 Azure Key Vault 和 Azure 流量管理器的新模具和威胁添加到 Azure 模具集。 打开基于 Azure 模具集模型时，系统将提示用户更新与模型关联的模板。 还可以使用“文件”菜单中的“应用模板”命令并重新应用最新的 Azure Cloud Services.tb7 文件手动启动基于 Azure 模具集的模型更新。
 
@@ -36,7 +36,7 @@ Microsoft Threat Modeling Tool (TMT) 的版本 7.1.60408.1 于 2019 年 4 月 9 
 
 Threat Modeling Tool 的客户端版本现在会在应用程序的主屏幕上显示，以方便访问。
 
-![Azure Key Vault 模具](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
+![屏幕截图显示了具有客户端版本号的 Microsoft Threat Modeling Tool。](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
 
 ### <a name="support-links-have-been-updated"></a>支持链接已更新
 

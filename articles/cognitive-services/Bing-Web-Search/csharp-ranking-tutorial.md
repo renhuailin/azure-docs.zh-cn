@@ -12,14 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bfd7b6e5c9a2a7e3d9ed750e544036f3874271f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933216"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349497"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 生成控制台应用搜索客户端
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 本教程介绍如何生成一个简单的 .NET Core 控制台应用，以允许用户查询必应 Web 搜索 API 并显示排名结果。
 
@@ -223,7 +228,7 @@ static void RunQueryAndDisplayResults(string userQuery)
 }
 ```
 
-`rankingResponse` JSON 对象（[文档](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)）描述了搜索结果的相应显示顺序。 它包括以下一个或多个按优先级排列的组：
+`rankingResponse` JSON 对象（[文档](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)）描述了搜索结果的相应显示顺序。 它包括以下一个或多个按优先级排列的组：
 
 - `pole`：要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。
 - `mainline`：要显示在主线中的搜索结果。

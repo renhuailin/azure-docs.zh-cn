@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 205d7991551ca48c3ea2e61baef53f5d06bdcbd2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be864e04143a381a08dedb5693026f05c42c5421
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86200496"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349293"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>什么是必应拼写检查 API？
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 使用必应拼写检查 API 可对文本执行上下文语法和拼写检查。 虽然大多数拼写检查器都依赖于基于字典的规则集，但必应拼写检查器利用机器学习和统计性机器翻译来提供准确的上下文更正。 
 
@@ -44,4 +49,4 @@ ms.locfileid: "86200496"
 
 做好调用 API 的准备后，请创建一个[认知服务 API 帐户](../../cognitive-services/cognitive-services-apis-create-account.md)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
-还可以访问[必应搜索 API 中心页](../bing-web-search/search-the-web.md)，浏览其他可用的 API。
+还可以访问[必应搜索 API 中心页](../bing-web-search/overview.md)，浏览其他可用的 API。

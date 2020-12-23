@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 1ab5ae7bf9f1d13458e3bbeeec564fe642eb3303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588722"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289163"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙后面的 Azure Key Vault
 
@@ -43,7 +43,7 @@ ms.locfileid: "88588722"
 | 使用 Azure AD 的工作或学校帐户的用户或服务主体（例如，user@contoso.com） |**全球：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443 |
 | 使用工作或学校帐户，以及 Active Directory 联合身份验证服务 (AD FS) 或其他联合终结点的用户或服务主体（例如，user@contoso.com） |工作或学校帐户的所有终结点，以及 AD FS 或其他联合终结点 |
 
-还可能存在一些其他复杂情况。 有关其他信息，请参阅 [Azure Active Directory 身份验证流](../../active-directory/develop/authentication-scenarios.md)、[将应用程序与 Azure Active Directory 集成](../../active-directory/develop/active-directory-how-to-integrate.md)和 [Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)。  
+还可能存在一些其他复杂情况。 有关其他信息，请参阅 [Azure Active Directory 身份验证流](../../active-directory/develop/authentication-vs-authorization.md)、[将应用程序与 Azure Active Directory 集成](../../active-directory/develop/active-directory-how-to-integrate.md)和 [Active Directory 身份验证协议](/previous-versions/azure/dn151124(v=azure.100))。  
 
 ## <a name="key-vault-management"></a>Key Vault 管理
 
@@ -74,4 +74,4 @@ Key Vault 服务使用其他 Azure 资源，例如 PaaS 基础结构。 因此�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果对密钥保管库有任何疑问，请访问[面向 Azure 密钥保管库的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-key-vault.html)。
+如果对密钥保管库有任何疑问，请访问[面向 Azure 密钥保管库的 Microsoft Q&A 问题页面](/answers/topics/azure-key-vault.html)。

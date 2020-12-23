@@ -8,18 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: d710c296-e490-43e7-8ca9-8932586b71da
 ms.service: virtual-machines-sql
+ms.subservice: security
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 04634a6efb6c17a823532a29ec273b088a4ad843
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 54010359f226fe02336f039e3dcbb98075e9b06a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272389"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360078"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的安全注意事项
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,7 +48,7 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
 为了达到最佳安全性，请为方案选择最严格的选项。 例如，如果正在运行访问同一 VM 上的 SQL Server 的应用程序，则“本地”选项最安全。 如果正在运行需要访问 SQL Server 的 Azure 应用程序，则选择“专用”选项可确保与 SQL Server 的通信仅在指定的 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)内安全地进行。 如果需要使用“公共(Internet)”选项访问 SQL Server VM，请确保遵照本主题中的其他最佳做法，以减小受攻击面。
 
-在门户中选择的选项使用 VM [网络安全组](../../../active-directory/identity-protection/security-overview.md) (NSG) 上的入站安全规则来允许或拒绝发往虚拟机的网络流量。 可修改或创建新的入站 NSG 规则，允许到 SQL Server 端口（默认为 1433）的流量。 还可指定允许通过此端口进行通信的特定 IP 地址。
+在门户中选择的选项使用 VM [网络安全组](../../../active-directory/identity-protection/concept-identity-protection-security-overview.md) (NSG) 上的入站安全规则来允许或拒绝发往虚拟机的网络流量。 可修改或创建新的入站 NSG 规则，允许到 SQL Server 端口（默认为 1433）的流量。 还可指定允许通过此端口进行通信的特定 IP 地址。
 
 ![网络安全组规则](./media/security-considerations-best-practices/sql-vm-network-security-group-rules.png)
 
@@ -55,11 +56,11 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
 如果通过经典部署模型使用终结点，不使用它们时，请删除虚拟机上的所有终结点。 有关在终结点上使用 ACL 的说明，请参阅[管理终结点上的 ACL](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)。 对于使用 Azure 资源管理器的 VM 来说，无需执行此操作。
 
-最后，考虑为 Azure 虚拟机中的 SQL Server 数据库引擎实例启用加密连接。 使用签名证书配置 SQL Server 实例。 有关详细信息，请参阅[启用到数据库引擎的加密连接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)和[连接字符串语法](https://msdn.microsoft.com/library/ms254500.aspx)。
+最后，考虑为 Azure 虚拟机中的 SQL Server 数据库引擎实例启用加密连接。 使用签名证书配置 SQL Server 实例。 有关详细信息，请参阅[启用到数据库引擎的加密连接](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)和[连接字符串语法](/dotnet/framework/data/adonet/connection-string-syntax)。
 
 ## <a name="encryption"></a>Encryption
 
-托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](/azure/virtual-machines/windows/disk-encryption)提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 [Azure 磁盘加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)使用 Bitlocker 或 DM-Crypt 技术，并与 Azure Key Vault 集成，以便对 OS 和数据磁盘进行加密。 
+托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](../../../virtual-machines/disk-encryption.md)提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 [Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)使用 Bitlocker 或 DM-Crypt 技术，并与 Azure Key Vault 集成，以便对 OS 和数据磁盘进行加密。 
 
 ## <a name="use-a-non-default-port"></a>使用非默认端口
 
@@ -73,7 +74,7 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
   ![在门户中更改 TCP 端口](./media/security-considerations-best-practices/sql-vm-change-tcp-port.png)
 
-- 对于经典 VM 或未通过门户进行配置的 SQL Server VM，可通过远程连接到 VM 来手动配置端口。 有关配置步骤，请参阅[将服务器配置为侦听特定 TCP 端口](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port)。 如果使用此手动方法，还需添加 Windows 防火墙规则，允许该 TCP 端口上的传入流量。
+- 对于经典 VM 或未通过门户进行配置的 SQL Server VM，可通过远程连接到 VM 来手动配置端口。 有关配置步骤，请参阅[将服务器配置为侦听特定 TCP 端口](/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port)。 如果使用此手动方法，还需添加 Windows 防火墙规则，允许该 TCP 端口上的传入流量。
 
 > [!IMPORTANT]
 > 如果 SQL Server 端口对公共 Internet 连接打开，则最好指定非默认端口。
@@ -93,7 +94,7 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
   - 创建一个名称唯一且具有 sysadmin 成员资格的 SQL 帐户。 可通过在预配期间启用 SQL 身份验证，从门户执行此操作。
 
     > [!TIP] 
-    > 如果预配期间未启用 SQL 身份验证，则必须手动将身份验证模式更改为 SQL Server 和 Windows 身份验证模式。 有关详细信息，请参阅 [更改服务器身份验证模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
+    > 如果预配期间未启用 SQL 身份验证，则必须手动将身份验证模式更改为 SQL Server 和 Windows 身份验证模式。 有关详细信息，请参阅 [更改服务器身份验证模式](/sql/database-engine/configure-windows/change-server-authentication-mode)。
 
   - 如果必须使用 SA 登录名，请在预配后启用该登录名，并分配新的强密码。
 
@@ -103,7 +104,7 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 
 有关本地安全做法的详细信息，请参阅 [SQL Server 安装的安全注意事项](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)和[安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)。 
 
-有关虚拟机安全性的详细信息，请参阅[虚拟机安全性概述](/azure/security/fundamentals/virtual-machines-overview)。
+有关虚拟机安全性的详细信息，请参阅[虚拟机安全性概述](../../../security/fundamentals/virtual-machines-overview.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -111,4 +112,3 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 如果还对有关性能的最佳做法感兴趣，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](performance-guidelines-best-practices.md)。
 
 若要了解与在 Azure VM 中运行 SQL Server 相关的其他主题，请参阅 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
-

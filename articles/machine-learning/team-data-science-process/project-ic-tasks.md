@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721245"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000991"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中单个参与者的任务
 
 本主题概述在 [Team Data Science Process](overview.md) (TDSP) 中设置项目时，单个参与者完成的任务  。 目标是在标准化 TDSP 的协作型团队环境中工作。 TDSP 设计用于帮助改进协作和团队学习。 有关致力于标准化 TDSP 的数据科学团队要处理的人员角色及其相关任务的概述，请参阅[团队数据科学流程角色和任务](roles-tasks.md)。
 
-下图显示了各个项目参与者（数据科学家）在设置其团队环境时所要完成的任务。 有关如何在 TDSP 下执行数据科学项目的说明，请参阅[执行数据科学项目](project-execution.md)。 
+下图显示了各个项目参与者（数据科学家）在设置其团队环境时所要完成的任务。 有关如何在 TDSP 下执行数据科学项目的说明，请参阅[执行数据科学项目](./agile-development.md)。 
 
 ![单个参与者的任务](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "76721245"
 
 - Azure 订阅。
 - 计算机上安装的 Git。 如果要使用 DSVM，则需预安装 Git。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
-- 如果要使用 DSVM，需要在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](/azure/machine-learning/data-science-virtual-machine/)。
+- 如果要使用 DSVM，需要在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](../data-science-virtual-machine/index.yml)。
 - 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”    。 从安装程序页下载 .exe 安装程序并运行它  。 
 - 对于 Linux DSVM，需要在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的“创建 SSH 公钥”  部分。 
 - 针对需要装载到 DSVM 的任何 Azure 文件存储的 Azure 文件存储信息。 
@@ -55,7 +55,7 @@ ms.locfileid: "76721245"
 
 要在本地使用存储库并将所做的更改推送到共享的团队和项目存储库，请先将存储库复制或克隆到本地计算机  。 
 
-1. 在 Azure DevOps 中，在*https： \/ / \<server name> / \<organization name> / \<team name> *（例如， **https： \/ /dev.azure.com/DataScienceUnit/MyTeam**）中转到你的团队的项目摘要页。
+1. 在 Azure DevOps 中，在 *https： \/ / \<server name> / \<organization name> / \<team name>*（例如， **https： \/ /dev.azure.com/DataScienceUnit/MyTeam**）中转到你的团队的项目摘要页。
    
 1. 在左侧导航栏中，选择“存储库”，然后在页面顶部选择要克隆的存储库  。
    
@@ -103,4 +103,3 @@ ms.locfileid: "76721245"
 - [数据科学团队的组管理员任务](group-manager-tasks.md)
 - [数据科学团队的团队主管任务](team-lead-tasks.md)
 - [数据科学团队的项目主管任务](project-lead-tasks.md)
-

@@ -10,12 +10,12 @@ ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97f3a8f79e503b8870baf67ee982b0091d926b1e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659709"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895318"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何创建和配置 Azure 集成运行时
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,20 +41,20 @@ Azure IR 提供完全托管的计算，以本机执行数据移动和调度数�
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，因为它在云中是完全弹性托管的。 如果要创建 Azure-SSIS IR，请指定计算详细信息，如节点大小和节点数量。 有关详细信息，请参阅[创建和配置 Azure-SSIS IR](create-azure-ssis-integration-runtime.md)。
+Azure IR 的类型必须设置为 **托管** 。 无需指定计算详细信息，因为它在云中是完全弹性托管的。 如果要创建 Azure-SSIS IR，请指定计算详细信息，如节点大小和节点数量。 有关详细信息，请参阅[创建和配置 Azure-SSIS IR](create-azure-ssis-integration-runtime.md)。
 
 可以使用 Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 来配置现有 Azure IR 以更改其位置。 有关 Azure IR 的位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。
 
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>通过 Azure 数据工厂 UI 创建 Azure IR
 使用以下步骤通过 Azure 数据工厂 UI 创建 Azure IR。
 
-1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
+1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](./author-management-hub.md)。
 
    ![主页“管理”按钮](media/doc-common-process/get-started-page-manage-button.png)
 
 1. 在左窗格中选择“集成运行时”，然后选择“+ 新建” 。
 
-   ![创建集成运行时](media/doc-common-process/manage-new-integration-runtime.png)
+   ![突出显示左窗格和 "+ 新建" 按钮中的集成运行时的屏幕截图。](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. 在“集成运行时安装”页中选择“Azure，自承载”，然后选择“继续”。  
 
@@ -92,4 +92,3 @@ Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，
 
 - [创建自承载集成运行时](create-self-hosted-integration-runtime.md)
 - [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)
- 

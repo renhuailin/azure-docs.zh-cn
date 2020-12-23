@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 62aa8f966126d95af003478e7f43d3ccea2b48cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310401"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890915"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -22,7 +22,7 @@ ms.locfileid: "91310401"
 
 ## <a name="loading-a-map"></a>加载映射
 
-若要加载地图，请创建 [map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)的新实例。 初始化映射时，传递 DIV 元素 ID 以呈现映射，并传递一组要在加载映射时使用的选项。 如果未在命名空间上指定默认身份验证信息，则在 `atlas` 加载地图时，需要在映射选项中指定此信息。 地图以异步方式加载多个资源以提高性能。 因此，在创建映射实例后，将 `ready` 或事件附加 `load` 到该映射，然后将与映射交互的任何其他代码添加到事件处理程序。 `ready`当映射的资源足以以编程方式交互时，就会触发事件。 在 `load` 初始映射视图完全加载完成后引发事件。 
+若要加载地图，请创建 [map 类](/javascript/api/azure-maps-control/atlas.map)的新实例。 初始化映射时，传递 DIV 元素 ID 以呈现映射，并传递一组要在加载映射时使用的选项。 如果未在命名空间上指定默认身份验证信息，则在 `atlas` 加载地图时，需要在映射选项中指定此信息。 地图以异步方式加载多个资源以提高性能。 因此，在创建映射实例后，将 `ready` 或事件附加 `load` 到该映射，然后将与映射交互的任何其他代码添加到事件处理程序。 `ready`当映射的资源足以以编程方式交互时，就会触发事件。 在 `load` 初始映射视图完全加载完成后引发事件。 
 
 <br/>
 
@@ -48,10 +48,10 @@ ms.locfileid: "91310401"
 
 在其中创建地图时，有几种不同类型的选项，可以传入这些选项来自定义地图的工作方式，如下所示。
 
-- [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) 和 [CameraBoundOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions) 用于指定地图应显示的区域。
-- [ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) 用于指定地图应该如何与支持地图的服务进行交互。
-- [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) 用于指定应为地图指定样式和进行呈现。
-- [UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) 用于指定当用户与地图进行交互时，映射应到达的方式。 
+- [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) 和 [CameraBoundOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions) 用于指定地图应显示的区域。
+- [ServiceOptions](/javascript/api/azure-maps-control/atlas.serviceoptions) 用于指定地图应该如何与支持地图的服务进行交互。
+- [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions) 用于指定应为地图指定样式和进行呈现。
+- [UserInteractionOptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) 用于指定当用户与地图进行交互时，映射应到达的方式。 
 
 使用 `setCamera` 、 `setServiceOptions` 、 `setStyle` 和函数加载映射后，还可以更新这些选项 `setUserInteraction` 。 
 
@@ -81,7 +81,7 @@ map.setCamera({
 });
 ```
 
-在下面的代码中，将创建一个 [地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) 并设置中心和缩放选项。 地图属性（如中心和缩放级别）是 [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
+在下面的代码中，将创建一个 [地图对象](/javascript/api/azure-maps-control/atlas.map) 并设置中心和缩放选项。 地图属性（如中心和缩放级别）是 [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
 
 <br/>
 
@@ -101,7 +101,7 @@ map.setCamera({
 });
 ```
 
-在下面的代码中， [地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) 通过构造 `new atlas.Map()` 。 可以通过 Map 类的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) 函数定义地图属性，例如 `CameraBoundsOptions`。 边界和填充属性是使用 `setCamera` 设置的。
+在下面的代码中， [地图对象](/javascript/api/azure-maps-control/atlas.map) 通过构造 `new atlas.Map()` 。 可以通过 Map 类的 [setCamera](/javascript/api/azure-maps-control/atlas.map) 函数定义地图属性，例如 `CameraBoundsOptions`。 边界和填充属性是使用 `setCamera` 设置的。
 
 <br/>
 
@@ -110,7 +110,7 @@ map.setCamera({
 
 ### <a name="animate-map-view"></a>将地图视图制成动画
 
-设置地图的相机选项时，还可以设置 [动画选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions) 。 这些选项指定动画的类型和移动照相机所需的持续时间。
+设置地图的相机选项时，还可以设置 [动画选项](/javascript/api/azure-maps-control/atlas.animationoptions) 。 这些选项指定动画的类型和移动照相机所需的持续时间。
 
 ```javascript
 map.setCamera({
@@ -135,7 +135,7 @@ map.setCamera({
 - 向磁贴请求添加其他标头。 这通常是针对密码保护的服务完成的。
 - 修改 Url 以通过代理服务运行请求。
 
-该映射的 [服务选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) 具有一个 `transformRequest` ，可用于修改由映射发出的所有请求。 `transformRequest`选项是一个函数，该函数采用两个参数：一个字符串 URL，以及一个表示请求用途的资源类型字符串。 此函数必须返回 [RequestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters) 结果。
+该映射的 [服务选项](/javascript/api/azure-maps-control/atlas.serviceoptions) 具有一个 `transformRequest` ，可用于修改由映射发出的所有请求。 `transformRequest`选项是一个函数，该函数采用两个参数：一个字符串 URL，以及一个表示请求用途的资源类型字符串。 此函数必须返回 [RequestParameters](/javascript/api/azure-maps-control/atlas.requestparameters) 结果。
 
 ```JavaScript
 transformRequest: (url: string, resourceType: string) => RequestParameters
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>试用代码
 
-查看代码示例。 您可以在 " **JS" 选项卡** 中编辑 JavaScript 代码，然后在 "结果" **选项卡**上查看地图视图更改。还可以单击右上角的 **CodePen 上**的 "编辑"，并在 CodePen 中修改代码。
+查看代码示例。 您可以在 " **JS" 选项卡** 中编辑 JavaScript 代码，然后在 "结果" **选项卡** 上查看地图视图更改。还可以单击右上角的 **CodePen 上** 的 "编辑"，并在 CodePen 中修改代码。
 
 <a id="relatedReference"></a>
 
@@ -180,7 +180,7 @@ var map = new atlas.Map('myMap', {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Map](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
@@ -197,4 +197,4 @@ var map = new atlas.Map('myMap', {
 > [将控件添加到地图](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](/samples/browse/?products=azure-maps)

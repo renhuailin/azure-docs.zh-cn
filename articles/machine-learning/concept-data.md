@@ -1,7 +1,7 @@
 ---
 title: 云中的安全数据访问
 titleSuffix: Azure Machine Learning
-description: 了解如何从 Azure 机器学习安全地连接到数据，以及如何使用数据集和数据存储来执行 ML 任务。 数据存储可以存储 Azure Blob 中的数据，Azure Data Lake 第 1 & 2、SQL 数据库和 Azure Databricks。
+description: 了解如何通过 Azure 机器学习数据存储和数据集安全地连接到 Azure 上的数据存储。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446689"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360167"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
@@ -29,7 +29,7 @@ Azure 机器学习使你可以轻松连接到云中的数据。  它在基础存
     
 ## <a name="data-workflow"></a>数据工作流
 
-准备好在基于云的存储解决方案中使用数据时，建议使用以下数据发送工作流。 此工作流假设你拥有 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，并在 Azure 中的基于云的存储服务中拥有数据。 
+准备好在基于云的存储解决方案中使用数据时，建议使用以下数据发送工作流。 此工作流假设你拥有 [Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)，并在 Azure 中的基于云的存储服务中拥有数据。 
 
 1. 创建 [Azure 机器学习数据存储](#datastores)以将连接信息存储到 Azure 存储。
 
@@ -81,9 +81,9 @@ Azure 机器学习数据集不是你的数据的副本。 通过创建数据集�
 
 有两种类型的数据集： 
 
-+ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) 引用数据存储或公共 URL 中的单个或多个文件。 如果数据已被清理并且可用于训练试验，则可以[下载或装载 FileDataset 引用的文件](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)到计算目标。
++ [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) 引用数据存储或公共 URL 中的单个或多个文件。 如果数据已被清理并且可用于训练试验，则可以[下载或装载 FileDataset 引用的文件](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)到计算目标。
 
-+ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 通过分析提供的文件或文件列表来以表格格式表示数据。 可以将 TabularDataset 加载到 Pandas 或 Spark DataFrame 中，以便进一步处理和清理。 有关可从中创建 TabularDataset 的数据格式的完整列表，请参阅 [TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
++ [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) 通过分析提供的文件或文件列表来以表格格式表示数据。 可以将 TabularDataset 加载到 Pandas 或 Spark DataFrame 中，以便进一步处理和清理。 有关可从中创建 TabularDataset 的数据格式的完整列表，请参阅 [TabularDatasetFactory 类](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)。
 
 可在以下文档中找到更多数据集功能：
 
@@ -100,7 +100,7 @@ Azure 机器学习数据集不是你的数据的副本。 通过创建数据集�
      + [设计器](tutorial-designer-automobile-price-train-score.md#import-data)
      + [笔记本](how-to-train-with-datasets.md)
      + [Azure 机器学习管道](how-to-create-your-first-pipeline.md)
-+ 访问数据集，以使用[机器学习管道](how-to-create-your-first-pipeline.md)中的[批量推理](how-to-use-parallel-run-step.md)进行评分。
++ 访问数据集，以使用[机器学习管道](how-to-create-your-first-pipeline.md)中的[批量推理](./tutorial-pipeline-batch-scoring-classification.md)进行评分。
 + 设置数据集监视器以检测[数据偏移](#drift)。
 
 <a name="label"></a>

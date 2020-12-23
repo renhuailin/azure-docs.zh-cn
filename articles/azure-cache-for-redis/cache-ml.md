@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650181"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537569"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>将机器学习模型部署到使用 Redis 的 Azure Cache Azure Functions 
 
@@ -23,11 +23,11 @@ ms.locfileid: "91650181"
 > 虽然 Azure 机器学习和 Azure Functions 都已正式发布，但将模型从机器学习服务部署到 Functions 的功能目前处于预览阶段。  
 >
 
-## <a name="prerequisites"></a>必备条件
-* Azure 订阅- [免费创建一个](https://azure.microsoft.com/free/)。
-* Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)一文。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
-* 工作区中注册的已训练的机器学习模型。 如果没有模型，请使用[图像分类教程：训练模型](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)来训练和注册模型。
+## <a name="prerequisites"></a>先决条件
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
+* Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](../machine-learning/how-to-manage-workspace.md)一文。
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* 工作区中注册的已训练的机器学习模型。 如果没有模型，请使用[图像分类教程：训练模型](../machine-learning/tutorial-train-models-with-aml.md)来训练和注册模型。
 
 > [!IMPORTANT]
 > 本文中的代码片段假设你已设置以下变量：
@@ -36,46 +36,46 @@ ms.locfileid: "91650181"
 > * `model` - 将要部署的注册模型。
 > * `inference_config` - 用于模型的推理配置。
 >
-> 有关设置这些变量的详细信息，请参阅[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
+> 有关设置这些变量的详细信息，请参阅[使用 Azure 机器学习部署模型](../machine-learning/how-to-deploy-and-where.md)。
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>创建用于 Redis 的 Azure 缓存实例 
 你将能够部署机器学习模型，以便与任何基本、标准或高级缓存实例 Azure Functions。 若要创建缓存实例，请按照以下步骤操作。  
 
-1. 中转到 Azure 门户主页或打开 "侧栏" 菜单，然后选择 " **创建资源**"。 
+1. 中转到 Azure 门户主页或打开 "侧栏" 菜单，然后选择 " **创建资源** "。 
    
 1. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="为 Redis 选择 &quot;Azure 缓存&quot;。&quot;:::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="选择 Azure Cache for Redis。":::
    
 1. 在“新建 Redis 缓存”页上配置新缓存的设置。
    
    | 设置      | 建议的值  | 说明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名是 *\<DNS name> .redis.cache.windows.net*。 | 
+   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名是 *\<DNS name> .redis.cache.windows.net* 。 | 
    | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 | 
    | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
    | **位置** | 单击下拉箭头并选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
    | **定价层** | 单击下拉箭头并选择一个[定价层](https://azure.microsoft.com/pricing/details/cache/)。 |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅[用于 Redis 的 Azure 缓存概述](cache-overview.md)。 |
 
-1. 选择 &quot; **网络** &quot; 选项卡，或单击页面底部的 &quot; **网络** &quot; 按钮。
+1. 选择“网络”选项卡，或单击页面底部的“网络”按钮 。
 
-1. 在 &quot; **网络** &quot; 选项卡中，选择连接方法。
+1. 在“网络”选项卡中，选择你的连接方法。
 
-1. 选择下面的 &quot; **高级** &quot; 选项卡，或单击页面底部的 &quot; **高级** &quot; 按钮。
+1. 选择页面底部的“下一步:高级”选项卡，或者单击页面底部的“下一步:高级”按钮。
 
-1. 在基本或标准缓存实例的 &quot; **高级** &quot; 选项卡中，如果要启用非 TLS 端口，请选择 &quot;启用&quot; 切换。
+1. 在基本或标准缓存实例的“高级”选项卡中，如果想要启用非 TLS 端口，请选择启用开关。
 
-1. 在高级缓存实例的 &quot; **高级** &quot; 选项卡中，配置非 TLS 端口、群集和数据暂留的设置。
+1. 在高级缓存实例的“高级”选项卡中，配置非 TLS 端口、群集和数据持久性的设置。
 
-1. 选择 **下一步：标记** 选项卡，或单击页面底部的 &quot; **下一步：标记** &quot; 按钮。
+1. 选择页面底部的“下一步:标记”选项卡，或者单击“下一步:标记”按钮。
 
-1. （可选）在 &quot; **标记** &quot; 选项卡中，如果要对资源进行分类，请输入名称和值。 
+1. 或者，在“标记”选项卡中，如果希望对资源分类，请输入名称或值。 
 
-1. 选择“查看 + 创建”。 **** 你将转到 &quot;查看&quot; 和 &quot;创建&quot; 选项卡，Azure 将在其中验证你的配置。
+1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”选项卡，Azure 将在此处验证配置。
 
-1. 显示绿色验证通过消息后，选择 &quot; **创建**&quot;。
+1. 显示绿色的“已通过验证”消息后，选择“创建”。
 
-创建缓存需要花费片刻时间。 可以在 Azure Cache for Redis **概述**页上监视进度   。 当 **状态**   显示为 &quot; **正在运行**" 时，可以使用缓存。 
+创建缓存需要花费片刻时间。 可以在 Azure Cache for Redis 的“概述”页上监视进度。  如果“状态”显示为“正在运行”，则表示该缓存可供使用。  
 
 ## <a name="prepare-for-deployment"></a>准备部署
 
@@ -88,7 +88,7 @@ ms.locfileid: "91650181"
     >
     > 如果请求数据的格式对模型不可用，则该脚本可以将其转换为可接受的格式。 它还可能在将响应返回给客户端之前对其进行转换。
     >
-    > 默认情况下，在为函数打包时，输入被视为文本。 如果想使用输入的原始字节（例如用于 Blob 触发器），则应使用 [AMLRequest 接受原始数据](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-advanced-entry-script#binary-data)。
+    > 默认情况下，在为函数打包时，输入被视为文本。 如果想使用输入的原始字节（例如用于 Blob 触发器），则应使用 [AMLRequest 接受原始数据](../machine-learning/how-to-deploy-advanced-entry-script.md#binary-data)。
 
 对于 run 函数，请确保它连接到 Redis 终结点。
 
@@ -106,12 +106,12 @@ def init():
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
     model = joblib.load(model_path)
 
-@input_schema('data', NumpyParameterType(input_sample))
+@input_schema('data', NumpyParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
-        input = azrediscache.get(data)
-        result = model.predict(input)
+        input = azrediscache.get(data)
+        result = model.predict(input)
         data = np.array(json.loads(data))
         result = model.predict(data)
         # You can return any data type, as long as it is JSON serializable.
@@ -121,14 +121,14 @@ def run(data):
         return error
 ```
 
-有关输入脚本的详细信息，请参阅 [定义计分代码。](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-entry-script)
+有关输入脚本的详细信息，请参阅 [定义计分代码。](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-entry-script)
 
-* 依赖项，如运行入口脚本或模型所需的帮助程序脚本或 Python/Conda 包****
+* 依赖项，如运行入口脚本或模型所需的帮助程序脚本或 Python/Conda 包 
 
-这些实体被封装到推理配置中____。 推理配置引用入口脚本和其他依赖项。
+这些实体被封装到推理配置中  。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -144,12 +144,12 @@ def run(data):
 > inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 > ```
 
-有关环境的详细信息，请参阅[创建和管理用于训练和部署的环境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)。
+有关环境的详细信息，请参阅[创建和管理用于训练和部署的环境](../machine-learning/how-to-use-environments.md)。
 
-有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-inference-configuration)。
+有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-inference-configuration)。
 
 > [!IMPORTANT]
-> 部署到 Azure Functions 时，无需创建部署配置____。
+> 部署到 Azure Functions 时，无需创建部署配置  。
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>安装 SDK 预览版包以获取函数支持
 
@@ -161,10 +161,10 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>创建映像
 
-若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) 或特定包函数。 下面的代码段演示如何使用来自模型和推理配置的 HTTP 触发器创建新包：
+若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 或特定包函数。 下面的代码段演示如何使用来自模型和推理配置的 HTTP 触发器创建新包：
 
 > [!NOTE]
-> 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
+> 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](../machine-learning/how-to-deploy-and-where.md)。
 
 ```python
 from azureml.contrib.functions import package
@@ -178,7 +178,7 @@ print(model_package.location)
 当 `show_output=True` 时，将显示 Docker 生成过程的输出。 此过程完成后，即在 Azure 容器注册表中为工作区创建了映像。 映像生成后，会显示其在 Azure 容器注册表中的位置。 返回的位置采用 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 格式。
 
 > [!NOTE]
-> 函数打包当前支持 HTTP 触发器、Blob 触发器和服务总线触发器。 有关触发器的详细信息，请参阅 [Azure Functions 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)。
+> 函数打包当前支持 HTTP 触发器、Blob 触发器和服务总线触发器。 有关触发器的详细信息，请参阅 [Azure Functions 绑定](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns)。
 
 > [!IMPORTANT]
 > 保存位置信息，因为会在部署映像时使用。
@@ -209,7 +209,7 @@ print(model_package.location)
     }
     ```
 
-    保存“用户名”和某个“密码”的值____ ____。
+    保存“用户名”和某个“密码”的值   。
 
 1. 如果你还没有资源组或应用服务计划来部署服务，以下命令将演示如何创建这两项：
 
@@ -288,7 +288,7 @@ print(model_package.location)
 现在，我们将运行并测试 Azure Function HTTP 触发器。
 
 1. 在 Azure 门户中，请参阅 Azure Function app。
-1. 在 "开发人员" 下，选择 " **代码 + 测试**"。 
+1. 在 "开发人员" 下，选择 " **代码 + 测试** "。 
 1. 在右侧，选择 " **输入** " 选项卡。 
 1. 单击 " **运行** " 按钮，测试 AZURE Function HTTP 触发器。 
 
@@ -315,8 +315,7 @@ print(model_package.location)
 
 ## <a name="next-steps"></a>后续步骤 
 
-* 详细了解 [适用于 Redis 的 Azure 缓存](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview)
-* 通过 [Functions](/azure/azure-functions/functions-create-function-linux-custom-image) 文档，了解如何配置 Functions 应用。
-* [API 参考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) 
-* 创建 [使用适用于 Redis 的 Azure 缓存的 Python 应用](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-python-get-started)
-
+* 详细了解 [适用于 Redis 的 Azure 缓存](./cache-overview.md)
+* 通过 [Functions](../azure-functions/functions-create-function-linux-custom-image.md) 文档，了解如何配置 Functions 应用。
+* [API 参考](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* 创建 [使用适用于 Redis 的 Azure 缓存的 Python 应用](./cache-python-get-started.md)

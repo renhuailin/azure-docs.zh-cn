@@ -8,19 +8,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 12/08/2020
+ms.openlocfilehash: ea2b44d05d25756a16b6b84f0734966b1f579848
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541452"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007596"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何通过评审终结点言语来改进 LUIS 应用
 
 评审终结点言语以进行正确预测的过程称为[主动学习](luis-concept-review-endpoint-utterances.md)。 主动学习捕获终结点查询并选择用户不确定的终结点话语。 评审这些言语以选择意向并标记这些真实言语的实体。 将这些更改接受到示例言语中，然后对其进行训练并将其发布。 然后 LUIS 更准确地识别话语。
 
-## <a name="enable-active-learning"></a>启用主动学习
+## <a name="log-user-queries-to-enable-active-learning"></a>记录用户查询以启用主动学习
 
 若要启用主动学习，必须记录用户查询。 这是通过 `log=true` querystring 参数和值调用[终结点查询](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)实现的。
 
@@ -32,7 +32,7 @@ ms.locfileid: "91541452"
 1. 对于分配的预测资源，选择“更改查询参数”。
 
     > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示 "更改查询参数" 链接。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+    > ![屏幕截图显示“更改查询参数”链接。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
 1. 切换“保存日志”，然后选择“完成”进行保存。
 
@@ -43,7 +43,7 @@ ms.locfileid: "91541452"
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>纠正意向预测以匹配言语
 
-每个陈述的“统一意向”列中都显示一个建议意向****。
+每个陈述的“统一意向”列中都显示一个建议意向。
 
 > [!div class="mx-imgBorder"]
 > [![查看 LUIS 无法确定的终结点言语](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
@@ -65,4 +65,4 @@ ms.locfileid: "91541452"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要测试标记建议陈述后的性能提升情况，可通过选择顶部面板中的“测试”访问测试控制台****。 有关如何使用测试控制台测试应用的说明，请参阅[训练和测试应用](luis-interactive-test.md)。
+若要测试标记建议陈述后的性能提升情况，可通过选择顶部面板中的“测试”访问测试控制台。 有关如何使用测试控制台测试应用的说明，请参阅[训练和测试应用](luis-interactive-test.md)。

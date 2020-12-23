@@ -7,19 +7,19 @@ ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 67bcd6fbf04cb92deaae034d289990dfec309fe6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280005"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123347"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
 Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。 JSON 和 Avro 数据都可以结构化，并包含一些复杂类型，例如嵌套对象（记录）和数组。 
 
 >[!NOTE]
->事件中心捕获创建的 AVRO 文件使用特定的格式，该格式要求使用自定义反序列化功能。 有关详细信息，请参阅[使用 .NET 自定义反序列化程序读取任何格式的输入](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)。
+>事件中心捕获创建的 AVRO 文件使用特定的格式，该格式要求使用自定义反序列化功能。 有关详细信息，请参阅[使用 .NET 自定义反序列化程序读取任何格式的输入](./custom-deserializer-examples.md)。
 >
 >流分析 AVRO 反序列化不支持“映射”类型。 流分析无法读取事件中心捕获 Blob，因为事件中心捕获使用映射。
 
@@ -89,9 +89,9 @@ FROM input
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>当属性名称是变量时访问嵌套字段
 
-如果属性名称是变量，请使用 [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) 函数。 这样可以构建动态查询，无需对属性名称进行硬编码。
+如果属性名称是变量，请使用 [GetRecordPropertyValue](/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) 函数。 这样可以构建动态查询，无需对属性名称进行硬编码。
 
-例如，假设示例数据流需要与包含每个设备传感器阈值的**参考数据相联接**： 下面显示了此类参考数据的代码片段。
+例如，假设示例数据流需要与包含每个设备传感器阈值的 **参考数据相联接** ： 下面显示了此类参考数据的代码片段。
 
 ```json
 {
@@ -131,7 +131,7 @@ WHERE
 
 ### <a name="convert-record-fields-into-separate-events"></a>将记录字段转换为单独的事件
 
-若要将记录字段转换为单独事件，请结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 函数。
+若要将记录字段转换为单独事件，请结合使用 [APPLY](/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetRecordProperties](/stream-analytics-query/getrecordproperties-azure-stream-analytics) 函数。
 
 使用原始示例数据时，可以使用以下查询将属性提取到不同的事件中。
 
@@ -154,7 +154,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[object Object]|
 
-然后，可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 将这些事件路由到不同的目标：
+然后，可以使用 [WITH](/stream-analytics-query/with-azure-stream-analytics) 将这些事件路由到不同的目标：
 
 ```SQL
 WITH Stage0 AS
@@ -205,9 +205,9 @@ return JSON.parse(string);
 
 ## <a name="array-data-types"></a>数组数据类型
 
-数组数据类型是按顺序排列的值集合。 下面详细介绍一些针对数组值执行的典型操作。 这些事例使用函数 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics) 和 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符。
+数组数据类型是按顺序排列的值集合。 下面详细介绍一些针对数组值执行的典型操作。 这些事例使用函数 [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics) 和 [APPLY](/stream-analytics-query/apply-azure-stream-analytics) 运算符。
 
-下面是单一事件的示例。 `CustomSensor03` 和 `SensorMetadata` 都是**数组**类型的：
+下面是单一事件的示例。 `CustomSensor03` 和 `SensorMetadata` 都是 **数组** 类型的：
 
 ```json
 {
@@ -265,7 +265,7 @@ FROM input
 
 ### <a name="convert-array-elements-into-separate-events"></a>将数组元素转换为单独的事件
 
-选择所有数组元素作为各个事件。 结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) 内置函数，提取所有数组元素作为各个事件：
+选择所有数组元素作为各个事件。 结合使用 [APPLY](/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics) 内置函数，提取所有数组元素作为各个事件：
 
 ```SQL
 SELECT
@@ -301,7 +301,7 @@ CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
 |12345|制造商|ABC|
 |12345|版本|1.2.45|
 
-如果提取的字段需要显示在列中，则除了 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 操作外，还可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 语法来透视数据集。 该联接需要一个[时间边界](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff)条件来防止重复：
+如果提取的字段需要显示在列中，则除了 [JOIN](/stream-analytics-query/join-azure-stream-analytics) 操作外，还可以使用 [WITH](/stream-analytics-query/with-azure-stream-analytics) 语法来透视数据集。 该联接需要一个[时间边界](/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff)条件来防止重复：
 
 ```SQL
 WITH DynamicCTE AS (
@@ -330,4 +330,4 @@ LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId A
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>另请参阅
-[Azure 流分析中的数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Azure 流分析中的数据类型](/stream-analytics-query/data-types-azure-stream-analytics)

@@ -3,16 +3,16 @@ title: 使用 Azure Application Insights 诊断性能问题| Microsoft Docs
 description: 本教程介绍如何使用 Azure Application Insights 查找和诊断应用程序中的性能问题。
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 3c7185e07190895dfcc97555c6603049ed41c18c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df7cfff7d5bf1b89f88105f79c072d1d7e731b31
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322493"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005480"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
@@ -102,11 +102,6 @@ Application Insights 不仅可以识别要优化的服务器进程，还可以�
 2. 日志随即打开，包含对面板中每个视图的查询。 第一个查询显示不同页面视图随时间推移的持续时间。
 
     ![日志查询](media/tutorial-performance/10-page-view-logs.png)
-
-3.  智能诊断是日志的一项功能，用于标识数据中的唯一模式。 单击折线图中的智能诊断点时，将运行相同查询但排除导致异常的记录。 查询的注释部分显示了这些记录的详细信息，因此可以识别出导致持续时间过长的页面视图的属性。
-
-    ![带智能诊断功能的日志](media/tutorial-performance/11-page-view-logs-dsmart.png)
-
 
 ## <a name="next-steps"></a>后续步骤
 既已了解如何标识运行时异常，可继续学习下一个教程，了解如何创建警报以响应失败。

@@ -5,15 +5,15 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8fdf78c0a3dd2f7a130d827751ce93c5539575df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df180f0aefc817004e99d63998d000498c4d15aa
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87502947"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310149"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 专用 DNS 区域
 
@@ -21,13 +21,7 @@ ms.locfileid: "87502947"
 
 DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。 若要向虚拟网络发布专用 DNS 区域，请指定一个列表，其中包含允许在区域中解析记录的虚拟网络。  这些虚拟网络称为链接的虚拟网络。  启用自动注册后，Azure DNS 还会在创建虚拟机、更改其 IP 地址或删除虚拟机时更新区域记录。
 
-此快速入门介绍如何：
-
-> [!div class="checklist"]
-> * 创建专用 DNS 区域
-> * 创建测试虚拟机
-> * 创建额外的 DNS 记录
-> * 测试专用区域
+## <a name="prerequisites"></a>必备条件
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -45,7 +39,7 @@ az group create --name MyAzureResourceGroup --location "East US"
 
 ## <a name="create-a-private-dns-zone"></a>创建专用 DNS 区域
 
-以下示例创建一个名为“myAzureVNet”的虚拟网络  。 然后，它在 **MyAzureResourceGroup** 资源组中创建一个名为 **private.contoso.com** 的 DNS 区域，将该 DNS 区域链接到 **MyAzureVnet** 虚拟网络，并启用自动注册。
+以下示例创建一个名为“myAzureVNet”的虚拟网络****。 然后，它在 **MyAzureResourceGroup** 资源组中创建一个名为 **private.contoso.com** 的 DNS 区域，将该 DNS 区域链接到 **MyAzureVnet** 虚拟网络，并启用自动注册。
 
 ```azurecli
 az network vnet create \
@@ -161,7 +155,7 @@ az network private-dns record-set list \
    ping myVM01.private.contoso.com
    ```
 
-   应当会看到与以下内容类似的输出：
+   应看到与以下内容类似的输出：
 
    ```
    PS C:\> ping myvm01.private.contoso.com
@@ -185,7 +179,7 @@ az network private-dns record-set list \
    ping db.private.contoso.com
    ```
 
-   应当会看到与以下内容类似的输出：
+   应看到与以下内容类似的输出：
 
    ```
    PS C:\> ping db.private.contoso.com
@@ -203,7 +197,7 @@ az network private-dns record-set list \
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>删除所有资源
+## <a name="clean-up-resources"></a>清理资源
 
 不再需要时，可以通过删除 **MyAzureResourceGroup** 资源组来删除在本快速入门中创建的资源。
 

@@ -1,5 +1,5 @@
 ---
-title: 将 R 与机器学习 Studio (经典) 配合使用-Azure
+title: 在机器学习工作室（经典版）中使用 R - Azure
 description: 通过本 R 编程教程，在 Azure 机器学习工作室（经典版）中使用 R 创建预测解决方案。
 services: machine-learning
 ms.service: machine-learning
@@ -9,20 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bca2f0229a15f44ff8f3589a9c1e80032036b97c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341698"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507215"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>在 Azure 机器学习工作室（经典版）中使用 R
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
-
+**适用于：** ![这是一个复选标记，这意味着本文适用于 (经典) 机器学习 Studio。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ 这是一个 X，这意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 <!-- Stephen F Elston, Ph.D. -->
-本教程介绍如何使用 Azure 机器学习 Studio (经典) 来创建、测试和执行 R 代码。 最终，你将拥有一个完整的预测解决方案。
+本教程介绍如何使用 Azure 机器学习工作室（经典版）创建、测试和执行 R 代码。 学完本教程后，你将获得一个完整的预测解决方案。
 
 > [!div class="checklist"]
 > * 创建用于数据清理和转换的代码。
@@ -30,68 +29,68 @@ ms.locfileid: "91341698"
 > * 创建牛奶生产的季节性时序预测模型。
 
 
-机器学习 Studio (经典) 包含许多功能强大的机器学习和数据操作模块。 借助 R 编程语言，此组合提供了易用性和易用性，可轻松部署机器学习 Studio (经典) ，以及 R 的灵活性和深度分析。
+机器学习工作室（经典版）包含许多功能强大的机器学习和数据操作模块。 借助 R 编程语言，依靠 R 的灵活性和深入分析，这种组合为机器学习工作室（经典版）提供了可伸缩性和易于部署的特征。
 
-预测是一种广泛使用的有用分析方法。 常见使用范围从预测季节性项的销售额和确定最佳库存级别以预测 macroeconomic 变量。 通常使用时序模型进行预测。 时序数据是其中的值具有时间索引的数据。 时间索引可以是常规的，例如每个月或每分钟。 时间索引也可以是不规则的。 时序模型基于时序数据。 R 编程语言包含针对时序数据的灵活框架和广泛分析。
+预测是一种被广泛采用且有用的分析方法。 常见的用途包括预测季节性商品的销售、确定最优的库存级别和预测宏观经济变量。 通常使用时序模型进行预测。 时序数据是其中的值具有时间索引的数据。 时间索引可以是定期的，例如每月或每分钟。 时间索引也可以是不定期的。 时序模型基于时序数据。 R 编程语言包含针对时序数据的灵活框架和广泛分析。
 
 ## <a name="get-the-data"></a>获取数据
 
-在本教程中，你将使用加利福尼亚州牛奶生产和定价数据，其中包括有关多个牛奶产品的生产的每月信息和牛奶脂肪价格，这是一项基准测试。
+在本教程中，你将使用加利福尼亚州的乳制品生产和定价数据，其中包括几种乳品的生产和基准商品乳脂的价格的月度信息。
 
-本文中使用的数据和 R 脚本可以从 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 下载。 文件中的数据 `cadairydata.csv` 最初是从威斯康星 [奶制品市场网站](https://dairymarkets.com)大学提供的信息合成而来的。
+本文中使用的数据和 R 脚本可以从 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 下载。 文件 `cadairydata.csv` 中的数据最初是从威斯康星州大学[乳制品市场网站](https://dairymarkets.com)提供的信息综合得出的。
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>在机器学习工作室（经典版）中与 R 语言交互
 
-本部分介绍在机器学习工作室（经典版）环境中与 R 编程语言交互的一些基础知识。 R 语言提供了一个功能强大的工具，可用于在机器学习 Studio (经典) 环境中创建自定义的分析和数据操作模块。
+本部分介绍在机器学习工作室（经典版）环境中与 R 编程语言交互的一些基础知识。 R 语言提供了功能强大的工具，可用于在机器学习工作室（经典版）环境中创建自定义的分析和数据操作模块。
 
-我们将使用 RStudio 开发、测试和调试小规模的 R 代码。 然后，将此代码剪切并粘贴到 [执行 R 脚本][execute-r-script] 模块中，以便在机器学习 Studio (经典) 中运行。
+我们将使用 RStudio 开发、测试和调试小规模的 R 代码。 之后将此代码剪切和粘贴到随时可在机器学习工作室（经典版）中运行的[执行 R 脚本][execute-r-script]模块。
 
 ### <a name="the-execute-r-script-module"></a>执行 R 脚本模块
 
-在机器学习工作室（经典版）中，R 脚本在[执行 R 脚本][execute-r-script]模块中运行。 机器学习 Studio 中的 " [执行 R 脚本][execute-r-script] " 模块 (经典) 如下所示。
+在机器学习工作室（经典版）中，R 脚本在[执行 R 脚本][execute-r-script]模块中运行。 此处显示了机器学习工作室（经典版）中的[执行 R 脚本][execute-r-script]模块的一个示例。
 
  ![显示 R 编程语言的屏幕截图：在机器学习 Studio 中选择的 "执行 R 脚本" 模块 (经典) "。](./media/r-quickstart/fig1.png)
 
-上图显示了机器学习 Studio (经典) 环境中用于 [执行 R 脚本][execute-r-script] 模块的一些关键部分：
+上图显示了使用[执行 R 脚本][execute-r-script]模块的机器学习工作室（经典版）环境的主要部分：
 
 * 用于试验的模块在中间窗格中显示。
-* 右窗格的上半部分包含可用于查看和编辑 R 脚本的窗口。
-* 右窗格的下半部分显示 [执行 R 脚本][execute-r-script]的一些属性。 您可以通过选择此窗格的相应区域来查看错误和输出日志。
+* 右窗格的上半部分包含一个可用于查看和编辑 R 脚本的窗口。
+* 右窗格的下半部分显示[执行 R 脚本][execute-r-script]的某些属性。 可以通过选择此窗格中的适当区域查看错误和输出日志。
 
-本文的其余部分将更详细地讨论 [执行 R 脚本][execute-r-script] 。
+我们将在本文的其余部分更详细地讨论[执行 R 脚本][execute-r-script]。
 
-使用复杂的 R 函数时，建议你在 RStudio 中编辑、测试和调试。 与任何软件开发一样，以增量方式扩展代码，并在小型、简单的测试用例上对其进行测试。 然后将函数剪切并粘贴到[执行 R 脚本][execute-r-script]模块的 R 脚本窗口中。 利用此方法，你可以将 RStudio 集成开发环境 (IDE) 以及机器学习 Studio (经典) 的强大功能。
+使用复杂的 R 函数时，建议在 RStudio 中编辑、测试和调试。 与任何软件开发一样，逐步扩展代码，并在小型简单的测试用例上测试代码。 然后将函数剪切并粘贴到[执行 R 脚本][execute-r-script]模块的 R 脚本窗口中。 此方法可以利用 RStudio 集成开发环境 (IDE) 和机器学习工作室（经典版）的强大功能。
 
 #### <a name="execute-r-code"></a>执行 R 代码
 
-选择“运行”按钮运行此试验时，将执行[执行 R 脚本][execute-r-script]模块中的任何 R 代码。**** 执行完成后，会在 " [执行 R 脚本][execute-r-script] " 图标上出现一个复选标记。
+选择“运行”按钮运行此试验时，将执行[执行 R 脚本][execute-r-script]模块中的任何 R 代码。 执行完成后，在[执行 R 脚本][execute-r-script]图标上会显示一个对勾。
 
-#### <a name="defensive-r-coding-for-machine-learning-studio-classic"></a>适用于机器学习 Studio (经典) 的防御性 R 编码
+#### <a name="defensive-r-coding-for-machine-learning-studio-classic"></a>适用于机器学习工作室（经典版）的防御性 R 编码
 
-如果要使用机器学习 Studio (经典) 为 web 服务开发 R 代码，则应该明确计划代码如何处理意外的数据输入和异常。 为了保持清晰性，我们未在所示的大多数代码示例中包含太多的检查或异常处理。 继续操作时，我们将通过使用 R 的异常处理功能为你介绍几个函数示例。
+如果使用机器学习工作室（经典版）为 Web 服务开发 R 代码，必须对代码如何处理意外的数据输入和异常进行规划。 为了保持代码的清晰度，我们未在显示的大部分代码示例中包含太多检查或异常处理方面的代码。 后面我们会提供几个使用 R 的异常处理功能的函数示例。
 
-如果需要更完整地处理 R 异常处理，请阅读书籍中的相应章节，按 Wickham [进一步阅读](#appendixb)。
+如果需要更全面地了解 R 异常处理的信息，请阅读[延伸阅读](#appendixb)中列出的由 Wickham 创作的书籍中的相关部分。
 
 #### <a name="debug-and-test-r-in-machine-learning-studio-classic"></a>在机器学习工作室（经典版）中调试和测试 R
 
-在 RStudio 的小规模测试和调试 R 代码。 还需要跟踪 [执行 r 脚本][execute-r-script] 本身中的 R 代码问题。 此外，最好在机器学习 Studio (经典) 中检查结果。
+在 RStudio 中测试和调试小规模的 R 代码。 在某些情况下，还需要跟踪[执行 R 脚本][execute-r-script]本身的 R 代码问题。 此外，在机器学习工作室（经典版）中检查结果是一个不错的做法。
 
-通过执行 R 代码和机器学习 Studio (经典) 平台的输出主要在输出中找到。 其他一些信息出现错误。日志。
+在机器学习工作室（经典版）平台上执行 R 代码的输出结果主要位于 output.log 文件中。 其他一些信息位于 error.log 中。
 
-如果在运行 R 代码时机器学习 Studio (经典) 出现错误，则第一项操作应该是查看错误 .log。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看错误 .log，请在包含错误的[执行 R 脚本][execute-r-script]的 "属性" 窗格中选择 "**查看错误日志**"。
+如果运行 R 代码时机器学习工作室（经典版）发生错误，那么首先应该做的是查看 error.log 文件。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看 error.log 文件，请选择包含错误的[执行 R 脚本][execute-r-script]的“属性”窗格上的“查看错误日志”。
 
-例如，我们在 [执行 r 脚本][execute-r-script] 模块中运行了以下 R 代码，其中包含未定义的变量 y。
+例如，在[执行 R 脚本][execute-r-script]模块中运行下面的 R 代码，其中 y 为未定义的变量。
 
 ```r
 x <- 1.0
 z <- x + y
 ```
 
-此代码无法执行，这将导致错误。 选择 "属性" 窗格上的 " **查看错误日志** " 将生成以下显示。
+此代码无法执行，将导致出现错误。 在“属性”窗格中选择“查看错误日志”，将生成以下内容。
 
   ![显示错误消息弹出窗口的屏幕截图。](./media/r-quickstart/fig2.png)
 
-看来我们需要打开 output.log 文件查看此 R 错误消息。 选择 " [执行 R 脚本][execute-r-script] " 模块，然后在右侧的 "属性" 窗格中选择 " **查看输出日志** " 项。 此时将打开一个新的浏览器窗口，并显示以下错误消息。
+看来我们需要打开 output.log 文件查看此 R 错误消息。 选择[执行 R 脚本][execute-r-script]模块后，选择右侧的“属性”窗格上的“查看 output.log”。 随即会打开一个新的浏览器窗口，并显示以下错误消息。
 
 ```output
 [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
@@ -105,26 +104,26 @@ object 'y' not found
 
 此错误消息没有意料之外的内容，明确标识了问题所在。
 
-要检查 R 中的任何对象的值，可以将这些值打印到 output.log 文件。 检查对象的值的规则本质上与交互式 R 会话中的相同。 例如，如果在行上输入变量名称，则会将该对象的值输出到输出文件。
+要检查 R 中的任何对象的值，可以将这些值打印到 output.log 文件。 检查对象的值的规则本质上与交互式 R 会话中的相同。 例如，如果在行上输入一个变量名，则该对象的值将输出到 output.log 文件。
 
 #### <a name="packages-in-machine-learning-studio-classic"></a>机器学习工作室（经典版）中的包
 
-机器学习 Studio (经典) 附带了350多个预安装 R 语言包。 可以在[执行 R 脚本][execute-r-script]模块中使用下面的代码来检索预安装的包列表。
+机器学习工作室（经典版）附带了超过 350 个预安装的 R 语言包。 可以在[执行 R 脚本][execute-r-script]模块中使用下面的代码来检索预安装的包列表。
 
 ```r
 data.set <- data.frame(installed.packages())
 maml.mapOutputPort("data.set")
 ```
 
-如果此时不了解此代码的最后一行，请继续阅读。 本文的其余部分将详细介绍如何使用机器学习 Studio (经典) 环境中的 R。
+如果此时不了解此代码的最后一行，请继续阅读。 本文剩余部分将全面讨论如何在机器学习工作室（经典版）环境中使用 R。
 
 ### <a name="introduction-to-rstudio"></a>RStudio 简介
 
-RStudio 是用于 R 的广泛使用的 IDE。我们将使用 RStudio 来编辑、测试和调试本指南中使用的一些 R 代码。 测试并准备好 R 代码后，可以从 RStudio 编辑器剪切并粘贴到机器学习 Studio (经典) [执行 R 脚本][execute-r-script] 模块。
+RStudio 是广泛使用的针对 R 语言的 IDE。我们会使用 RStudio 编辑、测试和调试本指南中使用的一些 R 代码。 测试并准备好 R 代码后，可以将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室（经典版）的[执行 R 脚本][execute-r-script]模块中。
 
-如果你的桌面计算机上没有安装 R 编程语言，请立即执行此操作。 [ (CRAN) 的综合性 r 存档网络](https://www.r-project.org/)提供开放源代码 R 语言的免费下载。 下载适用于 Windows、Mac OS 和 Linux/UNIX。 选择附近的镜像，并按照下载说明进行操作。 此外，CRAN 包含许多有用的分析和数据操作包。
+如果还没有在台式计算机上安装 R 编程语言，请立即安装。 可以从 [Comprehensive R Archive Network (CRAN)](https://www.r-project.org/) 免费下载开放源代码 R 语言。 下载适用于 Windows、macOS 和 Linux/UNIX。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
 
-如果不熟悉 RStudio，请下载并安装桌面版。 可以在 [RStudio](http://www.rstudio.com/products/RStudio/)中找到适用于 Windows、Mac OS 和 LINUX/UNIX 的 RStudio 下载。 按照提供的说明在台式计算机上安装 RStudio。
+如果你是 RStudio 新手，应下载并安装桌面版。 可以在 [RStudio](http://www.rstudio.com/products/RStudio/)中找到适用于 Windows、MacOS 和 LINUX/UNIX 的 RStudio 下载。 按照提供的说明在台式计算机上安装 RStudio。
 
 [使用 RStudio IDE](https://support.rstudio.com/hc/sections/200107586-Using-RStudio) 中提供了 RStudio 的教程介绍。
 
@@ -132,7 +131,7 @@ RStudio 是用于 R 的广泛使用的 IDE。我们将使用 RStudio 来编辑�
 
 ## <a name="get-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>获取执行 R 脚本模块中的输入和输出数据
 
-在本部分中，我们将讨论如何在 [执行 R 脚本][execute-r-script] 模块中传入和传出数据。 我们还将回顾如何处理从 [执行 R 脚本][execute-r-script] 模块读入和移出的各种数据类型。
+本节我们将讨论如何在[执行 R 脚本][execute-r-script]模块中输入和输出数据。 我们还将复习如何在[执行 R 脚本][execute-r-script]模块中处理各种数据类型的输入和输出。
 
 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 中提供了本部分的完整代码。
 
@@ -140,44 +139,44 @@ RStudio 是用于 R 的广泛使用的 IDE。我们将使用 RStudio 来编辑�
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>加载数据集
 
-首先，将 **csdairydata.csv** 文件加载到机器学习 Studio (经典) 中。
+首先将 csdairydata.csv 文件载入机器学习工作室（经典版）。
 
-1. 启动机器学习 Studio (经典) 环境。
-1. 选择屏幕左下角的 " **+ 新建** "，然后选择 " **数据集**"。
-1. 选择 " **从本地文件**"，然后选择 " **浏览** " 以选择该文件。
-1. 请确保已选择 " **带有标题 ( 的通用 CSV 文件) ** 作为数据集的类型。
+1. 启动机器学习工作室（经典版）环境。
+1. 选择屏幕左下方的“+ 新建”，并选择“数据集” 。
+1. 选择“从本地文件”，并选择“浏览”以选择文件 。
+1. 请确保选择了“具有标题(.csv)的通用 CSV 文件”作为数据集的类型。
 1. 选择勾选标记。
-1. 上传数据集后，当你选择 " **数据集** " 选项卡时，你应该会看到新的数据集。
+1. 上传数据集后，可选择“数据集”选项卡查看新的数据集。
 
 #### <a name="create-an-experiment"></a>创建试验
 
-现在，我们在机器学习 Studio (经典) 中有了一些数据，我们需要创建一个试验来进行分析。  
+现在，机器学习工作室（经典版）中已有一些数据，我们需要创建一个试验来执行分析。  
 
-1. 选择屏幕左下角的 " **+ 新建**"，并选择 "**试验**  >  **空白试验**"。
-1. 通过选择和修改在页面顶部为标题 **创建的实验** 来命名试验。 例如，将其更改为 " **CA 奶制品分析**"。
-1. 在 "试验" 页的左侧，选择 "**保存的数据集**  >  **" "我的数据集"**。 你应该会看到之前上传的 **cadairydata.csv** 文件。
-1. 将 **csdairydata.csv 数据集** 拖到试验。
-1. 在左侧窗格顶部的 " **搜索试验项** " 框中，输入 " [执行 R 脚本][execute-r-script]"。 该模块将显示在搜索列表中。
-1. 将 [执行 R 脚本][execute-r-script] 模块拖放到托盘上。
-1. 将**csdairydata.csv 数据集**的输出连接到[执行 R 脚本][execute-r-script]的最左侧输入 (**Dataset1**) 。
-1. 选择“保存”。
+1. 选择屏幕左下方的“+ 新建”，并选择“试验” > “空白试验”  。
+1. 可以通过选择和修改页面顶部的“在...创建的试验”标题来命名试验。 例如，将其改为“CA 乳品分析”。
+1. 在试验页面的左侧，选择“保存的数据集” > “我的数据集” 。 可看到之前上传的 cadairydata.csv 文件。
+1. 将 csdairydata.csv 数据集拖放到试验。
+1. 在左窗格顶部的“搜索试验项”框中，输入[执行 R 脚本][execute-r-script]。 该模块将显示在搜索列表中。
+1. 将[执行 R 脚本][execute-r-script]模块拖放到托盘上。
+1. 将 csdairydata.csv 数据集的输出连接到[执行 R 脚本][execute-r-script]最左侧输入 (Dataset1) 。
+1. 选择“保存”。 
 
-此时，试验应类似于此示例。
+此时试验应如此示例所示。
 
-![此图显示了 CA 奶制品分析与数据集和执行 R 脚本模块的实验。](./media/r-quickstart/fig3.png)
+![此图显示了具有数据集和执行 R 脚本模块的 CA 乳品分析试验。](./media/r-quickstart/fig3.png)
 
 
 #### <a name="check-on-the-data"></a>查看数据
 
-让我们看一下我们在试验中加载的数据。 在试验中，选择 " **cadairydata.csv" 数据集**的输出，并选择 " **可视化**"。 应该会看到类似于此摘要的内容。
+让我们看看已加载到试验中的数据。 在该试验中，选择 cadairydata.csv 数据集的输出，并选择“可视化” 。 用户会看到类似此摘要的内容。
 
-![显示 cadairydata.csv 数据集的摘要的屏幕截图。](./media/r-quickstart/fig4.png)
+![显示 cadairydata.csv 数据集摘要的屏幕截图。](./media/r-quickstart/fig4.png)
 
-此视图显示了许多有用的信息。 我们可以看到数据集的前几行。 如果选择列，" **统计信息** " 部分会显示有关列的详细信息。 例如，" **功能类型** " 行显示机器学习 Studio (经典) 分配给列的数据类型。 在开始执行任何严重工作之前，请查看此视图。
+此视图显示了大量有用的信息。 可以看到该数据集的前几个行。 如果选择一列，“统计信息”部分会显示有关该列的详细信息。 例如，“特征类型”行会显示机器学习工作室（经典版）分配给列的数据类型。 在开始执行重要工作之前，请查看此视图。
 
 ### <a name="first-r-script"></a>第一个 R 脚本
 
-让我们创建一个简单的第一个 R 脚本，在机器学习 Studio (经典) 中进行试验。 我们在 RStudio 中创建并测试了以下脚本。
+让我们创建第一个简单的 R 脚本，以便在机器学习工作室（经典版）中进行试验。 我们已在 RStudio 中创建并测试了以下脚本。
 
 ```r
 ## Only one of the following two lines should be used
@@ -192,19 +191,19 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = c
 maml.mapOutputPort('cadairydata')
 ```
 
-现在，我们需要将此脚本传输到机器学习 Studio (经典) 。 可以剪切并粘贴，但在这种情况下，可以通过 zip 文件传输 R 脚本。
+现在，我们需要将此脚本移到机器学习工作室（经典版）。 可以剪切和粘贴，但在本例中，通过 zip 文件传输 R 脚本。
 
 ### <a name="data-input-to-the-execute-r-script-module"></a>输入到执行 R 脚本模块的数据
 
-让我们看看[执行 R 脚本][execute-r-script]模块的输入。 在此示例中，我们将在 " [执行 R 脚本][execute-r-script] " 模块中读取加利福尼亚个奶制品数据。
+让我们看看[执行 R 脚本][execute-r-script]模块的输入。 在本示例中，我们向[执行 R 脚本][execute-r-script]模块读入加利福尼亚州乳品数据。
 
-[执行 R 脚本][execute-r-script]模块可能有三个输入。 你可以使用任何一个或所有输入，具体取决于你的应用程序。 你还可以使用不带任何输入的 R 脚本。
+[执行 R 脚本][execute-r-script]模块可能有三个输入。 可以使用任何一个或所有输入，具体取决于应用程序。 还可以使用不带任何输入的 R 脚本。
 
 让我们从左到右查看每个输入。 将光标置于输入上并阅读工具提示可看到每个输入的名称。
 
-#### <a name="script-bundle"></a>脚本捆绑
+#### <a name="script-bundle"></a>脚本包
 
-脚本捆绑输入允许将 zip 文件的内容传递到 [执行 R 脚本][execute-r-script] 模块中。 可以使用以下任一命令将 zip 文件的内容读入 R 代码。
+脚本包输入可以将 zip 文件的内容传递到[执行 R 脚本][execute-r-script]模块。 可以使用以下任一命令将 zip 文件的内容读入 R 代码。
 
 ```r
 source("src/yourfile.R") # Reads a zipped R script
@@ -212,11 +211,11 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> 机器学习 Studio (经典) 处理 zip 文件中的文件，就像它们位于 src/目录中一样，因此，你需要在文件名前加上此目录名称前缀。 例如，如果 zip 文件包含文件， `yourfile.R` 并且 `yourData.rdata` 位于 zip 文件的根目录中，则可以在 `src/yourfile.R` `src/yourData.rdata` 使用和时使用和来处理这些文件 `source` `load` 。
+> 机器学习工作室（经典版）将 zip 文件中的文件视为位于 src/ 目录中，因此文件名需要有此目录名称前缀。 例如，如果 zip 文件包含位于该 zip 文件根目录中的文件 `yourfile.R` 和 `yourData.rdata`，则在使用 `source` 和 `load` 时，可将这些文件处理为 `src/yourfile.R` 和 `src/yourData.rdata`。
 
-我们已经在[加载数据集](#loading)中讨论过加载数据集。 创建并测试了上一节中显示的 R 脚本后，请执行以下步骤。
+我们已经在[加载数据集](#loading)中讨论过加载数据集。 创建并测试上一节中所示的 R 脚本后，请执行以下步骤。
 
-1. 将 R 脚本保存到 R 文件。 我们称之为脚本文件 **simpleplot.r。R**。 下面是文件中的内容：
+1. 将 R 脚本保存到 R 文件。 调用脚本文件“simpleplot.R”。 下面是文件中的内容：
 
    ```r
    ## Only one of the following two lines should be used
@@ -231,31 +230,31 @@ load("src/yourData.rdata") # Reads a zipped R data file
    maml.mapOutputPort('cadairydata')
    ```
 
-1. 创建一个 zip 文件，然后将脚本复制到此 zip 文件中。 在 Windows 中，可以右键单击该文件，然后选择 "**发送到**  >  **压缩的文件夹**"。 此操作创建包含 simpleplot.r 的新的 zip 文件 **。R** 文件。
+1. 创建一个 zip 文件，并将脚本复制到此 zip 文件。 在 Windows 上，右键单击该文件并选择“发送到” > “压缩文件夹” 。 此操作将创建包含“simpleplot.R”文件的新 zip 文件。
 
-1. 将文件添加到机器学习 Studio 中的 **数据集** (经典) ，并将类型指定为 **zip**。 现在可在数据集中看到此 zip 文件。
+1. 将文件添加到机器学习工作室（经典版）中的“数据集”，并指定类型为 zip 。 现在可在数据集中看到此 zip 文件。
 
-1. 将 zip 文件从 **数据集中** 拖到 **ML Studio (经典) 画布**上。
+1. 将 zip 文件从“数据集”拖到“机器学习工作室（经典版）画布” 。
 
-1. 将 **zip 数据**输出图标连接到[执行 R 脚本][execute-r-script]模块的**脚本包**输入。
+1. 将 **zip 数据** 输出图标连接到 [执行 R 脚本][execute-r-script]模块的 **脚本包** 输入。
 
-1. 在 `source()` " [执行 R 脚本][execute-r-script] " 模块的代码窗口中输入包含 zip 文件名的函数。 在这种情况下，我们输入 `source("src/simpleplot.R")` 。
+1. 在[执行 R 脚本][execute-r-script]模块的代码窗口中输入具有 zip 文件名的 `source()` 函数。 在此示例中，我们输入 `source("src/simpleplot.R")`。
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
-完成这些步骤后，在运行试验时， [执行 r 脚本][execute-r-script] 模块将执行 zip 文件中的 R 脚本。 此时，试验应类似于此示例。
+这些步骤完成后，运行试验时，[执行 R 脚本][execute-r-script]模块将执行 zip 文件中的 R 脚本。 此时试验应如此示例所示。
 
-![使用压缩的 R 脚本显示试验的关系图。](./media/r-quickstart/fig6.png)
+![显示使用压缩的 R 脚本的试验的图表。](./media/r-quickstart/fig6.png)
 
 #### <a name="dataset1"></a>Dataset1
 
-使用 Dataset1 输入可以将表格数据传递到 R 代码。 在我们的简单脚本中， `maml.mapInputPort(1)` 函数从端口1读取数据。 之后将此数据分配到代码中的数据框变量名。 在我们的简单脚本中，第一行代码执行赋值。
+使用 Dataset1 输入可以将表格数据传递到 R 代码。 在我们的简单脚本中，`maml.mapInputPort(1)` 函数从端口 1 读取数据。 之后将此数据分配到代码中的数据框变量名。 在这个简单脚本中，第一行代码执行此分配。
 
 ```r
 cadairydata <- maml.mapInputPort(1)
 ```
 
-选择“运行”按钮执行试验。**** 执行完成后，选择 " [执行 R 脚本][execute-r-script] " 模块，然后在 "属性" 窗格中选择 " **查看输出日志** "。 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动时，应会看到类似于以下输出的内容。
+选择“运行”按钮执行试验。 执行完成后，选择[执行 R 脚本][execute-r-script]模块，并选择“属性”窗格上的“查看 output.log”。 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似以下输出的内容。
 
 ```output
 [ModuleOutput] InputDataStructure
@@ -268,7 +267,7 @@ cadairydata <- maml.mapInputPort(1)
 [ModuleOutput] }
 ```
 
-页面上向下更详细地介绍有关列的信息，这些列的内容类似于以下输出。
+继续向下滚动页面会看到列的详细信息，其内容如以下输出所示。
 
 ```output
 [ModuleOutput] [1] "Loading variable port1..."
@@ -294,28 +293,28 @@ cadairydata <- maml.mapInputPort(1)
 [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
 ```
 
-这些结果大多和预期的一样，数据框中包含 228 个观测值和 9 个列。 可以查看列名称、R 数据类型和每个列的示例。
+这些结果大多和预期的一样，数据框中包含 228 个观测值和 9 个列。 我们可以看到列名称、R 数据类型和每个列的示例。
 
 > [!NOTE]
-> 可以从[执行 R 脚本][execute-r-script]模块的 R 设备输出中方便地获取此相同的打印输出。 我们将在下一节讨论 [执行 R 脚本][execute-r-script] 模块的输出。  
+> 可以从[执行 R 脚本][execute-r-script]模块的 R 设备输出中方便地获取此相同的打印输出。 我们会在下一节讨论[执行 R 脚本][execute-r-script]模块的输出。  
 
 #### <a name="dataset2"></a>Dataset2
 
-Dataset2 的输入行为与 Dataset1 相同。 使用此输入，可以将第二个矩形数据表传递到 R 代码中。 使用具有参数 2 的函数 `maml.mapInputPort(2)` 传递此数据。  
+Dataset2 的输入行为与 Dataset1 相同。 使用此输入可以将另一个表格数据传递到 R 代码。 使用具有参数 2 的函数 `maml.mapInputPort(2)` 传递此数据。  
 
 ### <a name="execute-r-script-outputs"></a>执行 R 脚本的输出
 
 #### <a name="output-a-dataframe"></a>输出数据框
 
-可以使用 `maml.mapOutputPort()` 函数，通过结果 Dataset1 端口将 R 数据框的内容输出为表格。 在简单的 R 脚本中，此操作由以下行执行。
+可以使用 `maml.mapOutputPort()` 函数，通过结果 Dataset1 端口将 R 数据框的内容输出为表格。 在我们的简单 R 脚本中，此操作由下面的行执行。
 
 ```r
 maml.mapOutputPort('cadairydata')
 ```
 
-运行试验后，选择结果 Dataset1 输出端口，并选择 " **可视化**"。 应会看到类似于此示例的内容。
+运行试验之后，选择结果 Dataset1 输出端口，并选择“可视化”。 用户应看到与此示例类似的内容。
 
-![屏幕截图，显示加利福尼亚奶制品数据输出的可视化效果。](./media/r-quickstart/fig7.png)
+![显示加利福尼亚州乳品数据输出的可视化效果的屏幕截图。](./media/r-quickstart/fig7.png)
 
 该输出看起来和输入一样，和我们的预期完全相同。
 
@@ -323,19 +322,19 @@ maml.mapOutputPort('cadairydata')
 
 [执行 R 脚本][execute-r-script]模块的设备输出包含消息和图形输出。 R 的标准输出和标准错误消息都会发送到 R 设备输出端口。
 
-若要查看 R 设备输出，请选择该端口，然后选择 " **可视化**"。 从 R 脚本中看到标准输出和标准错误。
+要查看 R 设备输出，请选择该端口，并选择“可视化”。 在此处可看到 R 脚本的标准输出和标准错误。
 
-![屏幕截图，显示来自 R 设备端口的标准输出和标准错误。](./media/r-quickstart/fig8.png)
+![显示来自 R 设备端口的标准输出和标准错误的屏幕截图。](./media/r-quickstart/fig8.png)
 
-向下滚动，将看到来自 R 脚本的图形输出。
+向下滚动页面可看到 R 脚本的图形输出。
 
-![屏幕截图，显示来自 R 设备端口的图形输出。](./media/r-quickstart/fig9.png)
+![显示 R 设备端口的图形输出的屏幕截图。](./media/r-quickstart/fig9.png)
 
 ## <a name="data-filtering-and-transformation"></a><a id="filtering"></a>数据筛选和转换
 
-在本部分中，我们将对加利福尼亚奶制品数据执行一些基本的数据筛选和转换操作。 本部分结束时，我们将采用适合生成分析模型的格式的数据。
+本节将对加利福尼亚州乳品数据执行一些基本的数据筛选和转换操作。 学完本节之后，我们将具有适合生成分析模型的格式的数据。
 
-更具体地说，在本部分中，我们将执行几个常见的数据清理和转换任务：类型转换、对 dataframes 进行筛选、添加新的计算列和值转换。 此背景知识可帮助你应对遇到的各种实际问题。
+更具体地说，本节我们将执行几种常见的数据清理和转换任务：类型转换、筛选数据框、添加新的计算列，以及值的转换。 此背景知识可帮助你应对遇到的各种实际问题。
 
 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 中提供了本部分的完整 R 代码。
 
@@ -343,11 +342,11 @@ maml.mapOutputPort('cadairydata')
 
 现在，我们可以将加利福尼亚州乳品数据读入[执行 R 脚本][execute-r-script]模块中的 R 代码，我们需要确保列中的数据具有预期的类型和格式。
 
-R 是一个具有动态类型的语言，这表示可以根据需要将数据类型从一种类型强制转换为另一种类型。 R 中的原子数据类型包括数字、逻辑和字符。 因子类型用于以简洁方式存储分类数据。 有关数据类型的详细信息，请参阅 [进一步阅读](#appendixb)中的参考。
+R 是一个具有动态类型的语言，这表示可以根据需要将数据类型从一种类型强制转换为另一种类型。 R 的基本数据类型包括数字、逻辑和字符。 因子类型用于以简洁方式存储分类数据。 有关数据类型的详细信息，请参阅[延伸阅读](#appendixb)中的参考文献。
 
-当表格数据从外部源读入 R 时，最好是检查列中的结果类型。 您可能需要一个类型为 "字符" 的列，但在许多情况下，该列将显示为系数，反之亦然。 在其他情况下，您认为的列应该是数字，如 "1.23"，而1.23 不是以浮点数表示。
+将外部源中的表格数据读入 R 后，最好检查列中的结果类型。 可能想要字符类型的列，但在许多情况下该列显示为因子，反之亦然。 在另一些情况下，认为应是数值的列却表示为字符数据，例如，使用“1.23”而不是 1.23 表示浮点数。
 
-幸运的是，只要有可能，就可以轻松地将一种类型转换为另一种类型。 例如，不能将 "内华达" 转换为数值，但可以将其转换为 (分类变量) 的因子。 作为另一个示例，您可以将数字1转换为字符 "1" 或系数。
+幸运的是，只要可以映射，就可以轻松地将一种类型转换为另一种。 例如，无法将“Nevada”转换为数值，但可以将其转换为一个因子（分类变量）。 再举一例，可以将数值 1 转换为字符“1”或一个因子。
 
 所有这些转换的语法非常简单：`as.datatype()`。 这些类型转换函数包括以下函数：
 
@@ -356,9 +355,9 @@ R 是一个具有动态类型的语言，这表示可以根据需要将数据类
 * `as.logical()`
 * `as.factor()`
 
-查看在上一节中输入的列的数据类型，所有列的类型均为 numeric。 例外情况是标记为 "Month" 的列，它是字符类型。 让我们将此类型转换为一个因素，并测试结果。
+看一看上一节中输入的列的数据类型：所有列都为数值类型。 但标记为“Month”的列除外，该列为字符类型。 让我们将该类型转换为一个因子并测试结果。
 
-我们删除了创建散点图矩阵的行，并添加了用于将月份列转换为系数的线条。 在此实验中，我们将 R 代码剪切并粘贴到 [执行 r 脚本][execute-r-script] 模块的代码窗口中。 你还可以更新 zip 文件并将其上载到机器学习 Studio (经典) ，但此选项需要几个步骤。
+我们删除了创建散点图矩阵的行，并添加了将“Month”列转换为因子的行。 在试验中，我们将 R 代码剪切并粘贴到[执行 R 脚本][execute-r-script]模块的代码窗口中。 你也可以更新 zip 文件，并将其上传到机器学习工作室（经典版）中，但此选项需要几个步骤。
 
 ```r
 ## Only one of the following two lines should be used
@@ -404,16 +403,16 @@ maml.mapOutputPort('cadairydata')
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-月份的类型现在应显示 **系数 w/14 级**。 此类型是一个问题，因为每年只有12个月。 还可以查看结果数据集端口的 **可视化效果** 中的类型是否为 **分类**。
+现在 Month 的类型显示为“具有 14 个级别的因子”。 此类型是一个问题，因为一年只有 12 个月。 还可以查看该类型在结果数据集端口的“可视化”中为“分类” 。
 
-问题在于，月份列尚未系统地编码。 在某些情况下，一个月称为四月，而另一个月份的缩写为 Apr。我们可以通过将字符串裁剪为三个字符来解决此问题。 代码行现在如下例所示。
+问题在于“Month”列未系统地进行编码。 在某些情况下一个月份称为 April，但在其他情况下，它缩写为 Apr。可通过将字符串剪裁到三个字符来解决此问题。 现在代码行如下例所示。
 
 ```r
 ## Ensure the coding is consistent and convert column to a factor
 cadairydata$Month <- as.factor(substr(cadairydata$Month, 1, 3))
 ```
 
-重新运行试验，并查看输出日志。 此处显示了预期的结果。
+重新运行试验，并查看输出日志。 预期的结果如此处所示。
 
 ```output
 [ModuleOutput] [1] "Loading variable port1..."
@@ -446,23 +445,23 @@ cadairydata$Month <- as.factor(substr(cadairydata$Month, 1, 3))
 
 现在因子变量具有所需的 12 个级别。
 
-### <a name="basic-dataframe-filtering"></a>基本数据帧筛选
+### <a name="basic-dataframe-filtering"></a>基本数据框筛选
 
-R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可以将数据集划分为多个子集。 在许多情况下，都需要复杂的筛选条件。 有关筛选 dataframes 的详细示例，请参阅 [进一步阅读](#appendixb)中的参考。
+R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可以将数据集划分为多个子集。 在许多情况下，都需要复杂的筛选条件。 有关筛选数据框的详细示例，请参阅[延伸阅读](#appendixb)中的参考文献。
 
-我们应该对数据集进行一次筛选。 如果查看 cadairydata.csv 数据帧中的列，将看到两个不必要的列。 第一列包含行号，这并不是非常有用。 第二列 Year.Month 包含冗余的信息。 使用以下 R 代码可轻松地排除这两列。
+我们要对数据集进行一点筛选。 如果看一下 cadairydata 数据框中的列，会发现两个不必要的列。 第一列包含一行数字，不是很有用。 第二列 Year.Month 包含冗余的信息。 使用以下 R 代码可轻松地排除这两列。
 
 > [!NOTE]
-> 从现在开始，我们将向您显示在 [执行 R 脚本][execute-r-script] 模块中添加的附加代码。 在函数 *之前* 添加每个新行 `str()` 。 我们使用此函数来验证机器学习 Studio (经典) 的结果。
+> 本节从现在开始，我们将展示在[执行 R 脚本][execute-r-script]模块中添加的附加代码。 我们会在 `str()` 函数前面添加一个新行。 我们使用此函数验证机器学习工作室（经典版）中的结果。
 
-将以下行添加到 [执行 r 脚本][execute-r-script] 模块中的 R 代码。
+将以下行添加到[执行 R 脚本][execute-r-script]模块中的 R 代码。
 
 ```r
 # Remove two columns we do not need
 cadairydata <- cadairydata[, c(-1, -2)]
 ```
 
-在试验中运行此代码，并检查输出日志中的结果。 此处显示了这些结果。
+在试验中运行此代码，并检查输出日志中的结果。 结果如此处所示。
 
 ```output
 [ModuleOutput] [1] "Loading variable port1..."
@@ -488,13 +487,13 @@ cadairydata <- cadairydata[, c(-1, -2)]
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-现在，我们得到了预期的结果。
+现在，我们得到了预期结果。
 
 ### <a name="add-a-new-column"></a>添加新列
 
-若要创建时序模型，可以使用包含自时序开始后的月份的列。 我们将创建新的 "Month" 列。
+若要创建时序模型，则具有包含从该时序的起始时间开始的月份的列会使创建更方便。 我们将创建一个新列“Month.Count”。
 
-为了帮助组织代码，我们将创建第一个简单的函数 `num.month()` 。 然后，将此函数应用于在数据帧中创建一个新列。 新代码如下所示：
+为了有利于组织代码，我们将创建第一个简单的函数 `num.month()`。 然后应用此函数在数据框中创建一个新列。 新代码如下所示：
 
 ```r
 ## Create a new column with the month count
@@ -512,7 +511,7 @@ num.month <- function(Year, Month) {
 cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 ```
 
-现在运行已更新的试验，并使用输出日志查看结果。 此处显示了这些结果。
+现在运行更新后的试验，并使用输出日志查看结果。 结果如此处所示。
 
 ```output
 [ModuleOutput] [1] "Loading variable port1..."
@@ -545,13 +544,13 @@ cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 
 ### <a name="value-transformations"></a>值转换
 
-在本部分中，我们将对数据帧的某些列中的值执行一些简单的转换。 R 语言支持几乎所有值的转换。 有关更多示例，请参阅 [进一步阅读](#appendixb)中的参考。
+在本节中，我们将对数据框的某些列中的值执行一些简单转换。 R 语言支持几乎所有值的转换。 有关更多示例，请参阅[延伸阅读](#appendixb)中的参考文献。
 
-如果查看数据帧摘要中的值，则会在此处看到奇怪的内容。 加利福尼亚州生产的冰激凌比牛奶还多吗？ 当然不是。 问题在于单位不同。 价格单位为美制镑，牛奶的单位为1000000美元，冰淇淋的单位为1000美国加仑，奶酪奶酪单位为1000美元。 假设冰淇淋的重量约为6.5 磅，则可以轻松地将这些值进行相乘，使其以1000磅为单位。
+如果看一下数据框摘要中的值，会发现一些奇怪的地方。 加利福尼亚州生产的冰激凌比牛奶还多吗？ 当然不是。 问题在于单位不同。 价格是以美制磅为单位计算的，牛奶的单位为 1 M 美制磅，冰激凌的单位为 1,000 美制加仑，奶酪的单位为 1,000 美制磅。 假设冰激凌每加仑的重量为 6.5 磅，那么我们可以轻松地使用乘法转换这些值，以便使它们的单位都为 1,000 磅。
 
-对于我们的预测模型，我们将为此数据的趋势和季节性调整使用乘法模型。 日志转换允许我们使用线性模型，从而简化了此过程。 可以在应用乘数的相同函数中应用对数转换。
+对于预测模型，我们对数据的趋势和季节性调整使用乘法模型。 可通过对数转换使用线性模型来简化此过程。 可以在应用乘数的相同函数中应用对数转换。
 
-在下面的代码中，我们定义了一个新函数， `log.transform()` 并将其应用于包含数字值的行。 R `Map()` 函数用于将 `log.transform()` 函数应用到数据框的所选列。 `Map()`函数类似于 `apply()` ，但它允许函数有多个参数列表。 请注意，乘数列表向 `log.transform()` 函数提供了另一个参数。 `na.omit()`函数用作一种清理功能，以确保数据帧中没有缺少或未定义的值。
+在下面的代码中，我们定义了一个新函数 `log.transform()`，并将其应用于包含数值的行。 R `Map()` 函数用于将 `log.transform()` 函数应用到数据框的所选列。 `Map()` 函数类似于 `apply()`，但是前者允许函数具有多个参数列表。 请注意，乘数列表向 `log.transform()` 函数提供了另一个参数。 `na.omit()` 函数用于进行一些清理，以确保在数据框中没有缺失或未定义的值。
 
 ```r
 log.transform <- function(invec, multiplier = 1) {
@@ -586,18 +585,18 @@ cadairydata[, 4:7] <- Map(log.transform, cadairydata[, 4:7], multipliers)
 cadairydata <- na.omit(cadairydata)  
 ```
 
-函数中发生了很多情况 `log.transform()` 。 此代码的大部分在检查参数的潜在问题，或者处理在计算中可能还会出现的异常。 此代码只有几行执行计算。
+`log.transform()` 函数中有很多代码。 此代码的大部分在检查参数的潜在问题，或者处理在计算中可能还会出现的异常。 只有几行代码执行了计算。
 
-防御性编程的目标是防止单一函数发生故障，阻止处理过程继续进行。 对于用户来说，长时间运行的分析突然失败可能会让人感到沮丧。 若要避免这种情况，必须选择默认返回值，以限制对下游处理的危害。 同时生成一条消息警告用户某些地方出现错误。
+防御性编程的目的是要防止使处理无法继续的单个函数的失败。 长时间运行的分析突然失败会让用户感到沮丧。 若要避免这种情况，必须选择默认返回值，以限制对下游处理的危害。 同时生成一条消息警告用户某些地方出现错误。
 
-如果未使用在 R 中防御编程，则所有这些代码都可能会很困难。 让我们演练以下主要步骤：
+如果不习惯于 R 中的防御性编程，那么所有这些代码可能会有点让人难以招架。 我们将讲解以下主要步骤：
 
 1. 定义了四条消息的向量。 这些消息用于传达有关此代码可能发生的一些错误和异常的信息。
-1. 对于每种情况，我们返回值 NA。 还有许多其他的值的副作用较少。 例如，我们可以返回0向量或原始输入向量。
-1. 针对函数的参数运行检查。 在每种情况下，如果检测到错误，则返回默认值，并由 `warning()` 函数生成一条消息。 我们使用 `warning()` 的是而不是 `stop()` ，因为后者将终止执行，而这正是我们要尝试避免的。 此代码以过程样式编写，因为在这种情况下，函数方法看起来比较复杂且模糊。
-1. 日志计算包装在中， `tryCatch()` 因此异常不会导致突然停止处理。 如果没有 `tryCatch()` ，R 函数引发的大多数错误都将导致停止信号，这就是这样。
+1. 对于每种情况返回值 NA。 还有许多其他的值的副作用较少。 例如，可以返回零向量，或原始输入向量。
+1. 针对函数的参数运行检查。 在每种情况下，如果检测到错误，则返回默认值，并由 `warning()` 函数生成一条消息。 使用 `warning()` 而不是 `stop()`，因为后者将终止执行，而这正是我们试图避免的。 此代码是以过程的样式编写的，因为在本例中函数式方法显得复杂且混淆不清。
+1. `tryCatch()` 中包装了对数计算，因此异常不会导致处理突然停止。 如果没有 `tryCatch()`，R 函数引发的大多数错误都会导致产生停止信号，这个信号会导致处理停止。
 
-在试验中执行此 R 代码，并在 output.log 文件中查看打印输出。 现在，您将看到日志中四列的转换后的值，如下所示。
+在试验中执行此 R 代码，并在 output.log 文件中查看打印输出。 现在可在日志中看到四个列的转换后的值，如下所示。
 
 ```output
 [ModuleOutput] [1] "Loading variable port1..."
@@ -625,29 +624,29 @@ cadairydata <- na.omit(cadairydata)
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-可以看到值已被转换。 现在，牛奶生产大大超过了所有其他牛奶产品生产，这意味着我们现在正在查看对数刻度。
+可以看到值已被转换。 现在牛奶生产大大超过了所有其他乳品生产，回忆一下，我们现在是以对数尺度查看数据。
 
-此时，我们的数据已清理，我们已准备好进行一些建模。 如果查看 " [执行 R 脚本][execute-r-script] " 模块的结果数据集输出的可视化摘要，会看到 "Month" 列是包含12个唯一值的分类，这就是我们所需要的。
+此时数据已清理，我们可以进行一些建模操作。 如果查看[执行 R 脚本][execute-r-script]模块的结果数据集输出的可视化摘要，会看到“Month”列的类型为“分类”，具有 12 个唯一值，这和我们希望的一样。
 
 ## <a name="time-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>时序对象和相关性分析
 
-在本部分中，我们将探讨几个基本的 R 时序对象，并分析一些变量之间的相关性。 我们的目标是在几个滞后时间输出包含成对相关信息的数据帧。
+本节我们将探讨几个基本的 R 时序对象，并分析一些变量之间的相关性。 我们的目的是输出包含几个滞后时间内的成对相关性信息的数据框。
 
 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 中提供了本部分的完整 R 代码。
 
 ### <a name="time-series-objects-in-r"></a>R 中的时序对象
 
-如前所述，时序对象是一系列具有时间索引的数据值。 R 时序对象用于创建和管理时间索引。 使用时序对象有几个优点。 时序对象可以省去管理封装在对象中的时序索引值的许多细节。 此外，时序对象允许您将多个时序方法用于绘图、打印和建模等。
+如前所述，时序对象是一系列具有时间索引的数据值。 R 时序对象用于创建和管理时间索引。 使用时序对象有几个优点。 时序对象可以省去管理封装在对象中的时序索引值的许多细节。 此外，还可以通过时序对象使用许多时序方法进行绘图、打印、建模等。
 
-通常使用 POSIXct 时序类，且该类相对比较简单。 此时序类的时间测量起始点为 1970 年 1 月 1 日。 在此示例中，我们将使用 POSIXct 时序对象。 其他广泛使用的 R 时序对象类包括 zoo 和 xts (可扩展时序) 。
+通常使用 POSIXct 时序类，且该类相对比较简单。 此时序类的时间测量起始点为 1970 年 1 月 1 日。 在本示例中我们使用 POSIXct 时序对象。 其他广泛使用的 R 时序对象类包括 zoo 和 xts（可扩展时序对象）。
 
 ### <a name="time-series-object-example"></a>时序对象示例
 
-让我们开始使用示例。 将新的 [执行 R 脚本][execute-r-script] 模块拖放到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
+让我们开始使用示例。 将新的[执行 R 脚本][execute-r-script]模块拖到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
 
-正如我们在第一个示例中所做的那样，我们将通过示例。 在某些时候，我们会在每个步骤只显示额外的 R 代码行。
+正如我们在第一个示例中所做的那样，我们将继续了解该示例。 在某些情况下，我们将只在每个步骤中显示 R 代码的增量附加行。
 
-#### <a name="read-the-dataframe"></a>阅读数据帧
+#### <a name="read-the-dataframe"></a>读取数据框
 
 第一步，读取数据框，并确保得到预期的结果。 下面的代码可执行此作业。
 
@@ -657,7 +656,7 @@ cadairydata <- maml.mapInputPort(1)
 str(cadairydata) # Check the results
 ```
 
-现在，运行试验。 新的 "执行 R 脚本" 形状的日志应类似于此示例。
+现在，运行试验。 新的执行 R 脚本形状的日志应如此例所示。
 
 ```output
 [ModuleOutput] [1] "Loading variable port1..."
@@ -681,11 +680,11 @@ str(cadairydata) # Check the results
 [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
 ```
 
-此数据具有预期的类型和格式。 现在，月份列属于类型因素，并且具有预期的级别数。
+此数据具有预期的类型和格式。 现在，“Month”列的类型为因子，并且具有预期的级别数。
 
 #### <a name="create-a-time-series-object"></a>创建时序对象
 
-我们需要向数据框中添加一个时序对象。 将当前代码替换为以下代码，这将添加 POSIXct 类的新列。
+我们需要向数据框中添加一个时序对象。 将当前的代码替换为以下代码，以添加 POSIXct 类的新列。
 
 ```r
 # Comment the following if using RStudio
@@ -698,7 +697,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata) # Check the results
 ```
 
-现在，检查日志。 它应与此示例类似。
+现在，检查日志。 它应如以下示例所示。
 
 ```output
 [ModuleOutput] [1] "Loading variable port1..."
@@ -728,23 +727,23 @@ str(cadairydata) # Check the results
 
 ### <a name="explore-and-transform-the-data"></a>浏览和转换数据
 
-让我们探讨一下此数据集的一些变量。 散点图是一种很好的外观。 我们会将 `str()` 前面 R 代码中的函数替换为以下行。
+让我们探讨一下此数据集的一些变量。 散点图矩阵是一个可供快速查看的好办法。 我们将使用下面的行替换前面 R 代码中的 `str()` 函数。
 
 ```r
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata, main = "Pairwise Scatterplots of dairy time series")
 ```
 
-运行此代码，看看会发生什么。 在 R 设备端口上生成的绘图应如下例所示。
+运行此代码，并看看结果。 R 设备端口生成的绘图如下例所示。
 
 ![显示选定变量的散点图矩阵的屏幕截图。](./media/r-quickstart/fig17.png)
 
-这些变量之间的关系中有一些看起来很奇怪的结构。 这种情况可能是由数据中的趋势引起的，也可能是我们尚未对变量进行标准化。
+这些变量之间的关系的结构看起来有些奇怪。 这种结构可能是因为数据的趋势和我们未标准化变量的事实。
 
 ### <a name="correlation-analysis"></a>相关性分析
 
-若要执行相关分析，需要对变量进行反趋势分析和标准化。 我们只需使用 R `scale()` 函数，该函数可以同时对变量进行中心化和规范化处理。 该函数可能运行较快。 但让我们看一下 R 中的防御性编程的示例。
+若要执行相关性分析，需要对变量进行去趋势和标准化处理。 我们只需使用 R `scale()` 函数，该函数可以同时对变量进行中心化和规范化处理。 该函数可能运行较快。 但是，让我们看一个 R 中的防御性编程示例。
 
-`ts.detrend()`下面的函数同时执行这两个操作。 以下两行代码对数据进行去趋势处理，并标准化值。
+下面的 `ts.detrend()` 函数执行了这两个操作。 以下两行代码对数据进行去趋势处理，并标准化值。
 
 ```r
 ts.detrend <- function(ts, Time, min.length = 3){
@@ -791,19 +790,19 @@ df.detrend <- data.frame(lapply(cadairydata[, 4:7], ts.detrend, cadairydata$Time
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = df.detrend, main = "Pairwise Scatterplots of detrended standardized time series")
 ```
 
-函数中发生了很多情况 `ts.detrend()` 。 此代码的大部分在检查参数的潜在问题，或者处理在计算中可能还会出现的异常。 只有几行代码实际执行了计算。
+`ts.detrend()` 函数中有很多代码。 此代码的大部分在检查参数的潜在问题，或者处理在计算中可能还会出现的异常。 只有几行代码实际执行了计算。
 
-我们已经在值转换中讨论了防御性编程的示例。 这两个计算代码块包装在 `tryCatch()` 中。 对于某些错误，返回原始输入向量是有意义的。 在其他情况下，我们返回一个0向量。
+我们在值转换中已经讨论过防御性编程示例。 这两个计算代码块包装在 `tryCatch()` 中。 对于某些错误，返回原始输入向量是有意义的。 在其他情况下，我们返回一个零向量。
 
 请注意，用于去趋势的线性回归是一个时序回归。 预测器变量是一个时序对象。
 
-`ts.detrend()`定义后，我们将其应用于数据帧中感兴趣的变量。 必须使用将创建的结果列表强制转换 `lapply()` 为数据帧中的数据 `as.data.frame()` 。 由于的防御方面的原因 `ts.detrend()` ，无法处理其中一个变量不会阻止对其他变量进行正确处理。
+定义 `ts.detrend()` 函数后，将其应用到数据框中的相关变量。 必须使用 `as.data.frame()` 将 `lapply()` 创建的结果列表强制转换为数据框中的数据。 由于 `ts.detrend()` 的防御性，处理一个变量的失败不会阻止其他变量的正常处理。
 
-最后一行代码创建了成对的散点图。 运行 R 代码后，散点图的结果显示在此处。
+最后一行代码创建了成对的散点图。 运行此 R 代码后，散点图的结果如下所示。
 
-![显示趋势化和标准化时序的成对散点图的屏幕截图。](./media/r-quickstart/fig18.png)
+![显示去趋势和标准化时序的成对散点图的屏幕截图。](./media/r-quickstart/fig18.png)
 
-您可以将这些结果与前面示例中所示的结果进行比较。 去除趋势和标准化变量后，这些变量之间的关系结构就不那么明显了。
+可以将此结果与前面示例中所示结果进行比较。 去除趋势和标准化变量后，这些变量之间的关系结构就不那么明显了。
 
 以 R ccf 对象形式计算相关性的代码如下：
 
@@ -823,7 +822,7 @@ cadairycorrelations <- lapply(corpairs, pair.cor, df.detrend)
 cadairycorrelations
 ```
 
-运行此代码会生成此处显示的日志。
+运行此代码生成的日志如此处所示。
 
 ```output
 [ModuleOutput] Loading objects:
@@ -879,10 +878,10 @@ cadairycorrelations
 [ModuleOutput] -0.002 -0.074 -0.124 
 ```
 
-每个 lag 都有相关值。 没有一个相关性值足够大而具有意义。 我们可以得出的结论是，我们可以单独对每个变量建模。
+每个滞后时间都有一个相关性值。 没有一个相关性值足够大而具有意义。 可以确定我们可以单独对每个变量建模。
 
 ### <a name="output-a-dataframe"></a>输出数据框
-我们已将成对相关作为 R ccf 对象的列表进行了计算。 这种方法有一点问题，因为结果数据集输出端口确实需要数据框。 此外，ccf 对象本身是一个列表，我们只需要此列表的第一个元素中的值，这些值在不同的滞后时间。
+我们已经以 R ccf 对象列表的形式计算成对相关性。 这种方法有一点问题，因为结果数据集输出端口确实需要数据框。 而且，ccf 对象本身就是一个列表，而我们只需要该列表中第一个元素的值，即各种滞后时间中的相关性。
 
 以下代码从 ccf 对象列表中提取滞后时间值，这些值本身就是列表。
 
@@ -910,33 +909,33 @@ outframe
 #maml.mapOutputPort('outframe')
 ```
 
-第一行代码有点棘手，一些说明可能有助于您了解这一点。 从内到外工作，我们有：
+第一行代码有点复杂，这里的一些解释可以帮助你理解它。 从内到外进行处理，我们可以：
 
-1. **[[** Operator with 参数**1**从 ccf 对象列表的第一个元素中选择滞后的关联向量。
+1. [[ 运算符及参数 1 用于从 ccf 对象列表的第一个元素中选择滞后时间中的相关性向量 。
 1. `do.call()` 函数对 `lapply()` 返回的列表的元素应用 `rbind()` 函数。
 1. `data.frame()` 函数将 `do.call()` 生成的结果强制转换为数据框。
 
-请注意，行名在数据框的一个列中。 这样做会在行名称从 [执行 R 脚本][execute-r-script]输出时保留这些行名。
+请注意，行名在数据框的一个列中。 这样使行名从[执行 R 脚本][execute-r-script]中输出后保留这些行名。
 
-当我们选择 " **可视化效果** " 以查看结果数据集端口的输出时，运行代码将产生如下所示的输出。 和预期的一样，行名在第一列中。
+当选择“可视化”在结果数据集端口查看输出时，运行代码将生成此处显示的输出。 和预期的一样，行名在第一列中。
 
-![屏幕截图，显示相关分析的结果输出。](./media/r-quickstart/fig20.png)
+![显示相关性分析结果输出的屏幕截图。](./media/r-quickstart/fig20.png)
 
 ## <a name="time-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>时序示例：季节性预测
 
-现在，我们的数据采用适合分析的形式，我们已确定这些变量之间没有显著的关联。 让我们继续并创建时序预测模型。 使用此模型，我们将在2013年12个月内预测加利福尼亚州牛奶生产。
+现在我们的数据格式已适合分析，并且我们已确定变量之间没有显著的相关性。 让我们继续并创建时序预测模型。 使用此模型可以预测 2013年 12 个月的加利福尼亚州的牛奶生产。
 
-我们的预测模型包含两个成分：趋势成分和季节性成分。 完满的预测是这两个成分的乘积。 此类型模型被称为乘法模型。 另一种可供选择的模型为加法模型。 我们已将日志转换应用到相关变量，这使得此分析易。
+我们的预测模型包含两个成分：趋势成分和季节性成分。 完满的预测是这两个成分的乘积。 此类型模型被称为乘法模型。 另一种可供选择的模型为加法模型。 我们已经对相关变量应用了对数转换，这样可以使分析变得容易。
 
 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 中提供了本部分的完整 R 代码。
 
-### <a name="create-the-dataframe-for-analysis"></a>创建用于分析的数据帧
+### <a name="create-the-dataframe-for-analysis"></a>创建用于分析的数据框
 
-首先将新的 [执行 R 脚本][execute-r-script] 模块添加到试验中。 将现有的执行 R 脚本模块的[结果数据集][execute-r-script]输出连接到新的模块的 **Dataset1** 输入。 结果应与下面的示例类似。
+首先将新的[执行 R 脚本][execute-r-script]模块添加到试验中。 将现有的执行 R 脚本模块的 [结果数据集][execute-r-script]输出连接到新的模块的 **Dataset1** 输入。 结果应如下例所示。
 
-![显示新执行 R 脚本模块添加的试验的关系图。](./media/r-quickstart/fig21.png)
+![显示已添加新执行 R 脚本模块的试验的屏幕截图。](./media/r-quickstart/fig21.png)
 
-与刚完成的相关分析一样，我们需要添加包含 POSIXct 时间序列对象的列。 下面的代码将添加该列。
+与刚完成的相关分析一样，我们需要添加包含 POSIXct 时间序列对象的列。 下面的代码将添加列。
 
 ```r
 # If running in Machine Learning Studio (classic), uncomment the first line with maml.mapInputPort()
@@ -949,7 +948,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata)
 ```
 
-运行此代码，并查看日志。 结果应与以下示例类似。
+运行此代码并查看日志。 结果应如下例所示。
 
 ```output
 [ModuleOutput] [1] "Loading variable port1..."
@@ -975,11 +974,11 @@ str(cadairydata)
 [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 ```
 
-在此结果中，我们已准备好开始分析。
+有了此结果，我们就可以开始进行分析。
 
 ### <a name="create-a-training-dataset"></a>创建训练数据集
 
-构造数据帧后，需要创建定型数据集。 该数据包含所有观测值，2013 年的 12 个月的数据除外，2013 年数据是测试数据集。 以下代码将数据框划分为不同子集，并创建乳品生产和价格变量的图形。 然后创建四个生产和价格变量的图形。 在 `Map()` 函数中使用匿名函数定义图形的一些参数，并遍历其他两个参数的列表。 如果你认为 for 循环在此处可以正常工作，则是正确的。 不过，由于 R 是一种功能语言，我们正在查看函数方法。
+构建数据框后，需要创建训练数据集。 该数据包含所有观测值，2013 年的 12 个月的数据除外，2013 年数据是测试数据集。 以下代码将数据框划分为不同子集，并创建乳品生产和价格变量的图形。 于是我们创建了四个生产和价格变量的图形。 在 `Map()` 函数中使用匿名函数定义图形的一些参数，并遍历其他两个参数的列表。 如果觉得此处适合使用 for 循环，那么你是对的。 但是，由于 R 是一种函数式语言，因此我们需要了解函数式方法。
 
 ```r
 cadairytrain <- cadairydata[1:216, ]
@@ -992,30 +991,30 @@ Ylabs  <- list("Log CA Cotage Cheese Production, 1000s lb",
 Map(function(y, Ylabs){plot(cadairytrain$Time, y, xlab = "Time", ylab = Ylabs, type = "l")}, cadairytrain[, 4:7], Ylabs)
 ```
 
-运行代码时，会从此处显示的 R 设备输出生成一系列时序图。 时间轴以日期单位为单位，这对于时序绘图方法非常有用。
+运行此代码生成 R 设备输出的系列时序图，如下所示。 时间轴的单位为日期，这是时序图方法的一大优点。
 
-![加利福尼亚奶制品生产和价格数据的第一时序绘图。](./media/r-quickstart/unnamed-chunk-161.png)
+![加利福尼亚州乳品生产和价格数据的第一时序图。](./media/r-quickstart/unnamed-chunk-161.png)
 
-![加利福尼亚奶制品生产和价格数据的第二个时序图。](./media/r-quickstart/unnamed-chunk-162.png)
+![加利福尼亚州乳品生产和价格数据的第二时序图。](./media/r-quickstart/unnamed-chunk-162.png)
 
-![加利福尼亚奶制品生产和价格数据的第三个时序图。](./media/r-quickstart/unnamed-chunk-163.png).
+![加利福尼亚州乳品生产和价格数据的第三时序图。](./media/r-quickstart/unnamed-chunk-163.png).
 
-![加利福尼亚州牛奶生产和价格数据的第四个时序图](./media/r-quickstart/unnamed-chunk-164.png)
+![加利福尼亚州乳品生产和价格数据的第四时序图。](./media/r-quickstart/unnamed-chunk-164.png)
 
 ### <a name="a-trend-model"></a>趋势模型
 
-现在，我们已经创建了时序对象并查看了数据，接下来让我们开始为加利福尼亚州牛奶生产数据构建一个趋势模型。 我们可以使用时序回归。 从绘图中可以清楚地说，我们将需要更多的斜率和截距来准确地对定型数据中观察到的趋势进行建模。
+现在，我们已经创建了时序对象并查看了数据，接下来让我们开始构造加利福尼亚州牛奶生产数据的趋势模型。 我们可以使用时序回归。 从图中可以清晰地看出，我们需要不止一个斜率和截距来精确地为训练数据中观察到的趋势建模。
 
-考虑到少量的数据，我们将在 RStudio 中构建趋势模型，然后将生成的模型剪切并粘贴到机器学习 Studio (经典) 中。 RStudio 为此类型的交互式分析提供了交互式环境。
+考虑到数据规模较小，可以在 RStudio 中构建趋势模型，然后将生成的模型剪切并粘贴到机器学习工作室（经典版）。 RStudio 为此类型的交互式分析提供了交互式环境。
 
-第一次尝试时，我们将尝试使用多达三个的多项式回归。 对于这种类型的模型，有一个真正的危险。 最好是避免高阶术语。 `I()`函数会禁止对内容的解释 (按) 解释内容，并允许您在回归公式中编写字面解释的函数。
+在第一次尝试中，我们使用多达三次多项式回归。 存在过拟合这些类型的模型的实际危险。 最好避免使用高阶项。 `I()` 函数禁止解释内容（即“按原样”解释内容），并且允许在回归等式中编写按字面意思解释的函数。
 
 ```r
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^2) + I(Month.Count^3), data = cadairytrain)
 summary(milk.lm)
 ```
 
-此函数将生成以下输出。
+此函数生成以下输出。
 
 ```output
 ##
@@ -1029,10 +1028,10 @@ summary(milk.lm)
 ##
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
-## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
-## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 **_
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 _*_
 ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 _  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
@@ -1041,14 +1040,14 @@ summary(milk.lm)
 ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
 ```
 
-`Pr(>|t|)`在此输出中，从 P 值 () ，我们可以看到，方术语可能并不重要。 我们将使用 `update()` 函数来通过删除方框术语来修改此模型。
+从该输出中的 P 值 (`Pr(>|t|)`) 来看，平方项可能并不重要。 可使用 `update()` 函数通过删除平方项来修改此模型。
 
 ```r
 milk.lm <- update(milk.lm, . ~ . - I(Month.Count^2))
 summary(milk.lm)
 ```
 
-此函数将生成以下输出。
+此函数生成以下输出。
 
 ```output
 ##
@@ -1062,19 +1061,19 @@ summary(milk.lm)
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
-## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 **_
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0417 on 213 degrees of freedom
 ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
 ## F-statistic: 1.69e+03 on 2 and 213 DF,  p-value: <2e-16
 ```
 
-此输出看起来更好。 所有项都重要。 2e-16 值是默认值，不应过于严重。  
+此输出看起来更好。 所有项都重要。 2e-16 值是默认值，不必太关心。  
 
-在完好性测试中，创建加利福尼亚州乳品生产数据的带趋势曲线的时序图。 我们已在机器学习 Studio 中添加了以下代码 (经典) [执行 R 脚本][execute-r-script] 模型 (不 RStudio) 来创建模型并进行绘图。 下面的示例显示了结果。
+在完好性测试中，创建加利福尼亚州乳品生产数据的带趋势曲线的时序图。 我们在机器学习工作室（经典版）的[执行 R 脚本][execute-r-script]模型（而不是 RStudio）中添加了以下代码，用于创建模型及绘图。 下面的示例显示了结果。
 
 ```r
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
@@ -1083,22 +1082,22 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 ```
 
-![加利福尼亚用显示的趋势模型来模拟生产数据。](./media/r-quickstart/unnamed-chunk-18.png)
+![显示趋势模型的加利福尼亚州牛奶生产数据。](./media/r-quickstart/unnamed-chunk-18.png)
 
-从图上看来趋势模型很好地拟合了数据。 此外，似乎没有过度拟合的证据，如模型曲线中的奇数摆动。
+从图上看来趋势模型很好地拟合了数据。 而且，似乎并不存在过度拟合的证据，如模型曲线中的异常摆动。
 
 ### <a name="seasonal-model"></a>季节性模型
 
-有了趋势模型之后，我们需要继续深入并考虑季节效应。 我们将使用一年中的月份作为线性模型中的虚拟变量来捕获每月的影响。 在模型中引入因子变量时，不得计算截距。 如果不执行此操作，则公式会被指定，并且 R 将删除所需的因素之一，但保留 "截距" 一词。
+有了趋势模型之后，我们需要继续深入并考虑季节效应。 我们使用一年中的月份作为线性模型中的虚拟变量，用于捕获按月效应。 在模型中引入因子变量时，不得计算截距。 否则，会过多指定公式的参数，R 将删除一个所需因子，但保留截距项。
 
-由于我们有一个令人满意的趋势模型，因此我们可以使用 `update()` 函数向现有模型添加新术语。 更新公式中的为 -1 删除截距项。 此时在 RStudio 中继续运行：
+由于我们有令人满意的趋势模型，因此可以使用 `update()` 函数向现有模型添加新的项。 更新公式中的为 -1 删除截距项。 此时在 RStudio 中继续运行：
 
 ```r
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
 summary(milk.lm2)
 ```
 
-此函数将生成以下输出。
+此函数生成以下输出。
 
 ```output
 ##
@@ -1113,21 +1112,21 @@ summary(milk.lm2)
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
-## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
-## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
-## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
-## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
-## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
-## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
-## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
-## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
-## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
-## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
-## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
-## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 **_
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 _*_
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 _*_
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 _*_
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 _*_
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 _*_
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 _*_
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 _*_
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 _*_
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 _*_
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 _*_
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 _*_
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0263 on 202 degrees of freedom
 ## Multiple R-squared:     1,    Adjusted R-squared:     1
@@ -1136,7 +1135,7 @@ summary(milk.lm2)
 
 我们看到该模型不再具有截距项，并且有 12 个重要的月因子。 这正是我们想要看到的结果。
 
-让我们创建加利福尼亚州乳品生产数据的另一个时序图，以便了解季节性模型的运行情况。 我们已在机器学习 Studio 中添加了以下代码 (经典) [执行 R 脚本][execute-r-script] 来创建模型并创建绘图。
+让我们创建加利福尼亚州乳品生产数据的另一个时序图，以便了解季节性模型的运行情况。 我们在机器学习工作室（经典版）的[执行 R 脚本][execute-r-script]中添加了以下代码，用于创建模型及绘图。
 
 ```r
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
@@ -1145,11 +1144,11 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 ```
 
-在机器学习 Studio 中运行此代码 (经典) 生成此处显示的绘图。
+在机器学习工作室（经典版）中运行此代码生成的绘图如下所示。
 
-![加利福尼亚牛奶生产模型，其中包括季节性效应。](./media/r-quickstart/unnamed-chunk-20.png)
+![包含季节性效应的加利福尼亚州牛奶生产模型。](./media/r-quickstart/unnamed-chunk-20.png)
 
-此示例中显示的数据适合于这种情况。 趋势和季节性效应（月度变体）看起来合理。
+下例中显示的数据拟合相当鼓舞人心。 趋势和季节性效应（月度变体）看起来合理。
 
 作为模型的另一项检查，让我们看看残差。 以下代码从两个模型中计算预测值、计算季节性模型的残差，并绘制训练数据的残差图。
 
@@ -1163,13 +1162,13 @@ residuals <- cadairydata$Milk.Prod - predict2
 plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
 ```
 
-残留图形显示在此处。
+残差图如此处所示。
 
-![定型数据的季节性模型的残差。](./media/r-quickstart/unnamed-chunk-21.png)
+![训练数据的季节性模型的残差。](./media/r-quickstart/unnamed-chunk-21.png)
 
-这些残差看起来合理。 除了2008-2009 经济衰退的效果外，没有特定的结构，模型不特别适合这样做。
+这些残差看起来合理。 这些残差没有特定的结构，2008-2009 年经济衰退期的影响除外，我们的模型未能很好地解释这一影响。
 
-此示例中显示的图可用于检测残差中任何依赖于时间的模式。 计算和绘制使用的残差的显式方法会将时间段的剩余时间置于绘图上。 如果 `milk.lm$residuals` 已绘制，则绘图不会按时间顺序排列。
+此示例中所示的图形有助于检测残差中的任何时间依赖的模式。 我们使用的计算和绘制残差的显式方法在图中按时间顺序放置残差。 如果已绘制 `milk.lm$residuals`，则绘图不会按时间顺序排列。
 
 还可以使用 `plot.lm()` 生成一系列诊断图。
 
@@ -1178,23 +1177,23 @@ plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Sea
 plot(milk.lm2, ask = FALSE)
 ```
 
-此代码将生成一系列诊断图，如以下示例中所示。
+此代码生成一系列诊断图，如以下示例所示。
 
-![季节性模型的第一个诊断绘图。](./media/r-quickstart/unnamed-chunk-221.png)
+![季节性模型的第一个诊断图。](./media/r-quickstart/unnamed-chunk-221.png)
 
-![季节性模型的第二个诊断绘图。](./media/r-quickstart/unnamed-chunk-222.png)
+![季节性模型的第二个诊断图。](./media/r-quickstart/unnamed-chunk-222.png)
 
-![季节性模型的第三个诊断绘图。](./media/r-quickstart/unnamed-chunk-223.png)
+![季节性模型的第三个诊断图。](./media/r-quickstart/unnamed-chunk-223.png)
 
-![季节性模型的第四个诊断绘图。](./media/r-quickstart/unnamed-chunk-224.png)
+![季节性模型的第四个诊断图。](./media/r-quickstart/unnamed-chunk-224.png)
 
-这些图中标识了几个极具影响力的点，但是没有任何一个点引起高度关注。 此外，我们还可以从正常的 Q-Q 绘图中看到，残差通常分布在一起，这是线性模型的重要假设。
+这些图中标识了几个极具影响力的点，但是没有任何一个点引起高度关注。 此外，从 Normal Q-Q 图中可以看出，残差接近正态分布，这是线性模型的一个重要假设。
 
 ### <a name="forecasting-and-model-evaluation"></a>预测和模型评估
 
-完成我们的示例只需要执行一项操作。 我们需要计算预测值，并且计算预测值和实际数据的误差。 我们的预测针对的是 2013年 12 个月。 我们可以将此预测的错误度量值计算为不属于定型数据集的实际数据。 此外，可以比较 18 年的训练数据和 12 个月的测试数据的性能。
+完成本示例只剩一件事要做。 我们需要计算预测值，并且计算预测值和实际数据的误差。 我们的预测针对的是 2013年 12 个月。 我们可以计算该预测值与实际数据的误差，该实际数据不属于训练数据集的一部分。 此外，可以比较 18 年的训练数据和 12 个月的测试数据的性能。
 
-大量指标用于测量时序模型的性能。 在我们的示例中，我们将使用平方根 (RMS) 错误。 以下函数计算两个序列之间的 RMS 误差。
+大量指标用于测量时序模型的性能。 在我们的示例中将使用均方根 (RMS) 误差。 以下函数计算两个序列之间的 RMS 误差。
 
 ```r
 RMS.error <- function(series1, series2, is.log = TRUE, min.length = 2){
@@ -1242,9 +1241,9 @@ predict2  <- predict(milk.lm2, cadairydata)
 }
 ```
 
-与 `log.transform()` 我们在 "值转换" 一节中讨论的函数一样，此函数中有大量错误检查和异常恢复代码。 两者采用的原理是相同的。 在 `tryCatch()` 函数中包装的两个位置中完成操作。 首先，时间序列是指数化的，因为我们一直在使用这些值的日志。 其次，计算实际的 RMS 误差。
+和“值转换”一节中讨论的 `log.transform()` 函数一样，该函数也存在很多错误检查和异常恢复代码。 两者采用的原理是相同的。 在 `tryCatch()` 函数中包装的两个位置中完成操作。 首先，对时序取幂，因为我们在使用值的对数。 其次，计算实际的 RMS 误差。
 
-通过配备函数来度量 RMS 错误，让我们生成并输出一个包含 RMS 错误的数据帧。 我们将为趋势模型单独提供术语，并包含季节性因素的完整模型。 下面的代码使用我们构造的两种线性模型来执行该作业。
+配备一个函数来测量 RMS 误差，生成并输出包含 RMS 误差的数据框。 我们将单独为趋势模型包括项和具有季节性因子的完整模型包括项。 以下代码通过使用构造的两个线性模型完成此作业。
 
 ```r
 ## Compute the RMS error in a dataframe
@@ -1266,44 +1265,44 @@ RMS.df
 maml.mapOutputPort('RMS.df')
 ```
 
-运行此代码会生成在结果数据集输出端口上显示的输出。
+运行此代码在结果数据集输出端口生成此处显示的输出。
 
-![显示模型的 RMS 错误比较的屏幕截图。](./media/r-quickstart/fig26.png)
+![显示模型的 RMS 误差比较的屏幕截图。](./media/r-quickstart/fig26.png)
 
 从这些结果可以看出，向模型中添加季节性因子使 RMS 误差显著减少。 不出所料，训练数据的 RMS 误差略小于预测数据的误差。
 
 ## <a name="guide-to-rstudio-documentation"></a><a id="appendixa"></a>RStudio 指南文档
 
-RStudio 记录良好。 下面提供了 RStudio 文档中关键部分的链接，以帮助你入门。
+RStudio 随附了齐备的文档。 下面提供了 RStudio 文档中关键部分的链接，以帮助你入门。
 
-* **创建项目**：可以使用 RStudio 将 R 代码组织和管理到项目中。 有关详细信息，请参阅 [使用项目](https://support.rstudio.com/hc/articles/200526207-Using-Projects)。 按照这些说明进行操作，并为本文中的 R 代码示例创建一个项目。
-* **编辑和执行 r 代码**： RStudio 提供了一个用于编辑和执行 r 代码的集成环境。 有关详细信息，请参阅 [编辑和执行代码](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)。
-* **Debug**： RStudio 包含强大的调试功能。 有关这些功能的详细信息，请参阅 [RStudio 调试](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)。 有关断点故障排除功能的信息，请参阅[断点故障排除](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)。
+* **创建项目**：通过使用 RStudio 可以在项目中组织和管理 R 代码。 有关详细信息，请参阅[使用项目](https://support.rstudio.com/hc/articles/200526207-Using-Projects)。 按照文档中的说明进行操作，并为本文中的 R 代码示例创建项目。
+* **编辑和执行 R 代码**：RStudio 提供了一个集成环境，用于编辑和执行 R 代码。 有关详细信息，请参阅[编辑和执行代码](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)。
+* **调试**：RStudio 具有强大的调试功能。 有关这些功能的详细信息，请参阅[使用 RStudio 进行调试](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)。 有关断点故障排除功能的信息，请参阅[断点故障排除](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)。
 
 ## <a name="further-reading"></a><a id="appendixb"></a>延伸阅读
 
-此 R 编程教程介绍了将 R 语言与机器学习 Studio (经典) 结合使用所需的基础知识。 如果你不熟悉 R，CRAN 上提供了两个简介：
+本 R 编程教程介绍了在机器学习工作室（经典版）中使用 R 语言所需的基础知识。 如果不熟悉 R 语言，CRAN 上提供了两个简介：
 
 * 可以从 Emmanuel Paradis 撰写的 [R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)（面向初学者的 R 语言）入手。
-* [An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)（R 简介）（作者：W. N. Venables et al。
+* [An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)（R 简介）（作者：W. N. Venables 等人）更深入地介绍了 R 语言。
 
-有许多有关 R 的书籍可以帮助您入门：
+有许多关于 R 的书籍可以帮助你入门：
 
-* **R 编程的一种方式： Norman Matloff 的统计软件设计** 简介是对 R 编程的出色介绍。
-* Paul Teetor 的**r 手册**提供使用 r 的问题和解决方案方法。
+* Norman Matloff 撰写的 **Art of R Programming:Tour of Statistical Software Design**（R 编程的艺术：统计软件设计指导）对 R 编程做了很全面的介绍。
+* Paul Teetor 撰写的《R Cookbook》介绍了使用 R 时遇到的问题和解决方法。
 * Robert Kabacoff 撰写的 **R in Action**（R 实战）是另一本有用的简介书籍。 相伴的 [Quick R 网站](https://www.statmethods.net/)是一个很有用的资源。
-* **R inferno 》** 按多个节，这是一项令人惊奇的幽默书籍，处理在 R 中进行编程时可能遇到的许多棘手和困难的主题。可在 [R inferno 》](https://www.burns-stat.com/documents/books/the-r-inferno/)免费获取此书籍。
-* Hadley Wickham 的**高级 R**提供了深入探讨 R 中的高级主题。本书籍的联机版本在[高级](http://adv-r.had.co.nz/)版中免费提供。
-* 使用 R by Paul Cowpertwait 和 Andrew Metcalfe 的**介绍性**时序介绍了如何使用 r 进行时序分析。 还有更多的理论性文字提供了 R 示例。
+* Patrick Burns 撰写的《R Inferno》是一本非常幽默的书，书中介绍了如何应对 R 编程中可能遇到的许多棘手而困难的问题。可从 [The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/) 免费获取这本书。
+* Hadley Wickham 撰写的《Advanced R》提供了对 R 中高级主题的深入探讨。本书籍的在线版本在 [Advanced R](http://adv-r.had.co.nz/) 免费提供。
+* 由 Paul Cowpertwait 和 Andrew Metcalfe 所著的《Introductory Time Series with R》一书介绍了如何在时序分析中使用 R。 还有更多的理论性文字提供了 R 示例。
 
 下面是一些很好的 Internet 资源：
 
-* [CRAN 任务视图：时序分析](https://cran.r-project.org/web/views/TimeSeries.html) 具有 R 时序包的目录。 有关特定时序对象包的信息，请参阅该包的文档。
-* [R 简介： r](https://www.datacamp.com/courses/introduction-to-r) 是 DataCamp 提供的免费交互式课程，可以在浏览器中轻松地讲授视频课程和编码练习。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。
+* [CRAN 任务视图：时序分析](https://cran.r-project.org/web/views/TimeSeries.html) 具有 R 时序包的目录。 有关特定时序对象包的信息，请参阅此包的文档。
+* [R 导论](https://www.datacamp.com/courses/introduction-to-r)是 DataCamp 提供的一门免费交互式课程，通过浏览器呈现视频课程和编码练习来教授 R 知识。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。
 * DataMentor 提供的 [Learn R Programming, The Definitive Guide](https://www.datamentor.io/r-programming/)（学习 R 编程 - 权威指南）。
-* [R 编码员](https://r-coder.com/) 有详细的 r 教程和初学者的免费 r 课程。
-* 从 Clarkson 大学开始，王黑的[R 教程](https://www.cyclismo.org/tutorial/R/)是一个快速教程。
-* [用于提高数据技能的热门 r 语言资源](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html) 列出了超过60个 R 资源。
+* [R CODER](https://r-coder.com/) 包含面向初学者的详细 R 教程和免费 R 课程。
+* 由 Clarkson 大学的 Kelly Black 编写的 [R 教程](https://www.cyclismo.org/tutorial/R/)是一个快速教程。
+* [Top R language resources to improve your data skills](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)（用于改善数据技能的顶级 R 语言资源）中列出了 60 多个 R 资源。
 
 <!-- Module References -->
 [execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231346"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340506"
 ---
 # <a name="tutorial-mount-the-cluster"></a>教程：装载群集
 
@@ -20,6 +20,7 @@ ms.locfileid: "86231346"
 本教程介绍：
 
 > [!div class="checklist"]
+>
 > * 在面向客户端的 IP 地址范围内对客户端进行负载均衡的策略
 > * 如何基于面向客户端的 IP 地址和命名空间接合点构造装载路径
 > * 要在装载命令中使用哪些参数
@@ -108,6 +109,6 @@ IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在群
 
 装载客户端后，可以测试工作流并开始使用群集。
 
-如果需要将数据移到新的云核心文件管理器，请通过并行数据引入来利用缓存结构。 [将数据移到 vFXT 群集](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest)中介绍了一些策略。 （Avere vFXT for Azure 是基于云的产品，它使用的缓存技术非常类似于 Azure FXT Edge Filer。）
+如果需要将数据移到新的云核心文件管理器，请通过并行数据引入来利用缓存结构。 [将数据移到 vFXT 群集](../avere-vfxt/avere-vfxt-data-ingest.md)中介绍了一些策略。 （Avere vFXT for Azure 是基于云的产品，它使用的缓存技术非常类似于 Azure FXT Edge Filer。）
 
 如果需要排查任何硬件问题，请参阅[监视 Azure FXT Edge Filer 硬件状态](fxt-monitor.md)。

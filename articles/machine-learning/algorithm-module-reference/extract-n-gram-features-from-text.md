@@ -1,24 +1,24 @@
 ---
 title: “从文本中提取 N 元语法特征”模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“提取 N 元语法”模块抽取文本数据的特征。
+description: 了解如何使用 Azure 机器学习设计器中的 "提取 N 元语法" 模块来对文本数据进行特征。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 12/08/2019
+ms.openlocfilehash: 37a10d90fa0e277fbe45d9f1377e365cb3d42996
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907967"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861439"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>“从文本中提取 N 元语法特征”模块参考
 
-本文介绍 Azure 机器学习设计器中的模块。 使用“从文本中提取 N 元语法特征”模块抽取非结构化文本数据的特征。 
+本文介绍 Azure 机器学习设计器中的一个模块。 使用“从文本中提取 N 元语法特征”模块抽取非结构化文本数据的特征。 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>配置“从文本中提取 N 元语法特征”模块
 
@@ -28,7 +28,7 @@ ms.locfileid: "90907967"
 
 * [使用一组现有文本特征](#use-an-existing-n-gram-dictionary)抽取自由文本列的特征。
 
-* [对使用 N 元语法的模型进行评分或发布](#score-or-publish-a-model-that-uses-n-grams)。
+* [评分或部署](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint) 使用 n 元语法的模型。
 
 ### <a name="create-a-new-n-gram-dictionary"></a>创建新的 N 元语法字典
 
@@ -94,17 +94,23 @@ ms.locfileid: "90907967"
 
 1.  提交管道。
 
-### <a name="score-or-publish-a-model-that-uses-n-grams"></a>对使用 N 元语法的模型进行评分或发布
+### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>使用 n 元语法部署实时终结点的生成推理管道
 
-1.  将“从文本中提取 N 元语法特征”模块从训练数据流中复制到评分数据流。
+一个训练管道，其中包含从文本和 **评分模型** 中 **提取 N 元语法功能** 以对测试数据集进行预测，采用以下结构：
 
-1.  将来自训练数据流的“结果词汇”输出连接到评分数据流上的“输入词汇” 。
+:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="提取 N 语法定型管道示例" border="true":::
 
-1.  在评分工作流中，修改“从文本中提取 N 元语法特征”模块，并将“词汇模式”参数设置为“只读” 。 将所有其他内容保留原样。
+带圆圈的 "**从文本中提取 N 元语法" 功能** 的 **词汇模式** 是 "**创建**"，连接到 **评分模型** 模块的模块的 **词汇模式** 为 **ReadOnly**。
 
-1.  若要发布管道，请将“结果词汇”另存为数据集。
+成功提交上述定型管道后，可以将带圆圈的模块的输出注册为数据集。
 
-1.  在评分图中将已保存的数据集连接到“从文本中提取 N 元语法特征”模块。
+:::image type="content" source="./media/module/extract-n-gram-output-voc-register-dataset.png" alt-text="注册数据集" border="true":::
+
+然后，你可以创建实时推理管道。 创建推理管道后，需要手动调整推理管道，如下所示：
+
+:::image type="content" source="./media/module/extract-n-gram-inference-pipeline.png" alt-text="推理管道" border="true":::
+
+然后，提交推理管道并部署实时终结点。
 
 ## <a name="results"></a>结果
 

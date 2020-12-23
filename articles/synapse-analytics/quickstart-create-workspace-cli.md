@@ -5,16 +5,16 @@ services: synapse-analytics
 author: alehall
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 065e24c12e0750cd7a1f3ce2d4cad5c7ad4b95df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 46ab1df1b776bf8dc9d6d917e5394c3efeec0de4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260676"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659380"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Synapse 工作区
 
@@ -22,7 +22,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以在�
 
 本快速入门介绍如何使用 Azure CLI 创建 Synapse 工作区。
 
-如果没有 Azure 订阅，请[在开始之前创建一个免费帐户](https://azure.microsoft.com/free/)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,28 +32,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以在�
     > [!IMPORTANT]
     > Azure Synapse 工作区需要能够读取所选 ADLS Gen2 帐户以及向其写入内容。 此外，对于作为主存储帐户链接的任何存储帐户，在创建存储帐户时必须已启用“分层命名空间”，如[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account)页面上所述。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-the-azure-cli-locally"></a>在本地安装 Azure CLI
-
-如果选择在本地安装和使用 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
-如果在本地运行 Azure CLI，则必须登录并进行身份验证。 如果使用 Azure Cloud Shell，则不需执行此步骤。 若要登录到 Azure CLI，请在浏览器窗口中运行 `az login` 并进行身份验证：
-
-```azurecli
-az login
-```
-
-有关使用 Azure CLI 进行身份验证的详细信息，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
-
-## <a name="install-azure-synapse-extension-for-azure-cli"></a>安装适用于 Azure CLI 的 Azure Synapse 扩展
-
-```azurecli
-az extension add --name synapse
-```
-
-> [!WARNING]
-> 适用于 Azure CLI 的 Azure Synapse 扩展现为预览版状态。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Synapse 工作区
 

@@ -2,23 +2,23 @@
 title: 异常探测器环境变量
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/30/2020
-ms.author: aahi
-ms.openlocfilehash: 4a44df3f2108421c73c161d8f2df37330b9c2d14
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 5148114da7fcc654b1f0af431440ce74c7bc8d31
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85980203"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371777"
 ---
 ### <a name="create-an-environment-variable"></a>创建环境变量
 
 >[!NOTE]
-> 在 2019 年 7 月 1 日之后创建的非试用资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
+> 在 2019 年 7 月 1 日之后创建的非试用资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../../cognitive-services-custom-subdomains.md)。 
 
 从创建的资源使用密钥和终结点，创建两个用于身份验证的环境变量：
 

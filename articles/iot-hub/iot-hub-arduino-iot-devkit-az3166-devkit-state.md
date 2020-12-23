@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 8c43c8a0b9fdf30b5ce5ae6ecbf123b563099ff6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337936"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148782"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -28,7 +28,7 @@ ms.locfileid: "87337936"
 
 ## <a name="what-you-need"></a>需要什么
 
-- 遵照[入门指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)设置开发环境。
+- 遵照[入门指南](./iot-hub-arduino-iot-devkit-az3166-get-started.md)设置开发环境。
 
 - 在 GitBash 终端窗口（或其他 Git 命令行接口）中键入以下命令：
 
@@ -106,7 +106,7 @@ ms.locfileid: "87337936"
 ![示例测试过程](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> 可以在 Azure 门户中查看设备克隆的原始数据： iot 中心- \> iot 设备- \> *\<your device\>*  - \> 设备克隆。
+> 可以看见 Azure 门户中的设备孪生的原始数据：IoT 中心 -\> IoT 设备 -\> \<your device\> -\> 设备孪生。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -114,4 +114,4 @@ ms.locfileid: "87337936"
 - 将 MXChip IoT DevKit 设备连接到 Azure IoT 远程监视解决方案加速器。
 - 使用 Azure IoT 设备孪生函数来感应和控制 DevKit 的 RGB LED 颜色。
 
-下面是建议的下一步： [Azure IoT 远程监视解决方案加速器概述](https://docs.microsoft.com/azure/iot-suite/)
+下面是建议的下一步： [Azure IoT 远程监视解决方案加速器概述](/azure/iot-suite/)

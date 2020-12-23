@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91626473"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279224"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>教程：使用 Azure Front Door 和 Azure Web 应用程序防火墙 (WAF) 快速缩放和保护 Web 应用程序
 
@@ -36,10 +36,10 @@ ms.locfileid: "91626473"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 本教程中的说明使用 Azure CLI。 [查看本指南](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true)以开始使用 Azure CLI。
+- 本教程中的说明使用 Azure CLI。 [查看本指南](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest)以开始使用 Azure CLI。
 
   > [!TIP] 
-  > 快速且轻松地开始使用 Azure CLI 的方法是利用 [Azure Cloud Shell 中的 Bash](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
+  > 快速且轻松地开始使用 Azure CLI 的方法是利用 [Azure Cloud Shell 中的 Bash](../cloud-shell/quickstart.md)。
 
 - 确保将 `front-door` 扩展添加到 Azure CLI：
 
@@ -48,7 +48,7 @@ ms.locfileid: "91626473"
    ```
 
 > [!NOTE] 
-> 有关本教程中使用的命令的详细信息，请参阅 [适用于 Azure Front Door 的 Azure CLI 参考](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true)。
+> 有关本教程中使用的命令的详细信息，请参阅 [适用于 Azure Front Door 的 Azure CLI 参考](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest)。
 
 ## <a name="create-an-azure-front-door-resource"></a>创建 Azure Front Door 资源
 
@@ -62,7 +62,7 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 `--name`：Azure Front Door 资源的名称。
 
-`--resource-group`：要在其中放置此 Azure Front Door 资源的资源组。 若要详细了解资源组，请参阅[ Azure 中管理资源组](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)。
+`--resource-group`：要在其中放置此 Azure Front Door 资源的资源组。 若要详细了解资源组，请参阅[ Azure 中管理资源组](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
 在运行此命令时得到的响应中，查找密钥 `hostName`。 稍后的步骤中需要用到此值。 `hostName` 是所创建的 Azure Front Door 资源的 DNS 名称。
 
@@ -130,21 +130,21 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 Web 应用的自定义域名是客户用来引用应用程序的域名。 例如 www.contoso.com。 最初，此自定义域名指向引入 Azure Front Door 之前它运行的位置。 将 Azure Front Door 和 WAF 添加到应用程序前面之后，与该自定义域对应的 DNS 条目应该指向 Azure Front Door 资源。 你可以通过将 DNS 服务器中的条目重新映射到在创建 Azure Front Door 资源时记下的 Azure Front Door `hostName` 来进行此更改。
 
-更新 DNS 记录的具体步骤将取决于 DNS 服务提供商。 如果你使用 Azure DNS 来托管 DNS 名称，则可以参考文档以了解[更新 DNS 记录的步骤](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli)并指向 Azure Front Door `hostName`。 
+更新 DNS 记录的具体步骤将取决于 DNS 服务提供商。 如果你使用 Azure DNS 来托管 DNS 名称，则可以参考文档以了解[更新 DNS 记录的步骤](../dns/dns-operations-recordsets-cli.md)并指向 Azure Front Door `hostName`。 
 
-如果需要客户使用区域顶点（例如 contoso.com）访问网站，则需要注意一件重要的事情。 在这种情况下，必须使用 Azure DNS 及其[别名记录类型](https://docs.microsoft.com/azure/dns/dns-alias)来托管 DNS 名称。 
+如果需要客户使用区域顶点（例如 contoso.com）访问网站，则需要注意一件重要的事情。 在这种情况下，必须使用 Azure DNS 及其[别名记录类型](../dns/dns-alias.md)来托管 DNS 名称。 
 
-你还需要更新 Azure Front Door 配置，[向其添加此自定义域](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain)，以便它知道此映射。
+你还需要更新 Azure Front Door 配置，[向其添加此自定义域](./front-door-custom-domain.md)，以便它知道此映射。
 
-最后，如果你使用自定义域来访问 Web 应用程序，并且想要启用 HTTPS 协议， 则需要[在 Azure Front Door 中为自定义域设置证书](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)。 
+最后，如果你使用自定义域来访问 Web 应用程序，并且想要启用 HTTPS 协议， 则需要[在 Azure Front Door 中为自定义域设置证书](./front-door-custom-domain-https.md)。 
 
 ## <a name="lock-down-your-web-application"></a>锁定 Web 应用程序
 
-建议你确保只有 Azure Front Door 边缘可以与 Web 应用程序通信。 这样做将确保没有人可以绕过 Azure Front Door 保护直接访问应用程序。 若要实现此锁定，请参阅[如何实现将后端访问锁定为仅限于 Azure Front Door？](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)。
+建议你确保只有 Azure Front Door 边缘可以与 Web 应用程序通信。 这样做将确保没有人可以绕过 Azure Front Door 保护直接访问应用程序。 若要实现此锁定，请参阅[如何实现将后端访问锁定为仅限于 Azure Front Door？](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要本教程中使用的资源，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令删除资源组、Front Door 和 WAF 策略：
+如果不再需要本教程中使用的资源，请使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令删除资源组、Front Door 和 WAF 策略：
 
 ```azurecli-interactive
   az group delete \

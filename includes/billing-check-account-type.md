@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
 ms.openlocfilehash: 6787983421285122834479cb652fec52ee7bf72b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91360679"
 ---
 1. 登录 [Azure 门户](https://portal.azure.com)。

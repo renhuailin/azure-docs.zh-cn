@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521474"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SignalFx 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88521474"
 * 让用户可以使用其 Azure AD 帐户自动登录到 SignalFx；
 * 在一个位置（Azure 门户）管理帐户。
 
-若要详细了解有关 SaaS 应用程序与 Azure AD 的集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要详细了解有关 SaaS 应用程序与 Azure AD 的集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,8 +41,8 @@ ms.locfileid: "88521474"
 本教程将在测试环境中配置并测试 Azure AD SSO。
 
 * SignalFx 支持 **IDP** 发起的 SSO
-* SignalFx 支持**实时**用户预配
-* 配置 SignalFx 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* SignalFx 支持 **实时** 用户预配
+* 配置 SignalFx 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="step-1-add-the-signalfx-application-in-azure"></a>步骤 1：在 Azure 中添加 SignalFx 应用程序
 
@@ -67,8 +67,8 @@ ms.locfileid: "88521474"
 1. 在“名称”中，输入用户可以理解的且易于辨识的名称。 
 1. 勾选“在登录页上显示”。 
     * 此功能将在登录页中显示一个可让用户单击的自定义按钮。 
-    * 在“名称”中输入的信息将显示在该按钮上。  因此，请输入用户可以识别的**名称**。 
-    * 仅当对 SignalFx 应用程序使用自定义子域（例如 **yourcompanyname.signalfx.com**）时，此选项才起作用。 若要获取自定义子域，请联系 SignalFx 支持人员。 
+    * 在“名称”中输入的信息将显示在该按钮上。  因此，请输入用户可以识别的 **名称** 。 
+    * 仅当对 SignalFx 应用程序使用自定义子域（例如 **yourcompanyname.signalfx.com** ）时，此选项才起作用。 若要获取自定义子域，请联系 SignalFx 支持人员。 
 1. 复制“集成 ID”。  稍后的步骤需要用到此信息。 
 1. 将 SignalFx UI 保持打开状态。 
 
@@ -141,10 +141,10 @@ ms.locfileid: "88521474"
 ## <a name="step-6-complete-the-signalfx-sso-configuration"></a>步骤 6：完成 SignalFx SSO 配置 
 
 1. 打开上一个选项卡，返回到 SignalFx UI 查看当前的 Azure Active Directory 集成页。 
-1. 在“证书(Base64)”旁边，单击“上传文件”，然后找到前面从 Azure 门户下载的 **Base64 编码证书**文件。  
+1. 在“证书(Base64)”旁边，单击“上传文件”，然后找到前面从 Azure 门户下载的 **Base64 编码证书** 文件。  
 1. 在“Azure AD 标识符”旁边，粘贴前面从 Azure 门户复制的“Azure AD 标识符”值。   
 1. 在“联合元数据 URL”旁边，粘贴前面从 Azure 门户复制的“应用联合元数据 URL”值。   
-1. 单击“ **保存**”。
+1. 单击“ **保存** ”。
 
 ## <a name="step-7-test-sso"></a>步骤 7：测试 SSO
 
@@ -156,25 +156,25 @@ ms.locfileid: "88521474"
 
 * 当新的测试用户首次登录时，Azure 会强制要求更改密码。 如果出现这种情况，SSO 登录过程将不会完成；测试用户会被引导到 Azure 门户。 若要进行故障排除，测试用户应更改其密码，然后导航到 SignalFx 登录页或访问面板并重试。
     * 在访问面板中单击“SignalFx”磁贴时，应会自动登录到 SignalFx。 
-        * 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+        * 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 * 可以通过访问面板或已分配到组织的自定义登录页访问 SignalFx 应用程序。 测试用户应从上述任一位置开始测试集成。
-    * 测试用户可以使用前面在此过程中为 **b.simon@contoso.com** 创建的凭据。
+    * 测试用户可以使用在此过程的前面部分为 b.simon\@contoso.com 创建的凭据。
 
 ### <a name="first-time-logins"></a>首次登录
 
 * 当某个用户首次通过 SAML SSO 登录到 SignalFx 时，该用户会收到一封包含链接的 SignalFx 电子邮件。 该用户必须单击此链接才能完成身份验证。 此电子邮件验证仅在用户首次登录时才会发生。 
 
-* SignalFx 支持**即时**用户创建，这意味着，如果 SignalFx 中不存在某个用户，则首次尝试登录时会创建该用户的帐户。
+* SignalFx 支持 **即时** 用户创建，这意味着，如果 SignalFx 中不存在某个用户，则首次尝试登录时会创建该用户的帐户。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
 - [尝试结合使用 SignalFx 和 Azure AD](https://aad.portal.azure.com/)

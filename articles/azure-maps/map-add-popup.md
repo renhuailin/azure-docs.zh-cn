@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: a67fad5d0980730eb73f4219f12eaf3a7b9ec7dc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 903574a8c8696f10d9903a685bab8d12b3e6395f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310469"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891030"
 ---
 # <a name="add-a-popup-to-the-map"></a>向地图添加弹出窗口
 
@@ -22,7 +22,7 @@ ms.locfileid: "91310469"
 
 ## <a name="understand-the-code"></a>了解代码
 
-下面的代码使用符号层向地图添加一个点功能，该功能具有 `name` 和 `description` 属性。 创建了 [Popup 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) 的实例，但未将其显示出来。 鼠标事件会添加到符号层，以触发打开和关闭弹出窗口。 悬停标记符号时，将 `position` 用标记的位置更新 popup 的属性，并 `content` 用一些 HTML 来更新选项，这些 HTML 用于包装  `name` `description` 要悬停的点功能的和属性。 然后，使用其功能在地图上显示弹出窗口 `open` 。
+下面的代码使用符号层向地图添加一个点功能，该功能具有 `name` 和 `description` 属性。 创建了 [Popup 类](/javascript/api/azure-maps-control/atlas.popup) 的实例，但未将其显示出来。 鼠标事件会添加到符号层，以触发打开和关闭弹出窗口。 悬停标记符号时，将 `position` 用标记的位置更新 popup 的属性，并 `content` 用一些 HTML 来更新选项，这些 HTML 用于包装  `name` `description` 要悬停的点功能的和属性。 然后，使用其功能在地图上显示弹出窗口 `open` 。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -279,13 +279,13 @@ var popup = new atlas.Popup({
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Popup](/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+> [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 > [!div class="nextstepaction"]
-> [PopupTemplate](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
+> [PopupTemplate](/javascript/api/azure-maps-control/atlas.popuptemplate)
 
 有关完整代码示例，请参阅以下精彩文章：
 

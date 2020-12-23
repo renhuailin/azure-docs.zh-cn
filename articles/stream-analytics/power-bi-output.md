@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822992"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129773"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>从 Azure 流分析 Power BI 输出
 
@@ -51,7 +51,7 @@ Power BI 使用先入先出 (FIFO) 保留策略。 数据将收集在表中，�
 
 如果输出架构更改，Azure 流分析会在运行时动态更新数据模型。 列名称更改、列类型更改，以及添加或删除列，这些都会进行跟踪。
 
-此表介绍了在不存在 Power BI 数据集和表的情况下，如何将数据类型从[流分析数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)转换为 Power BI 的[实体数据模型 (EDM) 类型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)。
+此表介绍了在不存在 Power BI 数据集和表的情况下，如何将数据类型从[流分析数据类型](/stream-analytics-query/data-types-azure-stream-analytics)转换为 Power BI 的[实体数据模型 (EDM) 类型](/dotnet/framework/data/adonet/entity-data-model)。
 
 从流分析 | 到 Power BI
 -----|-----
@@ -76,7 +76,7 @@ Datetime | 字符串 | 字符串 |  Datetime | 字符串
 
 ## <a name="output-batch-size"></a>输出批大小
 
-有关输出批大小，请参阅 [Power BI REST API 限制](https://msdn.microsoft.com/library/dn950053.aspx)。
+有关输出批大小，请参阅 [Power BI REST API 限制](/power-bi/developer/automation/api-rest-api-limitations)。
 
 ## <a name="next-steps"></a>后续步骤
 

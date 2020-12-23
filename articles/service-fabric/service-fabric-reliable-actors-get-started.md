@@ -1,17 +1,15 @@
 ---
 title: 在 Azure Service Fabric 上创建基于执行组件的服务
 description: 了解如何使用 Service Fabric Reliable Actors 在 C# 中创建、调试和部署第一个基于执行组件的服务。
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743754"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573455"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
@@ -108,7 +106,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet 包及其所有依赖项都安装在 ActorClient 项目中。
 
-5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击 " **依赖关系** "，然后单击 " **添加项目引用 ...**"。 如果尚未选择 ") "，请选择 " **项目" > 解决方案** (，然后勾选 **HelloWorld**旁边的复选框。  单击 **“确定”** 。
+5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击“依赖项”，然后单击“添加项目引用...”。选择“项目”>“解决方案”（如果尚未选择），然后勾选“HelloWorld.Interfaces”旁边的复选框。  单击 **“确定”** 。
     
     ![“添加引用”对话框][7]
 

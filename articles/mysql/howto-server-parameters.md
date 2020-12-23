@@ -1,24 +1,24 @@
 ---
 title: 配置服务器参数 - Azure 门户 - Azure Database for MySQL
 description: 本文介绍如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置 MySQL 服务器参数。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: c28f0edafd72794a60ef577fc3177e4436157950
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 363be8b34f230b812bc24276e1f3925faf0cdc1c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631471"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540835"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MySQL 中配置服务器参数
 
 用于 MySQL 的 Azure 数据库支持配置某些服务器参数。 本文介绍如何使用 Azure 门户配置这些参数。 并非所有服务器参数都可调整。
 
 >[!Note]
-> 可以在服务器级别全局更新服务器参数，使用 [Azure CLI](./howto-configure-server-parameters-using-cli.md)、 [PowerShell](./howto-configure-server-parameters-using-powershell.md)或 [Azure 门户](./howto-server-parameters.md)。
+> 可在服务器级别全局更新服务器参数，方式是使用 [Azure CLI](./howto-configure-server-parameters-using-cli.md)、[PowerShell](./howto-configure-server-parameters-using-powershell.md) 或 [Azure 门户](./howto-server-parameters.md)。
 
 ## <a name="configure-server-parameters"></a>配置服务器参数
 
@@ -26,11 +26,11 @@ ms.locfileid: "91631471"
 2. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MySQL 服务器的“服务器参数”页。
 :::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Azure 门户中的服务器参数页":::
 3. 定位需要调整的任何设置。 查看“说明”列，了解用途和允许的值。
-:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Azure 门户中的服务器参数页":::
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="枚举下拉按钮":::
 4. 单击“保存”，保存更改。
-:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Azure 门户中的服务器参数页":::
-5. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。
-:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Azure 门户中的服务器参数页":::
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="保存或放弃更改":::
+5. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。 
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="全部重置为默认设置":::
 
 ## <a name="setting-parameters-not-listed"></a>设置参数未列出
 
@@ -72,7 +72,7 @@ SELECT name FROM mysql.time_zone_name;
 
 可以从 Azure 门户中的“服务器参数”页设置全局级时区。 下面将全局时区值设置为“美国/太平洋”。
 
-:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Azure 门户中的服务器参数页":::
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="设置时区参数":::
 
 ### <a name="setting-the-session-level-time-zone"></a>设置会话级时区
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6dda20487caf6fe3ba49578cfdc0b65434a8dfa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88524525"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520551"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Splashtop 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88524525"
 * 让用户使用其 Azure AD 帐户自动登录到 Splashtop。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88524525"
 
 * Splashtop 支持 **SP** 发起的 SSO
 
-* 配置 Splashtop 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Splashtop 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-splashtop-from-the-gallery"></a>从库中添加 Splashtop
 
@@ -51,7 +51,7 @@ ms.locfileid: "88524525"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Splashtop**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Splashtop** 。 
 1. 在结果面板中选择“Splashtop”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -82,9 +82,9 @@ ms.locfileid: "88524525"
 
     在“登录 URL”文本框中，键入 URL：  `https://my.splashtop.com/login/sso`
 
-1. Splashtop 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 映射到 **user.userprincipalname**。 TicketManager 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。 
+1. Splashtop 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 映射到 **user.userprincipalname** 。 TicketManager 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。 
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上。    
 
@@ -129,27 +129,29 @@ ms.locfileid: "88524525"
 在本部分，需要从 [Splashtop Web 门户](https://my.splashtop.com/login)申请新的 SSO 方法。
 1. 在 Splashtop Web 门户中，转到“帐户信息” / “团队”选项卡，向下滚动并找到“单一登录”部分。    然后单击“申请新的 SSO 方法”。 
 
-    ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
+    ![显示“单一登录”页的屏幕截图，可在其中选择“申请新的 SSO 方法”。](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
-1. 在申请窗口中指定 **SSO 名称**， 例如“新 Azure”。选择“Azure”作为 IDP 类型，插入从 Azure 门户上的 Splashtop 应用程序复制的“登录 URL”和“Azure AD 标识符”。   
+1. 在申请窗口中指定 **SSO 名称** ， 例如“新 Azure”。选择“Azure”作为 IDP 类型，插入从 Azure 门户上的 Splashtop 应用程序复制的“登录 URL”和“Azure AD 标识符”。   
 
-    ![image](media/splashtop-tutorial/azure-sso-1.png)
+    ![显示“申请 SSO 方法”页的屏幕截图，可在其中输入名称和其他信息。](media/splashtop-tutorial/azure-sso-1.png)
 
 1. 对于证书信息，请右键单击从 Azure 门户上的 Splashtop 应用程序下载的证书文件，使用记事本对其进行编辑，然后复制内容并将其粘贴到“下载证书(Base64)”字段中。 
 
-    ![插图](media/splashtop-tutorial/cert-1.png) ![插图](media/splashtop-tutorial/cert-2.png) ![插图](media/splashtop-tutorial/azure-sso-2.png)
+    ![显示选择了证书文件并使用记事本打开该文件的屏幕截图。](media/splashtop-tutorial/cert-1.png)
+    ![显示证书文件的内容的屏幕截图。](media/splashtop-tutorial/cert-2.png)
+    ![显示“下载证书”文本框的屏幕截图。](media/splashtop-tutorial/azure-sso-2.png)
 
-1. 就这么简单！ 单击“保存”，然后 Splashtop SSO 验证团队将就验证信息事宜与你取得联系，并激活该 SSO 方法。 
+1. 就这么简单！ 单击“保存”，然后 Splashtop SSO 验证团队将就验证信息事宜与你取得联系，并激活该 SSO 方法。
 
 ### <a name="create-splashtop-test-user"></a>创建 Splashtop 测试用户
 
-1. 激活 SSO 方法后，请检查新建的 SSO 方法，并在“单一登录”部分启用该方法。 
+1. 激活 SSO 方法后，请检查新建的 SSO 方法，并在“单一登录”部分启用该方法。
 
-    ![image](media/splashtop-tutorial/enable.png)
+    ![显示“单一登录”页的屏幕截图，可在其中启用新方法。](media/splashtop-tutorial/enable.png)
 
 1. 使用新建的 SSO 方法邀请测试用户（例如 `B.Simon@contoso.com`）加入 Splashtop 团队。
 
-    ![image](media/splashtop-tutorial/invite.png)
+    ![显示“邀请用户”页的屏幕截图，可在其中选择新方法。](media/splashtop-tutorial/invite.png)
 
 1. 还可以将现有的 Splashtop 帐户更改为 SSO 帐户，具体请参阅[说明](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-)。
 
@@ -159,18 +161,18 @@ ms.locfileid: "88524525"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Splashtop”磁贴时，应会自动登录到设置了 SSO 的 Splashtop。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Splashtop”磁贴时，应会自动登录到设置了 SSO 的 Splashtop。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Splashtop](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 Splashtop](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用高级可见性和控制保护 Splashtop](/cloud-app-security/proxy-intro-aad)

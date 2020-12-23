@@ -8,16 +8,16 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6b39c1d6fe2e84055e7c94dde076514d04a24f36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992142"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445211"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>托管 HSM 本地 RBAC 内置角色
 
-托管 HSM 本地 RBAC 具有多个内置角色，可将这些角色分配给用户、服务主体、组和托管标识。 若要允许主体执行某一操作，需要为其分配一个角色，该角色授予其执行该操作的权限。 通过这些角色和操作，你只能管理数据平面操作的权限。 若要管理托管 HSM 资源的控制平面权限（如创建新的托管 HSM 或更新、移动、删除现有的 HSM），必须使用 [Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)。
+托管 HSM 本地 RBAC 具有多个内置角色，可将这些角色分配给用户、服务主体、组和托管标识。 若要允许主体执行某一操作，需要为其分配一个角色，该角色授予其执行该操作的权限。 通过这些角色和操作，你只能管理数据平面操作的权限。 若要管理托管 HSM 资源的控制平面权限（如创建新的托管 HSM 或更新、移动、删除现有的 HSM），必须使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ## <a name="built-in-roles"></a>内置角色
 
@@ -77,5 +77,5 @@ ms.locfileid: "90992142"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 的概述。
+- 请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 的概述。
 - 请参阅有关[托管 HSM 角色管理](role-management.md)的教程

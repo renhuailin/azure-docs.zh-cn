@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79d677caf0c57fb36d211333b28be0eaa6528948
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a151d4ce5a2f9860c3b7919496a2edd25cc58ede
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044118"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123619"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>使用 Visual Studio 监视和管理流分析作业
 
@@ -41,11 +41,9 @@ ms.locfileid: "86044118"
 
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请参阅[ Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。 
+如需进一步的帮助，请参阅[ Azure 流分析的 Microsoft 问答问题页面](/answers/topics/azure-stream-analytics.html)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [使用 Visual Studio 创建 Azure 流分析作业](stream-analytics-quick-create-vs.md)
-* [安装针对 Visual Studio 的 Azure 流分析工具](stream-analytics-tools-for-visual-studio-install.md) 
-
-
+* [安装针对 Visual Studio 的 Azure 流分析工具](stream-analytics-tools-for-visual-studio-install.md)

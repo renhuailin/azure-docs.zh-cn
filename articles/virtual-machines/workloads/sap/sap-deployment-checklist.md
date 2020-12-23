@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650691"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500931"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -60,8 +61,8 @@ ms.locfileid: "89650691"
     - 在 Azure 上的 Windows、SLES 和 RHEL 来宾操作系统上支持使用适用于 SAP 中心服务的多 SID 群集配置。 请记住，群发 radius 可能会增加您在此类多 SID 群集上放置的 ASCS/SCS。 可以在以下文章中找到各个来宾操作系统方案的文档：
         - [使用 Azure 上的 Windows Server 故障转移群集和共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [在 Azure 上使用 Windows Server 故障转移群集和文件共享实现 SAP ASCS/SCS 实例的多 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
-        - [适用于 SAP 应用程序的 Azure SUSE Linux Enterprise Server Vm 上的 SAP NetWeaver 高可用性多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-        - [适用于 SAP 应用程序的 Azure Red Hat Enterprise Linux Vm 上的 SAP NetWeaver 高可用性多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+        - [适用于 SAP 应用程序的 Azure SUSE Linux Enterprise Server Vm 上的 SAP NetWeaver 高可用性多 SID 指南](./high-availability-guide-suse-multi-sid.md)
+        - [适用于 SAP 应用程序的 Azure Red Hat Enterprise Linux Vm 上的 SAP NetWeaver 高可用性多 SID 指南](./high-availability-guide-rhel-multi-sid.md)
     - 高可用性和灾难恢复体系结构。
         - 根据 RTO 和 RPO，定义高可用性和灾难恢复体系结构的外观。
         - 若要在区域中实现高可用性，请检查所需的 DBMS 在 Azure 中提供的功能。 大多数 DBMS 包提供同步热备用的同步方法，我们建议将其用于生产系统。 还要查看不同数据库的 SAP 相关文档，从 [Azure 虚拟机 DBMS 部署适用于 sap 工作负荷](./dbms_guide_general.md) 和相关文档的注意事项开始。
@@ -109,7 +110,7 @@ ms.locfileid: "89650691"
            -  [Azure 中 Windows 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的 *最大非缓存磁盘吞吐量* 。
            -  [Azure 中 Linux 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的 *最大非缓存磁盘吞吐量* 。
    2. 存储。
-        - 查看文档 [Azure 存储类型的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
+        - 查看文档 [Azure 存储类型的 SAP 工作负荷](./planning-guide-storage.md)
         - 至少，将 [Azure 标准 SSD 存储](../../disks-types.md#standard-ssd) 用于代表 SAP 应用程序层的 vm，并用于部署不区分性能的 dbms。
         - 通常，我们不建议使用 [Azure 标准 HDD 磁盘](../../disks-types.md#standard-hdd)。
         - 对远程性能敏感的任何 DBMS Vm 使用 [Azure 高级存储](../../disks-types.md#premium-ssd) 。
@@ -127,7 +128,7 @@ ms.locfileid: "89650691"
         - 评估和测试 SAP 应用程序层和 SAP DBMS 层之间的数据路径。
             -  不支持将 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/) 放置在基于 sap NetWeaver、Hybris 或 S/4HANA 的 sap 应用程序和 DBMS 层之间的通信路径中。
             -  不支持在不对等互连的不同 Azure 虚拟网络中放置 SAP 应用程序层和 SAP DBMS。
-            -  你可以使用 [应用程序安全组和网络安全组规则](../../../virtual-network/security-overview.md) 来定义 sap 应用程序层和 sap DBMS 层之间的路由。
+            -  你可以使用 [应用程序安全组和网络安全组规则](../../../virtual-network/network-security-groups-overview.md) 来定义 sap 应用程序层和 sap DBMS 层之间的路由。
         - 确保 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) 已在 sap 应用程序层和 sap DBMS 层中使用的 vm 上启用。 注意，需要不同的 OS 级别来支持 Azure 中的加速网络：
             - Windows Server 2012 R2 或更高版本。
             - SUSE Linux 12 SP3 或更高版本。
@@ -135,10 +136,10 @@ ms.locfileid: "89650691"
             - Oracle Linux 7.5。 如果使用的是 RHCKL 内核，则需要 release 3.10.0-862.13.1. el7。 如果使用的是 Oracle UEK 内核，则需要版本5。
         - 根据 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，测试和评估 Sap 应用程序层 vm 与 DBMS vm 之间的网络延迟。 根据 [SAP 支持说明 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的网络延迟指南来评估结果。 网络延迟应为适中或良好的范围。 异常适用于 Vm 与 HANA 大型实例单元之间的流量，如 [本文](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中所述。
         - 请确保将 ILB 部署设置为使用直接服务器返回。 当 Azure Ilb 用于 DBMS 层上的高可用性配置时，此设置将减少延迟。
-        - 如果要将 Azure 负载均衡器与 Linux 来宾操作系统一起使用，请检查 Linux 网络参数 **tcp_timestamps** 是否设置为 **0**。 此建议与较旧版本 [SAP 说明 #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建议冲突。 现已更新 SAP 说明，指出需要将此参数设置为 **0** 才能使用 Azure 负载均衡器。
+        - 如果要将 Azure 负载均衡器与 Linux 来宾操作系统一起使用，请检查 Linux 网络参数 **net.ipv4.tcp_timestamps** 是否已设置为 **0**。 此建议与较旧版本 [SAP 说明 #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建议冲突。 现已更新 SAP 说明，指出需要将此参数设置为 **0** 才能使用 Azure 负载均衡器。
         - 请考虑使用 [Azure 邻近性放置组](../../linux/co-location.md) 来获得最佳网络延迟。 有关详细信息，请参阅 [适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组](sap-proximity-placement-scenarios.md)。
    4. 高可用性和灾难恢复部署。
-        - 如果在不定义特定 Azure 可用性区域的情况下部署 SAP 应用程序层，请确保运行 SAP 对话框实例的所有 Vm 或单个 SAP 系统的中间件实例都部署在 [可用性集中](../../windows/manage-availability.md)。
+        - 如果在不定义特定 Azure 可用性区域的情况下部署 SAP 应用程序层，请确保运行 SAP 对话框实例的所有 Vm 或单个 SAP 系统的中间件实例都部署在 [可用性集中](../../manage-availability.md)。
         - 如果对于 SAP 中心服务和 DBMS 不需要高可用性，则可以将这些 Vm 部署到与 SAP 应用程序层相同的可用性集。
         - 如果使用被动复制来保护 SAP 中心服务和 DBMS 层的高可用性，请将 SAP 中心服务的两个节点放在一个单独的可用性集中，将两个 DBMS 节点置于另一个可用性集中。
         - 如果将部署到 Azure 可用性区域，则无法使用可用性集。 但你确实需要确保将主动和被动中心服务节点部署到两个不同的可用性区域中。 使用在其之间具有最低延迟的可用性区域。
@@ -161,7 +162,7 @@ ms.locfileid: "89650691"
             -   [SAP 支持说明 #2753418-由于计时器回退，潜在的性能下降](https://launchpad.support.sap.com/#/notes/2753418)
             -   [SAP 支持说明 #2791572-由于 Azure 中的 Hyper-v 缺少 VDSO 支持而导致性能下降](https://launchpad.support.sap.com/#/notes/2791572)
             -   [SAP 支持说明 #2382421 优化 HANA 和操作系统级别的网络配置](https://launchpad.support.sap.com/#/notes/2382421)
-            -   [SAP 支持说明 #2694118-Red Hat Enterprise Linux Azure 上的 HA 外接程序](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP 支持说明 #2694118-Red Hat Enterprise Linux Azure 上的 HA Add-On](https://launchpad.support.sap.com/#/notes/2694118)
             -   [SAP 支持说明 #1984787-SUSE LINUX Enterprise Server 12：安装说明](https://launchpad.support.sap.com/#/notes/1984787)
             -   [SAP 支持说明 #2002167 Red Hat Enterprise Linux 7、windows：安装和升级](https://launchpad.support.sap.com/#/notes/0002002167)
             -   [SAP support note #2292690 - SAP HANA DB: Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690)（SAP 支持说明 #2292690 - SAP HANA DB：RHEL 7 的建议 OS 设置）
@@ -179,7 +180,7 @@ ms.locfileid: "89650691"
    4. 测试跨区域 DR 功能和体系结构。
 1. 安全检查。
    1.  (Azure RBAC) 体系结构，测试 Azure 基于角色的访问控制的有效性。 目标是分离并限制不同团队的访问权限和权限。 例如，SAP Basis 团队成员应能够部署 Vm，并将 Azure 存储中的磁盘分配到指定的 Azure 虚拟网络。 但 SAP Basis 团队不应能够创建自己的虚拟网络或更改现有虚拟网络的设置。 网络团队的成员不应能够将 Vm 部署到运行 SAP 应用程序和 DBMS Vm 的虚拟网络中。 此团队成员也不应更改 Vm 的属性，甚至可以删除 Vm 或磁盘。  
-   1.  验证 [网络安全组和 ASC](../../../virtual-network/security-overview.md) 规则按预期方式工作并防护受保护的资源。
+   1.  验证 [网络安全组和 ASC](../../../virtual-network/network-security-groups-overview.md) 规则按预期方式工作并防护受保护的资源。
    1.  确保所有需要加密的资源都已加密。 定义和实施用于备份证书的进程，存储和访问这些证书，并还原已加密的实体。
    1.  在可能的情况下，使用适用于 OS 磁盘的 [Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) 。
    1.  请确保不使用太多的加密层。 在某些情况下，将 Azure 磁盘加密与 DBMS 透明数据加密的一种方法一起使用可以保护同一服务器上的不同磁盘或组件，这一点很有帮助。  例如，在 SAP DBMS 服务器上，Azure 磁盘加密 (ADE) 可在操作系统启动磁盘 (上启用。如果操作系统支持 ADE) ，并且 DBMS 数据暂留文件 (不使用这些数据磁盘) ，则可以启用该功能。  例如，在保存 DBMS TDE 加密密钥的磁盘上使用 ADE。
@@ -242,8 +243,8 @@ ms.locfileid: "89650691"
     - Azure 高级存储用于滞后于延迟的磁盘，或者需要 [99.9% 的单 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) 。
     - Azure 写入加速器已正确部署。
         - 请确保在需要写入加速器的磁盘上正确生成了 Vm、存储空间或条带集内的。
-        - 检查 [Linux 上的软件 RAID 配置](../../linux/configure-raid.md)。
-        - [在 Azure 中的 Linux vm 上检查 LVM 的配置](../../linux/configure-lvm.md)。
+        - 检查 [Linux 上的软件 RAID 配置](/previous-versions/azure/virtual-machines/linux/configure-raid)。
+        - [在 Azure 中的 Linux vm 上检查 LVM 的配置](/previous-versions/azure/virtual-machines/linux/configure-lvm)。
     - [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/) 专门用于。
     - Vm 已部署到正确的可用性集，并可用性区域。
     - 在 SAP 应用程序层和 SAP DBMS 层中使用的 Vm 上启用[Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。

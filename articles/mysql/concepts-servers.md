@@ -1,17 +1,17 @@
 ---
 title: 服务器概念-Azure Database for MySQL
 description: 本主题提供使用 Azure Database for MySQL 服务器的注意事项和指南。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5477aa0c4eb2a66af816b287a8b6d7da8a53952f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275347"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534885"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器概念
 
@@ -32,7 +32,7 @@ Azure Database for MySQL 服务器：
 - 提供应用于其数据库的管理策略的作用域：登录名、防火墙、用户、角色、配置等。
 - 在多个版本内可用。 有关详细信息，请参阅[支持的 Azure Database for MySQL 数据库版本](./concepts-supported-versions.md)。
 
-在 Azure Database for MySQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，也可以选择创建多个数据库来共享资源。 按服务器根据定价层、vCore 和存储 (GB) 的配置采用结构化定价。 有关详细信息，请参阅[定价层](./concepts-service-tiers.md)。
+在 Azure Database for MySQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，也可以选择创建多个数据库来共享资源。 按服务器根据定价层、vCore 和存储 (GB) 的配置采用结构化定价。 有关详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>如何连接到 Azure Database for MySQL 服务器并进行身份验证？
 
@@ -67,5 +67,5 @@ Azure Database for MySQL 使你能够在未使用时 **停止** 服务器，并�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关该服务的概述，请参阅 [Azure Database for MySQL 概述](./overview.md)
-- 有关基于服务层级的具体资源配额和限制的信息，请参阅[服务层级](./concepts-service-tiers.md)
+- 有关基于 **定价层** 的具体资源配额和限制的信息，请参阅 [定价](./concepts-pricing-tiers.md)层
 - 有关连接到服务的信息，请参阅 [Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)。

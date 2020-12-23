@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, automl
 ms.date: 05/28/2020
-ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756545"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359623"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自动化机器学习中的特征化
 
@@ -64,11 +64,11 @@ ms.locfileid: "91756545"
 
 |特征化步骤| 说明 |
 | ------------- | ------------- |
-|删除高基数或者无差异的特征* |从训练集和验证集中删除这些特征。 适用于所有值都缺失的特征、所有行使用同一值的特征，或者包含高基数（例如哈希、ID 或 GUID）的特征。|
-|插补缺少的值* |对于数字特征，将在列中插补平均值。<br/><br/>对于分类特征，将插补最常用值。|
-|生成其他特征* |对于日期时间特征：年、月、日、星期、年日期、季、年周、小时、分钟、秒。<br><br> *对于预测任务，* 将创建这些其他日期时间功能： ISO 年、半半年、日历月份作为字符串、周、每周的某一天、每年的第几天、每年的第几天、上午/下午 (0 如果小时在中午 (12 PM) ，则 (为) <br/><br/>对于文本特征：基于单元语法、双元语法和三元语法的字词频率。 详细了解[如何通过 BERT 执行此操作](#bert-integration)。|
-|转换和编码*|将唯一值较少的数字特征转换为分类特征。<br/><br/>将为低基数分类特征使用 One-hot 编码。 将为高基数分类特征使用 One-hot-hash 编码。|
-|单词嵌入|文本特征化器使用预先训练的模型将文本标记的矢量转换为句型向量。 每个单词在文档中的嵌入矢量与其余矢量聚合在一起，以生成文档特征矢量。|
+|**删除高基数或无差异功能** _ |从训练集和验证集中删除这些特征。 适用于所有值都缺失的特征、所有行使用同一值的特征，或者包含高基数（例如哈希、ID 或 GUID）的特征。|
+|_*归结缺失值**_ |对于数字特征，将在列中插补平均值。<br/><br/>对于分类特征，将插补最常用值。|
+|_*生成附加功能**_ |对于日期时间特征：年、月、日、星期、年日期、季、年周、小时、分钟、秒。<br><br> _For 预测任务，则将创建这些其他日期时间功能： ISO 年、半年、日历月、字符串、周、每周的某一天、每周的某一天、每年的第几天、上午/下午 (0 如果小时在中午 () 12 点之前，则为 1; 否则) <br/><br/>对于文本特征：基于单元语法、双元语法和三元语法的字词频率。 详细了解[如何通过 BERT 执行此操作](#bert-integration)。|
+|**转换并编码** _|将唯一值较少的数字特征转换为分类特征。<br/><br/>将为低基数分类特征使用 One-hot 编码。 将为高基数分类特征使用 One-hot-hash 编码。|
+|_ *Word 嵌入**|文本特征化器使用预先训练的模型将文本标记的矢量转换为句型向量。 每个单词在文档中的嵌入矢量与其余矢量聚合在一起，以生成文档特征矢量。|
 |目标编码|对于分类特征，此步骤将每个类别映射到回归问题的平均目标值，并映射到分类问题的每个类的类概率。 应用基于频率的加权和 k 折交叉验证，以减少稀疏数据类别导致的映射过度拟合与干扰。|
 |文本目标编码|对于文本输入，将使用带有词袋的堆叠线性模型来生成每个类的概率。|
 |证据权重 (WoE)|将 WoE 计算为分类列与目标列的关联度量。 WoE 的计算公式为类内概率与类外概率的比的对数。 此步骤为每个类生成一个数字特征列，无需显式插补缺失值和处理离群值。|
@@ -80,8 +80,8 @@ ms.locfileid: "91756545"
 
 数据护栏适用于：
 
-- **对于 SDK 试验**：当在 `AutoMLConfig` 对象中指定了参数 `"featurization": 'auto'` 或 `validation=auto` 时。
-- **对于工作室试验**：当启用了自动特征化时。
+- **对于 SDK 试验** ：当在 `AutoMLConfig` 对象中指定了参数 `"featurization": 'auto'` 或 `validation=auto` 时。
+- **对于工作室试验** ：当启用了自动特征化时。
 
 可通过以下方式查看试验的数据护栏：
 
@@ -105,18 +105,18 @@ ms.locfileid: "91756545"
 
 护栏|状态|触发器的条件&nbsp;&nbsp;
 ---|---|---
-插补缺少的特征值 |Passed <br><br><br> 完成| 在训练数据中未检测到缺失特征值。 详细了解[缺失值插补。](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> 在训练数据中检测到缺失特征值并进行了插补。
+插补缺少的特征值 |Passed <br><br><br> 完成| 在训练数据中未检测到缺失特征值。 详细了解[缺失值插补。](./how-to-use-automated-ml-for-ml-models.md#customize-featurization) <br><br> 在训练数据中检测到缺失特征值并进行了插补。
 高基数特征处理 |Passed <br><br><br> 完成| 已分析输入，但未检测到任何高基数特征。 <br><br> 在输入中检测到了高基数特征，并进行了处理。
-验证拆分处理 |完成| 已将验证配置设置为 `'auto'`，并且训练数据包含的行少于 20,000 行。 <br> 已使用交叉验证来验证经过训练的模型的每个迭代。 详细了解[验证数据](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)。 <br><br> 已将验证配置设置为 `'auto'`，并且训练数据包含的行多于 20,000 行。 <br> 输入数据已被拆分成训练数据集和验证数据集，以用于验证模型。
-类均衡检测 |Passed <br><br><br><br>收到警报 <br><br><br>完成 | 输入已经过分析，训练数据中的所有类都是均衡的。 如果某个数据集中每个类都有良好的表示形式（按样本的数量和比率进行度量），则将该数据集视为均衡的数据集。 <br><br> 在输入中检测到了不均衡类。 若要修复模型偏差，请解决均衡问题。 详细了解[不均衡数据](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)。<br><br> 在输入中检测到不均衡类，并且扫描逻辑已确定要应用均衡。
-内存问题检测 |Passed <br><br><br><br> 完成 |<br> 已分析了选定的值（范围、滞后、滚动窗口），但未检测到潜在的内存不足问题。 详细了解时序[预测配置](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)。 <br><br><br>已分析了选定的值（范围、滞后、滚动窗口），可能会导致你的试验遇到内存不足问题。 滞后或滚动窗口配置已关闭。
-频率检测 |Passed <br><br><br><br> 完成 |<br> 已分析了时序，所有数据点都与检测到的频率保持一致。 <br> <br> 已分析时序，检测到了与已检测到的频率不一致的数据点。 这些数据点已从数据集中删除。 详细了解[时序预测的数据准备](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)。
+验证拆分处理 |完成| 已将验证配置设置为 `'auto'`，并且训练数据包含的行少于 20,000 行。 <br> 已使用交叉验证来验证经过训练的模型的每个迭代。 详细了解[验证数据](./how-to-configure-auto-train.md#training-validation-and-test-data)。 <br><br> 已将验证配置设置为 `'auto'`，并且训练数据包含的行多于 20,000 行。 <br> 输入数据已被拆分成训练数据集和验证数据集，以用于验证模型。
+类均衡检测 |Passed <br><br><br><br>收到警报 <br><br><br>完成 | 输入已经过分析，训练数据中的所有类都是均衡的。 如果某个数据集中每个类都有良好的表示形式（按样本的数量和比率进行度量），则将该数据集视为均衡的数据集。 <br><br> 在输入中检测到了不均衡类。 若要修复模型偏差，请解决均衡问题。 详细了解[不均衡数据](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data)。<br><br> 在输入中检测到不均衡类，并且扫描逻辑已确定要应用均衡。
+内存问题检测 |Passed <br><br><br><br> 完成 |<br> 已分析了选定的值（范围、滞后、滚动窗口），但未检测到潜在的内存不足问题。 详细了解时序[预测配置](./how-to-auto-train-forecast.md#configuration-settings)。 <br><br><br>已分析了选定的值（范围、滞后、滚动窗口），可能会导致你的试验遇到内存不足问题。 滞后或滚动窗口配置已关闭。
+频率检测 |Passed <br><br><br><br> 完成 |<br> 已分析了时序，所有数据点都与检测到的频率保持一致。 <br> <br> 已分析时序，检测到了与已检测到的频率不一致的数据点。 这些数据点已从数据集中删除。 详细了解[时序预测的数据准备](./how-to-auto-train-forecast.md#preparing-data)。
 
 ## <a name="customize-featurization"></a>自定义特征化
 
 你可以自定义特征化设置，以确保用于训练机器学习模型的数据和特征能够产生相关的预测。
 
-若要自定义特征化，请在 `AutoMLConfig` 对象中指定  `"featurization": FeaturizationConfig`。 如果使用 Azure 机器学习工作室进行试验，请参阅[操作方法文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。 若要为预测任务类型自定义特征化，请参阅[预测操作指南](how-to-auto-train-forecast.md#customize-featurization)。
+若要自定义特征化，请在 `AutoMLConfig` 对象中指定 `"featurization": FeaturizationConfig`。 如果使用 Azure 机器学习工作室进行试验，请参阅[操作方法文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。 若要为预测任务类型自定义特征化，请参阅[预测操作指南](how-to-auto-train-forecast.md#customize-featurization)。
 
 支持的自定义项包括：
 
@@ -318,7 +318,7 @@ AutoML 会为 BERT 执行以下步骤。
 
 1. 所有文本列的预处理和标记化。 例如，可以在最终模型的特征化摘要中找到“StringCast”转换器。 [此笔记本](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)中提供了一个有关如何生成模型的特征化摘要的示例。
 
-2. **将所有文本列连接到单个文本列中**，因此在最终模型中会调用 `StringConcatTransformer`。 
+2. **将所有文本列连接到单个文本列中** ，因此在最终模型中会调用 `StringConcatTransformer`。 
 
     我们实现的 BERT 将训练示例的总文本长度限制为 128 个标记。 这意味着，当已连接时，所有文本列在理想情况下的长度最多应为 128 个标记。 如果存在多个列，则应修剪每个列，使此条件得到满足。 否则，对于长度大于 128 个标记的已连接列，BERT 的 tokenizer 层会将此输入截断为 128 个标记。
 

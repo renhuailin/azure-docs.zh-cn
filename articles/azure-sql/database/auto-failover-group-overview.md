@@ -5,19 +5,19 @@ description: 自动故障转移组可用于管理服务器中一组数据库或�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2
+ms.custom: sqldbrb=2, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 08/28/2020
-ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.date: 11/16/2020
+ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627219"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988538"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,9 +76,9 @@ ms.locfileid: "91627219"
   
 - **初始种子设定**
 
-  将数据库、弹性池或托管实例添加到故障转移组时，在数据复制开始之前，会有一个初始种子设定阶段。 初始种子设定阶段的操作耗时最长且开销最大。 初始种子设定完成后，数据将会同步，此后只会复制后续的数据更改。 完成初始种子设定所需的时间取决于数据大小、复制数据库的数量，以及故障转移组中的实体之间的链接速度。 在正常情况下，SQL 数据库的可能的种子设定速度最多为 500 GB （一小时），对于 SQL 托管实例最多为 360 GB。 种子设定将对所有数据库并行执行。
+  将数据库、弹性池或托管实例添加到故障转移组时，在数据复制开始之前，会有一个初始种子设定阶段。 初始种子设定阶段的操作耗时最长且开销最大。 初始种子设定完成后，数据将会同步，此后只会复制后续的数据更改。 完成初始种子设定所需的时间取决于数据大小、复制数据库的数量，以及故障转移组中的实体之间的链接速度。 正常情况下，对于 SQL 数据库，可能的种子设定速度最高为每小时 500 GB；对于 SQL 托管实例，该速度最高为每小时 360 GB。 种子设定将对所有数据库并行执行。
 
-  对于 SQL 托管实例，请考虑在估计初始播种阶段时，两个实例之间的快速路由链接的速度。 如果两个实例之间的链接速度比所需速度要慢，则种子设定所需的时间可能会受到较大影响。 可以根据所述种子设定速度、数据库数量、数据总大小和链接速度，来估算在数据复制开始之前初始种子设定阶段花费的时间。 例如，对于单个 100 GB 数据库，如果链接能够按小时推送 84 GB，并且没有任何其他数据库被设定为种子，则初始种子阶段将需要大约1.2 小时。 如果链路每小时只能传输 10 GB，则为 100 GB 数据库设定种子需要大约 10 小时。 如果有多个数据库要复制，则种子设定将会并行执行，在链接速度较慢的情况下，初始种子设定阶段可能需要相当长的时间，尤其是为所有数据库中的数据并行设定种子超过可用的链接带宽时。 如果两个实例之间的网络带宽受限制，而你要将多个托管实例添加到故障转移组，请考虑按顺序逐个地将多个托管实例添加到故障转移组。 在两个托管实例之间提供了适当大小的网关 SKU，如果公司网络带宽允许，则可以实现速度高达 360 GB （1小时）。  
+  对于 SQL 托管实例，在估算初始种子设定阶段的时间时，需考虑两个实例之间的 Express Route 链接的速度。 如果两个实例之间的链接速度比所需速度要慢，则种子设定所需的时间可能会受到较大影响。 可以根据所述种子设定速度、数据库数量、数据总大小和链接速度，来估算在数据复制开始之前初始种子设定阶段花费的时间。 例如，对于单个 100 GB 的数据库，如果链路每小时能够推送 84 GB 数据，并且没有其他数据库正在进行种子设定，则初始种子设定阶段需要花费大约 1.2 小时。 如果链路每小时只能传输 10 GB，则为 100 GB 数据库设定种子需要大约 10 小时。 如果有多个数据库要复制，则种子设定将会并行执行，在链接速度较慢的情况下，初始种子设定阶段可能需要相当长的时间，尤其是为所有数据库中的数据并行设定种子超过可用的链接带宽时。 如果两个实例之间的网络带宽受限制，而你要将多个托管实例添加到故障转移组，请考虑按顺序逐个地将多个托管实例添加到故障转移组。 如果两个托管实例之间的网关 SKU 的大小合适，并且公司网络带宽允许，则有可能实现高达 360 GB/小时的速度。  
 
 - **DNS 区域**
 
@@ -97,14 +97,17 @@ ms.locfileid: "91627219"
 
 - **自动故障转移策略**
 
-  默认使用自动故障转移策略配置故障转移组。 检测到故障并且宽限期到期后，Azure 会触发故障转移。 系统必须确保，因影响范围太大，内置[高可用性基础结构](high-availability-sla.md)无法缓解服务中断。 如果要从应用程序控制故障转移工作流，可以关闭自动故障转移。
+  默认使用自动故障转移策略配置故障转移组。 检测到故障并且宽限期到期后，Azure 会触发故障转移。 系统必须确保，因影响范围太大，内置[高可用性基础结构](high-availability-sla.md)无法缓解服务中断。 如果要从应用程序或手动控制故障转移工作流，可以关闭自动故障转移。
   
   > [!NOTE]
   > 由于验证中断规模及其缓解速度涉及到运营团队的人工措施，因此不能将宽限期设置为一小时以下。 此限制适用于故障转移组中的所有数据库，不管其数据同步状态如何。
 
 - **只读故障转移策略**
 
-  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果不能容忍只读会话停机，但能容忍以主数据库的潜在性能降级为代价将主数据库临时用于只读和读写流量，则可以通过配置 `AllowReadOnlyFailoverToPrimary` 属性为只读侦听器启用故障转移。 在这种情况下，如果辅助节点不可用，则会将只读流量自动重定向到主要节点。
+  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果你不能容忍只读会话的停机时间，并且可以使用主副本来实现只读和读写流量，但代价是主副本可能出现性能下降的情况，则可以通过配置属性来启用只读侦听器的故障转移 `AllowReadOnlyFailoverToPrimary` 。 在这种情况下，如果辅助节点不可用，则会将只读流量自动重定向到主要节点。
+
+  > [!NOTE]
+  > `AllowReadOnlyFailoverToPrimary`仅当启用了自动故障转移策略并且 Azure 触发了自动故障转移时，属性才会生效。 在这种情况下，如果将属性设置为 True，则新的主副本将同时为读写和只读会话提供服务。
 
 - **计划的故障转移**
 
@@ -120,7 +123,7 @@ ms.locfileid: "91627219"
 
 - **手动故障转移**
 
-  可随时手动启动故障转移，而不考虑自动故障转移配置。 如果未配置自动故障转移策略，则需要执行手动故障转移才能将故障转移组中的数据库恢复到辅助节点。 可通过完整数据同步启动强制或友好的故障转移。 后者可用于将主要节点重新定位到次要区域。 故障转移完成后，会自动更新 DNS 记录，以确保与新的主要节点建立连接
+  可随时手动启动故障转移，而不考虑自动故障转移配置。 如果未配置自动故障转移策略，则需要执行手动故障转移才能将故障转移组中的数据库恢复到辅助节点。 可通过完整数据同步启动强制或友好的故障转移。 后者可用于将主要节点重新定位到次要区域。 故障转移完成后，将自动更新 DNS 记录，以确保连接到新的主副本。
 
 - **数据丢失宽限期**
 
@@ -128,7 +131,7 @@ ms.locfileid: "91627219"
 
 - **多个故障转移组**
 
-  可为同一对服务器配置多个故障转移组以控制故障转移规模。 每个组均独立进行故障转移。 如果多租户应用程序使用弹性池，则可使用此功能来混合每个池的主数据库和辅助数据库。 采用这种方式可将服务中断的影响范围缩小到一半的租户中。
+  可以为同一对服务器配置多个故障转移组以控制故障转移的作用域。 每个组均独立进行故障转移。 如果多租户应用程序使用弹性池，则可使用此功能来混合每个池的主数据库和辅助数据库。 采用这种方式可将服务中断的影响范围缩小到一半的租户中。
 
   > [!NOTE]
   > SQL 托管实例不支持多个故障转移组。
@@ -139,21 +142,21 @@ ms.locfileid: "91627219"
 
 ### <a name="create-failover-group"></a>创建故障转移组
 
-若要创建某个故障转移组，需要对主服务器和辅助服务器，以及该故障转移组中的所有数据库拥有 RBAC 写入访问权限。 对于 SQL 托管实例，需要对主要和辅助 SQL 托管实例拥有 RBAC 写入访问权限，但对单个数据库的权限无关紧要，因为无法在故障转移组中添加或删除单个 SQL 托管实例数据库。
+若要创建故障转移组，需要对主服务器和辅助服务器以及故障转移组中的所有数据库具有 Azure RBAC 写入访问权限。 对于 SQL 托管实例，你需要具有对主 SQL 托管实例和辅助 SQL 的 Azure RBAC 写入访问权限，但对单个数据库的权限是不相关的，因为无法在故障转移组中添加或删除单个 SQL 托管实例数据库。
 
 ### <a name="update-a-failover-group"></a>更新故障转移组
 
-若要更新某个故障转移组，需要对该故障转移组，以及当前主服务器或托管实例上的所有数据库拥有 RBAC 写入访问权限。  
+若要更新故障转移组，需要对故障转移组以及当前主服务器或托管实例上的所有数据库具有 Azure RBAC 写入访问权限。  
 
 ### <a name="fail-over-a-failover-group"></a>对故障转移组进行故障转移
 
-若要对某个故障转移组进行故障转移，需要对新的主服务器或托管实例上的故障转移组拥有 RBAC 写入访问权限。
+若要对故障转移组进行故障转移，需要在新的主服务器或托管实例上对故障转移组进行 Azure RBAC 写入访问。
 
 ## <a name="best-practices-for-sql-database"></a>SQL 数据库的最佳做法
 
 自动故障转移组必须在主服务器上进行配置，需将其连接到不同 Azure 区域中的辅助服务器。 组可以包含这些服务器中的所有或部分数据库。 下图演示了使用多个数据库和自动故障转移组的异地冗余云应用程序的典型配置。
 
-![关系图显示了使用多个数据库和自动故障转移组的异地冗余云应用程序的典型配置。](./media/auto-failover-group-overview/auto-failover-group.png)
+![此图演示了使用多个数据库和自动故障转移组的异地冗余云应用程序的典型配置。](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > 有关将 SQL 数据库中的数据库添加到故障转移组的详细分步教程，请参阅[将 SQL 数据库添加到故障转移组](failover-group-add-single-database-tutorial.md)。
@@ -173,7 +176,7 @@ ms.locfileid: "91627219"
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>使用只读侦听器处理只读工作负荷
 
-如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `<fog-name>.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外，还建议使用 `ApplicationIntent=ReadOnly` 在连接字符串中指示读取意向。 如果要确保只读工作负荷在故障转移后或辅助服务器脱机时可以重新连接，请确保配置故障转移策略的 `AllowReadOnlyFailoverToPrimary` 属性。
+如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `<fog-name>.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外，还建议使用 `ApplicationIntent=ReadOnly` 在连接字符串中指示读取意向。
 
 ### <a name="preparing-for-performance-degradation"></a>为性能降低做好准备
 
@@ -233,9 +236,9 @@ ms.locfileid: "91627219"
 
 有关在主要实例所在的 DNS 区域中创建辅助 SQL 托管实例的详细信息，请参阅[创建辅助托管实例](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance)。
 
-### <a name="using-geo-paired-regions"></a>使用地理配对区域
+### <a name="using-geo-paired-regions"></a>使用异地配对区域
 
-出于性能原因，将两个托管实例部署到 [配对区域](../../best-practices-availability-paired-regions.md) 。 与非配对区域相比，位于地域配对区域中的托管实例具有更好的性能。 
+出于性能方面的考虑，将两个托管实例部署到[配对区域](../../best-practices-availability-paired-regions.md)。 与非配对区域相比，位于异地配对区域中的托管实例具有好得多的性能。 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>在两个实例之间启用复制流量
 
@@ -243,7 +246,7 @@ ms.locfileid: "91627219"
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>在不同订阅中的托管实例之间创建故障转移组
 
-可以在两个不同订阅中的 SQL 托管实例之间创建故障转移组，前提是订阅与相同的 [Azure Active Directory 租户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)关联。 使用 PowerShell API 时，可以通过为辅助 SQL 托管实例指定 `PartnerSubscriptionId` 参数来执行此操作。 使用 REST API 时，`properties.managedInstancePairs` 参数中包含的每个实例 ID 都可以有自己的订阅 ID。
+可以在两个不同订阅中的 SQL 托管实例之间创建故障转移组，前提是订阅与相同的 [Azure Active Directory 租户](../../active-directory/fundamentals/active-directory-whatis.md#terminology)关联。 使用 PowerShell API 时，可以通过为辅助 SQL 托管实例指定 `PartnerSubscriptionId` 参数来执行此操作。 使用 REST API 时，`properties.managedInstancePairs` 参数中包含的每个实例 ID 都可以有自己的订阅 ID。
   
 > [!IMPORTANT]
 > Azure 门户不支持创建跨不同订阅的故障转移组。 此外，对于跨不同订阅和/或资源组的现有故障转移组，无法通过门户从主要 SQL 托管实例手动启动故障转移。 改为从异地辅助实例启动它。
@@ -264,20 +267,20 @@ ms.locfileid: "91627219"
 如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 若要直接连接到异地复制的辅助节点，请使用 `<fog-name>.secondary.<zone_id>.database.windows.net` 作为服务器 URL，这样可以直接连接到异地复制的辅助节点。
 
 > [!NOTE]
-> 在某些服务层级中，SQL 数据库支持通过[只读副本](read-scale-out.md)，使用一个只读副本的容量和连接字符串中的 `ApplicationIntent=ReadOnly` 参数对只读查询工作负载进行负载均衡。 如果配置了异地复制的辅助节点，则可以使用此功能连接到主要位置或异地复制位置中的只读副本。
+> 在 "高级"、"业务关键" 和 "超大规模" 服务层中，SQL 数据库支持使用 [只读副本](read-scale-out.md) 通过使用连接字符串中的参数使用一个或多个只读副本的容量来运行只读查询工作负荷 `ApplicationIntent=ReadOnly` 。 如果配置了异地复制的辅助节点，则可以使用此功能连接到主要位置或异地复制位置中的只读副本。
 >
-> - 若要连接到主要位置中的只读副本，请使用 `<fog-name>.<zone_id>.database.windows.net`。
-> - 若要连接到辅助位置中的只读副本，请使用 `<fog-name>.secondary.<zone_id>.database.windows.net`。
+> - 若要连接到主位置的只读副本，请使用 `ApplicationIntent=ReadOnly` 和 `<fog-name>.<zone_id>.database.windows.net` 。
+> - 若要连接到辅助位置中的只读副本，请使用 `ApplicationIntent=ReadOnly` 和 `<fog-name>.secondary.<zone_id>.database.windows.net` 。
 
 ### <a name="preparing-for-performance-degradation"></a>为性能降低做好准备
 
-典型的 Azure 应用程序使用多个 Azure 服务，并由多个组件构成。 故障转移组的自动故障转移是基于 Azure SQL 组件本身的状态触发的。 主要区域中的其他 Azure 服务可能不受中断的影响，其组件可能仍在该区域中可用。 将主数据库切换到灾难恢复区域后，依赖组件之间的延迟可能会增大。 若要避免较高延迟对应用程序性能造成影响，请确保对灾难恢复区域中的所有应用程序组件采用冗余配置，并遵循以下[网络安全指导原则](#failover-groups-and-network-security)。
+典型的 Azure 应用程序使用多个 Azure 服务，并由多个组件构成。 故障转移组的自动故障转移是基于 Azure SQL 组件本身的状态触发的。 主要区域中的其他 Azure 服务可能不受中断的影响，其组件可能仍在该区域中可用。 将主数据库切换到次要区域后，从属组件之间的延迟可能会增加。 若要避免对应用程序性能造成较高延迟的影响，请确保次要区域中的所有应用程序组件的冗余，并将应用程序组件与数据库一起进行故障转移。 在配置时，请遵循 [网络安全准则](#failover-groups-and-network-security) ，以确保连接到次要区域中的数据库。
 
 ### <a name="preparing-for-data-loss"></a>为数据丢失做好准备
 
-如果检测到服务中断，则根据我们所知，如果没有数据丢失，将触发读写故障转移。 否则，等待指定的期限。 否则，它会等待 `GracePeriodWithDataLossHours` 指定的期限。 如果指定了 `GracePeriodWithDataLossHours`，则可能会丢失数据。 一般情况下，在中断期间 Azure 倾向于可用性。 如果不能承受丢失数据，请务必将 GracePeriodWithDataLossHours 设置为一个足够大的数字，例如 24 小时。
+如果检测到服务中断，则根据我们所知，如果没有数据丢失，将触发读写故障转移。 否则，将在你使用指定的时间段内延迟故障转移 `GracePeriodWithDataLossHours` 。 如果指定了 `GracePeriodWithDataLossHours`，则可能会丢失数据。 一般情况下，在中断期间 Azure 倾向于可用性。 如果你不能承受丢失数据，请确保将 GracePeriodWithDataLossHours 设置为足够大的数字（例如24小时），或禁用自动故障转移。
 
-启动故障转移后，读写侦听器的 DNS 更新会立即发生。 此操作不会导致数据丢失。 但是，在正常情况下，切换数据库角色的过程可能需要 5 分钟时间。 在完成之前，新主要实例中的某些数据库仍是只读的。 如果使用 PowerShell 启动故障转移，则整个操作是同步的。 如果使用 Azure 门户启动故障转移，UI 将指示完成状态。 如果使用 REST API 启动故障转移，可以使用标准 Azure 资源管理器的轮询机制来监视完成状态。
+启动故障转移后，读写侦听器的 DNS 更新会立即发生。 此操作不会导致数据丢失。 但是，在正常情况下，切换数据库角色的过程可能需要 5 分钟时间。 在完成之前，新主要实例中的某些数据库仍是只读的。 如果使用 PowerShell 启动故障转移，则用于切换主副本角色的操作为同步操作。 如果使用 Azure 门户启动故障转移，UI 将指示完成状态。 如果使用 REST API 启动故障转移，可以使用标准 Azure 资源管理器的轮询机制来监视完成状态。
 
 > [!IMPORTANT]
 > 使用手动组故障转移可将主要数据库移回到原始位置。 缓解导致故障转移的服务中断问题后，可将主要数据库移到原始位置。 为此，应该启动组的手动故障转移。
@@ -332,7 +335,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 4. 检测到服务中断时启动手动故障转移。 此选项针对需要在前端和数据层之间保持一致延迟的应用程序进行了优化，并支持在前端和/或数据层受到服务中断的影响时进行恢复。
 
 > [!NOTE]
-> 如果使用**只读侦听器**对只读工作负荷进行负载均衡，请确保在次要区域中的 VM 或其他资源上执行此工作负荷，以便它可以连接到辅助数据库。
+> 如果使用 **只读侦听器** 对只读工作负荷进行负载均衡，请确保在次要区域中的 VM 或其他资源上执行此工作负荷，以便它可以连接到辅助数据库。
 
 ### <a name="use-failover-groups-and-firewall-rules"></a>使用故障转移组和防火墙规则
 
@@ -341,8 +344,8 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 1. [创建公共 IP](../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 2. [创建公共负载均衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)并为其分配公共 IP。
 3. 为前端组件[创建虚拟网络和虚拟机](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)
-4. [创建网络安全组](../../virtual-network/security-overview.md)并配置入站连接。
-5. 使用“Sql”[服务标记](../../virtual-network/security-overview.md#service-tags)确保出站连接向 Azure SQL 数据库开放。
+4. [创建网络安全组](../../virtual-network/network-security-groups-overview.md)并配置入站连接。
+5. 使用“Sql”[服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)确保出站连接向 Azure SQL 数据库开放。
 6. 创建 [SQL 数据库防火墙规则](firewall-configure.md)，以允许来自步骤 1 中创建的公共 IP 地址的入站流量。
 
 有关如何配置出站访问以及在防火墙规则中使用哪个 IP 的详细信息，请参阅[负载均衡器出站连接](../../load-balancer/load-balancer-outbound-connections.md)。
@@ -359,10 +362,10 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL 托管实例的两个实例需位于不同的 Azure 区域中。
 - SQL 托管实例的这两个实例需位于相同的服务层级，并且具有相同的存储大小。
 - SQL 托管实例的辅助实例必须是空的（不包含任何用户数据库）。
-- 需要通过 [VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 来连接 SQL 托管实例的实例使用的虚拟网络。 当两个虚拟网络通过本地网络连接时，请确保没有任何防火墙规则阻止端口 5022 和 11000-11999。 下面的说明中所述的限制支持全局 VNet 对等互连。
+- 需要通过 [VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 来连接 SQL 托管实例的实例使用的虚拟网络。 当两个虚拟网络通过本地网络连接时，请确保没有任何防火墙规则阻止端口 5022 和 11000-11999。 支持全局 VNet 对等互连，但有如下说明所述的限制。
 
    > [!IMPORTANT]
-   > [在9/22/2020 中，我们为新创建的虚拟群集宣布了全局虚拟网络对等互连](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，对于在公告日期之后在空子网中创建的 SQL 托管实例，以及在这些子网中创建的所有后续托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例的对等互连，都将限制为同一区域的网络，因为 [全局虚拟网络对等互连的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
+   > [2020 年 9 月 22 日，我们宣布为新建的虚拟群集建立全局虚拟网络对等互连](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，自公告日期之后在空子网中创建的 SQL 托管实例以及在这些子网中随后创建的所有托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例，由于[全局虚拟网络对等互连的约束](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，对等互连支持仅限于同一区域中的网络。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
 
 - 两个 SQL 托管实例 VNet 的 IP 地址不能重叠。
 - 需要设置网络安全组 (NSG)，使端口 5022 和端口范围 11000~12000 保持打开，以便能够从其他托管实例的子网建立入站和出站连接。 目的是允许实例之间的复制流量。
@@ -406,7 +409,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>以编程方式管理故障转移组
 
-如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组和活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
+如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组和活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](/rest/api/sql/) 和 [Azure PowerShell cmdlet](/powershell/azure/)。 这些 Api 需要使用资源组，并支持 azure RBAC)  (基于角色的访问控制。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ### <a name="manage-sql-database-failover"></a>管理 SQL 数据库故障转移
 
@@ -435,13 +438,13 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | API | 说明 |
 | --- | --- |
-| [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 创建或更新故障转移组 |
-| [删除故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 从服务器中删除故障转移组 |
-| [故障转移（计划内）](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | 在完全同步数据的情况下，触发从当前主服务器到辅助服务器的故障转移。|
-| [强制故障转移允许数据丢失](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | 在不同步数据的情况下，触发从当前主服务器到辅助服务器的故障转移。 此操作可能导致数据丢失。 |
-| [获取故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | 检索故障转移组的配置。 |
-| [按服务器列出故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | 列出服务器上的故障转移组。 |
-| [更新故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | 更新故障转移组的配置。 |
+| [创建或更新故障转移组](/rest/api/sql/failovergroups/createorupdate) | 创建或更新故障转移组 |
+| [删除故障转移组](/rest/api/sql/failovergroups/delete) | 从服务器中删除故障转移组 |
+| [故障转移（计划内）](/rest/api/sql/failovergroups/failover) | 在完全同步数据的情况下，触发从当前主服务器到辅助服务器的故障转移。|
+| [强制故障转移允许数据丢失](/rest/api/sql/failovergroups/forcefailoverallowdataloss) | 在不同步数据的情况下，触发从当前主服务器到辅助服务器的故障转移。 此操作可能导致数据丢失。 |
+| [获取故障转移组](/rest/api/sql/failovergroups/get) | 检索故障转移组的配置。 |
+| [按服务器列出故障转移组](/rest/api/sql/failovergroups/listbyserver) | 列出服务器上的故障转移组。 |
+| [更新故障转移组](/rest/api/sql/failovergroups/update) | 更新故障转移组的配置。 |
 
 ---
 
@@ -473,12 +476,12 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | API | 说明 |
 | --- | --- |
-| [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 创建或更新故障转移组的配置 |
-| [删除故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 从实例中删除故障转移组 |
-| [故障转移（计划内）](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 在完全同步数据的情况下，触发从当前主实例到此实例的故障转移。 |
-| [强制故障转移允许数据丢失](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | 在不同步数据的情况下，触发从当前主实例到辅助实例的故障转移。 此操作可能导致数据丢失。 |
-| [获取故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | 检索故障转移组的配置。 |
-| [列出故障转移组 - 按位置列出](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | 列出某个位置中的故障转移组。 |
+| [创建或更新故障转移组](/rest/api/sql/instancefailovergroups/createorupdate) | 创建或更新故障转移组的配置 |
+| [删除故障转移组](/rest/api/sql/instancefailovergroups/delete) | 从实例中删除故障转移组 |
+| [故障转移（计划内）](/rest/api/sql/instancefailovergroups/failover) | 在完全同步数据的情况下，触发从当前主实例到此实例的故障转移。 |
+| [强制故障转移允许数据丢失](/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | 在不同步数据的情况下，触发从当前主实例到辅助实例的故障转移。 此操作可能导致数据丢失。 |
+| [获取故障转移组](/rest/api/sql/instancefailovergroups/get) | 检索故障转移组的配置。 |
+| [列出故障转移组 - 按位置列出](/rest/api/sql/instancefailovergroups/listbylocation) | 列出某个位置中的故障转移组。 |
 
 ---
 

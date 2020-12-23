@@ -17,22 +17,24 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2d5f6f9cfaff722245f6105b5e86390b8aeb769f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302207"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539696"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>诊断虚拟机网络路由问题 - Azure CLI
 
 本文首先部署虚拟机 (VM)，然后检查其与 IP 地址和 URL 的通信。 确定通信失败的原因以及解决方法。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 Azure CLI，本文要求运行 Azure CLI 2.0.28 版或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 验证 Azure CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本文中的 Azure CLI 命令已格式化，适合在 Bash Shell 中运行。
+- 本文需要 Azure CLI 版本2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。 
+
+- 本文中的 Azure CLI 命令已格式化，适合在 Bash Shell 中运行。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -113,7 +115,7 @@ az network nic show-effective-route-table \
 
 返回的输出中包含以下文本：
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +135,7 @@ az network nic show-effective-route-table \
 
 但是，使用 `az network watcher show-next-hop` 命令测试发送到 172.31.0.100 的出站通信时，结果显示没有下一跃点类型。 返回的输出中包含以下文本：
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false

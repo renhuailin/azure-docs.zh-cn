@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116795"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516492"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳做法和建议
 
@@ -28,11 +28,11 @@ ms.locfileid: "88116795"
 使用以下查检表确保应用程序与 [Microsoft 标识平台](./index.yml)有效集成。
 
 > [!TIP]
-> Azure 门户中的集成助手可帮助你应用其中许多最佳做法和建议。 选择 Azure 门户中的任何[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，然后选择“集成助手(预览版)”菜单项，开始使用助手。
+> Azure 门户中的集成助手可帮助你应用其中许多最佳做法和建议。 在 Azure 门户中选择任意 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，然后选择 " **集成助手** " 菜单项以开始助手。
 
 ## <a name="basics"></a>基础知识
 
-![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) 阅读并理解 [Microsoft 平台策略](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)。 确保应用程序符合旨在保护用户和平台的所述条款。
+![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) 阅读并理解 [Microsoft 平台策略](/legal/microsoft-identity-platform/terms-of-use)。 确保应用程序符合旨在保护用户和平台的所述条款。
 
 ## <a name="ownership"></a>所有权
 
@@ -68,7 +68,7 @@ ms.locfileid: "88116795"
 
 ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) 使用新式身份验证解决方案（OAuth 2.0、[OpenID Connect](v2-protocols-oidc.md)）确保用户安全登录。
 
-![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) 不要直接对 OAuth 2.0 和 Open ID 等协议进行编程。 请改用 [Microsoft 身份验证库 (MSAL)](msal-overview.md)。 MSAL 库在易于使用的库中安全地包装安全协议，并获得对[条件访问](../conditional-access/overview.md)方案、设备范围内[单一登录 (SSO) ](../manage-apps/what-is-single-sign-on.md)和内置令牌缓存支持的内置支持。 有关详细信息，请参阅 Microsoft 支持的[客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)和[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)列表，以及[兼容的第三方客户端库](reference-v2-libraries.md#compatible-client-libraries)列表。<br/><br/>如果必须为身份验证协议手动编写代码，应遵循 [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) 等方法。 请认真对待每个协议的标准规范中的安全注意事项。
+![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) 不要直接对 OAuth 2.0 和 Open ID 等协议进行编程。 请改用 [Microsoft 身份验证库 (MSAL)](msal-overview.md)。 MSAL 库在易于使用的库中安全地包装安全协议，并获得对 [条件访问](../conditional-access/overview.md) 方案、设备范围内 [单一登录 (SSO) ](../manage-apps/what-is-single-sign-on.md)和内置令牌缓存支持的内置支持。 有关详细信息，请参阅 Microsoft 支持的[客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)和[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)列表，以及[兼容的第三方客户端库](reference-v2-libraries.md#compatible-client-libraries)列表。<br/><br/>如果必须为身份验证协议手动编写代码，应遵循 [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) 等方法。 请认真对待每个协议的标准规范中的安全注意事项。
 
 ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) 将现有应用从 [Azure Active Directory 身份验证库 (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) 迁移到 [Microsoft 身份验证库](msal-overview.md)。 MSAL 是 Microsoft 的最新标识平台解决方案，比 ADAL 更普及。 它适用于 .NET、JavaScript、Android、iOS 和 macOS，并为 Python 和 Java 推出了公共预览版。 详细了解如何迁移 [ADAL.NET](msal-net-migration.md)、[ADAL.js](msal-compare-msal-js-and-adal-js.md) 以及 [ADAL.NET 和 iOS 中介](msal-net-migration-ios-broker.md)应用。
 

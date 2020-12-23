@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: d23702a71bababec2e172181c8e75c26241d0460
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81842fb3a9a68e818a3e8c94aa6db690cb1d94f5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91347858"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486273"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>快速入门：在机器学习工作室（经典）中创建第一个数据科学试验
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -61,7 +61,7 @@ ms.locfileid: "91347858"
 
     ![将试验重命名](./media/create-experiment/rename-experiment.png)
 
-1. 试验画布左侧是数据集和模块的控制板。 在此控制板顶部的“搜索”框中键入**汽车**，找到标有“汽车价格数据(原始)”的数据集。 将该数据集拖放到试验画布上。
+1. 试验画布左侧是数据集和模块的控制板。 在此控制板顶部的“搜索”框中键入 **汽车**，找到标有“汽车价格数据(原始)”的数据集。 将该数据集拖放到试验画布上。
 
     ![找到汽车数据集并将其拖放到试验画布上](./media/create-experiment/type-automobile.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "91347858"
 1. 单击[选择数据集中的列][select-columns]模块，并单击“属性”窗格中的“启动列选择器” 。
 
    - 在左侧单击“使用规则”
-   - 在**开头为**下面，单击**所有列**。 这些规则指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
+   - 在 **开头为** 下面，单击 **所有列**。 这些规则指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
    - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
    - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
@@ -163,7 +163,7 @@ ms.locfileid: "91347858"
 准备好数据后，构造预测模型的过程包括训练和测试。 我们将使用数据对模型定型，然后测试模型，看其预测价格时准确性如何。
 <!-- For now, don't worry about *why* we need to train and then test a model.-->
 
-*分类* 和*回归* 是两种监督式机器学习算法。 分类可以从一组定义的类别预测答案，例如颜色（红、蓝或绿）。 回归用于预测数字。
+*分类* 和 *回归* 是两种监督式机器学习算法。 分类可以从一组定义的类别预测答案，例如颜色（红、蓝或绿）。 回归用于预测数字。
 
 由于要预测价格（一个数字），因此需使用回归算法。 本示例将使用线性回归模型。
 
@@ -245,10 +245,10 @@ ms.locfileid: "91347858"
 > [教程：在工作室（经典版）中开发预测解决方案](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression
+[clean-missing-data]: /azure/machine-learning/studio-module-reference/clean-missing-data
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model

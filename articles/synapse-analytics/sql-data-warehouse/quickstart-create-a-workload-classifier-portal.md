@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213017"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460668"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Synapse SQL 池工作负载分类器
+# <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用 SQL 池工作负载分类器
 
 在本快速入门中，你将创建一个[工作负载分类器](sql-data-warehouse-workload-classification.md)，用于将查询分配到工作负载组。  该分类器将 `ELTLogin` SQL 用户的请求分配到 `DataLoads` 工作负载组。   按照[快速入门：配置工作负载隔离](quickstart-configure-workload-isolation-portal.md)教程创建 `DataLoads` 工作负载组。  本教程将使用 WLM_LABEL 选项创建工作负载分类器，这样有助于对请求进一步进行正确的分类。  该分类器还会将 `HIGH` [工作负载重要性](sql-data-warehouse-workload-importance.md)分配到这些请求。
 
@@ -31,16 +31,16 @@ ms.locfileid: "85213017"
 登录 [Azure 门户](https://portal.azure.com/)。
 
 > [!NOTE]
-> 在 Azure Synapse Analytics 中创建 SQL 池实例可能会产生一个新的可计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 在 Azure Synapse Analytics 中创建专用 SQL 池实例可能会产生一个新的可计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门假定你已在 Synapse SQL 中有 SQL 池实例，并且具有 CONTROL DATABASE 权限。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。
+本快速入门假定你已拥有具有 CONTROL DATABASE 权限的专用 SQL 池实例。 如果需要创建一个 SQL 池，请参考[创建和连接 - 门户](create-data-warehouse-portal.md)创建名为 mySampleDataWarehouse 的专用 SQL 池。
 <br><br>
 存在工作负载组 `DataLoads`。  请参阅[快速入门：配置工作负载隔离](quickstart-configure-workload-isolation-portal.md)教程以创建工作负载组。
 <br><br>
 >[!IMPORTANT] 
->SQL 池必须联机才能配置工作负载管理。 
+>专用 SQL 池必须联机才能配置工作负载管理。 
 
 
 ## <a name="create-a-login-for-eltlogin"></a>创建 ELTLogin 的登录名
@@ -72,18 +72,17 @@ END
 分类允许你基于一组规则将请求路由到工作负载组。  在[快速入门：配置工作负载隔离](quickstart-configure-workload-isolation-portal.md)教程中，我们已创建 `DataLoads` 工作负载组。  现在，你将创建一个工作负载分类器，用于将查询路由到 `DataLoads` 工作负载组。
 
 
-1.  在 Azure 门户的左侧页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。 
-2.  从“Azure Synapse Analytics (以前称为 SQL DW)”  页中选择 **mySampleDataWarehouse**。 此时将打开 SQL 池。
-3.  单击“工作负载管理”  。
+1.  导航到 mySampleDataWarehouse 专用 SQL 池页面。
+3.  选择“工作负载管理”。
 
     ![单击“菜单”](./media/quickstart-create-a-workload-classifier-portal/menu.png)
 
-4.  单击 `DataLoads` 工作负载组右侧的“设置和分类器”  。
+4.  选择 `DataLoads` 工作负载组右侧的“设置和分类器”。
 
     ![单击“法律条款” ](./media/quickstart-create-a-workload-classifier-portal/settings-classifiers.png)
 
-5. 单击“分类器”  。
-6. 单击“添加分类器”  。
+5. 选择“分类器”列下的“未配置”。
+6. 选择“+ 添加分类器”。
 
     ![单击“添加”](./media/quickstart-create-a-workload-classifier-portal/add-wc.png)
 
@@ -91,8 +90,8 @@ END
 8.  在“成员”中输入 `ELTLogin` 。
 9.  为“请求重要性”选择 `High` 。  这是可选字段，默认设置为一般重要性  。
 10. 在“标签”中输入 `fact_loads` 。
-11. 单击“添加”  。
-12. 单击“ **保存**”。
+11. 选择“添加”  。
+12. 选择“保存” 。
 
     ![单击“配置”](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
@@ -135,8 +134,6 @@ WHERE [label] = 'fact_loads'
 ORDER BY submit_time DESC
 ```
 
-
-
 ## <a name="clean-up-resources"></a>清理资源
 
 若要删除在本教程中创建的 `ELTLoginDataLoads` 工作负载分类器，请执行以下步骤：
@@ -152,24 +149,20 @@ ORDER BY submit_time DESC
 
     ![点击“保存”](./media/quickstart-create-a-workload-classifier-portal/delete-save-wc.png)
 
-我们会针对数据仓库中存储的数据，按数据仓库单位收费。 这些计算和存储资源是分开计费的。
+我们会针对专用 SQL 池中存储的数据，按数据仓库单位收费。 这些计算和存储资源是分开计费的。
 
-- 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 如果暂停计算资源，则你只需支付数据存储费用。 准备好处理数据时，可以恢复计算。
-- 如果不想支付将来的费用，则可以删除数据仓库。
+- 如果想要将数据保留在存储中，可以在不使用专用 SQL 池时暂停计算。 如果暂停计算资源，则你只需支付数据存储费用。 准备好处理数据时，可以恢复计算。
+- 若要避免将来产生费用，可以删除该专用 SQL 池。
 
 遵循以下步骤清理资源。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，选择你的数据仓库。
+1. 登录到 [Azure 门户](https://portal.azure.com)，选择你的专用 SQL 池。
 
     ![清理资源](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 若要暂停计算，请选择“暂停”  按钮。 暂停数据仓库后，可看到“启动”  按钮。  若要恢复计算，请选择“启动”  。
+2. 若要暂停计算，请选择“暂停”按钮。 暂停专用 SQL 池后，会看到“启动”按钮。  若要恢复计算，请选择“启动”。
 
-3. 若要删除数据仓库以免产生计算或存储费用，请选择“删除”  。
-
-4. 若要删除创建的 SQL 服务器，请选择上图所示的“sqlpoolservername.database.windows.net”，然后选择“删除”。    请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
-
-5. 若要删除资源组，请选择“myResourceGroup”  ，然后选择“删除资源组”  。
+3. 若要删除专用 SQL 池以免产生计算或存储费用，请选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

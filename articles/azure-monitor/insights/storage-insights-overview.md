@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2538bc91be59ff12b39ee3f5f629e4c016480a97
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961969"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296329"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用用于存储的 Azure Monitor 监视存储服务
 
@@ -31,14 +31,11 @@ ms.locfileid: "88961969"
 
 * 可自定义，即可以更改要查看的指标、修改或设置与限制一致的阈值，并保存为你自己的工作簿。 工作簿中的图表可以固定到 Azure 仪表板。  
 
-此功能不需要启用或配置任何设置，存储帐户的存储指标是默认收集的。 如果不熟悉可用于 Azure 存储的指标，请查阅 [ Azure 存储指标](../../storage/common/monitor-storage.md)，以查看 Azure 存储指标的说明和定义。
+此功能不需要启用或配置任何设置，存储帐户的存储指标是默认收集的。 如果不熟悉可用于 Azure 存储的指标，请查阅 [ Azure 存储指标](../../storage/blobs/monitor-blob-storage.md)，以查看 Azure 存储指标的说明和定义。
 
 >[!NOTE]
 >访问此功能不需任何费用。系统只会对你配置或启用的 Azure Monitor 基本功能收费，如 [Azure Monitor 定价详细信息](https://azure.microsoft.com/pricing/details/monitor/)页中所述。
 
->[!NOTE]
->用于存储的 Azure Monitor 不支持[常规用途 v1 帐户](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts)。
->
 
 ## <a name="view-from-azure-monitor"></a>在 Azure Monitor 中查看
 
@@ -54,11 +51,11 @@ ms.locfileid: "88961969"
 
 ### <a name="overview-workbook"></a>“概述”工作簿
 
-在所选订阅的 **概述** 工作簿中，表显示订阅中分组最多5个存储帐户的交互式存储指标和服务可用性状态。 可以根据你从下面的下拉列表中选择的选项来筛选结果：
+在所选订阅的“概述”工作簿中，表内显示订阅中分组的最多 5 个存储帐户的交互式存储指标和服务可用性状态。 可以根据你从下面的下拉列表中选择的选项来筛选结果：
 
 * 订阅 - 只列出包含存储帐户的订阅。  
 
-* **存储帐户** -默认情况下，预先选择5个存储帐户。 如果你在范围选择器中选择所有或多个存储帐户，最多会返回 200 个存储帐户。 例如，如果你选择的三个订阅共有 573 个存储帐户，那么只会显示 200 个帐户。 
+* **存储帐户** - 默认情况下，预先选择 5 个存储帐户。 如果你在范围选择器中选择所有或多个存储帐户，最多会返回 200 个存储帐户。 例如，如果你选择的三个订阅共有 573 个存储帐户，那么只会显示 200 个帐户。 
 
 * **时间范围** - 默认情况下，系统会根据你所做的选择显示过去 4 小时的相应信息。
 
@@ -67,7 +64,7 @@ ms.locfileid: "88961969"
 选择“可用性”、“E2E 延迟”、“服务器延迟”和“事务错误类型/错误”列中的值会定向到针对特定类型存储指标量身定制的报告，这些指标与为相应存储帐户选择的列匹配。 若要详细了解每个类别的工作簿，请参阅下面的[详细存储工作簿](#detailed-storage-workbooks)部分。 
 
 >[!NOTE]
->若要详细了解哪些错误可以在报告中显示，请参阅[响应类型架构](../../storage/common/monitor-storage-reference.md#metrics-dimensions)，并查找 ServerOtherError、ClientOtherError、ClientThrottlingError 等响应类型。 根据所选的存储帐户，如果报告的错误超过三种类型，则其他所有错误都在“其他”类别下表示。
+>若要详细了解哪些错误可以在报告中显示，请参阅[响应类型架构](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)，并查找 ServerOtherError、ClientOtherError、ClientThrottlingError 等响应类型。 根据所选的存储帐户，如果报告的错误超过三种类型，则其他所有错误都在“其他”类别下表示。
 
 默认“可用性”阈值为：
 
@@ -94,7 +91,7 @@ ms.locfileid: "88961969"
 
 2. 从列表中选择一个存储帐户。 在“监视”部分中，选择“见解”。
 
-    ![所选存储帐户的“概述”页](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![显示存储帐户“概述”工作簿页面的屏幕截图。](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
 此存储帐户的“概述”工作簿中显示了多个存储性能指标，有助于你快速进行评估：
 
@@ -198,7 +195,7 @@ ms.locfileid: "88961969"
 
 1. 选择“指标”网格中的“列设置”。
 
-2. 在 "**编辑列设置**" 窗格中，选择 " **storageaccounts/UsedCapacity $ `|` Storageaccounts/blobservices-blobcapacity 相同 $/-storageaccounts $/ `|` `|` `|` **-fileservices $ $/FileCapacity/storageaccounts-queueservices $" 列中的 "**列**" 部分下的 ""。 在“调色板”下拉列表下，选择“绿色”。
+2. 在“编辑列设置”窗格中，选择“列”部分下的“microsoft.storage/storageaccounts-Capacity-UsedCapacity$`|`microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$`|`microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$`|`microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$`|`microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$”  。 在“调色板”下拉列表下，选择“绿色”。
 
 3. 选择“保存并关闭”，以提交更改。
 
@@ -226,7 +223,7 @@ ms.locfileid: "88961969"
 
 7. 选择命令栏中的“另存为”，以保存包含自定义项的工作簿副本，然后单击“完成编辑”返回到阅读模式。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 
@@ -274,4 +271,3 @@ ms.locfileid: "88961969"
 * 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
 
 * 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。
-

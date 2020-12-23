@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a529875536c2feafe05695e5d20daed0873a95e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934440"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024766"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>在 Windows 上实现语音助手
 
@@ -30,15 +30,15 @@ ms.locfileid: "88934440"
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>确保麦克风可用且可访问，然后监视其状态
 
-MVA 需要提供麦克风并可访问，以便能够检测语音激活。 使用 [AppCapability](https://docs.microsoft.com/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、 [DeviceWatcher](https://docs.microsoft.com/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)和 [MediaCapture](https://docs.microsoft.com/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) 类检查) 的麦克风隐私访问、设备是否存在以及设备状态 (如。
+MVA 需要提供麦克风并可访问，以便能够检测语音激活。 使用 [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、 [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)和 [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) 类检查) 的麦克风隐私访问、设备是否存在以及设备状态 (如。
 
 ### <a name="register-the-application-with-the-background-service"></a>向后台服务注册应用程序
 
-为了让 MVA 在后台启动应用程序，需要将应用程序注册到后台服务。 请参阅 [此处](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)的有关后台服务注册的完整指南。
+为了让 MVA 在后台启动应用程序，需要将应用程序注册到后台服务。 请参阅 [此处](/windows/uwp/launch-resume/register-a-background-task)的有关后台服务注册的完整指南。
 
 ### <a name="unlock-the-limited-access-feature"></a>解锁受限访问功能
 
-使用你的 Microsoft 提供的有限访问权限功能密钥解锁语音助手功能。 使用 Windows SDK 中的 [LimitedAccessFeature](https://docs.microsoft.com/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) 类执行此操作。
+使用你的 Microsoft 提供的有限访问权限功能密钥解锁语音助手功能。 使用 Windows SDK 中的 [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) 类执行此操作。
 
 ### <a name="register-the-keyword-for-the-application"></a>为应用程序注册关键字
 
@@ -86,7 +86,7 @@ Windows 将在通过以下两种方式之一来检测关键字时发出通知。
 
 ### <a name="retrieve-activation-audio"></a>检索激活音频
 
-创建 [AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) 并将其传递到的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 这会加载在 *检测到关键字之前约3秒开始*音频的图形音频缓冲区。 随附这一额外的领先音频是为了容纳各种关键字长度和发言人速度。 然后，处理来自音频图形的 [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) 事件以检索音频数据。
+创建 [AudioGraph](/uwp/api/windows.media.audio.audiograph) 并将其传递到的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 这会加载在 *检测到关键字之前约3秒开始* 音频的图形音频缓冲区。 随附这一额外的领先音频是为了容纳各种关键字长度和发言人速度。 然后，处理来自音频图形的 [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) 事件以检索音频数据。
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -118,7 +118,7 @@ await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
 
 有关设计以上锁定体验的指导，请访问 [最佳做法指南](windows-voice-assistants-best-practices.md)。
 
-应用显示超出锁定状态的视图时，会将其视为 "展台模式"。 有关实现使用展台模式的应用的详细信息，请参阅 [展台模式文档](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)。
+应用显示超出锁定状态的视图时，会将其视为 "展台模式"。 有关实现使用展台模式的应用的详细信息，请参阅 [展台模式文档](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)。
 
 ### <a name="transitioning-above-lock"></a>转换超过锁
 
@@ -149,7 +149,7 @@ conversationalAgentSession.SystemStateChanged += (s, e) =>
 若要在上方或下方锁定时以编程方式适当关闭应用程序，请使用 `WindowService.CloseWindow()` API。 这会触发所有 UWP 生命周期方法（包括 OnSuspend），使应用程序能够 `ConversationalAgentSession` 在关闭前释放其实例。
 
 > [!NOTE]
-> 应用程序可以在不关闭 [以下锁定实例](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)的情况下关闭。 在这种情况下，以上锁定视图需要 "清除"，确保在屏幕解锁后，不存在将尝试操作以上锁定视图的事件处理程序或任务。
+> 应用程序可以在不关闭 [以下锁定实例](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)的情况下关闭。 在这种情况下，以上锁定视图需要 "清除"，确保在屏幕解锁后，不存在将尝试操作以上锁定视图的事件处理程序或任务。
 
 ## <a name="next-steps"></a>后续步骤
 

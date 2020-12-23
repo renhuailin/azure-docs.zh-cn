@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6ce5de354583da04905f9f889cfabe36e6da6667
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434650"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546120"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -72,7 +72,7 @@ HDInsight 群集名称具有以下限制：
 Azure HDInsight 目前提供以下群集类型，每种类型都具有一组用于提供特定功能的组件。
 
 > [!IMPORTANT]  
-> HDInsight 群集以多种类型提供，每种类型适用于单个工作负荷或技术。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。 如果解决方案需要分布在多种 HDInsight 群集类型上的技术，可以使用 [Azure 虚拟网络 ](https://docs.microsoft.com/azure/virtual-network)连接所需的群集类型。
+> HDInsight 群集以多种类型提供，每种类型适用于单个工作负荷或技术。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。 如果解决方案需要分布在多种 HDInsight 群集类型上的技术，可以使用 [Azure 虚拟网络 ](../virtual-network/index.yml)连接所需的群集类型。
 
 | 群集类型 | 功能 |
 | --- | --- |
@@ -92,7 +92,7 @@ Azure HDInsight 目前提供以下群集类型，每种类型都具有一组用�
 
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
-* 群集登录用户名：默认的用户名为 *admin*。它使用 Azure 门户上的基本配置。 有时称为“群集用户”或“HTTP 用户”。
+* 群集登录用户名：默认的用户名为 *admin* 。它使用 Azure 门户上的基本配置。 有时称为“群集用户”或“HTTP 用户”。
 * 安全外壳 (SSH) 用户名：用来通过 SSH 连接到群集。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 HTTP 用户名具有以下限制：
@@ -120,7 +120,7 @@ HDInsight 群集可以使用以下存储选项：
 * Azure Data Lake Storage Gen1
 * Azure 存储常规用途 v2
 * Azure 存储常规用途 v1
-* Azure 存储块 blob (**仅支持用作辅助存储**) 
+* Azure 存储块 blob ( **仅支持用作辅助存储** ) 
 
 有关 HDInsight 存储选项的详细信息，请参阅 [比较用于 Azure hdinsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
 
@@ -176,7 +176,7 @@ Ambari 用于监视 HDInsight 群集，进行配置更改，以及存储群集�
 
 企业安全数据包允许将 HDInsight 与 Active Directory 和 Apache Ranger 集成。 可使用企业安全数据包创建多个用户。
 
-有关如何创建已加入域的 HDInsight 群集的详细信息，请参阅[创建已加入域的 HDInsight 沙盒环境](./domain-joined/apache-domain-joined-configure.md)。
+有关如何创建已加入域的 HDInsight 群集的详细信息，请参阅[创建已加入域的 HDInsight 沙盒环境](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。
 
 ### <a name="tls"></a>TLS
 
@@ -184,7 +184,7 @@ Ambari 用于监视 HDInsight 群集，进行配置更改，以及存储群集�
 
 ### <a name="virtual-network"></a>虚拟网络
 
-如果解决方案需要分布在多种 HDInsight 群集类型上的技术，可以使用 [Azure 虚拟网络 ](https://docs.microsoft.com/azure/virtual-network)连接所需的群集类型。 此配置允许群集以及部署到群集的任何代码直接相互通信。
+如果解决方案需要分布在多种 HDInsight 群集类型上的技术，可以使用 [Azure 虚拟网络 ](../virtual-network/index.yml)连接所需的群集类型。 此配置允许群集以及部署到群集的任何代码直接相互通信。
 
 有关在 HDInsight 中使用 Azure 虚拟网络的详细信息，请参阅[规划 HDInsight 的虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
@@ -235,7 +235,7 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 如果刚尝试使用 HDInsight，我们建议使用一个辅助角色节点。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
 
 > [!NOTE]  
-> 群集大小限制因 Azure 订阅而异。 若要提高限制的大小，请联系 [Azure 计费支持人员](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+> 群集大小限制因 Azure 订阅而异。 若要提高限制的大小，请联系 [Azure 计费支持人员](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 使用 Azure 门户配置群集时，可通过“配置 + 定价”边栏选项卡查看节点大小。在门户中，还可以查看不同节点大小的相关费用。
 
@@ -243,15 +243,15 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 
 部署群集时，请根据要部署的解决方案选择计算资源。 以下 VM 用于 HDInsight 群集：
 
-* A 系列和 D1-4 系列 VM：[常规用途 Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* D11-14 系列 VM：[内存优化 Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* A 系列和 D1-4 系列 VM：[常规用途 Linux VM 大小](../virtual-machines/sizes-general.md)
+* D11-14 系列 VM：[内存优化 Linux VM 大小](../virtual-machines/sizes-memory.md)
 
 使用不同的 SDK 或使用 Azure PowerShell 创建群集时，若要确定应该使用哪个值来指定 VM 大小，请参阅[用于 HDInsight 群集的 VM 大小](../cloud-services/cloud-services-sizes-specs.md#size-tables)。 请使用此链接本章的“大小”列中的值。
 
 > [!IMPORTANT]  
 > 如果群集中需要32个以上的辅助角色节点，则必须选择至少具有8个核心和 14 GB RAM 的头节点大小。
 
-有关详细信息，请参阅[虚拟机的大小](../virtual-machines/windows/sizes.md)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。
+有关详细信息，请参阅[虚拟机的大小](../virtual-machines/sizes.md)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。
 
 ### <a name="add-application"></a>添加应用程序
 
@@ -261,7 +261,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 ### <a name="script-actions"></a>脚本操作
 
-可以在创建期间通过使用脚本安装其他组件或自定义群集配置。 此类脚本可通过 **脚本操作**调用，脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+可以在创建期间通过使用脚本安装其他组件或自定义群集配置。 此类脚本可通过 **脚本操作** 调用，脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 某些本机 Java 组件（例如 Apache Mahout 和 Cascading）可以在群集上作为 Java 存档 (JAR) 文件运行。 可以使用 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure 存储，然后提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 

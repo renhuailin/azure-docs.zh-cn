@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b941084c8a196081c2443364ed3fb52868386670
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.openlocfilehash: 09723030f0da0252120f66f36347cad2e3a3546a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464941"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375827"
 ---
 导航到要为其创建专用终结点的存储帐户。 在存储帐户的目录中选择“专用终结点连接”，然后选择“+ 专用终结点”创建新的专用终结点。  
 
@@ -23,7 +23,7 @@ ms.locfileid: "84464941"
 
 在“基本信息”边栏选项卡中，为专用终结点选择所需的资源组、名称和区域。 资源组、名称和区域可以任意配置，不必与存储帐户匹配，但必须在同一区域中创建专用终结点和用于容纳该专用终结点的存储帐户。
 
-![“创建专用终结点”部分“基本信息”部分的屏幕截图](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
+![“创建专用终结点”部分中“基本信息”部分的屏幕截图](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
 
 在“资源”边栏选项卡中，选中“连接到目录中的 Azure 资源”对应的单选按钮。  在“资源类型”下，选择“Microsoft.Storage/storageAccounts”为资源类型 。 “资源”字段用于指定包含要连接到的 Azure 文件共享的存储帐户。 因为针对 Azure 文件存储，所以目标子资源是“文件”。
 

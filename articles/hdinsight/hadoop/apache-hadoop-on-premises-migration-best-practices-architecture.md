@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: af9b1f42140c5656c5f55a98c2d635d59e130db5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077892"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533727"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
 
@@ -25,7 +25,7 @@ ms.locfileid: "86077892"
 
 Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可以跨多个群集共享存储，因此可以创建多个工作负载优化的计算群集，以满足不同作业的需求。 每个群集类型根据该特定工作负荷采用最佳的配置。 下表列出了 HDInsight 中支持的群集类型和对应的工作负荷。
 
-|工作负荷|HDInsight 群集类型|
+|工作负载|HDInsight 群集类型|
 |---|---|
 |批处理 (ETL/ELT)|Hadoop、Spark|
 |数据仓库|Hadoop、Spark、交互式查询|
@@ -43,9 +43,9 @@ Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可
 |[Azure CLI（版本 1.0）](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
-|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
+|[Python SDK](/python/api/overview/azure/hdinsight)||||X|
+|[Java SDK](/java/api/overview/azure/hdinsight)||||X|
 |[Azure Resource Manager 模板](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 有关详细信息，请参阅 [HDInsight 中的群集类型](../hadoop/apache-hadoop-introduction.md)一文。
@@ -107,7 +107,7 @@ HDInsight 对 Hive 和 Oozie 元存储使用 Azure SQL 数据库。 可通过两
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作负荷的最佳做法
 
-- 考虑对交互式 Hive 查询使用可改善响应时间的 LLAP 群集。[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)  是 Hive 2.0 中的一项新功能，可用于在内存中缓存查询。 LLAP 能够大幅加快 Hive 查询的速度， [在某些情况下，速度比 Hive 1.x 要快 26 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
+- 考虑将 LLAP 群集用于交互式 Hive 查询并缩短响应时间 [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) 是 Hive 2.0 中的一项新功能，该功能允许对查询进行内存中缓存。 LLAP 能够大幅加快 Hive 查询的速度，[在某些情况下，速度比 Hive 1.x 要快 2.6 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
 - 考虑使用 Spark 作业取代 Hive 作业。
 - 考虑使用 LLAP 查询取代基于 impala 的查询。
 - 考虑使用 Spark 作业取代 MapReduce 作业。

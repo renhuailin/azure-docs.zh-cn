@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: f3a58a6766c42385dd6611c2014ba36fd1078710
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fe1d5a5a472b47abd364a89d1a65f1249c67c0d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934392"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538657"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>利用内置的指标监视 Azure Database for MySQL 灵活的服务器
 
@@ -24,9 +24,9 @@ Azure Database for MySQL 灵活的服务器通过 Azure Monitor 提供服务器�
 
 ## <a name="available-metrics"></a>可用度量值
 
-Azure Database for MySQL 灵活服务器提供各种指标来了解工作负荷的执行方式和基于此数据的方式，你可以了解服务器和应用程序的影响。 例如，在 "灵活服务器" 中，可以监视 **主机 CPU 百分比**、 **活动连接**、 **IO 百分比**和 **主机内存百分比** ，以确定是否会影响性能。 从这里，你可能必须优化工作负荷，通过更改计算层来进行垂直缩放，或使用读取副本水平缩放。
+Azure Database for MySQL 灵活服务器提供各种指标来了解工作负荷的执行方式和基于此数据的方式，你可以了解服务器和应用程序的影响。 例如，在 "灵活服务器" 中，可以监视 **主机 CPU 百分比** 、 **活动连接** 、 **IO 百分比** 和 **主机内存百分比** ，以确定是否会影响性能。 从这里，你可能必须优化工作负荷，通过更改计算层来进行垂直缩放，或使用读取副本水平缩放。
 
-所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 有关分步指南，请参阅 [如何设置警报](./how-to-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 有关分步指南，请参阅 [如何设置警报](./how-to-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../../azure-monitor/platform/data-platform.md)。
 
 ### <a name="list-of-metrics"></a>指标列表
 这些指标适用于 Azure Database for MySQL：
@@ -44,9 +44,9 @@ Azure Database for MySQL 灵活服务器提供各种指标来了解工作负荷�
 |存储限制|storage_limit|字节|此服务器的最大存储。|
 |存储百分比|storage_percent|百分比|所用存储占服务器最大存储的百分比。|
 |使用的存储|storage_used|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
-|总连接数|total_connections|Count|与服务器的总连接数|
-|已中止的连接数|aborted_connections|Count|由于凭据错误而导致连接到 MySQL 的失败尝试次数。|
-|查询|查询|Count|每秒查询数|
+|总连接数|total_connections|计数|与服务器的总连接数|
+|已中止的连接数|aborted_connections|计数|由于凭据错误而导致连接到 MySQL 的失败尝试次数。|
+|查询|查询|计数|每秒查询数|
 
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](./how-to-alert-on-metric.md)。

@@ -4,12 +4,12 @@ description: 本文提供的信息可帮助你在整个环境中优化成本并�
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476251"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328260"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure 开发测试实验室基础设施治理 - 管理成本和所有权
 打算构建开发和测试环境时，成本和所有权是主要的考量。 本部分介绍如何在环境中进行成本优化并落实所有权。
@@ -34,9 +34,9 @@ ms.locfileid: "85476251"
 
 如果决定使用开发测试套餐，则请注意，此权益专用于开发和应用程序测试。 订阅内的使用不带有财务支持的 SLA，Azure DevOps 和 HockeyApp 的使用除外。
 
-## <a name="define-a-role-based-access-across-your-organization"></a>定义基于角色的跨组织访问权限
+## <a name="define-role-based-access-across-your-organization"></a>定义跨组织的基于角色的访问
 ### <a name="question"></a>问题
-如何为我的开发测试实验室环境定义基于角色的访问控制才能确保在开发人员/测试人员完成其工作时由 IT 部门进行治理？ 
+如何实现为我的开发测试实验室环境定义 Azure 基于角色的访问控制，以确保它可以在开发人员/测试可以执行其工作时进行控制？ 
 
 ### <a name="answer"></a>答案
 可以使用一种广泛的模式，但具体细节取决于你的组织。
@@ -49,7 +49,7 @@ ms.locfileid: "85476251"
 
 应该将项目/应用程序团队成员添加到开发测试实验室用户角色中。 这些用户可以创建虚拟机（前提是遵循实验室和订阅级别的策略）。 他们也可以管理自己的虚拟机。 他们不能管理属于其他用户的虚拟机。
 
-有关详细信息，请参阅[Azure 企业基架–说明性的订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold)文档。
+有关详细信息，请参阅 [Azure 企业基架–说明性的订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold) 文档。
 
 
 ## <a name="next-steps"></a>后续步骤

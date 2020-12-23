@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73682211"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535308"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>为 Azure HDInsight 群集选择适当的 VM 大小
 
@@ -32,7 +32,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 - RAM：VM 大小还支配 VM 中可用的 RAM 量。 对于在内存中存储而不是从磁盘读取待处理数据的工作负荷，请确保工作节点能够提供足够的内存来容纳这些数据。
 
-- 网络：对于大多数群集类型，群集处理的数据不在本地磁盘上，而是在 Data Lake Storage 或 Azure 存储等外部存储服务中。 考虑节点 VM 与存储服务之间的网络带宽和吞吐量。 通常，更大 VM 的可用网络带宽越高。 有关详细信息，请参阅 [VM 大小概述](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+- 网络：对于大多数群集类型，群集处理的数据不在本地磁盘上，而是在 Data Lake Storage 或 Azure 存储等外部存储服务中。 考虑节点 VM 与存储服务之间的网络带宽和吞吐量。 通常，更大 VM 的可用网络带宽越高。 有关详细信息，请参阅 [VM 大小概述](../virtual-machines/sizes.md)。
 
 ## <a name="understanding-vm-optimization"></a>了解 VM 优化
 
@@ -40,10 +40,10 @@ Azure 中的虚拟机系列经过优化，可以适应不同的用例。 在下�
 
 | 类型                     | 大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [入门级](../virtual-machines/linux/sizes-general.md)          | A、Av2  | CPU 性能和内存配置非常适合开发和测试等入门级工作负荷。 它们的性价比很高，是在 Azure 中入门的低成本选项。 |
-| [常规用途](../virtual-machines/linux/sizes-general.md)          | D、DSv2、Dv2  | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
-| [计算优化](../virtual-machines/linux/sizes-compute.md)        | F           | 高 CPU 与内存之比。 适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。        |
-| [内存优化](../virtual-machines/linux/sizes-memory.md)         | Esv3、Ev3  | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
+| [入门级](../virtual-machines/sizes-general.md)          | A、Av2  | CPU 性能和内存配置非常适合开发和测试等入门级工作负荷。 它们的性价比很高，是在 Azure 中入门的低成本选项。 |
+| [常规用途](../virtual-machines/sizes-general.md)          | D、DSv2、Dv2  | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
+| [计算优化](../virtual-machines/sizes-compute.md)        | F           | 高 CPU 与内存之比。 适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。        |
+| [内存优化](../virtual-machines/sizes-memory.md)         | Esv3、Ev3  | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
 
 - 有关 HDInsight 支持的不同区域中可用 VM 实例的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
@@ -74,4 +74,4 @@ Azure 中的虚拟机系列经过优化，可以适应不同的用例。 在下�
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure HDInsight 支持的节点配置](hdinsight-supported-node-configuration.md)
-- [Azure 中 Linux 虚拟机的大小](../virtual-machines/linux/sizes.md)
+- [Azure 中 Linux 虚拟机的大小](../virtual-machines/sizes.md)

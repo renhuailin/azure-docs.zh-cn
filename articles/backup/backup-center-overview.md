@@ -3,12 +3,12 @@ title: 备份中心概述
 description: 本文概述了 Azure 的备份中心。
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7eab2e8f9694ca83d0e050f55bc6f6dd802a7331
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614270"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173729"
 ---
 # <a name="overview-of-backup-center"></a>备份中心概述
 
@@ -16,9 +16,9 @@ ms.locfileid: "91614270"
 
 备份中心的一些主要优点包括：
 
-* **用于管理备份的单个窗格** ：备份中心设计为可在大型分布式 Azure 环境中正常运行。 你可以使用备份中心来有效地管理跨多个工作负荷类型、保管库、订阅、区域和 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 租户的备份。
+* **用于管理备份的单个窗格** ：备份中心设计为可在大型分布式 Azure 环境中正常运行。 你可以使用备份中心来有效地管理跨多个工作负荷类型、保管库、订阅、区域和 [Azure Lighthouse](../lighthouse/overview.md) 租户的备份。
 * 以**数据中心为中心的管理**–备份中心提供视图和筛选器，这些视图和筛选器位于你备份 (例如，vm 和数据库) 的数据源中。 这允许资源所有者或备份管理员监视和操作项的备份，而无需专注于将项备份到的保管库。 此设计的一项重要功能是能够按特定于数据源的属性（如数据源订阅、数据源资源组和数据源标记）筛选视图。 例如，如果你的组织遵循将不同的标记分配给属于不同部门的 Vm 的做法，则可以使用备份中心基于要备份的底层 Vm 的标记筛选备份信息，而无需将精力集中在保管库的标记上。
-* **连接体验** –备份中心提供对现有 Azure 服务的本机集成，可大规模管理。 例如，备份中心使用 [Azure 策略](https://docs.microsoft.com/azure/governance/policy/overview) 体验来帮助你管理备份。 它还利用 [Azure 工作簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) 和 [Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) 来帮助你查看有关备份的详细报表。 因此，您无需学习任何新的原则即可使用备份中心提供的各种功能。
+* **连接体验** –备份中心提供对现有 Azure 服务的本机集成，可大规模管理。 例如，备份中心使用 [Azure 策略](../governance/policy/overview.md) 体验来帮助你管理备份。 它还利用 [Azure 工作簿](../azure-monitor/platform/workbooks-overview.md) 和 [Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md) 来帮助你查看有关备份的详细报表。 因此，您无需学习任何新的原则即可使用备份中心提供的各种功能。
 
 ## <a name="supported-scenarios"></a>支持的方案
 

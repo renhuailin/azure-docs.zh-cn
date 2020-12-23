@@ -1,17 +1,15 @@
 ---
 title: 打包和部署容器
 description: 本教程介绍如何使用 Yeoman 生成 Azure Service Fabric 应用程序定义并将应用程序打包。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252743"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738862"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教程：使用 Yeoman 将容器打包并部署为 Service Fabric 应用程序
 
@@ -101,7 +99,7 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-在本教程的其余部分中，将在“TestContainer”  目录中工作。 例如， *./TestContainer/TestContainer*。 此目录的内容应如下所示。
+在本教程的其余部分中，将在“TestContainer”  目录中工作。 例如， *./TestContainer/TestContainer* 。 此目录的内容应如下所示。
 
 ```bash
 $ ls
@@ -126,7 +124,7 @@ az acr login --name <acrName>
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-在“ApplicationManifest.xml”  中，会在前端服务的“ServiceManifestImport”  元素下添加代码片段。 为“AccountName”字段插入 **acrName**，从上一命令返回的密码将用于“密码”字段。 本文档末尾提供完整的“ApplicationManifest.xml”  。
+在“ApplicationManifest.xml”  中，会在前端服务的“ServiceManifestImport”  元素下添加代码片段。 为“AccountName”字段插入 **acrName** ，从上一命令返回的密码将用于“密码”字段。 本文档末尾提供完整的“ApplicationManifest.xml”  。
 
 ```xml
 <Policies>
@@ -154,7 +152,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ```
 
-同样，修改后端服务的服务清单。 打开 *./TestContainer/azurevotebackPkg/ServiceManifest.xml*，并在“ServiceManifest”  元素中声明终结点资源。 在本教程中，保留 redis 默认值 6379。 以下代码片段放置在资源中的 *ServiceManifest* 标记下。
+同样，修改后端服务的服务清单。 打开 *./TestContainer/azurevotebackPkg/ServiceManifest.xml* ，并在“ServiceManifest”  元素中声明终结点资源。 在本教程中，保留 redis 默认值 6379。 以下代码片段放置在资源中的 *ServiceManifest* 标记下。
 
 ```xml
 <Resources>
@@ -278,7 +276,7 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
 
 若要连接到运行的应用程序，请打开 Web 浏览器并转到群集 url，例如 http:\//containertestcluster.eastus.cloudapp.azure.com:80。 在 Web UI 中应会显示投票应用程序。
 
-![votingapp][votingapp]
+![屏幕截图显示了包含“猫”、“狗”、“重置”和“合计”按钮的 Azure Voting 应用。][votingapp]
 
 ## <a name="clean-up"></a>清除
 

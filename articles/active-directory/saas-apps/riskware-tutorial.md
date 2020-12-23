@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b147037a58e4af59c0c3ccd56b6f6b241d775308
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e33664501483280978c67b100cd56a714ef63a30
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553312"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553312"
 * 可让用户使用其 Azure AD 帐户自动登录到 Riskware（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88553312"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,18 +105,18 @@ ms.locfileid: "88553312"
     
     | 环境| URL 模式|
     |--|--|
-    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
+    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
+    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL： 
     
     | 环境| URL 模式|
     |--|--|
-    | UAT| `https://riskcloud.net/uat` |
-    | PROD| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` |
+    | UAT| `https://riskcloud.net/uat` |
+    | PROD| `https://riskcloud.net/prod` |
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
@@ -152,7 +152,7 @@ ms.locfileid: "88553312"
 
     ![Riskware 配置 - 身份验证配置](./media/riskware-tutorial/tutorial_riskware_config.png)
 
-    a. 选择“SAML”作为身份验证的**类型**。 
+    a. 选择“SAML”作为身份验证的 **类型** 。 
 
     b. 在“代码”文本框中，键入类似于 AZURE_UAT 的代码。 
 
@@ -166,7 +166,7 @@ ms.locfileid: "88553312"
 
     g. 在“XML 标识标记名称”文本框中键入属性，其中包含 SAML 响应中的唯一标识符（如 NameID）。 
 
-    h. 在记事本中打开从 Azure 门户下载的**元数据 XML**，复制元数据文件中的证书，并将其粘贴到“证书”文本框中 
+    h. 在记事本中打开从 Azure 门户下载的 **元数据 XML** ，复制元数据文件中的证书，并将其粘贴到“证书”文本框中 
 
     i. 在“使用者 URL”文本框中，粘贴从支持团队获取的“回复 URL”值。  
 
@@ -284,12 +284,12 @@ ms.locfileid: "88553312"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Riskware 磁贴时，应当会自动登录到为其设置了 SSO 的 Riskware。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Riskware 磁贴时，应当会自动登录到为其设置了 SSO 的 Riskware。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

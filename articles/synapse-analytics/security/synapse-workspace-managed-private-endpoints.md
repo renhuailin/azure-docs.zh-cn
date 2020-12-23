@@ -5,17 +5,17 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e592159777f3b533bc447bb109e9b1308af7ecff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5258b1eab48f71d8d17f52849b5e57b467e7a2da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249496"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460378"
 ---
-# <a name="synapse-managed-private-endpoints-preview"></a>Synapse 托管专用终结点（预览版）
+# <a name="synapse-managed-private-endpoints"></a>Synapse 托管专用终结点
 
 本文将介绍 Azure Synapse Analytics 中的托管专用终结点。
 
@@ -43,16 +43,17 @@ Azure Synapse 支持专用链接。 通过专用链接，你可以安全地从 A
 
 只有处于已批准状态的托管专用终结点才能将流量发送到给定的专用链接资源。
 
-## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>SQL 池和 SQL 按需版本的托管专用终结点
+## <a name="managed-private-endpoints-for-dedicated-sql-pool-and-serverless-sql-pool"></a>专用 SQL 池和无服务器 SQL 池的托管专用终结点
 
-SQL 池和 SQL 按需版本是 Azure Synapse 工作区中的分析功能。 这些功能使用未部署到[托管工作区虚拟网络](./synapse-workspace-managed-vnet.md)中的多租户基础结构。
+专用 SQL 池和无服务器 SQL 池是 Azure Synapse 工作区中的分析功能。 这些功能使用未部署到[托管工作区虚拟网络](./synapse-workspace-managed-vnet.md)中的多租户基础结构。
 
-创建工作区时，Azure Synapse 会在该工作区中创建面向 SQL 池和 SQL 按需版本的两个托管专用终结点。 
+创建工作区时，Azure Synapse 会在该工作区中创建两个托管专用终结点，分别用于专用 SQL 池和无服务器 SQL 池。 
 
-这两个托管专用终结点会在 Azure Synapse Studio 中列出。 在 Studio 的左侧导航栏中选择“管理”，然后选择“托管虚拟网络”即可查看它们。
+这两个托管专用终结点会在 Synapse Studio 中列出。 在 Studio 的左侧导航栏中选择“管理”，然后选择“托管专用终结点”即可查看它们 。
 
-面向 SQL 池的托管专用终结点名为 synapse-ws-sql--\<workspacename\>，面向 SQL 按需版本的托管专用终结点名为 synapse-ws-sqlOnDemand--\<workspacename\> 。
-![SQL 池和 SQL 按需版本的托管专用终结点](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
+面向 SQL 池的托管专用终结点名为 synapse-ws-sql--\<workspacename\>，面向无服务器 SQL 池的托管专用终结点名为 ynapse-ws-sqlOnDemand--\<workspacename\> 。
+
+![专用 SQL 池和无服务器 SQL 池的托管专用终结点](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 创建 Azure Synapse 工作区时，会自动为你创建这两个托管专用终结点。 对于这两个托管专用终结点，你无需付费。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6cc0855d3a4540de780a566a4613b4dbc647cfc5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845555"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369482"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
 
@@ -61,7 +61,7 @@ ms.locfileid: "87845555"
 
 本教程的其余部分介绍如何迁移运行 Windows Server 2008 或 2008 R2 的本地 VMware 虚拟机和物理服务器。
 > [!TIP]
-> 正在寻找将 VMware VM 迁移到 Azure 的无代理方式？ 请[单击此处](https://aka.ms/migrateVMs-signup)
+> 正在寻找将 VMware VM 迁移到 Azure 的无代理方式？ 请[单击此处](../migrate/tutorial-migrate-vmware.md)
 
 
 ### <a name="limitations-and-known-issues"></a>限制和已知问题
@@ -120,7 +120,7 @@ ms.locfileid: "87845555"
 
 选择并验证目标资源。
 
-1. 单击“准备基础结构” > “目标”，并选择要使用的 Azure 订阅。
+1. 单击“准备基础结构”   > “目标”  ，并选择要使用的 Azure 订阅。
 2. 指定资源管理器部署模型。
 3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
@@ -128,7 +128,7 @@ ms.locfileid: "87845555"
 ### <a name="set-up-a-replication-policy"></a>设置复制策略
 
 1. 若要创建新的复制策略，请单击“Site Recovery 基础结构” > “复制策略” > “+ 复制策略”。
-2. 在“创建复制策略”中指定策略名称。
+2. 在“创建复制策略”  中指定策略名称。
 3. 在“RPO 阈值”中，指定恢复点目标 (RPO) 限制。 如果复制 RPO 超出此限制，则会生成警报。
 4. 在“恢复点保留期”中，指定每个恢复点的保留期时长（以小时为单位）。 可以将复制的服务器恢复到此窗口中的任何点。 复制到高级存储的计算机最多支持 24 小时的保留期，复制到标准存储的计算机最多支持 72 小时的保留期。
 5. 在“应用一致性快照频率”中，请指定“关”。  单击“确定”创建该策略。
@@ -162,8 +162,8 @@ ms.locfileid: "87845555"
 为想要迁移的计算机运行故障转移。
 
 1. 在“设置” > “复制的项”中，单击计算机 >“故障转移”。
-2. 在“故障转移”中，选择要故障转移到的“恢复点” 。 选择最新恢复点。
-3. 选择“在开始故障转移前关闭计算机”。 Site Recovery 在触发故障转移之前会尝试关闭服务器。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
+2. 在“故障转移”中，选择要故障转移到的“恢复点”   。 选择最新恢复点。
+3. 选择“在开始故障转移前关闭计算机”。 Site Recovery 在触发故障转移之前会尝试关闭服务器。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
 4. 检查 Azure VM 是否在 Azure 中按预期显示。
 5. 在“复制的项”中，右键单击服务器 >“完成迁移”。 这样会执行以下操作：
 

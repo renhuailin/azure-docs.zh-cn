@@ -3,12 +3,12 @@ title: 将群集节点升级为使用 Azure 托管磁盘
 description: 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717517"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316164"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>将群集节点升级为使用 Azure 托管磁盘
 
@@ -25,7 +25,7 @@ ms.locfileid: "88717517"
 本文将引导你完成将示例群集的主要节点类型升级为使用托管磁盘的步骤，同时避免发生任何群集停机（参阅下面的注释）。 示例测试群集的初始状态包括一个[银级持久性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)的节点类型，该节点类型由包含五个节点的单个规模集提供支持。
 
 > [!NOTE]
-> 基本 SKU 负载均衡器的限制阻止添加其他规模集。 建议改用标准 SKU 负载均衡器。 有关详细信息，请参阅 [两个 sku 的比较](/azure/load-balancer/skus)。
+> 基本 SKU 负载均衡器的限制会阻止添加其他规模集。 建议改为使用标准 SKU 负载均衡器。 有关详细信息，请参阅[两个 SKU 的比较](../load-balancer/skus.md)。
 
 > [!CAUTION]
 > 仅当你依赖于群集 DNS 时（例如，在访问 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 时），才会在此过程中遇到服务中断。 [适用于前端服务的体系结构最佳做法](/azure/architecture/microservices/design/gateway)要求在你的节点类型的前面使用某种[负载均衡器](/azure/architecture/guide/technology-choices/load-balancing-overview)，以便无需中断服务即可进行节点交换。

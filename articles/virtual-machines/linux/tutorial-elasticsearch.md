@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 54ef051b7d8778e2eecd85bef2e57b62239ba114
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80066545"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435294"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack
 
@@ -35,13 +35,13 @@ ms.locfileid: "80066545"
 
  此部署适用于使用 Elastic Stack 进行基本开发的情况。 有关 Elastic 堆栈的详细信息，包括针对生产环境的建议，请参阅 [Elastic 文档](https://www.elastic.co/guide/index.html)和 [Azure 体系结构中心](/azure/architecture/elasticsearch/)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+- 本文需要 Azure CLI 版本 2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -211,7 +211,7 @@ sudo /usr/share/logstash/bin/logstash -f vm-syslog-logstash.conf
 编辑 `/etc/kibana/kibana.yml` 并更改 Kibana 侦听的 IP 地址，以便通过 Web 浏览器对其进行访问。
 
 ```bash
-server.host:"0.0.0.0"
+server.host: "0.0.0.0"
 ```
 
 使用以下命令启动 Kibana：
@@ -228,7 +228,7 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 打开 Kibana 控制台并选择“创建”，根据之前发送给 Elasticsearch 的 syslog 数据生成默认索引  。 
 
-![浏览 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-index.png)
+![显示 Kibana 控制台并突出显示“创建”按钮的屏幕截图。](media/elasticsearch-install/kibana-index.png)
 
 在 Kibana 控制台上选择“发现”，搜索、浏览和筛选 syslog 事件  。
 

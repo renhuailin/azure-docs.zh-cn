@@ -9,16 +9,16 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042796"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621274"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
-Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更高效。 此功能非常适用于处理大量数据的服务，例如计算机视觉模型。 [自定义视觉服务](../cognitive-services/custom-vision-service/home.md)用于生成自定义图像分类器并将其作为容器部署到设备。 将这两项服务一起使用可以对图像或视频流进行分析，不需先将所有数据从站点转移出来。 自定义视觉提供一个可以将图像与训练的模型进行比较的分类器，以便生成见解。
+Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更高效。 此功能非常适用于处理大量数据的服务，例如计算机视觉模型。 [自定义视觉服务](../cognitive-services/custom-vision-service/overview.md)用于生成自定义图像分类器并将其作为容器部署到设备。 将这两项服务一起使用可以对图像或视频流进行分析，不需先将所有数据从站点转移出来。 自定义视觉提供一个可以将图像与训练的模型进行比较的分类器，以便生成见解。
 
 例如，IoT Edge 设备上的自定义视觉可以确定某条高速公路的交通流量是高于还是低于正常，或者某个室内停车场是否有连续的停车位。 这些见解可以与其他服务共享，方便采取行动。
 
@@ -46,7 +46,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
-* 一个容器注册表，例如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
+* 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。
 
@@ -449,9 +449,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你训练了一个自定义视觉模型并将其作为模块部署到了 IoT Edge 设备中。 然后，你生成了一个模块，该模块可以查询图像分类服务并将其结果报告回 IoT 中心。 
-
-若要尝试此方案的更深入的版本（带实时摄像头源），请参阅 GitHub 项目：[Custom Vision and Azure IoT Edge on a Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)（Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge）。 
+在本教程中，你训练了一个自定义视觉模型并将其作为模块部署到了 IoT Edge 设备中。 然后，你生成了一个模块，该模块可以查询图像分类服务并将其结果报告回 IoT 中心。
 
 继续阅读后续教程，了解如何使用 Azure IoT Edge 通过其他方式将数据转化为边缘业务见解。
 

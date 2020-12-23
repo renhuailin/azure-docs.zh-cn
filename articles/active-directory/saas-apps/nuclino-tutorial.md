@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4307838df56fb2dc1cdf6ee4044b8ce8de164227
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554286"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Nuclino 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88554286"
 * 让用户使用其 Azure AD 帐户自动登录到 Nuclino。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88554286"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Nuclino 支持 **SP 和 IDP** 发起的 SSO
-* Nuclino 支持**恰时**用户预配
+* Nuclino 支持 **恰时** 用户预配
 
 ## <a name="adding-nuclino-from-the-gallery"></a>从库中添加 Nuclino
 
@@ -143,7 +143,7 @@ ms.locfileid: "88554286"
 
 ## <a name="configure-nuclino-sso"></a>配置 Nuclino SSO
 
-1. 若要在 Nuclino 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
+1. 若要在 Nuclino 中自动执行配置，需要通过单击“安装扩展”  来安装 **我的应用安全登录浏览器扩展** 。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
@@ -155,15 +155,15 @@ ms.locfileid: "88554286"
 
 4. 单击“ICON”  。
 
-    ![Nuclino 配置](./media/nuclino-tutorial/configure1.png)
+    ![屏幕截图显示选择了“Azure AD SSO”旁边的“菜单”图标。](./media/nuclino-tutorial/configure1.png)
 
 5. 单击“Azure AD SSO”，然后从下拉列表中选择“团队设置”。  
 
-    ![Nuclino 配置](./media/nuclino-tutorial/configure2.png)
+    ![屏幕截图显示选择了“团队设置”的“Azure AD SSO”下拉列表。](./media/nuclino-tutorial/configure2.png)
 
 6. 从左侧导航窗格中选择“身份验证”。 
 
-    ![Nuclino 配置](./media/nuclino-tutorial/configure3.png)
+    ![屏幕截图显示已选择“身份验证”。](./media/nuclino-tutorial/configure3.png)
 
 7. 在“身份验证”  部分执行以下步骤：
 
@@ -194,15 +194,14 @@ ms.locfileid: "88554286"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Nuclino 磁贴时，应当会自动登录到已为其设置了 SSO 的 Nuclino。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Nuclino 磁贴时，应当会自动登录到已为其设置了 SSO 的 Nuclino。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Nuclino](https://aad.portal.azure.com/)
-

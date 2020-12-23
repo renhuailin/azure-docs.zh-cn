@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213496"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347193"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建队列并添加消息
 
@@ -43,7 +43,7 @@ ms.locfileid: "88213496"
 1. 选择“+ 添加消息”按钮以将消息添加到队列。  在“消息文本”字段中输入消息。 
 1. 指定消息何时过期。 验证“到期时间”字段中输入的值是否介于 1 秒到 7 天之间。 选择“消息永不过期”表示消息将一直保留在队列中，直到显式删除。
 1. 指示是否要将消息编码为 Base64。 建议对二进制数据编码。
-1. 选择“确定”按钮添加该消息。****
+1. 选择“确定”按钮添加该消息。
 
     ![显示如何将消息添加到队列的屏幕截图](media/storage-quickstart-queues-portal/add-message.png)
 
@@ -55,9 +55,9 @@ ms.locfileid: "88213496"
 
 ## <a name="dequeue-a-message"></a>将消息移出队列
 
-可以在 Azure 门户中，将队列前部的消息取消排队。 将消息取消排队时，会删除该消息。 
+可以在 Azure 门户中，将队列前部的消息取消排队。 将消息取消排队时，会删除该消息。
 
-取消排队始终会删除队列中最早的消息。 
+取消排队始终会删除队列中最早的消息。
 
 ![显示如何在门户中取消消息排队的屏幕截图](media/storage-quickstart-queues-portal/dequeue-message.png)
 

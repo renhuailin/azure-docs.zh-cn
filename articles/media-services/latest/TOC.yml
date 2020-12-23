@@ -20,7 +20,7 @@
         - name: 访问 API
           href: access-api-howto.md
         - name: 设置 Azure Cloud Shell
-          href: 'https://docs.microsoft.com/azure/cloud-shell/overview'
+          href: ../../cloud-shell/overview.md
         - name: 使用 REST 进行开发
           items:
             - name: 使用 Postman 进行连接
@@ -45,6 +45,10 @@
           href: manage-assets-quickstart.md
         - name: 使用门户加密内容
           href: encrypt-content-quickstart.md
+    - name: 使用 ARM 模板
+      items:
+        - name: 通过 ARM 创建帐户
+          href: quickstart-arm-template-account.md
 - name: 教程
   items:
     - name: .NET
@@ -61,10 +65,15 @@
           href: protect-with-aes128.md
         - name: 通过 DRM 进行动态加密
           href: protect-with-drm.md
+        - name: 使用 Azure AD 进行内容保护
+          href: azure-ad-content-protection.md
+          displayName: 'AAD, Active Directory'
     - name: REST
       items:
         - name: 对远程文件 REST 进行编码和流式传输
           href: stream-files-tutorial-with-rest.md
+        - name: REST API 的客户管理的密钥
+          href: tutorial-byok-postman.md
     - name: CLI
       items:
         - name: 对远程文件 CLI 进行编码和流式传输
@@ -75,6 +84,8 @@
           href: stream-files-nodejs-quickstart.md
     - name: Azure 门户
       items:
+        - name: 客户管理的密钥或 BYOK 教程
+          href: tutorial-byok-portal.md
         - name: 在 Azure 日志分析中存储 AMS 事件
           href: tutorial-events-log-analytics.md
 - name: 示例
@@ -97,6 +108,11 @@
         - name: 存储帐户
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: 托管标识和媒体服务
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: 客户管理的密钥
+          href: concept-use-customer-managed-keys-byok.md
     - name: 资产
       items:
         - name: 资产
@@ -125,8 +141,8 @@
         - name: 概述
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: 转换和作业
-          href: transforms-jobs-concept.md
+    - name: 转换和作业
+      href: transforms-jobs-concept.md
     - name: 实时传送视频流
       items:
         - name: 概述
@@ -188,8 +204,6 @@
           href: streaming-policy-concept.md
         - name: 内容密钥策略
           href: content-key-policy-concept.md
-        - name: 使用 Azure AD 进行内容保护
-          href: azure-ad-content-protection.md
     - name: 监视
       items:
         - name: 将事件与事件网格配合使用
@@ -211,7 +225,7 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 对实体进行分页、筛选、排序
           href: entities-overview.md
-        - name: RBAC
+        - name: Azure RBAC
           href: rbac-overview.md
         - name: 错误代码
           items:
@@ -226,6 +240,9 @@
         - name: 点播视频
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
+    - name: 媒体服务体系结构
+      displayName: architectures
+      href: architectures-concept.md
     - name: 疑难解答
       items:
         - name: 常见问题
@@ -260,7 +277,13 @@
     - name: 创建转换和作业
       items:
         - name: 创建转换
-          href: cli-create-transform.md
+          href: how-to-create-transform.md
+        - name: 使用 REST 创建基本音频转换
+          href: how-to-create-basic-audio-transform.md
+        - name: 使用 REST 创建 copyAllBitrateNonInterleaved 转换
+          href: how-to-create-copyallbitratenoninterleaved-transform.md
+        - name: 复制未使用 REST 编码的视频
+          href: how-to-create-copy-video-audio-transform.md
         - name: 创建作业
           href: cli-create-jobs.md
         - name: 使用本地文件和 .NET 创建作业输入
@@ -374,15 +397,15 @@
     - name: REST
       href: /rest/api/media/
     - name: Azure CLI
-      href: 'https://aka.ms/ams-v3-cli-ref'
+      href: /cli/azure/ams
     - name: SDK
       items:
         - name: .NET
-          href: 'https://aka.ms/ams-v3-dotnet-ref'
+          href: /dotnet/api/overview/azure/mediaservices/management
         - name: Java
-          href: 'https://aka.ms/ams-v3-java-ref'
+          href: /java/api/overview/azure/mediaservices/management
         - name: Python
-          href: 'https://aka.ms/ams-v3-python-ref'
+          href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
         - name: Go
@@ -411,7 +434,7 @@
     - name: SDK/工具
       items:
         - name: Azure CLI
-          href: 'https://aka.ms/ams-v3-cli'
+          href: /cli/azure/install-azure-cli
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'
         - name: Java
@@ -430,5 +453,7 @@
       href: limits-quotas-constraints.md
     - name: Azure 云和区域
       href: azure-clouds-regions.md
+    - name: 区域代码名称和终结点
+      href: azure-regions-code-names.md
     - name: 文档更新
       href: docs-release-notes.md

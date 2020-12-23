@@ -1,0 +1,471 @@
+---
+title: 通过 Java 使用 Azure 服务总线主题和订阅
+description: 在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。
+ms.devlang: Java
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 33d8aa9be6a6ee4182e49e658bd41ebf6da588e5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456565"
+---
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入门：通过 Java 使用服务总线主题和订阅
+在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。 
+
+> [!WARNING]
+>  本快速入门使用旧的 azure-servicebus 包。 对于使用最新 azure-messaging-servicebus 包的快速入门，请参阅[使用 azure-messaging-servicebus 发送和接收消息](service-bus-java-how-to-use-topics-subscriptions.md)。
+
+
+## <a name="prerequisites"></a>先决条件
+
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 遵循[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
+    1. 创建一个服务总线 **命名空间**。
+    2. 获取 **连接字符串**。
+    3. 在此命名空间中创建一个 **主题**。
+    4. 在此命名空间中创建对此主题的 **三个订阅**。
+3. [Azure SDK for Java][Azure SDK for Java]。
+
+## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
+在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java] 。 如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] 。 然后，可将 Microsoft Azure Libraries for Java 添加到项目  ：
+
+![将适用于 Java 的 Microsoft Azure 库添加到 Eclipse 项目](media/service-bus-java-how-to-use-topics-subscriptions-legacy/eclipse-azure-libraries-java.png)
+
+还需要将以下 JAR 添加到 Java 生成路径中：
+
+- gson-2.6.2.jar
+- commons-cli-1.4.jar
+- proton-j-0.21.0.jar
+
+添加一个具有 **Main** 方法的类，然后在 Java 文件顶部添加以下 `import` 语句：
+
+```java
+import com.google.gson.reflect.TypeToken;
+import com.microsoft.azure.servicebus.*;
+import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
+import com.google.gson.Gson;
+import static java.nio.charset.StandardCharsets.*;
+import java.time.Duration;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.Function;
+import org.apache.commons.cli.*;
+import org.apache.commons.cli.DefaultParser;
+```
+
+## <a name="send-messages-to-a-topic"></a>将消息发送到主题
+更新 **main** 方法来创建一个 **TopicClient** 对象，并调用一个帮助程序方法来以异步方式向服务总线主题发送示例消息。
+
+> [!NOTE] 
+> - 将 `<NameOfServiceBusNamespace>` 替换为你的服务总线命名空间的名称。 
+> - 将 `<AccessKey>` 替换为你的命名空间的访问密钥。
+
+```java
+public class MyServiceBusTopicClient {
+
+    static final Gson GSON = new Gson();
+    
+    public static void main(String[] args) throws Exception, ServiceBusException {
+        // TODO Auto-generated method stub
+
+        TopicClient sendClient;
+        String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
+        sendClient = new TopicClient(new ConnectionStringBuilder(connectionString, "BasicTopic"));       
+        sendMessagesAsync(sendClient).thenRunAsync(() -> sendClient.closeAsync());
+    }
+
+    static CompletableFuture<Void> sendMessagesAsync(TopicClient sendClient) {
+        List<HashMap<String, String>> data =
+                GSON.fromJson(
+                        "[" +
+                                "{'name' = 'Einstein', 'firstName' = 'Albert'}," +
+                                "{'name' = 'Heisenberg', 'firstName' = 'Werner'}," +
+                                "{'name' = 'Curie', 'firstName' = 'Marie'}," +
+                                "{'name' = 'Hawking', 'firstName' = 'Steven'}," +
+                                "{'name' = 'Newton', 'firstName' = 'Isaac'}," +
+                                "{'name' = 'Bohr', 'firstName' = 'Niels'}," +
+                                "{'name' = 'Faraday', 'firstName' = 'Michael'}," +
+                                "{'name' = 'Galilei', 'firstName' = 'Galileo'}," +
+                                "{'name' = 'Kepler', 'firstName' = 'Johannes'}," +
+                                "{'name' = 'Kopernikus', 'firstName' = 'Nikolaus'}" +
+                                "]",
+                        new TypeToken<List<HashMap<String, String>>>() {
+                        }.getType());
+
+        List<CompletableFuture> tasks = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            final String messageId = Integer.toString(i);
+            Message message = new Message(GSON.toJson(data.get(i), Map.class).getBytes(UTF_8));
+            message.setContentType("application/json");
+            message.setLabel("Scientist");
+            message.setMessageId(messageId);
+            message.setTimeToLive(Duration.ofMinutes(2));
+            System.out.printf("Message sending: Id = %s\n", message.getMessageId());
+            tasks.add(
+                    sendClient.sendAsync(message).thenRunAsync(() -> {
+                        System.out.printf("\tMessage acknowledged: Id = %s\n", message.getMessageId());
+                    }));
+        }
+        return CompletableFuture.allOf(tasks.toArray(new CompletableFuture<?>[tasks.size()]));
+    }
+}
+```
+
+服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 此主题大小是在创建时定义的，上限为 5 GB。
+
+## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
+更新 **main** 方法来为三个订阅创建三个 **SubscriptionClient** 对象，并调用一个帮助程序方法来以异步方式从服务总线主题接收消息。 示例代码假定你创建了名为 **BasicTopic** 的主题，并且三个订阅分别名为 **Subscription1**、**Subscription2** 和 **Subscription3**。 如果你为它们使用了不同的名称，请在测试代码之前更新代码。 
+
+```java
+import com.microsoft.azure.servicebus.*;
+import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
+import com.microsoft.azure.servicebus.primitives.ServiceBusException;
+import com.google.gson.Gson;
+import static java.nio.charset.StandardCharsets.*;
+import java.time.Duration;
+import java.util.*;
+import java.util.concurrent.*;
+
+public class MyServiceBusSubscriptionClient {
+    static final Gson GSON = new Gson();
+    
+    public static void main(String[] args) throws Exception, ServiceBusException {
+        String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
+        
+        SubscriptionClient subscription1Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription1"), ReceiveMode.PEEKLOCK);
+        SubscriptionClient subscription2Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription2"), ReceiveMode.PEEKLOCK);
+        SubscriptionClient subscription3Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription3"), ReceiveMode.PEEKLOCK);        
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        registerMessageHandlerOnClient(subscription1Client, executorService);
+        registerMessageHandlerOnClient(subscription2Client, executorService);
+        registerMessageHandlerOnClient(subscription3Client, executorService);
+    }
+    
+    static void registerMessageHandlerOnClient(SubscriptionClient receiveClient, ExecutorService executorService) throws Exception {
+        // register the RegisterMessageHandler callback
+        receiveClient.registerMessageHandler(
+                new IMessageHandler() {
+                    // callback invoked when the message handler loop has obtained a message
+                    public CompletableFuture<Void> onMessageAsync(IMessage message) {
+                        // receives message is passed to callback
+                        if (message.getLabel() != null &&
+                                message.getContentType() != null &&
+                                message.getLabel().contentEquals("Scientist") &&
+                                message.getContentType().contentEquals("application/json")) {
+
+                            byte[] body = message.getBody();
+                            Map scientist = GSON.fromJson(new String(body, UTF_8), Map.class);
+
+                            System.out.printf(
+                                    "\n\t\t\t\t%s Message received: \n\t\t\t\t\t\tMessageId = %s, \n\t\t\t\t\t\tSequenceNumber = %s, \n\t\t\t\t\t\tEnqueuedTimeUtc = %s," +
+                                            "\n\t\t\t\t\t\tExpiresAtUtc = %s, \n\t\t\t\t\t\tContentType = \"%s\",  \n\t\t\t\t\t\tContent: [ firstName = %s, name = %s ]\n",
+                                    receiveClient.getEntityPath(),
+                                    message.getMessageId(),
+                                    message.getSequenceNumber(),
+                                    message.getEnqueuedTimeUtc(),
+                                    message.getExpiresAtUtc(),
+                                    message.getContentType(),
+                                    scientist != null ? scientist.get("firstName") : "",
+                                    scientist != null ? scientist.get("name") : "");
+                        }
+                        return receiveClient.completeAsync(message.getLockToken());
+                    }
+
+                    // callback invoked when the message handler has an exception to report
+                    public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
+                        System.out.printf(exceptionPhase + "-" + throwable.getMessage());
+                    }
+                },
+                // 1 concurrent call, messages are auto-completed, auto-renew duration
+                new MessageHandlerOptions(1, false, Duration.ofMinutes(1)),
+                executorService);
+    }
+}
+```
+
+## <a name="run-the-program"></a>运行程序
+运行程序，可以看到类似于以下输出的输出：
+
+```java
+Message sending: Id = 0
+Message sending: Id = 1
+Message sending: Id = 2
+Message sending: Id = 3
+Message sending: Id = 4
+Message sending: Id = 5
+Message sending: Id = 6
+Message sending: Id = 7
+Message sending: Id = 8
+Message sending: Id = 9
+    Message acknowledged: Id = 0
+    Message acknowledged: Id = 9
+    Message acknowledged: Id = 7
+    Message acknowledged: Id = 8
+    Message acknowledged: Id = 5
+    Message acknowledged: Id = 6
+    Message acknowledged: Id = 3
+    Message acknowledged: Id = 2
+    Message acknowledged: Id = 4
+    Message acknowledged: Id = 1
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 0, 
+                        SequenceNumber = 11, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Albert, name = Einstein ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 0, 
+                        SequenceNumber = 11, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Albert, name = Einstein ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 9, 
+                        SequenceNumber = 12, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Nikolaus, name = Kopernikus ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 8, 
+                        SequenceNumber = 13, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Johannes, name = Kepler ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 0, 
+                        SequenceNumber = 11, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Albert, name = Einstein ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 9, 
+                        SequenceNumber = 12, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Nikolaus, name = Kopernikus ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 7, 
+                        SequenceNumber = 14, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Galileo, name = Galilei ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 9, 
+                        SequenceNumber = 12, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Nikolaus, name = Kopernikus ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 8, 
+                        SequenceNumber = 13, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Johannes, name = Kepler ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 6, 
+                        SequenceNumber = 15, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Michael, name = Faraday ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 8, 
+                        SequenceNumber = 13, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Johannes, name = Kepler ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 7, 
+                        SequenceNumber = 14, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Galileo, name = Galilei ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 5, 
+                        SequenceNumber = 16, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Niels, name = Bohr ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 7, 
+                        SequenceNumber = 14, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Galileo, name = Galilei ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 6, 
+                        SequenceNumber = 15, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Michael, name = Faraday ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 4, 
+                        SequenceNumber = 17, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Isaac, name = Newton ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 6, 
+                        SequenceNumber = 15, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Michael, name = Faraday ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 5, 
+                        SequenceNumber = 16, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Niels, name = Bohr ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 3, 
+                        SequenceNumber = 18, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Steven, name = Hawking ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 5, 
+                        SequenceNumber = 16, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Niels, name = Bohr ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 4, 
+                        SequenceNumber = 17, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Isaac, name = Newton ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 2, 
+                        SequenceNumber = 19, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Marie, name = Curie ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 4, 
+                        SequenceNumber = 17, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Isaac, name = Newton ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 3, 
+                        SequenceNumber = 18, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Steven, name = Hawking ]
+
+                BasicTopic/subscriptions/Subscription1 Message received: 
+                        MessageId = 1, 
+                        SequenceNumber = 20, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Werner, name = Heisenberg ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 2, 
+                        SequenceNumber = 19, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Marie, name = Curie ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 3, 
+                        SequenceNumber = 18, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Steven, name = Hawking ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 2, 
+                        SequenceNumber = 19, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Marie, name = Curie ]
+
+                BasicTopic/subscriptions/Subscription2 Message received: 
+                        MessageId = 1, 
+                        SequenceNumber = 20, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Werner, name = Heisenberg ]
+
+                BasicTopic/subscriptions/Subscription3 Message received: 
+                        MessageId = 1, 
+                        SequenceNumber = 20, 
+                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
+                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
+                        ContentType = "application/json",  
+                        Content: [ firstName = Werner, name = Heisenberg ]
+```
+
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
+## <a name="next-steps"></a>后续步骤
+有关详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
+
+[Azure SDK for Java]: /java/api/overview/azure/
+[Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
+[Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+
+[0]: ./media/service-bus-java-how-to-use-topics-subscriptions-legacy/sb-queues-13.png
+[2]: ./media/service-bus-java-how-to-use-topics-subscriptions-legacy/sb-queues-04.png
+[3]: ./media/service-bus-java-how-to-use-topics-subscriptions-legacy/sb-queues-09.png

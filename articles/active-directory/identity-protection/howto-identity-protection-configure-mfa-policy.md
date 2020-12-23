@@ -11,37 +11,37 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464328"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835860"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>如何：配置 Azure 多重身份验证注册策略
+# <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>如何：配置 Azure AD 多重身份验证注册策略
 
-Azure AD Identity Protection 通过配置条件访问策略来管理 Azure 多重身份验证（MFA）注册的推出，无论你登录到哪个新式身份验证应用程序，都需要进行 MFA 注册。
+Azure AD Identity Protection 通过将条件访问策略配置为要求进行 MFA 注册，而不考虑登录到的现代身份验证应用，帮助你管理 Azure AD 多重身份验证 () MFA 的推出。
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>什么是 Azure 多重身份验证注册策略？
+## <a name="what-is-the-azure-ad-multi-factor-authentication-registration-policy"></a>Azure AD 多重身份验证注册策略是什么？
 
-Azure 多重身份验证提供了一种方法来实现不只使用用户名和密码验证用户的身份。 它为用户登录提供了另一层安全措施。为了使用户能够响应 MFA 提示，他们必须首先注册 Azure 多重身份验证。
+Azure AD 多重身份验证提供了一种方法，用于验证你使用的不只是用户名和密码。 它为用户登录提供了另一层安全措施。为了使用户能够响应 MFA 提示，他们必须首先注册 Azure AD 多重身份验证。
 
-我们建议你要求用户登录使用 Azure 多重身份验证，因为这种身份验证方法可以：
+建议用户登录时需要 Azure AD 多重身份验证，因为它：
 
 - 通过一系列验证选项提供强身份验证。
 - 在准备您的组织从 Identity Protection 中的风险检测中进行自我修复时，扮演着重要的角色。
 
-有关 Azure 多重身份验证的详细信息，请参阅[什么是 Azure 多重身份验证？](../authentication/howto-mfa-getstarted.md)
+有关 Azure AD 多重身份验证的详细信息，请参阅 [什么是 Azure AD 多重身份验证？](../authentication/howto-mfa-getstarted.md)
 
 ## <a name="policy-configuration"></a>策略配置
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory**  >  **安全**  >  **标识保护**  >  **MFA 注册策略**。
-   1. 在**分配**下
-      1. **用户**-选择 "**所有用户**" **，或选择 "个人和组**" （如果限制你的部署）。
+1. 浏览到 **Azure Active Directory**  >  **安全**  >  **标识保护**  >  **MFA 注册策略**。
+   1. 在 **分配** 下
+      1. **用户** -选择 " **所有用户** " **，或选择 "个人和组** " （如果限制你的部署）。
          1. 还可以选择从策略中排除用户。
-   1. **控件**下面
-      1. 确保选中 "**需要 AZURE MFA 注册**" 复选框，然后选择 "**选择**"。
+   1. **控件** 下面
+      1. 确保选中 " **要求 AZURE AD MFA 注册** " 复选框，然后选择 " **选择**"。
    1. **强制执行策略**  - **开启**
    1. **保存**
 
@@ -59,4 +59,4 @@ Azure Active Directory Identity Protection 将提示用户在下次以交互方�
 
 - [启用 Azure AD 自助式密码重置](../authentication/howto-sspr-deployment.md)
 
-- [启用 Azure 多重身份验证](../authentication/howto-mfa-getstarted.md)
+- [启用 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md)

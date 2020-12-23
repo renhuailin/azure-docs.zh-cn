@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.service: container-service
-ms.openlocfilehash: 528b843e24e1d63e4822c253b3636ef490e8fe8e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35518a90ff3db2b951e0310970afd6d78dd25807
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994840"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122197"
 ---
 # <a name="confidential-containers"></a>机密容器
 
@@ -67,7 +67,7 @@ SCONE 可以将现有的大多数二进制文件转换为在 enclaves 内运行�
 
 ### <a name="anjuna"></a>Anjuna
 
-[Anjuna](https://www.anjuna.io/) 提供了 SGX 平台软件，使你能够在 AKS 上运行未修改的容器。 在[此处](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)了解更多有关**即将**发布的功能和用户流。
+[Anjuna](https://www.anjuna.io/) 提供了 SGX 平台软件，使你能够在 AKS 上运行未修改的容器。 了解更多有关功能的信息，并查看 [此处](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)的示例应用程序。
 
 [在此处](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)开始使用示例 Redis 缓存和 Python 自定义应用程序
 

@@ -6,18 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 99dd3da3f9e8434f9c859afd347bd19d10628083
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933614"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448549"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>为 Azure Stack Edge Pro GPU 管理访问、电源和连接模式
 
 本文介绍如何使用 GPU 设备管理 Azure Stack Edge Pro 的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
+
+本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 设备。
+
 
 在本文中，学习如何：
 
@@ -31,6 +34,8 @@ ms.locfileid: "90933614"
 ## <a name="manage-device-access"></a>管理对设备的访问
 
 可以通过使用设备密码来控制对 Azure Stack Edge Pro 设备的访问。 可以通过本地 web UI 更改密码。 你还可以在 Azure 门户中重置设备密码。
+
+对设备磁盘上数据的访问也通过静态加密密钥来控制。
 
 ### <a name="change-device-password"></a>更改设备密码
 
@@ -47,14 +52,48 @@ ms.locfileid: "90933614"
 
 重置工作流不需要用户回忆旧密码，在密码丢失时非常有用。 在 Azure 门户中执行此工作流。
 
-1. 在 Azure 门户中，转到“概述”>“重置管理员密码”。****
+1. 在 Azure 门户中，转到“概述”>“重置管理员密码”。
 
-    ![重置密码](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![屏幕截图显示已选择 "重置设备密码" 的设备。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 选择“重置”****。
+2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 选择“重置”。
 
-    ![重置密码](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![重置密码2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+### <a name="manage-access-to-device-data"></a>管理对设备数据的访问
+
+对于 Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 设备，通过对设备驱动器使用静态加密密钥控制对设备数据的访问。 成功将设备配置为进行加密时，设备的本地 UI 中会提供 "轮换加密静止密钥" 选项。 
+
+此操作可让你更改 BitLocker 卷的密钥 `HcsData` 以及 `HcsInternal` 设备上的所有自加密驱动器。
+
+请按照以下步骤旋转静态加密密钥。
+
+1. 在设备的本地 UI 中，转到 " **入门** " 页。 在 " **安全** " 磁贴上，选择 " **静态加密：轮换密钥** " 选项。 仅在成功配置了静态加密密钥后，此选项才可用。
+
+    ![在 "入门" 页中选择 "轮换密钥进行静态加密"](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-1.png)
+
+1. 你可以使用自己的 BitLocker 密钥，或者使用系统生成的密钥。  
+
+    若要提供自己的密钥，请输入32个字符的长基64编码的字符串。 输入类似于首次配置静态加密时要提供的内容。
+
+    ![引入自己的静态加密密钥](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-2.png)
+
+    你还可以选择使用系统生成的密钥。
+
+    ![使用系统生成的静态加密密钥](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-3.png)
+
+1. 选择“应用”。  密钥保护程序会旋转。
+
+    ![应用新的静态加密密钥](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-4.png)
+
+1. 当系统提示下载并保存密钥文件时，请选择 " **下载并继续**"。 
+
+    ![下载并继续密钥文件](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-5.png)
+
+    将 `.json` 密钥文件保存在安全的位置。 此文件用于促进将来潜在的设备恢复。
+
+    ![屏幕截图显示 "重置设备密码" 对话框。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>管理资源访问
 
@@ -69,7 +108,7 @@ ms.locfileid: "90933614"
 
 你应该可以 `User` 访问 Active Directory 租户，因为你需要能够访问它 `Read all directory objects` 。 你不能是来宾用户，因为他们没有权限 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge Pro 设备上创建共享、创建用户、配置边缘计算角色、重置设备密码的操作都将失败。
 
-有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
+有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>注册资源提供程序
 
@@ -114,8 +153,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 若要更改设备模式，请执行以下步骤：
 
-1. 在设备的本地 web UI 中， **> Cloud**中转到 "配置"。
-2. 从下拉列表中，选择要在其中操作设备的模式。 你可以选择 " **完全连接**"、" **部分连接**" 和 " **完全断开连接**"。 若要在部分离线模式下运行设备，请启用“Azure 门户管理”。****
+1. 在设备的本地 web UI 中， **> Cloud** 中转到 "配置"。
+2. 从下拉列表中，选择要在其中操作设备的模式。 你可以选择 " **完全连接**"、" **部分连接**" 和 " **完全断开连接**"。 若要在部分离线模式下运行设备，请启用“Azure 门户管理”。
 
  
 ## <a name="manage-power"></a>管理电源

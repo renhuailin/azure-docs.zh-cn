@@ -4,14 +4,14 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/05/2020
+ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715328"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657288"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -30,13 +30,13 @@ ms.locfileid: "91715328"
        > [!NOTE] 
        > 动态阈值在变为活动状态之前至少需要 3 天和 30 个指标示例。
 
-2. **已触发但没有通知** - 复查[触发的警报列表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)，看是否可以找到触发的警报。 如果可以在列表中看到该警报，但其部分操作或通知存在问题，请在[此处](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)了解更多信息。
+2. **已触发但没有通知** - 复查 [触发的警报列表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)，看是否可以找到触发的警报。 如果可以在列表中看到该警报，但其部分操作或通知存在问题，请在[此处](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)了解更多信息。
 
 3. **已处于活动状态** - 检查你预计会收到警报的指标时序是否已存在触发的警报。 指标警报是有状态的，即，一旦在特定的指标时序中触发某个警报，就不会触发该时序中的其他警报，直到相应的问题不再出现。 此设计选择减少了干扰。 当连续三次评估不满足警报条件时，警报会自动解决。
 
-4. **使用的维度** - 如果选择了一些[针对某个指标的维度值](./alerts-metric-overview.md#using-dimensions)，则警报规则会监视各个指标时序（通过将维度值组合在一起来定义）中是否存在超出阈值的情况。 如果还要监视聚合指标时序（不选择任何维度），请在该指标上配置附加警报规则而不选择维度。
+4. **使用的维度** - 如果选择了一些 [针对某个指标的维度值](./alerts-metric-overview.md#using-dimensions)，则警报规则会监视各个指标时序（通过将维度值组合在一起来定义）中是否存在超出阈值的情况。 如果还要监视聚合指标时序（不选择任何维度），请在该指标上配置附加警报规则而不选择维度。
 
-5. **聚合和时间粒度** - 如果要使用[指标图表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)来将指标可视化，请确保：
+5. **聚合和时间粒度** - 如果要使用 [指标图表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)来将指标可视化，请确保：
     * 指标图表中选择的“聚合”与警报规则中的“聚合类型”相同 
     * 所选的“时间粒度”与警报规则中的“聚合粒度(周期)”相同，且未设置为“自动” 
 
@@ -72,19 +72,19 @@ ms.locfileid: "91715328"
 - [对于 Linux VM](./collect-custom-metrics-linux-telegraf.md)
 
 有关从虚拟机的来宾操作系统收集数据的详细信息，请参阅 [此处](../insights/monitor-vm-azure.md#guest-operating-system)。
-    
+
 > [!NOTE] 
 > 如果将来宾指标配置为发送到 Log Analytics 工作区中，则这些指标将显示在 Log Analytics 工作区资源下，并且只会在创建用于监视数据的警报规则后才开始显示数据。 为此，按照步骤[配置日志的指标警报](./alerts-metric-logs.md#configuring-metric-alert-for-logs)。
 
 > [!NOTE] 
-> 指标警报当前不支持监视多个具有单个警报规则的虚拟机的来宾指标。 您可以使用 [日志警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)来实现此目的。 为此，请确保将来宾指标收集到 Log Analytics 工作区，并在工作区上创建日志警报规则。
+> 指标警报当前不支持监视多个具有单个警报规则的虚拟机的来宾指标。 您可以使用 [日志警报规则](./alerts-unified-log.md)来实现此目的。 为此，请确保将来宾指标收集到 Log Analytics 工作区，并在工作区上创建日志警报规则。
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>找不到警报所针对的指标
 
-如果你想要针对特定指标发出警报，但在创建警报规则时看不到它，请检查以下内容：
-- 如果看不到资源的任何指标，请 [检查指标警报是否支持该资源类型](./alerts-metric-near-real-time.md)。
-- 如果你可以看到资源的一些指标，但找不到特定的指标，请 [检查该指标是否可用](./metrics-supported.md)，如果是，请查看指标说明，以检查其是否仅适用于特定版本的资源。
-- 如果该指标不适用于资源，则可在资源日志中使用，并且可以使用日志警报进行监视。 有关如何 [从 Azure 资源收集和分析资源日志](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)的详细信息，请参阅此处。
+如果要对特定指标发出警报，但创建警报规则时看不到该指标，请检查以下内容：
+- 如果看不到资源的任何指标，请[检查指标警报是否支持该资源类型](./alerts-metric-near-real-time.md)。
+- 如果可以看到资源的某些指标，但找不到特定指标，请[检查该指标是否可用](./metrics-supported.md)；如果可用，请查看指标说明，检查它是否仅适用于特定版本的资源。
+- 如果该指标不适用于资源，则可能会在资源日志中提供，并且可使用日志警报来监视它。 请参阅此处，详细了解如何[从 Azure 资源收集资源日志并进行分析](../learn/tutorial-resource-logs.md)。
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>找不到警报所针对的指标维度
 
@@ -122,17 +122,17 @@ ms.locfileid: "91715328"
     "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
         "allOf": [
             {
-                    "name" : "condition1",
-                        "metricName": "myCustomMetric",
+                "name" : "condition1",
+                "metricName": "myCustomMetric",
                 "metricNamespace": "myCustomMetricNamespace",
-                        "dimensions":[],
-                        "operator": "GreaterThan",
-                        "threshold" : 10,
-                        "timeAggregation": "Average",
-                    "skipMetricValidation": true
-        }
-              ]
-        }
+                "dimensions":[],
+                "operator": "GreaterThan",
+                "threshold" : 10,
+                "timeAggregation": "Average",
+                "skipMetricValidation": true
+            }
+        ]
+    }
 ```
 
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>通过 Azure 门户导出指标警报规则的 Azure 资源管理器模板
@@ -228,7 +228,7 @@ ms.locfileid: "91715328"
 若要创建指标警报规则，你需要有以下权限：
 
 - 对警报规则的目标资源的读取权限
-- 对在其中创建警报规则的资源组的写入权限（如果是从 Azure 门户中创建警报规则，则会在目标资源所在的资源组中创建警报规则）
+- 对在其中创建预警规则的资源组的写入权限（如果是从 Azure 门户中创建预警规则，则默认在目标资源所在的资源组中创建预警规则）
 - 对关联到警报规则的任何操作组的读取权限（如果适用）
 
 
@@ -239,8 +239,10 @@ ms.locfileid: "91715328"
 - 指标警报规则名称在创建后无法更改（重命名）
 - 指标警报规则名称在资源组中必须唯一
 - 指标警报规则名称不能包含以下字符：* # & + : < > ? @ % { } \ / 
-- 指标警报规则名称不能以空格或句点结尾
+- 指标预警规则名称不能以空格或句点结尾
 
+> [!NOTE] 
+> 如果警报规则名称包含的字符不是字母或数字 (例如：空格、标点符号或符号) ，则在某些客户端检索这些字符时，这些字符可能会进行 URL 编码。
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>在具有多个条件的指标警报规则中使用维度时的限制
 
@@ -252,12 +254,12 @@ ms.locfileid: "91715328"
 - 如果在不同条件中配置的指标支持同一维度，则必须以相同方式为所有这些指标（在相关条件中）显式设置配置的维度值。
 例如：
     - 请考虑在存储帐户上定义的一个指标警报规则，该警报规则监视两个条件：
-        * **事务**总数 > 5
+        * **事务** 总数 > 5
         * 平均 **SuccessE2ELatency** > 250 毫秒
     - 我想更新第一个条件，并且仅监视 **ApiName** 维度等于“GetBlob”的事务
     - 由于“事务数”和 **SuccessE2ELatency** 指标都支持 **ApiName** 维度，所以我需要更新这两个条件，并将它们的 **ApiName** 维度都指定为“GetBlob”值。
 
-## <a name="setting-the-alert-rules-period-and-frequency"></a>设置预警规则的时间和频率
+## <a name="setting-the-alert-rules-period-and-frequency"></a>设置预警规则的周期和频率
 
 建议选择大于评估频率的聚合粒度（周期），以降低在以下情况下错过对已添加的时序进行首次评估的可能性 ：
 -   监视多个维度的指标警报规则–添加新维度值组合时

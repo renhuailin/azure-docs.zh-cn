@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3383b4a3c2eab1f62d180c31e278f07b92c649c5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974035"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853509"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "90974035"
 
 如果所有组件都是单个的 Application Insights 资源中的角色，则不需要此发现步骤。 这样的应用程序的初始负载将具有所有组件。
 
-![屏幕截图显示应用程序映射的示例。](media/app-map/app-map-001.png)
+![屏幕截图显示了应用程序映射的示例。](media/app-map/app-map-001.png)
 
 使用此体验的主要目标之一是能够实现可视化效果具有数百个组件的复杂拓扑。
 
@@ -82,12 +82,12 @@ ms.locfileid: "90974035"
 
 ![分析体验的屏幕截图](media/app-map/alerts-view.png)
 
-## <a name="set-or-override-cloud-role-name"></a>设置或重写云角色名称
+## <a name="set-or-override-cloud-role-name"></a>设置或替代云角色名称
 
-应用程序映射使用**云角色名称**属性来标识映射上的组件。 若要手动设置或重写云角色名称并更改应用程序映射上显示的内容，请执行以下操作：
+应用程序映射使用 **云角色名称** 属性来标识映射上的组件。 若要手动设置或替代云角色名称并更改要在应用程序映射上显示的内容，请执行以下操作：
 
 > [!NOTE]
-> Application Insights SDK 或代理会自动将云角色名称属性添加到 Azure App Service 环境中由组件发出的遥测。
+> Application Insights SDK 或代理会自动将云角色名称属性添加到 Azure 应用服务环境中组件发出的遥测数据。
 
 # <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
@@ -165,10 +165,8 @@ ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.asp
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
@@ -229,7 +227,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>了解应用程序映射上下文中的云角色名称
 
-以下包含多个云角色名称的应用程序映射可帮助你加深对**云角色名称**的理解：
+以下包含多个云角色名称的应用程序映射可帮助你加深对 **云角色名称** 的理解：
 
 ![应用程序映射屏幕截图](media/app-map/cloud-rolename.png)
 
@@ -249,7 +247,7 @@ appInsights.addTelemetryInitializer((envelope) => {
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-或者，**云角色实例**可帮助实现以下方案：尽管**云角色名称**会告知问题出现在 Web 前端中的某个位置，但你可能在多个负载均衡的服务器中运行 Web 前端，因此，能够通过 Kusto 查询下钻到更深的层并了解问题是影响所有 Web 前端服务器/实例还是只影响其中的一个服务器/实例可能极其重要。
+或者，**云角色实例** 可帮助实现以下方案：尽管 **云角色名称** 会告知问题出现在 Web 前端中的某个位置，但你可能在多个负载均衡的服务器中运行 Web 前端，因此，能够通过 Kusto 查询下钻到更深的层并了解问题是影响所有 Web 前端服务器/实例还是只影响其中的一个服务器/实例可能极其重要。
 
 另一个方案是，应用在容器化环境中运行，仅仅了解单个服务器可能无法获得足够的信息来找出给定的问题，因此需要替代云角色实例的值。
 

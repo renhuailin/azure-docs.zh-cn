@@ -1,6 +1,6 @@
 ---
 title: 使用模板部署脚本 | Microsoft Docs
-description: 了解如何使用 Azure 资源管理器模板中的部署脚本。
+description: 了解如何使用 Azure 资源管理器模板（ARM 模板）中的部署脚本。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825488"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931429"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教程：使用部署脚本创建自签名证书（预览版）
 
-了解如何使用 Azure 资源管理器 (ARM) 模板中的部署脚本。 可以使用部署脚本执行无法由 ARM 模板完成的自定义步骤。 例如，创建自签名证书。  在本教程中，你将创建一个模板来部署 Azure 密钥保管库，然后在同一模板中使用 `Microsoft.Resources/deploymentScripts` 资源来创建证书并将证书添加到密钥保管库。 若要详细了解部署脚本，请参阅[使用 ARM 模板中的部署脚本](./deployment-script-template.md)。
+了解如何使用 Azure 资源管理器模板（ARM 模板）中的部署脚本。 可以使用部署脚本执行无法由 ARM 模板完成的自定义步骤。 例如，创建自签名证书。  在本教程中，你将创建一个模板来部署 Azure 密钥保管库，然后在同一模板中使用 `Microsoft.Resources/deploymentScripts` 资源来创建证书并将证书添加到密钥保管库。 若要详细了解部署脚本，请参阅[使用 ARM 模板中的部署脚本](./deployment-script-template.md)。
 
 > [!IMPORTANT]
 > 在同一资源组中会创建两个部署脚本资源（一个存储帐户和一个容器实例），用于执行脚本和进行故障排除。 当脚本执行达到某个最终状态时，这些资源通常会被脚本服务删除。 在这些资源删除之前，这些资源会一直向你收费。 若要了解详细信息，请参阅[清理部署脚本资源](./deployment-script-template.md#clean-up-deployment-script-resources)。
@@ -40,7 +40,7 @@ ms.locfileid: "88825488"
 
 若要完成本文，需要做好以下准备：
 
-* **包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)** 。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](./quickstart-create-templates-use-visual-studio-code.md)。
+* **包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)** 。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](./quickstart-create-templates-use-visual-studio-code.md)。
 
 * **在订阅级别具有参与者角色的用户分配的托管标识**。 此标识用来执行部署脚本。 若要创建一个标识，请参阅[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 部署模板时需要此标识 ID。 标识符的格式为：
 
@@ -325,7 +325,7 @@ ms.locfileid: "88825488"
 ## <a name="debug-the-failed-script"></a>调试失败的脚本
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 打开资源组。 资源组是追加了 **rg** 的项目名称。 你会看到，该资源组中总共有两个其他资源。 这些资源称为*部署脚本资源*。
+1. 打开资源组。 资源组是追加了 **rg** 的项目名称。 你会看到，该资源组中总共有两个其他资源。 这些资源称为 *部署脚本资源*。
 
     ![资源管理器模板部署脚本资源](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 

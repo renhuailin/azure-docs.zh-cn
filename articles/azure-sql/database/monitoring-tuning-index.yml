@@ -9,15 +9,16 @@ metadata:
   ms.custom: sqldbrb=2
   ms.topic: landing-page
   ms.collection: performance
-  author: stevestein
-  ms.author: sstein
+  author: WilliamDAssafMSFT
+  ms.author: wiassaf
+  ms.reviewer: sstein
   ms.date: 03/10/2020
-  ms.openlocfilehash: 678d7b0094a4734fc76019cc20ed058744bbdc36
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c5e6be0781b6c65e4c45c7f0cee5689db890ac33
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89651475"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96490459"
 landingContent:
 - title: 监视和性能优化入门
   linkLists:
@@ -76,7 +77,7 @@ landingContent:
     - text: 可检测性能模式
       url: intelligent-insights-troubleshoot-performance.md
     - text: 智能查询处理
-      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
+      url: /sql/relational-databases/performance/intelligent-query-processing
   - linkListType: video
     links:
     - text: Intelligent Insights
@@ -94,7 +95,7 @@ landingContent:
     - text: 应用程序和数据库优化
       url: performance-guidance.md
     - text: 使用“查询存储”
-      url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+      url: /sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
     - text: 使用扩展事件
       url: xevent-db-diff-from-svr.md
     - text: 超大规模性能诊断

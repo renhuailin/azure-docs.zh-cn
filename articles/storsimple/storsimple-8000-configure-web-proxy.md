@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514281"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017213"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>为 StorSimple 设备配置 Web 代理
 
@@ -29,7 +29,7 @@ ms.locfileid: "85514281"
 
 本教程中的指导仅适用于 StorSimple 8000 系列物理设备。 StorSimple 云设备（8010 和 8020）不支持 Web 代理配置。
 
-Web 代理是 StorSimple 设备的一项可选配置。__ 只能通过 Windows PowerShell for StorSimple 配置 Web 代理。 配置过程由两个步骤组成，如下所述：
+Web 代理是 StorSimple 设备的一项可选配置。 只能通过 Windows PowerShell for StorSimple 配置 Web 代理。 配置过程由两个步骤组成，如下所述：
 
 1. 首先通过安装向导或 Windows PowerShell for StorSimple cmdlet 配置 Web 代理设置。
 2. 然后通过 Windows PowerShell for StorSimple cmdlet 启用配置的 Web 代理设置。
@@ -59,21 +59,21 @@ Web 代理是 StorSimple 设备的一项可选配置。__ 只能通过 Windows P
 
 #### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>通过安装向导配置 Web 代理
 
-1. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**，并提供**设备管理员密码**。 键入以下命令启动安装向导会话：
+1. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**，并提供 **设备管理员密码**。 键入以下命令启动安装向导会话：
    
     `Invoke-HcsSetupWizard`
-2. 如果这是首次为设备注册运行安装向导，需要配置全部所需的网络设置，直到看到 Web 代理的配置步骤。 如果设备已注册，请接受所有配置的网络设置，直到看到 Web 代理的配置步骤。 在安装向导中，提示配置 Web 代理设置时，键入**是**。
-3. 对于“Web 代理 URL”，请指定 Web 代理服务器的 IP 地址或完全限定的域名 (FQDN)，以及设备在与云通信时要使用的 TCP 端口号。**** 使用以下格式：
+2. 如果这是首次为设备注册运行安装向导，需要配置全部所需的网络设置，直到看到 Web 代理的配置步骤。 如果设备已注册，请接受所有配置的网络设置，直到看到 Web 代理的配置步骤。 在安装向导中，提示配置 Web 代理设置时，键入 **是**。
+3. 对于“Web 代理 URL”，请指定 Web 代理服务器的 IP 地址或完全限定的域名 (FQDN)，以及设备在与云通信时要使用的 TCP 端口号。 使用以下格式：
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     默认情况下，已指定 TCP 端口号 8080。
-4. 选择“NTLM”、“基本”或“无”作为身份验证类型************。 “基本”是代理服务器配置使用的安全性最低的身份验证。 NT LAN Manager (NTLM) 是高度安全和复杂的身份验证协议，使用三向消息传送系统（在需要更高的数据完整性时，有时还会使用四向）验证用户的身份。 默认的身份验证为 NTLM。 有关详细信息，请参阅[基本身份验证](https://hc.apache.org/httpclient-3.x/authentication.html)和 [NTLM 身份验证](https://hc.apache.org/httpclient-3.x/authentication.html)。 
+4. 选择“NTLM”、“基本”或“无”作为身份验证类型。 “基本”是代理服务器配置使用的安全性最低的身份验证。 NT LAN Manager (NTLM) 是高度安全和复杂的身份验证协议，使用三向消息传送系统（在需要更高的数据完整性时，有时还会使用四向）验证用户的身份。 默认的身份验证为 NTLM。 有关详细信息，请参阅[基本身份验证](https://hc.apache.org/httpclient-3.x/authentication.html)和 [NTLM 身份验证](https://hc.apache.org/httpclient-3.x/authentication.html)。 
    
    > [!IMPORTANT]
    > **在 StorSimple 设备管理器服务中，当在设备的代理服务器配置中启用了基本或 NTLM 身份验证时，设备监视图表将不起作用。若要使监视图表工作，需确保将身份验证设置为 "无"。**
   
-5. 如果启用了身份验证，请提供 **Web 代理用户名**和 **Web 代理密码**。 还需要确认密码。
+5. 如果启用了身份验证，请提供 **Web 代理用户名** 和 **Web 代理密码**。 还需要确认密码。
    
     ![在 StorSimple 设备上配置 Web 代理 - 1](./media/storsimple-configure-web-proxy/IC751830.png)
 
@@ -86,7 +86,7 @@ Web 代理是 StorSimple 设备的一项可选配置。__ 只能通过 Windows P
 配置 Web 代理设置的另一种方法是通过 Windows PowerShell for StorSimple cmdlet。 执行以下步骤可配置 Web 代理。
 
 #### <a name="to-configure-web-proxy-via-cmdlets"></a>通过 cmdlet 配置 Web 代理
-1. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**。 出现提示时，请提供**设备管理员密码**。 默认密码为 `Password1`。
+1. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**。 出现提示时，请提供 **设备管理员密码**。 默认密码为 `Password1`。
 2. 在命令提示符处，键入：
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
@@ -108,7 +108,7 @@ Web 代理默认已禁用。 在 StorSimple 设备上配置 Web 代理设置后�
 在 Windows PowerShell for StorSimple 中执行以下步骤，在设备上启用 Web 代理：
 
 #### <a name="to-enable-web-proxy"></a>启用 Web 代理
-1. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**。 出现提示时，请提供**设备管理员密码**。 默认密码为 `Password1`。
+1. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**。 出现提示时，请提供 **设备管理员密码**。 默认密码为 `Password1`。
 2. 在命令提示符处，键入：
    
     `Enable-HcsWebProxy`
@@ -122,15 +122,15 @@ Web 代理默认已禁用。 在 StorSimple 设备上配置 Web 代理设置后�
 Web 代理设置是通过 Windows PowerShell 界面配置的，无法在门户中更改。 但是，可以在门户中查看配置的这些设置。 执行以下步骤可查看 Web 代理。
 
 #### <a name="to-view-web-proxy-settings"></a>查看 Web 代理设置
-1. 导航到“StorSimple 设备管理器服务”>“设备”。**** 选择并单击某个设备，转到“设备设置”>“网络”。****
+1. 导航到“StorSimple 设备管理器服务”>“设备”。 选择并单击某个设备，转到“设备设置”>“网络”。
 
     ![单击“网络”](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
-2. 在“网络设置”边栏选项卡中，单击“Web 代理”磁贴。********
+2. 在“网络设置”边栏选项卡中，单击“Web 代理”磁贴。
 
     ![单击“Web 代理”](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
 
-3. 在“Web 代理”边栏选项卡中，查看 StorSimple 设备上配置的 Web 代理设置。****
+3. 在“Web 代理”边栏选项卡中，查看 StorSimple 设备上配置的 Web 代理设置。
    
     ![查看 Web 代理设置](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
 
@@ -151,9 +151,8 @@ Web 代理设置是通过 Windows PowerShell 界面配置的，无法在门户�
 
 > [!NOTE]
 > * 上面的错误消息列表并不详尽。
-> * Web 代理设置相关的错误不会显示在 StorSimple 设备管理器服务的 Azure 门户中。 如果在完成配置后 Web 代理出现问题，经典门户中的设备状态将更改为“脱机”。****|
+> * Web 代理设置相关的错误不会显示在 StorSimple 设备管理器服务的 Azure 门户中。 如果在完成配置后 Web 代理出现问题，经典门户中的设备状态将更改为“脱机”。|
 
 ## <a name="next-steps"></a>后续步骤
-* 如果在部署设备或配置 Web 代理设置时遇到任何问题，请参阅[排查 StorSimple 设备的部署问题](storsimple-troubleshoot-deployment.md)。
+* 如果在部署设备或配置 Web 代理设置时遇到任何问题，请参阅[排查 StorSimple 设备的部署问题](./storsimple-8000-troubleshoot-deployment.md)。
 * 若要了解如何使用 StorSimple 设备管理器服务，请转到[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-

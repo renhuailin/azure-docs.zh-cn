@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: b125ae506a9811b8e80a9114e31effc1933c114d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821201"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630390"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部分：为 Azure 文件共享启用 AD DS 身份验证 
 
@@ -28,20 +28,20 @@ AzFilesHybrid PowerShell 模块中的 cmdlet 进行必要的修改，并为你�
 
 ### <a name="download-azfileshybrid-module"></a>下载 AzFilesHybrid 模块
 
-- [下载并解压缩 AzFilesHybrid 模块 (GA 模块： v 为 0.2.0 +) ](https://github.com/Azure-Samples/azure-files-samples/releases) 请注意，v 0.2.2 或更高版本支持 AES 256 kerberos 加密。 如果已启用 AzFilesHybrid 版本低于 v 0.2.2 的功能，并且想要更新以支持 AES 256 Kerberos 加密，请参阅 [此文](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)。 
+- [下载并解压缩 AzFilesHybrid 模块 (GA 模块： v 为 0.2.0 +) ](https://github.com/Azure-Samples/azure-files-samples/releases) 请注意，v 0.2.2 或更高版本支持 AES 256 kerberos 加密。 如果已启用 AzFilesHybrid 版本低于 v 0.2.2 的功能，并且想要更新以支持 AES 256 Kerberos 加密，请参阅 [此文](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)。 
 - 使用有权在目标 AD 中创建服务登录帐户或计算机帐户的 AD DS 凭据在加入本地 AD DS 域的设备中安装和执行模块。
 -  使用同步到 Azure AD 的本地 AD DS 凭据运行该脚本。 本地 AD DS 凭据必须具有存储帐户所有者或参与者 Azure 角色权限。
 
-### <a name="run-join-azstorageaccountforauth"></a>运行 AzStorageAccountForAuth
+### <a name="run-join-azstorageaccountforauth"></a>运行 Join-AzStorageAccountForAuth
 
-`Join-AzStorageAccountForAuth`Cmdlet 代表指定的存储帐户执行与脱机域联接等效的操作。 此脚本使用 cmdlet 在 AD 域中创建 [计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) 。 如果出于任何原因而无法使用计算机帐户，则可以改为改为创建 [服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) 。 如果你选择手动运行命令，则应选择最适合你的环境的帐户。
+`Join-AzStorageAccountForAuth`Cmdlet 代表指定的存储帐户执行与脱机域联接等效的操作。 此脚本使用 cmdlet 在 AD 域中创建 [计算机帐户](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) 。 如果出于任何原因而无法使用计算机帐户，则可以改为改为创建 [服务登录帐户](/windows/win32/ad/about-service-logon-accounts) 。 如果你选择手动运行命令，则应选择最适合你的环境的帐户。
 
 Cmdlet 创建的 AD DS 帐户表示存储帐户。 如果在强制密码过期的组织单位 (OU 下创建 AD DS 帐户) ，则必须在密码最长期限前更新密码。 在该日期之前未能更新帐户密码会导致访问 Azure 文件共享时的身份验证失败。 若要了解如何更新密码，请参阅 [更新 AD DS 帐户密码](storage-files-identity-ad-ds-update-password.md)。
 
 在 PowerShell 中执行占位符值之前，请在下面的参数中将其替换为自己的值。
 > [!IMPORTANT]
-> 域加入 cmdlet 将创建一个 AD 帐户来表示 AD 中 (文件共享) 的存储帐户。 你可以选择注册为计算机帐户或服务登录帐户，有关详细信息，请参阅 [常见问题解答](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) 。 对于计算机帐户，AD 中的默认密码过期期限设置为30天。 同样，服务登录帐户可能在 AD 域或组织单位 (OU) 上设置了默认密码过期期限。
-> 对于这两种帐户类型，我们建议你检查 AD 环境中配置的密码过期期限，并计划在最长密码期限之前更新 AD 帐户的 [存储帐户标识的密码](storage-files-identity-ad-ds-update-password.md) 。 可以考虑 [在 ad 中创建新的 Ad 组织单位 (OU) ](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) ，并相应地在 [计算机帐户](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) 或服务登录帐户上禁用密码过期策略。 
+> 域加入 cmdlet 将创建一个 AD 帐户来表示 AD 中 (文件共享) 的存储帐户。 你可以选择注册为计算机帐户或服务登录帐户，有关详细信息，请参阅 [常见问题解答](./storage-files-faq.md#security-authentication-and-access-control) 。 对于计算机帐户，AD 中的默认密码过期期限设置为30天。 同样，服务登录帐户可能在 AD 域或组织单位 (OU) 上设置了默认密码过期期限。
+> 对于这两种帐户类型，我们建议你检查 AD 环境中配置的密码过期期限，并计划在最长密码期限之前更新 AD 帐户的 [存储帐户标识的密码](storage-files-identity-ad-ds-update-password.md) 。 可以考虑 [在 ad 中创建新的 Ad 组织单位 (OU) ](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) ，并相应地在 [计算机帐户](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) 或服务登录帐户上禁用密码过期策略。 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -74,7 +74,7 @@ Join-AzStorageAccountForAuth `
         -StorageAccountName $StorageAccountName `
         -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" <# Default is set as ComputerAccount #> `
         -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" <# If you don't provide the OU name as an input parameter, the AD identity that represents the storage account is created under the root directory. #> `
-        -EncryptionType "<AES,RC4/AES/RC4>" <# Specify the encryption agorithm used for Kerberos authentication. Default is configured as "'RC4','AES256'" which supports both 'RC4' and 'AES256' encryption. #>
+        -EncryptionType "<AES256/RC4/AES256,RC4>" <# Specify the encryption agorithm used for Kerberos authentication. Default is configured as "'RC4','AES256'" which supports both 'RC4' and 'AES256' encryption. #>
 
 #Run the command below if you want to enable AES 256 authentication. If you plan to use RC4, you can skip this step.
 Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
@@ -89,7 +89,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>检查环境
 
-首先，您必须检查您的环境的状态。 具体而言，必须检查是否安装了 [Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) ，以及是否正在用管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查你的 AD DS，查看是否存在已使用 SPN/UPN 创建的 [计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (默认) 或 [服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) ，该帐户是否为 "cifs/你的"。 如果该帐户不存在，请创建一个，如下一节中所述。
+首先，您必须检查您的环境的状态。 具体而言，必须检查是否安装了 [Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) ，以及是否正在用管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查你的 AD DS，查看是否存在已使用 SPN/UPN 创建的 [计算机帐户](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (默认) 或 [服务登录帐户](/windows/win32/ad/about-service-logon-accounts) ，该帐户是否为 "cifs/你的"。 如果该帐户不存在，请创建一个，如下一节中所述。
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>手动创建代表 AD 中的存储帐户的标识
 
@@ -132,7 +132,7 @@ Set-AzStorageAccount `
 
 ### <a name="debugging"></a>调试
 
-你可以运行 AzStorageAccountAuth cmdlet，以使用已登录的 AD 用户对 AD 配置执行一组基本检查。 AzFilesHybrid v0.1.2+ 版本支持此 cmdlet。 有关此 cmdlet 中执行的检查的详细信息，请参阅 Windows 故障排除指南中的 [无法装载 Azure 文件和 AD 凭据](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) 。
+你可以运行 Debug-AzStorageAccountAuth cmdlet，以使用已登录的 AD 用户对 AD 配置执行一组基本检查。 AzFilesHybrid v0.1.2+ 版本支持此 cmdlet。 有关此 cmdlet 中执行的检查的详细信息，请参阅 Windows 故障排除指南中的 [无法装载 Azure 文件和 AD 凭据](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) 。
 
 ```PowerShell
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
@@ -155,6 +155,16 @@ $storageAccount.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 
+如果成功，输出应如下所示：
+
+```PowerShell
+DomainName:<yourDomainHere>
+NetBiosDomainName:<yourNetBiosDomainNameHere>
+ForestName:<yourForestNameHere>
+DomainGuid:<yourGUIDHere>
+DomainSid:<yourSIDHere>
+AzureStorageID:<yourStorageSIDHere>
+```
 ## <a name="next-steps"></a>后续步骤
 
 你现在已成功在你的存储帐户上启用了该功能。 若要使用该功能，必须分配共享级权限。 转到下一节。

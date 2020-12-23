@@ -7,21 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003364"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95757414"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>教程：使用 AI Builder 创建表单处理应用
 
-[AI Builder](https://docs.microsoft.com/ai-builder/overview) 是一种 Power Platform 功能，可让你自动执行进程并预测结果以提高业务绩效。 可以使用 AI Builder 表单处理创建用于标识和提取表单文档中的键值对和表数据的 AI 模型。
+[AI Builder](/ai-builder/overview) 是一种 Power Platform 功能，可让你自动执行进程并预测结果以提高业务绩效。 可以使用 AI Builder 表单处理创建用于标识和提取表单文档中的键值对和表数据的 AI 模型。
 
 > [!NOTE]
-> 此项目也作为 [Microsoft Learn 模块](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/)提供。
+> 此项目也作为 [Microsoft Learn 模块](/learn/modules/get-started-with-form-processing/)提供。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -32,8 +32,8 @@ ms.locfileid: "88003364"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一组具有相同类型的表单，至少五个，用于训练/测试数据。 有关整理训练数据集的提示和选项，请参阅[生成训练数据集](./build-training-data-set.md)。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2128080)的 **Train** 文件夹下的文件。
-* Power Apps 或 Power Automate 许可证 - 请参阅[许可指南](https://go.microsoft.com/fwlink/?linkid=2085130)。 许可证必须包含 [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)。
+* 一组具有相同类型的表单，至少五个，用于训练/测试数据。 有关整理训练数据集的提示和选项，请参阅[生成训练数据集](./build-training-data-set.md)。 对于本快速入门，可以使用 [示例数据集](https://go.microsoft.com/fwlink/?linkid=2128080)的 **Train** 文件夹下的文件。
+* Power Apps 或 Power Automate 许可证 - 请参阅[许可指南](https://go.microsoft.com/fwlink/?linkid=2085130)。 许可证必须包含 [Common Data Service](https://powerplatform.microsoft.com/common-data-service/)。
 * AI Builder [附加产品或试用版](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)。
 
 
@@ -69,7 +69,7 @@ ms.locfileid: "88003364"
 > 上传这些文档之后，仍可以删除某些文档或上传其他文档。
 
 > [!div class="mx-imgBorder"]
-> ![添加文档页](./media/tutorial-ai-builder/add-documents-page.png)
+> ![突出显示了“添加文档”按钮的屏幕截图。](./media/tutorial-ai-builder/add-documents-page.png)
 
 ### <a name="analyze-your-documents"></a>分析文档
 
@@ -93,7 +93,7 @@ ms.locfileid: "88003364"
     - 字段值：检测到的字段的值。
 
 > [!div class="mx-imgBorder"]
-> ![添加文档页](./media/tutorial-ai-builder/select-fields-page.png)
+> ![标记页](./media/tutorial-ai-builder/select-fields-page.png)
 
 ### <a name="label-undetected-fields"></a>标记未检测到的字段
 
@@ -104,7 +104,7 @@ ms.locfileid: "88003364"
 1. 选择“下一步”以检查所选表单字段。 如果一切正常，请选择“训练”来训练模型。
 
     > [!div class="mx-imgBorder"]
-    > ![添加文档页](./media/tutorial-ai-builder/summary-train-page.png)
+    > ![训练页](./media/tutorial-ai-builder/summary-train-page.png)
 1. 训练完成后，在“训练完成”屏幕中选择“转到详细信息页”。
 ## <a name="quick-test-your-model"></a>快速测试模型
 
@@ -127,13 +127,13 @@ ms.locfileid: "88003364"
 如果对模型感到满意，请选择“发布”进行发布。 发布完成后，模型会提升为“已发布”，已准备好进行使用。
 
 > [!div class="mx-imgBorder"]
-> ![添加文档页](./media/tutorial-ai-builder/model-page.png)
+> ![发布模型页](./media/tutorial-ai-builder/model-page.png)
 
-发布了表单处理模型之后，可以在 [Power Apps 画布应用](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)或 [Power Automate](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow) 中进行使用。
+发布了表单处理模型之后，可以在 [Power Apps 画布应用](/ai-builder/form-processor-component-in-powerapps)或 [Power Automate](/ai-builder/form-processing-model-in-flow) 中进行使用。
 
 ## <a name="next-steps"></a>后续步骤
 
 按照 AI Builder 文档中的说明使用表单处理模型。
 
-* [在 Power Apps 中使用表单处理器组件](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)
-* [在 Power Automate 中使用表单处理模型](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)
+* [在 Power Apps 中使用表单处理器组件](/ai-builder/form-processor-component-in-powerapps)
+* [在 Power Automate 中使用表单处理模型](/ai-builder/form-processing-model-in-flow)

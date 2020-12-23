@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4f7ddf94bbd077912cf0d7c2adef2eac548274ca
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078395"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532272"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell 示例
 本文说明可帮助访问 Azure Monitor 功能的示例 PowerShell 命令。
@@ -94,7 +94,7 @@ Get-AzLog -Caller 'myname@company.com'
 以下命令从活动日志中检索最后 1000 个事件：
 
 ```powershell
-Get-AzLog -MaxRecord 10
+Get-AzLog -MaxRecord 1000
 ```
 
 `Get-AzLog` 支持许多其他参数。 有关详细信息，请参阅 `Get-AzLog` 参考文档。
@@ -149,14 +149,14 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 下表描述了用于使用指标创建警报的参数和值。
 
-| 参数 | value |
+| 参数 (parameter) | 值 |
 | --- | --- |
 | 名称 |simpletestdiskwrite |
 | 此警报规则的位置 |美国东部 |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
-| 运算符后的表达式 |GreaterThan |
+| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。有关如何检索精确指标名称的信息，请参阅 `Get-MetricDefinitions` cmdlet |
+| operator |GreaterThan |
 | 阈值（此指标的计数/秒） |1 |
 | WindowSize（hh:mm:ss 格式） |00:05:00 |
 | 聚合（在这种情况下使用平均计数的指标的统计信息） |平均值 |
@@ -187,7 +187,7 @@ Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "East US" -ResourceGroup myrg1 
 Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-如果给定属性已存在警报规则，则添加警报 cmdlet 还会更新该规则。 若要禁用警报规则，请包括 **-DisableRule**参数。
+如果给定属性已存在警报规则，则添加警报 cmdlet 还会更新该规则。 若要禁用警报规则，请包括 **-DisableRule** 参数。
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>获取警报的可用指标的列表
 可以使用 `Get-AzMetricDefinition` cmdlet 来查看针对特定资源的所有指标的列表。
@@ -313,7 +313,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>管理活动日志的日志配置文件
-可以创建*日志配置文件*并从活动日志中将数据导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以通过当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择一个特定订阅。 虽然 PowerShell 默认使用当前订阅，但可以使用 `Set-AzContext`随时更改。 可以配置活动日志将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
+可以创建 *日志配置文件* 并从活动日志中将数据导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以通过当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择一个特定订阅。 虽然 PowerShell 默认使用当前订阅，但可以使用 `Set-AzContext`随时更改。 可以配置活动日志将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
 
 ### <a name="get-a-log-profile"></a>获取日志配置文件
 若要提取现有日志配置文件，请使用 `Get-AzLogProfile` cmdlet。

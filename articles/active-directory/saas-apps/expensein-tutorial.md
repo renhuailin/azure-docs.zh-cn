@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: eb7062b745ae6eb97dc2cd4ba2051cc221031630
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555291"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179118"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>教程：将 ExpenseIn 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555291"
 * 让用户使用其 Azure AD 帐户自动登录到 ExpenseIn。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "88555291"
 
 本教程在测试环境中配置并测试 Azure AD SSO。 
 * ExpenseIn 支持 SP 和 IDP 发起的 SSO  。
-* 配置 ExpenseIn 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 ExpenseIn 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 
 ## <a name="adding-expensein-from-the-gallery"></a>从库中添加 ExpenseIn
@@ -123,7 +123,7 @@ ms.locfileid: "88555291"
 
 ## <a name="configure-expensein-sso"></a>配置 ExpenseIn SSO
 
-1. 若要在 ExpenseIn 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”********。
+1. 若要在 ExpenseIn 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
@@ -135,11 +135,11 @@ ms.locfileid: "88555291"
 
 1. 单击页面顶部的“管理员”并导航到“单一登录”，然后单击“添加提供程序”  。
 
-     ![ExpenseIn 配置](./media/expenseIn-tutorial/config01.png)
+     ![显示“管理员”选项卡和选择了“添加提供程序”的“单一登录 - 提供程序”页面的屏幕截图。](./media/expenseIn-tutorial/config01.png)
 
 1. 在“新建标识提供者”弹出窗口中，执行以下步骤：
 
-    ![ExpenseIn 配置](./media/expenseIn-tutorial/config02.png)
+    ![显示输入了值的“编辑标识提供者”弹出窗口的屏幕截图。](./media/expenseIn-tutorial/config02.png)
 
     a. 在“提供者名称”文本框中键入名称，例如 Azure。
 
@@ -163,7 +163,7 @@ ms.locfileid: "88555291"
 
 2. 单击页面顶部的“管理员”并导航到“用户”，然后单击“新建用户”  。
 
-     ![ExpenseIn 配置](./media/expenseIn-tutorial/config03.png)
+     ![显示“管理员”选项卡和选择了“新用户”的“管理用户”页面的屏幕截图。](./media/expenseIn-tutorial/config03.png)
 
 3. 在“详细信息”弹出窗口中，执行以下步骤：
 
@@ -179,18 +179,18 @@ ms.locfileid: "88555291"
 
 ## <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“ExpenseIn”磁贴时，应会自动登录到设置了 SSO 的 ExpenseIn。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中选择“ExpenseIn”磁贴时，应会自动登录到设置了 SSO 的 ExpenseIn。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 ExpenseIn](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制来保护 ExpenseIn](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制来保护 ExpenseIn](/cloud-app-security/proxy-intro-aad)

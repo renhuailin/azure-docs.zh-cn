@@ -6,18 +6,19 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84667635"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356950"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：通过 Azure 门户在 Windows 虚拟机上创建 SQL Server 2017
 
@@ -47,7 +48,7 @@ ms.locfileid: "84667635"
 1. 选择“+添加”以打开“选择 SQL 部署选项”页。 可以通过在“SQL 虚拟机”磁贴上选择“显示详细信息”来查看其他信息。
 1. 选择“免费 SQL Server 许可证：Windows Server 2016 上的 SQL Server 2017 Developer”映像。
 
-   ![新搜索窗口](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
+   ![显示可在其中选择免费 SQL Server 许可证的屏幕截图：Windows Server 2016 上的 SQL Server 2017 Developer 映像。](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
 1. 选择“创建”。
 
@@ -62,11 +63,11 @@ ms.locfileid: "84667635"
    ![订阅](./media/sql-vm-create-portal-quickstart/basics-project-details.png)
 
 1. 在“实例详细信息”下：
-    1. 键入 _SQLVM_ 作为**虚拟机名称**。 
+    1. 键入 _SQLVM_ 作为 **虚拟机名称**。 
     1. 为“区域”选择一个位置。 
-    1. 本快速入门将“可用性选项”保留设置为“无需基础结构冗余”。 有关可用性选项的详细信息，请参阅[可用性](../../../virtual-machines/windows/availability.md)。 
+    1. 本快速入门将“可用性选项”保留设置为“无需基础结构冗余”。 有关可用性选项的详细信息，请参阅[可用性](../../../virtual-machines/availability.md)。 
     1. 在“映像”列表中，选择“免费 SQL Server 许可证:Windows Server 2016 上的 SQL Server 2017 Developer”的映像。 
-    1. 对于虚拟机**大小**，请选择“更改大小”，然后选择“A2 基本”产品/服务。  用完资源后，请务必清理资源，以免产生任何意外的费用。 
+    1. 对于虚拟机 **大小**，请选择“更改大小”，然后选择“A2 基本”产品/服务。  用完资源后，请务必清理资源，以免产生任何意外的费用。 
 
    ![实例详细信息](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
@@ -114,7 +115,7 @@ ms.locfileid: "84667635"
 
 1. 在“密码”  框中，键入登录的密码。
 
-1. 选择“连接” 。
+1. 选择“连接”。
 
     ![ssms 连接](./media/sql-vm-create-portal-quickstart/ssms-connect.png)
 

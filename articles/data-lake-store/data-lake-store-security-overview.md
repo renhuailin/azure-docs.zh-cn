@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192829"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92146300"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
 
@@ -31,7 +31,7 @@ ms.locfileid: "88192829"
 每个 Azure 订阅都会与 Azure Active Directory 实例关联。 只有在 Azure Active Directory 服务中定义的用户和服务标识才能使用 Azure 门户、命令行工具或组织通过 Data Lake Storage Gen1 SDK 生成的客户端应用程序来访问 Data Lake Storage Gen1 帐户。 作为一种集中的访问控制机制，使用 Azure Active Directory 的主要优点有：
 
 * 简化身份生命周期管理。 只需删除或禁用目录中的帐户，就可迅速创建并快速吊销用户或服务（服务主体标识）的标识。
-* 多重身份验证。 [多重身份验证](../active-directory/authentication/multi-factor-authentication.md)为用户登录和事务提供了额外的安全层。
+* 多重身份验证。 [多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md)为用户登录和事务提供了额外的安全层。
 * 通过标准开放协议（如 OAuth 或 OpenID）的任何客户端认证。
 * 与企业目录服务和云标识提供程序联合。
 
@@ -42,7 +42,7 @@ Azure Active Directory 对用户进行身份验证，以便用户可以访问 Da
 * 用于帐户管理[ (AZURE RBAC) 的 azure 基于角色的访问控制](../role-based-access-control/overview.md)
 * 用于访问存储区中数据的 POSIX ACL
 
-### <a name="rbac-for-account-management"></a>用于帐户管理的 RBAC
+### <a name="azure-rbac-for-account-management"></a>用于帐户管理的 Azure RBAC
 
 默认情况下，针对 Data Lake Storage Gen1 定义四种基本角色。 这些角色允许通过 Azure 门户、PowerShell cmdlet 和 REST API 对 Data Lake Storage Gen1 帐户执行不同的操作。 所有者和参与者角色可对帐户执行许多管理功能。 可以将读取者角色分配给仅查看帐户管理数据的用户。
 
@@ -52,9 +52,9 @@ Azure Active Directory 对用户进行身份验证，以便用户可以访问 Da
 
 | 角色 | 管理权限 | 数据访问权限 | 说明 |
 | --- | --- | --- | --- |
-| 未分配角色 |无 |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
+| 未分配角色 |None |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
 | 所有者 |全部 |全部 |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
-| 读者 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
+| 读取器 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
 | 参与者 |除了添加和删除角色的所有角色 |受 ACL 约束 |参与者角色可以管理帐户的某些方面，如部署、创建和管理警报。 参与者角色不能添加或删除角色。 |
 | 用户访问管理员 |添加和删除角色 |受 ACL 约束 |用户访问管理角色可以管理对帐户的用户访问权限。 |
 

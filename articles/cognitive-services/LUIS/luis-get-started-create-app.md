@@ -4,13 +4,13 @@ description: 本快速入门演示如何创建使用预生成域 `HomeAutomation
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316473"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019154"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
 
@@ -23,20 +23,23 @@ ms.locfileid: "91316473"
 ## <a name="create-a-new-app"></a>创建新应用
 可在“我的应用”中创建和管理应用程序。
 
-1. 在“我的应用”列表中，选择“+ 新建对话应用”然后在选项列表中，再次选择“+ 新建对话应用”。
+### <a name="create-an-application"></a>创建应用程序
 
-1. 在对话框中，将应用程序命名为 `Home Automation`。
-1. 选择“英语”作为区域性。
-1. 输入可选说明。
-1. 如果尚未创建预测资源，请不要选择该资源。 若要使用应用的预测终结点（过渡或生产），需要分配预测资源。
-1. 选择“完成”。
+若要创建应用程序，请单击“+ 新建应用”。 
 
-    LUIS 创建应用程序。
+在显示的窗口中，输入以下信息：
 
-    ![在对话框中，将应用程序命名为“家庭自动化”](./media/create-new-app-details.png)
+|名称  |说明  |
+|---------|---------|
+|AName     | 应用的名称。 例如“home automation”。        |
+|环境     | 应用能够理解和显示的语言。   |
+|说明 | 应用的说明。
+|预测资源 | 将接收查询的预测资源。 |
 
-    >[!NOTE]
-    >创建应用程序后将无法更改区域性。
+选择“完成”。
+
+>[!NOTE]
+>创建应用程序后将无法更改区域性。
 
 ## <a name="add-prebuilt-domain"></a>添加预生成域
 
@@ -51,10 +54,7 @@ ms.locfileid: "91316473"
 
 ## <a name="intents-and-entities"></a>意向和实体
 
-1. 选择“意向”以查看 HomeAutomation 域意向。 预生成的域意向具有示例言语。
-
-    > [!div class="mx-imgBorder"]
-    > ![HomeAutomation 意向列表的屏幕截图](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation 意向列表的屏幕截图")
+1. 在左侧导航菜单中选择“意向”，以便查看 HomeAutomation 域意向。 它具有示例言语，例如 `HomeAutomation.QueryState` 和 `HomeAutomation.SetDevice`。
 
     > [!NOTE]
     > “无”是由所有 LUIS 应用提供的意向。 可以使用它来处理与应用提供的功能无法对应的话语。
@@ -63,6 +63,10 @@ ms.locfileid: "91316473"
 
     > [!div class="mx-imgBorder"]
     > [![HomeAutomation.TurnOff 意向的屏幕截图](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff 意向的屏幕截图")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+
+1. 如果你想要查看应用的实体，请选择“实体”。 如果单击某个实体（例如 HomeAutomation.DeviceName），你将看到与之关联的值的列表。 
+ 
+    :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="图像替换文字" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
@@ -73,11 +77,7 @@ ms.locfileid: "91316473"
 
 1. 在右上方导航中选择“测试”。
 
-1. 在“交互式测试”窗格中键入 `Turn off the lights` 之类的测试言语，然后按 Enter。
-
-    ```
-    Turn off the lights
-    ```
+1. 在“交互式测试”窗格中键入 `Turn off the lights` 之类的测试言语，然后按 Enter。 例如，“关闭照明设备”。
 
     在以下示例中，`Turn off the lights` 被正确标识为“HomeAutomation.TurnOff”的评分最高的意向。
 
@@ -94,7 +94,18 @@ ms.locfileid: "91316473"
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 
-[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
+若要在聊天机器人或其他客户端应用程序中接收 LUIS 预测，需要将应用发布到预测终结点。
+
+1. 选择窗口右上角的“发布”。
+
+1. 选择“生产”槽，然后选择“完成” 。
+
+    > [!div class="mx-imgBorder"]
+    > ![“LUIS 发布到终结点”的屏幕截图](media/howto-publish/publish-app-popup.png)
+
+1. 在通知中选择“访问终结点 URL”链接，转到“Azure 资源”页。  终结点 URL 作为“示例查询”列出。
+
+<!-- [!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)] -->
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 
@@ -212,4 +223,4 @@ ms.locfileid: "91316473"
 可以从代码调用终结点：
 
 > [!div class="nextstepaction"]
-> [使用代码调用 LUIS 终结点](luis-get-started-cs-get-intent.md)
+> [使用代码调用 LUIS 终结点](./luis-get-started-get-intent-from-rest.md)

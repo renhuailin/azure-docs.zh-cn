@@ -4,16 +4,16 @@ description: 本文提供有关 azcopy copy 命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645471"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356168"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -107,6 +107,14 @@ azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[cont
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+将文件和目录上传到 Azure 存储帐户，并在 blob 上设置查询字符串编码标记。 
+
+- 若要设置标记 {key = "空行空行"，val = "foo"} 和 {key = "空行空行 2"，val = "bar"}，请使用以下语法： `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- 键和值是 URL 编码的，键值对由与号 ( "&" 分隔 ) 
+
+- 在 blob 上设置标记时，SAS 中的标记) 有其他 ( 权限，而不会有该服务向后提供授权错误。
 
 使用 OAuth 身份验证下载单个文件。 如果尚未登录到 AzCopy，请在运行以下命令之前运行 `azcopy login` 命令。
 
@@ -214,9 +222,19 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+将文件和目录传输到 Azure 存储帐户，并在 blob 上设置给定的查询字符串编码标记。 
+
+- 若要设置标记 {key = "空行空行"，val = "foo"} 和 {key = "空行空行 2"，val = "bar"}，请使用以下语法： `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- 键和值是 URL 编码的，键值对由与号 ( "&" 分隔 ) 
+    
+- 在 blob 上设置标记时，SAS 中的标记) 有其他 ( 权限，而不会有该服务向后提供授权错误。
+
 ## <a name="options"></a>选项
 
 **--backup** - 激活 Windows 用于上传的 SeBackupPrivilege 或用于下载的 SeRestorePrivilege，以允许 AzCopy 查看和读取所有文件（无论其文件系统权限如何），并恢复所有权限。 要求运行 AzCopy 的帐户已经具有这些权限（例如，拥有管理员权限，或者是 `Backup Operators` 组的成员）。 此标志激活帐户已经具有的权限。
+
+**--blob-标记** 字符串在 Blob 上设置标记，以便对存储帐户中的数据进行分类。
 
 **--blob-type** 字符串  定义目标中的 Blob 类型。 此选项用于上传 Blob 以及在帐户之间进行复制（默认值为 `Detect`）。 有效值包括 `Detect`、 `BlockBlob`、 `PageBlob`和 `AppendBlob`。 在帐户之间复制时，使用值 `Detect` 会导致 AzCopy 使用源 Blob 的类型来确定目标 Blob 的类型。 上传文件时，`Detect` 会根据文件扩展名确定文件是 VHD 文件还是 VHDX 文件。 如果文件是 VHD 或 VHDX 文件，则 AzCopy 会将该文件视为页 Blob。 （默认值为“Detect”）
 
@@ -258,13 +276,15 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--include-after** 字符串 - 只包括在给定日期/时间或之后修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如，`2020-08-19T15:04:00Z` 表示 UTC 时间，`2020-08-19` 表示本地时区的午夜 (00:00)。 与 AzCopy 10.5 一样，此标志仅适用于文件，不适用于文件夹，因此当将此标志与 `--preserve-smb-info` 或 `--preserve-smb-permissions` 一起使用时，将不会复制文件夹属性。
 
+ **--include-** String 仅包含在给定日期/时间之前或之后修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如 `2020-08-19T15:04:00Z` 对于 UTC 时间，或 `2020-08-19` 在本地时区的午夜 (00:00) 。 从 AzCopy 10.7 开始，此标志仅适用于文件，而不适用于文件夹，因此，在将此标志与或一起使用时，不会复制文件夹属性 `--preserve-smb-info` `--preserve-smb-permissions` 。
+
 **--include-attributes** 字符串 -（仅限 Windows）包括其属性与属性列表相匹配的文件。 例如：A;S;R
 
 **--include-path** 字符串 - 复制时仅包括这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：`myFolder;myFolder/subDirName/file.pdf`）。
 
 **--include-pattern** 字符串 - 复制时仅包括这些文件。 此选项支持通配符 (*)。 使用 `;` 分隔文件。
 
-**--版本列表** 字符串指定一个文件，其中每个版本 id 都在单独的行上列出。 确保源必须指向单个 blob，并且使用此标志在文件中指定的所有版本 id 必须仅属于源 blob。 AzCopy 将下载提供的目标文件夹中的指定版本。 有关详细信息，请参阅 [下载以前版本的 blob](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob)。
+**--版本列表** 字符串指定一个文件，其中每个版本 ID 都在单独的行上列出。 确保源必须指向单个 blob，并且使用此标志在文件中指定的所有版本 Id 必须仅属于源 blob。 AzCopy 将下载提供的目标文件夹中的指定版本。 有关详细信息，请参阅 [下载以前版本的 blob](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob)。
 
 **--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：INFO（所有请求/响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为 `INFO`）。 
 
@@ -292,7 +312,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--s2s-handle-invalid-metadata** 字符串   指定如何处理无效的元数据键。 可用选项：ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid。 （默认值为 `ExcludeIfInvalid`）。 （默认值为“ExcludeIfInvalid”）
 
-**--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层 请参阅 [Azure Blob 存储：热、冷和存档访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。  （默认值为“true”）
+**--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层 请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。  （默认值为“true”）
 
 **--s2s-preserve-properties** - 在服务之间复制过程中保留完整属性。 对于 AWS S3 和 Azure 文件存储的非单一文件源，列出操作不会返回对象和文件的完整属性。 若要保留完整属性，AzCopy 需要对每个对象或文件发送一个附加的请求。 （默认值为 true）
 

@@ -5,15 +5,15 @@ services: multiple
 author: sharad4u
 ms.service: multiple
 ms.topic: include
-ms.date: 05/09/2019
+ms.date: 10/30/2020
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 68d0459153fbdb34216c1313f70e292119b93a7c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eb3cc6a37e9116b2a28b72fc7a3779aafb2a1e21
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269790"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027038"
 ---
 创建自己的证书时，以下 CA 获准：
 
@@ -32,6 +32,7 @@ ms.locfileid: "91269790"
 - D-TRUST 根类 3 CA 2 2009
 - DigiCert 云服务 CA-1
 - DigiCert 全局根 CA
+- DigiCert 全局根 G2
 - DigiCert 高保障 CA-3
 - DigiCert 高保障 EV 根 CA
 - DigiCert SHA2 扩展验证服务器 CA
@@ -54,6 +55,7 @@ ms.locfileid: "91269790"
 - Go Daddy 根证书颁发机构 - G2
 - Go Daddy 安全证书颁发机构 - G2
 - 让我们来加密机构 X3
+- 毫秒 e-Szigno 根 CA 2009
 - QuoVadis 根 CA2 G3
 - RapidSSL RSA CA 2018
 - 安全通信 RootCA1

@@ -10,26 +10,26 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4559c72481dfa0cefb2ce84cab56a50d0bf182ef
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030321"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451784"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的临时表
 
 本文包含有关使用临时表的基本指导，并重点介绍了 Synapse SQL 中的会话级别临时表的原则。 
 
-SQL 池和 SQL 点播 (预览) 资源均可利用临时表。 SQL 点播包含本文末尾介绍的限制。 
+专用 SQL 池和无服务器 SQL 池资源均可利用临时表。 无服务器 SQL 池有本文末尾介绍的限制。 
 
 ## <a name="temporary-tables"></a>临时表
 
 临时表在处理数据时非常有用，尤其是在具有暂时性中间结果的转换期间。 对于 Synapse SQL，临时表存在于会话级别。  它们仅对其所创建于的会话可见。 因此，会话注销时将自动删除它们。 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL 池中的临时表
+## <a name="temporary-tables-in-dedicated-sql-pool"></a>专用 SQL 池中的临时表
 
-在 SQL 池资源中，临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
+在专用 SQL 池资源中，临时表可提供性能优势，因为其结果将写入到本地而不是远程存储。
 
 ### <a name="create-a-temporary-table"></a>创建临时表
 
@@ -99,6 +99,7 @@ GROUP BY
 > 
 
 ### <a name="drop-temporary-tables"></a>删除临时表
+
 创建新会话时，应不存在任何临时表。  但是，如果调用的是使用相同名称创建临时的同一存储过程，则为了确保 `CREATE TABLE` 语句成功，请使用简单的预存在检查，其中包括  `DROP` ： 
 
 ```sql
@@ -117,6 +118,7 @@ DROP TABLE #stats_ddl
 ```
 
 ### <a name="modularize-code"></a>模块化代码
+
 可以在用户会话中的任何位置使用临时表。 然后，可以利用此功能来帮助模块化你的应用程序代码。  为了演示，以下存储过程将生成 DDL，以按统计名称更新数据库中的所有统计信息：
 
 ```sql
@@ -195,7 +197,7 @@ GO
 
 由于 `DROP TABLE` 存储过程的末尾没有，当存储过程完成时，创建的表将保持不变，并且可以在存储过程之外读取。  
 
-与其他 SQL Server 数据库相比，Synapse SQL 允许您在创建该数据库的过程外部使用该临时表。  可以在会话中的 **任何位置** 使用通过 SQL 池创建的临时表。 因此，你将拥有更多模块化且可管理的代码，如以下示例中所示：
+与其他 SQL Server 数据库相比，Synapse SQL 允许您在创建该数据库的过程外部使用该临时表。  可以在会话中的 **任何位置** 使用通过专用 SQL 池创建的临时表。 因此，你将拥有更多模块化且可管理的代码，如以下示例中所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -218,15 +220,15 @@ DROP TABLE #stats_ddl;
 
 ### <a name="temporary-table-limitations"></a>临时表的限制
 
-SQL 池对临时表有一些实现限制：
+专用 SQL 池对临时表有一些实现限制：
 
 - 仅支持会话范围的临时表。  不支持全局临时表。
 - 不能在临时表上创建视图。
 - 只能通过哈希或轮循机制分布来创建临时表。  不支持重复的临时表分布。 
 
-## <a name="temporary-tables-in-sql-on-demand-preview"></a>SQL 按需 (预览中的临时表) 
+## <a name="temporary-tables-in-serverless-sql-pool"></a>无服务器 SQL 池中的临时表
 
-支持 SQL 点播中的临时表，但它们的使用受到限制。 它们不能用于以文件为目标的查询。 
+支持无服务器 SQL 池中的临时表，但它们的使用受到限制。 它们不能用于以文件为目标的查询。 
 
 例如，无法使用存储中的文件的数据来联接临时表。 临时表的数目限制为100，并且它们的总大小限制为 100 MB。
 

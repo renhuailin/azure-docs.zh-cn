@@ -3,18 +3,18 @@ title: 在 Azure Application Insights 中使用搜索 | Microsoft Docs
 description: 搜索和筛选由 Web 应用发送的原始遥测数据。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324448"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187011"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 
 搜索是 [Application Insights](./app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
 
-（若要对数据进行更复杂的查询，请使用 [Analytics](../log-query/get-started-portal.md)。）
+（若要对数据进行更复杂的查询，请使用 [Analytics](../log-query/log-analytics-tutorial.md)。）
 
 ## <a name="where-do-you-see-search"></a>哪里可以看到“搜索”？
 
@@ -59,9 +59,9 @@ ms.locfileid: "87324448"
 * **跟踪** - [诊断日志](./asp-net-trace-logs.md)，包括 TrackTrace、log4Net、NLog 和 System.Diagnostic.Trace 调用。
 * **请求** - 服务器应用程序收到的 HTTP 请求，包括页面、脚本、图像、样式文件和数据。 这些事件用于创建请求和响应概述图表。
 * **页面视图** - [由 Web 客户端发送的遥测数据](./javascript.md)，用于创建页面视图报告。
-* **自定义事件** - 如果插入了对 TrackEvent() 的调用以便[监视使用情况](./api-custom-events-metrics.md)，可以在此处搜索这些调用。
-* **异常** - 未捕获到的[服务器中的异常](./asp-net-exceptions.md)，以及使用 TrackException() 记录的异常。
-* **依赖项** - [发自服务器应用程序的调用](./asp-net-dependencies.md)，调用对象为 REST API 或数据库等其他服务器，以及[客户端代码](./javascript.md)中的 AJAX 调用。
+* **自定义事件** - 如果插入了对 TrackEvent() 的调用以便 [监视使用情况](./api-custom-events-metrics.md)，可以在此处搜索这些调用。
+* **异常** - 未捕获到的 [服务器中的异常](./asp-net-exceptions.md)，以及使用 TrackException() 记录的异常。
+* **依赖项** - [发自服务器应用程序的调用](./asp-net-dependencies.md)，调用对象为 REST API 或数据库等其他服务器，以及 [客户端代码](./javascript.md)中的 AJAX 调用。
 * **可用性** - [可用性测试](./monitor-web-app-availability.md)的结果。
 
 ## <a name="filter-on-property-values"></a>按属性值筛选
@@ -81,7 +81,7 @@ ms.locfileid: "87324448"
 ## <a name="search-the-data"></a>搜索数据
 
 > [!NOTE]
-> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开[**日志（分析）** ](../log-query/get-started-portal.md)。
+> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开 [**日志（分析）**](../log-query/log-analytics-tutorial.md)。
 >
 
 可以搜索任何属性值中的关键词。 如果已编写包含属性值的[自定义事件](./api-custom-events-metrics.md)，可使用此功能。
@@ -145,8 +145,7 @@ ms.locfileid: "87324448"
 
 ## <a name="next-steps"></a><a name="add"></a>后续步骤
 
-* [在 Analytics 中编写复杂查询](../log-query/get-started-portal.md)
+* [在 Analytics 中编写复杂查询](../log-query/log-analytics-tutorial.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](./asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](./monitor-web-app-availability.md)
 * [故障排除](../faq.md)
-

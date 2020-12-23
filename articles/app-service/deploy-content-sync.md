@@ -6,15 +6,15 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 880edff95bb548ec5328c543a542ea5dfcfc362f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221130"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150291"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
-本文介绍如何将内容同步到 Dropbox 和 OneDrive 上的 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。 
+本文介绍如何将内容同步到 Dropbox 和 OneDrive 上的 [Azure 应用服务](./overview.md)。 
 
 按需内容同步部署由应用服务的 [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki)提供支持。 你可以在指定的云文件夹中使用应用代码和内容，然后通过单击按钮同步到应用服务。 内容同步使用 Kudu 生成服务器。 
 
@@ -32,8 +32,8 @@ ms.locfileid: "86221130"
 
 在“配置”**** 页上，选择要同步的文件夹。 将在 OneDrive 或 Dropbox 中的以下指定内容路径下创建此文件夹。 
    
-* **OneDrive**：`Apps\Azure Web Apps`
-* **Dropbox**：`Apps\Azure`
+* **OneDrive**： `Apps\Azure Web Apps`
+* **Dropbox**： `Apps\Azure`
 
 完成后，单击“继续”。****
 

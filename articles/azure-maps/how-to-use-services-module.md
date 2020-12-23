@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
-ms.openlocfilehash: 4368e71e0ae6185214a0e3e15773fbe1aef375de
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e07b614e87ed5dad94cf9bc5994e78071187839
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335307"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008593"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 
@@ -32,7 +32,7 @@ Azure Maps Web SDK 提供 *服务模块*。 此模块是一个帮助程序库，
 
     - 或者，通过使用 [Azure Maps-rest](https://www.npmjs.com/package/azure-maps-rest) npm 包在本地加载 AZURE MAPS Web SDK 源代码的服务模块，然后将其托管在应用中。 此程序包还包括了 TypeScript 定义。 使用此命令：
     
-        > npm install azure-maps-rest****
+        > npm install azure-maps-rest
     
         然后，将脚本引用添加到该 `<head>` 文件的元素中：
 
@@ -191,19 +191,19 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [MapsURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl)
+> [MapsURL](/javascript/api/azure-maps-rest/atlas.service.mapsurl)
 
 > [!div class="nextstepaction"]
-> [SearchURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl)
+> [SearchURL](/javascript/api/azure-maps-rest/atlas.service.searchurl)
 
 > [!div class="nextstepaction"]
-> [RouteURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl)
+> [RouteURL](/javascript/api/azure-maps-rest/atlas.service.routeurl)
 
 > [!div class="nextstepaction"]
-> [SubscriptionKeyCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential)
+> [SubscriptionKeyCredential](/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential)
 
 > [!div class="nextstepaction"]
-> [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential)
+> [TokenCredential](/javascript/api/azure-maps-rest/atlas.service.tokencredential)
 
 有关使用 "服务" 模块的更多代码示例，请参阅以下文章：
 

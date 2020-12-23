@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/02/2020
+ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542370"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310463"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用与 Enterprise Integration Pack 接收和确认 B2B AS2 消息
 
@@ -39,7 +39,7 @@ ms.locfileid: "91542370"
 
 * 已在集成帐户中至少定义了两个[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，并为这些合作伙伴创建了 [AS2 和 X12 协议](logic-apps-enterprise-integration-agreements.md)。
 
-## <a name="add-request-trigger"></a>添加请求触发器
+## <a name="add-the-request-trigger"></a>添加“请求”触发器
 
 本示例使用 Azure 门户中的逻辑应用设计器，但你可以在 Visual Studio 中执行与逻辑应用设计器类似的步骤。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91542370"
 
    ![为“请求”触发器生成的用于接收调用的 URL](./media/logic-apps-enterprise-integration-b2b/generated-url-request-trigger.png)
 
-## <a name="add-as2-decode-action"></a>添加 AS2 解码操作
+## <a name="add-the-as2-decode-action"></a>添加 AS2 解码操作
 
 现在请添加要使用的 B2B 操作。 本示例使用 AS2 和 X12 操作。
 
@@ -91,13 +91,21 @@ ms.locfileid: "91542370"
 
 1. 对于“消息标头”属性，请输入 AS2 操作所需的任何标头，这些标头由 HTTP 请求触发器收到的 `headers` 内容进行描述。
 
-   若要输入引用触发器的 `headers` 输出的表达式，请在“消息标头”框中单击。 显示动态内容列表后，选择“表达式”。 在表达式编辑器中输入表达式，然后选择“确定”：
+   1. 若要输入引用触发器输出的表达式 `headers` ，请选择 " **将消息标头切换到文本模式** "。
 
-   `triggerOutputs()['Headers']`
+      ![显示 "切换到文本模式的消息标头" 的屏幕截图。](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   若要使此表达式解析为此标记，请在设计器视图与代码视图之间进行切换，例如：
+   1. 在 **消息标题** 框中单击。 显示动态内容列表后，选择“表达式”。 在表达式编辑器中输入表达式，然后选择“确定”：
 
-   ![已解析触发器的标头输出](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
+      `triggerOutputs()['Headers']`
+
+      在 AS2 解码操作中，表达式现在显示为一个标记：
+
+      ![屏幕截图，显示 @triggerOutputs "消息标头" 框中的 " ( # A1 [' 标头 ']" 标记。](./media/logic-apps-enterprise-integration-b2b/as2-decode-message-header-expression.png)
+
+   1. 若要获取表达式标记以解析为 **标头** 标记，请在设计器和代码视图之间切换。 执行此步骤后，AS2 解码操作如以下示例所示：
+
+      ![已解析触发器的标头输出](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
 
 ## <a name="add-response-action-for-message-receipt-notification"></a>为消息回执通知添加响应操作
 

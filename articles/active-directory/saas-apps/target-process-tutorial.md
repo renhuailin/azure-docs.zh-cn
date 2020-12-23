@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d5b0be147b8aa25e6c737d423eaf4a8a23cde083
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ef21ba46ff64ec2b3c47e9659660fd51f84fbf2e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546519"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521197"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>教程：Azure Active Directory 与 TargetProcess 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88546519"
 * 可以让用户使用其 Azure AD 帐户自动登录到 TargetProcess（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -90,7 +90,7 @@ ms.locfileid: "88546519"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "88546519"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [TargetProcess 客户端支持团队](mailto:support@targetprocess.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -137,15 +137,15 @@ ms.locfileid: "88546519"
 
 1. 以管理员身份登录 TargetProcess 应用程序。
 
-1. 在顶部菜单中，单击“设置”****。
+1. 在顶部菜单中，单击“设置”。
 
     ![设置](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-1. 单击“设置”**** 选项卡。
+1. 单击“设置”选项卡。
 
     ![设置](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-1. 单击“单一登录”**** 选项卡。
+1. 单击“单一登录”选项卡。
 
     ![单击“单一登录”](./media/target-process-tutorial/tutorial_target_process_07.png)
 
@@ -155,13 +155,13 @@ ms.locfileid: "88546519"
 
     a. 单击“启用单一登录”。
 
-    b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值********。
+    b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
     c. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中。
 
-    d. 单击“启用 JIT 预配”****。
+    d. 单击“启用 JIT 预配”。
 
-    e. 单击“ **保存**”。
+    e. 单击“ **保存** ”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -192,11 +192,11 @@ ms.locfileid: "88546519"
 
 在本部分中，通过授予 Britta Simon 访问 TargetProcess 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”****、“所有应用程序”**** 和“TargetProcess”****。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“TargetProcess”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“TargetProcess”****。
+2. 在应用程序列表中，选择“TargetProcess”。
 
     ![应用程序列表中的 TargetProcess 链接](common/all-applications.png)
 
@@ -219,18 +219,18 @@ ms.locfileid: "88546519"
 在本部分中，我们会在 TargetProcess 中创建一个名为 Britta Simon 的用户。 TargetProcess 支持默认情况下启用的实时用户预配。 此部分不存在任何操作项。 如果 TargetProcess 中尚不存在用户，则会在身份验证后创建一个新用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系  [TargetProcess 支持团队](mailto:support@targetprocess.com)。
+> 如果需要手动创建用户，请联系 [TargetProcess 支持团队](mailto:support@targetprocess.com)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 TargetProcess 磁贴时，应当会自动登录到你为其设置了 SSO 的 TargetProcess。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 TargetProcess 磁贴时，应当会自动登录到你为其设置了 SSO 的 TargetProcess。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975073"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965659"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -39,7 +39,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
 * 最新版本的 [Azure PowerShell](/powershell/azure/install-Az-ps)。
 * 网络观察程序的现有实例。 [创建网络观察程序的实例](network-watcher-create.md)（如果还没有这样一个实例的话）。
-* 在网络观察程序所在的同一区域中的现有虚拟机，装有 [Windows 扩展](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
+* 在网络观察程序所在的同一区域中的现有虚拟机，装有 [Windows 扩展](../virtual-machines/extensions/network-watcher-windows.md)或 [Linux 虚拟机扩展](../virtual-machines/extensions/network-watcher-linux.md)。
 
 ## <a name="scenario"></a>方案
 
@@ -340,7 +340,7 @@ $Encryptedpassword
 
 ### <a name="create-the-alert-rule"></a>创建警报规则
 
-转到现有虚拟机，然后添加警报规则。 有关配置警报的更详细文档，请参阅[在 Azure Monitor 中为 Azure 服务创建警报 - Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)。 在“警报规则”边栏选项卡中输入以下值，然后选择“确定” 。
+转到现有虚拟机，然后添加警报规则。 有关配置警报的更详细文档，请参阅[在 Azure Monitor 中为 Azure 服务创建警报 - Azure 门户](../azure-monitor/platform/alerts-classic-portal.md)。 在“警报规则”边栏选项卡中输入以下值，然后选择“确定” 。
 
   |**设置** | **值** | **详细信息** |
   |---|---|---|
@@ -353,7 +353,7 @@ $Encryptedpassword
   |**Webhook**|[函数应用中的 Webhook URL]| 来自前面步骤创建的函数应用的 Webhook URL。|
 
 > [!NOTE]
-> 默认情况下不启用 TCP 段计量。 请访问[启用监视和诊断](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)，详细了解如何启用其他指标。
+> 默认情况下不启用 TCP 段计量。 请访问[启用监视和诊断](../azure-monitor/overview.md)，详细了解如何启用其他指标。
 
 ## <a name="review-the-results"></a>查看结果
 
@@ -363,11 +363,11 @@ $Encryptedpassword
 
 如果捕获文件存储在本地，可以通过登录到虚拟机，检索捕获文件。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一个可以使用的工具是[存储资源管理器](https://storageexplorer.com/)。
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-quickstart-blobs-dotnet.md)。 另一个可以使用的工具是[存储资源管理器](https://storageexplorer.com/)。
 
 下载捕获后，可以使用能够读取 **.cap** 文件的任何工具来查看捕获。 下面提供了其中两个工具的链接：
 
-- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)
 - [WireShark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,38 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: references_regions
+ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309194"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683528"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
-
-> [!NOTE]
-> 运行状况容器的文本分析最近已更新。 有关最近更改的详细信息，请参阅 [新增功能](../whats-new.md) 。 请记得提取最新的容器以使用列出的更新。
 
 > [!IMPORTANT] 
 > 健康状况文本分析是一项预览功能，其“按原样”提供并在“不保证没有缺点”情况下提供。 因此，不应在任何生产用途中实施或部署健康状况文本分析（预览版）。 健康状况文本分析不应用于或不可供用于医疗设备、临床支持、诊断工具或者其他旨在用于诊断、治愈、缓解、治疗或预防疾病或其他健康问题的技术，Microsoft 不授予将此功能用于此类目的的任何许可或权利。 此功能不旨在代替专业人员医疗建议或保健意见、诊断、治疗或医疗保健专业人员临床判断而实施或部署，并且不应用作此用途。 客户独自负责健康状况文本分析的任何使用。 Microsoft 不保证健康状况文本分析或提供的与该功能相关的任何材料足够充分用于任何医疗目的，或者满足任何人的健康或医疗要求。 
 
 
-健康状况文本分析是一种容器化服务，它从非结构化文本（如医生的备注、出院摘要、临床文档和电子健康状况记录）中提取和标记相关医疗信息。  
+用于运行状况的文本分析是文本分析 API 服务的一项功能，它可从非结构化文本（如医生的说明、解雇汇总、临床文档和电子健康记录）中提取和标记相关的医疗信息。  使用此服务有两种方法： 
+
+* 基于 web 的 API (异步)  
+*  (同步的 Docker 容器)    
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
 ## <a name="features"></a>功能
 
-健康状况文本分析容器当前在满足特定安全和数据管理要求的用户自身开发环境中执行英语文本的命名实体识别 (NER)、关系提取、实体否定和实体链接。
+用于运行状况文本分析 (NER) 、关系提取、实体求反和实体链接，以在非结构化临床和生物医学文本中发现见解。
 
-#### <a name="named-entity-recognition"></a>[命名实体识别](#tab/ner)
+### <a name="named-entity-recognition"></a>[命名实体识别](#tab/ner)
 
 命名实体识别检测非结构化文本中提及的可与一个或多个语义类型关联的字词和短语，如诊断、药物名称、症状/体征或年龄。
 
 > [!div class="mx-imgBorder"]
 > ![健康状况 NER](../media/ta-for-health/health-named-entity-recognition.png)
 
-#### <a name="relation-extraction"></a>[关系提取](#tab/relation-extraction)
+### <a name="relation-extraction"></a>[关系提取](#tab/relation-extraction)
 
 关系提取标识文本中提及的概念之间有意义的联系。 例如，通过将疾病名称与时间关联来查找“疾病时间”关系。 
 
@@ -47,7 +50,7 @@ ms.locfileid: "91309194"
 > ![健康状况 RE](../media/ta-for-health/health-relation-extraction.png)
 
 
-#### <a name="entity-linking"></a>[实体链接](#tab/entity-linking)
+### <a name="entity-linking"></a>[实体链接](#tab/entity-linking)
 
 实体链接将文本中提及的命名实体与预定义概念数据库中找到的概念相关联来消除不同实体的歧义。 例如，统一医学语言系统 (UMLS)。
 
@@ -56,7 +59,7 @@ ms.locfileid: "91309194"
 
 健康状况文本分析支持链接到统一医学语言系统 ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) 元词表知识源中的健康状况和生物医学词汇。
 
-#### <a name="negation-detection"></a>[否定检测](#tab/negation-detection) 
+### <a name="negation-detection"></a>[否定检测](#tab/negation-detection) 
 
 医学内容的意义受到修饰语（如否定）的高度影响，这在误诊时可能有重大影响。 健康状况文本分析支持对文本中提到的不同实体进行否定检测。 
 
@@ -65,171 +68,191 @@ ms.locfileid: "91309194"
 
 ---
 
-有关支持的实体的完整列表，请参阅由文本分析返回的 [实体类别](../named-entity-types.md?tabs=health) 。
+请参阅运行状况文本分析返回的[实体类别](../named-entity-types.md?tabs=health)，获取支持的实体的完整列表。 有关置信度的详细信息，请参阅 [文本分析透明度注释](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context)。 
 
-## <a name="supported-languages"></a>支持的语言
+### <a name="supported-languages-and-regions"></a>支持的语言和区域
 
-健康状况文本分析仅支持英语文档。
+健康状况文本分析仅支持英语文档。 
 
-## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
+运行状况托管 web API 的文本分析目前仅在以下区域提供：美国西部2、美国东部2、美国中部、北欧和西欧。
 
-填写并提交[认知服务容器请求表单](https://aka.ms/csgate)以请求访问容器。 目前，将不会对健康状况文本分析容器的使收费。 
+## <a name="request-access-to-the-public-preview"></a>请求访问公共预览版
 
-[!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
+填写并提交 [认知服务请求表单](https://aka.ms/csgate) ，请求访问运行状况公共预览版文本分析。 不会向你收取文本分析的健康状况。 
 
-[!INCLUDE [Authenticate to the container registry](../../../../includes/cognitive-services-containers-access-registry.md)]
+通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交该表单后，Azure 认知服务团队将会对其进行评审，并通过一种决定向你发送电子邮件。
 
-## <a name="install-the-container"></a>安装容器
+> [!IMPORTANT]
+> * 在此表单上，必须使用与 Azure 订阅 ID 关联的电子邮件地址。
+> * 你使用的 Azure 资源必须使用已批准的 Azure 订阅 ID 创建。 
+> * 请检查你的电子邮件（“收件箱”和“垃圾邮件”文件夹）以获取来自 Microsoft 的应用程序状态更新。
 
-可以通过多种方式来安装和运行容器。 
+## <a name="using-the-docker-container"></a>使用 Docker 容器 
 
-- 使用 [Azure 门户](text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
-- 使用以下 PowerShell 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 脚本来自动执行资源部署容器配置。
+若要在自己的环境中运行运行状况容器的文本分析，请按照以下 [说明下载并安装该容器](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare)。
 
-### <a name="install-the-container-using-azure-web-app-for-containers"></a>使用 Azure 用于容器的 Web 应用安装容器
+## <a name="using-the-client-library"></a>使用客户端库
 
-Azure [用于容器的 Web 应用](https://azure.microsoft.com/services/app-service/containers/)是专用于在云中运行容器的 Azure 资源。 它提供自动缩放、Docker 容器和 Docker 编写支持、HTTPS 支持等开箱即用功能。
-
-> [!NOTE]
-> 使用 Azure Web 应用时，将自动获取 `<appservice_name>.azurewebsites.net` 格式的域
-
-通过 HTTPS 使用订阅和容器映像，从而利用 Azure CLI 运行此 PowerShell 脚本来创建用于容器的 Web 应用。 等待脚本完成 (大约25-30 分钟) ，然后提交第一个请求。
-
-```bash
-$subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
-$resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
-                                           #    and AppSerivce to be attached to.
-$resources_location = ""                   # This is the location you wish the AppServicePlan to be deployed to.
-                                           #    You can use the "az account list-locations -o table" command to
-                                           #    get the list of available locations and location code names.
-$appservice_plan_name = ""                 # This is the AppServicePlan name you wish to have.
-$appservice_name = ""                      # This is the AppService resource name you wish to have.
-$TEXT_ANALYTICS_RESOURCE_API_KEY = ""      # This should be taken from the Text Analytics resource.
-$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT = "" # This should be taken from the Text Analytics resource.
-$DOCKER_REGISTRY_SERVER_PASSWORD = ""      # This will be provided separately.
-$DOCKER_REGISTRY_SERVER_USERNAME = ""      # This will be provided separately.
-$DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-healthcare:latest"
-
-az login
-az account set -s $subscription_name
-az appservice plan create -n $appservice_plan_name -g $resource_group_name --is-linux -l $resources_location --sku P3V2
-az webapp create -g $resource_group_name -p $appservice_plan_name -n $appservice_name -i $DOCKER_IMAGE_NAME -s $DOCKER_REGISTRY_SERVER_USERNAME -w $DOCKER_REGISTRY_SERVER_PASSWORD
-az webapp config appsettings set -g $resource_group_name -n $appservice_name --settings Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
-
-# Once deployment complete, the resource should be available at: https://<appservice_name>.azurewebsites.net
-```
-
-### <a name="install-the-container-using-azure-container-instance"></a>使用 Azure 容器实例安装容器
-
-还可以使用 Azure 容器实例 (ACI) 更轻松地部署。 ACI 资源允许在托管的无服务器 Azure 环境中按需运行 Docker 容器。 
-
-有关使用 Azure 门户部署 ACI 资源的步骤，请参阅[如何使用 Azure 容器实例](text-analytics-how-to-use-container-instances.md)。 还可以通过 Azure CLI 使用以下 PowerShell 脚本，这将使用容器映像在订阅上创建 ACI。  等待脚本完成 (大约25-30 分钟) ，然后提交第一个请求。  由于每个 ACI 资源的最大 Cpu 数的限制，如果你希望提交超过5个大文档 (每个请求) 约5000个字符，请不要选择此选项。
-有关可用性信息，请参阅 [ACI 区域支持](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) 文章。 
-
-> [!NOTE] 
-> Azure 容器实例不包括对内置域的 HTTPS 支持。 如果需要 HTTPS，则需要手动配置它，包括创建证书和注册域。 可以通过下面的 NGINX 查找有关如何执行此操作的说明。
-
-```bash
-$subscription_name = ""                    # The name of the subscription you want you resource to be created on.
-$resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
-                                           # and AppService to be attached to.
-$resources_location = ""                   # This is the location you wish the web app to be deployed to.
-                                           # You can use the "az account list-locations -o table" command to
-                                           # Get the list of available locations and location code names.
-$azure_container_instance_name = ""        # This is the AzureContainerInstance name you wish to have.
-$TEXT_ANALYTICS_RESOURCE_API_KEY = ""      # This should be taken from the Text Analytics resource.
-$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT = "" # This should be taken from the Text Analytics resource.
-$DOCKER_REGISTRY_SERVER_PASSWORD = ""      # This will be provided separately.
-$DOCKER_REGISTRY_SERVER_USERNAME = ""      # This will be provided separately.
-$DNS_LABEL = ""                            # This is the DNS label name you wish your ACI will have
-$DOCKER_REGISTRY_LOGIN_SERVER = "containerpreview.azurecr.io"
-$DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-healthcare:latest"
-
-az login
-az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
-
-# Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
-```
-
-### <a name="secure-aci-connectivity"></a>保护 ACI 连接
-
-默认情况下，将 ACI 与容器 API 一起使用时不提供安全性。 这是因为大多数情况下容器会作为 Pod 的一部分运行，而 Pod 受网络桥的保护，与外部隔离。 但是，可以使用前端组件来修改容器，使容器终结点保持专用。 以下示例使用 [NGINX](https://www.nginx.com) 作为入口网关，以支持 HTTPS/SSL 和客户端证书身份验证。
-
-> [!NOTE]
-> NGINX 是高性能的开源 HTTP 服务器和代理。 NGINX 容器可用于终止单个容器的 TLS 连接。 还可能会有更复杂的基于 NGINX 入口的 TLS 终止解决方案。
-
-#### <a name="set-up-nginx-as-an-ingress-gateway"></a>将 NGINX 设置为入口网关
-
-NGINX 使用[配置文件](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/)在运行时启用功能。 若要为另一个服务启用 TLS 终止，必须指定用于终止 TLS 连接的 SSL 证书，以及用于指定服务地址的 `proxy_pass`。 下面提供了示例。
+文本分析客户端库的最新预发行版使你能够使用客户端对象调用运行状况文本分析。 请参阅参考文档，并查看 GitHub 上的示例：
+* [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+* [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+* [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
 
 
-> [!NOTE]
-> `ssl_certificate` 需要路径在 NGINX 容器的本地文件系统中进行指定。 为 `proxy_pass` 指定的地址必须在 NGINX 容器的网络中可用。
 
-NGINX 容器将 `/etc/nginx/conf.d/` 下装载的 `_.conf_` 中的所有文件加载到 HTTP 配置路径。
+## <a name="sending-a-rest-api-request"></a>发送 REST API 请求 
 
-```nginx
-server {
-  listen              80;
-  return 301 https://$host$request_uri;
-}
-server {
-  listen              443 ssl;
-  # replace with .crt and .key paths
-  ssl_certificate     /cert/Local.crt;
-  ssl_certificate_key /cert/Local.key;
+### <a name="preparation"></a>准备工作
 
-  location / {
-    proxy_pass http://cognitive-service:5000;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Real-IP  $remote_addr;
-  }
+当你为其提供较小的要处理的文本量时，文本分析 for health 会生成更高质量的结果。 这与一些其他文本分析功能（如关键短语提取）相反，在较大的文本块上执行效果更佳。 若要从这些操作获得最佳结果，请考虑相应地重构输入。
+
+必须拥有以下格式的 JSON 文档：ID、文本和语言 
+
+每个文档的大小必须少于 5,120 个字符， 对于集合中允许的最大文档数，请参阅“概念”下的[数据限制](../concepts/data-limits.md?tabs=version-3)一文。 集合在请求正文中提交。
+
+### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>为托管的异步 web API 构造 API 请求
+
+对于容器和托管 web API，必须创建 POST 请求。 你可以 [使用 Postman](text-analytics-how-to-call-api.md)中的 [文本分析 "运行状况托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)" 中的、一种卷命令或 **API 测试控制台** 来快速构建 POST 请求并将其发送到所需区域中的托管 web API。 
+
+下面是附加到运行状况 API 请求的 POST 正文的文本分析的 JSON 文件的示例：
+
+```json
+example.json
+
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Subject was administered 100mg remdesivir intravenously over a period of 120 min"
+    }
+  ]
 }
 ```
 
-#### <a name="example-docker-compose-file"></a>示例 Docker compose 文件
+### <a name="hosted-asynchronous-web-api-response"></a>托管的异步 web API 响应 
 
-下面的示例演示如何创建 [docker compose](https://docs.docker.com/compose/reference/overview) 文件来部署 NGINX 和健康状况文本分析容器：
+由于此 POST 请求用于提交异步操作的作业，因此响应对象中没有任何文本。  但是，您需要响应标头中的操作位置键的值，以发出 GET 请求来检查作业的状态和输出。  下面是 POST 请求的响应标头中操作位置键的值的示例：
 
-```yaml
-version: "3.7"
-services:
-  cognitive-service:
-    image: {IMAGE_ID}
-    ports:
-      - 5000:5000
-    environment:
-      - eula=accept
-      - billing={ENDPOINT_URI}
-      - apikey={API_KEY}
-      - Logging:Disk:Format=json
-    volumes:
-        # replace with path to logs folder
-      - <path-to-logs-folder>:/output
-  nginx:
-    image: nginx
-    ports:
-      - 443:443
-    volumes:
-        # replace with paths for certs and conf folders
-      - <path-to-certs-folder>:/cert
-      - <path-to-conf-folder>:/etc/nginx/conf.d/
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/health/jobs/<jobID>`
+
+若要检查作业状态，请在 POST 响应的操作位置键标头的值中向 URL 发出 GET 请求。  以下状态用于反映作业的状态： `NotStarted` 、 `running` 、、、、 `succeeded` `failed` `rejected` `cancelling` 和 `cancelled` 。  
+
+你可以使用或状态取消与 `NotStarted` `running` GET 请求相同的 URL 的删除 HTTP 调用来取消作业。  有关删除调用的详细信息，请 [参阅运行状况托管 API 参考文本分析](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob)。
+
+下面是 GET 请求响应的示例。  请注意，输出可用于检索，直到 `expirationDateTime` 从创建作业开始 (24 小时后) 传递输出后的时间。
+
+```json
+{
+    "jobId": "b672c6f5-7c0d-4783-ba8c-4d0c47213454",
+    "lastUpdateDateTime": "2020-11-18T01:45:00Z",
+    "createdDateTime": "2020-11-18T01:44:55Z",
+    "expirationDateTime": "2020-11-19T01:44:55Z",
+    "status": "succeeded",
+    "errors": [],
+    "results": {
+        "documents": [
+            {
+                "id": "1",
+                "entities": [
+                    {
+                        "offset": 25,
+                        "length": 5,
+                        "text": "100mg",
+                        "category": "Dosage",
+                        "confidenceScore": 1.0,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 31,
+                        "length": 10,
+                        "text": "remdesivir",
+                        "category": "MedicationName",
+                        "confidenceScore": 1.0,
+                        "isNegated": false,
+                        "links": [
+                            {
+                                "dataSource": "UMLS",
+                                "id": "C4726677"
+                            },
+                            {
+                                "dataSource": "MSH",
+                                "id": "C000606551"
+                            },
+                            {
+                                "dataSource": "NCI",
+                                "id": "C152185"
+                            },
+                            {
+                                "dataSource": "NCI_FDA",
+                                "id": "3QKI37EEHE"
+                            }
+                        ]
+                    },
+                    {
+                        "offset": 42,
+                        "length": 13,
+                        "text": "intravenously",
+                        "category": "MedicationRoute",
+                        "confidenceScore": 1.0,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 56,
+                        "length": 4,
+                        "text": "over",
+                        "category": "Time",
+                        "confidenceScore": 0.87,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 73,
+                        "length": 7,
+                        "text": "120 min",
+                        "category": "Time",
+                        "confidenceScore": 0.99,
+                        "isNegated": false
+                    }
+                ],
+                "relations": [
+                    {
+                        "relationType": "DosageOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/0",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "RouteOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/2",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "TimeOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/3",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "TimeOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/4",
+                        "target": "#/results/documents/0/entities/1"
+                    }
+                ],
+                "warnings": []
+            }
+        ],
+        "errors": [],
+        "modelVersion": "2020-09-03"
+    }
+}
 ```
 
-若要启动此 Docker compose 文件，请在文件根级别从控制台中执行以下命令：
 
-```bash
-docker-compose up
-```
+### <a name="structure-the-api-request-for-the-container"></a>为容器构造 API 请求
 
-有关详细信息，请参阅有关 [NGINX SSL 终止](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)的 NGINX 文档。
-
-
-## <a name="example-api-request"></a>示例 API 请求
-该容器提供基于 REST 的查询预测终结点 API。
-
-使用下面的示例 cURL 请求将查询提交到已部署的容器，并使用适当的值替换 `serverURL` 变量。
+你可以 [使用以下 Postman](text-analytics-how-to-call-api.md) 或示例卷请求将查询提交到部署的容器，并将该变量替换为 `serverURL` 适当的值。  请注意，容器的 URL 中的 API 版本不同于托管 API。
 
 ```bash
 curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
@@ -257,9 +280,9 @@ example.json
 }
 ```
 
-## <a name="api-response-body"></a>API 响应正文
+### <a name="container-response-body"></a>容器响应正文
 
-以下 JSON 是健康状况文本分析 API 响应正文的示例：
+下面的 JSON 是容器化同步调用中的运行状况 API 响应正文的文本分析示例：
 
 ```json
 {
@@ -269,81 +292,65 @@ example.json
             "entities": [
                 {
                     "id": "0",
-                    "offset": 17,
-                    "length": 11,
-                    "text": "itchy sores",
-                    "category": "SymptomOrSign",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "entities": [
-                {
-                    "id": "0",
-                    "offset": 11,
-                    "length": 4,
-                    "text": "50mg",
+                    "offset": 25,
+                    "length": 5,
+                    "text": "100mg",
                     "category": "Dosage",
                     "confidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
                     "id": "1",
-                    "offset": 16,
-                    "length": 8,
-                    "text": "benadryl",
+                    "offset": 31,
+                    "length": 10,
+                    "text": "remdesivir",
                     "category": "MedicationName",
                     "confidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
                             "dataSource": "UMLS",
-                            "id": "C0700899"
-                        },
-                        {
-                            "dataSource": "CHV",
-                            "id": "0000044903"
-                        },
-                        {
-                            "dataSource": "MMSL",
-                            "id": "899"
+                            "id": "C4726677"
                         },
                         {
                             "dataSource": "MSH",
-                            "id": "D004155"
+                            "id": "C000606551"
                         },
                         {
                             "dataSource": "NCI",
-                            "id": "C300"
+                            "id": "C152185"
                         },
                         {
-                            "dataSource": "NCI_DTP",
-                            "id": "NSC0033299"
-                        },
-                        {
-                            "dataSource": "PDQ",
-                            "id": "CDR0000039163"
-                        },
-                        {
-                            "dataSource": "PSY",
-                            "id": "05760"
-                        },
-                        {
-                            "dataSource": "RXNORM",
-                            "id": "203457"
+                            "dataSource": "NCI_FDA",
+                            "id": "3QKI37EEHE"
                         }
                     ]
                 },
                 {
                     "id": "2",
-                    "offset": 32,
-                    "length": 11,
-                    "text": "twice daily",
-                    "category": "Frequency",
+                    "offset": 42,
+                    "length": 13,
+                    "text": "intravenously",
+                    "category": "MedicationRoute",
                     "confidenceScore": 1.0,
+                    "isNegated": false
+                },
+                {
+                    "id": "3",
+                    "offset": 56,
+                    "length": 4,
+                    "text": "over",
+                    "category": "Time",
+                    "confidenceScore": 0.87,
+                    "isNegated": false
+                },
+                {
+                    "id": "4",
+                    "offset": 73,
+                    "length": 7,
+                    "text": "120 min",
+                    "category": "Time",
+                    "confidenceScore": 0.99,
                     "isNegated": false
                 }
             ],
@@ -351,26 +358,38 @@ example.json
                 {
                     "relationType": "DosageOfMedication",
                     "bidirectional": false,
-                    "source": "#/documents/1/entities/0",
-                    "target": "#/documents/1/entities/1"
+                    "source": "#/documents/0/entities/0",
+                    "target": "#/documents/0/entities/1"
                 },
                 {
-                    "relationType": "FrequencyOfMedication",
+                    "relationType": "RouteOfMedication",
                     "bidirectional": false,
-                    "source": "#/documents/1/entities/2",
-                    "target": "#/documents/1/entities/1"
+                    "source": "#/documents/0/entities/2",
+                    "target": "#/documents/0/entities/1"
+                },
+                {
+                    "relationType": "TimeOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/0/entities/3",
+                    "target": "#/documents/0/entities/1"
+                },
+                {
+                    "relationType": "TimeOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/0/entities/4",
+                    "target": "#/documents/0/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-07-24"
+    "modelVersion": "2020-09-03"
 }
 ```
 
-### <a name="negation-detection-output"></a>求反检测输出
+### <a name="negation-detection-output"></a>否定检测输出
 
-使用求反检测时，在某些情况下，单个否定字词可以同时处理多个字词。 通过 `isNegated` 标志的布尔值将已识别实体的否定表示在 JSON 输出中：
+在某些情况下，使用否定检测时，单个否定词语一次可以处理多个词语。 已识别的实体在 JSON 输出中用标记的布尔值表示 `isNegated` ，例如：
 
 ```json
 {
@@ -395,7 +414,7 @@ example.json
 
 ### <a name="relation-extraction-output"></a>关系提取输出
 
-关系提取输出包含对关系 *源* 及其 *目标*的 URI 引用。 具有关系角色的实体 `ENTITY` 分配给 `target` 字段。 具有关系角色的实体 `ATTRIBUTE` 分配给 `source` 字段。 缩写关系包含双向 `source` 和 `target` 字段，并且 `bidirectional` 将设置为 `true` 。 
+关系提取输出包含对关系的源的 URI 引用及其目标 。 将具有 `ENTITY` 关系角色的实体分配给 `target` 字段。 将具有 `ATTRIBUTE` 关系角色的实体分配给 `source` 字段。 缩写关系包含双向 `source` 和 `target` 字段，并且 `bidirectional` 将设置为 `true`。 
 
 ```json
 "relations": [
@@ -420,5 +439,5 @@ example.json
 ## <a name="see-also"></a>另请参阅
 
 * [文本分析概述](../overview.md)
-* [命名实体类别](../named-entity-types.md)
+* [“命名实体”类别](../named-entity-types.md)
 * [新增功能](../whats-new.md)

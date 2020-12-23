@@ -3,19 +3,19 @@ title: 在 Azure 实验室服务中控制 Windows 关闭行为指南 |Microsoft 
 description: 自动关闭空闲 Windows 虚拟机并删除 Windows shutdown 命令的步骤。
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 248bbeabaf704ba636e2f82c7a93d0ee90a09f22
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541554"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647692"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>控制 Windows 关闭行为指南
 
 Azure 实验室服务提供多个成本控制，以确保 (Vm) 的 Windows 虚拟机不会意外运行：
- - [设置日程安排](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
- - [为用户设置配额](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)
- - [启用在断开连接时自动关闭](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+ - [设置日程安排](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+ - [为用户设置配额](./how-to-configure-student-usage.md#set-quotas-for-users)
+ - [启用在断开连接时自动关闭](./how-to-enable-shutdown-disconnect.md)
 
 即使使用这些成本控制，在某些情况下，Windows VM 可能会意外地继续运行;因此，从学生的配额中减去：
 
@@ -25,7 +25,7 @@ Azure 实验室服务提供多个成本控制，以确保 (Vm) 的 Windows 虚�
 
 - **Windows shutdown 命令用于关闭 VM**
   
-    学生可以使用 Windows 关机命令或 Windows 中提供的其他关闭机制来关闭 VM，而不是使用 [Azure 实验室服务的 "停止" 按钮](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm)。  发生这种情况时，从 Azure 实验室服务的角度来看，仍在使用 VM。
+    学生可以使用 Windows 关机命令或 Windows 中提供的其他关闭机制来关闭 VM，而不是使用 [Azure 实验室服务的 "停止" 按钮](./how-to-use-classroom-lab.md#start-or-stop-the-vm)。  发生这种情况时，从 Azure 实验室服务的角度来看，仍在使用 VM。
     
 为了帮助防止出现这种情况，本指南提供了自动关闭空闲 Windows VM 并从 " **开始** " 菜单中删除 Windows shutdown 命令的步骤。  
 
@@ -44,7 +44,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 或者，你可以选择使用模板 VM 执行以下手动步骤：
 
-1. 按 Windows 键，键入 " **gpedit.msc**"，然后选择 **"编辑组策略" (控制面板 ") **。
+1. 按 Windows 键，键入 " **gpedit.msc**"，然后选择 **"编辑组策略" (控制面板 ")**。
 
 1. 请在 " **开始" 菜单和任务栏管理模板 > 中转到 "计算机 > 配置**"。  
 

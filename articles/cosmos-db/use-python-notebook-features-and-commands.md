@@ -3,17 +3,19 @@ title: 使用 Azure Cosmos DB Python 笔记本中的内置笔记本命令和功�
 description: 了解如何使用 Azure Cosmos DB 内置 Python 笔记本中的内置命令和功能来执行常见操作。
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801845"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340407"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>使用 Azure Cosmos DB Python 笔记本中的内置笔记本命令和功能（预览版）
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 使用 Azure Cosmos DB 中的内置 Jupyter 笔记本，可以从 Azure 门户分析和可视化数据。 本文介绍如何在 Python 笔记本中使用内置笔记本命令和功能执行常见操作。
 
@@ -167,7 +169,7 @@ container = database.create_container_if_not_exists(id='WebsiteData', partition_
 ## <a name="create-a-custom-instance-of-cosmos_client"></a>创建 ``cosmos_client`` 的自定义实例
 为了提高灵活性，可以创建 ``cosmos_client`` 的自定义实例，以便：
 
-- 自定义[连接策略](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true)
+- 自定义[连接策略](/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?preserve-view=true&view=azure-python-preview)
 - 针对其他 Azure Cosmos 帐户（而不是你所在的帐户）运行操作
 
 可以通过[环境变量](#access-the-account-endpoint-and-primary-key-env-variables)访问当前帐户的连接字符串和主密钥。 
@@ -200,7 +202,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>重置笔记本工作区
 若要将笔记本工作区重置为默认设置，请在命令栏上选择“重置工作区”。 这会删除所有自定义的已安装包，并重启 Jupyter 服务器。 笔记本、文件和 Azure Cosmos 资源不受影响。  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="nteract 数据资源管理器":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="重置笔记本工作区":::
 
 ## <a name="next-steps"></a>后续步骤
 

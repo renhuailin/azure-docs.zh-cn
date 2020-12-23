@@ -1,15 +1,18 @@
 - name: 针对开发人员的 Azure Active Directory
   href: index.yml
 - name: 概述
-  href: v1-overview.md
-- name: 示例
-  href: sample-v1-code.md
-- name: 概念
+  expanded: true
   items:
+    - name: 概述
+      href: v1-overview.md
     - name: Microsoft 标识平台的发展
       href: about-microsoft-identity-platform.md
     - name: 为何更新到 v2.0
       href: azure-ad-endpoint-comparison.md
+- name: 示例
+  href: sample-v1-code.md
+- name: 概念
+  items:
     - name: 应用程序类型
       items:
         - name: 应用程序的类型
@@ -94,8 +97,6 @@
               href: howto-v1-enable-sso-android.md
             - name: 在 iOS 上启用 SSO
               href: howto-v1-enable-sso-ios.md
-            - name: 调试基于 SAML 的 SSO
-              href: howto-v1-debug-saml-sso-issues.md
         - name: 配置声明
           items:
             - name: 配置角色声明
@@ -146,8 +147,6 @@
       items:
         - name: 发布到 App 源
           href: howto-get-appsource-certified.md
-        - name: 发布到 Azure AD 应用库
-          href: howto-app-gallery-listing.md
         - name: 发布到 Office 365 卖家仪表板
           href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
     - name: Azure 访问控制服务

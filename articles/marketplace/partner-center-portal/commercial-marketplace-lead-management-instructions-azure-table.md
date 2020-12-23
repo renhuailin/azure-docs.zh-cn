@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 表存储为 Microsoft AppSource 和 Azure
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030791"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347857"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储管理商业市场潜在顾客
 
@@ -26,7 +26,7 @@ ms.locfileid: "90030791"
 
     1. 选择左侧菜单中的“+ 创建资源”。 “新建”窗格随即在右侧显示。
     1. 在“新建”窗格中选择“存储” 。 “特别推荐”列表随即在右侧显示。
-    1. 选择“存储帐户”开始创建帐户。 按照[创建存储帐户](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)中的说明操作。
+    1. 选择“存储帐户”开始创建帐户。 按照[创建存储帐户](../../storage/common/storage-account-create.md?tabs=azure-portal)中的说明操作。
 
         :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="创建 Azure 存储帐户的步骤。":::
 
@@ -55,11 +55,11 @@ ms.locfileid: "90030791"
 
     ![Azure 表](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    可以使用 [Azure 存储资源管理器](https://archive.codeplex.com/?p=azurestorageexplorer)或任何其他工具来查看存储表中的数据。 还可以导出 Azure 表中的数据。
+    可以使用 [Azure 存储资源管理器](https://www.storageexplorer.com)或任何其他工具来查看存储表中的数据。 还可以导出 Azure 表中的数据。
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>（可选）使用 Power Automate 获取潜在顾客通知
 
-每次将潜在顾客添加到 Azure 存储表时，都可使用 [Power Automate](https://docs.microsoft.com/flow/) 自动获取通知。 如果没有帐户，可以[注册免费帐户](https://flow.microsoft.com/)。
+每次将潜在顾客添加到 Azure 存储表时，都可使用 [Power Automate](/flow/) 自动获取通知。 如果没有帐户，可以[注册免费帐户](https://flow.microsoft.com/)。
 
 ### <a name="lead-notification-example"></a>潜在顾客通知示例
 
@@ -108,7 +108,7 @@ ms.locfileid: "90030791"
 
    选择“创建”后，“获取实体”窗口随即显示 。 在此处，选择“显示高级选项”，并提供以下框的信息：
 
-   * **Table**：选择表的名称（从[创建表](#create-a-table-in-your-storage-account)中）。 下图显示了在 `marketplaceleads` 此示例中选择了 "表" 时的提示。
+   * **Table**：选择表的名称（从 [创建表](#create-a-table-in-your-storage-account)中）。 下图显示了在 `marketplaceleads` 此示例中选择了 "表" 时的提示。
 
      ![获取实体窗口](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 

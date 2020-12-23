@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: c46565f7eaa060a060183cf321bb1df1903b945c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d38ff5c8f33bda5b12f6267e7a8cdf477db6c7d7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992161"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511437"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Pulse Secure PCS 集成
 
@@ -174,7 +174,7 @@ ms.locfileid: "90992161"
 
 ### <a name="create-pulse-secure-pcs-test-user"></a>创建 Pulse Secure PCS 测试用户
 
-在本部分中，在 Pulse Secure PCS 中创建名为 Britta Simon 的用户。 请与  [Pulse Secure PCS 支持团队](mailto:support@pulsesecure.net)协作，将用户添加到 Pulse Secure PCS 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，在 Pulse Secure PCS 中创建名为 Britta Simon 的用户。 请与 [Pulse Secure PCS 支持团队](mailto:support@pulsesecure.net)协作，将用户添加到 Pulse Secure PCS 平台。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -184,10 +184,8 @@ ms.locfileid: "90992161"
 
 2. 直接转到 Pulse Secure PCS 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 如果在访问面板中单击 Pulse Secure PCS 磁贴，这会重定向到 Pulse Secure PCS 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 如果在访问面板中单击 Pulse Secure PCS 磁贴，这会重定向到 Pulse Secure PCS 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Pulse Secure PCS 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Pulse Secure PCS 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

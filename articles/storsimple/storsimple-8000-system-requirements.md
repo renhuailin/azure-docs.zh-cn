@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80297711"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966184"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
 
@@ -31,7 +31,7 @@ ms.locfileid: "80297711"
 
 系统需求包括：
 
-* **存储客户端的软件要求**介绍支持的操作系统以及针对这些操作系统的任何其他要求。
+* **存储客户端的软件要求** 介绍支持的操作系统以及针对这些操作系统的任何其他要求。
 * **StorSimple 设备的网络要求** 提供有关需要在防火墙中打开的端口的信息，以便允许传输 iSCSI、云或管理流量。
 * **StorSimple 的高可用性要求** - 介绍 StorSimple 设备和主机计算机的高可用性要求和最佳实践。
 
@@ -61,9 +61,9 @@ ms.locfileid: "80297711"
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>StorSimple 设备的网络要求
 
-StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
+StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入* 或 *入站* 表示传入客户端请求访问设备的方向。 *出* 或 *出站* 表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必需 | 备注 |
+| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必须 | 注释 |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |出 |WAN |否 |<ul><li>出站端口用于 Internet 访问以检索更新。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |出 |WAN |是 |<ul><li>出站端口用于访问云中的数据。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li><li>此端口还在两个控制器中用于垃圾回收。</li></ul> |
@@ -91,7 +91,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
 
 > [!NOTE]
-> 设备（源）IP 应始终设置为所有已启用的网络接口。 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
+> 设备（源）IP 应始终设置为所有已启用的网络接口。 目标 Ip 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
 
 
 #### <a name="url-patterns-for-azure-portal"></a>Azure 门户的 URL 模式
@@ -122,14 +122,14 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 
 路由跃点数与将数据路由到指定网络的接口和网关相关联。 如果路由协议了解到存在到达同一目标的多个路径，它会使用路由跃点数来计算给定目标的最佳路径。 路由跃点数越低，优先级越高。
 
-在 StorSimple 的上下文中，如果配置多个网络接口和网关以传送流量，路由跃点数将发挥作用，帮助确定这些接口的相对使用顺序。 用户不能更改路由跃点数。 但是，可以使用 `Get-HcsRoutingTable` cmdlet 在 StorSimple 设备上打印出路由表（和跃点数）。 有关 Get-HcsRoutingTable cmdlet 的详细信息，请参阅[排查 StorSimple 设备部署问题](storsimple-troubleshoot-deployment.md)。
+在 StorSimple 的上下文中，如果配置多个网络接口和网关以传送流量，路由跃点数将发挥作用，帮助确定这些接口的相对使用顺序。 用户不能更改路由跃点数。 但是，可以使用 `Get-HcsRoutingTable` cmdlet 在 StorSimple 设备上打印出路由表（和跃点数）。 有关 Get-HcsRoutingTable cmdlet 的详细信息，请参阅[排查 StorSimple 设备部署问题](./storsimple-8000-troubleshoot-deployment.md)。
 
 用于更新 2 及更高版本的路由跃点数算法如下所述。
 
 * 已分配给网络接口一组预先确定的值。
 * 请考虑如下所示的示例表，其中列出了在各种网络接口已启用云或禁用云但具有配置网关时，向它们分配的值。 请注意此处分配的值只是示例值。
 
-    | 网络接口 | 启用云 | 禁用云但配有网关 |
+    | Linux | 启用云 | 禁用云但配有网关 |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
     | Data 1  | 2            | 20                       |
@@ -149,7 +149,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
   
     *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
   
-    括号中的数字表示相应的路由跃点数。**
+    括号中的数字表示相应的路由跃点数。
   
     如果 Data 0 失败，将通过 Data 5 路由云流量。 假设所有其他网络上已配置网关，如果 Data 0 和 Data 5 均失败，将通过 Data 1 路由云流量。
 * 如果启用云的网络接口失败，则重试连接到接口 3 次，其中有 30 秒的延迟。 如果所有重试均失败，将流量路由到路由表确定的下一个启用云的可用接口。 如果所有启用云的网络接口均失败，设备将故障转移到另一个控制器（在这种情况下不用重新启动）。
@@ -223,7 +223,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 * 如果 SSD 或 HDD 发生故障或需要更换，请确保仅移除需要更换的 SSD 或 HDD。
 * 不要同时从系统中移除多个 SSD 或 HDD。
   如果短时间内 2 个或更多个特定类型（SSD、HDD）的磁盘发生故障或发生连续故障，可能导致系统出现故障和潜在的数据丢失。 如果发生这种情况，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)获取帮助。
-* 更换过程中，在 SSD 和 HDD 驱动器的“硬件运行状况”**** 边栏选项卡中监视“共享组件”****。 绿色复选标记状态表示磁盘运行正常，而红色感叹号表示 SSD 或 HDD 发生故障。
+* 更换过程中，在 SSD 和 HDD 驱动器的“硬件运行状况”边栏选项卡中监视“共享组件”。 绿色复选标记状态表示磁盘运行正常，而红色感叹号表示 SSD 或 HDD 发生故障。
 * 建议用户为需要系统故障保护的所有卷配置云快照。
 
 #### <a name="ebod-enclosure"></a>EBOD 机箱
@@ -250,4 +250,4 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 * [了解如何部署 StorSimple 解决方案](storsimple-8000-deployment-walkthrough-u2.md)。
 
 <!--Reference links-->
-[1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731844(v=ws.10)

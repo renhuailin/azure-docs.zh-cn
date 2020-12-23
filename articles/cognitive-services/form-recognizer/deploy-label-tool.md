@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717891"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359840"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
@@ -41,8 +41,8 @@ ms.locfileid: "88717891"
 
 按照以下步骤使用 Azure 门户创建新资源： 
 
-1. 登录 [Azure 门户](https://portal.azure.com/signin/index/)。
-2. 选择“创建资源”。 
+1. 登录到 [Azure 门户](https://portal.azure.com/signin/index/)。
+2. 选择“创建资源”。  
 3. 接下来，选择 " **Web 应用**"。 
 
    > [!div class="mx-imgBorder"]
@@ -80,13 +80,13 @@ ms.locfileid: "88717891"
    * 连续部署-如果想要在开发团队对示例标签工具进行更改时接收自动更新，请将此项设置为 **On** 。
    * 启动命令-将此项设置为 `./run.sh eula=accept`
 
-    # <a name="v21-preview"></a>[v 2.1 预览版](#tab/v2-1) 
+    # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1) 
    * 选项-选择 **单个容器**
    * 图像源-选择 **专用注册表** 
    * 服务器 URL-将此项设置为 `https://mcr.microsoft.com`
    * 用户名 (可选) -创建用户名。 
    * 密码 (可选) -创建要记住的安全密码。
-   * Image 和 tag-将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * Image 和 tag-将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
    * 连续部署-如果想要在开发团队对示例标签工具进行更改时接收自动更新，请将此项设置为 **On** 。
    * 启动命令-将此项设置为 `./run.sh eula=accept`
     
@@ -95,14 +95,17 @@ ms.locfileid: "88717891"
    > [!div class="mx-imgBorder"]
    > ![配置 Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. 分配过程如上所述。 接下来，依次选择 " **查看**" 和 "创建"，然后单击 " **创建** " 以部署 web 应用。 完成后，你可以在资源的 " **概述** " 中提供的 URL 访问你的 web 应用。
+7. 就这么简单。 接下来，依次选择 " **查看**" 和 "创建"，然后单击 " **创建** " 以部署 web 应用。 完成后，你可以在资源的 " **概述** " 中提供的 URL 访问你的 web 应用。
 
 > [!NOTE]
 > 创建 web 应用时，还可以配置授权/身份验证。 这并不是必需的。 
 
+> [!IMPORTANT]
+> 可能需要为 web 应用启用 TLS，才能在其地址上查看 `https` 。 按照 [启用 tls 终结点](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) 中的说明设置挎斗容器，而不是为 web 应用启用 TLS/SSL。
+
 ### <a name="azure-cli"></a>Azure CLI
 
-作为使用 Azure 门户的替代方法，可以使用 Azure CLI 创建资源。 继续之前，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果已使用 Azure CLI，则可以跳过此步骤。 
+作为使用 Azure 门户的替代方法，可以使用 Azure CLI 创建资源。 继续之前，需要安装 [Azure CLI](/cli/azure/install-azure-cli)。 如果已使用 Azure CLI，则可以跳过此步骤。 
 
 有关此命令，需要了解以下几个事项：
 
@@ -129,14 +132,14 @@ az container create \
   --memory 8 \
   --command-line "./run.sh eula=accept"
 ``` 
-# <a name="v21-preview"></a>[v 2.1 预览版](#tab/v2-1)    
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -149,7 +152,7 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>连接到 Azure AD 进行授权
 
-建议将 web 应用连接到 Azure Active Directory。 这可确保只有具有有效凭据的用户可以登录并使用你的 web 应用。 按照 [将应用服务应用配置](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) 为连接到 Azure Active Directory 中的说明进行操作。
+建议将 web 应用连接到 Azure Active Directory。 这可确保只有具有有效凭据的用户可以登录并使用你的 web 应用。 按照 [将应用服务应用配置](../../app-service/configure-authentication-provider-aad.md) 为连接到 Azure Active Directory 中的说明进行操作。
 
 ## <a name="open-source-on-github"></a>GitHub 上的开放源代码
 

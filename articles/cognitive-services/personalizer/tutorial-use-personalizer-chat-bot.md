@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777303"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565715"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>教程：在 .NET 聊天机器人中使用个性化体验创建服务
 
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 若要使用该聊天机器人，需要为个性化体验创建服务和语言理解 (LUIS) 创建 Azure 资源。
 
-* [创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)。 在创建步骤中选择“两者”，因为同时需要创作和预测资源。
+* [创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)。 在创建步骤中选择“两者”，因为同时需要创作和预测资源。
 * [创建个性化体验创建服务资源](how-to-create-resource.md)，然后从 Azure 门户复制密钥和终结点。 你将需要在 .NET 项目的 `appsettings.json` 文件中设置这些值。
 
 ### <a name="create-luis-app"></a>创建 LUIS 应用
@@ -178,18 +178,18 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 1. 打开 Bot Framework Emulator，然后选择“打开机器人”。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="浏览器的屏幕截图，其中显示了聊天机器人网站。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="机器人模拟器启动屏幕的屏幕截图。":::
 
 
 1. 使用以下机器人 URL 配置机器人，然后选择“连接” ：
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="浏览器的屏幕截图，其中显示了聊天机器人网站。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="机器人模拟器打开机器人设置的屏幕截图。":::
 
     模拟器连接到聊天机器人，并显示说明文本以及有助于本地开发的日志记录和调试信息。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="浏览器的屏幕截图，其中显示了聊天机器人网站。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="机器人模拟器第一轮次对话的屏幕截图。":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>在机器人模拟器中使用机器人
 

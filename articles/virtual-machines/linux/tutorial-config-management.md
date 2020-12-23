@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3210829b3281aa862cdf0dbdc9c915249a55e423
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445806"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517999"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 
-Azure [更改跟踪](../../automation/change-tracking.md)允许你轻松识别更改，[更新管理](../../automation/update-management/update-mgmt-overview.md)允许你管理 Azure Linux VM 的操作系统更新。
+Azure [更改跟踪](../../automation/change-tracking/overview.md)允许你轻松识别更改，[更新管理](../../automation/update-management/overview.md)允许你管理 Azure Linux VM 的操作系统更新。
 
 本教程介绍如何执行下列操作：
 
@@ -32,13 +32,9 @@ Azure [更改跟踪](../../automation/change-tracking.md)允许你轻松识别�
 > * 管理 Linux 更新
 > * 监视器更改和清单
 
-## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+- 本教程需要 Azure CLI 2.0.30 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-vm"></a>创建 VM
 
@@ -115,10 +111,10 @@ az vm create \
 | --- | --- |
 | 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
-| 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](../../automation/update-management/update-mgmt-groups.md)|
+| 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](../../automation/update-management/configure-groups.md)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示 。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类|
-|包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) |
+|包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment) |
 |计划设置|选择启动时间，然后选择任“一次”或“重复”|
 | 前脚本 + 后脚本|选择要在部署前和部署后运行的脚本|
 | 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，且不能大于 6 小时 |

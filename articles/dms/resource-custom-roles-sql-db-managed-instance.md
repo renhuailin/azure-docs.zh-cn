@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: e950e34a1965e309d226c42bf4b3128cbe3bf3c5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dad02735228bb639981bf3f053a74f29d1944e5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291497"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961475"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>用于从 SQL Server 在线迁移到 Azure SQL 托管实例的自定义角色
 
 Azure 数据库迁移服务使用应用 ID 来与 Azure 服务交互。 应用 ID 需要订阅级别的“参与者”角色（许多企业安全部门不允许这种角色），或创建自定义角色用于授予 Azure 数据库迁移服务所需的特定权限。 由于 Azure Active Directory 将自定义角色数目限制为 2,000 个，因此你可能希望将应用 ID 专门需要的所有权限合并成一个或两个自定义角色，然后为该应用 ID 授予对特定对象或资源组的自定义角色（而不是在订阅级别授予这种角色）。 如果自定义角色数目没有限制，则可按资源类型拆分自定义角色，以根据下面所述总共创建三个自定义角色。
 
-使用角色定义 JSON 字符串的 AssignableScopes 节，可以控制权限在门户上“添加角色分配”UI 中的显示位置。**** 你可能想要在资源组甚至资源级别定义角色，以免额外的角色使 UI 变得杂乱无章。 请注意，这并不会执行实际的角色分配。
+使用角色定义 JSON 字符串的 AssignableScopes 节，可以控制权限在门户上“添加角色分配”UI 中的显示位置。 你可能想要在资源组甚至资源级别定义角色，以免额外的角色使 UI 变得杂乱无章。 请注意，这并不会执行实际的角色分配。
 
 ## <a name="minimum-number-of-roles"></a>最小角色数
 
@@ -32,7 +32,7 @@ Azure 数据库迁移服务使用应用 ID 来与 Azure 服务交互。 应用 I
 > [!NOTE]
 > 最后一项自定义角色要求最终可能会取消，因为新的 SQL 托管实例代码将部署到 Azure 中。
 
-**应用 ID 的自定义角色**。 在资源或资源组级别进行 Azure 数据库迁移服务迁移时需要此角色（有关应用 ID 的详细信息，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)一文）。** **
+**应用 ID 的自定义角色**。 在资源或资源组级别进行 Azure 数据库迁移服务迁移时需要此角色（有关应用 ID 的详细信息，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)一文）。 
 
 ```json
 {
@@ -63,7 +63,7 @@ Azure 数据库迁移服务使用应用 ID 来与 Azure 服务交互。 应用 I
 }
 ```
 
-**应用 ID 的自定义角色 - 订阅**。 在订阅级别进行 Azure 数据库迁移服务迁移时需要此角色。**
+**应用 ID 的自定义角色 - 订阅**。 在订阅级别进行 Azure 数据库迁移服务迁移时需要此角色。
 
 ```json
 {
@@ -83,7 +83,7 @@ Azure 数据库迁移服务使用应用 ID 来与 Azure 服务交互。 应用 I
 
 以上 JSON 必须存储在三个文本文件中，可以在 AzureRM、AZ PowerShell cmdlet 或 Azure CLI 中使用 **New-AzureRmRoleDefinition (AzureRM)** 或 **New-AzRoleDefinition (AZ)** 创建角色。
 
-有关详细信息，请参阅 [Azure 自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)一文。
+有关详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)一文。
 
 创建这些自定义角色后，必须将角色分配添加到相应资源或资源组中的用户和应用 ID：
 
@@ -142,11 +142,11 @@ Azure 数据库迁移服务使用应用 ID 来与 Azure 服务交互。 应用 I
 
 若要将角色分配给用户/应用 ID，请打开 Azure 门户并执行以下步骤：
 
-1. 导航到相应的资源组或资源（需要在订阅级别授予的角色除外），转到“访问控制”，然后滚动页面找到刚刚创建的自定义角色。****
+1. 导航到相应的资源组或资源（需要在订阅级别授予的角色除外），转到“访问控制”，然后滚动页面找到刚刚创建的自定义角色。
 
 2. 选择相应的角色，选择应用 ID，然后保存更改。
 
-  该应用 ID 随即会显示在“角色分配”选项卡上。****
+  该应用 ID 随即会显示在“角色分配”选项卡上。
 
 ## <a name="next-steps"></a>后续步骤
 

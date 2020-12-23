@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ceab9af7e6556b2d957fafce8cd89d4a0daf9508
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934820"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279395"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>显示启用了 Arc 的 PostgreSQL 超大规模服务器组的配置
 
@@ -111,18 +111,18 @@ kubectl get pvc [-n <namespace name>]
 例如：
 
 ```output
-NAME                   STATUS   VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS    AGE
-backups-postgres01-0   Bound    local-pv-485e37db   1938Gi     RWO            local-storage   6d6h
-backups-postgres01-1   Bound    local-pv-9d3d4a15   1938Gi     RWO            local-storage   6d6h
-backups-postgres01-2   Bound    local-pv-7b8dd819   1938Gi     RWO            local-storage   6d6h
+NAME                                            STATUS   VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+backups-few7hh0k4npx9phsiobdc3hq-postgres01-0   Bound    local-pv-485e37db   1938Gi     RWO            local-storage   6d6h
+backups-few7hh0k4npx9phsiobdc3hq-postgres01-1   Bound    local-pv-9d3d4a15   1938Gi     RWO            local-storage   6d6h
+backups-few7hh0k4npx9phsiobdc3hq-postgres01-2   Bound    local-pv-7b8dd819   1938Gi     RWO            local-storage   6d6h
 ...
-data-postgres01-0      Bound    local-pv-3c1a8cc5   1938Gi     RWO            local-storage   6d6h
-data-postgres01-1      Bound    local-pv-8303ab19   1938Gi     RWO            local-storage   6d6h
-data-postgres01-2      Bound    local-pv-55572fe6   1938Gi     RWO            local-storage   6d6h
+data-few7hh0k4npx9phsiobdc3hq-postgres01-0      Bound    local-pv-3c1a8cc5   1938Gi     RWO            local-storage   6d6h
+data-few7hh0k4npx9phsiobdc3hq-postgres01-1      Bound    local-pv-8303ab19   1938Gi     RWO            local-storage   6d6h
+data-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-55572fe6   1938Gi     RWO            local-storage   6d6h
 ...
-logs-postgres01-0      Bound    local-pv-5e852b76   1938Gi     RWO            local-storage   6d6h
-logs-postgres01-1      Bound    local-pv-55d309a7   1938Gi     RWO            local-storage   6d6h
-logs-postgres01-2      Bound    local-pv-5ccd02e6   1938Gi     RWO            local-storage   6d6h
+logs-few7hh0k4npx9phsiobdc3hq-postgres01-0      Bound    local-pv-5e852b76   1938Gi     RWO            local-storage   6d6h
+logs-few7hh0k4npx9phsiobdc3hq-postgres01-1      Bound    local-pv-55d309a7   1938Gi     RWO            local-storage   6d6h
+logs-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-5ccd02e6   1938Gi     RWO            local-storage   6d6h
 ...
 ```
 
@@ -205,24 +205,12 @@ Metadata:
   Self Link:           /apis/arcdata.microsoft.com/v1alpha1/namespaces/arc/postgresql-12s/postgres02
   UID:                 8a9cd118-361b-4a2e-8a9d-5f9257bf6abb
 Spec:
-  Backups:
-    Delta Minutes:  3
-    Full Minutes:   10
-    Tiers:
-      Retention:
-        Maximums:
-          6
-          512MB
-        Minimums:
-          3
-      Storage:
-        Volume Size:  1Gi
   Engine:
     Extensions:
       Name:  citus
       Name:  pg_stat_statements
   Scale:
-    Shards:  2
+    Workers:  2
   Scheduling:
     Default:
       Resources:
@@ -248,20 +236,50 @@ Status:
 Events:               <none>
 ```
 
+>[!NOTE]
+>在2020年10月之前 `Workers` 的版本中，是 `Shards` 前面的示例中的。 有关详细信息，请参阅 [发行说明-启用了 Azure Arc 的数据服务 (预览) ](release-notes.md) 。
+
 让我们来了解上面所示的说明中的一些具体相关要点 `servergroup` 。 它告诉我们有关此服务器组的内容是什么？
 
 - 这是 Postgres 的版本12： 
-   > 好         `postgresql-12`
+   > ```json
+   > Kind:         `postgresql-12`
+   > ```
 - 它是在2020年8月创建的：
-   > 创建时间戳：  `2020-08-31T21:01:07Z`
+   > ```json
+   > Creation Timestamp:  `2020-08-31T21:01:07Z`
+   > ```
 - 此服务器组中创建了两个 Postgres 扩展： `citus` 和 `pg_stat_statements`
-   > Engine：扩展：名称：  `citus` 名称：  `pg_stat_statements`
+   > ```json
+   > Engine:
+   >    Extensions:
+   >      Name:  `citus`
+   >      Name:  `pg_stat_statements`
+   > ```
 - 它使用两个辅助角色节点
-   > Scale：分片：  `2`
+   > ```json
+   > Scale:
+   >    Workers:  `2`
+   > ```
 - 保证每个节点使用1个 cpu/vCore 和 512MB Ram。 它将使用4个以上的 cpu/Vcore 和1024MB 内存：
-   > 计划：默认：资源：限制： Cpu：4内存：1024Mi 请求： Cpu：1内存：512Mi
+   > ```json
+   > Scheduling:
+   >    Default: 
+   >      Resources:
+   >        Limits:
+   >          Cpu:     4
+   >          Memory:  1024Mi
+   >        Requests:
+   >          Cpu:     1
+   >          Memory:  512Mi
+   > ```
  - 它可用于查询，没有任何问题。 所有节点都已启动并正在运行：
-   > 状态： .。。Ready 盒：3/3 状态：就绪
+   > ```json
+   > Status:
+   >  ...
+   >  Ready Pods:         3/3
+   >  State:              Ready
+   > ```
 
 **With azdata：**
 
@@ -279,7 +297,7 @@ azdata arc postgres server show -n postgres02
 
 返回下面的输出，格式与内容非常类似于 kubectl 返回的输出。
 
-```output
+```console
 {
   "apiVersion": "arcdata.microsoft.com/v1alpha1",
   "kind": "postgresql-12",
@@ -293,26 +311,6 @@ azdata arc postgres server show -n postgres02
     "uid": "8a9cd118-361b-4a2e-8a9d-5f9257bf6abb"
   },
   "spec": {
-    "backups": {
-      "deltaMinutes": 3,
-      "fullMinutes": 10,
-      "tiers": [
-        {
-          "retention": {
-            "maximums": [
-              "6",
-              "512MB"
-            ],
-            "minimums": [
-              "3"
-            ]
-          },
-          "storage": {
-            "volumeSize": "1Gi"
-          }
-        }
-      ]
-    },
     "engine": {
       "extensions": [
         {
@@ -324,7 +322,7 @@ azdata arc postgres server show -n postgres02
       ]
     },
     "scale": {
-      "shards": 2
+      "workers": 2
     },
     "scheduling": {
       "default": {
@@ -369,4 +367,4 @@ azdata arc postgres server show -n postgres02
 - [了解存储配置](storage-configuration.md)
 - [阅读如何监视数据库实例](monitor-grafana-kibana.md)
 - [在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
-- [为启用了 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性](configure-security-postgres-hyperscale.md)
+- [为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性](configure-security-postgres-hyperscale.md)

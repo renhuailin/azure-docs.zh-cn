@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 70ebe8ede75935bcc8d8db8729fef165a5616fe7
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797609"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779798"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
@@ -218,7 +218,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
  >如果在更新加密设置时设置此参数，可能会导致在实际加密之前重新启动。 在这种情况下，还需要从 fstab 文件中删除不想要格式化的磁盘。 同样，在启动加密操作之前，应将想要加密并格式化的分区添加到 fstab 文件。 
 
 ### <a name="encryptformatall-criteria"></a>EncryptFormatAll 条件
-该参数会遍历并加密满足以下**所有**条件的所有分区：
+该参数会遍历并加密满足以下 **所有** 条件的所有分区：
 - 不是根/OS/启动分区
 - 尚未加密
 - 不是 BEK 卷
@@ -408,13 +408,15 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 创建已加密 VM 的映像或快照，并使用它来部署其他 VM。
 - 内核故障转储 (kdump)。
 - Oracle ACFS（ASM 群集文件系统）。
-- Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）。
+- Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](../generation-2.md#generation-1-vs-generation-2-capabilities)）。
 - Lsv2 系列 Vm 的 NVMe 磁盘 (参阅： [Lsv2 系列](../lsv2-series.md)) 。
 - 具有“嵌套装入点”的 VM，即一个路径中有多个装入点（例如“/1stmountpoint/data/2stmountpoint”）。
 - 包含数据驱动器的 VM 装载在 OS 文件夹之上。
 - 具有写入加速器磁盘的 M 系列 VM。
-- 将 ADE 应用到具有使用 [客户管理的密钥](disk-encryption.md) 加密的磁盘的 VM (SSE + CMK) 。 将 SSE + CMK 应用到使用 ADE 加密的 VM 上的数据磁盘也是不受支持的方案。
-- 使用客户管理的密钥将使用 ADE 加密或 **曾经** 使用 ade 加密的 VM 迁移到 [服务器端加密](disk-encryption.md)。
+- 将 ADE 应用到一个 VM，此 VM 使用[服务器端加密和客户管理的密钥](../disk-encryption.md) (SSE + CMK) 加密磁盘。 将 SSE+CMK 应用于使用 ADE 加密的 VM 上的数据磁盘，这种方案也不受支持。
+- 将使用 ADE 加密的 VM，或者曾经使用 ADE 加密的 VM 迁移到[使用客户管理的密钥的服务器端加密](../disk-encryption.md)。
+- [不带本地临时磁盘的 AZURE VM 大小](../azure-vms-no-temp-disk.md);具体而言，Dv4、Dsv4、Ev4 和 Esv4。
+- 加密故障转移群集中的 Vm。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 213dec3498b76f7331f40cb24f0c796175a3fbb3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83849614"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353844"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>快速入门：使用必应视频搜索 REST API 和 PHP 来搜索视频
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 根据此快速入门中的说明对必应视频搜索 API 进行第一次调用。 这个简单的 PHP 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示 JSON 响应。 编写的示例代码在 PHP 5.6 下工作。
 
@@ -31,7 +36,7 @@ ms.locfileid: "83849614"
 
 ## <a name="running-the-application"></a>运行应用程序
 
-[必应视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 从必应搜索引擎返回结果。
+[必应视频搜索 API](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 从必应搜索引擎返回结果。
 
 1. 通过取消注释 `;extension=php_openssl.dll` 行，在 `php.ini` 文件中启用安全 HTTP 支持，如以下代码中所述。
 2. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
@@ -46,8 +51,8 @@ ms.locfileid: "83849614"
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the accessKey string value with your valid access key.
 $accessKey = 'enter key here';

@@ -3,17 +3,17 @@ title: Azure IoT Central 中的持续患者监视体系结构 | Microsoft Docs
 description: 教程 - 了解持续患者监视解决方案体系结构。
 author: philmea
 ms.author: philmea
-ms.date: 09/14/2020
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dad6327acd24fe7642bf1033b1527ef3e40b772e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972231"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590097"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>持续患者监视体系结构
 
@@ -33,11 +33,11 @@ ms.locfileid: "90972231"
 
 ### <a name="mobile-phone-gateway"></a>手机网关
 
-该手机应用程序的主要功能是从医疗设备收集 BLE 数据，并将其传递给 IoT Central。 该应用还通过设备设置指导患者，让他们查看自己的个人健康数据。 其他解决方案可以使用病房中的平板电脑网关或静态网关。 开源示例移动应用程序可用于 Android 和 iOS，以用作应用程序开发的起点。 若要了解详细信息，请参阅 [IoT Central 持续患者监视移动应用](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)。
+该手机应用程序的主要功能是从医疗设备收集 BLE 数据，并将其传递给 IoT Central。 该应用还通过设备设置指导患者，让他们查看自己的个人健康数据。 其他解决方案可以使用病房中的平板电脑网关或静态网关。 开源示例移动应用程序可用于 Android 和 iOS，以用作应用程序开发的起点。 若要了解详细信息，请参阅 [IoT Central 持续患者监视移动应用](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)。
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>导出到 Azure API for FHIR&reg;
 
-Azure IoT Central 符合 HIPAA 并经过 HITRUST&reg; 认证。 还可以使用 [Azure API for FHIR](../../healthcare-apis/overview.md) 向其他服务发送患者健康状况数据。 Azure API for FHIR 是基于标准的临床健康状况数据 API。 通过[适用于 FHIR 的 Azure IoT 连接器](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart)，可以将 Azure API for FHIR 用作 IoT Central 的连续数据导出目标。
+Azure IoT Central 符合 HIPAA 并经过 HITRUST&reg; 认证。 还可以使用 [Azure API for FHIR](../../healthcare-apis/overview.md) 向其他服务发送患者健康状况数据。 Azure API for FHIR 是基于标准的临床健康状况数据 API。 通过[适用于 FHIR 的 Azure IoT 连接器](../../healthcare-apis/iot-fhir-portal-quickstart.md)，可以将 Azure API for FHIR 用作 IoT Central 的连续数据导出目标。
 
 ### <a name="machine-learning"></a>机器学习
 

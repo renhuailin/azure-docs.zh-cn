@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87761019"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887257"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入门：在通知中心设置推送通知
 
@@ -67,14 +67,11 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>先决条件
+你将需要用于 Google Firebase Cloud Messaging (FCM) 项目的“API 密钥”。
 
-在开始之前，必须满足以下条件：
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-* [Azure CLI](/cli/azure/install-azure-cli) 2.0.67 或更高版本。
-
-* Azure CLI 的[用于通知中心的扩展](/cli/azure/ext/notification-hub/notification-hub)。
-* 用于 Google Firebase Cloud Messaging (FCM) 项目的“API 密钥”。
+- 本文需要 Azure CLI 版本 2.0.67 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>为 Google FCM 设置推送通知
 
@@ -111,15 +108,17 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
 
 若要详细了解如何将通知发送到 Android 应用程序，请参阅[使用 Firebase 将推送通知发送到 Android 设备](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 
+---
+
 ## <a name="windows-push-notification-service"></a>Windows 推送通知服务
 
 要设置 Windows 推送通知服务 (WNS)：
 
 1. 在 Azure 门户的“通知中心”页上，从左侧菜单中选择“Windows (WNS)”。
-2. 输入“包 SID”和“安全密钥”的值。
+2. 输入“包 SID”和“安全密钥”的值。  
 3. 选择“保存”。
 
-   ![显示“包 SID”框和“安全密钥”框的屏幕截图](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![显示“包 SID”和“安全密钥”框的屏幕截图](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
 相关信息，请参阅[通过 Azure 通知中心向 UWP 发送通知](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
 
@@ -128,18 +127,18 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
 要为 Windows Phone 设置 Microsoft 推送通知服务 (MPNS)：
 
 1. 在 Azure 门户的“通知中心”页上，从左侧菜单中选择“Windows Phone (MPNS)”。
-1. 启用未经身份验证或经过身份验证的推送通知：
+1. 启用未经身份验证或经过身份验证的通知：
 
-   a. 要启用未经身份验证的推送通知，请选择“启用未经身份验证的推送” > “保存” 。
+   a. 若要启用未经身份验证的推送通知，请选择“启用未经身份验证的推送” > “保存”。  
 
-      ![显示如何启用未经身份验证的推送的屏幕截图](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+      ![显示如何启用未经身份验证的推送通知的屏幕截图](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
-   b. 要启用经过身份验证的推送通知：
-      * 在工具栏上选择“上传证书”。
-      * 选择文件图标，然后选择证书文件。
+   b. 启用经过身份验证的推送通知：
+      * 在工具栏上选择“上传证书”  。
+      * 选择“文件”图标，然后选择证书文件。
       * 输入证书的密码。
       * 选择“确定”。
-      * 在“Windows Phone (MPNS)”页上选择“保存”。
+      * 在“Windows Phone (MPNS)”页上选择“保存”。  
 
 有关详细信息，请参阅[通过通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。
 

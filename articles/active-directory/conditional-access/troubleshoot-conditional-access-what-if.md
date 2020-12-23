@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb51e8590e2859a9fe8692f79c5b1238ed5a2098
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 0112ab53c501d639d3f8e0d09d82ef3a12cb93a8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948175"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837240"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>使用 What If 工具对条件访问进行故障排除
 
@@ -67,7 +67,7 @@ What If 工具只需要一名用户即可开始使用。
 
 若要验证是否已正确配置，管理员可以使用 What If 工具来模拟从应允许的位置和从应拒绝的位置进行的访问。
 
-[![What If 工具显示带有阻止访问的结果](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
+[ ![What If 工具显示带有“阻止访问”的结果](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
 
 在这种情况下，由于 Contoso 已阻止从该位置进行访问，因此该用户在朝鲜旅行期间将被禁止访问任何云应用。
 
@@ -78,4 +78,4 @@ What If 工具只需要一名用户即可开始使用。
 * [什么是条件访问？](overview.md)
 * [Azure Active Directory 标识保护是什么？](../identity-protection/overview-identity-protection.md)
 * [什么是设备标识？](../devices/overview.md)
-* [工作原理：Azure 多重身份验证](../authentication/concept-mfa-howitworks.md)一文
+* [工作原理： Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)

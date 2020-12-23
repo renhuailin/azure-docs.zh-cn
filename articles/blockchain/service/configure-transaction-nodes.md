@@ -4,12 +4,12 @@ description: 如何配置 Azure 区块链 Service transaction 节点
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530380"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150879"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>配置 Azure 区块链 Service transaction 节点
 
@@ -35,12 +35,12 @@ ms.locfileid: "90530380"
 
     ![添加事务节点](./media/configure-transaction-nodes/add-node.png)
 
-    | 设置 | 说明 |
+    | 设置 | 描述 |
     |---------|-------------|
     | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com`。 创建节点名称后，不能对其进行更改。 |
     | 密码 | 设置强密码。 使用密码访问具有基本身份验证的事务节点终结点。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
     预配新的事务节点大约需要 10 分钟时间。 其他事务节点会产生费用。 有关成本的详细信息，请参阅 [Azure 定价](https://aka.ms/ABSPricing)。
 
@@ -71,11 +71,11 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
     |---------|-------------|
     | 角色 | 选择 " **所有者**"、" **参与者**" 或 " **读者**"。
     | 将访问权限分配到 | 选择 **Azure AD 用户、组或服务主体**。
-    | 选择 | 搜索要添加的用户、组或服务主体。
+    | Select | 搜索要添加的用户、组或服务主体。
 
 1. 选择 " **保存** " 以添加角色分配。
 
-有关 Azure AD 访问控制的详细信息，请参阅 [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-portal.md)
+有关 Azure AD 访问控制的详细信息，请参阅 [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)
 
 有关如何使用 Azure AD 身份验证进行连接的详细信息，请参阅 [使用 AAD 身份验证连接到你的节点](configure-aad.md)。
 

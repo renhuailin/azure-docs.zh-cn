@@ -1,30 +1,29 @@
 ---
 title: 自动缩放 Azure HDInsight 群集
-description: 使用 Azure HDInsight 自动缩放功能自动缩放 Apache Hadoop 分类。
+description: 使用自动缩放功能可以根据计划或性能指标自动缩放 Azure HDInsight 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperfq1
-ms.date: 09/14/2020
-ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.date: 12/14/2020
+ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620080"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629249"
 ---
-# <a name="autoscale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
-Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件自动增加或减少群集中的工作器节点数。 在群集创建过程中，你可以设置最小和最大节点数，使用日期时间计划或特定性能指标建立缩放条件，其余的事项将由 HDInsight 平台完成。
+Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件自动增加或减少群集中的工作器节点数。 自动缩放功能的工作方式是：根据性能指标或纵向扩展和向下缩放操作的计划，缩放预设限制内的节点数。
 
 ## <a name="how-it-works"></a>工作原理
 
-自动缩放功能使用两种类型的条件来触发缩放事件：各种群集性能指标的阈值（称为“基于负载的缩放”）和基于时间的触发器（称为“基于计划的缩放”）。 基于负载的缩放会在设置的范围内更改群集中的节点数，以确保获得最佳的 CPU 使用率并尽量降低运行成本。 基于计划的缩放根据你关联到特定日期和时间的操作更改群集中的节点数。
+自动缩放功能使用两种类型的条件来触发缩放事件：各种群集性能指标的阈值（称为“基于负载的缩放”）和基于时间的触发器（称为“基于计划的缩放”）。 基于负载的缩放会在设置的范围内更改群集中的节点数，以确保获得最佳的 CPU 使用率并尽量降低运行成本。 基于计划的缩放根据纵向扩展和向下缩放操作的计划更改群集中的节点数。
 
 以下视频概述了自动缩放解决的难题，以及它如何帮助你使用 HDInsight 控制成本。
-
 
 > [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
@@ -68,7 +67,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 > [!Important]
 > Azure HDInsight 自动缩放功能于 2019 年 11 月 7 日正式发布，适用于 Spark 和 Hadoop 群集，并包含了该功能预览版本中未提供的改进。 如果你在 2019 年 11 月 7 日之前创建了 Spark 群集，并希望在群集上使用自动缩放功能，我们建议创建新群集，并在新群集上启用自动缩放。
 >
-> 在8月27日，2020上发布了针对 HDI 4.0 的公开上市 (LLAP) 自动缩放。 HBase 群集仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
+> 用于 HDI 4.0 的 Interactive Query 自动缩放 (LLAP) 于 2020 年 8 月 27 日正式发布。 HBase 群集仍处于预览状态。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
 
 下表描述了与自动缩放功能兼容的群集类型和版本。
 
@@ -88,12 +87,12 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 若要结合基于负载的缩放启用自动缩放功能，请在创建普通群集的过程中完成以下步骤：
 
 1. 在“配置 + 定价”选项卡上，选中“启用自动缩放”复选框。 
-1. 在“自动缩放类型”下选择“基于负载”。********
+1. 在“自动缩放类型”下选择“基于负载”。
 1. 为以下属性输入所需的值：  
 
-    * 适用于工作器节点的初始工作节点数****。****
-    * 工作器节点**最小**数目。
-    * 工作器节点**最大**数目。
+    * 适用于工作器节点的初始工作节点数。
+    * 工作器节点 **最小** 数目。
+    * 工作器节点 **最大** 数目。
 
     ![启用工作器节点的基于负载的自动缩放](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
@@ -103,11 +102,11 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 若要结合基于计划的缩放启用自动缩放功能，请在创建普通群集的过程中完成以下步骤：
 
-1. 在“配置 + 定价”选项卡上，勾选“启用自动缩放”复选框。********
-1. 输入**工作器节点**的**节点数**，以控制纵向扩展群集的限制。
-1. 在“自动缩放类型”下选择“基于计划”选项。********
+1. 在“配置 + 定价”选项卡上，勾选“启用自动缩放”复选框。
+1. 输入 **工作器节点** 的 **节点数**，以控制纵向扩展群集的限制。
+1. 在“自动缩放类型”下选择“基于计划”选项。
 1. 选择“配置”以打开“自动缩放配置”窗口。 
-1. 选择时区，然后单击“+ 添加条件”****
+1. 选择时区，然后单击“+ 添加条件”
 1. 选择新条件要应用到的星期日期。
 1. 编辑该条件生效的时间，以及群集要缩放到的节点数。
 1. 根据需要添加更多条件。
@@ -133,7 +132,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 #### <a name="load-based-autoscaling"></a>基于负载的自动缩放
 
-可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。 有关完整的资源管理器模板，请参阅[快速入门模板：在启用了基于负载的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)。
+可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。 有关完整的资源管理器模板，请参阅 [快速入门模板：部署启用了基于负载的自动缩放的 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)。
 
 ```json
 {
@@ -161,7 +160,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 #### <a name="schedule-based-autoscaling"></a>基于计划的自动缩放
 
-可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。 有关完整的资源管理器模板，请参阅[在启用了基于计划的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)。
+可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。 有关完整的资源管理器模板，请参阅 [在启用基于计划的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)。
 
 ```json
 {
@@ -195,7 +194,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-若要在运行中的群集上启用自动缩放，请选择“设置”下的“群集大小”。******** 然后选择“启用自动缩放”。 选择所需的自动缩放类型，然后输入基于负载或基于计划的缩放选项。 最后，选择“保存”****。
+若要在运行中的群集上启用自动缩放，请选择“设置”下的“群集大小”。 然后选择“启用自动缩放”。 选择所需的自动缩放类型，然后输入基于负载或基于计划的缩放选项。 最后，选择“保存”。
 
 ![启用工作器节点的基于计划的自动缩放运行群集](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
 
@@ -245,41 +244,41 @@ Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
 ## <a name="best-practices"></a>最佳做法
 
-### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>请考虑向上扩展和向下缩放操作的延迟
+### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>请考虑纵向扩展操作和纵向缩减操作的延迟
 
 完成一项缩放操作可能需要 10 到 20 分钟。 设置自定义计划时，请将此延迟计划在内。 例如，如果需要在早晨 9:00 将群集大小设置为 20，请将计划触发器设置为更早的某个时间（例如早晨 8:30），这样缩放操作就可以在早晨 9:00 之前完成。
 
-### <a name="prepare-for-scaling-down"></a>准备缩小
+### <a name="prepare-for-scaling-down"></a>准备进行纵向缩减
 
-在群集缩小过程中，自动缩放会 add-on 节点以满足目标大小。 如果任务在这些节点上运行，自动缩放会等待，直到完成 Spark 和 Hadoop 群集的任务。 由于每个辅助角色节点还在 HDFS 中提供角色服务，因此临时数据将移动到其余节点。 请确保剩余节点上有足够的空间来承载所有临时数据。
+在群集纵向缩减过程中，自动缩放会根据目标大小解除节点的授权。 如果任务正在这些节点上运行，自动缩放会等待 Spark 和 Hadoop 群集的任务完成。 由于每个工作器节点也充当 HDFS 中的某个角色，因此会将临时数据转移到剩余节点中。 请确保剩余节点上有足够的空间来托管所有临时数据。
 
 正在运行的作业将继续运行。 在可用的工作器节点变少的情况下，挂起的作业会等待安排。
 
-### <a name="be-aware-of-the-minimum-cluster-size"></a>了解最小群集大小
+### <a name="be-aware-of-the-minimum-cluster-size"></a>了解最小的群集大小
 
-请勿将群集缩减到三个节点以下。 将群集缩放成少于三个节点可能导致系统停滞在安全模式下，因为没有进行充分的文件复制。 有关详细信息，请参阅 [进入安全模式](hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
+请勿将群集缩减到三个节点以下。 将群集缩放成少于三个节点可能导致系统停滞在安全模式下，因为没有进行充分的文件复制。 有关详细信息，请参阅[停滞在安全模式下](hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
 
-### <a name="increase-the-number-of-mappers-and-reducers"></a>增加映射器和化简器的数量
+### <a name="increase-the-number-of-mappers-and-reducers"></a>增加映射器和减速器的数目
 
-Hadoop 群集的自动缩放还会监视 HDFS 的使用情况。 如果 HDFS 处于繁忙状态，它将假定群集仍需要当前资源。 如果查询中涉及大量数据，则可以增加映射器和化简器的数量以增加并行度并加速 HDFS 操作。 这样，当有额外的资源时，就会触发适当的缩小。 
+适用于 Hadoop 群集的自动缩放功能也会监视 HDFS 使用情况。 如果 HDFS 非常繁忙，它会认为该群集仍需要当前资源。 如果查询中涉及大量数据，可增加映射器和减速器的数量，以提高并行度并加速 HDFS 操作。 这样一来，当有额外资源时，会触发适当的纵向缩减。 
 
-### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>为高峰使用方案设置 Hive 配置最大并发查询数
+### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>针对峰值使用方案设置名为“最大并发查询总数”的 Hive 配置
 
-自动缩放事件不会在 Ambari 中更改 Hive 配置 *最大并发查询总数* 。 这意味着，在任何时间点，Hive Server 2 交互式服务只能处理给定数量的并发查询，即使交互式查询守护程序计数根据负载和计划增加和减少也是如此。 一般建议为高峰使用方案设置此配置，以避免手动干预。
+自动缩放事件不会更改 Ambari 中名为“最大并发查询总数”的 Hive 配置。 这意味着，即使 Interactive Query 守护程序计数根据负载和计划进行纵向扩展和纵向缩减，Hive Server 2 交互式服务在任意时间点也只能处理给定数量的并发查询。 通常建议针对峰值使用方案设置此配置，以避免手动干预。
 
-但是，如果只有少量的工作节点，并且将最大并发查询数的值配置得太高，则可能会遇到 Hive 服务器2重新启动失败。 至少需要最少数量的辅助角色节点，才能容纳给定数量的 Tez Ams (等于最大总计并发查询配置) 。 
+但是，如果只有少量的工作器节点，并且最大并发查询总数的值配置过高，则可能会出现 Hive Server 2 重启失败的情况。 至少需要可容纳给定数量的 Tez Ams 的最小工作器节点数（等于最大并发查询配置总数）。 
 
 ## <a name="limitations"></a>限制
 
-### <a name="node-label-file-missing"></a>缺少节点标签文件
+### <a name="node-label-file-missing"></a>节点标签文件缺失
 
-HDInsight 自动缩放使用节点标签文件来确定节点是否准备好执行任务。 节点标签文件存储在具有三个副本的 HDFS 中。 如果群集大小大幅缩小，并且有大量的临时数据，则可能会删除所有三个副本。 如果发生这种情况，群集将进入错误状态。
+HDInsight 自动缩放使用节点标签文件来确定节点是否准备好执行任务。 节点标签文件存储在具有 3 个副本的 HDFS 中。 如果群集大小大幅度地纵向缩减，并且有大量的临时数据，则全部三个副本都可能会被删除。 如果发生这种情况，群集将进入错误状态。
 
-### <a name="interactive-query-daemons-count"></a>交互式查询守护程序计数
+### <a name="interactive-query-daemons-count"></a>Interactive Query 守护程序计数
 
-对于启用自动缩放的交互式查询群集，自动缩放启用/关闭事件还会将交互式查询守护程序的数目向上/向下扩展到活动工作节点数。 不会在 Ambari 的配置中保留守护程序数量的变化 `num_llap_nodes` 。 如果手动重新启动 Hive 服务，则会根据 Ambari 中的配置重置交互查询守护程序的数量。
+如果 Interactive Query 群集启用了自动缩放，则自动纵向扩展/纵向缩减事件还会将 Interactive Query 守护程序的数量纵向扩展/纵向缩减为活动工作器节点的数量。 守护进程数量的变化不会保存在 Ambari 的 `num_llap_nodes` 配置中。 如果手动重启 Hive 服务，则 Interactive Query 守护程序的数量将根据 Ambari 中的配置进行重置。
 
-如果手动重新启动了交互式查询服务，则需要手动更改 `num_llap_node` 配置 () 运行 Hive 交互查询) 后台 *程序* 所需的节点 (，以匹配当前活动的工作节点计数。
+如果手动重启 Interactive Query 服务，则需要手动更改“高级 hive-interactive-env”下的 `num_llap_node` 配置（运行 Hive Interactive Query 守护程序所需的节点数），使其与当前的活动工作器节点计数一致。
 
 ## <a name="next-steps"></a>后续步骤
 

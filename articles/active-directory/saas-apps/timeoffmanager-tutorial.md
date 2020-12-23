@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 59eb2e320a828b644af6f740cf9f8381370a0dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527275"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608810"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TimeOffManager 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88527275"
 * 让用户使用其 Azure AD 帐户自动登录到 TimeOffManager。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "88527275"
 
 * TimeOffManager 支持 **IDP** 发起的 SSO
 
-* TimeOffManager 支持**实时**用户预配
+* TimeOffManager 支持 **实时** 用户预配
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -146,11 +146,11 @@ ms.locfileid: "88527275"
 
 2. 转到“帐户”\>“帐户选项”\>“单一登录设置”  。
    
-    ![单一登录设置](./media/timeoffmanager-tutorial/ic795917.png "单一登录设置")
+    ![屏幕截图显示从“帐户选项”选择了“单一登录设置”。](./media/timeoffmanager-tutorial/ic795917.png "单一登录设置")
 
 3. 在“单一登录设置”  部分中，执行以下步骤：
    
-    ![单一登录设置](./media/timeoffmanager-tutorial/ic795918.png "单一登录设置")
+    ![屏幕截图显示了“单一登录选项”，可在其中输入所述值。](./media/timeoffmanager-tutorial/ic795918.png "单一登录设置")
    
     a. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将整个证书粘贴到“X.509 证书”文本框中。 
    
@@ -168,7 +168,7 @@ ms.locfileid: "88527275"
 
 4. 在“单一登录设置”页中，复制“断言使用者服务 URL”的值，并将其粘贴到 Azure 门户中“基本 SAML 配置”部分下的“回复 URL”文本框中。     
 
-      ![单一登录设置](./media/timeoffmanager-tutorial/ic795915.png "单一登录设置")
+    ![屏幕截图显示了“断言使用者服务 URL”链接。](./media/timeoffmanager-tutorial/ic795915.png "单一登录设置")
 
 ### <a name="create-timeoffmanager-test-user"></a>创建 TimeOffManager 测试用户
 
@@ -181,15 +181,14 @@ ms.locfileid: "88527275"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“TimeOffManager”磁贴时，应会自动登录到设置了 SSO 的 TimeOffManager。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“TimeOffManager”磁贴时，应会自动登录到设置了 SSO 的 TimeOffManager。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试 TimeOffManager 与 Azure AD 集成](https://aad.portal.azure.com/)
-

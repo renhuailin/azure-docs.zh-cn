@@ -8,15 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/20/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 07e3ff76886a935bf0b7b5c83052e0e7cd7a0429
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801794"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027418"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -42,9 +43,7 @@ Azure AD 预配服务使用 [SCIM 2.0 协议](https://techcommunity.microsoft.co
 
 ## <a name="authorization"></a>授权
 
-Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 可以参考应用教程来查找应用程序的凭据类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
-
-如果还为应用程序配置了基于 SAML 的单一登录，则 Azure AD 内部的每个应用程序存储限制为 1024 个字节。 此限制包括与应用程序单个实例关联的所有证书、机密令牌、凭据以及相关配置数据（在 Azure AD 中也称为服务主体记录）。 当配置了基于 SAML 的单一登录时，用来对 SAML 令牌进行签名的证书通常会占用该空间的 50% 以上。 在用户预配安装过程中输入的任何其他项（机密令牌、URI、通知电子邮件地址、用户名和密码）都可能超过存储限制。 有关详细信息，请参阅[配置用户预配时保存管理员凭据出现问题](./application-provisioning-config-problem-storage-limit.md)。
+Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 对于库应用程序，可以通过参考应用教程来查找应用程序的凭据类型和要求。 对于非库应用程序，可以参考 [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) 文档来了解凭据类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
 
 ## <a name="mapping-attributes"></a>映射属性
 
@@ -65,15 +64,15 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 * **组。** 使用 Azure AD Premium 许可计划，可以使用组分配对 SaaS 应用程序的访问权限。 然后，当预配范围设置为“仅同步已分配的用户和组”时，Azure AD 预配服务将根据用户是否是分配给应用程序的组的成员来预配或取消预配用户。 除非应用程序支持组对象，否则不会预配组对象本身。 确保分配给应用程序的组的属性“SecurityEnabled”设置为“True”。
 
-* **动态组。** Azure AD 用户预配服务可以读取和预配[动态组](../users-groups-roles/groups-create-rule.md)中的用户。 请牢记以下注意事项和建议：
+* **动态组。** Azure AD 用户预配服务可以读取和预配[动态组](../enterprise-users/groups-create-rule.md)中的用户。 请牢记以下注意事项和建议：
 
   * 动态组可能会影响从 Azure AD 到 SaaS 应用程序的端到端预配的性能。
 
-  * SaaS 应用程序中的用户在动态组中预配或取消预配的速度取决于动态组评估成员身份更改的速度。 有关如何检查动态组的处理状态的信息，请参阅[检查成员身份规则的处理状态](../users-groups-roles/groups-create-rule.md)。
+  * SaaS 应用程序中的用户在动态组中预配或取消预配的速度取决于动态组评估成员身份更改的速度。 有关如何检查动态组的处理状态的信息，请参阅[检查成员身份规则的处理状态](../enterprise-users/groups-create-rule.md)。
 
   * 当用户失去动态组中的成员身份时，将其视为取消预配事件。 在为动态组创建规则时，请考虑这种情况。
 
-* **嵌套组。** Azure AD 用户预配服务无法读取或预配嵌套组中的用户。 该服务只能读取和预配属于显式分配组直接成员的用户。 “应用程序基于组的分配”的限制会影响单一登录（请参阅[使用组来管理对 SaaS 应用程序的访问](../users-groups-roles/groups-saasapps.md)）。 相反，直接分配或[限定](define-conditional-rules-for-provisioning-user-accounts.md)包含需要预配的用户的组。
+* **嵌套组。** Azure AD 用户预配服务无法读取或预配嵌套组中的用户。 该服务只能读取和预配属于显式分配组直接成员的用户。 “应用程序基于组的分配”的限制会影响单一登录（请参阅[使用组来管理对 SaaS 应用程序的访问](../enterprise-users/groups-saasapps.md)）。 相反，直接分配或[限定](define-conditional-rules-for-provisioning-user-accounts.md)包含需要预配的用户的组。
 
 ### <a name="attribute-based-scoping"></a>基于属性的范围 
 
@@ -179,17 +178,21 @@ Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-l
 
 确保你具有应用程序的 *活动* 映射。 如果你使用应用程序库中的应用程序，映射可能会略有不同。 请确保对库应用程序使用默认的/出盒映射。
 
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="禁用用户" lightbox="./media/how-provisioning-works/disable-user.png":::
+
 
 **配置应用程序以删除用户**
 
 以下方案将触发 "禁用" 或 "删除"： 
 * 将用户软删除 Azure AD (发送到 "回收站"/"AccountEnabled" 属性设置为 "false) "。
-    在 Azure AD 中删除用户 30 天后，他们将从租户中永久删除。 此时，设置服务将发送 DELETE 请求以永久删除应用程序中的用户。 在30天内的任何时间，你都可以 [手动删除用户](../fundamentals/active-directory-users-restore.md)，这会向应用程序发送删除请求。
+    在 Azure AD 中删除用户 30 天后，他们将从租户中永久删除。 此时，设置服务将发送 DELETE 请求以永久删除应用程序中的用户。 在 30 天窗口期中的任何时候，你都可以[手动永久删除用户](../fundamentals/active-directory-users-restore.md)，这将向应用程序发送一个删除请求。
 * 将从 Azure AD 中的 "回收站" 中永久删除/删除用户。
 * 用户未从应用中取消分配。
 * 用户从范围内进入范围外 (不会再) 传递范围筛选器。
-    
-默认情况下，Azure AD 预配服务软删除或禁用超出范围的用户。 如果要重写此默认行为，可以设置一个标志来 [跳过超出范围的删除操作。](skip-out-of-scope-deletions.md)
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="删除用户" lightbox="./media/how-provisioning-works/delete-user.png":::
+
+默认情况下，Azure AD 预配服务软删除或禁用超出范围的用户。 如果要重写此默认行为，可以设置一个标志来 [跳过超出范围的删除操作。](skip-out-of-scope-deletions.md)
 
 如果发生上述四个事件之一，并且目标应用程序不支持软删除，则预配服务将发送 DELETE 请求，以从应用中永久删除该用户。
 

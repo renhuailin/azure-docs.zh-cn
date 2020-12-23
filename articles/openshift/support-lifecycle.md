@@ -6,14 +6,14 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: b563fac9044dccd832aa42c0193eed24cad26754
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854500"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737908"
 ---
-# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 的支持生命周期
+# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>支持 Azure Red Hat OpenShift 4 的生命周期
 
 Red Hat 每三个月 (OCP) 约每三个月发布一次 Red Hat OpenShift 容器平台。 这些版本包括新增功能和改进。 修补程序版本经常 (每周) ，并且仅适用于次要版本中的关键 bug 修复。 这些修补程序版本可能包含安全漏洞或主要 bug 的修补程序。
 
@@ -97,12 +97,10 @@ Azure Red Hat OpenShift SRE 团队预留添加或删除新的/现有版本或延
 
 |OCP 版本|上游版本|Azure Red Hat OpenShift 公开上市|生命周期终止|
 |-|-|-|-|
-|4.3|2020 年 2 月|2020 年 5 月|2020 年 8 月|
-|4.4|2020 年 5 月|2020 年 8 月|4.6 GA|
-|4.5|2020 年 7 月|2020年10月|4.7 GA
-|4.6|* 第四季度初期，2020|* 第四季度晚，2020|4.8 GA|
-
-\*_挂起的上游发布日期确认。_
+|4.3|2020 年 1 月|2020 年 4 月| 2020 年 8 月|
+|4.4|2020 年 5 月|2020 年 7 月|4.6 GA|
+|4.5|2020 年 7 月| 2020 年 11 月|4.7 GA
+|4.6|2020 年 10 月| 2020年12月|4.8 GA|
 
 ## <a name="faq"></a>常见问题解答
 

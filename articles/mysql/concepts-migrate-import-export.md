@@ -1,29 +1,31 @@
 ---
 title: 导入和导出 - Azure Database for MySQL
 description: 本文介绍使用 MySQL Workbench 等工具在 Azure Database for MySQL 导入和导出数据库的常用方法。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/22/2020
-ms.openlocfilehash: 6d0a29d8ef8123eafd6a1616a24003c1e36e6e59
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/30/2020
+ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905938"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019884"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。
 
+有关将数据库迁移到 Azure Database for MySQL 的详细信息和用例，请参阅 [数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) 。 本指南提供的指导旨在将 MySQL 迁移成功规划和执行到 Azure。
+
 ## <a name="before-you-begin"></a>开始之前
 若要逐步执行本操作方法指南，需要：
 - 按照[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)所述创建的 Azure Database for MySQL 服务器。
-- 用于执行导入/导出的[Mysql 工作台](https://dev.mysql.com/downloads/workbench/)或其他第三方 mysql 工具。
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) 或其他用于执行导入/导出操作的第三方 MySQL 工具。
 
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器上创建数据库
-使用 MySQL 工作台、Toad 或 Navicat 在 Azure Database for MySQL 服务器上创建一个空数据库，以创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
+若要创建数据库，请使用 MySQL Workbench、Toad 或 Navicat 在 Azure Database for MySQL 服务器上创建一个空数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
 若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息。
 
@@ -31,12 +33,12 @@ ms.locfileid: "90905938"
 
 将连接信息添加到 MySQL Workbench。
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL 工作台连接字符串":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL Workbench 连接字符串":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>确定何时使用导入和导出技术
 
 > [!TIP]
-> 对于想要转储和还原整个数据库的方案，应该改用 [转储和还原](concepts-migrate-dump-restore.md) 方法。
+> 对于要转储和还原整个数据库的方案，应改用[转储和还原](concepts-migrate-dump-restore.md)方法。
 
 在以下情况下，使用 MySQL 工具将数据库导入和导出到 Azure MySQL 数据库中。
 
@@ -72,47 +74,47 @@ ms.locfileid: "90905938"
 
 表数据向导支持使用 CSV 和 JSON 文件的导入和导出操作。 它们包括多个配置选项，如分隔符、列选择和编码选择。 可以对本地或远程连接的 MySQL 服务器执行每个向导。 导入操作包括表、列和类型映射。
 
-右键单击表，便可以从对象浏览器的上下文菜单中访问这些向导。 然后选择“表数据导出向导”**** 或“表数据导入向导”****。
+右键单击表，便可以从对象浏览器的上下文菜单中访问这些向导。 然后选择“表数据导出向导”或“表数据导入向导”。
 
 #### <a name="table-data-export-wizard"></a>表数据导出向导
 下面的示例将表导出到 CSV 文件：
 1. 右键单击要导出的数据库的表。
-2. 选择“表数据导出向导”****。 选择要导出的列、行偏移量（如果存在）、计数（如果存在）。
-3. 在“选择要导出的数据”**** 页上，单击“下一步”****。 选择文件路径、CSV 或 JSON 文件类型。 此外选择行分隔符、封闭字符串的方法和字段分隔符。
-4. 在“选择输出文件位置”**** 页上，单击“下一步”****。
-5. 在“导出数据”**** 页上，单击“下一步”****。
+2. 选择“表数据导出向导”。 选择要导出的列、行偏移量（如果存在）、计数（如果存在）。
+3. 在“选择要导出的数据”页上，单击“下一步”。 选择文件路径、CSV 或 JSON 文件类型。 此外选择行分隔符、封闭字符串的方法和字段分隔符。
+4. 在“选择输出文件位置”页上，单击“下一步”。
+5. 在“导出数据”页上，单击“下一步”。
 
 #### <a name="table-data-import-wizard"></a>表数据导入向导
 下面的示例将从 CSV 文件导入表：
 1. 右键单击要导入的数据库的表。
-2. 浏览要导入的 CSV 文件并选择它，然后单击“下一步” ****。
-3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表” **** 复选框。 单击“下一步”。
-4. 选择编码和要导入的列，然后单击“下一步”****。
-5. 在“导入数据”**** 页上，单击“下一步”****。 向导相应地导入数据。
+2. 浏览要导入的 CSV 文件并选择它，然后单击“下一步” 。
+3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表” 复选框。 单击“下一步”  。
+4. 选择编码和要导入的列，然后单击“下一步”。
+5. 在“导入数据”页上，单击“下一步”。 向导相应地导入数据。
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>导航器窗格中的 SQL 数据导出和导入向导
-使用向导导出或导入从 MySQL Workbench 或从 mysqldump 命令生成的 SQL。 从“导航器”**** 窗格或通过从主菜单中选择“服务器”**** 访问这些向导。 然后选择“数据导出”**** 或“数据导入”****。
+使用向导导出或导入从 MySQL Workbench 或从 mysqldump 命令生成的 SQL。 从“导航器”窗格或通过从主菜单中选择“服务器”访问这些向导。 然后选择“数据导出”或“数据导入”。
 
 #### <a name="data-export"></a>数据导出
 :::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="使用导航器窗格导出 MySQL Workbench 数据":::
 
-可以使用“数据导出”**** 选项卡导出 MySQL 数据。
+可以使用“数据导出”选项卡导出 MySQL 数据。
 1. 选择想导出的每个架构，根据需要从每个架构中选择特定的架构对象/表，并生成导出。 配置选项包括导出到项目文件夹或自包含的 SQL 文件、转储存储的例程和事件，或跳过表数据。
 
-   或者，使用“导出结果集”**** 将 SQL 编辑器中的特定结果集导出为其他格式，例如 CSV、JSON、HTML 和 XML。
+   或者，使用“导出结果集”将 SQL 编辑器中的特定结果集导出为其他格式，例如 CSV、JSON、HTML 和 XML。
 3. 选择要导出的数据库对象，并配置相关选项。
-4. 单击“刷新”**** 加载当前对象。
-5. 或者，打开可以完善导出操作的“高级选项”**** 选项卡。 例如，添加表锁、使用 replace 而不是 insert 语句、使用反撇号字符将标识符括起来。
-6. 单击“开始导出”**** 开始导出过程。
+4. 单击“刷新”加载当前对象。
+5. 或者，打开可以完善导出操作的“高级选项”选项卡。 例如，添加表锁、使用 replace 而不是 insert 语句、使用反撇号字符将标识符括起来。
+6. 单击“开始导出”开始导出过程。
 
 
 #### <a name="data-import"></a>数据导入
 :::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="使用管理导航器的 MySQL Workbench 数据导入":::
 
-使用“数据导入”**** 选项卡能够从数据导出操作或从 mysqldump 命令中导入或还原导出的数据。
-1. 选择项目文件夹或自包含的 SQL 文件，选择要向其中进行导入的架构，或选择“新建”**** 定义新架构。
-2. 单击“开始导入”**** 开始导入过程。
+使用“数据导入”选项卡能够从数据导出操作或从 mysqldump 命令中导入或还原导出的数据。
+1. 选择项目文件夹或自包含的 SQL 文件，选择要向其中进行导入的架构，或选择“新建”定义新架构。
+2. 单击“开始导入”开始导入过程。
 
 ## <a name="next-steps"></a>后续步骤
 - 另一种迁移方法，请参阅[在 Azure Database for MySQL 中使用转储和还原来迁移 MySQL 数据库](concepts-migrate-dump-restore.md)。
-- 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](https://aka.ms/datamigration)。
+- 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)。

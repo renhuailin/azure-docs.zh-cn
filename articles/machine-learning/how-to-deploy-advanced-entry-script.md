@@ -1,7 +1,7 @@
 ---
 title: 为高级方案创作入口脚本
 titleSuffix: Azure Machine Learning entry script authoring
-description: 了解如何在部署期间编写用于预处理和后处理的 Azure 机器学习条目脚本。
+description: 了解如何编写在部署期间用于预处理和后处理的 Azure 机器学习入口脚本。
 author: gvashishtha
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: gopalv
-ms.openlocfilehash: 0146c6c003e3c22b63b5fde5c8979a9d7c112b69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: larryfr
+ms.custom: deploy
+ms.openlocfilehash: 73211790557665ddb4cc4d28322a1ff14bc4c76a
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261384"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630711"
 ---
 # <a name="advanced-entry-script-authoring"></a>高级入口脚本创作
 
@@ -26,7 +28,10 @@ ms.locfileid: "91261384"
 
 ## <a name="automatically-generate-a-swagger-schema"></a>自动生成 Swagger 架构
 
-若要为 Web 服务自动生成架构，请在一个已定义的类型对象的构造函数中提供输入和/或输出的示例。 该类型和示例用于自动创建架构。 Azure 机器学习随后会在部署过程中创建 Web 服务的 [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 规范。
+若要为 Web 服务自动生成架构，请在一个已定义的类型对象的构造函数中提供输入和/或输出的示例。 该类型和示例用于自动创建架构。 Azure 机器学习随后会在部署过程中创建 Web 服务的 [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 规范。 
+
+> [!WARNING]
+> 对于示例输入或输出，不得使用敏感或专用数据。 AML 托管推理的 Swagger 页公开了示例数据。 
 
 当前支持以下类型：
 
@@ -35,59 +40,18 @@ ms.locfileid: "91261384"
 * `pyspark`
 * 标准 Python 对象
 
-若要使用架构生成，请 `inference-schema` 在依赖项文件中包括开源包版本1.1.0 或更高版本。 若要详细了解此包，请参阅 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 为了生成相容的 swagger 自动 web 服务使用，计分脚本运行 ( # A1 函数必须具有以下 API 形状：
-* 名为 "StandardPythonParameterType" 的第一个参数，名为 "输入"，嵌套的包含 PandasDataframeParameterTypes。
-* 名为 GlobalParameter 的可选的第二个名为 "StandardPythonParameterType" 的参数，该参数不是嵌套类型。
-* 返回 "StandardPythonParameterType" 类型的字典，该字典可能嵌套了包含 PandasDataFrameParameterTypes。
+若要使用架构生成，请在依赖项文件中包括开源 `inference-schema` 包 1.1.0 或更高版本。 若要详细了解此包，请参阅 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 为了为自动 web 服务使用生成符合 swagger，计分脚本运行 ( # A1 函数必须具有 API 形状：
+* 名为 "StandardPythonParameterType"、名为 " **输入** " 和 "嵌套" 的第一个参数。
+* 名为 **GlobalParameters** 的可选的第二个名为 "StandardPythonParameterType" 的参数。
+* 返回 **一个名为** "StandardPythonParameterType"、名为 "" 的字典和嵌套的。
+
 定义 `input_sample` 和 `output_sample` 变量中的输入和输出示例格式，它们表示 Web 服务的请求和响应格式。 在 `run()` 函数的输入和输出函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成功能。
 
 
 
-```python
-#Example: scikit-learn and Swagger
-import json
-import numpy as np
-import os
-from sklearn.externals import joblib
-from sklearn.linear_model import Ridge
-
-from inference_schema.schema_decorators import input_schema, output_schema
-from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
-
-
-def init():
-    global model
-    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
-    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
-    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-
-    # If your model were stored in the same directory as your score.py, you could also use the following:
-    # model_path = os.path.abspath(os.path.join(os.path.dirname(__file_), 'sklearn_mnist_model.pkl')
-
-    # Deserialize the model file back into a sklearn model
-    model = joblib.load(model_path)
-
-
-input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
-output_sample = np.array([3726.995])
-
-
-@input_schema('data', NumpyParameterType(input_sample))
-@output_schema(NumpyParameterType(output_sample))
-def run(data):
-    try:
-        result = model.predict(data)
-        # You can return any data type, as long as it is JSON serializable.
-        return result.tolist()
-    except Exception as e:
-        error = str(e)
-        return error
-```
-
 ## <a name="power-bi-compatible-endpoint"></a>Power BI 兼容终结点 
 
-下面的示例演示如何根据以上说明定义 API 形状。 此方法支持使用 Power BI 中已部署的 Web 服务。 （[详细了解如何使用 Power BI 中的 Web 服务](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。）
+下面的示例演示如何根据以上说明定义 API 形状。 此方法支持使用 Power BI 中已部署的 Web 服务。 （[详细了解如何使用 Power BI 中的 Web 服务](/power-bi/service-machine-learning-integration)。）
 
 ```python
 import json
@@ -111,25 +75,34 @@ def init():
     # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 
-# providing 3 sample inputs for schema generation
-numpy_sample_input = NumpyParameterType(np.array([[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]],dtype='float64'))
-pandas_sample_input = PandasParameterType(pd.DataFrame({'name': ['Sarah', 'John'], 'age': [25, 26]}))
-standard_sample_input = StandardPythonParameterType(0.0)
 
-# This is a nested input sample, any item wrapped by `ParameterType` will be described by schema
-sample_input = StandardPythonParameterType({'input1': numpy_sample_input, 
+    # providing 3 sample inputs for schema generation
+    numpy_sample_input = NumpyParameterType(np.array([[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]],dtype='float64'))
+    pandas_sample_input = PandasParameterType(pd.DataFrame({'name': ['Sarah', 'John'], 'age': [25, 26]}))
+    standard_sample_input = StandardPythonParameterType(0.0)
+
+    # This is a nested input sample, any item wrapped by `ParameterType` will be described by schema
+    sample_input = StandardPythonParameterType({'input1': numpy_sample_input, 
                                             'input2': pandas_sample_input, 
                                             'input3': standard_sample_input})
 
-sample_global_parameters = StandardPythonParameterType(1.0) #this is optional
-sample_output = StandardPythonParameterType([1.0, 1.0])
+    sample_global_parameters = StandardPythonParameterType(1.0) # this is optional
+    sample_output = StandardPythonParameterType([1.0, 1.0])
+    outputs = StandardPythonParameterType({'Results':sample_output}) # 'Results' is case sensitive
 
-@input_schema('inputs', sample_input)
-@input_schema('global_parameters', sample_global_parameters) #this is optional
-@output_schema(sample_output)
-def run(inputs, global_parameters):
+    @input_schema('Inputs', sample_input) 
+    # 'Inputs' is case sensitive
+    
+    @input_schema('GlobalParameters', sample_global_parameters) 
+    # this is optional, 'GlobalParameters' is case sensitive
+
+    @output_schema(outputs)
+
+def run(Inputs, GlobalParameters): 
+    # the parameters here have to match those in decorator, both 'Inputs' and 
+    # 'GlobalParameters' here are case sensitive
     try:
-        data = inputs['input1']
+        data = Inputs['input1']
         # data will be convert to target format
         assert isinstance(data, np.ndarray)
         result = model.predict(data)
@@ -149,30 +122,34 @@ def run(inputs, global_parameters):
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
 from azureml.contrib.services.aml_response import AMLResponse
+from PIL import Image
+import json
 
 
 def init():
     print("This is init()")
-
+    
 
 @rawhttp
 def run(request):
     print("This is run()")
-    print("Request: [{0}]".format(request))
+    
     if request.method == 'GET':
         # For this example, just return the URL for GETs.
         respBody = str.encode(request.full_path)
         return AMLResponse(respBody, 200)
     elif request.method == 'POST':
-        reqBody = request.get_data(False)
+        file_bytes = request.files["image"]
+        image = Image.open(file_bytes).convert('RGB')
         # For a real-world solution, you would load the data from reqBody
         # and send it to the model. Then return the response.
 
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
+        # For demonstration purposes, this example just returns the size of the image as the response..
+        return AMLResponse(json.dumps(image.size), 200)
     else:
         return AMLResponse("bad request", 500)
 ```
+
 
 > [!IMPORTANT]
 > `AMLRequest` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会频繁更改，因为我们正在改进服务。 此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持这些内容。
@@ -187,10 +164,13 @@ def run(request):
 
 ```python
 import requests
-# Load image data
-data = open('example.jpg', 'rb').read()
-# Post raw data to scoring URI
-res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+
+uri = service.scoring_uri
+image_path = 'test.jpg'
+files = {'image': open(image_path, 'rb').read()}
+response = requests.post(url, files=files)
+
+print(response.json)
 ```
 
 <a id="cors"></a>
@@ -206,6 +186,7 @@ res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'ap
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
 from azureml.contrib.services.aml_response import AMLResponse
+
 
 def init():
     print("This is init()")
@@ -310,23 +291,23 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-注册模型时，请提供用于在注册表中管理该模型的模型名称。 将此名称与 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 方法结合使用，以检索本地文件系统上一个或多个模型文件的路径。 如果注册文件夹或文件集合，此 API 会返回包含这些文件的目录的路径。
+注册模型时，请提供用于在注册表中管理该模型的模型名称。 将此名称与 [Model.get_model_path()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 方法结合使用，以检索本地文件系统上一个或多个模型文件的路径。 如果注册文件夹或文件集合，此 API 会返回包含这些文件的目录的路径。
 
 注册模型时，请为其指定一个名称。 该名称对应于模型的放置位置（本地位置或在服务部署过程中指定的位置）。
 
 ## <a name="framework-specific-examples"></a>特定于框架的示例
 
-有关特定机器学习用例的更多条目脚本示例，请参阅以下内容：
+有关特定机器学习用例的更多入口脚本示例，可参阅以下内容：
 
 * [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
 * [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
-* [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
+* [Keras](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/keras/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.yml)
 * [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [排查部署失败的问题](how-to-troubleshoot-deployment.md)
+* [排查部署失败问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
 * [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)

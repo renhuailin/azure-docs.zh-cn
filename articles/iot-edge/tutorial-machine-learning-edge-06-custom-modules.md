@@ -9,17 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997925"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932330"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
-
-> [!NOTE]
-> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
 在本文中，我们要创建三个 IoT Edge 模块来从叶 IoT 设备中接收消息，通过机器学习模型运行数据，然后将见解转发到 IoT 中心。
 
@@ -54,6 +51,19 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 ![IoT Edge 三模块架构图](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 本文的步骤通常由云开发人员执行。
+
+本教程的此部分介绍了如何：
+
+> [!div class="checklist"]
+>
+> * 通过自定义代码创建 IoT Edge 模块。
+> * 从自定义模块生成 Docker 映像。
+> * 重新配置 IoT 中心路由以支持你的自定义模块。
+> * 生成、发布和部署自定义模块。
+
+## <a name="prerequisites"></a>先决条件
+
+有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="create-a-new-iot-edge-solution"></a>创建新的 IoT Edge 解决方案
 
@@ -804,19 +814,15 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    sudo docker exec -it avroFileWriter bash
    ```
 
+## <a name="clean-up-resources"></a>清理资源
+
+本教程是一系列文章的一部分，其中每篇文章都基于前一篇文章中介绍的内容。 在完成最后一个教程之前，请等待清理所有资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 本文中，我们在 Visual Studio Code 中创建了一个 IoT Edge 解决方案，它具有 3 个模块、1 个分类器、1 个路由器和 1 个文件编写器/上载程序。 我们设置了路由来允许模块在边缘设备上彼此通信。 我们修改了边缘设备的配置，还上传了 Dockerfile 来安装依赖项并将绑定装载添加到模块的容器中。 
 
 接下来，我们上传了 IoT 中心的配置来根据类型路由消息并处理文件上传操作。 一切就绪后，我们将模块部署到 IoT Edge设备，同时确保了模块正确运行。
-
-有关详细指南，请参阅以下文章：
-
-* [了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)
-* [IoT 中心消息路由查询语法](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
-* [IoT 中心消息路由：现可基于消息正文进行路由](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
-* [使用 IoT 中心上传文件](../iot-hub/iot-hub-devguide-file-upload.md)
-* [通过 IoT 中心将设备中的文件上传到云](../iot-hub/iot-hub-python-python-file-upload.md)
 
 请转到下一篇文章，开始发送数据和查看解决方案的实际运用。
 

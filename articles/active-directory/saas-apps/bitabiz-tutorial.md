@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f762f4d81a71296d306e181f7b30a2b93b9ab52c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531049"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457137"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>教程：Azure Active Directory 与 BitaBIZ 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88531049"
 * 可以让用户使用其 Azure AD 帐户自动登录到 BitaBIZ（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88531049"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "88531049"
 
     在“登录 URL”文本框中，键入 URL：  `https://www.bitabiz.com/dashboard`
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -132,15 +132,15 @@ ms.locfileid: "88531049"
 
 2. 单击“设置管理员”。 
 
-    ![BitaBIZ 配置](./media/bitabiz-tutorial/settings1.png)
+    ![显示浏览器窗口的一部分的屏幕截图，其中已选中“设置管理员”。](./media/bitabiz-tutorial/settings1.png)
 
 3. 单击“添加值”部分下面的“Microsoft 集成”。  
 
-    ![BitaBIZ 配置](./media/bitabiz-tutorial/settings2.png)
+    ![显示“添加值”的屏幕截图，其中已选中“Microsoft 集成”。](./media/bitabiz-tutorial/settings2.png)
 
 4. 向下滚动到“Microsoft Azure AD (启用单一登录)”部分并执行以下步骤： 
 
-    ![BitaBIZ 配置](./media/bitabiz-tutorial/settings3.png)
+    ![显示可在其中输入在此步骤中描述的信息的 Microsoft Azure AD 部分的屏幕截图。](./media/bitabiz-tutorial/settings3.png)
 
     a. 复制“实体 ID (Azure AD 中的‘标识符’)”文本框中的值，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分中的“标识符”文本框。    
 
@@ -218,19 +218,19 @@ ms.locfileid: "88531049"
 
 2. 单击“设置管理员”。 
 
-    ![BitaBIZ - 添加用户](./media/bitabiz-tutorial/settings1.png)
+    ![显示浏览器窗口的一部分的屏幕截图，其中已选中“设置管理员”。](./media/bitabiz-tutorial/settings1.png)
 
 3. 单击“组织”部分下面的“添加用户”。  
 
-    ![BitaBIZ - 添加用户](./media/bitabiz-tutorial/user1.png)
+    ![显示选择了“添加用户”的“组织”部分的屏幕截图。](./media/bitabiz-tutorial/user1.png)
 
 4. 单击“添加新员工”。 
 
-    ![BitaBIZ - 添加用户](./media/bitabiz-tutorial/user2.png)
+    ![显示选择了“添加新员工”的“添加用户”的屏幕截图。](./media/bitabiz-tutorial/user2.png)
 
 5. 在“添加新员工”  对话框页上，执行以下步骤：
 
-    ![BitaBIZ - 添加用户](./media/bitabiz-tutorial/user3.png)
+    ![显示可在其中输入在此步骤中描述的信息的页面的屏幕截图。](./media/bitabiz-tutorial/user3.png)
 
     a. 在“名字”  文本框中，键入用户的名字（如“Britta”）。
 
@@ -251,12 +251,12 @@ ms.locfileid: "88531049"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 BitaBIZ 磁贴时，应当会自动登录到已为其设置了 SSO 的 BitaBIZ。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 BitaBIZ 磁贴时，应当会自动登录到已为其设置了 SSO 的 BitaBIZ。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

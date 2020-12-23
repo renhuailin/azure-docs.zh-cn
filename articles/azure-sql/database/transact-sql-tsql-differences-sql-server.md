@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 02b589eebb716f5a69b4db9f00faf12401b8de7f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 1e286b2329cb98d580bbf64071ff8767db304a00
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618999"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461882"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
 
@@ -28,24 +28,24 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 此外，还有一些功能和语法根本不受支持，因为 Azure SQL 数据库的设计使其隔离功能与 master 数据库和操作系统的依赖项。 因此，大多数服务器级活动不适用于 SQL 数据库。 T-SQL 语句和选项在配置服务器级选项、操作系统组件或指定文件系统配置时不可用。 需要此类功能时，通常是以某种其他方式从 SQL 数据库或从其他 Azure 功能或服务获取相应的替代项。
 
-例如，高可用性已内置于使用类似于 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)的技术的 Azure SQL 数据库中。 SQL 数据库不支持与可用性组相关的 T-SQL 语句，也不支持与 Always On 可用性组相关的动态管理视图。
+例如，高可用性已内置于使用类似于 [Always On 可用性组](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)的技术的 Azure SQL 数据库中。 SQL 数据库不支持与可用性组相关的 T-SQL 语句，也不支持与 Always On 可用性组相关的动态管理视图。
 
-有关 SQL 数据库支持和不支持的功能的列表，请参阅  [Azure SQL 数据库功能比较](features-comparison.md)。 此页上的列表对该“准则和功能”一文进行了补充，并重点介绍了 Transact-SQL 语句。
+有关 SQL 数据库支持和不支持的功能的列表，请参阅 [Azure SQL 数据库功能比较](features-comparison.md)。 此页上的列表对该“准则和功能”一文进行了补充，并重点介绍了 Transact-SQL 语句。
 
 ## <a name="transact-sql-syntax-statements-with-partial-differences"></a>具有部分差异的 Transact-SQL 语法语句
 
 核心 DDL（数据定义语言）语句可用，但某些 DDL 语句具有与磁盘放置和不支持功能相关的扩展。
 
-- CREATE 和 ALTER DATABASE 语句具有超过 36 个的选项。 这些语句包括文件定位、FILESTREAM 以及仅适用于 SQL Server 的服务中转站选项。 如果在迁移前创建数据库，这可能不是问题，但如果要迁移用于创建数据库的 T-SQL 代码，应将 [CREATE DATABASE（Azure SQL 数据库）](https://msdn.microsoft.com/library/dn268335.aspx)与 [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) 中的 SQL Server 语法进行比较，以确保所用的所有选项都受支持。 Azure SQL 数据库的 CREATE DATABASE 语句还具有服务目标和仅适用于 SQL 数据库的弹性缩放选项。
+- CREATE 和 ALTER DATABASE 语句具有超过 36 个的选项。 这些语句包括文件定位、FILESTREAM 以及仅适用于 SQL Server 的服务中转站选项。 如果在迁移前创建数据库，这可能不是问题，但如果要迁移用于创建数据库的 T-SQL 代码，应将 [CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-transact-sql)与 [CREATE DATABASE (SQL Server Transact-SQL)](/sql/t-sql/statements/create-database-transact-sql) 中的 SQL Server 语法进行比较，以确保所用的所有选项都受支持。 Azure SQL 数据库的 CREATE DATABASE 语句还具有服务目标和仅适用于 SQL 数据库的弹性缩放选项。
 - CREATE 和 ALTER TABLE 语句具有不能在 SQL 数据库上使用的 FileTable 选项，因为不支持 FILESTREAM。
-- SQL 数据库支持 CREATE 和 ALTER login 语句，但未提供所有选项。 要使数据库更易于移植，SQL 数据库建议尽可能使用包含的数据库用户，而不是使用登录名。 有关详细信息，请参阅 [CREATE/ALTER LOGIN](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql) 和[管理登录名和用户](logins-create-manage.md)。
+- SQL 数据库支持 CREATE 和 ALTER login 语句，但未提供所有选项。 要使数据库更易于移植，SQL 数据库建议尽可能使用包含的数据库用户，而不是使用登录名。 有关详细信息，请参阅 [CREATE/ALTER LOGIN](/sql/t-sql/statements/alter-login-transact-sql) 和[管理登录名和用户](logins-create-manage.md)。
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Azure SQL 数据库不支持的 Transact-SQL 语法
 
-除了与  [Azure SQL 数据库功能比较](features-comparison.md)中所述的不支持功能相关的 Transact-SQL 语句外，也不支持以下语句和语句组。 因此，如果要迁移的数据库使用以下任一功能，请重新设计 T-SQL 以消除这些 T-SQL 功能和语句。
+除了与 [AZURE SQL 数据库功能比较](features-comparison.md)中所述的不支持功能相关的 transact-sql 语句外，不支持以下语句和语句组。 因此，如果要迁移的数据库使用以下任一功能，请重新设计 T-SQL 以消除这些 T-SQL 功能和语句。
 
 - 系统对象的排序规则
-- 相关连接：终结点语句。 SQL 数据库不支持 Windows 身份验证，但支持类似的 Azure Active Directory 身份验证。 某些身份验证类型要求使用最新版本的 SSMS。 有关详细信息，请参阅 [使用 Azure Active Directory 身份验证连接到 Sql 数据库或 Azure Synapse Analytics (以前的 Sql 数据仓库) ](authentication-aad-overview.md)。
+- 相关连接：终结点语句。 SQL 数据库不支持 Windows 身份验证，但支持类似的 Azure Active Directory 身份验证。 某些身份验证类型要求使用最新版本的 SSMS。 有关详细信息，请参阅 [使用 Azure Active Directory 身份验证连接到 SQL 数据库或 Azure Synapse Analytics](authentication-aad-overview.md)。
 - 使用三个或四个部分名称的跨数据库查询。 （使用[弹性数据库查询](elastic-query-overview.md)支持只读跨数据库查询。）
 - 跨数据库所有权链接, `TRUSTWORTHY` 设置
 - `EXECUTE AS LOGIN` 改用“EXECUTE AS USER”。
@@ -60,12 +60,12 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 - `OPENQUERY`、`OPENROWSET`、`OPENDATASOURCE` 和由四部分构成的名称
 - .NET Framework：CLR 与 SQL Server 集成
 - 语义搜索
-- 服务器凭据：改用[数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)。
+- 服务器凭据：改用[数据库范围的凭据](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。
 - 服务器级别项：服务器角色，`sys.login_token`。 `GRANT`、`REVOKE` 和 `DENY` 的服务器级权限不可用，某些权限已替换为数据库级权限。 一些有用的服务器级 DMV 具有等效的数据库级 DMV。
 - `SET REMOTE_PROC_TRANSACTIONS`
 - `SHUTDOWN`
 - `sp_addmessage`
-- `sp_configure` 选项和 `RECONFIGURE`。 可以通过 [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) 使用某些选项。
+- `sp_configure` 选项和 `RECONFIGURE`。 可以通过 [ALTER DATABASE SCOPED CONFIGURATION](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) 使用某些选项。
 - `sp_helpuser`
 - `sp_migrate_user_to_contained`
 - SQL Server 代理：依赖于 SQL Server 代理或 MSDB 数据库的语法：警报、运算符、中央管理服务器。 改用脚本，如 Azure PowerShell。
@@ -78,14 +78,14 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 ## <a name="full-transact-sql-reference"></a>完整的 Transact-SQL 引用
 
-有关 Transact-SQL 语法、用法和示例的详细信息，请参阅 SQL Server 联机丛书中的  [Transact-SQL 参考（数据库引擎）](https://msdn.microsoft.com/library/bb510741.aspx) 。
+有关 Transact-SQL 语法、用法和示例的详细信息，请参阅 SQL Server 联机丛书中的 [Transact-SQL 参考（数据库引擎）](/sql/t-sql/language-reference)。
 
 ### <a name="about-the-applies-to-tags"></a>有关“适用于”标记
 
-Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) 一文指明该语句适用于 **SQL Server（从版本 2012 开始）** 。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure Azure Synapse Analytics (以前的 SQL 数据仓库) 或并行数据仓库。
+Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。 " [创建可用性组](/sql/t-sql/statements/create-availability-group-transact-sql) " 一文指示该语句适用于 **从 2012) 开始 SQL Server (**。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure Azure Synapse Analytics 或并行数据仓库。
 
 在某些情况下，产品中可能使用了某篇文章的常规主旨，但产品之间存在细微差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 在某些情况下，产品中可能使用了某篇文章的常规主旨，但产品之间存在细微差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 例如，CREATE TRIGGER 文章在 SQL 数据库中可用。 但服务器级触发器的 **ALL SERVER** 选项指示不能在 SQL 数据库中使用服务器级触发器。 请改用数据库级触发器。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 SQL 数据库支持和不支持的功能的列表，请参阅  [Azure SQL 数据库功能比较](features-comparison.md)。 此页上的列表对该“准则和功能”一文进行了补充，并重点介绍了 Transact-SQL 语句。
+有关 SQL 数据库支持和不支持的功能的列表，请参阅 [Azure SQL 数据库功能比较](features-comparison.md)。 此页上的列表对该“准则和功能”一文进行了补充，并重点介绍了 Transact-SQL 语句。

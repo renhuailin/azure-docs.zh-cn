@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404776"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452367"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>使用 GPU 虚拟机设置实验室
 
@@ -26,18 +26,18 @@ ms.locfileid: "91404776"
 
 在此过程中，你可以选择是选择 **可视化** 或 **计算** gpu。  选择基于你的学生将使用的软件的 GPU 类型很重要。  
 
-按照下表中所述， *计算* GPU 大小适用于计算密集型应用程序。  例如， [自然语言处理类类型中的深度学习](./class-type-deep-learning-natural-language-processing.md) 使用 **小型 GPU (计算) ** 大小。  计算 GPU 适用于这类类，因为学生使用 [Data Science Virtual Machine 图像](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 提供的深度学习框架和工具，用大量数据来训练深度学习模型。
+按照下表中所述， *计算* GPU 大小适用于计算密集型应用程序。  例如， [自然语言处理类类型中的深度学习](./class-type-deep-learning-natural-language-processing.md) 使用 **小型 GPU (计算)** 大小。  计算 GPU 适用于这类类，因为学生使用 [Data Science Virtual Machine 图像](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 提供的深度学习框架和工具，用大量数据来训练深度学习模型。
 
 | 大小 | 核心数 | RAM | 说明 | 
 | ---- | ----- | --- | ----------- | 
-| 小型 GPU (计算) | -&nbsp;6 &nbsp; 核<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |此大小最适合用于计算密集型应用程序，如人工智能)  (AI 和深度学习。 |
+| 小型 GPU (计算) | -&nbsp;6 &nbsp; 核<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](../virtual-machines/nc-series.md) |此大小最适合用于计算密集型应用程序，如人工智能)  (AI 和深度学习。 |
 
-*可视化*GPU 大小适用于图形密集型应用程序。  例如， [SOLIDWORKS 工程类类型](./class-type-solidworks.md) 使用 **小 GPU (可视化) ** 大小显示。  可视化 GPU 适用于这类类型，因为学生与 SOLIDWORKS 3D 计算机辅助设计 (CAD) 环境进行建模和可视化处理实体对象。
+*可视化* GPU 大小适用于图形密集型应用程序。  例如， [SOLIDWORKS 工程类类型](./class-type-solidworks.md) 使用 **小 GPU (可视化)** 大小显示。  可视化 GPU 适用于这类类型，因为学生与 SOLIDWORKS 3D 计算机辅助设计 (CAD) 环境进行建模和可视化处理实体对象。
 
 | 大小 | 核心数 | RAM | 说明 | 
 | ---- | ----- | --- | ----------- | 
-| 小型 GPU (可视化) | -&nbsp;6 &nbsp; 核<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）的远程可视化、流式处理、游戏和编码。 |
-| 中等 GPU (可视化) | -&nbsp;12 &nbsp; 核<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）的远程可视化、流式处理、游戏和编码。 |
+| 小型 GPU (可视化) | -&nbsp;6 &nbsp; 核<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）的远程可视化、流式处理、游戏和编码。 |
+| 中等 GPU (可视化) | -&nbsp;12 &nbsp; 核<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）的远程可视化、流式处理、游戏和编码。 |
 
 > [!NOTE]
 > 创建课堂实验室时，列表中可能不会显示某些 VM 大小。 根据实验室位置的当前容量填充列表。 如果实验室帐户创建者[允许实验室创建者选取实验室位置](allow-lab-creator-pick-lab-location.md)，则可以尝试为实验室选择其他位置，并查看 VM 大小是否可用。 有关 Vm 的可用性，请参阅 [可用产品（按区域](https://azure.microsoft.com/regions/services/?products=virtual-machines)）。
@@ -76,7 +76,7 @@ ms.locfileid: "91404776"
 1. 安装了类所需的驱动程序和其他软件之后，选择 " **发布** " 以创建学生的 vm。
 
 > [!NOTE]
-> 如果使用的是 Linux 映像，则在下载安装程序后，请按照在 [Linux 上安装 CUDA 驱动程序](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#install-cuda-drivers-on-n-series-vms)中的说明安装驱动程序。
+> 如果使用的是 Linux 映像，则在下载安装程序后，请按照在 [Linux 上安装 CUDA 驱动程序](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#install-cuda-drivers-on-n-series-vms)中的说明安装驱动程序。
 
 #### <a name="install-the-visualization-gpu-drivers"></a>安装可视化 GPU 驱动程序
 
@@ -85,8 +85,8 @@ ms.locfileid: "91404776"
 1. [创建](./how-to-manage-classroom-labs.md)实验室时，在实验室创建向导中，禁用 "**安装 GPU 驱动程序**" 设置。
 1. 创建实验室后，连接到模板 VM 以安装相应的驱动程序。
 1. 按照适用于你的操作系统的说明，在模板 VM 上安装 Microsoft 提供的网格驱动程序：
-   -  [Windows NVIDIA GRID 驱动程序](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)
-   -  [Linux NVIDIA GRID 驱动程序](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#nvidia-grid-drivers)
+   -  [Windows NVIDIA GRID 驱动程序](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
+   -  [Linux NVIDIA GRID 驱动程序](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#nvidia-grid-drivers)
   
 1. 重新启动模板 VM。
 1. 按照 [验证安装的驱动程序](how-to-setup-lab-gpu.md#validate-the-installed-drivers) 部分中的说明，验证是否正确安装了驱动程序。
@@ -96,13 +96,13 @@ ms.locfileid: "91404776"
 本部分介绍如何验证是否正确安装了 GPU 驱动程序。
 
 #### <a name="windows-images"></a>Windows 映像
-1.  按照在 [运行 Windows 的 N 系列 vm 上安装 NVIDIA GPU 驱动程序](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)的 "验证驱动程序安装" 一节中的说明进行操作。
+1.  按照在 [运行 Windows 的 N 系列 vm 上安装 NVIDIA GPU 驱动程序](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation)的 "验证驱动程序安装" 一节中的说明进行操作。
 1.  如果使用的是 *可视化* GPU GPU，还可以执行以下操作：
-    - 在 NVIDIA 控制面板中查看并调整 GPU 设置。 为此，请在 **Windows 控制面板**中选择 " **硬件**"，然后选择 **"NVIDIA 控制面板**"。
+    - 在 NVIDIA 控制面板中查看并调整 GPU 设置。 为此，请在 **Windows 控制面板** 中选择 " **硬件**"，然后选择 **"NVIDIA 控制面板**"。
 
       ![显示 NVIDIA 控制面板链接的 Windows 控制面板屏幕截图](./media/how-to-setup-gpu/control-panel-nvidia-settings.png) 
 
-     - 使用 **任务管理器**查看 GPU 性能。  为此，请选择 " **性能** " 选项卡，然后选择 " **GPU** " 选项。
+     - 使用 **任务管理器** 查看 GPU 性能。  为此，请选择 " **性能** " 选项卡，然后选择 " **GPU** " 选项。
 
        ![显示 "任务管理器 GPU 性能" 选项卡的屏幕截图](./media/how-to-setup-gpu/task-manager-gpu.png) 
 
@@ -110,14 +110,11 @@ ms.locfileid: "91404776"
       > 只能为 *可视化* GPU 访问 NVIDIA 控制面板设置。  如果尝试打开用于计算 GPU 的 NVIDIA 控制面板，会出现以下错误： "NVIDIA 显示设置不可用。  当前未使用附加到 NVIDIA GPU 的显示器。  同样，仅为可视化 Gpu 提供任务管理器中的 GPU 性能信息。
 
 #### <a name="linux-images"></a>Linux 映像
-按照在 [运行 Linux 的 N 系列 vm 上安装 NVIDIA GPU 驱动程序](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation)的 "验证驱动程序安装" 一节中的说明进行操作。
+按照在 [运行 Linux 的 N 系列 vm 上安装 NVIDIA GPU 驱动程序](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation)的 "验证驱动程序安装" 一节中的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 
-- [创建和管理教室实验室](how-to-manage-classroom-labs.md)
+- [创建和管理实验室](how-to-manage-classroom-labs.md)
 - [SOLIDWORKS 计算机辅助设计 (CAD) 类类型](class-type-solidworks.md)
 - [MATLAB (矩阵实验室) 类类型](class-type-matlab.md)
-
-
-

@@ -10,22 +10,30 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569367"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483757"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中创建和合并 CSR
 
 Azure Key Vault 支持将你选择的任何证书颁发机构颁发的数字证书存储在密钥保管库中。 它支持使用私钥/公钥对创建证书签名请求，可由所选的任何证书颁发机构签名。 选择的证书颁发机构可以是内部企业 CA，也可以是外部公共 CA。 证书签名请求（也称为 CSR 或证书请求）是用户向证书颁发机构 (CA) 发送的一条消息，用于请求颁发数字证书。
 
-若要详细了解证书的常规信息，请参阅 [Azure Key Vault 证书](/azure/key-vault/certificates/about-certificates)。
+若要详细了解证书的常规信息，请参阅 [Azure Key Vault 证书](./about-certificates.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>在 Key Vault 中添加不受信任的 CA 颁发的证书
+## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>在 Key Vault 中添加合作 CA 颁发的证书
+Key Vault 与以下两个证书颁发机构合作，以简化证书的创建。 
+
+|提供程序|证书类型|配置设置  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault 提供 DigiCert 的 OV 或 EV SSL 证书| [集成指南](./how-to-integrate-certificate-authority.md)
+|GlobalSign|Key Vault 提供 GlobalSign 的 OV 或 EV SSL 证书| [集成指南](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
+
+## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>在 Key Vault 中添加非合作 CA 颁发的证书
 
 以下步骤将帮助你从没有与 Key Vault 合作的证书颁发机构（例如，GoDaddy 不是受信任的密钥保管库 CA）创建证书 
 
@@ -34,12 +42,14 @@ Azure Key Vault 支持将你选择的任何证书颁发机构颁发的数字证�
 
 
 
-1.  首先，创建证书策略。 由于此方案中所选的 CA 不受支持，Key Vault 不会代表用户注册或续订证书颁发者颁发的证书，因此 IssuerName 设置为“未知”。
+1. 首先，创建证书策略。 由于此方案中所选的 CA 不受支持，Key Vault 不会代表用户注册或续订证书颁发者颁发的证书，因此 IssuerName 设置为“未知”。
 
-    ```azurepowershell
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
-    ```
-
+   ```azurepowershell
+   $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
+   ```
+    
+   > [!NOTE]
+   > 如果使用的在值中具有逗号 (,) 的相对可分辨名称 (RDN)，请使用单引号并将包含特殊字符的值括在双引号中。 示例：`$policy = New-AzKeyVaultCertificatePolicy -SubjectName 'OU="Docs,Contoso",DC=Contoso,CN=www.contosoHRApp.com' -ValidityInMonths 1  -IssuerName Unknown`。 在此示例中，`OU` 值作为“Docs, Contoso”读取。 此格式适用于包含逗号的所有值。
 
 2. 创建证书签名请求
 
@@ -48,7 +58,7 @@ Azure Key Vault 支持将你选择的任何证书颁发机构颁发的数字证�
    $csr.CertificateSigningRequest
    ```
 
-3. 获取由 CA 签名的 CSR 请求。`$certificateOperation.CertificateSigningRequest` 是针对该证书的 base4 编码的证书签名请求。 可以获取此 blob，并将其转储到证书颁发者的证书请求网站中。 此步骤因 CA 而异，最好的方法是查看 CA 提供的关于如何执行此步骤的指南。 此外，还可以使用 certreq 或 openssl 之类的工具来对证书请求进行签名，并完成证书生成过程。
+3. 获取由 CA 签名的 CSR 请求。`$csr.CertificateSigningRequest` 是针对该证书的 base4 编码的证书签名请求。 可以获取此 blob，并将其转储到证书颁发者的证书请求网站中。 此步骤因 CA 而异，最好的方法是查看 CA 提供的关于如何执行此步骤的指南。 此外，还可以使用 certreq 或 openssl 之类的工具来对证书请求进行签名，并完成证书生成过程。
 
 
 4. 在 Key Vault 中合并已签名的请求。证书颁发者对证书请求进行签名后，可以带回已签名的证书，并将其与在 Azure Key Vault 中创建的初始私钥/公钥对合并
@@ -71,15 +81,23 @@ Azure Key Vault 支持将你选择的任何证书颁发机构颁发的数字证�
     - 主题：`"CN=www.contosoHRApp.com"`
     - 根据需要选择其他值。 单击“创建”。
 
-    ![证书属性](../media/certificates/create-csr-merge-csr/create-certificate.png)
+    ![证书属性](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
 6.  此时，将看到证书已添加到“证书”列表中。 选择刚创建的新证书。 证书的当前状态为“已禁用”，因为它尚未由 CA 颁发。
 7. 单击“证书操作”选项卡，然后选择“下载 CSR” 。
- ![证书属性](../media/certificates/create-csr-merge-csr/download-csr.png)
 
+   ![突出显示“下载 CSR”按钮的屏幕截图。](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
 8.  将 .csr 文件带到 CA，以便对请求进行签名。
 9.  CA 对请求进行签名后，请带回证书文件以在同一“证书操作”屏幕中合并已签名的请求。
 
 现已成功合并证书请求。
+
+> [!NOTE]
+> 如果 RDN 值有逗号，也可以通过将值括在双引号中，在“主题”字段中添加它们，如步骤 4 中所示。
+> “主题”的示例条目：`DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` 在本示例中，RDN `OU` 包含在名称中有逗号的值。 `OU` 生成的输出是“Docs, Contoso”。
+
 
 ## <a name="adding-more-information-to-csr"></a>向 CSR 添加更多信息
 
@@ -94,8 +112,8 @@ Azure Key Vault 支持将你选择的任何证书颁发机构颁发的数字证�
     ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
     ```
 
->[!Note]
->如果你正在 CSR 中请求具有所有这些详细信息的 DV 证书，则 CA 可能会拒绝该请求，因为 CA 可能无法验证请求中的所有信息。 如果你正在请求 OV 证书，那么在 CSR 中添加所有这些信息更合适。
+> [!NOTE]
+> 如果你正在 CSR 中请求具有所有这些详细信息的 DV 证书，则 CA 可能会拒绝该请求，因为 CA 可能无法验证请求中的所有信息。 如果你正在请求 OV 证书，那么在 CSR 中添加所有这些信息更合适。
 
 
 ## <a name="troubleshoot"></a>疑难解答
@@ -108,6 +126,8 @@ Azure Key Vault 支持将你选择的任何证书颁发机构颁发的数字证�
 - 如果颁发的证书在 Azure 门户中处于“已禁用”状态，请继续查看“证书操作”以查看该证书的错误消息。
 
 有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
+
+- 错误类型“提供的主题名称不是有效的 X500 名称”如果在 SubjectName 的值中包含任何“特殊字符”，则可能发生此错误。 请参阅 Azure 门户和 PowerShell 说明中的注释。 
 
 ## <a name="next-steps"></a>后续步骤
 

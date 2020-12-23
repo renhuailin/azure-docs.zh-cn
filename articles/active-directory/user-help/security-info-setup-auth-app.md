@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 133e6b533a3d87ef519d0f586ea59db1bbce28b9
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744486"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348290"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>将 Microsoft Authenticator 应用设置为验证方法
 
@@ -45,6 +45,11 @@ ms.locfileid: "83744486"
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>在“安全信息”页中设置 Microsoft Authenticator 应用
 
 根据组织的设置，有时可以使用验证器应用作为安全信息方法之一。 不一定要使用 Microsoft Authenticator 应用，可在设置过程中选择其他应用。 但是，本文使用 Microsoft Authenticator 应用。
+
+>[!Important]
+> 如果在5个不同的设备或5个硬件令牌上设置 Microsoft Authenticator 应用，则不能设置第6个设备，可能会看到以下错误消息。
+> 
+> **由于已有5个验证器应用或硬件令牌，因此无法设置 Microsoft Authenticator。请与管理员联系，以删除一个验证器应用或硬件令牌。**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>设置 Microsoft Authenticator 应用
 

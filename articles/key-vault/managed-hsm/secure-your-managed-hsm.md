@@ -1,6 +1,6 @@
 ---
 title: 保护对托管 HSM 的访问 - Azure Key Vault 托管 HSM
-description: 了解如何使用 Azure RBAC 和本地托管 HSM RBAC 保护对托管 HSM 的访问
+description: 了解如何使用 Azure RBAC 和托管 HSM 本地 RBAC 保护对托管 HSM 的访问
 services: key-vault
 author: amitbapat
 tags: azure-resource-manager
@@ -9,18 +9,18 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992158"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445313"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>保护对托管 HSM 的访问
 
 Azure Key Vault 托管 HSM 是一项保护加密密钥的云服务。 因为此数据是敏感数据和业务关键数据，所以需要保护对托管 HSM 的访问，只允许得到授权的应用程序和用户进行访问。 本文简要介绍了托管 HSM 访问控制模型。 其中介绍了身份验证和授权，以及如何保护对托管 HSM 的访问。
 
-本教程将逐步完成一个简单示例，该示例演示如何使用 Azure RBAC 和本地托管 HSM RBAC 实现职责分离和访问控制。 若要了解托管 HSM 访问控制模型，请参阅[托管 HSM 访问控制](access-control.md)。
+本教程将逐步完成一个简单示例，演示如何使用 Azure RBAC 和托管 HSM 本地 RBAC 实现职责分离和访问控制。 若要了解托管 HSM 访问控制模型，请参阅[托管 HSM 访问控制](access-control.md)。
 
 ## <a name="prerequisites"></a>必备知识
 

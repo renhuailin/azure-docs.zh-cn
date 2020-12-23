@@ -3,42 +3,41 @@ title: 将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 description: 了解如何将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 services: container-service
 ms.topic: article
-ms.date: 09/26/2019
-ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/23/2020
+ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465637"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126247"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 
-[Azure NetApp 文件][anf]是在 Azure 上运行的企业级、高性能、按流量计费的文件存储服务。 本文介绍如何将 Azure NetApp 文件与 Azure Kubernetes 服务（AKS）集成。
+[Azure NetApp 文件][anf] 是在 Azure 上运行的企业级、高性能、按流量计费的文件存储服务。 本文介绍如何将 Azure NetApp 文件与 Azure Kubernetes Service (AKS) 集成。
 
 ## <a name="before-you-begin"></a>开始之前
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 > [!IMPORTANT]
-> AKS 群集还必须[位于支持 Azure NetApp 文件的区域中][anf-regions]。
+> AKS 群集还必须 [位于支持 Azure NetApp 文件的区域中][anf-regions]。
 
-还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ### <a name="limitations"></a>限制
 
 使用 Azure NetApp 文件时有以下限制：
 
-* Azure NetApp 文件仅[在所选 azure 区域中][anf-regions]可用。
-* 在可以使用 Azure NetApp 文件之前，必须授予对 Azure NetApp 文件服务的访问权限。 若要申请访问权限，可以使用[Azure NetApp 文件候补报送窗体][anf-waitlist]。 在从 Azure NetApp 文件团队收到官方确认电子邮件之前，无法访问 Azure NetApp 文件服务。
-* 你的 Azure NetApp 文件服务必须在与你的 AKS 群集相同的虚拟网络中创建。
+* Azure NetApp 文件仅 [在所选 azure 区域中][anf-regions]可用。
+* 在可以使用 Azure NetApp 文件之前，必须授予对 Azure NetApp 文件服务的访问权限。 若要申请访问权限，可以使用 [Azure NetApp 文件候补报送窗体][anf-waitlist]。 在从 Azure NetApp 文件团队收到官方确认电子邮件之前，无法访问 Azure NetApp 文件服务。
 * 初次部署 AKS 群集后，仅支持 Azure NetApp 文件的静态预配。
-* 若要在 Azure NetApp 文件中使用动态预配，请安装和配置[NetApp Trident](https://netapp-trident.readthedocs.io/)版本19.07 或更高版本。
+* 若要在 Azure NetApp 文件中使用动态预配，请安装和配置 [NetApp Trident](https://netapp-trident.readthedocs.io/) 版本19.07 或更高版本。
 
 ## <a name="configure-azure-netapp-files"></a>配置 Azure NetApp 文件
 
 > [!IMPORTANT]
-> 必须先完成订阅的[Azure NetApp 文件候补提交窗体][anf-waitlist]，才能注册*Microsoft netapp*资源提供程序。 在从 Azure NetApp 文件团队收到官方确认电子邮件之前，无法注册资源提供。
+> 必须先完成订阅的 [Azure NetApp 文件候补提交窗体][anf-waitlist]，才能注册 *Microsoft netapp* 资源提供程序。 在从 Azure NetApp 文件团队收到官方确认电子邮件之前，无法注册资源提供。
 
-注册*Microsoft NetApp*资源提供程序：
+注册 *Microsoft NetApp* 资源提供程序：
 
 ```azurecli
 az provider register --namespace Microsoft.NetApp --wait
@@ -47,7 +46,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > 此操作需要一段时间才能完成。
 
-创建用于 AKS 的 Azure NetApp 帐户时，需要在**节点**资源组中创建该帐户。 首先，使用 [az aks show][az-aks-show] 命令获取资源组名称并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取资源组名称*myResourceGroup*中名为*myAKSCluster*的 AKS 群集的节点资源组：
+创建用于 AKS 的 Azure NetApp 帐户时，需要在 **节点** 资源组中创建该帐户。 首先，使用 [az aks show][az-aks-show] 命令获取资源组名称并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取资源组名称 *myResourceGroup* 中名为 *myAKSCluster* 的 AKS 群集的节点资源组：
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -57,7 +56,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-使用[az netappfiles account create][az-netappfiles-account-create]在**节点**资源组和与 AKS 群集相同的区域中创建 Azure NetApp 文件帐户。 以下示例在*MC_myResourceGroup_myAKSCluster_eastus*资源组和*eastus*区域中创建名为*myaccount1*的帐户：
+使用 [az netappfiles account create][az-netappfiles-account-create]在 **节点** 资源组和与 AKS 群集相同的区域中创建 Azure NetApp 文件帐户。 以下示例在 *MC_myResourceGroup_myAKSCluster_eastus* 资源组和 *eastus* 区域中创建名为 *myaccount1* 的帐户：
 
 ```azurecli
 az netappfiles account create \
@@ -66,7 +65,7 @@ az netappfiles account create \
     --account-name myaccount1
 ```
 
-使用[az netappfiles pool create][az-netappfiles-pool-create]创建新的容量池。 以下示例创建一个名为*mypool1*且大小为 4 TB、*高级*服务级别为的新容量池：
+使用 [az netappfiles pool create][az-netappfiles-pool-create]创建新的容量池。 以下示例创建一个名为 *mypool1* 且大小为 4 TB、 *高级* 服务级别为的新容量池：
 
 ```azurecli
 az netappfiles pool create \
@@ -93,7 +92,7 @@ az network vnet subnet create \
     --address-prefixes 10.0.0.0/28
 ```
 
-使用[az netappfiles volume create][az-netappfiles-volume-create]创建卷。
+使用 [az netappfiles volume create][az-netappfiles-volume-create]创建卷。
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
@@ -106,7 +105,7 @@ VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAM
 SUBNET_NAME=MyNetAppSubnet
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP --vnet-name $VNET_NAME --name $SUBNET_NAME --query "id" -o tsv)
 VOLUME_SIZE_GiB=100 # 100 GiB
-UNIQUE_FILE_PATH="myfilepath2" # Please note that creation token needs to be unique within all ANF Accounts
+UNIQUE_FILE_PATH="myfilepath2" # Please note that file path needs to be unique within all ANF Accounts
 
 az netappfiles volume create \
     --resource-group $RESOURCE_GROUP \
@@ -118,7 +117,7 @@ az netappfiles volume create \
     --vnet $VNET_ID \
     --subnet $SUBNET_ID \
     --usage-threshold $VOLUME_SIZE_GiB \
-    --creation-token $UNIQUE_FILE_PATH \
+    --file-path $UNIQUE_FILE_PATH \
     --protocol-types "NFSv3"
 ```
 
@@ -146,7 +145,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-创建 `pv-nfs.yaml` 定义 PersistentVolume 的。 将替换 `path` 为*creationToken* ，并将替换为 `server` 上一命令中的*ipAddress* 。 例如：
+创建 `pv-nfs.yaml` 定义 PersistentVolume 的。 将替换 `path` 为 *creationToken* ，并将替换为 `server` 上一命令中的 *ipAddress* 。 例如：
 
 ```yaml
 ---
@@ -164,13 +163,13 @@ spec:
     path: /myfilepath2
 ```
 
-将*服务器*和*路径*更新为你在上一步中创建的 NFS （网络文件系统）卷的值。 使用[kubectl apply][kubectl-apply]命令创建 PersistentVolume：
+将 *服务器* 和 *路径* 更新为你在上一步中创建的 NFS (网络文件系统) 卷的值。 使用 [kubectl apply][kubectl-apply] 命令创建 PersistentVolume：
 
 ```console
 kubectl apply -f pv-nfs.yaml
 ```
 
-使用[kubectl 说明][kubectl-describe]命令验证 PersistentVolume 的*Available* *状态*：
+使用 [kubectl 说明][kubectl-describe]命令验证 PersistentVolume 的 *Available* *状态* ：
 
 ```console
 kubectl describe pv pv-nfs
@@ -194,13 +193,13 @@ spec:
       storage: 1Gi
 ```
 
-使用[kubectl apply][kubectl-apply]命令创建 PersistentVolumeClaim：
+使用 [kubectl apply][kubectl-apply] 命令创建 PersistentVolumeClaim：
 
 ```console
 kubectl apply -f pvc-nfs.yaml
 ```
 
-使用[kubectl 说明][kubectl-describe]命令验证 PersistentVolumeClaim 的*Bound* *状态*：
+使用 [kubectl 说明][kubectl-describe]命令验证 PersistentVolumeClaim 的 *Bound* *状态* ：
 
 ```console
 kubectl describe pvc pvc-nfs
@@ -217,7 +216,7 @@ metadata:
   name: nginx-nfs
 spec:
   containers:
-  - image: nginx
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: nginx-nfs
     command:
     - "/bin/sh"
@@ -232,26 +231,26 @@ spec:
       claimName: pvc-nfs
 ```
 
-使用[kubectl apply][kubectl-apply]命令创建 pod：
+使用 [kubectl apply][kubectl-apply] 命令创建 pod：
 
 ```console
 kubectl apply -f nginx-nfs.yaml
 ```
 
-使用[kubectl 说明][kubectl-describe]命令验证 Pod 是否*正在运行*：
+使用 [kubectl 说明][kubectl-describe]命令验证 Pod 是否 *正在运行* ：
 
 ```console
 kubectl describe pod nginx-nfs
 ```
 
-使用[kubectl exec][kubectl-exec]连接到 pod，验证是否已将你的卷装入盒，然后 `df -h` 检查该卷是否已装入。
+使用 [kubectl exec][kubectl-exec] 连接到 pod，验证是否已将你的卷装入盒，然后 `df -h` 检查该卷是否已装入。
 
 ```console
-$ kubectl exec -it nginx-nfs -- bash
+$ kubectl exec -it nginx-nfs -- sh
 ```
 
 ```output
-root@nginx-nfs:/# df -h
+/ # df -h
 Filesystem             Size  Used Avail Use% Mounted on
 ...
 10.0.0.4:/myfilepath2  100T  384K  100T   1% /mnt/azure
@@ -260,7 +259,7 @@ Filesystem             Size  Used Avail Use% Mounted on
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure NetApp 文件的详细信息，请参阅[什么是 Azure Netapp 文件][anf]。 有关将 NFS 用于 AKS 的详细信息，请参阅使用[Azure Kubernetes 服务手动创建和使用 nfs （网络文件系统） Linux 服务器卷（AKS）][aks-nfs]。
+有关 Azure NetApp 文件的详细信息，请参阅 [什么是 Azure Netapp 文件][anf]。 有关将 NFS 用于 AKS 的详细信息，请参阅使用 [Azure Kubernetes Service (AKS) 手动创建和使用 nfs (网络文件系统) Linux 服务器卷 ][aks-nfs]。
 
 
 [aks-quickstart-cli]: kubernetes-walkthrough.md

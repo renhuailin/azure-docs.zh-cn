@@ -3,19 +3,19 @@ title: 将数据馈送载入指标顾问
 titleSuffix: Azure Cognitive Services
 description: 如何开始将数据馈送载入到指标顾问。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934688"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043185"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>操作说明：将指标数据载入指标顾问
 
@@ -72,7 +72,7 @@ ms.locfileid: "90934688"
 
 如果省略数据点的时间戳，则指标顾问将在数据点引入时使用时间戳。 对于每个数据馈送，最多可以将一个列指定为时间戳。 如果您收到一条消息，指出不能将列指定为时间戳，请检查您的查询或数据源，并检查查询结果中是否有多个时间戳，而不仅是预览数据。 执行数据引入时，指标顾问每次只能使用一个块 (（例如一天，一小时），根据给定源的时间序列数据) 的粒度。
 
-|选择  |说明  |说明  |
+|选项  |说明  |说明  |
 |---------|---------|---------|
 | **显示名称** | 要在工作区中显示的名称，而不是原始列名称。 | |
 |**Timestamp**     | 数据点的时间戳。 如果省略，则指标顾问将在数据点引入时使用时间戳。 对于每个数据馈送，最多可以将一个列指定为时间戳。        | 可选。 最多只能指定一列。 如果 **无法将列指定为时间戳** 错误，请检查查询或数据源中是否存在重复的时间戳。      |
@@ -99,7 +99,7 @@ ms.locfileid: "90934688"
 
 指标顾问可以在引入过程中自动对每个维度上的 SUM、MAX、MIN) 执行聚合 (，然后生成一个将用于根事例分析和其他诊断功能的层次结构。 
 
-请考虑以下方案：
+请考虑下列情形：
 
 * *我不需要为数据包含汇总分析。*
 
@@ -188,12 +188,7 @@ ms.locfileid: "90934688"
 2. 单击 " **状态** "，然后选择 " **失败** " 或 " **错误**"。
 3. 将鼠标悬停在失败的引入上，并查看显示的详细信息消息。
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="检查失败引入":::
-
-" *失败* " 状态指示稍后将重试此数据源的引入。
-*错误*状态表明，数据源的指标顾问不会重试。 若要重新加载数据，需要手动触发回填/重载。
-
-还可以通过单击 " **刷新进度**" 来重新加载引入的进度。 数据引入完成后，可随时单击度量值并检查异常情况检测结果。
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="引入进度栏" 来重新加载引入的进度。 数据引入完成后，可随时单击度量值并检查异常情况检测结果。
 
 ## <a name="next-steps"></a>后续步骤
 - [管理数据馈送](manage-data-feeds.md)

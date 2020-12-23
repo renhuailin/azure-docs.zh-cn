@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432753"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778131"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
 
@@ -27,13 +27,13 @@ ms.locfileid: "87432753"
 
 如果希望授予受限制的私有存储容器访问权限，可以使用 Azure 存储帐户的共享访问签名 (SAS) 功能。 SAS 是授予对 Azure 存储资源进行有限访问权限的 URI，而无需公开你的帐户密钥。 你可以为不信任向其提供存储帐户密钥，但需要向其委派某些存储帐户资源的访问权限的客户端提供 SAS。 通过向这些客户端分发共享访问签名 URI，可以授予它们在一段指定时间内对资源的访问权限。
  
-使用 SAS 可以定义各种 blob 访问权限参数，例如开始和到期时间、权限（读/写）和 IP 范围。 本文介绍如何将 SAS 与 Azure CDN 一起使用。 有关 SAS 的详细信息，包括如何创建它及其参数选项，请参阅[使用共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
+使用 SAS 可以定义各种 blob 访问权限参数，例如开始和到期时间、权限（读/写）和 IP 范围。 本文介绍如何将 SAS 与 Azure CDN 一起使用。 有关 SAS 的详细信息，包括如何创建它及其参数选项，请参阅[使用共享访问签名 (SAS)](../storage/common/storage-sas-overview.md)。
 
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>设置 Azure CDN 以用于存储 SAS
 对于将 SAS 与 Azure CDN 一起使用，建议使用以下三个选项。 所有选项都假设已创建了一个有效的 SAS（请参阅先决条件）。 
  
 ### <a name="prerequisites"></a>先决条件
-首先创建存储帐户，然后为资产生成 SAS。 可以生成两种类型的存储访问签名：服务 SAS 或帐户 SAS。 有关详细信息，请参阅[共享访问签名的类型](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures)。
+首先创建存储帐户，然后为资产生成 SAS。 可以生成两种类型的存储访问签名：服务 SAS 或帐户 SAS。 有关详细信息，请参阅[共享访问签名的类型](../storage/common/storage-sas-overview.md#types-of-shared-access-signatures)。
 
 生成 SAS 令牌后，可将 `?sv=<SAS token>` 追加到 URL，访问 blob 存储文件。 此 URL 格式如下： 
 
@@ -44,7 +44,7 @@ ms.locfileid: "87432753"
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
-有关设置参数的详细信息，请参阅 [SAS 参数注意事项](#sas-parameter-considerations)和[共享访问签名参数](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)。
+有关设置参数的详细信息，请参阅 [SAS 参数注意事项](#sas-parameter-considerations)和[共享访问签名参数](../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works)。
 
 ![CDN SAS 设置](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
@@ -71,7 +71,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
  
 此选项仅适用于来自 Verizon 的 Azure CDN Premium 配置文件。 使用此选项，可以在源服务器上保护 Blob 存储。 如果不需要对文件进行特定的访问权限限制，但希望阻止用户直接访问存储源以提高 Azure CDN 卸载时间，则需要使用此选项。 若要在源服务器的指定容器中访问文件，必须使用对用户来说不可知的 SAS 令牌。 不过，由于 URL 重写规则的缘故，CDN 终结点上不需要 SAS 令牌。
  
-1. 使用[规则引擎](cdn-rules-engine.md)创建 URL 重写规则。 新规则需要 4 小时来传播。
+1. 使用[规则引擎](./cdn-verizon-premium-rules-engine.md)创建 URL 重写规则。 新规则需要 4 小时来传播。
 
    ![CDN 管理按钮](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
@@ -102,7 +102,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 若要使用 Azure CDN 安全令牌身份验证，必须具有来自 Verizon 的 Azure CDN Premium 配置文件。 此选项最为安全且可进行自定义。 客户端访问基于安全令牌上设置的安全参数。 创建并设置安全令牌以后，所有 CDN 终结点 URL 上都需要该令牌。 不过，由于 URL 重写规则的缘故，CDN 终结点上不需要 SAS 令牌。 如果 SAS 令牌稍后变为无效，Azure CDN 将再也不能通过源服务器来重新验证内容。
 
-1. [创建 Azure CDN 安全令牌](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication)并使用 CDN 终结点的规则引擎和用户可访问文件的路径来激活它。
+1. [创建 Azure CDN 安全令牌](./cdn-token-auth.md#setting-up-token-authentication)并使用 CDN 终结点的规则引擎和用户可访问文件的路径来激活它。
 
    安全令牌终结点 URL 采用以下格式：   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
@@ -114,7 +114,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
        
    安全令牌身份验证的参数选项不同于 SAS 令牌的参数选项。 如果在创建安全令牌时选择使用到期时间，则应将它设置为与 SAS 令牌的到期时间相同的值。 这样可确保到期时间是可预测的。 
  
-2. 使用[规则引擎](cdn-rules-engine.md)创建 URL 重写规则以启用对容器中所有 blob 的 SAS 令牌访问。 新规则需要 4 小时来传播。
+2. 使用[规则引擎](./cdn-verizon-premium-rules-engine.md)创建 URL 重写规则以启用对容器中所有 blob 的 SAS 令牌访问。 新规则需要 4 小时来传播。
 
    以下示例 URL 重写规则使用包含捕获组和名为 sasstoragedemo 的终结点的正则表达式模式：
    
@@ -138,13 +138,13 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 | --- | --- |
 | 开始 | Azure CDN 可以开始访问 blob 文件的时间。 由于存在时钟偏差 （当时钟信号在不同时间到达不同组件时），因此，如果希望资产立即可用，请选择一个提早 15 分钟的时间。 |
 | 结束 | Azure CDN 不可再访问 blob 文件的时间。 之前缓存在 Azure CDN 上的文件仍可访问。 若要控制文件到期时间，请在 Azure CDN 安全令牌上设置适当的到期时间或清除资产。 |
-| 允许的 IP 地址 | 可选。 如果使用的是来自 Verizon 的 Azure CDN，可以将此参数设置为 [Azure CDN from Verizon Edge Server IP Ranges](/azure/cdn/cdn-pop-list-api)（来自 Verizon 的 Azure CDN 边缘服务器 IP 范围）中定义的范围。 如果使用的是来自 Akamai 的 Azure CDN，则不能设置 IP 范围参数，因为这些 IP 地址不是静态的。|
+| 允许的 IP 地址 | 可选。 如果使用的是来自 Verizon 的 Azure CDN，可以将此参数设置为 [Azure CDN from Verizon Edge Server IP Ranges](./cdn-pop-list-api.md)（来自 Verizon 的 Azure CDN 边缘服务器 IP 范围）中定义的范围。 如果使用的是来自 Akamai 的 Azure CDN，则不能设置 IP 范围参数，因为这些 IP 地址不是静态的。|
 | 允许的协议 | 允许为帐户 SAS 发出的请求使用的协议。 建议使用 HTTPS 设置。|
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 SAS 的详细信息，请参阅以下文章：
-- [使用共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-- [共享访问签名，第 2 部分：创建 SAS 并将其用于 Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
+- [使用共享访问签名 (SAS)](../storage/common/storage-sas-overview.md)
+- [共享访问签名，第 2 部分：创建 SAS 并将其用于 Blob 存储](../storage/common/storage-sas-overview.md)
 
-有关设置令牌身份验证的详细信息，请参阅[使用令牌身份验证保护 Azure 内容分发网络资产](https://docs.microsoft.com/azure/cdn/cdn-token-auth)。
+有关设置令牌身份验证的详细信息，请参阅[使用令牌身份验证保护 Azure 内容分发网络资产](./cdn-token-auth.md)。

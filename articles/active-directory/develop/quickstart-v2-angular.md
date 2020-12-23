@@ -1,7 +1,7 @@
 ---
-title: 在 Angular 单页应用中将用户登录 - Azure
+title: 快速入门：在 Angular 单页应用中将用户登录 - Azure
 titleSuffix: Microsoft identity platform
-description: 了解 Angular 应用如何使用 Microsoft 标识平台调用需要访问令牌的 API。
+description: 本快速入门介绍 Angular 应用如何调用 API，该 API 需要 Microsoft 标识平台颁发的访问令牌。
 services: active-directory
 author: jasonnutter
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 23b25340906ddb4501492b048740f590c13654c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 72d9aefcdda5d224b256c6e969b7a75259a97005
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258024"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95750767"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入门：在 Angular 单页应用程序中将用户登录并获取访问令牌
 
-本快速入门通过代码示例来介绍 Angular 单页应用程序 (SPA) 如何将具有个人 Microsoft 帐户、工作帐户或学校帐户的用户登录。 Angular SPA 还可以获取用于调用 Microsoft Graph API 或任何 Web API 的访问令牌。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Angular 单页应用程序 (SPA) 如何让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056372"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602812"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -114,7 +114,7 @@ deviceTRUST 是一个 Windows 虚拟桌面增值服务提供商，tsi 公司企�
 
 deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 deviceTRUST 为安全 Windows 虚拟桌面访问和 Windows 虚拟桌面中的条件性应用程序访问启用条件性访问，并且无需任何其他基础结构即可应用条件性 Windows 虚拟桌面策略。 使用 deviceTRUST 可实现一个满足所有安全性、合规性和法规要求的移动灵活工作区。
 
-- [请参阅合作伙伴网站](https://devicetrust.com/wvd)。
+- [请参阅合作伙伴网站](https://devicetrust.com/)。
 
 ## <a name="ekran-system"></a>Ekran 系统
 
@@ -236,7 +236,7 @@ Login .VSI 是 Windows 虚拟桌面增值服务提供商和 Microsoft 合作伙�
 
 Nasuni Corp 是云文件服务和顶级 Azure 全球 ISV 合作伙伴的领先提供商，它提供 Nasuni 的软件即服务平台，作为现代虚拟桌面的新式文件存储解决方案。 与 Azure Blob 存储结合时，Nasuni 将主文件存储 (NAS) 、文件备份、灾难恢复和跨区域文件同步合并到一个统一的解决方案中。 使用 Nasuni，企业可以部署 Windows 虚拟桌面以用于更多用例和更多 Azure 区域，简化管理，并确保业务连续性。 
 
-作为现代云 VDI 解决方案，Windows 虚拟桌面需要新式云文件存储。 传统上，VDI 文件存储是基于网络附加的存储 (NAS) 和位于本地的文件服务器硬件，以及提供文件备份、还原和灾难恢复的随附所需技术。 这些传统的方法成本高昂、维护和管理复杂，而且不能轻松缩放。 如果与 Windows 虚拟桌面之类的新式云 VDI 解决方案一起使用，则它们也会导致延迟，因为在 Azure 和基于本地的文件存储之间存在物理距离和较慢的 WAN 连接。 Nasuni 是专门为 Azure 构建的文件服务平台，可提供无限制的文件存储容量和高性能文件访问。 Nasuni 可以与 Windows 虚拟桌面共存于同一 Azure 区域，以提供经济、高性能的文件访问单个全局命名空间。 Nasuni 以传统 NAS 和 Windows 文件服务器的一小部分成本提供 Windows 虚拟桌面文件存储，并包含内置备份和灾难恢复，以进一步降低成本并释放 IT 资源。
+作为现代云 VDI 解决方案，Windows 虚拟桌面需要新式云文件存储。 传统上，VDI 文件存储基于 Network-Attached 存储 (NAS) 和本地的文件服务器硬件，以及提供文件备份、还原和灾难恢复所需的随附技术。 这些传统的方法成本高昂、维护和管理复杂，而且不能轻松缩放。 如果与 Windows 虚拟桌面之类的新式云 VDI 解决方案一起使用，则它们也会导致延迟，因为在 Azure 和基于本地的文件存储之间存在物理距离和较慢的 WAN 连接。 Nasuni 是专门为 Azure 构建的文件服务平台，可提供无限制的文件存储容量和高性能文件访问。 Nasuni 可以与 Windows 虚拟桌面共存于同一 Azure 区域，以提供经济、高性能的文件访问单个全局命名空间。 Nasuni 以传统 NAS 和 Windows 文件服务器的一小部分成本提供 Windows 虚拟桌面文件存储，并包含内置备份和灾难恢复，以进一步降低成本并释放 IT 资源。
 
 - [请参阅合作伙伴网站](https://www.nasuni.com/partner/microsoft/#wvd)。
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS)。
@@ -350,7 +350,7 @@ SSH2 是一个 Windows 虚拟桌面增值服务提供程序，它为你的 IT �
 appCURE 从运行的应用程序捕获应用程序详细信息，以确保了解可能会影响最终用户的应用程序的所有点。 然后，appCURE 更新并将其传送到新的 Windows 虚拟桌面。 通过捕获当前环境中的所有应用程序集成点，appCURE 提供了优化 IT 资源并规划迁移的速度，并使组织能够更快地投入生产。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38)。
-- [请中转到 "合作伙伴" 页](https://www.ssh2.xyz/windows-virtual-desktop/)。
+- [请中转到 "合作伙伴" 页](#ssh2)。
 
 ## <a name="thinprint"></a>ThinPrint
 

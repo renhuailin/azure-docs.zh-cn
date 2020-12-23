@@ -1,24 +1,24 @@
 ---
-title: Azure 多重身份验证提示和会话生存期
-description: 了解有关使用 Azure 多重身份验证进行身份验证的建议配置和会话生存期的应用方式。
+title: Azure AD 多重身份验证提示和会话生存期
+description: 了解 Azure AD 多重身份验证和会话生存期的应用方式的建议的身份验证提示配置。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab36eb9d5c66f61fbb320c91087659cc811eca85
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595549"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743691"
 ---
-# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure 多重身份验证的会话生存期
+# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure AD 多重身份验证的会话生存期
 
 Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要重新进行身份验证的频率。 这种重新验证可能会导致首个因素（如 password、FIDO 或无密码 Microsoft Authenticator）或 (MFA) 执行多重身份验证。 你可以根据自己的环境和所需的用户体验来配置这些身份验证设置。
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 在 Azure AD 中，对会话生存期最严格的策略决定用户需要重新进行身份验证的时间。 请参考以下方案：
 
 * 启用 *仍登录*，这将使用永久性浏览器 cookie，并
-* 你还可以在*14 天内启用 "记住 MFA* "
+* 你还可以在 *14 天内启用 "记住 MFA* "
 
 在此示例方案中，用户需要每14天进行一次身份验证。 此行为遵循最严格的策略，即使 " *使我保持登录* "，也不需要用户在浏览器中进行身份验证。
 
@@ -96,7 +96,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 
 ### <a name="configurable-token-lifetimes"></a>可配置的令牌生存期
 
-此设置允许配置 Azure Active Directory 颁发的令牌的生存期。 此策略由 *具有条件访问的身份验证会话管理*替换。 如果现在使用 *可配置的令牌生存期* ，则建议启动到条件性访问策略的迁移。
+此设置允许配置 Azure Active Directory 颁发的令牌的生存期。 此策略由 *具有条件访问的身份验证会话管理* 替换。 如果现在使用 *可配置的令牌生存期* ，则建议启动到条件性访问策略的迁移。
 
 ## <a name="review-your-tenant-configuration"></a>查看租户配置  
 
@@ -123,7 +123,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 
 若要查看令牌生存期，请 [使用 Azure AD PowerShell 来查询任何 Azure AD 策略](../develop/configure-token-lifetimes.md#prerequisites)。 禁用已有的任何策略。
 
-如果在租户中启用了多个设置，则建议你根据可用的许可来更新设置。 例如，如果你有 Azure AD premium 许可证，则应仅使用 *登录频率* 和 *持续浏览器会话*的条件性访问策略。 如果有 Microsoft 365 应用或 Azure AD 免费许可证，则应使用 " *保持登录"* 配置。
+如果在租户中启用了多个设置，则建议你根据可用的许可来更新设置。 例如，如果你有 Azure AD premium 许可证，则应仅使用 *登录频率* 和 *持续浏览器会话* 的条件性访问策略。 如果有 Microsoft 365 应用或 Azure AD 免费许可证，则应使用 " *保持登录"* 配置。
 
 如果已启用可配置的令牌生存期，则很快会删除此功能。 规划迁移到条件性访问策略。
 
@@ -136,4 +136,4 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始，请完成教程以 [使用 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md) ，或 [使用用户登录的风险检测来触发 Azure 多重身份验证](tutorial-risk-based-sspr-mfa.md)。
+若要开始，请完成教程以使用 [Azure AD 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md) ，或 [使用用户登录的风险检测来触发 Azure AD 多重身份验证](tutorial-risk-based-sspr-mfa.md)。

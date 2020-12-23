@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c9feb1131f6d2d0eb75ac71e27dc46c226c52c1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707389"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961050"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>部署本地 StorSimple 设备（Update 3 及更高版本）
 
@@ -153,7 +153,7 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 [!INCLUDE [storsimple-8000-mount-initialize-format-volume](../../includes/storsimple-8000-mount-initialize-format-volume.md)]
 
 ## <a name="step-8-take-a-backup"></a>步骤 8：执行备份
-备份可提供卷的时间点保护，并可提高可恢复性，同时最大限度地减少恢复时间。 可以在 StorSimple 设备上执行两种类型的备份：本地快照和云快照。 其中的每个备份类型可以是“已计划”或“手动”********。
+备份可提供卷的时间点保护，并可提高可恢复性，同时最大限度地减少恢复时间。 可以在 StorSimple 设备上执行两种类型的备份：本地快照和云快照。 其中的每个备份类型可以是“已计划”或“手动”。
 
 在 Azure 门户中执行以下步骤来创建计划备份。
 
@@ -166,9 +166,9 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 ## <a name="configure-a-new-storage-account-for-the-service"></a>针对服务配置新的存储帐户
 这是一个可选步骤，只有当未启用服务自动创建存储帐户时，才需要执行。 必须要具有 Microsoft Azure 存储帐户才可以创建 StorSimple 卷容器。
 
-如果需要在不同的区域创建 Azure 存储帐户，请参阅 [关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md) 了解逐步说明。
+如果需要在不同的区域创建 Azure 存储帐户，请参阅 [关于 Azure 存储帐户](../storage/common/storage-account-create.md) 了解逐步说明。
 
-在 Azure 门户中的“StorSimple Device Manager 服务”**** 页上执行以下步骤。
+在 Azure 门户中的“StorSimple Device Manager 服务”页上执行以下步骤。
 
 [!INCLUDE [storsimple-8000-configure-new-storage-account-u2](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
@@ -207,4 +207,3 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 ## <a name="next-steps"></a>后续步骤
 * [配置 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。
 * [使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-

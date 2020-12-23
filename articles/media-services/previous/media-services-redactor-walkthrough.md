@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: df35b48a4da05d068760f0b04394ea53d788000e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269686"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040705"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
 
@@ -28,9 +28,9 @@ ms.locfileid: "89269686"
 
 ## <a name="overview"></a>概述
 
-**Azure 媒体修订器**是一种 [Azure 媒体分析](media-services-analytics-overview.md)媒体处理器 (MP)，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在公共安全和新闻媒体场景中使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成该过程。 有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-redactor/)博客。
+**Azure 媒体修订器** 是一种 [Azure 媒体分析](./legacy-components.md)媒体处理器 (MP)，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在公共安全和新闻媒体场景中使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成该过程。 有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-redactor/)博客。
 
-有关 **Azure Media Redactor** 的详细信息，请参阅[面部修正概述](media-services-face-redaction.md)主题。
+有关 **Azure Media Redactor** 的详细信息，请参阅 [面部修正概述](media-services-face-redaction.md)主题。
 
 本主题提供分步指导，引导用户使用 Azure 媒体服务资源管理器 (AMSE) 和 Azure Media Redactor Visualizer（开源工具）运行完整修正工作流。
 
@@ -38,7 +38,7 @@ ms.locfileid: "89269686"
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure 媒体服务资源管理器工作流
 
-使用 Redactor 的最简单方法是使用 GitHub 上的开源 AMSE 工具。 如果不需要访问批注 json 或 jpg 面部图像，可通过**合并**模式运行简化的工作流。
+使用 Redactor 的最简单方法是使用 GitHub 上的开源 AMSE 工具。 如果不需要访问批注 json 或 jpg 面部图像，可通过 **合并** 模式运行简化的工作流。
 
 ### <a name="download-and-setup"></a>下载和安装
 
@@ -47,7 +47,7 @@ ms.locfileid: "89269686"
 
     若要获取帐户名称和密钥信息，请转到 [Azure 门户](https://portal.azure.com/)并选择 AMS 帐户。 然后，选择“设置”>“密钥”。 “管理密钥”窗口显示帐户名称、主密钥和辅助密钥。 复制帐户名称和主密钥的值。
 
-![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
+![屏幕截图显示 Microsoft Azure 媒体服务你可以在其中输入你的帐户名和密钥。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
 ### <a name="first-pass--analyze-mode"></a>第一步 – 分析模式
 
@@ -55,32 +55,32 @@ ms.locfileid: "89269686"
 1. 右键单击，并使用“媒体分析”–>“Azure Media Redactor”–>“分析模式”处理媒体文件。 
 
 
-![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
+![屏幕截图显示一个菜单，其中包含与 Azure Media 编修器) 的过程资产 (。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
 
-![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
+![屏幕截图显示了 Azure Media 编修器 with First Pass：已选择分析模式。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
 输出包括带有面部位置数据的批注 json 文件以及检测到的每张脸的 jpg。 
 
-![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
+![屏幕截图显示分析的输出。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
 ### <a name="second-pass--redact-mode"></a>第二步 – 修正模式
 
 1. 将原始视频资产上传到第一步中的输出，并设置为主要资产。 
 
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
+    ![屏幕截图显示 "上传" 和 "设为主按钮"。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
 2. （可选）上传“Dance_idlist.txt”文件，它包含要修订的 ID 的换行符分隔列表。 
 
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
+    ![屏幕截图显示了上载文本文件的选项。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. （可选）编辑 annotations.json 文件，例如增加边界框边界。 
 4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”  模式下运行。 
 
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
+    ![屏幕截图显示了 Azure Media 编修器，并显示第二阶段：选中 "标记密文" 模式。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. 下载或共享最终修正的输出资产。 
 
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![屏幕截图显示 "下载" 按钮。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Visualizer 开源工具
 
@@ -94,12 +94,12 @@ ms.locfileid: "89269686"
 
 1.  下载并生成整个解决方案。 
 
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
+    ![屏幕截图显示从菜单中选择的生成解决方案。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  从[此处](https://ffmpeg.org/download.html)下载 FFMPEG。 此项目最初使用具有静态链接的版本 be1d324 (2016-10-04) 开发。 
 3.  将 ffmpeg.exe 和 ffprobe.exe 复制到与 AzureMediaRedactor.exe 相同的输出文件夹。 
 
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
+    ![屏幕截图显示文件夹的内容，包括 ffmpeg 和 ffprobe.exe。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
 4. 运行 AzureMediaRedactor.exe。 
 
@@ -109,11 +109,11 @@ ms.locfileid: "89269686"
 2. 下载原始视频文件和“修正 - 分析”作业的输出。 
 3. 运行可视化工具应用程序并选择上述文件。 
 
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
+    ![屏幕截图显示 Azure Media 编修器上传文件。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
 4. 预览文件。 通过右侧边栏选择要进行模糊处理的人脸。 
     
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
+    ![屏幕截图显示 Azure Media 编修器，可在其中预览并选择要进行模糊的面部。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
 5.  将更新底部文本字段，使其带有面部 ID。 创建名为“idlist.txt”的文件，将这些 ID 作为换行符分隔列表。 
 
@@ -131,7 +131,7 @@ ms.locfileid: "89269686"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>相关链接
-[Azure 媒体服务分析概述](media-services-analytics-overview.md)
+[Azure 媒体服务分析概述](./legacy-components.md)
 
 [Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

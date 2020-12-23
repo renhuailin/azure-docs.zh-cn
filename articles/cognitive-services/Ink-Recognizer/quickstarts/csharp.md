@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13a2d887b17ff319fb3a0f2bb0d5d0ff04629088
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051587"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369097"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入门：使用墨迹识别器 REST API 和 C# 识别数字墨迹
 
@@ -99,7 +99,7 @@ ms.locfileid: "89051587"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [REST API 参考](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API 参考](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 
 若要了解墨迹识别 API 在数字墨迹应用中的工作原理，请查看 GitHub 上的以下示例应用程序：

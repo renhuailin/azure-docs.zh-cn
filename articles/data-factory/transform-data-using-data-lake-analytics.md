@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: f99bc5b07f3749fac28f60d28b040a7e0682971b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d890f73ea8b2294755b14055cb11904d50160cc4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522408"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014000"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U SQL 脚本来处理数据 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -45,7 +45,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 | **resourceGroupName**    | Azure 资源组名称                | 否                                       |
 
 ### <a name="service-principal-authentication"></a>服务主体身份验证
-Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才能连接到 Azure Data Lake Analytics 服务。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册一个应用程序实体并授予其访问 Data Lake Analytics 和它使用的 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 记下下面的值，这些值用于定义链接服务：
+Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才能连接到 Azure Data Lake Analytics 服务。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册一个应用程序实体并授予其访问 Data Lake Analytics 和它使用的 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)。 记下下面的值，这些值用于定义链接服务：
 
 * 应用程序 ID
 * 应用程序密钥 
@@ -126,7 +126,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 | type                | 对于 Data Lake Analytics U-SQL 活动，活动类型是 **DataLakeAnalyticsU-SQL**。 | 是      |
 | linkedServiceName   | Azure Data Lake Analytics 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  |是       |
 | scriptPath          | 包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 | 是      |
-| scriptLinkedService | 将包含脚本的 **Azure Data Lake Store** 或 **Azure 存储**链接到数据工厂的链接服务 | 是      |
+| scriptLinkedService | 将包含脚本的 **Azure Data Lake Store** 或 **Azure 存储** 链接到数据工厂的链接服务 | 是      |
 | degreeOfParallelism | 同时用于运行作业的最大节点数。 | 否       |
 | priority            | 确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 | 否       |
 | parameters          | 要传入 U-SQL 脚本的参数。    | 否       |
@@ -198,5 +198,5 @@ OUTPUT @rs1
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
+* [Azure 机器学习 Studio (经典) 批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

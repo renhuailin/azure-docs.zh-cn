@@ -1,25 +1,31 @@
 ---
-title: 在 Azure Monitor 中配置代理数据源 | Microsoft Docs
+title: Azure Monitor 中的 Log Analytics 代理数据源
 description: 数据源定义 Azure Monitor 从代理和其他已连接的源收集的日志数据。  本文介绍有关 Azure Monitor 如何使用数据源的概念，详细解释如何配置数据源，并对不同的可用数据源进行概要介绍。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/21/2020
+ms.openlocfilehash: ad5e91a6dcdb61e09a64e61a27f12148ec28168e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073685"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000736"
 ---
-# <a name="agent-data-sources-in-azure-monitor"></a>Azure Monitor 中的代理数据源
-Azure Monitor 从代理收集的数据是由你配置的数据源定义的。  来自代理的数据存储为包含记录集的[日志数据](data-platform-logs.md)。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
+# <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 代理数据源
+Azure Monitor 通过 [Log Analytics](log-analytics-agent.md) 代理从虚拟机中收集的数据由你在 [Log Analytics 工作区](data-platform-logs.md)上配置的数据源定义。   每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
+
+> [!IMPORTANT]
+> 本文介绍 [Log Analytics 代理](log-analytics-agent.md)（Azure Monitor 使用的代理之一）的数据源。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](agents-overview.md)。
 
 ![日志数据收集](media/agent-data-sources/overview.png)
 
+> [!IMPORTANT]
+> 本文中所述的数据源仅适用于运行 Log Analytics 代理的虚拟机。 
+
 ## <a name="summary-of-data-sources"></a>数据源概要介绍
-下表列出了 Azure Monitor 中当前可用的代理数据源。  每个数据源都链接到一篇单独的文章，提供该数据源的详细信息。   它还提供了有关收集方法和收集频率的信息。 
+下表列出了 Log Analytics 代理当前提供的代理数据源。  每个数据源都链接到一篇单独的文章，提供该数据源的详细信息。   它还提供了有关收集方法和收集频率的信息。 
 
 
 | 数据源 | 平台 | Log Analytics 代理 | Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
@@ -34,14 +40,12 @@ Azure Monitor 从代理收集的数据是由你配置的数据源定义的。  �
 
 
 ## <a name="configuring-data-sources"></a>配置数据源
-可以从工作区“高级设置”中的“数据”菜单配置数据源。  任何配置都将传送到工作区中所有已连接的数据源。  当前不能从此配置中排除任何代理。
+若要为 Log Analytics 代理配置数据源，请转到 Azure 门户中的“Log Analytics 工作区”菜单，然后选择一个工作区。 依次单击“高级设置”、“数据”。 选择要配置的数据源。 可以打开上表中的链接来访问每个数据源的文档及其配置的详细信息。
+
+任何配置都会传递到已连接到该工作区的所有代理。  不能从此配置中排除任何已连接的代理。
 
 ![配置 Windows 事件](media/agent-data-sources/configure-events.png)
 
-1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”   。
-2. 选择“**数据**”。
-3. 单击要配置的数据源。
-4. 按照上表中每个数据源链接到的文档，了解有关其配置的详细信息。
 
 
 ## <a name="data-collection"></a>数据收集

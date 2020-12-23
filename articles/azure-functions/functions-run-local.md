@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure Functions Core Tools
-description: 了解如何通过本地计算机上的命令提示符或终端编写和测试 Azure 函数，然后在 Azure Functions 中运行这些函数。
+description: 了解如何在本地计算机上的命令提示符或终端中对 Azure Functions 进行编码和测试，然后在 Azure Functions 上运行它们。
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929477"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932449"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -155,7 +155,7 @@ Azure Functions Core Tools 当前依赖于 Azure CLI 通过 Azure 帐户进行�
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
-Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 以及若干个子文件夹，这些子文件夹包含各个函数的代码。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
+函数项目目录包含 [host.js打开](functions-host-json.md) 和 [local.settings.js上](#local-settings-file)的文件，以及包含各个函数的代码的子文件夹。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
 
 版本 3.x/2.x 要求在初始化项目时为项目选择默认语言。 在版本 3.x/2.x 中，添加的所有函数均使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java 使用 Maven 原型来创建本地函数项目，以及第一个 HTTP 触发的函数。 使用以下命令创建 Java 项目： `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` 。 有关使用 Maven 原型的示例，请参阅 [命令行快速入门](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。  
+> Java 使用 Maven archetype 来创建本地 Functions 项目，以及第一个由 HTTP 触发的函数。 使用以下命令创建 Java 项目：`mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype`。 有关使用 Maven archetype 的示例，请参阅[命令行快速入门](./create-first-function-cli-java.md)。  
 
 提供项目名称后，系统就会创建并初始化使用该名称的新文件夹， 否则会初始化当前文件夹。  
 在版本 3.x/2.x 中运行命令时，必须为项目选择一个运行时。 
@@ -212,11 +212,11 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 除了 HTTP 和计时器触发器外，运行时 2.x 版及更高版本中的 Functions 绑定是以扩展包的形式实现的。 HTTP 绑定和计时器触发器不需要扩展。 
 
-为了减少不同扩展包之间的不兼容性，函数允许你在项目文件的 host.js中引用扩展包。 如果选择不使用扩展捆绑，还需要在本地安装 .NET Core 2.x SDK，并使用函数项目维护扩展。 .csproj 和函数项目。  
+为了降低不同扩展包之间的不兼容性，可以使用函数，让你可以引用 host.json 项目文件中的扩展捆绑包。 如果选择不使用扩展捆绑包，则还需要在本地安装 .NET Core 2.x SDK，并在 functions 项目中维护 extensions.csproj。  
 
 在 2.x 版及更高版本的 Azure Functions 运行时中，必须显式注册在函数中使用的绑定类型的扩展。 可以选择单独安装绑定扩展，也可以将扩展捆绑包引用添加到 host.json 项目文件。 扩展捆绑包可避免在使用多种绑定类型时出现包兼容性问题。 建议使用此方法来注册绑定扩展。 扩展捆绑包还无需安装 .NET Core 2.x SDK。 
 
-### <a name="use-extension-bundles"></a>使用扩展捆绑
+### <a name="use-extension-bundles"></a>使用扩展捆绑包
 
 [!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
 
@@ -250,14 +250,14 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 - 在 [Azure 门户]中，搜索并选择“存储帐户”。 
   ![从 Azure 门户选择存储帐户](./media/functions-run-local/select-storage-accounts.png)
   
-  选择你的存储帐户，在“设置”中选择“访问密钥”，然后复制其中一个**连接字符串**值。 
+  选择你的存储帐户，在“设置”中选择“访问密钥”，然后复制其中一个 **连接字符串** 值。 
   ![从 Azure 门户复制连接字符串](./media/functions-run-local/copy-storage-connection-portal.png)
 
 - 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”中，展开你的订阅，展开“存储帐户”，选择你的存储帐户，然后复制主或辅助连接字符串。
 
   ![从存储资源管理器复制连接字符串](./media/functions-run-local/storage-explorer.png)
 
-+ 使用项目根目录中的核心工具从 Azure 中使用以下命令之一下载连接字符串：
++ 使用项目根目录中的核心工具通过下列命令之一从 Azure 下载连接字符串：
 
   + 从现有函数应用下载所有设置：
 
@@ -271,7 +271,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    如果你尚未登录到 Azure，系统会要求登录。 这些命令将覆盖 local.settings.js文件中的任何现有设置。 
+    如果你尚未登录到 Azure，系统会要求登录。 这些命令将覆盖 local.settings.json 文件中的任何现有设置。 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>创建函数
 
@@ -357,7 +357,7 @@ func start
 ```
 func start
 ```
-此命令必须 [在虚拟环境中运行](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)。
+此命令必须 [在虚拟环境中运行](./create-first-function-cli-python.md)。
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -518,7 +518,7 @@ func azure functionapp publish <FunctionAppName>
 ```
 
 >[!IMPORTANT]
-> Java 使用 Maven 将本地项目发布到 Azure。 使用以下命令发布到 Azure： `mvn azure-functions:deploy` 。 Azure 资源是在初始部署期间创建的。
+> Java 使用 Maven 将本地项目发布到 Azure。 使用以下命令发布到 Azure：`mvn azure-functions:deploy`。 Azure 资源是在初始部署期间创建的。
 
 此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
 
@@ -574,15 +574,11 @@ func deploy
 
 ### <a name="application-insights-integration"></a>Application Insights 集成
 
-在 Azure 中创建函数应用时，应启用 Application Insights 集成。 如果由于某种原因，函数应用未连接到 Application Insights 实例，则在 Azure 门户中可以轻松地进行此集成。 
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+在 Azure 中创建函数应用时，应启用 Application Insights 集成。 如果由于某种原因，函数应用未连接到 Application Insights 实例，则在 Azure 门户中可以轻松地进行此集成。 若要了解详细信息，请参阅[启用 Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)。
 
 ### <a name="enable-streaming-logs"></a>启用流式传输日志
 
 可以在本地计算机的命令行会话中查看函数正在生成的日志文件流。 
-
-#### <a name="native-streaming-logs"></a>本机流式传输日志
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80885474"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995993"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>调用 Web API 的守护程序应用 - 应用注册
 
@@ -40,7 +40,7 @@ ms.locfileid: "80885474"
 ![应用权限和管理员许可](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> 要调用的 Web API 需要定义*应用程序权限（应用角色）* ，而不是委托的权限。 有关如何公开此类 API 的详细信息，请参阅[受保护的 Web API：应用注册 - 当守护程序应用调用 Web API 时](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。
+> 要调用的 Web API 需要定义 *应用程序权限（应用角色）* ，而不是委托的权限。 有关如何公开此类 API 的详细信息，请参阅[受保护的 Web API：应用注册 - 当守护程序应用调用 Web API 时](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。
 
 守护程序应用程序需要获得租户管理员的预先许可，然后该应用程序才能调用 Web API。 租户管理员在同一“API 权限”页中提供此许可，  只需选择“向我们的组织授予管理员许可”即可 
 
@@ -50,5 +50,4 @@ ms.locfileid: "80885474"
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [守护程序应用 - 应用代码配置](./scenario-daemon-app-configuration.md)
+转到本方案中的下一篇文章 [应用代码配置](./scenario-daemon-app-configuration.md)。

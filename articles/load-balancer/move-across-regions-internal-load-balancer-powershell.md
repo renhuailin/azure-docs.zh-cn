@@ -6,18 +6,18 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 63083c4bd058c63e21a40f2d245312a3f010b696
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73a9356de555e33996b92f05c3bbbabb651f1c9f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808356"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014221"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>使用 PowerShell 将 Azure 内部负载均衡器移到另一个区域
 
 在多种情况下，可能需要将现有的内部负载均衡器从一个区域移到另一个区域。 例如，你可能想要创建另一个采用相同配置的内部负载均衡器进行测试。 你还可能想要在灾难恢复规划过程中将内部负载均衡器移到另一个区域。
 
-无法将 Azure 内部负载均衡器从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板导出内部负载均衡器的现有配置和虚拟网络。  然后，可将资源暂存在另一区域，方法是：将负载均衡器和虚拟网络导出到某个模板，根据目标区域修改参数，然后将该模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[将资源组导出到模板](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)
+无法将 Azure 内部负载均衡器从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板导出内部负载均衡器的现有配置和虚拟网络。  然后，可将资源暂存在另一区域，方法是：将负载均衡器和虚拟网络导出到某个模板，根据目标区域修改参数，然后将该模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[将资源组导出到模板](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)
 
 
 ## <a name="prerequisites"></a>必备条件
@@ -32,7 +32,7 @@ ms.locfileid: "84808356"
 
 - 请验证 Azure 订阅是否允许在所用的目标区域中创建内部负载均衡器。 请联系支持部门，启用所需配额。
 
-- 确保订阅提供足够的资源，以便为此过程添加公共负载均衡器。  请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
+- 确保订阅提供足够的资源，以便为此过程添加公共负载均衡器。  请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>准备并移动
@@ -43,18 +43,18 @@ ms.locfileid: "84808356"
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-azure-powershell"></a>从 Azure PowerShell 导出虚拟网络模板并进行部署
 
-1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
-2.  使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0) 获取要移到目标区域的虚拟网络的资源 ID，并将其置于一个变量中：
+2.  使用 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0) 获取要移到目标区域的虚拟网络的资源 ID，并将其置于一个变量中：
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. 将源虚拟网络导出到执行 [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) 命令时所在的目录中的某个 .json 文件：
+3. 将源虚拟网络导出到执行 [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) 命令时所在的目录中的某个 .json 文件：
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -98,16 +98,16 @@ ms.locfileid: "84808356"
 
     ```
   
-7. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
+7. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     
     ```
-8.  如果你选择，则还可以更改** \<resource-group-name> json**文件中的其他参数，并且可以根据你的要求进行选择：
+8.  如果你选择，则还可以更改 **\<resource-group-name> json** 文件中的其他参数，并且可以根据你的要求进行选择：
 
-    * **地址空间**-在保存之前，可以通过修改**resources**  >  **addressSpace**节并更改** \<resource-group-name> json**文件中的**addressPrefixes**属性来更改 VNET 的地址空间：
+    * **地址空间**-在保存之前，可以通过修改 **resources**  >  **addressSpace** 节并更改 **\<resource-group-name> json** 文件中的 **addressPrefixes** 属性来更改 VNET 的地址空间：
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ ms.locfileid: "84808356"
 
         ```
 
-    * **子网**-子网名称和子网地址空间可以通过修改** \<resource-group-name> json**文件的**子网**部分来更改或添加。 可以通过更改 **name** 属性来更改子网的名称。 可以通过更改** \<resource-group-name> json**文件中的**addressPrefix**属性来更改子网地址空间：
+    * **子网**-子网名称和子网地址空间可以通过修改 **\<resource-group-name> json** 文件的 **子网** 部分来更改或添加。 可以通过更改 **name** 属性来更改子网的名称。 可以通过更改 **\<resource-group-name> json** 文件中的 **addressPrefix** 属性来更改子网地址空间：
 
         ```json
                 "subnets": [
@@ -158,7 +158,7 @@ ms.locfileid: "84808356"
                 ]
         ```
 
-         在** \<resource-group-name> json**文件中，若要更改地址前缀，必须在两个位置中进行编辑，上面列出的部分和下面列出的**类型**部分。  将 **addressPrefix** 属性更改为与上述某个节相匹配：
+         在 **\<resource-group-name> json** 文件中，若要更改地址前缀，必须在两个位置中进行编辑，上面列出的部分和下面列出的 **类型** 部分。  将 **addressPrefix** 属性更改为与上述某个节相匹配：
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -196,20 +196,20 @@ ms.locfileid: "84808356"
 
 9.  保存 \<resource-group-name>.json 文件。
 
-10. 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 在目标区域中为要部署的目标 VNET 创建资源组
+10. 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 在目标区域中为要部署的目标 VNET 创建资源组
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 \<resource-group-name>.json 文件部署到在上一步创建的资源组：
+11. 使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 \<resource-group-name>.json 文件部署到在上一步创建的资源组：
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     
     ```
-12. 若要验证是否已在目标区域创建这些资源，请使用 [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) 和 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)：
+12. 若要验证是否已在目标区域创建这些资源，请使用 [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) 和 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)：
     
     ```azurepowershell-interactive
 
@@ -224,19 +224,19 @@ ms.locfileid: "84808356"
     ```
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>从 Azure PowerShell 导出内部负载均衡器模板并进行部署
 
-1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. 使用 [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) 获取要移到目标区域的内部负载均衡器的资源 ID，并将其置于一个变量中：
+2. 使用 [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) 获取要移到目标区域的内部负载均衡器的资源 ID，并将其置于一个变量中：
 
     ```azurepowershell-interactive
     $sourceIntLBID = (Get-AzLoadBalancer -Name <source-internal-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. 将源内部负载均衡器配置导出到执行 [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) 命令时所在的目录中的某个 .json 文件：
+3. 将源内部负载均衡器配置导出到执行 [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) 命令时所在的目录中的某个 .json 文件：
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
@@ -263,7 +263,7 @@ ms.locfileid: "84808356"
              }
     ```
  
-6. 若要编辑上面移动的目标虚拟网络的值，你必须首先获取资源 ID，然后将其复制并粘贴到** \<resource-group-name> json**文件中。  若要获取 ID，请使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)：
+6. 若要编辑上面移动的目标虚拟网络的值，你必须首先获取资源 ID，然后将其复制并粘贴到 **\<resource-group-name> json** 文件中。  若要获取 ID，请使用 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)：
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -275,7 +275,7 @@ ms.locfileid: "84808356"
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupVNET-Move/providers/Microsoft.Network/virtualNetworks/myVNET2-Move
     ```
 
-7.  在** \<resource-group-name> json**文件中，粘贴变量中的**资源 ID**以替代目标虚拟网络 ID 的第二个参数中的**defaultValue** ，并确保将路径括在引号中：
+7.  在 **\<resource-group-name> json** 文件中，粘贴变量中的 **资源 ID** 以替代目标虚拟网络 ID 的第二个参数中的 **defaultValue** ，并确保将路径括在引号中：
    
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -291,7 +291,7 @@ ms.locfileid: "84808356"
              }
     ```
 
-8. 若要编辑将在其中移动内部负载均衡器配置的目标区域，请**在文件中的 \<resource-group-name> "** **资源**" 下更改 " **location** " 属性：
+8. 若要编辑将在其中移动内部负载均衡器配置的目标区域，请 **在文件中的 \<resource-group-name> "** **资源**" 下更改 " **location** " 属性：
 
     ```json
         "resources": [
@@ -306,7 +306,7 @@ ms.locfileid: "84808356"
                 },
     ```
 
-11. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
+11. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
 
     ```azurepowershell-interactive
 
@@ -315,7 +315,7 @@ ms.locfileid: "84808356"
     ```
 12. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
     
-    * **Sku** -可以通过更改**sku**  >  ** \<resource-group-name> json**文件中的 Sku**名称**属性，将配置中的内部负载均衡器的 sku 从标准更改为基本或基本到标准：
+    * **Sku** -可以通过更改 **sku**  >  **\<resource-group-name> json** 文件中的 Sku **名称** 属性，将配置中的内部负载均衡器的 sku 从标准更改为基本或基本到标准：
 
         ```json
         "resources": [
@@ -329,9 +329,9 @@ ms.locfileid: "84808356"
                 "tier": "Regional"
             },
         ```
-      若要详细了解基本和标准 sku 负载均衡器之间的区别，请参阅 [Azure 标准负载均衡器概述](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
+      若要详细了解基本和标准 sku 负载均衡器之间的区别，请参阅 [Azure 标准负载均衡器概述](./load-balancer-overview.md)
 
-    * **负载均衡规则**-你可以在配置中添加或删除负载均衡** \<resource-group-name> 规则，方法是在文件的** **loadBalancingRules**节中添加或删除条目：
+    * **负载均衡规则**-你可以在配置中添加或删除负载均衡 **\<resource-group-name> 规则，方法是在文件的** **loadBalancingRules** 节中添加或删除条目：
 
         ```json
         "loadBalancingRules": [
@@ -361,9 +361,9 @@ ms.locfileid: "84808356"
                     }
                 ]
         ```
-       有关负载均衡规则的详细信息，请参阅[什么是 Azure 负载均衡器？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。
+       有关负载均衡规则的详细信息，请参阅[什么是 Azure 负载均衡器？](./load-balancer-overview.md)。
 
-    * **探测器**-可以在配置中添加或删除负载均衡器的探测，方法是** \<resource-group-name> 在文件的**"**探测**" 部分中添加或删除条目：
+    * **探测器**-可以在配置中添加或删除负载均衡器的探测，方法是 **\<resource-group-name> 在文件的**"**探测**" 部分中添加或删除条目：
 
         ```json
         "probes": [
@@ -381,9 +381,9 @@ ms.locfileid: "84808356"
                     }
                 ],
         ```
-       有关 Azure 负载均衡器运行状况探测的详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
+       有关 Azure 负载均衡器运行状况探测的详细信息，请参阅[负载均衡器运行状况探测](./load-balancer-custom-probe-overview.md)
 
-    * **入站 nat 规则**-可以添加或删除负载均衡器的入站 nat 规则， ** \<resource-group-name> 方法是在文件**的**loadbalancer.inboundnatrules**部分中添加或删除条目：
+    * **入站 nat 规则**-可以添加或删除负载均衡器的入站 nat 规则， **\<resource-group-name> 方法是在文件** 的 **loadbalancer.inboundnatrules** 部分中添加或删除条目：
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ ms.locfileid: "84808356"
                     }
                 ]
         ```
-        若要完成添加或删除入站 NAT 规则，该规则必须在** \<resource-group-name> json**文件的末尾作为**类型**属性存在或删除：
+        若要完成添加或删除入站 NAT 规则，该规则必须在 **\<resource-group-name> json** 文件的末尾作为 **类型** 属性存在或删除：
 
         ```json
         {
@@ -429,16 +429,16 @@ ms.locfileid: "84808356"
             }
         }
         ```
-        有关入站 NAT 规则的详细信息，请参阅[什么是 Azure 负载均衡器？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。
+        有关入站 NAT 规则的详细信息，请参阅[什么是 Azure 负载均衡器？](./load-balancer-overview.md)。
     
 13. 保存 \<resource-group-name>.json 文件。
     
-10. 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 在目标区域为要部署的目标内部负载均衡器创建资源组。 在此过程中，也可以重复使用上述现有资源组：
+10. 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 在目标区域为要部署的目标内部负载均衡器创建资源组。 在此过程中，也可以重复使用上述现有资源组：
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 \<resource-group-name>.json 文件部署到在上一步创建的资源组：
+11. 使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 \<resource-group-name>.json 文件部署到在上一步创建的资源组：
 
     ```azurepowershell-interactive
 
@@ -446,7 +446,7 @@ ms.locfileid: "84808356"
     
     ```
 
-12. 若要验证是否已在目标区域创建这些资源，请使用 [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) 和 [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0)：
+12. 若要验证是否已在目标区域创建这些资源，请使用 [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) 和 [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0)：
     
     ```azurepowershell-interactive
 
@@ -462,7 +462,7 @@ ms.locfileid: "84808356"
 
 ## <a name="discard"></a>弃用 
 
-部署后，如果你想要重新开始部署或丢弃目标中的虚拟网络和负载均衡器，请删除在目标中创建的资源组，这样就会删除已移动的虚拟网络和负载均衡器。  若要删除资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
+部署后，如果你想要重新开始部署或丢弃目标中的虚拟网络和负载均衡器，请删除在目标中创建的资源组，这样就会删除已移动的虚拟网络和负载均衡器。  若要删除资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
 
 ```azurepowershell-interactive
 
@@ -472,7 +472,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## <a name="clean-up"></a>清除
 
-若要提交所做的更改并完成 NSG 的移动，并删除源 NSG 或资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) 或 [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) 和 [Remove-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0)
+若要提交所做的更改并完成 NSG 的移动，并删除源 NSG 或资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) 或 [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) 和 [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0)
 
 ```azurepowershell-interactive
 
@@ -494,5 +494,5 @@ Remove-AzVirtualNetwork -Name <virtual-network-name> -ResourceGroupName <resourc
 在本教程中，你已将一个 Azure 内部负载均衡器从一个区域移到了另一个区域，并清理了源资源。  若要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅：
 
 
-- [将资源移到新资源组或订阅中](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [将 Azure VM 移到另一区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [将资源移到新资源组或订阅中](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [将 Azure VM 移到另一区域](../site-recovery/azure-to-azure-tutorial-migrate.md)

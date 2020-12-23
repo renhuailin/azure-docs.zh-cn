@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 9541320f65060a0b1f2b5c84a131c08e92554e9e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776538"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351701"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>编辑知识库中的 QnA 对
 
@@ -56,11 +56,11 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
     > [!div class="mx-imgBorder"]
     > ![使用富文本编辑器编写文本格式并将其设置为 markdown。](../media/qnamaker-how-to-edit-kb/rich-text-display-image.png)
 
-    |丰富文本编辑器功能|键盘快捷方式|
+    |丰富文本编辑器功能|键盘快捷键|
     |--|--|
     |在富文本编辑器和 markdown 之间切换。 `</>`|Ctrl+M|
     |Bold. **B**|CTR + LB|
-    |** _I_斜体，用斜体显示**|CTRL+I|
+    |**_I_ 斜体，用斜体显示**|CTRL+I|
     |无序列表||
     |有序列表||
     |段落样式||
@@ -87,7 +87,7 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
 
 ## <a name="delete-a-qna-pair"></a>删除 QnA 对
 
-要删除 QnA，请单击 QnA 行最右侧的**** 删除图标。 这是一项永久性操作。 无法撤消。 请考虑在删除对之前从“发布”**** 页面导出知识库。
+要删除 QnA，请单击 QnA 行最右侧的删除图标。 这是一项永久性操作。 无法撤消。 请考虑在删除对之前从“发布”页面导出知识库。
 
 ![删除 QnA 对](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -128,11 +128,11 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
 
 使用[文本](#add-an-editorial-qna-set)格式的答案，您可以像作者一样，使用格式设置工具栏快速选择并设置文本格式。
 
-当你需要自动生成内容来创建要作为 CI/CD 管道的一部分导入的知识库或用于[批处理测试](../Quickstarts/batch-testing.md)时， [Markdown](../reference-markdown-format.md)是一个更好的工具。
+当你需要自动生成内容来创建要作为 CI/CD 管道的一部分导入的知识库或用于[批处理测试](../index.yml)时， [Markdown](../reference-markdown-format.md)是一个更好的工具。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [针对知识库进行协作](./collaborate-knowledge-base.md)
+> [针对知识库进行协作](../index.yml)
 
 * [管理 QnA Maker 使用的 Azure 资源](set-up-qnamaker-service-azure.md)

@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 通信服务作为事件网格事件
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mikben
-ms.openlocfilehash: fb37dfe9927c02711f4ab1b01cd89247059b27f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f84146a0513d02484f8f84560e04a977fb3ef373
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342711"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145833"
 ---
 # <a name="azure-communication-services-as-an-event-grid-source"></a>作为事件网格源的 Azure 通信服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "91342711"
 
 ### <a name="available-event-types"></a>可用事件类型
 
-事件网格使用[事件订阅](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)将事件消息路由到订阅方。 
+事件网格使用[事件订阅](./concepts.md#event-subscriptions)将事件消息路由到订阅方。 
 
 Azure 通信服务发出以下事件类型：
 
@@ -31,9 +31,9 @@ Azure 通信服务发出以下事件类型：
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft.Communication.SMSReceived                         | 当通过与通信服务关联的电话号码收到短信时发布。 |
 | Microsoft.Communication.SMSDeliveryReportReceived           | 当收到通信服务发送的短信的传递报告时发布。     |
-| ChatMessageReceived *                | 当用户在其所属的聊天线程中收到消息时发布。        |
-| ChatMessageEdited *                   | 当在用户所属的聊天线程中编辑消息时发布。                |
-| ChatMessageDeleted *                  | 当在用户所属的聊天线程中删除消息时发布。               |
+| Microsoft.Communication.ChatMessageReceived*                | 当用户在其所属的聊天线程中收到消息时发布。        |
+| Microsoft.Communication.ChatMessageEdited*                   | 当在用户所属的聊天线程中编辑消息时发布。                |
+| Microsoft.Communication.ChatMessageDeleted*                  | 当在用户所属的聊天线程中删除消息时发布。               |
 | Microsoft.Communication.ChatThreadCreatedWithUser           | 当用户在聊天线程创建期间添加为成员时发布。           |
 | Microsoft.Communication.ChatThreadWithUserDeleted           | 当删除用户所属的聊天线程时发布。                           |
 | Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser  | 当更新用户所属的聊天线程的属性时发布。              |
@@ -41,11 +41,11 @@ Azure 通信服务发出以下事件类型：
 | Microsoft.Communication.ChatMemberRemovedFromThreadWithUser | 当用户从聊天线程中删除时发布。                                         |
 
 
-* 请确保在 "发送消息" API 调用中提供 "发送方名称"，以便触发这些事件。
+*请确保在“发送消息”API 调用中提供“发送方名称”，以便触发这些事件。
 
 ## <a name="event-subjects"></a>事件主题
 
-所有通信服务事件的 `subject` 字段都标识事件的目标用户、电话号码或实体。 公共前缀用于允许进行简单[事件网格筛选](https://docs.microsoft.com/azure/event-grid/event-filtering)。
+所有通信服务事件的 `subject` 字段都标识事件的目标用户、电话号码或实体。 公共前缀用于允许进行简单[事件网格筛选](./event-filtering.md)。
 
 | 主题前缀                              | 通信服务实体 |
 | ------------------------------------------- | ---------------------------- |
@@ -339,12 +339,12 @@ Azure 通信服务发出以下事件类型：
 
 ## <a name="tutorials"></a>教程
 
-| 标题 | 说明 |
+| 标题 | 描述 |
 |---------|---------|
 | [快速入门：处理短信事件](../communication-services/quickstarts/telephony-sms/handle-sms-events.md) | 演示如何使用事件网格订阅 SMS 事件。   |
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](https://docs.microsoft.com/azure/event-grid/overview)
-* 有关 Azure 事件网格概念的简介，请参阅[事件网格中的概念？](https://docs.microsoft.com/azure/event-grid/concepts)
-* 有关 Azure 事件网格系统主题的简介，请参阅 [Azure 事件网格中的系统主题？](https://docs.microsoft.com/azure/event-grid/system-topics)
+* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](./overview.md)
+* 有关 Azure 事件网格概念的简介，请参阅[事件网格中的概念？](./concepts.md)
+* 有关 Azure 事件网格系统主题的简介，请参阅 [Azure 事件网格中的系统主题？](./system-topics.md)

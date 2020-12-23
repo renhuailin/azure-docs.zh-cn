@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563340"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173678"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中设置自定义域
 
@@ -29,11 +29,11 @@ Azure 静态 Web 应用默认提供自动生成的域名。 本文介绍如何�
 
 有几种不同类型的 DNS 配置可用于应用程序。
 
-| 如果你想要                                 | 则                                                |
-| -----------------------------------------------| --------------------------------------------------- |
-| 支持 `www.example.com` 或`blog.example.net`| [映射 CNAME 记录](#map-a-cname-record)           |
-| 支持 `example.com`                          | [配置根域](#configure-a-root-domain) |
-| 将所有子域指向 `www.example.com`      | [映射通配符](#map-a-wildcard-domain)            |
+| 如果你想要 | 则 |
+|--|--|
+| 支持 `www.example.com` 或 `blog.example.net` | [映射 CNAME 记录](#map-a-cname-record) |
+| 支持 `example.com` | [配置根域](#configure-a-root-domain) |
+| 将所有子域指向 `www.example.com` | [映射通配符](#map-a-wildcard-domain) |
 
 ## <a name="map-a-cname-record"></a>映射 CNAME 记录
 
@@ -47,13 +47,15 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 1. 在菜单中单击“自定义域”。
 
+1. 单击 " **添加** " 按钮
+
 1. 在“自定义域”窗口中，将 URL 复制到“值”字段。
 
 ### <a name="configure-dns-provider"></a>配置 DNS 提供程序
 
 1. 请登录到域提供商的网站。
 
-2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
+2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。   
 
 3. 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
 
@@ -63,7 +65,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 4. 使用以下值创建新的 CNAME 记录...
 
-    | 设置             | 值                     |
+    | 设置             | “值”                     |
     | ------------------- | ------------------------- |
     | 类型                | CNAME                     |
     | 主机                | www                       |
@@ -98,7 +100,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 1. 请登录到域提供商的网站。
 
-2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
+2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。   
 
 3. 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
 
@@ -108,7 +110,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 4. 使用以下值创建新的 CNAME 记录，并将 `www.example.com` 替换为自定义域名。
 
-    | 设置 | 值                  |
+    | 设置 | “值”                  |
     | ------- | ---------------------- |
     | 类型    | CNAME                  |
     | 主机    | \*                     |

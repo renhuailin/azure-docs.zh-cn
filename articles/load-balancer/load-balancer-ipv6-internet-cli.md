@@ -9,17 +9,17 @@ keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001567"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696857"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 创建使用 IPv6 的公共负载均衡器
 
@@ -58,7 +58,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 本示例在 PowerShell 命令窗口中运行 Azure CLI 工具。 此处没有使用 Azure PowerShell cmdlet，而是使用 PowerShell 的脚本功能来改善可读性与重用性。
 
-1. 按照链接的文章中的步骤[安装和配置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，然后登录到 Azure 帐户。
+1. 按照链接的文章中的步骤[安装和配置 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)，然后登录到 Azure 帐户。
 
 2. 设置要与 Azure CLI 命令结合使用的 PowerShell 变量：
 
@@ -284,7 +284,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     ```
 
     > [!WARNING]
-    > 本示例为 VM 使用了明文用户名和密码。 以明文形式使用这些凭据时请保持适当的谨慎。 有关在 PowerShell 中更安全处理凭据的方法，请参阅 [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) cmdlet。
+    > 本示例为 VM 使用了明文用户名和密码。 以明文形式使用这些凭据时请保持适当的谨慎。 有关在 PowerShell 中更安全处理凭据的方法，请参阅 [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential) cmdlet。
 
 2. 创建可用性集：
 
@@ -299,5 +299,3 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
-
-

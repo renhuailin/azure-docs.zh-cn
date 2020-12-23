@@ -1,30 +1,30 @@
 ---
-title: Synapse SQL 池的数据加载最佳做法
-description: 有关使用 Synapse SQL 池加载数据的建议和性能优化。
+title: 专用 SQL 池的数据加载最佳做法
+description: 使用 Azure Synapse Analytics 中的专用 SQL 池加载数据的建议和性能优化。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441215"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653055"
 ---
-# <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>使用 Synapse SQL 池加载数据的最佳做法
+# <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的专用 SQL 池加载数据的最佳做法
 
-在本文中，你将了解有关使用 SQL 池加载数据的建议和性能优化。
+在本文中，你将了解有关使用专用 SQL 池加载数据的建议和性能优化。
 
 ## <a name="preparing-data-in-azure-storage"></a>在 Azure 存储中准备数据
 
-若要尽量减少延迟，请将你的存储层级和 SQL 池置于一起。
+若要最大程度地减少延迟，请将存储层和专用 SQL 池归置。
 
 将数据导出为 ORC 文件格式时，如果存在较大的文本列，可能会收到“Java 内存不足”错误。 若要解决此限制方面的问题，请仅导出列的一个子集。
 
@@ -34,23 +34,23 @@ ms.locfileid: "89441215"
 
 ## <a name="running-loads-with-enough-compute"></a>使用足够的计算资源运行负载
 
-若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果预期的加载作业较大，可以考虑在加载前纵向扩展 SQL 池。
+若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果需要较大的加载作业，请考虑在负载之前向上扩展专用的 SQL 池。
 
 若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分类到特定的工作负荷组。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 负载与用户的工作负荷组一起运行。  
 
 ### <a name="example-of-creating-a-loading-user"></a>创建加载用户的示例
 
-此示例将创建一个分类到特定工作负荷组的加载用户。 第一步是**连接到主服务器**并创建登录名。
+此示例将创建一个分类到特定工作负荷组的加载用户。 第一步是 **连接到主服务器** 并创建登录名。
 
 ```sql
    -- Connect to master
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-连接到 SQL 池并创建一个用户。 以下代码假定你连接到名为 mySampleDataWarehouse 的数据库。 它展示了如何创建一个名为“loader”的用户，并授予该用户使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)创建表和进行加载的权限。 然后，它将该用户分类到包含最多资源的 DataLoads 工作负荷组。 
+连接到专用 SQL 池并创建用户。 以下代码假定你连接到名为 mySampleDataWarehouse 的数据库。 它展示了如何创建一个名为“loader”的用户，并授予该用户使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)创建表和进行加载的权限。 然后，它将该用户分类到包含最多资源的 DataLoads 工作负荷组。 
 
 ```sql
-   -- Connect to the SQL pool
+   -- Connect to the dedicated SQL pool
    CREATE USER loader FOR LOGIN loader;
    GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
    GRANT INSERT ON <yourtablename> TO loader;
@@ -60,7 +60,7 @@ ms.locfileid: "89441215"
    
    CREATE WORKLOAD GROUP DataLoads
    WITH ( 
-      MIN_PERCENTAGE_RESOURCE = 100
+       MIN_PERCENTAGE_RESOURCE = 100
        ,CAP_PERCENTAGE_RESOURCE = 100
        ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
     );
@@ -71,12 +71,15 @@ ms.locfileid: "89441215"
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>这是将 SQL 池的100% 资源分配给单个负载的极端示例。 这将为你最大并发为1。 请注意，这应该只用于初始加载，在这种情况下，需要使用自己的配置来创建额外的工作负荷组，以便在工作负荷中权衡资源。 
 
 若要使用加载工作负荷组的资源运行加载，请以 loader 身份登录并运行该加载。
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>允许多个用户加载 (PolyBase)
 
-通常需要允许多个用户将数据加载到 SQL 池中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) 进行加载需要数据库的“控制”权限。  “控制”权限允许对所有架构进行控制性访问。
+通常，需要让多个用户将数据加载到专用的 SQL 池中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) 进行加载需要数据库的“控制”权限。  “控制”权限允许对所有架构进行控制性访问。
 
 可能不需要让所有加载用户都具有对所有架构的控制访问权限。 若要限制权限，请使用 DENY CONTROL 语句。
 
@@ -91,9 +94,9 @@ ms.locfileid: "89441215"
 
 ## <a name="loading-to-a-staging-table"></a>加载到临时表
 
-若要尽量提高将数据移到 SQL 池表中的加载速度，请将数据加载到临时表中。  将临时表定义为堆，并将轮循机制用于分发选项。
+要实现将数据移动到专用 SQL 池表的最快加载速度，请将数据加载到临时表中。  将临时表定义为堆，并将轮循机制用于分发选项。
 
-可以认为，加载通常是一个两步的过程：首先将数据加载到临时表中，然后将数据插入生产 SQL 池表中。 如果生产表使用哈希分发，在在使用哈希分发来定义临时表的情况下，加载和插入的总时间可能会更短。
+请注意，加载通常是一个两步过程，在此过程中，首先将数据加载到临时表，然后将数据插入生产专用 SQL 池表中。 如果生产表使用哈希分发，在在使用哈希分发来定义临时表的情况下，加载和插入的总时间可能会更短。
 
 加载到临时表需要的时间较长，但第二步将行插入到生产表中不会导致数据跨分布区移动。
 
@@ -111,7 +114,7 @@ ms.locfileid: "89441215"
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 时增加批大小
 
-使用 COPY 语句进行加载将为 SQL 池提供最高吞吐量。 如果无法使用 COPY 进行加载，并且必须使用 [SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，则应考虑增加批大小以提高吞吐量。
+通过 COPY 语句加载将提供具有专用 SQL 池的最高吞吐量。 如果无法使用 COPY 进行加载，并且必须使用 [SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，则应考虑增加批大小以提高吞吐量。
 
 > [!TIP]
 > 10 万行到 1 百万行之间的批大小是建议用于确定最佳批大小容量的基线。
@@ -175,6 +178,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 COPY 语句或 PolyBase 的详细信息，请参阅设计提取、加载和转换 (ELT) 过程中，请参阅 [为 Azure Synapse Analytics 设计 ELT](design-elt-data-loading.md)。
+- 若要详细了解在设计提取、加载和转换 (ELT) 过程时如何使用 COPY 语句或 PolyBase，请参阅[为 Azure Synapse Analytics 设计 ELT](design-elt-data-loading.md)。
 - 如需加载教程，请参阅[使用 COPY 语句将数据从 Azure Blob 存储加载到 Synapse SQL](load-data-from-azure-blob-storage-using-polybase.md)。
 - 若要监视数据加载，请参阅[使用 DMV 监视工作负荷](sql-data-warehouse-manage-monitor.md)。

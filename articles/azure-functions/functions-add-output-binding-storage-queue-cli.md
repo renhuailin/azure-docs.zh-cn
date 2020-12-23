@@ -5,20 +5,37 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 3e84db3aa13ae77f931a46683f0c5e4572f6ce44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d0d559579e841553e04c26bf4dcc78934de3e95
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87852627"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920196"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>使用命令行工具将 Azure Functions 连接到 Azure 存储
 
-本文介绍如何将 Azure 存储队列与在[前一篇快速入门](functions-create-first-azure-function-azure-cli.md)中创建的函数和存储帐户相集成。 可以使用一个输出绑定来实现这种集成。该绑定可将 HTTP 请求中的数据写入队列中的消息。  除了在前一篇快速入门中提到的几美分费用以外，完成本文不会产生其他费用。 有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
+本文介绍如何将 Azure 存储队列与在前一篇快速入门中创建的函数和存储帐户相集成。 可以使用一个输出绑定来实现这种集成。该绑定可将 HTTP 请求中的数据写入队列中的消息。  除了在前一篇快速入门中提到的几美分费用以外，完成本文不会产生其他费用。 有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
 ## <a name="configure-your-local-environment"></a>配置本地环境
 
-在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](functions-create-first-azure-function-azure-cli.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。
+::: zone pivot="programming-language-csharp"  
+在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](create-first-function-cli-csharp.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。  
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](create-first-function-cli-node.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。  
+::: zone-end   
+::: zone pivot="programming-language-java"  
+在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](create-first-function-cli-java.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。  
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](create-first-function-cli-typescript.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。  
+::: zone-end   
+::: zone pivot="programming-language-python"  
+在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](create-first-function-cli-python.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。  
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](create-first-function-cli-powershell.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。  
+::: zone-end   
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
@@ -101,13 +118,13 @@ mvn azure-functions:deploy
 
     # <a name="browser"></a>[浏览器](#tab/browser)
     
-    将 publish 命令的输出中显示的完整“调用 URL”复制到浏览器的地址栏，并追加查询参数 `&name=Functions`。  浏览器显示的输出应与本地运行函数时显示的输出类似。
+    将 publish 命令的输出中显示的完整“调用 URL”复制到浏览器的地址栏，并追加查询参数 `&name=Functions`。 浏览器显示的输出应与本地运行函数时显示的输出类似。
 
     ![在 Azure 上运行函数后浏览器中的输出](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
     # <a name="curl"></a>[curl](#tab/curl)
     
-    结合“调用 URL”运行 [`curl`](https://curl.haxx.se/)，并追加参数 `&name=Functions`。  该命令的输出应是文本“Hello Functions”。
+    结合“调用 URL”运行 [`curl`](https://curl.haxx.se/)，并追加参数 `&name=Functions`。 该命令的输出应是文本“Hello Functions”。
     
     ![使用 CURL 在 Azure 上运行函数后的输出](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 
@@ -129,33 +146,41 @@ az group delete --name AzureFunctionsQuickstart-rg
 
 + [使用 Azure Functions Core Tools](functions-run-local.md)  
 
++ [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
+
 ::: zone pivot="programming-language-csharp"  
-+ [C# 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=csharp)。
++ [C# 中完整 Function 项目的示例](/samples/browse/?products=azure-functions&languages=csharp)。
 
 + [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)  
+
+[previous-quickstart]: create-first-function-cli-csharp.md
+
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [JavaScript 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=javascript)。
 
 + [Azure Functions JavaScript 开发人员指南](functions-reference-node.md)  
+
+[previous-quickstart]: create-first-function-cli-javascript.md
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 + [TypeScript 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=typescript)。
 
 + [Azure Functions TypeScript 开发人员指南](functions-reference-node.md#typescript)  
+
+[previous-quickstart]: create-first-function-cli-typescript.md
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 + [Python 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=python)。
 
 + [Azure Functions Python 开发人员指南](functions-reference-python.md)  
+
+[previous-quickstart]: create-first-function-cli-python.md
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [PowerShell 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=azurepowershell)。
 
 + [Azure Functions PowerShell 开发人员指南](functions-reference-powershell.md) 
+
+[previous-quickstart]: create-first-function-cli-powershell.md
 ::: zone-end
-+ [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-
-+ [Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)
-
-+ [估算消耗计划成本](functions-consumption-costs.md) 

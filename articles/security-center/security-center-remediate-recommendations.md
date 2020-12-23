@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569129"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637076"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>在 Azure 安全中心修正建议
 
@@ -36,11 +36,18 @@ ms.locfileid: "89569129"
 
 1. 完成后，将显示一条通知，告知你修正是否成功。
 
-## <a name="quick-fix-remediation"></a>“快速修复”修正<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>快速修复修补<a name="one-click"></a>
 
-快速修复使你能够针对多个资源快速修正某个建议。 它仅可用于特定的建议。 快速修复可简化修正，使你能够快速增加你的安全分数，提高环境的安全性。
+快速修复可简化修正，并使你能够快速增加安全分数，提高环境的安全性。
 
-若要实现“快速修复”修正，请执行以下操作：
+快速修复使你能够快速修正针对多个资源的建议。 
+
+> [!TIP]
+> 快速修复仅适用于特定的建议。 若要查找具有 "快速修复" 选项的建议，请使用建议列表顶部的 "专用筛选器"：
+> 
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="使用建议列表上方的筛选器来查找具有 &quot;快速修复&quot; 选项的建议":::
+
+若要实现快速修复修正：
 
 1. 在带有“快速修复!”标签的建议的列表中， 单击建议。
 
@@ -56,7 +63,7 @@ ms.locfileid: "89569129"
     ![快速修复](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
     > [!NOTE]
-    > 影响在单击“修正”后打开的“修正资源”窗口的灰色框中列出。 其中列出了在继续进行“快速修复”修正时会发生哪些更改。
+    > 影响在单击“修正”后打开的“修正资源”窗口的灰色框中列出。 其中列出了在继续进行快速修复修正时所发生的更改。
 
 1. 请插入相关参数（如有必要），并批准修正。
 
@@ -65,7 +72,7 @@ ms.locfileid: "89569129"
 
 1. 完成后，将显示一条通知，告知你修正是否成功。
 
-## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>活动日志中的“快速修复”修正日志记录 <a name="activity-log"></a>
+## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>活动日志中的快速修复修补日志记录 <a name="activity-log"></a>
 
 修正操作使用模板部署或 REST PATCH API 调用，将配置应用于资源。 这些操作记录在 [Azure 活动日志](../azure-resource-manager/management/view-activity-logs.md)中。
 

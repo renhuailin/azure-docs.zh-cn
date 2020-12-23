@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0e5d67e00ee56b5c4006a8422c713e3cabb32bfc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536166"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454756"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Discovery Benefits SSO 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88536166"
 * 让用户使用其 Azure AD 帐户自动登录到 Discovery Benefits SSO。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -78,7 +78,7 @@ ms.locfileid: "88536166"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本  **SAML** 配置”部分，应用程序已预配置为采用“ **IDP**”发起模式，并且已在 Azure 中预先填充了所需的 URL。   用户需要单击“ **保存**”按钮来保存配置。 
+1. 在基本 SAML 配置  部分，应用程序在 **IDP** 发起的模块中进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
 1. Discovery Benefits SSO 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
@@ -86,7 +86,7 @@ ms.locfileid: "88536166"
 
     a. 单击“编辑”图标，以打开“唯一用户标识符(名称 ID)”对话框   。
 
-    ![Discovery Benefits SSO 配置](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![显示“用户属性和声明”部分的屏幕截图，其中已选择右侧的“所需声明”省略号。](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Discovery Benefits SSO 配置](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "88536166"
 
     f. 我们已自动填充其他声明，这些声明是 SSO 配置（`SSOInstance` 和 `SSOID`）所需的。 使用“编辑”图标，按组织要求映射值。 
 
-    ![Discovery Benefits SSO 配置](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    ![显示“用户属性和声明”的屏幕截图，其中突出显示了“SSOInstance”和“SSOID”值。](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -149,21 +149,20 @@ ms.locfileid: "88536166"
 
 ### <a name="create-discovery-benefits-sso-test-user"></a>创建 Discovery Benefits SSO 测试用户
 
-本部分的内容是在 Discovery Benefits SSO 中创建名为 Britta Simon 的用户。 与  [Discovery Benefits SSO 支持团队](mailto:Jsimpson@DiscoveryBenefits.com)合作，在 Discovery Benefits SSO 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分的内容是在 Discovery Benefits SSO 中创建名为 Britta Simon 的用户。 与 [Discovery Benefits SSO 支持团队](mailto:Jsimpson@DiscoveryBenefits.com)协作，在 Discovery Benefits SSO 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Discovery Benefits SSO”磁贴时，应会自动登录到设置了 SSO 的 Discovery Benefits SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Discovery Benefits SSO”磁贴时，应会自动登录到设置了 SSO 的 Discovery Benefits SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Discovery Benefits SSO](https://aad.portal.azure.com/)
-

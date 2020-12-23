@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
-ms.openlocfilehash: d93cd2efe49f819c8adeb53674b6d4f465312e06
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5a2169db47ca5a6adcddbcc9558161370b896a62
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527411"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Smart Global Governance 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88527411"
 * 允许用户使用其 Azure AD 帐户自动登录到 Smart Global Governance。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88527411"
 
 Smart Global Governance 支持 SP 和 IDP 发起的 SSO。
 
-配置 Smart Global Governance 后，即可强制实施会话控制，从而实时保护组织的敏感数据以防外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Smart Global Governance 后，即可强制实施会话控制，从而实时保护组织的敏感数据以防外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-smart-global-governance-from-the-gallery"></a>从库中添加 Smart Global Governance
 
@@ -140,24 +140,24 @@ Smart Global Governance 支持 SP 和 IDP 发起的 SSO。
 
 ### <a name="create-a-smart-global-governance-test-user"></a>创建 Smart Global Governance 测试用户
 
-与  [Smart Global Governance 支持团队](mailto:support.tech@smartglobal.com)协作，将名为“B.Simon”的用户添加到 Smart Global Governance。 使用单一登录前，必须先创建并激活用户。
+与 [Smart Global Governance 支持团队](mailto:support.tech@smartglobal.com)协作，在 Smart Global Governance 中添加名为 B.Simon 的用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用访问面板测试 Azure AD SSO 配置。
 
-在访问面板中选择“Smart Global Governance”磁贴时，应当会自动登录到设置了 SSO 的 Smart Global Governance 实例。 有关访问面板的详细信息，请参阅[访问面板简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在访问面板中选择“Smart Global Governance”磁贴时，应当会自动登录到设置了 SSO 的 Smart Global Governance 实例。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Smart Global Governance](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Smart Global Governance](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Smart Global Governance](/cloud-app-security/proxy-intro-aad)

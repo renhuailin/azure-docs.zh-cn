@@ -3,15 +3,21 @@ title: 在 Java Web 项目中排查 Application Insights 问题
 description: 故障排除指南 - 使用 Application Insights 监视实时 Java 应用。
 ms.topic: conceptual
 ms.date: 03/14/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.author: jgol
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372512"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607892"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK Application Insights 疑难解答和问答
+
+> [!IMPORTANT]
+> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
+
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
 
 ## <a name="build-errors"></a>生成错误
@@ -27,19 +33,19 @@ ms.locfileid: "87372512"
 * 确认 xml 文件中没有 `<DisableTelemetry>true</DisableTelemetry>` 节点。
 * 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。 请参阅 [full list of firewall exceptions](./ip-addresses.md)（防火墙例外的完整列表）
 * 在 Microsoft Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
-* [Turn on logging](#debug-data-from-the-sdk)通过在 `<SDKLogger />` ApplicationInsights.xml 文件（在项目的 resources 文件夹中）中的根节点下添加一个元素来打开日志记录，并检查是否有任何可疑日志以 AI： INFO/警告/错误开头的条目。 
+* 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，[打开记录功能](#debug-data-from-the-sdk)，并检查条目的前面是否带有 AI：INFO/WARN/ERROR 以发现任何可疑日志。 
 * 查看控制台输出消息中是否包含“已成功找到配置文件”语句，确保 Java SDK 成功加载正确的 ApplicationInsights.xml 文件。
 * 如果找不到配置文件，请检查输出消息来确定在何处搜索配置文件，并确保 ApplicationInsights.xml 位在这些搜索位置之一。 根据经验法则，可以将配置文件放置在 Application Insights SDK JAR 的附近。 例如：在 Tomcat 中，这可能是 WEB-INF/classes 文件夹。 在开发期间，可以将 ApplicationInsights.xml 放在 Web 项目的 resources 文件夹中。
 * 另请查看 [GitHub 问题页](https://github.com/Microsoft/ApplicationInsights-Java/issues)，了解 SDK 的已知问题。
 * 请确保使用相同版本的 Application Insights Core、Web、代理和日志记录追加器以避免任何版本冲突问题。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
-* 是否达到了数据点的每月配额？ 打开 "设置/配额和定价" 以了解。如果是这样，您可以升级您的计划或支付额外的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
+* 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
 * 最近是否升级了 SDK？ 请确保项目目录内仅存在唯一 SDK jar。 不应存在两个不同版本的 SDK。
 * 是否正在查看正确的 AI 资源？ 请将应用程序的 iKey 与预期遥测的资源的 iKey 相匹配。 它们应相同。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
-* 打开“使用情况和预估成本”页面并检查[采样](./sampling.md)是否正在进行。 （100% 传输意味着采样未处于操作中。）可以将 Application Insights 服务设置为仅接受来自应用的一小部分遥测数据。 这有助于保持在每月的遥测配额范围内。
+* 打开“使用情况和预估成本”页面并检查[采样](./sampling.md)是否正在进行。 （如果传输百分比为 100%，表示当前未执行采样。）可将 Application Insights 服务设置为只接受来自应用的一部分遥测数据。 这有助于保持在每月的遥测配额范围内。
 * 是否已启用 SDK 采样？ 如果是，将按为所有适用类型指定的速率对数据进行采样。
 * 是否正在运行较旧版本的 Java SDK？ 从版本 2.0.1 开始，我们引入了容错机制以处理间歇性网络和后端故障，以及本地驱动器上的数据持久性。
 * 是否由于过度遥测而受到限制？ 如果启用“信息日志记录”，会看到日志消息“应用受到限制”。 当前的限制为 32000 个遥测项/秒。
@@ -52,12 +58,11 @@ ms.locfileid: "87372512"
 ## <a name="no-usage-data"></a>无使用情况数据
 **我看到了请求和响应时间的相关数据，但没有看到页面视图、浏览器或用户数据。**
 
-已成功将应用设置为从服务器发送遥测数据。 下一步是[将网页设置为从 Web 浏览器发送遥测数据][usage]。
+已成功将应用设置为从服务器发送遥测数据。 现在，下一步是[将网页设置为从 Web 浏览器发送遥测数据][usage]。
 
 或者，如果客户端是[手机或其他设备][platforms]中的应用，可以从该处发送遥测数据。
 
 使用相同的检测密钥来设置客户端和服务器遥测。 数据将出现在相同的 Application Insights 资源中，可以将来自客户端和服务器的事件相关联。
-
 
 ## <a name="disabling-telemetry"></a>禁用遥测
 **如何禁用遥测数据收集？**
@@ -82,10 +87,10 @@ ms.locfileid: "87372512"
 如果使用 XML 方法，则必须在更改值后重新启动应用程序。
 
 ## <a name="changing-the-target"></a>更改目标
-**如何更改项目向其发送数据的 Azure 资源？**
+**如何更改项目要将数据发送到的 Azure 资源？**
 
-* [获取新资源的检测密钥][java]
-* 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。********
+* [获取新资源的检测密钥。][java]
+* 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。 
 * 如果已将检测密钥配置为环境变量，请使用新 iKey 更新环境变量的值。
 * 否则，请更新项目的 resources 文件夹中 ApplicationInsights.xml 内的密钥。
 
@@ -152,7 +157,7 @@ java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 ```
 
 ## <a name="the-azure-start-screen"></a>Azure 开始屏幕
-**我正在查看[Azure 门户](https://portal.azure.com)。地图是否会告诉我应用的相关内容？**
+**我正在查看 [Azure 门户](https://portal.azure.com)。地图是否告知有关应用的信息？**
 
 不会，它只显示世界各地的 Azure 服务器的运行状况。
 
@@ -168,7 +173,7 @@ java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com 和 f5.services.visualstudio.com。
 
 ## <a name="data-retention"></a>数据保留
-**数据在门户中保留多长时间？这是否安全？**
+**数据在门户中保留多长时间？是否安全？**
 
 请参阅[数据保留和隐私][data]。
 
@@ -178,9 +183,8 @@ Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.micr
 >[!NOTE]
 >如果为应用中的所有命名空间启用了调试级别日志记录，则所有执行中模块（包括重命名为 `com.microsoft.applicationinsights.core.dependencies.http` 的 `org.apache.http`）都将遵循它。 Application Insights 将无法为这些调用应用筛选，因为进行日志调用的是 Apache 库。 调试级别日志记录将生成大量日志数据，因此不建议在实时生产实例中使用。
 
-
 ## <a name="next-steps"></a>后续步骤
-**我设置了 Java server 应用的 Application Insights。我还可以做些什么？**
+**我为 Java 服务器应用设置了 Application Insights。接下来还可以做些什么？**
 
 * [监视网页的可用性][availability]
 * [监视网页的使用情况][usage]

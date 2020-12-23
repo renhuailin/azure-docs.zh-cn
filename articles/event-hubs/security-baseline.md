@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f47e9cb93b90c8a2401d1dfe6c0ff7800b0bcf27
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 9386b154148cf5b5b6b7cd0b43f5a4b4aa741059
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401123"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339687"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>事件中心的 Azure 安全基线
 
@@ -62,7 +62,7 @@ ms.locfileid: "89401123"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -72,7 +72,7 @@ ms.locfileid: "89401123"
 
 **指导**：为了防范分布式拒绝服务 (DDoS) 攻击，请在与事件中心关联的虚拟网络上启用 DDoS 保护标准。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
-如何配置 DDoS 防护：[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](../virtual-network/manage-ddos-protection.md)
+如何配置 DDoS 防护：[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](../ddos-protection/manage-ddos-protection.md)
 
 详细了解 Azure 安全中心集成的威胁情报： https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
@@ -114,7 +114,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -230,7 +230,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
-**指导**：分析和监视日志中的异常行为，并定期查看与事件中心相关的结果。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以将数据启用并加入 Azure Sentinel 或第三方 SIEM。
+**指导**：分析和监视日志中的异常行为，并定期查看与事件中心相关的结果。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
  
 
 有关 Log Analytics 工作区的详细信息： https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
@@ -247,7 +247,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **指导**：在 Azure Monitor 中，配置与活动日志和事件中心诊断设置中的 Azure 事件中心相关的日志，以将日志发送到要查询的 Log Analytics 工作区或要进行长期存档存储的存储帐户。 使用 Log Analytics 工作区针对安全日志和事件中的异常活动创建警报。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。 
+或者，可以启用数据并将其载入 Azure Sentinel。 
 
 了解 Azure 活动日志： https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
@@ -369,7 +369,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **责任**：客户
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
 
 **指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。 如需其他日志记录，请将 Azure 安全中心风险检测警报发送到 Azure Monitor 中，并使用操作组配置自定义警报/通知。
 
@@ -397,7 +397,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指导**：使用 Azure Active Directory (AD) 作为 Azure 资源（例如事件中心）的中心身份验证和授权系统。 这样就可以对用于管理的敏感资源进行基于角色的访问控制 (RBAC)。
+**指导**：使用 Azure Active Directory (AD) 作为 Azure 资源（例如事件中心）的中心身份验证和授权系统。 这样就可以对用于管理的敏感资源进行 Azure 基于角色的访问控制 (Azure RBAC)。
 
  如何创建和配置 Azure AD 实例： https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -539,9 +539,9 @@ Microsoft 会管理 Azure 事件中心的底层基础结构，并实施严格的
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指导**：Azure 事件中心支持使用 Azure Active Directory (AD) 对事件中心资源请求进行授权。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户或应用程序服务主体。
+**指导**：Azure 事件中心支持使用 Azure Active Directory (AD) 对事件中心资源请求进行授权。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (Azure RBAC) 向安全主体授予权限，该安全主体可能是用户，也可能是应用程序服务主体。
 
-了解 Azure 事件中心的 Azure AD RBAC 和可用角色： https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+了解 Azure RBAC 和 Azure 事件中心的可用角色： https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Azure 安全中心监视**：不适用
 
@@ -759,7 +759,7 @@ Microsoft 会管理事件中心的底层基础结构，并实施严格的控制�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -966,11 +966,11 @@ Microsoft 反恶意软件已在支持 Azure 服务（例如 Azure Cache for Redi
 
 **责任**：客户
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份所有客户管理的密钥
 
 **指南**： Azure 事件中心通过 azure 存储服务加密 (azure SSE) 提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 如果使用 Azure Key Vault 来存储客户管理的密钥，请确保定期自动备份密钥。
 
-请确保通过以下 PowerShell 命令定期自动备份 Key Vault 机密： AzKeyVaultSecret
+请确保通过以下 PowerShell 命令定期自动备份你的 Key Vault 机密：Backup-AzKeyVaultSecret
 
 如何为静态 Azure 事件中心数据配置客户管理的密钥： https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
@@ -994,7 +994,7 @@ Microsoft 反恶意软件已在支持 Azure 服务（例如 Azure Cache for Redi
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：在 Key Vault 中启用软删除，以防止意外或恶意删除密钥。 Azure 事件中心需要客户管理的密钥才能进行软删除，并且不会清除已配置的密钥。
+**指导**：在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。 Azure 事件中心需要客户管理的密钥才能进行软删除，并且不会清除已配置的密钥。
 
 为用于捕获事件中心数据的 Azure 存储帐户配置软删除。 请注意，Azure Data Lake Storage 第2代尚不支持此功能。
 

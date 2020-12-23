@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2222c1d5e434e1c51cb66c2c5943badd58f95af9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59f3e6ac5e6df6d2643a9877ba16e62ca650563b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84013021"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498823"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Azure 服务的“内置安全控制”文章索引
 
@@ -23,19 +23,8 @@ ms.locfileid: "84013021"
 
 内置安全控制文章适用于以下服务：
 
-- [API 管理](../../api-management/api-management-security-controls.md)
-- [Azure 应用服务](../../app-service/app-service-security-controls.md)
+
+- [Azure 应用服务](../../app-service/security-baseline.md)
 - [Azure Resource Manager](../../azure-resource-manager/management/azure-resource-manager-security-controls.md)
-- [Azure 备份](../../backup/backup-security-controls.md)
-- [Azure 事件中心](../../event-hubs/event-hubs-security-controls.md)
-- [Azure ExpressRoute](../../expressroute/expressroute-security-controls.md)
-- [Azure 负载均衡器](../../load-balancer/load-balancer-security-controls.md)
-- [Azure 服务总线消息](../../service-bus-messaging/service-bus-messaging-security-controls.md)
-- [Azure 服务总线中继](../../service-bus-relay/service-bus-relay-security-controls.md)
-- [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
+- [Azure 服务总线中继](../../azure-relay/service-bus-relay-security-controls.md)
 - [Azure Spring Cloud](../../spring-cloud/spring-cloud-concept-security-controls.md)
-- [Azure SQL 数据库](../../azure-sql/database/security-controls.md)
-- [Azure 虚拟机规模集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
-- [Linux 虚拟机](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)
-- [Windows 虚拟机](../../virtual-machines/windows/virtual-machines-windows-security-controls.md)
-- [Azure VPN 网关](../../vpn-gateway/vpn-gateway-security-controls.md)

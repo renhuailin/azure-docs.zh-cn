@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657222"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173930"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
@@ -86,7 +86,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 |教程 |[完成 Azure AD 自助式密码重置试点推行](./tutorial-enable-sspr.md) |
 | |[启用密码写回](./tutorial-enable-sspr-writeback.md) |
 | |[Windows 10 登录屏幕中的 Azure AD 密码重置](./howto-sspr-windows.md) |
-| 常见问题|[密码管理常见问题解答](./active-directory-passwords-faq.md) |
+| 常见问题解答|[密码管理常见问题解答](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>解决方案体系结构
@@ -105,7 +105,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 注意：对于已禁用[密码哈希同步 (PHS)](../hybrid/whatis-phs.md) 的用户，SSPR 仅将密码存储在本地 Active Directory 中。
 
-### <a name="best-practices"></a>最佳做法
+### <a name="best-practices"></a>最佳实践
 
 连同组织中的其他常用应用程序或服务一起部署 SSPR 可帮助用户快速完成注册。 此操作会产生大量登录，可推进注册操作。
 
@@ -115,7 +115,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 启用此组合注册体验后，用户只需选择其注册信息一次即可启用这两项功能。
 
-组合注册体验不需要组织同时启用 SSPR 和 Azure 多重身份验证。 组合注册可为组织提供更好的用户体验。 有关详细信息，请参阅[组合安全信息注册](concept-registration-mfa-sspr-combined.md)
+组合注册体验不需要组织同时启用 SSPR 和 Azure AD 多重身份验证。 组合注册可为组织提供更好的用户体验。 有关详细信息，请参阅[组合安全信息注册](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-deployment-project"></a>规划部署项目
 
@@ -123,7 +123,7 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，请[确保让合适的利益干系人参与](https://aka.ms/deploymentplans)，并通过记录利益干系人及其项目的输入信息和相应责任，使项目中利益干系人的角色得到充分了解。
+当技术项目失败时，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，请[确保让合适的利益干系人参与](../fundamentals/active-directory-deployment-plans.md)，并通过记录利益干系人及其项目的输入信息和相应责任，使项目中利益干系人的角色得到充分了解。
 
 #### <a name="required-administrator-roles"></a>所需的管理员角色
 
@@ -200,7 +200,7 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 ### <a name="password-writeback"></a>密码写回
 
-**密码写回**与 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 一同启用，可以实时将云中的密码重置写回到现有的本地目录。 有关详细信息，请参阅[什么是密码写回？](./concept-sspr-writeback.md)
+**密码写回** 与 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 一同启用，可以实时将云中的密码重置写回到现有的本地目录。 有关详细信息，请参阅[什么是密码写回？](./concept-sspr-writeback.md)
 
 我们建议使用以下设置：
 
@@ -313,7 +313,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 可以使用 Azure 门户上预生成的报告来衡量 SSPR 性能。 如果有相应的授权，还可以创建自定义查询。 有关详细信息，请参阅 [Azure AD 密码管理的报告选项](./howto-sspr-reporting.md)
 
 > [!NOTE]
->  必须是[全局管理员](../users-groups-roles/directory-assign-admin-roles.md)，并且必须选择为组织收集这些数据。 若要做出此选择，必须在 Azure 门户上至少访问“报告”选项卡或审核日志一次。 在此之前，不会为组织收集数据。
+>  必须是[全局管理员](../roles/permissions-reference.md)，并且必须选择为组织收集这些数据。 若要做出此选择，必须在 Azure 门户上至少访问“报告”选项卡或审核日志一次。 在此之前，不会为组织收集数据。
 
 注册和密码重置的审核日志可保留 30 天。 如果公司内部的安全审核要求保留更长的期限，需要将日志导出到 SIEM 工具（如 [Azure Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk 或 ArcSight）中使用。
 
@@ -321,11 +321,11 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 
 ### <a name="authentication-methods--usage-and-insights"></a>身份验证方法 - 使用情况和见解
 
-使用[使用情况和见解](./howto-authentication-methods-usage-insights.md)可以了解针对 Azure MFA 和 SSPR 等功能的身份验证方法在组织中的运作方式。 此报告功能可让组织了解注册的方法，以及这些方法的用法。
+[使用情况和见解](./howto-authentication-methods-usage-insights.md) 使你可以了解 Azure AD MFA 和 SSPR 等功能的身份验证方法在你的组织中的工作方式。 此报告功能可让组织了解注册的方法，以及这些方法的用法。
 
 ### <a name="troubleshoot"></a>疑难解答
 
-* 参阅[排查自助式密码重置问题](./active-directory-passwords-troubleshoot.md) 
+* 参阅[排查自助式密码重置问题](./troubleshoot-sspr.md) 
 
 * 遵循[密码管理常见问题解答](./active-directory-passwords-faq.md) 
 

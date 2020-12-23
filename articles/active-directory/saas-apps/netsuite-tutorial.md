@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/28/2020
+ms.date: 11/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554509"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181962"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教程：将 Azure AD 单一登录 (SSO) 与 NetSuite 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "88554509"
 * 在 Azure AD 中控制谁有权访问 NetSuite。
 * 让用户使用其 Azure AD 帐户自动登录到 NetSuite。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +42,6 @@ NetSuite 支持：
 * IDP 发起的 SSO。
 * JIT（实时）用户预配。
 * [自动用户预配](NetSuite-provisioning-tutorial.md)。
-* 配置 NetSuite 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 由于此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -53,7 +50,7 @@ NetSuite 支持：
 
 若要配置 NetSuite 与 Azure AD 的集成，请执行以下操作，从库中将 NetSuite 添加到托管 SaaS 应用列表：
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左窗格中，选择“Azure Active Directory”服务。 
 1. 转到“企业应用程序”，并选择“所有应用程序”。  
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
@@ -77,7 +74,7 @@ NetSuite 支持：
 
 若要在 Azure 门户中启用 Azure AD SSO，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“NetSuite”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
+1. 在 Azure 门户的“NetSuite”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”窗格中选择“SAML”。  
 1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”旁边的“编辑”（铅笔）图标。   
 
@@ -96,7 +93,7 @@ NetSuite 支持：
 
     * 我们将在 Netsuite 配置节中获取 **<`Instance ID`>** 值，本教程稍后将在 Netsuite 配置下的步骤 8 中对此进行说明。 我们将找到确切的域（例如，在本例中为 system.na0.netsuite.com）。
 
-        ![配置单一登录](./media/NetSuite-tutorial/domain-value.png)
+        ![屏幕截图显示了“SAML 安装”页面，你可以从其中获取域。](./media/NetSuite-tutorial/domain-value.png)
 
         > [!NOTE]
         > 上述 URL 中的值不是真实值。 请使用实际回复 URL 更新这些值。 若要获取该值，请联系 [NetSuite 客户端支持团队](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)。 还可参考 Azure 门户中的“基本 SAML 配置”部分显示的格式。 
@@ -132,7 +129,7 @@ NetSuite 支持：
 
 1. 在“用户”属性窗格中执行以下步骤  ：
 
-   a. 在“名称”  框中，输入 **B.Simon**。  
+   a. 在“名称”框中，输入 **B.Simon**。  
    b. 在“用户名”框中，输入 username@companydomain.extension（例如 B.Simon@contoso.com）  。  
    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。    
    d. 选择“创建”  。
@@ -144,13 +141,7 @@ NetSuite 支持：
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“NetSuite”  。
 1. 在概述窗格中找到“管理”部分，然后选择“用户和组”链接。  
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”窗格中选择“用户和组”    。
-
-    ![“添加用户”按钮](common/add-assign-user.png)
-
 1. 在“用户和组”窗格中的“用户”下拉列表内选择“B.Simon”，然后选择屏幕底部的“选择”按钮。    
 1. 如果在 SAML 断言中需要任何角色值，请执行以下操作：
 
@@ -164,31 +155,31 @@ NetSuite 支持：
 
 2. 在顶部导航栏中选择“设置”，然后选择“公司” > “启用功能”。   
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-setupsaml.png)
+    ![屏幕截图显示从“公司”选择了“启用功能”。](./media/NetSuite-tutorial/ns-setupsaml.png)
 
 3. 在页面中间的工具栏中，选择“SuiteCloud”。 
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-suitecloud.png)
+    ![屏幕截图显示选择了“SuiteCloud”。](./media/NetSuite-tutorial/ns-suitecloud.png)
 
 4. 在“管理身份验证”  下，选中“SAML 单一登录”  复选框以在 NetSuite 中启用“SAML 单一登录”选项。
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-ticksaml.png)
+    ![屏幕截图显示了“管理身份验证”，你可以在其中选择“SAML 单一登录”。](./media/NetSuite-tutorial/ns-ticksaml.png)
 
 5. 在顶部导航栏中选择“设置”  。
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-setup.png)
+    ![屏幕截图显示从“NETSUITE”导航栏中选择了“安装”。](./media/NetSuite-tutorial/ns-setup.png)
 
 6. 在“设置任务”列表中选择“集成”。  
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-integration.png)
+    ![屏幕截图显示从“安装任务”选择了“集成”。](./media/NetSuite-tutorial/ns-integration.png)
 
 7. 在“管理身份验证”下，选择“SAML 单一登录”。  
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-saml.png)
+    ![屏幕截图显示从“安装任务”中的“集成”项选择了“SAML 单一登录”。](./media/NetSuite-tutorial/ns-saml.png)
 
 8. 在“SAML 设置”窗格中的“NetSuite 配置”下，执行以下操作：  
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-saml-setup.png)
+    ![屏幕截图显示了“SAML 安装”，你可以在其中输入所述值。](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. 选中“主要身份验证方法”复选框。 
 
@@ -198,35 +189,37 @@ NetSuite 支持：
 
 9. 在 NetSuite 顶部导航栏中选择“设置”，然后选择“公司” > “公司信息”。   
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-com.png)
+    ![屏幕截图显示从“公司”选择了“公司信息”。](./media/NetSuite-tutorial/ns-com.png)
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-account-id.png)
+    ![屏幕截图显示了可以在其中输入所述值的窗格。](./media/NetSuite-tutorial/ns-account-id.png)
 
     b. 在“公司信息”窗格中的右侧列中，复制“帐户 ID”值。  
 
     c. 将从 NetSuite 帐户中复制的“帐户 ID”粘贴到 Azure AD 中的“属性值”框内。  
 
+    ![显示添加帐户 ID 值的屏幕截图](./media/netsuite-tutorial/attribute-value.png)
+
 10. 在用户能够单一登录到 NetSuite 之前，必须先在 NetSuite 中为他们分配适当的权限。 若要分配这些权限，请执行以下操作：
 
     a. 在顶部导航栏中选择“设置”  。
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-setup.png)
+    ![屏幕截图显示从“NETSUITE”导航栏中选择了“安装”。](./media/NetSuite-tutorial/ns-setup.png)
 
     b. 在左窗格中选择“用户/角色”，然后选择“管理角色”。  
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-manage-roles.png)
+    ![屏幕截图显示了“管理角色”窗格，你可以在其中选择“新角色”。](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. 选择“新建角色”。 
 
-    d. 输入新角色的**名称**。
+    d. 输入新角色的 **名称**。
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-new-role.png)
+    ![屏幕截图显示“安装管理员”，你可以在其中输入角色名称。](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. 选择“保存”。 
 
     f. 在顶部导航栏中选择“权限”  。 然后选择“设置”  。
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-sso.png)
+    ![屏幕截图显示了“安装”选项卡，你可以在其中输入所述值。](./media/NetSuite-tutorial/ns-sso.png)
 
     g. 依次选择“SAML 单一登录”、“添加”   。
 
@@ -234,19 +227,19 @@ NetSuite 支持：
 
     i. 在顶部导航栏中选择“设置”，然后选择“设置管理器”。  
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-setup.png)
+    ![屏幕截图显示从“NETSUITE”导航栏中选择了“安装”。](./media/NetSuite-tutorial/ns-setup.png)
 
     j. 在左窗格中选择“用户/角色”，然后选择“管理用户”。  
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-manage-users.png)
+    ![屏幕截图显示了“管理用户”窗格，你可以在其中选择“套件演示团队”。](./media/NetSuite-tutorial/ns-manage-users.png)
 
     k. 选择一个测试用户，选择“编辑”，然后选择“访问”选项卡。  
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-edit-user.png)
+    ![屏幕截图显示了“管理用户”窗格，你可以在其中选择“编辑”。](./media/NetSuite-tutorial/ns-edit-user.png)
 
     l. 在“角色”窗格中，指定已创建的相应角色。 
 
-    ![配置单一登录](./media/NetSuite-tutorial/ns-add-role.png)
+    ![屏幕截图显示从“员工”选择了“管理员”。](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. 选择“保存”。 
 
@@ -256,16 +249,13 @@ NetSuite 支持：
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-在访问面板中选择“NetSuite”磁贴时，应会自动登录到设置了 SSO 的 NetSuite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+- 在 Azure 门户中单击“测试此应用程序”后，你应当会自动登录到为其设置了 SSO 的 NetSuite
 
-## <a name="additional-resources"></a>其他资源
+- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 NetSuite 磁贴时，你应当会自动登录到为其设置了 SSO 的 NetSuite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-- [通过 Azure AD 试用 NetSuite](https://aad.portal.azure.com/)
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 NetSuite](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>后续步骤
+
+配置 NetSuite 后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)

@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b02b8f3b94d191c7439aadf5a56ec0e2a1c38e28
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: dcbebcb32e912abdf0112007c743c6890fae36e4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782492"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372389"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>排查 Privileged Identity Management 问题
 
@@ -41,5 +41,5 @@ ms.locfileid: "88782492"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Privileged Identity Management 的许可要求](subscription-requirements.md)
-- [确保 Azure AD 中混合部署和云部署的特权访问安全性](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [确保 Azure AD 中混合部署和云部署的特权访问安全性](../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [部署 Privileged Identity Management](pim-deployment-plan.md)

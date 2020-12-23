@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 276513e41b1595180acb0a596b236428032d87a6
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: b266def0dbe81542714fc6d47986f3cde8235dd0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015970"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122954"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 监视设备连接
 
@@ -22,11 +22,11 @@ ms.locfileid: "90015970"
 
 使用 Azure CLI IoT 扩展，了解如何将设备发送到 IoT Central，并观察设备孪生中的更改。 可以使用此工具来调试和观察设备连接性，并诊断设备消息不到达云或者设备不响应孪生更改的问题。
 
-[如需更多详细信息，请访问 Azure CLI 扩展参考](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[如需更多详细信息，请访问 Azure CLI 扩展参考](/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
 ## <a name="prerequisites"></a>必备条件
 
-+ Azure CLI 安装，且版本2.7.0 或更高版本。 通过运行 `az --version` 检查 Azure CLI 的版本。 通过 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/install-azure-cli)了解如何进行安装和更新
++ Azure CLI 安装，且版本2.7.0 或更高版本。 通过运行 `az --version` 检查 Azure CLI 的版本。 通过 [Azure CLI 文档](/cli/azure/install-azure-cli)了解如何进行安装和更新
 + Azure 中的工作或学校帐户，在 IoT Central 应用程序中作为用户添加。
 
 ## <a name="install-the-iot-central-extension"></a>安装 IoT Central 扩展

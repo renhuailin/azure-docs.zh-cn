@@ -11,18 +11,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7ee8d05a542c6906d4ebe70f7e2a461752c6e3f3
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85609446"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349514"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>从必应 Web 搜索 API v5 升级到 v7
 
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
+
 此升级指南介绍了必应 Web 搜索 API 的版本 5 与版本 7 之间的更改。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 
-## <a name="breaking-changes"></a>重大更改
+## <a name="breaking-changes"></a>中断性变更
 
 ### <a name="endpoints"></a>终结点
 
@@ -73,16 +78,16 @@ InsufficientScope|InsufficientAuthorization
 
 ## <a name="non-breaking-changes"></a>非重大变化  
 
-### <a name="headers"></a>头文件
+### <a name="headers"></a>标头
 
-- 添加可选 [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 请求标头。 默认情况下，必应返回缓存的内容（如果适用）。 若要防止必应返回缓存的内容，请将 Pragma 标头设置为 no-cache（例如，Pragma: no-cache）。
+- 添加可选 [Pragma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 请求标头。 默认情况下，必应返回缓存的内容（如果适用）。 若要防止必应返回缓存的内容，请将 Pragma 标头设置为 no-cache（例如，Pragma: no-cache）。
 
 ### <a name="query-parameters"></a>查询参数
 
-- 添加 [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查询参数。 使用此参数指定希望响应包含的答案数。 答案根据排名进行选择。 例如，如果将此参数设置为三 (3)，则响应将包括排名前三位的答案。  
+- 添加 [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查询参数。 使用此参数指定希望响应包含的答案数。 答案根据排名进行选择。 例如，如果将此参数设置为三 (3)，则响应将包括排名前三位的答案。  
 
-- 添加 [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像提升为响应，可以将 "升级" 设置为 "*视频"、"图像*"。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为2并且 `promote` 设置为*视频、图像*，则响应可能包含网页、新闻、视频和图像。
+- 添加 [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像提升为响应，可以将 "升级" 设置为 " *视频"、"图像*"。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为2并且 `promote` 设置为 *视频、图像*，则响应可能包含网页、新闻、视频和图像。
 
 ### <a name="object-changes"></a>对象变化
 
-- 将 `someResultsRemoved` 字段添加到 [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) 对象。 该字段包含一个布尔值，指示响应是否从 Web 回答中排除了某些结果。  
+- 将 `someResultsRemoved` 字段添加到 [WebAnswer](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) 对象。 该字段包含一个布尔值，指示响应是否从 Web 回答中排除了某些结果。

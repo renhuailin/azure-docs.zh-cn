@@ -9,16 +9,16 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
-ms.openlocfilehash: 8f21b415ef36442d6ac1aac518cd1327f70b8927
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263924"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655895"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>从 Azure Web 应用程序防火墙 (WAF) 连接数据
 
-Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 Azure Web 应用程序防火墙 (WAF) 提供对 Web 应用程序的集中保护，使其免受常见攻击和威胁，如代码注入和跨站点脚本。 可以将 azure WAF 部署到 [Azure 应用程序网关](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) 服务、 [azure 前门](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview) 服务和 [AZURE 内容分发网络 (CDN) ](https://docs.microsoft.com/azure/web-application-firewall/cdn/cdn-overview) WAF 策略 (当前在公共预览版中的) 。
+Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 Azure Web 应用程序防火墙 (WAF) 提供对 Web 应用程序的集中保护，使其免受常见攻击和威胁，如代码注入和跨站点脚本。 可以将 azure WAF 部署到 [Azure 应用程序网关](../web-application-firewall/ag/ag-overview.md) 服务、 [azure 前门](../web-application-firewall/afds/afds-overview.md) 服务和 [AZURE 内容分发网络 (CDN) ](../web-application-firewall/cdn/cdn-overview.md) WAF 策略 (当前在公共预览版中的) 。
 你可以将 Azure WAF 日志连接到 Azure Sentinel，使你能够查看工作簿中的日志数据，使用它创建自定义警报，并将其合并以改善调查。
 
 ## <a name="prerequisites"></a>先决条件
@@ -31,7 +31,7 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 1. 在 Azure Sentinel 导航菜单中，选择 " **数据连接器**"。
 
-1. 从数据连接器库中选择 " **Azure web 应用程序防火墙 (WAF") ** ，然后选择预览窗格中的 " **打开连接器" 页面** 。
+1. 从数据连接器库中选择 " **Azure web 应用程序防火墙 (WAF")** ，然后选择预览窗格中的 " **打开连接器" 页面** 。
 
 1. 选择要连接其日志的 WAF 资源类型的链接– **打开 "应用程序网关资源" >**、" **打开前门资源" >**，或打开 " **内容交付网络 (CDN) WAF 策略 >** –在资源列表的屏幕中，从列表中选择 WAF 资源。
 
@@ -52,13 +52,13 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
         | CDN WAF 策略      | WebApplicationFirewallLogs |
         |
 
-    1. 选择“保存” 。
+    1. 选择“保存”。
 
 ### <a name="next-steps-tab"></a>后续步骤选项卡
 
 - 若要深入了解 Azure WAF 日志数据，请参阅与 **azure web 应用程序防火墙** 数据连接器捆绑在一起的建议工作簿、查询示例和分析规则模板。
 
-- 若要在 **日志**中查询 Azure WAF 数据，请在 "查询" 窗口中键入 **AzureDiagnostics** 。
+- 若要在 **日志** 中查询 Azure WAF 数据，请在 "查询" 窗口中键入 **AzureDiagnostics** 。
 
 > [!NOTE]
 >

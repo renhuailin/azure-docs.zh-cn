@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943485"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316968"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>什么是已启用 Azure Arc 的数据服务（预览）？
 
@@ -41,7 +41,7 @@ Azure Arc 还提供了其他云优势，例如快速部署和大规模自动化�
 
 ## <a name="unified-management"></a>统一管理
 
-现在，使用 Azure 门户、Azure Data Studio 和 Azure Data CLI 等熟悉的工具，可以统一查看使用 Azure Arc 部署的所有数据资产。你不仅可以查看和管理整个环境和 Azure 中的各种关系数据库，还可以从 Kubernetes API 获取日志和遥测，以分析基础结构的容量和运行状况。 除了拥有本地化的日志分析和性能监视之外，你现在还可以利用 Azure Monitor 在整个资产范围内获得全面的操作见解。
+现在，使用 Azure 门户、Azure Data Studio 和 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 等熟悉的工具，可以统一查看使用 Azure Arc 部署的所有数据资产。你不仅可以查看和管理整个环境和 Azure 中的各种关系数据库，还可以从 Kubernetes API 获取日志和遥测，以分析基础结构的容量和运行状况。 除了拥有本地化的日志分析和性能监视之外，你现在还可以利用 Azure Monitor 在整个资产范围内获得全面的操作见解。
 
 ## <a name="disconnected-scenario-support"></a>断开连接的方案支持
 

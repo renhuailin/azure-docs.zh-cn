@@ -11,12 +11,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 02/14/2020
-  ms.openlocfilehash: eb7d7c911fc099a5f3b5456d7fb77688e0b06af5
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 075704312bc29cf195a98c343f707ece91dd3387
+  ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88816467"
+  ms.lasthandoff: 11/20/2020
+  ms.locfileid: "94986039"
 highlightedContent:
   items:
   - title: 使用 Azure CLI 创建 Linux 虚拟机
@@ -33,7 +33,7 @@ highlightedContent:
     url: ./spot-vms.md
   - title: 专用主机 - 用于承载一个或多个虚拟机的物理服务器。
     itemType: concept
-    url: ./linux/dedicated-hosts.md
+    url: ./dedicated-hosts.md
   - title: 邻近放置组 - 使 VM 尽可能相近，以便降低延迟。
     itemType: how-to-guide
     url: ./linux/proximity-placement-groups.md
@@ -64,7 +64,7 @@ conceptualContent:
     - url: ./windows/tutorial-manage-data-disk.md
       itemType: tutorial
       text: 创建和管理磁盘
-    - url: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=azure/virtual-machines/windows/context/windows-vm-context
+    - url: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=%2fazure/virtual-machines/windows/context/windows-vm-context
       itemType: how-to-guide
       text: 配置托管标识
     - url: ./troubleshooting/index.yml

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: bf600d835e177ce51870ed2a8894adcd667e3901
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5c44e6c6a7a9af4edc2c711b17ec50aa2bf62c98
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398046"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202441"
 ---
 # <a name="about-expressroute-fastpath"></a>关于 ExpressRoute FastPath
 
@@ -41,7 +41,7 @@ FastPath 仍要求创建一个虚拟网络网关，以在虚拟网络和本地�
 
 * VNet 对等互连：如果有其他虚拟网络与连接到 ExpressRoute 的虚拟网络对等互连，则来自本地网络的网络流量与其他虚拟网络之间的网络流量 (例如，所谓的 "轮辐" Vnet) 将继续发送到虚拟网络网关。 解决方法是直接将所有虚拟网络连接到 ExpressRoute 线路。
 
-* 基本负载均衡器：如果在虚拟网络中部署基本的内部负载均衡器，或者在虚拟网络中部署的 Azure PaaS 服务使用基本的内部负载均衡器，则从本地网络到托管在基本负载均衡器上的虚拟 Ip 的网络流量将发送到虚拟网络网关。 解决方案是将基本负载均衡器升级到 [标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。
+* 基本负载均衡器：如果在虚拟网络中部署基本的内部负载均衡器，或者在虚拟网络中部署的 Azure PaaS 服务使用基本的内部负载均衡器，则从本地网络到托管在基本负载均衡器上的虚拟 Ip 的网络流量将发送到虚拟网络网关。 解决方案是将基本负载均衡器升级到 [标准负载均衡器](../load-balancer/load-balancer-overview.md)。
 
 * 专用链接：如果从本地网络连接到虚拟网络中的 [专用终结点](../private-link/private-link-overview.md) ，则连接将通过虚拟网络网关。
  

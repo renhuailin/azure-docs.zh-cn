@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 了解如何使用异常检测器 API 和 Azure Databricks 来监视数据中的异常。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: aahi
-ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: mbullwin
+ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245598"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368706"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
@@ -47,7 +47,7 @@ ms.locfileid: "88245598"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [Azure 事件中心命名空间](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)和事件中心。
+- [Azure 事件中心命名空间](../../../event-hubs/event-hubs-create.md)和事件中心。
 
 - 用于访问事件中心命名空间的[连接字符串](../../../event-hubs/event-hubs-get-connection-string.md)。 该连接字符串应采用类似于
 
@@ -63,7 +63,7 @@ ms.locfileid: "88245598"
 
 1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
 
-    ![Azure 门户上的 Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
+    ![门户上的 Azure Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
 3. 在“Azure Databricks 服务”下提供以下值，创建 Databricks 工作区：
 
@@ -115,7 +115,7 @@ ms.locfileid: "88245598"
 
 3. 在应用程序页中选择“密钥和访问令牌”选项卡，复制“使用者密钥”和“使用者机密”的值。 此外，请选择“创建我的访问令牌”以生成访问令牌。 复制“访问令牌”和“访问令牌机密”的值。
 
-    ![Twitter 应用程序详细信息](../media/tutorials/twitter-app-key-secret.png "Twitter 应用程序详细信息")
+    ![Twitter 应用程序详细信息 2](../media/tutorials/twitter-app-key-secret.png "Twitter 应用程序详细信息")
 
 保存 Twitter 应用程序的检索值。 稍后在本教程中需要用到这些值。
 
@@ -193,7 +193,7 @@ ms.locfileid: "88245598"
 
 2. 在“创建 Notebook”对话框中输入 **SendTweetsToEventHub** 作为名称，选择 **Scala** 作为语言，并选择前面创建的 Spark 群集。
 
-    ![在 Databricks 中创建笔记本](../media/tutorials/databricks-notebook-details.png "在 Databricks 中创建笔记本")
+    ![Notebook 详细信息](../media/tutorials/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
     选择“创建”。
 
@@ -298,7 +298,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。 输出中的每个事件是已引入事件中心的“赞”的时间戳和数目的组合。
+若要运行该 Notebook，请按 **SHIFT + ENTER** 。 会显示一个输出，如以下代码片段所示。 输出中的每个事件是已引入事件中心的“赞”的时间戳和数目的组合。
 
 ```output
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
@@ -423,7 +423,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。
+若要运行该 Notebook，请按 **SHIFT + ENTER** 。 会显示一个输出，如以下代码片段所示。
 
 ```scala
 import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
@@ -497,7 +497,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。
+若要运行该 Notebook，请按 **SHIFT + ENTER** 。 会显示一个输出，如以下代码片段所示。
 
 ```scala
 import org.apache.spark.sql.Row

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: f11498812c3923f75ca84e66cab9098e86cc192e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 11/09/2020
+ms.openlocfilehash: 172ebb5f5b7896b6b642c1fe6c5d01afb1dbf479
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84660995"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553601"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -45,12 +45,12 @@ ms.locfileid: "84660995"
 ### <a name="azure-roles"></a>Azure 角色
 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须分配有“参与者”或“所有者”角色，或者必须是 Azure 订阅的管理员。
 
-若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
+若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
 在本教程中，需将 SQL Server 数据库用作源数据存储。 在本教程中创建的数据工厂中的管道将数据从这个 SQL Server 数据库（源）复制到 Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。
 
-1. 启动 SQL Server Management Studio。 如果此软件尚未安装在计算机上，请访问[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+1. 启动 SQL Server Management Studio。 如果此软件尚未安装在计算机上，请访问[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 1. 使用凭据连接到 SQL Server 实例。
 
@@ -110,7 +110,7 @@ ms.locfileid: "84660995"
 在此步骤中，请先创建数据工厂，然后启动数据工厂 UI，在该数据工厂中创建一个管道。
 
 1. 打开 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-1. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：  
+1. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ：
 
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "84660995"
 
 1. 在“设置属性”对话框中的“名称”下，输入 **SqlServerDataset**。 在“链接服务”下，选择“+新建”。 执行此步骤来与源数据存储（SQL Server 数据库）建立连接。
 
-1. 在“新建链接服务”对话框中，添加 **SqlServerLinkedService** 作为**名称**。 在“通过集成运行时连接”下选择“+新建”。   在本部分，请创建一个自承载 Integration Runtime，然后将其与安装了 SQL Server 数据库的本地计算机相关联。 自承载 Integration Runtime 是一个组件，用于将数据从计算机上的 SQL Server 数据库复制到 Blob 存储。
+1. 在“新建链接服务”对话框中，添加 **SqlServerLinkedService** 作为 **名称**。 在“通过集成运行时连接”下选择“+新建”。   在本部分，请创建一个自承载 Integration Runtime，然后将其与安装了 SQL Server 数据库的本地计算机相关联。 自承载 Integration Runtime 是一个组件，用于将数据从计算机上的 SQL Server 数据库复制到 Blob 存储。
 
 1. 在“集成运行时安装”对话框中选择“自承载”，然后选择“继续”。 
 
@@ -178,7 +178,7 @@ ms.locfileid: "84660995"
 
     d. 在“身份验证类型”下，选择数据工厂在连接到 SQL Server 数据库时会使用的相应身份验证类型。
 
-    e. 在“用户名”和“密码”下，输入用户名和密码。  如需在用户帐户或服务器名称中使用反斜杠 (\\)，请在其前面加上转义字符 (\\)。 例如，使用 *mydomain\\\\myuser*。
+    e. 在“用户名”和“密码”下，输入用户名和密码。  如果需要，请使用 mydomain\\myuser 作为用户名。
 
     f. 选择“测试连接”。 执行此步骤是为了确认数据工厂是否可以使用已创建的自承载集成运行时连接到 SQL Server 数据库。
 
@@ -198,9 +198,9 @@ ms.locfileid: "84660995"
 
 1. 转到“属性”窗口底部的“接收器”选项卡，选择“+ 新建”。  
 
-1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。
+1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。 
 
-1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。
+1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。 
 
     ![数据格式选择](./media/doc-common-process/select-data-format.png)
 
@@ -214,7 +214,7 @@ ms.locfileid: "84660995"
 
     a. 在“链接服务”中，确认选择了“AzureStorageLinkedService”。 
 
-    b. 在**文件路径**中，输入 **adfTutorial/fromonprem** 作为“容器/目录”部分。 如果 adftutorial 容器中不包含 output 文件夹，数据工厂会自动创建 output 文件夹。
+    b. 在 **文件路径** 中，输入 **adfTutorial/fromonprem** 作为“容器/目录”部分。 如果 adftutorial 容器中不包含 output 文件夹，数据工厂会自动创建 output 文件夹。
 
     c. 对于“文件”部分，选择“添加动态内容”。
     ![用于解析文件名的动态表达式](./media/tutorial-hybrid-copy-portal/file-name.png)

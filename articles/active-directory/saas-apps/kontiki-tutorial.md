@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549953"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教程：Azure Active Directory 与 Kontiki 的集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "88549953"
 * 用户可使用其 Azure AD 帐户（单一登录）自动登录到 Workspot Control。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -104,7 +104,7 @@ Kontiki 支持以下功能：
     ![Kontiki 域和 URL 单一登录信息](common/sp-signonurl.png)
 
     > [!NOTE]
-    > 请联系 [Kontiki 客户端支持团队](https://customersupport.kontiki.com/enterprise/contactsupport.html)获取要使用的正确值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 请联系 [Kontiki 客户端支持团队](https://kollective.com/support/)获取要使用的正确值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，选择“联合元数据 XML”旁边的“下载”     。 根据需要选择下载选项。 将证书保存在计算机上。
 
@@ -120,7 +120,7 @@ Kontiki 支持以下功能：
 
 ### <a name="configure-kontiki-single-sign-on"></a>配置 Kontiki 单一登录
 
-若要在 Kontiki 端配置单一登录，请将下载的“联合元数据 XML”文件以及从 Azure 门户复制的相关 URL 发送给 [Kontiki 支持团队](https://customersupport.kontiki.com/enterprise/contactsupport.html)。 Kontiki 支持团队使用你发送的信息来确保双方都正确设置 SAML 单一登录连接。
+若要在 Kontiki 端配置单一登录，请将下载的“联合元数据 XML”文件以及从 Azure 门户复制的相关 URL 发送给 [Kontiki 支持团队](https://kollective.com/support/)。 Kontiki 支持团队使用你发送的信息来确保双方都正确设置 SAML 单一登录连接。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -186,6 +186,6 @@ Kontiki 支持以下功能：
 
 若要了解更多信息，请查看下列文章：
 
-- [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+- [单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

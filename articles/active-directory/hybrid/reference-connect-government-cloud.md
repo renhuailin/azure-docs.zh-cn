@@ -11,19 +11,22 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276178"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504349"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure 政府云的混合标识注意事项
 
 本文介绍了将混合环境与 Microsoft Azure 政府云集成时的注意事项。 这些信息是为使用 Azure 政府云的管理员和架构师提供的参考。
 
 > [!NOTE]
-> 若要将本地 Microsoft Azure Active Directory (Azure AD) 环境与 Azure 政府云集成，你需要升级到最新版本的 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
+> 若要将 Microsoft Active Directory 环境集成 (本地或托管到作为使用 Azure 政府云的同一个云) 实例一部分的 IaaS 中，则需要升级到 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)的最新版本。
+
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 有关美国政府国防部终结点的完整列表，请参阅此[文档](/office365/enterprise/office-365-u-s-government-dod-endpoints)。
 
@@ -36,7 +39,7 @@ ms.locfileid: "89276178"
 在部署直通身份验证代理之前，请验证服务器与 Azure AD 之间是否存在防火墙。 如果你的防火墙或代理允许阻止了域名系统 (DNS) 的程序或安全程序，请添加以下连接。
 
 > [!NOTE]
-> 以下指南还适用于为 Azure 政府环境安装 [Azure AD 应用程序代理连接器](https://aka.ms/whyappproxy)。
+> 以下指南还适用于为 Azure 政府环境安装 [Azure AD 应用程序代理连接器](../manage-apps/what-is-application-proxy.md)。
 
 |代码 |用途|
 |-----|-----|

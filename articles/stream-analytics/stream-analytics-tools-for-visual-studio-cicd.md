@@ -7,23 +7,23 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187653"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019848"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 流分析 CI/CD NuGet 包进行集成和开发 
 本文介绍如何使用 Azure 流分析 CI/CD NuGet 包设置持续集成和部署过程。
 
-使用版本 2.3.0000.0 或更高版本的[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)以获得对 MSBuild 的支持。
+使用版本 2.3.0000.0 或更高版本的[适用于 Visual Studio 的流分析工具](./stream-analytics-quick-create-vs.md)以获得对 MSBuild 的支持。
 
-有 NuGet 包可用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供 MSBuild、本地运行和部署工具，它们支持[流分析 Visual Studio 项目](stream-analytics-vs-tools.md)的持续集成和部署过程。 
+有 NuGet 包可用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供 MSBuild、本地运行和部署工具，它们支持 [流分析 Visual Studio 项目](stream-analytics-vs-tools.md)的持续集成和部署过程。 
 > [!NOTE]
 > NuGet 包只能与 2.3.0000.0 或以上版本的用于 Visual Studio 的流分析工具配合使用。 如果具有在以前版本的 Visual Studio 工具中创建的项目，只需使用 2.3.0000.0 或以上版本将其打开并保存即可。 然后即可启用新功能。 
 
-有关详细信息，请参阅[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)。
+有关详细信息，请参阅[适用于 Visual Studio 的流分析工具](./stream-analytics-quick-create-vs.md)。
 
 ## <a name="msbuild"></a>MSBuild
 同标准 Visual Studio MSBuild 体验一样，可通过两种方式生成项目。 可右键单击该项目，然后选择“生成”  。 还可从命令行使用 NuGet 包中的 MSBuild  。
@@ -52,7 +52,7 @@ parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置�
       "value": null
     },
 ```
-深入了解如何[使用资源管理器模板文件和 Azure PowerShell 进行部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)。 深入了解如何 [use an object as a parameter in a Resource Manager template](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)（将对象用作资源管理器模板中的参数）。
+深入了解如何[使用资源管理器模板文件和 Azure PowerShell 进行部署](../azure-resource-manager/templates/deploy-powershell.md)。 深入了解如何 [use an object as a parameter in a Resource Manager template](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)（将对象用作资源管理器模板中的参数）。
 
 若要将 Azure Data Lake Store Gen1 的托管标识用作输出接收器，需要在部署到 Azure 之前使用 PowerShell 提供对服务主体的访问权限。 了解有关如何[使用资源管理器模板部署具有托管标识的 ADLS Gen1](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment) 的详细信息。
 
@@ -60,7 +60,7 @@ parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置�
 ## <a name="command-line-tool"></a>命令行工具
 
 ### <a name="build-the-project"></a>生成项目
-NuGet 包具有一个名为 SA.exe 的命令行工具****。 该工具支持在任意计算机上生成项目并进行本地测试，可在持续集成和持续交付进程中使用。 
+NuGet 包具有一个名为 SA.exe 的命令行工具。 该工具支持在任意计算机上生成项目并进行本地测试，可在持续集成和持续交付进程中使用。 
 
 默认情况下，部署文件位于当前目录下。 可通过使用以下 -OutputPath 参数指定输出路径：
 
@@ -70,7 +70,7 @@ NuGet 包具有一个名为 SA.exe 的命令行工具****。 该工具支持在�
 
 ### <a name="test-the-script-locally"></a>在本地测试脚本
 
-如果项目已在 Visual Studio 中指定本地输入文件，则可使用 localrun 命令运行自动化脚本测试**。 输出结果位于当前目录下。
+如果项目已在 Visual Studio 中指定本地输入文件，则可使用 localrun 命令运行自动化脚本测试。 输出结果位于当前目录下。
  
 ```
 localrun -Project [ProjectFullPath]
@@ -78,7 +78,7 @@ localrun -Project [ProjectFullPath]
 
 ### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>生成与流分析 PowerShell API 配合使用的作业定义文件
 
-** arm 命令将通过内部版本生成的作业模板和作业模板参数文件视为输入。 然后将其合并为可与流分析 PowerShell API 配合使用的作业定义 JSON 文件。
+arm 命令将通过内部版本生成的作业模板和作业模板参数文件视为输入。 然后将其合并为可与流分析 PowerShell API 配合使用的作业定义 JSON 文件。
 
 ```powershell
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]

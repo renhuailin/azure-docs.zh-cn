@@ -14,14 +14,14 @@ ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
 ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850145"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000430"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>如何通过 Python 使用 Twilio 实现语音和 SMS 功能
-本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
+本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅 [后续步骤](#NextSteps) 部分。
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>什么是 Twilio？
 Twilio 为将来的商业沟通提供强大支持，并使开发人员能够将语音、VoIP 和消息传送嵌入到应用程序中。 它们对基于云的全球环境中所需的所有基础结构进行虚拟化，并通过 Twilio 通信 API 平台将其公开。 可轻松构建和扩展应用程序。 享受现用现付定价所带来的灵活性，并从云可靠性中受益。
@@ -41,21 +41,21 @@ Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 谓词
-API 利用了 Twilio 谓词;例如， ** &lt; 口述 &gt; **谓词指示 Twilio 在调用时呼叫时传递一条消息。
+API 利用了 Twilio 谓词;例如， **&lt; 口述 &gt;** 谓词指示 Twilio 在调用时呼叫时传递一条消息。
 
 下面是 Twilio 谓词的列表。 通过 [Twilio 标记语言文档][twiml]了解其他谓词和功能。
 
-* ** &lt; 拨 &gt; **：将呼叫方连接到其他电话。
-* ** &lt; 收集 &gt; **：收集在电话键盘上输入的数字。
-* ** &lt; 挂断 &gt; **：结束呼叫。
-* ** &lt; 暂停 &gt; **：在指定的秒数后自动等待。
-* ** &lt; Play &gt; **：播放音频文件。
-* ** &lt; Queue &gt; **：将添加到调用方的队列中。
-* ** &lt; 记录 &gt; **：记录调用方的声音并返回包含该记录的文件的 URL。
-* ** &lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
-* ** &lt; 拒绝 &gt; **：拒绝对 Twilio 号码的传入呼叫而不向你计费。
-* ** &lt; 例如 &gt; **：将文本转换为在调用时发出的语音。
-* ** &lt; Sms &gt; **：发送短信。
+* **&lt; 拨 &gt;**：将呼叫方连接到其他电话。
+* **&lt; 收集 &gt;**：收集在电话键盘上输入的数字。
+* **&lt; 挂断 &gt;**：结束呼叫。
+* **&lt; 暂停 &gt;**：在指定的秒数后自动等待。
+* **&lt; Play &gt;**：播放音频文件。
+* **&lt; Queue &gt;**：将添加到调用方的队列中。
+* **&lt; 记录 &gt;**：记录调用方的声音并返回包含该记录的文件的 URL。
+* **&lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
+* **&lt; 拒绝 &gt;**：拒绝对 Twilio 号码的传入呼叫而不向你计费。
+* **&lt; 例如 &gt;**：将文本转换为在调用时发出的语音。
+* **&lt; Sms &gt;**：发送短信。
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
@@ -76,7 +76,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>创建 Twilio 帐户
 准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，将收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 SID 和身份验证令牌会分别显示在 [Twilio 控制台][twilio_console]上标记为“帐户 SID”**** 和“身份验证令牌”**** 的字段中。
+注册 Twilio 帐户时，将收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 SID 和身份验证令牌会分别显示在 [Twilio 控制台][twilio_console]上标记为“帐户 SID”和“身份验证令牌”的字段中。
 
 ## <a name="create-a-python-application"></a><a id="create_app"></a>创建 Python 应用程序
 使用 Twilio 服务且在 Azure 中运行的 Python 应用程序与任何其他使用 Twilio 服务的 Python 应用程序没有任何差别。 Twilio 服务是基于 REST 的且可通过几种方法从 Python 中调用，本文将重点介绍如何将 Twilio 服务与 [GitHub 提供的用于 Python 的 Twilio 库][twilio_python]一起使用。 有关使用用于 Python 的 Twilio 库的详细信息，请参阅 [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] 。
@@ -86,12 +86,12 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ### <a name="add-an-incoming-rule"></a>添加传入规则
   1. 转到[网络安全组][azure_nsg] 页。
   2. 选择与虚拟机对应的网络安全组。
-  3. 为**端口 80** 添加**传出规则**。 请确保允许从任何地址传入。
+  3. 为 **端口 80** 添加 **传出规则**。 请确保允许从任何地址传入。
 
 ### <a name="set-the-dns-name-label"></a>设置 DNS 名称标签
   1. 转到 [公共 IP 地址][azure_nsg] 页。
   2. 选择与虚拟机对应的公共 IP。
-  3. 在“配置”**** 部分中设置“DNS 名称标签”****。 就此示例而言，它将如此 *your-domain-label*.centralus.cloudapp.azure.com 中所示
+  3. 在“配置”部分中设置“DNS 名称标签”。 就此示例而言，它将如此 *your-domain-label*.centralus.cloudapp.azure.com 中所示
 
 能够通过 SSH 连接到虚拟机后，便可以安装所选的 Web 框架（Python 中两个最著名的 Web 框架是 [Flask](http://flask.pocoo.org/) 和 [Django](https://www.djangoproject.com)）。 只需运行 `pip install` 命令即可安装其中任一个 Web 框架。
 

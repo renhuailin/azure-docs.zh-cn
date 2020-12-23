@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180637"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589791"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -33,7 +33,7 @@ Azure Functions 部署通常包括以下资源：
 | [Application Insights](../azure-monitor/app/app-insights-overview.md) 组件 | 可选    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |
 | [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
-<sup>1</sup>仅当您选择在 [高级计划](./functions-premium-plan.md) 或 [应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，才需要托管计划。
+<sup>1</sup>只有选择在[高级计划](./functions-premium-plan.md)或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，托管计划才是必需的。
 
 > [!TIP]
 > 虽然不是必需的，但强烈建议为应用配置 Application Insights。
@@ -58,7 +58,7 @@ Azure Functions 部署通常包括以下资源：
 
 此外，在站点配置中，必须将属性 `AzureWebJobsStorage` 指定为应用设置。 如果函数应用未使用 Application Insights 进行监视，还应将 `AzureWebJobsDashboard` 指定为应用设置。
 
-Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。  未启用 Application Insights 时，运行时使用 `AzureWebJobsDashboard` 连接字符串登录到 Azure 表存储并启动门户中的“监视”选项卡****。
+Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。  未启用 Application Insights 时，运行时使用 `AzureWebJobsDashboard` 连接字符串登录到 Azure 表存储并启动门户中的“监视”选项卡。
 
 这些属性在 `siteConfig` 对象中的 `appSettings` 集合中指定：
 
@@ -135,7 +135,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 > [!IMPORTANT]
 > 如果你要显式定义托管计划，则 dependsOn 数组中可能将需要一个额外的项：`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
-函数应用必须包括以下应用程序设置：
+函数应用必须包含以下应用程序设置：
 
 | 设置名                 | 说明                                                                               | 示例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
@@ -299,17 +299,15 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-
-
 <a name="premium"></a>
 
-## <a name="deploy-on-premium-plan"></a>部署高级计划
+## <a name="deploy-on-premium-plan"></a>在高级计划上部署
 
 高级计划提供与消耗计划相同的缩放，但包括专用资源和附加功能。 若要了解详细信息，请参阅 [Azure Functions 高级计划](./functions-premium-plan.md)。
 
 ### <a name="create-a-premium-plan"></a>创建高级计划
 
-高级计划是一种特殊类型的 "服务器场" 资源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 对 `Name` `sku` [description 对象](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的属性值指定它。
+高级计划是特殊类型的“serverfarm”资源。 可以通过使用 `EP1`、`EP2` 或 `EP3` 作为 `sku` [描述对象](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的 `Name` 属性值来指定它。
 
 ```json
 {
@@ -334,7 +332,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-高级计划中的函数应用必须将 `serverFarmId` 属性设置为前面创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+高级计划的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置：`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
 ```json
 {
@@ -380,7 +378,6 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
     }
 }
 ```
-
 
 <a name="app-service-plan"></a>
 
@@ -475,7 +472,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 | 堆栈            | 示例值                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
+| Javascript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
 | .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
 
 ```json
@@ -516,7 +513,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 }
 ```
 
-如果要 [部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为， `linuxFxVersion` 并包括允许请求映像的配置，如 [用于容器的 Web 应用](../app-service/containers/index.yml)中所示。 此外，将设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 `false` ，因为容器本身中提供了应用内容：
+如果要 [部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为， `linuxFxVersion` 并包括允许请求映像的配置，如 [用于容器的 Web 应用](../app-service/index.yml)中所示。 此外，将设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 `false` ，因为容器本身中提供了应用内容：
 
 ```json
 {

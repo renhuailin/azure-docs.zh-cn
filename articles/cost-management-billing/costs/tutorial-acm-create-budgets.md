@@ -9,18 +9,18 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527133"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132799"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
 可以通过成本管理中的预算来计划并推动组织责任制。 可以通过预算对特定时期使用或订阅的 Azure 服务进行核算。 可以通过预算将他人的支出通知给本人，方便他们对成本进行前摄性管理，并且可以监视一段时间的支出情况。 超出所创建的预算阈值时，只会触发通知， 不会影响资源，也不会停止你对资源的使用。 可以使用预算来比较和跟踪支出，就像分析成本一样。
 
-成本和使用情况数据通常在 8-24 小时内可用，每 12-14 小时针对这些成本评估预算。 请务必熟悉[成本和使用情况数据更新](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention)的具体细节。 满足预算限额时，通常会在一小时评估范围内发送电子邮件通知。
+成本和使用情况数据通常在 8-24 小时内可用，每 12-14 小时针对这些成本评估预算。 请务必熟悉[成本和使用情况数据更新](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)的具体细节。 满足预算限额时，通常会在一小时评估范围内发送电子邮件通知。
 
 在未来选择过期日期时，预算会在某个期间末（月末、季末或年末）自动重置为相同的预算金额。 由于预算是使用相同的预算金额重置的，因此如果未来时段的预算货币金额不同于现在，则需创建单独的预算。
 
@@ -72,7 +72,7 @@ ms.locfileid: "90527133"
 - 参与者和成本管理参与者 - 可以创建、修改或删除自己的预算。 可以修改其他人创建的预算的预算金额。
 - 读者和成本管理读者 - 可以查看他们有权访问的预算。
 
-若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](../../cost-management/assign-access-acm-data.md)。
+若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](./assign-access-acm-data.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -104,7 +104,7 @@ ms.locfileid: "90527133"
 
 配置预算金额后，选择“下一步”来配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算限额时，通常会在一小时评估范围内发送电子邮件通知。
 
-如果要接收电子邮件，请将 azure-noreply@microsoft.com 添加到已批准的发件人列表，使电子邮件不会被发送到垃圾电子邮件文件夹。 有关通知的详细信息，请参阅[使用成本警报](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
+如果要接收电子邮件，请将 azure-noreply@microsoft.com 添加到已批准的发件人列表，使电子邮件不会被发送到垃圾电子邮件文件夹。 有关通知的详细信息，请参阅[使用成本警报](./cost-mgt-alerts-monitor-usage-spending.md)。
 
 在下面的示例中，达到预算的 90% 时，会生成电子邮件警报。 如果使用预算 API 创建预算，也可将角色分配给人员来接收警报。 不支持在 Azure 门户中向人员分配角色。 有关 Azure 预算 API 的详细信息，请参阅[预算 API](/rest/api/consumption/budgets)。 如果希望以其他语言发送电子邮件警报，请参阅[预算警报电子邮件支持的区域设置](manage-automation.md#supported-locales-for-budget-alert-emails)。
 
@@ -112,7 +112,7 @@ ms.locfileid: "90527133"
 
 ![显示警报条件的示例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-创建预算后，预算会显示在成本分析中。 开始[分析成本和支出](../../cost-management/quick-acm-cost-analysis.md)时，首先要执行的步骤之一是查看预算与对应的支出趋势。
+创建预算后，预算会显示在成本分析中。 开始[分析成本和支出](./quick-acm-cost-analysis.md)时，首先要执行的步骤之一是查看预算与对应的支出趋势。
 
 ![成本分析中显示的预算和支出示例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 

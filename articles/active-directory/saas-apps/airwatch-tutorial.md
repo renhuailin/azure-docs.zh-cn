@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cedea9eb4ec47af445b2ae31225a697f3c51b46e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542813"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318925"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>教程：将 AirWatch 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542813"
 * 让用户使用其 Azure AD 帐户自动登录到 AirWatch。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -125,7 +125,7 @@ ms.locfileid: "88542813"
 
 1. 单击“用户”选项卡，在“基 DN”文本框中键入域名，然后单击“保存”    。
 
-   ![用户](./media/airwatch-tutorial/ic791922.png "用户")
+   ![突出显示“基准 DN”文本框的屏幕截图。](./media/airwatch-tutorial/ic791922.png "用户")
 
 1. 单击“服务器”  选项卡。
 
@@ -133,7 +133,7 @@ ms.locfileid: "88542813"
 
 1. 在“LDAP”  部分执行以下步骤：
 
-    ![上载](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![屏幕截图显示需要对 LDAP 部分进行的更改。](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. 对于“目录类型”  ，选择“无”  。
 
@@ -223,7 +223,7 @@ ms.locfileid: "88542813"
 
 3. 在“用户”  菜单中，单击“列表视图”  ，然后单击“添加”>“添加用户”  。
   
-   ![添加用户](./media/airwatch-tutorial/ic791930.png "添加用户")
+   ![屏幕截图突出显示“添加”和“添加新用户”按钮。](./media/airwatch-tutorial/ic791930.png "添加用户")
 
 4. 在“添加 / 编辑用户”  对话框中，执行以下步骤：
 
@@ -238,12 +238,12 @@ ms.locfileid: "88542813"
 
 ### <a name="test-sso"></a>测试 SSO
 
-选择访问面板中的 AirWatch 磁贴时，应会自动登录到为其设置了 SSO 的 AirWatch。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+选择访问面板中的 AirWatch 磁贴时，应会自动登录到为其设置了 SSO 的 AirWatch。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

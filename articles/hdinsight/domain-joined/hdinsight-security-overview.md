@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89292973"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537263"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全性概述
 
@@ -78,23 +78,25 @@ Azure 合规性产品/服务基于各种类型的保证，包括独立的第三�
 | 数据访问安全性 | 为 Azure Data Lake Storage Gen1 和 Gen2 配置[访问控制列表 (ACL)](../../storage/blobs/data-lake-storage-access-control.md)  | 客户 |
 |  | 在存储帐户中启用“[需要安全传输](../../storage/common/storage-require-secure-transfer.md)”属性。 | 客户 |
 |  | 配置 [Azure 存储防火墙](../../storage/common/storage-network-security.md)和虚拟网络 | 客户 |
-|  | 为 Cosmos DB 和 [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 配置 [Azure 虚拟网络服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) | 客户 |
+|  | 为 Cosmos DB 和 [Azure SQL DB](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) 配置 [Azure 虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md) | 客户 |
 |  | 请确保已启用[传输中加密](./encryption-in-transit.md)功能，以便使用 TLS 和 IPSec 进行群集内通信。 | 客户 |
-|  | 配置[客户管理的密钥](../../storage/common/storage-encryption-keys-portal.md)以进行 Azure 存储加密 | 客户 |
-|  | 使用[客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)控制对数据的访问权限 | 客户 |
-| 应用程序和中间件安全性 | 集成 AAD-DS 并[配置身份验证](apache-domain-joined-configure-using-azure-adds.md) | 客户 |
+|  | 配置[客户管理的密钥](../../storage/common/customer-managed-keys-configure-key-vault.md)以进行 Azure 存储加密 | 客户 |
+|  | 使用[客户密码箱](../../security/fundamentals/customer-lockbox-overview.md)控制对数据的访问权限 | 客户 |
+| 应用程序和中间件安全性 | 与 AAD-DS 和[配置 ESP](apache-domain-joined-configure-using-azure-adds.md) 集成或使用 [HIB 进行 OAuth 身份验证](identity-broker.md)| 客户 |
 |  | 配置 [Apache Ranger 授权](apache-domain-joined-run-hive.md)策略 | 客户 |
 |  | 使用 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | 客户 |
 | 操作系统安全性 | 使用最新且安全的基础映像创建群集 | 客户 |
 |  | 确保定期进行 [OS 修补](../hdinsight-os-patching.md) | 客户 |
+|  | 确保[对 VM 进行 CMK 磁盘加密](../disk-encryption.md) | 客户 |
 | 网络安全 | 配置[虚拟网络](../hdinsight-plan-virtual-network-deployment.md) |
-|  | 配置[网络安全组 (NSG) 入站规则](../control-network-traffic.md) | 客户 |
+|  | 配置[网络安全组 (NSG) 入站规则](../control-network-traffic.md)或[专用链接](../hdinsight-private-link.md) | 客户 |
 |  | 使用防火墙配置[出站流量限制](../hdinsight-restrict-outbound-traffic.md) | 客户 |
+|  | 在群集节点之间配置 [IPSec 传输中加密](encryption-in-transit.md) | 客户 |
 | 虚拟化的基础结构 | 空值 | HDInsight（云提供商） |
 | 物理基础结构安全性 | 空值 | HDInsight（云提供商） |
 
 ## <a name="next-steps"></a>后续步骤
 
 * [HDInsight 群集规划](apache-domain-joined-architecture.md)
-* [配置 ESP HDInsight 群集](apache-domain-joined-configure.md)
+* [配置 ESP HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)
 * [管理 ESP HDInsight 群集](apache-domain-joined-manage.md)

@@ -1,17 +1,17 @@
 ---
-title: 概述 Linux Vm 的备份选项
+title: Linux VM 备份选项概述
 description: 概述 Linux Azure 虚拟机的备份选项。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554774"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972350"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的备份和还原选项
 
@@ -32,7 +32,7 @@ ms.locfileid: "87554774"
 
 可以通过按需测试故障转移进行灾难恢复演练，而不影响生产工作负荷或正在进行的复制。 创建恢复计划，为多个 VM 上运行的整个应用程序安排故障转移和故障回复。 恢复计划功能将与 Azure 自动化 Runbook 集成。
 
-可以通过[复制虚拟机](https://aka.ms/a2a-getting-started)来启动。 
+可以通过[复制虚拟机](../site-recovery/azure-to-azure-quickstart.md)来启动。 
 
 ## <a name="managed-snapshots"></a>托管快照 
 
@@ -40,7 +40,7 @@ ms.locfileid: "87554774"
 
 有关创建快照的详细信息，请参阅：
 
-* [在 Windows 中使用快照创建存储为托管磁盘的 VHD 副本](./windows/snapshot-copy-managed-disk.md)
+* [使用 Windows 中的快照创建作为托管磁盘存储的 VHD 的副本](./windows/snapshot-copy-managed-disk.md)
 * [使用 Linux 中的快照创建作为托管磁盘存储的 VHD 的副本](./linux/snapshot-copy-managed-disk.md)
 
 

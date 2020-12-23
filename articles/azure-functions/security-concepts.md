@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761407"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491318"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -24,11 +24,11 @@ ms.locfileid: "91761407"
 
 ### <a name="security-center"></a>安全中心
 
-安全中心与门户中的函数应用集成。 它免费提供了对潜在配置相关安全漏洞的快速评估。 在专用计划中运行的函数应用也可以使用安全中心的实时安全功能，但需要额外付费。 若要了解更多信息，请参阅[保护你的 Azure 应用服务 Web 应用和 API](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction)。 
+安全中心与门户中的函数应用集成。 它免费提供了对潜在配置相关安全漏洞的快速评估。 在专用计划中运行的函数应用也可以使用安全中心的实时安全功能，但需要额外付费。 若要了解更多信息，请参阅[保护你的 Azure 应用服务 Web 应用和 API](../security-center/defender-for-app-service-introduction.md)。 
 
 ### <a name="log-and-monitor"></a>日志和监视器
 
-检测攻击的方法之一是通过活动监视活动和日志分析。 Functions 与 Application Insights 相集成，可收集函数应用的日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解函数的使用方式。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+检测攻击的一种方法是通过活动监视活动和日志记录分析。 Functions 与 Application Insights 相集成，可收集函数应用的日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解函数的使用方式。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志与系统事件合并，以便更轻松地进行分析。 你可以使用诊断设置将函数的平台日志和指标流式导出配置到你选择的目标位置，例如 Log Analytics 工作区。 若要了解更多信息，请参阅[使用 Azure Monitor 日志监视 Azure Functions](functions-monitor-log-analytics.md)。 
 
@@ -76,7 +76,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 默认情况下，密钥存储在通过 `AzureWebJobsStorage` 设置提供的帐户中的 Blob 存储容器中。 可以使用特定的应用程序设置来重写此行为，将密钥存储在另一位置。
 
-|位置  |设置 | 值 | 描述  |
+|位置  |设置 | “值” | 描述  |
 |---------|---------|---------|---------|
 |不同的存储帐户     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根据提供的 SAS URL，将密钥存储在另一个存储帐户的 Blob 存储中。 在使用函数应用特有的机密存储密钥之前对密钥进行加密。 |
 |文件系统   | `AzureWebJobsSecretStorageType`   |  `files`       | 密钥持久保留在文件系统中，在使用函数应用特有的机密进行存储之前加密。 |
@@ -129,7 +129,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 应用设置和连接字符串以加密方式存储在 Azure 中。 只有在应用程序启动时，它们才会被解密，然后再注入到应用程序内存中。 加密密钥会定期轮换。 如果希望管理机密的安全存储，则应该将应用设置改为对 Azure Key Vault 的引用。 
 
-在本地计算机上开发函数时，还可以在文件的 local.settings.js中默认加密设置。 若要了解详细信息，请参阅 `IsEncrypted` [本地设置文件](functions-run-local.md#local-settings-file)中的属性。  
+在本地计算机上开发功能时，默认情况下，还可以在 local.settings.json 文件中加密设置。 若要了解详细信息，请参阅[本地设置文件](functions-run-local.md#local-settings-file)中的 `IsEncrypted` 属性。  
 
 #### <a name="key-vault-references"></a>Key Vault 引用
 

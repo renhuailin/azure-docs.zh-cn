@@ -9,20 +9,20 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6a7301fd878eb65e4c1dd540275611bcf9348afc
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85961228"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241737"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
-[自定义翻译](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服务的一项功能，允许翻译企业、应用开发人员和语言服务提供者生成自定义的神经机器翻译 (NMT) 系统。 自定义的翻译系统可无缝集成到现有的应用程序、工作流和网站中。 [自定义翻译](https://portal.customtranslator.azure.ai/)提供的功能类似于 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 为统计机器翻译 (SMT) 提供的功能，但专用于神经机器翻译 (NMT) 系统。
+[自定义翻译](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服务的一项功能，允许翻译企业、应用开发人员和语言服务提供者生成自定义的神经机器翻译 (NMT) 系统。 自定义的翻译系统可无缝集成到现有的应用程序、工作流和网站中。
 
-使用[自定义翻译](https://portal.customtranslator.azure.ai)生成的翻译系统可以通过同一个基于云、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效且高度可缩放的 Microsoft 文本[翻译 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 来使用，该 API 版本每天为数十亿条翻译提供支持。
+使用[自定义翻译](https://portal.customtranslator.azure.ai)生成的翻译系统可以通过同一个基于云、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效且高度可缩放的 Microsoft 文本[翻译 API V3](../reference/v3-0-translate.md?tabs=curl) 来使用，该 API 版本每天为数十亿条翻译提供支持。
 
-自定义翻译支持三十多种语言，可以直接映射到适用于 NMT 的语言。 如需完整的列表，请参阅 [Microsoft Translator 语言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
+自定义翻译支持三十多种语言，可以直接映射到适用于 NMT 的语言。 如需完整的列表，请参阅 [Microsoft Translator 语言](../language-support.md#customization)。
 
 ## <a name="features"></a>功能
 
@@ -34,7 +34,7 @@ ms.locfileid: "85961228"
 |[生成了解业务术语的系统](what-are-parallel-documents.md)     |  使用并行文档自定义并生成翻译系统，该系统了解在你自己的业务和行业中使用的术语。       |
 |[使用字典来生成模型](what-is-dictionary.md)     |   如果没有训练数据集，可以只使用字典数据训练一个模型。       |
 |[与他人协作](how-to-manage-settings.md#share-your-workspace)     |   将工作与他人共享，与团队协作。     |
-|[访问自定义翻译模型](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  可以通过 Microsoft 文本翻译 API V3 使用现有的应用程序/程序来随时访问自定义翻译模型。       |
+|[访问自定义翻译模型](../reference/v3-0-translate.md?tabs=curl)     |  可以通过 Microsoft 文本翻译 API V3 使用现有的应用程序/程序来随时访问自定义翻译模型。       |
 
 ## <a name="get-better-translations"></a>获取更好的翻译
 

@@ -1,31 +1,34 @@
 ---
-title: 向用户流添加 API 连接器
+title: '将 API 连接器添加到 (预览版的用户流) '
 description: 配置要在用户流中使用的 API 连接器。
 services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9117474c3cbf5087a5b63512fcc17c4771bf7aa6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854352"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343869"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>将 API 连接器添加到注册用户流
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>将 API 连接器添加到注册用户流 (预览) 
+
+> [!IMPORTANT]
+> 用于注册的 API 连接器是 Azure AD B2C 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 若要使用 [api 连接器](api-connectors-overview.md)，首先要创建 api 连接器，然后在用户流中启用它。
 
 ## <a name="create-an-api-connector"></a>创建 API 连接器
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 " **Azure 服务**" 下，选择 **Azure AD B2C**。
-4. 选择 " **API 连接器 (预览") **，然后选择 " **新建 api 连接器**"。
+4. 选择 " **API 连接器 (预览")**，然后选择 " **新建 api 连接器**"。
 
    ![添加新的 API 连接器](./media/add-api-connector/api-connector-new.png)
 
@@ -33,13 +36,13 @@ ms.locfileid: "91854352"
 6. 提供 API 调用的 **终结点 URL** 。
 7. 提供 API 的身份验证信息。
 
-   - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的 "虚拟" **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如，https： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
+   - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的 "虚拟" **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如，https： []() //contoso.azurewebsites.net/api/endpoint <b>？ code = 0123456789</b>) 。
 
    ![配置新的 API 连接器](./media/add-api-connector/api-connector-config.png)
 8. 选择“保存”。
 
 ## <a name="the-request-sent-to-your-api"></a>发送到 API 的请求
-API 连接器具体化为 **HTTP POST** 请求，发送 ( "声明" ) 为 JSON 正文中的键值对的用户属性。 特性的序列化与 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) 用户属性类似。 
+API 连接器具体化为 **HTTP POST** 请求，发送 ( "声明" ) 为 JSON 正文中的键值对的用户属性。 特性的序列化与 [Microsoft Graph](/graph/api/resources/user#properties) 用户属性类似。 
 
 **示例请求**
 ```http
@@ -48,7 +51,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -70,23 +73,23 @@ Content-type: application/json
 }
 ```
 
-只有**Azure AD B2C**用户属性体验中列出的用户属性和自定义属性  >  **User attributes**可在请求中发送。
+只有 **Azure AD B2C** 用户属性体验中列出的用户属性和自定义属性  >  **User attributes** 可在请求中发送。
 
 自定义属性在目录的 **extension_ \<extensions-app-id> _CustomAttribute**  格式中存在。 你的 API 应该会接收此相同序列化格式的声明。 有关自定义属性的详细信息，请参阅 [在 Azure Active Directory B2C 中定义自定义属性](user-flow-custom-attributes.md)。
 
-此外，默认情况下，在所有请求中发送 ** ( "ui_locales" ) 声明的 UI 区域设置 ** 。 它提供在其设备上配置的用户区域设置 () ，API 可以使用此区域设置来返回国际化响应。
+此外，默认情况下，在所有请求中发送 **( "ui_locales" ) 声明的 UI 区域设置** 。 它提供在其设备上配置的用户区域设置 () ，API 可以使用此区域设置来返回国际化响应。
 
 > [!IMPORTANT]
 > 如果调用 API 终结点时声明没有值，则不会将该声明发送到 API。 应将 API 设计为显式检查并处理声明不在请求中的情况。
 
 > [!TIP] 
-> [**标识 ( "标识" ) **](https://docs.microsoft.com/graph/api/resources/objectidentity) 并且 **电子邮件地址 ( "email" ) ** 声明在用户拥有租户中的帐户之前，你的 API 可以使用它来标识该用户。 当用户使用标识提供程序（如 Google 或 Facebook）进行身份验证时，将发送 "标识" 声明。 始终发送 "email"。
+> [**标识 ( "标识" )**](/graph/api/resources/objectidentity) 并且 **电子邮件地址 ( "email" )** 声明在用户拥有租户中的帐户之前，你的 API 可以使用它来标识该用户。 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在用户流中启用 API 连接器
 
 按照以下步骤将 API 连接器添加到注册用户流。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 " **Azure 服务**" 下，选择 **Azure AD B2C**。
 4. 选择 " **用户流**"，然后选择要向其添加 API 连接器的用户流。
 5. 选择 " **api 连接器**"，然后选择要在用户流中的以下步骤调用的 api 终结点：
@@ -100,7 +103,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录后
 
-在用户使用标识 (提供者（如 Google、Facebook、& Azure AD) 进行身份验证后，会立即调用注册过程中的 API 连接器。 此步骤优先于 " ***属性集合" 页***，它是向用户显示的用于收集用户属性的窗体。 如果用户正在使用本地帐户注册，则不会调用此步骤。
+在用户使用标识 (提供者（如 Google、Facebook、& Azure AD) 进行身份验证后，会立即调用注册过程中的 API 连接器。 此步骤优先于 **_属性集合页_* _，这是向用户显示的用于收集用户特性的窗体。 如果用户正在使用本地帐户注册，则不会调用此步骤。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>此步骤发送到 API 的示例请求
 ```http
@@ -109,7 +112,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -167,7 +170,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -238,8 +241,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中 **接收的声明** ，则这些值可以存储在目录中，并可存储在用户流的 **用户属性** 中。 如果选择作为 **应用程序声明**，则可以在令牌中返回值。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的**用户属性**中**接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 返回的值可以覆盖从用户收集的值。 如果选择此选项，则还可以在令牌中返回。                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 声明不需要包含 `_<extensions-app-id>_` 。 返回的值可以覆盖从用户收集的值。 如果选择作为 **应用程序声明**，还可以在令牌中返回。  |
 
 ### <a name="example-of-a-blocking-response"></a>阻塞响应的示例
 
@@ -267,6 +270,8 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>验证错误响应示例
 
+
+
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -283,8 +288,11 @@ Content-type: application/json
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
 | action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
-| status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
+| 状态      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
 | userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
+
+> [!NOTE]
+> HTTP 状态代码必须是 "400"，以及响应正文中的 "status" 值。
 
 **验证-错误响应的最终用户体验**
 
@@ -296,7 +304,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>使用无服务器云功能
 无服务器函数（如 Azure Functions 中的 HTTP 触发器）提供了一种简单的方法来创建 API 终结点，以便与 API 连接器一起使用。 [例如](code-samples.md#api-connectors)，你可以使用无服务器云功能来执行验证逻辑，并将登录限制到特定电子邮件域。 无服务器云功能还可以调用和调用其他 web Api、用户存储和其他云服务，以实现更复杂的方案。
 
-### <a name="best-practices"></a>最佳做法
+### <a name="best-practices"></a>最佳实践
 请确保：
 * API 遵循上述 API 请求和响应约定。 
 * API 连接器的 **终结点 URL** 指向正确的 API 终结点。
@@ -314,4 +322,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>后续步骤
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-- [Azure Function 快速入门示例](code-samples.md#api-connectors)入门。
+- 开始学习我们的 [示例](code-samples.md#api-connectors)。

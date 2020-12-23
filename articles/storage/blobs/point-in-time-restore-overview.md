@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 32d0c44abed2d4ace4c8896922ed7f6ed8b596ff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326093"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908789"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>块 blob 的时间点还原
 
@@ -35,7 +35,7 @@ Azure 存储会分析在所请求的还原点（UTC 时间）和当前时间段�
 
 一次只能在一个存储帐户上运行一个还原操作。 还原操作在执行后将无法取消，但可以执行第二个还原操作来撤消第一个操作。
 
-" **还原 Blob 范围** " 操作返回唯一标识操作的还原 ID。 若要检查时间点还原的状态，请使用**还原 Blob 范围**操作返回的还原 ID 调用 "**获取还原状态**" 操作。
+" **还原 Blob 范围** " 操作返回唯一标识操作的还原 ID。 若要检查时间点还原的状态，请使用 **还原 Blob 范围** 操作返回的还原 ID 调用 "**获取还原状态**" 操作。
 
 > [!IMPORTANT]
 > 执行还原操作时，Azure 存储会阻止在操作期间还原的范围内的 blob 上的数据操作。 读取、写入和删除操作在主位置中被阻止。 出于此原因，在执行还原操作时，Azure 门户中的操作（如列出容器）可能不会按预期执行。
@@ -49,7 +49,7 @@ Azure 存储会分析在所请求的还原点（UTC 时间）和当前时间段�
 
 执行时点还原需要启用以下 Azure 存储功能，然后才能启用时间点还原：
 
-- [软删除](soft-delete-overview.md)
+- [软删除](./soft-delete-blob-overview.md)
 - [更改源](storage-blob-change-feed.md)
 - [Blob 版本控制](versioning-overview.md)
 
@@ -92,5 +92,5 @@ Azure 存储会分析在所请求的还原点（UTC 时间）和当前时间段�
 
 - [对块 blob 数据执行时间点还原](point-in-time-restore-manage.md)
 - [Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)
-- [为 blob 启用软删除](soft-delete-enable.md)
+- [为 blob 启用软删除](./soft-delete-blob-enable.md)
 - [启用和管理 blob 版本控制](versioning-enable.md)

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595938"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182880"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>排查应用程序网关中的应用服务问题
 
@@ -80,10 +80,10 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>解决方案：重写 location 标头
 
-将 location 标头中的主机名设置为应用程序网关的域名。 为此，请创建一个包含条件的 [重写规则](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) ，该规则评估响应中的 location 标头是否包含 azurewebsites.net。 该规则还必须执行相应的操作来重写 location 标头，使其包含应用程序网关的主机名。 有关详细信息，请参阅有关[如何重写 location 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)的说明。
+将 location 标头中的主机名设置为应用程序网关的域名。 为此，请创建一个包含条件的 [重写规则](./rewrite-http-headers.md) ，该规则评估响应中的 location 标头是否包含 azurewebsites.net。 该规则还必须执行相应的操作来重写 location 标头，使其包含应用程序网关的主机名。 有关详细信息，请参阅有关[如何重写 location 标头](./rewrite-http-headers.md#modify-a-redirection-url)的说明。
 
 > [!NOTE]
-> HTTP 标头重写支持仅适用于应用程序网关的 [Standard_v2 和 WAF_v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)。 如果使用 v1 SKU，我们建议[从 v1 迁移到 v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)。 需要使用 v2 SKU 中提供的重写和其他[高级功能](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku)。
+> HTTP 标头重写支持仅适用于应用程序网关的 [Standard_v2 和 WAF_v2 SKU](./application-gateway-autoscaling-zone-redundant.md)。 如果使用 v1 SKU，我们建议[从 v1 迁移到 v2](./migrate-v1-v2.md)。 需要使用 v2 SKU 中提供的重写和其他[高级功能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)。
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>备用解决方案：使用自定义域名
 
@@ -93,7 +93,7 @@ X-Powered-By: ASP.NET
 
 必须拥有一个自定义域并执行以下过程：
 
-- 将该域注册到应用服务的自定义域列表。 必须在自定义域中创建一个指向应用服务 FQDN 的 CNAME。 有关详细信息，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)。
+- 将该域注册到应用服务的自定义域列表。 必须在自定义域中创建一个指向应用服务 FQDN 的 CNAME。 有关详细信息，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](../app-service/app-service-web-tutorial-custom-domain.md)。
 
     ![应用服务自定义域列表](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 

@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e3f541e28f47bb6456b441811d23baa9e020fde7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361358"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959146"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -60,7 +61,7 @@ ms.locfileid: "91361358"
 
 ## <a name="general-remarks"></a>一般备注
 
-* 请务必在“设置”->“设置”->“引擎”中启用“自动装入点创建”**  
+* 请务必在“设置”->“设置”->“引擎”中启用“自动装入点创建”  
   在未启用此设置的情况下，如果 SAP LaMa 使用虚拟机上的 SAP 自适应扩展装载卷，则该装入点必须存在。
 
 * 使用单独的子网而不要使用动态 IP 地址，以防止在部署新 VM 并且未准备好 SAP 实例时发生 IP 地址“窃用”  
@@ -181,7 +182,7 @@ SAP HANA 需要 /hana/shared、/hana/backup、/hana/data 和 /hana/log 的磁盘
 
 Oracle 数据库需要 /oracle、/home/oraod1 和 /home/oracle 的磁盘
 
-![Linux 上的 Oracle 数据库](media/lama/sap-lama-db-ora-lnx.png)
+![显示 Linux 上的 Oracle 数据库及其所需磁盘的关系图。](media/lama/sap-lama-db-ora-lnx.png)
 
 #### <a name="manual-deployment-for-microsoft-sql-server"></a>Microsoft SQL Server 的手动部署
 
@@ -274,7 +275,7 @@ SAP LaMa 不能重定位 SQL Server 本身，因此，要用于重定位数据�
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-运行 SWPM，并为“ASCS 实例主机名”使用 *ah1-ascs*。**
+运行 SWPM，并为“ASCS 实例主机名”使用 *ah1-ascs*。
 
 ![Linux 徽标。][Logo_Linux] Linux  
 将以下配置文件参数添加到位于 /usr/sap/hostctrl/exe/host_profile 的 SAP 主机代理配置文件。 有关详细信息，请参阅 SAP 说明 [2628497]。
@@ -319,7 +320,7 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 
 ![已创建 SAP LaMa NetApp 容量池 ](media/lama/sap-lama-capacitypool-list.png)
 
-现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/ \<SID\> *、 */usr/sap/ \<SID\> *和 */home/ \<sid\> adm*。 （可选） */usr/sap/trans* 是中心传输目录所必需的，其中至少有一个横向的系统使用。
+现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/ \<SID\>*、 */usr/sap/ \<SID\>* 和 */home/ \<sid\> adm*。 （可选） */usr/sap/trans* 是中心传输目录所必需的，其中至少有一个横向的系统使用。
 
 > [!NOTE]
 > 在测试阶段，卷的名称在订阅中必须是唯一的。
@@ -381,7 +382,7 @@ mkdir -p /usr/sap/trans
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-在应用程序服务器虚拟机（而不是 HANA 虚拟机）上运行 SWPM 数据库实例安装。 在“SAP 系统的数据库”对话框中，为“数据库主机”使用 *ah1-db*。****
+在应用程序服务器虚拟机（而不是 HANA 虚拟机）上运行 SWPM 数据库实例安装。 在“SAP 系统的数据库”对话框中，为“数据库主机”使用 *ah1-db*。
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>安装 SAP HANA 的 SAP NetWeaver 应用程序服务器
 
@@ -417,7 +418,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *ah1-di-0*。****
+在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *ah1-di-0*。
 
 #### <a name="post-installation-steps-for-sap-hana"></a>SAP HANA 的安装后步骤
 
@@ -436,7 +437,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-运行 SWPM，并为“ASCS 实例主机名”使用 *as1-ascs*。**
+运行 SWPM，并为“ASCS 实例主机名”使用 *as1-ascs*。
 
 #### <a name="install-sql-server"></a>安装 SQL Server
 
@@ -460,7 +461,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。****
+在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。
 
 ## <a name="troubleshooting"></a>疑难解答
 
@@ -489,19 +490,19 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
   * 解决方案  
     为源 HANA 系统中的所有数据库创建备份
 
-* 数据库实例的系统复制步骤开始**
+* 数据库实例的系统复制步骤开始
   * 主机代理操作 '000D3A282BC91EE8A1D76CF1F92E2944' 失败(OperationException。 FaultCode: '127'，消息:“命令执行失败。 : [Microsoft][SQL Server Driver][SQL Server] 用户无权更改数据库 'AS2'、该数据库不存在，或者该数据库不处于允许访问检查的状态。)
   * 解决方案  
     确保 *NT AUTHORITY\SYSTEM* 可以访问 SQL Server。 参阅 SAP 说明 [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>系统克隆期间的错误和警告
 
-* 尝试在应用程序服务器或 ASCS 的“强制注册并启动实例代理”步骤中注册实例代理时出错**
+* 尝试在应用程序服务器或 ASCS 的“强制注册并启动实例代理”步骤中注册实例代理时出错
   * 尝试注册实例代理时出错。 (RemoteException:“无法从配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' 加载实例数据: 无法访问配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0': 没有此类文件或目录。”)
   * 解决方案  
    确保 ASCS/SCS 上的 sapmnt 共享对 SAP_AS1_GlobalAdmin 拥有完全访问权限
 
-* “为克隆启用启动保护”步骤出错**
+* “为克隆启用启动保护”步骤出错
   * 无法打开文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0'。原因: 没有此类文件或目录
   * 解决方案  
     应用程序服务器的计算机帐户需要拥有配置文件的写访问权限

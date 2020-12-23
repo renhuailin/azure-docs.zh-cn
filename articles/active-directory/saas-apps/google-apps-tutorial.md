@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9a5cb1e589481bb424507d08879da8cc1b14ff1c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707809"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448174"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Google Cloud (G Suite) Connector 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "90707809"
 * 让用户使用其 Azure AD 帐户自动登录到 Google Cloud (G Suite) Connector。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,7 +64,7 @@ ms.locfileid: "90707809"
 
 5. **问：如果用户通过 Windows 登录，他们是否会自动进行 Google Cloud (G Suite) Connector 身份验证而不会收到输入密码的提示？**
 
-    A:有两种用于启用此方案的选项。 第一种，用户可通过 [Azure Active Directory Join](../device-management-introduction.md) 登录到 Windows 10 设备。 或者，用户可以登录到通过域加入的方式加入到一个本地 Active Directory（已通加 [Active Directory 联合身份验证服务 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署启用 Azure AD 单一登录）的 Windows 设备。 两种选项都要求执行以下教程中的步骤，才能在 Azure AD 与 Google Cloud (G Suite) Connector 之间启用单一登录。
+    A:有两种用于启用此方案的选项。 第一种，用户可通过 [Azure Active Directory Join](../devices/overview.md) 登录到 Windows 10 设备。 或者，用户可以登录到通过域加入的方式加入到一个本地 Active Directory（已通加 [Active Directory 联合身份验证服务 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署启用 Azure AD 单一登录）的 Windows 设备。 两种选项都要求执行以下教程中的步骤，才能在 Azure AD 与 Google Cloud (G Suite) Connector 之间启用单一登录。
 
 6. **问：当我收到"无效的电子邮件"错误消息时，该怎么办？**
 
@@ -82,8 +82,8 @@ ms.locfileid: "90707809"
 
 * Google Cloud (G Suite) Connector 支持 **SP** 发起的 SSO
 
-* Google Cloud (G Suite) Connector 支持[**自动**用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
-* 配置 Google Cloud (G Suite) Connector 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Google Cloud (G Suite) Connector 支持 [**自动** 用户预配](./google-apps-provisioning-tutorial.md)
+* 配置 Google Cloud (G Suite) Connector 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>从库中添加 Google Cloud (G Suite) Connector
 
@@ -93,7 +93,7 @@ ms.locfileid: "90707809"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Google Cloud (G Suite) Connector**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Google Cloud (G Suite) Connector** 。 
 1. 在结果面板中选择“Google Cloud (G Suite) Connector”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>配置并测试 Google Cloud (G Suite) Connector 的 Azure AD 单一登录
@@ -236,13 +236,13 @@ ms.locfileid: "90707809"
 
     f. 在 Google Cloud (G Suite) Connector 中的“更改密码 URL”字段内，粘贴从 Azure 门户复制的“更改密码 URL”值。 
 
-    g. 单击“ **保存**”。
+    g. 单击“ **保存** ”。
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>创建 Google Cloud (G Suite) Connector 测试用户
 
 本部分的目标是[在 Google Cloud (G Suite) Connector 中创建名为 B.Simon 的用户](https://support.google.com/a/answer/33310?hl=en)。 在 Google Cloud (G Suite) Connector 中手动创建用户后，该用户现在可以使用其 Microsoft 365 登录凭据登录。
 
-Google Cloud (G Suite) Connector 还支持自动用户预配。 若要配置自动用户预配，必须先[为自动用户预配配置 Google Cloud (G Suite) Connector](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)。
+Google Cloud (G Suite) Connector 还支持自动用户预配。 若要配置自动用户预配，必须先[为自动用户预配配置 Google Cloud (G Suite) Connector](./google-apps-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 如果在测试单一登录之前尚未在 Azure AD 中启用预配，请确保 Google Cloud (G Suite) Connector 中已存在用户。
@@ -254,23 +254,23 @@ Google Cloud (G Suite) Connector 还支持自动用户预配。 若要配置自�
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Google Cloud (G Suite) Connector”磁贴时，应会自动登录到设置了 SSO 的 Google Cloud (G Suite) Connector。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Google Cloud (G Suite) Connector”磁贴时，应会自动登录到设置了 SSO 的 Google Cloud (G Suite) Connector。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录](../manage-apps/what-is-single-sign-on.md)。
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
-- [配置用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+- [配置用户预配](./google-apps-provisioning-tutorial.md)
 
 - [在 Azure AD 中试用 Google Cloud (G Suite) Connector](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 Google Cloud (G Suite) Connector](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+- [如何使用高级可见性和控制保护 Google Cloud (G Suite) Connector](/cloud-app-security/protect-gsuite)
 
 <!--Image references-->
 

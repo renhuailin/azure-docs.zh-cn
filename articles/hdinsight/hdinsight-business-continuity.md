@@ -8,12 +8,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857769"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546936"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight 业务连续性
 
@@ -39,7 +39,7 @@ Azure HDInsight 群集依赖于许多 Azure 服务，例如存储、数据库、
 
 * 使用 HDInsight 上的 Azure 监视工具检测群集中的异常行为并设置相应的警报通知。 你可以部署预配置的、特定于 HDInsight 群集的管理解决方案，这些解决方案收集特定群集类型的重要性能指标。 有关详细信息，请参阅 [适用于 HDInsight 的 Azure 监视](./hdinsight-hadoop-oms-log-analytics-tutorial.md)。  
 
-* 订阅 Azure 运行状况警报，以获得有关订阅、服务或区域的服务问题、计划内维护、运行状况和安全建议的通知。 包含问题原因和 resolute ETA 的运行状况通知可帮助你更好地执行故障转移和故障回复。 有关详细信息，请参阅 [Azure 服务运行状况文档](/azure/service-health/)。
+* 订阅 Azure 运行状况警报，以获得有关订阅、服务或区域的服务问题、计划内维护、运行状况和安全建议的通知。 包含问题原因和 resolute ETA 的运行状况通知可帮助你更好地执行故障转移和故障回复。 有关详细信息，请参阅 [Azure 服务运行状况文档](../service-health/index.yml)。
 
 ## <a name="single-region-availability"></a>单区域可用性
 
@@ -84,7 +84,7 @@ HDInsight 提供99.9% 的可用性 SLA。 为了在单个部署中提供高可�
 
 ### <a name="hdinsight-metastore"></a>HDInsight 元存储
 
-HDInsight 使用 [AZURE SQL 数据库](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) 作为元存储，它提供99.99% 的 SLA。 数据中心内的三个数据副本使用异步复制进行保存。 如果副本丢失，则可无缝地提供备用副本。 支持[活动异地复制](../azure-sql/database/active-geo-replication-overview.md)，最多可使用四个数据中心。 如果存在故障转移（手动或数据中心），则层次结构中的第一个副本将自动变为可读写。 有关详细信息，请参阅 [AZURE SQL 数据库业务连续性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+HDInsight 使用 [AZURE SQL 数据库](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) 作为元存储，它提供99.99% 的 SLA。 数据中心内的三个数据副本使用同步复制来保存。 如果副本丢失，则可无缝地提供备用副本。 支持[活动异地复制](../azure-sql/database/active-geo-replication-overview.md)，最多可使用四个数据中心。 如果存在故障转移（手动或数据中心），则层次结构中的第一个副本将自动变为可读写。 有关详细信息，请参阅 [AZURE SQL 数据库业务连续性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 
 ### <a name="hdinsight-storage"></a>HDInsight 存储
 
@@ -112,7 +112,7 @@ HDInsight 建议 Azure Data Lake Storage Gen2 作为基础存储层。 [Azure �
 |----|------------------------|-----------------------|
 |数据存储|复制次要区域中的主数据/表|仅复制特选的数据|
 |数据出口|出站跨区域数据传输以价格提供。 查看带宽定价指导原则|仅复制特选数据以减少区域出口量|
-|群集计算|辅助区域中的其他 HDInsight 群集|在主要故障后使用自动脚本来部署辅助计算。 < \br>< \br>使用自动缩放将辅助群集大小保持在最小值。 < \br>< \br>使用更便宜的 VM Sku。 < \br>< \br> 在 VM Sku 可能会打折的区域中创建辅助数据库。|
+|群集计算|辅助区域中的其他 HDInsight 群集|在主要故障后使用自动脚本部署辅助计算。 使用自动缩放将辅助群集大小保持在最小值。 使用更便宜的 VM Sku。 在 VM Sku 可能会打折的区域中创建辅助数据库。|
 |身份验证 |次要区域中的多用户方案将产生其他 Azure AD DS 设置|避免次要区域中的多用户设置。|
 
 ### <a name="complexity-optimizations"></a>复杂性优化

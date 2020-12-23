@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: d7a3c86f3d9cf083a8746f753b8c5287c774a93e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263261"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324510"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL 托管实例 (预览版中的机器学习服务) 
 
@@ -44,7 +44,7 @@ ms.locfileid: "91263261"
 
 - **在存储过程中将模型和脚本部署到生产环境中** ，可以通过在 t-sql 存储过程中嵌入脚本和定型模型来操作化它们。 通过只调用存储过程，连接到 Azure SQL 托管实例的应用程序可以受益于这些模型中的预测和智能。 你还可以使用本机 T-sql 预测函数来操作模型，以便在高度并发的实时评分方案中快速计分。
 
-Python 和 R 的基本分发包含在机器学习服务中。 除了用于 Python 的 [revoscalepy](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-revoscalepy) 和 [microsoftml](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-microsoftml) Microsoft 包，以及用于 R 的 [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler)、[MicrosoftML](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml)、[olapR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-olapr) 和 [sqlrutils](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-sqlrutils) 外，还可以安装和使用开源包和框架，如 PyTorch、TensorFlow 和 scikit-learn。
+Python 和 R 的基本分发包含在机器学习服务中。 除了用于 Python 的 [revoscalepy](/sql/advanced-analytics/python/ref-py-revoscalepy) 和 [microsoftml](/sql/advanced-analytics/python/ref-py-microsoftml) Microsoft 包，以及用于 R 的 [RevoScaleR](/sql/advanced-analytics/r/ref-r-revoscaler)、[MicrosoftML](/sql/advanced-analytics/r/ref-r-microsoftml)、[olapR](/sql/advanced-analytics/r/ref-r-olapr) 和 [sqlrutils](/sql/advanced-analytics/r/ref-r-sqlrutils) 外，还可以安装和使用开源包和框架，如 PyTorch、TensorFlow 和 scikit-learn。
 
 <a name="signup"></a>
 
@@ -54,19 +54,27 @@ Python 和 R 的基本分发包含在机器学习服务中。 除了用于 Pytho
 
 如果你有兴趣加入预览计划并接受这些条款，则可以通过在处创建 Azure 支持票证来请求注册 [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) 。 
 
+1. 在 " **创建支持票证** " 页上，单击 " **创建事件**"。
+
+1. 在 " **帮助 + 支持** " 页上，单击 " **新建支持请求** " 以创建新票证。
+
 1. 选择以下选项：
    - 问题类型- **技术**
    - 订阅- *选择订阅*
-   - 服务- **SQL 数据库托管实例**
+   - 服务- **SQL 托管实例**
+   - 资源- *选择托管实例*
    - 摘要- *输入请求的简短描述*
-   - **机器学习服务 SQL 托管实例的问题类型 (预览) **
+   - **机器学习服务 SQL 托管实例的问题类型 (预览)**
    - 问题子类型- **其他问题或 "如何" 问题**
 
 1. 单击 " **下一步：解决方案**"。
 
-1. 阅读有关预览版的信息，然后单击 " **详细信息**"。
+1. 阅读有关预览版的信息，然后单击 " **下一步：详细** 信息"。
 
-1. 在 " **说明**" 中，输入你的请求的详细信息，包括要在预览版中注册的逻辑服务器名称、区域和订阅 ID。 根据需要输入其他详细信息。
+1. 本页内容：
+   - 对于 **此问题，** 请选择 **"是**"。 
+   - 对于 " **说明**"，请输入你的请求的详细信息，包括要在预览版中注册的逻辑服务器名称、区域和订阅 ID。 根据需要输入其他详细信息。
+   - 选择首选联系方式。 
 
 1. 完成后，单击 " **下一步"：检查 + 创建**，然后单击 " **创建**"。
 
@@ -77,6 +85,6 @@ Python 和 R 的基本分发包含在机器学习服务中。 除了用于 Pytho
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅 [SQL Server 机器学习服务的主要区别](machine-learning-services-differences.md)。
-- 若要了解如何在机器学习服务中使用 Python，请参阅 [运行 python 脚本](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)。
-- 若要了解如何在机器学习服务中使用 R，请参阅 [运行 r 脚本](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)。
-- 有关其他 SQL 平台上的机器学习的详细信息，请参阅 [SQL 机器学习文档](https://docs.microsoft.com/sql/machine-learning/)。
+- 若要了解如何在机器学习服务中使用 Python，请参阅 [运行 python 脚本](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)。
+- 若要了解如何在机器学习服务中使用 R，请参阅 [运行 r 脚本](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)。
+- 有关其他 SQL 平台上的机器学习的详细信息，请参阅 [SQL 机器学习文档](/sql/machine-learning/)。

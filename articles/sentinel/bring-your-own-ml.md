@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342688"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660570"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>自带机器学习 (ML) 到 Azure Sentinel
 
@@ -32,7 +32,7 @@ ML 检测模型可适应单个环境和用户行为变化，从而减少误报�
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>什么是自带机器学习 (BYO) 平台？
 
-对于具有 ML 资源并想要为其独特的业务需求构建自定义 ML 模型的组织，我们提供了 **BYO ml 平台**。 该平台利用[Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/)环境和 Jupyter 笔记本来生成 ML 环境。 它提供以下组件：
+对于具有 ML 资源并想要为其独特的业务需求构建自定义 ML 模型的组织，我们提供了 **BYO ml 平台**。 该平台利用[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/)环境和 Jupyter 笔记本来生成 ML 环境。 它提供以下组件：
 
 - 一个 BYO ML 包，其中包含的库可帮助你访问数据并将结果推送到 Log Analytics (LA) ，因此你可以将结果与检测、调查和搜索集成。 
 
@@ -95,7 +95,7 @@ BYO ML 包包含 Microsoft 在 ML 的前端的最佳实践和研究，以实现�
 
 ### <a name="setup-the-databricksspark-environment"></a>设置 Databricks/Spark 环境
 
-如果还没有 Databricks 环境，需要设置自己的环境。 有关说明，请参阅 [Databricks 快速入门](https://docs.microsoft.com/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) 文档。
+如果还没有 Databricks 环境，需要设置自己的环境。 有关说明，请参阅 [Databricks 快速入门](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) 文档。
 
 ### <a name="auto-export-instruction"></a>自动导出指令
 
@@ -103,7 +103,7 @@ BYO ML 包包含 Microsoft 在 ML 的前端的最佳实践和研究，以实现�
 
 在此示例中，需要在 Azure blob 存储中为文件共享访问日志提供训练数据。 笔记本和库中记录了数据的格式。
 
-可以使用 [Azure 命令行接口 (CLI) ](https://docs.microsoft.com/cli/azure/monitor/log-analytics)，从 Log Analytics 中自动导出数据。 
+可以使用 [Azure 命令行接口 (CLI) ](/cli/azure/monitor/log-analytics)，从 Log Analytics 中自动导出数据。 
 
 若要运行这些命令，必须在 Log Analytics 工作区、存储帐户和 EventHub 资源中分配 " **参与者** " 角色。 
 

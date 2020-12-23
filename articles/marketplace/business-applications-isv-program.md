@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 7/14/2020
-ms.openlocfilehash: 4c4455d62f32acb1cfebde8f5e4d97de5bda17c2
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 11/19/2020
+ms.openlocfilehash: a20c495553dfe9a16c34a2972575d21cc95eef44
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463427"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537129"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立软件供应商 (ISV) Connect 计划加入指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "89463427"
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>设置你的 Microsoft 合作伙伴中心帐户
 
-若要为 ISV Connect 程序设置和管理帐户，请完成文章： [在合作伙伴中心创建商业 marketplace 帐户中](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)的步骤。 本文提供了创建新帐户的所有步骤，以及有关将新发布者添加到商业市场计划的信息。
+若要为 ISV Connect 程序设置和管理帐户，请完成文章： [在合作伙伴中心创建商业 marketplace 帐户中](./partner-center-portal/create-account.md)的步骤。 本文提供了创建新帐户的所有步骤，以及有关将新发布者添加到商业市场计划的信息。
 
 > [!NOTE]
 > 此步骤需要合作伙伴中心的 *所有者* 或 *管理员* 角色。
@@ -38,7 +38,7 @@ ms.locfileid: "89463427"
 > 此步骤要求合作伙伴中心的 " *所有者* " 或 " *经理* " 角色对法律协议进行签名。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
-1. 选择 " **设置** " (齿轮 "图标) 并选择" **开发人员设置**"。
+1. 选择 " **设置** " (齿轮图标) > **帐户设置**"。
 1. 选择 **协议**。
 1. 选择版本链接并查看协议。
 1. 若要同意并接受协议，请选择 " **接受协议**"。
@@ -51,14 +51,15 @@ ms.locfileid: "89463427"
 > 此步骤要求合作伙伴中心的 " *所有者* " 或 " *经理* " 角色更新计费信息。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
-1. 选择 " **设置** " (齿轮 "图标) 并选择" **开发人员设置**"。
-1. 在 " **帐户**" 下，选择 " **计费配置文件**"。
-1. 查看从你的法律实体填充的主要联系人和计费信息，并进行任何必要的更新。
+1. 选择 " **设置** " (齿轮图标) > **帐户设置**"。
+1. 在 " **组织配置文件**" 下，选择 " **计费配置文件** " 和 " **开发人员** " 选项卡
+1. 查看从你的法律实体填充的主要联系人和计费信息。
+1. 若要进行更改，请选择 " **更新**"。
 1. 如果适用，请提供税务 ID/VAT ID 设置。
-1. 单击“**保存**”以保存更改。
+1. 若要保存更改，请选择 " **更新**"。
 
 > [!NOTE]
-> 你可以随时更新计费配置文件。 但是 *，不能*在以后更改*公司名称*和帐单地址。
+> 你可以随时更新计费配置文件。 但是 *，不能* 在以后更改 *公司名称* 和帐单地址。
 
 ## <a name="publish-and-certify-your-application"></a>发布和认证应用程序
 
@@ -66,11 +67,11 @@ ms.locfileid: "89463427"
 
 在 Business Applications ISV Connect 计划中注册的最后一步是发布和认证现有应用程序。 若要将应用程序发布和认证到 AppSource，请单击相应的链接：
 
-- [对于 Dynamics 365 客户参与](https://docs.microsoft.com/powerapps/developer/common-data-service/publish-app-appsource) 
-- [对于财务和运营的 Dynamics 365](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+- [对于 Dynamics 365 客户参与](/powerapps/developer/common-data-service/publish-app-appsource) 
+- [对于财务和运营的 Dynamics 365](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> 你需要每6个月重新认证你的应用，以使其保持在 AppSource 上。 有关详细信息，请参阅 marketplace 策略 [商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)。
+> 你需要每6个月重新认证你的应用，以使其保持在 AppSource 上。 有关详细信息，请参阅 marketplace 策略 [商业市场认证策略](/legal/marketplace/certification-policies)。
 
 ## <a name="next-steps"></a>后续步骤
 

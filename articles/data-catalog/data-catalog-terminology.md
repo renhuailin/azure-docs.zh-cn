@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68736291"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151447"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 数据目录术语
 
@@ -39,7 +39,7 @@ Azure 数据目录是基于云的元数据存储库，可以在其中注册数�
 
 ## <a name="descriptive-metadata"></a>描述性元数据
 
-描述性元数据是描述数据资产目的或意图的元数据。 通常描述性元数据由目录用户使用 Azure 数据目录门户进行添加，但也可在注册过程中从数据源提取。 例如，Azure 数据目录注册工具将从 SQL Server Analysis Services 和 SQL Server Reporting Services 的“说明”属性以及 SQL Server 数据库中的 [ms_description 扩展属性](https://technet.microsoft.com/library/ms190243.aspx) 中提取描述（如果这些属性已填充了值的话）。
+描述性元数据是描述数据资产目的或意图的元数据。 通常描述性元数据由目录用户使用 Azure 数据目录门户进行添加，但也可在注册过程中从数据源提取。 例如，Azure 数据目录注册工具将从 SQL Server Analysis Services 和 SQL Server Reporting Services 的“说明”属性以及 SQL Server 数据库中的 [ms_description 扩展属性](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)) 中提取描述（如果这些属性已填充了值的话）。
 
 ## <a name="request-access"></a>请求访问权限
 
@@ -86,4 +86,4 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 
 ## <a name="next-steps"></a>后续步骤
 
-[快速入门：创建 Azure 数据目录](data-catalog-get-started.md) 
+[快速入门：创建 Azure 数据目录](data-catalog-get-started.md)

@@ -1,21 +1,21 @@
 ---
 title: 在门户中配置应用
-description: 了解如何在 Azure 门户中配置应用服务应用的常用设置。 应用设置、连接字符串、平台、语言堆栈、容器等
+description: 了解如何在 Azure 门户中配置应用服务应用的常用设置。 应用设置、应用配置、连接字符串、平台、语言堆栈、容器等。
 keywords: azure 应用服务, web 应用, 应用设置, 环境变量
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.date: 12/07/2020
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 4594a3a7ac7af7acf75fa5c47e2eab3246fc00e7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816436"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346746"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
-本主题介绍如何使用 [Azure 门户]配置 Web 应用、移动后端或 API 应用的常用设置。
+本文介绍如何使用 [Azure 门户]配置 web 应用、移动后端或 API 应用的常见设置。
 
 ## <a name="configure-app-settings"></a>配置应用设置
 
@@ -29,7 +29,7 @@ ms.locfileid: "91816436"
 
 ![应用程序设置](./media/configure-common/open-ui.png)
 
-对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置应用设置类似于在 Web.config  或 appsettings.json  中的 `<appSettings>` 内进行设置，但应用服务中的值会替代 Web.config  或 appsettings.json  中的值。 可以在 Web.config  或 appsettings.json  中保留开发设置（例如，本地 MySQL 密码），但在应用服务中保留生产机密（例如 Azure MySQL 数据库密码）会更安全。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
+对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置应用设置类似于在 Web.config  或 appsettings.json  中的 `<appSettings>` 内进行设置，但应用服务中的值会替代 Web.config  或 appsettings.json  中的值。 你可以保留开发设置 (例如， *Web.config* 或 *appsettings.js* 中的本地 MySQL 密码) 和生产机密 (例如，在应用服务中安全) Azure MySQL 数据库密码。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
 
 同样，其他语言堆栈也会在运行时获取应用设置作为环境变量。 有关特定的语言堆栈步骤，请参阅：
 
@@ -86,29 +86,29 @@ ms.locfileid: "91816436"
 
 ### <a name="automate-app-settings-with-the-azure-cli"></a>通过 Azure CLI 自动执行应用设置
 
-您可以使用 Azure CLI 从命令行创建和管理设置。
+可使用 Azure CLI 从命令行创建和管理设置。
 
-- 使用 [az webapp config 应用设置设置](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set)值来为设置赋值：
+- 使用 [az webapp config app settings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 为设置分配一个值：
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
     ```
         
-    替换为 `<setting-name>` 设置的名称，将替换为 `<value>` 要赋给它的值。 如果该设置尚不存在，此命令将创建它。
+    将 `<setting-name>` 替换为设置的名称，并将 `<value>` 替换为要分配给它的值。 此方法会创建设置（如果尚不存在）。
     
-- 用 [az webapp config appsettings list](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list)显示所有设置及其值：
+- 使用 [az webapp config appsettings list](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list) 显示所有设置及其值：
     
     ```azurecli-interactive
     az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
     ```
     
-- 删除包含 [az webapp config 应用设置](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete)的一个或多个设置：
+- 使用 [az webapp config app settings delete](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete) 删除一个或多个设置：
 
     ```azurecli-interactive
     az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
     ```
     
-    替换为以 `<names>` 空格分隔的设置名称列表。
+    将 `<names>` 替换为用空格分隔的设置名称列表。
 
 ## <a name="configure-connection-strings"></a>配置连接字符串
 
@@ -118,7 +118,10 @@ ms.locfileid: "91816436"
 
 对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置连接字符串类似于在 *Web.config* 中的 `<connectionStrings>` 内进行设置，但应用服务中设置的值会替代 *Web.config* 中的值。可将开发设置（例如，数据库文件）保留在 Web.config  中，并将生产机密（例如，SQL 数据库凭据）安全保留在应用服务中。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
 
-对于其他语言堆栈，最好是改用[应用设置](#configure-app-settings)，因为连接字符串需要在变量键中使用特殊的格式才能访问值。 但以下情况例外：如果在应用中配置了相应的连接字符串，则某些 Azure 数据库类型会连同应用一起备份。 有关详细信息，请参阅[备份的内容](manage-backup.md#what-gets-backed-up)。 如果不需要这种自动化备份，请使用应用设置。
+对于其他语言堆栈，最好是改用[应用设置](#configure-app-settings)，因为连接字符串需要在变量键中使用特殊的格式才能访问值。 
+
+> [!NOTE]
+> 在这种情况下，你可能想要对 non-.NET 语言使用连接字符串而不是应用设置：仅当你在应用服务应用中为数据库配置连接字符串时， _才_ 会将某些 Azure 数据库类型与应用一起备份。 有关详细信息，请参阅[备份的内容](manage-backup.md#what-gets-backed-up)。 如果不需要这种自动化备份，请使用应用设置。
 
 在运行时，连接字符串可用作环境变量，其前缀为以下连接类型：
 
@@ -192,7 +195,7 @@ ms.locfileid: "91816436"
 
 - **堆栈设置**：用于运行应用的软件堆栈，包括语言和 SDK 版本。
 
-    对于 Linux 应用和自定义容器应用，可以选择语言运行时版本，并设置可选的 **启动命令** 或启动命令文件。
+    对于 Linux 应用和自定义容器应用，可选择语言运行时版本，并设置启动命令文件或可选的启动命令。
 
     ![Linux 容器的常规设置](./media/configure-common/open-general-linux.png)
 
@@ -208,7 +211,7 @@ ms.locfileid: "91816436"
     > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 若要确保客户端浏览器使用 HTTP/2 连接到应用，请保护自定义 DNS 名称。 有关详细信息，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
     - **ARR 相关性**：在多实例部署中，请确保在会话的整个生存期内，将客户端路由到同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。 
 - **调试**：为 [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、[ASP.NET Core](/visualstudio/debugger/remote-debugging-azure) 或 [Node.js](configure-language-nodejs.md#debug-remotely) 应用启用远程调试。 此选项在 48 小时后会自动关闭。
-- **传入的客户端证书**：要求在[相互身份验证](app-service-web-configure-tls-mutual-auth.md)中使用客户端证书。
+- **传入的客户端证书**：要求在 [相互身份验证](app-service-web-configure-tls-mutual-auth.md)中使用客户端证书。
 
 ## <a name="configure-default-documents"></a>配置默认文档
 
@@ -228,21 +231,27 @@ ms.locfileid: "91816436"
 
 ![路径映射](./media/configure-common/open-path.png)
 
-“路径映射”页根据 OS 类型显示不同的内容。 
+> [!NOTE] 
+> " **路径映射** " 选项卡可能显示特定于操作系统的设置，这些设置与此处显示的示例不同。
 
 ### <a name="windows-apps-uncontainerized"></a>Windows 应用（未容器化）
 
 对于 Windows 应用，可以自定义 IIS 处理程序映射和虚拟应用程序与目录。
 
-使用处理程序映射可以添加自定义脚本处理程序用于处理特定文件扩展名的请求。 若要添加自定义处理程序，请单击“新建处理程序”。  按如下所述配置处理程序：
+使用处理程序映射可以添加自定义脚本处理程序用于处理特定文件扩展名的请求。 若要添加自定义处理程序，请单击 " **新建处理程序映射**"。 按如下所述配置处理程序：
 
 - **扩展名**。 要处理的扩展名，例如 *\*.php* 或 *handler.fcgi*。
 - **脚本处理程序**。 脚本处理程序的绝对路径。 与文件扩展名匹配的文件请求由脚本处理程序处理。 使用路径 `D:\home\site\wwwroot` 表示应用的根目录。
 - **参数**。 脚本处理程序的可选命令行参数
 
-每个应用具有已映射到 `D:\home\site\wwwroot`（代码的默认部署位置）的默认根路径 (`/`)。 如果应用根位于其他文件夹中，或者存储库包含多个应用程序，则你可以在此处编辑或添加虚拟应用程序和目录。 单击“新建虚拟应用程序或目录”。 
+每个应用具有已映射到 `D:\home\site\wwwroot`（代码的默认部署位置）的默认根路径 (`/`)。 如果应用根位于其他文件夹中，或者存储库包含多个应用程序，则你可以在此处编辑或添加虚拟应用程序和目录。 
 
-若要配置虚拟应用程序和目录，请指定每个虚拟目录及其相对于网站根目录 (`D:\home`) 的物理路径。 还可选中“应用程序”  复选框，将虚拟目录标记为应用程序。
+从 " **路径映射** " 选项卡中，单击 " **新建虚拟应用程序或目录**"。 
+
+- 若要将虚拟目录映射到物理路径，请将 " **目录** " 复选框保持选中状态。 指定虚拟目录，并将相应的相对 (物理) 路径指定为网站根目录 (`D:\home`) 。
+- 若要将虚拟目录标记为 web 应用程序，请清除 " **目录** " 复选框。
+  
+  ![目录 "复选框](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>容器化应用
 
@@ -292,7 +301,7 @@ ms.locfileid: "91816436"
 [Azure 门户]: https://portal.azure.com/
 [在 Azure 应用服务中配置自定义域名]: ./app-service-web-tutorial-custom-domain.md
 [设置 Azure 应用服务中的过渡环境]: ./deploy-staging-slots.md
-[How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
+[How to: Monitor web endpoint status]: ./web-sites-monitor.md
 [在 Azure 应用服务中监视基础知识]: ./web-sites-monitor.md
 [管道模式]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [在 Azure 应用服务中缩放应用]: ./manage-scale-up.md

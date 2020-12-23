@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024854"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311142"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>为 Azure API 管理实例配置自定义域名
 
@@ -50,10 +50,10 @@ ms.locfileid: "87024854"
     可以为许多终结点分配自定义域名。 当前有以下终结点可用：
 
     - **网关**（默认值为：`<apim-service-name>.azure-api.net`），
-    - **门户**（默认值为：`<apim-service-name>.portal.azure-api.net`），
+    - ** (旧) 的开发人员门户 ** (默认值为： `<apim-service-name>.portal.azure-api.net`) 、
+    - **开发人员门户** (默认值为： `<apim-service-name>.developer.azure-api.net`) 。
     - **管理**（默认值为：`<apim-service-name>.management.azure-api.net`），
     - **SCM**（默认值为：`<apim-service-name>.scm.azure-api.net`），
-    - **NewPortal**（默认值为：`<apim-service-name>.developer.azure-api.net`）。
 
     > [!NOTE]
     > 只有“网关”终结点可用于“消耗”层中的配置。

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "86171850"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 后端连接功能中的互操作性：测试配置详细信息
@@ -33,7 +33,7 @@ ms.locfileid: "86171850"
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>使用站点到站点 VPN 建立分支 VNet 连接
 
-使用 Azure VPN 网关中的 VPN 网关在中心与分支 VNet 之间建立站点到站点 VPN 连接。 默认情况下，VPN 网关和 Azure ExpressRoute 网关使用专用自治系统编号 (ASN) 值 **65515**。 可在 VPN 网关中更改 ASN 值。 在测试设置中，分支 VNet VPN 网关的 ASN 值将更改为 **65516**，以支持中心与分支 VNet 之间的 eBGP 路由。
+使用 Azure VPN 网关中的 VPN 网关在中心与分支 VNet 之间建立站点到站点 VPN 连接。 默认情况下，VPN 网关和 Azure ExpressRoute 网关使用专用自治系统编号 (ASN) 值 **65515** 。 可在 VPN 网关中更改 ASN 值。 在测试设置中，分支 VNet VPN 网关的 ASN 值将更改为 **65516** ，以支持中心与分支 VNet 之间的 eBGP 路由。
 
 
 [![3]][3]

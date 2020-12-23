@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f0af5f051d02945eeb9b1f7d4bfc50ef98f281
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80804616"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014680"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>将 IoT Edge 上的 Azure Blob 存储模块部署到设备
 
@@ -21,7 +21,10 @@ ms.locfileid: "80804616"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-- 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md)。
+- IoT Edge 设备。
+
+  如果未设置 IoT Edge 设备，可在 Azure 虚拟机中创建一个。 按照[创建虚拟 Linux 设备](quickstart-linux.md)或[创建虚拟 Windows 设备](quickstart.md)快速入门文章（其中一篇）中的步骤进行操作。
+
 - [Visual Studio Code](https://code.visualstudio.com/) 和 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)（如果从 Visual Studio Code 部署）。
 
 ## <a name="deploy-from-the-azure-portal"></a>从 Azure 门户部署
@@ -32,7 +35,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
 1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
 1. 从菜单中选择“IoT Edge”  。
-1. 从设备列表中单击目标设备的 ID。
+1. 在设备列表中单击目标设备的 ID。
 1. 选择“设置模块”  。
 
 ### <a name="configure-a-deployment-manifest"></a>配置部署清单
@@ -50,7 +53,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
    - **IoT Edge 模块名称**：`azureblobstorageoniotedge`
    - **映像 URI**：`mcr.microsoft.com/azure-blob-storage:latest`
 
-   ![模块孪生设置](./media/how-to-deploy-blob/addmodule-tab1.png)
+   ![屏幕截图显示了“添加 IoT Edge 模块”页面的“模块设置”选项卡。](./media/how-to-deploy-blob/addmodule-tab1.png)
 
    如本程序所述，在“模块设置”、“容器创建选项”和“模块孪生设置”选项卡上指定值之前，请勿选择“添加”     。
 
@@ -59,7 +62,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
 3. 打开“容器创建选项”  选项卡。
 
-   ![模块孪生设置](./media/how-to-deploy-blob/addmodule-tab3.png)
+   ![屏幕截图显示了“添加 IoT Edge 模块”页面的“容器创建选项”选项卡。](./media/how-to-deploy-blob/addmodule-tab3.png)
 
    将以下 JSON 复制并粘贴到框中，以便为设备上的存储提供存储帐户信息和装载。
   
@@ -80,7 +83,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
    }
    ```
 
-4. 使用以下信息更新已复制到**容器创建选项**中的 JSON：
+4. 使用以下信息更新已复制到 **容器创建选项** 中的 JSON：
 
    - 请将 `<your storage account name>` 替换为容易记住的名称。 帐户名长度应为 3 到 24 个字符，并带有小写字母和数字。 不含空格。
 
@@ -88,10 +91,10 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
    - 根据容器操作系统替换 `<storage mount>`。 提供 blob 模块将在其中存储其数据的 IoT Edge 设备上[卷](https://docs.docker.com/storage/volumes/)的名称或指向现有目录的绝对路径。 存储装载将你在设备上提供的位置映射到模块中设置的位置。
 
-     - 对于 Linux 容器，格式为** \<your storage path or volume> ：/blobroot**。 例如：
+     - 对于 Linux 容器，格式为 \<your storage path or volume>:/blobroot。 例如：
          - 使用[卷装载](https://docs.docker.com/storage/volumes/)：`my-volume:/blobroot`
          - 使用[绑定装载](https://docs.docker.com/storage/bind-mounts/)：`/srv/containerdata:/blobroot`。 确保按步骤[为容器用户授予目录访问权限](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - 对于 Windows 容器，格式为** \<your storage path or volume> ： C：/BlobRoot**。 例如：
+     - 对于 Windows 容器，格式为 \<your storage path or volume>:C:/BlobRoot。 例如：
          - 使用[卷装载](https://docs.docker.com/storage/volumes/)：`my-volume:C:/BlobRoot`。
          - 使用[绑定装载](https://docs.docker.com/storage/bind-mounts/)：`C:/ContainerData:C:/BlobRoot`。
          - 可以映射 SMB 网络位置，而不使用本地驱动器。有关详细信息，请参阅[使用 SMB 共享作为本地存储](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
@@ -101,7 +104,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
 5. 在“模块孪生设置”选项卡上，复制以下 JSON 并将其粘贴到框中  。
 
-   ![模块孪生设置](./media/how-to-deploy-blob/addmodule-tab4.png)
+   ![屏幕截图显示了“添加 IoT Edge 模块”页面的“模块孪生设置”选项卡。](./media/how-to-deploy-blob/addmodule-tab4.png)
 
    使用适当的值配置每个属性，如占位符所示。 如果使用 IoT Edge 模拟器，请按照 [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) 和 [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) 中所述，将这些属性的值设置为相关环境变量。
 
@@ -200,13 +203,13 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 1. 根据容器操作系统替换 `<storage mount>`。 提供[卷](https://docs.docker.com/storage/volumes/)的名称或 IoT Edge 设备上希望 blob 模块在其中存储其数据的目录绝对路径。 存储装载将你在设备上提供的位置映射到模块中设置的位置。  
 
-     - 对于 Linux 容器，格式为** \<your storage path or volume> ：/blobroot**。 例如：
+     - 对于 Linux 容器，格式为 \<your storage path or volume>:/blobroot。 例如：
          - 使用[卷装载](https://docs.docker.com/storage/volumes/)：`my-volume:/blobroot`
          - 使用[绑定装载](https://docs.docker.com/storage/bind-mounts/)：`/srv/containerdata:/blobroot`。 确保按步骤[为容器用户授予目录访问权限](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - 对于 Windows 容器，格式为** \<your storage path or volume> ： C：/BlobRoot**。 例如
+     - 对于 Windows 容器，格式为 \<your storage path or volume>:C:/BlobRoot。 例如：
          - 使用[卷装载](https://docs.docker.com/storage/volumes/)：`my-volume:C:/BlobRoot`。
          - 使用[绑定装载](https://docs.docker.com/storage/bind-mounts/)：`C:/ContainerData:C:/BlobRoot`。
-         - 可以映射 SMB 网络位置，而不使用本地驱动器。有关详细信息，请参阅[使用 SMB 共享作为本地存储](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
+         - 可以映射 SMB 网络位置，而不是使用本地驱动器。 有关详细信息，请参阅[使用 SMB 共享作为本地存储](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)。
 
      > [!IMPORTANT]
      > 请勿更改存储装载值的后半部分，该部分指向 IoT Edge 模块上 Blob 存储中的特定位置。 对于 Linux 容器，存储装载必须始终以“:/blobroot”  结尾；对于 Windows 容器，必须以“:C:/BlobRoot”  结尾。
@@ -271,7 +274,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 此外，blob 存储模块还需要清单部署文件中的 HTTPS_PROXY 设置。 可以直接编辑部署清单文件，也可以使用 Azure 门户。
 
-1. 在 Azure 门户中导航到 IoT 中心，然后从左窗格菜单中选择“IoT Edge”。 
+1. 在 Azure 门户中导航到 IoT 中心，然后从左窗格菜单中选择 IoT Edge。
 
 1. 选择要配置模块的设备。
 
@@ -283,7 +286,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 1. 添加 `HTTPS_PROXY` 作为“名称”，  添加代理 URL 作为“值”。 
 
-      ![设置 HTTPS_PROXY 环境变量](./media/how-to-deploy-blob/https-proxy-config.png)
+      ![屏幕截图显示了可在其中输入指定值的“更新 IoT Edge 模块”窗格。](./media/how-to-deploy-blob/https-proxy-config.png)
 
 1. 单击“更新”  ，然后单击“查看 + 创建”  。
 
@@ -291,7 +294,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 1. 通过从设备详细信息页中选择模块来验证设置，然后在“IoT Edge 模块详细信息”  页的下半部分选择“环境变量”  选项卡。
 
-      ![设置 HTTPS_PROXY 环境变量](./media/how-to-deploy-blob/verify-proxy-config.png)
+      ![屏幕截图显示了“环境变量”选项卡。](./media/how-to-deploy-blob/verify-proxy-config.png)
 
 ## <a name="next-steps"></a>后续步骤
 

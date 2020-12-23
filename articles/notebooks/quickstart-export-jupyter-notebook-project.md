@@ -3,12 +3,12 @@ title: 从 Azure Notebooks 预览版导出 Jupyter Notebook 项目
 description: 快速导出 Jupyter Notebook 项目。
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: ea16bd61b542217fb6f2d5ba1d926a0bc19d4cce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030440"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844414"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>导出 Azure Notebooks 预览版中的 Jupyter Notebook 项目
 
@@ -24,7 +24,7 @@ ms.locfileid: "90030440"
 
 1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 
-1. 在公用个人资料页面中，选择页面顶部的“我的项目”****：
+1. 在公用个人资料页面中，选择页面顶部的“我的项目”：
 
     ![浏览器窗口顶部的“我的项目”链接](media/quickstarts/my-projects-link.png)
 
@@ -76,10 +76,10 @@ Azure 机器学习提供了端到端机器学习平台，使用户能够在 Azur
    ![创建工作区](../machine-learning/media/how-to-manage-workspace/create-workspace.gif)
  
 1. 打开 [Azure Studio（预览版）](https://ml.azure.com/)。
-1. 使用左侧导航栏，选择“Notebooks”****。
-1. 单击“上传文件”按钮，然后上传从 Azure Notebooks 下载的项目文件****。
+1. 使用左侧导航栏，选择“Notebooks”。
+1. 单击“上传文件”按钮，然后上传从 Azure Notebooks 下载的项目文件。
 
-有关 Azure ML 和运行 Jupyter Notebook 的其他信息，可以查看[文档](../machine-learning/how-to-run-jupyter-notebooks.md)或尝试使用 Microsoft Learn 上的[机器学习简介](https://docs.microsoft.com/learn/modules/intro-to-azure-machine-learning-service/)模块。
+有关 Azure ML 和运行 Jupyter Notebook 的其他信息，可以查看[文档](../machine-learning/how-to-run-jupyter-notebooks.md)或尝试使用 Microsoft Learn 上的[机器学习简介](/learn/modules/intro-to-azure-machine-learning-service/)模块。
 
 
 ## <a name="use-azure-lab-services"></a>使用 Azure 实验室服务

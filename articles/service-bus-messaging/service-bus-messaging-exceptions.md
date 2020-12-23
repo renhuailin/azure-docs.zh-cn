@@ -3,12 +3,12 @@ title: Azure 服务总线-消息传递异常 |Microsoft Docs
 description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4813ad7386af3d9dd730b74e6b815ff173cfe809
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4aa6d82c20e21caabf0205d7446cf88ed8b7f34
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885733"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409308"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服务总线消息传送异常
 本文列出了 .NET Framework API 生成的 .NET 异常。 
@@ -33,7 +33,7 @@ ms.locfileid: "90885733"
 | [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) |提供给该方法的一个或多个参数均无效。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 包含路径段。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 方案无效。 <br />属性值大于 32 KB。 |检查调用代码并确保参数正确。 |重试不起作用。 |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |与操作关联的实体不存在或已被删除。 |确保该实体存在。 |重试不起作用。 |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |尝试接收具有特定序列号的消息。 找不到此消息。 |确保该消息尚未接收。 检查死信队列，以确定该消息是否被视为死信。 |重试不起作用。 |
-| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |客户端无法与服务总线建立连接。 |确保提供的主机名正确并且主机可访问。 |如果存在间歇性的连接问题，重试可能会有帮助。 |
+| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |客户端无法与服务总线建立连接。 |确保提供的主机名正确并且主机可访问。 <p>如果你的代码在使用防火墙/代理的环境中运行，请确保到服务总线域/IP 地址和端口的流量未被阻止。</p>|如果存在间歇性的连接问题，重试可能会有帮助。 |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |服务目前无法处理请求。 |客户端可以等待一段时间，并重试操作。 |客户端可在特定的时间间隔后重试操作。 如果重试导致其他异常，请检查该异常的重试行为。 |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |在以下情况下，可能会引发一般消息异常：<p>尝试使用属于其他实体类型（例如主题）的名称或路径创建 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)。</p><p>尝试发送大于 256 KB 的消息。 </p>服务器或服务在处理请求期间遇到错误。 有关详细信息，请查看异常消息。 这通常是暂时性异常。</p><p>由于实体正受到限制，因此已终止请求。 错误代码：50001、50002、50008。 </p> | 检查代码，并确保只对消息正文使用可序列化对象（或使用自定义序列化程序）。 <p>在文档中查看属性支持的值类型，并只使用支持的类型。</p><p> 检查 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 属性。 如果为 true，可以重试操作。 </p>| 如果异常是由于限制导致的，请等待几秒钟，然后重试该操作。 重试行为未定义，在其他场景中可能没有帮助。|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |尝试使用已被该服务命名空间中另一实体使用的名称创建实体。 |删除现有的实体，或者选择不同的名称来创建实体。 |重试不起作用。 |
@@ -45,8 +45,8 @@ ms.locfileid: "90885733"
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.azure.servicebus.messagingentitydisabledexception) |对已禁用的实体请求运行时操作。 |激活实体。 |如果在此期间该实体已激活，则重试可能会有帮助。 |
 | [NoMatchingSubscriptionException](/dotnet/api/microsoft.servicebus.messaging.nomatchingsubscriptionexception) |如果向已启用预筛选的主题发送消息并且所有筛选器都不匹配，则服务总线返回此异常。 |确保至少有一个筛选器匹配。 |重试不起作用。 |
 | [MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |消息有效负载超出 256 KB 限制。 256-KB 限制是指总消息大小，可能包括系统属性和任何 .NET 开销。 |减少消息负载的大小，并重试操作。 |重试不起作用。 |
-| [TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1&preserve-view=true) |环境事务 (*Transaction.Current*) 无效。 该事务可能已完成或已中止。 内部异常可能提供了更多信息。 | |重试不起作用。 |
-| [TransactionInDoubtException](/dotnet/api/system.transactions.transactionindoubtexception?view=netcore-3.1&preserve-view=true) |已对未决事务尝试进行操作，或尝试提交该事务并且事务进入不确定状态。 |应用程序必须处理此异常（作为特例），因为此事务可能已提交。 |- |
+| [TransactionException](/dotnet/api/system.transactions.transactionexception) |环境事务 ( *Transaction.Current* ) 无效。 该事务可能已完成或已中止。 内部异常可能提供了更多信息。 | |重试不起作用。 |
+| [TransactionInDoubtException](/dotnet/api/system.transactions.transactionindoubtexception) |已对未决事务尝试进行操作，或尝试提交该事务并且事务进入不确定状态。 |应用程序必须处理此异常（作为特例），因为此事务可能已提交。 |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) 指示已超过某个特定实体的配额。
@@ -80,14 +80,14 @@ ConnectionsQuotaExceeded for namespace xxx.
 1. [死信队列](service-bus-dead-letter-queues.md) 读取器无法完成消息，当锁定过期后，消息将返回至队列/主题。 如果读取器发生异常，以致无法调用 [BrokeredMessage.Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete)，就会出现这种情况。 消息读取 10 次后，默认移至死信队列。 此行为由 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 属性控制，默认值为 10。 消息堆积在死信队列中会占用空间。
    
     若要解决此问题，请读取并完成死信队列中的消息，就像处理任何其他队列一样。 可以使用 [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) 方法帮助格式化死信队列路径。
-2. **接收方已停止**。 接收方已停止从队列或订阅接收消息。 识别这种情况的方法是查看 [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) 属性，它会显示消息的完整细目。 如果 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) 属性很高或不断增加，则表示消息写入的速度超过读取的速度。
+2. **接收方已停止** 。 接收方已停止从队列或订阅接收消息。 识别这种情况的方法是查看 [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) 属性，它会显示消息的完整细目。 如果 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) 属性很高或不断增加，则表示消息写入的速度超过读取的速度。
 
 ## <a name="timeoutexception"></a>TimeoutException
 [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) 指示用户启动的操作所用的时间超过操作超时值。 
 
 应检查 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit?view=netcore-3.1&preserve-view=true) 属性的值，因为达到此限制也会导致 [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) 异常。
 
-在维护操作（如服务总线服务更新）中或在运行服务的资源上 (或) OS 更新期间，超时应发生。 在 OS 更新期间，会移动实体，并更新或重新启动节点，这可能会导致超时。 有关 Azure 服务总线服务的服务级别协议 (SLA) 详细信息，请参阅 [服务总线的 sla](https://azure.microsoft.com/support/legal/sla/service-bus/)。
+预计会在维护操作（例如，服务总线服务更新或运行服务的资源上的 OS 更新）期间或操作间隙发生超时。 在 OS 更新期间，实体会四处移动，节点会更新或重启，这可能会导致超时。 有关 Azure 服务总线服务的服务级别协议 (SLA) 详细信息，请参阅[服务总线的 SLA](https://azure.microsoft.com/support/legal/sla/service-bus/)。
 
 
 ### <a name="queues-and-topics"></a>队列和主题
@@ -178,9 +178,9 @@ MessagingException 是可能出于各种原因引发的一般异常。 下面列
 
 ### <a name="resolution"></a>解决方法
 
-解决方法步骤取决于引发 MessagingException 的原因。
+解决方法步骤取决于导致 **MessagingException** 引发的原因。
 
-   * 对于"暂时性问题”（其中 isTransient 设置为 true）或“限制性问题”，重试操作可能会解决该问题。 可以为此利用 SDK 上的默认重试策略。
+   * 对于 **暂时性问题** (其中 **_isTransient_*_ 设置为 _*_true_*_) 或为 _* 阻止问题** ，重试该操作可能会解决此问题。 可以为此利用 SDK 上的默认重试策略。
    * 对于其他问题，异常中的详细信息表明可以从相同地方推断问题和解决步骤。
 
 ## <a name="next-steps"></a>后续步骤

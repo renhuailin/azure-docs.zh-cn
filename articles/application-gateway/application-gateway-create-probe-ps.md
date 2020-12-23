@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 2a269137508feb8a2d2cc0710986e1b74b91c0ea
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 63f4b28915a932398e5417f8ea9be3fe4d68e705
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186735"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397835"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure Resource Manager 的 PowerShell 创建 Azure 应用程序网关的自定义探测
 
@@ -58,7 +58,7 @@ ms.locfileid: "86186735"
 
 Azure Resource Manager 要求所有资源组指定一个位置。 此位置用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
-在上述示例中，我们创建了名为“appgw-RG”**** 的资源组，位置为“美国西部”****。
+在上述示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>创建虚拟网络和子网
 
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>创建前端配置的公共 IP 地址
 
-在 "美国西部" 区域的资源组**appgw-rg**中创建公共 IP 资源**publicIP01** 。 此示例使用公共 IP 地址作为应用程序网关的前端 IP 地址。  应用程序网关要求公共 IP 地址具有动态创建的 DNS 名称，因此在公共 IP 地址创建过程中不能指定 `-DomainNameLabel`。
+在 "美国西部" 区域的资源组 **appgw-rg** 中创建公共 IP 资源 **publicIP01** 。 此示例使用公共 IP 地址作为应用程序网关的前端 IP 地址。  应用程序网关要求公共 IP 地址具有动态创建的 DNS 名称，因此在公共 IP 地址创建过程中不能指定 `-DomainNameLabel`。
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -197,5 +197,4 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-访问以下文档，了解如何配置 TLS 卸载：[配置 TLS 卸载](application-gateway-ssl-arm.md)
-
+访问以下文档，了解如何配置 TLS 卸载：[配置 TLS 卸载](./tutorial-ssl-powershell.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7841f09b113b4bdf7eacddbbfc5f054bf69b1750
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542502"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517814"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Tableau Online 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542502"
 * 允许用户使用其 Azure AD 帐户自动登录到 Tableau Online。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88542502"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Tableau Online 支持 **SP** 发起的 SSO
-* 配置 Tableau Online 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Tableau Online 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>从库中添加 Tableau Online
 
@@ -77,7 +77,7 @@ ms.locfileid: "88542502"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -165,45 +165,45 @@ ms.locfileid: "88542502"
 
 1. 在另一个浏览器窗口中，登录 Tableau Online 应用程序。 转到“设置”  ，然后到“身份验证”  。
 
-    ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![屏幕截图显示从“设置”菜单选择了“身份验证”。](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
 
 2. 若要启用 SAML，请在“身份验证类型”部分下，  依次选中“启用附加的身份验证方法”、“SAML”复选框。  
 
-    ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![屏幕截图显示了“身份验证类型”部分，可在其中选择值。](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
 3. 向下滚动到“将元数据文件导入 Tableau Online”部分。   单击“浏览”并导入已从 Azure AD 下载的元数据文件。 然后，单击“应用”  。
 
-   ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![屏幕截图显示了可在其中导入元数据文件的部分。](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-4. 在“匹配断言”  部分中，为**电子邮件地址**、**名字**和**姓氏**插入相应的标识提供者断言名称。 若要从 Azure AD 中获取此信息，请执行以下操作： 
+4. 在“匹配断言”  部分中，为 **电子邮件地址** 、 **名字** 和 **姓氏** 插入相应的标识提供者断言名称。 若要从 Azure AD 中获取此信息，请执行以下操作： 
   
     a. 在 Azure 门户中，转到“Tableau Online”  应用程序集成页。
 
     b. 在“用户属性和声明”部分，单击编辑图标  。
 
-   ![配置单一登录](./media/tableauonline-tutorial/attributesection.png)
+   ![屏幕截图显示了“用户属性和声明”部分，可在其中选择编辑图标。](./media/tableauonline-tutorial/attributesection.png)
 
     c. 通过执行以下步骤复制以下属性的命名空间值：givenname、email 和 surname：
 
-   ![Azure AD 单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![屏幕截图显示了 Givenname、Surname 和 Emailaddress 属性。](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
 
     d. 单击“user.givenname”  值
 
     e. 复制“命名空间”文本框中的值。 
 
-    ![配置单一登录](./media/tableauonline-tutorial/attributesection2.png)
+    ![屏幕截图显示了“管理用户声明”部分，可在其中输入命名空间。](./media/tableauonline-tutorial/attributesection2.png)
 
     f. 若要复制 email 和 surname 的命名空间值，请重复上述步骤。
 
     g. 切换到 Tableau Online 应用程序，然后按如下所示设置“用户属性和声明”部分： 
 
-    * 电子邮件：**mail** 或 **userprincipalname**
+    * 电子邮件： **mail** 或 **userprincipalname**
 
-    * 名字：**givenname**
+    * 名字： **givenname**
 
-    * 姓氏：**surname**
+    * 姓氏： **surname**
 
-    ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    ![屏幕截图显示了“匹配属性”部分，可在其中输入值。](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="create-tableau-online-test-user"></a>创建 Tableau Online 测试用户
 
@@ -211,11 +211,11 @@ ms.locfileid: "88542502"
 
 1. 在“Tableau Online”  上，单击“设置”  ，然后单击“身份验证”  部分。 向下滚动到“管理用户”部分。  依次单击“添加用户”、“输入电子邮件地址”。  
   
-    ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+    ![屏幕截图显示了“管理用户”部分，可在其中选择“添加用户”。](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
 2. 选择“添加用户用于(SAML)身份验证”。  在“输入电子邮件地址”文本框中添加 britta.simon\@contoso.com 
   
-    ![创建 Azure AD 测试用户](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+    ![屏幕截图显示了“添加用户”页，可在其中输入电子邮件地址。](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 
 3. 单击“添加用户”。 
 
@@ -223,14 +223,14 @@ ms.locfileid: "88542502"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Tableau Online”磁贴时，应会自动登录到设置了 SSO 的 Tableau Online。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Tableau Online”磁贴时，应会自动登录到设置了 SSO 的 Tableau Online。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

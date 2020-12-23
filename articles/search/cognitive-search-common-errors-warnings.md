@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: dcdc05ae696a207546eb62160fe89ea38d307058
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362808"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492261"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
@@ -348,8 +348,8 @@ ms.locfileid: "91362808"
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>警告：Cosmos DB 集合“X”采用延迟索引策略。 某些数据可能已丢失
 
-无法以一致的方式查询采用[延迟](/azure/cosmos-db/index-policy#indexing-mode)索引策略的集合，从而导致索引器缺少数据。 若要解决此警告，请将索引策略更改为“一致”。
+无法以一致的方式查询采用[延迟](../cosmos-db/index-policy.md#indexing-mode)索引策略的集合，从而导致索引器缺少数据。 若要解决此警告，请将索引策略更改为“一致”。
 
 ## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>警告：文档包含非常长的单词 (超过64个字符) 。 这些词可能会导致截断和/或不可靠的模型预测。
 
-此警告是从文本分析服务传递的。  在某些情况下，可以安全地忽略此警告，例如，当文档包含长 URL (可能不是关键短语或驾驶情绪等 ) 。  请注意，当 word 长度超过64个字符时，它将被截断为64个字符，这可能会影响模型预测。  
+此警告是从文本分析服务传递的。  在某些情况下，可以安全地忽略此警告，例如，当文档包含长 URL (可能不是关键短语或驾驶情绪等 ) 。  请注意，当 word 长度超过64个字符时，它将被截断为64个字符，这可能会影响模型预测。

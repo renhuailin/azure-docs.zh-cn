@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32023fca15de9d3f9258bc05166c3cff4184ea15
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436010"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499843"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>常见问题解答 - 关于虚拟机的问题
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>支持哪些类型的虚拟机？
 
-使用[经典部署模式和 Resource Manager 部署模式](../azure-classic-rm.md)创建的虚拟机 (VM) 支持监视和建议。
+使用[经典部署模式和 Resource Manager 部署模式](../azure-resource-manager/management/deployment-models.md)创建的虚拟机 (VM) 支持监视和建议。
 
 有关支持平台的列表，请参阅[ Azure 安全中心支持的平台](security-center-os-coverage.md)。
 
@@ -51,7 +51,7 @@ Azure 安全中心可识别出通过 Azure 扩展安装的反恶意软件。 例
 安全中心通常每小时扫描一次新数据，并相应地刷新建议。 
 
 > [!NOTE]
-> 安全中心使用 Log Analytics 代理来收集和存储数据。 若要了解详细信息，请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)。
+> 安全中心使用 Log Analytics 代理来收集和存储数据。 若要了解详细信息，请参阅 [Azure 安全中心平台迁移](./security-center-enable-data-collection.md)。
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>为什么会显示消息称“VM 代理缺失”？

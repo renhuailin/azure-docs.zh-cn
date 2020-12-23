@@ -9,9 +9,9 @@
 - name: 教程
   items:
     - name: 使用自动化机器学习的回归
-      href: /azure/machine-learning/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: ../machine-learning/tutorial-auto-train-models.md?bc=%2fazure%2fopen-datasets%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fopen-datasets%2ftoc.json
     - name: 扩充图像分类模型
-      href: /azure/machine-learning/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: ../machine-learning/tutorial-train-models-with-aml.md?bc=%2fazure%2fopen-datasets%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fopen-datasets%2ftoc.json
 - name: 操作指南
   items:
     - name: Azure 机器学习中的数据集
@@ -40,6 +40,6 @@
     - name: 区域可用性
       href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=open-datasets&regions=non-regional'
     - name: Microsoft 问答
-      href: 'https://docs.microsoft.com/answers/topics/azure-open-datasets.html'
+      href: /answers/topics/azure-open-datasets.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-open-datasets'

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055371"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615705"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在条件访问策略中使用位置条件 
 
@@ -41,7 +41,7 @@ ms.locfileid: "88055371"
 
 ![Azure 门户中的命名位置](./media/location-condition/new-named-location.png)
 
-若要配置位置，至少需要提供**名称**和 IP 范围。 
+若要配置位置，至少需要提供 **名称** 和 IP 范围。 
 
 可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 可以根据以下限制来配置位置：
 
@@ -64,13 +64,13 @@ ms.locfileid: "88055371"
 某些组织可能会选择将整个国家/地区或区域 IP 边界定义为条件访问策略的命名位置。 如果组织知道有效用户永远不会来自某个位置（例如朝鲜），则他们可以根据位置阻止不必要的流量。 IP 地址到国家/地区的这些映射会定期更新。 
 
 > [!NOTE]
-> 国家/地区不包含 IPv6 地址范围，仅包含已知的 IPv4 地址范围，不能将其标记为“可信”。
+> 无法将 IPv6 地址范围映射到国家/地区。 仅 IPv4 地址映射到国家/地区。
 
 ![在 Azure 门户中创建新的基于国家/地区或区域的位置](./media/location-condition/new-named-location-country-region.png)
 
 #### <a name="include-unknown-areas"></a>包含未知区域
 
-某些 IP 地址未映射到特定的国家/地区或区域。 若要捕获这些 IP 位置，请在定义位置时选中“包含未知区域”复选框。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
+某些 IP 地址不会映射到特定的国家或地区，包括所有 IPv6 地址。 若要捕获这些 IP 位置，请在定义位置时选中“包含未知区域”复选框。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
 ### <a name="configure-mfa-trusted-ips"></a>配置 MFA 受信任的 IP
 
@@ -114,7 +114,7 @@ ms.locfileid: "88055371"
 - **IP 范围位置**
 
 > [!NOTE]
-> 国家/地区不包含 IPv6 地址范围，仅包含已知的 IPv4 地址范围，不能将其标记为“可信”。
+> 无法将 IPv6 地址范围映射到国家/地区。 仅 IPv4 地址映射到国家/地区。
 
 ![命名位置预览版界面](./media/location-condition/named-location-preview.png)
 
@@ -157,7 +157,7 @@ Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连�
 这些是可能需要在命名位置配置 IPv6 范围的最常见原因。 另外，如果使用的是 Azure VNet，会收到来自 IPv6 地址的流量。 如果有条件访问策略阻止了 VNet 流量，请检查 Azure AD 登录日志。 识别流量后，就可以获取正在使用的 IPv6 地址，并将其从策略中排除。 
 
 > [!NOTE]
-> 如果要为单个地址指定 IP CIDR 范围，请应用 /32 位掩码。 如果 IPv6 地址是 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a，并想从地址范围中排除该单一地址，应使用 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/32。
+> 如果要为单个地址指定 IP CIDR 范围，请应用/128 位掩码。 如果你说 IPv6 地址2607： fb90： b27a：6f69： f8d5： dea0： fb39：74a，并且想要将该单一地址作为范围排除，则可以使用2607： fb90： b27a：6f69： f8d5： dea0： fb39： 74a/128。
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>在 Azure AD 登录活动报告中标识 IPv6 流量
 
@@ -190,11 +190,14 @@ Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连�
 
 使用云托管代理或 VPN 解决方案时，Azure AD 在评估策略时使用的 IP 地址是该代理的 IP 地址。 不会使用包含用户公共 IP 地址的 X-Forwarded-For (XFF) 标头，因为没有任何机制验证该地址是否来自受信任的源，该标头可能提供了一种用于伪造 IP 地址的方法。
 
-部署云代理后，可以使用需要 Azure AD 加入混合设备的策略，或 AD FS 内部公司网络声明。
+当云代理准备就绪时，可以使用一个策略来要求设备加入混合 Azure AD，或使用来自 AD FS 的公司网络内部的声明。
 
 ### <a name="api-support-and-powershell"></a>API 支持和 PowerShell
 
-已命名位置的图形 API 预览版本可用。有关详细信息，请参阅[NAMEDLOCATION API](/graph/api/resources/namedlocation?view=graph-rest-beta)。
+命名位置的 Graph API 预览版本可用。有关详细信息，请参阅 [namedLocation API](/graph/api/resources/namedlocation?view=graph-rest-beta)。
+
+> [!NOTE]
+> 使用 PowerShell 创建的命名位置仅在命名位置 (预览) 中显示。 在旧视图中看不到已命名的位置。  
 
 ## <a name="next-steps"></a>后续步骤
 

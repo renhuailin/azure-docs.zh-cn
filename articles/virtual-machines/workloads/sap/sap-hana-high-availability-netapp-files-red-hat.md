@@ -7,17 +7,18 @@ author: rdeltcheva
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/30/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: cfa68bde2462cefd6f690247cfd1e3bd2e3dbc74
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598086"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489201"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 Azure NetApp 文件 SAP HANA 扩展的高可用性
 
@@ -51,7 +52,7 @@ ms.locfileid: "91598086"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-本文介绍了如何使用 Azure NetApp 文件 (和) ，在向上扩展部署中配置 SAP HANA 系统复制。 使用示例配置和安装命令、实例编号 **03**和 HANA 系统 ID **HN1** 。 SAP HANA 复制由一个主节点和至少一个辅助节点组成。
+本文介绍了如何使用 Azure NetApp 文件 (和) ，在向上扩展部署中配置 SAP HANA 系统复制。 使用示例配置和安装命令、实例编号 **03** 和 HANA 系统 ID **HN1** 。 SAP HANA 复制由一个主节点和至少一个辅助节点组成。
 
 如果此文档中的步骤标记有以下前缀，则含义如下：
 
@@ -81,21 +82,21 @@ ms.locfileid: "91598086"
 - [在 pacemaker 群集中 SAP HANA 系统复制。](https://access.redhat.com/articles/3004101)
 - 通用 RHEL 文档
     - [High Availability Add-On Overview](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)（高可用性附加产品概述）
-    - [高可用性外接程序管理。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [高可用性附加项引用。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [当 HANA 文件系统位于 NFS 共享上时，在 Pacemaker 群集中配置 SAP HANA 系统复制](https://access.redhat.com/solutions/5156571)
+    - [高可用性 Add-On 管理。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [高可用性 Add-On 引用。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [当 HANA 文件系统位于 NFS 共享上时，在 Pacemaker 群集的 Scale-Up 中配置 SAP HANA 系统复制](https://access.redhat.com/solutions/5156571)
 - Azure 特定的 RHEL 文档：
     - [RHEL 高可用性群集的支持策略-作为群集成员 Microsoft Azure 虚拟机。](https://access.redhat.com/articles/3131341)
-    - [安装和配置 Red Hat Enterprise Linux 7.4 (和更高版本) Microsoft Azure 上的高可用性群集。](https://access.redhat.com/articles/3252491)
+    - [在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 (及更高版本) High-Availability 群集。](https://access.redhat.com/articles/3252491)
     - [在 Red Hat Enterprise Linux 上安装 SAP HANA 以便用于 Microsoft Azure。](https://access.redhat.com/solutions/3193782)
     - [当 HANA 文件系统位于 NFS 共享上时，配置 SAP HANA 向上扩展系统复制 Pacemaker 群集](https://access.redhat.com/solutions/5156571)
 - [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序](https://www.netapp.com/us/media/tr-4746.pdf)
 
 ## <a name="overview"></a>概述
 
-通常在向上扩展环境中，SAP HANA 的所有文件系统都从本地存储装入。 在[RHEL 上设置 SAP HANA 系统复制](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)中发布了 Red Hat Enterprise Linux 上的 SAP HANA 系统复制的高可用性
+通常在向上扩展环境中，SAP HANA 的所有文件系统都从本地存储装入。 在[RHEL 上设置 SAP HANA 系统复制](./sap-hana-high-availability-rhel.md)中发布了 Red Hat Enterprise Linux 上的 SAP HANA 系统复制的高可用性
 
-若要在 [Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/) NFS 共享上实现向上扩展系统的 SAP HANA 高可用性，在群集中需要额外的资源配置，以便在一个节点失去对和上 NFS 共享的访问权限时，恢复 HANA 资源。  群集管理 NFS 装载，使其能够监视资源的运行状况。 强制执行文件系统和 SAP HANA 资源之间的依赖关系。  
+若要在 [Azure NetApp 文件](../../../azure-netapp-files/index.yml) NFS 共享上实现向上扩展系统的 SAP HANA 高可用性，在群集中需要额外的资源配置，以便在一个节点失去对和上 NFS 共享的访问权限时，恢复 HANA 资源。  群集管理 NFS 装载，使其能够监视资源的运行状况。 强制执行文件系统和 SAP HANA 资源之间的依赖关系。  
 
 ![和上的 SAP HANA HA 扩展](./media/sap-hana-high-availability-rhel/sap-hana-scale-up-netapp-files-red-hat.png)
 
@@ -125,41 +126,41 @@ SAP HANA 系统复制配置使用专用的虚拟主机名和虚拟 IP 地址。 
 
 ## <a name="set-up-the-azure-netapp-file-infrastructure"></a>设置 Azure NetApp 文件基础结构
 
-在继续设置 Azure NetApp 文件基础结构之前，请先熟悉 Azure [Netapp 文件文档](https://docs.microsoft.com/azure/azure-netapp-files/)。
+在继续设置 Azure NetApp 文件基础结构之前，请先熟悉 Azure [Netapp 文件文档](../../../azure-netapp-files/index.yml)。
 
 Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)中提供。 查看所选 Azure 区域是否提供 Azure NetApp 文件。
 
 有关 azure 区域的 Azure NetApp 文件可用性的信息，请参阅 azure [区域的 Azure Netapp 文件可用性](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)。
 
-部署 Azure NetApp 文件之前，请通过 [注册 Azure netapp 文件说明](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)，请求加入 Azure netapp 文件。
+部署 Azure NetApp 文件之前，请通过 [注册 Azure netapp 文件说明](../../../azure-netapp-files/azure-netapp-files-register.md)，请求加入 Azure netapp 文件。
 
 ### <a name="deploy-azure-netapp-files-resources"></a>部署 Azure NetApp 文件资源
 
-以下说明假定你已部署 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。 Azure NetApp 文件资源和将在其中装载 Azure NetApp 文件资源的 Vm 必须部署在同一 Azure 虚拟网络或对等互连 Azure 虚拟网络中。
+以下说明假定你已部署 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)。 Azure NetApp 文件资源和将在其中装载 Azure NetApp 文件资源的 Vm 必须部署在同一 Azure 虚拟网络或对等互连 Azure 虚拟网络中。
 
-1. 如果尚未部署资源，请请求 [加入 Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)。
+1. 如果尚未部署资源，请请求 [加入 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-register.md)。
 
-2. 按照 [创建 netapp 帐户](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)中的说明，在所选的 Azure 区域中创建一个 netapp 帐户。
+2. 按照 [创建 netapp 帐户](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)中的说明，在所选的 Azure 区域中创建一个 netapp 帐户。
 
-3.  按照 [设置 Azure Netapp 文件容量池](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)中的说明设置 Azure netapp 文件容量池。
+3.  按照 [设置 Azure Netapp 文件容量池](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)中的说明设置 Azure netapp 文件容量池。
 
-    本文中提供的 HANA 体系结构在 *超* 服务级别使用单个 Azure NetApp 文件容量池。 对于 Azure 上的 HANA 工作负荷，建议使用 Azure NetApp 文件*Ultra*或*高级*[服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)。
+    本文中提供的 HANA 体系结构在 *超* 服务级别使用单个 Azure NetApp 文件容量池。 对于 Azure 上的 HANA 工作负荷，建议使用 Azure NetApp 文件 *Ultra* 或 *高级*[服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)。
 
-4.  按照将 [子网委托给 Azure Netapp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)中的说明，将子网委托给 Azure netapp 文件。
+4.  按照将 [子网委托给 Azure Netapp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)中的说明，将子网委托给 Azure netapp 文件。
 
-5.  按照 [为 Azure Netapp 文件创建 NFS 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)中的说明部署 Azure netapp 文件量。
+5.  按照 [为 Azure Netapp 文件创建 NFS 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)中的说明部署 Azure netapp 文件量。
 
     部署卷时，请确保选择 NFSv 4.1 版本。 将卷部署在指定的 Azure NetApp 文件子网中。 将自动分配 Azure NetApp 卷的 IP 地址。
 
     请记住，Azure NetApp 文件资源和 Azure Vm 必须位于同一个 Azure 虚拟网络中，或者位于对等互连 Azure 虚拟网络中。 例如，hanadb1-mnt00001、hanadb1 和 mnt00001 等，它们是 Azure NetApp 文件卷的文件路径，而 nfs://10.32.2.4/hanadb1-data-mnt00001、nfs://10.32.2.4/hanadb1-log-mnt00001 等是这些文件的路径。
     
-    在**hanadb1**上
+    在 **hanadb1** 上
 
     - Volume hanadb1-mnt00001 (nfs://10.32.2.4:/hanadb1-data-mnt00001)  
     - Volume hanadb1 mnt00001 (nfs://10.32.2.4:/hanadb1-log-mnt00001) 
     - Volume hanadb1 mnt00001 (nfs://10.32.2.4:/hanadb1-shared-mnt00001) 
     
-    在**hanadb2**上
+    在 **hanadb2** 上
 
     - Volume hanadb2-mnt00001 (nfs://10.32.2.4:/hanadb2-data-mnt00001) 
     - Volume hanadb2 mnt00001 (nfs://10.32.2.4:/hanadb2-log-mnt00001) 
@@ -171,10 +172,10 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
 
 - 最小容量池为 4 tib (TiB) 。
 - 最小卷大小为 100 gb (GiB) 。
-- Azure NetApp 文件以及将在其中装入 Azure NetApp 文件的所有虚拟机必须位于同一区域中的同一 Azure 虚拟网络或 [对等互连虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 中。
+- Azure NetApp 文件以及将在其中装入 Azure NetApp 文件的所有虚拟机必须位于同一区域中的同一 Azure 虚拟网络或 [对等互连虚拟网络](../../../virtual-network/virtual-network-peering-overview.md) 中。
 - 所选虚拟网络必须具有委托给 Azure NetApp 文件的子网。
-- Azure NetApp 文件量的吞吐量是卷配额和服务级别的功能，如 [Azure NetApp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。 当调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量符合 HANA 系统要求。
-- 使用 Azure NetApp 文件 [导出策略](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)，可以控制允许的客户端、访问类型 (读写、只读等) 。
+- Azure NetApp 文件量的吞吐量是卷配额和服务级别的功能，如 [Azure NetApp 文件的服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 当调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量符合 HANA 系统要求。
+- 使用 Azure NetApp 文件 [导出策略](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)，可以控制允许的客户端、访问类型 (读写、只读等) 。
 - Azure NetApp 文件功能尚未识别区域。 目前，该功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域的潜在延迟影响。
 
 > [!IMPORTANT]
@@ -182,7 +183,7 @@ Azure NetApp 文件在多个 [azure 区域](https://azure.microsoft.com/global-i
 
 ### <a name="sizing-of-hana-database-on-azure-netapp-files"></a>在 Azure NetApp 文件上调整 HANA 数据库的大小
 
-Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，如 [Azure Netapp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。
+Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，如 [Azure Netapp 文件的服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。
 
 在 Azure 中设计 SAP 基础结构时，请注意 SAP 所需的一些最低存储要求，这些要求转换为最小吞吐量特征：
 
@@ -190,14 +191,14 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 - 对于 16 MB 和 64-MB i/o 大小的/hana/data，至少读取 400 MB/s 的活动。
 - 对于具有 16 MB 和 64-MB i/o 大小的/hana/data，至少 250 MB/s 的写入活动。
 
-每 1 TiB 的卷配额的 [Azure NetApp 文件吞吐量限制](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)为：
+每 1 TiB 的卷配额的 [Azure NetApp 文件吞吐量限制](../../../azure-netapp-files/azure-netapp-files-service-levels.md)为：
 
 - 高级存储层-64 MiB/s。
 - 超存储层-128 MiB/s。
 
 为了满足/hana/data 和/hana/log 的 SAP 最小吞吐量要求和/hana/shared 的准则，建议的大小为：
 
-|    Volume    | 高级存储层的大小 | 超存储层的大小 | 支持的 NFS 协议 |
+|    数据量(Volume)    | 高级存储层的大小 | 超存储层的大小 | 支持的 NFS 协议 |
 | :----------: | :--------------------------: | :------------------------: | :--------------------: |
 |  /hana/log   |            4 TiB             |           2 TiB            |          v4.1          |
 |  /hana/data  |           6.3 TiB            |          3.2 TiB           |          v4.1          |
@@ -227,88 +228,93 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 5.  创建虚拟机 1 (**hanadb1**) 。 
 6.  创建虚拟机 2 (**hanadb2**) 。  
 7.  创建虚拟机时，我们将不会添加任何磁盘，因为所有装入点都将位于 Azure NetApp 文件中的 NFS 共享上。 
+
+> [!IMPORTANT]
+> 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。    
+
+> [!NOTE] 
+> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)。
+
 8.  如果使用标准负载均衡器，请执行以下配置步骤：
     1.  首先创建前端 IP 池：
-        1.  打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。
+        1.  打开负载均衡器，选择 **前端 IP 池**，然后选择“添加”。
         1.  输入新前端 IP 池的名称（例如 **hana-frontend**）。
         1.  将 " **分配** " 设置为 " **静态** " 并输入 IP 地址 (例如 **10.32.0.10**) 。
         1.  选择“确定”。
         1.  创建新前端 IP 池后，请记下池 IP 地址。
     1.  接下来创建后端池：
-        1.  打开负载均衡器，选择**后端池**，然后选择“添加”。
+        1.  打开负载均衡器，选择 **后端池**，然后选择“添加”。
         1.  输入新后端池的名称（例如 **hana-backend**）。
         1.  选择“添加虚拟机”。
         1.  选择“虚拟机”。
         1.  选择 SAP HANA 群集的虚拟机及其 IP 地址。
         1.  选择 **添加**。
     1.  接下来创建运行状况探测：
-        1.  打开负载均衡器，选择**运行状况探测**，然后选择“添加”。
+        1.  打开负载均衡器，选择 **运行状况探测**，然后选择“添加”。
         1.  输入新运行状况探测的名称（例如 **hana-hp**）。
         1.  选择“TCP”作为协议，并选择端口 62503。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
         1.  选择“确定”。
     1.  接下来，创建负载均衡规则：
-        1.  打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
+        1.  打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
         1.  输入新负载均衡器规则的名称（例如 hana-lb）。
         1.  选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 hana-frontend、hana-backend 和 hana-hp）。
         1.  选择“HA 端口”。
         1.  将“空闲超时”增大到 30 分钟。
-        1.  确保**启用浮动 IP**。
+        1.  确保 **启用浮动 IP**。
         1.  选择“确定”。
 
-> [!NOTE] 
-> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。
 
 9. 或者，如果你的方案指示使用基本负载均衡器，请执行以下配置步骤：
     1.  配置负载均衡器。 首先创建前端 IP 池：
-        1.  打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。
+        1.  打开负载均衡器，选择 **前端 IP 池**，然后选择“添加”。
         1.  输入新前端 IP 池的名称（例如 **hana-frontend**）。
         1.  将 " **分配** " 设置为 " **静态** " 并输入 IP 地址 (例如 **10.32.0.10**) 。
         1.  选择“确定”。
         1.  创建新前端 IP 池后，请记下池 IP 地址。
     1.  接下来创建后端池：
-        1.  打开负载均衡器，选择**后端池**，然后选择“添加”。
+        1.  打开负载均衡器，选择 **后端池**，然后选择“添加”。
         1.  输入新后端池的名称（例如 **hana-backend**）。
         1.  选择“添加虚拟机”。
         1.  选择在步骤 3 中创建的可用性集。
         1.  选择 SAP HANA 群集的虚拟机。
         1.  选择“确定”。
     1.  接下来创建运行状况探测：
-        1.  打开负载均衡器，选择**运行状况探测**，然后选择“添加”。
+        1.  打开负载均衡器，选择 **运行状况探测**，然后选择“添加”。
         1.  输入新运行状况探测的名称（例如 **hana-hp**）。
-        1.  选择“TCP”作为协议，并选择端口 625**03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
+        1.  选择“TCP”作为协议，并选择端口 625 **03**。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
         1.  选择“确定”。
     1.  对于 SAP HANA 1.0，请创建负载均衡规则：
-        1.  打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-        1.  输入新负载均衡器规则的名称（例如 hana-lb-3**03**15）。
+        1.  打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
+        1.  输入新负载均衡器规则的名称（例如 hana-lb-3 **03** 15）。
         1.  选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-        1.  将“协议”保留设置为“TCP”，输入端口 3**03**15。 
+        1.  将“协议”保留设置为“TCP”，输入端口 3 **03** 15。 
         1.  将“空闲超时”增大到 30 分钟。
-        1.  确保**启用浮动 IP**。
+        1.  确保 **启用浮动 IP**。
         1.  选择“确定”。
-        1.  针对端口 3**03**17 重复上述步骤。
+        1.  针对端口 3 **03** 17 重复上述步骤。
     1.  对于 SAP HANA 2.0，请为系统数据库创建负载均衡规则：
-        1.  打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-        1.  输入新负载均衡器规则的名称（例如 hana-lb-3**03**13）。
+        1.  打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
+        1.  输入新负载均衡器规则的名称（例如 hana-lb-3 **03** 13）。
         1.  选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-        1.  将“协议”保留设置为“TCP”，输入端口 3**03**13。 
+        1.  将“协议”保留设置为“TCP”，输入端口 3 **03** 13。 
         1.  将“空闲超时”增大到 30 分钟。
-        1.  确保**启用浮动 IP**。
+        1.  确保 **启用浮动 IP**。
         1.  选择“确定”。
-        1.  针对端口 3**03**14 重复上述步骤。
+        1.  针对端口 3 **03** 14 重复上述步骤。
     1.  对于 SAP HANA 2.0，请先为租户数据库创建负载均衡规则：
-        1.  打开负载均衡器，选择**负载均衡规则**，然后选择“添加”。
-        1.  输入新负载均衡器规则的名称（例如 hana-lb-3**03**40）。
+        1.  打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
+        1.  输入新负载均衡器规则的名称（例如 hana-lb-3 **03** 40）。
         1.  选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **hana-frontend**）。
-        1.  将“协议”保留设置为“TCP”，输入端口 3**03**40。 
+        1.  将“协议”保留设置为“TCP”，输入端口 3 **03** 40。 
         1.  将“空闲超时”增大到 30 分钟。
-        1.  确保**启用浮动 IP**。
+        1.  确保 **启用浮动 IP**。
         1.  选择“确定”。
-        1.  针对端口 3**03**41 和 3**03**42 重复上述步骤。
+        1.  针对端口 3 **03** 41 和 3 **03** 42 重复上述步骤。
 
 有关 SAP HANA 所需的端口的详细信息，请参阅[SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南或 SAP 说明[2388694](https://launchpad.support.sap.com/#/notes/2388694)中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)的章节。
 
 > [!IMPORTANT]
-> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。 另请参阅 SAP 说明 [2382421](https://launchpad.support.sap.com/#/notes/2382421)。
+> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](../../../load-balancer/load-balancer-custom-probe-overview.md)。 另请参阅 SAP 说明 [2382421](https://launchpad.support.sap.com/#/notes/2382421)。
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>装载 Azure NetApp 文件卷
 
@@ -438,7 +444,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     重新引导计算机后是否重新启动系统? [n]：按 Enter 接受默认值  
     是否继续? (y/n)：验证摘要。 输入 **y** 以继续  
 
-4. [A] 升级 SAP 主机代理****
+4. [A] 升级 SAP 主机代理
 
    从 [SAP 软件中心](https://launchpad.support.sap.com/#/softwarecenter)下载最新的 SAP 主机代理存档，并运行以下命令来升级代理。 替换存档的路径，使其指向已下载的文件：
 
@@ -457,7 +463,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 ## <a name="configure-sap-hana-system-replication"></a>配置 SAP HANA 系统复制
 
-按照设置 [SAP HANA 系统复制](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) 中的步骤配置 SAP HANA 系统复制。 
+按照设置 [SAP HANA 系统复制](./sap-hana-high-availability-rhel.md#configure-sap-hana-20-system-replication) 中的步骤配置 SAP HANA 系统复制。 
 
 ## <a name="cluster-configuration"></a>群集配置
 
@@ -465,7 +471,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 ### <a name="create-a-pacemaker-cluster"></a>创建 Pacemaker 群集
 
-按照在 Azure 中的 [Red Hat Enterprise Linux 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) 中的步骤为此 HANA 服务器创建基本 Pacemaker 群集。
+按照在 Azure 中的 [Red Hat Enterprise Linux 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 中的步骤为此 HANA 服务器创建基本 Pacemaker 群集。
 
 ### <a name="configure-filesystem-resources"></a>配置 filesystem 资源
 
@@ -536,11 +542,11 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     ```
 
    > [!TIP]
-   > 如果配置中包含文件系统、组以外的文件系统，请 `hanadb1_nfs` `hanadb2_nfs` 包括 `sequential=false` 选项，以便在文件系统之间没有排序依赖关系。 所有文件系统都必须在之前开始 `hana_nfs1_active` ，但是它们不需要以彼此相对的顺序启动。 有关更多详细信息，请参阅在 [Pacemaker 群集中的 HANA 文件系统位于 NFS 共享上时，如何实现配置 SAP HANA 系统复制](https://access.redhat.com/solutions/5156571)
+   > 如果配置中包含文件系统、组以外的文件系统，请 `hanadb1_nfs` `hanadb2_nfs` 包括 `sequential=false` 选项，以便在文件系统之间没有排序依赖关系。 所有文件系统都必须在之前开始 `hana_nfs1_active` ，但是它们不需要以彼此相对的顺序启动。 有关详细信息，请如何实现参阅在[Pacemaker 群集中的 Scale-Up 中配置 SAP HANA 系统复制](https://access.redhat.com/solutions/5156571)。
 
 ### <a name="configure-sap-hana-cluster-resources"></a>配置 SAP HANA 群集资源
 
-1. 按照 [创建 SAP HANA 群集资源](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#create-sap-hana-cluster-resources) 中的步骤在群集中创建 SAP HANA 资源。 创建 SAP HANA 资源后，需要在 (NFS 装载 SAP HANA 的资源和文件系统之间创建位置规则约束) 
+1. 按照 [创建 SAP HANA 群集资源](./sap-hana-high-availability-rhel.md#create-sap-hana-cluster-resources) 中的步骤在群集中创建 SAP HANA 资源。 创建 SAP HANA 资源后，需要在 (NFS 装载 SAP HANA 的资源和文件系统之间创建位置规则约束) 
 
 2. **[1]** 配置 SAP HANA 资源与 NFS 装载之间的约束
 
@@ -558,7 +564,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
    检查群集和所有资源的状态
    > [!NOTE]
-   > 本文包含对字词 *从属*的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+   > 本文包含对字词 *从属* 的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
    
     ```
     sudo pcs status
@@ -687,4 +693,4 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
          vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hanadb2
     ```
 
-   建议通过同时执行在 [RHEL 上安装 SAP HANA 系统复制](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)中所述的测试，来全面测试 SAP HANA 群集配置。   
+   建议通过同时执行在 [RHEL 上安装 SAP HANA 系统复制](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)中所述的测试，来全面测试 SAP HANA 群集配置。

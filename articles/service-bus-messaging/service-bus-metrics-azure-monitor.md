@@ -2,13 +2,13 @@
 title: Azure Monitor 中的 Azure 服务总线指标 | Microsoft Docs
 description: 本文介绍如何使用 Azure Monitor 监视服务总线实体（队列、主题和订阅）。
 ms.topic: article
-ms.date: 09/30/2020
-ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.date: 11/18/2020
+ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598125"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916876"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
 
@@ -23,7 +23,7 @@ Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服�
 
 Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Azure Monitor 日志和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
 
-默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 此值是在 Azure Monitor 中的[诊断设置](../azure-monitor/platform/diagnostic-settings.md)中配置的。
+默认情况下，已启用指标，并且可访问最近 30 天的数据。 如果需要将数据保留更长一段时间，可以将指标数据存档到 Azure 存储帐户。 此值是在 Azure Monitor 中的[诊断设置](../azure-monitor/platform/diagnostic-settings.md)中配置的。
 
 ## <a name="access-metrics-in-the-portal"></a>在门户中访问指标
 
@@ -31,7 +31,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 ![Azure 门户中的“监视 - 指标（预览）”页的屏幕截图。][1]
 
-也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标”。 若要显示筛选到实体范围的指标，请选择实体，然后单击“指标”。
+也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后选择 " **指标**"。 若要显示筛选到实体范围的指标，请选择该实体，然后选择 " **指标**"。
 
 ![筛选到实体范围的“监视 - 指标（预览）”页的屏幕截图。][2]
 
@@ -39,9 +39,9 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 ## <a name="billing"></a>计费
 
-针对 Azure Monitor 的指标和警报按警报收费。 在设置警报时并且在保存警报前，可在门户上找到这些费用。 
+针对 Azure Monitor 的指标和警报按警报收费。 在设置了警报并保存警报之前，应在门户上提供这些费用。 
 
-引入指标数据的其他解决方案直接通过这些解决方案进行计费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 如果将指标数据流式传输到 Log Analytics 进行高级分析，则 Log Analytics 也会收费。
+引入指标数据的其他解决方案直接通过这些解决方案进行计费。 例如，如果将指标数据存档到 Azure 存储帐户，则可以使用 Azure 存储计费。 如果将指标数据流式传输到 Log Analytics 进行高级分析，还会 Log Analytics 向你收费。
 
 以下指标可提供服务运行状况的概述。 
 
@@ -58,8 +58,8 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 | ------------------- | ----------------- |
 | 传入请求数| 在指定的期间内向服务总线服务发出的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
 |成功的请求数|在指定的期间内向服务总线服务发出的成功请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
-|服务器错误数|由于服务总线服务发生错误，在指定期间内未处理的请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
-|用户错误（请参阅以下小节）|由于存在用户错误，在指定期间内未处理的请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
+|服务器错误数|由于服务总线服务在指定时间段内出错而未处理的请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
+|用户错误（请参阅以下小节）|由于用户在指定时间段内出错而未处理的请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
 |限制的请求数|由于使用量超标，而被限制的请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
 
 ### <a name="user-errors"></a>用户错误
@@ -80,14 +80,12 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 | 活动消息| 队列/主题中的活动消息的计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/> 维度：实体名称 |
 | 死信消息| 队列/主题中的死信消息计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/>维度：实体名称 |
 | 计划的消息| 队列/主题中的计划消息计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值  <br/> 维度：实体名称 |
+| 已完成消息| 队列/主题中已完成的消息计数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 维度：实体名称 |
+| 弃用的消息| 队列/主题中的被放弃消息的计数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 维度：实体名称 |
 | 大小 | 实体（队列或主题）的大小，以字节为单位。 <br/><br/>单位：计数 <br/>聚合类型：平均值 <br/>维度：实体名称 | 
 
 > [!NOTE]
-> 以下指标的值是时间点值。 在该时间点之后立即使用的传入消息可能不会反映在这些指标中。 
-> - 消息
-> - 活动消息 
-> - 死信消息 
-> - 计划的消息 
+> 消息、活动、死信、计划、已完成和已放弃消息的值都是时间点值。 在该时间点之后立即使用的传入消息可能不会反映在这些指标中。 
 
 ## <a name="connection-metrics"></a>连接指标
 
@@ -102,7 +100,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 > [!NOTE] 
 > 以下指标仅适用于高级层。 
 > 
-> 用于监视高级层命名空间中是否存在中断的重要指标包括：**每个命名空间的 CPU 使用率**和**每个命名空间的内存大小**。 使用 Azure Monitor 为这些指标[设置警报](../azure-monitor/platform/alerts-metric.md)。
+> 用于监视高级层命名空间中是否存在中断的重要指标包括：**每个命名空间的 CPU 使用率** 和 **每个命名空间的内存大小**。 使用 Azure Monitor 为这些指标[设置警报](../azure-monitor/platform/alerts-metric.md)。
 > 
 > 你可以监视的另一个指标是：**限制的请求数**。 不过，只要命名空间保持在其内存、CPU 和中转连接限制内，就不会出现问题。 有关详细信息，请参阅 [Azure 服务总线高级层中的限制](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 
@@ -113,7 +111,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 ## <a name="metrics-dimensions"></a>指标维度
 
-Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为指标添加维度是可选的。 如果不添加维度，则指标是在命名空间级别指定的。 
+Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为指标添加维度是可选的。 如果不添加维度，则在命名空间级别指定指标。 
 
 |维度名称|说明|
 | ------------------- | ----------------- |
@@ -143,9 +141,9 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 
         ![指定条件](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. 在“创建规则”页面上，展开“定义警报详细信息”，执行以下操作：
-    1. 为警报输入**名称**。 
-    2. 为警报输入**说明**。
-    3. 选择警报的**严重性**。 
+    1. 为警报输入 **名称**。 
+    2. 为警报输入 **说明**。
+    3. 选择警报的 **严重性**。 
 
         !["创建规则" 页的屏幕截图。 "定义警报详细信息" 已展开，并突出显示 "警报规则名称"、"说明" 和 "严重性" 的字段。](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. 在“创建规则”页面上，展开“定义操作组”，选择“新建操作组”，然后在“添加操作组”页面上执行以下操作。 
@@ -158,7 +156,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
     7. 选择“编辑详细信息”。 
     8. 在“电子邮件/短信/推送/语音”页面上，执行以下操作：
         1. 选择“电子邮件”。 
-        2. 键入**电子邮件地址**。 
+        2. 键入 **电子邮件地址**。 
         3. 选择“确定”。
 
             !["添加操作组" 页的屏幕截图。 向组中添加了操作类型为 "电子邮件/短信/推送/语音" 的名为 "发送电子邮件" 的操作。](./media/service-bus-metrics-azure-monitor/add-action-group.png)

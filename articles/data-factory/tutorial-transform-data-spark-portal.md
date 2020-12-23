@@ -11,11 +11,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81409260"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010140"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 
@@ -118,7 +118,7 @@ ms.locfileid: "81409260"
 在本部分创作两个链接服务： 
     
 - 一个用于将 Azure 存储帐户链接到数据工厂的 **Azure 存储链接服务**。 按需 HDInsight 群集使用此存储。 此存储还包含要运行的 Spark 脚本。 
-- 一个**按需 HDInsight 链接服务**。 Azure 数据工厂自动创建 HDInsight 群集并运行 Spark 程序。 然后，当群集空闲预配置的时间后，就会删除 HDInsight 群集。 
+- 一个 **按需 HDInsight 链接服务**。 Azure 数据工厂自动创建 HDInsight 群集并运行 Spark 程序。 然后，当群集空闲预配置的时间后，就会删除 HDInsight 群集。 
 
 ### <a name="create-an-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 
@@ -163,9 +163,9 @@ ms.locfileid: "81409260"
    
    h.如果该值不存在，请单击“添加行”。 展开“OS 类型”。 
    
-   i. 输入名称作为**群集用户名**。 
+   i. 输入名称作为 **群集用户名**。 
    
-   j. 输入该用户的**群集密码**。 
+   j. 输入该用户的 **群集密码**。 
    
    k. 选择“完成”。  
 

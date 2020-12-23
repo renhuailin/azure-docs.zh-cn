@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/02/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 285fa34db3886cf405a3682438a27a17c75d81ed
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: c42e9c31397e9313898d7029366bc8de169d368e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666685"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683822"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
 
@@ -22,7 +22,7 @@ ms.locfileid: "91666685"
 > [!NOTE]
 > 以下说明引用 Istio 版本 `1.7.3`。
 >
-> `1.7.x`Istio 团队针对 Kubernetes 版本测试了 Istio 版本 `1.16+` 。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
+> Istio 团队已针对 Kubernetes 版本 `1.16+` 测试了 Istio `1.7.x` 发行版。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
 
 在本文中，学习如何：
 
@@ -35,7 +35,7 @@ ms.locfileid: "91666685"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.16` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
+本文中详细介绍的步骤假设你已创建 AKS 群集 (Kubernetes `1.16` 和更高版本，启用 KUBERNETES RBAC) 并已建立 `kubectl` 与群集的连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
 
 确保你已阅读 [Istio 性能和可伸缩性](https://istio.io/docs/concepts/performance-and-scalability/)文档，以了解在 AKS 群集中运行 Istio 时的其他资源要求。 核心和内存要求将因特定工作负荷而异。 选择适当数量的节点和 VM 大小以适合你的设置。
 
@@ -59,15 +59,15 @@ ms.locfileid: "91666685"
 
 ::: zone-end
 
-## <a name="install-the-istio-operator-on-aks"></a>在 AKS 上安装 Istio 运算符
+## <a name="install-the-istio-operator-on-aks"></a>在 AKS 上安装 Istio Operator
 
-Istio 提供了一个 [操作员][istio-install-operator] ，用于管理 AKS 群集中 Istio 组件的安装和更新。 我们将使用 `istioctl` 客户端二进制文件安装 Istio 运算符。
+Istio 提供了一个 [Operator][istio-install-operator]，用于管理 AKS 群集中 Istio 组件的安装和更新。 我们将使用 `istioctl` 客户端二进制文件来安装 Istio Operator。
 
 ```bash
 istioctl operator init
 ```
 
-应会看到类似于以下输出的内容，以确认已安装 Istio 运算符。
+你应该会看到类似于以下输出的内容，从而可以确认已经安装了 Istio Operator。
 
 ```console
 Using operator Deployment image: docker.io/istio/operator:1.7.3
@@ -75,13 +75,13 @@ Using operator Deployment image: docker.io/istio/operator:1.7.3
 ✔ Installation complete
 ```
 
-Istio 运算符安装到 `istio-operator` 命名空间中。 查询命名空间。
+Istio Operator 会安装到 `istio-operator` 命名空间中。 请查询该命名空间。
 
 ```bash
 kubectl get all -n istio-operator
 ```
 
-应会看到部署了以下组件。
+你应该会看到已经部署了以下组件。
 
 ```console
 NAME                                  READY   STATUS    RESTARTS   AGE
@@ -97,16 +97,16 @@ NAME                                        DESIRED   CURRENT   READY   AGE
 replicaset.apps/istio-operator-6d7958b7bf   1         1         1       2m43s
 ```
 
-你可以了解有关操作员模式的详细信息，以及如何通过 [kubernetes.io][kubernetes-operator]帮助自动执行复杂的任务。
+可以通过 [kubernetes.io][kubernetes-operator] 来详细了解 Operator 模式以及该模式如何帮助自动执行复杂任务。
 
 
 ### <a name="install-istio-components"></a>安装 Istio 组件
 
-现在，我们已成功地在 AKS 群集中安装了 Istio 操作员，可以安装 Istio 组件了。 
+我们已经在 AKS 群集中成功安装了 Istio Operator，现在来安装 Istio 组件。 
 
-我们将利用 `default` [Istio 配置文件][istio-configuration-profiles] 来构建 [Istio Operator 规范][istio-control-plane]。
+我们将利用 `default` [Istio 配置文件][istio-configuration-profiles]来构建 [Istio Operator 规范][istio-control-plane]。
 
-您可以运行以下 `istioctl` 命令来查看 `default` Istio 配置文件的配置。
+可以运行下面的 `istioctl` 命令来查看 `default` Istio 配置文件的配置。
 
 ```bash
 istioctl profile dump default
@@ -116,9 +116,9 @@ istioctl profile dump default
 > Istio 目前必须计划在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Istio Pod 仅计划在 Linux 节点上运行。 我们将使用[节点选择器][kubernetes-node-selectors]来确保将 Pod 安排到正确的节点。
 
 > [!CAUTION]
-> [ISTIO CNI][istio-feature-cni] Istio 功能目前采用[Alpha][istio-feature-stages]，因此应在启用之前考虑。 
+> [Istio CNI][istio-feature-cni] Istio 功能目前以 [Alpha][istio-feature-stages] 版提供，因此，在启用这些功能之前应该谨慎。 
 
-使用以下内容创建名为 `istio.aks.yaml` 的文件。 此文件将保存用于配置 Istio 的 [Istio 运算符规范][istio-control-plane] 。
+使用以下内容创建名为 `istio.aks.yaml` 的文件。 此文件将保留 [Istio Operator 规范][istio-control-plane]以用于配置 Istio。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -151,7 +151,7 @@ spec:
           strategy: anonymous 
 ```
 
-创建 `istio-system` 命名空间并将 Istio Operator 规范部署到该命名空间。 Istio 运算符将监视 Istio Operator 规范，并将其用于在 AKS 群集中安装和配置 Istio。
+请创建 `istio-system` 命名空间，并将 Istio Operator 规范部署到该命名空间。 Istio Operator 将会监视 Istio Operator 规范，并且将会使用该规范在 AKS 群集中安装和配置 Istio。
 
 ```bash
 kubectl create ns istio-system
@@ -163,19 +163,19 @@ kubectl apply -f istio.aks.yaml
 
 ## <a name="validate-the-istio-installation"></a>验证 Istio 安装
 
-查询 `istio-system` 命名空间，其中 Istio 和外接程序组件由 Istio 运算符安装：
+请查询 `istio-system` 命名空间，Istio Operator 已在其中安装了 Istio 和附加产品组件：
 
 ```bash
 kubectl get all -n istio-system
 ```
 
-应会看到以下组件：
+你应该会看到以下组件：
 
-- `istio*` -Istio 组件
-- `jaeger-*`、 `tracing` 和 `zipkin` -跟踪加载项
-- `prometheus` -指标加载项
-- `grafana` -分析和监视仪表板加载项
-- `kiali` -服务网格仪表板加载项
+- `istio*` - Istio 组件
+- `jaeger-*`、`tracing` 和 `zipkin` - 用于跟踪的附加产品
+- `prometheus` - 指标附加产品
+- `grafana` - 分析和监视仪表板附加产品
+- `kiali` - 服务网格仪表板附加产品
 
 ```console
 NAME                                        READY   STATUS    RESTARTS   AGE
@@ -220,7 +220,7 @@ horizontalpodautoscaler.autoscaling/istio-ingressgateway   Deployment/istio-ingr
 horizontalpodautoscaler.autoscaling/istiod                 Deployment/istiod                 1%/80%    1         5         1          6m16s
 ```
 
-还可以通过查看 Istio 运算符的日志来进一步了解安装。
+也可以通过监视 Istio Operator 的日志来进一步了解安装情况。
 
 ```bash
 kubectl logs -n istio-operator -l name=istio-operator -f
@@ -232,9 +232,9 @@ kubectl logs -n istio-operator -l name=istio-operator -f
 
 ## <a name="accessing-the-add-ons"></a>访问加载项
 
-许多加载项由 Istio 运算符安装，提供其他功能。 加载项 Web 应用程序**不**通过外部 IP 地址公开。 
+Istio Operator 安装了多种提供附加功能的附加产品。 加载项 Web 应用程序 **不** 通过外部 IP 地址公开。 
 
-若要访问加载项用户界面，请使用 `istioctl dashboard` 命令。 此命令使用 [kubectl 端口转发][kubectl-port-forward] 和随机端口，在你的客户端计算机与 AKS 群集中的相关 pod 之间创建安全连接。 然后，它会在默认浏览器中自动打开加载项 Web 应用程序。
+若要访问加载项用户界面，请使用 `istioctl dashboard` 命令。 此命令使用 [kubectl port-forward][kubectl-port-forward] 和一个随机端口在客户端计算机与 AKS 群集中的相关 Pod 之间建立安全连接。 然后，它会在默认浏览器中自动打开加载项 Web 应用程序。
 
 ### <a name="grafana"></a>Grafana
 
@@ -283,27 +283,27 @@ istioctl dashboard envoy <pod-name>.<namespace>
 
 ### <a name="remove-istio"></a>删除 Istio
 
-若要从 AKS 群集中删除 Istio，请删除 `IstioOperator` 前面添加的名为 `istio-control-plane` 的资源。 Istio 运算符将识别已删除 Istio 运算符规范，然后删除所有关联的 Istio 组件。
+若要从 AKS 群集中删除 Istio，请删除我们在之前的操作中添加的名为 `istio-control-plane` 的 `IstioOperator` 资源。 Istio Operator 将会识别出 Istio Operator 规范已删除，然后会删除所有关联的 Istio 组件。
 
 ```bash
 kubectl delete istiooperator istio-control-plane -n istio-system
 ```
 
-您可以运行以下各项来检查所有 Istio 组件是否已删除。
+删除了所有 Istio 组件后，可运行以下命令进行检查。
 
 ```bash
 kubectl get all -n istio-system
 ```
 
-### <a name="remove-istio-operator"></a>删除 Istio 运算符
+### <a name="remove-istio-operator"></a>删除 Istio Operator
 
-成功卸载 Istio 后，还可以删除 Istio 运算符。
+成功卸载了 Istio 之后，还可以删除 Istio Operator。
 
 ```bash
 istioctl operator remove
 ```
 
-最后，删除 `istio-` 命名空间。
+最后，请删除 `istio-` 命名空间。
 
 ```bash
 kubectl delete ns istio-system

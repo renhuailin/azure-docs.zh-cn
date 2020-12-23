@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 TRIM
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 TRIM。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 377aa042919f94ec31549f6d672a4dabc6c86859
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78304236"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340730"
 ---
 # <a name="trim-azure-cosmos-db"></a>TRIM (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回删除前导空格和尾随空格后的字符串表达式。  
   
 ## <a name="syntax"></a>语法

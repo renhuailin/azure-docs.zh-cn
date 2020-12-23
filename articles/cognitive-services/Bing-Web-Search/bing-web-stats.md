@@ -11,21 +11,26 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 02fea02cca5950ef8467377a866e9a765af9e2e1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147401"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349548"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>将分析添加到必应搜索 API
 
-必应统计信息为必应搜索 API 提供分析。 这些分析包括调用量、顶级查询字符串、地理分布等。 可以通过导航到 Azure 资源并单击 "**启用必应统计信息**"，在[Azure 门户](https://ms.portal.azure.com)中启用必应统计信息。
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
+
+必应统计信息为必应搜索 API 提供分析。 这些分析包括调用量、顶级查询字符串、地理分布等。 可以通过导航到 Azure 资源并单击 "**启用必应统计信息**"，在 [Azure 门户](https://ms.portal.azure.com)中启用必应统计信息。
 
 > [!IMPORTANT]
 > * 必应统计信息不适用于免费定价层上的资源 `F0` 。
 > * 无法使用通过必应统计信息仪表板提供的任何数据来创建要分发到第三方的应用程序。
-> * 启用必应统计信息会略微增加订阅率。 有关详细信息，请参阅[定价](https://aka.ms/bingstatisticspricing)。
+> * 启用必应统计信息会略微增加订阅率。 有关详细信息，请参阅 [定价](https://aka.ms/bingstatisticspricing) 。
 
 
 下图显示了每个必应搜索 API 终结点的可用分析。
@@ -34,7 +39,7 @@ ms.locfileid: "86147401"
 
 ## <a name="access-your-analytics"></a>访问分析
 
-必应更新分析数据每24小时一次，并保留最多13个月的历史记录，可从[分析仪表板](https://bingapistatistics.com)进行访问。 请确保使用与用于注册必应统计信息 (MSA) 相同的 Microsoft 帐户来登录。
+必应更新分析数据每24小时一次，并保留最多13个月的历史记录，可从 [分析仪表板](https://bingapistatistics.com)进行访问。 请确保使用与用于注册必应统计信息 (MSA) 相同的 Microsoft 帐户来登录。
 
 > [!NOTE]  
 > * 最长可能需要在 24 小时后，指标才会显示在仪表板上。 仪表板显示上次更新数据的日期和时间。  
@@ -54,7 +59,7 @@ ms.locfileid: "86147401"
   - **全部**：最多包含13个月的数据  
   - **过去24小时**：包括最近24小时内的分析  
   - **过去一周**：包含过去7天的分析  
-  - 上**个月**：包含过去30天的分析  
+  - 上 **个月**：包含过去30天的分析  
   - **自定义日期范围**：包括指定日期范围内的分析（如果可用）  
 
 ## <a name="charts-and-graphs"></a>图表和图形

@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309335"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890507"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
 
@@ -21,8 +21,8 @@ ms.locfileid: "87309335"
 ## <a name="smart-detection-rule-configuration"></a>智能检测规则配置
 
 可以配置智能检测规则的以下设置：
-- 是否已启用该规则（默认值为 **true**。）
-- 发现检测时是否应向与订阅的[监视读者](../../role-based-access-control/built-in-roles.md#monitoring-reader)和[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)角色关联的用户发送电子邮件（默认值为 **true**）。
+- 是否已启用该规则（默认值为 **true** 。）
+- 发现检测时是否应向与订阅的 [监视读者](../../role-based-access-control/built-in-roles.md#monitoring-reader)和 [监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)角色关联的用户发送电子邮件（默认值为 **true** ）。
 - 找到检测项时，应收到通知的其他任何电子邮件收件人。
     -  电子邮件配置不适用于标记为“预览”的智能检测规则  。
 
@@ -32,7 +32,7 @@ ms.locfileid: "87309335"
 ## <a name="examples"></a>示例
 
 以下几个示例演示如何使用 Azure 资源管理器模板配置智能检测规则的设置。
-在所有示例中，Application Insights 资源名为 _myApplication_，“‘依赖项持续时间长’智能检测规则”的内部名称为 _longdependencyduration_。
+在所有示例中，Application Insights 资源名为 _myApplication_ ，“‘依赖项持续时间长’智能检测规则”的内部名称为 _longdependencyduration_ 。
 请务必替换 Application Insights 资源名称，并指定相关的智能检测规则内部名称。 在下表中查看每个智能检测规则的对应内部 Azure 资源管理器名称列表。
 
 ### <a name="disable-a-smart-detection-rule"></a>禁用智能检测规则
@@ -44,7 +44,7 @@ ms.locfileid: "87309335"
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -75,7 +75,7 @@ ms.locfileid: "87309335"
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -106,7 +106,7 @@ ms.locfileid: "87309335"
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -120,7 +120,7 @@ ms.locfileid: "87309335"
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }
@@ -135,7 +135,7 @@ ms.locfileid: "87309335"
 下表列出了门户中显示的智能检测规则名称，以及应在 Azure 资源管理器模板中为这些规则使用的内部名称。
 
 > [!NOTE]
-> 标记为_预览版_的智能检测规则不支持电子邮件通知。 因此，只能为这些规则设置 "_已启用_" 属性。 
+> 标记为 _预览版_ 的智能检测规则不支持电子邮件通知。 因此，只能为这些规则设置 " _已启用_ " 属性。 
 
 | Azure 门户规则名称 | 内部名称
 |:---|:---|

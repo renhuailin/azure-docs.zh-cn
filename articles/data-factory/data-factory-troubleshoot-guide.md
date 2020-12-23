@@ -5,15 +5,15 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/01/2020
+ms.date: 11/16/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 783e48139cf057bb17278d98e3683cb2b4cbad89
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279544"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654586"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "89279544"
 
 - **原因**：`Bad authoring.`
 
-- **建议**：验证[链接服务定义](compute-linked-services.md#azure-databricks-linked-service)。
+- **建议**：验证 [链接服务定义](compute-linked-services.md#azure-databricks-linked-service)。
 
 <br/> 
 
@@ -72,7 +72,7 @@ ms.locfileid: "89279544"
 
 - **原因**：`Bad authoring.`
 
-- **建议**：验证[链接服务定义](compute-linked-services.md#azure-databricks-linked-service)。
+- **建议**：验证 [链接服务定义](compute-linked-services.md#azure-databricks-linked-service)。
 
 <br/> 
 
@@ -126,7 +126,7 @@ ms.locfileid: "89279544"
 
 ### <a name="error-code-3208"></a>错误代码：3208
 
-- 消息：`An error occurred while sending the request.`
+- **消息**：`An error occurred while sending the request.`
 
 - **原因**：与 Databricks 服务的网络连接已中断。
 
@@ -440,7 +440,7 @@ ms.locfileid: "89279544"
 
 - **建议**：验证尝试访问的终结点是否响应请求。 可以使用 Fiddler/Postman 等工具。
 
-## <a name="custom"></a>“自定义”
+## <a name="custom"></a>自定义
 
 下表适用于 Azure Batch。
  
@@ -522,79 +522,30 @@ ms.locfileid: "89279544"
  
 ## <a name="hdinsight"></a>HDInsight
 
-### <a name="error-code-200"></a>错误代码：200
-
-- **消息**：`Unexpected error happened: '%error;'.`
-
-- **原因：** 出现内部服务问题。
-
-- **建议**：请联系 ADF 支持人员以获得更多帮助。
-
-### <a name="error-code-201"></a>错误代码：201
-
-- **消息**：`JobType %jobType; is not found.`
-
-- **原因：** 某个新作业类型不受 ADF 的支持。
-
-- **建议**：请联系 ADF 支持团队以获得更多帮助。
-
-### <a name="error-code-202"></a>错误代码：202
-
-- **消息**：`Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **原因：** 错误消息包含问题的详细信息。
-
-- **建议**：错误消息中的详细信息应有助于排查问题。 如果没有足够的信息，请联系 ADF 支持人员以获得更多帮助。
-
-### <a name="error-code-203"></a>错误代码：203
-
-- **消息**：`Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **原因：** 错误消息包含问题的详细信息。
-
-- **建议**：错误消息中的详细信息应有助于排查问题。 如果没有足够的信息，请联系 ADF 支持人员以获得更多帮助。
-
-### <a name="error-code-204"></a>错误代码：204
-
-- **消息**：`The resumption token is missing for runId '%runId;'.`
-
-- **原因：** 出现内部服务问题。
-
-- **建议**：请联系 ADF 支持人员以获得更多帮助。
-
-### <a name="error-code-205"></a>错误代码：205
-
-- **消息**：`Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
-
-- **原因：** 创建 HDI 按需群集时出错。
-
-- **建议**：请联系 ADF 支持人员以获得更多帮助。
-
 ### <a name="error-code-206"></a>错误代码：206
 
-- **消息**：`The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+- **消息**：`The batch ID for Spark job is invalid. Please retry your job.`
 
 - **原因：** 导致此错误的服务出现了内部问题。
 
-- **建议**：此问题可能是暂时性的。 请重试作业，如果问题依旧出现，请联系 ADF 支持人员以获得更多帮助。
+- **建议**：此问题可能是暂时性的。 请在一段时间后重试作业。
 
 ### <a name="error-code-207"></a>错误代码：207
 
-- **消息**：`Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+- **消息**：`Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI.`
 
 - **原因：** 尝试从主存储帐户确定区域时出现内部错误。
 
-- **建议**：尝试另一个存储。 如果此解决方法不可接受，请联系 ADF 支持团队以获得更多帮助。
+- **建议**：尝试另一个存储。 
 
 ### <a name="error-code-208"></a>错误代码：208
 
-- **消息**：`Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+- **消息**：`Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again.`
 
 - **原因：** 尝试读取服务主体或实例化 MSI 身份验证时出现内部错误。
 
-- **建议**：请考虑提供一个有权在所提供订阅中创建 HDInsight 群集的服务主体，然后重试。 验证是否[正确设置了托管标识](https://docs.microsoft.com/azure/hdinsight/hdinsight-managed-identities)。
+- **建议**：请考虑提供一个有权在所提供订阅中创建 HDInsight 群集的服务主体，然后重试。 验证是否[正确设置了托管标识](../hdinsight/hdinsight-managed-identities.md)。
 
-   如果此解决方法不可接受，请联系 ADF 支持团队以获得更多帮助。
 
 ### <a name="error-code-2300"></a>错误代码：2300
 
@@ -604,7 +555,7 @@ ms.locfileid: "89279544"
 
 - **建议**：验证是否未删除该群集且提供的 URI 正确。 在浏览器中打开该 URI 时，应会看到 Ambari UI。 如果该群集位于虚拟网络中，则 URI 应是专用 URI。 若要打开该 URI，请使用同一虚拟网络中的虚拟机 (VM)。
 
-   有关详细信息，请参阅[直接连接到 Apache Hadoop 服务](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services)。
+   有关详细信息，请参阅[直接连接到 Apache Hadoop 服务](../hdinsight/hdinsight-plan-virtual-network-deployment.md#directly-connect-to-apache-hadoop-services)。
  
  </br>
 
@@ -612,9 +563,9 @@ ms.locfileid: "89279544"
 
 - **建议**：这可能是普通的 HDInsight 连接问题或网络连接问题。 首先确认是否可以从任何浏览器打开 HDInsight Ambari UI。 然后检查凭据是否仍然有效。
    
-   如果使用自承载集成运行时 (IR)，请从安装了自承载 IR 的 VM 或计算机执行此步骤。 然后再次尝试从数据工厂提交作业。 如果仍然失败，请联系数据工厂团队以获得支持。
+   如果使用自承载集成运行时 (IR)，请从安装了自承载 IR 的 VM 或计算机执行此步骤。 然后再次尝试从数据工厂提交作业。
 
-   有关详细信息，请阅读 [Ambari Web UI](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-manage-ambari#ambari-web-ui)。
+   有关详细信息，请阅读 [Ambari Web UI](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui)。
 
  </br>
 
@@ -622,7 +573,7 @@ ms.locfileid: "89279544"
 
 - **建议**：更正凭据，然后重新部署链接服务。 首先在任何浏览器中打开群集 URI 并尝试登录，以便验证凭据在 HDInsight 中是否有效。 如果凭据无效，可从 Azure 门户重置凭据。
 
-   对于 ESP 群集，可通过[自助式密码重置](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password)来重置密码。
+   对于 ESP 群集，可通过[自助式密码重置](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)来重置密码。
 
  </br>
 
@@ -638,8 +589,8 @@ ms.locfileid: "89279544"
        有关详细信息，请参阅 Azure HDInsight 故障排除文档。 例如：
 
        * [Ambari UI 502 错误](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)
-       * [Apache Spark Thrift 服务器的 RpcTimeoutException](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception)
-       * [排查应用程序网关中的网关无效错误](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)
+       * [Apache Spark Thrift 服务器的 RpcTimeoutException](../hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception.md)
+       * [排查应用程序网关中的网关无效错误](../application-gateway/application-gateway-troubleshooting-502.md)
 
  </br>
 
@@ -647,7 +598,7 @@ ms.locfileid: "89279544"
 
 - **建议**：限制提交到 HDInsight 的并发作业数。 如果这些作业是同一活动提交的，请参阅“数据工厂活动并发性”。 更改触发器，以将并发管道运行分散到不同的时间。
 
-   请参阅 [HDInsight 文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors)，根据错误中的建议调整 `templeton.parallellism.job.submit`。
+   请参阅 [HDInsight 文档](../hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors.md)，根据错误中的建议调整 `templeton.parallellism.job.submit`。
 
 ### <a name="error-code-2301"></a>错误代码：2301
 
@@ -673,7 +624,7 @@ ms.locfileid: "89279544"
        1. 有关警报的详细信息以及警报解决方法，请参阅[管理和监视群集](https://docs.cloudera.com/HDPDocuments/Ambari-2.7.5.0/managing-and-monitoring-ambari/content/amb_predefined_alerts.html)。
     1. 检查 YARN 内存。 如果 YARN 内存很高，作业处理可能会延迟。 如果没有足够的资源来适应 Spark 应用程序/作业，请纵向扩展群集，以确保群集具有足够的内存和核心。 
  1. 运行示例测试作业。
-    1. 如果在 HDInsight 后端运行相同的作业，请检查该作业是否成功。 有关示例运行的示例，请参阅[运行 HDInsight 随附的 MapReduce 示例](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) 
+    1. 如果在 HDInsight 后端运行相同的作业，请检查该作业是否成功。 有关示例运行的示例，请参阅[运行 HDInsight 随附的 MapReduce 示例](../hdinsight/hadoop/apache-hadoop-run-samples-linux.md) 
  1. 如果作业在 HDInsight 上仍然失败，请检查要提供给支持人员的应用程序日志和信息：
     1. 检查作业是否已提交到 YARN。 如果作业尚未提交到 YARN，请使用 `--master yarn`。
     1. 如果应用程序已执行完毕，请收集 YARN 应用程序的开始时间和结束时间。 如果应用程序尚未执行完毕，请收集开始时间/启动时间。
@@ -695,7 +646,7 @@ ms.locfileid: "89279544"
        1. 有关警报的详细信息以及警报解决方法，请参阅[管理和监视群集](https://docs.cloudera.com/HDPDocuments/Ambari-2.7.5.0/managing-and-monitoring-ambari/content/amb_predefined_alerts.html)。
     1. 检查 YARN 内存。 如果 YARN 内存很高，作业处理可能会延迟。 如果没有足够的资源来适应 Spark 应用程序/作业，请纵向扩展群集，以确保群集具有足够的内存和核心。 
  1. 运行示例测试作业。
-    1. 如果在 HDInsight 后端运行相同的作业，请检查该作业是否成功。 有关示例运行的示例，请参阅[运行 HDInsight 随附的 MapReduce 示例](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) 
+    1. 如果在 HDInsight 后端运行相同的作业，请检查该作业是否成功。 有关示例运行的示例，请参阅[运行 HDInsight 随附的 MapReduce 示例](../hdinsight/hadoop/apache-hadoop-run-samples-linux.md) 
  1. 如果作业在 HDInsight 上仍然失败，请检查要提供给支持人员的应用程序日志和信息：
     1. 检查作业是否已提交到 YARN。 如果作业尚未提交到 YARN，请使用 `--master yarn`。
     1. 如果应用程序已执行完毕，请收集 YARN 应用程序的开始时间和结束时间。 如果应用程序尚未执行完毕，请收集开始时间/启动时间。
@@ -727,7 +678,7 @@ ms.locfileid: "89279544"
 
 - **建议**：错误消息应有助于识别问题。 请修复 JSON 配置，然后重试。
 
-   有关详细信息，请查看 [Azure HDInsight 按需链接服务](https://docs.microsoft.com/azure/data-factory/compute-linked-services#azure-hdinsight-on-demand-linked-service)。
+   有关详细信息，请查看 [Azure HDInsight 按需链接服务](./compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。
 
 ### <a name="error-code-2310"></a>错误代码：2310
 
@@ -737,7 +688,7 @@ ms.locfileid: "89279544"
 
 - **建议**：请按照错误消息解决问题。 如果信息不足以解决问题，请联系 HDI 团队，并向他们提供可在 ADF“监视”页的活动运行输出中找到的批 ID 和作业 ID。 若要进一步进行故障排除，请收集批处理作业的完整日志。
 
-   若要详细了解如何收集完整日志，请参阅[获取批处理作业的完整日志](https://docs.microsoft.com/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)。
+   若要详细了解如何收集完整日志，请参阅[获取批处理作业的完整日志](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)。
 
 ### <a name="error-code-2312"></a>错误代码：2312
 
@@ -747,7 +698,7 @@ ms.locfileid: "89279544"
 
 - **建议**：点击 ADF“监视”页上的活动运行输出中的链接，排查 HDInsight Spark 群集上的运行问题。 联系 HDInsight 支持团队以获得更多帮助。
 
-   若要详细了解如何收集完整日志，请参阅[获取批处理作业的完整日志](https://docs.microsoft.com/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)。
+   若要详细了解如何收集完整日志，请参阅[获取批处理作业的完整日志](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)。
 
 ### <a name="error-code-2313"></a>错误代码：2313
 
@@ -757,7 +708,7 @@ ms.locfileid: "89279544"
 
 - **建议**：排查 HDInsight Spark 群集上的批问题。 联系 HDInsight 支持人员以获得更多帮助。 
 
-   若要详细了解如何收集完整日志，请参阅[获取批处理作业的完整日志](https://docs.microsoft.com/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)，并与 HDInsight 支持人员共享完整日志，以获得更多帮助。
+   若要详细了解如何收集完整日志，请参阅[获取批处理作业的完整日志](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)，并与 HDInsight 支持人员共享完整日志，以获得更多帮助。
 
 ### <a name="error-code-2328"></a>错误代码：2328
 
@@ -821,7 +772,7 @@ ms.locfileid: "89279544"
 
 - **消息**：`User name and password cannot be null or empty to connect to the HDInsight cluster.`
 
-- **原因**：用户名或密码为空。
+- **原因：** 用户名或密码为空。
 
 - **建议**：提供连接到 HDI 所需的正确凭据，然后重试。
 
@@ -844,8 +795,8 @@ ms.locfileid: "89279544"
    1. 确认已正确设置 ODBC/Java Database Connectivity (JDBC) 连接。
       1. 对于 JDBC，如果使用相同的虚拟网络，则可以从以下位置获取此连接：<br>
         `Hive -> Summary -> HIVESERVER2 JDBC URL`
-      1. 若要确保正确设置 JDBC，请参阅[在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-connect-hive-jdbc-driver)。
-      1. 对于开放式数据库 (ODB)，请参阅[教程：使用 ODBC 和 PowerShell 查询 Apache Hive](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-query-odbc-driver-powershell) 以确保设置正确。 
+      1. 若要确保正确设置 JDBC，请参阅[在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive](../hdinsight/hadoop/apache-hadoop-connect-hive-jdbc-driver.md)。
+      1. 对于开放式数据库 (ODB)，请参阅[教程：使用 ODBC 和 PowerShell 查询 Apache Hive](../hdinsight/interactive-query/apache-hive-query-odbc-driver-powershell.md) 以确保设置正确。 
    1. 验证 Hiveserver2、Hive 元存储和 Hiveserver2 Interactive 是否处于活动运行状态。 
    1. 检查 Ambari 用户界面 (UI)：
       1. 确保所有服务仍在运行。
@@ -864,8 +815,8 @@ ms.locfileid: "89279544"
    1. 确认已正确设置 ODBC/Java Database Connectivity (JDBC) 连接。
       1. 对于 JDBC，如果使用相同的虚拟网络，则可以从以下位置获取此连接：<br>
         `Hive -> Summary -> HIVESERVER2 JDBC URL`
-      1. 若要确保正确设置 JDBC，请参阅[在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-connect-hive-jdbc-driver)。
-      1. 对于开放式数据库 (ODB)，请参阅[教程：使用 ODBC 和 PowerShell 查询 Apache Hive](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-query-odbc-driver-powershell) 以确保设置正确。 
+      1. 若要确保正确设置 JDBC，请参阅[在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive](../hdinsight/hadoop/apache-hadoop-connect-hive-jdbc-driver.md)。
+      1. 对于开放式数据库 (ODB)，请参阅[教程：使用 ODBC 和 PowerShell 查询 Apache Hive](../hdinsight/interactive-query/apache-hive-query-odbc-driver-powershell.md) 以确保设置正确。 
    1. 验证 Hiveserver2、Hive 元存储和 Hiveserver2 Interactive 是否处于活动运行状态。 
    1. 检查 Ambari 用户界面 (UI)：
       1. 确保所有服务仍在运行。
@@ -921,7 +872,7 @@ ms.locfileid: "89279544"
 
 - **建议**：验证所选的链接服务是否为活动支持的类型之一。 HDI 活动支持 AzureBlobStorage 和 AzureBlobFSStorage 链接服务。
 
-   有关详细信息，请阅读[可与 Azure HDInsight 群集配合使用的存储选项的比较](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options)
+   有关详细信息，请阅读[可与 Azure HDInsight 群集配合使用的存储选项的比较](../hdinsight/hdinsight-hadoop-compare-storage-options.md)
 
 ### <a name="error-code-2355"></a>错误代码：2355
 
@@ -1024,23 +975,23 @@ ms.locfileid: "89279544"
 
 1. 下载、安装并打开 [Fiddler](https://www.telerik.com/download/fiddler)。
 
-1. 如果 Web 应用程序使用 HTTPS，请转到“工具” > “Fiddler 选项” > “HTTPS”。**** **** ****
+1. 如果 Web 应用程序使用 HTTPS，请转到“工具” > “Fiddler 选项” > “HTTPS”。  
 
-   1. 在“HTTPS”选项卡中，选择“捕获 HTTPS 连接”和“解密 HTTPS 流量”。**** ****
+   1. 在“HTTPS”选项卡中，选择“捕获 HTTPS 连接”和“解密 HTTPS 流量”。 
 
       ![Fiddler 选项](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. 如果应用程序使用 TLS/SSL 证书，请将 Fiddler 证书添加到设备。
 
-   请转到：“工具” > “Fiddler 选项” > “HTTPS” > “操作” > “将根证书导出到桌面”。**** **** **** **** > ****
+   请转到：“工具” > “Fiddler 选项” > “HTTPS” > “操作” > “将根证书导出到桌面”。    > 
 
-1. 转到“文件” > “捕获流量”来关闭捕获。**** **** 或者按 **F12**。
+1. 转到“文件” > “捕获流量”来关闭捕获。  或者按 **F12**。
 
 1. 清除浏览器缓存以删除所有已缓存的项；必须重新下载这些项。
 
 1. 创建请求：
 
-1. 选择“编辑器”选项卡。****
+1. 选择“编辑器”选项卡。
 
    1. 设置 HTTP 方法和 URL。
  
@@ -1050,14 +1001,23 @@ ms.locfileid: "89279544"
 
 1. 再次打开流量捕获，并在页面上完成出问题的事务。
 
-1. 请转到：“文件” > “保存” > “所有会话”。**** **** ****
+1. 请转到：“文件” > “保存” > “所有会话”。  
 
 有关详细信息，请参阅 [Fiddler 入门](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)。
 
 ## <a name="general"></a>常规
 
 ### <a name="activity-stuck-issue"></a>活动停滞问题
+
 如果观察到活动运行的时间比正常运行的时间长得多，几乎没有任何进展，则可能会停滞。 您可以尝试取消它，然后重试查看是否有帮助。 如果是复制活动，您可以了解有关如何 [排查复制活动性能](copy-activity-performance-troubleshooting.md)问题的性能监视和故障排除问题;如果是数据流，请参阅 [映射数据流性能](concepts-data-flow-performance.md) 和优化指南。
+
+### <a name="payload-is-too-large"></a>有效负载太大
+
+**错误消息：**`The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
+
+**原因：** 每个活动运行的有效负载包括活动配置、关联的数据集 (s) 和链接服务 (s) 配置（如果有），以及根据活动类型生成的一小部分系统属性。 此类负载大小限制为896KB，如 [数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) 部分中所述。
+
+**建议：** 达到此限制可能是因为您从上游活动输出或外部传入一个或多个大参数值，尤其是在控制流中跨活动传递实际数据时。 请检查是否可以减小大参数值的大小，或调整管道逻辑，以避免跨活动传递此类值并改为在活动中处理此类值。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -1068,4 +1028,4 @@ ms.locfileid: "89279544"
 * [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Twitter 中有关数据工厂的信息](https://twitter.com/hashtag/DataFactory)
 * [Azure 视频](https://azure.microsoft.com/resources/videos/index/)
-* [Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+* [Microsoft 问答页](/answers/topics/azure-data-factory.html)

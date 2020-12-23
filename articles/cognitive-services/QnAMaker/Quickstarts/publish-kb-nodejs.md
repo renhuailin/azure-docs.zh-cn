@@ -7,12 +7,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: ef17f08677d715292a8ee49621156d130e2f5a6b
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 645f9ffb1d907eb576f5414b593ef57679d26daa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777504"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351140"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入门： Node.js 的 QnA Maker REST Api
 
@@ -27,7 +27,7 @@ ms.locfileid: "91777504"
 * 下载知识库
 * 获取操作的状态
 
-[参考文档](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[参考文档](/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -35,15 +35,15 @@ ms.locfileid: "91777504"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 最新版本的 [Node.js](https://nodejs.org)。
-* 您必须具有 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
+* 您必须具有 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”。
 
 ## <a name="setting-up"></a>设置
 
 ### <a name="create-a-qna-maker-azure-resource"></a>创建 QnA Maker Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于 QnA Maker 的资源。
+Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](../../cognitive-services-apis-create-account.md)或 [Azure CLI](../../cognitive-services-apis-create-account-cli.md) 在本地计算机上创建用于 QnA Maker 的资源。
 
-从资源获取密钥后，为资源[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)（名为 `QNAMAKER_RESOURCE_KEY` 和 `QNAMAKER_AUTHORING_ENDPOINT`）。 使用在 Azure 门户中资源的“快速入门”页中找到的密钥和终结点值****。
+从资源获取密钥后，为资源[创建环境变量](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)（名为 `QNAMAKER_RESOURCE_KEY` 和 `QNAMAKER_AUTHORING_ENDPOINT`）。 使用在 Azure 门户中资源的“快速入门”页中找到的密钥和终结点值。
 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
@@ -95,7 +95,7 @@ npm install requestretry request --save
 设置以下环境值：
 
 * `QNAMAKER_RESOURCE_KEY` - **密钥** 为32字符串，在 "Azure 门户" 的 "QnA Maker 资源" 的 " **快速启动** " 页上提供。 这与预测终结点密钥不同。
-* `QNAMAKER_AUTHORING_ENDPOINT` - 创作终结点的格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`，其中包括**资源名称**。 这与用于查询预测终结点的 URL 不同。
+* `QNAMAKER_AUTHORING_ENDPOINT` - 创作终结点的格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`，其中包括 **资源名称**。 这与用于查询预测终结点的 URL 不同。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="authorization":::
 
@@ -107,13 +107,13 @@ npm install requestretry request --save
 * **文件** - 不需要任何权限的本地文件。
 * **URL** - 公用的 URL。
 
-[使用 REST API 创建知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。
+[使用 REST API 创建知识库](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>替换知识库
 
-[使用 REST API 替换知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)。
+[使用 REST API 替换知识库](/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
@@ -121,13 +121,13 @@ npm install requestretry request --save
 
 发布知识库。 此进程使得知识库可从 HTTP 查询预测终结点使用。
 
-[使用 REST API 发布知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)。
+[使用 REST API 发布知识库](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>下载知识库
 
-[使用 REST API 下载知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)。
+[使用 REST API 下载知识库](/rest/api/cognitiveservices/qnamaker/knowledgebase/download)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
@@ -135,7 +135,7 @@ npm install requestretry request --save
 
 用完知识库后，请将其删除。
 
-[使用 REST API 删除知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)。
+[使用 REST API 删除知识库](/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
@@ -143,7 +143,7 @@ npm install requestretry request --save
 
 长时间运行的进程（例如创建进程）将返回一个操作 ID，需要使用单独的 REST API 调用来检查该 ID。 此函数采用 create 响应的正文。 重要的键是 `operationState`，它确定是否需要继续轮询。
 
-[使用 REST API 监视对知识库执行的操作](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)。
+[使用 REST API 监视对知识库执行的操作](/rest/api/cognitiveservices/qnamaker/operations/getdetails)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
@@ -165,13 +165,13 @@ node rest-apis.js
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
->[教程：创建和解答知识库](../tutorials/create-publish-query-in-portal.md)
+>[教程：创建和解答知识库](./create-publish-knowledge-base.md)
 
 * [什么是 QnA Maker API？](../Overview/overview.md)
 * [编辑知识库](../how-to/edit-knowledge-base.md)

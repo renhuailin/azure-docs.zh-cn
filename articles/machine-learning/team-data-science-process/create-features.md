@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250651"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031855"
 ---
 # <a name="feature-engineering-in-data-science"></a>数据科学中的特征工程
 
@@ -60,7 +60,7 @@ ms.locfileid: "91250651"
 
 ### <a name="feature-engineering-using-studio-classic"></a>使用工作室（经典）的特征工程
 
-在工作室（经典）中，下面 4 个训练数据集通过预处理的输入数据集的 4 个分支形成。 除了最左边的分支外，每个分支都包含[执行 R 脚本](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/)模块，会在此模块中构建派生特征（特征集 B、C 和 D）并附加到导入的数据集。
+在工作室（经典）中，下面 4 个训练数据集通过预处理的输入数据集的 4 个分支形成。 除了最左边的分支外，每个分支都包含[执行 R 脚本](/azure/machine-learning/studio-module-reference/execute-r-script)模块，会在此模块中构建派生特征（特征集 B、C 和 D）并附加到导入的数据集。
 
 下图演示了用于在左侧第二个分支中创建特征集 B 的 R 脚本。
 
@@ -80,9 +80,9 @@ ms.locfileid: "91250651"
 
 ### <a name="feature-hashing"></a>特征哈希
 
-为了完成这个任务，应用被称为[特征哈希](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing)的技术将任意文本特征有效地转换为索引。 该方法将哈希函数应用于特征并将它们的哈希值直接用作索引，而不是将每个文本特征（单词/短语）与特定索引相关联。
+为了完成这个任务，应用被称为[特征哈希](/azure/machine-learning/studio-module-reference/feature-hashing)的技术将任意文本特征有效地转换为索引。 该方法将哈希函数应用于特征并将它们的哈希值直接用作索引，而不是将每个文本特征（单词/短语）与特定索引相关联。
 
-在工作室（经典）中，有一个[特征哈希](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing)模块，你可用它来轻松创建单词/短语特征。 下图显示使用此模块的示例。 输入数据集包含两列：书籍评分（范围为 1 到 5），以及实际审核内容。 此模块的目标是检索一系列新特征，这些特征显示特定书评中相应单词/短语出现的频率。 若要使用此模块，完成以下步骤：
+在工作室（经典）中，有一个[特征哈希](/azure/machine-learning/studio-module-reference/feature-hashing)模块，你可用它来轻松创建单词/短语特征。 下图显示使用此模块的示例。 输入数据集包含两列：书籍评分（范围为 1 到 5），以及实际审核内容。 此模块的目标是检索一系列新特征，这些特征显示特定书评中相应单词/短语出现的频率。 若要使用此模块，完成以下步骤：
 
 * 首先，选择包含输入文本（此示例中的“Col2”）的列。
 * 其次，将“Hashing bitsize”设置为 8，这意味着将创建“2^8=256”个特征。 所有文本中的单词/短语将哈希处理为 256 个索引。 参数“Hashing bitsize”的范围是 1 到 31。 如果将单词/短语设置为更大的数字，则其不太可能被哈希处理到相同的索引中。

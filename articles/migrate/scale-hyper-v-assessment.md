@@ -1,18 +1,17 @@
 ---
 title: 通过 Azure Migrate 评估要迁移到 Azure 的大量 Hyper-v Vm |Microsoft Docs
 description: 介绍如何使用 Azure Migrate 服务评估大量 Hyper-v Vm 以便迁移到 Azure。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: raynew
-ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92c275ee3f8e00e71b80e448c9adb94f0b6d21dc
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70279434"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753716"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>评估大量要迁移到 Azure 的 Hyper-v Vm
 
@@ -30,7 +29,7 @@ ms.locfileid: "70279434"
 
 
 > [!NOTE]
-> 如果要在评估规模之前尝试使用概念证明来评估几个 Vm，请遵循我们的 [系列教程](tutorial-prepare-hyper-v.md)
+> 如果要在评估规模之前尝试使用概念证明来评估几个 Vm，请遵循我们的 [系列教程](./tutorial-discover-hyper-v.md)
 
 ## <a name="plan-for-assessment"></a>规划评估
 
@@ -44,7 +43,7 @@ ms.locfileid: "70279434"
  
 使用此表中汇总的限制进行规划。
 
-**规划** | **限制**
+规划 | **限制**
 --- | --- 
 **Azure Migrate 项目** | 在项目中评估最多35000个 Vm。
 **Azure Migrate 设备** | 设备最多可以发现 5000 Vm。<br/> 一个设备最多可连接到 300 个 Hyper-V 主机。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/> 可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
@@ -66,7 +65,7 @@ ms.locfileid: "70279434"
 2. 设置 Azure 帐户的权限以与 Azure Migrate 进行交互
 3. 准备 Hyper-v 主机和 Vm
 
-按照 [本教程](tutorial-prepare-hyper-v.md) 中的说明配置这些设置。
+按照 [本教程](./tutorial-discover-hyper-v.md) 中的说明配置这些设置。
 
 ## <a name="create-a-project"></a>创建一个项目
 
@@ -75,7 +74,7 @@ ms.locfileid: "70279434"
 1. 创建 Azure Migrate 项目。
 2. 将 Azure Migrate 服务器评估工具添加到项目。
 
-[了解详细信息](how-to-add-tool-first-time.md) 
+[了解详细信息](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>创建和查看评估
 

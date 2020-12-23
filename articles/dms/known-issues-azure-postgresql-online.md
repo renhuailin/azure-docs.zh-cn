@@ -1,7 +1,7 @@
 ---
 title: 已知问题：从 PostgreSQL 联机迁移到 Azure Database for PostgreSQL
 titleSuffix: Azure Database Migration Service
-description: 了解使用 Azure 数据库迁移服务从 PostgreSQL 到 Azure Database for PostgreSQL 的联机迁移的已知问题和迁移限制。
+description: 了解在使用 Azure 数据库迁移服务从 PostgreSQL 联机迁移到 Azure Database for PostgreSQL 时存在的已知问题和迁移限制。
 services: database-migration
 author: arunkumarthiags
 ms.author: arthiaga
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330309"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609031"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 时的已知问题/迁移限制
 
@@ -38,8 +38,8 @@ ms.locfileid: "91330309"
   2. 向 pg_hba.conf 文件添加 IP 地址，如下所示：
 
       ```
-          host  all     172.16.136.18/10    md5
-          host  replication postgres    172.16.136.18/10    md5
+          host    all    172.16.136.18/10    md5
+          host    replication postgres    172.16.136.18/10     md5
       ```
 
 - 用户必须在托管源数据库的服务器上具有“复制”角色。
@@ -47,7 +47,7 @@ ms.locfileid: "91330309"
 - 目标 Azure Database for PostgreSQL 单一服务器中的架构不能包含外键。 使用以下查询来删除外键：
 
     ```
-                                SELECT Queries.tablename
+                  SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
                 ,concat('alter table ', Queries.tablename, ' ', 
                                                 STRING_AGG(concat('ADD CONSTRAINT ', Queries.foreignkey, ' FOREIGN KEY (', column_name, ')', 'REFERENCES ', foreign_table_name, '(', foreign_column_name, ')' ), ',')) as AddQuery
@@ -81,6 +81,8 @@ ms.locfileid: "91330309"
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
      ```
 
+## <a name="size-limitations"></a>大小限制
+- 可以使用单个 DMS 服务将最多 2 TB 的数据从 PostgreSQL 迁移到 Azure DB for PostgreSQL。
 ## <a name="datatype-limitations"></a>数据类型限制
 
   **限制**：如果表中没有主键，则所做的更改可能不会同步到目标数据库。
@@ -94,13 +96,13 @@ ms.locfileid: "91330309"
 - **错误**：数据库“{database}”的表“{table}”中的列“{column}”的默认值在源服务器和目标服务器上有所不同。 在源服务器上，值为“{value on source}”，而在目标服务器上，值则为“{value on target}”。
 
   **限制**：如果列架构上的默认值在源数据库与目标数据库之间有所不同，则会出现此错误。
-  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)。
 
 - **错误**：目标数据库“{database}”包含“{number of tables}”个表，而源数据库“{database}”包含“{number of tables}”个表。 源数据库和目标数据库中表的数目应当匹配。
 
   **限制**：当源数据库与目标数据库的表数不同时，将出现此错误。
 
-  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)。
 
 - **错误：** 源数据库 {database} 为空
 
@@ -111,7 +113,7 @@ ms.locfileid: "91330309"
 - **错误：** 目标数据库 {database} 为空。 请迁移架构。
 
   **限制**：当目标数据库上没有架构时，会出现此错误。 确保目标上的架构与源上的架构匹配。
-  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](./tutorial-postgresql-azure-postgresql-online.md#migrate-the-sample-schema)。
 
 ## <a name="other-limitations"></a>其他限制
 

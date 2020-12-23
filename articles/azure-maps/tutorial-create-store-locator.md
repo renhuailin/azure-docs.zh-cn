@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure Maps 创建店铺定位器应用程序 | Microsoft Azure Maps
-description: 了解如何创建店铺定位器 Web 应用程序。 使用 Azure Maps Web SDK 创建网页、查询搜索服务并在地图上显示结果。
+description: 有关如何创建店铺定位器 Web 应用程序的教程。 使用 Azure Maps Web SDK 创建网页、查询搜索服务并在地图上显示结果。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/11/2020
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085308"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905768"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
 本教程引导你完成使用 Azure Maps 创建简单店铺定位器的过程。 店铺定位器的使用非常普遍。 此类应用程序中使用的许多概念同样适用于许多其他类型的应用程序。 大多数直销型的商家必须能够向客户提供店铺定位器。 在本教程中，你将了解如何执行以下操作：
-    
+
 > [!div class="checklist"]
 > * 使用 Azure Map 控件 API 创建新网页。
 > * 从文件加载自定义数据并在地图上显示。
@@ -81,7 +81,7 @@ ms.locfileid: "90085308"
 * 某些附加列包含咖啡厅相关的元数据：电话号码、布尔值列，以及营业和停业时间（24 小时格式）。 布尔值列指示是否提供 Wi-Fi 和轮椅通道。 你可以创建自己的列来包含与位置数据更相关的元数据。
 
 > [!NOTE]
-> Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4325”中读取数据。
+> Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4326”中读取数据。
 
 可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务。 然后可将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会增加开发工作量，并且成本较高。
 
@@ -158,7 +158,7 @@ ms.locfileid: "90085308"
     </main>
     ```
 
-完成后，*index.html* 应类似于[此示例 index.html 文件](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
+完成后，*index.html* 应类似于 [此示例 index.html 文件](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
 
 下一步是定义 CSS 样式。 CSS 样式定义应用程序组件的布局和应用程序的外观。 打开 *index.css* 并在其中添加以下代码。 `@media` 样式定义当屏幕宽度小于 700 像素时要使用的备用样式选项。  
 
@@ -385,7 +385,7 @@ ms.locfileid: "90085308"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. 将代码添加到 *index.js*。 以下代码初始化地图。 我们添加了一个[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)，以等待页面加载完成。 然后，我们统合了事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
+1. 将代码添加到 *index.js*。 以下代码初始化地图。 我们添加了一个[事件侦听器](/javascript/api/azure-maps-control/atlas.map#events)，以等待页面加载完成。 然后，我们统合了事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
 
    当用户选择搜索按钮时，或者在搜索框中键入位置后按 Enter 时，系统会针对用户的查询启动模糊搜索。 在 `countrySet` 选项中传入国家/地区 ISO 2 值的数组可将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。 
   
@@ -432,7 +432,7 @@ ms.locfileid: "90085308"
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ ms.locfileid: "90085308"
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1
@@ -924,34 +924,21 @@ ms.locfileid: "90085308"
 
 ![店铺定位器小屏幕版本的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
+本教程介绍了如何使用 Azure Maps 创建基本的店铺定位器。 本教程中创建的店铺定位器可能包含你所需的所有功能。 可将功能添加到店铺定位器或使用其他高级功能，以提供更具个性的用户体验： 
+
+ * 在搜索框中启用[键入时显示建议](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI)。  
+ * 添加[多种语言支持](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)。 
+ * 允许用户[筛选路线中的位置](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)。 
+ * 添加[设置筛选器](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)的功能。 
+ * 添加使用查询字符串指定初始搜索值的支持。 如果在店铺定位器中包含此选项，则用户可以添加书签和共享搜索。 它还可让你轻松地从另一个页面向此页面传递搜索。  
+ * 将店铺定位器部署为 [Azure 应用服务 Web 应用](../app-service/quickstart-html.md)。 
+ * 将数据存储在数据库中，并搜索附近的位置。 有关详细信息，请参阅 [SQL Server 空间数据类型概述](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017)和[查询最近的邻域的空间数据](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017)。
+
+你可以[查看完整源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)、[查看实时示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)，并通过使用[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)来详细了解 Azure Maps 的覆盖范围和功能。 还可以[使用数据驱动的样式表达式](data-driven-style-expressions-web-sdk.md)（将应用于业务逻辑）。
+
 ## <a name="next-steps"></a>后续步骤
-
-本教程已介绍如何使用 Azure Maps 创建基本的店铺定位器。 本教程中创建的店铺定位器可能包含你所需的所有功能。 可将功能添加到店铺定位器或使用其他高级功能，以提供更具个性的用户体验： 
-
-> [!div class="checklist"]
-> * 在搜索框中启用[键入时显示建议](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI)。  
-> * 添加[多种语言支持](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)。 
-> * 允许用户[筛选路线中的位置](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)。 
-> * 添加[设置筛选器](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)的功能。 
-> * 添加使用查询字符串指定初始搜索值的支持。 如果在店铺定位器中包含此选项，则用户可以添加书签和共享搜索。 它还可让你轻松地从另一个页面向此页面传递搜索。  
-> * 将店铺定位器部署为 [Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/quickstart-html)。 
-> * 将数据存储在数据库中，并搜索附近的位置。 有关详细信息，请参阅 [SQL Server 空间数据类型概述](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview)和[查询最近的邻域的空间数据](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor)。
-
-> [!div class="nextstepaction"]
-> [查看完整源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
-
-> [!div class="nextstepaction"]
-> [查看实时示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
-
-若要了解有关 Azure Maps 的覆盖范围和功能的更多信息，请参阅：
-
-> [!div class="nextstepaction"]
-> [缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)
 
 若要查看更多代码示例和交互式编码体验，请参阅：
 
 > [!div class="nextstepaction"]
 > [如何使用地图控件](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)

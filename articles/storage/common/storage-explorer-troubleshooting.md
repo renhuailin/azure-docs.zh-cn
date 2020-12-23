@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714458"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783787"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -23,7 +23,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC 权限问题
 
-Azure 基于角色的访问控制 [AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 可通过将权限集组合到 _角色_中来实现对 azure 资源的高粒度访问管理。 下面是用于在存储资源管理器中以最佳方式使用 Azure RBAC 的一些策略。
+Azure 基于角色的访问控制 [AZURE RBAC](../../role-based-access-control/overview.md) 可通过将权限集组合到 _角色_ 中来实现对 azure 资源的高粒度访问管理。 下面是用于在存储资源管理器中以最佳方式使用 Azure RBAC 的一些策略。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>如何在存储资源管理器中访问我的资源？
 
@@ -65,24 +65,24 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 3. 选择与要连接到的资源关联的用户帐户和租户。 单击“下一步”。
 4. 选择资源类型，输入资源的 URL，并为连接输入唯一的显示名称。 单击“下一步”。 单击“连接”。
 
-对于其他资源类型，目前还没有 Azure RBAC 相关解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
+对于其他资源类型，目前还没有 Azure RBAC 相关解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)。
 
 ### <a name="recommended-azure-built-in-roles"></a>建议的 Azure 内置角色
 
 有几个 Azure 内置角色可以提供使用存储资源管理器所需的权限。 其中一些角色是：
-- [所有者](/azure/role-based-access-control/built-in-roles#owner)：管理所有内容，包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
-- [参与者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有内容，不包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
-- [读者](/azure/role-based-access-control/built-in-roles#reader)：读取和列出资源。
-- [存储帐户参与者](/azure/role-based-access-control/built-in-roles#storage-account-contributor)：完全管理存储帐户。 **注意**：此角色将授予你密钥访问权限。
-- [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)：对 Azure 存储 blob 容器和数据具有完全访问权限。
-- [存储 Blob 数据参与者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)：读取、写入和删除 Azure 存储容器与 Blob。
-- [存储 Blob 数据读取者](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)：读取和列出 Azure 存储容器与 Blob。
+- [所有者](../../role-based-access-control/built-in-roles.md#owner)：管理所有内容，包括对资源的访问权限。 **注意** ：此角色将授予你密钥访问权限。
+- [参与者](../../role-based-access-control/built-in-roles.md#contributor)：管理所有内容，不包括对资源的访问权限。 **注意** ：此角色将授予你密钥访问权限。
+- [读者](../../role-based-access-control/built-in-roles.md#reader)：读取和列出资源。
+- [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)：完全管理存储帐户。 **注意** ：此角色将授予你密钥访问权限。
+- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)：对 Azure 存储 blob 容器和数据具有完全访问权限。
+- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)：读取、写入和删除 Azure 存储容器与 Blob。
+- [存储 Blob 数据读取者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)：读取和列出 Azure 存储容器与 Blob。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>错误：证书链中的自签名证书（和类似错误）
 
 如果存在以下情况之一，则往往会发生证书错误：
 
-- 应用通过_透明代理_进行连接。 这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
+- 应用通过 _透明代理_ 进行连接。 这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
 - 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 TLS/SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
 
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
@@ -130,7 +130,7 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 1. 删除所有帐户，然后关闭存储资源管理器。
 2. 从计算机中删除 .IdentityService 文件夹。 在 Windows 中，该文件夹位于 `C:\users\<username>\AppData\Local`。 对于 Mac 和 Linux，可以在用户目录的根目录中找到该文件夹。
-3. 如果运行 Mac 或 Linux，则还需要从操作系统的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是 *Gnome Keychain* 应用程序。 对于 Linux，该应用程序通常称为 _Keyring_，但名称可能会有所不同，具体取决于分发版。
+3. 如果运行 Mac 或 Linux，则还需要从操作系统的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是 *Gnome Keychain* 应用程序。 对于 Linux，该应用程序通常称为 _Keyring_ ，但名称可能会有所不同，具体取决于分发版。
 
 ### <a name="conditional-access"></a>条件性访问
 
@@ -141,7 +141,7 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 有时，macOS 密钥链可能会进入导致存储资源管理器的身份验证库出现问题的状态。 若要使 Keychain 进入此状态，请执行以下步骤：
 
 1. 关闭存储资源管理器。
-2. 打开 Keychain（按命令键+空格键，键入 **keychain**，然后按 Enter）。
+2. 打开 Keychain（按命令键+空格键，键入 **keychain** ，然后按 Enter）。
 3. 选择“登录”Keychain。
 4. 选择挂锁图标以锁定 Keychain。 （该过程完成后，挂锁将以锁定状态显示。 这可能需要几秒钟的时间，具体要取决于打开的应用）。
 
@@ -332,7 +332,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. 下载存储资源管理器 .tar.gz 文件。
-2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
+2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -345,7 +345,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下载存储资源管理器 .tar.gz 文件。
-2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
+2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -358,7 +358,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下载存储资源管理器 .tar.gz 文件。
-2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
+2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \

@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心)  (EICAR 测试文件的警报验证 |Microsoft Docs
-description: 本文档介绍了如何在 Azure 安全中心验证安全警报。
+title: Azure 安全中心的警报验证 |Microsoft Docs
+description: 了解如何验证在 Azure 安全中心中正确配置了安全警报
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91438805"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560095"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -27,13 +27,42 @@ ms.locfileid: "91438805"
 警报是安全中心在检测到资源遭受威胁时生成的通知。 安全中心会按优先级列出警报，同时还会提供所需信息以快速调查问题。 安全中心还提供有关如何针对攻击采取补救措施的建议。
 有关详细信息，请参阅[安全中心中的安全警报](security-center-alerts-overview.md)和[管理和响应安全警报](security-center-managing-and-responding-alerts.md)
 
-## <a name="alert-validation"></a>警报验证
 
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
+## <a name="generate-sample-azure-defender-alerts"></a>生成示例 Azure Defender 警报
 
-## <a name="validate-alerts-on-windows-vms"></a>在 Windows 虚拟机上验证警报 <a name="validate-windows"></a>
+如果你使用的是 " [管理和响应 Azure 安全中心中的安全警报](security-center-managing-and-responding-alerts.md)" 中所述的新的 "预览警报" 体验，则可以通过在 Azure 门户的 "安全警报" 页中单击几下鼠标来创建示例警报。
+
+使用示例警报：
+
+- 评估 Azure Defender 的价值和功能
+- 验证你对安全警报所做的任何配置 (例如 SIEM 集成、工作流自动化和电子邮件通知) 
+
+> [!NOTE]
+> 此过程需要 " **安全警报** " 页顶部的 "横幅" 中提供的新 (预览版) 警报体验。
+>
+> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="带有新预览警报体验链接的横幅":::
+
+创建示例警报：
+
+1. 从 "警报" 页上的工具栏中，选择 " **创建示例警报**"。 
+1. 选择订阅。
+1. 选择要查看其警报的相关 Azure Defender 计划。 
+1. 选择 " **创建示例警报**"。
+
+    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="在 Azure 安全中心创建示例警报的步骤":::
+    
+    此时将显示一条通知，告知正在创建示例警报：
+
+    :::image type="content" source="media/security-center-alert-validation/notification-sample-alerts-creation.png" alt-text="通知：正在生成示例警报。":::
+
+    几分钟后，警报将出现在 "安全警报" 页中。 它们还将出现在配置为接收 Azure 安全中心安全警报 (连接的 Siem、电子邮件通知等) 上的其他任何位置。
+
+    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="安全警报列表中的示例警报":::
+
+    > [!TIP]
+    > 警报适用于模拟资源。
+
+## <a name="simulate-alerts-on-your-azure-vms-windows"></a> (Windows) 上模拟 Azure Vm 的警报 <a name="validate-windows"></a>
 
 在计算机上安装安全中心代理以后，请在想让其成为受攻击的警报资源的计算机上执行以下步骤：
 
@@ -46,7 +75,7 @@ ms.locfileid: "91438805"
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## <a name="validate-alerts-on-linux-vms"></a>在 Linux VM 上验证警报 <a name="validate-linux"></a>
+## <a name="simulate-alerts-on-your-azure-vms-linux"></a> (Linux 上模拟 Azure Vm 的警报) <a name="validate-linux"></a>
 
 在计算机上安装安全中心代理以后，请在想让其成为受攻击的警报资源的计算机上执行以下步骤：
 1. 复制一个可执行文件到方便操作的位置，然后将其重命名为“./asc_alerttest_662jfi039n”，例如：
@@ -60,13 +89,13 @@ ms.locfileid: "91438805"
 1. 等待 5 到 10 分钟，然后打开安全中心警报。 应该会出现警报。
 
 
-## <a name="validate-alerts-on-kubernetes"></a>在 Kubernetes 上验证警报 <a name="validate-kubernetes"></a>
+## <a name="simulate-alerts-on-kubernetes"></a>在 Kubernetes 上模拟警报 <a name="validate-kubernetes"></a>
 
-如果已将 Azure Kubernetes Service 与安全中心集成，则可以使用以下 kubectl 命令测试警报：
+如果已将 Azure Kubernetes 服务与安全中心集成，则可以使用以下 kubectl 命令测试警报是否正常运行：
 
 ```kubectl get pods --namespace=asc-alerttest-662jfi039n```
 
-有关保护 Kubernetes 节点和群集的详细信息，请参阅 [Azure Defender For Kubernetes 简介](defender-for-kubernetes-introduction.md)
+有关保护 Kubernetes 节点和群集的详细信息，请参阅 [Azure Defender for Kubernetes 简介](defender-for-kubernetes-introduction.md)
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了警报验证过程。 熟悉该验证以后，请尝试阅读以下文章：
@@ -74,4 +103,4 @@ ms.locfileid: "91438805"
 * [Validating Azure Key Vault Threat Detection in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)（在 Azure 安全中心验证 Azure Key Vault 威胁检测）
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全中心的安全事件。
 * [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
-* [了解 Azure 安全中心的安全警报](security-center-alerts-type.md) - 了解各种类型的安全警报。
+* [了解 Azure 安全中心的安全警报](./security-center-alerts-overview.md) - 了解各种类型的安全警报。

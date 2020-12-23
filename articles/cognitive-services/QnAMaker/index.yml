@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker 文档
   description: QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。 QnA Maker 服务通过将问题与知识库的 QnA 中的最可能答案进行匹配，来回答用户的自然语言问题。
-  ms.openlocfilehash: 09c577368ef6ca9b6bc584601ad018c2a63c7347
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: d1236b8a40d43ac5203cd4cac8aa607c925a04d7
+  ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "84628038"
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96932721"
 landingContent:
 - title: 关于 QnA Maker
   linkLists:
@@ -34,18 +34,12 @@ landingContent:
     links:
     - text: 开发生命周期
       url: concepts/development-lifecycle-knowledge-base.md
-    - text: 数据源
-      url: concepts/knowledge-base.md
   - linkListType: video
     links:
     - text: 在数分钟内构建机器人
       url: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
 - title: 创建并编辑知识库
   linkLists:
-  - linkListType: concept
-    links:
-    - text: 什么是知识库
-      url: concepts/knowledge-base.md
   - linkListType: get-started
     links:
     - text: 快速入门：创建新的知识库
@@ -95,11 +89,11 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 门户：创建 Azure 机器人服务机器人
-      url: tutorials/create-qna-bot.md
+      url: ./quickstarts/create-publish-knowledge-base.md#create-a-bot
     - text: 为应用提供支持：创建 QnA Maker 支持的机器人
       url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - text: Bot Framework：在 LUIS 和 QnA Maker 应用之间调度
-      url: https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs
+      url: /azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0
     - text: 其他机器人示例
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: 参考
@@ -109,22 +103,20 @@ landingContent:
     - text: 知识库的限制
       url: limits.md
     - text: 创作 API
-      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase
+      url: /rest/api/cognitiveservices/qnamaker/knowledgebase
     - text: 生成答案 API
-      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime
+      url: /rest/api/cognitiveservices/qnamaker4.0/Runtime
     - text: .Net SDK 参考文档
-      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
+      url: /powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
     - text: Azure 命令行界面 (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
 - title: 帮助和反馈
   linkLists:
   - linkListType: reference
     links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - text: 疑难解答
       url: troubleshooting.md
-    - text: 在 Stack Overflow 上提出问题
-      url: https://stackoverflow.com/questions/tagged/QnAMaker
-    - text: 利用 UserVoice 影响服务
-      url: https://cognitive.uservoice.com/forums/578689-qna-maker-api

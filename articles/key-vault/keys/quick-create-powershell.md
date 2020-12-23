@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4ebd3cc605b396f72d063f3fc506df9020ec3a5f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3cea28fa278bb699a7fb5aaa0c79bf1e71f59ac1
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87061011"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940491"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure Key Vault 中设置和检索密钥
 
@@ -69,7 +69,7 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 Add-AzKeyVaultKey -VaultName 'Contoso-Vault2' -Name 'ExampleKey' -Destination 'Software'
 ```
 
-现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此密钥。 使用 **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** 获取当前版本。 
+现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此密钥。 使用“https://Contoso-Vault2.vault.azure.net/keys/ExampleKey”获取当前版本。 
 
 若要查看以前存储的密钥，请使用以下命令：
 

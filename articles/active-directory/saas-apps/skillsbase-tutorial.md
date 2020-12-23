@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b712756b6daf7380998bb98f56113cab29ebb59
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552231"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015156"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>教程：Azure Active Directory 与 Skills Base 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88552231"
 * 可让用户使用其 Azure AD 帐户自动登录到 Skills Base（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -93,7 +93,7 @@ ms.locfileid: "88552231"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -134,11 +134,11 @@ ms.locfileid: "88552231"
 
 3. 在“身份验证”页上，选择“单一登录”作为 **SAML 2**。
 
-    ![单人](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![显示“身份验证”页的屏幕截图，其中已选择用于“单一登录”的“SAML 2”。](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. 在“身份验证”页上，执行以下步骤：
 
-    ![单人](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![显示“身份验证”页的屏幕截图，你可以在其中输入所述值。](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. 单击“状态”选项旁边的“更新 IdP 元数据”按钮，并将从 Azure 门户下载的元数据 XML 的内容粘贴到指定的文本框中。
 
@@ -209,12 +209,12 @@ ms.locfileid: "88552231"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Skills Base 磁贴时，应会自动登录到你为其设置了 SSO 的 Skills Base。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Skills Base 磁贴时，应会自动登录到你为其设置了 SSO 的 Skills Base。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

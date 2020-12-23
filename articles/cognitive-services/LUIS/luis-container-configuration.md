@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80874205"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001132"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
 
@@ -29,7 +29,7 @@ ms.locfileid: "80874205"
 |必须|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-setting)|用于跟踪账单信息。|
-|否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
+|否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](/azure/application-insights) 遥测支持。|
 |是|[Billing](#billing-setting)|指定 Azure 上服务资源的终结点 URI。|
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
@@ -42,11 +42,11 @@ ms.locfileid: "80874205"
 
 ## <a name="apikey-setting"></a>ApiKey 设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-setting) 配置设置指定的“认知服务”__ 资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-setting) 配置设置指定的“认知服务”资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**“资源管理”部分的“密钥”下****
+* Azure 门户：**认知服务**“资源管理”部分的“密钥”下
 * LUIS 门户： " **密钥" 和 "终结点设置** " 页。 
 
 请勿使用初学者密钥或创作密钥。 
@@ -57,11 +57,11 @@ ms.locfileid: "80874205"
 
 ## <a name="billing-setting"></a>账单设置
 
-`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”__ 资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”__ 资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**概述，标记为 `Endpoint`
+* Azure 门户：**认知服务** 概述，标记为 `Endpoint`
 * LUIS portal： **Keys 和 endpoint settings** 页面，作为终结点 URI 的一部分。
 
 | 必须 | 名称 | 数据类型 | 说明 |
@@ -96,7 +96,7 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 |必须| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|是| `Input` | 字符串 | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>例如：<br>`--mount type=bind,src=c:\input,target=/input`|
+|是| `Input` | String | 输入装入点的目标。 默认值是 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
 |否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
@@ -118,7 +118,7 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。 有关详细信息，请参阅[计费](luis-container-howto.md#billing)。
-> ApiKey 值是 LUIS 门户中“密钥和终结点”页面中的“密钥”****，也可以在 Azure `Cognitive Services`资源密钥页上找到。 
+> ApiKey 值是 LUIS 门户中“密钥和终结点”页面中的“密钥”，也可以在 Azure `Cognitive Services`资源密钥页上找到。 
 
 ### <a name="basic-example"></a>基本示例
 

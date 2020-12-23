@@ -3,15 +3,15 @@ title: 管理 Azure 实验室服务中的实验室帐户 | Microsoft Docs
 description: 了解如何在 Azure 订阅中创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 65ff28401b73698e320735613b32c96bf3de58f2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251654"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434084"
 ---
 # <a name="create-and-manage-lab-accounts"></a>创建和管理实验室帐户
-在 Azure 实验室服务中，实验室帐户是托管实验室类型（如课堂实验室）的容器。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
+在 Azure 实验室服务中，实验室帐户是托管实验室类型（如实验室）的容器。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
 
 ## <a name="create-a-lab-account"></a>创建实验室帐户
 以下步骤演示了如何使用 Azure 门户通过 Azure 实验室服务创建实验室。 
@@ -32,10 +32,10 @@ ms.locfileid: "91251654"
 
         ![创建实验室帐户 -> 基本信息](./media/how-to-manage-lab-accounts/create-lab-account-basics.png)
 5. 在页面底部选择“下一步:高级”，导航到“高级”选项卡，然后执行以下步骤： 
-    1. 选择一个现有**共享映像库**或者创建一个。 你可以将模板 VM 保存在共享映像库中，以便供其他人重复使用。 有关共享映像库的详细信息，请参阅[使用 Azure 实验室服务中的共享映像库](how-to-use-shared-image-gallery.md)。
+    1. 选择一个现有 **共享映像库** 或者创建一个。 你可以将模板 VM 保存在共享映像库中，以便供其他人重复使用。 有关共享映像库的详细信息，请参阅[使用 Azure 实验室服务中的共享映像库](how-to-use-shared-image-gallery.md)。
     2. 指定是否要在用户与 Windows 虚拟机断开连接时自动关闭 Windows 虚拟机。 指定虚拟机在自动关闭之前应等待用户重新连接多长时间。 
     3. 对于“对等虚拟网络”，请选择实验室网络的对等虚拟网络 (VNet)。 在此帐号中创建的实验室连接到所选 VNet 并在所选 VNet 中具有对资源的访问权限。 有关详细信息，请参阅[将实验室的虚拟网络连接到对等虚拟网络](how-to-connect-peer-virtual-network.md)。    
-    8. 为实验室中的 VM 指定**地址范围**。 此地址范围应当采用无类别域际路由 (CIDR) 表示法（示例：10.20.0.0/23）。 将在此地址范围内创建实验室中的虚拟机。 有关详细信息，请参阅[为实验室中的 VM 指定地址范围](how-to-connect-peer-virtual-network.md#specify-an-address-range-for-vms-in-the-lab-account)  
+    8. 为实验室中的 VM 指定 **地址范围**。 此地址范围应当采用无类别域际路由 (CIDR) 表示法（示例：10.20.0.0/23）。 将在此地址范围内创建实验室中的虚拟机。 有关详细信息，请参阅[为实验室中的 VM 指定地址范围](how-to-connect-peer-virtual-network.md#specify-an-address-range-for-vms-in-the-lab-account)  
 
         > [!NOTE]
         > 仅在为实验室启用了“对等虚拟网络”时，“地址范围”属性才适用。
@@ -71,7 +71,7 @@ ms.locfileid: "91251654"
 ## <a name="delete-a-lab-account"></a>删除实验室帐户
 按照上一节中的说明来显示列表中的实验室帐户。 根据以下说明删除实验室帐户： 
 
-1. 选择要删除的**实验室帐户**。 
+1. 选择要删除的 **实验室帐户**。 
 2. 从工具栏选择“删除”。 
 
     ![“实验室帐户”->“删除”按钮](./media/how-to-manage-lab-accounts/delete-button.png)

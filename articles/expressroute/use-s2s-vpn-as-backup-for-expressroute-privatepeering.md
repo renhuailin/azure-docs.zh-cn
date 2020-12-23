@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: duau
-ms.openlocfilehash: 0ab74a14c16b7ea1d587cfcc82eea689e2f98c83
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 752edea8078cf55fc3965bdc7aa9e1b4269dee34
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393014"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207914"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>将 S2S VPN 用作 Azure ExpressRoute 专用对等互连的备用解决方案
 
@@ -315,13 +315,10 @@ ExpressRoute 设计用于实现高可用性，且不会在 Microsoft 网络中�
 [2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "VPN 网关配置"
 
 <!--Link References-->
-[DR-PP]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
-[Conf-CoExist]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager
-[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
-[VPN Troubleshoot]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-site-to-site-cannot-connect
-[VPN-alerts]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric
-[BFD]: https://docs.microsoft.com/azure/expressroute/expressroute-bfd
-[RST]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-reset-peering
-
-
-
+[DR-PP]: ./designing-for-disaster-recovery-with-expressroute-privatepeering.md
+[Conf-CoExist]: ./expressroute-howto-coexist-resource-manager.md
+[HA]: ./designing-for-high-availability-with-expressroute.md
+[VPN Troubleshoot]: ../vpn-gateway/vpn-gateway-troubleshoot-site-to-site-cannot-connect.md
+[VPN-alerts]: ../vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+[BFD]: ./expressroute-bfd.md
+[RST]: ./expressroute-howto-reset-peering.md

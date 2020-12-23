@@ -1,18 +1,18 @@
 ---
 title: 快速入门：连接 MySQL Workbench - Azure Database for MariaDB
 description: 本快速入门介绍如何使用 MySQL Workbench 连接到 Azure Database for MariaDB 并查询其中的数据。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 90247f093096728ac250f36fa7cb0d5d88a597d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 209c793903f1f706fc27102a783aa76e65382fcd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121878"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541090"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>快速入门：Azure Database for MariaDB：使用 MySQL Workbench 连接和查询数据
 
@@ -77,7 +77,7 @@ ms.locfileid: "88121878"
 
 1. 将以下示例 SQL 代码复制并粘贴到空白 SQL 选项卡所在的页中，以阐释一些示例数据。
 
-    此代码将创建名为 **quickstartdb** 的空数据库， 然后创建名为**清单**的示例表。 代码会插入一些行，然后读取这些行。 它通过更新语句更改数据，然后再次读取这些行。 最后，代码删除一个行，然后再次读取这些行。
+    此代码将创建名为 **quickstartdb** 的空数据库， 然后创建名为 **清单** 的示例表。 代码会插入一些行，然后读取这些行。 它通过更新语句更改数据，然后再次读取这些行。 最后，代码删除一个行，然后再次读取这些行。
     
     ```sql
     -- Create a database

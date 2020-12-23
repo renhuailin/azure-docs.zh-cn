@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: b74987e225314112c84280e18af523bc5c3804a4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8483c0d3b112408091e10bd9b57451cf2378c859
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91296002"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494471"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure PowerShell
 
@@ -63,7 +63,7 @@ $vM = New-AzVm `
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在美国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG** 资源组中名为 NetworkWatcher_eastus** 的现有网络观察程序：
+如果已在美国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG 资源组中名为 NetworkWatcher_eastus 的现有网络观察程序：
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -142,7 +142,7 @@ Get-AzEffectiveNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-返回的输出包含 **AllowInternetOutbound** 规则的以下文本，该规则在[使用 IP 流验证](#use-ip-flow-verify)中允许对 www.bing.com 进行出站访问：
+返回的输出包含 **AllowInternetOutbound** 规则的以下文本，该规则在 [使用 IP 流验证](#use-ip-flow-verify)中允许对 www.bing.com 进行出站访问：
 
 ```powershell
 {
@@ -177,9 +177,9 @@ Get-AzEffectiveNetworkSecurityGroup `
   },
 ```
 
-在上述输出中，可以看到 **DestinationAddressPrefix** 为 **Internet**。 尚不清楚在[使用 IP 流验证](#use-ip-flow-verify)中测试的地址 13.107.21.200 与 **Internet** 的关系如何。 可以看到 **ExpandedDestinationAddressPrefix** 下列出了多个地址前缀。 列表中的前缀之一为 **12.0.0.0/6**，它涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在 `Get-AzEffectiveNetworkSecurityGroup` 返回的输出中没有列出**优先级**更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到 13.107.21.200 的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
+在上述输出中，可以看到 **DestinationAddressPrefix** 为 **Internet**。 尚不清楚在 [使用 IP 流验证](#use-ip-flow-verify)中测试的地址 13.107.21.200 与 **Internet** 的关系如何。 可以看到 **ExpandedDestinationAddressPrefix** 下列出了多个地址前缀。 列表中的前缀之一为 **12.0.0.0/6**，它涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在 `Get-AzEffectiveNetworkSecurityGroup` 返回的输出中没有列出 **优先级** 更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到 13.107.21.200 的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
 
-在[使用 IP 流验证](#use-ip-flow-verify)中运行 `Test-AzNetworkWatcherIPFlow` 命令以测试发往 172.131.0.100 的出站通信时，输出指示 **DefaultOutboundDenyAll** 规则拒绝了该通信。 **DefaultOutboundDenyAll** 规则相当于在 `Get-AzEffectiveNetworkSecurityGroup` 命令的以下输出中列出的 **DenyAllOutBound** 规则：
+在 [使用 IP 流验证](#use-ip-flow-verify)中运行 `Test-AzNetworkWatcherIPFlow` 命令以测试发往 172.131.0.100 的出站通信时，输出指示 **DefaultOutboundDenyAll** 规则拒绝了该通信。 **DefaultOutboundDenyAll** 规则相当于在 `Get-AzEffectiveNetworkSecurityGroup` 命令的以下输出中列出的 **DenyAllOutBound** 规则：
 
 ```powershell
 {
@@ -207,7 +207,7 @@ Get-AzEffectiveNetworkSecurityGroup `
 
 该规则将 **0.0.0.0/0** 列为 **DestinationAddressPrefix**。 此规则拒绝到 172.131.0.100 的出站通信，因为此地址不在 `Get-AzEffectiveNetworkSecurityGroup` 命令输出中的任何其他出站规则的 **DestinationAddressPrefix** 范围内。 若要允许出站通信，可以添加一项优先级更高的安全规则，允许出站流量到达 172.131.0.100 的端口 80。
 
-在[使用 IP 流验证](#use-ip-flow-verify)中运行 `Test-AzNetworkWatcherIPFlow` 命令来测试来自 172.131.0.100 的入站通信时，输出指示 **DefaultInboundDenyAll** 规则拒绝了该通信。 **DefaultInboundDenyAll** 规则相当于在 `Get-AzEffectiveNetworkSecurityGroup` 命令的以下输出中列出的 **DenyAllInBound** 规则：
+在 [使用 IP 流验证](#use-ip-flow-verify)中运行 `Test-AzNetworkWatcherIPFlow` 命令来测试来自 172.131.0.100 的入站通信时，输出指示 **DefaultInboundDenyAll** 规则拒绝了该通信。 **DefaultInboundDenyAll** 规则相当于在 `Get-AzEffectiveNetworkSecurityGroup` 命令的以下输出中列出的 **DenyAllInBound** 规则：
 
 ```powershell
 {
@@ -247,6 +247,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
+在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
 
 即使相应的网络流量筛选器已就位，与 VM 的通信仍可能因路由配置问题而失败。 若要了解如何诊断 VM 网络路由问题，请参阅[诊断 VM 路由问题](diagnose-vm-network-routing-problem-powershell.md)；若要使用某个工具诊断出站路由、延迟和流量筛选问题，请参阅[排查连接问题](network-watcher-connectivity-powershell.md)。

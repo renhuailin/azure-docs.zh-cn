@@ -12,7 +12,7 @@
 - name: 快速入门
   items:
     - name: 使用 SDK
-      href: sdk-learning-loop.md
+      href: ./quickstart-personalizer-sdk.md
 - name: 教程
   items:
     - name: 使用 Web 应用
@@ -88,27 +88,29 @@
         - name: .NET
           items:
             - name: 参考
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
+              href: /dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet
             - name: NuGet 包
               href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
         - name: Go
           items:
             - name: SDK 中 IsInRole 中的声明
-              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer'
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview'
         - name: Node.js
           items:
             - name: 参考
-              href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest'
+              href: /javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest
             - name: NPM
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
         - name: Python
           items:
             - name: 参考
-              href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python'
+              href: /python/api/overview/azure/cognitiveservices/personalizer?view=azure-python
             - name: Pypi 包
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: 资源
   items:
+    - name: 支持和帮助选项
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: 疑难解答
       href: troubleshooting.md
     - name: 区域可用性
@@ -121,7 +123,3 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 定价
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/personalizer'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/921562-personalizer'

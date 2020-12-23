@@ -1,16 +1,15 @@
 ---
 title: 启用并查看 Azure Data Lake Analytics 的诊断日志
 description: 了解如何设置和访问 Azure Data Lake Analytics 的诊断日志
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: f1f4320f0bfb924883eb7ae4807dcb714cd89983
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331924"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221003"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>访问 Azure Data Lake Analytics 的诊断日志
 
@@ -43,7 +42,7 @@ ms.locfileid: "91331924"
 
    * 对于“存档到存储帐户”____，指定数据将保留的天数。
 
-   * 单击“ __保存__”。
+   * 单击“保存” 。
 
         > [!NOTE]
         > 单击“保存”____ 按钮之前，必须选择“存档到存储帐户”____、“流式传输到事件中心”____ 或“发送到 Log Analytics”____。
@@ -135,7 +134,7 @@ ms.locfileid: "91331924"
 | resultType |String |操作状态，例如，200。 |
 | callerIpAddress |String |作出请求的客户端 的IP 地址 |
 | correlationId |String |日志的标识符。 此值可用于分组相关的日志条目。 |
-| 标识 |Object |生成日志的标识 |
+| 标识 |对象 |生成日志的标识 |
 | properties |JSON |请参阅下节（请求日志属性架构），了解详细信息 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
@@ -184,7 +183,7 @@ ms.locfileid: "91331924"
 | operationName |String |被记录的操作的名称。 例如，JobSubmitted。 |
 | resultType |String |作业状态的字状态 (operationName)。 |
 | resultSignature |String |作业状态的其他详细信息 (operationName)。 |
-| 标识 |String |请求操作的用户。 例如 susan@contoso.com。 |
+| 标识 |String |请求操作的用户。 例如，susan@contoso.com。 |
 | properties |JSON |请参阅下节（审核日志属性架构），了解详细信息 |
 
 > [!NOTE]

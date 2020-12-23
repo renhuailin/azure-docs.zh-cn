@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187058"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995397"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
 ## <a name="overview"></a>概述
@@ -46,12 +46,12 @@ ms.locfileid: "86187058"
 ## <a name="first-time-setup-wizard-process"></a>首次设置向导过程
 以下步骤概述了设置向导过程。 有关详细的设置信息，请参阅[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。
 
-1. 运行 [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) cmdlet 以启动设置向导，它指导完成其余步骤。 
+1. 运行 [Invoke-HcsSetupWizard](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) cmdlet 以启动设置向导，它指导完成其余步骤。 
 2. 配置网络：设置向导允许为 StorSimple 设备上的 DATA 0 网络接口配置网络设置。 这些设置包括：
-   * 虚拟 IP (VIP)、子网掩码和网关 – [Set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) cmdlet 在后台执行。 它为 StorSimple 设备上的 DATA 0 网络接口配置 IP 地址、子网掩码和网关。
-   * 主 DNS 服务器 – [Set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) cmdlet 在后台执行。 它配置 StorSimple 解决方案的 DNS 设置。
-   * NTP 服务器 – [Set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet 在后台执行。 它配置 StorSimple 解决方案的 NTP 服务器设置。
-   * 可选 Web 代理 – [Set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) cmdlet 在后台执行。 它设置和启用 StorSimple 解决方案的 Web 代理配置。
+   * 虚拟 IP (VIP)、子网掩码和网关 – [Set-HcsNetInterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) cmdlet 在后台执行。 它为 StorSimple 设备上的 DATA 0 网络接口配置 IP 地址、子网掩码和网关。
+   * 主 DNS 服务器 – [Set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) cmdlet 在后台执行。 它配置 StorSimple 解决方案的 DNS 设置。
+   * NTP 服务器 – [Set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) cmdlet 在后台执行。 它配置 StorSimple 解决方案的 NTP 服务器设置。
+   * 可选 Web 代理 – [Set-HcsWebProxy](/previous-versions/windows/powershell-scripting/dn688154(v=wps.630)) cmdlet 在后台执行。 它设置和启用 StorSimple 解决方案的 Web 代理配置。
 3. 设置密码：下一步是设置设备管理员密码。
    设备管理员密码用于登录到设备。 默认设备密码为 **Password1**。
         
@@ -69,7 +69,7 @@ ms.locfileid: "86187058"
 * 注册设备。
 
 ## <a name="errors-during-the-required-network-settings"></a>配置所需的网络设置期间的错误
-| 错误。 | 错误消息 | 可能的原因 | 建议的操作 |
+| 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：此命令只能在主动控制器上运行。 |在被动控制器上执行配置。 |从主动控制器运行此命令。 有关详细信息，请参阅[标识设备上的主动控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
 | 2 |Invoke-HcsSetupWizard：设备未准备就绪。 |DATA 0 上的网络连接存在问题。 |检查 DATA 0 上的物理网络连接。 |
@@ -80,7 +80,7 @@ ms.locfileid: "86187058"
 | 7 |Invoke-HcsSetupWizard：端点映射程序中没有更多可用的端点。 （异常来自 HRESULT：0x800706D9） |群集功能不工作。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>配置可选 Web 代理设置期间的错误
-| 错误。 | 错误消息 | 可能的原因 | 建议的操作 |
+| 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：参数无效（异常来自 HRESULT：0x80070057） |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式： http:// *\<IP address or FQDN of the web proxy server>* ：*\<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，则需要[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
@@ -103,7 +103,7 @@ ms.locfileid: "86187058"
 
 设置设备管理员密码和 StorSimple Snapshot Manager 密码时，可能会遇到以下一个或多个错误。
 
-| 错误。 | 错误消息 | 建议的操作 |
+| 不是。 | 错误消息 | 建议的操作 |
 | --- | --- | --- |
 | 1 |密码超过最大长度。 |设备管理员密码必须介于 8 到 15 个字符之间。 |
 | 2 |密码不符合所需的长度。 |设备管理员密码必须介于 8 到 15 个字符之间。|
@@ -126,12 +126,12 @@ ms.locfileid: "86187058"
 ## <a name="errors-during-device-registration"></a>设备注册期间的错误
 可以使用在 Microsoft Azure 中运行的 StorSimple 设备管理器服务来注册设备。 在设备注册过程中，可能会遇到以下一个或多个问题。
 
-| 错误。 | 错误消息 | 可能的原因 | 建议的操作 |
+| 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |错误 350027：无法使用 StorSimple 设备管理器注册设备。 | |等候几分钟时间，并重试操作。 如果问题仍然存在，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。 |
 | 2 |错误 350013：注册设备时发生错误。 这可能是由于服务注册密钥不正确。 | |请使用正确的服务注册密钥再次注册该设备。 有关详细信息，请参阅[获取服务注册密钥](storsimple-8000-manage-service.md#get-the-service-registration-key)。 |
 | 3 |错误 350063：已通过对 StorSimple 设备管理器服务的身份认证，但注册失败。 请稍后重试操作。 |此错误表示已通过使用 ACS 的身份验证，但对服务的注册调用失败。 这可能是偶发性网络故障的结果。 |如果问题仍然存在，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。 |
-| 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，并重试该操作。 如果问题仍然存在，请[联系 Microsoft 支持部门。](storsimple-8000-contact-microsoft-support.md) |
+| 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，并重试该操作。 如果问题仍然存在，请 [联系 Microsoft 支持部门。](storsimple-8000-contact-microsoft-support.md) |
 | 5 |错误 350031：设备已注册。 | |无需执行任何操作。 |
 | 6 |错误 350016：设备注册失败。 | |请确保注册密钥正确。 |
 | 7 |Invoke-HcsSetupWizard：注册设备时发生错误；这可能是由于 IP 地址或 DNS 名称不正确。 请检查网络设置，然后重试。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 （错误 350050） |确保设备可以 ping 外部网络。 如果没有连接到外部网络，则注册可能会失败并出现此错误。 此错误可能是以下一个或多个原因的组合：<ul><li>IP 不正确</li><li>子网不正确</li><li>网关不正确</li><li>DNS 设置不正确</li></ul> |请参阅[分步故障排除示例](#step-by-step-storsimple-troubleshooting-example)中的步骤。 |
@@ -154,10 +154,10 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 4. 解密的支持包日志采用 etw/etvx 格式。 可以执行以下步骤以在 Windows 事件查看器中查看这些文件：
    
    1. 在 Windows 客户端上运行 **eventvwr** 命令。 这会启动事件查看器。
-   2. 在“操作”**** 窗格中，单击“打开保存的日志”**** 并指向采用 etvx/etw 格式（支持包）的日志文件。 现在可以查看该文件。 打开文件后，可以右键单击并将该文件另存为文本。
+   2. 在“操作”窗格中，单击“打开保存的日志”并指向采用 etvx/etw 格式（支持包）的日志文件。 现在可以查看该文件。 打开文件后，可以右键单击并将该文件另存为文本。
       
       > [!IMPORTANT]
-      > 还可以使用 **Get-WinEvent** cmdlet 以在 Windows PowerShell 中打开这些文件。 有关详细信息，请参阅 Windows PowerShell cmdlet 参考文档中的 [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx)。
+      > 还可以使用 **Get-WinEvent** cmdlet 以在 Windows PowerShell 中打开这些文件。 有关详细信息，请参阅 Windows PowerShell cmdlet 参考文档中的 [Get-WinEvent](/powershell/module/microsoft.powershell.diagnostics/get-winevent)。
      
 5. 当在事件查看器中打开日志时，请查找包含与设备配置相关的问题的以下日志：
    
@@ -178,7 +178,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 * `Get-HcsRoutingTable`：使用此 cmdlet 显示本地 IP 路由表。
 
 ## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>使用 Get-NetAdapter cmdlet 进行故障排除
-为第一次设备部署配置网络接口时，StorSimple 设备管理器服务 UI 中的硬件状态不可用，因为尚未使用该服务注册此设备。 此外，“硬件运行状况”边栏选项卡可能不会始终正确反映设备的状态，特别是在存在影响服务同步的问题时。**** 在这些情况下，可以使用 `Get-NetAdapter` cmdlet 确定网络接口的运行状况和状态。
+为第一次设备部署配置网络接口时，StorSimple 设备管理器服务 UI 中的硬件状态不可用，因为尚未使用该服务注册此设备。 此外，“硬件运行状况”边栏选项卡可能不会始终正确反映设备的状态，特别是在存在影响服务同步的问题时。 在这些情况下，可以使用 `Get-NetAdapter` cmdlet 确定网络接口的运行状况和状态。
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>要查看设备上的所有网络适配器的列表
 1. 启动 Windows PowerShell for StorSimple，并键入 `Get-NetAdapter`。 
@@ -189,7 +189,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
    * 如果接口正常运行但未启用，**ifIndex** 状态将显示为 **NotPresent**。
    * 如果接口不存在，则不会出现在此列表中。 StorSimple 设备管理器服务 UI 仍会显示此接口处于失败状态。
 
-有关如何使用此 cmdlet 的详细信息，请转到 Windows PowerShell cmdlet 参考中的 [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps)。
+有关如何使用此 cmdlet 的详细信息，请转到 Windows PowerShell cmdlet 参考中的 [Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps)。
 
 以下部分显示 `Get-NetAdapter` cmdlet 的输出示例。
 
@@ -284,7 +284,7 @@ HCSNODE0      outlook.com     132.245.92.194
    * ErrorCode.CiSDeviceDecommissioned – 这表示设备已停用。
    * ErrorCode.DeviceNotReady – 这表示设备处于维护模式。
    * ErrorCode.DeviceNotReady – 这表示设备未联机。
-3. 验证 StorSimple 设备管理器服务是否正在运行（使用 [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) cmdlet）。 如果该服务未运行，可能会看到以下错误：
+3. 验证 StorSimple 设备管理器服务是否正在运行（使用 [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) cmdlet）。 如果该服务未运行，可能会看到以下错误：
    
    * ErrorCode.CiSApplianceAgentNotOnline
    * ErrorCode.CisPowershellScriptHcsError – 这表示运行 Get-ClusterResource 时出现异常。
@@ -308,7 +308,7 @@ HCSNODE0      outlook.com     132.245.92.194
 
 日志文件 CiSCommandletLog0Curr.errlog and CiSAgentsvc0Curr.errlog 将包含详细信息，例如异常详细信息。
 
-有关如何使用 cmdlet 的详细信息，请转到 Windows PowerShell 参考文档中的 [Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx)。
+有关如何使用 cmdlet 的详细信息，请转到 Windows PowerShell 参考文档中的 [Test-HcsmConnection](/previous-versions/windows/powershell-scripting/dn715782(v=wps.630))。
 
 > [!IMPORTANT]
 > 可以为主动和被动控制器运行此 cmdlet。
@@ -349,7 +349,7 @@ Controller1>
 
 **示例输出 – 脱机设备** 
 
-此示例来自 Azure 门户中状态为“脱机”的设备。****
+此示例来自 Azure 门户中状态为“脱机”的设备。
 
 ```output
 Checking device registrationstate: Success
@@ -553,5 +553,5 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 
 <!--Link references-->
 
-[1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
-[2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx 
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd379547(v=ws.10)
+[2]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd392266(v=ws.10)

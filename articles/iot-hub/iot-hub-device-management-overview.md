@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 63497553f7cec2edf3c77ba8690dda2b15d104be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324720"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148346"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>使用 IoT 中心进行设备管理的概述
 
@@ -78,7 +78,7 @@ IoT 带来了一系列独特的设备管理难题，每个企业级解决方案�
   
     *延伸阅读*：
     * [如何使用设备孪生属性](tutorial-device-twins.md)
-    * [大规模配置和监视 IoT 设备](iot-hub-auto-device-config.md)
+    * [大规模配置和监视 IoT 设备](./iot-hub-automatic-device-management.md)
     * [IoT 解决方案中设备配置的最佳做法](iot-hub-configuration-best-practices.md)
 
 * **监视**：监视总体设备集合运行状况、正在进行的操作的状态并针对可能需要操作员注意的问题向操作员发出警报。  应用设备孪生以允许设备报告实时操作情况和更新操作的状态。 使用设备孪生查询生成显示最直接问题的功能强大的仪表板报告。
@@ -86,7 +86,7 @@ IoT 带来了一系列独特的设备管理难题，每个企业级解决方案�
     *延伸阅读*： 
     * [如何使用设备孪生属性](tutorial-device-twins.md)
     * [用于设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)
-    * [大规模配置和监视 IoT 设备](iot-hub-auto-device-config.md)
+    * [大规模配置和监视 IoT 设备](./iot-hub-automatic-device-management.md)
     * [IoT 解决方案中设备配置的最佳做法](iot-hub-configuration-best-practices.md)
 
 * **停用**：在发生故障、升级周期后，或在服务生存期结束时更换或停用设备。  使用设备孪生来维护设备信息（如果正在更换物理设备），或者将设备信息存档（如果正在停用设备）。 使用 IoT 中心标识注册表来安全地撤销设备标识和凭据。

@@ -82,7 +82,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: 创建或更新自定义角色
+    - name: 创建自定义角色
       items:
         - name: 概述
           href: custom-roles.md

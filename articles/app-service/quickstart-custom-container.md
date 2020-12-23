@@ -3,27 +3,27 @@ title: 快速入门：在应用服务上运行自定义容器
 description: 部署第一个自定义容器即可开始使用 Azure 应用服务中的容器。
 author: msangapu-msft
 ms.author: msangapu
-ms.date: 08/28/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961357"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745071"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中运行自定义容器
 
 ::: zone pivot="container-windows"
-[Azure 应用服务](overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 容器（预览版）环境锁定了操作系统，使其无法进行管理访问、软件安装、全局程序集缓存更改等操作。 有关详细信息，请参阅 [Azure 应用服务上的操作系统功能](operating-system-functionality.md)。 如果应用程序需要的访问权限超出了预配置环境的允许，则可改为部署自定义 Windows 容器。
+[Azure 应用服务](overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 容器环境锁定了操作系统，使其无法进行管理访问、软件安装、全局程序集缓存更改等操作。 有关详细信息，请参阅 [Azure 应用服务上的操作系统功能](operating-system-functionality.md)。 如果应用程序需要的访问权限超出了预配置环境的允许，则可改为部署自定义 Windows 容器。
 
 本快速入门介绍如何通过 Visual Studio 将 Windows 映像中的 ASP.NET 应用部署到 [Docker Hub](https://hub.docker.com/)。 你将在 Azure 应用服务中的某个自定义容器内运行该应用。
 
 > [!NOTE]
-> Windows 上的应用服务容器提供预览版。
->
+> Windows 容器仅限于 Azure 文件存储，当前不支持 Azure Blob。
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,8 +31,8 @@ ms.locfileid: "88961357"
 
 - <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">将 Docker 切换为运行 Windows 容器</a>。
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">安装 Visual Studio 2019</a>，其中包含 **ASP.NET 和 web 开发**以及 **Azure 开发**工作负载。 如果已安装 Visual Studio 2019：
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">将 Docker 切换为运行 Windows 容器</a>。
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">安装 Visual Studio 2019</a>，其中包含 **ASP.NET 和 web 开发** 以及 **Azure 开发** 工作负载。 如果已安装 Visual Studio 2019：
 
     - 通过选择“帮助” > “检查更新”，在 Visual Studio 中安装最新更新。
     - 在 Visual Studio 中，通过选择“工具” > “获取工具和功能”，添加工作负载。
@@ -57,7 +57,7 @@ ms.locfileid: "88961357"
 
 1. 如果 _Dockerfile_ 文件未自动打开，则从解决方案资源管理器中打开。
 
-1. 需要使用[受支持的父映像](#use-a-different-parent-image)。 通过将 `FROM` 行替换为以下代码，更改父映像，并保存文件：
+1. 需要使用[受支持的父映像](configure-custom-container.md#supported-parent-images)。 通过将 `FROM` 行替换为以下代码，更改父映像，并保存文件：
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -81,7 +81,7 @@ ms.locfileid: "88961357"
 
    等待部署完成。 “发布”页现在会显示稍后要使用的存储库名称。
 
-   ![从项目概述页发布](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+   ![突出显示存储库名称的屏幕截图。](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
 
 1. 复制此存储库名称待以后使用。
 
@@ -93,9 +93,9 @@ ms.locfileid: "88961357"
 
 1. 在 Azure 市场资源列表上方的搜索框中，搜索“用于容器的 Web 应用”并选择“创建” 。
 
-1. 在“Web 应用创建”中，选择你的订阅和一个**资源组**。 如果需要，可以创建新的资源组。
+1. 在“Web 应用创建”中，选择你的订阅和一个 **资源组**。 如果需要，可以创建新的资源组。
 
-1. 提供应用名称（例如 *win-container-demo*），然后选择“Windows”作为**操作系统**。 在完成时选择“下一步:Docker”以继续。
+1. 提供应用名称（例如 *win-container-demo*），然后选择“Windows”作为 **操作系统**。 在完成时选择“下一步:Docker”以继续。
 
    ![创建用于容器的 Web 应用。](media/quickstart-custom-container/create-web-app-continer.png)
 
@@ -169,22 +169,16 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ![已在 Azure 中更新的 Web 应用](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>使用其他父映像
-
-可以任意使用其他自定义的 Docker 映像来运行应用。 但是，必须为所需框架选择适当的[父映像(基础映像)](https://docs.docker.com/develop/develop-images/baseimages/)：
-
-- 若要部署 .NET Framework 应用，请使用基于 Windows Server Core 2019 [Long-Term Servicing Channel (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 发行版的父映像。 
-- 若要部署 .NET Core 应用，请使用基于 Windows Server Nano 1809 [Semi-Annual Servicing Channel (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) 发行版的父映像。 
-
-在应用启动期间，下载父映像需要一些时间。 不过，可以使用已缓存在 Azure 应用服务中的下述父映像之一，缩短启动时间：
-
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809 - 此映像是基础容器，可以跨 Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows Nano Server 映像使用。
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [迁移到 Azure 中的 Windows 容器](tutorial-custom-container.md)
+
+或者，查看其他资源：
+
+> [!div class="nextstepaction"]
+> [配置自定义容器](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
@@ -203,11 +197,11 @@ Linux 上的应用服务在 Linux 上提供预定义的应用程序堆栈，并�
 若要完成本快速入门，需要在 [Azure 容器注册表](../container-registry/index.yml)中存储合适的 Web 应用映像。 遵循[快速入门：使用 Azure 门户创建专用容器注册表](../container-registry/container-registry-get-started-portal.md)中的说明进行操作，但使用 `mcr.microsoft.com/azuredocs/go` 映像而不是 `hello-world` 映像。 若要参考，可[在 Azure 示例存储库中找到示例 Dockerfile](https://github.com/Azure-Samples/go-docs-hello-world)。
 
 > [!IMPORTANT]
-> 请确保在创建容器注册表时将“管理员用户”**** 选项设为“启用”****。 也可以在 Azure 门户中从注册表页的“访问密钥”**** 部分进行设置。 应用服务访问需要此设置。
+> 请确保在创建容器注册表时将“管理员用户”选项设为“启用”。 也可以在 Azure 门户中从注册表页的“访问密钥”部分进行设置。 应用服务访问需要此设置。
 
 ## <a name="sign-in"></a>登录
 
-接下来，使用应用服务扩展启动 VS Code 并登录到 Azure 帐户。 为此，请在活动栏中选择 Azure 徽标，导航到“应用服务”**** 资源管理器，然后选择“登录到 Azure”****，并按照说明进行操作。
+接下来，使用应用服务扩展启动 VS Code 并登录到 Azure 帐户。 为此，请在活动栏中选择 Azure 徽标，导航到“应用服务”资源管理器，然后选择“登录到 Azure”，并按照说明进行操作。
 
 ![登录到 Azure](./media/quickstart-docker/sign-in.png)
 
@@ -215,7 +209,7 @@ Linux 上的应用服务在 Linux 上提供预定义的应用程序堆栈，并�
 
 现在你可以检查是否已安装并配置了所有必备组件。
 
-在 VS Code 的状态栏中应会显示你的 Azure 电子邮件地址，“应用服务”资源管理器中应会显示你的订阅。****
+在 VS Code 的状态栏中应会显示你的 Azure 电子邮件地址，“应用服务”资源管理器中应会显示你的订阅。
 
 接下来，验证是否已安装并运行 Docker。 以下命令将显示 Docker 版本（如果它正在运行）。
 
@@ -223,27 +217,27 @@ Linux 上的应用服务在 Linux 上提供预定义的应用程序堆栈，并�
 docker --version
 ```
 
-最后，请确保已连接 Azure 容器注册表。 为此，请在活动栏中选择 Docker 徽标，然后导航到“注册表”****。
+最后，请确保已连接 Azure 容器注册表。 为此，请在活动栏中选择 Docker 徽标，然后导航到“注册表”。
 
-![注册表](./media/quickstart-docker/registries.png)
+![屏幕截图显示展开了 Azure 的注册表值以及文件扩展名为 .io 的文件。](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>将映像部署到 Azure 应用服务
 
 完成所有配置后，即可将映像直接从 Docker 扩展资源管理器部署到 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)。
 
-在 **DOCKER 资源管理器**中的“注册表”**** 节点下找到映像，并将其展开以显示其标记。 右键单击标记，然后选择“将映像部署到 Azure 应用服务”****。
+在 **DOCKER 资源管理器** 中的“注册表”节点下找到映像，并将其展开以显示其标记。 右键单击标记，然后选择“将映像部署到 Azure 应用服务”。
 
-在此处，按照提示选择订阅、全局唯一的应用名称、资源组和应用服务计划。 选择“B1 基本”**** 作为“定价层”，并选择区域。
+在此处，按照提示选择订阅、全局唯一的应用名称、资源组和应用服务计划。 选择“B1 基本”作为“定价层”，并选择区域。
 
 部署之后，你的应用将在 `http://<app name>.azurewebsites.net` 上可用。
 
-“资源组”**** 是 Azure 中所有应用程序资源的命名集合。 例如，资源组可以包含对网站、数据库和 Azure 函数的引用。
+“资源组”是 Azure 中所有应用程序资源的命名集合。 例如，资源组可以包含对网站、数据库和 Azure 函数的引用。
 
-应用服务计划**** 定义用于托管网站的物理资源。 此快速入门在 Linux 基础结构上使用********“基本”托管计划，这意味着该站点将与其他网站一起托管在 Linux 计算机上。 如果开始使用“基本”**** 计划，则可以使用 Azure 门户进行扩展，使你的计算机是在计算机上运行的唯一站点。
+应用服务计划定义用于托管网站的物理资源。 此快速入门在 Linux 基础结构上使用“基本”托管计划，这意味着该站点将与其他网站一起托管在 Linux 计算机上。 如果开始使用“基本”计划，则可以使用 Azure 门户进行扩展，使你的计算机是在计算机上运行的唯一站点。
 
 ## <a name="browse-the-website"></a>浏览网站
 
-“输出”**** 面板将在部署过程中打开，以指示操作的状态。 操作完成后，查找在“应用服务”**** 资源管理器中创建的应用，右键单击该应用，然后选择“浏览网站”**** 以在浏览器中打开该站点。
+“输出”面板将在部署过程中打开，以指示操作的状态。 操作完成后，查找在“应用服务”资源管理器中创建的应用，右键单击该应用，然后选择“浏览网站”以在浏览器中打开该站点。
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
@@ -260,5 +254,10 @@ docker --version
 * [Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 或安装 [Azure 工具](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)扩展包获取所有这些工具。
+
+查看其他资源：
+
+> [!div class="nextstepaction"]
+> [配置自定义容器](configure-custom-container.md)
 
 ::: zone-end

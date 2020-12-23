@@ -1,6 +1,6 @@
 ---
 title: 教程：从必应地图迁移 Web 应用 | Microsoft Azure Maps
-description: 如何将 Web 应用从必应地图迁移到 Microsoft Azure Maps。
+description: 有关如何将 Web 应用从必应地图迁移到 Microsoft Azure Maps 的教程。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319724"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589995"
 ---
-# <a name="migrate-a-web-app-from-bing-maps"></a>从必应地图迁移 Web 应用
+# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>教程 - 从必应地图迁移 Web 应用
 
 使用必应地图的 Web 应用通常使用必应地图 V8 JavaScript SDK。 Azure Maps Web SDK 是适合用于迁移目标的基于 Azure 的 SDK。 Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图，以便在 Web 或移动应用程序中显示。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
 
-如果迁移现有的 Web 应用程序，请检查该应用程序是否使用 Cesium、Leaflet 和 OpenLayers 等开源地图控件库。 如果使用上述某个库，并且你希望继续使用该库，那么可将其连接到 Azure Maps 图块服务（[道路图块](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [卫星图块](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)）。 可在下面的链接中详细了解如何在一些常用开源地图控件库中使用 Azure Maps。
+如果迁移现有的 Web 应用程序，请检查该应用程序是否使用 Cesium、Leaflet 和 OpenLayers 等开源地图控件库。 如果使用上述某个库，并且你希望继续使用该库，那么可将其连接到 Azure Maps 图块服务（[道路图块](/rest/api/maps/render/getmaptile) \| [卫星图块](/rest/api/maps/render/getmapimagerytile)）。 可在下面的链接中详细了解如何在一些常用开源地图控件库中使用 Azure Maps。
 
 -   Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
 -   Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
@@ -68,7 +68,7 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 
 下面是必应地图与 Azure Maps Web SDK 之间需要注意的一些重要区别：
 
--   除了提供托管终结点用于访问 Azure Maps Web SDK 以外，还可以根据偏好使用某个 NPM 包将 Web SDK 嵌入应用。 有关详细信息，请参阅此[文档](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。 此程序包还包括了 TypeScript 定义。
+-   除了提供托管终结点用于访问 Azure Maps Web SDK 以外，还可以根据偏好使用某个 NPM 包将 Web SDK 嵌入应用。 有关详细信息，请参阅此[文档](./how-to-use-map-control.md)。 此程序包还包括了 TypeScript 定义。
 -   必应地图提供了其 SDK 的两个托管分支：发布和实验。 在进行新的开发时，实验分支每天可能会收到多个更新。 Azure Maps 仅托管发布分支，但实验功能在开源 Azure Maps 代码示例项目中作为自定义模块进行创建。 必应地图之前有一个冻结的分支，该分支更新频率较低，因此降低了因发布而出现中断性变更的风险。 在 Azure Maps 中可使用 NPM 模块，并指向之前任何的次要版本。
 
 > [!TIP]
@@ -78,20 +78,20 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 -   这两个平台为基础地图使用类似的图块系统，但必应地图中图块的尺寸为 256 像素，而 Azure Maps 中图块的尺寸为 512 像素。 因此，若要在 Azure Maps 中获得与必应地图相同的地图视图，在必应地图中使用的缩放级别在 Azure Maps 中需要减 1。
 -   必应地图中的坐标称为 `latitude, longitude`，而 Azure Maps 使用 `longitude, latitude`。 此格式符合大多数 GIS 平台所遵循的标准 `[x, y]`。
 
--   Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [atlas.data 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)公开。 还有 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 类可用于包装 GeoJSON 对象，使它们可以数据可绑定的方式轻松更新和维护。
+-   Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [atlas.data 命名空间](/javascript/api/azure-maps-control/atlas.data)公开。 还有 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) 类可用于包装 GeoJSON 对象，使它们可以数据可绑定的方式轻松更新和维护。
 -   Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 或 `new atlas.data.Position(longitude, latitude)` 格式的简单数字数组。
 
 > [!TIP]
-> Position 类有一个静态帮助程序函数，用于导入 `latitude, longitude` 格式的坐标。 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position) 函数常常可取代必应地图代码中的 `new Microsoft.Maps.Location` 函数。
+> Position 类有一个静态帮助程序函数，用于导入 `latitude, longitude` 格式的坐标。 [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) 函数常常可取代必应地图代码中的 `new Microsoft.Maps.Location` 函数。
 
 -   Azure Maps 将样式与数据相区分，而不是在添加到地图的每个形状中指定样式信息。 数据存储在数据源中，并连接到 Azure Maps 代码用来呈现数据的呈现层。 此方法提供增强的性能优势。 此外，很多层支持数据驱动的样式，其中，业务逻辑可添加到层样式选项，这些选项可以更改单个形状根据形状中定义的属性在层中的呈现方式。
 -   Azure Maps 在 `atlas.math` 命名空间中提供了一组有用的空间数学函数，但这些函数不同于必应地图空间数学模块中的函数。 主要区别是 Azure Maps 不为二元运算（例如并集和交集）提供内置函数，但由于 Azure Maps 是基于开放标准 GeoJSON，因此有许多可用的开源库。 一个与 Azure Maps 配合良好且提供海量空间数学功能的常用选项是 [turf js](http://turfjs.org/)。
 
-另请参阅 [Azure Maps 术语表](https://docs.microsoft.com/azure/azure-maps/glossary)，获取与 Azure Maps 关联的术语的详细列表。
+另请参阅 [Azure Maps 术语表](./glossary.md)，获取与 Azure Maps 关联的术语的详细列表。
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK 对比示例
 
-下面是适用于每个平台的代码示例集合，其中涵盖了常见用例，可帮助你将 Web 应用程序从必应地图 V8 JavaScript SDK 迁移到 Azure Maps Web SDK。 与 Web 应用程序相关的代码示例以 JavaScript 提供；但是，Azure Maps 还通过 [NPM 模块](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)提供 TypeScript 定义作为附加选项。
+下面是适用于每个平台的代码示例集合，其中涵盖了常见用例，可帮助你将 Web 应用程序从必应地图 V8 JavaScript SDK 迁移到 Azure Maps Web SDK。 与 Web 应用程序相关的代码示例以 JavaScript 提供；但是，Azure Maps 还通过 [NPM 模块](./how-to-use-map-control.md)提供 TypeScript 定义作为附加选项。
 
 **主题**
 
@@ -230,14 +230,14 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 
 ![Azure Maps 地图](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
 
-在[此处](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)可以找到有关如何在 Web 应用中设置和使用 Azure Maps 地图控件的详细文档。
+在[此处](./how-to-use-map-control.md)可以找到有关如何在 Web 应用中设置和使用 Azure Maps 地图控件的详细文档。
 
 > [!TIP]
 > Azure Maps 同时发布了 SDK 的简化版和非简化版本。 从文件名中删除 `.min`。 在调试问题时，非简化版本非常有用，但请务必在生产环境中使用简化版本来利用更小的文件大小。
 
 **其他资源**
 
--   Azure Maps 还提供了导航控件，用于按[此文](https://docs.microsoft.com/azure/azure-maps/map-add-controls)所述旋转地图视图及调整其俯仰角。
+-   Azure Maps 还提供了导航控件，用于按[此文](./map-add-controls.md)所述旋转地图视图及调整其俯仰角。
 
 ### <a name="localizing-the-map"></a>本地化地图
 
@@ -281,7 +281,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> 使用 Azure Maps 时，可以在同一页面上加载使用不同语言和区域设置的多个地图实例。 此外，还可以在加载地图后在其中更新这些设置。 在[此处](https://docs.microsoft.com/azure/azure-maps/supported-languages)可以找到 Azure Maps 支持的语言的详细列表。
+> 使用 Azure Maps 时，可以在同一页面上加载使用不同语言和区域设置的多个地图实例。 此外，还可以在加载地图后在其中更新这些设置。 在[此处](./supported-languages.md)可以找到 Azure Maps 支持的语言的详细列表。
 
 下面是将语言设置为“fr”、将用户区域设置为“fr-FR”的 Azure Maps 示例。
 
@@ -333,8 +333,8 @@ map.setStyle({
 
 **其他资源**
 
--   [选择地图样式](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
--   [支持的地图样式](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)
+-   [选择地图样式](./choose-map-style.md)
+-   [支持的地图样式](./supported-map-styles.md)
 
 ### <a name="adding-a-pushpin"></a>添加图钉
 
@@ -462,16 +462,16 @@ map.markers.add(new atlas.HtmlMarker({
 
 **其他资源**
 
--   [创建数据源](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [添加符号层](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [添加气泡层](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [聚类点数据](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [添加 HTML 标记](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [使用数据驱动样式表达式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [符号层图标选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [符号层文本选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML 标记类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML 标记选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [创建数据源](./create-data-source-web-sdk.md)
+-   [添加符号层](./map-add-pin.md)
+-   [添加气泡层](./map-add-bubble-layer.md)
+-   [聚类点数据](./clustering-point-data-web-sdk.md)
+-   [添加 HTML 标记](./map-add-custom-html.md)
+-   [使用数据驱动样式表达式](./data-driven-style-expressions-web-sdk.md)
+-   [符号层图标选项](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [符号层文本选项](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML 标记类](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML 标记选项](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-pushpin"></a>添加自定义图钉
 
@@ -593,14 +593,14 @@ Azure Maps 中的符号层也支持自定义图像，但需要先将图像载入
 
 **其他资源**
 
--   [创建数据源](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [添加符号层](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [添加 HTML 标记](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [使用数据驱动样式表达式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [符号层图标选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [符号层文本选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML 标记类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML 标记选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [创建数据源](./create-data-source-web-sdk.md)
+-   [添加符号层](./map-add-pin.md)
+-   [添加 HTML 标记](./map-add-custom-html.md)
+-   [使用数据驱动样式表达式](./data-driven-style-expressions-web-sdk.md)
+-   [符号层图标选项](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [符号层文本选项](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML 标记类](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML 标记选项](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>添加折线
 
@@ -668,9 +668,9 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **其他资源**
 
--   [将线条添加到地图](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-lines-to-the-map)
--   [线条层选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [使用数据驱动样式表达式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [将线条添加到地图](./map-add-line-layer.md)
+-   [线条层选项](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [使用数据驱动样式表达式](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>添加多边形
 
@@ -744,11 +744,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **其他资源**
 
--   [将多边形添加到地图](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-polygon-to-the-map)
--   [将圆添加到地图](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-circle-to-the-map)
--   [多边形层选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
--   [线条层选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [使用数据驱动样式表达式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [将多边形添加到地图](./map-add-shape.md#use-a-polygon-layer)
+-   [将圆添加到地图](./map-add-shape.md#add-a-circle-to-the-map)
+-   [多边形层选项](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+-   [线条层选项](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [使用数据驱动样式表达式](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-infobox"></a>显示信息框
 
@@ -820,12 +820,12 @@ map.events.add('click', marker, function () {
 
 **其他资源**
 
--   [添加弹出项](https://docs.microsoft.com/azure/azure-maps/map-add-popup)
+-   [添加弹出项](./map-add-popup.md)
 -   [包含媒体内容的弹出窗口](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
 -   [包含形状的弹出窗口](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
 -   [重复使用包含多个图钉的弹出窗口](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
--   [弹出窗口类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
--   [弹出窗口选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+-   [弹出窗口类](/javascript/api/azure-maps-control/atlas.popup)
+-   [弹出窗口选项](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="pushpin-clustering"></a>图钉聚类
 
@@ -883,7 +883,7 @@ map.events.add('click', marker, function () {
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';     //Default to lime green.
+            var fillColor = 'lime';   //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -947,7 +947,7 @@ map.events.add('click', marker, function () {
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | 计算聚类开始展开或分开的缩放级别。    |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | `Promise<Feature<Geometry, any> | Shape>` | 检索聚类中的所有点。 设置 `limit` 可返回点的子集，使用 `offset` 可逐页呈现点。    |
 
-在地图上呈现聚类的数据时，最简单的方法通常是使用两个或更多个层。 下面的示例使用 3 个层：气泡层用于根据聚类的大小绘制缩放的彩色圆，一个符号层将聚类大小呈现为文本，另一个符号层用于呈现未聚类的点。 [聚类点数据](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)文档中重点介绍了在 Azure Maps 中呈现聚类数据的其他多种方式。
+在地图上呈现聚类的数据时，最简单的方法通常是使用两个或更多个层。 下面的示例使用 3 个层：气泡层用于根据聚类的大小绘制缩放的彩色圆，一个符号层将聚类大小呈现为文本，另一个符号层用于呈现未聚类的点。 [聚类点数据](./clustering-point-data-web-sdk.md)文档中重点介绍了在 Azure Maps 中呈现聚类数据的其他多种方式。
 
 可以使用 `DataSource` 类中的 `importDataFromUrl` 函数，在 Azure Maps 中直接导入 GeoJSON 数据。
 
@@ -1051,10 +1051,10 @@ map.events.add('click', marker, function () {
 
 **其他资源**
 
--   [添加符号层](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [添加气泡层](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [聚类点数据](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [使用数据驱动样式表达式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [添加符号层](./map-add-pin.md)
+-   [添加气泡层](./map-add-bubble-layer.md)
+-   [聚类点数据](./clustering-point-data-web-sdk.md)
+-   [使用数据驱动样式表达式](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>添加热度地图
 
@@ -1183,10 +1183,10 @@ map.events.add('click', marker, function () {
 
 **其他资源**
 
--   [添加热度地图层](https://docs.microsoft.com/azure/azure-maps/map-add-heat-map-layer)
--   [热度地图层类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
--   [热度地图层选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
--   [使用数据驱动样式表达式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [添加热度地图层](./map-add-heat-map-layer.md)
+-   [热度地图层类](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+-   [热度地图层选项](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+-   [使用数据驱动样式表达式](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>叠加图块层
 
@@ -1238,9 +1238,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 **其他资源**
 
--   [添加图块层](https://docs.microsoft.com/azure/azure-maps/map-add-tile-layer)
--   [图块层类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
--   [图块层选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+-   [添加图块层](./map-add-tile-layer.md)
+-   [图块层类](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+-   [图块层选项](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>显示交通情况数据
 
@@ -1284,7 +1284,7 @@ map.setTraffic({
 
 **其他资源**
 
--   [在地图上显示交通信息](https://docs.microsoft.com/azure/azure-maps/map-show-traffic)
+-   [在地图上显示交通信息](./map-show-traffic.md)
 -   [交通状况叠加选项](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 -   [交通控制](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
 
@@ -1344,7 +1344,7 @@ map.setTraffic({
 在 Azure Maps 中，可以使用 `atlas.layer.ImageLayer` 类叠加地理围栏图像。 此类需要指定图像的 URL，以及该图像四个角的坐标。 该图像必须位于同一个域中，或已启用 CORs。
 
 > [!TIP]
-> 如果只有东南西北坐标和旋转信息，而没有图像每个角的坐标，可使用静态 [atlas.layer.ImageLayer.getCoordinatesFromEdges](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) 函数。
+> 如果只有东南西北坐标和旋转信息，而没有图像每个角的坐标，可使用静态 [atlas.layer.ImageLayer.getCoordinatesFromEdges](/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) 函数。
 
 ```html
 <!DOCTYPE html>
@@ -1404,8 +1404,8 @@ map.setTraffic({
 
 **其他资源**
 
--   [叠加图像](https://docs.microsoft.com/azure/azure-maps/map-add-image-layer)
--   [图像层类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+-   [叠加图像](./map-add-image-layer.md)
+-   [图像层类](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>将 KML 数据添加到地图
 
@@ -1467,7 +1467,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 
 **后者：Azure Maps**
 
-在 Azure Maps 中，GeoJSON 是在 Web SDK 中使用的主要数据格式，可在其中使用 [空间 IO 模块](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)轻松集成其他空间数据格式。 此模块提供读取和写入空间数据的功能，并且包含一个简单的数据层，可轻松地从上述任何空间数据格式呈现数据。 若要读取空间数据文件中的数据，请在 `atlas.io.read` 函数中传入一个 URL，或者传入字符串或 Blob 形式的原始数据。 这会返回该文件中的所有已分析数据，然后可将这些数据添加到地图中。 KML 比大多数空间数据格式要复杂一些，因为它包含的样式信息要多得多。  `SpatialDataLayer` 类支持呈现其中的大多数样式，但是在加载特征数据之前必须先将图标图像载入地图，并将地面叠加层作为图层单独添加到地图中。 通过 URL 加载数据时，应将数据托管在支持 CORs 的终结点上，或者应该将代理服务作为一个选项传入 read 函数中。
+在 Azure Maps 中，GeoJSON 是在 Web SDK 中使用的主要数据格式，可在其中使用[空间 IO 模块](/javascript/api/azure-maps-spatial-io/)轻松集成其他空间数据格式。 此模块提供读取和写入空间数据的功能，并且包含一个简单的数据层，可轻松地从上述任何空间数据格式呈现数据。 若要读取空间数据文件中的数据，请在 `atlas.io.read` 函数中传入一个 URL，或者字符串或 Blob 形式的原始数据。 这会返回该文件中的所有已分析数据，然后可将这些数据添加到地图中。 KML 比大多数空间数据格式要复杂一些，因为它包含的样式信息要多得多。 `SpatialDataLayer` 类支持呈现其中的大多数样式，但是，在加载特征数据之前必须先将图标图像载入地图，并单独将地面叠加层作为图层添加到地图中。 通过 URL 加载数据时，应将数据托管在支持 CORs 的终结点上，或者应该将代理服务作为一个选项传入 read 函数中。
 
 ```html
 <!DOCTYPE html>
@@ -1564,9 +1564,9 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 
 **其他资源**
 
--   [atlas.io.read 函数](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
--   [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
--   [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+-   [atlas.io.read 函数](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+-   [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+-   [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ### <a name="add-drawing-tools"></a>添加绘图工具
 
@@ -1683,7 +1683,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 
 **其他资源**
 
--   [文档](https://docs.microsoft.com/azure/azure-maps/set-drawing-options)
+-   [文档](./set-drawing-options.md)
 -   [代码示例](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
 ## <a name="next-steps"></a>后续步骤
@@ -1703,16 +1703,16 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 **服务**
 
 > [!div class="nextstepaction"]
-> [使用 Azure Maps 服务模块](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [使用 Azure Maps 服务模块](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [搜索兴趣点](https://docs.microsoft.com/azure/azure-maps/map-search-location)
+> [搜索兴趣点](./map-search-location.md)
 
 > [!div class="nextstepaction"]
-> [获取坐标中的信息（反向地理编码）](https://docs.microsoft.com/azure/azure-maps/map-get-information-from-coordinate)
+> [获取坐标中的信息（反向地理编码）](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [显示从 A 到 B 的路线](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [显示从 A 到 B 的路线](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [使用 JQuery UI 搜索自动建议](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
@@ -1729,7 +1729,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 > [如何使用绘图工具模块](set-drawing-options.md)
 
 > [!div class="nextstepaction"]
-> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [示例代码](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
-> [Azure Maps Web SDK 服务 API 参考文档](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+> [Azure Maps Web SDK 服务 API 参考文档](/javascript/api/azure-maps-control/)

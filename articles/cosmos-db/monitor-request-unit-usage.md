@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
-ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260740"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098240"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>如何监视 Azure Cosmos DB 中的操作的吞吐量或请求单位用量
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 适用于 Azure Cosmos DB 的 Azure Monitor 提供一个指标视图，用于监视帐户和创建仪表板。 默认情况下，系统会收集 Azure Cosmos DB 指标，此功能不需要你显式启用或配置任何设置。 “请求单位总数”指标用于获取不同类型的操作的请求单位用量。 以后，你可以分析哪些操作使用了大部分吞吐量。 默认情况下，吞吐量数据是按一分钟间隔聚合的。 但是，可以通过更改时间粒度选项来更改聚合单位。
 

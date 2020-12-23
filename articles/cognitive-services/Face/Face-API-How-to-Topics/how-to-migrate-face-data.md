@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f6b2ed9357acf4dceeb960b1abdf6813987f657
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 74861df30ba2854c9299e1f779d0cee59abbc5a8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324886"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911199"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
@@ -28,7 +28,7 @@ ms.locfileid: "91324886"
 
 需要准备好以下各项：
 
-- 两个面部订阅密钥，一个用于现有数据，另一个用于迁移到。 若要订阅面部服务并获取你的密钥，请按照 [创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明进行操作。
+- 两个面部订阅密钥，一个用于现有数据，另一个用于迁移到。 若要订阅面部服务并获取你的密钥，请按照 [创建认知服务帐户](../../cognitive-services-apis-create-account.md)中的说明进行操作。
 - 与目标订阅相对应的人脸订阅 ID 字符串。 在 Azure 门户中选择“概述”可以找到该字符串。  
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
 
@@ -36,13 +36,13 @@ ms.locfileid: "91324886"
 
 本指南使用一个简单的控制台应用来运行人脸数据迁移。 有关完整实现，请参阅 GitHub 上的 [面部快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) 。
 
-1. 在 Visual Studio 中创建新的控制台应用 .NET Framework 项目。 将其命名为 **FaceApiSnapshotSample**。
+1. 在 Visual Studio 中创建新的控制台应用 .NET Framework 项目。 将其命名为 **FaceApiSnapshotSample** 。
 1. 获取所需的 NuGet 包。 在解决方案资源管理器中，右键单击该项目并选择“管理 NuGet 包”  。 选择“浏览”选项卡，然后选择“包括预发行版”   。 找到并安装以下包：
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="create-face-clients"></a>创建人脸客户端
 
-在 *Program.cs* 的 **Main** 方法中，创建两个 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 实例，分别对应于源订阅和目标订阅。 此示例使用东亚区域中的人脸订阅作为源，将美国西部订阅用作目标。 此示例演示如何将数据从一个 Azure 区域迁移到另一个 Azure 区域。 
+在 *Program.cs* 的 **Main** 方法中，创建两个 [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 实例，分别对应于源订阅和目标订阅。 此示例使用东亚区域中的人脸订阅作为源，将美国西部订阅用作目标。 此示例演示如何将数据从一个 Azure 区域迁移到另一个 Azure 区域。 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -63,7 +63,7 @@ var FaceClientWestUS = new FaceClient(new ApiKeyServiceClientCredentials("<West 
 
 ## <a name="prepare-a-persongroup-for-migration"></a>让 PersonGroup 做好迁移准备
 
-需要使用源订阅中 PersonGroup 的 ID 将它迁移到目标订阅。 使用 [PersonGroupOperationsExtensions.ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) 方法检索 PersonGroup 对象的列表。 然后获取 [PersonGroup.PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) 属性。 此过程根据使用的 PersonGroup 对象而异。 在本指南中，源 PersonGroup ID 存储在 `personGroupId` 中。
+需要使用源订阅中 PersonGroup 的 ID 将它迁移到目标订阅。 使用 [PersonGroupOperationsExtensions.ListAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) 方法检索 PersonGroup 对象的列表。 然后获取 [PersonGroup.PersonGroupId](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) 属性。 此过程根据使用的 PersonGroup 对象而异。 在本指南中，源 PersonGroup ID 存储在 `personGroupId` 中。
 
 > [!NOTE]
 > [示例代码](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)将创建并训练要迁移的新 PersonGroup。 在大多数情况下，你应该已有一个可用的 PersonGroup。
@@ -72,7 +72,7 @@ var FaceClientWestUS = new FaceClient(new ApiKeyServiceClientCredentials("<West 
 
 快照是特定人脸数据类型的临时远程存储。 它可用作一种剪贴板，用于将数据从一个订阅复制到另一个订阅。 首先创建源订阅中数据的快照。 然后将此快照应用到目标订阅中的新数据对象。
 
-使用源订阅的 FaceClient 实例创建 PersonGroup 快照。 请将 [TakeAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet) 与 PersonGroup ID 和目标订阅 ID 配合使用。 如果有多个目标订阅，请将其添加为第三个参数中的数组项。
+使用源订阅的 FaceClient 实例创建 PersonGroup 快照。 请将 [TakeAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet) 与 PersonGroup ID 和目标订阅 ID 配合使用。 如果有多个目标订阅，请将其添加为第三个参数中的数组项。
 
 ```csharp
 var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
@@ -82,7 +82,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> 创建和应用快照的过程不会中断对源或者目标 PersonGroup 或 FaceList 的任何常规调用。 请不要同时发出会更改源对象的调用，例如，[FaceList 管理调用](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)或 [PersonGroup 训练](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)调用。 快照操作可能会先于或晚于这些操作运行，或者可能会遇到错误。
+> 创建和应用快照的过程不会中断对源或者目标 PersonGroup 或 FaceList 的任何常规调用。 请不要同时发出会更改源对象的调用，例如，[FaceList 管理调用](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)或 [PersonGroup 训练](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)调用。 快照操作可能会先于或晚于这些操作运行，或者可能会遇到错误。
 
 ## <a name="retrieve-the-snapshot-id"></a>检索快照 ID
 
@@ -233,7 +233,7 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 
 接下来，请参阅相关的 API 参考文档、浏览使用快照功能的示例应用，或遵循下面所述的操作指南开始使用其他 API 操作：
 
-- [快照参考文档 (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
+- [快照参考文档 (.NET SDK)](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
 - [面部快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [添加人脸](how-to-add-faces.md)
 - [检测图像中的人脸](HowtoDetectFacesinImage.md)

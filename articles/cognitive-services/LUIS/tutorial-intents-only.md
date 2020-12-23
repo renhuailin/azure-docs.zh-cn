@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c4a564834166686e8280f1117269742b489fc62c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 398324099f923a5141b172d61f9fd41a69dbf069
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334746"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025287"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用以确定用户意向
 
@@ -32,7 +32,7 @@ ms.locfileid: "91334746"
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
-这些意图可以归类为**意向**。
+这些意图可以归类为 **意向**。
 
 |Intent|目的|
 |--|--|
@@ -193,7 +193,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 * [如何训练](luis-how-to-train.md)
 * [如何发布](luis-how-to-publish-app.md)
 * [如何在 LUIS 门户中测试](luis-interactive-test.md)
-* [Azure 机器人](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure 机器人](/azure/bot-service/?view=azure-bot-service-4.0)
 
 
 ## <a name="next-steps"></a>后续步骤

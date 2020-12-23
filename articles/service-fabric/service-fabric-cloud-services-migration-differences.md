@@ -1,16 +1,14 @@
 ---
 title: 云服务与 Service Fabric 之间的差异
 description: 有关将应用程序从云服务迁移到 Service Fabric 的概念性概述。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836728"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575765"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>迁移应用程序之前了解云服务与 Service Fabric 之间的差异。
 Microsoft Azure Service Fabric 是面向高度可缩放、高度可靠分布式应用程序的下一代云应用程序平台。 其中引入了许多用于打包、部署、更新和管理分布式云应用程序的新功能。 
@@ -69,7 +67,7 @@ Service Fabric 应用程序还可以选择在整个应用程序中使用相同�
 
 Service Fabric 提供服务发现机制（称为“命名服务”），用于解析服务的终结点地址。 
 
-![Service Fabric 直接通信][6]
+![此图显示了 Service Fabric 如何提供服务发现机制（称为“命名服务”），该机制可用于解析服务的终结点地址。][6]
 
 ### <a name="queues"></a>队列
 无状态环境（如云服务）中层之间的常见通信机制是使用外部存储队列将一个层的工作任务持久性存储到另一个层。 一种常见方案是 Web 层将作业发送到 Azure 队列或服务总线，辅助角色实例可在其中取消排队和处理作业。

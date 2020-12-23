@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 40a2cd5898ede7fc30db9a8475c5ab7cc68095ff
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: b72d083216b7cd0ae7a588bfd721d8981829bfc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337630"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844361"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 可视化数据
 
@@ -36,13 +37,9 @@ ms.locfileid: "87337630"
 ### <a name="link-your-azure-synapse-workspace-to-your-new-power-bi-workspace"></a>将 Azure Synapse 工作区链接到新的 Power BI 工作区
 
 1. 在 Synapse Studio 中，转到“管理” > “关联的服务” 。
-1. 选择“新建” > “连接到 Power BI”并设置以下字段 ：
-
-    |设置 | 建议的值 | 
-    |---|---|
-    |**名称**|**NYCTaxiWorkspace1**|
-    |**工作区名称**|**NYCTaxiWorkspace1**|
-
+1. 选择“新建” > “连接到 Power BI” 
+1. 将名称设置为“NYCTaxiWorkspace1” 
+1. 将工作区名称设置为“NYCTaxiWorkspace1” 
 1. 选择“创建”。
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-azure-synapse-workspace"></a>创建 Power BI 数据集，该数据集使用 Azure Synapse 工作区中的数据
@@ -85,11 +82,7 @@ ms.locfileid: "87337630"
     * 在“NYCTaxiWorkspace1” > “Power BI 报表”下，名为“PassengerAnalysis”的新报表  。
 1. 选择 PassengerAnalysis 报表。 该报表随即打开，可以在 Synapse Studio 中直接对其进行编辑。
 
-## <a name="monitor-activities"></a>监视活动
 
-1. 在 Synapse Studio 中，转到“监视”中心。
-1. 在此位置，你可以看到工作区中所有活动的历史记录，以及目前处于有效状态的活动。
-1. 浏览“管道运行”、“Apache Spark 应用程序”和“SQL 请求”，以查看你已在工作区中执行的操作  。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -67,8 +67,14 @@
           href: logic-apps-move-from-mabs.md
         - name: 从 Power Automate 导出流并将其部署到 Azure 逻辑应用
           href: export-from-microsoft-flow-logic-app-template.md
-        - name: 在 Visual Studio Code 中创建有状态或无状态工作流
-          href: create-stateful-stateless-workflows-visual-studio-code.md
+        - name: Azure 逻辑应用预览版
+          items:
+            - name: Azure 逻辑应用预览版概述
+              href: logic-apps-overview-preview.md
+            - name: 创建有状态和无状态工作流 - Azure 门户
+              href: create-stateful-stateless-workflows-azure-portal.md
+            - name: 创建有状态或无状态工作流 - Visual Studio Code
+              href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: 从 Power Automate 和 Power Apps 调用逻辑应用
           href: call-from-power-automate-power-apps.md
         - name: 控制工作流执行
@@ -101,7 +107,7 @@
           href: logic-apps-batch-process-send-receive-messages.md
         - name: 按顺序发送消息 - 顺序保护
           href: send-related-messages-sequential-convoy.md
-        - name: 创作 JSON 定义
+        - name: 以 JSON 格式创作工作流定义
           href: logic-apps-author-definitions.md
         - name: 处理内容类型
           href: logic-apps-content-type.md
@@ -109,6 +115,8 @@
           href: logic-apps-exception-handling.md
         - name: 处理大型消息
           href: logic-apps-handle-large-messages.md
+        - name: 处理 SQL 连接器长时间运行的存储过程
+          href: handle-long-running-stored-procedures-sql-connector.md
         - name: 处理限制问题或 429 错误
           href: handle-throttling-problems-429-errors.md
         - name: 开发自定义连接器
@@ -145,6 +153,7 @@
       items:
         - name: 创建集成帐户
           href: logic-apps-enterprise-integration-create-integration-account.md
+          displayName: 'Azure CLI, az logic integration-account create, integration-account'
         - name: 贸易合作伙伴
           href: logic-apps-enterprise-integration-partners.md
         - name: 协议
@@ -343,6 +352,8 @@
           href: monitor-logic-apps.md
         - name: 使用 Azure Monitor 日志监视逻辑应用
           href: monitor-logic-apps-log-analytics.md
+        - name: 在 Azure 安全中心监视逻辑应用
+          href: healthy-unhealthy-resource.md
         - name: 使用 Azure Monitor 日志监视 B2B 消息
           href: monitor-b2b-messages-log-analytics.md
         - name: 创建监视和跟踪查询

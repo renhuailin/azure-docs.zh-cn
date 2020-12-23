@@ -1,32 +1,32 @@
 ---
-title: 创建 Azure HDInsight-Azure Data Lake Storage Gen2-Azure CLI
+title: 创建 Azure HDInsight - Azure Data Lake Storage Gen2 - Azure CLI
 description: 了解如何通过 Azure CLI 将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用。
 author: guyhay
 ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 09/17/2020
-ms.openlocfilehash: e8cfe55f4843439743535b978483d8518bd020fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f88c242ab6f7ddabe17c9363aa1e6bb7f617c800
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858750"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845096"
 ---
-# <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>使用 Azure CLI 创建具有 Data Lake Storage Gen2 的群集
+# <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>通过 Azure CLI 创建使用 Data Lake Storage Gen2 的群集
 
-若要创建使用存储 Data Lake Storage Gen2 的 HDInsight 群集，请执行以下步骤。
+若要创建将 Data Lake Storage Gen2 用作存储的 HDInsight 群集，请执行以下步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果你不熟悉 Azure Data Lake Storage Gen2，请查看 [概述部分](hdinsight-hadoop-use-data-lake-storage-gen2.md)。 
+- 如果不熟悉 Azure Data Lake Storage Gen2，请查阅[概述部分](hdinsight-hadoop-use-data-lake-storage-gen2.md)。 
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要运行 CLI 脚本示例，可以使用下列三种方法：
     - 在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)（见下一部分）。
     - 单击各代码块右上角的“试运行”按钮，使用嵌入的 Azure Cloud Shell。
-    - 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](/cli/azure/install-azure-cli)（2.0.13 或更高版本）。 使用 `az login` 与要在其下部署用户分配的托管标识的 azure 订阅关联的帐户登录到 azure。Azure CLI。 
+    - 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](/cli/azure/install-azure-cli)（2.0.13 或更高版本）。 借助 Azure CLI，使用与要在其下部署用户分配的托管标识的 Azure 订阅关联的帐户通过 `az login` 登录到 Azure。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -38,8 +38,8 @@ ms.locfileid: "91858750"
 |---|---|
 | `<SUBSCRIPTION_ID>` | Azure 订阅的 ID |
 | `<RESOURCEGROUPNAME>` | 要在其中创建新群集和存储帐户的资源组。 |
-| `<MANAGEDIDENTITYNAME>` | 将在具有 Azure Data Lake Storage Gen2 的存储帐户上获得权限的托管标识的名称。 |
-| `<STORAGEACCOUNTNAME>` | 将创建 Azure Data Lake Storage Gen2 的新存储帐户。 |
+| `<MANAGEDIDENTITYNAME>` | 将在启用了 Azure Data Lake Storage Gen2 的存储帐户上为其授予权限的托管标识的名称。 |
+| `<STORAGEACCOUNTNAME>` | 将要创建的启用了 Azure Data Lake Storage Gen2 的新存储帐户。 |
 | `<FILESYSTEMNAME>`  | 此群集应在存储帐户中使用的文件系统的名称。 |
 | `<CLUSTERNAME>` | 你的 HDInsight 群集的名称。 |
 | `<PASSWORD>` | 你选择的使用 SSH 及 Ambari 仪表板登录群集的密码。 |
@@ -51,7 +51,7 @@ ms.locfileid: "91858750"
 1. 为新的部署活动创建新的资源组。
 1. 创建用户分配的托管标识。
 1. 将一个扩展添加到 Azure CLI，以使用 Data Lake Storage Gen2 的功能。
-1. 使用标志 Data Lake Storage Gen2 创建新的存储帐户 `--hierarchical-namespace true` 。
+1. 使用 `--hierarchical-namespace true` 标志创建启用了 Data Lake Storage Gen2 的新存储帐户。
 
 ```azurecli
 az login

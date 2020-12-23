@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.custom: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298705"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358065"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>在 Azure Vm 上使用高级文件共享 (SQL Server 创建 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +38,7 @@ ms.locfileid: "91298705"
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - [可用性集中](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)的[两个或更多个已准备的 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)或不同的[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。
 - 要基于数据库中数据文件的存储配额，用作群集驱动器的[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md)。
-- 最新版本的 [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
+- 最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
 
 ## <a name="mount-premium-file-share"></a>装载高级文件共享
 
@@ -90,15 +91,15 @@ ms.locfileid: "91298705"
 
 1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
 1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
 1. 在“测试选项”下，选择“仅运行选择的测试”。  
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在“测试选择”下，选择除“存储”和“存储空间直通”以外的所有测试，如下所示  ：
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="选择群集验证测试":::
 
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在“确认”下，选择“下一步”。 
 
 " **验证配置** 向导" 将运行验证测试。
@@ -149,7 +150,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="test-cluster-failover"></a>测试群集故障转移
 
-测试群集的故障转移。 在**故障转移群集管理器**中，右键单击群集，选择 "**更多操作**" "  >  **移动核心群集资源**  >  " "**选择节点**"，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
+测试群集的故障转移。 在 **故障转移群集管理器** 中，右键单击群集，选择 "**更多操作**" "  >  **移动核心群集资源**  >  " "**选择节点**"，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="通过将核心资源移到其他节点来测试群集故障转移":::
 
@@ -160,7 +161,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 使用 RDP 连接到第一个虚拟机。
 
-1. 在 **故障转移群集管理器**中，请确保所有核心群集资源位于第一个虚拟机上。 如有必要，请将所有资源移到此虚拟机。
+1. 在 **故障转移群集管理器** 中，请确保所有核心群集资源位于第一个虚拟机上。 如有必要，请将所有资源移到此虚拟机。
 
 1. 找到安装媒体。 如果虚拟机使用某个 Azure 市场映像，该媒体将位于 `C:\SQLServer_<version number>_Full`。 
 
@@ -189,7 +190,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 注册
 
-若要从门户管理你的 SQL Server VM，请将其注册到 [轻型管理模式](sql-vm-resource-provider-register.md#lightweight-management-mode)下的 SQL VM 资源提供程序 (RP) ，这是目前在 Azure VM 上 FCI 和 SQL Server 支持的唯一模式。 
+若要从门户管理你的 SQL Server VM，请将其注册到 [轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下的 SQL IaaS 代理扩展 (RP) ，这是目前在 Azure VM 上 FCI 和 SQL Server 支持的唯一模式。 
 
 使用 PowerShell ( SQL Server VM 以轻型模式注册可以是 `PAYG` 或 `AHUB`) ：
 
@@ -204,17 +205,18 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>配置连接 
 
-若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](hadr-vnn-azure-load-balancer-configure.md) ，或者，如果你使用 SQL Server 2019 和 Windows Server 2016 (或更高版本) ，则可以改为预览 [分布式网络名称](hadr-distributed-network-name-dnn-configure.md) 功能。 
+若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) ，或者，如果使用 SQL SERVER 2019 CU2 (或更高版本) 和 Windows Server 2016 (或更) 高版本，则可以改为使用 [分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md) 功能。 
 
 ## <a name="limitations"></a>限制
 
 - Microsoft 分布式事务处理协调器 (MSDTC) 在 Windows Server 2016 和更早版本中不受支持。 
 - 使用高级文件共享的故障转移群集不支持文件流。 若要使用 filestream，请改为使用 [存储空间直通](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 或 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md) 部署群集。
-- 仅支持在 [轻型管理模式下](sql-vm-resource-provider-register.md#management-modes) 注册 SQL VM 资源提供程序。 
+- 仅支持在 [轻型管理模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes) 注册 SQL IaaS 代理扩展。 
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未执行此操作，请使用 [虚拟网络名称、Azure 负载均衡器](hadr-vnn-azure-load-balancer-configure.md) 或 [ (DNN) 的分布式网络名称 ](hadr-distributed-network-name-dnn-configure.md)配置到 FCI 的连接。 
+如果尚未执行此操作，请使用 [虚拟网络名称、Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) 或 [ (DNN) 的分布式网络名称 ](failover-cluster-instance-distributed-network-name-dnn-configure.md)配置到 FCI 的连接。 
+
 
 如果高级文件共享不是合适的 FCI 存储解决方案，请考虑使用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md) 或 [存储空间直通](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 来创建 FCI。 
 

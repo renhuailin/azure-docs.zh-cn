@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 63b1d7f95711017feba52cad97f05128d83734da
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578115"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655164"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>创建 Intune 配置文件以部署 VPN 客户端配置文件
 
@@ -35,7 +35,7 @@ ms.locfileid: "91578115"
 * 自动连接
 * 受信任的网络检测已启用。
 
-有关其他受支持的选项，请参阅 [VPNV2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) 一文。
+有关其他受支持的选项，请参阅 [VPNV2 CSP](/windows/client-management/mdm/vpnv2-csp) 一文。
 
 1. 从 Azure 门户下载 VPN 配置文件，并从包中提取 *azurevpnconfig.xml* 文件。
 1. 将下面的文本复制并粘贴到新的文本编辑器文件中。
@@ -68,32 +68,26 @@ ms.locfileid: "91578115"
 
 1. 登录到 Intune 并导航到 " **设备-> 配置文件**"。 选择 " **+ 创建配置文件**"。
 
-   :::image type="content" source="./media/create-profile-intune/configuration-profile.png" alt-text="配置文件&quot;:::
-1. 在“平台”中，选择“Windows 10 及更高版本”   。 对于 &quot; **配置文件**&quot;，选择 &quot; **自定义**&quot;。 然后选择“创建”。
-1. 为配置文件指定名称和说明，然后选择 &quot; **下一步**&quot;。
-1. 在 &quot; **配置设置** &quot; 选项卡上，选择 " **添加**"。
+   :::image type="content" source="./media/create-profile-intune/configuration-profile.png" alt-text="配置文件":::
+1. 在“平台”中，选择“Windows 10 及更高版本”   。 对于 " **配置文件**"，选择 " **自定义**"。 然后选择“创建”  。
+1. 为配置文件指定名称和说明，然后选择 " **下一步**"。
+1. 在 " **配置设置** " 选项卡上，选择 " **添加**"。
 
     * **名称：** 输入配置的名称。
     * **说明：** 可选说明。
-    * **OMA-URI：** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (可以在<name> </name>标记) 的 azurevpnconfig.xml 文件中找到此信息。
+    * **OMA-URI：** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (可以在 <name></name>标记) 的 azurevpnconfig.xml 文件中找到此信息。
     * **数据类型：** String (XML 文件) 。
 
-   选择文件夹图标，并在 [XML](#xml) 步骤中选择在步骤6中保存的文件。 选择“添加”。
+   选择文件夹图标，并在 [XML](#xml) 步骤中选择在步骤6中保存的文件。 选择“添加”   。
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="配置文件&quot;:::
-1. 在“平台”中，选择“Windows 10 及更高版本”   。 对于 &quot; **配置文件**&quot;，选择 &quot; **自定义**&quot;。 然后选择“创建”。
-1. 为配置文件指定名称和说明，然后选择 &quot; **下一步**&quot;。
-1. 在 &quot; **配置设置** &quot; 选项卡上，选择 " lightbox="./media/create-profile-intune/configuration-settings.png":::
-1. 选择“**下一页**”。
-1. 在 " **分配**" 下，选择要将配置推送到的组。 然后，选择“下一步”。
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="配置设置" lightbox="./media/create-profile-intune/configuration-settings.png":::
+1. 选择“下一步”。
+1. 在 " **分配**" 下，选择要将配置推送到的组。 然后，选择“下一步”  。
 1. 适用性规则是可选的。 根据需要定义任何规则，然后选择 " **下一步**"。
 1. 在“查看 + 创建”页面上，选择“创建”。 
 
-    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="配置文件&quot;:::
-1. 在“平台”中，选择“Windows 10 及更高版本”   。 对于 &quot; **配置文件**&quot;，选择 &quot; **自定义**&quot;。 然后选择“创建”。
-1. 为配置文件指定名称和说明，然后选择 &quot; **下一步**&quot;。
-1. 在 &quot; **配置设置** &quot; 选项卡上，选择 ":::
-1. 现在已创建自定义配置文件。 有关部署此配置文件的 Microsoft Intune 步骤，请参阅 [分配用户和设备配置文件](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign)。
+    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="创建配置文件":::
+1. 现在已创建自定义配置文件。 有关部署此配置文件的 Microsoft Intune 步骤，请参阅 [分配用户和设备配置文件](/mem/intune/configuration/device-profile-assign)。
  
 ## <a name="next-steps"></a>后续步骤
 

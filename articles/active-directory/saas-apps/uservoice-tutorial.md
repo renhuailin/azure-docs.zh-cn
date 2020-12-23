@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 3313e923bbe5218a965c58d2faee810182c00aa6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 39b3104f9d6cbc004383bf2c50d07c4dd345fa3c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532698"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353572"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>教程：Azure Active Directory 与 UserVoice 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88532698"
 * 可让用户使用其 Azure AD 帐户自动登录到 UserVoice（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88532698"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "88532698"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。
+6. 在“SAML 签名证书”部分中，复制 **指纹** 并将其保存在计算机上。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "88532698"
 
     c. 将从 Azure 门户复制的“注销 URL”值粘贴到“SSO 远程注销”文本框中。  
  
-    d. 在“当前证书 SHA1 指纹”文本框中，粘贴从 Azure 门户复制的“指纹”值。  
+    d. 将从 Azure 门户复制的“指纹”值粘贴到“当前证书 SHA1 指纹”文本框中 。
     
     e. 单击“保存身份验证设置”  。
 
@@ -239,13 +239,12 @@ ms.locfileid: "88532698"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“UserVoice”磁贴时，应会自动登录到设置了 SSO 的 UserVoice。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“UserVoice”磁贴时，应会自动登录到设置了 SSO 的 UserVoice。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

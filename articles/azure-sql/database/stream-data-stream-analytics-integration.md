@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 640dcfc49d1b467cbb852e8b07b113c1180daf7f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 36a96a1927aeedb5f841083241d487e0c61d6813
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617088"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454021"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>使用 Azure 流分析集成 (预览将数据流式传输到 Azure SQL 数据库) 
 
@@ -31,7 +31,7 @@ ms.locfileid: "91617088"
 - 预览数据的更易于使用：在所选表的上下文中预览来自事件源 (事件中心/IoT 中心) 的传入数据
 
 > [!IMPORTANT]
-> Azure 流分析作业可以输出到 Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics (以前的 SQL 数据仓库) 。 有关详细信息，请参阅[输出](../../stream-analytics/stream-analytics-define-outputs.md)。
+> Azure 流分析作业可以输出到 Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics。 有关详细信息，请参阅[输出](../../stream-analytics/stream-analytics-define-outputs.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +44,7 @@ ms.locfileid: "91617088"
 ## <a name="configure-stream-analytics-integration"></a>配置流分析集成
 
 1. 登录到 Azure 门户。
-2. 导航到要在其中引入流式传输数据的数据库。 ** (预览) 选择 "流分析**"。
+2. 导航到要在其中引入流式传输数据的数据库。 **(预览) 选择 "流分析**"。
 
     ![流分析](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
@@ -124,6 +124,5 @@ ms.locfileid: "91617088"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 流分析文档](https://docs.microsoft.com/azure/stream-analytics/)
+- [Azure 流分析文档](../../stream-analytics/index.yml)
 - [Azure 流分析解决方案模式](../../stream-analytics/stream-analytics-solution-patterns.md)
- 

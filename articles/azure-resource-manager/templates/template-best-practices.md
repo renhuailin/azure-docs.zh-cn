@@ -2,13 +2,13 @@
 title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.date: 12/01/2020
+ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809249"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497973"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
@@ -34,7 +34,7 @@ ms.locfileid: "87809249"
 
 如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍可按预期运行，但你不能更新它们。 为了尽量降低风险，请将资源组和资源放入同一个区域。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 使用[参数](template-parameters.md)时，本部分中的信息可以提供帮助。
 
@@ -86,8 +86,6 @@ ms.locfileid: "87809249"
      }
    },
    ```
-
-* 请勿为资源类型的 API 版本使用参数。 资源的属性和值可能会因版本号的不同而异。 如果将 API 版本设置为参数，代码编辑器中的 IntelliSense 无法确定正确架构。 并且会在模板中将 API 版本硬编码。
 
 * 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果过于广泛地使用 `allowedValues`，可能会因未将列表保持最新而阻碍有效部署。
 
@@ -146,8 +144,6 @@ ms.locfileid: "87809249"
 
 * 为从复杂的复合模板函数构造的值使用变量。 如果复杂的表达式仅出现在变量中，模板会更易读取。
 
-* 请勿为资源上的 `apiVersion` 使用变量。 API 版本决定资源的架构。 通常无法在不更改资源属性的情况下更改版本。
-
 * 不能在模板的“变量”节中使用 [reference](template-functions-resource.md#reference) 函数。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
 
 * 包括的变量适用于必须唯一的资源名称。
@@ -155,6 +151,16 @@ ms.locfileid: "87809249"
 * [在变量中使用复制循环](copy-variables.md)来创建重复的 JSON 对象模式。
 
 * 删除未使用的变量。
+
+## <a name="api-version"></a>API 版本
+
+将 `apiVersion` 属性设置为资源类型的硬编码 API 版本。 创建新模板时，建议使用最新的 API 版本作为资源类型。 若要确定可用值，请参阅[模板参考](/azure/templates/)。
+
+当模板按预期方式工作时，我们建议继续使用相同的 API 版本。 使用相同的 API 版本，你无需担心可能在更高版本中引入的重大更改。
+
+不要对 API 版本使用参数。 资源属性和值可能因 API 版本而异。 如果将 API 版本设置为参数，代码编辑器中的 IntelliSense 无法确定正确架构。 如果传入的 API 版本与模板中的属性不匹配，则部署将失败。
+
+不要对 API 版本使用变量。 特别是，不要使用 [providers 函数](template-functions-resource.md#providers) 在部署期间动态获取 API 版本。 动态检索到的 API 版本可能与模板中的属性不匹配。
 
 ## <a name="resource-dependencies"></a>资源依赖关系
 
@@ -174,7 +180,7 @@ ms.locfileid: "87809249"
 
 使用[资源](template-syntax.md#resources)时，以下信息可以提供帮助：
 
-* 为了帮助其他参与者理解该资源的用途，请为模板中的每个资源指定**注释**：
+* 为了帮助其他参与者理解该资源的用途，请为模板中的每个资源指定 **注释**：
    
    ```json
    "resources": [
@@ -276,7 +282,7 @@ ms.locfileid: "87809249"
 
 ARM 模板测试工具包是一个脚本，用于检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 测试工具包可帮助你了解如何在模板中实施最佳做法。
 
-完成模板后，运行测试工具包，看是否有方法可以改进它的实现。 有关详细信息，请参阅[ARM 模板测试工具包](test-toolkit.md)。
+完成模板后，运行测试工具包，看是否有方法可以改进它的实现。 有关详细信息，请参阅 [ARM 模板测试工具包](test-toolkit.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

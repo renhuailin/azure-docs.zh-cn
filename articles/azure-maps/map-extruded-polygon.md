@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: eedbbc0126adacc2a9bdc151aa6dbc27c7ba0750
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310248"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890762"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>向地图添加多边形延伸层
 
-本文介绍如何使用多边形延伸层将 `Polygon` 和 `MultiPolygon` 特征几何作为延伸形状。 Azure Maps Web SDK 支持按 [扩展 GeoJSON 架构](extend-geojson.md#circle)中的定义呈现圆形几何。 在地图上呈现时，可以将这些圆转换为多边形。 用阿特拉斯包装时，所有功能几何都可以轻松更新 [。Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 类。
+本文介绍如何使用多边形延伸层将 `Polygon` 和 `MultiPolygon` 特征几何作为延伸形状。 Azure Maps Web SDK 支持按 [扩展 GeoJSON 架构](extend-geojson.md#circle)中的定义呈现圆形几何。 在地图上呈现时，可以将这些圆转换为多边形。 用阿特拉斯包装时，所有功能几何都可以轻松更新 [。Shape](/javascript/api/azure-maps-control/atlas.shape) 类。
 
 ## <a name="use-a-polygon-extrusion-layer"></a>使用多边形延伸层
 
-将 [多边形延伸层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) 连接到数据源。 然后，将其加载到地图中。 多边形延伸层会将和功能的区域 `Polygon` 呈现 `MultiPolygon` 为延伸形状。 `height` `base` 多边形延伸层的和属性定义了与延伸形状的地面和高度的基准距离（以米为**单位**）。 下面的代码演示如何创建一个多边形，如何将其添加到数据源中，以及如何使用多边形延伸层类进行呈现。
+将 [多边形延伸层](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) 连接到数据源。 然后，将其加载到地图中。 多边形延伸层会将和功能的区域 `Polygon` 呈现 `MultiPolygon` 为延伸形状。 `height` `base` 多边形延伸层的和属性定义了与延伸形状的地面和高度的基准距离（以米为 **单位** ）。 下面的代码演示如何创建一个多边形，如何将其添加到数据源中，以及如何使用多边形延伸层类进行呈现。
 
 > [!Note]
 > `base`多边形延伸层中定义的值应小于或等于的值 `height` 。
@@ -45,7 +45,7 @@ ms.locfileid: "91310248"
 
 ## <a name="add-a-circle-to-the-map"></a>将圆添加到地图
 
-Azure Maps 使用 GeoJSON 架构的扩展版本，它提供了圆的定义，如 [此处](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)所述。 可以通过创建一个 `point` 具有 `subType` 属性的功能 `Circle` ，并使用 `Radius` 表示以 **米为单位**的半径的编号属性，在地图上呈现延伸圆。 例如：
+Azure Maps 使用 GeoJSON 架构的扩展版本，它提供了圆的定义，如 [此处](./extend-geojson.md#circle)所述。 可以通过创建一个 `point` 具有 `subType` 属性的功能 `Circle` ，并使用 `Radius` 表示以 **米为单位** 的半径的编号属性，在地图上呈现延伸圆。 例如：
 
 ```javascript
 {
@@ -83,10 +83,10 @@ Azure Maps Web SDK 将这些 `Point` 功能转换为 `Polygon` 其功能的功�
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [多边形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [多边形](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [多边形延伸层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
+> [多边形延伸层](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer)
 
 其他资源：
 

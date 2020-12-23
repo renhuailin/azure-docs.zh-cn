@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988253"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547123"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>升级 Log Analytics 仪表板可视化效果
 
@@ -47,7 +47,7 @@ Azure 仪表板是一种可视化整个 Azure surface 区域的状态的方法�
  
 ![边栏](media/dashboard-upgrade/update-message-1.png)
  
-![边栏](media/dashboard-upgrade/update-message-2.png)
+![显示如何更新磁贴可视化的屏幕截图。](media/dashboard-upgrade/update-message-2.png)
 
 > [!WARNING]
 > 发布仪表板后，升级是不可逆的。 但是，如果离开仪表板而不重新发布，则会放弃更改。  
@@ -56,7 +56,7 @@ Azure 仪表板是一种可视化整个 Azure surface 区域的状态的方法�
 
 升级可视化效果后，需要重新发布仪表板以使更改生效。
 
-![边栏](media/dashboard-upgrade/update-message-3.png)
+![显示升级的可视化效果的屏幕截图。](media/dashboard-upgrade/update-message-3.png)
 
 ## <a name="stage-2---migration-of-all-dashboards"></a>阶段 2-迁移所有仪表板
 
@@ -74,7 +74,7 @@ Azure 仪表板是一种可视化整个 Azure surface 区域的状态的方法�
 
 仪表板可以更丰富且复杂。 为了减少查看仪表板时的认知负载，我们通过将显示限制为25个不同的数据类型来优化可视化。 如果有25个以上的，Log Analytics 会优化数据。 它单独显示25种类型，其中的大多数数据是单独的，然后将其余值分组为 "其他" 值。 下图显示了这种情况。  
 
-![边栏](media/dashboard-upgrade/values-25-limit.png)
+![显示具有25个不同数据类型的仪表板的屏幕截图。](media/dashboard-upgrade/values-25-limit.png)
 
 ### <a name="dashboard-refresh-on-load"></a>负载上的仪表板刷新
 

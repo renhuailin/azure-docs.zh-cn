@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 04/01/2020
 ms.topic: sample
-ms.openlocfilehash: e1e91a892a1c8b69b3dc7f6c79109377e13bd7ae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: a3d74dbfde2f65d2d4048f589f160ea3c091bf2b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804446"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566276"
 ---
 # <a name="unity-showcase-application"></a>Unity 展示应用程序
 
@@ -20,7 +20,7 @@ Unity 展示应用程序是一个基于 Unity 的示例应用程序，用于演�
 
 ## <a name="source-repository"></a>源存储库
 
-可在 [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)中找到此应用程序的源代码和生成/部署说明。
+可在 [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase)中找到此应用程序的源代码和生成/部署说明。
 
 ## <a name="next-steps"></a>后续步骤
 

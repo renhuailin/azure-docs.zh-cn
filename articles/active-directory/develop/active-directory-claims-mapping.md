@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601463"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647590"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -36,9 +36,9 @@ ms.locfileid: "90601463"
 
 ## <a name="claims-mapping-policy-type"></a>声明映射策略类型
 
-在 Azure AD 中，**策略**对象表示针对组织中的单个应用程序或所有应用程序强制实施的一组规则。 每种类型的策略都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
+在 Azure AD 中，**策略** 对象表示针对组织中的单个应用程序或所有应用程序强制实施的一组规则。 每种类型的策略都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
 
-声明映射策略是某种类型的**策略**对象，它修改为特定应用程序颁发的令牌中发出的声明。
+声明映射策略是某种类型的 **策略** 对象，它修改为特定应用程序颁发的令牌中发出的声明。
 
 ## <a name="claim-sets"></a>声明集
 
@@ -239,6 +239,9 @@ ms.locfileid: "90601463"
 
 若要控制要发出的声明以及数据的来源，请使用声明映射策略的属性。 如果未设置策略，则系统将颁发包括核心声明集、基本声明集以及应用程序已选择接收的任何[可选声明](active-directory-optional-claims.md)的令牌。
 
+> [!NOTE]
+> 核心声明集中的声明存在于每个令牌中（与此属性的设置无关）。
+
 ### <a name="include-basic-claim-set"></a>包括基本声明集
 
 **字符串：** IncludeBasicClaimSet
@@ -250,8 +253,7 @@ ms.locfileid: "90601463"
 - 如果设置为 True，则会在受策略影响的令牌中发出基本声明集中的所有声明。
 - 如果设置为 False，基本声明集中的声明不包含在令牌中，除非在相同策略的声明架构属性中单独添加它们。
 
-> [!NOTE]
-> 核心声明集中的声明存在于每个令牌中（与此属性的设置无关）。
+
 
 ### <a name="claims-schema"></a>声明架构
 
@@ -301,7 +303,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | companyname| 组织名称 |
 | 用户 | streetaddress | 街道地址 |
 | 用户 | postalcode | 邮政编码 |
-| 用户 | user.preferredlanguage | 首选语言 |
+| 用户 | preferredlanguage | 首选语言 |
 | 用户 | onpremisesuserprincipalname | 本地 UPN |*
 | 用户 | mailNickname | 邮件别名 |
 | 用户 | extensionattribute1 | 扩展属性 1 |
@@ -341,7 +343,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 - JwtClaimType 必须包含要在 JWT 中发出的声明的名称。
 - SamlClaimType 必须包含要在 SAML 令牌中发出的声明的 URI。
 
-* **onPremisesUserPrincipalName 特性：** 使用备用 ID 时，本地属性 userPrincipalName 与 Azure AD 属性 onPremisesUserPrincipalName 同步。 仅当配置备用 ID 但也可通过 MS Graph Beta 获取时，此属性才可用 https://graph.microsoft.com/beta/me/ 。
+* **onPremisesUserPrincipalName attribute：** 使用替代 ID 时，本地属性 userPrincipalName 将与 Azure AD 属性 onPremisesUserPrincipalName 同步。 此属性仅在以下情况下可用：备用 ID 已配置，但也可通过 MS Graph Beta (https://graph.microsoft.com/beta/me/ ) 获取。
 
 > [!NOTE]
 > 受限声明集中的声明的 Name 和 URI 不能用于声明类型元素。 有关详细信息，请参阅本文后面的“例外和限制”部分。
@@ -358,7 +360,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 **TransformationMethod：** TransformationMethod 元素用于标识为生成声明的数据而执行的操作。
 
-根据选择的方法，需要一组输入和输出。 使用 **InputClaims**、**InputParameters** 和**OutputClaims** 元素定义输入和输出。
+根据选择的方法，需要一组输入和输出。 使用 **InputClaims**、**InputParameters** 和 **OutputClaims** 元素定义输入和输出。
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：转换方法以及预期输入和输出
 
@@ -419,7 +421,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
-必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅 [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) 为应用程序对象创建证书密钥凭据。
 
 启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID Connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式：
 
@@ -439,8 +441,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-> [!NOTE]
-> 创建声明映射策略时，还可以根据令牌中的目录架构扩展属性发出声明。 使用与扩展属性对应的 ExtensionID，而不是 `ClaimsSchema` 元素中的 ID。  有关扩展属性的更多信息，请参阅[使用目录架构扩展属性](active-directory-schema-extensions.md)。
+创建声明映射策略时，还可以根据令牌中的目录架构扩展属性发出声明。 使用与扩展属性对应的 ExtensionID，而不是 `ClaimsSchema` 元素中的 ID。  有关扩展属性的更多信息，请参阅[使用目录架构扩展属性](active-directory-schema-extensions.md)。
 
 #### <a name="prerequisites"></a>先决条件
 

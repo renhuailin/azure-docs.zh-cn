@@ -9,23 +9,23 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82f5e8b4a0c06517381857f0d914bcb65ba41d35
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72248588"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394605"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS 而非存储帐户密钥将工作流提交到 Microsoft 基因组学 
 
-本文演示如何使用 config.txt 文件将工作流提交到 Microsoft 基因组学服务，该文件包含 (SAS) 而不是存储帐户密钥的 [共享访问签名 ](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
+本文演示如何使用 config.txt 文件将工作流提交到 Microsoft 基因组学服务，该文件包含 (SAS) 而不是存储帐户密钥的 [共享访问签名 ](../storage/common/storage-sas-overview.md) 。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
 
 本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果已使用提供的示例数据成功提交工作流，则可继续阅读本文。 
 
 ## <a name="what-is-a-sas"></a>什么是 SAS？
-[共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 通过 SAS，可以授予对存储帐户中资源的访问权限，无需共享帐户密钥。 这是在应用程序中使用共享访问签名的关键之处 - SAS 是用于共享存储资源的一种安全方式，它不会危及帐户密钥。
+[共享访问签名 (SAS)](../storage/common/storage-sas-overview.md) 用于对存储帐户中的资源进行委托访问。 通过 SAS，可以授予对存储帐户中资源的访问权限，无需共享帐户密钥。 这是在应用程序中使用共享访问签名的关键之处 - SAS 是用于共享存储资源的一种安全方式，它不会危及帐户密钥。
 
-提交给 Microsoft 基因组学的 SAS 应该是[服务 SAS](https://docs.microsoft.com/rest/api/storageservices/Constructing-a-Service-SAS)，该 SAS 只将访问权限委托给其中存储了输入和输出文件的 Blob 或容器。 
+提交给 Microsoft 基因组学的 SAS 应该是[服务 SAS](/rest/api/storageservices/Constructing-a-Service-SAS)，该 SAS 只将访问权限委托给其中存储了输入和输出文件的 Blob 或容器。 
 
 服务级共享访问签名 (SAS) 令牌的 URI 包含特定资源（SAS 会向其委托访问权限）的 URI，后跟 SAS 令牌。 SAS 令牌是一个查询字符串，其中包括对 SAS 进行身份验证所需的所有信息，并且会指定资源、适用于访问的权限、签名有效的时间间隔、允许从其发起请求的 IP 地址或地址范围、允许通过其发起请求的协议、与请求关联的可选访问策略标识符，以及签名本身。 
 
@@ -49,18 +49,18 @@ ms.locfileid: "72248588"
 
 ### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>设置：使用 Azure 存储资源管理器创建 SAS
 
-[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)是一项工具，用于管理已经存储在 Azure 存储中的资源。  可在[此处](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)详细了解如何使用 Azure 存储资源管理器。
+[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)是一项工具，用于管理已经存储在 Azure 存储中的资源。  可在[此处](../vs-azure-tools-storage-manage-with-storage-explorer.md)详细了解如何使用 Azure 存储资源管理器。
 
-输入文件的 SAS 的作用域应局限于特定输入文件 (Blob)。 若要创建 SAS 令牌，请遵循[这些说明](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)。 创建 SAS 之后，包含查询字符串的完整 URL 以及查询字符串本身都已提供，可以从屏幕复制。
+输入文件的 SAS 的作用域应局限于特定输入文件 (Blob)。 若要创建 SAS 令牌，请遵循[这些说明](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。 创建 SAS 之后，包含查询字符串的完整 URL 以及查询字符串本身都已提供，可以从屏幕复制。
 
  ![基因组学 SAS 存储资源管理器](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "基因组学 SAS 存储资源管理器")
 
 
 ### <a name="set-up-create-a-sas-programmatically"></a>设置：以编程方式创建 SAS
 
-若要使用 Azure 存储 SDK 创建 SAS，请参阅多种语言（包括 [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) 和 [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage)）的现有文档。 
+若要使用 Azure 存储 SDK 创建 SAS，请参阅多种语言（包括 [.NET](../storage/common/storage-sas-overview.md)、[Python](../storage/blobs/storage-quickstart-blobs-python.md) 和 [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md)）的现有文档。 
 
-若要在没有 SDK 的情况下创建 SAS，可以直接构造 SAS 查询字符串，其中包括对 SAS 进行身份验证所需的所有信息。 这些[说明](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas)详述了 SAS 查询字符串的组件以及该字符串的构造方法。 在创建所需的 SAS 签名时，会使用 Blob/容器身份验证信息来生成 HMAC，如这些[说明](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples)所述。
+若要在没有 SDK 的情况下创建 SAS，可以直接构造 SAS 查询字符串，其中包括对 SAS 进行身份验证所需的所有信息。 这些[说明](/rest/api/storageservices/constructing-a-service-sas)详述了 SAS 查询字符串的组件以及该字符串的构造方法。 在创建所需的 SAS 签名时，会使用 Blob/容器身份验证信息来生成 HMAC，如这些[说明](/rest/api/storageservices/service-sas-examples)所述。
 
 
 ## <a name="add-the-sas-to-the-configtxt-file"></a>将 SAS 添加到 config.txt 文件
@@ -86,4 +86,4 @@ msgen submit -f [full path to your config file]
 ```
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何使用 SAS 令牌而不是帐户密钥通过 `msgen` Python 客户端将工作流提交到 Microsoft 基因组学服务。 若要详细了解工作流提交以及其他可以与 Microsoft 基因组学服务配合使用的命令，请参阅[常见问题解答](frequently-asked-questions-genomics.md)。 
+本文介绍了如何使用 SAS 令牌而不是帐户密钥通过 `msgen` Python 客户端将工作流提交到 Microsoft 基因组学服务。 若要详细了解工作流提交以及其他可以与 Microsoft 基因组学服务配合使用的命令，请参阅[常见问题解答](frequently-asked-questions-genomics.md)。

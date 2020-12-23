@@ -1,26 +1,16 @@
 ---
-title: Azure 门户支持的浏览器和设备 | Microsoft Docs
+title: Azure 门户支持的浏览器和设备
 description: 可以在所有新式设备上通过最新的浏览器版本使用 Azure 门户。 请参阅本文以确保你的浏览器受支持。
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: lwelicki
-editor: ''
 ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
-ms.service: azure-portal
-ms.workload: multiple
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.author: mblythe
+ms.date: 11/18/2020
 ms.custom: accessibility
-ms.openlocfilehash: 82a6cfc817cefb78c3239349d9ad7ff839a1ecbd
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 81c4ccef688622ec20d111383359053b82045996
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090204"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938080"
 ---
 # <a name="supported-devices"></a>支持的设备
 
@@ -33,7 +23,7 @@ ms.locfileid: "90090204"
 建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
 
 * Microsoft Edge（最新版本）
-* Internet Explorer 11 (最终支持8月17日 2021-有关详细信息，请参阅 [博客文章](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666)) 
+* Internet Explorer 11 (在2021年3月31日前受支持) 
 * Safari（最新版本，仅限 Mac）
 * Chrome（最新版本）
 * Firefox（最新版本）

@@ -7,14 +7,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 78b93c05621754ae499e4ae8ca6b66c5bbfaad1b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133786"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026498"
 ---
-认知服务提供两种自然语言处理服务，[语言理解](../luis/what-is-luis.md)和[QnA Maker](../qnamaker/overview/overview.md)，每个服务都有不同的用途。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
+认知服务提供两种自然语言处理服务， [语言理解](../luis/what-is-luis.md) 和 [QnA Maker](../qnamaker/overview/overview.md)，每个服务都有不同的用途。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
 
 自然语言处理 (NLP) 可让客户端应用程序（例如聊天机器人）使用自然语言来与用户交互。 用户输入句子或短语。 用户输入的文本可能存在语法、拼写和标点符号不当的情况。 认知服务仍可以处理用户的句子，并返回聊天机器人为用户提供帮助所需的信息。
 
@@ -33,7 +33,7 @@ ms.locfileid: "87133786"
 |服务|客户端应用程序确定|
 |--|--|
 |LUIS|**确定文本中的用户意图** - 服务不会返回问题的答案。 例如，此文本分类为与 `FindLocation` 意向匹配。<br>|
-|QnA Maker|从自定义知识库**返回问题的答案**。 例如，此文本已确定为一个问题，其答案是静态文本 `Get on the #9 bus and get off at Franklin street`。|
+|QnA Maker|从自定义知识库 **返回问题的答案**。 例如，此文本已确定为一个问题，其答案是静态文本 `Get on the #9 bus and get off at Franklin street`。|
 |||
 
 > [!div class="mx-imgBorder"]
@@ -71,16 +71,16 @@ ms.locfileid: "87133786"
 
 如果聊天机器人所需的信息超过了服务能够提供的信息，请在客户端应用程序中使用这两个服务并处理两者的响应，这样才能在决策树中递进。
 
-借助 Bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具生成一个流程来处理这两个服务。 此工具将为意向生成一个顶层 LUIS 应用，用于调度充当子应用的 LUIS 和 QnA Maker。 [详细了解](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs)如何与 LUIS、QnA Maker 和机器人框架集成。
+借助 Bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具生成一个流程来处理这两个服务。 此工具将为意向生成一个顶层 LUIS 应用，用于调度充当子应用的 LUIS 和 QnA Maker。 [详细了解](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0) 如何与 LUIS、QnA Maker 和机器人框架集成。
 
-使用以 [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) 或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch) 编写的机器人生成器示例**具有调度功能的 NLP** 可以实现此类聊天机器人。
+使用以 [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) 或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch) 编写的机器人生成器示例 **具有调度功能的 NLP** 可以实现此类聊天机器人。
 
 ## <a name="best-practices"></a>最佳实践
 
 实施适用于每个服务的最佳做法：
 
 * [LUIS](../luis/luis-concept-best-practices.md) 最佳做法
-* [QnA Maker](../qnamaker/concepts/best-practices.md)最佳实践
+* [QnA Maker](../qnamaker/concepts/best-practices.md) 最佳实践
 
 ## <a name="see-also"></a>另请参阅
 
@@ -88,6 +88,6 @@ ms.locfileid: "87133786"
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [调度 CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [机器人框架示例](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure 机器人服务](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
 * [Azure 机器人仿真器](https://github.com/Microsoft/BotFramework-Emulator)
 * [机器人 framework web 聊天](https://github.com/microsoft/BotFramework-WebChat)

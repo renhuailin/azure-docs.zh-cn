@@ -7,30 +7,30 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 836cf4600e353da61673ec8ee5df8f30fb4b9562
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318120"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629844"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模 (Citus) 
 
 适用于 Azure Database for PostgreSQL (Citus) 的 Azure 安全基线包含的建议可帮助你提高部署的安全状况。
 
-此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
-有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
 ## <a name="network-security"></a>网络安全性
 
-有关详细信息，请参阅[安全控制：网络安全](/azure/security/benchmarks/security-control-network-security)。
+有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
 **指南**：在指定哪些计算机具有权限之前，Azure Database for PostgreSQL 服务器防火墙阻止对超大规模 (Citus) 协调器节点的所有访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。 要配置防火墙，请创建防火墙规则，以指定可接受的 IP 地址的范围。 可以在服务器级别创建防火墙规则。
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus 中配置防火墙规则) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-firewall-rules)
+- [如何在 Azure Database for PostgreSQL-超大规模 (Citus 中配置防火墙规则) ](./concepts-hyperscale-firewall-rules.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -40,11 +40,11 @@ ms.locfileid: "91318120"
 
 **指南**：通过 Azure Policy 为与 Azure Database for PostgreSQL 实例关联的网络设置和网络资源定义和实现标准安全配置。 使用 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施 Azure Database for PostgreSQL 实例的网络配置。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [用于网络的 Azure Policy 示例](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [用于网络的 Azure Policy 示例](../governance/policy/samples/built-in-policies.md#network)
 
-- [如何创建 Azure 蓝图](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [如何创建 Azure 蓝图](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -52,7 +52,7 @@ ms.locfileid: "91318120"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-有关详细信息，请参阅[安全控制：日志记录和监视](/azure/security/benchmarks/security-control-logging-monitoring)。
+有关详细信息，请参阅[安全控制：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
@@ -60,11 +60,11 @@ ms.locfileid: "91318120"
 
 此外，通过 Azure Monitor 引入日志来聚合由超大规模 (Citus) 生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
 
-- [如何启用 Azure 活动日志的诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
-- [超大规模中的指标 (Citus) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-monitoring)
+- [超大规模中的指标 (Citus) ](./concepts-hyperscale-monitoring.md)
 
-- [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -78,11 +78,11 @@ ms.locfileid: "91318120"
 
 此外，通过 Azure Monitor 引入日志来聚合由超大规模 (Citus) 生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
 
-- [超大规模中的指标 (Citus) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-monitoring)
+- [超大规模中的指标 (Citus) ](./concepts-hyperscale-monitoring.md)
 
-- [如何启用 Azure 活动日志的诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
-- [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -92,9 +92,9 @@ ms.locfileid: "91318120"
 
 **指南**：在 Azure Monitor 中，对于用于保存超大规模 (Citus) 日志的 Log Analytics 工作区，请根据组织的符合性法规设置保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-- [如何为 Log Analytics 工作区设置日志保留参数](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [在 Azure 存储帐户中存储资源日志](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 
@@ -104,11 +104,11 @@ ms.locfileid: "91318120"
 
 **指南**：分析和监视超大规模 (Citus) 实例中的日志，以了解异常行为。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
-- [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [有关 Log Analytics 的详细信息](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [有关 Log Analytics 的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -120,11 +120,11 @@ ms.locfileid: "91318120"
 
 将 Log Analytics 工作区加入 Azure Sentinel，因为它提供了安全业务流程自动化响应 (SOAR) 解决方案。 这样便可以创建 playbook（自动解决方案）并用于修正安全问题。
 
-- [超大规模中的指标 (Citus) ](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-alert-on-metric)
+- [超大规模中的指标 (Citus) ](./howto-hyperscale-alert-on-metric.md)
 
-- [如何配置 Azure 活动日志的诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
-- [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -132,7 +132,7 @@ ms.locfileid: "91318120"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-有关详细信息，请参阅[安全控制：标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。
+有关详细信息，请参阅[安全控制：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -142,15 +142,15 @@ ms.locfileid: "91318120"
 
 此外，PostgreSQL 引擎使用角色来控制对数据库对象的访问，新创建的超大规模 (Citus) 服务器组附带了几个预定义的角色。 若要修改用户权限，请使用 PgAdmin 或 psql 等工具的标准 PostgreSQL 命令。
 
-- [了解 Azure 订阅的自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) 
+- [了解 Azure 订阅的自定义角色](../role-based-access-control/custom-roles.md) 
 
-- [了解 Azure Database for PostgreSQL 资源提供程序操作](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql) 
+- [了解 Azure Database for PostgreSQL 资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftdbforpostgresql) 
 
-- [了解 Azure Database for PostgreSQL 的访问管理](https://docs.microsoft.com/azure/postgresql/concepts-security#access-management])
+- [了解 Azure Database for PostgreSQL 的访问管理](./concepts-security.md#access-management)
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户 ](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户 ](./howto-hyperscale-create-users.md)
 
-- [如何使用 psql 连接到 PostgreSQL-超大规模 (Citus) ](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal#connect-to-the-database-using-psql)
+- [如何使用 psql 连接到 PostgreSQL-超大规模 (Citus) ](./quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql)
 
 
 **Azure 安全中心监视**：不适用
@@ -169,9 +169,9 @@ ms.locfileid: "91318120"
 
 **指南**：创建用于访问超大规模 (Citus) 实例的专用管理帐户时使用的标准操作过程。 用于管理 Azure 资源的管理员帐户与 Azure Active Directory 相关联，还存在于用于管理数据库访问权限的超大规模 (Citus) 服务器组中的本地服务器管理员帐户。 使用 Azure 安全中心的标识和访问管理来监视 Azure Active Directory 中的管理帐户数。
 
-- [了解 Azure 安全中心标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access) 
+- [了解 Azure 安全中心标识和访问](../security-center/security-center-identity-access.md) 
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户 ](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户 ](./howto-hyperscale-create-users.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -181,9 +181,9 @@ ms.locfileid: "91318120"
 
 **指南**：若要访问 Azure 门户，请启用 Azure Active Directory 多重身份验证 (MFA) 并遵循 Azure 安全中心的标识和访问管理建议。
 
-- [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [如何在 Azure 安全中心监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
 
 **Azure 安全中心监视**：是
@@ -194,9 +194,9 @@ ms.locfileid: "91318120"
 
 **指南**：将特权访问工作站 (PAW) 与为登录和配置 Azure 资源而配置的多重身份验证 (MFA) 结合使用。
 
-- [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -209,9 +209,9 @@ ms.locfileid: "91318120"
 
 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。
 
-- [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 风险检测](../active-directory/identity-protection/overview-identity-protection.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -222,7 +222,7 @@ ms.locfileid: "91318120"
 
 指南：使用条件访问命名位置仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行门户和 Azure 资源管理器访问。
 
-- [如何在 Azure 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [如何在 Azure 中配置命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -234,9 +234,9 @@ ms.locfileid: "91318120"
 
 超大规模 (Citus) 服务器组内的用户无法直接与 Azure Active Directory 帐户关联。 若要修改数据库对象访问权限的用户权限，请在 PgAdmin 或 psql 等工具中使用标准 PostgreSQL 命令。
 
-- [修改用户角色的权限](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users#how-to-modify-privileges-for-user-role)
+- [修改用户角色的权限](./howto-hyperscale-create-users.md#how-to-modify-privileges-for-user-role)
 
-- [如何创建和配置 AAD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何创建和配置 AAD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 
 
@@ -252,9 +252,9 @@ ms.locfileid: "91318120"
 
 - [查看 PostgreSQL 用户和分配的角色](https://www.postgresql.org/docs/current/database-roles.html)
 
-- [了解 Azure AD 报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
-- [如何使用 Azure 标识访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -266,7 +266,7 @@ ms.locfileid: "91318120"
 
 可以通过为 Azure Active Directory 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。 
 
-- [如何将 Azure 活动日志集成到 Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -279,11 +279,11 @@ ms.locfileid: "91318120"
 
 还可以将日志引入 Azure Sentinel 中以便进一步调查。
 
-- [Azure AD 标识保护概述](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+- [Azure AD 标识保护概述](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何查看 Azure AD 风险登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -293,7 +293,7 @@ ms.locfileid: "91318120"
 
 **指南**：当前不可用;对于超大规模 (Citus) ，尚不支持客户密码箱。
 
-- [支持客户密码箱的服务列表](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [支持客户密码箱的服务列表](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -301,13 +301,13 @@ ms.locfileid: "91318120"
 
 ## <a name="data-protection"></a>数据保护
 
-有关详细信息，请参阅[安全控制：数据保护](/azure/security/benchmarks/security-control-data-protection)。
+有关详细信息，请参阅[安全控制：数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
 **指南**：使用标记来帮助跟踪超大规模 (Citus) 实例或存储或处理敏感信息的相关资源。
 
-- [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -315,15 +315,15 @@ ms.locfileid: "91318120"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 结合使用管理角色和防火墙规则，隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 结合使用管理角色和防火墙规则，隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
 
-- [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [了解 Azure Database for PostgreSQL-超大规模 (Citus 中的防火墙规则) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-firewall-rules)
+- [了解 Azure Database for PostgreSQL-超大规模 (Citus 中的防火墙规则) ](./concepts-hyperscale-firewall-rules.md)
 
-- [了解超大规模中的角色 (Citus) ](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [了解超大规模中的角色 (Citus) ](./howto-hyperscale-create-users.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -337,9 +337,9 @@ ms.locfileid: "91318120"
 
 在某些情况下，第三方应用程序需要从受信任的证书颁发机构生成的本地证书文件 (CA) 证书文件 ( .cer) 以安全地连接。
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus 中配置 TLS) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-ssl-connection-security)
+- [如何在 Azure Database for PostgreSQL-超大规模 (Citus 中配置 TLS) ](./concepts-hyperscale-ssl-connection-security.md)
 
-- [需要证书验证才可启用 TLS 连接性的应用程序](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-ssl-connection-security)
+- [需要证书验证才可启用 TLS 连接性的应用程序](./concepts-hyperscale-ssl-connection-security.md)
 
 
 
@@ -353,9 +353,9 @@ ms.locfileid: "91318120"
 
 若要在数据库级别修改用户权限，请使用 PgAdmin 或 psql 等工具的标准 PostgreSQL 命令。
 
-- [如何配置 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [如何使用 SQL for Azure Database for PostgreSQL 配置用户访问权限](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
+- [如何使用 SQL for Azure Database for PostgreSQL 配置用户访问权限](./howto-hyperscale-create-users.md)
 
 
 **Azure 安全中心监视**：是
@@ -367,7 +367,7 @@ ms.locfileid: "91318120"
 **指导**：  
 至少一天一次，Azure Database for PostgreSQL 超大规模 (Citus) 获取数据文件和数据库事务日志的快照备份。 利用备份，你可以将服务器还原到保留期内的任何时间点。  (当前所有群集的保留期为35天。 ) 使用 AES 256 位加密对所有备份进行加密。 PostgreSQL 超大规模 (Citus) 产品/服务使用 Microsoft 托管的密钥进行加密。
 
-- [了解 Azure PostgreSQL 的加密-超大规模 (Citus) 备份](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [了解 Azure PostgreSQL 的加密-超大规模 (Citus) 备份](./concepts-hyperscale-backup.md)
 
 
 
@@ -379,7 +379,7 @@ ms.locfileid: "91318120"
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以便为超大规模 (Citus) 和其他关键或相关资源的生产实例进行更改时创建警报。
 
-- [如何针对 Azure 活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -387,13 +387,13 @@ ms.locfileid: "91318120"
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-有关详细信息，请参阅[安全控制：漏洞管理](/azure/security/benchmarks/security-control-vulnerability-management)。
+有关详细信息，请参阅[安全控制：漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
 **指南**：当前不可用;Azure 安全中心尚不支持 Azure Database for PostgreSQL-超大规模 (Citus) 的漏洞评估。
 
-- [Azure 安全中心 Azure PaaS 服务的功能范围](https://docs.microsoft.com/azure/security-center/features-paas)
+- [Azure 安全中心 Azure PaaS 服务的功能范围](../security-center/features-paas.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -401,17 +401,17 @@ ms.locfileid: "91318120"
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-有关详细信息，请参阅[安全控制：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
+有关详细信息，请参阅[安全控制：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
 **指南**：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅 () 中的超大规模 (Citus) 实例) 。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
-- [如何使用 Azure Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription)
 
-- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -421,7 +421,7 @@ ms.locfileid: "91318120"
 
 **指南**：将标记应用于超大规模 (Citus) 实例和其他相关资源，这些资源提供了元数据以逻辑方式将它们组织到分类。
 
-- [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -431,11 +431,11 @@ ms.locfileid: "91318120"
 
 **指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪超大规模 (Citus) 实例和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-- [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -451,9 +451,9 @@ ms.locfileid: "91318120"
 
 此外，请使用 Azure Resource Graph 来查询/发现订阅中的资源。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -469,9 +469,9 @@ ms.locfileid: "91318120"
 
 此外，请使用 Azure Resource Graph 来查询/发现订阅中的资源。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -484,9 +484,9 @@ ms.locfileid: "91318120"
 - 不允许的资源类型
 - 允许的资源类型
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -496,7 +496,7 @@ ms.locfileid: "91318120"
 
 **指导**：使用 Azure 条件访问，通过为“Microsoft Azure 管理”应用配置“阻止访问”，限制用户与 Azure 资源管理器进行交互的能力。 这可以防止在高安全环境中创建和更改资源，如超大规模的实例 (Citus) 包含敏感信息。
 
-- [如何配置条件访问以阻止访问 Azure 资源管理器](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -504,7 +504,7 @@ ms.locfileid: "91318120"
 
 ## <a name="secure-configuration"></a>安全配置
 
-有关详细信息，请参阅[安全控制：安全配置](/azure/security/benchmarks/security-control-secure-configuration)。
+有关详细信息，请参阅[安全控制：安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -512,11 +512,11 @@ ms.locfileid: "91318120"
 
 此外，Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，应该对其进行检查，以确保配置满足/超过组织的安全要求。 
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias)
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [在 Azure 门户中将单资源和多资源导出到模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal) 
+- [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md) 
 
 
 
@@ -528,11 +528,11 @@ ms.locfileid: "91318120"
 
 **指导**：使用 Azure 策略“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。  此外，你可以使用 Azure 资源管理器模板维护组织所需的 Azure 资源的安全配置。 
 
-- [了解 Azure Policy 效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
-- [创建和管理策略以强制实施符合性](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure 资源管理器模板概述](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure 资源管理器模板概述](../azure-resource-manager/templates/overview.md)
 
 
 
@@ -544,9 +544,9 @@ ms.locfileid: "91318120"
 
 **指南**：如果将自定义 Azure 策略定义用于超大规模 (Citus) 实例和相关资源，请使用 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure 安全中心监视**：不适用
 
@@ -556,11 +556,11 @@ ms.locfileid: "91318120"
 
 **指导**：使用 Azure 策略“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。  此外，你可以使用 Azure 资源管理器模板维护组织所需的 Azure 资源的安全配置。 
 
-- [了解 Azure Policy 效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
-- [创建和管理策略以强制实施符合性](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure 资源管理器模板概述](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure 资源管理器模板概述](../azure-resource-manager/templates/overview.md)
 
 
 
@@ -572,7 +572,7 @@ ms.locfileid: "91318120"
 
 **指南**：使用“Microsoft.DBforPostgreSQL”命名空间中的 Azure Policy 别名创建自定义策略，以审核和强制执行系统配置，并针对其发出警报。 使用 Azure 策略 [audit]、[拒绝] 和 [部署（如果不存在））自动强制实施 Azure Database for PostgreSQL 实例和相关资源的配置。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -582,9 +582,9 @@ ms.locfileid: "91318120"
 
 **指南**： Azure Database for PostgreSQL (Citus) 目前不直接支持托管标识。 创建 Azure Database for PostgreSQL 服务器时，必须为管理员用户提供凭据。 你可以在 Azure 门户界面中创建其他用户角色。
 
-- [创建 Azure Database for PostgreSQL - 超大规模 (Citus)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal#create-an-azure-database-for-postgresql---hyperscale-citus)
+- [创建 Azure Database for PostgreSQL - 超大规模 (Citus)](./quickstart-create-hyperscale-portal.md#create-a-hyperscale-citus-server-group)
 
-- [创建其他用户角色](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users#how-to-create-additional-user-roles)
+- [创建其他用户角色](./howto-hyperscale-create-users.md#how-to-create-additional-user-roles)
 
 
 **Azure 安全中心监视**：目前不可用
@@ -603,7 +603,7 @@ ms.locfileid: "91318120"
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-有关详细信息，请参阅[安全控制：恶意软件防护](/azure/security/benchmarks/security-control-malware-defense)。
+有关详细信息，请参阅[安全控制：恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
@@ -617,13 +617,13 @@ ms.locfileid: "91318120"
 
 ## <a name="data-recovery"></a>数据恢复
 
-有关详细信息，请参阅[安全控制：数据恢复](/azure/security/benchmarks/security-control-data-recovery)。
+有关详细信息，请参阅[安全控制：数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
 **指南**： Azure Database for PostgreSQL-超大规模 (Citus) 会自动创建每个节点的备份，并将其存储在本地冗余存储中。 备份可用于将超大规模 (Citus) 群集还原到指定时间。
 
-- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](./concepts-hyperscale-backup.md)
 
 **Azure 安全中心监视**：是
 
@@ -635,7 +635,7 @@ ms.locfileid: "91318120"
 
 在支持可用性区域的 Azure 区域中，备份快照存储在三个可用性区域中。 只要至少有一个可用性区域处于联机状态，超大规模 (Citus) 群集就是可恢复的。
 
-- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](./concepts-hyperscale-backup.md)
 
 
 **Azure 安全中心监视**：是
@@ -648,7 +648,7 @@ ms.locfileid: "91318120"
 
 不会从原始服务器组中保留防火墙设置和 PostgreSQL 服务器参数;它们将重置为默认值。 防火墙将阻止所有连接。 还原后需要手动调整这些设置。
 
-- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](./concepts-hyperscale-backup.md)
 
 **Azure 安全中心监视**：是
 
@@ -658,7 +658,7 @@ ms.locfileid: "91318120"
 
 **指南**：无法还原已删除的超大规模 (Citus) 群集。 如果删除群集，则属于该群集的所有节点都将被删除且无法恢复。 若要保护群集资源后从意外删除或意外更改中进行部署，管理员可以利用管理锁。
 
-- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
+- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](./concepts-hyperscale-backup.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -666,13 +666,13 @@ ms.locfileid: "91318120"
 
 ## <a name="incident-response"></a>事件响应
 
-有关详细信息，请参阅[安全控制：事件响应](/azure/security/benchmarks/security-control-incident-response)。
+有关详细信息，请参阅[安全控制：事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 
 
-- [如何在 Azure 安全中心配置工作流自动化](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide) 
+- [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md) 
 
 - [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
 
@@ -686,7 +686,7 @@ ms.locfileid: "91318120"
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
@@ -696,7 +696,7 @@ ms.locfileid: "91318120"
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。 
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。 
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
@@ -708,7 +708,7 @@ ms.locfileid: "91318120"
 
 **指南**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。  事后审查事件，确保问题得到解决。 
 
-- [如何设置 Azure 安全中心安全联系人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 安全中心监视**：是
 
@@ -718,9 +718,9 @@ ms.locfileid: "91318120"
 
 **指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。 
 
-- [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export) 
+- [如何配置连续导出](../security-center/continuous-export.md) 
 
-- [如何将警报流式传输到 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -730,7 +730,7 @@ ms.locfileid: "91318120"
 
 **指导**：使用 Azure 安全中心内的工作流自动化功能可以通过“逻辑应用”针对安全警报和建议自动触发响应。 
 
-- [如何配置工作流自动化和逻辑应用](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -738,7 +738,7 @@ ms.locfileid: "91318120"
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：渗透测试和红队演练](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
@@ -752,5 +752,5 @@ ms.locfileid: "91318120"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

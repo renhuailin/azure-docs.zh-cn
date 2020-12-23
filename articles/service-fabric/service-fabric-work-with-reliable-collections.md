@@ -3,12 +3,12 @@ title: 使用可靠集合
 description: 了解有关在 Azure Service Fabric 应用程序中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2d027dc432d1a0a20888bfca4f59bc41866e358d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255789"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651900"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠集合
 Service Fabric 通过可靠集合向 .NET 开发人员提供有状态的编程模型。 具体而言，Service Fabric 提供可靠字典和可靠队列类。 在使用这些类时，状态是分区的（实现伸缩性）、复制的（实现可用性），并在分区内进行事务处理（实现 ACID 语义）。 让我们看一下可靠字典对象的典型用法，并看一看它究竟在做些什么。
@@ -35,6 +35,7 @@ catch (TimeoutException)
 {
    // choose how to handle the situation where you couldn't get a lock on the file because it was 
    // already in use. You might delay and retry the operation
+   await Task.Delay(100);
 }
 ```
 
@@ -42,12 +43,12 @@ catch (TimeoutException)
 
 在上面的代码中，ITransaction 对象传递到可靠字典的 AddAsync 方法。 在内部，接受键的字典方法采用与键关联的读取器/写入器锁。 如果此方法修改键的值，则在键上使用写入锁；如果此方法只读取键的值，则在键上使用读取锁。 由于 AddAsync 将键值修改成新的传入值，因此使用键的写入锁。 因此，如果有 2（或更多个）线程尝试在同一时间添加相同的键值，则一个线程将获取写入锁，另一个线程会阻塞。 默认情况下，方法最多阻塞 4 秒以获取锁，4 秒后方法会引发 TimeoutException。 方法重载存在可让你根据需要传递显式超时值。
 
-通常，编写代码响应 TimeoutException 的方式是捕获它，然后重试整个操作（如以上代码中所示）。 在这个简单的代码中，我们只是调用任务。每次延迟传递100毫秒。 但实际上，最好改用某种形式的指数退让延迟。
+通常，编写代码响应 TimeoutException 的方式是捕获它，然后重试整个操作（如以上代码中所示）。 在此简单代码中，我们只调用每次超过 100 毫秒的 Task.Delay。 但实际上，最好改用某种形式的指数退让延迟。
 
-获取锁后，AddAsync 会在与 ITransaction 对象关联的内部临时字典中添加键和值对象引用。 这就完成了读取自己编写的语义。 也就是说，在调用 AddAsync 之后，使用同一 ITransaction 对象对 TryGetValueAsync 的后续调用将返回值，即使尚未提交事务。
+获取锁后，AddAsync 会在与 ITransaction 对象关联的内部临时字典中添加键和值对象引用。 这就完成了读取自己编写的语义。 也就是说，在调用 AddAsync 之后，稍后对 TryGetValueAsync 的调用（使用相同的 ITransaction 对象）会返回值，即使尚未提交事务。
 
 > [!NOTE]
-> 使用新事务调用 TryGetValueAsync 将返回对上次提交的值的引用。 请勿直接修改该引用，因为这会绕过保存和复制更改的机制。 建议将值设为只读，以便更改键的值的唯一方法是通过可靠字典 Api。
+> 使用新事务调用 TryGetValueAsync 会返回对上次提交的值的引用。 请勿直接修改该引用，因为这会绕过保存和复制所做更改的机制。 建议将值设置为只读，这样，更改键值的唯一方法就是使用可靠字典 API。
 
 接下来，AddAsync 将键和值对象序列化为字节数组，并将这些字节数组附加到本地节点的日志文件。 最后，AddAsync 将字节数组发送给所有辅助副本，使其具有相同的键/值信息。 即使键/值信息已写入日志文件，在提交其关联的事务之前，这些信息不被视为字典的一部分。
 

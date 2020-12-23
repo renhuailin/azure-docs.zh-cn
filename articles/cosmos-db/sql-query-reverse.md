@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 REVERSE
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 REVERSE。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a22e1c8a5f4350bd2f966ee48f96368c648a4a1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d70d65609211ea18f566dbae42aca5231ed2eb7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302162"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341565"
 ---
 # <a name="reverse-azure-cosmos-db"></a>REVERSE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回字符串值的逆序排序形式。  
   
 ## <a name="syntax"></a>语法

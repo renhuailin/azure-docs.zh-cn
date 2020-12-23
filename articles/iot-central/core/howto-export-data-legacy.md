@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974418"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987348"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用数据导出 (旧) 将 IoT 数据导出到云目标
 
@@ -22,7 +22,7 @@ ms.locfileid: "90974418"
 > - 有关新的预览版数据导出功能的信息，请参阅 [使用数据导出将 IoT 数据导出到云目标](./howto-export-data.md)。
 > - 若要了解预览版数据导出功能和旧数据导出功能之间的差异，请参阅 [比较表](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)。
 
-本文介绍如何使用 Azure 中的数据导出功能 IoT Central。 此功能可让你将数据连续导出到 **Azure 事件中心**、 **azure 服务总线**或 **azure Blob 存储** 实例。 数据导出使用 JSON 格式，可以包括遥测、设备信息和设备模板信息。 使用导出的数据可以获取：
+本文介绍如何使用 Azure 中的数据导出功能 IoT Central。 此功能可让你将数据连续导出到 **Azure 事件中心**、 **azure 服务总线** 或 **azure Blob 存储** 实例。 数据导出使用 JSON 格式，可以包括遥测、设备信息和设备模板信息。 使用导出的数据可以获取：
 
 - 热路径见解和分析。 此选项包括在 Azure 流分析中触发自定义规则、在 Azure 逻辑应用中触发自定义工作流，或者通过 Azure Functions 传递数据以进行转换。
 - 冷路径分析，例如 Azure 机器学习中的训练模型或 Microsoft Power BI 中的长期趋势分析。
@@ -30,7 +30,7 @@ ms.locfileid: "90974418"
 > [!Note]
 > 当你打开数据导出时，你只会获得那一刻的数据。 当前，数据导出关闭时无法检索数据。 若要保留更多的历史数据，请及早打开数据导出。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 您必须是 IoT Central 应用程序中的管理员或具有数据导出权限。
 
@@ -46,7 +46,7 @@ ms.locfileid: "90974418"
 
 2. 选择订阅。 你可以将数据导出到与你的 IoT Central 应用程序不在同一订阅中的其他订阅。 在这种情况下，需使用连接字符串进行连接。
 
-3. 在事件中心命名空间中创建事件中心。 转到命名空间，选择顶部的“+ 事件中心”，以便创建事件中心实例。****
+3. 在事件中心命名空间中创建事件中心。 转到命名空间，选择顶部的“+ 事件中心”，以便创建事件中心实例。
 
 ### <a name="create-service-bus-namespace"></a>创建服务总线命名空间
 
@@ -63,7 +63,7 @@ ms.locfileid: "90974418"
 
 如果没有要导出到的现有 Azure 存储帐户，请执行以下步骤：
 
-1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的 [Azure Blob 存储帐户](https://aka.ms/blobdocscreatestorageaccount) 或 [Azure Data Lake Storage v2 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。 数据导出只能将数据写入支持块 blob 的存储帐户。 以下列表显示了已知的兼容存储帐户类型：
+1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的 [Azure Blob 存储帐户](../../storage/blobs/storage-quickstart-blobs-portal.md) 或 [Azure Data Lake Storage v2 存储帐户](../../storage/common/storage-account-create.md)。 数据导出只能将数据写入支持块 blob 的存储帐户。 以下列表显示了已知的兼容存储帐户类型：
 
     |性能层|帐户类型|
     |-|-|
@@ -72,7 +72,7 @@ ms.locfileid: "90974418"
     |Standard|Blob 存储|
     |高级|块 Blob 存储|
 
-2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”********。 选择顶部的“+ 容器”以创建新容器。****
+2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择顶部的“+ 容器”以创建新容器。
 
 ## <a name="set-up-data-export"></a>设置数据导出
 
@@ -85,7 +85,7 @@ ms.locfileid: "90974418"
     > [!Tip]
     > 如果左窗格中未显示 " **数据导出** "，则没有权限在应用中配置数据导出。 请与管理员联系以设置数据导出。
 
-3. 选择“+ 新建”按钮。**** 选择一个 **Azure Blob 存储**、 **azure 事件中心**、 **Azure 服务总线队列**或 **azure 服务总线主题** 作为导出目标。 每个应用程序的最大导出数目是 5。
+3. 选择“+ 新建”按钮。 选择一个 **Azure Blob 存储**、 **azure 事件中心**、 **Azure 服务总线队列** 或 **azure 服务总线主题** 作为导出目标。 每个应用程序的最大导出数目是 5。
 
 4. 输入导出的名称。 在下拉列表框中，选择 **命名空间**，或 **输入连接字符串**。
 
@@ -96,7 +96,7 @@ ms.locfileid: "90974418"
 
 5. 从下拉列表框中选择一个事件中心、队列、主题或容器。
 
-6. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。**** 若要获取连接字符串，请执行以下操作：
+6. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。 若要获取连接字符串，请执行以下操作：
 
     - 事件中心或服务总线，请中转到 Azure 门户中的命名空间：
         - 若要对整个命名空间使用连接字符串：
@@ -111,9 +111,9 @@ ms.locfileid: "90974418"
 
     粘贴到连接字符串中。 键入实例或区分大小写的 **容器名称**。
 
-7. 在“要导出的数据”下，通过将相应类型设置为“打开”来指定要导出的数据类型。********
+7. 在“要导出的数据”下，通过将相应类型设置为“打开”来指定要导出的数据类型。
 
-8. 若要启用数据导出，请确保启用的切换为**打开****状态**。 选择“保存”。
+8. 若要启用数据导出，请确保启用的切换为 **打开****状态**。 选择“保存”。
 
 9. 几分钟后，数据便会出现在所选目标中。
 
@@ -156,7 +156,7 @@ ms.locfileid: "90974418"
 
 此消息不包括发送设备的设备 ID。
 
-若要从 Azure 流分析查询中的消息数据检索设备 ID，请使用 [GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) 函数。 有关示例，请参阅 [使用流分析扩展 Azure IoT Central 使用自定义规则扩展 Azure、Azure Functions 和 SendGrid](./howto-create-custom-rules.md)。
+若要从 Azure 流分析查询中的消息数据检索设备 ID，请使用 [GetMetadataPropertyValue](/stream-analytics-query/getmetadatapropertyvalue) 函数。 有关示例，请参阅 [使用流分析扩展 Azure IoT Central 使用自定义规则扩展 Azure、Azure Functions 和 SendGrid](./howto-create-custom-rules.md)。
 
 若要在 Azure Databricks 或 Apache Spark 工作区中检索设备 ID，请使用 [systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)。 有关示例，请参阅 [使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central](./howto-create-custom-analytics.md)中的 Databricks 工作区。
 
@@ -382,7 +382,6 @@ ms.locfileid: "90974418"
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -506,7 +505,6 @@ ms.locfileid: "90974418"
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -557,7 +555,7 @@ ms.locfileid: "90974418"
 
 如果在已启用 " *设备* 和 *设备模板* " 流的预览应用程序中有现有的数据导出，请将导出更新为 **30 年6月 30 2020 日**。 此要求适用于导出到 Azure Blob 存储、Azure 事件中心和 Azure 服务总线。
 
-自2020年2月3日起，启用了设备和设备模板的应用程序中的所有新导出都将具有上面所述的数据格式。 在此日期之前创建的所有导出都将保留在2020年6月30日之前的旧数据格式，此时，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的 [设备](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、 [设备属性](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、 [设备云属性](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)和 [设备模板](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) 对象匹配。
+自2020年2月3日起，启用了设备和设备模板的应用程序中的所有新导出都将具有上面所述的数据格式。 在此日期之前创建的所有导出都将保留在2020年6月30日之前的旧数据格式，此时，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的 [设备](/rest/api/iotcentral/devices/get)、 [设备属性](/rest/api/iotcentral/devices/getproperties)、 [设备云属性](/rest/api/iotcentral/devices/getcloudproperties)和 [设备模板](/rest/api/iotcentral/devicetemplates/get) 对象匹配。
 
 对于 **设备**，旧数据格式和新数据格式之间的显著差异包括：
 - `@id` 对于删除的设备， `deviceId` 将重命名为 `id` 

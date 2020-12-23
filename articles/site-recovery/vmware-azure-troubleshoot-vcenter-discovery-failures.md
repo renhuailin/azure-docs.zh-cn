@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135341"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366644"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>排查 vCenter Server 发现失败问题
 
@@ -48,13 +48,13 @@ vCenter 发现遵守 System 用户配置的系统默认代理设置。 DRA 服�
 
 遇到此问题时，会发生以下情况：
 
-- \<vCenter>由于以下错误而无法访问 vCenter 服务器：远程服务器返回错误：（503）服务器不可用
-- \<vCenter>由于以下错误而无法访问 vCenter 服务器：远程服务器返回错误：无法连接到远程服务器。
+- 由于以下错误，无法访问 vCenter 服务器 \<vCenter>：远程服务器返回了错误：(503) 服务器不可用
+- 由于以下错误，无法访问 vCenter 服务器 \<vCenter>：远程服务器返回了错误：无法连接到远程服务器。
 - 无法连接到 vCenter/ESXi 服务器。
 
 若要解决问题，请执行以下操作：
 
-下载 [PsExec 工具](https://aka.ms/PsExec)。 
+下载 [PsExec 工具](/sysinternals/downloads/psexec)。 
 
 使用 PsExec 工具访问系统用户上下文，确定是否已配置代理地址。 然后，可以使用以下过程将 vCenter 添加到绕过列表。
 
@@ -81,4 +81,4 @@ vCenter 发现遵守 System 用户配置的系统默认代理设置。 DRA 服�
 
 ## <a name="next-steps"></a>后续步骤
 
-[管理用于 VMware VM 灾难恢复的配置服务器](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 
+[管理用于 VMware VM 灾难恢复的配置服务器](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)

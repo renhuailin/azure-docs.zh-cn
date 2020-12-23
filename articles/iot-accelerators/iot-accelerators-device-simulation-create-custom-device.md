@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1fe86aef832223a7485036343b4b12d8bb526e06
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "61450498"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852381"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>教程：创建自定义模拟设备
 
@@ -34,15 +34,7 @@ ms.locfileid: "61450498"
 
 若要按本教程操作，需在 Azure 订阅中部署设备模拟的实例。
 
-如果尚未部署设备模拟，则应完成[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门。
-
-## <a name="open-device-simulation"></a>打开设备模拟
-
-若要在浏览器中运行设备模拟，请先导航到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com)。
-
-可能会要求使用 Azure 订阅凭据登录。
-
-然后在[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门中部署的设备模拟的磁贴上单击“启动”。
+如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
 
 ## <a name="view-your-device-models"></a>查看设备模型
 
@@ -88,7 +80,7 @@ ms.locfileid: "61450498"
 
 若要克隆设备模型，请勾选模型旁边的框，然后单击操作栏中的“克隆”： 
 
-![删除设备模型](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
+![突出显示所选模型和“克隆”按钮的屏幕截图。](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
 
 ## <a name="delete-a-device-model"></a>删除设备模型
 

@@ -6,17 +6,17 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269720"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201114"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a> (预览中创建自动化任务来管理 Azure 资源和监视成本) 
 
 > [!IMPORTANT]
-> 此功能以公共预览版提供，不提供服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能现为公共预览版，在提供时不附带服务级别协议，建议不要用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 为了帮助你更轻松地管理 [Azure 资源](../azure-resource-manager/management/overview.md#terminology) ，你可以使用自动化任务模板为特定资源或资源组创建自动化管理任务，这些任务模板根据资源类型在可用性上有所不同。 例如，对于 [Azure 存储帐户](../storage/common/storage-account-overview.md)，你可以设置一个自动化任务，该任务会向你发送该存储帐户的每月费用。 对于 [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)，你可以创建一个自动化任务，该任务按预定义的计划启用或关闭虚拟机。
 
@@ -47,7 +47,7 @@ ms.locfileid: "91269720"
 
 目前，只能在资源级别创建自动化任务，查看任务的运行历史记录，并编辑由 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 服务提供支持的任务的基础逻辑应用工作流。 自动化任务比 [Azure 自动化](../automation/automation-intro.md)更基本、更轻型。
 
-相比之下，Azure 自动化是一项基于云的自动化和配置服务，支持跨 Azure 和非 Azure 环境进行一致的管理。 该服务通过使用[runbook](../automation/automation-runbook-execution.md)、配置管理[和更改跟踪和清单](../automation/change-tracking.md)、更新管理、共享功能和异类功能，[来协调处理流程](../automation/automation-intro.md#process-automation)。 在部署、操作和解除工作负荷与资源期间，自动化可以提供全面的控制。
+相比之下，Azure 自动化是一项基于云的自动化和配置服务，支持跨 Azure 和非 Azure 环境进行一致的管理。 该服务通过使用[runbook](../automation/automation-runbook-execution.md)、配置管理[和更改跟踪和清单](../automation/change-tracking/overview.md)、更新管理、共享功能和异类功能，[来协调处理流程](../automation/automation-intro.md#process-automation)。 在部署、操作和解除工作负荷与资源期间，自动化可以提供全面的控制。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -91,7 +91,7 @@ ms.locfileid: "91269720"
 
 1. 验证所有所需的连接后，选择 " **下一步：配置**"。
 
-1. 在 " **配置**" 下，提供任务的名称以及任务所需的任何其他信息。 完成操作后，选择“创建”  。
+1. 在 " **配置**" 下，提供任务的名称以及任务所需的任何其他信息。 完成操作后，选择“创建”。
 
    > [!NOTE]
    > 创建后无法更改任务名称，因此请考虑在 [编辑基础工作流](#edit-task-workflow)时仍适用的名称。 对基础工作流所做的更改将仅应用于所创建的任务，而不是任务模板。

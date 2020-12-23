@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761084"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350222"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>教程：在 Azure Static Web Apps 中使用 Blazor 生成静态 Web 应用
 
@@ -33,7 +33,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 本教程中介绍的应用由三个不同的 Visual Studio 项目组成：
 
-- Api：C# Azure Functions 应用程序，该应用程序实现向静态应用提供天气信息的 API 终结点。 [`WeatherForecastFunction`](https://github.com/ssdeepak/blazor/blob/main/Api/WeatherForecastFunction.cs) 返回 `WeatherForecast` 对象的数组。
+- Api：C# Azure Functions 应用程序，该应用程序实现向静态应用提供天气信息的 API 终结点。 WeatherForecastFunction 返回 `WeatherForecast` 对象的数组。
 
 - **客户端**：前端 Blazor Web 程序集项目。 已实现[回退路由](#fallback-route)，以确保为所有路由提供 index.html 文件。
 
@@ -64,7 +64,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 本文使用 GitHub 模板存储库，使你能够轻松入门。 该模板具有一个部署到 Azure Static Web Apps 的入门应用。
 
 1. 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库：
-    - https://github.com/staticwebdev/blazor-starter/generate
+    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. 将存储库命名为 my-first-static-blazor-app
 
 ## <a name="create-a-static-web-app"></a>创建静态 Web 应用
@@ -79,7 +79,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 在“基本信息”部分中，首先配置新应用，并将其链接到 GitHub 存储库。
 
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="完成 Blazor 应用":::
+:::image type="content" source="media/deploy-blazor/basics.png" alt-text="“基本信息”选项卡":::
 
 1. 选择 Azure 订阅
 1. 选择或创建新资源组
@@ -91,7 +91,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 登录 GitHub 后，输入存储库信息。
 
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="完成 Blazor 应用":::
+:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="存储库详细信息":::
 
 1. 选择首选组织
 1. 选择“存储库”下拉列表中的“my-first-static-blazor-app”
@@ -105,15 +105,15 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 1. 选择“查看 + 创建”。
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="完成 Blazor 应用":::
+    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="“查看创建”按钮":::
 
 1. 选择“创建”。
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="完成 Blazor 应用":::
+    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="“创建”按钮":::
 
 1. 选择“转到资源”。
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="完成 Blazor 应用":::
+    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="“转到资源”按钮":::
 
 ## <a name="view-the-website"></a>查看网站
 
@@ -123,7 +123,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 静态 Web 应用“概述”窗口显示了一系列链接，可帮助你与 Web 应用进行交互。
 
-:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="完成 Blazor 应用":::
+:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="“概述”窗口":::
 
 1. 单击“单击此处以查看 GitHub Actions 运行的状态”的标题，即可转到针对存储库运行的 GitHub Actions。 确认部署作业完成后，即可通过生成的 URL 导航到网站。
 

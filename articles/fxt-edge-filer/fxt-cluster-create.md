@@ -6,25 +6,26 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: 7a471868bac8f5e0623942c0cc1dc4af4e3881e7
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185343"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220799"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>教程：创建 Azure FXT Edge Filer 群集
 
-为缓存安装并初始化 Azure FXT Edge Filer 硬件节点后，使用 FXT 群集软件创建缓存群集。 
+为缓存安装并初始化 Azure FXT Edge Filer 硬件节点后，使用 FXT 群集软件创建缓存群集。
 
-本教程将指导你完成将硬件节点配置为群集的步骤。 
+本教程将指导你完成将硬件节点配置为群集的步骤。
 
-本教程介绍： 
+本教程介绍：
 
 > [!div class="checklist"]
+>
 > * 开始创建群集之前所需的信息
 > * 群集的管理网络、群集网络和面向客户端的网络之间的区别
-> * 如何连接到群集节点 
+> * 如何连接到群集节点
 > * 如何使用一个 Azure FXT Edge Filer 节点创建初始群集
 > * 如何登录群集控制面板以配置群集设置
 
@@ -34,14 +35,14 @@ ms.locfileid: "88185343"
 
 在开始本教程前，请完成以下先决条件：
 
-* 在数据中心内安装 Azure FXT Edge Filer 硬件系统 
+* 在数据中心内安装 Azure FXT Edge Filer 硬件系统
 
-  只需一个节点即可创建群集，但需要[添加至少两个节点](fxt-add-nodes.md)才能配置群集并使其可供使用。 
+  只需一个节点即可创建群集，但需要[添加至少两个节点](fxt-add-nodes.md)才能配置群集并使其可供使用。
 
 * 将相应的电源和网络电缆连接到系统  
 * 启动至少一个 Azure FXT Edge Filer 节点并[设置其根密码](fxt-node-password.md)
 
-## <a name="gather-information-for-the-cluster"></a>为群集收集信息 
+## <a name="gather-information-for-the-cluster"></a>为群集收集信息
 
 需要以下信息才能创建 Azure FXT Edge Filer 群集：
 
@@ -52,18 +53,18 @@ ms.locfileid: "88185343"
 * IP 地址：
 
   * 用于群集管理的单个 IP 地址，以及用于管理网络的网络掩码和路由器
-  * 用于群集（节点到节点）通信的连续 IP 地址范围中的第一个和最后一个 IP 地址。 有关详细信息，请参阅下面的 [IP 地址分发](#ip-address-distribution)。 
+  * 用于群集（节点到节点）通信的连续 IP 地址范围中的第一个和最后一个 IP 地址。 有关详细信息，请参阅下面的 [IP 地址分发](#ip-address-distribution)。
   * （面向客户端的 IP 地址在创建群集后设置。）
 
 * 网络基础结构信息：
 
   * 群集的 DNS 服务器的 IP 地址
   * 群集的 DNS 域的名称
-  * 群集 NTP 服务器的名称或 IP 地址（一台服务器，或三台或更多服务器） 
+  * 群集 NTP 服务器的名称或 IP 地址（一台服务器，或三台或更多服务器）
   * 是否想要在群集接口上启用 IEEE 802.1AX-2008 链接聚合
   * 如果启用链接聚合，那么是否使用 IEEE 802.3ad (LACP) 动态聚合
 
-可以在创建群集后配置这些网络基础结构项目，但最好在创建时执行此操作。 
+可以在创建群集后配置这些网络基础结构项目，但最好在创建时执行此操作。
 
 ### <a name="ip-address-distribution"></a>IP 地址分发
 
@@ -117,11 +118,11 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 例如，`ifconfig | grep -B5 inet` 命令会搜索具有 Internet 地址的端口，并提供五行上下文以显示端口标识符。
 
-记下 ifconfig 报告中显示的任何 IP 地址。 使用端口名称（如 e0a 或 e0b）列出的地址是不错的选择。 请勿使用 e7* 名称列出的任何 IP 地址，因为这些名称仅用于 iDRAC/IPMI 服务端口。  
+记下 ifconfig 报告中显示的任何 IP 地址。 使用端口名称（如 e0a 或 e0b）列出的地址是不错的选择。 请勿使用 e7* 名称列出的任何 IP 地址，因为这些名称仅用于 iDRAC/IPMI 服务端口。
 
 ## <a name="load-the-cluster-configuration-wizard"></a>加载群集配置向导
 
-使用基于浏览器的群集配置工具来创建群集。 
+使用基于浏览器的群集配置工具来创建群集。
 
 在 Web 浏览器中输入节点的 IP 地址。 如果浏览器提供有关该站点不受信任的消息，请仍然继续访问该站点。 （单个 Azure FXT Edge Filer 节点没有 CA 提供的安全证书。）
 
@@ -133,19 +134,19 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 ## <a name="create-the-cluster"></a>创建群集
 
-群集配置工具将引导完成一组用于创建 Azure FXT Edge Filer 群集的屏幕。 确保在开始之前准备好[所需信息](#gather-information-for-the-cluster)。 
+群集配置工具将引导完成一组用于创建 Azure FXT Edge Filer 群集的屏幕。 确保在开始之前准备好[所需信息](#gather-information-for-the-cluster)。
 
 ### <a name="creation-options"></a>创建选项
 
 第一个屏幕提供三个选项。 除非支持人员有特别说明，否则请使用手动配置选项。
 
-单击“我将手动配置群集”以加载新的群集配置选项屏幕  。 
+单击“我将手动配置群集”以加载新的群集配置选项屏幕  。
 
 其他选项很少用到：
 
-* “更新系统映像”会提示你在创建群集之前安装新的操作系统软件。 （当前安装的软件版本在屏幕顶部列出。）必须提供软件包文件 - URL 和用户名/密码，或通过从计算机上传文件。 
+* “更新系统映像”会提示你在创建群集之前安装新的操作系统软件。 （当前安装的软件版本在屏幕顶部列出。）必须提供软件包文件 - URL 和用户名/密码，或通过从计算机上传文件。
 
-* Microsoft 客户服务和支持部门有时使用群集安装程序文件选项。 
+* Microsoft 客户服务和支持部门有时使用群集安装程序文件选项。
 
 ## <a name="cluster-options"></a>群集选项
 
@@ -157,36 +158,36 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 在顶部，填写新群集的基本信息。
 
-![浏览器 GUI 页中“基本配置”部分的详细信息。 它显示三个字段（群集名称、管理员密码、确认密码）](media/fxt-cluster-create/basic-configuration.png) 
+![浏览器 GUI 页中“基本配置”部分的详细信息。 它显示三个字段（群集名称、管理员密码、确认密码）](media/fxt-cluster-create/basic-configuration.png)
 
 * “群集名称”- 输入群集的唯一名称  。
 
   群集名称必须符合以下条件：
   
   * 长度为 1 到 16 个字符
-  * 可以包含字母、数字、短划线 (-) 和下划线 (_) 字符 
+  * 可以包含字母、数字、短划线 (-) 和下划线 (_) 字符
   * 不得包含其他标点符号或特殊字符
   
   可以稍后在“群集” > “常规设置”配置页上更改此名称   。 （有关群集设置的详细信息，请阅读[群集配置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)，该指南不属于本文档集。）
 
-  > [!NOTE] 
+  > [!NOTE]
   > 群集名称用于标识为支持监视或故障排除而上传的系统信息，因此包含公司名称会很有帮助。
 
 * “管理员密码”- 为默认管理用户 `admin` 设置密码  。
   
   应该为管理群集的每个人设置单独的用户帐户，但不能删除用户 `admin`。 如果需要创建其他用户，请以 `admin` 身份登录。
- 
+
   可以在群集控制面板的“管理” > “用户”设置页中更改 `admin` 的密码   。 有关详细信息，请阅读[群集配置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html)中的**用户**文档。
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
 ### <a name="network-configuration"></a>网络配置
 
-**网络**部分会提示你指定群集将使用的网络基础结构。 
+**网络**部分会提示你指定群集将使用的网络基础结构。
 
 有两个单独的网络可供配置：
 
-* *管理网络*提供对群集的管理员访问权限，以进行配置和监视。 连接到控制面板或进行 SSH 访问时使用此处指定的 IP 地址。 
+* *管理网络*提供对群集的管理员访问权限，以进行配置和监视。 连接到控制面板或进行 SSH 访问时使用此处指定的 IP 地址。
 
   大多数群集仅使用单个管理 IP 地址，但如果想要添加接口，则可以在创建群集后执行此操作。
 
@@ -216,9 +217,9 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 * “MTU”- 如有必要，调整群集管理网络的最大传输单元 (MTU)  。
 
-* “使用 1Gb 管理网络”- 如果想要将 FXT 节点上的两个 1GbE 网络端口仅分配给管理网络，请选中此框  。 （必须为所有其他流量提供 25GbE/10GbE 端口。）如果不选中此框，管理网络将使用可用的最高速度端口。 
+* “使用 1Gb 管理网络”- 如果想要将 FXT 节点上的两个 1GbE 网络端口仅分配给管理网络，请选中此框  。 （必须为所有其他流量提供 25GbE/10GbE 端口。）如果不选中此框，管理网络将使用可用的最高速度端口。
 
-### <a name="configure-the-cluster-network"></a>配置群集网络 
+### <a name="configure-the-cluster-network"></a>配置群集网络
 
 群集网络设置适用于群集节点之间以及群集节点和核心文件管理器之间的流量。
 
@@ -230,11 +231,11 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
   “范围内 IP 地址数”中的值将自动计算并显示  。
 
-* “非管理网络掩码(可选)”- 指定群集网络的网络掩码  。 
+* “非管理网络掩码(可选)”- 指定群集网络的网络掩码  。
 
   系统会自动建议为管理网络输入的网络掩码值；可根据需要更改。
 
-* “群集路由器(可选)”- 指定群集网络使用的默认网关地址  。 
+* “群集路由器(可选)”- 指定群集网络使用的默认网关地址  。
 
   系统会自动建议为管理网络提供的同一网关地址。
 
@@ -242,7 +243,7 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 * “非管理 MTU (可选)”- 如有必要，调整群集网络的最大传输单元 (MTU)  。
 
-### <a name="configure-cluster-dns-and-ntp"></a>配置群集 DNS 和 NTP 
+### <a name="configure-cluster-dns-and-ntp"></a>配置群集 DNS 和 NTP
 
 “群集”部分提供用于指定 DNS 和 NTP 服务器以及用于启用链接聚合的字段  。 这些设置适用于群集使用的所有网络。
 
@@ -250,7 +251,7 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 * “DNS 服务器”- 输入一个或多个域名系统 (DNS) 服务器的 IP 地址  。
 
-  建议为所有群集使用 DNS，且如果想要使用 SMB、AD 或 Kerberos，则需要提供 DNS。 
+  建议为所有群集使用 DNS，且如果想要使用 SMB、AD 或 Kerberos，则需要提供 DNS。
   
   若要获得最佳性能，请按照[为 Azure FXT Edge Filer 群集配置 DNS](fxt-configure-network.md#configure-dns-for-load-balancing) 中所述配置群集的 DNS 服务器，以进行轮询机制负载均衡。
 
@@ -272,13 +273,13 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 ![浏览器中的群集配置状态消息：“FXT 节点现在正在创建群集。 这需要几分钟。 创建群集后，请访问此链接以完成配置。” “访问此链接”显示超链接](media/fxt-cluster-create/creating-message.png)
 
-片刻后，可以单击消息中的链接转到群集控制面板。 （此链接会转到在“管理 IP”中指定的 IP 地址  。）单击“创建”按钮后，链接需要 15 秒到 1 分钟才能变为活动状态。 如果 Web 界面未加载，请再等待几秒钟，然后再次单击该链接。 
+片刻后，可以单击消息中的链接转到群集控制面板。 （此链接会转到在“管理 IP”中指定的 IP 地址  。）单击“创建”按钮后，链接需要 15 秒到 1 分钟才能变为活动状态。 如果 Web 界面未加载，请再等待几秒钟，然后再次单击该链接。
 
-创建群集需要一分钟或更长时间，但可以在流程进行的过程中登录控制面板。 在群集创建过程完成之前，控制面板的仪表板页显示警告为正常现象。 
+创建群集需要一分钟或更长时间，但可以在流程进行的过程中登录控制面板。 在群集创建过程完成之前，控制面板的仪表板页显示警告为正常现象。
 
-## <a name="open-the-settings-pages"></a>打开“设置”页 
+## <a name="open-the-settings-pages"></a>打开“设置”页
 
-创建群集后，需要自定义其网络和工作流的配置。 
+创建群集后，需要自定义其网络和工作流的配置。
 
 使用控制面板 Web 界面设置新的群集。 单击群集创建状态屏幕中的链接，或浏览到在群集上设置的管理 IP 地址。
 
@@ -300,9 +301,9 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 ### <a name="required-configuration"></a>所需配置
 
-大多数或所有群集都需要执行这些步骤。 
+大多数或所有群集都需要执行这些步骤。
 
-* 向群集添加节点 
+* 向群集添加节点
 
   三个节点为标准配置，但许多生产群集具有更多节点 - 最多 24 个节点。
 
@@ -312,24 +313,24 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
   为群集将使用的每个后端存储系统添加*核心文件管理器*定义。 有关详细信息，请阅读[添加后端存储并配置虚拟命名空间](fxt-add-storage.md#about-back-end-storage)。
 
-* 设置客户端访问和虚拟命名空间 
+* 设置客户端访问和虚拟命名空间
 
   创建至少一个虚拟服务器 (vserver) 并为其分配 IP 地址范围以供客户端计算机使用。 还必须配置群集命名空间（有时称为全局命名空间或 GNS），这是一种虚拟文件系统功能，可用于将后端存储导出到虚拟路径。 即使切换后端存储介质，群集命名空间也可为客户端提供一致且可访问的文件系统结构。 命名空间还可以为 Azure Blob 容器或其他受支持的云对象存储提供用户友好的虚拟存储层次结构。
 
   有关详细信息，请阅读[配置命名空间](fxt-add-storage.md#configure-the-namespace)。 此步骤包括：
   * 创建 vserver
-  * 设置客户端网络视图和后端存储之间的联接 
+  * 设置客户端网络视图和后端存储之间的联接
   * 定义每个 vserver 服务的客户端 IP 地址
 
-  > [!Note] 
+  > [!Note]
   > 建议在开始设置群集的 GNS 之前进行充分规划。 阅读“群集配置指南”中的[使用全局命名空间](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)和[创建和使用 VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#creating-and-working-with-vservers) 部分以获取帮助。
 
 * [调整网络设置](fxt-configure-network.md)
 
   有多个与网络相关的设置应针对新群集进行验证或自定义。 有关这些项目的详细信息，请阅读[调整网络设置](fxt-configure-network.md)：
 
-  * 验证 DNS 和 NTP 配置 
-  * 配置目录服务（如果需要） 
+  * 验证 DNS 和 NTP 配置
+  * 配置目录服务（如果需要）
   * 设置 VLAN
   * 配置代理服务器
   * 向群集网络添加 IP 地址
@@ -343,14 +344,14 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 ### <a name="optional-configuration"></a>可选配置
 
-并非所有群集都需要执行这些步骤。 某些类型的工作流程或特定群集管理样式需要这些步骤。 
+并非所有群集都需要执行这些步骤。 某些类型的工作流程或特定群集管理样式需要这些步骤。
 
 * 自定义节点设置
 
   可以在群集范围级别设置节点名称和配置节点 IPMI 端口，也可单独进行设置和配置。 如果在将节点添加到群集之前配置这些设置，则新节点可以在加入时自动获取相关设置。 旧群集创建文档[自定义节点设置](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_node.html)中介绍了这些选项。
 
   > [!TIP]
-  > Microsoft Azure 文档站点上尚未提供此产品的某些文档。 [群集配置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)和旧版[群集创建指南](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html)的链接将带你转到单独的 GitHub 托管网站。 
+  > Microsoft Azure 文档站点上尚未提供此产品的某些文档。 [群集配置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)和旧版[群集创建指南](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html)的链接将带你转到单独的 GitHub 托管网站。
 
 * 配置 SMB
 
@@ -364,14 +365,13 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
   如果想要使用 Azure Blob 之外的云存储，则必须安装其他功能许可证。 有关购买 FlashCloud<sup>TM</sup> 许可证的详细信息，请与 Microsoft 代表联系。 详细信息在[添加后端存储并配置虚拟命名空间](fxt-add-storage.md#about-back-end-storage)中进行说明。
 
-
 ### <a name="enable-support"></a>启用支持
 
 Azure FXT Edge Filer 群集可以自动上传有关群集的支持数据。 这些上传内容让员工得以提供最佳的客户服务。
 
 请按照以下步骤设置支持上传。
 
-1. 导航到“群集” > “支持”设置页   。 接受隐私政策。 
+1. 导航到“群集” > “支持”设置页   。 接受隐私政策。
 
    ![显示控制面板和弹出窗口（包含用于接受隐私政策的“确认”按钮）的屏幕截图](media/fxt-cluster-create/fxt-privacy-policy.png)
 
@@ -391,7 +391,7 @@ Azure FXT Edge Filer 群集可以自动上传有关群集的支持数据。 这�
 
 ## <a name="next-steps"></a>后续步骤
 
-创建基本群集并接受隐私政策后，添加其余群集节点。 
+创建基本群集并接受隐私政策后，添加其余群集节点。
 
 > [!div class="nextstepaction"]
 > [添加群集节点](fxt-add-nodes.md)

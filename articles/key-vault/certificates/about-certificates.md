@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88923681"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919924"
 ---
 # <a name="about-azure-key-vault-certificates"></a>关于 Azure Key Vault 证书
 
@@ -44,8 +44,17 @@ ms.locfileid: "88923681"
 
 可寻址密钥与不可导出的 KV 证书的相关性变得更高。 可寻址 KV 密钥的操作是从用于创建 KV 证书的 KV 证书策略的“密钥使用情况”字段映射的。  
 
- - 支持的 KeyType：RSA、RSA-HSM、EC、EC-HSM 等（参见[此处](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)）“可导出”状态仅与 RSA 和 EC 一起使用。 HSM 密钥不可导出。
+证书支持的密钥对的类型
 
+ - 支持的 KeyType：RSA、RSA-HSM、EC、EC-HSM 等（参见[此处](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)）“可导出”状态仅与 RSA 和 EC 一起使用。 HSM 密钥不可导出。
+
+|密钥类型|关于|安全性|
+|--|--|--|
+|**RSA**| “受软件保护的”RSA 密钥|FIPS 140-2 级别 1|
+|**RSA-HSM**| “受 HSM 保护的”RSA 密钥（仅限高级 SKU）|FIPS 140-2 级别 2 HSM|
+|**EC**| “受软件保护的”椭圆曲线密钥|FIPS 140-2 级别 1|
+|**EC-HSM**| “受 HSM 保护的”Elliptic Curve 密钥（仅限高级 SKU）|FIPS 140-2 级别 2 HSM|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>证书属性和标记
 
@@ -82,11 +91,11 @@ Key Vault 证书具有以下属性：
 
 从零开始创建 Key Vault 证书时，需要提供策略。 该策略指定如何创建此 Key Vault 证书版本或下一个 Key Vault 证书版本。 建立策略后，便不需要使用连续创建操作创建将来的版本。 所有版本的 Key Vault 证书只有一个策略实例。  
 
-概括而言，证书策略包含以下信息（可在[此处](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)找到其定义）：  
+概括而言，证书策略包含以下信息（可在[此处](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)找到其定义）：  
 
 -   X509 证书属性：包含主题名称、主题备用名称以及用于创建 x509 证书请求的其他属性。  
 -   密钥属性：包含密钥类型、密钥长度、可导出字段和 ReuseKeyOnRenewal 字段。 这些字段指示密钥保管库如何生成密钥。 
-     - 支持的 KeyType：RSA、RSA-HSM、EC、EC-HSM、oct（已在[此处](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)列出） 
+     - 支持的 KeyType：RSA、RSA-HSM、EC、EC-HSM、oct（已在[此处](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)列出） 
 -   机密属性：包含可寻址机密的内容类型等机密属性以生成机密值，用于以机密的形式检索证书。  
 -   生存期操作：包含 KV 证书生命周期的操作。 每个生存期操作包含：  
 
@@ -133,7 +142,7 @@ Key Vault 证书对象包含与所选证书颁发者提供者进行通信的配�
 
     -   提供用于在密钥保管库中创建提供程序的颁发者对象的配置  
 
-有关从证书门户创建颁发者对象的详细信息，请参阅 [Key Vault 证书博客](https://aka.ms/kvcertsblog)  
+有关从证书门户创建颁发者对象的详细信息，请参阅 [Key Vault 证书博客](/archive/blogs/kv/manage-certificates-via-azure-key-vault)  
 
 Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对象。 在创建颁发者对象以后，即可在一个或多个证书的策略中引用其名称。 在创建和续订证书的过程中从 CA 提供者请求 x509 证书时，引用颁发者对象可以指示 Key Vault 按颁发者对象中的规定使用配置。  
 
@@ -141,42 +150,11 @@ Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对�
 
 ## <a name="certificate-contacts"></a>证书联系人
 
-证书联系人包含联系人信息以发送由证书生存期事件触发的通知。 密钥保管库中的所有证书共享联系人信息。 如果保管库中的任何证书发生事件，所有指定联系人都会收到通知。  
-
-如果证书的策略设置为自动续订，则在发生以下事件时发送通知。  
-
-- 证书续订之前
-- 证书续订之后，指出是否已成功续订证书，或是否存在错误，需要手动续订证书。  
-
-  如果你将证书策略设置为手动续订（仅限电子邮件），系统会在你需要续订证书时发送通知。  
+证书联系人包含联系人信息以发送由证书生存期事件触发的通知。 密钥保管库中的所有证书共享联系人信息。 如果保管库中的任何证书发生事件，所有指定联系人都会收到通知。 有关如何设置证书联系人的信息，请参阅[此处](overview-renew-certificate.md#steps-to-set-certificate-notifications)  
 
 ## <a name="certificate-access-control"></a>证书访问控制
 
- 证书的访问控制由 Key Vault 托管，并且由包含这些证书的 Key Vault 提供。 在同一 Key Vault 中，证书的访问控制策略不同于密钥和机密的访问控制策略。 用户可以创建一个或多个保管库来保存证书，以维护方案相应的证书分段和管理。  
-
- 在密钥保管库上的机密访问控制条目中可以按主体使用以下权限，这些权限对机密对象上允许的操作采取严密的镜像操作：  
-
-- 针对证书管理操作的权限
-  - *get*：获取最新版本的证书或任何版本的证书 
-  - *list*：列出最新版本的证书或任何版本的证书  
-  - *update*：更新证书
-  - *create*：创建 Key Vault 证书
-  - *import*：将证书材料导入到 Key Vault 证书
-  - *delete*：删除证书、策略及其所有版本  
-  - *recover*：恢复已删除的证书
-  - *backup*：备份密钥保管库中的证书
-  - *restore*：将备份证书还原到密钥保管库
-  - *managecontacts*：管理 Key Vault 证书联系人  
-  - *manageissuers*：管理 Key Vault 证书颁发机构/颁发者
-  - *getissuers*：获取证书的颁发机构/颁发者
-  - *listissuers*：列出证书的颁发机构/颁发者  
-  - *setissuers*：创建或更新 Key Vault 证书的颁发机构/颁发者  
-  - *deleteissuers*：删除 Key Vault 证书的颁发机构/颁发者  
- 
-- 针对特权操作的权限
-  - *purge*：清除（永久删除）已删除的证书
-
-有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
+ 证书的访问控制由 Key Vault 托管，并且由包含这些证书的 Key Vault 提供。 在同一 Key Vault 中，证书的访问控制策略不同于密钥和机密的访问控制策略。 用户可以创建一个或多个保管库来保存证书，以维护方案相应的证书分段和管理。  有关证书访问控制的详细信息，请参阅[此处](certificate-access-control.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ac74bb4b37535d0c0b095ea300afc15aa0978ed8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653539"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950119"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虚拟机的 SAP HANA 高可用性
 
@@ -52,7 +53,7 @@ ms.locfileid: "88653539"
 - [SAP HANA 服务自动重启](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [配置 SAP HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-除了熟悉如何在 Azure 中部署 VM 外，在 Azure 中定义可用性体系结构之外，我们还建议你先阅读[在 Azure 中管理 Windows 虚拟机的可用性](../../windows/manage-availability.md)。
+除了熟悉如何在 Azure 中部署 VM 外，在 Azure 中定义可用性体系结构之外，我们还建议你先阅读[在 Azure 中管理 Windows 虚拟机的可用性](../../manage-availability.md)。
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure 组件的服务级别协议
 
@@ -85,4 +86,3 @@ Azure 针对不同组件（如网络、存储和 VM）提供了不同的可用�
 
 
 
-  

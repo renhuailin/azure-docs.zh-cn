@@ -1,17 +1,17 @@
 ---
 title: 如何确保验证 Azure Database for PostgreSQL 数据
 description: 了解如何使用客户托管密钥验证 Azure Database for PostgreSQL 数据加密的加密。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: 0a1b8eaee0a483fb4ce09a33d3c7ca9fe6f980e1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7ec27cc4f28151214ca97ffb5113607d6b60ee36
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884340"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240573"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>验证 Azure Database for PostgreSQL 的数据加密
 
@@ -23,17 +23,17 @@ ms.locfileid: "90884340"
 
 1. 如果要验证客户的密钥是否用于加密，请执行以下步骤：
 
-    * 在 Azure 门户中，导航到**Azure Key Vault**  ->  **键**
+    * 在 Azure 门户中，导航到 **Azure Key Vault**  ->  **键**
     * 选择用于服务器加密的密钥。
-    * 将 " **已启用** 密钥" 的状态设置为 " **否**"。
+    * 将 " **已启用** 密钥" 的状态设置为 " **否** "。
   
-       经过一段时间后 (**~ 15 分钟**) ，Azure Database for PostgreSQL 服务器 **状态** 应为 " **不可访问**"。 对服务器所做的任何 i/o 操作都将失败，验证服务器确实已用客户密钥进行了加密，并且密钥当前无效。
+       经过一段时间后 ( **~ 15 分钟** ) ，Azure Database for PostgreSQL 服务器 **状态** 应为 " **不可访问** "。 对服务器所做的任何 i/o 操作都将失败，验证服务器确实已用客户密钥进行了加密，并且密钥当前无效。
     
         为了使服务器 **可用于** ，可以重新验证密钥。 
     
-    * 将 Key Vault 中的项的状态设置为 **"是"**。
-    * 在 "服务器 **数据加密**" 中，选择 "重新 **验证密钥**"。
-    * 成功验证密钥后，服务器**状态**将更改为 "**可用**"
+    * 将 Key Vault 中的项的状态设置为 **"是"** 。
+    * 在 "服务器 **数据加密** " 中，选择 "重新 **验证密钥** "。
+    * 成功验证密钥后，服务器 **状态** 将更改为 " **可用** "
 
 2. 在 Azure 门户上，如果你可以确保设置加密密钥，则使用 Azure 门户中使用的客户密钥对数据进行加密。
 

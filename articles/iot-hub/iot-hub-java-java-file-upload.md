@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: e6006444e933dd93467dde01affd29c5d0c4a146
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 2a02dc94c0dc0939e6c1eef624fc6fe65fb98ac6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019540"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147010"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>通过 IoT 中心将设备中的文件上传到云 (Java)
 
@@ -52,7 +52,7 @@ ms.locfileid: "90019540"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”下选择“Java 8”以获取 JDK 8 的下载。
+* [Java SE 开发工具包 8](/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”下选择“Java 8”以获取 JDK 8 的下载。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -284,4 +284,4 @@ mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [使用 IoT Edge 模拟设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 IoT Edge 模拟设备](../iot-edge/quickstart-linux.md)

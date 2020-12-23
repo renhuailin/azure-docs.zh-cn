@@ -4,15 +4,15 @@ description: 了解适用于 Microsoft AppSource 和 Azure 市场产品/服务�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 07/06/2020
-ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708639"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492083"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -34,7 +34,7 @@ ms.locfileid: "91708639"
 
 | 在线商店 | 类别 <br>按在线商店 | 类别 <br>按在线商店 | 行业 <br> 对于 AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **产品/服务类型**   |  **Azure 市场**  | **AppSource**  |
+| **产品类型**   |  **Azure 市场**  | **AppSource**  |
 | Azure 应用 | X | |
 | 容器 | X | |
 | 咨询服务 | | | X |
@@ -130,8 +130,8 @@ Microsoft AppSource 和 Azure Marketplace 是提供不同解决方案类型的�
 ## <a name="link-to-your-offer-page-from-your-website"></a>从网站链接到套餐页
 
 当你从网站上的 AppSource 或 Azure Marketplace 徽章链接到商业 Marketplace 中的列表时，你可以通过在 URL 末尾包含以下查询参数来支持强分析和报告：
-* **src**：包括路由到 AppSource 的流量的来源（例如网站、LinkedIn 或 Facebook）。
-* **mktcmpid**：市场营销活动 ID，可以包含字母、数字、下划线和连字符的任意组合，最多 16 个字符（例如 blogpost_12）。
+* **src** ：包括路由到 AppSource 的流量的来源（例如网站、LinkedIn 或 Facebook）。
+* **mktcmpid** ：市场营销活动 ID，可以包含字母、数字、下划线和连字符的任意组合，最多 16 个字符（例如 blogpost_12）。
 
 以下示例 URL 包含前面所述的两个查询参数：`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

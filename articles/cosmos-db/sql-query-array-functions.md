@@ -3,18 +3,20 @@ title: Azure Cosmos DB 查询语言中的数组函数
 description: 了解如何使用数组函数对 Azure Cosmos DB 中的数组执行操作
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2a4033088a9152363a91c368109136062cace4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27f9c0af62c4cbdd550fd9907a0dd88d72bba6e
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563504"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549202"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>数组函数 (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 使用数组函数可以对 Azure Cosmos DB 中的数组执行操作。
 
@@ -36,4 +38,4 @@ ms.locfileid: "85563504"
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 - [用户定义的函数](sql-query-udfs.md)
-- [聚合](sql-query-aggregates.md)
+- [聚合](sql-query-aggregate-functions.md)

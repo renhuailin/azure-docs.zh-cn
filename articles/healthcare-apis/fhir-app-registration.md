@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: 22f31cf3911b5ea24e8798fb226e389071fadd0b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa95dc5cc052fbff6c553de50f4f52dc5df850a5
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87848972"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398107"
 ---
 # <a name="register-the-azure-active-directory-apps-for-azure-api-for-fhir"></a>为 Azure API for FHIR 注册 Azure Active Directory 应用
 
@@ -31,9 +31,9 @@ ms.locfileid: "87848972"
 
 客户端应用程序是要请求令牌的客户端的注册。  在 OAuth 2.0 中，我们通常区分至少三种不同类型的应用程序：
 
-1. 机密客户端，在 Azure AD 中也称为 Web 应用。  机密客户端是使用[授权代码流](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)，代表可提供有效凭据的已登录用户获取令牌的应用程序。 之所以将它们称作机密客户端，是因为它们能够保守机密，并在使用身份验证代码交换令牌时向 Azure AD 提供此机密。 由于机密客户端能够使用客户端机密进行自我身份验证，因此它们的受信任程度高于公共客户端，可以获得生存期更长的令牌，且可获得刷新令牌。 阅读有关如何[注册机密客户端](register-confidential-azure-ad-client-app.md)的详细信息。 请注意，必须注册回复 URL，客户端将凭此接收授权代码。
-1. **公共客户端**。 这些客户端不能保守机密。 通常，它是一个移动设备应用程序或单页 JavaScript 应用程序，客户端中的机密可能会被用户发现。 公共客户端也使用授权代码流，但在获取令牌时，它们不可提供机密，只能获得生存期较短的令牌，且无法获得刷新令牌。 阅读有关如何[注册公共客户端](register-public-azure-ad-client-app.md)的详细信息。
-1. 服务客户端。 这些客户端使用[客户端凭据流](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)代表自身（不代表用户）获取令牌。 它们通常代表以非交互方式访问 FHIR 服务器的应用程序。 例如引入进程。 使用服务客户端时，无需启动通过调用 `/authorize` 终结点获取令牌的进程。 服务客户端可以直接进入 `/token` 终结点，并提供客户端 ID 和客户端机密来获取令牌。 阅读有关如何[注册服务客户端](register-service-azure-ad-client-app.md)的详细信息
+1. 机密客户端，在 Azure AD 中也称为 Web 应用。  机密客户端是使用[授权代码流](../active-directory/azuread-dev/v1-protocols-oauth-code.md)，代表可提供有效凭据的已登录用户获取令牌的应用程序。 之所以将它们称作机密客户端，是因为它们能够保守机密，并在使用身份验证代码交换令牌时向 Azure AD 提供此机密。 由于机密客户端能够使用客户端机密进行自我身份验证，因此它们的受信任程度高于公共客户端，可以获得生存期更长的令牌，且可获得刷新令牌。 阅读有关如何[注册机密客户端](register-confidential-azure-ad-client-app.md)的详细信息。 请注意，必须注册回复 URL，客户端将凭此接收授权代码。
+1. **公共客户端** 。 这些客户端不能保守机密。 通常，它是一个移动设备应用程序或单页 JavaScript 应用程序，客户端中的机密可能会被用户发现。 公共客户端也使用授权代码流，但在获取令牌时，它们不可提供机密，只能获得生存期较短的令牌，且无法获得刷新令牌。 阅读有关如何[注册公共客户端](register-public-azure-ad-client-app.md)的详细信息。
+1. 服务客户端。 这些客户端使用[客户端凭据流](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)代表自身（不代表用户）获取令牌。 它们通常代表以非交互方式访问 FHIR 服务器的应用程序。 例如引入进程。 使用服务客户端时，无需启动通过调用 `/authorize` 终结点获取令牌的进程。 服务客户端可以直接进入 `/token` 终结点，并提供客户端 ID 和客户端机密来获取令牌。 阅读有关如何[注册服务客户端](register-service-azure-ad-client-app.md)的详细信息
 
 ## <a name="next-steps"></a>后续步骤
 

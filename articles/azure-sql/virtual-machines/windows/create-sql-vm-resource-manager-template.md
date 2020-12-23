@@ -7,12 +7,13 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.subservice: deployment
+ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88660201"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359636"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 SQL Server VM
 
@@ -45,14 +46,14 @@ SQL Server VM ARM 模板需要以下内容：
 - [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)：创建网络安全组。 
 - [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)：配置网络接口。 
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)：在 Azure 中创建虚拟机。 
-- [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines)：向 SQL VM 资源提供程序注册虚拟机。 
+- [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines)：向 SQL IaaS 代理扩展注册虚拟机。 
 
 可以在[快速入门模板库](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)中找到更多有关 Azure VM 模板的 SQL Server。
 
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 选择下图登录到 Azure 并打开一个模板。 使用该模板创建一个虚拟机，并在该虚拟机上安装目标 SQL Server 版本，然后向 SQL VM 资源提供程序注册。 
+1. 选择下图登录到 Azure 并打开一个模板。 使用该模板创建一个虚拟机，并在该虚拟机上安装目标 SQL Server 版本，然后向 SQL IaaS 代理扩展注册。 
 
    [![部署到 Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -120,7 +121,7 @@ Write-Host "Press [ENTER] to continue..."
 有关引导你完成模板创建过程的分步教程，请参阅：
 
 > [!div class="nextstepaction"]
-> [教程：创建和部署你的第一个 ARM 模板](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教程：创建和部署你的第一个 ARM 模板](../../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 有关部署 SQL Server VM 的其他方法，请参阅： 
 - [Azure 门户](create-sql-vm-portal.md)

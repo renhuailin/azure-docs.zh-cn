@@ -1,122 +1,72 @@
 ---
-title: Azure 媒体服务 v3 可用的云和区域
+title: Azure 媒体服务 v3 云和地区可用性
 description: 本文讨论 Azure 媒体服务 v3 可用的 Azure 云和区域。
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: ''
-ms.topic: article
-ms.date: 08/31/2020
+ms.topic: reference
+ms.date: 10/28/2020
 ms.author: inhenkel
-ms.custom: references_regions
-ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 20c025cfabf6ed3cedd838f8be964bec06ad595e
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597132"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242492"
 ---
-# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
+# <a name="azure-media-services-v3-clouds-and-regions-availability"></a>Azure 媒体服务 v3 云和地区可用性
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azure 政府、Azure德国、Azure 中国世纪互联中使用。 但是，并非所有媒体服务功能都可在所有 Azure 云中使用。 本文档概述了主要媒体服务 v3 组件的可用性。
+Azure 媒体服务 v3 通过 Azure 资源管理器提供。 但是，并非所有媒体服务功能都可在所有 Azure 云中使用。 本文档概述了主要媒体服务 v3 组件的可用性。 下表显示了每个区域中可用的媒体服务功能。  
 
-## <a name="feature-availability-in-azure-clouds"></a>Azure 云中的功能可用性
+[!INCLUDE [reference-feature-availability-us](./includes/regions-availability-table-key.md)]
 
-| 功能|全球 Azure 区域 | Azure Government|Azure 德国|Azure 中国世纪互联|
-| --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | 可用 | 不可用 | 不可用 | 不可用 |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 不可用 | 不可用 | 不可用 |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 不可用 | 不可用 | 不可用 |
-| [StandardEncoderPreset](encoding-concept.md) | 可用 | 可用 | 可用 | 可用 |
-| [LiveEvents](live-streaming-overview.md) | 可用 | 可用 | 可用 | 可用 |
-| [StreamingEndpoints](streaming-endpoint-concept.md) | 可用 | 可用 | 可用 | 可用 |
+使用右侧的导航查找感兴趣的区域。
 
-## <a name="feature-availability-in-preview"></a>预览版中的功能可用性
-
-[LiveTranscription](live-transcription.md) 在以下区域中提供：
-
-- Southeast Asia
-- 西欧
-- 北欧
-- 美国东部
-- 美国中部
-- 美国中南部
-- 美国西部 2
-- Brazil South
+<!-- US and US Gov -->
+[!INCLUDE [reference-feature-availability-us](./includes/reference-feature-availability-us.md)]
+[!INCLUDE [reference-feature-availability-usgov](./includes/reference-feature-availability-usgov.md)]
+<!-- Africa -->
+[!INCLUDE [reference-feature-availability-africa](./includes/reference-feature-availability-africa.md)]
+<!-- APAC -->
+[!INCLUDE [reference-feature-availability-apac](./includes/reference-feature-availability-apac.md)]
+<!-- Australia -->
+[!INCLUDE [reference-feature-availability-australia](./includes/reference-feature-availability-australia.md)]
+<!-- Brazil -->
+[!INCLUDE [reference-feature-availability-brazil](./includes/reference-feature-availability-brazil.md)]
+<!-- Canada -->
+[!INCLUDE [reference-feature-availability-canada](./includes/reference-feature-availability-canada.md)]
+<!-- China -->
+[!INCLUDE [reference-feature-availability-china](./includes/reference-feature-availability-china.md)]
+<!-- Europe -->
+[!INCLUDE [reference-feature-availability-europe](./includes/reference-feature-availability-europe.md)]
+<!-- Germany -->
+[!INCLUDE [reference-feature-availability-germany](./includes/reference-feature-availability-germany.md)]
+<!-- India -->
+[!INCLUDE [reference-feature-availability-india](./includes/reference-feature-availability-india.md)]
+<!-- Japan -->
+[!INCLUDE [reference-feature-availability-japan](./includes/reference-feature-availability-japan.md)]
+<!-- Korea -->
+[!INCLUDE [reference-feature-availability-korea](./includes/reference-feature-availability-korea.md)]
+<!-- Norway -->
+[!INCLUDE [reference-feature-availability-norway](./includes/reference-feature-availability-norway.md)]
+<!-- Switzerland -->
+[!INCLUDE [reference-feature-availability-switzerland](./includes/reference-feature-availability-switzerland.md)]
+<!-- UAE -->
+[!INCLUDE [reference-feature-availability-uae](./includes/reference-feature-availability-uae.md)]
+<!-- UK -->
+[!INCLUDE [reference-feature-availability-uk](./includes/reference-feature-availability-uk.md)]
 
 ## <a name="regionsgeographieslocations"></a>区域/地域/位置
 
 [部署 Azure 媒体服务的区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>区域代码名
-
-如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](/cli/azure/?view=azure-cli-latest) 中运行以下命令行
-
-```azurecli-interactive
-az account list-locations
-```
-
-运行上面所示的命令行后，会得到所有 Azure 区域的列表。 导航到具有你要查找的 *displayName* 的 Azure 区域，并将其 *name* 值用于**位置**参数。
-
-例如，对于 Azure 区域“美国西部 2”（如下所示），你将“westus2”用于**位置**参数。
-
-```json
-   {
-      "displayName": "West US 2",
-      "id": "/subscriptions/00000000-23da-4fce-b59c-f6fb9513eeeb/locations/westus2",
-      "latitude": "47.233",
-      "longitude": "-119.852",
-      "name": "westus2",
-      "subscriptionId": null
-    }
-```
-
-## <a name="endpoints"></a>终结点  
-
-从不同的区域 Azure 云连接到媒体服务帐户时，应记住以下终结点。
-
-### <a name="global-azure"></a>全球 Azure
-
-| 服务 | 终结点 |
-| ------- | -------- |
-| Azure Resource Manager |  `https://management.azure.com/` |
-| 身份验证 | `https://login.microsoftonline.com/` |
-| 令牌受众 | `https://management.core.windows.net/` |
-
-### <a name="azure-government"></a>Azure Government
-
-| 服务 | 终结点 |
-| ------- | -------- |
-| Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| 身份验证 | `https://login.microsoftonline.us/` |
-| 令牌受众 | `https://management.core.usgovcloudapi.net/` |
-
-[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
-
-### <a name="azure-germany"></a>Azure 德国
-
-| 服务 | 终结点 |
-| ------- | -------- |
-| Azure Resource Manager | `https://management.cloudapi.de/` |
-| 身份验证 | `https://login.microsoftonline.de/` |
-| 令牌受众 | `https://management.core.cloudapi.de/`|
-
-### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
-
-| 服务 | 终结点 |
-| ------- | -------- |
-| Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| 身份验证 | `https://login.chinacloudapi.cn/` |
-| 令牌受众 |  `https://management.core.chinacloudapi.cn/` |
-
 ## <a name="see-also"></a>另请参阅
 
 * [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)
+* [区域代码名称和终结点](azure-regions-code-names.md)
 * [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)
 

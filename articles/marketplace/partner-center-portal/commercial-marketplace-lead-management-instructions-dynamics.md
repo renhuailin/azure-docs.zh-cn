@@ -4,19 +4,19 @@ description: 了解如何设置 Dynamics 365 Customer Engagement 以管理来自
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5d07dda82361ff59a43aa6753669bf38f4463059
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030746"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491131"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 Customer Engagement 配置潜在顾客管理
 
-本文介绍如何设置 Dynamics 365 Customer Engagement（以前名为 Dynamics CRM Online）。 在[使用 Customer Engagement 和 SharePoint Online 配置基于服务器的身份验证](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)中详细了解这一变化，以处理来自商业市场产品/服务的潜在销售顾客。
+本文介绍如何设置 Dynamics 365 Customer Engagement（以前名为 Dynamics CRM Online）。 在[使用 Customer Engagement 和 SharePoint Online 配置基于服务器的身份验证](/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)中详细了解这一变化，以处理来自商业市场产品/服务的潜在销售顾客。
 
 >[!NOTE]
 >这些说明特定于 Microsoft 为 Dynamics 365 Customer Engagement 托管的云环境。 当前不支持直接连接到 Dynamics 本地环境。 有其他选项可供你用于接收潜在顾客，例如配置 [HTTPS 终结点](./commercial-marketplace-lead-management-instructions-https.md)或 [Azure 表](./commercial-marketplace-lead-management-instructions-azure-table.md)。

@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.custom: how-to
-ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.custom: how-to, data4ml
+ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841350"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461439"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>在 Azure 机器学习 studio 中连接到数据
 
@@ -24,14 +24,14 @@ ms.locfileid: "91841350"
 
 下表定义和汇总了数据存储和数据集的优点。 
 
-|对象|描述| 好处|   
+|对象|说明| 优点|   
 |---|---|---|
 |数据存储| 通过在与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中存储连接信息（如订阅 ID 和令牌授权），安全地连接到 Azure 上的存储服务 | 由于你的信息已安全存储，你 <br><br> <li> 不要 &nbsp; 将 &nbsp; 身份验证 &nbsp; 凭据 &nbsp; 或 &nbsp; 原始 &nbsp; 数据源置于风险之中。 <li> 不再需要在脚本中对其进行硬编码。
 |数据集| 通过创建数据集，可以创建对数据源位置的引用及其元数据的副本。 利用数据集，你可以 <br><br><li> 在模型定型过程中访问数据。<li> 与其他用户共享数据和展开协作。<li> 利用开源库（如 pandas）进行数据浏览。 | 由于数据集是延迟计算的，并且数据仍保留在其现有位置，因此 <br><br><li>在存储中保留数据的单个副本。<li> 不产生额外的存储成本 <li> 不会无意中更改原始数据源。<li>会提高 ML 工作流性能速度。 
 
 若要了解数据存储和数据集适合 Azure 机器学习总体数据访问工作流的位置，请参阅 [安全访问数据](concept-data.md#data-workflow) 一文。
 
-有关代码首次体验，请参阅以下文章，使用 [Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) 执行以下操作：
+有关代码首次体验，请参阅以下文章，使用 [Azure 机器学习 PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) 执行以下操作：
 * [通过数据存储连接到 Azure 存储服务](how-to-access-data.md)。 
 * [创建 Azure 机器学习数据集](how-to-create-register-datasets.md)。 
 
@@ -50,19 +50,17 @@ ms.locfileid: "91841350"
 
 可从[这些 Azure 存储解决方案](how-to-access-data.md#matrix)创建数据存储。 **对于不支持的存储解决方案**，以及在 ML 试验期间节省数据出口成本，你必须 [将数据移动](how-to-access-data.md#move) 到受支持的 Azure 存储解决方案。 [了解有关数据存储的详细信息](how-to-access-data.md)。 
 
-
-
 在 Azure 机器学习工作室中通过几个步骤创建新的数据存储。
 
 > [!IMPORTANT]
-> 如果数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保工作室可以访问你的数据。 请参阅 [网络隔离 & 隐私性](how-to-enable-virtual-network.md#machine-learning-studio) ，以确保应用适当的配置步骤。
+> 如果数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保工作室可以访问你的数据。 请参阅 [网络隔离 & 隐私性](how-to-enable-studio-virtual-network.md) ，以确保应用适当的配置步骤。
 
 1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 1. 在左窗格中的“管理”下，选择“数据存储” 。
 1. 选择“+ 新建数据存储”。
-1. 填写新数据存储的表单。 该表单会根据你选择的 Azure 存储类型和身份验证类型智能地进行更新。 请参阅[存储访问和权限部分](#access-validation)，了解在哪里可以找到填充此窗体所需的身份验证凭据。
+1. 填写表单以创建和注册新数据存储。 该表单会根据你选择的 Azure 存储类型和身份验证类型智能地进行更新。 请参阅[存储访问和权限部分](#access-validation)，了解在哪里可以找到填充此窗体所需的身份验证凭据。
 
-下面的示例展示了创建 **Azure Blob 数据存储**时窗体的外观：
+下面的示例展示了创建 **Azure Blob 数据存储** 时窗体的外观：
 
 ![新数据存储的表单](media/how-to-connect-data-ui/new-datastore-form.png)
 
@@ -86,7 +84,7 @@ ms.locfileid: "91841350"
 1. 选择“创建数据集”以选择数据集的源。 此源可以是本地文件、数据存储、公共 Url 或 [Azure 开放数据集](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)。
 1. 为“数据集类型”选择“表格”或“文件”。 
 1. 选择“下一步”，打开“数据存储和文件选择”窗体。 在此窗体上，可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的具体数据文件。
-    1. 如果数据位于虚拟网络中，请启用“跳过验证”。 详细了解[虚拟网络隔离和隐私](how-to-enable-virtual-network.md#machine-learning-studio)。
+    1. 如果数据位于虚拟网络中，请启用“跳过验证”。 详细了解[虚拟网络隔离和隐私](how-to-enable-studio-virtual-network.md)。
     1. 对于表格数据集，可以指定 "timeseries" 特征，以便对数据集启用时间相关的操作。 了解如何 [将 timeseries 特征添加到数据集](how-to-monitor-datasets.md#studio-dataset)。
 1. 选择“下一步”以填充“设置和预览”以及“架构”窗体；它们是根据文件类型智能填充的。在这些窗体上进行创建之前，可以进一步配置数据集。   
 1. 选择“下一步”，查看“确认详细信息”窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](#profile)。
@@ -121,7 +119,7 @@ ms.locfileid: "91841350"
 |类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
 |Min| 列的最小值。 对于类型不具有固有排序 (如) 的功能，将显示空白项。
 |Max| 列的最大值。 
-|Count| 列中缺失和未缺失条目的总数。
+|计数| 列中缺失和未缺失条目的总数。
 |非缺失计数| 列中未缺失的条目数。 空字符串和误差被视为值，因此它们不会计入“未缺少计数”。
 |分位数| 每个分位数中的近似值，用于提供数据分布的概观。
 |平均值| 列的算术中间值或平均值。
@@ -136,11 +134,11 @@ ms.locfileid: "91841350"
 
 ### <a name="virtual-network"></a>虚拟网络
 
-如果你的数据存储帐户在虚拟网络中，则需要执行其他配置步骤来确保 Azure 机器学习能够访问你的数据。 请参阅[网络隔离和隐私](how-to-enable-virtual-network.md#machine-learning-studio)，以确保在创建和注册数据存储时应用适当的配置步骤。  
+如果你的数据存储帐户在虚拟网络中，则需要执行其他配置步骤来确保 Azure 机器学习能够访问你的数据。 请参阅[网络隔离和隐私](how-to-enable-studio-virtual-network.md)，以确保在创建和注册数据存储时应用适当的配置步骤。  
 
 ### <a name="access-validation"></a>访问验证
 
-在**初始数据存储创建和注册过程**中，Azure 机器学习会自动验证基础存储服务是否存在，用户提供的主体 (用户名、服务主体或 SAS 令牌) 是否有权访问指定的存储。
+在初始的数据存储创建和注册过程中，Azure 机器学习会自动验证基础存储服务是否存在，以及用户提供的主体（用户名、服务主体或 SAS 令牌）是否有权访问指定的存储。
 
 创建数据存储后，此验证只针对要求访问基础存储容器的方法执行，而不是每次检索数据存储对象时都执行 。 例如，如果要从数据存储中下载文件，则会进行验证，但如果只想更改默认数据存储，则不会进行验证。
 
@@ -153,15 +151,19 @@ ms.locfileid: "91841350"
       1. 对于帐户密钥，请转到“设置”窗格中的“访问密钥” 。
       1. 对于 SAS 令牌，请转到“设置”窗格中的“共享访问签名” 。
 
-* 如果计划使用 [服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 进行身份验证，请使用 **应用注册** ，并选择要使用的应用。
+* 如果计划使用 [服务主体](../active-directory/develop/howto-create-service-principal-portal.md) 进行身份验证，请使用 **应用注册** ，并选择要使用的应用。
     * 其对应的“概览”页面将包含租户 ID 和客户端 ID 之类的必需信息。
 
 > [!IMPORTANT]
-> 出于安全原因，你可能需要更改 Azure 存储帐户的访问密钥（帐户密钥或 SAS 令牌）。 执行此操作时，请确保将新凭据与工作区及其连接的数据存储进行同步。 了解如何 [同步已更新的凭据](how-to-change-storage-access-key.md)。
+> * 如果需要更改 Azure 存储帐户的访问密钥（帐户密钥或 SAS 令牌），请确保将新凭据与工作区以及与其连接的数据存储同步。 了解如何[同步更新的凭据](how-to-change-storage-access-key.md)。 <br> <br>
+> * 如果你注销了一个数据存储并重新注册一个同名数据存储，但注册失败，则表示工作区的 Azure Key Vault 可能未启用软删除。 默认情况下，将为工作区创建的密钥保管库实例启用软删除，但如果使用的是现有密钥保管库或是在 2020 年 10 月之前创建的工作区，则可能无法启用软删除。 有关如何启用软删除的信息，请参阅[对现有的密钥保管库启用软删除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)。
 
 ### <a name="permissions"></a>权限
 
-对于 Azure Blob 容器和 Azure Data Lake 第 2 代存储，请确保身份验证凭据具有对存储 Blob 数据读取器的访问权限。 详细了解[存储 Blob 数据读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 
+对于 Azure blob 容器和 Azure Data Lake 第2代存储，请确保身份验证凭据具有 **存储 Blob 数据读取器** 访问权限。 详细了解[存储 Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)。 帐户 SAS 令牌默认为无权限。 
+* 如需进行数据读取访问，你的身份验证凭据必须至少具有容器和对象的“列出”和“读取”权限。 
+
+* 若需进行数据写入访问，还需要“写入”和“添加”权限。
 
 ## <a name="train-with-datasets"></a>使用数据集进行训练
 

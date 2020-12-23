@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a1e2716d3f2328ebd64bbb5b6b70036ac991b56
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: de41e1ef021ea3da2b3a5bef4268469aab448a21
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531814"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637932"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Visibly 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88531814"
 * 让用户能够使用其 Azure AD 帐户自动登录到 Visibly。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88531814"
 
 * Visibly 支持 SP 发起的 SSO
 
-* 配置 Visibly 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Visibly 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-visibly-from-the-gallery"></a>从库中添加 Visibly
 
@@ -142,19 +142,19 @@ ms.locfileid: "88531814"
 
 1. 导航到导航菜单中的“设置”选项。
 
-    ![配置](./media/visibly-tutorial/settings.png)
+    ![显示选择了“设置”选项的屏幕截图。](./media/visibly-tutorial/settings.png)
 
 1. 单击“设置”中的“集成”。
 
-    ![配置](./media/visibly-tutorial/integrations.png)
+    ![显示从“设置”菜单选择了“集成”的屏幕截图。](./media/visibly-tutorial/integrations.png)
 
 1. 在“集成”中，选择 SSO 。
 
-    ![配置](./media/visibly-tutorial/sso.png)
+    ![显示从“集成”中选择了“SSO”的屏幕截图。](./media/visibly-tutorial/sso.png)
 
 1. 在下面的页中执行以下步骤。
 
-    ![配置](./media/visibly-tutorial/configuration.png)
+    ![显示“SSO 集成”页面的屏幕截图，你可以在其中输入所述值。](./media/visibly-tutorial/configuration.png)
 
     a. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“实体 ID”值 。
 
@@ -174,16 +174,16 @@ ms.locfileid: "88531814"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Visibly”磁贴时，应当会自动登录到设置了 SSO 的 Visibly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“Visibly”磁贴时，应当会自动登录到设置了 SSO 的 Visibly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [使用 Azure AD 试用 Visibly](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

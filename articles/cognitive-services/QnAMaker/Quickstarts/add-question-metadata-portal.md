@@ -1,18 +1,18 @@
 ---
-title: 快速入门：在 QnA Maker 门户中添加问题和回答
-description: 本快速入门介绍如何添加具有元数据的问题和答案对，以便用户可以找到其问题的正确答案。
+title: 在 QnA Maker 门户中添加问题和回答
+description: 本文介绍如何添加具有元数据的问题和答案对，以便用户可找到其问题的正确答案。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 930acbd3bbdb8f63b6aa888b292025a76435b289
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 53c0afa1cdb8c9920875b7ba694339107714bd54
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776742"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462193"
 ---
-# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入门：使用 QnA Maker 门户添加问题和回答
+# <a name="add-questions-and-answer-with-qna-maker-portal"></a>使用 QnA Maker 门户添加问题和回答
 
 创建知识库后，添加具有元数据的问题和回答 (QnA) 对，以便筛选回答。 下表中的问题涉及到 Azure 服务限制，但每个问题与不同的 Azure 搜索服务相关。
 
@@ -20,7 +20,7 @@ ms.locfileid: "91776742"
 
 |对|问题|Answer|元数据|
 |--|--|--|--|
-|#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
+|#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../concepts/azure-resources.md) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
 将元数据添加到 QnA 对之后，客户端应用程序可以：
@@ -37,7 +37,7 @@ ms.locfileid: "91776742"
 
 1. 登录到 [QnA Maker 门户](https://www.qnamaker.ai)。
 
-1. 选择来自[上一个快速入门](../how-to/create-knowledge-base.md)的现有知识库。
+1. 选择来自[上一个快速入门](./create-publish-knowledge-base.md)的现有知识库。
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>添加其他采用替代句式的问题
 
@@ -54,7 +54,7 @@ ms.locfileid: "91776742"
     |`What is the max size of a knowledge base?`|
     |`How many GB of data can a knowledge base hold?`|
 
-1. 选择**保存并训练**以重新训练知识库。
+1. 选择 **保存并训练** 以重新训练知识库。
 
 1. 选择“测试”，然后输入一个与新替代句式接近、但措辞不完全相同的问题：
 
@@ -62,7 +62,7 @@ ms.locfileid: "91776742"
 
     正确的回答将以 markdown 格式返回：
 
-    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../concepts/azure-resources.md) for more details.`
 
     如果在返回的回答下选择“检查”，可以查看与问题相符、但置信度级别不一样高的其他回答。
 
@@ -91,7 +91,7 @@ ms.locfileid: "91776742"
 
     现在，有两个问题具有相同的元数据标记，但这些标记的值不同。
 
-1. 选择**保存并训练**以重新训练知识库。
+1. 选择 **保存并训练** 以重新训练知识库。
 
 1. 选择顶部菜单中的“发布”转到“发布”页。
 1. 选择“发布”按钮，将当前知识库发布到终结点。

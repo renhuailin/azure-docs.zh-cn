@@ -7,34 +7,34 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 041751b5b23dbb3153f1ae638303579a860c0e5b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211878"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020157"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>如何监视 Gen2 缓存
+# <a name="how-to-monitor-the-adaptive-cache"></a>如何监视自适应缓存
 
-本文介绍如何监视和排查查询性能下降的问题，只需确定工作负荷是否在充分利用 Gen2 缓存即可。
+本文介绍如何通过确定工作负荷是否以最佳方式利用专用 SQL 池的自适应缓存来监视和解决速度缓慢的查询性能问题。
 
-Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓存中，该缓存位于基于 NVMe 且专为 Gen2 数据仓库设计的 SSD 中。 如果查询检索驻留在缓存中的段，则可提高性能。
+专用 SQL 池存储体系结构会自动将最常查询的列存储段划分为位于基于 NVMe 的 Ssd 的缓存中。 当查询检索驻留在缓存中的段时，性能会更高。
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>使用 Azure 门户进行故障排除
 
-可以使用 Azure Monitor 来查看 Gen2 缓存指标，以便排查查询性能问题。 首先转到 Azure 门户，然后依次单击“监视”  、“指标”  和“+ 选择范围”  ：
+您可以使用 Azure Monitor 查看缓存指标以对查询性能进行故障排除。 首先转到 Azure 门户，然后依次单击“监视”  、“指标”  和“+ 选择范围”  ：
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
+![屏幕截图显示了从 Azure 门户的“指标”中选择的“选择范围”。](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
-使用搜索栏和下拉栏找到你的数据仓库。 然后选择“应用”。
+使用搜索和下拉栏定位专用的 SQL 池。 然后选择“应用”。
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
+![屏幕截图显示了“选择范围”窗格，可在其中选择数据仓库。](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-排查 Gen2 缓存问题时，关键指标是“缓存命中百分比”和“缓存使用百分比”。   选择“缓存命中百分比”  ，然后使用“添加指标”  按钮添加“缓存已用百分比”  。 
+缓存故障排除的关键指标是 **缓存命中百分比** 和 **缓存已用百分比**。 选择“缓存命中百分比”  ，然后使用“添加指标”  按钮添加“缓存已用百分比”  。 
 
 ![缓存指标](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

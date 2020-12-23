@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a2139b7a0f7d51b6c759a98c93c5250666f15a9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dc9be41cd7975610f2779da09b94066c70a91652
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525133"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460523"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IamIP Patent Platform 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88525133"
 * 让用户使用其 Azure AD 帐户自动登录到 IamIP Patent Platform。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88525133"
 
 IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 
-配置 IamIP Patent Platform 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 IamIP Patent Platform 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 
 ## <a name="add-iamip-patent-platform-from-the-gallery"></a>从库中添加 IamIP Patent Platform
@@ -52,7 +52,7 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 1. 在左窗格中选择“Azure Active Directory”  。
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **IamIP Patent Platform**。 
+1. 在“从库中添加”部分的搜索框中，键入 **IamIP Patent Platform** 。 
 1. 在结果面板中选择“IamIP Patent Platform”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso-for-iamip-patent-platform"></a>配置并测试 IamIP Patent Platform 的 Azure AD SSO
@@ -99,7 +99,7 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 
 1. 若要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”并完成以下步骤： 
 
-    在“登录 URL”框中，输入 **https:\//patents.iamip.com/login-user**。 
+    在“登录 URL”框中，输入 **https:\//patents.iamip.com/login-user** 。 
 
 1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，找到“证书(原始)”对应的“下载”链接，以下载证书并将其保存到计算机上：    
 
@@ -116,7 +116,7 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。  选择“用户”，然后选择“所有用户”   。
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中，完成以下步骤： 
-   1. 在“名称”  框中，输入 **B.Simon**。  
+   1. 在“名称”  框中，输入 **B.Simon** 。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com` 。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。  
    1. 选择“创建”  。
@@ -145,22 +145,22 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 
 ### <a name="create-iamip-patent-platform-test-user"></a>创建 IamIP Patent Platform 测试用户
 
-在 [IamIP Patent Platform 支持团队](mailto:info@iamip.com)的配合下，将名为 B.Simon 的用户添加到 IamIP Patent Platform 平台。 使用单一登录前，必须先创建并激活用户。
+与 [IamIP Patent Platform 支持团队](mailto:info@iamip.com)协作，在 IamIP Patent 平台中添加名为 B.Simon 的用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用访问面板测试 Azure AD SSO 配置。
 
-在访问面板中选择“IamIP Patent Platform”磁贴时，应会自动登录到设置了 SSO 的 IamIP Patent Platform 实例。 有关访问面板的详细信息，请参阅[访问面板简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在访问面板中选择“IamIP Patent Platform”磁贴时，应会自动登录到设置了 SSO 的 IamIP Patent Platform 实例。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 IamIP Patent Platform](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 16ad757fc00439bb390a7e0dea902901c468dd1c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929230"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395285"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>在 Kubernetes 中部署 Azure SQL Edge 容器
 
@@ -48,7 +48,7 @@ Kubernetes 1.6 及更高版本支持[存储类](https://kubernetes.io/docs/conce
 * **Kubernetes 群集**
    - 本教程需要使用 Kubernetes 群集。 这些步骤使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) 来管理群集。 
 
-   - 就本教程而言，我们将使用 Azure Kubernetes 服务来部署 Azure SQL Edge。 若要使用 `kubectl` 在 AKS 中创建单节点 Kubernetes 群集并连接到此群集，请参阅[部署 Azure Kubernetes 服务 (AKS) 群集](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-deploy-cluster)。 
+   - 就本教程而言，我们将使用 Azure Kubernetes 服务来部署 Azure SQL Edge。 若要使用 `kubectl` 在 AKS 中创建单节点 Kubernetes 群集并连接到此群集，请参阅[部署 Azure Kubernetes 服务 (AKS) 群集](../aks/tutorial-kubernetes-deploy-cluster.md)。 
 
    >[!NOTE]
    >若要防范节点发生故障，Kubernetes 群集需要使用多个节点。
@@ -318,8 +318,7 @@ Kubernetes 会自动重新创建 Pod 以恢复 Azure SQL Edge 实例，并连接
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Kubernetes 简介](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Kubernetes 简介](../aks/intro-kubernetes.md)
 - [在 SQL Edge 中将机器学习和人工智能与 ONNX 结合使用](onnx-overview.md)。
 - [使用 IoT Edge 通过 SQL Edge 生成端到端 IoT 解决方案](tutorial-deploy-azure-resources.md)。
 - [Azure SQL Edge 中的数据流式处理](stream-data.md)
-

@@ -1,5 +1,5 @@
 ---
-title: 为 Azure HDInsight Hadoop 群集中的数据创建功能-团队数据科学过程
+title: 在 Azure HDInsight Hadoop 群集中为数据创建功能 - Team Data Science Process
 description: 在存储在 Azure HDInsight Hadoop 群集中的数据中生成功能的 Hive 查询的示例。
 services: machine-learning
 author: marktab
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 30c0a02c2cbc11002f8e0bf0295dab91de5d0365
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085372"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020579"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
 本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入式 Hive 用户的定义函数 (UDF) 以及为其提供的脚本。
@@ -25,15 +25,15 @@ ms.locfileid: "86085372"
 
 显示的查询示例特定于 [NYC Taxi Trip Data](https://chriswhong.com/open-data/foil_nyc_taxi/)（纽约出租车行程数据）方案，[GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也提供了这些方案。 这些查询已具有指定的数据架构，并准备好提交以运行。 最后部分也会讨论用户可对其进行优化以改善 Hive 查询性能的参数。
 
-此任务是[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
+此任务是[团队数据科学过程 (TDSP)](./index.yml) 中的一个步骤。
 
 ## <a name="prerequisites"></a>必备条件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)
-* 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  如果需要说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。
+* 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  如果需要说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。
 * 数据已上传到 Azure HDInsight Hadoop 群集中的 Hive 表。 如果没有，请按照[创建并将数据上传到 Hive 表](move-hive-tables.md)，先将数据上传到 Hive 表。
-* 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](customize-hadoop-cluster.md)。
+* 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="feature-generation"></a><a name="hive-featureengineering"></a>功能生成
 在本部分中，介绍使用 Hive 查询可用其生成功能的方法的几个示例。 如果已生成其他功能，则可将其作为列添加到现有表，或创建具有这些其他功能和主密钥的新表，新表之后可联接到原始表。 以下是显示的示例：
@@ -95,7 +95,7 @@ select day(<datetime field>), month(<datetime field>)
 from <databasename>.<tablename>;
 ```
 
-此 Hive 查询假定采用 *\<datetime field>* 默认日期时间格式。
+此 Hive 查询假定 *\<datetime field>* 使用的是默认日期时间格式。
 
 如果日期时间字段并未使用默认格式，则需要先将日期时间字段转换为 Unix 时间戳，然后将 Unix 时间戳转换为默认格式的日期时间字符串。 如果日期时间使用默认格式，那么用户可以应用嵌入的日期时间 UDF 以提取功能。
 
@@ -104,7 +104,7 @@ select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime f
 from <databasename>.<tablename>;
 ```
 
-在此查询中，如果 *\<datetime field>* 具有类似于*03/26/2015 12:04:39*的模式，则* \<pattern of the datetime field> "* 应为" `'MM/dd/yyyy HH:mm:ss'` 。 若要对其进行测试，用户可以运行
+在此查询中，如果 *\<datetime field>* 的模式类似于 *03/26/2015 12:04:39*，则 *\<pattern of the datetime field>* 应为 `'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
 
 ```hiveql
 select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
@@ -124,7 +124,7 @@ from <databasename>.<tablename>;
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>计算 GPS 坐标集之间的距离
 本部分中给出的查询可直接应用于纽约出租车行程数据。 此查询旨在演示如何应用 Hive 中嵌入的数学函数来生成功能。
 
-此查询中使用的字段为提取和减少位置的 GPS 坐标，名为*提取\_经度*、*提取\_纬度*、*减少\_经度*、*减少\_纬度*。 计算提取和减少坐标之间直接距离的查询为：
+此查询中使用的字段为提取和减少位置的 GPS 坐标，名为 *提取\_经度*、*提取\_纬度*、*减少\_经度*、*减少\_纬度*。 计算提取和减少坐标之间直接距离的查询为：
 
 ```hiveql
 set R=3959;
@@ -148,7 +148,7 @@ limit 10;
 
 ![创建工作区](./media/create-features-hive/atan2new.png)
 
-嵌入 UDF 的 Hive 的完整列表可在 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a> 上的**内置函数**部分中找到）。  
+嵌入 UDF 的 Hive 的完整列表可在 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a> 上的 **内置函数** 部分中找到）。  
 
 ## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>高级主题：优化 Hive 参数以加快查询速度
 Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查询的数据。 在本部分中，讨论用户可对其进行优化以改进 Hive 查询性能的某些参数。 用户需要在查询处理数据之前，先添加优化查询参数。
@@ -160,7 +160,7 @@ Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查
     set mapreduce.task.io.sort.mb=-Xmx1024m;
     ```
 
-    此参数将 4 GB 内存分配给 Java 堆空间，并通过为其分配更多内存来提高排序效率。 如果有任何与堆空间相关的作业失败错误，最好进行这些分配。
+    此参数会将 4 GB 内存分配到 Java 堆空间，并通过为其分配更多内存来提高排序效率。 如果有任何与堆空间相关的作业失败错误，最好进行这些分配。
 
 1.  DFS 块大小：此参数设置文件系统存储的最小数据单位。 例如，如果 DFS 块的大小为 128 MB，那么任何小于等于 128 MB 的数据都存储在单个块中。 大于 128 MB 的数据会被分配到额外的块。 
 2. 选择较小的块大小会导致 Hadoop 中开销变大，因为名称节点必须处理更多查找属于文件的相关块的请求。 处理千兆字节（或更大）数据的推荐设置为：
@@ -189,7 +189,7 @@ Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查
 
      如我们所见，根据数据大小，通过对其进行“设置”允许对使用的映射器数量进行优化，可优化这些参数。
 
-4. 以下是用于优化 Hive 性能的一些其他高级选项  。 这些选项允许您设置分配的内存来映射和减少任务，并可用于调整性能。 请记住，mapreduce.reduce.memory.mb 不能大于 Hadoop 群集中每个辅助角色节点的物理内存大小  。
+4. 以下是用于优化 Hive 性能的一些其他高级选项  。 这些选项可用于设置分配用于映射和化简任务的内存，并可用于调节性能。 请记住，mapreduce.reduce.memory.mb 不能大于 Hadoop 群集中每个辅助角色节点的物理内存大小  。
    
     ```hiveql
     set mapreduce.map.memory.mb = 2048;
@@ -198,4 +198,3 @@ Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查
     set mapred.reduce.tasks=128;
     set mapred.tasktracker.reduce.tasks.maximum=128;
     ```
-

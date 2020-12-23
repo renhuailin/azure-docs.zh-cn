@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818348"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904029"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -48,16 +48,16 @@ Azure AD 条件访问支持以下设备平台：
 - Windows
 - macOS
 
-如果使用**其他客户端**条件来阻止旧身份验证，还可以设置设备平台条件。
+如果使用 **其他客户端** 条件来阻止旧身份验证，还可以设置设备平台条件。
 
 > [!IMPORTANT]
-> Microsoft 建议对不受支持的设备平台使用条件性访问策略。 例如，如果想要阻止从 Linux 或任何其他不受支持的客户端对公司资源的访问，则应使用包含任何设备并排除受支持的设备平台的设备平台条件来配置策略，并将控制集授予阻止访问权限。
+> Microsoft 建议你对不受支持的设备平台使用条件访问策略。 例如，如果要阻止从 Linux 或任何其他不受支持的客户端访问公司资源，则应使用“设备平台条件”配置策略，该条件包括任何设备（不包括受支持的设备平台），并将控制设置授权为“阻止访问”。
 
 ## <a name="locations"></a>位置
 
 将位置配置为条件时，组织可以选择包含或排除位置。 这些命名位置可以包含公共 IPv4 网络信息、国家或地区，甚至是不映射到特定国家或地区的未知区域。 只能将 IP 范围标记为受信任位置。
 
-包含**任何位置**时，此选项将包含 Internet 上的任何 IP 地址，而不仅仅是包含配置的命名位置。 选择**任何位置**时，管理员可以选择排除**所有受信任的**或**选定的**位置。
+包含 **任何位置** 时，此选项将包含 Internet 上的任何 IP 地址，而不仅仅是包含配置的命名位置。 选择 **任何位置** 时，管理员可以选择排除 **所有受信任的** 或 **选定的** 位置。
 
 例如，某些组织在其用户连接到受信任位置（例如其总部的实际位置）的网络时，可能会选择不要求执行多重身份验证。 管理员可以创建一个包含任何位置，但排除选定总部网络位置的策略。
 
@@ -120,7 +120,7 @@ Azure AD 条件访问支持以下设备平台：
 | macOS | Chrome、Safari |
 
 > [!NOTE]
-> Edge 85 + 要求用户登录到浏览器，以正确传递设备标识。 否则，它的行为类似于 Chrome，无需帐户扩展。 在混合 Azure AD 联接方案中，此登录可能不会自动发生。 
+> Edge 85+ 要求用户登录到浏览器，以正确传递设备标识。 否则，其行为类似于没有帐户扩展的 Chrome。 在混合 Azure AD 联接方案中，此登录可能不会自动发生。 
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>为何我在浏览器中看到证书提示
 
@@ -128,7 +128,7 @@ Azure AD 条件访问支持以下设备平台：
 
 #### <a name="chrome-support"></a>Chrome 支持
 
-对于 **windows 10 创意者更新 (版本 1703) ** 或更高版本中的 Chrome 支持，请安装 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 如果条件访问策略需要特定于设备的详细信息，则需要此扩展。
+对于 **windows 10 创意者更新 (版本 1703)** 或更高版本中的 Chrome 支持，请安装 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 如果条件访问策略需要特定于设备的详细信息，则需要此扩展。
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
@@ -148,7 +148,7 @@ Azure AD 条件访问支持以下设备平台：
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>支持的移动应用程序和桌面客户端
 
-组织可以选择**移动应用和桌面客户端**作为客户端应用。
+组织可以选择 **移动应用和桌面客户端** 作为客户端应用。
 
 此设置会影响通过以下移动应用和桌面客户端做出的访问尝试：
 
@@ -175,10 +175,10 @@ Azure AD 条件访问支持以下设备平台：
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync 客户端
 
 - 组织在将策略分配给用户或组时，只能选择 Exchange ActiveSync 客户端。 选择“所有用户”、“所有来宾和外部用户”或“目录角色”会导致所有用户遭到阻止。  
-- 创建分配给 Exchange ActiveSync 客户端的策略时， **Exchange Online** 应该是分配给该策略的唯一云应用程序。 
+- 创建分配给 Exchange ActiveSync 客户端的策略时，Exchange Online 应为唯一分配给该策略的云应用程序。 
 - 组织可以使用“设备平台”条件将此策略的范围缩小为特定的平台。
 
-如果分配给策略的访问控制使用“需要已批准的客户端应用”，则会将用户定向到相应的位置让他们安装并使用 Outlook 移动客户端。 如果需要**多重身份验证**，受影响的用户将被阻止，因为基本身份验证不支持多重身份验证。
+如果分配给策略的访问控制使用“需要已批准的客户端应用”，则会将用户定向到相应的位置让他们安装并使用 Outlook 移动客户端。 如果需要 **多重身份验证**，受影响的用户将被阻止，因为基本身份验证不支持多重身份验证。
 
 有关详细信息，请参阅以下文章：
 
@@ -193,8 +193,8 @@ Azure AD 条件访问支持以下设备平台：
 
 设备状态条件可用于在组织的条件访问策略中，排除已加入混合 Azure AD 的设备和/或标记为符合 Microsoft Intune 合规策略的设备。
 
-例如，所有访问*Microsoft Azure 管理*云应用程序的*用户*（**包括****设备混合 Azure AD 加入设备**，并将设备**标记为合规**，并将设备标记为合规，并**阻止***访问控制*。 
-   - 此示例将创建一个策略，该策略仅允许从已加入混合 Azure AD 的设备和/或标记为合规的设备访问 Microsoft Azure 管理。
+例如，所有访问 *Microsoft Azure 管理* 云应用程序的 *用户*（**包括****设备混合 Azure AD 加入设备**，并将设备 **标记为合规**，并将设备标记为合规，并 **阻止***访问控制*。 
+   - 此示例将创建一个策略，该策略仅允许从已加入混合 Azure AD 的设备或标记为合规的设备访问 Microsoft Azure 管理。
 
 ## <a name="next-steps"></a>后续步骤
 

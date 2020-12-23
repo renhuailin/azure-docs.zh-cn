@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 65e424c6275f9990a5d5a42a54bc4131300a45bf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526502"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教程：Azure Active Directory 与 Workspot Control 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88526502"
 * 使用户可以使用其 Azure AD 帐户自动登录 Workspot Control（单一登录 [SSO]）。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure AD 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure AD 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -100,25 +100,25 @@ ms.locfileid: "88526502"
 
 4. 若要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置部分”中执行以下步骤： 
 
-    ![Workspot Control 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     1. 在“标识符”  文本框中，输入采用以下模式的 URL：<br/>
-    https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/metadata
+    *https://< *
 
-    1. 在“回复 URL”  文本框中，输入采用以下模式的 URL：<br/>
-    https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/assertion
+    1. 在“回复 URL”文本框中，输入以下格式的 URL：<br/>
+    *https://<  *_
 
-5. 如果要在 SP 发起的模式下配置应用程序，选择“设置其他 URL”  。
+5. 如果要在 SP 发起的模式下配置应用程序，选择“设置其他 URL”。
 
-    ![Workspot Control 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，输入采用以下模式的 URL：<br/>
-    https://<<i></i>INSTANCENAME>-saml.workspot.com/
+    https://<<i></i>INSTANCENAME>-saml.workspot.com/_*
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的标识符、回复 URL 和登录 URL 替换这些值。 请联系 [Workspot Control 客户端支持团队](mailto:support@workspot.com)来获取这些值。 也可以参考 Azure 门户的“基本 SAML 配置”部分中显示的模式。 
+    > 这些不是实际值。 请使用实际的标识符、回复 URL 和登录 URL 替换这些值。 请联系 [Workspot Control 客户端支持团队](mailto:support@workspot.com)来获取这些值。 也可以参考 Azure 门户的“基本 SAML 配置”部分中显示的模式。
 
-6. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以根据要求从可用选项中下载“证书(Base64)”。     然后将其保存到计算机上。
+6. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以根据要求从可用选项中下载“证书(Base64)”。  然后将其保存到计算机上。
 
     ![证书 (Base64) 下载链接](common/certificatebase64.png)
 
@@ -144,11 +144,11 @@ ms.locfileid: "88526502"
  
     ![“安全断言标记语言配置”窗口](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    1. 在“实体 ID”框中，粘贴从 Azure 门户复制的“Azure AD 标识符”   。
+    1. 在“实体 ID”框中，粘贴从 Azure 门户复制的“Azure AD 标识符”  。
 
-    1. 在“登录服务 URL”框中，粘贴从 Azure 门户复制的“登录 URL”   。
+    1. 在“登录服务 URL”框中，粘贴从 Azure 门户复制的“登录 URL”  。
 
-    1. 在“注销服务 URL”框中，粘贴从 Azure 门户复制的“登录 URL”   。
+    1. 在“注销服务 URL”框中，粘贴从 Azure 门户复制的“登录 URL”  。
 
     1. 选择“更新文件”，将从 Azure 门户下载的 base-64 编码证书上传到 X.509 证书中  。
 
@@ -170,19 +170,19 @@ ms.locfileid: "88526502"
 
     ![用户属性窗口](common/user-properties.png)
 
-    1. 在“姓名”  字段中，输入“BrittaSimon”  。
+    1. 在“姓名”字段中，输入“BrittaSimon”。
   
     1. 在“用户名”  字段中，输入“brittasimon@yourcompanydomain.extension”*  ***。 例如，输入“BrittaSimon@contoso<i></i>com”。
 
     1. 选中“显示密码”复选框  。 然后记下“密码”框中显示的值  。
 
-    1. 选择“创建”  。
+    1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，授予 Britta Simon 访问 Workspot Control 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Workspot Control”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Workspot Control”。 
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -194,11 +194,11 @@ ms.locfileid: "88526502"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 选择“添加用户”按钮。  然后，在“添加分配”  窗口中选择“用户和组”  。
+4. 选择“添加用户”按钮。 然后，在“添加分配”  窗口中选择“用户和组”  。
 
     ![“添加分配”窗口](common/add-assign-user.png)
 
-5. 在“用户和组”窗口中，从“用户”列表选择“Britta Simon”。    然后单击“选择”  。
+5. 在“用户和组”窗口中，从“用户”列表选择“Britta Simon”。  然后单击“选择”。
 
 6. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”窗口中，从列表中为用户选择相应的角色。  然后单击底部的“选择”。 
 
@@ -220,9 +220,9 @@ ms.locfileid: "88526502"
 
     ![“添加新用户”窗口](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
-    1. 在“名字”框中，输入用户的名字，例如 Britta   。
+    1. 在“名字”框中，输入用户的名字，例如 Britta  。
 
-    1. 在“姓氏”框中，输入用户的姓氏，例如 Simon   。
+    1. 在“姓氏”框中，输入用户的姓氏，例如 Simon  。
 
     1. 在“电子邮件”框中，输入用户的电子邮件地址，如 Brittasimon@contoso.<i></i>com。
 
@@ -236,12 +236,12 @@ ms.locfileid: "88526502"
 
 在本部分中，通过访问面板  测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Workspot Control”  磁贴时，应当会自动登录到为其设置了 SSO 的 Workspot Control。 有关详细信息，请参阅[访问面板简介](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
+单击访问面板中的“Workspot Control”  磁贴时，应当会自动登录到为其设置了 SSO 的 Workspot Control。 有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

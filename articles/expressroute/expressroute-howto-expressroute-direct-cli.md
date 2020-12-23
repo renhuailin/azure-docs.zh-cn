@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0bdf2c4dda3e272ae04681f886f6e4da31dcebd8
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569837"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286478"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
@@ -152,7 +152,7 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
    ```
 
    > [!NOTE]
-   > 还可以将“封装”属性设置为“Dot1Q”********。 
+   > 还可以将“封装”属性设置为“Dot1Q”。 
    >
 
    **示例输出**
@@ -209,19 +209,11 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
    }  
    ```
 
-## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a> (LOA 生成授权信) 
-
-输入最近创建的 ExpressRoute 直接资源名称、资源组名称和客户名称，以将 LOA 写入到 (（可选）) 定义用于存储文档的文件位置。 如果未引用文件路径，则文档将下载到当前目录。
-
-```azurecli
-az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
-```
-
 ## <a name="change-adminstate-for-links"></a><a name="state"></a> 更改链接的 AdminState
 
 使用此过程来执行第 1 层测试。 请确保每个交叉连接在主端口和辅助端口的每个路由器上都有正确的补丁。
 
-1. 将链接设置为“启用”****。 重复此步骤以将每个链接设置为“启用”****。
+1. 将链接设置为“启用”。 重复此步骤以将每个链接设置为“启用”。
 
    Links[0] 是主端口，Links[1] 是辅助端口。
 

@@ -7,13 +7,13 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 7803ac9009af1657e7f162d656898492a694e28f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84905861"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997884"
 ---
 若要在应用服务中从应用程序代码内部访问生成的控制台日志，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，打开诊断日志记录：
 

@@ -8,28 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 11/17/2020
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647463"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563222"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
 文本分析 API 是一种基于云的服务，它提供用于文本挖掘和文本分析的自然语言处理 (NLP) 功能，包括：情绪分析、观点挖掘、关键短语提取、语言检测和命名实体识别。
 
-该 API 是 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/text-analytics-sdk.md)一起使用。
+该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/client-libraries-rest-api.md)一起使用。
 
-> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-通过在文本中挖掘有关积极情绪或消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定人们如何看待你的品牌或主题。 此 API 功能针对每个文档返回 0 到 1 之间的一个情绪评分，1 是最积极的评分。
+通过在文本中挖掘有关积极情绪或消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定人们如何看待你的品牌或主题。 
+
+此功能根据服务在句子和文档级别找到的最高置信度分数来提供情绪标签（例如“消极”、“中立”和“积极”）。 此功能还会为每个文档和文档中的句子返回介于 0 和 1 之间的置信度分数以表示积极、中立和消极情绪。 你还可以[使用容器](how-tos/text-analytics-how-to-install-containers.md)在本地运行该服务。
 
 观点挖掘是情绪分析的一项功能，在 v3.1 预览版中开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。
 
@@ -45,15 +47,24 @@ ms.locfileid: "89647463"
 
 命名实体识别 (NER) 可以[对文本中的实体进行识别和分类](how-tos/text-analytics-how-to-entity-linking.md)，将其识别并分类为人员、地点、组织、数量，还可以识别众所周知的实体并将其链接到 Web 上的详细信息。
 
-## <a name="use-containers"></a>使用容器
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
 
-[使用文本分析容器](how-tos/text-analytics-how-to-install-containers.md)作为一种用于挖掘文本和使用 API 的本地解决方案。 这些 Docker 容器使你能够提取关键短语、检测语言，并分析更符合你的数据的情绪。
+[使用文本分析容器](how-tos/text-analytics-how-to-install-containers.md)在本地部署 API 功能。 借助这些 docker 容器，你能够将服务进一步引入数据，以满足合规性、安全性或其他操作目的。 文本分析提供以下容器：
+
+* 情绪分析
+* 关键短语提取（预览版）
+* 语言检测（预览版）
+* 运行状况文本分析（预览版）
+
+## <a name="asynchronous-operations"></a>异步操作
+
+利用 `/analyze` 终结点，你可以[异步](how-tos/text-analytics-how-to-call-api.md)使用文本分析 API 的精选功能，如 NER 和关键短语提取。
 
 ## <a name="typical-workflow"></a>典型工作流
 
 工作流非常简单：在代码中提交分析数据和处理输出。 分析器按原样使用，无需额外的配置或自定义。
 
-1. 为文本分析[创建 Azure 资源](../cognitive-services-apis-create-account.md)。 然后，[获取生成的密钥](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)，以便对请求进行身份验证。
+1. 为文本分析[创建 Azure 资源](how-tos/text-analytics-how-to-call-api.md)。 然后，[获取生成的密钥](how-tos/text-analytics-how-to-call-api.md)，以便对请求进行身份验证。
 
 2. [规划请求](how-tos/text-analytics-how-to-call-api.md#json-schema)，其中包含原始非结构化文本形式的 JSON 数据。
 
@@ -71,18 +82,18 @@ ms.locfileid: "89647463"
 
 * 最低的编程要求：
     * [使用文本分析和 Power Automate 在 Excel 中提取信息](tutorials/extract-excel-information.md)
-    * [使用文本分析 API 和 MS Flow 识别 Yammer 组中的评论的情绪](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [使用文本分析 API 和 MS Flow 识别 Yammer 组中的评论的情绪](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [集成 Power BI 和文本分析 API 以分析自定义反馈](tutorials/tutorial-power-bi-key-phrases.md)
 * 建议的编程体验：
-    * [使用 Azure Databricks 针对流数据执行情绪分析](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [生成 Flask 应用以翻译文本、分析情绪以及合成语音](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [使用 Azure Databricks 针对流数据执行情绪分析](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [生成 Flask 应用以翻译文本、分析情绪以及合成语音](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>支持的语言
 
-为方便查找，本部分已转移到单独的文章。 有关此内容，请参阅[文本分析 API 支持的语言](text-analytics-supported-languages.md)。
+为方便查找，本部分已转移到单独的文章。 有关此内容，请参阅[文本分析 API 支持的语言](./language-support.md)。
 
 <a name="data-limits"></a>
 
@@ -92,16 +103,16 @@ ms.locfileid: "89647463"
 
 ## <a name="unicode-encoding"></a>Unicode 编码
 
-文本分析 API 使用 Unicode 编码来呈现文本和计算字符数。 可以 UTF-8 和 UTF-16 编码提交请求，这在字符计数方面没有可度量的差别。 Unicode 码位用作字符长度的启发因子，对文本分析数据限制的影响被视为等效。 如果你使用 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 获取字符计数，则使用的方法也是我们用来度量数据大小的方法。
+文本分析 API 使用 Unicode 编码来呈现文本和计算字符数。 可以 UTF-8 和 UTF-16 编码提交请求，这在字符计数方面没有可度量的差别。 Unicode 码位用作字符长度的启发因子，对文本分析数据限制的影响被视为等效。 如果你使用 [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 获取字符计数，则使用的方法也是我们用来度量数据大小的方法。
 
 ## <a name="next-steps"></a>后续步骤
 
 + 为文本分析[创建 Azure 资源](../cognitive-services-apis-create-account.md)，以获取应用程序的密钥和终结点。
 
-+ 使用[快速入门](quickstarts/text-analytics-sdk.md)开始发送 API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。
++ 使用[快速入门](quickstarts/client-libraries-rest-api.md)开始发送 API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。
 
 + 有关新版本和功能的信息，请参阅[文本分析 API 中的新增功能](whats-new.md)。
 
-+ 更深入地探讨此[情绪分析教程](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services)（使用 Azure Databricks）。
++ 更深入地探讨此[情绪分析教程](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services)（使用 Azure Databricks）。
 
 + 在[“外部和社区内容”页](text-analytics-resource-external-community.md)中查看一系列博客文章和更多的视频，了解如何结合其他工具和技术使用文本分析 API。

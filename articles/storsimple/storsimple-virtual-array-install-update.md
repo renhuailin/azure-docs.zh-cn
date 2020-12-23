@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bd6f298ad2bb01503492b52c2d50dec82ec0ca5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507868"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534035"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>在 StorSimple 虚拟阵列上安装更新 - Azure 门户
 
@@ -51,19 +51,19 @@ ms.locfileid: "85507868"
 
 1. 启动 Internet Explorer 并导航到 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
 
-2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。****
+2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
-3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号。 针对 Update 0.3 输入 **3182061**，并单击“搜索”****。
+3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号。 针对 Update 0.3 输入 **3182061** ，并单击“搜索”。
    
-    该修补程序列表（例如 **StorSimple Virtual Array Update 0.3**）显示。
+    该修补程序列表（例如 **StorSimple Virtual Array Update 0.3** ）显示。
    
     ![搜索目录](./media/storsimple-virtual-array-install-update/download1.png)
 
-4. 单击“添加” 。 该更新随即添加到购物篮中。
+4. 单击 **添加** 。 该更新随即添加到购物篮中。
 
-5. 单击 "**查看购物篮**"。
+5. 单击 " **查看购物篮** "。
 
-6. 单击“下载”。 指定或**浏览**到下载项要保存到的本地位置。 更新随即会下载到指定的位置，放置在与更新名称相同的子文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
+6. 单击“下载”。 指定或 **浏览** 到下载项要保存到的本地位置。 更新随即会下载到指定的位置，放置在与更新名称相同的子文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
 
 7. 打开复制的文件夹，会看到 Microsoft 更新独立程序包文件 `WindowsTH-KB3011067-x64`。 此文件用于安装更新或修补程序。
 
@@ -75,28 +75,28 @@ ms.locfileid: "85507868"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 web UI 中，请参阅**维护**  >  **软件更新**。
+1. 在本地 web UI 中，请参阅 **维护**  >  **软件更新** 。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![屏幕截图显示从 "维护" 菜单中选择的软件更新。](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
+2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![屏幕截图显示 "软件更新" 页中的 "更新文件路径" 文本框。](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. 显示一条警告。 假定这是单节点设备，应用更新后，设备将重新启动并且会出现停机。 单击选中图标。
    
-   ![更新设备](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![屏幕截图显示了一个对话框警告，出现停机时间。](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. 更新启动。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![屏幕截图显示更新的成功消息。](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护**  >  **软件更新**。 Update 0.3 显示的软件版本应为 **10.0.0.0.0.10288.0**。
+5. 重新启动完成后，会转到“登录”页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅 **维护**  >  **软件更新** 。 Update 0.3 显示的软件版本应为 **10.0.0.0.0.10288.0** 。
    
    > [!NOTE]
-   > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 **10.0.0.0.0.10288**，而 Azure 门户则报告 **10.0.10288.0**。
+   > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 **10.0.0.0.0.10288** ，而 Azure 门户则报告 **10.0.10288.0** 。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![屏幕截图显示具有当前软件版本的软件更新页。](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -104,7 +104,7 @@ ms.locfileid: "85507868"
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal.md)]
 
-完成安装（即作业状态为 100%）后，转到 StorSimple Device Manager 服务。 选择“设备”****，并从连接到此服务的设备列表中选择并单击要更新的设备。 在“设置”**** 边栏选项卡中，转到“管理”**** 部分，并选择“设备更新”****。 显示的软件版本应为**10.0.10288.0**。
+完成安装（即作业状态为 100%）后，转到 StorSimple Device Manager 服务。 选择“设备”，并从连接到此服务的设备列表中选择并单击要更新的设备。 在“设置”边栏选项卡中，转到“管理”部分，并选择“设备更新”。 显示的软件版本应为 **10.0.10288.0** 。
 
 
 ## <a name="next-steps"></a>后续步骤

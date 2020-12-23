@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 69a47820d2afaf24f413aabf2c59a40c032070c1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231378"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343937"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute 的 Azure 安全基线
 
 ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的建议。
 
-此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
-有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
 ## <a name="network-security"></a>网络安全性
 
-有关详细信息，请参阅[安全控制：网络安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
+有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
@@ -38,7 +38,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：不适用；处理网关子网时，应避免将网络安全组 (NSG) 关联到网关子网。 将网络安全组关联到此子网可能会导致虚拟网络网关（VPN、ExpressRoute 网关）停止按预期方式工作。
 
-* [了解 Azure ExpressRoute 网关要求](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#requirements)
+* [了解 Azure ExpressRoute 网关要求](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements)
 
 **Azure 安全中心监视**：不适用
 
@@ -46,7 +46,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -56,9 +56,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：不适用；每位客户的 ExpressRoute 都包含在他们自己的路由域中，并通过隧道传输到他们自己的虚拟网络中。 虽然隔离了 ExpressRoute，但为了额外保护共享同一虚拟网络的其他资源，你可以启用 DDoS 防护标准来防范 DDoS 攻击。
 
-* [了解 Azure ExpressRoute 的安全控制](https://docs.microsoft.com/azure/expressroute/expressroute-security-controls)
+* [了解 Azure ExpressRoute 的安全控制]()
 
-* [如何配置 DDoS 防护](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -76,7 +76,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：不适用；每位客户的 ExpressRoute 都包含在他们自己的路由域中，并通过隧道传输到他们自己的虚拟网络中。
 
-* [了解 Azure ExpressRoute 的安全控制](https://docs.microsoft.com/azure/expressroute/expressroute-security-controls)
+* [了解 Azure ExpressRoute 的安全控制]()
 
 **Azure 安全中心监视**：不适用
 
@@ -84,7 +84,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -102,7 +102,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：使用 Azure Policy 为 Azure ExpressRoute 定义和实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略以审核或强制实施 ExpressRoute 的网络配置。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -116,7 +116,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 可以使用 Azure PowerShell 或 Azure CLI 根据资源的标记查找资源或对其执行操作。
 
-* [使用标记整理 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -126,11 +126,11 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 ExpressRoute 连接相关的网络资源的更改。 在 Azure Monitor 中创建当关键资源发生更改时触发的警报。
 
-* [如何在 Azure Sentinel 中启用审核](https://docs.microsoft.com/azure/sentinel/resources)
+* [如何在 Azure Sentinel 中启用审核](../sentinel/resources.md)
 
-* [如何查看和检索 Azure 活动日志事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -138,7 +138,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-有关详细信息，请参阅[安全控制：日志记录和监视](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。
+有关详细信息，请参阅[安全控制：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -152,7 +152,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure ExpressRoute 资源执行的操作的见解。 通过使用 Azure 活动日志数据，可以确定在控制平面级别针对 ExpressRoute 资源执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
-* [如何启用 Azure 活动日志的诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -162,7 +162,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志提供有关在控制平面级别对 Azure ExpressRoute 资源执行的操作的见解。 通过使用 Azure 活动日志数据，可以确定在控制平面级别针对 ExpressRoute 资源执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
-* [如何启用 Azure 活动日志的诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -180,7 +180,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规定，为与 Azure ExpressRoute 资源关联的 Log Analytics 工作区设置日志保留期。
 
-* [如何设置日志保留参数](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -190,9 +190,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区。 在 Log Analytics 中执行查询以搜索字词、识别趋势、分析模式，并根据可能已为 Azure ExpressRoute 收集的活动日志数据提供许多其他见解。
 
-* [如何启用 Azure 活动日志的诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
-* [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
+* [如何收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](../azure-monitor/platform/activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -202,7 +202,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：可以配置为基于与 Azure ExpressRoute 资源相关的指标和活动日志来接收警报。 通过使用 Azure Monitor，你可以配置警报以发送电子邮件通知、调用 Webhook 或调用 Azure 逻辑应用。
 
-* [了解 ExpressRoute 中的监视和警报](https://docs.microsoft.com/azure/expressroute/expressroute-monitoring-metrics-alerts)
+* [了解 ExpressRoute 中的监视和警报](./expressroute-monitoring-metrics-alerts.md)
 
 **Azure 安全中心监视**：是
 
@@ -234,19 +234,19 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。
+有关详细信息，请参阅[安全控制：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
 **指导**：维护对你的 Azure ExpressRoute 资源的控制平面（例如 Azure 门户）拥有管理访问权限的用户帐户清单。
 
-你可以使用订阅 Azure 门户中 (IAM) 窗格的 "标识和访问控制" 来配置 Azure RBAC)  (基于角色的访问控制。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。
+可以在 Azure 门户中为你的订阅使用“标识和访问控制(IAM)”窗格来配置 Azure 基于角色的访问控制 (Azure RBAC)。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。
 
-此外，使用 ExpressRoute 合作伙伴资源管理器 API 的合作伙伴可以对 expressRouteCrossConnection 资源应用基于角色的访问控制。 这些控制可以定义有关哪些用户帐户可以修改 expressRouteCrossConnection 资源以及添加/更新/删除对等互连配置的权限。
+此外，使用 ExpressRoute 合作伙伴资源管理器 API 的合作伙伴可将基于角色的访问控制应用到 expressRouteCrossConnection 资源。 这些控制可以定义有关哪些用户帐户可以修改 expressRouteCrossConnection 资源以及添加/更新/删除对等互连配置的权限。
 
-* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-* [在 ExpressRoute 合作伙伴资源管理器 API 中利用 Azure RBAC](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [在 ExpressRoute 合作伙伴资源管理器 API 中利用 Azure RBAC](./cross-connections-api-development.md)
 
 **Azure 安全中心监视**：是
 
@@ -269,9 +269,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 - 应从订阅中删除拥有所有者权限的已弃用帐户
 - 应从订阅中删除拥有所有者权限的外部帐户
 
-* [如何使用 Azure 安全中心监视标识和访问（预览）](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何使用 Azure 安全中心监视标识和访问（预览）](../security-center/security-center-identity-access.md)
 
-* [如何使用 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何使用 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：是
 
@@ -289,9 +289,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：启用 Azure Active Directory 多重身份验证，并遵循 Azure 安全中心标识和访问管理的建议。
 
-* [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [如何在 Azure 安全中心监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
 **Azure 安全中心监视**：是
 
@@ -299,11 +299,11 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指导**：使用启用了 Azure 多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录和配置 Azure Sentinel 相关的资源。
+**指南**：将特权访问工作站 (PAW) 与 Azure AD 多重身份验证 (MFA) 一起使用，以便登录和配置 Azure Sentinel 相关资源。
 
-* [特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [规划基于云的 Azure 多重身份验证部署](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -315,9 +315,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 此外，还可使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
 
-* [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [了解 Azure AD 风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [了解 Azure AD 风险检测](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 安全中心监视**：是
 
@@ -327,7 +327,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指南**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组访问 Azure 门户。
 
-* [如何在 Azure 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [如何在 Azure 中配置命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -337,7 +337,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：使用 Azure Active Directory (AD) 作为 Azure Sentinel 实例的中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
-* [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -347,9 +347,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：Azure Active Directory (AD) 提供日志来帮助发现过时的帐户。 此外，请使用 Azure 标识访问评审来有效管理组成员身份、对企业应用程序的访问和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
-* [了解 Azure AD 报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
-* [如何使用 Azure 标识访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -363,9 +363,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 可以在 Log Analytics 中配置所需的日志警报。
 
-* [如何将 Azure 活动日志集成到 Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -375,11 +375,11 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：对于控制平面（例如 Azure 门户）中帐户登录行为的偏差，可使用 Azure AD 标识保护和风险检测功能进行配置，实现在检测到与用户标识相关的可疑操作时自动进行响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
 
-* [如何查看 Azure AD 风险登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何配置和启用标识保护风险策略](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -389,7 +389,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：不适用；Azure ExpressRoute 不支持客户密码箱。
 
-* [支持客户密码箱的服务列表](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [支持客户密码箱的服务列表](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure 安全中心监视**：不适用
 
@@ -397,13 +397,13 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 ## <a name="data-protection"></a>数据保护
 
-有关详细信息，请参阅[安全控制：数据保护](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。
+有关详细信息，请参阅[安全控制：数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
 **指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -413,9 +413,9 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：为开发、测试和生产实现单独的订阅和/或管理组。
 
-* [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -425,7 +425,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：Microsoft 会管理 Azure ExpressRoute 线路和相关资源的底层基础结构，并实施了严格的控制措施来防止客户数据丢失或泄露。
 
-* [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -435,7 +435,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：IPsec 是 IETF 标准。 它在 Internet 协议 (IP) 级别或网络层 3 上加密数据。 可以使用 IPsec 加密本地网络与 Azure 上虚拟网络 (VNET) 之间的端到端连接。
 
-* [如何通过 ExpressRoute 配置站点到站点 IPSEC](https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering)
+* [如何通过 ExpressRoute 配置站点到站点 IPSEC](./site-to-site-vpn-over-microsoft-peering.md)
 
 如何通过 ExpressRoute 配置站点到站点 IPSEC： https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
 
@@ -447,7 +447,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指导**：不适用；Azure ExpressRoute 不存储客户数据。
 
-* [了解 Azure ExpressRoute 的安全控制](https://docs.microsoft.com/azure/expressroute/expressroute-security-controls)
+* [了解 Azure ExpressRoute 的安全控制]()
 
 **Azure 安全中心监视**：不适用
 
@@ -455,17 +455,17 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：你可以使用订阅 Azure 门户中 (IAM) 窗格中的 "标识和访问控制" 来配置 azure RBAC)  (基于角色的访问控制。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
+**指导**：可以在 Azure 门户中为你的订阅使用“标识和访问控制(IAM)”窗格来配置 Azure 基于角色的访问控制 (Azure RBAC)。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
 
 Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户是虚拟网关的所有者，这些网关与 ExpressRoute 线路位于不同的订阅中。 线路所有者有权随时修改和撤消授权。 撤消授权会导致从已撤消访问权限的订阅中删除所有链路连接。 线路用户可以兑换授权（每个虚拟网络需要一个授权）。
 
-此外，使用 ExpressRoute 合作伙伴资源管理器 API 的合作伙伴可以对 expressRouteCrossConnection 资源应用基于角色的访问控制。 这些控制可以定义有关哪些用户帐户可以修改 expressRouteCrossConnection 资源以及添加/更新/删除对等互连配置的权限。
+此外，使用 ExpressRoute 合作伙伴资源管理器 API 的合作伙伴可将基于角色的访问控制应用到 expressRouteCrossConnection 资源。 这些控制可以定义有关哪些用户帐户可以修改 expressRouteCrossConnection 资源以及添加/更新/删除对等互连配置的权限。
 
-* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-* [在 ExpressRoute 合作伙伴资源管理器 API 中利用 Azure RBAC](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [在 ExpressRoute 合作伙伴资源管理器 API 中利用 Azure RBAC](./cross-connections-api-development.md)
 
-* [了解 ExpressRoute 中的管理角色](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager#connect-a-vnet-to-a-circuit---different-subscription)
+* [了解 ExpressRoute 中的管理角色](./expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 
 **Azure 安全中心监视**：不适用
 
@@ -475,7 +475,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 指南：不适用；此建议旨在用于计算资源。 Microsoft 会管理 Azure Sentinel 的底层基础结构，并实施了严格的控制措施来防止客户数据丢失或泄露。
 
-* [Azure 客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 客户数据保护](../security/fundamentals/protection-customer-data.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -485,11 +485,11 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：MACsec 是 IEEE 标准。 它在媒体访问控制 (MAC) 级别或网络层 2 上加密数据。 通过  ExpressRoute Direct  连接到 Microsoft 时，可以使用 MACsec 加密你的网络设备和 Microsoft 网络设备之间的物理链路。 默认情况下，ExpressRoute Direct 端口上的 MACsec 已禁用。 可以使用自带 MACsec 密钥进行加密，并将其存储在 Azure Key Vault 中。 你决定何时轮换该密钥。
 
-* [了解 Azure ExpressRoute 中的点到点加密](https://docs.microsoft.com/azure/expressroute/expressroute-about-encryption)
+* [了解 Azure ExpressRoute 中的点到点加密](./expressroute-about-encryption.md)
 
-* [如何在 ExpressRoute Direct 端口上配置 MACsec](https://docs.microsoft.com/azure/expressroute/expressroute-howto-macsec)
+* [如何在 ExpressRoute Direct 端口上配置 MACsec](./expressroute-howto-macsec.md)
 
-* [Key Vault 的 Azure 安全基线](https://docs.microsoft.com/azure/key-vault/general/security-baseline)
+* [Key Vault 的 Azure 安全基线](../key-vault/general/security-baseline.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -499,7 +499,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure ExpressRoute 的生产实例和其他关键或相关资源发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -507,7 +507,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-有关详细信息，请参阅[安全控制：漏洞管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。
+有关详细信息，请参阅[安全控制：漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -551,7 +551,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-有关详细信息，请参阅[安全控制：清单和资产管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。
+有关详细信息，请参阅[安全控制：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -559,11 +559,11 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
-* [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -573,7 +573,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：将标记应用到 Azure资源，以便有条理地将元数据组织成某种分类。
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -587,11 +587,11 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 - 不允许的资源类型
 - 允许的资源类型
 
-* [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -599,7 +599,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已获批 Azure 资源的清单
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -609,11 +609,11 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -649,9 +649,9 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 - 不允许的资源类型
 - 允许的资源类型
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -669,7 +669,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指南**：配置 Azure 条件访问，使其通过为“Microsoft Azure 管理”应用配置“阻止访问”，来限制用户与 Azure 资源管理器进行交互的能力。
 
-* [如何配置条件访问以阻止访问 Azure 资源管理器](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -685,7 +685,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -693,15 +693,15 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ## <a name="secure-configuration"></a>安全配置
 
-有关详细信息，请参阅[安全控制：安全配置](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。
+有关详细信息，请参阅[安全控制：安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
 **指导**：使用 Azure Policy 为 Azure ExpressRoute 定义和实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略以审核或强制实施 ExpressRoute 的网络配置。
 
-* [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -719,9 +719,9 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [了解 Azure Policy 效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -739,9 +739,9 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -759,9 +759,9 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：使用 Azure Policy 为 Azure ExpressRoute 定义和实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略以审核或强制实施 ExpressRoute 的网络配置。
 
-* [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -779,7 +779,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：在“Microsoft.Network”命名空间中使用内置的 Azure Policy 定义和 Azure Policy 别名创建自定义策略，以审核、强制实施系统配置并为其发出警报。 使用 Azure Policy“[审核]”、“[拒绝]”和“[不存在则部署]”自动强制实施 Azure 资源的配置。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -797,7 +797,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：通过 ExpressRoute Direct 连接到 Microsoft 时，可以使用 MACsec 加密你的网络设备和 Microsoft 网络设备之间的物理链路。 默认情况下，ExpressRoute Direct 端口上的 MACsec 已禁用。 可以使用自带 MACsec 密钥进行加密，并将其存储在 Azure Key Vault 中。 你决定何时轮换该密钥。
 
-* [如何创建 Key Vault 实例以在新资源组中存储 MACsec 机密](https://docs.microsoft.com/azure/expressroute/expressroute-howto-macsec)
+* [如何创建 Key Vault 实例以在新资源组中存储 MACsec 机密](./expressroute-howto-macsec.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -807,7 +807,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：不适用；Azure ExpressRoute 连接和资源不使用托管标识。
 
-* [支持托管标识的 Azure 服务](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [支持托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -825,7 +825,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-有关详细信息，请参阅[安全控制：恶意软件防护](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。
+有关详细信息，请参阅[安全控制：恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -855,13 +855,13 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ## <a name="data-recovery"></a>数据恢复
 
-有关详细信息，请参阅[安全控制：数据恢复](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。
+有关详细信息，请参阅[安全控制：数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
 **指导**：不适用；Azure ExpressRoute 不存储客户数据。
 
-* [了解 Azure ExpressRoute 的安全控制](https://docs.microsoft.com/azure/expressroute/expressroute-security-controls)
+* [了解 Azure ExpressRoute 的安全控制]()
 
 **Azure 安全中心监视**：不适用
 
@@ -871,7 +871,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：如果使用 Azure Key Vault 来存储 MACsec 机密，请确保定期自动备份密钥。
 
-* [如何备份 Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+* [如何备份 Key Vault 密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure 安全中心监视**：不适用
 
@@ -881,9 +881,9 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：测试对备份的客户管理的密钥进行还原。
 
-* [如何在 Azure 中还原密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [如何在配置 MACsec 后测试 Azure ExpressRoute 线路的连接](https://docs.microsoft.com/azure/expressroute/expressroute-howto-macsec)
+* [如何在配置 MACsec 后测试 Azure ExpressRoute 线路的连接](./expressroute-howto-macsec.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -893,7 +893,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。
 
-* [如何在 Key Vault 中启用“软删除”](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [如何在 Key Vault 中启用“软删除”](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 
@@ -901,13 +901,13 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ## <a name="incident-response"></a>事件响应
 
-有关详细信息，请参阅[安全控制：事件响应](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。
+有关详细信息，请参阅[安全控制：事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
 **指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
-* [如何在 Azure 安全中心内配置工作流自动化](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [如何在 Azure 安全中心内配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 
 * [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -943,7 +943,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指南**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。 事后审查事件，确保问题得到解决。
 
-* [如何设置 Azure 安全中心安全联系人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 安全中心监视**：是
 
@@ -953,9 +953,9 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
 
-* [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [如何配置连续导出](../security-center/continuous-export.md)
 
-* [如何将警报流式传输到 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -965,7 +965,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 **指导**：使用 Azure 安全中心内的工作流自动化功能可以通过“逻辑应用”针对安全警报和建议自动触发响应。
 
-* [如何配置工作流自动化和逻辑应用](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -973,13 +973,13 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：渗透测试和红队演练](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
 **指南**：*[遵循 Microsoft Rules of Engagement，确保渗透测试不违反 Microsoft 政策](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [可在此处找到有关 Microsoft 管理的云基础结构、服务和应用程序的 Microsoft 策略和执行红色组合和实时站点渗透测试的详细信息](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [对于 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序的实时站点渗透测试，可在此处找到详细信息](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 安全中心监视**：不适用
 
@@ -987,5 +987,5 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

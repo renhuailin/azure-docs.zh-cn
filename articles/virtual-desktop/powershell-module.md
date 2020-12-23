@@ -7,11 +7,11 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f2f01e2b58c997db08ad4427de7eef1ee3760c4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323494"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016805"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>设置适用于 Windows 虚拟桌面的 PowerShell 模块
 
@@ -68,7 +68,7 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-你还可以使用 Out GridView cmdlet 从列表中选择一个：
+你还可以使用 Out-GridView cmdlet 从列表中选择一个：
 
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription

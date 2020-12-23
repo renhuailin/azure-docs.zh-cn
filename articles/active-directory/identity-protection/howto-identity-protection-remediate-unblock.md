@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6dd918aef85deefc23771413c3eb7b92f1189d39
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776096"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835792"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>修正风险和解除阻止用户
 
@@ -37,7 +37,7 @@ ms.locfileid: "91776096"
 
 ### <a name="self-remediation-with-risk-policy"></a>带有风险策略的自我修正
 
-如果你允许用户通过 Azure 多重身份验证 (MFA) 和自助服务密码重置 (SSPR) 在你的风险策略中，则他们可以在检测到风险时解除阻止。 然后将这些检测视为关闭。 用户必须先注册 Azure MFA 和 SSPR，才能在检测到风险时使用。
+如果你允许用户自行修正，并 Azure AD 多重身份验证 (MFA) 和自助服务密码重置 (SSPR) 在你的风险策略中，则他们可以在检测到风险时解除阻止。 然后将这些检测视为关闭。 用户必须已注册 Azure AD MFA 和 SSPR，才能在检测到风险时使用。
 
 某些检测可能不会对用户需要进行自我修正的级别提出风险，但管理员仍应评估这些检测。 管理员可以确定需要执行其他措施，如 [阻止来自位置的访问](../conditional-access/howto-conditional-access-policy-location.md) ，或降低其策略中可接受的风险。
 
@@ -49,7 +49,7 @@ ms.locfileid: "91776096"
 
 - **生成临时密码** - 生成临时密码可以立即让标识恢复安全状态。 此方法要求联系受影响的用户，因为他们需要知道临时密码是什么。 由于密码是临时的，因此，在下一次登录期间，系统会提示用户将密码更改为新密码。
 
-- **要求用户重置密码** - 要求用户重置密码可以实现自助恢复，而无需联系支持人员或管理员。 此方法仅适用于已注册 Azure MFA 和 SSPR 的用户。 对于尚未注册的用户，此选项不可用。
+- **要求用户重置密码** - 要求用户重置密码可以实现自助恢复，而无需联系支持人员或管理员。 此方法仅适用于为 Azure AD MFA 和 SSPR 注册的用户。 对于尚未注册的用户，此选项不可用。
 
 ### <a name="dismiss-user-risk"></a>消除用户风险
 
@@ -85,7 +85,7 @@ ms.locfileid: "91776096"
 
 若要基于登录风险取消阻止帐户，管理员可以使用以下选项：
 
-1. **** 从熟悉的位置或设备登录 - 已阻止可疑登录的常见原因是尝试从不熟悉的位置或设备登录。 你的用户可以通过尝试从熟悉的位置或设备登录来快速确定此原因是否为阻止的原因。
+1. 从熟悉的位置或设备登录 - 已阻止可疑登录的常见原因是尝试从不熟悉的位置或设备登录。 你的用户可以通过尝试从熟悉的位置或设备登录来快速确定此原因是否为阻止的原因。
 1. **从策略中排除用户** -如果你认为登录策略的当前配置导致特定用户出现问题，你可以将用户排除在外。 有关详细信息，请参阅 [如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md#exclusions)一文中的排除部分。
 1. **禁用** - 如果认为策略配置导致所有用户出现问题，可禁用该策略。 有关详细信息，请参阅 [如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md)一文。
 

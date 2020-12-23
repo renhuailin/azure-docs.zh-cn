@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: fb27868a06e133f6f90d0a7a18d218b74aafdd69
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 830f58ea11ba84dd2aee81c0352b3ede4aa4929c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420041"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498245"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-单服务器
 
@@ -24,7 +24,7 @@ ms.locfileid: "89420041"
 
 ## <a name="network-security"></a>网络安全性
 
-*有关详细信息，请参阅 [Azure 安全基准：网络安全](../security/benchmarks/security-control-network-security.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
@@ -60,7 +60,7 @@ ms.locfileid: "89420041"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -74,7 +74,7 @@ ms.locfileid: "89420041"
 
 - [如何配置 Azure Database for PostgreSQL 的高级威胁防护](howto-database-threat-protection-portal.md)
 
-- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 **Azure 安全中心监视**：是
 
@@ -104,7 +104,7 @@ ms.locfileid: "89420041"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -134,7 +134,7 @@ ms.locfileid: "89420041"
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [用于网络的 Azure Policy 示例](/azure/governance/policy/samples)
+- [用于网络的 Azure Policy 示例](../governance/policy/samples/index.md)
 
 - [如何创建 Azure 蓝图](../governance/blueprints/create-blueprint-portal.md)
 
@@ -150,7 +150,7 @@ ms.locfileid: "89420041"
 
 可以使用 Azure PowerShell 或 Azure CLI 基于其标记对资源进行查找或执行操作。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -160,7 +160,7 @@ ms.locfileid: "89420041"
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Database for PostgreSQL 实例相关的网络资源的更改。 在 Azure Monitor 中创建警报，使其在关键网络资源发生更改时触发。
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -170,7 +170,7 @@ ms.locfileid: "89420041"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅 [Azure 安全基准：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -202,7 +202,7 @@ ms.locfileid: "89420041"
 
 - [如何配置和访问 Azure Database for PostgreSQL 的审核日志](concepts-audit.md)
 
-- [如何配置 Azure 活动日志的诊断设置](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -222,7 +222,7 @@ ms.locfileid: "89420041"
 
 - [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [在 Azure 存储帐户中存储资源日志](/azure/azure-monitor/platform/resource-logs-collect-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 
@@ -230,11 +230,11 @@ ms.locfileid: "89420041"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：分析和监视 Azure Database for PostgreSQL 实例的日志中是否存在异常行为。 使用 Azure Monitor 的 Log Analytics 查看日志并对日志数据执行查询。 或者，可以将数据启用并加入 Azure Sentinel 或第三方 SIEM。
+**指南**：分析和监视 Azure Database for PostgreSQL 实例的日志中是否存在异常行为。 使用 Azure Monitor 的 Log Analytics 查看日志并对日志数据执行查询。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [有关 Log Analytics 的详细信息](../azure-monitor/log-query/get-started-portal.md)
+- [有关 Log Analytics 的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -254,7 +254,7 @@ ms.locfileid: "89420041"
 
 - [如何配置和访问 Azure Database for PostgreSQL 的审核日志](concepts-audit.md)
 
-- [如何配置 Azure 活动日志的诊断设置](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何配置 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -288,7 +288,7 @@ ms.locfileid: "89420041"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-*有关详细信息，请参阅 [Azure 安全基准：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -386,7 +386,7 @@ Azure Database for PostgreSQL 不支持内置基于角色的访问控制，但�
 
 - [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 风险检测](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 风险检测](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 安全中心监视**：是
 
@@ -420,7 +420,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 **指南**：查看 Azure Active Directory 日志，以帮助发现可能包含具有 Azure Database for PostgreSQL 管理角色的陈旧帐户。 此外，使用 Azure 标识访问评审可高效管理组成员身份、对可用于访问 Azure Database for PostgreSQL 的企业应用程序的访问权限以及角色分配。 应定期（例如每 90 天一次）评审用户访问权限，以确保正确用户持续拥有访问权限。
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -438,7 +438,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 - [如何配置和访问 Azure Database for PostgreSQL 的审核日志](concepts-audit.md)
 
-- [如何将 Azure 活动日志集成到 Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -456,7 +456,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 - [Azure AD 标识保护概述](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -476,13 +476,13 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 ## <a name="data-protection"></a>数据保护
 
-*有关详细信息，请参阅 [Azure 安全基准：数据保护](../security/benchmarks/security-control-data-protection.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-control-data-protection.md)。
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息清单
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
 **指南**：使用标记可帮助跟踪存储或处理敏感信息的 Azure Database for PostgreSQL 实例或相关资源。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -492,9 +492,9 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 **指南**：为开发、测试和生产实现单独的订阅和/或管理组。 结合使用专用链接、服务终结点和/或防火墙规则，以隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 - [如何配置 Azure Database for PostgreSQL 的专用链接](howto-configure-privatelink-portal.md)
 
@@ -536,7 +536,7 @@ Azure Database for PostgreSQL 当前支持的 TLS 版本为 TLS 1.0、TLS 1.1、
 
 **指南**：数据标识、分类和丢失防护功能尚不可用于 Azure Database for PostgreSQL。 在合规性目的需要时，实现第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -544,7 +544,7 @@ Azure Database for PostgreSQL 当前支持的 TLS 版本为 TLS 1.0、TLS 1.1、
 
 **责任**：共享
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
 **指导**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure Database for PostgreSQL 控制平面的访问 (例如 Azure 门户) 。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。 Azure RBAC 不影响数据库中的用户权限。
 
@@ -568,7 +568,7 @@ Microsoft 会管理 Azure Database for PostgreSQL 的底层基础结构，并实
 
 **责任**：Microsoft
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密静态的敏感信息
 
 **指南**：Azure Database for PostgreSQL 服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 数据（包括备份）在磁盘上加密，运行查询时创建的临时文件除外。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
 
@@ -596,7 +596,7 @@ AskAzureDBforPostgreSQL@service.microsoft.com.
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-*有关详细信息，请参阅 [Azure 安全基准：漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -646,7 +646,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-*有关详细信息，请参阅 [Azure 安全基准：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -654,7 +654,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -666,7 +666,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 **指南**：将标记应用于 Azure Database for PostgreSQL 实例和其他相关资源，从而将元数据按逻辑组织到分类中。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -676,11 +676,11 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 **指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure Database for PostgreSQL 实例和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -746,7 +746,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -780,7 +780,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -788,7 +788,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 ## <a name="secure-configuration"></a>安全配置
 
-*有关详细信息，请参阅 [Azure 安全基准：安全配置](../security/benchmarks/security-control-secure-configuration.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -798,7 +798,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 - 应为 PostgreSQL 数据库服务器启用“记录连接”
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -838,9 +838,9 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 **指南**：如果对 Azure Database for PostgreSQL 实例和相关资源使用自定义 Azure Policy 定义，请使用 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure 安全中心监视**：不适用
 
@@ -898,7 +898,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 - [如何创建 Key Vault](../key-vault/general/quick-create-portal.md)
 
-- [如何使用托管标识提供 Key Vault 身份验证](/azure/key-vault/general/managed-identity)
+- [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：是
 
@@ -910,7 +910,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 对于在 Azure 应用服务上运行的用于访问 Azure Database for PostgreSQL 服务器的 Azure 虚拟机或 Web 应用程序，请结合使用托管服务标识与 Azure Key Vault ，以存储和检索 Azure Database for PostgreSQL 服务器的凭据。 请确保启用 Key Vault 软删除。
 
-使用托管标识在 Azure Active Directory (AD) 中为 Azure 服务提供一个自动托管标识。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
+使用托管标识在 Azure Active Directory (AD) 中为 Azure 服务提供一个自动托管标识。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
 
 - [如何配置托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
@@ -932,7 +932,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-*有关详细信息，请参阅 [Azure 安全基准：恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -966,7 +966,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for
 
 ## <a name="data-recovery"></a>数据恢复
 
-*有关详细信息，请参阅 [Azure 安全基准：数据恢复](../security/benchmarks/security-control-data-recovery.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
@@ -1020,11 +1020,11 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for
 
 ## <a name="incident-response"></a>事件响应
 
-*有关详细信息，请参阅 [Azure 安全基准：事件响应](../security/benchmarks/security-control-incident-response.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -1050,7 +1050,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
@@ -1092,13 +1092,13 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-*有关详细信息，请参阅 [Azure 安全基准：渗透测试和 red 团队练习](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
 指南：遵循 Microsoft Rules of Engagement 以确保渗透测试不违反 Microsoft 政策： https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-- [可在此处详细了解如何针对 Microsoft 托管云基础结构、服务和应用程序执行红队测试和实时站点渗透测试，以及 Microsoft 的相关策略](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [对于 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序的实时站点渗透测试，可在此处找到详细信息](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 安全中心监视**：不适用
 
@@ -1106,5 +1106,5 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273035"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608776"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器
 
@@ -33,19 +33,20 @@ ms.locfileid: "91273035"
 - OpenShift 容器平台 (OCP) 
 - AWS 弹性 Kubernetes 服务 (EKS)
 - Google Cloud Kubernetes 引擎 (GKE) 
-- 开源，通常使用 kubeadm 部署上游 Kubernetes
+- 通常使用 kubeadm 部署的开源上游 Kubernetes
 
 > [!IMPORTANT]
-> * Kubernetes 支持的最低版本为 v 1.14。
+> * Kubernetes 支持的最低版本为 v 1.17。 有关其他信息，请参阅 [已知问题](./release-notes.md#known-issues) 。 
+> * 最小支持的 OCP 版本为4.3。
 > * 请参阅 [连接要求](connectivity.md) ，了解你的环境和 Azure 之间需要哪些连接。
 > * 请参阅 [存储配置指南](storage-configuration.md) 以了解有关如何配置永久性存储的详细信息。
-> * 如果你使用的是 Azure Kubernetes 服务，则群集的工作节点 VM 大小至少应为 **Standard_D8s_v3** 并使用 **高级磁盘。** 
+> * 如果你使用的是 Azure Kubernetes 服务，则群集的工作节点 VM 大小至少应为 **Standard_D8s_v3** 并使用 **高级磁盘。** 群集不应跨多个可用性区域。 
 > * 如果你使用的是其他 Kubernetes 分发或服务，则应确保你的最小节点大小为 8 GB RAM 和4个内核，以及所有 Kubernetes 节点上可用的 32 GB RAM 的总容量。 例如，你可能有1个位于 32 GB RAM 和4个内核的节点，或者可以有2个节点，每个节点都有一个 16 GB RAM 和4个内核。
 
 > [!NOTE]
 > 如果在 Azure 上使用 Red Hat OpenShift 容器平台，建议使用最新的可用版本。
 
-根据你选择的选项，某些工具是 _必需_的，但建议在开始创建 Azure Arc 数据控制器之前 [安装所有客户端工具](./install-client-tools.md) 。
+根据你选择的选项，某些工具是 _必需_ 的，但建议在开始创建 Azure Arc 数据控制器之前 [安装所有客户端工具](./install-client-tools.md) 。
 
 无论你选择哪种选项，在创建过程中，你都需要提供以下信息：
 
@@ -63,10 +64,10 @@ ms.locfileid: "91273035"
 有多个选项可用于创建 Azure Arc 数据控制器：
 
 > 想尝试一下吗？  
-> 在 azure Kubernetes Service 上快速开始使用 [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) (AKS) 、AWS 弹性 Kubernetes 服务 (EKS) 、Google Cloud Kubernetes 引擎 (GKE) 或 Azure VM！
+> 在 azure Kubernetes Service 上快速开始使用 [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) (AKS) 、AWS 弹性 Kubernetes 服务 (EKS) 、Google Cloud Kubernetes 引擎 (GKE) 或 Azure VM！
 > 
-- [使用 Azure 数据 CLI 创建数据控制器 (azdata) ](create-data-controller-using-azdata.md)
+- [使用创建数据控制器 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [使用 Azure Data Studio 创建数据控制器](create-data-controller-azure-data-studio.md)
 - [通过 Azure Data Studio 中的 Jupyter 笔记本创建 Azure 门户的数据控制器](create-data-controller-resource-in-azure-portal.md)
 - [使用 Kubernetes 工具（如 kubectl 或 oc）创建数据控制器](create-data-controller-using-kubernetes-native-tools.md)
-- [使用 Azure Arc Jumpstart 创建数据控制器以加速测试部署的体验](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)
+- [使用 Azure Arc Jumpstart 创建数据控制器以加速测试部署的体验](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

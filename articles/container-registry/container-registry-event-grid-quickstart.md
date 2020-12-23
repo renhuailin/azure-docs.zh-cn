@@ -3,13 +3,13 @@ title: 快速入门-将事件发送到事件网格
 description: 在本快速入门中，我们将为容器注册表启用事件网格事件，然后将容器映像推送和删除事件发送到示例应用程序。
 ms.topic: article
 ms.date: 08/23/2018
-ms.custom: seodec18
-ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78403243"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074210"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入门：将事件从私有容器注册表发送到事件网格
 
@@ -19,11 +19,11 @@ Azure 事件网格是一个完全托管的事件路由服务，可以通过发�
 
 ![呈现示例 Web 应用程序的 Web 浏览器，其中包含三个收到的事件][sample-app-01]
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-本文中的 Azure CLI 命令已根据 **Bash** shell 设置了格式。 如果使用其他 shell（例如 PowerShell 或命令提示符），则可能需要相应地调整行连续字符或变量赋值行。 本文使用变量来最大程度地减少所需的命令编辑量。
+- 本文中的 Azure CLI 命令已根据 **Bash** shell 设置了格式。 如果使用其他 shell（例如 PowerShell 或命令提示符），则可能需要相应地调整行连续字符或变量赋值行。 本文使用变量来最大程度地减少所需的命令编辑量。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -96,7 +96,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-registry-events"></a>订阅注册表事件
 
-在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。** 以下 [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] 命令订阅创建的容器注册表，并将 Web 应用的 URL 指定为要将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
+在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。  以下 [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] 命令订阅创建的容器注册表，并将 Web 应用的 URL 指定为要将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -200,13 +200,13 @@ Are you sure you want to continue? (y/n):
 
 ![显示示例应用的 Web 浏览器，该应用包含 ImagePushed 和 ImageDeleted 事件][sample-app-03]
 
-祝贺你！ 如果看到 `ImagePushed` 和 `ImageDeleted` 事件，则表示注册表正在将事件发送到事件网格，而事件网格正在将这些事件转发到 Web 应用终结点。
+恭喜！ 如果看到 `ImagePushed` 和 `ImageDeleted` 事件，则表示注册表正在将事件发送到事件网格，而事件网格正在将这些事件转发到 Web 应用终结点。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 用完本快速入门中创建的资源后，可使用以下 Azure CLI 命令将其全部删除。 删除某个资源组会永久删除其中包含的所有资源。
 
-**警告**：此操作不可逆。 在运行该命令之前，请确认不再需要该组中的任何资源。
+**警告** ：此操作不可逆。 在运行该命令之前，请确认不再需要该组中的任何资源。
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

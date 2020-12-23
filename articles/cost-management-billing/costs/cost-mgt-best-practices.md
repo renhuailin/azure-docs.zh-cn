@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4dd22427038bc7c4052ee714c3ec3ce45d7a1837
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689144"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132816"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -126,7 +126,7 @@ Azure 提供了有助于评估过程的工具。 借助这些工具，可以充�
 
 Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载。 你可以深入了解你对 Azure 替代解决方案的需求。 首先，Migrate 会分析本地计算机，确定迁移是否可行。 然后，它会建议 Azure 中的 VM 大小，以最大程度优化性能。 最后，它还会创建基于 Azure 的解决方案的成本估算值。
 
-有关详细信息，请参阅 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview)。
+有关详细信息，请参阅 [Azure Migrate](../../migrate/migrate-services-overview.md)。
 
 ## <a name="analyze-and-manage-your-costs"></a>分析和管理成本
 

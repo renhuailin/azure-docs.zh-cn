@@ -1,35 +1,35 @@
 ---
-title: 使用按需 SQL（预览版）查询存储中的数据
-description: 本文描述了如何使用 SQL 按需版本（预览版）资源在 Azure Synapse Analytics 中查询 Azure 存储。
+title: 使用无服务器 SQL 池查询数据存储
+description: 本文描述了如何使用无服务器 SQL 池资源在 Azure Synapse Analytics 中查询 Azure 存储。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288369"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462661"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>使用 SQL 按需版本（预览版）资源在 Synapse SQL 中查询存储文件
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件
 
-使用 SQL 按需版本（预览版）可以查询数据湖中的数据。 SQL 按需版本提供一个可以适应半结构化和非结构化数据查询的 T-SQL 查询外围应用。 对于查询，T-SQL 的以下方面受支持：
+使用无服务器 SQL 池可以查询数据湖中的数据。 SQL 按需版本提供一个可以适应半结构化和非结构化数据查询的 T-SQL 查询外围应用。 对于查询，T-SQL 的以下方面受支持：
 
 - 完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 外围应用，包括大部分 [SQL 函数和运算符](overview-features.md)。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) 会创建一个[外部表](develop-tables-external-tables.md)，然后将 Transact-SQL SELECT 语句的结果并行导出到 Azure 存储。
 
-有关当前支持和不支持的功能的详细信息，请参阅 [SQL 按需版本概述](on-demand-workspace-overview.md)一文或以下文章：
+有关当前支持和不支持的功能的详细信息，请参阅[无服务器 SQL 池概述](on-demand-workspace-overview.md)一文或以下文章：
 - [开发存储访问](develop-storage-files-overview.md)，你可以在其中了解如何使用[外部表](develop-tables-external-tables.md)和 [OPENROWSET](develop-openrowset.md) 函数从存储中读取数据。
 - [控制存储访问](develop-storage-files-storage-access-control.md)，你可以在其中了解如何使用 SAS 身份验证或工作区的托管标识启用 Synapse SQL 以访问存储。
 
 ## <a name="overview"></a>概述
 
-为了支持在就地查询 Azure 存储文件中的数据方面提供顺畅的体验，SQL 按需版本将使用具有以下附加功能的 [OPENROWSET](develop-openrowset.md) 函数：
+为了支持在就地查询 Azure 存储文件中的数据方面提供顺畅的体验，无服务器 SQL 池将使用具有以下附加功能的 [OPENROWSET](develop-openrowset.md) 函数：
 
 - [查询多个文件或文件夹](#query-multiple-files-or-folders)
 - [PARQUET 文件格式](#query-parquet-files)
@@ -47,7 +47,7 @@ ms.locfileid: "91288369"
 ```syntaxsql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 有关用法示例，请查看[查询 Parquet 文件](query-parquet-files.md)一文。
@@ -59,7 +59,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 有一些其他选项可用于将分析规则调整为自定义 CSV 格式：
@@ -85,7 +85,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolde
 WITH (
       C1 int, 
       C2 varchar(20),
-      C3 as varchar(max)
+      C3 varchar(max)
 ) as rows
 ```
 
@@ -146,7 +146,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>处理复杂类型以及嵌套或重复的数据结构
 
-为了在处理以嵌套的或重复的数据类型存储的数据（例如，在 [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) 文件中）时实现顺畅的体验，SQL 按需版本添加了以下扩展。
+为了在处理以嵌套的或重复的数据类型存储的数据（例如，在 [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) 文件中）时实现顺畅的体验，无服务器 SQL 池添加了以下扩展。
 
 #### <a name="project-nested-or-repeated-data"></a>投影嵌套数据或重复数据
 
@@ -222,7 +222,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 ### <a name="tools"></a>工具
 
 发出查询所需的工具：
-    - Azure Synapse Studio（预览版）
+    - Azure Synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 

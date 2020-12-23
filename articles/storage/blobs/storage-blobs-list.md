@@ -5,22 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280090"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543062"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 blob
 
 通过代码列出 Blob 时，可以指定多个选项来管理如何从 Azure 存储返回结果。 可以指定要在每个结果集中返回的结果数，然后检索后续结果集。 可以指定前缀以返回名称以该字符或字符串开头的 blob。 而且，可以在平面列表结构中列出 blob，也可以分层列出 blob。 分层列表返回 blob，就像它们被组织到文件夹中一样。
 
-本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)列出 blob。  
+本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)列出 blob。  
 
 ## <a name="understand-blob-listing-options"></a>了解 Blob 列出选项
 
@@ -28,10 +28,10 @@ ms.locfileid: "91280090"
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync)
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
@@ -51,11 +51,7 @@ ms.locfileid: "91280090"
 
 ### <a name="manage-how-many-results-are-returned"></a>管理要返回的结果数
 
-默认情况下，列表操作一次最多返回 5000 个结果，但你可以指定你所希望的每个列表操作返回的结果数。 本文演示的示例说明了如何执行此操作。
-
-如果列表操作返回的 blob 超过 5000 个，或者可用的 blob 数超过指定的数量，Azure 存储会返回继续标记，并显示 blob 列表。 继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
-
-在代码中检查继续标记的值，以确定它是否为 null。 如果继续标记为 null，则表示结果集是完整的。 如果继续标记不为 null，则再次调用列出操作，并传入继续标记以检索下一组结果，直到继续标记为 null。
+默认情况下，列表操作一次最多返回 5000 个结果，但你可以指定你所希望的每个列表操作返回的结果数。 本文中介绍的示例说明了如何在页中返回结果。
 
 ### <a name="filter-results-with-a-prefix"></a>使用前缀筛选结果
 
@@ -63,11 +59,15 @@ ms.locfileid: "91280090"
 
 ### <a name="return-metadata"></a>返回元数据
 
-可以返回包含结果的 blob 元数据。 
+可以返回包含结果的 blob 元数据。
 
-- 如果使用的是 .NET v12 SDK，请为 [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) 枚举指定 Metadata  值。
+- 如果使用的是 .NET v12 SDK，请为 [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) 枚举指定 Metadata  值。
 
 - 如果使用的是 .NET v11 SDK，请为 [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 枚举指定 Metadata  值。 Azure 存储包含每个返回的 Blob 的元数据，因此在此上下文中，无需同时调用 **FetchAttributes** 方法之一即可检索 Blob 元数据。
+
+### <a name="list-blob-versions-or-snapshots"></a>列出 blob 版本或快照
+
+若要通过 .NET v12 客户端库列出 blob 版本或快照，请在 "**版本**" 或 "**快照**" 字段中指定 [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates)参数。 版本和快照从最旧到最新列出。 有关列出版本的详细信息，请参阅 [列出 blob 版本](versioning-enable.md#list-blob-versions)。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>平面列表与分层列表
 
@@ -90,6 +90,10 @@ Azure 存储中的 Blob 以平面范式进行组织，而不是以分层范式�
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+如果列表操作返回的 blob 超过 5000 个，或者可用的 blob 数超过指定的数量，Azure 存储会返回继续标记，并显示 blob 列表。 继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
+
+在代码中检查继续标记的值，以确定它是否为 null。 如果继续标记为 null，则表示结果集是完整的。 如果继续标记不为 null，则再次调用列出操作，并传入继续标记以检索下一组结果，直到继续标记为 null。
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -153,7 +157,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要以分层方式列出 blob，请调用 [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet) 或 [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) 方法。
+若要以分层方式列出 blob，请调用 [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy) 或 [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync) 方法。
 
 以下示例使用分层列表列出指定容器中的 Blob（其中指定了可选的段大小），并将 Blob 名称写入控制台窗口。
 

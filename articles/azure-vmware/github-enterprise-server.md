@@ -3,18 +3,18 @@ title: 在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server
 description: 了解如何在 Azure VMware 解决方案私有云上设置 GitHub 企业服务器。
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 53e5264eed761909217c2e3a902c9fee9faaffaa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341313"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326907"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server
 
 本文逐步讲解如何在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server （即 "本地" 版本的 [GitHub.com](https://github.com/)）。 本演练中所述的方案适用于 GitHub 企业服务器实例，该实例可以为3000的开发人员提供最多每分钟在 GitHub 操作上运行最多25个作业的开发人员。 它包括编写) *预览版* 功能（如 GitHub 操作）时 (的设置。 若要根据特定需求自定义安装程序，请查看在 [VMware 上安装 GitHub 企业服务器](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)中列出的要求。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试用版许可证](https://enterprise.github.com/trial)。 如果希望通过集成扩展 GitHub 企业服务器的功能，则可以使用免费的五位开发人员许可证。 通过 [GitHub 的合作伙伴计划](https://partner.github.com/)申请此许可证。
 
@@ -80,7 +80,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 > [!NOTE]
 > Github 操作 [当前作为 Github Enterprise Server 版本2.22 上的有限 beta 版本提供](https://docs.github.com/en/enterprise/admin/github-actions)。
 
-若要启用 GitHub Enterprise Server (上的 GitHub 操作，可以使用外部 blob 存储) 。 此外部 blob 存储用于存储项目和日志的操作。 GitHub Enterprise Server 上 [的操作支持将 Azure Blob 存储作为存储提供程序](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (，一些其他) 。 我们将使用 [存储帐户类型](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#types-of-storage-accounts) BlobStorage 预配新的 Azure 存储帐户：
+若要启用 GitHub Enterprise Server (上的 GitHub 操作，可以使用外部 blob 存储) 。 此外部 blob 存储用于存储项目和日志的操作。 GitHub Enterprise Server 上 [的操作支持将 Azure Blob 存储作为存储提供程序](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (，一些其他) 。 我们将使用 [存储帐户类型](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts) BlobStorage 预配新的 Azure 存储帐户：
 
 :::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="预配 Azure Blob 存储帐户。":::
 
@@ -221,7 +221,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 :::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="存储库中的示例。":::
 
-祝贺！ 你刚完成了 GitHub 企业服务器上的第一个操作工作流，该工作流在 Azure VMware 解决方案私有云上运行。
+恭喜！ 你刚完成了 GitHub 企业服务器上的第一个操作工作流，该工作流在 Azure VMware 解决方案私有云上运行。
 
 我们只是外在优势了可通过 GitHub 操作来执行的操作。 有关更多的操作，请在 [GitHub 的 Marketplace](https://github.com/marketplace)上查看操作列表，或 [创建自己](https://docs.github.com/en/actions/creating-actions)的操作列表。
 

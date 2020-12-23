@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651184"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483621"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -34,9 +34,33 @@ ms.locfileid: "91651184"
 ## <a name="known-issues"></a>已知问题
 
 > [!NOTE]
-> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [实时事件](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)和作业、获取有关访问 API 的信息以及加密内容。 对于所有其他的管理任务（例如，管理转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [实时事件](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)和作业、获取有关访问 API 的信息以及加密内容。 对于所有其他的管理任务（例如，管理转换和作业），请使用 [REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 >
 > 有关详细信息，请参阅：[媒体服务 v3的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="basic-audio-analysis"></a>基本音频分析
+音频分析预设现在包含基本模式定价层。 新的基本音频分析器模式提供了一种低成本的选项，可以提取语音脚本并设置输出字幕和副标题的格式。 此模式执行语音到文本脚本和生成 VTT 副标题/标题文件。 此模式的输出包含一个 Insights JSON 文件，其中只包括关键字、脚本和计时信息。 此模式下不包含自动语言检测和发言人 diarization。 请参阅支持的 [语言列表。](analyzing-video-audio-files-concept.md#built-in-presets)
+
+使用索引器 v1 和索引器 v2 的客户应该迁移到基本的音频分析预设。
+
+有关基本音频分析器模式的详细信息，请参阅 [分析视频和音频文件](analyzing-video-audio-files-concept.md)。  若要了解如何使用 REST API 的基本音频分析器模式，请参阅 [如何创建基本音频转换](how-to-create-basic-audio-transform.md)。
+
+## <a name="live-events"></a>直播活动
+
+当实时事件停止时，现在允许更新大多数属性。 此外，还允许用户为实时事件的输入和预览 Url 指定静态主机名的前缀。 现在调用 VanityUrl `useStaticHostName` ，以更好地反映属性的意图。
+
+实时事件现在具有待机状态。  请参阅 [媒体服务中的实时事件和实时输出](./live-events-outputs-concept.md)。
+
+实时事件支持接收各种输入纵横比。 Stretch 模式允许客户为输出指定拉伸行为。
+
+实时编码现在添加了将固定关键帧间隔碎片输出到0.5 到20秒的功能。
+
+## <a name="accounts"></a>帐户
+
+> [!WARNING]
+> 如果使用 2020-05-01 API 版本创建媒体服务帐户，则该帐户将不能用于 RESTv2 
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -47,7 +71,7 @@ ms.locfileid: "91651184"
 例如： `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
-> PIFF 1.1 支持作为智能电视 (Samsung，LG) 的向后兼容解决方案，用于实现通用加密的早期 "Silverlight" 版本。 建议仅使用 PIFF 格式，以便支持在2009-2015 之间提供的传统 Samsung 或 LG 智能电视支持 PlayReady 加密的 PIFF 1.1 版本。 
+> PIFF 1.1 支持作为智能电视（Samsung、LG）的后向兼容解决方案提供，实现了通用加密的早期“Silverlight”版本。 建议仅使用 PIFF 格式，以便支持在2009-2015 之间提供的传统 Samsung 或 LG 智能电视支持 PlayReady 加密的 PIFF 1.1 版本。 
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -174,7 +198,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将停用。 有关停用日期，请参阅此 [旧组件](../previous/legacy-components.md) 一文。
 
-有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](../previous/migrate-windows-azure-media-encoder.md) 和[将 AME 迁移到 Media Encoder Standard](../previous/migrate-azure-media-encoder.md)。
  
 ## <a name="july-2019"></a>2019 年 7 月
 
@@ -335,9 +359,9 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](/cli/azure/ams?v
 
 新转换对象简化编码模型。 通过新对象，可以轻松创建和共享编码资源管理器模板和预设。 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory 身份验证和 RBAC
+#### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory 身份验证和 Azure RBAC
 
-Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中的角色或用户启用安全转换、直播活动、内容密钥策略或资产。
+Azure AD 身份验证和 Azure 基于角色的访问控制 (Azure RBAC) 按角色或用户在 Azure AD 中启用安全转换、LiveEvents、内容密钥策略或资产。
 
 #### <a name="client-sdks"></a>客户端 SDK  
 
@@ -390,8 +414,8 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 * 转换和作业，用于对媒体内容来进行编码或分析 。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
-* **流式处理策略**和**内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
-* **直播活动**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
+* **流式处理策略** 和 **内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
+* **直播活动** 和 **实时输出**，用于配置实时传送视频流内容的引入和归档。
 * 资产，用于在 Azure 存储中存储和发布媒体内容。 
 * **流式处理终结点**，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
 

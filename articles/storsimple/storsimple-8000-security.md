@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75891501"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966201"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -219,7 +219,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 有关详细信息，请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
 
-## <a name="frequently-asked-questions-faq"></a>常见问题解答 (FAQ)
+## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
 以下是有关安全及 Microsoft Azure StorSimple 的部分问答。
 
@@ -269,7 +269,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：** 可以从 StorSimple 设备管理器服务下载新证书，然后即可将其安装到远程访问客户端的证书存储中。 有关说明，请转到：
 
-* [Import-Certificate cmdlet](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
+* [Import-Certificate cmdlet](/powershell/module/pkiclient/import-certificate)
 
 **问：** 如果 StorSimple 设备管理器服务受到安全威胁，我的数据是否得到保护？
 
@@ -288,4 +288,3 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 ## <a name="next-steps"></a>后续步骤
 
 [部署 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。
-

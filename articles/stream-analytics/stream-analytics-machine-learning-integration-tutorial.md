@@ -1,6 +1,6 @@
 ---
-title: Azure 流分析与 Azure 机器学习的集成
-description: 本文介绍如何使用用户定义函数快速设置与 Azure 机器学习集成的简单 Azure 流分析作业。
+title: Azure 流分析与 Azure 机器学习 Studio (经典) 集成
+description: 本文介绍如何使用用户定义函数快速设置一个简单的 Azure 流分析作业，该作业将 Azure 机器学习 Studio (经典) 集成。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236633"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011381"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>通过 Azure 流分析和 Azure 机器学习 Studio (经典) 进行情绪分析
 
-本文介绍如何设置简单的 Azure 流分析作业，该作业使用 Azure 机器学习 Studio (经典) 进行情绪分析。 使用 Cortana Intelligence Gallery 的机器学习情绪分析模型分析流式处理文本数据并确定情绪分数。
+本文介绍如何设置简单的 Azure 流分析作业，该作业使用 Azure 机器学习 Studio (经典) 进行情绪分析。 你可以从 Cortana Intelligence Gallery 使用 Studio (经典) 情绪分析模型来分析流文本数据并确定情绪分数。
 
 > [!TIP]
 > 强烈建议使用 [Azure 机器学习 UDF](machine-learning-udf.md)，而不是 Azure 机器学习工作室（经典）UDF 来提高性能和可靠性。
@@ -63,7 +63,7 @@ ms.locfileid: "88236633"
 
    ![为输入创建 blob 存储容器](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. 提供容器的名称，并验证 " **公共访问级别** " 是否设置为 " **专用**"。 完成操作后，选择“创建”。
+5. 提供容器的名称，并验证 " **公共访问级别** " 是否设置为 " **专用**"。 完成操作后，选择“创建”  。
 
    ![指定 blob 容器详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
@@ -77,33 +77,33 @@ ms.locfileid: "88236633"
 
 1. 转到 Cortana Intelligence 库中的[预测情绪分析模型](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1)页面。  
 
-2. 选择 **"在 Studio 中打开" (经典) **。  
+2. 选择 **"在 Studio 中打开" (经典)**。  
    
-   ![流分析机器学习，打开机器学习工作室](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![流分析 Azure 机器学习 Studio (经典) 、开放式 Studio (经典) ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3. 登录并转到工作区。 选择一个位置。
 
 4. 选择页面底部的 " **运行** "。 进程将运行，这将花费大约一分钟。
 
-   ![在机器学习工作室中运行试验](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![在工作室中运行试验 (经典) ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
-5. 在进程成功运行后，在页面底部选择“部署 Web 服务”。****
+5. 在进程成功运行后，在页面底部选择“部署 Web 服务”。
 
-   ![在机器学习工作室中将试验部署为 Web 服务](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![在 Studio 中部署试验 (经典) 为 web 服务](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
 6. 若要验证情绪 analytics 模型是否可供使用，请选择 " **测试** " 按钮。 提供文本输入，例如“I love Microsoft”。
 
-   ![在机器学习工作室中测试试验](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![Studio 中的测试试验 (经典) ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
    如果测试正常运行，将显示类似于以下示例的结果：
 
-   ![机器学习工作室中的测试结果](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![Studio 中的测试结果 (经典) ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
 7. 在 " **应用** " 列中，选择 " **excel 2010 或更早版本的工作簿** " 链接以下载 excel 工作簿。 该工作簿包含稍后设置流分析作业时所需的 API 密钥和 URL。
 
-    ![流分析机器学习，速览](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![流分析 Azure 机器学习 Studio (经典) ，速览](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>创建使用机器学习模型的流分析作业
+## <a name="create-a-stream-analytics-job-that-uses-the-studio-classic-model"></a>创建使用 Studio (经典) 模型的流分析作业
 
 现在可以创建一个从 blob 存储中的 CSV 文件读取示例推文的流分析作业。
 
@@ -127,7 +127,7 @@ ms.locfileid: "88236633"
    |容器|选择上一步中创建的容器。|
    |事件序列化格式|CSV|
 
-3. 选择“保存” 。
+3. 选择“保存”。
 
 ### <a name="configure-the-job-output"></a>配置作业输出
 
@@ -145,17 +145,17 @@ ms.locfileid: "88236633"
    |容器|选择上一步中创建的容器。|
    |事件序列化格式|CSV|
 
-3. 选择“保存” 。
+3. 选择“保存”。
 
-### <a name="add-the-machine-learning-function"></a>添加机器学习函数
+### <a name="add-the-studio-classic-function"></a>添加 Studio (经典) 函数
 
-在前面，你向 Web 服务发布了一个机器学习模型。 在此方案中，当流分析作业运行时，它将来自输入的每个示例推文发送到用于情绪分析的 Web 服务。 机器学习 Web 服务返回一种情绪（`positive`、`neutral` 或 `negative`）和推文为正面内容的概率。
+之前，你已将 Studio (经典) 模型发布到 web 服务。 在此方案中，当流分析作业运行时，它将来自输入的每个示例推文发送到用于情绪分析的 Web 服务。 Studio (经典) web 服务返回一个情绪 (`positive` 、 `neutral` 或) ， `negative` 并返回推文的概率。
 
 在本部分中，将在流分析作业中定义函数。 可以调用该函数来将推文发送到 Web 服务并返回响应。
 
 1. 请确保具有之前在 Excel 工作簿中下载的 Web 服务 URL 和 API 密钥。
 
-2. 导航到流分析作业。 然后选择**函数**  >  **+ 添加**  >  **Azure ML Studio**
+2. 导航到流分析作业。 然后选择 **函数**  >  **+ 添加**  >  **Azure ML Studio**
 
 3. 用以下值填写 **Azure 机器学习函数** 窗体：
 
@@ -163,17 +163,17 @@ ms.locfileid: "88236633"
    |---------|---------|
    | 函数别名 | 使用 "名称" `sentiment` 并选择 " **手动提供 Azure 机器学习函数设置**"，这将为你提供输入 URL 和密钥的选项。      |
    | URL| 粘贴 Web 服务 URL。|
-   |键 | 粘贴 API 密钥。 |
+   |密钥 | 粘贴 API 密钥。 |
 
 4. 选择“保存”。
 
 ### <a name="create-a-query-to-transform-the-data"></a>创建查询来转换数据
 
-流分析使用声明性的、基于 SQL 的查询来检查输入，并对其进行处理。 在本部分中，将创建一个查询，该查询读取输入中的每条推文，之后调用机器学习函数来执行情绪分析。 然后，该查询将结果发送到你定义的输出（blob 存储）。
+流分析使用声明性的、基于 SQL 的查询来检查输入，并对其进行处理。 在本部分中，将创建一个查询，用于从输入中读取每个推文，然后调用 Studio (经典) 函数以执行情绪分析。 然后，该查询将结果发送到你定义的输出（blob 存储）。
 
 1. 返回到 "流分析作业概述"。
 
-2. 在“作业拓扑”下选择“查询”。 
+2. 在“作业拓扑”下选择“查询”。  
 
 3. 输入以下查询：
 
@@ -202,31 +202,31 @@ ms.locfileid: "88236633"
 
 2. 选择页面顶部的 " **启动** "。
 
-3. 在 " **启动作业**" 中，选择 " **自定义**"，然后选择将 CSV 文件上传到 blob 存储之前的某一天。 完成后，选择“启动”****。  
+3. 在 " **启动作业**" 中，选择 " **自定义**"，然后选择将 CSV 文件上传到 blob 存储之前的某一天。 完成后，选择“启动”。  
 
 ### <a name="check-the-output"></a>检查输出
 
-1. 让作业运行几分钟，直到在“监视”框中看到活动。****
+1. 让作业运行几分钟，直到在“监视”框中看到活动。
 
 2. 如果你的工具通常用于检查 blob 存储的内容，请使用该工具检查容器。 另外，也可以在 Azure 门户中执行以下步骤：
 
       1. 在 Azure 门户中，查找存储帐户，并在该帐户内查找容器。 可以在该容器中看到两个文件：包含示例推文的文件和由流分析作业生成的 CSV 文件。
-      2. 右键单击生成的文件并选择“下载”。****
+      2. 右键单击生成的文件并选择“下载”。
 
 3. 打开生成的 CSV 文件。 可以看到类似以下示例的内容：  
 
-   ![流分析机器学习，CSV 视图](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![流分析 Azure 机器学习 Studio (经典) ，CSV 视图](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ### <a name="view-metrics"></a>查看指标
 
-还可以查看与 Azure 机器学习函数相关的指标。 以下与函数相关的指标显示在作业概述的 " **监视** " 框中：
+你还可以查看 Studio (经典) 与函数相关的指标。 以下与函数相关的指标显示在作业概述的 " **监视** " 框中：
 
-* **函数请求数**指示发送到机器学习 Web 服务的请求数。  
-* **函数事件**指示请求中的事件数。 默认情况下，发送到机器学习 Web 服务的每个请求包含最多 1000 个事件。
+* **函数请求** 指示发送到 Studio (经典) web 服务的请求数。  
+* **函数事件** 指示请求中的事件数。 默认情况下，对 Studio (经典) web 服务的每个请求最多包含1000事件。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [集成 REST API 和机器学习](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [集成 REST API 和机器学习 Studio (经典) ](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)

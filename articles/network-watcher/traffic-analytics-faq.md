@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f27f2a6319bf2648546a62c2566d938db657738f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479840"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518458"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -36,7 +36,7 @@ ms.locfileid: "87479840"
 
 帐户必须符合以下某项条件才能启用流量分析：
 
-- 你的帐户必须在订阅范围内有以下 Azure 角色之一：所有者、参与者、读者或网络参与者。
+- 帐户必须在订阅范围内具有以下任何一种 Azure 角色：所有者、参与者、读者或网络参与者。
 - 如果未将帐户分配给之前列出的某一角色，则必须在订阅级别将其分配给分配有以下操作的自定义角色。
             
     - Microsoft.Network/applicationGateways/read
@@ -52,13 +52,13 @@ ms.locfileid: "87479840"
         
 检查针对订阅分配给用户的角色：
 
-1. 使用 Login-AzAccount 登录 Azure****。 
+1. 使用 Login-AzAccount 登录 Azure。 
 
 2. 使用 Select-AzSubscription 选择所需订阅。 
 
 3. 若要列出分配给特定用户的所有角色，请使用 **Get-AzRoleAssignment -SignInName [user email] -IncludeClassicAdministrators**。 
 
-如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
+如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-powershell.md)。
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>流量分析在哪些 Azure 区域中可用？
@@ -86,7 +86,7 @@ ms.locfileid: "87479840"
 - 韩国中部
 - 印度中部
 - 印度南部
-- Japan East
+- 日本东部
 - 日本西部
 - US Gov 弗吉尼亚州
 - 中国东部 2
@@ -126,7 +126,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
-是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[Azure Monitor 日志升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
+是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[将 Azure Monitor 日志升级到新的日志搜索](../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
@@ -134,7 +134,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-是的。 你可以将 NSG 流日志配置为发送到位于不同订阅中的存储帐户，前提是你具有适当的权限，并且该存储帐户与 NSG 位于同一区域。 NSG 和目标存储帐户还必须共享同一个 Azure Active Directory 租户。
+是的。 可以将 NSG 流日志配置为发送到位于不同订阅中的存储帐户，前提是你具有适当的权限，并且该存储帐户与 NSG 位于同一区域。 NSG 和目标存储帐户还必须共享同一个 Azure Active Directory 租户。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 
@@ -176,7 +176,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>是否可以使用 PowerShell 或 Azure 资源管理器模板或客户端配置流量分析？
 
-可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要使用 Set cmdlet 为特定 NSG 配置流日志记录和流量分析，请参阅 [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定 NSG 的流日志记录和流量分析状态，请参阅 [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
+可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要使用 Set cmdlet 为特定 NSG 配置流日志记录和流量分析，请参阅 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定 NSG 的流日志记录和流量分析状态，请参阅 [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
 
 目前，无法使用 Azure 资源管理器模板配置流量分析。
 
@@ -250,7 +250,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析多久处理一次数据？
 
-请参阅“流量分析架构和数据聚合”文档中的[“数据聚合”部分](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)
+请参阅“流量分析架构和数据聚合”文档中的[“数据聚合”部分](./traffic-analytics-schema.md#data-aggregation)
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何确定 IP 是恶意 IP？ 
 
@@ -262,9 +262,9 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 可以在流量分析中使 Log Analytics 的短链接。 
 - 使用[此处记录的架构](traffic-analytics-schema.md)编写查询 
 - 单击“新建警报规则”以创建警报
-- 请参阅[日志警报文档](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)以创建警报
+- 请参阅[日志警报文档](../azure-monitor/platform/alerts-log.md)以创建警报
 
-## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何实现检查哪些 Vm 正在接收大多数本地流量？
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何检查哪些 VM 接收的本地流量最多？
 
 ```
 AzureNetworkAnalytics_CL
@@ -292,7 +292,7 @@ AzureNetworkAnalytics_CL
 
 对于时间，请使用格式：yyyy-mm-dd 00:00:00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>如何实现检查我的 Vm 从本地计算机接收的流量的标准偏差吗？
+## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>如何查看 VM 从本地计算机接收的流量的标准偏差？
 
 ```
 AzureNetworkAnalytics_CL
@@ -316,7 +316,7 @@ AzureNetworkAnalytics_CL
 | summarize deviation = stdev(traffic)  by IP
 ```
 
-## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何实现检查是否可通过 NSG 规则在 IP 对之间访问（或阻止）哪些端口？
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何使用 NSG 规则检查 IP 对之间哪些端口可以访问（或被阻止）？
 
 ```
 AzureNetworkAnalytics_CL
@@ -400,4 +400,7 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 - 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点（子网）。
 - 若要移至拓扑视图中其他突出显示的节点，请使用 `Shift+Right arrow` 键向前移动。 
 - 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮 。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
-- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。    
+- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
+
+## <a name="are-classic-nsgs-supported"></a>是否支持经典 Nsg？
+不，流量分析不支持经典 NSG。 建议将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器因为将不 [推荐使用](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation)经典资源。 请参阅本文，了解 [如何迁移](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview)。

@@ -14,6 +14,7 @@
     - name: 诊断 VM 流量筛选器问题 - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
     - name: 使用 ARM 模板配置 NSG 流日志
+      displayName: Resource Manager
       href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: 教程
   items:
@@ -27,8 +28,8 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: 概念
   items:
-    - name: 连接监视器（预览版）
-      href: connection-monitor-preview.md
+    - name: 连接监视器
+      href: connection-monitor-overview.md
     - name: 诊断 VM 网络流量筛选器问题
       href: network-watcher-ip-flow-verify-overview.md
     - name: 诊断 NSG 规则和流量筛选
@@ -45,7 +46,7 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: 网络安全组视图
       href: network-watcher-security-group-view-overview.md
-    - name: 基于角色的访问控制权限
+    - name: Azure 基于角色的访问控制权限
       href: required-rbac-permissions.md
     - name: 安全性
       items:
@@ -57,26 +58,28 @@
   items:
     - name: 配置网络观察程序
       href: network-watcher-create.md
-    - name: 创建连接监视器（预览）
+    - name: 创建连接监视器
       items:
         - name: 使用 Azure 门户
-          href: connection-monitor-preview-create-using-portal.md
+          href: connection-monitor-create-using-portal.md
         - name: 使用 ARMClient
-          href: connection-monitor-preview-create-using-arm-client.md
-    - name: 迁移到连接监视器（预览）
+          href: connection-monitor-create-using-template.md
+        - name: 使用 PowerShell
+          href: connection-monitor-create-using-powershell.md
+    - name: 迁移到连接监视器
       items:
         - name: 来自网络性能监视器
-          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
-        - name: 来自连接监视器
-          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
+          href: migrate-to-connection-monitor-from-network-performance-monitor.md
+        - name: 来自连接监视器（经典）
+          href: migrate-to-connection-monitor-from-connection-monitor-classic.md
     - name: 诊断 VM 网络问题
       items:
         - name: 安装 VM 扩展
           items:
             - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
             - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
         - name: 诊断路由问题
           items:
             - name: Azure PowerShell
@@ -127,6 +130,8 @@
               href: network-watcher-nsg-flow-logging-rest.md
             - name: Azure 资源管理器
               href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+            - name: 内置策略
+              href: nsg-flow-logs-policy-portal.md
         - name: 删除 NSG 流日志存储 Blob
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: 分析 NSG 流日志
@@ -179,7 +184,7 @@
     - name: 确定位置和 Azure 区域之间的相对延迟
       href: view-relative-latencies.md
     - name: 监视网络性能
-      href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
     - name: 移动资源
       items:
         - name: 移动网络观察程序资源
@@ -209,7 +214,7 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: 服务更新

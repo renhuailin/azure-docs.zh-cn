@@ -1,14 +1,14 @@
 ---
 title: 了解适用于 Kubernetes 的 Azure 策略
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540245"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511325"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -25,7 +25,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 - [AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> AKS 引擎和启用了 Arc 的 Kubernetes 的外接程序处于 **预览**状态。 适用于 Kubernetes 的 Azure 策略仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 不_推荐_使用**EnforceOPAConstraint**和**EnforceRegoPolicy**效果和相关**Kubernetes 服务**类别的有限预览策略定义。 请改用 "使用 _审核_ 和 _拒绝_ " 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
+> AKS 引擎和启用了 Arc 的 Kubernetes 的外接程序处于 **预览** 状态。 适用于 Kubernetes 的 Azure 策略仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 不 _推荐_ 使用 **EnforceOPAConstraint** 和 **EnforceRegoPolicy** 效果和相关 **Kubernetes 服务** 类别的有限预览策略定义。 请改用 "使用 _审核_ 和 _拒绝_ " 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
 
 ## <a name="overview"></a>概述
 
@@ -37,7 +37,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
    - [AKS 引擎](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
-   > 有关安装的常见问题，请参阅 [排查 Azure 策略外接程序](../troubleshoot/general.md#add-on-installation-errors)问题。
+   > 有关安装的常见问题，请参阅 [排查 Azure 策略外接程序](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors)问题。
 
 1. [了解适用于 Kubernetes 的 Azure Policy 语言](#policy-language)
 
@@ -57,6 +57,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 - 不支持 Azure 策略外接程序之外的网关安装程序。 在启用 Azure 策略外接程序之前，请卸载由以前的网关安装程序安装的所有组件。
 - [不符合性的原因](../how-to/determine-non-compliance.md#compliance-reasons)不可用于 `Microsoft.Kubernetes.Data` 
    [资源提供程序模式](./definition-structure.md#resource-provider-modes)。 使用 [组件详细信息](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)。
+- [资源提供程序模式](./definition-structure.md#resource-provider-modes)不支持[免除](./exemption-structure.md)。
 
 以下限制仅适用于 AKS 的 Azure 策略外接程序：
 
@@ -79,8 +80,8 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
 - 使用带有破坏的系统节点池 `CriticalAddonsOnly` 来计划网关守卫。 有关详细信息，请参阅 [使用系统节点池](../../../aks/use-system-pools.md#system-and-user-node-pools)。
 - AKS 群集的安全出站流量。 有关详细信息，请参阅 [控制群集节点的出口流量](../../../aks/limit-egress-traffic.md)。
-- 如果已启用群集 `aad-pod-identity` ，节点托管标识 (NMI) 盒修改节点的 iptables，以截获对 Azure 实例元数据终结点的调用。 此配置意味着对元数据终结点发出的任何请求都将被 NMI 截获，即使 pod 不使用也是如此 `aad-pod-identity` 。 可以将 AzurePodIdentityException .CRD 配置为通知来自与 `aad-pod-identity` 在 .crd 中定义的标签相匹配的 pod 的元数据终结点的任何请求都应该在无 NMI 处理的情况下代理。 `kubernetes.azure.com/managedby: aks` _Kube_命名空间中带标签的系统箱应 `aad-pod-identity` 通过配置 AzurePodIdentityException .crd 排除在中。 有关详细信息，请参阅 [禁用特定 pod 或应用程序的 aad-pod 标识](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)。
-  若要配置异常，请安装 [mic-EXCEPTION YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
+- 如果群集启用了 `aad-pod-identity`，节点托管标识 (NMI) pod 将修改节点的 iptable，以拦截对 Azure 实例元数据终结点的调用。 此配置意味着对元数据终结点发出的任何请求都将被 NMI 拦截，即使 pod 不使用 `aad-pod-identity`。 可以将 AzurePodIdentityException CRD 配置为通知 `aad-pod-identity` 应在不使用 NMI 进行出任何处理的情况下，代理与 CRD 中定义的标签匹配的 pod 所发起的对元数据终结点的任何请求。 应通过配置 AzurePodIdentityException CRD 在 `aad-pod-identity` 中排除在 _kube-system_ 命名空间中具有 `kubernetes.azure.com/managedby: aks` 标签的系统 pod。 有关详细信息，请参阅[禁用特定 pod 或应用程序的 aad-pod-identity](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)。
+  若要配置例外情况，请安装 [mic-exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>为 AKS 安装 Azure Policy 加载项
 
@@ -159,7 +160,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-最后，通过运行此 Azure CLI 命令，并将 `<rg>` 替换为资源组名称，将 `<cluster-name>` 替换为 AKS 群集名称 `az aks show -g <rg> -n <cluster-name>`，来验证是否已安装最新的加载项。 结果应类似于以下输出，config.version 应为 `v2`：
+最后，通过运行此 Azure CLI 命令，并将 `<rg>` 替换为资源组名称，将 `<cluster-name>` 替换为 AKS 群集名称 `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>`，来验证是否已安装最新的加载项。 结果应类似于以下输出，config.version 应为 `v2`：
 
 ```output
 "addonProfiles": {
@@ -373,7 +374,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>Policy 语言
 
-用于管理 Kubernetes 的 Azure Policy 语言结构遵循现有策略定义。 使用的 [资源提供程序模式](./definition-structure.md#resource-provider-modes) `Microsoft.Kubernetes.Data` ，会使用 " [审核](./effects.md#audit) " 和 " [拒绝](./effects.md#deny) " 来管理你的 Kubernetes 群集。 _审核_和_拒绝_必须提供特定于使用[OPA 约束框架](https://github.com/open-policy-agent/frameworks/tree/master/constraint)和网关守卫 v3 的**详细信息**属性。
+用于管理 Kubernetes 的 Azure Policy 语言结构遵循现有策略定义。 使用的 [资源提供程序模式](./definition-structure.md#resource-provider-modes) `Microsoft.Kubernetes.Data` ，会使用 " [审核](./effects.md#audit) " 和 " [拒绝](./effects.md#deny) " 来管理你的 Kubernetes 群集。 _审核_ 和 _拒绝_ 必须提供特定于使用 [OPA 约束框架](https://github.com/open-policy-agent/frameworks/tree/master/constraint)和网关守卫 v3 的 **详细信息** 属性。
 
 作为策略定义中 details.constraintTemplate 和 details.constraint 属性的一部分，Azure Policy 将这些 [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) 的 URI 传递给加载项 。 Rego 是 OPA 和 Gatekeeper 支持的语言，用于验证对 Kubernetes 群集的请求。 通过支持 Kubernetes 管理的现有标准，Azure Policy 可重用现有规则并将其与 Azure Policy 配对以获得统一的云符合性报告体验。 有关详细信息，请参阅[什么是 Rego？](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)。
 
@@ -435,6 +436,14 @@ kubectl get pods -n gatekeeper-system
 > [!NOTE]
 > 适用于 Kubernetes 群集的 Azure Policy 中的每个符合性报告都包含过去 45 分钟内的所有冲突。 时间戳指示发生冲突的时间。
 
+一些其他注意事项：
+
+- 如果将群集订阅注册到 Azure 安全中心，则 Azure 安全中心 Kubernetes 策略会自动应用于群集。
+
+- 使用现有 Kubernetes 资源在群集上应用拒绝策略时，任何不符合新策略的预先存在的资源都将继续运行。 如果在另一个节点上重新计划了不符合的资源，则网关守卫会阻止资源创建。
+
+- 当群集具有验证资源的拒绝策略时，在创建部署时，用户将看不到拒绝消息。 例如，考虑包含 replicasets 和 pod 的 Kubernetes 部署。 用户执行时 `kubectl describe deployment $MY_DEPLOYMENT` ，它不会返回拒绝消息作为事件的一部分。 但是， `kubectl describe replicasets.apps $MY_DEPLOYMENT` 返回与拒绝关联的事件。
+
 ## <a name="logging"></a>日志记录
 
 作为 Kubernetes 控制器/容器，azure-policy 和 gatekeeper pod 在 Kubernetes 群集中保留日志。 日志可以在 Kubernetes 群集的“见解”页中公开。
@@ -451,6 +460,10 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 ```
 
 有关详细信息，请参阅 Gatekeeper 文档中的[调试 Gatekeeper](https://github.com/open-policy-agent/gatekeeper#debugging)。
+
+## <a name="troubleshooting-the-add-on"></a>外接程序故障排除
+
+有关排查 Kubernetes 的外接程序问题的详细信息，请参阅 Azure 策略疑难解答一文的 [Kubernetes 部分](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) 。
 
 ## <a name="remove-the-add-on"></a>删除加载项
 

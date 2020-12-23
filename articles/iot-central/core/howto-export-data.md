@@ -4,16 +4,16 @@ description: 如何使用新的数据导出将 IoT 数据导出到 Azure 和自�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/15/2020
+ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: contperfq1
-ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: b84f1efd77ca757fd2ceaa8bb5605e3fc78297d0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974402"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032365"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出将 IoT 数据导出到云目标
 
@@ -35,7 +35,7 @@ ms.locfileid: "90974402"
 > [!Tip]
 > 当你打开数据导出时，你只会获得那一刻的数据。 当前，数据导出关闭时无法检索数据。 若要保留更多的历史数据，请及早打开数据导出。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 若要使用数据导出功能，您必须具有 [V3 应用程序](howto-get-app-info.md)，并且您必须具有 [数据导出](howto-manage-users-roles.md) 权限。
 
@@ -55,7 +55,7 @@ ms.locfileid: "90974402"
 
 1. [在 Azure 门户中创建新的事件中心命名空间](https://ms.portal.azure.com/#create/Microsoft.EventHub)。 可以在 [Azure 事件中心文档](../../event-hubs/event-hubs-create.md)中进行详细的了解。
 
-1. 在事件中心命名空间中创建事件中心。 转到命名空间，选择顶部的“+ 事件中心”，以便创建事件中心实例。****
+1. 在事件中心命名空间中创建事件中心。 转到命名空间，选择顶部的“+ 事件中心”，以便创建事件中心实例。
 
 1. 生成要在 IoT Central 中设置数据导出时使用的密钥：
 
@@ -93,16 +93,16 @@ ms.locfileid: "90974402"
 
 如果没有要导出到的现有 Azure 存储帐户，请执行以下步骤：
 
-1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的 [Azure Blob 存储帐户](https://aka.ms/blobdocscreatestorageaccount) 或 [Azure Data Lake Storage v2 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。 数据导出只能将数据写入支持块 blob 的存储帐户。 以下列表显示了已知的兼容存储帐户类型：
+1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的 [Azure Blob 存储帐户](../../storage/blobs/storage-quickstart-blobs-portal.md) 或 [Azure Data Lake Storage v2 存储帐户](../../storage/common/storage-account-create.md)。 数据导出只能将数据写入支持块 blob 的存储帐户。 以下列表显示了已知的兼容存储帐户类型：
 
     |性能层|帐户类型|
     |-|-|
-    |Standard|常规用途 V2|
-    |Standard|常规用途 V1|
-    |Standard|Blob 存储|
-    |高级|块 Blob 存储|
+    |标准|常规用途 V2|
+    |标准|常规用途 V1|
+    |标准|Blob 存储|
+    |Premium|块 Blob 存储|
 
-1. 若要在存储帐户中创建容器，请使用存储帐户。 在“Blob 服务”下选择“浏览 Blob”********。 选择顶部的“+ 容器”以创建新容器。****
+1. 若要在存储帐户中创建容器，请使用存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择顶部的“+ 容器”以创建新容器。
 
 1. 转到 " **设置" > "访问密钥**"，为你的存储帐户生成一个连接字符串。 复制两个连接字符串中的一个。
 
@@ -126,7 +126,7 @@ ms.locfileid: "90974402"
 
 1. 选择 " **+ 新建导出**"。
 
-1. 为新的导出输入显示名称，并确保 **已启用**数据导出。
+1. 为新的导出输入显示名称，并确保 **已启用** 数据导出。
 
 1. 选择要导出的数据类型。 下表列出了支持的数据导出类型：
 
@@ -135,6 +135,7 @@ ms.locfileid: "90974402"
     |  遥测 | 以近乎实时的速度从设备导出遥测消息。 每个导出的消息都包含原始设备消息的已规范化内容。   |  [遥测消息格式](#telemetry-format)   |
     | 属性更改 | 以近乎实时的速度将更改导出到设备和云属性。 对于只读设备属性，将导出对报告值所做的更改。 对于读写属性，将导出报告的值和所需的值。 | [属性更改消息格式](#property-changes-format) |
 
+<a name="DataExportFilters"></a>
 1. （可选）添加筛选器以减少导出的数据量。 每种数据导出类型都有不同类型的筛选器：
 
     若要筛选遥测，可以：
@@ -145,6 +146,7 @@ ms.locfileid: "90974402"
 
     若要筛选属性更改，请使用 **功能筛选器**。 选择下拉列表中的属性项。 导出的流只包含所选属性的更改，这些更改符合筛选条件。
 
+<a name="DataExportEnrichmnents"></a>
 1. （可选）利用附加的键值对元数据丰富导出的消息。 以下根据适用于遥测和属性更改数据导出类型：
 
     - **自定义字符串**：向每个消息添加一个自定义静态字符串。 输入任意密钥，并输入任意字符串值。
@@ -156,8 +158,10 @@ ms.locfileid: "90974402"
     - **目标类型**：选择目标的类型。 如果尚未设置目标，请参阅 [设置导出目标](#set-up-export-destination)。
     - 对于 Azure 事件中心、Azure 服务总线队列或主题，请粘贴资源的连接字符串，并根据需要输入区分大小写的事件中心、队列或主题名称。
     - 对于 Azure Blob 存储，请粘贴资源的连接字符串，并根据需要输入区分大小写的容器名称。
-    - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。
-    - 选择“创建”。
+    - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。 你可以选择配置 webhook 授权 (OAuth 2.0 和授权令牌) 并添加自定义标头。 
+        - 对于 OAuth 2.0，仅支持客户端凭据流。 保存目标后，IoT Central 将与 OAuth 提供程序进行通信以检索授权令牌。 对于发送到此目标的每个消息，此标记将附加到 "Authorization" 标头。
+        - 对于 "授权令牌"，可以为发送到此目标的每个消息指定将直接附加到 "Authorization" 标头的令牌值。
+    - 选择“创建”  。
 
 1. 选择 " **+ 目标** "，然后从下拉列表中选择一个目标。 最多可以向单个导出添加5个目标。
 
@@ -277,7 +281,7 @@ ms.locfileid: "90974402"
 | 可用数据类型 | 遥测、设备、设备模板 | 遥测，属性更改 |
 | Filtering | 无 | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
 | 根据 | 无 | 使用自定义字符串或设备上的属性值丰富 |
-| Destinations | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出和 webhook 相同|
+| 目标 | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出和 webhook 相同|
 | 支持的应用程序版本 | V2、V3 | 仅 V3 |
 | 明显限制 | 每个应用导出5个，每个导出1个目标 | 10个导出-每个应用的目标连接 |
 

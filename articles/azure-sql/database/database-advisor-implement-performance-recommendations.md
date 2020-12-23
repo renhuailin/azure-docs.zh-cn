@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284334"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500846"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL 数据库的数据库顾问性能建议
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,7 +57,7 @@ Azure SQL 数据库持续监视正在运行的查询，并发现可以提升性�
 
 Azure SQL 数据库通过估计索引在一段时间内带来的性能提升，确信是否有必要创建索引。 根据估计的性能提升高低，将性能建议分为高、中或低三类。
 
-使用建议创建的索引始终都会标记为 auto_created。 可以通过查看 [sys.indexes 视图](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)，确定哪些索引是自动创建的。 自动创建的索引不会阻止 ALTER/RENAME 命令。
+使用建议创建的索引始终都会标记为 auto_created。 可以通过查看 [sys.indexes 视图](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)，确定哪些索引是自动创建的。 自动创建的索引不会阻止 ALTER/RENAME 命令。
 
 如果尝试删除包含自动创建的索引的列，那么命令会传递下去。 自动创建的索引会随列一起删除。 常规索引会阻止对已编制索引的列执行 ALTER/RENAME 命令。
 
@@ -114,7 +114,7 @@ Azure SQL 数据库通过估计索引在一段时间内带来的性能提升，�
 
 ## <a name="custom-applications"></a>自定义应用程序
 
-开发人员可以考虑使用针对 Azure SQL 数据库的性能建议来开发自定义应用程序。 可以通过 [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API 访问门户中列出的针对数据库的所有建议。
+开发人员可以考虑使用针对 Azure SQL 数据库的性能建议来开发自定义应用程序。 可以通过 [Get-AzSqlDatabaseRecommendedAction](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API 访问门户中列出的针对数据库的所有建议。
 
 ## <a name="next-steps"></a>后续步骤
 

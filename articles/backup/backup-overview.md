@@ -4,12 +4,12 @@ description: 概述 Azure 备份服务及其如何有助于实现业务连续性
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 72dee7bbcaa730f12af3ee323157fa92f6694603
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 805fa81362b9f90c1d6ba468caaf4b6745e42c62
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968332"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746108"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？
 
@@ -38,15 +38,15 @@ Azure 备份具有以下主要优势：
 - **无限数据传输**：Azure 备份不会限制传输的入站或出站数据量，且不会收取数据传输费。
   - 出站数据是指还原操作期间从恢复服务保管库传输的数据。
   - 如果使用 Azure 导入/导出服务执行脱机初始备份以导入大量数据，则入站数据将产生相关费用。  [了解详细信息](backup-azure-backup-import-export.md)。
-- **保护数据安全**：Azure 备份为[传输中](backup-azure-security-feature.md)的数据和[静态](backup-azure-security-feature-cloud.md)数据提供保护解决方案。
-- **集中式监视和管理**：Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](backup-azure-monitoring-built-in-monitor.md)。 无需任何附加的管理基础结构即可使用这些功能。 还可以[使用 Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) 提高监视和报告的规模。
+- **保护数据安全**：Azure 备份为 [传输中](backup-azure-security-feature.md)的数据和 [静态](backup-azure-security-feature-cloud.md)数据提供保护解决方案。
+- **集中式监视和管理**：Azure 备份在恢复服务保管库中提供 [内置的监视和警报功能](backup-azure-monitoring-built-in-monitor.md)。 无需任何附加的管理基础结构即可使用这些功能。 还可以[使用 Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) 提高监视和报告的规模。
 - **获取应用一致性备份**：应用程序一致性备份意味着恢复点包含还原备份副本所需的所有数据。 Azure 备份提供应用程序一致性备份，确保无需进行额外的修复就能还原数据。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
-- **保留短期和长期数据**：可将[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)用于短期和长期数据保留。
+- **保留短期和长期数据**：可将 [恢复服务保管库](backup-azure-recovery-services-vault-overview.md)用于短期和长期数据保留。
 - **自动存储管理** - 混合环境常常需要异类存储（部分在本地，部分在云端）。 在 Azure 备份中，使用本地存储设备无需付费。 Azure 备份会自动分配和管理备份存储，且采用即用即付模型。 因此，只需为所用的存储付费。 [详细了解](https://azure.microsoft.com/pricing/details/backup)定价情况。
-- **多个存储选项** - Azure 备份提供两种类型的复制来保持存储/数据的高可用性。
+- **多个存储选项** - Azure 备份提供三种类型的复制来保持存储/数据的高可用性。
   - [本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
   - [异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是默认的和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的数据持久度，即使出现区域性服务中断也是如此。
-  - [区域冗余存储 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 在[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)复制数据，从而确保同一区域中的数据驻留和复原能力。 ZRS 不会造成停机。 因此，可在 ZRS 中备份需要[数据驻留](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必须没有停机时间的关键工作负载。
+  - [区域冗余存储 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 在[可用性区域](../availability-zones/az-overview.md#availability-zones)复制数据，从而确保同一区域中的数据驻留和复原能力。 ZRS 不会造成停机。 因此，可在 ZRS 中备份需要[数据驻留](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必须没有停机时间的关键工作负载。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433647"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083210"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "89433647"
 
 - 基于设备的条件访问
 - [企业设置漫游](./enterprise-state-roaming-overview.md)
-- [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
+- [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 本文档提供了用于解决潜在问题的故障排除指导。
 
@@ -42,7 +42,7 @@ ms.locfileid: "89433647"
 **检索加入状态：**
 
 1. 以管理员身份打开命令提示符
-2. 类型 `dsregcmd /status`
+2. 键入 `dsregcmd /status`
 
 ```
 +----------------------------------------------------------------------+
@@ -95,16 +95,16 @@ WamDefaultAuthority: organizations
 
 #### <a name="domainjoined--yes"></a>DomainJoined : YES
 
-此字段指示设备是否已加入本地 Active Directory。 如果值为 **NO**，则设备无法执行混合 Azure AD 加入。
+此字段指示设备是否已加入本地 Active Directory。 如果值为 **NO** ，则设备无法执行混合 Azure AD 加入。
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined : NO
 
-此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。** 对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO**。 如果值为 **YES**，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，使用 Windows 10 1607 版或更高版本时，将忽略该帐户。
+此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。  对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO** 。 如果值为 **YES** ，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，使用 Windows 10 1607 版或更高版本时，将忽略该帐户。
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined : YES
 
 此字段指示设备是否已加入。 如果设备是 Azure AD 联接设备或混合 Azure AD 加入设备，则该值为 **YES** 。
-如果值为 **NO**，则表示加入到 Azure AD 的过程尚未完成。
+如果值为 **NO** ，则表示加入到 Azure AD 的过程尚未完成。
 
 继续执行后续步骤，进一步进行故障排除。
 
@@ -132,12 +132,12 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
+1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于 **应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册** 下
 2. 在以下应对警报304、305、307中查找事件。
 
-![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/1.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/1.png" alt-text="事件查看器的屏幕截图。将选择一个带有 I D 304 的事件，并显示其信息，其中突出显示了错误代码和阶段。" border="false":::
 
-![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/2.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="事件查看器的屏幕截图。将选择一个带有 I D 304 的事件，并显示其信息，其中突出显示了错误代码和阶段。" border="false":::
 
 ### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>步骤4：检查以下列表中可能的原因和解决方法
 
@@ -207,10 +207,10 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
+1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于 **应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册** 下
 2. 查找包含以下应对警报201的事件
 
-![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/5.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="事件查看器的屏幕截图。将选择一个带有 I D 304 的事件，并显示其信息，其中突出显示了错误代码和阶段。" border="false":::
 
 ###### <a name="network-errors"></a>网络错误
 
@@ -246,28 +246,28 @@ WamDefaultAuthority: organizations
 失败原因：
 
 - 无法为 DRS 资源自动获取访问令牌。
-   - Windows 10 设备使用 windows 集成身份验证向活动 WS-TRUST 终结点获取身份验证令牌。 详细信息： [联合身份验证服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+   - Windows 10 设备使用 windows 集成身份验证向活动 WS-Trust 终结点获取身份验证令牌。 详细信息： [联合身份验证服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **常见错误代码：**
 
 使用事件查看器日志来查找错误代码、suberror 代码、服务器错误代码和服务器错误消息。
 
-1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
+1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于 **应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册** 下
 2. 查找具有以下 eventID 305 的事件
 
-![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/3.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="事件查看器的屏幕截图。将选择一个带有 I D 304 的事件，并显示其信息，其中突出显示了错误代码和阶段。" border="false":::
 
 ##### <a name="configuration-errors"></a>配置错误
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057) 
    - 原因：身份验证协议不是 WS-TRUST。
-   - 解决方法：本地标识提供者必须支持 WS-TRUST
+   - 解决方法：本地标识提供者必须支持 WS-Trust
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036) 
    - 原因：本地联合身份验证服务未返回 XML 响应。
    - 解决方法：确保 MEX 终结点返回有效的 XML。 确保代理不会干扰并返回非 xml 响应。
 - **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** (0xcaa90023/-894894045) 
    - 原因：无法发现用户名/密码身份验证的终结点。
-   - 解决方法：检查本地标识提供程序设置。 确保启用 WS-TRUST 终结点，并确保 MEX 响应包含这些正确的终结点。
+   - 解决方法：检查本地标识提供程序设置。 确保启用 WS-Trust 终结点，并确保 MEX 响应包含这些正确的终结点。
 
 ##### <a name="network-errors"></a>网络错误
 
@@ -290,7 +290,7 @@ WamDefaultAuthority: organizations
    - 原因： Azure AD 未接受来自本地标识提供程序的 SAML 令牌。
    - 解决方法：检查联合服务器设置。 在身份验证日志中查找服务器错误代码。
 - **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060) 
-   - 原因：服务器 WS-TRUST 响应报告了错误异常，无法获取断言
+   - 原因：服务器 WS-Trust 响应报告了错误异常，无法获取断言
    - 解决方法：检查联合服务器设置。 在身份验证日志中查找服务器错误代码。
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074) 
    - 原因：尝试从令牌终结点获取访问令牌时收到错误。
@@ -327,10 +327,10 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
+1. 在事件查看器中打开 " **用户设备注册** " 事件日志。 位于 **应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册** 下
 2. 查找包含以下应对警报204的事件
 
-![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/4.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="事件查看器的屏幕截图。将选择一个带有 I D 304 的事件，并显示其信息，其中突出显示了错误代码和阶段。" border="false":::
 
 ##### <a name="http-errors-returned-from-drs-server"></a>DRS 服务器返回的 HTTP 错误
 
@@ -389,12 +389,12 @@ WamDefaultAuthority: organizations
 
 从下载文件 Auth.zip [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. 解压缩文件并将包含的**stop-auth.txt** **start-auth.txt**文件重命名为 " **start-auth** " 和 " **stop-auth**"。
-1. 在提升的命令提示符下，运行 **start-auth**。
+1. 解压缩文件并将包含的 **stop-auth.txt** **start-auth.txt** 文件重命名为 " **start-auth** " 和 " **stop-auth** "。
+1. 在提升的命令提示符下，运行 **start-auth** 。
 1. 使用交换机帐户切换到有问题用户的其他会话。
 1. 重现此问题。
 1. 使用交换机帐户切换回运行跟踪的管理会话。
-1. 在提升的命令提示符下，运行 **stop-auth**。
+1. 在提升的命令提示符下，运行 **stop-auth** 。
 1. Zip，并从执行脚本的文件夹 **Authlogs** 发送文件夹。
 
 ## <a name="troubleshoot-post-join-issues"></a>排查联接后问题
@@ -404,7 +404,7 @@ WamDefaultAuthority: organizations
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet： YES 和 AzureADPrt： YES
 
 这些字段指示用户在登录设备时是否已成功通过 Azure AD 的身份验证。
-如果值为 **NO**，原因可能是：
+如果值为 **NO** ，原因可能是：
 
 - 注册时与设备关联的 TPM 中的存储密钥错误 (在运行提升的) 时检查 KeySignTest。
 - 备用登录 ID

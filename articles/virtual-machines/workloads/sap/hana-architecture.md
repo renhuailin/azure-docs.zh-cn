@@ -7,18 +7,19 @@ author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa059ec8159779969c7ef7a5f4c97f3e985993a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a23a177945316bca89aa5cbcc46f840213dbe832
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082182"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964807"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）体系结构
 
@@ -33,7 +34,7 @@ Azure 上的 SAP HANA（大型实例）的总体体系结构提供了通过 SAP 
 
 所示体系结构分为三个部分：
 
-- **右侧**：在数据中心内运行各种应用程序的本地基础结构，以及访问 LOB 应用程序（例如 SAP）的最终用户。 理想情况下，此本地基础结构通过[ExpressRoute](https://azure.microsoft.com/services/expressroute/)连接到 Azure。
+- **右侧**：在数据中心内运行各种应用程序的本地基础结构，以及访问 LOB 应用程序（例如 SAP）的最终用户。 理想情况下，此本地基础结构通过 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)连接到 Azure。
 
 - **中间**：显示 Azure IaaS，而在本例中，显示如何使用 VM 来托管 SAP 或其他将 SAP HANA 用作 DBMS 系统的应用程序。 使用由 VM 提供的内存运行的较小 HANA 实例与其应用层一起部署在 Azure VM 中。 有关虚拟机的详细信息，请参阅[虚拟机](https://azure.microsoft.com/services/virtual-machines/)。
 
@@ -44,7 +45,7 @@ Azure 上的 SAP HANA（大型实例）的总体体系结构提供了通过 SAP 
   -  [在 Windows 虚拟机上使用 SAP](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [在 Azure 虚拟机上使用 SAP 解决方案](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **左侧：** 显示 Azure 大型实例模具中通过 SAP HANA TDI 认证的硬件。 HANA 大型实例单元使用与从本地连接到 Azure 的相同技术连接到 Azure 订阅的虚拟网络。 从5月2019，引入了一种优化，它允许在 HANA 大型实例单元和 Azure Vm 之间进行通信，而不会参与 ExpressRoute 网关。 此体系结构中显示了称为 ExpressRoute 快速路径的这一优化（红线）。 
+- **左侧：** 显示 Azure 大型实例模具中通过 SAP HANA TDI 认证的硬件。 HANA 大型实例单元使用与从本地连接到 Azure 的相同技术连接到 Azure 订阅的虚拟网络。 从5月2019，引入了一种优化，它允许在 HANA 大型实例单元和 Azure Vm 之间进行通信，而不会参与 ExpressRoute 网关。 此体系结构中显示了称为 ExpressRoute 快速路径的这一优化 (红线) 。 
 
 Azure 大型实例模具本身包含以下组件：
 
@@ -60,5 +61,5 @@ Azure 大型实例模具本身包含以下组件：
 
 可以在[对 HLI 可用的 SKU](hana-available-skus.md) 中找到可用的 SKU。
 
-**后续步骤**
+后续步骤
 - 请参阅 [SAP HANA（大型实例）网络体系结构](hana-network-architecture.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295540"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360048"
 ---
 # <a name="input-metadata"></a>输入元数据
 
@@ -65,7 +65,7 @@ ms.locfileid: "89295540"
 
 ## <a name="videotracks"></a>VideoTracks
 
-| “属性” |  | 说明 |
+| “属性” | 说明 |
 | --- | --- |
 | FourCC<br />必须 |ffmpeg 报告的视频编解码器 FourCC 代码。<br /><br />示例： `"FourCC": "avc1"` |
 | **Profile** |视频轨道的配置文件。 <br /><br />示例： `"Profile": "Main"`|

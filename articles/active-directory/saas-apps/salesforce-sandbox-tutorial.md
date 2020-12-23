@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 277acbc84ab435ce1076c30a1e49f6ffdd2a0586
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 12a282b1f53dde570f5f6647a45df82808b20350
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543698"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080781"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>教程：Azure Active Directory 与 Salesforce Sandbox 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543698"
 * 让用户使用其 Azure AD 帐户自动登录到 Salesforce Sandbox。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,9 +40,9 @@ ms.locfileid: "88543698"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Salesforce 沙盒支持 **SP 和 IDP** 发起的 SSO
-* Salesforce 沙盒支持**实时**用户预配
-* Salesforce 沙盒支持[**自动**用户预配](salesforce-sandbox-provisioning-tutorial.md)
-* 配置 Salesforce Sandbox 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Salesforce 沙盒支持 **实时** 用户预配
+* Salesforce 沙盒支持 [**自动** 用户预配](salesforce-sandbox-provisioning-tutorial.md)
+* 配置 Salesforce Sandbox 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-sandbox-from-the-gallery"></a>从库中添加 Salesforce 沙盒
 
@@ -149,35 +149,35 @@ ms.locfileid: "88543698"
 
 2. 单击页面右上角设置图标  下的“安装”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![屏幕截图显示在右上角选中了“设置”图标，从下拉列表中选中了“安装”。](./media/salesforce-sandbox-tutorial/configure1.png)
 
 3. 向下滚动到左侧导航窗格中的“设置”  ，单击“标识”  ，以展开相关部分。 然后单击“单一登录设置”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![屏幕截图显示左侧窗格中的“设置”菜单，其中从“标识”菜单中选中了“单一登录设置”。](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
 4. 在“单一登录设置”  页上，单击“编辑”  按钮。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“编辑”按钮。](./media/salesforce-sandbox-tutorial/configure3.png)
 
 5. 选择“已启用 SAML”  ，并单击“保存”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“已启用 SAML”复选框，并选中了“保存”按钮。](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 6. 若要配置 SAML 单一登录设置，请单击“从元数据文件新建”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“从元数据文件新建”按钮。](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 7. 单击“选择文件”  以上传从 Azure 门户下载的元数据 XML 文件，然后单击“创建”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“选择文件”和“创建”按钮。](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
 8. 在“SAML 单一登录设置”  页上，字段将自动填充，请单击“保存”。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/salesforcexml.png)
+    ![屏幕截图显示“单一登录设置”页，其中已填充字段并选中了“保存”按钮。](./media/salesforce-sandbox-tutorial/salesforcexml.png)
 
 9. 在“单一登录设置”页上，单击“下载元数据”按钮以下载服务提供商元数据文件   。 在 Azure 门户的“基本 SAML 配置”部分中使用此文件，以便如上所述配置必要的 URL  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/configure4.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“下载元数据”按钮。](./media/salesforce-sandbox-tutorial/configure4.png)
 
 10. 如果要在 **SP** 发起的模式下配置应用程序，请满足以下先决条件：
 
@@ -202,31 +202,31 @@ ms.locfileid: "88543698"
 
 13. 单击页面右上角设置图标  下的“安装”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![屏幕截图显示了右上角处于选中状态的“设置”图标，并从下拉菜单中选中了“安装”。](./media/salesforce-sandbox-tutorial/configure1.png)
 
 14. 向下滚动到左侧导航窗格中的“设置”  ，单击“标识”  ，以展开相关部分。 然后单击“单一登录设置”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![屏幕截图显示左侧导航窗格中的“设置”菜单，其中从“标识”菜单中选中了“单一登录设置”。](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
 15. 在“单一登录设置”  页上，单击“编辑”  按钮。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“编辑”按钮。](./media/salesforce-sandbox-tutorial/configure3.png)
 
 16. 选择“已启用 SAML”  ，并单击“保存”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“已启用 SAML”框，并选中了“保存”按钮。](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 17. 若要配置 SAML 单一登录设置，请单击“从元数据文件新建”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“从元数据文件新建”按钮。](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 18. 单击“选择文件”以上传元数据 XML 文件，然后单击“创建”   。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![屏幕截图显示“单一登录设置”页，其中选中了“选择文件”按钮和“创建”按钮。](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
 19. 在“SAML 单一登录设置”页面上，各字段会自动填充数据，在“名称”文本框中键入配置的名称（例如：*SPSSOWAAD_Test*）并单击“保存”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
+    ![屏幕截图显示“单一登录设置”页，其中字段已填充，“名称”文本框中有一个示例名称并选中了“保存”按钮。](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
 20. 若要在 Salesforce 沙盒中启用域，请执行以下步骤：
 
@@ -235,11 +235,11 @@ ms.locfileid: "88543698"
 
 21. 在 Salesforce 沙盒的左侧导航窗格中，单击“公司设置”  展开相关部分，然后单击“我的域”  。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
+    ![屏幕截图显示从左侧导航窗格中选中了“公司设置”和“我的域”。](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
 
 22. 在“身份验证配置”部分，单击“编辑”。  
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
+    ![屏幕截图显示“身份验证配置”部分，其中选中了“编辑”按钮。](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
 23. 在“身份验证配置”部分，对于“身份验证服务”，请选择在 Salesforce 沙盒中配置 SSO 期间设置的 SAML 单一登录设置的名称，然后单击“保存”。   
 
@@ -253,20 +253,20 @@ ms.locfileid: "88543698"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Salesforce 沙盒”磁贴时，应会自动登录到设置了 SSO 的 Salesforce 沙盒。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Salesforce 沙盒”磁贴时，应会自动登录到设置了 SSO 的 Salesforce 沙盒。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 Salesforce Sandbox](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/protect-salesforce)
 
 - [配置用户预配](salesforce-sandbox-provisioning-tutorial.md)
 
-- [如何通过高级可见性和控制保护 Salesforce Sandbox](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Salesforce Sandbox](/cloud-app-security/proxy-intro-aad)

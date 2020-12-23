@@ -6,6 +6,8 @@
       href: oracle-vm-solutions.md
     - name: 采用哪些解决方案在 Azure 虚拟机上运行 Oracle WebLogic Server？
       href: oracle-weblogic.md
+    - name: 采用哪些解决方案在 Azure Kubernetes 服务上运行 Oracle WebLogic Server？
+      href: weblogic-aks.md
     - name: 与 OCI 集成的解决方案
       href: oracle-oci-overview.md
 - name: 快速入门

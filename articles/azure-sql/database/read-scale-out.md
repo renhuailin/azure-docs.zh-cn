@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319419"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790264"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用只读副本卸载只读的查询工作负荷
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-作为 [高可用性体系结构](high-availability-sla.md#premium-and-business-critical-service-tier-availability)的一部分，"高级" 和 "业务关键服务" 层中的每个单一数据库、弹性池数据库和托管实例都将自动配有一个主读写副本和多个辅助只读副本。 为次要副本预配的计算大小与主要副本相同。 “读取扩展”功能允许使用一个只读副本的计算容量而不是在读写副本上运行它们来卸载只读工作负荷。 这样，一些只读工作负荷可与读写工作负荷相隔离，并且不会影响其性能。 该功能适用于包含逻辑隔离的只读工作负荷（例如分析）的应用程序。 在“高级”和“业务关键”服务层级中，应用程序可以使用此额外的容量获得性能优势，而无需额外付费。
+作为[高可用性体系结构](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)的一部分，“高级”和“业务关键”服务层级中的每个单一数据库、弹性池数据库和托管实例会自动预配有一个主读写副本和多个次要只读副本。 为次要副本预配的计算大小与主要副本相同。 “读取扩展”功能允许使用一个只读副本的计算容量而不是在读写副本上运行它们来卸载只读工作负荷。 这样，一些只读工作负荷可与读写工作负荷相隔离，并且不会影响其性能。 该功能适用于包含逻辑隔离的只读工作负荷（例如分析）的应用程序。 在“高级”和“业务关键”服务层级中，应用程序可以使用此额外的容量获得性能优势，而无需额外付费。
 
 如果至少创建了一个次要副本，则“超大规模”服务层级还会提供“读取扩展”功能。 如果只读工作负荷需要的资源多于一个次要副本上的可用资源，则可使用多个次要副本对该只读工作负荷进行负载均衡。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91319419"
 > [!NOTE]
 > 托管实例的“业务关键”服务层级中始终启用读取扩展功能。
 
-如果在 SQL 连接字符串中配置为 `ApplicationIntent=ReadOnly`，则将应用程序重定向到该数据库或托管实例的只读副本。 有关如何使用 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
+如果在 SQL 连接字符串中配置为 `ApplicationIntent=ReadOnly`，则将应用程序重定向到该数据库或托管实例的只读副本。 有关如何使用 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
 
 如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果将数据库从“标准”或“常规用途”层级升级到“高级”、“业务关键”或“超大规模”层级，并想要确保所有连接继续定向到主要副本，请禁用读取扩展。有关如何禁用读取扩展的详细信息，请参阅[启用和禁用读取扩展](#enable-and-disable-read-scale-out)。
 
@@ -87,16 +87,16 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 | 名称 | 目的 |
 |:---|:---|
-|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 提供最近一小时的资源利用率指标，包括相对于服务目标限制的 CPU、数据 IO 和日志写入使用率。|
-|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| 提供数据库引擎实例的聚合等待统计信息。 |
-|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供副本运行状况状态和同步统计信息。 重做队列大小和重做速率用作只读副本上数据延迟的指示。 |
-|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| 提供数据库引擎性能计数器。|
-|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 提供每个查询的执行统计信息，例如执行次数、已用 CPU 时间等。|
-|[sys.dm_exec_query_plan()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| 提供缓存的查询计划。 |
-|[sys.dm_exec_sql_text()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| 提供缓存的查询计划的查询文本。|
-|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供正执行查询时的实时查询进度。|
-|[sys.dm_exec_query_plan_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供最近的已知实际执行计划，包括查询的运行时统计信息。|
-|[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| 提供所有数据库文件的存储 IOPS、吞吐量和延迟统计信息。 |
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 提供最近一小时的资源利用率指标，包括相对于服务目标限制的 CPU、数据 IO 和日志写入使用率。|
+|[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| 提供数据库引擎实例的聚合等待统计信息。 |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供副本运行状况状态和同步统计信息。 重做队列大小和重做速率用作只读副本上数据延迟的指示。 |
+|[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| 提供数据库引擎性能计数器。|
+|[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 提供每个查询的执行统计信息，例如执行次数、已用 CPU 时间等。|
+|[sys.dm_exec_query_plan()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| 提供缓存的查询计划。 |
+|[sys.dm_exec_sql_text()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| 提供缓存的查询计划的查询文本。|
+|[sys.dm_exec_query_profiles](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供正执行查询时的实时查询进度。|
+|[sys.dm_exec_query_plan_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供最近的已知实际执行计划，包括查询的运行时统计信息。|
+|[sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| 提供所有数据库文件的存储 IOPS、吞吐量和延迟统计信息。 |
 
 > [!NOTE]
 > 逻辑 master 数据库中的 `sys.resource_stats` 和 `sys.elastic_pool_resource_stats` DMV 返回主要副本的资源利用率数据。
@@ -109,13 +109,13 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 ### <a name="transaction-isolation-level-on-read-only-replicas"></a>只读副本上的事务隔离级别
 
-可始终将只读副本上运行的查询映射到[快照](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)事务隔离级别。 快照隔离使用行版本控制，以避免在读取器阻止写入器的情况下发生阻止。
+可始终将只读副本上运行的查询映射到[快照](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)事务隔离级别。 快照隔离使用行版本控制，以避免在读取器阻止写入器的情况下发生阻止。
 
-极少数情况下，如果快照隔离事务访问已在其他并发事务中修改的对象元数据，则可能会收到错误 [3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)，“数据库 "%.*ls" 中的快照隔离事务失败，因为自此事务启动后，该语句所访问的对象已由其他并发事务中的 DDL 语句修改。 禁用它是因为元数据未进行版本控制。 如果与快照隔离混合，对元数据进行并发更新可能导致不一致。”
+极少数情况下，如果快照隔离事务访问已在其他并发事务中修改的对象元数据，则可能会收到错误 [3961](/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)，“数据库 "%.*ls" 中的快照隔离事务失败，因为自此事务启动后，该语句所访问的对象已由其他并发事务中的 DDL 语句修改。 禁用它是因为元数据未进行版本控制。 如果与快照隔离混合，对元数据进行并发更新可能导致不一致。”
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>只读副本上的长时间运行的查询
 
-只读副本上运行的查询需要访问查询中引用的对象的元数据（表、索引、统计信息等）极少数情况下，如果在主要副本上修改元数据对象，而查询持有对只读副本上同一对象的锁定，则该查询可以[阻止](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)将主要副本的更改应用到只读副本的过程。 如果此类查询长时间运行，会导致只读副本与主要副本明显不同步。 
+只读副本上运行的查询需要访问查询中引用的对象的元数据（表、索引、统计信息等）极少数情况下，如果在主要副本上修改元数据对象，而查询持有对只读副本上同一对象的锁定，则该查询可以[阻止](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)将主要副本的更改应用到只读副本的过程。 如果此类查询长时间运行，会导致只读副本与主要副本明显不同步。 
 
 如果只读副本上长时间运行的查询导致此类阻止，则自动终止它，并且会话收到错误 1219，“由于高优先级 DDL 操作，会话已断开连接”。
 
@@ -123,7 +123,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 > 如果针对只读副本运行查询时收到错误 3961 或错误 1219，则重试查询。
 
 > [!TIP]
-> 在“高级”和“业务关键”服务层级中，当连接到只读副本时，[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的 `redo_queue_size` 和 `redo_rate` 列都可用于监视数据同步过程，作为只读副本上数据延迟的指示。
+> 在“高级”和“业务关键”服务层级中，当连接到只读副本时，[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的 `redo_queue_size` 和 `redo_rate` 列都可用于监视数据同步过程，作为只读副本上数据延迟的指示。
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>启用和禁用读取扩展
@@ -144,7 +144,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 > [!IMPORTANT]
 > 仍然支持 PowerShell Azure 资源管理器模块，但是所有未来的开发都是针对 Az.Sql 模块。 Azure 资源管理器模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 Azure 资源管理器模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
 
-在 Azure PowerShell 中管理读取横向扩展需要安装 Azure PowerShell 2016 年 12 月版或更高版本。 有关最新的 PowerShell 版本，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+在 Azure PowerShell 中管理读取横向扩展需要安装 Azure PowerShell 2016 年 12 月版或更高版本。 有关最新的 PowerShell 版本，请参阅 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 在 Azure PowerShell 中调用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) cmdlet，并为 `-ReadScale` 参数传入所需的值（`Enabled` 或 `Disabled`），即可禁用或重新启用读取扩展。
 
@@ -180,7 +180,7 @@ Body: {
 }
 ```
 
-有关详细信息，请参阅[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)。
+有关详细信息，请参阅[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)。
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>在只读副本上使用 `tempdb` 数据库
 

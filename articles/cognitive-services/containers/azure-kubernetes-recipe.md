@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 2a6e7ee125cac66b48e666a766c39813aa38fb1a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244482"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968496"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>将文本分析语言检测容器部署到 Azure Kubernetes 服务
 
@@ -25,18 +25,18 @@ ms.locfileid: "88244482"
 
 此过程要求必须在本地安装和运行多个工具。 请勿使用 Azure Cloud Shell。
 
-* 使用 Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
+* 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
 * 适用于操作系统的 [Git](https://git-scm.com/downloads)，以便克隆此过程中使用的[示例](https://github.com/Azure-Samples/cognitive-services-containers-samples)。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)并验证 Docker CLI 是否可在控制台窗口中工作。
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
-  * 仅具有 F0 或标准定价层的文本分析资源****。
-  * 具有 S0 定价层的认知服务资源****。
+  * 仅具有 F0 或标准定价层的文本分析资源。
+  * 具有 S0 定价层的认知服务资源。
 
 ## <a name="running-the-sample"></a>运行示例
 
-此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 我们会将这两个映像推送到 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能****。 使用 HTTP 请求访问客户端应用程序，并查看结果。
+此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 我们会将这两个映像都推送到 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能。 使用 HTTP 请求访问客户端应用程序，并查看结果。
 
 ![运行示例容器的概念性想法](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "88244482"
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    保存结果，以获取 loginServer 属性****。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
+    保存结果，以获取 loginServer 属性。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -289,9 +289,9 @@ ms.locfileid: "88244482"
 
 ## <a name="load-the-orchestration-definition-into-your-kubernetes-service"></a>将业务流程定义加载到 Kubernetes 服务中
 
-本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信****。
+本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信。
 
-1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点****。
+1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点。
 
     ```console
     kubectl get nodes
@@ -325,7 +325,7 @@ ms.locfileid: "88244482"
     |第 91 行<br> `apiKey` 属性|文本分析资源密钥|
     |第 92 行<br> `billing` 属性|文本分析资源的账单终结点。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递********。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。
+    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。
 
 1. 从创建和保存 `language.yml` 的文件夹中加载此示例的业务流程定义文件。
 

@@ -4,14 +4,15 @@ description: 在本教程中，你将使用机密存储容器存储接口 (CSI) 
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 0398c035eeac7d02ac38f798cb58c513279fc709
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c628ba780ae64fceb32322fdb2004d69e2ebf24b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91820007"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452756"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
@@ -35,7 +36,7 @@ ms.locfileid: "91820007"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 在开始学习本教程之前，请安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
+* 在开始学习本教程之前，请安装 [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
 
 ## <a name="create-a-service-principal-or-use-managed-identities"></a>创建服务主体或使用托管标识
 
@@ -52,11 +53,17 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 复制 appId 和密码凭据以便以后使用 。
 
+## <a name="flow-for-using-managed-identity"></a>使用托管标识的流
+
+此图说明了托管标识的 AKS–Key Vault 集成流：
+
+![显示托管标识的 AKS–Key Vault 集成流的关系图](../media/aks-key-vault-integration-flow.png)
+
 ## <a name="deploy-an-azure-kubernetes-service-aks-cluster-by-using-the-azure-cli"></a>使用 Azure CLI 部署 Azure Kubernetes 服务 (AKS) 群集
 
 无需使用 Azure Cloud Shell。 安装了 Azure CLI 的命令提示符（终端）足以满足要求。 
 
-完成[使用 Azure CLI 部署 Azure Kubernetes 服务群集](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough)中的“创建资源组”、“创建 AKS 群集”和“连接到群集”部分。 
+完成[使用 Azure CLI 部署 Azure Kubernetes 服务群集](../../aks/kubernetes-walkthrough.md)中的“创建资源组”、“创建 AKS 群集”和“连接到群集”部分。 
 
 > [!NOTE] 
 > 如果你计划使用 Pod 标识而不是服务主体，请确保在创建 Kubernetes 群集时启用它，如以下命令中所示：
@@ -103,7 +110,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 ## <a name="create-an-azure-key-vault-and-set-your-secrets"></a>创建 Azure 密钥保管库并设置机密
 
-若要创建你自己的密钥保管库并设置机密，请按照[使用 Azure CLI 在 Azure Key Vault 中设置和检索机密](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli)中的说明执行操作。
+若要创建你自己的密钥保管库并设置机密，请按照[使用 Azure CLI 在 Azure Key Vault 中设置和检索机密](../secrets/quick-create-cli.md)中的说明执行操作。
 
 > [!NOTE] 
 > 无需使用 Azure Cloud Shell，也无需创建新的资源组。 可使用之前为 Kubernetes 群集创建的资源组。
@@ -185,6 +192,7 @@ spec:
 1. 向服务主体授予获取机密的权限：
     ```azurecli
     az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
+    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
     ```
 
 1. 现在，你已将服务主体配置为有权从密钥保管库读取机密。 服务主体的密码是 $AZURE_CLIENT_SECRET。 将服务主体凭据添加为机密存储 CSI 驱动程序可访问的 Kubernetes 机密：
@@ -209,13 +217,11 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 如果使用的是托管标识，请将特定角色分配给所创建的 AKS 群集。 
 
-1. 若要创建、列出或读取用户分配的托管标识，需要为 AKS 群集分配[托管标识操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色。 请确保 $clientId 是 Kubernetes 群集的 clientId。 就范围而言，它处于 Azure 订阅服务（特别是创建 AKS 群集时创建的节点资源组）下。 此范围将确保仅该组中的资源受下面分配的角色的影响。 
+1. 若要创建、列出或读取用户分配的托管标识，需要为 AKS 群集分配[托管标识操作员](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色。 请确保 $clientId 是 Kubernetes 群集的 clientId。 就范围而言，它处于 Azure 订阅服务（特别是创建 AKS 群集时创建的节点资源组）下。 此范围将确保仅该组中的资源受下面分配的角色的影响。 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
-
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
     
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
@@ -239,6 +245,7 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
+    az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
     ```
 
 ## <a name="deploy-your-pod-with-mounted-secrets-from-your-key-vault"></a>通过密钥保管库中已装载的机密部署 Pod
@@ -311,8 +318,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:
-          name: secrets-store-creds 
+        nodePublishSecretRef:           # Only required when using service principal mode
+          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 运行以下命令来部署 Pod：
@@ -355,4 +362,4 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 为帮助确保密钥保管库可恢复，请参阅：
 > [!div class="nextstepaction"]
-> [启用软删除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)
+> [启用软删除](./key-vault-recovery.md)

@@ -3,12 +3,12 @@ title: 注册表登录故障排除
 description: 登录到 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253348"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379496"
 ---
 # <a name="troubleshoot-registry-login"></a>注册表登录故障排除
 
@@ -56,7 +56,7 @@ ms.locfileid: "91253348"
 
 ### <a name="specify-correct-registry-name"></a>指定正确的注册表名称
 
-使用时 `docker login` ，请提供注册表的完整登录服务器名称，例如 *myregistry.azurecr.io*。 请确保只使用小写字母。 示例：
+使用时 `docker login` ，请提供注册表的完整登录服务器名称，例如 *myregistry.azurecr.io* 。 请确保只使用小写字母。 示例：
 
 ```console
 docker login myregistry.azurecr.io
@@ -77,10 +77,11 @@ az acr login --name myregistry
 检查用于你的方案的凭据或由注册表所有者提供给你的凭据的有效性。 一些可能的问题：
 
 * 如果使用 Active Directory 服务主体，请确保在 Active Directory 租户中使用正确的凭据：
-  * 用户名 - 服务主体应用程序 ID（也称为*客户端 ID*）
-  * 密码 - 服务主体密码（也称为*客户端密码*）
+  * 用户名 - 服务主体应用程序 ID（也称为 *客户端 ID* ）
+  * 密码 - 服务主体密码（也称为 *客户端密码* ）
 * 如果使用 Azure 服务（如 Azure Kubernetes 服务或 Azure DevOps）来访问注册表，请确认服务的注册表配置。
 * 如果运行了带有 `--expose-token` 选项的 `az acr login`，以允许在不使用 Docker 守护程序的情况下登录注册表，请确保使用用户名 `00000000-0000-0000-0000-000000000000` 进行身份验证。
+* 如果注册表配置为 [使用匿名请求访问](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)，则从以前的 docker 登录名存储的现有 docker 凭据可能会阻止匿名访问。 `docker logout`在对注册表执行匿名拉取操作之前运行。
 
 相关链接：
 
@@ -95,15 +96,17 @@ az acr login --name myregistry
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>确认凭据已被授权访问注册表
 
-确认与凭据关联的注册表权限，如用于从注册表拉取映像的 `AcrPull` RBAC 角色，或用于推送映像的 `AcrPush` 角色。 
+确认与凭据关联的注册表权限，如 `AcrPull` 用于从注册表中提取映像的 Azure 角色或 `AcrPush` 用于推送映像的角色。 
 
-若要在门户中访问注册表或要使用 Azure CLI 进行注册表管理，至少需要用于执行 Azure 资源管理器操作的 `Reader` 角色。
+若要在门户中访问注册表或使用 Azure CLI 进行注册表管理，至少需要 `Reader` 角色或同等权限才能执行 Azure 资源管理器操作。
+
+如果你的权限最近更改为允许通过门户访问注册表，你可能需要在浏览器中尝试 incognito 或私有会话，以避免任何过时的浏览器缓存或 cookie。
 
 你或注册表所有者必须在订阅中具有足够的权限，才能添加或删除角色分配。
 
 相关链接：
 
-* [RBAC 角色和权限 - Azure 容器注册表](container-registry-roles.md)
+* [Azure 角色和权限-Azure 容器注册表](container-registry-roles.md)
 * [使用存储库范围内的令牌登录](container-registry-repository-scoped-permissions.md)
 * [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
 * [使用门户来创建可以访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)
@@ -142,7 +145,5 @@ az acr login --name myregistry
   * [排查与注册表相关的网络问题](container-registry-troubleshoot-access.md)
   * [注册表性能故障排除](container-registry-troubleshoot-performance.md)
 * [社区支持](https://azure.microsoft.com/support/community/)选项
-* [Microsoft 问答](https://docs.microsoft.com/answers/products/)
+* [Microsoft 问答](/answers/products/)
 * [开具支持票证](https://azure.microsoft.com/support/create-ticket/) - 根据你提供的信息，可能会针对注册表中的身份验证失败运行快速诊断
-
-

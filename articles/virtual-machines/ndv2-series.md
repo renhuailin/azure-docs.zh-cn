@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7ab9d270ae5da52cbf9b5ba0ed4730233225a7c1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: dcfbacb788225d936b236c901e9477a9bbb23b94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653432"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585286"
 ---
 # <a name="updated-ndv2-series"></a>更新的 NDv2 系列
 
@@ -27,18 +27,19 @@ NDv2 实例可为使用 CUDA GPU 优化计算内核的 HPC 和 AI 工作负荷�
 > [!IMPORTANT]
 > 在 ND40rs_v2 VM 上 [启用 "允许](./workloads/hpc/enable-infiniband.md) " 时，请使用 4.7-1.0.0.1 Mellanox OFED 驱动程序。
 >
-> 由于 GPU 内存增加，新的 ND40rs_v2 VM 需要使用 [第2代 vm](./windows/generation-2.md) 和 marketplace 映像。 
+> 由于 GPU 内存增加，新的 ND40rs_v2 VM 需要使用 [第2代 vm](./generation-2.md) 和 marketplace 映像。 
 >
 > 请注意：具有 16 GB 的每个 GPU 内存的 ND40s_v2 不再可供预览，已被更新的 ND40rs_v2 取代。
 
 <br>
 
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第1代<br>
+[VM 生成支持](generation-2.md)：第2代<br>
 不受支持：支持<br>
+Nvidia NVLink Interconnect：支持<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) ： GiB | GPU | GPU 内存： GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网络带宽 | 最大 NIC 数 |

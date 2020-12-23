@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1fec471e4047707f2b7cbaa55fdc7f2256bebe93
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545992"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>教程：Azure Active Directory 与 Zscaler Beta 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88545992"
 * 可让用户使用其 Azure AD 帐户自动登录到 Zscaler Beta。 这种访问控制称为单一登录 (SSO)。
 * 使用 Azure 门户在一个中心位置管理帐户。
 
-有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -62,7 +62,7 @@ ms.locfileid: "88545992"
 
     ![“新建应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中输入 **Zscaler Beta**。 在结果面板中选择“Zscaler Beta”，然后选择“添加”。  
+4. 在搜索框中输入 **Zscaler Beta** 。 在结果面板中选择“Zscaler Beta”，然后选择“添加”。  
 
      ![结果列表中的 Zscaler Beta](common/search-new-app.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "88545992"
     g. 选择“保存”。 
 
     > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请参阅[配置角色声明](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)。
+    > 若要了解如何在 Azure AD 中配置角色，请参阅[配置角色声明](../develop/active-directory-enterprise-app-role-management.md)。
 
 7. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分，选择“下载”  以下载“证书(Base64)”  。 然后将其保存在计算机上。
 
@@ -176,17 +176,17 @@ ms.locfileid: "88545992"
     
     a. 在“SAML 门户 URL”框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
-    b. 在“登录名属性”框中输入 **NameID**。
+    b. 在“登录名属性”框中输入 **NameID** 。
 
     c. 在“公共 SSL 证书”框中，选择“上传”以上传从 Azure 门户下载的 Azure SAML 签名证书。  
 
     d. 切换为“启用 SAML 自动预配”  。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”框中输入 **displayName**。
+    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”框中输入 **displayName** 。
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”框中输入 **memberOf**。
+    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”框中输入 **memberOf** 。
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”框中输入 **department**。
+    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”框中输入 **department** 。
 
     h. 选择“保存”。 
 
@@ -201,7 +201,7 @@ ms.locfileid: "88545992"
 ## <a name="configure-proxy-settings"></a>配置代理设置
 若要在 Internet Explorer 中配置代理设置，请执行以下步骤。
 
-1. 启动 **Internet Explorer**。
+1. 启动 **Internet Explorer** 。
 
 2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。 
     
@@ -219,9 +219,9 @@ ms.locfileid: "88545992"
 
     a. 选中“对 LAN 使用代理服务器”复选框。 
 
-    b. 在“地址”框中输入 **gateway.Zscaler Beta.net**。
+    b. 在“地址”框中输入 **gateway.Zscaler Beta.net** 。
 
-    c. 在“端口”框中输入 **80**。
+    c. 在“端口”框中输入 **80** 。
 
     d. 选中“对本地地址不使用代理服务器”复选框  。
 
@@ -245,7 +245,7 @@ ms.locfileid: "88545992"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“姓名”  框中，输入 **BrittaSimon**。
+    a. 在“姓名”  框中，输入 **BrittaSimon** 。
   
     b. 在“用户名”框中输入 `brittasimon@yourcompanydomain.extension`。 示例为 BrittaSimon@contoso.com。
 
@@ -287,7 +287,7 @@ ms.locfileid: "88545992"
 
 ### <a name="create-a-zscaler-beta-test-user"></a>创建 Zscaler Beta 测试用户
 
-在本部分，我们将在 Zscaler Beta 中创建用户 Britta Simon。 Zscaler Beta 支持默认启用的**恰时用户预配**。 在本部分不需要执行任何操作。 如果 Zscaler Beta 中尚不存在用户，则会在身份验证后创建一个新用户。
+在本部分，我们将在 Zscaler Beta 中创建用户 Britta Simon。 Zscaler Beta 支持默认启用的 **恰时用户预配** 。 在本部分不需要执行任何操作。 如果 Zscaler Beta 中尚不存在用户，则会在身份验证后创建一个新用户。
 
 >[!Note]
 >若要手动创建用户，请联系 [Zscaler Beta 支持团队](https://www.zscaler.com/company/contact)。
@@ -296,11 +296,10 @@ ms.locfileid: "88545992"
 
 使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Zscaler Beta”磁贴时，应会自动登录到设置了 SSO 的 Zscaler Beta。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Zscaler Beta”磁贴时，应会自动登录到设置了 SSO 的 Zscaler Beta。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

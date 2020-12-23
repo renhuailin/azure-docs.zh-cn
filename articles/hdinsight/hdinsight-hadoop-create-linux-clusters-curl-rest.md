@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
-ms.openlocfilehash: 75eda1720e80a886ca0efb2d1f4204416a5b55f8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083332"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020615"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Apache Hadoop 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "86083332"
 
 ## <a name="create-a-template"></a>创建模板
 
-Azure Resource Manager 模板是描述**资源组**及其包含的所有资源（例如 HDInsight）的 JSON 文档。此基于模板的方法允许在一个模板中定义 HDInsight 所需的资源。
+Azure Resource Manager 模板是描述 **资源组** 及其包含的所有资源（例如 HDInsight）的 JSON 文档。此基于模板的方法允许在一个模板中定义 HDInsight 所需的资源。
 
 下面的 JSON 文档是来自 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) 的模板与参数文件的组合形式，它将创建基于 Linux 的群集，并使用密码保护 SSH 用户帐户。
 
@@ -214,12 +214,12 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
 ## <a name="sign-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
-请按照 [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)中所述的步骤操作，并使用 `az login` 命令连接到订阅。
+请按照 [Azure CLI 入门](/cli/azure/get-started-with-az-cli2)中所述的步骤操作，并使用 `az login` 命令连接到订阅。
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
 > [!NOTE]  
-> 这些步骤是[使用 Azure CLI 创建服务主体以访问资源](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)文档的“使用密码创建服务主体”  部分的缩减版本。 这些步骤创建用于向 Azure REST API 进行身份验证的服务主体。
+> 这些步骤是[使用 Azure CLI 创建服务主体以访问资源](/cli/azure/create-an-azure-service-principal-azure-cli)文档的“使用密码创建服务主体”  部分的缩减版本。 这些步骤创建用于向 Azure REST API 进行身份验证的服务主体。
 
 1. 从命令行使用以下命令列出 Azure 订阅。
 
@@ -242,7 +242,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
    此命令返回的值是新应用程序的 __应用 ID__ 。 保存此值。
 
-3. 通过以下命令使用 **应用 ID**创建服务主体。
+3. 通过以下命令使用 **应用 ID** 创建服务主体。
 
    ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
@@ -250,7 +250,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
      此命令返回的值是 __对象 ID__。 保存此值。
 
-4. 使用**对象 ID** 值向服务主体分配**所有者**角色。 使用前面获取的 **订阅 ID** 。
+4. 使用 **对象 ID** 值向服务主体分配 **所有者** 角色。 使用前面获取的 **订阅 ID** 。
 
    ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/

@@ -2,16 +2,16 @@
 title: 配置 ASP.NET Core 应用
 description: 了解如何在原生 Windows 实例、预构建的 Linux 容器或 Azure 应用服务中配置 ASP.NET Core 应用。 本文介绍最常见的配置任务。
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1223ff5c56d3c7d58b324d2099980bc0b5408125
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961663"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655962"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>为 Azure 应用服务配置 ASP.NET Core 应用
 
@@ -167,7 +167,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ## <a name="get-detailed-exceptions-page"></a>获取详细的异常页面
 
-当 ASP.NET Core 应用在 Visual Studio 调试器中生成异常时，浏览器会显示一个详细的异常页面，但在应用服务中，该页面被替换为一般 **HTTP 500** 错误或**处理请求时发生的某个错误**。 。 若要在应用服务中显示详细的异常页面，请 `ASPNETCORE_ENVIRONMENT` 在 <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将应用设置添加到应用。
+当 ASP.NET Core 应用在 Visual Studio 调试器中生成异常时，浏览器会显示一个详细的异常页面，但在应用服务中，该页面被替换为一般 **HTTP 500** 错误或 **处理请求时发生的某个错误**。 。 若要在应用服务中显示详细的异常页面，请 `ASPNETCORE_ENVIRONMENT` 在 <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将应用设置添加到应用。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -192,6 +192,7 @@ public void ConfigureServices(IServiceCollection services)
     {
         options.ForwardedHeaders =
             ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        // These three subnets encapsulate the applicable Azure subnets. At the moment, it's not possible to narrow it down further.
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:10.0.0.0"), 104));
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:192.168.0.0"), 112));
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:172.16.0.0"), 108));

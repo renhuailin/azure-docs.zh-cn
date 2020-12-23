@@ -4,17 +4,19 @@ description: 了解 Azure Cosmos DB 中的访问控制概念，包括主密钥�
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760863"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359595"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文概述了如何保护对 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)中存储的数据的访问。
 
@@ -29,36 +31,23 @@ Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供其数�
 
 ## <a name="primary-keys"></a>主键
 
-主键提供对数据库帐户的所有管理资源的访问权限。 主键：
-
-- 提供对帐户、数据库、用户和权限的访问权限。 
-- 无法用于提供对容器和文档的精细访问权限。
-- 在创建帐户过程中创建。
-- 随时可重新生成。
-
-每个帐户都包含两个主键：主密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。
-
-除了 Cosmos DB 帐户的两个主键外，还有两个只读密钥。 这些只读密钥只允许针对帐户执行读取操作。 只读密钥不提供对资源的读取权限。
-
-可以使用 Azure 门户检索和重新生成主要、辅助、只读和读写主键。 有关说明，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#regenerate-account-key)。
-
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure 门户中的访问控制 (IAM) - 演示 NoSQL 数据库安全性":::
+主密钥提供对数据库帐户的所有管理资源的访问权限。 每个帐户包括两个主密钥：主要密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。 若要了解有关主密钥的详细信息，请参阅[数据库安全性](database-security.md#primary-keys)一文。
 
 ### <a name="key-rotation"></a>密钥轮换<a id="key-rotation"></a>
 
-轮换主密钥的过程非常简单。 
+轮换主密钥的过程相当简单。 
 
 1. 导航到 Azure 门户以检索辅助密钥。
 2. 在应用程序中将主密钥替换为辅助密钥。 确保所有部署中的所有 Cosmos DB 客户端都立即重启，并将开始使用已更新的密钥。
 3. 在 Azure 门户中轮换主密钥。
-4. 验证新主密钥是否适用于所有资源。 密钥轮换过程可能需要不到一分钟，也可能需要几小时，具体取决于 Cosmos DB 帐户的大小。
+4. 验证新主密钥是否适用于所有资源。 密钥轮换过程所需时间可能短于一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
 5. 将辅助密钥替换为新的主密钥。
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure 门户中的访问控制 (IAM) - 演示 NoSQL 数据库安全性" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure 门户中的主密钥轮换 - 演示 NoSQL 数据库安全性" border="false":::
 
-### <a name="code-sample-to-use-a-primary-key"></a>使用主密钥的代码示例
+### <a name="code-sample-to-use-a-primary-key"></a>有关如何使用主密钥的代码示例
 
-下面的代码示例演示如何使用 Cosmos DB 帐户终结点和主密钥来实例化 DocumentClient 并创建数据库：
+以下代码示例演示如何使用 Cosmos DB 帐户终结点和主密钥来实例化 DocumentClient 并创建数据库：
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -71,7 +60,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-下面的代码示例演示如何使用 Azure Cosmos DB 帐户终结点和主密钥来实例化 `CosmosClient` 对象：
+以下代码示例演示如何使用 Azure Cosmos DB 帐户终结点和主密钥来实例化 `CosmosClient` 对象：
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
@@ -84,12 +73,12 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 - 通过 POST、GET 或 PUT 调用操作权限资源时重新创建。
 - 使用专门针对用户、资源和权限构造的哈希资源令牌。
 - 生存期受到可自定义的有效期的约束。 默认的有效期限为一小时。 但是，可将令牌生存期显式指定为最长五个小时。
-- 提供一个安全的替代方法来提供主密钥。
+- 可以安全替代主密钥。
 - 使客户端能够根据它们的权限读取、写入和删除 Cosmos DB 帐户中的资源。
 
-如果要向不能使用主键信任的客户端提供对 Cosmos DB 帐户中资源的访问权限，可以通过创建 Cosmos DB 用户和) 权限来使用资源令牌 (。  
+如果想要为不能通过主密钥得到信任的客户端提供对 Cosmos DB 帐户中资源的访问权限，可以使用资源令牌（通过创建 Cosmos DB 用户和权限来使用）。  
 
-Cosmos DB 资源令牌提供一种安全的替代方法，使客户端能够根据你授予的权限读取、写入和删除你的 Cosmos DB 帐户中的资源，而无需主密钥或只读密钥。
+Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根据授予的权限读取、写入和删除 Cosmos DB 帐户中的资源，而无需主密钥或只读密钥。
 
 以下是典型的设计模式，通过它可以请求、生成资源令牌并将其提供给客户端：
 
@@ -102,11 +91,11 @@ Cosmos DB 资源令牌提供一种安全的替代方法，使客户端能够根�
 7. 手机应用可以继续使用该资源令牌以该资源令牌定义的权限按照该资源令牌允许的间隔直接访问 Cosmos DB 资源。
 8. 资源令牌到期后，后续请求收到 401 未经授权的异常。  此时，手机应用会重新建立标识，并请求新的资源令牌。
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure 门户中的访问控制 (IAM) - 演示 NoSQL 数据库安全性" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure Cosmos DB 资源令牌工作流" border="false":::
 
 资源令牌的生成和管理由本机 Cosmos DB 客户端库处理；但是，如果使用 REST，必须构造请求/身份验证标头。 有关为 REST 创建身份验证标头的详细信息，请参阅 [Cosmos DB 资源的访问控制](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)或我们的 [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) 或 [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts) 的源代码。
 
-有关用于生成或代理资源令牌的中间层服务的示例，请参阅 [ResourceTokenBroker 应用](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
+有关用于生成或代理资源令牌的中间层服务的示例，请参阅 [ResourceTokenBroker 应用](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
 
 ## <a name="users"></a>用户<a id="users"></a>
 
@@ -131,6 +120,12 @@ User user = await database.CreateUserAsync("User 1");
 
 > [!NOTE]
 > 为了运行存储过程，用户必须对将在其中运行存储过程的容器具有全部权限。
+
+如果[对数据平面请求启用诊断日志](cosmosdb-monitor-resource-logs.md)，则会记录与该权限相对应的以下两个属性：
+
+* resourceTokenPermissionId - 此属性指示已指定的资源令牌权限 ID。 
+
+* resourceTokenPermissionMode - 此属性指示在创建资源令牌时设置的权限模式。 权限模式的值可以是“all”或“read”。
 
 ### <a name="code-sample-to-create-permission"></a>有关创建权限的代码示例
 
@@ -174,7 +169,7 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 
 ## <a name="delete-or-export-user-data"></a>删除或导出用户数据
 
-用户可使用 Azure Cosmos DB 搜索、选择、修改和删除数据库或集合中的任何个人数据。 Azure Cosmos DB 提供可用于查找和删除个人数据的 API，但用户应负责使用该 API 并定义擦除个人数据必需的逻辑。 每个多模型 API（SQL、MongoDB、Gremlin、Cassandra、表）都包含不同的语言 SDK，这些 SDK 提供了各种用于搜索和删除个人数据的方法。 还可启用[生存时间 (TTL)](time-to-live.md)功能在指定时间段后自动删除数据，不会产生任何额外费用。
+作为数据库服务，Azure Cosmos DB 使你可以搜索、选择、修改和删除位于数据库或容器中的任何数据。 不过，如果需要，你应负责使用提供的 Api，并定义查找和删除任何个人数据所需的逻辑。 每个多模型 API (SQL、MongoDB、Gremlin、Cassandra、Table) 提供不同的语言 Sdk，其中包含用于根据自定义谓词搜索和删除数据的方法。 还可启用[生存时间 (TTL)](time-to-live.md)功能在指定时间段后自动删除数据，不会产生任何额外费用。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

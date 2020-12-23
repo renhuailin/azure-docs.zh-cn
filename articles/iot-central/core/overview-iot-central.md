@@ -3,17 +3,17 @@ title: 什么是 Azure IoT Central | Microsoft Docs
 description: Azure IoT Central 是一个 IoT 应用程序平台，可简化 IoT 解决方案的创建，并有助于减轻 IoT 管理、运营和开发的负担以及降低相关成本。 本文概述了 Azure IoT Central 的功能。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
-ms.openlocfilehash: 4ad1bcabc2e30e9e636883219d42f96335e32e78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, contperf-fy21q2
+ms.openlocfilehash: b5f4b6d42d67b69bd8b6be1ada6f5651d0cb8675
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987366"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029832"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
@@ -34,7 +34,7 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 本 IoT Central 文档提到了四个与 IoT Central 应用程序进行交互的角色：
 
-- “解决方案构建者”负责[定义可以连接到应用程序的设备类型](howto-set-up-template.md)，并为操作员自定义应用程序。
+- 解决方案构建者负责[创建应用程序](quick-deploy-iot-central.md)、[配置规则和操作](quick-configure-rules.md)、[定义与其他服务的集成](howto-export-data.md)，并进一步自定义供操作员和设备开发人员使用的应用程序。
 - “操作员”[管理连接到应用程序的设备](howto-manage-devices.md)。
 - “管理员”负责执行管理任务，例如，管理应用程序中的[用户角色和权限](howto-administer.md)。
 - “设备开发者”[创建在连接到应用程序的设备上运行的代码](concepts-telemetry-properties-commands.md)，或在连接到应用程序的 [IoT Edge 模块](concepts-iot-edge.md)上运行的代码。
@@ -50,14 +50,21 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 作为解决方案构建者，你可以使用基于 Web 的工具为连接到应用程序的设备创建“设备模板”。 设备模板是定义一种设备的特征和行为的蓝图，例如：
 
-- 它发送的遥测。
-- 操作员可以修改的业务属性。
-- 由设备设置的、在应用程序中处于只读状态的设备属性。
-- 由操作员设置的属性，决定了设备的行为。
+- 它发送的遥测。 示例包含温度和湿度。 遥测是流式处理数据。
+- 操作员可以修改的业务属性。 示例包含客户地址和最后维护日期。
+- 由设备设置的、在应用程序中处于只读状态的设备属性。 例如，阀的状态为打开或关闭。
+- 由操作员设置的属性，决定了设备的行为。 例如，设备的目标温度。
+- 操作员可以调用的、在设备上运行的命令。 例如，用于远程重启设备的命令。
 
 此[设备模板](howto-set-up-template.md)包括：
 
-- 设备功能模型，描述设备应该实现的功能，例如发送的遥测数据和报告的属性。
+- 设备模型，描述设备应实现的功能。 设备功能包括：
+
+  - 流式传输到 IoT Central 的遥测。
+  - 用于将状态报告给 IoT Central 的只读属性。
+  - 从 IoT Central 接收的、用于设置设备状态的可写属性。
+  - 从 IoT Central 调用的命令。
+
 - 不存储在设备上的云属性。
 - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
 
@@ -65,9 +72,9 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 作为解决方案构建者，你在创建设备模板时有多种选择：
 
-- 在 IoT Central 中设计设备模板，然后在设备代码中实现其设备功能模型。
-- 使用 Visual Studio code 创建设备功能模型，并将模型发布到存储库。 基于模型实现设备代码，并将设备连接到 IoT Central 应用程序。 IoT Central 从存储库中查找设备功能模型，并创建简单的设备模板。
-- 使用 Visual Studio Code 创建设备功能模型。 基于模型实现设备代码。 将设备功能模型手动导入 IoT Central 应用程序，然后添加 IoT Central 应用程序所需的任何云属性、自定义和仪表板。
+- 在 IoT Central 中设计设备模板，然后在设备代码中实现其设备模型。
+- 使用 Visual Studio code 创建设备模型，并将模型发布到存储库。 基于模型实现设备代码，并将设备连接到 IoT Central 应用程序。 IoT Central 从存储库中查找设备模型，并创建简单的设备模板。
+- 使用 Visual Studio Code 创建设备模型。 基于模型实现设备代码。 将设备模型手动导入到 IoT Central 应用程序中，然后添加 IoT Central 应用程序所需的任何云属性、自定义项和仪表板。
 
 作为解决方案构建者，你可以使用 IoT Central 来生成测试设备的代码，以便验证设备模板。
 
@@ -107,7 +114,7 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 ## <a name="integrate-with-other-services"></a>与其他服务集成
 
-作为应用程序平台，IoT Central 可让你将 IoT 数据转换为业务见解来促成可行的结果。 例如，可通过[规则](./tutorial-create-telemetry-rules.md)、[数据导出](./howto-export-data.md)和[公共 REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) 将 IoT Central 与业务线应用程序相集成：
+作为应用程序平台，IoT Central 可让你将 IoT 数据转换为业务见解来促成可行的结果。 例如，可通过[规则](./tutorial-create-telemetry-rules.md)、[数据导出](./howto-export-data.md)和[公共 REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) 将 IoT Central 与业务线应用程序相集成：
 
 ![IoT Central 如何转换 IoT 数据](media/overview-iot-central/transform.png)
 
@@ -130,7 +137,7 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 可以使用 7 天免费试用版创建 IoT Central 应用程序，也可以使用标准定价计划。
 
 - 使用免费计划创建的应用程序在七天内是免费的，最多支持五台设备。 在它们过期之前，随时可将其转换为使用标准定价计划。
-- 使用标准计划创建的应用程序按设备计费，可以选择“标准 1”或“标准 2”定价计划，前两个设备是免费的。 详细了解 [IoT Central 定价](https://aka.ms/iotcentral-pricing)。
+- 使用标准计划创建的应用程序按设备计费，可以选择“标准 0”、“标准 1”或“标准 2”定价计划，前两个设备是免费的  。 详细了解 [IoT Central 定价](https://aka.ms/iotcentral-pricing)。
 
 ## <a name="quotas"></a>配额
 
@@ -144,15 +151,13 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 - 不支持数组架构类型。
 - 仅支持 C 设备 SDK 以及 Node.js 设备和服务 SDK。
 - IoT Central 目前可在美国、欧洲、亚太、澳大利亚、英国和日本位置中使用。
-- 不能在英国和日本位置使用“自定义应用程序(旧版)”应用程序模板。
-- 必须在同一文件中以内联方式定义设备功能模型的所有接口。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已大致了解了 IoT Central，下面是一些建议的后续步骤：
 
 - 了解可用的[用于创建 IoT 解决方案的 Azure 技术和服务](../../iot-fundamentals/iot-services-and-technologies.md)。
-- 如果你是设备开发人员并想深入了解某种代码，建议执行的下一步骤是[创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md)。
+- 如果你是设备开发人员并想深入了解某种代码，建议执行的下一步骤是[创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device.md)。
 - 熟悉 [Azure IoT Central UI](overview-iot-central-tour.md)。
 - 通过[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)开始使用此解决方案。
 - 了解如何[连接 Azure IoT Edge 设备](./tutorial-add-edge-as-leaf-device.md)。

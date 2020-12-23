@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 description: 使用 Azure 数据工厂与 Azure Data Share 复制、转换和共享数据
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: c43cac4d599753ecc3486ef7b86aa54b5697b0f6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 12/09/2020
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435637"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006125"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 
@@ -22,23 +22,23 @@ ms.locfileid: "89435637"
 
 从启用无代码的 ETL/ELT，到基于数据创建综合视图，Azure 数据工厂的改进可让数据工程师自信地引入更多数据，从而为企业带来增大的价值。 借助 Azure Data Share 能够以受控的方式实现业务到业务共享。
 
-在本讲座中，将使用 Azure 数据工厂 (ADF) 将数据从 Azure SQL 数据库引入 Azure Data Lake Storage Gen2 (ADLS Gen2)。 数据进入 Data Lake 后，你将通过映射数据流（数据工厂的本机转换服务）转换数据，并在 Azure Synapse Analytics（前称为 SQL 数据仓库）中接收数据。 然后，使用 Azure Data Share 来共享包含转换后的数据以及其他一些数据的表。 
+在本讲座中，将使用 Azure 数据工厂 (ADF) 将数据从 Azure SQL 数据库引入 Azure Data Lake Storage Gen2 (ADLS Gen2)。 数据进入 Data Lake 后，你将通过映射数据流（数据工厂的本机转换服务）转换数据，并在 Azure Synapse Analytics 中接收数据。 然后，使用 Azure Data Share 来共享包含转换后的数据以及其他一些数据的表。 
 
 本实验中使用的数据为纽约市出租车数据。 若要将此数据导入 Azure SQL 数据库中你的数据库，请下载 [taxi-data bacpac 文件](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 
-* **Azure SQL 数据库**：如果没有 SQL 数据库，请了解如何[创建 SQL 数据库帐户](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)
+* **Azure SQL 数据库**：如果没有 SQL 数据库，请了解如何 [创建 SQL 数据库帐户](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)
 
-* **Azure Data Lake Storage Gen2 存储帐户**：如果没有 ADLS Gen2 的存储帐户，请了解如何[创建 ADLS Gen2 存储帐户](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account)。
+* **Azure Data Lake Storage Gen2 存储帐户**：如果没有 ADLS Gen2 的存储帐户，请了解如何 [创建 ADLS Gen2 存储帐户](../storage/common/storage-account-create.md)。
 
-* **Azure Synapse Analytics（前称为 SQL 数据仓库）** ：如果没有 Azure Synapse Analytics（前称为 SQL 数据仓库），请参阅如何[创建 Azure Synapse Analytics 实例](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)。
+* Azure Synapse Analytics：如果没有 Azure Synapse Analytics，请参阅如何[创建 Azure Synapse Analytics 实例](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
 
-* **Azure 数据工厂**：如果尚未创建数据工厂，请参阅如何[创建数据工厂](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)。
+* **Azure 数据工厂**：如果尚未创建数据工厂，请参阅如何 [创建数据工厂](./quickstart-create-data-factory-portal.md)。
 
-* **Azure Data Share**：如果尚未创建数据共享，请参阅如何[创建数据共享](https://docs.microsoft.com/azure/data-share/share-your-data#create-a-data-share-account)。
+* **Azure Data Share**：如果尚未创建数据共享，请参阅如何 [创建数据共享](../data-share/share-your-data.md#create-a-data-share-account)。
 
 ## <a name="set-up-your-azure-data-factory-environment"></a>设置 Azure 数据工厂环境
 
@@ -72,19 +72,19 @@ ms.locfileid: "89435637"
     ![门户配置 3](media/lab-data-flow-data-share/configure3.png)
 1. 要配置的第一个链接服务是 Azure SQL 数据库。 可以使用搜索栏来筛选数据存储列表。 单击“Azure SQL 数据库”磁贴，然后单击“继续”。
 
-    ![门户配置 4](media/lab-data-flow-data-share/configure4.png)
+    ![门户配置 4](media/lab-data-flow-data-share/configure-4.png)
 1. 在 SQL 数据库配置窗格中，输入“SQLDB”作为链接服务名称。 输入凭据，使数据工厂能够连接到该数据库。 如果使用的是 SQL 身份验证，请输入服务器名称、数据库、用户名和密码。 可以单击“测试连接”来验证连接信息是否正确。 完成后，单击“创建”。
 
     ![门户配置 5](media/lab-data-flow-data-share/configure5.png)
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>创建 Azure Synapse Analytics 链接服务
 
-1. 重复相同的过程来添加 Azure Synapse Analytics 链接服务。 在“连接”选项卡中，单击“新建”。 选择“Azure Synapse Analytics (前称为 SQL 数据仓库)”磁贴，然后单击“继续”。
+1. 重复相同的过程来添加 Azure Synapse Analytics 链接服务。 在“连接”选项卡中，单击“新建”。 选择“Azure Synapse Analytics”磁贴，然后单击“继续”。
 
-    ![门户配置 6](media/lab-data-flow-data-share/configure6.png)
+    ![门户配置 6](media/lab-data-flow-data-share/configure-6.png)
 1. 在链接服务配置窗格中，输入“SQLDW”作为链接服务名称。 输入凭据，使数据工厂能够连接到该数据库。 如果使用的是 SQL 身份验证，请输入服务器名称、数据库、用户名和密码。 可以单击“测试连接”来验证连接信息是否正确。 完成后，单击“创建”。
 
-    ![门户配置 7](media/lab-data-flow-data-share/configure7.png)
+    ![门户配置 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>创建 Azure Data Lake Storage Gen2 链接服务
 
@@ -128,7 +128,7 @@ ms.locfileid: "89435637"
     ![门户副本 4](media/lab-data-flow-data-share/copy4.png)
 1. 搜索“Azure SQL 数据库”并单击“继续”。
 
-    ![门户副本 5](media/lab-data-flow-data-share/copy5.png)
+    ![门户副本 5](media/lab-data-flow-data-share/copy-5.png)
 1. 将数据集命名为“TripData”。 选择“SQLDB”作为链接服务。 从表名称下拉列表中选择表名称“dbo.TripData”。 导入架构“从连接/存储”。 完成后，单击“确定”。
 
     ![门户副本 6](media/lab-data-flow-data-share/copy6.png)
@@ -161,7 +161,7 @@ ms.locfileid: "89435637"
 1. 复制监视视图提供活动的执行详细信息和性能特征。 可以查看读取/写入的数据量、读取/写入的行数、读取/写入的文件数和吞吐量等信息。 如果正确配置了所有设置，应会看到已将 49,999 行写入 ADLS 接收器中的一个文件。
 
     ![门户副本 13](media/lab-data-flow-data-share/copy13.png)
-1. 在转到下一部分之前，我们建议通过单击工厂顶部栏中的“全部发布”，来发布对数据工厂服务所做的更改。 Azure 数据工厂支持完整的 Git 集成，不过，本实验不探讨此方案。 使用 Git 集成可以实现版本控制、在存储库中反复保存，以及针对数据工厂展开协作。 有关详细信息，请参阅 [Azure 数据工厂中的源代码管理](https://docs.microsoft.com/azure/data-factory/source-control#troubleshooting-git-integration)。
+1. 在转到下一部分之前，我们建议通过单击工厂顶部栏中的“全部发布”，来发布对数据工厂服务所做的更改。 Azure 数据工厂支持完整的 Git 集成，不过，本实验不探讨此方案。 使用 Git 集成可以实现版本控制、在存储库中反复保存，以及针对数据工厂展开协作。 有关详细信息，请参阅 [Azure 数据工厂中的源代码管理](./source-control.md#troubleshooting-git-integration)。
 
     ![门户发布 1](media/lab-data-flow-data-share/publish1.png)
 
@@ -211,7 +211,7 @@ ms.locfileid: "89435637"
     ![门户数据流 9](media/lab-data-flow-data-share/dataflow9.png)
 1. 选择“Azure SQL 数据库”磁贴，然后单击“继续”。 *注意：你可能注意到，数据工厂中的许多连接器在映射数据流中不受支持。若要从其中的某个源转换数据，请使用复制活动将数据引入受支持的源*。
 
-    ![门户数据流 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![门户数据流 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. 将数据集命名为“TripFares”。 选择“SQLDB”作为链接服务。 从表名称下拉列表中选择表名称“dbo.TripFares”。 导入架构“从连接/存储”。 完成后，单击“确定”。
 
     ![门户数据流 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -224,7 +224,7 @@ ms.locfileid: "89435637"
 1. 若要添加新转换，请单击“TripDataCSV”右下角的加号图标。 在“多个输入/输出”下，选择“联接”。 
 
     ![门户联接 1](media/lab-data-flow-data-share/join1.png)
-1. 将联接转换命名为“InnerJoinWithTripFares”。 从右侧的流下拉列表中选择“TripFaresSQL”。 选择“内部”作为联接类型。 若要详细了解映射数据流中的不同联接类型，请参阅[联接类型](https://docs.microsoft.com/azure/data-factory/data-flow-join#join-types)。
+1. 将联接转换命名为“InnerJoinWithTripFares”。 从右侧的流下拉列表中选择“TripFaresSQL”。 选择“内部”作为联接类型。 若要详细了解映射数据流中的不同联接类型，请参阅[联接类型](./data-flow-join.md#join-types)。
 
     通过“联接条件”下拉列表选择要从每个流匹配的列。 若要添加更多联接条件，请单击现有条件旁边的加号图标。 默认情况下，所有联接条件将与 AND 运算符相组合，这意味着，必须满足所有条件才视为匹配。 在本实验中，我们想要匹配列 `medallion`、`hack_license`、`vendor_id` 和 `pickup_datetime`
 
@@ -248,7 +248,7 @@ ms.locfileid: "89435637"
     首先创建平均费用表达式。 在标有“添加或选择列”的文本框中，输入“average_fare”。
 
     ![门户聚合 3](media/lab-data-flow-data-share/agg3.png)
-1. 若要输入聚合表达式，请单击标有“输入表达式”的蓝色框。 此时会打开数据流表达式生成器，在此工具中可以使用输入架构、内置函数和操作以及用户定义的参数来直观创建数据流表达式。 有关表达式生成器的功能的详细信息，请参阅[表达式生成器文档](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder)。
+1. 若要输入聚合表达式，请单击标有“输入表达式”的蓝色框。 此时会打开数据流表达式生成器，在此工具中可以使用输入架构、内置函数和操作以及用户定义的参数来直观创建数据流表达式。 有关表达式生成器的功能的详细信息，请参阅[表达式生成器文档](./concepts-data-flow-expression-builder.md)。
 
     若要获取平均费用，请使用 `avg()` 聚合函数来聚合 `total_amount` 列，然后可使用 `toInteger()` 将此列强制转换为整数。 在数据流表达式语言中，此表达式定义为 `avg(toInteger(total_amount))`。 完成后，单击“保存并完成”。
 
@@ -274,9 +274,9 @@ ms.locfileid: "89435637"
 
     ![门户接收器 2](media/lab-data-flow-data-share/sink2.png)
 
-1. 选择“Azure Synapse Analytics (前称为 SQL 数据仓库)”磁贴，然后单击“继续”。
+1. 选择“Azure Synapse Analytics”磁贴，然后单击“继续”。
 
-    ![门户接收器 3](media/lab-data-flow-data-share/sink3.png)
+    ![门户接收器 3](media/lab-data-flow-data-share/sink-3.png)
 1. 将数据集命名为“AggregatedTaxiData”。 选择“SQLDW”作为链接服务。 选择“创建新表”，并将新表命名为 dbo.AggregateTaxiData。 完成后，单击“确定”
 
     ![门户接收器 4](media/lab-data-flow-data-share/sink4.png)
@@ -308,7 +308,7 @@ ms.locfileid: "89435637"
 
 ## <a name="share-data-using-azure-data-share"></a>使用 Azure Data Share 共享数据
 
-本部分介绍如何使用 Azure 门户设置新的数据共享。 这涉及到创建一个新的数据共享，其中包含来自 Azure Data Lake Store Gen2 和 Azure Synapse Analytics（旧称 SQL 数据仓库）的数据集。 然后，将配置一个快照计划，以便为数据使用者提供一个选项来自动刷新与他们共享的数据。 然后，邀请收件人加入你的数据共享。 
+本部分介绍如何使用 Azure 门户设置新的数据共享。 这涉及到创建一个新的数据共享，其中包含来自 Azure Data Lake Store Gen2 和 Azure Synapse Analytics 数据仓库的数据集。 然后，将配置一个快照计划，以便为数据使用者提供一个选项来自动刷新与他们共享的数据。 然后，邀请收件人加入你的数据共享。 
 
 创建数据共享后，可以切换身份，成为数据使用者。 你将以数据使用者的身份演练以下流程：接受数据共享邀请，配置要从何处接收数据，并将数据集映射到不同的存储位置。 然后触发快照，以将共享的数据复制到指定的目标。 
 
@@ -342,12 +342,10 @@ ms.locfileid: "89435637"
 
     ![添加数据集 1](media/lab-data-flow-data-share/add-dataset.png)
 
-1. 选择“Azure Synapse Analytics”（旧称 SQL 数据仓库），以从 ADF 转换所在的 Azure Synapse Analytics 中选择一个表。
+1. 选择“Azure Synapse Analytics”，以从 ADF 转换所在的 Azure Synapse Analytics 中选择一个表。
 
     ![添加数据集 sql](media/lab-data-flow-data-share/add-dataset-sql.png)
 
-> [!NOTE]
-> SQL 数据仓库现称作 Azure Synapse Analytics
 
 1. 在继续操作之前，我们会向你提供一个要运行的脚本。 提供的脚本将在 SQL 数据库中创建一个用户，以允许 Azure Data Share MSI 代表该用户完成身份验证。 
 
@@ -519,5 +517,3 @@ ms.locfileid: "89435637"
 1. 导航回到数据使用者的数据共享。 触发器状态变为成功后，导航到目标 SQL 数据库和 Data Lake，以查看数据是否已进入相应的存储。 
 
 祝贺你完成本实验！
-
-

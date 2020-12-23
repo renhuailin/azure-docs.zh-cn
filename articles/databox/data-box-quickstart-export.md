@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/17/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 01fdaa95dd396e5545b65bada2a9d6410169230b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 789bd2f62673e7faf562d3a407bf2f0a4fd861bf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052454"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125486"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>快速入门：开始使用 Azure Data Box 从 Azure 导出数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "90052454"
 
 * 确保用于 Data Box 服务的订阅是下述类型之一：
   * Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
-  * 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
+  * 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](/azure/cloud-solution-provider/overview/azure-csp-overview)。
   * Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)。
 
 * 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
@@ -96,7 +96,7 @@ ms.locfileid: "90052454"
 
 完成此操作所需的时间取决于数据大小和网络速度。
 
-1. 如果使用 Windows 客户端，请使用兼容 SMB 的文件复制工具（如 Robocopy）。 对于 NFS 主机，请使用 `cp` 命令或 `rsync` 来复制数据。 若要详细了解如何使用 Robocopy 来复制数据，请参阅 [Robocopy](https://technet.microsoft.com/library/ee851678.aspx)。
+1. 如果使用 Windows 客户端，请使用兼容 SMB 的文件复制工具（如 Robocopy）。 对于 NFS 主机，请使用 `cp` 命令或 `rsync` 来复制数据。 若要详细了解如何使用 Robocopy 来复制数据，请参阅 [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10))。
 2. 连接到设备共享并开始将数据复制到主机。
 <!-- 1. Connect to the device shares using the path:`\\<IP address of your device>\ShareName`. To get the share access credentials, go to the **Connect & copy** page in the local web UI of the Data Box. --> 
 

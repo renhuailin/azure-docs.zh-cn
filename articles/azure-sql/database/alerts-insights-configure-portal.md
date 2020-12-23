@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 86ac0f64a6a797b1bc702597ed30e6417f2efe14
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444908"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500965"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库和 Azure Synapse Analytics 创建警报
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91444908"
 
 ## <a name="overview"></a>概述
 
-本文介绍如何使用 Azure 门户在 Azure SQL 数据库和 Azure Synapse Analytics (以前的 SQL 数据仓库) 上设置数据库警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。
+本文介绍如何使用 Azure 门户为 Azure SQL 数据库中的数据库和 Azure Synapse Analytics 中的数据库设置警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。
 
 > [!NOTE]
 > 有关 Azure SQL 托管实例的具体说明，请参阅[为 Azure SQL 托管实例创建警报](../managed-instance/alerts-create.md)。
@@ -45,7 +45,7 @@ ms.locfileid: "91444908"
 * [Azure 门户](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [命令行接口 (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure 监视器 REST API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 门户创建指标的警报规则
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443018"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463078"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -59,9 +59,9 @@ ms.locfileid: "89443018"
 
 下表提供了特定于 Amazon Redshift 链接服务的 JSON 元素的说明。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
-| type |该属性必须设置为 **AmazonRedshift**。 |是 |
+| **type** |该属性必须设置为 **AmazonRedshift**。 |是 |
 | 服务器 |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | **port** |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
 | **database** |Amazon Redshift 数据库的名称。 |是 |
@@ -70,21 +70,21 @@ ms.locfileid: "89443018"
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各节和属性的列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 **结构**、**可用性**和**策略**部分对于所有数据集类型都是类似的。 数据集类型的示例包括 Azure SQL、Azure Blob 存储和 Azure 表存储。
+有关可用于定义数据集的各节和属性的列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 **结构**、**可用性** 和 **策略** 部分对于所有数据集类型都是类似的。 数据集类型的示例包括 Azure SQL、Azure Blob 存储和 Azure 表存储。
 
 每种数据集的 **typeProperties** 部分有所不同，该部分提供有关数据在存储区中的位置信息。 **RelationalTable** 类型数据集（包括 Amazon Redshift 数据集）的 **typeProperties** 部分具有以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | **tableName** |Amazon Redshift 数据库中链接服务引用的表的名称。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 属性可用于所有类型的活动。 typeProperties**** 节中可用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
+有关可用于定义活动的各部分和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 属性可用于所有类型的活动。 typeProperties 节中可用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
 
-对于复制活动，当源的类型为 **AmazonRedshiftSource **时，则可在 **typeProperties** 部分中使用以下属性：
+对于复制活动，当源的类型为 **AmazonRedshiftSource** 时，则可在 **typeProperties** 部分中使用以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | **query** | 使用自定义查询读取数据。 |否（如果指定了数据集的 **tableName** 属性） |
 | **redshiftUnloadSettings** | 使用 Redshift **UNLOAD** 命令时包含属性组。 | 否 |
@@ -93,7 +93,7 @@ ms.locfileid: "89443018"
 
 或者，也可将类型 **RelationalSource**（包括 Amazon Redshift）与 **typeProperties** 节中的以下属性配合使用。 请注意，此源类型不支持 Redshift **UNLOAD** 命令。
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 | 否（如果指定了数据集的 **tableName** 属性） |
 
@@ -101,7 +101,7 @@ ms.locfileid: "89443018"
 
 Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) 命令将查询结果卸载到 Amazon S3 上的一个或多个文件。 Amazon 推荐使用此命令从 Redshift 复制大型数据集。
 
-**示例：将数据从 Amazon Redshift 复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) **
+**示例：将数据从 Amazon Redshift 复制到 Azure Synapse Analytics**
 
 此示例将数据从 Amazon Redshift 复制到 Azure Synapse Analytics。 该示例使用 Redshift **UNLOAD** 命令、临时复制数据和 Microsoft PolyBase。
 
@@ -346,7 +346,7 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="repeatable-reads-from-relational-sources"></a>从关系源进行可重复读取
-从关系型数据存储复制数据时，请注意可重复性，以免出现意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试**策略**，以便在出现故障时重新运行切片。 无论要重新运行切片几次，都需要确保读取相同的数据。 此外，还需确保无论以哪种方式重新运行切片，都会读取相同的数据。 有关详细信息，请参阅[从关系型数据源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+从关系型数据存储复制数据时，请注意可重复性，以免出现意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试 **策略**，以便在出现故障时重新运行切片。 无论要重新运行切片几次，都需要确保读取相同的数据。 此外，还需确保无论以哪种方式重新运行切片，都会读取相同的数据。 有关详细信息，请参阅[从关系型数据源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 在[复制活动性能和优化指南](data-factory-copy-activity-performance.md)中了解影响复制活动性能的关键因素以及各种性能优化方法。

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: ab13c9494ee04d112cec93af9efaab43705297bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 62f31d8426e86cc20e957f3a47b30109dee0a634
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319514"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185668"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 Java 使用 Azure Functions 和 SignalR 服务创建聊天室
 
@@ -37,21 +37,21 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 > [!NOTE]
 > 本快速入门可以在 macOS、Windows 或 Linux 上运行。
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjava)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
 使用 Azure 帐户登录到 <https://portal.azure.com/> 的 Azure 门户。
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjava)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjava)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjava)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>配置和运行 Azure 函数应用
 
@@ -59,7 +59,7 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 
     ![搜索 SignalR 服务实例](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. 选择“密钥”**** 以查看 SignalR 服务实例的连接字符串。
+1. 选择“密钥”以查看 SignalR 服务实例的连接字符串。
 
 1. 选择并复制主连接字符串。
 
@@ -87,21 +87,20 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
     ```bash
     mvn azure-functions:run
     ```
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjava)
+    
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjava)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjava)
+遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，使用 Maven 生成并运行了一个实时无服务器应用程序。 接下来，了解如何从头开始创建 Java Azure Functions。
 
 > [!div class="nextstepaction"]
-> [使用 Java 和 Maven 创建第一个函数](../azure-functions/functions-create-first-java-maven.md)
-
-[存在问题？请告诉我们。](https://aka.ms/asrs/qsjava)
+> [使用 Java 和 Maven 创建第一个函数](../azure-functions/create-first-function-cli-csharp.md?pivots=programming-language-java%2cprogramming-language-java)

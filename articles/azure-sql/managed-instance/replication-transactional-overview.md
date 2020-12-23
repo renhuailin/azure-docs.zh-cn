@@ -1,7 +1,7 @@
 ---
 title: 事务复制
 titleSuffix: Azure SQL Managed Instance
-description: 了解如何在 Azure SQL 托管实例 (预览) 中使用 SQL Server 事务复制。
+description: 了解如何对 Azure SQL 托管实例使用 SQL Server 事务复制（预览）。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: a335f6ac015397ba2b2634d0d604c194a768260a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283201"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790808"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>通过 Azure SQL 托管实例 (预览版进行事务复制) 
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL 托管实例的事务复制（预览）
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 事务复制是 Azure SQL 托管实例和 SQL Server 的一项功能，用于将 Azure SQL 托管实例或 SQL Server 实例中表的数据复制到远程数据库中的表。 使用此功能可以同步不同数据库中的多个表。 
@@ -35,7 +35,7 @@ ms.locfileid: "91283201"
 - Azure SQL 托管实例中的实例数据库
 
   > [!NOTE]
-  > 若要使用 Azure SQL 托管实例的所有功能，必须使用最新版本的 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
+  > 若要使用 Azure SQL 托管实例的所有功能，必须使用最新版本的 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)。
 
 ### <a name="components"></a>组件
 
@@ -65,21 +65,21 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
 
    > [!NOTE]
    >
-   > - 对于不支持发布到 Azure 中的对象的其他 SQL Server 版本，可以利用[重新发布数据](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法将数据转移到较新版本的 SQL Server。
+   > - 对于不支持发布到 Azure 中的对象的其他 SQL Server 版本，可以利用[重新发布数据](/sql/relational-databases/replication/republish-data)方法将数据转移到较新版本的 SQL Server。
    > - 尝试使用旧版本来配置复制可能导致错误 MSSQL_REPL20084（进程无法连接到订阅服务器）和 MSSQ_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败。）
 
 ### <a name="types-of-replication"></a>复制类型
 
-有不同的[复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)：
+有不同的[复制类型](/sql/relational-databases/replication/types-of-replication)：
 
 | 复制 | Azure SQL 数据库 | Azure SQL 托管实例 |
 | :----| :------------- | :--------------- |
-| [**标准事务**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是（仅用作订阅服务器） | 是 |
-| [**快照**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是（仅用作订阅服务器） | 是|
-| [**合并复制**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
-| [**对等**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
-| [**双向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
-| [**可更新订阅**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
+| [**标准事务**](/sql/relational-databases/replication/transactional/transactional-replication) | 是（仅用作订阅服务器） | 是 |
+| [**快照**](/sql/relational-databases/replication/snapshot-replication) | 是（仅用作订阅服务器） | 是|
+| [**合并复制**](/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
+| [**对等**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
+| [**双向**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
+| [**可更新订阅**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>可支持性矩阵
@@ -148,7 +148,7 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
 - 如果虚拟网络不同，请配置复制参与者的虚拟网络之间的 VPN 对等互连。
 
 > [!NOTE]
-> 当分发服务器为 Azure SQL 托管实例数据库且订阅服务器位于本地时，如果阻止出站网络安全组 (NSG) 端口 445，则会在连接到 Azure 存储文件时遇到错误 53。 [更新 vNet NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) 以解决此问题。
+> 当分发服务器为 Azure SQL 托管实例数据库且订阅服务器位于本地时，如果阻止出站网络安全组 (NSG) 端口 445，则会在连接到 Azure 存储文件时遇到错误 53。 [更新 vNet NSG](../../storage/files/storage-troubleshoot-windows-file-connection-problems.md) 以解决此问题。
 
 ## <a name="with-failover-groups"></a>使用故障转移组
 
@@ -184,7 +184,7 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
    EXEC sp_dropdistributor 1,1
    ```
 
-如果对故障转移组中的**订阅服务器**实例启用了异地复制，则应将发布配置为连接到订阅服务器托管实例的故障转移组侦听器终结点。 发生故障转移时，托管实例管理员执行的后续操作取决于发生的故障转移类型：
+如果对故障转移组中的 **订阅服务器** 实例启用了异地复制，则应将发布配置为连接到订阅服务器托管实例的故障转移组侦听器终结点。 发生故障转移时，托管实例管理员执行的后续操作取决于发生的故障转移类型：
 
 - 如果在不丢失数据的情况下进行故障转移，则故障转移后复制将继续工作。
 - 如果在丢失数据的情况下进行故障转移，复制也能正常工作。 它会再次复制丢失的更改。
@@ -196,16 +196,16 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
 
 - [配置 SQL 托管实例发布服务器与订阅服务器之间的复制](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [配置 SQL 托管实例发布服务器、SQL 托管实例分发服务器与 SQL Server 订阅服务器之间的复制](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
-- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
-- 使用服务器名称作为订阅服务器（例如 `N'azuresqldbdns.database.windows.net`）并使用 Azure SQL 数据库中的数据库名称作为目标数据库（例如 Adventureworks）来[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
+- [创建发布](/sql/relational-databases/replication/publish/create-a-publication)。
+- 使用服务器名称作为订阅服务器（例如 `N'azuresqldbdns.database.windows.net`）并使用 Azure SQL 数据库中的数据库名称作为目标数据库（例如 Adventureworks）来[创建推送订阅](/sql/relational-databases/replication/create-a-push-subscription)。 )
 
 ## <a name="see-also"></a>另请参阅  
 
 - [使用 SQL 托管实例和故障转移组进行复制](transact-sql-tsql-differences-sql-server.md#replication)
 - [复制到 SQL 数据库](../database/replication-to-sql-database.md)
 - [复制到托管实例](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [监视（复制）](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [初始化订阅](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [创建发布](/sql/relational-databases/replication/publish/create-a-publication)
+- [创建推送订阅](/sql/relational-databases/replication/create-a-push-subscription/)
+- [复制类型](/sql/relational-databases/replication/types-of-replication)
+- [监视（复制）](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [初始化订阅](/sql/relational-databases/replication/initialize-a-subscription)

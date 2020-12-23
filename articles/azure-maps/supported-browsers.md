@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310180"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896916"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
 
-Azure Maps Web SDK 提供了名为 [isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-)的 helper 函数。 此函数检测 web 浏览器是否具有支持加载和呈现地图控件所需的最小 WebGL 功能集。 下面的示例演示如何使用函数：
+Azure Maps Web SDK 提供了名为 [isSupported](/javascript/api/azure-maps-control/atlas#issupported-boolean-)的 helper 函数。 此函数检测 web 浏览器是否具有支持加载和呈现地图控件所需的最小 WebGL 功能集。 下面的示例演示如何使用函数：
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>“桌面”
+## <a name="desktop"></a>桌面型
 
 Azure Maps Web SDK 支持以下桌面浏览器：
 
@@ -40,7 +40,7 @@ Azure Maps Web SDK 支持以下桌面浏览器：
 
 另请参阅本文后面的 [面向旧版浏览器](#Target-Legacy-Browsers) 。
 
-## <a name="mobile"></a>移动型
+## <a name="mobile"></a>移动
 
 Azure Maps Web SDK 支持以下移动浏览器：
 
@@ -63,7 +63,7 @@ Node.js 中还支持以下 Web SDK 模块：
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>定位旧版浏览器
 
-你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如 [Leaflet](https://leafletjs.com/)。 下面是一个示例：
+你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如 [Leaflet](https://leafletjs.com/)。 以下是一个示例：
 
 <br/>
 

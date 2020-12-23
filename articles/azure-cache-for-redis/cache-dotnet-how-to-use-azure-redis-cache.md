@@ -1,5 +1,5 @@
 ---
-title: 快速入门：通过 .NET 应用使用 Azure Cache for Redis
+title: 快速入门：在 .NET Framework 中使用 Azure Cache for Redis
 description: 本快速入门介绍如何从 .NET 应用访问 Azure Redis 缓存
 author: yegu-ms
 ms.author: yegu
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: b64fd82ab6050d6f4a9f0f91c2b8336ce03ab1d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88211364"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002440"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入门：将 Azure Redis 缓存与 .NET Framework 应用程序配合使用
+# <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>快速入门：在 .NET Framework 中使用 Azure Cache for Redis
 
 在本快速入门中，会将 Azure Redis 缓存合并到 .NET Framework 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。 你专门在 .NET 控制台应用中将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端与 C# 代码配合使用。
 
@@ -49,7 +49,7 @@ ms.locfileid: "88211364"
 
 在 Visual Studio 中，单击“文件”   > “新建”   > “项目”  。
 
-选择“控制台应用(.NET Framework)”  ，然后选择“下一步”  以配置应用。 输入**项目名称**，然后单击“创建”  以创建新的控制台应用程序。
+选择“控制台应用(.NET Framework)”  ，然后选择“下一步”  以配置应用。 输入 **项目名称**，然后单击“创建”  以创建新的控制台应用程序。
 
 <a name="configure-the-cache-clients"></a>
 
@@ -92,7 +92,7 @@ using System.Configuration;
 
 与 Azure Redis 缓存的连接由 `ConnectionMultiplexer` 类管理。 应当在整个客户端应用程序中共享和重用此类。 不要为每个操作创建新连接。 
 
-切勿将凭据存储在源代码中。 为了使此示例简单明了，我将只使用外部机密配置文件。 更好的方法是[将 Azure Key Vault 与证书配合使用](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios)。
+切勿将凭据存储在源代码中。 为了使此示例简单明了，我将只使用外部机密配置文件。 更好的方法是[将 Azure Key Vault 与证书配合使用](/rest/api/keyvault/certificate-scenarios)。
 
 在 *Program.cs* 中，将以下成员添加到控制台应用程序的 `Program` 类：
 
@@ -271,4 +271,4 @@ class Employee
 希望优化并节省云支出？
 
 > [!div class="nextstepaction"]
-> [使用成本管理开始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理开始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

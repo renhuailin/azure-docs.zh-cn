@@ -26,45 +26,39 @@
       href: get-started-speech-to-text.md
     - name: 操作指南
       items:
-        - name: 识别存储在 Blob 存储中的语音
-          href: quickstarts/from-blob.md
-        - name: 选择语音识别模式
-          href: how-to-choose-recognition-mode.md
         - name: 更改语音识别源语言
           href: how-to-specify-source-language.md
-        - name: 使用自定义语音识别提高准确性
-          href: how-to-custom-speech.md
         - name: 使用压缩的音频输入格式
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
-        - name: 使用短语列表提高准确性
-          href: how-to-phrase-lists.md
         - name: 选择特定的麦克风输入设备
           href: how-to-select-audio-input-devices.md
         - name: 使用自动源语言检测
           href: how-to-automatic-language-detection.md
         - name: 使用批量听录 API
           href: batch-transcription.md
+        - name: 从 v2.0 迁移到 v3.0
+          href: migrate-v2-to-v3.md
+        - name: 评估发音
+          href: how-to-pronunciation-assessment.md
     - name: 教程
       items:
         - name: 使用租户模型提高准确性
           href: tutorial-tenant-model.md
     - name: 自定义
       items:
+        - name: 什么是自定义语音识别？
+          href: custom-speech-overview.md
         - name: 在 Speech Studio 中使用音频文件测试模型
           href: quickstarts/speech-studio-test-model.md
         - name: 准备自定义语音的数据
           href: how-to-custom-speech-test-and-train.md
         - name: 检查自定义语音数据
           href: how-to-custom-speech-inspect-data.md
-        - name: 评估自定义语音准确度
+        - name: 评估并提升自定义语音识别准确度
           href: how-to-custom-speech-evaluate-data.md
-        - name: 提升自定义语音准确度
-          href: how-to-custom-speech-improve-accuracy.md
-        - name: 训练自定义语音的模型
+        - name: 训练和部署自定义语音识别模型
           href: how-to-custom-speech-train-model.md
-        - name: 部署自定义模型
-          href: how-to-custom-speech-deploy-model.md
         - name: 自定义语音识别的 CI/CD
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: 创建用户标记的听录内容
@@ -73,22 +67,22 @@
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/cppref'
+          href: /cpp/cognitive-services/speech/
         - name: C#
           displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/csharpref'
+          href: /dotnet/api/microsoft.cognitiveservices.speech
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+          href: /java/api/com.microsoft.cognitiveservices.speech
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/javascriptref'
+          href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
           displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/objectivecref'
+          href: /objectivec/cognitive-services/speech/
         - name: Python
           displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/pythonref'
+          href: /python/api/azure-cognitiveservices-speech/
         - name: 发行说明
           displayName: 'release notes,updates,what''s new,what is new,changes'
           href: releasenotes.md
@@ -126,13 +120,13 @@
             - name: 部署合成技术
               href: concepts-guidelines-responsible-deployment-synthetic.md
             - name: 为配音员披露
-              href: 'https://aka.ms/disclosure-voice-talent'
+              href: /legal/cognitive-services/speech-service/disclosure-voice-talent
             - name: 披露设计准则
               href: concepts-disclosure-guidelines.md
             - name: 披露设计模式
               href: concepts-disclosure-patterns.md
             - name: 行为准则
-              href: 'https://aka.ms/custom-neural-code-of-conduct'
+              href: /legal/cognitive-services/speech-service/tts-code-of-conduct
         - name: 自定义语音门户
           items:
             - name: 自定义语音入门
@@ -152,22 +146,22 @@
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/cppref'
+          href: /cpp/cognitive-services/speech/
         - name: C#
           displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/csharpref'
+          href: /dotnet/api/microsoft.cognitiveservices.speech
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+          href: /java/api/com.microsoft.cognitiveservices.speech
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/javascriptref'
+          href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
           displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/objectivecref'
+          href: /objectivec/cognitive-services/speech/
         - name: Python
           displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/pythonref'
+          href: /python/api/azure-cognitiveservices-speech/
         - name: 发行说明
           displayName: 'release notes,updates,what''s new,what is new,changes'
           href: releasenotes.md
@@ -202,22 +196,22 @@
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/cppref'
+          href: /cpp/cognitive-services/speech/
         - name: C#
           displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/csharpref'
+          href: /dotnet/api/microsoft.cognitiveservices.speech
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+          href: /java/api/com.microsoft.cognitiveservices.speech
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/javascriptref'
+          href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
           displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/objectivecref'
+          href: /objectivec/cognitive-services/speech/
         - name: Python
           displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-          href: 'https://aka.ms/csspeech/pythonref'
+          href: /python/api/azure-cognitiveservices-speech/
         - name: 发行说明
           displayName: 'release notes,updates,what''s new,what is new,changes'
           href: releasenotes.md
@@ -233,6 +227,8 @@
   items:
     - name: 意向识别文档
       href: index-intent-recognition.yml
+    - name: 意图识别概述
+      href: intent-recognition.md
     - name: 意向识别快速入门
       href: quickstarts/intent-recognition.md
     - name: 操作指南
@@ -245,210 +241,35 @@
           items:
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/cppref'
+              href: /cpp/cognitive-services/speech/
             - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/csharpref'
+              href: /dotnet/api/microsoft.cognitiveservices.speech
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
+              href: /java/api/com.microsoft.cognitiveservices.speech
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javascriptref'
+              href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
               displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/objectivecref'
+              href: /objectivec/cognitive-services/speech/
             - name: Python
               displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/pythonref'
+              href: /python/api/azure-cognitiveservices-speech/
             - name: 发行说明
               displayName: 'release notes,updates,what''s new,what is new,changes'
               href: releasenotes.md
         - name: LUIS 服务
           items:
             - name: LUIS 开发人员资源
-              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
+              href: ../luis/developer-reference-resource.md
     - name: 资源
       items:
         - name: 语言支持
           href: ../luis/luis-language-support.md
         - name: 区域支持
           href: regions.md#intent-recognition
-- name: 对话方案
-  items:
-    - name: 对话方案文档
-      displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
-      href: index-conversation-scenarios.yml
-    - name: 对话听录
-      items:
-        - name: 概述
-          items:
-            - name: 什么是对话听录？
-              href: conversation-transcription.md
-        - name: 操作指南
-          items:
-            - name: 处理呼叫中心方案
-              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
-              href: call-center-transcription.md
-            - name: 实时对话听录
-              href: how-to-use-conversation-transcription.md
-            - name: 异步对话听录
-              href: how-to-async-conversation-transcription.md
-        - name: 参考
-          items:
-            - name: 语音 SDK
-              items:
-                - name: C++
-                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/cppref'
-                - name: C#
-                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/csharpref'
-                - name: Java
-                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javaref'
-                - name: JavaScript
-                  displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javascriptref'
-                - name: Objective-C
-                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/objectivecref'
-                - name: Python
-                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/pythonref'
-                - name: 发行说明
-                  displayName: 'release notes,updates,what''s new,what is new,changes'
-                  href: releasenotes.md
-            - name: REST API
-              items:
-                - name: 对话听录 REST API
-                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-    - name: 多设备对话
-      items:
-        - name: 概述
-          items:
-            - name: 什么是多设备对话？
-              href: multi-device-conversation.md
-        - name: 快速入门
-          items:
-            - name: 启动和加入对话
-              href: quickstarts/multi-device-conversation.md
-        - name: 参考
-          items:
-            - name: 语音 SDK
-              items:
-                - name: C++
-                  href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
-                - name: C#
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
-                - name: Java
-                  href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
-- name: 语音助手
-  items:
-    - name: 语音助手文档
-      href: index-voice-assistants.yml
-    - name: 概述
-      items:
-        - name: 什么是语音助手？
-          href: voice-assistants.md
-        - name: 语音助手示例 (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: 自定义命令
-      items:
-        - name: 什么是自定义命令？
-          href: custom-commands.md
-        - name: 快速入门
-          items:
-            - name: 构建自定义命令应用
-              href: quickstart-custom-commands-application.md
-        - name: 操作指南
-          items:
-            - name: 开发
-              items:
-                - name: 通过简单的命令创建应用程序
-                  href: how-to-custom-commands-create-application-with-simple-commands.md
-                - name: 向命令添加参数
-                  href: how-to-custom-commands-add-parameters-to-commands.md
-                - name: 向命令参数添加配置
-                  href: how-to-custom-commands-add-parameter-configuration.md
-                - name: 添加交互规则
-                  href: how-to-custom-commands-add-interaction-rules.md
-                - name: 为语音响应添加语言生成模板
-                  href: how-to-custom-commands-add-language-generation-templates.md
-                - name: 使用自定义语音
-                  href: how-to-custom-commands-use-custom-voice.md
-            - name: 集成
-              items:
-                - name: 使用语音 SDK 与客户端应用集成
-                  href: how-to-custom-commands-setup-speech-sdk.md
-                - name: 向客户端应用程序发送活动
-                  href: how-to-custom-commands-send-activity-to-client.md
-                - name: 设置 Web 终结点
-                  href: how-to-custom-commands-setup-web-endpoints.md
-            - name: 部署
-              items:
-                - name: 使用 Azure DevOps 持续部署
-                  href: how-to-custom-commands-deploy-cicd.md
-            - name: 测试
-              items:
-                - name: 测试自定义命令应用
-                  href: how-to-custom-commands-developer-flow-test.md
-            - name: 调试
-              items:
-                - name: 调试创作应用时出现的错误
-                  href: how-to-custom-commands-debug-build-time.md
-                - name: 调试运行应用时出现的错误
-                  href: how-to-custom-commands-debug-runtime.md
-            - name: 参考
-              items:
-                - name: 自定义命令概念
-                  href: custom-commands-references.md
-        - name: 资源
-          items:
-            - name: 自定义命令示例 (GitHub)
-              href: 'https://aka.ms/speech/cc-samples'
-            - name: 语音助手示例 (GitHub)
-              href: 'http://aka.ms/speech/va-samples'
-            - name: 语音助手常见问题解答
-              href: faq-voice-assistants.md
-            - name: 语音 SDK
-              href: speech-sdk.md
-            - name: 对静态数据的自定义命令加密
-              href: custom-commands-encryption-of-data-at-rest.md
-    - name: Direct Line 语音
-      items:
-        - name: 什么是 Direct Line 语音？
-          href: direct-line-speech.md
-        - name: 快速入门
-          items:
-            - name: 创建自定义语音助手
-              href: quickstarts/voice-assistants.md
-        - name: 教程
-          items:
-            - name: 使用语音 SDK 为机器人启用语音
-              href: tutorial-voice-enable-your-bot-speech-sdk.md
-        - name: 资源
-          items:
-            - name: 语音助手常见问题解答
-              href: faq-voice-assistants.md
-    - name: Windows 上的语音助手
-      items:
-        - name: Windows 上的语音助手的概述
-          href: windows-voice-assistants-overview.md
-        - name: 操作指南
-          items:
-            - name: 开始在 Windows 上开发助手
-              href: how-to-windows-voice-assistants-get-started.md
-            - name: 启用语音激活
-              href: windows-voice-assistants-implementation-guide.md
-        - name: 资源
-          items:
-            - name: 隐私要求和指导原则
-              href: windows-voice-assistants-automatic-enablement-guidelines.md
-            - name: 适用于助手体验的最佳做法
-              href: windows-voice-assistants-best-practices.md
-            - name: 示例和常见问题
-              href: windows-voice-assistants-faq.md
 - name: 说话人识别
   items:
     - name: 说话人辨识概述
@@ -458,13 +279,184 @@
     - name: 参考
       items:
         - name: 说话人识别 REST API
-          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+          href: /rest/api/speakerrecognition/
 - name: 自定义关键字
   items:
     - name: 自定义关键字概述
       href: custom-keyword-overview.md
     - name: 自定义关键字基础知识
       href: custom-keyword-basics.md
+- name: 场景深入介绍
+  items:
+    - name: 对话方案
+      items:
+        - name: 对话方案文档
+          displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
+          href: index-conversation-scenarios.yml
+        - name: 对话听录
+          items:
+            - name: 对话听录概述
+              href: conversation-transcription.md
+            - name: 实时对话听录快速入门
+              href: how-to-use-conversation-transcription.md
+            - name: 操作指南
+              items:
+                - name: 处理呼叫中心方案
+                  displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+                  href: call-center-transcription.md
+                - name: 异步对话听录
+                  href: how-to-async-conversation-transcription.md
+            - name: 参考
+              items:
+                - name: 语音 SDK
+                  items:
+                    - name: C++
+                      displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                      href: /cpp/cognitive-services/speech/
+                    - name: C#
+                      displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                      href: /dotnet/api/microsoft.cognitiveservices.speech
+                    - name: Java
+                      displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                      href: /java/api/com.microsoft.cognitiveservices.speech
+                    - name: Javascript
+                      displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                      href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
+                    - name: Objective-C
+                      displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                      href: /objectivec/cognitive-services/speech/
+                    - name: Python
+                      displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                      href: /python/api/azure-cognitiveservices-speech/
+                    - name: 发行说明
+                      displayName: 'release notes,updates,what''s new,what is new,changes'
+                      href: releasenotes.md
+                - name: REST API
+                  items:
+                    - name: 对话听录 REST API
+                      href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+        - name: 多设备对话
+          items:
+            - name: 多设备对话概述
+              href: multi-device-conversation.md
+            - name: 多设备对话快速入门
+              href: quickstarts/multi-device-conversation.md
+            - name: 参考
+              items:
+                - name: 语音 SDK
+                  items:
+                    - name: C++
+                      href: /cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace
+                    - name: C#
+                      href: /dotnet/api/microsoft.cognitiveservices.speech.transcription
+                    - name: Java
+                      href: /java/api/com.microsoft.cognitiveservices.speech.transcription
+    - name: 语音助手
+      items:
+        - name: 语音助手文档
+          href: index-voice-assistants.yml
+        - name: 语音助手概述
+          href: voice-assistants.md
+        - name: 自定义命令
+          items:
+            - name: 什么是自定义命令？
+              href: custom-commands.md
+            - name: 快速入门
+              items:
+                - name: 构建自定义命令应用
+                  href: quickstart-custom-commands-application.md
+            - name: 操作指南
+              items:
+                - name: 开发
+                  items:
+                    - name: 通过简单的命令创建应用程序
+                      href: how-to-custom-commands-create-application-with-simple-commands.md
+                    - name: 向命令添加参数
+                      href: how-to-custom-commands-add-parameters-to-commands.md
+                    - name: 向命令参数添加配置
+                      href: how-to-custom-commands-add-parameter-configuration.md
+                    - name: 添加交互规则
+                      href: how-to-custom-commands-add-interaction-rules.md
+                    - name: 为语音响应添加语言生成模板
+                      href: how-to-custom-commands-add-language-generation-templates.md
+                    - name: 使用自定义语音
+                      href: how-to-custom-commands-use-custom-voice.md
+                - name: 集成
+                  items:
+                    - name: 使用语音 SDK 与客户端应用集成
+                      href: how-to-custom-commands-setup-speech-sdk.md
+                    - name: 向客户端应用程序发送活动
+                      href: how-to-custom-commands-send-activity-to-client.md
+                    - name: 设置 Web 终结点
+                      href: how-to-custom-commands-setup-web-endpoints.md
+                    - name: 导出“自定义命令”应用作为一项技能
+                      href: how-to-custom-commands-integrate-remote-skills.md
+                    - name: 从客户端应用更新命令
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: 从 web 终结点更新命令
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
+                - name: 部署
+                  items:
+                    - name: 使用 Azure DevOps 持续部署
+                      href: how-to-custom-commands-deploy-cicd.md
+                - name: 测试
+                  items:
+                    - name: 测试自定义命令应用
+                      href: how-to-custom-commands-developer-flow-test.md
+                - name: 调试
+                  items:
+                    - name: 调试创作应用时出现的错误
+                      href: how-to-custom-commands-debug-build-time.md
+                    - name: 调试运行应用时出现的错误
+                      href: how-to-custom-commands-debug-runtime.md
+                - name: 参考
+                  items:
+                    - name: 自定义命令概念
+                      href: custom-commands-references.md
+            - name: 资源
+              items:
+                - name: 自定义命令示例 (GitHub)
+                  href: 'https://aka.ms/speech/cc-samples'
+                - name: 语音助手示例 (GitHub)
+                  href: 'http://aka.ms/speech/va-samples'
+                - name: 语音助手常见问题解答
+                  href: faq-voice-assistants.md
+                - name: 对静态数据的自定义命令加密
+                  href: custom-commands-encryption-of-data-at-rest.md
+        - name: Direct Line 语音
+          items:
+            - name: 什么是 Direct Line 语音？
+              href: direct-line-speech.md
+            - name: 快速入门
+              items:
+                - name: 创建自定义语音助手
+                  href: quickstarts/voice-assistants.md
+            - name: 教程
+              items:
+                - name: 使用语音 SDK 为机器人启用语音
+                  href: tutorial-voice-enable-your-bot-speech-sdk.md
+            - name: 资源
+              items:
+                - name: 语音助手常见问题解答
+                  href: faq-voice-assistants.md
+        - name: Windows 上的语音助手
+          items:
+            - name: Windows 上的语音助手的概述
+              href: windows-voice-assistants-overview.md
+            - name: 操作指南
+              items:
+                - name: 开始在 Windows 上开发助手
+                  href: how-to-windows-voice-assistants-get-started.md
+                - name: 启用语音激活
+                  href: windows-voice-assistants-implementation-guide.md
+            - name: 资源
+              items:
+                - name: 隐私要求和指导原则
+                  href: windows-voice-assistants-automatic-enablement-guidelines.md
+                - name: 适用于助手体验的最佳做法
+                  href: windows-voice-assistants-best-practices.md
+                - name: 示例和常见问题
+                  href: windows-voice-assistants-faq.md
 - name: 工具
   items:
     - name: 语音 SDK
@@ -478,17 +470,19 @@
         - name: 参考
           items:
             - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
+              href: /cpp/cognitive-services/speech/
             - name: C#
-              href: 'https://aka.ms/csspeech/csharpref'
+              href: /dotnet/api/microsoft.cognitiveservices.speech
             - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
+              href: /java/api/com.microsoft.cognitiveservices.speech
+            - name: Javascript
+              href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
+              href: /objectivec/cognitive-services/speech/
             - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
+              href: /python/api/azure-cognitiveservices-speech/
+            - name: Go
+              href: 'https://github.com/microsoft/cognitive-services-speech-sdk-go'
     - name: 语音 CLI
       displayName: SPX
       items:
@@ -503,13 +497,15 @@
         - name: Speech Studio 概述
           href: 'https://speech.microsoft.com'
         - name: 使用 Speech Studio 创建自定义命令应用
-          href: quickstart-custom-speech-commands-create-new.md
+          href: ./quickstart-custom-commands-application.md
 - name: 部署
   items:
     - name: 启用日志记录
       href: how-to-use-logging.md
     - name: 跟踪内存使用情况
       href: how-to-track-speech-sdk-memory-usage.md
+    - name: 启用专用终结点
+      href: speech-services-private-link.md
     - name: 为 Linux 配置 OpenSSL
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md
@@ -534,6 +530,8 @@
           href: deploy-speech-on-container-instances.md
         - name: 容器常见问题解答
           href: speech-container-faq.md
+        - name: 认知服务容器文档
+          href: ../containers/index.yml
 - name: 设备
   items:
     - name: 语音设备文档
@@ -578,9 +576,8 @@
       href: how-to-migrate-from-translator-speech-api.md
 - name: 资源
   items:
-    - name: 支持
-      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
-      href: support.md
+    - name: 支持和帮助选项
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger 文档
       href: swagger-documentation.md
     - name: 主权云

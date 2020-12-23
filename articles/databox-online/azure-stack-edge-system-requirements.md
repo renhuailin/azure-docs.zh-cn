@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: a1a0462b82629b16bd8ccbe269fb1a917357d542
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4deeec1b6c9db80c15b001efb7b40bdb4bb9d515
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883505"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452641"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro 系统要求
 
@@ -48,7 +48,7 @@ Azure Stack Edge Pro 的系统要求包括：
 
 ### <a name="port-requirements-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro 的端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 " *Out* " 或 "*出站*" 是指 Azure Stack 边缘 Pro 设备在外部（例如，在 internet 上出站）发送数据的方向。
+下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入* 或 *入站* 表示传入客户端请求访问设备的方向。 " *Out* " 或 "*出站*" 是指 Azure Stack 边缘 Pro 设备在外部（例如，在 internet 上出站）发送数据的方向。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -58,11 +58,11 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必需 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必须 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
-有关完整信息，请转到 [IoT Edge 部署的防火墙和端口配置规则](https://docs.microsoft.com/azure/iot-edge/troubleshoot)。
+有关完整信息，请转到 [IoT Edge 部署的防火墙和端口配置规则](../iot-edge/troubleshoot.md)。
 
 ## <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
 
@@ -115,7 +115,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
     - 容器共享多少层？
     - 是否存在未使用的容器？ 已停止的容器仍占用磁盘空间。
     - 你的容器在哪种语言中编写？
-- 已**处理的数据大小**-容器处理的数据量是多少？ 此数据是否会占用磁盘空间，否则数据将在内存中进行处理吗？
+- 已 **处理的数据大小**-容器处理的数据量是多少？ 此数据是否会占用磁盘空间，否则数据将在内存中进行处理吗？
 - **预期的性能** -你的解决方案所需的性能特征是什么？ 
 
 若要了解和优化解决方案的性能，可以使用：
@@ -133,6 +133,6 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 最后，在生产环境中部署之前，请确保在数据集上验证解决方案并量化 Azure Stack Edge Pro 上的性能。
 
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 - [部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)

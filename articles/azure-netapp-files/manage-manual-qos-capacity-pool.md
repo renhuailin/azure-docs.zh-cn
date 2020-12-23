@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442083"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929211"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>管理手动 QoS 容量池
 
@@ -44,7 +44,7 @@ ms.locfileid: "91442083"
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-你还可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
+你还可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>设置新的手动 QoS 容量池 
 
@@ -65,7 +65,7 @@ ms.locfileid: "91442083"
  
 2.  单击要更改为使用手动 QoS 的容量池。
 
-3.  单击 " **更改 QoS 类型**"。 然后，将 **新的 QoS 类型** 设置为 " **手动**"。 单击 **“确定”** 。 
+3.  单击 " **更改 QoS 类型**"。 然后，将 **新的 QoS 类型** 设置为 " **手动**"。 单击" **确定**"。 
 
 ![更改 QoS 类型](../media/azure-netapp-files/change-qos-type.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "91442083"
 
 1. 从 " **卷** " 页中，选择要修改其吞吐量的卷。   
 
-2. 单击 " **更改吞吐量**"。 指定所需 **)  (MiB/秒的吞吐量 ** 。 单击 **“确定”** 。 
+2. 单击 " **更改吞吐量**"。 指定所需 **)  (MiB/秒的吞吐量 ** 。 单击" **确定**"。 
 
     ![更改 QoS 吞吐量](../media/azure-netapp-files/change-qos-throughput.png)
 
@@ -97,5 +97,3 @@ ms.locfileid: "91442083"
 * [创建 NFS 卷](azure-netapp-files-create-volumes.md)
 * [创建 SMB 卷](azure-netapp-files-create-volumes-smb.md)
 * [创建双协议卷](create-volumes-dual-protocol.md)
-
-

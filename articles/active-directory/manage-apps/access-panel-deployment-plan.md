@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146617"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835656"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>规划应用程序部署 Azure Active Directory
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 * 发现并访问其公司的所有 Azure AD 连接的资源，例如应用程序
 * 请求访问新的应用和组
 * 管理其他人对这些资源的访问权限
-* 管理自助服务密码重置和 Azure 多重身份验证设置
+* 管理自助服务密码重置和 Azure AD 多重身份验证设置
 * 管理其设备
 
 它还允许管理员管理：
@@ -54,10 +54,10 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 
 我的应用程序是免费的，不需要任何许可证即可在基本级别使用。 但是，目录中的对象数以及要部署的其他功能可能需要额外的许可证。 某些具有许可要求的常见 Azure AD 情况包括以下安全功能：
 
-* [Azure 多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-* [基于组的成员身份](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-* [自助式密码重置](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-* [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+* [Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)
+* [基于组的成员身份](../fundamentals/active-directory-manage-groups.md)
+* [自助式密码重置](../authentication/tutorial-enable-sspr.md)
+* [Azure Active Directory 标识保护](../identity-protection/overview-identity-protection.md)
 
 请参阅 [Azure AD 的完整许可指南](https://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -65,14 +65,14 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 
 在开始此项目之前，请完成以下先决条件：
 
-* [集成应用程序 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-* [管理 Azure AD 用户和组基础结构](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [集成应用程序 SSO](./plan-sso-deployment.md)
+* [管理 Azure AD 用户和组基础结构](../fundamentals/active-directory-manage-groups.md)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>计划 Azure AD 应用部署
 
 下表概述了 "我的应用" 部署的主要用例：
 
-| 区域| 说明 |
+| 领域| 说明 |
 | - | - |
 | Access| "我的应用" 门户可从企业网络中的公司和个人设备进行访问。 |
 |Access | 可以从企业网络外部的企业设备访问 "我的应用" 门户。 |
@@ -166,23 +166,23 @@ Microsoft 为应用程序提供 [电子邮件和其他通信的可自定义模�
 
 在应用程序支持时，将联合 SSO 与 Azure AD (OpenID Connect/SAML) 结合使用，而不是基于密码的 SSO 和 ADFS。
 
-有关如何部署和配置 SaaS 应用程序的详细信息，请参阅 [SAAS SSO 部署计划](https://aka.ms/deploymentplans/sso)。
+有关如何部署和配置 SaaS 应用程序的详细信息，请参阅 [SAAS SSO 部署计划](./plan-sso-deployment.md)。
 
 #### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>规划部署 "我的应用" 浏览器扩展
 
-当用户登录到基于密码的 SSO 应用程序时，需要安装和使用 "我的应用" 安全登录扩展。 扩展执行脚本，将密码传输到应用程序的登录窗体。 当用户首次启动基于密码的 SSO 应用程序时，会提示用户安装该扩展。 有关扩展的详细信息，请参阅本文档中的 [安装应用浏览器扩展](access-panel-extension-problem-installing.md)。
+当用户登录到基于密码的 SSO 应用程序时，需要安装和使用 "我的应用" 安全登录扩展。 扩展执行脚本，将密码传输到应用程序的登录窗体。 当用户首次启动基于密码的 SSO 应用程序时，会提示用户安装该扩展。 有关扩展的详细信息，请参阅本文档中的 [安装应用浏览器扩展]()。
 
-如果必须集成基于密码的 SSO 应用程序，则应定义一种机制，用于使用 [受支持的浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大规模部署扩展。 选项包括：
+如果必须集成基于密码的 SSO 应用程序，则应定义一种机制，用于使用 [受支持的浏览器](../user-help/my-apps-portal-end-user-access.md)大规模部署扩展。 选项包括：
 
-* [Internet Explorer 组策略](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-* [Internet Explorer Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-* [适用于 Chrome、Firefox、Microsoft Edge 或 IE 的用户驱动的下载和配置](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+* [Internet Explorer 组策略]()
+* [Internet Explorer Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [适用于 Chrome、Firefox、Microsoft Edge 或 IE 的用户驱动的下载和配置](../user-help/my-apps-portal-end-user-access.md)
 
 不使用基于密码的 SSO 应用程序的用户也将受益于该扩展。 这些优势包括：从其搜索栏启动任何应用、查找对最近使用的应用程序的访问权限，以及链接到 "我的应用程序" 页。
 
 #### <a name="plan-for-mobile-access"></a>规划移动访问
 
-使用 Intune 策略 (Microsoft Edge 或 Intune Managed Browser) 保护的浏览器对于启动基于密码的 SSO 应用程序的移动用户是必需的。 受策略保护的浏览器允许传输为应用程序保存的密码。 Microsoft Edge 或托管浏览器提供了一组 web 数据保护功能。 你还可以使用 Microsoft Edge 在 iOS 和 Android 设备上使用企业方案。 Microsoft Edge 支持与 Intune Managed Browser 相同的管理方案，并改善了用户体验。 了解详细信息： [使用 Microsoft Intune 策略保护的浏览器管理 web 访问](https://docs.microsoft.com/intune/app-configuration-managed-browser)。
+使用 Intune 策略 (Microsoft Edge 或 Intune Managed Browser) 保护的浏览器对于启动基于密码的 SSO 应用程序的移动用户是必需的。 受策略保护的浏览器允许传输为应用程序保存的密码。 Microsoft Edge 或托管浏览器提供了一组 web 数据保护功能。 你还可以使用 Microsoft Edge 在 iOS 和 Android 设备上使用企业方案。 Microsoft Edge 支持与 Intune Managed Browser 相同的管理方案，并改善了用户体验。 了解详细信息： [使用 Microsoft Intune 策略保护的浏览器管理 web 访问](/intune/app-configuration-managed-browser)。
 
 ## <a name="plan-your-my-apps-deployment"></a>规划我的应用部署
 
@@ -225,7 +225,7 @@ Microsoft 为应用程序提供 [电子邮件和其他通信的可自定义模�
 
 可以让用户在 Azure AD 中创建和管理其自己的安全组或 Microsoft 365 组。 组的所有者可以批准或拒绝成员身份请求并委派对组成员身份的控制。 自助服务组管理功能不可用于启用邮件的安全组或通讯组列表。
 
-若要规划自助服务组成员身份，请确定你是否允许组织中的所有用户创建和管理组，或者只是部分用户。 如果你允许某个用户的子集，则需要设置要添加这些人员的组。 有关启用这些方案的详细信息，请参阅 [在 Azure Active Directory 中设置自助服务组管理](../users-groups-roles/groups-self-service-management.md) 。
+若要规划自助服务组成员身份，请确定你是否允许组织中的所有用户创建和管理组，或者只是部分用户。 如果你允许某个用户的子集，则需要设置要添加这些人员的组。 有关启用这些方案的详细信息，请参阅 [在 Azure Active Directory 中设置自助服务组管理](../enterprise-users/groups-self-service-management.md) 。
 
 ## <a name="plan-reporting-and-auditing"></a>规划报告和审核
 
@@ -248,7 +248,7 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 为 SSO 配置应用程序后，将为组分配访问权限。 已分配组中的用户将具有访问权限，并会在 "我的应用" 和 Microsoft 365 应用启动器中看到该应用程序。
 
-请参阅 [将用户和组分配到 Active Directory 中的应用程序](methods-for-assigning-users-and-groups.md)。
+请参阅 [将用户和组分配到 Active Directory 中的应用程序](./assign-user-or-group-access-portal.md)。
 
 如果在测试或部署过程中要添加组，但不允许应用程序显示在 "我的应用" 中，请参阅 [在 Azure Active Directory 中的用户体验中隐藏应用程序](hide-application-from-user-portal.md)。
 
@@ -294,12 +294,12 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 ### <a name="rollback-steps"></a>回滚步骤
 
-必须规划好当部署无法按计划进行时要怎样做。 如果在部署过程中 SSO 配置失败，你必须了解如何 [排查 sso 问题](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) 并降低对用户的影响。 在极端情况下，可能需要 [回滚 SSO](../manage-apps/plan-sso-deployment.md#rollback-process)。
+必须规划好当部署无法按计划进行时要怎样做。 如果在部署过程中 SSO 配置失败，你必须了解如何 [排查 sso 问题](../hybrid/tshoot-connect-sso.md) 并降低对用户的影响。 在极端情况下，可能需要 [回滚 SSO](../manage-apps/plan-sso-deployment.md#rollback-process)。
 
 
 ## <a name="manage-your-implementation"></a>管理实现
 
-使用最小特权角色来完成 Azure Active Directory 中所需的任务。 [查看可用的不同角色](../users-groups-roles/directory-assign-admin-roles.md) ，并选择正确的角色以解决此应用程序的每个角色的需求。 某些角色可能需要在部署完成后暂时应用并删除。
+使用最小特权角色来完成 Azure Active Directory 中所需的任务。 [查看可用的不同角色](../roles/permissions-reference.md) ，并选择正确的角色以解决此应用程序的每个角色的需求。 某些角色可能需要在部署完成后暂时应用并删除。
 
 | 角色| 角色| Azure AD 角色  |
 | - | -| -|
@@ -312,4 +312,4 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 你可以使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 来管理你的角色，以便为具有目录权限的用户提供其他审核、控制和访问评审。
 
 ## <a name="next-steps"></a>后续步骤
-[规划 Azure 多重身份验证的部署](https://aka.ms/deploymentplans/mfa)
+[规划 Azure AD 多重身份验证的部署](../authentication/howto-mfa-getstarted.md)

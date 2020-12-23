@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: d4c6c5b51e00f7f2ed7e29c27aa8e8bb88a2ea94
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706454"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861351"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>为多租户应用程序启用自动用户预配
 
@@ -89,7 +89,7 @@ Azure AD 预配服务使用 [SCIM](https://aka.ms/SCIMOverview)，这是许多�
 
 ## <a name="microsoft-graph-for-provisioning"></a>用于预配的 Microsoft Graph
 
-使用用于预配的 Microsoft Graph 时，可以访问图形中提供的所有丰富的用户数据。 除了用户和组的详细信息外，还可以获取其他信息，如用户的角色、经理和直接下属、拥有和注册的设备，以及 [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0)中提供的数百个其他数据片段。 
+使用用于预配的 Microsoft Graph 时，可以访问图形中提供的所有丰富的用户数据。 除了用户和组的详细信息外，还可以获取其他信息，如用户的角色、经理和直接下属、拥有和注册的设备，以及 [Microsoft Graph](/graph/api/overview)中提供的数百个其他数据片段。 
 
 15000000多家组织和90% 的财富500公司使用 Azure AD，同时订阅 Microsoft 365、Microsoft Azure 或企业移动性套件等 Microsoft 云服务。 你可以使用 Microsoft Graph 将你的应用与管理工作流（如员工加入 (和终止) 、配置文件维护等）集成。 
 
@@ -111,7 +111,7 @@ SAML JIT 使用 SAML 令牌中的声明信息来创建和更新应用程序中�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为应用程序启用单一登录](../manage-apps/isv-sso-content.md)
+* [为应用程序启用单一登录](../develop/v2-howto-app-gallery-listing.md)
 
 * [提交你的应用程序列表](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) 并与 microsoft 合作，以便在 microsoft 网站上创建文档。
 

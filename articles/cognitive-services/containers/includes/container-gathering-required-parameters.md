@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 85c67384c38376dc6f5701cf26e879d6e1b76c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80875023"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996381"
 ---
 ## <a name="gathering-required-parameters"></a>收集必需参数
 
@@ -21,7 +21,7 @@ ms.locfileid: "80875023"
 
 ### <a name="endpoint-uri-endpoint_uri"></a>终结点 URI `{ENDPOINT_URI}`
 
-在相应的认知服务资源的 Azure 门户“概览”页上提供**终结点** URI 值。 导航到“概览”  页，将鼠标悬停在“终结点”上就会显示一个 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 图标。 复制后在需要时使用。
+在相应的认知服务资源的 Azure 门户“概览”页上提供 **终结点** URI 值。 导航到“概览”  页，将鼠标悬停在“终结点”上就会显示一个 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 图标。 复制后在需要时使用。
 
 ![收集终结点 URI 供以后使用](../media/overview-endpoint-uri.png)
 

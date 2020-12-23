@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool 的通信安全
 titleSuffix: Azure
-description: 了解 Threat Modeling Tool 中公开的通信安全威胁的缓解措施。 请参阅缓解信息和查看代码示例。
+description: 了解针对 Threat Modeling Tool 中暴露的通信安全威胁的缓解措施。 请参阅缓解措施信息并查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d795d30e3ad420e0fed002baddf37469ddcf995
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d9a4eabf37101622ac69ae05f3bec232fb8d2fe6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004556"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517523"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -32,12 +32,12 @@ ms.locfileid: "89004556"
 | **Azure 数据工厂** | <ul><li>[将本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关](#sqlserver-factory)</li></ul> |
 | **标识服务器** | <ul><li>[确保发往标识服务器的所有流量都通过 HTTPS 连接传输](#identity-https)</li></ul> |
 | **Web 应用程序** | <ul><li>[验证用于对 SSL、TLS 和 DTLS 连接进行身份验证的 X.509 证书](#x509-ssltls)</li><li>[在 Azure 应用服务中为自定义域配置 TLS/SSL 证书](#ssl-appservice)</li><li>[强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输](#appservice-https)</li><li>[启用 HTTP 严格传输安全性 (HSTS)](#http-hsts)</li></ul> |
-| **Database** | <ul><li>[确保加密 SQL Server 连接并验证证书](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
+| **数据库** | <ul><li>[确保加密 SQL Server 连接并验证证书](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
 | **Azure 存储** | <ul><li>[确保与 Azure 存储之间的通信通过 HTTPS 进行](#comm-storage)</li><li>[如果无法启用 HTTPS，请在下载 Blob 后验证 MD5 哈希](#md5-https)</li><li>[使用 SMB 3.0 兼容的客户端来确保传输到 Azure 文件共享的数据经过加密](#smb-shares)</li></ul> |
 | **移动客户端** | <ul><li>[实施证书绑定](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[启用 HTTPS - 安全传输通道](#https-transport)</li><li>[WCF：将消息安全保护级别设置为 EncryptAndSign](#message-protection)</li><li>[WCF：使用最低特权帐户运行 WCF 服务](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输](#webapi-https)</li></ul> |
-| **Azure Cache for Redis** | <ul><li>[确保与 Azure Cache for Redis 之间的通信通过 TLS 进行](#redis-ssl)</li></ul> |
+| **用于 Redis 的 Azure 缓存** | <ul><li>[确保与 Azure Cache for Redis 之间的通信通过 TLS 进行](#redis-ssl)</li></ul> |
 | **IoT 现场网关** | <ul><li>[保护设备与现场网关之间的通信](#device-field)</li></ul> |
 | **IoT 云网关** | <ul><li>[使用 SSL/TLS 保护设备与云网关之间的通信](#device-cloud)</li></ul> |
 
@@ -49,7 +49,7 @@ ms.locfileid: "89004556"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [事件中心身份验证和安全模型概述](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **参考**              | [事件中心身份验证和安全模型概述](../../event-hubs/authenticate-shared-access-signature.md) |
 | **步骤** | 使用 SSL/TLS 来保护与事件中心的 AMQP 或 HTTP 连接 |
 
 ## <a name="check-service-account-privileges-and-check-that-the-custom-services-or-aspnet-pages-respect-crms-security"></a><a id="priv-aspnet"></a>检查服务帐户特权，并检查自定义服务或 ASP.NET 页面是否遵循 CRM 的安全性
@@ -71,7 +71,7 @@ ms.locfileid: "89004556"
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 链接服务类型-Azure 和本地 |
-| **参考**              |[在本地和 Azure 数据工厂之间移动数据](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)， [数据管理网关](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **参考**              |[在本地和 Azure 数据工厂之间移动数据](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-gateway)， [数据管理网关](../../data-factory/v1/data-factory-data-management-gateway.md) |
 | **步骤** | <p>需要使用数据管理网关 (DMG) 工具连接到受企业网络或防火墙保护的数据源。</p><ol><li>锁定计算机可以隔离 DMG 工具，防止不正常的程序损坏源计算机或者窥视其数据。 （例如， 必须安装最新的更新、启用所需的最少量端口、预配受控帐户、审核启用、启用磁盘加密，等等。）</li><li>必须经常或者每当 DMG 服务帐户密码续订时轮替数据网关密钥</li><li>通过链接服务传输的数据必须加密</li></ol> |
 
 ## <a name="ensure-that-all-traffic-to-identity-server-is-over-https-connection"></a><a id="identity-https"></a>确保发往标识服务器的所有流量都通过 HTTPS 连接传输
@@ -116,7 +116,7 @@ ms.locfileid: "89004556"
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
 | **参考**              | [对 Azure 应用服务强制执行 HTTPS](../../app-service/configure-ssl-bindings.md#enforce-https) |
-| **步骤** | <p>尽管 Azure 已使用 *.azurewebsites.net 域的通配符证书为 Azure 应用服务启用了 HTTPS，但它并不强制 HTTPS。 访问者仍可使用 HTTP 访问应用，这可能会损害应用的安全性，因此必须显式强制 HTTPS。 ASP.NET MVC 应用程序应使用 [RequireHttps 筛选器](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)，强制要求通过 HTTPS 重新发送不安全的 HTTP 请求。</p><p>或者，可以使用 Azure 应用服务随附的 URL 重写模块来强制 HTTPS。 开发人员可以使用 URL 重写模块来定义将请求传递给应用程序之前应用到传入请求的规则。 URL 重写规则在 web.config 文件中定义，该文件存储在应用程序根目录中。</p>|
+| **步骤** | <p>尽管 Azure 已使用 *.azurewebsites.net 域的通配符证书为 Azure 应用服务启用了 HTTPS，但它并不强制 HTTPS。 访问者仍可使用 HTTP 访问应用，这可能会损害应用的安全性，因此必须显式强制 HTTPS。 ASP.NET MVC 应用程序应使用 [RequireHttps 筛选器](/dotnet/api/system.web.mvc.requirehttpsattribute)，强制要求通过 HTTPS 重新发送不安全的 HTTP 请求。</p><p>或者，可以使用 Azure 应用服务随附的 URL 重写模块来强制 HTTPS。 开发人员可以使用 URL 重写模块来定义将请求传递给应用程序之前应用到传入请求的规则。 URL 重写规则在 web.config 文件中定义，该文件存储在应用程序根目录中。</p>|
 
 ### <a name="example"></a>示例
 以下示例包含可强制所有传入流量使用 HTTPS 的基本 URL 重写规则
@@ -170,7 +170,7 @@ ms.locfileid: "89004556"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | OnPrem |
 | **属性**              | SQL 版本 - MsSQL2016，SQL 版本 - MsSQL2012，SQL 版本 - MsSQL2014 |
-| **参考**              | [启用数据库引擎的加密连接](https://msdn.microsoft.com/library/ms191192)  |
+| **参考**              | [启用数据库引擎的加密连接](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)  |
 | **步骤** | 启用 TLS 加密可以提高在 SQL Server 实例与应用程序之间通过网络传输的数据的安全性。 |
 
 ## <a name="ensure-that-communication-to-azure-storage-is-over-https"></a><a id="comm-storage"></a>确保与 Azure 存储之间的通信通过 HTTPS 进行
@@ -181,7 +181,7 @@ ms.locfileid: "89004556"
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [Azure 存储传输级加密 – 使用 HTTPS](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
+| **参考**              | [Azure 存储传输级加密 – 使用 HTTPS](../../storage/blobs/security-recommendations.md#networking) |
 | **步骤** | 为了确保传输中 Azure 存储数据的安全性，请在调用 REST API 或访问存储中的对象时，始终使用 HTTPS 协议。 此外，可以使用共享访问签名，它除了可以委派对 Azure 存储对象的访问权限，还能指定在使用共享访问签名时只能使用 HTTPS 协议，确保任何使用 SAS 令牌发出链接的人都使用正确的协议。|
 
 ## <a name="validate-md5-hash-after-downloading-blob-if-https-cannot-be-enabled"></a><a id="md5-https"></a>如果无法启用 HTTPS，请在下载 Blob 后验证 MD5 哈希
@@ -203,7 +203,7 @@ ms.locfileid: "89004556"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 文件 |
-| **参考**              | [Azure 文件存储](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows 客户端的 Azure 文件存储 SMB 支持](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
+| **参考**              | [Azure 文件存储](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows 客户端的 Azure 文件存储 SMB 支持](../../storage/files/storage-dotnet-how-to-use-files.md#understanding-the-net-apis) |
 | **步骤** | 使用 REST API 时，Azure 文件存储支持 HTTPS，但经常用作附加到 VM 的 SMB 文件共享。 SMB 2.1 不支持加密，因此只允许在 Azure 中的相同区域内连接。 但是，SMB 3.0 支持加密，并且可以配合 Windows Server 2012 R2、Windows 8、Windows 8.1 和 Windows 10 使用，允许跨区域访问，甚至桌面上的访问。 |
 
 ## <a name="implement-certificate-pinning"></a><a id="cert-pinning"></a>实施证书固定
@@ -291,7 +291,7 @@ namespace CertificatePinningExample
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | NET Framework 3 |
 | **属性**              | 空值  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
+| **参考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **步骤** | 应用程序配置应确保始终使用 HTTPS 来访问敏感信息。<ul><li>**解释：** 如果应用程序需要处理敏感信息并且没有使用消息级别加密，则只应允许它通过加密的传输通道进行通信。</li><li>**建议：** 确保禁用 HTTP 传输，改为启用 HTTPS 传输。 例如，将 `<httpTransport/>` 替换为 `<httpsTransport/>` 标记。 不要依赖使用网络配置（防火墙）来保证只能通过安全通道访问应用程序。 从哲学的观点来讲，应用程序不应依赖于网络来保证其安全性。</li></ul><p>从实践的观点来讲，负责保护网络的人不会一直跟进应用程序的不断变化的安全要求。</p>|
 
 ## <a name="wcf-set-message-security-protection-level-to-encryptandsign"></a><a id="message-protection"></a>WCF：将消息安全保护级别设置为 EncryptAndSign
@@ -302,7 +302,7 @@ namespace CertificatePinningExample
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 空值  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
+| **参考**              | [MSDN](/previous-versions/msp-n-p/ff650862(v=pandp.10)) |
 | **步骤** | <ul><li>**解释：** 当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**建议：**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请注意不要在消息中包含任何个人数据。</p>|
 
 ### <a name="example"></a>示例
@@ -331,7 +331,7 @@ string GetData(int value);
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 空值  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
+| **参考**              | [MSDN](/previous-versions/msp-n-p/ff648826(v=pandp.10)) |
 | **步骤** | <ul><li>**解释：** 不要在管理员或高特权帐户下运行 WCF 服务。 否则，如果服务遭到入侵，将导致严重影响。</li><li>**建议：** 请使用最低特权帐户托管 WCF 服务，因为这样可以在遭到攻击时减小应用程序的攻击面，降低潜在损害。 如果服务帐户需要 MSMQ、事件日志、性能计数器和文件系统等基础结构资源的其他访问权限，应该授予对这些资源的相应权限，使 WCF 服务能够成功运行。</li></ul><p>如果服务需要代表原始调用方访问特定的资源，请使用模拟和委派来传送调用方的标识，以便在下游进行授权检查。 在开发方案中，请使用本地网络服务帐户，这是一个特权降低的特殊内置帐户。 在生产方案中，请创建最低特权的自定义域服务帐户。</p>|
 
 ## <a name="force-all-traffic-to-web-apis-over-https-connection"></a><a id="webapi-https"></a>强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输
@@ -383,7 +383,7 @@ public class ValuesController : ApiController
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [Azure Redis TLS 支持](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
+| **参考**              | [Azure Redis TLS 支持](../../azure-cache-for-redis/cache-faq.md) |
 | **步骤** | Redis 服务器不能现成地支持 TLS，但 Azure Cache for Redis 则可以。 如果要连接到 Azure Cache for Redis 并且客户端支持 TLS（如 StackExchange.Redis），则应使用 TLS。 默认情况下，为新的 Azure Cache for Redis 实例禁用了非 TLS 端口。 请确保安全的默认设置不会更改，除非 Redis 客户端依赖 TLS 支持。 |
 
 请注意，Redis 旨在由受信任环境中的受信任客户端访问。 这意味着，我们通常不建议将 Redis 实例直接在 Internet 中公开，一般情况下，在不受信任的客户端可以直接访问 Redis TCP 端口或 UNIX 套接字的环境中，也不建议公开 Redis 实例。 
@@ -407,5 +407,5 @@ public class ValuesController : ApiController
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [选择通信协议](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
+| **参考**              | [选择通信协议](../../iot-hub/iot-hub-devguide.md) |
 | **步骤** | 使用 SSL/TLS 保护 HTTP/AMQP 或 MQTT 协议。 |

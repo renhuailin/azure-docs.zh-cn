@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc691148723e610f0885f7c20fd8684f11a81dc0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182320"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659091"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
 
@@ -66,9 +66,9 @@ ms.locfileid: "89182320"
 ## <a name="integrating-applications-with-azure-ad"></a>将应用程序与 Azure AD 集成
 以下文章介绍了将应用程序与 Azure AD 集成的不同方法，并提供了一些指导。
 
-* [确定要使用的 Active Directory](../fundamentals/active-directory-administer.md)
+* [确定要使用的 Active Directory](../fundamentals/active-directory-whatis.md)
 * [使用 Azure 应用程序库中的应用程序](what-is-single-sign-on.md)
-* [集成 SaaS 应用程序教程列表](../active-directory-saas-tutorial-list.md)
+* [集成 SaaS 应用程序教程列表](../saas-apps/tutorial-list.md)
 
 ### <a name="authentication-types"></a>身份验证类型
 每个应用程序可能有不同的身份验证要求。 借助 Azure AD，可对使用 SAML 2.0、WS 联合身份验证或 OpenID Connect 协议以及密码单一登录的应用程序使用签名证书。 有关可用于 Azure AD 的应用程序身份验证类型的详细信息，请参阅[在 Azure Active Directory 中管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)和[基于密码的单一登录](what-is-single-sign-on.md)。
@@ -77,7 +77,7 @@ ms.locfileid: "89182320"
 使用 Microsoft Azure AD 应用程序代理，可以从任何位置和任何设备安全访问专用网络中的应用程序。 在环境中安装应用程序代理连接器后，可以使用 Azure AD 轻松配置该连接器。
 
 ### <a name="integrating-custom-applications"></a>集成自定义应用程序
-如果正在编写新应用程序，并希望帮助开发人员利用 Azure AD 的强大功能，请参阅 [指导开发人员](../active-directory-applications-guiding-developers-for-lob-applications.md)。
+如果正在编写新应用程序，并希望帮助开发人员利用 Azure AD 的强大功能，请参阅 [指导开发人员](./developer-guidance-for-integrating-applications.md)。
 
 如果想要将自定义应用程序添加到 Azure 应用程序库，请参阅[使用 Azure AD 自助 SAML 配置加入自己的应用](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
 
@@ -86,12 +86,12 @@ ms.locfileid: "89182320"
 
 * [使用 Azure AD 管理对应用的访问](what-is-access-management.md)
 * [使用 Azure AD 连接器自动化](../app-provisioning/user-provisioning.md)
-* [将用户分配到应用程序](../active-directory-applications-guiding-developers-assigning-users.md)
-* [将组分配到应用程序](../active-directory-applications-guiding-developers-assigning-groups.md)
-* [共享帐户](../active-directory-sharing-accounts.md)
+* [将用户分配到应用程序](./assign-user-or-group-access-portal.md)
+* [将组分配到应用程序](./assign-user-or-group-access-portal.md)
+* [共享帐户](../enterprise-users/users-sharing-accounts.md)
 
 ## <a name="next-steps"></a>后续步骤
-若要了解详细信息，可以从 [GitHub](https://aka.ms/deploymentplans) 下载 Azure Active Directory 部署计划。 对于库应用程序，你可以通过 [Azure 门户](https://portal.azure.com)下载单一登录、条件性访问和用户预配的部署计划。 
+若要了解详细信息，可以从 [GitHub](../fundamentals/active-directory-deployment-plans.md) 下载 Azure Active Directory 部署计划。 对于库应用程序，你可以通过 [Azure 门户](https://portal.azure.com)下载单一登录、条件性访问和用户预配的部署计划。 
 
 若要从 Azure 门户下载部署计划，请执行以下操作：
 

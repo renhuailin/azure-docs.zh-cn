@@ -4,13 +4,13 @@ description: 测试 QnA Maker 知识库是迭代过程的重要部分，可以�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 05ae359182ac3d9c3f4cc17d7675a3f2fefa0bff
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.date: 11/09/2020
+ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776827"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353147"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中测试您的知识库
 
@@ -18,40 +18,42 @@ ms.locfileid: "91776827"
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>在 QnA Maker 门户中以交互方式测试
 
-1. 通过在“我的知识库”**** 页上选择知识库名称来访问知识库。
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
+1. 通过在“我的知识库”页上选择知识库名称来访问知识库。
 1. 若要访问测试滑出面板，请在应用程序的顶部面板中选择 " **测试** "。
 1. 在文本框中输入查询，然后选择 Enter。
 1. 知识库中最匹配的答案将作为响应返回。
 
 ### <a name="clear-test-panel"></a>清除测试面板
 
-若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始”****。
+若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始”。
 
 ### <a name="close-test-panel"></a>关闭测试面板
 
-若要关闭“测试”面板，请再次选择“测试”**** 按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
+若要关闭“测试”面板，请再次选择“测试”按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
 
 ### <a name="inspect-score"></a>检查分数
 
 在“检查”面板中检查测试结果的详细信息。
 
-1.  打开“测试”滑出面板后，选择“检查”**** 以获取有关该响应的更多详细信息。
+1.  打开“测试”滑出面板后，选择“检查”以获取有关该响应的更多详细信息。
 
-    ![检查响应](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![检查响应](../media/qnamaker-how-to-test-knowledge-bases/inspect.png)
 
 2.  此时将显示“检查”面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
 
 ### <a name="correct-the-top-scoring-answer"></a>更正评分最高的答案
 
-如果评分最高的答案不正确，请从列表中选择正确答案，然后选择“保存并训练”****。
+如果评分最高的答案不正确，请从列表中选择正确答案，然后选择“保存并训练”。
 
-![更正评分最高的答案](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![更正评分最高的答案](../media/qnamaker-how-to-test-knowledge-bases/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>添加替代问题
 
-可以将问题的替代形式添加到给定答案中。 在文本框中键入备用答案，然后单击 Enter 以添加它们。 选择“保存并训练”**** 以存储更新。
+可以将问题的替代形式添加到给定答案中。 在文本框中键入备用答案，然后选择 enter 以添加。 选择“保存并训练”以存储更新。
 
-![添加替代问题](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![添加替代问题](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>添加新答案
 
@@ -59,16 +61,67 @@ ms.locfileid: "91776827"
 
 在 "答案" 列表的底部，使用文本框输入新答案并按 enter 添加新答案。
 
-选择“保存并训练”**** 保存此答案。 现在，新的问答对已添加到知识库中。
+选择“保存并训练”保存此答案。 现在，新的问答对已添加到知识库中。
 
 > [!NOTE]
-> 只有在按下“保存并训练”**** 按钮时，才会保存对知识库的所有编辑。
+> 只有在按下“保存并训练”按钮时，才会保存对知识库的所有编辑。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+
+1. 通过在“我的知识库”页上选择知识库名称来访问知识库。
+1. 若要访问测试滑出面板，请在应用程序的顶部面板中选择 " **测试** "。 
+1. 你将在顶部 **显示简短答案** 上看到一个复选框，默认情况下已选中此复选框。 此选项用于在测试面板中启用基于 MRC 的应答范围检测。 
+1. 在文本框中输入查询，然后选择 Enter。 
+1. 对于每个查询，如果答案段中有精确的答案/short 答案，并提供最佳匹配答案段（在知识库中），则还会为查询提供一个简短的答案。
+    ![托管的已启用的测试窗格](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
+1. 如果取消选择 " **显示简短答案**"，则只会返回从知识库中获得最佳匹配的答案。
+
+### <a name="clear-test-panel"></a>清除测试面板
+
+若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始”。
+
+### <a name="close-test-panel"></a>关闭测试面板
+
+若要关闭“测试”面板，请再次选择“测试”按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
+
+### <a name="inspect-score"></a>检查分数
+
+在“检查”面板中检查测试结果的详细信息。
+
+1.  打开“测试”滑出面板后，选择“检查”以获取有关该响应的更多详细信息。
+
+    ![检查响应预览](../media/qnamaker-how-to-test-knowledge-bases/inspect-with-managed.png)
+
+2.  此时将显示“检查”面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
+3. 该面板显示答案段的置信度，以及检测到的应答范围分数。
+
+### <a name="correct-the-top-scoring-answer"></a>更正评分最高的答案
+
+如果评分最高的答案不正确，请从列表中选择正确答案，然后选择“保存并训练”。
+
+![更正顶部评分答案预览](../media/qnamaker-how-to-test-knowledge-bases/choose-answer-managed.png)
+
+### <a name="add-alternate-questions"></a>添加替代问题
+
+可以将问题的替代形式添加到给定答案中。 在文本框中键入备用答案，然后选择 enter 以添加。 选择“保存并训练”以存储更新。
+
+![添加替代问题预览](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question-with-managed.png)
+
+### <a name="add-a-new-answer"></a>添加新答案
+
+如果匹配的任何现有答案不正确或知识库中不存在答案（在知识库中找不到良好匹配），则可以添加新答案。
+
+在 "答案" 列表的底部，使用文本框输入新答案并按 enter 添加新答案。
+
+选择“保存并训练”保存此答案。 现在，新的问答对已添加到知识库中。
+
+---
 
 ### <a name="test-the-published-knowledge-base"></a>测试已发布的知识库
 
 您可以在 "测试" 窗格中测试知识库的已发布版本。 发布知识库后，选择 " **已发布的 kb** " 框，并发送一个查询以从发布的 kb 获取结果。
 
-![针对发布的 KB 进行测试](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![针对发布的 KB 进行测试](../media/qnamaker-how-to-test-knowledge-bases/test-against-published-knowledge-base.png)
 
 ## <a name="batch-test-with-tool"></a>带有工具的批处理测试
 
@@ -98,7 +151,7 @@ ms.locfileid: "91776827"
     * 语言 - 英语
 1. 输入名称 `Multi-turn batch test quickstart` 作为知识库的名称。
 
-1. 在**步骤 4** 中，按照下表配置设置：
+1. 在 **步骤 4** 中，按照下表配置设置：
 
     |设置|值|
     |--|--|
@@ -130,11 +183,11 @@ ms.locfileid: "91776827"
 |--|--|--|
 |知识库 ID|在“发布”页上找到的知识库 ID。 通过在单个文件中使用不同的知识库 ID，对单个文件中同一服务的多个知识库同时进行测试。|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`（在 `POST` 中显示的 36 个字符的字符串） |
 |问题|用户会输入的问题文本。 最多 1,000 个字符。|`How do I sign out?`|
-|元数据标记|可选|`topic:power` 使用“键:值”格式|
+|元数据标记|可选|`topic:power` 使用 `key:value` 格式|
 |Top 参数|可选|`25`|
 |预期的答案 ID|可选|`13`|
 
-对于此知识库，请只将 2 个必需列的 3 行添加到文件。 第一个列是知识库 ID，第二个列应该是以下问题列表：
+对于此知识库，只需将这两个行添加到文件中。 第一个列是知识库 ID，第二个列应该是以下问题列表：
 
 |第 2 列 - 问题|
 |--|
@@ -144,7 +197,7 @@ ms.locfileid: "91776827"
 
 这些问题是知识库中原封不动的措辞，应该返回 100 作为置信度分数。
 
-接下来，请使用同一知识库 ID 添加一些与这些问题类似的问题（但并不是与随后的 3 行问题完全相同）：
+接下来，使用同一个知识库 ID，添加几个问题，这些问题与这些问题相似，但并不完全相同。
 
 |第 2 列 - 问题|
 |--|
@@ -176,7 +229,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 为了安全起见，已将知识库 ID 替换为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。 进行你自己的批量测试时，此列会显示你的知识库 ID。
 
-第 4 列中置信度分数的测试输出显示，头 3 个问题按预期返回了分数 100，因为每个问题与其在知识库中显示的完全相同。 最后 3 个问题包含新的有关问题的措辞，不返回 100 作为置信度分数。 若要提高测试和用户的分数，需向知识库添加更多备用问题。
+在第四列中，置信度分数的测试输出显示最前面的三个问题，返回的分数为100，因为每个问题与知识库中显示的内容完全相同。 最后三个问题（包括问题的新用语）不会将100作为置信度分数返回。 若要提高测试和用户的分数，需向知识库添加更多备用问题。
 
 ### <a name="testing-with-the-optional-fields"></a>使用可选字段进行测试
 
@@ -192,7 +245,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 |列号|可选列|数据位置|
 |--|--|--|
-|3|metadata|针对现有的键:值对导出现有的知识库。|
+|3|metadata|导出现有的现有知识库 `key:value` 。|
 |4|top|建议使用默认值 `25`。|
 |5|问答集 ID|针对 ID 值导出现有的知识库。 另请注意，ID 已在输出文件中返回。|
 
@@ -225,7 +278,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 以下过程假设方案是处理聊天日志
 
-1. 创建新的批量测试文件，使之包括可选数据 `batch-test-data-2.tsv`。 添加来自原始批量测试输入文件中的 6 行，然后为每行添加元数据、top 值和 QnA 对 ID。
+1. 创建新的批量测试文件，使之包括可选数据 `batch-test-data-2.tsv`。 从原始批处理测试输入文件中添加六行，然后为每行添加元数据、top 和 QnA 对 ID。
 
     若要模拟按照知识库检查聊天日志中的新文本这一自动化过程，请将每个列的元数据设置为同一值：`topic:power`。
 
@@ -241,7 +294,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 此测试输出文件可以作为自动持续测试管道的一部分进行分析。
 
-此特定测试输出应这样解读：每一行都使用元数据进行了筛选，由于每一行都与知识库中的元数据不匹配，因此会返回这些不匹配行的默认答案（“no good match found in kb”）。 那些匹配的行则返回 QnA ID 和分数。
+此特定测试输出应这样解读：每一行都使用元数据进行了筛选，由于每一行都与知识库中的元数据不匹配，因此会返回这些不匹配行的默认答案（“no good match found in kb”）。 对于那些匹配的行，将返回 QnA ID 和评分。
 
 所有行都返回了标签“incorrect”，因为没有任何行与预期的答案 ID 匹配。
 
@@ -270,4 +323,4 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [发布知识库](./publish-knowledge-base.md)
+> [发布知识库](../quickstarts/create-publish-knowledge-base.md)

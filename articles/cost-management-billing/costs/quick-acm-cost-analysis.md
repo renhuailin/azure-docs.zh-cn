@@ -3,18 +3,18 @@ title: 快速入门 - 通过成本分析了解 Azure 成本
 description: 本快速入门可帮助你通过成本分析了解和分析 Azure 组织成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: seodec18
-ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 1926a5a2ee81b6be4abee5e4064a4a23354da1a1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297855"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033572"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -32,7 +32,7 @@ ms.locfileid: "91297855"
 
 成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。
 
-若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../../cost-management/assign-access-acm-data.md)。
+若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](./assign-access-acm-data.md)。
 
 如果你有新订阅，则无法立即使用成本管理功能。 最多可能需要 48 小时才能使用所有成本管理功能。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91297855"
 
 ## <a name="review-costs-in-cost-analysis"></a>通过成本分析查看成本
 
-若要通过成本分析查看成本，请在 Azure 门户打开范围并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 使用“范围”框可在成本分析中切换到不同的范围。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+若要通过成本分析查看成本，请在 Azure 门户打开范围并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 使用“范围”框可在成本分析中切换到不同的范围。
 
 所选的范围将用于整个成本管理，以提供数据整合和控制对成本信息的访问。 使用范围时，不要多选它们。 而应先选择一个汇总了其他范围的较大范围，然后筛选出所需的嵌套范围。 了解此方法很重要，因为某些用户可能无法访问单个涵盖多个嵌套范围的父范围。
 
@@ -52,7 +52,7 @@ ms.locfileid: "91297855"
 
 初始成本分析视图包括以下方面。
 
-**累计成本视图**：表示预定义的成本分析视图配置。 每个视图包含日期范围、粒度、分组依据和筛选器设置。 默认视图显示当前计费周期的聚合成本，但可以更改为其他内置视图。 有关详细信息，请参阅[自定义成本视图](#customize-cost-views)。
+**累计成本视图**：表示预定义的成本分析视图配置。 每个视图包含日期范围、粒度、分组依据和筛选器设置。 默认视图显示当前计费周期的聚合成本，但可以更改为其他内置视图。
 
 **实际成本**：显示当前月份的总使用量和购买成本。这些购买成本是应记成本，会显示在账单上。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91297855"
 
 **预算**：显示所选范围的计划支出限额（如可用）。
 
-**累计粒度**：显示从计费周期开始算起的累计每日成本总额。 为计费帐户或订阅[创建预算](tutorial-acm-create-budgets.md)后，可快速查看对预算而言的支出趋势。 将鼠标悬停某个日期上以查看该天的累计成本。
+**累计粒度**：显示从计费周期开始算起的累计每日成本总额。 为计费帐户或订阅创建预算后，可快速查看对预算而言的支出趋势。 将鼠标悬停某个日期上以查看该天的累计成本。
 
 **透视图（圆环图）** ：提供动态透视，按一组常见标准属性分解总成本。 它们显示当前月成本（从最大到最小排列）。 通过选择不同的透视，可以随时更改透视图。 成本按服务（计量类别）、位置（区域）和子范围（默认）分类。 例如，注册帐户在计费帐户之下，资源组在订阅之下，资源在资源组之下。
 
@@ -82,12 +82,13 @@ ms.locfileid: "91297855"
 每日成本 | 过去 30 天的每日成本是否有增加？
 按服务划分的成本 | 过去 3 张发票的每月使用情况是否有变化？
 按资源划分的成本 | 从这个月目前的情况来看，哪些资源的成本最高？
+发票详细信息 | 我的上一张发票上有哪些费用？
 
 ![视图选择器，显示本月的示例选择](./media/quick-acm-cost-analysis/view-selector.png)
 
 但是，在很多情况下需要更深入的分析。 在页面顶部通过数据选择进行自定义。
 
-默认情况下，成本分析显示当前月份的数据。 使用日期选择器，快速切换到常用的日期范围。 例如：过去七天、上个月、本年度或自定义日期范围。 即用即付订阅还包括基于计费周期的日期范围，该周期并未与日历月绑定，例如当前的计费周期或上一张发票。 使用菜单顶部的 **<上一周期** 和 **下一周期>** 链接分别跳至上一周期或下一周期。 例如，“<上一周期”会从“过去七天”切换到“8-14 天之前”，或切换到“15-21 天之前”   。
+默认情况下，成本分析显示当前月份的数据。 使用日期选择器，快速切换到常用的日期范围。 例如：过去七天、上个月、本年度或自定义日期范围。 即用即付订阅还包括基于计费周期的日期范围，该周期并未与日历月绑定，例如当前的计费周期或上一张发票。 使用菜单顶部的 **<上一周期** 和 **下一周期>** 链接分别跳至上一周期或下一周期。 例如，“<上一周期”会从“过去七天”切换到“8-14 天之前”，或切换到“15-21 天之前”   。 选择自定义日期范围时，请记住，最多可选择一整年（例如 1 月 1 日 - 12 月 31 日）。
 
 ![显示本月示例选择的日期选择器](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -108,9 +109,9 @@ ms.locfileid: "91297855"
 
 通常情况下，有望在 8 到 12 小时内看到所用资源的数据或者通知。
 
-“分组依据”通用属性，用于细分成本并确定排名靠前的贡献因素。 例如，若要按资源标记分组，请选择要按其分组的标记键。 成本按每个标记值进行细分，并且有一个额外的段，用于未应用该标记的资源。  有关分组和筛选选项的详细信息，请参阅[分组和筛选选项](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter)。
+“分组依据”通用属性，用于细分成本并确定排名靠前的贡献因素。 例如，若要按资源标记分组，请选择要按其分组的标记键。 成本按每个标记值进行细分，并且有一个额外的段，用于未应用该标记的资源。
 
-大部分[Azure 资源都支持标记](../../azure-resource-manager/management/tag-support.md)。 但某些标记在“成本管理”和“计费”中不可用。 此外，不支持资源组标记。 对标记的支持适用于在将标记应用于资源后报告的使用情况。 标记不会逆向应用于成本汇总。
+大部分Azure 资源都支持标记。 但某些标记在“成本管理”和“计费”中不可用。 此外，不支持资源组标记。 对标记的支持适用于在将标记应用于资源后报告的使用情况。 标记不会逆向应用于成本汇总。
 
 观看 [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw)（如何通过 Azure 成本管理查看标记策略）视频，了解如何使用 Azure 标记策略来改进成本数据可见性。
 
@@ -130,9 +131,9 @@ ms.locfileid: "91297855"
 
 ![显示资源组名称的当前视图的完整数据](./media/quick-acm-cost-analysis/full-data-set.png)
 
-当按特定的属性对成本进行分组时，将按从最高到最低的顺序显示排名前 10 的成本贡献因素。 如果成本贡献因素超过 10 个，则会显示排名前九的成本贡献因素和一个“其他”组，该组表示合并的所有剩余组。 按标记分组时，将显示“无标记”组，用于表示未应用标记键的成本。 **非标记**总是位于最后，即使非标记成本高于标记成本。 如果存在 10 个或更多个标记值，则非标记成本将会列在“其他”中。 切换到表视图并将粒度更改为“无”，以查看成本从最高到最低排名的所有值。
+当按特定的属性对成本进行分组时，将按从最高到最低的顺序显示排名前 10 的成本贡献因素。 如果成本贡献因素超过 10 个，则会显示排名前九的成本贡献因素和一个“其他”组，该组表示合并的所有剩余组。 按标记分组时，将显示“无标记”组，用于表示未应用标记键的成本。 **非标记** 总是位于最后，即使非标记成本高于标记成本。 如果存在 10 个或更多个标记值，则非标记成本将会列在“其他”中。 切换到表视图并将粒度更改为“无”，以查看成本从最高到最低排名的所有值。
 
-经典虚拟机、网络和存储资源不共享详细的计费数据。 当对成本进行分组时，它们合并为**经典服务**。
+经典虚拟机、网络和存储资源不共享详细的计费数据。 当对成本进行分组时，它们合并为 **经典服务**。
 
 主图下的透视图显示了不同的分组，让你在更大范围内了解所选时段和筛选器对应的总体成本。 选择一个属性或标记即可按任意维度查看聚合的成本。
 
@@ -154,13 +155,60 @@ ms.locfileid: "91297855"
 
 若要共享成本分析链接，请选择边栏选项卡顶部的“共享”。 随即会显示一个自定义 URL，单击此 URL 会打开针对此特定范围的特定视图。 如果你没有成本访问权限也没有获取此 URL，你将看到“拒绝访问”消息。
 
-若要详细了解如何针对每个受支持的范围授予成本访问权限，请参阅[了解并使用范围](understand-work-scopes.md)。
-
 ## <a name="download-usage-data"></a>下载使用情况数据
+
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 有时候，需要下载数据进行进一步的分析、将其与你自己的数据合并，或者将其集成到你自己的系统中。 成本管理提供一些不同选项。 如果需要临时高级摘要（例如成本分析中的内容），请首先生成所需的视图。 然后通过依次选择“导出”和“将数据下载到 CSV”或“将数据下载到 Excel”进行下载  。 Excel 下载提供用于生成下载的视图的其他上下文，例如范围、查询配置、总计以及生成日期。
 
 如果需要完整的非聚合数据集，请从计费帐户下载。 然后从门户左侧导航窗格中的服务列表中转到“成本管理 + 计费”。 如果适用，请选择你的计费帐户。 转到“使用情况 + 费用”，然后选择所需计费周期的“下载”图标 。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+首先为 Azure CLI 准备环境：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+登录后，请使用 [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) 命令来查询订阅本月至今的使用情况信息：
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+还可以使用 --dataset-filter 参数或其他参数来缩小查询范围：
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
+   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+```
+
+--dataset-filter 参数采用 JSON 字符串或 `@json-file`。
+
+还可以选择使用 [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) 命令将使用情况数据导出到 Azure 存储帐户。 可从此处下载数据。
+
+1. 创建一个资源组或使用现有资源组。 若要创建资源组，请运行 [az group create](/cli/azure/group#az_group_create) 命令：
+
+   ```azurecli
+   az group create --name TreyNetwork --location "East US"
+   ```
+
+1. 可以创建一个存储帐户或使用现有存储账户来接收导出。 若要创建帐户，请使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令：
+
+   ```azurecli
+   az storage account create --resource-group TreyNetwork --name cmdemo
+   ```
+
+1. 运行 [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) 命令以创建导出：
+
+   ```azurecli
+   az costmanagement export create --name DemoExport --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
+   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
+   ```
+
+---
 
 ## <a name="clean-up-resources"></a>清理资源
 

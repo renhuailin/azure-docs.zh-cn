@@ -16,12 +16,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bf9670ae8fd22342a05f8d506f743c7a5c395e5f
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088130"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313892"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>使用 Azure 通知中心发送跨平台通知
 
@@ -118,5 +118,5 @@ ms.locfileid: "90088130"
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: https://go.microsoft.com/fwlink/p/?LinkId=314257
 [使用 Azure 通知中心向特定用户发送通知]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Templates]: https://go.microsoft.com/fwlink/p/?LinkId=317339
+[Templates]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hub How to for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

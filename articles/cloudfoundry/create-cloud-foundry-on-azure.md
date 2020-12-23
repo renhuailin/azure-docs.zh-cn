@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161776"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040802"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>在 Azure 上创建 Pivotal Cloud Foundry 群集
 
@@ -36,13 +36,13 @@ ms.locfileid: "73161776"
 ssh-keygen -t rsa -b 2048
 ```
 
-有关详细信息，请参阅[在 Azure 上将 SSH 密钥与 Windows 配合使用](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)。
+有关详细信息，请参阅[在 Azure 上将 SSH 密钥与 Windows 配合使用](../virtual-machines/linux/ssh-from-windows.md)。
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
 > [!NOTE]
 >
-> 若要创建服务主体，需要所有者帐户权限。 还可以编写一个脚本来自动创建服务主体。 例如，可以使用 Azure CLI 的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest)。
+> 若要创建服务主体，需要所有者帐户权限。 还可以编写一个脚本来自动创建服务主体。 例如，可以使用 Azure CLI 的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest)。
 
 1. 登录 Azure 帐户。
 
@@ -50,17 +50,17 @@ ssh-keygen -t rsa -b 2048
 
     ![Azure CLI 登录](media/deploy/az-login-output.png )
  
-    复制“id”值（用作**订阅 ID**）和“tenantId”值供以后使用。
+    复制“id”值（用作 **订阅 ID** ）和“tenantId”值供以后使用。
 
 2. 设置此配置的默认订阅。
 
     `az account set -s {id}`
 
-3. 创建适用于 PCF 的 Azure Active Directory 应用程序。 指定唯一的字母数字密码。 将密码存储为 **clientSecret**，供以后使用。
+3. 创建适用于 PCF 的 Azure Active Directory 应用程序。 指定唯一的字母数字密码。 将密码存储为 **clientSecret** ，供以后使用。
 
     `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
 
-    复制输出中的“appId”值（用作 **ClientID**），供以后使用。
+    复制输出中的“appId”值（用作 **ClientID** ），供以后使用。
 
     > [!NOTE]
     >
@@ -84,7 +84,7 @@ ssh-keygen -t rsa -b 2048
 
     `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. 使用以下格式创建 .json 文件。 使用此前复制的**订阅 ID**、**tenantID**、**clientID** 和 **clientSecret** 的值。 保存文件。
+7. 使用以下格式创建 .json 文件。 使用此前复制的 **订阅 ID** 、 **tenantID** 、 **clientID** 和 **clientSecret** 的值。 保存文件。
 
     ```json
     {
@@ -128,4 +128,3 @@ ssh-keygen -t rsa -b 2048
 5. PCF Ops Manager 会显示已部署的 Azure 实例。 现在可在此处部署并管理应用程序。
                
     ![在 Pivotal 中部署的 Azure 实例](media/deploy/ops-mgr.png )
- 

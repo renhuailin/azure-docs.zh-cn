@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure 资源管理器模板（ARM 模板）创建 ExpressRoute 线路
-description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建 ExpressRoute 线路。
+title: 快速入门：使用 Azure 资源管理器模板（ARM 模板）创建 ExpressRoute 线路
+description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建 ExpressRoute 线路。
 services: expressroute
 author: duongau
 mnager: kumud
 ms.service: expressroute
 ms.topic: quickstart
-ms.custom: subject-armsq
-ms.date: 08/31/2020
+ms.custom: subject-armqs
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016548"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789720"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>快速入门：使用 ARM 模板创建具有专用对等互连的 ExpressRoute 线路
 
@@ -36,14 +36,14 @@ ms.locfileid: "90016548"
 
 在本快速入门中，你将创建一个以 Equinix 为服务提供商的 ExpressRoute 线路。 该线路将使用高级 SKU，其带宽为 50 Mbps，对等互连位置为华盛顿特区  。 将使用主要子网 192.168.10.16/30 和辅助子网 192.168.10.20/30 来启用专用对等互连 。 还将创建虚拟网络以及 HighPerformance ExpressRoute 网关。
 
-:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json" range="001-351" highlight="183-219":::
+:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
 该模板中已定义了多个 Azure 资源：
 
 * [**Microsoft.Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
 * [**Microsoft.Network/expressRouteCircuits/peerings**](/azure/templates/microsoft.network/expressRouteCircuits/peerings)（用于线路上已启用的专用对等互连）
 * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups)（网络安全组应用于虚拟网络中的子网）
-* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks) 
+* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicIPAddresses)（公共 IP 由 ExpressRoute 网关使用）
 * [**Microsoft.Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways)（ExpressRoute 网关用于将 VNet 链接到线路）
 
@@ -51,7 +51,7 @@ ms.locfileid: "90016548"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 从以下代码块中选择“试用”，以打开 Azure Cloud Shell，然后按照相关说明登录到 Azure。 
+1. 从以下代码块中选择“试用”，以打开 Azure Cloud Shell，然后按照相关说明登录到 Azure。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -92,11 +92,11 @@ ms.locfileid: "90016548"
 
 1. 资源组应包含以下资源：
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute 部署资源组":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute 资源管理器模板 PowerShell 部署输出":::
 
 1. 选择 ExpressRoute 线路 er-ck01 来验证线路状态是否为“已启用”，提供程序状态是否为“未预配”，专用对等互连的状态是否为“已预配”   。
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute 部署线路":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute 资源管理器模板 PowerShell 部署输出":::
 
 > [!NOTE]
 > 你将需要调用提供程序来完成预配过程，然后才能将虚拟网络链接到线路。
@@ -114,17 +114,14 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，我们创建了：
+
 * ExpressRoute 线路
 * 虚拟网络
 * VPN 网关
 * 公共 IP
 * 网络安全组
 
-若要详细了解如何将虚拟网络链接到线路，请继续学习 ExpressRoute 教程。
+若要了解如何将虚拟网络链接到线路，请继续学习 ExpressRoute 教程。
 
 > [!div class="nextstepaction"]
 > [ExpressRoute 教程](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-* 有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](expressroute-workflows.md)。
-* 有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
-* 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../virtual-network/virtual-networks-overview.md)。

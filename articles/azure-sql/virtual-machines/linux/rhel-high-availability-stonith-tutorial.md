@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e7ccacce732da4a0194af959abe94438451028a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086789"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559042"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,9 +37,9 @@ ms.locfileid: "87086789"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果你希望在本地安装并使用 CLI，则本文需要 Azure CLI 版本 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 版本 2.0.30 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -242,7 +242,7 @@ az vm availability-set create \
     done
     ```
 
-上述命令将创建 VM，并为这些 VM 创建默认的 VNet。 有关不同配置的详细信息，请参阅 [az vm create](https://docs.microsoft.com/cli/azure/vm) 一文。
+上述命令将创建 VM，并为这些 VM 创建默认的 VNet。 有关不同配置的详细信息，请参阅 [az vm create](/cli/azure/vm) 一文。
 
 针对每个 VM 完成该命令后，应会获得如下所示的结果：
 
@@ -263,7 +263,7 @@ az vm availability-set create \
 > [!IMPORTANT]
 > 默认情况下，使用上述命令创建的默认映像会创建 32GB OS 磁盘。 使用此默认安装时，有可能会耗尽空间。 例如，可将以下参数添加到上述 `az vm create` 命令，以创建具有 128GB 空间的 OS 磁盘：`--os-disk-size-gb 128`。
 >
-> 然后，如果需要扩展相应的文件夹卷来容纳安装，可以[配置逻辑卷管理器 (LVM)](../../../virtual-machines/linux/configure-lvm.md)。
+> 然后，如果需要扩展相应的文件夹卷来容纳安装，可以[配置逻辑卷管理器 (LVM)](/previous-versions/azure/virtual-machines/linux/configure-lvm)。
 
 ### <a name="test-connection-to-the-created-vms"></a>测试与创建的 VM 的连接
 
@@ -324,7 +324,7 @@ ssh <username>@publicipaddress
     sudo vi /etc/hosts
     ```
 
-    在 **vi** 编辑器中，输入 `i` 以插入文本，并在空白行中添加相应 VM 的**专用 IP**。 然后，在 IP 旁边的空格后面添加 VM 名称。 每行只能包含一个单独的条目。
+    在 **vi** 编辑器中，输入 `i` 以插入文本，并在空白行中添加相应 VM 的 **专用 IP**。 然后，在 IP 旁边的空格后面添加 VM 名称。 每行只能包含一个单独的条目。
 
     ```output
     <IP1> <VM1>
@@ -333,7 +333,7 @@ ssh <username>@publicipaddress
     ```
 
     > [!IMPORTANT]
-    > 建议使用上述**专用 IP** 地址。 在此配置中使用公共 IP 地址会导致安装失败，并且我们不建议向外部网络公开 VM。
+    > 建议使用上述 **专用 IP** 地址。 在此配置中使用公共 IP 地址会导致安装失败，并且我们不建议向外部网络公开 VM。
 
     若要退出 **vi** 编辑器，请先按 **Esc** 键，然后输入命令 `:wq` 以写入文件并退出。
 
@@ -486,9 +486,9 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  
  1. 转到 https://portal.azure.com
  2. 打开[“Azure Active Directory”边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)。 转到“属性”并记下目录 ID。 此 ID 为 `tenant ID`
- 3. 单击[ **“应用注册”** ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。
+ 3. 单击 [ **“应用注册”**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。
  4. 单击“新建注册”。
- 5. 输入一个**名称**（例如 `<resourceGroupName>-app`），选择“仅限此组织目录中的帐户”
+ 5. 输入一个 **名称**（例如 `<resourceGroupName>-app`），选择“仅限此组织目录中的帐户”
  6. 选择“Web”作为应用程序类型，输入登录 URL（例如 http://localhost) ，然后单击“添加”。 不使用登录 URL，它可以是任何有效的 URL。 完成后，单击“注册”
  7. 为新应用注册选择“证书和机密”，然后单击“新建客户端密码”
  8. 输入新密钥（客户端机密）的说明，选择“永不过期”，然后单击“添加”
@@ -699,7 +699,7 @@ sudo systemctl restart mssql-server
 
 目前不支持对 AG 终结点进行 AD 身份验证。 因此，必须使用证书来加密 AG 终结点。
 
-1. 使用 SQL Server Management Studio (SSMS) 或 SQL CMD 连接到**所有节点**。 运行以下命令，以启用 AlwaysOn_health 会话并创建主密钥：
+1. 使用 SQL Server Management Studio (SSMS) 或 SQL CMD 连接到 **所有节点**。 运行以下命令，以启用 AlwaysOn_health 会话并创建主密钥：
 
     > [!IMPORTANT]
     > 如果远程连接到 SQL Server 实例，则需要在防火墙中打开端口 1433。 此外，需要在每个 VM 的 NSG 中允许与端口 1433 建立入站连接。 有关创建入站安全规则的详细信息，请参阅[创建安全规则](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)。
@@ -908,7 +908,7 @@ GO
 
 1. 加入次要副本后，在 SSMS 对象资源管理器中展开“Always On 高可用性”节点即可看到这些副本：
 
-    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![屏幕截图显示了主可用性副本和辅助可用性副本。](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>将数据库添加到可用性组
 
@@ -1132,6 +1132,34 @@ Daemon Status:
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   你还可以指定一个附加选项，以便自动禁用为将资源移动到所需节点而创建的临时约束，并且不必执行下面的步骤 2 和 3。
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   自动执行下面的步骤 2 和 3 的另一个替代方法是将多个命令合并到一行中，以清除资源移动命令本身中的临时约束。 
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. 如果再次检查约束，将会看到由于手动故障转移而添加了另一个约束：
     
     **RHEL 7**

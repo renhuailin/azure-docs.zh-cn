@@ -5,14 +5,14 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 06/15/2020
-ms.custom: mvc, cli-validate, seodec18
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d9f08840165e7e4cf4d13e9a66cbb59489a2b3f7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2daf445c6721b4b6c3b2a57e7ef65f52eabd8a4c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974268"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347126"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP 和 MySQL 应用
 
@@ -46,11 +46,12 @@ ms.locfileid: "90974268"
 
 完成本教程：
 
-* [安装 Git](https://git-scm.com/)
-* [安装 PHP 5.6.4 或更高版本](https://php.net/downloads.php)
-* [安装 Composer](https://getcomposer.org/doc/00-intro.md)
-* 启用 Laravel 所需的以下 PHP 扩展：OpenSSL、PDO-MySQL、Mbstring、Tokenizer、XML
-* [安装并启动 MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
+- [安装 Git](https://git-scm.com/)
+- [安装 PHP 5.6.4 或更高版本](https://php.net/downloads.php)
+- [安装 Composer](https://getcomposer.org/doc/00-intro.md)
+- 启用 Laravel 所需的以下 PHP 扩展：OpenSSL、PDO-MySQL、Mbstring、Tokenizer、XML
+- [安装并启动 MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)] 
 
 ## <a name="prepare-local-mysql"></a>准备本地 MySQL
 
@@ -149,11 +150,9 @@ php artisan serve
 
 在终端键入 `Ctrl + C` 可停止 PHP。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="create-mysql-in-azure"></a>在 Azure 中创建 MySQL
 
-此步骤在 [Azure Database for MySQL](/azure/mysql) 中创建一个 MySQL 数据库。 稍后需要将 PHP 应用程序配置为连接到此数据库。
+此步骤在 [Azure Database for MySQL](../mysql/index.yml) 中创建一个 MySQL 数据库。 稍后需要将 PHP 应用程序配置为连接到此数据库。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -163,7 +162,7 @@ php artisan serve
 
 在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest&preserve-view=true#az-mysql-server-create) 命令在 Azure Database for MySQL 中创建一个服务器。
 
-在下列命令中，用唯一的服务器名称替换 \<mysql-server-name> 占位符，用用户名替换\<admin-user> 占位符，并用密码替换 \<admin-password> 占位符  。 此服务器名称用作 MySQL 终结点 (`https://<mysql-server-name>.mysql.database.azure.com`) 的一部分，因此需在 Azure 的所有服务器中保持唯一。 有关选择 MySQL DB SKU 的详细信息，请参阅[为 MySQL 服务器创建 Azure 数据库](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)。
+在下列命令中，用唯一的服务器名称替换 \<mysql-server-name> 占位符，用用户名替换\<admin-user> 占位符，并用密码替换 \<admin-password> 占位符  。 此服务器名称用作 MySQL 终结点 (`https://<mysql-server-name>.mysql.database.azure.com`) 的一部分，因此需在 Azure 的所有服务器中保持唯一。 有关选择 MySQL DB SKU 的详细信息，请参阅[为 MySQL 服务器创建 Azure 数据库](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server)。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -498,7 +497,7 @@ remote: Running deployment command...
 
 浏览到 `http://<app-name>.azurewebsites.net` 并在列表中添加一些任务。
 
-:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="标题为“任务列表”的 PHP 应用示例的屏幕截图。":::
+:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="标题为“任务列表”的 Azure 应用示例的屏幕截图，显示了添加的新任务。":::
 
 恭喜，你的数据驱动的 PHP 应用正在 Azure 应用服务中运行。
 
@@ -679,7 +678,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击**应用程序服务**，然后单击 Azure 应用的名称。
+在左侧菜单中单击 **应用程序服务**，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
 

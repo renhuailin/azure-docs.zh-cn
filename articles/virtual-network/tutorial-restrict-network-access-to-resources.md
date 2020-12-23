@@ -16,12 +16,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
-ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e6716d2ad4252169cfbbf611b0dadc5b077cd362
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74186374"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042566"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教程：使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -157,7 +157,7 @@ ms.locfileid: "74186374"
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
 1. 选择 Azure 门户左上角的“+ 创建资源”。
-2. 选择“存储”，然后选择“存储帐户 - blob、文件、表、队列”********。
+2. 选择“存储”，然后选择“存储帐户 - blob、文件、表、队列”。
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”：
 
     |设置|值|
@@ -195,13 +195,13 @@ ms.locfileid: "74186374"
     |虚拟网络|选择“虚拟网络”下的“myVirtualNetwork” |
     |子网| 选择“子网”下的“专用” |
 
-    ![防火墙和虚拟网络](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
+    ![屏幕截图显示了可在其中输入指定值的“添加网络”窗格。](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
 
 5. 选择“保存” 。
 6. 选中“防火墙和虚拟网络”框。
 7. 在存储帐户的“设置”下，选择“访问密钥”，如下图所示： 
 
-      ![防火墙和虚拟网络](./media/tutorial-restrict-network-access-to-resources/storage-access-key.png)
+      ![屏幕截图显示了从“设置”中选择的“访问密钥”，可在其中获取密钥。](./media/tutorial-restrict-network-access-to-resources/storage-access-key.png)
 
 8. 记下“密钥”值，因为在后续步骤中将文件共享映射到 VM 中的驱动器号时，需要手动输入该值。
 
@@ -212,7 +212,7 @@ ms.locfileid: "74186374"
 ### <a name="create-the-first-virtual-machine"></a>创建第一个虚拟机
 
 1. 选择 Azure 门户左上角的“+ 创建资源”。
-2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。********
+2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。
 3. 输入或选择以下信息，然后选择“确定”：
 
    |设置|值|
@@ -281,7 +281,7 @@ ms.locfileid: "74186374"
 
 1. 在门户顶部的“搜索资源、服务和文档”框中，输入 *myVmPublic*。
 2. 当“myVmPublic”出现在搜索结果中时，将其选中。
-3. 针对 *myVmPublic* VM 完成[确认对存储帐户的访问](#confirm-access-to-storage-account)中的步骤 1-6。
+3. 针对 *myVmPublic* VM 完成 [确认对存储帐户的访问](#confirm-access-to-storage-account)中的步骤 1-6。
 
    稍等片刻，你会收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。 “公共”子网没有为 Azure 存储启用服务终结点。 存储帐户仅允许从“专用”子网访问网络，而不允许从“公共”子网访问。
 

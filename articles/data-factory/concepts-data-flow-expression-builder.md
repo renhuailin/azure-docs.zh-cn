@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 10/30/2020
+ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531000"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145696"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>映射数据流中的生成表达式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在映射数据流中，许多转换属性都作为表达式输入。 这些表达式由列值、参数、函数、运算符和在运行时计算为 Spark 数据类型的文本组成。 映射数据流具有专门的体验，旨在帮助您构建这些称为 " **表达式生成器**" 的表达式。 使用用于突出显示、语法检查和完成的  [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) 代码完成功能，该表达式生成器旨在简化生成数据流。 本文介绍如何使用表达式生成器来有效地生成业务逻辑。
+在映射数据流中，许多转换属性都作为表达式输入。 这些表达式由列值、参数、函数、运算符和在运行时计算为 Spark 数据类型的文本组成。 映射数据流具有专门的体验，旨在帮助您构建这些称为 " **表达式生成器** " 的表达式。 使用用于突出显示、语法检查和完成的  [IntelliSense](/visualstudio/ide/using-intellisense) 代码完成功能，该表达式生成器旨在简化生成数据流。 本文介绍如何使用表达式生成器来有效地生成业务逻辑。
 
 ![表达式生成器](media/data-flow/expresion-builder.png "表达式生成器")
 
@@ -30,15 +30,15 @@ ms.locfileid: "90531000"
 
 在某些转换（例如 [筛选器](data-flow-filter.md)）中，单击蓝色表达式文本框将打开 "表达式生成器"。 
 
-![蓝色表达式框](media/data-flow/expressionbox.png "表达式生成器")
+![蓝色表达式框](media/data-flow/expressionbox.png "蓝色表达式框")
 
-引用匹配或分组依据条件中的列时，表达式可以从列中提取值。 若要创建表达式，请选择 " **计算列**"。
+引用匹配或分组依据条件中的列时，表达式可以从列中提取值。 若要创建表达式，请选择 " **计算列** "。
 
-![计算列选项](media/data-flow/computedcolumn.png "表达式生成器")
+![计算列选项](media/data-flow/computedcolumn.png "计算列选项")
 
 如果表达式或文本值为有效输入，请选择 " **添加动态内容** " 以生成一个计算结果为文本值的表达式。
 
-![添加动态内容选项](media/data-flow/add-dynamic-content.png "表达式生成器")
+![添加动态内容选项](media/data-flow/add-dynamic-content.png "添加动态内容选项")
 
 ## <a name="expression-elements"></a>Expression 元素
 
@@ -72,6 +72,16 @@ ms.locfileid: "90531000"
 ### <a name="parameters"></a>参数
 
 参数是在运行时从管道传递到数据流的值。 若要引用参数，请单击 " **表达式元素** " 视图中的参数，或在名称前面使用美元符号引用它。 例如，将引用一个名为 parameter1 的参数 `$parameter1` 。 若要了解详细信息，请参阅 [参数映射数据流](parameters-data-flow.md)。
+
+### <a name="cached-lookup"></a>缓存查找
+
+使用缓存的查找，可以对缓存接收器的输出执行内联查找。 每个接收器和都有两个可供使用的函数 `lookup()` `outputs()` 。 引用这些函数的语法为 `cacheSinkName#functionName()` 。 有关详细信息，请参阅 [缓存接收器](data-flow-sink.md#cache-sink)。
+
+`lookup()` 接受当前转换中的匹配列作为参数，并返回等于与缓存接收器中的键列匹配的行的复杂列。 返回的复杂列包含缓存接收器中映射的每个列的 subcolumn。 例如，如果有一个错误代码缓存接收器 `errorCodeCache` ，其中的键列与代码和名为的列相匹配 `Message` 。 调用 `errorCodeCache#lookup(errorCode).Message` 会返回与传入的代码相对应的消息。 
+
+`outputs()` 不采用任何参数，并将整个缓存接收器作为复杂列数组返回。 如果在接收器中指定键列，则不能调用此项，仅当缓存接收器中有少量行时才应使用此项。 常见的用例是追加递增键的最大值。 如果缓存的单个聚合行 `CacheMaxKey` 包含列 `MaxKey` ，则可以通过调用来引用第一个值 `CacheMaxKey#outputs()[1].MaxKey` 。
+
+![缓存查找](media/data-flow/cached-lookup-example.png "缓存查找")
 
 ### <a name="locals"></a>局部变量
 
@@ -128,7 +138,7 @@ regex_replace('100 and 200', `(\d+)`, 'digits')
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="keyboard-shortcuts"></a>键盘快捷键
+## <a name="keyboard-shortcuts"></a>键盘快捷方式
 
 下面列出了表达式生成器中可用的快捷方式。 创建表达式时，可以使用大多数 intellisense 快捷方式。
 

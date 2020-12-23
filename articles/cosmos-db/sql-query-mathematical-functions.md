@@ -3,18 +3,20 @@ title: Azure Cosmos DB 查询语言中的数学函数
 description: 了解 Azure Cosmos DB 中的数学函数，以便基于作为参数提供的输入值执行计算，并返回数值。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bd53feb175c5be77f559a4d2e724a55e41df48eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63d349c8cfff52932d51ce7143aba33521c43890
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562819"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549177"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学函数 (Azure Cosmos DB)  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 每个数学函数均执行一个计算，基于作为参数提供的输出值，并返回数值。
 
@@ -32,7 +34,7 @@ ms.locfileid: "85562819"
 
 ## <a name="functions"></a>函数
 
-以下受支持的内置数学函数通常基于输入参数执行计算，并返回数值表达式：
+以下支持的内置数学函数通常基于输入参数执行计算，并返回数值表达式：
  
 * [ABS](sql-query-abs.md)
 * [ACOS](sql-query-acos.md)
@@ -67,4 +69,4 @@ ms.locfileid: "85562819"
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 - [用户定义的函数](sql-query-udfs.md)
-- [聚合](sql-query-aggregates.md)
+- [聚合](sql-query-aggregate-functions.md)

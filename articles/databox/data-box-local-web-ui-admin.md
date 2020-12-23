@@ -6,58 +6,75 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e84f39fa5b9245d1874e60d651156e99c0885040
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449682"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678913"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
 
 本文介绍 Data Box 和 Data Box Heavy 设备上执行的一些配置和管理任务。 可以通过 Azure 门户 UI 和设备的本地 Web UI 管理 Data Box 和 Data Box Heavy 设备。 本文重点介绍使用本地 web UI 执行的任务。
 
-用于 Data Box 和 Data Box Heavy 的本地 web UI 用于设备的初始配置。 你还可以使用本地 web UI 关闭或重新启动设备、运行诊断测试、更新软件、查看复制日志，并为 Microsoft 支持部门生成日志包。 在具有两个独立节点的 Data Box Heavy 设备上，可以访问对应于每个设备节点的两个独立本地 Web UI。
-
-本文包括以下教程：
-
-- 生成支持包
-- 关闭或重启设备
-- 下载材料清单 (BOM) 或清单文件
-- 查看设备的可用容量
-- 跳过校验和验证
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
+用于 Data Box 和 Data Box Heavy 的本地 web UI 用于设备的初始配置。 你还可以使用本地 web UI 关闭或重新启动设备、运行诊断测试、更新软件、查看复制日志、从设备中擦除本地数据以及为 Microsoft 支持部门生成支持包。 在具有两个独立节点的 Data Box Heavy 设备上，可以访问对应于每个设备节点的两个独立本地 Web UI。
 
 ## <a name="generate-support-package"></a>生成支持包
 
-如果遇到任何设备问题，可通过系统日志创建支持包。 Microsoft 支持部门使用此包来解决此问题。 要生成支持包，请执行以下步骤：
+如果遇到任何设备问题，可通过系统日志创建支持包。 Microsoft 支持部门使用此包来解决此问题。
 
-1. 在本地 web UI 中，前往 " **联系支持** 人员"，然后选择 " **创建支持包**"。
+要生成支持包，请执行以下步骤：
+
+1. 在本地 web UI 中，前往 " **联系支持** 人员"。 还可以选择 " **包括内存转储**"。 然后选择 " **创建支持包**"。
+
+    内存转储是指在系统出现故障后保存的设备内存内容。
+
+    不应选择 " **包括内存转储** " 选项，除非支持人员请求一个选项。 需要很长时间来收集包含内存转储的支持包，并包含敏感数据。
 
     ![创建支持包 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-2. 将收集到一个支持包。 此操作需要几分钟才能完成。
+    将收集到一个支持包。 如果只包含系统日志，此操作需要几分钟时间。 如果包括内存转储，则需要花费很长时间。
 
     ![创建支持包 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. 支持包创建完成后，选择 " **下载支持包**"。
+2. 支持包创建完成后，选择 " **下载支持包**"。
+
+    ![创建支持包3](media/data-box-local-web-ui-admin/create-support-package-3.png)
+
+3. 浏览并选择下载位置。 打开文件夹以查看内容。
 
     ![创建支持包 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
-4. 浏览并选择下载位置。 打开文件夹以查看内容。
+## <a name="erase-local-data-from-your-device"></a>擦除设备上的本地数据
 
-    ![创建支持包 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
+在将本地数据返回到 Azure 数据中心之前，可以使用本地 web UI 从设备中擦除本地数据。
+
+> [!IMPORTANT]
+> 无法反转数据擦除。 在从设备中擦除本地数据之前，请务必备份这些文件。
+
+若要从设备中擦除本地数据，请执行以下步骤：
+
+1. 在本地 web UI 中，请执行 " **数据清除**"。
+2. 输入设备密码，并选择 " **清除数据**"。
+
+    ![设备的数据清除选项](media/data-box-local-web-ui-admin/erase-local-data-1.png)
+
+3. 出现确认提示时，选择 **"是"** 以继续。 数据删除可能需要50分钟。
+
+   在从设备中擦除本地数据之前，请务必备份本地数据。 无法反转数据擦除。
+
+    ![数据清除确认提示](media/data-box-local-web-ui-admin/erase-local-data-2.png)
 
 ## <a name="shut-down-or-restart-your-device"></a>关闭或重启设备
 
-可使用本地 Web UI 关闭或重启设备。 在重启之前，建议使共享依次在主机和设备上脱机。 这样做会使数据损坏的可能性降至最低。 确保关闭设备时未进行数据复制。
+可使用本地 Web UI 关闭或重启设备。 建议在重新启动之前，先在主机和设备上使共享脱机。 这样做会使数据损坏的可能性降至最低。 确保关闭设备时未进行数据复制。
 
 若要关闭设备，请执行以下步骤。
 
-1. 在本地 Web UI 中，转到“关闭或重启”  。
+1. 在本地 Web UI 中，转到“关闭或重启”。
+
 2. 选择“关闭”。
 
     ![关闭 Data Box 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
@@ -70,7 +87,7 @@ ms.locfileid: "91449682"
 
 要重启 Data Box，请执行以下步骤。
 
-1. 在本地 Web UI 中，转到“关闭或重启”  。
+1. 在本地 Web UI 中，转到“关闭或重启”。
 2. 选择“重启”。 
 
     ![重启 Data Box 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
@@ -85,7 +102,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
 在开始之前，请按照以下步骤下载导入顺序的 BOM 或清单文件：
 
-1. 转到设备的本地 Web UI。 验证设备是否已完成 **准备交付** 步骤。 设备准备完成后，设备状态将显示为“已准备好寄送”。****
+1. 转到设备的本地 Web UI。 验证设备是否已完成 **准备交付** 步骤。 设备准备完成后，设备状态将显示为“已准备好寄送”。
 
     ![设备已准备好寄送](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
@@ -93,7 +110,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. 在文件资源管理器中，会看到根据用于连接到设备的协议和使用的 Azure 存储类型来生成单独的文件列表。
+3. 在文件资源管理器中，将根据用于连接到设备的协议和使用的 Azure 存储类型来生成不同的文件列表。
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![根据存储类型和连接协议生成的文件](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -159,8 +176,8 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
 可使用设备仪表板查看设备的可用和已用容量。
 
-1. 在本地 web UI 中，转到“查看仪表板”****。
-2. “连接和复制”下显示设备上的可用和已用空间****。
+1. 在本地 web UI 中，转到“查看仪表板”。
+2. “连接和复制”下显示设备上的可用和已用空间。
 
     ![查看可用容量](media/data-box-local-web-ui-admin/verify-used-space-dashboard.png)
 
@@ -168,15 +185,15 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
 准备寄送时，默认会生成数据的校验和。 在某些罕见的情况下，根据所用的数据类型（小型文件），性能可能较慢。 在这种情况，则可以跳过校验和。
 
-准备发货期间的校验和计算仅适用于进口订单，不适用于出口订单。 
+准备发货期间的校验和计算仅适用于进口订单，不适用于出口订单。
 
-我们强烈建议仅在性能受到严重影响的情况下禁用校验和。
+我们强烈建议您不要禁用校验和，除非性能受到严重影响。
 
 1. 在设备的本地 web UI 的右上角，单击 " **设置**"。
 
     ![禁用校验和](media/data-box-local-web-ui-admin/disable-checksum.png)
 
-2. 禁用校验和验证****
+2. 禁用校验和验证
 3. 选择“应用”。
 
 > [!NOTE]
@@ -199,27 +216,27 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
     ![启用 SMB 签名](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
 
 3. 选择“应用”。
-4. 在本地 Web UI 中，转到“关闭或重启”****。
+4. 在本地 Web UI 中，转到“关闭或重启”。
 5. 选择“重启”。 
 
 ## <a name="enable-backup-operator-privileges"></a>启用备份操作员权限
 
 默认情况下，web UI 用户具有 SMB 共享的备份操作员特权。 如果你不想这样做，请使用 **Enable Operator 权限** 来禁用或启用权限。
 
-有关信息，请参阅 [Active Directory 安全组](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)中的备份操作员。
+有关信息，请参阅 [Active Directory 安全组](/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)中的备份操作员。
 
 在 Azure 设备中启用备份操作员权限：
 
 1. 在设备的本地 web UI 的右上角，选择 " **设置**"。
 
-   ![打开 Data Box 设置](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+   ![打开 Data Box 设置-1](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **启用** 备份操作员特权。
 
    ![启用备份操作员权限](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
 
 3. **选择 "应用**"。
-4. 在本地 Web UI 中，转到“关闭或重启”****。
+4. 在本地 Web UI 中，转到“关闭或重启”。
 5. 选择“重启”。 
 
 ## <a name="enable-acls-for-azure-files"></a>为 Azure 文件启用 Acl
@@ -235,34 +252,34 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
 1. 在设备的本地 web UI 的右上角，选择 " **设置**"。
 
-    ![打开 Data Box 设置](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![打开 Data Box 设置-2](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **启用** Azure 文件的 Acl。
 
      ![为 Azure 文件启用 Acl](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
   
 3. 选择“应用”。
-4. 在本地 Web UI 中，转到“关闭或重启”****。
+4. 在本地 Web UI 中，转到“关闭或重启”。
 5. 选择“重启”。 
 
 ## <a name="enable-tls-11"></a>启用 TLS 1。1
 
 默认情况下，Azure Data Box 使用传输层安全性 (TLS) 1.2 进行加密，因为它比 TSL 1.1 更安全。 但是，如果你或你的客户端使用浏览器访问不支持 TLS 1.2 的数据，则可以启用 TLS 1.1。
 
-有关与 TLS 相关的详细信息，请参阅 [Azure Data Box Gateway 安全性](../databox-online/data-box-gateway-security.md)。
+有关与 TLS 相关的详细信息，请参阅 [Azure Data Box Gateway 安全性](../databox-gateway/data-box-gateway-security.md)。
 
 在 Azure 设备中启用 TLS 1.1：
 
 1. 在设备的本地 web UI 的右上角，选择 " **设置**"。
 
-    ![打开 Data Box 设置](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![打开 Data Box 设置-3](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **启用** TLS 1.1。
 
     ![启用 TLS 1。1](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
 
 3. 选择“应用”。
-4. 在本地 Web UI 中，转到“关闭或重启”****。
+4. 在本地 Web UI 中，转到“关闭或重启”。
 5. 选择“重启”。 
 
 ## <a name="next-steps"></a>后续步骤

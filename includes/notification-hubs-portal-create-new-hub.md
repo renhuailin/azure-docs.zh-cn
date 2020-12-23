@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ec602f056b339a1b1dcb78d6b8d7583aeaf0434
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67509082"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009089"
 ---
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "67509082"
 
 1. 选择“通知”（钟形图标），然后选择“转到资源”   。 还可以刷新“通知中心”  页上的列表，然后选择通知中心。
 
-      ![Azure 门户 - 通知 -> 转到资源](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
+      ![Azure 门户 - 转到资源](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 
 1. 从列表中选择“访问策略”  。 记下向你提供的两个连接字符串。 稍后在处理推送通知时需要它们。
 

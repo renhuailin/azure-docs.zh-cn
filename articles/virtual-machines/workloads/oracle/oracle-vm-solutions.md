@@ -1,24 +1,19 @@
 ---
 title: Azure 虚拟机上的 Oracle 解决方案 | Microsoft Docs
 description: 了解 Microsoft Azure 上 Oracle 虚拟机映像支持的配置和限制。
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 093d3c0da0b40f2a287b1cb451a419f71ce4b8d7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331363"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957582"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -116,10 +111,6 @@ Oracle 数据库通常需要更高端存储器和 IO。 出于此原因，建议
 
 将 Oracle 软件和工作负荷从本地迁移到 Microsoft Azure 时，Oracle 提供了许可移动性，如 [Azure 上的 Oracle 常见问题解答](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)中所述
 
-## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-
-Oracle Real 应用程序群集 (Oracle RAC) 用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，则需要第三方软件来实现这些技术。 有关 Oracle RAC 的详细信息，请参阅 [FlashGrid SkyCluster 页](https://www.flashgrid.io/oracle-rac-in-azure/)。
-
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和灾难恢复注意事项
 
 在 Azure 中使用 Oracle 数据库时，用户负责实现高可用性和灾难恢复解决方案，避免出现任何停机。
@@ -132,7 +123,7 @@ Oracle Real 应用程序群集 (Oracle RAC) 用于减少本地多节点群集配
 
 [在 Azure 上实现 Oracle GoldenGate](configure-oracle-golden-gate.md)教程介绍了 Azure 上的基本安装过程。
 
-除了在 Azure 中构建 HA 和 DR 解决方案外，还应准备一份备份策略来还原数据库。 [备份和恢复 Oracle Database](oracle-backup-recovery.md)教程介绍了建立一致备份的基本过程。
+除了在 Azure 中构建 HA 和 DR 解决方案外，还应准备一份备份策略来还原数据库。 [备份和恢复 Oracle Database](./oracle-overview.md)教程介绍了建立一致备份的基本过程。
 
 ## <a name="support-for-jd-edwards"></a>对 JD Edwards 的支持
 

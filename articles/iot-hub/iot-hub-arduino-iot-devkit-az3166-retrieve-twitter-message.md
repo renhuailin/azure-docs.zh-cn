@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356061"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147893"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>摇一摇，摇一条推文 - 使用 Azure Functions 检索 Twitter 消息
 
@@ -23,7 +23,7 @@ ms.locfileid: "91356061"
 
 ## <a name="what-you-need"></a>需要什么
 
-完成[入门指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)来实现以下目的：
+完成[入门指南](./iot-hub-arduino-iot-devkit-az3166-get-started.md)来实现以下目的：
 
 * 将 DevKit 连接到 Wi-Fi。
 * 准备开发环境。
@@ -117,7 +117,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
    ![屏幕截图显示 Visual Studio Code 验证和上传 Arduino 草图。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
-2. DevKit 重新启动并开始运行代码。
+2. DevKit 将重新启动并开始运行代码。
 
 可能会出现“错误: AZ3166: 未知的包”错误消息。 如果未正确刷新开发板包索引，则会出现此错误。 要解决此问题，请查看 [IoT DevKit 常见问题解答中的“unknown package”（未知程序包）错误](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 
@@ -139,7 +139,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 ### <a name="processing"></a>正在处理...
 
-![正在处理](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
+![Processing](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
 
 ### <a name="press-b-to-read"></a>按 B 读取...
 
@@ -207,4 +207,4 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
 
 了解如何将 DevKit 设备连接到 Azure IoT 远程监视解决方案加速器和检索推文后，我们建议接下来学习以下教程：
 
-* [Azure IoT 远程监视解决方案加速器概述](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT 远程监视解决方案加速器概述](/azure/iot-suite/)

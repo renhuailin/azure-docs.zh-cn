@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29aa4eb0bc40f0b2b960c49cf7b17dc62d92b0ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a73dea856ee3250eb040f8464ee8703b01003f1f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367710"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180551"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理登录本地应用程序时遇到问题
 
@@ -48,7 +48,7 @@ ms.locfileid: "85367710"
 ## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>设置应用程序的后端身份验证时遇到问题
   以下文档可帮助你解决一些此类最常见问题。
   * [我不知道如何配置 Kerberos 约束委派](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-  * [我不知道如何使用 PingAccess 配置应用程序](application-proxy-back-end-ping-access-how-to.md)
+  * [我不知道如何使用 PingAccess 配置应用程序](./application-proxy-ping-access-publishing-guide.md)
 
 ## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>登录应用程序时遇到问题
   以下文档可帮助你解决一些此类最常见问题。

@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 25ed41be53c114c258e5c63437ff2b5df875af75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1c4367e2a649f4e239e2dab374afc4fb867e517b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310724"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891187"
 ---
 # <a name="add-html-markers-to-the-map"></a>向地图添加 HTML 标记
 
 本文展示了如何向地图添加自定义 HTML（例如图像文件）作为 HTML 标记。
 
 > [!NOTE]
-> HTML 标记不连接到数据源。 相反，位置信息将被直接添加到标记中，标记将被添加到地图 `markers` 属性中，即 [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager)。
+> HTML 标记不连接到数据源。 相反，位置信息将被直接添加到标记中，标记将被添加到地图 `markers` 属性中，即 [HtmlMarkerManager](/javascript/api/azure-maps-control/atlas.htmlmarkermanager)。
 
 > [!IMPORTANT]
 > 与 Azure Maps Web 控件中使用 WebGL 进行呈现的大多数层不同，HTML 标记使用传统的 DOM 元素进行呈现。 因此，添加到页面的 HTML 标记越多，DOM 元素就越多。 添加几百个 HTML 标记后，可能会降低性能。 对于较大的数据集，可以考虑对数据进行聚类分析，或者使用符号或气泡层。
 
 ## <a name="add-an-html-marker"></a>添加 HTML 标记
 
-[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker) 类具有默认样式。 可以通过设置标记的颜色和文本选项自定义标记。 HTML 标记类的默认样式是具有 `{color}` 和 `{text}` 占位符的 SVG 模板。 在 HTML 标记选项中设置颜色和文本属性，以便进行快速自定义。 
+[HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker) 类具有默认样式。 可以通过设置标记的颜色和文本选项自定义标记。 HTML 标记类的默认样式是具有 `{color}` 和 `{text}` 占位符的 SVG 模板。 在 HTML 标记选项中设置颜色和文本属性，以便进行快速自定义。 
 
 下面的代码创建一个 HTML 标记，并将 color 属性设置为“DodgerBlue”，将 text 属性设置为“10”。 一个弹出窗口将附加到该标记，`click` 事件用于切换弹出窗口的可见性。
 
@@ -103,13 +103,13 @@ HTML 标记的优点之一是，可以使用 CSS 来实现许多有用的自定�
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker)
 
 > [!div class="nextstepaction"]
-> [HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+> [HtmlMarkerOptions](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 > [!div class="nextstepaction"]
-> [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager)
+> [HtmlMarkerManager](/javascript/api/azure-maps-control/atlas.htmlmarkermanager)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

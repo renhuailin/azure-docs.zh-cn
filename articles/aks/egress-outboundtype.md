@@ -3,15 +3,13 @@ title: 在 Azure Kubernetes 服务 (AKS) 中自定义用户定义路由 (UDR)
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中自定义出口路由
 services: container-service
 ms.topic: article
-ms.author: juluk
 ms.date: 06/29/2020
-author: jluk
-ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 103d7dc76dee56a336f08f2cc0c7c8489c0bc565
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975291"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348128"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用用户定义的路由自定义群集出口
 
@@ -51,7 +49,7 @@ ms.locfileid: "90975291"
 
 下面是默认情况下在 AKS 群集中部署的网络拓扑，该拓扑使用类型为 `loadBalancer` 的 `outboundType`。
 
-![关系图显示入口 i p 和出口 I P，其中入口 I P 将流量定向到负载均衡器，该负载均衡器将流量定向到内部群集，并将其他流量定向到出口 I P，这会将流量定向到 Internet、M C R、Azure 所需服务和 K S 控制平面。](media/egress-outboundtype/outboundtype-lb.png)
+![此图显示了入口 IP 和出口 IP，其中的入口 IP 将流量定向到负载均衡器，负载均衡器将往返于内部群集的流量和其他流量定向到出口 IP，出口 IP 将流量定向到 Internet、MCR、Azure 所需服务和 AKS 控制平面。](media/egress-outboundtype/outboundtype-lb.png)
 
 ### <a name="outbound-type-of-userdefinedrouting"></a>userDefinedRouting 的出站类型
 

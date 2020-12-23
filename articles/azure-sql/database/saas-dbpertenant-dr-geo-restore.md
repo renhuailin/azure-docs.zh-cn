@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 3fe6095595f5270b18536e6ef46afe4a0a5b3268
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618992"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607705"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "91618992"
 
 开始本教程之前，需具备以下先决条件：
 * 部署 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序](saas-dbpertenant-get-started-deploy.md)。 
-* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>异地还原恢复模式简介
 
@@ -58,17 +58,17 @@ ms.locfileid: "91618992"
  * 中断解决后，将数据库遣返回原始区域，同时将对租户的影响降到最低。  
 
 > [!NOTE]
-> 将应用程序恢复到部署该应用程序的区域的“配对区域”中。 有关详细信息，请参阅 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。   
+> 将应用程序恢复到部署该应用程序的区域的“配对区域”中。 有关详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)。   
 
 本教程使用 Azure SQL 数据库和 Azure 平台的功能解决这些问题：
 
-* [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)可用于尽快预留全部所需容量。 Azure 资源管理器模板用于在恢复区域中预配原始服务器和弹性池的镜像。 预配新租户还需分别创建一个服务器和一个池。
+* [Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)可用于尽快预留全部所需容量。 Azure 资源管理器模板用于在恢复区域中预配原始服务器和弹性池的镜像。 预配新租户还需分别创建一个服务器和一个池。
 * [弹性数据库客户端库](elastic-database-client-library.md) (EDCL) 可用于创建和维护租户数据库目录。 扩展后的目录包含定期更新的池和数据库配置信息。
 * EDCL [分片管理恢复功能](elastic-database-recovery-manager.md)可用于在恢复和遣返期间维护目录中的数据库位置条目。  
 * [异地还原](../../key-vault/general/disaster-recovery-guidance.md)可用于恢复自动维护的异地冗余备份中的目录和租户数据库。 
-* [异步还原操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)（按租户的优先顺序发送）将由系统针对每个池进行排队，然后进行批量处理，确保池不会重载。 必要时，可在执行前或执行期间取消这些操作。   
+* [异步还原操作](../../azure-resource-manager/management/async-operations.md)（按租户的优先顺序发送）将由系统针对每个池进行排队，然后进行批量处理，确保池不会重载。 必要时，可在执行前或执行期间取消这些操作。   
 * [异地复制](active-geo-replication-overview.md)可用于在中断后将数据库遣返回原始区域。 使用异地复制可确保不会发生数据丢失，同时可将对租户的影响降到最低。
-* [SQL 服务器 DNS 别名](../../sql-database/dns-alias-overview.md)可允许目录同步进程连接到位于任何位置的活动目录。  
+* [SQL 服务器 DNS 别名](./dns-alias-overview.md)可允许目录同步进程连接到位于任何位置的活动目录。  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>获取灾难恢复脚本
 
@@ -104,7 +104,7 @@ ms.locfileid: "91618992"
 此任务会启动一个进程，用于将服务器、弹性池和数据库的配置同步到租户目录中。 稍后将使用此信息在恢复区域中配置镜像环境。
 
 > [!IMPORTANT]
-> 为简单起见，在这些示例中，同步进程以及其他长时间运行的恢复和遣返进程将作为以客户端用户身份运行的本地 PowerShell 作业或会话来实现。 几小时后，登录时颁发的身份验证令牌将会过期，因而作业将会失败。 在生产场景中，长时间运行的进程应作为以服务主体身份运行的某种可靠 Azure 服务来实现。 请参阅[使用 Azure PowerShell 创建具有证书的服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。 
+> 为简单起见，在这些示例中，同步进程以及其他长时间运行的恢复和遣返进程将作为以客户端用户身份运行的本地 PowerShell 作业或会话来实现。 几小时后，登录时颁发的身份验证令牌将会过期，因而作业将会失败。 在生产场景中，长时间运行的进程应作为以服务主体身份运行的某种可靠 Azure 服务来实现。 请参阅[使用 Azure PowerShell 创建具有证书的服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 
 
 1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm1 文件。 将第 10 行和第 11 行中的 `<resourcegroup>` 和 `<user>` 替换为部署应用时使用的值。 保存文件。
 
@@ -163,7 +163,7 @@ ms.locfileid: "91618992"
 
     * 在目录中将租户数据库标记为联机后，应用程序可立即访问这些数据库。
 
-    * 租户数据库中 rowversion 值的总和存储在目录中。 此总和充当一个指纹，可让遣返进程确定恢复区域中是否已更新数据库。       
+    * 租户数据库中 rowversion 值的总和存储在目录中。 此总和充当一个指纹，可让遣返进程确定恢复区域中是否已更新数据库。
 
 ## <a name="run-the-recovery-script"></a>运行恢复脚本
 
@@ -180,11 +180,11 @@ ms.locfileid: "91618992"
 
     * 该脚本将在新的 PowerShell 窗口中打开，然后启动一系列并行运行的 PowerShell 作业。 这些作业会将服务器、池和数据库还原到恢复区域。
 
-    * 恢复区域是与部署应用程序的 Azure 区域相关联的配对区域。 有关详细信息，请参阅 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+    * 恢复区域是与部署应用程序的 Azure 区域相关联的配对区域。 有关详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)。 
 
 3. 在 PowerShell 窗口中监视恢复进程的状态。
 
-    ![恢复过程](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![显示 PowerShell 窗口的屏幕截图，可以在该窗口中监视恢复过程的状态。](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > 要了解恢复作业的代码，请查看 ...\Learning Modules\Business Continuity 和 Disaster Recovery\DR-RestoreFromBackup\RecoveryJobs 文件夹中的 PowerShell 脚本。
@@ -202,7 +202,7 @@ ms.locfileid: "91618992"
 
   * 如果在租户脱机时直接打开租户的事件页，页面将显示租户脱机通知。 例如，在 Contoso Concert Hall 处于脱机状态时，尝试打开 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall。
 
-    ![恢复过程](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![显示脱机事件页的屏幕截图。](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>在恢复区域中预配新租户
 即使未还原租户数据库，也可以在恢复区域中预配新租户。 在恢复区域中预配的新租户数据库稍后将与恢复的数据库一起遣返。   
@@ -374,7 +374,7 @@ ms.locfileid: "91618992"
 > * 使用 DNS 别名可使应用程序全程连接到租户目录，并且无需进行重新配置。
 > * 中断解决后，使用异地复制将恢复后的数据库遣返回原始区域。
 
-请尝试学习[使用数据库异地复制对多租户 SaaS 应用程序进行灾难恢复](../../sql-database/saas-dbpertenant-dr-geo-replication.md)教程，了解如何使用异地复制动态缩短恢复大规模多租户应用程序所需的时间。
+请尝试学习[使用数据库异地复制对多租户 SaaS 应用程序进行灾难恢复](./saas-dbpertenant-dr-geo-replication.md)教程，了解如何使用异地复制动态缩短恢复大规模多租户应用程序所需的时间。
 
 ## <a name="additional-resources"></a>其他资源
 

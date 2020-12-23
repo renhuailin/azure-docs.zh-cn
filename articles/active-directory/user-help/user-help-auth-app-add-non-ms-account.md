@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015964"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359194"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>将非 Microsoft 帐户添加到 Microsoft Authenticator 应用
 
-将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可与使用双因素验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户配合使用。
+如果你有非 Microsoft 帐户（例如适用于 Google、Facebook 或 GitHub），可以将它们添加到 Microsoft Authenticator 应用进行双重验证。 Microsoft Authenticator 应用适用于使用双重验证的任何应用，以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户。
 
 >[!Important]
 >必须先下载并安装 Microsoft Authenticator 应用，然后才能添加帐户。 如果尚未这样做，请按照[下载并安装应用](user-help-auth-app-download-install.md)一文中的步骤操作。
@@ -36,7 +36,7 @@ ms.locfileid: "87015964"
     >[!Note]
     >如果这是你首次设置 Microsoft Authenticator 应用，则可能会收到一个提示，询问你是允许该应用访问你的相机 (iOS)，还是允许该应用拍摄照片和录制视频 (Android)。 你必须选择“允许”，以便验证器应用可以访问你的相机，在下一步中拍摄 QR 码的照片。 如果你不允许使用相机，仍然可以设置验证器应用，但需要手动添加代码信息。 有关如何手动添加代码的信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
-本文介绍的是 Facebook 帐户、Google 帐户、GitHub 帐户和 Amazon 帐户的添加过程，但对于其他任何应用（如 Instagram、Netflix 或 Adobe），此过程都是一样的。
+我们将在此处为 Facebook、Google、GitHub 和 Amazon 帐户提供此过程，但对于其他应用（如 Instagram 和 Adobe），该过程是相同的。
 
 ## <a name="add-your-google-account"></a>添加 Google 帐户
 
@@ -50,7 +50,7 @@ ms.locfileid: "87015964"
 
 ### <a name="add-your-google-account-to-the-app"></a>向应用添加 Google 帐户
 
-1. 在计算机上的 "Google 帐户安全性" 页上（ https://myaccount.google.com/security) 请参阅 "**添加更多步骤以验证是否是**" 部分），从 "**验证器应用**" 部分选择 "**设置**"。
+1. 在 (的计算机上的 "Google 帐户安全性" 页上 https://myaccount.google.com/security) ，请参阅 "**添加更多第二步，验证是否为**" 部分，从 "**验证器应用**" 部分选择 "**设置**"。
 
 2. 在“从 Authenticator 应用获取验证码”页上，根据电话类型选择“Android”或“iPhone”，再选择“下一步”。
 
@@ -130,7 +130,7 @@ ms.locfileid: "87015964"
 
 1. 在电脑上，选择“双因素身份验证”页中的“使用应用进行设置” 。
 
-2. 保存可便于在失去访问权限时恢复帐户的恢复代码，再选择“下一步”。 
+2. 保存可便于在失去访问权限时恢复帐户的恢复代码，再选择“下一步”。
 
     若要保存代码，可以将代码下载到设备、打印打印件，或将代码复制到密码管理器工具中。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266776"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860943"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -25,9 +25,9 @@ ms.locfileid: "89266776"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>问：我最近注册了设备， 为什么我看不到 Azure 门户中的用户信息下的设备？ 或对于加入混合Azure Active Directory (Azure AD) 的设备，为什么设备所有者标记为 N/A？
 
 **答：** 已加入混合 Azure AD 的 Windows 10 设备不会显示在 " **用户设备**" 下。
-使用 Azure 门户中的“所有设备”视图****。 还可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
+使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice) cmdlet。
 
-“USER 设备”下面只会列出以下设备：****
+“USER 设备”下面只会列出以下设备：
 
 - 所有未加入混合 Azure AD 的个人设备。 
 - 所有非 Windows 10 或 Windows Server 2016 设备。
@@ -51,13 +51,13 @@ ms.locfileid: "89266776"
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>问：我在 Azure 门户的 "用户信息" 下看到设备记录。 我在设备上看到状态为已注册。 是否正确设置了使用条件性访问？
 
-**答：** 由 **deviceID**显示的设备加入状态必须与 Azure AD 上的状态相匹配，并满足条件访问的任何评估条件。 有关详细信息，请参阅 [要求使用条件访问的云应用访问的托管设备](../conditional-access/require-managed-devices.md)。
+**答：** 由 **deviceID** 显示的设备加入状态必须与 Azure AD 上的状态相匹配，并满足条件访问的任何评估条件。 有关详细信息，请参阅 [要求使用条件访问的云应用访问的托管设备](../conditional-access/require-managed-devices.md)。
 
 ---
 
 ### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>问：为什么我的用户在其 Windows 10 设备上看到一条错误消息，指出 "你的组织已删除设备" 或 "你的组织已禁用了设备"？
 
-**答：** 在加入或注册到 Azure AD 的 Windows 10 设备上，将向用户颁发一个 [主刷新令牌 (PRT) ](concept-primary-refresh-token.md) 启用单一登录。 PRT 的有效性取决于设备本身的有效性。 如果 Azure AD 在中删除或禁用了设备，则用户将看到此消息，而无需从设备本身启动操作。 在以下任一情况下，都可以删除或禁用设备 Azure AD： 
+**答：** 在加入或注册到 Azure AD 的 Windows 10 设备上，将向用户颁发一个 [主刷新令牌 (PRT)](concept-primary-refresh-token.md) 启用单一登录。 PRT 的有效性取决于设备本身的有效性。 如果 Azure AD 在中删除或禁用了设备，则用户将看到此消息，而无需从设备本身启动操作。 在以下任一情况下，都可以删除或禁用设备 Azure AD： 
 
 - 用户从 "我的应用" 门户禁用该设备。 
 - 管理员 (或用户) 在 Azure 门户或通过使用 PowerShell 删除或禁用设备
@@ -69,7 +69,7 @@ ms.locfileid: "89266776"
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>问：我在 Azure 门户或使用 Windows PowerShell 中禁用或删除了我的设备。 但设备上的本地状态仍显示为已注册。   应采取何种操作？
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>问：我在 Azure 门户或使用 Windows PowerShell 中禁用或删除了我的设备。 但设备上的本地状态仍显示为已注册。 应采取何种操作？
 
 **答：** 此操作是由设计决定的。 在这种情况下，设备无法访问云中的资源。 管理员可以对过时的、丢失或被盗的设备执行此操作，以防止未经授权的访问。 如果无意中执行了此操作，则需要重新启用或重新注册设备，如下所述
 
@@ -111,7 +111,7 @@ ms.locfileid: "89266776"
 **的**
 
 - 对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
-- 使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录****。
+- 使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录。
 - 对于已加入本地 Azure Directory 域的低级别 Windows 操作系统版本，自动注册将为登录设备的每个域用户创建具有相同设备名称的新设备记录。 
 - 在擦除后重新安装并使用相同名称重新加入 Azure AD 计算机会显示为具有相同设备名称的另一条记录。
 
@@ -148,7 +148,7 @@ ms.locfileid: "89266776"
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>问：如何实现在设备本地脱离 Azure AD 已加入设备？
 
-**答：** 对于纯 Azure AD 联接设备，请确保具有脱机的本地管理员帐户或创建一个。 无法使用 Azure AD 用户凭据登录。 接下来，请访问 "**设置**" "帐户" "  >  **Accounts**  >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”****。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
+**答：** 对于纯 Azure AD 联接设备，请确保具有脱机的本地管理员帐户或创建一个。 无法使用 Azure AD 用户凭据登录。 接下来，请访问 "**设置**" "帐户" "  >  **Accounts**  >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
 
 ---
 
@@ -198,7 +198,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>问：为什么我的某些用户在 Azure AD 联接的设备上找不到 Azure 多重身份验证提示？
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>问：为什么我的某些用户无法在 Azure AD 联接的设备上 Azure AD 多重身份验证提示？
 
 **答：** 用户可以通过使用多重身份验证将设备加入或注册到 Azure AD。 然后，设备本身成为该用户信任的第二个因素。 每当同一用户登录到设备并访问应用程序，Azure AD 都会将该设备视为第二个因素。 它使用户能够无缝访问应用程序，而无需额外的多重身份验证提示。 
 
@@ -259,7 +259,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
  
 ### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>问：为什么在 "Azure AD 设备" 列表中看到 "我的 Windows 10 混合设备" Azure AD 联接设备的重复 Azure AD 注册记录？
 
-**答：** 当你的用户将其帐户添加到加入域的设备上的应用时，系统可能会提示你 **将帐户添加到 Windows？** 如果他们在提示时输入“确定”，设备会注册 Azure AD****。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
+**答：** 当你的用户将其帐户添加到加入域的设备上的应用时，系统可能会提示你 **将帐户添加到 Windows？** 如果他们在提示时输入“确定”，设备会注册 Azure AD。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
 
 混合 Azure AD 加入优先于 Azure AD 已注册状态。 因此，在进行任何身份验证和条件性访问评估时，设备被视为混合 Azure AD 联接。 可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 了解[避免或清理 Windows 10 计算机上的此双状态](hybrid-azuread-join-plan.md#review-things-you-should-know)。 
 
@@ -290,8 +290,8 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>问：如何实现删除设备在本地 Azure AD 注册状态吗？
 
 **的** 
-- 对于 Windows 10 Azure AD 注册的设备，请访问**设置**"帐户" "  >  **Accounts**  >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”****。 设备注册为 Windows 10 上的每个用户配置文件。
-- 对于 iOS 和 Android，你可以使用 Microsoft Authenticator 应用程序**设置**"  >  **设备注册**"，然后选择 "**注销设备**"。
+- 对于 Windows 10 Azure AD 注册的设备，请访问 **设置**"帐户" "  >  **Accounts**  >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”。 设备注册为 Windows 10 上的每个用户配置文件。
+- 对于 iOS 和 Android，你可以使用 Microsoft Authenticator 应用程序 **设置**"  >  **设备注册**"，然后选择 "**注销设备**"。
 - 对于 macOS，可以使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备，并删除任何注册。 
 
 ---

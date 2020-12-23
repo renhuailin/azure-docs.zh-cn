@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 7f7bc16658733a7200d29fae22d96a2157b73065
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01370092c5e272fe64f4ffdad577b69d3a532810
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292126"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012146"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>将 SQL Server Integration Services 包迁移到 Azure SQL 托管实例
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Server 托管的源 SSISDB 迁移到 Azure SQL 托管实例托管的目标 SSISDB，可以使用 Azure 数据库迁移服务。
 
-如果使用的 SSIS 版本早于 2012 年版，或者使用非 SSISDB 包存储类型，则在迁移 SSIS 项目/包之前，需要使用 Integration Services 项目转换向导来转换它们，该向导也可从 SSMS 中启动。 有关详细信息，请参阅文章[将项目转换为项目部署模型](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)。
+如果使用的 SSIS 版本早于 2012 年版，或者使用非 SSISDB 包存储类型，则在迁移 SSIS 项目/包之前，需要使用 Integration Services 项目转换向导来转换它们，该向导也可从 SSMS 中启动。 有关详细信息，请参阅文章[将项目转换为项目部署模型](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)。
 
 > [!NOTE]
-> Azure 数据库迁移服务 (DMS) 目前不支持将 Azure SQL 数据库用作迁移目标。 若要将 SSIS 项目/包重新部署到 Azure SQL 数据库，请参阅[将 SQL Server Integration Services 包重新部署到 Azure SQL 数据库](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
+> Azure 数据库迁移服务 (DMS) 目前不支持将 Azure SQL 数据库用作迁移目标。 若要将 SSIS 项目/包重新部署到 Azure SQL 数据库，请参阅[将 SQL Server Integration Services 包重新部署到 Azure SQL 数据库](./how-to-migrate-ssis-packages.md)。
 
 在本文中，学习如何：
 > [!div class="checklist"]
@@ -37,15 +37,15 @@ ms.locfileid: "91292126"
 
 若要完成这些步骤，需满足以下条件：
 
-* 若要使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，可以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关详细信息，请参阅[使用 Azure 数据库迁移服务迁移 SQL 托管实例的网络拓扑]( https://aka.ms/dmsnetworkformi)一文。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
-* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
-* 配置[针对源数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017)。
+* 若要使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，可以使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)为本地源服务器提供站点到站点连接。 有关详细信息，请参阅[使用 Azure 数据库迁移服务迁移 SQL 托管实例的网络拓扑]( https://aka.ms/dmsnetworkformi)一文。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](../virtual-network/index.yml)，尤其是提供了分步详细信息的快速入门文章。
+* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 配置[针对源数据库引擎访问的 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
 * 如果在源数据库的前面使用了防火墙设备，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库，并通过 SMB 端口 445 访问文件。
-* 用于托管 SSISDB 的 SQL 托管实例。 如需创建一个，请按[创建 Azure SQL 托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)一文中的详细说明操作。
+* 用于托管 SSISDB 的 SQL 托管实例。 如需创建一个，请按[创建 Azure SQL 托管实例](../azure-sql/managed-instance/instance-create-quickstart.md)一文中的详细说明操作。
 * 确保用于连接源 SQL Server 和目标托管实例的登录名是 sysadmin 服务器角色的成员。
-* 验证是否在包含 Azure-SSIS Integration Runtime (IR) 的 Azure 数据工厂 (ADF) 中预配了 SSIS，并且其目标 SSISDB 由 SQL 托管实例托管（如[在 Azure 数据工厂中创建 Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) 一文所述）。
+* 验证是否在包含 Azure-SSIS Integration Runtime (IR) 的 Azure 数据工厂 (ADF) 中预配了 SSIS，并且其目标 SSISDB 由 SQL 托管实例托管（如[在 Azure 数据工厂中创建 Azure-SSIS Integration Runtime](../data-factory/create-azure-ssis-integration-runtime.md) 一文所述）。
 
 ## <a name="assess-source-ssis-projectspackages"></a>评估源 SSIS 项目/包
 
@@ -83,9 +83,9 @@ ms.locfileid: "91292126"
 
     虚拟网络为 Azure 数据库迁移服务提供源 SQL Server 和目标 Azure SQL 托管实例的访问权限。
 
-    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)一文。
 
-    有关更多详细信息，请参阅文章 [使用 Azure 数据库迁移服务的 AZURE SQL 托管实例迁移的网络拓扑](https://aka.ms/dmsnetworkformi)。
+    有关更多详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 托管实例的网络拓扑](./resource-network-topologies.md)一文。
 
 6. 选择定价层。
 

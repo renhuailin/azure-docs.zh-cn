@@ -5,31 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/30/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 11/24/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526980"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743456"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用对 Windows 10 设备的无密码安全密钥登录) 
 
 本文档重点介绍如何在 Windows 10 设备上启用基于 FIDO2 安全密钥的无密码身份验证。 在本文末尾，你将能够使用 FIDO2 安全密钥通过你的 Azure AD 帐户登录到 Azure AD 和混合 Azure AD 已加入 Windows 10 设备。
 
 > [!NOTE]
-> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅  [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="requirements"></a>要求
 
 | 设备类型 | 已加入 Azure AD | 已加入混合 Azure AD |
 | --- | --- | --- |
-| [Azure 多重身份验证](howto-mfa-getstarted.md) | X | X |
+| [Azure AD 多重身份验证](howto-mfa-getstarted.md) | X | X |
 | [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md) | X | X |
 | 兼容的 [FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN 需要 Windows 10 版本1903或更高版本 | X | X |
@@ -79,7 +79,7 @@ ms.locfileid: "90526980"
 若要允许使用 Intune 使用安全密钥，请完成以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Microsoft Intune**  >  **设备注册**windows  >  **注册**  >  **windows Hello 企业版**  >  **属性**。
+1. 浏览到 **Microsoft Intune**  >  **设备注册** windows  >  **注册**  >  **windows Hello 企业版**  >  **属性**。
 1. 在 " **设置**" 下，将 " **使用安全密钥登录** " 设置为 " **已启用**"。
 
 用于登录的安全密钥配置不依赖于配置 Windows Hello 企业版。
@@ -89,14 +89,14 @@ ms.locfileid: "90526980"
 若要以特定的设备组为目标以启用凭据提供程序，请通过 Intune 使用以下自定义设置：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Microsoft Intune**设备配置 "" 配置文件 ""  >  **Device configuration**  >  **Profiles**  >  **创建配置文件**"。
+1. 浏览到 **Microsoft Intune** 设备配置 "" 配置文件 ""  >  **Device configuration**  >  **Profiles**  >  **创建配置文件**"。
 1. 用以下设置配置新配置文件：
-   - 名称： Windows 登录的安全密钥
+   - 名称： Windows Sign-In 的安全密钥
    - 说明：在 Windows 登录过程中启用要使用的 FIDO 安全密钥
    - 平台：Windows 10 及更高版本
    - 配置文件类型：自定义
    - 自定义 OMA-URI 设置：
-      - 名称：开启 Windows 登录的 FIDO 安全密钥
+      - Name：开启 Windows Sign-In 的 FIDO 安全密钥
       - OMA-URI：./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - 数据类型：整数
       - 值：1
@@ -113,10 +113,10 @@ ms.locfileid: "90526980"
 1. 为项目指定一个名称并记下创建项目的路径，然后选择 " **下一步**"。
 1. 选择 " *预配包* " 作为 **选定的项目工作流** ，然后选择 " **下一步**"。
 1. 选择 "**选择要查看和配置的设置**" 下的 "*所有 Windows 桌面版本*"，然后选择 "**下一步**"。
-1. 选择“完成”  。
-1. 在新创建的项目中，浏览到**运行时设置**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**。
+1. 选择“完成”。
+1. 在新创建的项目中，浏览到 **运行时设置**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**。
 1. 将 **UseSecurityKeyForSignIn** 设置为 *Enabled*。
-1. 选择**导出**  >  **预配包**
+1. 选择 **导出**  >  **预配包**
 1. 在 " **生成** " 窗口中的 " **描述预配包**" 下保留默认值，然后选择 " **下一步**"。
 1. 在 " **生成** " 窗口的 " **选择设置包的安全详细信息** " 下保留默认值，然后选择 " **下一步**"。
 1. 记下或更改 **生成** 窗口中的路径， **选择要保存预配包的位置** ，然后选择 " **下一步**"。
@@ -134,7 +134,7 @@ ms.locfileid: "90526980"
 - 如果将此策略设置为 " **已启用** "，则允许用户用安全密钥登录。
 - 如果将此策略设置为 " **已禁用** " 或 " **未配置** "，将阻止用户登录安全密钥。
 
-此组策略设置需要组策略模板的更新版本 `credentialprovider.admx` 。 下一版本的 Windows Server 和 Windows 10 20H1 中提供了此新模板。 此设置可通过以下方式进行管理：运行这些 Windows 更新版本之一的设备，或按照支持主题中的 " [如何创建和管理 Windows 中组策略管理模板的中央存储](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)中的指南进行集中管理。
+此组策略设置需要组策略模板的更新版本 `CredentialProviders.admx` 。 下一版本的 Windows Server 和 Windows 10 20H1 中提供了此新模板。 此设置可通过以下方式进行管理：运行这些 Windows 更新版本之一的设备，或按照支持主题中的 " [如何创建和管理 Windows 中组策略管理模板的中央存储](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)中的指南进行集中管理。
 
 ## <a name="sign-in-with-fido2-security-key"></a>用 FIDO2 安全密钥登录
 
@@ -145,7 +145,7 @@ ms.locfileid: "90526980"
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>管理安全密钥生物识别、PIN 或重置安全密钥
 
 * Windows 10 版本1903或更高版本
-   * 用户可以在其设备上打开**Windows 设置**>**帐户**  >  **安全密钥**
+   * 用户可以在其设备上打开 **Windows 设置**>**帐户**  >  **安全密钥**
    * 用户可以更改其 PIN、更新生物识别或重置其安全密钥
 
 ## <a name="troubleshooting-and-feedback"></a>故障排除和反馈
@@ -164,4 +164,4 @@ ms.locfileid: "90526980"
 
 [了解有关设备注册的详细信息](../devices/overview.md)
 
-[了解 Azure 多重身份验证](../authentication/howto-mfa-getstarted.md)
+[详细了解 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md)

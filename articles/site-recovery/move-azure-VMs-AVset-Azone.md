@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: fd541e551102b205acff28b6bc06bc88abd14763
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 8224ae4a48bb4915492240c414b90edb86a4c258
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605101"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393126"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>将 Azure VM 移到可用性区域中
 
@@ -62,7 +62,7 @@ ms.locfileid: "90605101"
 4. 对于 Linux VM，请遵循 Linux 分销商提供的指导，在 VM 上获取最新的受信任根证书和证书吊销列表。
 5. 确保未使用身份验证代理来控制要移动的 VM 的网络连接。
 
-6. 如果要移动的 VM 无法访问 Internet，并且使用防火墙代理来控制出站访问，请检查[配置出站网络连接](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)中所述的要求。
+6. 验证 [VM 出站连接需求](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity)。
 
 7. 标识源网络布局以及当前用于验证的资源，包括负载均衡器、NSG 和公共 IP。
 
@@ -99,16 +99,12 @@ ms.locfileid: "90605101"
 1. 在 Azure 门户中选择“虚拟机”，然后选择要移到可用性区域中的 VM。
 2. 在“操作”中，选择“灾难恢复” 。
 3. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域 。 确保此区域[支持](../availability-zones/az-region.md)可用性区域。
-
-    ![选择目标区域](media/azure-vms-to-zones/enable-rep-1.PNG)
-
 4. 在完成时选择“下一步:高级设置”。
 5. 为目标订阅、目标 VM 资源组和虚拟网络选择适当的值。
 6. 在“可用性”部分，选择要将 VM 移到的可用性区域。 
    > [!NOTE]
    > 如果未看到可用性集或可用性区域的选项，请确保符合[先决条件](#prepare-the-source-vms)，并且源 VM 的[准备](#prepare-the-source-vms)工作已完成。
   
-    ![可用性区域的选项](media/azure-vms-to-zones/enable-rep-2.PNG)
 
 7. 选择“启用复制”。 此操作会启动用于为 VM 启用复制的作业。
 
@@ -119,7 +115,6 @@ ms.locfileid: "90605101"
 1. 在 VM 菜单中，选择“灾难恢复”。
 2. 可以检查复制运行状况、已创建的恢复点以及地图中的源和目标区域。
 
-   ![复制状态](media/azure-to-azure-quickstart/replication-status.png)
 
 ## <a name="test-the-configuration"></a>测试配置
 

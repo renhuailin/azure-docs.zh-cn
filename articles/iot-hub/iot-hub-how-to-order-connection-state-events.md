@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356190"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147275"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
 
@@ -29,7 +29,7 @@ ms.locfileid: "91356190"
 
 * 数据库中的集合。 请参阅[添加集合](../cosmos-db/create-sql-api-java.md#add-a-container)中的演练。 创建集合时，请对分区键使用 `/id`。
 
-* Azure 中的 IoT 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](iot-hub-csharp-csharp-getstarted.md)中的演练。
+* Azure 中的 IoT 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](./quickstart-send-telemetry-dotnet.md)中的演练。
 
 ## <a name="create-a-stored-procedure"></a>创建存储过程
 
@@ -335,7 +335,7 @@ ms.locfileid: "91356190"
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-如果不使用 [Azure 门户](https://portal.azure.com)，也可以使用 Azure CLI 来完成 IoT 中心相关的步骤。 有关详细信息，请参阅有关使用 Azure CLI [创建事件订阅](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)和[创建 IoT 设备](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)的网页。
+如果不使用 [Azure 门户](https://portal.azure.com)，也可以使用 Azure CLI 来完成 IoT 中心相关的步骤。 有关详细信息，请参阅有关使用 Azure CLI [创建事件订阅](/cli/azure/eventgrid/event-subscription)和[创建 IoT 设备](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)的网页。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -361,7 +361,7 @@ ms.locfileid: "91356190"
 
 7. 选择“删除”。
 
-若要在 Azure 门户中删除 Azure Cosmos DB 帐户，请右键单击该帐户名，然后单击“删除帐户”。 参阅有关[删除 Azure Cosmos DB 帐户](https://docs.microsoft.com/azure/cosmos-db/manage-account)的详细说明。
+若要在 Azure 门户中删除 Azure Cosmos DB 帐户，请右键单击该帐户名，然后单击“删除帐户”。 参阅有关[删除 Azure Cosmos DB 帐户](../cosmos-db/how-to-manage-database-account.md)的详细说明。
 
 ## <a name="next-steps"></a>后续步骤
 

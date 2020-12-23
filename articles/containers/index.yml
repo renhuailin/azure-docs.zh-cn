@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure 容器服务文档 | Microsoft Docs
   description: 了解如何使用 Azure 容器服务来管理和开发基于云的容器应用程序。
   ms.topic: hub-page
-  ms.openlocfilehash: a7b1480061a1482e5a7980fd89d9d28d89561d31
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: a1ed2769438208b422907dcb8758bd6f3c130986
+  ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88080841"
+  ms.lasthandoff: 11/30/2020
+  ms.locfileid: "96349225"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -44,10 +44,10 @@ conceptualContent:
     - url: /visualstudio/containers/overview-local-process-kubernetes
       itemType: concept
       text: 如何通过本地进程使用 Kubernetes
-    - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+    - url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
       itemType: how-to-guide
       text: 在 Visual Studio Code 中使用 Local Process with Kubernetes
-    - url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
+    - url: /visualstudio/containers/bridge-to-kubernetes
       itemType: how-to-guide
       text: 在 Visual Studio 中使用 Local Process with Kubernetes
   - title: 创建 Web 云应用和移动云应用
@@ -64,10 +64,10 @@ conceptualContent:
     - url: ../app-service/quickstart-custom-container.md
       itemType: get-started
       text: 运行自定义 Windows 容器
-    - url: ../app-service/containers/quickstart-docker.md
+    - url: ../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux
       itemType: quickstart
       text: 运行自定义 Linux 容器
-    - url: ../app-service/containers/quickstart-multi-container.md
+    - url: ../app-service/quickstart-multi-container.md
       itemType: quickstart
       text: 创建 Linux 多容器应用
     footerLink:
@@ -144,14 +144,14 @@ conceptualContent:
       itemType: tutorial
       text: 创建 Azure Red Hat OpenShift 群集
     footerLink:
-      url: /azure/openshift/
+      url: ../openshift/index.yml
       text: 查看详细信息
   - title: 无服务器应用程序开发
     links:
     - url: ../azure-functions/functions-overview.md
       itemType: overview
       text: Azure Functions 简介
-    - url: ../azure-functions/functions-create-first-function-vs-code.md
+    - url: ../azure-functions/create-first-function-vs-code-csharp.md
       itemType: quickstart
       text: 创建第一个函数
     - url: ../azure-functions/functions-triggers-bindings.md

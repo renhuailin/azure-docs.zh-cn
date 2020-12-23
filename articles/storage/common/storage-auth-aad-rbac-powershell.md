@@ -1,22 +1,22 @@
 ---
 title: 使用 PowerShell 为数据访问分配 Azure 角色
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure PowerShell 模块通过 azure RBAC)  (azure RBAC 访问控制向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和 Azure 自定义角色进行身份验证。
+description: 了解如何使用 Azure PowerShell 模块通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和 Azure 自定义角色进行身份验证。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d750e1f287ff7dfc5259b704355e026011fa872a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 852375cc7948fc7f6bd106380b3194f2dc84b8ca
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715808"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778914"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 为 blob 和队列数据访问分配 Azure 角色
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 
 将 Azure 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-本文介绍如何使用 Azure PowerShell 列出 Azure 内置角色并将其分配给用户。 有关使用 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/)。
+本文介绍如何使用 Azure PowerShell 列出 Azure 内置角色并将其分配给用户。 有关使用 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 概述](/powershell/azure/)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -60,6 +60,9 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 若要将 Azure 角色分配给安全主体，请使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令。 命令的格式因分配范围而异。 为了运行此命令，需要在相应的范围内分配“所有者”和“参与者”角色。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
 
+> [!NOTE]
+> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+
 ### <a name="container-scope"></a>容器范围
 
 若要分配容器范围的角色，请为 `--scope` 参数指定一个包含容器范围的字符串。 容器的范围采用以下格式：
@@ -68,7 +71,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-以下示例为用户分配**存储 Blob 数据参与者**角色，其范围为名为 *sample-container* 的容器。 请务必将括号中的示例值和占位符值替换为你自己的值： 
+以下示例为用户分配 **存储 Blob 数据参与者** 角色，其范围为名为 *sample-container* 的容器。 请务必将括号中的示例值和占位符值替换为你自己的值： 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -84,7 +87,7 @@ New-AzRoleAssignment -SignInName <email> `
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-以下示例为用户分配**存储队列数据参与者**角色，其范围为名为 *sample-queue* 的队列。 请务必将括号中的示例值和占位符值替换为你自己的值： 
+以下示例为用户分配 **存储队列数据参与者** 角色，其范围为名为 *sample-queue* 的队列。 请务必将括号中的示例值和占位符值替换为你自己的值： 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -137,5 +140,5 @@ New-AzRoleAssignment -SignInName <email> `
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure PowerShell 模块添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-powershell.md)
-- [使用 Azure CLI 分配 Azure 角色以访问 blob 和队列数据](storage-auth-aad-rbac-cli.md)
+- [使用 Azure CLI 分配用于访问 blob 和队列数据的 Azure 角色](storage-auth-aad-rbac-cli.md)
 - [使用 Azure 门户为 blob 和队列数据分配 Azure 角色](storage-auth-aad-rbac-portal.md)

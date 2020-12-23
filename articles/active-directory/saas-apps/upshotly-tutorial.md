@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/7/2020
 ms.author: jeedes
-ms.openlocfilehash: 1dbcd2bd997872820e87c9d8c2e239c4324e9ce6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a473ce1856c250dc29e92b99bda93921c618774
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532774"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521712"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upshotly"></a>教程：Azure Active Directory 与 Upshotly 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88532774"
 * 让用户使用其 Azure AD 帐户自动登录到 Upshotly。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -132,24 +132,24 @@ ms.locfileid: "88532774"
 
     a. 复制“公司 ID”值，并在 Azure 门户的“基本 SAML 配置”部分中使用此“公司 ID”值替换“登录 URL”中存在的“公司 ID”值。     
 
-    b. 在写字板中打开从 Azure 门户下载的**联合元数据 XML**，复制该元数据 XML 的内容并将其粘贴到“XML 元数据”文本框中  。
+    b. 在写字板中打开从 Azure 门户下载的 **联合元数据 XML** ，复制该元数据 XML 的内容并将其粘贴到“XML 元数据”文本框中  。
 
 ### <a name="create-upshotly-test-user"></a>创建 Upshotly 测试用户
 
-在本部分中，将在 Upshotly Edge Cloud 中创建一个名为 B.Simon 的测试用户。 与  [Upshotly 客户端支持团队](mailto:support@upshotly.com)合作，将用户添加到 Upshotly Edge Cloud 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Upshotly Edge Cloud 中创建一个名为 B.Simon 的测试用户。 与 [Upshotly 客户端支持团队](mailto:support@upshotly.com)协作，在 Upshotly Edge Cloud 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Upshotly 磁贴时，应当会自动登录到为其设置了 SSO 的 Upshotly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Upshotly 磁贴时，应当会自动登录到为其设置了 SSO 的 Upshotly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 Upshotly](https://aad.portal.azure.com/)

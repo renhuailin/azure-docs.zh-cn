@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
-ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72757143"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905123"
 ---
-# <a name="create-human-reviews-rest"></a>创建人工评审 (REST)
+# <a name="create-human-reviews-api-console"></a> (API 控制台创建人审查) 
 
 [审阅](./review-api.md#reviews)存储并显示供人工审查方评估的内容。 当用户完成评审时，系统会将结果发送到指定的回调终结点。 在本指南中，你将了解如何通过 API 控制台使用评审 REST API 来设置评审。 了解 API 的结构后，可以轻松将这些调用移植到任何与 REST 兼容的平台。
 
@@ -27,20 +27,20 @@ ms.locfileid: "72757143"
 
 ## <a name="create-a-review"></a>创建评审
 
-若要创建评审，请转到[评审 - 创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4) API 参考页并选择你的键区域的按钮（可以在[评审工具](https://contentmoderator.cognitive.microsoft.com/)的“凭据”页上的终结点 URL 中找到此项）**** ****。 这将启动 API 控制台，你可以在其中轻松构造和运行 REST API 调用。
+若要创建评审，请转到[评审 - 创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4) API 参考页并选择你的键区域的按钮（可以在[评审工具](https://contentmoderator.cognitive.microsoft.com/)的“凭据”页上的终结点 URL 中找到此项） 。 这将启动 API 控制台，你可以在其中轻松构造和运行 REST API 调用。
 
 ![“评审 - 获取”区域选择](images/test-drive-region.png)
 
 ### <a name="enter-rest-call-parameters"></a>输入 REST 调用参数
 
-输入“teamName”和“Ocp-Apim-Subscription-Key”的值**** ****：
+输入“teamName”和“Ocp-Apim-Subscription-Key”的值 ：
 
-- **teamName**：设置[审阅工具](https://contentmoderator.cognitive.microsoft.com/)帐户时创建的团队 ID（位于审阅工具的“凭据”屏幕的“ID”**** 字段中）。
-- **Ocp-Apim-Subscription-Key**：内容审查器密钥。 可以在[审阅工具](https://contentmoderator.cognitive.microsoft.com)的“设置”**** 选项卡上找到它。
+- **teamName**：设置 [审阅工具](https://contentmoderator.cognitive.microsoft.com/)帐户时创建的团队 ID（位于审阅工具的“凭据”屏幕的“ID”字段中）。
+- **Ocp-Apim-Subscription-Key**：内容审查器密钥。 可以在[审阅工具](https://contentmoderator.cognitive.microsoft.com)的“设置”选项卡上找到它。
 
 ### <a name="enter-a-review-definition"></a>输入评审定义
 
-编辑“请求正文”框，通过以下字段输入 JSON 请求****：
+编辑“请求正文”框，通过以下字段输入 JSON 请求：
 
 - **元数据**：要返回到回调终结点的自定义键值对。 如果此键是[评审工具](https://contentmoderator.cognitive.microsoft.com)中定义的短代码，则显示为标记。
 - **内容**：对于图像和视频内容，这是指向内容的 URL 字符串。 对于文本内容，这是实际的文本字符串。
@@ -129,13 +129,13 @@ ms.locfileid: "72757143"
 
 ### <a name="submit-your-request"></a>提交请求
   
-选择“发送”。**** 如果该操作成功，“响应状态”将为 `200 OK`，且“响应内容”框显示评审的 ID**** ****。 复制此 ID，然后在以下步骤中使用它。
+选择“发送”。 如果该操作成功，“响应状态”将为 `200 OK`，且“响应内容”框显示评审的 ID 。 复制此 ID，然后在以下步骤中使用它。
 
 ![审查 - 创建控制台响应内容框显示审查 ID](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>检查新评审
 
-在[评审工具](https://contentmoderator.cognitive.microsoft.com)中，选择“评审” > “图像”/“文本”/“视频”（取决于所使用的内容）**** **** **** ****。 现在，上传的内容应已显示，可供人工评审。
+在[评审工具](https://contentmoderator.cognitive.microsoft.com)中，选择“评审” > “图像”/“文本”/“视频”（取决于所使用的内容）   。 现在，上传的内容应已显示，可供人工评审。
 
 ![足球的审查工具图像](images/test-drive-review-5.PNG)
 
@@ -145,11 +145,11 @@ ms.locfileid: "72757143"
 
 ![“工作流 - 获取”区域选择](images/test-drive-region.png)
 
-按以上所述输入 REST 调用参数。 对于此步骤，reviewId 是创建评审时收到的唯一 ID 字符串****。
+按以上所述输入 REST 调用参数。 对于此步骤，reviewId 是创建评审时收到的唯一 ID 字符串。
 
 ![审查 - 创建控制台获取结果](images/test-drive-review-3.PNG)
   
-选择“发送”。**** 如果操作成功，“响应状态”为 `200 OK`，“响应内容”框将以 JSON 格式显示评审详细信息，如下所示**** ****：
+选择“发送”。 如果操作成功，“响应状态”为 `200 OK`，“响应内容”框将以 JSON 格式显示评审详细信息，如下所示 ：
 
 ```json
 {  
@@ -187,7 +187,7 @@ ms.locfileid: "72757143"
 记下响应中的以下字段：
 
 - **status**
-- **reviewerResultTags**：如果有标记是由人工评审团队手动添加的（通过“createdBy”字段指示），会出现该字段****。
+- **reviewerResultTags**：如果有标记是由人工评审团队手动添加的（通过“createdBy”字段指示），会出现该字段。
 - **metadata**：该字段显示，在人工评审团队更改之前，最初添加到评审中的标记。
 
 ## <a name="next-steps"></a>后续步骤

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301442"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341679"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答 - 关于 Azure 安全中心的一般问题
 
@@ -62,7 +62,7 @@ Azure 安全中心中启用的安全策略将使用安全建议和监视。 若�
 Azure 安全中心可分析 Azure 资源的安全状态。 发现潜在的安全漏洞后会生成建议。 建议会对所需控件的整个配置过程提供指导。 示例如下：
 
 * 预配反恶意软件可帮助识别和删除恶意软件
-* 配置[网络安全组](../virtual-network/security-overview.md)和规则来控制发送到虚拟机的流量
+* 配置[网络安全组](../virtual-network/network-security-groups-overview.md)和规则来控制发送到虚拟机的流量
 * 设置 web 应用程序防火墙，帮助抵御针对 web 应用程序的攻击
 * 部署缺少的系统更新
 * 解决与推荐基线不匹配的操作系统配置

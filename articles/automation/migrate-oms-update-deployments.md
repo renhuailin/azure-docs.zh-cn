@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987602"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183594"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>将 Azure Monitor 日志更新部署迁移到 Azure 门户
 
@@ -19,7 +19,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 ## <a name="key-information"></a>重要信息
 
 * 现有部署将继续发挥作用。 在 Azure 中重新创建部署后，可以删除旧部署。
-* 过去在 OMS 中提供的所有现有功能现已在 Azure 中提供。 若要详细了解更新管理，请参阅[更新管理概述](update-management/update-mgmt-overview.md)。
+* 过去在 OMS 中提供的所有现有功能现已在 Azure 中提供。 若要详细了解更新管理，请参阅[更新管理概述](./update-management/overview.md)。
 
 ## <a name="access-the-azure-portal"></a>访问 Azure 门户
 
@@ -33,7 +33,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 3. 在你的自动化帐户中，单击“更新管理”。
 
-    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text=""更新管理" 页的屏幕截图。":::
+    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="&quot;更新管理&quot; 页的屏幕截图。":::
 
 4. 在 Azure 门户中，在“所有服务”下选择“自动化帐户”。  
 
@@ -43,7 +43,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 在 OMS 门户中创建的所有更新部署有一个[保存的搜索结果](../azure-monitor/platform/computer-groups.md)，也称为计算机组，其名称与现有更新部署的名称相同。 保存的搜索结果包含在更新部署中计划的计算机列表。
 
-:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="突出显示 "名称和服务器" 字段的 "更新部署" 页的屏幕截图。":::
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="突出显示 &quot;名称和服务器&quot; 字段的 &quot;更新部署&quot; 页的屏幕截图。":::
 
 若要使用此现有的保存搜索结果，请执行以下步骤：
 
@@ -74,4 +74,4 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 自动化中的更新管理，请参阅[更新管理概述](update-management/update-mgmt-overview.md)。
+若要详细了解 Azure 自动化中的更新管理，请参阅[更新管理概述](./update-management/overview.md)。

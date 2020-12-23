@@ -3,12 +3,12 @@ title: 关于 Azure 事件网格的 Auth0 合作伙伴主题
 description: 使用 Azure 事件网格将事件从 Auth0 发送到 Azure 服务。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 411d8f8eb53e4bc3fa8c8dda04bdcf12c74db768
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 340403111c094540ba7e66faf71ebf3cfe24fe7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103341"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101283"
 ---
 # <a name="auth0-partner-topics"></a>Auth0 合作伙伴主题
 ![Auth0 徽标](./media/auth0-overview/auth0-logo.png)
@@ -29,21 +29,21 @@ Auth0 合作伙伴主题允许使用由 Auth0's 系统发出的事件来完成�
 ### <a name="engage-with-your-users"></a>与用户联系
 提供强大的用户体验对于减少用户流失和留住用户至关重要。 通过将 Auth0 事件与 Azure Functions 和 Azure 逻辑应用配合使用，提供更多自定义的应用程序体验。 
 
-### <a name="understand-user-behavior"></a>了解用户行为
+### <a name="understand-user-behavior"></a>理解用户行为
 了解用户何时访问产品、登录位置以及使用的设备。 通过跟踪这些信号，了解最重要的产品领域。 这些信号可帮助确定：
 - 要支持的浏览器和设备。 
 - 要将应用本地化为哪些语言。 
 - 当高峰流量时间为时。 
 
 ### <a name="manage-user-data"></a>管理用户数据
-维护和审核用户操作对于维护安全性和遵循行业规则至关重要。 编辑、删除或导出用户数据的功能对遵循隐私法律（如欧盟的一般数据保护条例（GDPR））日益重要。
+维护和审核用户操作对于维护安全性和遵循行业规则至关重要。 编辑、删除或导出用户数据的功能对以下隐私法律越来越重要，如欧盟的一般数据保护条例 (GDPR) 。
 
 ### <a name="secure-your-application"></a>保护应用程序
 保护分布式系统时，组合安全监视和事件响应过程非常重要。 因此，将所有数据保存在一个位置并监视其整个堆栈是很重要的。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [合作伙伴主题概述](partner-topics-overview.md)
+- [合作伙伴主题概述](partner-events-overview.md)
 - [如何使用 Auth0 合作伙伴主题](auth0-how-to.md)
 - [Auth0 文档](https://auth0.com/docs/azure-tutorial)
 - [成为事件网格合作伙伴](partner-onboarding-overview.md)

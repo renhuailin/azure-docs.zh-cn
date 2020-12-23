@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087395"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534441"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
@@ -50,7 +50,7 @@ ms.locfileid: "86087395"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 Log Analytics 工作区。
 
-2. 从左侧菜单的“常规”下，选择“日志”**** ****。 从此处可搜索从 Kafka 所收集的数据。 在查询窗口中输入查询，然后选择“运行”****。 一下是一些示例搜索：
+2. 从左侧菜单的“常规”下，选择“日志”   。 从此处可搜索从 Kafka 所收集的数据。 在查询窗口中输入查询，然后选择“运行”  。 一下是一些示例搜索：
 
 * 磁盘使用率：
 
@@ -104,7 +104,7 @@ ms.locfileid: "86087395"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Monitor 的详细信息，请参阅 [Azure Monitor 概述](../../log-analytics/log-analytics-get-started.md)和[查询 Azure Monitor 日志以监视 HDInsight 群集](../hdinsight-hadoop-oms-log-analytics-use-queries.md)。
+有关 Azure Monitor 的详细信息，请参阅 [Azure Monitor 概述](../../azure-monitor/overview.md)和[查询 Azure Monitor 日志以监视 HDInsight 群集](../hdinsight-hadoop-oms-log-analytics-use-queries.md)。
 
 有关使用 Apache Kafka 的详细信息，请参阅以下文档：
 

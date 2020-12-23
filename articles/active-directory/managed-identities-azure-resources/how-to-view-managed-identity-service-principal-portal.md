@@ -16,11 +16,11 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b25f2691646192faf4d4c133835b456038abd94
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003729"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>在 Azure 门户中查看托管标识的服务主体
 
@@ -43,7 +43,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 1. 依次单击“Azure Active Directory”、“企业应用程序”   。
 2. 在“应用程序类型”  下，选择“所有应用程序”  ，然后单击“应用”  。
-3. 在 "搜索筛选器" 框中，键入启用了托管标识的 Azure 资源的名称，或者从显示的列表中选择它。
+3. 在搜索筛选器框中，键入已启用托管标识的 Azure 资源的名称，或从显示的列表中选择它。
 
    ![在门户中查看托管标识服务主体](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)
 

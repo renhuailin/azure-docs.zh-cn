@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e9d98e8b68b4e01d7e8f19e7c7d89a88d9bf69f
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: cfdcc39966e58a845be0096474cb8a3366f3dd7a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500489"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503566"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>教程：Azure Active Directory 单一登录 (SSO) 与 VMware Horizon - Unified Access Gateway 的集成
 
@@ -125,7 +125,7 @@ ms.locfileid: "89500489"
 
 ### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>创建 VMware Horizon - Unified Access Gateway 测试用户
 
-本部分将在 VMware Horizon - Unified Access Gateway 中创建一个名为 B.Simon 的用户。 与 [VMware Horizon - Unified Access Gateway 支持团队](mailto:support@vmware.com)合作，将用户添加到 VMware Horizon - Unified Access Gateway 平台中。 使用单一登录前，必须先创建并激活用户。
+本部分将在 VMware Horizon - Unified Access Gateway 中创建一个名为 B.Simon 的用户。 请与 [VMware Horizon - Unified Access Gateway 支持团队](mailto:support@vmware.com)协作，将用户添加到 VMware Horizon - Unified Access Gateway 平台。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -141,8 +141,8 @@ ms.locfileid: "89500489"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 VMware Horizon - Unified Access Gateway 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击“VMware Horizon - Unified Access Gateway”磁贴时，应会自动登录到为其设置了 SSO 的 VMware Horizon - Unified Access Gateway。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击“VMware Horizon - Unified Access Gateway”磁贴时，应会自动登录到为其设置了 SSO 的 VMware Horizon - Unified Access Gateway。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 VMware Horizon - Unified Access Gateway 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 VMware Horizon - Unified Access Gateway 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

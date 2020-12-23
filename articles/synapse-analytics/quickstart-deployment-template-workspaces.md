@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建 Azure Synapse 工作区 - Azure 资源管理器模板
-description: 了解如何使用 Azure 资源管理器模板创建 Synapse 工作区。
+description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建 Synapse 工作区。
 services: azure-resource-manager
 author: julieMSFT
 ms.service: azure-resource-manager
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: dc6d36f2316e0ae19ce8b813fa9eb127b1a9cf1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569009"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740375"
 ---
-# <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>快速入门：使用部署模板创建 Azure Synapse 工作区
+# <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Synapse 工作区
 
 此 Azure 资源管理器模板（ARM 模板）将创建具有基础 Data Lake Storage 的 Azure Synapse 工作区。 Azure Synapse 工作区是 Azure Synapse Analytics 中分析过程的安全对象协作边界。
 
@@ -31,7 +31,7 @@ ms.locfileid: "91569009"
 
 ## <a name="review-the-template"></a>查看模板
 
-可通过选择“可视化”链接来查看模板，如下所示：
+可通过选择“可视化”链接来查看模板。 然后选择“编辑模板”。
 
 [![可视化](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -43,25 +43,25 @@ ms.locfileid: "91569009"
 ## <a name="deploy-the-template"></a>部署模板
 
 1. 选择下图登录到 Azure 并打开模板。 使用此模板创建 Synapse 工作区。
-   
+
    [![部署到 Azure 2](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 1. 输入或更新以下值：
 
-   * 订阅：选择 Azure 订阅。
-   * 资源组： 选择“新建”，输入资源组的唯一名称，然后选择“确定”。 新的资源组会促进资源清理。
-   * **区域**：选择区域。  例如“美国中部”。
-   * 名称：输入工作区的名称。
-   * SQL 管理员登录：输入 SQL Server 的管理员用户名。
-   * SQL 管理员密码：输入 SQL Server 的管理员密码。
-   * **标记值**：接受默认值。 
-   * 审阅并创建：选中。
-   * **创建**：选中。
+   - 订阅：选择 Azure 订阅。
+   - 资源组： 选择“新建”，输入资源组的唯一名称，然后选择“确定”。 新的资源组会促进资源清理。
+   - **区域** ：选择区域。  例如“美国中部”。
+   - 名称：输入工作区的名称。
+   - SQL 管理员登录：输入 SQL Server 的管理员用户名。
+   - SQL 管理员密码：输入 SQL Server 的管理员密码。
+   - **标记值** ：接受默认值。
+   - 审阅并创建：选中。
+   - **创建** ：选中。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 Azure Synapse Analytics 和 Azure 资源管理器，请继续阅读以下文章。
 
-- 阅读 [Azure Synapse Analytics 概述](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 
+- 阅读 [Azure Synapse Analytics 概述](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 - 了解有关 [Azure 资源管理器](../azure-resource-manager/management/overview.md)的详细信息
 - [创建并部署第一个 ARM 模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

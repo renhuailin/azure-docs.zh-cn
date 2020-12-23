@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/30/2020
-  ms.openlocfilehash: b407d2ced754297b4b61738b58f91f18f820907a
-  ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+  ms.date: 10/26/2020
+  ms.openlocfilehash: cef3c2ce0973436edf9406f9ef16b565735463ce
+  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/30/2020
-  ms.locfileid: "91598320"
+  ms.lasthandoff: 10/30/2020
+  ms.locfileid: "93101997"
 landingContent:
 - title: 关于 Azure Policy
   linkLists:
@@ -57,14 +57,18 @@ landingContent:
       url: ./assign-policy-rest-api.md
     - text: 分配策略（ARM 模板）
       url: ./assign-policy-template.md
+    - text: 分配策略 (Terraform)
+      url: ./assign-policy-terraform.md
   - linkListType: tutorial
     links:
     - text: 创建和管理策略
       url: ./tutorials/create-and-manage.md
     - text: 使用 VS Code 扩展
       url: ./how-to/extension-for-vscode.md
-    - text: 将策略设计为代码工作流
+    - text: 设计 Azure Policy as Code 工作流
       url: ./concepts/policy-as-code.md
+    - text: 通过 GitHub 实现 Azure Policy as Code
+      url: ./tutorials/policy-as-code-github.md
   - linkListType: deploy
     links:
     - text: 策略示例索引
@@ -89,9 +93,9 @@ landingContent:
     links:
     - text: 合规性
       url: ./concepts/regulatory-compliance.md
-    - text: 适用于 Kubernetes 的策略
+    - text: 适用于 Kubernetes 的 Azure Policy
       url: ./concepts/policy-for-kubernetes.md
-    - text: 适用于 VM 的策略
+    - text: 适用于 VM 的Azure Policy
       url: ./concepts/guest-configuration.md
 - title: 评估并修正资源
   linkLists:
@@ -133,6 +137,8 @@ landingContent:
       url: /rest/api/resources/policyassignments
     - text: REST（定义）
       url: /rest/api/resources/policydefinitions
+    - text: REST（豁免）
+      url: /rest/api/resources/policyexemptions
     - text: REST（计划）
       url: /rest/api/resources/policysetdefinitions
     - text: 资源管理器模板

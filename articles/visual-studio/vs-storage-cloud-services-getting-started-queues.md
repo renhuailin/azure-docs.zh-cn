@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9f0a3c3a96a73bd71a9b0c769a3ceff85ae428f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 94f248edfebd6c6fedb78a54eee220c0ef38b4ab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017611"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545852"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在云服务项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 队列存储。****
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在云服务项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 队列存储。
 
-我们将向你展示如何使用代码创建队列。 此外，我们将展示如何执行基本的队列操作，例如添加、修改、读取和删除队列消息。 示例是用 c # 代码编写的，并使用了 [适用于 .net 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+我们将向你展示如何使用代码创建队列。 此外，我们将展示如何执行基本的队列操作，例如添加、修改、读取和删除队列消息。 示例是用 c # 代码编写的，并使用了 [适用于 .net 的 Microsoft Azure 存储客户端库](/previous-versions/azure/dn261237(v=azure.100))。
 
-执行“添加连接服务”操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。****
+执行“添加连接服务”操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。
 
 * 有关以代码方式操作队列的详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](../storage/queues/storage-dotnet-how-to-use-queues.md)。
 * 有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。
@@ -120,7 +120,7 @@ await messageQueue.DeleteMessage(retrievedMessage);
 可通过两种方式自定义队列中消息的检索。
 
 * 可以获取一批消息（最多 32 条）。
-* 可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少的时间来完全处理每个消息。 以下代码示例使用 **GetMessages** 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5分钟会同时为所有消息启动，因此在调用 **GetMessages**5 分钟后，任何尚未删除的消息都将再次变得可见。
+* 可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少的时间来完全处理每个消息。 以下代码示例使用 **GetMessages** 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5分钟会同时为所有消息启动，因此在调用 **GetMessages** 5 分钟后，任何尚未删除的消息都将再次变得可见。
 
 下面是一个示例：
 
@@ -150,7 +150,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>将 Async-Await 模式与公用 Azure 队列 API 配合使用
-此示例演示如何将 Async-Await 模式与公用 Azure 队列 API 配合使用。 该示例调用每个给定方法的异步版本，这可以通过每个方法的 **异步** 后修复来查看。 使用异步方法时，async-await 模式将暂停本地执行，直到调用完成。 此行为允许当前的线程执行其他工作，这有助于避免性能瓶颈并提高应用程序的整体响应能力。 有关在 .NET 中使用 Async-Await 模式的详细信息，请参阅 [Async 和 Await（C# 和 Visual Basic）](https://msdn.microsoft.com/library/hh191443.aspx)
+此示例演示如何将 Async-Await 模式与公用 Azure 队列 API 配合使用。 该示例调用每个给定方法的异步版本，这可以通过每个方法的 **异步** 后修复来查看。 使用异步方法时，async-await 模式将暂停本地执行，直到调用完成。 此行为允许当前的线程执行其他工作，这有助于避免性能瓶颈并提高应用程序的整体响应能力。 有关在 .NET 中使用 Async-Await 模式的详细信息，请参阅 [Async 和 Await（C# 和 Visual Basic）](/previous-versions/hh191443(v=vs.140))
 
 ```csharp
 // Create a message to put in the queue
@@ -179,4 +179,3 @@ messageQueue.Delete();
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-

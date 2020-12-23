@@ -1,0 +1,70 @@
+- name: Azure DDoS 防护标准文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure DDoS 防护标准版？
+      href: ddos-protection-overview.md
+- name: 快速入门
+  items:
+    - name: 创建 DDoS 保护计划 - 门户
+      href: manage-ddos-protection.md
+    - name: 创建 DDoS 保护计划 - PowerShell
+      href: manage-ddos-protection-powershell.md
+    - name: 创建 DDoS 防护计划 - CLI
+      href: manage-ddos-protection-cli.md
+- name: 教程
+  items:
+    - name: 查看和配置 DDoS 防护遥测
+      href: telemetry-monitoring-alerting.md
+    - name: 配置 DDoS 攻击缓解报表和流日志
+      href: reports-and-flow-logs.md
+- name: 概念
+  items:
+    - name: 攻击类型
+      href: types-of-attacks.md
+    - name: 基本最佳做法
+      href: fundamental-best-practices.md
+    - name: Azure DDoS 防护标准功能
+      href: ddos-protection-standard-features.md
+    - name: DDoS 响应策略的组件
+      href: ddos-response-strategy.md
+    - name: 参考体系结构
+      href: ddos-protection-reference-architectures.md
+    - name: 安全基线
+      href: ../security/fundamentals/ddos-protection-security-baseline.md?toc=%2fazure%2fddos-protection%2ftoc.json
+- name: 操作指南
+  items:
+    - name: 通过模拟进行测试
+      href: test-through-simulations.md
+    - name: 管理权限和限制
+      href: manage-permissions.md
+    - name: 使用 DDoS 快速响应 (DRR)
+      href: ddos-rapid-response.md
+    - name: 加入合作伙伴
+      href: ddos-protection-partner-onboarding.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network/ddos-protection?view=azure-cli-latest
+    - name: Azure PowerShell
+      href: /powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0
+    - name: .NET
+      href: /dotnet/api/
+    - name: Java
+      href: /java/api/
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/virtualnetwork/ddosprotectionplans
+    - name: Azure 资源管理器
+      href: ../azure-resource-manager/management/overview.md
+- name: 资源
+  items:
+    - name: 常见问题解答
+      href: ddos-faq.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/en-us/pricing/details/ddos-protection/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=ddos-protection'

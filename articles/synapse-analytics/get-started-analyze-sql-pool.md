@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 SQL 池分析数据入门
+title: 教程：开始使用专用 SQL 池分析数据
 description: 在本教程中，你将使用纽约市出租车示例数据来探索 SQL 池的分析功能。
 services: synapse-analytics
 author: saveenr
@@ -7,22 +7,24 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.date: 11/17/2020
+ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015494"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455165"
 ---
-# <a name="analyze-data-with-sql-pools"></a>使用 SQL 池分析数据
+# <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
-Azure Synapse Analytics 为你提供使用 SQL 池分析数据的功能。 在本教程中，你将使用纽约市出租车示例数据来探索 SQL 池的分析功能。
+Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。 在本教程中，你将使用纽约市出租车数据来探索专用 SQL 池的功能。
 
-## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>将纽约市出租车数据加载到 SQLDB1
+## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>将纽约市出租车数据加载到 SQLPOOL1
 
 1. 在 Synapse Studio 中，导航到“开发”中心，然后新建 SQL 脚本
+1. 在脚本的“连接到”部分中选择池“SQLPOOL1”（在本教程的[步骤 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) 中创建的池）。
 1. 输入以下代码：
     ```
     CREATE TABLE [dbo].[Trip]
@@ -69,15 +71,15 @@ Azure Synapse Analytics 为你提供使用 SQL 池分析数据的功能。 在�
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. 此脚本大约需要 1 分钟的运行时间。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.Trip 的表中
+1. 此脚本将在大约 60 秒内完成。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.Trip 的表中
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>浏览 SQL 池中的纽约市出租车数据
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>浏览专用 SQL 池中的纽约市出租车数据
 
 1. 在 Synapse Studio 中，转到“数据”中心。
-1. 转到“SQLDB1” > “表” 。 你将看到几个已加载的表。
+1. 转到“SQLPOOL1” > “表” 。 你将看到几个已加载的表。
 1. 右键单击 dbo.Trip 表，然后选择“新建 SQL 脚本” > “选择前 100 行”  。
 1. 等待新的 SQL 脚本创建并运行。
-1. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为“SQLDB1”的 SQL 池 。
+1. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为“SQLPOOL1”的 SQL 池 。
 1. 将 SQL 脚本的文本替换为此代码并运行。
 
     ```sql
@@ -92,8 +94,9 @@ Azure Synapse Analytics 为你提供使用 SQL 池分析数据的功能。 在�
 
     此查询显示总行程距离和平均行程距离与乘客数之间的关系。
 1. 在“SQL 脚本结果”窗口中，将“视图”更改为“图表”，从而以折线图形式查看结果的可视化效果 。
-
-
+    
+    > [!NOTE]
+    > 可通过数据中心中的工具提示识别启用了工作区的专用 SQL 池（之前称为 SQL DW）。
 
 ## <a name="next-steps"></a>后续步骤
 

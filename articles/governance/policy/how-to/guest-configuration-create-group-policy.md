@@ -3,12 +3,12 @@ title: 如何从 Windows 组策略基线创建来宾配置策略定义
 description: 了解如何将 Windows Server 2019 安全基线中的组策略转换为策略定义。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547762"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348638"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>如何从 Windows 组策略基线创建来宾配置策略定义
 
@@ -18,10 +18,10 @@ ms.locfileid: "88547762"
 [Azure Policy 来宾配置](../concepts/guest-configuration.md)仅审核计算机内部的设置。
 
 > [!IMPORTANT]
-> 具有来宾配置的自定义策略定义是一项预览功能。
->
 > 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要在所有 Windows 计算机上大规模部署此扩展，请分配以下策略定义：
 > - [部署必备组件以在 Windows VM 上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> 
+> 不要在自定义内容包中使用机密或机密信息。
 
 DSC 社区已发布 [BaselineManagement 模块](https://github.com/microsoft/BaselineManagement)，以将导出的组策略模板转换为 DSC 格式。 BaselineManagement 模块与 GuestConfiguration cmdlet 一起为 Windows 组策略内容创建 Azure Policy 来宾配置包。 有关使用 BaselineManagement 模块的详细信息，请参阅文章[快速入门：将组策略转换为 DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart)。
 
@@ -87,78 +87,12 @@ DSC 社区已发布 [BaselineManagement 模块](https://github.com/microsoft/Bas
 
 ## <a name="create-azure-policy-guest-configuration"></a>创建 Azure Policy 来宾配置
 
-下一步是将文件发布到 Blob 存储。 
-
-1. 下面的脚本包含可用于自动执行此任务的函数。 请注意，`publish` 函数中使用的命令需要 `Az.Storage` 模块。
+1. 下一步是将文件发布到 Azure Blob 存储。 命令 `Publish-GuestConfigurationPackage` 需要 `Az.Storage` 模块。
 
    ```azurepowershell-interactive
-    function Publish-Configuration {
-        param(
-        [Parameter(Mandatory=$true)]
-        $resourceGroup,
-        [Parameter(Mandatory=$true)]
-        $storageAccountName,
-        [Parameter(Mandatory=$true)]
-        $storageContainerName,
-        [Parameter(Mandatory=$true)]
-        $filePath,
-        [Parameter(Mandatory=$true)]
-        $blobName
-        )
-
-        # Get Storage Context
-        $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-            -Name $storageAccountName | `
-            ForEach-Object { $_.Context }
-
-        # Upload file
-        $Blob = Set-AzStorageBlobContent -Context $Context `
-            -Container $storageContainerName `
-            -File $filePath `
-            -Blob $blobName `
-            -Force
-
-        # Get url with SAS token
-        $StartTime = (Get-Date)
-        $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-        $SAS = New-AzStorageBlobSASToken -Context $Context `
-            -Container $storageContainerName `
-            -Blob $blobName `
-            -StartTime $StartTime `
-            -ExpiryTime $ExpiryTime `
-            -Permission rl `
-            -FullUri
-
-        # Output
-        return $SAS
-    }
+   Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName  myResourceGroupName -StorageAccountName myStorageAccountName
    ```
 
-1. 创建参数以定义唯一的资源组、存储帐户和容器。 
-   
-   ```azurepowershell-interactive
-    # Replace the $resourceGroup, $storageAccount, and $storageContainer values below.
-    $resourceGroup = 'rfc_customguestconfig'
-    $storageAccount = 'guestconfiguration'
-    $storageContainer = 'content'
-    $path = 'c:\git\policyfiles\Server2019Baseline\Server2019Baseline.zip'
-    $blob = 'Server2019Baseline.zip' 
-    ```
-
-1. 将 publish 函数与分配的参数一起使用，以将来宾配置包发布到公共 Blob 存储。
-
-
-   ```azurepowershell-interactive
-   $PublishConfigurationSplat = @{
-       resourceGroup = $resourceGroup
-       storageAccountName = $storageAccount
-       storageContainerName = $storageContainer
-       filePath = $path
-       blobName = $blob
-       FullUri = $true
-   }
-   $uri = Publish-Configuration @PublishConfigurationSplat
-    ```
 1. 在创建并上传来宾配置自定义策略包后，创建来宾配置策略定义。 使用 `New-GuestConfigurationPolicy` cmdlet 创建来宾配置。
 
    ```azurepowershell-interactive

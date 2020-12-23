@@ -11,12 +11,12 @@ metadata:
   author: dnblankedelman
   ms.author: dnb
   ms.date: 02/18/2020
-  ms.openlocfilehash: e5c1ef5e84f0170927d7fcac65b594d44ed33b93
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 5fed24b0c6557fc0f54bf78ac756f2b278863217
+  ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "85833428"
+  ms.lasthandoff: 11/17/2020
+  ms.locfileid: "94660587"
 highlightedContent:
   items:
   - title: SRE 简介：什么是 SRE？ (1/3)
@@ -33,22 +33,22 @@ productDirectory:
   - title: 通过现代操作实践提高可靠性
     imageSrc: ./media/index/video.svg
     links:
-    - url: https://myignite.techcommunity.microsoft.com/sessions/82996
+    - url: https://myignite.microsoft.com/archives/IG19-OPS10
       text: 为现代 ops 构建基础：监视
-    - url: https://myignite.techcommunity.microsoft.com/sessions/82997
+    - url: https://myignite.microsoft.com/archives/IG19-OPS20
       text: 响应事件
-    - url: https://myignite.techcommunity.microsoft.com/sessions/82998
+    - url: https://myignite.microsoft.com/archives/IG19-OPS30
       text: 从失败中学习
-    - url: https://myignite.techcommunity.microsoft.com/sessions/82999
+    - url: https://myignite.microsoft.com/archives/IG19-OPS40
       text: 用于提高可靠性的部署实践
-    - url: https://myignite.techcommunity.microsoft.com/sessions/83001
+    - url: https://myignite.microsoft.com/archives/IG19-OPS50
       text: 为增长做准备：容量规划和扩展
   - title: SRE 在线课程
     imageSrc: ./media/index/learn.svg
     links:
-    - url: https://docs.microsoft.com/learn/modules/intro-to-site-reliability-engineering/
+    - url: /learn/modules/intro-to-site-reliability-engineering/
       text: 站点可靠性工程简介
-    - url: https://docs.microsoft.com/learn/paths/improve-reliability-modern-operations/
+    - url: /learn/paths/improve-reliability-modern-operations/
       text: 通过现代操作实践提高可靠性
   - title: SRE 资源
     imageSrc: ./media/index/reference.svg
@@ -69,97 +69,97 @@ conceptualContent:
   items:
   - title: 体系结构
     links:
-    - url: https://docs.microsoft.com/azure/architecture/framework/
+    - url: /azure/architecture/framework/
       itemType: reference
       text: Azure 体系结构框架
-    - url: https://docs.microsoft.com/azure/architecture/guide
+    - url: /azure/architecture/guide
       itemType: reference
       text: Azure 应用程序体系结构指南
-    - url: https://docs.microsoft.com/azure/architecture/architectures/?filter=reference-architecture
+    - url: /azure/architecture/architectures/?filter=reference-architecture
       itemType: reference
       text: 参考体系结构
-    - url: https://docs.microsoft.com/azure/architecture/cloud-adoption/
+    - url: /azure/architecture/cloud-adoption/
       itemType: reference
       text: 适用于 Azure 的 Microsoft 云采用框架
-    - url: https://docs.microsoft.com/azure/architecture/architectures/?filter=example-workload
+    - url: /azure/architecture/architectures/?filter=example-workload
       itemType: reference
       text: 示例工作负荷
-    - url: https://docs.microsoft.com/azure/architecture/microservices
+    - url: /azure/architecture/microservices
       itemType: reference
       text: 在 Azure 上构建微服务
-    - url: https://docs.microsoft.com/azure/architecture/data-guide/
+    - url: /azure/architecture/data-guide/
       itemType: reference
       text: Azure 数据架构指南
-    - url: https://docs.microsoft.com/azure/architecture/best-practices/
+    - url: /azure/architecture/best-practices/
       itemType: reference
       text: 云最佳做法
-    - url: https://docs.microsoft.com/azure/architecture/framework/resiliency/overview
+    - url: /azure/architecture/framework/resiliency/overview
       itemType: reference
       text: 设计可靠的 Azure 应用程序
-    - url: https://docs.microsoft.com/azure/architecture/patterns
+    - url: /azure/architecture/patterns
       itemType: reference
       text: 云设计模式
-    - url: https://docs.microsoft.com/azure/architecture/aws-professional
+    - url: /azure/architecture/aws-professional
       itemType: reference
       text: 面向 AWS 专业人员的 Azure
-    - url: https://docs.microsoft.com/azure/architecture/performance
+    - url: /azure/architecture/performance
       itemType: reference
       text: 性能调优
     footerLink:
-      url: https://docs.microsoft.com/azure/architecture/
+      url: /azure/architecture/
       text: 在 Azure 体系结构中心中查看详细信息
   - title: 监视
     links:
-    - url: https://docs.microsoft.com/azure/azure-monitor/overview
+    - url: ../azure-monitor/overview.md
       itemType: get-started
       text: Azure Monitor 概述
-    - url: https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics
+    - url: ../azure-monitor/platform/data-platform-metrics.md
       itemType: get-started
       text: 将指标与 Azure Monitor 配合使用
-    - url: https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs
+    - url: ../azure-monitor/platform/data-platform-logs.md
       itemType: get-started
       text: 将日志与 Azure Monitor 配合使用
-    - url: https://docs.microsoft.com/azure/azure-monitor/azure-monitor-app-hub
+    - url: ../azure-monitor/azure-monitor-app-hub.yml
       itemType: get-started
       text: 使用 Application Insights 管理应用程序性能
-    - url: https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing
+    - url: ../azure-monitor/app/distributed-tracing.md
       itemType: get-started
       text: 将分布式跟踪与 Azure Monitor 配合使用
     footerLink:
-      url: https://docs.microsoft.com/en-us/azure/azure-monitor/
+      url: ../azure-monitor/index.yml
       text: 查看有关 Azure Monitor 的详细信息
   - title: 预配和交付
     links:
-    - url: https://docs.microsoft.com/azure/azure-resource-manager/
+    - url: ../azure-resource-manager/index.yml
       itemType: get-started
       text: Azure 资源管理器
-    - url: https://docs.microsoft.com/azure/terraform/
+    - url: /azure/terraform/
       itemType: get-started
       text: Azure 上的 Terraform
     - url: https://help.github.com/actions
       itemType: get-started
       text: GitHub 操作
-    - url: https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops
+    - url: /azure/devops/pipelines/index?view=azure-devops
       itemType: get-started
       text: Azure Pipelines
   - title: 扩展
     links:
-    - url: https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview
+    - url: ../azure-monitor/platform/autoscale-overview.md
       itemType: get-started
       text: 自动缩放概述
-    - url: https://docs.microsoft.com/azure/architecture/best-practices/auto-scaling
+    - url: /azure/architecture/best-practices/auto-scaling
       itemType: get-started
       text: 自动缩放指南
     - url: https://www.pluralsight.com/courses/microsoft-azure-autoscaling-developing
       itemType: get-started
       text: 为自动缩放进行开发
-    - url: https://docs.microsoft.com/azure/architecture/framework/scalability/overview
+    - url: /azure/architecture/framework/scalability/overview
       itemType: get-started
       text: Azure 体系结构可伸缩性构成要素
-    - url: https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out
+    - url: /azure/architecture/guide/design-principles/scale-out
       itemType: get-started
       text: 扩大式设计
-    - url: https://docs.microsoft.com/en-us/azure/architecture/patterns/category/performance-scalability
+    - url: /azure/architecture/patterns/category/performance-scalability
       itemType: get-started
       text: 性能和可伸缩性模式
 additionalContent:

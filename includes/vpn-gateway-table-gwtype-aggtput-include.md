@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "74828923"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010743"
 ---
 |VPN<br>网关 **<br>代系** |**SKU**   | **S2S/VNet 到 VNet<br>隧道** | **P2S<br> SSTP 连接** | **P2S<br> IKEv2/OpenVPN 连接** | **聚合<br>吞吐量基准** | **BGP** | **区域冗余** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|

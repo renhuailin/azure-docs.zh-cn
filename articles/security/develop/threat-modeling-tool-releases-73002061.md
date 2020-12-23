@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool 版本 2020/02/11 - Azure
-description: 记录威胁建模工具 release 7.3.00206.1 的发行说明。
+description: 阐述 Threat Modeling Tool 7.3.00206.1 版的发行说明。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: fa89ffcfd37629f95fbf281a6a703a173acd5d48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9f9b162460cd2e7a624c1ad3f992011487d1b795
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317916"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516928"
 ---
 # <a name="threat-modeling-tool-update-release-73002061---02112020"></a>Threat Modeling Tool 更新版 7.3.00206.1 - 2020/02/11
 
@@ -44,7 +44,7 @@ System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'L
 
 ## <a name="documentation-and-feedback"></a>文档和反馈
 
-- Threat Modeling Tool 的文档位于 [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)，其中包含[有关如何使用该工具](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)的信息。
+- Threat Modeling Tool 的文档位于 [docs.microsoft.com](./threat-modeling-tool.md)，其中包含[有关如何使用该工具](./threat-modeling-tool-getting-started.md)的信息。
 
 ## <a name="next-steps"></a>后续步骤
 

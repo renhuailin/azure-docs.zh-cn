@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 68bb4e2ac525270004a698471cd44955cd25fefc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634669"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146103"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>创建和管理多个仪表板
 
@@ -51,7 +51,7 @@ ms.locfileid: "83634669"
 现在，当查看个人仪表板时，会看到新的磁贴，其中包含设备的“温度”设置：
 
 > [!div class="mx-imgBorder"]
-> ![“仪表板”选项卡，其中包含“温度”磁贴的详细信息](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+> ![显示带有设备温度设置的新磁贴的屏幕截图。](media/howto-create-personal-dashboards/temperature-tile-complete.png)
 
 可以浏览库中的其他磁贴类型，以了解如何进一步自定义个人仪表板。
 

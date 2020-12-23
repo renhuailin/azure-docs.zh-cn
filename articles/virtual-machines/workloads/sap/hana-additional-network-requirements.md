@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66bbd8b462ac35756be0fae6eba940ba0aba6c4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77614579"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964790"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>大型实例的其他网络要求
 
@@ -38,7 +39,7 @@ Azure 上的 SAP HANA 大型实例部署可能有其他网络要求。
 
 ## <a name="increase-expressroute-circuit-bandwidth"></a>提高 ExpressRoute 线路带宽
 
-咨询 Microsoft 上的 SAP HANA 服务管理部门。 如果他们建议提高 Azure 上的 SAP HANA（大型实例）ExpressRoute 线路的带宽，请创建 Azure 支持请求。 （可以请求增加单个线路带宽，最多可达 10 Gbps。）操作完成后，你会收到通知;无需执行任何其他操作即可在 Azure 中实现这种更高的速度。
+咨询 Microsoft 上的 SAP HANA 服务管理部门。 如果他们建议提高 Azure 上的 SAP HANA（大型实例）ExpressRoute 线路的带宽，请创建 Azure 支持请求。  (可以请求增加单个线路带宽最大为 10 Gbps。 ) 然后在操作完成后收到通知;无需执行任何其他操作即可在 Azure 中实现这种更高的速度。
 
 ## <a name="add-an-additional-expressroute-circuit"></a>添加其他 ExpressRoute 线路
 
@@ -48,7 +49,7 @@ Azure 上的 SAP HANA 大型实例部署可能有其他网络要求。
 
 ## <a name="delete-a-subnet"></a>删除子网
 
-可以使用 Azure 门户、PowerShell 或 Azure CLI 来删除虚拟网络子网。 如果 Azure 虚拟网络 IP 地址范围或地址空间是一个聚合范围，则不需要与 Microsoft 协调。 （但请注意，虚拟网络仍在传播包含已删除的子网的 BGP 路由地址空间。）可能已将 Azure 虚拟网络地址范围或地址空间定义为多个 IP 地址范围，其中一个 IP 地址范围已分配给已删除的子网。 请确保从虚拟网络地址空间中删除该子网。 然后通知 Microsoft 上的 SAP HANA 服务管理部门，以将其从 Azure 上的 SAP HANA（大型实例）能够进行通信的范围中删除。
+可以使用 Azure 门户、PowerShell 或 Azure CLI 来删除虚拟网络子网。 如果 Azure 虚拟网络 IP 地址范围或地址空间是一个聚合范围，则不需要与 Microsoft 协调。 但 (注意，虚拟网络仍在传播包含已删除的子网的 BGP 路由地址空间。 ) 你可能已将 Azure 虚拟网络地址范围或地址空间定义为多个 IP 地址范围，其中一个 IP 地址范围已分配给你的已删除子网。 请确保从虚拟网络地址空间中删除该子网。 然后通知 Microsoft 上的 SAP HANA 服务管理部门，以将其从 Azure 上的 SAP HANA（大型实例）能够进行通信的范围中删除。
 
 有关详细信息，请参阅[删除子网](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)。
 
@@ -68,4 +69,4 @@ Microsoft 上的 SAP HANA 服务管理部门会删除对 Azure ExpressRoute 线�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何在 Azure 上安装和配置 SAP HANA （大型实例）](hana-installation.md)
+- [如何在 Azure 上) SAP HANA (大型实例的安装和配置](hana-installation.md)

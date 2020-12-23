@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: aed0c83bfa61f6afdbdcca3c10dbd5fac3f823d3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b41677d1e4f3ba3889472a3fb9bd6c6a9db4c0a8
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458172"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123364"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。
@@ -22,7 +22,7 @@ ms.locfileid: "89458172"
 流分析作业定义包括至少一个流式处理输入、查询和输出。 输入是作业读取数据流的地方。 查询是用于转换数据输入流的一种方式，而输出则是作业将作业结果发送到的地方。
 
 ## <a name="partitions-in-inputs-and-outputs"></a>输入和输出中的分区
-利用分区，可根据[分区键](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#partitions)将数据分为多个子集。 如果按某个键对输入（例如，事件中心）进行分区，强烈建议在向流分析作业添加输入时指定此分区键。 缩放流分析作业时，可利用输入和输出中的分区。 流分析作业可以并行使用和写入不同的分区，从而增加吞吐量。 
+利用分区，可根据[分区键](../event-hubs/event-hubs-scalability.md#partitions)将数据分为多个子集。 如果按某个键对输入（例如，事件中心）进行分区，强烈建议在向流分析作业添加输入时指定此分区键。 缩放流分析作业时，可利用输入和输出中的分区。 流分析作业可以并行使用和写入不同的分区，从而增加吞吐量。 
 
 ### <a name="inputs"></a>输入
 所有 Azure 流分析输入都可以利用分区：
@@ -41,14 +41,14 @@ ms.locfileid: "89458172"
 -   事件中心（需显式设置分区键）
 -   IoT 中心（需显式设置分区键）
 -   服务总线
-- 具有可选分区的 SQL 和 Azure Synapse Analytics：有关 [输出到 AZURE SQL Database](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)的详细信息，请参阅。
+- 具有可选分区的 SQL 和 Azure Synapse Analytics：有关 [输出到 AZURE SQL Database](./stream-analytics-sql-output-perf.md)的详细信息，请参阅。
 
 Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-step-query-with-different-partition-by-values)中所述 
 
 若要深入了解分区，请参阅以下文章：
 
 * [事件中心功能概述](../event-hubs/event-hubs-features.md#partitions)
-* [Data partitioning](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)（数据分区）
+* [Data partitioning](/azure/architecture/best-practices/data-partitioning)（数据分区）
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>易并行作业
@@ -233,7 +233,7 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-对查询进行分区后，会在独立的分区组中处理和聚合输入事件。 此外，还会为每个组生成输出事件。 在输入数据流中，当 **GROUP BY** 字段不是分区键时，执行分区可能会导致某些意外的结果。 例如，在前面的查询中，**TollBoothId** 字段不是 **Input1** 的分区键。 因此，可以将 TollBooth #1 中的数据分布到多个分区。
+对查询进行分区后，会在独立的分区组中处理和聚合输入事件。 此外，还会为每个组生成输出事件。 在输入数据流中，当 **GROUP BY** 字段不是分区键时，执行分区可能会导致某些意外的结果。 例如，在前面的查询中， **TollBoothId** 字段不是 **Input1** 的分区键。 因此，可以将 TollBooth #1 中的数据分布到多个分区。
 
 流分析会分开处理每个 **Input1** 分区。 因此，将在相同的翻转窗口为同一收费亭创建多个关于车辆数的记录。 如果不能更改输入分区键，则可通过添加不分区步骤以跨分区聚合值来解决此问题，如下例所示：
 
@@ -279,7 +279,7 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 |    5K   |   18 |  P4   |
 |    10K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) 支持并行写入（称为继承分区），但默认不会启用此功能。 不过，结合完全并行查询启用继承分区可能并不足以实现更高的吞吐量。 SQL 写入吞吐量在很大程度上取决于数据库配置和表架构。 [SQL 输出性能](./stream-analytics-sql-output-perf.md)一文详细介绍了可最大程度提高写入吞吐量的参数。 如[从 Azure 流分析输出到 Azure SQL 数据库](./stream-analytics-sql-output-perf.md#azure-stream-analytics)一文中所述，此解决方案无法作为完全并行的管道线性扩展到 8 个分区以上，可能需要在 SQL 输出之前重新分区（请参阅 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)）。 需要使用高级 SKU 来维持较高的 IO 速率，同时，每隔几分钟就会产生日志备份的开销。
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) 支持并行写入（称为继承分区），但默认不会启用此功能。 不过，结合完全并行查询启用继承分区可能并不足以实现更高的吞吐量。 SQL 写入吞吐量在很大程度上取决于数据库配置和表架构。 [SQL 输出性能](./stream-analytics-sql-output-perf.md)一文详细介绍了可最大程度提高写入吞吐量的参数。 如[从 Azure 流分析输出到 Azure SQL 数据库](./stream-analytics-sql-output-perf.md#azure-stream-analytics)一文中所述，此解决方案无法作为完全并行的管道线性扩展到 8 个分区以上，可能需要在 SQL 输出之前重新分区（请参阅 [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)）。 需要使用高级 SKU 来维持较高的 IO 速率，同时，每隔几分钟就会产生日志备份的开销。
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |引入速率（每秒事件数） | 流式处理单位数 | 输出资源  |
@@ -315,13 +315,13 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
 ## <a name="get-help"></a>获取帮助
 
-若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)
 
 <!--Image references-->
 
@@ -334,10 +334,9 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 <!--Link references-->
 
 [microsoft.support]: https://support.microsoft.com
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

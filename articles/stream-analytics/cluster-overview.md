@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f67df45b6b663584e848983251031146cdf8df60
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943415"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247687"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure 流分析群集概述（预览版）
 
@@ -69,7 +69,7 @@ Azure 流分析群集为复杂且要求苛刻的流式处理场景提供单租�
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>我可以私下从流分析群集连接到哪些输入和输出？
 
-流分析支持多种输入和输出类型。 任何支持 Azure 专用链接的服务都可以私下连接到你的作业。 你可以在群集中[创建专用终结点](private-endpoints.md)，以允许作业访问输入和输出资源。
+流分析支持多种输入和输出类型。 你可以在群集中[创建专用终结点](private-endpoints.md)，以允许作业访问输入和输出资源。 目前，支持的服务有 Azure SQL 数据库、Azure 存储、Azure Data Lake Storage Gen2、Azure 事件中心和 Azure 服务总线，很快将添加其他类型的服务。 
 
 ## <a name="next-steps"></a>后续步骤
 

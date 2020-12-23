@@ -4,26 +4,27 @@ description: 了解 Azure Synapse Analytics 中的 Synapse SQL 消耗模型。
 services: synapse analytics
 author: vvasic-msft
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4d00abdd3caf6c77b2227d9edfea3cc23d13e392
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0e3bbb2532340664d0fc54b29bea3ef3af75f9b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288199"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459150"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 资源消耗
 
-本文介绍了 Synapse SQL（预览版）的资源消耗模型。
+本文介绍了 Synapse SQL 的资源消耗模型。
 
-## <a name="sql-on-demand"></a>SQL 按需版本
+## <a name="serverless-sql-pool"></a>无服务器 SQL 池
 
-SQL 按需版本是一项按查询付费的服务，不要求选取合适的大小。 系统会根据你的要求自动进行调整，你无需管理基础结构，也不需为解决方案选取合适的大小。
+无服务器 SQL 池是一项按查询付费的服务，不要求选取合适的大小。 系统会根据你的要求自动进行调整，你无需管理基础结构，也不需为解决方案选取合适的大小。
 
-## <a name="sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>SQL 池 - 数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
+## <a name="dedicated-sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>专用 SQL 池 - 数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 
 提供的建议涉及如何选择理想数目的数据仓库单位 (DWU) 来优化价格和性能，以及如何更改单位数。
 
@@ -49,12 +50,12 @@ Synapse SQL 池表示所预配的分析资源的集合。 分析资源定义为 
 
 服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代服务级别以计算数据仓库单位 (cDWU) 计量，例如 DW2000c。 第 1 代服务级别以 DWU 计量，例如 DW2000。
 
-服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代 SQL 池的服务级别是以数据仓库单位 (DWU) 计量的，例如 DW2000c。
+服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代专用 SQL 池的服务级别是以数据仓库单位 (DWU) 计量的，例如 DW2000c。
 
 > [!NOTE]
 > Azure Synapse Analytics Gen2 最近添加了额外的缩放功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-在 T-SQL 中，SERVICE_OBJECTIVE 设置决定了 SQL 池的服务级别和性能层级。
+在 T-SQL 中，SERVICE_OBJECTIVE 设置决定了专用 SQL 池的服务级别和性能层级。
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -203,7 +204,7 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-此 DMV 返回针对 SQL 池的各种管理操作的相关信息，例如操作和操作状态（IN_PROGRESS 或 COMPLETED）。
+此 DMV 返回针对专用 SQL 池的各种管理操作的相关信息，例如操作和操作状态（IN_PROGRESS 或 COMPLETED）。
 
 ### <a name="the-scaling-workflow"></a>缩放工作流
 

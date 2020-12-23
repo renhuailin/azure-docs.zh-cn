@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 978fcb8c8cf9d2ffd929da5b76d7fd2ff109f420
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943337"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535852"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 灵活服务器
 
@@ -29,7 +29,7 @@ ms.locfileid: "90943337"
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 
-创建的 Azure Database for PostgreSQL 服务器中包含一组已配置的[计算和存储资源](./concepts-compute-storage.md)。 将在 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)中创建服务器。
+创建的 Azure Database for PostgreSQL 服务器中包含一组已配置的[计算和存储资源](./concepts-compute-storage.md)。 将在 [Azure 资源组](../../azure-resource-manager/management/overview.md)中创建服务器。
 
 若要创建用于 PostgreSQL 的 Azure 数据库服务器，请执行以下步骤：
 
@@ -52,7 +52,7 @@ ms.locfileid: "90943337"
     订阅|订阅名称|要用于服务器的 Azure 订阅。 如果你有多个订阅，请选择要计费的资源所在的订阅。
     资源组|myresourcegroup| 新的资源组名称，或订阅中的现有资源组。
     服务器名称 |*mydemoserver*|用于标识用于 PostgreSQL 的 Azure 数据库服务器的唯一名称。 域名 *postgres.database.azure.com* 附加到提供的服务器名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 该名称必须至少包含 3 到 63 个字符。
-    管理员用户名 |*myadmin*| 连接到服务器时使用的自己的登录帐户。 管理员登录名不能是 **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest** 或 **public**， 不能以 **pg_** 开头。
+    管理员用户名 |*myadmin*| 连接到服务器时使用的自己的登录帐户。 管理员登录名不能是 **azure_superuser** 、 **azure_pg_admin** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 或 **public** ， 不能以 **pg_** 开头。
     密码 |你的密码| 服务器管理员帐户的新密码。 该密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0 到 9)和非字母数字字符（!, $, #, % 等）。
     位置|离用户最近的区域| 最靠近用户的位置。
     版本|最新主版本| 除非另有特定的要求，否则为最新 PostgreSQL 主版本。
@@ -76,7 +76,7 @@ ms.locfileid: "90943337"
 
     :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
-   默认情况下，会在服务器下创建 **postgres** 数据库。 [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) 是供用户、实用工具和第三方应用程序使用的默认数据库。 （另一个默认数据库是 **azure_maintenance**， 其功能是将托管服务进程与用户操作分开。 你不能访问此数据库。）
+   默认情况下，会在服务器下创建 **postgres** 数据库。 [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) 是供用户、实用工具和第三方应用程序使用的默认数据库。 （另一个默认数据库是 **azure_maintenance** ， 其功能是将托管服务进程与用户操作分开。 你不能访问此数据库。）
 
     > [!NOTE]
     > 连接到 Azure Database for PostgreSQL 服务器时，通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 5432。
@@ -100,7 +100,7 @@ ms.locfileid: "90943337"
    psql --host=<servername> --port=<port> --username=<user> --dbname=<dbname>
    ```
 
-   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mydemoserver.postgres.database.azure.com**** 上名为“postgres”**** 的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
+   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mydemoserver.postgres.database.azure.com  上名为“postgres”  的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
   
    ```bash
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin --dbname=postgres
@@ -133,7 +133,7 @@ ms.locfileid: "90943337"
     CREATE DATABASE mypgsqldb;
     ```
 
-3. 在提示符下，执行以下命令来将连接切换到新建的数据库 **mypgsqldb**：
+3. 在提示符下，执行以下命令来将连接切换到新建的数据库 **mypgsqldb** ：
 
     ```bash
     \c mypgsqldb
@@ -154,7 +154,7 @@ ms.locfileid: "90943337"
 
 1. 在门户中找到自己的资源组。 在左侧菜单中，选择“资源组”。 然后选择资源组的名称，例如 myresourcegroup。
 
-2. 在资源组页上，选择“删除”。 在文本框中输入资源组的名称（例如，示例 **myresourcegroup**），以确认删除。 选择“删除” 。
+2. 在资源组页上，选择“删除”。 在文本框中输入资源组的名称（例如，示例 **myresourcegroup** ），以确认删除。 选择“删除” 。
 
 仅删除新建的服务器：
 

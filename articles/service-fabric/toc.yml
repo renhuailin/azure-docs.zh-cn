@@ -148,8 +148,6 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric 群集安全性
           href: service-fabric-cluster-security.md
-        - name: 内置安全控件
-          href: service-fabric-security-controls.md
         - name: Service Fabric 中基于证书的身份验证
           href: cluster-security-certificates.md
         - name: Service Fabric 中的证书管理
@@ -607,7 +605,7 @@
           href: service-fabric-how-to-specify-environment-variables.md
         - name: 部署或删除应用程序
           items:
-            - name: Azure 资源管理器
+            - name: Azure Resource Manager
               href: service-fabric-application-arm-resource.md
             - name: Azure PowerShell
               href: service-fabric-deploy-remove-applications.md
@@ -665,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: 跨可用性区域部署 Azure Service Fabric 群集
                   href: service-fabric-cross-availability-zones.md
+                - name: 通过无状态节点类型部署 Azure Service Fabric 群集
+                  href: service-fabric-stateless-node-types.md
                 - name: 设置 Azure Active Directory 身份验证
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: 创建自定义群集模板
@@ -689,7 +689,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: 升级
               items:
-                - name: 将 VM 规模集扩展添加到托管群集节点类型
+                - name: 将虚拟机规模集扩展添加到托管群集节点类型
                   href: how-to-managed-cluster-vmss-extension.md
                 - name: 升级 Service Fabric 版本
                   href: service-fabric-cluster-upgrade-version-azure.md
@@ -799,6 +799,8 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: 将新 Azure Service Fabric 群集配置为启用托管标识
               href: configure-new-azure-service-fabric-enable-managed-identity.md
+            - name: 将 Service Fabric 托管群集配置为启用托管标识
+              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: 应用程序设置
           items:
             - name: 如何部署具有托管标识的应用程序
@@ -930,7 +932,7 @@
     - name: 发行说明
       href: release-notes.md
     - name: 示例代码
-      href: 'https://aka.ms/servicefabricsamples'
+      href: /samples/browse/?products=azure
     - name: 支持选项
       href: service-fabric-support.md
     - name: Service Fabric 版本

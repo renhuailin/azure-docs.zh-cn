@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 1995691e276ea699b0b4b61b2a88c030f3d58b7d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: a76c6467dac69fd3d21aa659c52227046c166938
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779570"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816891"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
@@ -46,7 +46,7 @@ dotnet build
 安装适用于 .NET 的 Azure 通信聊天客户端库
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.2
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.3
 ``` 
 
 ## <a name="object-model"></a>对象模型
@@ -77,7 +77,7 @@ ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
 
 使用 `createChatThread` 方法创建聊天会话。
 - 使用 `topic` 为该聊天提供一个主题；在创建聊天会话后可使用 `UpdateThread` 函数更新主题。
-- 使用 `members` 属性传递要添加到聊天会话的 `ChatThreadMember` 对象的列表。 使用 `CommunicationUser` 对象初始化 `ChatThreadMember` 对象。 若要获取 `CommunicationUser` 对象，需要传递一个按照[创建用户](../../access-tokens.md#create-a-user)中的说明创建的访问 ID
+- 使用 `members` 属性传递要添加到聊天会话的 `ChatThreadMember` 对象的列表。 使用 `CommunicationUser` 对象初始化 `ChatThreadMember` 对象。 若要获取 `CommunicationUser` 对象，需要传递一个按照[创建用户](../../access-tokens.md#create-an-identity)中的说明创建的访问 ID
 
 响应 `chatThreadClient` 用于在创建的聊天会话上执行操作：将成员添加到聊天会话、发送消息、删除消息等。它包含 `Id` 属性（聊天会话的唯一 ID）。 
 
@@ -95,7 +95,7 @@ string threadId = chatThreadClient.Id;
 
 ```csharp
 string threadId = "<THREAD_ID>";
-ChatThreadClient chatThreadClient = await chatClient.GetChatThreadClient(threadId);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>向聊天会话发送消息

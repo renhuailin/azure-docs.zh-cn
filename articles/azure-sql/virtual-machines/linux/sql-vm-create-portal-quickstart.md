@@ -10,12 +10,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e1a9d2722987464b1bb3c8b1489a2d1258a41d15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd5c289f2b441b5862d863d9a390a1cd054acbfa
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91273074"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790145"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 门户中预配运行 SQL Server 的 Linux 虚拟机
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,29 +64,29 @@ ms.locfileid: "91273074"
 
 ### <a name="set-up-your-linux-vm"></a>设置 Linux VM
 
-1. 在“基本信息”选项卡中，选择自己的**订阅**和**资源组**。 
+1. 在“基本信息”选项卡中，选择自己的 **订阅** 和 **资源组** 。 
 
     ![“基本信息”窗口](./media/sql-vm-create-portal-quickstart/basics.png)
 
 1. 在“虚拟机名称”中，输入新 Linux VM 的名称。
 1. 然后键入或选择以下值：
-   * **区域**：选择合适的 Azure 区域。
-   * **可用性选项**：选择最适合应用和数据的可用性与冗余选项。
-   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [VM 大小](../../../virtual-machines/sizes.md)。
+   * **区域** ：选择合适的 Azure 区域。
+   * **可用性选项** ：选择最适合应用和数据的可用性与冗余选项。
+   * **更改大小** ：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [VM 大小](../../../virtual-machines/sizes.md)。
 
      ![选择 VM 大小](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
    > [!TIP]
    > 对于开发和功能测试，请使用 **DS2** 或更大的 VM 大小。 若要进行性能测试，则至少使用“DS13”。
 
-   * **身份验证类型**：选择“SSH 公钥”。
+   * **身份验证类型** ：选择“SSH 公钥”。
 
      > [!Note]
      > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](../../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
-   * **用户名**：输入 VM 的管理员名称。
-   * **SSH 公钥**：输入 RSA 公钥。
-   * **公共入站端口**：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”端口。   在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果要远程连接到 SQL Server，则需要在创建虚拟机后，手动允许通过 Internet 进行连接的 Microsoft SQL Server 使用的默认端口 (1433) 的流量。
+   * **用户名** ：输入 VM 的管理员名称。
+   * **SSH 公钥** ：输入 RSA 公钥。
+   * **公共入站端口** ：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”端口。   在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果要远程连接到 SQL Server，则需要在创建虚拟机后，手动允许通过 Internet 进行连接的 Microsoft SQL Server 使用的默认端口 (1433) 的流量。
 
      ![入站端口](./media/sql-vm-create-portal-quickstart/port-settings.png)
 
@@ -196,6 +196,6 @@ ssh azureadmin@40.55.55.555
 
 在 Azure 中有了 SQL Server 2017 虚拟机以后，即可使用 sqlcmd 进行本地连接，以便运行 Transact-SQL 查询。
 
-如果已将 Azure VM 配置为建立远程 SQL Server 连接，则应可建立远程连接。 若要通过示例来了解如何从 Windows 远程连接到 Linux 上的 SQL Server，请参阅[使用 Windows 上的 SSMS 连接到 Linux 上的 SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-ssms)。 若要通过 Visual Studio Code 进行连接，请参阅[使用 Visual Studio Code 创建和运行 SQL Server 的 Transact-SQL 脚本](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode)
+如果已将 Azure VM 配置为建立远程 SQL Server 连接，则应可建立远程连接。 若要通过示例来了解如何从 Windows 远程连接到 Linux 上的 SQL Server，请参阅[使用 Windows 上的 SSMS 连接到 Linux 上的 SQL Server](/sql/linux/sql-server-linux-develop-use-ssms)。 若要通过 Visual Studio Code 进行连接，请参阅[使用 Visual Studio Code 创建和运行 SQL Server 的 Transact-SQL 脚本](/sql/linux/sql-server-linux-develop-use-vscode)
 
-有关 Linux 上的 SQL Server 的其他一般信息，请参阅 [Linux 上的 SQL Server 2017 概述](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)。 若要详细了解如何使用 SQL Server 2017 Linux 虚拟机，请参阅 [Azure 上的 SQL Server 2017 虚拟机概述](sql-server-on-linux-vm-what-is-iaas-overview.md)。
+有关 Linux 上的 SQL Server 的其他一般信息，请参阅 [Linux 上的 SQL Server 2017 概述](/sql/linux/sql-server-linux-overview)。 若要详细了解如何使用 SQL Server 2017 Linux 虚拟机，请参阅 [Azure 上的 SQL Server 2017 虚拟机概述](sql-server-on-linux-vm-what-is-iaas-overview.md)。

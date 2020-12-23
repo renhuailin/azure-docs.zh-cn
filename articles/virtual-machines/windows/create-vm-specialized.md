@@ -7,18 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266888"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455093"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
 通过将专用托管磁盘附加为 OS 磁盘来创建新 VM。 专用磁盘是包含原始 VM 中的用户帐户、应用程序和其他状态数据的现有 VM 中虚拟硬盘 (VHD) 的副本。 
-
-使用专用 VHD 创建新 VM 时，新 VM 将保留原始 VM 的计算机名。 还会保留其他计算机特定信息，在某些情况下，这种重复信息可能会导致问题。 复制 VM 时，请注意应用程序依赖哪些类型的计算机特定信息。
 
 有几种选项：
 * [使用现有托管磁盘](#option-1-use-an-existing-disk)。 如果你有一个未正常工作的 VM，此选项很有用。 可以删除该 VM，然后重用托管磁盘创建新 VM。 
@@ -27,7 +25,12 @@ ms.locfileid: "87266888"
 
 还可以使用 Azure 门户[从专用 VHD 创建新 VM](create-vm-specialized-portal.md)。
 
-本文介绍如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](sa-create-vm-specialized.md)。
+本文介绍如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized)。
+
+> [!IMPORTANT]
+> 
+> 使用专用磁盘创建新的 VM 时，新 VM 将保留原始 VM 的计算机名。 还会保留其他特定于计算机的信息 (例如 CMID) ，在某些情况下，这种重复信息可能会导致问题。 复制 VM 时，请注意应用程序依赖哪些类型的计算机特定信息。  
+> 因此，如果想要创建多个 Vm，请不要使用专用磁盘。 对于较大的部署，应先[创建映像](capture-image-resource.md)，然后[使用该映像创建多个 VM](create-vm-generalized-managed.md)。
 
 我们建议你将单个 VHD 或快照的并发部署数限制为 20 个 VM。 
 
@@ -51,7 +54,7 @@ $osDisk = Get-AzDisk `
 ### <a name="prepare-the-vm"></a>准备 VM
 使用原始 VHD 创建新的 VM。 
   
-  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要**使用 Sysprep 通用化 VM。
+  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要** 使用 Sysprep 通用化 VM。
   * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。
   * 确保 VM 配置为从 DHCP 获取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得虚拟网络中的 IP 地址。 
 
@@ -159,7 +162,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
        -AddressPrefix 10.0.0.0/24
     ```
     
-2. 创建虚拟网络。 本示例将虚拟网络名称设置为 *myVnetName*，将位置设置为*美国西部*，将虚拟网络的地址前缀设置为 *10.0.0.0/16*。 
+2. 创建虚拟网络。 本示例将虚拟网络名称设置为 *myVnetName*，将位置设置为 *美国西部*，将虚拟网络的地址前缀设置为 *10.0.0.0/16*。 
    
     ```powershell
     $vnetName = "myVnetName"

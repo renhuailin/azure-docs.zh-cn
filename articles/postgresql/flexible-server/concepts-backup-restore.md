@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: bed196d1be101ffa75affc389d390ec0fa764b05
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933347"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532639"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器中的备份和还原
 
@@ -28,10 +28,10 @@ ms.locfileid: "90933347"
 > [!IMPORTANT]
 >不会在已停止的服务器上执行备份。 但是，当数据库在7天后自动启动或用户启动后，备份会恢复。
 
-备份仅可用于在灵活服务器中执行的还原操作。 如果要将数据导出或导入到灵活的服务器，请使用 [转储和还原](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   方法。
+备份仅可用于在灵活服务器中执行的还原操作。 如果要将数据导出或导入到灵活的服务器，请使用 [转储和还原](../howto-migrate-using-dump-and-restore.md) 方法。
 
 
-### <a name="backup-retention"></a>备份保留
+### <a name="backup-retention"></a>备份保留期
 
 根据服务器的 "备份保留期" 设置保留备份。 你可以选择7到35天之间的保留期。 默认保持期为七天。 可以在服务器创建过程中设置保留期，也可以在以后更新。 即使已停止的服务器也会保留备份。
 
@@ -40,9 +40,9 @@ ms.locfileid: "90933347"
 
 ### <a name="backup-storage-cost"></a>备份存储成本
 
-灵活的服务器最多可提供100% 的预配服务器存储作为备份存储，无需额外付费。 超出的备份存储使用量按每月每 GB 标准收费。 例如，如果你预配了具有 250 GiB 的存储的服务器，则会有 250 GiB 的备份存储容量，无需额外付费。 如果每日备份使用量为 25 GiB，则最多可以有10天的免费备份存储空间。 超过 250 GiB 的备份存储消耗按 [定价模式](https://azure.microsoft.com/pricing/details/postgresql/)收费。
+灵活的服务器最多可提供100% 的预配服务器存储作为备份存储，无需额外付费。 超出的备份存储使用量按每月每 GB 标准收费。 例如，如果你预配了具有 250 GiB 的存储的服务器，则会有 250 GiB 的备份存储容量，无需额外付费。 如果每日备份使用量为 25 GiB，则最多可以有10天的免费备份存储空间。 超过 250 GiB 的备份存储消耗按 [定价模式](https://azure.microsoft.com/pricing/details/postgresql/)收费。
 
-您可以使用 Azure 门户中的 [备份存储使用](https://docs.microsoft.com/azure/postgresql/concepts-monitoring)的   指标来监视服务器使用的备份存储空间。 “已使用的备份存储”指标表示根据为服务器设置的备份保留期保留的所有数据库备份和日志备份占用的存储总和。  无论数据库的总大小如何，如果服务器上的事务性活动繁重，都会导致备份存储使用率增加。
+可使用 Azure 门户中的“已使用的备份存储”指标来监视服务器占用的备份存储。 “已使用的备份存储”指标表示根据为服务器设置的备份保留期保留的所有数据库备份和日志备份占用的存储总和。  无论数据库的总大小如何，如果服务器上的事务性活动繁重，都会导致备份存储使用率增加。
 
 控制备份存储成本的主要方法是设置适当的备份保留期，并选择正确的备份冗余选项以满足恢复目标。
 
@@ -71,15 +71,15 @@ ms.locfileid: "90933347"
 
 可以在最早的还原点和自定义的还原点之间进行选择。
 
--   **最早还原点**：根据你的保留期，它将是你可以还原的最早时间。 最早的备份时间将自动选择，并显示在门户上。 如果您想要调查或在一定时间点开始测试，这会很有用。
+-   **最早还原点** ：根据你的保留期，它将是你可以还原的最早时间。 最早的备份时间将自动选择，并显示在门户上。 如果您想要调查或在一定时间点开始测试，这会很有用。
 
--   **自定义还原点**：此选项允许您在为此灵活服务器定义的保留期内选择任何时间点。 默认情况下，UTC 中的最晚时间是自动选择的，如果要还原到上次提交的事务进行测试，则会很有用。 您可以选择其他日期和时间。 
+-   **自定义还原点** ：此选项允许您在为此灵活服务器定义的保留期内选择任何时间点。 默认情况下，UTC 中的最晚时间是自动选择的，如果要还原到上次提交的事务进行测试，则会很有用。 您可以选择其他日期和时间。 
 
 估计恢复时间取决于多个因素，包括数据库大小、要处理的事务日志量、网络带宽，以及同时在同一区域中恢复的数据库总数。 整个恢复时间通常需要几分钟到几小时。
 
 
 > [!IMPORTANT]
->  **无法**   还原已删除的服务器。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 为了保护服务器资源、部署后、意外删除或意外更改，管理员可以利用 [管理锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 已删除的服务器 **无法** 还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](../../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="perform-post-restore-tasks"></a>执行还原后任务
 
@@ -101,6 +101,5 @@ ms.locfileid: "90933347"
 ## <a name="next-steps"></a>后续步骤
 
 -   了解 [业务连续性](./concepts-business-continuity.md)
--   了解 [区域冗余高可用性](./concepts-high-availability.md)
+-   了解 [区域冗余高可用性](./concepts-high-availability.md)
 -   了解 [如何还原](./how-to-restore-server-portal.md)
-

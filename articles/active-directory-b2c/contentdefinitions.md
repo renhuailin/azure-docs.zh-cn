@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202851"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108971"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -90,7 +90,7 @@ ms.locfileid: "85202851"
 
 ### <a name="select-a-page-layout"></a>选择页面布局
 
-在 `elements` 和页面类型之间插入 `contract` 即可启用 [JavaScript 客户端代码](javascript-samples.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
+在 `elements` 和页面类型之间插入 `contract` 即可启用 [JavaScript 客户端代码](javascript-and-page-layout.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -126,6 +126,39 @@ ms.locfileid: "85202851"
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+以下示例显示了内容定义标识符以及对应的包含页面协定的 DataUri： 
+
+```xml
+<ContentDefinitions>
+  <ContentDefinition Id="api.error">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections.signup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.signuporsignin">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted.profileupdate">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountsignup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.phonefactor">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0</DataUri>
+  </ContentDefinition>
+</ContentDefinitions>
+```
 
 ### <a name="metadata"></a>元数据
 
@@ -137,7 +170,7 @@ ms.locfileid: "85202851"
 
 **Metadata** 元素的 **Item** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 密钥 | 是 | 元数据密钥。  |
 
@@ -145,7 +178,7 @@ ms.locfileid: "85202851"
 
 内容定义支持以下元数据项：
 
-| 密钥 | 必选 | 说明 |
+| Key | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | DisplayName | 否 | 一个包含内容定义名称的字符串。 |
 
@@ -159,7 +192,7 @@ ms.locfileid: "85202851"
 
 **LocalizedResourcesReference** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |
@@ -205,4 +238,4 @@ ms.locfileid: "85202851"
 
 有关使用内容定义自定义用户界面的示例，请参阅：
 
-[使用自定义策略自定义应用程序的用户界面](custom-policy-ui-customization.md)
+[使用自定义策略自定义应用程序的用户界面](customize-ui-with-html.md)

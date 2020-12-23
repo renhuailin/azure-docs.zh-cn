@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 309582464d85923823b3779338f288bfb5519c6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 70a5a4bf6981aa115c923559112d3533eebf3086
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687835"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132170"
 ---
 # <a name="tutorial-forecast-future-spending"></a>教程：预测将来的支出
 
@@ -70,4 +70,4 @@ Cloudyn 包括了成本预测报表，可帮助你根据在一段时间内的使
 进入下一个教程，了解如何利用成本分配和 showback 报表来管理成本。
 
 > [!div class="nextstepaction"]
-> [利用成本分配和报销报表管理成本](../../cost-management/tutorial-manage-costs.md)
+> [利用成本分配和报销报表管理成本](./tutorial-manage-costs.md)

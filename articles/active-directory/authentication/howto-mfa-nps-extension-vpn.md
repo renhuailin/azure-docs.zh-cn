@@ -1,26 +1,26 @@
 ---
-title: 使用 NPS 扩展将 VPN 与 Azure MFA 结合使用 - Azure Active Directory
-description: 使用 Microsoft Azure 的网络策略服务器扩展将 VPN 基础结构与Azure MFA 进行集成。
+title: 使用 NPS 扩展 Azure AD MFA 的 VPN-Azure Active Directory
+description: 使用 Microsoft Azure 的网络策略服务器扩展将 VPN 基础结构与 Azure AD MFA 集成。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1c4c5c4e632943ebbe68003f663aebbeaab9ebaf
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717857"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743439"
 ---
-# <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
+# <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用适用于 Azure 的网络策略服务器扩展将 VPN 基础结构与 Azure AD MFA 集成
 
-通过 Azure 的网络策略服务器 (NPS) 扩展，可使组织使用提供双重验证的基于云的 [Azure 多重身份验证 (MFA)](howto-mfaserver-nps-rdg.md) 来保护远程身份验证拨入用户服务 (RADIUS) 客户端身份验证。
+使用适用于 Azure 的网络策略服务器 (NPS) 扩展，组织可以使用基于云的 [) 多重身份验证 AZURE AD MFA ](howto-mfaserver-nps-rdg.md) (（提供双重验证）来保护远程身份验证拨入用户服务 (RADIUS) 客户端身份验证。
 
 本文将说明如何使用 Azure 的 NPS 扩展集成 NPS 基础结构与 MFA。 此进程为尝试使用 VPN 连接到网络的用户启用安全双重验证。
 
@@ -43,7 +43,7 @@ ms.locfileid: "88717857"
 * 提供一种强制进行身份验证和授权，以访问支持 802.1x 无线访问点和以太网交换机的方式。
   有关详细信息，请参阅[网络策略服务器](/windows-server/networking/technologies/nps/nps-top)。
 
-若要增强安全性，并提供高级别的符合性，组织可以将 NPS 与 Azure 多重身份验证集成，以确保用户使用双重验证连接到 VPN 服务器上的虚拟端口。 已授予访问权限的用户，他们必须提供其用户名和密码组合与他们控制的其他信息。 此信息必须受信任且不易复制。 可以包括手机号码、座机号码或者移动设备上的应用程序。
+若要增强安全性并提供高级别的符合性，组织可以将 NPS 与 Azure AD 多重身份验证集成，以确保用户使用双重验证连接到 VPN 服务器上的虚拟端口。 已授予访问权限的用户，他们必须提供其用户名和密码组合与他们控制的其他信息。 此信息必须受信任且不易复制。 可以包括手机号码、座机号码或者移动设备上的应用程序。
 
 在为 Azure 提供 NPS 扩展之前，希望对集成的 NPS 和 Azure MFA 环境实施双重验证的客户，必须在本地环境中配置和维护单独的 MFA 服务器。 此类型的身份验证由使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器提供。
 
@@ -66,9 +66,9 @@ ms.locfileid: "88717857"
 1. VPN 服务器从包含用户名和密码的 VPN 用户接收身份验证请求，用于连接到资源，如远程桌面会话。
 2. 作为 RADIUS 客户端，VPN 服务器将请求转换为 RADIUS“访问请求”消息，并将其（密码已加密）发送到安装了 NPS 扩展的 RADIUS 服务器。
 3. 用户名和密码组合在 Active Directory 中进行验证。 如果用户名或密码不正确，RADIUS 服务器将发送“访问被拒”消息。
-4. 如果满足 NPS 连接请求和网络策略中指定的所有条件（例如，时间或组成员资格限制），NPS 扩展将触发对 Azure 多重身份验证进行辅助身份验证的请求。
-5. Azure 多重身份验证与 Azure Active Directory 通信，检索用户的详细信息，并使用用户配置的方法（手机呼叫、短信或移动应用）执行辅助身份验证。
-6. 当 MFA 质询成功时，Azure 多重身份验证将结果传递给 NPS 扩展。
+4. 如果满足 NPS 连接请求和网络策略中指定的所有条件 (例如，当天的时间或组成员资格限制) ，则 NPS 扩展将触发对 Azure AD 多重身份验证进行辅助身份验证的请求。
+5. Azure AD 多重身份验证与 Azure Active Directory 通信，检索用户的详细信息，并使用用户 (手机呼叫、短信或移动应用) 中配置的方法执行辅助身份验证。
+6. 当 MFA 质询成功时，Azure AD 多重身份验证会将结果传递给 NPS 扩展。
 7. 对连接尝试进行身份验证和授权之后，在其上安装了扩展的 NPS 会将 RADIUS“访问接受”消息发送到 VPN 服务器（RADIUS 客户端）。
 8. 用户被授予对 VPN 服务器上虚拟端口的访问权限，并建立加密的 VPN 隧道。
 
@@ -78,7 +78,7 @@ ms.locfileid: "88717857"
 
 * VPN 基础结构
 * 网络策略和访问服务角色
-* Azure 多重身份验证许可
+* Azure AD 多重身份验证许可证
 * Windows Server 软件
 * 库
 * 将 Azure Active Directory (Azure AD) 与本地 Active Directory 同步
@@ -96,9 +96,9 @@ ms.locfileid: "88717857"
 
 有关安装网络策略和访问服务角色服务 Windows Server 2012 或更高版本的详细信息，请参阅[安装 NAP 健康策略服务器](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10))。 Windows Server 2016 已弃用 NAP。 有关 NPS 最佳做法的说明，包括在域控制器上安装 NPS 的建议，请参阅 [NPS 最佳做法](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10))。
 
-### <a name="azure-mfa-license"></a>Azure MFA 许可证
+### <a name="azure-ad-mfa-license"></a>Azure AD MFA 许可证
 
-Azure 多重身份验证需要许可证，可通过 Azure AD Premium、企业移动性 + 安全性或多重身份验证独立许可证获取。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 有关详细信息，请参阅[如何获取 Azure 多重身份验证](concept-mfa-licensing.md)。 出于测试目的，你可以使用一个试用订阅。
+Azure AD 多重身份验证需要许可证，并且它可通过 Azure AD Premium、企业移动性 + 安全性或多重身份验证独立许可证提供。 Azure AD MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 有关详细信息，请参阅 [如何获取 Azure AD 多重身份验证](concept-mfa-licensing.md)。 出于测试目的，你可以使用一个试用订阅。
 
 ### <a name="windows-server-software"></a>Windows Server 软件
 
@@ -228,9 +228,9 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 2. 在“服务器管理器”中，选择“工具”，然后选择“路由和远程访问”。 
 
-3. 在 "**路由和远程访问**" 窗口中，右键单击 " ** \<server name> (本地) **"，然后选择 "**属性**"。
+3. 在 "**路由和远程访问**" 窗口中，右键单击 " **\<server name> (本地)**"，然后选择 "**属性**"。
 
-4. 在 " ** \<server name> (本地) 属性**" 窗口中，选择 "**安全**" 选项卡。
+4. 在 " **\<server name> (本地) 属性**" 窗口中，选择 "**安全**" 选项卡。
 
 5. 在“安全”选项卡的“身份验证提供程序”下，选择“RADIUS 身份验证”，然后选择“配置”。   
 
@@ -302,7 +302,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 ## <a name="configure-multi-factor-authentication"></a>配置多重身份验证
 
-如需针对多重身份验证配置用户的帮助，请参阅文章[规划基于云的 Azure 多重身份验证部署](howto-mfa-getstarted.md#create-conditional-access-policy)和[为双重验证设置帐户](../user-help/multi-factor-authentication-end-user-first-time.md)
+若要帮助为用户配置多重身份验证，请参阅 [规划基于云的 Azure AD 多重身份验证部署](howto-mfa-getstarted.md#create-conditional-access-policy) 的文章和 [设置我的帐户进行双重验证](../user-help/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>安装和配置 NPS 扩展
 
@@ -312,17 +312,17 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 > REQUIRE_USER_MATCH 注册表项区分大小写。 所有值必须以大写格式设置。
 >
 
-安装和配置 NPS 扩展后，此服务器处理的所有基于 RADIUS 的客户端身份验证都需要使用 MFA。 如果所有 VPN 用户都未在 Azure 多重身份验证中注册，可以执行以下任一操作：
+安装和配置 NPS 扩展后，此服务器处理的所有基于 RADIUS 的客户端身份验证都需要使用 MFA。 如果未在 Azure AD 多重身份验证中注册所有 VPN 用户，则可以执行以下任一操作：
 
 * 设置另一个 RADIUS 服务器对未配置为使用 MFA 的用户进行身份验证。
 
-* 如果用户在 Azure 多重身份验证中注册了，则创建一个注册表项，使得被质询的用户可提供二次身份验证因素。
+* 创建一个注册表项，该注册表项允许质询用户在 Azure AD 多重身份验证中注册时提供第二个身份验证因素。
 
-_在 HKLM\SOFTWARE\Microsoft\AzureMfa 中_创建一个名为 REQUIRE_USER_MATCH 的新字符串值，并将该值设置为*TRUE*或*FALSE*。
+_在 HKLM\SOFTWARE\Microsoft\AzureMfa 中_ 创建一个名为 REQUIRE_USER_MATCH 的新字符串值，并将该值设置为 *TRUE* 或 *FALSE*。
 
 ![“要求用户匹配”设置](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-如果将该值设置为 *TRUE* 或为空，则所有身份验证请求都将受到 MFA 质询的约束。 如果该值设置为 *FALSE*，则仅向在 Azure 多重身份验证中注册的用户发出 MFA 质询。 在载入期间，只能在测试或生产环境中使用 *FALSE* 设置。
+如果将该值设置为 *TRUE* 或为空，则所有身份验证请求都将受到 MFA 质询的约束。 如果该值设置为 *FALSE*，则仅向在 Azure AD 多重身份验证中注册的用户发出 MFA 质询。 在载入期间，只能在测试或生产环境中使用 *FALSE* 设置。
 
 
 
@@ -346,11 +346,11 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 3. 在 NPS 服务器上，双击“NpsExtnForAzureMfaInstaller.exe”，如果收到提示，则选择“运行”。 
 
-4. 在“适用于 Azure MFA 设置的 NPS 扩展”窗口中，查看软件许可条款、选择“我同意许可条款和条件”复选框，然后选择“安装”。  
+4. 在 " **AZURE AD MFA 设置的 NPS 扩展** " 窗口中，查看软件许可条款，选中 " **我同意许可条款和条件** " 复选框，然后选择 " **安装**"。
 
-    ![“适用于 Azure MFA 设置的 NPS 扩展”窗口](./media/howto-mfa-nps-extension-vpn/image36.png)
+    !["用于 Azure AD MFA 设置的 NPS 扩展" 窗口](./media/howto-mfa-nps-extension-vpn/image36.png)
 
-5. 在“适用于 Azure MFA 设置的 NPS 扩展”窗口中，选择“关闭”。   
+5. 在 " **AZURE AD MFA 设置的 NPS 扩展** " 窗口中，选择 " **关闭**"。  
 
     ![“设置成功”确认窗口](./media/howto-mfa-nps-extension-vpn/image37.png)
 
@@ -402,7 +402,7 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 ![“Windows 设置 VPN”窗口](./media/howto-mfa-nps-extension-vpn/image42.png)
 
-如果使用先前在 Azure MFA 中配置的辅助验证方法成功进行身份验证，则将连接到此资源。 但是，如果辅助身份验证不成功，你将无法访问资源。
+如果你已成功通过在 Azure AD MFA 中配置的辅助验证方法进行身份验证，则你已连接到资源。 但是，如果辅助身份验证不成功，你将无法访问资源。
 
 在以下示例中，Windows Phone 上的 Microsoft Authenticator 应用提供辅助身份验证：
 
@@ -424,7 +424,7 @@ Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
 
 ![示例网络策略服务器日志](./media/howto-mfa-nps-extension-vpn/image45.png)
 
-在安装了适用于 Azure 多重身份验证的 NPS 扩展的服务器上，可以在 Application and Services Logs\Microsoft\AzureMfa 中找到特定于此扩展的事件查看器应用程序日志。
+在安装 Azure AD 多重身份验证的 NPS 扩展的服务器上，可以在 *应用程序和服务 logs\microsoft\azuremfa 位置* 找到特定于该扩展的事件查看器应用程序日志。
 
 ```powershell
 Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
@@ -436,15 +436,15 @@ Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
 
 如果配置未按照预期运行，请开始进行故障排除并首先验证用户是否配置为使用 MFA。 将用户连接到 [Azure 门户](https://portal.azure.com)。 如果提示用户进行辅助身份验证并且身份验证成功，则可以消除作为问题的 MFA 的不正确配置。
 
-如果 MFA 对用户起作用，则查看相关的事件查看器日志。 日志包括上一节中讨论的安全事件、网关操作和 Azure 多重身份验证日志。
+如果 MFA 对用户起作用，则查看相关的事件查看器日志。 日志包括上一节中讨论的安全事件、网关操作和 Azure AD 多重身份验证日志。
 
 以下是一个显示失败登录事件（事件 ID 6273）的安全日志示例：
 
 ![显示失败登录事件的安全日志](./media/howto-mfa-nps-extension-vpn/image47.png)
 
-以下是 Azure 多重身份验证日志中的一个相关事件：
+Azure AD 多重身份验证日志中的相关事件如下所示：
 
-![“Azure 多重身份验证”日志](./media/howto-mfa-nps-extension-vpn/image48.png)
+![Azure AD 多重身份验证日志](./media/howto-mfa-nps-extension-vpn/image48.png)
 
 要执行高级故障排除，请参阅安装了 NPS 服务的 NPS 数据库格式日志文件。 这些日志文件以逗号分隔的文本文件形式在 %SystemRoot%\System32\Logs 文件夹中创建。 有关这些日志文件的说明，请参阅[解释 NPS 数据库格式日志文件](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10))。
 
@@ -456,11 +456,11 @@ Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
 
 ![显示筛选的流量的 Microsoft 消息分析器](./media/howto-mfa-nps-extension-vpn/image50.png)
 
-有关详细信息，请参阅[将现有 NPS 基础结构与 Azure 多重身份验证进行集成](howto-mfa-nps-extension.md)。
+有关详细信息，请参阅 [将现有 NPS 基础结构与 Azure AD 多重身份验证集成](howto-mfa-nps-extension.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[获取 Azure 多重身份验证](concept-mfa-licensing.md)
+[获取 Azure AD 多重身份验证](concept-mfa-licensing.md)
 
 [使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](howto-mfaserver-nps-rdg.md)
 

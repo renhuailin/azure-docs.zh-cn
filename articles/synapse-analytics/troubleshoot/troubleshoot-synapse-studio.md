@@ -1,5 +1,5 @@
 ---
-title: 'Synapse Studio (预览版疑难解答) '
+title: 排查 Synapse Studio 的问题
 description: 排查 Azure Synapse Studio 问题
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,28 +8,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a96709c7538bda6d6b338c29dc512902e9ca2c87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287741"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445854"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (预览版) 故障排除
+# <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio 故障排除
 
 此故障排除指南提供了有关在解决网络连接问题时提供哪些信息的说明。 有了正确的信息，我们就可以更快地解决问题。
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL 点播 (预览) 服务连接问题
+## <a name="serverless-sql-pool-service-connectivity-issue"></a>无服务器 SQL 池服务连接问题
 
 ### <a name="symptom-1"></a>症状 1
 
-"SQL 点播" 选项在 "连接到" 下拉列表中灰显。
+"无服务器 SQL 池" 选项在 "连接到" 下拉列表中灰显。
 
 ![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>症状 2
 
-以 "按需 SQL" 运行查询时，会显示 "未能建立与服务器的连接" 错误消息。
+通过 "无服务器 SQL 池" 运行查询会使你 "无法建立与服务器的连接" 错误消息。
 
 ![症状2](media/troubleshooting-synapse-studio/symptom2.png)
  
@@ -45,7 +45,7 @@ ms.locfileid: "91287741"
 
 若要开始进行故障排除，请重试在 Azure Synapse Studio 中执行的操作。
 
-- 对于 "症状 1"，选择 "SQL 脚本" 选项卡中 "使用数据库" 下拉列表右侧的 "刷新" 按钮，并检查是否可以看到 "按需 SQL"。
+- 对于 "症状 1"，选择 "SQL 脚本" 选项卡中 "使用数据库" 下拉列表右侧的 "刷新" 按钮，并检查是否可以看到 "无服务器 SQL 池"。
 - 对于症状2，请尝试再次运行查询以查看它是否成功执行。
 
 如果问题仍然存在，请在浏览器中按 F12 打开 "开发人员工具" (DevTools) "。
@@ -71,7 +71,7 @@ ms.locfileid: "91287741"
 
     - 如果你看到 ERR_NAME_NOT_RESOLVED，并在10分钟内创建了你的工作区，请等待10分钟，然后重试以查看问题是否仍然存在。
     - 如果你看到 ERR_INTERNET_DISCONNECTED 或 ERR_NETWORK_CHANGED，则可能表示你的电脑网络连接有问题。 请检查你的网络连接，然后重试该操作。
-    - 如果你看到 ERR_CONNECTION_RESET、ERR_SSL_PROTOCOL_ERROR 或其他包含 "SSL" 的错误代码，则可能表示你的本地 SSL 配置存在问题，或者你的网络管理员已阻止访问 SQL 点播服务器。 打开支持票证并附加描述中的错误代码。
+    - 如果你看到 ERR_CONNECTION_RESET、ERR_SSL_PROTOCOL_ERROR 或其他包含 "SSL" 的错误代码，则可能表示你的本地 SSL 配置存在问题，或者你的网络管理员已阻止访问无服务器 SQL 池服务器。 打开支持票证并附加描述中的错误代码。
     - 如果你看到 ERR_NETWORK_ACCESS_DENIED，则可能需要与管理员联系，了解你的本地防火墙策略是否已阻止对 *. database.windows.net 域或远程端口1443的访问。
     - 也可以在不同的计算机和/或网络环境上立即尝试相同的操作，以排除计算机上的网络配置问题。
 

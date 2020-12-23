@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131657"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335667"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
 
@@ -31,10 +31,11 @@ ms.locfileid: "86131657"
 
 1. [检查虚拟网络网关是否在虚拟网络中运行](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network)。
 2. [检查应用程序网关是否在虚拟网络中运行](#check-whether-an-application-gateway-is-running-in-the-virtual-network)。
-3. [检查 Azure Active Directory 域服务是否已在虚拟网络中启用](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network)。
-4. [检查虚拟网络是否已连接到其他资源](#check-whether-the-virtual-network-is-connected-to-other-resource)。
-5. [检查虚拟机是否仍在虚拟网络中运行](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network)。
-6. [检查虚拟网络是否停滞在迁移状态](#check-whether-the-virtual-network-is-stuck-in-migration)。
+3. [检查虚拟网络中是否仍存在 Azure 容器实例](#check-whether-azure-container-instances-still-exist-in-the-virtual-network)。
+4. [检查 Azure Active Directory 域服务是否已在虚拟网络中启用](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network)。
+5. [检查虚拟网络是否已连接到其他资源](#check-whether-the-virtual-network-is-connected-to-other-resource)。
+6. [检查虚拟机是否仍在虚拟网络中运行](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network)。
+7. [检查虚拟网络是否停滞在迁移状态](#check-whether-the-virtual-network-is-stuck-in-migration)。
 
 ## <a name="troubleshooting-steps"></a>疑难解答步骤
 
@@ -48,7 +49,7 @@ ms.locfileid: "86131657"
 
 对于虚拟网络，请转到虚拟网络的“概述”页。 检查虚拟网络网关的“已连接设备”。
 
-![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Azure 门户中虚拟网络的已连接设备列表的屏幕截图。 虚拟网络网关在列表中突出显示。](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
 在删除网关之前，请先删除该网关中的所有“连接”对象。 
 
@@ -56,15 +57,28 @@ ms.locfileid: "86131657"
 
 转到虚拟网络的“概述”页。 检查应用程序网关的“已连接设备”。
 
-![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Azure 门户中虚拟网络的已连接设备列表的屏幕截图。 应用程序网关在列表中突出显示。](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 如果存在应用程序网关，则必须先将其删除，然后才能删除虚拟网络。
+
+### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>检查虚拟网络中是否仍存在 Azure 容器实例
+
+1. 在 Azure 门户中，请参阅资源组的 " **概述** " 页。
+1. 在资源组资源列表的标题中，选择 " **显示隐藏的类型** "。 默认情况下，在 Azure 门户中隐藏网络配置文件类型。
+1. 选择与容器组相关的网络配置文件。
+1. 选择“删除” 。
+
+   ![隐藏网络配置文件列表的屏幕截图。](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
+
+1. 再次删除子网或虚拟网络。
+
+如果这些步骤不能解决问题，请使用以下 [Azure CLI 命令](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) 来清理资源。 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>检查 Azure Active Directory 域服务是否已在虚拟网络中启用
 
 如果 Active Directory 域服务已启用并已连接到虚拟网络，则无法删除此虚拟网络。 
 
-![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Azure 门户中 Azure AD 域服务屏幕的屏幕截图。 突出显示 "虚拟网络/子网中的可用字段" 字段。](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 若要禁用服务，请参阅[使用 Azure 门户禁用 Azure Active Directory 域服务](../active-directory-domain-services/delete-aadds.md)。
 

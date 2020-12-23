@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221014"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695548"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>排查使用 Azure 负载均衡器时出现的常见 Azure 部署错误
 
@@ -35,11 +35,11 @@ ms.locfileid: "84221014"
 |CannotUseInactiveHealthProbe| 你的探测不能未被为虚拟机规模集运行状况配置的任何规则使用。 确保主动使用已设置的探测。 |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| 你不能有多个相同类型（内部、公共）的负载均衡器。 你最多可以有一个内部负载均衡器和一个公共负载均衡器。 |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | 多位置组虚拟机规模集或跨可用性区域虚拟机规模集不支持基本负载均衡器。 请改用标准负载均衡器。 |
-|MarketplacePurchaseEligibilityFailed | 由于订阅是 EA 订阅，请切换到正确的管理帐户以启用购买。 可在[此处](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)了解详细信息。 |
+|MarketplacePurchaseEligibilityFailed | 由于订阅是 EA 订阅，请切换到正确的管理帐户以启用购买。 可在[此处](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)了解详细信息。 |
 |ResourceDeploymentFailure| 如果负载均衡器处于“失败”状态，请按照以下步骤将其从“失败”状态恢复：<ol><li>转到 https://resources.azure.com ，使用你自己的 Azure 门户凭据登录。</li><li>选择“读取/写入”。</li><li>在左侧，展开“订阅”，然后展开包含要更新的负载均衡器的订阅。</li><li>展开“ResourceGroups”，然后展开包含要更新的负载均衡器的资源组。</li><li>选择“Microsoft.Network” > “LoadBalancers”，然后选择要更新的负载均衡器，“LoadBalancer_1”。</li><li>在“LoadBalancer_1”的显示页上，选择“获取” > “编辑”。</li><li>将“ProvisioningState”值从“失败”更新为“成功”。</li><li>选择“PUT” 。</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>后续步骤
 
 * 浏览 Azure 负载均衡器 [SKU 比较表](./skus.md)
-* 了解 [Azure 负载均衡器限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)
+* 了解 [Azure 负载均衡器限制](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)

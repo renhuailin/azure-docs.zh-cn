@@ -8,24 +8,24 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
-ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 58788d6194454c8bd40730c9c350aa901924ba3d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75752018"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027168"
 ---
 ## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>使用 Azure 门户添加全局数据库区域
 Azure Cosmos DB 在全球范围的所有 [Azure 区域][azureregions]中推出。 为数据库帐户选择默认的一致性级别后，可以关联一个或多个区域（具体取决于所选的默认一致性级别和全局分发需求）。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的左侧栏中，单击“Azure Cosmos DB”****。
-2. 在“Azure Cosmos DB”**** 页中，选择要修改的数据库帐户。
+1. 在 [Azure 门户](https://portal.azure.com/)的左侧栏中，单击“Azure Cosmos DB”。
+2. 在“Azure Cosmos DB”页中，选择要修改的数据库帐户。
 3. 在“帐户”页上的菜单中单击“全局复制数据”。
-4. 在“全局复制数据”**** 页中，通过单击地图中的区域选择要添加或删除的区域，并单击“保存”****。 添加区域会产生费用，有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)或[使用 Azure Cosmos DB 全局分发数据](../articles/cosmos-db/distribute-data-globally.md)。
+4. 在“全局复制数据”页中，通过单击地图中的区域选择要添加或删除的区域，并单击“保存”。 添加区域会产生费用，有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)或[使用 Azure Cosmos DB 全局分发数据](../articles/cosmos-db/distribute-data-globally.md)。
    
     ![单击图中的区域可以添加或删除区域][1]
     
-添加第二个区域后，门户中的“全局复制数据”**** 页上会启用“手动故障转移”**** 选项。 可以使用此选项测试故障转移过程或更改主写入区域。 添加第三个区域后，会在同一页上启用“故障转移优先级”**** 选项，以便更改读取的故障转移顺序。  
+添加第二个区域后，门户中的“全局复制数据”页上会启用“手动故障转移”选项。 可以使用此选项测试故障转移过程或更改主写入区域。 添加第三个区域后，会在同一页上启用“故障转移优先级”选项，以便更改读取的故障转移顺序。  
 
 ### <a name="selecting-global-database-regions"></a>选择全局数据库区域
 配置两个或更多区域有两个常见方案：
@@ -59,7 +59,7 @@ While all regions associated with your Cosmos DB database account can serve read
 [3]: ./media/cosmos-db-tutorial-global-distribution-portal/azure-cosmos-db-manual-failover-2.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
+[bcdr]: ../articles/best-practices-availability-paired-regions.md
 [consistency]: ../articles/cosmos-db/consistency-levels.md
 [azureregions]: https://azure.microsoft.com/regions/#services
 [offers]: https://azure.microsoft.com/pricing/details/cosmos-db/

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aeb5bceca11f595c1582596aeea401fe5f9b239f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 64fe65019a66013323b1c6d27055051badb47cee
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883473"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350307"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>教程：使用 Azure Stack Edge Pro 传输数据
 
@@ -55,14 +55,14 @@ ms.locfileid: "90883473"
     a. 在“名称”框中，提供共享的唯一名称。   
     共享名称只能包含小写字母、数字和连字符。 它必须包含 3 到 63 个字符，并以字母或数字开头。 紧邻连字符的字符必须为字母或数字。
     
-    b. 选择共享的**类型**。  
+    b. 选择共享的 **类型**。  
     类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。  
     根据你选择 SMB 共享还是 NFS 共享，其余选项会略有不同。 
 
     c. 提供一个可供共享驻留在其中的存储帐户。 
 
     > [!IMPORTANT]
-    > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+    > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/storage-blob-immutability-policies-manage.md)。
     
     d. 在“存储服务”下拉列表中，选择“块 Blob”、“页 Blob”或“文件”。      
     所选服务类型取决于数据需要在 Azure 中采用何种格式。 在此示例中，我们希望数据以块 Blob 的形式存储在 Azure 中，因此选择“块 Blob”。  如果选择“页 Blob”，请确保数据按 512 字节对齐。  例如，VHDX 始终按 512 字节对齐。
@@ -162,5 +162,3 @@ ms.locfileid: "90883473"
 
 > [!div class="nextstepaction"]
 > [使用 Azure Stack Edge Pro 转换数据](./azure-stack-edge-deploy-configure-compute.md)
-
-

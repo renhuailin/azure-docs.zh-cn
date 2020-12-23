@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89596033"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095230"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的身份验证和授权
 
@@ -77,7 +77,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 将为经身份验证的会话缓存 ID 令牌、访问令牌和刷新令牌，它们只能由关联的用户访问。  
 
-如果不需要在应用中使用令牌，可以在应用的 " **身份验证/授权** " 页中禁用令牌存储。
+如果不需要在应用中使用令牌，可以在应用的“身份验证/授权”页中禁用令牌存储。
 
 ### <a name="logging-and-tracing"></a>日志记录和跟踪
 
@@ -147,13 +147,17 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 > [!CAUTION]
 > 以这种方式限制访问适用于对应用的所有调用，对于想要主页公开可用的应用程序来说，这可能是不可取的，就像在许多单页应用程序中一样。
 
+> [!NOTE]
+> 默认情况下，Azure AD 租户中的任何用户都可以从 Azure AD 请求应用程序的令牌。 若要仅允许一组定义的用户访问应用，可以[在 Azure AD 中配置应用程序](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)。
+
 ## <a name="more-resources"></a>更多资源
 
+* [教程：在访问 Azure 存储和 Microsoft Graph 的 web 应用中对用户进行身份验证和授权](scenario-secure-app-authentication-app-service.md)
 * [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)  
 * [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 * [在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)
-* [Azure AppService EasyAuth (第三方的 .NET Core 集成) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-* [使用 .NET Core (第三方进行 Azure App Service 身份验证) ](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+* [.NET Core 与 Azure 应用服务 EasyAuth 的集成（第三方）](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+* [使用 .NET Core 进行 Azure 应用服务身份验证（第三方）](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 特定于提供程序的操作方法指南：
 
@@ -163,6 +167,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 * [How to configure your app to use Microsoft Account login][MSA]
 * [如何将应用配置为使用 Twitter 登录][Twitter]
 * [如何将应用配置为使用 OpenID Connect 提供程序（预览版）进行登录][OIDC]
+* [如何将应用配置为使用 Apple (预览版的登录) ][Apple]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
@@ -170,6 +175,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
+[Apple]: configure-authentication-provider-apple.md
 
 [custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 

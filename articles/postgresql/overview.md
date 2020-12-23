@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90903761"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491319"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是 Azure Database for PostgreSQL？
 
@@ -43,7 +43,7 @@ Azure Database for PostgreSQL 是 Microsoft 云中的关系数据库服务，基
 
 Azure Database for PostgreSQL 单一服务器是一项完全托管的数据库服务，对数据库自定义的要求最低。 单一服务器平台旨在以最少的用户配置和控制来处理大多数数据库管理功能，例如修补、备份、高可用性、安全性。 此体系结构已进行优化，提供内置的高可用性，在单个可用性区域的可用性为 99.99%。 它支持 PostgreSQL 社区版 9.5、9.6、10 和 11。 目前，该服务已在各种 [Azure 区域](https://azure.microsoft.com/global-infrastructure/services/)中正式发布。
 
-“单一服务器”部署选项提供三个定价层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的资源功能以支持数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅[定价层](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)。
+“单一服务器”部署选项提供三个定价层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的资源功能以支持数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。
 
 单一服务器最适合用于云原生应用程序，这些应用程序旨在处理自动修补，而无需对修补计划和自定义 PostgreSQL 配置设置进行精细控制。
 
@@ -72,7 +72,7 @@ Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库�
 - 将这些服务器的查询并行化，加快大型数据集上的响应
 - 为多租户应用程序提供卓越的支持，并支持实时运营分析以及高吞吐量事务工作负荷
   
-针对 PostgreSQL 构建的应用程序可以在超大规模 (Citus) 部署的基础上运行分布式查询，使用标准的[连接库](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries)，基本不需要什么更改。
+针对 PostgreSQL 构建的应用程序可以在超大规模 (Citus) 部署的基础上运行分布式查询，使用标准的[连接库](./concepts-connection-libraries.md)，基本不需要什么更改。
 
 ## <a name="next-steps"></a>后续步骤
 

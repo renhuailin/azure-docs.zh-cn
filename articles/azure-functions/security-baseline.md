@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 86e13c0f57b30d2c53d9194e89ec89e7abdf1574
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394085"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187045"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>适用于 Azure Functions 的 Azure 安全基线
 
@@ -22,11 +22,11 @@ ms.locfileid: "89394085"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络上使用网络安全组或 Azure 防火墙来保护资源
 
 **指南**：将 Azure Functions 应用与 Azure 虚拟网络集成。 在高级计划中运行的函数应用与 Azure App Service 中的 web 应用具有相同的托管功能，其中包括 "VNet 集成" 功能。  使用 azure 虚拟网络可以将许多 Azure 资源（如 Azure Functions）放置在非 internet 可路由网络中。
 
@@ -86,11 +86,11 @@ ms.locfileid: "89394085"
 
 - [应用服务环境的网络注意事项](../app-service/environment/network-info.md)
 
-- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [了解 Azure 安全中心集成的威胁情报](../security-center/threat-protection.md)
+- [了解 Azure 安全中心集成的威胁情报](../security-center/azure-defender.md)
 
 - [了解 Azure 安全中心自适应网络强化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -193,7 +193,7 @@ ms.locfileid: "89394085"
 
 **指南**：如果使用网络安全组 (与你的 Azure Functions 实现) ，请使用与网络安全和通信流相关的 nsg 和其他资源的标记。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
 
-使用与标记相关的任何内置 Azure 策略定义（如 "需要标记和值"）来确保使用标记创建所有资源并通知现有未标记资源。
+使用与标记相关的任何内置 Azure Policy 定义（例如“需要标记及其值”）来确保使用标记创建所有资源，并在现有资源不带标记时发出通知。
 
 可以使用 Azure PowerShell 或 Azure CLI 基于其标记对资源进行查找或执行操作。
 
@@ -315,7 +315,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 - [如何启用 Azure Functions 的诊断设置](./functions-monitor-log-analytics.md)
 
-- [如何为 Azure Functions 启用 Application Insights](./functions-monitoring.md#enable-application-insights-integration)
+- [如何为 Azure Functions 启用 Application Insights](./configure-monitoring.md#enable-application-insights-integration)
 
 - [如何在 Azure 中创建警报](../azure-monitor/learn/tutorial-response.md)
 
@@ -369,7 +369,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **指南**：通过 AZURE ACTIVE DIRECTORY (AD) 控制对 Azure Functions 的控制平面访问。 Azure AD 没有默认密码。
 
-可以通过多种方式控制数据平面访问，包括授权密钥、网络限制和验证 AAD 标识。 授权密钥由连接到 Azure Functions HTTP 终结点的客户端使用，可以随时重新生成。 默认情况下，将为新的 HTTP 终结点生成这些密钥。
+可以通过多种方式控制数据平面访问，包括授权密钥、网络限制和验证 Azure AD 标识。 授权密钥由连接到 Azure Functions HTTP 终结点的客户端使用，可以随时重新生成。 默认情况下，将为新的 HTTP 终结点生成这些密钥。
 
 函数应用提供多种部署方法，其中一些部署方法可能利用一组生成的凭据。 查看将用于应用程序的部署方法。
 
@@ -459,11 +459,11 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Functions 应用的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Functions 应用的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 - [如何将 Azure Functions 应用配置为使用 Azure AD 登录](../app-service/configure-authentication-provider-aad.md)
 
-- [如何创建和配置 AAD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 安全中心监视**：是
 
@@ -481,9 +481,9 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **责任**：客户
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视尝试访问已停用帐户的行为
 
-**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Function app 的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Function app 的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 你可以访问 Azure AD 登录活动、审核和风险事件日志源，以便与 Azure Sentinel 或第三方 SIEM 集成。
 
@@ -541,11 +541,11 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **指导**：为开发、测试和生产实施单独的订阅和/或管理组。 Azure Function apps 应由虚拟网络 (VNet 分隔) /子网并进行相应标记。
 
-你还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到服务 (例如： Azure Functions 应用 HTTPs 终结点) Azure Private Link。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。 专用终结点位于高级计划中运行的函数应用 (预览) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
+还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到服务 (例如： Azure Functions 应用 HTTPs 终结点) Azure Private Link。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。 专用终结点位于高级计划中运行的函数应用 (预览) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -585,7 +585,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：当前不可用;数据标识、分类和丢失防护功能当前不可用于 Azure Functions。 标记函数应用程序可能会以这种方式处理敏感信息，并在需要时实现第三方解决方案以实现符合性。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -649,7 +649,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [如何将持续安全验证添加到 CI/CD 管道](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [如何实现 Azure 安全中心漏洞评估建议](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 安全中心监视**：是
 
@@ -727,7 +727,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -747,7 +747,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。 
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。 
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -960,7 +960,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md)
 
-* [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+* [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 
 * [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
@@ -972,7 +972,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**：使用托管标识，通过 Azure AD 中的自动托管标识提供 Azure Function app。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
+**指南**：使用托管标识，通过 Azure AD 中的自动托管标识提供 Azure Function app。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
 
 - [如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md)
 
@@ -1031,7 +1031,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：使用备份和还原功能来计划应用的定期备份。 在高级计划中运行的函数应用与 Azure App Service 中的 web 应用具有相同的托管功能，其中包括 "备份和还原" 功能。
 
-还利用源代码管理解决方案（如 Azure Repos 和 Azure DevOps）来安全地存储和管理代码。 Azure DevOps Services 利用了许多 Azure 存储功能，以确保在发生硬件故障、服务中断或区域灾难时能够实现数据的可用性。 此外，Azure DevOps 团队按照过程来保护数据免遭意外或恶意删除。
+还利用源代码管理解决方案（如 Azure Repos 和 Azure DevOps）来安全地存储和管理代码。 Azure DevOps Services 利用许多 Azure 存储功能，确保在发生硬件失败、服务中断或区域灾难时保持数据可用性。 此外，Azure DevOps 团队按照标准程序来保护数据免遭意外或恶意删除。
 
 - [在 Azure 中备份应用](../app-service/manage-backup.md)
 
@@ -1049,7 +1049,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：使用备份和还原功能来计划应用的定期备份。 在高级计划中运行的函数应用与 Azure App Service 中的 web 应用具有相同的托管功能，其中包括 "备份和还原" 功能。 在 Azure 密钥保管库中备份客户托管的密钥。
 
-还利用源代码管理解决方案（如 Azure Repos 和 Azure DevOps）来安全地存储和管理代码。 Azure DevOps Services 利用了许多 Azure 存储功能，以确保在发生硬件故障、服务中断或区域灾难时能够实现数据的可用性。 此外，Azure DevOps 团队按照过程来保护数据免遭意外或恶意删除。
+还利用源代码管理解决方案（如 Azure Repos 和 Azure DevOps）来安全地存储和管理代码。 Azure DevOps Services 利用许多 Azure 存储功能，确保在发生硬件失败、服务中断或区域灾难时保持数据可用性。 此外，Azure DevOps 团队按照标准程序来保护数据免遭意外或恶意删除。
 
 - [在 Azure 中备份应用](../app-service/manage-backup.md)
 
@@ -1087,7 +1087,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [Azure 存储静态加密](../storage/common/storage-service-encryption.md)
 
-- [如何在 Key Vault 中启用软删除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [如何在 Key Vault 中启用软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：是
 
@@ -1099,7 +1099,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -1115,7 +1115,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
@@ -1125,7 +1125,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 

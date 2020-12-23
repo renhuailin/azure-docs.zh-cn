@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360304"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020698"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何配置和运行云服务的启动任务
 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。
@@ -125,7 +125,7 @@ EXIT /B 0
 
 静态环境变量使用 [变量] 元素的 **value** 属性。 上面的示例创建了环境变量 **MyVersionNumber**，该变量具有静态值“**1.0.0.0**”。 另一个示例就是创建 **StagingOrProduction** 环境变量，可以手动将该变量设置为值“**staging**”或“**production**”，以根据 **StagingOrProduction** 环境变量的值执行不同的启动操作。
 
-基于 RoleEnvironment 类的成员的环境变量不使用 [变量] 元素的 **value** 属性。 而是使用具有相应 **XPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。 用于访问各种 [RoleEnvironment] 值的 **XPath** 属性值可以在[此处](cloud-services-role-config-xpath.md)找到。
+基于 RoleEnvironment 类的成员的环境变量不使用 [变量] 元素的 **value** 属性。 而是使用具有相应 **XPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。 用于访问各种 [RoleEnvironment] 值的 **XPath** 属性值可以在 [此处](cloud-services-role-config-xpath.md)找到。
 
 例如，若要创建这样一个环境变量（当实例在计算模拟器中运行时为“true”，在云中运行时为“false”），请使用以下 [变量] 和 [RoleInstanceValue] 元素 ：
 
@@ -154,13 +154,10 @@ EXIT /B 0
 [打包](cloud-services-model-and-package.md)云服务。  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[启动]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[executionContext]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[ServiceDefinition.csdef]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[变量]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-
-
-
+[任务]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[启动]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[executionContext]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[ServiceDefinition.csdef]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[变量]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)

@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bbbf924ea950c5ba281be430190370ae77734b7a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262169"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184333"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容
 
@@ -60,7 +60,7 @@ ms.locfileid: "89262169"
 
 单击图像查看其完整大小。  
 
-[![显示用于开发视频点播应用程序的 Azure 媒体服务对象数据模型中最常用的一些对象的关系图。](./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png)](./media/media-services-dotnet-get-started/media-services-overview-object-model.png#lightbox)
+[![显示用于开发点播视频应用程序的 Azure 媒体服务对象数据模型中一些最常用对象的关系图。](./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png)](./media/media-services-dotnet-get-started/media-services-overview-object-model.png#lightbox)
 
 可在 [此处](https://media.windows.net/API/$metadata?api-version=2.15)查看完整模型。  
 
@@ -69,7 +69,7 @@ ms.locfileid: "89262169"
 使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理传送视频。 媒体服务提供动态打包，可按媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）及时传送自适应比特率 MP4 编码内容，而无需存储上述各种流格式的预打包版本。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+>创建 AMS 帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
 若要启动流式处理终结点，请执行以下操作：
 
@@ -84,7 +84,7 @@ ms.locfileid: "89262169"
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并在 app.config 文件中填充连接信息，如 [通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+1. 设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），并复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\VideoFiles”路径。
 
 ## <a name="connect-to-the-media-services-account"></a>连接到媒体服务帐户
@@ -155,11 +155,11 @@ ms.locfileid: "89262169"
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>创建新资产并上传视频文件
 
-在媒体服务中，可以将数字文件上传（引入）到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件 (以及有关这些文件的元数据。 ) 上传文件后，你的内容将安全地存储在云中，以便进行进一步处理和流式处理。 资产中的文件称为 **资产文件**。
+在媒体服务中，可以将数字文件上传（引入）到资产中。 “资产”实体可以包含视频、音频、图片、缩略图集合、文本曲目和隐藏式字幕文件（以及这些文件的相关元数据。）上传文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。 资产中的文件称为 **资产文件**。
 
 下面定义的 **UploadFile** 方法调用 **CreateFromFile**（在 .NET SDK Extensions 中定义）。 **CreateFromFile** 创建指定的源文件所要上传到的新资产。
 
-**CreateFromFile**方法采用**AssetCreationOptions**，它可让你指定以下资产创建选项之一：
+**CreateFromFile** 方法采用 **AssetCreationOptions**，后者用于指定以下任一资产创建选项：
 
 * **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
   如果计划使用渐进式下载交付 MP4，则使用此选项。
@@ -197,7 +197,7 @@ ms.locfileid: "89262169"
 
 要利用动态打包，需将夹层（源）文件编码或转换成一组自适应比特率 MP4 文件或自适应比特率平滑流文件。  
 
-以下代码演示如何提交编码作业。 该作业所包含的一项任务会指定要使用 **Media Encoder Standard**将夹层文件转码成一组自适应比特率 MP4。 代码会提交作业，并等待作业完成。
+以下代码演示如何提交编码作业。 该作业所包含的一项任务会指定要使用 **Media Encoder Standard** 将夹层文件转码成一组自适应比特率 MP4。 代码会提交作业，并等待作业完成。
 
 作业完成后，即可流式处理资产，或渐进式下载转码后所创建的 MP4 文件。
 
@@ -249,11 +249,11 @@ ms.locfileid: "89262169"
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH 的流 URL 采用以下格式：
 
-{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest** (format = mpd-csf) **
+{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest **(format = mpd-csf)**
 
 #### <a name="a-streaming-url-for-hls-has-the-following-format"></a>HLS 的流 URL 采用以下格式：
 
-{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest** (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) **
+{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest **(format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3)**
 
 #### <a name="a-streaming-url-for-smooth-streaming-has-the-following-format"></a>平滑流式处理的流式处理 URL 采用以下格式：
 

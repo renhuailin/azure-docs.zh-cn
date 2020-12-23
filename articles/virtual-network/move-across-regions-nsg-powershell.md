@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688443"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019746"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 网络安全组 (NSG) 移到另一个区域
 
@@ -106,9 +106,9 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
     Get-AzLocation | format-table
     
     ```
-8. 如果你选择，则还可以更改** \<resource-group-name> json**中的其他参数，并根据你的要求进行选择：
+8. 如果你选择，则还可以更改 **\<resource-group-name> json** 中的其他参数，并根据你的要求进行选择：
 
-    * **安全规则**-你可以通过在**securityRules**部分中添加或删除规则，来编辑要部署到目标** \<resource-group-name> NSG 的规则**：
+    * **安全规则**-你可以通过在 **securityRules** 部分中添加或删除规则，来编辑要部署到目标 **\<resource-group-name> NSG 的规则**：
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
             
         ```
 
-        若要完成添加或删除目标 NSG 中的规则，还必须按以下示例格式在** \<resource-group-name> json**文件末尾编辑自定义规则类型：
+        若要完成添加或删除目标 NSG 中的规则，还必须按以下示例格式在 **\<resource-group-name> json** 文件末尾编辑自定义规则类型：
 
         ```json
            {

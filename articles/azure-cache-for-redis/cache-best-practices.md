@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007907"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654789"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -21,7 +21,7 @@ ms.locfileid: "88007907"
 
  * **请记住，Redis 是一个内存中数据存储。**  [此文](cache-troubleshoot-data-loss.md)概述了可能发生数据丢失的一些情况。
 
- * 在开发系统时让它可以处理[由于修补和故障转移](cache-failover.md)出现的**连接故障**。
+ * 在开发系统时让它可以处理 [由于修补和故障转移](cache-failover.md)出现的 **连接故障**。
 
  * **配置 [maxmemory-reserved 设置](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)，以提高系统在遇到内存压力时的响应能力**。  对于写入密集型工作负荷，或者，如果你要在 Redis 中存储较大的值（100 KB 或更大），足够的预留设置尤为重要。 应从缓存大小的 10% 开始，如果有进行大量写入的负载，则增加此百分比。
 
@@ -34,20 +34,20 @@ ms.locfileid: "88007907"
  * **将客户端库配置为使用至少 15 秒的连接超时**，以便即使是在 CPU 负载较高的情况下，系统也有时间建立连接。  使用较小的连接超时值无法保证在该时间范围内能够建立连接。  如果出现问题（客户端 CPU 负载偏高、服务器 CPU 负载偏高等），则使用较短的连接超时值会导致连接尝试失败。 此行为通常会使问题变得更糟。  使用较短的超时不仅无助于解决问题，而且会加剧问题，这会强制系统重启尝试重新连接的进程，从而可能导致出现“连接 -> 失败 -> 重试”循环。 我们通常建议将连接超时保留为 15 秒或更长。 让连接尝试在 15 或 20 秒后成功，比失败后立即重试更有利。 与最初让系统花费更长时间尝试连接相比，这种重试循环可能会导致服务中断的持续时间变长。  
      > [!NOTE]
      > 本指南特定于连接尝试，而与你愿意等待 GET 或 SET 等操作完成的时间无关。 
- 
+
  * **避免高开销操作** - 某些 Redis 操作（例如 [KEYS](https://redis.io/commands/keys) 命令）的开销很大，应该避免。  有关详细信息，请参阅有关[长时间运行的命令](cache-troubleshoot-server.md#long-running-commands)的一些注意事项
 
- * **使用 TLS 加密** - 默认情况下，Azure Cache for Redis 需要 TLS 加密通信。  目前支持 TLS 版本 1.0、1.1 和 1.2。  但是，TLS 1.0 和 TLS 1.1 即将在全行业范围内弃用，因此，请尽可能使用 TLS 1.2。  如果客户端库或工具不支持 TLS，则可以[通过 Azure 门户](cache-configure.md#access-ports)或[管理 API](https://docs.microsoft.com/rest/api/redis/redis/update) 来启用未加密的连接。  在无法进行加密连接的情况下，建议将缓存和客户端应用程序放入虚拟网络中。  有关虚拟网络缓存方案中使用的端口的详细信息，请参阅此[表](cache-how-to-premium-vnet.md#outbound-port-requirements)。
- 
+ * **使用 TLS 加密** - 默认情况下，Azure Cache for Redis 需要 TLS 加密通信。  目前支持 TLS 版本 1.0、1.1 和 1.2。  但是，TLS 1.0 和 TLS 1.1 即将在全行业范围内弃用，因此，请尽可能使用 TLS 1.2。  如果客户端库或工具不支持 TLS，则可以[通过 Azure 门户](cache-configure.md#access-ports)或[管理 API](/rest/api/redis/redis/update) 来启用未加密的连接。  在无法进行加密连接的情况下，建议将缓存和客户端应用程序放入虚拟网络中。  有关虚拟网络缓存方案中使用的端口的详细信息，请参阅此[表](cache-how-to-premium-vnet.md#outbound-port-requirements)。
+
  * **空闲超时** - Azure Redis 当前有 10 分钟的连接空闲超时，因此应设置为少于 10 分钟。
- 
+
 ## <a name="memory-management"></a>内存管理
 可能需要考虑到与 Redis 服务器实例中内存用量相关的一些问题。  下面是一些建议：
 
- * **选择适合应用程序的[逐出策略](https://redis.io/topics/lru-cache)。**  Azure Redis 的默认策略是 *volatile-lru*，表示只有设置了 TTL 值的键才符合逐出条件。  如果没有任何键具有 TTL 值，则系统不会逐出任何键。  如果你希望系统在遇到内存压力的情况下允许逐出任何键，可能需要考虑使用 *allkeys-lru* 策略。
+ * **选择适合应用程序的 [逐出策略](https://redis.io/topics/lru-cache)。**  Azure Redis 的默认策略是 *volatile-lru*，表示只有设置了 TTL 值的键才符合逐出条件。  如果没有任何键具有 TTL 值，则系统不会逐出任何键。  如果你希望系统在遇到内存压力的情况下允许逐出任何键，可能需要考虑使用 *allkeys-lru* 策略。
 
  * **为键设置过期值。**  过期时会主动删除键，而不会等到出现内存压力的时候。  如果由于内存压力而激发逐出，可能会导致服务器上的负载增大。  有关详细信息，请参阅 [EXPIRE](https://redis.io/commands/expire) 和 [EXPIREAT](https://redis.io/commands/expireat) 命令的文档。
- 
+
 ## <a name="client-library-specific-guidance"></a>特定于客户端库的指南
  * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java - 应使用哪种客户端？](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
@@ -62,25 +62,25 @@ ms.locfileid: "88007907"
 遗憾的是，没有一个肯定的答案。  每个应用程序需要确定哪些操作可重试，哪些操作不可重试。  每个操作具有不同的要求以及键间的依赖关系。  下面是可能需要考虑的一些因素：
 
  * 即使 Redis 已成功根据要求运行了命令，你也仍可能会收到客户端错误。  例如：
-     - 超时是与客户端相关的概念。  如果操作已抵达服务器，服务器将运行命令，即使客户端放弃等待。  
-     - 当套接字连接发生错误时，无法知道操作是否确实在服务器上运行。  例如，在服务器处理请求之后（在客户端接收响应之前），会发生连接错误。
- *  如果我意外运行同一操作两次，应用程序如何做出反应？  例如，如果我递增某个整数两次而不是一次，会发生什么情况？  我的应用程序是否会从多个位置写入同一个键？  如果重试逻辑覆盖了应用的另一部分设置的值，会发生什么情况？
+    - 超时是与客户端相关的概念。  如果操作已抵达服务器，服务器将运行命令，即使客户端放弃等待。  
+    - 当套接字连接发生错误时，无法知道操作是否确实在服务器上运行。  例如，在服务器处理请求之后（在客户端接收响应之前），会发生连接错误。
+ * 如果我意外运行同一操作两次，应用程序如何做出反应？  例如，如果我递增某个整数两次而不是一次，会发生什么情况？  我的应用程序是否会从多个位置写入同一个键？  如果重试逻辑覆盖了应用的另一部分设置的值，会发生什么情况？
 
 若要测试代码在出错的情况下的运行情况，请考虑使用[重启功能](cache-administration.md#reboot)。 重启即可了解连接故障对应用程序的影响。
 
 ## <a name="performance-testing"></a>性能测试
  * **首先使用 `redis-benchmark.exe`** 以在编写自己的性能测试之前感受可能的吞吐量/延迟。  [可在此处找到](https://redis.io/topics/benchmarks) Redis 基准文档。  请注意，该 Redis 基准不支持 TLS，因此在运行测试之前必须[通过门户启用非 TLS 端口](cache-configure.md#access-ports)。  [可在此处找到 Windows 兼容版本的 redis-benchmark.exe](https://github.com/MSOpenTech/redis/releases)
- * 用于测试的客户端 VM 应与 Redis 缓存实例位于**同一区域**。
+ * 用于测试的客户端 VM 应与 Redis 缓存实例位于 **同一区域**。
  * **建议为客户端使用 Dv2 VM 系列**，因为它们具有更好的硬件，会提供最佳的结果。
  * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。 
- * 如果是在 Windows 设备上操作，请在客户端计算机上**启用 VRSS**。  [请参阅此处了解详细信息](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx)。  PowerShell 脚本示例：
+ * 如果是在 Windows 设备上操作，请在客户端计算机上 **启用 VRSS**。  [请参阅此处了解详细信息](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11))。  PowerShell 脚本示例：
      >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (    Get-NetAdapter).Name 
-     
+
  * **考虑使用高级层 Redis 实例**。  这些缓存大小具有更好的网络延迟和吞吐量，因为它们是在 CPU 和网络两方面都更好的硬件上运行的。
- 
+
      > [!NOTE]
      > [此处发布](cache-planning-faq.md#azure-cache-for-redis-performance)了我们观测到的性能结果供你参考。   另请注意，SSL/TLS 会增大一些开销，因此，如果你使用传输加密，延迟和/或吞吐量可能会有变化。
- 
+
 ### <a name="redis-benchmark-examples"></a>Redis 基准示例
 **测试前的设置**：使用下列延迟和吞吐量测试命令所需的数据准备缓存实例。
 > redis--yourcache.redis.cache.windows.net-a yourAccesskey-1024 t 

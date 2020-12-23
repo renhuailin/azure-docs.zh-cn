@@ -10,12 +10,12 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230222"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995295"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
 
@@ -194,5 +194,5 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Blob 存储的软删除](soft-delete-overview.md)
+- [Blob 存储的软删除](./soft-delete-blob-overview.md)
 - [Blob 版本控制](versioning-overview.md)

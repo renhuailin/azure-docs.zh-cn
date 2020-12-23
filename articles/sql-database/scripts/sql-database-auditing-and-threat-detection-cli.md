@@ -4,19 +4,19 @@ description: 用于在 Azure SQL 数据库中配置审核和高级威胁防护�
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: security
+ms.custom: security, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 6791691be976e541c6400e89dde8f892fe50c6dc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3df43af03fd536dfe50733bb6e10ff43d9f54834
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336167"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737111"
 ---
 # <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>使用 CLI 配置 SQL 数据库审核和高级威胁防护
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az sql db audit-policy](/cli/azure/sql/db/audit-policy) | 设置数据库的审核策略。 |
 | [az sql db threat-policy](/cli/azure/sql/db/threat-policy) | 在数据库上设置高级威胁防护策略。 |

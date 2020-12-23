@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319752"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895624"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>使用 Azure AD 和 Azure Maps REST Api 保护输入受限设备
 
@@ -25,42 +25,42 @@ ms.locfileid: "91319752"
 ## <a name="create-an-application-registration-in-azure-ad"></a>在 Azure AD 中创建应用程序注册
 
 > [!NOTE]
-> * **先决条件阅读：** [方案：调用 Web api 的桌面应用](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview)
+> * **先决条件阅读：** [方案：调用 Web api 的桌面应用](../active-directory/develop/scenario-desktop-overview.md)
 > * 以下方案使用的设备代码流不涉及 web 浏览器来获取令牌。
 
 在 Azure AD 中创建基于设备的应用程序，以启用 Azure AD 登录。 将向此应用程序授予 Azure Maps REST Api 的访问权限。
 
-1. 在 "Azure 门户的" Azure 服务 "列表中，选择" **Azure Active Directory**"  >  **应用注册**"  >  **新注册**"。  
+1. 在 "Azure 门户的" Azure 服务 "列表中，选择" **Azure Active Directory** "  >  **应用注册** "  >  **新注册** "。  
 
     > [!div class="mx-imgBorder"]
     > ![应用注册](./media/how-to-manage-authentication/app-registration.png)
 
-2. 输入一个 **名称**， **在此组织目录中选择仅** 作为 **支持的帐户类型**的帐户。 在 " **重定向 uri**" 中，指定 **公共客户端/本机 (移动 & 桌面) ** 然后将添加 `https://login.microsoftonline.com/common/oauth2/nativeclient` 到值。 有关更多详细信息，请参阅 Azure AD [桌面应用程序调用 Web api：应用注册](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)。 然后 **注册** 应用程序。
+2. 输入一个 **名称** ， **在此组织目录中选择仅** 作为 **支持的帐户类型** 的帐户。 在 " **重定向 uri** " 中，指定 **公共客户端/本机 (移动 & 桌面)** 然后将添加 `https://login.microsoftonline.com/common/oauth2/nativeclient` 到值。 有关更多详细信息，请参阅 Azure AD [桌面应用程序调用 Web api：应用注册](../active-directory/develop/scenario-desktop-app-registration.md)。 然后 **注册** 应用程序。
 
     > [!div class="mx-imgBorder"]
     > ![为名称和重定向 uri 添加应用注册详细信息](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. 导航到 " **身份验证** "，并启用 " **将应用程序视为公共客户端**"。 这将启用 Azure AD 的设备代码身份验证。
+3. 导航到 " **身份验证** "，并启用 " **将应用程序视为公共客户端** "。 这将启用 Azure AD 的设备代码身份验证。
     
     > [!div class="mx-imgBorder"]
     > ![启用作为公用客户端的应用注册](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  若要将委派的 API 权限分配到 Azure Maps，请访问应用程序。 然后选择 " **API 权限**" "  >  **添加权限**"。 在 " **我的组织使用的 api**" 下，搜索并选择 " **Azure Maps**"。
+4.  若要将委派的 API 权限分配到 Azure Maps，请访问应用程序。 然后选择 " **API 权限** " "  >  **添加权限** "。 在 " **我的组织使用的 api** " 下，搜索并选择 " **Azure Maps** "。
 
     > [!div class="mx-imgBorder"]
     > ![添加应用 API 权限](./media/how-to-manage-authentication/app-permissions.png)
 
-5. 选中 " **Access Azure Maps**旁边的复选框，然后选择" **添加权限**"。
+5. 选中 " **Access Azure Maps** 旁边的复选框，然后选择" **添加权限** "。
 
     > [!div class="mx-imgBorder"]
     > ![选择应用 API 权限](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. 为用户或组配置基于 Azure 角色的访问控制。 请参阅 [向用户授予用于 Azure Maps 的基于角色的访问权限](#grant-role-based-access-for-users-to-azure-maps)。
+6. 为用户或组配置 azure RBAC)  (azure 基于角色的访问控制。 请参阅 [向用户授予要 Azure Maps 的基于角色的访问权限](#grant-role-based-access-for-users-to-azure-maps)。
 
-7. 添加用于在应用程序中获取令牌流的代码。有关实现的详细信息，请参阅 [设备代码流](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow)。 获取令牌时，引用作用域： `user_impersonation` 在前面的步骤中选择的作用域。
+7. 添加用于在应用程序中获取令牌流的代码。有关实现的详细信息，请参阅 [设备代码流](../active-directory/develop/scenario-desktop-acquire-token.md#device-code-flow)。 获取令牌时，引用作用域： `user_impersonation` 在前面的步骤中选择的作用域。
 
 > [!Tip]
-> 使用 (MSAL) 的 Microsoft 身份验证库获取访问令牌。 请参阅 [用于调用 Web api 的桌面应用的建议：代码配置](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-configuration)
+> 使用 (MSAL) 的 Microsoft 身份验证库获取访问令牌。 请参阅 [用于调用 Web api 的桌面应用的建议：代码配置](../active-directory/develop/scenario-desktop-app-configuration.md)
 
 8. 使用从 Azure AD 获取的令牌编写 HTTP 请求，并使用有效的 HTTP 客户端发送请求。
 
@@ -110,7 +110,7 @@ Access-Control-Expose-Headers: Location
 }
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,16 +4,16 @@ description: 了解针对 HPC 优化的支持 InfiniBand 的 H 系列和 N 系�
 author: vermagit
 ms.author: amverma
 ms.service: virtual-machines
-ms-subservice: hpc
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: overview
 ms.date: 07/29/2020
-ms.openlocfilehash: f9a672777fbc8a75cb6af10ba25232f8a274c894
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.reviewer: cynthn
+ms.openlocfilehash: 5950e9ab6ec979938a2318c4d25f53db4f5e1064
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87543718"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951377"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>在支持 InfiniBand 的 H 系列和 N 系列 VM 上进行高性能计算
 

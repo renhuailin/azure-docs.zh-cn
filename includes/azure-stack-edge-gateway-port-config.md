@@ -4,15 +4,15 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/16/2019
 ms.author: alkohli
-ms.openlocfilehash: baf18ae0263215e6ff83570557255d06c3117fd4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 417fbdea3f46dfb3e90ab4890cec5e88c5aa4e07
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083126"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523691"
 ---
-| 端口号。| 入或出 | 端口范围| 必须|   注释 |   |
-|--------|-----|-----|-----------|----------|-----------|
+| 端口号。| 入或出 | 端口范围| 必须 | 注释 |
+|---------|-----------|-----------|----------|-------|
 | TCP 80 (HTTP)|出|WAN |否|出站端口用于 Internet 访问以检索更新。 <br>出站 Web 代理可由用户配置。 |
 | TCP 443 (HTTPS)|出|WAN|是|出站端口用于访问云中的数据。<br>出站 Web 代理可由用户配置。|
 | UDP 123 (NTP)|出|WAN|某些情况下<br>请参阅说明|仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。  |   

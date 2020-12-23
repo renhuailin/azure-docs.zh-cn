@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: e04d7fa1f319ca3969d8acdc0235e2838bb3a88d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994775"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660774"
 ---
-# <a name="import-threat-intelligence-into-azure-sentinel"></a>将威胁智能导入 Azure Sentinel
+# <a name="import-threat-intelligence-into-azure-sentinel"></a>将威胁情报导入 Azure Sentinel
 
 ## <a name="introduction-to-threat-intelligence"></a>威胁情报简介
 
@@ -34,17 +34,17 @@ ms.locfileid: "90994775"
 - 使用各种 TI 平台的 **数据连接器** ，将 [威胁情报导入](./connect-threat-intelligence.md) Azure Sentinel。
 - 在 " **日志** " 和 "Azure Sentinel" 的新 " **威胁智能** " 区域中查看和管理已导入的威胁智能。
 - 使用内置的 **分析** 规则模板，可以使用导入的威胁智能生成安全警报和事件。
-- 通过 **威胁情报工作簿**直观显示 Azure 中的威胁情报的关键信息。
+- 通过 **威胁情报工作簿** 直观显示 Azure 中的威胁情报的关键信息。
 
 威胁情报还在其他 Azure Sentinel 体验（如 **搜寻** 和 **笔记本**）中提供了有用的上下文，而在本文未涵盖的情况下，在 [Ian 中通过 Jupyter 笔记本上的 Hellen 对](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)这些体验进行了介绍。
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>用于威胁情报的 Azure Sentinel 数据连接器
 
-就像 Azure Sentinel 中的所有其他事件数据一样，威胁指标是使用数据连接器导入的。 Azure Sentinel 中有两个数据连接器专门为威胁指标、 **威胁情报 TAXII** 和 **威胁智能平台**提供。 您可以单独使用数据连接器或同时使用这两个连接器，具体取决于您的组织在何处建立威胁指标。 我们来谈谈每个数据连接器。
+就像 Azure Sentinel 中的所有其他事件数据一样，威胁指标是使用数据连接器导入的。 Azure Sentinel 中有两个数据连接器专门为威胁指标、 **威胁情报 TAXII** 和 **威胁智能平台** 提供。 您可以单独使用数据连接器或同时使用这两个连接器，具体取决于您的组织在何处建立威胁指标。 我们来谈谈每个数据连接器。
 
 ### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>通过威胁情报平台数据连接器将威胁指标添加到 Azure Sentinel
 
-许多组织使用威胁智能平台 (TIP) 解决方案来聚合来自各种来源的威胁指标源、组织平台中的数据，然后选择要应用于各种安全解决方案（例如网络设备、高级威胁防护解决方案或 Siem，如 Azure Sentinel）的威胁指标。 如果你的组织使用集成的 TIP 解决方案，如 MISP、Anomali ThreatStream、ThreatConnect 或 Palo Alto Networks MineMeld，则 **威胁情报平台数据连接器** 可让你使用 TIP 将威胁指标导入 Azure Sentinel。 由于连接器与 [Microsoft Graph Security TIINDICATORS API](https://docs.microsoft.com/graph/api/resources/tiindicator) 配合使用来完成此操作，因此，任何自定义威胁智能平台都可以使用连接器将指示器发送到 Azure Sentinel (和其他 Microsoft 安全解决方案，如 Defender ATP) 。
+许多组织使用威胁智能平台 (TIP) 解决方案来聚合来自各种来源的威胁指标源、组织平台中的数据，然后选择要应用于各种安全解决方案（例如网络设备、高级威胁防护解决方案或 Siem，如 Azure Sentinel）的威胁指标。 如果你的组织使用集成的 TIP 解决方案，如 MISP、Anomali ThreatStream、ThreatConnect、EclecticIQ Platform、ThreatQ 威胁情报平台或 Palo Alto Networks MineMeld，则 **威胁情报平台数据连接器** 可让你使用 TIP 将威胁指标导入 Azure Sentinel。 由于连接器与 [Microsoft Graph Security TIINDICATORS API](/graph/api/resources/tiindicator) 配合使用来完成此操作，因此，任何自定义威胁智能平台都可以使用连接器将指示器发送到 Azure Sentinel (和其他 Microsoft 安全解决方案，如 Defender ATP) 。
 
 :::image type="content" source="media/import-threat-intelligence/threat-intel-import-path.png" alt-text="威胁情报导入路径":::
 
@@ -293,7 +293,7 @@ TAXII 2.x 服务器播发 API 根，它是托管威胁情报集合的 Url。 最
 
 ## <a name="view-your-threat-indicators-in-azure-sentinel"></a>查看 Azure Sentinel 中的威胁指标
 
-现在，你已使用**威胁智能平台**和/或**威胁情报-TAXII**数据连接器将威胁指标成功导入到 Azure Sentinel，你可以在**日志**中的**ThreatIntelligenceIndicator**表中查看这些标记，其中存储了所有 Azure Sentinel 事件数据。 此表是其他 Azure Sentinel 功能（如分析和工作簿）执行的查询的基础。 下面介绍了如何在 **ThreatIntelligenceIndicator** 表中查找和查看威胁指标。
+现在，你已使用 **威胁智能平台** 和/或 **威胁情报-TAXII** 数据连接器将威胁指标成功导入到 Azure Sentinel，你可以在 **日志** 中的 **ThreatIntelligenceIndicator** 表中查看这些标记，其中存储了所有 Azure Sentinel 事件数据。 此表是其他 Azure Sentinel 功能（如分析和工作簿）执行的查询的基础。 下面介绍了如何在 **ThreatIntelligenceIndicator** 表中查找和查看威胁指标。
 
 1. 打开 [Azure 门户](https://portal.azure.com/) 并导航到 **Azure Sentinel** 服务。
 
@@ -301,7 +301,7 @@ TAXII 2.x 服务器播发 API 根，它是托管威胁情报集合的 Url。 最
 
 1. 从 Azure Sentinel 菜单的 "**常规**" 部分中选择 "**日志**"。
 
-1. **ThreatIntelligenceIndicator**表位于**Azure Sentinel**组下。
+1. **ThreatIntelligenceIndicator** 表位于 **Azure Sentinel** 组下。
 
 1. 选择 " **预览数据** " 图标 (表名称旁边的眼睛) ，然后选择 " **在查询编辑器中查看** " 按钮执行将显示此表中的记录的查询。
 
@@ -326,7 +326,7 @@ TAXII 2.x 服务器播发 API 根，它是托管威胁情报集合的 Url。 最
 
 1. 选择指示器类型，然后在 **新的指示器** 面板上完成标有红色星号 ( * ) 的必填字段。
 
-1. 选择“应用”。  指示器将添加到指示器网格，并且也会发送到 **日志**中的 ThreatIntelligenceIndicator 表。
+1. 选择“应用”。 指示器将添加到指示器网格，并且也会发送到 **日志** 中的 ThreatIntelligenceIndicator 表。
 
 标记威胁指标是将它们组合在一起以使其更易于查找的一种简单方法。 通常，您可以将标记应用于与特定事件相关的指示器，或应用于表示来自特定已知执行组件或众所周知攻击市场活动的威胁的指示器。 您可以单独标记威胁指标，也可以选择多个指示器，并同时对它们进行标记。 下面显示了使用事件 ID 标记多个指示器的示例。 由于标记是自由格式的，建议的做法是为威胁指示符标记创建标准命名约定。 可以将多个标记应用于每个指示器。
 
@@ -334,15 +334,15 @@ TAXII 2.x 服务器播发 API 根，它是托管威胁情报集合的 Url。 最
 
 ## <a name="analytics-puts-your-threat-indicators-to-work-detecting-potential-threats"></a>分析可将威胁指标用于检测潜在的威胁
 
-已将威胁指标送入 Azure Sentinel;你已了解如何查看和管理它们;现在，查看它们可以为您做些什么。 Azure Sentinel 等 SIEM 解决方案中威胁指标的最重要用例是使用 power analytics 规则。  这些基于指示器的规则将数据源中的原始事件与威胁指标进行比较，以检测组织中的安全威胁。 在 Azure Sentinel **analytics**中，你将创建按计划运行的分析规则并生成安全警报。 这些规则是由查询驱动的，以及用于确定应运行规则的频率的配置、生成安全警报的类型的查询结果，以及在生成警报时触发的任何自动响应。
+已将威胁指标送入 Azure Sentinel;你已了解如何查看和管理它们;现在，查看它们可以为您做些什么。 Azure Sentinel 等 SIEM 解决方案中威胁指标的最重要用例是使用 power analytics 规则。  这些基于指示器的规则将数据源中的原始事件与威胁指标进行比较，以检测组织中的安全威胁。 在 Azure Sentinel **analytics** 中，你将创建按计划运行的分析规则并生成安全警报。 这些规则是由查询驱动的，以及用于确定应运行规则的频率的配置、生成安全警报的类型的查询结果，以及在生成警报时触发的任何自动响应。
 
 尽管始终可以从头开始创建新的分析规则，但 Azure Sentinel 提供一套由 Microsoft 安全工程师创建的内置规则模板，可以按原样使用这些模板，也可以根据需要进行修改。 你可以轻松地识别使用威胁指标的规则模板，因为它们的标题以 "**TI map**..." 开头。 所有这些规则模板的运行方式都相同，唯一的区别在于 (域、电子邮件、文件哈希、IP 地址或 URL) 使用哪种类型的威胁指示器，以及要匹配的事件类型。 每个模板都列出了该规则正常运行所需的数据源，这样您就可以一目了然地了解 Azure Sentinel 中已经导入了必要的事件。
 
-让我们看一下这些规则模板中的一个，并演练如何启用和配置规则，以便使用已导入到 Azure Sentinel 的威胁指标生成安全警报。 在此示例中，我们将使用名 **为 TI MAP IP 实体**的规则模板来 AzureActivity。 此规则将所有 IP 地址类型威胁指标与所有 Azure 活动事件匹配。 如果找到匹配项，则会生成 **警报** ，以及安全操作团队要调查的相应 **事件** 。 仅当已启用一个或两个 **威胁智能** 数据连接器 (导入威胁指标) 和 **azure 活动** 数据连接器 (导入 azure 订阅级别事件) 时，此分析规则才能成功运行。
+让我们看一下这些规则模板中的一个，并演练如何启用和配置规则，以便使用已导入到 Azure Sentinel 的威胁指标生成安全警报。 在此示例中，我们将使用名 **为 TI MAP IP 实体** 的规则模板来 AzureActivity。 此规则将所有 IP 地址类型威胁指标与所有 Azure 活动事件匹配。 如果找到匹配项，则会生成 **警报** ，以及安全操作团队要调查的相应 **事件** 。 仅当已启用一个或两个 **威胁智能** 数据连接器 (导入威胁指标) 和 **azure 活动** 数据连接器 (导入 azure 订阅级别事件) 时，此分析规则才能成功运行。
 
 1. 打开 [Azure 门户](https://portal.azure.com/) 并导航到 **Azure Sentinel** 服务。
 
-1. 使用**Azure 活动**数据连接器，选择要**将威胁指标**导入到的**工作区**。
+1. 使用 **Azure 活动** 数据连接器，选择要 **将威胁指标** 导入到的 **工作区**。
 
 1. 从 Azure Sentinel 菜单的 "**配置**" 部分选择 "**分析**"。
 
@@ -374,15 +374,15 @@ TAXII 2.x 服务器播发 API 根，它是托管威胁情报集合的 Url。 最
 
 你可以保留默认设置，也可以更改任何一个设置以满足你的要求。 完成后，选择 " **下一步：自动响应 >** " 按钮
 
-1. 此向导步骤允许你配置在从此分析规则生成安全警报时要触发的任何自动化。 Azure Sentinel 中的自动化使用由 Azure 逻辑应用提供支持的 **行动手册**完成。 若要了解详细信息，请参阅本 [教程：在 Azure Sentinel 中设置自动威胁响应](./tutorial-respond-threats-playbook.md)。 对于本示例，只需选择 " **下一步：查看 >** " 按钮继续。
+1. 此向导步骤允许你配置在从此分析规则生成安全警报时要触发的任何自动化。 Azure Sentinel 中的自动化使用由 Azure 逻辑应用提供支持的 **行动手册** 完成。 若要了解详细信息，请参阅本 [教程：在 Azure Sentinel 中设置自动威胁响应](./tutorial-respond-threats-playbook.md)。 对于本示例，只需选择 " **下一步：查看 >** " 按钮继续。
 
 1. 最后一步验证规则中的设置。 准备好启用规则时，请选择 " **创建** " 按钮并完成操作。
 
 启用分析规则后，可以在 Azure Sentinel 的 "**分析**" 部分的 "**活动规则**" 选项卡中找到已启用的规则。 可以在其中编辑、启用、禁用、复制或删除活动规则。 新规则会在激活后立即运行，然后在上一开始，将按定义的计划运行。
 
-根据默认设置，在每次规则按计划运行时，找到的任何结果都将生成安全警报。 可以在 azure sentinel 的 "**日志**" 部分中的 **"azure sentinel" 组下**的**SecurityAlert**表中查看 azure sentinel 中的安全警报。
+根据默认设置，在每次规则按计划运行时，找到的任何结果都将生成安全警报。 可以在 azure sentinel 的 "**日志**" 部分中的 **"azure sentinel" 组下** 的 **SecurityAlert** 表中查看 azure sentinel 中的安全警报。
 
-在 Azure Sentinel 中，通过分析规则生成的警报还会生成安全事件，这些事件可在 Azure Sentinel 菜单上的 "**威胁管理**" 下的**事件**中找到。 事件是安全操作团队将会审并调查以确定相应响应操作的内容。 可在本教程中查找详细信息 [：通过 Azure Sentinel 调查事件](./tutorial-investigate-cases.md)。
+在 Azure Sentinel 中，通过分析规则生成的警报还会生成安全事件，这些事件可在 Azure Sentinel 菜单上的 "**威胁管理**" 下的 **事件** 中找到。 事件是安全操作团队将会审并调查以确定相应响应操作的内容。 可在本教程中查找详细信息 [：通过 Azure Sentinel 调查事件](./tutorial-investigate-cases.md)。
 
 ## <a name="workbooks-provide-insights-about-your-threat-intelligence"></a>工作簿为你的威胁情报提供见解
 
@@ -393,7 +393,7 @@ TAXII 2.x 服务器播发 API 根，它是托管威胁情报集合的 Url。 最
 
 1. 使用威胁智能数据连接器选择已导入威胁指标的 **工作区** 。
 
-1. 从 Azure Sentinel 菜单的 "**威胁管理**" 部分中选择**工作簿**。
+1. 从 Azure Sentinel 菜单的 "**威胁管理**" 部分中选择 **工作簿**。
 
 1. 导航到标题为 " **威胁智能** " 的工作簿，并验证 **ThreatIntelligenceIndicator** 表中是否有数据，如下所示。
 

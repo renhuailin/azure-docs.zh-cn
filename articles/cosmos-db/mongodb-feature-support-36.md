@@ -7,18 +7,19 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 50414d48c3368ddf409630422d3316cdc45a63fe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88587389"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635579"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB's API for MongoDB 进行通信。 可以按照 MongoDB [有线协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)规定，通过 Azure Cosmos DB 的 MongoDB API 来使用现有客户端驱动程序。
 
-通过使用 Azure Cosmos DB 的 MongoDB API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[全局分发](distribute-data-globally.md)、[自动分片](partition-data.md)、可用性和延迟保证、静态加密和备份等。
+通过使用 Azure Cosmos DB 的 MongoDB API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[全局分发](distribute-data-globally.md)、[自动分片](partitioning-overview.md)、可用性和延迟保证、静态加密和备份等。
 
 ## <a name="protocol-support"></a>协议支持
 
@@ -147,7 +148,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 |$currentOp|    否|
 |$listLocalSessions    |否|
 |$listSessions    |否|
-|$graphLookup    |否|
+|$graphLookup    |是|
 
 ### <a name="boolean-expressions"></a>布尔表达式
 
@@ -575,7 +576,7 @@ Cosmos DB 支持基于文档时间戳的生存时间 (TTL)。 转到 [Azure 门�
 
 ## <a name="user-and-role-management"></a>用户和角色管理
 
-Cosmos DB 尚不支持用户和角色。 不过 Cosmos DB 支持基于角色的访问控制 (RBAC) 以及读写和只读密码/密钥，可通过 [Azure 门户](https://portal.azure.com)（连接字符串页面）获取这些内容。
+Cosmos DB 尚不支持用户和角色。 不过 Cosmos DB 支持 Azure 基于角色的访问控制 (Azure RBAC) 以及读写和只读密码/密钥，可通过 [Azure 门户](https://portal.azure.com)（连接字符串页面）获取这些内容。
 
 ## <a name="replication"></a>复制
 

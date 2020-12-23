@@ -16,12 +16,12 @@ ms.date: 04/17/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 29a1a991ab79c38dad1a89533091d80406615d35
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: edb326c889a76eedd82c8918c705bdb5bbe5d195
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969471"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893602"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 创建、列出或删除用户分配的托管标识
 
@@ -30,16 +30,16 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 在本文中，将了解如何使用 Azure CLI 创建、列出和删除用户分配的托管标识。
 
+如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
+
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
-- 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 若要运行示例脚本，有两个选项：
-    - 使用 " [Azure Cloud Shell](../../cloud-shell/overview.md)"，可以使用代码块右上角的 " **试用** " 按钮打开。
-    - 通过安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli)在本地运行脚本，并使用 [az Login](/cli/azure/reference-index#az-login)登录到 Azure。 使用与要在其中创建资源的 Azure 订阅关联的帐户。   
+- 如果不熟悉 Azure 资源的托管标识，请参阅 [azure 资源的托管标识是什么？](overview.md)。 若要了解系统分配的和用户分配的托管标识类型，请参阅 [托管标识类型](overview.md#managed-identity-types)。
 
-> [!NOTE]
-> 为了在使用 CLI 时修改用户权限，你必须在 Azure AD 图形 API 中提供服务主体的其他权限，因为 CLI 的某些部分对图形 API 执行 GET 请求。 否则，可能会收到 "权限不足，无法完成操作" 消息。 为此，你需要进入 Azure Active Directory 中的“应用注册”，选择你的应用，单击“API 权限”，向下滚动并选择“Azure Active Directory Graph”。 从那里选择“应用程序权限”，然后添加适当的权限。 
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+> [!NOTE]   
+> 若要在通过 CLI 使用应用服务主体时修改用户权限，必须在 CLI 对图形 API 执行 GET 请求时在 Azure AD Graph API 中提供服务主体附加权限。 否则，你可能最终会收到“权限不足，无法完成操作”消息。 为此，你需要进入 Azure Active Directory 中的“应用注册”，选择你的应用，单击“API 权限”，向下滚动并选择“Azure Active Directory Graph”。 从那里选择“应用程序权限”，然后添加适当的权限。 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识 
 

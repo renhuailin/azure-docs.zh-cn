@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969294f264e6744e893322864eed85e02c615126
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d86ddd8d0fe53599e9dce3d2fc5fa7682f2aed08
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908360"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897052"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -25,7 +25,7 @@ ms.locfileid: "87908360"
 将来宾用户添加到目录后，你可以向来宾用户发送指向共享应用程序的直接链接，或者来宾用户可以单击邀请电子邮件中的兑换 URL。 有关兑换过程的详细信息，请参阅 [B2B 协作邀请兑换](redemption-experience.md)。
 
 > [!IMPORTANT]
-> 应按照[如何：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
+> 应按照[如何：在 Azure Active Directory 中添加组织的隐私信息](../fundamentals/active-directory-properties-area.md)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -50,8 +50,8 @@ ms.locfileid: "87908360"
    - **名称。** 来宾用户的姓氏和名字。
    - **电子邮件地址(必填)** 。 来宾用户的电子邮件地址。
    - **个人消息(可选)** 包含发送给来宾用户的个人欢迎消息。
-   - **组**：可以将来宾用户添加到一个或多个现有组，也可以稍后进行。
-   - **目录角色**：如果需要用户的 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 
+   - **组** ：可以将来宾用户添加到一个或多个现有组，也可以稍后进行。
+   - **目录角色** ：如果需要用户的 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 
 
 7. 选择“邀请”，以自动向来宾用户发送邀请。 
  
@@ -94,7 +94,7 @@ ms.locfileid: "87908360"
    - 如果目录中已存在该来宾用户，请搜索 B2B 用户。 选择用户，单击“选择”，然后单击“分配”将该用户添加到应用。
    - 如果来宾用户尚不在目录中，请在“选择成员或邀请外部用户”下键入用户的电子邮件地址。 在消息框中，键入个人消息（可选）。 在消息框下，单击“邀请”。
            
-       ![添加邀请按钮以添加来宾成员](./media/add-users-administrator/AppInviteUsers.png)
+       ![屏幕截图，突出显示了在何处添加用户的电子邮件地址、个性化邮件，并突出显示了 "邀请" 按钮。](./media/add-users-administrator/AppInviteUsers.png)
    
       单击“选择”，然后单击“分配”将该用户添加到应用。 邀请会自动发送给受邀用户。
 
@@ -124,4 +124,3 @@ ms.locfileid: "87908360"
 
 - 若要了解非 Azure AD 管理员如何添加 B2B 来宾用户，请参阅[信息工作者如何添加 B2B 协作用户？](add-users-information-worker.md)
 - 有关邀请电子邮件的信息，请参阅 [B2B 协作邀请电子邮件的元素](invitation-email-elements.md)。
-

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 262987b5d5cdccec967193d855b17c5c74e16575
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753605"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563386"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的资源日志
 
@@ -24,29 +24,29 @@ ms.locfileid: "84753605"
 
 可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 [Azure Monitor 日志](../../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
 
-* **活动日志**：可以使用[azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
-* **访问资源日志**：可以使用此日志来查看应用程序网关访问模式并分析重要信息。 这包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每300秒收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
-* **性能资源日志**：可以使用此日志来查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。 性能日志仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](../../application-gateway/application-gateway-metrics.md)。
-* **防火墙资源日志**：可以使用此日志来查看通过使用 web 应用程序防火墙配置的应用程序网关的检测或阻止模式记录的请求。
+* **活动日志** ：可以使用 [azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md) 查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
+* **访问资源日志** ：可以使用此日志来查看应用程序网关访问模式并分析重要信息。 这包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每300秒收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
+* **性能资源日志** ：可以使用此日志来查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。 性能日志仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](../../application-gateway/application-gateway-metrics.md)。
+* **防火墙资源日志** ：可以使用此日志来查看通过使用 web 应用程序防火墙配置的应用程序网关的检测或阻止模式记录的请求。
 
 > [!NOTE]
 > 日志仅适用于在 Azure 资源管理器部署模型中部署的 Azure 资源。 不能将日志用于经典部署模型中的资源。 若要更好地了解两种模型，请参阅[了解 Resource Manager 部署和经典部署](../../azure-resource-manager/management/deployment-models.md)一文。
 
 可通过三种方式存储日志：
 
-* **存储帐户**：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
-* **事件中心**：若要集成其他安全信息和事件管理 (SIEM) 工具以获取资源警报，事件中心是很好的选择。
-* **Azure Monitor 日志**：Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势。
+* **存储帐户** ：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
+* **事件中心** ：若要集成其他安全信息和事件管理 (SIEM) 工具以获取资源警报，事件中心是很好的选择。
+* **Azure Monitor 日志** ：Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势。
 
 ### <a name="enable-logging-through-powershell"></a>通过 PowerShell 启用日志记录
 
 每个 Resource Manager 资源都会自动启用活动日志记录。 必须启用访问和性能日志记录才能开始收集通过这些日志提供的数据。 若要启用日志记录，请执行以下步骤：
 
-1. 记下存储帐户的资源 ID，其中存储日志数据。 此值的形式为：/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> 。 可以使用订阅中的任何存储帐户。 可以使用 Azure 门户查找以下信息。
+1. 记下存储帐户的资源 ID，其中存储日志数据。 此值采用以下格式：/subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Storage/storageAccounts/\<storage account name\>。 可以使用订阅中的任何存储帐户。 可以使用 Azure 门户查找以下信息。
 
     ![存储帐户的门户：资源 ID](../media/web-application-firewall-logs/diagnostics1.png)
 
-2. 记下为其启用日志记录的应用程序网关的资源 ID。 此值的形式为：/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/applicationGateways/ \<application gateway name\> 。 可以使用门户查找以下信息。
+2. 记下为其启用日志记录的应用程序网关的资源 ID。 此值采用以下格式：/subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/applicationGateways/\<application gateway name\>。 可以使用门户查找以下信息。
 
     ![应用程序网关的门户：资源 ID](../media/web-application-firewall-logs/diagnostics2.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "84753605"
 
    ![启用诊断][1]
 
-3. "**诊断设置**" 页提供了资源日志的设置。 本示例使用 Log Analytics 存储日志。 你还可以使用事件中心和存储帐户来保存资源日志。
+3. " **诊断设置** " 页提供了资源日志的设置。 本示例使用 Log Analytics 存储日志。 你还可以使用事件中心和存储帐户来保存资源日志。
 
    ![启动配置过程][2]
 
@@ -94,7 +94,7 @@ ms.locfileid: "84753605"
 |clientPort     | 请求的起始端口。       |
 |httpMethod     | 请求所用的 HTTP 方法。       |
 |requestUri     | 所收到请求的 URI。        |
-|RequestQuery     | **Server-Routed**：请求已发送至后端池实例。</br>**X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 可用于排查后端服务器上的流量问题。 </br>**SERVER-STATUS**：应用程序网关接收从后端的 HTTP 响应代码。       |
+|RequestQuery     | **Server-Routed** ：请求已发送至后端池实例。</br>**X-AzureApplicationGateway-LOG-ID** ：用于请求的相关 ID。 可用于排查后端服务器上的流量问题。 </br>**SERVER-STATUS** ：应用程序网关接收从后端的 HTTP 响应代码。       |
 |UserAgent     | HTTP 请求标头中的用户代理。        |
 |httpStatus     | 从应用程序网关返回到客户端的 HTTP 状态代码。       |
 |httpVersion     | 请求的 HTTP 版本。        |
@@ -131,7 +131,7 @@ ms.locfileid: "84753605"
 ```
 对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
-|“值”  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -146,7 +146,7 @@ ms.locfileid: "84753605"
 |timeTaken| 处理请求并发送响应所需的时长（以毫秒为单位）。 此时长按特定的时间间隔（从应用程序网关接收第一个 HTTP 请求字节到完成响应发送操作所需的时间）来计算。 必须注意，“所用时间”字段通常包括请求和响应数据包在网络上传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用了 TLS。 有效值为 on 和 off。|
 |sslCipher| 用于 TLS 通信的密码套件（如果已启用 TLS）。|
-|sslProtocol| 正在使用的 TLS 协议（如果已启用 TLS）。|
+|sslProtocol| 如果) 启用了 TLS，则使用 TLS 协议 (。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|
@@ -284,8 +284,8 @@ ms.locfileid: "84753605"
 
 可使用以下任意方法查看和分析活动日志数据：
 
-* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
-* **Power BI**：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用 [Power BI 模板应用](https://docs.microsoft.com/power-bi/service-template-apps-overview)，可以分析数据。
+* **Azure 工具** ：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
+* **Power BI** ：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用 [Power BI 模板应用](/power-bi/service-template-apps-overview)，可以分析数据。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>查看并分析访问、性能和防火墙日志
 

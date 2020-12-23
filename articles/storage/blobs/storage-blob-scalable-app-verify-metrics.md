@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 708a2369e5ba21f47f3d3fea509654b0385363f7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692445"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912308"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>验证存储帐户的吞吐量和延迟指标
 
@@ -24,7 +24,7 @@ ms.locfileid: "82692445"
 > * 在 Azure 门户中配置图表
 > * 验证吞吐量和延迟指标
 
-[Azure 存储指标](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)使用 Azure Monitor 提供用于深入了解存储帐户的性能和可用性的统一视图。
+[Azure 存储指标](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)使用 Azure Monitor 提供用于深入了解存储帐户的性能和可用性的统一视图。
 
 ## <a name="configure-metrics"></a>配置指标
 
@@ -44,7 +44,7 @@ ms.locfileid: "82692445"
 |**流入量**|流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 |
 |**流出量**|流出数据量。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。 |
 
-在“时间”  旁边选择“过去 24 小时(自动)”  。 针对“时间粒度”  选择“过去一小时”  和“分钟”  ，然后单击“应用”  。
+在“时间”旁边选择“过去 24 小时(自动)”。 针对“时间粒度”选择“过去一小时”和“分钟”，然后单击“应用”。
 
 ![存储帐户指标](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "82692445"
 
 ## <a name="dimensions"></a>维度
 
-可使用[维度](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)深入了解图表和获取更多详细信息。 不同指标具有不同维度。 可用的一个维度是“API 名称”  维度。 此维度将图表拆分为每个单独的 API 调用。 下面的第一个图显示存储帐户的总事务数的示例图表。 第二个图显示相同图表，但选中了“API 名称”维度。 如你所见，列出了每个事务，从而让你详细了解按 API 名称进行了多少个调用。
+可使用[维度](./monitor-blob-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)深入了解图表和获取更多详细信息。 不同指标具有不同维度。 可用的一个维度是“API 名称”  维度。 此维度将图表拆分为每个单独的 API 调用。 下面的第一个图显示存储帐户的总事务数的示例图表。 第二个图显示相同图表，但选中了“API 名称”维度。 如你所见，列出了每个事务，从而让你详细了解按 API 名称进行了多少个调用。
 
 ![存储帐户指标 - 不带维度的事务](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

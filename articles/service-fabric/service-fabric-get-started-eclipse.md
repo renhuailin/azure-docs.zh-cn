@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374229"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656914"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序
 Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一。 本文介绍如何设置适用于 Azure Service Fabric 的 Eclipse 开发环境。 了解如何安装 Service Fabric 插件、创建 Service Fabric 应用程序，以及将 Service Fabric 应用程序部署到 Eclipse 中的本地或远程 Service Fabric 群集。 
@@ -42,7 +42,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
    ![适用于 Eclipse 的 Service Fabric 插件][sf-eclipse-plugin-install]
 3. 选择 Service Fabric 插件，并单击“下一步”。
 4. 完成安装步骤，并接受 Microsoft 软件许可条款。
-  
+
 如果已安装 Service Fabric 插件，请安装最新版本。 
 1. 若要检查可用的更新，请转到“帮助” > “关于 Eclipse” > “安装详细信息”。   
 2. 在已安装插件的列表中选择“Service Fabric”，然后单击“更新”。 随后会安装可用的更新。
@@ -53,7 +53,6 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 
 > [!NOTE]
 >如果 Eclipse 在 Mac 上未按预期方式工作，或者需要你以超级用户身份运行，请转到 ECLIPSE_INSTALLATION_PATH 文件夹，然后导航到子文件夹 Eclipse.app/Contents/MacOS。 运行 `./eclipse` 启动 Eclipse。
-
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>在 Eclipse 中创建 Service Fabric 应用程序
 
@@ -91,7 +90,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
     -   若要生成应用程序但不清理，请单击“生成应用程序”。
     -   若要生成已清理的应用程序，请单击“重新生成应用程序”。
     -   若要清理已生成项目的应用程序，请单击“清理应用程序”。
-     
+
 ## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>在 Eclipse 中将 Service Fabric 应用程序部署到本地群集
 
 生成 Service Fabric 应用程序后，请遵循以下步骤将其部署到本地群集。
@@ -156,7 +155,6 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 
 4. 可以在控制台窗口中跟踪发布操作的进度。
 5. 若要验证应用程序是否正在运行，请在浏览器窗口中的 Azure 群集上打开 Service Fabric Explorer。 在上述示例中，URL 为：`https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`。 展开“应用程序”节点，确保应用程序正在运行。 
-
 
 在安全 Linux 群集上，如果应用程序包含 Reliable Services 服务，则还需要配置可供服务用来调用 Service Fabric 运行时 API 的证书。 若要了解详细信息，请参阅[将 Reliable Services 应用程序配置为在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。
 

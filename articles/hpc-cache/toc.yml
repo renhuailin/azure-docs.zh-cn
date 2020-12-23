@@ -8,6 +8,10 @@
   items:
     - name: 规划聚合命名空间
       href: hpc-cache-namespace.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 先决条件
@@ -44,6 +48,8 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/hpc-cache/hpc-cache
+    - name: Azure PowerShell
+      href: /powershell/module/Az.HPCCache
 - name: 资源
   items:
     - name: 开具支持票证

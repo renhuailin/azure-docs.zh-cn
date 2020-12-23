@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776606"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460500"
 ---
 # <a name="getting-started"></a>入门
 
@@ -31,11 +31,11 @@ ms.locfileid: "91776606"
 
 ### <a name="cloud-services"></a>云服务
 
-基于云的认知服务是托管在 Azure 中的智能算法。 这些服务无需培训即可使用，只需要 Internet 连接。 可以[在 Azure 门户中创建认知服务](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)，也可以[使用 Azure CLI 创建认知服务](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)。
+基于云的认知服务是托管在 Azure 中的智能算法。 这些服务无需培训即可使用，只需要 Internet 连接。 可以[在 Azure 门户中创建认知服务](../cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows)，也可以[使用 Azure CLI 创建认知服务](../cognitive-services-apis-create-account-cli.md?tabs=windows)。
 
 ### <a name="containerized-services-optional"></a>容器化服务（可选）
 
-如果应用程序或工作负载使用非常大的数据集，需要专用网络，或者无法联系云，则与云服务通信几乎是不可能的。 在这种情况下，容器化认知服务具有以下优势：
+如果应用程序或工作负载使用大型数据集，需要专用网络，或者无法联系云，则与云服务通信几乎是不可能的。 在这种情况下，容器化认知服务具有以下优势：
 
 * **低连接性**：可以在云中或云外的任何计算环境中部署容器化认知服务。 如果应用程序无法联系云，请考虑在应用程序中部署容器化认知服务。
 
@@ -45,7 +45,7 @@ ms.locfileid: "91776606"
 
 * **高度可扩展性**：容器化服务没有“速率限制”，该服务在用户管理的计算机上运行。 因此，可以扩展认知服务而无需处理更大的工作负载。
 
-按照[本指南](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis)创建容器化认知服务。
+按照[本指南](../cognitive-services-container-support.md?tabs=luis)创建容器化认知服务。
 
 ## <a name="create-an-apache-spark-cluster"></a>创建 Apache Spark 群集
 
@@ -55,8 +55,8 @@ ms.locfileid: "91776606"
 
 Azure Databricks 是一种基于 Apache Spark 的分析平台，其中包含一个一键式设置、简化的工作流和一个交互式工作区。 它通常用于在数据科学家、工程师和业务分析师之间进行协作。 要在 Azure Databricks 上使用大数据认知服务，请执行以下步骤：
 
-1. [创建 Azure Databricks 工作区](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
-1. [在 Databricks 中创建 Spark 群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
+1. [创建 Azure Databricks 工作区](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
+1. [在 Databricks 中创建 Spark 群集](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
 1. 安装大数据认知服务
     * 在 Databricks 工作区中创建新库  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
@@ -65,14 +65,14 @@ Azure Databricks 是一种基于 Apache Spark 的分析平台，其中包含一�
     * 将库安装到群集上  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>
 
-### <a name="synapse-analytics-optional"></a>Synapse Analytics（可选）
+### <a name="azure-synapse-analytics-optional"></a>Azure Synapse Analytics（可选）
 
-（可选）你可以使用 Synapse Analytics 来创建 spark 群集。 Azure Synapse Analytics 将企业数据仓库和大数据分析结合在一起。 借助它可以使用无服务器的按需资源或预配资源，任意执行自己定义的大规模数据查询。 要开始使用 Synapse Analytics，请执行以下步骤：
+（可选）你可以使用 Synapse Analytics 来创建 spark 群集。 Azure Synapse Analytics 将企业数据仓库和大数据分析结合在一起。 借助它可以使用无服务器的按需资源或预配资源，任意执行自己定义的大规模数据查询。 若要开始使用 Azure Synapse Analytics，请执行以下步骤：
 
-1. [创建 Synapse 工作区（预览版）](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)。
-1. [使用 Azure 门户新建 Apache Spark 池（预览版）](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal)。
+1. [创建 Synapse 工作区（预览版）](../../synapse-analytics/quickstart-create-workspace.md)。
+1. [使用 Azure 门户新建无服务器 Apache Spark 池（预览版）](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)。
 
-在 Synapse Analytics 中，会默认安装用于认知服务的大数据。
+在 Azure Synapse Analytics 中，会默认安装用于认知服务的大数据。
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
@@ -80,9 +80,9 @@ Azure Databricks 是一种基于 Apache Spark 的分析平台，其中包含一�
 
 要开始使用 Azure Kubernetes 服务，请执行以下步骤：
 
-1. [使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+1. [使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集](../../aks/kubernetes-walkthrough-portal.md)
 1. [安装 Apache Spark 2.4.0 helm 图表](https://hub.helm.sh/charts/microsoft/spark)
-1. [使用 Helm 安装认知服务容器](https://docs.microsoft.com/azure/cognitive-services/computer-vision/deploy-computer-vision-on-premises)
+1. [使用 Helm 安装认知服务容器](../computer-vision/deploy-computer-vision-on-premises.md)
 
 ## <a name="try-a-sample"></a>尝试示例
 
@@ -100,7 +100,7 @@ Azure Databricks 是一种基于 Apache Spark 的分析平台，其中包含一�
 
     选择“创建”。
 
-1. 将以下代码片段粘贴到新的笔记本中。
+1. 将此代码片段粘贴到新的笔记本中。
 
 ```python
 from mmlspark.cognitive import *

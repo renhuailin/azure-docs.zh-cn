@@ -1,4 +1,4 @@
-- name: 批处理文档
+- name: Batch 文档
   href: index.yml
 - name: 概述
   items:
@@ -43,7 +43,19 @@
         - name: Batch 示例存储库
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: 在 Batch 服务模式下创建 Batch 帐户
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: 在用户订阅模式下创建 Batch 帐户
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: 向 Azure Batch 帐户添加应用程序
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: 创建和管理 Linux 池
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: 创建和管理 Windows 池
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: 运行作业和任务
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: 概念
   items:
     - name: 安全性
@@ -156,6 +168,7 @@
         - name: 作业准备与作业完成任务
           href: batch-job-prep-release.md
         - name: 并发节点任务
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: 任务依赖项
           href: batch-task-dependencies.md
@@ -257,12 +270,16 @@
           href: batch-pool-resize-start-event.md
         - name: 池调整大小完成事件
           href: batch-pool-resize-complete-event.md
+        - name: 池自动缩放事件
+          href: batch-pool-autoscale-event.md
         - name: 任务开始事件
           href: batch-task-start-event.md
         - name: 任务完成事件
           href: batch-task-complete-event.md
         - name: 任务失败事件
           href: batch-task-fail-event.md
+        - name: 任务计划失败事件
+          href: batch-task-schedule-fail-event.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

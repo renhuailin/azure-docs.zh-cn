@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 07/22/2020
+ms.date: 11/11/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894137"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575697"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教程：准备部署 Azure Stack Edge Pro  
 
@@ -53,18 +53,18 @@ ms.locfileid: "90894137"
 
 在开始之前，请确保：
 
-* 已为 Azure Stack Edge 资源启用 Microsoft Azure 订阅。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。
+* 已为 Azure Stack Edge 资源启用 Microsoft Azure 订阅。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。
 
 * 你在资源组级别拥有对 Azure Stack Edge/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
 
-  * 你应是订阅级别的“所有者”才能授予参与者访问权限。 若要向其他人授予参与者访问权限，在 Azure 门户中，转到“所有服务” > “订阅” > “访问控制(IAM)” > “+添加” > “添加角色分配”    。 有关详细信息，请参阅[教程：使用 Azure 门户授予用户对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
+  * 你应是订阅级别的“所有者”才能授予参与者访问权限。 若要向其他人授予参与者访问权限，在 Azure 门户中，转到“所有服务” > “订阅” > “访问控制(IAM)” > “+添加” > “添加角色分配”    。 有关详细信息，请参阅[教程：使用 Azure 门户授予用户对 Azure 资源的访问权限](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
   * 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 资源提供程序。 有关如何注册资源提供程序的信息，请参阅[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 若要创建任何 IoT 中心资源，请确保已注册 Microsoft.Devices 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
-* 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+* 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 * 具有 Microsoft Azure 存储帐户和访问凭据。
-* 你未被系统管理员设置的任何 Azure 策略阻止。 有关策略的详细信息，请参阅[快速入门：创建策略分配以识别不合规资源](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)。
+* 你未被系统管理员设置的任何 Azure 策略阻止。 有关策略的详细信息，请参阅[快速入门：创建策略分配以识别不合规资源](../governance/policy/assign-policy-portal.md)。
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>对于 Azure Stack Edge Pro 设备
 
@@ -96,7 +96,7 @@ ms.locfileid: "90894137"
 1. 使用 Microsoft Azure 凭据通过 
 
     - URL [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
-    - 或者，通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
+    - 或者，通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](../azure-government/documentation-government-get-started-connect-with-portal.md)。
 
 2. 在左窗格中，选择“+ 创建资源”。 搜索并选择“Azure Stack Edge/Data Box Gateway”。 选择“创建”。
 3. 选取要用于 Azure Stack Edge Pro 设备的订阅。 选择要部署 Azure Stack Edge 资源的区域。 有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
@@ -112,7 +112,7 @@ ms.locfileid: "90894137"
     |设置  |Value  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
-    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。     |
+    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 4. 输入或选择以下“实例详细信息”。
 

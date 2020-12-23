@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 38e6bae69710dc9e1dbc8789ee9ccb636193c7f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ee14b94977b3152e0aab853fa3919a739d0dfdd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80671517"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187546"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](~/articles/cognitive-services/speech-service/get-started.md)
+> * [创建 Azure 语音资源](../../../../overview.md#try-the-speech-service-for-free)
 > * [设置开发环境并创建空项目](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
-> * 创建连接到 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
+> * 创建连接到 [Direct Line 语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
 > * 请确保你有权访问麦克风，以便进行音频捕获
 
   > [!NOTE]
@@ -115,7 +115,7 @@ ms.locfileid: "80671517"
 
 1. 在 `main` 方法中，首先配置 `DialogServiceConfig` 并使用它来创建 `DialogServiceConnector` 实例。 此实例会连接到 Direct Line 语音通道以便与机器人交互。 `AudioConfig` 实例还用于指定音频输入的源。 在此示例中，对 `AudioConfig.fromDefaultMicrophoneInput()` 使用了默认麦克风。
 
-   - 将字符串 `YourSubscriptionKey` 替换为可从[此网站](~/articles/cognitive-services/speech-service/get-started.md)获取的订阅密钥。
+   - 将字符串 `YourSubscriptionKey` 替换为可从[此网站](../../../../overview.md#try-the-speech-service-for-free)获取的订阅密钥。
    - 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/speech-service/regions.md)。
 
    > [!NOTE]

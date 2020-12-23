@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 639672bdeff2f833c280a041e497197286c9ff24
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7400aeeba80ce168a9dea0d81e1ad0f2fbe24c95
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885704"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750837"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入门：设置 Azure Spring Cloud Config Server
 
@@ -42,10 +42,10 @@ Azure Spring Cloud Config Server 是分布式系统的集中式配置服务。 �
 
 ## <a name="prerequisites"></a>先决条件
 
-* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [安装 JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [注册 Azure 订阅](https://azure.microsoft.com/free/)
-* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
-* （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
+* （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud Config Server 过程
 
@@ -57,9 +57,19 @@ Azure Spring Cloud Config Server 是分布式系统的集中式配置服务。 �
 
 2. 在“默认存储库”部分，将“URI”设置为“https://github.com/Azure-Samples/piggymetrics-config” 。
 
-3. 选择“应用”以保存所做的更改。
+3. 单击 **“验证”** 。
 
-    ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![导航到配置服务器](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+4. 完成验证后，请单击“应用”以保存更改。
+
+    ![正在验证配置服务器](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+5. 更新配置可能需要几分钟。
+ 
+    ![正在更新配置服务器](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+6. 配置完成后，会收到通知。
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
@@ -70,27 +80,40 @@ Azure Spring Cloud Config Server 是分布式系统的集中式配置服务。 �
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
-
 ---
 ::: zone-end
 
-## <a name="clean-up-resources"></a>清理资源
+> [!TIP]
+> 如果将专用存储库用于配置服务器，请参阅[介绍设置身份验证的教程](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)。
 
-如果打算继续学习本系列的下一个快速入门，请跳过此步骤。
+## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server 的故障排除
 
-在这些快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，并认为将来不需要这些资源，请使用门户或通过在 Cloud Shell 中运行以下命令删除资源组：
+以下过程说明如何对 Config Server 设置进行故障排除。
 
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
+1. 在 Azure 门户中，转到服务“概览”页，然后选择“日志” 。 
+1. 选择“查询”和“显示包含‘错误’或‘异常’术语的应用程序日志” 。 
+1. 单击 **“运行”** 。 
+1. 如果在日志中发现错误“java.lang.illegalStateException”，则表明 Spring Cloud Service 无法从 Config Server 中找到属性。
 
-在前面的快速入门中，你还设置了默认资源组名称。 如果不打算继续学习下一个快速入门，请通过运行以下 CLI 命令清除该默认名称：
+    [ ![ASC 门户运行查询](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
 
-```azurecli
-az configure --defaults group=
-```
+1. 转到服务“概述”页。
+1. 选择“诊断并解决问题”。 
+1. 选择“Config Server”检测程序。
+
+    [ ![ASC 门户诊断问题](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
+
+3. 单击“Config Server 运行状况检查”。
+
+    [ ![ASC 门户精灵](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
+
+4. 单击“Config Server 状态”以查看来自检测程序的详细信息。
+
+    [ ![ASC 门户运行状况状态](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 
 ## <a name="next-steps"></a>后续步骤
+
+在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，请参阅[清理资源](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)。 否则，请继续学习下一个快速入门：
 
 > [!div class="nextstepaction"]
 > [构建和部署应用](spring-cloud-quickstart-deploy-apps.md)

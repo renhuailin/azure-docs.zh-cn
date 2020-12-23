@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b418a9cae6f6d58dbe82babcfe6fe1e1a5027d43
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378723"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657067"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>市场计量服务身份验证策略
 
@@ -68,15 +68,15 @@ ms.locfileid: "89378723"
 
 |  **属性名称**  |  **必需**  |  **说明**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | 授权类型。 改用 `client_credentials` |
+|  `Grant_type`       |   True         | 授权类型。 请使用 `client_credentials`。 |
 |  `Client_id`        |   True         | 与 Azure AD 应用关联的客户端/应用标识符。|
 |  `client_secret`    |   True         | 与 Azure AD 应用相关联的机密。  |
-|  `Resource`         |   True         | 为其请求令牌的目标资源。 改用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` |
+|  `Resource`         |   True         | 为其请求令牌的目标资源。 请使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。 |
 | | | |
 
 #### <a name="response"></a>*响应*
 
-|  **名称**    |  **类型**  |  **说明**          |
+|  **名称**    |  类型  |  **说明**          |
 |  ------------------ |--------------- | ----------------------  |
 |  `200 OK`     |   `TokenResponse`    | 请求成功。  |
 | | | |
@@ -134,7 +134,7 @@ ms.locfileid: "89378723"
     ```powershell
     # Get subscription and resource group
     $metadata = curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-06-01 | select -ExpandProperty Content | ConvertFrom-Json 
-    
+
     # Make sure the system identity has at least reader permission on the resource group
     $managementUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "?api-version=2019-10-01"
     $resourceGroupInfo = curl -Headers $Headers $managementUrl | select -ExpandProperty Content | ConvertFrom-Json
@@ -155,5 +155,5 @@ ms.locfileid: "89378723"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建 Azure 应用程序产品/服务](./create-new-azure-apps-offer.md)
+* [创建 Azure 应用程序产品/服务](../create-new-azure-apps-offer.md)
 * [规划 SaaS 产品/服务](../plan-saas-offer.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7195a126938deabf542e6fa3e52b72c2efdddac2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548862"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>教程：Azure Active Directory 与 Recognize 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88548862"
 * 可让用户使用其 Azure AD 帐户自动登录到 Recognize（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88548862"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "88548862"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分，如果有**服务提供程序元数据文件**，请执行以下步骤：
+4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件** ，请执行以下步骤：
 
     >[!NOTE]
     >本教程的“配置 Cisco Webex Meetings 单一登录”部分会提供“服务提供程序元数据文件”。  
@@ -119,7 +119,7 @@ ms.locfileid: "88548862"
     > [!Note]
     > 如果“标识符”值未自动填充，可通过打开“SSO 设置”部分的“服务提供程序元数据 URL”来获取“标识符”值，本教程的“配置 Recognize 单一登录”部分会对此予以介绍。   登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [Recognize 客户端支持团队](mailto:support@recognizeapp.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -139,15 +139,15 @@ ms.locfileid: "88548862"
 
 2. 在右上角，单击“菜单”  。 转到“公司管理员”  。
    
-    ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![屏幕截图显示从“设置”菜单选择了“公司管理员”。](./media/recognize-tutorial/tutorial_recognize_000.png)
 
 3. 在左侧导航窗格上，单击“设置”。 
    
-    ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![屏幕截图显示从导航页选择了“设置”。](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. 在“SSO 设置”部分中执行以下步骤  。
    
-    ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![屏幕截图显示了“SSO 设置”，你可以在其中输入所述值。](./media/recognize-tutorial/tutorial_recognize_002.png)
     
     a. 对于“启用 SSO”，选择“启用”   。
 
@@ -163,11 +163,11 @@ ms.locfileid: "88548862"
 
 5. 在“SSO 设置”  部分旁边，复制“服务提供程序元数据 url”下的 URL  。
    
-    ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![屏幕截图显示“备注”，你可以在其中复制“服务提供程序元数据”。](./media/recognize-tutorial/tutorial_recognize_003.png)
 
 6. 在空白浏览器下打开“元数据 URL 链接”以下载元数据文档  。 从文件复制 EntityDescriptor 值 (entityID)，并将其粘贴到 Azure 门户上的“基本 SAML 配置”中的“标识符”文本框   。
     
-    ![在应用端配置单一登录](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![屏幕截图显示包含纯文本 X M L 的文本框，你可以在其中获取实体 ID。](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -247,13 +247,12 @@ ms.locfileid: "88548862"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Recognize”磁贴时，应会自动登录到设置了 SSO 的 Recognize。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Recognize”磁贴时，应会自动登录到设置了 SSO 的 Recognize。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

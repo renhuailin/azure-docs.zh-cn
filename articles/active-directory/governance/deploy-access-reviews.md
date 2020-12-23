@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306559"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362693"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -87,13 +87,13 @@ ms.locfileid: "91306559"
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 为避免这些缺陷，请[确保你正在吸引正确的利益干系人](https://aka.ms/deploymentplans)，并确保项目角色明确。
+如果技术项目失败，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 为避免这些缺陷，请[确保你正在吸引正确的利益干系人](../fundamentals/active-directory-deployment-plans.md)，并确保项目角色明确。
 
 对于访问评审，可能需包括组织中以下团队的代表：
 
 * **It 管理** 管理 it 基础结构，管理云投资和软件即服务 (SaaS) 应用。 该团队将：
 
-   * 查看对基础结构和应用的特权访问，包括 Microsoft 365 和 Azure AD。
+   * 评审对基础结构和应用（包括 Microsoft 365 和 Azure AD）的特权访问权限。
 
    * 在用于维护例外列表或 IT 试点项目的组上计划和运行访问评审，以维护最新的访问权限列表。
 
@@ -180,9 +180,9 @@ ms.locfileid: "91306559"
 
 * [与单一登录 (Azure AD 集成的应用程序](../manage-apps/what-is-application-management.md) ，如 SaaS、业务线) 。
 
-* 组 [成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步到 Azure AD，或者在 Azure AD 或 Microsoft 365 中创建，包括 Microsoft 团队) 。
+* 组[成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)（同步到 Azure AD，或者在 Azure AD 或 Microsoft 365 中创建，包括 Microsoft Teams）。
 
-* [访问包](/azure/active-directory/governance/entitlement-management-overview)：用于将资源（组、应用和站点）分组到单个包中以管理访问权限。
+* [访问包](./entitlement-management-overview.md)：用于将资源（组、应用和站点）分组到单个包中以管理访问权限。
 
 * [Azure AD 角色和 Azure 资源角色](../privileged-identity-management/pim-resource-roles-assign-roles.md)：详见 Privileged Identity Management 中的定义。
 
@@ -198,7 +198,7 @@ ms.locfileid: "91306559"
 | 访问包| 全局管理员<p>访问包的创建者| 仅限全局管理员 |
 
 
-有关详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
+有关详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../roles/permissions-reference.md)。
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>谁将评审对资源的访问权限？
 
@@ -300,11 +300,11 @@ ms.locfileid: "91306559"
 
 打开“生命周期”选项卡即可向下滚动到“访问评审”。
 
- ![屏幕截图，显示 "生命周期" 选项卡中的 "编辑策略"。](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![此屏幕截图显示了“生命周期”选项卡中的“编辑策略”。](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>为组规划访问评审
 
-除访问包外，评审组成员身份是管理访问权限的最有效方法。 建议通过 [安全组或 Microsoft 365 组](../fundamentals/active-directory-manage-groups.md)分配资源访问权限，并将用户添加到这些组以获取访问权限。
+除访问包外，评审组成员身份是管理访问权限的最有效方法。 建议通过[安全组或 Microsoft 365 组](../fundamentals/active-directory-manage-groups.md)分配资源访问权限，并将用户添加到这些组以获取访问权限。
 
 可以为单个组授予对所有相应资源的访问权限。 可以为该组分配对各个资源的访问权限，或者为其分配对某个已将应用程序和其他资源组合在一起的访问包的权限。 使用此方法，你可以评审单个用户对组的访问权限，而不是评审其对每个应用程序的访问权限。 
 
@@ -322,9 +322,9 @@ ms.locfileid: "91306559"
 
 建议组所有者对成员身份进行评审，因为他们最了解谁需要访问权限。 组的所有权因组的类型而异：
 
-在 Microsoft 365 和 Azure AD 中创建的组具有一个或多个定义完善的所有者。 大多数情况下，这些所有者是他们自己的组的理想的审阅者，因为他们知道谁应该有访问权限。 
+在 Microsoft 365 和 Azure AD 中创建的组有一个或多个已明确定义的所有者。 大多数情况下，这些所有者是他们自己的组的理想的审阅者，因为他们知道谁应该有访问权限。 
 
-例如，Microsoft 团队使用 Microsoft 365 组作为基础授权模型，以便向用户授予对 SharePoint、Exchange、OneNote 或其他 Microsoft 365 服务中的资源的访问权限。 团队的创建者自动成为所有者，并应负责证明该组的成员身份。 
+例如，Microsoft Teams 使用 Microsoft 365 组作为基础授权模型，为用户授予对 SharePoint、Exchange、OneNote 或其他 Microsoft 365 服务中的资源的访问权限。 团队的创建者自动成为所有者，并应负责证明该组的成员身份。 
 
 在 Azure AD 门户中手动创建的组或通过 Microsoft Graph 使用脚本创建的组可能不必定义所有者。 建议你通过 Azure AD 门户在组的“所有者”部分中定义它们，或通过 Graph 来这样做。
 
@@ -343,7 +343,7 @@ ms.locfileid: "91306559"
 
 ### <a name="review-external-users-group-memberships"></a>评审外部用户的组成员身份
 
-若要最大程度地减少手动工作和相关的潜在错误，请考虑使用 [动态组](../users-groups-roles/groups-create-rule.md) 基于用户的属性分配组成员身份。 可能需要为外部用户创建一个或多个动态组。 内部赞助商可以充当组中成员身份的审阅者。 
+若要最大程度地减少手动工作和相关的潜在错误，请考虑使用 [动态组](../enterprise-users/groups-create-rule.md) 基于用户的属性分配组成员身份。 可能需要为外部用户创建一个或多个动态组。 内部赞助商可以充当组中成员身份的审阅者。 
 
 注意：由于访问评审而从组中删除的外部用户不会从租户中删除。 
 
@@ -389,7 +389,7 @@ ms.locfileid: "91306559"
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>规划 Azure AD 和 Azure 资源角色的评审
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 简化了企业对 Azure AD 中的资源的特权访问管理方式。 这样可以大大缩小 [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) 和 [Azure 资源](../../role-based-access-control/built-in-roles.md)中的特权角色的列表，提高目录的总体安全性。
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 简化了企业对 Azure AD 中的资源的特权访问管理方式。 这样可以大大缩小 [Azure AD](../roles/permissions-reference.md) 和 [Azure 资源](../../role-based-access-control/built-in-roles.md)中的特权角色的列表，提高目录的总体安全性。
 
 访问评审允许审阅者证实用户是否仍需担任某个角色。 与访问包的访问评审一样，Azure AD 角色和 Azure 资源的评审已集成到 PIM 管理员用户体验中。 建议定期评审下列角色分配：
 
@@ -446,7 +446,7 @@ ms.locfileid: "91306559"
 
 为了降低与过时角色分配相关的风险，应定期评审特权 Azure AD 角色的访问权限。
 
-![屏幕截图，显示 Azure A D 角色的 "查看成员身份" 列表。](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![此屏幕截图显示了 Azure AD 角色的“审阅成员身份”列表。](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 请按以下链接中的说明进行操作：
 
@@ -518,4 +518,3 @@ ms.locfileid: "91306559"
 * [什么是 Azure AD 权利管理？](entitlement-management-overview.md)
 
 * [什么是 Azure AD Privileged Identity Management？](../privileged-identity-management/pim-configure.md)
-

@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
-ms.openlocfilehash: e62d1bf0e9db5e80193cb0615d0a9d31e3041d63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1734128384d63749d3c777cf6315278fced9d140
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943453"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025134"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>什么是 Azure Database for PostgreSQL 超大规模 (Citus)？
 
@@ -32,5 +32,5 @@ Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系
 ## <a name="next-steps"></a>后续步骤
 
 - 请从[创建第一个](./quickstart-create-hyperscale-portal.md) Azure Database for PostgreSQL 超大规模 (Citus) 服务器组开始。
-- 有关成本比较和计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。 超大规模 (Citus) 也提供预付费的预留实例折扣；有关详细信息，请参阅[超大规模 RI 定价](concepts-hyperscale-reserved-pricing.md)页。
-- 确定服务器组的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)
+- 有关成本比较和计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。 超大规模 (Citus) 也提供预付费的预留实例折扣；有关详细信息，请参阅[超大规模 (Citus) RI 定价](concepts-hyperscale-reserved-pricing.md)页。
+- 确定服务器组的最佳[初始大小](howto-hyperscale-scale-initial.md)

@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530499"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187368"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>通过 Azure 事件网格接收和响应 Key Vault 通知
 
@@ -121,7 +121,7 @@ write-Error "No input data found."
 
 通过 [Azure 门户](https://portal.azure.com)创建事件网格订阅。
 
-1.  转到 Key Vault，然后选择“事件”**** 选项卡。
+1.  转到 Key Vault，然后选择“事件”选项卡。
 
     ![Azure 门户中的事件选项卡](../media/event-grid-tutorial-7.png)
 

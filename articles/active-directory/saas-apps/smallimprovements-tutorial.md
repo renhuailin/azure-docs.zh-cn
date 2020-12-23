@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6eced120a05ddaca8d8cf426fd2a977891b3e36b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525354"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>教程：Azure Active Directory 与 Small Improvements 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88525354"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Small Improvements（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -73,10 +73,10 @@ ms.locfileid: "88525354"
 若要配置和测试 Small Improvements 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **配置 Small Improvements 单一登录[ - 在应用程序端配置单一登录设置](#configure-small-improvements-single-sign-on)** 。
+2. **配置 Small Improvements 单一登录 [ - 在应用程序端配置单一登录设置](#configure-small-improvements-single-sign-on)** 。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **创建 Small Improvements 测试用户[ - 在 Small Improvements 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式](#create-small-improvements-test-user)** 。
+5. **创建 Small Improvements 测试用户 [ - 在 Small Improvements 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式](#create-small-improvements-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -89,7 +89,7 @@ ms.locfileid: "88525354"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "88525354"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Small Improvements 客户端支持团队](mailto:support@small-improvements.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -128,15 +128,15 @@ ms.locfileid: "88525354"
 
 1. 在主仪表板页中，单击左侧的“管理”  按钮。
 
-    ![配置单一登录](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![显示选择了“管理”按钮的屏幕截图。](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
 1. 在“集成”部分中，单击“SAML SSO”按钮。
 
-    ![配置单一登录](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![显示在“集成”中选择了“SAML SSO”图标的屏幕截图。](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
 1. 在“SSO 设置”页上，执行以下步骤：
 
-    ![配置单一登录](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![显示“SSO 设置”页的屏幕截图，可在其中输入所述值。](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
     a. 在“HTTP 终结点”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -211,15 +211,15 @@ ms.locfileid: "88525354"
 
 1. 从“用户管理”部分单击“用户目录”  按钮。
 
-    ![创建 Azure AD 测试用户](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
+    ![显示从“管理概述”中选择了“用户目录”的屏幕截图。](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
 1. 单击“添加用户”  。
 
-    ![创建 Azure AD 测试用户](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
+    ![显示“添加用户”按钮的屏幕截图。](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
 1. 在“添加用户”对话框中，执行以下步骤  ： 
 
-    ![创建 Azure AD 测试用户](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
+    ![显示“添加用户”对话框的屏幕截图，可在其中输入所述值。](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
     a. 输入用户的名字，如 Britta   。
 
@@ -235,12 +235,12 @@ ms.locfileid: "88525354"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Small Improvements 磁贴时，应当会自动登录到为其设置了 SSO 的 Small Improvements。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Small Improvements 磁贴时，应当会自动登录到为其设置了 SSO 的 Small Improvements。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

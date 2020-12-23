@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113065"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371947"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -53,7 +53,7 @@ ms.locfileid: "86113065"
     c. 打开 Installation_Directory/Fx/uninstall.sh 文件，并注释掉尝试停止 Fx 服务的整个节。
     d. [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动服务。 成功卸载后，重新启动系统，然后尝试安装移动代理。
 
-8. 确保未为用户帐户启用多重身份验证。 目前，Azure Site Recovery 不支持对用户帐户进行多重身份验证。 在没有启用多重身份验证的用户帐户的情况下注册配置服务器。  
+8. 确保没有为用户帐户启用多重身份验证。 目前，Azure Site Recovery 不支持对用户帐户进行多重身份验证。 注册没有启用多重身份验证的用户帐户的配置服务器。  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>安装失败：无法加载帐户
 
@@ -63,7 +63,7 @@ ms.locfileid: "86113065"
 
 若要解决 vCenter 发现失败问题，请向 byPass 列表代理设置添加 vCenter 服务器。 
 
-- 从[此处](https://aka.ms/PsExec)下载 PsExec 工具来访问系统用户内容。
+- 从[此处](/sysinternals/downloads/psexec)下载 PsExec 工具来访问系统用户内容。
 - 通过运行以下命令行在系统用户内容中打开 Internet Explorer：psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 - 在 IE 中添加代理设置并重启 tmanssvc 服务。
 - 若要配置 DRA 代理设置，请运行 cd C:\Program Files\Microsoft Azure Site Recovery Provider
@@ -163,16 +163,16 @@ ms.locfileid: "86113065"
 若要确定问题，请导航到配置服务器上的 C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile。 如果发现以下错误，请使用以下步骤解决问题： 
 
 ```output
-2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-2018-06-28 14:28:12.944   Stopping svagents service.
-2018-06-28 14:31:32.949   Unable to stop svagents service.
-2018-06-28 14:31:32.949   Stopping svagents service.
-2018-06-28 14:34:52.960   Unable to stop svagents service.
-2018-06-28 14:34:52.960   Stopping svagents service.
-2018-06-28 14:38:12.971   Unable to stop svagents service.
-2018-06-28 14:38:12.971   Rolling back the install changes.
-2018-06-28 14:38:12.971   Upgrade has failed.
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
 ```
 
 若要解决问题，请执行以下操作：
@@ -194,7 +194,7 @@ ms.locfileid: "86113065"
 
 若要解决问题，请登录 Azure 门户并执行以下操作之一：
 
-- 在 AAD 中请求应用程序开发人员角色。 有关应用程序开发人员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+- 在 AAD 中请求应用程序开发人员角色。 有关应用程序开发人员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/roles/permissions-reference.md)。
 - 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”。 有关更多信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>进程服务器/主目标无法与配置服务器通信 
@@ -258,4 +258,3 @@ TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // 此处将 IP �
 若要解决问题，请执行以下操作：
 
 在计算机上设置正确的时间并重试登录。 
- 

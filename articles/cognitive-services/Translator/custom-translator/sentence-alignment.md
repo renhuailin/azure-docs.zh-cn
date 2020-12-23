@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 97327517b40e715294393a97e8a26c078173e762
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510838"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347789"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>并行文档中的句子配对和对齐
 
-在训练过程中，会将并行文档中的句子配对或对齐。 自定义翻译会报告它能够配对为每个数据集中“已对齐句子”的句子数。
+上载文档后，并行文档中的句子成对出现或对齐。 自定义翻译会报告它能够配对为每个数据集中“已对齐句子”的句子数。
 
 ## <a name="pairing-and-alignment-process"></a>配对和对齐过程
 
@@ -28,7 +28,7 @@ ms.locfileid: "88510838"
 
 如果你知道自己可以提供并行文档，则可以通过提供预先对齐的文本文件来替代句子对齐。 可将两个文档中的所有句子提取到该文本文件，按每行一个句子的方式进行组织，然后使用 `.align` 扩展上传。 `.align` 扩展告知自定义翻译应该跳过句子对齐。
 
-为获得最佳结果，请尽量确保在文件中每行放置一个句子。不要在句子中插入换行符，否则会导致对齐结果不佳。
+为获得最佳结果，请尽量确保在文件中每行放置一个句子。 不要在句子中插入换行符，否则会导致对齐结果不佳。
 
 ## <a name="suggested-minimum-number-of-sentences"></a>建议的最小句子数
 
@@ -44,7 +44,7 @@ ms.locfileid: "88510838"
 > [!NOTE]
 > - 如果未满足定型的10000最小句子计数，则训练将不会启动，并且会失败。 
 > - 优化和测试是可选的。 如果未提供这些值，系统将从培训中删除适当的百分比用于验证和测试。 
-> - 可以仅使用字典数据来训练模型。 请参阅 [什么是字典](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)。
+> - 可以仅使用字典数据来训练模型。 请参阅 [什么是字典](./what-is-dictionary.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

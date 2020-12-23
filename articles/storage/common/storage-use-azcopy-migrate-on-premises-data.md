@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: eddee58d70cf621bd6c82d54fe75434f4e596d9e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86120630"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498160"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
 
@@ -33,7 +33,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 
 若要完成本教程，请下载最新版 AzCopy。 请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)。
 
-如果使用 Windows，则需 [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx)，因为本教程使用它来计划任务。 Linux 用户会改用 crontab 命令。
+如果使用 Windows，则需 [Schtasks](/windows/win32/taskschd/schtasks)，因为本教程使用它来计划任务。 Linux 用户会改用 crontab 命令。
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -46,7 +46,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 1. 选择主页上的“存储帐户”  按钮，然后选择创建的存储帐户。
 2. 选择“服务”  下的“Blob”  ，然后选择“容器”  。
 
-   ![创建容器](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
+   ![显示容器创建的屏幕截图](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 容器名必须以字母或数字开头。 名称中只能包含字母、数字和连字符 (-)。 有关命名 Blob 和容器的更多规则，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
@@ -62,7 +62,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 
 ## <a name="authenticate-with-azure-ad"></a>使用 Azure AD 进行身份验证
 
-首先，为标识分配[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)角色。 请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)。
+首先，为标识分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](./storage-auth-aad-rbac-portal.md)。
 
 然后打开命令提示符，键入以下命令，按 ENTER 键。
 
@@ -72,13 +72,13 @@ azcopy login
 
 此命令返回身份验证代码和网站的 URL。 打开网站，提供代码，然后选择“下一步”按钮。 
 
-![创建容器](media/storage-use-azcopy-v10/azcopy-login.png)
+![显示登录提示的屏幕截图](media/storage-use-azcopy-v10/azcopy-login.png)
 
 此时会出现登录窗口。 在该窗口中，使用 Azure 帐户凭据登录到 Azure 帐户。 成功登录后，可以关闭浏览器窗口，开始使用 AzCopy。
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>将文件夹的内容上传到 Blob 存储
 
-可使用 AzCopy 将文件夹中的所有文件上传到 [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) 或 [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 上的 Blob 存储中。 若要上传文件夹中的所有 Blob，请输入以下 AzCopy 命令：
+可使用 AzCopy 将文件夹中的所有文件上传到 [Windows](./storage-use-azcopy-v10.md) 或 [Linux](./storage-use-azcopy-v10.md) 上的 Blob 存储中。 若要上传文件夹中的所有 Blob，请输入以下 AzCopy 命令：
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -135,7 +135,7 @@ azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycont
 
 ---
 
-在本教程中，[Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) 用于在 Windows 上创建计划任务。 [Crontab](http://crontab.org/) 命令用于在 Linux 上创建 cron 作业。
+在本教程中，[Schtasks](/windows/win32/taskschd/schtasks) 用于在 Windows 上创建计划任务。 [Crontab](http://crontab.org/) 命令用于在 Linux 上创建 cron 作业。
 
  使用 Schtasks  ，管理员能够在本地或远程计算机上创建、删除、查询、更改、运行和结束计划的任务。 使用 Cron  ，Linux 和 Unix 用户能够使用 [cron 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)在指定日期和时间运行命令或脚本。
 
@@ -166,7 +166,7 @@ schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
 - `/TN` 参数指定任务名称。
 - `/TR` 参数指定 `script.bat` 文件的路径。
 
-若要了解有关在 Windows 上创建计划的任务的详细信息，请参阅 [Schtasks](https://technet.microsoft.com/library/cc772785(v=ws.10).aspx#BKMK_minutes)。
+若要了解有关在 Windows 上创建计划的任务的详细信息，请参阅 [Schtasks](/previous-versions/orphan-topics/ws.10/cc772785(v=ws.10)#BKMK_minutes)。
 
 ---
 
@@ -176,7 +176,7 @@ schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
 
 若要详细了解如何在本地和 Azure 存储之间移动数据，请单击以下链接：
 
-* [将数据移入和移出 Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。  
+* [将数据移入和移出 Azure 存储](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。  
 
 有关 AzCopy 的详细信息，请参阅以下任何文章：
 

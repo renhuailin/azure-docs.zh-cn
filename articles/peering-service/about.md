@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 198ba23920179e71e095e498ee2173d7f0111d42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400173"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026723"
 ---
 # <a name="azure-peering-service-overview"></a>Azure 对等互连服务概述
 
-Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云服务（例如 Microsoft 365、Dynamics 365、软件即服务 (SaaS) services、Azure 或可通过公共 internet 访问的任何 Microsoft 服务）的连接。 Microsoft 已与 internet 服务提供商合作， (Isp) 、internet exchange 合作伙伴 (IXPs) ，以及软件定义的云互连 (SDCI) 提供商与 Microsoft 网络的最佳路由。
+Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云服务（例如 Microsoft 365、Dynamics 365、软件即服务 (SaaS) 服务、Azure 或可通过公共 Internet 访问的任何 Microsoft 服务）建立的连接。 Microsoft 已与 internet 服务提供商合作， (Isp) 、internet exchange 合作伙伴 (IXPs) ，以及软件定义的云互连 (SDCI) 提供商与 Microsoft 网络的最佳路由。
 
 使用对等互连服务时，客户可以在给定区域中选择连接良好的合作伙伴服务提供商。 公用连接经过优化，可实现高可靠性和从云服务到最终用户位置的最小延迟。
 
@@ -45,7 +45,7 @@ Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云
 对等互连服务不是 Azure ExpressRoute 或 VPN 产品等专用连接产品。
 
 > [!NOTE]
-> 有关 ExpressRoute 的详细信息，请参阅 [expressroute 文档](https://docs.microsoft.com/azure/expressroute/)。
+> 有关 ExpressRoute 的详细信息，请参阅 [expressroute 文档](../expressroute/index.yml)。
 >
 
 ## <a name="background"></a>背景
@@ -57,7 +57,7 @@ Microsoft 和合作伙伴服务提供商确保注册到对等服务连接的前�
 ![Microsoft 网络和公共连接](./media/peering-service-about/peering-service-background-final.png)
 
 > [!NOTE]
-> 有关 Microsoft 全球网络的详细信息，请参阅 [microsoft 全球网络](https://docs.microsoft.com/azure/networking/microsoft-global-network)。
+> 有关 Microsoft 全球网络的详细信息，请参阅 [microsoft 全球网络](../networking/microsoft-global-network.md)。
 >
 
 ## <a name="why-use-peering-service"></a>为什么使用对等互连服务？

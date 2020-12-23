@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure AD SSO 与 FortiGate SSL VPN 集成
-description: 在本教程中，你将学习如何在 Azure Active Directory 与 FortiGate SSL VPN 之间配置单一登录。
+title: 教程：Azure Active Directory 与 FortiGate SSL VPN 的单一登录 (SSO) 集成 | Microsoft Docs
+description: 了解将 FortiGate SSL VPN 与 Azure Active Directory (Azure AD) 集成所需执行的步骤。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe92218d6bb20274e916089c15df8c1f44c4fd6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986435"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296567"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>教程：Azure Active Directory 与 FortiGate SSL VPN 的单一登录 (SSO) 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "90986435"
 * 让用户使用其 Azure AD 帐户自动登录到 FortiGate SSL VPN。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ ms.locfileid: "90986435"
 
 FortiGate SSL VPN 支持 SP 发起的 SSO。
 
-配置 FortiGate SSL VPN 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 FortiGate SSL VPN 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-fortigate-ssl-vpn-from-the-gallery"></a>从库中添加 FortiGate SSL VPN
 
@@ -92,18 +92,31 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
     d. 在“注销 URL”框中，输入采用 `https://<FQDN>/remote/saml/logout` 模式的 URL。
 
     > [!NOTE]
-    > 这些值只是模式。 你需要使用实际的登录 URL、标识符、回复 URL 和注销 URL   。 要获取实际值，请联系 [FortiGate SSL VPN 客户端支持团队](mailto:tac_amer@fortinet.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些值只是模式。 你需要使用实际的登录 URL、标识符、回复 URL 和注销 URL   。 请联系 [Fortinet 支持部门](https://support.fortinet.com)获取指南。 另请参阅 Fortinet 文档和 Azure 门户中的“基本 SAML 配置”部分中显示的示例模式。
 
-1. FortiGate SSL VPN 需要特定格式的 SAML 断言。 因此，你需要将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性：
+1. FortiGate SSL VPN 应用程序需要特定格式的 SAML 断言，这要求向配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
     ![显示默认属性的屏幕截图。](common/default-attributes.png)
 
-1. FortiGate SSL VPN 还要求在 SAML 响应中传回其他几个属性。 下表显示了这些属性。 它们也是预先填充的，但你可根据自身要求对其进行查看。
-    
-    | 名称 |  源属性|
-    | ------------ | --------- |
-    | username | user.userprincipalname |
-    | group | user.groups |
+1. 下表显示了 FortiGate SSL VPN 所需的两个附加声明。 这些声明的名称必须与本教程的“执行 FortiGate 命令行配置”部分中使用的名称相匹配。 
+
+   | 名称 |  源属性|
+   | ------------ | --------- |
+   | username | user.userprincipalname |
+   | group | user.groups |
+   
+   若要创建这些附加声明，请执行以下操作：
+   
+   1. 在“用户属性和声明”旁边，选择“编辑”。
+   1. 选择“添加新声明”。
+   1. 对于“名称”，请输入“username”。
+   1. 对于“源属性”，请选择“user.userprincipalname”。
+   1. 选择“保存”  。
+   1. 选择“添加组声明”。
+   1. 选择“所有组”。
+   1. 选中“自定义组声明的名称”复选框。
+   1. 对于“名称”，请输入“group”。
+   1. 选择“保存”  。   
 
 1. 在“设置 SAML 单一登录”页面上的“SAML 签名证书”部分，选择“证书(Base64)”旁边的“下载”链接，下载证书并将其保存到计算机上   ：
 
@@ -123,7 +136,7 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
    1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 #### <a name="grant-access-to-the-test-user"></a>向测试用户授予访问权限
 
@@ -241,24 +254,24 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
 
 在本部分中，你将配置 FortiGate VPN 门户和防火墙策略，以授予对之前在本教程中创建的 FortiGateAccess 安全组的访问权限。
 
-在  [FortiGate 支持团队](mailto:tac_amer@fortinet.com)的配合下，将 VPN 门户和防火墙策略添加到 FortiGate VPN 平台。 需要完成此步骤才能使用单一登录。
+与 [FortiGate 支持团队](mailto:tac_amer@fortinet.com)协作，向 FortiGate VPN 平台添加 VPN 门户和防火墙策略。 需要完成此步骤才能使用单一登录。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分，你将使用访问面板测试 Azure AD 单一登录配置。
 
-选择访问面板中的 FortiGate SSL VPN 磁贴时，应会自动登录到为其设置了 SSO 的 FortiGate SSL VPN。 有关访问面板的详细信息，请参阅[访问面板简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+选择访问面板中的 FortiGate SSL VPN 磁贴时，应会自动登录到为其设置了 SSO 的 FortiGate SSL VPN。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
 
 为了获得最佳最终用户体验，Microsoft 和 FortiGate 建议使用 Fortinet VPN 客户端 FortiClient。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 FortiGate SSL VPN](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

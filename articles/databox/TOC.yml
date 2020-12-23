@@ -1,5 +1,5 @@
 - name: Azure Data Box 文档 - 脱机传输
-  href: /azure/databox
+  href: ./index.yml
   items:
     - name: Data Box
       items:
@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: 使用自我托管交付
               href: data-box-portal-customer-managed-shipping.md
+            - name: 使用自己的证书
+              href: data-box-bring-your-own-certificates.md
             - name: 启用客户管理的密钥
               href: data-box-customer-managed-encryption-key-portal.md
             - name: 使用客户密码箱
@@ -103,7 +105,7 @@
             - name: 迁移
               items:
                 - name: 到 Sharepoint Online
-                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                  href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%2fazure%2fdatabox%2fcontext%2fcontext
                 - name: 到 Azure 文件同步
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: 从 HDFS 存储
@@ -127,6 +129,7 @@
           items:
             - name: 设置 - Azure 门户
               href: data-box-disk-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: 教程
           items:
             - name: 1 - 顺序
@@ -147,7 +150,7 @@
               href: data-box-disk-limits.md
             - name: 检查安全性
               href: data-box-disk-security.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: data-box-disk-faq.md
         - name: 如何
           items:
@@ -177,6 +180,7 @@
           items:
             - name: 设置 - Azure 门户
               href: data-box-heavy-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: 教程
           items:
             - name: 1 - 顺序

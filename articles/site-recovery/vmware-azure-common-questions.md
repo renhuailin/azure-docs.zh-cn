@@ -3,12 +3,12 @@ title: 有关使用 Azure Site Recovery 进行 VMware 灾难恢复的常见问�
 description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复到 Azure 时出现的常见问题的解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89054965"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587786"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -75,7 +75,7 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 
 可以使用[定价计算器](https://aka.ms/asr_pricing_calculator)来估算使用 Site Recovery 时的费用。
 
-若要对费用进行详细的估算，请运行适用于 [VMware](https://aka.ms/siterecovery_deployment_planner) 的部署规划器工具，并使用[成本估算报告](https://aka.ms/asr_DP_costreport)。
+若要对费用进行详细的估算，请运行适用于 [VMware](./site-recovery-deployment-planner.md) 的部署规划器工具，并使用[成本估算报告](./site-recovery-vmware-deployment-planner-cost-estimation.md)。
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>复制到存储的费用与直接复制到托管磁盘的费用是否有任何差别？
 
@@ -114,7 +114,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 否。 从 2019 年 3 月开始，在 Azure 门户中只能复制到 Azure 托管磁盘。
 
-将新 Vm 复制到存储帐户时，仅可使用 PowerShell ([Az. microsoft.recoveryservices 模块版本 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) 或 REST API (版本2018-01-10 或 2016-08-10) 提供。 [了解如何](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) 使用 PowerShell 命令来设置复制。
+只能使用 PowerShell（[Az.RecoveryServices 模块版本 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)）或 REST API（版本 2018-01-10 或 2016-08-10）将新 VM 复制到存储帐户。 [了解如何](./vmware-azure-disaster-recovery-powershell.md)使用 PowerShell 命令来设置复制。
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>复制到托管磁盘的优点是什么？
 
@@ -147,6 +147,10 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 不支持扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
 
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>如何跟踪初始复制/同步的进度？
+
+此功能最近 Site Recovery 的服务。 将 Site Recovery 基础结构 (配置服务器、横向扩展进程服务器) 和移动代理更新到版本9.36 或更高版本，以获取准确的详细信息。 详细了解如何在 [此处](vmware-azure-enable-replication.md#monitor-initial-replication)跟踪进度。
+
 ### <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
 
 不支持脱机复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
@@ -176,21 +180,21 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>是否可以在不影响进行中复制的情况下将本地计算机迁移到新的 vCenter Server？
 
-否。 更改 VMware Vcenter 或迁移将影响正在进行的复制。 对新的 vCenter Server 设置 Site Recovery，并为计算机重新启用复制。
+请参阅我们的[指南](vmware-azure-manage-vcenter.md#migrate-all-vms-to-a-new-server)将计算机迁移到新 vCenter
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>是否可以复制到在其上配置了虚拟网络（具有 Azure 防火墙）的缓存或目标存储帐户？
 
 否，Site Recovery 不支持复制到虚拟网络上的 Azure 存储。
 
-### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>崩溃一致恢复点的生成频率是多少？
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>生成崩溃一致性恢复点的频率是多少？
 
-Site Recovery 每5分钟生成崩溃一致的恢复点。
+Site Recovery 每隔 5 分钟生成一次崩溃一致性恢复点。
 
 ## <a name="component-upgrade"></a>组件升级
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>我的移动服务代理或配置服务器版本较低，并且升级失败。 我该怎么办？
 
-Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_support_statement)如何从很低的版本升级。
+Site Recovery 遵循 N-4 支持模型。 [详细了解](./service-updates-how-to.md#support-statement-for-azure-site-recovery)如何从很低的版本升级。
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>在哪里可以找到 Azure Site Recovery 的发行说明和更新汇总？
 
@@ -198,11 +202,11 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>在哪里可以找到有关灾难恢复到 Azure 的升级信息？
 
-[了解如何升级](https://aka.ms/asr_vmware_upgrades)。
+[了解如何升级](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)。
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>每次升级后是否都需要重新启动源计算机？
 
-建议每次升级后重新启动，但不一定非要这样做。 [了解详细信息](https://aka.ms/asr_vmware_upgrades)。
+建议每次升级后重新启动，但不一定非要这样做。 [了解详细信息](./service-updates-how-to.md#reboot-after-mobility-service-upgrade)。
 
 ## <a name="configuration-server"></a>配置服务器
 
@@ -246,7 +250,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 - 可以在 [Azure 更新页](https://azure.microsoft.com/updates/?product=site-recovery)中找到最新的更新信息。
 - 可从门户下载最新版本。 或者，你可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。
-- 如果你的版本比当前版本低 4 个版本，请参阅[支持声明](https://aka.ms/asr_support_statement)获取升级指导。
+- 如果你的版本比当前版本低 4 个版本，请参阅[支持声明](./service-updates-how-to.md#support-statement-for-azure-site-recovery)获取升级指导。
 
 ### <a name="should-i-back-up-the-configuration-server"></a>是否应备份配置服务器？
 

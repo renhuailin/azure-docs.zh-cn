@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1394cf6511a65a0e406e51229953e8666d4d4d8d
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79501856"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337672"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教程：在 Azure 中使用 Data Box 将数据导入为托管磁盘
 
@@ -38,7 +38,7 @@ ms.locfileid: "79501856"
 4. 已查看：
 
     - [“Azure 对象大小限制”中的“支持的托管磁盘大小”](data-box-limits.md#azure-object-size-limits)。
-    - [Azure 托管磁盘简介](/azure/virtual-machines/windows/managed-disks-overview)。 
+    - [Azure 托管磁盘简介](../virtual-machines/managed-disks-overview.md)。 
 
 5. 你一直维护源数据的副本，直到确认 Data Box 已将数据传输到 Azure 存储中为止。
 
@@ -76,11 +76,11 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
     > [!NOTE]
     > 托管磁盘的所有共享的凭据是相同的。
 
-    ![获取共享凭据 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![连接和复制，获取共享凭据](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. 在“访问共享和复制数据”对话框中，复制共享的“用户名”和“密码”。   单击“确定”。 
+2. 在“访问共享和复制数据”对话框中，复制共享的“用户名”和“密码”  。 单击“确定”。 
     
-    ![获取共享凭据 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![连接和复制，复制共享凭据](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. 若要从主机访问与资源（在以下示例中为 *mydbmdrg1*）关联的共享，请打开命令窗口。 在命令提示符处，键入：
 
@@ -100,26 +100,26 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
     C: \>
     ```
 
-4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>\<ShareName>`。  单击“确定”打开文件资源管理器  。
+5. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>\<ShareName>`。  单击“确定”打开文件资源管理器  。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![通过文件资源管理器连接到共享](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     现在，每个共享中应会显示以下预先创建的文件夹。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
+    ![通过文件资源管理器连接到共享，共享的文件夹](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
 ### <a name="connect-to-data-box-via-nfs"></a>通过 NFS 连接到 Data Box
 
 如果使用 Linux 主机，请执行以下步骤将 Data Box 配置为允许 NFS 客户端访问。
 
-1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。  在“NFS 设置”下，单击“NFS 客户端访问”。  
+1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。 在“NFS 设置”下，单击“NFS 客户端访问”。  
 
-    ![配置 NFS 客户端访问 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![配置 NFS 客户端访问](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。  可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。 
 
-    ![配置 NFS 客户端访问 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
+    ![配置 NFS 客户端 IP 地址](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
 2. 确保 Linux 主机上已安装[受支持版本](data-box-system-requirements.md)的 NFS 客户端。 使用特定版本的 Linux 分发版。
 
@@ -183,4 +183,3 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 
 > [!div class="nextstepaction"]
 > [将 Azure Data Box 寄送到 Microsoft](./data-box-deploy-picked-up.md)
-

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259194"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002164"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>使用 Linux Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -21,12 +21,12 @@ ms.locfileid: "86259194"
 
 当你运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 将日志放在中心位置可帮助分析和排查群集中的问题，或该群集中运行的应用程序与服务的问题。
 
-上传和收集日志的方式之一是使用 Linux Azure 诊断 (LAD) 扩展，它可将日志上传到 Azure 存储，并且还提供了将日志发送到 Azure Application Insights 或事件中心的选项。 你还可以使用外部进程读取存储中的事件，并将它们放在分析平台产品（如[Azure Monitor 日志](./service-fabric-diagnostics-oms-setup.md)或其他日志分析解决方案）中。
+上传和收集日志的方式之一是使用 Linux Azure 诊断 (LAD) 扩展，它可将日志上传到 Azure 存储，并且还提供了将日志发送到 Azure Application Insights 或事件中心的选项。 你还可以使用外部进程读取存储中的事件，并将它们放在分析平台产品（如 [Azure Monitor 日志](./service-fabric-diagnostics-oms-setup.md) 或其他日志分析解决方案）中。
 
 ## <a name="log-and-event-sources"></a>日志和事件源
 
 ### <a name="service-fabric-platform-events"></a>Service Fabric 平台事件
-Service Fabric 通过 [LTTng](https://lttng.org) 发出几个现成可用的日志，包括操作事件或运行时事件。 这些日志存储在群集的资源管理器模板指定的位置。 若要获取存储帐户的详细信息，请搜索 AzureTableWinFabETWQueryable**** 标记，然后查找 StoreConnectionString****。
+Service Fabric 通过 [LTTng](https://lttng.org) 发出几个现成可用的日志，包括操作事件或运行时事件。 这些日志存储在群集的资源管理器模板指定的位置。 若要获取存储帐户的详细信息，请搜索 AzureTableWinFabETWQueryable 标记，然后查找 StoreConnectionString。
 
 ### <a name="application-events"></a>应用程序事件
  检测软件时，事件按指定从应用程序和服务的代码中发出。 可以使用任何能够写入基于文本的日志的日志记录解决方案，例如 LTTng。 有关详细信息，请参阅有关跟踪应用程序的 LTTng 文档。

@@ -16,25 +16,25 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 75e004980ada23a616b57e3c7eb1afb241e09598
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413147"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371641"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure AD 自定义角色
 
 本文介绍如何使用 Privileged Identity Management (PIM) 来创建对自定义角色进行的恰时分配和有时限的分配，这些自定义角色是在 Azure Active Directory (Azure AD) 管理体验中为了管理应用程序而创建的。
 
-- 若要详细了解如何在 Azure AD 中创建自定义角色来委托应用程序管理，请参阅 [Azure Active Directory 中的自定义管理员角色（预览）](../users-groups-roles/roles-custom-overview.md)。
+- 若要详细了解如何在 Azure AD 中创建自定义角色来委托应用程序管理，请参阅 [Azure Active Directory 中的自定义管理员角色（预览）](../roles/custom-overview.md)。
 - 如果未使用过 Privileged Identity Management，请参阅[开始使用 Privileged Identity Management](pim-getting-started.md) 以获取详细信息。
 - 有关如何授予其他管理员访问权限以管理 Privileged Identity Management 的信息，请参阅[授予其他管理员访问权限以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
 
 > [!NOTE]
 > 在预览版中，Azure AD 自定义角色未集成内置的目录角色。 此功能的正式版发布后，可在内置的角色体验中进行角色管理。 如果看到以下横幅，则应[在内置角色体验中](pim-how-to-activate-role.md)管理这些角色，而本文不适用：
 >
-> [![选择 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> [![选择“Azure AD”>“Privileged Identity Management”。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="assign-a-role"></a>分配角色
 
@@ -74,7 +74,7 @@ Privileged Identity Management 可以管理可在 Azure Active Directory (Azure 
 1. 如果“永久”复选框已显示并且可选（具体取决于角色设置），可以指定该分配是否是永久性的。**** 选中该复选框可使分配永久符合条件或永久进行分配。 清除该复选框可指定分配持续时间。
 1. 若要创建新的角色分配，请依次单击“保存”、“添加”********。 此时将显示分配过程状态的通知。
 
-若要验证角色分配，请在打开的角色中 **，选择 "分配"**"  >  **分配**"，并验证你的角色分配是否已正确标识为符合条件或活动。
+若要验证角色分配，请在打开的角色中选择“分配” > “分配”，然后检查角色分配是否正确标识为“符合条件”或“活动”。 
 
  ![检查角色分配是否显示为“符合条件”或“活动”](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
@@ -83,4 +83,4 @@ Privileged Identity Management 可以管理可在 Azure Active Directory (Azure 
 - [激活 Azure AD 自定义角色](azure-ad-custom-roles-assign.md)
 - [删除或更新 Azure AD 自定义角色分配](azure-ad-custom-roles-update-remove.md)
 - [配置 Azure AD 自定义角色分配](azure-ad-custom-roles-configure.md)
-- [Azure AD 中的角色定义](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 中的角色定义](../roles/permissions-reference.md)

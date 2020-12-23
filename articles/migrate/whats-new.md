@@ -1,21 +1,31 @@
 ---
 title: Azure Migrate 中的新增功能
 description: 了解 Azure Migrate 服务中的新增功能和最新更新。
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 019c04c5820a82b7910b6755ff69e5dfbe7eb66c
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e39b8f7ee7b76a1955e02a7140524f812be086b5
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421605"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752441"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
 [Azure Migrate](migrate-services-overview.md) 可帮助发现和访问本地服务器、应用和数据并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 中的新版本和功能。
+
 ## <a name="update-september-2020"></a>更新（2020 年 9 月）
-- 利用 Azure Migrate 可将服务器迁移到可用性区域
+- 现支持将服务器迁移到可用性区域。
+- 现支持将基于 UEFI 的虚拟机 (VM) 和物理服务器迁移到 Azure 第二代 VM。 在此版本中，Azure Migrate：服务器迁移工具将不会在迁移过程中执行从第二代 VM 到第一代 VM 的转换。
+- 现提供一个新的 Azure Migrate Power BI 评估仪表板来帮助你比较不同评估设置的费用。 该仪表板覆盖了一个 PowerShell 实用工具，它会自动创建要插入到 Power BI 仪表板中的评估。 [了解详细信息。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- 依赖项分析（无代理）现可在 1000 个 VM 上并发运行。
+- 现可使用 PowerShell 脚本大规模地启用或禁用依赖项分析（无代理）。 [了解详细信息。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- 通过用依赖项分析（无代理）收集的数据在 Power BI 中直观呈现网络连接 [了解详细信息。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- 现在，可使用 Azure Migrate 支持迁移数据磁盘大小高达 32 TB 的 VMware VM：服务器迁移无代理 VMware 迁移方法。 
 
 ## <a name="update-august-2020"></a>更新（2020 年 8 月）
 
@@ -23,13 +33,14 @@ ms.locfileid: "89421605"
 - 从门户下载 OVA/VHD 文件或安装程序脚本以便分别设置 VMware 和 Hyper-V 设备的选项。
 - 已通过增强的用户体验刷新设备配置管理器。
 - 多个凭据支持 Hyper-V VM 发现。
-- 改进了对添加的凭证和发现源的搜索、排序和筛选功能。
-- 单个项输入、多个项输入和导入 CSV 选项，以便用户添加 Hyper-V 主机/群集和物理服务器的发现源。
-- 针对表中每个添加的源的验证和发现操作的状态更新，增强了错误体验。 
+
+## <a name="update-july-2020"></a>更新（2020 年 7 月）
+
+- 无代理 VMware 迁移现支持按每个 vCenter 并发复制 300 个 VM
 
 ## <a name="update-june-2020"></a>更新（2020 年 6 月）
 
-- 现在支持将本地 VMware VM 迁移到 [Azure VMware 解决方案 (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) 的评估。 [了解详细信息](how-to-create-azure-vmware-solution-assessment.md)
+- 现在支持将本地 VMware VM 迁移到 [Azure VMware 解决方案 (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) 的评估。 [了解详细信息](how-to-create-azure-vmware-solution-assessment.md)
 - 支持在设备上用多个凭据来发现物理服务器。
 - 支持允许租户从设备登录 Azure，其中租户限制已配置。
 
@@ -97,4 +108,4 @@ Azure Migrate 的当前版本（在 2019 年 7 月发布）提供许多新功能
 
 - [详细了解](https://azure.microsoft.com/pricing/details/azure-migrate/) Azure Migrate 定价。
 - [查看常见问题解答](resources-faq.md)（关于 Azure Migrate）。
-- 试用我们的教程来评估 [VMware VM](tutorial-assess-vmware.md) 和 [Hyper-V VM](tutorial-assess-hyper-v.md)。
+- 试用我们的教程来评估 [VMware VM](./tutorial-assess-vmware-azure-vm.md) 和 [Hyper-V VM](tutorial-assess-hyper-v.md)。

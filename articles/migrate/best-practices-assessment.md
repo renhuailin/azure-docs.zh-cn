@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate 服务器评估中的评估最佳实践
 description: Azure Migrate Server 评估创建评估的技巧。
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: e007f0272a693f5117b0182dad82de2f4a6e252a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: c1fff5b5b7f6450ad8d1977e55a1f6b255f3d668
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576874"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754311"
 ---
 # <a name="best-practices-for-creating-assessments"></a>创建评估的最佳实践
 

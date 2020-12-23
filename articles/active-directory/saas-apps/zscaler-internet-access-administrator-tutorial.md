@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 0cbcfb65d7c7ac71b17e38dd72545a3d8fd2f162
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d74057e32b6f16bdb6dae3d96ac46c5cc93571aa
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545873"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609099"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88545873"
 * 可让用户使用其 Azure AD 帐户自动登录到 Zscaler Internet Access Administrator（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -92,7 +92,7 @@ ms.locfileid: "88545873"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -134,13 +134,13 @@ ms.locfileid: "88545873"
 
     | 名称  | 源属性  |
     | ---------| ------------ |
-    | 角色     | user.assignedroles |
+    | 角色 | user.assignedroles |
 
     a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    ![image](./common/new-save-attribute.png)
+    ![屏幕截图显示“用户声明”以及“添加新声明”选项。](./common/new-save-attribute.png)
     
-    ![图像](./common/new-attribute-details.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](./common/new-attribute-details.png)
 
     b. 在“源属性”列表中，选择属性值。
 
@@ -149,9 +149,9 @@ ms.locfileid: "88545873"
     d. 单击“ **保存**”。
 
     > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)
+    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/active-directory-enterprise-app-role-management.md)
 
-7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -171,17 +171,17 @@ ms.locfileid: "88545873"
 
 2. 转到“管理”>“管理员管理”执行以下步骤，然后单击“保存”：
 
-    ![管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "管理")
+    ![显示“管理员管理”的屏幕截图，其中包含“启用 SAML 身份验证”、“上传 SSL 证书”和“指定颁发者”选项。](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "管理")
 
     a. 选中“启用 SAML 身份验证”。
 
     b. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。 
 
-    c. （可选）为了提高安全性，请添加**颁发者**详细信息以验证 SAML 响应的颁发者。
+    c. （可选）为了提高安全性，请添加 **颁发者** 详细信息以验证 SAML 响应的颁发者。
 
 3. 在管理员 UI 中，执行以下步骤：
 
-    ![管理](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
+    ![显示可在其中执行这些步骤的“管理员 UI”的屏幕截图](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
 
     a. 将鼠标悬停在左下角附近的“激活”菜单上。
 
@@ -249,12 +249,12 @@ https://help.zscaler.com/zia/adding-admins
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Zscaler Internet Access Administrator”磁贴时，应当会自动登录到已为其设置了 SSO 的 Zscaler Internet Access 管理员 UI。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“Zscaler Internet Access Administrator”磁贴时，应当会自动登录到已为其设置了 SSO 的 Zscaler Internet Access 管理员 UI。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

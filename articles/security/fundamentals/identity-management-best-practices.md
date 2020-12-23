@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400326"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489813"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -57,7 +57,7 @@ ms.locfileid: "91400326"
 
 ## <a name="treat-identity-as-the-primary-security-perimeter"></a>将标识视为主要安全边界
 
-许多人认为标识是主要安全边界。 这与以网络安全为重点的传统做法不同。 网络边界出现越来越多的漏洞，在 [BYOD](https://aka.ms/byodcg) 设备和云应用程序激增之前相比，边界防御不再那样有效。
+许多人认为标识是主要安全边界。 这与以网络安全为重点的传统做法不同。 网络边界出现越来越多的漏洞，在 [BYOD](/mem/intune/fundamentals/byod-technology-decisions) 设备和云应用程序激增之前相比，边界防御不再那样有效。
 
 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 是用于标识和访问管理的 Azure 解决方案。 Azure AD 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 它将核心目录服务、应用程序访问管理和标识保护融入一个解决方案中。
 
@@ -74,7 +74,7 @@ ms.locfileid: "91400326"
 **详细信息**：指定一个 Azure AD 目录作为企业帐户和组织帐户的权威源。
 
 **最佳做法**：将本地目录与 Azure AD 进行集成。  
-**详细信息**：使用 [Azure AD Connect](/azure/active-directory/connect/active-directory-aadconnect) 将本地目录与云目录同步。
+**详细信息**：使用 [Azure AD Connect](../../active-directory/hybrid/whatis-hybrid-identity.md) 将本地目录与云目录同步。
 
 > [!Note]
 > 存在[影响 Azure AD Connect 性能的因素](../../active-directory/hybrid/plan-connect-performance-factors.md)。 确保 Azure AD Connect 有足够的容量来防止性能不佳的系统影响安全性和工作效率。 大型或复杂的组织（预配超过 100,000 个对象的组织）应遵循[建议](../../active-directory/hybrid/whatis-hybrid-identity.md)来优化其 Azure AD Connect 实现。
@@ -87,13 +87,13 @@ ms.locfileid: "91400326"
 
 即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地设置密码哈希同步作为备用机制，以应对本地服务器发生故障或临时不可用的情况。 借助此同步，用户可以使用与登录本地 Active Directory 实例相同的密码来登录服务。 如果用户对其他未连接到 Azure AD 的服务使用过相同的电子邮件地址和密码，此同步还可便于标识保护将同步的密码哈希与已知被盗用的密码进行比较，从而检测被盗用的凭据。
 
-有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)。
+有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。
 
 **最佳做法**：对于新的应用开发，使用 Azure AD 进行身份验证。
 **详细信息**：使用正确的功能来支持身份验证：
 
   - 面向员工的 Azure AD
-  - 面向来宾用户和外部合作伙伴的 [Azure AD B2B](../../active-directory/b2b/index.yml)
+  - 面向来宾用户和外部合作伙伴的 [Azure AD B2B](../../active-directory/external-identities/index.yml)
   - 用于控制客户在使用应用时如何注册、登录和管理配置文件的 [Azure AD B2C](../../active-directory-b2c/index.yml)
 
 未将其本地标识与云标识集成的组织在管理帐户方面可能开销更大。 这种开销增加了出错和安全漏洞的可能性。
@@ -102,7 +102,7 @@ ms.locfileid: "91400326"
 > 你需要选择关键帐户将驻留在哪些目录中，以及所使用的管理工作站是由新的云服务托管，还是由现有进程托管。 使用现有的管理和标识预配流程可以降低一些风险，但也可能会造成攻击者入侵本地帐户并转向云的风险。 不妨对不同的角色（例如，IT 管理员与业务部门管理员）使用不同的策略。 您有两种选择： 第一种选择是，创建不与本地 Active Directory 实例同步的 Azure AD 帐户。 将管理工作站加入到 Azure AD，这样可以使用 Microsoft Intune 进行管理和修补。 第二种选择是，通过同步到本地 Active Directory 实例来使用现有的管理员帐户。 使用 Active Directory 域中的现有工作站来实现管理和安全性。
 
 ## <a name="manage-connected-tenants"></a>管理已连接的租户
-你的安全组织需要能够查看订阅来评估风险，并确定是否遵循了组织的策略和任何法规要求。 你应确保安全组织能够查看所有（通过 [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)）连接到生产环境和网络的订阅。 Azure AD 中的[全局管理员/公司管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)可以将自己的访问权限提升为[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色，并查看所有连接到环境的订阅和管理组。
+你的安全组织需要能够查看订阅来评估风险，并确定是否遵循了组织的策略和任何法规要求。 你应确保安全组织能够查看所有（通过 [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)）连接到生产环境和网络的订阅。 Azure AD 中的[全局管理员/公司管理员](../../active-directory/roles/permissions-reference.md#company-administrator-permissions)可以将自己的访问权限提升为[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色，并查看所有连接到环境的订阅和管理组。
 
 请参阅[提升访问权限以管理所有 Azure 订阅和管理组](../../role-based-access-control/elevate-access-global-admin.md)，以确保你和你的安全组可以查看所有连接到环境的订阅或管理组。 你应该在评估风险后撤消此提升的访问权限。
 
@@ -113,9 +113,9 @@ ms.locfileid: "91400326"
 通过对所有应用和资源使用相同的标识解决方案，可以实现 SSO。 并且不论资源是位于本地还是云中，用户均可以使用相同凭据集登录和访问所需资源。
 
 **最佳做法**：启用 SSO。  
-**详细信息**：Azure AD [将本地 Active Directory](/azure/active-directory/connect/active-directory-aadconnect) 扩展到云。 用户可以将他们的主要工作或学校帐户用于他们加入域的设备、公司资源以及完成工作所需的所有 Web 和 SaaS 应用程序。 用户无需记住多组用户名和密码，系统会根据组织的组成员身份和员工身份的状态，自动预配（或取消设置）应用程序访问权限。 可以针对库应用或者通过 [Azure AD 应用程序代理](/azure/active-directory/active-directory-application-proxy-get-started)自行开发和发布的本地应用控制访问权限。
+**详细信息**：Azure AD [将本地 Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md) 扩展到云。 用户可以将他们的主要工作或学校帐户用于他们加入域的设备、公司资源以及完成工作所需的所有 Web 和 SaaS 应用程序。 用户无需记住多组用户名和密码，系统会根据组织的组成员身份和员工身份的状态，自动预配（或取消设置）应用程序访问权限。 可以针对库应用或者通过 [Azure AD 应用程序代理](../../active-directory/manage-apps/application-proxy.md)自行开发和发布的本地应用控制访问权限。
 
-用户可使用 SSO 基于 Azure AD 中的工作或学校帐户访问 [SaaS 应用程序](/azure/active-directory/active-directory-appssoaccess-whatis)。 这不仅适用于 Microsoft SaaS 应用，还适用于其他应用，例如 [Google Apps](/azure/active-directory/active-directory-saas-google-apps-tutorial) 和 [Salesforce](/azure/active-directory/active-directory-saas-salesforce-tutorial)。 应用程序可配置为使用 Azure AD 作为[基于 SAML 的标识](/azure/active-directory/fundamentals-identity)提供者。 作为安全控制机制，Azure AD 不会发出允许用户登录应用程序的令牌，除非用户已通过 Azure AD 获取了访问权限。 可以直接或者通过用户所属的组授予访问权限。
+用户可使用 SSO 基于 Azure AD 中的工作或学校帐户访问 [SaaS 应用程序](../../active-directory/manage-apps/what-is-single-sign-on.md)。 这不仅适用于 Microsoft SaaS 应用，还适用于其他应用，例如 [Google Apps](../../active-directory/saas-apps/google-apps-tutorial.md) 和 [Salesforce](../../active-directory/saas-apps/salesforce-tutorial.md)。 应用程序可配置为使用 Azure AD 作为[基于 SAML 的标识](../../active-directory/fundamentals/active-directory-whatis.md)提供者。 作为安全控制机制，Azure AD 不会发出允许用户登录应用程序的令牌，除非用户已通过 Azure AD 获取了访问权限。 可以直接或者通过用户所属的组授予访问权限。
 
 如果组织没有通过创建通用标识来为用户和应用程序实现 SSO，那么用户拥有多个密码的情况就更容易出现。 这种情况增加了用户重复使用同一密码或使用弱密码的可能性。
 
@@ -145,19 +145,19 @@ ms.locfileid: "91400326"
 如果有多个租户或者你想要允许用户[重置自己的密码](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)，则必须使用适当的安全策略来防止滥用。
 
 **最佳做法**：为用户设置自助式密码重置 (SSPR)。  
-**详细信息**：使用 Azure AD [自助式密码重置](/azure/active-directory-b2c/active-directory-b2c-reference-sspr)功能。
+**详细信息**：使用 Azure AD [自助式密码重置](../../active-directory-b2c/user-flow-self-service-password-reset.md)功能。
 
 **最佳做法**：监视是否在使用 SSPR 及其使用情况。  
-**详细信息**：通过使用 Azure AD [密码重置注册活动报表](/azure/active-directory/active-directory-passwords-get-insights)监视正在注册的用户。 Azure AD 提供的报表功能可帮助使用预生成的报表来回答问题。 如果有相应的授权，还可以创建自定义查询。
+**详细信息**：通过使用 Azure AD [密码重置注册活动报表](../../active-directory/authentication/howto-sspr-reporting.md)监视正在注册的用户。 Azure AD 提供的报表功能可帮助使用预生成的报表来回答问题。 如果有相应的授权，还可以创建自定义查询。
 
 **最佳做法**：将基于云的密码策略扩展到本地基础结构。
-**详细信息**：通过对本地密码更改执行与对基于云的密码更改执行的相同检查，增强组织中的密码策略。 为本地 Windows Server Active Directory 代理安装 [Azure AD 密码保护](/azure/active-directory/authentication/concept-password-ban-bad)，以将禁止的密码列表扩展到现有基础结构。 更改、设置或重置本地密码的用户或管理员必须与仅限云的用户遵循相同的密码策略。
+**详细信息**：通过对本地密码更改执行与对基于云的密码更改执行的相同检查，增强组织中的密码策略。 为本地 Windows Server Active Directory 代理安装 [Azure AD 密码保护](../../active-directory/authentication/concept-password-ban-bad.md)，以将禁止的密码列表扩展到现有基础结构。 更改、设置或重置本地密码的用户或管理员必须与仅限云的用户遵循相同的密码策略。
 
 ## <a name="enforce-multi-factor-verification-for-users"></a>对用户强制执行多重身份验证
 
 建议对所有用户要求进行双重验证。 这包括组织中的管理员和其他人员，如果他们的帐户泄露，可能会产生重大影响（例如，财务官员）。
 
-要求双重验证有多种选项。 最佳选项取决于你的目标、正在运行的 Azure AD 版本以及许可计划。 请参阅[如何要求对用户进行双重验证](/azure/active-directory/authentication/howto-mfa-userstates)了解最佳选项。 有关许可和定价的详细信息，请参阅 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure 多重身份验证](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)定价页。
+要求双重验证有多种选项。 最佳选项取决于你的目标、正在运行的 Azure AD 版本以及许可计划。 请参阅[如何要求对用户进行双重验证](../../active-directory/authentication/howto-mfa-userstates.md)了解最佳选项。 有关许可证和定价的详细信息，请参阅 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD 多重身份验证](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) 定价页。
 
 以下是启用双重验证的选项和优势：
 
@@ -167,17 +167,17 @@ ms.locfileid: "91400326"
 * 要求通过 Microsoft Authenticator 对所有用户进行 MFA 质询
 * 限制旧身份验证协议。
 
-此方法可用于所有许可层，但不能与现有的条件访问策略混合使用。 你可以在[Azure AD 安全默认值](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中查找详细信息
+此方法可用于所有许可层，但不能与现有的条件访问策略混合使用。 你可以在 [Azure AD 安全默认值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)中找到更多信息
 
 **选项 2**：[通过更改用户状态启用多重身份验证](../../active-directory/authentication/howto-mfa-userstates.md)。   
-**优势**：这是要求进行双重验证的传统方法。 它适用于[云中的 Azure 多重身份验证和 Azure 多重身份验证服务器](/azure/active-directory/authentication/concept-mfa-whichversion)。 使用此方法要求用户在每次登录时都执行双重验证，并且会替代条件访问策略。
+**优势**：这是要求进行双重验证的传统方法。 它适用于 [云中的 Azure AD 多重身份验证和 Azure 多重身份验证服务器](../../active-directory/authentication/concept-mfa-howitworks.md)。 使用此方法要求用户在每次登录时都执行双重验证，并且会替代条件访问策略。
 
-若要确定需要在哪里启用多重身份验证，请参阅 [Azure MFA 的哪个版本适合我的组织？](/azure/active-directory/authentication/concept-mfa-whichversion)。
+若要确定需要启用多因素身份验证的位置，请参阅 [哪个版本的 AZURE AD MFA 适用于组织？](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
-**选项 3**：[使用条件访问策略启用多重身份验证](/azure/active-directory/authentication/howto-mfa-getstarted)。
-**优势**：借助此选项，可以使用[条件访问](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)在特定条件下提示进行双重验证。 特定条件可以是用户从不同位置、不受信任的设备或你认为存在风险的应用程序登录。 定义要求双重验证的特定条件可以避免不断提示用户这种令人不快的用户体验。
+**选项 3**：[使用条件访问策略启用多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md)。
+**优势**：借助此选项，可以使用 [条件访问](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)在特定条件下提示进行双重验证。 特定条件可以是用户从不同位置、不受信任的设备或你认为存在风险的应用程序登录。 定义要求双重验证的特定条件可以避免不断提示用户这种令人不快的用户体验。
 
-这是为用户启用双重验证最灵活的方式。 启用条件访问策略只适用于云中的 Azure 多重身份验证，这是 Azure AD 的一项高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](/azure/active-directory/authentication/howto-mfa-getstarted)。
+这是为用户启用双重验证最灵活的方式。 启用条件性访问策略仅适用于云中 Azure AD 多重身份验证，并且是 Azure AD 的高级功能。 可以在 [部署基于云的 Azure AD 多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md)中找到有关此方法的详细信息。
 
 选项 4：通过评估[基于风险的条件访问策略](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)，使用条件访问策略启用多重身份验证。   
 **优势**：此选项使你能够：
@@ -186,7 +186,7 @@ ms.locfileid: "91400326"
 * 配置自动响应与组织标识相关的可疑操作。
 * 调查可疑事件，并采取适当的措施进行解决。
 
-此方法使用“Azure AD 标识保护”风险评估来确定是否需要基于所有云应用程序的用户和登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory 标识保护](/azure/active-directory/identity-protection/overview)。
+此方法使用“Azure AD 标识保护”风险评估来确定是否需要基于所有云应用程序的用户和登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory 标识保护](../../active-directory/identity-protection/overview-identity-protection.md)。
 
 > [!Note]
 > 选项2，通过更改用户状态启用多重身份验证会替代条件访问策略。 由于选项3和4使用条件性访问策略，因此不能将选项2与它们一起使用。
@@ -195,33 +195,33 @@ ms.locfileid: "91400326"
 
 ## <a name="use-role-based-access-control"></a>使用基于角色的访问控制
 
-对于任何使用云的组织而言，云资源的访问管理至关重要。 Azure [RBAC) 的基于角色的访问控制 (](/azure/role-based-access-control/overview)可帮助你管理有权访问 Azure 资源的人员、他们可以对这些资源执行哪些操作以及他们有权访问哪些区域。
+对于任何使用云的组织而言，云资源的访问管理至关重要。 Azure [RBAC) 的基于角色的访问控制 (](../../role-based-access-control/overview.md)可帮助你管理有权访问 Azure 资源的人员、他们可以对这些资源执行哪些操作以及他们有权访问哪些区域。
 
 在 Azure 中指定负责特定职能的组或各个角色有助于避免混乱，这些混乱可能会导致造成安全风险的人为错误和自动化错误。 对于想要实施数据访问安全策略的组织而言，必须根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。
 
 你的安全团队需要能够查看 Azure 资源，以便评估和修正风险。 如果安全团队具有运营职责，则需要额外的权限来完成他们的作业。
 
-可以使用 [RBAC](/azure/role-based-access-control/overview) 在一定范围内向用户、组和应用分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
+可以使用 [AZURE RBAC](../../role-based-access-control/overview.md) 向特定范围内的用户、组和应用程序分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
 
 **最佳做法**：在团队中分离职责，只向用户授予执行作业所需的访问权限。 只允许在特定范围内执行特定操作，而不要在 Azure 订阅或资源中向每个人都授予无限制权限。
-**详细信息**：使用 azure 中的 [azure 内置角色](/azure/role-based-access-control/built-in-roles) 向用户分配权限。
+**详细信息**：使用 Azure 中的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)向用户分配权限。
 
 > [!Note]
 > 特定的权限会造成不必要的复杂性和混乱，进而积累为很难在不担心造成破坏的情况下进行修复的“旧”配置。 避免特定于资源的权限。 而是将管理组用于企业范围内的权限，并将资源组用于订阅中的权限。 避免用户特定的权限。 而是向 Azure AD 中的组分配权限。
 
 **最佳做法**：向具有 Azure 职责的安全团队授予对 Azure 资源的访问权限，以便他们可以评估和修正风险。
-**详细信息**：向安全团队授予 RBAC [安全读取者](/azure/role-based-access-control/built-in-roles#security-reader)角色。 可以使用根管理组或段管理组，具体视职责范围而定：
+**详细信息**：授予安全团队 Azure RBAC [安全读者](../../role-based-access-control/built-in-roles.md#security-reader) 角色。 可以使用根管理组或段管理组，具体视职责范围而定：
 
 * 根管理组：用于负责所有企业资源的团队
 * 段管理组：用于范围有限的团队（通常是由于法规或其他组织边界所致）
 
 **最佳做法**：向具有直接运营职责的安全团队授予适当的权限。
-**详细信息**：审阅 RBAC 内置角色，以进行适当的角色分配。 如果内置角色不满足组织的特定需求，则可以创建 [Azure 自定义角色](/azure/role-based-access-control/custom-roles)。 与内置角色一样，可以在订阅、资源组和资源范围内向用户、组和服务主体分配自定义角色。
+**详细信息**：查看适用于角色分配的 Azure 内置角色。 如果内置角色不能满足组织的具体需求，则可以创建 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。 与内置角色一样，可以在订阅、资源组和资源范围内向用户、组和服务主体分配自定义角色。
 
 **最佳做法**：向需要的安全角色授予 Azure 安全中心访问权限。 使用安全中心，安全团队可以快速发现和修正风险。
-**详细信息**：将具有这些需求的安全团队添加到 RBAC [安全管理员](/azure/role-based-access-control/built-in-roles#security-admin)角色，这样他们就可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议，并能消除警报和建议。 为此，可以使用根管理组或段管理组，具体视职责范围而定。
+**详细信息**：将这些安全团队添加到 Azure RBAC [安全管理员](../../role-based-access-control/built-in-roles.md#security-admin) 角色，以便他们可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议，以及消除警报和建议。 你可以使用根管理组或段管理组来执行此操作，具体取决于职责范围。
 
-如果组织没有使用 RBAC 等功能强制执行数据访问控制，可能会向用户分配不必要的权限。 允许用户访问他们不应该有权访问的数据类型（例如，对业务有重大影响的数据）可能会导致数据泄露。
+不通过使用 Azure RBAC 等功能实施数据访问控制的组织可能会向其用户提供比所需权限更多的特权。 允许用户访问他们不应该有权访问的数据类型（例如，对业务有重大影响的数据）可能会导致数据泄露。
 
 ## <a name="lower-exposure-of-privileged-accounts"></a>降低特权帐户的泄露风险
 
@@ -229,12 +229,12 @@ ms.locfileid: "91400326"
 
 特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
 
-建议制定并遵循一个路线图，防止特权访问受到网络攻击者的攻击。 若要详细了解如何在 Azure AD、Microsoft Azure、Microsoft 365 和其他云服务中管理或报告的安全身份和访问，请参阅 [Azure AD 中的保护混合和云部署的特权访问](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)。
+建议制定并遵循一个路线图，防止特权访问受到网络攻击者的攻击。 若要详细了解如何在 Azure AD、Microsoft Azure、Microsoft 365 和其他云服务中管理或报告的安全身份和访问，请参阅 [Azure AD 中的保护混合和云部署的特权访问](../../active-directory/roles/security-planning.md)。
 
-以下内容总结了[确保 Azure AD 中混合部署和云部署的特权访问安全性](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)中介绍的最佳做法：
+以下内容总结了[确保 Azure AD 中混合部署和云部署的特权访问安全性](../../active-directory/roles/security-planning.md)中介绍的最佳做法：
 
 **最佳做法**：管理、控制和监视对特权帐户的访问。   
-**详细信息**：启用 [Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access)。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中的高特权角色添加更多用户时，这些通知相当于早期警告。
+**详细信息**：启用 [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md)。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中的高特权角色添加更多用户时，这些通知相当于早期警告。
 
 **最佳做法**：确保所有关键管理员帐户都是托管的 Azure AD 帐户。
 **详细信息**：从关键管理员角色中删除所有使用者帐户（例如，hotmail.com、live.com 和 outlook.com 等 Microsoft 帐户）。
@@ -261,15 +261,15 @@ ms.locfileid: "91400326"
 **最佳做法**：定义至少两个紧急访问帐户。   
 **详细信息**：可以使用紧急访问帐户来帮助组织限制现有 Azure Active Directory 环境中的特权访问。 这些帐户拥有极高的特权，不要将其分配给特定的个人。 紧急访问帐户只能用于不能使用正常管理帐户的情况。 组织必须将紧急账户的使用限制在必要时间范围内。
 
-评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 `*.onmicrosoft.com` 域（用于紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](/azure/active-directory/users-groups-roles/directory-emergency-access)。
+评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 `*.onmicrosoft.com` 域（用于紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](../../active-directory/roles/security-emergency-access.md)。
 
 **最佳做法**：准备“破窗”流程，以备紧急情况时使用。
-**详细信息**：按照[确保 Azure AD 中混合部署和云部署的特权访问安全性](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)中的步骤操作。
+**详细信息**：按照 [确保 Azure AD 中混合部署和云部署的特权访问安全性](../../active-directory/roles/security-planning.md)中的步骤操作。
 
 **最佳做法**：要求所有关键管理员帐户都是无密码的（首选），或要求进行多重身份验证。
-**详细信息**：使用 [Microsoft Authenticator 应用](/azure/active-directory/authentication/howto-authentication-phone-sign-in)登录任何 Azure AD 帐户，而不需要使用密码。 与 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) 一样，Microsoft Authenticator 使用基于密钥的身份验证来启用与设备绑定的用户凭据，并使用生物识别身份验证或 PIN。
+**详细信息**：使用 [Microsoft Authenticator 应用](../../active-directory/authentication/howto-authentication-passwordless-phone.md)登录任何 Azure AD 帐户，而不需要使用密码。 与 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) 一样，Microsoft Authenticator 使用基于密钥的身份验证来启用与设备绑定的用户凭据，并使用生物识别身份验证或 PIN。
 
-对于永久分配给一个或多个 Azure AD 管理员角色的所有个人用户，要求其在登录时进行多重身份验证：全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员。 [为管理员帐户启用多重身份验证](/azure/active-directory/authentication/howto-mfa-userstates)，并确保管理员帐户用户已注册。
+对于永久分配给一个或多个 Azure AD 管理员角色的单个用户，要求在登录时进行 Azure AD 多重身份验证：全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员。 [为管理员帐户启用多重身份验证](../../active-directory/authentication/howto-mfa-userstates.md)，并确保管理员帐户用户已注册。
 
 **最佳做法**：对于关键管理员帐户，需要有不允许执行生产任务（例如，浏览和电子邮件）的管理工作站。 这会保护你的管理员帐户免受使用浏览和电子邮件的攻击途径的侵害，并大大降低发生重大事件的风险。
 **详细信息**：使用管理工作站。 选择工作站安全级别：
@@ -284,25 +284,25 @@ ms.locfileid: "91400326"
 **详细信息**：使用 Microsoft 365 攻击模拟器或第三方产品/服务在你的组织中运行现实的攻击方案。 这样有助于在真正攻击发生之前发现易受攻击的用户。
 
 **最佳做法**：采取措施来缓解最常用的攻击技术的冲击。  
-**详细信息**：[确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**详细信息**：[确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)  
+[对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能](../../active-directory/roles/security-planning.md)  
 
-[确保最近更改过管理帐户的密码](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[确保最近更改过管理帐户的密码](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[启用密码哈希同步](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
+[启用密码哈希同步](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
 
-[要求对所有特权角色用户和公开的用户进行多重身份验证](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[要求对所有特权角色用户和公开的用户进行多重身份验证](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
 
-[获取 Microsoft 365 安全分数 (如果使用 Microsoft 365) ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
+[获取 Microsoft 365 安全分数（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[查看 Microsoft 365 安全指导 (如果使用 Microsoft 365) ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[查看 Microsoft 365 安全指导 (如果使用 Microsoft 365) ](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
-[如果使用 Microsoft 365，则配置 Microsoft 365 活动监视 () ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
+[配置 Microsoft 365 活动监视（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 
-[确定事件/紧急情况响应计划所有者](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
+[确定事件/紧急情况响应计划所有者](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
 
-[保护本地特权管理帐户](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)
+[保护本地特权管理帐户](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
 
 如果不保护特权访问，你可能会拥有过多高特权角色用户，并且更易受到攻击。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，通过凭据窃取获得敏感数据和系统的访问权限。
 
@@ -310,10 +310,10 @@ ms.locfileid: "91400326"
 
 非常重要的一点是，既要允许云操作员执行任务，同时又要防止他们违反管理组织资源所需的惯例。 想要控制创建资源的位置的组织应该对这些位置进行硬编码。
 
-可以使用 [Azure 资源管理器](/azure/azure-resource-manager/resource-group-overview)创建安全策略，其中的定义描述了会明确遭到拒绝的操作或资源。 可以在所需范围（例如订阅、资源组或是单个资源）分配这些策略定义。
+可以使用 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)创建安全策略，其中的定义描述了会明确遭到拒绝的操作或资源。 可以在所需范围（例如订阅、资源组或是单个资源）分配这些策略定义。
 
 > [!NOTE]
-> 安全策略与 RBAC 不同。 它们实际上使用 RBAC 授权用户来创建这些资源。
+> 安全策略不同于 Azure RBAC。 他们实际使用 Azure RBAC 来授权用户创建这些资源。
 >
 >
 
@@ -325,21 +325,21 @@ ms.locfileid: "91400326"
 
 **最佳做法**：采用一种方法来确定：
 
-- [未受跟踪](/azure/active-directory/active-directory-reporting-sign-ins-from-unknown-sources)的登录尝试。
-- 针对特定帐户的[暴力](/azure/active-directory/active-directory-reporting-sign-ins-after-multiple-failures)攻击。
+- [未受跟踪](../../active-directory/reports-monitoring/howto-find-activity-reports.md)的登录尝试。
+- 针对特定帐户的[暴力](../../active-directory/reports-monitoring/howto-find-activity-reports.md)攻击。
 - 从多个位置的登录尝试。
-- 从[受感染的设备](/azure/active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices)登录。
+- 从[受感染的设备](../../active-directory/reports-monitoring/howto-find-activity-reports.md)登录。
 - 可疑 IP 地址。
 
-**详细信息**：使用 Azure AD Premium [异常报告](/azure/active-directory/active-directory-view-access-usage-reports)。 制定相应的流程和过程，使 IT 管理员每天或按需（通常在事件响应方案中）运行这些报告。
+**详细信息**：使用 Azure AD Premium [异常报告](../../active-directory/reports-monitoring/overview-reports.md)。 制定相应的流程和过程，使 IT 管理员每天或按需（通常在事件响应方案中）运行这些报告。
 
 **最佳做法**：安装一个主动监视系统，用于通知风险，并且可以根据业务需求调整风险等级（高、中或低）。   
-**详细信息**：使用 [Azure AD 标识保护](/azure/active-directory/active-directory-identityprotection)，它会在自己的仪表板上标记当前风险并通过电子邮件发送每日摘要通知。 要帮助保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。
+**详细信息**：使用 [Azure AD 标识保护](../../active-directory/identity-protection/overview-identity-protection.md)，它会在自己的仪表板上标记当前风险并通过电子邮件发送每日摘要通知。 要帮助保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。
 
 不主动监视其标识系统的组织将面临用户凭据泄露的风险。 如果不知道有人通过这些凭据实施可疑活动，组织就无法缓解这种类型的威胁。
 
 ## <a name="use-azure-ad-for-storage-authentication"></a>使用 Azure AD 进行存储身份验证
-[Azure 存储](/azure/storage/common/storage-auth-aad)支持使用 Azure AD 对 Blob 存储和队列存储进行身份验证和授权。 借助 Azure AD 身份验证，可以使用基于 Azure 角色的访问控制向用户、组和应用（一直到各个 Blob 容器或队列的范围）授予特定权限。
+[Azure 存储](../../storage/common/storage-auth-aad.md)支持使用 Azure AD 对 Blob 存储和队列存储进行身份验证和授权。 借助 Azure AD 身份验证，可以使用基于 Azure 角色的访问控制向用户、组和应用（一直到各个 Blob 容器或队列的范围）授予特定权限。
 
 建议使用 [Azure AD 验证对存储的访问](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)。
 

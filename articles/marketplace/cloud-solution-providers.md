@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708588"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131167"
 ---
 # <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
@@ -81,7 +81,7 @@ ms.locfileid: "91708588"
 如果此产品/服务尚未发布，则需要将其发布，以将其提供给所选的合作伙伴。
 
 >[!NOTE]
->如果在给定的区域为 CSP 计划中的某家合作伙伴授权，则该合作伙伴可以向属于该特定区域的任何客户销售该产品/服务。 若要详细了解如何在区域下对 CSP 产品/服务进行分类，请参阅 [云解决方案提供商计划地区市场和货币](https://docs.microsoft.com/partner-center/regional-authorization-overview)。
+>如果在给定的区域为 CSP 计划中的某家合作伙伴授权，则该合作伙伴可以向属于该特定区域的任何客户销售该产品/服务。 若要详细了解如何在区域下对 CSP 产品/服务进行分类，请参阅 [云解决方案提供商计划地区市场和货币](/partner-center/regional-authorization-overview)。
 
 如果要更新已发布产品/服务的 CSP 列表，请添加其他合作伙伴，然后选择“同步 CSP 受众”。
 

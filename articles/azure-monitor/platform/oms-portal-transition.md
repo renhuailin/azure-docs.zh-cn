@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ba81e0bd74390d8b20803f8f9cf6e9f2ae9f0eab
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446796"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184512"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
@@ -31,8 +31,8 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 - [不再需要 Application Insights 连接器](#application-insights-connector-and-solution)，因为可通过跨工作区查询启用相同的功能。
 - [OMS 移动应用](#oms-mobile-app)即将弃用。 
 - [NSG 解决方案即将被取代](#azure-network-security-group-analytics)为通过流量分析解决方案提供的增强功能。
-- 从 System Center Operations Manager 到 Log Analytics 的新连接需要[更新的管理包](#system-center-operations-manager)。
-- 有关改用[更新管理](../../automation/update-management/update-mgmt-overview.md)的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/migrate-oms-update-deployments.md)。
+- 从 System Center Operations Manager 到 Log Analytics 的新连接需要 [更新的管理包](#system-center-operations-manager)。
+- 有关改用[更新管理](../../automation/update-management/overview.md)的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/migrate-oms-update-deployments.md)。
 
 
 ## <a name="what-should-i-do-now"></a>现在应该做些什么？
@@ -44,7 +44,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](../overview.md)，了解有关如何过渡到 Azure 门户的信息。 
 
 ## <a name="user-access-and-role-migration"></a>用户访问权限和角色迁移
-与 OMS 门户中的访问权限管理相比，Azure 门户的访问权限管理功能是更丰富且更强大。 有关 Log Analytics 中的访问管理的详细信息，请参阅[设计 Azure Monitor 日志工作区](design-logs-deployment.md)。
+与 OMS 门户中的访问权限管理相比，Azure 门户的访问权限管理功能是更丰富且更强大。 有关 Log Analytics 中的访问管理的详细信息，请参阅 [设计 Azure Monitor 日志工作区](design-logs-deployment.md) 。
 
 > [!NOTE]
 > 本文的先前版本指出，权限会自动从 OMS 门户转换到 Azure 门户。 我们已不再规划这种自动转换，你必须自行执行转换。
@@ -60,7 +60,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 |:---|:---|
 | ReadOnly | Log Analytics 读者 |
 | 参与者 | Log Analytics 参与者 |
-| 管理员 | 所有者 | 
+| 管理员 | “所有者” | 
  
 
 ## <a name="new-workspaces"></a>新工作区

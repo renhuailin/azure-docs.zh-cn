@@ -1,25 +1,22 @@
 ---
 title: 审核日志-Azure Database for MySQL-灵活服务器
 description: 介绍 Azure Database for MySQL 灵活的服务器中可用的审核日志。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 00d0808e83a888a39f9268328feb209167c9b644
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295983"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542212"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>在 Azure Database for MySQL 灵活的服务器中跟踪包含审核日志的数据库活动
 
 > [!IMPORTANT] 
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
-
-> [!NOTE]
-> 在部署过程中，与访问日志 Azure Monitor 诊断设置的集成正在部署，并且功能会很快可用。
 
 Azure Database for MySQL 灵活的服务器为用户提供了配置审核日志的功能。 审核日志可用于跟踪数据库级活动，包括连接、管理、DDL 和 DML 事件。 这些类型的日志通常用于符合性目的。
 
@@ -28,7 +25,7 @@ Azure Database for MySQL 灵活的服务器为用户提供了配置审核日志�
 >[!IMPORTANT]
 > 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
 
-默认情况下，审核日志处于禁用状态。 若要启用它们，请将 `audit_log_enabled` 服务器参数设置为 *ON*。 这可以使用 Azure 门户或 Azure CLI 进行配置。 <!-- add link to server parameter-->. 
+默认情况下，审核日志处于禁用状态。 若要启用它们，请将 `audit_log_enabled` 服务器参数设置为 *ON* 。 这可以使用 Azure 门户或 Azure CLI 进行配置。 <!-- add link to server parameter-->. 
 
 可以调整以控制审核日志记录行为的其他参数包括：
 
@@ -52,9 +49,6 @@ Azure Database for MySQL 灵活的服务器为用户提供了配置审核日志�
 | `TABLE_ACCESS` | - 仅适用于 MySQL 5.7 <br> - 表读取语句，例如 SELECT 或 INSERT INTO ...SELECT <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
 
 ## <a name="access-audit-logs"></a>访问审核日志
-
-> [!NOTE]
-> 在部署过程中，与访问日志 Azure Monitor 诊断设置的集成正在部署，并且功能会很快可用。
 
 审核日志与 Azure Monitor 诊断设置集成在一起。 在 MySQL 灵活的服务器上启用审核日志后，可以将其发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要了解有关诊断设置的详细信息，请参阅 [诊断日志文档](../../azure-monitor/platform/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户中启用诊断设置，请参阅 [审核日志门户](how-to-configure-audit-logs-portal.md#set-up-diagnostics)。
 

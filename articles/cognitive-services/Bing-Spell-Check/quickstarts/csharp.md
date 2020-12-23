@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 C# 检查拼写 - 必应拼写检查
 titleSuffix: Azure Cognitive Services
-description: 开始使用必应拼写检查 REST API 检查拼写和语法。
+description: 开始使用必应拼写检查 REST API 和 C# 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df77ea73338f37925c0b59a8838c31617ff22ad8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ace7a0ccaba533c9e72961536159d32af5ab8d98
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919397"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352722"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>快速入门：使用必应拼写检查 REST API 和 C# 检查拼写
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 C# 应用程序将向 API 发送请求并返回一系列建议的更正。 
 
@@ -31,7 +36,7 @@ ms.locfileid: "88919397"
      
    若要在 Visual Studio 中安装此包，请执行以下操作：
 
-     1. 在**解决方案资源管理器**中，右键单击解决方案文件。
+     1. 在 **解决方案资源管理器** 中，右键单击解决方案文件。
      1. 选择“管理解决方案的 NuGet 包”。
      1. 搜索 *Newtonsoft.Json* 并安装该包。
 
@@ -200,4 +205,4 @@ static void Main(string[] args)
 > [创建单页 Web 应用](../tutorials/spellcheck.md)
 
 - [什么是必应拼写检查 API？](../overview.md)
-- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [必应拼写检查 API v7 参考](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

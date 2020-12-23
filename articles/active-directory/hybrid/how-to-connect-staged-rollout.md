@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: fd1c7f5dec57127f92da52be908bd6faa2c90e85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278575"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500217"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
-使用分阶段推出，可以有选择性地测试用户组，其中包含云身份验证功能，如 Azure 多重身份验证 (MFA) 、条件性访问、对泄露凭据的身份保护、标识监管等，以及在削减域之前。  本文介绍如何进行这种切换。 但是，在开始分步推出之前，如果满足以下一个或多个条件，就应当考虑影响：
+使用分阶段推出，可以有选择性地测试具有云身份验证功能的用户组，如 Azure AD 多重身份验证 (MFA) 、条件性访问、对泄露凭据的身份保护、标识监管等，以及在剪切到域之前。  本文介绍如何进行这种切换。 但是，在开始分步推出之前，如果满足以下一个或多个条件，就应当考虑影响：
     
 -  当前正在使用本地多重身份验证服务器。 
 -  使用智能卡进行身份验证。 
@@ -38,14 +38,14 @@ ms.locfileid: "89278575"
 -   你拥有具有联合域的 Azure Active Directory (Azure AD) 租户。
 
 -   你已决定改用以下两个选项之一：
-    - **选项 A**  - *密码哈希同步 (同步) *  + *无缝单一登录 (SSO) *。  有关详细信息，请参阅 [什么是密码哈希同步](whatis-phs.md) 以及 [什么是无缝 SSO](how-to-connect-sso.md)
+    - **选项 A**  - *密码哈希同步 (同步)*  + *无缝单一登录 (SSO)*。  有关详细信息，请参阅 [什么是密码哈希同步](whatis-phs.md) 以及 [什么是无缝 SSO](how-to-connect-sso.md)
     - **选项 B**  - *传递身份验证*  + *无缝 SSO*。  有关详细信息，请参阅 [什么是直通身份验证](how-to-connect-pta.md)  
     
     尽管无缝 SSO 是可选的，但我们建议使用它，为运行着公司网络中加入域的计算机的用户提供无提示登录体验。
 
 -   你已配置了要迁移到云身份验证的用户所需的所有相应租户品牌和条件访问策略。
 
--   如果你计划使用 Azure 多重身份验证，我们建议你使用 " [自助密码重置" 的组合注册 (SSPR) 和多重身份验证](../authentication/concept-registration-mfa-sspr-combined.md) ，让你的用户注册其身份验证方法一次。
+-   如果你计划使用 Azure AD 多重身份验证，我们建议你将 [自助服务密码重置的组合注册 (SSPR) 和多重身份验证](../authentication/concept-registration-mfa-sspr-combined.md) ，让你的用户注册其身份验证方法一次。 注意-在过渡推出期间，使用 SSPR 重置密码或使用 MyProfile 页面更改密码 Azure AD Connect 需要同步新的密码哈希，重置后可能需要2分钟的时间。
 
 -   若要使用分阶段推出功能，你必须是租户的全局管理员。
 
@@ -66,6 +66,8 @@ ms.locfileid: "89278575"
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
 分阶段推出不支持以下场景：
+
+- 应用程序或云服务使用旧身份验证，如 POP3 和 SMTP。
 
 - 某些应用程序在身份验证过程中会将“domain_hint”查询参数发送到 Azure AD。 这些流将继续运行，允许进行分阶段推出的用户将继续使用联合身份验证。
 
@@ -95,7 +97,7 @@ ms.locfileid: "89278575"
 
 ## <a name="pre-work-for-password-hash-sync"></a>密码哈希同步的准备工作
 
-1. 从 ** Azure AD Connect [可选功能](how-to-connect-install-custom.md#optional-features)页启用密码哈希同步。 
+1. 从 Azure AD Connect 中的 "[可选功能](how-to-connect-install-custom.md#optional-features)" 页启用 *密码哈希同步*。 
 
    ![Azure Active Directory Connect 中“可选功能”页的屏幕截图](media/how-to-connect-staged-rollout/sr1.png)
 
@@ -109,11 +111,11 @@ ms.locfileid: "89278575"
 
 1. 识别运行 Windows Server 2012 R2 或更高版本的服务器，你希望在该服务器上运行直通身份验证代理。 
 
-   请勿选择 Azure AD Connect 服务器。 确保服务器已加入域，可以通过 Active Directory 对选定用户进行身份验证，并且可以在出站端口和 URL 上与 Azure AD 通信。 有关详细信息，请参阅[快速入门：Azure AD 无缝单一登录](how-to-connect-sso-quick-start.md)中的“步骤 1：检查先决条件”部分。
+   请勿选择 Azure AD Connect 服务器。  确保服务器已加入域，可以通过 Active Directory 对选定用户进行身份验证，并且可以在出站端口和 URL 上与 Azure AD 通信。 有关详细信息，请参阅[快速入门：Azure AD 无缝单一登录](how-to-connect-sso-quick-start.md)中的“步骤 1：检查先决条件”部分。
 
-1. [下载 Azure AD Connect 身份验证代理](https://aka.ms/getauthagent)，并将其安装在服务器上。 
+1. [下载 Azure AD Connect 身份验证代理](https://aka.ms/getauthagent)，并将其安装在服务器上。 
 
-1. 若要启用 [高可用性](how-to-connect-sso-quick-start.md)，请在其他服务器上安装额外的身份验证代理。
+1. 若要启用 [高可用性](how-to-connect-sso-quick-start.md)，请在其他服务器上安装其他身份验证代理。
 
 1. 请确保已正确配置[智能锁定设置](../authentication/howto-password-smart-lockout.md)。 这样做有助于确保用户的本地 Active Directory 帐户不会被恶意行为者锁定。
 
@@ -121,25 +123,25 @@ ms.locfileid: "89278575"
 
 ## <a name="pre-work-for-seamless-sso"></a>无缝 SSO 的准备工作
 
-使用 PowerShell 在 ** Active Directory 林中启用无缝 SSO。 如果有多个 Active Directory 林，请分别为每个林启用它。仅对选中要进行分阶段推出的用户触发无缝 ** SSO。 这不会影响现有联合设置。
+使用 PowerShell 在 Active Directory 林中启用 *无缝 SSO* 。 如果有多个 Active Directory 林，请为每个林单独启用它。 仅为选择进行分阶段推出的用户触发 *无缝 SSO* 。 这不会影响现有联合设置。
 
 通过执行以下操作，启用无缝 SSO：
 
 1. 登录到 Azure AD Connect 服务器。
 
-2. 转到 ** %programfiles%\\Microsoft Azure Active Directory Connect 文件夹。
+2. 请中转到 *% programfiles% \\ Microsoft Azure Active Directory Connect* 文件夹。
 
-3. 使用以下命令导入无缝 SSO PowerShell 模块： 
+3. 使用以下命令导入无缝 SSO PowerShell 模块： 
 
    `Import-Module .\AzureADSSO.psd1`
 
-4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令将打开一个窗格，你可以在其中输入租户的全局管理员凭据。
+4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令将打开一个窗格，你可以在其中输入租户的全局管理员凭据。
 
-5. 调用 `Get-AzureADSSOStatus | ConvertFrom-Json`。 此命令将显示一个已在其上启用此功能的 Active Directory 林列表（请查看“域”列表）。 默认情况下，它在租户级别设置为 false。
+5. 调用 `Get-AzureADSSOStatus | ConvertFrom-Json`。 此命令将显示一个已在其上启用此功能的 Active Directory 林列表（请查看“域”列表）。 默认情况下，它在租户级别设置为 false。
 
    ![Windows PowerShell 输出示例](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
+6. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 
 7. 调用 `Enable-AzureADSSOForest -OnPremCredentials $creds`。 此命令从本地域控制器为无缝 SSO 所需的 Active Directory 林创建 AZUREADSSOACC 计算机帐户。
 
@@ -178,6 +180,7 @@ ms.locfileid: "89278575"
    >[!NOTE]
    >将自动为组中成员启用分阶段推出。 分阶段推出不支持嵌套和动态组。
    >添加新组时， (组中的用户将更新为新组的最多200个用户) 将更新为使用托管身份验证 immidiatly。 编辑组 (在) 添加或删除用户时，更改可能需要长达24小时才能生效。
+   >仅当用户在无缝 SSO 组中以及 PTA 或 PHS 组中时，才会应用无缝 SSO。
 
 ## <a name="auditing"></a>审核
 
@@ -239,7 +242,7 @@ A:是的，可以在生产租户中使用此功能，但建议首先在测试租
 
 **问：此功能能否用于维持永久“共存状态”，即某些用户使用联合身份验证、其他用户使用云身份验证的情况？**
 
-A:不能，此功能设计用于从联合身份验证分阶段迁移到云身份验证，最终会全部转换为云身份验证。 建议不要使用永久混合状态，因为这种方法可能导致意外的身份验证流。
+答：不能，此功能设计用于测试云身份验证。 成功测试几个用户组后，应将其剪切到云身份验证。 建议不要使用永久混合状态，因为这种方法可能导致意外的身份验证流。
 
 **问：可以使用 PowerShell 执行分阶段推出吗？**
 

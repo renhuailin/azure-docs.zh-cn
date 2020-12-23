@@ -4,7 +4,7 @@ description: 如何将下游或叶设备连接到 Azure IoT Edge 网关设备。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78db26318fc95adec1b31799ed143b3e4a6b3acc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281450"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437025"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -25,11 +25,11 @@ ms.locfileid: "91281450"
 
 成功设置透明网关连接需要完成三个常规步骤。 本文介绍其中的第三个步骤：
 
-1. 将网关设备配置为服务器，以便下游设备能够安全地连接到该设备。 设置网关以接收来自下游设备的消息，并将消息路由到适当的目标。 有关详细信息，请参阅[将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)。
-2. 为下游设备创建设备标识，以便它可以向 IoT 中心进行身份验证。 配置下游设备，使其通过网关设备发送消息。 有关详细信息，请参阅[在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)。
+1. 将网关设备配置为服务器，以便下游设备能够安全地连接到该设备。 设置网关以接收来自下游设备的消息，并将消息路由到适当的目标。 有关这些步骤，请参阅[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)。
+2. 为下游设备创建设备标识，以便它可以向 IoT 中心进行身份验证。 配置下游设备，使其通过网关设备发送消息。 有关这些步骤，请参阅[向 Azure IoT 中心验证下游设备](how-to-authenticate-downstream-device.md)。
 3. 将下游设备连接到网关设备，然后开始发送消息。
 
-本文列出了下游设备的常见连接问题，并引导你设置下游设备。具体内容包括：
+本文介绍了下游设备连接的基本概念，并引导你设置下游设备。具体内容包括：
 
 * 介绍传输层安全性 (TLS) 和证书基础知识。
 * 介绍 TLS 库在不同操作系统中的工作原理，以及每个操作系统如何处理证书。
@@ -67,7 +67,7 @@ ms.locfileid: "91281450"
 
 当某个设备连接到 Azure IoT 中心时，该设备为客户端，IoT 中心云服务为服务器。 IoT 中心云服务由公开且广泛使用的名为“Baltimore CyberTrust 根”的根 CA 证书提供支持。 由于大多数设备上已安装 IoT 中心 CA 证书，因此，许多 TLS 实现（OpenSSL、Schannel、LibreSSL）在服务器证书验证期间会自动使用该证书。 但是，成功连接到 IoT 中心的设备在尝试连接到 IoT Edge 网关时可能会出现问题。
 
-当某个设备连接到 IoT Edge 网关时，下游设备为客户端，网关设备为服务器。 Azure IoT Edge 允许操作员（或用户）在适当的情况下生成网关证书链。 操作员可以选择使用公共 CA 证书（例如 Baltimore），或使用自签名的（或内部）根 CA 证书。 公共 CA 证书往往会产生相关的费用，因此通常在生产方案中使用。 最好是使用自签名的 CA 证书进行开发和测试。 简介中所列的有关透明网关设置的文章使用自签名的根 CA 证书。
+当某个设备连接到 IoT Edge 网关时，下游设备为客户端，网关设备为服务器。 Azure IoT Edge 允许你在适当的情况下生成网关证书链。 你可以选择使用公共 CA 证书（例如 Baltimore），也可使用自签名（或内部）根 CA 证书。 公共 CA 证书往往会产生相关的费用，因此通常在生产方案中使用。 最好是使用自签名的 CA 证书进行开发和测试。 如果使用演示证书，则这些证书是自签名根 CA 证书。
 
 对 IoT Edge 网关使用自签名的根 CA 证书时，需要在尝试连接到该网关的所有下游设备上安装或提供该证书。
 
@@ -77,9 +77,11 @@ ms.locfileid: "91281450"
 
 ## <a name="provide-the-root-ca-certificate"></a>提供根 CA 证书
 
-若要验证网关设备的证书，下游设备需要提供自身的根 CA 证书副本。 如果你使用 IoT Edge Git 存储库中提供的脚本创建了测试证书，则根 CA 证书名为 **azure-iot-test-only.root.ca.cert.pem**。 如果你在执行其他下游设备准备步骤过程中尚未创建测试证书，请将此证书移到下游设备上的任意目录中。 可以使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。
+若要验证网关设备的证书，下游设备需要提供自身的根 CA 证书副本。 如果你使用 IoT Edge Git 存储库中提供的脚本创建了测试证书，则根 CA 证书名为 **azure-iot-test-only.root.ca.cert.pem**。 如果你在执行其他下游设备准备步骤过程中尚未创建测试证书，请将此证书移到下游设备上的任意目录中。 可以使用 [Azure Key Vault](../key-vault/index.yml) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。
 
 ## <a name="install-certificates-in-the-os"></a>在 OS 中安装证书
+
+根 CA 证书位于下游设备上后，需要确保连接到网关的应用程序可以访问该证书。
 
 一般情况下，在操作系统的证书存储中安装根 CA 证书可让大多数应用程序使用根 CA 证书。 但存在一些例外情况，例如，NodeJS 应用程序不使用 OS 证书存储，而是使用 Node 运行时的内部证书存储。 如果无法在操作系统级别安装证书，请转到[配合 Azure IoT SDK 使用证书](#use-certificates-with-azure-iot-sdks)。
 
@@ -98,7 +100,7 @@ sudo update-ca-certificates
 
 以下示例步骤演示如何在 Windows 主机上安装 CA 证书。 此示例假设使用先决条件文章中的 **azure-iot-test-only.root.ca.cert.pem** 证书，并且已将该证书复制到下游设备上的某个位置。
 
-可以使用 PowerShell 的 [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) 以管理员身份安装证书：
+可以使用 PowerShell 的 [Import-Certificate](/powershell/module/pkiclient/import-certificate) 以管理员身份安装证书：
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
@@ -113,7 +115,7 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 还可以按本文稍后的 .NET 示例中所示，使用 .NET API 以编程方式安装证书。
 
-通常，应用程序使用 Windows 提供的名为 [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel) 的 TLS 堆栈来通过 TLS 进行安全连接。 在尝试建立 TLS 连接之前，Schannel 要求所有证书已安装在 Windows 证书存储中。
+通常，应用程序使用 Windows 提供的名为 [Schannel](/windows/desktop/com/schannel) 的 TLS 堆栈来通过 TLS 进行安全连接。 在尝试建立 TLS 连接之前，Schannel 要求所有证书已安装在 Windows 证书存储中。
 
 ## <a name="use-certificates-with-azure-iot-sdks"></a>配合 Azure IoT SDK 使用证书
 
@@ -131,7 +133,7 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 本部分提供用于将 Azure IoT NodeJS 设备客户端连接到 IoT Edge 网关的示例应用程序。 对于 NodeJS 应用程序，必须按如下所示在应用程序级别安装根 CA 证书。 NodeJS 应用程序不使用系统的证书存储。
 
-1. 从[适用于 Node.js 的 Azure IoT 设备 SDK 示例存储库](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)获取 **edge_downstream_device.js** 的示例。
+1. 从 [适用于 Node.js 的 Azure IoT 设备 SDK 示例存储库](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)获取 **edge_downstream_device.js** 的示例。
 2. 查看 **readme.md** 文件，确保满足运行该示例的所有先决条件。
 3. 在 edge_downstream_device.js 文件中，更新 **connectionString** 和 **edge_ca_cert_path** 变量。
 4. 参阅 SDK 文档，获取有关如何在设备上运行该示例的说明。
@@ -161,10 +163,11 @@ var options = {
 
 本部分介绍用于将 Azure IoT C 设备客户端连接到 IoT Edge 网关的示例应用程序。 C SDK 可以配合许多 TLS 库（包括 OpenSSL、WolfSSL 和 Schannel）运行。 有关详细信息，请参阅 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
 
-1. 从[适用于 C 的 Azure IoT 设备 SDK 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)获取 **iotedge_downstream_device_sample** 应用程序。
+1. 从 [适用于 C 的 Azure IoT 设备 SDK 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)获取 **iotedge_downstream_device_sample** 应用程序。
 2. 查看 **readme.md** 文件，确保满足运行该示例的所有先决条件。
 3. 在 iotedge_downstream_device_sample.c 文件中，更新 **connectionString** 和 **edge_ca_cert_path** 变量。
 4. 参阅 SDK 文档，获取有关如何在设备上运行该示例的说明。
+
 
 适用于 C 的 Azure IoT 设备 SDK 提供一个用于在设置客户端时注册 CA 证书的选项。 此操作不会在任何位置安装证书，而是使用内存中证书的字符串格式。 建立连接时，将向底层 TLS 堆栈提供已保存的证书。
 
@@ -172,13 +175,16 @@ var options = {
 (void)IoTHubDeviceClient_SetOption(device_handle, OPTION_TRUSTED_CERT, cert_string);
 ```
 
+>[!NOTE]
+> 如果使用 [托管](https://github.com/Azure/azure-iot-sdk-c#packages-and-libraries) 包或库，则在设置客户端时注册 CA 证书的方法可能会更改。 例如， [基于 ARDUINO IDE 的库](https://github.com/azure/azure-iot-arduino) 需要将 CA 证书添加 [到全局证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) 文件中定义的证书数组，而不是使用 `IoTHubDeviceClient_LL_SetOption` 操作。  
+
 在 Windows 主机上，如果你不使用 OpenSSL 或其他 TLS 库，则 SDK 默认使用 Schannel。 要使 Schannel 正常工作，应在 Windows 证书存储中安装 IoT Edge 根 CA 证书，而不要使用 `IoTHubDeviceClient_SetOption` 操作进行设置。
 
 ### <a name="java"></a>Java
 
 本部分介绍用于将 Azure IoT Java 设备客户端连接到 IoT Edge 网关的示例应用程序。
 
-1. 从[适用于 Java 的 Azure IoT 设备 SDK 示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples)获取 **Send-event** 的示例。
+1. 从 [适用于 Java 的 Azure IoT 设备 SDK 示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples)获取 **Send-event** 的示例。
 2. 查看 **readme.md** 文件，确保满足运行该示例的所有先决条件。
 3. 参阅 SDK 文档，获取有关如何在设备上运行该示例的说明。
 
@@ -192,7 +198,7 @@ var options = {
 
 ## <a name="test-the-gateway-connection"></a>测试网关连接
 
-使用此示例命令测试下游设备是否可以连接到网关设备：
+在下游设备上使用此示例命令测试是否可以连接到网关设备：
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts

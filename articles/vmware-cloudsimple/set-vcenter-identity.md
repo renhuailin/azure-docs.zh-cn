@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 60090dec56a177fac6ddad946d97142b484355af
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212261"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425744"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>设置要使用的 vCenter 标识源 Active Directory
 
@@ -45,9 +45,9 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 > [!IMPORTANT]
 > **不支持 (Windows 集成身份验证) Active Directory。** 仅支持 Active Directory over LDAP 选项作为标识源。
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>作为单一登录标识源添加本地 Active Directory
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>作为单个 Sign-On 标识源添加本地 Active Directory
 
-若要将本地 Active Directory 设置为单一登录标识源，需要：
+若要将本地 Active Directory 设置为单个 Sign-On 标识源，需要：
 
 * 从本地数据中心到私有云的[站点到站点 VPN 连接](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
 * 将本地 DNS 服务器 IP 添加到 vCenter 和平台服务控制器 (PSC) 。
@@ -61,16 +61,16 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 | **域名** | 域的 FQDN，例如，example.com。 不要在此文本框中提供 IP 地址。 |
 | **域别名** | 域 NetBIOS 名称。 如果使用的是 SSPI 身份验证，请将 Active Directory 域的 NetBIOS 名称添加为标识源的别名。 |
 | **组的基本 DN** | 组的基本可分辨名称。 |
-| **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式  `ldap://hostname:port`   或  `ldaps://hostname:port` 。 端口通常为389，适用于 LDAP 连接，636用于 LDAPS 连接。 对于 Active Directory 多域控制器部署，端口通常为3268，适用于 LDAP，3269用于 LDAPS。<br><br> `ldaps://`   在主或辅助 LDAP URL 中使用时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
+| **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式 `ldap://hostname:port` 或 `ldaps://hostname:port` 。 端口通常为389，适用于 LDAP 连接，636用于 LDAPS 连接。 对于 Active Directory 多域控制器部署，端口通常为3268，适用于 LDAP，3269用于 LDAPS。<br><br>`ldaps://`在主或辅助 LDAP URL 中使用时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
 | **辅助服务器 URL** | 用于故障转移的辅助域控制器 LDAP 服务器的地址。 |
-| **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请  `ldaps://`   在 "URL" 文本框中键入后显示 "选择证书" 按钮。 不需要辅助 URL。 |
+| **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请 `ldaps://` 在 "URL" 文本框中键入后显示 "选择证书" 按钮。 不需要辅助 URL。 |
 | **用户名** | 域中用户的 ID，这些用户和组的基本 DN 至少具有只读访问权限。 |
 | **密码** | Username 指定的用户的密码。 |
 
-当你具有上表中的信息时，可以将本地 Active Directory 添加为 vCenter 上的单一登录标识源。
+当你具有上表中的信息时，可以将本地 Active Directory 作为 vCenter 上的单个 Sign-On 标识源添加。
 
 > [!TIP]
-> 你将在 [VMware 文档页](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)上找到有关单一登录标识源的详细信息。
+> 你将在 [VMware 文档页](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)上找到有关单个 Sign-On 标识源的详细信息。
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>在私有云上设置新 Active Directory
 
@@ -103,9 +103,9 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 
 ## <a name="set-up-active-directory-on-azure"></a>在 Azure 上设置 Active Directory
 
-在 Azure 上运行 Active Directory 类似于在本地运行 Active Directory。  若要将在 Azure 上运行的 Active Directory 设置为 vCenter 上的单一登录标识源，vCenter 服务器和 PSC 必须与运行 Active Directory 服务的 Azure 虚拟网络建立网络连接。  可以使用 [Azure 虚拟网络连接](azure-expressroute-connection.md) ，从运行 Active Directory 服务的 azure 虚拟网络连接到 CloudSimple 私有云，从而建立此连接。
+在 Azure 上运行 Active Directory 类似于在本地运行 Active Directory。  若要将在 Azure 上运行的 Active Directory 设置为 vCenter 上单个 Sign-On 标识源，vCenter 服务器和 PSC 必须与运行 Active Directory 服务的 Azure 虚拟网络建立网络连接。  可以使用 [Azure 虚拟网络连接](azure-expressroute-connection.md) ，从运行 Active Directory 服务的 azure 虚拟网络连接到 CloudSimple 私有云，从而建立此连接。
 
-建立网络连接后，请按照 [将本地 Active Directory 添加为单一登录标识源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) 中的步骤将其添加为标识源。  
+建立网络连接后，请按照 [将本地 Active Directory 添加为单个 Sign-On 标识源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) 中的步骤将其添加为标识源。  
 
 ## <a name="add-an-identity-source-on-vcenter"></a>在 vCenter 上添加标识源
 
@@ -127,7 +127,7 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 
 6. 选择 **Active Directory 作为 LDAP 服务器** ，然后单击 " **下一步**"。
 
-    ![Active Directory](media/OnPremAD04.png)
+    ![突出显示 Active Directory 作为 LDAP 服务器选项的屏幕截图。](media/OnPremAD04.png)
 
 7. 为你的环境指定标识源参数，然后单击 " **下一步**"。
 

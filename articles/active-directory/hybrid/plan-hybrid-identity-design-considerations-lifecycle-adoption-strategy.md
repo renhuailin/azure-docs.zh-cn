@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abec780deb7834e67618c74e556a1bc20154b0b4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bf68406d4b0806e1d533e0bb8669a01939387989
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658550"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997743"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -36,7 +36,7 @@ ms.locfileid: "89658550"
 
 复杂 IT 企业中的帐户包括数百个用于定义授权的参数，这些详细信息可通过预配系统进行控制。 可以使用权威源提供的数据标识新用户。 访问权限请求批准功能启动为其批准（或拒绝）资源预配的过程。
 
-| 生命周期管理阶段 | 本地 | 云 | 混合 |
+| 生命周期管理阶段 | 在本地 | 云 | 混合 |
 | --- | --- | --- | --- |
 | 帐户管理和预配 |使用 Active Directory® 域服务 (AD DS) 服务器角色，为用户和资源管理创建可伸缩、安全和可管理的基础结构，以及为支持目录的应用程序（如 Microsoft® Exchange Server）提供支持。 <br><br> [使用标识管理器在 AD DS 中预配组](/previous-versions/mim/ff686261(v=ws.10)) <br>[可以在 AD DS 中预配用户](/previous-versions/mim/ff686263(v=ws.10)) <br><br> 出于安全目的，管理员可以使用访问控制来管理对共享资源的用户访问。 在 Active Directory 中，通过设置不同的对象访问级别或权限等级，例如，完全控制、写入、读取或无访问权限，在对象级管理访问控制。 在 Active Directory 中，访问控制定义不同用户使用 Active Directory 对象的方式。 默认情况下，Active Directory 中对象的权限设置为最安全的设置。 |必须为想要访问 Microsoft 云服务的每个用户创建帐户。 还可以更改用户帐户或删除不再需要的用户帐户。 默认情况下，用户不具有管理员权限，但可以选择给他们分配权限。 <br><br> Azure Active Directory 的主要功能之一是管理对资源的访问。 这些资源可以是目录的一部分（例如用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。 <br><br> Azure Active Directory 访问管理解决方案的核心是安全组。 资源所有者（或目录管理员）可以分配组，以提供对其拥有的资源的特定访问权限。 组成员会获得访问权限，而资源所有者可将组成员列表管理权限委托给其他人，例如，部门经理或支持管理员<br> <br> “在 Azure AD 中管理组”一节提供了通过组管理访问权限的更多信息。 |通过同步和联合身份验证将 Active Directory 标识扩展到云中 |
 
@@ -77,7 +77,7 @@ Azure AD 中基于组的许可证管理允许管理员将用户分配到安全�
 Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序提供单一登录和增强的应用程序访问安全性。 有关详细信息，请参阅将 [应用程序与 Azure Active Directory 集成](../develop/quickstart-register-app.md)
 
 ## <a name="define-synchronization-management"></a>定义同步管理
-将本地目录与 Azure AD 集成可提供用于访问云和本地资源的通用标识，来提高用户的工作效率。 通过这种集成，用户和组织可以享受到以下好处：
+将本地目录与 Azure AD 集成可提供通用标识用于访问云和本地资源，从而提高用户的生产率。 通过这种集成，用户和组织可以享受到以下好处：
 
 * 组织可以利用 Windows Server Active Directory 并连接到 Azure Active Directory，向用户提供跨本地或云服务的通用混合标识。
 * 管理员可以根据应用程序资源、设备和用户标识、网络位置和多重身份验证提供条件性访问。
@@ -94,8 +94,8 @@ Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序�
 
 | 同步管理选项 | 优点 | 缺点 |
 | --- | --- | --- |
-| 基于同步（通过 DirSync 或 AADConnect） |从本地和云同步的用户和组 <br>  **** 策略控制：可通过 Active Directory 设置帐户策略，这使得管理员无需在云中执行附加任务的情况下，就能够管理密码策略、工作站、限制、锁定控制等。  <br>  **** 访问控制：可限制对云服务的访问，以便通过企业环境和/或联机服务器访问这些服务。 <br>  减少支持呼叫：用户需要记住的密码数量越少，就越不容易忘记它们。 <br>  安全性：由于单一登录使用的所有服务器和服务都在本地掌握和控制，因此用户标识和信息可受到保护。 <br>  支持强身份验证：对于云服务，可以使用强身份验证（也称为双重身份验证）。 但是，如果使用强身份验证，必须使用单一登录。 | |
-| 基于联合身份验证（通过 AD FS） |受安全令牌服务 (STS) 支持。 使用 Microsoft 云服务配置 STS 以提供单一登录访问权限时，会在本地 STS和在 Azure AD 租户中指定的联合域之间创建联合信任。 <br> 允许最终用户使用同一组凭据来获得对多个资源的访问权限 <br>最终用户不需要维护多组凭据。 但是，用户必须为每个参与资源以及受支持的 B2B 和 B2C 方案提供凭据。 |需要专门的人员来部署和维护专用本地 AD FS 服务器。 如果计划将 AD FS 用于 STS，强身份验证的使用将受到限制。 有关详细信息，请参阅[为 AD FS 2.0 配置高级选项](https://go.microsoft.com/fwlink/?linkid=235649)。 |
+| 基于同步（通过 DirSync 或 AADConnect） |从本地和云同步的用户和组 <br>  策略控制：可通过 Active Directory 设置帐户策略，这使得管理员无需在云中执行附加任务的情况下，就能够管理密码策略、工作站、限制、锁定控制等。  <br>  访问控制：可限制对云服务的访问，以便通过企业环境和/或联机服务器访问这些服务。 <br>  减少支持呼叫：用户需要记住的密码数量越少，就越不容易忘记它们。 <br>  安全性：由于单一登录使用的所有服务器和服务都在本地掌握和控制，因此用户标识和信息可受到保护。 <br>  支持强身份验证：对于云服务，可以使用强身份验证（也称为双重身份验证）。 但是，如果使用强身份验证，必须使用单一登录。 | |
+| 基于联合身份验证（通过 AD FS） |受安全令牌服务 (STS) 支持。 使用 Microsoft 云服务配置 STS 以提供单一登录访问权限时，会在本地 STS和在 Azure AD 租户中指定的联合域之间创建联合信任。 <br> 允许最终用户使用同一组凭据来获得对多个资源的访问权限 <br>最终用户不需要维护多组凭据。 但是，用户必须为每个参与资源以及受支持的 B2B 和 B2C 方案提供凭据。 |需要专门的人员来部署和维护专用本地 AD FS 服务器。 如果计划将 AD FS 用于 STS，强身份验证的使用将受到限制。 有关详细信息，请参阅[为 AD FS 2.0 配置高级选项](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh237448(v=ws.10))。 |
 
 > [!NOTE]
 > 有关详细信息，请参阅 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。

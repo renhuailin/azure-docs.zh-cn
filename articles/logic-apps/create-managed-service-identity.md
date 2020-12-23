@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 10/27/2020
+ms.openlocfilehash: bb146f03000f17d94d3d2ffc93b55c42eea20dac
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565921"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736410"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问进行身份验证
 
@@ -35,7 +35,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 * Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 托管标识和需要访问的目标 Azure 资源必须使用相同的 Azure 订阅。
 
-* 若要为托管标识提供对 Azure 资源的访问权限，需要为该标识向目标资源添加一个角色。 若要添加角色，你需要 [Azure AD 管理员权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)，可以将角色分配给相应的 Azure AD 租户中的标识。
+* 若要为托管标识提供对 Azure 资源的访问权限，需要为该标识向目标资源添加一个角色。 若要添加角色，你需要 [Azure AD 管理员权限](../active-directory/roles/permissions-reference.md)，可以将角色分配给相应的 Azure AD 租户中的标识。
 
 * 要访问的目标 Azure 资源。 在此资源上，你将为托管标识添加一个角色，该角色可帮助逻辑应用对目标资源的访问进行身份验证。
 
@@ -156,19 +156,19 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
    ![添加新的托管标识](./media/create-managed-service-identity/add-user-assigned-identity.png)
 
-1. 提供有关托管标识的信息，然后选择“创建”，例如：
+1. 提供有关托管标识的信息，然后选择 " **查看 + 创建** "，例如：
 
    ![创建用户分配的托管标识](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
    | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | 资源名称 | 是 | <*user-assigned-identity-name*> | 赋予用户分配的标识的名称。 此示例使用“Fabrikam-user-assigned-identity”。 |
    | **订阅** | 是 | <*Azure-subscription-name*> | 要使用的 Azure 订阅的名称 |
-   | **资源组** | 是 | <*Azure-resource-group-name*> | 要使用的资源组的名称。 创建新组或选择现有组。 此示例创建名为“fabrikam-managed-identities-RG”的新组。 |
-   | **位置** | 是 | <*Azure-region*> | 用于存储有关资源的信息的 Azure 区域。 此示例使用“美国西部”。 |
+   | **资源组** | 是 | <*Azure-resource-group-name*> | 要使用的资源组的名称。 创建新组或选择现有组。 此示例将创建一个名为的新组 `fabrikam-managed-identities-RG` 。 |
+   | **区域** | 是 | <*Azure-region*> | 用于存储有关资源的信息的 Azure 区域。 此示例使用“美国西部”。 |
+   | **名称** | 是 | <*user-assigned-identity-name*> | 赋予用户分配的标识的名称。 本示例使用 `Fabrikam-user-assigned-identity`。 |
    |||||
 
-   现在，你可以将用户分配的标识添加到逻辑应用。 不能将多个用户分配的标识添加到逻辑应用。
+   验证这些详细信息后，Azure 将创建托管标识。 现在，你可以将用户分配的标识添加到逻辑应用。 不能将多个用户分配的标识添加到逻辑应用。
 
 1. 在 Azure 门户中的“逻辑应用设计器”中查找并打开逻辑应用。
 
@@ -287,7 +287,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 * [Azure 门户](#azure-portal-assign-access)
 * [Azure Resource Manager 模板](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) - 有关详细信息，请参阅[使用 Azure RBAC 和 Azure PowerShell 添加角色分配](../role-based-access-control/role-assignments-powershell.md)。
-* Azure CLI ([az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) - 有关详细信息，请参阅[使用 Azure RBAC 和 Azure CLI 添加角色分配](../role-based-access-control/role-assignments-cli.md)。
+* Azure CLI ([az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true#az-role-assignment-create)) - 有关详细信息，请参阅[使用 Azure RBAC 和 Azure CLI 添加角色分配](../role-based-access-control/role-assignments-cli.md)。
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
@@ -301,11 +301,11 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
    ![选择“添加”>“添加角色分配”](./media/create-managed-service-identity/add-role-to-resource.png)
 
    > [!TIP]
-   > 如果“添加角色分配”选项处于禁用状态，那么你很可能没有权限。 有关可用于管理资源角色的权限的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+   > 如果“添加角色分配”选项处于禁用状态，那么你很可能没有权限。 有关可用于管理资源角色的权限的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/roles/permissions-reference.md)。
 
 1. 在“添加角色分配”下，选择一个“角色”，该角色授予标识对目标资源的所需访问权限。 
 
-   在本主题的示例中，标识需要一个[可访问 Azure 存储容器中的 Blob 的角色](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)。
+   在本主题的示例中，标识需要 [可以访问 Azure 存储容器中的 blob 的角色](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)，因此，请选择托管标识的 " **存储 blob 数据参与者** " 角色。
 
    ![选择“存储 Blob 数据参与者”角色](./media/create-managed-service-identity/select-role-for-identity.png)
 
@@ -358,7 +358,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
    例如，HTTP 触发器或操作可使用为逻辑应用启用的系统分配的标识。 通常，HTTP 触发器或操作使用这些属性来指定要访问的资源或实体：
 
-   | properties | 必须 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **方法** | 是 | 要运行的操作所使用的 HTTP 方法 |
    | **URI** | 是 | 用于访问目标 Azure 资源或实体的终结点 URL。 URI 语法通常包含 Azure 资源或服务的[资源 ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
@@ -378,8 +378,8 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
    |----------|----------|---------------|-------------|
    | **方法** | 是 | `PUT`| 快照 Blob 操作使用的 HTTP 方法 |
    | **URI** | 是 | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Azure 全球（公共）环境中使用此语法的 Azure Blob 存储文件的资源 ID |
-   | **标头** | 是，适用于 Azure 存储 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Azure 存储操作所需的 `x-ms-blob-type` 和 `x-ms-version` 标头值。 <p><p>**重要说明**：在 Azure 存储的传出 HTTP 触发器和操作请求中，标头需要 `x-ms-version` 属性以及要运行的操作的 API 版本。 <p>有关详细信息，请参阅以下主题： <p><p>- [请求标头 - 快照 Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure 存储服务的版本控制](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **查询** | 是，针对此操作 | `comp` = `snapshot` | 快照 Blob 操作的查询参数名称和值。 |
+   | **标头** | 对于 Azure 存储空间 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` `x-ms-date` Azure 存储操作需要、和标头值。 <p><p>**重要说明** ：在 Azure 存储的传出 HTTP 触发器和操作请求中，标头需要 `x-ms-version` 属性以及要运行的操作的 API 版本。 `x-ms-date`必须为当前日期。 否则，逻辑应用会失败并出现 `403 FORBIDDEN` 错误。 若要以所需格式获取当前日期，可以在示例值中使用表达式。 <p>有关详细信息，请参阅以下主题： <p><p>- [请求标头 - 快照 Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure 存储服务的版本控制](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **查询** | 仅适用于快照 Blob 操作 | `comp` = `snapshot` | 操作的查询参数名称和值。 |
    |||||
 
    下面是示例 HTTP 操作，用于显示所有这些属性值：
@@ -462,7 +462,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 1. 在“角色”列表中，选择要删除的托管标识。 在工具栏上，选择“删除”。
 
    > [!TIP]
-   > 如果“删除”选项处于禁用状态，那么你很可能没有权限。 有关可用于管理资源角色的权限的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+   > 如果“删除”选项处于禁用状态，那么你很可能没有权限。 有关可用于管理资源角色的权限的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/roles/permissions-reference.md)。
 
 托管标识现在已删除，不再具有对目标资源的访问权限。
 

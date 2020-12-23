@@ -1,7 +1,7 @@
 ---
 title: 管理公共 IP 地址 |Microsoft Docs
 titleSuffix: Azure Virtual Network
-description: 管理公共 IP 地址。  还了解公共 IP 地址是具有其自己的可配置设置的资源。
+description: 管理公共 IP 地址。  还将了解公共 IP 地址如何成为自带可配置设置的资源。
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 92e71a8c08ef2c64509d7e00b0c43abdd58cf036
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: a8847768cf4cf1ea85df8646a8848aac02cbd621
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804021"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629249"
 ---
 # <a name="manage-public-ip-addresses"></a>管理公共 IP 地址
 
@@ -38,7 +38,7 @@ ms.locfileid: "91804021"
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用门户，请打开 https://portal.azure.com ，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -61,41 +61,38 @@ ms.locfileid: "91804021"
    |设置|必需？|详细信息|
    |---|---|---|
    |IP 版本|是| 选择 IPv4 或 IPv6 或“两者”。 选择“两者”将导致创建 2 个公共 IP 地址，1 个 IPv4 地址和 1个 IPv6 地址。 详细了解 [Azure VNET 中的 IPv6](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
-   |SKU|是|引入 SKU 之前创建的所有公共 IP 地址均为基本 SKU 公共 IP 地址****。 创建公共 IP 地址后，无法更改此 SKU。 独立虚拟机、可用性集内的虚拟机或虚拟机规模集可使用基本 SKU 或标准 SKU。 不允许在可用性集或规模集或独立 VM 内的虚拟机之间混用 SKU。 基本 SKU：如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“无”**********。 基本公共 Ip 不支持可用性区域。 **标准** SKU：标准 SKU 公共 IP 可关联到虚拟机或负载均衡器前端。 如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“区域冗余”******。 有关可用性区域的详细信息，请参阅“可用性区域”设置****。 将地址关联到标准负载均衡器时需使用标准 SKU。 若要了解标准 负载均衡器的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用 [网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。|
+   |SKU|是|引入 SKU 之前创建的所有公共 IP 地址均为基本 SKU 公共 IP 地址  。 创建公共 IP 地址后，无法更改此 SKU。 独立虚拟机、可用性集内的虚拟机或虚拟机规模集可使用基本 SKU 或标准 SKU。 不允许在可用性集或规模集或独立 VM 内的虚拟机之间混用 SKU。 基本 SKU：如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“无”  。 基本公共 Ip 不支持可用性区域。 **标准** SKU：标准 SKU 公共 IP 可关联到虚拟机或负载均衡器前端。 如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“区域冗余”  。 有关可用性区域的详细信息，请参阅“可用性区域”设置  。 将地址关联到标准负载均衡器时需使用标准 SKU。 若要了解标准 负载均衡器的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用 [网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。|
    |名称|是|名称在所选资源组中必须唯一。|
-   |IP 地址分配|是|**动态：** 只有在将公共 IP 地址与 Azure 资源相关联并首次启动该资源时，才分配动态地址。 如果将动态地址分配给某个资源，例如虚拟机，并且虚拟机停止（解除分配）后又重启，则动态地址可能会更改。 如果虚拟机重启或停止（但未解除分配），该地址将保持不变。 当公共 IP 地址资源从它关联到的资源取消关联时，会释放动态地址。 **静态：** 静态地址是在创建公共 IP 地址时分配的。 删除公共 IP 地址资源之前，不会释放静态地址。 如果地址没有关联到资源，则在创建地址后可以更改分配方法。 如果地址已关联到资源，则无法更改分配方法。 如果选择 IPv6 作为“IP 版本”，则对于 Basic SKU，分配方法必须为“动态”********。  对于 IPv4 和 IPv6，标准 SKU 地址均为“静态”**。 |
-   |空闲超时(分钟)|否|在不依赖客户端发送保持连接消息的情况下，TCP 或 HTTP 连接持续打开的分钟数。 如果选择 IPv6 作为“IP 版本”，则不能更改此值。**** |
-   |DNS 名称标签|否|必须在创建名称的 Azure 位置中（在所有订阅和所有客户中）保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将“location.cloudapp.azure.com”**（其中 location 是所选的位置）此类默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。 如果选择同时创建这两个地址版本，则会将相同的 DNS 名称分配给 IPv4 和 IPv6 地址。 Azure 的默认 DNS 服务包含 IPv4 A 和 IPv6 AAAA 名称记录，并在查找 DNS 名称时响应这两个记录。 客户端选择要与哪个地址（IPv4 或 IPv6）通信。 除了使用带有默认后缀的 DNS 名称标签，还可以改用 Azure DNS 服务来配置带有自定义后缀（可解析为公共 IP 地址）的 DNS 名称。 有关详细信息，请参阅[将 Azure DNS 与 Azure 公共 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
-   |名称（仅选择“两者”的 IP 版本时才可见****）|是，如果选择“两者”的 IP 版本****|该名称必须不同于在此列表中的第一个“名称”**** 中输入的名称。 如果选择同时创建 IPv4 和 IPv6 地址，门户将创建两个单独的公共 IP 地址资源，每个资源中分配有一个 IP 地址版本。|
-   |IP 地址分配（仅选择“两者”的 IP 版本时才可见****）|是，如果选择“两者”的 IP 版本****|与上面的 IP 地址分配有相同的限制|
+   |IP 地址分配|是|**动态：** 只有在将公共 IP 地址与 Azure 资源相关联并首次启动该资源时，才分配动态地址。 如果将动态地址分配给某个资源，例如虚拟机，并且虚拟机停止（解除分配）后又重启，则动态地址可能会更改。 如果虚拟机重启或停止（但未解除分配），该地址将保持不变。 当公共 IP 地址资源从它关联到的资源取消关联时，会释放动态地址。 **静态：** 静态地址是在创建公共 IP 地址时分配的。 删除公共 IP 地址资源之前，不会释放静态地址。 如果地址没有关联到资源，则在创建地址后可以更改分配方法。 如果地址已关联到资源，则无法更改分配方法。 如果选择 IPv6 作为“IP 版本”，则对于 Basic SKU，分配方法必须为“动态”  。  对于 IPv4 和 IPv6，标准 SKU 地址均为“静态”  。 |
+   |空闲超时(分钟)|否|在不依赖客户端发送保持连接消息的情况下，TCP 或 HTTP 连接持续打开的分钟数。 如果选择 IPv6 作为“IP 版本”，则不能更改此值。  |
+   |DNS 名称标签|否|必须在创建名称的 Azure 位置中（在所有订阅和所有客户中）保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将“location.cloudapp.azure.com”  （其中 location 是所选的位置）此类默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。 如果选择同时创建这两个地址版本，则会将相同的 DNS 名称分配给 IPv4 和 IPv6 地址。 Azure 的默认 DNS 服务包含 IPv4 A 和 IPv6 AAAA 名称记录，并在查找 DNS 名称时响应这两个记录。 客户端选择要与哪个地址（IPv4 或 IPv6）通信。 除了使用带有默认后缀的 DNS 名称标签，还可以改用 Azure DNS 服务来配置带有自定义后缀（可解析为公共 IP 地址）的 DNS 名称。 有关详细信息，请参阅[将 Azure DNS 与 Azure 公共 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
+   |名称（仅选择“两者”的 IP 版本时才可见  ）|是，如果选择“两者”的 IP 版本 |该名称必须不同于在此列表中的第一个“名称”  中输入的名称。 如果选择同时创建 IPv4 和 IPv6 地址，门户将创建两个单独的公共 IP 地址资源，每个资源中分配有一个 IP 地址版本。|
+   |IP 地址分配（仅选择“两者”的 IP 版本时才可见  ）|是，如果选择“两者”的 IP 版本 |与上面的 IP 地址分配有相同的限制|
    |订阅|是|必须与要将公共 IP 地址关联到的资源位于同一[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)中。|
    |资源组|是|可与要将公共 IP 地址关联到的资源位于相同或不同的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中。|
    |位置|是|必须与要将公共 IP 地址关联到的资源位于同一[位置](https://azure.microsoft.com/regions)（也称为“区域”）。|
-   |可用性区域| 否 | 选择受支持的位置时才会显示此设置。 有关支持位置的列表，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果选择“标准”SKU，则自动选择“无”******。 如果倾向于保证特定区域，可以选择一个特定区域。 任一选择皆不是区域冗余。 如果选择“标准”SKU，则自动选中区域冗余，让数据路径在区域故障时具有恢复能力****。 如果倾向于保证特定区域（区域故障时不具有恢复能力），可以选择一个特定区域。
+   |可用性区域| 否 | 选择受支持的位置时才会显示此设置。 有关支持位置的列表，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果选择“标准”SKU，则自动选择“无”  。 如果倾向于保证特定区域，可以选择一个特定区域。 任一选择皆不是区域冗余。 如果选择“标准”SKU，则自动选中区域冗余，让数据路径在区域故障时具有恢复能力  。 如果倾向于保证特定区域（区域故障时不具有恢复能力），可以选择一个特定区域。
 
 ## <a name="view-modify-settings-for-or-delete-a-public-ip-address"></a>查看、修改或删除公共 IP 地址
 
-   - **查看/列出**：若要检查公共 IP 的设置，包括 SKU、地址、任何适用的关联 (例如虚拟机 NIC、负载均衡器前端) 。
-   - **修改**：使用 [创建公共 IP 地址](#create-a-public-ip-address)的步骤4中的信息修改设置，如 "空闲超时"、"DNS 名称" 标签或 "分配方法"。
+   - **查看/列出** ：若要检查公共 IP 的设置，包括 SKU、地址、任何适用的关联 (例如虚拟机 NIC、负载均衡器前端) 。
+   - **修改** ：使用 [创建公共 IP 地址](#create-a-public-ip-address)的步骤4中的信息修改设置，如 "空闲超时"、"DNS 名称" 标签或 "分配方法"。   (将公共 IP SKU 从 "基本" 升级到 "标准"，请参阅 [升级 Azure 公共 ip 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade)。 ) 
    >[!WARNING]
    >若要将公共 IP 地址的分配从静态更改为动态，必须先从任何适用的 IP 配置中取消关联该地址 (参阅 **删除** 部分) 。  另请注意，将分配方法从静态更改为动态时，会丢失分配给公共 IP 地址的 IP 地址。 尽管 Azure 公共 DNS 服务器会保留静态或动态地址与任何 DNS 名称标签（若已定义）之间的映射，但如果虚拟机在处于停止（解除分配）状态之后启动，动态 IP 地址可能更改。 为防止地址变化，请分配静态 IP 地址。
    
 |操作|Azure 门户|Azure PowerShell|Azure CLI|
 |---|---|---|---|
 |查看 | 在公共 IP 的 " **概述** " 部分中 |用于检索公共 IP 地址对象并查看其设置的[AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)| [az network 公共 ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 显示设置|
-|列表 | 在 " **公共 IP 地址** " 类别下 |用于检索一个或多个公共 IP 地址对象并查看其设置的[AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)|[az network 公共 ip list](/cli/azure/network/public-ip#az-network-public-ip-list) 列出公共 ip 地址|
+|列出 | 在 " **公共 IP 地址** " 类别下 |用于检索一个或多个公共 IP 地址对象并查看其设置的[AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)|[az network 公共 ip list](/cli/azure/network/public-ip#az-network-public-ip-list) 列出公共 ip 地址|
 |修改 | 对于取消关联的 IP，请选择 " **配置** " 以修改 "空闲超时"、"DNS 名称" 标签，或将基本 IP 的分配从静态更改为动态  |[AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 更新设置 |要更新的[az network 公共 ip 更新](/cli/azure/network/public-ip#az-network-public-ip-update) |
 
-   - **删除**：删除公共 Ip 要求公共 IP 对象不与任何 IP 配置或虚拟机 NIC 关联。 有关更多详细信息，请参阅下表。
+   - **删除** ：删除公共 Ip 要求公共 IP 对象不与任何 IP 配置或虚拟机 NIC 关联。 有关更多详细信息，请参阅下表。
 
 |资源|Azure 门户|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[虚拟机](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|选择 "取消关联" 将 IP **地址与 NIC** 配置取消关联，然后选择 " **删除**"。|[设置-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) ，将 IP 地址与 NIC 配置取消关联; [AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 删除|[az network 公有-ip 更新--删除](/cli/azure/network/public-ip#az-network-public-ip-update)以将 ip 地址与 NIC 配置取消关联;[az 网络公共 ip 删除删除](/cli/azure/network/public-ip#az-network-public-ip-delete) |
+|[虚拟机](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|选择 "取消关联" 将 IP **地址与 NIC** 配置取消关联，然后选择 " **删除** "。|[设置-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) ，将 IP 地址与 NIC 配置取消关联; [AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 删除|[az network 公有-ip 更新--删除](/cli/azure/network/public-ip#az-network-public-ip-update)以将 ip 地址与 NIC 配置取消关联;[az 网络公共 ip 删除删除](/cli/azure/network/public-ip#az-network-public-ip-delete) |
 |负载均衡器前端 | 导航到 "未使用的公共 IP 地址"，选择 " **关联** "，然后选择负载均衡器以及相关的 "前端 IP 配置"，将其替换 (然后，可以使用与 VM 相同的方法删除旧 IP)   | [将 AzLoadBalancerFrontendIpConfig 设置](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) 为将新的前端 IP 配置与公共负载均衡器相关联; [AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 删除;如果有多个 IP 配置，还可以使用 [AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) 来删除前端 IP 配置 |[az network lb 前端-ip 更新](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update) ，以将新的前端 ip 配置与公共负载均衡器相关联; [AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 删除;如果有多个 IP 配置，还可以使用 [az network lb 前端 ip delete](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) 删除前端 ip 配置|
 |防火墙|空值| [释放 ( # B1 ](https://docs.microsoft.com/azure/firewall/firewall-faq#how-can-i-stop-and-start-azure-firewall) 以释放防火墙并删除所有 IP 配置 | [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) 删除 ip (但必须使用 PowerShell 来释放第一个) |
-
->[!NOTE]
->某些资源在创建后无法更改或删除其公共 Ip。  其中包括： Azure NAT 网关、Azure VPN 网关 Azure 应用程序网关。
 
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 

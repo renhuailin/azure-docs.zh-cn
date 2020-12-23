@@ -3,12 +3,12 @@ title: 如何设计 Application Insights 部署 - 一个资源与多个资源？
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 49e9b8920af7333e0d95e23e6e5cf0828d448609
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258720"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536347"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
@@ -18,7 +18,7 @@ ms.locfileid: "88258720"
 
 ## <a name="about-resources-and-instrumentation-keys"></a>关于资源和检测密钥
 
-为 Web 应用设置 Application Insights 监视时，会在 Microsoft Azure 中创建 Application Insights *资源*。 为了查看和分析从应用收集的遥测数据，会在 Azure 门户中打开此资源。 每个资源都由一个*检测密钥* (iKey) 予以标识。 在安装 Application Insights 程序包来监视应用时，将为其配置检测密钥，以使其知道要将遥测数据发送到何处。
+为 Web 应用设置 Application Insights 监视时，会在 Microsoft Azure 中创建 Application Insights *资源*。 为了查看和分析从应用收集的遥测数据，会在 Azure 门户中打开此资源。 每个资源都由一个 *检测密钥* (iKey) 予以标识。 在安装 Application Insights 程序包来监视应用时，将为其配置检测密钥，以使其知道要将遥测数据发送到何处。
 
 每个 Application Insights 资源都附带了现成可用的指标。 如果将组件报表完全划分到相同的 Application Insights 资源，则这些指标可能对仪表板/警报没有意义。
 
@@ -26,7 +26,7 @@ ms.locfileid: "88258720"
 
 -   对于一起部署的应用程序组件。 通常由单个团队开发，由同一组 DevOps/ITOps 用户管理。
 -   如果有必要在默认情况下聚合所有关键绩效指标 (KPI)（如响应持续时间、仪表板中的故障率等）（可以选择按指标资源管理器体验中的角色名称划分）。
--   如果不需要在应用程序组件之间以不同的方式管理基于角色的访问控制 (RBAC)。
+-   如果不需要管理基于 Azure 角色的访问控制 (Azure RBAC) 在应用程序组件之间有所不同。
 -   如果不需要组件之间不同的指标警报条件。
 -   如果不需要在组件之间以不同的方式管理连续导出。
 -   如果不需要在组件之间以不同的方式管理帐单/配额。
@@ -41,7 +41,7 @@ ms.locfileid: "88258720"
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
 
-为了更轻松地更改 ikey，因为代码在生产阶段之间移动，而是在代码中动态引用密钥，而不是使用硬编码/静态值。
+为了在代码在不同生产阶段中移动时更轻松地更改 ikey，请在代码中动态引用密钥，而不是使用硬编码/静态值。
 
 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 
@@ -132,7 +132,7 @@ var appInsights = window.appInsights || function(config){ ...
 </PropertyGroup>
 ```
 
-当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/platform/metrics-charts.md)时按版本进行筛选。
+当它具有内部信息时，Application Insights Web 模块自动将 **应用程序版本** 作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/platform/metrics-charts.md)时按版本进行筛选。
 
 但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
 

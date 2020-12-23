@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601293"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370995"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 标识和访问管理操作参考指南
 
@@ -45,7 +45,7 @@ ms.locfileid: "90601293"
 
 #### <a name="assigning-owners-recommended-reading"></a>分配所有者建议阅读
 
-- [在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)
+- [在 Azure Active Directory 中分配管理员角色](../roles/permissions-reference.md)
 - [Azure 中的监管](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>本地标识同步
@@ -157,13 +157,13 @@ Azure Active Directory 通过 [基于组](./active-directory-licensing-whatis-az
 - 还可以定义一个属性来容纳用户的包。
 
 > [!IMPORTANT]
-> Azure AD 中基于组的许可引入了用户处于许可错误状态的概念。 如果注意到任何许可错误，应立即 [识别并解决](../users-groups-roles/licensing-groups-resolve-problems.md) 任何许可证分配问题。
+> Azure AD 中基于组的许可引入了用户处于许可错误状态的概念。 如果注意到任何许可错误，应立即 [识别并解决](../enterprise-users/licensing-groups-resolve-problems.md) 任何许可证分配问题。
 
 ![自动生成的计算机屏幕说明的屏幕截图](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>生命周期管理
 
-如果你当前使用的工具（如 [Microsoft Identity Manager](/microsoft-identity-manager/) 或第三方系统）依赖于本地基础结构，我们建议你从现有工具中卸载分配，实现基于组的许可，并基于 [组](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)定义组生命周期管理。 同样，如果你的现有流程不考虑离开组织的新员工或员工，你应该根据动态组部署基于组的许可，并定义组成员的生命周期。 最后，如果针对缺乏生命周期管理的本地组部署了基于组的许可，则考虑使用云组来启用功能，如委派所有权或基于属性的动态成员身份。
+如果你当前使用的工具（如 [Microsoft Identity Manager](/microsoft-identity-manager/) 或第三方系统）依赖于本地基础结构，我们建议你从现有工具中卸载分配，实现基于组的许可，并基于 [组](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)定义组生命周期管理。 同样，如果你的现有流程不考虑离开组织的新员工或员工，你应该根据动态组部署基于组的许可，并定义组成员的生命周期。 最后，如果针对缺乏生命周期管理的本地组部署了基于组的许可，则考虑使用云组来启用功能，如委派所有权或基于属性的动态成员身份。
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>为应用分配 "所有用户" 组
 
@@ -191,7 +191,7 @@ Azure Active Directory 通过 [基于组](./active-directory-licensing-whatis-az
 - [使用 IdFix 工具准备用于与 Microsoft 365 同步的目录属性](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect：同步过程中的错误疑难解答](../hybrid/tshoot-connect-sync-errors.md)
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 安全标识基础结构有五个方面。 此列表将帮助你快速查找和采取必要的措施来保护并管理组织中标识及其权利的生命周期。
 

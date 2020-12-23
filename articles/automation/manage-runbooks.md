@@ -3,14 +3,14 @@ title: 在 Azure 自动化中管理 Runbook
 description: 本文介绍如何在 Azure 自动化中管理 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/10/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987581"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183577"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
@@ -20,9 +20,8 @@ ms.locfileid: "90987581"
 
 使用 Azure 门户或 Windows PowerShell 在 Azure 自动化中创建新的 Runbook。 Runbook 创建后，就可使用下文中的信息编辑它：
 
-* [在 Azure 自动化中编辑文本 Runbook](automation-edit-textual-runbook.md) 
+* [在 Azure 自动化中编辑文本 Runbook](automation-edit-textual-runbook.md)
 * [了解自动化 Runbook 的关键 Windows PowerShell 工作流概念](automation-powershell-workflow.md)
-* [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
 * [在 Azure 自动化中管理 Python 2 包](python-packages.md)
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>在 Azure 门户中创建 Runbook
@@ -35,7 +34,7 @@ ms.locfileid: "90987581"
 
 ### <a name="create-a-runbook-with-powershell"></a>通过 PowerShell 创建 Runbook
 
-使用 [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 创建空的 Runbook。 使用 `Type` 参数指定为 `New-AzAutomationRunbook` 定义的其中一种 Runbook 类型。
+使用 [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook) cmdlet 创建空的 Runbook。 使用 `Type` 参数指定为 `New-AzAutomationRunbook` 定义的其中一种 Runbook 类型。
 
 以下示例演示了如何创建新的空 Runbook。
 
@@ -77,7 +76,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>使用 Windows PowerShell 导入 Runbook
 
-使用 [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 将脚本文件作为草稿 Runbook 导入。 如果该 Runbook 已存在，则导入将失败，除非你将 `Force` 参数与 cmdlet 一起使用。
+使用 [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook) cmdlet 将脚本文件作为草稿 Runbook 导入。 如果该 Runbook 已存在，则导入将失败，除非你将 `Force` 参数与 cmdlet 一起使用。
 
 以下示例演示了如何将脚本文件导入到 Runbook 中。
 
@@ -147,7 +146,7 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 ## <a name="track-progress"></a>跟踪进度
 
-最佳做法是，使用可轻松重用和重启的逻辑将 Runbook 创作为本质上模块化的内容。 跟踪在 Runbook 中的进度可确保 Runbook 逻辑在出现问题时正确执行。 
+最佳做法是，使用可轻松重用和重启的逻辑将 Runbook 创作为本质上模块化的内容。 跟踪在 Runbook 中的进度可确保 Runbook 逻辑在出现问题时正确执行。
 
 可使用外部源（例如存储帐户、数据库或共享文件）来跟踪 Runbook 的进度。 在 Runbook 中创建逻辑，从而先检查所执行的最后一个操作的状态。 然后，根据检查结果，可跳过逻辑，或者逻辑在 Runbook 中继续特定任务。
 
@@ -188,50 +187,48 @@ Runbook 必须可靠且能够处理[错误](automation-runbook-execution.md#erro
 如果你的 Runbook 通常在一定时间内运行，请让脚本实现逻辑来检查执行时间。 该项检查可确保仅在特定的时间内运行诸如启动、关闭或横向扩展之类的操作。
 
 > [!NOTE]
-> Azure 沙盒上的本地时间被设置为 UTC。 计算 Runbook 中的日期和时间时，必须考虑到这一事实。
+> Azure 沙盒上的本地时间被设置为 UTC。 Runbook 中的日期和时间计算需要考虑到这一点。
 
 ## <a name="work-with-multiple-subscriptions"></a>使用多个订阅
 
-Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 Runbook 还使用 `Get-AzContext` cmdlet 检索当前会话的上下文，并将其分配给变量 `$AzureContext` 。
+Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 Runbook 还使用 `Get-AzContext` cmdlet 检索当前会话的上下文，并将其分配给变量 `$AzureContext` 。
 
 ```powershell
-# Ensures that you do not inherit an AzContext in your runbook
-Disable-AzContextAutosave –Scope Process
+Disable-AzContextAutosave -Scope Process
 
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal `
+$AzureContext = Connect-AzAccount -ServicePrincipal `
 -Tenant $Conn.TenantID `
 -ApplicationId $Conn.ApplicationID `
--CertificateThumbprint $Conn.CertificateThumbprint
-
-$AzureContext = Get-AzContext
+-CertificateThumbprint $Conn.CertificateThumbprint `
+-Subscription $Conn.SubscriptionId
 
 $ChildRunbookName = 'ChildRunbookDemo'
 $AutomationAccountName = 'myAutomationAccount'
 $ResourceGroupName = 'myResourceGroup'
 
 Start-AzAutomationRunbook `
-    -ResourceGroupName $ResourceGroupName `
-    -AutomationAccountName $AutomationAccountName `
-    -Name $ChildRunbookName `
-    -DefaultProfile $AzureContext
+-ResourceGroupName $ResourceGroupName `
+-AutomationAccountName $AutomationAccountName `
+-Name $ChildRunbookName `
+-DefaultProfile $AzureContext
 ```
 
 ## <a name="work-with-a-custom-script"></a>使用自定义脚本
 
 > [!NOTE]
-> 通过无法在已安装 Log Analytics 代理的主机上运行自定义脚本和 Runbook。 
+> 通过无法在已安装 Log Analytics 代理的主机上运行自定义脚本和 Runbook。
 
 若要使用自定义脚本：
 
 1. 创建一个自动化帐户并获取[参与者角色](automation-role-based-access-control.md)。
 2. [将帐户关联到 Azure 工作区](../security-center/security-center-enable-data-collection.md).
-3. 启用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)、[更新管理](update-management/update-mgmt-overview.md)或其他自动化功能。 
+3. 启用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)、[更新管理](./update-management/overview.md)或其他自动化功能。 
 4. 如果是在 Linux 计算机上，则需要很高的权限。 登录来[关闭签名检查](automation-linux-hrw-install.md#turn-off-signature-validation)。
 
 ## <a name="test-a-runbook"></a>测试 Runbook
 
-测试 Runbook 时，将执行[草稿版](#publish-a-runbook)，并会完成其所执行的任何操作。 不会创建作业历史记录，但会在“测试输出”窗格中显示[输出](automation-runbook-output-and-messages.md#use-the-output-stream)与[警告和错误](automation-runbook-output-and-messages.md#monitor-message-streams)。 仅当 [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) 变量设置为 `Continue` 时，“输出”窗格中才会显示发送到[详细流](automation-runbook-output-and-messages.md#monitor-message-streams)的消息。
+测试 Runbook 时，将执行[草稿版](#publish-a-runbook)，并会完成其所执行的任何操作。 不会创建作业历史记录，但会在“测试输出”窗格中显示[输出](automation-runbook-output-and-messages.md#use-the-output-stream)与[警告和错误](automation-runbook-output-and-messages.md#working-with-message-streams)。 仅当 [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) 变量设置为 `Continue` 时，“输出”窗格中才会显示发送到[详细流](automation-runbook-output-and-messages.md#write-output-to-verbose-stream)的消息。
 
 即使草稿版正在运行，该 Runbook 也仍会正常执行，并针对环境中的资源执行任何操作。 因此，只能在非生产资源中测试 Runbook。
 
@@ -257,7 +254,7 @@ Start-AzAutomationRunbook `
 
 ### <a name="publish-a-runbook-using-powershell"></a>使用 PowerShell 运行 Runbook
 
-使用 [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) cmdlet 发布 Runbook。 
+使用 [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook) cmdlet 发布 Runbook。 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -277,7 +274,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 3. 选择“添加计划”。
 4. 在“计划 Runbook”窗格中，选择“将计划关联到 Runbook”。
 5. 在“计划”窗格中选择“创建新计划”。
-6. 在“新建计划”窗格中输入名称、说明和其他参数。 
+6. 在“新建计划”窗格中输入名称、说明和其他参数。
 7. 创建计划后，将其突出显示并单击“确定”。 它现应与你的 Runbook 关联。
 8. 查看邮箱中的电子邮件，里面有 Runbook 的状态。
 
@@ -285,7 +282,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 ### <a name="view-statuses-in-the-azure-portal"></a>在 Azure 门户中查看状态
 
-可通过[作业](automation-runbook-execution.md#jobs)查看在 Azure 自动化中处理的作业的详细信息。 准备好查看 Runbook 作业后，使用 Azure 门户并访问你的自动化帐户。 你可在右侧的“作业统计信息”中看到所有 Runbook 作业的摘要。 
+可通过[作业](automation-runbook-execution.md#jobs)查看在 Azure 自动化中处理的作业的详细信息。 准备好查看 Runbook 作业后，使用 Azure 门户并访问你的自动化帐户。 你可在右侧的“作业统计信息”中看到所有 Runbook 作业的摘要。
 
 ![作业统计信息磁贴](./media/manage-runbooks/automation-account-job-status-summary.png)
 
@@ -293,7 +290,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 单击磁贴可显示“作业”页面，其中有所执行的全部作业的汇总列表。 该页面会显示每项作业的状态、Runbook 名称、开始时间和完成时间。
 
-:::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text=""作业" 页的屏幕截图。":::
+:::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="“作业”页的屏幕截图。":::
 
 可选择“筛选作业”来筛选作业的列表。 根据特定 Runbook、作业状态或从下拉列表中选择的内容进行筛选，并提供搜索的时间范围。
 
@@ -301,11 +298,11 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 或者，可从自动化帐户中的 Runbook 页面上选择特定的 Runbook，然后选择“作业”来查看该 Runbook 的作业摘要详情。 该操作会显示“作业”页面。 你可在这里单击作业记录，查看它的详细信息和输出内容。
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="突出显示 "错误" 按钮的 "作业" 页的屏幕截图。":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="“作业”页的屏幕截图，其中突出显示了“错误”按钮。":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>使用 PowerShell 检索作业状态
 
-使用 [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) cmdlet 检索为 Runbook 创建的作业和特定作业的详细信息。 如果使用 `Start-AzAutomationRunbook` 启动 Runbook，它会返回生成的作业。 使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) 检索作业输出。
+使用 [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) cmdlet 检索为 Runbook 创建的作业和特定作业的详细信息。 如果使用 `Start-AzAutomationRunbook` 启动 Runbook，它会返回生成的作业。 使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) 检索作业输出。
 
 以下示例会获取示例 Runbook 的最后一项作业，并显示它的状态、为 Runbook 参数提供的值以及作业的输出内容。
 
@@ -340,6 +337,4 @@ foreach($item in $output)
 
 * 若要了解 Runbook 管理的详细信息，请参阅[在 Azure 自动化中执行 Runbook](automation-runbook-execution.md)。
 * 若要准备 PowerShell Runbook，请参阅[在 Azure 自动化中编辑文本 Runbook](automation-edit-textual-runbook.md)。
-* 有关编写 PowerShell 工作流 Runbook 的帮助，请参阅[了解 Azure 自动化的 PowerShell 工作流](automation-powershell-workflow.md)。
-* 若要详细了解如何编写图形 Runbook，请参阅[在 Azure 自动化中创作图形 Runbook](automation-graphical-authoring-intro.md)。
 * 要排查 Runbook 执行问题，请参阅[排查 Runbook 问题](troubleshoot/runbooks.md)。

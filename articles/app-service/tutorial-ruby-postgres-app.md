@@ -4,13 +4,13 @@ description: 了解如何在 Azure 应用服务中运行 Linux Ruby 应用，同
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.openlocfilehash: f565fcef60b2cb4726b180eb67e6ac1fcaefc24b
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979478"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347839"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
@@ -34,10 +34,11 @@ ms.locfileid: "90979478"
 
 为完成此教程：
 
-* [安装 Git](https://git-scm.com/)
-* [安装 Ruby 2.6](https://www.ruby-lang.org/en/documentation/installation/)
-* [安装 Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html)
-* [安装并运行 PostgreSQL](https://www.postgresql.org/download/)
+- [安装 Git](https://git-scm.com/)
+- [安装 Ruby 2.6](https://www.ruby-lang.org/en/documentation/installation/)
+- [安装 Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html)
+- [安装并运行 PostgreSQL](https://www.postgresql.org/download/)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>准备本地 Postgres
 
@@ -104,11 +105,9 @@ rails server
 
 若要停止 Rails 服务器，请在终端中键入 `Ctrl + C`。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="create-postgres-in-azure"></a>在 Azure 中创建 Postgres
 
-此步骤在 [Azure Database for PostgreSQL](/azure/postgresql/) 中创建一个 Postgres 数据库。 稍后需要将 Ruby on Rails 应用程序配置为连接到此数据库。
+此步骤在 [Azure Database for PostgreSQL](../postgresql/index.yml) 中创建一个 Postgres 数据库。 稍后需要将 Ruby on Rails 应用程序配置为连接到此数据库。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -117,7 +116,7 @@ rails server
 ## <a name="create-postgres-database-in-azure"></a>在 Azure 中创建 Postgres 数据库
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
 在本部分，你将创建 Azure Database for PostgreSQL 服务器和数据库。 若要开始，请使用以下命令安装 `db-up` 扩展：
 
@@ -316,7 +315,7 @@ remote: Running deployment command...
 
 浏览到 `http://<app-name>.azurewebsites.net` 并在列表中添加一些任务。
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="标题为“任务”的 Ruby on Rails 应用示例的屏幕截图。":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="标题为“任务”的 Azure 应用示例的屏幕截图，显示了添加到列表的任务。":::
 
 恭喜，你已在 Azure 应用服务中运行了一个数据驱动的 Ruby 应用。
 
@@ -439,7 +438,7 @@ git push azure master
 
 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击**应用程序服务**，然后单击 Azure 应用的名称。
+在左侧菜单中单击 **应用程序服务**，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
 

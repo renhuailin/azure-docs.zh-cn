@@ -8,6 +8,7 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -15,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316930"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360095"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的定价指南
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -67,7 +68,7 @@ ms.locfileid: "91316930"
 
 “按使用情况支付 SQL Server 许可证费用”（也称为“即付即用”）意味着 Azure VM 的每秒运行成本包括 SQL Server 许可证的费用 。 有关不同 SQL Server 版本（Web、Standard 和 Enterprise）的定价，可参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的 Azure 虚拟机定价页。
 
-所有版本的 SQL Server (2012 SP3 到 2019) 的成本相同。 每秒许可成本取决于 VM vCPU 的数量。
+所有版本的 SQL Server（2012 SP3 到 2019）的费用相同。 每秒许可成本取决于 VM vCPU 的数量。
 
 建议在以下情况采用“按使用情况支付 SQL Server 许可费用”：
 
@@ -96,7 +97,7 @@ ms.locfileid: "91316930"
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> 自带许可证 (BYOL)
 
-“通过许可移动性使用自己的 SQL Server 许可证”（也称为**BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
+“通过许可移动性使用自己的 SQL Server 许可证”（也称为 **BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
 
 > [!IMPORTANT]
 > BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。 CSP 客户可以通过部署即用即付映像，然后启用 [Azure 混合权益](licensing-model-azure-hybrid-benefit-ahb-change.md)来自带许可证。
@@ -136,7 +137,7 @@ ms.locfileid: "91316930"
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a>正确调整 VM 的大小
 
-SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存、存储和 I/O 带宽需求相符的 VM 大小。 有关计算机大小选项的完整列表，请参阅 [Windows VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)和 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存、存储和 I/O 带宽需求相符的 VM 大小。 有关计算机大小选项的完整列表，请参阅 [Windows VM 大小](../../../virtual-machines/sizes.md)和 [Linux VM 大小](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 有一些新的计算机大小能够很好地适应特定类型的 SQL Server 工作负荷。 这些计算机大小保留较高级别的内存、存储和 I/O 带宽，但虚拟化核心数较少。 例如，考虑以下情况：
 
@@ -167,7 +168,7 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/manage/getting-started.md)。 有关最新的 Azure 虚拟机定价，包括 SQL Server，请参阅适用于 [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux Vm](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的 azure 虚拟机定价页。
+有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/cost-management-billing-overview.md)。 有关最新的 Azure 虚拟机定价，包括 SQL Server，请参阅适用于 [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux Vm](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的 azure 虚拟机定价页。
 
 有关 Azure 虚拟机上的 SQL Server 的概述，请参阅以下文章：
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91850585"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652138"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火墙功能
 
@@ -62,7 +62,7 @@ Azure 防火墙包括以下功能：
 
 ## <a name="application-fqdn-filtering-rules"></a>应用程序 FQDN 筛选规则
 
-可以将出站 HTTP/S 流量或 Azure SQL 流量限制为指定的完全限定域名列表 (FQDN) 包括通配符）。 此功能不需要 TLS 终止。
+可将出站 HTTP/S 流量或 Azure SQL 流量限制到指定的一组完全限定的域名 (FQDN)（包括通配符）。 此功能不需要 TLS 终止。
 
 ## <a name="network-traffic-filtering-rules"></a>网络流量筛选规则
 
@@ -84,7 +84,7 @@ Azure 防火墙包括以下功能：
 
 所有出站虚拟网络流量 IP 地址将转换为 Azure 防火墙公共 IP（源网络地址转换）。 可以识别源自你的虚拟网络的流量，并允许将其发往远程 Internet 目标。 如果目标 IP 是符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 范围，Azure 防火墙不会执行 SNAT。 
 
-如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。 可以将 Azure 防火墙配置为**不** SNAT 公共 IP 地址范围。 有关详细信息，请参阅 [Azure 防火墙 SNAT 专用 IP 地址范围](snat-private-range.md)。
+如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。 可以将 Azure 防火墙配置为 **不** SNAT 公共 IP 地址范围。 有关详细信息，请参阅 [Azure 防火墙 SNAT 专用 IP 地址范围](snat-private-range.md)。
 
 ## <a name="inbound-dnat-support"></a>入站 DNAT 支持
 
@@ -101,11 +101,11 @@ Azure 防火墙包括以下功能：
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
-所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 有关 Azure Monitor 日志示例，请参阅 [Azure 防火墙 Azure Monitor 日志](log-analytics-samples.md)。
+所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 有关 Azure Monitor 日志示例，请参阅 [Azure 防火墙的 Azure Monitor 日志](log-analytics-samples.md)。
 
-有关详细信息，请参阅[教程：监视 Azure 防火墙日志和指标](tutorial-diagnostics.md)。 
+有关详细信息，请参阅[教程：监视 Azure 防火墙日志和指标](./firewall-diagnostics.md)。 
 
-Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的画布。 可以使用它在 Azure 门户中创建丰富的视觉对象报表。 有关详细信息，请参阅 [使用 Azure 防火墙工作簿监视日志](firewall-workbook.md)。
+Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的画布。 该画布可用于在 Azure 门户中创建丰富的视觉对象报表。 有关详细信息，请参阅[使用 Azure 防火墙工作簿监视日志](firewall-workbook.md)。
 
 ## <a name="forced-tunneling"></a>强制隧道
 

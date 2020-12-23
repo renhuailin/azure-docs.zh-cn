@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4a50a9d6d4a485f7d8e63adb9ae5032f49edc261
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310350"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896933"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure Maps 支持的内置地图样式
 
@@ -21,21 +21,21 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 ## <a name="road"></a>道路
 
-**道路**地图是一种标准地图，显示道路。 它还显示自然和人工功能，以及这些功能的标签。
+**道路** 地图是一种标准地图，显示道路。 它还显示自然和人工功能，以及这些功能的标签。
 
 ![道路地图样式](./media/supported-map-styles/road.png)
 
 **适用 API：**
 
-* [地图图像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [地图磁贴](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地图图像](/rest/api/maps/render/getmapimage)
+* [地图磁贴](/rest/api/maps/render/getmaptile)
 * Web SDK 地图控件
 * Android 地图控件
 * Power BI 视觉对象
 
 ## <a name="blank-and-blank_accessible"></a>空白和 blank_accessible
 
-**空白**和**blank_accessible**地图样式提供空白画布来可视化数据。 **Blank_accessible**样式将继续提供屏幕阅读器更新和地图的位置详细信息，即使未显示基本地图。
+**空白** 和 **blank_accessible** 地图样式提供空白画布来可视化数据。 **Blank_accessible** 样式将继续提供屏幕阅读器更新和地图的位置详细信息，即使未显示基本地图。
 
 > [!Note]
 > 在 Web SDK 中，可以通过设置地图 DIV 元素的 CSS 样式来更改地图的背景色 `background-color` 。
@@ -46,13 +46,13 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 ## <a name="satellite"></a>satellite
 
-**卫星**样式是卫星和航拍图像的组合。
+**卫星** 样式是卫星和航拍图像的组合。
 
 ![卫星磁贴地图样式](./media/supported-map-styles/satellite.png)
 
 **适用 API：**
 
-* [卫星图块](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* [卫星图块](/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK 地图控件
 * Android 地图控件
 * Power BI 视觉对象
@@ -71,14 +71,14 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 
-**灰度深色**是道路地图样式的深色版本。
+**灰度深色** 是道路地图样式的深色版本。
 
 ![gray_scale 地图样式](./media/supported-map-styles/grayscale-dark.png)
 
 **适用 API：**
 
-* [地图图像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [地图磁贴](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地图图像](/rest/api/maps/render/getmapimage)
+* [地图磁贴](/rest/api/maps/render/getmaptile)
 * Web SDK 地图控件
 * Android 地图控件
 * Power BI 视觉对象
@@ -96,7 +96,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 ## <a name="night"></a>夜间
 
-夜间**** 是包含彩色道路和符号的道路地图样式的深色版本。
+夜间  是包含彩色道路和符号的道路地图样式的深色版本。
 
 ![夜景地图样式](./media/supported-map-styles/night.png)
 
@@ -108,13 +108,13 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 
-道路地形阴影是 Azure Maps 主要样式，通过地球的轮廓完成****。
+道路地形阴影是 Azure Maps 主要样式，通过地球的轮廓完成  。
 
 ![着色止裂槽地图样式](./media/supported-map-styles/shaded-relief.png)
 
 **适用 API：**
 
-* [地图磁贴](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地图磁贴](/rest/api/maps/render/getmaptile)
 * Web SDK 地图控件
 * Android 地图控件
 * Power BI 视觉对象
@@ -134,4 +134,4 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 了解如何在 Azure Maps 中设置地图样式：
 
-[选择地图样式](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+[选择地图样式](./choose-map-style.md)

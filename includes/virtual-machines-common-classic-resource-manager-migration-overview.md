@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 0e9af5aa57da9db8c54ef3119fffbf8a5809aefd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507212"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556365"
 ---
 本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure Resource Manager 功能和优点](../articles/azure-resource-manager/management/overview.md)的更多内容。 
 
@@ -22,7 +22,7 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 
 在 Azure Resource Manager 之下，针对来自经典部署模型的几乎所有功能，均提供计算、网络和存储支持。 要充分利用 Azure Resource Manager 中的新功能，可将现有部署从经典部署模型中迁移出来。
 
-## <a name="supported-resources--configurations-for-migration"></a>支持的资源 & 迁移配置
+## <a name="supported-resources--configurations-for-migration"></a>迁移支持的资源和配置
 
 ### <a name="supported-resources-for-migration"></a>迁移支持的资源
 * 虚拟机
@@ -35,12 +35,12 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 * 路由表
 * 保留 IP
 
-## <a name="supported-configurations-for-migration"></a>支持的迁移配置
+## <a name="supported-configurations-for-migration"></a>迁移支持的配置
 迁移过程中支持以下经典 IaaS 资源
 
 | 服务 | 配置 |
 | --- | --- |
-| Azure AD 域服务 | [包含 Azure AD 域服务的虚拟网络](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
+| Azure AD 域服务 | [包含 Azure AD 域服务的虚拟网络](../articles/active-directory-domain-services/migrate-from-classic-vnet.md) |
 
 ## <a name="supported-scopes-of-migration"></a>支持的迁移范围
 可通过四种不同的方式完成计算、网络和存储资源的迁移：
@@ -83,10 +83,10 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 以下屏幕截图演示了如何使用 Azure 门户将经典存储帐户升级到 Azure 资源管理器存储帐户：
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
-3. 在“设置”部分单击“迁移到 ARM”。********
-4. 单击“验证”，确定迁移可行性。****
-5. 如果验证通过，请单击“准备”****，以便创建迁移的存储帐户。
-6. 键入“是”对迁移进行确认，然后单击“提交”******** 完成迁移。
+3. 在“设置”部分单击“迁移到 ARM”。
+4. 单击“验证”，确定迁移可行性。
+5. 如果验证通过，请单击“准备”，以便创建迁移的存储帐户。
+6. 键入“是”对迁移进行确认，然后单击“提交”完成迁移。
 
     ![验证存储帐户](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
     
@@ -129,7 +129,7 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 | 计算 | 包含 Web 角色/辅助角色的云服务 | 目前不支持。 |
 | 计算 | 云服务包含一个以上可用性集或多个可用性集。 |目前不支持。 在迁移之前，请将虚拟机移到同一可用性集中。 |
 | 计算 | 带 Azure 安全中心扩展的 VM | Azure 安全中心在虚拟机上自动安装扩展，用于监视其安全性并引发警报。 如果在订阅上启用了 Azure 安全中心策略，通常会自动安装这些扩展。 若要迁移虚拟机，则禁用订阅上的安全中心策略，这将从虚拟机删除监视扩展的安全中心。 |
-| 计算 | 带备份或快照扩展的 VM | 这些扩展安装在配置有 Azure 备份服务的虚拟机上。 当不支持迁移这些 VM 时，请按照[此处](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)的指导，在迁移前保留备份。  |
+| 计算 | 带备份或快照扩展的 VM | 这些扩展安装在配置有 Azure 备份服务的虚拟机上。 当不支持迁移这些 VM 时，请按照[此处](../articles/virtual-machines/migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)的指导，在迁移前保留备份。  |
 | 计算 | 具有 Azure Site Recovery 扩展的 VM | 这些扩展安装在配置了 Azure Site Recovery 服务的虚拟机上。 虽然可以与 Site Recovery 配合使用来迁移存储，但是当前复制将受到影响。 需要在存储迁移后禁用并启用 VM 复制。 |
 | 网络 |包含虚拟机和 Web 角色/辅助角色的虚拟网络 |目前不支持。 在迁移之前，请将 Web/辅助角色移动到其自己的虚拟网络。 一旦迁移经典虚拟网络，就可以将迁移的 Azure 资源管理器虚拟网络与经典虚拟网络对等，从而实现与以前类似的配置。|
 | 网络 | 经典 Express Route 线路 |目前不支持。 这些线路需要在开始迁移 IaaS 之前迁移到 Azure 资源管理器。 有关详细信息，请参阅[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](../articles/expressroute/expressroute-move.md)。|

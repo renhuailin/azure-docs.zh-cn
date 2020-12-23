@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 644669ea27938e385e11f3b1911a23ab30829a95
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66814715"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027839"
 ---
 此功能为预览版。 若要使用它，必须安装预览扩展或模块。
 
@@ -21,7 +21,7 @@ ms.locfileid: "66814715"
 
 对于 Azure CLI，需要[事件网格扩展](/cli/azure/azure-cli-extensions-list)。
 
-在 [CloudShell](/azure/cloud-shell/quickstart) 中：
+在 [CloudShell](../articles/cloud-shell/quickstart.md) 中：
 
 * 如果之前已安装此扩展，请使用 `az extension update -n eventgrid` 进行更新
 * 如果之前尚未安装此扩展，请使用 `az extension add -n eventgrid` 安装
@@ -36,7 +36,7 @@ ms.locfileid: "66814715"
 
 对于 PowerShell，需要 [AzureRM.EventGrid 模块](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview)。
 
-在 [CloudShell](/azure/cloud-shell/quickstart-powershell) 中：
+在 [CloudShell](../articles/cloud-shell/quickstart-powershell.md) 中：
 
 * 安装模块 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 

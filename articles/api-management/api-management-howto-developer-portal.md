@@ -1,7 +1,7 @@
 ---
-title: Azure API 管理开发人员门户概述
+title: Azure API 管理中的开发人员门户概述
 titleSuffix: Azure API Management
-description: 了解 API 管理中的开发人员门户。 开发人员门户是使用者可以在其中找到你的 Api 的位置。
+description: 了解 API 管理中的开发人员门户-可自定义的网站，API 使用者可以在其中浏览你的 Api。
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -11,61 +11,46 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715456"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074791"
 ---
-# <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
+# <a name="overview-of-the-developer-portal"></a>开发人员门户概述
 
 开发人员门户是一个自动生成的、完全可自定义的网站，其中包含 API 的文档。 API 使用者可在其中找到 API、了解 API 的用法、请求访问权限以及试用这些 API。
 
-本文介绍了 API 管理中开发人员门户的自承载版本与托管版本之间的差异。 此外介绍此门户的体系结构，并提供常见问题的解答。
+本文介绍了 API 管理中开发人员门户的自承载版本与托管版本之间的差异。 它还提供常见问题的答案。
 
 ![API 管理开发人员门户](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-> [!NOTE]
-> <a name="migrate-from-legacy"></a> 新的开发人员门户与旧版开发人员门户不兼容，因此不能自动迁移。 需要手动重新创建 (页面、文本、媒体文件) 的内容，并自定义新门户的外观。 有关指南，请参阅 [开发人员门户教程](api-management-howto-developer-portal-customize.md) 。
+## <a name="migration-from-the-legacy-portal"></a>从旧门户迁移
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> 托管版本和自承载版本
+> [!IMPORTANT]
+> 旧开发人员门户现已弃用，并且仅接收安全更新。 你可以像往常一样继续使用它，直到它在 2023 年 10 月停用，届时将从所有 API 管理服务中将其删除。
 
-可通过两种方式构建开发人员门户：
+[专用文档文章](developer-portal-deprecated-migration.md)介绍了如何迁移到新的开发人员门户。
 
-- **托管版本** - 通过编辑和自定义 API 管理实例中内置的、可通过 URL `<your-api-management-instance-name>.developer.azure-api.net` 访问的门户。 请参阅[此文档](api-management-howto-developer-portal-customize.md)了解如何访问和自定义托管门户。
-- **自承载版本** - 通过在 API 管理实例外部部署和自承载门户。 使用此方法可编辑门户的基本代码并扩展提供的核心功能，例如实现自定义小组件以便与第三方系统集成。 在此方案中，你是门户的维护人员，负责将门户升级到最新版本。 有关详细信息和说明，请参阅[包含门户源代码的 GitHub 存储库][1]和[有关实现小组件的教程][3]。 [托管版本的教程](api-management-howto-developer-portal-customize.md)演练了门户的管理面板，该面板在托管版本和自承载版本中很常见。
+## <a name="customization-and-styling"></a>自定义和样式
 
-## <a name="portal-architectural-concepts"></a>门户体系结构概念
+开发人员门户可通过内置的拖放视觉对象编辑器进行自定义和样式化。 有关更多详细信息，请参阅 [此教程](api-management-howto-developer-portal-customize.md) 。
 
-门户组件在逻辑上可以划分为两个类别：代码和内容。 
+## <a name="extensibility"></a><a name="managed-vs-self-hosted"></a> 扩展性
 
-代码在 [GitHub 存储库][1]中维护，包括：
+API 管理服务包括内置的、始终最新的 **托管** 开发人员门户。 可以从 Azure 门户界面访问该界面。
 
-- 小组件 - 呈现视觉元素并组合了 HTML、JavaScript、样式功能、设置和内容映射。 例如，图像、文本段落、表单、API 列表等。
-- 样式定义 - 指定如何设置小组件的样式
-- 引擎 - 基于门户内容生成静态网页，是以 JavaScript 编写的
-- 视觉编辑器 - 用于浏览器内部的自定义和创作体验
+如果需要用自定义逻辑来扩展它，但不支持此方法，则可以修改其代码库。 [GitHub 存储库中提供][1]了该门户的基本代码。 例如，你可以实现与第三方支持系统集成的新小组件。 实现新功能时，可以选择以下选项之一：
 
-内容划分为两个子类别：门户内容和 API 管理内容。  
+- **自承载** API 管理服务之外的结果门户。 当你自行承载门户时，你将成为其维护人员，并负责其升级。 Azure 支持的协助仅限于自承载门户的基本设置，如 [存储库的 Wiki 部分][2]中所述。
+- 为 API 管理团队打开拉取请求，以将新功能合并到 **托管** 门户的基本代码。
 
-门户内容特定于门户，包括：
-
-- 页面 - 例如登陆页、API 教程和博客文章
-- 媒体 - 图像、动画和其他基于文件的内容
-- 布局 - 与 URL 匹配的模板，定义页面显示方式
-- 样式 - 样式定义值，例如字体、颜色和边框
-- 设置 - 网站图标、网站元数据等配置
-
-门户内容（媒体除外）以 JSON 文档的形式表示。
-
-API 管理内容包括 API、操作、产品和订阅等实体。
-
-门户基于 [Paperbits 框架](https://paperbits.io/)的改编分叉。 原始 Paperbits 功能已经过扩展，提供特定于 API 管理的小组件（例如 API 列表、产品列表）以及与 API 管理服务之间的连接器，可以保存和检索内容。
+有关扩展的详细信息和说明，请参阅 [GitHub 存储库][1] 和 [实现小组件教程][3]。 [自定义托管门户的教程](api-management-howto-developer-portal-customize.md)会指导你完成门户的管理面板，这对于 **托管** 和 **自承载** 版本很常见。
 
 ## <a name="frequently-asked-questions"></a><a name="faq"></a> 常见问题
 
@@ -73,45 +58,35 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 ### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>如何从门户预览版迁移？
 
-首次启动开发人员门户预览版本时，你在 API 管理服务中预配了其默认内容的预览版本。 在公开发布的版本中，已显著修改了默认内容。 例如，默认内容的预览版本不包括登录页面中的 OAuth 按钮，它将使用不同的小组件来显示 Api，并依赖于构建开发人员门户页面的有限功能。 即使内容存在差异，门户的引擎 (包括基础小组件) 会在每次发布开发人员门户时自动更新。
+首次启动开发人员门户预览版时，你在 API 管理服务中预配了其默认内容的预览版。 正式版中的默认内容已进行重大修改。 例如，默认内容的预览版不包括登录页面中的 OAuth 按钮，它使用不同的小组件来显示 API，并依赖有限的功能来构建开发人员门户页面。 即使内容存在差异，门户的引擎（包括基础小组件）也会在每次发布开发人员门户时自动更新。
 
-如果你根据内容的预览版本对门户进行了大量自定义，你可以继续按原样使用它，并在门户的页面上手动放置新的小组件。 否则，建议将门户内容替换为新的默认内容。
+如果根据内容的预览版对门户进行了大量自定义，可以继续按原样使用它，并在门户的页面上手动放置新的小组件。 否则，建议将门户内容替换为新的默认内容。
 
-若要重置托管门户中的内容，请单击 "**操作**" 菜单部分中的 "**重置内容**"。 此操作将删除门户的所有内容并预配新的默认内容。 你将丢失所有开发人员门户自定义项和更改。 **无法撤消此操作**。
+若要重置托管门户中的内容，请选择 " **操作** " 菜单部分中的 " **重置内容** "。 此操作将删除门户的所有内容并预配新的默认内容。 你将丢失所有开发人员门户自定义和更改。 不能撤消此操作。
 
 ![重置门户内容](media/api-management-howto-developer-portal/reset-content.png)
 
-如果使用自承载版本，请 `scripts.v2/cleanup.bat` `scripts.v2/generate.bat` 从 GitHub 存储库运行和脚本，以删除现有内容并预配新内容。 请确保事先将门户的代码升级到 GitHub 存储库中的最新版本。
+如果使用的是自承载版本，请运行 GitHub 存储库中的 `scripts.v2/cleanup.bat` 和 `scripts.v2/generate.bat` 脚本删除现有内容并预配新内容。 确保提前将门户代码升级到 GitHub 存储库中的最新版本。
 
-如果第一次在11月2019公开上市后首次访问门户，则该门户应已具有新的默认内容，无需进一步操作。
-
-### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>门户是否包含旧版门户的所有功能？
-
-开发人员门户不再支持使用 Facebook、Microsoft、Twitter 和 Google 作为标识提供程序的 *应用程序*、 *问题*和直接集成 (你可以改用 Azure AD B2C) 。
-
-### <a name="has-the-legacy-portal-been-deprecated"></a>旧门户是否已弃用？
-
-旧的开发人员和发布者门户现在是 *旧* 功能，它们仅接收安全更新。 新功能只会在新开发人员门户中实现。
-
-旧门户弃用时，我们会另行通告。 若有问题、疑虑或意见，请提出[相关的 GitHub 问题](https://github.com/Azure/api-management-developer-portal/issues/121)。
+如果是在 2019 年 11 月正式发布后首次访问门户，则该门户应已具有新的默认内容，无需执行其他操作。
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>门户不支持我需要的功能
 
-可以打开[功能请求](https://aka.ms/apimwish)或 [自行实现缺失的功能”][3]。 如果自行实现此功能，则可以自承载开发人员门户，或在 GitHub 上提交拉取请求，以便在托管版本中包含所需更改。
+你可以在 [GitHub 存储库][1] 中打开功能请求或 [自行实现缺少的功能][3]。 有关更多详细信息，请参阅上面的 **扩展性** 部分。
 
-### <a name="how-can-i-automate-portal-deployments"></a>如何自动部署门户？
+### <a name="how-can-i-automate-portal-deployments"></a><a id="automate"></a> 如何自动部署门户？
 
 不管使用的是托管版本还是自承载版本，都可以通过 REST API 以编程方式访问和管理开发人员门户的内容。
 
 [GitHub 存储库的 Wiki 部分][2]介绍了该 API。 可以使用该 API 在环境之间自动迁移门户内容（例如，从测试环境迁移到生产环境）。 可以在 GitHub 上的[此文档](https://aka.ms/apimdocs/migrateportal)中详细了解此过程。
 
-### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>如何实现从托管版本迁移到自承载版本？
+### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>如何从托管版本迁移到自承载版本？
 
 请参阅 [GitHub 上的开发人员门户存储库的 Wiki 部分][2]中的详细文章。
 
 ### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>能否在一个 API 管理服务中有多个开发人员门户？
 
-可以有一个托管门户和多个自承载门户。 所有门户的内容都存储在同一个 API 管理服务中，因此它们是相同的。 如果你想要区分门户的外观和功能，你可以将它们自行托管为你自己的自定义小组件，以便在运行时上动态自定义页面（例如基于 URL）。
+可以有一个托管门户和多个自承载门户。 所有门户的内容都存储在同一个 API 管理服务中，因此它们是相同的。 如果希望门户的外观和功能不同，可以使用自己的自定义小组件对其进行自承载，以便在运行时上动态自定义页面（例如基于 URL）。
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>门户是否支持 Azure 资源管理器模板，和/或是否与 API 管理 DevOps 资源工具包兼容？
 
@@ -127,7 +102,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 如果 API 管理服务位于内部 VNet 中，则只能从网络内部访问开发人员门户。 管理终结点的主机名必须解析成用于访问门户管理界面的计算机中的服务的内部 VIP。 请确保管理终结点已在 DNS 中注册。 如果配置不当，将会出现以下错误：`Unable to start the portal. See if settings are specified correctly in the configuration (...)`。
 
-如果 API 管理服务位于内部 VNet 中，并且是通过 Internet 上的应用程序网关访问它，请确保启用与开发人员门户和“API 管理”的管理终结点的连接。
+如果 API 管理服务位于内部 VNet 中，并且是通过 Internet 上的应用程序网关访问它，请确保启用与开发人员门户和“API 管理”的管理终结点的连接。 可能需要禁用 Web 应用程序防火墙规则。 有关更多详细信息，请参阅 [此文档](api-management-howto-integrate-internal-vnet-appgateway.md) 。
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>我已分配一个自定义 API 管理域，但发布的门户无法正常工作
 
@@ -135,7 +110,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 ### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>我已添加一个标识提供者，但门户中未显示它
 
-配置标识提供者（例如 AAD、AAD B2C）之后，需要[重新发布门户](api-management-howto-developer-portal-customize.md#publish)才能使更改生效。
+配置标识提供者之后 (例如 Azure AD Azure AD B2C) ，则需要重新 [发布门户](api-management-howto-developer-portal-customize.md#publish) 以使更改生效。 请确保开发人员门户页面包含 OAuth 按钮小组件。
 
 ### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>我已设置委托，但门户不使用它
 
@@ -143,7 +118,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 ### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>我的其他 API 管理配置更改未传播到开发人员门户中
 
-大多数配置更改（例如，VNet、登录和产品条款）都需要[重新发布门户](api-management-howto-developer-portal-customize.md#publish)。
+大多数配置更改 (例如，VNet、登录、产品条款) 需要重新 [发布门户](api-management-howto-developer-portal-customize.md#publish)。
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a>使用交互式控制台时出现 CORS 错误
 
@@ -151,15 +126,15 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 可以在 Azure 门户的 API 管理服务的“门户概述”部分中检查 CORS 策略的状态。 警告框指示缺少策略或策略配置不正确。
 
-![API 管理开发人员门户](media/api-management-howto-developer-portal/cors-azure-portal.png)
+![屏幕截图显示你可以在何处检查 CORS 策略的状态。](media/api-management-howto-developer-portal/cors-azure-portal.png)
 
 通过单击“启用 CORS”按钮自动应用 CORS 策略。
 
 还可以手动启用 CORS。
 
-1. 单击“在全局级别上手动应用”链接以查看生成的策略代码。
+1. 选择 "在 **全局级别上手动应用它** " 链接以查看生成的策略代码。
 2. 在 Azure 门户中导航到 API 管理服务的“API”部分的“所有 API” 。
-3. 在“入站处理”部分中，单击 </> 图标 。
+3. 选择 **</>** " **入站处理** " 部分中的图标。
 4. 将策略插入到 XML 文件的 <inbound> 部分中。 请确保 <origin> 值与开发人员门户的域匹配。
 
 > [!NOTE]
@@ -169,6 +144,10 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 > 浏览器会自动发出 OPTIONS HTTP 请求，但该请求不包含带有订阅密钥的标头。 由于缺少订阅密钥，API 管理无法将 OPTIONS 调用与产品相关联，因此也就无法应用 CORS 策略。
 >
 > 解决方法之一是在查询参数中传递订阅密钥。
+
+> [!NOTE]
+> 
+> 仅执行一个 CORS 策略。 如果指定了多个 CORS 策略 (例如，在 API 级别和) 上的 "所有 Api" 级别上，则交互控制台可能不会按预期方式工作。
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>编辑开发人员门户需要哪些权限？
 

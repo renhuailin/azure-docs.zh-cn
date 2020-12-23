@@ -2,14 +2,14 @@
 title: 在 CloudEvents 架构中将 Azure 事件网格与事件配合使用
 description: 说明如何对 Azure 事件网格中的事件使用 CloudEvents 架构。 该服务支持 CloudEvents 的 JSON 实现中的事件。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 4e8f4c62221e5782ad04695fba172c0aefb62454
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/10/2020
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e13c3635da7e7a86f4fa2d31215303152167741c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324189"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109243"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents v1.0 架构与事件网格配合使用
 除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 架构](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
@@ -20,11 +20,6 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 
 本文介绍如何将 CloudEvents 架构与事件网格配合使用。
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>安装预览功能
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="cloudevent-schema"></a>CloudEvent 架构
 
@@ -62,16 +57,20 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 
 ## <a name="configure-event-grid-for-cloudevents"></a>为 CloudEvents 配置事件网格
 
-可以将事件网格用于 CloudEvents 架构的事件的输入和输出。 可以将 CloudEvents 用于系统事件（例如 Blob 存储事件和 IoT 中心事件）和自定义事件。 它还可以将网络上的这些事件来回转换。
+在 CloudEvents 架构中，可以将事件网格用于事件的输入和输出。 下表描述了可能的转换：
+
+ 事件网格资源 | 输入架构       | 传递架构
+|---------------------|-------------------|---------------------
+| 系统主题       | 事件网格架构 | 事件网格架构或 CloudEvent 架构
+| 用户主题/域 | 事件网格架构 | 事件网格架构
+| 用户主题/域 | CloudEvent 架构 | CloudEvent 架构
+| 用户主题/域 | 自定义架构     | 自定义架构或事件网格架构或 CloudEvent 架构
+| PartnerTopics       | CloudEvent 架构 | CloudEvent 架构
 
 
-| 输入架构       | 输出架构
-|--------------------|---------------------
-| CloudEvents 格式 | CloudEvents 格式
-| 事件网格格式  | CloudEvents 格式
-| 事件网格格式  | 事件网格格式
+对于所有事件架构，在发布到事件网格主题以及创建事件订阅时，事件网格都需要验证。
 
-对于所有事件架构，事件网格都要求在发布到事件网格主题时以及在创建事件订阅时进行验证。 有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
+有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 
 ### <a name="input-schema"></a>输入架构
 
@@ -80,10 +79,6 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 对于 Azure CLI，请使用：
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
@@ -94,11 +89,7 @@ az eventgrid topic create \
 对于 PowerShell，请使用：
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName gridResourceGroup `
   -Location westcentralus `
   -Name <topic_name> `
@@ -123,9 +114,9 @@ az eventgrid event-subscription create \
 
 对于 PowerShell，请使用：
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName <event_subscription_name> `
   -Endpoint <endpoint_URL> `
@@ -153,15 +144,15 @@ New-AzureRmEventGridSubscription `
 
 ```csharp
 [FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
-    if (req.Method == "OPTIONS")
+    if (req.Method == HttpMethod.Options)
     {
         // If the request is for subscription validation, send back the validation code
         
         var response = req.CreateResponse(HttpStatusCode.OK);
-        response.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
+        response.Headers.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
 
         return response;
     }

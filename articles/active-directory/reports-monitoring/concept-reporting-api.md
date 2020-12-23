@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2e3f98bd96c09fe741a24a1332443c876e2e61
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: af448d5d28c5add39176500b988824b17f85b9fb
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225904"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861963"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -47,7 +47,7 @@ Azure Active Directory 提供了各种[报告](overview-reports.md)，其中包�
 
 ## <a name="api-endpoints"></a>API 终结点 
 
-用于审核日志的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`，用于登录的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/v1.0/auditLogs/signIns`。 有关详细信息，请参阅[审核 API 参考](/graph/api/resources/directoryaudit?view=graph-rest-1.0)和[登录 API 参考](/graph/api/resources/signIn?view=graph-rest-1.0)。
+用于审核日志的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`，用于登录的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/v1.0/auditLogs/signIns`。 有关详细信息，请参阅[审核 API 参考](/graph/api/resources/directoryaudit)和[登录 API 参考](/graph/api/resources/signIn)。
 
 此外，还可以使用[“标识保护”风险检测 API](/graph/api/resources/identityriskevent?view=graph-rest-beta)，通过 Microsoft Graph 以编程方式访问安全检测。 有关详细信息，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](../identity-protection/howto-identity-protection-graph-api.md)。 
   

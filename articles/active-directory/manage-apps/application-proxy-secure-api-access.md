@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: eaa4a8f92809dcf44969958573231ad37d908daa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371212"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835691"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理安全访问本地 Api
 
-你可以在本地运行业务逻辑 Api，也可以在云中的虚拟机上托管。 本机 Android、iOS、Mac 或 Windows 应用需要与 API 终结点交互以使用数据或提供用户交互。 Azure AD 应用程序代理和 [Microsoft 身份验证库 (MSAL) ](/azure/active-directory/develop/active-directory-authentication-libraries) 让本机应用安全地访问本地 api。 Azure Active Directory 应用程序代理比在应用层打开防火墙端口并控制身份验证和授权更安全、更安全。
+你可以在本地运行业务逻辑 Api，也可以在云中的虚拟机上托管。 本机 Android、iOS、Mac 或 Windows 应用需要与 API 终结点交互以使用数据或提供用户交互。 Azure AD 应用程序代理和 [Microsoft 身份验证库 (MSAL) ](../azuread-dev/active-directory-authentication-libraries.md) 让本机应用安全地访问本地 api。 Azure Active Directory 应用程序代理比在应用层打开防火墙端口并控制身份验证和授权更安全、更安全。
 
 本文逐步讲解如何设置 Azure AD 应用程序代理解决方案，以便托管本机应用可以访问的 web API 服务。
 
@@ -34,9 +34,9 @@ ms.locfileid: "91371212"
 
 ![Azure AD 应用程序代理 API 访问](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公共终结点，并提供身份验证和授权。 可以通过使用 [Microsoft 身份验证库 (MSAL) ](/azure/active-directory/develop/active-directory-authentication-libraries) 库，从大量平台访问 api。
+Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公共终结点，并提供身份验证和授权。 可以通过使用 [Microsoft 身份验证库 (MSAL) ](../azuread-dev/active-directory-authentication-libraries.md) 库，从大量平台访问 api。
 
-由于 Azure AD 应用程序代理身份验证和授权建立在 Azure AD 之上，因此你可以使用 Azure AD 条件访问来确保只有受信任的设备才能访问通过应用程序代理发布的 Api。 使用连接到桌面的 Azure AD 联接或 Azure AD 混合，并为设备管理 Intune。 还可以利用 Azure 多重身份验证等 Azure Active Directory Premium 功能，以及支持机器学习的 [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)安全性。
+由于 Azure AD 应用程序代理身份验证和授权建立在 Azure AD 之上，因此你可以使用 Azure AD 条件访问来确保只有受信任的设备才能访问通过应用程序代理发布的 Api。 使用连接到桌面的 Azure AD 联接或 Azure AD 混合，并为设备管理 Intune。 你还可以利用 Azure Active Directory Premium 功能，如 Azure AD 多重身份验证，以及支持机器学习的 [Azure Identity Protection](../identity-protection/overview-identity-protection.md)安全性。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,7 +53,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
 1. 生成示例 SecretAPI 项目并将其发布为本地计算机或 intranet 上的 ASP.NET web 应用。 请确保可以在本地访问 web 应用。
 
-1. 在“Azure 门户”中，选择“Azure Active Directory”。 然后选择 " **企业应用程序**"。
+1. 在[Azure 门户](https://portal.azure.com)中，选择“Azure Active Directory”。 然后选择 " **企业应用程序**"。
 
 1. 在 " **企业应用程序-所有应用程序** " 页的顶部，选择 " **新建应用程序**"。
 
@@ -77,7 +77,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
 1. 在 **SecretAPI** 页上，选择左侧导航栏中的 " **属性** "。
 
-1. 您不希望在**MyApps**面板中向最终用户提供 api，因此请在 "**属性**" 页的底部将 "**对用户可见**" 设置为 "**否**"，然后选择 "**保存**"。
+1. 您不希望在 **MyApps** 面板中向最终用户提供 api，因此请在 "**属性**" 页的底部将 "**对用户可见**" 设置为 "**否**"，然后选择 "**保存**"。
 
    ![对用户不可见](./media/application-proxy-secure-api-access/5-not-visible-to-users.png)
 
@@ -96,7 +96,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 1. 返回 " **添加分配** " 页，选择 " **分配**"。
 
 > [!NOTE]
-> 使用集成 Windows 身份验证的 Api 可能需要 [额外的步骤](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)。
+> 使用集成 Windows 身份验证的 Api 可能需要 [额外的步骤](./application-proxy-configure-single-sign-on-with-kcd.md)。
 
 ## <a name="register-the-native-app-and-grant-access-to-the-api"></a>注册本机应用并授予对 API 的访问权限
 
@@ -112,7 +112,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
    1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
 
-   1. 在 " **重定向 URL**" 下，选择 " **公用客户端 (移动 & 桌面") **，然后输入 *https://login.microsoftonline.com/common/oauth2/nativeclient* 。
+   1. 在 " **重定向 URL**" 下，选择 " **公用客户端 (移动 & 桌面")**，然后输入 *https://login.microsoftonline.com/common/oauth2/nativeclient* 。
 
    1. 选择 " **注册**"，并等待应用成功注册。
 
@@ -120,7 +120,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
 你现在已在 Azure Active Directory 中注册了 AppProxyNativeAppSample 应用。 若要为本机应用程序授予对 SecretAPI web API 的访问权限：
 
-1. 在 Azure Active Directory**概述**  >  **应用注册**"页上，选择**AppProxyNativeAppSample**应用。
+1. 在 Azure Active Directory **概述**  >  **应用注册**"页上，选择 **AppProxyNativeAppSample** 应用。
 
 1. 在 " **AppProxyNativeAppSample** " 页上，选择左侧导航栏中的 " **API 权限** "。
 

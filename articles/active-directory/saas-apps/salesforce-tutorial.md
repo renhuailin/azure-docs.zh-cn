@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 6d653594cce20439a6e1214f104d875ec76bf1a9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 625058b131ef5cb6180873806185a3202a766118
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979852"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Salesforce 集成
 
@@ -39,7 +39,7 @@ ms.locfileid: "90979852"
 
 * Salesforce 支持 SP 发起的 SSO
 
-* Salesforce 支持[**自动**用户预配和取消预配](salesforce-provisioning-tutorial.md)（推荐）
+* Salesforce 支持 [**自动** 用户预配和取消预配](salesforce-provisioning-tutorial.md)（推荐）
 
 * Salesforce 支持实时用户预配
 
@@ -204,7 +204,7 @@ ms.locfileid: "90979852"
 
 2. 直接转到 Salesforce 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 单击“访问面板”中的 Salesforce 磁贴时，应当会自动登录到为其设置了 SSO 的 Salesforce。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 单击“访问面板”中的 Salesforce 磁贴时，应当会自动登录到为其设置了 SSO 的 Salesforce。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="test-sso-for-salesforce-mobile"></a>测试 Salesforce（移动）的 SSO
 
@@ -230,4 +230,4 @@ ms.locfileid: "90979852"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Salesforce 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+配置 Salesforce 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)

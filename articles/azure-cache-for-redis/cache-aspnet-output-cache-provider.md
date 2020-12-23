@@ -7,22 +7,22 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705021"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993404"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 输出缓存提供程序
 
-Redis 输出缓存提供程序是用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。 对于 ASP.NET Core 应用程序，请参阅 [ASP.NET Core 中的响应缓存](https://docs.microsoft.com/aspnet/core/performance/caching/response)。 
+Redis 输出缓存提供程序是用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。 对于 ASP.NET Core 应用程序，请参阅 [ASP.NET Core 中的响应缓存](/aspnet/core/performance/caching/response)。 
 
 要使用 Redis 输出缓存提供程序，首先配置用户的缓存，然后使用 Redis 输出缓存提供程序 NuGet 包配置 ASP.NET 应用程序。 本主题提供有关配置应用程序以使用 Redis 输出缓存提供程序的指南。 有关创建和配置 Azure Redis 缓存实例的详细信息，请参阅[创建缓存](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
 ## <a name="store-aspnet-page-output-in-the-cache"></a>在缓存中存储 ASP.NET 页面输出
 
-要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”**** **** ****。
+要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”  。
 
 从 `Package Manager Console` 窗口运行以下命令。
 
@@ -57,17 +57,17 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 | *host* | string | "localhost" | Redis 服务器 IP 地址或主机名 |
 | *port* | 正整数 | 6379（非 TLS/SSL）<br/>6380（TLS/SSL） | Redis 服务器端口 |
 | *accessKey* | string | "" | 启用 Redis 授权时的 Redis 服务器密码。 该值默认为空字符串，即，会话状态提供程序在连接到 Redis 服务器时不使用任何密码。 **如果 Redis 服务器位于 Azure Redis 缓存等可公开访问的网络中，请务必启用 Redis 授权以提高安全性，并提供安全密码。** |
-| *ssl* | boolean | **false** | 是否要通过 TLS 连接到 Redis 服务器。 此值默认为“false”****，因为 Redis 并非现成支持 TLS。 **如果使用现成支持 SSL 的 Azure Redis 缓存，请务必将此属性设置为 true，以提高安全性。**<br/><br/>默认情况下，将为新缓存禁用非 TLS 端口。 如果此设置为 "true"， **则** 将其指定为使用非 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。 |
-| *databaseIdNumber* | 正整数 | 0 | 只能通过 web.config 或 AppSettings 指定此属性。**<br/><br/>指定要使用的 Redis 数据库。 |
+| *ssl* | boolean | **false** | 是否要通过 TLS 连接到 Redis 服务器。 此值默认为“false”，因为 Redis 并非现成支持 TLS。 **如果使用现成支持 SSL 的 Azure Redis 缓存，请务必将此属性设置为 true，以提高安全性。**<br/><br/>默认情况下，将为新缓存禁用非 TLS 端口。 为此设置指定“true”可使用非 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。 |
+| *databaseIdNumber* | 正整数 | 0 | 只能通过 web.config 或 AppSettings 指定此属性。<br/><br/>指定要使用的 Redis 数据库。 |
 | *connectionTimeoutInMilliseconds* | 正整数 | 由 StackExchange.Redis 提供 | 用于在创建 StackExchange.Redis.ConnectionMultiplexer 时设置 *ConnectTimeout*。 |
 | *operationTimeoutInMilliseconds* | 正整数 | 由 StackExchange.Redis 提供 | 用于在创建 StackExchange.Redis.ConnectionMultiplexer 时设置 *SyncTimeout*。 |
-| *connectionString*（有效的 StackExchange.Redis 连接字符串） | string | *n/a* | 对 AppSettings 或 web.config 的参数引用，或有效的 StackExchange.Redis 连接字符串。 此属性可提供 *host*、*port*、*accessKey*、*ssl* 和其他 StackExchange.Redis 属性的值。 若要更详细地了解 *connectionString*，请参阅[属性说明](#attribute-notes)部分中的[设置 connectionString](#setting-connectionstring)。 |
-| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *n/a* | 只能通过 web.config 或 AppSettings 指定这些属性。**<br/><br/>使用这些属性提供连接字符串。 *settingsClassName* 应是程序集限定的类名，其中包含 *settingsMethodName* 指定的方法。<br/><br/>*settingsMethodName* 指定的方法应是 public、static 和 void（不采用任何参数），其返回类型为 **string**。 此方法返回实际的连接字符串。 |
-| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *n/a* | 只能通过 web.config 或 AppSettings 指定这些属性。**<br/><br/>使用这些属性可以通过提供会话状态/输出缓存的日志以及 StackExchange.Redis 的日志，来调试应用程序。 *loggingClassName* 应是程序集限定的类名，其中包含 *loggingMethodName* 指定的方法。<br/><br/>*loggingMethodName* 指定的方法应是 public、static 和 void（不采用任何参数），其返回类型为 **System.IO.TextWriter**。 |
-| *applicationName* | string | 当前进程的模块名称，或“/” | 仅限 SessionStateProvider**<br/>只能通过 web.config 或 AppSettings 指定此属性。**<br/><br/>要在 Redis 缓存中使用的应用名称前缀。 客户可以使用相同的 Redis 缓存来实现不同的目的。 为了确保会话密钥不冲突，可以使用应用程序名称作为 Redis 缓存的前缀。 |
-| *throwOnError* | boolean | 是 | 仅限 SessionStateProvider**<br/>只能通过 web.config 或 AppSettings 指定此属性。**<br/><br/>出错时是否引发异常。<br/><br/>有关 *throwOnError* 的详细信息，请参阅[属性说明](#attribute-notes)部分中的[有关 *throwOnError* 的说明](#notes-on-throwonerror)。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*。 |
-| *retryTimeoutInMilliseconds* | 正整数 | 5000 | 仅限 SessionStateProvider**<br/>只能通过 web.config 或 AppSettings 指定此属性。**<br/><br/>操作失败时要重试多长时间。 如果此值小于 *operationTimeoutInMilliseconds*，则提供程序不会重试。<br/><br/>有关 *retryTimeoutInMilliseconds* 的详细信息，请参阅[属性说明](#attribute-notes)部分中的[有关 *retryTimeoutInMilliseconds* 的说明](#notes-on-retrytimeoutinmilliseconds)。 |
-| *redisSerializerType* | string | *n/a* | 指定某个类的程序集限定类型名称，该类实现 Microsoft.Web.Redis. ISerializer，且包含用于序列化和反序列化值的自定义逻辑。 有关详细信息，请参阅[属性说明](#attribute-notes)部分中的[关于 *redisSerializerType*](#about-redisserializertype)。 |
+| *connectionString*（有效的 StackExchange.Redis 连接字符串） | string | *n/a* | 对 AppSettings 或 web.config 的参数引用，或有效的 StackExchange.Redis 连接字符串。 此属性可提供 *host*、*port*、*accessKey*、*ssl* 和其他 StackExchange.Redis 属性的值。 若要更详细地了解 *connectionString*，请参阅 [属性说明](#attribute-notes)部分中的 [设置 connectionString](#setting-connectionstring)。 |
+| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *n/a* | 只能通过 web.config 或 AppSettings 指定这些属性。<br/><br/>使用这些属性提供连接字符串。 *settingsClassName* 应是程序集限定的类名，其中包含 *settingsMethodName* 指定的方法。<br/><br/>*settingsMethodName* 指定的方法应是 public、static 和 void（不采用任何参数），其返回类型为 **string**。 此方法返回实际的连接字符串。 |
+| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *n/a* | 只能通过 web.config 或 AppSettings 指定这些属性。<br/><br/>使用这些属性可以通过提供会话状态/输出缓存的日志以及 StackExchange.Redis 的日志，来调试应用程序。 *loggingClassName* 应是程序集限定的类名，其中包含 *loggingMethodName* 指定的方法。<br/><br/>*loggingMethodName* 指定的方法应是 public、static 和 void（不采用任何参数），其返回类型为 **System.IO.TextWriter**。 |
+| *applicationName* | string | 当前进程的模块名称，或“/” | 仅限 SessionStateProvider<br/>只能通过 web.config 或 AppSettings 指定此属性。<br/><br/>要在 Redis 缓存中使用的应用名称前缀。 客户可以使用相同的 Redis 缓存来实现不同的目的。 为了确保会话密钥不冲突，可以使用应用程序名称作为 Redis 缓存的前缀。 |
+| *throwOnError* | boolean | 是 | 仅限 SessionStateProvider<br/>只能通过 web.config 或 AppSettings 指定此属性。<br/><br/>出错时是否引发异常。<br/><br/>有关 *throwOnError* 的详细信息，请参阅 [属性说明](#attribute-notes)部分中的 [有关 *throwOnError* 的说明](#notes-on-throwonerror)。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*。 |
+| *retryTimeoutInMilliseconds* | 正整数 | 5000 | 仅限 SessionStateProvider<br/>只能通过 web.config 或 AppSettings 指定此属性。<br/><br/>操作失败时要重试多长时间。 如果此值小于 *operationTimeoutInMilliseconds*，则提供程序不会重试。<br/><br/>有关 *retryTimeoutInMilliseconds* 的详细信息，请参阅 [属性说明](#attribute-notes)部分中的 [有关 *retryTimeoutInMilliseconds* 的说明](#notes-on-retrytimeoutinmilliseconds)。 |
+| *redisSerializerType* | string | *n/a* | 指定某个类的程序集限定类型名称，该类实现 Microsoft.Web.Redis. ISerializer，且包含用于序列化和反序列化值的自定义逻辑。 有关详细信息，请参阅 [属性说明](#attribute-notes)部分中的 [关于 *redisSerializerType*](#about-redisserializertype)。 |
 
 ## <a name="attribute-notes"></a>属性说明
 
@@ -194,7 +194,7 @@ namespace MyCompany.Redis
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-在上例中，缓存的页面数据可在缓存中保留 60 秒，并且为每个参数组合缓存不同版本的页面。 有关 OutputCache 指令的详细信息，请参阅 [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)。
+在上例中，缓存的页面数据可在缓存中保留 60 秒，并且为每个参数组合缓存不同版本的页面。 有关 OutputCache 指令的详细信息，请参阅 [@OutputCache](/previous-versions/dotnet/netframework-4.0/hdxfb6cy(v=vs.100))。
 
 执行这些步骤后，应用程序已配置为使用 Redis 输出缓存提供程序。
 

@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236607"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96017230"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>使用 Azure 防火墙检查发往专用终结点的流量
 
@@ -23,7 +23,7 @@ Azure 专用终结点是 Azure 专用链接的基本构建基块。 专用终结
 
 你可能需要检查或阻止从客户端到通过专用终结点公开的服务的流量。 使用 [Azure 防火墙](../firewall/overview.md) 或第三方网络虚拟设备完成此检查。
 
-存在以下限制：
+以下限制适用：
 
 *  (Nsg 的网络安全组) 不适用于专用终结点
 *  (UDR 的用户定义路由) 不适用于专用终结点
@@ -38,7 +38,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 大多数通过专用终结点公开的服务都使用 HTTPS。 使用 Azure SQL 时，建议使用通过网络规则的应用程序规则。
 
 > [!NOTE]
-> 仅在[代理模式](../azure-sql/database/connectivity-architecture.md#connection-policy)下支持 SQL FQDN 筛选（端口 1433）。 与*重定向*相比，**代理**模式可能会导致更多的延迟。 如果要继续使用重定向模式，这是在 Azure 中连接的客户端的默认设置，可以使用防火墙网络规则中的 FQDN 筛选访问。
+> 仅在[代理模式](../azure-sql/database/connectivity-architecture.md#connection-policy)下支持 SQL FQDN 筛选（端口 1433）。 与 *重定向* 相比，**代理** 模式可能会导致更多的延迟。 如果要继续使用重定向模式，这是在 Azure 中连接的客户端的默认设置，可以使用防火墙网络规则中的 FQDN 筛选访问。
 
 ## <a name="scenario-1-hub-and-spoke-architecture---dedicated-virtual-network-for-private-endpoints"></a>方案1：中心辐射型体系结构-专用终结点的专用虚拟网络
 
@@ -106,7 +106,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 * Azure 订阅。
 * Log Analytics 工作区。  
 
-请参阅 [在 Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) ，以便在你的订阅中没有工作区时创建一个工作区。
+请参阅 [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md) ，以便在你的订阅中没有工作区时创建一个工作区。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -174,8 +174,8 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 资源组 | 选择“myResourceGroup”。 我们在上一部分创建了此资源组。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 **myVM**。 |
-    | 区域 | 选择 ** (us) 美国中南部**。 |
-    | 可用性选项 | 保留默认值“不需要基础结构冗余”****。 |
+    | 区域 | 选择 **(us) 美国中南部**。 |
+    | 可用性选项 | 保留默认值“不需要基础结构冗余”。 |
     | 映像 | 选择 " **Ubuntu Server 18.04 LTS-Gen1**"。 |
     | 大小 | 选择 **Standard_B2s**。 |
     | **管理员帐户** |  |
@@ -189,16 +189,16 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 3. 在完成时选择“下一步:**磁盘”** 。
 
-4. 在“创建虚拟机 - 磁盘”中保留默认值，然后选择“下一步:**** **网络”** 。
+4. 在“创建虚拟机 - 磁盘”中保留默认值，然后选择“下一步: **网络”** 。
 
 5. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 选择 **myVMVNet**。  |
-    | 子网 | 选择 **VMSubnet (10.1.0.0/24) **。|
-    | 公共 IP | 保留默认值“(new) myVm-ip”****。 |
-    | 公共入站端口 | 选择“允许所选端口”。 |
+    | 子网 | 选择 **VMSubnet (10.1.0.0/24)**。|
+    | 公共 IP | 保留默认值“(new) myVm-ip”。 |
+    | 公共入站端口 | 选择“允许所选端口”  。 |
     | 选择入站端口 | 选择 " **SSH**"。|
     ||
 
@@ -224,7 +224,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | **实例详细信息** |  |
     | 名称 | 输入 **myAzureFirewall**。 |
     | 区域 | 选择 " **美国中南部**"。 |
-    | 可用性区域 | 保留默认值“无”****。 |
+    | 可用性区域 | 保留默认值“无”。 |
     | 选择虚拟网络    |    选择 " **使用现有**"。    |
     | 虚拟网络    |    选择 **myAzFwVNet**。    |
     | 公共 IP 地址    |    选择 " **添加新** 项"，然后在 "名称" 中输入 **myFirewall**。    |
@@ -253,11 +253,11 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 诊断设置名称 | 输入 **myDiagSetting**。 |
     | 类别详细信息 | |
     | log | 选择 **AzureFirewallApplicationRule** 和 **AzureFirewallNetworkRule**。 |
-    | 目标详细信息 | 选择“发送到 Log Analytics”****。 |
+    | 目标详细信息 | 选择“发送到 Log Analytics”。 |
     | 订阅 | 选择订阅。 |
     | Log Analytics 工作区 | 选择 Log Analytics 工作区。 |
 
-6. 选择“保存”  。
+6. 选择“保存”。
 
 ## <a name="create-azure-sql-database"></a>创建 Azure SQL 数据库
 
@@ -279,8 +279,8 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 服务器管理员登录名 | 输入所选的名称。 |
     | 密码    |    输入所选密码。    |
     | 确认密码 | 重新输入密码    |
-    | 位置    | 选择 ** (us) 美国中南部**。    |
-    | 想要使用 SQL 弹性池    | 保留默认值“否”****。 |
+    | 位置    | 选择 **(us) 美国中南部**。    |
+    | 想要使用 SQL 弹性池    | 保留默认值“否”。 |
     | 计算 + 存储 | 保留默认 **常规用途 Gen5，2 vcore，32 GB 存储空间**。 |
     |||
 
@@ -296,7 +296,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 2. 在服务列表中选择 "Azure SQL server **mydbserver** "。  如果使用了其他服务器名称，请选择该名称。
 
-3. 在 "服务器设置" 中，选择 "**安全**" 下的**专用终结点连接**。
+3. 在 "服务器设置" 中，选择 "**安全**" 下的 **专用终结点连接**。
 
 4. 选择 “+ 专用终结点”。
 
@@ -309,7 +309,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 资源组 | 选择“myResourceGroup”。 |
     | **实例详细信息** | |
     | 名称 | 输入 **SQLPrivateEndpoint**。 |
-    | 区域 | 选择 ** (us) 美国中南部。** |
+    | 区域 | 选择 **(us) 美国中南部。** |
 
 6. 选择 " **资源** " 选项卡或选择页面底部的 " **下一步：资源** "。
 
@@ -319,7 +319,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | ------- | ----- |
     | 连接方法 | 选择“连接到我的目录中的 Azure 资源”。 |
     | 订阅 | 选择订阅。 |
-    | 资源类型 | 选择“Microsoft.Sql/servers”****。 |
+    | 资源类型 | 选择“Microsoft.Sql/servers”。 |
     | 资源 | 选择 **mydbserver** 或在上一步中创建的服务器的名称。
     | 目标子资源 | 选择 " **sqlServer**"。 |
 
@@ -339,21 +339,21 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 10. 选择 " **查看** " 和 "创建" 选项卡，或者在页面底部选择 "查看" " **+ 创建** "。
 
-11. 选择“创建”。
+11. 选择“创建”  。
 
 12. 创建终结点后，选择 "**安全**" 下的 "**防火墙和虚拟网络**"。
 
 13. 在 " **防火墙和虚拟网络**" 中，选择 "下一步 **"** 以 **允许 Azure 服务和资源访问此服务器**。
 
-14. 选择“保存”  。
+14. 选择“保存”。
 
 ## <a name="connect-the-virtual-networks-using-virtual-network-peering"></a>使用虚拟网络对等互连连接虚拟网络
 
-在本部分中，我们会使用对等互连将虚拟网络 **myVMVNet** 和 **MyPEVNet** 连接到 **myAzFwVNet** 。 **MyVMVNet**和**myPEVNet**之间不会直接连接。
+在本部分中，我们会使用对等互连将虚拟网络 **myVMVNet** 和 **MyPEVNet** 连接到 **myAzFwVNet** 。 **MyVMVNet** 和 **myPEVNet** 之间不会直接连接。
 
 1. 在门户的搜索栏中，输入 " **myAzFwVNet**"。
 
-2. 选择 "**设置**" 菜单下的**对等互连**，然后选择 " **+ 添加**"。
+2. 选择 "**设置**" 菜单下的 **对等互连**，然后选择 " **+ 添加**"。
 
 3. 在 " **添加对等互连** " 中输入或选择以下信息：
 
@@ -368,18 +368,18 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 从远程虚拟网络到 myAzFwVNet 的对等互连的名称    |    输入 **myVMVNet-myAzFwVNet**。    |
     | **配置** | |
     | **配置虚拟网络访问设置** | |
-    | 允许从 myAzFwVNet 到远程虚拟网络的虚拟网络访问 | 保留默认值“已启用”。****    |
-    | 允许从远程虚拟网络到 myAzFwVNet 的虚拟网络访问    | 保留默认值“已启用”。****    |
+    | 允许从 myAzFwVNet 到远程虚拟网络的虚拟网络访问 | 保留默认值“已启用”。    |
+    | 允许从远程虚拟网络到 myAzFwVNet 的虚拟网络访问    | 保留默认值“已启用”。    |
     | **配置转发的流量设置** | |
-    | 允许从远程虚拟网络转发到 myAzFwVNet 的流量    | 选择“启用”。 |
-    | 允许将流量从 myAzFwVNet 转发到远程虚拟网络 | 选择“启用”。 |
+    | 允许从远程虚拟网络转发到 myAzFwVNet 的流量    | 选择“**已启用**”。 |
+    | 允许将流量从 myAzFwVNet 转发到远程虚拟网络 | 选择“**已启用**”。 |
     | **配置网关传输设置** | |
     | 允许网关传输 | 保持未选中状态 |
     |||
 
 4. 选择“确定”。
 
-5. 选择“+ 添加”  。
+5. 选择“+ 添加”。
 
 6. 在 " **添加对等互连** " 中输入或选择以下信息：
 
@@ -394,11 +394,11 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 从远程虚拟网络到 myAzFwVNet 的对等互连的名称    |    输入 **myPEVNet-myAzFwVNet**。    |
     | **配置** | |
     | **配置虚拟网络访问设置** | |
-    | 允许从 myAzFwVNet 到远程虚拟网络的虚拟网络访问 | 保留默认值“已启用”。****    |
-    | 允许从远程虚拟网络到 myAzFwVNet 的虚拟网络访问    | 保留默认值“已启用”。****    |
+    | 允许从 myAzFwVNet 到远程虚拟网络的虚拟网络访问 | 保留默认值“已启用”。    |
+    | 允许从远程虚拟网络到 myAzFwVNet 的虚拟网络访问    | 保留默认值“已启用”。    |
     | **配置转发的流量设置** | |
-    | 允许从远程虚拟网络转发到 myAzFwVNet 的流量    | 选择“启用”。 |
-    | 允许将流量从 myAzFwVNet 转发到远程虚拟网络 | 选择“启用”。 |
+    | 允许从远程虚拟网络转发到 myAzFwVNet 的流量    | 选择“**已启用**”。 |
+    | 允许将流量从 myAzFwVNet 转发到远程虚拟网络 | 选择“**已启用**”。 |
     | **配置网关传输设置** | |
     | 允许网关传输 | 保持未选中状态 |
 
@@ -417,9 +417,9 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
 
 2. 在搜索结果中选择 " **privatelink.database.windows.net** "。
 
-3. 选择 "**设置**" 下的**虚拟网络链接**。
+3. 选择 "**设置**" 下的 **虚拟网络链接**。
 
-4. 选择“+ 添加”。****
+4. 选择“+ 添加”。
 
 5. 在 " **添加虚拟网络" 链接** 中输入或选择以下信息：
 
@@ -446,7 +446,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
 
 2. 在搜索结果中选择 " **myAzureFirewall** "。
 
-3. 在**myAzureFirewall**概述中的 "**设置**" 下选择**规则**。
+3. 在 **myAzureFirewall** 概述中的 "**设置**" 下选择 **规则**。
 
 4. 选择“应用程序规则集合”选项卡。
 
@@ -463,27 +463,27 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | **FQDN 标记** | |
     | 名称  | 留空。  |
     | 源类型 | 保留默认的 **IP 地址**。    |
-    | Source | 留空。 |
+    | 源 | 留空。 |
     | FQDN 标记 | 保留默认值 **0**。 |
     | **目标 Fqdn** | |
     | 名称 | 输入 **SQLPrivateEndpoint**。    |
     | 源类型 | 保留默认的 **IP 地址**。 |
-    | Source | 输入 **10.1.0.0/16**。 |
+    | 源 | 输入 10.1.0.0/16。 |
     | 协议：端口 | 输入 **mssql： 1433**。 |
-    | 目标 Fqdn | 输入 **mydbserver.database.windows.net**。 |
+    | 目标 FQDN | 输入 **mydbserver.database.windows.net**。 |
     |||
 
-7. 选择“添加”   。
+7. 选择 **添加** 。
 
 ## <a name="route-traffic-between-the-virtual-machine-and-private-endpoint-through-azure-firewall"></a>通过 Azure 防火墙在虚拟机和专用终结点之间路由流量
 
-我们未直接在虚拟网络 **myVMVNet** 和 **myPEVNet**之间创建虚拟网络对等互连。 虚拟机 **myVM** 没有到已创建的专用终结点的路由。 
+我们未直接在虚拟网络 **myVMVNet** 和 **myPEVNet** 之间创建虚拟网络对等互连。 虚拟机 **myVM** 没有到已创建的专用终结点的路由。 
 
 在本部分中，我们将创建包含自定义路由的路由表。 
 
-路由通过 Azure 防火墙将流量从 **myVM** 子网发送到虚拟网络 **myPEVNet**的地址空间。
+路由通过 Azure 防火墙将流量从 **myVM** 子网发送到虚拟网络 **myPEVNet** 的地址空间。
 
-1. 在 Azure 门户菜单上或在门户**主页**中，选择“创建资源”。
+1. 在 Azure 门户菜单上或在门户主页中，选择“创建资源”。
 
 2. 在搜索框中键入 **路由表** ，然后按 **enter**。
 
@@ -507,9 +507,9 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
 
 7. 部署完成后，选择 " **前往资源**"。
 
-8. 选择 "**设置**" 下的 "**路由**"。
+8. 在“设置”下选择“路由”。 
 
-9. 选择“+ 添加”  。
+9. 选择“+ 添加”。
 
 10. 在 " **添加路由** " 页上，输入或选择以下信息：
 
@@ -517,14 +517,14 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | ------- | ----- |
     | 路由名称 | 输入 **myVMsubnet-privateendpoint**。 |
     | 地址前缀 | 输入 **10.2.0.0/16**。  |
-    | 下一跃点类型 | 选择“虚拟设备”。**** |
+    | 下一跃点类型 | 选择“虚拟设备”。 |
     | 下一跃点地址 | 输入 **10.0.0.4**。 |
 
 11. 选择“确定”。
 
-12. 选择 "**设置**" 下的**子网**。
+12. 选择 "**设置**" 下的 **子网**。
 
-13. 选择“+ 关联”。****
+13. 选择“+ 关联”。
 
 14. 在 " **关联子网** " 页上，输入或选择以下信息：
 
@@ -555,7 +555,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     ssh username@IPaddress
     ```
 
-5. 输入创建**myVm**时定义的密码
+5. 输入创建 **myVm** 时定义的密码
 
 ## <a name="access-sql-server-privately-from-the-virtual-machine"></a>从虚拟机私下访问 SQL Server
 
@@ -575,7 +575,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     Address: 10.2.0.4
     ```
 
-2. 安装 [SQL Server 命令行工具](https://docs.microsoft.com/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)。
+2. 安装 [SQL Server 命令行工具](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)。
 
 3. 运行以下命令以连接到 SQL Server。 使用在前面的步骤中创建 SQL Server 时定义的服务器管理员和密码。
 
@@ -588,7 +588,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     ```
 4. 成功登录时，将显示 SQL 命令提示符。 输入 **exit** 退出 **sqlcmd** 工具。
 
-5. 输入**exit**，关闭与**myVM**的连接。
+5. 输入 **exit**，关闭与 **myVM** 的连接。
 
 ## <a name="validate-the-traffic-in-azure-firewall-logs"></a>验证 Azure 防火墙日志中的流量
 
@@ -598,7 +598,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
 
 3. 选择蓝色的 " **开始** " 按钮。
 
-4. 在 "**示例查询**" 窗口中，选择 "**所有查询**" 下的**防火墙**。
+4. 在 "**示例查询**" 窗口中，选择 "**所有查询**" 下的 **防火墙**。
 
 5. 选择 "**应用程序规则日志数据**" 下的 "**运行**" 按钮。
 
@@ -608,9 +608,9 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
 
 使用完资源后，删除资源组及其包含的所有资源：
 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”************。
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”。
 
-1. 选择“删除资源组”。
+1. 选择“删除资源组”  。
 
 1. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除” 。
 

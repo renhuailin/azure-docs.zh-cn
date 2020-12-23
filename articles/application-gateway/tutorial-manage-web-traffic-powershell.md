@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f29b31b09c2532c336ef2a2d574fab5e000b3e4b
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7e410218117aa0d21167b6d615a3835aeec470e7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595856"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397098"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>通过 Azure PowerShell 使用应用程序网关管理 Web 流量
 
-应用程序网关用于管理和保护传入你维护的服务器的 Web 流量。 可以使用 Azure PowerShell 创建使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作为后端服务器的[应用程序网关](overview.md)以管理 Web 流量。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
+应用程序网关用于管理和保护传入你维护的服务器的 Web 流量。 可以使用 Azure PowerShell 创建使用[虚拟机规模集](../virtual-machine-scale-sets/overview.md)作为后端服务器的[应用程序网关](overview.md)以管理 Web 流量。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
 
 在本文中，学习如何：
 
@@ -257,4 +257,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Web 应用程序防火墙限制 Web 流量](./tutorial-restrict-web-traffic-powershell.md)
+[使用 Web 应用程序防火墙限制 Web 流量](../web-application-firewall/ag/tutorial-restrict-web-traffic-powershell.md)

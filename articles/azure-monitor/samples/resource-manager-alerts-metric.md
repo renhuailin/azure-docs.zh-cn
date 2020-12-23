@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c05f9a326fcbe75a3348e58987d57e106094cf56
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322289"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510560"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>用于 Azure Monitor 指标警报规则的资源管理器模板示例
 
@@ -343,7 +343,7 @@ ms.locfileid: "87322289"
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -480,7 +480,7 @@ ms.locfileid: "87322289"
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -875,7 +875,7 @@ ms.locfileid: "87322289"
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -3132,7 +3132,7 @@ ms.locfileid: "87322289"
 > [!NOTE]
 > `&amp`; 是 & 的 HTML 实体引用。 URL 参数仍由单个 & 分隔，但如果在 HTML 中提到了 URL，则需要对其进行编码。 因此，如果 pingURL 参数值中包含“&”，则必须使用“`&amp`;”对其进行转义。
 
-### <a name="parameter-file"></a>参数文件
+### <a name="template-file"></a>模板文件
 
 ```json
 {
@@ -3234,8 +3234,6 @@ ms.locfileid: "87322289"
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>参数文件
 
 ```json
@@ -3254,12 +3252,53 @@ ms.locfileid: "87322289"
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+内容匹配 `pingText` 参数的其他配置在模板文件的 `Configuration/Webtest` 部分进行控制。 特别是以下部分：
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>测试位置
+
+|ID                  | 区域           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | 西欧      |
+| `us-ca-sjc-azr`    | 美国西部          |
+| `emea-ru-msa-edge` | 英国南部         |
+| `emea-se-sto-edge` | 英国西部          |
+| `apac-sg-sin-azr`  | 东南亚   |
+| `us-tx-sn1-azr`    | 美国中南部 |
+| `us-il-ch1-azr`    | 美国中北部 |
+| `emea-gb-db3-azr`  | 北欧     |
+| `apac-jp-kaw-edge` | 日本东部       |
+| `emea-fr-pra-edge` | 法国中部   |
+| `emea-ch-zrh-edge` | 法国南部     |
+| `us-va-ash-azr`    | 美国东部          |
+| `apac-hk-hkn-azr`  | 东亚        |
+| `us-fl-mia-edge`   | Central US       |
+| `latam-br-gru-edge`| 巴西南部      |
+| `emea-au-syd-edge` | 澳大利亚东部   |
+
+### <a name="us-government-test-locations"></a>美国政府测试位置
+
+|ID                    | 区域           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
 
 ## <a name="next-steps"></a>后续步骤
 

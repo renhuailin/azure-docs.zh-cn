@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff19275270e5b6572fb7d637b88c4736a3aa6ea0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530584"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456477"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>教程：将 Carbonite Endpoint Backup 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88530584"
 * 让用户使用其 Azure AD 帐户自动登录到 Carbonite Endpoint Backup。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "88530584"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Carbonite Endpoint Backup**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Carbonite Endpoint Backup** 。 
 1. 从结果面板中选择“Carbonite Endpoint Backup”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
@@ -129,19 +129,19 @@ ms.locfileid: "88530584"
 
 4. 在左侧窗格中单击“公司”。 
 
-    ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![屏幕截图显示 Carbonite Endpoint，其中选择了“公司”。](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. 单击“单一登录”。 
 
-    ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![屏幕截图显示已选择“单一登录”的“公司”。](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. 单击“启用”，然后单击“编辑设置”进行配置。  
 
-    ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![屏幕截图显示“单一登录”选项卡，其中突出显示了“启用”和“编辑设置”。](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. 在“单一登录”设置页上执行以下步骤： 
 
-    ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![屏幕截图显示“单一登录”选项卡以及此步骤中所述的信息。](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. 在“标识提供者名称”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。  
 
@@ -149,7 +149,7 @@ ms.locfileid: "88530584"
 
     1. 单击“选择文件”，上传从 Azure 门户下载的“Certificate(Base64)”文件。  
 
-    1. 单击“ **保存**”。
+    1. 单击“ **保存** ”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -187,11 +187,11 @@ ms.locfileid: "88530584"
 
 1. 在左窗格中单击“用户”，然后单击“添加用户”。  
 
-    ![在 Carbonite Endpoint Backup 中添加用户](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![屏幕截图显示 Carbonite Endpoint 页，其中已选择“用户”和“添加用户”。](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. 在“添加用户”页上执行以下步骤： 
 
-    ![在 Carbonite Endpoint Backup 中添加用户](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![屏幕截图显示“添加用户”页，可在其中执行此处所述步骤。](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. 输入用户的“电子邮件”、“名字”和“姓氏”，并根据组织要求向用户提供所需的权限。   
 
@@ -201,12 +201,12 @@ ms.locfileid: "88530584"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Carbonite Endpoint Backup”磁贴时，应会自动登录到设置了 SSO 的 Carbonite Endpoint Backup。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Carbonite Endpoint Backup”磁贴时，应会自动登录到设置了 SSO 的 Carbonite Endpoint Backup。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

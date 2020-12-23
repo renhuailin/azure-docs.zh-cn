@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 5e7bdce3a195d8171fef1963f2e389bfeec5fffb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 19927fd274cbb7337248fb2ae8cf9d882612d570
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91571935"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369211"
 ---
 Azure 数据工厂支持以下转换活动，这些活动既可以单独添加到管道，也可以与其他活动关联在一起添加。
 
@@ -20,7 +20,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 | [MapReduce](../articles/data-factory/v1/data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop 流式处理](../articles/data-factory/v1/data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Spark](../articles/data-factory/v1/data-factory-spark.md) | HDInsight [Hadoop] |
-| [机器学习活动：批处理执行和更新资源](../articles/data-factory/v1/data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [Azure 机器学习工作室（经典版）活动：批处理执行和更新资源](../articles/data-factory/v1/data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [存储过程](../articles/data-factory/v1/data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics 或 SQL Server |
 | [Data Lake Analytics U-SQL](../articles/data-factory/v1/data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](../articles/data-factory/v1/data-factory-use-custom-activities.md) |HDInsight [Hadoop] 或 Azure Batch |

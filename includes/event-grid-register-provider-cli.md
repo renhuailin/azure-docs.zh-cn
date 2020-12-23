@@ -7,13 +7,13 @@ ms.service: event-grid
 ms.topic: include
 ms.date: 08/17/2018
 ms.author: tomfitz
-ms.custom: include file
-ms.openlocfilehash: b48e5e28b15d17796138d493a7d9c628791df2e6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 6c5ab187eb1307a95bbae4ff39d387221e094ea5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87830109"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736870"
 ---
 ## <a name="enable-the-event-grid-resource-provider"></a>启用事件网格资源提供程序
 

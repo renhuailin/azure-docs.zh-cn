@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 149d0ae99975628239f8b08f3987947a99e01cbb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373362"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893227"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
@@ -29,8 +29,8 @@ ms.locfileid: "87373362"
 若要使用 Java 和 IntelliJ 开发函数，请安装以下软件：
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-+ [Azure 支持的 Java 开发工具包 (JDK)](https://aka.ms/azure-jdks)（适用于 Java 8）
-+ 安装了 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
++ [Azure 支持的 Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support)（适用于 Java 8）
++ 已安装的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
 + [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 + 最新的 [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)
 
@@ -114,7 +114,7 @@ ms.locfileid: "87373362"
 
 1. 选择要部署的函数应用（自动选择你刚刚创建的新函数应用）。 单击“运行”以部署函数。
 
-    ![将函数部署到 Azure - 运行](media/functions-create-first-java-intellij/deploy-functions-run.png)
+    ![屏幕截图显示 "部署 Azure Functions" 对话框。](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![将函数部署到 Azure - 日志](media/functions-create-first-java-intellij/deploy-functions-log.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "87373362"
 
 1. 右键单击 HttpTrigger-Java 函数，然后选择“触发器函数”，你可看到浏览器打开了触发器 URL。
 
-    ![将函数部署到 Azure - 运行](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
+    ![屏幕截图显示带有 U R L 的浏览器。](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
 
 ## <a name="add-more-functions-to-the-project"></a>向项目添加更多函数
 
@@ -140,7 +140,7 @@ ms.locfileid: "87373362"
 
 1. 在“创建函数类”向导中填写类名 HttpTest并选择 HttpTrigger，单击“确定”即可创建。采用这种方式，你可根据需要创建新的函数。
 
-    ![向项目中添加函数 - 选择触发器](media/functions-create-first-java-intellij/add-functions-trigger.png)
+    ![屏幕截图显示 "创建函数类" 对话框。](media/functions-create-first-java-intellij/add-functions-trigger.png)
     
     ![向项目添加函数 - 输出](media/functions-create-first-java-intellij/add-functions-output.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "87373362"
 
 1. 在 Azure 资源管理器中删除 Azure 函数
       
-      ![向项目中添加函数 - 选择触发器](media/functions-create-first-java-intellij/delete-function.png)
+      ![屏幕截图显示从上下文菜单中选择的 "删除"。](media/functions-create-first-java-intellij/delete-function.png)
       
 
 ## <a name="next-steps"></a>后续步骤

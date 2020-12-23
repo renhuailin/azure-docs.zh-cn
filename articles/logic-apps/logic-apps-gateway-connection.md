@@ -7,15 +7,15 @@ ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 08/18/2020
 ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661191"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009241"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
-在[本地计算机上安装本地*数据网关*](../logic-apps/logic-apps-gateway-install.md)并在从逻辑应用访问本地数据源之前，需要在 Azure 中创建网关资源，以便安装网关。 然后，你可以在要用于 Azure 逻辑应用中可用的 [本地连接器](../connectors/apis-list.md#on-premises-connectors) 的触发器和操作中选择此网关资源。 Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
+在 [本地计算机上安装本地 *数据网关*](../logic-apps/logic-apps-gateway-install.md)并在从逻辑应用访问本地数据源之前，需要在 Azure 中创建网关资源，以便安装网关。 然后，你可以在要用于 Azure 逻辑应用中可用的 [本地连接器](../connectors/apis-list.md#on-premises-connectors) 的触发器和操作中选择此网关资源。 Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
 
 本文介绍如何为以前[安装在本地计算机上的网关](../logic-apps/logic-apps-gateway-install.md)创建 Azure 网关资源。 有关网关的详细信息，请参阅[网关的工作原理](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)。
 
@@ -171,7 +171,7 @@ ms.locfileid: "88661191"
 
 * 你的网关安装已与另一网关资源关联。 每个网关资源只能链接到一个网关安装，只能链接到一个 Azure 帐户和订阅。 因此，不能选择已与另一网关资源关联的网关安装。 这些安装不会显示在“安装名称”列表中。
 
-  若要查看 Azure 门户中的网关注册，请在*所有*azure 订阅中查找具有**本地数据网关**资源类型的所有 azure 资源。 若要取消关联其他网关资源中的网关安装，请参阅[删除网关资源](#change-delete-gateway-resource)。
+  若要查看 Azure 门户中的网关注册，请在 *所有* azure 订阅中查找具有 **本地数据网关** 资源类型的所有 azure 资源。 若要取消关联其他网关资源中的网关安装，请参阅[删除网关资源](#change-delete-gateway-resource)。
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

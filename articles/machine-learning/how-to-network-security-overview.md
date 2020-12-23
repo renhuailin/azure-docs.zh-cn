@@ -1,5 +1,5 @@
 ---
-title: 虚拟网络隔离和隐私概述
+title: 虚拟网络隔离和安全概述
 titleSuffix: Azure Machine Learning
 description: 使用与 Azure 机器学习隔离的 Azure 虚拟网络来保护工作区资源和计算环境。
 services: machine-learning
@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
+ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825513"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029594"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -31,10 +31,10 @@ ms.locfileid: "91825513"
 ## <a name="prerequisites"></a>先决条件
 
 本文假定您已熟悉以下主题：
-+ [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-+ [IP 网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
++ [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)
++ [IP 网络](../virtual-network/public-ip-addresses.md)
 + [Azure 专用链接](how-to-configure-private-link.md)
-+ [ (NSG 的网络安全组) ](../virtual-network/security-overview.md)
++ [ (NSG 的网络安全组) ](../virtual-network/network-security-groups-overview.md)
 + [网络防火墙](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>示例方案
@@ -43,7 +43,7 @@ ms.locfileid: "91825513"
 
 下表比较了服务如何使用 VNet 而不使用 VNet 访问 Azure 机器学习网络的不同部分。
 
-| 方案 | 工作区 | 关联的资源 | 训练计算环境 | 推断计算环境 |
+| 场景 | 工作区 |  关联的资源 | 训练计算环境 | 推断计算环境 |
 |-|-|-|-|-|-|
 |**无虚拟网络**| 公共 IP | 公共 IP | 公共 IP | 公共 IP |
 |**保护虚拟网络中的资源**| 专用 IP (专用终结点)  | 公共 IP (服务终结点)  <br> **或** <br> 专用 IP (专用终结点)  | 专用 IP | 专用 IP  | 
@@ -145,10 +145,11 @@ ms.locfileid: "91825513"
 
 * 预览工作室中的数据。
 * 在设计器中将数据可视化。
+* 在设计器中部署模型。
 * 提交 AutoML 试验。
 * 启动标记项目。
 
-若要在 VNet 内部启用完整的 studio 功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支持使用服务终结点或专用终结点的存储帐户。
+若要在 VNet 内部启用完整的 studio 功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)。 Studio 支持使用服务终结点或专用终结点的存储帐户。
 
 ### <a name="limitations"></a>限制
 - [ML 辅助数据标记](how-to-create-labeling-projects.md#use-ml-assisted-labeling) 不支持虚拟网络后保护的默认存储帐户。 对于 ML 辅助数据标签，必须使用非默认存储帐户。 请注意，非默认存储帐户可在虚拟网络后受到保护。 

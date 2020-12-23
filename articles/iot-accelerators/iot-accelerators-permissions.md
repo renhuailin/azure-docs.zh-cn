@@ -8,21 +8,21 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447418"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387830"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 azureiotsolutions.com 站点来部署解决方案加速器
 
-可从 [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) 将 Azure IoT 解决方案加速器部署到 Azure 订阅。 AzureIoTSolutions.com 同时托管 Microsoft 开源解决方案加速器和合作伙伴解决方案加速器。 这些解决方案加速器适用于 [Azure IoT 参考体系结构](https://aka.ms/iotrefarchitecture)。 可使用该站点快速部署解决方案加速器作为演示或生产环境。
+可从 [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) 将 Azure IoT 解决方案加速器部署到 Azure 订阅。 AzureIoTSolutions.com 同时托管 Microsoft 开源解决方案加速器和合作伙伴解决方案加速器。 这些解决方案加速器适用于 [Azure IoT 参考体系结构](/azure/architecture/reference-architectures/iot)。 可使用该站点快速部署解决方案加速器作为演示或生产环境。
 
-![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
+:::image type="content" source="media/iot-accelerators-permissions/iotsolutionscom.png" alt-text="IoT 解决方案主页":::
 
 > [!TIP]
-> 如果需要对部署过程进行更多控制，则可以使用 [CLI 来部署解决方案加速器](iot-accelerators-remote-monitoring-deploy-cli.md)。
+> 如果需要对部署过程进行更多控制，则可以使用 CLI 来部署解决方案加速器。
 
 可在以下配置中部署解决方案加速器：
 
@@ -34,11 +34,11 @@ ms.locfileid: "61447418"
 
 ## <a name="sign-in-at-azureiotsolutionscom"></a>登录 azureiotsolutions.com
 
-必须先使用与 Azure 订阅关联的凭据登录 AzureIoTSolutions.com，然后才能部署解决方案加速器。 如果帐户与多个 Microsoft Azure Active Directory (AD) 租户关联，则可以使用**帐户选择下拉列表**选择要使用的目录。
+必须先使用与 Azure 订阅关联的凭据登录 AzureIoTSolutions.com，然后才能部署解决方案加速器。 如果帐户与多个 Microsoft Azure Active Directory (AD) 租户关联，则可以使用 **帐户选择下拉列表** 选择要使用的目录。
 
 部署解决方案加速器、管理用户以及管理 Azure 服务的权限取决于你在所选目录中的角色。 与解决方案加速器关联的常见 Azure AD 角色包括：
 
-* **全局管理员**：每个 Azure AD 租户可以有多个 [全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md) ：
+* **全局管理员**：每个 Azure AD 租户可以有多个 [全局管理员](../active-directory/roles/permissions-reference.md) ：
 
   * 创建某个 Azure AD 租户时，默认情况下会成为该租户的全局管理员。
   * 全局管理员可以部署基本和标准解决方案加速器。
@@ -60,13 +60,8 @@ AzureIoTSolutions.com 站点链接到 [Azure IoT 认证设备目录](https://cat
 
 ![设备目录](media/iot-accelerators-permissions/devicecatalog.png)
 
-如果你是硬件制造商，请单击“成为合作伙伴”，了解如何成为 Microsoft IoT 认证计划的合作伙伴****。
+如果你是硬件制造商，请单击“成为合作伙伴”，了解如何成为 Microsoft IoT 认证计划的合作伙伴。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要试用某个 IoT 解决方案加速器，请参阅以下快速入门：
-
-* [尝试远程监视解决方案](quickstart-remote-monitoring-deploy.md)
-* [尝试连接工厂解决方案](quickstart-connected-factory-deploy.md)
-* [尝试预测性维护解决方案](quickstart-predictive-maintenance-deploy.md)
-* [尝试设备模拟解决方案](quickstart-device-simulation-deploy.md)
+若要试用一个 IoT 解决方案加速器，请查看快速入门： [试用已连接的工厂解决方案](quickstart-connected-factory-deploy.md)。

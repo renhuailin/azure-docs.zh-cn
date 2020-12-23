@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: c817608a9e015c69b252f69000d78437e918b8f8
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631505"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498925"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护-设计复原解决方案
 
@@ -42,22 +42,22 @@ DDoS 是企图耗尽应用程序资源的一种攻击。 其目的是影响应�
 为帮助保护 Microsoft Azure 上运行的服务，应该对应用程序体系结构有充分的了解，并重点关注[软件质量的五大要素](/azure/architecture/guide/pillars)。
 应该清楚典型的流量大小、应用程序与其他应用程序之间的连接模型，以及向公共 Internet 公开的服务终结点。
 
-至关重要的一点是，确保应用程序具有足够的弹性，可应对针对应用程序本身的拒绝服务攻击。 从 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx) 开始，安全和隐私就已内置到 Azure 平台中。 SDL 可以解决每个开发阶段的安全性，并确保 Azure 不断更新，以变得越来越安全。
+至关重要的一点是，确保应用程序具有足够的弹性，可应对针对应用程序本身的拒绝服务攻击。 从[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx) 开始，安全和隐私就已内置到 Azure 平台中。 SDL 可以解决每个开发阶段的安全性，并确保 Azure 不断更新，以变得越来越安全。
 
 ### <a name="design-for-scalability"></a>可伸缩性设计
 
 可伸缩性是指系统处理增加的负载的能力。 采用可[横向缩放](/azure/architecture/guide/design-principles/scale-out)的应用程序设计，以满足放大负载的需求，尤其是防范 DDoS 攻击。 如果应用程序依赖于服务的单个实例，则会造成单一故障点。 预配多个实例能够提高复原能力和可伸缩性。
 
-对于 [Azure 应用服务](/azure/app-service/app-service-value-prop-what-is)，请选择提供多个实例的[应用服务计划](/azure/app-service/overview-hosting-plans)。 对于 Azure 云服务，请将每个角色配置为使用[多个实例](/azure/cloud-services/cloud-services-choose-me)。 对于 [Azure 虚拟机](../../virtual-machines/index.yml)，请确保虚拟机 (VM) 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](../../virtual-machines/windows/tutorial-availability-sets.md)中。 我们建议使用[虚拟机规模集](../../virtual-machine-scale-sets/overview.md)来实现自动缩放功能。
+对于 [Azure 应用服务](../../app-service/overview.md)，请选择提供多个实例的[应用服务计划](../../app-service/overview-hosting-plans.md)。 对于 Azure 云服务，请将每个角色配置为使用[多个实例](../../cloud-services/cloud-services-choose-me.md)。 对于 [Azure 虚拟机](../../virtual-machines/index.yml)，请确保虚拟机 (VM) 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](../../virtual-machines/windows/tutorial-availability-sets.md)中。 我们建议使用[虚拟机规模集](../../virtual-machine-scale-sets/overview.md)来实现自动缩放功能。
 
 ### <a name="defense-in-depth"></a>深层防御
 
 深层防御的理念是通过多样化的防御策略来掌控风险。 应用程序中的分层安全防御可以减少攻击成功的可能性。 我们建议使用 Azure 平台的内置功能对其应用程序实施安全设计。
 
-例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。** 你可以通过使用审批列表来关闭公开的 IP 地址空间，并将负载平衡器上不需要的侦听端口关闭 ([Azure 负载平衡器](/azure/load-balancer/load-balancer-get-started-internet-portal) 和 [Azure 应用程序网关](/azure/application-gateway/application-gateway-create-probe-portal)) ，从而减少外围应用。 [网络安全组 (NSG)](/azure/virtual-network/security-overview) 是缩小受攻击面的另一种方法。
-可以使用[服务标记](/azure/virtual-network/security-overview#service-tags)和[应用程序安全组](/azure/virtual-network/security-overview#application-security-groups)来最大程度地简化安全规则的创建，并将网络安全性配置为应用程序结构的自然扩展。
+例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。 你可以通过使用审批列表来关闭公开的 IP 地址空间，并将负载平衡器上不需要的侦听端口关闭 ([Azure 负载平衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) 和 [Azure 应用程序网关](../../application-gateway/application-gateway-create-probe-portal.md)) ，从而减少外围应用。 [网络安全组 (NSG)](../../virtual-network/network-security-groups-overview.md) 是缩小受攻击面的另一种方法。
+可以使用[服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)和[应用程序安全组](../../virtual-network/network-security-groups-overview.md#application-security-groups)来最大程度地简化安全规则的创建，并将网络安全性配置为应用程序结构的自然扩展。
 
-应尽可能地在[虚拟网络](/azure/virtual-network/virtual-networks-overview)中部署 Azure 服务。 这种做法可让服务资源通过专用 IP 地址通信。 来自虚拟网络的 Azure 服务流量默认使用公共 IP 地址作为源 IP 地址。 使用[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)时，服务流量会在通过虚拟网络访问 Azure 服务时改用虚拟网络专用地址作为源 IP 地址。
+应尽可能地在[虚拟网络](../../virtual-network/virtual-networks-overview.md)中部署 Azure 服务。 这种做法可让服务资源通过专用 IP 地址通信。 来自虚拟网络的 Azure 服务流量默认使用公共 IP 地址作为源 IP 地址。 使用[服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)时，服务流量会在通过虚拟网络访问 Azure 服务时改用虚拟网络专用地址作为源 IP 地址。
 
 我们经常看到，客户本地资源会连同其在 Azure 中资源的一起受到攻击。 如果将本地环境连接到 Azure，我们建议尽量不要在公共 Internet 上公开本地资源。 可以通过在 Azure 中部署已知的公共实体，来利用 Azure 的规模和高级 DDoS 防护功能。 由于这些可公开访问的实体通常会成为 DDoS 攻击的目标，将它们放在 Azure 中可以降低对本地资源的影响。
 
@@ -71,9 +71,9 @@ Azure 提供两个可以防御网络攻击（第 3 层和第 4 层）的 DDoS �
 
 ![Azure 网络地图，其中包含文字“全球 DDoS 缓解措施”和“领先的 DDoS 缓解能力”](./media/ddos-best-practices/image3.png)
 
-Azure 中的基本 DDoS 防护包括硬件和软件组件。 软件控制平面决定何时、何处的何种流量应该流过用于分析和消除攻击流量的硬件设备。 控制平面根据基础结构范围的 DDoS 防护策略做出此决定。** 此策略是静态设置的，将全局应用到所有 Azure 客户。
+Azure 中的基本 DDoS 防护包括硬件和软件组件。 软件控制平面决定何时、何处的何种流量应该流过用于分析和消除攻击流量的硬件设备。 控制平面根据基础结构范围的 DDoS 防护策略做出此决定。 此策略是静态设置的，将全局应用到所有 Azure 客户。
 
-例如，DDoS 防护策略指定在生成多大的流量后应触发保护。**  (即，应通过清理设备路由租户的流量。 ) 策略，然后指定清理设备应如何 *缓解* 攻击。
+例如，DDoS 防护策略指定在生成多大的流量后应触发保护。  (即，应通过清理设备路由租户的流量。 ) 策略，然后指定清理设备应如何 *缓解* 攻击。
 
 Azure DDoS 防护基本服务用于实现基础结构保护和 Azure 平台保护。 当流量速率过大，从而可能影响到多租户环境中的多个客户时，该服务会降低流量。 它不提供警报或者按客户自定义的策略。
 
@@ -83,7 +83,7 @@ Azure DDoS 防护基本服务用于实现基础结构保护和 Azure 平台保�
 
 #### <a name="adaptive-real-time-tuning"></a>自适应实时优化
 
-Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。** 一般来说，最近攻击（例如多向量 DDoS）的复杂性，以及租户的应用程序特定行为，要求按客户采用自定义的保护策略。 该服务使用两项见解来实现这种自定义：
+Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。 一般来说，最近攻击（例如多向量 DDoS）的复杂性，以及租户的应用程序特定行为，要求按客户采用自定义的保护策略。 该服务使用两项见解来实现这种自定义：
 
 - 自动学习每个客户（每个 IP）的第 3 层和第 4 层流量模式。
 
@@ -93,13 +93,13 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 防护遥测、监视和警报
 
-标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](/azure/azure-monitor/overview) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断界面将日志记录与 Splunk (Azure 事件中心) 、Azure Monitor 日志和 Azure 存储集成，以便进行高级分析。
+标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](../../azure-monitor/overview.md) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断界面将日志记录与 Splunk (Azure 事件中心) 、Azure Monitor 日志和 Azure 存储集成，以便进行高级分析。
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 
-在 Azure 门户中，选择 "**监视**  >  **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。******** DDoS 指标将显示在“可用指标”窗格中。****
+在 Azure 门户中，选择 "**监视**  >  **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
 
-标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。****
+标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。
 
 ![可用指标和指标图表](./media/ddos-best-practices/image7.png)
 
@@ -107,17 +107,17 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ##### <a name="metric-for-an-ip-address-under-ddos-attack"></a>受 DDoS 攻击的 IP 地址的指标
 
-如果公共 IP 地址受到攻击，则“是否受 DDoS 攻击”指标的值将切换为 1，因为 DDoS 防护会针对攻击流量执行缓解措施。****
+如果公共 IP 地址受到攻击，则“是否受 DDoS 攻击”指标的值将切换为 1，因为 DDoS 防护会针对攻击流量执行缓解措施。
 
 ![“是否受 DDoS 攻击”指标和图表](./media/ddos-best-practices/image8.png)
 
 我们建议对此指标配置警报。 然后，在对公共 IP 地址执行主动的 DDoS 缓解措施时会收到通知。
 
-有关详细信息，请参阅[使用 Azure 门户管理标准 Azure DDoS 防护](/azure/virtual-network/ddos-protection-manage-portal)。
+有关详细信息，请参阅[使用 Azure 门户管理标准 Azure DDoS 防护](../../ddos-protection/manage-ddos-protection.md)。
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>防范资源攻击的 Web 应用程序防火墙
 
-针对应用层中发生的资源攻击，应该配置 Web 应用程序防火墙 (WAF) 来帮助保护 Web 应用程序。 WAF 会检查入站 Web 流量，以阻止 SQL 注入、跨站点脚本、DDoS 和其他第 7 层攻击。 Azure 提供 [WAF 作为应用程序网关的一项功能](/azure/application-gateway/application-gateway-web-application-firewall-overview)，以便在出现常见攻击和漏洞时为 Web 应用程序提供集中保护。 此外，Azure 合作伙伴还会通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)提供其他 WAF 产品/服务，它们可能更适合解决你的需求。
+针对应用层中发生的资源攻击，应该配置 Web 应用程序防火墙 (WAF) 来帮助保护 Web 应用程序。 WAF 会检查入站 Web 流量，以阻止 SQL 注入、跨站点脚本、DDoS 和其他第 7 层攻击。 Azure 提供 [WAF 作为应用程序网关的一项功能](../../web-application-firewall/ag/ag-overview.md)，以便在出现常见攻击和漏洞时为 Web 应用程序提供集中保护。 此外，Azure 合作伙伴还会通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)提供其他 WAF 产品/服务，它们可能更适合解决你的需求。
 
 即使是 Web 应用程序防火墙这样的服务，也很容易遭受容量耗尽和状态耗尽攻击。 我们强烈建议在 WAF 虚拟网络上启用标准 DDoS 防护，以帮助防范容量耗尽攻击和协议攻击。 有关详细信息，请参阅 [DDoS 防护参考体系结构](#ddos-protection-reference-architectures)部分。
 
@@ -179,7 +179,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 ### <a name="alerts-during-an-attack"></a>攻击期间的警报
 
-标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标[配置警报](/azure/virtual-network/ddos-protection-manage-portal)。**** 可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
+标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标[配置警报](../../ddos-protection/manage-ddos-protection.md)。 可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
 
 #### <a name="when-to-contact-microsoft-support"></a>何时与 Microsoft 支持部门联系
 
@@ -187,7 +187,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 - 认为 DDoS 防护服务不按预期方式运行。 
 
-  仅当指标值“触发 DDoS 缓解措施的策略(TCP/TCP SYN/UDP)”低于受保护公共 IP 资源上收到的流量时，DDoS 防护服务才会启动缓解措施。****
+  仅当指标值“触发 DDoS 缓解措施的策略(TCP/TCP SYN/UDP)”低于受保护公共 IP 资源上收到的流量时，DDoS 防护服务才会启动缓解措施。
 
 - 规划的某个病毒事件导致网络流量显著增加。
 
@@ -211,7 +211,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 ## <a name="ddos-protection-reference-architectures"></a>DDoS 防护参考体系结构
 
-标准 DDoS 防护面向[虚拟网络中部署的服务](/azure/virtual-network/virtual-network-for-azure-services)。 对于其他服务，将会应用默认的基本 DDoS 防护服务。 以下参考体系结构按场景进行整理，体系结构模式已分组在一起。
+标准 DDoS 防护面向[虚拟网络中部署的服务](../../virtual-network/virtual-network-for-azure-services.md)。 对于其他服务，将会应用默认的基本 DDoS 防护服务。 以下参考体系结构按场景进行整理，体系结构模式已分组在一起。
 
 ### <a name="virtual-machine-windowslinux-workloads"></a>虚拟机 (Windows/Linux) 工作负荷
 
@@ -235,14 +235,14 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 #### <a name="paas-web-application"></a>PaaS Web 应用程序
 
-此参考体系结构显示了在单个区域中运行 Azure 应用服务应用程序。 此体系结构显示了一组适用于使用 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)   和 [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)的 web 应用程序的经过验证的做法。
+此参考体系结构显示了在单个区域中运行 Azure 应用服务应用程序。 此体系结构显示了针对使用 [Azure 应用服务](https://azure.microsoft.com/documentation/services/app-service/)和 [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)的 Web 应用程序运用的一套经过证实的做法。
 已针对故障转移场景设置了备用区域。
 
 ![PaaS Web 应用程序的参考体系结构示意图](./media/ddos-best-practices/image11.png)
 
 Azure 流量管理器将传入的请求路由到某个区域中的应用程序网关。 在正常操作期间，它会将请求路由到活动区域中的应用程序网关。 如果该区域不可用，流量管理器会故障转移到备用区域中的应用程序网关。
 
-从 Internet 发往 Web 应用程序的所有流量通过流量管理器路由到[应用程序网关公共 IP 地址](/azure/application-gateway/application-gateway-web-app-overview)。 在此场景中，应用服务（Web 应用）本身不直接面向外部，且受应用程序网关的保护。 
+从 Internet 发往 Web 应用程序的所有流量通过流量管理器路由到[应用程序网关公共 IP 地址](../../application-gateway/application-gateway-web-app-overview.md)。 在此场景中，应用服务（Web 应用）本身不直接面向外部，且受应用程序网关的保护。 
 
 我们建议配置应用程序网关 WAF SKU（预防模式）来帮助防范第 7 层（HTTP/HTTPS/Web 套接字）攻击。 此外，Web 应用配置为[仅接受来自应用程序网关 IP 地址的流量](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)。
 
@@ -252,7 +252,7 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 #### <a name="hdinsight-on-azure"></a>Azure 上的 HDInsight
 
-此参考体系结构显示如何为 [Azure HDInsight 群集](/azure/hdinsight/)配置标准 DDoS 防护。 确保 HDInsight 群集已链接到虚拟网络，并在该虚拟网络上启用了 DDoS 防护。
+此参考体系结构显示如何为 [Azure HDInsight 群集](../../hdinsight/index.yml)配置标准 DDoS 防护。 确保 HDInsight 群集已链接到虚拟网络，并在该虚拟网络上启用了 DDoS 防护。
 
 ![“HDInsight”和“高级设置”窗格，其中包含虚拟网络设置](./media/ddos-best-practices/image12.png)
 
@@ -260,7 +260,7 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 在此体系结构中，从 Internet 发往 HDInsight 群集的流量路由到与 HDInsight 网关负载均衡器关联的公共 IP。 然后，网关负载均衡器直接将流量发送到头节点或工作节点。 由于已在 HDInsight 虚拟网络上启用标准 DDoS 防护，虚拟网络中的所有公共 IP 将得到第 3 层和第 4 层 DDoS 防护。 此参考体系结构可与 N 层和多区域参考体系结构相结合。
 
-有关此参考体系结构的详细信息，请参阅[使用 Azure 虚拟网络扩展 Azure HDInsight](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) 文档。
+有关此参考体系结构的详细信息，请参阅[使用 Azure 虚拟网络扩展 Azure HDInsight](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 文档。
 
 
 > [!NOTE]
@@ -270,4 +270,4 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 * [云中责任分担](shared-responsibility.md)
 * [Azure DDoS 防护产品页](https://azure.microsoft.com/services/ddos-protection/)
-* [Azure DDoS 防护文档](/azure/virtual-network/ddos-protection-overview)
+* [Azure DDoS 防护文档](../../ddos-protection/ddos-protection-overview.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578472"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95483907"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作区和租户扩展 Azure Sentinel
 
@@ -34,7 +34,7 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 你会注意到，加�
 | 主权和法规遵从性 | 工作区绑定到特定区域。 如果需要将数据保留在不同的 [Azure 区域](https://azure.microsoft.com/global-infrastructure/geographies/) 以满足法规要求，则必须将其拆分为单独的工作区。 |  |
 | 数据所有权 | 例如，通过使用单独的工作区，可以更好地区分数据所有权边界（例如，由子公司或附属公司）。 |  |
 | 多个 Azure 租户 | Azure Sentinel 支持仅在其自己的 Azure Active Directory (Azure AD) 租户边界内收集来自 Microsoft 和 Azure SaaS 资源的数据。 因此，每个 Azure AD 租户都需要一个单独的工作区。 |  |
-| 精细数据访问控制 | 组织可能需要允许组织内部或外部的不同组访问 Azure Sentinel 收集的某些数据。 例如：<br><ul><li>资源所有者对与其资源相关的数据的访问权限</li><li>地区性或子公司 Soc 访问其组织的各个部分的相关数据</li></ul> | 使用 [资源 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) 或 [表级别 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
+| 精细数据访问控制 | 组织可能需要允许组织内部或外部的不同组访问 Azure Sentinel 收集的某些数据。 例如：<br><ul><li>资源所有者对与其资源相关的数据的访问权限</li><li>地区性或子公司 Soc 访问其组织的各个部分的相关数据</li></ul> | 使用 [资源 AZURE rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) 或 [表级 azure rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
 | 精细保留设置 | 过去，有多个工作区是为不同的数据类型设置不同的保持期的唯一方法。 在许多情况下，这在很多情况下都不再需要，这是因为引入了表级别的保留设置。 | 使用 [表级别的保留设置](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) 或自动 [删除数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
 | 拆分计费 | 通过将工作区放在不同的订阅中，可以对不同的参与方计费。 | 使用情况报告和交叉收费 |
 | 旧体系结构 | 使用多个工作区可能源自一个历史设计，该设计考虑到了不会再用到的限制或最佳做法。 它也可能是一个任意的设计方案，经过修改后可以更好地适应 Azure Sentinel。<br><br>示例包括：<br><ul><li>部署 Azure 安全中心时使用每个订阅默认工作区</li><li>需要精细的访问控制或保留设置，这是相对较新的解决方案</li></ul> | 重新构建工作区 |
@@ -84,7 +84,7 @@ Azure Sentinel 支持 [多个工作区事件，查看](./multiple-workspace-view
 Azure Sentinel 支持 [在单个查询中查询多个工作区](../azure-monitor/log-query/cross-workspace-query.md)，以便在单个查询中搜索和关联来自多个工作区的数据。 
 
 - 使用 [工作区 ( # A1 表达式](../azure-monitor/log-query/workspace-expression.md) 引用其他工作区中的表。 
-- 使用工作区和工作区 ( # A1 [表达式，在](https://docs.microsoft.com/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) 多个工作区中的表之间应用查询。
+- 使用工作区和工作区 ( # A1 [表达式，在](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) 多个工作区中的表之间应用查询。
 
 您可以使用保存的 [函数](../azure-monitor/log-query/functions.md) 来简化跨工作区查询。 例如，如果对工作区的引用很长，则可能需要将表达式保存 `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` 为名为的函数 `SecurityEventCustomerA` 。 然后，你可以将查询编写为 `SecurityEventCustomerA | where ...` 。
 
@@ -110,7 +110,7 @@ Azure Sentinel 支持 [在单个查询中查询多个工作区](../azure-monitor
 
 工作簿可采用以下三种方法之一提供跨工作区查询，每种方法都可满足不同级别的最终用户专长：
 
-| 方法  | 描述 | 何时应使用？ |
+| 方法  | 说明 | 何时应使用？ |
 |---------|-------------|--------------------|
 | 编写跨工作区查询 | 工作簿创建者可以 (以上) 在工作簿中的说明编写跨工作区查询。 | 此选项使工作簿创建者能够完全从工作区结构中保护用户。 |
 | 向工作簿添加工作区选择器 | 工作簿的创建者可以实现工作区选择器作为工作簿的一部分，如 [此处](https://techcommunity.microsoft.com/t5/azure-sentinel/making-your-azure-sentinel-workbooks-multi-tenant-or-multi/ba-p/1402357)所述。 | 使用此选项，用户可以通过易于使用的下拉框来控制工作簿显示的工作区。 |

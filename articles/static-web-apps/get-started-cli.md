@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e0fdbc50dd36e4ea23903a5929735c1c83bd394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88752797"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320330"
 ---
 # <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>快速入门：使用 Azure CLI 生成你的第一个静态 Web 应用
 
@@ -25,7 +25,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 - [GitHub](https://github.com) 帐户
 - [GitHub 个人访问令牌](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
 - [Azure](https://portal.azure.com) 帐户
-- 已安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（版本 2.8.0 或更高版本）
+- 已安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)（版本 2.8.0 或更高版本）
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 

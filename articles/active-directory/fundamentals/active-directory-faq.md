@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb6adc38fd44366b837119518622dd8931f9096
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4a8fcb14ac397791822c3a9065275dbfb2b3b7dd
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565559"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860416"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 * [Azure 订阅与 Azure Active Directory 的关联方式](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**问： Azure AD、Microsoft 365 和 Azure 之间的关系是什么？**
+**问：Azure AD、Microsoft 365 与 Azure 之间是什么关系？**
 
 **答:** Azure AD 为所有 Web 服务提供通用的标识和访问功能。 无论你使用 Microsoft 365、Microsoft Azure、Intune 还是其他用户，你都已在使用 Azure AD 来帮助打开所有这些服务的登录和访问管理。
 
@@ -51,9 +51,9 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 
 **答:** 默认情况下，系统会将注册 Azure 订阅的人员指派为 Azure 资源的所有者角色。 所有者可以使用 Microsoft 帐户，也可以使用 Azure 订阅与之关联的目录中的工作或学校帐户。  此角色有权管理 Azure 门户中的服务。
 
-如果其他人需要使用同一个订阅登录和访问服务，则可向他们分配相应的[内置角色](../../role-based-access-control/built-in-roles.md)。 有关其他信息，请参阅 [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+如果其他人需要使用同一个订阅登录和访问服务，则可向他们分配相应的[内置角色](../../role-based-access-control/built-in-roles.md)。 有关其他信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
 
-默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 全局管理员有权访问所有 Azure AD 目录功能。 Azure AD 提供一组不同的管理员角色，用于管理目录和标识相关的功能。 这些管理员将有权访问 Azure 门户中的各种功能。 管理员的角色决定了其所能执行的操作，例如创建或编辑用户、向其他用户分配管理角色、重置用户密码、管理用户许可证，或者管理域。  有关 Azure AD 目录管理员及其角色的其他信息，请参阅[在 Azure Active Directory 中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)和[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。
+默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 全局管理员有权访问所有 Azure AD 目录功能。 Azure AD 提供一组不同的管理员角色，用于管理目录和标识相关的功能。 这些管理员将有权访问 Azure 门户中的各种功能。 管理员的角色决定了其所能执行的操作，例如创建或编辑用户、向其他用户分配管理角色、重置用户密码、管理用户许可证，或者管理域。  有关 Azure AD 目录管理员及其角色的其他信息，请参阅[在 Azure Active Directory 中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)和[在 Azure Active Directory 中分配管理员角色](../roles/permissions-reference.md)。
 
 此外，Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业级管理和安全解决方案来补充其他 web 服务，如 Microsoft 365 和 Microsoft Azure。
 
@@ -121,16 +121,16 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 
 <a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>有关密码相关问题的详细解答，请参阅[密码管理常见问题](../authentication/active-directory-passwords-faq.md)。
 ---
-**问：如果我在尝试更改密码时不记得现有 Microsoft 365/Azure AD 密码，该怎么办？**
+**问：如果我在尝试更改 Microsoft 365/Azure AD 密码时忘记了现有的密码，该怎么办？**
 
 **答:** 对于这种情况，有几个选项。  在可行的情况下，使用自助服务密码重置 (SSPR)。  SSPR 是否适用取决于其配置方式。  有关详细信息，请参阅[密码重置门户的工作原理](../authentication/howto-sspr-deployment.md)。
 
-对于 Microsoft 365 用户，管理员可以使用 [重置用户密码](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)中所述的步骤重置密码。
+对于 Microsoft 365 用户，管理员可以使用[重置用户密码](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)中概述的步骤重置密码。
 
 对于 Azure AD 帐户，管理员可以使用以下选项之一重置密码：
 
 - [在 Azure 门户中重置帐户](active-directory-users-reset-password-azure-portal.md)
-- [使用 PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [使用 PowerShell](/powershell/module/msonline/set-msoluserpassword)
 
 
 ---
@@ -162,7 +162,7 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 
 有关详细信息，请参阅：
 
-* [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../manage-apps/configure-saml-single-sign-on.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
 ---
@@ -200,7 +200,7 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 
 **答:** 使用 Azure AD 条件访问，可以针对每个应用程序分配独特的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
 
-有关详细信息，请参阅 [保护对 Microsoft 365 和其他连接到 Azure Active Directory 的应用的访问](../conditional-access/overview.md)。
+有关详细信息，请参阅[保护对 Microsoft 365 和其他连接到 Azure Active Directory 的应用的访问](../conditional-access/overview.md)。
 
 ---
 **问：什么是 SaaS 应用的自动化用户预配？**

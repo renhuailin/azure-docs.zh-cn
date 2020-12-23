@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323768"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547905"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -25,13 +25,13 @@ ms.locfileid: "87323768"
 
 * HDInsight 上的 Apache HBase 群集。 请参阅 [Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)。
 
-* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
+* [Java 开发人员工具包 (JDK) 版本 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* 如果使用 PowerShell，则需要[AZ 模块](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell，则需要 [AZ 模块](/powershell/azure/)。
 
 * 文本编辑器。 本文使用 Microsoft 记事本。
 
@@ -179,7 +179,7 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 
 ### <a name="implement-a-createtable-class"></a>实现 CreateTable 类
 
-输入以下命令，以创建并打开新文件 `CreateTable.java`。 根据提示选择“是”，以创建新文件。****
+输入以下命令，以创建并打开新文件 `CreateTable.java`。 根据提示选择“是”，以创建新文件。 
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\CreateTable.java
@@ -261,7 +261,7 @@ public class CreateTable {
 
 ### <a name="implement-a-searchbyemail-class"></a>实现 SearchByEmail 类
 
-输入以下命令，以创建并打开新文件 `SearchByEmail.java`。 根据提示选择“是”，以创建新文件。****
+输入以下命令，以创建并打开新文件 `SearchByEmail.java`。 根据提示选择“是”，以创建新文件。 
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
@@ -346,7 +346,7 @@ public class SearchByEmail {
 
 ### <a name="implement-a-deletetable-class"></a>实现 DeleteTable 类
 
-输入以下命令，以创建并打开新文件 `DeleteTable.java`。 根据提示选择“是”，以创建新文件。****
+输入以下命令，以创建并打开新文件 `DeleteTable.java`。 根据提示选择“是”，以创建新文件。 
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
@@ -442,7 +442,7 @@ public class DeleteTable {
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>上传 JAR 并运行作业 (PowerShell)
 
-以下步骤使用 Azure PowerShell [AZ 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)将 JAR 上传到 Apache HBase 群集的默认存储。 然后使用 HDInsight cmdlet 远程运行示例。
+以下步骤使用 Azure PowerShell [AZ 模块](/powershell/azure/new-azureps-module-az)将 JAR 上传到 Apache HBase 群集的默认存储。 然后使用 HDInsight cmdlet 远程运行示例。
 
 1. 安装并配置 AZ 模块后，创建一个名为 `hbase-runner.psm1` 的文件。 将以下文本用作此文件的内容：
 
@@ -695,7 +695,7 @@ public class DeleteTable {
     Gabriela Ingram - gabriela@contoso.com - ID: 6
     ```
 
-    将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。 还可以使用正则表达式作为搜索词。 例如，**^r** 返回以字母“r”开头的电子邮件地址。
+    将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。 还可以使用正则表达式作为搜索词。 例如， **^r** 返回以字母“r”开头的电子邮件地址。
 
 7. 若要删除表，请使用以下命令：
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: 8f0c15c2b401992ebe90bbd982bd80ee1ad9ec36
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a373a28a180b2a6c72f6a291b9d1437a2e88d9ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444196"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500948"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,19 +24,19 @@ ms.locfileid: "91444196"
 
 Azure SQL 数据库优化建议由 Azure SQL 数据库 [自动优化](automatic-tuning-overview.md)生成。 此解决方案持续监视和分析数据库的工作负荷，为每个与索引创建、索引删除和查询执行计划优化相关的单独数据库提供自定义的优化建议。
 
-可以在 [Azure 门户](database-advisor-find-recommendations-portal.md)中查看 Azure SQL 数据库自动优化建议，使用 [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 调用进行检索，或使用 [t-sql](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) 命令进行查看。 本文立足于使用 PowerShell 脚本检索自动优化建议。
+可以在 [Azure 门户](database-advisor-find-recommendations-portal.md)中查看 Azure SQL 数据库自动优化建议，使用 [REST API](/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 调用进行检索，或使用 [t-sql](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) 和 [PowerShell](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) 命令进行查看。 本文立足于使用 PowerShell 脚本检索自动优化建议。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自动执行自动优化建议的电子邮件通知
 
-以下解决方案自动发送包含自动优化建议的电子邮件通知。 所述解决方案包括使用 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)自动执行 PowerShell 脚本以检索优化建议，以及使用 [Microsoft Flow](https://flow.microsoft.com) 自动计划电子邮件的发送作业。
+以下解决方案自动发送包含自动优化建议的电子邮件通知。 所述解决方案包括使用 [Azure 自动化](../../automation/automation-intro.md)自动执行 PowerShell 脚本以检索优化建议，以及使用 [Microsoft Flow](https://flow.microsoft.com) 自动计划电子邮件的发送作业。
 
 ## <a name="create-azure-automation-account"></a>创建 Azure 自动化帐户
 
-要使用 Azure 自动化，第一步是创建自动化帐户并使用 Azure 资源配置该帐户，以用于 PowerShell 脚本的执行。 要了解 Azure 自动化及其功能的详细信息，请参阅 [Azure 自动化入门](https://docs.microsoft.com/azure/automation/automation-offering-get-started)。
+要使用 Azure 自动化，第一步是创建自动化帐户并使用 Azure 资源配置该帐户，以用于 PowerShell 脚本的执行。 要了解 Azure 自动化及其功能的详细信息，请参阅 [Azure 自动化入门](../../automation/index.yml)。
 
 按照以下步骤，通过从 Azure Marketplace 中选择和配置自动化应用的方法来创建 Azure 自动化帐户：
 
@@ -49,7 +49,7 @@ Azure SQL 数据库优化建议由 Azure SQL 数据库 [自动优化](automatic-
 
 1. 在 "创建自动化帐户" 窗格内，单击 "**创建**"。
 1. 填写所需的信息：输入此自动化帐户的名称，选择要用于 PowerShell 脚本执行的 Azure 订阅 ID 和 Azure 资源。
-1. 对于 "**创建 Azure 运行方式帐户**" 选项，请选择 **"是** " 以配置在其下运行 PowerShell 脚本和 Azure 自动化帮助的帐户类型。 若要了解有关帐户类型的详细信息，请参阅 [运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。
+1. 对于 "**创建 Azure 运行方式帐户**" 选项，请选择 **"是** " 以配置在其下运行 PowerShell 脚本和 Azure 自动化帮助的帐户类型。 若要了解有关帐户类型的详细信息，请参阅 [运行方式帐户](../../automation/manage-runas-account.md)。
 1. 通过单击 " **创建**" 结束自动化帐户的创建。
 
 > [!TIP]
@@ -59,7 +59,7 @@ Azure SQL 数据库优化建议由 Azure SQL 数据库 [自动优化](automatic-
 
 ## <a name="update-azure-automation-modules"></a>更新 Azure 自动化模块
 
-用于检索自动优化建议的 PowerShell 脚本使用 [AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) 和 [AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) 命令，该命令适用于所需的 Azure 模块版本4及更高版本。
+用于检索自动优化建议的 PowerShell 脚本使用 [AzResource](/powershell/module/az.Resources/Get-azResource) 和 [AzSqlDatabaseRecommendedAction](/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) 命令，该命令适用于所需的 Azure 模块版本4及更高版本。
 
 - 如果需要更新 Azure 模块，请参阅 [Azure 自动化中的 Az module 支持](../../automation/shared-resources/modules.md)。
 
@@ -82,7 +82,7 @@ Azure SQL 数据库优化建议由 Azure SQL 数据库 [自动优化](automatic-
 1. 在 "**编辑 PowerShell Runbook**" 窗格中，在菜单树中选择 "**runbook**"，然后展开视图，直到在此示例中看到 Runbook (的名称 ) 。**AutomaticTuningEmailAutomation** 选择此 runbook。
 1. 在 "编辑 PowerShell Runbook" 的第一行中 (从数字 1) 开始，复制-粘贴以下 PowerShell 脚本代码。 此 PowerShell 脚本按原样提供，可帮助你入门。 修改脚本以满足需求。
 
-在提供的 PowerShell 脚本的标头中，需要使用 Azure 订阅 ID 替换 `<SUBSCRIPTION_ID_WITH_DATABASES>`。 要了解如何检索 Azure 订阅 ID，请参阅 [Getting your Azure Subscription GUID](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/)（获取 Azure 订阅 GUID）。
+在提供的 PowerShell 脚本的标头中，需要使用 Azure 订阅 ID 替换 `<SUBSCRIPTION_ID_WITH_DATABASES>`。 要了解如何检索 Azure 订阅 ID，请参阅 [Getting your Azure Subscription GUID](/archive/blogs/mschray/getting-your-azure-subscription-guid-new-portal)（获取 Azure 订阅 GUID）。
 
 如果有多个订阅，可以将它们以逗号分隔的形式添加到脚本标头中的 "$subscriptions" 属性。
 
@@ -189,9 +189,9 @@ Write-Output $table
 - "**Azure 自动化-获取作业输出**" –用于从已执行的 PowerShell 脚本检索输出。
 - "**Office 365 Outlook –发送电子邮件**" –用于发送电子邮件。 电子邮件使用创建流的个人的工作或学校帐户发送出去。
 
-要了解有关 Microsoft Flow 功能的详细信息，请参阅[开始使用 Microsoft Flow](https://docs.microsoft.com/flow/getting-started)。
+要了解有关 Microsoft Flow 功能的详细信息，请参阅[开始使用 Microsoft Flow](/flow/getting-started)。
 
-此步骤的先决条件是注册 [Microsoft Flow](https://flow.microsoft.com) 帐户并登录。 进入解决方案后，请按照以下步骤设置新流****
+此步骤的先决条件是注册 [Microsoft Flow](https://flow.microsoft.com) 帐户并登录。 进入解决方案后，请按照以下步骤设置新流
 
 1. 访问 "**我的流**" 菜单项。
 1. 在 "我的流" 中，选择页面顶部的 "**+ 从空白位置创建**" 链接。
@@ -205,13 +205,13 @@ Write-Output $table
 
    - 选择 "**+ 新步骤**"，然后在 "定期流" 窗格中选择 "**添加操作**"。
    - 在搜索字段中键入 "**自动化**"，然后从搜索结果中选择 "**Azure 自动化-创建作业**"。
-   - 在“创建作业”窗格中，配置作业属性。 对于此配置，需要之前在“自动化帐户”窗格上记录的 Azure 订阅 ID、资源组和自动化帐户的详细信息********。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 创建作业](https://docs.microsoft.com/connectors/azureautomation/#create-job)。
+   - 在“创建作业”窗格中，配置作业属性。 对于此配置，需要之前在“自动化帐户”窗格上记录的 Azure 订阅 ID、资源组和自动化帐户的详细信息。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 创建作业](/connectors/azureautomation/#create-job)。
    - 单击 "**保存流**" 完成创建此操作的操作。
 
 2. 创建操作以从已执行的 PowerShell 脚本检索输出
 
    - 选择 "**+ 新步骤**"，然后在 "定期流" 窗格中选择 "**添加操作**"
-   - 在搜索字段中键入 "**自动化**"，然后从搜索结果中选择 "**Azure 自动化-获取作业输出**"。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 获取作业输出](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)。
+   - 在搜索字段中键入 "**自动化**"，然后从搜索结果中选择 "**Azure 自动化-获取作业输出**"。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 获取作业输出](/connectors/azureautomation/#get-job-output)。
    - 在 "自动化帐户" 窗格) 中输入 (类似于创建以前的作业) 填充所需 (的字段。
    - 单击 "**作业 ID**" 字段内显示的 "**动态内容**" 菜单。 从该菜单中，选择 "**作业 ID**" 选项。
    - 单击 "**保存流**" 完成创建此操作的操作。

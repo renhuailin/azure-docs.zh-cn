@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 6393624cb4520ccd28dff41dd97746873bc13f59
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1d5c79a141dbe1310762dc90b447fe78848ac10d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330292"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962478"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>联机迁移到 Azure SQL 托管实例时存在的已知问题/迁移限制
 
@@ -31,7 +31,7 @@ ms.locfileid: "91330292"
 
     Azure 数据库迁移服务使用备份和还原方法将本地数据库迁移到 SQL 托管实例。 Azure 数据库迁移服务仅支持使用校验和创建的备份。
 
-    [在备份或还原期间启用或禁用备份校验和 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
+    [在备份或还原期间启用或禁用备份校验和 (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
     > [!NOTE]
     > 如果通过压缩进行数据库备份，则除非明确禁用，否则校验和是默认行为。

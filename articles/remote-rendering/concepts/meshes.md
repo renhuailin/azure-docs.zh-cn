@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 08d80a5ec2099147c12bcecd3b52d64429837285
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 628331677a84f6cf1dd8fa1df1e7f6c1a2fa09e1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563958"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202797"
 ---
 # <a name="meshes"></a>网格
 
@@ -73,10 +73,10 @@ ApiHandle<Entity> CloneEntityWithModel(ApiHandle<RemoteManager> manager, ApiHand
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # 网格类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
-* [C # MeshComponent 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
-* [C + + 网格类](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
-* [C + + MeshComponent 类](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
+* [C # 网格类](/dotnet/api/microsoft.azure.remoterendering.mesh)
+* [C # MeshComponent 类](/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
+* [C + + 网格类](/cpp/api/remote-rendering/mesh)
+* [C + + MeshComponent 类](/cpp/api/remote-rendering/meshcomponent)
 
 
 ## <a name="next-steps"></a>后续步骤

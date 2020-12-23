@@ -1,7 +1,7 @@
 ---
 title: 创建 NAT 网关 - 资源管理器模板
 titleSuffix: Azure Virtual Network NAT
-description: 本快速入门介绍如何使用 Azure 资源管理器模板创建 NAT 网关。
+description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建 NAT 网关。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,72 +13,64 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/09/2020
+ms.date: 10/27/2020
 ms.author: allensu
-ms.custom: subject-armqs
-ms.openlocfilehash: fc4804070e0fa4ca6e9e54dcf6e04aafcc17f91a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053892"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913324"
 ---
-# <a name="create-a-nat-gateway---resource-manager-template"></a>创建 NAT 网关 - 资源管理器模板
+# <a name="quickstart-create-a-nat-gateway---arm-template"></a>快速入门：创建 NAT 网关 - ARM 模板
 
-通过 Azure 资源管理器模板完成虚拟网络 NAT 入门。  此模板部署虚拟网络、NAT 网关资源和 Ubuntu 虚拟机。 Ubuntu 虚拟机将部署到与 NAT 网关资源关联的子网。
+通过 Azure 资源管理器模板（ARM 模板）完成虚拟网络 NAT 入门。 此模板部署虚拟网络、NAT 网关资源和 Ubuntu 虚拟机。 Ubuntu 虚拟机将部署到与 NAT 网关资源关联的子网。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>先决条件
+
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-nat-gateway-and-supporting-resources"></a>创建 NAT 网关和支持资源
+## <a name="review-the-template"></a>查看模板
 
-此模板配置为创建 
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm)。
 
-* 虚拟网络 
+此模板配置为创建：
+
+* 虚拟网络
 * NAT 网关资源
 * Ubuntu 虚拟机
 
 Ubuntu VM 部署到与 NAT 网关资源关联的子网。
 
-### <a name="review-the-template"></a>查看模板
-
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json)
-
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="1-335" highlight="256-282":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json":::
 
 该模板中定义了九个 Azure 资源：
 
-**Microsoft.Network**
+* **[Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** ：创建网络安全组。
+* **[Microsoft.Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** ：创建安全规则。
+* **[Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)** ：创建公共 IP 地址。
+* **[Microsoft.Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)** ：创建公共 IP 前缀。
+* **[Microsoft.Compute/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** ：创建虚拟机。
+* **[Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** ：创建虚拟网络。
+* **[Microsoft.Network/natGateways](/azure/templates/microsoft.network/natgateways)** ：创建 NAT 网关资源。
+* **[Microsoft.Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)** ：创建虚拟网络子网。
+* **[Microsoft.Network/networkinterfaces](/azure/templates/microsoft.network/networkinterfaces)** ：创建网络接口。
 
-* **[Microsoft.Network/natGateways](https://docs.microsoft.com/azure/templates/microsoft.network/natgateways)** ：创建 NAT 网关资源。
-
-* **[Microsoft.Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)** ：创建网络安全组。
-
-    * **[Microsoft.Network/networkSecurityGroups/securityRules](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)** ：创建安全规则。
-
-* **[Microsoft.Network/publicIPAddresses](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)** ：创建公共 IP 地址。
-
-* **[Microsoft.Network/publicIPPrefixes](https://docs.microsoft.com/azure/templates/microsoft.network/publicipprefixes)** ：创建公共 IP 前缀。
-
-* **[Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)** ：创建虚拟网络。
-
-    * **[Microsoft.Network/virtualNetworks/subnets](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)** ：创建虚拟网络子网。
-
-* **[Microsoft.Network/networkinterfaces](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)** ：创建网络接口。
-
-**Microsoft.Compute**
-
-* **[Microsoft.Compute/virtualMachines](https://docs.microsoft.com/azure/templates/Microsoft.Compute/virtualMachines)** ：创建虚拟机。
-
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
 **Azure CLI**
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
 resourceGroupName="myResourceGroupNAT"
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json" 
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json"
 
 az group create \
 --name $resourceGroupName \
@@ -103,17 +95,17 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 **Azure 门户**
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 从左侧窗格中选择“资源组”。
+1. 从左侧窗格中选择“资源组”。
 
-3. 选择你在上一部分中创建的资源组。 默认资源组名称是 **myResourceGroupNAT**
+1. 选择你在上一部分中创建的资源组。 默认资源组名称是 **myResourceGroupNAT**
 
-4. 验证是否在资源组中创建了以下资源：
+1. 验证是否在资源组中创建了以下资源：
 
     ![虚拟网络 NAT 资源组](./media/quick-create-template/nat-gateway-template-rg.png)
 
@@ -123,22 +115,22 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 如果不再需要上述资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete \
     --name myResourceGroupNAT
 ```
 
 **Azure PowerShell**
 
-如果不再需要上述资源组及其包含的所有资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) 命令将其删除。
+如果不再需要上述资源组及其包含的所有资源，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
 
-```azurepowershell-interactive 
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
 **Azure 门户**
 
-如果不再需要上述资源组、NAT 网关和所有相关资源，请将其删除。 选择包含 NAT 网关的资源组 **myResourceGroupNAT**，然后选择“删除”。
+如果不再需要上述资源组、NAT 网关和所有相关资源，请将其删除。 选择包含 NAT 网关的资源组 **myResourceGroupNAT** ，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -148,7 +140,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 * 虚拟网络
 * Ubuntu 虚拟机
 
-虚拟机部署到与 NAT 网关关联的虚拟网络子网。 
+虚拟机部署到与 NAT 网关关联的虚拟网络子网。
 
 若要详细了解虚拟网络 NAT 和 Azure 资源管理器，请继续阅读以下文章。
 

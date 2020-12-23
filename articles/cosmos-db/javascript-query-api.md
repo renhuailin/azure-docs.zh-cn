@@ -3,21 +3,23 @@ title: 在 Azure Cosmos DB 存储过程和触发器中使用集成了 JavaScript
 description: 本文介绍了有关使用 JavaScript 语言集成式查询 API 在 Azure Cosmos DB 中创建存储过程和触发器的概念。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b2563a9af0e0ca6943059698e29d139143780d93
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334389"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340968"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查询 API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-除了使用 Azure Cosmos DB 中的 SQL API 发出查询外，[Cosmos DB 服务器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/) 还提供了一个 JavaScript 接口，用于在 Cosmos DB 存储过程和触发器中执行优化查询。 你不需要了解 SQL 语言便可使用此 JavaScript 接口。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法以及 Lodash 之类的热门 JavaScript 库，通过将谓词函数传递到函数调用序列中以编程方式生成查询。 查询将由 JavaScript 运行时进行分析并使用 Azure Cosmos DB 索引高效执行。
+除了使用 Azure Cosmos DB 中的 SQL API 发出查询外，[Cosmos DB 服务器端 SDK](https://github.com/Azure/azure-cosmosdb-js-server/) 还提供了一个 JavaScript 接口，用于在 Cosmos DB 存储过程和触发器中执行优化查询。 你不需要了解 SQL 语言便可使用此 JavaScript 接口。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法以及 Lodash 之类的热门 JavaScript 库，通过将谓词函数传递到函数调用序列中以编程方式生成查询。 查询将由 JavaScript 运行时进行分析并使用 Azure Cosmos DB 索引高效执行。
 
 ## <a name="supported-javascript-functions"></a>支持的 JavaScript 函数
 
@@ -43,7 +45,7 @@ ms.locfileid: "91334389"
 - 控制流（例如，if、for、while）
 - 函数调用
 
-有关详细信息，请参阅 [Cosmos DB 服务器端 JavaScript 文档](https://azure.github.io/azure-cosmosdb-js-server/)。
+有关详细信息，请参阅 [Cosmos DB 服务器端 JavaScript 文档](https://github.com/Azure/azure-cosmosdb-js-server/)。
 
 ## <a name="sql-to-javascript-cheat-sheet"></a>SQL 到 JavaScript 备忘单
 

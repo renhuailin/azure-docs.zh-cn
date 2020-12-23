@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536249"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454739"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>教程：将 Displayr 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88536249"
 * 让用户使用其 Azure AD 帐户自动登录到 Displayr。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,15 +88,15 @@ ms.locfileid: "88536249"
 
 1. Displayr 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”部分的屏幕截图，其中突出显示了“编辑”图标。](common/edit-attribute.png)
 
 1. 除了上述属性，Displayr 应用程序还要求在 SAML 响应中传递回更多的属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
 
-    a. 单击“声明中返回的组”旁边的**笔**。 
+    a. 单击“声明中返回的组”旁边的 **笔** 。 
 
-    ![image](./media/displayr-tutorial/config04.png)
+    ![屏幕截图显示“用户属性和声明”部分，其中已选择“声明中返回的组”旁边的“笔”图标。](./media/displayr-tutorial/config04.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+    ![显示已选择设置的“组声明(预览)”窗口的屏幕截图。](./media/displayr-tutorial/config05.png)
 
     b. 从单选列表中选择“所有组”。 
 
@@ -106,7 +106,7 @@ ms.locfileid: "88536249"
 
     e. 勾选“将组作为角色声明发出”。 
 
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
 1. 在“设置 Displayr”部分，根据要求复制相应的 URL  。
 
@@ -126,11 +126,11 @@ ms.locfileid: "88536249"
 
 4. 单击“设置”，然后导航到“帐户”。  
 
-    ![配置](./media/displayr-tutorial/config01.png)
+    ![显示“设置”图标和“帐户”处于选中状态的屏幕截图。](./media/displayr-tutorial/config01.png)
 
 5. 在顶部菜单中切换到“设置”，然后在该页中向下滚动，以便单击“配置单一登录(SAML)”   。
 
-    ![配置](./media/displayr-tutorial/config02.png)
+    ![显示“设置”选项卡和“配置单一登录(SAML)”操作处于选中状态的屏幕截图。](./media/displayr-tutorial/config02.png)
 
 6. 在“单一登录(SAML)”  页上，执行以下步骤：
 
@@ -148,7 +148,7 @@ ms.locfileid: "88536249"
 
     f. “组映射”为可选。 
 
-    g. 单击“ **保存**”。  
+    g. 单击“ **保存** ”。  
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -190,11 +190,11 @@ ms.locfileid: "88536249"
 
 2. 单击“设置”，然后导航到“帐户”。  
 
-    ![Displayr 配置](./media/displayr-tutorial/config01.png)
+    ![显示“设置(齿轮)”图标和“帐户”处于选中状态的屏幕截图。](./media/displayr-tutorial/config01.png)
 
 3. 在顶部菜单中切换到“设置”，在该页中向下滚动到“用户”部分，然后单击“新建用户”    。
 
-    ![Displayr 配置](./media/displayr-tutorial/config07.png)
+    ![显示“设置”选项卡的屏幕截图，其中突出显示了“用户”并选择了“新建用户”按钮。](./media/displayr-tutorial/config07.png)
 
 4. 在“新建用户”页面上，执行以下步骤  ：
 
@@ -206,16 +206,16 @@ ms.locfileid: "88536249"
 
     c. 选择相应的“组成员身份”。 
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 ### <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“Displayr”磁贴时，应会自动登录到设置了 SSO 的 Displayr。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中选择“Displayr”磁贴时，应会自动登录到设置了 SSO 的 Displayr。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

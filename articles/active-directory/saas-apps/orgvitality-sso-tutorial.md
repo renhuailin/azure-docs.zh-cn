@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 4cb46487904f1f909686119d074dff5dcfad40c9
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: b774f50f6f136d9e7c71b5fe6fbffb725a9240a5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604042"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522217"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-orgvitality-sso"></a>教程：Azure Active Directory 与 OrgVitality SSO 的单一登录 (SSO) 集成
 
@@ -124,7 +124,7 @@ ms.locfileid: "91604042"
 
 ### <a name="create-orgvitality-sso-test-user"></a>创建 OrgVitality SSO 测试用户
 
-本部分需在 OrgVitality SSO 中创建名为“Britta Simon”的用户。 与  [OrgVitality SSO 支持团队](https://orgvitality.com/contact-us/)协作，将用户添加到 OrgVitality SSO 平台。 使用单一登录前，必须先创建并激活用户。
+本部分需在 OrgVitality SSO 中创建名为“Britta Simon”的用户。 与 [OrgVitality SSO 支持团队](https://orgvitality.com/contact-us/)协作，在 OrgVitality SSO 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -132,8 +132,8 @@ ms.locfileid: "91604042"
 
 1. 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 OrgVitality SSO
 
-1. 可以使用 Microsoft 访问面板。 在访问面板中单击“OrgVitality SSO”磁贴时，应会自动登录到设置了 SSO 的 OrgVitality SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+1. 可以使用 Microsoft 访问面板。 在访问面板中单击“OrgVitality SSO”磁贴时，应会自动登录到设置了 SSO 的 OrgVitality SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 OrgVitality SSO 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 OrgVitality SSO 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

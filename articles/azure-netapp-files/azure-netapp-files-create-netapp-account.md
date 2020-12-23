@@ -15,30 +15,30 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483663"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006587"
 ---
 # <a name="create-a-netapp-account"></a>创建 NetApp 帐户
 创建 NetApp 帐户将能够设置容量池并随后创建卷。 使用“Azure NetApp 文件”边栏选项卡来创建新的 NetApp 帐户。
 
-## <a name="before-you-begin"></a>开始之前
-你必须收到 Azure NetApp 文件团队发送的一封电子邮件，确认你已被授予对该服务的访问权限。 请参阅[提交候补请求以访问服务](azure-netapp-files-register.md#waitlist)。
+## <a name="before-you-begin"></a>准备阶段
+你必须收到 Azure NetApp 文件团队发送的一封电子邮件，确认你已被授予对该服务的访问权限。 请参阅 [提交候补请求以访问服务](azure-netapp-files-register.md#waitlist)。
 
-还必须使用 NetApp 资源提供程序注册订阅。 请参阅[注册 NetApp 资源提供程序](azure-netapp-files-register.md#resource-provider)。
+还必须使用 NetApp 资源提供程序注册订阅。 请参阅 [注册 NetApp 资源提供程序](azure-netapp-files-register.md#resource-provider)。
 
 ## <a name="steps"></a>步骤 
 
 1. 登录到 Azure 门户。 
 2. 使用以下方法之一访问“Azure NetApp 文件”边栏选项卡：  
-   * 在 Azure 门户的搜索框中搜索“Azure NetApp 文件”****。  
-   * 在导航栏中单击“所有服务”****，然后筛选找到“Azure NetApp 文件”。  
+   * 在 Azure 门户的搜索框中搜索“Azure NetApp 文件”。  
+   * 在导航栏中单击“所有服务”，然后筛选找到“Azure NetApp 文件”。  
 
    可以通过单击“Azure NetApp 文件”边栏选项卡旁边的星星图标来“收藏”它。 
 
-3. 单击“+ 添加”**** 来创建新的 NetApp 帐户。  
+3. 单击“+ 添加”  来创建新的 NetApp 帐户。  
    此时将出现“新建 NetApp 帐户”窗口。  
 
 4. 提供 NetApp 帐户的以下信息： 

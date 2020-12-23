@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: d97fa4c3c57f6f0dcc5c55b76d839308156c40fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75c6841b7fed354843b955a971f02946be349a02
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934489"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548879"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>用于 IoT 的 Azure Defender 基线和自定义检查
 
@@ -62,9 +62,9 @@ ms.locfileid: "90934489"
 
 ## <a name="baseline-custom-check-properties"></a>基线自定义检查属性
 
-| 名称| 状态 | 有效值| 默认值| 说明 |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|baselineCustomChecksEnabled|必需： true |有效值：**布尔**值 |默认值： **false** |发送高优先级消息之前的最大时间间隔。|
+| 名称| 状态 | 有效值| 默认值| 描述 |
+|------|-----|------|-----|-----|
+|baselineCustomChecksEnabled|必需： true |有效值：**布尔** 值 |默认值： **false** |发送高优先级消息之前的最大时间间隔。|
 |baselineCustomChecksFilePath |必需： true|有效值： **String**、 **null** |默认值： **null** |基线 xml 配置的完整路径|
 |baselineCustomChecksFileHash |必需： true|有效值： **String**、 **null** |默认值： **null** |`sha256sum` xml 配置文件的。 使用 [sha256sum 引用](https://linux.die.net/man/1/sha256sum) 获取其他信息。 |
 

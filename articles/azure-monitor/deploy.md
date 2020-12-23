@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a0591825bf187648293d5aabc88597b19ab2436e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033466"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491046"
 ---
 # <a name="deploy-azure-monitor"></a>部署 Azure Monitor
 启用 Azure Monitor 来监视所有 Azure 资源时，既要配置 Azure Monitor 组件，也要配置 Azure 资源，这样才能生成供 Azure Monitor 收集的监视数据。 本文描述如何通过所需的不同步骤来完全实现使用常用配置的 Azure Monitor，以便监视 Azure 订阅中的所有资源。 本文为每个步骤提供了基本说明，其中包含介绍详细配置要求的其他文档的链接。
@@ -118,14 +118,14 @@ Azure 中的资源会自动生成[资源日志](platform/platform-logs-overview.
 Azure Monitor 使用 [Application Insights](app/app-insights-overview.md) 来监视自定义应用程序，你必须为要监视的每个应用程序配置 Application Insights。 配置过程因所监视的应用程序的类型和要执行的监视类型而异。 Application Insights 收集的数据存储在 Azure Monitor 指标、Azure Monitor 日志和 Azure blob 存储中，具体取决于功能。 性能数据同时存储在 Azure Monitor 指标和 Azure Monitor 日志中，无需其他配置。
 
 ### <a name="create-an-application-resource"></a>创建应用程序资源
-必须在 Application Insights 中为要监视的每个应用程序创建一个资源。 Application Insights 收集的日志数据存储在基于工作区的应用程序 Azure Monitor 日志中。 经典应用程序的日志数据存储在 Log Analytics 的工作区中，如 [数据结构](platform/data-platform-logs.md#structure-of-data)中所述。
+必须在 Application Insights 中为要监视的每个应用程序创建一个资源。 Application Insights 收集的日志数据存储在基于工作区的应用程序 Azure Monitor 日志中。 经典应用程序的日志数据与 Log Analytics 的工作区不同，如 [数据结构](platform/data-platform-logs.md#data-structure)中所述。
 
  创建应用程序时，必须选择是使用经典还是基于工作区。 请参阅 [创建 Application Insights 资源](app/create-new-resource.md) 来创建经典应用程序。 请参阅 [基于工作区的 Application Insights 资源 (预览) ](app/create-workspace-resource.md) 以创建基于工作区的应用程序。
 
 ### <a name="configure-codeless-or-code-based-monitoring"></a>配置无代码监视或基于代码的监视
 若要为应用程序启用监视功能，你必须决定是使用无代码监视还是基于代码的监视。 配置过程取决于此决定以及要监视的应用程序的类型。
 
-**无代码监视**最容易实现，可在代码开发后进行配置。 它不要求对代码进行更新。 请参阅以下资源，详细了解如何根据应用程序来启用监视。
+**无代码监视** 最容易实现，可在代码开发后进行配置。 它不要求对代码进行更新。 请参阅以下资源，详细了解如何根据应用程序来启用监视。
 
 - [托管在 Azure Web 应用上的应用程序](app/azure-web-apps.md)
 - [Java 应用程序](app/java-in-process-agent.md)
@@ -133,7 +133,7 @@ Azure Monitor 使用 [Application Insights](app/app-insights-overview.md) 来监
 - [在 VM 的 IIS 中托管的 ASP.NET 应用程序](app/monitor-performance-live-website-now.md)
 
 
-**基于代码的监视**可以更好地进行自定义，并且可以收集其他遥测数据，但需要在 Application Insights SDK NuGet 包上向代码添加依赖项。 请参阅以下资源，详细了解如何根据应用程序来启用监视。
+**基于代码的监视** 可以更好地进行自定义，并且可以收集其他遥测数据，但需要在 Application Insights SDK NuGet 包上向代码添加依赖项。 请参阅以下资源，详细了解如何根据应用程序来启用监视。
 
 - [ASP.NET 应用程序](app/asp-net.md)
 - [ASP.NET Core 应用程序](app/asp-net-core.md)

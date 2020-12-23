@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 87733cac23d0336e4b9319f2a325e8d844e6e5b2
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: fa8f9ad2d15730d2a0a2c1a722aa3970bbc8f173
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651949"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033980"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -41,7 +44,7 @@ ms.locfileid: "91651949"
 --- | ---
 **VMware vCenter 服务器** | 版本5.5、6.0、6.5、6.7、7.0。
 **VMware vSphere ESXI 主机** | 版本5.5、6.0、6.5、6.7、7.0。
-**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储. 浏览**：允许浏览 VM 日志文件来排除快照创建和删除故障。<br/><br/> - **FileManagement**：允许 "数据存储浏览器" 中的读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪**：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease**：允许 VM 的磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. DiskRandomAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. GetVmFiles**：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine. \* **：允许创建和管理用于复制的 VM 快照。<br/><br/> - **VirtualMachine**：允许 VM 在迁移到 Azure 期间关闭。
+**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储：浏览** (数据存储-> 浏览数据存储) ：允许浏览 VM 日志文件来排除快照创建和删除的故障。<br/><br/> - **FileManagement** (数据存储-> 低级别文件操作) ：允许在数据存储浏览器中执行读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪** (虚拟机 > 磁盘更改跟踪) ：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease** (虚拟机-> 磁盘租约) ：允许 VM 使用磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead** (虚拟机-> 预配-> 允许只读磁盘访问) ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **DiskRandomAccess** (虚拟机 > 预配-> 允许磁盘访问) ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine** > 预配 (虚拟机-预配-> 允许虚拟机下载) ：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine。 \**_ (虚拟机-> 快照管理) ：允许创建和管理用于复制的 VM 快照。 <br/> <br/>-_* VirtualMachine** (虚拟机 > 交互-> 关机) ：允许 VM 在迁移到 Azure 期间关闭。
 
 
 
@@ -55,8 +58,8 @@ ms.locfileid: "91651949"
 **Azure 中的 Windows Vm** | 在迁移之前，你可能需要对 Vm [进行一些更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。 
 **Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 7.7，7.6，7.5，7.4，1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 **Linux 启动** | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根 (/) 分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。
-**UEFI 启动** | 。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
-**磁盘大小** | 2 TB 操作系统磁盘 (BIOS 启动) ;4 TB 操作系统磁盘 (UEFI 启动) ;8 TB （适用于数据磁盘）。
+**UEFI 启动** | 支持。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
+**磁盘大小** | 2 TB 操作系统磁盘 (BIOS 启动) ;4 TB 操作系统磁盘 (UEFI 启动) ;数据磁盘为 32 TB。
 **磁盘限制** |  每个虚拟机最多60个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
 **共享磁盘群集** | 不支持。
@@ -70,7 +73,7 @@ ms.locfileid: "91651949"
 **IPv6** | 不支持。
 **目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、标准 SSD、高级 SSD) 的托管磁盘。
 **同时复制** | 300 Vm/vCenter Server。 如果有更多的，请按批次300进行迁移。
-
+**(Windows 代理自动安装 Azure VM 代理)** | Windows Server 2008 R2 之前支持。
 
 ### <a name="appliance-requirements-agentless"></a>无代理) 的设备要求 (
 
@@ -116,17 +119,17 @@ vSphere/ESXI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 **网络/存储** | 有关最新信息，请查看 Site Recovery 的 [网络](../site-recovery/vmware-physical-azure-support-matrix.md#network) 和 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#storage) 必备组件。 Azure Migrate 提供完全相同的网络/存储要求。
 **Azure 要求** | 有关最新信息，请查看 Site Recovery 的 [Azure 网络](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和 [计算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) 要求。 对于 VMware 迁移，Azure Migrate 具有相同的要求。
 **移动服务** | 必须在要迁移的每个 VM 上安装移动服务代理。
-**UEFI 启动** | 。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
+**UEFI 启动** | 支持。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
 **UEFI-安全启动**         | 不支持迁移。
 **目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、标准 SSD、高级 SSD) 的托管磁盘。
 **磁盘大小** | 2 TB 操作系统磁盘 (BIOS 启动) ;4 TB 操作系统磁盘 (UEFI 启动) ;8 TB （适用于数据磁盘）。
 **磁盘限制** |  每个虚拟机最多63个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
 **共享磁盘群集** | 不支持。
-**独立磁盘** | 。
-**传递磁盘** | 。
+**独立磁盘** | 支持。
+**传递磁盘** | 支持。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
-**iSCSI 目标** | 。
+**iSCSI 目标** | 支持。
 **多路径 IO** | 不支持。
 **存储 vMotion** | 支持
 **成组 Nic** | 不支持。
@@ -169,7 +172,7 @@ VM | Vm 上运行的移动服务与本地复制设备通信， (配置) 服务�
 FC 磁盘 | 不支持。 
 BitLocker | 不支持。<br/><br/> 在迁移计算机之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 
-迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/><br/> -迁移之前，请在本地 VM 上启用 RDP。<br/><br/> 请确保为**公共**配置文件添加了 TCP 和 UDP 规则，并确保在**Windows 防火墙**"  >  **允许的应用**" 中针对所有配置文件允许 RDP。<br/><br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许**Windows 防火墙**中  ->  的 rdp 允许用于**域和专用**网络的**应用和功能**。<br/><br/> 此外，请检查操作系统的 SAN 策略是否设置为 **OnlineAll**。 [了解详细信息](prepare-for-migration.md)。
+迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/><br/> -迁移之前，请在本地 VM 上启用 RDP。<br/><br/> 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/><br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许 **Windows 防火墙** 中  ->  的 rdp 允许用于 **域和专用** 网络的 **应用和功能**。<br/><br/> 此外，请检查操作系统的 SAN 策略是否设置为 **OnlineAll**。 [了解详细信息](prepare-for-migration.md)。
 迁移后连接-Linux | 使用 SSH 迁移后连接到 Azure Vm：<br/><br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为 "启动"，以及防火墙规则是否允许 SSH 连接。<br/><br/> 故障转移后，在 Azure VM 上，允许已故障转移的 VM 上的网络安全组和连接到的 Azure 子网的 SSH 端口建立传入连接。<br/><br/> 此外，为 VM 添加公共 IP 地址。  
 
 

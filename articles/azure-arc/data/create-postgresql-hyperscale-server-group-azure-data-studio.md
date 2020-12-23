@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e2007d8f0c558d35c0507b6e12bce6d6777fad52
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273001"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310902"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>使用 Azure Data Studio 创建启用了 Azure Arc 的 PostgreSQL 超大规模
 
@@ -62,7 +62,7 @@ _**服务器组名称** 是将在下一步中部署的服务器组的名称。_
 1. 在 "连接" 选项卡上，单击左上角的三个点，然后选择 "新建部署"
 1. 从 "部署选项" 中，选择 **PostgreSQL 超大规模服务器组-Azure Arc**
     >[!NOTE]
-    > 系统可能会提示你在 `azdata` 此处安装 CLI （如果当前未安装）。
+    > 如果当前未安装，系统可能会提示你安装 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 。
 1. 接受隐私和许可条款，并单击底部的 " **选择** "
 1. 在 "部署 PostgreSQL 超大规模服务器组-Azure Arc" 边栏选项卡中，输入以下信息：
    - 输入服务器组的名称

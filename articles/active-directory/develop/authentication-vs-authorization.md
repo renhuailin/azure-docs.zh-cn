@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 320debcf2b744e949faf7b29dd72ed334fe0feea
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252107"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503719"
 ---
 # <a name="authentication-vs-authorization"></a>身份验证和授权
 
@@ -35,6 +35,8 @@ ms.locfileid: "86252107"
 ## <a name="authentication-and-authorization-using-microsoft-identity-platform"></a>使用 Microsoft 标识平台进行身份验证和授权
 
 当你需要在多个应用中添加或删除用户时，应用不必创建各自维护自己的用户名和密码信息的应用（这会带来很重的管理负担），而是可以将此责任委托给一个集中式标识提供程序。
+
+> [!VIDEO https://www.youtube.com/embed/tkQJSHFsduY]
 
 Azure Active Directory (Azure AD) 就是云中的一个集中标识提供程序。 通过将身份验证和授权委托给它可实现以下场景：要求用户位于特定位置的条件访问策略、使用[多重身份验证](../authentication/concept-mfa-howitworks.md)（有时称为双因素身份验证或 2FA），以及允许用户登录一次后可自动登录到共享同一集中目录的所有 Web 应用。 此功能被称为“单一登录 (SSO)”。
 

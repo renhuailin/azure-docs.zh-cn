@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: a9b7b40c3f79751a9d67750e428ca14cc024a47b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 761fc5e86acd6fa46f1d03f960a3987e540a925a
+  ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91328269"
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96461131"
 landingContent:
 - title: 关于 Azure 安全基准
   linkLists:
@@ -61,7 +61,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: Azure Databricks
-      url: ../../azure-databricks/security-baseline.md
+      url: /azure/databricks/scenarios/security-baseline
     - text: Azure 机器学习
       url: ../../machine-learning/security-baseline.md
     - text: 认知服务
@@ -82,7 +82,7 @@ landingContent:
       url: ../../hdinsight/security-baseline.md
     - text: 流分析基线
       url: ../../stream-analytics/security-baseline.md
-    - text: Synapse Analytics 安全基线
+    - text: Azure Synapse Analytics 安全基线
       url: ../../synapse-analytics/security-baseline.md
 - title: 计算安全基准
   linkLists:
@@ -121,7 +121,7 @@ landingContent:
     - text: Azure Database for PostgreSQL - 超大规模
       url: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - text: Azure SQL 数据库
-      url: ../../sql-database/security-baseline.md
+      url: ../../azure-sql/database/security-baseline.md
     - text: Cosmos DB
       url: ../../cosmos-db/security-baseline.md
 - title: 集成安全基线
@@ -177,7 +177,7 @@ landingContent:
     - text: 客户密码箱
       url: ../fundamentals/customer-lockbox-security-baseline.md
     - text: Key Vault
-      url: ../../key-vault/security-baseline.md
+      url: ../../key-vault/general/security-baseline.md
     - text: 安全中心
       url: ../../security-center/security-baseline.md
 - title: 额外安全基线

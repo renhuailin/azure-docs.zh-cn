@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c6405e2fcddef9ae3228ede76dfa57f7542164c8
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604285"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020170"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教程：配合使用自定义视觉和 IoT 设备来报告视觉状态
 
@@ -41,7 +41,7 @@ ms.locfileid: "90604285"
 * 还需要在 Azure 上[创建 IoT 中心资源](https://ms.portal.azure.com/#create/Microsoft.IotHub)。
 * [Visual Studio 2015 或更高版本](https://www.visualstudio.com/downloads/)
 * （可选）运行 Windows 10 IoT 核心版 17763 或更高版本的 IoT 设备。 还可以直接在电脑上运行应用。
-   * 对于 Raspberry Pi 2 和 3，可以直接在 IoT 仪表板应用中设置 Windows 10。 对于其他设备（如 DrangonBoard），需要使用 [eMMC 方法](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)对其进行刷写。 如需获取设置新设备的帮助，请参阅 Windows IoT 文档中的[设置设备](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)。
+   * 对于 Raspberry Pi 2 和 3，可以直接在 IoT 仪表板应用中设置 Windows 10。 对于其他设备（如 DrangonBoard），需要使用 [eMMC 方法](/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)对其进行刷写。 如需获取设置新设备的帮助，请参阅 Windows IoT 文档中的[设置设备](/windows/iot-core/tutorials/quickstarter/devicesetup)。
 
 ## <a name="about-the-visual-alerts-app"></a>关于视觉警报应用
 
@@ -142,5 +142,5 @@ IoT 视觉警报应用以连续循环的形式运行，并根据需要在四个�
 > [IoTVisualAlerts 示例 (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
 
 * 添加一个 IoT 中心方法，将应用直接切换到“等待训练的模型”状态  。 这样，就可以使用设备本身未捕获的图像来训练模型，然后根据命令将新模型推送到设备上。
-* 参照[可视化实时传感器数据](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi)教程，创建 Power BI 仪表板，用于可视化由示例发送的 IoT 中心警报。
-* 参照 [IoT 远程监视](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps)教程，创建一个逻辑应用，用于在检测到视觉状态时响应 IoT 中心警报。
+* 参照[可视化实时传感器数据](../../iot-hub/iot-hub-live-data-visualization-in-power-bi.md)教程，创建 Power BI 仪表板，用于可视化由示例发送的 IoT 中心警报。
+* 参照 [IoT 远程监视](../../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)教程，创建一个逻辑应用，用于在检测到视觉状态时响应 IoT 中心警报。

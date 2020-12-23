@@ -1,26 +1,26 @@
 ---
-title: 还原现有数据仓库
-description: 有关还原现有 SQL 池的操作指南。
+title: '还原现有的专用 SQL 池 (以前的 SQL DW) '
+description: 关于如何在 Azure Synapse Analytics 中还原现有专用 SQL 池的操作指南。
 services: synapse-analytics
 author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 08/29/2018
-ms.author: anjangsh
+ms.date: 11/13/2020
+ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: dead71d08b5a7a16871816580107c8aed8a0a77c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 2ce552a13592c9d26ef70575f98b0b76ecc454ff
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405099"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591984"
 ---
-# <a name="restore-an-existing-sql-pool"></a>还原现有的 SQL 池
+# <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>还原现有的专用 SQL 池 (以前的 SQL DW) 
 
-本文介绍如何通过 Azure 门户和 PowerShell 在 Azure Synapse Analytics 中还原现有的 SQL 池。
+本文介绍如何使用 Azure 门户和 PowerShell 将现有专用 SQL 池 (以前的 SQL DW) 还原。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,9 +31,9 @@ ms.locfileid: "91405099"
 1. 确保[安装 Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 有一个现有的还原点，需要从该点进行还原。 若要创建新的还原，请参阅[教程：新建用户定义的还原点](sql-data-warehouse-restore-points.md)。
 
-## <a name="restore-an-existing-sql-pool-through-powershell"></a>通过 PowerShell 还原现有的 SQL 池
+## <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw-through-powershell"></a>通过 PowerShell (以前的 SQL DW) 还原现有专用 SQL 池
 
-若要从还原点还原现有的 SQL 池，请使用 [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet。
+若要从还原点还原现有的专用 SQL 池 (以前的 SQL DW) ，请使用 [AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet。
 
 1. 打开 PowerShell。
 
@@ -41,18 +41,18 @@ ms.locfileid: "91405099"
 
 3. 选择包含要还原的数据库的订阅。
 
-4. 列出 SQL 池的还原点。
+4. 列出专用 SQL 池 (以前的 SQL DW) 的还原点。
 
 5. 使用 RestorePointCreationDate 选取所需的还原点。
 
-6. 使用 [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 将 SQL 池还原到所需还原点。
+6. 使用 [AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet，将专用 sql DW (以前的 sql DW) 还原到所需的还原点。
 
-    1. 若要将 SQL 池还原到另一服务器，请确保指定其他服务器名称。  该服务器也可以位于另一资源组和区域中。
+    1. 若要将专用 SQL DW)  (以前的 SQL DW 还原到其他服务器，请确保指定其他服务器名称。  该服务器也可以位于另一资源组和区域中。
     2. 若要还原到其他订阅，请使用 "移动" 按钮将服务器移到另一个订阅。
 
-7. 验证已还原的 SQL 池是否处于联机状态。
+7. 验证还原的专用 SQL 池 (以前的 SQL DW) 是否处于联机状态。
 
-8. 完成还原后，即可按[在恢复后配置数据库](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)中的说明配置恢复的 SQL 池。
+8. 还原完成后，可以按照 [在恢复后配置数据库](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery) (以前的 sql DW) 来配置恢复的专用 sql 池。
 
 ```Powershell
 
@@ -89,19 +89,19 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>通过 Azure 门户还原现有的 SQL 池
+## <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw-through-the-azure-portal"></a>通过 Azure 门户 (以前的 SQL DW) 还原现有的专用 SQL 池
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 导航到要从中进行还原的 SQL 池。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 导航到要从中还原的专用。
 3. 在“概览”边栏选项卡顶部，选择“还原”。
 
     ![ 还原概述](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. 选择“自动还原点”或“用户定义的还原点”。  如果 SQL 池没有任何自动还原点，请等待数小时或创建一个用户定义的还原点，然后再进行还原。 对于用户定义的还原点，请选择一个现有的，或者创建一个新的。 对于“服务器”，可以选取另一资源组和区域中的服务器，也可以创建一个新服务器。 在提供所有参数后，请单击“查看 + 还原”。
+4. 选择“自动还原点”或“用户定义的还原点”。  如果专用 SQL 池 (以前的 SQL DW) 没有任何自动还原点，请在还原前等待几小时或创建用户定义的还原点。 对于用户定义的还原点，请选择一个现有的，或者创建一个新的。 对于“服务器”，可以选取另一资源组和区域中的服务器，也可以创建一个新服务器。 在提供所有参数后，请单击“查看 + 还原”。
 
     ![自动还原点](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [还原已删除的 SQL 池](sql-data-warehouse-restore-deleted-dw.md)
-- [从异地备份 SQL 池进行还原](sql-data-warehouse-restore-from-geo-backup.md)
+- [还原已删除的专用 SQL 池 (以前的 SQL DW) ](sql-data-warehouse-restore-deleted-dw.md)
+- [从异地备份专用 SQL 池还原 (以前的 SQL DW) ](sql-data-warehouse-restore-from-geo-backup.md)

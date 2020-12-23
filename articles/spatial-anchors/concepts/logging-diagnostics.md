@@ -1,20 +1,20 @@
 ---
 title: 日志记录和诊断
 description: 详细说明如何在 Azure 空间锚中生成和检索日志记录和诊断。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da941aa8b616fffeb2e283480c2a1e2f9cf7a093
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: da8ffd7ff0b8473ce558943bb420b36f26c3fc32
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003110"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494635"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure 空间锚中的日志记录和诊断
 
@@ -43,9 +43,9 @@ Azure 空间锚提供标准的日志记录机制，适用于应用程序开发�
 
 提供这些事件回调是为了处理来自会话的日志和错误：
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel)：指定要从运行时接收的事件的详细级别。
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug)：提供标准调试日志事件。
-- [错误](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error)：提供运行时视为错误的日志事件。
+- [LogLevel](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel)：指定要从运行时接收的事件的详细级别。
+- [OnLogDebug](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug)：提供标准调试日志事件。
+- [错误](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error)：提供运行时视为错误的日志事件。
 
 ## <a name="diagnostics-logging"></a>诊断日志记录
 

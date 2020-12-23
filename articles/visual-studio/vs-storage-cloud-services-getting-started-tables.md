@@ -13,26 +13,26 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8579efcee45e08fec3331df8f55b61618edb4f4f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e5e687b172b49fec5f77615e332d0a2204162c43
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000407"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545767"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 表存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在云服务项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 表存储。**** 执行“添加连接服务”操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。****
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在云服务项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 表存储。 执行“添加连接服务”操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。
 
 Azure 表存储服务使用户可以存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。
 
-若要开始，首先需要在存储帐户中创建表。 我们将展示如何使用代码创建 Azure 表，以及如何执行基本的表和实体操作，例如添加、修改、读取和删除表实体。 示例是用 C 代码编写的 \# ，并使用了 [适用于 .net 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+若要开始，首先需要在存储帐户中创建表。 我们将展示如何使用代码创建 Azure 表，以及如何执行基本的表和实体操作，例如添加、修改、读取和删除表实体。 示例是用 C 代码编写的 \# ，并使用了 [适用于 .net 的 Microsoft Azure 存储客户端库](/previous-versions/azure/dn261237(v=azure.100))。
 
-**注意：** 执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](https://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
+**注意：** 执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](/previous-versions/hh191443(v=vs.140))。 下面的代码假定正在使用异步编程方法。
 
-* 有关以编程方式操作表的详细信息，请参阅 [Get started with Azure Table storage using .NET](../storage/storage-dotnet-how-to-use-tables.md)（通过 .NET 开始使用 Azure 表存储）。
+* 有关以编程方式操作表的详细信息，请参阅 [Get started with Azure Table storage using .NET](../cosmos-db/tutorial-develop-table-dotnet.md)（通过 .NET 开始使用 Azure 表存储）。
 * 有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。
 * 有关 Azure 云服务的常规信息，请参阅[云服务文档](https://azure.microsoft.com/documentation/services/cloud-services/)。
 * 有关编写 ASP.NET 应用程序的详细信息，请参阅 [ASP.NET](https://www.asp.net)。
@@ -101,7 +101,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-将使用之前在“使用代码访问表”中创建的 **CloudTable** 对象完成涉及实体的表操作。 **TableOperation** 对象表示将完成的操作。 以下代码示例演示如何创建 **CloudTable** 对象和 **CustomerEntity** 对象。 为准备此操作，会创建一个 **TableOperation** 以将客户实体插入该表中。 最后，通过调用 **CloudTable.ExecuteAsync**来执行该操作。
+将使用之前在“使用代码访问表”中创建的 **CloudTable** 对象完成涉及实体的表操作。 **TableOperation** 对象表示将完成的操作。 以下代码示例演示如何创建 **CloudTable** 对象和 **CustomerEntity** 对象。 为准备此操作，会创建一个 **TableOperation** 以将客户实体插入该表中。 最后，通过调用 **CloudTable.ExecuteAsync** 来执行该操作。
 
 ```csharp
 // Create a new customer entity.
@@ -185,7 +185,7 @@ else
     Console.WriteLine("The phone number could not be retrieved.");
 ```
 
-## <a name="delete-an-entity"></a>删除实体
+## <a name="delete-an-entity"></a>删除条目
 可以在找到实体后将其删除。 以下代码查找名为“Ben Smith”的客户实体，如果找到，会将其删除。
 
 ```csharp
@@ -215,4 +215,3 @@ else
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
-

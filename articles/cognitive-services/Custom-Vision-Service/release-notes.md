@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391700"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616461"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
 
@@ -41,7 +41,7 @@ ms.locfileid: "85391700"
 
 - 自定义影像服务在 Azure 上输入了正式上市！
 - 添加了新的机器学习后端高级培训功能以提高性能，尤其是在有挑战性的数据集和精细分类的情况下。 使用高级培训，你可以指定定型的计算时间预算，自定义视觉将 experimentally 确定最佳训练和扩大设置。 对于快速迭代，您可以继续使用现有的快速训练。
-- 引入了 3.0 Api。 在2019年10月1日宣布弃用了3.0 之前的 Api。 有关如何开始操作的示例，请参阅 [.net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、 [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、 [Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、 [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)或 [中转](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) 的文档快速入门。
+- 引入了 3.0 Api。 在2019年10月1日宣布弃用了3.0 之前的 Api。 有关如何开始操作的示例，请参阅 [.net](./quickstarts/image-classification.md)、 [Python](./quickstarts/image-classification.md)、 [Node](./quickstarts/image-classification.md)、 [Java](./quickstarts/image-classification.md)或 [中转](./quickstarts/image-classification.md) 的文档快速入门。
 - 已在 3.0 Api 中将 "默认迭代" 替换为发布/取消发布。
 - 添加了新的模型导出目标。 Dockerfile 导出已升级到支持 ARM for Raspberry Pi 3。 已将导出支持添加到了[远景 AI 开发工具包。](https://visionaidevkit.com/)
 - 对于 S0 层，每个项目的标记数增加到500。 对于 S0 层，每个项目的映像数限制增加到100000。
@@ -62,7 +62,7 @@ ms.locfileid: "85391700"
 - 修复了大量辅助功能问题以获得改进的屏幕阅读器和键盘导航支持。
 - 对图像查看器进行了 UX 更新并改进了对象检测标记体验以便更快速地进行标记。  
 - 更新了对象检测域的基础模型以获得更好质量的对象检测。
-- Bug 修复。
+- bug 修复。
 
 ## <a name="november-6-2018"></a>2018 年 11 月 6 日
 

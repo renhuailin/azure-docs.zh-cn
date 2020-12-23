@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b7ae2543cfa9226064a2890b95dcc96be85fe56d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 81c936acc00801f8473c1ec74aa50dbf2abb4936
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497216"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397011"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 管理 Web 流量
 
@@ -45,16 +45,16 @@ az group delete --name myResourceGroupAG --yes
 
 | Command | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 创建虚拟网络。 |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 在虚拟网络中创建子网。 |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公共 IP 地址。 |
-| [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | 创建应用程序网关。 |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | 创建虚拟机规模集。 |
-| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip) | 获取应用程序网关的公共 IP 地址。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az network vnet create](/cli/azure/network/vnet) | 创建虚拟网络。 |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 在虚拟网络中创建子网。 |
+| [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公共 IP 地址。 |
+| [az network application-gateway create](/cli/azure/network/application-gateway?view=azure-cli-latest) | 创建应用程序网关。 |
+| [az vmss create](/cli/azure/vmss) | 创建虚拟机规模集。 |
+| [az network public-ip show](/cli/azure/network/public-ip) | 获取应用程序网关的公共 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/overview)。
 
 可以在 [Azure Windows VM 文档](../cli-samples.md)中找到其他应用程序网关 CLI 脚本示例。

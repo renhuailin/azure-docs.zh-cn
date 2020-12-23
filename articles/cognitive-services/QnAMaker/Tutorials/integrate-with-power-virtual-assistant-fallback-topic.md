@@ -1,14 +1,16 @@
 ---
 title: 教程：与 Power Virtual Agents 集成 - QnA Maker
 description: 本教程介绍如何使用主动学习改善知识库的质量。 在不删除或更改现有问题的情况下检查、接受或拒绝以及添加问题。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 06/08/2020
-ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 11/09/2020
+ms.openlocfilehash: 3801bb44fed6bf24788957c41de77c89b3025ae8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635309"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351106"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>教程：将知识库添加到 Power Virtual Agents
 创建和扩展 [Power Virtual Agents](https://powervirtualagents.microsoft.com/) 机器人，以从知识库提供答案。
@@ -50,8 +52,8 @@ ms.locfileid: "84635309"
     * 生成代理主题。
     * （对 Power Automate 流）调用操作。
 * 在 [Power Automate](https://us.flow.microsoft.com/) 门户中：
-    * 搜索_使用 QnA Maker 生成答案_模板
-    * 使用模板配置流，以使用 [QnA Maker 的 GenerateAnswer](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)。
+    * 搜索 _使用 QnA Maker 生成答案_ 模板
+    * 使用模板配置流，以使用 [QnA Maker 的 GenerateAnswer](/connectors/cognitiveservicesqnamaker/)。
         * QnA Maker 发布的知识库信息：
             * 知识库 ID
             * QnA Maker 资源终结点主机
@@ -137,6 +139,9 @@ ms.locfileid: "84635309"
 
 ## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>创建 Power Automate 流以连接到知识库
 
+> [!NOTE]
+> 目前 Power Automate 模板不支持 QnA Maker 托管（预览版）终结点。 若要将 QnA Maker 托管（预览版）知识库添加到 Power Automate，请跳过此步骤并手动向其添加终结点。 
+
 以下过程创建一个 Power Automate 流，该流可以：
 * 提取传入的用户文本，并将其发送到 QnA Maker。
 * 将顶级响应返回给代理。
@@ -149,10 +154,10 @@ ms.locfileid: "84635309"
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="QnA Maker 模板流的部分屏幕截图，其中突出显示了“继续”按钮。":::
 
-1. 选择“生成答案”操作框，然后填写标题为“[创建并发布知识库](#create-and-publish-a-knowledge-base)”的上一节中的 QnA Maker 设置。 下图中的**服务主机**是指你的知识库托管**主机**，格式为 `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker`。
+1. 选择“生成答案”操作框，然后填写标题为“[创建并发布知识库](#create-and-publish-a-knowledge-base)”的上一节中的 QnA Maker 设置。 下图中的 **服务主机** 是指你的知识库托管 **主机**，格式为 `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker`。
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="QnA Maker 模板流的部分屏幕截图，其中突出显示了“继续”按钮。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="QnA Maker 模板流的部分屏幕截图，其中突出显示了“生成答案(预览)”。":::
 
 1. 选择“保存”以保存流。
 
@@ -202,7 +207,7 @@ ms.locfileid: "84635309"
 最终的代理画布如下所示。
 
 > [!div class="mx-imgBorder"]
-> ![最终代理画布的屏幕截图](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+> ![屏幕截图显示了最终的代理画布，其中包含“触发器短语”、“操作”和“消息”部分。](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
 
 ## <a name="test-the-agent"></a>测试代理
 
@@ -253,6 +258,6 @@ ms.locfileid: "84635309"
 [获取有关知识库的分析](../How-To/get-analytics-knowledge-base.md)
 
 了解有关以下方面的详细信息：
-* [Power Virtual Agent](https://docs.microsoft.com/power-virtual-agents/)
-* [Power Automate](https://docs.microsoft.com/power-automate/)
-* [QnA Maker 连接器](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)和[连接器设置](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+* [Power Virtual Agent](/power-virtual-agents/)
+* [Power Automate](/power-automate/)
+* [QnA Maker 连接器](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)和[连接器设置](/connectors/cognitiveservicesqnamaker/)

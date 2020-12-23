@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: d1de9270534a3550d8db043fdd6bcfe56ec31bda
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 72b2ba0ea444fb14ef9fc1bc3ea6aea3654677df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895595"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655521"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>连接 Microsoft Defender for Endpoint (以前的 Microsoft Defender ATP) 的警报
 
@@ -33,15 +33,15 @@ ms.locfileid: "90895595"
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-[Microsoft defender For endpoint](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)连接器允许你将来自 microsoft Defender for endpoint 的警报流式传输到 Azure Sentinel。 这样，你就可以更全面地分析组织中的安全事件，并构建行动手册以实现有效且即时的响应。
+[Microsoft defender For endpoint](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)连接器允许你将来自 microsoft Defender for endpoint 的警报流式传输到 Azure Sentinel。 这样，你就可以更全面地分析组织中的安全事件，并构建行动手册以实现有效且即时的响应。
 
 > [!NOTE]
 >
-> 若要从 Microsoft Defender for Endpoint 的 [高级搜寻](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)中引入新的原始数据日志，请使用新的连接器 Microsoft 365 Defender (以前的 Microsoft 威胁防护， [请参阅文档](./connect-microsoft-365-defender.md)) 。
+> 若要从 Microsoft Defender for Endpoint 的 [高级搜寻](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)中引入新的原始数据日志，请使用新的连接器 Microsoft 365 Defender (以前的 Microsoft 威胁防护， [请参阅文档](./connect-microsoft-365-defender.md)) 。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
-- 你必须具有 Microsoft Defender for Endpoint 的有效许可证，如为 [终结点部署设置 Microsoft defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
+- 你必须具有 Microsoft Defender for Endpoint 的有效许可证，如为 [终结点部署设置 Microsoft defender](/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
 
 - 你必须是 Azure Sentinel 租户上的全局管理员或安全管理员。
 
@@ -53,9 +53,9 @@ ms.locfileid: "90895595"
 
 1. 单击“连接”。 
 
-1. 若要在 **日志**中查询 Microsoft Defender for Endpoint 警报，请在查询窗口中输入 **SecurityAlert** ，并添加 **提供程序名称** 为 **MDATP**的筛选器。
+1. 若要在 **日志** 中查询 Microsoft Defender for Endpoint 警报，请在查询窗口中输入 **SecurityAlert** ，并添加 **提供程序名称** 为 **MDATP** 的筛选器。
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Microsoft Defender for Endpoint 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。

@@ -1,17 +1,17 @@
 ---
 title: 备份和还原 - Azure 门户 - Azure Database for MySQL
 description: 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 中还原服务器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9bc31cf8fee2669634ff366caac77cb090baf075
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902792"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000294"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中备份和还原服务器
 
@@ -30,7 +30,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 > 创建服务器后，无法在异地冗余或本地冗余之间切换服务器冗余类型。
 >
 
-通过 Azure 门户创建服务器时，在“定价层”窗口中为服务器选择是进行**本地冗余**备份还是**异地冗余**备份。 也在此窗口中选择“备份保留期” - 希望存储服务器备份多长时间（天数）。
+通过 Azure 门户创建服务器时，在“定价层”窗口中为服务器选择是进行 **本地冗余** 备份还是 **异地冗余** 备份。 也在此窗口中选择“备份保留期” - 希望存储服务器备份多长时间（天数）。
 
    :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="定价层 - 选择备份冗余":::
 
@@ -39,7 +39,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 可以通过以下步骤更改服务器上的备份保留期：
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 选择 Azure Database for MySQL 服务器。 此操作将打开“概述”页。
-3. 在“设置”下，从菜单中选择“定价层”。 使用滑块可以根据需要更改**备份保留期**（7 天到 35 天）。
+3. 在“设置”下，从菜单中选择“定价层”。 使用滑块可以根据需要更改 **备份保留期**（7 天到 35 天）。
 在下面的屏幕截图中，该项已增加到 34 天。
 :::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="增加的备份保留期":::
 
@@ -73,11 +73,11 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 通过时间点还原创建的新服务器具有在所选时间点对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”页更改密码。
 
-此外，在还原操作完成后，有两个服务器参数 (重置为默认值，并且不会从主服务器复制到还原操作之后) 
-*   time_zone-要设置为默认值**系统**的此值
-*   event_scheduler-已还原服务器上的 event_scheduler 设置为**OFF**
+此外，还原操作完成后，有两个服务器参数将在还原操作后重置为默认值（而不是从主服务器复制）
+*   time_zone - 此值设置为默认值“SYSTEM”
+*   event_scheduler - 还原服务器上的 event_scheduler 设置为“OFF”
 
-你将需要从主服务器复制该值，并通过重新配置[服务器参数](howto-server-parameters.md)在还原的服务器上设置该值
+你将需要从主服务器复制该值，然后通过重新配置[服务器参数](howto-server-parameters.md)在还原服务器上对其进行设置
 
 在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
@@ -110,9 +110,9 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="继续进行备份。":::
 
-7. 根据需要填写窗体的其余部分。 可以选择任意**位置**。
+7. 根据需要填写窗体的其余部分。 可以选择任意 **位置**。
 
-    选择位置后，可以选择“配置服务器”以更新“计算代系”（如果在已选择的区域中可用）、“vCore 数”、“备份保留期”和“备份冗余选项”。 不支持在还原过程中更改**定价层**（“基本”、“常规用途”或“内存优化”）或**存储**大小。
+    选择位置后，可以选择“配置服务器”以更新“计算代系”（如果在已选择的区域中可用）、“vCore 数”、“备份保留期”和“备份冗余选项”。 不支持在还原过程中更改 **定价层**（“基本”、“常规用途”或“内存优化”）或 **存储** 大小。
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="填写表单。"::: 
 
@@ -120,7 +120,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 9. 选择“创建”以预配服务器。 此操作可能需要几分钟的时间。
 
-通过异地还原创建的新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”页更改密码。
+通过异地还原创建的新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
 在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 

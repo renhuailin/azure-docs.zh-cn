@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c1dbdc4761c107a8e5028a43ead9710d45526016
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324223"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461181"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
 目前，用于与 Azure 数字孪生 Api 交互的已发布数据平面 Sdk 仅适用于 .NET (c # ) 、JavaScript 和 Java。 有关这些 Sdk 的信息，请参阅 [*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)中的常规 api。 如果你使用的是另一种语言，本文将演示如何使用 AutoRest 按你选择的语言生成自己的数据平面 SDK。
 
 >[!NOTE]
-> 如果需要，还可以使用 AutoRest 生成控制平面 SDK。 为此，请使用 [控制平面 Swagger (OpenAPI) 文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) 而不是数据平面来完成本文中的步骤。
+> 如果需要，还可以使用 AutoRest 生成控制平面 SDK。 为此，请完成本文中的步骤，只需使用 [控制平面 swagger 文件夹](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/)中的最新 **控制平面 swagger** (OpenAPI) 文件，而不是使用数据平面。
 
 ## <a name="set-up-your-machine"></a>设置计算机
 
 若要生成 SDK，你将需要：
 * 当前不支持[AutoRest](https://github.com/Azure/autorest)版本 2.0.4413 (版本 3) 
 * 作为 AutoRest 的先决条件[Node.js](https://nodejs.org)
-* Azure 数字孪生 [数据平面 Swagger (OpenAPI) 文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) ，该文件标题为 *digitaltwins.js*，以及其随附的示例文件夹。 将 Swagger 文件及其示例的文件夹下载到本地计算机。
+* 最新的 Azure 数字孪生 **数据平面 swagger** (OpenAPI) 来自 [数据平面 Swagger 文件夹](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)的文件，以及其随附的示例文件夹。  将 Swagger 文件 *digitaltwins.js上* ，并将其示例文件夹下载到本地计算机。
 
 一旦你的计算机配备了上述列表中的所有内容，你就可以使用 AutoRest 创建该 SDK。
 
@@ -61,7 +61,7 @@ AutoRest 支持多种语言代码生成器。
 
 1. 为类库创建新的 Visual Studio 解决方案
 2. 使用 *ADTApi* 作为项目名称
-3. 在 "解决方案资源管理器" 中，右键选择生成的解决方案的*ADTApi*项目，然后选择 "*添加 > 现有项 ...* "
+3. 在 "解决方案资源管理器" 中，右键选择生成的解决方案的 *ADTApi* 项目，然后选择 "*添加 > 现有项 ...* "
 4. 找到生成 SDK 的文件夹，然后选择根级别的文件
 5. 按 "确定"
 6. 将文件夹添加到项目 (在解决方案资源管理器中右键选择项目，然后选择 " *添加 > 新文件夹* ") 
@@ -102,7 +102,7 @@ REST API 调用通常返回强类型对象。 不过，由于 Azure 数字孪生
 ```csharp
 try
 {
-    await client.DigitalTwins.AddAsync(id, initData);
+    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(id, initData);
     Console.WriteLine($"Created a twin successfully: {id}");
 }
 catch (ErrorResponseException e)
@@ -111,46 +111,31 @@ catch (ErrorResponseException e)
 }
 ```
 
-### <a name="paging"></a>分页
+### <a name="paging"></a>Paging
 
 AutoRest 为 SDK 生成两种类型的分页模式：
 * 一个用于除查询 API 之外的所有 Api
 * 一个用于查询 API
 
-在非查询分页模式下，每次调用都有两个版本：
-* 初始调用的版本 (如 `DigitalTwins.ListEdges()`) 
-* 用于获取以下页面的版本。 这些调用的后缀为 "Next" (如 `DigitalTwins.ListEdgesNext()`) 
+在非查询分页模式下，以下代码片段显示了如何从 Azure 数字孪生检索传出关系的分页列表：
 
-以下代码片段演示了如何从 Azure 数字孪生检索传出关系的分页列表：
 ```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
+ try 
+ {
+     // List the relationships.
+    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
+    Console.WriteLine($"Twin {srcId} is connected to:");
+    // Iterate through the relationships found.
+    int numberOfRelationships = 0;
+    await foreach (string rel in results)
     {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
+         ++numberOfRelationships;
+         // Do something with each relationship found
+         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
     }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
+    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
 }
 ```
 

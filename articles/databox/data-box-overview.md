@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52772519cc3b9aebc42175e812ad47ae54b529e9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86206227"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336671"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -90,12 +90,12 @@ Data Box 包括以下组件：
 
 * **Data Box 设备** - 提供主存储、管理与云存储通信的物理设备，并有助于确保存储在设备上的所有数据的安全性和机密性。 Data Box 设备的可用存储容量为 80 TB。 
 
-    ![Data Box 的正面和背面](media/data-box-overview/data-box-combined3.png)
+    ![Data Box 的正面和背面](media/data-box-overview/data-box-combined.png)
 
     
 * **Data Box 设备** - Azure 门户的扩展，使用该扩展可以通过 Web 界面（可从不同的地理位置访问该界面）管理 Data Box 设备。 使用 Data Box 服务执行的 Data Box 设备的日常管理。 服务任务包括如何创建和管理订单、查看和管理警报以及管理共享。  
 
-    ![Azure 门户中的 Data Box 服务](media/data-box-overview/data-box-service1.png)
+    ![Azure 门户中的 Data Box 服务](media/data-box-overview/data-box-service.png)
 
     有关详细信息，请转到[使用 Data Box 服务管理 Data Box 设备](data-box-portal-ui-admin.md)。
 
@@ -144,7 +144,7 @@ Data Box 可以根据部署服务的区域、设备的发货国家/地区以及�
 
 - **服务可用性** - 当对导入或导出订单使用 Data Box 时，若要获取有关区域可用性的信息，请转到 [Azure 可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 Data Box 上的导出功能当前为预览版。 
 
-    对于导入订单，Data Box 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。 
+    对于导入订单，Data Box 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](../azure-government/documentation-government-welcome.md)。 
 
 - **目标存储帐户** - 存储数据的存储帐户可在服务可用的所有 Azure 区域中获得。
 
@@ -154,7 +154,3 @@ Data Box 可以根据部署服务的区域、设备的发货国家/地区以及�
 - 请查看 [Data Box 系统要求](data-box-system-requirements.md)。
 - 了解 [Data Box 限制](data-box-limits.md)。
 - 在 Azure 门户中快速部署 [Azure Data Box](data-box-quickstart-portal.md)。
-
-
-
-

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 71eda40abd38b4885b8e88085e338667b608902f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069266"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655130"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教程：在 Azure 门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
 
@@ -64,7 +64,7 @@ ms.locfileid: "89069266"
 8. 对于“位置”，请选择前面使用的同一位置。 
 9. 在“子网”下，为“名称”键入 **AzureFirewallSubnet**。 
 
-     防火墙将位于此子网中，子网名称**必须**是 AzureFirewallSubnet。
+     防火墙将位于此子网中，子网名称 **必须** 是 AzureFirewallSubnet。
      > [!NOTE]
      > AzureFirewallSubnet 子网的大小为 /26。 有关子网大小的详细信息，请参阅 [Azure 防火墙常见问题解答](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
 
@@ -226,4 +226,4 @@ ms.locfileid: "89069266"
 接下来，可以监视 Azure 防火墙日志。
 
 > [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](./tutorial-diagnostics.md)
+> [教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)

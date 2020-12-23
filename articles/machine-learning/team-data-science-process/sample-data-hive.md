@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026043"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321884"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>对 Azure HDInsight Hive 表中的数据进行采样
-本文介绍如何使用 Hive 查询向下采样存储在 Azure HDInsight Hive 表中的数据，以将其减至对于分析更易于管理的大小。 它包含三个一般使用的采样方法：
+本文介绍如何使用 Hive 查询向下采样存储在 Azure HDInsight Hive 表中的数据，以将其减至对于分析更易于管理的大小。 将介绍三种常用的采样方法：
 
 * 统一随机采样
 * 按组随机采样
@@ -28,7 +28,7 @@ ms.locfileid: "86026043"
 **为什么对数据进行采样？**
 如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 向下采样有利于数据理解、探索和功能设计。 它在团队数据科学过程中的作用是启用数据处理功能和机器学习模型的快速原型设计。
 
-此采样任务是[团队数据科学流程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
+此采样任务是[团队数据科学流程 (TDSP)](./index.yml) 中的一个步骤。
 
 ## <a name="how-to-submit-hive-queries"></a>如何提交 Hive 查询
 可从 Hadoop 群集头节点上的 Hadoop 命令行控制台中提交 Hive 查询。  登录到 Hadoop 群集的头节点，打开 Hadoop 命令行控制台，并从那里提交 Hive 查询。 有关在 Hadoop 命令行控制台中提交 Hive 查询的说明，请参阅[如何提交 Hive 查询](move-hive-tables.md#submit)。
@@ -105,4 +105,3 @@ where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 ```
 
 有关 Hive 中可用的更多高级采样方法的信息，请参阅 [LanguageManual Sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)（LanguageManual 采样）。
-

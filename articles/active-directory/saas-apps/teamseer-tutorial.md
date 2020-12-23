@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 815c738f1680c12f94aa97e91cd123237bf1b4f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6085ba5091b2b9973354280175aeb01f93ad7e28
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542490"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教程：Azure Active Directory 与 TeamSeer 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88542490"
 * 可让用户使用其 Azure AD 帐户自动登录到 TeamSeer（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -61,7 +61,7 @@ ms.locfileid: "88542490"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **TeamSeer**，在结果面板中选择“TeamSeer”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **TeamSeer** ，在结果面板中选择“TeamSeer”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“TeamSeer”](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "88542490"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "88542490"
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取该值，请与 [TeamSeer 客户端支持团队](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "88542490"
 
 1. 转到“HR 管理员”  。
 
-    ![HR 管理员](./media/teamseer-tutorial/ic789634.png "HR 管理员")
+    ![显示从 TeamSeer 窗口选择了“HR 管理员”的屏幕截图。](./media/teamseer-tutorial/ic789634.png "HR 管理员")
 
 1. 单击“设置”  。
 
@@ -134,11 +134,11 @@ ms.locfileid: "88542490"
 
 1. 单击“设置 SAML 提供程序详细信息”  。
 
-    ![SAML 设置](./media/teamseer-tutorial/ic789636.png "SAML 设置")
+    ![显示选择了“设置 SAML 提供程序详细信息”的屏幕截图。](./media/teamseer-tutorial/ic789636.png "SAML 设置")
 
 1. 在“SAML 提供程序详细信息”部分中，执行以下步骤：
 
-    ![SAML 设置](./media/teamseer-tutorial/ic789637.png "SAML 设置")
+    ![显示“SAML 提供程序详细信息”的屏幕截图，可在其中输入所述值。](./media/teamseer-tutorial/ic789637.png "SAML 设置")
 
     a. 在“URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -146,13 +146,13 @@ ms.locfileid: "88542490"
 
 1. 若要完成 SAML 提供程序配置，请执行以下步骤：
 
-    ![SAML 设置](./media/teamseer-tutorial/ic789638.png "SAML 设置")
+    ![显示“SAML 提供程序配置”的屏幕截图，可在其中输入所述值。](./media/teamseer-tutorial/ic789638.png "SAML 设置")
 
     a. 在  “测试电子邮件地址”中，键入测试用户的电子邮件地址。
   
     b. 在“颁发者”  文本框中，键入服务提供商的颁发者 URL。
   
-    c. 单击“ **保存**”。
+    c. 单击“ **保存** ”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -215,7 +215,7 @@ ms.locfileid: "88542490"
 
 1. 转到“HR 管理员”\>“用户”，然后单击“运行新建用户向导”。  
 
-    ![HR 管理员](./media/teamseer-tutorial/ic789640.png "HR 管理员")
+    ![显示“HR 管理员”选项卡的屏幕截图，可在其中选择要运行的向导。](./media/teamseer-tutorial/ic789640.png "HR 管理员")
 
 1. 在“用户详细信息”  部分中，执行以下步骤：
 
@@ -234,12 +234,12 @@ ms.locfileid: "88542490"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“TeamSeer”磁贴时，应会自动登录到设置了 SSO 的 TeamSeer。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“TeamSeer”磁贴时，应会自动登录到设置了 SSO 的 TeamSeer。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

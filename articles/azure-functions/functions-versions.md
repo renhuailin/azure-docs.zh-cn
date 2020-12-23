@@ -4,19 +4,19 @@ description: Azure Functions 支持多个版本的运行时。 了解这些版�
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 935291c461e275902cb6905c4440fe4d289f0c16
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208106"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653344"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
 Azure Functions 当前支持三个版本的运行时主机：1.x、2.x 和 3.x。 生产方案支持所有三个版本。  
 
 > [!IMPORTANT]
-> 版本 1.x 处于维护模式，仅支持在 Azure 门户或本地 Windows 计算机上进行开发。 仅在更高版本中提供增强功能。 
+> 版本 1.x 处于维护模式，仅支持在 Azure 门户、Azure Stack Hub 门户或本地 Windows 计算机上进行开发。 仅在更高版本中提供增强功能。 
 
 本文详细介绍了不同版本之间的一些差异、如何创建每个版本，以及如何更改版本。
 
@@ -27,8 +27,6 @@ Azure Functions 当前支持三个版本的运行时主机：1.x、2.x 和 3.x�
 下表指示每个运行时版本目前支持的编程语言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
-
-有关详细信息，请参阅[支持的语言](supported-languages.md)。
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>在特定版本上运行
 
@@ -58,7 +56,7 @@ Azure Functions 当前支持三个版本的运行时主机：1.x、2.x 和 3.x�
 
 * 主机配置文件 (host.json) 应该为空或包含字符串 `"version": "2.0"`。
 
-* 若要改善监视，门户中的 Web 作业仪表板（使用该设置）将 [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 替换为 Azure 应用程序 Insights，使用 [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) 设置。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+* 为了改进监视功能，门户中使用 [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 设置的 WebJobs 仪表板已替换为使用 [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) 设置的 Azure Application Insights。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 * 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置中的 [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) 值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
 
@@ -118,7 +116,7 @@ Azure 中的已发布应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 ##### <a name="version-1x"></a>版本 1.x
 
 ```xml
-<TargetFramework>net461</TargetFramework>
+<TargetFramework>net472</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 

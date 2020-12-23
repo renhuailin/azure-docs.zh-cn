@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Data Lake Analytics 中使用 Python 扩展 U-SQL 脚本
 description: 了解如何使用 Azure Data Lake Analytics 在 U-SQL 脚本中运行 Python 代码
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
 ms.custom: devx-track-python
-ms.openlocfilehash: b15ab268433e4220d499f3e1fe7cb90ffac2a1be
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d81e529d7073e8200c5a1d1fa8f51504b1dc9259
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876011"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218436"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 Python 代码扩展 U-SQL 脚本
 
@@ -101,5 +100,5 @@ OUTPUT @m
 
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
-* [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
+* [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](./data-lake-analytics-u-sql-get-started.md)
 * [使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)

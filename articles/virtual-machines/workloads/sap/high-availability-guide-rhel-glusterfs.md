@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
-ms.openlocfilehash: e6b8708edeeb4b3b69dab82265d13db2a4c22e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41699625b7062daa005e6908ce9e4249dd86f1fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051662"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010004"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
 
@@ -43,7 +44,7 @@ ms.locfileid: "87051662"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 本文介绍了如何部署虚拟机、配置虚拟机以及安装可用于存储高可用性 SAP 系统的共享数据的 GlusterFS 群集。
-本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称（例如虚拟机、虚拟网络）假设你将 [SAP 文件服务器模板][template-file-server]与资源前缀 glust 配合使用****。
+本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称（例如虚拟机、虚拟网络）假设你将 [SAP 文件服务器模板][template-file-server]与资源前缀 glust 配合使用。
 
 请先阅读以下 SAP 说明和文档
 
@@ -98,7 +99,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    4. 管理员用户名、管理员密码或 SSH 密钥  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/** &lt; 订阅 ID &gt; **/ResourceGroups/** &lt; 资源组名称 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虚拟网络名称 &gt; **/subnets/** &lt; 子网名称 &gt; **
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/**&lt; 订阅 ID &gt;**/ResourceGroups/**&lt; 资源组名称 &gt;**/providers/Microsoft.Network/virtualNetworks/**&lt; 虚拟网络名称 &gt;**/subnets/**&lt; 子网名称 &gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -118,7 +119,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 
 ### <a name="configure-glusterfs"></a>配置 GlusterFS
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1、[2] - 仅适用于节点 2、[3] - 仅适用于节点 3****************。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1、[2] - 仅适用于节点 2、[3] - 仅适用于节点 3。
 
 1. [A] 设置主机名称解析
 

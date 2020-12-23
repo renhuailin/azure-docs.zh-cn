@@ -1,18 +1,15 @@
 ---
 title: 使用 PowerShell 创建 Azure 门户仪表板
 description: 了解如何使用 Azure PowerShell 在 Azure 门户中创建仪表板。
-author: mgblythe
-ms.service: azure-portal
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.author: mblythe
 ms.date: 07/24/2020
-ms.openlocfilehash: 6b7a4f6d4ad7f5e94d19b9d531992f54ff13fec0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87440693"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745728"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>快速入门：使用 PowerShell 创建 Azure 门户仪表板
 
@@ -23,7 +20,7 @@ Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 �
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
 > 尽管 Az.Portal PowerShell 模块为预览版，但必须使用 `Install-Module` cmdlet 从 Az PowerShell 模块单独安装它。 此 PowerShell 模块正式发布后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
@@ -36,7 +33,7 @@ Install-Module -Name Az.Portal
 
 ## <a name="choose-a-specific-azure-subscription"></a>选择特定 Azure 订阅
 
-如果有多个 Azure 订阅，请选择应当计费的资源所在的相应订阅。 使用 [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) cmdlet 选择特定订阅。
+如果有多个 Azure 订阅，请选择应当计费的资源所在的相应订阅。 使用 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) cmdlet 选择特定订阅。
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -68,7 +65,7 @@ $vmName = 'SimpleWinVM'
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
 下面的示例创建一个资源组，该资源组基于在 `$location` 变量中指定的区域中 `$resourceGroupName` 变量中的名称。
 
@@ -102,7 +99,7 @@ VM 部署现在将开始进行，通常需要几分钟才能完成。 部署完�
 
 ## <a name="download-the-dashboard-template"></a>下载仪表板模板
 
-由于 Azure 仪表板是资源，所以它们可以表示为 JSON。 下面的代码会下载示例仪表板的 JSON 表示形式。 有关详细信息，请参阅 [Azure 仪表板结构](/azure/azure-portal/azure-portal-dashboards-structure)。
+由于 Azure 仪表板是资源，所以它们可以表示为 JSON。 下面的代码会下载示例仪表板的 JSON 表示形式。 有关详细信息，请参阅 [Azure 仪表板结构](./azure-portal-dashboards-structure.md)。
 
 ```azurepowershell-interactive
 $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json'
@@ -180,4 +177,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 有关 Az.Portal PowerShell 模块中包含的 cmdlet 的详细信息，请参阅：
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure PowerShell：门户仪表板 cmdlet](https://docs.microsoft.com/powershell/module/Az.Portal/)
+> [Microsoft Azure PowerShell：门户仪表板 cmdlet](/powershell/module/Az.Portal/)

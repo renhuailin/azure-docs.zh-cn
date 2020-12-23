@@ -16,18 +16,18 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662486"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172361"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
 通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](/graph/extensibility-overview
 )使用这些属性。 可以使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)查看可用属性。 你还可以使用此功能在 Azure AD 中创建动态组。
 
-目前，无 Microsoft 365 工作负荷使用这些属性。
+目前，没有任何 Microsoft 365 工作负荷使用这些属性。
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>自定义要与 Azure AD 同步的属性
 
@@ -71,6 +71,9 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 >
 > 有关详细信息，请参阅 [Microsoft Graph: Use query parameters](/graph/query-parameters#select-parameter)（Microsoft Graph：使用查询参数）。
 
+>[!NOTE]
+> 不支持将属性值从 AADConnect 同步到不是由 AADConnect 创建的扩展属性。 这样做可能会产生性能问题和意外的结果。 仅支持在以上所示的中创建的扩展属性以进行同步。
+
 ## <a name="use-the-attributes-in-dynamic-groups"></a>使用动态组中的属性
 
 一个更有用的方案是在动态安全或 Microsoft 365 组中使用这些属性。
@@ -87,7 +90,7 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 
    ![新属性显示在 UI 中的屏幕截图](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   完成表达式以满足你的要求。 在我们的示例中，将规则设置为 ** (用户. extension_9d98ed114c4840d298fad781915f27e4_division-eq "销售和营销" ) **。
+   完成表达式以满足你的要求。 在我们的示例中，将规则设置为 **(user.extension_9d98ed114c4840d298fad781915f27e4_division "销售和营销" )**。
 
 4. 创建组后，为 Azure AD 提供一段时间来填充成员，然后查看成员。
 

@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767358"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547701"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -23,7 +23,7 @@ ms.locfileid: "91767358"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-消息路由允许你查询消息属性和消息正文以及设备孪生标记和设备孪生属性。 如果消息正文不是 JSON，则消息路由仍可路由消息，但查询不能应用于消息正文。  查询被描述为布尔表达式，其中布尔值 true 使查询成功，会路由所有传入数据，而布尔值 false 使查询失败，并且不会路由数据。 如果表达式计算结果为 null 或未定义，则将其视为 false，并且发生故障时将在诊断日志中生成错误。 查询语法必须正确，才能保存和计算路由。  
+消息路由允许你查询消息属性和消息正文以及设备孪生标记和设备孪生属性。 如果消息正文不是 JSON，则消息路由仍可路由消息，但查询不能应用于消息正文。  查询被描述为布尔表达式，其中布尔值 true 使查询成功，会路由所有传入数据，而布尔值 false 使查询失败，并且不会路由数据。 如果表达式的计算结果为 null 或未定义，则将其视为 false，并且在出现故障时， [IoT 中心会](monitor-iot-hub-reference.md#routes) 生成一个错误。 查询语法必须正确，才能保存和计算路由。  
 
 ## <a name="message-routing-query-based-on-message-properties"></a>基于消息属性的消息路由查询 
 
@@ -59,8 +59,8 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 | contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
 | iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
-| dt-dataschema | 字符串 |  此值由 IoT 中心在设备到云消息上设置。 它包含设备连接中设置的设备型号 ID。 若要查询，请使用 `$dt-dataschema`。 |
-| dt-subject | 字符串 | 正在发送设备到云消息的组件的名称。 若要查询，请使用 `$dt-subject`。 |
+| dt-dataschema | string |  此值由 IoT 中心在设备到云消息上设置。 它包含设备连接中设置的设备型号 ID。 若要查询，请使用 `$dt-dataschema`。 |
+| dt-subject | string | 正在发送设备到云消息的组件的名称。 若要查询，请使用 `$dt-subject`。 |
 
 如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了上一表中的上述属性外，还可以查询 connectionDeviceId、connectionModuleId。
 

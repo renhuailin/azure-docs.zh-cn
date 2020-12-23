@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596845"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977249"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>排查 Azure Windows 虚拟机的高 CPU 问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "91596845"
 
 大多数用于本地服务器的现有性能故障排除工具（例如 Perfmon 或 Procmon 配合）都适用于 Azure Windows Vm。 不过，PerfInsights 是针对 Azure Vm 明确设计的，可提供更多见解，包括 Azure 最佳做法、SQL 最佳实践、高分辨率 i/o 延迟图形、CPU 和内存选项卡等。
 
-无论是以用户模式还是内核模式运行，活动进程的任何线程都需要 CPU 周期来运行它所生成的代码。 许多问题与工作负荷直接相关。 服务器上存在的工作负荷的类型会占用 CPU，包括 CPU。
+无论是作为 User-Mode 还是内核模式运行，活动进程的任何线程都需要 CPU 周期来运行它所生成的代码。 许多问题与工作负荷直接相关。 服务器上存在的工作负荷的类型会占用 CPU，包括 CPU。
 
 #### <a name="common-factors"></a>常见因素
 
@@ -90,11 +90,11 @@ PerfInsights 是 Azure 支持 VM 性能问题的建议工具。 它旨在涵盖 
 
 #### <a name="run-perfinsights"></a>运行 PerfInsights
 
-PerfInsights 适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) 和 [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) 操作系统。 对于 Windows，可选择以下选项。
+PerfInsights 适用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how-to-use-perfinsights-linux.md) 操作系统。 对于 Windows，可选择以下选项。
 
 #### <a name="run-and-analyze-reports-through-azure-portal"></a>通过 Azure 门户运行和分析报表
 
-当 [通过 Azure 门户安装](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics)时，实际上会在 VM 上安装扩展。 用户还可以直接转到 [VM 边栏选项卡](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics-vm-extension)中的 "扩展"，然后选择 "性能诊断" 选项，将 PerfInsights 安装为扩展。
+当 [通过 Azure 门户安装](./performance-diagnostics.md)时，实际上会在 VM 上安装扩展。 用户还可以直接转到 [VM 边栏选项卡](./performance-diagnostics-vm-extension.md)中的 "扩展"，然后选择 "性能诊断" 选项，将 PerfInsights 安装为扩展。
 
 #### <a name="azure-portal-option-1"></a>Azure 门户选项1
 
@@ -132,7 +132,7 @@ PerfInsights 适用于 [Windows](https://docs.microsoft.com/azure/virtual-machin
 
 #### <a name="run-perfinsights-from-within-the-vm"></a>从 VM 中运行 PerfInsights
 
-如果要运行 PerfInsights 更长的持续时间，则可以使用此方法。 [PerfInsights 文章](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights#how-do-i-run-perfinsights)提供了以可执行文件形式运行 PerfInsights 所需的不同命令和标志的详细演练。 出于高 CPU 使用率的目的，需要以下两种模式之一：
+如果要运行 PerfInsights 更长的持续时间，则可以使用此方法。 [PerfInsights 文章](./how-to-use-perfinsights.md#how-do-i-run-perfinsights)提供了以可执行文件形式运行 PerfInsights 所需的不同命令和标志的详细演练。 出于高 CPU 使用率的目的，需要以下两种模式之一：
 
 - 高级方案
 
@@ -184,7 +184,7 @@ PerfInsights 适用于 [Windows](https://docs.microsoft.com/azure/virtual-machin
 
 **CPU**下有一个专用子标签，可用于详细模式分析、每个核心或每个进程。
 
-" **前 CPU 使用者** " 选项卡有两个独立的区域，可以在此处查看每个处理器的统计信息。 应用程序设计通常是单线程的，也可能是固定到单个处理器的。 在此方案中，一个或多个内核在100% 运行，而其他内核在预期级别运行。 由于服务器上的平均 CPU 似乎按预期运行，因此这些方案更复杂，但在具有高使用率的内核上固定的进程将会比预期速度更慢。
+" **前 CPU 使用者** " 选项卡有两个独立的区域，可以在此处查看每个处理器的统计信息。 应用程序设计经常 Single-Threaded 或固定到单个处理器。 在此方案中，一个或多个内核在100% 运行，而其他内核在预期级别运行。 由于服务器上的平均 CPU 似乎按预期运行，因此这些方案更复杂，但在具有高使用率的内核上固定的进程将会比预期速度更慢。
 
   ![高 CPU 使用率](./media/troubleshoot-high-cpu-issues-azure-windows-vm/9-high-cpu-usage.png)
 
@@ -229,7 +229,7 @@ Perfmon 中没有可供用户使用的默认报表。 更改图形类型的视�
 
 1. 选择 **_Total**，这将提供所有组合内核的统计信息。
 
-1. 选择“添加”。 该窗口在 "**已添加的计数器**" 下显示 **% ProcessorTime** 。
+1. 选择 **添加** 。 该窗口在 "**已添加的计数器**" 下显示 **% ProcessorTime** 。
 
   ![添加处理器时间](./media/troubleshoot-high-cpu-issues-azure-windows-vm/11-add-processor-time.png)
 
@@ -289,7 +289,7 @@ Azure Vm 具有可靠的指标，包括 CPU、网络 i/o 和 i/o 字节等基本
 
   ![度量值命名空间](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-有关如何使用 Azure monitor 来管理 Azure Vm 的详细信息，请参阅 [使用 Azure Monitor 监视 azure 虚拟机](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-vm-azure)。
+有关如何使用 Azure monitor 来管理 Azure Vm 的详细信息，请参阅 [使用 Azure Monitor 监视 azure 虚拟机](../../azure-monitor/insights/monitor-vm-azure.md)。
 
 ### <a name="reactive-troubleshooting"></a>反应故障排除
 
@@ -311,7 +311,7 @@ PerfInsights 尚无 **计划的运行** 功能。 但是，可以通过命令行
 
 还可以从同一 VNET 中的对等 Azure VM 计算机启动 Logman.exe。
 
-若要了解有关这些参数的详细信息，请参阅 [logman create counter](https://docs.microsoft.com/windows-server/administration/windows-commands/logman-create-counter)。
+若要了解有关这些参数的详细信息，请参阅 [logman create counter](/windows-server/administration/windows-commands/logman-create-counter)。
 
 在问题发生时收集 Perfmon 数据后，分析数据的其余步骤与前面讨论的步骤相同。
 

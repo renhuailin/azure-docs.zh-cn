@@ -3,19 +3,19 @@ title: 有关 Azure 中 Cloudyn 的常见问题解答
 description: 了解如何使用 Cloudyn 门户解决常见的间接企业设置问题，并回答一些常见问题。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b78d9d7bf725e3d82c88360c822455de1301ef6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92a62de4223d2ec6d0441840b90fdce20c656d02
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688022"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546222"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>有关 Cloudyn 的常见问题解答
 
@@ -37,14 +37,14 @@ ms.locfileid: "88688022"
 
 1. 经销商需为你的帐户启用标记。  有关说明，请参阅[间接客户加入指南](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)。
 
-2. 生成可在 Cloudyn 中使用的 Azure 企业协议密钥。 有关说明，请参阅[添加 Azure EA](quick-register-ea.md#register-with-cloudyn) 或[如何查找 EA 登记 ID 和 API 密钥](https://youtu.be/u_phLs_udig)。
+2. 生成可在 Cloudyn 中使用的 Azure 企业协议密钥。
 
 只有 Azure 服务管理员可以启用 Cloudyn。 协同管理员的权限不足。
 
 在生成用于设置 Cloudyn 的 Azure 企业协议 API 密钥之前，必须遵照以下主题中的说明启用 Azure 计费 API：
 
 - [面向企业客户的报告 API 概述](../manage/enterprise-api.md)
-- **实现对 API 的数据访问**中的 [Microsoft Azure Enterprise Portal 报告 API](https://ea.azure.com/helpdocs/reportingAPI)
+- **实现对 API 的数据访问** 中的 [Microsoft Azure Enterprise Portal 报告 API](https://ea.azure.com/helpdocs/reportingAPI)
 
 
 可能还需要向部门管理员、帐户所有者和企业管理员授予使用计费 API 查看费用的权限。 
@@ -62,7 +62,7 @@ ms.locfileid: "88688022"
 激活帐户：
 
 1.    在 Cloudyn 门户中，单击右上方的“设置”  ，然后“云帐户”  。
-2.    在“Microsoft Azure 帐户”选项卡上，找到包含**未激活**订阅的帐户。
+2.    在“Microsoft Azure 帐户”选项卡上，找到包含 **未激活** 订阅的帐户。
 3.    在未激活帐户的右侧，单击“编辑”铅笔图标。 
 4.    系统会自动检测租户 ID 和费率 ID。 单击“下一步”。 
 5.    随后将重定向到 Azure 门户。 登录到门户并授权 Cloudyn 收集器访问你的 Azure 数据。
@@ -128,9 +128,9 @@ Cloudyn 会自动检测企业协议订阅货币并在报表中正确显示。  �
 
 Cloudyn 提供以下数据刷新时间线：
 
-- **初始**：设置后，最长可能需要 24 小时才能查看 Cloudyn 中的成本数据。 另外，Cloudyn 最长可能需要花费 10 天时间来收集足够的数据，以显示大小调整建议。
-- **每日**：在每个月的 10 号到月底，下一日的 UTC 时间加上 3 小时之后，Cloudyn 应会显示前一日的最新数据。
-- **每月**：在每个月的 1 至 10 号，Cloudyn 只能显示截止前一个月月底的数据。
+- **初始** ：设置后，最长可能需要 24 小时才能查看 Cloudyn 中的成本数据。 另外，Cloudyn 最长可能需要花费 10 天时间来收集足够的数据，以显示大小调整建议。
+- **每日** ：在每个月的 10 号到月底，下一日的 UTC 时间加上 3 小时之后，Cloudyn 应会显示前一日的最新数据。
+- **每月** ：在每个月的 1 至 10 号，Cloudyn 只能显示截止前一个月月底的数据。
 
 提供前一日的完整数据后，Cloudyn 会处理前一日的数据。 通常，在每日的 UTC 时间加上 3 小时后，前一日的数据就会在 Cloudyn 中提供。 某些数据（例如标记）可能需要额外的 24 小时才能得到处理。
 

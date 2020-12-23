@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e556ca2051fd75eb9bf6411c5479e63554606d48
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757021"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368332"
 ---
 # <a name="how-to-manage-settings"></a>如何管理设置
 
@@ -33,7 +33,7 @@ ms.locfileid: "91757021"
 
 如果没有订阅，请执行以下步骤：
 
-1. 订阅以创建转换器资源。 请按照 [如何注册转换器](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) 以订阅和获取 translator 密钥进行注册。
+1. 订阅以创建转换器资源。 请按照 [如何注册转换器](../translator-how-to-signup.md) 以订阅和获取 translator 密钥进行注册。
 2. 记下你的翻译人员订阅的密钥。 密钥 1 或密钥 2 均可接受。
 3. 导航回到自定义翻译门户。
 
@@ -52,7 +52,7 @@ ms.locfileid: "91757021"
     ![“创建新工作区”对话框](media/how-to/create-new-workspace-dialog.png)
 
 >[!Note]
->自定义转换器不支持为文本翻译 API 资源 (也称为创建工作区 已在 [已启用 VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)内创建 Azure 订阅密钥) 。
+>自定义转换器不支持为文本翻译 API 资源 (也称为创建工作区 已在 [已启用 VNET](../../../api-management/api-management-using-with-vnet.md)内创建 Azure 订阅密钥) 。
 
 ### <a name="modify-existing-key"></a>修改现有密钥
 

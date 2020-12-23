@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934867"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517166"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure 上的安全开发最佳做法
 此系列文章介绍了在为云开发应用程序时要考虑的安全活动和控制措施。 其中还说明了 Microsoft 安全开发生命周期 (SDL) 的各个阶段及生命周期各阶段中要考虑的安全问题和概念。 目标是帮助你定义可在生命周期的每个阶段中使用的活动和 Azure 服务，以便设计、开发和部署更安全的应用程序。
@@ -37,7 +37,7 @@ ms.locfileid: "68934867"
 
 在开发生命周期中，解决问题的时间越晚，那么解决问题要耗费的成本也就越高。 安全性问题也不例外。 如果在软件开发早期阶段漠视安全问题，那么后面的每个阶段可能会继承前面的阶段中存在的漏洞。 最终产品将会积累很多安全问题，还可能会发生数据泄露。 将安全性融入开发生命周期的每个阶段，会有助于及早发现问题，并且有助于降低开发成本。
 
-我们按照 Microsoft [安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 的各个阶段来介绍活动和 Azure 服务，你可以利用它们在生命周期的各个阶段中完成安全软件开发实践。
+我们按照 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的各个阶段来介绍活动和 Azure 服务，你可以利用它们在生命周期的各个阶段中完成安全软件开发实践。
 
 SDL 各阶段包括：
 
@@ -63,7 +63,7 @@ SDL 各阶段包括：
 
 以下资源可用于了解有关开发安全应用程序的详细信息，以及帮助保护 Azure 上的应用程序：
 
-[Microsoft 安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) – SDL 是源于 Microsoft 的一种软件开发过程，可帮助开发人员构建更加安全的软件。 它有助于在满足安全性合规要求的同时降低开发成本。
+[Microsoft 安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) – SDL 是源于 Microsoft 的一种软件开发过程，可帮助开发人员构建更加安全的软件。 它有助于在满足安全性合规要求的同时降低开发成本。
 
 [开放式 Web 应用程序安全性项目 (OWASP)](https://www.owasp.org/index.php/Main_Page) – OWASP 是一个在线社区，它提供 Web 应用程序安全性领域的免费文章、方法、文档、工具和技术。
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: Zhchia
-ms.openlocfilehash: 43f5b96c7029da6b49bc9df40d92fbd250145715
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: e79f21300325c6b451dd564bf2c69830f003f55c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325991"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357855"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>教程：为自动用户预配配置优先级矩阵
 
@@ -37,7 +37,7 @@ ms.locfileid: "91325991"
 
 ## <a name="assign-users-to-priority-matrix"></a>将用户分配到优先级矩阵
 
-Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
+Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
 
 在配置和启用自动用户预配之前，应决定 Azure AD 中哪些用户和/或组需要访问优先级矩阵。 确定后，可按照此处的说明将这些用户和/或组分配到优先级矩阵：
 
@@ -47,7 +47,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 * 建议将单个 Azure AD 用户分配到优先级矩阵来测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 将用户分配到优先级矩阵时，必须在分配对话框中选择任何特定于应用程序的有效角色 (如有) 。 具有“默认访问权限”角色的用户排除在预配之外。
+* 将用户分配到优先级矩阵时，必须在分配对话框中选择任何特定于应用程序的有效角色 (如有) 。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="set-up-priority-matrix-for-provisioning"></a>设置优先级矩阵以便预配
 
@@ -55,11 +55,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [优先级矩阵管理控制台](https://sync.appfluence.com/accounts/login/?next=/accounts/provisioning)。
 
-3. 单击优先级矩阵的**Oauth 登录令牌**
+3. 单击优先级矩阵的 **Oauth 登录令牌**
 
     ![优先级矩阵添加 SCIM](media/priority-matrix-provisioning-tutorial/oauthlogin.png)
 
-4. 单击 " **获取新令牌** " 按钮。 复制 **令牌字符串**。 此值将在 Azure 门户中优先级矩阵应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。 
+4. 单击 " **获取新令牌** " 按钮。 复制 **令牌字符串** 。 此值将在 Azure 门户中优先级矩阵应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。 
 
     ![优先级矩阵创建标记](media/priority-matrix-provisioning-tutorial/token.png)
 
@@ -67,7 +67,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 若要配置 Azure AD 的自动用户预配的优先级矩阵，需要将 Azure AD 应用程序库中的优先级矩阵添加到托管的 SaaS 应用程序列表。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择 " **Azure Active Directory**"。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择 " **Azure Active Directory** "。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
@@ -79,7 +79,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，输入 **Priority matrix**，在结果面板中选择 " **优先级矩阵** "。 
+4. 在搜索框中，输入 **Priority matrix** ，在结果面板中选择 " **优先级矩阵** "。 
 
     ![结果列表中的优先级矩阵](common/search-new-app.png)
 
@@ -108,51 +108,51 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择 " **优先级矩阵**"。
+2. 在应用程序列表中，选择 " **优先级矩阵** "。
 
     ![应用程序列表中的优先级矩阵链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分中，输入 " `https://sync.appfluence.com/scim/v2/` **租户 URL**"。 输入先前从 **机密令牌**中的优先级矩阵检索并保存的值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到优先级矩阵。 如果连接失败，请确保你的优先级矩阵帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，输入 " `https://sync.appfluence.com/scim/v2/` **租户 URL** "。 输入先前从 **机密令牌** 中的优先级矩阵检索并保存的值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到优先级矩阵。 如果连接失败，请确保你的优先级矩阵帐户具有管理员权限，然后重试。
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
 
-6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
+6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”   。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“ **保存** ”。
 
-8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到优先级矩阵**"。
+8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到优先级矩阵** "。
 
     ![优先级矩阵用户映射](media/priority-matrix-provisioning-tutorial/usermappings.png)
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到优先级矩阵的用户属性。 选为 " **匹配** " 属性的属性用于匹配 "优先级" 矩阵中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到优先级矩阵的用户属性。 选为 " **匹配** " 属性的属性用于匹配 "优先级" 矩阵中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
     ![优先级矩阵用户属性](media/priority-matrix-provisioning-tutorial/userattributes.png)
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-11. 若要为优先级矩阵启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+11. 若要为优先级矩阵启用 Azure AD 预配服务，请在 " **设置** " 部分中将 " **预配状态** " 更改为 **"打开** "。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-12. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到优先级矩阵的用户和/或组。
+12. 通过在 " **设置** " 部分的 " **范围** " 中选择所需的值，定义要预配到优先级矩阵的用户和/或组。
 
     ![预配范围](common/provisioning-scope.png)
 
-13. 已准备好预配时，单击“保存”。
+13. 已准备好预配时，单击“保存”  。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步********。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 " **同步详细信息** " 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务在优先级矩阵上执行的所有操作。
+此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步   。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 " **同步详细信息** " 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务在优先级矩阵上执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 

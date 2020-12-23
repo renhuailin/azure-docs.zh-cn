@@ -1,17 +1,17 @@
 ---
 title: 使用转储和还原进行迁移 - Azure Database for MySQL
 description: 本文介绍使用 mysqldump、MySQL Workbench 和 PHPMyAdmin 等工具在 Azure Database for MySQL 中备份和还原数据库的两种常见方式。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/27/2020
-ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/30/2020
+ms.openlocfilehash: f21587fe6a48d042ed98c126beb2a7dcaa39b7d8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905892"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537911"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 
@@ -21,20 +21,26 @@ ms.locfileid: "90905892"
 - 从命令行转储和还原（使用 mysqldump）
 - 使用 PHPMyAdmin 转储和还原
 
-## <a name="before-you-begin"></a>开始之前
+有关将数据库迁移到 Azure Database for MySQL 的详细信息和用例，请参阅 [数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) 。 本指南提供的指导旨在将 MySQL 迁移成功规划和执行到 Azure。
+
+## <a name="before-you-begin"></a>准备阶段
 若要逐步执行本操作方法指南，需要具备以下条件：
 - [创建 Azure Database for MySQL 服务器 - Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)
 - 已在计算机上安装 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) 命令行实用程序。
-- [Mysql 工作台](https://dev.mysql.com/downloads/workbench/) 或其他第三方 mysql 工具来执行转储和还原命令。
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) 或其他用于执行转储和还原命令的第三方 MySQL 工具。
 
 > [!TIP]
-> 如果希望迁移数据库大小超过 1 Tb 的大型数据库，则可能需要考虑使用支持并行导出和导入的 **mydumper/myloader** 等社区工具。 了解 [如何迁移大型 MySQL 数据库](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)。
+> 如果希望迁移数据库大小超过 1 TB 的大型数据库，则可能需要考虑使用支持并行导出和导入的社区工具（如 mydumper/myloader）。 了解[如何迁移大型 MySQL 数据库](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)。
+
 
 ## <a name="common-use-cases-for-dump-and-restore"></a>转储和还原的常见用例
-你可以使用 **mysqldump** 和 **mysqlpump** 等 MySQL 实用程序在几个常见方案中转储数据库并将其加载到 Azure MySQL 数据库。 在其他方案中，可改用[导入和导出](concepts-migrate-import-export.md)方法。
 
-- 在**迁移整个数据库时使用数据库转储**。 此建议适用于移动大量 MySQL 数据，或者要最小化实时站点或应用程序的服务中断的情况。
--  **如果数据库中的所有表都使用 InnoDB 存储引擎，则使用数据库转储**。 Azure Database for MySQL 仅支持 InnoDB 存储引擎，因此不支持备选存储引擎。 如果表配置了其他存储引擎，请确保先将它们转换为 InnoDB 引擎格式，再迁移到 Azure Database for MySQL。
+最常见的用例包括：
+
+- **从其他托管服务提供商移动** -大多数托管服务提供商可能由于安全原因无法提供对物理存储文件的访问权限，因此，逻辑备份和还原是迁移的唯一选择。
+- **从本地环境或虚拟机进行迁移** -Azure Database for MySQL 不支持还原物理备份，这会使逻辑备份和还原成为唯一的方法。
+- 将 **备份存储从本地冗余迁移到异地冗余存储** Azure Database for MySQL 允许在服务器创建过程中将本地冗余存储或异地冗余存储配置为仅允许进行备份。 预配服务器以后，不能更改备份存储冗余选项。 若要将备份存储从本地冗余存储移到异地冗余存储，只需要转储和还原选项。 
+-  **从备用存储引擎迁移到 InnoDB** -Azure Database for MySQL 仅支持 InnoDB 存储引擎，因此不支持备用存储引擎。 如果表配置了其他存储引擎，请确保先将它们转换为 InnoDB 引擎格式，再迁移到 Azure Database for MySQL。
 
     例如，如果有使用 MyISAM 表的 WordPress 或 WebApp，在将这些表还原到 Azure Database for MySQL 之前，首先通过将这些表迁移到 InnoDB 格式的方式转换格式。 使用子句 `ENGINE=InnoDB` 设置创建新表时所用的引擎，然后在还原之前将数据传输到兼容表中。
 
@@ -59,7 +65,7 @@ ms.locfileid: "90905892"
 -   将备份文件复制到 Azure blob/存储，并在其中执行还原，这应该比通过 Internet 执行还原要快得多。
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 目标服务器上创建数据库
-在要迁移数据的 Azure Database for MySQL 目标服务器上创建一个空数据库。 使用工具（如 MySQL 工作台或 mysql.exe）来创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
+在要迁移数据的 Azure Database for MySQL 目标服务器上创建一个空数据库。 使用 MySQL Workbench 或 mysql.exe 等工具创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
 若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息。
 
@@ -101,7 +107,7 @@ $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 ```bash
 GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
 ```
-现在，运行 mysqldump 以创建数据库备份 `testdb`
+现在，运行 mysqldump 以创建 `testdb` 数据库的备份
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -123,7 +129,7 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
 在此示例中，将数据还原到在 Azure Database for MySQL 目标服务器上新创建的数据库中。
 
-下面是有关如何将此 **mysql** 用于 **单一服务器** 的示例：
+下面是一个示例，说明如何将此 mysql 用于单一服务器：
 
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
@@ -136,12 +142,12 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_b
 ---
 
 ## <a name="dump-and-restore-using-phpmyadmin"></a>使用 PHPMyAdmin 转储和还原
-请按照以下步骤使用 PHPMyadmin 转储和还原数据库。
+按照以下步骤使用 PHPMyadmin 转储并还原数据库。
 
 > [!NOTE]
 > 对于单一服务器，用户名必须采用以下格式： ' '， username@servername 但对于灵活服务器，只需使用 "用户名"，如果使用 " username@servername " 灵活的服务器，连接将失败。
 
-### <a name="export-with-phpmyadmin"></a>用 PHPMyadmin 导出
+### <a name="export-with-phpmyadmin"></a>使用 PHPMyadmin 进行导出
 若要导出，可以使用可能已安装在本地环境中的常用工具 phpMyAdmin。 使用 PHPMyAdmin 导出 MySQL 数据库：
 1. 打开 phpMyAdmin。
 2. 选择数据库。 单击左侧列表中的数据库名称。
@@ -164,4 +170,5 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_b
 
 ## <a name="next-steps"></a>后续步骤
 - [将应用程序连接到 Azure Database for MySQL](./howto-connection-string.md)。
-- 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](https://aka.ms/datamigration)。
+- 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)。
+- 如果希望迁移数据库大小超过 1 TB 的大型数据库，则可能需要考虑使用支持并行导出和导入的社区工具（如 mydumper/myloader）。 了解[如何迁移大型 MySQL 数据库](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)。

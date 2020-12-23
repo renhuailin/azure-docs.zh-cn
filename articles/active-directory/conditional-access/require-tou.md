@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88948855"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077891"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款
 
@@ -27,7 +27,7 @@ ms.locfileid: "88948855"
 
 本快速入门介绍如何配置一个 [Azure AD 条件访问策略](./overview.md)，要求用户在访问环境中的选定云应用之前接受 ToU。
 
-![创建策略](./media/require-tou/5555.png)
+:::image type="content" source="./media/require-tou/5555.png" alt-text="Azure 门户的屏幕截图。显示定义名为“要求 Isabella 接受 TOU”的策略的窗格。" border="false":::
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -35,8 +35,8 @@ ms.locfileid: "88948855"
 
 若要完成本快速入门中的方案，你需要：
 
-- **对 Azure AD Premium 版本的访问权限**：Azure AD 条件访问是一项 Azure AD Premium 功能。
-- **名为 Isabella Simonsen 的测试帐户**：如果不知道如何创建测试帐户，请参阅[添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
+- **对 Azure AD Premium 版本的访问权限** ：Azure AD 条件访问是一项 Azure AD Premium 功能。
+- **名为 Isabella Simonsen 的测试帐户** ：如果不知道如何创建测试帐户，请参阅 [添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
 
 ## <a name="test-your-sign-in"></a>测试登录
 
@@ -54,7 +54,7 @@ ms.locfileid: "88948855"
 **创建使用条款：**
 
 1. 在 Microsoft Word 中创建一个新文档。
-1. 键入“我的使用条款”，然后在计算机上将此文档保存为 **mytou.pdf**。
+1. 键入“我的使用条款”，然后在计算机上将此文档保存为 **mytou.pdf** 。
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户的左侧导航栏中，单击“Azure Active Directory”。
 
@@ -66,15 +66,15 @@ ms.locfileid: "88948855"
 
 1. 在“管理”部分，单击“使用条款”。 
 
-   ![使用条款](./media/require-tou/04.png)
+   :::image type="content" source="./media/require-tou/04.png" alt-text="Azure Active Directory 页面“管理”部分的屏幕截图。突出显示了“使用条款”项。" border="false":::
 
 1. 在顶部菜单中，单击“新建项”。
 
-   ![使用条款](./media/require-tou/05.png)
+   :::image type="content" source="./media/require-tou/05.png" alt-text="Azure Active Directory 页面中菜单的屏幕截图。突出显示了“新建条款”项。" border="false":::
 
 1. 在“新建使用条款”页上：
 
-   ![使用条款](./media/require-tou/112.png)
+   :::image type="content" source="./media/require-tou/112.png" alt-text="“新建使用条款”页面的屏幕截图，其中突出显示了名称、显示名称、文档、语言、条件访问以及展开条款的切换按钮。" border="false":::
 
    1. 在“名称”文本框中，键入“我的 TOU”。
    1. 在“显示名称”文本框中，键入“我的 TOU”。
@@ -99,7 +99,7 @@ ms.locfileid: "88948855"
 | 云应用 | Microsoft Azure 管理 |
 | 授予访问权限 | 我的 TOU |
 
-![创建策略](./media/require-tou/1234.png)
+:::image type="content" source="./media/require-tou/1234.png" alt-text="定义策略的 Azure 门户窗格的屏幕截图。箭头指示该策略授予对“我的 TOU”的访问权限，并包括一个用户和应用。" border="false":::
 
 **若要配置条件访问策略，请执行以下操作：**
 
@@ -109,11 +109,11 @@ ms.locfileid: "88948855"
 
 1. 在“分配”部分中，单击“用户和组”。 
 
-   ![用户和组](./media/require-tou/06.png)
+   :::image type="content" source="./media/require-tou/06.png" alt-text="定义策略的 Azure 门户窗格的“分配”部分的屏幕截图。显示“用户和组”项，未选择任何对象。" border="false":::
 
 1. 在“用户和组”页上：
 
-   ![用户和组](./media/require-tou/24.png)
+   :::image type="content" source="./media/require-tou/24.png" alt-text="“用户和组”页面的“包括”选项卡的屏幕截图。“选择用户和组”已选定，“用户和组”也已选定。突出显示了“选择”。" border="false":::
 
    1. 单击“选择用户和组”，然后选择“用户和组” 。
    1. 单击“选择”。
@@ -121,7 +121,7 @@ ms.locfileid: "88948855"
    1. 在“用户和组”页，单击“完成” 。
 1. 单击“云应用”。
 
-   ![云应用](./media/require-tou/08.png)
+   :::image type="content" source="./media/require-tou/08.png" alt-text="定义策略的 Azure 门户窗格的“分配”部分的屏幕截图。显示“云应用”项，未选择任何内容。" border="false":::
 
 1. 在“云应用”页上：
 
@@ -155,7 +155,7 @@ ms.locfileid: "88948855"
 若要初始化 **What If** 策略评估工具，请设置：
 
 - **Isabella Simonsen** 作为用户
-- **Microsoft Azure 管理**作为云应用
+- **Microsoft Azure 管理** 作为云应用
 
 单击“What If”会创建一个模拟报告，该报告：
 
@@ -176,7 +176,7 @@ ms.locfileid: "88948855"
 
 1. 选择云应用：
 
-   ![云应用](./media/require-tou/16.png)
+   :::image type="content" source="./media/require-tou/16.png" alt-text="“云应用”部分的屏幕截图。文本指示已选择一个应用。" border="false":::
 
    1. 单击“云应用”。
    1. 在“云应用”页上，单击“选择应用” 。
@@ -191,7 +191,7 @@ ms.locfileid: "88948855"
 
 若要测试策略，请尝试使用 **Isabella Simonsen** 测试帐户登录 [Azure 门户](https://portal.azure.com)。 此时应会出现一个要求接受使用条款的对话框。
 
-![使用条款](./media/require-tou/57.png)
+:::image type="content" source="./media/require-tou/57.png" alt-text="标题为“标识安全保护使用条款”的对话框的屏幕截图，其中显示“拒绝”和“接受”按钮以及标记为“我的 TOU”按钮。" border="false":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -200,11 +200,11 @@ ms.locfileid: "88948855"
 - 如果不知道如何删除 Azure AD 用户，请参阅[从 Azure AD 中删除用户](../fundamentals/add-users-azure-active-directory.md#delete-a-user)。
 - 若要删除策略，请选择该策略，然后在快速访问工具栏中单击“删除”。
 
-    ![多重身份验证](./media/require-tou/33.png)
+    :::image type="content" source="./media/require-tou/33.png" alt-text="显示名为“需要对 Azure 门户用户执行 MFA”的策略的屏幕截图。显示快捷菜单，并突出显示了“删除”。" border="false":::
 
 - 若要删除使用条款，请将其选中，然后单击顶部工具栏中的“删除条款”。
 
-    ![多重身份验证](./media/require-tou/29.png)
+    :::image type="content" source="./media/require-tou/29.png" alt-text="显示列出使用条款文档的部分表的屏幕截图。显示了“我的 TOU”文档。突出显示了菜单中的“删除条款”。" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

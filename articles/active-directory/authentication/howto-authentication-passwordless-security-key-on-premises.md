@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706330"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743473"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用无密码安全密钥登录到本地资源) 
 
@@ -58,7 +58,7 @@ Azure AD Kerberos Server 对象在本地 Active Directory 中创建，然后安�
 此方案支持以下两种方案中的单一登录 (SSO) ：
 
 - 适用于云资源，如 Microsoft 365 和其他启用 SAML 的应用程序。
-- 对于本地资源和对网站的 Windows 集成身份验证。 这些资源可能包括需要 IIS 身份验证的网站和 SharePoint 站点，以及使用 NTLM 身份验证的资源。
+- 对于本地资源，Windows-Integrated 网站身份验证。 这些资源可能包括需要 IIS 身份验证的网站和 SharePoint 站点，以及使用 NTLM 身份验证的资源。
 
 ### <a name="unsupported-scenarios"></a>不支持的方案
 

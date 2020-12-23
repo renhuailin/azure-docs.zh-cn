@@ -4,14 +4,14 @@ description: 了解如何在 Azure App Service 中配置自定义容器。 本�
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264569"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007630"
 ---
-# <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure App Service 配置自定义容器
+# <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
 本文介绍如何配置在 Azure App Service 上运行的自定义容器。
 
@@ -139,7 +139,17 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB
 
 禁用永久性存储后，不会保留写入 `C:\home` 目录。 [Docker 主机日志和容器日志](#access-diagnostic-logs) 保存在未附加到容器的默认永久性共享存储中。 启用持久性存储时，将保留对该目录的所有写入 `C:\home` 并可由扩展的应用程序的所有实例访问该目录，并且可以从访问日志 `C:\home\LogFiles` 。
 
-默认情况下，永久存储处于 *禁用状态* ，并且该设置不会在应用程序设置中公开。 若要启用它，请 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 通过 [Cloud Shell](https://shell.azure.com)设置应用程序设置。 在 Bash 中：
+::: zone-end
+
+::: zone pivot="container-linux"
+
+你可以使用应用文件系统中的 */home* 目录跨重启保存文件并在实例之间共享这些文件。 `/home`提供应用中的，使容器应用能够访问永久性存储。
+
+禁用永久性存储后，对该目录的写入 `/home` 不会在应用重新启动或多个实例之间保持不变。 唯一的例外是 `/home/LogFiles` 用于存储 Docker 和容器日志的目录。 启用持久性存储时，将保留对该目录的所有写入， `/home` 并可由扩展的应用程序的所有实例访问。
+
+::: zone-end
+
+默认情况下，永久存储处于禁用状态，并且该设置不会在应用设置中公开。 若要启用它，请 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 通过 [Cloud Shell](https://shell.azure.com)设置应用程序设置。 在 Bash 中：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -150,28 +160,6 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 ```azurepowershell-interactive
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
-
-::: zone-end
-
-::: zone pivot="container-linux"
-
-你可以使用应用文件系统中的 */home* 目录跨重启保存文件并在实例之间共享这些文件。 `/home`提供应用中的，使容器应用能够访问永久性存储。
-
-禁用永久性存储后，对该目录的写入 `/home` 不会在应用重新启动或多个实例之间保持不变。 唯一的例外是 `/home/LogFiles` 用于存储 Docker 和容器日志的目录。 启用持久性存储时，将保留对该目录的所有写入， `/home` 并可由扩展的应用程序的所有实例访问。
-
-默认情况下，将 *启用* 持久性存储，并且不会在应用程序设置中公开设置。 若要禁用它，请 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 通过 [Cloud Shell](https://shell.azure.com)设置应用程序设置。 在 Bash 中：
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
-```
-
-在 PowerShell 中运行：
-
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
-```
-
-::: zone-end
 
 > [!NOTE]
 > 你还可以 [配置自己的持久存储](configure-connect-to-azure-storage.md)。
@@ -230,7 +218,7 @@ Docker 日志显示在门户中应用程序的 " **容器设置** " 页上。 �
 
 ## <a name="customize-container-memory"></a>自定义容器内存
 
-默认情况下，部署在 Azure App Service 中的所有 Windows 容器均限制为 1 GB RAM。 可以通过 Cloud Shell 提供应用设置来更改此值 `WEBSITE_MEMORY_LIMIT_MB` 。 [Cloud Shell](https://shell.azure.com) 在 Bash 中：
+默认情况下，部署在 Azure App Service 中的所有 Windows 容器均限制为 1 GB RAM。 可以通过 Cloud Shell 提供应用设置来更改此值 `WEBSITE_MEMORY_LIMIT_MB` 。 [](https://shell.azure.com) 在 Bash 中：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_MEMORY_LIMIT_MB=2000
@@ -242,7 +230,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-该值以 MB 为单位定义，并且必须小于或等于主机的总物理内存。 例如，在具有 8 GB RAM 的应用服务计划中，所有应用的累积总数 `WEBSITE_MEMORY_LIMIT_MB` 不得超过 8 gb。 有关可用于每个定价层的内存量的信息，请参阅**高级容器 (Windows) 计划**部分的[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/windows/)。
+该值以 MB 为单位定义，并且必须小于或等于主机的总物理内存。 例如，在具有 8 GB RAM 的应用服务计划中，所有应用的累积总数 `WEBSITE_MEMORY_LIMIT_MB` 不得超过 8 gb。 有关可用于每个定价层的内存量的信息，请参阅 **高级容器 (Windows) 计划** 部分的 [应用服务定价](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 
 ## <a name="customize-the-number-of-compute-cores"></a>自定义计算核心数
 
@@ -272,7 +260,7 @@ Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 
 ## <a name="customize-health-ping-behavior"></a>自定义运行状况 ping 行为
 
-应用服务认为容器在容器启动时成功启动并响应 HTTP ping。 运行状况 ping 请求会容器标头 `User-Agent= "App Service Hyper-V Container Availability Check"` 。 如果容器在一段时间后启动但不响应 ping，应用服务会在 Docker 日志中记录一个事件，指出容器未启动。 
+应用服务认为容器在容器启动时成功启动并响应 HTTP ping。 运行状况 ping 请求包含标头 `User-Agent= "App Service Hyper-V Container Availability Check"` 。 如果容器在一段时间后启动但不响应 ping，应用服务会在 Docker 日志中记录一个事件，指出容器未启动。 
 
 如果你的应用程序占用大量资源，则容器可能无法及时响应 HTTP ping。 若要控制 HTTP ping 失败时的操作，请设置 `CONTAINER_AVAILABILITY_CHECK_MODE` 应用设置。 可以通过 [Cloud Shell](https://shell.azure.com)设置。 在 Bash 中：
 
@@ -288,9 +276,9 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CO
 
 下表显示了可能的值：
 
-| Value | 说明 |
+| 值 | 说明 |
 | - | - |
-| **修复** | 三次连续可用性检查后重启容器 |
+| **修正** | 三次连续可用性检查后重启容器 |
 | **ReportOnly** | 默认值。 请不要重启容器，但在三次连续的可用性检查后，会在 Docker 日志中报告容器。 |
 | 关闭 | 不检查可用性。 |
 
@@ -325,7 +313,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
     ```
 
     > [!NOTE]
-    > sshd_config 文件必须包括以下项**：
+    > sshd_config 文件必须包括以下项：
     > - `Ciphers` 必须至少包含此列表中的一项：`aes128-cbc,3des-cbc,aes256-cbc`。
     > - `MACs` 必须至少包含此列表中的一项：`hmac-sha1,hmac-sha1-96`。
 
@@ -357,7 +345,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
 
 多容器应用（如 WordPress）需要持久存储才能正常工作。 若要启用它，你的 Docker Compose 配置必须指向容器 *外部* 的存储位置。 在应用重新启动后，容器中的存储位置不会保存更改。
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE`使用[Cloud Shell](https://shell.azure.com)中的[az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令设置应用设置，启用持久存储。
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE`使用[Cloud Shell](https://shell.azure.com)中的[az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set)命令设置应用设置，启用持久存储。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -392,8 +380,8 @@ wordpress:
 
 - command
 - entrypoint
-- environment
-- 图像
+- 环境
+- image
 - ports
 - restart
 - services

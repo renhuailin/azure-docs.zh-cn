@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189298"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363249"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>适用于大数据的认知服务的 Python 示例
 
@@ -56,7 +56,7 @@ assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 
 ## <a name="text-analytics-sample"></a>文本分析示例
 
-[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)服务提供了几种从文本中提取智能见解的算法。 例如，我们可以找到给定输入文本的情绪。 服务将返回介于 0.0 和 1.0 之间的分数，其中低分数表示负面情绪，高分表示正面情绪。  此示例使用三个简单的句子，并返回每个句子的情绪。
+[文本分析](../text-analytics/index.yml)服务提供了几种从文本中提取智能见解的算法。 例如，我们可以找到给定输入文本的情绪。 服务将返回介于 0.0 和 1.0 之间的分数，其中低分数表示负面情绪，高分表示正面情绪。  此示例使用三个简单的句子，并返回每个句子的情绪。
 
 ```python
 from pyspark.sql.functions import col
@@ -78,20 +78,20 @@ sentiment = (TextSentiment()
     .setLanguageCol("language"))
 
 # Show the results of your text query in a table format
-display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("score").alias("sentiment")))
+display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sentiment").alias("sentiment")))
 ```
 
 ### <a name="expected-result"></a>预期结果
 
 | text                                      | 情绪                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| 今天天气晴朗，我真高兴！           | 0.9789592027664185                                    |
-| 交通高峰期让我很郁闷 | 0.023795604705810547                                  |
-| Spark 的认知服务不差  | 0.8888956308364868                                    |
+| 今天天气晴朗，我真高兴！           | 积极                                              |
+| 交通高峰期让我很郁闷 | 消极                                              |
+| Spark 的认知服务不差  | 积极                                              |
 
 ## <a name="computer-vision-sample"></a>计算机视觉示例
 
-[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)会分析图像以识别结构，例如人脸、对象和自然语言说明。 在此示例中，我们标记一系列图像。 标记是对图像中可识别的对象、人物、风景和动作等事物的单个词说明。
+[计算机视觉](../computer-vision/index.yml)会分析图像以识别结构，例如人脸、对象和自然语言说明。 在此示例中，我们标记一系列图像。 标记是对图像中可识别的对象、人物、风景和动作等事物的单个词说明。
 
 ```python
 
@@ -126,7 +126,7 @@ display(analysis.transform(df).select("image", "analysis_results.description.tag
 
 ## <a name="bing-image-search-sample"></a>必应图像搜索示例
 
-[必应图像搜索](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)在 Web 中搜索以检索与用户自然语言查询相关的图像。 在此示例中，我们将使用一个文本查询来查找带引号的图像。 它返回包含与我们的查询相关的照片的图像 URL 列表。
+[必应图像搜索](../bing-image-search/overview.md)在 Web 中搜索以检索与用户自然语言查询相关的图像。 在此示例中，我们将使用一个文本查询来查找带引号的图像。 它返回包含与我们的查询相关的照片的图像 URL 列表。
 
 ```python
 from pyspark.ml import PipelineModel
@@ -171,7 +171,7 @@ display(pipeline.transform(bingParameters))
 
 
 ## <a name="speech-to-text-sample"></a>语音转文本示例
-[语音转文本](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text)服务将语音音频的流或文件转换为文本。 在此示例中，我们转录了两个音频文件。 第一个文件易于理解，第二个文件更具挑战性。
+[语音转文本](../speech-service/index-speech-to-text.yml)服务将语音音频的流或文件转换为文本。 在此示例中，我们转录了两个音频文件。 第一个文件易于理解，第二个文件更具挑战性。
 
 ```python
 
@@ -205,7 +205,7 @@ display(speech_to_text.transform(df).select("url", "text.DisplayText"))
 
 ## <a name="anomaly-detector-sample"></a>异常检测器示例
 
-[异常检测器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/)对于检测时间序列数据中的不规则性非常有用。 在此示例中，我们使用该服务来查找整个时间序列中的异常情况。
+[异常检测器](../anomaly-detector/index.yml)对于检测时间序列数据中的不规则性非常有用。 在此示例中，我们使用该服务来查找整个时间序列中的异常情况。
 
 ```python
 from pyspark.sql.functions import lit

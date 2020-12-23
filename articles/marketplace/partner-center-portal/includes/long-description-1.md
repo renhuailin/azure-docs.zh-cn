@@ -7,14 +7,14 @@ ms.topic: include
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: d562ae234d251a568bd6dafc293d5a431cc9aea7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a6f1705fd1aced544cc00eca3276abe1940ddd99
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317619"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355132"
 ---
-提供产品/服务的较长说明（最多 3000 个字符）。 客户将在 Marketplace 列表概述中看到这一点。
+提供产品/服务的更长 **说明** ，最多3000个字符。 客户将在 Marketplace 列表概述中看到这一点。
 
 在说明中包括一个或多个以下项：
 

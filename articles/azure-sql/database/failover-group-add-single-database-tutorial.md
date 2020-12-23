@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/19/2019
-ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 8298c673ddc707130d0873f686e1baed3677a46f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442738"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593939"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教程：将 Azure SQL 数据库添加到自动故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "91442738"
 若要完成本教程，请确保准备好以下各项：
 
 - Azure 订阅。 [创建 Batch 帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
-- 最新版本的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 最新版本的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ---
 
@@ -67,7 +67,7 @@ ms.locfileid: "91442738"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入“Azure SQL” 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择在第 1 部分中创建的数据库，例如 `mySampleDatabase`。
-1. 可以在服务器级别配置故障转移组。 在**服务器名称**下选择服务器的名称以打开服务器的设置。
+1. 可以在服务器级别配置故障转移组。 在 **服务器名称** 下选择服务器的名称以打开服务器的设置。
 
    ![打开服务器上的数据库](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
 
@@ -77,11 +77,11 @@ ms.locfileid: "91442738"
 
 1. 在“故障转移组”页上输入或选择以下值，然后选择“创建”： 
 
-   - **故障转移组名称**：键入唯一的故障转移组名称，例如 `failovergrouptutorial`。
-   - **辅助服务器**：选择“配置所需设置”选项，然后选择“创建新服务器”。 或者，可以选择现有的服务器作为辅助服务器。 输入以下值后，选择“选择”。
-      - **服务器名称**：键入辅助服务器的唯一名称，例如 `mysqlsecondary`。
-      - **服务器管理员登录名**：键入 `azureuser`
-      - **密码**：键入符合密码要求的复杂密码。
+   - **故障转移组名称** ：键入唯一的故障转移组名称，例如 `failovergrouptutorial`。
+   - **辅助服务器** ：选择“配置所需设置”选项，然后选择“创建新服务器”。 或者，可以选择现有的服务器作为辅助服务器。 输入以下值后，选择“选择”。
+      - **服务器名称** ：键入辅助服务器的唯一名称，例如 `mysqlsecondary`。
+      - **服务器管理员登录名** ：键入 `azureuser`
+      - **密码** ：键入符合密码要求的复杂密码。
       - 位置：从下拉列表中选择一个位置，例如 `East US`。 此位置不能与主服务器的位置相同。
 
      > [!NOTE]
@@ -89,7 +89,7 @@ ms.locfileid: "91442738"
 
      ![为故障转移组创建辅助服务器](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **组中的数据库**：选择辅助服务器后，此选项将解除锁定。 使用该选项来**选择要添加的数据库**：请选择在第 1 部分创建的数据库。 将数据库添加到故障转移组的操作会自动启动异地复制过程。
+   - **组中的数据库** ：选择辅助服务器后，此选项将解除锁定。 使用该选项来 **选择要添加的数据库** ：请选择在第 1 部分创建的数据库。 将数据库添加到故障转移组的操作会自动启动异地复制过程。
 
    ![将 SQL 数据库添加到故障转移组](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
@@ -199,7 +199,7 @@ ms.locfileid: "91442738"
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建托管数据库和弹性池的服务器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 创建服务器的防火墙规则。 |
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | 创建故障转移组。 |
+| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | 创建故障转移组。 |
 
 ---
 
@@ -213,7 +213,7 @@ ms.locfileid: "91442738"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入“Azure SQL” 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择在第 2 部分中创建的数据库，例如 `mySampleDatbase`。
-1. 在**服务器名称**下选择服务器的名称以打开服务器的设置。
+1. 在 **服务器名称** 下选择服务器的名称以打开服务器的设置。
 
    ![打开服务器上的数据库](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
 
@@ -322,8 +322,8 @@ ms.locfileid: "91442738"
 
 | 命令 | 注释 |
 |---|---|
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出某个服务器中的故障转移组。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | 列出某个服务器中的故障转移组。 |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 |
 
 ---
 
@@ -373,7 +373,7 @@ ms.locfileid: "91442738"
 
 | 命令 | 注释 |
 |---|---|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
 
 ---
 
@@ -409,15 +409,15 @@ ms.locfileid: "91442738"
 
 | Command | 注释 |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 将订阅设置为当前的活动订阅。 |
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | 将订阅设置为当前的活动订阅。 |
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建在 Azure SQL 数据库中托管单一数据库和弹性池的服务器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 在 Azure SQL 数据库中创建服务器级别的 IP 防火墙规则。 |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | 在 Azure SQL 数据库中创建数据库。 |
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | 在 Azure SQL 数据库中创建一个故障转移组。 |
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出 Azure SQL 数据库中服务器中的故障转移组。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest&preserve-view=true) | 在 Azure SQL 数据库中创建数据库。 |
+| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | 在 Azure SQL 数据库中创建一个故障转移组。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | 列出 Azure SQL 数据库中服务器中的故障转移组。 |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
 
 # <a name="the-portal"></a>[门户](#tab/azure-portal)
 

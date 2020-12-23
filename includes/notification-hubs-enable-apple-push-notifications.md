@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 1cb7753f54e9c1334e35635c227f776041631f1d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7b5034f2163e8478d7ddb7b9271402b094a809d7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864748"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560198"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>生成证书签名请求文件
 
@@ -58,7 +58,7 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 
    * **说明**：键入应用的描述性名称。
 
-   * **捆绑 ID**：按[应用分发指南](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)中所述，输入格式为 **Organization Identifier.Product Name** 的捆绑 ID。 “Organization Identifier”（组织标识符）和“Product Name”（产品名称）值必须与创建 Xcode 项目时使用的组织标识符与产品名称匹配。   在下面的屏幕截图中，**NotificationHubs** 值用作组织标识符，**GetStarted** 值用作产品名称。 确保“Bundle Identifier”（捆绑标识符）值与 Xcode 项目中的值匹配，这样 Xcode 就可以使用正确的发布配置文件。 
+   * **捆绑 ID**：按 [应用分发指南](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)中所述，输入格式为 **Organization Identifier.Product Name** 的捆绑 ID。 “Organization Identifier”（组织标识符）和“Product Name”（产品名称）值必须与创建 Xcode 项目时使用的组织标识符与产品名称匹配。   在下面的屏幕截图中，**NotificationHubs** 值用作组织标识符，**GetStarted** 值用作产品名称。 确保“Bundle Identifier”（捆绑标识符）值与 Xcode 项目中的值匹配，这样 Xcode 就可以使用正确的发布配置文件。 
 
       ![iOS 预配门户“注册应用 ID”页](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-bundle.png)
 
@@ -78,9 +78,9 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 必须有证书才能使通知中心与 APNS  配合工作。 可通过以下两种方式之一实现此目的：
 
 1. 创建可以直接上传到通知中心的 .p12  。  
-2. 创建可用于[基于令牌的身份验证](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification)的 .p8  （较新的方法  ）。
+2. 创建可用于[基于令牌的身份验证](../articles/notification-hubs/notification-hubs-push-notification-http2-token-authentication.md)的 .p8  （较新的方法  ）。
 
-如[基于令牌 (HTTP/2) 的 APNS 身份验证](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification)中所述，较新的方法（与使用证书相比）有很多好处。 不过，下面为这两种方法都提供了步骤。 
+如[基于令牌 (HTTP/2) 的 APNS 身份验证](../articles/notification-hubs/notification-hubs-push-notification-http2-token-authentication.md)中所述，较新的方法（与使用证书相比）有很多好处。 不过，下面为这两种方法都提供了步骤。 
 
 ### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>选项 1：创建可以直接上传到通知中心的 .p12 推送证书
 

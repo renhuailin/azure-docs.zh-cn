@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7965edd5dc54155f03b9211d5c2b21d451018bd1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554623"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>教程：Azure Active Directory 与 MobileIron 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88554623"
 * 可让用户使用其 Azure AD 帐户自动登录到 MobileIron（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88554623"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88554623"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![MobileIron 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.mobileiron.com/<key>`
 
@@ -107,7 +107,7 @@ ms.locfileid: "88554623"
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![MobileIron 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<host>.mobileiron.com/user/login.html`
 
@@ -124,11 +124,11 @@ ms.locfileid: "88554623"
 
 2. 转到“管理员”   > “标识”  ，然后在“有关云 IDP 设置的信息”字段中选择“AAD”选项。  
 
-    ![配置单一登录管理按钮](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![屏幕截图显示了 MobileIron 站点的“管理”选项卡，其中选择了“标识”。](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
-3. 复制**密钥**和**主机**的值，并在 Azure 门户的“基本 SAML 配置”  部分中粘贴它们以完成 URL。
+3. 复制 **密钥** 和 **主机** 的值，并在 Azure 门户的“基本 SAML 配置”  部分中粘贴它们以完成 URL。
 
-    ![配置单一登录管理按钮](./media/mobileiron-tutorial/key.png)
+    ![屏幕截图显示了“设置 SAML”选项以及密钥和主机值。](./media/mobileiron-tutorial/key.png)
 
 4. 在“从 AAD 导出元数据文件并导入到 MobileIron 云字段”中，单击“选择文件”从 Azure 门户上传已下载的元数据。   上传完成后，单击“完成”。 
 
@@ -214,13 +214,12 @@ ms.locfileid: "88554623"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 MobileIron 磁贴时，应当会自动登录到已为其设置了 SSO 的 MobileIron。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 MobileIron 磁贴时，应当会自动登录到已为其设置了 SSO 的 MobileIron。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

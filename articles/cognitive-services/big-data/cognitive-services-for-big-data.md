@@ -8,59 +8,59 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201783"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461618"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>适用于大数据的 Azure 认知服务
 
 ![适用于大数据的 Azure 认知服务](media/cognitive-services-big-data-overview.svg)
 
-适用于大数据的 Azure 认知服务使用户使用 [Apache Spark&trade;](https://docs.microsoft.com/dotnet/spark/what-is-spark) 通过认知服务传输 TB 级数据。 使用适用于大数据的认知服务，可以轻松地使用借助任何数据存储创建大规模的智能应用程序。
+适用于大数据的 Azure 认知服务使用户使用 [Apache Spark&trade;](/dotnet/spark/what-is-spark) 通过认知服务传输 TB 级数据。 使用适用于大数据的认知服务，可以轻松地使用借助任何数据存储创建大规模的智能应用程序。
 
 借助适用于大数据的认知服务，可以将不断改进的智能模型直接嵌入 Apache Spark&trade; 和 SQL 计算中。 这些工具将开发人员从低级网络细节中解放出来，使他们可以专注于创建智能的分布式应用程序。
 
 ## <a name="features-and-benefits"></a>功能和优势
 
-适用于大数据的认知服务可以使用世界任何区域中的服务，还可使用[容器化认知服务](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support)。 容器支持低或不具有超低延迟响应的连接部署。 容器化认知服务可以在本地运行，可以直接在 Spark 群集的工作器节点上运行，也可以在 Kubernetes 等外部业务流程协调程序上运行。
+适用于大数据的认知服务可以使用世界任何区域中的服务，还可使用[容器化认知服务](../cognitive-services-container-support.md)。 容器支持低或不具有超低延迟响应的连接部署。 容器化认知服务可以在本地运行，可以直接在 Spark 群集的工作器节点上运行，也可以在 Kubernetes 等外部业务流程协调程序上运行。
 
 ## <a name="supported-services"></a>支持的服务
 
-[认知服务](https://docs.microsoft.com/azure/cognitive-services/)（可通过 API 和 SDK 访问）可帮助开发人员生成智能应用程序，而无需具备 AI 或数据科学技能。 借助认知服务，你可以让应用程序看、听、说、理解和推理。 若要使用认知服务，应用程序必须通过网络将数据发送给服务。 收到后，服务会进而发送智能响应。 以下服务可用于大数据工作负载：
+[认知服务](../index.yml)（可通过 API 和 SDK 访问）可帮助开发人员生成智能应用程序，而无需具备 AI 或数据科学技能。 借助认知服务，你可以让应用程序看、听、说、理解和推理。 若要使用认知服务，应用程序必须通过网络将数据发送给服务。 收到后，服务会进而发送智能响应。 以下服务可用于大数据工作负载：
 
 ### <a name="vision"></a>影像
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "计算机视觉")| 使用计算机视觉服务，你可以访问用于处理图像并返回信息的高级算法。 |
-|[人脸](https://docs.microsoft.com/azure/cognitive-services/face/ "人脸")| 使用人脸服务可访问高级人脸算法，从而实现人脸属性检测和识别。 |
+|[计算机视觉](../computer-vision/index.yml "计算机视觉")| 使用计算机视觉服务，你可以访问用于处理图像并返回信息的高级算法。 |
+|[人脸](../face/index.yml "人脸")| 使用人脸服务可访问高级人脸算法，从而实现人脸属性检测和识别。 |
 
 ### <a name="speech"></a>语音
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "语音服务")|语音服务提供对语音识别、语音合成、语音翻译以及说话人验证和身份验证等功能的访问。|
+|[语音服务](../speech-service/index.yml "语音服务")|语音服务提供对语音识别、语音合成、语音翻译以及说话人验证和身份验证等功能的访问。|
 
 ### <a name="decision"></a>决策
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[异常检测器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "异常检测器") | 使用异常检测器（预览版）服务可以监视并检测时序数据中的异常。|
+|[异常检测器](../anomaly-detector/index.yml "异常检测器") | 使用异常检测器（预览版）服务可以监视并检测时序数据中的异常。|
 
 ### <a name="language"></a>语言
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "文本分析")| 文本分析服务提供对原始文本的自然语言处理，用于情绪分析、关键短语提取和语言检测。|
+|[文本分析](../text-analytics/index.yml "文本分析")| 文本分析服务提供对原始文本的自然语言处理，用于情绪分析、关键短语提取和语言检测。|
 
 ### <a name="search"></a>搜索
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[必应图像搜索](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "必应图像搜索")|必应图像搜索服务返回确定与用户查询相关的图像显示。|
+|[必应图像搜索](/azure/cognitive-services/bing-image-search "必应图像搜索")|必应图像搜索服务返回确定与用户查询相关的图像显示。|
 
 ## <a name="supported-programming-languages-for-cognitive-services-for-big-data"></a>适用于大数据的认知服务的支持的编程语言
 
@@ -80,19 +80,19 @@ ms.locfileid: "86201783"
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。 它提供了一键式安装、简化的工作流程以及支持数据科学家、数据工程师和业务分析师之间协作的交互式工作区。
+[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。 它提供了一键式安装、简化的工作流程以及支持数据科学家、数据工程师和业务分析师之间协作的交互式工作区。
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-[Azure Synapse Analytics](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/synapse-analytics)（以前称为 SQL 数据仓库）是使用大规模并行处理的企业数据仓库。 借助 Synapse Analytics，可以跨 PB 级数据快速运行复杂查询。 Azure Synapse Analytics 提供托管的 Spark 池以通过直观的 Jupyter Notebook 接口运行 Spark 作业。
+[Azure Synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) 是使用大规模并行处理的企业数据仓库。 借助 Synapse Analytics，可以跨 PB 级数据快速运行复杂查询。 Azure Synapse Analytics 提供托管的 Spark 池以通过直观的 Jupyter Notebook 接口运行 Spark 作业。
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/) 大规模编排 Docker 容器和分布式应用程序。 AKS 是托管式 Kubernetes 产品，可简化 Azure 中 Kubernetes 的使用。 Kubernetes 可以对认知服务的规模、延迟和网络进行精细控制。 但是，如果不熟悉 Apache Spark，建议使用 Azure Databricks 分析或 Synapse Analytics。
+[Azure Kubernetes Service (AKS)](../../aks/index.yml) 大规模编排 Docker 容器和分布式应用程序。 AKS 是托管式 Kubernetes 产品，可简化 Azure 中 Kubernetes 的使用。 Kubernetes 可以对认知服务的规模、延迟和网络进行精细控制。 但是，如果不熟悉 Apache Spark，则建议使用 Azure Databricks 或 Azure Synapse Analytics。
 
 ### <a name="data-connectors"></a>数据连接器
 
-获得 Spark 群集后，下一步是连接到数据。 Apache Spark 有大量数据库连接器。 这些连接器使应用程序无论大型数据集存储在何处都可以使用这些数据集。 有关支持的数据库和连接器的详细信息，请参阅 [Azure Databricks 支持的数据源列表](https://docs.microsoft.com/azure/databricks/data/data-sources/)。
+获得 Spark 群集后，下一步是连接到数据。 Apache Spark 有大量数据库连接器。 这些连接器使应用程序无论大型数据集存储在何处都可以使用这些数据集。 有关支持的数据库和连接器的详细信息，请参阅 [Azure Databricks 支持的数据源列表](/azure/databricks/data/data-sources/)。
 
 ## <a name="concepts"></a>概念
 
@@ -125,12 +125,14 @@ Spark 的基础是数据帧：数据帧是分布在 Apache Spark 工作器节点
 - [详细了解认知服务如何在 Apache Spark 上运行&trade;](https://azure.microsoft.com/blog/dear-spark-developers-welcome-to-azure-cognitive-services/)
 - [通过深入学习和计算机视觉在 Spark 上保存 Snow Leopards](http://www.datawizard.io/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/)
 - [ Microsoft Research 播客：MMLSpark，支持 AI for Good（由 Mark Hamilton 提供）](https://blubrry.com/microsoftresearch/49485070/092-mmlspark-empowering-ai-for-good-with-mark-hamilton/)
+- [学术白皮书：大规模智能微服务](https://arxiv.org/abs/2009.08044)
 
 ## <a name="webinars-and-videos"></a>网络研讨会和视频
 
 - [Spark 上的 Azure 认知服务：具有嵌入式智能服务的群集](https://databricks.com/session/the-azure-cognitive-services-on-spark-clusters-with-embedded-intelligent-services)
 - [Spark 峰会主题演讲：可缩放的 AI for Good](https://databricks.com/session_eu19/scalable-ai-for-good)
 - [Cosmos DB 中适用于大数据的认知服务](https://medius.studios.ms/Embed/Video-nc/B19-BRK3004?latestplayer=true&l=2571.208093)
+- [关于大规模智能微服务的闪电式演讲](https://www.youtube.com/watch?v=BtuhmdIy9Fk&t=6s)
 
 ## <a name="next-steps"></a>后续步骤
 

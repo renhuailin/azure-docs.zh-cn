@@ -2,27 +2,27 @@
 title: 保护链接服务
 description: 了解如何使用托管 VNet 预配和保护链接的服务
 services: synapse-analytics
-author: acomet
+author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033177"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452526"
 ---
-# <a name="secure-a-linked-service-with-private-links"></a>使用专用链接保护链接服务 
+# <a name="secure-a-linked-service-with-private-links"></a>使用专用链接保护链接服务
 
 本文介绍如何使用专用终结点保护 Synapse 中的链接服务。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**，使用 Azure Data Lake Gen 2 作为源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md)来了解创建步骤。 请确保存储帐户具有 Synapse Studio IP 筛选用于访问它，并且你只允许 **所选网络** 访问存储帐户。 边栏选项卡 **和虚拟网络** 下的设置应该如下图所示。
 
 ![安全存储帐户](./media/secure-storage-account.png)
@@ -33,12 +33,12 @@ ms.locfileid: "90033177"
 
 1. 打开 Azure Synapse Studio 并中转到 " **管理** " 选项卡。
 1. 在“外部连接”下，选择“链接服务”。
-1. 若要添加链接服务，请选择 " **新建**"。
+1. 若要添加链接服务，请选择“新建”。
 1. 从列表中选择 "Azure Data Lake Storage Gen2" 磁贴，然后选择 " **继续**"。
 1. 请确保启用“交互式创作”。 启用可能需要大约 1 分钟的时间。 
 1. 输入你的身份验证凭据。 帐户密钥、服务主体和托管标识是目前支持的身份验证类型。 选择 "测试连接" 以验证你的凭据是否正确。
 1. 选择 " **测试连接**"，它应该会失败，因为存储帐户不允许对其进行访问，而无需创建和批准专用终结点。 在错误消息中，你应会看到一个链接，用于创建 **专用终结点** ，你可以遵循此终结点来执行下一个部分。 如果单击该链接，请跳过下一部分。
-1. 完成后，选择“创建”****。
+1. 完成后，选择“创建”。
 
 ## <a name="create-a-managed-private-endpoint"></a>创建托管专用终结点
 
@@ -68,6 +68,8 @@ ms.locfileid: "90033177"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要进一步了解 Synapse Analytics 中托管的专用终结点，请参阅 [Synapse 托管专用终结点](data-integration-data-lake.md) 一文中的概念。
 
-有关 Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到 Data Lake 一](data-integration-data-lake.md) 文。
+若要进一步了解 Azure Synapse Analytics 中托管的专用终结点，请参阅 [托管专用终结点](../security/synapse-workspace-managed-private-endpoints.md)。
+
+
+有关 Azure Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到 Data Lake 一](data-integration-data-lake.md) 文。

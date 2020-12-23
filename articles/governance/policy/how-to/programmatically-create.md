@@ -3,12 +3,12 @@ title: 以编程方式创建策略
 description: 本文逐步讲解如何使用 Azure CLI、Azure PowerShell 和 REST API 以编程方式创建和管理适用于 Azure Policy 的策略。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047048"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920009"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
 
@@ -75,7 +75,7 @@ ms.locfileid: "89047048"
    在没有位置参数的情况下调用时，`New-AzPolicyDefinition` 默认将策略定义保存在会话上下文的选定订阅中。 若要将定义保存到其他位置，请使用以下参数：
 
    - **SubscriptionId** - 保存到其他订阅。 需要 _GUID_ 值。
-   - **ManagementGroupName** - 保存到管理组。 需要_字符串_值。
+   - **ManagementGroupName** - 保存到管理组。 需要 _字符串_ 值。
 
 1. 创建策略定义后，可运行以下命令创建策略分配：
 
@@ -87,12 +87,12 @@ ms.locfileid: "89047048"
 
    将 _ContosoRG_ 替换为所需资源组的名称。
 
-   `New-AzPolicyAssignment` 的 Scope 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径，它将返回 `Get-AzResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
-   `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
+   `New-AzPolicyAssignment` 的 Scope 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径，它将返回 `Get-AzResourceGroup` 的 **ResourceId** 属性。 每个容器的 **范围** 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
+   `{rType}` 将替换为资源的 **资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
 
    - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 资源组 - `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - 订阅 - `/subscriptions/{subId}/`
+   - 订阅 - `/subscriptions/{subId}`
    - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 有关使用资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [Az.Resources](/powershell/module/az.resources/#policies)。
@@ -203,12 +203,12 @@ ms.locfileid: "89047048"
    ```
 
    该命令创建名为 _Audit Storage Accounts Open to Public Networks_ 的策略定义。
-   有关其他可用的参数的详细信息，请参阅 [az policy definition create](/cli/azure/policy/definition#az-policy-definition-create)。
+   有关其他可用的参数的详细信息，请参阅 [az policy definition create](/cli/azure/policy/definition#az_policy_definition_create)。
 
    在没有位置参数的情况下调用时，`az policy definition creation` 默认将策略定义保存在会话上下文的选定订阅中。 若要将定义保存到其他位置，请使用以下参数：
 
-   - subscription - 保存到其他订阅。 订阅 ID 需要 _GUID_ 值，订阅名称需要_字符串_值。
-   - management-group - 保存到管理组。 需要_字符串_值。
+   - subscription - 保存到其他订阅。 订阅 ID 需要 _GUID_ 值，订阅名称需要 _字符串_ 值。
+   - management-group - 保存到管理组。 需要 _字符串_ 值。
 
 1. 使用以下命令创建策略分配。 请将 &lt;&gt; 符号中的示例信息替换为自己的值。
 
@@ -216,7 +216,7 @@ ms.locfileid: "89047048"
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` 的 scope 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 scope 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
+   `az policy assignment create` 的 scope 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 scope 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的 **资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
 
    - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 资源组 - `/subscriptions/{subID}/resourceGroups/{rgName}`

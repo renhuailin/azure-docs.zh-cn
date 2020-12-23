@@ -1,40 +1,44 @@
 ---
-title: 在 Azure Synapse 分析中管理 Apache Spark 的库
+title: 管理 Apache Spark 的库
 description: 了解如何添加和管理 Azure Synapse 分析中 Apache Spark 使用的库。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.author: euang
+ms.date: 10/16/2020
+ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826734"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458821"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理 Apache Spark 的库
 
-库提供你可能想要包括在程序或项目中的可重用代码。 若要使第三方或本地生成的代码可用于你的应用程序，你可以将库安装到你的一个 Spark 池 (预览) 。 为 Spark 池安装库后，将可用于使用同一池的所有会话。 
+库提供你可能想要包括在程序或项目中的可重用代码。 若要使第三方或本地生成的代码可用于你的应用程序，你可以将库安装到你的无服务器 Apache Spark 池之一。 为 Spark 池安装库后，将可用于使用同一池的所有会话。 
 
+## <a name="before-you-begin"></a>开始之前
+- 若要安装和更新库，必须在链接到 Azure Synapse Analytics 工作区的主 Gen2 存储帐户上拥有 **存储 Blob 数据参与者** 或 **存储 blob 数据所有者** 权限。
+  
 ## <a name="default-installation"></a>默认安装
 Azure Synapse Analytics 中的 Apache Spark 包含完整的 Anacondas 安装和其他库。 可以在 [Apache Spark 版本支持](apache-spark-version-support.md)中找到 "完整库" 列表。 
 
-当 Spark 实例启动时，将自动包含这些库。 可以在 Spark 池 (预览) 级别添加其他 Python 和自定义内置包。
+当 Spark 实例启动时，将自动包含这些库。 可以在 Spark 池级别添加其他 Python 和自定义内置包。
 
 
 ## <a name="manage-python-packages"></a>管理 Python 包
-确定要用于 Spark 应用程序的库后，可以将它们安装到 Spark 池中 (预览) 。 
+确定要用于 Spark 应用程序的库后，可以将它们安装到 Spark 池中。 
 
  可使用命令) 的 *requirements.txt* 文件 (输出来 `pip freeze` 升级虚拟环境。 在启动池时，将从 PyPi 下载此文件中列出的用于安装或升级的包。 每次从该 Spark 池中创建 Spark 实例时，都会使用此要求文件。
 
 > [!IMPORTANT]
 > - 如果要安装的包很大或需要很长时间才能安装，这会影响 Spark 实例的启动时间。
-> - 不支持在安装时需要编译器支持的包（如 GCC）。
+> - 不支持在安装时需要编译器支持的包（例如 GCC）。
 > - 包不能降级，只能进行添加或升级。
+> - 若要安装库，必须在链接到 Synapse 工作区的主 Gen2 存储帐户上具有存储 Blob 数据参与者或存储 Blob 数据所有者权限。
 
 ### <a name="requirements-format"></a>需求格式
 
@@ -50,7 +54,7 @@ alabaster==0.7.10
 开发 Spark 应用程序时，可能会发现需要更新现有的或安装新库。 库可以在创建池期间或之后进行更新。
 
 #### <a name="install-packages-during-pool-creation"></a>在创建池期间安装包
-若要在创建池的过程中将库安装到 Spark 池 (预览) ：
+在创建池期间将库安装到 Spark 池：
    
 1. 从 Azure 门户导航到 Azure Synapse Analytics 工作区。
    
@@ -58,11 +62,11 @@ alabaster==0.7.10
    
 3. 使用页面的 " **包** " 部分中的文件选择器上载环境配置文件。 
    
-![创建池时添加 Python 库](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "添加 Python 库")
+    ![创建池时添加 Python 库](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "添加 Python 库")
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>从 Synapse 工作区安装包
-若要更新或添加其他库到 Spark 池 (预览) 从 Azure Synapse Analytics 门户：
+若要从 Azure Synapse Analytics 门户更新或添加其他库到 Spark 池，请执行以下操作：
 
 1.  从 Azure 门户导航到 Azure Synapse Analytics 工作区。
    
@@ -72,10 +76,10 @@ alabaster==0.7.10
    
 4. 选择单个 Spark 池，并使用页面的 "  **包** " 部分中的文件选择器上载环境配置文件。
 
-![在 synapse 中添加 Python 库](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png "添加 Python 库")
+    ![在 synapse 中添加 Python 库](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>从 Azure 门户安装包
-若要将库安装到 Spark 池 (预览直接从 Azure 门户中) ：
+直接从 Azure 门户将库安装到 Spark 池：
    
  1. 从 Azure 门户导航到 Azure Synapse Analytics 工作区。
    
@@ -85,16 +89,16 @@ alabaster==0.7.10
 
  4. 使用文件选择器上载环境配置文件。
 
-![突出显示 "上传环境配置文件" 按钮的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "添加 Python 库")
+    ![突出显示 "上传环境配置文件" 按钮的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "添加 Python 库")
 
 ### <a name="verify-installed-libraries"></a>验证安装的库
 
 若要验证是否安装了正确的库版本，请运行以下代码
 
 ```python
-import pip #needed to use the pip functions
-for i in pip.get_installed_distributions(local_only=True):
-    print(i)
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
 ```
 ### <a name="update-python-packages"></a>更新 Python 包
 在会话之间随时可以添加或修改包。 上传新的包配置文件时，将覆盖现有的包和版本。  
@@ -106,13 +110,13 @@ for i in pip.get_installed_distributions(local_only=True):
 
 3. 导航到 " **包** " 部分，并上传新的环境配置文件
    
-4. 保存更改后，你将需要结束活动会话并等待池重新启动。 或者，您可以通过选中相应的复选框强制 **新的设置**来强制结束活动会话。
+4. 保存更改后，你将需要结束活动会话并等待池重新启动。 或者，您可以通过选中相应的复选框强制 **新的设置** 来强制结束活动会话。
 
-![添加 Python 库](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "添加 Python 库")
+    ![添加 Python 库](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "添加 Python 库")
    
 
 > [!IMPORTANT]
-> 通过选择 **强制新设置**的选项，你将结束所选 Spark 池的所有当前会话。 会话结束后，需要等待池重新启动。 
+> 通过选择 **强制新设置** 的选项，你将结束所选 Spark 池的所有当前会话。 会话结束后，需要等待池重新启动。 
 >
 > 如果未选中此设置，则需要等待当前 Spark 会话手动结束或停止。 会话结束后，需要重新启动池。 
 

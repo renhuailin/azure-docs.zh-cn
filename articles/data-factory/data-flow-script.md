@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/29/2020
-ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.date: 12/03/2020
+ms.openlocfilehash: 69b2713e928707479945df0bb242ac2fbc001c32
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598095"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600653"
 ---
 # <a name="data-flow-script-dfs"></a> (DFS) 的数据流脚本
 
@@ -218,6 +218,33 @@ aggregate(groupBy(mycols = sha2(256,columns())),
 ```
 split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
+```
+
+### <a name="automap-schema-drift-with-a-select"></a>使用 select 自动映射架构偏移
+如果需要从未知或动态的传入列集中加载现有的数据库架构，则必须在接收器转换中映射右侧列。 仅在加载现有表时需要此。 将此代码段添加到接收器前面，以创建自动映射列的 Select。 将接收器映射留到自动映射。
+
+```
+select(mapColumn(
+        each(match(true()))
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> automap
+```
+
+### <a name="persist-column-data-types"></a>保留列数据类型
+将此脚本添加到派生列定义中，以使用接收器将数据流中的列名称和数据类型存储到持久存储区中。
+
+```
+derive(each(match(type=='string'), $$ = 'string'),
+    each(match(type=='integer'), $$ = 'integer'),
+    each(match(type=='short'), $$ = 'short'),
+    each(match(type=='complex'), $$ = 'complex'),
+    each(match(type=='array'), $$ = 'array'),
+    each(match(type=='float'), $$ = 'float'),
+    each(match(type=='date'), $$ = 'date'),
+    each(match(type=='timestamp'), $$ = 'timestamp'),
+    each(match(type=='boolean'), $$ = 'boolean'),
+    each(match(type=='double'), $$ = 'double')) ~> DerivedColumn1
 ```
 
 ## <a name="next-steps"></a>后续步骤

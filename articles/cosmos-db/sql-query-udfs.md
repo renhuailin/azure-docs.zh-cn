@@ -3,18 +3,20 @@ title: Azure Cosmos DB 中的用户定义函数 (UDF)
 description: 了解 Azure Cosmos DB 中的用户定义函数。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: c17fcbb7f6cd2d7f4948defad49e8319a013eb86
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98698264f0beb25a8b4f74861f1150ae889d7115
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262053"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546329"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的用户定义函数 (UDF)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 SQL API 支持用户定义函数 (UDF)。 使用标量 UDF，可以传入零个或多个参数，并返回单个参数结果。 API 会检查每个参数 JSON 值是否合法。  
 
@@ -142,4 +144,4 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
 
 - [Azure Cosmos DB 简介](introduction.md)
 - [系统函数](sql-query-system-functions.md)
-- [聚合](sql-query-aggregates.md)
+- [聚合](sql-query-aggregate-functions.md)

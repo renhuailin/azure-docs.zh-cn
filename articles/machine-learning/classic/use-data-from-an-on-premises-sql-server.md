@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357482"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325693"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>在 Azure 机器学习工作室（经典）中使用 SQL Server 数据库执行分析
 
-**适用于：** ![适用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) 不适 ![ 用于。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习工作室（经典）现在支持从 SQL Server 数据库读取数据，并使用该数据对模型进行训练和评分。 再也不必在云和本地服务器之间手动复制并同步数据。 现在，只需使用 Azure 机器学习工作室（经典）中的“导入数据”模块即可为训练和评分作业直接从 SQL Server 数据库中读取数据。
@@ -92,7 +92,7 @@ ms.locfileid: "91357482"
 6. <span id="note-1" class="anchor"></span>如果尚未下载并安装 Microsoft 数据管理网关，则单击“下载数据管理网关”。 这会你将转到 Microsoft 下载中心，可以在其中选择所需网关版本、下载并安装它。 有关安装先决条件、安装步骤和故障排除提示的详细信息，请参阅[使用数据管理网关在本地资源和云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)一文的开头部分。
 7. 网关安装完成后，数据管理网关配置管理器将打开，还会显示“注册网关”对话框。 粘贴已复制到剪贴板的“网关注册密钥”，并单击“注册”。
 8. 如果已安装网关，请运行数据管理网关配置管理器。 单击 **更改密钥** 、粘贴在上一步中已复制到剪贴板的 **网关注册密钥** ，并单击 **确定** 。
-9. 安装完成后，会显示 Microsoft 数据管理网关配置管理器的“注册网关”对话框。 粘贴在上一步中已复制到剪贴板的“网关注册密钥”，并单击 **注册**。
+9. 安装完成后，会显示 Microsoft 数据管理网关配置管理器的“注册网关”对话框。 粘贴在上一步中已复制到剪贴板的“网关注册密钥”，并单击 **注册** 。
 
     ![注册网关](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 10. 在 Microsoft 数据管理网关配置管理器的“主页”选项卡上设置了以下值后，网关配置即完成：

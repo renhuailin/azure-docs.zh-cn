@@ -1,16 +1,15 @@
 ---
 title: Service Fabric 编程模型概述
 description: Service Fabric 提供了两个框架用于生成服务：执行组件框架和服务框架。 它们在简单性和控制力方面具有截然不同的取舍。
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260531"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575714"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
 
@@ -46,7 +45,7 @@ ASP.NET Core 是一种开源跨平台框架，用于构建现代基于云的连�
 
 ## <a name="reliable-actors"></a>Reliable Actors
 
-Reliable Actor 框架在 Reliable Services 的基础上生成，是基于计算性[执行组件模型](https://en.wikipedia.org/wiki/Actor_model)实现[虚拟执行组件](https://research.microsoft.com/en-us/projects/orleans/)模式的应用程序框架。 Reliable Actor 框架通过称为“执行组件”  的单线程执行使用独立的计算单元和状态单元。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
+可靠执行组件框架是在 Reliable Services 的基础之上构建的，它是一种基于计算执行组件[模型](https://en.wikipedia.org/wiki/Actor_model)实现[虚拟](https://research.microsoft.com/en-us/projects/orleans/)执行组件模式的应用程序框架。 Reliable Actor 框架通过称为“执行组件”  的单线程执行使用独立的计算单元和状态单元。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
 
 由于 Reliable Actors 是在 Reliable Services 基础上构建的应用程序框架，因此它完全与 Service Fabric 平台集成，并且受益于平台所提供的完整功能集。
 

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: d32f39daeb66990d99915e8bbcca5dd637d4f914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c6ea238edd68413646dda59b22d1c0dc2557d57e
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296257"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916825"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>连接到媒体服务 v3 API - Node.js
 
@@ -40,6 +40,8 @@ ms.locfileid: "91296257"
 1. 使用偏好的编辑器创建一个 package.json 文件。
 1. 打开该文件并粘贴以下代码：
 
+   请确保获取最新版本的 [适用于 JavaScript 的 AZUREMEDIASERVICES SDK](https://www.npmjs.com/package/@azure/arm-mediaservices)。
+
 ```json
 {
   "name": "media-services-node-sample",
@@ -47,7 +49,7 @@ ms.locfileid: "91296257"
   "description": "",
   "main": "./index.js",
   "dependencies": {
-    "azure-arm-mediaservices": "^4.1.0",
+    "azure-arm-mediaservices": "^8.0.0",
     "azure-storage": "^2.8.0",
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"

@@ -12,19 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d10eb3334154f4915aa0bddd488ddc78bde06805
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87926716"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897256"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
 Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作是外部标识的一项功能，使你能够邀请来宾用户同组织一起协作。 使用 B2B 协作，可以安全地将公司的应用程序和服务与来自任何其他组织的来宾用户共享，同时保持对自己公司数据的控制。 与外部合作伙伴安全放心地合作，不论其规模是大是小，甚至就算他们没有 Azure AD 或 IT 部门也无妨。 合作伙伴通过一个简单的邀请和兑换过程即可使用自己的凭据来访问公司资源。 开发人员可以使用 Azure AD 企业到企业 API 自定义邀请处理或编写自助注册门户之类的应用程序。 有关与来宾用户相关的许可和定价信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。  
 
    > [!IMPORTANT]
-   > **从 2021 年 3 月 31 日起**，Microsoft 将不再支持通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行邀请兑换。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
+   > **从 2021 年 3 月 31 日起** ，Microsoft 将不再支持通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行邀请兑换。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>与使用自己标识的任何合作伙伴协作
 
@@ -74,8 +74,8 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作是外部标识的
 
 使用按组织需求自定义的方法引入外部合作伙伴。
 
-- 使用 [Azure AD 权利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)配置[管理外部用户访问权限](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)的策略。
-- 使用 [B2B 协作邀请 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 自定义载入体验。
+- 使用 [Azure AD 权利管理](../governance/entitlement-management-overview.md)配置[管理外部用户访问权限](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)的策略。
+- 使用 [B2B 协作邀请 API](/graph/api/resources/invitation) 自定义载入体验。
 
 ## <a name="integrate-with-identity-providers"></a>与标识提供者集成
 
@@ -95,6 +95,6 @@ Azure AD 支持外部标识提供者，如 Facebook、Microsoft 帐户、Google 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure AD B2B 协作的许可指南](licensing-guidance.md)
+- [外部标识定价](external-identities-pricing.md)
 - [在门户中添加 B2B 协作来宾用户](add-users-administrator.md)
 - [了解邀请兑换过程](redemption-experience.md)

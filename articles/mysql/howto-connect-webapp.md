@@ -1,17 +1,17 @@
 ---
 title: 连接到 Azure 应用服务 - Azure Database for MySQL
 description: 有关如何正确地将现有的 Azure 应用服务连接到 Azure Database for MySQL 的说明
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6355afe6ce5decbed029db4536b1b1b19f5a876c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905843"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541498"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>将现有的 Azure 应用服务连接到 Azure Database for MySQL 服务器
 本主题将说明如何将现有的 Azure App Service 连接到 Azure Database for MySQL 服务器。

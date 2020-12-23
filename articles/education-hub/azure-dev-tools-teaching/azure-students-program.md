@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: 7a3da6b31f17a8be41ed435ecaa200e1d4fe3c0a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7260683ab42a64381f80af834ee2b3945b0c1e4c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87100695"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490910"
 ---
 # <a name="azure-for-students"></a>面向学生的 Azure
 
@@ -20,7 +20,7 @@ ms.locfileid: "87100695"
 
 面向学生的 Azure 提供 100 美元的额度，该额度适用期为 12 个月。 可用于访问超过 25 种免费服务，其中包括计算、网络、存储和数据库。 此期间产生的任何费用都将从额度中扣除。 可以在 [Azure 赞助门户](https://www.microsoftazuresponsorships.com/)中查看剩余额度信息。
 
-用完可用额度或在 12 个月到期后，你的 Azure 订阅将被禁用。 面向学生的 Azure 订阅不可续订。 若要继续使用 Azure，可以在 [Azure 帐户门户](https://account.azure.com/)中升级为即用即付订阅。 如果在 12 个月到期或 100 美元的额度用完后（以先发生者为准）决定不升级，则你部署的任何产品都将解除授权，并且你无法再访问这些产品。 免费订阅结束后的 90 天内，可升级到即用即付订阅。
+用完可用额度或在 12 个月到期后，你的 Azure 订阅将被禁用。 面向学生的 Azure 订阅不可续订。 若要继续使用 Azure，可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中升级为即用即付订阅。 如果在 12 个月到期或 100 美元的额度用完后（以先发生者为准）决定不升级，则你部署的任何产品都将解除授权，并且你无法再访问这些产品。 免费订阅结束后的 90 天内，可升级到即用即付订阅。
 
 若要获取面向学生的 Azure 的详细使用条款，请参阅[套餐条款](https://azure.microsoft.com/offers/ms-azr-0170p/)。
 
@@ -29,4 +29,4 @@ ms.locfileid: "87100695"
 - [获取有关登录错误的帮助](troubleshoot-login.md)
 - [下载软件（面向学生的 Azure）](download-software.md)
 - [面向学生的 Azure 入门版概述](azure-students-starter-program.md)
-- [Microsoft Learn：免费联机学习平台](https://docs.microsoft.com/learn/)
+- [Microsoft Learn：免费联机学习平台](/learn/)

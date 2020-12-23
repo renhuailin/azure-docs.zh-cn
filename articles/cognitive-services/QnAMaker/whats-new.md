@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836864"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345519"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 中的新增功能
 
@@ -23,6 +23,14 @@ ms.locfileid: "87836864"
 
 了解 QnA Maker 的新增功能。
 
+### <a name="november-2020"></a>2020 年 11 月
+
+* QnA Maker 的新版本提供免费公共预览版。 在[此处](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575)阅读更多信息。
+* 简化了资源创建
+* 端到端区域支持
+* 深度了解的排名模型
+* 计算机阅读理解可获得精确答案
+  
 ### <a name="july-2020"></a>2020 年 7 月
 
 * [元数据：多个元数据对的 `OR` 逻辑组合](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
@@ -48,17 +56,17 @@ ms.locfileid: "87836864"
 
 ### <a name="november-2019"></a>2019 年 11 月
 
-* 适用于 QnA Maker 的[美国政府云支持](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker)
-* GA 中的[多轮次](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation)功能
-* 第 1 层语言中可用的[闲聊支持](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support)
+* 适用于 QnA Maker 的[美国政府云支持](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers)
+* GA 中的[多轮次](./how-to/multiturn-conversation.md)功能
+* 第 1 层语言中可用的[闲聊支持](./how-to/chit-chat-knowledge-base.md#language-support)
 
 ### <a name="october-2019"></a>2019 年 10 月
 
-* 为 QnA Maker 服务中的所有知识库[显式设置语言](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base)。
+* 为 QnA Maker 服务中的所有知识库[显式设置语言](./index.yml)。
 
 ### <a name="september-2019"></a>2019 年 9 月
 
-* 使用 [XLS 文件格式](concepts/content-types.md)导入和导出
+* 使用 [XLS 文件格式](./index.yml)导入和导出
 
 ### <a name="june-2019"></a>2019 年 6 月
 

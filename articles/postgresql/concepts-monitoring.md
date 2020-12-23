@@ -5,19 +5,19 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 4fd16e9dcf9f0b75b48311adf3e9282adbce2a25
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.date: 10/21/2020
+ms.openlocfilehash: 4d4287b877f5327b7fd485358b26148686b9515b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708707"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487919"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>监视和优化 Azure Database for PostgreSQL（单一服务器）
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，帮助用户深入了解服务器的行为。
 
 ## <a name="metrics"></a>指标
-Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解为 PostgreSQL 服务器提供支持的资源的行为。 每项指标以一分钟为频率发出，[历史记录长达 93 天](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#retention-of-metrics)。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解为 PostgreSQL 服务器提供支持的资源的行为。 每项指标以一分钟为频率发出，[历史记录长达 93 天](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="list-of-metrics"></a>指标列表
 这些指标适用于 Azure Database for PostgreSQL：
@@ -57,26 +57,10 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 
 “计划内维护通知”允许你接收有关 Azure Database for PostgreSQL - 单一服务器即将进行的计划内维护的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你将在事件发生前的 72 小时收到有关即将进行的维护的通知。
 
-> [!Note]
-> 我们将尽一切努力为所有事件提供**计划内维护通知** 72 小时通知。 但是，对于关键或安全修补程序，通知可能会在事件快要发生时更晚一点发送，或者会被忽略。
-
-### <a name="to-receive-planned-maintenance-notification"></a>接收计划内维护通知
-
-1. 在[门户](https://portal.azure.com)中，选择“服务运行状况”。
-2. 在“警报”部分中，选择“运行状况警报”。
-3. 选择“+ 添加服务运行状况警报”，并填写字段。
-4. 填写所需的字段。 
-5. 选择“事件类型”，然后选择“计划内维护”或“全选”
-6. 在“操作组”中，定义接收警报的方式（获取电子邮件、触发逻辑应用等）。  
-7. 确保“创建后启用规则”设置为“是”。
-8. 选择“创建警报规则”以完成警报
-
-有关如何创建服务运行状况警报的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications.md)。
-
-> [!IMPORTANT]
-> 计划内维护通知当前在美国西部地区 **以外** 的所有区域中提供预览版
+详细了解如何设置 [计划内维护通知](./concepts-planned-maintenance-notification.md) 文档中的通知。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。
-- 若要深入了解如何使用 Azure 门户、REST API 或 CLI 访问和导出指标，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+- 有关如何使用 Azure 门户、REST API 或 CLI 访问和导出指标的详细信息，请参阅 [Azure 指标概述](../azure-monitor/platform/data-platform.md)
 - 阅读我们的博客，了解[监控服务器的最佳做法](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/)。
+- 详细了解 Azure Database for PostgreSQL-单服务器中的 [计划内维护通知](./concepts-planned-maintenance-notification.md) 。

@@ -1,14 +1,14 @@
 ---
 title: 教程：构建策略以强制实施符合性
 description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
-ms.date: 06/15/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: d8dc65d50182b5336a683c2da8e2a5d8ebb9e849
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650087"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005429"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -49,7 +49,7 @@ ms.locfileid: "89650087"
 
 1. 可基于“范围”排除资源。 “排除”从低于“范围”级别的一个级别开始 。 “排除”是可选的，因此暂时将其留空。
 
-1. 选择“策略定义”旁边的省略号打开可用定义的列表。 可以使用“内置”来筛选策略定义的**类型**，以查看所有相关策略定义及其说明。
+1. 选择“策略定义”旁边的省略号打开可用定义的列表。 可以使用“内置”来筛选策略定义的 **类型**，以查看所有相关策略定义及其说明。
 
 1. 选择“如果缺少，则从资源组继承标记”。 如果不能立即找到它，请在搜索框中键入“继承标记”，然后按 ENTER 或者选择搜索框的外部。
    找到并选择策略定义后，选择“可用定义”页底部的“选择”。 
@@ -342,13 +342,13 @@ az policy definition list
 
 1. 选择“Azure Policy”页左侧“创作”下的“定义” 。
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="“创作”组下的“定义”页的屏幕截图。" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="“创作”组下的“定义”页的屏幕截图。":::
 
-1. 选择页面顶部的“+ 计划定义”打开“计划定义”页。 
+1. 选择页面顶部的“+ 计划定义”，打开“计划定义”向导 。
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="要设置的计划定义页和属性的屏幕截图。" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="要设置的计划定义页和属性的屏幕截图。":::
 
-1. 使用“定义位置”旁边的省略号选择用于存储定义的管理组或订阅。 如果上一页范围仅限于单个管理组或订阅，将自动填充“定义位置”。 选中后，“可用定义”会被填充。
+1. 使用“计划位置”旁边的省略号，选择用于存储定义的管理组或订阅。 如果上一页范围仅限于单个管理组或订阅，将自动填充“计划位置”。
 
 1. 输入计划的“名称”和“说明”。 
 
@@ -356,28 +356,53 @@ az policy definition list
 
 1. 对于“类别”，请从现有的选项中选择，或者创建新类别。
 
-1. 浏览“可用定义”的列表（在“计划定义”页的右半部分），然后选择要添加到此计划的策略定义。  对于“保证安全”计划，请选择策略定义信息旁边的 **+** ，或选择策略定义行并选择详细信息页中的“+ 添加”选项，来添加以下内置策略定义： 
+1. 为计划设置“版本”，如 1.0。
+
+   > [!NOTE]
+   > 版本值是元数据，Azure Policy 服务不会将其用于更新或任何进程。
+
+1. 选择页面底部的“下一步”或向导顶部的“策略”选项卡 。
+
+1. 选择“添加策略定义”按钮，然后浏览列表。 选择要添加到此计划中的策略定义。 对于“保证安全”计划，请选择策略定义旁边的复选框来添加以下内置策略定义：
 
    - 允许的位置
    - 监视 Azure 安全中心 Endpoint Protection 的缺失情况
-   - 应该强化面向 Internet 的虚拟机的网络安全组规则
+   - 应使用网络安全组来保护非面向 Internet 的虚拟机
    - 应为虚拟机启用 Azure 备份
    - 应在虚拟机上启用磁盘加密
+   - 在资源中添加或替换标记（添加此策略定义两次）
 
-   从列表中选择策略定义后，会将其添加到“类别”下面。
+   从列表中选择每个策略定义后，选择列表底部的“添加”。
+   由于添加了两次，因此每个“在资源中添加或替换标记”策略定义获得了不同的“引用 ID” 。
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="计划定义页上参数和值定义的屏幕截图。" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="屏幕截图显示“计划定义”页上的所选策略定义及其引用 ID 和组。":::
 
-1. 如果要添加到计划的策略定义有参数，则这些参数会显示在“类别”区域的策略名称下。 _value_ 可以设置为“设置值”（针对此计划的所有分配进行硬编码）或“使用计划参数”（在每个计划分配期间设置）。 如果选择了“设置值”，则“值”右侧的下拉列表允许输入或选择值。 如果选择了“使用计划参数”，则会显示新的“计划参数”部分，用于定义将要在计划分配期间设置的参数。 此计划参数的允许值可能会进一步限制能够在计划分配期间设置的内容。
+   > [!NOTE]
+   > 通过选择一个或多个已添加的定义，并选择“将所选策略添加到组”，可以将所选策略定义添加到组中。 该组必须先存在并且能够在向导的“组”选项卡上创建。
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="计划定义页上效果参数允许值选项的屏幕截图。" border="false":::
+1. 选择页面底部的“下一步”或向导顶部的“组”选项卡 。 可以从此选项卡添加新组。对于本教程，我们不添加任何组。
+
+1. 选择页面底部的“下一步”或向导顶部的“计划参数”选项卡 。 如果希望某个参数存在于计划中以便能够传递给一个或多个包含的策略定义，则在此处定义该参数，然后在“策略参数”选项卡上使用该参数。在本教程中，我们不添加任何计划参数。
+
+   > [!NOTE]
+   > 将计划参数保存到计划定义后，就不能从计划中删除了。 如果不再需要某个计划参数，请将其从任何策略定义参数中删除。
+
+1. 选择页面底部的“下一步”或向导顶部的“策略参数”选项卡 。
+
+1. 计划中添加的具有参数的策略定义会显示在网格中。 值类型可以是“默认值”、“设置值”或“使用计划参数”。 如果选择了“设置值”，则在“值”下输入相关值。 如果策略定义上的参数包含允许的值的列表，则输入框会是一个下拉选择器。 如果选择了“使用计划参数”，则会提供下拉的选择列表，其中包含在“计划参数”选项卡上创建的计划参数的名称。
+
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="屏幕截图显示“计划定义”页的“策略参数”选项卡上，“允许的位置”定义参数的允许的值的选项。":::
 
    > [!NOTE]
    > 在使用某些 `strongType` 参数时，不能自动确定值的列表。 在这种情况下，会在参数行的右侧显示省略号。 选择它会打开“参数范围(&lt;参数名称&gt;)”页。 在此页中，选择用于提供值选项的订阅。 此参数范围仅在创建计划定义过程中使用，对策略评估或分配后的计划范围没有影响。
 
-   将“允许的位置”参数设置为“美国东部 2”，并将其他参数保留为默认值“AuditifNotExists”。
+   将“允许的位置”值类型设置为“设置值”，然后从下拉列表中选择“美国东部 2”。 对于“在资源中添加或替换标记”策略定义的两个实例，将“标记名称”参数设置为“Env”和“CostCenter”，将“标记值”参数设置为“Test”和“Lab”，如下所示 。 将其他值保留为“默认值”。 在计划中使用相同的定义两次，但使用不同的参数，此配置在分配范围内的资源中使用值“Test”添加或替换“Env”标记值，使用值“Lab”添加或替换“CostCenter”标记值。
 
-1. 选择“保存”。
+   :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="屏幕截图显示“计划定义”页“策略参数”选项卡上“允许的位置”定义参数的输入的允许值选项及两个标记参数集。":::
+
+1. 选择页面底部或向导顶部的“查看 + 创建”。
+
+1. 检查设置，然后选择“创建”。
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>使用 Azure CLI 创建策略计划定义
 
@@ -455,7 +480,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. 选择“Azure Policy”页左侧的“符合性”。
 
 1. 找到“保证安全”计划。 可能仍处于“未启动”符合性状态。
-   选择计划，获取有关分配进度的完整详细信息。
+   选择计划，获取分配的完整详细信息。
 
    :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="“计划合规性”页显示处于“未启动”状态的分配评估的屏幕截图。" border="false":::
 
@@ -465,9 +490,12 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. 选择计划符合性页上的任何策略均可打开该策略的符合性详细信息页。 此页提供符合性的资源级别详细信息。
 
-## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>使用“排除”豁免不符合或遭拒绝的资源
+## <a name="remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion"></a>使用排除项从范围中删除不符合要求或拒绝的资源
 
 分配一项要求使用特定位置的策略计划之后，系统会拒绝在其他位置创建的任何资源。 本部分介绍如何通过创建单个资源组中的排除项，来解决拒绝创建资源的请求的问题。 该排除项可防止对该资源组实施策略（或计划）。 在以下示例中，允许在排除的资源组中使用任何位置。 可对订阅、资源组或单个资源应用排除。
+
+> [!NOTE]
+> 还可以使用[策略豁免](../concepts/exemption-structure.md)来跳过对资源的评估。 有关其他信息，请参阅 [Azure Policy 中的范围](../concepts/scope.md)。
 
 可在部署所针对的资源组中查看被分配的策略或计划阻止的部署：选择页面左侧的“部署”，然后选择失败部署的“部署名称”。  随后将会列出带有“禁止”状态的被拒绝资源。 若要确定拒绝该资源的策略或计划和分配，请在“部署概述”页上选择“失败。单击此处了解详细信息 ->”。 页面右侧会打开一个窗口，其中显示了错误信息。 “错误详细信息”下显示了相关策略对象的 GUID。
 

@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 子 DNS 区域
+title: 教程：创建 Azure 子 DNS 区域
 titleSuffix: Azure DNS
 description: 有关如何在 Azure 门户中创建子 DNS 区域的教程。
 author: jonbeck
@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89080259"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183373"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>教程：创建新的子 DNS 区域
 
@@ -34,7 +34,7 @@ ms.locfileid: "89080259"
 * 具有活动订阅的 Azure 帐户。  如果没有帐户，可以[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 现有的父 Azure DNS 区域。  
 
-就本教程而言，我们将使用 contoso.com 作为父区域，使用 subdomain.contoso.com 作为子域名。  请将 contoso.com 替换为你的父域名，将 subdomain 替换为你的子域。  如果尚未创建父 DNS 区域，请参阅[使用 Azure 门户创建 DNS 区域](https://docs.microsoft.com/azure/dns/dns-getstarted-portal#create-a-dns-zone)中的步骤。 
+就本教程而言，我们将使用 contoso.com 作为父区域，使用 subdomain.contoso.com 作为子域名。  请将 contoso.com 替换为你的父域名，将 subdomain 替换为你的子域。  如果尚未创建父 DNS 区域，请参阅[使用 Azure 门户创建 DNS 区域](./dns-getstarted-portal.md#create-a-dns-zone)中的步骤。 
 
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
@@ -101,7 +101,7 @@ ms.locfileid: "89080259"
 
      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="子区域名称服务器验证的屏幕截图" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
 ## <a name="clean-up-resources"></a>清理资源
-当你不再需要在本教程中创建的资源时，请通过删除 MyResourceGroup 资源组来删除它们。 打开 MyResourceGroup 资源组，并选择“删除资源组”********。
+当你不再需要在本教程中创建的资源时，请通过删除 MyResourceGroup 资源组来删除它们。 打开 MyResourceGroup 资源组，并选择“删除资源组”。
 
 
 

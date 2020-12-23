@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: migration
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298569"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360146"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 将 SQL Server VM 移到 Azure 中的另一个区域
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +65,7 @@ ms.locfileid: "91298569"
     - 为源 VM 启用复制时，Azure Site Recovery 会自动发现并创建虚拟网络。 此外可以预先创建网络，并将其分配到用户流中的 VM 以启用复制。 需要手动创建目标区域中的其他任何资源。
 - 若要根据源 VM 配置创建最常用的相关网络资源，请参阅以下文档： 
     - [网络安全组](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [负载均衡器](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
+    - [负载均衡器](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
     - [公共 IP 地址](../../../virtual-network/virtual-network-public-ip-address.md)
     - 对于其他任何网络组件，请参阅[网络文档](../../../virtual-network/virtual-networks-overview.md)。
 - 若要在最终移动到目标区域之前测试配置，请在目标区域中手动创建非生产网络。 我们建议执行此步骤，因为这可以确保尽量减少对生产网络造成的干扰。 
@@ -131,7 +132,7 @@ ms.locfileid: "91298569"
 1. 可以从上一节中监视故障转移测试时查看的同一“Site Recovery 作业”页监视故障转移过程。 
 1. 该作业完成后，检查 SQL Server VM 是否按预期显示在目标区域中。 
 1. 导航回保管库，依次选择“复制的项”、“SQL Server VM”和“提交”以完成到目标区域的移动过程 。 请等待提交作业完成。 
-1. 将 SQL Server VM 注册到 SQL VM 资源提供程序，以在 Azure 门户中启用 SQL 虚拟机可管理性以及与资源提供程序关联的功能。 有关详细信息，请参阅 [向 SQL VM 资源提供程序注册 SQL Server VM](sql-vm-resource-provider-register.md)。 
+1. 向 SQL IaaS 代理扩展注册 SQL Server VM，以在 Azure 门户中启用 **SQL 虚拟机** 可管理性以及与该扩展相关联的功能。 有关详细信息，请参阅 [向 SQL IaaS 代理扩展注册 SQL Server VM](sql-agent-extension-manually-register-single-vm.md)。 
 
   > [!WARNING]
   > 只有应用一致的快照才能保证 SQL Server 数据一致性。 最新处理的快照不能用于 SQL Server 故障转移，因为故障恢复快照不能保证 SQL Server 数据一致性。 
@@ -156,5 +157,3 @@ ms.locfileid: "91298569"
 * [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.md)
 * [Windows VM 上的 SQL Server 定价指南](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 发行说明](doc-changes-updates-release-notes.md)
-
-

@@ -36,6 +36,10 @@
           href: connect-ios.md
         - name: 使用 Microsoft Store 客户端进行连接
           href: connect-microsoft-store.md
+        - name: 连接 Linux 设备
+          href: linux-overview.md
+    - name: 配置设备重定向
+      href: configure-device-redirections.md
     - name: 设置 PowerShell 模块
       href: powershell-module.md
     - name: 创建主机池和会话主机
@@ -88,11 +92,21 @@
           href: diagnostics-log-analytics.md
     - name: 发布内置应用
       href: publish-apps.md
-    - name: 设置 MSIX 应用附加
-      href: app-attach.md
+    - name: 使用 MSIX 应用附加
+      items:
+        - name: 通过 Azure 门户设置 MSIX 应用附加
+          href: app-attach-azure-portal.md
+        - name: 通过 PowerShell 设置 MSIX 应用附加
+          href: app-attach-powershell.md
+        - name: 创建 PowerShell 脚本
+          href: app-attach.md
+        - name: 准备 MSIX 映像
+          href: app-attach-image-prep.md
+        - name: 设置文件共享
+          href: app-attach-file-share.md
     - name: 使用 Microsoft Teams
       href: teams-on-wvd.md
-    - name: 设置 Azure 多重身份验证
+    - name: 设置 Azure AD 多重身份验证
       href: set-up-mfa.md
     - name: 配置自动更新
       href: configure-automatic-updates.md
@@ -102,16 +116,32 @@
       href: azure-advisor.md
     - name: 解决建议
       href: azure-advisor-recommendations.md
+    - name: 使用适用于 Windows 虚拟桌面的 Azure Monitor
+      href: azure-monitor.md
+    - name: 设置灾难恢复计划
+      href: disaster-recovery.md
 - name: 概念
   items:
+    - name: 内置角色
+      href: rbac.md
     - name: 身份验证
       href: authentication.md
-    - name: 安全 URL 列表
-      href: safe-url-list.md
     - name: Windows 虚拟桌面环境
       href: environment-setup.md
-    - name: 确定用户连接延迟
-      href: connection-latency.md
+    - name: 网络连接
+      items:
+        - name: 了解网络连接
+          href: network-connectivity.md
+        - name: RDP 短路径
+          href: shortpath.md
+        - name: 实现服务质量 (QoS)
+          href: rdp-quality-of-service-qos.md
+        - name: 所需的 URL 列表
+          href: safe-url-list.md
+        - name: 带宽注意事项
+          href: rdp-bandwidth.md
+        - name: 确定用户连接延迟
+          href: connection-latency.md
     - name: Windows 虚拟桌面中的委托访问
       href: delegated-access-virtual-desktop.md
     - name: 主机池负载均衡方法
@@ -134,6 +164,8 @@
           href: app-attach-glossary.md
         - name: 常见问题解答
           href: app-attach-faq.md
+    - name: Azure Monitor 术语表
+      href: azure-monitor-glossary.md
     - name: 数据位置
       href: data-locations.md
 - name: 疑难解答
@@ -154,6 +186,8 @@
       href: troubleshoot-powershell.md
     - name: 诊断图形性能问题
       href: remotefx-graphics-performance-counters.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: 参考
   items:
     - name: 安全最佳做法
@@ -162,8 +196,6 @@
       href: linux-overview.md
     - name: 支持的 RDP 文件设置
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
-    - name: 网络指南
-      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: 虚拟机大小调整指南
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure 命令行接口 (CLI)

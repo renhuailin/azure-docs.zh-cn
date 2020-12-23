@@ -1,6 +1,6 @@
 ---
-title: 快速入门：Fivetran 和数据仓库
-description: Fivetran 和 Azure Synapse Analytics 数据仓库入门。
+title: '快速入门： Fivetran 和专用 SQL 池 (以前的 SQL DW) '
+description: Azure Synapse Analytics (以前的 SQL DW) 的 Fivetran 和专用 SQL 池入门。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 96e679c0b284cc649dbde3fba1b640f4e09df05e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f332c3b0bd53d80d4a8471f53c56ecab611787c1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201644"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456377"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>快速入门：Fivetran 和数据仓库 
+# <a name="quickstart-fivetran-with-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>快速入门： Fivetran 在 Azure Synapse Analytics 中 (以前的 SQL DW) 的专用 SQL 池 
 
-本快速入门介绍了如何设置新的 Fivetran 用户，以使用通过 SQL 池预配的 Synapse Analytics 数据仓库。 本文假定你已有数据仓库。
+本快速入门介绍了如何设置新的 Fivetran 用户，以便 (以前的 SQL DW) 使用专用 SQL 池。 本文假定现有的专用 SQL 池 (以前的 SQL DW) 。
 
 ## <a name="set-up-a-connection"></a>设置连接
 
-1. 查找用于连接到数据仓库的完全限定的服务器名称和数据库名。
+1. 查找用于连接到专用 SQL 池 (以前的 SQL DW) 的完全限定的服务器名称和数据库名称。
     
-    如果需要有关查找此信息的帮助，请参阅[连接到数据仓库](../sql/connect-overview.md)。
+    如果需要帮助找到此信息，请参阅 [连接到专用 sql 池 (以前的 SQL DW) ](sql-data-warehouse-connection-strings.md)。
 
 2. 在安装向导中，选择是要直接连接数据库还是通过 SSH 隧道进行连接。
 
@@ -34,13 +34,13 @@ ms.locfileid: "85201644"
 
    如果选择通过 SSH 隧道进行连接，Fivetran 会连接到网络中一个单独的服务器。 服务器提供一个连接到数据库的 SSH 隧道。 如果数据库位于虚拟网络上一个无法访问的子网中，则必须使用此方法。
 
-3. 在服务器级别的防火墙中添加 IP 地址“52.0.2.4”，允许传入从 Fivetran 到数据仓库实例的连接。
+3. 将 IP 地址 **52.0.2.4** 添加到服务器级防火墙，以允许从 Fivetran (以前的 sql DW) 实例与专用 sql 池的传入连接。
 
    有关详细信息，请参阅[创建服务器级防火墙规则](create-data-warehouse-portal.md#create-a-server-level-firewall-rule)。
 
 ## <a name="set-up-user-credentials"></a>设置用户凭据
 
-1. 使用 SQL Server Management Studio (SSMS) 或首选工具连接到数据仓库。 以服务器管理员用户身份登录。 然后，运行以下 SQL 命令，为 Fivetran 创建一个用户：
+1. 使用 SQL Server Management Studio (SSMS) 或你喜欢的工具连接到专用 SQL 池 (以前的 SQL DW) 。 以服务器管理员用户身份登录。 然后，运行以下 SQL 命令，为 Fivetran 创建一个用户：
 
     - 在 master 数据库中： 
     
@@ -48,7 +48,7 @@ ms.locfileid: "85201644"
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - 在数据仓库数据库中：
+    - 在专用 SQL 池中 (以前的 SQL DW) 数据库：
 
       ```sql
       CREATE USER fivetran_user_without_login without login;
@@ -56,7 +56,7 @@ ms.locfileid: "85201644"
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. 向 Fivetran 用户授予以下数据仓库权限：
+2. 向 Fivetran 用户授予 (以前的 SQL DW) 的专用 SQL 池的以下权限：
 
     ```sql
     GRANT CONTROL to fivetran;
@@ -77,7 +77,7 @@ ms.locfileid: "85201644"
 
 ## <a name="connect-from-fivetran"></a>从 Fivetran 连接
 
-要从 Fivetran 帐户连接到数据仓库，请输入用于访问数据仓库的凭据： 
+若要从 Fivetran 帐户连接到专用 sql 池 (以前的 SQL DW) ，请输入用于访问专用 SQL 池 (以前的 SQL DW) 的凭据： 
 
 * 主机（服务器名称）。
 * 端口。

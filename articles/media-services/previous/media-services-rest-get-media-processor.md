@@ -3,7 +3,7 @@ title: 如何使用 REST 获取媒体处理器实例 | Microsoft 文档
 description: 了解如何创建一个媒体处理器组件用来为 Azure 媒体服务编码、转换格式、加密或解密媒体内容。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f9ff1997-0da6-4528-aaed-792837e5be41
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: ba625aa048360a4c201b91b4a5a4a7ca4dd6277b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269499"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348485"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何获取媒体处理器实例
 
@@ -28,18 +28,18 @@ ms.locfileid: "89269499"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
+
 
 ## <a name="overview"></a>概述
-媒体处理器是完成特定视频或音频处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。 提交到媒体服务的所有任务需要通过一个媒体处理器来编码、加密或转换视频或音频内容。 
 
-## <a name="azure-media-processors"></a>Azure 媒体处理器 
+媒体处理器是完成特定视频或音频处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。 提交到媒体服务的所有任务需要通过一个媒体处理器来编码、加密或转换视频或音频内容。
+
+## <a name="azure-media-processors"></a>Azure 媒体处理器
 
 以下主题提供媒体处理器列表：
 
-* [编码媒体处理器](scenarios-and-availability.md#encoding-media-processors)
-* [分析媒体处理器](scenarios-and-availability.md#analytics-media-processors)
+* [编码媒体处理器](scenarios-and-availability.md)
+* [分析媒体处理器](scenarios-and-availability.md)
 
 >[!NOTE]
 >访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "89269499"
 
 ## <a name="get-a-media-processor"></a>获取媒体处理器
 
-以下 REST 调用演示了如何按名称获取媒体处理器实例（在本例中为 **Media Encoder Standard**）。 
+以下 REST 调用演示了如何按名称获取媒体处理器实例（在本例中为 **Media Encoder Standard** ）。 
 
 请求：
 

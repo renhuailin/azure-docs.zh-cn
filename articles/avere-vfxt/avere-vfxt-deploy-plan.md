@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272784"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342393"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
@@ -109,7 +109,7 @@ Avere vFXT 群集使用以下 IP 地址：
 
 每个节点的磁盘缓存可配置，范围为 1000 GB 到 8000 GB。 每个节点 4 TB 是 Standard_E32s_v3 节点的建议缓存大小。
 
-有关这些 Vm 的其他信息，请阅读 Microsoft Azure 文档： [内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+有关这些 Vm 的其他信息，请阅读 Microsoft Azure 文档： [内存优化虚拟机大小](../virtual-machines/sizes-memory.md)
 
 ## <a name="account-quota"></a>帐户配额
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 013eadedc00dee23a09eff89147406cc14f017ab
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553353"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>教程：Azure Active Directory 与 RightScale 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553353"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Rightscale（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88553353"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,15 +99,15 @@ ms.locfileid: "88553353"
 
 4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
 
-    ![Rightscale 域和 URL 单一登录信息](common/preintegrated.png)
+    ![显示“基本 SAML 配置”页的屏幕截图。](common/preintegrated.png)
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Rightscale 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，键入 URL：  `https://login.rightscale.com/`
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -127,32 +127,31 @@ ms.locfileid: "88553353"
 
 2. 在顶部菜单中，单击“设置”  选项卡，并选择“单一登录”  。
 
-    ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![显示从“设置”中选择了“单一登录”的屏幕截图。](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
-3. 单击“新建”  按钮以添加 **SAML 标识提供者**。
+3. 单击“新建”  按钮以添加 **SAML 标识提供者** 。
 
-    ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![显示选择了新按钮以添加 SAML 标识提供者的屏幕截图。](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. 在“显示名称”文本框中  ，输入公司名称。
 
-    ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![显示输入显示名称的位置的屏幕截图。](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
-5. 选择“允许使用发现提示进行 RightScale 发起的 SSO”  ，并在以下文本框中输入**域名**。
+5. 选择“允许使用发现提示进行 RightScale 发起的 SSO”  ，并在以下文本框中输入 **域名** 。
 
-    ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![显示可指定“登录方法”的位置的屏幕截图。](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. 在 RightScale 中，将从 Azure 门户复制的“登录 URL”值粘贴到“SAML SSO 终结点”中。  
 
-    ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![显示可输入“SAML SSO 终结点”的位置的屏幕截图。](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. 在 RightScale 中，将从 Azure 门户复制的“Azure AD 标识符”值粘贴到“SAML 实体 ID”中   。
 
-    ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![显示可输入“SAML 实体 ID”的位置的屏幕截图。](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. 单击“浏览器”按钮，上传已从 Azure 门户下载的证书  。
 
-
-    ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![显示可指定“SAML 签名证书”的位置的屏幕截图。](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. 单击“保存”  。
 
@@ -209,18 +208,18 @@ ms.locfileid: "88553353"
 
 ### <a name="create-rightscale-test-user"></a>创建 Rightscale 测试用户
 
-在本部分中，将在 Rightscale 中创建一个名为 Britta Simon 的用户。 请与  [RightScale 客户端支持团队](mailto:support@rightscale.com) 协作，在 RightScale 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Rightscale 中创建一个名为 Britta Simon 的用户。 请与 [Rightscale 客户端支持团队](mailto:support@rightscale.com)协作，将用户添加到 Rightscale 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Rightscale 磁贴时，应当会自动登录到你为其设置了 SSO 的 Rightscale。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Rightscale 磁贴时，应当会自动登录到你为其设置了 SSO 的 Rightscale。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

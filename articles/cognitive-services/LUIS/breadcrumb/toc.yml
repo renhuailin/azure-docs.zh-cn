@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 认知服务
+      tocHref: /azure/cognitive-services/
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: 语言理解 (LUIS)
+          tocHref: /azure/cognitive-services/
+          topicHref: /azure/cognitive-services/luis/index

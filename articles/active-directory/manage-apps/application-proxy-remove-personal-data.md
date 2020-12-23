@@ -15,12 +15,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99fb466debd5a2ee4bb659aea3494469a8bbe8e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759957"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658411"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>删除 Azure Active Directory 应用程序代理的个人数据
 
@@ -35,7 +35,7 @@ Azure Active Directory 应用程序代理要求你在设备上安装连接器，
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>从 Windows 事件日志中删除个人数据
 
-有关如何为 Windows 事件日志配置数据保留的信息，请参阅[事件日志的设置](https://technet.microsoft.com/library/cc952132.aspx)。 若要了解有关 Windows 事件日志的信息，请参阅[使用 Windows 事件日志](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx)。
+有关如何为 Windows 事件日志配置数据保留的信息，请参阅[事件日志的设置](https://technet.microsoft.com/library/cc952132.aspx)。 若要了解有关 Windows 事件日志的信息，请参阅[使用 Windows 事件日志](/windows/win32/wes/using-windows-event-log)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
@@ -54,7 +54,7 @@ Azure Active Directory 应用程序代理要求你在设备上安装连接器，
 
 若要查看或导出特定数据，请在每个连接器事件日志中搜索相关条目。 日志位于 `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`。
 
-由于日志是文本文件，可以使用 [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) 来搜索与用户相关的文本项。  
+由于日志是文本文件，可以使用 [findstr](/windows-server/administration/windows-commands/findstr) 来搜索与用户相关的文本项。  
 
 若要查找个人数据，请在日志文件中搜索 UserID。
 

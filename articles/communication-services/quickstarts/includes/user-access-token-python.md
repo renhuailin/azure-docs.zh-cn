@@ -2,20 +2,20 @@
 title: include 文件
 description: include 文件
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 4be8821a949527fefcc9005b1de7f4f7c438c568
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: tchladek
+ms.openlocfilehash: 472129be5baa865365b49894b705d84c23e9cd04
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943490"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506282"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,17 +30,17 @@ ms.locfileid: "90943490"
 1. 打开终端或命令窗口，为应用创建一个新目录，并导航到该目录。
 
    ```console
-   mkdir user-tokens-quickstart && cd user-tokens-quickstart
+   mkdir access-tokens-quickstart && cd access-tokens-quickstart
    ```
 
-1. 使用文本编辑器在项目根目录中创建名为“issue-tokens.py”的文件，并添加程序的结构，包括基本异常处理。 将在以下部分中将此快速入门的所有源代码添加到此文件。
+1. 使用文本编辑器在项目根目录中创建名为 issue-access-tokens.py 的文件，并添加程序的结构，包括基本异常处理。 将在以下部分中将此快速入门的所有源代码添加到此文件。
 
    ```python
    import os
    from azure.communication.administration import CommunicationIdentityClient
 
    try:
-      print('Azure Communication Services - User Access Tokens Quickstart')
+      print('Azure Communication Services - Access Tokens Quickstart')
       # Quickstart code goes here
    except Exception as ex:
       print('Exception:')
@@ -54,8 +54,6 @@ ms.locfileid: "90943490"
 ```console
 pip install azure-communication-administration
 ```
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -72,51 +70,61 @@ connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
-## <a name="create-a-user"></a>创建用户
+## <a name="create-an-identity"></a>创建标识
 
-Azure 通信服务维护轻量级标识目录。 使用 `create_user` 方法可在目录中创建具有唯一 `Id` 的新项。 应维护应用程序的用户与通信服务生成的标识之间的映射（例如，通过将它们存储在应用程序服务器的数据库中）。
+Azure 通信服务维护轻量级标识目录。 使用 `create_user` 方法可在目录中创建具有唯一 `Id` 的新项。 存储收到的标识，并映射到应用程序的用户。 例如，将它们存储在应用程序服务器的数据库中。 稍后颁发访问令牌时需要该标识。
 
 ```python
-user = client.create_user()
-print("\nCreated a user with ID: " + user.identifier + ":")
+identity = client.create_user()
+print("\nCreated an identity with ID: " + identity.identifier + ":")
 ```
 
-## <a name="issue-user-access-tokens"></a>颁发用户访问令牌
+## <a name="issue-access-tokens"></a>颁发访问令牌
 
-使用 `issue_token` 方法为通信服务用户颁发访问令牌。 如果未提供可选的 `user` 参数，将创建一个新用户并将其与令牌一起返回。
+使用 `issue_token` 方法为已存在的通信服务标识颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。 参数 `communicationUser` 的新实例可以基于 Azure 通信服务标识的字符串表示形式构造。
 
 ```python
-# Issue an access token with the "voip" scope for a new user
-token_result = client.issue_token(user, ["voip"])
+# Issue an access token with the "voip" scope for an identity
+token_result = client.issue_token(identity, ["voip"])
 expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
-print("\nIssued a token with 'voip' scope that expires at " + expires_on + ":")
+print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
 ```
 
-用户访问令牌是需要重新颁发的短期凭据，以防止用户遇到服务中断的情况。 `expires_on` 响应属性指示令牌的生存期。
+访问令牌是短期凭据，需要重新颁发。 如果不重新颁发，可能会导致应用程序用户的体验中断。 `expires_on` 响应属性指示访问令牌的生存期。
 
-## <a name="revoke-user-access-tokens"></a>调用用户访问令牌
+## <a name="refresh-access-tokens"></a>刷新访问令牌
 
-在某些情况下，你可能需要显式撤销用户访问令牌，例如，当用户更改用于向服务进行身份验证的密码时。 此功能可通过 Azure 通信服务管理客户端库获取。
+若要刷新访问令牌，请使用 `CommunicationUser` 对象重新颁发：
 
 ```python  
-client.revoke_tokens(user)
-print("\nSuccessfully revoked all tokens for user with ID: " + user.identifier)
+# Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+identity = CommunicationUser(existingIdentity)
+token_result = client.issue_token( identity, ["voip"])
 ```
 
-## <a name="delete-a-user"></a>删除用户
+## <a name="revoke-access-tokens"></a>撤销访问令牌
 
-删除标识将撤销所有活动令牌，并阻止你为标识颁发后续令牌。 它还会删除与用户关联的所有保存的内容。
+在某些情况下可能会显式撤销访问令牌。 例如，当应用程序的用户更改在向服务进行身份验证时所使用的密码时。 `revoke_tokens` 方法使颁发给标识的所有活动访问令牌无效。
+
+```python  
+client.revoke_tokens(identity)
+print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
+```
+
+## <a name="delete-an-identity"></a>删除标识
+
+删除标识将撤销所有活动访问令牌，并阻止你为标识颁发访问令牌。 它还会删除与标识关联的所有保存的内容。
 
 ```python
-client.delete_user(user)
-print("\nDeleted the user with ID: " + user.identifier)
+client.delete_user(identity)
+print("\nDeleted the identity with ID: " + identity.identifier)
 ```
 
 ## <a name="run-the-code"></a>运行代码
 
-在控制台提示符下，导航到包含 issue-token.py 文件的目录，然后执行以下 `python` 命令来运行应用。
+在控制台提示符下，导航到包含 issue-access-token.py 文件的目录，然后执行以下 `python` 命令来运行应用。
 
 ```console
-python ./issue-token.py
+python ./issue-access-token.py
 ```

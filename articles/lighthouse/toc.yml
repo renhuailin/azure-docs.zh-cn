@@ -24,9 +24,6 @@
     - name: Azure 市场中的托管服务产品
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: 建议的安全做法
-      displayName: 'mfa, authentication, secure, group'
-      href: ./concepts/recommended-security-practices.md
     - name: 云解决方案提供商计划注意事项
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
@@ -36,6 +33,13 @@
     - name: Azure Lighthouse 和 Azure 托管应用程序
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md
+    - name: 安全性
+      items:
+        - name: 建议的安全做法
+          displayName: 'mfa, authentication, secure, group'
+          href: ./concepts/recommended-security-practices.md
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 将客户加入 Azure Lighthouse
@@ -50,12 +54,18 @@
     - name: 链接你的合作伙伴 ID
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
+    - name: 更新委派
+      displayName: upgrade
+      href: ./how-to/update-delegation.md
     - name: 删除对委派的访问权限
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
     - name: Azure Arc 集成
       displayName: 'server, kubernetes, hybrid, infrastructure'
       href: ./how-to/manage-hybrid-infrastructure-arc.md
+    - name: Azure Migrate 集成
+      displayName: 'migration, project, on-prem'
+      href: ./how-to/migration-at-scale.md
     - name: Azure Monitor 集成
       items:
         - name: 大规模使用 Azure Monitor 日志
@@ -111,5 +121,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all'
     - name: 产品反馈
       href: 'https://feedback.azure.com/forums/922753'

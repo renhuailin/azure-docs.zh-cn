@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551884"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>教程：Azure Active Directory 与 Trend Micro Web Security (TMWS) 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551884"
 * 让用户使用其 Azure AD 帐户自动登录到 TMWS。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88551884"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * TMWS 支持 SP 发起的 SSO。
-* 配置 TMWS 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 若要了解如何使用 Microsoft Cloud App Security 实施会话控制，请参阅[为任何应用加入和部署条件访问应用控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 TMWS 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 若要了解如何使用 Microsoft Cloud App Security 实施会话控制，请参阅[为任何应用加入和部署条件访问应用控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-tmws-from-the-gallery"></a>从库中添加 TMWS
 
@@ -116,7 +116,7 @@ ms.locfileid: "88551884"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”框中，输入 `B.Simon`。   
-   1. 在“用户名”框中，输入 ***username *@* companydomain *.* extension***。  例如，`B.Simon@contoso.com`。
+   1. 在“用户名”框中，输入“username@companydomain.extension” 。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。  
    1. 选择“创建”  。
 
@@ -230,15 +230,14 @@ ms.locfileid: "88551884"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 Trend Micro Web Security](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 Trend Micro Web Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [如何使用高级可见性和控制保护 Trend Micro Web Security](/cloud-app-security/proxy-intro-aad)

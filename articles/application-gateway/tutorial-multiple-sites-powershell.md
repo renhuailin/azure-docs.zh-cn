@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595832"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360303"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>使用 Azure PowerShell 创建托管多个网站的应用程序网关
 
@@ -127,7 +127,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 >[!NOTE]
 > 通过应用程序网关或 WAF v2 SKU，你还可为每个侦听器配置最多 5 个主机名，并且可在主机名中使用通配符。 要了解详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
->若要通过 Azure PowerShell 在侦听器中使用多个主机名和通配符，则必须使用 `-HostNames` 而不是 `-HostName`。 使用 HostNames 时，可通过逗号分隔值的形式提及最多 5 个主机名。 例如： `-HostNames "*.contoso.com,*.fabrikam.com"`
+>若要通过 Azure PowerShell 在侦听器中使用多个主机名和通配符，则必须使用 `-HostNames` 而不是 `-HostName`。 使用 HostNames 时，可通过逗号分隔值的形式提及最多 5 个主机名。 例如： `-HostNames "*.contoso.com","*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -185,7 +185,7 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
 
-在此示例中，将创建两个虚拟机规模集以支持所创建的两个后端池。 创建的规模集分别名为 *myvmss1* 和 *myvmss2*。 每个规模集包含两个在其上安装了 IIS 的虚拟机实例。 配置 IP 设置时将规模集分配给后端池。
+在此示例中，将创建两个虚拟机规模集以支持所创建的两个后端池。 创建的规模集分别名为 *myvmss1* 和 *myvmss2* 。 每个规模集包含两个在其上安装了 IIS 的虚拟机实例。 配置 IP 设置时将规模集分配给后端池。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

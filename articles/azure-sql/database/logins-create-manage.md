@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 7be78a0c05942aebb9e3154a79035d71f87becd3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334899"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452431"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>向数据库授予对 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 的访问权限
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 本文介绍：
 
-- 用于将 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 配置 (以前的 SQL 数据仓库) 的选项，使用户能够执行管理任务并访问存储在这些数据库中的数据。
+- 用于配置 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的选项，使用户能够执行管理任务并访问存储在这些数据库中的数据。
 - 最初新建服务器后的访问权限和授权配置。
 - 如何在 master 数据库和用户账户中添加登录名和用户帐户，然后为这些帐户授予管理权限。
 - 如何在用户数据库中添加用户帐户（与登录名关联或作为包含的用户帐户）。
@@ -39,7 +39,7 @@ ms.locfileid: "91334899"
 [身份验证](security-overview.md#authentication)是证明用户所声明身份的过程。 某个用户使用用户帐户连接到数据库。
 当用户尝试连接到数据库时，需要提供用户帐户和身份验证信息。 将使用以下两种身份验证方法之一对用户进行身份验证：
 
-- [SQL 身份验证](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
+- [SQL 身份验证](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
 
   使用这种身份验证方法时，用户通过提交用户帐户名和关联的密码来建立连接。 对于与登录名关联的用户帐户，此密码存储在 master 数据库中；或对于没有与登录名关联的用户帐户，此密码存储在包含这一类用户帐户的数据库中。
 - [Azure Active Directory 身份验证](authentication-aad-overview.md)
@@ -51,21 +51,21 @@ ms.locfileid: "91334899"
 - 登录名是 master 数据库中的单个帐户，一个或多个数据库中的用户帐户可以关联到该帐户。 使用登录名时，用户帐户的凭据信息将与该登录名一起存储。
 - 用户帐户是任何数据库中的单个帐户，该帐户可以但不一定要关联到登录名。 使用未关联到登录名的用户帐户时，凭据信息将与该用户帐户一起存储。
 
-访问数据和执行各种操作所需的[授权](security-overview.md#authorization)是使用数据库角色和显式权限进行管理的。 授权是指为用户分配权限，它决定了该用户可以执行哪些操作。 授权是由用户帐户的数据库[角色成员身份](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)和[对象级权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)控制。 作为最佳实践，应向用户授予所需的最低权限。
+访问数据和执行各种操作所需的[授权](security-overview.md#authorization)是使用数据库角色和显式权限进行管理的。 授权是指为用户分配权限，它决定了该用户可以执行哪些操作。 授权是由用户帐户的数据库[角色成员身份](/sql/relational-databases/security/authentication-access/database-level-roles)和[对象级权限](/sql/relational-databases/security/permissions-database-engine)控制。 作为最佳实践，应向用户授予所需的最低权限。
 
 ## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>创建新数据库后的现有登录名和用户帐户
 
 首次部署 Azure SQL 时，需为该登录名指定管理员登录名和关联的密码。 此管理帐户称为“服务器管理员”。在部署期间，将在 master 数据库和用户数据库中进行以下登录名和用户配置：
 
-- 使用指定的登录名创建拥有管理特权的 SQL 登录名。 [登录名](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)是用于登录到 SQL 数据库、SQL 托管实例和 Azure Synapse 的单个用户帐户。
-- 此登录名对所有数据库拥有完全管理权限，充当[服务器级主体](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)。 此登录名具有所有可用权限，且不受限制。 在 SQL 托管实例中，会将此登录名添加到 [sysadmin 固定服务器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)（Azure SQL 数据库中不存在此角色）。
-- 将在每个用户数据库中为此登录名创建名为 `dbo` 的[用户帐户](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users)。 [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) 用户在数据库中拥有所有数据库权限，将映射到 `db_owner` 固定数据库角色。 本文稍后将讨论其他固定数据库角色。
+- 使用指定的登录名创建拥有管理特权的 SQL 登录名。 [登录名](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)是用于登录到 SQL 数据库、SQL 托管实例和 Azure Synapse 的单个用户帐户。
+- 此登录名对所有数据库拥有完全管理权限，充当[服务器级主体](/sql/relational-databases/security/authentication-access/principals-database-engine)。 此登录名具有所有可用权限，且不受限制。 在 SQL 托管实例中，会将此登录名添加到 [sysadmin 固定服务器角色](/sql/relational-databases/security/authentication-access/server-level-roles)（Azure SQL 数据库中不存在此角色）。
+- 将在每个用户数据库中为此登录名创建名为 `dbo` 的[用户帐户](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users)。 [dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) 用户在数据库中拥有所有数据库权限，将映射到 `db_owner` 固定数据库角色。 本文稍后将讨论其他固定数据库角色。
 
 若要确定数据库的管理员帐户，请打开 Azure 门户，然后导航到服务器或托管实例的“属性”选项卡。
 
 ![SQL Server 管理员](./media/logins-create-manage/sql-admins.png)
 
-![SQL Server 管理员](./media/logins-create-manage/sql-admins2.png)
+![突出显示“属性”菜单选项的屏幕截图。](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
 > 创建管理员登录名后，无法对其进行更改。 若要重置服务器管理员的密码，请转到 [Azure 门户](https://portal.azure.com)，单击“SQL Server”，从列表中选择服务器，然后单击“重置密码” 。 若要重置 SQL 托管实例的密码，请转到 Azure 门户，单击该实例，然后单击“重置密码”。 也可以使用 PowerShell 或 Azure CLI。
@@ -84,19 +84,19 @@ ms.locfileid: "91334899"
 - **在 SQL 托管实例中，创建拥有完全管理权限的 SQL 登录名**
 
   - 在 master 数据库中再创建一个 SQL 登录名。
-  - 使用 [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) 语句将登录名添加到 [sysadmin 固定服务器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)。 此登录名拥有完全管理权限。
+  - 使用 [ALTER SERVER ROLE](/sql/t-sql/statements/alter-server-role-transact-sql) 语句将登录名添加到 [sysadmin 固定服务器角色](/sql/relational-databases/security/authentication-access/server-level-roles)。 此登录名拥有完全管理权限。
   - 或者，使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法创建 [Azure AD 登录名](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。
 
 - **在 SQL 数据库中，创建具有有限管理权限的 SQL 登录名**
 
   - 在 master 数据库中再创建一个 SQL 登录名。
   - 在 master 数据库中创建与此新登录名关联的用户帐户。
-  - 在 `master` 数据库中，使用 [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) 语句（对于 Azure Synapse，请使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 语句）将用户帐户添加到 `dbmanager` 和/或 `loginmanager` 角色。
+  - 在 `master` 数据库中，使用 [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) 语句（对于 Azure Synapse，请使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 语句）将用户帐户添加到 `dbmanager` 和/或 `loginmanager` 角色。
 
   > [!NOTE]
   > `dbmanager` 和 `loginmanager` 角色与 SQL 托管实例部署“不”相关。
 
-  Azure SQL 数据库的这些[特殊 master 数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-)的成员有权创建和管理数据库或登录名。 在属于 `dbmanager` 角色的成员的用户创建的数据库中，该成员将映射到 `db_owner` 固定数据库角色，并可以使用 `dbo` 用户帐户登录到该数据库以及对其进行管理。 这些角色在 master 数据库外部没有显式权限。
+  Azure SQL 数据库的这些[特殊 master 数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-)的成员有权创建和管理数据库或登录名。 在属于 `dbmanager` 角色的成员的用户创建的数据库中，该成员将映射到 `db_owner` 固定数据库角色，并可以使用 `dbo` 用户帐户登录到该数据库以及对其进行管理。 这些角色在 master 数据库外部没有显式权限。
 
   > [!IMPORTANT]
   > 无法在 SQL 数据库中创建拥有完全管理权限的其他 SQL 登录名。
@@ -122,10 +122,10 @@ ms.locfileid: "91334899"
 
 有关演示如何创建登录名和用户的示例，请参阅：
 
-- [创建 Azure SQL 数据库的登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [创建 Azure SQL 托管实例的登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [创建 Azure Synapse 的登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
-- [创建用户](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
+- [创建 Azure SQL 数据库的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
+- [创建 Azure SQL 托管实例的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
+- [创建 Azure Synapse 的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [创建用户](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [创建 Azure AD 包含的用户](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 
 > [!TIP]
@@ -137,19 +137,19 @@ ms.locfileid: "91334899"
 
 - 固定数据库角色
 
-  将用户帐户添加到[固定数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)。 有 9 个固定数据库角色，每个角色拥有一组定义的权限。 最常用的固定数据库角色为：db_owner、db_ddladmin、db_datawriter、db_datareader、db_denydatawriter 和 db_denydatareader。      **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 例如，db_datareader 固定数据库角色授予用户对数据库中每个表的读取访问权限，这超出了必要的范畴。
+  将用户帐户添加到[固定数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)。 有 9 个固定数据库角色，每个角色拥有一组定义的权限。 最常用的固定数据库角色为：db_owner、db_ddladmin、db_datawriter、db_datareader、db_denydatawriter 和 db_denydatareader。      **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 例如，db_datareader 固定数据库角色授予用户对数据库中每个表的读取访问权限，这超出了必要的范畴。
 
   - 若要将用户添加到固定数据库角色：
 
-    - 在 Azure SQL 数据库中使用 [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) 语句。 有关示例，请参阅 [ALTER ROLE 示例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql#examples)
-    - 在 Azure Synapse 中，请使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 语句。 有关示例，请参阅 [sp_addrolemember 示例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)。
+    - 在 Azure SQL 数据库中使用 [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) 语句。 有关示例，请参阅 [ALTER ROLE 示例](/sql/t-sql/statements/alter-role-transact-sql#examples)
+    - 在 Azure Synapse 中，请使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 语句。 有关示例，请参阅 [sp_addrolemember 示例](/sql/t-sql/statements/alter-role-transact-sql)。
 
 - **自定义数据库角色**
 
-  使用 [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql) 语句创建自定义数据库角色。 使用自定义角色可以创建自己的用户定义数据库角色，并根据业务需求慎重地向每个角色授予所需的最低权限。 然后，可将用户添加到自定义角色。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
+  使用 [CREATE ROLE](/sql/t-sql/statements/create-role-transact-sql) 语句创建自定义数据库角色。 使用自定义角色可以创建自己的用户定义数据库角色，并根据业务需求慎重地向每个角色授予所需的最低权限。 然后，可将用户添加到自定义角色。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
 - **直接授予权限**
 
-  直接为用户帐户授予[权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)。 可以在 SQL 数据库中单独授予或拒绝 100 多种权限。 这些权限中，许多都是嵌套式的。 例如，针对架构的 `UPDATE` 权限包括针对该架构中每个表的 `UPDATE` 权限。 与大多数权限系统中的情况一样，拒绝某个权限将覆盖对该权限的授予操作。 考虑到权限的嵌套性质和数目，可能需要进行仔细的研究才能设计出适当的权限系统，以便对数据库进行恰当的保护。 一开始可以了解[权限（数据库引擎）](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)中的权限列表，然后查看这些权限的[海报大小的图](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
+  直接为用户帐户授予[权限](/sql/relational-databases/security/permissions-database-engine)。 可以在 SQL 数据库中单独授予或拒绝 100 多种权限。 这些权限中，许多都是嵌套式的。 例如，针对架构的 `UPDATE` 权限包括针对该架构中每个表的 `UPDATE` 权限。 与大多数权限系统中的情况一样，拒绝某个权限将覆盖对该权限的授予操作。 考虑到权限的嵌套性质和数目，可能需要进行仔细的研究才能设计出适当的权限系统，以便对数据库进行恰当的保护。 一开始可以了解[权限（数据库引擎）](/sql/relational-databases/security/permissions-database-engine)中的权限列表，然后查看这些权限的[海报大小的图](/sql/relational-databases/security/media/database-engine-permissions.png)。
 
 ## <a name="using-groups"></a>使用组
 
@@ -164,10 +164,10 @@ ms.locfileid: "91334899"
 
 应该自行熟悉一下下述能够用于限制或提升权限的功能：
 
-- [模拟](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server)和[模块签名](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)可用于安全地暂时提升权限。
-- [行级安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) 可用于限制用户可访问的行。
+- [模拟](/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server)和[模块签名](/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)可用于安全地暂时提升权限。
+- [行级安全性](/sql/relational-databases/security/row-level-security) 可用于限制用户可访问的行。
 - [数据屏蔽](dynamic-data-masking-overview.md)可用于限制敏感数据的公开。
-- [存储过程](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) 可用于限制可对数据库执行的操作。
+- [存储过程](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) 可用于限制可对数据库执行的操作。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708248"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862337"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解释性包通过 Python 解释 ML 模型和预测（预览版）
 
@@ -47,7 +47,7 @@ ms.locfileid: "91708248"
     pip install azureml-interpret
     ```
 
-2. 在本地 Jupyter 笔记本中训练示例模型。
+2. 训练本地 Jupyter Notebook 中的示例模型。
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -242,7 +242,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     ```bash
     pip install azureml-interpret
     ```
-1. 在本地 Jupyter 笔记本中创建训练脚本。 例如，`train_explain.py`。
+1. 在本地 Jupyter Notebook 中创建训练脚本。 例如，`train_explain.py`。
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -273,9 +273,9 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅 [创建和管理 Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md) 。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
+1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅[创建和管理 Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md)。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
 
-1. 下载本地 Jupyter 笔记本中的解释。
+1. 下载本地 Jupyter Notebook 中的说明。
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -296,7 +296,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>可视化效果
 
-下载本地 Jupyter 笔记本中的解释后，可以使用可视化仪表板来了解和解释模型。
+下载本地 Jupyter Notebook 中的说明后，可以使用可视化仪表板来了解和解释模型。
 
 ### <a name="understand-entire-model-behavior-global-explanation"></a>理解整个模型行为（全局解释） 
 
@@ -351,10 +351,10 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
   1. 选择特定的试验可查看该试验中的所有运行。
   1. 选择一个运行，然后选择“解释”选项卡来查看解释可视化仪表板。
 
-   [![试验中的可视化面板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![可视化仪表板本地特征在试验的 AzureML 工作室中的重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * “模型”窗格
-  1. 如果已遵循[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左侧窗格中选择“模型”来查看它。
+  1. 如果已遵循[使用 Azure 机器学习部署模型](./how-to-deploy-and-where.md)中的步骤注册了原始模型，则可以在左侧窗格中选择“模型”来查看它。
   1. 选择一个模型，然后选择“解释”选项卡来查看解释可视化仪表板。
 
 ## <a name="interpretability-at-inference-time"></a>推理时的可解释性
@@ -419,7 +419,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
 1. 遵循以下步骤将映像部署到计算目标：
 
-   1. 如果需要，请遵循[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册原始预测模型。
+   1. 如果需要，请遵循[使用 Azure 机器学习部署模型](./how-to-deploy-and-where.md)中的步骤注册原始预测模型。
 
    1. 创建评分文件。
 
@@ -553,4 +553,3 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 [详细了解模型可解释性](how-to-machine-learning-interpretability.md)
 
 [查看 Azure 机器学习可解释性笔记本示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

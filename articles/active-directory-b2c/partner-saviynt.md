@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259130"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171426"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>有关配置 Saviynt 与 Azure Active Directory B2C 的教程
 
@@ -36,7 +36,7 @@ ms.locfileid: "91259130"
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。 租户已链接到 Azure 订阅。
+- [Azure AD B2C 租户](./tutorial-create-tenant.md)。 租户已链接到 Azure 订阅。
 
 - Saviynt [订阅](https://saviynt.com/contact-us/)
 
@@ -48,7 +48,7 @@ Saviynt 集成包括以下组件：
 
 - [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) –标识调控平台，为用户的生命周期管理和 Azure AD B2C 访问管理提供精细的委派管理。  
 
-- [MICROSOFT GRAPH api](https://docs.microsoft.com/graph/use-the-api) –此 api 提供用于 Saviynt 的接口，用于管理 Azure AD B2C 用户及其在 Azure AD B2C 中的访问权限。
+- [MICROSOFT GRAPH api](/graph/use-the-api) –此 api 提供用于 Saviynt 的接口，用于管理 Azure AD B2C 用户及其在 Azure AD B2C 中的访问权限。
 
 下面的体系结构关系图显示了实现。
 
@@ -69,19 +69,19 @@ Saviynt 集成包括以下组件：
 
 1. 若要创建 Saviynt 帐户，请联系 [Saviynt](https://saviynt.com/contact-us/)
 
-2. 创建委派的管理策略，并为用户分配各种角色的 [委派管理员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-concept-delegation) 。
+2. 创建委派的管理策略，并为用户分配各种角色的 [委派管理员](../active-directory/roles/concept-delegation.md) 。
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>配置 Saviynt Azure AD B2C
 
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>为 Saviynt 创建 Azure AD 应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com/#home)。
+1. 登录 [Azure 门户](https://portal.azure.com/#home)。
 
 2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
 
 3. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
 
-4. 选择**应用注册**"  >  **新注册**"。
+4. 选择 **应用注册**"  >  **新注册**"。
 
 5. 输入应用程序的名称。 例如，Saviynt，然后选择 " **创建**"。
 
@@ -113,7 +113,7 @@ Saviynt 集成包括以下组件：
 以下步骤说明了如何启用 Saviynt 以 Azure AD B2C 中执行用户删除操作。
 
 >[!NOTE]
->[在授予管理角色对服务主体的访问权限之前评估风险。](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+>[在授予管理角色对服务主体的访问权限之前评估风险。](../active-directory/develop/app-objects-and-service-principals.md)
 
 1. 在 Windows 工作站/服务器上安装最新版本的 MSOnline PowerShell 模块。
 
@@ -133,8 +133,8 @@ Add-MsolRoleMember -RoleName "Company Administrator" -RoleMemberType ServicePrin
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
 
-- [创建 web API 应用程序](https://docs.microsoft.com/azure/active-directory-b2c/add-web-api-application)
+- [创建 web API 应用程序](./add-web-api-application.md)

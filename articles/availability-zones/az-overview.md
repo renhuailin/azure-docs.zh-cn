@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773733"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678551"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
@@ -24,10 +24,10 @@ Microsoft Azure 服务可在全球范围内实现云操作的最佳水平。 你
 
 | 术语或概念 | 说明 |
 | --- | --- |
-| region | 在延迟定义的外围中部署的一组数据中心，并通过专用的区域低延迟网络进行连接。 |
+| 区域 | 在延迟定义的外围中部署的一组数据中心，并通过专用的区域低延迟网络进行连接。 |
 | geography | 世界上至少包含一个 Azure 区域的区域。 地理位置定义了一个保持数据驻留和符合性界限的离散市场。 地域允许具有特定数据驻留和符合性要求的客户保持他们的数据和应用程序相邻近。 地域具有容错能力，可通过其与专用的高容量网络基础结构的连接来经受完成区域故障。 |
 | 可用性区域 | 区域中的唯一物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 |
-| 推荐的区域 | 提供最广泛的服务功能的区域，旨在支持可用性区域现在或将来使用。 根据 **建议**在 Azure 门户中指定这些项。 |
+| 推荐的区域 | 提供最广泛的服务功能的区域，旨在支持可用性区域现在或将来使用。 根据 **建议** 在 Azure 门户中指定这些项。 |
 | 备用 (其他) 区域 | 一种区域，它在 "数据驻留" 边界内扩展 Azure 占用量，其中还存在建议的区域。 备用区域有助于优化延迟，并为灾难恢复需要提供另一个区域。 它们不是为了支持可用性区域 (，不过 Azure 会定期评估这些区域，以确定它们是否应该成为推荐的区域) 。 它们在 Azure 门户中指定为 " **其他**"。 |
 | 基础服务 | 一种核心 Azure 服务，该服务在区域公开上市时在所有区域提供。 |
 | 主流服务 | 一项 Azure 服务，该服务在区域/服务的12个月内的所有推荐区域中提供，在备用区域中公开上市或要求驱动。 |
@@ -37,7 +37,7 @@ Microsoft Azure 服务可在全球范围内实现云操作的最佳水平。 你
 
 ## <a name="regions"></a>区域
 
-区域是在延迟定义的外围中部署的一组数据中心，通过专用的区域低延迟网络进行连接。 Azure 可让你灵活地部署需要的应用程序，包括跨多个区域，以提供跨区域复原能力。 有关详细信息，请参阅 [复原支柱概述](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)。
+区域是在延迟定义的外围中部署的一组数据中心，通过专用的区域低延迟网络进行连接。 Azure 可让你灵活地部署需要的应用程序，包括跨多个区域，以提供跨区域复原能力。 有关详细信息，请参阅 [复原支柱概述](/azure/architecture/framework/resiliency/overview)。
 
 ## <a name="availability-zones"></a>可用性区域
 
@@ -61,7 +61,7 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 
 Azure 上跨区域提供 Azure 服务可用性的最佳方法是通过表达在建议区域和备用区域中提供的服务来对其进行说明。
 
-- **推荐的区域** -一种提供范围最广的服务功能并设计为支持可用性区域现在或将来的服务的区域。 根据 **建议**在 Azure 门户中指定这些项。
+- **推荐的区域** -一种提供范围最广的服务功能并设计为支持可用性区域现在或将来的服务的区域。 根据 **建议** 在 Azure 门户中指定这些项。
 - **备用 (其他) 区域** -一个区域，该区域在一个推荐的区域也存在的数据派驻边界内扩展 Azure 占用空间。 备用区域有助于优化延迟，并为灾难恢复需要提供另一个区域。 它们不是为了支持可用性区域 (，不过 Azure 会定期评估这些区域，以确定它们是否应该成为推荐的区域) 。 它们在 Azure 门户中指定为 " **其他**"。
 
 ### <a name="comparing-region-types"></a>比较区域类型
@@ -97,12 +97,12 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | Azure Cosmos DB | 自动化 | Azure 蓝图 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory 域服务 | Azure Database for MariaDB |
 > | Azure ExpressRoute | Azure Bastion | Azure 专用 HSM |
-> | Azure SQL 数据库 | 用于 Redis 的 Azure 缓存 | Azure Dev Spaces |
+> | Azure SQL Database | 用于 Redis 的 Azure 缓存 | Azure Dev Spaces |
 > | 云服务 | Azure 认知搜索 | Azure 数字孪生 |
-> | 云服务： Av2 系列 | Azure 数据资源管理器 | Azure 实验室服务 |
-> | 云服务： Dv2 系列 | Azure Data Share | Azure NetApp 文件 |
-> | 云服务： Dv3 系列 | Azure Database for MySQL | Azure 量程 |
-> | 云服务： Ev3 系列 | Azure Database for PostgreSQL | Azure 春季云服务 |
+> | 云服务： Av2-Series | Azure 数据资源管理器 | Azure 实验室服务 |
+> | 云服务： Dv2-Series | Azure Data Share | Azure NetApp 文件 |
+> | 云服务： Dv3-Series | Azure Database for MySQL | Azure 量程 |
+> | 云服务： Ev3-Series | Azure Database for PostgreSQL | Azure 春季云服务 |
 > | 云服务：实例级别 Ip | Azure 数据库迁移服务 | Azure 时序见解 |
 > | 云服务：保留 IP | Azure Databricks | Azure VMware Solution by CloudSimple |
 > | 磁盘存储 | Azure DDoS 防护 | 云服务： G 系列 |
@@ -113,47 +113,47 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | Service Fabric | Azure HPC 缓存 | 数据目录 |
 > | 虚拟机规模集 | Azure IoT 中心 | 数据工厂：数据工厂 V1 |
 > | 虚拟机 | Azure Kubernetes 服务 (AKS) | Data Lake Analytics |
-> | 虚拟机： Av2 系列 | Azure 机器学习 | Azure 机器学习工作室（经典）|
-> | 虚拟机： Bs.1770 系列 | Azure 专用链接 | Microsoft 基因组学 |
-> | 虚拟机： DSv2 系列 | Azure Red Hat OpenShift | 远程渲染 |
-> | 虚拟机： DSv3 系列 | Azure SignalR 服务 | 空间定位点 |
-> | 虚拟机： Dv2 系列 | Azure Site Recovery | StorSimple |
-> | 虚拟机： Dv3 系列 | Azure Stack Hub | 视频索引器 |
-> | 虚拟机： ESv3 系列 | Azure 流分析 | 虚拟机： DASv4 系列 |
-> | 虚拟机： Ev3 系列 | Azure Synapse Analytics | 虚拟机： DAv4 系列 |
+> | 虚拟机： Av2-Series | Azure 机器学习 | Azure 机器学习工作室（经典）|
+> | 虚拟机： Bs-Series | Azure 专用链接 | Microsoft 基因组学 |
+> | 虚拟机： DSv2-Series | Azure Red Hat OpenShift | 远程渲染 |
+> | 虚拟机： DSv3-Series | Azure SignalR 服务 | 空间定位点 |
+> | 虚拟机： Dv2-Series | Azure Site Recovery | StorSimple |
+> | 虚拟机： Dv3-Series | Azure Stack Hub | 视频索引器 |
+> | 虚拟机： ESv3-Series | Azure 流分析 | 虚拟机： DASv4-Series |
+> | 虚拟机： Ev3-Series | Azure Synapse Analytics | 虚拟机： DAv4-Series |
 > | 虚拟机： F 系列 | Batch | 虚拟机： DCsv2 系列 |
-> | 虚拟机： FS 系列 | 云服务： M 系列 | 虚拟机： EASv4 系列 |
-> | 虚拟机：实例级别 Ip | 认知服务 | 虚拟机： EAv4 系列 |
+> | 虚拟机： FS-Series | 云服务： M 系列 | 虚拟机： EASv4-Series |
+> | 虚拟机：实例级别 Ip | 认知服务 | 虚拟机： EAv4-Series |
 > | 虚拟机：保留 IP | 认知服务：计算机视觉 | 虚拟机： G 系列 |
-> | 虚拟网络 | 认知服务：内容审查器 | 虚拟机： GS 系列 |
-> | VPN 网关 | 认知服务：面部 | 虚拟机： HBv1 系列 |
-> |  | 认知服务：窗体识别器 | 虚拟机： HBv2 系列 |
-> |  | 认知服务：语言理解 | 虚拟机： HCv1 系列 |
+> | 虚拟网络 | 认知服务：内容审查器 | 虚拟机： GS-Series |
+> | VPN 网关 | 认知服务：面部 | 虚拟机： HBv1-Series |
+> |  | 认知服务：窗体识别器 | 虚拟机： HBv2-Series |
+> |  | 认知服务：语言理解 | 虚拟机： HCv1-Series |
 > |  | 认知服务：QnA Maker | 虚拟机： H 系列 |
-> |  | 认知服务：语音服务 | 虚拟机： LS 系列 |
-> |  | 容器实例 | 虚拟机： LSv2 系列 |
-> |  | 容器注册表 | 虚拟机： Mv2 系列 |
-> |  | 数据工厂 | 虚拟机： NC 系列 |
-> |  | 事件网格 | 虚拟机： NCv2 系列 |
-> |  | HDInsight | 虚拟机： NCv3 系列 |
-> |  | 逻辑应用 | 虚拟机： NDs 系列 |
-> |  | 媒体服务 | 虚拟机： NDv2 系列 |
-> |  | 网络观察程序 | 虚拟机： NV 系列 |
-> |  | 通知中心 | 虚拟机： NVv3 系列 |
-> |  | Power BI Embedded | 虚拟机： NVv4 系列 |
+> |  | 认知服务：语音服务 | 虚拟机： LS-Series |
+> |  | 容器实例 | 虚拟机： LSv2-Series |
+> |  | 容器注册表 | 虚拟机： Mv2-Series |
+> |  | 数据工厂 | 虚拟机： NC-Series |
+> |  | 事件网格 | 虚拟机： NCv2-Series |
+> |  | HDInsight | 虚拟机： NCv3-Series |
+> |  | 逻辑应用 | 虚拟机： NDs-Series |
+> |  | 媒体服务 | 虚拟机： NDv2-Series |
+> |  | 网络观察程序 | 虚拟机： NV-Series |
+> |  | 通知中心 | 虚拟机： NVv3-Series |
+> |  | Power BI Embedded | 虚拟机： NVv4-Series |
 > |  | 高级 Blob 存储 | 虚拟机： Azure SAP HANA 大型实例 |
-> |  | 高级文件存储 | Visual Studio 应用中心 |
+> |  | 高级文件存储 | Visual Studio App Center |
 > |  | 存储：存档存储 |  |
 > |  | 超级磁盘存储 |  |
-> |  | 虚拟机： Ddsv4 系列 |  |
-> |  | 虚拟机： Ddv4 系列 |  |
-> |  | 虚拟机： Dsv4 系列 |  |
-> |  | 虚拟机： Dv4 系列 |  |
-> |  | 虚拟机： Edsv4 系列 |  |
-> |  | 虚拟机： Edv4 系列 |  |
-> |  | 虚拟机： Esv4 系列 |  |
-> |  | 虚拟机： Ev4 系列 |  |
-> |  | 虚拟机： Fsv2 系列 |  |
+> |  | 虚拟机： Ddsv4-Series |  |
+> |  | 虚拟机： Ddv4-Series |  |
+> |  | 虚拟机： Dsv4-Series |  |
+> |  | 虚拟机： Dv4-Series |  |
+> |  | 虚拟机： Edsv4-Series |  |
+> |  | 虚拟机： Edv4-Series |  |
+> |  | 虚拟机： Esv4-Series |  |
+> |  | 虚拟机： Ev4-Series |  |
+> |  | 虚拟机： Fsv2-Series |  |
 > |  | 虚拟机： M 系列 |  |
 > |  | 虚拟 WAN |  |
 
@@ -170,10 +170,10 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 - [创建虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)
 - [使用 PowerShell 添加托管磁盘](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [创建区域冗余的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
-- [SQL 数据库](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
+- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [区域冗余存储](../storage/common/storage-redundancy.md)
+- [SQL 数据库常规用途层](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [创建区域冗余的虚拟网关](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
@@ -181,6 +181,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 - [入门用于 Redis 的 Azure 缓存可用性区域](https://aka.ms/redis/az/getstarted)
 - [创建 Azure Active Directory 域服务实例](../active-directory-domain-services/tutorial-create-instance.md)
 - [使用可用性区域 (AKS) 群集创建 Azure Kubernetes 服务](../aks/availability-zones.md)
+- [启用 Azure 容器注册表中的区域冗余](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>后续步骤
 

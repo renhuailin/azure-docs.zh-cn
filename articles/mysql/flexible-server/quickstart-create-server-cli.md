@@ -1,23 +1,23 @@
 ---
 title: 快速入门：创建服务器 - Azure CLI - Azure Database for MySQL 灵活服务器
 description: 本快速入门介绍如何使用 Azure CLI 在 Azure 资源组中创建 Azure Database for MySQL 灵活服务器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 7a5bab13dbaa5715aa8dd34e41aba34ce62557a2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 65cc3d2fdcbdea934e80a5f0012ca4f3da157ca3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91329522"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843428"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for MySQL 灵活服务器
 
-本快速入门教程介绍如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 在大约 5 分钟内创建 Azure Database for MySQL 灵活服务器。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+本快速入门教程介绍如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](/cli/azure/get-started-with-azure-cli) 在大约 5 分钟内创建 Azure Database for MySQL 灵活服务器。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 > [!IMPORTANT] 
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
@@ -28,17 +28,17 @@ ms.locfileid: "91329522"
 
 若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以在单独的浏览器标签页中通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 打开 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后选择 Enter 来运行它。  
 
-如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="prerequisites"></a>先决条件
 
-你将需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登录到你的帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
+你将需要使用 [az login](/cli/azure/reference-index#az-login) 命令登录到你的帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
+使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -46,13 +46,13 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>创建灵活服务器
 
-使用 `az group create` 命令创建 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)，然后在此资源组中创建 MySQL 灵活服务器。 应提供唯一名称。 以下示例在 `eastus2` 位置创建名为 `myresourcegroup` 的资源组。
+使用 `az group create` 命令创建 [Azure 资源组](../../azure-resource-manager/management/overview.md)，然后在此资源组中创建 MySQL 灵活服务器。 应提供唯一名称。 以下示例在 `eastus2` 位置创建名为 `myresourcegroup` 的资源组。
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus2
 ```
 
-使用 `az mysql flexible-server create` 命令创建灵活服务器。 一个服务器可以包含多个数据库。 以下命令使用服务默认值和 Azure CLI [本地上下文](https://docs.microsoft.com/cli/azure/local-context)中的值创建服务器： 
+使用 `az mysql flexible-server create` 命令创建灵活服务器。 一个服务器可以包含多个数据库。 以下命令使用服务默认值和 Azure CLI [本地上下文](/cli/azure/local-context)中的值创建服务器： 
 
 ```azurecli
 az mysql flexible-server create

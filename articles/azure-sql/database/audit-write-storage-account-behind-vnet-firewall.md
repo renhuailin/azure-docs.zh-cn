@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444540"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348247"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>将审核内容写入到 VNet 和防火墙后面的存储帐户
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "91444540"
 > [!div class="checklist"]
 >
 > * 一个常规用途 v2 存储帐户。 如果你有常规用途 v1 或 Blob 存储帐户，请[升级到常规用途 v2 存储帐户](../../storage/common/storage-account-upgrade.md)。 有关详细信息，请参阅[存储帐户的类型](../../storage/common/storage-account-overview.md#types-of-storage-accounts)。
-> * 存储帐户必须位于[逻辑 SQL 服务器](logical-servers.md)所在的同一订阅和位置。
+> * 存储帐户必须位于同一订阅上，并与 [逻辑 SQL Server](logical-servers.md)位于同一位置。
 > * Azure 存储帐户需要 `Allow trusted Microsoft services to access this storage account`。 请在存储帐户的“防火墙和虚拟网络”中启用此设置。
 > * 你必须对所选存储帐户拥有 `Microsoft.Authorization/roleAssignments/write` 权限。 有关详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91444540"
 |:-----|:-----|
 |`<subscriptionId>`| Azure 订阅 ID|
 |`<resource group>`| 资源组|
-|`<logical SQL server>`| 服务器名称|
+|`<logical SQL Server>`| 服务器名称|
 |`<administrator login>`| 管理员帐户 |
 |`<complex password>`| 管理员帐户的复杂密码|
 
@@ -93,7 +93,7 @@ ms.locfileid: "91444540"
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
 
-   [**REST API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)：
+   [**REST API**](/rest/api/sql/servers/createorupdate)：
 
    示例请求
 
@@ -114,6 +114,7 @@ ms.locfileid: "91444540"
      "administratorLoginPassword": "<complex password>",
      "version": "12.0",
      "state": "Ready"
+     }
    }
    ```
 
@@ -153,7 +154,7 @@ ms.locfileid: "91444540"
 > [!IMPORTANT]
 > 若要使用虚拟网络和防火墙后面的存储帐户，需将 isStorageBehindVnet 参数设置为 true
 
-- [部署启用了审核的 Azure SQL Server，以将审核日志写入 Blob 存储](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [部署启用了审核的 Azure SQL Server 以将审核日志写入 blob 存储](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
 
 > [!NOTE]
 > 链接示例位于外部公共存储库中，按 "原样" 提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。

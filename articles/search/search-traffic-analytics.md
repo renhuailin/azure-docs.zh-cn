@@ -7,20 +7,20 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eddab12e8ecf2e4757998bbd1e6e07c4c4d85f3c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333726"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573856"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>收集遥测数据以用于分析搜索流量
 
 搜索流量分析是一种用于收集遥测数据的模式，它收集有关用户与 Azure 认知搜索应用程序之间的交互（例如用户发起的单击事件和键盘输入）的遥测数据。 使用此信息，你可以确定搜索解决方案的有效性，包括热门搜索词、点击率以及哪些查询输入产生了零个结果。
 
-此模式依赖于 [Application Insights](../azure-monitor/app/app-insights-overview.md)（[Azure Monitor](../azure-monitor/index.yml) 的一项功能）来收集用户数据。 你还需要向客户端代码中添加检测机制，如本文中所述。 最后，你将需要一个报告机制来分析数据。 建议使用 Power BI，但你可以使用应用程序仪表板或可连接到 Application Insights 的任何工具。
+此模式依赖于 [Application Insights](../azure-monitor/app/app-insights-overview.md)（[Azure Monitor](../azure-monitor/index.yml) 的一项功能）来收集用户数据。 你还需要向客户端代码中添加检测机制，如本文中所述。 最后，你将需要一个报告机制来分析数据。 建议 Power BI，但你可以使用应用程序仪表板或连接到 Application Insights 的任何工具。
 
 > [!NOTE]
 > 本文中所述的模式适用于你添加到客户端的代码生成的高级方案和点击流数据。 相比之下，服务日志易于设置，提供各种指标，且无需编写任何代码即可在门户中操作。 建议对所有方案启用日志记录。 有关详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
@@ -29,7 +29,7 @@ ms.locfileid: "91333726"
 
 若要为搜索流量分析提供有用的指标，必须记录搜索应用程序用户发出的一些信号。 这些信号表示用户感兴趣的内容以及他们认为相关的内容。 对于搜索流量分析，这些信号包括：
 
-+ 用户生成的搜索事件：只有用户发起的搜索查询才是需要关注的。 用于填充 Facet、附加内容或任何内部信息的搜索查询都不重要，它们会扭曲结果并造成结果有偏差。
++ 用户生成的搜索事件：只有用户发起的搜索查询才是需要关注的。 其他搜索请求（如用于填充分面或检索内部信息的请求）并不重要。 请确保只检测用户启动的事件，以避免结果中出现扭曲或偏差。
 
 + 用户生成的单击事件：在搜索结果页上，单击事件通常意味着某个文档是特定搜索查询的相关结果。
 
@@ -37,7 +37,7 @@ ms.locfileid: "91333726"
 
 ## <a name="add-search-traffic-analytics"></a>添加搜索流量分析
 
-在 Azure 认知搜索服务的[门户](https://portal.azure.com)页中，“搜索流量分析”页面包含一个用于遵循此遥测模式的速查表。 在此页中，可以选择或创建一个 Application Insights 资源，获取检测密钥，复制可以根据你的解决方案改编的代码片段，并下载基于模式中反映的架构生成的 Power BI 报表。
+在 Azure 认知搜索服务的 [门户](https://portal.azure.com) 页中，打开 "搜索流量分析" 页，访问遵循此遥测模式的便笺。 在此页中，可以选择或创建一个 Application Insights 资源，获取检测密钥，复制可以根据你的解决方案改编的代码片段，并下载基于模式中反映的架构生成的 Power BI 报表。
 
 ![门户中的“搜索流量分析”页](media/search-traffic-analytics/azuresearch-trafficanalytics.png "门户中的“搜索流量分析”页")
 
@@ -71,7 +71,7 @@ ms.locfileid: "91333726"
 
 **使用 C#**
 
-对于 C#，如果项目是 ASP.NET，则可以在应用程序配置（例如 appsettings.json）中找到 InstrumentationKey。 如果你不确定密钥的位置，请再次参考注册说明。
+对于 c #，应在应用程序配置中定义 **InstrumentationKey** ，例如，如果你的项目为 ASP.NET，则 appsettings.js。 如果你不确定密钥的位置，请再次参考注册说明。
 
 ```csharp
 private static TelemetryClient _telemetryClient;
@@ -98,9 +98,26 @@ window.appInsights=appInsights;
 
 为了将搜索请求与单击相关联，必须具有一个将这两个不同事件关联起来的相关性 ID。 使用 HTTP 标头请求搜索 ID 时，Azure 认知搜索将提供该 ID。
 
-使用搜索 ID 可将 Azure 认知搜索为请求本身发出的指标关联到在 Application Insights 中记录的自定义指标。  
+使用搜索 ID 可将 Azure 认知搜索为请求本身发出的指标关联到在 Application Insights 中记录的自定义指标。
 
-**使用 C#**
+**使用 c # (新的 v11 SDK)**
+
+```csharp
+// This sample uses the .NET SDK https://www.nuget.org/packages/Azure.Search.Documents
+
+var client = new SearchClient(<SearchServiceName>, <IndexName>, new AzureKeyCredentials(<QueryKey>)
+
+// Use HTTP headers so that you can get the search ID from the response
+var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
+var response = await client.searchasync(searchText: searchText, searchOptions: options, customHeaders: headers);
+string searchId = string.Empty;
+if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues))
+{
+    searchId = headerValues.FirstOrDefault();
+}
+```
+
+**使用 c # (较旧的 v10 SDK)**
 
 ```csharp
 // This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search

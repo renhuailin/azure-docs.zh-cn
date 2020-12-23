@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 27425717f6d96953326edde621966530d240c015
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81418977"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632356"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
 
@@ -42,7 +42,7 @@ ms.locfileid: "81418977"
 
 ## <a name="prerequisites"></a>先决条件
 
-  - **Azure Databricks 工作区**。 [创建 Databricks 工作区](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)或使用现有的 Databricks 工作区。 在 Azure Databricks 工作区中创建 Python Notebook。 然后使用 Azure 数据工厂执行 Notebook 并向其传递参数。
+  - **Azure Databricks 工作区** 。 [创建 Databricks 工作区](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)或使用现有的 Databricks 工作区。 在 Azure Databricks 工作区中创建 Python Notebook。 然后使用 Azure 数据工厂执行 Notebook 并向其传递参数。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -54,7 +54,7 @@ ms.locfileid: "81418977"
 
 1.  在“新建数据工厂”  窗格的“名称”下输入 **ADFTutorialDataFactory**  。
 
-    Azure 数据工厂的名称必须 *全局唯一*。 如果看到以下错误，请更改数据工厂的名称。 （例如，使用“\<yourname\>ADFTutorialDataFactory”）。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](https://docs.microsoft.com/azure/data-factory/naming-rules)一文。
+    Azure 数据工厂的名称必须 *全局唯一* 。 如果看到以下错误，请更改数据工厂的名称。 （例如，使用“\<yourname\>ADFTutorialDataFactory”）。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](./naming-rules.md)一文。
 
     ![为新数据工厂提供一个名称](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "81418977"
     
     - 选择“新建”，并输入资源组的名称。 
 
-    本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+    本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
 1.  对于“版本”，选择“V2”。  
 
@@ -100,9 +100,9 @@ ms.locfileid: "81418977"
 
 1.  在“新建链接服务”  窗口中完成以下步骤：
     
-    1.  对于“名称”，请输入 ***AzureDatabricks\_LinkedService*** 
+    1.  对于“名称”，请输入“AzureDatabricks\_LinkedService”_
     
-    1.  选择你将在其中运行 notebook 的相应 **Databricks 工作区**
+    1.  选择你将在其中运行笔记本的相应 _Databricks* 工作区
 
     1.  对于“选择群集”  ，请选择“新建作业群集” 
     
@@ -114,7 +114,7 @@ ms.locfileid: "81418977"
 
     1.  对于“群集节点类型”  ，请在本教程的“常规用途(HDD)”  类别下选择“Standard\_D3\_v2”  。 
     
-    1.  对于“辅助角色”  ，输入 **2**。
+    1.  对于“辅助角色”  ，输入 **2** 。
     
     1.  选择“完成” 
 
@@ -126,7 +126,7 @@ ms.locfileid: "81418977"
 
     ![用于创建新管道的按钮](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
-1.  创建在**管道**中使用的**参数**。 稍后请将此参数传递给 Databricks Notebook 活动。 在空管道中单击“参数”选项卡，然后单击“新建”并将其命名为 '**name**'。  
+1.  创建在 **管道** 中使用的 **参数** 。 稍后请将此参数传递给 Databricks Notebook 活动。 在空管道中单击“参数”选项卡，然后单击“新建”并将其命名为 ' **name** '。  
 
     ![新建参数](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image10.png)
 
@@ -140,15 +140,15 @@ ms.locfileid: "81418977"
 
     a. 切换到 **Azure Databricks** 选项卡。
 
-    b. 选择 **myAzureDatabricks\_LinkedService**（在上一过程中创建）。
+    b. 选择 **myAzureDatabricks\_LinkedService** （在上一过程中创建）。
 
     c. 切换到“设置”  选项卡
 
-    c. 浏览以选择 Databricks **Notebook 路径**。 让我们在此处创建一个 Notebook 并指定路径。 可以通过后续数个步骤获取 Notebook 路径。
+    c. 浏览以选择 Databricks **Notebook 路径** 。 让我们在此处创建一个 Notebook 并指定路径。 可以通过后续数个步骤获取 Notebook 路径。
 
        1. 启动 Azure Databricks 工作区
 
-       1. 在工作区中创建**新文件夹**，将其称之为 **adftutorial**。
+       1. 在工作区中创建 **新文件夹** ，将其称之为 **adftutorial** 。
 
           ![创建新文件夹](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 

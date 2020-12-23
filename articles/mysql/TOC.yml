@@ -1,4 +1,4 @@
-- name: Azure DB for MySQL 文档
+- name: 用于 MySQL 的 Azure 数据库文档
   href: index.yml
 - name: 概述
   items:
@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: 分享的文档
   items:
+    - name: 数据库部署
+      items:
+        - name: GitHub 操作
+          href: quickstart-mysql-github-actions.md
     - name: 迁移
       items:
         - name: 通过 mysqldump 或 phpmyadmin 迁移数据
@@ -29,6 +33,9 @@
     - name: 减轻数据库损坏的影响
       href: how-to-fix-corrupt-database.md
       displayName: corrupt data
+    - name: 版本控制策略
+      href: concepts-version-policy.md
+      displayName: version policy
 - name: 单台服务器
   expanded: true
   items:
@@ -100,10 +107,10 @@
         - name: 使用 MySQL 构建 PHP Web 应用
           items:
             - name: 将 Wordpress 与 MySQL 配合使用创建多容器应用
-              href: ../app-service/containers/tutorial-multi-container-app.md
+              href: ../app-service/tutorial-multi-container-app.md
               maintainContext: true
             - name: 将 PHP 与 MySQL 配合使用
-              href: ../app-service/app-service-web-tutorial-php-mysql.md
+              href: ../app-service/tutorial-php-mysql-app.md
               maintainContext: true
     - name: 示例
       items:
@@ -111,8 +118,6 @@
           href: sample-scripts-azure-cli.md
         - name: Java 连接池
           href: sample-scripts-java-connection-pooling.md
-        - name: Azure Policy 内置策略定义
-          href: ./policy-samples.md
     - name: 概念
       items:
         - name: 服务器
@@ -121,6 +126,8 @@
           href: concepts-supported-versions.md
         - name: 限制
           href: concepts-limits.md
+        - name: 操作最佳实践
+          href: concept-operation-excellence-best-practices.md
         - name: 定价层
           items:
             - name: 定价层
@@ -151,8 +158,13 @@
               href: concepts-azure-ad-authentication.md
             - name: 基础结构双重加密
               href: concepts-infrastructure-double-encryption.md
+            - name: Azure Policy 的安全控件
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: 安全基线
               href: security-baseline.md
+        - name: 计划内维护
+          href: concepts-planned-maintenance-notification.md
         - name: 业务连续性
           items:
             - name: 业务连续性简介
@@ -187,6 +199,10 @@
             - name: 性能建议
               href: concepts-performance-recommendations.md
               displayName: recommendation
+            - name: 监视最佳做法
+              href: concept-monitoring-best-practices.md
+            - name: 性能最佳做法
+              href: concept-performance-best-practices.md
         - name: 应用程序开发
           items:
             - name: 应用程序开发概述
@@ -245,6 +261,9 @@
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore server, backup, geo-restore powershell'
+            - name: 恢复已删除的服务器
+              href: howto-restore-dropped-server.md
+              displayName: 'restore server,dropped, recover'
         - name: 连接应用程序
           items:
             - name: 配置 SSL
@@ -277,6 +296,10 @@
           items:
             - name: 停止启动 MySQL 服务器
               href: how-to-stop-start-server.md
+        - name: 主版本升级
+          items:
+            - name: 主版本升级
+              href: how-to-major-version-upgrade.md
         - name: 自动增长存储
           items:
             - name: Azure 门户
@@ -323,20 +346,26 @@
             - name: 创建只读副本 - Azure PowerShell
               href: howto-read-replicas-powershell.md
               displayName: 'data-in replication, replica, failover'
-            - name: 故障排除
-              items:
-                - name: 排查连接错误
-                  href: howto-troubleshoot-common-connection-issues.md
-                  displayName: 'debug, connection issues, connectivity, cannot connect'
-                - name: 查询性能故障排除
-                  href: howto-troubleshoot-query-performance.md
-                  displayName: 'debug, performance issues, query performance'
-                - name: 如何使用 sys 架构中的视图
-                  href: howto-troubleshoot-sys-schema.md
-                  displayName: 'sys schema, views'
-                - name: 排查数据加密问题
-                  href: howto-data-encryption-troubleshoot.md
-                  displayName: 'encryption, security'
+        - name: 疑难解答
+          items:
+            - name: 排查连接错误
+              href: howto-troubleshoot-common-connection-issues.md
+              displayName: 'debug, connection issues, connectivity, cannot connect'
+            - name: 解决常见问题
+              href: howto-troubleshoot-common-errors.md
+              displayName: 'SUPER privilege, DBA role, Access is denied'
+            - name: 查询性能故障排除
+              href: howto-troubleshoot-query-performance.md
+              displayName: 'debug, performance issues, query performance'
+            - name: 如何使用 sys 架构中的视图
+              href: howto-troubleshoot-sys-schema.md
+              displayName: 'sys schema, views'
+            - name: 排查数据加密问题
+              href: howto-data-encryption-troubleshoot.md
+              displayName: 'encryption, security'
+            - name: 排查复制延迟问题
+              href: howto-troubleshoot-replication-latency.md
+              displayName: 'replication, latency, monitor'
         - name: 高级威胁防护
           items:
             - name: Azure 门户
@@ -414,6 +443,7 @@
             - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM 模板
+              displayName: Resource Manager
               href: flexible-server/quickstart-create-arm-template.md
         - name: 连接和查询
           items:
@@ -425,6 +455,8 @@
               href: flexible-server/connect-python.md
     - name: 教程
       items:
+        - name: Azure Kubernetes 上的 WordPress
+          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
         - name: 通过数据库生成 PHP (Laravel) 应用
           href: flexible-server/tutorial-php-database-app.md
         - name: 与专用 Web 应用连接
@@ -454,12 +486,18 @@
               href: flexible-server/concepts-high-availability.md
         - name: 监视和日志
           items:
+            - name: 服务器参数
+              href: flexible-server/concepts-server-parameters.md
             - name: 慢查询日志
               href: flexible-server/concepts-slow-query-logs.md
             - name: 审核日志
               href: flexible-server/concepts-audit-logs.md
             - name: 指标
               href: flexible-server/concepts-monitoring.md
+        - name: 复制
+          items:
+            - name: 只读副本
+              href: flexible-server/concepts-read-replicas.md
     - name: 操作指南
       items:
         - name: 管理服务器
@@ -502,6 +540,14 @@
               items:
                 - name: 使用 TLS/SSL 连接
                   href: flexible-server/how-to-connect-tls-ssl.md
+        - name: 配置服务器参数
+          items:
+            - name: Azure 门户
+              href: flexible-server/how-to-configure-server-parameters-portal.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: flexible-server/how-to-configure-server-parameters-cli.md
+              displayName: 'server parameters, cli'
         - name: 监视和日志
           items:
             - name: 针对指标创建警报
@@ -514,6 +560,16 @@
               items:
                 - name: Azure 门户
                   href: flexible-server/how-to-configure-audit-logs-portal.md
+        - name: 重新启动服务器
+          items:
+            - name: Azure 门户
+              href: flexible-server/how-to-restart-server-portal.md
+        - name: 复制
+          items:
+            - name: 创建只读副本 Azure 门户
+              href: flexible-server/how-to-read-replicas-portal.md
+            - name: 创建只读副本 Azure CLI
+              href: flexible-server/how-to-read-replicas-cli.md
         - name: 故障排除
           items:
             - name: 连接错误
@@ -528,6 +584,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 管理存储过程
       href: reference-stored-procedures.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 部署模板
@@ -537,7 +596,7 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mysql.html'
+      href: /answers/topics/azure-database-mysql.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: 视频

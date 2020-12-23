@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c60cecb9d6bfeeefc0569a1a57185d13f0c6442f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203378"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953111"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
 
@@ -39,9 +39,9 @@ ms.locfileid: "85203378"
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅 [AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) 架构。
+创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅 [AlternativeSecurityId](/graph/api/resources/alternativesecurityid) 架构。
 
-| Item | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | key | 字符串 | 用于指定社交标识提供者所用唯一用户标识符的 ClaimType。 |
 | InputClaim | identityProvider | 字符串 | 用于指定社交帐户标识提供者名称（例如 facebook.com）的 ClaimType。 |
@@ -73,7 +73,7 @@ ms.locfileid: "85203378"
 
 将 `AlternativeSecurityId` 添加到 `alternativeSecurityIdCollection` 声明。
 
-| Item | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | string | 要添加到输出声明的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 声明转换使用的 ClaimTypes（如果在策略中可用）。 如果已提供，则声明转换将在集合末尾添加 `item`。 |
@@ -110,7 +110,7 @@ ms.locfileid: "85203378"
 
 在新的 **stringCollection** 声明中返回 **alternativeSecurityIdCollection** 声明中的颁发者列表。
 
-| Item | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | 用于获取标识提供者（颁发者）列表的 ClaimType。 |
 | OutputClaim | identityProvidersCollection | stringCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 与 alternativeSecurityIdCollection 输入声明关联的标识提供者列表 |
@@ -137,7 +137,7 @@ ms.locfileid: "85203378"
 
 从 **alternativeSecurityIdCollection** 声明中删除 **AlternativeSecurityId**。
 
-| Item | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | identityProvider | 字符串 | 包含要从集合中删除的标识提供者名称的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 声明转换使用的 ClaimTypes。 声明转换从集合中删除 identityProvider。 |

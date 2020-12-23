@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 300c4bcdb948665b2cdf4ce0eb429499208660b1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970740"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043374"
 ---
 # <a name="availability-alerts"></a>可用性警报
 
@@ -28,11 +28,11 @@ ms.locfileid: "90970740"
 
 1. 保存可用性测试后，在详细信息选项卡上单击你刚才所做的测试旁边的省略号。 单击“编辑警报”。
 
-   ![保存后编辑](./media/availability-alerts/edit-alert.png)
+   ![屏幕截图显示从菜单选择的编辑警报。](./media/availability-alerts/edit-alert.png)
 
 2. 设置所需的严重性级别、规则说明，最重要的是设置具有要用于此警报规则的通知首选项的操作组。
 
-   ![保存后编辑](./media/availability-alerts/set-action-group.png)
+   ![屏幕截图显示 "规则管理" 页，可以在其中编辑规则。](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
 > 通过这种体验创建的可用性警报是基于状态的。 这意味着，当满足警报条件时，如果站点被检测为不可用，会生成一个警报。 如果在下一次评估警报条件时站点仍处于关闭状态，则不会产生新警报。 因此，如果站点关闭了一个小时且已设置电子邮件警报，则你只会在该站点关闭时收到一封电子邮件，然后在该站点重新开放时再收到一封电子邮件。 你不会连续收到提醒该站点仍然不可用的警报。

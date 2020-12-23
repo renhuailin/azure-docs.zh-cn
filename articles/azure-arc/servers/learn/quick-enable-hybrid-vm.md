@@ -2,13 +2,13 @@
 title: 使用启用了 Azure Arc 的服务器连接混合计算机
 description: 了解如何使用启用了 Azure Arc 的服务器连接和注册混合计算机。
 ms.topic: quickstart
-ms.date: 09/23/2020
-ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/12/2020
+ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327878"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576746"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>快速入门：使用启用了 Azure Arc 的服务器连接混合计算机
 
@@ -42,34 +42,40 @@ ms.locfileid: "91327878"
 使用以下命令来注册它们：
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 ## <a name="generate-installation-script"></a>生成安装脚本
 
 Azure 门户中提供了用于自动执行下载、安装以及与 Azure Arc 建立连接的脚本。 若要完成该过程，请执行以下操作：
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“计算机 - Azure Arc”，以启动 Azure Arc 服务 。
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“服务器 - Azure Arc”，以启动 Azure Arc 服务 。
 
     :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="在“所有服务”中搜索启用了 Azure Arc 的服务器" border="false":::
 
-1. 在“计算机 - Azure Arc”页上，选择左上角的“添加”，或者选择中间窗格底部的“创建计算机 - Azure Arc”选项。  
+1. 在“服务器 - Azure Arc”页上，选择左上角的“添加” 。
 
-1. 在“选择方法”页上选择“使用交互式脚本添加计算机”磁贴，然后选择“生成脚本”。  
+1. 在“选择方法”页上，选择“使用交互式脚本添加服务器”磁贴，然后选择“生成脚本”  。
 
-1. 在“生成脚本”页上，选择你要在 Azure 中管理的计算机所在的订阅和资源组。 选择要将计算机元数据存储到的 Azure 位置。
+1. 在“生成脚本”页上，选择你要在 Azure 中管理的计算机所在的订阅和资源组。 选择要将计算机元数据存储到的 Azure 位置。 此位置可以与资源组的位置相同或不同。
 
-1. 在“生成脚本”页上的“操作系统”下拉列表中，选择运行脚本的操作系统。 
+1. 在“先决条件”页上查看信息，然后选择“下一页: 资源详细信息”。
 
-1. 如果计算机通过代理服务器连接到 Internet 进行通信，请选择“下一步:代理服务器”。
+1. 在“资源详细信息”页上，提供以下内容：
 
-1. 在“代理服务器”选项卡上，指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 按格式 `http://<proxyURL>:<proxyport>` 输入值。
+    1. 在“资源组”下拉列表中，选择要从中管理计算机的资源组。
+    1. 在“区域”下拉列表中，选择用于存储服务器元数据的 Azure 区域。
+    1. 在“操作系统”下拉列表中，选择要在其上运行脚本的操作系统。
+    1. 如果计算机是通过代理服务器连接到 Internet 进行通信的，请指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 按格式 `http://<proxyURL>:<proxyport>` 输入值。
+    1. 在完成时选择“下一步:  标记”。
 
-1. 选择“查看 + 生成”。
+1. 在“标记”页上，查看建议的默认“物理位置标记”并输入值，或指定一个或多个“自定义标记”以支持你的标准  。
 
-1. 在“查看 + 生成”选项卡上查看摘要信息，然后选择“下载”。  如果仍需进行更改，请选择“上一页”。
+1. 在完成时选择“下一步:下载并运行脚本。
+
+1. 在“下载并运行脚本”页上查看摘要信息，然后选择“下载” 。 如果仍需进行更改，请选择“上一页”。
 
 ## <a name="install-the-agent-using-the-script"></a>使用脚本安装代理
 
@@ -99,7 +105,7 @@ Azure 门户中提供了用于自动执行下载、安装以及与 Azure Arc 建
 
 安装代理并将其配置为连接到启用了 Azure Arc 的服务器后，请转到 Azure 门户，验证是否已成功连接服务器。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看你的计算机。
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="在“所有服务”中搜索启用了 Azure Arc 的服务器" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="成功的计算机连接" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

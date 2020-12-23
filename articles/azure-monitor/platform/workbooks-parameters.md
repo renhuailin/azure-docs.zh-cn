@@ -2,19 +2,17 @@
 title: Azure Monitor 工作簿 - 创建参数
 description: 了解参数如何允许工作簿作者收集来自使用者的输入，以及如何在工作簿的其他部分引用该输入。
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: 8be7dd170d5e4e3bddb09bc1b163fba7a841a6b7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5dccf8a11691ed02d50b88afc481ec0612fe15b9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984577"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143604"
 ---
 # <a name="workbook-parameters"></a>工作簿参数
 
@@ -83,5 +81,5 @@ ms.locfileid: "90984577"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](workbooks-visualizations.md)详细了解工作簿丰富的可视化效果选项。
+* [开始](./workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
 * [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。

@@ -3,59 +3,134 @@ title: 资源可用性（按区域）
 description: Azure 容器实例服务的计算和内存资源在不同 Azure 区域的可用性。
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: 97baa5199a1803bd967c0b55c846908ea5a2ddcf
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.custom: references_regions
+ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565423"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763887"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
-本文按目标操作系统详细介绍了 Azure 容器实例计算、内存和存储资源在 Azure 区域中的可用性。 
+本文按目标操作系统详细介绍了 Azure 容器实例计算、内存和存储资源在 Azure 区域中的可用性。 有关 Azure 容器实例常规可用区域的列表，请参阅[可用区域](https://azure.microsoft.com/regions/services/)。
 
-提供的值是指部署一个[容器组](container-instances-container-groups.md)时可以使用的最大资源。 在本文发布时，值是最新的。 
+提供的值是指部署一个[容器组](container-instances-container-groups.md)时可以使用的最大资源。 在本文发布时，值是最新的。
 
 > [!NOTE]
 > 在这些资源限制内创建的容器组受部署区域内可用性的限制。 某个区域负载较重时，部署实例时可能会失败。 若要减少此类部署失败，请尝试部署具有较低资源设置的实例，或稍后尝试部署，或在具有可用资源的其他区域中进行部署。
 
 若要了解部署中的配额和其他限制，请参阅 [Azure 容器实例的配额和限制](container-instances-quotas.md)。
 
-## <a name="availability---general"></a>可用性 - 常规
+## <a name="linux-container-groups"></a>Linux 容器组
 
-以下区域和最大资源可供包含 Linux 和[受支持的](container-instances-faq.md#what-windows-base-os-images-are-supported)基于 Windows Server 2016 的容器的容器组使用。
+以下区域和最大资源数适用于使用 Linux 容器的容器组的常规部署、[Azure 虚拟网络](container-instances-vnet.md)部署以及使用 [GPU 资源](container-instances-gpu.md)（预览版）的部署。
 
-| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
-| -------- | -- | :---: | :-----------: | :---: |
-| 巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、美国东部2、北欧、美国中南部、东南亚、印度、英国南部、西欧、美国西部、美国西部2 | Linux | 4 | 16 | 50 |
-| 澳大利亚东部、日本东部 | Linux | 2 | 8 | 50 |
-| 美国中北部 | Linux | 2 | 3.5 | 50 |
-| 巴西南部、日本东部、西欧 | Windows | 4 | 16 | 20 |
-| 美国东部、美国西部 | Windows | 4 | 14 | 20 |
-| 澳大利亚东部、加拿大中部、印度中部、美国中部、东亚、美国东部2、美国中北部、北欧、美国中南部、东南亚、印度南部、英国南部、美国西部2 | Windows | 2 | 3.5 | 20 |
+> [!IMPORTANT]
+> 区域中的最大资源因部署而异。 例如，一个区域在 Azure 虚拟网络部署中可能具有与常规部署中不同的最大 CPU 和内存大小。 对于具有 GPU 资源的部署，同一区域也可能具有一组不同的最大值。 在检查下表中你所在区域的最大值之前，请确定你的部署类型。
 
-## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809 部署（预览版）
+| 区域 | 最大 CPU | 最大内存 (GB) | VNET 最大 CPU | VNET 最大内存 (GB)  | 存储器 (GB) | GPU SKU（预览版） |
+| -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
+| 澳大利亚东部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| Brazil South | 4 | 16 | 2 | 8 | 50 | 空值 |
+| 加拿大中部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| 印度中部 | 4 | 16 | 空值 | 空值 | 50 | V100 |
+| 美国中部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| 东亚 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| 美国东部 | 4 | 16 | 4 | 16 | 50 | K80、P100、V100 |
+| 美国东部 2 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| 法国中部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| Japan East | 2 | 8 | 4 | 16 | 50 | 空值 |
+| 韩国中部 | 4 | 16 | 空值 | 空值 | 50 | 空值 |
+| 美国中北部 | 2 | 3.5 | 4 | 16 | 50 | K80、P100、V100 |
+| 北欧 | 4 | 16 | 4 | 16 | 50 | K80 |
+| 美国中南部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| Southeast Asia | 4 | 16 | 4 | 16 | 50 | P100、V100 |
+| 印度南部 | 4 | 16 | 空值 | 空值 | 50 | 空值 |
+| 英国南部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| 美国中西部| 4 | 16 | 4 | 16 | 50 | 空值 |
+| 西欧 | 4 | 16 | 4 | 16 | 50 | K80、P100、V100 |
+| 美国西部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| 美国西部 2 | 4 | 16 | 4 | 16 | 50 | K80、P100、V100 |
 
-以下区域和最大资源可供包含基于 Windows Server 2019 的容器（预览版）的容器组使用。
+以下最大资源数适用于使用 [GPU 资源](container-instances-gpu.md)（预览版）部署的容器组。
 
-| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
-| -------- | -- | :---: | :-----------: | :---: |
-| 澳大利亚东部、巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、日本东部、美国中北部、北欧、美国中南部、东南亚、印度、英国南部、西欧 | Windows | 4 | 16 | 20 |
-| 美国东部2、美国西部2 | Windows | 2 | 3.5 | 20 |
+> [!IMPORTANT]
+> 目前，具有 GPU 资源的部署在 Azure 虚拟网络部署中不受支持，并且仅适用于 Linux 容器组。
+
+| GPU SKU | GPU 计数 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
+| --- | --- | --- | --- | --- |
+| K80 | 1 | 6 | 56 | 50 |
+| K80 | 2 | 12 | 112 | 50 |
+| K80 | 4 | 24 | 224 | 50 |
+| P100、V100 | 1 | 6 | 112 | 50 |
+| P100、V100 | 2 | 12 | 224 | 50 |
+| P100、V100 | 4 | 24 | 448 | 50 |
+
+## <a name="windows-container-groups"></a>Windows 容器组
+
+以下区域和最大资源数量适用于具有[受支持和预览版](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 容器的容器组。
+
+> [!IMPORTANT]
+> 目前，Azure 虚拟网络部署中不支持具有 Windows 容器组的部署。
+
+###  <a name="windows-server-2016"></a>Windows Server 2016
+
+> [!NOTE]
+> 有关 1B、2B 和 3B 主机的详细信息，请参阅[主机和容器版本兼容性](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility)。
+
+| 区域 | 1B/2B 最大 CPU | 1B/2B 最大内存 (GB) |最高 3B CPU | 最大内存 (GB)  | 存储器 (GB) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: |
+| 澳大利亚东部 | 2 | 8 | 2 | 8 | 20 |
+| Brazil South | 4 | 16 | 4 | 16 | 20 |
+| 加拿大中部 | 2 | 8 | 2 | 3.5 | 20 |
+| 印度中部 | 2 | 3.5 | 2 | 3.5 | 20 |
+| 美国中部 | 2 | 3.5 | 2 | 3.5 | 20 |
+| 东亚 | 2 | 3.5 | 2 | 3.5 | 20 |
+| 美国东部 | 4 | 16 | 2 | 8 | 20 |
+| 美国东部 2 | 2 | 3.5 | 4 | 16 | 20 |
+| Japan East | 4 | 16 | 4 | 16 | 20 |
+| 韩国中部 | 4 | 16 | 4 | 16 | 20 |
+| 美国中北部 | 4 | 16 | 4 | 16 | 20 |
+| 北欧 | 2 | 8 | 2 | 8 | 20 |
+| 美国中南部 | 2 | 3.5 | 2 | 8 | 20 |
+| Southeast Asia | 空值 | 空值 | 2 | 3.5 | 20 |
+| 印度南部 | 2 | 3.5 | 2 | 3.5 | 20 |
+| 英国南部 | 2 | 8 | 2 | 3.5 | 20 |
+| 美国中西部 | 4 | 16 | 2 | 8 | 20 |
+| 西欧 | 4 | 16 | 4 | 16 | 20 |
+| 美国西部 | 4 | 16 | 2 | 8 | 20 |
+| 美国西部 2 | 2 | 8 | 2 | 3.5 | 20 |
 
 
-## <a name="availability---virtual-network-deployment"></a>可用性 - 虚拟网络部署
+### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC
 
-以下区域和最大资源可供部署在 [Azure 虚拟网络](container-instances-vnet.md)中的容器组使用。
+> [!NOTE]
+> 有关 1B、2B 和 3B 主机的详细信息，请参阅[主机和容器版本兼容性](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility)。
 
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
-
-## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 资源（预览版）
-
-以下是使用 [GPU 资源](container-instances-gpu.md)（预览版）部署的容器组可以使用的区域和最大资源数。
-
-[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
-[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
+| 区域 | 1B/2B 最大 CPU | 1B/2B 最大内存 (GB) |最高 3B CPU | 最大内存 (GB)  | 存储器 (GB) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: |
+| 澳大利亚东部 | 4 | 16 | 4 | 16 | 20 |
+| Brazil South | 4 | 16 | 4 | 16 | 20 |
+| 加拿大中部 | 4 | 16 | 4 | 16 | 20 |
+| 印度中部 | 4 | 16 | 4 | 16 | 20 |
+| 美国中部 | 4 | 16 | 4 | 16 | 20 |
+| 东亚 | 4 | 16 | 4 | 16 | 20 |
+| 美国东部 | 4 | 16 | 4 | 16 | 20 |
+| 美国东部 2 | 2 | 3.5 | 2 | 3.5 | 20 |
+| 法国中部 | 4 | 16 | 4 | 16 | 20 |
+| Japan East | 空值 | 不适用 | 4 | 16 | 20 |
+| 韩国中部 | 4 | 16 | 4 | 16 | 20 |
+| 美国中北部 | 4 | 16 | 4 | 16 | 20 |
+| 北欧 | 4 | 16 | 4 | 16 | 20 |
+| 美国中南部 | 4 | 16 | 4 | 16 | 20 |
+| Southeast Asia | 4 | 16 | 4 | 16 | 20 |
+| 印度南部 | 4 | 16 | 4 | 16 | 20 |
+| 英国南部 | 4 | 16 | 4 | 16 | 20 |
+| 美国中西部 | 4 | 16 | 4 | 16 | 20 |
+| 西欧 | 4 | 16 | 4 | 16 | 20 |
+| 美国西部 | 4 | 16 | 4 | 16 | 20 |
+| 美国西部 2 | 2 | 8 | 4 | 16 | 20 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,17 +10,17 @@ ms.author: jordane
 author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, devx-track-python
-ms.openlocfilehash: 5d7956b5538b272454f3f55bcda84188c946e978
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
+ms.openlocfilehash: 9e43291325510f92f2e5fd6c07cdb9257fdede9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328422"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033062"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>向现场可编程的入口阵列部署 ML 模型 (Fpga) 与 Azure 机器学习 
 
-本文介绍了 Fpga 以及如何使用[Azure 机器学习](overview-what-is-azure-ml.md)中的[硬件加速模型 PYTHON 包](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)将 ML 模型部署到 Azure FPGA。
+本文介绍了 Fpga 以及如何使用[Azure 机器学习](overview-what-is-azure-ml.md)中的[硬件加速模型 PYTHON 包](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py)将 ML 模型部署到 Azure FPGA。
 
 ## <a name="what-are-fpgas"></a>什么是 Fpga？
 FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的层次结构。 这种互连可以在生产之后以不同方式来配置块。 与其他芯片相比，FPGA 既有可编程性，又有很好的性能。 
@@ -31,9 +31,9 @@ FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的
 
 ![Azure 机器学习 FPGA 比较示意图](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|处理器| 缩写 |说明|
+|处理器| 缩写 |描述|
 |---|:-------:|------|
-|特定于应用程序的集成电路|ASIC|自定义电路（例如 Google 的 TensorFlow 处理器单元 (TPU)）的效率最高。 它们不能根据需求的变化重新配置。|
+|特定于应用程序的集成电路|ASIC|自定义线路（如 Google 的 Tensor Processor Units (TPU) ）提供最高的效率。 它们不能根据需求的变化重新配置。|
 |现场可编程门阵列|FPGA|FPGA（例如 Azure 上提供的那些）提供接近于 ASIC 的性能。 它们也是灵活的，并且可以在一段时间后重新配置以实现新逻辑。|
 |图形处理单元|GPU|进行 AI 计算时的常用选择。 GPU 提供并行处理功能，在进行图形渲染时速度快于 CPU。|
 |中央处理单元|CPU|常规用途处理器，其性能无法胜任图形和视频处理。|
@@ -52,11 +52,11 @@ Azure FPGA 与 Azure 机器学习集成。 Azure 可以在 Fpga 上并行处理�
 
 若要优化延迟和吞吐量，将数据发送到 FPGA 模型的客户端应位于上述某一区域（即部署模型的区域）。
 
-Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分配时，它将显示为“标准 PBS 系列 vCPU”。 PB6 VM 有六个个 vcpu 和一个 FPGA。 在将模型部署到 FPGA 期间，Azure 机器学习会自动预配 PB6 VM。 它仅可用于 Azure ML，无法运行任意位流。 例如，你将无法使用位流刷新 FPGA 以进行加密、编码等。
+Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA。 查看 Azure 配额分配时，它将显示为“标准 PBS 系列 vCPU”。 PB6 VM 有六个个 vcpu 和一个 FPGA。 在将模型部署到 FPGA 期间，Azure 机器学习会自动预配 PB6 VM。 它仅可用于 Azure ML，无法运行任意位流。 例如，你将无法使用位流刷新 FPGA 以进行加密、编码等。
 
 ## <a name="deploy-models-on-fpgas"></a>在 FPGA 上部署模型
 
-你可以使用 [Azure 机器学习硬件加速模型](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)将模型部署为 fpga 上的 web 服务。 使用 FPGA 可实现超低的延迟推理，即使只有一个批数据大小。 
+你可以使用 [Azure 机器学习硬件加速模型](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py)将模型部署为 fpga 上的 web 服务。 使用 FPGA 可实现超低的延迟推理，即使只有一个批数据大小。 
 
 在此示例中，你将创建一个 TensorFlow 图来预处理输入图像，使其成为 FPGA 上使用 ResNet 50 的特征化器，然后通过针对 ImageNet 数据集定型的分类器来运行这些功能。 然后，将模型部署到 AKS 群集。
 
@@ -68,7 +68,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
  
 - 硬件加速模型包：  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+- [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 
 - FPGA 配额。 提交 [配额请求](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)，或运行此 CLI 命令以检查配额： 
 
@@ -80,7 +80,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
 
 ### <a name="define-the-tensorflow-model"></a>定义 TensorFlow 模型
 
-首先，使用 [适用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 来创建服务定义。 服务定义是一个文件，用于根据 TensorFlow 来描述图形（输入、特征化器、分类器）的管道。 部署命令将定义和图形压缩为 ZIP 文件，并将 ZIP 上传到 Azure Blob 存储。 DNN 已经部署，可以在 FPGA 上运行。
+首先，使用 [适用于 Python 的 AZURE 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 来创建服务定义。 服务定义是一个文件，用于根据 TensorFlow 来描述图形（输入、特征化器、分类器）的管道。 部署命令将定义和图形压缩为 ZIP 文件，并将 ZIP 上传到 Azure Blob 存储。 DNN 已经部署，可以在 FPGA 上运行。
 
 1. 加载 Azure 机器学习工作区
 
@@ -223,7 +223,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
 
 ### <a name="containerize-and-deploy-the-model"></a>容器化和部署模型
 
-接下来，从转换后的模型和所有依赖项创建 Docker 映像。  然后，可以部署并实例化此 Docker 映像。  支持的部署目标包括云中的 Azure Kubernetes 服务 (AKS) ，或边缘设备（如 [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)）。  还可以为已注册的 Docker 映像添加标记和说明。
+接下来，从转换后的模型和所有依赖项创建 Docker 映像。  然后，可以部署并实例化此 Docker 映像。  支持的部署目标包括云中的 Azure Kubernetes 服务 (AKS) ，或边缘设备（如 [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md)）。  还可以为已注册的 Docker 映像添加标记和说明。
 
    ```python
    from azureml.core.image import Image
@@ -297,7 +297,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
 
 #### <a name="deploy-to-a-local-edge-server"></a>部署到本地边缘服务器
 
-所有 [Azure Data Box Edge 设备](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+所有 [Azure Data Box Edge 设备](../databox-online/azure-stack-edge-overview.md
 )都包含用于运行模型的 FPGA。  在 FPGA 上，一次只能运行一个模型。  若要运行另一模型，只需部署一个新容器。 有关说明和示例代码，请参阅[此 Azure 示例](https://github.com/Azure-Samples/aml-hardware-accelerated-models)。
 
 ### <a name="consume-the-deployed-model"></a>使用已部署的模型
@@ -349,7 +349,7 @@ for top in sorted_results[:5]:
 
 ### <a name="clean-up-resources"></a>清理资源
 
-若要避免不必要的成本，请 **按以下顺序**清理资源： web 服务，然后是图像，然后是模型。
+若要避免不必要的成本，请 **按以下顺序** 清理资源： web 服务，然后是图像，然后是模型。
 
 ```python
 aks_service.delete()
@@ -362,6 +362,8 @@ converted_model.delete()
 ## <a name="next-steps"></a>后续步骤
 
 + 了解如何 [保护 web 服务](how-to-secure-web-service.md) 文档。
+
++ 了解 FPGA 和 [Azure 机器学习的定价和成本](https://azure.microsoft.com/pricing/details/machine-learning/)。
 
 + [超大规模硬件：大规模在 Azure + FPGA 上的 ML：生成 2018 (视频) ](https://channel9.msdn.com/events/Build/2018/BRK3202)
 

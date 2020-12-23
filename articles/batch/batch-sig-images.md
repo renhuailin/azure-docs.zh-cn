@@ -2,14 +2,14 @@
 title: 使用共享映像库创建自定义映像池
 description: 自定义映像池是配置计算节点以运行 Batch 工作负载的高效方法。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 11/18/2020
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605186"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327298"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共享映像库创建自定义映像池
 
@@ -43,9 +43,9 @@ ms.locfileid: "90605186"
 - 共享映像库映像。 若要创建共享映像，需要具有或创建托管映像资源。 应该基于 VM 的 OS 磁盘快照及其附加的数据磁盘（可选）创建该映像。
 
 > [!NOTE]
-> 如果共享映像与 Batch 帐户不在同一订阅中，则必须为该订阅 [注册 Microsoft.Batch 资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) 。 这两个订阅必须在同一个 Azure AD 租户中。
+> 如果共享映像与 Batch 帐户不在同一订阅中，则必须[注册用于该订阅的 Microsoft.Batch 资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。 两个订阅都必须属于同一 Azure AD 租户。
 >
-> 只要映像的副本与 Batch 帐户位于同一区域，就可以在不同的区域中。
+> 只要映像的副本与 Batch 帐户位于同一区域，该映像就可以位于不同区域中。
 
 如果使用 Azure AD 应用程序创建具有共享映像库映像的自定义映像池，则必须向该应用程序授予允许其访问共享映像的 [Azure 内置角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。 可以通过导航到共享映像，选择“访问控制(IAM)”，并为应用程序添加角色分配，在 Azure 门户中授予此访问权限。
 
@@ -58,7 +58,7 @@ ms.locfileid: "90605186"
 - 已上传到云的通用本地 VHD
 
 > [!NOTE]
-> 目前，Batch 仅支持通用共享映像。 此时无法通过专用共享映像创建自定义映像池。
+> Batch 仅支持通用共享映像;专用共享映像不能用于创建池。
 
 以下步骤展示了如何准备 VM、创建快照，然后基于该快照创建映像。
 
@@ -73,6 +73,7 @@ ms.locfileid: "90605186"
 - 不要在 VM 上安装自定义脚本扩展等 Azure 扩展。 如果映像包含预装的扩展，在部署 Batch 池时 Azure 可能会遇到问题。
 - 使用附加的数据磁盘时，需要从 VM 中装载和格式化磁盘，才能使用它们。
 - 确保所提供的基础 OS 映像使用默认临时驱动器。 Batch 节点代理目前需要使用默认的临时驱动器。
+- 确保 OS 磁盘未加密。
 - VM 开始运行后，请通过 RDP（适用于 Windows）或 SSH（适用于 Linux）进行连接。 安装所需的任何软件，或复制所需的数据。  
 
 ### <a name="create-a-vm-snapshot"></a>创建 VM 快照
@@ -210,7 +211,7 @@ client.pool.add(new_pool)
 1. 选择“池”，然后选择“添加”，以便创建新池。 
 1. 在“映像类型”部分，选择“共享映像库”。 
 1. 使用托管映像的相关信息完成剩余部分。
-1. 选择“确定”  。
+1. 选择“确定” 。
 
 ![通过门户使用共享映像创建池。](media/batch-sig-images/create-custom-pool.png)
 
@@ -218,7 +219,7 @@ client.pool.add(new_pool)
 
 如果打算使用共享映像创建包含数百或数千 VM 或更多 VM 的池，请按以下指南操作。
 
-- **共享映像库副本数目。**  对于实例数多达 600 的每个池，我们建议至少保留一个副本。 例如，如果创建的池包含 3000 个 VM，则应保留至少 5 个映像副本。 我们始终建议保留比最低要求更多的副本，以便获得更好的性能。
+- **共享映像库副本数目。**  对于每个具有多达300实例的池，建议至少保留一个副本。 例如，如果要创建包含 3000 Vm 的池，则应保留映像的至少10个副本。 我们始终建议保留比最低要求更多的副本，以便获得更好的性能。
 
 - **调整超时。** 如果池包含固定数目的节点（如果池不会自动缩放），请根据池大小增大池的 `resizeTimeout` 属性的值。 对于每 1000 个 VM，建议的调整超时值至少为 15 分钟。 例如，如果池包含 2000 个 VM，建议将重设大小超时设置为至少 30 分钟。
 

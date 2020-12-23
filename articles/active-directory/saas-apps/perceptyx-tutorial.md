@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 837c1c1a3bac064ddc808c7c083fcaa56e60f210
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30dd7068a8ba2d0e30a2a4308e124886c4439641
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553880"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515463"
 ---
 # <a name="tutorial-integrate-perceptyx-with-azure-active-directory"></a>教程：将 Perceptyx 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553880"
 * 让用户使用其 Azure AD 帐户自动登录到 Perceptyx。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -122,16 +122,16 @@ ms.locfileid: "88553880"
 
 ### <a name="create-perceptyx-test-user"></a>创建 Perceptyx 测试用户
 
-在本部分中，我们将在 Perceptyx 中创建名为 B.Simon 的用户。 请与  [Perceptyx 支持团队](mailto:customersupport@perceptyx.com)协作，将用户添加到 Perceptyx 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，我们将在 Perceptyx 中创建名为 B.Simon 的用户。 请与 [Perceptyx 支持团队](mailto:customersupport@perceptyx.com)协作，将用户添加到 Perceptyx 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“Perceptyx”磁贴时，应会自动登录到设置了 SSO 的 Perceptyx。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中选择“Perceptyx”磁贴时，应会自动登录到设置了 SSO 的 Perceptyx。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

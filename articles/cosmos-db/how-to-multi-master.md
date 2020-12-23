@@ -3,23 +3,41 @@ title: 如何在 Azure Cosmos DB 中配置多区域写入
 description: 了解如何使用 Azure Cosmos DB 中的不同 Sdk 为应用程序配置多区域写入。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
-ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, "seo-nov-2020"
+ms.openlocfilehash: 6f71f4c0ec353f36614ea6dcabf4d698b31baacb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570665"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336720"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>在应用程序中配置使用 Azure Cosmos DB 的多区域写入
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 创建具有多个写入区域的帐户后，必须在应用程序中对 ConnectionPolicy 进行两项更改，以便 DocumentClient 启用多区域写入和多宿主功能 Azure Cosmos DB。 在 ConnectionPolicy 中，将 UseMultipleWriteLocations 设置为 true，并将部署应用程序的区域的名称传递给 SetCurrentLocation。 这将根据传入位置的地理接近性填充 PreferredLocations 属性。 如果稍后将新区域添加到帐户中，则无需更新或重新部署应用程序，它将自动检测距离较近的区域，并在发生区域事件时自动定位到该区域。
 
 > [!Note]
 > 最初配置有单个写入区域的 Cosmos 帐户可配置为具有零停机时间的多个写入区域。 若要了解详细信息，请参阅[配置多个写入区域](how-to-manage-database-account.md#configure-multiple-write-regions)
+
+## <a name="azure-portal"></a><a id="portal"></a> Azure 门户
+
+若要从 Azure 门户中启用多区域写入，请使用以下步骤：
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+
+1. 导航到你的 Azure Cosmos 帐户，然后从菜单中打开 " **全局复制数据** " 窗格。
+
+1. 在 " **多区域写入** " 选项下，选择 " **启用** "。 它会自动向读取和写入区域添加现有区域。
+
+1. 通过选择地图上的图标或选择 " **添加区域** " 按钮，可以添加其他区域。 你添加的所有区域都启用了读取和写入。
+
+1. 更新区域列表后，选择 " **保存** " 以应用更改。
+
+   :::image type="content" source="./media/how-to-multi-master/enable-multi-region-writes.png" alt-text="使用 Azure 门户启用多区域写入的屏幕截图" lightbox="./media/how-to-multi-master/enable-multi-region-writes.png":::
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
@@ -129,8 +147,8 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 * [Azure Cosmos DB 中的冲突类型和解决策略](conflict-resolution-policies.md)
 * [Azure Cosmos DB 中的高可用性](high-availability.md)
 * [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
-* [在 Azure Cosmos DB 中选择适当的一致性级别](consistency-levels-choosing.md)
-* [Azure Cosmos DB 中的一致性、可用性和性能权衡](consistency-levels-tradeoffs.md)
-* [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
-* [全局缩放预配的吞吐量](scaling-throughput.md)
+* [在 Azure Cosmos DB 中选择适当的一致性级别](./consistency-levels.md)
+* [Azure Cosmos DB 中的一致性、可用性和性能权衡](./consistency-levels.md)
+* [各种一致性级别的可用性和性能权衡](./consistency-levels.md)
+* [全局缩放预配的吞吐量](./request-units.md)
 * [全局分发：在幕后](global-dist-under-the-hood.md)

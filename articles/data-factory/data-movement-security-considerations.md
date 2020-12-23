@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440552"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094176"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -32,26 +32,26 @@ ms.locfileid: "89440552"
 
 尽管数据工厂仅在少数区域中可用，但数据移动服务[在全球范围内可用](concepts-integration-runtime.md#integration-runtime-location)，以确保数据符合性、高效和降低网络出口成本。 
 
-除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂不存储任何其他数据。 使用数据工厂可以创建数据驱动的工作流，协调[受支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](compute-linked-services.md)在其他区域或本地环境中处理数据。 还可以使用 SDK 与 Azure Monitor 来监视和管理工作流。
+Azure 数据工厂（包括 Integration Runtime）不会存储任何数据（云数据存储的链接服务凭据除外，使用证书进行加密）。 使用数据工厂可以创建数据驱动的工作流，协调[受支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](compute-linked-services.md)在其他区域或本地环境中处理数据。 还可以使用 SDK 与 Azure Monitor 来监视和管理工作流。
 
 数据工厂已获得以下认证：
 
 | **[CSA STAR 认证](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
-| **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
+| **[ISO 22301:2012](/compliance/regulatory/offering-iso-22301)** |
 | **[ISO 27001:2013](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001)** |
 | **[ISO 27017:2015](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)** |
 | **[ISO 27018:2014](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)** |
 | **[ISO 9001:2015](https://www.microsoft.com/trustcenter/compliance/iso-9001)** |
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
-| **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
+| **[HIPAA BAA](/compliance/regulatory/offering-hipaa-hitech)** |
 
 如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - https://aka.ms/AzureCompliance 。
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
-- **云场景**：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务（如 Azure 存储、Azure Synapse Analytics (以前的 SQL 数据仓库) 、Azure SQL 数据库、Azure Data Lake Store、Amazon S3、Amazon Redshift、SaaS 服务（如 Salesforce）以及 web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
+- **云场景**：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务，例如 Azure 存储、Azure Synapse 分析、Azure SQL 数据库、Azure Data Lake Store、Amazon S3、Amazon Redshift、SaaS 服务（如 Salesforce）以及 web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
 - **混合场景**：在此场景中，源或目标位于防火墙之后或本地公司网络中。 或者，数据存储位于专用网络或虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -60,14 +60,14 @@ ms.locfileid: "89440552"
 
 ### <a name="securing-data-store-credentials"></a>保护数据存储凭据
 
-- **在 Azure 数据工厂托管存储中存储加密的凭据**。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../security/fundamentals/storage-overview.md)。
+- **在 Azure 数据工厂托管存储中存储加密的凭据**。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../storage/blobs/security-recommendations.md)。
 - **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
 ### <a name="data-encryption-in-transit"></a>传输中的数据加密
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
 
 > [!NOTE]
-> 与 Azure SQL 数据库和 Azure Synapse Analytics 的所有连接都需要加密 (SSL/TLS) ，同时数据与数据库之间传输。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
+> 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure Synapse Analytics 的所有连接都需要加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
 
 > [!NOTE]
 > 若要在从 Oracle 移动数据时启用传输加密，请遵循以下选项之一：
@@ -81,10 +81,10 @@ ms.locfileid: "89440552"
 某些数据存储支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 
 
 #### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
-Azure Synapse Analytics 中透明数据加密 (TDE) 通过对静态数据进行实时加密和解密，帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [在 Azure Synapse Analytics 中保护数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
+Azure Synapse Analytics 中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 Azure Synapse Analytics 中的数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
 #### <a name="azure-sql-database"></a>Azure SQL 数据库
-Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
+Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store 还为存储在帐户中的数据提供加密。 启用后，Data Lake Store 会在保存数据前进行自动加密，在检索前进行自动解密，从而使其对访问数据的客户端透明。 有关详细信息，请参阅 [Azure Data Lake Store 中的安全性](../data-lake-store/data-lake-store-security-overview.md)。 
@@ -102,7 +102,7 @@ Amazon Redshift 支持静态数据的群集加密。 有关详细信息，请参
 Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和自定义字段。 有关详细信息，请参阅 [Understanding the Web Server OAuth Authentication Flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)（了解 Web 服务器 OAuth 身份验证流）。  
 
 ## <a name="hybrid-scenarios"></a>混合场景
-混合场景需要在本地网络、虚拟网络 (Azure) 或虚拟私有云 (Amazon) 中安装自承载集成运行时。 自承载集成运行时必须能够访问本地数据存储。 有关自承载集成运行时的详细信息，请参阅[如何创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)。 
+混合场景需要在本地网络、虚拟网络 (Azure) 或虚拟私有云 (Amazon) 中安装自承载集成运行时。 自承载集成运行时必须能够访问本地数据存储。 有关自承载集成运行时的详细信息，请参阅[如何创建和配置自承载集成运行时](./create-self-hosted-integration-runtime.md)。 
 
 ![自承载集成运行时通道](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
@@ -111,11 +111,11 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 ### <a name="on-premises-data-store-credentials"></a>本地数据存储凭据
 凭据可以存储在数据工厂中，也可以在运行时从 Azure 密钥保管库[由数据工厂引用](store-credentials-in-key-vault.md)。 如果将凭据存储在数据工厂中，则凭据会始终以加密方式存储在自承载集成运行时上。 
  
-- **在本地存储凭据**。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 Azure 后端服务（此服务非常安全）传递到自承载集成计算机（最终对其进行加密和存储的地方）。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。
+- **在本地存储凭据**。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 Azure 后端服务（此服务非常安全）传递到自承载集成计算机（最终对其进行加密和存储的地方）。 自承载集成运行时使用 Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) 来加密敏感数据和凭据信息。
 
 - **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
-- **在本地存储凭据，而无需通过 Azure 后端将凭据传递到自承载集成运行时**。 如果想要在自承载集成运行时本地加密并存储凭据，而不必通过数据工厂后端传递凭据，请按照[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤操作。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。 
+- **在本地存储凭据，而无需通过 Azure 后端将凭据传递到自承载集成运行时**。 如果想要在自承载集成运行时本地加密并存储凭据，而不必通过数据工厂后端传递凭据，请按照[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤操作。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) 来加密敏感数据和凭据信息。 
 
    使用 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdle 可加密链接服务凭据和链接服务中的敏感详细信息。 然后，可以通过 **Set-AzDataFactoryV2LinkedService** cmdlet 使用返回的 JSON（结合连接字符串中的 **EncryptedCredential** 元素）创建链接服务。  
 
@@ -159,7 +159,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 > 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅使用 Azure SQL 数据库、Azure Synapse Analytics 和 Azure Data Lake Store 作为示例。
 
 > [!NOTE] 
-> 若要详细了解通过 Azure 数据工厂实施的数据访问策略，请参阅[此文](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)。
+> 若要详细了解通过 Azure 数据工厂实施的数据访问策略，请参阅[此文](./data-access-strategies.md#data-access-strategies-through-azure-data-factory)。
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求    
 在企业中，企业防火墙在组织的中央路由器上运行。 Windows 防火墙在安装自承载集成运行时的本地计算机上作为守护程序运行。 
@@ -185,9 +185,9 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 以下云数据存储要求允许自承载集成运行时计算机的 IP 地址。 默认情况下，其中一些数据存储可能不需要允许列表。 
 
 - [Azure SQL 数据库](../azure-sql/database/firewall-configure.md) 
-- [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Azure Cosmos DB](../cosmos-db/firewall-support.md)
+- [Azure Cosmos DB](../cosmos-db/how-to-configure-firewall.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -198,10 +198,9 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 
-自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure Synapse Analytics 作为源或目标，则还需要打开端口1433。 有关详细信息，请参阅[防火墙配置和针对 IP 地址设置的允许列表](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
+自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure Synapse Analytics 作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和针对 IP 地址设置的允许列表](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂复制活动性能的信息，请参阅[复制活动性能和优化指南](copy-activity-performance.md)。
 
- 

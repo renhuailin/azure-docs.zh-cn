@@ -4,12 +4,12 @@ description: 在 Azure Application Insights 中看不到数据？ 试试这里�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 2bf9b50c9b378d8624c311af5935b8cd0a28a31a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757973"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904459"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -35,12 +35,44 @@ ms.locfileid: "91757973"
 * 可能是防火墙有问题。 [为 Application Insights 设置防火墙例外即可发送数据](./ip-addresses.md)。
 * IIS 服务器可能缺少某些必备组件：.NET Extensibility 4.5 和 ASP.NET 4.5。
 
-*我已在 Web 服务器上[安装状态监视器](./monitor-performance-live-website-now.md)来监视现有应用，但未看到任何结果。*
+*我已在 Web 服务器上 [安装状态监视器](./monitor-performance-live-website-now.md)来监视现有应用，但未看到任何结果。*
 
 * 请参阅[排查状态监视器问题](./monitor-performance-live-website-now.md#troubleshoot)。
 
+> [!IMPORTANT]
+> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+
+
+## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>System.io.filenotfoundexception：无法加载文件或程序集 "TelemetryCorrelation"
+
+有关此错误的详细信息，请参阅 [GitHub 问题 1610] (https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) 。
+
+从早于 (2.4 的 Sdk 升级时) 需确保将以下更改应用于 `web.config` 和 `ApplicationInsights.config` ：
+
+1. 两个 http 模块，而不是一个。 在中 `web.config` ，你应该有两个 http 模块。 在某些情况下，顺序非常重要：
+
+    ``` xml
+    <system.webServer>
+      <modules>
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="integratedMode,managedHandler" />
+          <add name="ApplicationInsightsHttpModule" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+      </modules>
+    </system.webServer>
+    ```
+
+2. `ApplicationInsights.config`除外，还 `RequestTrackingTelemetryModule` 应具有以下遥测模块：
+
+    ``` xml
+    <TelemetryModules>
+      <Add Type="Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule, Microsoft.AI.Web"/>
+    </TelemetryModules>
+    ```
+
+**_如果未能正确升级，可能会导致意外的异常或未收集遥测数据。_* _
+
+
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
-*在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。*
+_When 在解决方案资源管理器中右键单击现有项目时，我看不到任何 Application Insights 选项。 *
 
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](./windows-desktop.md)。
 * 请务必使用 [Visual Studio 2013 Update 3 或更高版本](/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
@@ -125,7 +157,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 *我运行了应用，并在 Microsoft Azure 中打开 Application Insights 服务，但所有图表都显示“了解如何收集...”或“未配置”。* 或者，*只有页面视图和用户数据，但没有任何服务器数据。*
 
 * 在 Visual Studio 中以调试模式运行应用程序 (F5)。 使用应用程序，以便生成一些遥测。 检查是否可以在 Visual Studio 的“输出”窗口中看到记录的事件。  
-  ![显示在 Visual Studio 中以调试模式运行应用程序的屏幕截图。](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![屏幕截图中显示了在 Visual Studio 中的调试模式下运行应用程序。](./media/asp-net-troubleshoot-no-data/output-window.png)
 * 在 Application Insights 门户中，打开[诊断搜索](./diagnostic-search.md)。 数据通常会先显示在此处。
 * 单击“刷新”按钮。 边栏选项卡会定期自行刷新，但你也可以手动刷新。 时间范围越大，刷新间隔就越长。
 * 检查检测密钥是否匹配。 在 Application Insights 门户的应用主边栏选项卡中，查看“概要”下拉列表中的“检测密钥”。  然后，在 Visual Studio 的项目中，打开 ApplicationInsights.config 并找到 `<instrumentationkey>`。 检查两个密钥是否相同。 如果不同：  
@@ -207,9 +239,9 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 ### <a name="net-core"></a>.NET Core
 
-1. 从 NuGet 安装 ASP.NET Core 包的 [APPLICATION INSIGHTS SDK NuGet 包](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 。 安装的版本必须与当前安装的版本匹配 `Microsoft.ApplicationInsights` 。
+1. 安装 NuGet 中[适用于 ASP.NET Core 的 Application Insights SDK NuGet 包](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsights` 版本匹配。
 
-   最新版本的 Applicationinsights.config 是2.14.0，它是指 Applicationinsights.config 版本2.14.0。 因此，要安装的 Applicationinsights.config 版本应为2.14.0。
+   Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.14.0，它引用 Microsoft.ApplicationInsights 版本 2.14.0。 因此，要安装的 Microsoft.ApplicationInsights.AspNetCore 版本应该是 2.14.0。
 
 2. 修改 `Startup.cs` 类中的 `ConfigureServices` 方法：
 
@@ -246,7 +278,7 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 有关详细信息，请参阅：
 - [使用 PerfView 记录性能跟踪](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
-- [Application Insights 事件源](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Application Insights 事件源](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>使用 dotnet-trace 收集日志
 

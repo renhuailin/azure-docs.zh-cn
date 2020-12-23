@@ -11,19 +11,19 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908018"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441549"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>动态组和 Azure Active Directory B2B 协作
 
 ## <a name="what-are-dynamic-groups"></a>什么是动态组？
-Azure Active Directory (Azure AD) 的安全组成员身份动态配置在 [Azure 门户](https://portal.azure.com)中提供。 管理员可以设置规则以填充在 Azure AD 中基于用户属性（如 userType、部门或国家/地区）创建的组。 可基于成员属性自动在安全组中添加或删除成员。 这些组可以为成员提供对应用程序或云资源（SharePoint 站点、文档）的访问权限并分配许可证。 在 [Azure Active Directory 中的专用组](../active-directory-accessmanagement-dedicated-groups.md)中阅读有关动态组的详细信息。
+Azure Active Directory (Azure AD) 的安全组成员身份动态配置在 [Azure 门户](https://portal.azure.com)中提供。 管理员可以设置规则以填充在 Azure AD 中基于用户属性（如 userType、部门或国家/地区）创建的组。 可基于成员属性自动在安全组中添加或删除成员。 这些组可以为成员提供对应用程序或云资源（SharePoint 站点、文档）的访问权限并分配许可证。 在 [Azure Active Directory 中的专用组](../fundamentals/active-directory-groups-create-azure-portal.md)中阅读有关动态组的详细信息。
 
-创建和使用动态组需要相应的 [Azure AD Premium P1 或 P2 授权](https://azure.microsoft.com/pricing/details/active-directory/)。 有关详细信息，请参阅[在 Azure Active Directory 中为动态组成员身份创建基于属性的规则](../users-groups-roles/groups-dynamic-membership.md)一文。
+创建和使用动态组需要相应的 [Azure AD Premium P1 或 P2 授权](https://azure.microsoft.com/pricing/details/active-directory/)。 有关详细信息，请参阅[在 Azure Active Directory 中为动态组成员身份创建基于属性的规则](../enterprise-users/groups-dynamic-membership.md)一文。
 
 ## <a name="creating-an-all-users-dynamic-group"></a>创建“所有用户”动态组
 可使用成员资格规则创建包含租户中所有用户的组。 以后向租户添加用户或从中删除用户时，将自动调整该组的成员资格。
@@ -76,4 +76,3 @@ Azure Active Directory (Azure AD) 的安全组成员身份动态配置在 [Azure
 - [B2B 协作用户属性](user-properties.md)
 - [将 B2B 协作用户添加到角色](add-guest-to-role.md)
 - [B2B 协作用户的条件访问](conditional-access.md)
-

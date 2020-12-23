@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Azure 门户创建 Apache Spark 池
-description: 遵循本指南中的步骤，使用 Azure 门户新建 Apache Spark 池。
+title: 快速入门：使用 Azure 门户创建无服务器 Apache Spark 池
+description: 遵循本指南中的步骤，使用 Azure 门户创建无服务器 Apache Spark 池。
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,21 +9,21 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea32126e19c4520a6d5a40f38f60ec44e9a119cd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260863"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461598"
 ---
-# <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户新建 Apache Spark 池
+# <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户新建无服务器 Apache Spark 池
 
 Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转换、分析和分布数据，以及对数据建模。 Apache Spark 池提供开源大数据计算功能。 在 Synapse 工作区中创建 Apache Spark 池后，可以加载、处理和分布数据以及为数据建模，更快地获取分析见解。
 
 本快速入门介绍如何使用 Azure 门户在 Synapse 工作区中创建 Apache Spark 池。
 
 > [!IMPORTANT]
-> 不管是否正在使用 Spark 实例，它们都会按分钟按比例计费。 请务必在用完 Spark 实例后将其关闭，或设置较短的超时。 有关详细信息，请参阅本文的**清理资源**部分。
+> 不管是否正在使用 Spark 实例，它们都会按分钟按比例计费。 请务必在用完 Spark 实例后将其关闭，或设置较短的超时。 有关详细信息，请参阅本文的 **清理资源** 部分。
 
 如果没有 Azure 订阅，请[在开始之前创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -62,7 +62,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
     > 请注意，Apache Spark 池可以使用的名称有特定的限制。 名称只能包含字母或数字，必须为 15 个或更少的字符，必须以字母开头，不能包含保留字，并且在工作区中必须是独一无二的。
 
 3. 选择“下一步: 其他设置”并查看默认设置。 请不要修改任何默认设置。
-    ![Apache Spark 池 - 创建流 -“其他设置”选项卡。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
+    ![屏幕截图显示了“创建 Apache Spark 池”页，其中选择了“其他设置”选项卡。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
 
 4. 选择“下一步: 标记”。 请不要添加任何标记。
     ![Apache Spark 池 - 创建流 -“其他设置”选项卡。](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
@@ -73,7 +73,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
     ![Apache Spark 池 - 创建流 -“查看设置”选项卡。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)
 
 7. 此时会启动资源预配流，指示其完成时间。
-    ![Apache Spark 池 - 创建流 - 资源预配。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
+    ![屏幕截图显示了“概述”页，其中显示了“部署已完成”消息。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
 
 8. 预配完成后，导航回到工作区会显示新建的 Apache Spark 池对应的新条目。
     ![Apache Spark 池 - 创建流 - 资源预配。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-07.png)
@@ -99,4 +99,4 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅[快速入门：创建 Apache Spark 笔记本](quickstart-apache-spark-notebook.md)。
-- 请参阅[快速入门：使用 Azure 门户创建 Synapse SQL 池](quickstart-create-sql-pool-portal.md)。
+- 请参阅[快速入门：使用 Azure 门户创建专用 SQL 池](quickstart-create-sql-pool-portal.md)。

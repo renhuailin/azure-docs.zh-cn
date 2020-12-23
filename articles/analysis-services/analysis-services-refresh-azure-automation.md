@@ -4,20 +4,20 @@ description: 本文介绍了如何使用 Azure 自动化为 Azure Analysis Servi
 author: chrislound
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: chlound
-ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448604"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491241"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
 通过使用 Azure 自动化和 PowerShell Runbook，你可以对 Azure Analysis 表格模型执行自动化数据刷新操作。  
 
-本文中的示例使用 [SqlServer PowerShell 模块](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。 本文后面提供了一个示例 PowerShell Runbook，它演示了如何刷新模型。  
+本文中的示例使用 [SqlServer PowerShell 模块](/powershell/module/sqlserver/?view=sqlserver-ps&preserve-view=true)。 本文后面提供了一个示例 PowerShell Runbook，它演示了如何刷新模型。  
 
 ## <a name="authentication"></a>身份验证
 
@@ -52,7 +52,7 @@ ms.locfileid: "91448604"
 
 ## <a name="design-the-azure-automation-runbook"></a>设计 Azure 自动化 Runbook
 
-1. 在自动化帐户中，创建一个**凭据**资源，该资源将用来安全地存储服务主体。
+1. 在自动化帐户中，创建一个 **凭据** 资源，该资源将用来安全地存储服务主体。
 
     ![显示 "凭据" 页面并选择 "添加凭据" 操作的屏幕截图。](./media/analysis-services-refresh-azure-automation/6.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "91448604"
 
 **URL** 是基于 Webhook 创建的 URL。
 
-**正文**是一个应当包含以下属性的 JSON 文档：
+**正文** 是一个应当包含以下属性的 JSON 文档：
 
 
 |properties  |值  |
@@ -202,7 +202,7 @@ $_Credential = Get-AutomationPSCredential -Name "ServicePrincipal"
 
 # If runbook was called from Webhook, WebhookData will not be null.
 if ($WebhookData)
-{ 
+{ 
     # Retrieve AAS details from Webhook request body
     $atmParameters = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
     Write-Output "CredentialName: $($atmParameters.CredentialName)"
@@ -226,4 +226,4 @@ else
 ## <a name="next-steps"></a>后续步骤
 
 [示例](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

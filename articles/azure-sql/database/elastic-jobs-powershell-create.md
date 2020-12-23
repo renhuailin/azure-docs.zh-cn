@@ -1,24 +1,24 @@
 ---
-title: 使用 PowerShell 创建弹性作业代理
+title: 使用 PowerShell 创建弹性作业代理（预览版）
 description: 了解如何使用 PowerShell 创建弹性作业代理。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-ms.date: 03/13/2019
-ms.openlocfilehash: 0fe6a3b1d0e5216d923cfe3997826e7a727f1a2b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 10/21/2020
+ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077341"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427291"
 ---
-# <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 创建弹性作业代理
+# <a name="create-an-elastic-job-agent-using-powershell-preview"></a>使用 PowerShell 创建弹性作业代理（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [弹性作业（预览版）](job-automation-overview.md#elastic-database-jobs-preview)可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
@@ -53,7 +53,7 @@ Find-Package PowerShellGet | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Install and import the Az.Sql module, then confirm
-Install-Module -Name Az.Sql
+Install-Module -Name Az.Sql
 Import-Module Az.Sql
 
 Get-Module Az.Sql
@@ -165,12 +165,12 @@ $params = @{
   'username' = $adminLogin
   'password' = $adminPassword
   'outputSqlErrors' = $true
-  'query' = "CREATE LOGIN masteruser WITH PASSWORD='password!123'"
+  'query' = 'CREATE LOGIN masteruser WITH PASSWORD=''password!123'''
 }
 Invoke-SqlCmd @params
 $params.query = "CREATE USER masteruser FROM LOGIN masteruser"
 Invoke-SqlCmd @params
-$params.query = "CREATE LOGIN jobuser WITH PASSWORD='password!123'"
+$params.query = 'CREATE LOGIN jobuser WITH PASSWORD=''password!123'''
 Invoke-SqlCmd @params
 
 # for each target database
@@ -192,7 +192,7 @@ $targetDatabases | % {
 
 # create job credential in Job database for master user
 Write-Output "Creating job credentials..."
-$loginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
+$loginPasswordSecure = (ConvertTo-SecureString -String 'password!123' -AsPlainText -Force)
 
 $masterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $loginPasswordSecure
 $masterCred = $jobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $masterCred
@@ -205,7 +205,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [目标组](job-automation-overview.md#target-group)定义可以在其上执行作业步骤的数据库集（包含一个或多个数据库）。
 
-以下代码片段创建两个目标组：*serverGroup* 和 *serverGroupExcludingDb2*。 *serverGroup* 的目标是执行时存在于服务器上的所有数据库，*serverGroupExcludingDb2* 的目标是服务器上的所有数据库，*targetDb2* 除外：
+以下代码片段创建两个目标组： *serverGroup* 和 *serverGroupExcludingDb2* 。 *serverGroup* 的目标是执行时存在于服务器上的所有数据库， *serverGroupExcludingDb2* 的目标是服务器上的所有数据库， *targetDb2* 除外：
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +221,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>创建作业和步骤
 
-此示例为要运行的作业定义作业和两个作业步骤。 第一个作业步骤 (*step1*) 在目标组 *ServerGroup* 的每个数据库中创建新表 (*Step1Table*)。 第二个作业步骤 (*step2*) 在除 *TargetDb2* 之外的每个数据库中创建新表 (*Step2Table*)，因为之前定义的目标组已指定将其排除。
+此示例为要运行的作业定义作业和两个作业步骤。 第一个作业步骤 ( *step1* ) 在目标组 *ServerGroup* 的每个数据库中创建新表 ( *Step1Table* )。 第二个作业步骤 ( *step2* ) 在除 *TargetDb2* 之外的每个数据库中创建新表 ( *Step2Table* )，因为之前定义的目标组已指定将其排除。
 
 ```powershell
 Write-Output "Creating a new job..."

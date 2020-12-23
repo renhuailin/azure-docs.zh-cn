@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/20/2018
 ms.author: tomfitz
-ms.custom: include file
-ms.openlocfilehash: c1259584e91461865b0c7e7bbbd6aced1781827b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 53d4aa70b55577cdf2f6a1b898b496eb368157f5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67708457"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755989"
 ---
 若要为资源组添加两个标记，请使用 [az group update](/cli/azure/group) 命令：
 

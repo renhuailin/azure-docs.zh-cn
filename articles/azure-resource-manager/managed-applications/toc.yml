@@ -31,6 +31,10 @@
       href: concepts-built-in-policy.md
     - name: 角色定义项目
       href: concepts-custom-role-definition.md
+    - name: 安全
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 发布服务器
@@ -40,7 +44,7 @@
         - name: 测试门户界面
           href: test-createuidefinition.md
         - name: 创建 Azure 应用程序产品/服务
-          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
+          href: ../../marketplace/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: 请求实时访问
           href: request-just-in-time-access.md
         - name: 使用现有虚拟网络
@@ -134,6 +138,10 @@
               href: microsoft-compute-sizeselector.md
             - name: UserNameTextBox
               href: microsoft-compute-usernametextbox.md
+        - name: Key Vault
+          items:
+            - name: KeyVaultCertificateSelector
+              href: microsoft-keyvault-keyvaultcertificateselector.md
         - name: 托管标识
           items:
             - name: IdentitySelector
@@ -156,6 +164,8 @@
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
+            - name: StorageBlobSelector
+              href: microsoft-storage-storageblobselector.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

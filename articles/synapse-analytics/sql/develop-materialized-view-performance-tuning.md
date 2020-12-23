@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289032"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305103"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>通过具体化视图进行性能优化
+# <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的专用 SQL 池优化使用具体化视图的性能
 
-在 Synapse SQL 池中，具体化视图为复杂的分析查询提供了一种方便维护的方法，可以在不更改任何查询的情况下提升性能和速度。 本文讨论了使用具体化视图的一般指南。
+在专用的 SQL 池中，具体化视图为复杂的分析查询提供一种低维护方法，以便在不更改任何查询的情况下获取快速性能。 本文讨论了使用具体化视图的一般指南。
 
 ## <a name="materialized-views-vs-standard-views"></a>具体化视图与标准视图
 
@@ -27,7 +27,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 每次使用标准视图时，该视图都会计算其数据。  磁盘上不存储任何数据。 人们通常使用标准视图作为工具，帮助组织数据库中的逻辑对象和查询。  若要使用标准视图，查询需要直接引用它。
 
-具体化视图像表一样在 SQL 池中预先计算、存储和维护其数据。  每次使用具体化视图时都不需要重新计算。  这就是为什么使用具体化视图中全部或部分数据的查询可以获得更快的性能。  更好的是，查询可以使用具体化视图，而无需直接引用它，因此无需更改应用程序代码。  
+具体化视图预先计算、存储和维护其在专用 SQL 池中的数据，就像表一样。  每次使用具体化视图时都不需要重新计算。  这就是为什么使用具体化视图中全部或部分数据的查询可以获得更快的性能。  更好的是，查询可以使用具体化视图，而无需直接引用它，因此无需更改应用程序代码。  
 
 大多数标准视图要求仍适用于具体化视图。 如需详细了解具体化视图语法和其他要求，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
@@ -46,13 +46,13 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 - 使用 JOIN 和聚合函数减少复杂查询的执行时间。 查询越复杂，就越有可能节省执行时间。 当查询的计算成本很高而生成的数据集很小时，可以获得最大的优势。  
 
-- SQL 池中的优化器可以自动使用已部署的具体化视图来改进查询执行计划。  此过程对提供更快查询性能的用户是透明的，并且不需要查询直接引用具体化视图。
+- 专用 SQL 池中的查询优化器可以自动使用已部署的具体化视图来改善查询执行计划。  此过程对提供更快查询性能的用户是透明的，并且不需要查询直接引用具体化视图。
 
 - 只需对视图进行少量维护。  具体化视图将数据存储在两个位置，一个聚集列存储索引（用于创建视图时的初始数据），一个增量存储区（用于增量数据更改）。  基表中的所有数据更改将以同步方式自动添加到增量存储区中。  后台进程（元组发动机）定期将数据从增量存储区移至视图的列存储索引。  这种设计可以使查询具体化视图后返回的数据与直接查询基表后返回的数据相同。
 - 具体化视图中的数据可以采用与基表不同的方式分发。  
 - 具体化视图中的数据与常规表中的数据具有相同的高可用性和复原优势。  
 
-与其他数据仓库提供程序相比，在 Azure SQL 数据仓库中实现的具体化视图还提供了以下附加优势：
+与其他数据仓库提供程序相比，在专用 SQL 池中实现的具体化视图还提供以下附加优势：
 
 - 根据基表中的数据更改，自动、同步刷新数据。 不需要任何用户操作。
 - 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
@@ -79,7 +79,9 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 **需要不同的数据分布策略来提高查询性能**
 
-Azure 数据仓库是一种大规模并行处理 (MPP) 分布式系统。   数据仓库表中的数据使用三种[分布策略](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)（hash、round_robin 或 replicated）中的一种分布到 60 个节点上。  
+Azure 数据仓库是一种大规模并行处理 (MPP) 分布式系统。  
+
+Synapse SQL 是一个分布式查询系统，使企业能够使用数据工程师所熟悉的标准 T-SQL 体验来实现数据仓库和数据虚拟化方案。 它还扩展了 SQL 的功能，可以解决流式处理和机器学习方案的问题。 数据仓库表中的数据使用三种[分布策略](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)（hash、round_robin 或 replicated）中的一种分布到 60 个节点上。  
 
 数据分布在表创建时进行指定，并且在删除表之前保持不变。 具体化视图是磁盘上的虚拟表，支持 hash 和 round_robin 数据分布。  用户可以选择符合后列特征的数据分布：与基表不同但对于经常使用视图的查询而言是最优的。  
 
@@ -149,7 +151,7 @@ GROUP BY A, C
 
 **具体化视图和结果集缓存**
 
-SQL 池中同时引入了这两项功能，用于优化查询性能。 结果集缓存用于在静态数据的重复查询中实现高并发性和快速响应。  
+这两个功能在与查询性能优化相同的时间的专用 SQL 池中引入。 结果集缓存用于在静态数据的重复查询中实现高并发性和快速响应。  
 
 为使用缓存结果，请求缓存的查询的形式必须与生成缓存的查询匹配。  此外，缓存的结果必须应用于整个查询。  
 

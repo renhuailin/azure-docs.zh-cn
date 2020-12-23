@@ -1,16 +1,14 @@
 ---
 title: 在 Azure Service Fabric 中参数化配置文件
 description: 了解如何在 Service Fabric 中参数化配置文件，这是管理多个环境时的一项有用技术。
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: mikhegn
-ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca376230c427c47e839b2dee96e8daa83ccedf15
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75644624"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576751"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何在 Service Fabric 中参数化配置文件
 
@@ -20,7 +18,7 @@ ms.locfileid: "75644624"
 
 在此示例中，在应用程序部署中使用参数来替代配置值。
 
-1. 打开服务项目中的* \<MyService>\PackageRoot\Config\Settings.xml*文件。
+1. 打开服务项目中的 *\<MyService>\PackageRoot\Config\Settings.xml* 文件。
 1. 通过添加以下 XML，设置配置参数名称和值，例如高速缓存大小等于 25：
 
    ```xml
@@ -30,7 +28,7 @@ ms.locfileid: "75644624"
    ```
 
 1. 保存并关闭该文件。
-1. 打开* \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml*文件。
+1. 打开 *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* 文件。
 1. 在 ApplicationManifest.xml 文件的 `Parameters` 元素中声明参数和默认值。  建议参数名称包含服务的名称（例如，“MyService”）。
 
    ```xml

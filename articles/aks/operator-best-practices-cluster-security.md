@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集安全性和升级的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.date: 11/12/2020
+ms.openlocfilehash: ad1f14fc92433e8d9cb31de165645e4a5731f01a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776300"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019460"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -19,7 +19,7 @@ ms.locfileid: "91776300"
 本文重点介绍如何保护 AKS 群集。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
-> * 使用 Azure Active Directory 和基于角色的访问控制 (RBAC) 来保护 API 服务器访问
+> * 使用 Azure Active Directory 和 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 保护 API 服务器访问
 > * 保护容器对节点资源的访问
 > * 将 AKS 群集升级到最新的 Kubernetes 版本
 > * 使节点保持最新状态并自动应用安全修补程序
@@ -30,7 +30,7 @@ ms.locfileid: "91776300"
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>保护对 API 服务器和群集节点的访问
 
-**最佳做法指南** - 若要保护群集，保护对 Kubernetes API 服务器的访问是你能够做的最重要的事情之一。 将 Kubernetes 基于角色的访问控制 (RBAC) 与 Azure Active Directory 集成，以控制对 API 服务器的访问。 借助这些控制，可以像保护对 Azure 订阅的访问一样保护 AKS。
+**最佳做法指南** - 若要保护群集，保护对 Kubernetes API 服务器的访问是你能够做的最重要的事情之一。 将 Kubernetes 的基于角色的访问)  (控制与 Azure Active Directory 结合使用，以控制对 API 服务器的访问。 借助这些控制，可以像保护对 Azure 订阅的访问一样保护 AKS。
 
 Kubernetes API 服务器为在群集中执行操作的请求提供单一连接点。 若要保护和审核对 API 服务器的访问，请限制访问权限并提供所需的最低特权访问权限。 这种方法并不是 Kubernetes 独有的，但它在将 AKS 群集进行逻辑隔离以供多租户使用时特别重要。
 
@@ -38,22 +38,22 @@ Azure Active Directory (AD) 提供可与 AKS 群集集成的企业级标识管�
 
 ![用于 AKS 群集的 Azure Active Directory 集成](media/operator-best-practices-cluster-security/aad-integration.png)
 
-通过使用 Kubernetes RBAC 和 Azure AD 集成，可保护 API 服务器并提供限定范围的资源集（例如单个命名空间）所需的最少权限。 可以向 Azure AD 中不同的用户或组授予不同的 RBAC 角色。 借助这些细化的权限，可以限制对 API 服务器的访问，并提供已执行操作的清晰审核线索。
+通过使用 Kubernetes RBAC 和 Azure AD 集成，可保护 API 服务器并提供限定范围的资源集（例如单个命名空间）所需的最少权限。 Azure AD 中的不同用户或组可以被授予不同的 Kubernetes 角色。 借助这些细化的权限，可以限制对 API 服务器的访问，并提供已执行操作的清晰审核线索。
 
-建议的最佳做法是使用组（而非单个标识）提供对文件和文件夹的访问，使用 Azure AD *组*成员身份将用户绑定到 RBAC 角色，而不是将单个*用户*绑定到 RBAC 角色。 当某个用户的组成员身份发生变化时，该用户对 AKS 群集的访问权限也会相应发生变化。 如果将该用户直接绑定到某个角色，则其工作职能可能会发生变化。 Azure AD 组成员身份会更新，但这一更新不会反映在对 AKS 群集的权限上。 在这种情况下，该用户最终被授予的权限将超过一个用户所需的权限。
+建议的最佳做法是使用组来提供对文件和文件夹的访问权限，以及单个标识，使用 Azure AD *组* 成员身份将用户绑定到 Kubernetes 角色，而不是单个 *用户*。 当某个用户的组成员身份发生变化时，该用户对 AKS 群集的访问权限也会相应发生变化。 如果将该用户直接绑定到某个角色，则其工作职能可能会发生变化。 Azure AD 组成员身份会更新，但这一更新不会反映在对 AKS 群集的权限上。 在这种情况下，该用户最终被授予的权限将超过一个用户所需的权限。
 
-有关 Azure AD 集成和 RBAC 的详细信息，请参阅[有关 AKS 中身份验证和授权的最佳做法][aks-best-practices-identity]。
+有关 Azure AD 集成、Kubernetes RBAC 和 Azure RBAC 的详细信息，请参阅 [AKS 中的身份验证和授权的最佳实践][aks-best-practices-identity]。
 
 ## <a name="secure-container-access-to-resources"></a>保护容器对资源的访问
 
 **最佳做法指南** - 限制对容器可以执行的操作的访问。 提供最少的权限，并避免使用 root/特权提升。
 
-与应该向用户或组授予所需最少权限的方式一样，也应将容器限制为只能访问它们所需的操作和进程。 为了尽量减少攻击风险，请勿配置需要提升的权限或 root 访问权限的应用程序和容器。 例如，在 Pod 清单中设置 `allowPrivilegeEscalation: false`。 这些 *Pod 安全性上下文*内置于 Kubernetes 中，可用于定义其他权限（例如要以其身份运行的用户或组）或者要公开的 Linux 功能。 有关更多最佳做法，请参阅[保护 Pod 对资源的访问][pod-security-contexts]。
+与应该向用户或组授予所需最少权限的方式一样，也应将容器限制为只能访问它们所需的操作和进程。 为了尽量减少攻击风险，请勿配置需要提升的权限或 root 访问权限的应用程序和容器。 例如，在 Pod 清单中设置 `allowPrivilegeEscalation: false`。 这些 *Pod 安全性上下文* 内置于 Kubernetes 中，可用于定义其他权限（例如要以其身份运行的用户或组）或者要公开的 Linux 功能。 有关更多最佳做法，请参阅[保护 Pod 对资源的访问][pod-security-contexts]。
 
 若要更精确地控制容器操作，还可以使用内置 Linux 安全功能，例如 *AppArmor* 和 *seccomp*。 这些功能在节点级别定义，然后通过 Pod 清单实现。 内置的 Linux 安全功能仅在 Linux 节点和 Pod 上提供。
 
 > [!NOTE]
-> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 用于节点的其他安全功能（如 AppArmor、seccomp、Pod 安全策略或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
+> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 其他安全功能（如 *AppArmor*、 *Seccomp*、 *Pod 安全策略*）或更细粒度 Kubernetes 基于角色的访问控制 (Kubernetes 用于节点的) RBAC，使得攻击更加困难。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 
 ### <a name="app-armor"></a>App Armor
 
@@ -117,7 +117,7 @@ command terminated with exit code 1
 
 ### <a name="secure-computing"></a>安全计算
 
-AppArmor 适用于任何 Linux 应用程序，[seccomp（*安*全*计*算）][seccomp]则在进程级别运行。 Seccomp 也是一个 Linux 内核安全模块，并由 AKS 节点所用的 Docker 运行时提供本机支持。 Seccomp 可限制容器可以执行的进程调用。 你可以创建筛选器来定义要允许或拒绝的操作，然后使用 Pod YAML 清单中的注释与 seccomp 筛选器进行关联。 这符合仅授予容器运行所需的最少权限（不授予更多权限）的最佳做法。
+AppArmor 适用于任何 Linux 应用程序，[seccomp（*安* 全 *计* 算）][seccomp]则在进程级别运行。 Seccomp 也是一个 Linux 内核安全模块，并由 AKS 节点所用的 Docker 运行时提供本机支持。 Seccomp 可限制容器可以执行的进程调用。 你可以创建筛选器来定义要允许或拒绝的操作，然后使用 Pod YAML 清单中的注释与 seccomp 筛选器进行关联。 这符合仅授予容器运行所需的最少权限（不授予更多权限）的最佳做法。
 
 为了通过实际操作了解 seccomp，请创建一个筛选器来阻止更改文件权限。 通过 [SSH][aks-ssh] 连接到 AKS 节点，然后创建一个名为 */var/lib/kubelet/seccomp/prevent-chmod* 的 seccomp 筛选器，并粘贴以下内容：
 
@@ -175,9 +175,9 @@ chmod-prevented           0/1       Error     0          7s
 
 **最佳做法指南** - 若要及时了解新功能和 bug 修复，请定期升级 AKS 群集中的 Kubernetes 版本。
 
-与更传统的基础结构平台相比，Kubernetes 发布新功能的速度更快。 Kubernetes 更新包括新功能和 bug 或安全修补程序。 新功能通常会在经历 *alpha*、*beta* 状态后变得*稳定*，这时便可公开发布，并建议用于生产环境中。 在此发布周期内，可对 Kubernetes 进行更新，而不会经常遇到中断性变更，也无需调整部署和模板。
+与更传统的基础结构平台相比，Kubernetes 发布新功能的速度更快。 Kubernetes 更新包括新功能和 bug 或安全修补程序。 新功能通常会在经历 *alpha*、*beta* 状态后变得 *稳定*，这时便可公开发布，并建议用于生产环境中。 在此发布周期内，可对 Kubernetes 进行更新，而不会经常遇到中断性变更，也无需调整部署和模板。
 
-AKS 支持三种次要版本的 Kubernetes。 这意味着，在引入新的次要修补程序版本后，将停止对最早次要版本和修补程序版本的支持。 系统会定期更新 Kubernetes 的次要版本。 请确保设置一个根据需要进行检查和升级的管理流程，以免失去支持。 有关详细信息，请参阅 [支持的 Kubernetes 版本 AKS][aks-supported-versions]。
+AKS 支持三个 Kubernetes 次要版本。 这意味着，在引入新的次要修补程序版本后，将停止对最早次要版本和修补程序版本的支持。 系统会定期更新 Kubernetes 的次要版本。 请确保设置一个根据需要进行检查和升级的管理流程，以免失去支持。 有关详细信息，请参阅[支持的 Kubernetes 版本 AKS][aks-supported-versions]。
 
 若要检查可用于群集的版本，请使用 [az aks get-upgrades][az-aks-get-upgrades] 命令，如以下示例所示：
 
@@ -187,7 +187,7 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 
 然后，可以使用 [az aks upgrade][az-aks-upgrade] 命令升级 AKS 群集。 升级过程会以安全的方式逐一封锁并清空节点，在剩余的节点上计划 Pod，然后部署一个运行最新 OS 和 Kubernetes 版本的新节点。
 
-强烈建议在开发测试环境中测试新的次要版本，以便可以使用新的 Kubernetes 版本来验证工作负荷的运行状况是否正常。 Kubernetes 可能会弃用 Api，如版本1.16 中的工作负荷。 在将新版本引入生产环境时，请考虑 [在不同版本上使用多个节点池](use-multiple-node-pools.md) ，并每次升级一个池，以便在群集中逐步滚动更新。 如果运行多个群集，则每次升级一个群集以逐步监视影响或更改。
+强烈建议在开发测试环境中测试新的次要版本，以便可以使用新的 Kubernetes 版本验证工作负载是否能继续正常运行。 Kubernetes 可能会弃用 API（例如版本 1.16），而你的工作负载可能会依赖这些 API。 将新版本投入生产时，请考虑[在单独的版本上使用多个节点池](use-multiple-node-pools.md)，并一次升级一个池，从而循序渐进地在整个群集中滚动更新。 如果运行多个群集，则每次升级一个群集，从而循序渐进地监视影响或更改。
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
@@ -237,4 +237,4 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
-[security-center-aks]: ../security-center/azure-kubernetes-service-integration.md
+[security-center-aks]: ../security-center/defender-for-kubernetes-introduction.md

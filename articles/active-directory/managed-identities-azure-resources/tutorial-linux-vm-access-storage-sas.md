@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0bb70b82e8c34c50743bf56069488e2d4c4e39
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3edc63a1532bb6889fc490e400dbb57e7bce10d0
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90968775"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360405"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Linux VM 系统分配的标识通过 SAS 凭据访问 Azure 存储
 
@@ -50,8 +50,8 @@ ms.locfileid: "90968775"
 
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
 2. 依次单击“存储”、“存储帐户”，并将显示新的“创建存储帐户”面板。
-3. 输入存储帐户的**名称**，稍后将使用该名称。  
-4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
+3. 输入存储帐户的 **名称** ，稍后将使用该名称。  
+4. **部署模型** 和 **帐户类型** 应分别设置为“资源管理器”和“通用”。 
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。 
 6. 单击“创建”。
 
@@ -68,7 +68,7 @@ ms.locfileid: "90968775"
 
     ![创建存储容器](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>授权 VM 的系统分配的托管标识使用存储 SAS 
+## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>授权 VM 的系统分配的托管标识使用存储 SAS
 
 Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 VM 的系统分配的托管标识从资源管理器检索存储 SAS，然后使用 SAS 来访问存储。  在此步骤中，将向 VM 的系统分配的托管标识授予对存储帐户 SAS 的访问权限。   
 

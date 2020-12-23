@@ -3,13 +3,13 @@ title: 教程：使用 Azure 备份将文件还原到 VM
 description: 了解如何使用备份和恢复服务在 Azure VM 上执行文件级还原。
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 6684e8717bad47248b539ecf70d135a46f459a4e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: d977919b806be32b84001a9b91dc9e396fbd63ce
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324972"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557903"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>将文件还原到 Azure 中的虚拟机
 
@@ -21,13 +21,15 @@ Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复�
 > * 将恢复点连接到 VM
 > * 从恢复点还原文件
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.18 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
 ## <a name="prerequisites"></a>先决条件
 
 本教程需要使用 Azure 备份所保护的 Linux VM。 若要模拟意外文件删除和恢复过程，请从 Web 服务器中删除一页。 如果需要运行 Web 服务器且已使用 Azure 备份保护的 Linux VM，请参阅[在 Azure 中使用 CLI 备份虚拟机](quick-backup-vm-cli.md)。
+
+准备环境：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 本文需要 2.0.18 或更高版本的 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="backup-overview"></a>备份概述
 
@@ -119,7 +121,7 @@ Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复�
 将恢复脚本复制到 VM 后，即可连接恢复点并还原文件。
 
 >[!NOTE]
-> 在继续之前，请查看[此处](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script)，了解是否可以在 VM 上运行脚本。
+> 在继续之前，请查看[此处](backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)，了解是否可以在 VM 上运行脚本。
 
 1. 使用 SSH 连接到 VM。 将 publicIpAddress 替换为 VM 的公共 IP 地址，如下所示：
 

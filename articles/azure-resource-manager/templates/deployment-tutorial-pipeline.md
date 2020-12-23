@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Pipelines 进行持续集成
-description: 了解如何持续构建、测试和部署 Azure 资源管理器模板。
+description: 了解如何持续构建、测试和部署 Azure 资源管理器模板（ARM 模板）。
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d7688a4e4838cb591bcd3ac0045a5ed22180c063
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892671"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906346"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
+# <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 ARM 模板
 
-在[上一篇教程](./deployment-tutorial-linked-template.md)中，你部署了一个链接模板。  本教程介绍如何使用 Azure Pipelines 持续生成和部署 Azure 资源管理器模板项目。
+在[上一篇教程](./deployment-tutorial-linked-template.md)中，你部署了一个链接模板。  本教程介绍如何使用 Azure Pipelines 持续生成和部署 Azure 资源管理器模板（ARM 模板）项目。
 
 Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开发代码以及构建和部署应用程序。 通过使用 Azure DevOps Services，开发人员能够在云中工作。 Azure DevOps 提供了一组集成的功能，可以通过 Web 浏览器或 IDE 客户端访问这些功能。 Azure Pipelines 是这些功能中的一项。 Azure Pipelines 是一项别具特色的持续集成 (CI) 和持续交付 (CD) 服务。 它适用于你喜欢的 Git 提供程序，并且可以部署到大多数主要云服务。 然后，可以自动化构建和测试代码并将其部署到 Microsoft Azure、Google Cloud Platform 或 Amazon Web Services 。
 
@@ -40,7 +40,7 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
 * **GitHub 帐户**，用于为模板创建存储库。 如果没有帐户，可以[免费创建一个帐户](https://github.com)。 有关使用 GitHub 存储库的详细信息，请参阅[构建 GitHub 存储库](/azure/devops/pipelines/repos/github)。
 * **安装 Git**。 本教程说明使用 Git Bash 或 Git Shell 。 如需说明，请参阅[安装 Git]( https://www.atlassian.com/git/tutorials/install-git)。
 * **Azure DevOps 组织**。 如果没有组织，可以免费创建一个组织。 请参阅[创建组织或项目集合](/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
-* （可选）**包含资源管理器工具扩展的 Visual Studio Code**。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
+* （可选）**包含资源管理器工具扩展的 Visual Studio Code**。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="prepare-a-github-repository"></a>准备 GitHub 存储库
 
@@ -180,7 +180,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     * **部署模式**：选择“增量”。
     * **部署名称**：输入 **DeployPipelineTemplate**。 选择“高级”，然后可以看到“部署名称”。 
 
-    ![Azure 资源管理器 Azure DevOps Azure Pipelines 步骤](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![屏幕截图显示了已输入所需值的 ARM 模板部署页。](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
 1. 选择 **添加** 。
 
@@ -188,7 +188,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
     yml 文件应如下所示：
 
-    ![Azure 资源管理器 Azure DevOps Azure Pipelines yaml](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![屏幕截图显示了包含标题为“查看管道 YAML”的新管道的“查看”页。](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. 选择“保存并运行”。
 1. 在“保存并运行”窗格中，再次选择“保存并运行”。  YAML 文件的副本将保存到已连接的存储库中。 浏览到存储库即可查看该 YAML 文件。

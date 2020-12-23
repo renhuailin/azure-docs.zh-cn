@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 34af52b32d9e31ad003c5e95e288f88b157a944a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: d253bda69839c76aed0170f9a79a03b7d4bf1a79
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710611"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130100"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
@@ -52,7 +52,7 @@ ms.locfileid: "91710611"
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-根据[托管服务认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)，需要潜在顾客目标。 每次客户部署你的产品/服务时，这将在 CRM 系统中创建一条记录。
+根据[托管服务认证策略](/legal/marketplace/certification-policies#700-managed-services)，需要潜在顾客目标。 每次客户部署你的产品/服务时，这将在 CRM 系统中创建一条记录。
 
 有关详细信息，请参阅[潜在顾客管理概述](./commercial-marketplace-get-customer-leads.md)。
 
@@ -85,8 +85,8 @@ ms.locfileid: "91710611"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
-2. 说明
+1. 标题
+2. 描述
 3. 有用的链接
 4. 屏幕截图
 
@@ -191,7 +191,7 @@ ms.locfileid: "91710611"
 
 ### <a name="pricing-and-availability"></a>定价和可用性
 
-目前，只有一种定价模型可用于托管服务产品/服务：**自带许可 (BYOL)** 。 这意味着你将直接向客户收取与此产品/服务相关的费用，而 Microsoft 不向你收取任何费用。
+目前，只有一种定价模型可用于托管服务产品/服务： **自带许可 (BYOL)** 。 这意味着你将直接向客户收取与此产品/服务相关的费用，而 Microsoft 不向你收取任何费用。
 
 “计划可见性”部分让你可以指示此计划是否应为[专用](../../marketplace/private-offers.md)。 如果未选中“这是专用计划”复选框，则计划将不限于特定客户（或特定数量的客户）。
 
@@ -231,12 +231,12 @@ ms.locfileid: "91710611"
 
 对于每个授权，你需要提供以下信息。 然后，可根据需要多次选择“+ 添加授权”，以添加更多用户和角色定义。
 
-- **Azure AD 对象 ID**：要向其授予客户资源特定权限（如角色定义所定义）的用户、用户组或应用程序的 Azure AD 标识符。
-- **Azure AD 对象显示名称**：一个易记名称，可帮助客户了解此授权的目的。 在委派资源时，客户将看到此名称。
-- **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限。 有关这些角色的说明，请参阅[Azure Lighthouse 的](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)[内置角色](../../role-based-access-control/built-in-roles.md)和角色支持。
+- **Azure AD 对象 ID** ：要向其授予客户资源特定权限（如角色定义所定义）的用户、用户组或应用程序的 Azure AD 标识符。
+- **Azure AD 对象显示名称** ：一个易记名称，可帮助客户了解此授权的目的。 在委派资源时，客户将看到此名称。
+- **角色定义** ：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限。 有关这些角色的说明，请参阅[Azure Lighthouse 的](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)[内置角色](../../role-based-access-control/built-in-roles.md)和角色支持。
   > [!NOTE]
   > 将适用的新内置角色添加到 Azure 后，它们将在此处可用，但在它们显示前可能会有一些延迟。
-- **可分配角色**：仅当在“角色定义”中为此授权选择了“用户访问管理员”时，此选项才会显示。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些角色分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](../../lighthouse/how-to/deploy-policy-remediation.md)所必需的。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。
+- **可分配角色** ：仅当在“角色定义”中为此授权选择了“用户访问管理员”时，此选项才会显示。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些角色分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](../../lighthouse/how-to/deploy-policy-remediation.md)所必需的。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。
 
 > [!TIP]
 > 若要确保可以根据需要[删除对委派的访问权限](../../lighthouse/how-to/remove-delegation.md)，请包括“角色定义”设置为[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的“授权”。 如果未分配此角色，则只能由客户租户中的用户删除委派资源。

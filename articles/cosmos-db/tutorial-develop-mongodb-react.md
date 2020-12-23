@@ -10,14 +10,15 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 83c4d7c0037a3f8bc1162993c8667df62e5d9123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1425b89e42450123c1696ddcee4458e1f69b8a6c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316165"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348562"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>通过 React 和 Azure Cosmos DB 创建 MongoDB 应用  
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 本视频教程包含多个部分，演示了如何使用 React 前端创建 hero 跟踪应用。 该应用使用适用于服务器的 Node 和 Express，连接到使用 [Azure Cosmos DB 的 MongoDB API](mongodb-introduction.md) 配置的 Cosmos 数据库，然后将 React 前端连接到应用的服务器部分。 本教程还演示了如何在 Azure 门户中对 Cosmos DB 进行点击缩放，以及如何将应用部署到 Internet，方便每个人跟踪其最喜欢的 hero。 
 
@@ -107,5 +108,4 @@ ms.locfileid: "91316165"
 你可以继续学习下一教程，了解如何将 MongoDB 数据导入 Azure Cosmos DB 中。  
 
 > [!div class="nextstepaction"]
-> [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)
- 
+> [将 MongoDB 数据导入 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

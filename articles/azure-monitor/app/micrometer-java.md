@@ -2,23 +2,26 @@
 title: 如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 description: 有关对 Application Insights Spring Boot 和非 Spring Boot 应用程序使用 Micrometer 的分步指导。
 ms.topic: conceptual
-author: lgayhardt
+author: MS-jgol
 ms.custom: devx-track-java
-ms.author: lagayhar
+ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: bb5caafea944d21547a904b99f9043aef63a6ffa
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761594"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656460"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>如何将 Micrometer 与 Azure 应用程序 Insights Java SDK 一起使用 (不推荐使用) 
+
+> [!IMPORTANT]
+> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 Micrometer 遥测是通过 Application Insights Java 3.0 agent 自动收集的-遵循 [Application Insights java 3.0 代理](./java-in-process-agent.md)的准则。
 
 > [!NOTE]
-> Application Insights Java SDK 不支持弹簧 Webflux。 
+> Application Insights Java SDK 不支持弹簧 Webflux-请改用 [Application Insights Java 3.0 代理](./java-in-process-agent.md) 。 
 >
-> 不需要检测 [Application Insights Java 3.0 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises) 支持 Webflux 和 Micrometer。 
+> 无需检测的 [Application Insights Java 3.0 代理](./java-on-premises.md)支持 Webflux 和 Micrometer。 
 
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。
 
@@ -89,17 +92,17 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 *    为 Tomcat、JVM 自动配置的指标、Logback 指标、Log4J 指标、运行时间指标、处理器指标、FileDescriptorMetrics。
 *    例如，如果类路径上存在 Netflix Hystrix，则我们也会获取这些指标。 
 *    可通过添加相应的 bean 来获取以下指标。 
-        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
         - OkHttp3 指标 
         - Kafka 指标 
 
- 
+
 
 如何禁用自动指标收集： 
- 
+
 - JVM 指标： 
     - management.metrics.binders.jvm.enabled=false 
 - Logback 指标： 
@@ -136,7 +139,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
             <artifactId>micrometer-registry-azure-monitor</artifactId>
             <version>1.1.0</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>applicationinsights-web-auto</artifactId>
@@ -149,17 +152,17 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-    
+
        <!-- The key from the portal: -->
        <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-    
+
        <!-- HTTP request component (not required for bare API) -->
        <TelemetryModules>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
        </TelemetryModules>
-    
+
        <!-- Events correlation (not required for bare API) -->
        <!-- These initializers add context data to each event -->
        <TelemetryInitializers>
@@ -169,7 +172,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
        </TelemetryInitializers>
-    
+
     </ApplicationInsights>
     ```
 
@@ -178,17 +181,17 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
     ```Java
         @WebServlet("/hello")
         public class TimedDemo extends HttpServlet {
-    
+
           private static final long serialVersionUID = -4751096228274971485L;
-    
+
           @Override
           @Timed(value = "hello.world")
           protected void doGet(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
-    
+
             response.getWriter().println("Hello World!");
             MeterRegistry registry = (MeterRegistry) getServletContext().getAttribute("AzureMonitorMeterRegistry");
-    
+
         //create new Timer metric
             Timer sampleTimer = registry.timer("timer");
             Stream<Integer> infiniteStream = Stream.iterate(0, i -> i+1);
@@ -207,9 +210,9 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
           public void destroy() {
             System.out.println("Servlet " + this.getServletName() + " has stopped");
           }
-    
+
         }
-    
+
     ```
 
 4. 示例配置类：
@@ -217,10 +220,10 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
     ```Java
          @WebListener
          public class MeterRegistryConfiguration implements ServletContextListener {
-     
+
            @Override
            public void contextInitialized(ServletContextEvent servletContextEvent) {
-     
+
          // Create AzureMonitorMeterRegistry
            private final AzureMonitorConfig config = new AzureMonitorConfig() {
              @Override
@@ -230,23 +233,23 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
             @Override
                public Duration step() {
                  return Duration.ofSeconds(60);}
-     
+
              @Override
              public boolean enabled() {
                  return false;
              }
          };
-     
+
       MeterRegistry azureMeterRegistry = AzureMonitorMeterRegistry.builder(config);
-     
+
              //set the config to be used elsewhere
              servletContextEvent.getServletContext().setAttribute("AzureMonitorMeterRegistry", azureMeterRegistry);
-     
+
            }
-     
+
            @Override
            public void contextDestroyed(ServletContextEvent servletContextEvent) {
-     
+
            }
          }
     ```
@@ -277,6 +280,5 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关 Micrometer 的详细信息，请参阅官方 [Micrometer 文档](https://micrometer.io/docs)。
+* 若要详细了解 Micrometer，请参阅官方的 [Micrometer 文档](https://micrometer.io/docs)。
 * 若要了解有关 Azure 的弹簧，请参阅 [azure 上的官方春季文档](/java/azure/spring-framework/?view=azure-java-stable)。
-

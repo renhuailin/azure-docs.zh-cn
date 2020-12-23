@@ -12,16 +12,16 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115027"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348715"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
-> 通过将此 URL 粘贴到 RSS 源读取器来获得对此页的更新的通知：<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
+> 通过将此 URL 粘贴到 RSS 源阅读器中即可在此页面更新时获得通知：<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
 身份验证系统会持续更改和添加功能，以增强安全性并提高标准符合性。 为了让大家随时了解最新的开发成果，本文将提供有关以下详细信息的信息：
 
@@ -49,11 +49,11 @@ ms.locfileid: "88115027"
 
 2018年6月1日，Azure 政府 (AAD) 机构的官方 Azure Active Directory 从更改 `https://login-us.microsoftonline.com` 为 `https://login.microsoftonline.us` 。 此更改也适用于 Microsoft 365 GCC 高和 DoD，Azure 政府版 AAD 也服务。 如果你拥有美国政府租户中的应用程序，则必须更新应用程序，以便登录到终结点上的用户 `.us` 。  
 
-从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点 () 登录到在美国政府租户中托管的应用 `microsoftonline.com` 。  受影响的应用将开始显示错误 `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` 。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要[更新你的应用以明确支持它们](./authentication-national-cloud.md)。 这可能需要在美国政府云中创建新的应用注册。 
+从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点 () 登录到在美国政府租户中托管的应用 `microsoftonline.com` 。  受影响的应用将开始显示错误 `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` 。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要 [更新你的应用以明确支持它们](./authentication-national-cloud.md)。 这可能需要在美国政府云中创建新的应用注册。 
 
 此更改的执行将通过以下方式进行：使用逐步推出：美国政府版中的用户登录到应用程序时，不经常会看到强制执行，而美国政府用户经常使用的应用将在最后应用强制实施。 预计会在6月2020的所有应用中完成强制。 
 
-有关更多详细信息，请参阅[此迁移中的 Azure 政府博客文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。 
+有关更多详细信息，请参阅 [此迁移中的 Azure 政府博客文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。 
 
 ## <a name="march-2020"></a>2020 年 3 月
 
@@ -65,7 +65,7 @@ ms.locfileid: "88115027"
 
 **受影响的协议**：所有用户流。
 
-从 2020 年 3 月 13 日开始，直接登录 Azure AD（而不是像 ADFS 这样的联合 IDP）的密码超过 256 个字符的用户将无法登录，并被要求重置其密码。  管理员可能会收到要求帮助重置用户密码的请求。
+从 2020 年 3 月 13 日开始，直接登录 Azure AD（而不是像 ADFS 这样的联合 IDP）的密码超过 256 个字符的用户将无法登录，并被要求重置其密码。  管理员可能会收到帮助重置用户密码的请求。
 
 登录日志中的错误将为 AADSTS 50052：InvalidPasswordExceedsMaxLength
 
@@ -85,7 +85,7 @@ ms.locfileid: "88115027"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：使用 response_type=query 的 OAuth 和 OIDC 流 - ，这涵盖了[授权代码流](v2-oauth2-auth-code-flow.md)（在某些情况下）和[隐式流](v2-oauth2-implicit-grant-flow.md)。
+**受影响的协议**：使用 response_type=query 的 OAuth 和 OIDC 流 - ，这涵盖了 [授权代码流](v2-oauth2-auth-code-flow.md)（在某些情况下）和 [隐式流](v2-oauth2-implicit-grant-flow.md)。
 
 当通过 HTTP 重定向将身份验证响应从 login.microsoftonline.com 发送到应用程序时，该服务会将一个空片段追加到回复 URL。  这可以确保浏览器擦除身份验证请求中的任何现有片段，防止出现重定向攻击类。  任何应用都不应依赖于此行为。
 
@@ -98,7 +98,7 @@ ms.locfileid: "88115027"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：使用 POST 的任何位置（[客户端凭据](./v2-oauth2-client-creds-grant-flow.md)、[授权代码兑换](./v2-oauth2-auth-code-flow.md)、[ROPC](./v2-oauth-ropc.md)、[OBO](./v2-oauth2-on-behalf-of-flow.md)和[刷新令牌兑换](./v2-oauth2-auth-code-flow.md#refresh-the-access-token)）
+**受影响的协议**：使用 POST 的任何位置（[客户端凭据](./v2-oauth2-client-creds-grant-flow.md)、[授权代码兑换](./v2-oauth2-auth-code-flow.md)、[ROPC](./v2-oauth-ropc.md)、[OBO](./v2-oauth2-on-behalf-of-flow.md)和 [刷新令牌兑换](./v2-oauth2-auth-code-flow.md#refresh-the-access-token)）
 
 从 9 月 2 日那一周开始，使用 POST 方法的身份验证请求会按更严格的 HTTP 标准进行验证。  具体说来，空格和双引号 (“) 将不再从请求表单值中删除。 这些更改不应造成任何现有客户端出现中断，将确保发送到 Azure AD 的请求每次都能够得到可靠的处理。 在将来（见上），我们计划还要拒绝重复参数并忽略请求中的 BOM。
 
@@ -201,7 +201,7 @@ ms.locfileid: "88115027"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：隐式流和[代理流](v2-oauth2-on-behalf-of-flow.md)
+**受影响的协议**：隐式流和 [代理流](v2-oauth2-on-behalf-of-flow.md)
 
 在 2018 年 5 月 1 日之后，id_token 不能用作新应用程序的 OBO 流中的断言。 应改为使用访问令牌来保护 API，即使在同一应用程序的客户端和中间层之间也是如此。 在 2018 年 5 月 1 日之前注册的应用将继续有效，并能够使用 id_tokens 交换访问令牌；但是，此模式并不是最佳做法。
 

@@ -12,11 +12,11 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: inhenkel
 ms.openlocfilehash: 2a70d0540f9728b8ad4066125fb2f5072b4ac750
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595975"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971184"
 ---
 > [!NOTE]
 > Widevine 在 GovCloud 区域中不可用。

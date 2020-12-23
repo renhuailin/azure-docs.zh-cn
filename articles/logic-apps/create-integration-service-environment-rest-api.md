@@ -5,30 +5,39 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 12/05/2020
+ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231310"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741093"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用逻辑应用 REST API 创建集成服务环境 (ISE)
 
-本文介绍如何在逻辑应用和集成帐户需要访问[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况下，通过逻辑 REST API 应用[ (ISE) 创建*integration service 环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 。 ISE 是一个专用环境，它使用专用存储和其他与“全局”多租户逻辑应用服务分离的资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。 ISE 还为你提供你自己的静态 IP 地址。 这些 IP 地址与公共、多租户服务中的逻辑应用共享的静态 IP 地址分隔开。
+在逻辑应用和集成帐户需要访问 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况下，可以使用逻辑应用 REST API [ (ISE) 来创建 *integration service 环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 。 若要详细了解 ISE，请参阅[从独立 Azure 逻辑应用访问 Azure 虚拟网络资源](connect-virtual-network-vnet-isolated-environment-overview.md)。
 
-还可以通过使用 [示例 Azure 资源管理器快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) 或使用 [AZURE 门户](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)来创建 ISE。
+本文说明了如何使用逻辑应用 REST API 一般创建 ISE。 （可选）还可以在 ISE 上启用 [系统分配的或用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) ，但此时仅通过使用逻辑应用 REST API。 使用此标识，你的 ISE 可以验证对位于或连接到 Azure 虚拟网络中的受保护资源（例如虚拟机和其他系统或服务）的访问权限。 这样一来，就不必使用您的凭据登录。
 
-> [!IMPORTANT]
-> 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用与基于消费的定价计划不同的定价计划。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
+有关创建 ISE 的其他方法的详细信息，请参阅以下文章：
+
+* [使用 Azure 门户创建 ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [使用示例 Azure 资源管理器快速入门模板创建 ISE](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
+* [创建支持使用客户管理的密钥来加密静态数据的 ISE](customer-managed-keys-integration-service-environment.md)
 
 ## <a name="prerequisites"></a>先决条件
 
-* 为[ise 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的[先决条件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和要求与在 Azure 门户中创建 ise 时相同。
+* 与在 Azure 门户中创建 ISE 时相同的[先决条件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和[访问要求](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
+
+* 要用于 ISE 的任何其他资源，以便可以将其信息包括在 ISE 定义中，例如： 
+
+  * 若要启用自签名证书支持，你需要在 ISE 定义中包含有关该证书的信息。
+
+  * 若要启用用户分配的托管标识，需要事先创建该标识，并在 `objectId` `principalId` `clientId` ISE 定义中包含、和属性及其值。 有关详细信息，请参阅 [在 Azure 门户中创建用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)。
 
 * 一种工具，可用于通过调用具有 HTTPS PUT 请求 REST API 的逻辑应用来创建 ISE。 例如，可以使用 [Postman](https://www.getpostman.com/downloads/)，也可以生成执行此任务的逻辑应用。
 
-## <a name="send-the-request"></a>发送请求
+## <a name="create-the-ise"></a>创建 ISE
 
 若要通过调用逻辑应用 REST API 创建 ISE，请发出此 HTTPS PUT 请求：
 
@@ -58,17 +67,40 @@ ms.locfileid: "89231310"
 
 ## <a name="request-body"></a>请求正文
 
-下面是请求正文语法，描述创建 ISE 时要使用的属性。 若要创建允许使用在该位置安装的自签名证书的 ISE `TrustedRoot` ，请在 `certificates` ise 定义的部分中包括该对象 `properties` 。 对于现有 ISE，只能为对象发送修补请求 `certificates` 。 有关使用自签名证书的详细信息，请参阅 [对其他服务和系统的出站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。
+在请求正文中，提供用于创建 ISE 的资源定义，其中包括要在 ISE 上启用的其他功能的信息，例如：
+
+* 如本文后面所述，若要创建允许使用在该位置安装的自签名证书的 ISE，请在 `TrustedRoot` `certificates` ise 定义的部分中包括该对象 `properties` 。
+
+  若要对现有 ISE 启用此功能，可以仅为对象发送修补请求 `certificates` 。 有关使用自签名证书的详细信息，请参阅 [对其他服务和系统的出站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。
+
+* 若要创建使用系统分配的托管标识或用户分配的托管标识的 ISE，请在 `identity` ise 定义中包含具有托管标识类型和其他所需信息的对象，如本文后面所述。
+
+* 若要创建使用客户管理的密钥并 Azure Key Vault 加密静态数据的 ISE，请包含支持 [客户托管的密钥支持的信息](customer-managed-keys-integration-service-environment.md)。 *只能在创建时* 设置客户管理的密钥，而不能在之后设置。
+
+### <a name="request-body-syntax"></a>请求正文语法
+
+下面是请求正文语法，描述创建 ISE 时要使用的属性：
 
 ```json
 {
-   "id": "/subscriptions/{Azure-subscription-ID/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
    "name": "{ISE-name}",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "{Azure-region}",
    "sku": {
       "name": "Premium",
       "capacity": 1
+   },
+   // Include the `identity` object to enable the system-assigned identity or user-assigned identity
+   "identity": {
+      "type": <"SystemAssigned" | "UserAssigned">,
+      // When type is "UserAssigned", include the following "userAssignedIdentities" object:
+      "userAssignedIdentities": {
+         "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{user-assigned-managed-identity-object-ID}": {
+            "principalId": "{principal-ID}",
+            "clientId": "{client-ID}"
+         }
+      }
    },
    "properties": {
       "networkConfiguration": {
@@ -112,6 +144,15 @@ ms.locfileid: "89231310"
    "name": "Fabrikam-ISE",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "WestUS2",
+   "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/*********************************": {
+            "principalId": "*********************************",
+            "clientId": "*********************************"
+         }
+      }
+   },
    "sku": {
       "name": "Premium",
       "capacity": 1
@@ -150,4 +191,3 @@ ms.locfileid: "89231310"
 
 * [向集成服务环境添加资源](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [管理集成服务环境](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)
-

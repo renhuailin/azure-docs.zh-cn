@@ -9,7 +9,9 @@
         - name: 什么是 B2B 来宾用户访问权限？
           href: what-is-b2b.md
         - name: 什么是 Azure AD B2C？
-          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
+          href: ../../active-directory-b2c/overview.md
+        - name: Docs 中的新增内容
+          href: whats-new-docs.md
     - name: 快速入门
       items:
         - name: 在门户中添加来宾用户
@@ -137,13 +139,13 @@
         - name: 常见问题解答
           href: faq.md
         - name: 获取支持
-          href: 'https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto'
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md
         - name: Azure 反馈论坛
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Azure 路线图
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
         - name: Microsoft Q&A 问题页面
-          href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+          href: /answers/topics/azure-active-directory.html
         - name: 定价
           href: 'https://azure.microsoft.com/pricing/details/active-directory/'
         - name: 定价计算器

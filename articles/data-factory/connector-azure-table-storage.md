@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 10/20/2020
+ms.openlocfilehash: b70c08df25f3f5d572f88879f5073756de588d52
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417485"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636470"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
 
@@ -55,7 +55,7 @@ ms.locfileid: "81417485"
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **AzureTableStorage**。 |是 |
+| type | type 属性必须设置为 **AzureTableStorage** 。 |是 |
 | connectionString | 为 connectionString 属性指定连接到存储所需的信息。 <br/>还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
@@ -89,13 +89,13 @@ ms.locfileid: "81417485"
         "type": "AzureTableStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
-            "accountKey": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -110,10 +110,10 @@ ms.locfileid: "81417485"
 
 还可以使用共享访问签名创建存储链接服务。 这样，便可以将存储中所有/特定资源的受限/限时访问权限提供给数据工厂。
 
-共享访问签名对存储帐户中的资源提供委托访问。 可以使用共享访问签名授权客户端在指定时间内，以一组指定权限有限访问存储帐户中的对象。 无需共享帐户访问密钥。 共享访问签名是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 若要使用共享访问签名访问存储资源，客户端只需将共享访问签名传入到相应的构造函数或方法。 有关共享访问签名的详细信息，请参阅[共享访问签名：了解共享访问签名模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+共享访问签名对存储帐户中的资源提供委托访问。 可以使用共享访问签名授权客户端在指定时间内，以一组指定权限有限访问存储帐户中的对象。 无需共享帐户访问密钥。 共享访问签名是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 若要使用共享访问签名访问存储资源，客户端只需将共享访问签名传入到相应的构造函数或方法。 有关共享访问签名的详细信息，请参阅[共享访问签名：了解共享访问签名模型](../storage/common/storage-sas-overview.md)。
 
 > [!NOTE]
-> 数据工厂现在同时支持**服务共享访问签名**和**帐户共享访问签名**。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。 
+> 数据工厂现在同时支持 **服务共享访问签名** 和 **帐户共享访问签名** 。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。 
 
 > [!TIP]
 > 若要为存储帐户生成服务共享访问签名，可以执行以下 PowerShell 命令。 请替换占位符并授予所需的权限。
@@ -124,7 +124,7 @@ ms.locfileid: "81417485"
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **AzureTableStorage**。 |是 |
+| type | type 属性必须设置为 **AzureTableStorage** 。 |是 |
 | sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure Key Vault 中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
@@ -164,13 +164,13 @@ ms.locfileid: "81417485"
                 "type": "SecureString",
                 "value": "<SAS URI of the Azure Storage resource without token e.g. https://<account>.table.core.windows.net/<table>>"
             },
-            "sasToken": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -191,11 +191,11 @@ ms.locfileid: "81417485"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure 表数据集支持的属性列表。
 
-要向/从 Azure 表复制数据，请将数据集的 type 属性设置为 **AzureTable**。 支持以下属性。
+要向/从 Azure 表复制数据，请将数据集的 type 属性设置为 **AzureTable** 。 支持以下属性。
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 **AzureTable**。 |是 |
+| type | 数据集的 type 属性必须设置为 **AzureTable** 。 |是 |
 | tableName |链接服务引用的表存储数据库实例中表的名称。 |是 |
 
 **示例：**
@@ -222,7 +222,7 @@ ms.locfileid: "81417485"
 
 对于无架构的数据存储（如 Azure 表），数据工厂将使用下列方式之一推断架构：
 
-* 如果在复制活动中指定列映射，则数据工厂使用源端列列表来检索数据。 在这种情况下，如果行不包含列的值，则会为其提供 null 值。
+* 如果在复制活动中指定列映射，数据工厂将使用源端列列表来检索数据。 在这种情况下，如果行不包含列的值，则会为其提供 null 值。
 * 如果未在复制活动中指定列映射，则数据工厂使用数据中的第一行来推断架构。 在这种情况下，如果第一行不包含完整架构（例如某些列具有 null 值），则复制操作的结果中会丢失部分列。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
@@ -235,14 +235,14 @@ ms.locfileid: "81417485"
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 **AzureTableSource**。 |是 |
-| azureTableSourceQuery |使用自定义表存储查询读取数据。 请参阅以下部分中的示例。 |否 |
-| azureTableSourceIgnoreTableNotFound |指示是否允许存在忽略表异常。<br/>允许的值为 **True** 和 **False**（默认值）。 |否 |
+| type | 复制活动源的 type 属性必须设置为 **AzureTableSource** 。 |是 |
+| azureTableSourceQuery |使用自定义表存储查询读取数据。<br/>源查询是 `$filter` Azure 表存储支持的查询选项的直接映射，详细了解 [此文档](/rest/api/storageservices/querying-tables-and-entities#supported-query-options)中的语法，请参阅以下 [azureTableSourceQuery 示例部分](#azuretablesourcequery-examples)中的示例。 |否 |
+| azureTableSourceIgnoreTableNotFound |指示是否允许存在忽略表异常。<br/>允许的值为 **True** 和 **False** （默认值）。 |否 |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 示例
 
 >[!NOTE]
->[Azure 表服务会强制](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations) Azure 表查询操作在 30 秒后超时。 通过[针对查询的设计](../storage/tables/table-storage-design-for-query.md)一文了解如何优化查询。
+>[Azure 表服务会强制](/rest/api/storageservices/setting-timeouts-for-table-service-operations) Azure 表查询操作在 30 秒后超时。 通过[针对查询的设计](../storage/tables/table-storage-design-for-query.md)一文了解如何优化查询。
 
 在 Azure 数据工厂中，如果要根据日期/时间类型列筛选数据，请参阅以下示例：
 
@@ -264,11 +264,11 @@ ms.locfileid: "81417485"
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为 **AzureTableSink**。 |是 |
+| type | 复制活动接收器的 type 属性必须设置为 **AzureTableSink** 。 |是 |
 | azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |否 |
 | azureTablePartitionKeyName |指定列名称，使用列值作为分区键。 如果未指定，则使用“AzureTableDefaultPartitionKeyValue”作为分区键。 |否 |
 | azureTableRowKeyName |指定列名称，使用列值作为行键。 如果未指定，对每一行使用 GUID。 |否 |
-| azureTableInsertType |将数据插入 Azure 表的模式。 此属性控制输出表中具有匹配的分区键和行键的现有行是否替换或合并其值。 <br/><br/>允许的值为 **merge**（默认值）和 **replace**。 <br/><br> 此设置在行级别而不是表级别进行应用。 并且两个选项都不会删除输入中不存在的输出表中的行。 若要了解合并和替换设置的工作原理，请参阅[插入或合并实体](https://msdn.microsoft.com/library/azure/hh452241.aspx)和[插入或替换实体](https://msdn.microsoft.com/library/azure/hh452242.aspx)。 |否 |
+| azureTableInsertType |将数据插入 Azure 表的模式。 此属性控制输出表中具有匹配的分区键和行键的现有行是否替换或合并其值。 <br/><br/>允许的值为 **merge** （默认值）和 **replace** 。 <br/><br> 此设置在行级别而不是表级别进行应用。 并且两个选项都不会删除输入中不存在的输出表中的行。 若要了解合并和替换设置的工作原理，请参阅[插入或合并实体](/rest/api/storageservices/Insert-Or-Merge-Entity)和[插入或替换实体](/rest/api/storageservices/Insert-Or-Replace-Entity)。 |否 |
 | writeBatchSize |writeBatchSize 或 writeBatchTimeout 命中时，将数据插入 Azure 表。<br/>允许的值为 integer（行数）。 |否（默认值为 10,000） |
 | writeBatchTimeout |writeBatchSize 或 writeBatchTimeout 命中时，将数据插入 Azure 表。<br/>允许的值为 timespan。 例如“00:20:00”（20 分钟）。 |否（默认值为 90 秒，即存储客户端的默认超时） |
 
@@ -331,7 +331,7 @@ ms.locfileid: "81417485"
 
 从/向 Azure 表复制数据时，以下映射用于从 Azure 表数据类型映射到数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-将数据移入和移出 Azure 表时，[Azure 表定义的以下映射](https://msdn.microsoft.com/library/azure/dd179338.aspx)将从 Azure 表 OData 类型转换为 .NET 类型，反之亦然。
+将数据移入和移出 Azure 表时，[Azure 表定义的以下映射](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)将从 Azure 表 OData 类型转换为 .NET 类型，反之亦然。
 
 | Azure 表数据类型 | 数据工厂临时数据类型 | 详细信息 |
 |:--- |:--- |:--- |

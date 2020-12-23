@@ -5,15 +5,16 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.date: 12/11/2020
+ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567581"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368573"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中自动缩放预配吞吐量的常见问题解答
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 使用自动缩放预配吞吐量，Azure Cosmos DB 将根据使用情况自动管理和缩放数据库或容器的 RU/s。 本文解答了有关自动缩放的常见问题。
 
@@ -27,7 +28,7 @@ ms.locfileid: "91567581"
 
 例如，如果你之前选择了缩放比例为 400 到 4,000 RU/s 的层，则数据库或容器现在将显示具有最大为 4,000 RU/s 的吞吐量，缩放比例为 400 到 4,000 RU/s。 在此处，你可以将最大 RU/s 更改为自定义值以适应你的工作负载。 
 
-### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>自动缩放会根据流量峰值增加速度？
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>自动缩放功能根据流量高峰纵向扩展的速度有多快？
 使用自动缩放，系统根据传入的流量在 `0.1 * Tmax` 和 `Tmax` 范围内上下缩放吞吐量 (RU/s) `T`。 因为缩放是自动且即时的，所以可在任何时间点无延迟地使用吞吐量（最多使用预配的 `Tmax`）。 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>如何确定系统当前缩放到的吞吐量 (RU/s)？
@@ -37,12 +38,12 @@ ms.locfileid: "91567581"
 每小时将向你收取系统在该小时内扩展到的最高吞吐量 `T` 的费用。 如果你的资源在这个小时内没有请求，或者缩放的范围未超出 `0.1 * Tmax`，则将向你收取最低 `0.1 * Tmax` 的费用。 请参考 Azure Cosmos DB [定价页面](https://azure.microsoft.com/pricing/details/cosmos-db/)了解详细信息。 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>自动缩放如何显示在我的帐单上？
-在单个写入区域帐户中，每 100 RU/s 的自动缩放速率为 1.5 x 标准 (手动) 预配吞吐量的比率。 在账单上，你可看到现有的标准预配吞吐量计量。 此计量的数量乘以 1.5。 例如，如果系统在一小时内缩放到的最高 RU/s 为 6,000 RU/s，则该小时的计费是 60 * 1.5 = 90 个计量单位。
+在单写入区域帐户中，每 100 RU/s 的自动缩放速率是标准（手动）预配吞吐量速率的 1.5 倍。 在账单上，你可看到现有的标准预配吞吐量计量。 此计量的数量乘以 1.5。 例如，如果系统在一小时内缩放到的最高 RU/s 为 6,000 RU/s，则该小时的计费是 60 * 1.5 = 90 个计量单位。
 
-在具有多个写入区域的帐户中，每 100 RU/s 的自动缩放速率与标准 (手动) 设置多个写入区域吞吐量的速率相同。 在帐单上，你将看到现有的多写入区域计量器。 由于速率相同，因此如果你使用自动缩放，你可看到与标准吞吐量相同的数量。
+在具有多个写入区域的帐户中，每 100 RU/s 的自动缩放速率与标准（手动）预配的多写入区域吞吐量速率相同。 在帐单上，你可看到现有的多写入区域计量。 由于速率相同，因此如果你使用自动缩放，你可看到与标准吞吐量相同的数量。
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>自动缩放是否可用于预留容量？
-是的。 为具有多个写入区域的帐户购买保留容量时，自动缩放资源的预订折扣将按 1.5 * [的比率应用](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)到计量器的比率。 
+是的。 当你为具有单个写入区域的帐户购买预留容量时，自动缩放资源的预订折扣将按 1.5 * 的比率应用到计量器的[比率。](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region) 
 
 对于自动缩放和标准 (手动) 预配的吞吐量，多写入区域保留容量相同。 请参阅 [Azure Cosmos DB 预留容量](cosmos-db-reserved-capacity.md)
 
@@ -125,7 +126,7 @@ Azure Cosmos DB 在一个共享吞吐量数据库中最多可实施 25 个容器
 - 1 小时：T=2：容器开始接收请求，在 1 秒内使用 1,000 RU。 此外，还有需使用 200 RU 的 TTL 要实现。 计费 RU/s 仍然为 1,000 RU/s。 无论何时发生 TTL，它们都不会影响自动缩放逻辑。
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>最大 RU/秒和物理分区之间的映射是什么？
-首次选择最大 RU/s 时，Azure Cosmos DB 将进行以下预配：最大 RU/秒/10000 RU/秒 = 物理分区的数量。 每个[物理分区](partition-data.md#physical-partitions)最多可支持 10,000 RU/s 和 50 GB 的存储。 随着存储大小的增长，Azure Cosmos DB 将自动拆分分区，以添加更多物理分区来应对存储的增长；如果存储[超过相关限制](#what-is-the-storage-limit-associated-with-each-max-rus-option)，Azure Cosmos DB 将增加最大 RU/s。 
+首次选择最大 RU/s 时，Azure Cosmos DB 将进行以下预配：最大 RU/秒/10000 RU/秒 = 物理分区的数量。 每个[物理分区](partitioning-overview.md#physical-partitions)最多可支持 10,000 RU/s 和 50 GB 的存储。 随着存储大小的增长，Azure Cosmos DB 将自动拆分分区，以添加更多物理分区来应对存储的增长；如果存储[超过相关限制](#what-is-the-storage-limit-associated-with-each-max-rus-option)，Azure Cosmos DB 将增加最大 RU/s。 
 
 数据库或容器的最大 RU/s 在所有物理分区之间平均分配。 因此，任何单个物理分区可扩展到的总吞吐量为：数据库或容器的最大 RU/s / 物理分区数。 
 
@@ -138,7 +139,7 @@ Azure Cosmos DB 在一个共享吞吐量数据库中最多可实施 25 个容器
 ### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a> 启用自动缩放后，是否仍可看到 429s（限制/速率限制）？ 
 是的。 在两个情况下可能出现 429s。 第一种，当 RU/s 总使用量超过数据库或容器的最大 RU/s 时，服务将相应地限制请求。 
 
-第二种情况是，如果有一个热分区（即逻辑分区键值，该键值的请求数与其他分区键值的请求数相比过高），则基础物理分区可能超出其 RU/秒预算。 为避免出现热分区，最佳做法是[选择良好的分区键](partitioning-overview.md#choose-partitionkey)，从而实现存储和吞吐量的均匀分布。 
+第二种情况是，如果有一个热分区（即逻辑分区键值，该键值的请求数与其他分区键值的请求数相比过高），则基础物理分区可能超出其 RU/秒预算。 为避免出现热分区，最佳做法是[选择一个合适的分区键](partitioning-overview.md#choose-partitionkey)，以实现存储和吞吐量的均匀分配。 
 
 例如，如果选择 20,000 RU/s 的最大吞吐量选项，并具有 200 GB 的存储和四个物理分区，则每个物理分区最多可以自动扩展至 5000 RU/s。 如果特定逻辑分区键上有一个热分区，则当它所在的基础物理分区超过 5000 RU/s（即超过 100% 的标准化利用率）时，将显示 429 错误。
 
@@ -147,5 +148,5 @@ Azure Cosmos DB 在一个共享吞吐量数据库中最多可实施 25 个容器
 
 * 了解如何[对 Azure Cosmos DB 数据库或容器启用自动缩放](how-to-provision-autoscale-throughput.md)。
 * 了解[使用自动缩放预配吞吐量的优势](provision-throughput-autoscale.md#benefits-of-autoscale)。
-* 详细了解[逻辑和物理分区](partition-data.md)。
+* 详细了解[逻辑和物理分区](partitioning-overview.md)。
                         

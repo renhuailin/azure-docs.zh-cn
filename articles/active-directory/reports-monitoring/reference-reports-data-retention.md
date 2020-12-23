@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239548"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093632"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 存储报告数据多长时间？
 
@@ -34,7 +34,7 @@ ms.locfileid: "80239548"
 | Azure AD 版本 | 开始收集 |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | 注册订阅时 |
-| Azure AD Free| 首次打开 [Azure Active Directory 边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)或使用[报告 API](https://aka.ms/aadreports) 时  |
+| Azure AD Free| 首次打开 [Azure Active Directory 边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)或使用[报告 API](./overview-reports.md) 时  |
 
 ---
 
@@ -47,19 +47,13 @@ ms.locfileid: "80239548"
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>获得高级许可证后多久可看见活动数据？
 
-如果已经拥有免费许可证的活动数据，则可在升级时立即看到这些数据。 升级到高级许可证后，如果没有任何数据，则需要在一到两天后，数据才会显示在报告中。
-
----
-
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>获得 Azure AD Premium 许可证后是否能查看上个月的数据？
-
-如果最近刚切换到高级版本（包括试用版），则最初最多能看到 7 天的数据。 随着数据累积，可以看到过去 30 天的数据。
+如果已经拥有免费许可证的活动数据，则可在升级时立即看到这些数据。 如果你没有任何数据，则在升级到高级版许可证后，将需要长达三天的时间，数据才会显示在报表中。
 
 ---
 
 ### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Azure AD 何时开始收集安全信号数据？  
 
-对于安全信号，当你选择使用**Identity Protection Center**时，收集过程将开始。 
+对于安全信号，当你选择使用 **Identity Protection Center** 时，收集过程将开始。 
 
 ---
 
@@ -71,7 +65,7 @@ ms.locfileid: "80239548"
 | :--                    | :--           | :--                 | :--                 |
 | 审核日志             | 7 天        | 30 天             | 30 天             |
 | 登录               | 7 天        | 30 天             | 30 天             |
-| Azure MFA 使用情况        | 30 天       | 30 天             | 30 天             |
+| Azure AD MFA 使用情况        | 30 天       | 30 天             | 30 天             |
 
 通过使用 Azure Monitor 将审核和登录活动数据路由到 Azure 存储帐户，可以使这些活动数据的保留时间长于上述默认保留期限。 有关详细信息，请参阅[将 Azure AD 日志存档到 Azure 存储帐户](quickstart-azure-monitor-route-logs-to-storage-account.md)。
 
@@ -81,5 +75,11 @@ ms.locfileid: "80239548"
 | :--            | :--           | :--                 | :--                 |
 | 有风险的用户  | 7 天        | 30 天             | 90 天             |
 | 有风险的登录 | 7 天        | 30 天             | 90 天             |
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>获得 Azure AD Premium 许可证后是否能查看上个月的数据？
+
+否，不能。 对于免费版本，Azure 最多可存储 7 天的活动数据。 这意味着，从免费版切换到高级版时，最多只能看到 7 天的数据。
 
 ---

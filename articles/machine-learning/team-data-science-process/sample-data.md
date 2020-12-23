@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 878a2a47dfaddf1d3399a1dbd98865332838e148
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76718597"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321746"
 ---
 # <a name="sample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
 
@@ -26,9 +26,8 @@ ms.locfileid: "76718597"
 * [**SQL Server 数据**](sample-data-sql-server.md)是使用 SQL 和 Python 编程语言进行采样。 
 * [**Hive 表数据**](sample-data-hive.md)是使用 Hive 查询进行采样。
 
-此采样任务是[团队数据科学流程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
+此采样任务是[团队数据科学流程 (TDSP)](./index.yml) 中的一个步骤。
 
 **为什么对数据采样？**
 
 如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 缩小可以简化数据理解、探索和特征工程。 Cortana Analytics 过程中的这一采样角色是启用数据处理功能和机器学习模型的快速原型设计。
-

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085605"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021786"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -58,7 +58,7 @@ ms.locfileid: "86085605"
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>在两个不同的区域中设置两个虚拟网络
 
-若要使用模板在两个不同区域创建两个虚拟网络并在 VNet 之间创建 VPN 连接，请选择下面的“部署到 Azure”按钮****。 模板定义存储在[公共 blob 存储](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)中。
+若要使用模板在两个不同区域创建两个虚拟网络并在 VNet 之间创建 VPN 连接，请选择下面的“部署到 Azure”按钮。 模板定义存储在[公共 blob 存储](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)中。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
@@ -105,14 +105,14 @@ ms.locfileid: "86085605"
 若要安装 Bind，需找到两个 DNS 虚拟机的公共 IP 地址。
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
-2. 打开 DNS 虚拟机，方法是选择“资源组”> [资源组名称] > [vnet1DNS]****。  资源组名称是在上一过程中创建的。 默认的 DNS 虚拟机名称为 *vnet1DNS* 和 *vnet2NDS*。
-3. 选择“属性”，打开虚拟网络的属性页。****
-4. 记下“公共 IP 地址”，并验证“专用 IP 地址”********。  vnet1DNS 的专用 IP 地址应该是 **10.1.0.4**，vnet2DNS 的专用 IP 地址应该是 **10.2.0.4**。  
+2. 打开 DNS 虚拟机，方法是选择“资源组”> [资源组名称] > [vnet1DNS]。  资源组名称是在上一过程中创建的。 默认的 DNS 虚拟机名称为 *vnet1DNS* 和 *vnet2NDS*。
+3. 选择“属性”，打开虚拟网络的属性页。
+4. 记下“公共 IP 地址”，并验证“专用 IP 地址”。  vnet1DNS 的专用 IP 地址应该是 **10.1.0.4**，vnet2DNS 的专用 IP 地址应该是 **10.2.0.4**。  
 5. 将两个虚拟网络的 DNS 服务器更改为使用默认（Azure 提供的）DNS 服务器以允许对下载包进行入站和出站访问，从而可以按以下步骤安装 Bind。
 
 若要安装 Bind，请执行以下过程：
 
-1. 使用 SSH 连接到 DNS 虚拟机的公共 IP 地址____。 以下示例将在 40.68.254.142 连接到虚拟机：
+1. 使用 SSH 连接到 DNS 虚拟机的公共 IP 地址。 以下示例连接到位于 40.68.254.142 的虚拟机：
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -124,11 +124,11 @@ ms.locfileid: "86085605"
     > 可通过多种方法获取 `ssh` 实用工具。 在 Linux、Unix 和 macOS 上，操作系统会附带此实用工具。 如果使用的是 Windows，请考虑以下选项之一：
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
-    > * [Windows 10 上的 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [Githttps://git-scm.com/)](https://git-scm.com/)
+    > * [Windows 10 上的 Bash on Ubuntu](/windows/wsl/about)
+    > * [Git (https://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
-2. 若要安装 Bind，请从 SSH 会话中使用以下命令：
+2. 若要安装 Bind，请通过 SSH 会话使用以下命令：
 
     ```bash
     sudo apt-get update -y
@@ -162,17 +162,17 @@ ms.locfileid: "86085605"
     ```
     
     > [!IMPORTANT]  
-    > 将 `goodclients` 节中的值替换为两个虚拟网络的 IP 地址范围。 本部分定义此 DNS 服务器从其中接受请求的地址。
+    > 将 `goodclients` 节中的值替换为两个虚拟网络的 IP 地址范围。 此节定义此 DNS 服务器从其接受请求的地址。
 
-    若要编辑此文件，请使用以下命令：
+    若要编辑该文件，请使用以下命令：
 
     ```bash
     sudo nano /etc/bind/named.conf.options
     ```
 
-    若要保存文件，请使用 Ctrl+X、Ctrl+Y，然后按 Enter____________。
+    若要保存文件，请使用 Ctrl+X、Y，然后按 Enter。   
 
-4. 在 SSH 会话中，请使用以下命令：
+4. 在 SSH 会话中使用以下命令：
 
     ```bash
     hostname -f
@@ -184,11 +184,11 @@ ms.locfileid: "86085605"
     vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀____。 请保存该值，因为稍后会使用它。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是此虚拟网络的  DNS 后缀。 保存该值，因为以后会用到。
 
     还必须从其他 DNS 服务器中找出 DNS 后缀。 因为下一步骤需要用到。
 
-5. 若要配置 Bind 以在虚拟网络中解析资源的 DNS 名称，请使用以下文本作为 `/etc/bind/named.conf.local` 文件的内容：
+5. 若要配置 Bind，以便为虚拟网络中的资源解析 DNS 名称，请使用以下文本作为 `/etc/bind/named.conf.local` 文件的内容：
 
     ```
     // Replace the following with the DNS suffix for your virtual network
@@ -201,13 +201,13 @@ ms.locfileid: "86085605"
     > [!IMPORTANT]  
     > 必须将 `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 替换为另一个虚拟网络的 DNS 后缀。 转发器 IP 是另一虚拟网络中 DNS 服务器的专用 IP 地址。
 
-    若要编辑此文件，请使用以下命令：
+    若要编辑该文件，请使用以下命令：
 
     ```bash
     sudo nano /etc/bind/named.conf.local
     ```
 
-    若要保存文件，请使用 Ctrl+X、Ctrl+Y，然后按 Enter____________。
+    若要保存文件，请使用 Ctrl+X、Y，然后按 Enter。   
 
 6. 若要启动 Bind，请使用以下命令：
 
@@ -225,9 +225,9 @@ ms.locfileid: "86085605"
     > [!IMPORTANT]  
     > 将 `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 替换为另一网络中 DNS 虚拟机的完全限定的域名 (FQDN)。
     >
-    > 将 `10.2.0.4` 替换为另一虚拟网络中自定义 DNS 服务器的内部 IP 地址____。
+    > 将 `10.2.0.4` 替换为另一虚拟网络中自定义 DNS 服务器的内部 IP 地址。
 
-    显示的响应如下文所示：
+    显示的响应类似于以下文本：
 
     ```output
     Server:         10.2.0.4
@@ -244,11 +244,11 @@ ms.locfileid: "86085605"
 
 若要配置虚拟网络以使用自定义 DNS 服务器，而不是 Azure 递归解析程序，请使用以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“虚拟网络”，然后选择“DNS 服务器”____。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“虚拟网络”，然后选择“DNS 服务器”。
 
-2. 选择“自定义”，然后输入自定义 DNS 服务器的内部 IP 地址________。 最后，选择“保存”____。
+2. 选择“自定义”，然后输入自定义 DNS 服务器的内部 IP 地址。 最后，选择“保存”。
 
-6. 打开 vnet1 中的 DNS 服务器虚拟机，然后单击“重启”。****  必须重启虚拟网络中的所有虚拟机才能使 DNS 配置生效。
+6. 打开 vnet1 中的 DNS 服务器虚拟机，然后单击“重启”。  必须重启虚拟网络中的所有虚拟机才能使 DNS 配置生效。
 7. 重复这些步骤即可为 vnet2 配置自定义 DNS 服务器。
 
 若要测试 DNS 配置，可以使用 SSH 连接到这两个 DNS 虚拟机，然后使用其主机名称 ping 另一虚拟网络的 DNS 服务器。 如果不起作用，请使用以下命令来检查 DNS 状态：
@@ -264,7 +264,7 @@ sudo service bind9 status
 - **资源组名称**：使用的资源组名称与创建虚拟网络时所用的相同。
 - **群集类型**： HBase
 - **版本**：HBase 1.1.2 (HDI 3.6)
-- **位置**：与虚拟网络使用同一位置。  默认情况下，vnet1 为“美国西部”，** vnet2 为“美国东部”。**
+- **位置**：与虚拟网络使用同一位置。  默认情况下，vnet1 为“美国西部”，vnet2 为“美国东部”。
 - **存储**：为群集创建新的存储帐户。
 - **虚拟网络**（在门户的“高级”设置中）：选择在上一过程中创建的 vnet1。
 - **子网**：模板中所用的默认名称为 **subnet1**。
@@ -275,7 +275,7 @@ sudo service bind9 status
 
 复制群集时，必须指定要复制的表。 在本节中，要将一些数据载入源群集。 在下一部分，会在两个群集之间启用复制。
 
-若要创建一个“联系人”表并在其中插入一些数据，请遵照 [Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明。****
+若要创建一个“联系人”表并在其中插入一些数据，请遵照 [Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明。
 
 > [!NOTE]
 > 如果要从自定义命名空间复制表，则需要确保也在目标群集上定义相应的自定义命名空间。
@@ -287,13 +287,13 @@ sudo service bind9 status
 
 **从 Azure 门户启用 HBase 复制**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 打开源 HBase 群集。
-3. 在群集菜单中，选择“脚本操作”。****
-4. 在页面顶部，选择“提交新项”。****
+3. 在群集菜单中，选择“脚本操作”。
+4. 在页面顶部，选择“提交新项”。
 5. 选择或输入以下信息：
 
-   1. **名称**：输入“启用复制”。****
+   1. **名称**：输入“启用复制”。
    2. **Bash 脚本 URL**：输入 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**。
    3. **头**：确保已选定。 清除其他节点类型。
    4. **参数**：以下示例参数将对所有现有表启用复制，并将源群集中的所有数据复制到目标群集：
@@ -305,7 +305,7 @@ sudo service bind9 status
       >
       > 本演练假设 hn1 为活动头节点。 请检查群集以确定活动头节点。
 
-6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
+6. 选择“创建”  。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
@@ -326,7 +326,7 @@ sudo service bind9 status
 |-m、--machine | 指定要在其中运行脚本操作的头节点。 此值应当根据活动的头节点进行选择。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
 |-cp、-copydata | 在启用复制的情况下，允许迁移表中的现有数据。 |
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请谨慎使用此选项。* 建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |
-|-h、--help | 显示使用情况信息。 |
+|-h、--help | 显示用法信息。 |
 
 该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
 
@@ -413,4 +413,3 @@ sudo service bind9 status
 * [开始在 HDInsight 中使用 Apache HBase](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight Apache HBase 概述](./apache-hbase-overview.md)
 * [在 Azure 虚拟网络中创建 Apache HBase 群集](./apache-hbase-provision-vnet.md)
-

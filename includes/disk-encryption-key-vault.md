@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: include 文件
 services: virtual-machines
 author: msmbaldwin
@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file
-ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 3fe622d2ff4f6f8aff546452db0f475cfd44eb1b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81314094"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015362"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -131,7 +131,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 可以使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) 命令、Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 或 [Azure 门户](https://portal.azure.com/)生成新 KEK。 必须生成 RSA 密钥类型；Azure 磁盘加密尚不支持使用椭圆曲线密钥。
 
-可以改为从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅[Key Vault 文档](/azure/key-vault/key-vault-hsm-protected-keys)。
+可以改为从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅 [Key Vault 文档](../articles/key-vault/keys/hsm-protected-keys.md)。
 
 必须对 Key Vault KEK URL 进行版本控制。 Azure 会强制实施这项版本控制限制。 有关有效的机密和 KEK URL，请参阅以下示例：
 
@@ -148,7 +148,7 @@ Azure 磁盘加密不支持将端口号指定为 Key Vault 机密和 KEK URL 的
 使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) 命令生成新 KEK 并将其存储在密钥保管库中。
 
 ```azurecli-interactive
-az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
+az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
 可以改用 Azure CLI [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) 命令导入私钥：

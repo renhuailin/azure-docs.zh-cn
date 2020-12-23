@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385325"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516373"
 ---
 # <a name="secure-your-restful-services"></a>保护 RESTful 服务 
 
@@ -111,7 +111,7 @@ HTTP 基本身份验证在 [RFC 2617](https://tools.ietf.org/html/rfc2617) 中�
 
 ### <a name="prepare-a-self-signed-certificate-optional"></a>准备自签名证书（可选）
 
-在非生产环境中，如果还没有证书，可使用自签名证书。 在 Windows 上，可使用 PowerShell [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 来生成证书。
+在非生产环境中，如果还没有证书，可使用自签名证书。 在 Windows 上，可使用 PowerShell [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 来生成证书。
 
 1. 执行此 PowerShell 命令来生成自签名证书。 根据应用程序的需要修改 `-Subject` 参数，并修改 Azure AD B2C 租户名称。 还可调整 `-NotAfter` 日期，为证书指定不同的过期日期。
     ```powershell
@@ -230,9 +230,9 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>获取访问令牌 
 
-可通过以下几种方式之一获取访问令牌：[从联合身份验证标识提供程序](idp-pass-through-custom.md)获取、调用会返回访问令牌的 REST API、使用 [ROPC 流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、或者使用[客户端凭据流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)。  
+可通过以下几种方式之一获取访问令牌：[从联合身份验证标识提供程序](idp-pass-through-user-flow.md)获取、调用会返回访问令牌的 REST API、使用 [ROPC 流](../active-directory/develop/v2-oauth-ropc.md)、或者使用[客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。  
 
-下面的示例使用 REST API 技术配置文件和作为 HTTP 基本身份验证传递的客户端凭据向 Azure AD 令牌终结点发出请求。 要在 Azure AD 中配置此设置，请参阅 [Microsoft 标识平台和 OAuth 2.0 客户端凭据流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)。 可能需要修改此设置才能与标识提供程序交互。 
+下面的示例使用 REST API 技术配置文件和作为 HTTP 基本身份验证传递的客户端凭据向 Azure AD 令牌终结点发出请求。 要在 Azure AD 中配置此设置，请参阅 [Microsoft 标识平台和 OAuth 2.0 客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 可能需要修改此设置才能与标识提供程序交互。 
 
 对于 ServiceUrl，将 your-tenant-name 替换为 Azure AD 租户的名称。 有关所有可用选项，请参阅 [RESTful 技术配置文件](restful-technical-profile.md)参考。
 
@@ -312,7 +312,7 @@ Authorization: Bearer <token>
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>添加 OAuth2 持有者令牌策略密钥
 
-创建策略密钥以存储持有者令牌值。
+若要使用 OAuth2 持有者令牌配置 REST API 技术配置文件，请从 REST API 所有者处获取访问令牌。 然后，创建以下加密密钥来存储持有者令牌。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
@@ -320,7 +320,7 @@ Authorization: Bearer <token>
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加” 。
 1. 对于“选项”，请选择 `Manual`。
-1. 输入策略密钥的**名称**。 例如，`RestApiBearerToken` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`RestApiBearerToken`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“机密”中，输入前面记录的应用程序机密。
 1. 在“密钥用法”处选择 `Encryption`。
 1. 选择“创建”。
@@ -365,6 +365,69 @@ Authorization: Bearer <token>
 </ClaimsProvider>
 ```
 
+## <a name="api-key-authentication"></a>API 密钥身份验证
+
+API 密钥是用于对用户进行身份验证以访问 REST API 终结点的唯一标识符。 密钥是在自定义 HTTP 标头中发送的。 例如， [AZURE FUNCTIONS http 触发器](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) 使用 `x-functions-key` http 标头来标识请求者。  
+
+### <a name="add-api-key-policy-keys"></a>添加 API 密钥策略密钥
+
+若要使用 API 密钥身份验证配置 REST API 技术配置文件，请创建以下加密密钥来存储 API 密钥：
+
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 在“概述”页上选择“标识体验框架”。
+1. 选择“策略密钥”，然后选择“添加” 。
+1. 对于“选项”，请选择“手动” 。
+1. 对于 " **名称**"，请键入 **RestApiKey**。
+    可能会自动添加前缀 *B2C_1A_* 。
+1. 在 " **密钥** " 框中，输入 REST API 密钥。
+1. 对于“密钥用法”，请选择“加密” 。
+1. 选择“创建”。
+
+
+### <a name="configure-your-rest-api-technical-profile-to-use-api-key-authentication"></a>将 REST API 技术配置文件配置为使用 API 密钥身份验证
+
+创建所需的密钥后，请配置 REST API 技术配置文件元数据以引用凭据。
+
+1. 在工作目录中，打开扩展策略文件 (TrustFrameworkExtensions.xml)。
+1. 搜索 REST API 技术配置文件， 例如 `REST-ValidateProfile` 或 `REST-GetProfile`。
+1. 找到 `<Metadata>` 元素。
+1. 将 AuthenticationType 更改为 `ApiKeyHeader`。
+1. 将 AllowInsecureAuthInProduction 更改为 `false`。
+1. 紧靠在 `</Metadata>` 元素右括号的后面添加以下 XML 片段：
+    ```xml
+    <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+    </CryptographicKeys>
+    ```
+
+加密密钥的 **Id** 定义 HTTP 标头。 在此示例中，API 密钥以 **x 功能密钥** 的形式发送。
+
+下面是配置为使用 API 密钥身份验证调用 Azure Function 的 RESTful 技术配置文件的示例：
+
+```xml
+<ClaimsProvider>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-GetProfile">
+      <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <Item Key="AuthenticationType">ApiKeyHeader</Item>
+        <Item Key="AllowInsecureAuthInProduction">false</Item>
+      </Metadata>
+      <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+      </CryptographicKeys>
+      ...
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 IEF 参考中的 [Restful 技术配置文件](restful-technical-profile.md)元素。 
+- 详细了解 IEF 参考中的 [Restful 技术配置文件](restful-technical-profile.md)元素。

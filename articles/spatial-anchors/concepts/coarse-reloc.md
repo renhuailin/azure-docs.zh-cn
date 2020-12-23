@@ -1,20 +1,20 @@
 ---
 title: 粗 Relocalization
 description: 了解如何使用粗 relocalization 查找附近的定位点。
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/18/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02f5c570b7400266ac648eaa257fb76d26819a40
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4a65b2ca4ba9f1912adeaf60df123bcd3c8833bd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003178"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496896"
 ---
 # <a name="coarse-relocalization"></a>粗略重新局部化
 
@@ -660,7 +660,7 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 |                 | HoloLens | Android | iOS |
 |-----------------|----------|---------|-----|
 | **GPS**         | 不适用 | 通过 [LocationManager][3] api 支持 (GPS 和网络)  | 通过 [CLLocationManager][4] api 支持 |
-| **Wlan**        | 支持，每3秒约扫描一次 | 支持。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅 [Android 文档][5]。 | 不适用-无公共 API |
+| **Wlan**        | 支持，每3秒约扫描一次 | 。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅 [Android 文档][5]。 | 不适用-无公共 API |
 | **BLE 信标** | 仅限 [Eddystone][1] 和 [iBeacon][2] | 仅限 [Eddystone][1] 和 [iBeacon][2] | 仅限 [Eddystone][1] 和 [iBeacon][2] |
 
 ## <a name="next-steps"></a>后续步骤

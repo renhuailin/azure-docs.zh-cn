@@ -1,17 +1,17 @@
 ---
 title: 教程 - 部署 Service Fabric 网格应用程序
 description: 了解如何使用 Visual Studio 发布 Azure Service Fabric 网格应用程序，该应用程序包括一个可与后端 Web 服务通信的 ASP.NET Core 网站。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: gwallace
+ms.custom: mvc, devcenter , devx-track-azurecli
+ms.openlocfilehash: 51e5fd29d16c3f927dc9b89d9c7145a16f4fd49f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261320"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748239"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教程：部署 Service Fabric 网格应用程序
 
@@ -61,11 +61,11 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 选择自己的 Azure 帐户和订阅。 选择“位置”。 本文使用“美国东部”。
 
-在“资源组”下，选择 \<Create New Resource Group...> 。 此时会出现一个对话框，我们将在其中创建新资源组。 本文使用“美国东部”位置并将组命名为 **sfmeshTutorial1RG**（如果组织有多个人使用同一订阅，请选择唯一的组名称）。  按“创建”以创建资源组，并返回发布对话框。
+在“资源组”下，选择 \<Create New Resource Group...> 。 此时会出现一个对话框，我们将在其中创建新资源组。 本文使用“美国东部”位置并将组命名为 **sfmeshTutorial1RG** （如果组织有多个人使用同一订阅，请选择唯一的组名称）。  按“创建”以创建资源组，并返回发布对话框。
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择 \<Create New Container Registry...>  。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称 。 指定一个**位置**（本教程使用“美国东部”）。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG 。 将“SKU”设置为“基本”，然后按“创建”，以创建专用 Azure 容器注册表并返回发布对话框。  
+返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择 \<Create New Container Registry...>  。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称 。 指定一个 **位置** （本教程使用“美国东部”）。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG 。 将“SKU”设置为“基本”，然后按“创建”，以创建专用 Azure 容器注册表并返回发布对话框。  
 
 ![Visual Studio - Service Fabric 网格 - 新建容器注册表对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 

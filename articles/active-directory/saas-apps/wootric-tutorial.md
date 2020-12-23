@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
-ms.openlocfilehash: e96cdaf6b8d1d3127753c1f186fa8c0c227f6bde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a959dd3615c9498411b141356420939ad7026189
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541340"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638357"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wootric"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Wootric 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88541340"
 * 让用户使用其 Azure AD 帐户自动登录到 Wootric。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88541340"
 
 * Wootric 支持 IDP 发起的 SSO
 * Wootric 支持实时用户预配
-* 配置 Wootric 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Wootric 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-wootric-from-the-gallery"></a>从库中添加 Wootric
 
@@ -135,16 +135,15 @@ ms.locfileid: "88541340"
 
 1. 单击顶部菜单中的“设置图标”。
 
-    ![配置 ](./media/wootric-tutorial/configure-1.PNG)
+    ![显示从 Wootric 站点选择了“设置”图标的屏幕截图。](./media/wootric-tutorial/configure-1.PNG)
 
 1. 在“集成”中，从左侧菜单选择“身份验证”，然后单击“启用 Azure Active Directory 的单一登录”  。
 
-    ![配置 ](./media/wootric-tutorial/configure-2.PNG)
+    ![显示通过身份验证项中连接的 Azure Active Directory 启用单一登录的屏幕截图。](./media/wootric-tutorial/configure-2.PNG)
 
 1. 在下面的页中执行以下步骤：
 
-    ![配置 ](./media/wootric-tutorial/configure-3.PNG)
-
+    ![显示“设置”页面的屏幕截图，你可以在其中输入所述值。](./media/wootric-tutorial/configure-3.PNG)
 
     a. 在“标识提供者单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
@@ -164,18 +163,18 @@ ms.locfileid: "88541340"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Wootric 磁贴时，应当会自动登录到你为其设置了 SSO 的 Wootric。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Wootric 磁贴时，应当会自动登录到你为其设置了 SSO 的 Wootric。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Wootric](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Wootric](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Wootric](/cloud-app-security/proxy-intro-aad)

@@ -5,14 +5,16 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981073"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548862"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 本指南介绍使用 Azure Dev Spaces 时可能会碰到的常见问题。
 
@@ -276,7 +278,7 @@ Service cannot be started.
 
 Azure Dev Spaces 在群集上运行的服务利用群集的托管标识与群集外的 Azure Dev Spaces 后端服务进行通信。 在 Pod 托管标识安装后，会在群集的节点上配置网络规则，以将托管标识凭据的所有调用重定向到[群集上安装的节点托管标识 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 对调用 Pod 进行标识，并确保 Pod 已被正确标记来访问请求获取的托管标识。 Azure Dev Spaces 无法检测群集是否安装了 Pod 托管标识，也无法执行必要的配置来允许 Azure Dev Spaces 服务访问群集的托管标识。 由于尚未将 Azure Dev Spaces 服务配置为访问群集的托管标识，因此，NMI DaemonSet 将不允许它们获取托管标识的 Azure AD 令牌，并且无法与 Azure Dev Spaces 后端服务进行通信。
 
-若要修复此问题，请为 azds-injector-webhook 应用 [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)，并更新由 Azure Dev Spaces 检测的 Pod 来访问托管标识。
+若要修复此问题，请为 azds-injector-webhook 应用 [AzurePodIdentityException](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)，并更新由 Azure Dev Spaces 检测的 Pod 来访问托管标识。
 
 创建名为 webhookException.yaml 的文件，并复制以下 YAML 定义：
 
@@ -377,6 +379,17 @@ spec:
       [...]
 ```
 
+### <a name="error-cannot-get-connection-details-for-azure-dev-spaces-controller-abc-because-it-is-in-the-failed-state-something-wrong-might-have-happened-with-your-controller"></a>错误 "无法获取 Azure Dev Spaces 控制器" ABC "的连接详细信息，因为它处于" 失败 "状态。 控制器出现错误。 "
+
+若要解决此问题，请尝试从群集中删除 Azure Dev Spaces 控制器，然后重新安装：
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+此外，在 Azure Dev Spaces 即将停用的情况下，请考虑 [迁移到 Kubernetes](migrate-to-bridge-to-kubernetes.md) ，从而提供更好的体验。
+
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>结合使用 Visual Studio 和 Visual Studio Code 与 Azure Dev Spaces 时遇到的常见问题
 
 ### <a name="error-required-tools-and-configurations-are-missing"></a>错误“缺少必需的工具和配置”
@@ -457,7 +470,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="new-pods-arent-starting"></a>新的 Pod 没有启动
 
-由于对群集中“群集管理员”角色的 RBAC 权限更改，Kubernetes 初始值设定项无法为新的 Pod 应用 PodSpec。 新的 Pod 还可能有无效的 PodSpec（例如，与 Pod 关联的服务帐户已不存在）。 若要查看由于初始值设定项问题而处于“挂起”状态的 Pod，请使用 `kubectl get pods` 命令：
+由于对群集中 *群集管理* 角色的 Kubernetes RBAC 权限更改，Kubernetes 初始值设定项不能将 PodSpec 应用于新的 pod。 新的 Pod 还可能有无效的 PodSpec（例如，与 Pod 关联的服务帐户已不存在）。 若要查看由于初始值设定项问题而处于“挂起”状态的 Pod，请使用 `kubectl get pods` 命令：
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
@@ -486,7 +499,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 在重新安装控制器后，重新部署你的 Pod。
 
-### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>用于调用 Dev Spaces 控制器和 API 的 RBAC 权限不正确
+### <a name="incorrect-azure-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>用于调用开发共享空间控制器和 Api 的 Azure RBAC 权限不正确
 
 访问 Azure Dev Spaces 控制器的用户必须有权读取 AKS 群集上的管理员 kubeconfig。 例如，[内置的 Azure Kubernetes 服务群集管理员角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)中包含此权限。 访问 Azure Dev Spaces 控制器的用户还必须具有该控制器的 *参与者* 或 *所有者* Azure 角色。 若要详细了解如何更新用户对 AKS 群集的权限，请单击[此处](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)。
 

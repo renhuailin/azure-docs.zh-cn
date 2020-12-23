@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4579fa3c6dd1e34072a31747fda5113a5ac1be2a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545703"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517423"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教程：为 Zscaler ZSCloud 配置自动用户预配
 
 本教程介绍如何将 Azure Active Directory (Azure AD) 配置为自动为 Zscaler ZSCloud 预配和取消设置用户和/或组。
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../app-provisioning/user-provisioning.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -61,7 +61,7 @@ ms.locfileid: "88545703"
 
 需要为 Azure AD 用户分配对所选应用的访问权限，然后用户才能使用这些应用。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户或组。
 
-在配置和启用自动用户预配之前，应确定 Azure AD 中的哪些用户和/或组需要访问 Zscaler ZSCloud。 确定后，可按照[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)中的说明将这些用户和组分配到 Zscaler ZSCloud。
+在配置和启用自动用户预配之前，应确定 Azure AD 中的哪些用户和/或组需要访问 Zscaler ZSCloud。 确定后，可按照[向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)中的说明将这些用户和组分配到 Zscaler ZSCloud。
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-zscloud"></a>将用户分配到 Zscaler ZSCloud 的重要提示
 
@@ -120,7 +120,7 @@ ms.locfileid: "88545703"
 
 11. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler ZSCloud 的用户属性  。 选为“匹配”属性的特性用于匹配 Zscaler ZSCloud 中的用户帐户以执行更新操作  。 选择“保存”，提交所有更改  。
 
-    ![属性映射](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![显示了 7 个映射的“属性映射”部分的屏幕截图。](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. 在“映射”部分中，选择“将 Azure Active Directory 组同步到 ZscalerZSCloud”   ：
 
@@ -128,9 +128,9 @@ ms.locfileid: "88545703"
 
 13. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler ZSCloud 的组属性  。 选为“匹配”属性的特性用于匹配 Zscaler ZSCloud 中的组以执行更新操作  。 选择“保存”，提交所有更改  。
 
-    ![属性映射](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![显示了 3 个映射的“属性映射”部分的屏幕截图。](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
-14. 若要配置范围筛选器，请参阅[范围筛选器教程](./../active-directory-saas-scoping-filters.md)中的说明。
+14. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的说明。
 
 15. 若要为 Zscaler ZSCloud 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”    ：
 
@@ -146,7 +146,7 @@ ms.locfileid: "88545703"
 
 此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步   。 初始同步花费的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每 40 分钟就会进行一次同步。 可在“同步详细信息”部分中监视进度  。 也可跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 Zscaler ZSCloud 执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -155,7 +155,7 @@ ms.locfileid: "88545703"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../active-directory-saas-provisioning-reporting.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-zscloud-provisioning-tutorial/tutorial-general-01.png

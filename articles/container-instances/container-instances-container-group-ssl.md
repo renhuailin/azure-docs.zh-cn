@@ -3,12 +3,12 @@ title: 使用挎斗容器启用 TLS
 description: 通过在挎斗中运行 Nginx 为 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169844"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558073"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>在挎斗容器中启用 TLS 终结点
 
@@ -22,15 +22,15 @@ ms.locfileid: "86169844"
 
 有关在容器组中启用 TLS 的其他方法，请参阅[后续步骤](#next-steps)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本文的内容。 如果想要在本地使用它，建议使用 2.0.55 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文要求 Azure CLI 版本2.0.55 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
 若要将 Nginx 设置为 TLS 提供程序，需要一个 TLS/SSL 证书。 本文介绍如何创建和设置自签名的 TLS/SSL 证书。 对于生产方案，应从证书颁发机构获取证书。
 
-若要创建自签名的 TLS/SSL 证书，请使用 Azure Cloud Shell 和许多 Linux 发行版中提供的[OpenSSL](https://www.openssl.org/)工具，或在操作系统中使用类似的客户端工具。
+若要创建自签名的 TLS/SSL 证书，请使用 Azure Cloud Shell 和许多 Linux 发行版中提供的 [OpenSSL](https://www.openssl.org/) 工具，或在操作系统中使用类似的客户端工具。
 
 首先在本地工作目录中创建证书请求（.csr 文件）：
 
@@ -238,8 +238,8 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 尽管本文在挎斗中使用 Nginx，但你可以使用另一个 TLS 提供程序，例如 [Caddy](https://caddyserver.com/)。
 
-如果在[Azure 虚拟网络](container-instances-vnet.md)中部署容器组，可以考虑使用其他选项为后端容器实例启用 TLS 终结点，包括：
+如果在 [Azure 虚拟网络](container-instances-vnet.md)中部署容器组，可以考虑使用其他选项为后端容器实例启用 TLS 终结点，包括：
 
 * [Azure Functions 代理](../azure-functions/functions-proxies.md)
 * [Azure API 管理](../api-management/api-management-key-concepts.md)
-* [Azure 应用程序网关](../application-gateway/overview.md)-请参阅示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。
+* [Azure 应用程序网关](../application-gateway/overview.md) -请参阅示例 [部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。

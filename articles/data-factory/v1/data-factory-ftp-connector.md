@@ -13,11 +13,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80992039"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001637"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -35,16 +35,16 @@ ms.locfileid: "80992039"
 > 复制活动在源文件成功复制到目标位置后不会删除该文件。 如果需要在成功复制后删除源文件，请创建自定义活动以删除该文件，并在管道中使用该活动。
 
 ## <a name="enable-connectivity"></a>启用连接
-如果要将数据从**本地** FTP 服务器移至云数据存储（例如移至 Azure Blob 存储），请安装并使用数据管理网关。 数据管理网关是安装在本地计算机上的客户端代理，支持将云服务连接到本地资源。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。 有关设置和使用该网关的分步说明，请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。 即使 FTP 服务器位于 Azure 基础结构即服务 (IaaS) 的虚拟机 (VM) 上，也可使用网关连接到该服务器。
+如果要将数据从 **本地** FTP 服务器移至云数据存储（例如移至 Azure Blob 存储），请安装并使用数据管理网关。 数据管理网关是安装在本地计算机上的客户端代理，支持将云服务连接到本地资源。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。 有关设置和使用该网关的分步说明，请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。 即使 FTP 服务器位于 Azure 基础结构即服务 (IaaS) 的虚拟机 (VM) 上，也可使用网关连接到该服务器。
 
 可将网关作为 FTP 服务器安装在同一本地计算机或 IaaS VM 上。 但是，我们建议将网关安装在单独的计算机或 IaaS VM 上，以避免资源争用，并获得更好的性能。 在单独的计算机上安装网关时，计算机应能够访问 FTP 服务器。
 
 ## <a name="get-started"></a>入门
 可以使用不同的工具或 API 创建包含复制活动的管道（用于从 FTP 源移动数据）。
 
-创建管道的最简单方法是使用**数据工厂复制向导**。 有关快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
+创建管道的最简单方法是使用 **数据工厂复制向导**。 有关快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+你还可以使用以下工具创建管道： **Visual Studio**、 **PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建将数据从源数据存储移至接收器数据存储的管道：
 
@@ -62,7 +62,7 @@ ms.locfileid: "80992039"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表描述了特定于 FTP 链接服务的 JSON 元素。
 
-| properties | 说明 | 必须 | 默认 |
+| 属性 | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | 类型 |将此类型设置为 FtpServer。 |是 |&nbsp; |
 | host |指定 FTP 服务器的名称或 IP 地址。 |是 |&nbsp; |
@@ -152,14 +152,14 @@ ms.locfileid: "80992039"
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供特定于数据集类型的信息。 **FileShare** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 组合在一起，基于切片开始和结束的日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 **folderPath** 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** 适用于输入文件共享数据集。 Hadoop 分布式文件系统 (HDFS) 不支持此属性。 |否 |
 | partitionedBy |用于指定时序数据的动态 **folderPath** 和 **fileName**。 例如，可以指定每小时参数化以形成数据的 **folderPath**。 |否 |
 | format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅 [文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、 [Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、 [Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format) 部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式部分。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型为 **GZip**、 **Deflate**、 **BZip2**和 **ZipDeflate**，并且支持的级别为 **最佳** 和 **最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型为 **GZip**、 **Deflate**、 **BZip2** 和 **ZipDeflate**，并且支持的级别为 **最佳** 和 **最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 | useBinaryTransfer |指定是否使用二进制传输模式。 这些值在二进制模式下为 true（这是默认值），在 ASCII 模式下为 false。 仅当关联的链接服务类型为 FtpServer 时，才可以使用此属性。 |否 |
 
 > [!NOTE]
@@ -203,7 +203,7 @@ ms.locfileid: "80992039"
 
 在复制活动中，如果源的类型为 **FileSystemSource**，则 **typeProperties** 部分将具有以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
@@ -261,7 +261,7 @@ ms.locfileid: "80992039"
 
 此数据集是指 FTP 文件夹 `mysharedfolder` 和文件 `test.csv`。 该管道将文件复制到目标。
 
-将“external”**** 设置为“true”**** 将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+将“external”设置为“true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
 ```JSON
 {

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6834f9cc8202f49f53c20f3941945bba4a4b2efd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737353"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026740"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
@@ -80,7 +80,7 @@ tail -f /var/log/suricata/fast.log
 
 #### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
-1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](https://aka.ms/azure-jdks) 上的文档。
+1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) 上的文档。
 
 1. 下载适用于系统的正确二进制程序包：
 
@@ -236,7 +236,7 @@ tail -f /var/log/suricata/fast.log
 1. 若要查看 Kibana Web 界面，请导航到 `http://localhost:5601`
 1. 对于本方案，用于 Suricata 日志的索引模式为“logstash-*”
 
-1. 如果想要远程查看 Kibana 仪表板，请创建允许访问**端口 5601** 的入站 NSG 规则。
+1. 如果想要远程查看 Kibana 仪表板，请创建允许访问 **端口 5601** 的入站 NSG 规则。
 
 ### <a name="create-a-kibana-dashboard"></a>创建 Kibana 仪表板
 
@@ -246,7 +246,7 @@ tail -f /var/log/suricata/fast.log
 
 1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。  然后，可从“仪表板”选项卡打开并加载示例仪表板。
 
-还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
+还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)，详细了解如何创建 Kibana 可视化效果。
 
 ![Kibana 仪表板][2]
 
@@ -254,7 +254,7 @@ tail -f /var/log/suricata/fast.log
 
 示例仪表板提供了 Suricata 警报日志的多种可视化效果：
 
-1. 按 Geoip 列出警报列出的警报–一种地图，显示根据地理位置（由 IP 确定）按源所在国家/地区分配的警报
+1. 按 Geoip 列出警报列出的警报–一种地图，显示根据 IP) 确定的地理位置 (按其所在国家/地区进行的警报分布
 
     ![地理 IP][3]
 

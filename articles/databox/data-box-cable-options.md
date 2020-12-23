@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: bab81809f42c9afa3d2c701398fa5ff8ffc2800d
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744162"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334591"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box 的布线选项
 
@@ -80,8 +80,8 @@ ms.locfileid: "91744162"
 
    - **IP 地址** 192.168.100.5
    - **子网** 255.255.255.0。
-
-     ![通过交换机进行的双端口设置](media/data-box-cable-options/cabling-with-static-ip.png)
+  
+   ![使用交换机进行双端口设置](media/data-box-cable-options/cabling-with-static-ip.png)
 
 3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 4. 标识 DHCP 服务器分配的 IP 地址。
@@ -105,7 +105,7 @@ ms.locfileid: "91744162"
    - **IP 地址** 192.168.100.5
    - **子网** 255.255.255.0。
 
-     ![使用交换机2进行两个端口设置](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![使用交换机2进行双端口设置](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
 3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 4. 为已配置的数据端口分配静态 IP。
@@ -126,6 +126,7 @@ ms.locfileid: "91744162"
 1. 使用 RJ45 或 SFP+ 电缆通过交换机（其中的 DHCP 服务器可供访问）连接到服务器。
 
     ![使用交换机3进行两个端口设置](media/data-box-cable-options/cabling-dhcp-data-only.png)
+
 2. 使用 DHCP 服务器或 DNS 服务器标识 IP 地址。
 3. 在同一网络的服务器中，使用 DHCP 服务器分配的 IP 地址访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 

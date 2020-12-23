@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8216bb8c30448e7e91ec9a1bcc531b720eca30c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665185"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576462"
 ---
 # <a name="calling-client-library-overview"></a>呼叫客户端库概述
 
@@ -34,7 +34,8 @@ ms.locfileid: "91665185"
 |                   | 为两个以上的用户（最多 350 个用户）启动组呼叫                                                       | ✔️   | ✔️            | ✔️ 
 |                   | 将两个用户的一对一呼叫升级为两个以上用户的组呼叫                                 | ✔️   | ✔️            | ✔️ 
 |                   | 在一个组呼叫开始后加入它                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | 邀请其他 VoIP 参与者加入正在进行的组呼叫                                                       | ✔️   | ✔️            | ✔️ 
+|                   | 邀请其他 VoIP 参与者加入正在进行的组呼叫                                                       | ✔️   | ✔️            | ✔️
+|                   | 打开/关闭视频                                                         | ✔️   | ✔️            | ✔️ 
 |                   | 将麦克风静音/取消静音                                                                                                     | ✔️   | ✔️            | ✔️         
 |                   | 切换照相机                                                                                              | ✔️   | ✔️            | ✔️           
 |                   | 本地保持/取消保持                                                                                                  | ✔️   | ✔️            | ✔️           
@@ -69,6 +70,26 @@ ms.locfileid: "91665185"
 *请注意，除前两个版本外，还支持最新版本的 Chrome。<br/>
 
 **请注意，支持 Safari 版本 13.1+。 尚不支持 Safari macOS 的传出视频，但它在 iOS 上受支持。 仅桌面 iOS 支持传出屏幕共享。
+
+## <a name="calling-client---browser-security-model"></a>调用客户端 - 浏览器安全模型
+
+### <a name="user-webrtc-over-https"></a>通过 HTTPS 的用户 WebRTC
+
+WebRTC API（如 `getUserMedia`）要求通过 HTTPS 处理调用这些 API 的应用。
+
+对于本地开发，可使用 `http://localhost`。
+
+### <a name="embed-the-communication-services-calling-sdk-in-an-iframe"></a>在 iframe 中嵌入通信服务调用 SDK
+
+各种浏览器正在采用新的[权限策略](https://www.w3.org/TR/permissions-policy-1/#iframe-allow-attribute)（也称为功能策略）。 此策略通过控制应用程序如何通过跨源 iframe 元素访问设备的摄像头和麦克风来影响调用方案。
+
+如果要使用 iframe 从其他域托管应用的一部分，则必须将具有正确值的 `allow` 属性添加到 iframe。
+
+例如，此 iframe 允许摄像头和麦克风访问：
+
+```html
+<iframe allow="camera *; microphone *">
+```
 
 ## <a name="next-steps"></a>后续步骤
 

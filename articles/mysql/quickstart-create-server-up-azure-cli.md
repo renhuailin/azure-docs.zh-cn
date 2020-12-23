@@ -1,19 +1,19 @@
 ---
 title: 快速入门：使用 az mysql up 创建 Azure Database for MySQL
 description: 有关使用 Azure CLI（命令行接口）up 命令创建 Azure Database for MySQL 服务器的快速入门指南。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40f820a32c7848b5370cb664d706e9f20928bc5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89296475"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542161"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入门：使用简单的 Azure CLI 命令 az mysql up 创建 Azure Database for MySQL（预览）
 
@@ -28,7 +28,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-你将需要使用 [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) 命令登录到你的帐户。 记下与订阅名称相对应的命令输出中的 **id** 属性。
+你将需要使用 [az login](/cli/azure/authenticate-azure-cli) 命令登录到你的帐户。 记下与订阅名称相对应的命令输出中的 **id** 属性。
 
 ```azurecli
 az login

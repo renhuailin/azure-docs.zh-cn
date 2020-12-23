@@ -1,30 +1,30 @@
 ---
-title: 将 SQL 按需版本连接到 Power BI Desktop 并创建报表
-description: 本教程介绍如何在 Azure Synapse Analytics 中将 SQL 按需版本连接到 Power BI Desktop 并基于视图创建演示报表。
+title: 教程：将无服务器 SQL 池连接到 Power BI Desktop 并创建报表
+description: 本教程介绍如何在 Azure Synapse Analytics 中将无服务器 SQL 池连接到 Power BI Desktop 并基于视图创建演示报表。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: 6b45bad7c439fb98737f0caee08b2996323fbd3b
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089169"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602693"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>教程：在 Power BI Desktop 中使用 SQL 按需版本并创建报表
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>教程：将无服务器 SQL 池用于 Power BI Desktop 并创建报表
 
-在本教程中，你将了解如何执行以下操作：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 >
 > - 创建演示数据库
 > - 创建用于报表的视图
-> - 将 Power BI Desktop 连接到 SQL 按需版本
+> - 将 Power BI Desktop 连接到无服务器 SQL 池
 > - 基于视图创建报表
 
 ## <a name="prerequisites"></a>先决条件
@@ -42,10 +42,10 @@ ms.locfileid: "87089169"
 
 | 参数                                 | 说明                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL 按需版本服务终结点地址    | 用作服务器名称                                   |
-| SQL 按需版本服务终结点区域     | 用来确定示例中使用的存储 |
+| 无服务器 SQL 池服务终结点地址    | 用作服务器名称                                   |
+| 无服务器 SQL 池服务终结点区域     | 用来确定示例中使用的存储 |
 | 用来访问终结点的用户名和密码 | 用来访问终结点                               |
-| 将用来创建视图的数据库     | 在示例中从其着手的数据库       |
+| 用于创建视图的数据库     | 在示例中从其着手的数据库       |
 
 ## <a name="1---create-database"></a>1 - 创建数据库
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2 - 创建数据源
 
-SQL 按需版本服务需要使用数据源来访问存储中的文件。 请为终结点所在区域中的存储帐户创建数据源。 尽管 SQL 按需版本可以访问不同区域中的存储帐户，但将存储和终结点置于同一区域可提供更好的性能。
+无服务器 SQL 池服务需要使用数据源来访问存储中的文件。 请为终结点所在区域中的存储帐户创建数据源。 尽管无服务器 SQL 池可以访问不同区域中的存储帐户，但将存储和终结点置于同一区域可提供更好的性能。
 
 通过运行以下 Transact-SQL (T-SQL) 脚本来创建数据源：
 
@@ -158,7 +158,7 @@ FROM
 1. 删除存储帐户的凭据
 
    ```sql
-   DROP EXTENAL DATA SOURCE AzureOpenData
+   DROP EXTERNAL DATA SOURCE AzureOpenData
    ```
 
 2. 删除视图

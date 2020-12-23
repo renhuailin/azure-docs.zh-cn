@@ -3,18 +3,18 @@ title: 在 Azure 成本管理中管理 AWS 成本和使用情况
 description: 本文可帮助你了解如何在成本管理中使用成本分析和预算来管理 AWS 成本和使用情况。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/16/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266154"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188099"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>在 Azure 中管理 AWS 成本和使用情况
 
@@ -117,7 +117,7 @@ AWS 成本可在以下范围内用于成本分析：
 
 - 成本管理中的预算不支持具有多种货币的管理组。 具有多种货币的管理组将不会看到预算评估。 如果在创建预算时选择具有多种货币的管理组，则会显示一条错误消息。
 - 云连接器不支持 AWS GovCloud（美国）、AWS Gov 或 AWS 中国。
-- 成本管理仅显示__ AWS 使用成本。 目前尚不支持税款、支持、退款、RI、额度或任何其他的费用类型。
+- 成本管理仅显示 AWS 使用成本。 目前尚不支持税款、支持、退款、RI、额度或任何其他的费用类型。
 
 ## <a name="troubleshooting-aws-integration"></a>排查 AWS 集成问题
 
@@ -143,8 +143,8 @@ AWS 成本可在以下范围内用于成本分析：
 此错误表示成本管理无法调用 AWS AssumeRole API。 出现此问题的原因可能是角色定义有问题。 验证是否符合下列条件：
 
 - 外部 ID 与角色定义和连接器定义中的相同。
-- 角色类型设置为“属于你或第三方的其他 AWS 帐户”。****
-- “要求 MFA”选项已取消选中。****
+- 角色类型设置为“属于你或第三方的其他 AWS 帐户”。
+- “要求 MFA”选项已取消选中。
 - AWS 角色中受信任的 AWS 帐户为 _432263259397_。
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>收集失败，出现“拒绝访问”错误 - CUR 报表定义
@@ -175,7 +175,13 @@ AWS 成本可在以下范围内用于成本分析：
 
 **错误代码：** _ReportIsNotValid_
 
-此错误与 AWS 成本和使用情况报表的定义相关，我们要求对此报表使用特定设置。请参阅[在 AWS 中 创建成本和使用情况报表](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)中的要求。
+此错误与 AWS 成本和使用情况报表的定义相关，我们要求对此报表使用特定设置。请参阅[在 AWS 中创建成本和使用情况报表](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)中的要求。
+
+### <a name="internal-error-when-creating-connector"></a>创建连接器时出现内部错误
+
+**错误代码：** _创建连接器 - 无法创建连接器 &lt;ConnectorName&gt;。原因:内部错误。请验证是否提供了正确的 AWS 属性。_
+
+当 AWS 连接器和订阅位于不同的管理组中时，会发生此错误。 AWS 连接器和订阅需要位于同一管理组中。
 
 ## <a name="next-steps"></a>后续步骤
 

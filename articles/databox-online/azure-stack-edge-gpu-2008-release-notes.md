@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Edge Pro 预览版发行说明 |Microsoft Docs
-description: 介绍 Azure Stack Edge Pro 运行正式发行版的关键的待解决问题和解决方案。
+description: 介绍 Azure Stack Edge Pro 运行预览版的重要问题和解决方法。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: d166b0a4c4b69f03d7dba9d997d7d07fbd81ef41
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 25db4e7f3e4e1f7056979c4c40c6ffc61f340439
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893973"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345365"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>Azure Stack 带有 GPU 预览发行说明的 Edge Pro
 
@@ -37,14 +37,14 @@ ms.locfileid: "90893973"
 
 下表汇总了 Azure Stack Edge Pro 设备的已知问题。
 
-| 不是。 | Feature | 问题 | 解决方法/备注 |
+| 否。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
-| **1.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |
+| **1.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |
 | **2.** |刷新| 不支持对通过 **刷新** 还原的 blob 进行增量更改 |对于 Blob 终结点，刷新后对 blob 进行部分更新可能导致更新不会上载到云中。 例如，一系列操作，例如：<ul><li>在云中创建 blob。 或从设备中删除之前上传的 blob。</li><li>使用刷新功能，将 blob 从云中刷新到设备中。</li><li>使用 Azure SDK REST Api 仅更新部分 blob。</li></ul>这些操作可能导致 blob 的更新部分不在云中更新。 <br>**解决方法**：使用 robocopy 等工具或通过资源管理器或命令行的常规文件复制来替换整个 blob。|
-|**3.**|限制|在限制期间，如果不允许新写入设备，NFS 客户端完成的写入会失败并出现 "权限被拒绝" 错误。| 错误如下所示：<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir：无法创建目录 "test"：权限被拒绝|
+|**3.**|遏制|在限制期间，如果不允许新写入设备，NFS 客户端完成的写入会失败并出现 "权限被拒绝" 错误。| 错误如下所示：<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir：无法创建目录 "test"：权限被拒绝|
 |**4.**|Blob 存储引入|使用 AzCopy 版本10进行 Blob 存储引入时，请使用以下参数运行 AzCopy： `Azcopy <other arguments> --cap-mbps 2000`| 如果没有为 AzCopy 提供这些限制，则可能会将大量请求发送到设备，并导致服务出现问题。|
 |**5.**|分层存储帐户|使用分层存储帐户时，以下内容适用：<ul><li> 仅支持块 blob。 页 blob 不受支持。</li><li>没有快照或复制 API 支持。</li><li> 不支持通过 Hadoop 工作负荷引入 `distcp` ，因为它会大量使用复制操作。</li></ul>||
-|**6.**|NFS 共享连接|如果将多个进程复制到相同的共享，并且 `nolock` 未使用该属性，则在复制过程中可能会出现错误。|`nolock`必须将属性传递给 mount 命令，以将文件复制到 NFS 共享。 例如：`C:\Users\aseuser mount -o anon \\10.1.1.211\mnt\vms Z:`。|
+|**共.**|NFS 共享连接|如果将多个进程复制到相同的共享，并且 `nolock` 未使用该属性，则在复制过程中可能会出现错误。|`nolock`必须将属性传递给 mount 命令，以将文件复制到 NFS 共享。 例如：`C:\Users\aseuser mount -o anon \\10.1.1.211\mnt\vms Z:`。|
 |**全天候.**|Kubernetes 群集|在运行 kubernetes 群集的设备上应用更新时，kubernetes 虚拟机将重新启动并重新启动。 在这种情况下，只会在更新后自动还原使用指定副本部署的 pod。  |如果在未指定副本集的情况下在复制控制器之外创建了单独的 pod，则在设备更新后，将不会自动还原这些 pod。 需要还原这些 pod。<br>出于任何原因（例如节点故障或中断性节点升级），副本集会替换删除或终止的 pod。 出于此原因，我们建议你使用副本集，即使你的应用程序只需要一个 pod。|
 |**8.**|Kubernetes 群集|只有 Helm v3 或更高版本支持 Azure Stack Edge Pro 上的 Kubernetes。 有关详细信息，请参阅 [常见问题解答：删除 Tiller](https://v3.helm.sh/docs/faq/)。|
 |**900.**|Azure 弧形 + Azure Stack Edge Pro|如果在 Azure Stack Edge Pro 设备上配置 web 代理，则不支持 Azure Arc 部署。||
@@ -53,9 +53,8 @@ ms.locfileid: "90893973"
 |**10.**|Kubernetes 群集|现有 Azure IoT Edge marketplace 模块将不会在 Kubernetes 群集上作为 Azure Stack Edge 设备上 IoT Edge 的托管平台运行。|在将这些模块部署到 Azure Stack Edge 设备上之前，需要对其进行修改。 有关详细信息，请参阅修改 marketplace Azure IoT Edge 模块，使其在 Azure Stack Edge 设备上运行。<!-- insert link-->|
 |**9.**|Kubernetes |Azure Stack Edge 设备上的 Kubernetes 上的 Azure IoT Edge 不支持基于文件的绑定装入。|IoT Edge 使用转换层将选项转换 `ContainerCreate` 为 Kubernetes 构造。 `Binds`不能将映射创建到 hostpath 目录，也不能创建基于文件的绑定装载，因此无法将其绑定到 IoT Edge 容器中的路径。|
 |**毫米.**|Kubernetes |如果为 IoT Edge 提供自己的证书，并将其添加到 Azure Stack Edge 设备上，则不会在 Helm 图更新过程中选取新证书。|若要解决此问题，请 [连接到设备的 PowerShell 接口](azure-stack-edge-gpu-connect-powershell-interface.md)。 重新启动 `iotedged` 和 pod `edgehub` 。|
-|**15.**|证书 |在某些情况下，本地 UI 中的证书状态可能需要几秒钟才能更新。 |本地 UI 中的以下方案可能会受到影响。<ul><li>"**证书**" 页中的 "**状态**" 列。</li><li>"**入门**" 页中的 "**安全**" 磁贴。</li><li>**概述**页中的 "**配置**" 磁贴。</li></ul>  |
+|**15.**|证书 |在某些情况下，本地 UI 中的证书状态可能需要几秒钟才能更新。 |本地 UI 中的以下方案可能会受到影响。<ul><li>"**证书**" 页中的 "**状态**" 列。</li><li>"**入门**" 页中的 "**安全**" 磁贴。</li><li>**概述** 页中的 "**配置**" 磁贴。</li></ul>  |
 
 ## <a name="next-steps"></a>后续步骤
 
 - [准备部署带 GPU Azure Stack Edge Pro 设备](azure-stack-edge-gpu-deploy-prep.md)
-

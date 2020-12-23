@@ -1,20 +1,20 @@
 ---
 title: 创建模板 - Visual Studio Code
-description: 使用 Visual Studio Code 和可在资源管理器模板上运行的 Azure 资源管理器工具扩展。
+description: 使用 Visual Studio Code 和可在 Azure 资源管理器模板（ARM 模板）上运行的 Azure 资源管理器工具扩展。
 author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d8fd44a1e4c1ddfd78b2afa3280bb05c8fde91e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88034969"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350137"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
+# <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 ARM 模板
 
-适用于 Visual Studio Code 的 Azure 资源管理器工具提供语言支持、资源片段和资源自动完成。 这些工具可帮助创建和验证 Azure 资源管理器模板。 在本快速入门中，你将使用扩展从头开始创建 Azure 资源管理器模板。 在此过程中，你将体验 ARM 模板片段、验证、完成和参数文件支持等扩展功能。
+适用于 Visual Studio Code 的 Azure 资源管理器工具提供语言支持、资源片段和资源自动完成。 这些工具可帮助创建和验证 Azure 资源管理器模板（ARM 模板）。 在本快速入门中，你将使用扩展从头开始创建 ARM 模板。 在此过程中，你将体验 ARM 模板片段、验证、完成和参数文件支持等扩展功能。
 
 若要完成本快速入门，需要使用装有 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)的 [Visual Studio Code](https://code.visualstudio.com/)。 此外，需要安装 [Azure CLI](/cli/azure/?view=azure-cli-latest) 或 [Azure PowerShell 模块](/powershell/azure/new-azureps-module-az?view=azps-3.7.0)并完成身份验证。
 
@@ -54,7 +54,7 @@ ms.locfileid: "88034969"
 
 ## <a name="completion-and-validation"></a>完成和验证
 
-该扩展的最强大功能之一是与 Azure 架构的集成。 Azure 架构为扩展提供了验证和资源感知的完成功能。 让我们修改存储帐户，通过实际操作来了解验证和完成。 
+该扩展的最强大功能之一是与 Azure 架构的集成。 Azure 架构为扩展提供了验证和资源感知的完成功能。 让我们修改存储帐户，通过实际操作来了解验证和完成。
 
 首先，将存储帐户类型更新为某个无效值，例如 `megaStorage`。 可以看到，此操作导致生成了一条警告，指出 `megaStorage` 不是有效值。
 
@@ -80,7 +80,7 @@ Azure 存储帐户名称的最小长度为 3 个字符，最大长度为 24 个�
 
 ![此图显示了正在向 ARM 模板参数中添加的 minLength 和 maxLength](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-现在，在存储资源中，将名称属性更新为使用该参数。 为此，请删除当前名称。 输入双引号和左方括号 `[`，这会生成 ARM 模板函数的列表。 从列表中选择“parameters”。 
+现在，在存储资源中，将名称属性更新为使用该参数。 为此，请删除当前名称。 输入双引号和左方括号 `[`，这会生成 ARM 模板函数的列表。 从列表中选择“parameters”。
 
 ![此图显示了在 ARM 模板资源中使用参数时的自动完成功能](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
-ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74790280"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027697"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>通过设置静态结果来使用模拟数据测试逻辑应用
 
@@ -130,11 +130,11 @@ ms.locfileid: "74790280"
 
 1. 查找要在其中禁用静态输出的操作。 在该操作的右上角，选择量杯图标（![静态结果的图标](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)）。
 
-   ![禁用静态结果](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
+   ![屏幕截图显示了一个 H T T P 操作，可在其中选择 "测试烧杯" 图标。](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
 1. 选择“禁用静态结果” > “完成”。
 
-   ![禁用静态结果](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
+   ![屏幕截图显示了可选择的 "禁用静态结果" 选项。](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
 ## <a name="reference"></a>参考
 

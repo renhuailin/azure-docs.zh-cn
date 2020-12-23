@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249546"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360664"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
 
@@ -58,7 +58,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 对于每项 StorSimple 设备管理器服务，存在以下属性：
 
 * **名称** – 在创建 StorSimple 设备管理器服务时为其分配的名称。 **创建服务后无法更改服务名称。这也适用于其他实体，例如设备、卷、卷容器和备份策略，这些实体无法在 Azure 门户中重命名。**
-* **状态** – 服务的状态，可以是 **“活动”**、**“正在创建”** 或 **“联机”**。
+* **状态** – 服务的状态，可以是 **“活动”** 、 **“正在创建”** 或 **“联机”** 。
 * **位置** – 会在其中部署 StorSimple 设备的地理位置。
 * **订阅** – 与你的服务关联的计费订阅。
 
@@ -73,7 +73,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
 ### <a name="to-delete-a-service"></a>删除服务
 
-1. 搜索要删除的服务。 单击“资源”图标，然后输入要搜索的相应术语。**** 在搜索结果中，单击要删除的服务。
+1. 搜索要删除的服务。 单击“资源”图标，然后输入要搜索的相应术语。 在搜索结果中，单击要删除的服务。
 
     ![搜索要删除的服务](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
@@ -81,13 +81,13 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
     ![删除服务](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
-3. 在确认通知中单击 **“是”**。 可能需要花费几分钟时间才能删除服务。
+3. 在确认通知中单击 **“是”** 。 可能需要花费几分钟时间才能删除服务。
 
     ![确认删除](./media/storsimple-8000-manage-service/deletessdevman3.png)
 
 ## <a name="get-the-service-registration-key"></a>获取服务注册密钥
 
-成功创建服务后，需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-8000-security.md)。 可以通过访问 StorSimple 设备管理器边栏选项卡上的“密钥”来获取注册密钥。****
+成功创建服务后，需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-8000-security.md)。 可以通过访问 StorSimple 设备管理器边栏选项卡上的“密钥”来获取注册密钥。
 
 可以执行以下步骤来获取服务注册密钥。
 
@@ -103,14 +103,14 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 执行以下步骤，重新生成服务注册密钥。
 
 ### <a name="to-regenerate-the-service-registration-key"></a>重新生成服务注册密钥
-1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”“密钥”******&gt;** ****。
+1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”“密钥” **&gt;** 。
     
-    ![“密钥”边栏选项卡](./media/storsimple-8000-manage-service/regenregkey2.png)
+    !["中转到密钥" 边栏选项卡](./media/storsimple-8000-manage-service/regenregkey2.png)
 
-2. 在“密钥”**** 边栏选项卡中，单击“重新生成”****。
+2. 在“密钥”边栏选项卡中，单击“重新生成”。
 
     ![单击“重新生成”](./media/storsimple-8000-manage-service/regenregkey3.png)
-3. 在“重新生成服务注册密钥”**** 边栏选项卡中，查看重新生成密钥时所需的操作。 之后注册到此服务的所有设备将使用新的注册密钥。 单击“重新生成”**** 以确认。 重新生成完成后，你将收到通知。
+3. 在“重新生成服务注册密钥”边栏选项卡中，查看重新生成密钥时所需的操作。 之后注册到此服务的所有设备将使用新的注册密钥。 单击“重新生成”以确认。 重新生成完成后，你将收到通知。
 
     ![确认重新生成](./media/storsimple-8000-manage-service/regenregkey4.png)
 
@@ -189,7 +189,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>在运行 Update 5.0 之前版本的设备上支持的操作
 Azure 门户中仅支持运行 Update 5.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 在迁移到 Azure 门户后，可使用下表来了解在运行 Update 5.0 之前版本的设备上支持的操作。
 
-| Operation                                                                                                                       | 支持      |
+| 操作                                                                                                                       | 支持      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | 注册设备                                                                                                               | 是            |
 | 配置设备设置，例如常规、网络和安全性                                                                | 是            |

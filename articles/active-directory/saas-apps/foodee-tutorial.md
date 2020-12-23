@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: a618e6018d07bfa316acd9bbcf9e4c6027a615ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aaa645e7399b4c53aec8b042573882c6a5da4104
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544134"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92451919"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foodee"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Foodee 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544134"
 * 让用户使用其 Azure AD 帐户自动登录到 Foodee。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88544134"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Foodee 支持 **SP 和 IDP** 发起的 SSO
-* Foodee 支持**实时**用户预配
+* Foodee 支持 **实时** 用户预配
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -140,13 +140,13 @@ ms.locfileid: "88544134"
 
 3. 若要手动设置 Foodee，请打开新的 Web 浏览器窗口，以管理员身份登录 Foodee 公司站点，并执行以下步骤：
 
-4. 在页面右上角单击**个人资料徽标**，然后导航至“单一登录”并执行以下步骤： 
+4. 在页面右上角单击 **个人资料徽标** ，然后导航至“单一登录”并执行以下步骤： 
 
    ![Foodee 配置](./media/foodee-tutorial/config01.png)
 
    1. 在“IDP 名称”  文本框中键入名称，例如“ex:Azure”。
    1. 在记事本中打开“联合元数据 XML”，复制其内容并将其粘贴到“IDP 元数据 XML”文本框中  。
-   1. 单击“ **保存**”。
+   1. 单击“ **保存** ”。
 
 ### <a name="create-foodee-test-user"></a>创建 Foodee 测试用户
 
@@ -156,15 +156,14 @@ ms.locfileid: "88544134"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Foodee”磁贴时，应会自动登录到设置了 SSO 的 Foodee。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Foodee”磁贴时，应会自动登录到设置了 SSO 的 Foodee。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Foodee](https://aad.portal.azure.com/)
-

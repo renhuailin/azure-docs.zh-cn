@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: bf0194e82acde0406cfeb57af027831f92a90c92
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743516"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938301"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -113,33 +113,52 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 始终可单击“启用自动缩放”，再单击“保存”来恢复自动缩放。 
 
-## <a name="route-traffic-to-healthy-instances-app-service"></a>将流量路由到 (应用服务的正常实例) 
+## <a name="route-traffic-to-healthy-instances-app-service"></a>将流量路由到正常运行的实例（应用服务）
 
-向外扩展到多个实例时，应用服务可以对实例执行运行状况检查，以将流量路由到正常的实例。 为此，请打开应用服务的门户，并选择 "**监视**" 下的**运行状况检查**。 选择 " **启用** "，并在应用程序中提供有效的 URL 路径，例如 `/health` 或 `/api/health` 。 单击“保存” 。
+横向扩展到多个实例时，应用服务可以对实例执行运行状况检查，以仅将流量路由到正常运行的实例。 为此，请打开门户并转到应用服务，然后选择“监视”下的“运行状况检查” 。 选择“启用”，然后在应用程序上提供有效的 URL 路径，例如 `/health` 或 `/api/health`。 单击“保存”  。
 
-若要使用 ARM 模板启用此功能，请将 `healthcheckpath` 资源的属性设置 `Microsoft.Web/sites` 为站点上的运行状况检查路径，例如： `"/api/health/"` 。 若要禁用该功能，请将属性重新设置为空字符串 `""` 。
+若要在 ARM 模板中启用该功能，请将 `Microsoft.Web/sites` 资源的 `healthcheckpath` 属性设置为站点中的运行状况检查路径，例如：`"/api/health/"`。 若要禁用该功能，请将属性重新设置为空字符串 `""`。
 
 ### <a name="health-check-path"></a>运行状况检查路径
 
-路径必须在两分钟内响应，状态代码介于200与299之间 (包含) 。 如果路径在两分钟内未响应，或返回范围之外的状态代码，则实例将被视为 "不正常"。 运行状况检查与应用服务的身份验证和授权功能集成，即使启用了这些 microsoft.powershell.secuity 功能，系统也会到达终结点。 如果你使用自己的身份验证系统，运行状况检查路径必须允许匿名访问。 如果站点已启用 HTTP**s**，则会通过 http 发送 healthcheck**请求。**
+路径必须在一分钟内响应，且状态码介于 200 到 299（含）之间。 如果路径未在一分钟内响应，或返回范围之外的状态代码，则将该实例视为“运行不正常”。 应用服务未遵循关于运行状况检查路径的 302 重定向。 运行状况检查集成了应用服务的身份验证和授权功能，即使启用了这些安全功能，系统也会到达终结点。 如果使用自己的身份验证系统，则必须允许匿名访问运行状况检查路径。 如果站点启用了“仅限 HTTPS”，则将通过 HTTPS 发送运行状况检查请求 。
 
-运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，路径应返回500级别的响应代码，以指示该应用程序不正常。
+运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息传递系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，则路径应返回介于 500 级别的响应代码，以指示应用运行不正常。
 
-#### <a name="security"></a>安全 
+#### <a name="security"></a>安全性 
 
-大型企业的开发团队通常需要遵守其公开的 Api 的安全要求。 若要保护 healthcheck 终结点，你应该首先使用 [IP 限制](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)、 [客户端证书](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)或虚拟网络等功能来限制对应用程序的访问。 你可以通过要求传入请求的匹配来保护 healthcheck 终结点本身 `User-Agent` `ReadyForRequest/1.0` 。 由于之前的安全功能已对该请求进行了保护，因此不能欺骗用户代理。
+大型企业的开发团队通常需要遵守已公开 API 的安全性要求。 若要保护运行状况检查终结点，应先使用 [IP 限制](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)、[客户端证书](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)或虚拟网络等功能来限制对应用程序的访问。 可以要求传入请求的 `User-Agent` 与 `ReadyForRequest/1.0` 匹配，以保护运行状况检查终结点。 由于先前的安全功能已对该请求进行了保护，因此无法冒名顶替用户代理。
 
 ### <a name="behavior"></a>行为
 
-如果提供了运行状况检查路径，应用服务会在所有实例上对路径进行 ping 操作。 如果在5个 ping 操作后未收到成功的响应代码，则将该实例视为 "不正常"。 不正常的实例 (s 将从负载均衡器轮换中排除) 。 此外，在纵向扩展或缩减时，应用服务会对运行状况检查路径进行 ping 操作，以确保新实例已准备好进行请求。
+提供运行状况检查路径后，应用服务将在所有实例上 ping 通该路径。 如果进行 5 次 ping 后未收到表示成功的响应代码，则将该实例视为“运行不正常”。 如果扩展到2个或多个实例并使用 [基本层](../../app-service/overview-hosting-plans.md) 或更高级别，则不能从负载均衡器轮换中排除不正常的实例 () 。 可以通过应用设置配置所需的失败 ping 操作数 `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` 。 此应用设置可设置为2到10之间的任意整数。 例如，如果此设置为，则在出现 `2` 两个失败 ping 后，将从负载均衡器中删除实例。 此外，在纵向扩展或横向扩展时，应用服务将对运行状况检查路径进行 ping 操作，以确保在将新实例添加到负载均衡器之前已准备好请求。
 
-其他正常运行的实例可能会提高负载。 若要避免出现剩余的情况，则不会再包括一半的实例。 例如，如果应用服务计划扩展到4个实例，其中3个实例不正常，最多2个将从 loadbalancer 旋转中排除。 其他2个实例 (1 正常，1个不正常) 将继续接收请求。 在所有实例都运行不正常的最糟糕的情况下，将不包括任何实例。
+> [!NOTE]
+> 请记住，你的应用服务计划必须扩展到2个或更多个实例，并且必须是 **基本层或更高级别** ，才能排除负载均衡器。 如果只有1个实例，则它不会从负载均衡器中删除，即使它不正常。 
 
-如果实例在一小时内保持不正常，则会将其替换为新的实例。 每个应用服务计划中，最多只能将一个实例替换为每小时一次。
+此外，在添加或重新启动实例时，会对运行状况检查路径进行 ping 操作，例如在 scale out 操作期间，手动重新启动，或通过 SCM 站点部署代码。 如果在执行这些操作期间运行状况检查失败，则不会将失败的实例添加到负载均衡器。 这可以防止这些操作对应用程序的可用性产生负面影响。
+
+当使用 healthcheck 时，剩余的正常实例可能会提高负载。 为避免其余实例不堪重负，排除的实例不得过半。 例如，如果应用服务计划横向扩展到 4 个实例，且其中 3 个运行不正常，则负载均衡器轮换最多排除 2 个。 其他 2 个实例（1 个运行正常的实例和 1 个运行不正常的实例）将继续接收请求。 在所有实例均不正常的最坏情况下，不排除任何实例。如果要替代此行为，可以将 `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` 应用设置设置为介于 `0` 和 `100` 之间的值。 将此值设置为较高值意味着将删除更多运行不正常的实例（默认值为 50）。
+
+如果针对实例的所有应用的运行状况检查失败一小时，则将替换该实例。 每小时最多更换一个实例，每个应用服务计划每天最多更换三个实例。
 
 ### <a name="monitoring"></a>监视
 
-提供应用程序的运行状况检查路径后，可以使用 Azure Monitor 来监视站点的运行状况。 在门户中的 **运行状况检查** 边栏选项卡上，单击顶部工具栏中的 **度量值** 。 这会打开一个新的边栏选项卡，你可以在其中查看站点的历史运行状况状态并创建新的警报规则。 有关监视网站的详细信息， [请参阅 Azure Monitor 上的指南](../../app-service/web-sites-monitor.md)。
+提供应用程序的运行状况检查路径后，可以使用 Azure Monitor 监视站点的运行状况。 在门户的“运行状况检查”边栏选项卡中，单击顶部工具栏中的“指标” 。 此操作将打开新的边栏选项卡，可以在其中查看站点的历史运行状况以及新建预警规则。 有关监视站点的更多信息，请[参阅 Azure Monitor 指南](../../app-service/web-sites-monitor.md)。
+
+## <a name="moving-autoscale-to-a-different-region"></a>将自动缩放移动到不同的区域
+本部分介绍如何在同一订阅和资源组下将 Azure 自动缩放移到另一个区域。 可以使用 REST API 来移动自动缩放设置。
+### <a name="prerequisite"></a>先决条件
+1. 确保订阅和资源组可用，并且源区域和目标区域中的详细信息是相同的。
+1. 确保 Azure [区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)中的 azure 自动缩放功能可用。
+
+### <a name="move"></a>移动
+使用 [REST API](/rest/api/monitor/autoscalesettings/createorupdate) 在新环境中创建自动缩放设置。 在目标区域中创建的自动缩放设置将是源区域中的自动缩放设置的副本。
+
+无法移动在源区域中与自动缩放设置关联的中创建的[诊断设置](./diagnostic-settings.md)。 完成创建 autosale 设置后，你将需要在目标区域中重新创建诊断设置。 
+
+### <a name="learn-more-about-moving-resources-across-azure-regions"></a>详细了解如何在 Azure 区域之间移动资源
+若要详细了解如何在 Azure 中的区域和灾难恢复之间移动资源，请参阅 [将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

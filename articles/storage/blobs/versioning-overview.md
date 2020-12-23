@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/06/2020
+ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20e48640d52fba7b3262014c2e84cfc56c7110cc
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767228"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001875"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -36,13 +36,15 @@ Microsoft 建议使用 blob 版本控制来维护以前版本的 blob，以实�
 
 版本捕获 blob 在给定时间点的状态。 为存储帐户启用 blob 版本控制后，每次修改或删除 blob 时，Azure 存储会自动创建新版本的 blob。
 
-当你创建启用了版本控制的 blob 时，新的 blob 是 (的 blob 的当前版本或基本 blob) 。 如果你随后修改了该 blob，Azure 存储将创建一个在修改之前捕获 blob 状态的版本。 修改后的 blob 将成为新的当前版本。 每次修改 blob 时都会创建一个新版本。 一个 blob 最多可以有1000个关联版本。
+当你创建启用了版本控制的 blob 时，新的 blob 是 (的 blob 的当前版本或基本 blob) 。 如果你随后修改了该 blob，Azure 存储将创建一个在修改之前捕获 blob 状态的版本。 修改后的 blob 将成为新的当前版本。 每次修改 blob 时都会创建一个新版本。
+
+每个 blob 具有大量版本可能会增加 blob 列表操作的延迟。 Microsoft 建议为每个 blob 保留少于1000个版本。 你可以使用生命周期管理来自动删除旧版本。 有关生命周期管理的详细信息，请参阅 [通过自动化 Azure Blob 存储访问层优化成本](storage-lifecycle-management-concepts.md)。
 
 当删除启用了版本控制的 blob 时，Azure 存储将创建一个在删除之前捕获 blob 状态的版本。 然后，将删除 blob 的当前版本，但 blob 的版本将保持不变，以便可以在需要时重新创建。 
 
 Blob 版本是不可变的。 不能修改现有 blob 版本的内容或元数据。
 
-Blob 版本控制可用于常规用途 v2、块 blob 和 Blob 存储帐户。 当前不支持启用了层次结构命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。 
+Blob 版本控制可用于常规用途 v2、块 blob 和 Blob 存储帐户。 当前不支持启用了层次结构命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
 
 Azure 存储 REST API 版本2019-10-10 及更高版本支持 blob 版本控制。
 
@@ -79,11 +81,11 @@ Azure 存储 REST API 版本2019-10-10 及更高版本支持 blob 版本控制�
 
 下图显示了对版本控制的 blob 执行删除操作的影响：
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="显示已进行版本控制的 blob 的删除的图示。":::
 
 将新数据写入 blob 会创建新版本的 blob。 不会影响任何现有版本，如下图所示。
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="显示在删除后重新创建版本控制的 blob 的关系图。":::
 
 ### <a name="blob-types"></a>Blob 类型
 
@@ -122,11 +124,11 @@ Blob 的所有版本必须具有相同的 blob 类型。 如果 blob 具有以�
 
 下图显示了在禁用版本控制后修改 blob 的方式创建了一个不是版本控制的 blob。 与 blob 关联的任何现有版本将保持不变。
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="显示禁用版本控制后修改的基本 blob 的关系图。":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob 版本控制和软删除
 
-Blob 版本控制和 blob 软删除可协同工作，为你提供最佳的数据保护。 启用软删除后，需指定 Azure 存储应保留软删除 blob 的时间。 任何软删除的 blob 版本将保留在系统中，并可在软删除保留期内撤消删除。 有关 blob 软删除的详细信息，请参阅 [Azure 存储 blob 的软删除](storage-blob-soft-delete.md)。
+Blob 版本控制和 blob 软删除可协同工作，为你提供最佳的数据保护。 启用软删除后，需指定 Azure 存储应保留软删除 blob 的时间。 任何软删除的 blob 版本将保留在系统中，并可在软删除保留期内撤消删除。 有关 blob 软删除的详细信息，请参阅 [Azure 存储 blob 的软删除](./soft-delete-blob-overview.md)。
 
 ### <a name="deleting-a-blob-or-version"></a>删除 blob 或版本
 
@@ -138,7 +140,7 @@ Blob 版本控制和 blob 软删除可协同工作，为你提供最佳的数据
 
 下图显示了在删除 blob 或 blob 版本时会发生什么情况。
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="显示已启用软删除的版本删除的图示。":::
 
 如果在存储帐户上同时启用了版本控制和软删除，则在修改或删除 blob 或 blob 版本时，不会创建软删除的快照。
 
@@ -150,7 +152,7 @@ Blob 版本控制和 blob 软删除可协同工作，为你提供最佳的数据
 
 下图显示了如何还原软删除的 blob 版本与删除了 **blob** 操作，以及如何通过 **复制 blob** 操作还原 blob 的当前版本。
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="显示如何还原软删除版本的关系图。":::
 
 在软删除保留期结束之后，将永久删除任何软删除的 blob 版本。
 
@@ -169,7 +171,7 @@ Blob 快照是在特定时间点拍摄的 blob 的只读副本。 Blob 快照和
 
 下图显示拍摄已版本控制的 blob 的快照时会发生的情况。 在关系图中，版本 ID 为2和3的 blob 版本和快照包含相同的数据。
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="显示已进行版本控制的 blob 的快照的关系图。":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>对 blob 版本的操作授权
 
@@ -227,19 +229,19 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 下面的方案演示了在未显式设置 blob 层时，块 blob 及其版本的计费方式。
 
-#### <a name="scenario-1"></a>方案 1
+#### <a name="scenario-1"></a>场景 1
 
 在方案1中，blob 具有以前的版本。 Blob 在创建版本后未更新，因此仅对唯一块1、2和3产生费用。
 
 ![图1：显示基本 blob 和以前版本中的唯一块的计费。](./media/versioning-overview/versions-billing-scenario-1.png)
 
-#### <a name="scenario-2"></a>方案 2
+#### <a name="scenario-2"></a>场景 2
 
 在方案2中，已更新 blob) 中的一个块 (块3。 即使更新的块包含相同的数据和 ID，它也与以前版本中的块3不同。 因此，帐户需要为四个块支付费用。
 
 ![图2：显示基本 blob 和以前版本中的唯一块的计费。](./media/versioning-overview/versions-billing-scenario-2.png)
 
-#### <a name="scenario-3"></a>方案 3
+#### <a name="scenario-3"></a>场景 3
 
 在方案3中，已更新 blob，但版本未更新。 块3已替换为基础 blob 中的块4，但先前版本仍反映块3。 因此，帐户需要为四个块支付费用。
 
@@ -269,7 +271,7 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 下图说明了在将版本控制的 blob 移动到不同层时，如何对对象计费。
 
-:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="此图显示了在显式分层版本控制的 blob 时对象的计费方式。":::
 
 无法撤消为 blob、版本或快照显式设置层。 如果你将 blob 移动到新层级，然后将其移回其原始层级，则即使该对象与原始层级中的其他对象共享块，也会针对该对象的完整内容长度向你收费。
 
@@ -291,8 +293,8 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 | 如果 blob 软删除和版本控制均已启用 | 完全内容长度的所有现有版本，与层无关。 |
 | 如果启用了 blob 软删除但禁用了版本控制 | 所有现有软删除快照（按完整内容长度），不考虑层级。 |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [启用和管理 blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
-- [Azure 存储 Blob 的软删除](storage-blob-soft-delete.md)
+- [Azure 存储 Blob 的软删除](./soft-delete-blob-overview.md)

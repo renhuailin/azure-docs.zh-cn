@@ -16,22 +16,22 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016072"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413184"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
 本主题列出通过 Azure AD Connect 同步进行同步的属性。  
 属性按照相关的 Azure AD 应用进行分组。
 
 ## <a name="attributes-to-synchronize"></a>要同步的属性
-常见的问题是：要同步的最小属性的列表是什么。 默认和推荐的方法是保留默认属性，以便可以在云中构造完整的 GAL (全局地址列表) ，并获取 Microsoft 365 工作负荷中的所有功能。 在某些情况下，你的组织不希望将某些属性同步到云，因为这些属性包含敏感的个人数据，如以下示例中所示：  
+常见的问题是：要同步的最小属性的列表是什么。 默认的（也是建议的）方法是保留默认属性（以便可以在云中构造完整的 GAL（全局地址列表）），并获取 Microsoft 365 工作负荷中的所有功能。 在某些情况下，组织并不想要将某些属性同步到云中，因为这些属性包含敏感的个人数据，如以下示例中所示：  
 ![错误的属性](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
-在这种情况下，请从本主题中的属性列表开始，并识别那些将包含个人数据且不能同步的属性。 然后在安装期间使用 [Azure AD 应用和属性筛选](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)取消选择这些属性。
+在此情况下，请从本主题中的属性列表着手，并识别包含个人数据而不能同步的属性。 然后在安装期间使用 [Azure AD 应用和属性筛选](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)取消选择这些属性。
 
 > [!WARNING]
 > 取消选择属性时，应该小心，只取消选择那些绝对不能同步的属性。 取消选择其他属性可能会对功能造成负面影响。
@@ -373,9 +373,9 @@ ms.locfileid: "90016072"
 此组是用作常规工作负荷或应用程序所需的最低属性。 它可以用于另一部分中未列出的工作负荷或非 Microsoft 应用。 它显式用于以下目的：
 
 * Yammer（只使用 User）
-* [SharePoint 等资源提供的混合企业到企业 (B2B) 跨组织协作方案](https://go.microsoft.com/fwlink/?LinkId=747036)
+* [SharePoint 等资源提供的混合企业到企业 (B2B) 跨组织协作方案](/sharepoint/create-b2b-extranet)
 
-如果 Azure AD 目录不用于支持 Microsoft 365、Dynamics 或 Intune，则可以使用此组属性集。 它包含一小部分核心属性。 请注意，对于某些第三方应用程序的单一登录或预配，还需要配置属性的同步，而不是此处所述的属性。 每个应用程序的 [SaaS 应用教程](../saas-apps/tutorial-list.md) 介绍了应用程序要求。
+如果不使用 Azure AD 目录来支持 Microsoft 365、Dynamics 或 Intune，则可以使用这一组属性。 它包含一小部分核心属性。 请注意，对于某些第三方应用程序的单一登录或预配，还需要配置属性的同步，而不是此处所述的属性。 每个应用程序的 [SaaS 应用教程](../saas-apps/tutorial-list.md) 介绍了应用程序要求。
 
 | 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
@@ -420,7 +420,7 @@ ms.locfileid: "90016072"
 | msDS-KeyCredentialLink |X |在用户已注册 Windows Hello for Business 后。 | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合写回
-选择启用 **Exchange 混合**部署时，这些属性从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
+选择启用 **Exchange 混合** 部署时，这些属性从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
 
 | 属性名称（本地 AD） | 属性名称（连接 UI） | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |---|

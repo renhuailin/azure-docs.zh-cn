@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: 0231fc8919444558abcbc965ad127f7372eceb66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.date: 11/16/2020
+ms.openlocfilehash: 8f0d10b6ed69cd31249447b59114c590bdbeb078
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823596"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832358"
 ---
 # <a name="window-transformation-in-mapping-data-flow"></a>映射数据流中的窗口转换
 
@@ -21,29 +21,31 @@ ms.locfileid: "91823596"
 
 在窗口转换中，将定义数据流中基于窗口的列的聚合。 在表达式生成器中，可以定义基于数据或时间窗口（SQL OVER 子句）的不同类型的聚合，如 LEAD、LAG、NTILE、CUMEDIST、RANK 等。 输出中将生成包含这些聚合的新字段。 还可以包含可选的分组字段。
 
-![窗口选项](media/data-flow/windows1.png "windows 1")
+![屏幕截图显示菜单中选择的窗口。](media/data-flow/windows1.png "windows 1")
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IAVu]
 
 ## <a name="over"></a>Over
 为窗口转换设置列数据的分区。 SQL 等效项是 SQL 中 Over 子句中的 ```Partition By```。 如果希望创建用于分区的计算或表达式，可以将鼠标悬停在列名上并选择“计算列”。
 
-![窗口选项](media/data-flow/windows4.png "windows 4")
+![屏幕截图显示选定的 "Over" 选项卡上的窗口设置。](media/data-flow/windows4.png "windows 4")
 
 ## <a name="sort"></a>排序
 Over 子句的另一部分是设置 ```Order By```。 该操作将设置数据排序顺序。 还可以在此列字段中为计算值创建表达式以进行排序。
 
-![窗口选项](media/data-flow/windows5.png "windows 5")
+![屏幕截图显示选中了 "排序" 选项卡的窗口化设置。](media/data-flow/windows5.png "windows 5")
 
 ## <a name="range-by"></a>范围
 接下来，将窗口框架设置为“无界”或“有界”。 若要设置无界窗框，请将滑块两端设置为“无界”。 如果在无界和当前行之间选择一个设置，那么必须设置偏移量的开始值和结束值。 这两个值都是正整数。 可以使用数据中的相对数字或值。
 
 窗口滑块有两个要设置的值：当前行之前的值和当前行之后的值。 “开始”和“结束”偏移与滑块上的两个选择器相匹配。
 
-![窗口选项](media/data-flow/windows6.png "windows 6")
+![屏幕截图按选定的 "范围" 选项卡显示窗口设置。](media/data-flow/windows6.png "windows 6")
 
 ## <a name="window-columns"></a>窗口列
 最后，使用表达式生成器定义你希望与数据窗口一起使用的聚合，例如 RANK、COUNT、MIN、MAX、DENSE RANK、LEAD 和 LAG 等。
 
-![窗口选项](media/data-flow/windows7.png "windows 7")
+![屏幕截图显示窗口操作的结果。](media/data-flow/windows7.png "windows 7")
 
 此处列出了可通过表达式生成器采用 ADF 数据流表达式语言使用的聚合和分析函数的完整列表：https://aka.ms/dataflowexpressions。
 

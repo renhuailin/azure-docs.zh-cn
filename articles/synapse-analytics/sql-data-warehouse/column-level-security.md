@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse 的列级别安全性是什么？
+title: 专用 SQL 池的列级安全性
 description: 列级别安全性使客户可以基于用户的执行上下文或组成员身份来控制对数据库表列的访问，从而简化应用程序中的安全性设计和编码，并使你能够对列访问实施限制。
 services: synapse-analytics
 author: julieMSFT
@@ -12,25 +12,25 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f8bb40f9c80a0785c81c7aeacf783553bf73aa90
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 817a912dabfc5365eabe8e0dabd7e0b40e40c525
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259877"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462505"
 ---
-# <a name="column-level-security"></a>列级别安全性
+# <a name="column-level-security"></a>行级别安全性
 
-借助列级别安全性，客户可以根据用户的执行上下文或组成员身份，控制对表列的访问。
+Column-Level 安全性允许客户根据用户的执行上下文或组成员身份控制对表列的访问。
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-自此视频发布以来，[行级别安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)可用于 Azure Synapse。
+由于此视频发布的 [行级别安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 可用于 Azure Synapse 中的专用 SQL 池。
 
 列级别安全性简化了应用程序中的安全性设计和编程，使你能够限制列访问权限以保护敏感数据。 例如，确保具体用户只能访问表中与其部门相关的特定列。 访问限制逻辑位于数据库层中，而不是在另一个应用层中远离数据。 每当有任何一层的数据访问请求，数据库就会应用访问限制。 此限制会减少整个安全系统的外围应用，从而提高安全措施的可靠性。 此外，使用列级别安全性还无需引入用于筛选掉列的视图以限制用户访问。
 
-可以使用 [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句实现列级别安全性。 对于这种机制，支持 SQL 和 Azure Active Directory (Azure AD) 身份验证。
+可以用 [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) t-sql 语句实现列级安全性。 使用此机制时，SQL 和 Azure Active Directory (Azure AD) 身份验证都受支持。
 
-![关系图显示了一个示意表，其中第一列的闭合挂锁及其单元格为橙色颜色，而其他列为空白单元。](./media/column-level-security/cls.png)
+![此图显示了一个示意表，其中的第一列以闭合的挂锁开头，其单元格为橙色，而其他列为白色单元格。](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>语法
 
@@ -85,5 +85,5 @@ SELECT * FROM Membership;
 
 下面是目前的一些列级别安全性用例示例：
 
-- 金融服务公司只允许客户经理访问客户的社会安全号码 (SSN)、电话号码和其他个人身份信息 (PII)。
+- 金融服务公司仅允许帐户经理访问 (SSN) 、电话号码和其他个人数据的客户社会保障号。
 - 医疗保健提供商只允许医生和护士访问敏感病史档案，不允许计费部门成员查看此类数据。

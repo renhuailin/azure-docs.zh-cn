@@ -2,7 +2,7 @@
 title: 为 Azure AD 域服务部署 Azure AD 应用程序代理 |Microsoft Docs
 description: 了解如何通过在 Azure Active Directory 域服务托管域中部署和配置 Azure Active Directory 应用程序代理提供对远程辅助角色的内部应用程序的安全访问
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: f02f8c0c5aabc48e7b9966898028485a4687f413
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: 8305b2190cf3b157973f5844c3237ffe73adba66
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723072"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619910"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>部署 Azure AD 应用程序代理以安全访问 Azure Active Directory 域服务托管域中的内部应用程序
 
@@ -53,7 +53,7 @@ ms.locfileid: "88723072"
 
 执行以下步骤以下载 Azure AD 应用程序代理连接器。 在下一部分中，将下载的安装文件复制到应用代理 VM。
 
-1. 使用在 Azure AD 中具有*企业管理员*权限的用户帐户登录到[Azure 门户](https://portal.azure.com)。
+1. 使用在 Azure AD 中具有 *企业管理员* 权限的用户帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择门户顶部 **Azure Active Directory** ，然后选择 " **企业应用程序**"。
 1. 从左侧菜单中选择 " **应用程序代理** "。 若要创建第一个连接器并启用应用程序代理，请选择 " **下载连接器**" 链接。
 1. 在下载页上，接受许可条款和隐私协议，然后选择 " **接受条款" & 下载**。
@@ -97,7 +97,7 @@ ms.locfileid: "88723072"
 
 使用 [get-adcomputer][Get-ADComputer] 检索安装了 Azure AD 应用程序代理连接器的计算机的设置。 在已加入域的管理 VM 中，使用属于“Azure AD DC 管理员”组成员的用户帐户登录，运行以下 cmdlet。
 
-以下示例获取有关名为 *appproxy.aaddscontoso.com*的计算机帐户的信息。 为在前面的步骤中配置的 Azure AD 应用程序代理 VM 提供自己的计算机名。
+以下示例获取有关名为 *appproxy.aaddscontoso.com* 的计算机帐户的信息。 为在前面的步骤中配置的 Azure AD 应用程序代理 VM 提供自己的计算机名。
 
 ```powershell
 $ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
@@ -120,6 +120,6 @@ Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount 
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
 [Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

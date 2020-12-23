@@ -3,30 +3,31 @@ title: Microsoft Azure Maps 概述
 description: 了解 Microsoft Azure Maps 中的服务和功能，以及如何在应用程序中使用这些服务和功能。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/31/2020
+ms.date: 12/07/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1a38da6cd80b692925e353eb0d16f3d6f84c3e7b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91285326"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905395"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
 Azure Maps 是一系列地理空间服务和 SDK，它使用全新地图绘制数据为 Web 和移动应用程序提供地理上下文。 Azure Maps 具有以下功能：
 
 * REST API，用于以多种样式和卫星图像呈现矢量地图和光栅地图。
-* Creator 服务可根据专用室内地图数据创建和呈现地图。
+* Creator 服务（预览版），可根据专用室内地图数据创建和呈现地图。
 * 搜索服务，用于查找全世界的地址、地点和兴趣点。
 * 各种路线规划选项，例如地点到地点、多地点、多地点优化、等时线、电动车、商务车、受影响的交通，以及路网路线。
 * 交通情况视图和事故视图，适用于需要实时交通信息的应用程序。
-* 出行服务，用于通过结合不同的出行模式和实时到达时间来请求公共交通信息和规划路线。
-* 时区和地理位置服务。
+* 出行服务（预览版），用于通过结合不同的出行模式和实时到达时间来请求公共交通信息和规划路线。
+* 时区和地理位置（预览版）服务。
+* 具有数字高程模型的高程服务（预览版）
 * 地理围栏和地图数据存储，其中的位置信息托管在 Azure 中。
 * 通过地理空间分析进行智能定位。
 
@@ -52,43 +53,43 @@ Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地�
 
 使用 Azure Maps Android SDK 创建移动地图绘制应用程序。
 
-:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="移动设备上的地图示例":::
 
 ## <a name="services-in-azure-maps"></a>Azure Maps 中的服务
 
 Azure Maps 包含以下可在 Azure 应用程序中提供地理上下文的服务。
 
-### <a name="data-service"></a>数据服务
+### <a name="data-service-preview"></a>数据服务（预览版）
 
-数据对于地图至关重要。 使用数据服务上传和存储地理空间数据，以用于空间操作或图像合成。  使客户数据靠近 Azure Maps 服务可以降低延迟、提高工作效率，并在应用程序中创建新方案。 有关此服务的详细信息，请访问[数据服务文档](https://docs.microsoft.com/rest/api/maps/data)。
+数据对于地图至关重要。 使用数据服务上传和存储地理空间数据，以用于空间操作或图像合成。  使客户数据靠近 Azure Maps 服务可以降低延迟、提高工作效率，并在应用程序中创建新方案。 有关此服务的详细信息，请访问[数据服务文档](/rest/api/maps/data)。
 
-### <a name="geolocation-service"></a>地理位置服务
+### <a name="geolocation-service-preview"></a>地理位置服务（预览版）
 
 使用地理位置服务预览检索的 IP 地址的双字母国家/地区代码。 此服务可基于地理位置通过提供自定义的应用程序内容帮助你增强用户体验。
 
-有关更多详细信息，请参阅[地理位置服务文档](https://docs.microsoft.com/rest/api/maps/geolocation)。
+有关更多详细信息，请参阅[地理位置服务文档](/rest/api/maps/geolocation)。
 
-### <a name="mobility-service"></a>移动服务
+### <a name="mobility-services-preview"></a>出行服务（预览版） 
 
 Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规划和搜索附近的公交站点）的应用程序的开发时间。 用户可以检索有关公交站点、线路和时刻表的详细信息。 通过出行服务，用户还可以检索停靠站点和线路的几何形状，停靠站点、线路和服务区的警报以及实时的公交到达时间和服务警报。 此外，出行服务还提供具有多式联运行程规划选项的路线规划功能。 多式联运行程规划在一个行程中融合了步行、骑行和公共交通选项。 用户还可以访问详细的多式联运分步行程。
 
-若要详细了解服务，请参阅[出行服务文档](https://docs.microsoft.com/rest/api/maps/mobility)。
+若要详细了解服务，请参阅[出行服务文档](/rest/api/maps/mobility)。
 
 ### <a name="render-service"></a>呈现服务
 
-现处于预览阶段的[呈现服务 V2](https://docs.microsoft.com/rest/api/maps/renderv2) 引入了 [Get Map Tile V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
+[呈现服务 V2（预览版）](/rest/api/maps/renderv2)引入了 [Get Map Tile V2 API](/rest/api/maps/renderv2/getmaptilepreview) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
 
-:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="来自呈现服务 V2 的地图示例":::
 
-有关更多详细信息，请参阅[呈现服务 V2 文档](https://docs.microsoft.com/rest/api/maps/renderv2)。
+有关更多详细信息，请参阅[呈现服务 V2 文档](/rest/api/maps/renderv2)。
 
-若要详细了解现提供 GA（正式发布版）的呈现服务 V1，请参阅[呈现服务 V1 文档](https://docs.microsoft.com/rest/api/maps/render)。  
+若要详细了解现提供 GA（正式发布版）的呈现服务 V1，请参阅[呈现服务 V1 文档](/rest/api/maps/render)。  
 
 ### <a name="route-service"></a>路线服务
 
 路线服务可用于计算每个请求路线的估计到达时间 (ETA)。 路线 API 考虑多种因素，例如实时交通信息和历史交通数据（如请求的星期几某一时间的典型道路速度）。 这些 API 会根据时间或距离依次或按最佳顺序返回可用于多个目的地的最短或最快路线。 使用该服务，开发人员可以计算跨几种出行模式（例如汽车、卡车、自行车、步行或电动车）的方向。 该服务还会考虑出发时间、重量限制或危险品运输等因素。
 
-:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="路线服务中的地图示例":::
 
 路线服务提供高级设置功能，例如：
 
@@ -96,13 +97,13 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 * 提供一组起点和目的地之间的出行时间和距离表格。
 * 根据时间或燃料需求，找出用户可以行驶的路线或距离。
 
-有关路线规划功能的详细信息，请参阅[路线服务文档](https://docs.microsoft.com/rest/api/maps/route)。
+有关路线规划功能的详细信息，请参阅[路线服务文档](/rest/api/maps/route)。
 
 ### <a name="search-service"></a>搜索服务
 
 搜索服务帮助开发人员按名称或类别搜索地址、地点、商家列表和其他地理信息。 此外，服务可以根据纬度和经度对地址和十字路口进行[反向地理编码](https://en.wikipedia.org/wiki/Reverse_geocoding)。
 
-:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="地图上的搜索示例":::
 
 搜索服务还提供高级功能，例如：
 
@@ -111,13 +112,13 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 * 批处理一组搜索请求。
 * 根据品牌名称搜索电动车充电站和兴趣点 (POI) 数据。
 
-有关搜索功能的更多详细信息，请参阅[搜索服务文档](https://docs.microsoft.com/rest/api/maps/search)。
+有关搜索功能的更多详细信息，请参阅[搜索服务文档](/rest/api/maps/search)。
 
 ### <a name="spatial-service"></a>空间服务
 
 空间服务可以快速分析位置信息，以帮助客户了解某时某地正在发生的事件。 它可以实现近乎实时地分析事件并对事件进行预测性建模。
 
-该服务使客户可以借助一系列常用的地理空间数学计算来增强其智能定位能力。 常用计算包括最近点、大圆圈航线距离和缓冲区。 若要详细了解服务和各种功能，请参阅[空间服务文档](https://docs.microsoft.com/rest/api/maps/spatial)。
+该服务使客户可以借助一系列常用的地理空间数学计算来增强其智能定位能力。 常用计算包括最近点、大圆圈航线距离和缓冲区。 若要详细了解服务和各种功能，请参阅[空间服务文档](/rest/api/maps/spatial)。
 
 ### <a name="timezone-service"></a>时区服务
 
@@ -155,7 +156,7 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 }
 ```
 
-有关此服务的详细信息，请参阅[时区服务文档](https://docs.microsoft.com/rest/api/maps/timezone)。
+有关此服务的详细信息，请参阅[时区服务文档](/rest/api/maps/timezone)。
 
 ### <a name="traffic-service"></a>交通服务
 
@@ -166,45 +167,62 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 ![含交通信息的地图示例](media/about-azure-maps/intro_traffic.png)
 
-有关详细信息，请参阅[交通服务文档](https://docs.microsoft.com/rest/api/maps/traffic)。
+有关详细信息，请参阅[交通服务文档](/rest/api/maps/traffic)。
 
-### <a name="weather-service"></a>天气服务
+### <a name="weather-services-preview"></a>天气服务（预览版） 
 
 天气服务提供了 API，开发人员可以使用这些 API 来检索特定位置的天气信息。 天气信息包含以下详细信息：观测日期和时间、天气状况的简要说明、天气图标、降水量指示标志、温度和风速信息。 还会返回 RealFeel™ 温度和 UV 指数等其他详细信息。
 
-开发人员可以使用[获取沿路天气 API](https://docs.microsoft.com/rest/api/maps/weather/getweatheralongroutepreview) 来检索沿特定路线的天气信息。 此外，该服务还支持为受洪水或暴雨等天气灾害影响的中途点生成天气通知。
+开发人员可以使用[获取沿路天气 API](/rest/api/maps/weather/getweatheralongroutepreview) 来检索沿特定路线的天气信息。 此外，该服务还支持为受洪水或暴雨等天气灾害影响的中途点生成天气通知。
 
-使用 [Get Map Tile V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)，你可以请求过去、当前和将来的雷达图块和卫星图块。
+使用 [Get Map Tile V2 API](/rest/api/maps/renderv2/getmaptilepreview)，你可以请求过去、当前和将来的雷达图块和卫星图块。
 
 ![带有实时天气雷达图块的地图示例](media/about-azure-maps/intro_weather.png)
 
-### <a name="maps-creator-service"></a>地图创建者服务
+### <a name="maps-creator-service-preview"></a>Maps Creator 服务（预览版） 
 
 Maps Creator 服务是一套 Web 服务，开发人员可以使用这些服务基于室内地图数据创建具有地图功能的应用程序。
 
 Maps Creator 提供三个核心服务：
 
-* [数据集服务](https://docs.microsoft.com/rest/api/maps/dataset)。 使用数据集服务，基于转换后的绘图包数据创建数据集。 有关绘图包要求的信息，请参阅绘图包要求。
+* [数据集服务](/rest/api/maps/dataset)。 使用数据集服务，基于转换后的绘图包数据创建数据集。 有关绘图包要求的信息，请参阅绘图包要求。
 
-* [转换服务](https://docs.microsoft.com/rest/api/maps/dataset)。 使用转换服务将 DWG 设计文件转换为室内地图的绘图包数据。
+* [转换服务](/rest/api/maps/dataset)。 使用转换服务将 DWG 设计文件转换为室内地图的绘图包数据。
 
-* [图块集服务](https://docs.microsoft.com/rest/api/maps/tileset)。 使用图块集服务可以创建数据集的基于向量的表示形式。 应用程序可以使用图块集来呈现基于视觉对象图块的数据集视图。
+* [图块集服务](/rest/api/maps/tileset)。 使用图块集服务可以创建数据集的基于向量的表示形式。 应用程序可以使用图块集来呈现基于视觉对象图块的数据集视图。
 
-* [功能状态服务](https://docs.microsoft.com/rest/api/maps/featurestate)。 使用功能状态服务来支持动态地图样式。 动态定位样式允许应用程序在 IoT 系统提供的空间上反映实时事件。
+* [功能状态服务](/rest/api/maps/featurestate)。 使用功能状态服务来支持动态地图样式。 动态定位样式允许应用程序在 IoT 系统提供的空间上反映实时事件。
 
-* [WFS 服务](https://docs.microsoft.com/rest/api/maps/featurestate)。 使用 WFS 服务查询室内地图数据。 WFS 服务遵循[开放地理空间信息联盟 API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 标准来查询单个数据集。
+* [WFS 服务](/rest/api/maps/featurestate)。 使用 WFS 服务查询室内地图数据。 WFS 服务遵循[开放地理空间信息联盟 API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 标准来查询单个数据集。
+
+### <a name="elevation-service-preview"></a>高程服务（预览版）
+
+Azure Maps 高程服务是一项 Web 服务，开发人员可以使用该服务从地球表面上的任何位置检索高程数据。
+
+高程服务允许以两种格式检索高程数据：
+
+* **GeoTIFF 光栅格式**。 使用[呈现 V2 - Get Map Tile API](/rest/api/maps/renderv2) 以磁贴格式检索高程数据。
+
+* **GeoJSON 格式**。 使用[高程 API](/rest/api/maps/elevation) 沿着路径在定义的边界框内或在特定坐标处请求采样的高程数据。 
+
+:::image type="content" source="./media/about-azure-maps/elevation.png" alt-text="带有高程数据的地图示例":::
+
 
 ## <a name="programming-model"></a>编程模型
 
-Azure Maps 针对移动设备设计，可帮助你开发跨平台应用程序。 它使用语言无关的编程模型，并通过 [REST API](https://docs.microsoft.com/rest/api/maps/) 支持 JSON 输出。
+Azure Maps 针对移动设备设计，可帮助你开发跨平台应用程序。 它使用语言无关的编程模型，并通过 [REST API](/rest/api/maps/) 支持 JSON 输出。
 
-此外，Azure Maps 还通过简单的编程模型提供了一个便利的 [JavaScript 地图控件](https://docs.microsoft.com/javascript/api/azure-maps-control)。 Web 和移动应用程序的开发都快速而简单。
+此外，Azure Maps 还通过简单的编程模型提供了一个便利的 [JavaScript 地图控件](/javascript/api/azure-maps-control)。 Web 和移动应用程序的开发都快速而简单。
+
+
+
+
 
 ## <a name="power-bi-visual"></a>Power BI 视觉对象
 
 Power BI 的 Azure Maps 视觉对象提供了一组丰富的数据可视化效果，适用于地图上的空间数据。 据估计，超过 80% 的业务数据具有位置上下文。 Azure Maps 视觉对象提供了一个无代码解决方案，可用于深入了解此位置上下文与业务数据有何关系以及对业务数据有何影响。
 
-:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="具有显示业务数据的 Azure Maps 视觉对象的 Power BI 桌面":::
 
 有关详细信息，请参阅 [Azure Maps Power BI 视觉对象入门](power-bi-visual-getting-started.md)文档。
 

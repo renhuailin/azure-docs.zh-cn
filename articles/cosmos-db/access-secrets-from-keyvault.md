@@ -4,19 +4,19 @@ description: 使用 Azure Key Vault 来存储和访问 Azure Cosmos DB 连接字
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262661"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359313"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>使用 Azure Key Vault 保护 Azure Cosmos 密钥 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 >[!IMPORTANT]
 > 访问 Azure Cosmos DB 密钥的建议解决方案是使用[系统分配的托管标识](managed-identity-based-authentication.md)。 如果服务无法利用托管标识，则使用[基于证书的解决方案](certificate-based-authentication.md)。 如果托管标识解决方案和基于证书的解决方案都不能满足你的需求，请使用下面的密钥保管库解决方案。
@@ -48,7 +48,7 @@ ms.locfileid: "85262661"
 2. 选择“+生成/导入”。  
 
    * 为“上传选项”选择“手动”。  
-   * 提供机密的**名称**。
+   * 提供机密的 **名称**。
    * 在“值”字段中提供 Cosmos DB 帐户的连接字符串。  然后选择“创建”  。
 
    :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="创建机密":::
@@ -59,22 +59,22 @@ ms.locfileid: "85262661"
 
 ## <a name="create-an-azure-web-application"></a>创建 Azure Web 应用程序
 
-1. 创建 Azure Web 应用程序，或者从 [GitHub 存储库](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo)下载应用。 它是一个简单的 MVC 应用程序。  
+1. 创建 Azure Web 应用程序，或者从 [GitHub 存储库](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo)下载应用。 它是一个简单的 MVC 应用程序。  
 
 2. 解压缩已下载的应用程序，并打开 **HomeController.cs** 文件。 更新以下行中的机密 ID：
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
-3. **保存**文件并**生成**解决方案。  
+3. **保存** 文件并 **生成** 解决方案。  
 4. 接下来，将应用程序部署到 Azure。 右键单击项目并选择“发布”。  创建新的应用服务配置文件（可将应用命名为 WebAppKeyVault1），然后选择“发布”。    
 
 5. 部署应用程序后， 在 Azure 门户中导航到已部署的 Web 应用程序，并启用此应用程序的“托管服务标识”。   
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="创建机密":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="托管服务标识":::
 
 如果现在就运行此应用程序，将会看到以下错误，因为尚未在 Key Vault 中向此应用程序授予任何权限。
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="创建机密":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="已部署的无访问权限的应用":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>注册应用程序，并授予读取 Key Vault 的权限
 
@@ -84,15 +84,15 @@ ms.locfileid: "85262661"
 
 2. 打开“访问策略”，选择“+新增”，找到已部署的 Web 应用，选择权限，然后选择“确定”。     
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="创建机密":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="添加访问策略":::
 
 现在，如果运行此应用程序，即可从 Key Vault 读取机密。
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="创建机密":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="使用机密部署的应用":::
  
 同样，可以添加一个用户来访问 Key Vault。 需要通过选择“访问策略”  将自己添加到 Key Vault，然后授予从 Visual studio 运行此应用程序所需的全部权限。 从桌面运行此应用程序时，它会采用你的标识。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要为 Azure Cosmos DB 配置防火墙，请参阅[防火墙支持](firewall-support.md)一文。
-* 若要配置虚拟网络服务终结点，请参阅[使用 VNet 服务终结点保护访问](vnet-service-endpoint.md)一文。
+* 若要为 Azure Cosmos DB 配置防火墙，请参阅[防火墙支持](how-to-configure-firewall.md)一文。
+* 若要配置虚拟网络服务终结点，请参阅[使用 VNet 服务终结点保护访问](how-to-configure-vnet-service-endpoint.md)一文。

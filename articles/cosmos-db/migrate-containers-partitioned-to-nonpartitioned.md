@@ -3,18 +3,20 @@ title: 将未分区的 Azure Cosmos 容器迁移到已分区的容器
 description: 了解如何将所有现有的未分区容器迁移到已分区的容器。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2defeb2c417e94109721d32d8d4b611e2e46569
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: edb6114406922d55c439ae7426a2be933bba4aee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003212"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334079"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>将未分区的容器迁移到已分区的容器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 支持创建不带分区键的容器。 目前可以使用 Azure CLI 以及版本低于或等于 2.x 的 Azure Cosmos DB SDK（.Net、Java、NodeJs）创建未分区的容器。 无法使用 Azure 门户创建未分区的容器。 但是，此类未分区容器不具有弹性，具有 20 GB 的固定存储容量，且吞吐量限制为 10K RU/s。
 
@@ -132,6 +134,6 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 * [Azure Cosmos DB 中的分区](partitioning-overview.md)
 * [Azure Cosmos DB 中的请求单位](request-units.md)
 * [在容器和数据库上预配吞吐量](set-throughput.md)
-* [使用 Azure Cosmos 帐户](account-overview.md)
+* [使用 Azure Cosmos 帐户](./account-databases-containers-items.md)
 
 [1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

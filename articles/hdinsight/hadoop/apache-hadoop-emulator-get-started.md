@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207473"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547956"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>开始使用 Apache Hadoop 沙盒，它是虚拟机上的模拟器
 
@@ -28,7 +28,7 @@ ms.locfileid: "86207473"
 
 1. 浏览到 [Cloudera 下载](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)。
 
-1. 单击“选择安装类型”下的 **VIRTUALBOX**，在 VM 上下载最新的 Hortonworks 沙盒。 登录或填写产品兴趣表。
+1. 单击“选择安装类型”下的 **VIRTUALBOX** ，在 VM 上下载最新的 Hortonworks 沙盒。 登录或填写产品兴趣表。
 
 1. 单击按钮“HDP 沙盒(最新)”  开始下载。
 
@@ -85,7 +85,7 @@ ms.locfileid: "86207473"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何将 Visual Studio 与 Hortonworks 沙盒配合使用](../hdinsight-hadoop-emulator-visual-studio.md)
+* [了解如何将 Visual Studio 与 Hortonworks 沙盒配合使用](./apache-hadoop-visual-studio-tools-get-started.md)
 
 * [学习 Hortonworks 沙盒的重要知识](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 

@@ -9,20 +9,20 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319463"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094159"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的 Azure 专用链接
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-使用专用链接可以通过**专用终结点**连接到 Azure 中的各种 PaaS 服务。 若要查看支持专用链接功能的 PaaS 服务列表，请转到[专用链接文档](../../private-link/index.yml)页。 专用终结点是特定[ VNet ](../../virtual-network/virtual-networks-overview.md)和子网中的专用 IP 地址。
+使用专用链接可以通过 **专用终结点** 连接到 Azure 中的各种 PaaS 服务。 若要查看支持专用链接功能的 PaaS 服务列表，请转到[专用链接文档](../../private-link/index.yml)页。 专用终结点是特定[ VNet ](../../virtual-network/virtual-networks-overview.md)和子网中的专用 IP 地址。
 
 > [!IMPORTANT]
-> 本文适用于 Azure SQL 数据库和 Azure Synapse Analytics（以前的 SQL 数据仓库）。 为简单起见，术语“数据库”是指 Azure SQL 数据库中的数据库和 Azure Synapse Analytic 中的数据库。 同样，无论何时提及“服务器”，都是指托管 Azure SQL 数据库和 Azure Synapse Analytics[ 的逻辑 SQL Server](logical-servers.md)。 本文不适用于 **Azure SQL 托管实例**。
+> 本文同时适用于 Azure SQL 数据库和 Azure Synapse Analytics。 为简单起见，术语“数据库”是指 Azure SQL 数据库中的数据库和 Azure Synapse Analytic 中的数据库。 同样，无论何时提及“服务器”，都是指托管 Azure SQL 数据库和 Azure Synapse Analytics[ 的逻辑 SQL Server](logical-servers.md)。 本文不适用于 **Azure SQL 托管实例**。
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>如何设置 Azure SQL 数据库的专用链接 
 
@@ -75,7 +75,7 @@ ms.locfileid: "91319463"
 
 ### <a name="check-connectivity-using-telnet"></a>使用 Telnet 检查连接
 
-[Telnet 客户端](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29)是可用于测试连接的 Windows 功能。 根据 Windows OS 的版本，可能需要显式启用此功能。 
+[Telnet 客户端](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29)是可用于测试连接的 Windows 功能。 根据 Windows OS 的版本，可能需要显式启用此功能。 
 
 安装 Telnet 后，打开命令提示符窗口。 运行 Telnet 命令并指定 SQL 数据库中的数据库的 IP 地址和专用终结点。
 
@@ -149,7 +149,7 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 1. 仅允许流量使用 VM 的专用 IP 地址进入 SQL 数据库中的数据库。 有关详细信息，请参阅有关[服务终结点](vnet-service-endpoint-rule-overview.md)和[虚拟网络防火墙规则](firewall-configure.md)的文章。
 1. 在 Azure VM 上，按如下所示使用[网络安全组 (NSG)](../../virtual-network/manage-network-security-group.md) 和服务标记缩小传出连接的范围
     - 指定一个 NSG 规则以允许服务标记 SQL.WestUs 的流量 - 仅允许连接到“美国西部”的 SQL 数据库
-    - 指定一个 NSG 规则（具有**较高的优先级**），以拒绝服务标记 SQL 的流量 - 拒绝连接到所有区域中的 SQL 数据库
+    - 指定一个 NSG 规则（具有 **较高的优先级**），以拒绝服务标记 SQL 的流量 - 拒绝连接到所有区域中的 SQL 数据库
 
 完成此设置后，Azure VM 只能连接到“美国西部”区域的 SQL 数据库中的数据库。 不过，连接并不局限于 SQL 数据库中的单个数据库。 VM 仍可连接到“美国西部”区域中的任何数据库，包括不在订阅中的数据库。 尽管我们在上述场景中已将数据渗透范围缩小到了特定的区域，但我们并未完全消除这种渗透。
 
@@ -177,7 +177,7 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>使用 Polybase 和 COPY 语句从 Azure Synapse Analytics 连接到 Azure 存储
 
-PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中。 如果要从中加载数据的 Azure 存储帐户仅允许通过专用终结点、服务终结点或基于 IP 的防火墙访问一组虚拟网络子网，则通过 PolyBase 和 COPY 语句与该帐户建立的连接将会断开。 对于连接到 Azure 存储（已通过安全方式连接到虚拟网络）的 Azure Synapse Analytics，若要启用导入和导出方案，请执行[此处](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步骤。 
+PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中。 如果要从中加载数据的 Azure 存储帐户仅允许通过专用终结点、服务终结点或基于 IP 的防火墙访问一组虚拟网络子网，则通过 PolyBase 和 COPY 语句与该帐户建立的连接将会断开。 对于连接到 Azure 存储（已通过安全方式连接到虚拟网络）的 Azure Synapse Analytics，若要启用导入和导出方案，请执行[此处](vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)提供的步骤。 
 
 ## <a name="next-steps"></a>后续步骤
 

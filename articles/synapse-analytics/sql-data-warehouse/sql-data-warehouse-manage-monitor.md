@@ -1,6 +1,6 @@
 ---
-title: 使用 DMV 监视 SQL 池工作负载
-description: 了解如何使用 DMV 监视 Azure Synapse Analytics SQL 池工作负载和查询执行情况。
+title: 使用 Dmv 监视专用 SQL 池工作负荷
+description: 了解如何使用 Dmv 监视 Azure Synapse Analytics 专用 SQL 池工作负荷和查询执行情况。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1992c3d525fc1f5a098e1969887a752233d47990
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048018"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453799"
 ---
-# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>使用 DMV 监视 Azure Synapse Analytics SQL 池工作负载
+# <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>使用 Dmv 监视 Azure Synapse Analytics 专用 SQL 池工作负荷
 
 本文介绍如何使用动态管理视图 (DMV) 监视工作负载，包括调查 SQL 池中的查询执行情况。
 
@@ -100,10 +100,10 @@ ORDER BY step_index;
 
 当 DSQL 计划的执行时间超出预期时，原因可能是计划很复杂，包含许多 DSQL 步骤，也可能是一个步骤占用很长的时间。  如果计划有很多步骤，包含多个移动操作，可考虑优化表分布，减少数据移动。 [表分布](sql-data-warehouse-tables-distribute.md)一文说明了为何必须移动数据才能解决查询。 该文还介绍了一些用于最大程度减少数据移动的分布策略。
 
-若要进一步调查单个步骤的详细信息，可检查长时间运行的查询步骤的 *operation_type* 列并记下**步骤索引**：
+若要进一步调查单个步骤的详细信息，可检查长时间运行的查询步骤的 *operation_type* 列并记下 **步骤索引**：
 
-* 针对 **SQL 操作**继续执行步骤3： OnOperation、RemoteOperation、ReturnOperation。
-* 继续执行 **数据移动操作**的步骤4： ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
+* 针对 SQL 操作继续执行步骤 3：OnOperation、RemoteOperation、ReturnOperation。
+* 针对数据移动操作继续执行步骤 4：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>步骤 3：调查分布式数据库上的 SQL
 
@@ -139,7 +139,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
 * 检查 *total_elapsed_time* 列，以查看是否有特定分布在数据移动上比其他分布花费了更多时间。
-* 对于长时间运行的分布，请检查 *rows_processed* 列，以查看从该分布移动的行数是否远远多于其他分布。 如果是这样，此发现可能指示基础数据倾斜。
+* 对于长时间运行的分布，请检查 *rows_processed* 列，以查看从该分布移动的行数是否远远多于其他分布。 如果是这样，此发现可能指示基础数据倾斜。 数据偏斜的一个原因是在具有多个 NULL 值的列上分布（其行将全部位于同一分布中）。 通过避免在这些类型的列上分发或筛选查询以尽可能消除 NULL 来防止查询速度过慢。 
 
 如果查询正在运行，则可以使用 [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 从 SQL Server 计划缓存中检索 SQL Server 估计计划，以了解特定分布中当前正在运行的 SQL 步骤。
 

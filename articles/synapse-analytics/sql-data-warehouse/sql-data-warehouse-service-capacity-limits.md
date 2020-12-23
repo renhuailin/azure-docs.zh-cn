@@ -1,6 +1,6 @@
 ---
-title: 容量限制 - Azure Synapse Analytics（以前称为 SQL DW）
-description: Azure Synapse 中的 Synapse SQL 池的各个组件所允许的最大值。
+title: 专用 SQL 池的容量限制
+description: Azure Synapse Analytics 中专用 SQL 池的各个组件所允许的最大值。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,27 +11,27 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204976"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673410"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics（以前称为 SQL DW）容量限制
+# <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的容量限制
 
-Azure Synapse 的各种组件允许的最大值。
+Azure Synapse Analytics 中专用 SQL 池的各个组件所允许的最大值。
 
 ## <a name="workload-management"></a>工作负荷管理
 
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
-| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个 SQL 池（数据仓库）单元的最大 DWU | Gen1：DW6000<br></br>Gen2：DW30000c |
-| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL server （例如 myserver.database.windows.net）的 DTU 配额为54000，这允许最多 DW5000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”  作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.5。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47,500 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
+| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个专用 SQL 池的最大 DWU  | Gen1：DW6000<br></br>Gen2：DW30000c |
+| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL Server（例如 myserver.database.windows.net）的 DTU 配额为 54,000，最多可以允许 DW6000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”  作为请求类型来增加配额。  若要计算 DTU 需求，请将7.5 乘以所需的 DWU 总数，或将9乘以所需的总 cDWU 数。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW7500c x 9 = 67500 Dtu。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
 | 数据库连接 |并发打开的最大会话数 |1024<br/><br/>并发打开的会话数因所选 DWU 而异。 DWU600c 及更高版本支持最多 1024 个打开的会话。 DWU500c 及更低版本支持最多 512 个并发打开的会话。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
-| [工作负荷管理](resource-classes-for-workload-management.md) |并发查询数上限 |128<br/><br/>  最多可执行 128 个并发查询，其余查询将排队。<br/><br/>将用户分配到更高的资源类或降低[数据仓库单位](memory-concurrency-limits.md)设置时，并发查询的数量可能会减少。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 有关并发查询执行的详细信息，请参阅[并发并发](memory-concurrency-limits.md)查询一文。 |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100c 399 GB。 在 DWU1000c 上，tempdb 的大小调整为 3.99 TB。 |
+| [工作负荷管理](resource-classes-for-workload-management.md) |并发查询数上限 |128<br/><br/>  最多可执行 128 个并发查询，其余查询将排队。<br/><br/>将用户分配到更高的资源类或降低[数据仓库单位](memory-concurrency-limits.md)设置时，并发查询的数量可能会减少。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 若要详细了解如何执行并发查询，请参阅[并发最大值](memory-concurrency-limits.md)一文。 |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100c 399 GB。 在使用 DWU1000c 的情况下，tempdb 的大小为 3.99 TB。 |
 ||||
 
 ## <a name="database-objects"></a>数据库对象
@@ -43,7 +43,7 @@ Azure Synapse 的各种组件允许的最大值。
 | 表 |每个数据库的表数 | 100,000 |
 | 表 |每个表的列数 |1024 个列 |
 | 表 |每个列的字节数 |取决于列[数据类型](sql-data-warehouse-tables-data-types.md)。 char 数据类型的限制为 8000，nvarchar 数据类型的限制为 4000，MAX 数据类型的限制为 2 GB。 |
-| 表 |每行的字节数，定义的大小 |8060 字节<br/><br/>每行字节数的计算方式同于使用页面压缩的 SQL Server。 与 SQL Server 一样，支持行溢出存储，这样可以将**可变长度列**脱行推送。 对可变长度行进行拖行推送时，只将 24 字节的根存储在主记录中。 有关详细信息，请参阅[超过 8 KB 的行溢出数据](https://msdn.microsoft.com/library/ms186981.aspx)。 |
+| 表 |每行的字节数，定义的大小 |8060 字节<br/><br/>每行字节数的计算方式同于使用页面压缩的 SQL Server。 与 SQL Server 一样，支持行溢出存储，这样可以将 **可变长度列** 脱行推送。 对可变长度行进行拖行推送时，只将 24 字节的根存储在主记录中。 有关详细信息，请参阅[超过 8 KB 的行溢出数据](https://msdn.microsoft.com/library/ms186981.aspx)。 |
 | 表 |每个表的分区数 |15,000<br/><br/>为了实现高性能，建议在满足业务需求的情况下尽量减少所需的分区数。 随着分区数目的增长，数据定义语言 (DDL) 和数据操作语言 (DML) 操作的开销也会增长，导致性能下降。 |
 | 表 |每个分区边界值的字符数。 |4000 |
 | 索引 |每个表的非聚集索引数。 |50<br/><br/>仅适用于行存储表。 |
@@ -61,8 +61,8 @@ Azure Synapse 的各种组件允许的最大值。
 
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
-| Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 加载小于 1 MB 的行。 不支持将 LOB 数据类型加载到具有聚集列存储索引 (CCI) 的表。<br/><br/> |
-||||
+| Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 加载小于 1 MB 的行。 不支持将 LOB 数据类型加载到具有聚集列存储索引 (CCI) 的表。<br/> |
+|Polybase 加载|文件总数|1,000,000<br/><br/>Polybase 加载不能超过 1 百万个文件。 你可能会遇到以下错误：“操作失败，因为拆分计数超过上限 1000000”。|
 
 ## <a name="queries"></a>查询
 

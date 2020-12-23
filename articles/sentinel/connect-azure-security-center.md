@@ -9,16 +9,16 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b1188e533039b0137cebb22652d9921418c41deb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659652"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655946"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>从 Azure 安全中心连接 Azure Defender 警报数据
 
-使用 Azure Defender 警报连接器从 [Azure 安全中心](../security-center/security-center-intro.md) 引入 azure defender 警报，并将其流式传输到 azure Sentinel。 
+使用 Azure Defender 警报连接器从 [Azure 安全中心](../security-center/security-center-introduction.md) 引入 azure defender 警报，并将其流式传输到 azure Sentinel。 
 
 ## <a name="prerequisites"></a>先决条件
 

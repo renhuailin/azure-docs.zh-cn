@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: eb508831d7a10537f27bb5b4e55f3a0627ce1f3c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f2e899a9d98d43f826bfa63e62458adf1601f071
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265960"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042986"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
 
@@ -92,7 +92,7 @@ ms.locfileid: "89265960"
 
 下图显示的是直通工作流中涉及的 AMS 平台的主要组成部分。
 
-![实时工作流](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
+![此图显示了 "传递" 工作流的 M S 平台的主要部分。](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
 
 有关详细信息，请参阅[使用从本地编码器接收多比特率实时流的频道](media-services-live-streaming-with-onprem-encoders.md)。
 
@@ -142,11 +142,11 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 ### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>通道状态及其如何映射到计费模式
 通道的当前状态。 可能的值包括：
 
-* **已停止**。 这是通道在创建后的初始状态（除非在门户中选择了自动启动）。此状态下不会发生计费。 此状态下可以更新通道属性，但不允许进行流式传输。
-* **正在启动**。 通道正在启动。 此状态下不会发生计费。 此状态下不允许进行更新或流式传输。 如果发生错误，通道会返回到“已停止”状态。
-* **正在运行**。 通道能够处理实时流。 现在会计收使用费。 必须停止通道以防止进一步计费。
-* **正在停止**。 通道正在停止。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式传输。
-* **正在删除**。 正在删除通道。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式传输。
+* **已停止** 。 这是通道在创建后的初始状态（除非在门户中选择了自动启动）。此状态下不会发生计费。 此状态下可以更新通道属性，但不允许进行流式传输。
+* **正在启动** 。 通道正在启动。 此状态下不会发生计费。 此状态下不允许进行更新或流式传输。 如果发生错误，通道会返回到“已停止”状态。
+* **正在运行** 。 通道能够处理实时流。 现在会计收使用费。 必须停止通道以防止进一步计费。
+* **正在停止** 。 通道正在停止。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式传输。
+* **正在删除** 。 正在删除通道。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式传输。
 
 下表显示通道状态如何映射到计费模式。
 

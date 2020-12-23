@@ -13,19 +13,19 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: db25e0a9ebe01a45c594fe214efcdd3551cf6c14
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a18e3cb65b2ef70a04ca1d7e74dd9d5f42e3a933
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449368"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355760"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
 本文介绍 Azure Active Directory 中的应用程序注册、应用程序对象和服务主体：它们是什么、它们的使用方式以及它们彼此之间的关系。 还展示了多租户示例方案，用于说明应用程序的应用程序对象和对应的服务主体对象之间的关系。
 
 ## <a name="application-registration"></a>应用程序注册
-为了将标识和访问管理功能委托给 Azure AD，应用程序必须使用 Azure AD [租户](developer-glossary.md#tenant)进行注册。 将应用程序注册到 Azure AD 时，需要创建应用程序的标识配置，使其能够与 Azure AD 集成。 在 [Azure 门户][AZURE-Portal]中注册应用时，可以选择单租户（只能在自己的租户中访问）或多租户（可在其他租户中访问），也可以选择设置重定向 URI （将访问令牌发送到的位置）。
+为了将标识和访问管理功能委托给 Azure AD，应用程序必须使用 Azure AD [租户](developer-glossary.md#tenant)进行注册。 将应用程序注册到 Azure AD 时，需要创建应用程序的标识配置，使其能够与 Azure AD 集成。 当你在 [Azure 门户][AZURE-Portal]中注册应用时，你可以选择该应用是只能在) 租户中访问的单个租户 (， (也可以选择设置将访问令牌发送到) 的 "重定向 URI ("。
 
 :::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Azure 门户的“注册应用程序”窗格的屏幕截图":::
 
@@ -47,9 +47,9 @@ Microsoft Graph [Application 实体][MS-Graph-App-Entity]定义应用程序对�
 ## <a name="service-principal-object"></a>服务主体对象
 若要访问受 Azure AD 租户保护的资源，需要访问的实体必须由安全主体来表示。 此要求同时适用于用户（用户主体）和应用程序（服务主体）。 安全主体定义 Azure AD 租户中用户/应用程序的访问策略和权限。 这样便可实现核心功能，如在登录时对用户/应用程序进行身份验证，在访问资源时进行授权。
 
-服务主体是单个租户或目录中某个全局应用程序对象的本地表示形式或应用程序实例。 服务主体是从应用程序对象中创建的具体实例，并从该应用程序对象继承某些属性。  服务主体是在使用应用程序的每个租户中创建的，并引用全局唯一应用对象。  服务主体对象定义应用可在特定租户中实际执行的操作、可访问应用的用户以及应用可访问的资源。
+服务主体是单个租户或目录中某个全局应用程序对象的本地表示形式或应用程序实例。 服务主体是从应用程序对象中创建的具体实例，并从该应用程序对象继承某些属性。 服务主体是在使用应用程序的每个租户中创建的，并引用全局唯一应用对象。  服务主体对象定义应用可在特定租户中实际执行的操作、可访问应用的用户以及应用可访问的资源。
 
-当应用程序被授予了对租户中资源的访问权限时（根据注册或[许可](developer-glossary.md#consent)），将创建一个服务主体对象。 你还可以使用 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、 [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)、 [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http)、 [Azure 门户][AZURE-Portal]和其他工具在租户中创建服务主体对象。  如果使用门户，会在注册应用程序时自动创建服务主体。
+当应用程序被授予了对租户中资源的访问权限时（根据注册或[许可](developer-glossary.md#consent)），将创建一个服务主体对象。 你还可以使用 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、 [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、 [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http)、 [Azure 门户][AZURE-Portal]和其他工具在租户中创建服务主体对象。 如果使用门户，会在注册应用程序时自动创建服务主体。
 
 门户中的“企业应用程序”边栏选项卡用于在租户中列出和管理服务主体。 可查看服务主体的权限、用户已同意的权限、提供了相应同意的用户、登录信息等等。
 
@@ -61,21 +61,21 @@ Microsoft Graph [ServicePrincipal 实体][MS-Graph-Sp-Entity]定义服务主体�
 
 应用程序对象是应用程序的全局表示形式，可供所有租户使用，而服务主体是本地表示形式，在特定租户中使用 。
 
-应用程序对象用作模板，常见属性和默认属性从其中*派生*，以便在创建相应服务主体对象时使用。 因此，应用程序对象与软件应用程序存在 1 对 1 关系，而与其对应的服务主体对象存在 1 对多关系。
+应用程序对象用作模板，常见属性和默认属性从其中 *派生*，以便在创建相应服务主体对象时使用。 因此，应用程序对象与软件应用程序存在 1 对 1 关系，而与其对应的服务主体对象存在 1 对多关系。
 
 必须在将使用应用程序的每个租户中创建服务主体，让它能够建立用于登录和/或访问受租户保护的资源的标识。 单租户应用程序只有一个服务主体（在其宿主租户中），在应用程序注册期间创建并被允许使用。 多租户 Web 应用程序/API 还会在租户中的某个用户已同意使用它的每个租户中创建服务主体。
 
 > [!NOTE]
-> 对应用程序对象所做的任何更改也只反映在该对象在应用程序宿主租户（其注册所在的租户）的服务主体对象中。 对于多租户应用程序，在通过[应用程序访问面板](https://myapps.microsoft.com)删除该访问权限并重新授予访问权限之前，对应用程序对象所做的更改不会反映在任何使用者租户的服务主体对象中。
+> 对应用程序对象所做的任何更改也会反映在应用程序的主租户中的服务主体对象中，只 () 注册它的租户。 对于多租户应用程序，在通过[应用程序访问面板](https://myapps.microsoft.com)删除该访问权限并重新授予访问权限之前，对应用程序对象所做的更改不会反映在任何使用者租户的服务主体对象中。
 >
 > 另请注意，默认情况下本机应用程序注册为多租户应用程序。
 
 ## <a name="example"></a>示例
 
-下图演示了应用程序的应用程序对象和对应的服务主体对象之间的关系，其上下文是在名为 **HR 应用**的示例多租户应用程序中。 此示例方案中有三个 Azure AD 租户：
+下图演示了应用程序的应用程序对象和对应的服务主体对象之间的关系，其上下文是在名为 **HR 应用** 的示例多租户应用程序中。 此示例方案中有三个 Azure AD 租户：
 
-- **Adatum** - 开发 **HR 应用**的公司使用的租户
-- **Contoso** - Contoso 组织使用的租户，即 **HR 应用**的使用者
+- **Adatum** - 开发 **HR 应用** 的公司使用的租户
+- **Contoso** - Contoso 组织使用的租户，即 **HR 应用** 的使用者
 - **Fabrikam** - Fabrikam 组织使用的租户，它也使用 **HR 应用**
 
 ![应用对象与服务主体对象之间的关系](./media/app-objects-and-service-principals/application-objects-relationship.svg)
@@ -91,8 +91,8 @@ Microsoft Graph [ServicePrincipal 实体][MS-Graph-Sp-Entity]定义服务主体�
 ## <a name="next-steps"></a>后续步骤
 
 - 可以使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)查询应用程序和服务主体对象。
-- 可以使用 Microsoft Graph API、[Azure 门户的][AZURE-Portal]应用程序清单编辑器或 [Azure AD PowerShell cmdlet](/powershell/azure/?view=azureadps-2.0) 访问应用程序的应用程序对象（由其 OData [Application 实体][MS-Graph-App-Entity]表示）。
-- 可以通过 Microsoft Graph API 或 [Azure AD PowerShell cmdlet](/powershell/azure/?view=azureadps-2.0) 访问应用程序的服务主体对象（由其 OData [ServicePrincipal 实体][MS-Graph-Sp-Entity]表示）。
+- 可以使用 Microsoft Graph API、[Azure 门户的][AZURE-Portal]应用程序清单编辑器或 [Azure AD PowerShell cmdlet](/powershell/azure/) 访问应用程序的应用程序对象（由其 OData [Application 实体][MS-Graph-App-Entity]表示）。
+- 可以通过 Microsoft Graph API 或 [Azure AD PowerShell cmdlet](/powershell/azure/) 访问应用程序的服务主体对象（由其 OData [ServicePrincipal 实体][MS-Graph-Sp-Entity]表示）。
 
 <!--Image references-->
 

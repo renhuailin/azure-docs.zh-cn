@@ -1,42 +1,58 @@
 ---
-title: 从 Google Maps 迁移 Web 服务 | Microsoft Azure Maps
-description: 如何将 Web 服务从 Google Maps 迁移到 Microsoft Azure Maps
+title: 教程 - 从 Google Maps 迁移 Web 服务 | Microsoft Azure Maps
+description: 有关如何将 Web 服务从 Google Maps 迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319565"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904884"
 ---
-# <a name="migrate-web-service-from-google-maps"></a>从 Google Maps 迁移 Web 服务
+# <a name="tutorial---migrate-web-service-from-google-maps"></a>教程 - 从 Google Maps 迁移 Web 服务
 
 Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访问。 这些平台的 API 接口执行类似的功能。 但是，每个接口使用不同的命名约定和响应对象。
+
+在本教程中，您将学习如何执行以下操作：
+
+> * 正向/反向地理编码
+> * 搜索兴趣点
+> * 计算路线和方向
+> * 检索地图图像
+> * 计算距离矩阵
+> * 获取时区详细信息
+
+你还将了解： 
+
+> [!div class="checklist"]
+> * 从 Google Maps Web 服务迁移时，使用哪种 Azure Maps REST 服务
+> * 有关如何充分利用 Azure Maps 服务的提示
+> * 对其他相关 Azure Maps 服务的见解
 
 下表显示了功能与所列 Google Maps 服务 API 类似的 Azure Maps 服务 API。
 
 | Google Maps 服务 API | Azure Maps 服务 API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| 方向              | [Route](https://docs.microsoft.com/rest/api/maps/route)                                     |
-| 距离矩阵         | [路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
-| 地理编码               | [搜索](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| 地点搜索           | [搜索](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| 地点自动完成      | [搜索](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| 对齐道路            | 请参阅[计算路线和方向](#calculate-routes-and-directions)部分。            |
-| 速度限制            | 请参阅[对坐标进行反向地理编码](#reverse-geocode-a-coordinate)部分。                  |
-| 静态地图              | [Render](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
-| 时区               | [时区](https://docs.microsoft.com/rest/api/maps/timezone)                              |
+| 方向              | [Route](/rest/api/maps/route)                                     |                         
+| 距离矩阵         | [路线矩阵](/rest/api/maps/route/postroutematrixpreview)       |                         
+| 地理编码               | [搜索](/rest/api/maps/search)                                   |                         
+| 地点搜索           | [搜索](/rest/api/maps/search)                                   |                         
+| 地点自动完成      | [搜索](/rest/api/maps/search)                                   |                         
+| 对齐道路            | 请参阅[计算路线和方向](#calculate-routes-and-directions)部分。            
+| 速度限制            | 请参阅[对坐标进行反向地理编码](#reverse-geocode-a-coordinate)部分。                  
+| 静态地图              | [Render](/rest/api/maps/render/getmapimage)                       |                         
+| 时区               | [时区](/rest/api/maps/timezone)                              |                         
+| Elevation               | [高程（预览版）](/rest/api/maps/elevation)                   |                         |
 
 以下服务 API 目前在 Azure Maps 中不可用：
 
-- Elevation
 - 地理位置
 - 位置详细信息和照片 - 电话号码和网站 URL 在 Azure Maps 搜索 API 中可用。
 - 地图 URL
@@ -46,8 +62,14 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 
 Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务：
 
-- [空间操作](https://docs.microsoft.com/rest/api/maps/spatial)：将复杂的空间计算和操作（例如地理围栏）负载分散到某个服务。
-- [交通](https://docs.microsoft.com/rest/api/maps/traffic)：访问实时交通流量和事件数据。
+- [空间操作](/rest/api/maps/spatial)：将复杂的空间计算和操作（例如地理围栏）负载分散到某个服务。
+- [交通](/rest/api/maps/traffic)：访问实时交通流量和事件数据。
+
+## <a name="prerequisites"></a>先决条件 
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+2. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="geocoding-addresses"></a>地理编码地址
 
@@ -55,11 +77,11 @@ Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务：
 
 Azure Maps 提供多种方法用于对地址进行地理编码：
 
-- [**自由格式的地址地理编码**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)：指定单个地址字符串并立即处理请求。 “1 Microsoft way, Redmond, WA”是单个地址字符串的示例。 如果需要快速对各个地址进行地理编码，我们建议使用此 API。
-- [**结构化地址地理编码**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured)：指定单个地址的各个部分（例如街道名称、城市、国家/地区和邮政编码），并立即处理请求。 如果需要快速对单个地址进行地理编码，并且数据已分析成各个地址组成部分，则我们建议使用此 API。
-- [**批量地址地理编码**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview)：创建最多包含 10,000 个地址的请求，并在一段时间内对其进行处理。 所有地址将在服务器上同时进行地理编码，完成后，可以下载已完成的结果集。 若要对大型数据集进行地理编码，建议使用此方法。
-- [**模糊搜索**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串。 此字符串可以是地址、地点、地标、兴趣点或兴趣点类别。 此 API 以近实时的速度处理请求。 对于其用户可在同一文本框中搜索地址或兴趣点的应用程序，建议使用此 API。
-- [**模糊批量搜索**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
+- [**自由格式的地址地理编码**](/rest/api/maps/search/getsearchaddress)：指定单个地址字符串并立即处理请求。 “1 Microsoft way, Redmond, WA”是单个地址字符串的示例。 如果需要快速对各个地址进行地理编码，我们建议使用此 API。
+- [**结构化地址地理编码**](/rest/api/maps/search/getsearchaddressstructured)：指定单个地址的各个部分（例如街道名称、城市、国家/地区和邮政编码），并立即处理请求。 如果需要快速对单个地址进行地理编码，并且数据已分析成各个地址组成部分，则我们建议使用此 API。
+- [**批量地址地理编码**](/rest/api/maps/search/postsearchaddressbatchpreview)：创建最多包含 10,000 个地址的请求，并在一段时间内对其进行处理。 所有地址将在服务器上同时进行地理编码，完成后，可以下载已完成的结果集。 若要对大型数据集进行地理编码，建议使用此方法。
+- [**模糊搜索**](/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串。 此字符串可以是地址、地点、地标、兴趣点或兴趣点类别。 此 API 以近实时的速度处理请求。 对于其用户可在同一文本框中搜索地址或兴趣点的应用程序，建议使用此 API。
+- [**模糊批量搜索**](/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
 
 下表对 Google Maps API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -83,9 +105,9 @@ Azure Maps 提供多种方法用于对地址进行地理编码：
 
 Azure Maps 提供多种反向地理编码方法：
 
-- [**地址反向地理编码器**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)：指定单个地理坐标以获取对应于此坐标的大致地址。 以近实时的速度处理请求。
-- [**十字街反向地理编码器**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)：指定单个地理坐标以获取附近的十字街信息，并立即处理请求。 例如，可以获取第 1 大道与主街的十字街位置。
-- [**批量地址反向地理编码器**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatchpreview)：创建最多包含 10,000 个坐标的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理。 请求完成后，可以下载整个结果集。
+- [**地址反向地理编码器**](/rest/api/maps/search/getsearchaddressreverse)：指定单个地理坐标以获取对应于此坐标的大致地址。 以近实时的速度处理请求。
+- [**十字街反向地理编码器**](/rest/api/maps/search/getsearchaddressreversecrossstreet)：指定单个地理坐标以获取附近的十字街信息，并立即处理请求。 例如，可以获取第 1 大道与主街的十字街位置。
+- [**批量地址反向地理编码器**](/rest/api/maps/search/postsearchaddressreversebatchpreview)：创建最多包含 10,000 个坐标的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理。 请求完成后，可以下载整个结果集。
 
 下表对 Google Maps API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -115,13 +137,13 @@ Azure Maps 反向地理编码 API 提供 Google Maps 所不能提供的其他一
 
 Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
-- [**POI 搜索**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi)：按名称搜索兴趣点。 例如“星巴克”。
-- [**POI 类别搜索**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)：按类别搜索兴趣点。 例如“餐厅”。
-- [**附近搜索**](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)：搜索位于某个位置特定距离内的兴趣点。
-- [**模糊搜索**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别）。 它以近实时的速度处理请求。 对于其用户可在同一文本框中搜索地址或兴趣点的应用程序，建议使用此 API。
-- [**在几何图形中搜索**](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)：搜索指定几何图形中的兴趣点。 例如，在多边形中搜索兴趣点。
-- [**沿路线搜索**](https://docs.microsoft.com/rest/api/maps/search/postsearchalongroute)：搜索指定路线上的兴趣点。
-- [**模糊批量搜索**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求。 在一段时间内处理请求。 所有数据将在服务器上同时进行处理。 请求完成处理后，可以下载整个结果集。
+- [**POI 搜索**](/rest/api/maps/search/getsearchpoi)：按名称搜索兴趣点。 例如“星巴克”。
+- [**POI 类别搜索**](/rest/api/maps/search/getsearchpoicategory)：按类别搜索兴趣点。 例如“餐厅”。
+- [**附近搜索**](/rest/api/maps/search/getsearchnearby)：搜索位于某个位置特定距离内的兴趣点。
+- [**模糊搜索**](/rest/api/maps/search/getsearchfuzzy)：此 API 将地址地理编码与兴趣点搜索组合在一起。 此 API 采用自由格式的字符串（可以是地址、地点、地标、兴趣点或兴趣点类别）。 它以近实时的速度处理请求。 对于其用户可在同一文本框中搜索地址或兴趣点的应用程序，建议使用此 API。
+- [**在几何图形中搜索**](/rest/api/maps/search/postsearchinsidegeometry)：搜索指定几何图形中的兴趣点。 例如，在多边形中搜索兴趣点。
+- [**沿路线搜索**](/rest/api/maps/search/postsearchalongroute)：搜索指定路线上的兴趣点。
+- [**模糊批量搜索**](/rest/api/maps/search/postsearchfuzzybatchpreview)：创建包含最多 10, 000 个地址、地点、地标或兴趣点的请求。 在一段时间内处理请求。 所有数据将在服务器上同时进行处理。 请求完成处理后，可以下载整个结果集。
 
 目前，Azure Maps 没有与 Google Maps 中的文本搜索 API 类似的 API。
 
@@ -132,7 +154,7 @@ Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
 ### <a name="find-place-from-text"></a>从文本中查找地点
 
-使用 Azure Maps [POI 搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi)和[模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)可按名称或地址搜索兴趣点。
+使用 Azure Maps [POI 搜索](/rest/api/maps/search/getsearchpoi)和[模糊搜索](/rest/api/maps/search/getsearchfuzzy)可按名称或地址搜索兴趣点。
 
 下表对 Google Maps API 参数与类似的 Azure Maps API 参数做了交叉比较。
 
@@ -147,7 +169,7 @@ Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
 ### <a name="nearby-search"></a>附近搜索
 
-在 Azure Maps 中，使用[附近搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) API 来检索附近的兴趣点。
+在 Azure Maps 中，使用[附近搜索](/rest/api/maps/search/getsearchnearby) API 来检索附近的兴趣点。
 
 下表显示了 Google Maps API 参数与类似的 Azure Maps API 参数。
 
@@ -179,9 +201,9 @@ Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
 Azure Maps 路线服务提供以下 API 来计算路线：
 
-- [**计算路线**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。 Azure Maps 中的“POST 路线方向”有一个选项，该选项可以接受数千个[支持点](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints)，并将使用这些支持点在它们之间重新创建一个逻辑路线路径（对齐到道路）。 
-- [**批处理路线**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
-- [**移动服务**](https://docs.microsoft.com/rest/api/maps/mobility)：使用公共交通计算路线和方向。
+- [**计算路线**](/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。 Azure Maps 中的“POST 路线方向”有一个选项，该选项可以接受数千个[支持点](/rest/api/maps/route/postroutedirections#supportingpoints)，并将使用这些支持点在它们之间重新创建一个逻辑路线路径（对齐到道路）。 
+- [**批处理路线**](/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
+- [**出行服务（预览）**](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
 
 下表对 Google Maps API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -199,8 +221,8 @@ Azure Maps 路线服务提供以下 API 来计算路线：
 | `origin`                       | `query`                            |
 | `region`                       | *不适用* – 此功能与地理编码相关。 使用 Azure Maps 地理编码 API 时，请使用 *countrySet* 参数。  |
 | `traffic_model`               | *不适用* – 仅当交通数据应与 *traffic* 参数结合使用时才能指定。 |
-| `transit_mode`                | 请参阅[移动服务文档](https://docs.microsoft.com/rest/api/maps/mobility) |
-| `transit_routing_preference` | 请参阅[移动服务文档](https://docs.microsoft.com/rest/api/maps/mobility) |
+| `transit_mode`                | 请参阅[出行服务（预览）文档](/rest/api/maps/mobility) |
+| `transit_routing_preference` | 请参阅[出行服务（预览）文档](/rest/api/maps/mobility) |
 | `units`                        | *不适用* – Azure Maps 仅使用指标系统。  |
 | `waypoints`                    | `query`                            |
 
@@ -220,13 +242,13 @@ Azure Maps 路线 API 提供 Google Maps 所不能提供的其他许多功能。
 - 支持商务车路线参数。 例如车辆尺寸、重量、轴数和货物类型。
 - 指定最大车速。
 
-除此之外，Azure Maps 中的路线服务还支持[计算可达范围](https://docs.microsoft.com/rest/api/maps/route/getrouterange)。 可达范围也称为等时线。 这种计算会生成一个多边形，其中涵盖了在指定的时间内或根据剩余的燃料/电量， 从某个原点朝任意方向可以行进到的区域。
+除此之外，Azure Maps 中的路线服务还支持[计算可达范围](/rest/api/maps/route/getrouterange)。 可达范围也称为等时线。 这种计算会生成一个多边形，其中涵盖了在指定的时间内或根据剩余的燃料/电量， 从某个原点朝任意方向可以行进到的区域。
 
 查看[路线规划最佳做法](how-to-use-best-practices-for-routing.md)文档。
 
 ## <a name="retrieve-a-map-image"></a>检索地图图像
 
-Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像。 Azure Maps 中的[地图图像呈现](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) API 类似于 Google Maps 中的静态地图 API。
+Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像。 Azure Maps 中的[地图图像呈现](/rest/api/maps/render/getmapimagerytile) API 类似于 Google Maps 中的静态地图 API。
 
 > [!NOTE]
 > Azure Maps 要求以“经度,纬度”格式的坐标提供中心点、所有标记和路径位置。 而 Google Maps 则使用“纬度,经度”格式。 首先需要对地址进行地理编码。
@@ -256,8 +278,8 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 除了能够生成静态地图图像以外，Azure Maps 呈现服务还提供直接访问光栅 (PNG) 和矢量格式的地图图块的功能：
 
-- [**地图图块**](https://docs.microsoft.com/rest/api/maps/render/getmaptile)：检索基础地图的光栅 (PNG) 和矢量图块（道路、边界、背景）。
-- [**地图航拍图块**](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)：检索航空和卫星航拍图块。
+- [**地图图块**](/rest/api/maps/render/getmaptile)：检索基础地图的光栅 (PNG) 和矢量图块（道路、边界、背景）。
+- [**地图航拍图块**](/rest/api/maps/render/getmapimagerytile)：检索航空和卫星航拍图块。
 
 > [!TIP]
 > 许多 Google Maps 应用程序在几年前就已从交互式地图体验改换到了静态地图图像。 这是一种成本节省的方法。 在 Azure Maps 中，使用 Web SDK 中的交互式地图控件可以提高性价比。 交互式地图控件是按照图块加载次数收费的。 Azure Maps 中的地图图块较大。 通常只需添加少量的图块即可重新创建与静态地图相同的地图视图。 浏览器会自动缓存地图图块。 因此，在再现静态地图视图时，交互式地图控件通常只生成一部分事务。 平移和缩放会加载更多图块，但是，可以使用地图控件中的选项来禁用此行为。 此外，交互式地图控件提供的可视化选项比静态地图服务要多得多。
@@ -334,7 +356,6 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-
 ![Azure Maps 标记](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 添加具有标签值“1”、“2”和“3”的三个图钉：
@@ -342,8 +363,6 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 ```
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
-
-
 
 ![Azure Maps 多个标记](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
@@ -407,7 +426,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 Azure Maps 提供距离矩阵 API。 使用此 API 可以计算一组位置之间的行程时间和距离以及距离矩阵。 它类似于 Google Maps 中的距离矩阵 API。
 
-- [**路线矩阵**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)：以异步方式计算一组来源和目标的行程时间与距离。 每个请求最多支持 700 个单元。 该数字为出发地数乘以目的地数。 考虑到这一限制，可能的矩阵维度示例如下：700x1、50x10、10x10、28x25、10x70。
+- [**路线矩阵**](/rest/api/maps/route/postroutematrixpreview)：以异步方式计算一组来源和目标的行程时间与距离。 每个请求最多支持 700 个单元。 该数字为出发地数乘以目的地数。 考虑到这一限制，可能的矩阵维度示例如下：700x1、50x10、10x10、28x25、10x70。
 
 > [!NOTE]
 > 只能使用在正文中包含来源和目标信息的 POST 请求向距离矩阵 API 发出请求。 此外，Azure Maps 要求以坐标形式指定所有来源和目标。 首先需要对地址进行地理编码。
@@ -439,7 +458,7 @@ Azure Maps 提供距离矩阵 API。 使用此 API 可以计算一组位置之�
 
 Azure Maps 提供一个 API 用于检索坐标所在的时区。 Azure Maps 时区 API 相当于 Google Maps 中的时区 API：
 
-- [**按坐标获取时区信息**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates)：指定坐标并接收该坐标的时区详细信息。
+- [**按坐标获取时区信息**](/rest/api/maps/timezone/gettimezonebycoordinates)：指定坐标并接收该坐标的时区详细信息。
 
 下表对 Google Maps API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -452,11 +471,11 @@ Azure Maps 提供一个 API 用于检索坐标所在的时区。 Azure Maps 时�
 
 除此 API 以外，Azure Maps 还提供了许多时区 API。 这些 API 可根据时区的名称或 ID 转换时间：
 
-- [**按 ID 获取时区信息**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid)：返回指定 IANA 时区 ID 的当前、历史和将来时区信息。
-- [**时区枚举 IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana)：返回 IANA 时区 ID 的完整列表。 对 IANA 服务所做的更新在一天内即会反映在系统中。
-- [**时区枚举 Windows**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows)：返回 Windows 时区 ID 的完整列表。
-- [**时区 IANA 版本**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion)：返回 Azure Maps 使用的当前 IANA 版本号。
-- [**与 Windows 时区对应的 IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonewindowstoiana)：在指定有效 Windows 时区 ID 的情况下，返回对应的 IANA ID。 可返回单个 Windows ID 的多个 IANA ID。
+- [**按 ID 获取时区信息**](/rest/api/maps/timezone/gettimezonebyid)：返回指定 IANA 时区 ID 的当前、历史和将来时区信息。
+- [**时区枚举 IANA**](/rest/api/maps/timezone/gettimezoneenumiana)：返回 IANA 时区 ID 的完整列表。 对 IANA 服务所做的更新在一天内即会反映在系统中。
+- [**时区枚举 Windows**](/rest/api/maps/timezone/gettimezoneenumwindows)：返回 Windows 时区 ID 的完整列表。
+- [**时区 IANA 版本**](/rest/api/maps/timezone/gettimezoneianaversion)：返回 Azure Maps 使用的当前 IANA 版本号。
+- [**与 Windows 时区对应的 IANA**](/rest/api/maps/timezone/gettimezonewindowstoiana)：在指定有效 Windows 时区 ID 的情况下，返回对应的 IANA ID。 可返回单个 Windows ID 的多个 IANA ID。
 
 ## <a name="client-libraries"></a>客户端库
 
@@ -468,13 +487,24 @@ Azure Maps 为以下编程语言提供客户端库：
 
 - .NET Standard 2.0 – [GitHub 项目](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 包](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="additional-resources"></a>其他资源
+## <a name="next-steps"></a>后续步骤
 
-下面是有关 Azure Maps REST 服务的其他文档和资源。
+详细了解 Azure Maps REST 服务：
 
-- [有关搜索的最佳做法](how-to-use-best-practices-for-search.md)
-- [搜索地址](how-to-search-for-address.md)
-- [路线规划最佳做法](how-to-use-best-practices-for-routing.md)
-- [Azure Maps REST 服务 API 参考文档](https://docs.microsoft.com/rest/api/maps/)
-- [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
-- [如何使用服务模块 (Web SDK)](how-to-use-best-practices-for-routing.md)
+> [!div class="nextstepaction"]
+> [有关搜索的最佳做法](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [搜索地址](how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [路线规划最佳做法](how-to-use-best-practices-for-routing.md)
+
+> [!div class="nextstepaction"]
+> [Azure Maps REST 服务 API 参考文档](/rest/api/maps/)
+
+> [!div class="nextstepaction"]
+> [代码示例](/samples/browse/?products=azure-maps)
+
+> [!div class="nextstepaction"]
+> [如何使用服务模块 (Web SDK)](how-to-use-best-practices-for-routing.md)

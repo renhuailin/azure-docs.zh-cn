@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 9353750fdbbb52aff60fc41b7fd028ec4c5f0ec8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992071"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521027"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>使用 Azure CLI 管理托管 HSM
 
@@ -53,7 +53,7 @@ az login
 
 ### <a name="create-an-rsa-key"></a>创建 RSA 密钥
 
-下面的示例演示如何创建一个 3070 位 RSA 密钥，该密钥将仅用于 wrapKey、unwrapKey 操作 (--ops) 。 
+下面的示例演示如何创建一个 3072 位 RSA 密钥，该密钥将仅用于 wrapKey、unwrapKey 操作 (--ops) 。 
 
 
 ```azurecli-interactive
@@ -82,7 +82,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myec25
 
 ### <a name="create-a-256-bit-symmetric-key"></a>创建 256 位对称密钥
 
-下面的示例演示如何创建一个 3070 位对称密钥，该密钥将仅用于 encrypt 和 decrypt 操作 (--ops) 。
+下面的示例演示如何创建一个 256 位对称密钥，该密钥将仅用于 encrypt 和 decrypt 操作 (--ops) 。
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decrypt  --tags --kty oct-HSM --size 256
@@ -90,7 +90,7 @@ az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decr
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myaeskey --ops sign verify  --tags ‘usage=signing] appname=myapp’ --kty EC-HSM --curve P-256
+az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myaeskey --ops encrypt decrypt  --tags ‘usage=signing] appname=myapp’ --kty oct-HSM --size 256
 ```
 
 ## <a name="view-key-attributes-and-tags"></a>查看密钥属性和标记

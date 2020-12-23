@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776487"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352399"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知识库中的活动学习建议问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "91776487"
 
 ## <a name="turn-on-active-learning"></a>启用主动学习
 
-若要查看建议的问题，必须打开 QnA Maker 资源的 [活动学习](use-active-learning.md) 。
+若要查看建议的问题，必须打开 QnA Maker 资源的 [活动学习](../concepts/active-learning-suggestions.md) 。
 
 ## <a name="view-suggested-questions"></a>查看建议的问题
 
@@ -38,9 +38,9 @@ ms.locfileid: "91776487"
 
     [![选择或拒绝活动学习的建议问题，方法是选择绿色复选标记或红色删除标记。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    您可以通过在上下文工具栏中选择 "**全部添加**" 或 "**全部拒绝**" 来添加或删除_所有建议_。
+    您可以通过在上下文工具栏中选择 "**全部添加**" 或 "**全部拒绝**" 来添加或删除 _所有建议_。
 
-1. 选择“保存并训练”****，将所做的更改保存到知识库。
+1. 选择“保存并训练”，将所做的更改保存到知识库。
 
 1. 选择 " **发布** " 以允许在 [GenerateAnswer API](metadata-generateanswer-usage.md#generateanswer-request-configuration)中提供更改。
 
@@ -134,8 +134,8 @@ Content-Type: application/json
 |--|--|--|--|
 |URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
 |自定义子域|QnAMaker 资源名称|字符串|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为列出 `host` 。|
-|Header|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
-|Header|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
+|标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|培训反馈|
 
 JSON 正文具有几个设置：
@@ -145,7 +145,7 @@ JSON 正文具有几个设置：
 |`feedbackRecords`|array|反馈列表。|
 |`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
 |`userQuestion`|字符串|用户查询的确切文本。 必需。|
-|`qnaID`|数字|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
+|`qnaID`|number|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
 示例 JSON 正文如下所示：
 
@@ -337,7 +337,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 有关使用主动学习的最佳做法，请参阅[最佳做法](../Concepts/best-practices.md#active-learning)。
 

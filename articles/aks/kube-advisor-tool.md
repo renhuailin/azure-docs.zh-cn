@@ -7,12 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7730146f30487eb5d20f0d3138e9e5ba799daa99
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255245"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681510"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>检查 Kubernetes 群集中的最佳做法
 
@@ -29,7 +29,7 @@ Kube-advisor 工具可以报告 Windows 应用程序和 Linux 应用程序的 Po
 
 ## <a name="running-kube-advisor"></a>运行 kube-advisor
 
-若要在针对[基于角色的访问控制 (RBAC)](./azure-ad-integration-cli.md) 配置的群集上运行此工具，请使用以下命令。 第一个命令可创建 Kubernetes 服务帐户。 第二个命令使用该服务帐户在 pod 中运行该工具，并配置 pod 以在退出后删除。 
+若要在配置为 [Kubernetes 基于角色的访问控制 ](./azure-ad-integration-cli.md)的群集上运行该工具 (Kubernetes RBAC) ，请使用以下命令。 第一个命令可创建 Kubernetes 服务帐户。 第二个命令使用该服务帐户在 pod 中运行该工具，并配置 pod 以在退出后删除。 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -37,7 +37,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }" --namespace default
 ```
 
-如果不使用 RBAC，可以按如下所示运行命令：
+如果不使用 Kubernetes RBAC，可以按如下所示运行命令：
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
@@ -59,13 +59,13 @@ Kubernetes 支持定义 [pod 资源请求和限制规范][kube-cpumem]。 请求
 
 ## <a name="cleaning-up"></a>清理
 
-如果群集已启用 RBAC，可以使用以下命令在运行工具后清理 `ClusterRoleBinding`：
+如果群集启用了 Kubernetes RBAC，则可 `ClusterRoleBinding` 使用以下命令在运行该工具后进行清理：
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-如果针对未启用 RBAC 的群集运行该工具，则不需要进行任何清理。
+如果针对不是 Kubernetes 启用 RBAC 的群集运行该工具，则不需要清除。
 
 ## <a name="next-steps"></a>后续步骤
 

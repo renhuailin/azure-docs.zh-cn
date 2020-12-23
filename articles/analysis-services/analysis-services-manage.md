@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84015496"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078894"
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
 在 Azure 中创建 Analysis Services 服务器后，可能会有一些需要立即执行或在稍后操作期间执行的管理任务。 例如，处理刷新数据、控制谁有权访问服务器上的模型，或者监视服务器的运行状况。 某些管理任务仅可在 Azure 门户中执行，而其他一些可在 SQL Server Management Studio (SSMS) 中执行，还有部分在两者中均可执行。
@@ -20,7 +20,7 @@ ms.locfileid: "84015496"
 ## <a name="azure-portal"></a>Azure 门户
 在 [Azure 门户](https://portal.azure.com/)中，可创建和删除服务器、监控服务器资源、更改大小和管理有权访问服务器的人员。  如果遇到问题，可提交支持请求。
 
-![在 Azure 中获取服务器名称](./media/analysis-services-manage/aas-manage-portal.png)
+![屏幕截图，显示了可在其中创建和删除服务器、监视服务器资源、更改大小和管理有权访问服务器的用户的 Azure 门户。](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
 就像连接到自身组织中的服务器实例一样，在 Azure 中连接到服务器。 可在 SSMS 中执行许多相同的任务，例如处理数据或创建处理脚本、管理角色和使用 PowerShell。
@@ -30,13 +30,13 @@ ms.locfileid: "84015496"
 ### <a name="download-and-install-ssms"></a>下载并安装 SSMS
 若要获取全部最新功能，并在连接至 Azure Analysis Services 服务器时享受最流畅的体验，请确保使用最新版本的 SSMS。 
 
-[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 
 ### <a name="to-connect-with-ssms"></a>连接 SSMS
  使用 SSMS 时，在首次连接到服务器之前，需确保用户名已包含在 Analysis Services 管理员组中。 有关详细信息，请参阅本文后面的[服务器管理员和数据库用户](#server-administrators-and-database-users)。
 
-1. 在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述”   > “服务器名称”  ，并复制服务器名称。
+1. 在连接之前，需要获取服务器名称。 在 **Azure 门户** 中，单击“服务器”>“概述”   > “服务器名称”  ，并复制服务器名称。
    
     ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. 在 SSMS >“对象资源管理器”  中，单击“连接”   > “Analysis Services”  。
@@ -49,7 +49,7 @@ ms.locfileid: "84015496"
 
     选择“Windows 身份验证”  ，以使用 Windows 域\用户名和密码凭据。
 
-    **Active Directory 密码身份验证**，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
+    **Active Directory 密码身份验证** ，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
 
     选择“Active Directory - 通用且具有 MFA 支持”  ，以使用[非交互式或多重身份验证](../azure-sql/database/authentication-mfa-ssms-overview.md)。 
    
@@ -66,4 +66,3 @@ Azure Analysis Services 中存在两种类型的用户，即服务器管理员�
 如果尚未将表格模型部署到新服务器，现在正是一个好时机。 有关详细信息，请参阅[部署到 Azure Analysis Services](analysis-services-deploy.md)。
 
 如果已将模型部署到服务器，可使用客户端或浏览器连接到该模型。 有关详细信息，请参阅[从 Azure Analysis Services 获取数据](analysis-services-connect.md)。
-

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: ec8f27d0376f7187fd36b3feba556dbced0946e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b5057eb8c84e839f504060228986ea759c8bdc3d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933437"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123161"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>用于 Azure 流分析的持续集成和部署 (CI/CD) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "90933437"
 
 1. 开发 Azure 流分析查询。
 
-   使用用于 [Visual Studio Code](quick-create-vs-code.md) 或 [Visual Studio](stream-analytics-quick-create-vs.md) 的 Azure 流分析工具在 [本地开发和测试查询](develop-locally.md)。 你还可以将 [现有作业导出](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project) 到本地项目中。
+   使用用于 [Visual Studio Code](./quick-create-visual-studio-code.md) 或 [Visual Studio](stream-analytics-quick-create-vs.md) 的 Azure 流分析工具在 [本地开发和测试查询](develop-locally.md)。 你还可以将 [现有作业导出](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project) 到本地项目中。
 
 2. 将 Azure 流分析项目提交到源代码管理系统，如 Git 存储库。
 

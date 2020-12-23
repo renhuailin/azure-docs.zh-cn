@@ -7,25 +7,26 @@ author: vermagit
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2a5aa8983e6cbb0745e05ce275edeadeccb60736
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829044"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966031"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>适用于 Linux 的无限驱动程序扩展
 
-此扩展在运行 Linux) H 系列和 N 系列 vm [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)虚拟机上安装 OFED 驱动程序，并在启用了 sr-iov 的、启用了 sr-iov 的 ( "r" 大小。 根据 VM 系列的不同，扩展将为 x-blade NIC 安装适当的驱动程序。
+此扩展在运行 Linux) H 系列和 N 系列 vm [H 系列](../sizes-hpc.md) 和 [N 系列](../sizes-gpu.md) 虚拟机上安装 OFED 驱动程序，并在启用了 sr-iov 的、启用了 sr-iov 的 ( "r" 大小。 根据 VM 系列的不同，扩展将为 x-blade NIC 安装适当的驱动程序。
 
 [此处](../workloads/hpc/enable-infiniband.md#manual-installation)提供有关手动安装 OFED 驱动程序的说明。
 
-还可使用扩展来安装[Windows vm](hpc-compute-infiniband-windows.md)的无窗口驱动程序。
+还可使用扩展来安装 [Windows vm](hpc-compute-infiniband-windows.md)的无窗口驱动程序。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -81,7 +82,7 @@ ms.locfileid: "87829044"
 ## <a name="deployment"></a>部署
 
 
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板 
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板 
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 
@@ -137,7 +138,7 @@ az vm extension set \
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>将扩展添加到虚拟机规模集
 
-以下示例在名为*myResourceGroup*的资源组中部署的名为*myVMSS*的现有虚拟机规模集中的所有支持 RDMA 的 vm 上安装最新版本 1.1 InfiniBandDriverLinux 扩展。
+以下示例在名为 *myResourceGroup* 的资源组中部署的名为 *myVMSS* 的现有虚拟机规模集中的所有支持 RDMA 的 vm 上安装最新版本 1.1 InfiniBandDriverLinux 扩展。
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -178,16 +179,16 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 10 | 用于 Hyper-V 和 Azure 的 Linux Integration Services 不可用或未安装 | 检查 lspci 的输出 |
 | 11 | 在此 VM 大小上找不到 Mellanox 无空间 | 使用[受支持的 VM 大小和 OS](../sizes-hpc.md) |
 | 12 | 不支持的映像产品/服务 |
-| 13 | 不支持的 VM 大小 | 使用启用了不支持的 ( "r" 大小) [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)n 系列 VM 进行部署 |
+| 13 | 不支持的 VM 大小 | 使用启用了不支持的 ( "r" 大小) [H 系列](../sizes-hpc.md) 和 [N 系列](../sizes-gpu.md)n 系列 VM 进行部署 |
 | 14 | 操作失败 | 检查执行输出日志 |
 
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你可以通过[Azure 支持站点](https://azure.microsoft.com/support/options/)提供支持事件。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你可以通过 [Azure 支持站点](https://azure.microsoft.com/support/options/)提供支持事件。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
-有关启用了未支持 ( "r" 大小) 的详细信息，请参阅[H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm。
+有关启用了未支持 ( "r" 大小) 的详细信息，请参阅 [H 系列](../sizes-hpc.md) 和 [N 系列](../sizes-gpu.md) vm。
 
 > [!div class="nextstepaction"]
 > [详细了解 Linux Vm 扩展和功能](features-linux.md)

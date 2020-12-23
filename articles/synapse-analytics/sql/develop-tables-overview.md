@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4ab3bccf281928be2b55eb5a36ae20a0aa8a08a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288709"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452730"
 ---
-# <a name="design-tables-using-synapse-sql"></a>使用 Synapse SQL 设计表
+# <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 Synapse SQL 设计表
 
-本文档包含用 SQL 池和 SQL 点播 (预览) 设计表的关键概念。  
+本文档包含用于设计具有专用 SQL 池和无服务器 SQL 池的表的关键概念。  
 
-[SQL 点播 (预览) ](on-demand-workspace-overview.md) 是对 data lake 中的数据进行的查询服务。 它没有用于数据引入的本地存储。 [Sql pool](best-practices-sql-pool.md) 表示在使用 Synapse SQL 时正在预配的分析资源的集合。 SQL 池的大小由数据仓库单位 (DWU) 决定。
+[无服务器 SQL 池](on-demand-workspace-overview.md) 是针对 data lake 中的数据的查询服务。 它没有用于数据引入的本地存储。 [专用 sql 池](best-practices-sql-pool.md) 表示在使用 Synapse SQL 时正在预配的分析资源的集合。 专用 SQL 池的大小由数据仓库单位 (DWU) 决定。
 
-下表列出了与 SQL 池和按需相关的主题：
+下表列出了与专用 SQL 池和无服务器 SQL 池相关的主题：
 
-| 主题                                                        | SQL 池 | SQL 按需版本 |
+| 主题                                                        | 专用 SQL 池 | 无服务器 SQL 池 |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
 | [确定表类别](#determine-table-category)        | 是                | 否                      |
 | [架构名称](#schema-names)                                | 是                | 是                     |
@@ -37,7 +37,7 @@ ms.locfileid: "91288709"
 | [数据类型](#data-types)                                    | 是                | 是                     |
 | [分布式表](#distributed-tables)                    | 是                | 否                      |
 | [哈希分布表](#hash-distributed-tables)          | 是                | 否                      |
-| [复制表](#replicated-tables)                      | 是                | 否                      |
+| [复制的表](#replicated-tables)                      | 是                | 否                      |
 | [循环表](#round-robin-tables)                    | 是                | 否                      |
 | [表的常用分布方法](#common-distribution-methods-for-tables) | 是                | 否                      |
 | [分区](#partitions)                                    | 是                | 是                     |
@@ -53,11 +53,11 @@ ms.locfileid: "91288709"
 
 [星型架构](https://en.wikipedia.org/wiki/Star_schema)将数据组织成事实数据表和维度表。 在移动到事实数据表或维度表之前，某些表用于集成或暂存数据。 设计某个表时，请确定该表的数据是属于事实数据表、维度表还是集成表。 此项决策可以明确相应的表结构和分布方式。
 
-- **事实数据表**包含定量数据，这些数据通常在事务系统中生成，然后加载到数据仓库中。 例如，零售企业每天会生成销售事务，然后将数据载入数据仓库事实数据表进行分析。
+- **事实数据表** 包含定量数据，这些数据通常在事务系统中生成，然后加载到数据仓库中。 例如，零售企业每天会生成销售事务，然后将数据载入数据仓库事实数据表进行分析。
 
-- **维度表**包含属性数据，这些数据可能会更改，但一般不会经常更改。 例如，客户的姓名和地址存储在维度表中，仅当客户的个人资料发生更改时，这些数据才会更新。 为了尽量缩小大型事实数据表的大小，不要求将客户的姓名和地址输入到事实数据表的每一行中。 事实数据表和维度表可以共享一个客户 ID。 查询可以联接两个表，以关联客户的个人资料和事务。
+- **维度表** 包含属性数据，这些数据可能会更改，但一般不会经常更改。 例如，客户的姓名和地址存储在维度表中，仅当客户的个人资料发生更改时，这些数据才会更新。 为了尽量缩小大型事实数据表的大小，不要求将客户的姓名和地址输入到事实数据表的每一行中。 事实数据表和维度表可以共享一个客户 ID。 查询可以联接两个表，以关联客户的个人资料和事务。
 
-- **集成表**为集成或暂存数据提供位置。 可以将集成表创建为常规表、外部表或临时表。 例如，可将数据加载到临时表，在暂存位置对数据执行转换，然后将数据插入生产表中。
+- **集成表** 为集成或暂存数据提供位置。 可以将集成表创建为常规表、外部表或临时表。 例如，可将数据加载到临时表，在暂存位置对数据执行转换，然后将数据插入生产表中。
 
 ## <a name="schema-names"></a>架构名称
 
@@ -69,11 +69,11 @@ CREATE SCHEMA wwi;
 
 ## <a name="table-names"></a>表名
 
-如果要将多个数据库从本地解决方案迁移到 SQL 池，最佳做法是将所有事实数据表、维度表和集成表迁移到一个 SQL 池架构。 例如，可将所有表存储在 [WideWorldImportersDW](/sql/samples/wide-world-importers-dw-database-catalog?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 示例数据仓库中一个名为 wwi 的架构内。
+如果要将多个数据库从本地解决方案迁移到专用 SQL 池，最佳做法是将所有事实数据表、维度表和集成表迁移到一个 SQL 池架构。 例如，可将所有表存储在 [WideWorldImportersDW](/sql/samples/wide-world-importers-dw-database-catalog?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 示例数据仓库中一个名为 wwi 的架构内。
 
-若要在 SQL 池中显示表的组织方式，可以使用 fact、dim 和 int 作为表名前缀。 下表显示了 WideWorldImportersDW 的一些架构和表名称。  
+若要在专用 SQL 池中显示表的组织，可以使用事实、dim 和 int 作为表名称的前缀。 下表显示了 WideWorldImportersDW 的一些架构和表名称。  
 
-| WideWorldImportersDW 表  | 表类型 | SQL 池 |
+| WideWorldImportersDW 表  | 表类型 | 专用 SQL 池 |
 |:-----|:-----|:------|:-----|
 | 城市 | 维度 | wwi.DimCity |
 | 订单 | Fact | wwi.FactOrder |
@@ -92,9 +92,9 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ### <a name="temporary-table"></a>临时表
 
-临时表只在会话持续期间存在。 您可以使用临时表来阻止其他用户查看临时结果。 使用临时表还可以减少清理的需求。  临时表利用本地存储，在 SQL 池中可以提供更快的性能。  
+临时表只在会话持续期间存在。 您可以使用临时表来阻止其他用户查看临时结果。 使用临时表还可以减少清理的需求。  临时表利用本地存储，在专用 SQL 池中，可以提供更快的性能。  
 
-SQL 点播支持临时表。 但是，因为可以从临时表中进行选择，但不能将其与存储中的文件一起使用，所以它的用法受到限制。
+无服务器 SQL 池支持临时表。 但由于可以从临时表中进行选择，但不能将其与存储中的文件联接，因此其用法受限。
 
 有关详细信息，请参阅[临时表](develop-tables-temporary.md)。
 
@@ -102,17 +102,17 @@ SQL 点播支持临时表。 但是，因为可以从临时表中进行选择，
 
 [外部表](develop-tables-external-tables.md) 指向位于 Azure 存储 blob 或 Azure Data Lake Storage 中的数据。
 
-使用 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 语句将外部表中的数据导入到 SQL 池中。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+使用 [CREATE TABLE 作为 SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 语句，将外部表中的数据导入到专用的 SQL 池中。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-对于按需 SQL，可以使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储中的外部表。
+对于无服务器 SQL 池，可以使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储中的外部表。
 
 ## <a name="data-types"></a>数据类型
 
-SQL 池支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的 [CREATE TABLE 引用中的数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes&preserve-view=true)。 有关使用数据类型的详细信息，请参阅 [数据类型](../sql/develop-tables-data-types.md)。
+专用 SQL 池支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的 [CREATE TABLE 引用中的数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes&preserve-view=true)。 有关使用数据类型的详细信息，请参阅 [数据类型](../sql/develop-tables-data-types.md)。
 
 ## <a name="distributed-tables"></a>分布式表
 
-SQL 池的一个基本功能是可以跨[分布区](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions)以特定方式对表进行存储和运算。  SQL 池支持以下三种方法来分发数据：
+专用 SQL 池的一项基本功能是它可以跨 [分布](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions)区存储和操作表。  专用 SQL 池支持以下三种方法来分发数据：
 
 - 轮循机制（默认）
 - 哈希
@@ -148,9 +148,9 @@ SQL 池的一个基本功能是可以跨[分布区](../sql-data-warehouse/massiv
 
 ## <a name="partitions"></a>分区
 
-在 SQL 池中，分区表根据数据范围在表行上存储和执行操作。 例如，可以按日、月或年将某个表分区。 可以通过分区消除来提高查询性能，否则查询扫描范围将限制为分区中的数据。
+在专用 SQL 池中，分区表根据数据范围存储和执行对表行的操作。 例如，可以按日、月或年将某个表分区。 可以通过分区消除来提高查询性能，否则查询扫描范围将限制为分区中的数据。
 
-还可以通过分区切换来维护数据。 由于 SQL 池中的数据已分布，因此分区太多可能会降低查询性能。 有关详细信息，请参阅[分区指南](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。  
+还可以通过分区切换来维护数据。 由于专用 SQL 池中的数据已分布，因此分区太多可能会降低查询性能。 有关详细信息，请参阅[分区指南](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。  
 
 > [!TIP]
 > 以分区切换的方式切换成不为空的表分区时，若要截断现有数据，可考虑在 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句中使用 TRUNCATE_TARGET 选项。
@@ -161,7 +161,7 @@ SQL 池的一个基本功能是可以跨[分布区](../sql-data-warehouse/massiv
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
 ```
 
-在 SQL 点播的中，你可以将) 的文件/文件夹 (分区限制为你的查询读取的分区。 使用 [查询存储文件](develop-storage-files-overview.md)中所述的 filepath 和 fileinfo 函数支持按路径进行分区。 下面的示例读取包含2017年的数据的文件夹：
+在无服务器 SQL 池中，你可以将 (分区的文件/文件夹限制) 将由查询读取。 使用 [查询存储文件](develop-storage-files-overview.md)中所述的 filepath 和 fileinfo 函数支持按路径进行分区。 下面的示例读取包含2017年的数据的文件夹：
 
 ```sql
 SELECT
@@ -185,7 +185,7 @@ ORDER BY
 
 ## <a name="columnstore-indexes"></a>列存储索引
 
-默认情况下，SQL 池将表存储为聚集列存储索引。 对于大型表而言，这种数据存储形式可以实现较高的数据压缩率和查询性能。  聚集列存储索引通常是最佳选择，但在某些情况下，聚集索引或堆是适当的存储结构。  
+默认情况下，专用 SQL 池将表存储为聚集列存储索引。 对于大型表而言，这种数据存储形式可以实现较高的数据压缩率和查询性能。  聚集列存储索引通常是最佳选择，但在某些情况下，聚集索引或堆是适当的存储结构。  
 
 > [!TIP]
 > 在加载过渡到最终表中的临时数据（如临时表）时，堆表特别有用。
@@ -194,38 +194,37 @@ ORDER BY
 
 ## <a name="statistics"></a>统计信息
 
-
 查询优化器在创建用于执行查询的计划时，使用列级统计信息。 若要提高查询性能，必须有基于各个列（尤其是查询联接中使用的列）的统计信息。 Synapse SQL 支持自动创建统计信息。 
 
 统计更新不会自动发生。 添加或更改了大量的行之后更新统计信息。 例如，在加载后更新统计信息。 [统计信息指南](develop-tables-statistics.md)一文中提供了其他信息。
 
 ## <a name="primary-key-and-unique-key"></a>主键和唯一键
 
-仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。  仅当未使用强制时才支持 UNIQUE 约束。  有关详细信息，请参阅 [SQL 池表约束](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 一文。
+对于专用 SQL 池，仅当使用非聚集时才支持 PRIMARY KEY。  仅当未使用强制时才支持 UNIQUE 约束。  有关详细信息，请参阅 [SQL 池表约束](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 一文。
 
 ## <a name="commands-for-creating-tables"></a>用于创建表的命令
 
-可以创建一个新的空表。 还可以创建一个表并在其中填充 select 语句的结果。 下面是用于创建表的 T-SQL 命令。
+对于专用 SQL 池，可以创建一个新的空表。 还可以创建一个表并在其中填充 select 语句的结果。 下面是用于创建表的 T-SQL 命令。
 
 | T-SQL 语句 | 说明 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 通过定义所有表列和选项来创建空表。 |
-| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 创建外部表。 表定义存储在 SQL 池中。 表数据存储在 Azure Blob 存储或 Azure Data Lake Storage 中。 |
+| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 创建外部表。 该表的定义存储在专用的 SQL 池中。 表数据存储在 Azure Blob 存储或 Azure Data Lake Storage 中。 |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 在新表中填充 select 语句的结果。 表列和数据类型基于 select 语句的结果。 若要导入数据，此语句可从外部表中进行选择。 |
 | [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 通过将 select 语句的结果导出到外部位置，来创建新的外部表。  该位置为 Azure Blob 存储或 Azure Data Lake Storage。 |
 
 ## <a name="align-source-data-with-the-data-warehouse"></a>将源数据与数据仓库对齐
 
-从其他数据源加载数据可以填充数据仓库表。 若要成功完成加载，源数据中列的数目和数据类型必须与数据仓库中的表定义一致。
+通过从另一个数据源加载数据来填充专用 SQL 池表。 若要成功完成加载，源数据中列的数目和数据类型必须与数据仓库中的表定义一致。
 
 > [!NOTE]
 > 使数据相符可能是设计表时的最难部分。
 
-如果数据来自多个数据存储，则可以将数据移植到数据仓库，并将其存储在集成表中。 数据在集成表中后，可以使用 SQL 池的强大功能来实现转换操作。 准备好数据后，可以将其插入到生产表中。
+如果数据来自多个数据存储，则可以将数据移植到数据仓库，并将其存储在集成表中。 数据在集成表中后，可以使用专用 SQL 池的强大功能来实现转换操作。 准备好数据后，可以将其插入到生产表中。
 
 ## <a name="unsupported-table-features"></a>不支持的表功能
 
-SQL 池支持其他数据库提供的许多（但不是全部）表功能。  以下列表显示了 SQL 池不支持的某些表功能。
+专用 SQL 池支持许多（但不是全部）由其他数据库提供的表功能。  以下列表显示了专用 SQL 池不支持的某些表功能。
 
 - 外键、检查 [表约束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [计算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
@@ -240,7 +239,7 @@ SQL 池支持其他数据库提供的许多（但不是全部）表功能。  �
 
 ## <a name="table-size-queries"></a>表大小查询
 
-标识每个60分布中的表使用的空间和行的一种简单方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+在专用 SQL 池中，可以通过一种简单的方法来识别每个60分布中的表所占用的空间和行，这就是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -441,4 +440,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>后续步骤
 
-为数据仓库创建表后，接下来可将数据载入该表。  有关加载教程，请参阅将 [数据加载到 SQL 池中](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool)。
+为数据仓库创建表后，接下来可将数据载入该表。  有关加载教程，请参阅将 [数据加载到专用 SQL 池中](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool)。

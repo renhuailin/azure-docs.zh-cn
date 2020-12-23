@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 3bde4c11e9dc34be13efb25864fe75054d22bddb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 3b8fbc47b46f8be6e4ad7636a1d7552445501f0f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363097"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653158"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>将 Azure 防火墙与 Azure 标准负载均衡器相集成
 
@@ -77,7 +77,7 @@ ms.locfileid: "91363097"
 
 ![网络安全组](media/integrate-lb/nsg-01.png)
 
-有关 NSG 的详细信息，请参阅[安全组](../virtual-network/security-overview.md)。
+有关 NSG 的详细信息，请参阅[安全组](../virtual-network/network-security-groups-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

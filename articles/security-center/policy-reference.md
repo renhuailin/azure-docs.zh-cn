@@ -1,18 +1,18 @@
 ---
 title: Azure 安全中心的内置策略定义
 description: 列出 Azure 安全中心的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0c445dc882c40724c20c773b3a5e191fb06970a6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 48e6168ed07162844c6e1b18d4fc2c4a26469e52
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823137"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95998682"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure 安全中心的 Azure Policy 内置定义
 
@@ -52,5 +52,5 @@ ms.locfileid: "91823137"
 - [Azure 安全中心规划和操作指南](./security-center-planning-and-operations-guide.md)：了解如何规划和理解 Azure 安全中心的设计考虑事项。
 - [在 Azure 安全中心进行安全运行状况监视](./security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。
 - [在 Azure 安全中心内管理和响应安全警报](./security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
-- [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状况。
+- [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-integration.md)：了解如何监视合作伙伴解决方案的运行状况。
 - [Azure Policy](../governance/policy/overview.md)：了解如何审核和管理 Azure 资源。

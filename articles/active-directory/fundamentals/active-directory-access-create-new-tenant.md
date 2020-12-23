@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c7225adcfe970d17f8f86afdd15e36e2ba76de3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287009"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437216"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中创建一个新租户
 可使用 Azure Active Directory (Azure AD) 门户执行所有管理任务，包括为组织创建新的租户。 
@@ -33,44 +33,48 @@ ms.locfileid: "91287009"
 
 1. 登录到你组织的 [Azure 门户](https://portal.azure.com/)。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。  
+1. 从 Azure 门户菜单中，选择“Azure Active Directory”。  
 
-    ![Azure Active Directory 的“创建资源”页](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    <kbd>![Azure Active Directory - 概述页 - 创建租户](media/active-directory-access-create-new-tenant/azure-ad-portal.png)</kbd>  
 
-1. 搜索并选择“Azure Active Directory”。
+1. 选择“创建租户”。
 
-    随即出现“创建目录”页面  。
+1. 在“基本信息”选项卡上，选择要创建的租户类型：“Azure Active Directory”或“Azure Active Directory (B2C)” 。
 
-    ![Azure Active Directory“创建”页面](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
+1. 在完成时选择“下一步:配置”，可转到“配置”选项卡。
 
-1.  在“创建目录”页面上，输入以下信息  ：
+    <kbd>![Azure Active Directory - 创建租户页面 -“配置”选项卡](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)</kbd>
+
+1.  在“配置”选项卡上，输入以下信息：
     
-    - 在“组织名称”框中键入 Contoso   。
+    - 在“组织名称”框中键入“Contoso Organization”。
 
-    - 在“初始域名”框中键入 Contoso   。
+    - 在“初始域名”框中键入“Contosoorg”。
 
     - 保留“国家或地区”框中的“美国”选项   。
 
-1. 选择“创建”  。
+1. 在完成时选择“下一步:查看 + 创建”。 查看输入的信息，如果信息正确，请选择“创建”。
+
+    <kbd>![Azure Active Directory - 查看并创建租户页](media/active-directory-access-create-new-tenant/azure-ad-review.png)</kbd>
 
 新租户是使用 contoso.onmicrosoft.com 域创建的。
 
 ## <a name="clean-up-resources"></a>清理资源
 如果不打算继续使用此应用程序，可按以下步骤删除该租户：
 
-- 确保你已登录到要通过 Azure 门户中的“目录 + 订阅”  筛选器删除的目录，并根据需要切换到目标目录。
+- 确保你已登录到要通过 Azure 门户中的“目录 + 订阅”筛选器删除的目录，并根据需要切换到目标目录。
 - 选择 Azure Active Directory，然后在“Contoso - 概述”页面上，选择“删除目录”    。
 
-    这会删除此租户及其关联信息。
+    这会删除此租户及其关联的信息。
 
-    ![突出显示“删除目录”按钮的概述页](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    <kbd>![突出显示“删除目录”按钮的概述页](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>后续步骤
-- 要更改或添加其他域名，请参阅[如何向 Azure Active Directory 添加自定义域名](add-custom-domain.md)
+- 更改或添加其他域名，请参阅[如何向 Azure Active Directory 添加自定义域名](add-custom-domain.md)
 
-- 要添加用户，请参阅[添加新用户或删除用户](add-users-azure-active-directory.md)
+- 添加用户，请参阅[添加新用户或删除用户](add-users-azure-active-directory.md)
 
-- 要添加组和成员，请参阅[创建基本组并添加成员](active-directory-groups-create-azure-portal.md)
+- 添加组和成员，请参阅[创建基本组并添加成员](active-directory-groups-create-azure-portal.md)
 
 - 为帮助管理组织的应用程序和资源访问权限，请了解[使用 Privileged Identity Management 基于角色进行访问](../../role-based-access-control/best-practices.md)和[条件访问](../../role-based-access-control/conditional-access-azure-management.md)。
 

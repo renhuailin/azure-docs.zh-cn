@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 8ce25780e197c26e0e5b102670e093031e1a2582
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503986"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697656"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
@@ -52,7 +52,7 @@ ms.locfileid: "89503986"
 
 1. 使用相同的存储帐户、不同的容器名称[设置新的目标 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)：
 
-    ![使用相同的存储帐户，但创建不同的容器](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   ![使用相同的存储帐户，但创建不同的容器](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
 1. 刷新源 HBase 群集，即正在升级的群集。 HBase 将传入的数据写入名为 _memstore_ 的内存中存储。 memstore 达到特定的大小后，HBase 会将其刷新到群集存储帐户中用作长期存储的磁盘中。 删除旧群集时，将回收 memstores，这可能会丢失数据。 若要将每个表的 memstore 手动刷新到磁盘，请运行以下脚本。 Azure 的 [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh) 中提供了此脚本的最新版本。
 
@@ -182,20 +182,50 @@ ms.locfileid: "89503986"
 
     ![选中“为 HBase 启用维护模式”复选框，然后确认](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-1. 在新 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。****
+1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 带增强写入功能的 HBase 群集才需要它。
 
-    ![在 Ambari 中单击“服务”>“HDFS”>“配置”>“停止”](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   通过从原始群集的任何 zookeeper 节点或工作节点上的 ssh 会话运行以下命令，在 HDFS 下备份 WAL 目录。
+   
+   ```bash
+   hdfs dfs -mkdir /hbase-wal-backup**
+   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
+   ```
+    
+1. 在新 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。
 
-    ![在 Ambari 中更改容器名称](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   ![在 Ambari 中单击“服务”>“HDFS”>“配置”>“停止”](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+
+   ![在 Ambari 中更改容器名称](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
 1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 带增强写入功能的 HBase 群集才需要它。
 
    将 `hbase.rootdir` 路径改为指向原始群集的容器。
 
-    ![在 Ambari 中更改 HBase rootdir 的容器名称](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   ![在 Ambari 中更改 HBase rootdir 的容器名称](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 仅在具有增强写入功能的 HBase 群集中需要，而且仅在原始群集是具有增强写入功能的 HBase 群集时才需要。
 
-1. 若要将 HDInsight 3.6 升级到 4.0，请按以下步骤操作，否则请跳到步骤 10：
-    1. 选择“服务”**** > ****“重启所有必需服务”，以便重启 Ambari 中的所有必需服务。
+   清除此新群集的 zookeeper 和 WAL FS 数据。 在任何 zookeeper 节点或工作节点中发出以下命令：
+
+   ```bash
+   hbase zkcli
+   rmr /hbase-unsecure
+   quit
+
+   hdfs dfs -rm -r hdfs://mycluster/hbasewal**
+   ```
+
+1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 带增强写入功能的 HBase 群集才需要它。
+   
+   从新群集的任何 zookeeper 节点或辅助节点上的 ssh 会话，将 WAL 目录还原到新群集的 HDFS 中。
+   
+   ```bash
+   hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
+   ```
+   
+1. 如果要将 HDInsight 3.6 升级到4.0，请遵循以下步骤，否则请跳到步骤13：
+
+    1. 选择“服务” > “重启所有必需服务”，以便重启 Ambari 中的所有必需服务。
     1. 停止 HBase 服务。
     1. 通过 SSH 连接到 Zookeeper 节点，执行 [zkCli](https://github.com/go-zkcli/zkcli) 命令 `rmr /hbase-unsecure`，以便从 Zookeeper 中删除 HBase 根 znode。
     1. 重启 HBase。

@@ -3,18 +3,18 @@ title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372249"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905666"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -126,7 +126,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 你需要是“管理员代理”组的成员才能查看和更新策略。 使用以下信息来启用允许客户查看 Azure 使用费的策略。
 
-在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。 在计费范围区域中选择相关计费范围，然后选择“客户”。 客户列表与计费帐户相关联。
+在 Azure 门户中登录到合作伙伴租户，然后选择“成本管理 + 计费”。 在计费范围区域中选择相关计费范围，然后选择“客户”。 客户列表与计费帐户相关联。 如果错误地登录到客户租户，则不会看到客户列表。
 
 在客户列表中，选择要允许其查看成本的客户。
 
@@ -151,9 +151,11 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 将以基于即用即付费率的成本，提供订阅和资源组 Azure RBAC 范围的成本分析、预算和警报。
 
-Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。 预留实例成本仅显示在购买时所在的计费范围内。
+Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。 权利的购买成本（如预留实例和市场费用）仅显示在进行购买的合作伙伴租户的计费范围内。
 
 用于计算视图中显示的成本的零售价与适用于所有客户的 Azure 定价计算器中显示的价格相同。 显示的成本不包括合作伙伴可能具有的任何折扣或额度，例如“合作伙伴赚取的额度”、“分级折扣”和“全局服务折扣”。
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>在成本分析中分析成本
 
@@ -186,7 +188,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 | costCenter | 与订阅关联的成本中心。 | 空值 |
 | billingPeriodStartDate | 发票中显示的计费周期开始日期。 | 空值 |
 | billingPeriodEndDate | 发票中显示的计费周期结束日期。 | 空值 |
-| servicePeriodStartDate | 为服务用量分级费用时分级时段的开始日期。 将根据分级时段确定 Azure 服务的价格。 | 合作伙伴中心内的 ChargeStartDate。 计费周期的开始日期，不包括上一个计费周期内的之前未付款的潜在使用数据的显示日期。 该时间始终为一天的起点时间，即 0:00。 |
+| servicePeriodStartDate | 为服务用量分级费用时分级时段的开始日期。 将根据分级时段确定 Azure 服务的价格。 | 合作伙伴中心内的 ChargeStartDate。  计费周期的开始日期，不包括上一个计费周期内的之前未付款的潜在使用数据的显示日期。 该时间始终为一天的起点时间，即 0:00。 |
 | servicePeriodEndDate | 为服务用量分级费用时的时段结束日期。 将根据分级时段确定 Azure 服务的价格。 | 空值 |
 | date | 对于 Azure 消耗数据，会显示分级用量的日期。 对于预留实例，会显示购买日期。 对于重复性费用和一次性费用（例如市场和支持服务），会显示购买日期。 | 空值 |
 | productID | 已按消耗或购买量累积了费用的产品的标识符。 它是合作伙伴中心内显示的 productID 和 SKuID 的串联键。 | 产品的 ID。 |
@@ -260,7 +262,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 
 ## <a name="export-cost-data-to-azure-storage"></a>将成本数据导出到 Azure 存储
 
-有权访问合作伙伴租户中的计费范围的合作伙伴可将其成本和使用情况数据导出到 Azure 存储 Blob。 该 Blob 必须位于合作伙伴租户的某个订阅中，且该订阅不是共享的服务订阅或客户的订阅。 若要启用成本数据导出，我们建议在合作伙伴租户中设置一个独立的即用即付订阅来托管导出的成本数据。 导出存储帐户将在即用即付订阅中托管的 Azure 存储 Blob 上创建。 根据伙伴创建导出时所在的范围，会定期自动将关联的数据导出到存储帐户。
+有权访问合作伙伴租户中的计费范围的合作伙伴可将其成本和使用情况数据导出到 Azure 存储 Blob。 该 Blob 必须位于合作伙伴租户的某个订阅中，且该订阅不是[共享的服务订阅](/partner-center/shared-services)或客户的订阅。 若要启用成本数据导出，我们建议在合作伙伴租户中设置一个独立的即用即付订阅来托管导出的成本数据。 导出存储帐户将在即用即付订阅中托管的 Azure 存储 Blob 上创建。 根据伙伴创建导出时所在的范围，会定期自动将关联的数据导出到存储帐户。
 
 对订阅拥有 Azure RBAC 访问权限的用户还可将成本数据导出到客户租户的任何订阅中托管的 Azure 存储 Blob。
 

@@ -1,7 +1,7 @@
 ---
 title: 错误代码参考
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C 服务可能返回的错误代码列表。
+description: Azure Active Directory B2C 服务可返回的错误代码的列表。
 services: B2C
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664845"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215427"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>错误代码：Azure Active Directory B2C
 
@@ -61,7 +61,8 @@ Azure Active Directory B2C 服务可能返回以下错误。
 | `AADB2C90055` | 请求中提供的范围“{0}”必须指定资源，例如“https://example.com/calendar.read ”。 |
 | `AADB2C90057` | 未将提供的应用程序配置为允许 OAuth 隐式流。 |
 | `AADB2C90058` | 未将提供的应用程序配置为允许公共客户端。 |
-| `AADB2C90067` | 注销后重定向 URI“{0}”的格式无效。 指定基于 HTTPS 的 URL (例如“https://example.com/return ”)；对于本机客户端，请使用 IETF native 客户端 URI 'urn:ietf:wg:oauth:2.0:oob'。 |
+| `AADB2C99059` | 提供的请求必须提供 code_challenge。 对于使用授权代码流的单页面应用程序是必需的。| 
+| `AADB2C90067` | 注销后重定向 URI“{0}”的格式无效。 指定基于 HTTPS 的 URL (例如“https://example.com/return”)；对于本机客户端，请使用 IETF native 客户端 URI 'urn:ietf:wg:oauth:2.0:oob'。 |
 | `AADB2C90068` | 提供的 ID 为“{0}”的应用程序对此服务无效。 请使用通过 B2C 门户创建的应用程序，然后重试。 |
 | `AADB2C90075` | 步骤“{1}”中指定的声明交换“{0}”返回了 HTTP 错误响应，代码为“{2}”，原因为“{3}”。 |
 | `AADB2C90077` | 用户没有现有会话且请求提示参数有一个值“{0}”。 |

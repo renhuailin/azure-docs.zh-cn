@@ -1,6 +1,6 @@
 ---
 title: 为表编制索引
-description: 有关在 Synapse SQL 池中为表编制索引的建议和示例。
+description: 针对专用 SQL 池中的表编制索引的建议和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5ac32c41bd6b30c3edce68d67adc376e066d0bf5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: fea314d595fb39a1e35dec8ab24533ad4b893f98
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797592"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448070"
 ---
-# <a name="indexing-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中为表编制索引
+# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中为专用 SQL 池表编制索引
 
-有关在 Synapse SQL 池中为表编制索引的建议和示例。
+针对专用 SQL 池中的表编制索引的建议和示例。
 
 ## <a name="index-types"></a>索引类型
 
-Synapse SQL 池提供了多个索引编制选项，包括[聚集列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[聚集索引和非聚集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及一个称作[堆](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的非索引选项。  
+专用 SQL 池提供若干索引选项，包括 [聚集列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、 [聚集索引和非聚集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)以及非索引选项，也称为 [堆](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  
 
-若要创建带有索引的表，请参阅 [CREATE TABLE（Synapse SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)文档。
+若要创建包含索引的表，请参阅 [ (专用 SQL 池) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 文档中的 CREATE TABLE。
 
 ## <a name="clustered-columnstore-indexes"></a>聚集列存储索引
 
-默认情况下，如果未在表中指定任何索引选项，则 Synapse SQL 池会创建聚集列存储索引。 聚集列存储表提供最高级别的数据压缩，以及最好的总体查询性能。  一般而言，聚集列存储表优于聚集索引或堆表，并且通常是大型表的最佳选择。  出于这些原因，在不确定如何编制表索引时，聚集列存储是最佳起点。  
+默认情况下，当未在表中指定索引选项时，专用 SQL 池会创建聚集列存储索引。 聚集列存储表提供最高级别的数据压缩，以及最好的总体查询性能。  一般而言，聚集列存储表优于聚集索引或堆表，并且通常是大型表的最佳选择。  出于这些原因，在不确定如何编制表索引时，聚集列存储是最佳起点。  
 
 若要创建聚集列存储表，只需在 WITH 子句中指定 CLUSTERED COLUMNSTORE INDEX，或省略 WITH 子句：
 
@@ -52,7 +52,7 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 ## <a name="heap-tables"></a>堆表
 
-将数据暂时移入 Synapse SQL 池时，可能会发现使用堆表可让整个过程更快速。 这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表](sql-data-warehouse-tables-temporary.md)也比将表载入永久存储更快速。  在加载数据后，可以在表中创建索引来提高查询性能。  
+在专用 SQL 池中临时登录数据时，您可能会发现使用堆表可以更快地完成总体进程。 这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表](sql-data-warehouse-tables-temporary.md)也比将表载入永久存储更快速。  在加载数据后，可以在表中创建索引来提高查询性能。  
 
 超过 6000 万行后，聚集列存储表开始达到最佳压缩性能。  对于少于 6000 万行的小型查找表，请考虑使用“堆”或聚集索引来提高查询性能。 
 
@@ -143,9 +143,6 @@ GROUP BY
 ;
 ```
 
->[!TIP]
-> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
-
 现在已创建视图，请运行此查询来识别哪些表的行组中包含的行少于 10 万个。 当然，如果要寻求更理想的段质量，可以将 10 万这个阈值增大。
 
 ```sql
@@ -207,13 +204,13 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="small-or-trickle-load-operations"></a>小型或渗透负载操作
 
-流入 Synapse SQL 池的小型负载有时也称为渗透负载。 它们通常代表系统引入的数据的接近恒定流。 但是，由于此流接近连续状态，因此行的容量并不特别大。 通常数据远低于直接加载到列存储格式所需的阈值。
+流到专用 SQL 池的小型负载有时也称为滴负载。 它们通常代表系统引入的数据的接近恒定流。 但是，由于此流接近连续状态，因此行的容量并不特别大。 通常数据远低于直接加载到列存储格式所需的阈值。
 
-在这些情况下，最好先将数据保存到 Azure Blob 存储中，并让它在加载之前累积。 此技术通常称为*微批处理*。
+在这些情况下，最好先将数据保存到 Azure Blob 存储中，并让它在加载之前累积。 此技术通常称为 *微批处理*。
 
 ### <a name="too-many-partitions"></a>过多的分区
 
-另一个考虑因素是分区对聚集列存储表的影响。  分区之前，Synapse SQL 池已将数据分散到 60 个数据库。  进一步分区会分割数据。  如果将分区，则要考虑的是**每个**分区必须至少有 100 万行，使用聚集列存储索引才有益。  如果将表划分为 100 个分区，则表至少需要 60 亿行才能从聚集列存储索引中受益（60 个分布区 *100 个分区* 100 万行）。 如果包含 100 个分区的表没有 60 亿行，请减少分区数目，或考虑改用堆表。
+另一个考虑因素是分区对聚集列存储表的影响。  在分区之前，专用 SQL 池已将你的数据划分为60数据库。  进一步分区会分割数据。  如果将分区，则要考虑的是 **每个** 分区必须至少有 100 万行，使用聚集列存储索引才有益。  如果将表划分为 100 个分区，则表至少需要 60 亿行才能从聚集列存储索引中受益（60 个分布区 *100 个分区* 100 万行）。 如果包含 100 个分区的表没有 60 亿行，请减少分区数目，或考虑改用堆表。
 
 在表中加载一些数据后，请遵循以下步骤来识别并重建聚集列存储索引质量欠佳的表。
 
@@ -255,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-在 Synapse SQL 池中重建索引是一项脱机操作。  有关重建索引的详细信息，请参阅[列存储索引碎片整理](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的“ALTER INDEX REBUILD”部分和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+在专用 SQL 池中重建索引是一项脱机操作。  有关重建索引的详细信息，请参阅[列存储索引碎片整理](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的“ALTER INDEX REBUILD”部分和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>步骤 3：验证聚集列存储段质量是否已改善
 
@@ -286,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-有关使用 CTAS 重新创建分区的更多详细信息，请参阅[在 Synapse SQL 池中使用分区](sql-data-warehouse-tables-partition.md)。
+有关使用 CTAS 重新创建分区的更多详细信息，请参阅 [使用专用 SQL 池中的分区](sql-data-warehouse-tables-partition.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

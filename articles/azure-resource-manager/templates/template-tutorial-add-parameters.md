@@ -1,21 +1,21 @@
 ---
 title: 教程 - 将参数添加到模板
-description: 将参数添加到 Azure 资源管理器模板，使其可重复使用。
+description: 将参数添加到 Azure 资源管理器模板（ARM 模板），使其可重复使用。
 author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e860941c3d782498c12afa12f285f44e7e68f37
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 7d0743d316b9d879017f3b0fbe08ee4dc2b3e1c2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069435"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931055"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>教程：将参数添加到 ARM 模板
 
-在[前一篇教程](template-tutorial-add-resource.md)中，你已了解如何将存储帐户添加到模板，然后部署该模板。 本教程介绍如何通过添加参数来改进 Azure 资源管理器 (ARM) 模板。 完成本教程大约需要 **14 分钟**。
+在[前一篇教程](template-tutorial-add-resource.md)中，你已了解如何将存储帐户添加到模板，然后部署该模板。 本教程介绍如何通过添加参数来改进 Azure 资源管理器模板（ARM 模板）。 完成本教程大约需要 **14 分钟**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "90069435"
 
 让我们部署该模板。 以下示例使用 Azure CLI 或 PowerShell 来部署模板。 请注意，需要为部署命令中的某个值提供存储帐户名称。 对于存储帐户名称，请提供前一篇教程中所用的相同名称。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据 [第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

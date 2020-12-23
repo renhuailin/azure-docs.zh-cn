@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: bfdda75c0826ed12fbce1eb47680f91abbde4934
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661051"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422563"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure Arc 数据控制器
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 有关概述信息，请参阅 [创建 Azure Arc 数据控制器](create-data-controller.md) 主题。
 
@@ -102,7 +102,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-sep-2020 <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -170,21 +170,21 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 根据需要编辑以下内容：
 
 **必填**
-- **位置**：将此位置更改为要在其中存储数据控制器的 _元数据_ 的 Azure 位置。  可以在 [创建数据控制器概述](create-data-controller.md) 一文中查看可用 Azure 位置的列表。
-- **resourceGroup**：要在 azure 中创建数据控制器 azure 资源的 azure 资源组资源管理器。  通常，此资源组应该已经存在，但在将数据上传到 Azure 之前，不需要此资源组。
-- **订阅**：要在其中创建 azure 资源的订阅的 AZURE 订阅 GUID。
+- **位置** ：将此位置更改为要在其中存储数据控制器的 _元数据_ 的 Azure 位置。  可以在 [创建数据控制器概述](create-data-controller.md) 一文中查看可用 Azure 位置的列表。
+- **resourceGroup** ：要在 azure 中创建数据控制器 azure 资源的 azure 资源组资源管理器。  通常，此资源组应该已经存在，但在将数据上传到 Azure 之前，不需要此资源组。
+- **订阅** ：要在其中创建 azure 资源的订阅的 AZURE 订阅 GUID。
 
 **建议查看并可能更改默认值**
-- **存储空间。className**：用于数据控制器数据和日志文件的存储类。  如果你不确定 Kubernetes 群集中可用的存储类，可以运行以下命令： `kubectl get storageclass` 。  默认值为， `default` 它假定存在一个存在且命名为 `default` 非默认存储类 _的_ 存储类。  注意：需要将两个 className 设置设置为所需的存储类-一个用于数据，一个用于日志。
-- **serviceType**： `NodePort` 如果使用的不是 LoadBalancer，请将服务类型更改为。  注意：需要更改两个 serviceType 设置。
+- **存储空间。className** ：用于数据控制器数据和日志文件的存储类。  如果你不确定 Kubernetes 群集中可用的存储类，可以运行以下命令： `kubectl get storageclass` 。  默认值为， `default` 它假定存在一个存在且命名为 `default` 非默认存储类 _的_ 存储类。  注意：需要将两个 className 设置设置为所需的存储类-一个用于数据，一个用于日志。
+- **serviceType** ： `NodePort` 如果使用的不是 LoadBalancer，请将服务类型更改为。  注意：需要更改两个 serviceType 设置。
 
 **可有可无**
-- **名称**：数据控制器的默认名称为 `arc` ，但你可以根据需要对其进行更改。
-- **displayName**：将此值设置为与文件顶部的 name 特性相同的值。
-- **注册表**： Microsoft 容器注册表是默认值。  如果要从 Microsoft 容器注册表拉取映像并将 [其推送到专用容器注册表](offline-deployment.md)，请在此处输入注册表的 IP 地址或 DNS 名称。
-- **dockerRegistry**：如有必要，要用于从专用容器注册表中提取映像的映像请求密码。
-- **存储库**： Microsoft 容器注册表中的默认存储库是 `arcdata` 。  如果使用的是专用容器注册表，请输入文件夹/存储库的路径，该文件夹/存储库包含已启用 Azure Arr 的数据服务容器映像。
-- **imageTag**：当前的最新版本标记在模板中是默认的，但是如果要使用较旧的版本，可以对其进行更改。
+- **名称** ：数据控制器的默认名称为 `arc` ，但你可以根据需要对其进行更改。
+- **displayName** ：将此值设置为与文件顶部的 name 特性相同的值。
+- **注册表** ： Microsoft 容器注册表是默认值。  如果要从 Microsoft 容器注册表拉取映像并将 [其推送到专用容器注册表](offline-deployment.md)，请在此处输入注册表的 IP 地址或 DNS 名称。
+- **dockerRegistry** ：如有必要，要用于从专用容器注册表中提取映像的映像请求密码。
+- **存储库** ： Microsoft 容器注册表中的默认存储库是 `arcdata` 。  如果使用的是专用容器注册表，请输入文件夹/存储库的路径，该文件夹/存储库包含已启用 Azure Arr 的数据服务容器映像。
+- **imageTag** ：当前的最新版本标记在模板中是默认的，但是如果要使用较旧的版本，可以对其进行更改。
 
 已完成数据控制器 yaml 文件的示例：
 ```yaml
@@ -200,7 +200,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-sep-2020
+    imageTag: public-preview-oct-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:

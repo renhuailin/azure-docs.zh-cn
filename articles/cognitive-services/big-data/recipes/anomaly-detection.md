@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691456"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366275"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>食谱：针对大数据的认知维护和认知服务
 
-此食谱显示了如何在 Spark 上使用 Azure Synapse 分析和认知服务来实现 IoT 设备的预测性维护。 接下来，我们将介绍 [CosmosDB 和 Synapse 链接](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) 示例。 为简单起见，在这种情况下，我们将从 CSV 文件直接读取数据，而不是通过 CosmosDB 和 Synapse 链接获取流数据。 强烈建议您查找 Synapse 链接示例。
+此食谱显示了如何将 Azure Synapse Analytics 和认知 Apache Spark 服务用于 IoT 设备的预测性维护。 接下来，我们将介绍 [CosmosDB 和 Synapse 链接](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) 示例。 为简单起见，在这种情况下，我们将从 CSV 文件直接读取数据，而不是通过 CosmosDB 和 Synapse 链接获取流数据。 强烈建议您查找 Synapse 链接示例。
 
 ## <a name="hypothetical-scenario"></a>假设方案
 
@@ -31,13 +31,13 @@ ms.locfileid: "88691456"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
-* 使用[Spark 池](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)配置的[Azure Synapse 工作区](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
+* 使用[无服务器 Apache Spark 池](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)配置的[Azure Synapse 工作区](../../../synapse-analytics/quickstart-create-workspace.md)
 
 ## <a name="setup"></a>设置
 
 ### <a name="create-an-anomaly-detector-resource"></a>创建异常检测器资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) 或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)为转换器创建资源。 也可执行以下操作：
+Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](../../cognitive-services-apis-create-account.md) 或 [Azure CLI](../../cognitive-services-apis-create-account-cli.md)为转换器创建资源。 也可执行以下操作：
 
 - 查看  [Azure 门户](https://portal.azure.com/)中的现有资源。
 
@@ -100,9 +100,9 @@ df_anomaly.select("timestamp","value","deviceId","anomalies.isAnomaly").show(3)
 
 | timestamp           |   值 | deviceId   | isAnomaly   |
 |:--------------------|--------:|:-----------|:------------|
-| 2020-05-01 18:33:51 |    3174 | 开发-7      | False       |
-| 2020-05-01 18:33:52 |    2976 | 开发-7      | False       |
-| 2020-05-01 18:33:53 |    2714 | 开发-7      | False       |
+| 2020-05-01 18:33:51 |    3174 | 开发-7      | 错误       |
+| 2020-05-01 18:33:52 |    2976 | 开发-7      | 错误       |
+| 2020-05-01 18:33:53 |    2714 | 开发-7      | 错误       |
 
 
  ## <a name="visualize-anomalies-for-one-of-the-devices"></a>可视化某个设备的异常

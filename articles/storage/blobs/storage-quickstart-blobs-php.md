@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: af35927abfa491891dffe2c2397d6daf8c1ccde2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87835742"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543112"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 PHP 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
@@ -40,7 +40,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
-在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 **BlobRestProxy** 实例。 建议将这些标识符存储在运行应用程序的本地计算机的环境变量中。 根据操作系统按照下面的一个示例创建环境变量。 将 youraccountname**** 和 youraccountkey**** 值分别替换为帐户名称和密钥。
+在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 **BlobRestProxy** 实例。 建议将这些标识符存储在运行应用程序的本地计算机的环境变量中。 根据操作系统按照下面的一个示例创建环境变量。 将 youraccountname 和 youraccountkey 值分别替换为帐户名称和密钥。
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -86,14 +86,14 @@ This is the content of the blob uploaded: Hello Azure!
 
 * 创建 Azure 存储 **BlobRestProxy** 对象的实例，用于设置连接凭据。 
 * 创建 **BlobService** 对象，使之指向存储帐户中的 Blob 服务。 
-* 创建**容器**对象，让其代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
+* 创建 **容器** 对象，让其代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
 
-有了云 **blobClient** 容器对象后，可以创建**块** Blob 对象，使之指向你感兴趣的特定 Blob， 然后执行上传、下载、复制等操作。
+有了云 **blobClient** 容器对象后，可以创建 **块** Blob 对象，使之指向你感兴趣的特定 Blob， 然后执行上传、下载、复制等操作。
 
 > [!IMPORTANT]
-> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs****。 
+此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs。 
 
 ```PHP
     # Setup a specific instance of an Azure::Storage::Client
@@ -124,7 +124,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
 
 若要将文件上传到 blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取文件的完整路径。 然后可以使用 **createBlockBlob()** 方法将文件上传到指定的路径。 
 
-示例代码使用一个本地文件并将其上传到 Azure。 在代码中，该文件存储为 **myfile**，Blob 的名称存储为 **fileToUpload**。 以下示例将文件上传到名为“quickstartblobs”的容器****。
+示例代码使用一个本地文件并将其上传到 Azure。 在代码中，该文件存储为 **myfile**，Blob 的名称存储为 **fileToUpload**。 以下示例将文件上传到名为“quickstartblobs”的容器。
 
 ```PHP
     $myfile = fopen("HelloWorld.txt", "w") or die("Unable to open file!");

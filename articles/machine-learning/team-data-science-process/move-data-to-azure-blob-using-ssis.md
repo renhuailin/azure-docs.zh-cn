@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9572d612e7ee8e2fd72850ba14447e8449f0f371
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322870"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321996"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
-[用于 Azure 的 SQL Server Integration Services 功能包](https://msdn.microsoft.com/library/mt146770.aspx)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。
+[用于 Azure 的 SQL Server Integration Services 功能包](/sql/integration-services/azure-feature-pack-for-integration-services-ssis)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -30,20 +30,20 @@ ms.locfileid: "85322870"
 若要深入了解使用 SSIS 完成混合数据集成方案中常见的业务需求的规范方案讨论，请参阅[Doing more with SQL Server Integration Services Feature Pack for Azure](https://techcommunity.microsoft.com/t5/sql-server-integration-services/doing-more-with-sql-server-integration-services-feature-pack-for/ba-p/388238)（使用用于 Azure 的 SQL Server Integration Services 功能包执行更多操作）博客。
 
 > [!NOTE]
-> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
+> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../../storage/blobs/storage-quickstart-blobs-dotnet.md)和 [Azure Blob 服务](/rest/api/storageservices/Blob-Service-Concepts)。
 > 
 > 
 
 ## <a name="prerequisites"></a>先决条件
 若要执行本文所述任务，必须设置 Azure 订阅和 Azure 存储帐户。 若要上传或下载数据，需要 Azure 存储的帐户名和帐户密钥。
 
-* 若要设置 **Azure 订阅**，请参阅[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
-* 有关创建 **存储帐户** 以及获取帐户和密钥信息的说明，请参阅 [关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
+* 若要设置 **Azure 订阅** ，请参阅 [免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
+* 有关创建 **存储帐户** 以及获取帐户和密钥信息的说明，请参阅 [关于 Azure 存储帐户](../../storage/common/storage-account-create.md)。
 
-若要使用 **SSIS 连接器**，则必须下载：
+若要使用 **SSIS 连接器** ，则必须下载：
 
 * **SQL Server 2014 或 2016 标准版（或更高版本）** ：安装包括 SQL Server Integration Services。
-* **适用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包**：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这些连接器。
+* **适用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包** ：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这些连接器。
 
 > [!NOTE]
 > SSIS 随 SQL Server 一起安装，但并不包括在 Express 版本中。 若要深入了解 SQL Server 各种版本中包含哪些应用程序，请参阅 [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)（SQL Server 版本）
@@ -52,13 +52,13 @@ ms.locfileid: "85322870"
 
 有关 SSIS 的培训资料，请参阅 [Hands On Training for SSIS](https://www.microsoft.com/sql-server/training-certification)（SSIS 培训指导）
 
-有关如何使用 SISS 生成简单的提取、转换和加载 (ETL) 包进行启动并运行的信息，请参阅 [SSIS 教程：创建简单的 ETL 包](https://msdn.microsoft.com/library/ms169917.aspx)。
+有关如何使用 SISS 生成简单的提取、转换和加载 (ETL) 包进行启动并运行的信息，请参阅 [SSIS 教程：创建简单的 ETL 包](/sql/integration-services/ssis-how-to-create-an-etl-package)。
 
 ## <a name="download-nyc-taxi-dataset"></a>下载 NYC 出租车数据集
 此处所述的示例使用公开发布的数据集 - [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)。 此数据集包含 2013 年纽约市内约 1.73 亿次出租车行程。 有两种类型的数据：行程详细信息数据和费用数据。 由于每个月都有一个文件，因此共有 24 个文件，每个文件大约 2 GB，未压缩。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
-要使用 SSIS 功能包将数据从本地移动到 Azure Blob 存储，使用[**Azure Blob 上传任务**](https://msdn.microsoft.com/library/mt146776.aspx)的实例，如下所示：
+要使用 SSIS 功能包将数据从本地移动到 Azure Blob 存储，使用 [**Azure Blob 上传任务**](/sql/integration-services/control-flow/azure-blob-upload-task)的实例，如下所示：
 
 ![configure-data-science-vm](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
@@ -74,16 +74,15 @@ ms.locfileid: "85322870"
 | **TimeRangeFrom/TimeRangeTo** |指定时间范围筛选器。 将包括在 *TimeRangeFrom* 之后以及 *TimeRangeTo* 之前修改的文件。 |
 
 > [!NOTE]
-> **AzureStorageConnection** 凭据必须正确，且在尝试进行传输之前，**BlobContainer** 必须存在。
+> **AzureStorageConnection** 凭据必须正确，且在尝试进行传输之前， **BlobContainer** 必须存在。
 > 
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>从 Azure Blob 存储下载数据
-要使用 SSIS 将数据从 Azure Blob 存储下载到本地存储，请使用 [Azure Blob 下载任务](https://msdn.microsoft.com/library/mt146779.aspx)的实例。
+要使用 SSIS 将数据从 Azure Blob 存储下载到本地存储，请使用 [Azure Blob 下载任务](/sql/integration-services/control-flow/azure-blob-download-task)的实例。
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>更高级的 SSIS-Azure 方案
 SSIS 功能包能够通过将任务一起打包来处理更复杂的流。 例如，blob 数据可以直接传输到 HDInsight 群集，可将此群集的输出下载回 blob，再下载到本地存储。 SSIS 可使用附加的 SSIS 连接器在 HDInsight 群集上运行 Hive 和 Pig 作业：
 
-* 若要使用 SSIS 在 Azure HDInsight 群集上运行 Hive 脚本，请使用 [Azure HDInsight Hive 任务](https://msdn.microsoft.com/library/mt146771.aspx)。
-* 若要使用 SSIS 在 Azure HDInsight 群集上运行 Pig 脚本，请使用 [Azure HDInsight Pig 任务](https://msdn.microsoft.com/library/mt146781.aspx)。
-
+* 若要使用 SSIS 在 Azure HDInsight 群集上运行 Hive 脚本，请使用 [Azure HDInsight Hive 任务](/sql/integration-services/control-flow/azure-hdinsight-hive-task)。
+* 若要使用 SSIS 在 Azure HDInsight 群集上运行 Pig 脚本，请使用 [Azure HDInsight Pig 任务](/sql/integration-services/control-flow/azure-hdinsight-pig-task)。

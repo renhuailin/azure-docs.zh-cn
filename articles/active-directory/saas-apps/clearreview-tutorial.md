@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cc5a214d53441a5e1f30158a0264278b3cdc95a0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544654"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88544654"
 * 可让用户使用其 Azure AD 帐户自动登录到 Clear Review（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -92,7 +92,7 @@ ms.locfileid: "88544654"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "88544654"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![Clear Review 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/metadata/`
 
@@ -110,7 +110,7 @@ ms.locfileid: "88544654"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Clear Review 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com`
 
@@ -119,21 +119,21 @@ ms.locfileid: "88544654"
 
 6. Clear Review 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Clear Review 应用程序要求通过 user.mail 对 nameidentifier 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 7. 在“用户属性和声明”对话框中，执行以下步骤：
 
     a. 单击“名称标识符值”右侧的“编辑”图标 。
 
-    ![image](./media/clearreview-tutorial/attribute02.png)
+    ![屏幕截图显示已选择“编辑”图标的“用户属性和声明”。](./media/clearreview-tutorial/attribute02.png)
 
-    ![图像](./media/clearreview-tutorial/attribute01.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](./media/clearreview-tutorial/attribute01.png)
 
     b. 在“源属性”列表中，选择该行的 user.mail 属性值 。
 
     c. 单击“保存”  。
 
-8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -153,25 +153,25 @@ ms.locfileid: "88544654"
 
 2. 从左侧导航窗格中选择“管理”。
 
-    ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![屏幕截图显示已选择“管理”的 Clear Review 门户。](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 3. 在页面底部的“集成”部分中，单击“单一登录设置”右侧的“更改”按钮  。
 
-    ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![屏幕截图显示“单一登录更改”按钮。](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 4. 在“单一登录设置”页上，执行以下步骤：
 
-    ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![屏幕截图显示“单一登录设置”页，可在其中输入此步骤中的信息。](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。
 
-    b. 在“SAML 终结点”文本框中，粘贴从 Azure 门户复制的**登录 URL** 值。  
+    b. 在“SAML 终结点”文本框中，粘贴从 Azure 门户复制的 **登录 URL** 值。  
 
-    c. 在“SLO 终结点”文本框中，粘贴从 Azure 门户复制的**注销 URL** 值。  
+    c. 在“SLO 终结点”文本框中，粘贴从 Azure 门户复制的 **注销 URL** 值。  
 
     d. 在记事本中打开下载的证书，将其内容粘贴到“X.509 证书”文本框中。   
 
-    e. 单击“ **保存**”。
+    e. 单击“ **保存** ”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -232,13 +232,12 @@ ms.locfileid: "88544654"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Clear Review 磁贴时，应会自动登录到为其设置了 SSO 的 Clear Review。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Clear Review 磁贴时，应会自动登录到为其设置了 SSO 的 Clear Review。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

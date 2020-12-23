@@ -2,20 +2,20 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.date: 12/07/2020
+ms.openlocfilehash: 0b1304b273523d42ad62f4e392fb803e1c174b69
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627102"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937519"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
 
 > [!IMPORTANT]
-> 在大多数情况下，子资源不能独立于其父资源移动。 子资源的资源类型为 `<resource-provider-namespace>/<parent-resource>/<child-resource>` 。 例如， `Microsoft.ServiceBus/namespaces/queues` 是的子资源 `Microsoft.ServiceBus/namespaces` 。 移动父资源时，子资源会随之自动移动。 如果在本文中看不到子资源，可以假定它与父资源一起移动。 如果父资源不支持移动，则无法移动子资源。
+> 在大多数情况下，子资源不能独立于其父资源移动。 子资源的资源类型采用 `<resource-provider-namespace>/<parent-resource>/<child-resource>` 格式。 例如，`Microsoft.ServiceBus/namespaces/queues` 是 `Microsoft.ServiceBus/namespaces` 的子资源。 移动父资源时，子资源会随之自动移动。 如果在本文中没有看到子资源，可假定它与父资源一起移动。 如果父资源不支持移动，则无法移动子资源。
 
 跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
@@ -792,7 +792,6 @@ ms.locfileid: "91627102"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | datafactories | 是 | 是 |
-> | datafactoryschema | 否 | 否 |
 > | factories | 是 | 是 |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
@@ -1027,7 +1026,7 @@ ms.locfileid: "91627102"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | hanainstances | 否 | 否 |
-> | sapmonitors | 是 | 是 |
+> | sapmonitors | 否 | 否 |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 
@@ -1416,7 +1415,7 @@ ms.locfileid: "91627102"
 > | frontdoors | 否 | 否 |
 > | ipallocations | 是 | 是 |
 > | ipgroups | 是 | 是 |
-> | loadbalancers | 是 - 基本 SKU<br> 是-标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
+> | loadbalancers | 是 - 基本 SKU<br> 是 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
 > | localnetworkgateways | 是 | 是 |
 > | natgateways | 否 | 否 |
 > | networkexperimentprofiles | 否 | 否 |
@@ -1424,7 +1423,7 @@ ms.locfileid: "91627102"
 > | networkinterfaces | 是 | 是 |
 > | networkprofiles | 否 | 否 |
 > | networksecuritygroups | 是 | 是 |
-> | networkwatchers | 是 | 否 |
+> | networkwatchers | 否 | 否 |
 > | networkwatchers/connectionmonitors | 是 | 否 |
 > | networkwatchers/flowlogs | 是 | 否 |
 > | networkwatchers/pingmeshes | 是 | 否 |
@@ -1433,9 +1432,9 @@ ms.locfileid: "91627102"
 > | privatednszones/virtualnetworklinks | 是 | 是 |
 > | privatednszonesinternal | 否 | 否 |
 > | privateendpointredirectmaps | 否 | 否 |
-> | privateendpoints | 是 | 是 |
+> | privateendpoints | 否 | 否 |
 > | privatelinkservices | 否 | 否 |
-> | publicipaddresses | 是 - 基本 SKU<br>是-标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
+> | publicipaddresses | 是 - 基本 SKU<br>是 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
 > | publicipprefixes | 是 | 是 |
 > | routefilters | 否 | 否 |
 > | routetables | 是 | 是 |

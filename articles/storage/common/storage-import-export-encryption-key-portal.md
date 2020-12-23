@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb91a490083629101470565a630b659c090e071b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83195257"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843360"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务
 
@@ -33,13 +33,13 @@ Azure 导入/导出使用加密密钥保护用于锁定驱动器的 BitLocker �
     - [创建适用于文件的导入作业](storage-import-export-data-to-files.md)。
     - [创建适用于 blob 的导出作业](storage-import-export-data-from-blobs.md)
 
-2. 你有一个现有的 Azure Key Vault，其中包含可用于保护 BitLocker 密钥的密钥。 若要了解如何使用 Azure 门户创建 Key Vault，请参阅[快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密](../../key-vault/secrets/quick-create-portal.md)。
+2. 你有一个现有的 Azure Key Vault，其中包含可用于保护 BitLocker 密钥的密钥。 若要了解如何使用 Azure 门户创建密钥保管库，请参阅 [快速入门：使用 Azure 门户创建 Azure Key Vault](../../key-vault/general/quick-create-portal.md)。
 
     - 在现有 Key Vault 上设置了“软删除”和“不清除”。 默认情况下未启用这些属性。 若要启用这些属性，请参阅以下文章之一中标题为“启用软删除”和“启用清除保护”的部分： 
 
-        - [如何通过 PowerShell 使用软删除](../../key-vault/general/soft-delete-powershell.md)。
-        - [如何通过 CLI 使用软删除](../../key-vault/general/soft-delete-cli.md)。
-    - 现有密钥保管库应当具有大小为 2048 或更大的 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
+        - [如何通过 PowerShell 使用软删除](../../key-vault/general/key-vault-recovery.md)。
+        - [如何通过 CLI 使用软删除](../../key-vault/general/key-vault-recovery.md)。
+    - 现有密钥保管库应当具有大小为 2048 或更大的 RSA 密钥。 有关密钥的详细信息，请参阅 [关于密钥](../../key-vault/keys/about-keys.md)。
     - 密钥保管库必须与数据的存储帐户位于同一区域。  
     - 如果你没有现有的 Azure Key Vault，也可按照以下部分的描述以内联方式创建它。
 
@@ -101,9 +101,9 @@ Azure 导入/导出使用加密密钥保护用于锁定驱动器的 BitLocker �
 |----------------|------------|-----------------|
 | CmkErrorAccessRevoked | 撤销了对客户管理的密钥的访问权限。                                                       | 是，检查以下事项： <ol><li>密钥保管库在访问策略中是否仍具有 MSI。</li><li>访问策略是否启用了获取、包装和解包权限。</li><li>如果密钥保管库位于防火墙后面的 VNet 中，请检查是否启用了“允许 Microsoft 信任的服务”。</li><li>使用 API 检查作业资源的 MSI 是否已重置为 `None`。<br>如果是，则将该值设置回 `Identity = SystemAssigned`。 这将重新创建作业资源的标识。<br>创建新标识后，在密钥保管库的访问策略中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限</li></ol>                                                                                            |
 | CmkErrorKeyDisabled      | 禁用了客户管理的密钥。                                         | 是，通过启用密钥版本     |
-| CmkErrorKeyNotFound      | 找不到客户管理的密钥。 | 是，如果该密钥已删除，但仍处于清除保护期内，请使用[撤消密钥保管库密钥删除](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)。<br>否则， <ol><li>如果客户已备份密钥并还原了它，则可恢复。</li><li>其他情况下，无法恢复。</li></ol>
-| CmkErrorVaultNotFound |找不到客户管理的密钥的密钥保管库。 |   如果密钥保管库已删除：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库已迁移到其他租户，可以使用以下步骤之一进行恢复：<ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol>|
+| CmkErrorKeyNotFound      | 找不到客户管理的密钥。 | 是，如果该密钥已删除，但仍处于清除保护期内，请使用[撤消密钥保管库密钥删除](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)。<br>否则， <ol><li>如果客户已备份密钥并还原了它，则可恢复。</li><li>其他情况下，无法恢复。</li></ol>
+| CmkErrorVaultNotFound |找不到客户管理的密钥的密钥保管库。 |   如果密钥保管库已删除：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](../../key-vault/general/soft-delete-overview.md#key-vault-recovery)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库已迁移到其他租户，可以使用以下步骤之一进行恢复：<ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol>|
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [什么是 Azure Key Vault？](../../key-vault/general/overview.md)

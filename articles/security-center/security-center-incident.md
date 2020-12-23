@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: c31d3136ec4bcdf6da7680d41de078f8bd03d256
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447096"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341340"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>在 Azure 安全中心管理安全事件
 
 会审和调查安全警报对于最有经验的安全分析师而言非常耗时。 许多情况下，很难知道从何处着手。 
 
-安全中心使用 [分析](security-center-detection-capabilities.md) 将信息连接到不同的 [安全警报](security-center-managing-and-responding-alerts.md)。 通过使用这些连接，安全中心可以提供攻击活动的单一视图，并提供与其相关的警报，以帮助你了解攻击者的操作和受影响的资源。
+安全中心使用 [分析](./security-center-alerts-overview.md) 将信息连接到不同的 [安全警报](security-center-managing-and-responding-alerts.md)。 通过使用这些连接，安全中心可以提供攻击活动的单一视图，并提供与其相关的警报，以帮助你了解攻击者的操作和受影响的资源。
 
 本页提供安全中心的事件概述。
 

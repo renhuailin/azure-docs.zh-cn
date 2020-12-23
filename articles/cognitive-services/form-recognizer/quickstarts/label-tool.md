@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文档处理
-ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91597745"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009324"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -32,11 +32,28 @@ ms.locfileid: "91597745"
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="创建表单识别器资源"  target="_blank">创建表单识别器资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到表单识别器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
-* 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
+* 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 对于此快速入门，可使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)（下载并提取 sample_data.zip）。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
+
+## <a name="try-it-out"></a>试试看
+
+若要在线试用表单识别器示例标记工具，请转到 [FOTT 网站](https://fott-preview.azurewebsites.net/)。
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+> [!div class="nextstepaction"]
+> [试用预生成模型](https://fott.azurewebsites.net/)
+
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+> [!div class="nextstepaction"]
+> [试用预生成模型](https://fott-preview.azurewebsites.net/)
+
+---
+
+若要试用表单识别器服务，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥。 
+
 
 ## <a name="set-up-the-sample-labeling-tool"></a>设置示例标记工具
 
@@ -60,8 +77,6 @@ ms.locfileid: "91597745"
 
 
 
-
-
 1. 通过 `docker pull` 命令获取示例标记工具容器。
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)    
@@ -70,7 +85,7 @@ ms.locfileid: "91597745"
     ```
     # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
     ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
     ```
 
     ---
@@ -83,7 +98,7 @@ ms.locfileid: "91597745"
     ```
     # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
     ```
 
     --- 
@@ -139,7 +154,7 @@ ms.locfileid: "91597745"
 * **API 密钥** - 表单识别器订阅密钥。
 * **说明** -（可选）项目说明
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="示例标记工具的连接设置。":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="示例标记工具上的“新建项目”页面。":::
 
 ## <a name="label-your-forms"></a>标记表单
 
@@ -155,7 +170,7 @@ ms.locfileid: "91597745"
 
 它还将显示已自动提取的表。 单击文档左侧的表/网格图标可查看提取的表。 在本快速入门中，由于表内容是自动提取的，因此我们不会对表内容进行标记，而是依靠自动提取。
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="示例标记工具的连接设置。":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="示例标记工具中的表可视化效果。":::
 
 ### <a name="apply-labels-to-text"></a>将标签应用于文本
 
@@ -185,7 +200,7 @@ ms.locfileid: "91597745"
    1. 单击 **+** 创建新标记。
    1. 输入标记名称。
    1. 按 Enter 保存标记。
-1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。 在 v2.1 预览版中，也可单击选中单选按钮和复选框等选择标记作为键值对 。 表单识别器会确定是将“已选中”还是“未选中”作为选择标记的值。
+1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。 在 v2.1 preview.2 中，也可单击选中单选按钮和复选框等选择标记作为键值对 。 表单识别器会确定是将“已选中”还是“未选中”作为选择标记的值。
 1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
     > [!Tip]
     > 标记窗体时，请记住以下提示。
@@ -201,7 +216,7 @@ ms.locfileid: "91597745"
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="示例标记工具的连接设置。":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="示例标记工具的主编辑器窗口。":::
 
 
 按照上述步骤标记至少五个窗体。
@@ -256,7 +271,7 @@ ms.locfileid: "91597745"
 * 标记列表，以及每个标记的估计准确度。
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="示例标记工具的连接设置。":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="训练视图。":::
 
 训练完成后，检查“平均准确度”值。 如果该值较低，应添加更多输入文档，并重复上述步骤。 已标记的文档将保留在项目索引中。
 
@@ -275,7 +290,7 @@ ms.locfileid: "91597745"
 
 若要在示例标记工具中组合模型，请单击左侧的模型组合（合并箭头）图标。 在左侧，选择要组合在一起的模型。 带有箭头图标的模型是已组合的模型。 单击“组合”按钮。 在弹出窗口中，为新的组合模型命名，然后单击“组合”。 操作完成后，新的组合模型应出现在列表中。 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="示例标记工具的连接设置。":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="模型组合 UX 视图。":::
 
 ---
 

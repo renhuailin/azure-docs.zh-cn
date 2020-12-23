@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983596"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522662"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -21,7 +21,7 @@ ms.locfileid: "90983596"
 ## <a name="workbooks"></a>工作簿
 [工作簿](./platform/workbooks-overview.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
 
-![关系图显示工作簿中多个页面的屏幕截图，包括分析页面视图、使用情况和页面上所用的时间。](media/visualizations/workbook.png)
+![该图显示了工作簿中若干页面的屏幕截图，包括“页面视图分析”、“使用情况”和“在页面上所花费的时间”。](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>优点
 - 支持指标和日志。
@@ -39,7 +39,7 @@ ms.locfileid: "90983596"
 ## <a name="azure-dashboards"></a>Azure 仪表板
 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)是 Azure 的主要仪表板技术。 这种在 Azure 基础结构和服务上提供的单一管理平台，在实现快速识别重要问题方面尤其有用。
 
-![屏幕截图显示包含可自定义信息的 Azure 仪表板的示例。](media/visualizations/dashboard.png)
+![屏幕截图显示了包含可自定义信息的 Azure 仪表板的示例。](media/visualizations/dashboard.png)
 
 下面是有关创建仪表板的视频演练。
 
@@ -49,7 +49,7 @@ ms.locfileid: "90983596"
 - 深度集成到 Azure 中。 可视化效果可以固定到多个 Azure 页面的仪表板，包括指标资源管理器、Log Analytics 和 Application Insights。
 - 支持指标和日志。
 - 合并来自多个源的数据，包括来自[指标资源管理器](platform/metrics-charts.md)、[日志查询](log-query/log-query-overview.md)以及 Application Insights 中的[映射](app/app-map.md)和可用性的输出。
-- 包含个人或共享仪表板的选项。 与 Azure [基于角色的身份验证 (RBAC)](../role-based-access-control/overview.md) 集成。
+- 包含个人或共享仪表板的选项。 与 [AZURE RBAC)  (的 azure 基于角色的访问控制 ](../role-based-access-control/overview.md)集成。
 - 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志每小时刷新一次，同时可根据需要使用手动刷新选项，方法是单击给定可视化效果上的“刷新”图标或刷新整个仪表板。
 - 带有时间戳和自定义参数的参数化指标仪表板。
 - 灵活的布局选项。
@@ -120,7 +120,7 @@ ms.locfileid: "90983596"
 借助 [Azure Monitor 中的视图](platform/view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
 
 
-![屏幕截图显示 "容器监视解决方案" 磁贴以及在选择它时打开的详细 Azure Monitor 视图。](media/visualizations/view.png)
+![屏幕截图显示了容器监视解决方案磁贴，以及在选择磁贴时打开的详细 Azure Monitor 视图。](media/visualizations/view.png)
 
 ### <a name="advantages"></a>优点
 - 为日志数据提供了丰富的可视化效果。

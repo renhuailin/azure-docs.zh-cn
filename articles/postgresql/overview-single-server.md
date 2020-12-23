@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 469235957ebe26dd44cc6ce464a68167629099ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943506"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476138"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 单一服务器
 
@@ -81,8 +81,8 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 
 该服务运行 PostgreSQL 的社区版本。 这样可以实现完全的应用程序兼容性，并且只需最小的重构成本就能将在 PostgreSQL 引擎上开发的现有应用程序迁移到单一服务器服务。 可以使用以下任一选项来执行向单一服务器的迁移：
 
-- 转储和还原 - 对于脱机迁移（在此情况下，用户可承受一定的故障时间），使用社区工具（如 Pg_dump 和 Pg_restore）的转储和还原可以提供最快的迁移方式。 有关详细信息，请参阅[使用转储和还原进行迁移](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)。
-- Azure 数据库迁移服务 - 为了在最短的故障时间内实现向单一服务器的无缝简化迁移，可以利用 Azure 数据库迁移服务。 请参阅[通过门户的 DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) 和[通过 CLI 的 DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)。
+- 转储和还原 - 对于脱机迁移（在此情况下，用户可承受一定的故障时间），使用社区工具（如 Pg_dump 和 Pg_restore）的转储和还原可以提供最快的迁移方式。 有关详细信息，请参阅[使用转储和还原进行迁移](./howto-migrate-using-dump-and-restore.md)。
+- Azure 数据库迁移服务 - 为了在最短的故障时间内实现向单一服务器的无缝简化迁移，可以利用 Azure 数据库迁移服务。 请参阅[通过门户的 DMS](../dms/tutorial-postgresql-azure-postgresql-online-portal.md) 和[通过 CLI 的 DMS](../dms/tutorial-postgresql-azure-postgresql-online.md)。
 
 ## <a name="contacts"></a>联系人
 
@@ -98,4 +98,3 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 
 现在，你已阅读 Azure Database for PostgreSQL 单一服务器部署模式简介，接下来可以：
 - 创建你的第一个服务器。
-  

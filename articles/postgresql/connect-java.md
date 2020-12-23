@@ -1,31 +1,31 @@
 ---
-title: 将 Java和 JDBC 与 Azure Database for PostgreSQL 配合使用
-description: 了解如何将 Java和 JDBC 与 Azure Database for PostgreSQL 配合使用。
+title: 快速入门：将 Java和 JDBC 与 Azure Database for PostgreSQL 配合使用
+description: 本快速入门介绍如何将 Java 和 JDBC 与 Azure Database for PostgreSQL 配合使用。
 author: jdubois
 ms.author: judubois
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 66a3b4919903f739ed5afef0a02b501f00ff248f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 42547338c0f5f2f3105833b12e499d40b6209b05
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88545431"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184699"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>将 Java和 JDBC 与 Azure Database for PostgreSQL 配合使用
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql"></a>快速入门：将 Java和 JDBC 与 Azure Database for PostgreSQL 配合使用
 
-本主题演示如何创建示例应用程序，使其使用 Java 和 [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) 在 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) 中存储和检索信息。
+本主题演示如何创建示例应用程序，使其使用 Java 和 [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) 在 [Azure Database for PostgreSQL](./index.yml) 中存储和检索信息。
 
 JDBC 是标准的 Java API，用于连接到传统的关系数据库。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 一个 Azure 帐户。 如果没有帐户，可[获取一个免费试用帐户](https://azure.microsoft.com/free/)。
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) 或 [Azure CLI](/cli/azure/install-azure-cli)。 建议使用 Azure Cloud Shell，这样你便可自动登录且有权访问所需的所有工具。
-- 受支持的 [Java 开发工具包](https://aka.ms/azure-jdks)，版本 8（已在 Azure Cloud Shell 中包括）。
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) 或 [Azure CLI](/cli/azure/install-azure-cli)。 建议使用 Azure Cloud Shell，这样你便可自动登录且有权访问所需的所有工具。
+- 受支持的 [Java 开发工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)，版本 8（已在 Azure Cloud Shell 中包括）。
 - [Apache Maven](https://maven.apache.org/) 生成工具。
 
 ## <a name="prepare-the-working-environment"></a>准备工作环境
@@ -67,7 +67,7 @@ az group create \
 首先，我们将创建一个托管 PostgreSQL 服务器。
 
 > [!NOTE]
-> 可以在[使用 Azure 门户创建 Azure Database for PostgreSQL 服务器](/azure/postgresql/quickstart-create-server-database-portal)中阅读有关创建 PostgreSQL 服务器的更多详细信息。
+> 可以在[使用 Azure 门户创建 Azure Database for PostgreSQL 服务器](./quickstart-create-server-database-portal.md)中阅读有关创建 PostgreSQL 服务器的更多详细信息。
 
 在 [Azure Cloud Shell](https://shell.azure.com/) 中运行以下命令：
 
@@ -485,7 +485,7 @@ deleteData(todo, connection);
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>结论和资源清除
+## <a name="clean-up-resources"></a>清理资源
 
 祝贺你！ 你已创建了一个 Java 应用程序，该应用程序使用 JDBC 在 Azure Database for PostgreSQL 中存储和检索数据。
 

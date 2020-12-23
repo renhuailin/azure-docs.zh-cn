@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d2953710c559deb094761410e6d46401e103d8b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d7aa43a94c7b49eef5b3273617ad9038fd1202e4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553268"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92505691"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PureCloud by Genesys 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553268"
 * 让用户使用其 Azure AD 帐户自动登录到 PureCloud by Genesys。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -167,11 +167,11 @@ ms.locfileid: "88553268"
 
 1. 选择顶部的“管理员”，然后转到“集成”下的“单一登录”    。
 
-    ![配置单一登录](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![屏幕截图显示“PureCloud 管理”窗口，可在其中选择“单一登录”。](./media/purecloud-by-genesys-tutorial/configure01.png)
 
 1. 切换到“ADFS/Azure AD(Premium)”选项卡，然后执行以下这些步骤  ：
 
-    ![配置单一登录](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![屏幕截图显示了“集成”页面，你可以在其中输入所述值。](./media/purecloud-by-genesys-tutorial/configure02.png)
 
     a. 选择“浏览”，将从 Azure 门户下载的 base-64 编码证书上传到“ADFS 证书”   。
 
@@ -181,7 +181,7 @@ ms.locfileid: "88553268"
 
     d. 对于“信赖方标识符”值，转到 Azure 门户，然后在 PureCloud by Genesys 应用程序集成页中，选择“属性”选项卡并复制“应用程序 ID”值     。 然后将其粘贴到“信赖方标识符”框中  。
 
-    ![配置单一登录](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![屏幕截图显示“属性”窗格，可在其中找到应用程序 ID 值。](./media/purecloud-by-genesys-tutorial/configure06.png)
 
     e. 选择“保存”。 
 
@@ -195,15 +195,15 @@ ms.locfileid: "88553268"
 
 1. 选择顶部的“管理员”并转到“人员和权限”下的“人员”    。
 
-    ![配置单一登录](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![屏幕截图显示“PureCloud 管理”窗口，可在其中选择“人员”。](./media/purecloud-by-genesys-tutorial/configure03.png)
 
 1. 在“人员”页上，选择“添加人员”   。
 
-    ![配置单一登录](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![屏幕截图显示可在其中添加人员的“人员”页。](./media/purecloud-by-genesys-tutorial/configure04.png)
 
 1. 在“将人员添加到组织”对话框中，执行以下这些步骤  ：
 
-    ![配置单一登录](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![屏幕截图显示了可以在其中输入所述值的页。](./media/purecloud-by-genesys-tutorial/configure05.png)
 
     a. 在“全名”  框中，输入用户的姓名。 例如：B.simon  .
 
@@ -215,14 +215,14 @@ ms.locfileid: "88553268"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-选择“访问面板”中的“PureCloud by Genesys”磁贴时，应当会自动登录到为其设置了 SSO 的 PureCloud by Genesys 帐户  。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+选择“访问面板”中的“PureCloud by Genesys”磁贴时，应当会自动登录到为其设置了 SSO 的 PureCloud by Genesys 帐户  。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用程序与 Azure AD 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用程序与 Azure AD 集成的教程列表](./tutorial-list.md)
 
-- [Azure AD 中的应用程序访问和单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure AD 中的应用程序访问和单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure AD 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure AD 中的条件访问是什么？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 PureCloud by Genesys](https://aad.portal.azure.com/)

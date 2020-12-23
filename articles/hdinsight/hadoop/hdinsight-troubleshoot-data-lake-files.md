@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75894168"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289112"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>无法访问 Azure HDInsight 中的 Data Lake 存储文件
 
@@ -32,7 +32,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 ### <a name="resolution"></a>解决方法
 
-1. 检查 SP 是否拥有遍历路径的“x”权限。 有关详细信息，请参阅[权限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 用于检查对 Data Lake 存储帐户中文件/文件夹的访问权限的示例 dfs 命令：
+1. 检查 SP 是否拥有遍历路径的“x”权限。 有关详细信息，请参阅[权限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 `dfs`用于检查 Data Lake 存储帐户中文件/文件夹的访问权限的示例命令：
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -54,13 +54,13 @@ Token Refresh failed - Received invalid http response: 500
 
 为服务主体访问权限提供的证书可能已过期。
 
-1. 通过 SSH 连接到头节点。 使用以下 dfs 命令检查对存储帐户的访问权限：
+1. 通过 SSH 连接到头节点。 使用以下命令检查存储帐户的访问权限 `dfs` ：
 
     ```
     hdfs dfs -ls /
     ```
 
-1. 确认错误消息类似于以下内容：
+1. 确认错误消息类似于以下输出：
 
     ```
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
@@ -161,16 +161,10 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-若要分配现有证书，请创建一个证书，并准备好 .pfx 文件和密码。 将证书与创建群集时使用的服务主体相关联，并准备好 AppId。
+若要分配现有证书，请创建一个证书，并准备好 .pfx 文件和密码。 使用 AppId ready 将证书与创建群集时所用的服务主体相关联。
 
 将参数替换为实际值后，执行 PowerShell 命令。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
-
-* 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
-
-* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
-
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

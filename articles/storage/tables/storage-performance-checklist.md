@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89458326"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004698"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表存储的性能与可伸缩性查检表
 
@@ -153,7 +153,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 对于其他编程语言，请参阅该语言的文档以确定如何设置连接限制。  
 
-有关详细信息，请参阅博客文章 [Web 服务：并发连接](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)。  
+有关详细信息，请参阅博客文章 [Web 服务：并发连接](/archive/blogs/darrenj/web-services-concurrent-connections)。  
 
 ### <a name="increase-minimum-number-of-threads"></a>增大最小线程数
 
@@ -171,7 +171,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="client-libraries-and-tools"></a>客户端库和工具
 
-为获得最佳性能，请始终使用 Microsoft 提供的最新客户端库和工具。 Azure 存储客户端库适用于各种语言。 Azure 存储还支持 PowerShell 和 Azure CLI。 Microsoft 正在积极开发这些客户端库和工具，并注重其性能，使用最新服务版本对其进行更新，确保这些工具可以在内部协调好许多经过证实的做法。 有关详细信息，请参阅 [Azure 存储参考文档](/azure/storage/#reference)。
+为获得最佳性能，请始终使用 Microsoft 提供的最新客户端库和工具。 Azure 存储客户端库适用于各种语言。 Azure 存储还支持 PowerShell 和 Azure CLI。 Microsoft 正在积极开发这些客户端库和工具，并注重其性能，使用最新服务版本对其进行更新，确保这些工具可以在内部协调好许多经过证实的做法。
 
 ## <a name="handle-service-errors"></a>处理服务错误
 
@@ -197,7 +197,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 从存储服务 2013-08-15 版开始，表服务就支持使用 JSON 而非基于 XML 的 AtomPub 格式来传输表数据。 使用 JSON 最多可以减少 75% 的有效负载大小，并可以显著提高应用程序的性能。
 
-有关详细信息，请参阅文章 [Microsoft Azure Tables: Introducing JSON](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json)（Microsoft Azure 表：JSON 简介）和 [Payload Format for Table Service Operations](https://msdn.microsoft.com/library/azure/dn535600.aspx)（表服务操作的有效负载格式）。
+有关详细信息，请参阅文章 [Microsoft Azure Tables: Introducing JSON](/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json)（Microsoft Azure 表：JSON 简介）和 [Payload Format for Table Service Operations](/rest/api/storageservices/Payload-Format-for-Table-Service-Operations)（表服务操作的有效负载格式）。
 
 ### <a name="disable-nagle"></a>禁用 Nagle
 
@@ -273,16 +273,16 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 #### <a name="upsert"></a>Upsert
 
-尽可能使用表的“Upsert”**** 操作。 有两种类型的“Upsert”****，两种都可能比传统的“插入”**** 和“更新”**** 操作更高效：  
+尽可能使用表的“Upsert”操作。 有两种类型的“Upsert”，两种都可能比传统的“插入”和“更新”操作更高效：  
 
-- **InsertOrMerge**：若要上传实体的一部分属性，但不确定实体是否已存在，请使用此操作。 如果实体存在，则该调用会更新包含在“Upsert”**** 操作中的属性，保留所有现有的属性不变，而如果实体不存在，则会插入新的实体。 这类似于在查询中使用投影，因为只需上传在更改的属性。
+- **InsertOrMerge**：若要上传实体的一部分属性，但不确定实体是否已存在，请使用此操作。 如果实体存在，则该调用会更新包含在“Upsert”操作中的属性，保留所有现有的属性不变，而如果实体不存在，则会插入新的实体。 这类似于在查询中使用投影，因为只需上传在更改的属性。
 - **InsertOrReplace**：若要上传全新实体，但不确定实体是否已存在，请使用此操作。 仅当知道这个刚上传的实体完全正确时才使用此操作，因为该实体会完全覆盖旧实体。 例如，需要更新用于存储用户当前位置的实体，而不管应用程序以前是否存储过该用户的位置数据；新位置实体是完整的，不需要任何旧实体提供的任何信息。
 
 #### <a name="storing-data-series-in-a-single-entity"></a>将数据系列存储在单个实体中
 
 有时候，应用程序会存储一系列需要频繁进行一次性检索的数据：例如，应用程序可能会跟踪一段时间内的 CPU 使用情况，以便绘制过去 24 小时内数据的滚动图表。 一种方法是每小时构建一个表实体，每个实体代表一个具体的小时，并存储该小时的 CPU 使用情况。 为了针对该数据绘图，应用程序需要检索保留过去 24 小时内数据的实体。  
 
-此外，也可以让应用程序将每小时的 CPU 使用情况存储为单个实体的独立属性：更新每个小时的时候，应用程序可以使用单个“InsertOrMerge Upsert”**** 调用来更新最近的一个小时的值。 针对数据进行绘图时，应用程序只需检索 1 个实体而非 24 个，这样的查询非常高效。 有关查询效率的详细信息，请参阅标题为[查询范围](#query-scope)的部分。
+此外，也可以让应用程序将每小时的 CPU 使用情况存储为单个实体的独立属性：更新每个小时的时候，应用程序可以使用单个“InsertOrMerge Upsert”调用来更新最近的一个小时的值。 针对数据进行绘图时，应用程序只需检索 1 个实体而非 24 个，这样的查询非常高效。 有关查询效率的详细信息，请参阅标题为[查询范围](#query-scope)的部分。
 
 #### <a name="storing-structured-data-in-blobs"></a>在 Blob 中存储结构化数据
 

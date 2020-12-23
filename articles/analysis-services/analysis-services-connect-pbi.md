@@ -4,15 +4,15 @@ description: 了解如何使用 Power BI 连接到 Azure Analysis Services 服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f79ff9af1272ca908c7a5ba35fbaa1e8bb87fc50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506701"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500914"
 ---
 # <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
 
@@ -38,18 +38,17 @@ ms.locfileid: "86506701"
 5. 如果出现系统提示，请输入登录凭据。 
 
    > [!NOTE]
-   > 不支持一次性密码（OTP）帐户。 
+   > 不支持一次性密码 (OTP) 帐户。 
 
-6. 在**导航器**中，展开服务器，选择要连接到的模型或透视，并单击“连接”****。 单击模型或透视可显示该视图的所有对象。
+6. 在 **导航器** 中，展开服务器，选择要连接到的模型或透视，并单击“连接”。 单击模型或透视可显示该视图的所有对象。
 
     Power BI Desktop 中会打开模型，并且在“报表”视图中显示空白报表。 “字段”列表中会显示所有非隐藏的模型对象。 连接状态显示在右下角。
 
 ## <a name="connect-in-power-bi-service"></a>在 Power BI（服务）中进行连接
 
 1. 在服务器上创建一个与模型具有实时连接的 Power BI Desktop 文件。
-2. 在 [Power BI](https://powerbi.microsoft.com) 中，单击“获取数据” > “文件”，然后找到 .pbix 文件并选择该文件********。
+2. 在 [Power BI](https://powerbi.microsoft.com) 中，单击“获取数据” > “文件”，然后找到 .pbix 文件并选择该文件。
 
 ## <a name="see-also"></a>另请参阅
 [连接到 Azure Analysis Services](analysis-services-connect.md)   
-[客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
-
+[客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)

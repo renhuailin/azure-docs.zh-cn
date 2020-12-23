@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 446a70a4399b7ec0e16fed2d33c9ec711acfe200
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cae29dcc0d334a2296199da0d8e3bc4562e275d3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310826"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895322"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
@@ -25,7 +25,7 @@ ms.locfileid: "91310826"
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
-下面的代码将一个点数组加载到数据源中。 然后，它将数据点连接到 [气泡图层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer)。 气泡图层用5个像素呈现每个气泡的半径，并使用白色填充颜色。 和，颜色为蓝色，笔划宽度为六个像素。 
+下面的代码将一个点数组加载到数据源中。 然后，它将数据点连接到 [气泡图层](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)。 气泡图层用5个像素呈现每个气泡的半径，并使用白色填充颜色。 和，颜色为蓝色，笔划宽度为六个像素。 
 
 ```javascript
 //Add point locations.
@@ -83,10 +83,10 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
+> [BubbleLayer](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
+> [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 
@@ -100,4 +100,4 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 > [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](/samples/browse/?products=azure-maps)

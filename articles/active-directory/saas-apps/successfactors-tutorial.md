@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6570845c6a37a09315b038287ee35a3b48f1cdd0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552112"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521962"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SuccessFactors 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552112"
 * 让用户使用其 Azure AD 帐户自动登录到 SuccessFactors。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88552112"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * SuccessFactors 支持 **SP** 发起的 SSO。
-* 配置 SuccessFactors 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 SuccessFactors 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-successfactors-from-the-gallery"></a>从库添加 SuccessFactors
 
@@ -154,20 +154,20 @@ ms.locfileid: "88552112"
 
 ## <a name="configure-successfactors-sso"></a>配置 SuccessFactors SSO
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 **SuccessFactors 管理门户**。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 **SuccessFactors 管理门户** 。
 
 2. 请访问“应用程序安全性”  并从本机转到“单一登录功能”  。
 
 3. 将任何值放在“重置令牌”  中，然后单击“保存令牌”  以启用 SAML SSO。
 
-    ![在应用端配置单一登录][11]
+    ![屏幕截图显示“应用程序安全性”选项卡，突出显示了“单一登录功能”，可在其中输入令牌。][11]
 
     > [!NOTE]
     > 此值将用作打开/关闭开关。 如果保存了任何值，则 SAML SSO 为打开。 如果保存为空值，则 SAML SSO 为关闭。
 
 4. 从本机转到以下屏幕快照并执行以下操作：
 
-    ![在应用端配置单一登录][12]
+    ![屏幕截图显示“对于基于 SAML 的 SSO”窗格，可在其中输入所述的值。][12]
   
     a. 选择“SAML v2 SSO”  单选按钮
   
@@ -192,7 +192,7 @@ ms.locfileid: "88552112"
 
 5. 导航到 SAML V2，并执行以下步骤：
 
-    ![在应用端配置单一登录][13]
+    ![屏幕截图显示 SAML v2 SP 发起的注销窗格，可在其中输入所述的值。][13]
 
     a. 对于“支持 SP 启动的全局注销”  ，选择“是”  。
 
@@ -214,7 +214,7 @@ ms.locfileid: "88552112"
 
     b. 选中“启用不区分大小写的用户名”  旁边的复选框。
 
-    c. 单击“ **保存**”。
+    c. 单击“ **保存** ”。
 
     > [!NOTE]
     > 如果尝试启用此功能，系统会检查是否会创建重复的 SAML 登录名。 例如，如果客户具有用户名 User1 和 user1。 取消区分大小写会认定它们重复。 系统将提供一条错误消息，且不会启用该功能。 客户需要更改其中一个用户名，以使其拼写不同。
@@ -229,21 +229,21 @@ ms.locfileid: "88552112"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Salesforce 磁贴时，应当会自动登录到已设置了 SSO 的 SuccessFactors。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Salesforce 磁贴时，应当会自动登录到已设置了 SSO 的 SuccessFactors。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 SuccessFactors](https://aad.portal.azure.com)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 SuccessFactors](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 SuccessFactors](/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

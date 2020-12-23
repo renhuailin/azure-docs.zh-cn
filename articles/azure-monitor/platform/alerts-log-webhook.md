@@ -1,34 +1,34 @@
 ---
 title: 用于 Azure 警报中日志警报的 Webhook 操作
-description: 描述如何使用 webhook 操作和可用自定义配置日志警报推送
+description: 描述如何使用 Webhook 操作和可用的自定义配置日志警报推送
 author: yanivlavi
 ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 97c3ead4dbdf0608c6b7cd1be6a9edf242ecd2b5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294302"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510757"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 
-[日志警报](alerts-log.md) 支持 [配置 webhook 操作组](action-groups.md#webhook)。 本文介绍了哪些属性可用以及如何配置自定义 JSON webhook。
+[日志警报](alerts-log.md)支持[配置 Webhook 操作组](action-groups.md#webhook)。 本文介绍了哪些属性可用和如何配置自定义 JSON Webhook。
 
 > [!NOTE]
-> API 版本当前不支持基于 JSON 的自定义 webhook `2020-05-01-preview`
+> API 版本 `2020-05-01-preview` 当前不支持基于 JSON 的自定义 Webhook
 
 > [!NOTE]
-> 建议为 webhook 集成使用 [常见的警报架构](alerts-common-schema.md) 。 通用警报架构的优点是可以跨 Azure Monitor 中的所有警报服务提供单个可扩展且统一的警报有效负载。 对于定义了自定义 JSON 有效负载的日志警报规则，启用 "公共架构" 会将负载架构恢复到 [此处](alerts-common-schema-definitions.md#log-alerts)所述的规则。 对于启用了通用架构的警报，每个警报的大小上限为 256 KB，较大的警报不包含搜索结果。 如果不包含搜索结果，则应使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 Log Analytics API 访问查询结果。
+> 建议使用[通用警报架构](alerts-common-schema.md)进行 Webhook 集成。 通用警报架构的优点是可以跨 Azure Monitor 中的所有警报服务提供单个可扩展且统一的警报有效负载。 对于定义了自定义 JSON 有效负载的日志预警规则，启用此通用架构会将有效负载架构恢复为[此处](alerts-common-schema-definitions.md#log-alerts)所述架构。 启用通用架构的警报的大小上限为每个警报 256 KB，更大的警报不包含搜索结果。 在不包括搜索结果时，应使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 Log Analytics API 访问查询结果。
 
-## <a name="webhook-payload-properties"></a>Webhook 负载属性
+## <a name="webhook-payload-properties"></a>Webhook 有效负载属性
 
-Webhook 操作允许调用单个 HTTP POST 请求。 所调用的服务应支持 webhook，并知道如何使用它接收的有效负载。
+使用 Webhook 操作可调用单个 HTTP POST 请求。 被调用的服务应支持 Webhook，并知道将如何使用接收的有效负载。
 
-默认 webhook 操作属性及其自定义 JSON 参数名称：
+默认 Webhook 操作属性及其自定义 JSON 参数名称：
 
 | 参数 | 变量 | 说明 |
 |:--- |:--- |:--- |
@@ -52,10 +52,10 @@ Webhook 操作允许调用单个 HTTP POST 请求。 所调用的服务应支持
 | *应用程序 ID* |#applicationid |Application Insights 应用的 ID。 |
 | *订阅 ID* |#subscriptionid |使用的 Azure 订阅的 ID。 |
 
-## <a name="custom-webhook-payload-definition"></a>自定义 webhook 负载定义
+## <a name="custom-webhook-payload-definition"></a>自定义 Webhook 有效负载定义
 
-可以使用以上参数中 **包含的自定义 json 有效负载** 来获取自定义 json 有效负载。 还可以生成其他属性。
-例如，可以指定以下自定义负载，其中包含名为 *text* 的单一参数。 此 webhook 调用的服务需要此参数：
+可以使用“包含 Webhook 的自定义 JSON 有效负载”获取使用以上参数的自定义 JSON 有效负载。 还可以生成其他属性。
+例如，可以指定以下自定义负载，其中包含名为 *text* 的单一参数。 此 Webhook 调用的服务需要此参数：
 
 ```json
 
@@ -70,18 +70,18 @@ Webhook 操作允许调用单个 HTTP POST 请求。 所调用的服务应支持
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
-必须在 JSON 机箱中指定自定义 webhook 中的变量。 例如，在上述 webhook 示例中引用 "#searchresultcount" 将基于警报结果进行输出。
+必须在 JSON 附件中指定自定义 Webhook 中的变量。 例如，在上述 Webhook 示例中引用“#searchresultcount”将基于警报结果进行输出。
 
-若要包括搜索结果，请在自定义 JSON 中添加 **IncludeSearchResults** 作为顶级属性。 搜索结果以 JSON 结构的形式提供，因此不能在自定义的字段中引用结果。 
+若要包含搜索结果，在自定义 JSON 中将 IncludeSearchResults 添加为顶级属性。 搜索结果以 JSON 结构的形式包含，因此不能在自定义的字段中引用结果。 
 
 > [!NOTE]
-> "**包括 webhook 的自定义 JSON 负载**" 选项旁边的 "**查看 webhook** " 按钮显示提供的内容的预览。 它不包含实际数据，而是要使用的 JSON 架构的代表。 
+> “包含 Webhook 的自定义 JSON 有效负载”选项旁的“查看 Webhook”按钮显示提供的内容的预览 。 它不包含实际数据，但代表要使用的 JSON 架构。 
 
 ## <a name="sample-payloads"></a>示例有效负载
 本部分显示用于日志警报的 Webhook 的示例有效负载。 示例有效负载包括有效负载是标准有效负载时以及是自定义有效负载时的示例。
 
 ### <a name="log-alert-for-log-analytics"></a>Log Analytics 的日志警报
-以下示例有效负载适用于基于 Log Analytics 的警报的标准 webhook 操作：
+以下示例有效负载适用于基于 Log Analytics 的警报使用的标准 Webhook 操作：
 
 > [!NOTE]
 > 如果已从[旧的 Log Analytics 警报 api](api-alerts.md)[切换到当前的 scheduledQueryRules api](alerts-log-api-switch.md) ，则 "严重性" 字段值会发生更改。
@@ -151,7 +151,7 @@ Webhook 操作允许调用单个 HTTP POST 请求。 所调用的服务应支持
 ```
 
 ### <a name="log-alert-for-application-insights"></a>Application Insights 的日志警报
-以下示例负载适用于基于 Application Insights 资源的日志警报使用的标准 webhook：
+以下示例有效负载是在标准 Webhook 基于 Application Insights 资源用于日志警报时使用的：
     
 ```json
 {
@@ -217,12 +217,12 @@ Webhook 操作允许调用单个 HTTP POST 请求。 所调用的服务应支持
 }
 ```
 
-### <a name="log-alert-for-other-resources-logs-from-api-version-2020-05-01-preview"></a>其他资源的日志警报 (API 版本 `2020-05-01-preview`) 
+### <a name="log-alert-for-other-resources-logs-from-api-version-2020-05-01-preview"></a>其他资源日志的日志警报（来自 API 版本 `2020-05-01-preview`）
 
 > [!NOTE]
-> 对于 API 版本 `2020-05-01-preview` 和以资源为中心的日志警报，当前没有额外的费用。  未来将公布预览版中的功能的定价，以及开始计费之前提供的通知。 如果你选择在通知期后继续使用新的 API 版本和以资源为中心的日志警报，则将按适用的费率向你收费。
+> 当前不对 API 版本 `2020-05-01-preview` 和以资源为中心的日志警报收取额外费用。  未来将公布预览版中的功能的定价以及开始计费之前提供的通知。 如果你选择在通知期后继续使用新 API 版本和以资源为中心的日志警报，则将按照适用的费率缴费。
 
-以下示例有效负载适用于基于其他资源的日志警报，而不包括工作区和 Application Insights) 的日志警报 (：
+以下示例有效负载是在标准 Webhook 基于其他资源日志（除了工作区和 Application Insights）用于日志警报时使用的：
 
 ```json
 {
@@ -282,8 +282,8 @@ Webhook 操作允许调用单个 HTTP POST 请求。 所调用的服务应支持
 }
 ```
 
-### <a name="log-alert-with-a-custom-json-payload"></a>使用自定义 JSON 有效负载的日志警报
-例如，若要创建只包含警报名称和搜索结果的自定义负载，请使用此配置： 
+### <a name="log-alert-with-a-custom-json-payload"></a>带自定义 JSON 有效负载的日志警报
+例如，若要创建只包含警报名称和搜索结果的自定义有效负载，请使用以下配置： 
 
 ```json
     {
@@ -316,7 +316,6 @@ Webhook 操作允许调用单个 HTTP POST 请求。 所调用的服务应支持
         }
     }
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 - 了解 [Azure 警报中的日志警报](alerts-unified-log.md)。

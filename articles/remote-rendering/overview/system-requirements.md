@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323719"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207404"
 ---
 # <a name="system-requirements"></a>系统要求
 
@@ -80,7 +80,7 @@ Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目�
 必须安装以下软件：
 
 * 最新版本的 **Visual Studio 2019** [ (下载) ](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [适用于混合现实的 Visual Studio tools](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
+* [适用于混合现实的 Visual Studio tools](/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
   * **使用 C++ 的桌面开发**
   * **通用 Windows 平台 (UWP) 开发**
 * **Windows SDK 10.0.18362.0** [ (下载) ](https://developer.microsoft.com/windows/downloads/windows-10-sdk)

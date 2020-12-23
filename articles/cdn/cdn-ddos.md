@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: dc7af555bcaf8654ecdb27d804cbef0c2cedb284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac00491a34e6e7d18c74827afc6647358794a8be
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81253809"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351684"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS 防护
 
@@ -27,7 +27,7 @@ ms.locfileid: "81253809"
 
 ## <a name="azure-cdn-from-microsoft"></a>Microsoft 推出的 Azure CDN
 
-Microsoft Azure CDN 受 [Azure 基本 DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)保护。 默认情况下，它已集成到 Microsoft 平台的 Azure CDN 中，无需额外付费。 Microsoft 的全球部署网络的 Azure CDN 的完整缩放和容量可通过 always on 流量监视和实时缓解功能，抵御常见网络层攻击。 基本 DDoS 防护还可以抵御最常见的、频繁出现的第7层 DNS 查询泛滥以及面向 CDN 终结点的第3层和第4容量耗尽攻击。 此服务还提供了一个行之有效的跟踪记录，可保护 Microsoft 的企业和消费者服务免受大规模攻击。
+Microsoft Azure CDN 受 [Azure 基本 DDoS](../ddos-protection/ddos-protection-overview.md)保护。 默认情况下，它已集成到 Microsoft 平台的 Azure CDN 中，无需额外付费。 Microsoft 的全球部署网络的 Azure CDN 的完整缩放和容量可通过 always on 流量监视和实时缓解功能，抵御常见网络层攻击。 基本 DDoS 防护还可以抵御最常见的、频繁出现的第7层 DNS 查询泛滥以及面向 CDN 终结点的第3层和第4容量耗尽攻击。 此服务还提供了一个行之有效的跟踪记录，可保护 Microsoft 的企业和消费者服务免受大规模攻击。
 
 ## <a name="azure-cdn-from-verizon"></a>Verizon 的 Azure CDN
 
@@ -39,4 +39,4 @@ Akamai 中的 Azure CDN 受 Akamai 的专用 DDoS 缓解平台保护。 默认�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)的详细信息。 
+了解有关 [Azure DDoS](../ddos-protection/ddos-protection-overview.md)的详细信息。

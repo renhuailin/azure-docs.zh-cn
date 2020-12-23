@@ -10,12 +10,13 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: automl
+ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979080"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921854"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测需求
 
@@ -47,7 +48,7 @@ ms.locfileid: "90979080"
 
 1. 选择创建的订阅和工作区。
 
-1. 选择“开始”。
+1. 选择“开始”。 
 
 1. 在左窗格的“创作”部分，选择“自动化 ML” 。
 
@@ -204,7 +205,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
     
 部署成功后，即会获得一个正常运行的、可以生成预测结果的 Web 服务。 
 
-转到[**后续步骤**](#next-steps)详细了解如何使用新的 Web 服务，以及如何使用 Power BI 的内置 Azure 机器学习支持来测试预测。
+转到 [**后续步骤**](#next-steps)详细了解如何使用新的 Web 服务，以及如何使用 Power BI 的内置 Azure 机器学习支持来测试预测。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -234,7 +235,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 > [使用 Web 服务](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
-+ 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。
++ 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md)一文。
 + 详细了解[特征化](how-to-configure-auto-features.md#featurization)。
 + 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 

@@ -13,16 +13,19 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3acac0c85aa6f3e3725dcf54a646f8ac16250e24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324040"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588822"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
-**Azure IoT 设备 SDK** 是一个库集，旨在简化从 **Azure IoT 中心**服务发送和接收消息的过程。 有各种不同的 SDK，每个 SDK 都以特定的平台为目标，而本文说明的是**适用于 C 语言的 Azure IoT 设备 SDK**。
+**Azure IoT 设备 SDK** 是一个库集，旨在简化从 **Azure IoT 中心** 服务发送和接收消息的过程。 有各种不同的 SDK，每个 SDK 都以特定的平台为目标，而本文说明的是 **适用于 C 语言的 Azure IoT 设备 SDK**。
+
+> [!NOTE]
+> Embedded C SDK 是受约束的设备的替代方法，它支持自带网络 (BYON) 方法。 IoT 开发人员可以自由地将 MQTT 客户端、TLS 和套接字用于创建设备解决方案。 [了解有关 Embedded C SDK 的详细信息](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -38,17 +41,17 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 ## <a name="sdk-architecture"></a>SDK 体系结构
 
-可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)中查看 API 的详细信息。
+可在 GitHub 存储库中找到 [**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](/azure/iot-hub/iot-c-sdk-ref/)中查看 API 的详细信息。
 
-在此存储库的 **master** 分支中可找到最新版本的库：
+可在存储库的 **主** 分支中找到最新版本的库：
 
   ![存储库主分支的屏幕截图](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
 * 此 SDK 的核心实现可在 **iothub\_client** 文件夹中找到，此文件夹包含 SDK 的最低 API 层的实现：**IoTHubClient** 库。 此 **IoTHubClient** 库包含实现原始消息传送的 API，即将消息发送到 IoT 中心以及从 IoT 中心接收消息。 使用此库时，需要负责实现消息序列化，但与 IoT 中心通信的其他细节则由系统处理。
 
-* **serializer** 文件夹包含帮助器函数和示例代码，演示了使用客户端库向 Azure IoT 中心发送消息之前如何序列化数据。 使用序列化程序不是必需的，仅为了提供便利。 如果使用**序列化程序**库，需要定义一个模型，用于指定要发送到 IoT 中心的数据以及预期要从 IoT 中心接收的消息。 定义模型后，SDK 将提供一个 API 图面，让你轻松处理设备到云和云到设备的消息，而无需担心序列化细节。 该库依赖于使用 MQTT 和 AMQP 等协议实现传输的其他开放源代码库。
+* **serializer** 文件夹包含帮助器函数和示例代码，演示了使用客户端库向 Azure IoT 中心发送消息之前如何序列化数据。 使用序列化程序不是必需的，仅为了提供便利。 如果使用 **序列化程序** 库，需要定义一个模型，用于指定要发送到 IoT 中心的数据以及预期要从 IoT 中心接收的消息。 定义模型后，SDK 将提供一个 API 图面，让你轻松处理设备到云和云到设备的消息，而无需担心序列化细节。 该库依赖于使用 MQTT 和 AMQP 等协议实现传输的其他开放源代码库。
 
-* **IoTHubClient**库依赖于其他开放源代码库：
+* **IoTHubClient** 库依赖于其他开放源代码库：
 
   * [Azure C 共享实用程序](https://github.com/Azure/azure-c-shared-utility)库，其常用功能用于很多 Azure 相关的 C SDK 中所需的基本任务（如字符串、列表操作和 IO 等）。
 
@@ -69,12 +72,12 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 为常用平台提供了包（例如适用于 Windows 的 NuGet 包或者适用于 Debian 和 Ubuntu 的 apt_get），示例将使用这些包（如果适用）。 在某些情况下，需要为设备编译 SDK，或者在设备上编译 SDK。 如果需要编译 SDK，请参阅 GitHub 存储库中的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)。
 
-若要获取示例应用程序代码，请从 GitHub 下载 SDK 的副本。 从 [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **master** 分支获取源的副本。
+若要获取示例应用程序代码，请从 GitHub 下载 SDK 的副本。 从 [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **主** 分支获取源的副本。
 
 
 ### <a name="obtain-the-device-credentials"></a>获取设备凭据
 
-获取示例源代码后，下一步是获取一组设备凭据。 要使设备能够访问 IoT 中心，必须先将该设备添加到 IoT 中心标识注册表。 添加设备时，需要获取一组所需的设备凭据，以便设备能够连接到 IoT 中心。 下一部分所述示例应用程序的预期凭据格式为**设备连接字符串**。
+获取示例源代码后，下一步是获取一组设备凭据。 要使设备能够访问 IoT 中心，必须先将该设备添加到 IoT 中心标识注册表。 添加设备时，需要获取一组所需的设备凭据，以便设备能够连接到 IoT 中心。 下一部分所述示例应用程序的预期凭据格式为 **设备连接字符串**。
 
 有几个开源工具可帮助你管理 IoT 中心。
 
@@ -84,7 +87,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 * 一个称为[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)的跨平台 Python CLI。
 
-本教程使用图形*设备资源管理器*工具。 如果在 VS Code 中进行开发，可以使用适用于 VS Code 的 Azure IoT 工具  。 如果喜欢使用 CLI 工具，也可以使用适用于 Azure CLI 2.0 的 IoT 扩展  工具。
+本教程使用图形 *设备资源管理器* 工具。 如果在 VS Code 中进行开发，可以使用适用于 VS Code 的 Azure IoT 工具  。 如果喜欢使用 CLI 工具，也可以使用适用于 Azure CLI 2.0 的 IoT 扩展  工具。
 
 设备资源管理器工具使用 Azure IoT 服务库在 IoT 中心执行各种功能（包括添加设备）。 若使用设备资源管理器工具添加设备，会获得设备的连接字符串。 需要此连接字符串才能运行示例应用程序。
 
@@ -98,7 +101,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 1. 在第一个字段中输入用户的 **IoT 中心连接字符串**，并单击“**更新**”。 此步骤配置该工具，以便与 IoT 中心通信。 
 
-可以在“IoT 中心服务” > “设置” > “共享访问策略” > “iothubowner”下找到**连接字符串**。    
+可以在“IoT 中心服务” > “设置” > “共享访问策略” > “iothubowner”下找到 **连接字符串**。    
 
 1. 配置 IoT 中心连接字符串后，请单击“管理”选项卡： 
 
@@ -333,11 +336,11 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 可以看到，使用 **IoTHubClient** 库可以轻松发送和接收消息。 该库处理与 IoT 中心通信的详细信息，包括要使用哪个协议（从开发人员的视角来看，这是一个简单的配置选项）。
 
-在如何对设备发送到 IoT 中心的数据进行序列化方面，**IoTHubClient** 库也可提供精确的控制。 在某些情况下，这种控制级别是一项优点，但在其他情况下，这可能不是你想要看到的实现细节。 如果是这样，可以考虑使用下一部分中介绍的**序列化程序**库。
+在如何对设备发送到 IoT 中心的数据进行序列化方面，**IoTHubClient** 库也可提供精确的控制。 在某些情况下，这种控制级别是一项优点，但在其他情况下，这可能不是你想要看到的实现细节。 如果是这样，可以考虑使用下一部分中介绍的 **序列化程序** 库。
 
 ## <a name="use-the-serializer-library"></a>使用序列化程序库
 
-从概念上讲，**序列化程序**库位于 SDK 中的 **IoTHubClient** 库之上。 它使用 **IoTHubClient** 库来与 IoT 中心进行底层通信，但它添加了建模功能，消除了开发人员处理消息序列化的负担。 我们通过一个示例充分演示此库的工作原理。
+从概念上讲，**序列化程序** 库位于 SDK 中的 **IoTHubClient** 库之上。 它使用 **IoTHubClient** 库来与 IoT 中心进行底层通信，但它添加了建模功能，消除了开发人员处理消息序列化的负担。 我们通过一个示例充分演示此库的工作原理。
 
 [azure-iot-sdk-c 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **serializer** 文件夹中有一个 **samples** 文件夹，其中包含名为 **simplesample\_mqtt** 的应用程序。 此示例的 Windows 版本包含以下 Visual Studio 解决方案：
 
@@ -354,7 +357,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 * Microsoft.Azure.IoTHub.Serializer
 * Microsoft.Azure.umqtt
 
-其中的大多数包已在前面的示例中出现过，但 **Microsoft.Azure.IoTHub.Serializer** 是新的。 使用**序列化程序**库时需要此包。
+其中的大多数包已在前面的示例中出现过，但 **Microsoft.Azure.IoTHub.Serializer** 是新的。 使用 **序列化程序** 库时需要此包。
 
 可以在 **iothub_client\_samples\_iothub_convenience_sample** 文件中找到示例应用程序的实现。
 
@@ -362,7 +365,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 ### <a name="initialize-the-library"></a>初始化库
 
-若要开始使用**序列化程序**库，请调用初始化 API：
+若要开始使用 **序列化程序** 库，请调用初始化 API：
 
 ```c
 if (serializer_init(NULL) != SERIALIZER_OK)
@@ -397,7 +400,7 @@ else
 
 ### <a name="define-the-model"></a>定义模型
 
-**序列化程序**库中的模型定义了设备可发送到 IoT 中心的消息以及可接收的消息（在建模语言中称为*操作*）。 如 **iothub_client\_samples\_iothub_convenience_sample** 示例应用程序中所示，你使用一组 C 宏定义了一个模块：
+**序列化程序** 库中的模型定义了设备可发送到 IoT 中心的消息以及可接收的消息（在建模语言中称为 *操作*）。 如 **iothub_client\_samples\_iothub_convenience_sample** 示例应用程序中所示，你使用一组 C 宏定义了一个模块：
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);
@@ -581,10 +584,10 @@ serializer_deinit();
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了有关使用**适用于 C 语言的 Azure IoT 设备 SDK** 中的库的基本知识。其中针对 SDK 中包含的组件及其体系结构，以及如何开始使用 Windows 示例等进行了详细说明。 下一篇文章通过讲解[有关 IoTHubClient 库的详细信息](iot-hub-device-sdk-c-iothubclient.md)来继续介绍该 SDK。
+本文介绍了有关使用 **适用于 C 语言的 Azure IoT 设备 SDK** 中的库的基本知识。其中针对 SDK 中包含的组件及其体系结构，以及如何开始使用 Windows 示例等进行了详细说明。 下一篇文章通过讲解[有关 IoTHubClient 库的详细信息](iot-hub-device-sdk-c-iothubclient.md)来继续介绍该 SDK。
 
 若要详细了解如何针对 IoT 中心进行开发，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/quickstart-linux.md)

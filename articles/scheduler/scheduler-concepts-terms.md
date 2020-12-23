@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80878385"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368156"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 计划程序的概念、术语和实体
 
@@ -40,7 +40,7 @@ Azure 计划程序 REST API 公开并使用以下主要实体或资源：
 
 ### <a name="job-management"></a>作业管理
 
-支持创建和编辑作业的操作。 所有作业都必须属于某一现有作业集合，因此没有显式创建。 有关详细信息，请参阅[计划程序 REST API - 作业](https://docs.microsoft.com/rest/api/scheduler/jobs)。 下面是这些操作的 URI 地址：
+支持创建和编辑作业的操作。 所有作业都必须属于某一现有作业集合，因此没有显式创建。 有关详细信息，请参阅[计划程序 REST API - 作业](/rest/api/scheduler/jobs)。 下面是这些操作的 URI 地址：
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>作业集合管理
 
-支持创建和编辑作业和作业集合（映射到配额和共享设置）的操作。 例如，配额指定最大作业数量和最小重复周期间隔。 有关详细信息，请参阅[计划程序 REST API - 作业集合](https://docs.microsoft.com/rest/api/scheduler/jobcollections)。 下面是这些操作的 URI 地址：
+支持创建和编辑作业和作业集合（映射到配额和共享设置）的操作。 例如，配额指定最大作业数量和最小重复周期间隔。 有关详细信息，请参阅[计划程序 REST API - 作业集合](/rest/api/scheduler/jobcollections)。 下面是这些操作的 URI 地址：
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>作业历史记录管理
 
-支持用于获取 60 天的作业执行历史记录（例如，作业已用时间和作业执行结果）的 GET 操作。 包含基于状态进行筛选的查询字符串参数支持。 有关详细信息，请参阅[计划程序 REST API - 作业 - 列出作业历史记录](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory)。 下面是该操作的 URI 地址：
+支持用于获取 60 天的作业执行历史记录（例如，作业已用时间和作业执行结果）的 GET 操作。 包含基于状态进行筛选的查询字符串参数支持。 有关详细信息，请参阅[计划程序 REST API - 作业 - 列出作业历史记录](/rest/api/scheduler/jobs/listjobhistory)。 下面是该操作的 URI 地址：
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -214,7 +214,7 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-有关共享访问签名 (SAS) 令牌的详细信息，请参阅[使用共享访问签名授权](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+有关共享访问签名 (SAS) 令牌的详细信息，请参阅[使用共享访问签名授权](../storage/common/storage-sas-overview.md)。
 
 <a name="error-action"></a>
 

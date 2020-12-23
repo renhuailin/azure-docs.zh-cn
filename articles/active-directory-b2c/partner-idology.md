@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cfce5b42d37908d0ba89cff9c4831cb25b968524
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259316"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928675"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>有关配置 IDology 与 Azure Active Directory B2C 的教程 
 
@@ -67,13 +67,13 @@ IDology 集成包括以下组件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) 部署到 Azure 服务。 可以按照这些 [说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) 部署到 Azure 服务。 可以按照这些 [说明](/visualstudio/deployment/quickstart-deploy-to-azure)从 Visual Studio 发布代码。
 
 需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。
 
 ### <a name="part-2---configure-the-api"></a>第2部分-配置 API 
 
-可以 [在 Azure 中的应用服务中配置](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)应用程序设置。 使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
+可以 [在 Azure 中的应用服务中配置](../app-service/configure-common.md#configure-app-settings)应用程序设置。 使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
 
 | 应用程序设置 | Source | 注释 |
 | :-------- | :------------| :-----------|
@@ -145,5 +145,4 @@ IDology 集成包括以下组件：
 
 - [Azure AD B2C 中的自定义策略](custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md?tabs=applications) 
-
+- [Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md?tabs=applications)

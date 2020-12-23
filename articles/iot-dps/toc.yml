@@ -13,7 +13,8 @@
           href: quick-setup-auto-provision.md
         - name: Azure CLI
           href: quick-setup-auto-provision-cli.md
-        - name: Azure RM 模板
+        - name: ARM 模板
+          displayName: Resource Manager
           href: quick-setup-auto-provision-rm.md
     - name: 预配对称密钥设备
       items:
@@ -21,6 +22,10 @@
           href: quick-create-simulated-device-symm-key.md
         - name: Java
           href: quick-create-simulated-device-symmetric-key-java.md
+        - name: C#
+          href: quick-create-device-symmetric-key-csharp.md
+        - name: Node.js
+          href: quick-create-device-symmetric-key-node.md
         - name: Python
           href: quick-create-device-symmetric-key-python.md
     - name: 预配 x.509 证书设备
@@ -38,15 +43,19 @@
 - name: 教程
   items:
     - name: 1 - 预配具有注册组的设备集
-      href: how-to-legacy-device-symm-key.md
+      items:
+        - name: 使用对称密钥预配设备
+          href: how-to-legacy-device-symm-key.md
+        - name: 使用自定义分配策略
+          href: tutorial-custom-allocation-policies.md
+        - name: 预配多个 X.509 设备
+          href: tutorial-custom-hsm-enrollment-group-x509.md
     - name: 2 - 将设备预配到多个中心
       items:
         - name: 将多个中心链接到 DPS
           href: tutorial-provision-multiple-hubs.md
         - name: 多租户的预配
           href: how-to-provision-multitenant.md
-        - name: 使用自定义分配策略
-          href: tutorial-custom-allocation-policies.md
 - name: 示例
   items:
     - name: 模拟 TPM 设备证明示例
@@ -147,7 +156,7 @@
       href: how-to-use-sdk-tools.md
     - name: 如何从设备发送更多数据
       href: how-to-send-additional-data.md
-    - name: 故障排除
+    - name: 疑难解答
       href: how-to-troubleshoot-dps.md
     - name: 使用 MQTT 协议与 DPS 通信
       href: iot-dps-mqtt-support.md
@@ -172,31 +181,31 @@
 - name: 资源
   items:
     - name: 支持和帮助选项
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT 服务
       items:
         - name: IoT 中心
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT 中心设备预配服务
-          href: /azure/iot-dps
+          href: ./index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT 解决方案加速器
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT 即插即用
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: 时序见解
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT 设备 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure IoT 示例
       items:
         - name: C# (.NET)

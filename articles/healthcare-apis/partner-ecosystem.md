@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/22/2019
 ms.author: chrupa
-ms.openlocfilehash: edc337849b53cb8e818114d3dd100d30cf00b895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 556cc7fb5f735346a35903840501cf8f8e1be033
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871377"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372168"
 ---
 # <a name="partner-ecosystem-for-azure-api-for-fhir"></a>Azure API for FHIR 的合作伙伴生态系统
 Azure API for FHIR 已向所有 Azure 客户发行 Azure API for FHIR 正式版，对此我们感到非常兴奋。 对于大家可以使用本公司的服务构建的解决方案，我们尤其感到振奋。  
@@ -25,7 +25,7 @@ Azure API for FHIR 已向所有 Azure 客户发行 Azure API for FHIR 正式版�
 |------------------|--------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | Medal            | 云标识化、传统 FHIR 转换  | USA                         | [联系人](http://www.medal.com/)                                                                                           |
 | Rhapsody         | 传统 FHIR 转换                     | 美国、澳大利亚、新西兰 | [联系人](https://rhapsody.health/contact-us)                                                                                          |
-| iNTERFACEWARE    | 传统 FHIR 转换                     | 美国、加拿大                 | [联系人](https://www.interfaceware.com/contact.html)                                                                                  |
+| iNTERFACEWARE    | 传统 FHIR 转换                     | 美国、加拿大                 | [联系人](https://www.interfaceware.com/contact)                                                                                  |
 | Darena Solutions | 应用程序开发、系统集成商 | USA                         | [联系人](https://www.darenasolutions.com/contact)                                                                                     |
 | NewWave          | 应用程序开发、系统集成商 | USA                         | [联系人](https://newwave.io/get-in-touch/)                                                                                            |
 | Dapasoft         | 应用程序开发、系统集成商 | 美国、加拿大                 | [联系人](https://www.dapasoft.com/contact-us/)                                                                                        |

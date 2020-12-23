@@ -1,6 +1,6 @@
 ---
 title: 在本地安装 Jupyter 并将其连接到 Azure HDInsight 中的 Spark
-description: 了解如何在计算机上本地安装 Jupyter 笔记本并将其连接到 Apache Spark 群集。
+description: 了解如何在计算机本地安装 Jupyter Notebook，并将其连接到 Apache Spark 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,25 +8,25 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: de11e6f9fd9acc81f7be6d23bb1019f88f9e1322
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873885"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657203"
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter notebook 并连接到 HDInsight 上的 Apache Spark
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter Notebook，并连接到 HDInsight 上的 Apache Spark
 
-本文介绍如何使用 Spark magic 安装具有自定义 PySpark（适用于 Python）和 Apache Spark（适用于 Scala）内核的 Jupyter 笔记本。 然后将笔记本连接到 HDInsight 群集。
+本文介绍如何安装具有适用于 Python) 的自定义 PySpark (的 Jupyter Notebook，以及如何通过 Spark 神奇的 Scala (内核的 Apache Spark) 。 然后将笔记本连接到 HDInsight 群集。
 
 安装 Jupyter 并连接到 HDInsight 上的 Apache Spark 涉及到四个重要步骤。
 
 * 配置 Spark 群集。
-* 安装 Jupyter 笔记本。
+* 安装 Jupyter Notebook。
 * 安装 PySpark 和具有 Spark magic 的 Spark 内核。
 * 配置 Spark magic 以访问 HDInsight 上的 Spark 群集。
 
-有关自定义内核和 Spark magic 的详细信息，请参阅[适用于装有 HDInsight 上的 Apache Spark Linux 群集的 Jupyter 笔记本的内核](apache-spark-jupyter-notebook-kernels.md)。
+有关自定义内核和 Spark 幻数的详细信息，请参阅 [Jupyter 笔记本的可用内核，并在 HDInsight 上 Apache Spark Linux 群集](apache-spark-jupyter-notebook-kernels.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,20 +34,15 @@ ms.locfileid: "87873885"
 
 * 熟悉 Jupyter Notebook 和 Spark on HDInsight 的结合使用。
 
-## <a name="install-jupyter-notebook-on-your-computer"></a>在计算机上安装 Jupyter 笔记本
+## <a name="install-jupyter-notebook-on-your-computer"></a>在计算机上安装 Jupyter Notebook
 
-先安装 Python，然后再安装 Jupyter 笔记本。 [Anaconda 分发版](https://www.anaconda.com/download/)将安装 Python 和 Jupyter Notebook。
+安装 Jupyter 笔记本之前，请安装 Python。 [Anaconda 分发版](https://www.anaconda.com/download/)将安装 Python 和 Jupyter Notebook。
 
 下载适用于用户的平台的 [Anaconda 安装程序](https://www.anaconda.com/download/) ，并运行安装。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。  另请参阅[使用 Anaconda 安装 Jupyter](https://jupyter.readthedocs.io/en/latest/install.html)。
 
 ## <a name="install-spark-magic"></a>安装 Spark magic
 
-1. 输入以下命令之一以安装 Spark magic。 另请参阅 [sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)。
-
-    |群集版本 | 安装命令 |
-    |---|---|
-    |v3.6 和 v3.5 |`pip install sparkmagic==0.13.1`|
-    |v3.4|`pip install sparkmagic==0.2.3`|
+1. 输入命令 `pip install sparkmagic==0.13.1` ，以安装适用于 HDInsight 群集版本3.6 和4.0 的 Spark 幻数。 另请参阅 [sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)。
 
 1. 确保通过运行以下命令正确安装了 `ipywidgets`：
 
@@ -90,7 +85,7 @@ ms.locfileid: "87873885"
     python
     ```
 
-2. Jupyter 配置信息通常存储在用户主目录中。 输入以下命令以标识主目录，并创建一个名为** \. sparkmagic**的文件夹。  将输出完整路径。
+2. Jupyter 配置信息通常存储在用户主目录中。 输入以下命令来标识主目录，并创建一个名为 \.sparkmagic 的文件夹。  将输出完整路径。
 
     ```python
     import os
@@ -150,7 +145,7 @@ ms.locfileid: "87873885"
 
     a. 创建新的笔记本。 在右侧一角选择“新建”。 应会看到默认内核 **Python 2** 和 **Python 3**，以及安装的内核。 实际值根据安装时所做的选择而有所不同。  选择“PySpark”。
 
-    ![Jupyter 笔记本中的可用内核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter notebook 中的内核")
+    ![Jupyter Notebook 中的可用内核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter Notebook 中的内核")
 
     > [!IMPORTANT]  
     > 选择“新建”后，检查 shell 中是否出现任何错误。  如果看到错误 `TypeError: __init__() got an unexpected keyword argument 'io_loop'`，原因可能是遇到了某些 Tornado 版本中的已知问题。  如果出现此情况，请停止内核，然后使用以下命令降级 Tornado 安装：`pip install tornado==4.5.3`。
@@ -170,7 +165,7 @@ ms.locfileid: "87873885"
 
 在计算机上安装 Jupyter 并将其连接到 HDInsight 上的 Apache Spark 群集的原因：
 
-* 提供了此选项：在本地创建笔记本，针对正在运行的群集测试应用程序，然后将笔记本上传到群集。 若要将笔记本上传到群集，可以使用在群集上运行的 Jupyter 笔记本上传它们，或者将它们保存到与群集关联的存储帐户中的 `/HdiNotebooks` 文件夹。 有关如何在群集上存储 notebook 的详细信息，请参阅 [Where are Jupyter notebooks stored？](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)（Jupyter notebook 存储在何处？）
+* 提供了此选项：在本地创建笔记本，针对正在运行的群集测试应用程序，然后将笔记本上传到群集。 若要将笔记本上传到群集，可以使用运行或群集的 Jupyter Notebook 上传它们，也可以将其保存到 `/HdiNotebooks` 与群集关联的存储帐户中的文件夹。 有关笔记本在群集上的存储方式的详细信息，请参阅 [Jupyter 笔记本存储在何处](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)？
 * 使用本地提供的笔记本可以根据应用程序要求连接到不同的 Spark 群集。
 * 可以使用 GitHub 实施源代码管理系统，并对笔记本进行版本控制。 此外，还可以建立一个协作环境，其中的多个用户可以使用同一个笔记本。
 * 甚至不需要启动群集就能在本地使用笔记本。 只需创建一个群集以根据它来测试笔记本，而不需要手动管理笔记本或开发环境。
@@ -182,5 +177,5 @@ ms.locfileid: "87873885"
 ## <a name="next-steps"></a>后续步骤
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [Apache Spark 上适用于 Jupyter 笔记本的内核](apache-spark-jupyter-notebook-kernels.md)
+* [Apache Spark 上的 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
 * [在 Apache Spark 中将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)

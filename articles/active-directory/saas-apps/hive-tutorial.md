@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 8abf36e79f83c69dd927acd21c5c8652122fc82d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62214110fb93bf364396d1d553cb5deb3b74adc7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544071"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92443572"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>教程：Azure Active Directory 与 Hive 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544071"
 * 让用户使用其 Azure AD 帐户自动登录到 Hive。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88544071"
 
 * Hive 支持 **SP 和 IDP** 发起的 SSO
 * Hive 支持“实时”用户预配 
-* 配置 Hive 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Hive 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-hive-from-the-gallery"></a>从库中添加 Hive
 
@@ -147,13 +147,13 @@ ms.locfileid: "88544071"
 
 1. 单击“用户配置文件”并单击“你的工作区”。  
 
-    ![Hive 配置](./media/hive-tutorial/configure1.png)
+    ![屏幕截图显示已选择菜单中“你的工作区”的 Hive 网站。](./media/hive-tutorial/configure1.png)
 
 1. 单击“身份验证”  并执行以下步骤：
 
-    ![Hive 配置](./media/hive-tutorial/configure2.png)
+    ![屏幕截图显示在其中执行所述任务的“身份验证”页。](./media/hive-tutorial/configure2.png)
 
-    a. 复制**你的工作区 ID** 并在 Azure 门户中的“基本 SAML 配置”部分中将其附加到“登录 URL”和“回复 URL”。   
+    a. 复制 **你的工作区 ID** 并在 Azure 门户中的“基本 SAML 配置”部分中将其附加到“登录 URL”和“回复 URL”。   
 
     b. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -169,16 +169,16 @@ ms.locfileid: "88544071"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Hive 磁贴时，应当会自动登录到为其设置了 SSO 的 Hive。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Hive 磁贴时，应当会自动登录到为其设置了 SSO 的 Hive。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 Hive](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

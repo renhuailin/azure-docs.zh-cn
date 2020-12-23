@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5dca4828a5c1127133461ddf9fc06099fc176b68
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779653"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009845"
 ---
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>验证关键短语提取容器实例
 

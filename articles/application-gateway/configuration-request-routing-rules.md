@@ -1,28 +1,28 @@
 ---
-title: Azure 应用程序网关请求路由规则配置
-description: 本文介绍如何配置 Azure 应用程序网关请求路由规则。
+title: Azure 应用程序网关请求传递规则配置
+description: 本文介绍如何配置 Azure 应用程序网关请求传递规则。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 20a665eefbb73f062f1f036e17b16da891a43eef
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652861"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397529"
 ---
-# <a name="application-gateway-request-routing-rules"></a>应用程序网关请求路由规则
+# <a name="application-gateway-request-routing-rules"></a>应用程序网关请求传递规则
 
-使用 Azure 门户创建应用程序网关时，将 (*rule1*) 创建默认规则。 此规则会将默认侦听器 (*appGatewayHttpListener*) 绑定到默认后端池 (*appGatewayBackendPool*) 和默认后端 HTTP 设置 (*appGatewayBackendHttpSettings*)。 创建网关后，可以编辑该默认规则的设置，或创建新的规则。
+使用 Azure 门户创建应用程序网关时，可创建一个默认规则 (rule1)。 此规则会将默认侦听器 ( *appGatewayHttpListener* ) 绑定到默认后端池 ( *appGatewayBackendPool* ) 和默认后端 HTTP 设置 ( *appGatewayBackendHttpSettings* )。 创建网关后，可以编辑该默认规则的设置，或创建新的规则。
 
 ## <a name="rule-type"></a>规则类型
 
-创建规则时，可以选择[“基本”或“基于路径”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)。 
+创建规则时，可以选择[“基本”或“基于路径”](./application-gateway-components.md#request-routing-rules)。 
 
-- 若要将关联的侦听器（例如 *blog<i></i>.contoso.com/\** ）上的所有请求转发到单个后端池，请选择“基本”。
+- 若要将关联的侦听器（例如 *blog <i></i>.contoso.com/\** ）上的所有请求转发到单个后端池，请选择“基本”。
 - 若要将来自特定 URL 路径的请求路由到特定的后端池，请选择“基于路径”。 路径模式仅应用到 URL 的路径，而不应用到该 URL 的查询参数。
 
 ### <a name="order-of-processing-rules"></a>规则的处理顺序
@@ -57,7 +57,7 @@ ms.locfileid: "89652861"
 
 ### <a name="redirection-type"></a>重定向类型
 
-选择所需的重定向类型：*Permanent(301)* 、*Temporary(307)* 、*Found(302)* 或 *See other(303)* 。
+选择所需的重定向类型： *Permanent(301)* 、 *Temporary(307)* 、 *Found(302)* 或 *See other(303)* 。
 
 ### <a name="redirection-target"></a>重定向目标
 

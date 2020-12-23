@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9126dbcfbfe9e3a94514ebf45685bdfc55dd0306
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87919933"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462995"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 
 [Data Science Virtual Machine](overview.md) (DSVM) 在 Azure 平台上提供了一个丰富的环境，其中包含为人工智能 (AI) 和数据分析预建的软件。
@@ -37,13 +37,13 @@ ms.locfileid: "87919933"
 
 这一系列针对前面的每个主题提供指导和方针。 它不包括在大型企业配置中部署 DSVM 的所有注意事项和需求。 以下是在企业中实现 DSVM 实例时可以使用的其他一些 Azure 资源：
 
-* [网络安全](https://docs.microsoft.com/azure/security/fundamentals/network-security)
-* [监视](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)和[管理](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [日志记录和审核](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Azure 基于角色的访问控制 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [网络安全](../../security/fundamentals/network-overview.md)
+* [监视](../../azure-monitor/insights/monitor-vm-azure.md)和[管理](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [日志记录和审核](../../security/fundamentals/log-audit.md)
+* [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)
 * [策略设置和执行](../../governance/policy/overview.md)
-* [反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [加密](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
-* [数据发现和管理](https://docs.microsoft.com/azure/data-catalog/)
+* [反恶意软件](../../security/fundamentals/antimalware.md)
+* [加密](../../virtual-machines/windows/disk-encryption-overview.md)
+* [数据发现和管理](../../data-catalog/index.yml)
 
-最后，[Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/)为构建和管理基于云的分析基础结构提供了详细的端到端体系结构和模型。
+最后，[Azure 体系结构中心](/azure/architecture/)为构建和管理基于云的分析基础结构提供了详细的端到端体系结构和模型。

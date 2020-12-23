@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/17/2020
+ms.openlocfilehash: 83d6e051f520737e750e6c46c192eb698e7bf0e3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325532"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842251"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>为 Windows 或 Linux 虚拟机装载或卸载卷 
 
@@ -22,11 +22,11 @@ ms.locfileid: "91325532"
 
 * 必须至少有一个导出策略才能访问 NFS 卷。
 * 若要成功装载 NFS 卷，请确保在客户端和 NFS 卷之间打开以下 NFS 端口：
-    * 111 = `RPCBIND/Portmapper`
-    * 635 = `mountd`
-    * 2049 = `nfs`
-    * 4045 = `nlockmgr` 仅)  (NFSv3
-    * 4046 = `status` 仅)  (NFSv3
+    * 111 TCP/UDP = `RPCBIND/Portmapper`
+    * 635 TCP/UDP = `mountd`
+    * 2049 TCP/UDP = `nfs`
+    * 4045 TCP/UDP = `nlockmgr` (NFSv3 仅) 
+    * 4046 TCP/UDP = `status` (NFSv3 仅) 
 
 ## <a name="steps"></a>步骤
 
@@ -60,6 +60,6 @@ ms.locfileid: "91325532"
 ## <a name="next-steps"></a>后续步骤
 
 * [为 Azure NetApp 文件配置 NFSv4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)
-* [NFS 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
-* [网络文件系统概述](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [NFS 常见问题解答](./azure-netapp-files-faqs.md#nfs-faqs)
+* [网络文件系统概述](/windows-server/storage/nfs/nfs-overview)
 * [装载 NFS Kerberos 卷](configure-kerberos-encryption.md#kerberos_mount)

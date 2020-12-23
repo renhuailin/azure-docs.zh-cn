@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.date: 10/12/2020
+ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617889"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790621"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL 托管实例中的时区
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "91617889"
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
-创建实例期间，在[资源管理器模板](https://aka.ms/sql-mi-create-arm-posh)中指定 timezoneId 属性来设置时区。
+创建实例期间，在[资源管理器模板](./scripts/create-powershell-azure-resource-manager-template.md)中指定 timezoneId 属性来设置时区。
 
 ```json
 "properties": {
@@ -95,7 +95,7 @@ ms.locfileid: "91617889"
 
 ## <a name="limitations"></a>限制
 
-- 无法更改现有托管实例的时区。
+- 无法更改现有托管实例的时区。 一种解决方法是，使用正确的时区创建新的托管实例，然后执行手动备份和还原，或执行我们建议的执行 [跨实例时间点还原](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database)。
 - 从 SQL Server 代理作业启动的外部进程不会观察实例的时区。
 
 ## <a name="list-of-supported-time-zones"></a>支持的时区的列表
@@ -243,7 +243,7 @@ ms.locfileid: "91617889"
 
 ## <a name="see-also"></a>另请参阅 
 
-- [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
-- [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
+- [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)
+- [AT TIME ZONE (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

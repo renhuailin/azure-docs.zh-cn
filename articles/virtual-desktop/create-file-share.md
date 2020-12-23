@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287315"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746810"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 文件和 AD DS 创建配置文件容器
 
@@ -39,12 +39,12 @@ ms.locfileid: "91287315"
 
     - 创建新的资源组。
     - 为存储帐户输入唯一的名称。
-    - 对于 " **位置**"，建议选择与 Windows 虚拟机主机池相同的位置。
+    - 对于 " **位置** "，建议选择与 Windows 虚拟机主机池相同的位置。
     - 对于“性能”，请选择“标准”。 根据 IOPS 要求 (。 有关详细信息，请参阅 [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。 ) 
-    - 对于 " **帐户类型**"，选择 " **StorageV2** " 或 " **FileStorage** (仅在性能层为高级) 时可用。
-    - 对于 **复制**，请选择 " **本地冗余存储 (LRS) **"。
+    - 对于 " **帐户类型** "，选择 " **StorageV2** " 或 " **FileStorage** (仅在性能层为高级) 时可用。
+    - 对于 **复制** ，请选择 " **本地冗余存储 (LRS)** "。
 
-5. 完成后，依次选择 " **查看**" 和 "创建"，然后选择 " **创建**"。
+5. 完成后，依次选择 " **查看** " 和 "创建"，然后选择 " **创建** "。
 
 如果需要更详细的配置说明，请参阅 [区域可用性](../storage/files/storage-files-identity-auth-active-directory-enable.md#regional-availability)。
 
@@ -54,13 +54,13 @@ ms.locfileid: "91287315"
 
 若要创建文件共享，请执行以下操作：
 
-1. 选择“转到资源”。
+1. 选择“转到资源”。 
 
-2. 在 "概述" 页上，选择 " **文件共享**"。
+2. 在 "概述" 页上，选择 " **文件共享** "。
 
-3. 选择 " **+ 文件共享**"，创建一个名为 " **配置文件**" 的新文件共享，然后输入相应的配额，或者将该字段留空，不使用配额。
+3. 选择 " **+ 文件共享** "，创建一个名为 " **配置文件** " 的新文件共享，然后输入相应的配额，或者将该字段留空，不使用配额。
 
-4. 选择“创建” 。
+4. 选择“创建”  。
 
 ## <a name="enable-active-directory-authentication"></a>启用 Active Directory 身份验证
 
@@ -68,9 +68,9 @@ ms.locfileid: "91287315"
 
 1. 远程桌面协议加入已加入域的 VM。
 
-2. 按照 [为 Azure 文件共享启用 AZURE AD DS 身份验证](../storage/files/storage-files-identity-ad-ds-enable.md) 中的说明安装 AzFilesHybrid 模块并启用身份验证。
+2. 按照 [为 Azure 文件共享启用 AD DS 身份验证](../storage/files/storage-files-identity-ad-ds-enable.md) 中的说明安装 AzFilesHybrid 模块并启用身份验证。
 
-3.  打开 Azure 门户，打开存储帐户，选择 " **配置**"，然后 Active Directory 确认 " ** (AD) ** " 设置为 " **已启用**"。
+3.  打开 Azure 门户，打开存储帐户，选择 " **配置** "，然后 Active Directory 确认 " **(AD)** " 设置为 " **已启用** "。
 
      > [!div class="mx-imgBorder"]
      > ![启用了 Azure Active Directory (AD) 的配置页的屏幕截图。](media/active-directory-enabled.png)
@@ -86,27 +86,27 @@ ms.locfileid: "91287315"
 >[!NOTE]
 >为其分配权限的帐户或组应该已在域中创建并与 Azure AD 同步。 在 Azure AD 中创建的帐户不起作用。
 
- (RBAC) 权限分配基于角色的访问控制权限：
+ (Azure RBAC) 权限分配 Azure 基于角色的访问控制权限：
 
 1. 打开 Azure 门户。
 
 2. 打开在 " [设置存储帐户](#set-up-a-storage-account)" 中创建的存储帐户。
 
-3. 选择 " **文件共享**"，然后选择你计划使用的文件共享的名称。
+3. 选择 " **文件共享** "，然后选择你计划使用的文件共享的名称。
 
 4. 选择“访问控制 (IAM)”。
 
-5. 选择 " **添加角色分配**"。
+5. 选择 " **添加角色分配** "。
 
 6. 在 " **添加角色分配** " 选项卡中，为管理员帐户选择 " **存储文件数据 SMB 共享提升的参与者** "。
 
      若要为用户分配 FSLogix 配置文件的权限，请遵循相同的说明。 但是，当你转到步骤5时，请改为选择 **存储文件数据 SMB 共享参与者** 。
 
-7. 选择“保存”。
+7. 选择“保存” 。
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>为用户分配对 Azure 文件共享的权限
 
-将 RBAC 权限分配给用户后，接下来需要配置 NTFS 权限。
+将 Azure RBAC 权限分配给用户后，接下来需要配置 NTFS 权限。
 
 需要了解 Azure 门户中的两项内容才能入门：
 
@@ -121,7 +121,7 @@ ms.locfileid: "91287315"
 
 2. 打开在 " [设置存储帐户](#set-up-a-storage-account)" 中创建的存储帐户。
 
-3. 选择 " **设置**"，然后选择 " **属性**"。
+3. 选择 " **设置** "，然后选择 " **属性** "。
 
 4. 将 **主文件服务终结点** URI 复制到所选的文本编辑器。
 
@@ -131,7 +131,7 @@ ms.locfileid: "91287315"
     - `/`用反斜杠替换正斜杠 `\` 。
     - 将在 [创建 Azure 文件共享](#create-an-azure-file-share) 中创建的文件共享的名称添加到 UNC 末尾。
 
-        例如： `\\customdomain.file.core.windows.net\<fileshare-name>`
+        例如：`\\customdomain.file.core.windows.net\<fileshare-name>`
 
 ### <a name="get-the-storage-account-key"></a>获取存储帐户密钥
 
@@ -141,7 +141,7 @@ ms.locfileid: "91287315"
 
 2. 打开在 " [设置存储帐户](#set-up-a-storage-account)" 中创建的存储帐户。
 
-3. 在 " **存储帐户** " 选项卡上，选择 " **访问密钥**"。
+3. 在 " **存储帐户** " 选项卡上，选择 " **访问密钥** "。
 
 4. 将 **key1** 或 **key2** 复制到本地计算机上的文件中。
 
@@ -200,19 +200,19 @@ ms.locfileid: "91287315"
 
 5. 按照[配置配置文件容器注册表设置](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings)中的说明进行操作：
 
-    - 导航到 "**计算机**  >  **HKEY_LOCAL_MACHINE**  >  **SOFTWARE**  >  **FSLogix**"。
+    - 导航到 " **计算机**  >  **HKEY_LOCAL_MACHINE**  >  **SOFTWARE**  >  **FSLogix** "。
 
     - 创建 **配置文件** 密钥。
 
     - Create **Enabled，DWORD** 值为1。
 
-    - 创建 **VHDLocations、MULTI_SZ**。
+    - 创建 **VHDLocations、MULTI_SZ** 。
 
     - 将 **VHDLocations** 的值设置为在 [获取 unc 路径](#get-the-unc-path)中生成的 unc 路径。
 
 6. 重启 VM。
 
-## <a name="testing"></a>正在测试
+## <a name="testing"></a>测试
 
 安装并配置 FSLogix 后，可以通过使用已分配了主机池上的应用组或桌面的用户帐户登录来测试部署。 确保你登录所用的用户帐户具有对文件共享的权限。
 

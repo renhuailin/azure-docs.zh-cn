@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000515"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -29,9 +29,9 @@ HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./ap
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 群集会在新的门户视图中打开。
 
-1. 从**群集仪表板**中，选择“Ambari 视图”****。 当提示进行身份验证时，请使用在创建群集时所提供的群集登录名（默认为 `admin`）帐户名称和密码。 还可以在浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/views`，其中 `CLUSTERNAME` 是群集的名称。
+1. 从 **群集仪表板** 中，选择“Ambari 视图”。 当提示进行身份验证时，请使用在创建群集时所提供的群集登录名（默认为 `admin`）帐户名称和密码。 还可以在浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/views`，其中 `CLUSTERNAME` 是群集的名称。
 
-1. 在视图列表中，选择“Hive 视图”____。
+1. 在视图列表中，选择“Hive 视图”。
 
     ![Apache Ambari 选择 Apache Hive 视图](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -39,7 +39,7 @@ HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./ap
 
     ![Hive 视图查询工作表图像](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-1. 将以下 HiveQL 语句从“查询”____ 选项卡粘贴到工作表中：
+1. 将以下 HiveQL 语句从“查询”选项卡粘贴到工作表中：
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -69,50 +69,50 @@ HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./ap
     |SELECT|选择 t4 列包含值 [ERROR] 的所有行的计数。|
 
    > [!IMPORTANT]  
-   > 将“数据库”____ 选择保留为“默认”____。 本文档中的示例使用 HDInsight 附带的默认数据库。
+   > 将“数据库”选择保留为“默认”。 本文档中的示例使用 HDInsight 附带的默认数据库。
 
-1. 若要启动查询，请选择工作表下方的“执行”****。 按钮变为橙色，文本更改为“停止”****。
+1. 若要启动查询，请选择工作表下方的“执行”。 按钮变为橙色，文本更改为“停止”。
 
-1. 完成查询后，“结果”选项卡显示操作结果****。 以下文本是查询结果：
+1. 完成查询后，“结果”选项卡显示操作结果。 以下文本是查询结果：
 
     ```output
     loglevel       count
     [ERROR]        3
     ```
 
-    可使用“日志”选项卡查看创建的作业的日志记录信息****。
+    可使用“日志”选项卡查看创建的作业的日志记录信息。
 
    > [!TIP]  
-   > 从“结果”**** 选项卡下的“操作”**** 下拉对话框下载或保存结果。
+   > 从“结果”选项卡下的“操作”下拉对话框下载或保存结果。
 
 ### <a name="visual-explain"></a>Visual explain
 
-要显示查询计划的可视化效果，选择工作表下方的“可视化说明”**** 选项卡。
+要显示查询计划的可视化效果，选择工作表下方的“可视化说明”选项卡。
 
-查询的“可视化说明”视图可帮助理解复杂查询的流。****
+查询的“可视化说明”视图可帮助理解复杂查询的流。
 
 ### <a name="tez-ui"></a>Tez UI
 
-若要显示查询的 Tez UI，请选择工作表下方的“Tez UI”**** 选项卡。
+若要显示查询的 Tez UI，请选择工作表下方的“Tez UI”选项卡。
 
 > [!IMPORTANT]  
 > Tez 不用于解析所有查询。 无需使用 Tez 即可解析许多查询。
 
 ## <a name="view-job-history"></a>查看作业历史记录
 
-“作业”____ 选项卡显示 Hive 查询的历史记录。
+“作业”选项卡显示 Hive 查询的历史记录。
 
 ![Apache Hive 查看作业 "选项卡历史记录](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>数据库表
 
-可使用“表”____ 选项卡处理 Hive 数据库内的表。
+可使用“表”选项卡处理 Hive 数据库内的表。
 
 !["Apache Hive 表" 选项卡的图像](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>已保存的查询
 
-在“查询”选项卡中，可以按需要保存查询****。 保存查询后，可通过“已保存的查询”选项卡对其重复进行使用____。
+在“查询”选项卡中，可以按需要保存查询。 保存查询后，可通过“已保存的查询”选项卡对其重复进行使用。
 
 ![Apache Hive 查看已保存的查询 "选项卡](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
@@ -125,11 +125,11 @@ HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./ap
 
 可以通过用户定义函数 (UDF) 扩展 Hive。 使用 UDF 实现 HiveQL 中不容易建模的功能或逻辑。
 
-使用 Hive 视图顶部的“UDF”选项卡，声明并保存一组 UDF****。 可以在**查询编辑器**中使用这些 UDF。
+使用 Hive 视图顶部的“UDF”选项卡，声明并保存一组 UDF。 可以在 **查询编辑器** 中使用这些 UDF。
 
 ![Apache Hive 查看 Udf 选项卡显示](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-“插入 UDF”按钮显示在“查询编辑器”的底部**** ****。 此项将显示 Hive 视图中定义的 UDF 的下拉列表。 选择一个 UDF 可向查询添加 HiveQL 语句以启用 UDF。
+“插入 UDF”按钮显示在“查询编辑器”的底部 。 此项将显示 Hive 视图中定义的 UDF 的下拉列表。 选择一个 UDF 可向查询添加 HiveQL 语句以启用 UDF。
 
 例如，如果您定义了具有以下属性的 UDF：
 
@@ -141,7 +141,7 @@ HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./ap
 
 * UDF 类名称：com.myudfs.Awesome
 
-使用“插入 UDF”按钮将显示名为 myudfs 的条目，以及为该资源定义的每个 UDF 的另一下拉列表**** ****。 本例中为 myawesomeudf****。 选择此条目会在查询的开头添加以下内容：
+使用“插入 UDF”按钮将显示名为 myudfs 的条目，以及为该资源定义的每个 UDF 的另一下拉列表 。 本例中为 myawesomeudf。 选择此条目会在查询的开头添加以下内容：
 
 ```hiveql
 add jar /myudfs.jar;

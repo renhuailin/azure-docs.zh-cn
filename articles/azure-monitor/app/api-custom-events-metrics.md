@@ -4,12 +4,12 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264127"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780495"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -531,6 +531,9 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果会显示在门户上的依赖项图表中。 需要在进行依赖项调用的任何位置添加以下代码片段。
 
+> [!NOTE]
+> 对于 .NET 和 .NET Core，还可以使用 `TelemetryClient.StartOperation` (扩展) 方法来填充 `DependencyTelemetry` 关联所需的属性和某些其他属性（如开始时间和持续时间），这样就不需要像下面的示例一样创建自定义计时器。 有关详细信息，请参阅此文章 [关于传出依赖项跟踪的部分](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking)。
+
 *C#*
 
 ```csharp
@@ -566,8 +569,8 @@ finally {
     Instant endTime = Instant.now();
     Duration delta = Duration.between(startTime, endTime);
     RemoteDependencyTelemetry dependencyTelemetry = new RemoteDependencyTelemetry("My Dependency", "myCall", delta, success);
-    RemoteDependencyTelemetry.setTimeStamp(startTime);
-    RemoteDependencyTelemetry.trackDependency(dependencyTelemetry);
+    dependencyTelemetry.setTimeStamp(startTime);
+    telemetry.trackDependency(dependencyTelemetry);
 }
 ```
 
@@ -692,17 +695,17 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 在[指标资源管理器](../platform/metrics-charts.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。 
 
-还可以 [搜索](./diagnostic-search.md) 具有特定用户名和帐户的客户端数据点。
+还可以[搜索](./diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用属性筛选、搜索和细分数据
 
 可以将属性和度量值附加到事件（以及指标、页面视图、异常和其他遥测数据）。
 
-*属性*是可以在使用情况报告中用来筛选遥测数据的字符串值。 例如，如果应用提供多种游戏，可以将游戏的名称附加到每个事件，了解哪些游戏更受欢迎。
+*属性* 是可以在使用情况报告中用来筛选遥测数据的字符串值。 例如，如果应用提供多种游戏，可以将游戏的名称附加到每个事件，了解哪些游戏更受欢迎。
 
 字符串长度限制为 8192。 （如果想要发送大型数据区块，请使用消息参数 TrackTrace。）
 
-*指标*是能够以图形方式呈现的数字值。 例如，可以查看玩家的分数是否逐渐增加。 可以根据连同事件一起发送的属性对图表进行分段，以便获取不同游戏的独立图形或堆积图。
+*指标* 是能够以图形方式呈现的数字值。 例如，可以查看玩家的分数是否逐渐增加。 可以根据连同事件一起发送的属性对图表进行分段，以便获取不同游戏的独立图形或堆积图。
 
 这些值应大于或等于 0，以便正确显示指标值。
 
@@ -936,7 +939,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 ## <a name="disabling-telemetry"></a>禁用遥测
 
-*动态停止和启动*收集与传输遥测数据：
+*动态停止和启动* 收集与传输遥测数据：
 
 *C#*
 
@@ -952,7 +955,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-若要*禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+若要 *禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 *Node.js*
 
@@ -960,7 +963,7 @@ telemetry.getConfiguration().setTrackingDisabled(true);
 telemetry.config.disableAppInsights = true;
 ```
 
-若要*禁用所选的标准收集器*（例如，性能计数器、HTTP 请求或依赖项），初始化时请将配置方法链接到 SDK 初始化代码：
+若要 *禁用所选的标准收集器*（例如，性能计数器、HTTP 请求或依赖项），初始化时请将配置方法链接到 SDK 初始化代码：
 
 ```javascript
 applicationInsights.setup()

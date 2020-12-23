@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 584db064bf6f6a6b99e6e2d09f6046912cfcd1bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335239"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890660"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
@@ -80,10 +80,10 @@ map.controls.add(new atlas.control.TrafficLegendControl(), { position: 'bottom-l
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Map](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)
+> [TrafficOptions](/javascript/api/azure-maps-control/atlas.trafficoptions)
 
 增强用户体验：
 

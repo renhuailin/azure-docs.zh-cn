@@ -7,19 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be37ed1da0da4da3db43ef4c1cd01ed962f24ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806800"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397302"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>使用入口终结点的专用 IP 进行内部路由 
 
 此功能允许使用专用 IP 在 `Virtual Network` 中公开入口终结点。
 
 ## <a name="pre-requisites"></a>先决条件  
-使用[专用 IP 配置](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)的应用程序网关
+使用[专用 IP 配置](./configure-application-gateway-with-private-frontend-ip.md)的应用程序网关
 
 可通过两种方法配置控制器以使用入口专用 IP
 
@@ -66,4 +66,4 @@ appgw:
 如果 `usePrivateIP: true` 且没有分配任何专用 IP，则 AGIC 会死机并崩溃。
 
 > [!NOTE]
-> 应用程序网关 v2 SKU 要求公共 IP。 如果要求应用程序网关专用，请附加一个 [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) 到应用程序网关的子网来限制流量。
+> 应用程序网关 v2 SKU 要求公共 IP。 如果要求应用程序网关专用，请附加一个 [`Network Security Group`](../virtual-network/network-security-groups-overview.md) 到应用程序网关的子网来限制流量。

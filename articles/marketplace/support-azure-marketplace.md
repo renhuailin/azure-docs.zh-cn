@@ -4,15 +4,15 @@ description: 合作伙伴中心的 Azure 市场和 AppSource 的支持信息和�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: navits09
+ms.author: navits
 ms.date: 04/14/2020
-ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 02e64c6c6e5ab2ef77f02959ada6f95d1042b76d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329748"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488751"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 支持
 
@@ -32,7 +32,7 @@ ms.locfileid: "91329748"
 
 | 支持渠道 | 说明 |  
 |:--- |:--- |  
-| MSDN 论坛：市场位于 [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/products/azure) | Microsoft Developer Network 论坛。 |  
+| MSDN 论坛：市场位于 [Microsoft Q&A 问题页面](/answers/products/azure) | Microsoft Developer Network 论坛。 |  
 | Stack Overflow：Azure 位于 [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | 用于获取解决方案并就 Azure 市场的所有相关内容提问的 Stack Overflow 环境。<ul> <li>Stack Overflow：Azure 市场位于 [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow：Azure 资源管理器位于 [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow：Azure 上的虚拟机位于 [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow：Azure 上的容器位于 [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
 ## <a name="marketing-resources"></a>市场营销资源  
@@ -45,6 +45,6 @@ ms.locfileid: "91329748"
 ## <a name="next-steps"></a>后续步骤
 
 * 访问[“商业市场发布者指南”页面](index.yml)。
-* 详细了解[合作伙伴中心商业市场计划的支持](partner-center-portal/support.md)。
+* 详细了解[合作伙伴中心商业市场计划的支持](support.md)。
 
 ---

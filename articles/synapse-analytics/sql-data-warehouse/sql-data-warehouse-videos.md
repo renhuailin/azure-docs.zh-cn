@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0515827ab2d93c76ea91e95c2d53a44273b5633b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eaf41e903f1a55dd85c6b6282617564a32087707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213782"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447811"
 ---
-# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure Synapse 分析-SQL 池视频
+# <a name="azure-synapse-analytics---dedicated-sql-pool--formerly-sql-dw-videos"></a>Azure Synapse Analytics-专用 SQL 池 (以前的 SQL DW) 视频
 
-观看最新的 Azure Synapse SQL pool 视频，了解新功能和性能改进。 
+观看最新的专用 SQL 池 (以前的 SQL DW) 视频，以了解新功能和性能改进。 
 
-若要开始，请选择下面的概述视频，了解 Azure Synapse SQL 池的新更新。 另外，了解如何使用新式数据仓库模式来应对网络犯罪等真实情况。
+若要开始，请选择下面的概述视频，了解针对专用 SQL 池的新更新。 另外，了解如何使用新式数据仓库模式来应对网络犯罪等真实情况。
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

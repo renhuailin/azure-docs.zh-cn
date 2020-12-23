@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271182"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790587"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
 
@@ -27,6 +27,8 @@ ms.locfileid: "91271182"
   通常，REST 终结点必须满足此条件，连接器才能工作：
 
   * Swagger 文件必须托管在可公开访问的 HTTPS URL 上。
+  
+  * Swagger 文件必须包含 `operationID` 定义中每个操作的。 如果不是，则连接器只显示 Swagger 文件中的最后一个操作。 
 
   * 必须为 Swagger 文件启用[跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 
@@ -42,29 +44,29 @@ ms.locfileid: "91271182"
 
 此内置触发器将一个 HTTP 请求发送到用于描述 REST API 的 Swagger 文件的 URL，并返回包含该文件的内容的响应。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
 1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“触发器”列表中选择“HTTP + Swagger”触发器。 
 
    ![选择 HTTP + Swagger 触发器](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。 
+1. 在“SWAGGER ENDPOINT URL”框中，输入 Swagger 文件的 URL，然后选择“下一步” 。
 
    此示例将位于美国西部区域的 Swagger URL 用于[认知服务人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)：
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![显示逻辑应用设计器的屏幕截图，其中 "H T T P + Swagger" 触发器和 "Swagger Endpoint U R L" 属性设置为 U R L 值。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![此屏幕截图显示了带有“HTTP + Swagger”触发器的逻辑应用设计器，其中“Swagger 终结点 URL”属性设置为一个 URL 值。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. 当设计器显示了 Swagger 文件描述的操作时，请选择要使用的操作。
 
-   ![屏幕截图，显示具有 "H T P + Swagger" 触发器的逻辑应用设计器和显示 Swagger 操作的列表。](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![此屏幕截图显示了逻辑应用设计器，其中包含一个“HTTP + Swagger”触发器和一个显示 Swagger 操作的列表。](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. 提供要包含在终结点调用中的触发器参数的值（根据所选的操作而异）。 设置重复周期，以确定触发器调用终结点的频率。
 
    此示例将触发器重命名为“HTTP + Swagger trigger:Face - Detect”，使步骤名称更具描述性。
 
-   ![显示逻辑应用设计器的屏幕截图，其中 "H T T P + Swagger" 触发器显示 "面部检测" 操作。](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![此屏幕截图显示了带有“HTTP + Swagger”触发器（显示“人脸 - 检测”操作）的逻辑应用设计器。](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. 要添加其他可用参数，请打开“添加新参数”列表，然后选择所需参数。
 
@@ -72,13 +74,13 @@ ms.locfileid: "91271182"
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 ## <a name="add-an-http--swagger-action"></a>添加 HTTP + Swagger 操作
 
 此内置操作对用于描述 REST API 的 Swagger 文件的 URL 发出一个 HTTP 请求，并返回包含该文件的内容的响应。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
 1. 在要添加 HTTP + Swagger 操作的步骤下，选择“新建步骤”。
 
@@ -88,7 +90,7 @@ ms.locfileid: "91271182"
 
     ![选择 HTTP + Swagger 操作](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。 
+1. 在“SWAGGER ENDPOINT URL”框中，输入 Swagger 文件的 URL，然后选择“下一步” 。
 
    此示例将位于美国西部区域的 Swagger URL 用于[认知服务人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)：
 
@@ -110,7 +112,7 @@ ms.locfileid: "91271182"
 
    有关 HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 <a name="host-swagger"></a>
 
@@ -122,13 +124,13 @@ ms.locfileid: "91271182"
 
 1. 现在，为 Blob 启用 CORS。 在存储帐户的菜单中选择“CORS”。 在“Blob 服务”选项卡上指定值，然后选择“保存”。 
 
-   | 属性 | Value |
+   | 属性 | 值 |
    |----------|-------|
    | **允许的源** | `*` |
-   | **允许的方法** | `GET`、`HEAD`、`PUT` |
+   | **允许的方法** | `GET`, `HEAD`, `PUT` |
    | **允许的标头** | `*` |
    | **公开的标头** | `*` |
-   | **最大期限**（以秒为单位） | `200` |
+   | **最大期限** （以秒为单位） | `200` |
    |||
 
    此示例使用 [Azure 门户](https://portal.azure.com)，不过，你也可以使用 [Azure 存储资源管理器](https://storageexplorer.com/)之类的工具，或使用此示例 [PowerShell 脚本](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)自动配置此设置。
@@ -154,7 +156,7 @@ ms.locfileid: "91271182"
 
 | 状态代码 | 说明 |
 |-------------|-------------|
-| 200 | OK |
+| 200 | 确定 |
 | 202 | 已接受 |
 | 400 | 错误的请求 |
 | 401 | 未授权 |
@@ -166,4 +168,3 @@ ms.locfileid: "91271182"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
-

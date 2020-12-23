@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595529"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016745"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -23,7 +23,7 @@ ms.locfileid: "91595529"
 
 ## <a name="choose-a-time-series-id"></a>选择时间序列 ID
 
-选择适当的时序 ID 至关重要。 选择时序 ID 与为数据库选择分区键相同。 创建 Azure 时序见解 Gen2 环境时，需要使用此方法。
+选择适当的时序 ID 至关重要。 选择时序 ID 与为数据库选择分区键相同。 它在创建时序见解第 2 代环境时是必需的。
 
 > [!IMPORTANT]
 > 时序 ID 如下：
@@ -36,7 +36,7 @@ ms.locfileid: "91595529"
 
 要遵守的主要最佳做法包括：
 
-* 选择具有许多（例如，几百甚至几千个）非重复值的分区键。 在许多情况下，该键可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
+_ 选取具有许多（例如，几百甚至几千个）非重复值的分区键。 在许多情况下，该键可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
 * 在[时序模型](./concepts-model-overview.md)的叶节点级别，时序 ID 应是唯一的。
 * 时序 ID 属性名称字符串的字符数限制为 128 个。 时序 ID 属性值的字符数限制为 1024 个。
 * 如果时序 ID 的某个唯一属性值缺失，该值将被视为 null 值，并遵循相同的唯一性约束规则。
@@ -86,4 +86,4 @@ ms.locfileid: "91595529"
 
 * 阅读 [JSON 平展和转义规则](./concepts-json-flattening-escaping-rules.md)以了解事件将如何存储。
 
-* 规划 [Azure 时序见解第 2 代环境](./time-series-insights-update-plan.md)。
+* 规划 [Azure 时序见解第 2 代环境](./how-to-plan-your-environment.md)。

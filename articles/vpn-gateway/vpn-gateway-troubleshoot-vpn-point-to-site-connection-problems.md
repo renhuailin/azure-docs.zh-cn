@@ -1,19 +1,19 @@
 ---
 title: 排查 Azure 点到站点连接问题
 titleSuffix: Azure VPN Gateway
-description: 了解排查和解决常见的点到站点连接问题以及其他虚拟专用网络错误和问题。
+description: 了解如何排除和解决常见的点到站点连接问题和其他虚拟专用网络错误和问题。
 services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035939"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994853"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -118,8 +118,8 @@ ms.locfileid: "88035939"
     | 证书 | 位置 |
     | ------------- | ------------- |
     | AzureClient.pfx  | Current User\Personal\Certificates |
-    | Azuregateway-GUID**.cloudapp.net  | Current User\Trusted Root Certification Authorities|
-    | AzureGateway-GUID**.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
+    | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
+    | AzureGateway-GUID.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
 2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 **azuregateway-*GUID*.cloudapp.net** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
 
@@ -298,7 +298,7 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="solution"></a>解决方案
 
-若要解决此问题，请[重置 Azure VPN 网关](vpn-gateway-resetgw-classic.md)。 若要确保正在使用新路由，必须在虚拟网络对等互连成功配置之后，再次下载点到站点 VPN 客户端。
+若要解决此问题，请[重置 Azure VPN 网关](./reset-gateway.md)。 若要确保正在使用新路由，必须在虚拟网络对等互连成功配置之后，再次下载点到站点 VPN 客户端。
 
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>错误：“吊销功能无法检查吊销，因为吊销服务器已脱机。(错误 0x80092013)”
 
@@ -317,13 +317,13 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="solution"></a>解决方案
 
-确保正确配置 RADIUS 服务器。 有关详细信息，请参阅[将 RADIUS 身份验证与 Azure 多重身份验证服务器集成](../active-directory/authentication/howto-mfaserver-dir-radius.md)。
+确保正确配置 RADIUS 服务器。 有关详细信息，请参阅将 [RADIUS 身份验证与 Azure AD 多重身份验证服务器集成](../active-directory/authentication/howto-mfaserver-dir-radius.md)。
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>从 VPN 网关下载根证书时出现“错误 405”
 
 ### <a name="cause"></a>原因
 
-根证书尚未安装。 根证书安装在客户端的**可信证书**存储中。
+根证书尚未安装。 根证书安装在客户端的 **可信证书** 存储中。
 
 ## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN 客户端错误：未进行远程连接，因为尝试的 VPN 隧道失败。 （错误 800） 
 

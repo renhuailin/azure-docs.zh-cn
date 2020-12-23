@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331890"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007403"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
 在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
@@ -57,7 +57,7 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件 (~ 48 GB 未压缩
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>预测任务示例
 我们会根据 *tip\_amount* 编写三个预测问题的公式，即：
 
-* 二元分类：预测是否为行程支付了提示（即大于 $0 的 *tip \_ 量* ）为正示例，而 *tip 的 \_ 大小* $0 为负的示例。
+* 二元分类：预测是否为某个行程支付了小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例 。
 * 多类分类：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
 
    `Class 0 : tip_amount = $0`
@@ -84,14 +84,14 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件 (~ 48 GB 未压缩
 
 1. [创建存储帐户](../../storage/common/storage-account-create.md)
 2. [创建 Azure 机器学习工作区](../classic/create-workspace.md)
-3. [预配数据科研虚拟机](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)，提供 SQL Server 和 IPython Notebook 服务器。
+3. [预配数据科研虚拟机](../data-science-virtual-machine/overview.md)，提供 SQL Server 和 IPython Notebook 服务器。
    
    > [!NOTE]
    > 在安装过程中，示例脚本和 IPython notebook 将下载到数据科学虚拟机。 VM 后续安装脚本完成后，这些示例会在虚拟机文档库中：  
    > 
    > * 示例脚本： `C:\Users\<user_name>\Documents\Data Science Scripts`  
    > * 示例 IPython Notebook：`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
-   >   其中 `<user_name>` 是 VM 的 Windows 登录名。 我们将示例文件夹称为**示例脚本**和**示例 IPython Notebook**。
+   >   其中 `<user_name>` 是 VM 的 Windows 登录名。 我们将示例文件夹称为 **示例脚本** 和 **示例 IPython Notebook**。
    > 
    > 
 
@@ -120,7 +120,7 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件 (~ 48 GB 未压缩
 2. 使用 Windows 身份验证进行连接。
    
     ![SSMS 连接][12]
-3. 如果尚未更改的 SQL Server 身份验证模式并尚未创建新的 SQL 登录用户，请打开 **Sample Scripts** 文件夹中名为 **change\_auth.sql** 的脚本文件。 更改默认用户名和密码。 单击工具栏中的 " **执行** " 运行该脚本。
+3. 如果尚未更改的 SQL Server 身份验证模式并尚未创建新的 SQL 登录用户，请打开 **Sample Scripts** 文件夹中名为 **change\_auth.sql** 的脚本文件。 更改默认用户名和密码。 单击工具栏中的“执行”来运行该脚本。
    
     ![执行脚本][13]
 4. 验证和/或更改 SQL Server 默认数据库和日志文件夹，以确保新创建的数据库将存储在数据磁盘中。 为数据仓库负载优化的 SQL Server VM 映像是预先配置的数据和日志磁盘。 如果 VM 不包含数据磁盘，并且在 VM 安装过程中添加了新的虚拟硬盘，则需按照如下步骤更改默认文件夹：
@@ -129,7 +129,7 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件 (~ 48 GB 未压缩
      
        ![SQL Server 属性][14]
    * 从左侧的“**选择页**”列表中选择“**数据库设置**”。
-   * 验证**数据库默认位置**，并/或将其更改为所选的**数据磁盘**位置。 此位置是使用默认设置创建的新数据库所在的位置。
+   * 验证 **数据库默认位置**，并/或将其更改为所选的 **数据磁盘** 位置。 此位置是使用默认设置创建的新数据库所在的位置。
      
        ![SQL 数据库默认设置][15]  
 5. 若要创建新数据库和一组文件组来保存已分区的表，请打开示例脚本 **create\_db\_default.sql**。 该脚本会在默认数据位置创建一个名为 **TaxiNYC** 的新数据库和 12 个文件组。 每个文件组将保存一个月内的 trip\_data 和 trip\_fare 数据。 根据需要修改数据库名称。 单击“执行”以运行该脚本。
@@ -175,8 +175,8 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件 (~ 48 GB 未压缩
 
 若要在之前使用并行批量导入填充的表中快速验证表的多个行和列，请采用如下方式：
 
-- 表 nyctaxi_trip 中不包含表扫描的行数： `SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
-- 报表 nyctaxi_trip 中的列数： `SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
+- 在不进行表扫描的情况下报告表 nyctaxi_trip 中的行数：`SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
+- 报告表 nyctaxi_trip 中的列数：`SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>浏览：依据徽章的行程分布
 此示例标识在给定的时间段内具有 100 多个行程的徽章（出租车数）。 查询将受益于分区表访问，因为它受 **pickup\_datetime** 分区方案的限制。 查询完整数据集还将使用分区表和/或索引扫描。
@@ -293,7 +293,7 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
 准备好继续进行 Azure 机器学习后，也可以：  
 
-1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制并粘贴到 Azure 机器学习的 [导入数据][import-data] 模块中。 此方法于[在 Azure 机器学习中建模](#mlmodel)部分进行展示。    
+1. 保存最终的 SQL 查询，以对数据进行提取和采样，并直接将查询复制和粘贴到 Azure 机器学习的[导入数据][import-data]模块中。 此方法于[在 Azure 机器学习中建模](#mlmodel)部分进行展示。    
 2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，并在[导入数据][import-data]模块中使用新表。
 
 以下是几个数据浏览、数据可视化和功能设计示例。 有关更多示例，请参阅 **Sample IPython Notebooks** 文件夹中的 SQL IPython Notebook 示例。
@@ -432,9 +432,9 @@ plt.scatter(df1['passenger_count'], df1['trip_distance'])
 ![Plot #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>二次采样 SQL 中的数据
-在 [Azure 机器学习工作室](https://studio.azureml.net)中准备建模数据时，可以决定**在“导入数据”模块中直接使用 SQL 查询**，或者将工程和抽样数据保留在新表中，这样就可以通过简单的“**SELECT * FROM <your\_new\_table\_name>** ”在[导入数据][import-data]模块中使用。
+在 [Azure 机器学习工作室](https://studio.azureml.net)中准备建模数据时，可以决定 **在“导入数据”模块中直接使用 SQL 查询**，或者将工程和抽样数据保留在新表中，这样就可以通过简单的“**SELECT * FROM <your\_new\_table\_name>** ”在 [导入数据][import-data]模块中使用。
 
-在本部分中，我们将创建一个新表，用于保存采样和工程处理的数据。 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分提供了可用于模型构建的直接 SQL 查询示例。
+在本部分中，我们将创建新表以保存采样和工程数据。 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分提供了可用于模型构建的直接 SQL 查询示例。
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>创建取样表，并使用 1% 已联接表的填充。 如果存在此表，请首先将其删除。
 在本部分中，我们会联接表 **nyctaxi\_trip** 和 **nyctaxi\_fare**，提取 1% 的随机样本，并将抽样数据保存到名为 **nyctaxi\_one\_percent** 的新表中：
@@ -463,7 +463,7 @@ cursor.commit()
 ```
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>在 IPython Notebook 中使用 SQL 查询进行数据浏览
-在本部分中，我们将使用之前创建的新表中保留的1% 抽样数据来浏览数据分布。 可以使用原始表执行类似的探索，还可以选择使用 **TABLESAMPLE** 限制浏览示例，或者使用 **分拣 \_ 日期时间** 分区将结果限制在给定的时间段，如 SQL Server 部分中的 [数据浏览和功能设计](#dbexplore) 中所示。
+在本部分中，我们将使用之前创建的新表中保存的 1% 采样数据来探索数据分布。 如 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分所示，可使用原始表或使用 TABLESAMPLE 进行类似探索，以限制探索示例，或通过使用 pickup\_datetime 分区，将结果限制为给定时间段。
 
 #### <a name="exploration-daily-distribution-of-trips"></a>浏览：每日行程分布
 
@@ -585,7 +585,7 @@ cursor.commit()
 ```
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>特征工程：从十进制纬度/经度提取位置功能
-此示例将纬度和/或经度字段的十进制表示形式分解为不同粒度（如国家/地区、城市、城镇、块等）的多个区域字段。新的地理字段未映射到实际位置。 有关规划地理编码位置的信息，请参 [Bing 地图 REST 服务](https://msdn.microsoft.com/library/ff701710.aspx)。
+此示例以十进制表示的纬度和/或经度字段划分为多个不同粒度的区域字段，例如国家/地区、城市、城镇、街区等等。新的地理位置字段不映射到实际位置。 有关规划地理编码位置的信息，请参 [Bing 地图 REST 服务](/bingmaps/rest-services/locations/find-a-location-by-point)。
 
 ```sql
 nyctaxi_one_percent_insert_col = '''
@@ -636,7 +636,7 @@ pd.read_sql(query,conn)
 
 1. “**新建 +** ”实验。
 2. 将数据放入 Azure 机器学习。
-3. 根据需要预先处理、转换和处理数据。
+3. 根据需要预处理、转换和操作数据。
 4. 根据需要生成功能。
 5. 将数据拆分为训练/验证/测试数据集（或每个类具有单独的数据集）。
 6. 根据要解决的学习问题，选择一个或多个机器学习算法。 例如，二元分类、多类分类、回归。
@@ -645,15 +645,15 @@ pd.read_sql(query,conn)
 9. 评估模型来计算针对学习问题的相关指标。
 10. 调整模型，并选择最佳模型进行部署。
 
-在此练习中，我们已经探讨和设计了 SQL Server 中的数据，并确定了要引入 Azure 机器学习中的样本大小。 若要生成一个或多个预测模型，我们决定：
+在此练习中，我们已经探讨和设计了 SQL Server 中的数据，并确定了要引入 Azure 机器学习中的样本大小。 为了生成一个或多个预测模型，我们决定：
 
-1. 使用**数据输入和输出**部分的[导入数据][import-data]模块，将数据放入 Azure 机器学习。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
+1. 使用 **数据输入和输出** 部分的 [导入数据][import-data]模块，将数据放入 Azure 机器学习。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
    
     ![Azure 机器学习导入数据][17]
-2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
+2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为 **数据源**。
 3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
-4. 在相应字段中输入**数据库名称**。
-5. 在“服务器用户帐户名”中输入 **SQL 用户名**，在“服务器用户帐户密码”中输入**密码**。
+4. 在相应字段中输入 **数据库名称**。
+5. 在“服务器用户帐户名”中输入 **SQL 用户名**，在“服务器用户帐户密码”中输入 **密码**。
 7. 在“数据库查询”编辑文本区域中，粘贴提取必要数据库字段（包括任何计算字段，例如标签）的查询，并对数据向下采样至所需样本大小。
 
 二元分类实验直接从 SQL Server 数据库读取数据，示例如下图所示。 可以针对多类分类和回归问题构建类似实验。
@@ -661,7 +661,7 @@ pd.read_sql(query,conn)
 ![Azure 机器学习训练][10]
 
 > [!IMPORTANT]
-> 在上一部分中提供的建模数据提取和采样查询示例中，**这三个建模练习的所有标签都包括在此查询中**。 每个建模练习的一个重要（必需）步骤是**排除**其他两个问题不需要的标签，以及任何其他的**目标泄漏**。 例如，使用二元分类时，使用标签 **tipped**并排除字段 **tip\_class**、**tip\_amount** 和 **total\_amount**。 后者是目标泄漏，因为它们指示支付的小费。
+> 在上一部分中提供的建模数据提取和采样查询示例中，**这三个建模练习的所有标签都包括在此查询中**。 每个建模练习的一个重要（必需）步骤是 **排除** 其他两个问题不需要的标签，以及任何其他的 **目标泄漏**。 例如，使用二元分类时，使用标签 **tipped** 并排除字段 **tip\_class**、**tip\_amount** 和 **total\_amount**。 后者是目标泄漏，因为它们指示支付的小费。
 > 
 > 为了排除不需要的列和/或目标泄漏，可以使用[选择数据集中的列][select-columns]模块或[编辑元数据][edit-metadata]。 有关详细信息，请参阅[选择数据集中的列][select-columns]和[编辑元数据][edit-metadata]参考页。
 > 
@@ -675,17 +675,17 @@ pd.read_sql(query,conn)
 1. 创建评分实验。
 2. 部署 Web 服务。
 
-若要从**已完成**的训练实验中创建评分实验，请单击下方操作栏中的“**创建评分实验**”。
+若要从 **已完成** 的训练实验中创建评分实验，请单击下方操作栏中的“**创建评分实验**”。
 
 ![Azure 评分][18]
 
 Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特别是，它将：
 
 1. 保存训练的模型，并删除模型训练模块。
-2. 标识逻辑**输入端口**，以表示预期输入数据架构。
-3. 标识逻辑**输出端口**，以表示预期 Web 服务输出架构。
+2. 标识逻辑 **输入端口**，以表示预期输入数据架构。
+3. 标识逻辑 **输出端口**，以表示预期 Web 服务输出架构。
 
-创建评分实验后，请检查并根据需要进行调整。 典型的调整是将输入数据集和/或查询替换为不包含标签字段的数据集，因为调用服务时，这些标签在架构中将不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
+创建评分实验后，请检查并根据需要进行调整。 典型调整方式为：将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为调用服务时，这些标签在架构中不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
 
 评分实验示例如下图所示。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 
@@ -722,6 +722,6 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 
 
 <!-- Module References -->
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

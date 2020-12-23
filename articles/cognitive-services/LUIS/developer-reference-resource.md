@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e4e43ead957bb6feca09fc8b2a8c16e37821c9b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8641235fb754080303a9a463d0964e5655234ff2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327164"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024545"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 
@@ -23,17 +23,17 @@ SDK、REST API、CLI 用于以编程语言开发语言理解 (LUIS) 应用。 �
 
 根据以下工具来查找参考文档：
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
+* [Azure CLI](/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
-* [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
+* [Azure RM PowerShell](/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
 
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>语言理解创作和预测请求
 
 可以从需要创建的 Azure 资源访问语言理解服务。 有两个资源：
 
-* 使用**创作**资源进行训练，以便创建、编辑、训练和发布内容。
-* 将**预测**用于运行时，以便发送用户的文本并接收预测。
+* 使用 **创作** 资源进行训练，以便创建、编辑、训练和发布内容。
+* 将 **预测** 用于运行时，以便发送用户的文本并接收预测。
 
 了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
@@ -88,10 +88,10 @@ LUIS 目前有 2 种类型的终结点：
 
 |语言 |参考文档|程序包|快速入门|
 |--|--|--|--|
-|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[创作](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[查询预测](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
+|C#|[创作](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[创作](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[查询预测](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
 |Go|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
-|Java|[创作和预测](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 创作](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 预测](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|Javascript|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[预测](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
+|Java|[创作和预测](/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 创作](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 预测](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
+|Javascript|[创作](/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[预测](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
 |Python|[创作和预测](azure-sdk-quickstart.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](azure-sdk-quickstart.md?pivots=programming-language-python)<br>[预测](azure-sdk-quickstart.md?pivots=programming-language-python)|
 
 
@@ -130,7 +130,7 @@ Bot Framework 提供有助于语言理解的[多种工具](https://github.com/mi
 ## <a name="next-steps"></a>后续步骤
 
 * 了解常见的 [HTTP 错误代码](luis-reference-response-codes.md)
-* 所有 API 和 SDK 的[参考文档](https://docs.microsoft.com/azure/index)
+* 所有 API 和 SDK 的[参考文档](../../index.yml)
 * [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) 和 [Azure 机器人服务](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [认知容器](../cognitive-services-container-support.md)

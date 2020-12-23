@@ -4,8 +4,7 @@ titleSuffix: Azure App Configuration
 description: 本教程介绍如何使用 Azure 应用程序配置将功能标志与应用程序分开管理。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -13,14 +12,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0410a1cde12b9ef762d348a286d78b35f7b14bfd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209948"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932296"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>教程：在 Azure 应用程序配置中管理功能标志
 
@@ -56,6 +55,7 @@ ms.locfileid: "88209948"
     |---|---|
     | Microsoft.Percentage | {"Value":0-100 percent} |
     | Microsoft.TimeWindow | {"Start":UTC time, "End":UTC time} |
+    | Microsoft.Targeting | {“受众”：定义用户、组和推出百分比的 JSON blob。 请参阅[此设置文件](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json)的 `EnabledFor` 元素下的示例}
 
     ![功能标志筛选器](./media/azure-app-configuration-feature-flag-filter.png)
 
@@ -63,9 +63,9 @@ ms.locfileid: "88209948"
 
 若要更改功能标志的状态值，请执行以下操作：
 
-1. 选择“功能管理器”。 
+1. 选择“功能管理器”。
 
-1. 在要修改的功能标志的右侧，选择省略号 ( **...** )，然后选择“编辑”  。
+1. 在要修改的功能标志的右侧，选择省略号 (**...**)，然后选择“编辑”。
 
 1. 设置功能标志的新状态。
 

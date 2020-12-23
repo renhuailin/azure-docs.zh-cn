@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3d4f232d87209a3a5676cac22e67a38b17af6917
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297393"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844312"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API - .NET
 
@@ -43,7 +43,7 @@ ms.locfileid: "89297393"
 
 本主题中的示例应用面向 `netcoreapp2.0`。 代码使用从 C# 7.1 开始提供的“async main”。 有关更多详细信息，请参阅[此博客](/archive/blogs/benwilli/async-main-is-available-but-hidden)。
 
-## <a name="add-required-nuget-packages"></a>添加所需的 NuGet 包
+## <a name="add-required-nuget-packagesassemblies"></a>添加所需的 NuGet 包/程序集
 
 1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “NuGet 管理器控制台”。  
 2. 在“包管理器控制台”窗口中，使用 `Install-Package` 命令添加以下 NuGet 包。 例如，`Install-Package Microsoft.Azure.Management.Media`。
@@ -51,10 +51,14 @@ ms.locfileid: "89297393"
 |程序包|说明|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure 媒体服务 SDK。 <br/>为确保使用最新的 Azure 媒体服务包，请选中 [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)。|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|适用于 Azure SDK for NET 的 ADAL 身份验证库|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|读取环境变量和本地 JSON 文件中的配置值|
-|`Microsoft.Extensions.Configuration.Json`|读取环境变量和本地 JSON 文件中的配置值
-|`WindowsAzure.Storage`|存储 SDK|
+
+### <a name="other-required-assemblies"></a>其他必需的程序集
+
+- Azure. Blob
+- Microsoft.Extensions.Configuration
+- Microsoft.Extensions.Configu。EnvironmentVariables
+- Microsoft.Extensions.Configuration.Json
+- Microsoft.Rest.ClientRuntime.Azure.Authentication
 
 ## <a name="create-and-configure-the-app-settings-file"></a>创建并配置应用设置文件
 
@@ -136,9 +140,9 @@ namespace ConsoleApp1
             get { return new Uri(_config["ArmEndpoint"]); }
         }
 
-        public string Region
+        public string Location
         {
-            get { return _config["Region"]; }
+            get { return _config["Location"]; }
         }
     }
 }
@@ -233,7 +237,7 @@ namespace ConsoleApp1
 
 - [教程：对视频进行上传、编码和流式处理 - .NET](stream-files-tutorial-with-api.md) 
 - [教程：通过媒体服务 v3 进行实时流式传输 - .NET](stream-live-tutorial-with-api.md)
-- [教程：通过媒体服务 v3-.NET 分析视频](analyze-videos-tutorial-with-api.md)
+- [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial-with-api.md)
 - [从本地文件创建作业输入 - .NET](job-input-from-local-file-how-to.md)
 - [从 HTTPS URL 创建作业输入 - .NET](job-input-from-http-how-to.md)
 - [对自定义转换进行编码 - .NET](customize-encoder-presets-how-to.md)
@@ -245,5 +249,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>另请参阅
 
-* [.NET 参考](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET 参考](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true)
 * 有关更多代码示例，请参阅 [.NET SDK 示例](https://github.com/Azure-Samples/media-services-v3-dotnet)存储库。

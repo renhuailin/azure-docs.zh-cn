@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
-ms.openlocfilehash: 9b6cac64d2e3def673f6d7c27e80bd64eead9e97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51e17812e1116f1e625685d5a818c18e25cdb2da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689157"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965793"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>如何在 Azure 门户中管理 DNS 区域
 
 > [!div class="op_single_selector"]
 > * [门户](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure 经典 CLI](dns-operations-dnszones-cli-nodejs.md)
+> * [Azure 经典 CLI](./dns-operations-dnszones-cli.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 本文介绍如何使用 Azure 门户管理 DNS 区域。 也可使用跨平台的 [Azure CLI](dns-operations-dnszones-cli.md) 或 Azure [PowerShell](dns-operations-dnszones.md) 管理 DNS 区域。
@@ -31,7 +31,7 @@ ms.locfileid: "84689157"
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
 1. 登录到 Azure 门户
-2. 在“中心”菜单上，导航至“创建资源”>“网络”>“DNS 区域”****，**** 以打开“创建 DNS 区域”边栏选项卡。
+2. 在“中心”菜单上，导航至“创建资源”>“网络”>“DNS 区域”，以打开“创建 DNS 区域”边栏选项卡。
 
     ![DNS 区域](./media/dns-operations-dnszones-portal/openzone650.png)
 

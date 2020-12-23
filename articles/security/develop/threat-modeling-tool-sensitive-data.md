@@ -1,6 +1,6 @@
 ---
 title: 敏感数据 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 了解 Threat Modeling Tool 中的敏感数据缓解措施。 请参阅缓解信息和查看代码示例。
+description: 在 Threat Modeling Tool 中了解有关敏感数据缓解的信息。 请参阅缓解措施信息并查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3ee0a376b28676e3f74ac2e53010c2c953ad9d7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0bcbe35fc6d9f104325bec8a3404ad57a6376cf2
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317814"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518118"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -88,7 +88,7 @@ ms.locfileid: "91317814"
   <system.webServer>
    <httpProtocol>
     <customHeaders>
-        <add name="Cache-Control" value="no-cache" />
+        <add name="Cache-Control" value="no-store" />
         <add name="Pragma" value="no-cache" />
         <add name="Expires" value="-1" />
     </customHeaders>
@@ -132,7 +132,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [如何：使用 DPAPI 加密 ASP.NET 2.0 中的配置部分](https://msdn.microsoft.com/library/ff647398.aspx)、[指定受保护的配置提供程序](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[使用 Azure Key Vault 保护应用程序机密](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **参考**              | [如何：使用 DPAPI 加密 ASP.NET 2.0 中的配置部分](/previous-versions/msp-n-p/ff647398(v=pandp.10))、[指定受保护的配置提供程序](/previous-versions/68ze1hb2(v=vs.140))、[使用 Azure Key Vault 保护应用程序机密](/azure/architecture/multitenant-identity/web-api) |
 | **步骤** | Web.config、appsettings.json 等配置文件通常用于保存敏感信息，包括用户名、密码、数据库连接字符串和加密密钥。 如果不保护此类信息，攻击者或恶意用户可能会利用应用程序的漏洞来获取敏感信息，例如帐户用户名和密码、数据库名称和服务器名称。 请根据部署类型 (azure/on-prem)，使用 DPAPI 或 Azure Key Vault 等服务来加密配置文件的敏感部分。 |
 
 ## <a name="explicitly-disable-the-autocomplete-html-attribute-in-sensitive-forms-and-inputs"></a><a id="autocomplete-input"></a>在敏感窗体和输入中显式禁用自动完成 HTML 属性
@@ -143,7 +143,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [MSDN：自动完成特性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自动完成](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML 净化漏洞](https://technet.microsoft.com/security/bulletin/MS10-071)、[又是自动完成？](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **参考**              | [MSDN：自动完成特性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自动完成](/previous-versions/windows/internet-explorer/ie-developer/)、[HTML 净化漏洞](/security-updates/SecurityBulletins/2010/ms10-071)、[又是自动完成？](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **步骤** | 自动完成特性指定是要打开还是关闭窗体的自动填充。 如果打开自动完成，浏览器会根据用户以前输入的值自动填充值。 例如，如果在窗体中输入新名称和密码，然后提交该窗体，则浏览器会提示是否应保存该密码。此后显示该窗体时，该名称和密码会自动填充，或者在输入名称时自动填充。 拥有本地访问权限的攻击者可能会通过浏览器缓存获取明文密码。 自动完成默认已启用，必须显式将它禁用。 |
 
 ### <a name="example"></a>示例
@@ -173,7 +173,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12，SQL 版本 - MsSQL2016 |
-| **参考**              | [动态数据掩码](https://msdn.microsoft.com/library/mt130841) |
+| **参考**              | [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking) |
 | **步骤** | 动态数据屏蔽旨在限制敏感数据的公开，防止没有访问权限的用户查看敏感数据。 动态数据屏蔽并不是要防止数据库用户直接连接到数据库并运行可以公开敏感数据的详尽查询。 动态数据屏蔽是其他 SQL Server 安全功能（审核、加密、行级别安全性…）的补充。强烈建议将这些功能与动态数据屏蔽结合使用，以便更好地保护数据库中的敏感数据。 请注意，此功能仅受 SQL Server 2016 及更高版本以及 Azure SQL 数据库的支持。 |
 
 ## <a name="ensure-that-passwords-are-stored-in-salted-hash-format"></a><a id="salted-hash"></a>确保以加盐哈希格式存储密码
@@ -195,7 +195,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | SQL 版本 - 所有 |
-| **参考**              | [加密 SQL Server 中的敏感数据](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[如何：加密 SQL Server 中数据列](https://msdn.microsoft.com/library/ms179331)、[使用证书进行加密](https://msdn.microsoft.com/library/ms188061) |
+| **参考**              | [加密 SQL Server 中的敏感数据](/previous-versions/sql/sql-server-2008-r2/ff848751(v=sql.105))、[如何：加密 SQL Server 中数据列](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)、[使用证书进行加密](/sql/t-sql/functions/encryptbycert-transact-sql) |
 | **步骤** | 信用卡号等敏感数据必须在数据库中加密。 可以使用列级加密，或者使用加密函数通过应用程序函数将数据加密。 |
 
 ## <a name="ensure-that-database-level-encryption-tde-is-enabled"></a><a id="tde-enabled"></a>确保启用数据库级加密 (TDE)
@@ -206,7 +206,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [了解 SQL Server 透明数据加密 (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **参考**              | [了解 SQL Server 透明数据加密 (TDE)](/previous-versions/sql/sql-server-2008-r2/bb934049(v=sql.105)) |
 | **步骤** | SQL Server 中的透明数据加密 (TDE) 功能可帮助加密数据库中的敏感数据，并使用证书保护用于加密数据的密钥。 这样就可以防止没有密钥的人使用这些数据。 TDE 保护“处于休眠状态”的数据，即数据和日志文件。 它提供了遵从许多法律、法规和各个行业建立的准则的能力。 |
 
 ## <a name="ensure-that-database-backups-are-encrypted"></a><a id="backup"></a>确保数据库备份经过加密
@@ -217,7 +217,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12，SQL 版本 - MsSQL2014 |
-| **参考**              | [SQL 数据库备份加密](https://msdn.microsoft.com/library/dn449489) |
+| **参考**              | [SQL 数据库备份加密](/sql/relational-databases/backup-restore/backup-encryption) |
 | **步骤** | SQL Server 能够在创建备份时加密数据。 可以通过在创建备份指定加密算法和加密器（证书或非对称密钥），创建加密的备份文件。 |
 
 ## <a name="ensure-that-sensitive-data-relevant-to-web-api-is-not-stored-in-browsers-storage"></a><a id="api-browser"></a>确保不要在浏览器的存储中存储与 Web API 相关的敏感数据
@@ -263,7 +263,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [使用 Azure 磁盘加密来加密虚拟机所用的磁盘](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
+| **参考**              | [使用 Azure 磁盘加密来加密虚拟机所用的磁盘](../../storage/blobs/security-recommendations.md#data-protection) |
 | **步骤** | <p>Azure 磁盘加密是一项新功能，目前以预览版提供。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 它与 Azure 密钥保管库集成，可用于控制和管理磁盘加密密钥。 Azure 磁盘加密解决方案支持以下三种客户加密方案：</p><ul><li>在通过客户加密的 VHD 文件和客户提供的加密密钥（存储在 Azure 密钥保管库中）创建的新 IaaS VM 上启用加密。</li><li>在通过 Azure 市场创建的新 IaaS VM 上启用加密。</li><li>在 Azure 中已运行的现有 IaaS VM 上启用加密。</li></ul>| 
 
 ## <a name="encrypt-secrets-in-service-fabric-applications"></a><a id="fabric-apps"></a>加密 Service Fabric 应用程序中的机密
@@ -274,7 +274,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
-| **参考**              | [管理 Service Fabric 应用程序中的机密](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **参考**              | [管理 Service Fabric 应用程序中的机密](../../service-fabric/service-fabric-application-secret-management.md) |
 | **步骤** | 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 使用 Azure Key Vault 管理 Service Fabric 应用程序中的密钥和机密。 |
 
 ## <a name="perform-security-modeling-and-use-business-unitsteams-where-required"></a><a id="modeling-teams"></a>根据需要执行安全建模并使用业务单位/团队
@@ -329,7 +329,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
-| **参考**              | [静态数据的 Azure 存储服务加密（预览版）](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **参考**              | [静态数据的 Azure 存储服务加密（预览版）](../../storage/common/storage-service-encryption.md) |
 | **步骤** | <p>静态数据的 Azure 存储服务加密 (SSE) 可用于保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 使用此功能，Azure 存储可以先自动加密数据，再将数据保存到存储，并在检索之前解密数据。 加密、解密和密钥管理对于用户而言是完全透明的。 SSE 仅适用于块 Blob、页 Blob 以及追加 Blob。 其他类型的数据（包括表、队列和文件）不会加密。</p><p>加密和解密工作流：</p><ul><li>客户对存储帐户启用加密</li><li>当客户将新数据（PUT Blob、PUT 块、PUT 页等等）写入 Blob 存储时，每个写入将使用 256 位 AES 加密（可用的最强块加密法之一）进行加密</li><li>当客户需要访问数据（GET Blob 等）时，数据会在返回给用户之前自动解密</li><li>如果已禁用加密，则不会再加密新的写入，现有加密数据在用户重新写入之前将保持加密。 启用加密时，向 Blob 存储的写入会加密。 数据状态在用户启用/禁用存储帐户的加密之间切换时不会更改</li><li>所有加密密钥由 Microsoft 存储、加密和管理</li></ul><p>请注意，用于加密的密钥目前由 Microsoft 管理。 Microsoft 最初将生成密钥，管理密钥的安全存储，并根据 Microsoft 内部策略的定义定期轮转密钥。 将来，客户能够管理自己的加密密钥，并提供从 Microsoft 管理的密钥到客户管理的密钥的迁移路径。</p>| 
 
 ## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>使用客户端加密在 Azure 存储中存储敏感数据
@@ -340,7 +340,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [Microsoft Azure 存储的客户端加密和 Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 Blob](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[使用 Azure 加密扩展在 Azure Blob 存储中安全存储数据](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **参考**              | [Microsoft Azure 存储的客户端加密和 Azure Key Vault](../../storage/common/storage-client-side-encryption.md)、[教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 Blob](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)、[使用 Azure 加密扩展在 Azure Blob 存储中安全存储数据](/archive/blogs/partnercatalystteam/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions) |
 | **步骤** | <p>用于 .NET 的 Azure 存储客户端库 Nuget 包支持在上传到 Azure 存储之前加密客户端应用程序中的数据，并在下载到客户端时解密数据。 此库还支持与 Azure 密钥保管库集成，以便管理存储帐户密钥。 下面是客户端加密的工作原理的简要说明：</p><ul><li>Azure 存储客户端 SDK 生成内容加密密钥 (CEK)，这是一次性使用的对称密钥</li><li>可使用此 CEK 将客户数据加密</li><li>然后，使用密钥加密密钥 (KEK) 对此 CEK 进行包装（加密）。 KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 Azure 密钥保管库中。 存储空间客户端本身永远无法访问 KEK。 它只能调用密钥保管库提供的密钥包装算法。 客户可根据需要选择使用自定义提供程序进行密钥包装/解包</li><li>然后，将已加密的数据上传到 Azure 存储服务。 请参阅参考部分中的链接，了解低级别实施详细信息。</li></ul>|
 
 ## <a name="encrypt-sensitive-or-pii-data-written-to-phones-local-storage"></a><a id="pii-phones"></a>加密写入到手机本地存储的敏感或 PII 数据
@@ -351,7 +351,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Xamarin  |
 | **属性**              | 空值  |
-| **参考**              | [使用 Microsoft Intune 策略管理设备上的设置和功能](https://docs.microsoft.com/mem/intune/configuration/)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
+| **参考**              | [使用 Microsoft Intune 策略管理设备上的设置和功能](/mem/intune/configuration/)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
 | **步骤** | <p>如果应用程序在手机文件系统中写入用户 PII 等敏感信息（电子邮件、电话号码、名字、姓氏、首选项等），则在写入本地文件系统之前应将这些信息加密。 如果应用程序是企业应用程序，请使用 Windows Intune 来探索发布应用程序的可能性。</p>|
 
 ### <a name="example"></a>示例
@@ -431,7 +431,7 @@ Allow screen capture
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 安全模式 - 传输，安全模式 - 消息 |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF 安全基础知识 - CoDe 杂志](https://www.codemag.com/article/0611051) |
+| **参考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF 安全基础知识 - CoDe 杂志](https://www.codemag.com/article/0611051) |
 | **步骤** | 未定义任何传输或消息安全性。 在未定义传输或消息安全性的情况下传输消息的应用程序无法保证消息的完整性或机密性。 如果 WCF 安全绑定设置为 None，将同时禁用传输和消息安全性。 |
 
 ### <a name="example"></a>示例

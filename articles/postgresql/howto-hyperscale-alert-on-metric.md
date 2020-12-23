@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: b5ccd1281e50ca10b8edd7d7567a000b97107901
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907424"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026448"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 门户设置 Azure Database for PostgreSQL 超大规模 (Citus 的指标警报) 
 
@@ -28,18 +28,18 @@ ms.locfileid: "90907424"
 可使用以下项配置并获取预警规则相关信息：
 * [Azure 门户](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure 监视器 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure 监视器 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>通过 Azure 门户针对指标创建警报规则
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择要监视的 Azure Database for PostgreSQL 服务器。
 
-2. 在边栏的“监视”部分，选择“警报”，如下所示********：
+2. 在边栏的“监视”部分，选择“警报”，如下所示   ：
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/2-alert-rules.png" alt-text="选择警报规则":::
 
-3. 选择“新建警报规则”（+ 图标）。****
+3. 选择“新建警报规则”（+ 图标）。
 
-4. 随即打开“创建规则”页面，如下所示****。 填写所需信息：
+4. 随即打开“创建规则”页面，如下所示  。 填写所需信息：
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="添加指标警报窗体":::
 
@@ -47,7 +47,7 @@ ms.locfileid: "90907424"
 
 6. 从要发出警报的信号列表中选择一个指标。 在此示例中，选择“存储百分比”。
    
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="选择指标":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="屏幕截图显示 &quot;配置信号逻辑&quot; 页，您可以在其中查看多个信号。":::
 
 7. 配置警报逻辑：
 
@@ -56,43 +56,43 @@ ms.locfileid: "90907424"
     * **聚合粒度** 在警报触发之前必须满足指标规则的时间 (例如。 "过去30分钟" ) 
     * **计算的频率** (例如 "1 分钟" ) 
    
-   完成后选择“完成”****。
+   完成后选择“完成”  。
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="选择指标":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="屏幕截图显示了可在其中配置警报逻辑的窗格。":::
 
-8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知********。
+8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知   。
 
 9. 使用名称、短名称、订阅和资源组填写“添加操作组”表单。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="操作组":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="屏幕截图显示 &quot;添加操作组&quot; 窗体，可在其中输入所描述的值。":::
 
-10. 配置“电子邮件/短信/推送/语音”操作类型****。
+10. 配置“电子邮件/短信/推送/语音”操作类型。
     
     选择 "电子邮件 Azure 资源管理器角色"，将通知发送到订阅所有者、参与者和读者。
    
-    完成后选择“确定”****。
+    完成后选择“确定”  。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="操作组":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="屏幕截图显示电子邮件/S M S/推送/语音窗格。":::
 
 11. 指定预警规则名称、说明和严重性。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="操作组"::: 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="屏幕截图显示 &quot;警报详细信息&quot; 窗格。"::: 
 
-12. 选择“创建警报规则”可以创建警报****。
+12. 选择“创建警报规则”可以创建警报  。
 
-    在几分钟后，警报将如前所述激活并触发。
+    几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 ### <a name="managing-alerts"></a>管理警报
 
 创建警报后，可选择它并执行以下操作：
 
 * 查看图，了解与此警报相关的指标阈值和前一天实际值。
-* 编辑或删除预警规则********。
-* 如果要暂时停止或恢复接收通知，可禁用或启用警报********。
+* 编辑或删除预警规则   。
+* 如果要暂时停止或恢复接收通知，可禁用或启用警报   。
 
 ## <a name="suggested-alerts"></a>建议的警报
 
-### <a name="disk-space"></a>磁盘空间
+### <a name="disk-space"></a>硬盘空间
 
 对于每个生产 (超大规模) 服务器组，监视和警报都非常重要。 底层 PostgreSQL 数据库要求可用磁盘空间才能正常运行。 如果磁盘已满，则数据库服务器节点将处于脱机状态，并拒绝启动，直到空间可用。 此时，它需要 Microsoft 支持请求来解决这种情况。
 
@@ -101,8 +101,8 @@ ms.locfileid: "90907424"
 磁盘接近其空间限制时，可以尝试以下方法获取更多的可用空间：
 
 * 查看数据保留策略。 如果可行，请将较旧的数据移到冷存储。
-* 考虑向服务器组 [添加节点](howto-hyperscale-scaling.md#add-worker-nodes) 并重新平衡分片。 重新平衡跨多台计算机分散数据。
-* 考虑 [增加](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) 辅助角色节点的容量。 每个工作线程最多可以有 2 TiB 的存储空间。 但是，应在调整节点大小时尝试添加节点，因为添加节点的速度更快。
+* 考虑向服务器组 [添加节点](howto-hyperscale-scale-grow.md#add-worker-nodes) 并重新平衡分片。 重新平衡跨多台计算机分散数据。
+* 考虑 [增加](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes) 辅助角色节点的容量。 每个工作线程最多可以有 2 TiB 的存储空间。 但是，应在调整节点大小时尝试添加节点，因为添加节点的速度更快。
 
 ### <a name="cpu-usage"></a>CPU 使用率
 
@@ -110,4 +110,4 @@ ms.locfileid: "90907424"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* 获取[指标集合概述](../azure-monitor/platform/data-platform.md)以确保服务可用且响应迅速。

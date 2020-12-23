@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: d845e7589b57bf76d3da48c48fa0a520b09e1f94
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299300"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636974"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>使用 azure 文件容器存储接口 (CSI) Azure Kubernetes Service 中的驱动程序 (AKS)  (预览版) 
 
@@ -33,13 +33,13 @@ CSI 是一种将任意块和文件存储系统公开给 Kubernetes 上容器化�
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>使用内置存储类动态创建 Azure 文件 PVs
 
-存储类用于定义如何创建 Azure 文件共享。 将在 [节点资源组][node-resource-group] 中自动创建一个存储帐户，以便与存储类一起用于保存 Azure 文件共享。 选择以下适用于*skuName*的[Azure 存储冗余 sku][storage-skus]之一：
+存储类用于定义如何创建 Azure 文件共享。 将在 [节点资源组][node-resource-group] 中自动创建一个存储帐户，以便与存储类一起用于保存 Azure 文件共享。 选择以下适用于 *skuName* 的 [Azure 存储冗余 sku][storage-skus]之一：
 
-* **Standard_LRS**：标准本地冗余存储
-* **Standard_GRS**：标准异地冗余存储
-* **Standard_ZRS**：标准区域冗余存储
-* **Standard_RAGRS**：标准读取访问异地冗余存储
-* **Premium_LRS**：高级本地冗余存储
+* **Standard_LRS** ：标准本地冗余存储
+* **Standard_GRS** ：标准异地冗余存储
+* **Standard_ZRS** ：标准区域冗余存储
+* **Standard_RAGRS** ：标准读取访问异地冗余存储
+* **Premium_LRS** ：高级本地冗余存储
 
 > [!NOTE]
 > Azure 文件支持 Azure 高级存储。 最低级别的高级文件共享为 100 GB。
@@ -76,7 +76,7 @@ total 29
 
 默认存储类适合最常见的方案，但并非全部。 在某些情况下，你可能希望使用自己的参数自定义自己的存储类。 例如，使用以下清单来配置 `mountOptions` 文件共享的。
 
-对于 Kubernetes 装入的文件共享，"DirMode *" 和 "* *dirMode* " 的默认值为*0777* 。 可以在存储类对象上指定不同的装载选项。
+对于 Kubernetes 装入的文件共享，"DirMode *" 和 "* *dirMode* " 的默认值为 *0777* 。 可以在存储类对象上指定不同的装载选项。
 
 创建一个名为 `azure-file-sc.yaml` 的文件，并粘贴下面的示例清单：
 
@@ -212,13 +212,13 @@ Filesystem                                                                      
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 ```
 
-状态显示为“已注册”需要几分钟时间**。 使用 [az feature list][az-feature-list] 命令验证注册状态：
+状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，请使用[az provider register][az-provider-register]命令刷新*Microsoft 存储*资源提供程序的注册：
+准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *Microsoft 存储* 资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Storage
@@ -229,7 +229,7 @@ az provider register --namespace Microsoft.Storage
 [创建一个 `Premium_LRS`](../storage/files/storage-how-to-create-premium-fileshare.md)具有以下配置的 Azure 存储帐户支持 NFS 共享：
 - 帐户类型： FileStorage
 - 需要安全传输 (仅启用 HTTPS 流量) ： false
-- 选择防火墙和虚拟网络中代理节点的虚拟网络
+- 选择防火墙和虚拟网络中代理节点的虚拟网络-因此，你可能更愿意在 MC_ 资源组中创建存储帐户。
 
 ### <a name="create-nfs-file-share-storage-class"></a>创建 NFS 文件共享存储类
 
@@ -239,7 +239,7 @@ az provider register --namespace Microsoft.Storage
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: azurefile-csi
+  name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
   resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
@@ -259,7 +259,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 可以[stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` 通过使用[kubectl apply][kubectl-apply]命令部署以下命令，部署将时间戳保存到文件中的示例有状态集：
 
  ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```
@@ -275,6 +275,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
 ...
 ```
+
+>[!NOTE]
+> 请注意，由于 NFS 文件共享是高级帐户，因此最小文件共享大小为100GB。 如果创建的 PVC 的存储大小较小，则可能会遇到 "无法创建文件共享 ..." 错误size (5) ... "。
+
 
 ## <a name="windows-containers"></a>Windows 容器
 
@@ -319,7 +323,7 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

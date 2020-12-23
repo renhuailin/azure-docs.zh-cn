@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d7fb8be1894ffa5f8c35e16e1ed3aa0949b3ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988030"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488198"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN 网关从经典部署模型迁移到 Resource Manager 部署模型
 VPN 网关现可从经典部署模型迁移到 Resource Manager 部署模型。 可以阅读有关 Azure 资源管理器[功能和优点](../azure-resource-manager/management/overview.md)的更多内容。 在本文中，我们将详细介绍如何从经典部署模型迁移到更新的基于 Resource Manager 的部署模型。 
 
-作为 VNet 迁移的一部分，VPN 网关将从经典部署模型迁移到 Resource Manager 部署模型。 一次仅限一个 VNet 完成此迁移。 就迁移工具或迁移前提条件而言，没有什么额外要求。 迁移步骤与现有 VNet 迁移步骤相同，并且已在 [IaaS 资源迁移页](../virtual-machines/windows/migration-classic-resource-manager-ps.md)进行了编档。 在迁移期间没有任何数据路径停机时间，因此，现有的工作负荷将继续运行，并且在迁移期间不会丢失本地连接。 在迁移过程中，与 VPN 网关关联的公共 IP 地址不会更改。 这就说明完成迁移后无需重新配置本地路由器。  
+作为 VNet 迁移的一部分，VPN 网关将从经典部署模型迁移到 Resource Manager 部署模型。 一次仅限一个 VNet 完成此迁移。 就迁移工具或迁移前提条件而言，没有什么额外要求。 迁移步骤与现有 VNet 迁移步骤相同，并且已在 [IaaS 资源迁移页](../virtual-machines/migration-classic-resource-manager-ps.md)进行了编档。 在迁移期间没有任何数据路径停机时间，因此，现有的工作负荷将继续运行，并且在迁移期间不会丢失本地连接。 在迁移过程中，与 VPN 网关关联的公共 IP 地址不会更改。 这就说明完成迁移后无需重新配置本地路由器。  
 
 Resource Manager 中的模型与经典模型不同，它由虚拟网络网关、本地网络网关和连接资源组成。 这些表示 VPN 网关本身，即分别表示本地地址空间和两者之间连接的本地站点。 完成迁移后，网关在经典模型下不再可用，并且必须使用 Resource Manager 模型对虚拟网络网关、本地网络网关和连接对象执行所有管理操作。
 
@@ -66,5 +66,4 @@ Resource Manager 中的模型与经典模型不同，它由虚拟网络网关、
 * 在受影响的 VNet 和表示本地位置的本地网络网关之间建立显式连接。 这还需要更改本地路由器配置来创建和配置 IPsec 隧道。
 
 ## <a name="next-steps"></a>后续步骤
-在了解过 VPN 网关迁移支持后，请转到[在支持的平台上将 IaaS 资源从经典模型迁移到 Resource Manager 模型](../virtual-machines/windows/migration-classic-resource-manager-ps.md)开始学习。
-
+在了解过 VPN 网关迁移支持后，请转到[在支持的平台上将 IaaS 资源从经典模型迁移到 Resource Manager 模型](../virtual-machines/migration-classic-resource-manager-ps.md)开始学习。

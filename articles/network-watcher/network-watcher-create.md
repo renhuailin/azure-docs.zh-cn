@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: c308824afdcae5f5c04a316c199bad71ad84a429
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272155"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961985"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
@@ -129,7 +129,7 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 
 现在，已有网络观察程序实例，请了解可用功能：
 
-* [拓扑](network-watcher-topology-overview.md)
+* [拓扑](./view-network-topology.md)
 * [数据包捕获](network-watcher-packet-capture-overview.md)
 * [IP 流验证](network-watcher-ip-flow-verify-overview.md)
 * [下一跃点](network-watcher-next-hop-overview.md)

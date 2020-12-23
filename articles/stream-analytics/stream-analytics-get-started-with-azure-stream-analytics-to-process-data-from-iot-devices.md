@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129008"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 流分析处理实时 IoT 数据流
 
@@ -20,8 +20,8 @@ ms.locfileid: "86043421"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 创建免费的[Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。
-* 从[GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)下载示例查询和数据文件。
+* 创建免费的 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。
+* 从 [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)下载示例查询和数据文件。
 
 ## <a name="scenario"></a>场景
 
@@ -44,7 +44,7 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航菜单中，选择“+ 创建资源”  。 然后从“分析”中选择“流分析作业”   。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航菜单中，选择“+ 创建资源”  。 然后从“分析”中选择“流分析作业”  。
    
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
@@ -125,7 +125,7 @@ HAVING Avg(temp)>100
 
 ![30 秒筛选查询](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-会看到结果只有 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl**（传感器名称）以 30 秒的**轮转窗口**对事件流进行分组。 临时查询必须声明你希望的时间进展方式。 通过使用 TIMESTAMP BY 子句，你已指定 OUTPUTTIME 列用于将时间与所有临时计算关联   。 有关详细信息，请阅读有关 [Time Management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)（时间管理）和 [Windowing functions](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)（窗口化函数）的文章。
+会看到结果只有 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl** （传感器名称）以 30 秒的 **轮转窗口** 对事件流进行分组。 临时查询必须声明你希望的时间进展方式。 通过使用 TIMESTAMP BY 子句，你已指定 OUTPUTTIME 列用于将时间与所有临时计算关联   。 有关详细信息，请阅读有关 [Time Management](/stream-analytics-query/time-management-azure-stream-analytics)（时间管理）和 [Windowing functions](/stream-analytics-query/windowing-azure-stream-analytics)（窗口化函数）的文章。
 
 ### <a name="query-detect-absence-of-events"></a>查询：检测事件缺失
 
@@ -148,9 +148,8 @@ WHERE t2.dspl IS NULL
 
 ![检测事件缺失](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-此时使用 **LEFT OUTER** 联接到相同的数据流（自联接）。 对于 **INNER** 联接，仅当找到匹配项时才返回结果。  对于 **LEFT OUTER** 联接，如果联接左侧的事件不匹配，则返回右侧所有列中带 NULL 的行。 这种方法对于查找事件缺失很有用。 有关详细信息，请参阅 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)。
+此时使用 **LEFT OUTER** 联接到相同的数据流（自联接）。 对于 **INNER** 联接，仅当找到匹配项时才返回结果。  对于 **LEFT OUTER** 联接，如果联接左侧的事件不匹配，则返回右侧所有列中带 NULL 的行。 这种方法对于查找事件缺失很有用。 有关详细信息，请参阅 [JOIN](/stream-analytics-query/join-azure-stream-analytics)。
 
 ## <a name="conclusion"></a>结束语
 
 本文旨在演示如何编写不同的流分析查询语言查询，并在浏览器中查看结果。 但这只是入门知识。 流分析支持多种输入和输出，甚至可以使用 Azure 机器学习中的函数，因而是用于分析数据流的可靠工具。 有关如何编写查询的详细信息，请阅读有关[常用查询模式](stream-analytics-stream-analytics-query-patterns.md)的文章。
-

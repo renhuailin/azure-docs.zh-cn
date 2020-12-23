@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659870"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912767"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查询加速来筛选数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "89659870"
 
 - 若要访问 Azure 存储，需要一个 Azure 订阅。 如果还没有订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- **常规用途 v2**存储帐户。 请参阅 [创建存储帐户](../common/storage-quickstart-create-account.md)。
+- **常规用途 v2** 存储帐户。 请参阅 [创建存储帐户](../common/storage-account-create.md)。
 
 - 选择一个选项卡以查看任何特定于 SDK 的必备组件。
 
@@ -92,7 +92,7 @@ ms.locfileid: "89659870"
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 打开 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)，或者，如果已在本地[安装](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
+1. 打开 [Azure Cloud Shell](../../cloud-shell/overview.md)，或者，如果已在本地[安装](/cli/azure/install-azure-cli) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
 
 2. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为订阅存储帐户。
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async 方法 `BlobQuickQueryClient.QueryAsync` 将查询发送到查询加速 API，然后将结果作为 [流](https://docs.microsoft.com/dotnet/api/system.io.stream) 对象传输回应用程序。
+Async 方法 `BlobQuickQueryClient.QueryAsync` 将查询发送到查询加速 API，然后将结果作为 [流](/dotnet/api/system.io.stream) 对象传输回应用程序。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)

@@ -1,87 +1,87 @@
 ---
 title: Azure Monitor 中的日志警报
-description: 满足指定的日志查询条件时，触发电子邮件、通知、调用网站 Url (webhook) 或自动化
+description: 满足指定的日志查询条件时，触发电子邮件、通知、调用网站 URL (Webhook) 或自动执行。
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294132"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317548"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
 ## <a name="overview"></a>概述
 
-日志警报是 [Azure 警报](./alerts-overview.md)中支持的警报类型之一。 日志警报允许用户使用 [Log Analytics](../log-query/get-started-portal.md) 查询来评估每个设置频率的资源日志，并根据结果触发警报。 规则可使用 [操作组](./action-groups.md)触发一个或多个操作。
+日志警报是 [Azure 警报](./alerts-overview.md)中支持的警报类型之一。 使用日志警报，用户可以通过 [Log Analytics](../log-query/log-analytics-tutorial.md) 查询按每个设置的频率评估资源日志并基于结果触发警报。 规则可以使用[操作组](./action-groups.md)触发一个或多个操作。
 
 > [!NOTE]
-> 可以将 [Log Analytics 工作区](../log-query/get-started-portal.md) 中的日志数据发送到 Azure Monitor 指标存储中。 指标警报具有[不同的行为](alerts-metric-overview.md)，该行为可能更可取，具体取决于你要使用的数据。 要了解如何将日志路由到指标，请参阅[日志的指标警报](alerts-metric-logs.md)。
+> 可以将 [Log Analytics 工作区](../log-query/log-analytics-tutorial.md)中的日志数据发送到 Azure Monitor 指标存储。 指标警报具有[不同的行为](alerts-metric-overview.md)，该行为可能更可取，具体取决于你要使用的数据。 要了解如何将日志路由到指标，请参阅[日志的指标警报](alerts-metric-logs.md)。
 
 > [!NOTE]
-> 对于 API 版本 `2020-05-01-preview` 和以资源为中心的日志警报，当前没有额外的费用。  未来将公布预览版中的功能的定价，以及开始计费之前提供的通知。 如果你选择在通知期后继续使用新的 API 版本和以资源为中心的日志警报，则将按适用的费率向你收费。
+> 当前不对 API 版本 `2020-05-01-preview` 和以资源为中心的日志警报收取额外费用。  未来将公布预览版中的功能的定价以及开始计费之前提供的通知。 如果你选择在通知期过后继续使用新 API 版本和以资源为中心的日志警报，需要按适用的费率付费。
 
 ## <a name="prerequisites"></a>先决条件
 
-日志警报对 Log Analytics 的数据运行查询。 首先，应开始 [收集日志数据](resource-logs.md) 并查询日志数据以查找问题。 您可以使用 Log Analytics 中的 " [警报查询示例" 主题](../log-query/saved-queries.md) 来了解可以发现或 [开始编写您自己的查询的](../log-query/get-started-portal.md)内容。
+日志警报运行对 Log Analytics 数据的查询。 首先，你应开始[收集日志数据](resource-logs.md)，并查询日志数据以查找问题。 可以使用 Log Analytics 中的[警报查询示例主题](../log-query/example-queries.md)来了解可发现的内容或[开始编写你自己的查询](../log-query/log-analytics-tutorial.md)。
 
-[Azure 监视参与者](./roles-permissions-security.md) 是创建、修改和更新日志警报所需的常见角色。 还需要访问资源日志的 & 查询执行权限。 对资源日志进行部分访问可能导致查询失败或返回部分结果。 [详细了解如何在 Azure 中配置日志警报](./alerts-log.md)。
+[Azure 监视参与者](./roles-permissions-security.md)是创建、修改和更新日志警报所需的常见角色。 还需要具有对资源日志的访问和查询执行权限。 对资源日志具有部分访问权限可能会导致查询失败或返回部分结果。 [详细了解如何在 Azure 中配置日志警报](./alerts-log.md)。
 
 > [!NOTE]
-> 使用旧 [Log Analytics 警报 API](api-alerts.md)管理 Log Analytics 的日志警报。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。
+> 过去使用旧版 [Log Analytics 警报 API](api-alerts.md) 管理 Log Analytics 的日志警报。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。
 
 ## <a name="query-evaluation-definition"></a>查询评估定义
 
 日志搜索规则条件定义开始于：
 
-- 要运行哪个查询？
+- 要运行什么查询？
 - 如何使用结果？
 
 以下各节介绍了可用于设置上述逻辑的不同参数。
 
 ### <a name="log-query"></a>日志查询
-用于计算规则的 [Log Analytics](../log-query/get-started-portal.md) 查询。 此查询返回的结果用于确定是否触发警报。 查询的作用域可以是：
+用来评估规则的 [Log Analytics](../log-query/log-analytics-tutorial.md) 查询。 此查询返回的结果用来确定是否将触发某个警报。 查询的范围可以是：
 
-- 特定资源，如虚拟机。
-- 大规模资源，如订阅或资源组。
-- 使用 [跨资源查询](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)的多个资源。 
+- 特定资源，例如虚拟机。
+- 大规模资源，例如订阅或资源组。
+- 使用[跨资源查询](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)的多个资源。 
  
 > [!IMPORTANT]
-> 警报查询具有限制，可确保结果的最佳性能和相关性。 [在此处了解详细信息](./alerts-log-query.md)。
+> 警报查询具有约束，可确保结果的最佳性能和相关性。 [在此处了解更多信息](./alerts-log-query.md)。
 
 > [!IMPORTANT]
-> 仅支持使用当前的 scheduledQueryRules API 进行资源中心和 [跨资源查询](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) 。 如果使用旧版 [Log Analytics 警报 API](api-alerts.md)，则需要切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)
+> 使用当前 scheduledQueryRules API 仅支持以资源为中心的查询和[跨资源查询](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)。 如果使用旧版 [Log Analytics 警报 API](api-alerts.md)，则需要切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)
 
 #### <a name="query-time-range"></a>查询时间范围
 
-在规则条件定义中设置时间范围。 在工作区和 Application Insights 中，它称为 **Period**。 在所有其他资源类型中，称为 " **替代查询时间范围**"。
+时间范围是在规则条件定义中设置的。 在工作区和 Application Insights 中，它被称为“期间”。 在所有其他资源类型中，它被称为“替代查询时间范围”。
 
-与在 log analytics 中一样，时间范围限制查询数据到指定的范围。 即使查询中使用了 **前** 一个命令，也会应用时间范围。
+与在日志分析中一样，时间范围将查询数据限制在指定的范围内。 即使在查询中使用了 ago 命令，时间范围也将适用。
 
-例如，当时间范围为60分钟时，查询将扫描60分钟，即使文本中 ** (1d) **也是如此。 时间范围和查询时间筛选需要匹配。 在此示例中，将 "**期间**"  /  **重写查询时间范围**更改为一天将按预期方式工作。
+例如，即使文本包含 ago(1d)，查询也会扫描 60 分钟（当时间范围为 60 分钟时）。 时间范围和查询时间筛选需要匹配。 在这个例子中，将“期间” / “替代查询时间范围”更改为一天就可以正常工作 。
 
-### <a name="measure"></a>度量
+### <a name="measure"></a>测量
 
-日志警报将日志转换为可计算的数字值。 可以衡量两个不同的内容：
+日志警报将日志转换为可计算的数字值。 你可以度量两个不同的事项：
 
-#### <a name="count-of-the-results-table-rows"></a>结果表行计数
+#### <a name="count-of-the-results-table-rows"></a>结果表行的计数
 
-结果计数为默认度量值。 适用于事件，例如 Windows 事件日志、syslog 和应用程序异常。 在计算的时间范围内发生日志记录或不发生日志记录时触发触发器。
+结果计数是默认度量值。 适用于处理 Windows 事件日志、Syslog 和应用程序异常等事件。 当评估的时间窗口中发生或未发生日志记录时触发。
 
-当你尝试在日志中检测数据时，日志警报最有效。 当你尝试检测日志中缺少的数据时，它的工作效率会降低。 例如，对虚拟机检测信号发出警报。
+当你尝试检测日志中的数据时，日志警报效果最佳。 当你试图检测日志中是否缺少数据时，它的效果就不太好。 例如，对虚拟机检测信号发出警报。
 
-对于工作区和 Application Insights，将 **基于** 所选的 **结果数**来调用它。 在所有其他资源类型中，它被称为具有选择**表行**的**度量值**。
+对于工作区和 Application Insights，它在选择“结果数”的情况下称为“基于”。  在所有其他资源类型中，它在选择“表行”的情况下称为“度量值”。
 
 > [!NOTE]
-> 由于日志是半结构化数据，因此，它们本质上比指标更具延迟，尝试检测日志中缺少数据时可能会遇到 misfires，应考虑使用 [指标警报](alerts-metric-overview.md)。 可以使用 [日志的指标警报](alerts-metric-logs.md)，将数据从日志发送到指标存储。
+> 由于日志是半结构化数据，它们本质上比指标更隐蔽，因此，尝试检测日志中是否缺少数据时可能会遇到误触发，你应考虑使用[指标警报](alerts-metric-overview.md)。 你可以使用[日志的指标警报](alerts-metric-logs.md)将数据从日志发送到指标存储。
 
 ##### <a name="example-of-results-table-rows-count-use-case"></a>结果表行计数用例示例
 
-如果你想要了解应用程序的响应时间，错误代码 500 (内部服务器错误) 。 可以创建一个警报规则，详情如下：
+你希望知道你的应用程序何时以错误代码 500（内部服务器错误）做出响应。 可以创建一个警报规则，详情如下：
 
 - **查询：** 
 
@@ -90,42 +90,42 @@ requests
 | where resultCode == "500"
 ```
 
-- **时间段：** 15 分钟
+- **时间段/聚合粒度：** 15 分钟
 - **警报频率：** 15 分钟
 - **阈值：** 大于 0
 
-然后，警报规则监视所有以500错误代码结尾的请求。 查询每15分钟运行一次，过去15分钟。 如果只找到一个记录，则会触发警报并触发所配置的操作。
+然后，警报规则监视所有以错误代码 500 结束的请求。 在过去的 15 分钟，该查询每 15 分钟运行一次。 即使找到一条记录，它也会引发警报并触发所配置的操作。
 
-#### <a name="calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value"></a>基于数值列计算度量值 (例如 CPU 计数器值) 
+#### <a name="calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value"></a>基于数值列计算度量值（例如 CPU 计数器值）
 
-对于工作区和 Application Insights，它将 **基于** 选择 **指标度量值**进行调用。 在所有其他资源类型中，它被称为 " **度量值** "，并选择任意数量的列名称。
+对于工作区和 Application Insights，它在选择“指标度量”的情况下称为“基于”。  在所有其他资源类型中，它在选择任何数字列名称的情况下称为“度量值”。
 
 ### <a name="aggregation-type"></a>聚合类型
 
-在多个记录上完成的用于将其聚合为一个数值的计算。 例如：
-- **Count** 返回查询中的记录数
-- **Average** 返回定义的度量值列 [**聚合粒度**](#aggregation-granularity) 的平均值。
+对多条记录执行的用于将其聚合为一个数值的计算。 例如：
+- **计数** 返回查询中的记录数
+- **平均值** 返回所定义的度量值列 [**聚合粒度**](#aggregation-granularity)的平均值。
 
-在工作区和 Application Insights 中，仅在 **指标度量** 度量值类型中受支持。 查询结果必须包含一个名为 AggregatedValue 的列，该列在用户定义的聚合之后提供数值。 在所有其他资源类型中，" **聚合类型** " 是从该名称的字段中选择的。
+在工作区和 Application Insights 中，它仅在“指标度量”度量值类型中受支持。 查询结果必须包含一个名为 AggregatedValue 的列，该列在用户定义的聚合之后提供数值。 在所有其他资源类型中，“聚合类型”是从该名称的字段中选择的。
 
 ### <a name="aggregation-granularity"></a>聚合粒度
 
-确定用于聚合多个记录到一个数值的间隔。 例如，如果指定 **5 分钟**，则将使用指定的 **聚合类型** 按5分钟间隔对记录进行分组。
+确定用于将多条记录聚合为一个数值的间隔。 例如，如果你指定了 **5 分钟**，则记录会使用指定的 **聚合类型** 按 5 分钟间隔进行分组。
 
-在工作区和 Application Insights 中，仅在 **指标度量** 度量值类型中受支持。 查询结果必须包含在查询结果中设置时间间隔 [ ( # B1 的 bin ](/azure/kusto/query/binfunction) 。 在所有其他资源类型中，控制此设置的字段称为 **聚合粒度**。
+在工作区和 Application Insights 中，它仅在“指标度量”度量值类型中受支持。 查询结果必须包含在查询结果中设置间隔的 [bin()](/azure/kusto/query/binfunction)。 在所有其他资源类型中，控制此设置的字段称为“聚合粒度”。
 
 > [!NOTE]
-> 如果 [bin ( # B1 ](/azure/kusto/query/binfunction) 可能导致不一致的时间间隔，则在运行时，警报服务将自动将 [Bin ( # B3 ](/azure/kusto/query/binfunction) 函数转换为 [bin_at ( # B5 ](/azure/kusto/query/binatfunction) 函数，以确保具有固定点的结果。
+> 由于 [bin()](/azure/kusto/query/binfunction) 可能导致不均匀的时间间隔，因此，警报服务会自动将 [bin()](/azure/kusto/query/binfunction) 函数转换为针对运行时的相应时间的 [bin_at()](/azure/kusto/query/binatfunction) 函数，以确保生成针对确定时间点的结果。
 
 ### <a name="split-by-alert-dimensions"></a>按警报维度拆分
 
-按数字或字符串列将警报拆分为单独的警报，方法是将其分组为唯一的组合。 以规模 (订阅或资源组范围) 创建以资源为中心的警报时，可以按 Azure 资源 ID 列进行拆分。 "对 Azure 资源 ID 进行拆分" 列会将警报的目标更改为指定的资源。
+通过将警报分组为唯一的组合，按数字或字符串列将警报拆分为单独的警报。 当大规模（在订阅或资源组范围内）创建以资源为中心的警报时，可以按 Azure 资源 ID 列进行拆分。 按 Azure 资源 ID 列进行拆分会将警报的目标更改为指定的资源。
 
-在工作区和 Application Insights 中，仅在 **指标度量** 度量值类型中受支持。 字段 **在上**被称为聚合。 它限制为三列。 查询中的列数超过三个可能导致意外的结果。 在所有其他资源类型中，它在条件 (限制为六个分隔) 的情况下，配置为 " **按维度拆分** " 部分。
+在工作区和 Application Insights 中，它仅在“指标度量”度量值类型中受支持。 此字段称为“聚合依据”。 它限制为三个列。 查询中的分组依据列超过三个可能会导致意外的结果。 在所有其他资源类型中，它是在条件的“拆分依据维度”部分中配置的（限制为六个拆分）。
 
 #### <a name="example-of-splitting-by-alert-dimensions"></a>按警报维度拆分的示例
 
-例如，你想要监视在特定资源组中运行你的网站/应用的多个虚拟机的错误。 可以使用日志警报规则执行此操作，如下所示：
+例如，你想要监视在特定资源组中运行你的网站/应用的多个虚拟机的错误。 可以如下所述使用日志警报规则实现此目的：
 
 - **查询：** 
 
@@ -136,72 +136,72 @@ requests
     or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
     ```
 
-    将工作区和 Application Insights 与 **指标度量** 警报逻辑一起使用时，需要将此行添加到查询文本：
+    将工作区和 Application Insights 与 **指标度量** 警报逻辑一起使用时，需要将以下行添加到查询文本：
 
     ```Kusto
     | summarize AggregatedValue = count() by Computer, bin(TimeGenerated, 15m)
     ```
 
-- **资源 Id 列：** 警报规则中按资源 id 列划分的 _ResourceId (仅适用于当前) 的订阅和资源组
+- **资源 ID 列：** _ResourceId（目前，按警报规则中的资源 ID 列拆分这一做法仅适用于订阅和资源组）
 - **维度/聚合依据：**
-  - 计算机 = VM1，VM2 (警报规则定义中的筛选值当前不适用于工作区和 Application Insights。 筛选查询文本。 ) 
-- **时间段：** 15 分钟
+  - Computer = VM1、VM2（在警报规则定义中筛选值这一做法目前不适用于工作区和 Application Insights。 请在查询文本中筛选。）
+- **时间段/聚合粒度：** 15 分钟
 - **警报频率：** 15 分钟
 - **阈值：** 大于 0
 
-此规则监视在过去15分钟内虚拟机是否有错误事件。 将单独监视每个虚拟机，并分别触发操作。
+此规则监视在过去 15 分钟内是否有任何虚拟机出现错误事件。 每个虚拟机都会被单独监视，并且会分别触发操作。
 
 > [!NOTE]
-> 按警报维度分割仅适用于当前 scheduledQueryRules API。 如果使用旧版 [Log Analytics 警报 API](api-alerts.md)，则需要切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。 仅在 API 版本及更高版本中支持规模为资源中心的警报 `2020-05-01-preview` 。
+> 按警报维度拆分这一做法仅适用于当前的 scheduledQueryRules API。 如果使用旧版 [Log Analytics 警报 API](api-alerts.md)，则需要切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。 仅在 API `2020-05-01-preview` 及更高版本中支持大规模的以资源为中心的警报。
 
 ## <a name="alert-logic-definition"></a>警报逻辑定义
 
-定义要运行的查询并对结果进行评估后，需要定义警报逻辑以及何时触发操作。 以下各节介绍了可以使用的不同参数：
+定义要运行的查询并对结果进行评估后，你需要定义警报逻辑以及何时触发操作。 以下各节介绍了你可以使用的各个参数：
 
 ### <a name="threshold-and-operator"></a>阈值和运算符
 
-查询结果将转换为一个数字，该数字将与阈值和运算符进行比较。
+查询结果将转换为一个数字，该数字将依据阈值和运算符进行比较。
 
 ### <a name="frequency"></a>频率
 
-查询运行的时间间隔。 可以设置为5分钟到一天。 必须等于或小于 [查询时间范围](#query-time-range) ，才能不错过日志记录。
+运行查询的间隔。 可以设置为 5 分钟到 1 天。 必须等于或小于[查询时间范围](#query-time-range)才不会错过日志记录。
 
-例如，如果将时间段设置为30分钟，频率设置为1小时。  如果查询在00:00 运行，则它将返回23:30 和00:00 之间的记录。 下一次运行查询时，将在00:30 到01:00 之间返回记录01:00。 在00:00 和00:30 之间创建的任何记录永远都不会进行评估。
+例如，如果你将时间段设置为 30 分钟，将频率设置为 1 小时 1 次。  如果查询在 00:00 运行，则会返回 23:30 到 00:00 之间的记录。 下次运行查询的时间将是 01:00，将返回 00:30 到 01:00 之间的记录。 从不会评估在 00:00 到 00:30 之间创建的任何记录。
 
-### <a name="number-of-violations-to-trigger-alert"></a>触发警报的冲突数
+### <a name="number-of-violations-to-trigger-alert"></a>触发警报的违规次数
 
-可以指定触发警报所需的警报评估期和失败次数。 允许您更好地定义触发警报的影响时间。 
+你可以指定警报评估时段和触发警报所需的故障次数。 允许你更好地定义触发警报的影响时间。 
 
-例如，如果你的规则 [**聚合粒度**](#aggregation-granularity) 定义为 "5 分钟"，则仅当发生三次故障 (15 分钟) 上一小时后，才能触发警报。 此设置由您的应用程序业务策略定义。
+例如，如果你的 [**聚合粒度**](#aggregation-granularity)规则定义为“5 分钟”，则只有在过去一小时内发生三次故障（15 分钟）时，你才能触发警报。 此设置由你的应用程序业务策略定义。
 
 ## <a name="state-and-resolving-alerts"></a>状态和解决警报
 
-日志警报是无状态的。 每次满足条件时，都会触发警报，即使之前已激发也是如此。 触发的警报不会解析。 你可以 [将警报标记为已关闭](alerts-managing-alert-states.md)。 你还可以对操作进行静音，以防它们在触发警报规则后触发一段时间。
+日志警报是无状态的。 每次满足条件时，都会触发警报，即使之前已触发过。 触发的警报不会解决。 你可以 [将警报标记为已关闭](alerts-managing-alert-states.md)。 你还可以对操作进行“静音”，以防它们在警报规则触发后的一段时间内触发。
 
-在工作区和 Application Insights 中，这称为 **禁止显示警报**。 在所有其他资源类型中，这称为 " **静音操作**"。 
+在工作区和 Application Insights 中，它称为“抑制警报”。 在所有其他资源类型中，它称为“将操作‘静音’”。 
 
 请参阅此警报评估示例：
 
 | 时间    | 日志条件评估 | 结果 
 | ------- | ----------| ----------| ------- 
-| 00:05 | false | 不会触发警报。 没有调用任何操作。
-| 00:10 | true  | 警报触发，操作组被调用。 新的警报状态处于活动状态。
-| 00:15 | true  | 警报触发，操作组被调用。 新的警报状态处于活动状态。
-| 00:20 | false | 不会触发警报。 没有调用任何操作。 早期警报状态保持活动状态。
+| 00:05 | FALSE | 警报不会触发。 没有调用任何操作。
+| 00:10 | TRUE  | 警报触发，操作组被调用。 新警报处于活动状态。
+| 00:15 | TRUE  | 警报触发，操作组被调用。 新警报处于活动状态。
+| 00:20 | FALSE | 警报不会触发。 没有调用任何操作。 以前的警报保持活动状态。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>日志警报的定价和计费
 
-定价信息位于 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中。 "资源提供程序" 下列出 `microsoft.insights/scheduledqueryrules` 了日志警报：
+定价信息位于 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中。 日志警报在资源提供程序 `microsoft.insights/scheduledqueryrules` 下列出，同时列出的有：
 
-- Application Insights 上显示的日志警报，其中包含与资源组和警报属性完全相同的资源名称。
-- 与资源组和警报属性一起显示的 Log Analytics 上显示的日志警报当使用 [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)创建时。
-- 从 [旧 LOG ANALYTICS API](./api-alerts.md) 创建的日志警报不跟踪 [Azure 资源](../../azure-resource-manager/management/overview.md) ，并且不会强制实施唯一资源名称。 这些警报仍在中 `microsoft.insights/scheduledqueryrules` 作为隐藏资源创建，这些资源具有此资源命名结构 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` 。 旧版 API 上的日志警报与 "资源组" 和 "警报属性" 一起显示在一起。
-
-> [!NOTE]
-> 不受支持的资源字符（如） `<, >, %, &, \, ?, /` `_` 在隐藏资源名称中被替换为，这也会在计费信息中反映出来。
+- Application Insights 上的日志警报，显示时带有确切的资源名称以及资源组和警报属性。
+- 如果是使用 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 创建的，则 Log Analytics 上的日志警报显示时带有确切的资源名称以及资源组和警报属性。
+- 通过[旧式 Log Analytics API](./api-alerts.md) 创建的日志警报不是被跟踪的 [Azure资源](../../azure-resource-manager/management/overview.md)，没有强制使用的唯一资源名称。 这些警报仍作为隐藏资源在 `microsoft.insights/scheduledqueryrules` 上创建，这些资源的资源命名结构为 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`。 针对旧式 API 的日志警报显示时带有上述隐藏的资源名称以及资源组和警报属性。
 
 > [!NOTE]
-> Log Analytics 的日志警报，该警报用于通过旧 [Log Analytics 警报 API](api-alerts.md) 和旧模板 [Log Analytics 保存的搜索和警报](../insights/solutions.md)进行管理。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。 任何警报规则管理都应该使用 [旧的 LOG ANALYTICS API](api-alerts.md) 完成，直到您决定切换，而不能使用隐藏的资源。
+> 在隐藏的资源名称中，不受支持的资源字符（例如 `<, >, %, &, \, ?, /`）将被替换为 `_`，这也会在计费信息中反映出来。
+
+> [!NOTE]
+> 过去使用旧式 [Log Analytics 警报 API](api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions.md)的旧式模板管理 Log Analytics 的日志警报。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。 任何警报规则管理都应该使用[旧式 Log Analytics API](api-alerts.md) 执行，直到你决定切换并且在这种情况下无法使用隐藏的资源。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -209,4 +209,3 @@ requests
 * 了解 [Azure 日志警报中的 Webhook](alerts-log-webhook.md)。
 * 了解 [Azure 警报](./alerts-overview.md)。
 * 详细了解 [Log Analytics](../log-query/log-query-overview.md)。
-

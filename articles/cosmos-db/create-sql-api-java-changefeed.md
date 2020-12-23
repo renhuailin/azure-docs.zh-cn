@@ -9,14 +9,15 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 765fd3afc7fe688d3e6b0e3394e7dc8c39af69b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362038"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096846"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何创建使用 Azure Cosmos DB SQL API 和更改源处理器的 Java 应用
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本操作指南逐步介绍了如何创建简单的 Java 应用，此应用使用 Azure Cosmos DB SQL API 将文档插入到 Azure Cosmos DB 容器，同时使用更改源和更改源处理器来维护容器的具体化视图。 此 Java 应用使用 Azure Cosmos DB Java SDK v4 与 Azure Cosmos DB SQL API 通信。
 

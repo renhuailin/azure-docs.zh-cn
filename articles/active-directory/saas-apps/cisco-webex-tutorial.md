@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1d53cfc874bca6529fdee821ce3173607d5f06b3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551277"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456048"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex Meetings 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551277"
 * 让用户使用其 Azure AD 帐户自动登录到 Cisco Webex Meetings。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +44,7 @@ ms.locfileid: "88551277"
 
 * Cisco Webex Meetings 支持 **SP 和 IDP** 发起的 SSO
 
-* Cisco Webex Meetings 支持**实时**用户预配
+* Cisco Webex Meetings 支持 **实时** 用户预配
 
 ## <a name="adding-cisco-webex-meetings-from-the-gallery"></a>从库中添加 Cisco Webex Meetings
 
@@ -54,12 +54,12 @@ ms.locfileid: "88551277"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分的搜索框中，键入“Cisco Webex Meetings”********。
-1. 从结果面板中选择“Cisco Webex Meetings”，然后添加该应用****。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Cisco Webex Meetings”。
+1. 从结果面板中选择“Cisco Webex Meetings”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-webex-meetings"></a>配置和测试 Cisco Webex Meetings 的 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置和测试 Cisco Webex Meetings 的 Azure AD SSO****。 若要正常使用 SSO，需要在 Azure AD 用户与 Cisco Webex Meetings 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 Cisco Webex Meetings 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Cisco Webex Meetings 相关用户之间建立链接关系。
 
 若要配置和测试 Cisco Webex Meetings 的 Azure AD SSO，请完成以下构建基块：
 
@@ -74,28 +74,28 @@ ms.locfileid: "88551277"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Cisco Webex Meetings”应用程序集成页上，找到“管理”部分，选择“单一登录”************。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Cisco Webex Meetings”应用程序集成页上，找到“管理”部分，选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”**** 页上，可以通过上传“服务提供程序元数据”**** 文件，在 **IDP** 发起模式下配置应用程序，如下所示：
+1. 在“使用 SAML 设置单一登录”页上，可以通过上传“服务提供程序元数据”文件，在 **IDP** 发起模式下配置应用程序，如下所示：
 
     a. 单击“上传元数据文件”。
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
 
-    c. 成功完成服务提供程序元数据文件的上传后，**标识符**和**回复 URL** 值将自动填充在“基本 SAML 配置”部分中****。
+    c. 成功完成服务提供程序元数据文件的上传后， **标识符** 和 **回复 URL** 值将自动填充在“基本 SAML 配置”部分中。
 
     >[!Note]
-    >你将从“配置 Cisco Webex Meetings SSO”**** 部分获取服务提供程序元数据文件，本教程稍后将对此进行说明。 
+    >你将从“配置 Cisco Webex Meetings SSO”部分获取服务提供程序元数据文件，本教程稍后将对此进行说明。 
 
-1. 如果要在“SP”**** 发起的模式下配置应用程序，请执行以下步骤：  
+1. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤：  
 
-    a. 在“基本 SAML 配置”**** 部分中，单击编辑/笔形图标。
+    a. 在“基本 SAML 配置”部分中，单击编辑/笔形图标。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
     
-    b. 在“登录 URL”**** 文本框中，使用以下模式键入 URL：` https://<customername>.my.webex.com`
+    b. 在“登录 URL”文本框中，使用以下模式键入 URL：` https://<customername>.my.webex.com`
 
-5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框。
+5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![图像](common/edit-attribute.png)
 
@@ -116,15 +116,15 @@ ms.locfileid: "88551277"
 
     d. 选择“源”作为“属性”。
 
-    e. 在“源属性”列表中，从下拉列表中选择为该行显示的属性值。****
+    e. 在“源属性”列表中，从下拉列表中选择为该行显示的属性值。
 
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Cisco Webex Meetings”部分中，根据要求复制相应的 URL。****
+6. 在“设置 Cisco Webex Meetings”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "88551277"
 在本部分中，通过授予 B.Simon 访问 Cisco Webex Meetings 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在“应用程序”列表中，选择“Cisco Webex Meetings”****。
+1. 在“应用程序”列表中，选择“Cisco Webex Meetings”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
     ![“用户和组”链接](common/users-groups-blade.png)
@@ -162,48 +162,48 @@ ms.locfileid: "88551277"
 
 1. 使用管理凭据转到 `https://<customername>.webex.com/admin` URL。
 
-2. 转到“常用站点设置”**** 并导航到“SSO 配置”****。
+2. 转到“常用站点设置”并导航到“SSO 配置”。
  
-    ![配置单一登录](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![屏幕截图显示已选择“常用站点设置”和“SSO 配置”的 Cisco Webex 管理。](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
-3. 在“Webex 管理”**** 页上，执行以下步骤：
+3. 在“Webex 管理”页上，执行以下步骤：
 
-    ![配置单一登录](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![屏幕截图显示“Webex 管理”页以及此步骤中所述的信息。](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
-    a. 选择 **SAML 2.0** 作为**联合身份验证协议**。
+    a. 选择 **SAML 2.0** 作为 **联合身份验证协议** 。
 
-    b. 单击“导入 SAML 元数据”链接，以上传从 Azure 门户下载的元数据文件。****
+    b. 单击“导入 SAML 元数据”链接，以上传从 Azure 门户下载的元数据文件。
 
-    c. 单击“导出”按钮以下载服务提供程序元数据文件，并在 Azure 门户中的“基本 SAML 配置”部分上传该文件。********
+    c. 单击“导出”按钮以下载服务提供程序元数据文件，并在 Azure 门户中的“基本 SAML 配置”部分上传该文件。
 
-    d. 在“AuthContextClassRef”文本框中键入 `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified`；若要使用 Azure AD 启用 MFA，请键入类似于 `urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509` 的两个值****
+    d. 在“AuthContextClassRef”文本框中键入 `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified`；若要使用 Azure AD 启用 MFA，请键入类似于 `urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509` 的两个值
 
-    e. 选择“自动创建帐户”。****
+    e. 选择“自动创建帐户”。
 
     >[!NOTE]
-    >若要启用**实时**用户预配，需要选中“自动创建帐户”。**** 除此之外，还需要在 SAML 响应中传递 SAML 令牌属性。
+    >若要启用 **实时** 用户预配，需要选中“自动创建帐户”。 除此之外，还需要在 SAML 响应中传递 SAML 令牌属性。
 
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
     >[!NOTE]
     >此配置仅适用于使用电子邮件格式的 Webex UserID 的客户。
 
 ### <a name="create-cisco-webex-meetings-test-user"></a>创建 Cisco Webex Meetings 测试用户
 
-本部分的目的是在 Cisco Webex Meetings 中创建名为 B.Simon 的用户。 Cisco Webex Meetings 支持默认已启用的**实时**预配。 此部分不存在任何操作项。 尝试访问 Cisco Webex Meetings 时，如果 Cisco Webex Meetings 中尚不存在用户，则系统会创建一个新用户。
+本部分的目的是在 Cisco Webex Meetings 中创建名为 B.Simon 的用户。 Cisco Webex Meetings 支持默认已启用的 **实时** 预配。 此部分不存在任何操作项。 尝试访问 Cisco Webex Meetings 时，如果 Cisco Webex Meetings 中尚不存在用户，则系统会创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Cisco Webex Meetings”磁贴时，应会自动登录到设置了 SSO 的 Cisco Webex Meetings。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Cisco Webex Meetings”磁贴时，应会自动登录到设置了 SSO 的 Cisco Webex Meetings。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 ServiceNow](https://aad.portal.azure.com)

@@ -1,7 +1,7 @@
 ---
-title: 语音翻译概述-语音服务
+title: 语音翻译概述 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音翻译允许您将语音的端到端实时、多语言翻译添加到您的应用程序、工具和设备。 相同 API 可以用于语音到语音和语音到文本的转换。 本文概述了语音翻译服务的优势和功能。
+description: 使用语音翻译，可以将语音的端到端实时多语言翻译添加到应用程序、工具和设备。 相同 API 可以用于语音到语音和语音到文本的转换。 本文概述了语音翻译服务的优势和功能。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 语音翻译
-ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630064"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015199"
 ---
 # <a name="what-is-speech-translation"></a>什么是语音翻译？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-在本概述中，你将了解语音翻译服务的优点和功能，它允许音频流的实时、多语言语音到语音和语音到文本转换。 使用语音 SDK，应用程序、工具和设备可以访问所提供的音频的源听录和翻译输出。 检测到语音时，会返回过渡脚本和翻译结果，最终结果可以转换为合成语音。
+本概述介绍语音翻译服务的优势和功能，它可以对音频流进行实时多语言语音转语音和语音转文本翻译。 使用语音 SDK，应用程序、工具和设备可以访问所提供的音频的源听录和翻译输出。 检测到语音时，会返回过渡性的听录和翻译结果，最终结果可以转换为合成语音。
 
 Microsoft 翻译引擎有两种不同的支持方法：统计机器翻译 (SMT) 和神经机器翻译 (NMT)。 SMT 可以在给定上下文（数个单词）的情况下，使用高级统计分析来估计可能的最佳翻译。 使用 NMT 时，可以通过神经网络借助完整的语句上下文来翻译单词，这样可以提供更准确且听起来很自然的翻译。
 
@@ -48,13 +48,13 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 
 ## <a name="migration-guides"></a>迁移指南
 
-如果你的应用程序、工具或产品正在使用 [语音翻译 API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview)，我们已创建了可帮助你迁移到语音服务的指南。
+如果你的应用程序、工具或产品正在使用 [语音翻译 API](./how-to-migrate-from-translator-speech-api.md)，我们已创建了可帮助你迁移到语音服务的指南。
 
 * [从语音翻译 API 迁移到语音服务](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>参考文档
 
-* [语音 SDK](speech-sdk-reference.md)
+* [语音 SDK](./speech-sdk.md)
 * [语音设备 SDK](speech-devices-sdk.md)
 * [REST API：语音转文本](rest-speech-to-text.md)
 * [REST API：文本转语音](rest-text-to-speech.md)

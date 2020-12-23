@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74270228"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95526113"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
 
@@ -83,6 +83,6 @@ Blob 存储生命周期管理提供了丰富的基于规则的策略：
 评估 GPv2 和 Blob 存储帐户中的热、冷和存档层。
 
 - [了解如何从存档层解冻 Blob 数据](storage-blob-rehydration.md)
-- [通过启用 Azure 存储度量值来评估当前存储帐户的使用情况](../common/storage-enable-and-view-metrics.md)
+- [通过启用 Azure 存储度量值来评估当前存储帐户的使用情况](./monitor-blob-storage.md)
 - [按区域查看 Blob 存储帐户和 GPv2 帐户中的热层、冷层和存档层定价](https://azure.microsoft.com/pricing/details/storage/)
 - [检查数据传输定价](https://azure.microsoft.com/pricing/details/data-transfers/)

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
 ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994802"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>操作说明：导出预配配置并回滚到已知的良好状态
 
@@ -49,7 +49,7 @@ ms.locfileid: "88235811"
 ### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID (对象 ID) 
 
 1. 启动 [Azure 门户](https://portal.azure.com)，并导航到预配应用程序的 "属性" 部分。 例如，如果要将 *Workday 导出到 AD 用户预配应用程序* 映射，请导航到该应用的属性部分。
-1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值**。 此值也称为应用的 **ServicePrincipalId** ，它将用于 Microsoft Graph 资源管理器操作。
+1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值。 此值也称为应用的 **ServicePrincipalId** ，它将用于 Microsoft Graph 资源管理器操作。
 
    ![Workday 应用服务主体 ID](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -64,13 +64,13 @@ ms.locfileid: "88235811"
 
 ### <a name="step-3-retrieve-the-provisioning-job-id-of-the-provisioning-app"></a>步骤3：检索预配应用的设置作业 ID
 
-在 Microsoft Graph 浏览器中，运行以下 GET 查询，将 [servicePrincipalId] 替换为从[步骤 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 中提取的 ServicePrincipalId****。
+在 Microsoft Graph 浏览器中，运行以下 GET 查询，将 [servicePrincipalId] 替换为从[步骤 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 中提取的 ServicePrincipalId。
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
 ```
 
-你将获得如下所示的响应。 复制响应中显示的“ID 属性”。 此值为 ProvisioningJobId 且将用于检索基础架构元数据****。
+你将获得如下所示的响应。 复制响应中显示的“ID 属性”。 此值为 ProvisioningJobId 且将用于检索基础架构元数据。
 
    [![设置作业 ID](./media/export-import-provisioning-configuration/wd_export_03.png)](./media/export-import-provisioning-configuration/wd_export_03.png#lightbox)
 

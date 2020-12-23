@@ -2,22 +2,23 @@
 title: 快速入门：创建 Python 应用
 description: 将第一个 Python 应用部署到 Azure 应用服务中的 Linux 容器即可开始使用 Azure 应用服务。
 ms.topic: quickstart
-ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.date: 11/10/2020
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 0ce995bddb89ce6aa1a550971fbcd92c6515d58e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+adobe-target: true
+ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91264536"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780767"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
 在本快速入门中，需将 Python Web 应用部署到 [Linux 上的应用服务](overview.md#app-service-on-linux)，该版本提供了一项高度可缩放、自我修补的 Azure Web 托管服务。 在 Mac、Linux 或 Windows 计算机上，可使用本地 [Azure 命令行界面 (CLI)](/cli/azure/install-azure-cli) 通过 Flask 或 Django 框架来部署示例。 配置的 Web 应用使用免费的应用服务层，因此本文中的操作不会产生任何费用。
 
 > [!TIP]
-> 如果希望通过 IDE 部署应用，请参阅[从 Visual Studio Code 将 Python 应用部署到应用服务](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)。
+> 如果更喜欢使用 Visual Studio Code，请按照 [Visual Studio Code 应用服务快速入门](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)进行操作。
 
 ## <a name="set-up-your-initial-environment"></a>设置初始环境
 
@@ -63,7 +64,7 @@ az login
 
 登录后，可以使用 Azure CLI 运行 Azure 命令，处理订阅中的资源。
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ [请告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="clone-the-sample"></a>克隆示例
 
@@ -73,34 +74,26 @@ az login
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-然后导航到该文件夹：
-
-```terminal
-cd python-docs-hello-world
-```
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-django
 ```
-
-然后导航到该文件夹：
-
-```terminal
-cd python-docs-hello-django
-```
 ::: zone-end
 
 示例包含 Azure 应用服务在启动应用时可以识别的框架特定代码。 有关详细信息，请参阅[容器启动过程](configure-language-python.md#container-startup-process)。
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ [请告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="run-the-sample"></a>运行示例
 
 ::: zone pivot="python-framework-flask"
-1. 确保位于 python-docs-hello-world 文件夹中。 
+1. 导航到 python-docs-hello-world 文件夹：
+
+    ```terminal
+    cd python-docs-hello-world
+    ```
 
 1. 创建虚拟环境并安装依赖项：
 
@@ -114,7 +107,11 @@ cd python-docs-hello-django
     flask run
     ```
     
-    默认情况下，该服务器假定应用的条目模块位于示例使用的 app.py 中。 （如果使用其他模块名称，请将 `FLASK_APP` 环境变量设置为该名称。）
+    默认情况下，该服务器假定应用的条目模块位于示例使用的 app.py 中。
+
+    如果使用其他模块名称，请将 `FLASK_APP` 环境变量设置为该名称。
+
+    如果遇到错误“找不到 Flask 应用程序。 未提供‘FLASK_APP’环境变量，在当前目录中找不到 wsgi.py 或 app.py 模块。”，请确保你位于包含示例的 `python-docs-hello-world` 文件夹中。
 
 1. 打开 Web 浏览器并转到 `http://localhost:5000/` 处的示例应用。 该应用显示“Hello, World!”消息。
 
@@ -124,7 +121,11 @@ cd python-docs-hello-django
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
-1. 确保位于 python-docs-hello-django 文件夹中。 
+1. 导航到 python-docs-hello-django 文件夹：
+
+    ```terminal
+    cd python-docs-hello-django
+    ```
 
 1. 创建虚拟环境并安装依赖项：
 
@@ -134,25 +135,9 @@ cd python-docs-hello-django
     
 1. 运行开发服务器。
 
-    # <a name="bash"></a>[Bash](#tab/bash)
-
-    ```bash
-    python3 manage.py runserver
+    ```terminal
+    python manage.py runserver
     ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-    ```powershell
-    py -3 manage.py runserver
-    ```
-
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-
-    ```cmd
-    py -3 manage.py runserver
-    ```
-
-    ---    
 
 1. 打开 Web 浏览器并转到 `http://localhost:8000/` 处的示例应用。 该应用显示“Hello, World!”消息。
 
@@ -161,7 +146,7 @@ cd python-docs-hello-django
 1. 在终端窗口中，按 Ctrl+C 退出开发服务器 。
 ::: zone-end
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ [请告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="deploy-the-sample"></a>部署示例
 
@@ -182,13 +167,13 @@ az webapp up --sku F1 --name <app-name>
 
 ![az webapp up 命令的示例输出](./media/quickstart-python/az-webapp-up-output.png)
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 [!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>浏览到应用
 
-在 Web 浏览器中使用以下 URL 浏览到已部署的应用程序：`http://<app-name>.azurewebsites.net`。 最初启动应用需要几分钟时间。
+在 Web 浏览器中使用以下 URL 浏览到已部署的应用程序：`http://<app-name>.azurewebsites.net`。 该应用可能需要一到两分钟的时间才能启动，因此，如果你看到默认的应用页，请稍等片刻并刷新浏览器。
 
 Python 示例代码在使用内置映像的应用服务中运行 Linux 容器。
 
@@ -196,7 +181,7 @@ Python 示例代码在使用内置映像的应用服务中运行 Linux 容器。
 
 祝贺你！ 现已将 Python 应用部署到应用服务。
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="redeploy-updates"></a>重新部署更新
 
@@ -233,7 +218,7 @@ az webapp up
 
 ![在 Azure 中运行更新的示例 Python 应用](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 > [!TIP]
 > Visual Studio Code 为 Python 和 Azure 应用服务提供了功能强大的扩展，简化了将 Python Web 应用部署到应用服务的过程。 有关详细信息，请参阅[将 Python 应用从 Visual Studio Code 部署到应用服务](/azure/python/tutorial-deploy-app-service-on-linux-01)。
@@ -256,7 +241,7 @@ az webapp log tail
 
 若要随时停止日志流式处理，请在终端中按 Ctrl+C。
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ [请告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
@@ -274,7 +259,7 @@ az webapp log tail
 
 应用服务菜单提供了用于配置应用的不同页面。
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -290,7 +275,7 @@ az group delete --no-wait
 
 `--no-wait` 参数允许此命令在操作完成之前返回。
 
-[存在问题？请告诉我们。](https://aka.ms/FlaskCLIQuickstartHelp)
+遇到问题？ [请告诉我们](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="next-steps"></a>后续步骤
 

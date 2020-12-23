@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Functions 文档
-summary: Azure Functions 是一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。
+summary: Azure Functions 是一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。 其“按需计算”可实现轻量级集成和一次性支持功能。 还可用它来提供 Web API、响应数据库更改、处理 IoT 数据流和管理消息队列。
 metadata:
   title: Azure Functions 文档
-  description: Azure Functions 是一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。
+  description: Azure Functions 是一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。 其“按需计算”可实现轻量级集成和一次性支持功能。 还可用它来提供 Web API、响应数据库更改、处理 IoT 数据流和管理消息队列。
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 7a6f493bef86952de212eea264cccea1c0bcfeca
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
+  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87810048"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97505284"
 landingContent:
 - title: 关于 Azure Functions
   linkLists:
@@ -41,15 +41,21 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 创建第一个函数 (C#)
-      url: functions-create-your-first-function-visual-studio.md
+      url: create-first-function-vs-code-csharp.md
+    - text: 创建第一个函数 (Go)
+      url: create-first-function-vs-code-other.md?tabs=go
     - text: 创建第一个函数 (Java)
-      url: functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java
+      url: create-first-function-vs-code-java.md
     - text: 创建第一个函数 (JavaScript)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-javascript
+      url: create-first-function-vs-code-node.md
     - text: 创建第一个函数 (PowerShell)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-powershell
+      url: create-first-function-vs-code-powershell.md
     - text: 创建第一个函数 (Python)
-      url: functions-create-first-function-vs-code.md?pivots=programming-language-python
+      url: create-first-function-vs-code-python.md
+    - text: 创建第一个函数 (Rust)
+      url: create-first-function-vs-code-other.md?tabs=rust
+    - text: 创建你的第一个函数 (TypeScript)
+      url: create-first-function-vs-code-typescript.md
   - linkListType: learn
     links:
     - text: 创建无服务器逻辑

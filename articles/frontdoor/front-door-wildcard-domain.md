@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 18504f1ed4200889b20c9608c9c0ad2c13c9aaa5
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570318"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425756"
 ---
 # <a name="wildcard-domains"></a>通配符域
 
@@ -27,7 +27,7 @@ ms.locfileid: "91570318"
 - 如果应用程序添加新的子域，则不再需要更改生产 Azure 前门配置。 以前，你必须添加子域，将证书绑定到它，将 web 应用程序防火墙 (WAF) 策略，然后将该域添加到不同的路由规则。
 
 > [!NOTE]
-> 目前仅支持通过 API、PowerShell 和 Azure CLI 来支持通配符域。 对在 Azure 门户中添加和管理通配符域的支持不可用。
+> 目前，仅通过 API、PowerShell 和 Azure CLI 支持通过 Azure DNS 添加通配符域。 对在 Azure 门户中添加和管理通配符域的支持不可用。
 
 ## <a name="adding-wildcard-domains"></a>添加通配符域
 

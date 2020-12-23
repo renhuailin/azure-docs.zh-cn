@@ -1,7 +1,7 @@
 ---
 title: 转换为 CSV：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“转换为 CSV”模块将数据集转换为可下载、导出或与 R 或 Python 脚本模块共享的 CSV 格式。
+description: 了解如何使用 Azure 机器学习设计器中的 "转换为 CSV" 模块将数据集转换为 CSV 文件，以便以后可以重用。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3b7c781717952765941acd4ea4aa47593d4b8a0f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898791"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421917"
 ---
 # <a name="convert-to-csv-module"></a>“转换为 CSV”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块，可以将数据集转换为可下载、导出或与 R 或 Python 脚本模块共享的 CSV 格式。
 
@@ -48,9 +48,9 @@ CSV 格式（代表“逗号分隔值”）是许多外部机器学习工具使�
 
 选择“转换为 CSV”  的右面板中的“输出”  选项卡，然后在“端口输出”  下的其中一个图标上进行选择。  
 
-+ **注册数据集**：选择图标，将 CSV 文件作为单独的数据集保存回 Azure ML 工作区。 可以在“我的数据集”部分下的模块树中找到作为模块的数据集。 
++ **注册数据集** ：选择图标，将 CSV 文件作为单独的数据集保存回 Azure ML 工作区。 可以在“我的数据集”部分下的模块树中找到作为模块的数据集。 
 
- + **查看输出**：选择眼睛图标，然后按照说明浏览 **Results_dataset** 文件夹，并下载 data.csv 文件。
+ + **查看输出** ：选择眼睛图标，然后按照说明浏览 **Results_dataset** 文件夹，并下载 data.csv 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,21 +12,21 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024411"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505982"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用专用终结点将数据从 Azure Blob 存储安全复制到 SQL 数据库
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道使用 [Azure 数据工厂管理的虚拟网络](managed-virtual-network-private-endpoint.md)中的专用终结点将数据从 Azure Blob 存储安全地复制到 Azure SQL 数据库（均允许仅访问选定的网络）。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)表。
+在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道使用 [Azure 数据工厂管理的虚拟网络](managed-virtual-network-private-endpoint.md)中的专用终结点将数据从 Azure Blob 存储安全地复制到 Azure SQL 数据库（均允许仅访问选定的网络）。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](./copy-activity-overview.md)表。
 
 > [!NOTE]
-> 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](https://docs.microsoft.com/azure/data-factory/introduction)。
+> 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](./introduction.md)。
 
 在本教程中，将执行以下步骤：
 
@@ -35,9 +35,9 @@ ms.locfileid: "90024411"
 
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**。 可将 Blob 存储用作源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)以获取创建步骤。 *确保存储帐户仅允许来自选定的网络的访问。* 
-* **Azure SQL 数据库**。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)，了解创建该数据库的步骤。 *确保 SQL 数据库帐户仅允许来自选定的网络的访问。* 
+* **Azure 订阅** 。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* **Azure 存储帐户** 。 可将 Blob 存储用作源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)以获取创建步骤。 *确保存储帐户仅允许来自选定的网络的访问。* 
+* **Azure SQL 数据库** 。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建该数据库的步骤。 *确保 SQL 数据库帐户仅允许来自选定的网络的访问。* 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>创建 blob 和 SQL 表
 
@@ -59,17 +59,17 @@ ms.locfileid: "90024411"
 
 使用以下 SQL 脚本在 SQL 数据库中创建 **dbo.emp** 表：
 
-    ```sql
-    CREATE TABLE dbo.emp
-    (
-        ID int IDENTITY(1,1) NOT NULL,
-        FirstName varchar(50),
-        LastName varchar(50)
-    )
-    GO
+```sql
+CREATE TABLE dbo.emp
+(
+    ID int IDENTITY(1,1) NOT NULL,
+    FirstName varchar(50),
+    LastName varchar(50)
+)
+GO
 
-    CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
-    ```
+CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+```
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 在此步骤中，请先创建数据工厂，然后启动数据工厂 UI，在该数据工厂中创建一个管道。
@@ -78,20 +78,20 @@ ms.locfileid: "90024411"
 
 1. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”。
 
-1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
+1. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
 
-   Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入其他名称（例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](https://docs.microsoft.com/azure/data-factory/naming-rules)。
+   Azure 数据工厂的名称必须 *全局唯一* 。 如果收到有关名称值的错误消息，请为数据工厂输入其他名称（例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](./naming-rules.md)。
 
-1. 选择要在其中创建数据工厂的 Azure **订阅**。
+1. 选择要在其中创建数据工厂的 Azure **订阅** 。
 
-1. 对于“资源组”，请执行以下步骤之一：
+1. 对于“资源组”，请执行以下步骤之一： 
 
     - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
     - 选择“新建”，并输入资源组的名称。 
      
-    若要了解资源组，请参阅[使用资源组管理 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)。 
+    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
 
-1. 在“版本”下选择“V2”。
+1. 在“版本”下选择“V2”。 
 
 1. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
 
@@ -116,7 +116,7 @@ ms.locfileid: "90024411"
 1. 选择“创建”。
 
 ## <a name="create-a-pipeline"></a>创建管道
-本步骤在数据工厂中创建包含复制活动的管道。 复制活动将数据从 Blob 存储复制到 SQL 数据库。 在[快速入门教程](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)中，已通过以下步骤创建一个管道：
+本步骤在数据工厂中创建包含复制活动的管道。 复制活动将数据从 Blob 存储复制到 SQL 数据库。 在[快速入门教程](./quickstart-create-data-factory-portal.md)中，已通过以下步骤创建一个管道：
 
 1. 创建链接服务。
 1. 创建输入和输出数据集。
@@ -136,9 +136,9 @@ ms.locfileid: "90024411"
 ### <a name="configure-a-source"></a>配置源
 
 >[!TIP]
->本教程使用“帐户密钥”作为源数据存储的身份验证类型。 如果需要，还可以选择其他受支持的身份验证方法，例如 SAS URI、服务主体和托管标识  。 有关详细信息，请参阅[使用 Azure 数据工厂在 Azure Blob 存储中复制和转换数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)中的相应部分。
+>本教程使用“帐户密钥”作为源数据存储的身份验证类型。 如果需要，还可以选择其他受支持的身份验证方法，例如 SAS URI、服务主体和托管标识  。 有关详细信息，请参阅[使用 Azure 数据工厂在 Azure Blob 存储中复制和转换数据](./connector-azure-blob-storage.md#linked-service-properties)中的相应部分。
 >
->为了安全地存储数据存储的机密，还建议使用 Azure Key Vault。 有关详细信息和说明，请参阅[在 Azure Key Vault 中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+>为了安全地存储数据存储的机密，还建议使用 Azure Key Vault。 有关详细信息和说明，请参阅[在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)。
 
 #### <a name="create-a-source-dataset-and-linked-service"></a>创建源数据集和链接服务
 
@@ -215,9 +215,9 @@ ms.locfileid: "90024411"
 
 ### <a name="configure-a-sink"></a>配置接收器
 >[!TIP]
->本教程使用“SQL 身份验证”作为接收器数据存储的身份验证类型。 如果需要，还可以选择其他受支持的身份验证方法，例如服务主体和托管标识 。 有关详细信息，请参阅[使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)中的相应部分。
+>本教程使用“SQL 身份验证”作为接收器数据存储的身份验证类型。 如果需要，还可以选择其他受支持的身份验证方法，例如服务主体和托管标识 。 有关详细信息，请参阅[使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据](./connector-azure-sql-database.md#linked-service-properties)中的相应部分。
 >
->为了安全地存储数据存储的机密，还建议使用 Azure Key Vault。 有关详细信息和说明，请参阅[在 Azure Key Vault 中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+>为了安全地存储数据存储的机密，还建议使用 Azure Key Vault。 有关详细信息和说明，请参阅[在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)。
 
 #### <a name="create-a-sink-dataset-and-linked-service"></a>创建接收器数据集和链接服务
 1. 转到“接收器”选项卡，选择“+ 新建”，创建一个接收器数据集。
@@ -228,7 +228,7 @@ ms.locfileid: "90024411"
 
 1. 在“新建链接服务(Azure SQL 数据库)”对话框中执行以下步骤：
 
-    1. 在“名称”下输入 **AzureSqlDatabaseLinkedService**。
+    1. 在“名称”下输入 **AzureSqlDatabaseLinkedService** 。
     1. 在“服务器名称”下选择 SQL Server 实例。
     1. 请确保启用“交互式创作”。
     1. 在“数据库名称”下选择自己的 SQL 数据库。
@@ -245,7 +245,7 @@ ms.locfileid: "90024411"
 
     ![显示“管道”选项卡的屏幕截图。](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)
 
-可以选择按照[复制活动中的架构映射](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping)中所述将源架构映射到对应的目标架构。
+可以选择按照[复制活动中的架构映射](./copy-activity-schema-and-type-mapping.md)中所述将源架构映射到对应的目标架构。
 
 #### <a name="create-a-managed-private-endpoint"></a>创建托管专用终结点
 
@@ -285,4 +285,3 @@ ms.locfileid: "90024411"
 
 * 创建数据工厂。
 * 创建包含复制活动的管道。
-

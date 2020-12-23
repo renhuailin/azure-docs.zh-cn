@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: b2497a49703ab675bde50c7845995c92de32f376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611262"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657170"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -41,7 +41,7 @@ ms.locfileid: "91611262"
 
 "Azure 门户 **添加存储目标** " 页包括在添加新的 Blob 容器之前创建新的 Blob 容器的选项。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中，打开缓存实例，并单击左侧边栏中的 " **存储目标** "。
 
@@ -74,15 +74,15 @@ ms.locfileid: "91611262"
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>向你的帐户添加访问控制角色
 
-Azure HPC 缓存使用 azure [RBAC)  (azure 基于角色的访问控制 ](https://docs.microsoft.com/azure/role-based-access-control/index) 来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
+Azure HPC 缓存使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/index.yml) 来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
 
-存储帐户所有者必须为用户 "HPC 缓存资源提供程序" 显式添加角色 [存储帐户参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) 和 [存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) 。
+存储帐户所有者必须为用户 "HPC 缓存资源提供程序" 显式添加角色 [存储帐户参与者](../role-based-access-control/built-in-roles.md#storage-account-contributor) 和 [存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 。
 
 可以提前完成此操作，也可以通过单击页面上添加 Blob 存储目标的链接来完成此操作。 请记住，将角色设置传播到 Azure 环境可能需要长达五分钟，因此，在创建存储目标之前，请等待几分钟，然后再添加角色。
 
 添加 Azure 角色的步骤：
 
-1. 打开存储帐户 ** ("IAM) ** " 页上的 "访问控制"。  (" **添加存储目标** " 页中的链接会自动打开所选帐户的此页。 ) 
+1. 打开存储帐户 **("IAM)** " 页上的 "访问控制"。  (" **添加存储目标** " 页中的链接会自动打开所选帐户的此页。 ) 
 
 1. 单击 **+** 页面顶部的，然后选择 " **添加角色分配**"。
 
@@ -103,9 +103,9 @@ Azure HPC 缓存使用 azure [RBAC)  (azure 基于角色的访问控制 ](https:
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
 ### <a name="prerequisite-storage-account-access"></a>先决条件：存储帐户访问权限
+
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 添加 blob 存储目标之前，请检查缓存是否具有正确的角色以访问存储帐户，以及防火墙设置是否允许创建存储目标。
 
@@ -132,7 +132,7 @@ Azure HPC 缓存使用 azure [RBAC)  (azure 基于角色的访问控制 ](../rol
 
 * ``--name`` -设置在 Azure HPC 缓存中标识此存储目标的名称。
 
-* ``--storage-account``-帐户标识符，格式为：/subscriptions/*<subscription_id>*/resourceGroups/*<storage_resource_group><** account_name>*
+* ``--storage-account``-帐户标识符，格式为：/subscriptions/*<subscription_id>*/resourceGroups/*<storage_resource_group><**account_name>*
 
   有关可使用的存储帐户类型的信息，请参阅 [Blob 存储要求](hpc-cache-prerequisites.md#blob-storage-requirements)。
 
@@ -191,7 +191,7 @@ NFS 存储目标具有不同于 Blob 存储目标的设置。 使用情况模型
 
 ### <a name="create-an-nfs-storage-target"></a>创建 NFS 存储目标
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中，打开缓存实例，并单击左侧边栏中的 " **存储目标** "。
 
@@ -217,7 +217,7 @@ NFS 存储目标具有不同于 Blob 存储目标的设置。 使用情况模型
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 Azure CLI 命令 [az hpc-cache nfs-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) 来创建存储目标。
 
@@ -291,7 +291,7 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 
 你可以使用 Azure 门户或 Azure CLI 来显示已为缓存定义的存储目标。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中，打开缓存实例，并单击左侧边栏上 "设置" 标题下的 " **存储目标**"。 "存储目标" 页列出了用于添加或删除它们的所有现有目标和控件。
 
@@ -301,7 +301,7 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 [az hpc-缓存存储-目标列表](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) 选项来显示缓存的现有存储目标。 提供缓存名称和资源组 (，除非已将其全局设置) 。
 

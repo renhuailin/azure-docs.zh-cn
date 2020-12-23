@@ -1,6 +1,7 @@
 ---
-title: 向 Node.js Web 应用添加 OIDC 登录功能 - Microsoft 标识平台 | Azure
-description: 了解如何使用 OpenID Connect 在 Node.js Web 应用程序中实现身份验证。
+title: 快速入门：向 Node.js Web 应用添加用户登录功能 | Azure
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍如何使用 OpenID Connect 在 Node.js Web 应用程序中实现身份验证。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,21 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257684"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169403"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
-本快速入门介绍如何在使用 Node.js 和 Express 构建的 Web 应用程序中设置 OpenID Connect 身份验证。 示例设计为在任何平台上运行。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示如何在使用 Node.js 和 Express 生成的 Web 应用中设置 OpenID Connect 身份验证。 示例设计为在任何平台上运行。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要运行此示例，需要：
-
-* 从 http://nodejs.org/ 安装 Node.js
-
-* [Microsoft 帐户](https://www.outlook.com)或 [Microsoft 365 开发人员计划](/office/developer-program/office-365-developer-program)
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- [Node.js](https://nodejs.org/en/download/)。
 
 ## <a name="register-your-application"></a>注册应用程序
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com/)。
@@ -53,7 +51,7 @@ ms.locfileid: "91257684"
 1. 在应用的页面列表中，选择“身份验证”。
     - 在“重定向 URI”部分，选择组合框中的“Web”并输入以下重定向 URI：`http://localhost:3000/auth/openid/return` 
     - 在“高级设置”部分，将“注销 URL”设置为 `https://localhost:3000`。
-    - 在“高级设置”>“隐式授权”部分，选中“ID 令牌”，因为此示例需要启用“[隐式授权流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)”才能将用户登录。 
+    - 在“高级设置”>“隐式授权”部分，选中“ID 令牌”，因为此示例需要启用“[隐式授权流](./v2-oauth2-implicit-grant-flow.md)”才能将用户登录。 
 
 1. 选择“保存” 。
 

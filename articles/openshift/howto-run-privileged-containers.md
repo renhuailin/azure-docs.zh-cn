@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
-ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 914b29410a0f30e5c3d3a893c2e278ecbb83b648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78271374"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218861"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中运行特权容器
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 将在年6月 30 2022 日停用。 支持创建新的 Azure Red Hat OpenShift 3.11 群集持续到30年 11 2020 月30日。 停用后，剩余的 Azure Red Hat OpenShift 3.11 群集将关闭，以防出现安全漏洞。
+> 
+> 按照本指南 [创建 Azure Red Hat OpenShift 4 群集](tutorial-create-cluster.md)。
+> 如果有特定问题， [请](mailto:arofeedback@microsoft.com)联系我们。
 
 无法在 Azure Red Hat OpenShift 群集上运行任意特权容器。
 允许在 ARO 群集上运行两种安全监视和符合性解决方案。
@@ -29,7 +35,7 @@ ms.locfileid: "78271374"
 大多数安全产品的文档假定你具有群集管理员权限。
 客户管理员不具备 Azure Red Hat OpenShift 的所有权限。 修改群集范围内的资源所需的权限受到限制。
 
-首先，通过运行确保用户以客户管理员身份登录到群集 `oc get scc` 。 作为 customer 管理员组成员的所有用户都有权查看群集上的安全上下文约束（Scc）。
+首先，通过运行确保用户以客户管理员身份登录到群集 `oc get scc` 。 作为 customer 管理员组成员的所有用户都有权查看群集上 (Scc) 的安全上下文约束。
 
 接下来，请确保 `oc` 二进制文件的版本为 `3.11.154` 。
 ```
@@ -44,7 +50,7 @@ kubernetes v1.11.0+d4cacc0
 ```
 
 ## <a name="product-specific-steps-for-aqua-security"></a>绿色安全的产品特定步骤
-即将修改的基本说明可在 "[浅绿安全部署" 文档](https://docs.aquasec.com/docs/openshift-red-hat)中找到。 此处的步骤将与水绿色部署文档一起运行。
+即将修改的基本说明可在 " [浅绿安全部署" 文档](https://docs.aquasec.com/docs/openshift-red-hat)中找到。 此处的步骤将与水绿色部署文档一起运行。
 
 第一步是对要更新的所需 Scc 添加批注。 这些批注阻止群集的同步 Pod 恢复对这些 SSCs 的任何更改。
 
@@ -128,7 +134,7 @@ oc get route aqua-web -n aqua-security
 oc new-project twistlock
 ```
 
-跳过可选部分 "将 Prisma 云映像推送到专用注册表"。 它不适用于 Azure Red Hat Openshift。 改为使用联机注册表。
+跳过可选部分 "将 Prisma 云映像推送到专用注册表"。 它不适用于 Azure Red Hat OpenShift。 改为使用联机注册表。
 
 在应用以下所述的更正时，可以遵循官方文档。
 从 "安装控制台" 部分开始。
@@ -169,7 +175,7 @@ spec:
 oc create -f twistlock_route.yaml
 ```
 
-可以通过以下命令获取分配给 Twistlock 控制台的 URL：`oc get route twistlock-console -n twistlock`
+可以通过以下命令获取分配给 Twistlock 控制台的 URL： `oc get route twistlock-console -n twistlock`
 
 ### <a name="configure-console"></a>配置控制台
 

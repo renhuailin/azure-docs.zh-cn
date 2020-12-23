@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c43b947d0c4d4fe389f156a6f724a90d2e4e60a5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 9bf523fcc7699096b273b79d703770cbe71dcb35
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057056"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448565"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-glint-inc"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Glint Inc 的集成
 
@@ -124,7 +124,7 @@ ms.locfileid: "90057056"
 
 ### <a name="create-glint-inc-test-user"></a>创建 Glint Inc 测试用户
 
-在本部分中，将在 Glint Inc 中创建一个名为 Britta Simon 的用户。请与  [Glint Inc 支持团队](mailto:glint-ssosupport@linkedin.com)协作，将该用户添加到 Glint Inc 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Glint Inc 中创建一个名为 Britta Simon 的用户。与 [Glint Inc 支持团队](mailto:glint-ssosupport@linkedin.com)协作，在 Glint Inc 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -140,10 +140,8 @@ ms.locfileid: "90057056"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Glint Inc 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Glint Inc 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Glint Inc。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Glint Inc 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Glint Inc。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Glint Inc 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Glint Inc 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

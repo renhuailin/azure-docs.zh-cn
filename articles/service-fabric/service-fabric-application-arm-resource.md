@@ -3,12 +3,12 @@ title: 使用 Azure 资源管理器部署和升级
 description: 了解如何使用 Azure 资源管理器模板，将应用程序和服务部署到 Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256503"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681663"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>将应用程序和服务作为 Azure 资源管理器资源进行管理
 
@@ -18,7 +18,7 @@ ms.locfileid: "86256503"
 
 在适当情况下，将应用程序作为资源管理器资源进行管理可改进：
 * 审核线索：资源管理器审核所有操作，并记录详细的活动日志  ，有助于跟踪对这些应用程序和群集做出的任何更改。
-* 基于角色的访问控制 (RBAC)：可通过同一个资源管理器模板，管理对群集及其上部署的应用程序的访问。
+* Azure RBAC)  (基于角色的访问控制：管理群集的访问权限，以及部署在群集上的应用程序可以通过相同的资源管理器模板来完成。
 * Azure 资源管理器（通过 Azure 门户）成为管理群集和关键应用程序部署的一站式平台。
 
 下面的代码片段展示了可以通过模板管理的各种资源：

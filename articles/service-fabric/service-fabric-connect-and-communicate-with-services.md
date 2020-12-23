@@ -1,17 +1,15 @@
 ---
 title: 在 Azure Service Fabric 中与服务建立连接并与之通信
 description: 了解如何在 Service Fabric 中解析服务、建立连接以及与之通信。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf39fcbfbde8a81400cd93c7f99b066a99f643bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 11f525eba89dc963deee0ba9a86566361ef644de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005371"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576292"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信
 在 Service Fabric 中，服务在 Service Fabric 群集（通常分布在多个 VM 间）中的某个位置运行。 它可以从一个位置移动到另一个位置（由服务所有者移动或由 Service Fabric 自动移动）。 服务不以静态方式绑定到特定计算机或地址。
@@ -30,7 +28,7 @@ Service Fabric 可帮助管理服务的生命周期，但是它不会制定有�
 
 Service Fabric 提供一种服务发现和解析服务，称为“命名服务”。 命名服务维护一个表，它将命名服务实例映射到它们所侦听的终结点地址。 Service Fabric 中的所有命名服务实例都具有表示为 URI 的唯一名称，例如 `"fabric:/MyApplication/MyService"`。 服务的名称在服务的生存期内不会更改，只有终结点地址才能在服务移动时发生更改。 这与 URL 保持不变但 IP 地址可能会更改的网站类似。 与 Web 上的 DNS（将网站 URL 解析为 IP 地址）类似，Service Fabric 具有一个注册机构，它将服务名称映射到其终结点地址。
 
-![服务终结点][2]
+![此图显示了 Service Fabric 具有将服务名称映射到其终结点地址的注册器。][2]
 
 解析服务以及连接到服务涉及循环运行的以下步骤：
 
@@ -47,26 +45,26 @@ Service Fabric 提供一种服务发现和解析服务，称为“命名服务�
 
 如下图所示，Service Fabric 群集中运行的 DNS 服务会将 DNS 名称映射到服务名称，服务名称随后会被命名服务解析，以返回要连接的终结点地址。 在创建时提供服务的 DNS 名称。 
 
-![服务终结点][9]
+![此图显示了 DNS 服务在 Service Fabric 群集中运行时如何将 DNS 名称映射到服务名称，然后命名服务解析服务名称以返回要连接的终结点地址。][9]
 
 有关如何使用 DNS 服务的更多详细信息，请参阅 [Azure Service Fabric 中的 DNS 服务](service-fabric-dnsservice.md)一文。
 
 ### <a name="reverse-proxy-service"></a>反向代理服务
 反向代理处理群集中的服务，群集公开包括 HTTPS 在内的 HTTP 终结点。 反向代理具有特定的 URI 格式，能够极大地简化调用其他服务及其方法的操作，它能够处理一个服务使用命名服务与其他服务进行通信所需完成的解析、连接、重试步骤。 换而言之，它会在调用其他服务时对用户隐藏命名服务，并让这一操作和调用 URL 一样简单。
 
-![服务终结点][10]
+![此图显示了反向代理如何处理群集中公开 HTTP 终结点（包括 HTTPS）的服务。][10]
 
 有关如何使用反向代理服务的更多详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)一文。
 
 ## <a name="connections-from-external-clients"></a>来自外部客户端的连接
-在群集内相互连接的服务通常可以直接访问其他服务的终结点，因为群集中的节点处于相同的本地网络上。 但在某些环境中，群集可能位于负载均衡器后面，后者通过一组有限的端口来路由流量。 在这些情况下，服务仍可以使用命名服务相互通信和解析地址，但必须执行额外步骤才能允许外部客户端连接到服务。
+在群集内相互连接的服务通常可以直接访问其他服务的终结点，因为群集中的节点处于相同的本地网络上。 但是在某些环境中，群集可能位于通过一组有限端口对入口流量进行路由的负载均衡器之后。 在这些情况下，服务仍可以使用命名服务相互通信和解析地址，但必须执行额外步骤才能允许外部客户端连接到服务。
 
 ## <a name="service-fabric-in-azure"></a>Azure 中的 Service Fabric
 Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送到群集的所有外部流量都必须通过该负载均衡器。 该负载均衡器自动在给定端口上将入站流量转发到打开了相同端口的随机 *节点* 。 Azure 负载均衡器只了解节点上打开的端口，它不了解各个服务打开的端口   。
 
 ![Azure 负载均衡器和 Service Fabric 拓扑][3]
 
-例如，若要在端口 **80**上接受外部流量，必须配置以下项：
+例如，若要在端口 **80** 上接受外部流量，必须配置以下项：
 
 1. 编写侦听端口 80 的服务。 在服务的 ServiceManifest.xml 中配置端口 80，并在服务中打开一个侦听器，例如自托管的 Web 服务器。
 
@@ -153,7 +151,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
     ![在节点类型上打开端口][4]
 3. 创建了群集之后，在群集的资源组中配置 Azure 负载均衡器以在端口 80 上转发流量。 通过 Azure 门户创建群集时，会为每个已配置的自定义终结点端口自动设置此项。
 
-    ![在 Azure 负载均衡器中转发流量][5]
+    ![此屏幕截图突出显示了“负载均衡规则”下的“后端端口”字段。][5]
 4. Azure 负载均衡器使用探测确定是否要将流量发送到特定节点。 探测会定期检查每个节点上的终结点以确定节点是否正在进行响应。 如果探测未能在配置的次数之后收到响应，则负载均衡器会停止将流量发送到该节点。 通过 Azure 门户创建群集时，会为每个已配置的自定义终结点端口自动设置探测。
 
     ![在 Azure 负载均衡器中转发流量][8]
@@ -163,7 +161,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services：内置通信 API 选项
 Reliable Services 框架附带几个预建的通信选项。 可以根据所选的编程模型、通信框架和编写服务时使用的编程语言决定哪个选项最适合自己。
 
-* **无特定协议：** 如果没有选择特定的通信框架，但想要快速启动并运行某个程序，则理想之选是[服务远程处理](service-fabric-reliable-services-communication-remoting.md)，此项允许对 Reliable Services 和 Reliable Actors 进行强类型远程过程调用。 这是服务通信入门最简单、最快捷的方法。 服务远程处理可处理服务地址的解析、连接、重试和错误处理。 这适用于 C# 和 Java 应用程序。
+* **无特定协议：**  如果没有特定的通信框架，但想要快速启动和运行，则 "理想" 选项为 " [服务远程处理](service-fabric-reliable-services-communication-remoting.md)"，它允许对 Reliable Services 和 Reliable Actors 执行强类型远程过程调用。 这是服务通信入门最简单、最快捷的方法。 服务远程处理可处理服务地址的解析、连接、重试和错误处理。 这适用于 C# 和 Java 应用程序。
 * **HTTP**：对于与语言无关的通信，HTTP 为行业标准选择提供了可在许多不同语言（Service Fabric 全都支持）中使用的工具和 HTTP 服务器。 服务可以使用提供的任何 HTTP 堆栈，包括适用于 C# 应用程序的 [ASP.NET Web API](./service-fabric-reliable-services-communication-aspnetcore.md)。 以 C# 编写的客户端可以利用 `ICommunicationClient` 和 `ServicePartitionClient` 类（而 Java 则可以使用 `CommunicationClient` 和 `FabricServicePartitionClient` 类）来[进行服务解析、HTTP 连接和重试循环](service-fabric-reliable-services-communication.md)。
 * **WCF**：如果具备将 WCF 用作通信框架的现有代码，则可将 `WcfCommunicationListener` 用于服务器端，并将 `WcfCommunicationClient` 和 `ServicePartitionClient` 类用于客户端。 但是，这仅适用于基于 Windows 的群集上的 C# 应用程序。 有关更多详细信息，请参阅这篇有关[通信堆栈的基于 WCF 的实现](service-fabric-reliable-services-communication-wcf.md)的文章。
 

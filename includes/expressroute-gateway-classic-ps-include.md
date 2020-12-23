@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0c05eb88df27ba9e71c0f61bad75457d893a7ce
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67172684"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559097"
 ---
 > [!NOTE]
 > 这些示例不适用于 S2S/ExpressRoute 共存配置。
-> 有关使用共存配置中的网关的详细信息，请参阅[配置共存连接。](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
+> 有关使用共存配置中的网关的详细信息，请参阅 [配置共存连接。](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
 
 ## <a name="add-a-gateway"></a>添加网关
 
@@ -25,7 +25,7 @@ ms.locfileid: "67172684"
 
 ### <a name="download-the-network-configuration-file"></a>下载网络配置文件
 
-1. 使用[网络配置文件](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)一文中的步骤下载网络配置文件。 使用文本编辑器打开该文件。
+1. 使用[网络配置文件](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)一文中的步骤下载网络配置文件。 使用文本编辑器打开该文件。
 2. 向该文件中添加一个本地网络站点。 可以使用任何有效的地址前缀。 可以为 VPN 网关添加任何有效的 IP 地址。 此部分中的地址值不用于 ExpressRoute 操作，但是在进行文件验证时需要使用它们。 在示例中，“branch1”是站点的名称。 你可以使用其他名称，但一定要在该文件的 Gateway 节中使用同一值。
 
    ```

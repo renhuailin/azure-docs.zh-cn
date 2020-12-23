@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905644"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011058"
 ---
 # <a name="import-soap-api"></a>导入 SOAP API
 
@@ -45,7 +45,7 @@ ms.locfileid: "87905644"
 3. 在“WSDL 规范”，输入要将 SOAP API 放到的 URL。
 4. “SOAP 直通”选按钮默认处于选中状态。 进行此选择，API 将作为 SOAP 公开。 使用者必须使用 SOAP 规则。 若要“REST 化”API，请按照[导入 SOAP API 并将其转换为 REST](restify-soap-api.md) 中的步骤进行操作。
 
-    ![直通](./media/import-soap-api/pass-through.png)
+    ![屏幕截图显示了“从 WSDL 创建”对话框，你可以在其中输入 WSDL 规范。](./media/import-soap-api/pass-through.png)
 5. 按 Tab 键。
 
     以下字段中填充了来自 SOAP API 的信息：显示名称、名称、说明。
@@ -58,7 +58,7 @@ ms.locfileid: "87905644"
 
     * **初学者**
     * **无限制**   
-8. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+8. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
 9. 选择“创建” 。
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>在管理门户中测试新的 API

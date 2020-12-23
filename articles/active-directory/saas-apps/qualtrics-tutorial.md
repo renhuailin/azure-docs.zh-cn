@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 170997099f1194bbc75d6d61a7c29fc1d18b462a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c15b693ecbcb4557fb5ec9ceca8436316f33747
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552208"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP Qualtrics 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552208"
 * 让用户使用其 Azure AD 帐户自动登录到 SAP Qualtrics。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88552208"
 
 * SAP Qualtrics 支持 SP 和 IDP 发起的 SSO。  
 * SAP Qualtrics 支持实时用户预配。 
-* 配置 SAP Qualtrics 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 有关详细信息，请参阅[了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 SAP Qualtrics 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 有关详细信息，请参阅[了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-sap-qualtrics-from-the-gallery"></a>从库中添加 SAP Qualtrics
 
@@ -146,19 +146,18 @@ SAP Qualtrics 支持默认启用的实时用户预配。 无需执行其他操�
 
 在本部分，你将使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“SAP Qualtrics”磁贴时，会自动登录到为其设置了 SSO 的 SAP Qualtrics。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在访问面板中单击“SAP Qualtrics”磁贴时，会自动登录到为其设置了 SSO 的 SAP Qualtrics。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 SAP Qualtrics](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [使用高级可见性和控制保护 SAP Qualtrics](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [使用高级可见性和控制保护 SAP Qualtrics](/cloud-app-security/proxy-intro-aad)

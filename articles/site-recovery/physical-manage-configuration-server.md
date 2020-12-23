@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132496"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017434"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -50,7 +50,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
 2. 浏览到“Site Recovery 基础结构” > “配置服务器”（在“针对 VMware 和物理计算机”下面）。
 3. 单击“+服务器”按钮。
 4. 在“添加服务器”页中，单击“下载”按钮下载注册密钥。 在安装配置服务器的过程中，需要使用此密钥将它注册到 Azure Site Recovery 服务。
-5. 单击“下载 Microsoft Azure Site Recovery 统一安装程序”链接，下载最新版本的配置服务器。****
+5. 单击“下载 Microsoft Azure Site Recovery 统一安装程序”链接，下载最新版本的配置服务器。
 
    ![“下载”页](./media/physical-manage-configuration-server/downloadcs.png)
 
@@ -69,7 +69,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
     - 如果希望提供程序直接进行连接，请选择“在不使用代理服务器的情况下直接连接到 Azure Site Recovery”。
     - 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”，并指定地址、端口和凭据。
      ![防火墙](./media/physical-manage-configuration-server/combined-wiz4.png)
-6. 在“先决条件检查” **全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。 如果看到有关全局时间同步检查的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同 。
+6. 在“先决条件检查” **全局时间同步检查** 的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。 如果看到有关全局时间同步检查的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同 。
 
     ![先决条件](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. 在“MySQL 配置”中，创建用于登录到已安装的 MySQL 服务器实例的凭据。

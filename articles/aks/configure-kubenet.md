@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6cb083e823583105f04aaa59a99357b2b2b2426b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264603"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034048"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -24,7 +24,7 @@ ms.locfileid: "91264603"
 
 * AKS 群集的虚拟网络必须允许出站 Internet 连接。
 * 不要在同一子网中创建多个 AKS 群集。
-* AKS 群集不得将 `169.254.0.0/16` 、、 `172.30.0.0/16` `172.31.0.0/16` 或 `192.0.2.0/24` 用于 Kubernetes 服务地址范围、pod 地址范围或群集虚拟网络地址范围。
+* AKS 群集不得将 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` 或 `192.0.2.0/24` 用于 Kubernetes 服务地址范围、Pod 地址范围或群集虚拟网络地址范围。
 * AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)角色。 你还必须具有相应的权限（如订阅所有者），才能创建服务主体并向其分配权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -34,7 +34,7 @@ ms.locfileid: "91264603"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-需要安装并配置 Azure CLI 2.0.65 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>使用自有子网的 kubenet 网络概述
 
@@ -44,20 +44,20 @@ ms.locfileid: "91264603"
 
 ![使用 AKS 群集的 Kubenet 网络模型](media/use-kubenet/kubenet-overview.png)
 
-Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节点数不能超过 400 个。 *Kubenet*不支持 AKS[虚拟节点][virtual-nodes]和 Azure 网络策略。  可以使用 [Calico 网络策略][calico-network-policies]，因为 kubenet 支持这些策略。
+Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节点数不能超过 400 个。 *Kubenet* 不支持 AKS [虚拟节点][virtual-nodes]和 Azure 网络策略。  可以使用 [Calico 网络策略][calico-network-policies]，因为 kubenet 支持这些策略。
 
-使用 *Azure CNI* 时，每个 Pod 将接收 IP 子网中的 IP 地址，并且可以直接与其他 Pod 和服务通信。 群集的最大大小可为指定的 IP 地址范围上限。 但是，必须提前规划 IP 地址范围，AKS 节点根据它们支持的最大 Pod 数消耗所有 IP 地址。 *AZURE CNI*支持高级网络功能和方案，例如[虚拟节点][virtual-nodes]或 (azure 或 Calico) 的网络策略。
+使用 *Azure CNI* 时，每个 Pod 将接收 IP 子网中的 IP 地址，并且可以直接与其他 Pod 和服务通信。 群集的最大大小可为指定的 IP 地址范围上限。 但是，必须提前规划 IP 地址范围，AKS 节点根据它们支持的最大 Pod 数消耗所有 IP 地址。 *AZURE CNI* 支持高级网络功能和方案，例如 [虚拟节点][virtual-nodes]或 (azure 或 Calico) 的网络策略。
 
-### <a name="limitations--considerations-for-kubenet"></a>Kubenet 的限制 & 注意事项
+### <a name="limitations--considerations-for-kubenet"></a>Kubenet 的限制和注意事项
 
-* 在 kubenet 的设计中需要额外的跃点，这会将轻微延迟添加到 pod 通信。
-* 使用 kubenet 需要路由表和用户定义的路由，这会增加操作的复杂性。
-* 由于 kubenet 设计，kubenet 不支持直接 pod 寻址。
-* 与 Azure CNI 群集不同，多个 kubenet 群集无法共享子网。
-* **Kubenet 上不支持的**功能包括：
-   * [Azure 网络策略](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Calico 网络策略在 kubenet 上受支持
-   * [Windows 节点池](windows-node-limitations.md)
-   * [虚拟节点附加项](virtual-nodes-portal.md#known-limitations)
+* 在 Kubenet 的设计中需要额外的跃点，这会导致 Pod 通信出现轻微延迟。
+* 需要路由表和用户定义的路由才能使用 Kubenet，这会增加操作的复杂性。
+* 由于 Kubenet 设计，Kubenet 不支持直接 Pod 寻址。
+* 与 Azure CNI 群集不同，多个 Kubenet 群集无法共享一个子网。
+* Kubenet 不支持的功能包括：
+   * [Azure 网络策略](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Kubenet 支持 Calico 网络策略
+   * [Windows 节点池](./windows-faq.md)
+   * [虚拟节点附加项](virtual-nodes.md#network-requirements)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP 地址可用性和耗尽
 
@@ -102,7 +102,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 
 ## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
 
-若要开始使用 *kubenet* 和自己的虚拟网络子网，请先使用 [az group create][az-group-create] 命令创建一个资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+若要开始使用 *kubenet* 和自己的虚拟网络子网，请先使用 [az group create][az-group-create] 命令创建一个资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -162,7 +162,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Co
 
 在创建群集的过程中还定义了以下 IP 地址范围：
 
-* *--service-cidr* 用于为 AKS 群集中的内部服务分配 IP 地址。 此 IP 地址范围应为未在网络环境中的其他位置使用的地址空间，包括任何本地网络范围（如果你使用 Express Route 或站点到站点 VPN 连接进行连接或计划连接到 Azure 虚拟网络）。
+* *--service-cidr* 用于为 AKS 群集中的内部服务分配 IP 地址。 此 IP 地址范围应为未在网络环境中的其他位置使用的地址空间，包括任何本地网络范围（如果你使用 Express Route 或站点到站点 VPN 连接来连接或计划连接到 Azure 虚拟网络）。
 
 * *--dns-service-ip* 地址应该是服务 IP 地址范围的 *.10* 地址。
 
@@ -224,7 +224,6 @@ Kubenet 网络需要使用经过规划和组织的路由表规则才能成功路
 的限制：
 
 * 必须在创建群集之前分配权限，请确保使用的服务主体具有对自定义子网和自定义路由表的写入权限。
-* kubenet 中的自定义路由表当前不支持托管标识。
 * 在创建 AKS 群集之前，需要将自定义路由表与子网关联。
 * 创建群集后，无法更新关联的路由表资源。 虽然无法更新路由表资源，但可以在路由表上修改自定义规则。
 * 每个 AKS 群集必须为与群集关联的所有子网使用同一个唯一的路由表。 由于可能存在重叠的 Pod CIDR 和发生路由规则冲突，无法对多个群集重复使用同一个路由表。

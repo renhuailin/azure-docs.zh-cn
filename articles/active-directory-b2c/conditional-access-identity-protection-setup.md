@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270644"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949762"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>在 Azure AD B2C 中设置标识保护和条件访问
 
@@ -26,7 +26,7 @@ ms.locfileid: "89270644"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure AD B2C 租户必须[关联到 Azure AD 订阅](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)。
-- 需要 Azure AD B2C Premium P2 才能使用登录和基于用户风险的条件访问。 如有必要，[将 Azure AD B2C 定价层更改为 Premium P2](https://aka.ms/exid-pricing-tier)。 
+- 需要 Azure AD B2C Premium P2 才能使用登录和基于用户风险的条件访问。 如有必要，[将 Azure AD B2C 定价层更改为 Premium P2](./billing.md)。 
 - 若要在 B2C 租户中管理标识保护和条件访问，你需要分配有全局管理员角色或安全管理员角色的帐户。
 - 若要在租户中使用这些功能，首先需要切换到 Azure AD B2C Premium P2 定价层。
 
@@ -41,10 +41,12 @@ Azure AD B2C 当前支持以下风险检测：
 |风险检测类型  |说明  |
 |---------|---------|
 | 异常位置登录     | 从异常位置（基于用户最近的登录）进行登录。        |
-|匿名 IP 地址     | 从匿名 IP 地址登录（例如：Tor 浏览器，匿名程序 VPN）        |
+|匿名 IP 地址     | 从匿名 IP 地址登录（例如：Tor 浏览器，匿名程序 VPN）。        |
+|受恶意软件感染的 IP 地址     | 从受恶意软件感染的 IP 地址进行登录。         |
 |不熟悉的登录属性     | 使用给定用户最近未曾出现过的属性进行登录。        |
-|受恶意软件感染的 IP 地址     | 从受恶意软件感染的 IP 地址进行登录         |
-|Azure AD 威胁智能     | Microsoft 的内部和外部威胁智能源已识别出已知的攻击模式        |
+|管理员确认用户遭入侵    | 管理员已表明，用户遭到了入侵。             |
+|密码喷射     | 通过密码喷射攻击进行登录。      |
+|Azure AD 威胁智能     | Microsoft 的内部和外部威胁智能源已识别出已知的攻击模式。        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>查看 Azure AD B2C 租户的风险事件
 

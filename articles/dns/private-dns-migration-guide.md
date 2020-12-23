@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699458"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964773"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>将旧的 Azure DNS 专用区域迁移到新的资源模型
 
@@ -107,10 +107,10 @@ PrivateDnsMigrationScript.ps1
 ## <a name="update-your-automation"></a>更新自动化
 
 如果使用的自动化包括模板、PowerShell 脚本或使用 SDK 开发自定义代码，则必须更新自动化，以对 DNS 专用区域使用新的资源模型。 以下是新的 DNS 专用区域 CLI/PS/SDK 文档的链接。
-* [Azure DNS 专用区域 REST API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Azure DNS 专用区域 CLI](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Azure DNS 专用区域 PowerShell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Azure DNS 专用区域 SDK](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Azure DNS 专用区域 REST API](/rest/api/dns/privatedns/privatezones)
+* [Azure DNS 专用区域 CLI](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Azure DNS 专用区域 PowerShell](/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Azure DNS 专用区域 SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
 ## <a name="need-further-help"></a>需要更多帮助
 

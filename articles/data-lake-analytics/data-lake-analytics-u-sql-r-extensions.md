@@ -1,17 +1,16 @@
 ---
 title: 在 Azure Data Lake Analytics 中使用 R 扩展 U-SQL 脚本
 description: 了解如何使用 Azure Data Lake Analytics 在 U SQL 脚本中运行 R 代码。 嵌入 R 代码内联或从文件引用。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ab28ba1bb6185f5f0ab90df99f0abea7895b1bf4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127394"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217994"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 R 代码扩展 U-SQL 脚本
 
@@ -20,7 +19,7 @@ ms.locfileid: "87127394"
 * 使用 `REFERENCE ASSEMBLY` 语句为 U-SQL 脚本启用 R 扩展。
 * 使用 `REDUCE` 操作对某个键的输入数据进行分区。
 * U-SQL 的 R 扩展包括内置化简器 (`Extension.R.Reducer`)，可在分配给化简器的每个顶点上运行 R 代码。
-* 使用名为和的专用命名数据帧 `inputFromUSQL` `outputToUSQL` 分别在 U SQL 与 R 之间传递数据。输入和输出数据帧标识符名称是固定的（即，用户无法更改输入和输出数据帧标识符的预定义名称）。
+* 使用名为和的专用命名数据帧 `inputFromUSQL` `outputToUSQL` 分别在 U-SQL 与 R 之间传递数据。输入和输出数据帧标识符名称是固定的 (也就是说，用户无法更改输入和输出数据帧标识符) 的预定义名称。
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>在 U-SQL 脚本中嵌入 R 代码
 
@@ -167,7 +166,7 @@ XML
 
 分配给每个顶点的内存量受限。 因为输入和输出 DataFrames 必须存在于 R 代码的内存中，因此输入和输出的总大小不能超过 500 MB。
 
-### <a name="sample-code"></a>示例代码
+### <a name="sample-code"></a>代码示例
 
 在安装 U-SQL Advanced Analytics 扩展后，Data Lake Store 帐户中会提供更多的示例代码。 更多示例代码的路径为：`<your_account_address>/usqlext/samples/R`。
 
@@ -212,4 +211,4 @@ OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
-* [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
+* [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](./data-lake-analytics-u-sql-get-started.md)

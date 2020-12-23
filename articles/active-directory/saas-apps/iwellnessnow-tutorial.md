@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3df547307a49de9e50abe8eb655fbe4acd67a8be
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4143d44591d92111d4d4a6cbba3e9059f201a29c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552673"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459605"
 ---
 # <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>教程：将 iWellnessNow 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552673"
 * 让用户使用其 Azure AD 帐户自动登录到 iWellnessNow。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -87,12 +87,12 @@ ms.locfileid: "88552673"
 
     c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”部分。  
 
-    ![image](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，可在其中输入“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     > [!Note]
     > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。  
 
-1. 如果没有**服务提供程序元数据文件**并且要在 **IDP** 发起的模式下配置应用程序，请执行以下步骤：
+1. 如果没有 **服务提供程序元数据文件** 并且要在 **IDP** 发起的模式下配置应用程序，请执行以下步骤：
 
     ![iWellnessNow 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "88552673"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<CustomerName>.iwellnessnow.com/`
 
@@ -159,13 +159,12 @@ ms.locfileid: "88552673"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 iWellnessNow 磁贴时，应当会自动登录到你为其设置了 SSO 的 iWellnessNow。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 iWellnessNow 磁贴时，应当会自动登录到你为其设置了 SSO 的 iWellnessNow。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 08d30fb72398c4b43422eb21f132d5fddd5502b7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435399"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853131"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -126,7 +126,6 @@ ms.locfileid: "89435399"
 |托管应用程序  | 否 | 否 | 否 |  |
 |地图  | 否 | 否 | 否 |  |
 |媒体服务 | 是 | 是 | 否 |  |
-|Microsoft Flow | 否 | 否 | 否 |  |
 |Microsoft 托管桌面 | 否 | 否 | 否 |  |
 |Microsoft PowerApps | 否 | 否 | 否 |  |
 |Microsoft 社交参与 | 否 | 否 | 否 |  |
@@ -137,6 +136,7 @@ ms.locfileid: "89435399"
 |通知中心 | 是 | 否 | 否 |  |
 |开放数据集 | 否 | 否 | 否 |  |
 |策略 | 否 | 否 | 否 |  |
+|Power Automate | 否 | 否 | 否 |  |
 |Power BI Embedded | 是 | 是 | 否 |  |
 |专用链接 | 否 | 否 | 否 |  |
 |项目假脱机通信平台 | 否 | 否 | 否 |  |
@@ -170,18 +170,31 @@ ms.locfileid: "89435399"
 |VPN 网关 | 是 | 是 | 否 |  |
 |Windows 虚拟桌面 | 否 | 否 | 否 |  |
 
+## <a name="virtual-machine-agents"></a>虚拟机代理
+下表列出了可以从虚拟机的来宾操作系统收集数据并将数据发送到监视器的代理。 每个代理都可以收集不同的数据，并将其发送到 Azure Monitor 中的指标或日志。 
+
+有关每个代理可以收集的数据的详细信息，请参阅 [Azure Monitor 代理概述](platform/agents-overview.md) 。
+
+| Agent |  指标 | 日志 |
+|:---|:---|:---|:---|
+| [Azure Monitor 代理（预览版）](platform/azure-monitor-agent-overview.md) | 是 | 是 |
+| [Log Analytics 代理](platform/log-analytics-agent.md) | 否 | 是|
+| [诊断扩展](platform/diagnostics-extension-overview.md) | 是 | 否 |
+| [Telegraf 代理](platform/collect-custom-metrics-linux-telegraf.md) | 是 | 否 |
+| [依赖关系代理](insights/vminsights-enable-overview.md) | 否 | 是 |
+
 
 ## <a name="product-integrations"></a>产品集成
 下表中的服务和解决方案将其数据存储在 Log Analytics 工作区中，以便可以将这些数据与使用 Azure Monitor 收集的其他日志数据一起进行分析。
 
 | 产品/服务 | 说明 |
 |:---|:---|
-| [Azure 自动化](../automation/index.yml) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/update-management/update-mgmt-overview.md)。 |
+| [Azure 自动化](../automation/index.yml) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking/overview.md)和[更新管理](../automation/update-management/overview.md)。 |
 | [Azure 信息保护](/azure/information-protection/) | 对文档和电子邮件进行分类和选择性保护。 请参阅 [Azure 信息保护的中央报告](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
 | [Azure 安全中心](../security-center/index.yml) | 收集和分析安全事件并执行威胁分析。 请参阅 [Azure 安全中心中的数据收集](../security-center/security-center-enable-data-collection.md) |
 | [Azure Sentinel](../sentinel/index.yml) | 连接到不同的源，包括 Office 365 和 Amazon Web Services 云轨迹。 请参阅[连接数据源](../sentinel/connect-data-sources.md)。 |
 | [Microsoft Intune](/intune/) | 创建诊断设置以将日志发送到 Azure Monitor。 请参阅[将日志数据发送到 Intune 中的存储、事件中心或日志分析（预览版）](/intune/fundamentals/review-logs-using-azure-monitor)。  |
-| 网络  | [网络性能监视器](insights/network-performance-monitor.md) - 监视与服务和应用程序终结点的网络连接和其性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - 分析来自 Azure 应用程序网关的日志和指标。<br>[流量分析](../network-watcher/traffic-analytics.md) - 可以分析网络观察程序网络安全组 (NSG) 流日志，帮助洞察 Azure 云中的流量流。 |
+| 网络  | [网络性能监视器](insights/network-performance-monitor.md) - 监视与服务和应用程序终结点的网络连接和其性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics) - 分析来自 Azure 应用程序网关的日志和指标。<br>[流量分析](../network-watcher/traffic-analytics.md) - 可以分析网络观察程序网络安全组 (NSG) 流日志，帮助洞察 Azure 云中的流量流。 |
 | [Office 365](insights/solution-office-365.md) | 监视 Office 365 环境。 使用通过 Azure Sentinel 提供改进的载入来更新版本。 |
 | [SQL Analytics](insights/azure-sql.md) | 大规模或跨多个订阅监视 Azure SQL 数据库和 SQL 托管实例的性能。 |
 | [Surface Hub](insights/surface-hubs.md) | 跟踪 Surface Hub 设备的运行状况和使用情况。 |
@@ -232,4 +245,3 @@ Azure Monitor 可以使用下表中列出的方法从 Azure 以外的资源收�
 - 完成[编写日志查询以分析 Azure Monitor 日志中的数据的相关教程](learn/tutorial-resource-logs.md)。
 - 完成[创建指标图表以分析 Azure Monitor 指标中的数据的相关教程](learn/tutorial-metrics-explorer.md)。
 
- 

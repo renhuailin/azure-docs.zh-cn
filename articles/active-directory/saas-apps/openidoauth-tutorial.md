@@ -12,20 +12,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 17d78b4d6db9e65868995d8ea7835a0d911e8589
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705616"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348682"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>从 Azure AD 应用库配置 OpenID/OAuth 应用程序
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>从库添加 OpenID 应用程序的过程
 
-1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”  。
+1. 在[Azure 门户](https://portal.azure.com)中，选择“Azure Active Directory”。
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png))
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
 2. 转到“企业应用程序”   > “所有应用程序”  。
 
@@ -39,17 +39,23 @@ ms.locfileid: "90705616"
 
     ![结果列表中的 Openid](common/search-new-app.png)
 
-    > [!NOTE]
-    > 对于 OpenID Connect 和 OAuth 应用，“添加”按钮默认处于禁用状态。  在这里，租户管理员应该选择“注册”按钮并向应用程序提供许可。 该应用程序随即会添加到客户租户中，可在租户中进行配置。 无需显式添加应用程序。
+
+1. 在“应用程序名称”页中，单击“注册”按钮。
 
     ![“添加”按钮](./media/openidoauth-tutorial/addbutton.png)
 
-5. 选择注册链接时，会重定向到 Azure Active Directory (Azure AD) 页以便提供登录凭据。
+    > [!NOTE]
+    > 在这里，租户管理员应该选择“注册”按钮并向应用程序提供许可。 该应用程序随即会添加到客户租户中，可在租户中进行配置。 无需显式添加应用程序。
+
+5. 你会重定向到“应用程序登录”页面或 Azure Active Directory (Azure AD) 页，以便输入登录凭据。
 
 6. 身份验证成功后，请在许可页上接受许可。 随后会显示应用程序主页。
 
     > [!NOTE]
     > 只能添加一个应用程序实例。 如果已添加了一个实例，然后尝试再次提供许可，则不会在租户中再次添加实例。 因此逻辑上，只能在租户中使用一个应用实例。
+
+1. 请按照以下视频从库中添加 OpenID 应用程序。
+    >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="authentication-flow-using-openid-connect"></a>使用 OpenID Connect 的身份验证流
 
@@ -99,19 +105,19 @@ ms.locfileid: "90705616"
 
     a. 单击菜单左侧的“应用注册”  ，然后在搜索框中键入应用程序名称以打开应用程序。
 
-    ![图形 API](./media/openidoauth-tutorial/application.png)
+    ![屏幕截图显示从左侧菜单中选择了“应用注册”，并突出显示了“应用程序 ID”搜索框。](./media/openidoauth-tutorial/application.png)
 
     b. 单击“查看 API 权限”  。
 
-    ![图形 API](./media/openidoauth-tutorial/api-permission.png)
+    ![屏幕截图显示“调用 API”页面，其中选择了“查看 API 权限”按钮。](./media/openidoauth-tutorial/api-permission.png)
 
     c. 单击“添加权限”  。
 
-    ![图形 API](./media/openidoauth-tutorial/add-permission.png)
+    ![屏幕截图显示“API 权限”部分，其中选择了“添加权限”按钮。](./media/openidoauth-tutorial/add-permission.png)
 
     d. 单击“Microsoft Graph”  。
 
-    ![图形 API](./media/openidoauth-tutorial/microsoft-graph.png)
+    ![屏幕截图显示“请求 API 权限”页面，其中选择了“Microsoft API”选项卡和“Microsoft Graph”磁贴。](./media/openidoauth-tutorial/microsoft-graph.png)
 
     e. 从“委托的权限”  和  “应用程序权限”中选择所需的选项。
 
@@ -151,3 +157,7 @@ ms.locfileid: "90705616"
 *prompt=admin_consent* 参数还可以由请求不需要管理员许可的权限的应用程序使用。 例如，某个应用程序需要如下所述的体验：租户管理员“注册”一次，在此之后不再提示其他用户确认许可。
 
 假设某个应用程序需要管理员许可并且管理员登录而没有发送 *prompt=admin_consent* 参数。 当管理员成功地许可该应用程序时，该许可仅适用于其用户帐户。 普通用户仍然无法登录或许可该应用程序。 如果想要让租户管理员浏览应用程序，然后允许其他用户访问，则此功能就很有用。
+
+## <a name="next-steps"></a>后续步骤
+
+[在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 OIDC 的单一登录 (SSO)](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)

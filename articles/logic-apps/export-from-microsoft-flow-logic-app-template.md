@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269550"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014408"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "91269550"
 
 ## <a name="export-your-flow"></a>导出流
 
-1. 登录到 " [电源自动](https://flow.microsoft.com)"，然后选择 **"我的流**"。 查找并选择你的流。 在工具栏上，选择 "省略号 (**...** ") 按钮 > "**导出**  >  **逻辑应用模板 () json **"。
+1. 登录到 " [电源自动](https://flow.microsoft.com)"，然后选择 **"我的流**"。 查找并选择你的流。 在工具栏上，选择 "省略号 (**...** ") 按钮 > "**导出**  >  **逻辑应用模板 () json**"。
 
    ![从电源自动执行导出流程](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "91269550"
 
    ![选择 "加载文件"](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
-1. 浏览到保存从 "Power 自动" 导出的 JSON 模板文件的位置。 选择 > **打开**的模板文件。
+1. 浏览到保存从 "Power 自动" 导出的 JSON 模板文件的位置。 选择 > **打开** 的模板文件。
 
 1. 在编辑器显示模板中的 JSON、参数和资源后，选择 " **保存**"。
 
@@ -66,7 +66,7 @@ ms.locfileid: "91269550"
 
    1. 选择或指定模板的输入参数值。
 
-      | properties | 说明 |
+      | 属性 | 说明 |
       |----------|-------------|
       | **订阅** | 用于计费的 Azure 订阅 |
       | **资源组** | 要用于逻辑应用的 Azure 资源组。 您可以使用现有组或创建新组。 |
@@ -94,7 +94,7 @@ ms.locfileid: "91269550"
 
       ![警告图标](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
-   1. 对于需要授权连接的每个步骤，展开该步骤，然后选择 " **添加新**项"。
+   1. 对于需要授权连接的每个步骤，展开该步骤，然后选择 " **添加新** 项"。
 
       ![屏幕截图，显示在 Outlook "连接" 窗口中选择的 "添加新" 按钮。](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "91269550"
 
 1. 在 Visual Studio 中，浏览到并打开从 Power 自动功能导出的逻辑应用模板的 json 文件。
 
-1. 在 Visual Studio 中，按照[快速入门：使用 Azure 逻辑应用创建自动化任务、进程和工作流-Visual studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)中的步骤创建一个使用**逻辑应用**模板的**Azure 资源组**项目。
+1. 在 Visual Studio 中，按照 [快速入门：使用 Azure 逻辑应用创建自动化任务、进程和工作流-Visual studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)中的步骤创建一个使用 **逻辑应用** 模板的 **Azure 资源组** 项目。
 
    此示例创建一个名为 "ImportedLogicApp" 的 Visual Studio 解决方案。
 
@@ -138,7 +138,7 @@ ms.locfileid: "91269550"
 
       ![带有警告图标的连接](./media/export-from-microsoft-flow-logic-app-template/authorize-connections-vs.png)
 
-   1. 对于需要授权连接的每个步骤，展开该步骤，然后选择 " **添加新**项"。
+   1. 对于需要授权连接的每个步骤，展开该步骤，然后选择 " **添加新** 项"。
 
       ![添加新连接](./media/export-from-microsoft-flow-logic-app-template/add-new-connection-vs.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "91269550"
 
    1. 在部署逻辑应用之前保存解决方案。
 
-1. 在解决方案资源管理器中，打开项目快捷菜单，然后选择 "**部署**  >  **新**的"。 如果出现系统提示，请使用 Azure 帐户登录。
+1. 在解决方案资源管理器中，打开项目快捷菜单，然后选择 "**部署**  >  **新** 的"。 如果出现系统提示，请使用 Azure 帐户登录。
 
 1. 出现提示时，确认要用于部署的 Azure 订阅、Azure 资源组和其他任何设置，如用于传递模板参数值的 [参数文件](../azure-resource-manager/templates/parameter-files.md) ，然后选择 " **部署**"。
 

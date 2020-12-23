@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: deac4dcde51049d744706b7479f5b5f3bbb4d9c0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553901"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>教程：Azure Active Directory 与 Periscope Data 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553901"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Periscope Data（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -89,7 +89,7 @@ ms.locfileid: "88553901"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "88553901"
 
 2. 打开在左下角的齿轮菜单并打开“帐单”   > “安全”  菜单，然后执行以下步骤。 只有管理员才有权访问这些设置。
 
-    ![Periscope Data 配置信息](./media/periscope-data-tutorial/configure01.png)
+    ![屏幕截图显示带有所选设置的“安全性”对话框。](./media/periscope-data-tutorial/configure01.png)
 
     a. 从步骤 #5“SAML 签名证书”  中复制“应用联合元数据 URL”  ，然后在浏览器中打开它。 这会打开一个 XML 文档。
 
@@ -143,7 +143,7 @@ ms.locfileid: "88553901"
 
     i. 最后，单击“保存”  ，并通过输入“注销”  来确认  SSO 设置更改。
 
-    ![Periscope Data 配置信息](./media/periscope-data-tutorial/configure02.png)
+    ![屏幕截图显示在文本框中键入了“注销”并选择了“确认”按钮的“更新 SSO 配置”对话框。](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -206,7 +206,7 @@ ms.locfileid: "88553901"
 
 2. 单击菜单左下角的“设置”  图标，并导航到“权限”  。
 
-    ![Periscope Data 配置信息](./media/periscope-data-tutorial/configure03.png)
+    ![屏幕截图显示选择了“权限”的“设置”菜单。](./media/periscope-data-tutorial/configure03.png)
 
 3. 单击“添加用户”，然后执行以下步骤： 
 
@@ -224,13 +224,12 @@ ms.locfileid: "88553901"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Periscope Data 磁贴时，应会自动登录到为其设置了 SSO 的 Periscope Data。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Periscope Data 磁贴时，应会自动登录到为其设置了 SSO 的 Periscope Data。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

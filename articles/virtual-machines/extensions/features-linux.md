@@ -1,6 +1,6 @@
 ---
 title: 适用于 Linux 的 Azure VM 扩展和功能
-description: 了解 Linux 上适用于 Azure 虚拟机的扩展，这些扩展按它们提供或改进的内容分组。
+description: 了解可为 Linux 上的 Azure 虚拟机提供的扩展，这些扩展按它们提供或改进的功能进行分组。
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -9,17 +9,18 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336116"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966065"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -65,7 +66,7 @@ Linux 代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加
 > [!IMPORTANT]
 > 如果已使用来宾防火墙阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败  。
 
-代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储的扩展，可以使用[存储](../../virtual-network/security-overview.md#service-tags)的 Azure NSG 服务标记来允许访问。
+代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储的扩展，可以使用[存储](../../virtual-network/network-security-groups-overview.md#service-tags)的 Azure NSG 服务标记来允许访问。
 
 为了重定向代理流量请求，Linux 代理有代理服务器支持。 但是，此代理服务器支持不应用扩展。 必须配置每个单独的扩展来使用代理。
 
@@ -231,9 +232,9 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 
 #### <a name="agent-updates"></a>代理更新
 
-Linux VM 代理在一个包中包含 *预配代理代码* 和 *扩展处理代码*  ，这种代码不能分隔。 如果要使用 cloud-init 在 Azure 上预配，可以禁用预配代理**。 若要执行此操作，请参阅[使用 cloud-init](../linux/using-cloud-init.md)。
+Linux VM 代理在一个包中包含 *预配代理代码* 和 *扩展处理代码*  ，这种代码不能分隔。 如果要使用 cloud-init 在 Azure 上预配，可以禁用预配代理。 若要执行此操作，请参阅[使用 cloud-init](../linux/using-cloud-init.md)。
 
-代理的受支持版本可以使用自动更新。 唯一可以更新的代码是扩展处理代码，不是预配代码**。 预配代理代码是一次性运行的代码**。
+代理的受支持版本可以使用自动更新。 唯一可以更新的代码是扩展处理代码，不是预配代码。 预配代理代码是一次性运行的代码。
 
 扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展  。 更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能  。
 
@@ -255,7 +256,7 @@ Python: 3.5.2
 Goal state agent: 2.2.18
 ```
 
-在前面的示例输出中，父级或“部署包的版本”是 WALinuxAgent-2.2.17**
+在前面的示例输出中，父级或“部署包的版本”是 WALinuxAgent-2.2.17
 
 “目标状态代理”是自动更新版本。
 
@@ -301,9 +302,9 @@ az vm show --resource-group myResourceGroup --name myVM
 
 #### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>识别何时执行了 autoUpgradeMinorVersion
 
-若要查看何时对扩展执行了更新，请查看 VM 上的代理日志，路径为 /var/log/waagent.log**。
+若要查看何时对扩展执行了更新，请查看 VM 上的代理日志，路径为 /var/log/waagent.log。
 
-在下面的示例中，VM 安装 Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9025**。 修补程序适用于 Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027**：
+在下面的示例中，VM 安装 Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9025。 修补程序适用于 Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027：
 
 ```bash
 INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Expected handler state: enabled
@@ -326,7 +327,7 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 ## <a name="agent-permissions"></a>代理权限
 
-若要执行任务，代理需要作为根运行**。
+若要执行任务，代理需要作为根运行。
 
 ## <a name="troubleshoot-vm-extensions"></a>排查 VM 扩展的问题
 
@@ -334,9 +335,9 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 以下故障排除步骤适用于所有 VM 扩展。
 
-1. 若要查看 Linux 代理日志，请在 /var/log/waagent.log 中查看预配扩展时的活动**
+1. 若要查看 Linux 代理日志，请在 /var/log/waagent.log 中查看预配扩展时的活动
 
-2. 在 /var/log/azure/\<extensionName> 中查看实际扩展日志，以便获取详细信息**
+2. 在 /var/log/azure/\<extensionName> 中查看实际扩展日志，以便获取详细信息
 
 3. 查看特定扩展文档中有关错误代码和已知问题等的故障排除部分。
 

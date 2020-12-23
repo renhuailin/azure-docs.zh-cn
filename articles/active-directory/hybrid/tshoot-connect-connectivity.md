@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56e9820c5e3a750a35b7271b86750df00eb4784e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317506"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677061"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>排查 Azure AD 连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -33,7 +33,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 在本文中，我们说明了 Fabrikam 如何通过其代理连接到 Azure AD。 代理服务器名为 fabrikamproxy，并使用端口 8080。
 
 首先，我们需要确保正确配置 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) ，并在 machine.config 文件更新后重新启动 **Microsoft Azure AD 同步服务** 。
-![屏幕截图显示了计算机点配置文件的一部分。](./media/tshoot-connect-connectivity/machineconfig.png)
+![屏幕截图显示了 machine.config 文件的一部分。](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
 > 某些非 Microsoft 博客提到，应该对 miiserver.exe.config 进行更改。 但是，每次升级都会覆盖此文件，因此，尽管系统在初始安装期间可正常工作，但首次升级时会停止工作。 出于此原因，建议改为更新 machine.config。
@@ -50,8 +50,16 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 | \*.verisign.com |HTTP/80 |用于下载 CRL 列表。 |
 | \*.entrust.net |HTTP/80 |用于为 MFA 下载 CRL 列表。 |
 | \*.windows.net |HTTPS/443 |用于登录 Azure AD。 |
-| secure.aadcdn.microsoftonline-p.com |HTTPS/443 |用于 MFA。 |
+| secure.aadcdn.microsoftonline p.com |HTTPS/443 |用于 MFA。 |
 | \*.microsoftonline.com |HTTPS/443 |用于配置 Azure AD 目录并导入/导出数据。 |
+| \*。 crl3.digicert.com |HTTP/80 |用于验证证书。 |
+| \*。 crl4.digicert.com |HTTP/80 |用于验证证书。 |
+| \*。 ocsp.digicert.com |HTTP/80 |用于验证证书。 |
+| \*。 www.d-trust.net |HTTP/80 |用于验证证书。 |
+| \*。 root-c3-ca2-2009.ocsp.d-trust.net |HTTP/80 |用于验证证书。 |
+| \*。 crl.microsoft.com |HTTP/80 |用于验证证书。 |
+| \*。 oneocsp.microsoft.com |HTTP/80 |用于验证证书。 |
+| \*。 ocsp.msocsp.com |HTTP/80 |用于验证证书。 |
 
 ## <a name="errors-in-the-wizard"></a>向导中的错误
 安装向导使用两种不同的安全性上下文。 在“连接到 Azure AD”页上，使用的是当前登录的用户。 在“配置”页上，改为[运行同步引擎服务的帐户](reference-connect-accounts-permissions.md#adsync-service-account)。 如果出现问题，该问题很有可能已显示在向导中的“连接到 Azure AD”页上，因为代理配置是全局性的。
@@ -60,7 +68,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>未正确配置安装向导
 当向导本身无法访问代理时，会出现此错误。
-![屏幕截图显示错误：无法验证凭据。](./media/tshoot-connect-connectivity/nomachineconfig.png)
+![屏幕截图显示了错误：无法验证凭据。](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * 如果看到此错误，请检查是否已正确配置 [machine.config](how-to-connect-install-prerequisites.md#connectivity)。
 * 如果配置看起来正确，请按照 [验证代理连接](#verify-proxy-connectivity) 中的步骤，查看问题是否也出现在向导外部的位置。
@@ -85,7 +93,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 PowerShell 使用 machine.config 中的配置来联系代理。 winhttp/netsh 中的设置应该不会影响这些 cmdlet。
 
-如果代理配置正确，应会获得成功状态： ![ 屏幕截图，在正确配置代理时显示成功状态。](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+如果代理配置正确，应会收到成功状态：![正确配置代理后显示成功状态的屏幕截图。](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
 如果收到“无法连接到远程服务器”，则表示 PowerShell 正在尝试进行直接调用而未使用代理，或者 DNS 配置不正确。 请确保 machine.config 文件配置正确。
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
@@ -117,26 +125,26 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect:// *bba800-anchor* .microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect:// *bwsc02-relay* .microsoftonline.com:443 |
 
 **配置**
 
 | 时间 | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect:// *bba800-anchor* .microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect:// *bba900-anchor* .microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect:// *bba800-anchor* .microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect:// *bwsc02-relay* .microsoftonline.com:443 |
 
 **初始同步**
 
@@ -144,8 +152,8 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect:// *bba900-anchor* .microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect:// *bba800-anchor* .microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>身份验证错误
 本部分介绍了 ADAL（Azure AD Connect 使用的身份验证库）和 PowerShell 可能返回的错误。 其中说明的错误可帮助了解后续步骤。
@@ -186,7 +194,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>需要 Azure AD 全局管理员角色
-用户已成功完成身份验证。 但用户未分配有全局管理员角色。 此处介绍[如何将全局管理员角色分配给](../users-groups-roles/directory-assign-admin-roles.md)用户。
+用户已成功完成身份验证。 但用户未分配有全局管理员角色。 此处介绍[如何将全局管理员角色分配给](../roles/permissions-reference.md)用户。
 
 <div id="privileged-identity-management">
 <!--
@@ -225,14 +233,14 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 从内部版本号 1.1.105.0（于 2016 年 2 月发行）开始已停用登录助理。 不再需要用到本部分所述的配置，这些内容仅供参考。
 
 要使单一登录助理正常工作，必须配置 winhttp。 可以使用 [netsh](how-to-connect-install-prerequisites.md#connectivity) 完成此配置。
-![屏幕截图显示运行 netsh 工具以设置代理的命令提示符窗口。](./media/tshoot-connect-connectivity/netsh.png)
+![屏幕截图显示了一个运行 netsh 工具以设置代理的命令提示符窗口。](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>未正确配置登录助理
 当登录助理无法访问代理或代理不允许该请求时，此错误出现。
-![屏幕截图显示错误：无法验证凭据、验证网络连接和防火墙或代理设置。](./media/tshoot-connect-connectivity/nonetsh.png)
+![屏幕截图显示了错误：无法验证凭据，请验证网络连接性和防火墙或代理设置。](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * 如果看到此错误，请在 [netsh](how-to-connect-install-prerequisites.md#connectivity) 中查看代理配置并确认配置是否正确。
-  ![屏幕截图显示运行 netsh 工具的命令提示符窗口，以显示代理配置。](./media/tshoot-connect-connectivity/netshshow.png)
+  ![屏幕截图显示了一个运行 netsh 工具以显示代理配置的命令提示符窗口。](./media/tshoot-connect-connectivity/netshshow.png)
 * 如果配置看起来正确，请按照 [验证代理连接](#verify-proxy-connectivity) 中的步骤，查看问题是否也出现在向导外部的位置。
 
 ## <a name="next-steps"></a>后续步骤

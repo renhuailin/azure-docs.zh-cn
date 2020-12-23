@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903817"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124163"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>在 Visual Studio Code 中使用作业关系图在本地调试 Azure 流分析查询
 
@@ -104,7 +104,7 @@ ms.locfileid: "90903817"
 
 * 不支持 C# 自定义代码和 Azure 机器学习功能。 
 
-* 只有云输入选项具有[时间策略](stream-analytics-out-of-order-and-late-events.md)支持，本地输入选项不具备此支持。
+* 只有云输入选项具有[时间策略](./stream-analytics-time-handling.md)支持，本地输入选项不具备此支持。
 
 ## <a name="next-steps"></a>后续步骤
 

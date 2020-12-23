@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: 9a8e0dde8b24c39180a584c26af725ab82ea0176
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907105"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562593"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>将计算机视觉容器与 Kubernetes 和 Helm 配合使用
 
@@ -27,10 +27,10 @@ ms.locfileid: "90907105"
 
 | 必须 | 目的 |
 |----------|---------|
-| Azure 帐户 | 如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户][free-azure-account]。 |
+| Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
 | Kubernetes CLI | 需要使用 [Kubernetes CLI][kubernetes-cli] 来管理容器注册表中的共享凭据。 在安装 Helm（Kubernetes 包管理器）之前，也需要有 Kubernetes。 |
 | Helm CLI | 安装 [Helm CLI][helm-install]，它可用于安装 Helm 图表（容器包定义）。 |
-| 计算机视觉资源 |若要使用容器，必须具有：<br><br>Azure 计算机视觉**** 资源和关联的 API 密钥及终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个****<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点****|
+| 计算机视觉资源 |若要使用容器，必须具有：<br><br>Azure 计算机视觉资源和关联的 API 密钥及终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -44,58 +44,17 @@ ms.locfileid: "90907105"
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>连接到 Kubernetes 群集
 
-主机预期有一个可用的 Kubernetes 群集。 请参阅这篇有关[部署 Kubernetes 群集](../../aks/tutorial-kubernetes-deploy-cluster.md)的教程，对如何将 Kubernetes 群集部署到主机有一个概念性的了解。 可在 [Kubernetes 文档](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)中找到有关部署的详细信息。
-
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>与 Kubernetes 群集共享 Docker 凭据
-
-若要允许 Kubernetes 群集对 `containerpreview.azurecr.io` 容器注册表中配置的映像执行 `docker pull`，需将 Docker 凭据传输到群集中。 执行以下 [`kubectl create`][kubectl-create] 命令，基于“容器注册表访问权限”先决条件提供的凭据创建 Docker 注册表机密。**
-
-在所选的命令行接口中运行以下命令。 请务必将 `<username>`、`<password>` 和 `<email-address>` 替换为容器注册表凭据。
-
-```console
-kubectl create secret docker-registry containerpreview \
-    --docker-server=containerpreview.azurecr.io \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<email-address>
-```
-
-> [!NOTE]
-> 如果你已有权访问 `containerpreview.azurecr.io` 容器注册表，则可以改用常规标志创建 Kubernetes 机密。 考虑针对 Docker 配置 JSON 执行以下命令。
-> ```console
->  kubectl create secret generic containerpreview \
->      --from-file=.dockerconfigjson=~/.docker/config.json \
->      --type=kubernetes.io/dockerconfigjson
-> ```
-
-成功创建机密后，控制台中会列显以下输出。
-
-```console
-secret "containerpreview" created
-```
-
-若要验证是否已创建机密，请结合 `secrets` 标志执行 [`kubectl get`][kubectl-get]。
-
-```console
-kubectl get secrets
-```
-
-执行 `kubectl get secrets` 会列显所有已配置的机密。
-
-```console
-NAME                  TYPE                                  DATA      AGE
-containerpreview      kubernetes.io/dockerconfigjson        1         30s
-```
+主机预期有一个可用的 Kubernetes 群集。 请参阅这篇有关[部署 Kubernetes 群集](../../aks/tutorial-kubernetes-deploy-cluster.md)的教程，对如何将 Kubernetes 群集部署到主机有一个概念性的了解。 有关部署的详细信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)。
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>配置用于部署的 Helm 图表值
 
-首先，创建一个名为 *read*的文件夹。 然后，将以下 YAML 内容粘贴到名为的新文件中 `chart.yaml` ：
+首先，创建一个名为 read 的文件夹。 然后，将以下 YAML 内容粘贴到名为 `chart.yaml` 的新文件中：
 
 ```yaml
 apiVersion: v2
 name: read
 version: 1.0.0
-description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+description: A Helm chart to deploy the Read OCR container to a Kubernetes cluster
 dependencies:
 - name: rabbitmq
   condition: read.image.args.rabbitmq.enabled
@@ -111,15 +70,13 @@ dependencies:
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
-
 read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry:  containerpreview.azurecr.io/
-    repository: microsoft/cognitive-services-read
-    tag: latest
-    pullSecret: containerpreview # Or an existing secret
+    registry:  mcr.microsoft.com/
+    repository: azure-cognitive-services/vision/read
+    tag: 3.2-preview.1
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -146,12 +103,12 @@ read:
 ```
 
 > [!IMPORTANT]
-> - 如果 `billing` `apikey` 未提供和值，则服务将在15分钟后过期。 同样，验证也会失败，因为服务不可用。
+> - 如果未提供 `billing` 和 `apikey` 值，服务将在 15 分钟后过期。 同样，验证也会因服务不可用而失败。
 > 
-> - 如果将多个读取容器部署在负载平衡器之后（例如，在 "Docker Compose" 或 "Kubernetes" 下），则必须具有外部缓存。 由于处理容器和 GET 请求容器可能不相同，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅 [Configure 计算机视觉 Docker 容器](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)。
+> - 如果将多个读取容器部署在负载平衡器之后（例如，在 "Docker Compose" 或 "Kubernetes" 下），则必须具有外部缓存。 由于处理容器和 GET 请求容器可能不相同，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅 [Configure 计算机视觉 Docker 容器](./computer-vision-resource-container-config.md)。
 >
 
-在 read** 目录下创建 templates** 文件夹。 将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 `deployment.yaml` 文件将充当 Helm 模板。
+在 read 目录下创建 templates 文件夹。 将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 `deployment.yaml` 文件将充当 Helm 模板。
 
 > 模板生成清单文件，这些文件是 Kubernetes 可以理解的 YAML 格式的资源描述。 [- Helm 图表模板指南][chart-template-guide]
 
@@ -208,7 +165,10 @@ spec:
     app: read-app
 ```
 
-在相同的 *模板* 文件夹中，将以下 helper 函数复制并粘贴到中 `helpers.tpl` 。 `helpers.tpl` 定义有用的函数来帮助生成 Helm 模板。
+还是在该模板文件夹中，将以下帮助程序函数复制粘贴到 `helpers.tpl` 中。 `helpers.tpl` 定义了一些实用函数，可帮助生成 Helm 模板。
+
+> [!NOTE]
+> 本文包含对字词从属的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
 
 ```yaml
 {{- define "rabbitmq.hostname" -}}
@@ -227,15 +187,15 @@ spec:
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes 包（Helm 图表）
 
-Helm 图表包含要从 `containerpreview.azurecr.io` 容器注册表提取的 Docker 映像的配置。**
+Helm 图表包含要从 `mcr.microsoft.com` 容器注册表提取的 Docker 映像的配置。
 
 > [Helm 图表][helm-charts]是描述一组相关 Kubernetes 资源的文件集合。 单个图表既可用于部署简单的资源（例如 Memcached Pod），也可用于部署复杂的资源（例如，包含 HTTP 服务器、数据库、缓存等的完整 Web 应用堆栈）。
 
-提供的 Helm 图表** 将从 `containerpreview.azurecr.io` 容器注册表中拉取计算机视觉服务的 Docker 映像以及相应的服务。
+提供的 Helm 图表将从 `mcr.microsoft.com` 容器注册表中拉取计算机视觉服务的 Docker 映像以及相应的服务。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 群集上安装 Helm 图表
 
-若要安装 Helm 图表**，我们需要执行 [`helm install`][helm-install-cmd] 命令。 确保从 `read` 文件夹上方的目录中执行 install 命令。
+若要安装 Helm 图表，我们需要执行 [`helm install`][helm-install-cmd] 命令。 确保从 `read` 文件夹上方的目录中执行 install 命令。
 
 ```console
 helm install read ./read
@@ -286,6 +246,106 @@ deployment.apps/read   1/1     1            1           17s
 NAME                              DESIRED   CURRENT   READY   AGE
 replicaset.apps/read-57cb76bcf7   1         1         1       17s
 ```
+
+## <a name="deploy-multiple-v3-containers-on-the-kubernetes-cluster"></a>在 Kubernetes 群集上部署多个 v3 容器
+
+从容器的 v3 开始，可以在任务和页级别并行使用容器。
+
+按照设计，每个 v3 容器都具有一个调度程序和一个识别辅助角色。 调度程序负责将多页任务拆分为多个单页子任务。 识别辅助角色针对识别单个页面文档进行了优化。 若要实现页面级别并行，请在负载均衡器后面部署多个 v3 容器，并让容器共享一个通用存储和队列。 
+
+> [!NOTE] 
+> 目前仅支持 Azure 存储和 Azure 队列。 
+
+接收请求的容器可以将任务拆分为单一页面子任务，并将其添加到通用队列。 不太繁忙的容器中的任何识别工作人员都可以使用队列中的单页子任务，执行识别，然后将结果上传到存储。 根据所部署的容器的数量，吞吐量可以高达 `n` 倍。
+
+将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 请将 `# {ENDPOINT_URI}` 和 `# {API_KEY}` 注释替换为自己的值。 将 `# {AZURE_STORAGE_CONNECTION_STRING}` 注释替换为 Azure 存储连接字符串。 配置 `replicas` 为你需要的数字， `3` 在以下示例中设置为。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: read
+  labels:
+    app: read-deployment
+spec:
+  selector:
+    matchLabels:
+      app: read-app
+  replicas: # {NUMBER_OF_READ_CONTAINERS}
+  template:
+    metadata:
+      labels:
+        app: read-app
+    spec:
+      containers:
+      - name: cognitive-services-read
+        image: mcr.microsoft.com/azure-cognitive-services/vision/read
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: accept
+        - name: billing
+          value: # {ENDPOINT_URI}
+        - name: apikey
+          value: # {API_KEY}
+        - name: Storage__ObjectStore__AzureBlob__ConnectionString
+          value: # {AZURE_STORAGE_CONNECTION_STRING}
+        - name: Queue__Azure__ConnectionString
+          value: # {AZURE_STORAGE_CONNECTION_STRING}
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-cognitive-service-read
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: read-app
+```
+
+运行以下命令。 
+
+```console
+kubectl apply -f deployment.yaml
+```
+
+下面是成功执行部署时可能看到的示例输出：
+
+```console
+deployment.apps/read created
+service/azure-cognitive-service-read created
+```
+
+Kubernetes 部署可能需要几分钟才能完成。 若要确认是否正确部署了 pod 和服务，请执行以下命令：
+
+```console
+kubectl get all
+```
+
+应会看到类似于以下内容的控制台输出：
+
+```console
+kubectl get all
+NAME                       READY   STATUS    RESTARTS   AGE
+pod/read-6cbbb6678-58s9t   1/1     Running   0          3s
+pod/read-6cbbb6678-kz7v4   1/1     Running   0          3s
+pod/read-6cbbb6678-s2pct   1/1     Running   0          3s
+
+NAME                                   TYPE           CLUSTER-IP   EXTERNAL-IP    PORT(S)          AGE
+service/azure-cognitive-service-read   LoadBalancer   10.0.134.0   <none>         5000:30846/TCP   17h
+service/kubernetes                     ClusterIP      10.0.0.1     <none>         443/TCP          78d
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/read   3/3     3            3           3s
+
+NAME                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/read-6cbbb6678   3         3         3       3s
+```
+
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -300,7 +360,7 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/using_helm/#installing-helm

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 59b4a04231df3b93b093750cc6c9d70982a418a9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 688cd7c2e54a6b4c6b5a11705e10c33604324f09
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665338"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576275"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>从 Azure 流分析 Azure Data Lake Storage 第1代输出
 
@@ -36,11 +36,11 @@ ms.locfileid: "91665338"
 | 编码 | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。|
 | 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。|
 | 格式 | 仅适用于 JSON 序列化。 分隔行指定通过新行分隔各个 JSON 对象，从而格式化输出。 如果选择“行分隔”，则读取 JSON 时，一次读取一个对象。 整个内容本身将不是有效的 JSON。  数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。|
-| 身份验证模式 | 可以使用[托管标识](stream-analytics-managed-identities-adls.md)或用户令牌来授权对 Data Lake Storage 帐户的访问。 授予访问权限后，可以通过更改用户帐户密码、删除此作业的 Data Lake Storage 输出或删除流分析作业，来撤销访问权限。 |
+| 身份验证模式 | 你可以使用 [托管标识](stream-analytics-managed-identities-adls.md) (预览版) 或用户令牌来授予对 Data Lake Storage 帐户的访问权限。 授予访问权限后，可以通过更改用户帐户密码、删除此作业的 Data Lake Storage 输出或删除流分析作业，来撤销访问权限。 |
 
 ## <a name="partitioning"></a>分区
 
-对于分区键，请在路径前缀模式中使用 {date} 和 {time} 标记。 选择日期格式，如 YYYY/MM/DD、DD/MM/YYYY 或 MM-DD。 使用 HH 作为时间格式。 输出写入器的数目按照 [完全可并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。
+对于分区键，请在路径前缀模式中使用 {date} 和 {time} 标记。 选择日期格式，如 YYYY/MM/DD、DD/MM/YYYY 或 MM-DD。 使用 HH 作为时间格式。 输出编写器的数量与[可完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区一致。
 
 ## <a name="output-batch-size"></a>输出批大小
 

@@ -3,12 +3,12 @@ title: 新增功能 发行说明 - Azure 事件网格
 description: 了解 Azure 事件网格的最新信息，例如最新的发行说明、已知问题、bug 修复、已弃用的功能和即将应用的更改。
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 1edfa3e2bc4c8adae113b2215b7fb0483fba4c02
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87172681"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350001"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure 事件网格的最新信息
 
@@ -40,7 +40,7 @@ Azure 事件网格会不断改进。 为了让大家随时了解最新的开发�
 - 此版本包含旨在提高质量的新增 bug 修补程序。
 - 此版本是版本 5.3.1-preview，与 2020-04-01-Preview API 版本相对应，其中包括以下新功能： 
     - [将事件发布到域和主题时支持 IP 筛选](configure-firewall.md)
-    - [合作伙伴主题](partner-topics-overview.md)
+    - [合作伙伴主题](./partner-events-overview.md)
     - [在 Azure 门户中将系统主题作为受跟踪的资源](system-topics.md)
     - [使用托管服务标识进行事件传送](managed-service-identity.md) 
     - [专用链接服务支持](configure-private-endpoints.md)
@@ -49,7 +49,7 @@ Azure 事件网格会不断改进。 为了让大家随时了解最新的开发�
 - 此版本包含旨在提高质量的多种 bug 修补程序。
 - 此版本是版本 5.3.0-preview，与 2020-04-01-Preview API 版本相对应，其中包括以下新功能： 
     - [将事件发布到域和主题时支持 IP 筛选](configure-firewall.md)
-    - [合作伙伴主题](partner-topics-overview.md)
+    - [合作伙伴主题](./partner-events-overview.md)
     - [在 Azure 门户中将系统主题作为受跟踪的资源](system-topics.md)
     - [使用托管服务标识进行事件传送](managed-service-identity.md) 
     - [专用链接服务支持](configure-private-endpoints.md)
@@ -59,7 +59,7 @@ Azure 事件网格会不断改进。 为了让大家随时了解最新的开发�
 - 此版本是版本 5.2.0-preview，与 2020-04-01-Preview API 版本相对应。
 - 它添加了对以下新功能的支持： 
     - [将事件发布到域和主题时支持 IP 筛选](configure-firewall.md)
-    - [合作伙伴主题](partner-topics-overview.md)
+    - [合作伙伴主题](./partner-events-overview.md)
     - [在 Azure 门户中将系统主题作为受跟踪的资源](system-topics.md)
     - [使用托管服务标识进行事件传送](managed-service-identity.md) 
     - [专用链接服务支持](configure-private-endpoints.md)

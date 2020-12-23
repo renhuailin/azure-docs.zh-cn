@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579752"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672774"
 ---
-# <a name="iot-plug-and-play-bridge"></a>IoT 即插即用 bridge
+# <a name="iot-plug-and-play-bridge"></a>IoT 即插即用桥接
 
 IoT 即插即用桥是一个开源应用程序，用于将连接到 Windows 或 Linux 网关的现有设备连接为 IoT 即插即用设备。 在 Windows 或 Linux 计算机上安装和配置应用程序后，可以使用它将连接的设备连接到 IoT 中心。 你可以使用桥将 IoT 即插即用接口映射到附加设备发送的遥测、使用设备属性以及调用命令。
 
@@ -29,63 +29,125 @@ IoT 即插即用 bridge 可以作为独立的可执行文件部署在运行 Wind
 
 |外设|Windows|Linux|
 |---------|---------|---------|
-|[蓝牙 LE](https://aka.ms/iot-pnp-bridge-bluetooth)       |是|否|
-|[摄像头](https://aka.ms/iot-pnp-bridge-camera)               |是|否|
-|[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |是|是|
-|[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |是|是|
-|[串行](https://aka.ms/iot-pnp-bridge-serial)                |是|是|
-|[Windows USB 外围设备](https://aka.ms/iot-pnp-bridge-usb)  |是|不适用|
+|[蓝牙传感器适配器](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/bluetooth_sensor_adapter.md) 连接检测到 (BLE) 启用传感器的蓝牙低能耗。       |是|否|
+|[照相机适配器](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/camera_adapter.md) 将相机连接到 Windows 10 设备上。               |是|否|
+|[Modbus 适配器](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/modbus_adapters.md) 在 Modbus 设备上连接传感器。              |是|是|
+|[MQTT 适配器](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/mqtt_adapter.md) 连接使用 MQTT broker 的设备。                  |是|是|
+|[SerialPnP 适配器](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) 连接通过串行连接进行通信的设备。               |是|是|
+|[WINDOWS USB 外设](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) 使用适配器支持的设备接口类的列表来连接具有特定硬件 ID 的设备。  |是|不适用|
 
->[!Important]
->开发人员可以通过 **[此处的 iot 即插即用 bridge 开发人员文档](https://aka.ms/iot-pnp-bridge-dev-doc)** 中的说明，扩展 iot 即插即用桥以支持其他设备协议。
-
-## <a name="prerequisites"></a>先决条件
-
-### <a name="os-platform"></a>OS 平台
-
-支持以下 OS 平台和版本：
-
-|平台  |支持的版本  |
-|---------|---------|
-|Windows 10 |     支持所有 Windows Sku。 例如： IoT Enterprise、Server、Desktop、IoT Core。 *对于相机运行状况监视功能，建议使用20H1 或更高版本。所有其他功能在所有 Windows 10 版本上都可用。*  |
-|Linux     |在 Ubuntu 18.04 上经过测试和支持，尚未测试其他分发版的功能。         |
-||
-
-### <a name="hardware"></a>硬件
-
-- 支持上述 OS Sku 和版本的任何硬件平台。
-- 本机支持串行、USB、蓝牙和相机外设和传感器。 可对 IoT 即插即用桥进行扩展，以支持任何自定义外围设备或传感器 ([请参阅上面) 的外围设备部分](#iot-plug-and-play-bridge) 。
-
-### <a name="development-environment"></a>开发环境
-
-若要构建、扩展和开发 IoT 即插即用 bridge，你将需要：  
-
-- 支持编译 c + + 的开发环境（例如 [Visual studio (社区版、专业版或企业版) ](https://visualstudio.microsoft.com/downloads/)），请确保在安装 visual studio 时包含 "使用 c + + 进行桌面开发" 工作负载。
-- [CMake](https://cmake.org/download/) -安装 CMake 时，选择选项 `Add CMake to the system PATH` 。
-- 如果要在 Windows 上进行构建，还需要下载 Windows 17763 SDK： [https://developer.microsoft.com/windows/downloads/windows-10-sdk](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-- [Azure IoT 中心设备 C SDK](https://github.com/Azure/azure-iot-sdk-c)。 此存储库中包含的生成脚本会自动克隆所需的 Azure IoT C SDK。
-
-### <a name="azure-iot-products-and-tools"></a>Azure IoT 产品和工具
-
-- **Azure Iot 中心** -需要 azure 订阅中的 [azure iot 中心](https://docs.microsoft.com/azure/iot-hub/) 将设备连接到。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。 如果没有 IoT 中心，请 [按照以下说明创建一个](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-using-cli)。
-
-> [!Note]
-> IoT 即插即用当前在美国中部、北欧和日本东部区域创建的 IoT 中心中提供。 基本层的 IoT 中心不包含 IoT 即插即用支持。 若要与 IoT 即插即用设备进行交互，可以使用 Azure IoT 浏览器工具。 为操作系统[下载并安装最新版本的 Azure IoT 资源管理器](./howto-use-iot-explorer.md)。
+若要了解如何扩展 IoT 即插即用 bridge 以支持其他设备协议，请参阅 [生成、部署和扩展 iot 即插即用 bridge](howto-build-deploy-extend-pnp-bridge.md)。
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>IoT 即插即用 bridge 体系结构
 
-:::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-components.png" alt-text="左侧有几个现有的传感器 (有线和无线) 连接到包含 IoT 即插即用 bridge 的 Windows 或 Linux 计算机。然后，IoT 即插即用桥连接到右侧的 IoT 中心":::
+:::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-components.png" alt-text="左侧有几个框，它们表示连接到包含 IoT 即插即用 bridge 的 Windows 或 Linux PC 的各种外设。顶部有一个标记为 &quot;配置点&quot; 的框。然后，桥将连接到关系图右侧的 IoT 中心。":::
+
+### <a name="iot-plug-and-play-bridge-adapters"></a>IoT 即插即用桥适配器
+
+IoT 即插即用桥支持一组 IoT 即插即用桥适配器，适用于各种类型的设备。 *适配器清单* 将适配器静态定义为桥。
+
+桥接适配器管理器使用清单来标识和调用适配器函数。 适配器管理器仅对配置文件中列出的接口组件所需的桥接适配器调用 create 函数。 为每个 IoT 即插即用组件创建适配器实例。
+
+桥接适配器创建并获取数字克隆接口句柄。 适配器使用此句柄将设备功能绑定到数字克隆。
+
+通过使用配置文件中的信息，桥接器使用以下技术实现完全设备到通过桥的数字克隆通信：
+
+- 直接建立信道。
+- 创建设备观察程序以等待通信通道变为可用。
+
+### <a name="configuration-file"></a>配置文件
+
+IoT 即插即用 bridge 使用基于 JSON 的配置文件，该文件指定：
+
+- 如何连接到 IoT 中心或 IoT Central 应用程序：选项包括连接字符串、身份验证参数或 (DPS) 的设备预配服务。
+- 桥使用的 IoT 即插即用功能模型的位置。 模型定义 IoT 即插即用设备的功能，并且是静态的和不可变的。
+- IoT 即插即用接口组件列表，以及每个组件的以下信息：
+- 接口 ID 和组件名称。
+- 与组件进行交互所需的桥适配器。
+- 桥适配器建立与设备的通信所需的设备信息。 例如，硬件 ID 或适配器、接口或协议的特定信息。
+- 可选的桥适配器子类型或接口配置（如果适配器支持多个具有相似设备的通信类型）。 该示例演示如何配置蓝牙传感器组件：
+
+    ```json
+    {
+      "_comment": "Component BLE sensor",
+      "pnp_bridge_component_name": "blesensor1",
+      "pnp_bridge_adapter_id": "bluetooth-sensor-pnp-adapter",
+      "pnp_bridge_adapter_config": {
+        "bluetooth_address": "267541100483311",
+        "blesensor_identity" : "Blesensor1"
+      }
+    }
+    ```
+
+- 全局桥适配器参数的可选列表。 例如，蓝牙传感器桥接适配器具有受支持配置的字典。 需要蓝牙传感器适配器的接口组件可以选择其中一种配置 `blesensor_identity` ：
+
+    ```json
+    {
+      "pnp_bridge_adapter_global_configs": {
+        "bluetooth-sensor-pnp-adapter": {
+          "Blesensor1" : {
+            "company_id": "0x499",
+            "endianness": "big",
+            "telemetry_descriptor": [
+              {
+                "telemetry_name": "humidity",
+                "data_parse_type": "uint8",
+                "data_offset": 1,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.5
+              },
+              {
+                "telemetry_name": "temperature",
+                "data_parse_type": "int8",
+                "data_offset": 2,
+                "conversion_bias": 0,
+                "conversion_coefficient": 1.0
+              },
+              {
+                "telemetry_name": "pressure",
+                "data_parse_type": "int16",
+                "data_offset": 4,
+                "conversion_bias": 0,
+                "conversion_coefficient": 1.0
+              },
+              {
+                "telemetry_name": "acceleration_x",
+                "data_parse_type": "int16",
+                "data_offset": 6,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              },
+              {
+                "telemetry_name": "acceleration_y",
+                "data_parse_type": "int16",
+                "data_offset": 8,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              },
+              {
+                "telemetry_name": "acceleration_z",
+                "data_parse_type": "int16",
+                "data_offset": 10,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              }
+            ]
+          }
+        }
+      }
+    }
+    ```
 
 ## <a name="download-iot-plug-and-play-bridge"></a>下载 IoT 即插即用 bridge
 
-你可以在 [IoT 即插即用 bridge 版本](https://aka.ms/iot-pnp-bridge-releases) 中下载具有支持的适配器的网桥预构建版本，并展开最新版本的资产列表。 下载适用于你的操作系统的最新版本的应用程序。
+你可以在 [IoT 即插即用 bridge 版本](https://github.com/Azure/iot-plug-and-play-bridge/releases) 中下载具有支持的适配器的网桥预构建版本，并展开最新版本的资产列表。 下载适用于你的操作系统的最新版本的应用程序。
 
-你还可以 [在 GitHub 上下载并查看 IoT 即插即用 bridge](https://aka.ms/bridge)的源代码。
+你还可以 [在 GitHub 上下载并查看 IoT 即插即用 bridge](https://github.com/Azure/iot-plug-and-play-bridge)的源代码。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已大致了解 IoT 即插即用 bridge 的体系结构，接下来的步骤是详细了解以下内容：
 
 - [如何使用 IoT 即插即用 bridge](./howto-use-iot-pnp-bridge.md)
-- [请参阅适用于 IoT 即插即用 bridge 的 GitHub 开发人员参考](https://aka.ms/iot-pnp-bridge-dev-doc)
-- [GitHub 上的 IoT 即插即用桥](https://aka.ms/iotplugandplaybridge)
+- [构建、部署和扩展 IoT 即插即用 bridge](howto-build-deploy-extend-pnp-bridge.md)
+- [GitHub 上的 IoT 即插即用桥](https://github.com/Azure/iot-plug-and-play-bridge)

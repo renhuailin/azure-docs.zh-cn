@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507664"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005769"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务记录 StorSimple 虚拟阵列的支持请求
 
 ## <a name="overview"></a>概述
 
-StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录新支持请求**的功能。 本文介绍如何在门户中记录新支持请求和管理其生命周期。
+StorSimple Device Manager 在“服务摘要”边栏选项卡中提供 **记录新支持请求** 的功能。 本文介绍如何在门户中记录新支持请求和管理其生命周期。
 
 ## <a name="new-support-request"></a>新建支持请求
 
@@ -33,27 +33,27 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 #### <a name="to-log-a-new-request"></a>记录新请求
 
-1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”****，并单击“新建支持请求”****。
+1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”，并单击“新建支持请求”。
    
-    ![新建支持请求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![屏幕截图显示新的支持请求的 "基本信息" 窗格。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
-2. 在“基本”边栏选项卡中执行以下操作****：
+2. 在“基本”边栏选项卡中执行以下操作：
 
     1. 从“颁发类型”下拉列表中，选择“技术” 。 
     
-    2. 将自动选择当前**订阅**、**服务**类型和**资源**（StorSimple Device Manager 服务）。 
+    2. 将自动选择当前 **订阅**、**服务** 类型和 **资源**（StorSimple Device Manager 服务）。 
 
     3. 指定一个或多个遇到问题的已注册到服务的设备。
 
-    4. 如果有多个计划与订阅相关联，请选择合适的**支持计划**。 需要付费的支持计划才能启用技术支持。
+    4. 如果有多个计划与订阅相关联，请选择合适的 **支持计划**。 需要付费的支持计划才能启用技术支持。
 
-3. 在“步骤 2”**** 中，选择**严重性**并指定问题是否与阵列或 StorSimple Device Manager 服务相关。 此外，请选择此问题的**类别**，并提供有关此问题的更多**详细信息**。
+3. 在“步骤 2”中，选择 **严重性** 并指定问题是否与阵列或 StorSimple Device Manager 服务相关。 此外，请选择此问题的 **类别**，并提供有关此问题的更多 **详细信息**。
    
-    ![新建支持请求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![屏幕截图显示 "问题" 窗格，你可以在其中输入支持请求的问题类型、类别和详细信息。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. 在“步骤 3”**** 中，提供联系信息。 Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
+4. 在“步骤 3”中，提供联系信息。 Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
    
-    ![新建支持请求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![屏幕截图显示 "联系人信息" 窗格。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>管理支持请求
 

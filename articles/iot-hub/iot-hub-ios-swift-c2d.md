@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
-ms.openlocfilehash: d8552391e8e8c389a44174595305b8f28224a833
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c0df33b8f09ec71f2be913d72f0785dc766375
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732543"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027527"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>使用 IoT 中心发送云到设备消息 (iOS)
 
@@ -33,9 +33,9 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 在本文结束时，运行两个 Swift iOS 项目：
 
-* **sample-device**：在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-ios.md)中创建的同一应用，可连接到 IoT 中心并接收云到设备的消息。
+* **sample-device** ：在 [将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-ios.md)中创建的同一应用，可连接到 IoT 中心并接收云到设备的消息。
 
-* **示例-服务**，它通过 IoT 中心将云到设备的消息发送到模拟设备应用，然后接收其传递确认。
+* **示例-服务** ，它通过 IoT 中心将云到设备的消息发送到模拟设备应用，然后接收其传递确认。
 
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java、Python 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
@@ -94,7 +94,7 @@ pod install
 
 2. 展开“MQTT 客户端示例”项目，然后展开同名的文件夹。   
 
-3. 打开 **ViewController.swift**，以便在 XCode 中进行编辑。 
+3. 打开 **ViewController.swift** ，以便在 XCode 中进行编辑。 
 
 4. 搜索 **connectionString** 变量，并使用第一个步骤中复制的设备连接字符串更新其值。
 
@@ -102,7 +102,7 @@ pod install
 
 6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。  
 
-   ![运行项目](media/iot-hub-ios-swift-c2d/run-sample.png)
+   ![屏幕截图显示设备仿真程序中的 "生成" 和 "运行" 按钮。](media/iot-hub-ios-swift-c2d/run-sample.png)
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
@@ -142,9 +142,9 @@ pod install
 
 2. 展开“AzureIoTServiceSample”项目，然后展开同名的文件夹。   
 
-3. 打开 **ViewController.swift**，以便在 XCode 中进行编辑。 
+3. 打开 **ViewController.swift** ，以便在 XCode 中进行编辑。 
 
-4. 搜索 **connectionString** 变量，并使用先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的服务连接字符串更新其值。
+4. 搜索 **connectionString** 变量，并使用先前在 [获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的服务连接字符串更新其值。
 
 5. 保存所做更改。
 
@@ -154,7 +154,7 @@ pod install
 
 7. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。  
 
-   ![运行项目](media/iot-hub-ios-swift-c2d/run-app.png)
+   ![屏幕截图显示 "生成" 和 "运行" 按钮。](media/iot-hub-ios-swift-c2d/run-app.png)
 
 ## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
 

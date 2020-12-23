@@ -12,11 +12,11 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259062"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994037"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>将 Twilio 验证应用与 Azure Active Directory B2C 集成
 
@@ -45,7 +45,7 @@ ms.locfileid: "91259062"
 | 步骤 | 说明 |
 |------|------|
 | 1     | 用户启动登录或注册到 PSD2 演示应用。 用户通过 Azure AD B2C 组合登录和注册策略进行身份验证。 令牌将返回到应用程序。 注册时，用户的电话号码使用短信/电话号码进行验证，并记录在其 Azure AD B2C 帐户上。     |
-| 2     | 用户启动高风险事务，例如传输 $50.00。 为 PolicyId 评估用户的当前访问令牌，以确定用户是否已通过分步自定义策略进行身份验证。     |
+| 2     | 用户启动高风险事务，例如传输 $50.00。 为 PolicyId 评估用户的当前访问令牌，以确定用户是否已通过 Step-Up 自定义策略进行身份验证。     |
 | 3     | 应用程序记录事务值和收款人，$50.00 和 John Doe，并生成已签名的令牌。 此令牌称为 `id_token_hint` ，并包含声明 `amount:$500, payee:john doe` 。 与 `id_token_hint` 请求一起发送到 Azure AD B2C 自定义策略，该策略与 Twilio 集成。     |
 | 4     | Azure AD B2C 通过检查应用程序 `/.well-known` OpenId connect 终结点来验证 id_token_hint 的签名。 验证后，它将提取此令牌中的声明，尤其是 `amount` 和 `payee` 。 用户将看到一页通过 SMS 消息验证其移动电话号码。     |
 | 5     | 用户请求通过 SMS 消息验证其电话号码，并 Azure AD B2C 向 Twilio 的验证 API 终结点发出 REST API 请求。 它还会发送事务 `amount` ，并将其 `payee` 作为 PSD2 过程的一部分，以生成 (OTP) 的一次性密码。 Twilio 将向用户的已注册电话号码发送一条短信。     |
@@ -104,9 +104,9 @@ ms.locfileid: "91259062"
 
 4. 导航到 " **Azure AD B2C**  >  **标识体验框架**" "  >  **策略密钥**"。
 
-5. 添加名为 **B2cRestTwilioClientId**的新项。 选择 " **手动**"，并提供 Twilio AccountSID 的值。
+5. 添加名为 **B2cRestTwilioClientId** 的新项。 选择 " **手动**"，并提供 Twilio AccountSID 的值。
 
-6. 添加名为 **B2cRestTwilioClientSecret**的新项。 选择 " **手动**"，并提供 TWILIO 身份验证令牌的值。
+6. 添加名为 **B2cRestTwilioClientSecret** 的新项。 选择 " **手动**"，并提供 TWILIO 身份验证令牌的值。
 
 7. 将所有策略文件上传到租户。
 

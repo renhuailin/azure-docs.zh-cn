@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: be7e4a641e5b5ac2ef755037142cfd8063d66b5d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448889"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501254"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Query Performance Insight 为单一数据库和共用数据库提供了智能查
 
 ## <a name="prerequisites"></a>先决条件
 
-查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 默认情况下，会自动为 Azure SQL 数据库中的所有数据库启用查询存储。 如果查询存储未运行，Azure 门户将提示你启用它。
+查询性能见解要求已在数据库上启用 [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。 默认情况下，会自动为 Azure SQL 数据库中的所有数据库启用查询存储。 如果查询存储未运行，Azure 门户将提示你启用它。
 
 > [!NOTE]
 > 如果门户中显示“未在此数据库中正确配置查询存储”消息，请参阅[优化查询存储的配置](#optimize-the-query-store-configuration)。
@@ -42,7 +42,7 @@ Query Performance Insight 为单一数据库和共用数据库提供了智能查
 需要拥有以下 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 权限才能使用 Query Performance Insight：
 
 * 需要拥有“读取者”、“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”权限才能查看资源消耗量靠前的查询和图表。    
-* 需要具备**所有者**、**参与者**、**SQL DB 参与者**或 **SQL Server 参与者**权限才能查看查询文本。
+* 需要具备 **所有者**、**参与者**、**SQL DB 参与者** 或 **SQL Server 参与者** 权限才能查看查询文本。
 
 ## <a name="use-query-performance-insight"></a>使用 Query Performance Insight
 
@@ -61,7 +61,7 @@ Query Performance Insight 很容易使用：
    ![性能仪表板](./media/query-performance-insight-use/performance.png)
 
 > [!NOTE]
-> 要使 Azure SQL 数据库在 Query Performance Insight 中呈现信息，查询存储需要捕获几个小时的数据。 如果在某段时间内数据库不活动或查询存储不活动，则 Query Performance Insight 在显示该时间范围时，图表将是空的。 如果查询存储未运行，随时可以启用它。 有关详细信息，请参阅[有关查询存储的最佳做法](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)。
+> 要使 Azure SQL 数据库在 Query Performance Insight 中呈现信息，查询存储需要捕获几个小时的数据。 如果在某段时间内数据库不活动或查询存储不活动，则 Query Performance Insight 在显示该时间范围时，图表将是空的。 如果查询存储未运行，随时可以启用它。 有关详细信息，请参阅[有关查询存储的最佳做法](/sql/relational-databases/performance/best-practice-with-the-query-store)。
 >
 
 若要查看数据库性能建议，请在 Query Performance Insight 导航边栏选项卡上选择“[建议](database-advisor-implement-performance-recommendations.md)”。
@@ -232,7 +232,7 @@ Query Performance Insight 中的两个指标可帮助你查找潜在的瓶颈：
 
    ![查询存储详细信息](./media/query-performance-insight-use/qds-off.png)
 
-查询存储未启用，或者未以最佳方式设置参数时，会发生第二种情况。 可以通过运行 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户中提供的以下命令，来更改保留和捕获策略，同时启用查询存储。
+查询存储未启用，或者未以最佳方式设置参数时，会发生第二种情况。 可以通过运行 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户中提供的以下命令，来更改保留和捕获策略，同时启用查询存储。
 
 ### <a name="recommended-retention-and-capture-policy"></a>建议的保留和捕获策略
 
@@ -247,7 +247,7 @@ Query Performance Insight 中的两个指标可帮助你查找潜在的瓶颈：
 * **自动**：查询存储将忽略不频繁的查询以及编译和执行持续时间很短的查询。 执行计数、编译持续时间和运行时持续时间的阈值在内部确定。 这是默认选项。
 * **无**：查询存储将停止捕获新查询，但仍会收集已捕获的查询的运行时统计信息。
 
-我们建议通过执行 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户中的以下命令，将所有策略设置为“自动”，将清理策略设置为 30 天。 （请将 `YourDB` 替换为数据库名称。）
+我们建议通过执行 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户中的以下命令，将所有策略设置为“自动”，将清理策略设置为 30 天。 （请将 `YourDB` 替换为数据库名称。）
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -260,7 +260,7 @@ Query Performance Insight 中的两个指标可帮助你查找潜在的瓶颈：
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-通过 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户连接到数据库并运行以下查询，以增加查询存储的大小。 （请将 `YourDB` 替换为数据库名称。）
+通过 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户连接到数据库并运行以下查询，以增加查询存储的大小。 （请将 `YourDB` 替换为数据库名称。）
 
 ```SQL
     ALTER DATABASE [YourDB]

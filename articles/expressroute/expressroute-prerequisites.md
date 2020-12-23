@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569622"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204786"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需确认是否符合以下部分中所列的要求。
@@ -34,14 +34,14 @@ ms.locfileid: "89569622"
 * **路由**：你或提供商需设置和管理针对[路由域](expressroute-circuit-peerings.md)的 BGP 会话，具体取决于连接到 Microsoft 云的方式。 某些以太网连接服务提供商或云交换服务提供商可能会以增值服务的形式提供 BGP 管理。
 * **NAT**：Microsoft 只能通过 Microsoft 对等互连方式接受公共 IP 地址。 如果使用的是本地网络中的专用 IP 地址，你或提供商需[使用 NAT](expressroute-nat.md)将专用 IP 地址转换为公共 IP 地址。
 * **QoS**：Skype for Business 的各种服务（例如语音、视频、文本）所要求的 QoS 处理方式各有差异。 你和提供商应遵循 [QoS 要求](expressroute-qos.md)。
-* **网络安全**：通过 ExpressRoute 连接到 Microsoft 云时，应考虑[网络安全](../best-practices-network-security.md)。
+* **网络安全**：通过 ExpressRoute 连接到 Microsoft 云时，应考虑[网络安全](/azure/cloud-adoption-framework/reference/networking-vdc)。
 
 ## <a name="microsoft-365"></a>Microsoft 365
 如果打算在 ExpressRoute 上启用 Microsoft 365，请查看以下文档，了解有关 Microsoft 365 要求的详细信息。
 
 * [适用于 Microsoft 365 的 Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [Microsoft 365 的 ExpressRoute 路由](/microsoft-365/enterprise/routing-with-expressroute)
-* [使用 ExpressRoute 实现高可用性和故障转移](https://aka.ms/erhighavailability)
+* [使用 ExpressRoute 实现高可用性和故障转移](/microsoft-365/enterprise/network-planning-with-expressroute)
 * [Microsoft 365 Url 和 IP 地址范围](/microsoft-365/enterprise/urls-and-ip-address-ranges)
 * [Microsoft 365 的网络规划和性能优化](/microsoft-365/enterprise/network-planning-and-performance)
 * [Microsoft 365 的网络和迁移规划](/microsoft-365/enterprise/network-and-migration-planning)

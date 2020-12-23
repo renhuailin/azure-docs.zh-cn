@@ -7,23 +7,24 @@ author: vermagit
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: ccc9df8078bb7fec8be7d72b0ae18ed416bb10ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095909"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966014"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>适用于 Windows 的未用驱动程序扩展
 
-此扩展安装运行 Windows 的无容量 ND 驱动程序（适用于非 SR-IOV 启用的）和 OFED 驱动程序（对于启用了 SR-IOV 的）（"r" 大小） [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm。 根据 VM 系列的不同，扩展将为 x-blade NIC 安装适当的驱动程序。
+此扩展为启用了 sr-iov 的) 和 OFED 驱动程序 (启用启用了 sr-iov 的)  ( "r" 大小) [H 系列](../sizes-hpc.md) 和运行 Windows 的 [N 系列 vm）](../sizes-gpu.md) 安装了 "不支持 sr-iov" 的驱动程序 (。 根据 VM 系列的不同，扩展将为 x-blade NIC 安装适当的驱动程序。
 
-还可使用扩展来安装适用于[Linux vm](hpc-compute-infiniband-linux.md)的无功能驱动程序。
+还可使用扩展来安装适用于 [Linux vm](hpc-compute-infiniband-linux.md)的无功能驱动程序。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,8 +73,8 @@ ms.locfileid: "87095909"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | InfiniBandDriverWindows | string |
+| publisher | Microsoft.HpcCompute | 字符串 |
+| type | InfiniBandDriverWindows | 字符串 |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -81,7 +82,7 @@ ms.locfileid: "87095909"
 ## <a name="deployment"></a>部署
 
 
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板 
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板 
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 
@@ -137,7 +138,7 @@ az vm extension set \
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>将扩展添加到虚拟机规模集
 
-以下示例在名为*myResourceGroup*的资源组中部署的名为*myVMSS*的现有虚拟机规模集中的所有支持 RDMA 的 vm 上安装最新版本 1.2 InfiniBandDriverWindows 扩展。
+以下示例在名为 *myResourceGroup* 的资源组中部署的名为 *myVMSS* 的现有虚拟机规模集中的所有支持 RDMA 的 vm 上安装最新版本 1.2 InfiniBandDriverWindows 扩展。
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -181,10 +182,10 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.InfiniBandDriverWindows\
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你可以通过[Azure 支持站点](https://azure.microsoft.com/support/options/)提供支持事件。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你可以通过 [Azure 支持站点](https://azure.microsoft.com/support/options/)提供支持事件。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
-有关未启用的（"r" 大小）的详细信息，请参阅[H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm。
+有关启用了未支持 ( "r" 大小) 的详细信息，请参阅 [H 系列](../sizes-hpc.md) 和 [N 系列](../sizes-gpu.md) vm。
 
 > [!div class="nextstepaction"]
 > [详细了解 Linux Vm 扩展和功能](features-linux.md)

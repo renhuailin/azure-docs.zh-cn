@@ -3,18 +3,18 @@ title: Azure 开发测试实验室常见问题解答 | Microsoft Docs
 description: 本文提供有关 Azure 开发测试实验室的部分常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289374"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590267"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
 
 ## <a name="blog-post"></a>博客文章
-我们的开发测试实验室团队博客已于 2019 年 3 月 20 日停用。 
+我们的开发测试实验室团队博客已于 2019 年 3 月 20 日停用。 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>从现在起，在哪里可以跟踪功能更新？
 从现在起，我们将在 Azure 博客和 Azure 更新上发布功能更新和信息性博客文章。 这些博客文章还将在需要时链接到我们的文档。
@@ -22,7 +22,7 @@ ms.locfileid: "87289374"
 订阅[开发测试实验室 Azure 博客](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)和[开发测试实验室 Azure 更新](https://azure.microsoft.com/updates/?product=devtest-lab)随时了解开发测试实验室中的新功能。
 
 ### <a name="what-happens-to-the-existing-blog-posts"></a>现有的博客文章会发生什么情况？
-我们目前正在努力将现有博客文章（不包括中断更新）迁移到[开发测试实验室文档](devtest-lab-overview.md)。 弃用 MSDN 博客时，它将重定向到开发测试实验室的文档概述。 重定向后，你可以在“筛选条件”标题中搜索要查找的文章。 我们尚未迁移所有帖子，但应在本月底完成。 
+我们目前正在努力将现有博客文章（不包括中断更新）迁移到[开发测试实验室文档](devtest-lab-overview.md)。 弃用 MSDN 博客时，它将重定向到开发测试实验室的文档概述。 重定向后，你可以在“筛选条件”标题中搜索要查找的文章。 我们尚未迁移所有帖子，但应在本月底完成。 
 
 
 ### <a name="where-do-i-see-outage-updates"></a>我在哪里可以看到中断更新？
@@ -68,7 +68,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 ## <a name="security"></a>安全性
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>开发测试实验室中有哪些安全级别？
-安全访问权限由基于角色的访问控制 (RBAC) 决定。 要了解访问权限的工作方式，最好先了解 RBAC 定义的权限、角色与作用域之间的差异。
+安全访问由 Azure RBAC)  (Azure 基于角色的访问控制决定。 若要了解访问的工作原理，请参阅 Azure RBAC 定义的权限、角色和范围之间的差异。
 
 - **权限**：权限是针对特定操作定义的访问权限。 例如，权限可以是对所有 VM 的读取访问权限。
 - **角色**：角色是可进行分组和分配给用户的一组权限。 例如，具有“订阅所有者”角色的用户对订阅中所有资源都具有访问权限。
@@ -83,16 +83,16 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 由于作用域是分层的，因此在用户具有某个作用域的权限时，系统会自动向该用户授予该作用域内每个较低级别的作用域的权限。 例如，如果向用户分配了订阅所有者角色，那么用户可访问订阅中的所有资源。 这些资源包括 VM、虚拟网络和实验室。 订阅所有者会自动继承实验室所有者的角色。 但是反过来则不适用。 实验室所有者具有访问实验室的权限，其低于订阅级别的作用域。 因此，实验室所有者不能查看 VM、虚拟网络或实验室之外的其他任何资源。
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>如何为我的开发测试实验室环境定义基于角色的访问控制才能确保在开发人员/测试人员完成其工作时由 IT 部门进行治理？
+### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>如何实现为我的开发测试实验室环境定义 Azure 基于角色的访问控制，以确保它可以在开发人员/测试可以执行其工作时进行控制？
 可以使用一种广泛的模式，但具体细节取决于你的组织。
 
-中心 IT 部门只应拥有必需的控制，让项目和应用程序团队拥有所需级别的控制。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的**所有者**集应该小。 这些所有者可以在需要时指定其他所有者，或者应用订阅级别的策略，例如“禁止公共 IP”。
+中心 IT 部门只应拥有必需的控制，让项目和应用程序团队拥有所需级别的控制。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的 **所有者** 集应该小。 这些所有者可以在需要时指定其他所有者，或者应用订阅级别的策略，例如“禁止公共 IP”。
 
 部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。
 
 开发测试实验室资源应该由那些接近项目/应用程序团队的所有者拥有。 这是因为他们了解团队对计算机和必需软件的要求。 在大多数组织中，此开发测试实验室资源的所有者通常是项目/开发主管。 此所有者可以管理实验室环境中的用户和策略，可以管理开发测试实验室环境中的所有 VM。
 
-应该将项目/应用程序团队成员添加到“开发测试实验室用户”角色中。 这些用户可以创建虚拟机（前提是遵循实验室和订阅级别的策略）。 他们也可以管理自己的虚拟机。 他们不能管理属于其他用户的虚拟机。
+项目/应用程序团队成员应添加到 **开发测试实验室用户** 角色。 这些用户可以创建虚拟机（前提是遵循实验室和订阅级别的策略）。 他们也可以管理自己的虚拟机。 他们不能管理属于其他用户的虚拟机。
 
 有关详细信息，请参阅 [Azure 企业基架 - 规范性订阅治理文档](/azure/architecture/cloud-adoption/appendix/azure-scaffold)。
 
@@ -145,7 +145,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 -   开发测试实验室为相同大小的共享 IP 计算机创建资源组。
 
 常见资源组方案：
--   所有虚拟机都创建在指定的公共资源组中。 详细了解[实验室的资源组分配](https://aka.ms/RGControl)。
+-   所有虚拟机都创建在指定的公共资源组中。 详细了解[实验室的资源组分配](./resource-group-control.md)。
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>如何在整个开发测试实验室环境中保留命名约定？
 你可能需要将当前企业命名约定扩展到 Azure 运营，并在整个开发测试实验室环境中保持这种命名约定的一致性。 部署开发测试实验室时，我们建议使用特定的起始策略。 通过中心脚本和 JSON 模板部署这些策略，以实施一致性。 可以通过在订阅级别应用的 Azure 策略来实施命名策略。 有关 Azure Policy 的 JSON 示例，请参阅 [Azure Policy 示例](../governance/policy/samples/index.md)。
@@ -200,7 +200,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 可以，可将多个磁盘附加到 VM 中。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>开发测试实验室支持第 2 代映像吗？
-是的。 开发测试实验室服务支持[第2代映像](../virtual-machines/windows/generation-2.md)。 但是，如果第1代和第2代版本都可用于映像，则在创建 VM 时，开发测试 Labs 只显示映像的第1代版本。 如果该映像只有第2代可用版本，则会看到该映像。 
+是。 开发测试实验室服务支持 [第2代映像](../virtual-machines/generation-2.md)。 但是，如果第1代和第2代版本都可用于映像，则在创建 VM 时，开发测试 Labs 只显示映像的第1代版本。 如果该映像只有第2代可用版本，则会看到该映像。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果要将 Windows OS 映像用于我的测试，是否需要购买 MSDN 订阅？
 要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，请执行以下步骤之一：
@@ -318,7 +318,7 @@ foreach($labVM in $labVMs)
 - 将 Azure Repos 与 Azure 订阅用于身份验证和授权的同一 Azure Active Directory 租户相关联。
 - 在 Azure Active Directory 中创建名为 `All DevTest Labs Developers` 的集中管理的组。 应将参与项目开发的任何开发人员置于此组中。
 - 可使用同一个 Azure Active Directory 组来提供对 Azure Repos 存储库和实验室的访问。
-- 在 Azure Repos 中，应使用分支或分叉将开发中存储库与主要生产存储库相隔离。 在正确完成代码评审后，使用拉取请求将内容仅添加到主分支。 代码评审员批准更改后，负责主分支维护工作的开发人员主管合并更新的代码。
+- 在 Azure Repos 中，应使用分支或分叉将开发中存储库与主要生产存储库相隔离。 仅在进行适当的代码评审后，才会使用拉取请求将内容添加到 main 分支。 代码审阅者批准此更改后，负责维护 main 分支的主管开发人员将合并更新的代码。
 
 ## <a name="cicd-integration"></a>CI/CD 集成
 
@@ -342,7 +342,7 @@ foreach($labVM in $labVMs)
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何时应该为开发测试实验室环境创建新的虚拟网络以及使用现有的虚拟网络？
 如果你的 VM 需要与现有基础结构进行交互，则考虑使用开发测试实验室环境中的现有虚拟网络。 如果使用 ExpressRoute，可能需要将虚拟网络/子网的数量降至最低，以便不会对分配给订阅的使用的 IP 地址空间进行分段。
 
-请考虑在此处（[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)）使用虚拟网络对等互连模式。 此方法支持跨订阅的 vnet/子网通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。
+请考虑使用此处的虚拟网络对等互连模式 ([中心辐射模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) 。 此方法支持跨订阅的 vnet/子网通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。
 
 每个订阅的虚拟网络数量有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 默认数量为 50，但此限制可以提高到 100。
 

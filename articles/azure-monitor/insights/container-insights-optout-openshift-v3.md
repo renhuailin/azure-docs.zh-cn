@@ -3,18 +3,27 @@ title: 如何停止监视 Azure Red Hat OpenShift v3 群集 |Microsoft Docs
 description: 本文介绍如何通过 Azure Monitor 容器来停止监视 Azure Red Hat OpenShift 群集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815430"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216517"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止监视 Azure Red Hat OpenShift v3 群集 
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止监视 Azure Red Hat OpenShift v3 群集
 
-启用 Azure Red Hat OpenShift 版本3.x 群集的监视后，如果你决定不再想要对其进行监视，则可以使用容器 Azure Monitor 停止监视群集。 本文介绍如何使用提供的 Azure 资源管理器模板来完成此操作。 
+>[!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 6 2022 月将停用。
+>
+> 从10月2020起，你将无法再创建新的3.11 群集。
+> 现有3.11 群集将继续运行，直到6月2022，但在该日期之后将不再受支持。
+>
+> 按照本指南 [创建 Azure Red Hat OpenShift 4 群集](../../openshift/tutorial-create-cluster.md)。
+> 如果有特定问题， [请](mailto:aro-feedback@microsoft.com)联系我们。
 
-## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+启用 Azure Red Hat OpenShift 版本3.x 群集的监视后，如果你决定不再想要对其进行监视，则可以使用容器 Azure Monitor 停止监视群集。 本文介绍如何使用提供的 Azure 资源管理器模板来完成此操作。  
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 下面提供了两个 Azure 资源管理器模板，以支持在资源组中一致且重复地删除解决方案资源。 一个是 JSON 模板，它指定要停止监视的配置，另一个包含配置为指定群集所部署到的 OpenShift 群集资源 ID 和 Azure 区域的参数值。
 

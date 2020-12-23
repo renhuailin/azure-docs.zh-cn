@@ -1,17 +1,17 @@
 ---
 title: 创建多服务应用并将其部署到 Service Fabric 网格
 description: 在本教程中，我们将创建一个多服务 Azure Service Fabric 网格应用程序（由可与后端 Web 服务通信的 ASP.NET Core 网站组成）、在本地调试该应用程序，然后将其发布到 Azure。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011203"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842540"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>教程：创建、调试、部署和升级多服务 Service Fabric 网格应用
 
@@ -59,7 +59,7 @@ ms.locfileid: "89011203"
 
 确保已选中“创建解决方案的目录”，然后单击“确定”创建 Service Fabric 网格项目。  
 
-![Visual Studio - 新建 Service Fabric 网格项目 - 对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![显示如何创建 Service Fabric 网格项目的屏幕截图。](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 随后会出现“新建 Service Fabric 服务”对话框。 
 
@@ -73,7 +73,7 @@ ms.locfileid: "89011203"
 
 随后会出现“ASP.NET Core Web 应用程序”对话框。 选择“Web 应用”，然后单击“确定”   。
 
-![Visual Studio - 新建 ASP.NET Core 应用程序](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![突出显示“Web 应用程序”模板的屏幕截图。](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 现已创建一个 Service Fabric 网格应用程序。 接下来，请创建待办事项信息的模型。
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 46c1df8a175657e20dce984d0c8825ae99170246
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 4c76b2c0109637ce34681d2fa5c8b29e1ff800a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761645"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364365"
 ---
 # <a name="delete-resources-from-azure"></a>从 Azure 中删除资源
 
@@ -63,7 +63,7 @@ ms.locfileid: "91761645"
 
 若要使用 Azure CLI 从 Azure 中删除 SQL 托管实例资源，请在下面的命令中替换占位符值并运行。
 
-```console
+```azurecli
 az resource delete --name <sql instance name> --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group <resource group name>
 
 #Example
@@ -74,7 +74,7 @@ az resource delete --name <sql instance name> --resource-type Microsoft.AzureDat
 
 若要使用 Azure CLI 从 Azure 中删除 PostgreSQL 超大规模服务器组资源，请在下面的命令中替换占位符值并运行。
 
-```console
+```azurecli
 az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureData/postgresInstances --resource-group <resource group name>
 
 #Example
@@ -88,7 +88,7 @@ az resource delete --name <postgresql instance name> --resource-type Microsoft.A
 
 若要使用 Azure CLI 从 Azure 中删除 Azure Arc 数据控制器，请在下面的命令中替换占位符值并运行。
 
-```console
+```azurecli
 az resource delete --name <data controller name> --resource-type Microsoft.AzureData/dataControllers --resource-group <resource group name>
 
 #Example
@@ -97,4 +97,4 @@ az resource delete --name <data controller name> --resource-type Microsoft.Azure
 
 ### <a name="delete-a-resource-group-using-the-azure-cli"></a>使用 Azure CLI 删除资源组
 
-你还可以使用 Azure CLI 来 [删除资源组](/azure/azure-resource-manager/management/delete-resource-group)。
+你还可以使用 Azure CLI 来 [删除资源组](../../azure-resource-manager/management/delete-resource-group.md)。

@@ -7,23 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.date: 12/15/2020
+ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843424"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591338"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
 对存储、工作负荷以及索引和其他对象的数量的最大限制取决于你是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 认知搜索](search-create-service-portal.md)   。
 
-+ **免费**层是 Azure 订阅随附的多租户共享服务。 
++ **免费** 层是 Azure 订阅随附的多租户共享服务。 
 
 + “基本”层为较小规模的生产工作负荷提供专用计算资源，但与其他租户共享某些网络基础结构。
 
-+ **标准**层在专用计算机上运行，在每个级别上都具有更多存储和处理容量。 标准层共有四个级别：S1、S2、S3 和 S3 HD。 S3 高密度 (S3 HD) 旨在用于[多租户](search-modeling-multitenant-saas-applications.md)方案，以及较大数量的小型索引（每个服务 3000 个索引）。 S3 HD 不提供[索引器功能](search-indexer-overview.md)，数据引入必须利用可将数据从源推送到索引的 API。 
++ **标准** 层在专用计算机上运行，在每个级别上都具有更多存储和处理容量。 标准层共有四个级别：S1、S2、S3 和 S3 HD。 S3 高密度 (S3 HD) 旨在用于[多租户](search-modeling-multitenant-saas-applications.md)方案，以及较大数量的小型索引（每个服务 3000 个索引）。 S3 HD 不提供[索引器功能](search-indexer-overview.md)，数据引入必须利用可将数据从源推送到索引的 API。 
 
 + “存储优化”层在总存储量、存储带宽和内存量比“标准”层更高的专用计算机上运行。  此层面向缓慢变化的大型索引。 “存储优化”层分为两个级别：L1 和 L2。
 
@@ -50,7 +50,7 @@ ms.locfileid: "91843424"
 
 <sup>2</sup> 在 2017 年 12 月之前创建的基本服务对索引数的限制较低（为 5 个而不是 15 个）。 基本层是唯一具有下限（每个索引 100 个字段）的 SKU。
 
-<sup>2</sup> 元素存在上限，因为有大量它们会大幅增加索引所需的存储空间。 复杂集合的元素定义为该集合的成员。 例如，假设有一个 [旅馆文档使用房间复杂集合](search-howto-complex-data-types.md#indexing-complex-types)，则房间集合中的每个房间都被视为一个元素。 在编制索引期间，索引引擎可以安全地在整个文档中处理最多3000个元素。 [此限制](search-api-migration.md#upgrade-to-2019-05-06) 是在中引入的， `api-version=2019-05-06` 并且仅适用于复杂集合，不适用于字符串集合或复杂字段。
+<sup>2</sup> 元素数存在上限，因为大量元素会导致索引所需的存储大量增加。 复杂集合的元素定义为该集合的成员。 例如，假设有一个[“酒店”文档中包含“客房”复杂集合](search-howto-complex-data-types.md#indexing-complex-types)，则将“客房”集合中的每个客房视为一个元素。 编制索引期间，索引编制引擎一次可最多安全地处理整个文档中的 3000 个元素。 `api-version=2019-05-06` 中引入了[此限制](search-api-migration.md#upgrade-to-2019-05-06)，且仅适用于复杂集合，不适用于字符串集合或复杂字段。
 
 <a name="document-limits"></a>
 
@@ -99,21 +99,20 @@ ms.locfileid: "91843424"
 <sup>5</sup> AI 扩充和图像分析属于计算密集型功能，会消耗过多的可用处理能力。 这些工作负荷的运行时间已缩短，从而使队列中的其他作业有更多的机会运行。
 
 > [!NOTE]
-> 如[索引限制](#index-limits)中所述，从支持复杂类型 (`2019-05-06`) 的最新 API 正式版开始，索引器还针对每个文档的所有复杂集合强制实施 3000 个元素的上限。 这意味着，如果你使用早期 API 版本创建了索引器，则不会受此限制约束。 为了保持最高兼容性，使用早期 API 版本创建并使用 API 版本 `2019-05-06` 或更高版本更新了的索引器，仍会从这些限制中**排除**。 客户应注意使用极大复杂集合所造成的负面影响（如前所述）；我们强烈建议使用最新 API 正式版创建任何新索引器。
+> 如[索引限制](#index-limits)中所述，从支持复杂类型 (`2019-05-06`) 的最新 API 正式版开始，索引器还针对每个文档的所有复杂集合强制实施 3000 个元素的上限。 这意味着，如果你使用早期 API 版本创建了索引器，则不会受此限制约束。 为了保持最高兼容性，使用早期 API 版本创建并使用 API 版本 `2019-05-06` 或更高版本更新了的索引器，仍会从这些限制中 **排除**。 客户应注意使用极大复杂集合所造成的负面影响（如前所述）；我们强烈建议使用最新 API 正式版创建任何新索引器。
 
-### <a name="shared-private-link-resource-limits"></a>共享专用链接资源限制
+## <a name="shared-private-link-resource-limits"></a>共享专用链接资源限制
 
-> [!NOTE]
-> 索引器可以通过[共享的专用链接资源 API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources)安全地访问资源，如[本操作方法指南](search-indexer-howto-access-private.md)中所述
+索引器可通过[共享专用链接资源 API](/rest/api/searchmanagement/sharedprivatelinkresources)来访问通过[专用终结点](search-indexer-howto-access-private.md)管理的其他 Azure 资源。 本部分介绍与此功能相关的限制。
 
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 私有终结点索引器支持 | 否 | “是” | “是” | “是” | “是” | 否 | “是” | “是” |
-| 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | “是” | “是” | 否 | “是” | “是” |
+| 私有终结点索引器支持 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
+| 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
 | 最大专用终结点 | 空值 | 10或30 | 100 | 400 | 400 | 空值 | 20 | 20 |
 | 最大不同资源类型<sup>2</sup> | 不适用 | 4 | 7 | 15 | 15 | 不适用 | 4 | 4 |
 
-<sup>1</sup> AI 扩充和图像分析计算密集型，并使用数量不相称的可用处理能力，因此，对于较低的搜索服务层，将其设置为在专用环境中运行可能会对搜索服务的性能和稳定性产生不利影响。
+<sup>1</sup> AI 扩充和图像分析计算密集型，消耗的可用处理能力不相称。 出于此原因，在较低层上禁用专用连接，以避免对搜索服务本身的性能和稳定性产生不利影响。
 
 <sup>2</sup> 不同资源类型的数量计算为 `groupId` 在给定搜索服务的所有共享专用链接资源中使用的唯一值的数目，而不考虑资源的状态。
 
@@ -144,7 +143,7 @@ ms.locfileid: "91843424"
 
 索引相关操作的静态速率请求限制：
 
-+ 列出索引 (GET /indexes)：每个搜索单位每秒限制为 5 个
++ 列出索引 (获取/indexes) ：每个搜索单位每秒3个
 + 获取索引 (GET /indexes/myindex)：每个搜索单位每秒限制为 10 个
 + 创建索引 (POST /indexes)：每个搜索单位每分钟限制为 12 个
 + 创建或更新索引 (PUT /indexes/myindex)：每个搜索单位每秒限制为 6 个

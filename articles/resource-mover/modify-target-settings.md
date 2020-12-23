@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604472"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533049"
 ---
 # <a name="modify-target-settings"></a>修改目标设置
 
@@ -41,8 +41,8 @@ ms.locfileid: "90604472"
 **VM SKU** | [VM 类型](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (在将用于目标 VM) 的目标区域中可用。<br/><br/> 所选目标 VM 不应小于源 VM。
 **网络资源** | 虚拟网络选项 (Vnet) /network 安全组/网络接口：<br/><br/> -在目标区域中创建同名的新资源。<br/><br/> -在目标区域中创建一个具有不同名称的新资源。<br/><br/> -使用目标区域中的现有网络资源。<br/><br/> 如果创建新的目标资源，但修改的设置除外，则会为其分配与源资源相同的设置。
 **公共 IP 地址名称** | 指定名称。
-**公用 IP 地址 SKU** | 指定 [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)。
-**公共 IP 地址区域** | 指定标准公共 IP 地址的 [区域](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) 。<br/><br/> 如果希望它是区域冗余，请输入作为 **区域冗余**。
+**公用 IP 地址 SKU** | 指定 [SKU](../virtual-network/public-ip-addresses.md#sku)。
+**公共 IP 地址区域** | 指定标准公共 IP 地址的 [区域](../virtual-network/public-ip-addresses.md#standard) 。<br/><br/> 如果希望它是区域冗余，请输入作为 **区域冗余**。
 **负载均衡器名称** | 指定名称。
 **负载平衡器 SKU** | 基本或标准。 建议使用 Standard。
 **负载均衡器区域** | 指定负载平衡器的区域。 <br/><br/> 如果希望它是区域冗余，请输入作为 **区域冗余**。
@@ -83,7 +83,7 @@ ms.locfileid: "90604472"
 
 **设置** | **SQL 数据库** | **弹性池**
 --- | --- | ---
-**名称** | 在目标区域中创建一个具有相同名称的新数据库。<br/><br/> 在目标区域中创建一个具有不同名称的新数据库。<br/><br/> 使用目标区域中的现有数据库。 | 在目标区域中创建一个具有相同名称的新弹性池。<br/><br/> 在目标区域中创建一个具有不同名称的新弹性池。<br/><br/> 在目标区域中使用现有的弹性池。
+**Name** | 在目标区域中创建一个具有相同名称的新数据库。<br/><br/> 在目标区域中创建一个具有不同名称的新数据库。<br/><br/> 使用目标区域中的现有数据库。 | 在目标区域中创建一个具有相同名称的新弹性池。<br/><br/> 在目标区域中创建一个具有不同名称的新弹性池。<br/><br/> 在目标区域中使用现有的弹性池。
 **区域冗余** | 若要从支持区域冗余的区域移动到不支持的区域，请在区域设置中键入 **Disable** 。<br/><br/> 若要从不支持区域冗余的区域移动到执行的区域，请在区域设置中键入 **Enable** 。 | 若要从支持区域冗余的区域移动到不支持的区域，请在区域设置中键入 **Disable** 。<br/><br/> 若要从不支持区域冗余的区域移动到执行的区域，请在区域设置中键入 **Enable** 。
 
 ### <a name="edit-sql-target-settings"></a>编辑 SQL 目标设置

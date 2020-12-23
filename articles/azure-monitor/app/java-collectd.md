@@ -3,15 +3,20 @@ title: 监视 Linux 上 Java Web 应用的性能 - Azure | Microsoft Docs
 description: 通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 5ec928a0dc3cbcde3c6dd50b1795a05b5e092bde
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761016"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601265"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd：中的 Linux 性能指标 Application Insights [已弃用]
 
+> [!IMPORTANT]
+> 监视 Java 应用程序的 **建议方法** 是使用自动检测，无需更改代码。 请按照 **[Application Insights Java 3.0 代理](./java-in-process-agent.md)** 的指南进行操作。
 
 若要浏览 [Application Insights](./app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](https://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
 

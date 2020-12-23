@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 静态数据加密 | Microsoft Docs
-description: 本文概述了 Microsoft Azure 静态数据加密及其整体功能和一般注意事项。
+title: Azure 静态数据加密-Azure 安全性
+description: 本文概述了 Azure 静态数据加密、整体功能以及一般注意事项。
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1318aaf50d4f05b8a999e5661318dc83997a2f02
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397243"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920782"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -33,7 +33,7 @@ Microsoft Azure 提供了许多工具，可以使用它们根据你公司的安�
 
 ## <a name="what-is-encryption-at-rest"></a>什么是静态加密？
 
-静态加密是指在持久保存数据时对数据进行编码（加密）。 Azure 中的静态加密设计使用对称加密根据简单的概念模型来快速加密和解密大量数据：
+加密是用于保护数据机密性的数据的安全编码。 Azure 中的静态加密设计使用对称加密根据简单的概念模型来快速加密和解密大量数据：
 
 - 将使用对称加密密钥在将数据写入到存储时对数据进行加密。
 - 当数据在内存中就绪可供使用时，将会使用同一加密密钥来解密该数据。
@@ -48,7 +48,7 @@ Microsoft Azure 提供了许多工具，可以使用它们根据你公司的安�
 
 静态加密旨在防止攻击者访问未加密的数据，其方法是确保这些数据在磁盘上时是加密的。 如果攻击者获取了包含加密数据的硬盘驱动器但未获取加密密钥，则攻击者必须破解加密才能读取数据。 这种攻击比访问硬盘驱动器上的未加密数据要复杂得多，且消耗的资源也多得多。 因此，强烈建议使用静态加密。对于许多组织来说，这是需要完成的高优先级事项。
 
-当组织需要进行数据治理并确保符合性时，可能也需要使用静态加密。 行业和政府法规（例如 HIPAA、PCI 和 FedRAMP）就数据保护和加密要求制定了具体的保障措施。 要符合这其中的许多法规，静态加密是一种必需的强制措施。 有关 Microsoft 的 FIPS 140-2 验证方法的详细信息，请参阅[美国联邦信息处理标准 (FIPS) 出版物 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)。
+当组织需要进行数据治理并确保符合性时，可能也需要使用静态加密。 行业和政府法规（例如 HIPAA、PCI 和 FedRAMP）就数据保护和加密要求制定了具体的保障措施。 要符合这其中的许多法规，静态加密是一种必需的强制措施。 有关 Microsoft 的 FIPS 140-2 验证方法的详细信息，请参阅[美国联邦信息处理标准 (FIPS) 出版物 140-2](/microsoft-365/compliance/offering-fips-140-2)。
 
 除了满足合规要求以外，静态加密还能提供深层防御保护。 Microsoft Azure 为服务、应用程序和数据提供合规的平台。 此外，它还提供综合性的设施和物理安全性、数据访问控制和审核。 但是，必须提供额外的“重叠性”安全措施，以免出现其他某个安全措施失效的情况，而静态加密正好提供这样一道安全措施。
 
@@ -72,22 +72,22 @@ Microsoft 致力于提供跨云服务的静态加密选项，可让客户控制�
 
 在实施静态加密时，使用多个加密密钥。 将加密密钥存储在 Azure Key Vault 中可确保安全的密钥访问并可集中管理密钥。 但是，就批量加密和解密来说，通过服务在本地访问加密密钥比每项数据操作都要与 Key Vault 交互更为高效，可以提高加密强度和性能。 限制单个加密密钥的使用降低了密钥被盗用的风险，也降低了必须更换密钥时的重新加密成本。 Azure 静态加密模块使用一个密钥层次结构来解决所有这些需求，该密钥层次结构由以下类型的密钥构成：
 
-- ** (DEK) 的数据加密密钥 ** –用于对分区或数据块进行加密的对称 AES256 密钥。  单个资源可能有多个分区和多个数据加密密钥。 使用不同的密钥加密每个数据块可以增加加密分析攻击的难度。 资源提供程序或应用程序实例需要 DEK 访问权限才能加密和解密特定的块。 将 DEK 替换为新密钥时，仅其关联的块中的数据需要使用新密钥重新加密。
-- **密钥加密密钥 (KEK) ** –用于对数据加密密钥进行加密的加密密钥。 使用从不离开 Key Vault 的密钥加密密钥可以加密和控制数据加密密钥本身。 具有 KEK 访问权限的实体可能不同于需要 DEK 的实体。 实体可能会代理对 DEK 的访问以将每个 DEK 的访问限制到特定分区。 由于解密 DEK 需要 KEK，因此 KEK 实际上构成了一个单点机制：删除 KEK 即可删除 DEK。
+- **(DEK) 的数据加密密钥** –用于对分区或数据块进行加密的对称 AES256 密钥。  单个资源可能有多个分区和多个数据加密密钥。 使用不同的密钥加密每个数据块可以增加加密分析攻击的难度。 资源提供程序或应用程序实例需要 DEK 访问权限才能加密和解密特定的块。 将 DEK 替换为新密钥时，仅其关联的块中的数据需要使用新密钥重新加密。
+- **密钥加密密钥 (KEK)** –用于对数据加密密钥进行加密的加密密钥。 使用从不离开 Key Vault 的密钥加密密钥可以加密和控制数据加密密钥本身。 具有 KEK 访问权限的实体可能不同于需要 DEK 的实体。 实体可能会代理对 DEK 的访问以将每个 DEK 的访问限制到特定分区。 由于解密 DEK 需要 KEK，因此 KEK 实际上构成了一个单点机制：删除 KEK 即可删除 DEK。
 
-使用密钥加密密钥加密的数据加密密钥将单独进行存储，只有能够访问密钥加密密钥的实体才能解密这些数据加密密钥。 支持各种不同的密钥存储模型。 有关详细信息，请参阅 [数据加密模型](encryption-models.md) 。
+使用密钥加密密钥加密的数据加密密钥将单独进行存储，只有能够访问密钥加密密钥的实体才能解密这些数据加密密钥。 支持各种不同的密钥存储模型。 有关详细信息，请参阅[数据加密模型](encryption-models.md)。
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Microsoft 云服务中的静态加密
 
 Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下面是在每个模型上使用该服务的示例：
 
-- 软件服务，称为软件作为服务器或 SaaS，其中包含云提供的应用程序，如 Microsoft 365。
+- 软件服务，也称软件即服务（简称 SaaS），它包含云提供的应用程序，例如 Microsoft 365。
 - 平台服务，方便客户在其应用程序中利用云，将云用于存储、分析和服务总线功能等。
 - 基础结构服务，也称基础结构即服务 (IaaS)，方便客户部署托管在云中的操作系统和应用程序，并尽可能利用其他云服务。
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>适合 SaaS 客户的静态加密
 
-软件即服务 (SaaS) 客户通常会在每个服务中启用或提供静态加密。 Microsoft 365 有多个选项可供客户验证或启用静态加密。 有关 Microsoft 365 服务的信息，请参阅 [Microsoft 365 中的加密](/microsoft-365/compliance/encryption)。
+软件即服务 (SaaS) 客户通常会在每个服务中启用或提供静态加密。 Microsoft 365 为客户提供多个选项来验证或启用静态加密。 若要了解 Microsoft 365 服务，请参阅 [Microsoft 365 中的加密](/microsoft-365/compliance/encryption)。
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>适合 PaaS 客户的静态加密
 
@@ -115,22 +115,22 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 ### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
-任何使用 Azure 基础结构即服务 (IaaS) 功能的客户都可以通过 Azure 磁盘加密为其 IaaS VM 和磁盘实施静态加密。 有关 Azure 磁盘加密的详细信息，请参阅 [Azure 磁盘加密文档](../azure-security-disk-encryption-overview.md)。
+任何使用 Azure 基础结构即服务 (IaaS) 功能的客户都可以通过 Azure 磁盘加密为其 IaaS VM 和磁盘实施静态加密。 有关 Azure 磁盘加密的详细信息，请参阅 [Azure 磁盘加密文档](./azure-disk-encryption-vms-vmss.md)。
 
 #### <a name="azure-storage"></a>Azure 存储
 
 所有 Azure 存储服务（Blob 存储、队列存储、表存储和 Azure 文件存储）均支持静态服务器端加密，其中某些服务额外支持客户管理的密钥和客户端加密。
 
-- 服务器端：默认情况下，所有 Azure 存储服务都使用服务托管的密钥来启用服务器端加密（对应用程序而言是透明的）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)。 Azure Blob 存储和 Azure 文件也支持 Azure Key Vault 中客户托管的 RSA 2048 位密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](../../storage/common/storage-encryption-keys-portal.md)。
+- 服务器端：默认情况下，所有 Azure 存储服务都使用服务托管的密钥来启用服务器端加密（对应用程序而言是透明的）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)。 Azure Blob 存储和 Azure 文件也支持 Azure Key Vault 中客户托管的 RSA 2048 位密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](../../storage/common/customer-managed-keys-configure-key-vault.md)。
 - 客户端：Azure Blob、表和队列支持客户端加密。 使用客户端加密时，客户会加密数据并将数据作为加密的 blob 上传。 密钥管理由客户执行。 有关详细信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](../../storage/common/storage-client-side-encryption.md)。
 
 #### <a name="azure-sql-database"></a>Azure SQL 数据库
 
 Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务器端和客户端加密方案。
 
-对服务器加密的支持目前通过名为“透明数据加密”的 SQL 功能来提供。 在 Azure SQL 数据库客户启用 TDE 后，系统会自动为其创建和管理密钥。 可以在数据库和服务器级别启用静态加密。 从 2017 年 6 月开始，会在新创建的数据库上默认启用[透明数据加密 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)。 Azure SQL 数据库支持 Azure Key Vault 中客户管理的 RSA 2048 位密钥。 有关详细信息，请参阅[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)。
+对服务器加密的支持目前通过名为“透明数据加密”的 SQL 功能来提供。 在 Azure SQL 数据库客户启用 TDE 后，系统会自动为其创建和管理密钥。 可以在数据库和服务器级别启用静态加密。 从 2017 年 6 月开始，会在新创建的数据库上默认启用[透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)。 Azure SQL 数据库支持 Azure Key Vault 中客户管理的 RSA 2048 位密钥。 有关详细信息，请参阅[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql)。
 
-可以通过 [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) 功能启用对 Azure SQL 数据库数据的客户端加密。 Always Encrypted 使用由客户端创建和存储的密钥。 客户可以将主密钥存储在 Windows 证书存储、Azure Key Vault 或本地硬件安全模块中。 使用 SQL Server Management Studio 时，SQL 用户可以选择想要使用什么密钥来加密哪个列。
+可以通过 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能启用对 Azure SQL 数据库数据的客户端加密。 Always Encrypted 使用由客户端创建和存储的密钥。 客户可以将主密钥存储在 Windows 证书存储、Azure Key Vault 或本地硬件安全模块中。 使用 SQL Server Management Studio 时，SQL 用户可以选择想要使用什么密钥来加密哪个列。
 
 ## <a name="conclusion"></a>结论
 
@@ -138,5 +138,6 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关服务托管密钥和客户托管密钥的详细信息，请参阅 [数据加密模型](encryption-models.md) 。
-- 了解 Azure 如何使用 [双加密](double-encryption.md) 来缓解数据加密所带来的威胁。
+- 若要详细了解服务管理的密钥和客户管理的密钥，请参阅[数据加密模型](encryption-models.md)。
+- 了解 Azure 如何使用[双重加密](double-encryption.md)来缓解加密数据所带来的威胁。
+- 了解 Microsoft 如何确保主机遍历硬件和固件构建、集成、操作化和维修管道的 [完整性和安全性](platform.md) 。

@@ -4,20 +4,20 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
 ms.date: 03/10/2020
-ms.author: mathoma
+ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: ad6e444f9672fbe521e9c6963649d250830154d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 15209bc9dae1f10e1158c805ba7903b9f946766f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032668"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593938"
 ---
 在此步骤中，你将创建[逻辑 SQL 服务器](../database/logical-servers.md)和使用 AdventureWorksLT 示例数据的[单一数据库](../database/single-database-overview.md)。 可以通过使用 Azure 门户菜单和屏幕，或通过在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
 所有方法都包括设置服务器级防火墙规则，以允许用于访问服务器的计算机的公共 IP 地址。 有关创建服务器级防火墙规则的详细信息，请参阅[创建服务器级防火墙](../database/firewall-create-server-level-portal-quickstart.md)。 还可以设置数据库级防火墙规则。 请参阅[创建数据库级防火墙规则](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要在 Azure 门户中创建资源组、服务器和单一数据库，请执行以下操作：
 
@@ -36,12 +36,12 @@ ms.locfileid: "84032668"
 1. 在“资源组”下选择“新建”，输入“MyResourceGroup”，然后选择“确定” 。
 1. 在“数据库详细信息”下，为“数据库名称”输入“mySampleDatabase”。
 1. 对于“服务器”，选择“新建”，并按如下所示在“新服务器”窗体中填写信息：
-   - **服务器名称**：输入“mysqlserver”和一些字符以实现唯一性。
-   - **服务器管理员登录名**：输入“azureuser”。
+   - **服务器名称** ：输入“mysqlserver”和一些字符以实现唯一性。
+   - **服务器管理员登录名** ：输入“azureuser”。
    - 密码：输入符合要求的密码，然后在“确认密码”字段中再次输入该密码。
    - 位置：单击下拉箭头并选择一个位置，例如“(美国)美国东部”。
 
-   选择“确定”。
+   选择“确定”  。
 
    ![新建服务器](./media/sql-database-create-single-database/new-server.png)
 
@@ -147,13 +147,13 @@ az sql db create \
 
 前面的代码使用以下 Azure CLI 命令：
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 将订阅设置为当前的活动订阅。 |
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | 将订阅设置为当前的活动订阅。 |
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建托管数据库和弹性池的服务器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | 创建服务器级防火墙规则。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | 创建数据库。 |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | 创建数据库。 |
 
 若要查看更多 Azure SQL Database Azure CLI 示例，请参阅 [Azure CLI 示例](../database/az-cli-script-samples-content-guide.md)。
 
@@ -235,7 +235,7 @@ az sql db create \
 
 前面的代码使用以下 PowerShell 命令：
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管数据库和弹性池的服务器。 |

@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: fe4c40e2c5e2b8992598125c376dc0da516e9736
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bcb82ffcf4c4ad861c6523f507c816c666a71772
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316692"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351378"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 通过必应图像搜索 API 可以搜索 Web 以寻找高质量的相关图像。 使用本教程构建可向 API 发送搜索查询并在网页内显示结果的单页 Web 应用程序。 本教程与针对必应 Web 搜索的[相应教程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)类似。
 
@@ -117,7 +122,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ![[必应图像搜索表单]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-必应图像搜索 API 提供若干个[筛选器查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)来缩小范围和筛选搜索结果。 此应用程序中的 HTML 表单使用并显示以下参数选项：
+必应图像搜索 API 提供若干个[筛选器查询参数](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)来缩小范围和筛选搜索结果。 此应用程序中的 HTML 表单使用并显示以下参数选项：
 
 | 选项 | 说明 |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

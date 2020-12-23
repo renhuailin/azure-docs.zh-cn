@@ -10,27 +10,27 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440450"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575000"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows Data Science Virtual Machine 的数据科学
 
 Windows Data Science Virtual Machine (DSVM) 是一个功能强大的数据科学开发环境，可在其中执行数据探索和建模任务。 该环境本身内置和捆绑了多款热门数据分析工具，便于针对本地、云或混合部署开始分析。 
 
-DSVM 与 Azure 服务紧密协同工作。 它可以读取和处理已存储在 Azure 中的数据、Azure Synapse (以前的 SQL DW) 、Azure Data Lake、Azure 存储或 Azure Cosmos DB。 它还可以利用其他分析工具，如 Azure 机器学习。
+DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 Azure、Azure Synapse（以前称为 SQL DW）、Azure Data Lake、Azure 存储或 Azure Cosmos DB 中的数据。 它还可以利用其他分析工具，例如 Azure 机器学习。
 
 本文介绍如何使用 DSVM 执行数据科学任务，以及如何与其他 Azure 服务交互。 可以在 DSVM 上执行的操作如下所示：
 
-- 通过使用 Python 2、Python 3 和 Microsoft R，在浏览器中使用 Jupyter 笔记本对数据进行试验。（Microsoft R 是适用于企业的 R 版本，进行了性能优化设计。）
+- 使用 Jupyter Notebook 在浏览器中使用 Python 2、Python 3 和 Microsoft R 来试验你的数据。 (Microsoft R 是设计为性能的企业就绪版本。 ) 
 - 使用 Microsoft Machine Learning Server 和 Python 在 DSVM 上本地探索数据和开发模型。
 - 使用 Azure 门户或 PowerShell 管理 Azure 资源。
 - 通过将 Azure 文件存储共享创建为可在 DSVM 上装载的驱动器，即可扩展存储空间并跨整个团队共享大型数据集/代码。
 - 使用 GitHub 与团队共享代码。 使用下列预安装的 Git 客户端访问存储库：Git Bash 和 Git GUI。
-- 访问 azure 数据和分析服务，如 Azure Blob 存储、Azure Cosmos DB、Azure Synapse (以前的 SQL DW) 和 Azure SQL 数据库。
+- 访问 Azure 数据和分析服务，如 Azure Blob 存储、Azure Cosmos DB、Azure Synapse（以前称为 SQL DW）和 Azure SQL 数据库。
 - 使用 DSVM 上预安装的 Power BI Desktop 实例生成报表和仪表板，然后将它们部署到云中。
 
 - 在虚拟机上安装其他工具。   
@@ -50,7 +50,7 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取和处理已存储在 
 
 
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
-Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 可以在 Jupyter 笔记本中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
+Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 你可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R (开源和 Microsoft R Server) 。
 
 若要启动 Jupyter Notebook，请在“开始”菜单或桌面上选择“Jupyter Notebook”图标。  在 DSVM 命令提示符处，还可以从包含现有笔记本或想在其中创建新笔记本的目录中运行 ```jupyter notebook``` 命令。  
 
@@ -79,9 +79,9 @@ Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 �
 1. 提供描述并将环境前缀路径设置为 c:\anaconda\envs\python2（适用于 Anaconda Python 2.7）。
 1. 选择“自动检测” > “应用”以保存环境。
 
-有关如何创建 Python 环境的详细信息，请参阅 [PTVS 文档](https://aka.ms/ptvsdocs)。
+有关如何创建 Python 环境的详细信息，请参阅 [PTVS 文档](/visualstudio/python/)。
 
-现在即可开始创建新的 Python 项目。 转到“文件” > “新建” > “项目” > “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”，然后选择“添加/删除 Python 环境”。 要详细了解如何使用 PTVS，请参阅[产品文档](https://aka.ms/ptvsdocs)。
+现在即可开始创建新的 Python 项目。 转到“文件” > “新建” > “项目” > “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”，然后选择“添加/删除 Python 环境”。 要详细了解如何使用 PTVS，请参阅[产品文档](/visualstudio/python/)。
 
 
 
@@ -91,7 +91,7 @@ DSVM 不仅允许在虚拟机上本地生成分析解决方案。 它还允许�
 可选用两种方法管理 Azure 订阅和云资源：
 + 使用 Web 浏览器并转到 [Azure 门户](https://portal.azure.com)。
 
-+ 使用 PowerShell 脚本。 从桌面快捷方式或“开始”菜单运行 Azure PowerShell。 请参阅 [Microsoft Azure PowerShell 文档](../../powershell-azure-resource-manager.md)以了解全部详细信息。 
++ 使用 PowerShell 脚本。 从桌面快捷方式或“开始”菜单运行 Azure PowerShell。 请参阅 [Microsoft Azure PowerShell 文档](../../azure-resource-manager/management/manage-resources-powershell.md)以了解全部详细信息。 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>使用共享文件系统扩展存储
 数据科学家可以在团队内共享大型数据集、代码或其他资源。 DSVM 约有 45 GB 的可用空间。 要扩展存储，可以使用 Azure 文件存储，将它装载到一个或多个 DSVM 实例或通过 REST API 访问它。 还可以使用 [Azure 门户](../../virtual-machines/windows/attach-managed-disk-portal.md)或 [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) 添加其他专用数据磁盘。 
@@ -162,7 +162,7 @@ Azure Blob 存储是适合大小数据的经济可靠云存储服务。 本部�
 
    ![Azure 门户中存储帐户创建流程的屏幕截图](./media/vm-do-ten-things/create-azure-blob.png)
 
-* 确认已预安装命令行 AzCopy 工具：```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```。 包含 azcopy.exe 的目录已在 PATH 环境变量中，因此运行此工具时不用键入完整命令路径。 有关 AzCopy 工具的详细信息，请参阅 [AzCopy 文档](../../storage/common/storage-use-azcopy.md)。
+* 确认已预安装命令行 AzCopy 工具：```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```。 包含 azcopy.exe 的目录已在 PATH 环境变量中，因此运行此工具时不用键入完整命令路径。 有关 AzCopy 工具的详细信息，请参阅 [AzCopy 文档](../../storage/common/storage-use-azcopy-v10.md)。
 * 启动 Azure 存储资源管理器工具。 可从[存储资源管理器网页](https://storageexplorer.com/)下载它。 
 
    ![Azure 存储资源管理器访问存储帐户时的屏幕截图](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -201,7 +201,7 @@ AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.ne
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>读取 Azure blob 中的数据：Python ODBC
 
-在 Jupyter 笔记本或 Python 程序中，可以使用 BlobService 库直接读取 blob 中的数据。
+可以使用 BlobService 库直接从 Jupyter Notebook 中的 blob 或 Python 程序中读取数据。
 
 首先，导入所需的包：
 
@@ -252,10 +252,10 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ![前 10 行数据的屏幕截图](./media/vm-do-ten-things/IPNB_data_readin.png)
 
 
-### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (以前的 SQL DW) 和数据库
-Azure Synapse Analytics (以前的 SQL DW) 是一种具有企业级 SQL Server 体验的弹性数据仓库即服务。
+### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse 分析和数据库
+Azure Synapse Analytics 是一种弹性数据仓库即服务，具有企业级 SQL Server 体验。
 
-可以按照 [本文](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)中的说明预配 Azure Synapse Analytics。 预配 Azure Synapse Analytics 后，可以使用 [此演练](../team-data-science-process/sqldw-walkthrough.md) ，通过 Azure Synapse 分析中的数据执行数据上传、探索和建模。
+可以按照[本文](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)中的说明预配 Azure Synapse Analytics。 预配 Azure Synapse Analytics 后，可按照[此演练](../team-data-science-process/sqldw-walkthrough.md)，使用 Azure Synapse Analytics 中的数据执行数据上传、探索和建模。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB 是云中的 NoSQL 数据库。 可用其处理 JSON 等文档及存储和查询文档。
@@ -269,7 +269,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 可用其处理 JSON 等文档�
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-导入数据后，可转到 Jupyter 并打开名为“DocumentDBSample”的笔记本。 它包含用于访问 Azure Cosmos DB 和执行某些基本查询所需的 Python 代码。 访问 Azure Cosmos DB 的[文档页](https://docs.microsoft.com/azure/cosmos-db/)，可了解有关该服务的详细信息。
+导入数据后，可转到 Jupyter 并打开名为“DocumentDBSample”的笔记本。 它包含用于访问 Azure Cosmos DB 和执行某些基本查询所需的 Python 代码。 访问 Azure Cosmos DB 的[文档页](../../cosmos-db/index.yml)，可了解有关该服务的详细信息。
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>使用 Power BI 报告和仪表板 
 可在 Power BI Desktop 中对上一 Azure Cosmos DB 示例中的 Volcano JSON 文件进行可视化，以便获得有关该数据的直观见解。 [Power BI 文章](../../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 下面是概要步骤：
@@ -326,10 +326,9 @@ DSVM 中预构建的工具可以满足很多常规数据分析需求。 这能�
 
 - [生成端到端解决方案以检测图像中的产品的操作指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：图像检测是一种能够对图像中的对象进行定位和分类的技术。 这项技术有望在许多现实商业领域带来巨大回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
 
-- [音频深度学习](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/):此教程展示如何使用[城市声音数据集](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)训练用于音频事件检测的深度学习模型。 它还提供有关如何处理音频数据的概述。
+- [音频深度学习](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure):此教程展示如何使用[城市声音数据集](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)训练用于音频事件检测的深度学习模型。 它还提供有关如何处理音频数据的概述。
 
 - [文本文档分类](https://github.com/anargyri/lstm_han)：本演练展示如何生成和训练两种神经网络架构：分层注意网络和长短期记忆 (LSTM) 网络。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 
 
 ## <a name="summary"></a>摘要
 本文仅介绍了可在 Microsoft Data Science Virtual Machine 上执行的部分操作。 你还可以执行很多其他操作，使 DSVM 成为有效的分析环境。
-

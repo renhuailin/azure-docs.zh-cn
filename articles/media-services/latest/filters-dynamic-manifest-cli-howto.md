@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: 5ceff9eba0363ea2784c48e026807c53447f1e32
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: f86b3fbebfaa2eb6fc35d5373eab2bb296ff5043
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296895"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740616"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器
 
@@ -45,7 +45,7 @@ ms.locfileid: "89296895"
 以下示例定义添加到最终清单的曲目择条件。 此筛选器包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
 
 > [!TIP]
-> 如果计划在 REST 中定义**筛选器**，请注意需要包括“Properties”包装器 JSON 对象。  
+> 如果计划在 REST 中定义 **筛选器** ，请注意需要包括“Properties”包装器 JSON 对象。  
 
 ```json
 [

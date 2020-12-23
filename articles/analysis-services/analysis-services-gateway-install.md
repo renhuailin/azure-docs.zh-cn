@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 64bd9e4a4cf78d2628e946af30c2d290ff002cf7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438967"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081138"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 
-当同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要本地数据网关。  虽然你安装的网关与其他服务（例如 Power BI、Power Apps 和逻辑应用）使用的网关相同，但在针对 Azure Analysis Services 进行安装时，有一些需要完成的额外步骤。 本安装文章专门针对 **Azure Analysis Services**。 
+当同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要本地数据网关。  虽然你安装的网关与其他服务（例如 Power BI、Power Apps 和逻辑应用）使用的网关相同，但在针对 Azure Analysis Services 进行安装时，有一些需要完成的额外步骤。 本安装文章专门针对 **Azure Analysis Services** 。 
 
 若要详细了解 Azure Analysis Services 如何使用网关，请参阅[连接到本地数据源](analysis-services-gateway.md)。 若要总体了解有关高级安装方案和网关的更多信息，请参阅[本地数据网关文档](/data-integration/gateway/service-gateway-onprem)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87438967"
 
 2. 选择“本地数据网关”。 
 
-   ![选择](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Select](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. 选择位置，接受条款，并单击“安装”。 
 
@@ -73,7 +73,7 @@ ms.locfileid: "87438967"
 
 1.  选择“在此计算机上注册新网关”  。
 
-    ![注册](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![突出显示 "在此计算机上注册新网关" 选项的屏幕截图。](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. 键入网关的名称和恢复密钥。 默认情况下，网关使用订阅的默认区域。 如需选择不同的区域，请选择“更改区域”。 
 
@@ -93,48 +93,48 @@ ms.locfileid: "87438967"
 
 2. 在“创建连接网关”中，输入以下设置： 
 
-   * **名称**：输入网关资源的名称。 
+   * **名称** ：输入网关资源的名称。 
 
-   * **订阅**：选择要与网关资源关联的 Azure 订阅。 
+   * **订阅** ：选择要与网关资源关联的 Azure 订阅。 
    
      默认订阅取决于用来登录的 Azure 帐户。
 
-   * **资源组**：创建资源组，或选择现有资源组。
+   * **资源组** ：创建资源组，或选择现有资源组。
 
-   * **位置**：选择网关的注册区域。
+   * **位置** ：选择网关的注册区域。
 
-   * **安装名称**：如果尚未选择网关安装，请选择已在计算机上安装的网关，并进行注册。 
+   * **安装名称** ：如果尚未选择网关安装，请选择已在计算机上安装的网关，并进行注册。 
 
      完成后，单击“创建”  。
 
 ## <a name="connect-gateway-resource-to-server"></a>将网关资源连接到服务器
 
 > [!NOTE]
-> 门户不支持从服务器连接到不同订阅中的网关资源，但使用 PowerShell 支持。
+> 门户不支持从服务器连接到不同订阅中的网关资源，但 PowerShell 支持。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-1. 在 Azure Analysis Services 服务器概述中，单击“本地数据网关”****。
+1. 在 Azure Analysis Services 服务器概述中，单击“本地数据网关”  。
 
    ![将服务器连接到网关](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
 
-2. 在“选取要连接的本地数据网关”****，选择你的网关资源，然后单击“连接所选网关”****。
+2. 在“选取要连接的本地数据网关”  ，选择你的网关资源，然后单击“连接所选网关”  。
 
    ![将服务器连接到网关资源](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
     > 如果列表中不显示你的网关，很可能是你的服务器与你注册网关时指定的区域不在同一个区域。
 
-    在服务器和网关资源之间成功建立连接以后，状态会显示“已连接”。****
+    在服务器和网关资源之间成功建立连接以后，状态会显示“已连接”。 
 
 
     ![将服务器连接到网关资源成功](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用[AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource)获取网关 ResourceID。 然后，通过在[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)或[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)中指定 **-GatewayResourceID**将网关资源连接到现有或新的服务器。
+使用 [Get-AzResource](/powershell/module/az.resources/get-azresource) 获取网关 ResourceID。 然后，通过在 [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) 或 [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) 中指定“-GatewayResourceID”，将网关资源连接到现有服务器或新服务器。
 
-获取网关资源 ID：
+若要获取网关资源 ID：
 
 ```azurepowershell-interactive
 Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforGateway -Environment "AzureCloud"
@@ -151,7 +151,7 @@ Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -Gatew
 ```
 ---
 
-分配过程如上所述。 如果你需要打开端口或执行任何故障排除时，一定要签出[本地数据网关](analysis-services-gateway.md)。
+就这么简单。 如果你需要打开端口或执行任何故障排除时，一定要签出[本地数据网关](analysis-services-gateway.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

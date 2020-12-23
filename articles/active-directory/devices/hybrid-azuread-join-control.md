@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85252706"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860926"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>以受控方式验证混合 Azure AD 加入
 
@@ -42,9 +42,9 @@ ms.locfileid: "85252706"
 
 1. 以企业管理员身份从和管理工作站或域控制器启动 **ADSI 编辑器** 桌面应用程序。
 1. 连接到域的 **配置命名上下文** 。
-1. 浏览到**CN = Configuration，dc = contoso，dc = com**  >  **CN = Services**  >  **CN = 设备注册配置**
-1. 右键单击叶对象**CN = 62a0ff2e-97b9-4513-943f-0d221bd30080** ，然后选择 "**属性**"
-   1. 从 "**属性编辑器**" 窗口中选择**关键字**，然后单击 "**编辑**"
+1. 浏览到 **CN = Configuration，dc = contoso，dc = com**  >  **CN = Services**  >  **CN = 设备注册配置**
+1. 右键单击叶对象 **CN = 62a0ff2e-97b9-4513-943f-0d221bd30080** ，然后选择 "**属性**"
+   1. 从 "**属性编辑器**" 窗口中选择 **关键字**，然后单击 "**编辑**"
    1. 依次选择 " **azureADId** " 和 " **azureADName** " 的值)  ("，然后单击"**删除**"
 1. 关闭 **ADSI 编辑器**
 
@@ -63,7 +63,7 @@ ms.locfileid: "85252706"
       1. 密钥路径： **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. 值名称： **TenantId**
       1. 值类型： **REG_SZ**
-      1. 值数据： (此值的 Azure AD 实例的 GUID 或**目录 id**可在**Azure 门户**  >  **Azure Active Directory**  >  **Properties**  >  **目录 ID**中找到) 
+      1. 值数据： (此值的 Azure AD 实例的 GUID 或 **目录 id** 可在 **Azure 门户**  >  **Azure Active Directory**  >  **Properties**  >  **目录 ID** 中找到) 
    1. 单击 **“确定”**
 1. 右键单击注册表，然后选择 "**新建**  >  **注册表项**"
    1. 在 " **常规** " 选项卡上，配置以下各项
@@ -82,7 +82,7 @@ ms.locfileid: "85252706"
 如果使用 AD FS，则首先需要使用上述说明来配置客户端 SCP，方法是将 GPO 链接到 AD FS 服务器。 SCP 对象定义设备对象的授权来源。 它可以是本地的，也可以是 Azure AD。 为 AD FS 配置客户端 SCP 后，设备对象的源将建立为 Azure AD。
 
 > [!NOTE]
-> 如果无法在 AD FS 服务器上配置客户端 SCP，则设备标识的源将被视为 "本地"。 然后，在 ADFS 设备注册的属性 "MaximumInactiveDays" 中定义的规定期限后，ADFS 将开始从本地目录中删除设备对象。 可以使用 [AdfsDeviceRegistration cmdlet](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)找到 ADFS 设备注册对象。
+> 如果无法在 AD FS 服务器上配置客户端 SCP，则设备标识的源将被视为 "本地"。 然后，在 ADFS 设备注册的属性 "MaximumInactiveDays" 中定义的规定期限后，ADFS 将开始从本地目录中删除设备对象。 可以使用 [AdfsDeviceRegistration cmdlet](/powershell/module/adfs/get-adfsdeviceregistration)找到 ADFS 设备注册对象。
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows 下层设备上的混合 Azure AD 联接的受控验证
 

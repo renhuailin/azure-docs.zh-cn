@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85125457"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397427"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>根据应用程序网关指标 (Beta) 自动缩放 AKS Pod
 
@@ -23,7 +23,7 @@ ms.locfileid: "85125457"
 我们将使用以下两个组件：
 
 * [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) - 我们将使用指标适配器通过指标服务器公开应用程序网关指标。 Azure Kubernetes 指标适配器是 Azure 下的一个开源项目，类似于应用程序网关入口控制器。 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) - 我们将通过 HPA 来使用应用程序网关指标，并以用于缩放的部署为目标。
+* [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) - 我们将通过 HPA 来使用应用程序网关指标，并以用于缩放的部署为目标。
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>设置 Azure Kubernetes 指标适配器
 
@@ -92,7 +92,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>使用新指标纵向扩展部署
 
-能够通过指标服务器公开 `appgw-request-count-metric` 以后，即可使用 [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) 纵向扩展目标部署。
+能够通过指标服务器公开 `appgw-request-count-metric` 以后，即可使用 [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) 纵向扩展目标部署。
 
 在以下示例中，我们将以示例部署 `aspnet` 为目标。 当每个 Pod 的 `appgw-request-count-metric` > 200 时，我们会纵向扩展 Pod，Pod 数上限为 `10`。
 

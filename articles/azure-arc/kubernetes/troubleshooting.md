@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 排查已启用 Arc 的 Kubernetes 群集的常见问题。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 42c90708854af6973ed1ef399b9867101a736b07
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540602"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586153"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>已启用 Azure Arc 的 Kubernetes 故障排除（预览版）
 
@@ -50,16 +50,16 @@ TEST SUITE: None
 
 ```console
 $ kubectl -n azure-arc get deployments,pods
-NAME                                        READY   UP-TO-DATE AVAILABLE AGE
-deployment.apps/cluster-metadata-operator   1/1     1           1        16h
-deployment.apps/clusteridentityoperator     1/1     1           1        16h
-deployment.apps/config-agent                1/1     1           1        16h
-deployment.apps/controller-manager          1/1     1           1        16h
-deployment.apps/flux-logs-agent             1/1     1           1        16h
-deployment.apps/metrics-agent               1/1     1           1        16h
-deployment.apps/resource-sync-agent         1/1     1           1        16h
+NAME                                       READY  UP-TO-DATE  AVAILABLE  AGE
+deployment.apps/clusteridentityoperator     1/1       1          1       16h
+deployment.apps/config-agent                1/1       1          1       16h
+deployment.apps/cluster-metadata-operator   1/1       1          1       16h
+deployment.apps/controller-manager          1/1       1          1       16h
+deployment.apps/flux-logs-agent             1/1       1          1       16h
+deployment.apps/metrics-agent               1/1       1          1       16h
+deployment.apps/resource-sync-agent         1/1       1          1       16h
 
-NAME                                            READY   STATUS   RESTART AGE
+NAME                                            READY   STATUS  RESTART  AGE
 pod/cluster-metadata-operator-7fb54d9986-g785b  2/2     Running  0       16h
 pod/clusteridentityoperator-6d6678ffd4-tx8hr    3/3     Running  0       16h
 pod/config-agent-544c4669f9-4th92               3/3     Running  0       16h
@@ -69,7 +69,7 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-所有 Pod 应将 `STATUS` 显示为 `Running`，且 `READY` 应为 `3/3` 或 `2/2`。 提取日志，并描述返回 `Error` 或 `CrashLoopBackOff` 的 Pod。 如果这些 pod 中有任何一个处于粘滞 `Pending` 状态，则可能是由于群集节点上的资源不足造成的。 [向上缩放群集](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster) 会使这些 pod 转换到 `Running` 状态。
+所有 Pod 应将 `STATUS` 显示为 `Running`，且 `READY` 应为 `3/3` 或 `2/2`。 提取日志，并描述返回 `Error` 或 `CrashLoopBackOff` 的 Pod。 如果这些 pod 中有任何一个处于粘滞 `Pending` 状态，则可能是由于群集节点上的资源不足造成的。 [向上缩放群集](https://kubernetes.io/docs/tasks/administer-cluster/) 会使这些 pod 转换到 `Running` 状态。
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>将 Kubernetes 群集连接到 Azure Arc
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: e7fc8f68bf344b689d6d4ebb49fde8d43ebcaccd
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 7f0e9d0c97b9325a30de3cb8c6ce10a3ba8489f4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053615"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454107"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Elium 的集成
 
@@ -41,7 +41,7 @@ ms.locfileid: "90053615"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Elium 支持 **SP 和 IDP** 发起的 SSO
-* Elium 支持**实时**用户预配
+* Elium 支持 **实时** 用户预配
 
 ## <a name="adding-elium-from-the-gallery"></a>从库中添加 Elium
 
@@ -51,8 +51,8 @@ ms.locfileid: "90053615"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Elium”********。
-1. 在结果面板中选择“Elium”，然后添加该应用****。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Elium”  。
+1. 在结果面板中选择“Elium”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso-for-elium"></a>配置并测试 Elium 的 Azure AD SSO
 
@@ -88,7 +88,7 @@ ms.locfileid: "90053615"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/login`
 
     > [!NOTE]
-    > 这些不是实际值。 从可以在 `https://<platform-domain>.elium.com/login/saml2/metadata` 中下载的 **SP 元数据文件**获取这些值。本教程稍后将对此做出说明。
+    > 这些不是实际值。 从可以在 `https://<platform-domain>.elium.com/login/saml2/metadata` 中下载的 **SP 元数据文件** 获取这些值。本教程稍后将对此做出说明。
 
 1. Elium 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -105,13 +105,13 @@ ms.locfileid: "90053615"
     | company| user.companyname|
 
     > [!NOTE]
-    > 这是默认声明。 **只需电子邮件声明**。 对于 JIT 预配，也只需电子邮件声明。 其他自定义声明根据客户平台的不同而异。
+    > 这是默认声明。 **只需电子邮件声明** 。 对于 JIT 预配，也只需电子邮件声明。 其他自定义声明根据客户平台的不同而异。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 Elium”部分中，根据要求复制相应的 URL****。
+1. 在“设置 Elium”部分中，根据要求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "90053615"
 在本部分中，将通过授予 B.Simon 访问 Elium 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“Elium”****。
+1. 在应用程序列表中，选择“Elium”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
@@ -174,21 +174,21 @@ ms.locfileid: "90053615"
 
     d. 单击“下载”按钮打开“SP 元数据”。  
 
-    e. 在“SP 元数据”文件中搜索 **entityID**，复制“entityID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中。     
+    e. 在“SP 元数据”文件中搜索 **entityID** ，复制“entityID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中。     
 
     ![配置单一登录 Elium 04](./media/elium-tutorial/elium-04.png)
 
-    f. 在“SP 元数据”文件中搜索 **AssertionConsumerService**，复制“Location”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中。    
+    f. 在“SP 元数据”文件中搜索 **AssertionConsumerService** ，复制“Location”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中。    
 
     ![配置单一登录 Elium 05](./media/elium-tutorial/elium-05.png)
 
     g. 在写字板中打开从 Azure 门户下载的元数据文件内容，复制内容并将其粘贴到“IdP 元数据”文本框中  。
 
-    h. 单击“ **保存**”。
+    h. 单击“ **保存** ”。
 
 ### <a name="create-elium-test-user"></a>创建 Elium 测试用户
 
-本部分将在 Elium 中创建一个名为 B.Simon 的用户。 Elium 支持默认已启用的**实时预配**。 此部分不存在任何操作项。 尝试访问 Elium 时，如果 Elium 中尚不存在用户，则系统会创建一个新用户。
+本部分将在 Elium 中创建一个名为 B.Simon 的用户。 Elium 支持默认已启用的 **实时预配** 。 此部分不存在任何操作项。 尝试访问 Elium 时，如果 Elium 中尚不存在用户，则系统会创建一个新用户。
 
 > [!Note]
 > 如果需要手动创建用户，请联系 [Elium 支持团队](mailto:support@elium.com)。
@@ -207,8 +207,8 @@ ms.locfileid: "90053615"
  
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Elium 
  
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Elium 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Elium。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Elium 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Elium。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Glint Inc 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Elium 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

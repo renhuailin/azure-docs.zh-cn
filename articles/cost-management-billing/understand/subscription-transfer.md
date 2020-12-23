@@ -10,13 +10,13 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: 237565a7b72c3317e2c443f86965634ed7c9942c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 163bd7dbdac4de7b7d9c1657ac3debf45382a27a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336844"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027265"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>关于转移 Azure 订阅的计费所有权
 
@@ -36,7 +36,7 @@ ms.locfileid: "91336844"
 
 计费管理员是有权管理帐户计费的人员。 他们有权在 [Azure 门户](https://portal.azure.com)中访问计费，并可执行各种计费任务，例如创建订阅、查看和支付发票，或更新付款方式。
 
-若要确定你是哪些帐户的计费管理员，请访问 [Azure 门户中的“成本管理 + 计费”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。 然后，在左窗格中选择“所有计费范围”。 订阅页面显示了你是其中的计费管理员的全部三个订阅。
+若要确定你是哪些帐户的计费管理员，请访问 [Azure 门户中的“成本管理 + 计费”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。 然后，在左窗格中选择“所有计费范围”。 订阅页显示了你是其中的计费管理员的所有订阅。
 
 如果不确定谁是订阅的帐户管理员，请访问 [Azure 门户中的订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 然后，选择要检查的订阅，并查看“设置”下的信息。 选择“属性”，“帐户管理员”框中会显示订阅的帐户管理员 。
 
@@ -63,7 +63,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 ## <a name="resources-transferred-with-subscriptions"></a>与订阅一起转移的资源
 
-所有资源（例如 VM、磁盘和网站）将转移到新帐户。 但是，如果将订阅转移到了另一个 Azure AD 租户中的帐户，则订阅的任何[管理员角色](../manage/add-change-subscription-administrator.md)和 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)都不会转移。 此外，[应用注册](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)和其他特定于租户的服务不会随订阅一起转移。
+所有资源（例如 VM、磁盘和网站）将转移到新帐户。 但是，如果将订阅转移到了另一个 Azure AD 租户中的帐户，则订阅的任何[管理员角色](../manage/add-change-subscription-administrator.md)和 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)都不会转移。 此外，[应用注册](../../active-directory/develop/quickstart-register-app.md)和其他特定于租户的服务不会随订阅一起转移。
 
 ## <a name="transfer-account-ownership-to-another-countryregion"></a>将帐户所有权转移到其他国家/区域
 
@@ -99,7 +99,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 即使在转移过程中删除了 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)，原始所有者帐户中的用户仍可以通过其他安全机制访问订阅，这些机制包括：
 
 * 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../../cloud-services/cloud-services-certs-create.md)。
-* 存储空间等服务的访问密钥。 有关详细信息，请参阅[有关 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
+* 存储空间等服务的访问密钥。 有关详细信息，请参阅[有关 Azure 存储帐户](../../storage/common/storage-account-create.md)。
 * Azure 虚拟机等服务的远程访问凭据。
 
 如果接收方需要限制对资源的访问，他们应考虑更新与服务关联的任何机密。 大多数资源都可更新。 登录 [Azure 门户](https://portal.azure.com)，在中心菜单上选择“所有资源”。 接下来，选择资源。 然后，在资源页中选择“设置”。 可在此处查看和更新现有机密。

@@ -9,11 +9,11 @@ ms.date: 11/19/2018
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 51b76e2d5feb2b194ba472c2982ca0ace0f6f5fb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91571875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001710"
 ---
 |类别 | 数据存储 |  
 | :-------- | :----- |  

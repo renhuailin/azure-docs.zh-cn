@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: a105df6b27be943b14a29bb25fd048bfd294c867
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91707772"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097424"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 从 NoSQL 迁移到应用程序开发，你可以从各种经验丰富的系统集成商合作伙伴和工具中进行选择，以支持 Azure Cosmos DB 解决方案。 本文列出了使用 Azure Cosmos DB 的解决方案或服务的合作伙伴。 此列表随时间而变化，Microsoft 不负责对这些合作伙伴的解决方案进行的任何更改或更新。
 
@@ -21,31 +22,31 @@ ms.locfileid: "91707772"
 
 |**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |
 |---------|---------|---------|
-|[Striim](https://www.striim.com/)    |  持续实时的数据移动，数据迁移|   USA   |
-| [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售 (清点) ，操作分析 (Spark) ，无服务器体系结构，应用开发 | USA |
-|[Altoros Development LLC](https://www.altoros.com/)  |  IoT，个性化零售 (清单) ，无服务器体系结构 NoSQL 迁移，应用开发|   USA |
+|[Striim](https://www.striim.com/)    |  持续实时的数据移动，数据迁移|   美国   |
+| [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售 (清点) ，操作分析 (Spark) ，无服务器体系结构，应用开发 | 美国 |
+|[Altoros Development LLC](https://www.altoros.com/)  |  IoT，个性化零售 (清单) ，无服务器体系结构 NoSQL 迁移，应用开发|   美国 |
 |[Avanade](https://www.avanade.com/) | IoT，零售 (清单) ，无服务器体系结构，应用开发 | 奥地利、德国、瑞士、意大利、挪威、西班牙、英国、加拿大 |
 |[Accenture](https://www.accenture.com/) | IoT，零售 (清单) ，无服务器体系结构，应用开发 |全球|
-|[Capax Global LLC](https://www.capaxglobal.com/) | IoT，个性化，零售 (库存) ，操作分析 (Spark) ，无服务器体系结构，应用开发|    USA     |  
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT，个性化，零售 (库存) ，操作分析 (Spark) ，无服务器体系结构，应用开发|    美国     |  
 | [Capgemini](https://www.capgemini.com/) | 零售 (清单) ，IoT，操作分析 (Spark) ，应用开发 | 美国、法国、英国、荷兰、芬兰  |
 | [Cognizant](https://www.cognizant.com/) | IoT，个性化，零售 (库存) ，操作分析 (Spark) ，应用开发 |美国、加拿大、英国、丹麦、荷兰、瑞士、澳大利亚、日本 |
-|[Infosys](https://www.infosys.com/)     | 应用开发      |    USA    |  
+|[Infosys](https://www.infosys.com/)     | 应用开发      |    美国    |  
 | [Lagash 系统](https://www.lagash.com/) | IoT，无服务器体系结构，应用开发 | 阿根廷、智利、哥伦比亚、墨西哥|
 | [Lambda3 Informatics](https://www.lambda3.com.br/) | 实时个性化，零售库存，应用开发 | 巴西|
-|[Neal Analytics](https://www.nealanalytics.com/)    |     个性化，零售 (库存) ，操作分析 (Spark) ，应用开发  |    USA     |  
-|[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL 迁移      |   USA      |
+|[Neal Analytics](https://www.nealanalytics.com/)    |     个性化，零售 (库存) ，操作分析 (Spark) ，应用开发  |    美国     |  
+|[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL 迁移      |   美国      |
 | [Ricoh 数字服务](https://www.ricoh.com/) | IoT，实时个性化，零售库存，NoSQL 迁移 | 英国  |
-|[SNP Technologies](https://www.snp.com/) | NoSQL 迁移| USA |
+|[SNP Technologies](https://www.snp.com/) | NoSQL 迁移| 美国 |
 | [Solidsoft Reply](https://www.reply.com/solidsoft-reply/) | NoSQL 迁移 | 克罗地亚，瑞典，丹麦，爱尔兰，保加利亚，斯洛文尼亚，塞浦路斯，马耳他，立陶宛，捷克共和国，冰岛，以及瑞士和列支敦士登|
 | [Spanish Point Technologies](https://www.spanishpoint.ie/) | NoSQL 迁移| 爱尔兰|
 | [Syone](https://www.syone.com/) | NoSQL 迁移| 葡萄牙|
-|[Tallan](https://www.tallan.com/)    |  应用开发      |    USA     |
+|[Tallan](https://www.tallan.com/)    |  应用开发      |    美国     |
 | [TCS](https://www.tcs.com/) | 应用开发 | 美国、英国、法国、马来西亚、丹麦、挪威、瑞典|
-|[VTeamLabs](https://www.vteamlabs.com/)    | 个性化，零售 (库存) ，IoT，游戏，操作分析 (Spark) ，无服务器体系结构，NoSQL 迁移，应用开发       |  USA      |  
+|[VTeamLabs](https://www.vteamlabs.com/)    | 个性化，零售 (库存) ，IoT，游戏，操作分析 (Spark) ，无服务器体系结构，NoSQL 迁移，应用开发       |  美国      |  
 | [白色的 GmbH](https://whiteducksoftware.com/) |新应用程序开发、应用后端、基于文档的数据的存储| 德国 |
 | [Xpand IT](https://www.xpand-it.com/) | 新应用开发 | 葡萄牙、英国|
-| [Hanu](https://hanu.com/) | IoT，应用开发 | USA|
-| [Incycle 软件](https://www.incyclesoftware.com/) | NoSQL 迁移，无服务器体系结构，应用开发| USA|
+| [Hanu](https://hanu.com/) | IoT，应用开发 | 美国|
+| [Incycle 软件](https://www.incyclesoftware.com/) | NoSQL 迁移，无服务器体系结构，应用开发| 美国|
 | [Orion](https://www.orioninc.com/) | 个性化、零售 (库存) 、运营分析 (Spark) 、IoT、应用开发| 美国、加拿大|
 
 ## <a name="next-steps"></a>后续步骤

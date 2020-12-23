@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856579"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546103"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -24,13 +24,13 @@ Azure HDInsight 群集提供了基于熟悉的 Linux 环境并在 Azure 云中�
 本文档中的许多步骤使用以下实用程序，这些程序可能需要在系统上安装。
 
 * [cURL](https://curl.haxx.se/) - 用于与基于 Web 的服务进行通信。
-* 命令行 JSON 处理程序 **jq**。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) - 用于远程管理 Azure 服务。
-* **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
+* 命令行 JSON 处理程序 **jq** 。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* [Azure CLI](/cli/azure/install-azure-cli) - 用于远程管理 Azure 服务。
+* **SSH 客户端** 。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="users"></a>用户
 
-除非[加入域](./domain-joined/hdinsight-security-overview.md)，HDInsight 应被视为**单用户**系统。 单一 SSH 用户帐户是使用具有管理员级别权限的群集创建的。 可创建其他 SSH 帐户，但它们也具有对群集的管理员权限。
+除非 [加入域](./domain-joined/hdinsight-security-overview.md)，HDInsight 应被视为 **单用户** 系统。 单一 SSH 用户帐户是使用具有管理员级别权限的群集创建的。 可创建其他 SSH 帐户，但它们也具有对群集的管理员权限。
 
 加入域的 HDInsight 支持多个用户、更具体的权限以及角色设置。 有关详细信息，请参阅[管理已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-manage.md)。
 
@@ -81,7 +81,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     >
     > 身份验证是纯文本身份验证 - 始终使用 HTTPS 来帮助确保连接是安全的。
 
-* **SSH** - 端口 22 或 23 上的 CLUSTERNAME-ssh.azurehdinsight.net。 端口 22 用于连接主头结点，而端口 23 用于连接辅助头结点。 有关头节点的详细信息，请参阅 [HDInsight 中的 Apache Hadoop 群集的可用性和可靠性](hdinsight-high-availability-linux.md)。
+* **SSH** - 端口 22 或 23 上的 CLUSTERNAME-ssh.azurehdinsight.net。 端口 22 用于连接主头结点，而端口 23 用于连接辅助头结点。 有关头节点的详细信息，请参阅 [HDInsight 中的 Apache Hadoop 群集的可用性和可靠性](./hdinsight-business-continuity.md)。
 
     > [!NOTE]  
     > 只能通过 SSH 从客户端计算机访问群集头节点。 在连接后，可以通过使用 SSH 从头节点访问从节点。
@@ -92,8 +92,8 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Hadoop 相关文件可在群集节点上的 `/usr/hdp`中找到。 此目录包含以下子目录：
 
-* **2.6.5.3009-43**：目录名称是 HDInsight 使用的 Hadoop 平台版本。 群集上的数字可能与这里列出的有所不同。
-* **current**：此目录包含 2.6.5.3009-43 目录下的子目录的链接。 由于该目录存在，因此无需记住版本号。
+* **2.6.5.3009-43** ：目录名称是 HDInsight 使用的 Hadoop 平台版本。 群集上的数字可能与这里列出的有所不同。
+* **current** ：此目录包含 2.6.5.3009-43 目录下的子目录的链接。 由于该目录存在，因此无需记住版本号。
 
 可以在 Hadoop 分布式文件系统上的 `/example` 和 `/HdiSamples` 处找到示例数据和 JAR 文件。
 
@@ -189,9 +189,9 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 从 HDInsight 群集外部访问数据的方法有多种。 以下是一些可用于处理数据的实用工具和 SDK 的链接：
 
-如果使用 __Azure Blob 存储__，请参阅以下链接，了解访问数据的方法：
+如果使用 __Azure Blob 存储__ ，请参阅以下链接，了解访问数据的方法：
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)：适用于 Azure 的命令行接口命令。 在安装后，使用 `az storage` 命令获取有关使用存储的帮助，或者使用 `az storage blob` 获取特定于 Blob 的命令。
+* [Azure CLI](/cli/azure/install-az-cli2)：适用于 Azure 的命令行接口命令。 在安装后，使用 `az storage` 命令获取有关使用存储的帮助，或者使用 `az storage blob` 获取特定于 Blob 的命令。
 * [blobxfer.py](https://github.com/Azure/blobxfer)：用于处理 Azure 存储中的 blob 的 python 脚本。
 * 多种 SDK：
 
@@ -201,9 +201,9 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
-    * [存储 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
+    * [存储 REST API](/rest/api/storageservices/Blob-Service-REST-API)
 
-如果使用 __Azure Data Lake Storage Gen1__，请参阅以下链接，了解访问数据的方法：
+如果使用 __Azure Data Lake Storage Gen1__ ，请参阅以下链接，了解访问数据的方法：
 
 * [Web 浏览器](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -245,7 +245,7 @@ HDInsight 是托管服务。 如果 Azure 检测到群集存在问题，则可�
 > [!IMPORTANT]
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[适用于 HDInsight 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)、[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在 [https://apache.org](https://apache.org) 上提供了项目站点，例如：[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[适用于 HDInsight 的 Microsoft Q&A 问题页面](/answers/topics/azure-hdinsight.html)、[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在 [https://apache.org](https://apache.org) 上提供了项目站点，例如：[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/)。
 
 ## <a name="next-steps"></a>后续步骤
 

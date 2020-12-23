@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Stack Edge Pro GPU 设备上设置 Azure 资源管理器密码
-description: 介绍如何使用 Azure PowerShell 连接到 Azure Stack Edge Pro GPU 上运行的 Azure 资源管理器。
+description: 介绍如何使用 Azure PowerShell 在 Azure Stack Edge Pro GPU 上设置 Azure 资源管理器密码。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904493"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578784"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上设置 Azure 资源管理器密码
 
@@ -21,18 +21,18 @@ ms.locfileid: "90904493"
 
 本文介绍如何设置 Azure 资源管理器密码。 在通过 Azure 资源管理器连接到设备本地 Api 时，需要设置此密码。
 
-根据你使用的是 Azure 门户还是 PowerShell cmdlet，设置密码的过程可能会有所不同。 以下各部分介绍了上述每个过程。
+设置密码的过程可能会有所不同，具体取决于你使用的是 Azure 门户还是 PowerShell cmdlet。 以下各部分介绍了上述每个过程。
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>通过 Azure 门户重置密码
 
 1. 在 Azure 门户中，请切换到你创建的 Azure Stack Edge 资源来管理你的设备。 转到“Edge 计算”>“开始”。
 
-2. 在右侧窗格中，从命令栏中选择 " **重置边缘 ARM 密码**"。 
+2. 在右侧窗格中，从命令栏中选择“重置 Edge ARM 密码”。 
 
     ![重置 EdgeARM 用户密码1](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 
-3. 在 " **重置 EdgeArm 用户密码** " 边栏选项卡中，提供密码以通过 Azure 资源管理器连接到设备本地 api。 确认密码，然后选择 " **重置**"。
+3. 在 " **重置 EdgeArm 用户密码** " 边栏选项卡中，提供密码以通过 Azure 资源管理器连接到设备本地 api。 确认密码，然后选择 " **重置** "。
 
     ![重置 EdgeARM 用户密码2](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-2.png)
 
@@ -45,10 +45,10 @@ ms.locfileid: "90904493"
     - Azure Stack Edge 资源名称
     - 订阅 ID
 
-2. 请 **> 属性**中转到 "设置"。 请记下 " **属性** " 页中的以下参数。
+2. 请 **> 属性** 中转到 "设置"。 请记下 " **属性** " 页中的以下参数。
 
     - 资源组
-    - CIK 加密密钥：选择 "查看"，然后复制 **加密密钥**。
+    - CIK 加密密钥：选择 "查看"，然后复制 **加密密钥** 。
 
     ![获取 CIK 加密密钥](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
  
@@ -63,7 +63,7 @@ ms.locfileid: "90904493"
     ![Cloud Shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
 
 
-5. 设置上下文。 键入：
+5. 设置上下文。 类型：
 
     `Set-AzContext -SubscriptionId <Subscription ID>`
 
@@ -122,7 +122,7 @@ ms.locfileid: "90904493"
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    在 AzDataBoxEdgeUser cmdlet 中使用上述生成的安全字符串作为参数来重置密码。 使用创建 Azure Stack Edge Pro/Data Box Gateway 资源时使用的同一资源组。
+    使用上述生成的安全字符串作为 Set-AzDataBoxEdgeUser cmdlet 中的参数以重置密码。 使用创建 Azure Stack Edge Pro/Data Box Gateway 资源时使用的同一资源组。
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key

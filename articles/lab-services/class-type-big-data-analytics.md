@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 6ae4e658985a3974b311171e83e6243dfc4a1ae9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5eb9cd00350c41645d4427e30a6f25a6c163358c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444023"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659890"
 ---
 # <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>使用 HortonWorks 数据平台的 Docker 部署为大数据分析设置实验室
 
@@ -24,11 +24,11 @@ ms.locfileid: "85444023"
 
 ## <a name="lab-configuration"></a>实验室配置
 
-若要设置此实验室，需要一个 Azure 订阅和实验室帐户才能开始使用。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅 [设置实验室帐户教程](tutorial-setup-lab-account.md)。  你还可以使用现有的实验室帐户。
+若要设置此实验室，需要一个 Azure 订阅和实验室帐户才能开始使用。 如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅 [设置实验室帐户教程](tutorial-setup-lab-account.md)。  你还可以使用现有的实验室帐户。
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
-为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅 [指定可用于实验室创建者的 marketplace 映像](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)。
+为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅 [指定可用于实验室创建者的 marketplace 映像](./specify-marketplace-images.md)。
 
 | 实验室帐户设置 | Instructions |
 | ------------------- | ------------ |

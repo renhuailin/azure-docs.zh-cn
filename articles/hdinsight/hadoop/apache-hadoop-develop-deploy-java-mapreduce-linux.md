@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
-ms.openlocfilehash: 84d9253b865ddac6d97395af3d8632e29cc2ea24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8b80616806f846951ebbaffcb2bf31ad77b96266
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323802"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996026"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
 
@@ -21,7 +21,7 @@ ms.locfileid: "87323802"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
+* [Java 开发人员工具包 (JDK) 版本 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
@@ -147,7 +147,7 @@ maven-shade-plugin 还会生成 uber jar，其中包含应用程序所需的所�
 
 ## <a name="create-the-mapreduce-application"></a>创建 MapReduce 应用程序
 
-1. 输入以下命令，以创建并打开新文件 `WordCount.java`。 根据提示选择“是”，以创建新文件。****
+1. 输入以下命令，以创建并打开新文件 `WordCount.java`。 根据提示选择“是”，以创建新文件。
 
     ```cmd
     notepad src\main\java\org\apache\hadoop\examples\WordCount.java
@@ -287,4 +287,4 @@ mvn clean package
 
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
-* [Java 开发人员中心](https://azure.microsoft.com/develop/java/)
+* [Java 开发中心](https://azure.microsoft.com/develop/java/)

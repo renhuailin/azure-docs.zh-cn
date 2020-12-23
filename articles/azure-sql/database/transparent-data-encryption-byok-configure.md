@@ -5,24 +5,27 @@ description: 了解如何配置 Azure SQL 数据库和 Azure Synapse Analytics�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: b4480f3d28cb89165a6ba3c5b26b10b1aba9765c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619111"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461851"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文逐步介绍如何使用 Azure Key Vault 中的密钥对 Azure SQL 数据库或 Azure Synapse Analytics（以前成为 SQL Data Warehouse）启用透明数据加密 (TDE)。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-overview.md)。
+本文介绍如何在 Azure SQL 数据库或 Azure Synapse Analytics 中使用 Azure Key Vault 的密钥来透明数据加密 (TDE) 。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-overview.md)。
+
+> [!NOTE] 
+> Azure SQL 现在支持使用存储在托管 HSM 中的 RSA 密钥作为 TDE 保护程序。 此功能 **公开预览版**。 Azure Key Vault 托管 HSM 是一项完全托管的、高度可用的单租户标准云服务，可让你使用 FIPS 140-2 第3级验证后的 Hsm 保护云应用程序的加密密钥。 详细了解 [托管的 hsm](../../key-vault/managed-hsm/index.yml)。
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell 先决条件
 
@@ -37,12 +40,13 @@ ms.locfileid: "91619111"
   - 无过期日期
   - 未禁用
   - 能够执行“获取”、“包装密钥”和“解包密钥”操作  
+- **预览中的 ()** 要使用托管 HSM 密钥，请按照说明 [使用 Azure CLI](../../key-vault/managed-hsm/quick-create-cli.md)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 若要了解具体的 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。
+有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 若要了解具体的 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。
 
-有关 Key Vault 的具体信息，请参阅 [Key Vault 的 PowerShell 说明](../../key-vault/secrets/quick-create-powershell.md)和[如何将 Key Vault 软删除与 PowerShell 配合使用](../../key-vault/general/soft-delete-powershell.md)。
+有关 Key Vault 的具体信息，请参阅 [Key Vault 的 PowerShell 说明](../../key-vault/secrets/quick-create-powershell.md)和[如何将 Key Vault 软删除与 PowerShell 配合使用](../../key-vault/general/key-vault-recovery.md)。
 
 > [!IMPORTANT]
 > 仍然支持 PowerShell Azure 资源管理器 (RM) 模块，但是所有未来的开发都是针对 Az.Sql 模块。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
@@ -70,6 +74,8 @@ ms.locfileid: "91619111"
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
+若要在托管 HSM 上添加对服务器的权限，请将 "Managed HSM Encryption Service Encryption" 本地 RBAC 角色添加到服务器。 这使服务器能够对托管 HSM 中的密钥执行 get、wrap key、解包关键操作。
+[有关在托管 HSM 上设置服务器访问权限的说明](../../key-vault/managed-hsm/role-management.md)
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>将 Key Vault 密钥添加到服务器并设置 TDE 保护器
 
@@ -79,10 +85,15 @@ ms.locfileid: "91619111"
 - 使用 [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 确认已按预期配置了 TDE 保护器。
 
 > [!NOTE]
+> **预览中的 ()** 对于托管 HSM 密钥，请使用 Az 2.11.1 版本的 PowerShell。
+
+> [!NOTE]
 > Key Vault 名称和密钥名称的总长度不能超过 94 个字符。
 
 > [!TIP]
-> Key Vault 中的示例 KeyId： https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Key Vault 中的示例 KeyId： <br/>https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>
+> 托管 HSM 中的示例 KeyId：<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
 ```powershell
 # add the key from Key Vault to the server
@@ -123,9 +134,9 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要安装所需的 Azure CLI 版本（版本 2.0 或更高版本）并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行界面 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要安装所需的 Azure CLI 版本（版本 2.0 或更高版本）并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行界面 2.0](/cli/azure/install-azure-cli)。
 
-有关 Key Vault 的具体信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md) 和[如何将 Key Vault 软删除与 CLI 配合使用](../../key-vault/general/soft-delete-cli.md)。
+有关 Key Vault 的具体信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md) 和[如何将 Key Vault 软删除与 CLI 配合使用](../../key-vault/general/key-vault-recovery.md)。
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>将 Azure AD 标识分配到服务器
 

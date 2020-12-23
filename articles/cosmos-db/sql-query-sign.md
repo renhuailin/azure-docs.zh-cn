@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 SIGN
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 SIGN。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 84335acbee1e4166e5346f5c5cac6ef8dae11e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02fceb8ac594a8caff8942b8a7cb0c6bcd2a47e3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302060"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339592"
 ---
 # <a name="sign-azure-cosmos-db"></a>SIGN (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回指定数值表达式的正数 (+1)、零 (0) 或负数 (-1)。  
   
 ## <a name="syntax"></a>语法

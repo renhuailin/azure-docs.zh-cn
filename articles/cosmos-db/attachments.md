@@ -8,21 +8,22 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 56e8212d60494d469e225c25edbbd331c601ea6b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: b6504c0521328edc356dea1c146fe9aeb6bde55f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804154"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092732"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB 附件
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 附件是特殊项，它们包含对与外部 blob 或媒体文件关联的元数据的引用。
 
 Azure Cosmos DB 支持两种类型的附件：
 
-* **非托管附件**：是一个包装器，用于包装存储在外部服务（例如 Azure 存储、OneDrive 等）中的 blob 的 URI 引用。 此方法类似于将 URI 属性存储在标准 Azure Cosmos DB 项中。
-* **托管附件**：是由 Azure Cosmos DB 在内部管理并存储并通过系统生成的 mediaLink 公开的 blob。
+* **非托管附件** ：是一个包装器，用于包装存储在外部服务（例如 Azure 存储、OneDrive 等）中的 blob 的 URI 引用。 此方法类似于将 URI 属性存储在标准 Azure Cosmos DB 项中。
+* **托管附件** ：是由 Azure Cosmos DB 在内部管理并存储并通过系统生成的 mediaLink 公开的 blob。
 
 
 > [!NOTE]
@@ -160,7 +161,7 @@ namespace attachments
 
 ## <a name="next-steps"></a>后续步骤
 
-- 开始使用 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet)
-- 通过[Azure Cosmos DB 的 .NET SDK v2](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.attachment?view=azure-dotnet&preserve-view=true)获取有关使用附件的参考
-- 通过[Azure Cosmos DB 的 JAVA SDK v2](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.attachment?view=azure-java-stable&preserve-view=true)获取有关使用附件的参考
-- 获取有关通过[Azure Cosmos DB 的 REST API](https://docs.microsoft.com/rest/api/cosmos-db/attachments)使用附件的参考
+- 开始使用 [Azure Blob 存储](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+- 通过[Azure Cosmos DB 的 .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet)获取有关使用附件的参考
+- 通过[Azure Cosmos DB 的 JAVA SDK v2](/java/api/com.microsoft.azure.documentdb.attachment?preserve-view=true&view=azure-java-stable)获取有关使用附件的参考
+- 获取有关通过[Azure Cosmos DB 的 REST API](/rest/api/cosmos-db/attachments)使用附件的参考

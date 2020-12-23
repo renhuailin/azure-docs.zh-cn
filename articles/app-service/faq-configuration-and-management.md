@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962343"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074176"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -65,7 +65,9 @@ ms.locfileid: "88962343"
     * 值 = *所需时区*
 3. 选择“保存” 。
 
-对于在 Windows 上运行的应用服务，请参阅[默认时区](/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”列了解接受的值。 对于在 Linux 上运行的应用服务，将 [TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) 设置为时区值。 下面是 TZ 数据库名称的示例：中美洲/Adak。
+对于在 Windows 上运行的应用服务，请参阅 Windows 命令的输出 `tzutil /L` 。 使用每个项的第二行中的值。 例如： "汤加标准时间"。 其中的某些值也在 [默认时区](/windows-hardware/manufacture/desktop/default-time-zones)的 " **时区** " 列中列出。
+
+对于在 Linux 上运行的应用服务，请从 [IANA TZ 数据库](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置一个值。 例如： "美国/Adak"。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为什么连续 Web 作业有时会失败？
 
@@ -76,7 +78,7 @@ ms.locfileid: "88962343"
 获取 Web 应用出站 IP 地址列表：
 
 1. 在 Azure 门户中的 Web 应用边栏选项卡上，转到“属性”菜单。
-2. 搜索**出站 IP 地址**。
+2. 搜索 **出站 IP 地址** 。
 
 随即显示出站 IP 地址列表。
 
@@ -282,7 +284,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net** 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *. azurewebsites.net 域，则可以重定向默认的 URL。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net  域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *. azurewebsites.net 域，则可以重定向默认的 URL。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 

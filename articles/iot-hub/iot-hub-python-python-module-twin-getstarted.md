@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: menchi
 ms.custom: devx-track-python
-ms.openlocfilehash: 6ed0290abe91453058589b032fb5ed2dd71fe98a
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872559"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139402"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT 中心模块标识和模块孪生 (Python) 入门
 
@@ -270,4 +270,4 @@ ms.locfileid: "87872559"
 
 * [设备管理入门](iot-hub-node-node-device-management-get-started.md)
 
-* [IoT Edge 入门](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Edge 入门](../iot-edge/quickstart-linux.md)

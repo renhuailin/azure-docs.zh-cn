@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539565"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532816"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本 11
 
-如果你使用的是 10.0 或更低版本的 [.NET SDK](/dotnet/api/overview/azure/search)，则本文可帮助你升级到版本 11。
+如果你使用的是版本10.0 或更低版本的 [.NET SDK](/dotnet/api/overview/azure/search)，本文将帮助你升级到版本11和 **Azure.Search.Documents** 客户端库。
 
 版本 11 是完全重新设计的客户端库，由 Azure SDK 开发团队发布（以前的版本由 Azure 认知搜索开发团队生成）。 已对该库进行了重新设计，使其与其他 Azure 客户端库更加一致，依赖于 [Azure.Core](/dotnet/api/azure.core) 和 [System.Text.Json](/dotnet/api/system.text.json)，并为常见任务实现了熟悉的方法。
 
@@ -31,7 +31,7 @@ ms.locfileid: "91539565"
 + 一系列 API 的命名差异，以及简化了某些任务的小的结构差异
 
 > [!NOTE]
-> 有关 .NET SDK 版本 11 中的变更的详细列表，请查看[**更改日志**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)。
+> 有关 .NET SDK 版本 11 中的变更的详细列表，请查看 [**更改日志**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)。
 
 ## <a name="package-and-library-consolidation"></a>包和库合并
 
@@ -141,7 +141,7 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应�
 
 ## <a name="steps-to-upgrade"></a>升级步骤
 
-以下步骤通过遍历第一组必需任务（特别是在客户端引用方面）开始执行代码迁移。
+以下步骤通过遍历第一组所需任务（尤其是涉及客户端引用），帮助你开始执行代码迁移。
 
 1. 在 Visual Studio 中，右键单击你的项目引用并选择“管理 NuGet 包...”，以安装 [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)。
 
@@ -170,11 +170,31 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应�
 
 1. 为索引器相关对象添加新的客户端引用。 如果使用的是索引器、数据源或技能组，请将客户端引用更改为 [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)。 此客户端是版本 11 中的新客户端，之前没有。
 
+1. 修改集合和列表。 在新的 SDK 中，如果列表碰巧包含空值，则所有列表均为只读，以避免出现下游问题。 代码更改是向列表中添加项。 例如，您可以按如下所示添加字符串，而不是为 Select 属性赋值：
+
+   ```csharp
+   var options = new SearchOptions
+    {
+       SearchMode = SearchMode.All,
+       IncludeTotalCount = true
+    };
+
+    // Select fields to return in results.
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Tags");
+    options.Select.Add("Rooms");
+    options.Select.Add("Rating");
+    options.Select.Add("LastRenovationDate");
+   ```
+
+   Select、Facet、SearchFields、SourceFields、ScoringParameters 和 OrderBy 都是现在需要重建的所有列表。
+
 1. 为查询和数据导入更新客户端引用。 应将 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) 的实例更改为 [SearchClient](/dotnet/api/azure.search.documents.searchclient)。 为了避免名称混乱，请确保在继续下一步之前捕获所有实例。
 
-1. 为索引、索引器、同义词映射和分析器对象更新客户端引用。 应将 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 的实例更改为 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)。 
+1. 更新索引、同义词映射和分析器对象的客户端引用。 应将 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 的实例更改为 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)。 
 
-1. 尽可能多地更新类、方法和属性以使用新库的 API。 可以从[命名差异](#naming-differences)部分来开始了解，但也可以查看[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)。
+1. 对于代码的其余部分，更新类、方法和属性以使用新库的 Api。 可以从[命名差异](#naming-differences)部分来开始了解，但也可以查看[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)。
 
    如果在查找等效 API 时遇到困难，建议你在 [https://github.com/MicrosoftDocs/azure-docs/issues](https://github.com/MicrosoftDocs/azure-docs/issues) 上记录问题，以便我们可以改进文档或调查问题。
 

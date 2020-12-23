@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 2d770ce1fca9a5d36ba605bccc46d3995cd1764b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 23a741e96807acdb7b162b65597c651a2a6c3235
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450570"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92509210"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TravelPerk 的集成
 
@@ -55,7 +55,7 @@ ms.locfileid: "91450570"
 
 ## <a name="configure-and-test-azure-ad-sso-for-travelperk"></a>配置并测试 TravelPerk 的 Azure AD SSO
 
-配置并使用名为“B.Simon”的测试用户来测试 TravelPerk 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 TravelPerk 中的相关用户之间建立链接关系。
+配置 TravelPerk 的 Azure AD SSO，并使用名为“B.Simon”的测试用户来对其进行测试。 若要使 SSO 正常工作，需要在 Azure AD 用户与 TravelPerk 中的相关用户之间建立链接关系。
 
 若要配置并测试 TravelPerk 的 Azure AD SSO，请执行以下步骤：
 
@@ -124,7 +124,7 @@ ms.locfileid: "91450570"
 
 ## <a name="configure-travelperk-sso"></a>配置 TravelPerk SSO
 
-若要在 TravelPerk 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送到 [TravelPerk 支持团队](mailto:trex@travelperk.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 TravelPerk 端配置单一登录，需要将从 Azure 门户下载的联合元数据 XML 以及复制的相应 URL 发送到 [TravelPerk 支持团队](mailto:trex@travelperk.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-travelperk-test-user"></a>创建 TravelPerk 测试用户
 
@@ -138,10 +138,8 @@ ms.locfileid: "91450570"
 
 2. 直接转到 TravelPerk 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 TravelPerk 磁贴时，将会重定向到 TravelPerk 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击 TravelPerk 磁贴时，将会重定向到 TravelPerk 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 TravelPerk 后，即可强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 TravelPerk 后，即可强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

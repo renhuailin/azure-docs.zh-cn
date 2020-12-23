@@ -6,21 +6,21 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
-ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 141db7feee987b7fffc578e19c60bd94ad56d239
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856558"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511631"
 ---
-# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 存储共享访问签名来限制对 HDInsight 中的数据的访问
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 存储共享访问签名来限制访问 HDInsight 中的数据
 
-HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据具有完全访问权限。 可以使用 Blob 容器中的共享访问签名来限制对数据的访问。  (SAS) 的共享访问签名是 Azure Blob 存储帐户的一项功能，可用于限制对数据的访问。 例如，它可以提供对数据的只读访问。
+HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据拥有完全访问权限。 可以使用 Blob 容器中的共享访问签名来限制对数据的访问。 共享访问签名 (SAS) 是可用于限制数据访问权限的一项 Azure Blob 存储帐户功能。 例如，它可以提供对数据的只读访问。
 
 > [!IMPORTANT]  
-> 对于使用 Apache Ranger 的解决方案，请考虑使用已加入域的 HDInsight。 有关详细信息，请参阅[配置已加入域的 HDInsight](./domain-joined/apache-domain-joined-configure.md) 文档。
+> 对于使用 Apache Ranger 的解决方案，请考虑使用已加入域的 HDInsight。 有关详细信息，请参阅[配置已加入域的 HDInsight](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) 文档。
 
 > [!WARNING]  
 > HDInsight 必须对群集的默认存储拥有完全访问权限。
@@ -31,9 +31,9 @@ HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据具有完全�
 
 * 一个现有的[存储容器](../storage/blobs/storage-quickstart-blobs-portal.md)。  
 
-* 如果使用 PowerShell，需要安装 [Az 模块](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell，需要安装 [Az 模块](/powershell/azure/)。
 
-* 如果想要使用 Azure CLI，但尚未安装，请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果想要使用 Azure CLI，但尚未安装，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 * 如果使用 [Python](https://www.python.org/downloads/)，请安装 2.7 或更高版本。
 
@@ -76,7 +76,7 @@ HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据具有完全�
 
 建议始终使用存储访问策略。 使用存储策略时，可以根据需要撤销签名或延长过期日期。 本文档中的步骤使用存储访问策略生成 SAS。
 
-有关共享访问签名的详细信息，请参阅[了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+有关共享访问签名的详细信息，请参阅[了解 SAS 模型](../storage/common/storage-sas-overview.md)。
 
 ## <a name="create-a-stored-policy-and-sas"></a>创建存储策略和 SAS
 
@@ -188,7 +188,7 @@ Set-AzStorageblobcontent `
     az storage container policy list --container-name %AZURE_STORAGE_CONTAINER% --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
 
     # Generate a shared access signature for the container
-    az storage container generate-sas --name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
+    az storage container generate-sas --name %AZURE_STORAGE_CONTAINER% --policy-name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
 
     # Reversal
     # az storage container policy delete --container-name %AZURE_STORAGE_CONTAINER% --name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
@@ -411,7 +411,7 @@ Remove-AzResourceGroup `
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    此命令会将该文件下载到名为 **testfile.txt**的本地文件中。
+    此命令会将该文件下载到名为 **testfile.txt** 的本地文件中。
 
 5. 使用以下命令将本地文件上传到 SAS 存储上名为 **testupload.txt** 的新文件中：
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401735"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92204633"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 可以通过往往已由连接服务提供商优化的专用连接，将本地网络扩展到 Microsoft 云中。 在传统上，ExpressRoute 连接涉及到三个不同的网络区域，如下所述：
@@ -165,7 +165,7 @@ ServiceProviderProvisioningState : Provisioned
 在前面的示例中，可以注意到已预配 Azure 专用对等互连，但尚未预配 Azure 公共对等互连和 Microsoft 对等互连。 成功预配的对等互连上下文还会列出主要和辅助的点到点子网。 /30 子网用于 MSEE 和 CE/PE-MSEE 的接口 IP 地址。 对于已预配的对等互连，列表中还会指示上次修改配置的用户。 
 
 > [!NOTE]
-> 如果启用对等互连失败，请检查分配的主要子网和辅助子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId*、*AzureASN* 和 *PeerASN*，以及这些值是否映射到链接的 CE/PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE/CE 对上的共享密钥应相同。 出于安全原因，不会显示以前配置的共享密钥。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
+> 如果启用对等互连失败，请检查分配的主要子网和辅助子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId* 、 *AzureASN* 和 *PeerASN* ，以及这些值是否映射到链接的 CE/PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE/CE 对上的共享密钥应相同。 出于安全原因，不会显示以前配置的共享密钥。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
 >
 
 > [!NOTE]
@@ -228,7 +228,7 @@ At line:1 char:1
 ```
 
 > [!NOTE]
-> 如果启用对等互连失败，请检查分配的主要子网和辅助子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId*、*AzureASN* 和 *PeerASN*，以及这些值是否映射到链接的 CE/PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE/CE 对上的共享密钥应相同。 出于安全原因，不会显示以前配置的共享密钥。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
+> 如果启用对等互连失败，请检查分配的主要子网和辅助子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId* 、 *AzureASN* 和 *PeerASN* ，以及这些值是否映射到链接的 CE/PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE/CE 对上的共享密钥应相同。 出于安全原因，不会显示以前配置的共享密钥。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
 >
 >
 
@@ -278,7 +278,7 @@ Path    : 123##
 ```
 
 > [!NOTE]
-> 如果 MSEE 与 CE/PE-MSEE 之间的 eBGP 对等互连状态为“活动”或“空闲”，请检查分配的主要和辅助对等子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId*、*AzureAsn* 和 *PeerAsn*，以及这些值是否映射到链接的 PE-MSEE/CE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 CE/PE-MSEE 对上的共享密钥应相同。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。
+> 如果 MSEE 与 CE/PE-MSEE 之间的 eBGP 对等互连状态为“活动”或“空闲”，请检查分配的主要和辅助对等子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId* 、 *AzureAsn* 和 *PeerAsn* ，以及这些值是否映射到链接的 PE-MSEE/CE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 CE/PE-MSEE 对上的共享密钥应相同。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。
 >
 
 
@@ -332,13 +332,8 @@ StatusCode: 400
 
 <!--Link References-->
 [Support]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 
-[CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
-[ARP]: https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
-[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
-[DR-Pvt]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
-
-
-
-
-
+[CreateCircuit]: ./expressroute-howto-circuit-portal-resource-manager.md
+[CreatePeering]: ./expressroute-howto-routing-portal-resource-manager.md
+[ARP]: ./expressroute-troubleshooting-arp-resource-manager.md
+[HA]: ./designing-for-high-availability-with-expressroute.md
+[DR-Pvt]: ./designing-for-disaster-recovery-with-expressroute-privatepeering.md

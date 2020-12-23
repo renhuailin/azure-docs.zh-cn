@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/10/2020
-ms.openlocfilehash: 756c62aa070f05c4b66de0cde6c7df59d9b1d09a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: 282917a6bbf7edb962a87ad87810adde56206d97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84735179"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013436"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 
@@ -37,13 +37,13 @@ ms.locfileid: "84735179"
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 转到 [Azure 门户](https://portal.azure.com)。 
-1. 在 Azure 门户菜单中，选择“创建资源” > “分析” > “数据工厂”：  
+1. 从 Azure 门户菜单，选择“创建资源” > “集成” > “数据工厂”  ：
 
     ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为**名称**。 
+1. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。 
  
-   Azure 数据工厂的名称必须 *全局唯一*。 如果出现以下错误，请更改数据工厂的名称（例如改为 **&lt;yourname&gt;ADFTutorialDataFactory**），并重新尝试创建。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
+   Azure 数据工厂的名称必须全局唯一。 如果出现以下错误，请更改数据工厂的名称（例如改为 **&lt;yourname&gt;ADFTutorialDataFactory**），并重新尝试创建。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
    ![名称不可用时出错](./media/doc-common-process/name-not-available-error.png)
 1. 对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。 

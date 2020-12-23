@@ -5,17 +5,17 @@ services: peering-service
 author: derekolo
 ms.service: peering-service
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
-ms.date: 09/24/2020
+ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: 4b034c2657cd1bddd696b40738d51c8a3e6c9798
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c2c16e6b5be4e187a776f75454ecf9377da911e3
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355246"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763162"
 ---
 # <a name="peering-service-partners"></a>对等服务合作伙伴
 
@@ -30,18 +30,20 @@ Microsoft 已与 internet 服务提供商合作， (Isp) 、internet exchange �
 
 | **合作伙伴** | **市场**|
 |-----------|---------|
-| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |United States|
+| [Lumen 技术](https://www.ctl.io/microsoft-azure-peering-services/) |北美，欧洲|
 | [BBIX](https://www.bbix.net/en/service/) |日本 |
 | [CCL](https://concepts.co.nz/news/general-news/) |大洋洲 |
 | [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|欧洲、亚洲|
-| [DE-CIX](https://www.de-cix.net/microsoft)|欧洲 |
+| [DE-CIX](https://www.de-cix.net/microsoft)|欧洲，北美 |
 | [IIJ](https://www.iij.ad.jp/en/) | 日本 |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|欧洲  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |大洋洲  |
-| [Liquid Telecom](https://liquidcloud.africa/365-direct) | 非洲  |
+| [Liquid Telecom](https://liquidcloud.africa/keep-expanding-365-direct/) | 非洲  |
 | [NTT Communications](https://www.ntt.com/en/services/network/software-defined-network.html) | 日本 |
 | [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |亚洲 |
 | [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |亚洲 |
+| [NAP 非洲](https://www.napafrica.net/technical/microsoft-azure-peering-service/) |非洲|
+| [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |欧洲|
 
 > [!NOTE]
 >若要详细了解如何向对等互连服务合作伙伴计划登记内容，请联系 peeringservice@microsoft.com 。

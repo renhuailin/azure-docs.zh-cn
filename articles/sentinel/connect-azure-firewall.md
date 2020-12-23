@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 05a2869152def0fc9a44defaa21f0643d9fdbb08
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 4dffaac329f1581d9082fd8ab2c314f52b1730ab
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89504870"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656014"
 ---
 # <a name="connect-data-from-azure-firewall"></a>从 Azure 防火墙连接数据
 
@@ -26,7 +26,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 你可以将 Azure 防火墙日志连接到 Azure Sentinel，使你能够在工作簿中查看日志数据，使用它创建自定义警报，并将其合并以改善调查。
 
-详细了解如何 [监视 Azure 防火墙日志](https://docs.microsoft.com/azure/firewall/tutorial-diagnostics)。
+详细了解如何 [监视 Azure 防火墙日志](../firewall/firewall-diagnostics.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

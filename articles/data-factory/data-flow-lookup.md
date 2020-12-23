@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187609"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147260"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>映射数据流中的查找转换
 
@@ -27,7 +27,7 @@ ms.locfileid: "84187609"
 
 ## <a name="configuration"></a>配置
 
-![查找转换](media/data-flow/lookup1.png "查找")
+![屏幕截图显示具有以下文本中所述标签的 "查找设置" 选项卡。](media/data-flow/lookup1.png "查找")
 
 **主流：** 传入的数据流。 此流等效于联接的左侧。
 
@@ -69,6 +69,10 @@ ms.locfileid: "84187609"
 
 建议不要通过“关闭”选项来禁用广播，除非联接遇到超时错误。
 
+## <a name="cached-lookup"></a>缓存查找
+
+如果要在同一源上执行多个更小的查找，则缓存的接收器和查找可能比查找转换更好用例。 缓存接收器可能更好的常见示例是，查找数据存储上的最大值，并将错误代码与错误消息数据库匹配。 有关详细信息，请了解 [缓存接收器](data-flow-sink.md#cache-sink) 和 [缓存的查找](concepts-data-flow-expression-builder.md#cached-lookup)。
+
 ## <a name="data-flow-script"></a>数据流脚本
 
 ### <a name="syntax"></a>语法
@@ -85,7 +89,7 @@ ms.locfileid: "84187609"
 ```
 ### <a name="example"></a>示例
 
-![查找转换](media/data-flow/lookup-dsl-example.png "查找")
+![屏幕截图显示以下代码的 "查找设置" 选项卡。](media/data-flow/lookup-dsl-example.png "查找")
 
 以上查找配置的数据流脚本位于下面的代码片段中。
 

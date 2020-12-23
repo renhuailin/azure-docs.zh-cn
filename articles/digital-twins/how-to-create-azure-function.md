@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 5352a95b865851be937af7b9f19268afd23148db
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614080"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280036"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>连接 Azure Functions 应用以处理数据
 
-通过计算资源（如[Azure Functions](../azure-functions/functions-overview.md)）使用[**事件路由**](concepts-route-events.md)来处理基于数据的数字孪生。 Azure 函数可用于更新数字克隆，以响应：
+通过计算资源（如 [Azure Functions](../azure-functions/functions-overview.md)）使用 [**事件路由**](concepts-route-events.md)来处理基于数据的数字孪生。 Azure 函数可用于更新数字克隆，以响应：
 * 来自 IoT 中心的设备遥测数据
 * 属性更改或其他数据来自于克隆图形中的其他数字输出
 
@@ -30,27 +30,31 @@ ms.locfileid: "89614080"
 4. 将函数应用发布到 Azure
 5. 设置 Azure function app 的 [安全](concepts-security.md) 访问权限
 
+## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>先决条件：设置 Azure 数字孪生实例
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
 ## <a name="create-an-azure-functions-app-in-visual-studio"></a>在 Visual Studio 中创建 Azure Functions 应用
 
-在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "并搜索 _Azure Functions_ 模板，然后选择" _下一步_"。
+在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "并搜索 _Azure Functions_ 模板，然后选择" _下一步_ "。
 
-:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio： 新建项目 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio： &quot;新建项目&quot; 对话框":::
 
-指定函数应用的名称，然后选择 " _创建_"。
+指定函数应用的名称，然后选择 " _创建_ "。
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio：配置新项目":::
 
-选择函数应用 *事件网格触发器* 的类型，然后选择 " _创建_"。
+选择函数应用 *事件网格触发器* 的类型，然后选择 " _创建_ "。
 
 :::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio： Azure 函数项目触发器对话框":::
 
 创建 function app 后，visual studio 将在项目文件夹中的 **function.cs** 文件中自动填充代码示例。 此 short Azure 函数用于记录事件。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：包含示例代码的 项目 窗口":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：包含示例代码的 &quot;项目&quot; 窗口":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>使用事件网格触发器编写 Azure 函数
 
-可以通过将 SDK 添加到 function app 来编写 Azure function。 Function app 使用 [适用于 (.net 的 Azure IoT 数字克隆客户端库 ) ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)与 Azure 数字孪生交互。 
+可以通过将 SDK 添加到 function app 来编写 Azure function。 函数应用使用 [用于 .net 的 Azure 数字孪生 SDK (c # ) ](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)与 Azure 数字孪生交互。 
 
 若要使用 SDK，需要在项目中包含以下包。 可以使用 visual studio NuGet 包管理器安装包，也可以使用 `dotnet` 命令行工具添加包。 选择以下方法之一： 
 
@@ -155,24 +159,24 @@ namespace adtIngestFunctionSample
 
 ## <a name="publish-the-function-app-to-azure"></a>将函数应用发布到 Azure
 
-若要将函数应用发布到 Azure，请右键选择函数项目 (不是解决方案资源管理器中的解决方案) ，然后选择 " **发布**"。
+若要将函数应用发布到 Azure，请右键选择函数项目 (不是解决方案资源管理器中的解决方案) ，然后选择 " **发布** "。
 
 > [!IMPORTANT] 
 > 发布 Azure 函数将产生额外费用，与 Azure 数字孪生无关。
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio：发布 Azure 函数 ":::
 
-选择 " **Azure** " 作为发布目标，然后选择 " **下一步**"。
+选择 " **Azure** " 作为发布目标，然后选择 " **下一步** "。
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio： 发布 Azure 函数 对话框，选择 Azure ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio： &quot;发布 Azure 函数&quot; 对话框，选择 &quot;Azure&quot; ":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio：发布函数 对话框中，选择 Azure Function App (Windows) 或基于计算机 (Linux) ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="&quot;Visual Studio：发布函数&quot; 对话框中，选择 &quot;Azure Function App (Windows) 或基于计算机 (Linux) ":::
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio：发布函数对话框，创建新的 Azure 函数":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio： 发布函数 对话框，填写字段，然后选择 创建":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio： &quot;发布函数&quot; 对话框，填写字段，然后选择 &quot;创建&quot;":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio： 发布函数 对话框，从列表中选择函数应用，然后单击 完成":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio： &quot;发布函数&quot; 对话框，从列表中选择函数应用，然后单击 &quot;完成&quot;":::
 
 在以下页面上，为新的 function app、资源组和其他详细信息输入所需的名称。
 为了使函数应用能够访问 Azure 数字孪生，它需要具有系统管理的标识并且有权访问 Azure 数字孪生实例。
@@ -186,26 +190,28 @@ namespace adtIngestFunctionSample
 
 以前示例中的 Azure function 主干要求向其传递持有者令牌，以便能够通过 Azure 数字孪生进行身份验证。 若要确保传递此持有者令牌，需要为 function app 设置 [托管服务标识 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md) 。 只需对每个 function app 执行一次此操作。
 
-你可以创建系统管理的标识，并将 function app 的标识分配给 azure 数字孪生实例 _ (预览) _ 角色。 这将为实例中的 function app 权限指定执行数据平面活动。 然后，通过设置环境变量，使 Azure 数字孪生实例的 URL 可供函数访问。
+你可以创建系统管理的标识，并将 function app 的标识分配给 Azure 数字孪生实例的 _**Azure 数字孪生数据所有者**_ 角色。 这将为实例中的 function app 权限指定执行数据平面活动。 然后，通过设置环境变量，使 Azure 数字孪生实例的 URL 可供函数访问。
 
- 使用 [Azure Cloud Shell](https://shell.azure.com) 运行命令。
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
+
+使用 [Azure Cloud Shell](https://shell.azure.com) 运行命令。
 
 使用以下命令创建系统管理的标识。 记下输出中的 principalId 字段。
 
-```azurecli 
+```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-使用以下命令中的 _principalId_ 值将 function app 的标识分配给 Azure 数字 _孪生所有者 (预览 _ azure 数字孪生实例的) 角色。
+使用以下命令中的 _principalId_ 值将 function app 的标识分配给 Azure 数字孪生实例的 _Azure 数字孪生数据所有者_ 角色。
 
-```azurecli 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive 
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
-最后，可以通过设置环境变量，使 Azure 数字孪生实例的 URL 可供函数访问。 有关设置环境变量的详细信息，请参阅 [*环境变量*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。 
+最后，可以通过设置环境变量，使 Azure 数字孪生实例的 URL 可供函数访问。 有关设置环境变量的详细信息，请参阅 [*环境变量*](/sandbox/functions-recipes/environment-variables)。 
 
 > [!TIP]
-> Azure 数字孪生实例的 URL 是通过将 *https://* 添加到 Azure 数字孪生实例的 *主机名*的开头来完成的。 若要查看主机名以及实例的所有属性，可以运行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
+> Azure 数字孪生实例的 URL 是通过将 *https://* 添加到 Azure 数字孪生实例的 *主机名* 的开头来完成的。 若要查看主机名以及实例的所有属性，可以运行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
 
-```azurecli 
+```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 ### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>选项2：使用 Azure 门户设置 Azure function app 的安全访问权限
@@ -217,7 +223,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 :::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure 门户：搜索函数应用":::
 
 在 "函数应用" 窗口的左侧导航栏中选择 " _标识_ "，以启用托管标识。
-在 " _系统分配_ " 选项卡下，将 _状态_ 切换到 "打开" 并 _保存_ 。 你将看到一个弹出窗口，用于 _启用系统分配的托管标识_。
+在 " _系统分配_ " 选项卡下，将 _状态_ 切换到 "打开" 并 _保存_ 。 你将看到一个弹出窗口，用于 _启用系统分配的托管标识_ 。
 选择 _"是"_ 按钮。 
 
 :::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure 门户：启用系统管理的标识":::
@@ -226,34 +232,34 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 :::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure 门户：通知":::
 
-另请注意 "_标识_" 页上显示的**对象 ID** ，它将在下一部分中使用。
+另请注意 " _标识_ " 页上显示的 **对象 ID** ，它将在下一部分中使用。
 
 :::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="复制要在将来使用的对象 ID":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>使用 Azure 门户分配访问角色
 
-选择 " _azure 角色分配_ " 按钮，打开 "azure 角色分配" 页。 然后，选择 " _+ 添加角色分配 (预览") _。
+选择 " _azure 角色分配_ " 按钮，这将打开 " *azure 角色分配* " 页。 然后，选择 " _+ 添加角色分配 (预览")_ 。
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure 门户：添加角色分配":::
 
-在打开的 " _添加角色分配 (预览") _ "窗口中，选择
+在打开的 " _添加角色分配 (预览")_ 页上，选择：
 
-* _范围_：资源组
-* _订阅_：选择 Azure 订阅
-* _资源组_：从下拉列表中选择资源组
-* _角色_：从下拉列表中选择 " _Azure 数字孪生所有者 (预览") _
+* _范围_ ：资源组
+* _订阅_ ：选择 Azure 订阅
+* _资源组_ ：从下拉列表中选择资源组
+* _角色_ ：从下拉列表中选择 " _Azure 数字孪生数据所有者_ "
 
-选择 " _保存_ " 按钮以保存你的详细信息。
+然后，按 " _保存_ " 按钮保存详细信息。
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure 门户： (预览版中添加角色分配) ":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>使用 Azure 门户配置应用程序设置
 
-通过设置环境变量，可以使你的函数能够访问 Azure 数字孪生实例的 URL。 有关此内容的详细信息，请参阅 [*环境变量*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。 应用程序设置公开为环境变量以访问数字孪生实例。 
+通过设置环境变量，可以使你的函数能够访问 Azure 数字孪生实例的 URL。 有关此内容的详细信息，请参阅 [*环境变量*](/sandbox/functions-recipes/environment-variables)。 应用程序设置公开为环境变量以访问数字孪生实例。 
 
 需要 ADT_INSTANCE_URL 创建应用程序设置。
 
-可以通过将 **_https://_** 追加到实例主机名来获取 ADT_INSTANCE_URL。 在 Azure 门户中，可以通过在搜索栏中搜索实例来找到数字孪生实例主机名。 然后，在左侧导航栏中选择 " _概述_ " 以查看 _主机名_。 复制此值以创建应用程序设置。
+可以通过将 **_https://_** 追加到实例主机名来获取 ADT_INSTANCE_URL。 在 Azure 门户中，可以通过在搜索栏中搜索实例来找到数字孪生实例主机名。 然后，在左侧导航栏中选择 " _概述_ " 以查看 _主机名_ 。 复制此值以创建应用程序设置。
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure 门户：概述-> 副本主机名，以便在 _Value_ 字段中使用。":::
 
@@ -261,7 +267,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 * 使用搜索栏中的函数名称搜索你的 Azure 函数，并从列表中选择该函数
 * 选择左侧导航栏上的 " _配置_ " 可创建新的应用程序设置
-* 在 "_应用程序设置_" 选项卡中，选择 " _+ 新建应用程序设置_"
+* 在 " _应用程序设置_ " 选项卡中，选择 " _+ 新建应用程序设置_ "
 
 :::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure 门户：搜索现有的 Azure 函数":::
 

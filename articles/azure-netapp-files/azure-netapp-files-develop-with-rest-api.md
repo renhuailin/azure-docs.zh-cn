@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90d3ff807275c74ce4495c5631ab913971ebe3e3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 4599f4e3ca291c312c99e938b237d1eb9cd9d407
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513003"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929274"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 进行 Azure NetApp 文件开发 
 
@@ -27,16 +27,16 @@ ms.locfileid: "87513003"
 
 ## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp 文件 REST API 规范
 
-Azure NetApp 文件的 REST API 规范通过[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
+Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>访问 Azure NetApp 文件 REST API  
 
-1. [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（如果尚未这样做）。
+1. [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)（如果尚未这样做）。
 2. 在 Azure Active Directory (Azure AD) 中创建服务主体：
-   1. 验证你是否拥有[足够的权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+   1. 验证你是否拥有[足够的权限](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
    2. 在 Azure CLI 中输入以下命令： 
     
@@ -167,7 +167,7 @@ curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-
 }
 ```
 
-下面的示例演示如何创建新卷。 （卷的默认协议为 NFSV3。） 
+下面的示例演示如何创建新卷。  (卷的默认协议为 "NFSV3"。 )  
 
 ```json
 {
@@ -203,4 +203,4 @@ curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-
 
 ## <a name="next-steps"></a>后续步骤
 
-[参阅 Azure NetApp 文件 REST API 参考](https://docs.microsoft.com/rest/api/netapp/)
+[参阅 Azure NetApp 文件 REST API 参考](/rest/api/netapp/)

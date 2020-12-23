@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 726caa0c4a7bbd6b8d0c17ffdfade5f9cc3c2a34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd92075c7e0c4450dbee750fd31efb394dd24f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020365"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186739"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Windows 计算机收集数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "89020365"
 2. 选择“创建”，然后为以下各项选择选项：
 
    * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。  
-   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
+   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的 **订阅**。
    * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
    * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
    * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
@@ -73,7 +73,7 @@ ms.locfileid: "89020365"
 
 以下步骤将安装并配置 Azure 和 Azure 政府版中用于 Log Analytics 的代理。 你将使用 Microsoft Monitoring Agent 安装程序在计算机上安装该代理。
 
-1. 延续前面的步骤，在“Windows 服务器”页上，选择要下载的 **Windows 代理**版本。 选择适用于你的 Windows 操作系统处理器体系结构的版本。
+1. 延续前面的步骤，在“Windows 服务器”页上，选择要下载的 **Windows 代理** 版本。 选择适用于你的 Windows 操作系统处理器体系结构的版本。
 
 2. 运行安装程序在计算机上安装该代理。
 
@@ -165,5 +165,4 @@ Azure Monitor 可从 Windows 事件日志以及性能计数器中收集指定的
 若要了解如何查看和分析数据，请继续学习以下教程：
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../log-query/get-started-portal.md)
-
+> [在 Log Analytics 中查看或分析数据](../log-query/log-analytics-tutorial.md)

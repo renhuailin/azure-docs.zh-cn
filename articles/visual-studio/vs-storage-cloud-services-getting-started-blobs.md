@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 670aef4f6f866788ef7a1a4502de242e765f5cc6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 89e0d6873ebfd8f8396c36185730c57a66af0dd9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017645"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007015"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 Visual Studio 云服务项目中创建或引用 Azure 存储帐户之后，如何开始使用 Azure blob 存储。**** 将介绍如何访问和创建 blob 容器以及如何执行常见任务（如上传、列出和下载 blob）。 示例是使用 C\# 编写的并使用了[适用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 Visual Studio 云服务项目中创建或引用 Azure 存储帐户之后，如何开始使用 Azure blob 存储。 将介绍如何访问和创建 blob 容器以及如何执行常见任务（如上传、列出和下载 blob）。 示例是使用 C\# 编写的并使用了[适用于 .NET 的 Microsoft Azure 存储客户端库](/previous-versions/azure/dn261237(v=azure.100))。
 
 Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。 单个 Blob 可以是任意大小。 Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。
 
 正如文件位于文件夹中一样，存储 Blob 位于容器中。 创建存储后，可以在存储中创建一个或多个容器。 例如，在名为“Scrapbook”的存储中，可以在名为“images”的存储中创建容器，用于存储图片，还可以在名为“audio”的存储中创建另一个容器，用于存储音频文件。 创建这些容器后，可以向它们上传单独的 Blob 文件。
 
-* 有关以编程方式操作 Blob 的详细信息，请参阅 [Get started with Azure Blob storage using .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)（通过 .NET 开始使用 Azure Blob 存储）。
+* 有关以编程方式操作 Blob 的详细信息，请参阅 [Get started with Azure Blob storage using .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)（通过 .NET 开始使用 Azure Blob 存储）。
 * 有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。
 * 有关 Azure 云服务的常规信息，请参阅[云服务文档](https://azure.microsoft.com/documentation/services/cloud-services/)。
 * 有关编写 ASP.NET 应用程序的详细信息，请参阅 [ASP.NET](https://www.asp.net)。
@@ -73,7 +73,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
 
 ## <a name="create-a-container-in-code"></a>使用代码创建容器
 > [!NOTE]
-> 在 ASP.NET 中执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](https://msdn.microsoft.com/library/hh191443.aspx)。 以下示例中的代码假定使用的是异步编程方法。
+> 在 ASP.NET 中执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](/previous-versions/hh191443(v=vs.140))。 以下示例中的代码假定使用的是异步编程方法。
 > 
 > 
 
@@ -113,8 +113,8 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 }
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
-若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。 要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果类型未知，可以使用类型检查来确定要将其转换为哪种类型。 下面的代码演示如何检索和输出 **照片** 容器中每一项的 URI：
+## <a name="list-the-blobs-in-a-container"></a>列出容器中的 blob
+若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **ListBlobs** 方法检索其中的 blob 和/或目录。 要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果类型未知，可以使用类型检查来确定要将其转换为哪种类型。 下面的代码演示如何检索和输出 **照片** 容器中每一项的 URI：
 
 ```csharp
 // Loop over items within the container and output the length and URI.
@@ -188,10 +188,10 @@ Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/
 Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 ```
 
-有关详细信息，请参阅 [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx)。
+有关详细信息，请参阅 [CloudBlobContainer.ListBlobs](/rest/api/storageservices/List-Blobs)。
 
 ## <a name="download-blobs"></a>下载 Blob
-要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。 下面的示例使用 **DownloadToStream** 方法将 blob 内容传输到一个流对象，然后你可以将该对象保存到本地文件。
+若要下载 blob，请首先检索 blob 引用，然后调用 **DownloadToStream** 方法。 下面的示例使用 **DownloadToStream** 方法将 blob 内容传输到一个流对象，然后你可以将该对象保存到本地文件。
 
 ```csharp
 // Get a reference to a blob named "photo1.jpg".
@@ -270,4 +270,3 @@ async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer cont
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
-

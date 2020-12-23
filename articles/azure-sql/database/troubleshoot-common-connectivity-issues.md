@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 46d8aab74f658b039fe07acab82f324ec6ad731f
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f8c94e36a1a6d1f675e9d6a7dde456dbf6eb8897
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777065"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791352"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>排查 SQL 数据库和 SQL 托管实例中的临时连接错误
 
@@ -31,7 +31,7 @@ ms.locfileid: "91777065"
 
 暂时性错误（也称为暂时性故障）的根本原因很快就能自行解决。 当 Azure 系统快速地将硬件资源转移到负载均衡更好的各种工作负荷时，偶尔会发生暂时性错误。 大多数这些重新配置事件在 60 秒内就能完成。 在进行这种重新配置的过程中，可能会在 SQL 数据库中连接到你的数据库时遇到问题。 连接到你的数据库的应用程序应当构建为能预见这些暂时性错误。 为了处理这些错误，可应用程序代码中实现重试逻辑，而不是以应用程序错误的形式呈现给用户。
 
-如果客户端程序使用 ADO.NET，系统会引发 **SqlException**，使程序知道已发生暂时性错误。
+如果客户端程序使用 ADO.NET，系统会引发 **SqlException** ，使程序知道已发生暂时性错误。
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -70,7 +70,7 @@ ms.locfileid: "91777065"
 
 我们建议在第一次重试前等待 5 秒。 如果在少于 5 秒的延迟后重试，云服务有超载的风险。 对于后续的每次重试，延迟应以指数级增大，最大值为 60 秒。
 
-要了解使用 ADO.NET 的客户端的暂停时段，请参阅[连接池 (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx)。
+要了解使用 ADO.NET 的客户端的暂停时段，请参阅[连接池 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 还可以设置程序在自行终止之前的重试次数上限。
 
@@ -132,11 +132,11 @@ ms.locfileid: "91777065"
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-为 **SqlConnection** 对象生成[连接字符串](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，请在以下参数之间协调值：
+为 **SqlConnection** 对象生成 [连接字符串](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring)时，请在以下参数之间协调值：
 
-- **ConnectRetryCount**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
-- **ConnectRetryInterval**：&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
-- **Connection Timeout**：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
+- **ConnectRetryCount** ：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
+- **ConnectRetryInterval** ：&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
+- **Connection Timeout** ：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
 
 具体而言，所选的值应使以下等式成立：连接超时值 = ConnectRetryCount * ConnectionRetryInterval
 
@@ -151,7 +151,7 @@ ms.locfileid: "91777065"
 - SqlConnection.Open 方法调用
 - SqlConnection.Execute 方法调用
 
-有个很微妙的地方。 如果正在执行查询时发生暂时性错误，**SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是， **SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题， **SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
+有个很微妙的地方。 如果正在执行查询时发生暂时性错误， **SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是， **SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题， **SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount 是否应结合应用程序重试逻辑？
 
@@ -227,7 +227,7 @@ ms.locfileid: "91777065"
 可以在任何 Windows 计算机上尝试以下实用程序：
 
 - SQL Server Management Studio (ssms.exe)，它使用 ADO.NET 进行连接
-- `sqlcmd.exe`，它使用 [ODBC](https://msdn.microsoft.com/library/jj730308.aspx) 进行连接
+- `sqlcmd.exe`，它使用 [ODBC](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) 进行连接
 
 连接程序后，测试一个简短的 SQL SELECT 查询是否可以正常工作。
 
@@ -268,7 +268,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 客户端可以通过记录其所遇到的所有错误来帮助你进行诊断。 可将日志条目与 SQL 数据库本身内部记录的错误数据相关联。
 
-Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记录。 有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731.aspx)。
+Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记录。 有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](/previous-versions/msp-n-p/dn440731(v=pandp.60))。
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -278,8 +278,8 @@ Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记
 
 | 日志查询 | 说明 |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) 视图提供有关各个事件的信息，包括一些可能导致暂时性错误或连接故障的事件。<br/><br/>理想情况下，可以将 **start_time** 或 **end_time** 值与有关客户端程序遇到问题时的信息相关联。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) 视图针对其他诊断提供事件类型的聚合计数。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) 视图提供有关各个事件的信息，包括一些可能导致暂时性错误或连接故障的事件。<br/><br/>理想情况下，可以将 **start_time** 或 **end_time** 值与有关客户端程序遇到问题时的信息相关联。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) 视图针对其他诊断提供事件类型的聚合计数。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -326,9 +326,9 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 ## <a name="enterprise-library-6"></a>Enterprise Library 6
 
-Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服务（包括 SQL 数据库）的可靠客户端。 若要查找 EntLib60 可以提供帮助的各个领域的相关专题，请参阅 [Enterprise Library 6 - 2013 年 4 月](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)。
+Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服务（包括 SQL 数据库）的可靠客户端。 若要查找 EntLib60 可以提供帮助的各个领域的相关专题，请参阅 [Enterprise Library 6 - 2013 年 4 月](/previous-versions/msp-n-p/dn169621(v=pandp.10))。
 
-用于处理暂时性错误的重试逻辑是 EntLib60 可以提供帮助的一个领域。 有关详细信息，请参阅 [4 - 锲而不舍是一切成功的秘密：使用暂时性故障处理应用程序块](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)。
+用于处理暂时性错误的重试逻辑是 EntLib60 可以提供帮助的一个领域。 有关详细信息，请参阅 [4 - 锲而不舍是一切成功的秘密：使用暂时性故障处理应用程序块](/previous-versions/msp-n-p/dn440719(v=pandp.60))。
 
 > [!NOTE]
 > EntLib60 的源代码可从[下载中心](https://go.microsoft.com/fwlink/p/?LinkID=290898)公开下载。 Microsoft 不打算对 EntLib 做进一步的功能更新或维护更新。
@@ -348,7 +348,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 - **ReliableSqlConnection** 类
   - **ExecuteCommand** 方法
 
-在命名空间 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport**中：
+在命名空间 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport** 中：
 
 - **AlwaysTransientErrorDetectionStrategy** 类
 - **NeverTransientErrorDetectionStrategy** 类
@@ -369,13 +369,13 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
   - 收集有助于调试和跟踪的上下文信息，以及用于满足审核和一般日志记录要求的上下文信息。
 - 日志记录块可以从日志目标抽象化日志记录功能，使应用程序代码保持一致，无论目标日志记录存储的位置和类型为何。
 
-有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)。
+有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](/previous-versions/msp-n-p/dn440731(v=pandp.60))。
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
 ### <a name="entlib60-istransient-method-source-code"></a>EntLib60 IsTransient 方法的源代码
 
-接下来，**SqlDatabaseTransientErrorDetectionStrategy** 类包含 **IsTransient** 方法的 C# 源代码。 该源代码阐明了哪些错误被视为暂时性错误并值得重试（截止 2013 年 4 月）。
+接下来， **SqlDatabaseTransientErrorDetectionStrategy** 类包含 **IsTransient** 方法的 C# 源代码。 该源代码阐明了哪些错误被视为暂时性错误并值得重试（截止 2013 年 4 月）。
 
 ```csharp
 public bool IsTransient(Exception ex)
@@ -446,11 +446,11 @@ public bool IsTransient(Exception ex)
 ## <a name="next-steps"></a>后续步骤
 
 - [用于 SQL 数据库和 SQL Server 的连接库](connect-query-content-reference-guide.md#libraries)
-- [连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
-- [*重试*是 Apache 2.0 授权的通用重试库，它以 Python](https://pypi.python.org/pypi/retrying) 编写，可以简化向几乎任何程序添加重试行为的任务。
+- [连接池 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)
+- [*重试* 是 Apache 2.0 授权的通用重试库，它以 Python](https://pypi.python.org/pypi/retrying) 编写，可以简化向几乎任何程序添加重试行为的任务。
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+[step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php

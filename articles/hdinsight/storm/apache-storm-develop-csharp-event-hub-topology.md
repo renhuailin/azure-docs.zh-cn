@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb1c2d8daa74d1224ad07ef7a2fb5a74f4773338
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dac56059455a75f4d64a698c416dc22793432bc8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000305"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545593"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
@@ -43,10 +43,10 @@ Microsoft 提供一组 Java 组件用于与 Storm 拓扑中的事件中心通信
 
 此示例中使用了以下组件：
 
-* __EventHubSpout__：从事件中心读取数据。
-* __EventHubBolt__：将数据写入事件中心。
-* __EventHubSpoutConfig__：用于配置 EventHubSpout。
-* __EventHubBoltConfig__：用于配置 EventHubBolt。
+* __EventHubSpout__ ：从事件中心读取数据。
+* __EventHubBolt__ ：将数据写入事件中心。
+* __EventHubSpoutConfig__ ：用于配置 EventHubSpout。
+* __EventHubBoltConfig__ ：用于配置 EventHubBolt。
 
 ### <a name="example-spout-usage"></a>Spout 用法示例
 
@@ -91,7 +91,7 @@ topologyBuilder.SetJavaBolt(
 ```
 
 > [!NOTE]  
-> 此示例使用作为字符串传递的 Clojure 表达式，而不是像 Spout 示例那样使用 **JavaComponentConstructor** 创建 **EventHubBoltConfig**。 任意一种方法均有效。 使用最适合方法。
+> 此示例使用作为字符串传递的 Clojure 表达式，而不是像 Spout 示例那样使用 **JavaComponentConstructor** 创建 **EventHubBoltConfig** 。 任意一种方法均有效。 使用最适合方法。
 
 ## <a name="download-the-completed-project"></a>下载已完成的项目
 
@@ -99,7 +99,7 @@ topologyBuilder.SetJavaBolt(
 
 ### <a name="prerequisites"></a>必备条件
 
-* HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
+* HDInsight 上的 Apache Storm 群集。 请参阅 [使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为 **群集类型** 。
 
 * [Azure 事件中心](../../event-hubs/event-hubs-create.md)。
 
@@ -107,7 +107,7 @@ topologyBuilder.SetJavaBolt(
 
 * [用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-* Java JDK 1.8 或更高版本，适用于开发环境。 [Oracle](https://aka.ms/azure-jdks) 提供了 JDK 下载内容。
+* Java JDK 1.8 或更高版本，适用于开发环境。 [Oracle](/azure/developer/java/fundamentals/java-jdk-long-term-support) 提供了 JDK 下载内容。
 
   * **JAVA_HOME** 环境变量必须指向包含 Java 的目录。
   * 路径中必须包含 **%JAVA_HOME%/bin** 目录。
@@ -139,7 +139,7 @@ topologyBuilder.SetJavaBolt(
 
 2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载解决方案。
 
-3. 打开 **EventHubExample.sln**。 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
+3. 打开 **EventHubExample.sln** 。 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
 
    | 密钥 | 值 |
    | --- | --- |

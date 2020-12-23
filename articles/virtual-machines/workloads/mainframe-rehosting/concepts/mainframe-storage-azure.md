@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652842"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095349"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>将大型机存储移到 Azure
 
@@ -57,7 +57,7 @@ Azure 存储可用作 [Azure 磁盘](../../../managed-disks-overview.md)、 [Azu
 <tr><td>Azure 文件
 </td>
 <td>
-提供 SMB 接口、客户端库和允许从任意位置访问存储文件的 <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> 接口。
+提供 SMB 接口、客户端库和允许从任意位置访问存储文件的 <a href="/rest/api/storageservices/file-service-rest-api">REST</a> 接口。
 </td>
 <td><ul>
 <li>当应用程序使用本机文件系统 Api 在 Azure 中运行的应用程序与其他应用程序之间共享数据时，将应用程序直接迁移到云。</li>
@@ -67,7 +67,7 @@ Azure 存储可用作 [Azure 磁盘](../../../managed-disks-overview.md)、 [Azu
 </tr>
 <tr><td>Azure Blob
 </td>
-<td>提供客户端库和 <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> 接口，该接口允许在块 blob 中大规模存储和访问非结构化数据。 还支持 <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a>，用于企业大数据分析解决方案。
+<td>提供客户端库和 <a href="/rest/api/storageservices/blob-service-rest-api">REST</a> 接口，该接口允许在块 blob 中大规模存储和访问非结构化数据。 还支持 <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a>，用于企业大数据分析解决方案。
 </td>
 <td><ul>
 <li>在应用程序中支持流式处理和随机访问方案。</li>
@@ -77,7 +77,7 @@ Azure 存储可用作 [Azure 磁盘](../../../managed-disks-overview.md)、 [Azu
 </tr>
 <tr><td>Azure 磁盘
 </td>
-<td>提供客户端库和 <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> 接口，该接口允许从附加的虚拟硬盘持久存储和访问数据。
+<td>提供客户端库和 <a href="/rest/api/compute/disks">REST</a> 接口，该接口允许从附加的虚拟硬盘持久存储和访问数据。
 </td>
 <td><ul>
 <li>使用本机文件系统 Api 的直接移动应用程序将数据读写到永久性磁盘。</li>
@@ -97,7 +97,7 @@ Ssd 在 Azure 上提供最高的存储性能。 此文档的撰写 (提供以下
 | 类型         | 大小           | IOPS                  |
 |--------------|----------------|-----------------------|
 | 超级 SSD    | 4 GB 到 64 TB  | 1200到 160000 IOPS |
-| 高级·SSD  | 32 GB 到 32 TB | 12到 15000 IOPS     |
+| 高级 SSD  | 32 GB 到 32 TB | 12到 15000 IOPS     |
 | 标准 SSD | 32 GB 到 32 TB | 12到 2000 IOPS      |
 
 Blob 存储提供了 Azure 上最大的存储量。 除了存储大小以外，Azure 还提供托管和非托管存储。 使用托管存储，Azure 负责管理底层存储帐户。 使用非托管存储时，用户需要负责设置适当大小的 Azure 存储帐户，以满足存储要求。
@@ -127,4 +127,4 @@ Blob 存储提供了 Azure 上最大的存储量。 除了存储大小以外，A
 ### <a name="more-migration-resources"></a>更多迁移资源
 
 - [Azure Virtual Data Center Lift and Shift Guide](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)（Azure 虚拟数据中心提升和迁移指南）
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

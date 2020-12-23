@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287332"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368709"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
@@ -32,7 +32,7 @@ ms.locfileid: "91287332"
 
 你可以为当前用户安装客户端（这不需要管理员权限），或者你的管理员可以安装和配置客户端，以便设备上的所有用户都可以访问该客户端。
 
-安装后，可以通过搜索“远程桌面”****，从“开始”菜单启动客户端。
+安装后，可以通过搜索“远程桌面”，从“开始”菜单启动客户端。
 
 > [!IMPORTANT]
 > Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
@@ -62,10 +62,12 @@ ms.locfileid: "91287332"
      - Windows 虚拟桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
      - Windows 虚拟桌面 (US Gov) ： `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
    - 如果你使用的是 **电子邮件** 字段，请输入你的电子邮件地址。 如果管理员已设置 [电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)，则这将告知客户端搜索与你的电子邮件地址关联的 URL。
-3. 选择“**下一步**”。
+3. 选择“下一步”  。
 4. 出现提示时，请使用用户帐户登录。
 5. 资源应显示在连接中心中，按工作区分组。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关如何使用 Windows 桌面客户端的详细信息，请参阅 [Windows 桌面客户端入门](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。
+
+如果你是想要了解有关如何使用 Windows 桌面的更深入信息的管理员，请查看 [适用于管理员的 Windows 桌面客户端](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin)。

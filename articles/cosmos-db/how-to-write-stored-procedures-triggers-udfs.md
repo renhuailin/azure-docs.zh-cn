@@ -3,27 +3,29 @@ title: 在 Azure Cosmos DB 中编写存储过程、触发器和 UDF
 description: 了解如何在 Azure Cosmos DB 中定义存储过程、触发器和用户定义的函数
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: bc7bc677fb44600721b580ac9efc42feea4d98da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 18cedad34a6ca7d9a0ba18cd01c082f2878380a8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252946"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339812"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行用于编写**存储过程**、**触发器**和**用户定义的函数 (UDF)** 。 在 Azure Cosmos DB 中使用 SQL API 时，可以采用 JavaScript 语言定义存储过程、触发器和 UDF。 可在 JavaScript 中编写逻辑，并在数据库引擎内部执行该逻辑。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 语言集成式查询 API](javascript-query-api.md) 和 [Cosmos DB SQL API 客户端 SDK](sql-api-dotnet-samples.md) 来创建及执行触发器、存储过程与 UDF。 
+Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行用于编写 **存储过程** 、 **触发器** 和 **用户定义的函数 (UDF)** 。 在 Azure Cosmos DB 中使用 SQL API 时，可以采用 JavaScript 语言定义存储过程、触发器和 UDF。 可在 JavaScript 中编写逻辑，并在数据库引擎内部执行该逻辑。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 语言集成式查询 API](javascript-query-api.md) 和 [Cosmos DB SQL API 客户端 SDK](sql-api-dotnet-samples.md) 来创建及执行触发器、存储过程与 UDF。 
 
 若要调用存储过程、触发器和用户定义的函数，需将其注册。 有关详细信息，请参阅[如何在 Azure Cosmos DB 中使用存储过程、触发器和用户定义的函数](how-to-use-stored-procedures-triggers-udfs.md)。
 
 > [!NOTE]
 > 对于已分区的容器，在执行存储过程时，必须在请求选项中提供分区键值。 存储过程的范围始终限定为分区键。 存储过程看不到具有不同分区键值的项。 这一点也适用于触发器。
 > [!Tip]
-> Cosmos 支持使用存储过程、触发器和用户定义的函数部署容器。 有关详细信息，请参阅[使用服务器端功能创建 Azure Cosmos DB 容器](manage-sql-with-resource-manager.md#create-sproc)。
+> Cosmos 支持使用存储过程、触发器和用户定义的函数部署容器。 有关详细信息，请参阅[使用服务器端功能创建 Azure Cosmos DB 容器](./manage-with-templates.md#create-sproc)。
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>如何编写存储过程
 

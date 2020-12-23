@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 603628e24d7ccdffeafea392ab56aa7e47781a37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ffe1a4b9b32223cc57c6a6399fdc074a9d51d714
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296478"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322391"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 
@@ -145,11 +145,11 @@ ms.locfileid: "91296478"
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>应使用什么工具进行数据分析？
 
-* [Microsoft Azure PowerShell](/powershell/azure/) -一种脚本语言，用于使用脚本语言管理 Azure 资源
+* [Microsoft Azure PowerShell](/powershell/azure/) - 一种脚本语言，用于以脚本语言管理 Azure 资源
 * [Azure Machine Learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
-* [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
+* [Python Tools for Visual Studio](/visualstudio/python/)
 * [Anaconda](https://www.anaconda.com/)
 * [Jupyter 笔记本](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)

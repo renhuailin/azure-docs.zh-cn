@@ -1,24 +1,24 @@
 ---
-title: 使用按需 SQL（预览版）访问存储上的文件
-description: 介绍如何使用 SQL 按需版本（预览版）资源在 Synapse SQL 中查询存储文件。
+title: 在无服务器 SQL 池中访问存储中的文件
+description: 介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288981"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446578"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>访问 Synapse SQL 中的外部存储（按需版本）
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池访问外部存储
 
-本文档介绍用户如何从 Synapse SQL（按需版本）中 Azure 存储中存储的文件读取数据。 用户具有以下用于访问存储的选项：
+本文档介绍用户如何从无服务器 SQL 池的 Azure 存储中存储的文件读取数据。 用户具有以下用于访问存储的选项：
 
 - [OPENROWSET](develop-openrowset.md) 函数，可对 Azure 存储中的文件进行即席查询。
 - [外部表](develop-tables-external-tables.md)，它是基于一组外部文件生成的预定义数据结构。
@@ -27,7 +27,7 @@ ms.locfileid: "91288981"
 
 ## <a name="query-files-using-openrowset"></a>使用 OPENROWSET 查询文件
 
-借助 OPENROWSET，用户可以查询 Azure 存储上的外部文件，前提是他们具有对存储的访问权限。 连接到 Synapse SQL 按需版本终结点的用户应使用以下查询来读取 Azure 存储中文件的内容：
+借助 OPENROWSET，用户可以查询 Azure 存储中的外部文件，前提是他们有权访问该存储。 连接到无服务器 SQL 池的用户应使用以下查询来读取 Azure 存储中文件的内容：
 
 ```sql
 SELECT * FROM

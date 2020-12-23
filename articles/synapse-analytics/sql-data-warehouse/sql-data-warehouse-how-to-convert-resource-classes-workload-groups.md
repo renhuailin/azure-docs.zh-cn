@@ -1,6 +1,6 @@
 ---
 title: 将资源类转换为工作负荷组
-description: 了解如何创建类似于 Azure Synapse Analytics 中的资源类的工作负荷组。
+description: 了解如何创建一个与专用 SQL 池中的资源类类似的工作负荷组。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fe65aa8c69bc4bd3837ea68bc48ffdbbeed87e0e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461368"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461891"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>将资源类转换为工作负荷组
 
@@ -44,7 +44,7 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 
 在 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 已知的情况下，可以使用 CREATE WORKLOAD GROUP <link> 语法来创建工作负荷组。  可以选择指定大于零的 `MIN_PERCENTAGE_RESOURCE` 以隔离工作负荷组的资源。  此外，还可以选择指定小于 100 的 `CAP_PERCENTAGE_RESOURCE`，以限制工作负荷组可以使用的资源量。  
 
-使用 mediumrc 作为示例的基础，以下代码将设置 `MIN_PERCENTAGE_RESOURCE` 为专用于10% 的系统资源， `wgDataLoads` 并保证一个查询能够运行所有时间。  此外， `CAP_PERCENTAGE_RESOURCE` 设置为40%，并将此工作负荷组限制为四个并发请求。  通过将 `QUERY_EXECUTION_TIMEOUT_SEC` 参数设置为 3600，运行超过 1 小时的任何查询都将自动取消。
+下面的代码使用 mediumrc 作为一个示例的基础，将 `MIN_PERCENTAGE_RESOURCE` 设置为提供 10% 的系统资源专供 `wgDataLoads` 使用，并保证一个查询始终都能够运行。  此外，`CAP_PERCENTAGE_RESOURCE` 设置为 40%，并将此工作负载组限制为四个并发请求。  通过将 `QUERY_EXECUTION_TIMEOUT_SEC` 参数设置为 3600，运行超过 1 小时的任何查询都将自动取消。
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  

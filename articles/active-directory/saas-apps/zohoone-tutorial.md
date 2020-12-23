@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: baa33e79b3bba8eccb2d0fc03e110e1a3c4defde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98c9012969051e4370239a0f4098e0ea1d7a55a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545999"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教程：Azure Active Directory 与 Zoho One 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88545999"
 * 可让用户使用其 Azure AD 帐户自动登录到 Zoho One（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88545999"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,14 +99,14 @@ ms.locfileid: "88545999"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![Zoho One 域和 URL 单一登录信息](common/idp-relay.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-relay.png)
 
     a. 在“标识符”文本框中键入 URL：`one.zoho.com`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     > [!NOTE]
-    > 上面的“回复 URL”值不是实际值。  执行本教程稍后所述的“配置 Zoho One 单一登录”部分的步骤 4 时，我们将获取 `<saml-identifier>` 值。 
+    > 上面的“回复 URL”值不是实际值。  将从“配置 Zoho One 单一登录”部分的步骤 4 获取 `<saml-identifier>` 值，本教程后面部分介绍此内容。
 
     c. 单击“设置其他 URL”  。
 
@@ -114,15 +114,14 @@ ms.locfileid: "88545999"
 
 5. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤  ：
 
-
-    ![Zoho One 域和 URL 单一登录信息](common/both-signonurl.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/both-signonurl.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
 
     > [!NOTE] 
     > 上面的“登录 URL”值不是实际值。  在本教程稍后所述的“配置 Zoho One 单一登录”部分，我们将使用实际“登录 URL”更新该值。  
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -152,7 +151,7 @@ ms.locfileid: "88545999"
 
     b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
-    c. 单击“浏览”  来上传从 Azure 门户下载的**证书 (Base64)** 。
+    c. 单击“浏览”  来上传从 Azure 门户下载的 **证书 (Base64)** 。
 
     d. 单击“保存”  。
 
@@ -254,13 +253,12 @@ ms.locfileid: "88545999"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Zoho One”磁贴时，应会自动登录到设置了 SSO 的 Zoho One。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Zoho One”磁贴时，应会自动登录到设置了 SSO 的 Zoho One。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

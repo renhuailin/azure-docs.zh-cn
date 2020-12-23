@@ -8,16 +8,19 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052015"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608599"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
 出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 3.1、3.0 或 2.2.9 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
+
+> [!NOTE]
+> 本文包含对字词 *黑名单* 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="core-rule-sets"></a>核心规则集
 
@@ -33,7 +36,7 @@ WAF 可针对以下 Web 漏洞提供保护：
 - 其他常见攻击，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含
 - HTTP 协议违规
 - HTTP 协议异常，例如缺少主机用户代理和接受标头
-- 机器人、爬网程序和扫描程序
+- 自动程序、爬网程序和扫描程序
 - 常见应用程序错误配置（例如 Apache 和 IIS）
 
 ### <a name="owasp-crs-31"></a>OWASP CRS 3.1
@@ -41,9 +44,9 @@ WAF 可针对以下 Web 漏洞提供保护：
 CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以禁用的规则。
 
 > [!NOTE]
-> CRS 3.1 仅适用于 WAF_v2 SKU。
+> CRS 3.1 仅在 WAF_v2 SKU 上可用。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
 |**[常规](#general-31)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|锁定方法（PUT、PATCH）|
@@ -63,7 +66,7 @@ CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以�
 
 CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
 |**[常规](#general-30)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|锁定方法（PUT、PATCH）|
@@ -82,7 +85,7 @@ CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以�
 
 CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
 |**[crs_20_protocol_violations](#crs20)**|防范协议违规（例如无效字符，或使用请求正文执行 GET）|
 |**[crs_21_protocol_anomalies](#crs21)**|防范错误的标头信息|

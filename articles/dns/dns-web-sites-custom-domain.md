@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079444"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952839"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
 
@@ -35,15 +35,12 @@ ms.locfileid: "88079444"
 > * 为自定义域创建 A 记录和 TXT 记录
 > * 创建自定义域的 CNAME 记录
 > * 测试新记录
-> * 为 Web 应用添加自定义主机名
+> * 向 Web 应用添加自定义主机名
 > * 测试自定义主机名
 
+## <a name="prerequisites"></a>先决条件
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -52,10 +49,12 @@ ms.locfileid: "88079444"
 
 * 在 Azure DNS 中创建一个 DNS 区域，并将注册机构中的区域委派给 Azure DNS。
 
-   1. 若要创建 DNS 区域，请按照[创建 DNS 区域](dns-getstarted-create-dnszone.md)中的步骤执行操作。
+   1. 若要创建 DNS 区域，请按照[创建 DNS 区域](./dns-getstarted-powershell.md)中的步骤执行操作。
    2. 若要将区域委派给 Azure DNS，请按照 [DNS 域委派](dns-delegate-domain-azure-dns.md)中的步骤执行操作。
 
 在创建区域并将它委派给 Azure DNS 之后，可以为自定义域创建记录。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-a-record-and-txt-record"></a>创建一个 A 记录和 TXT 记录
 

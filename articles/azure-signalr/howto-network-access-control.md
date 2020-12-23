@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 72532029b2d9258dba7dea82bb5c5fc8b2673300
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 24e56736e0d033420f9aaf976b0fb7d9727c1a5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536216"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143230"
 ---
 # <a name="configure-network-access-control"></a>配置网络访问控制
 
@@ -62,4 +62,4 @@ Azure SignalR 服务具有可通过 internet 访问的公共终结点。 你还�
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 [Azure 专用链接](/azure/private-link/private-link-overview)。
+详细了解 [Azure 专用链接](../private-link/private-link-overview.md)。

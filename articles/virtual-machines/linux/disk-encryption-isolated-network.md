@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1157a18954c30e1f1d93aa33dbea6104491b5353
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1d7e019e7759e22e945bddee477a4cb77f17350b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396445"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913817"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>隔离网络上的 Azure 磁盘加密
 
@@ -25,12 +25,12 @@ Azure 磁盘加密取决于多个组件，这些组件通常在启用 ADE 的过
 
 下面是每次发行所需的包。 有关支持的发行版和卷类型的完整列表，请参阅[支持的 VM 和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)。
 
-- **Ubuntu 14.04、16.04、18.04**：lsscsi、psmisc、at、cryptsetup-bin、python-parted、python-six、procps
-- **CentOS 7.2 - 7.7**：lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、pyparted、procps-ng、util-linux
-- **CentOS 6.8**：lsscsi、psmisc、lvm2、uuid、at、cryptsetup-reencrypt、pyparted、python-six
-- **RedHat 7.2-7.7**： lsscsi，psmisc，lvm2，uuid，at，patch，cryptsetup，cryptsetup-重新加密，procps-ng，util-linux
-- **RedHat 6.8**： lsscsi，psmisc，lvm2，uuid，at，patch，cryptsetup-重新加密
-- **openSUSE 42.3，SLES 12-SP4，12-SP3**： lsscsi，cryptsetup
+- **Ubuntu 14.04，16.04，18.04** ： lsscsi，psmisc，at，cryptsetup，python-parted，python-6，procps，grub-pc-bin
+- **CentOS 7.2 - 7.7** ：lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、pyparted、procps-ng、util-linux
+- **CentOS 6.8** ：lsscsi、psmisc、lvm2、uuid、at、cryptsetup-reencrypt、pyparted、python-six
+- **RedHat 7.2-7.7** ： lsscsi，psmisc，lvm2，uuid，at，patch，cryptsetup，cryptsetup-重新加密，procps-ng，util-linux
+- **RedHat 6.8** ： lsscsi，psmisc，lvm2，uuid，at，patch，cryptsetup-重新加密
+- **openSUSE 42.3，SLES 12-SP4，12-SP3** ： lsscsi，cryptsetup
 
 在 Red Hat 上，如果需要代理，则必须确保正确设置订阅管理器和 yum。 有关详细信息，请参阅[如何排除有关订阅管理器和 yum 的问题](https://access.redhat.com/solutions/189533)。  
 

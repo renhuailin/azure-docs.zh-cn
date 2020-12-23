@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 78dec9180da2a78903ae5d5e87bca515b212f167
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 386003d7dae80e086f523b2cebe61aa0eee7b89e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843430"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527813"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>什么是 Azure API for FHIR&reg;？
 
@@ -84,9 +84,9 @@ Microsoft 提供的 FHIR 功能有两种配置：
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>适用于 FHIR 的 Azure IoT 连接器（预览版）
 
-适用于 FHIR 的 Azure IoT 连接器* 是 Azure API for FHIR 的一项可选功能，使你能够引入来自医疗物联网 (IoMT) 设备的数据。 医疗物联网是一类 IoT 设备，用于通过网络捕获健康状况数据并与其他医疗保健 IT 系统交换此类数据。 IoMT 设备的一些示例包括健身和临床可穿戴设备、监视传感器、活动跟踪器、护理网亭甚至智能药丸。 借助适用于 FHIR 的 Azure IoT 连接器功能，你可以快速设置服务，以可缩放、安全且合规的方式将 IoMT 数据引入到 Azure API for FHIR 中。
+适用于 Fast Healthcare Interoperability Resources (FHIR&#174;) 的 Azure IoT 连接器* 是 Azure API for FHIR 的一项可选功能，使你能够引入来自医疗物联网 (IoMT) 设备的数据。 医疗物联网是一类 IoT 设备，用于通过网络捕获健康状况数据并与其他医疗保健 IT 系统交换此类数据。 IoMT 设备的一些示例包括健身和临床可穿戴设备、监视传感器、活动跟踪器、护理网亭甚至智能药丸。 借助适用于 FHIR 的 Azure IoT 连接器功能，你可以快速设置服务，以可缩放、安全且合规的方式将 IoMT 数据引入到 Azure API for FHIR 中。
 
-适用于 FHIR 的 Azure IoT 连接器可以接受由 IoMT 设备发出的任何基于 JSON 的消息。 此数据首先转换为基于 FHIR 的适当[观察](https://www.hl7.org/fhir/observation.html)资源，然后持久保存到 Azure API for FHIR 中。 数据转换逻辑是通过基于消息架构和 FHIR 要求配置的一对映射模板定义的。 设备数据可以直接推送到适用于 FHIR 的 Azure IoT 连接器，也可以与其他 Azure IoT 解决方案（[Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)和 [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/)）无缝结合使用。 适用于 FHIR 的 Azure IoT 连接器提供了安全的数据管道，同时允许 Azure IoT 解决方案管理物理设备的预配和维护。
+适用于 FHIR 的 Azure IoT 连接器可以接受由 IoMT 设备发出的任何基于 JSON 的消息。 此数据首先转换为基于 FHIR 的适当[观察](https://www.hl7.org/fhir/observation.html)资源，然后持久保存到 Azure API for FHIR 中。 数据转换逻辑是通过基于消息架构和 FHIR 要求配置的一对映射模板定义的。 设备数据可以直接推送到适用于 FHIR 的 Azure IoT 连接器，也可以与其他 Azure IoT 解决方案（[Azure IoT 中心](../iot-hub/index.yml)和 [Azure IoT Central](../iot-central/index.yml)）无缝结合使用。 适用于 FHIR 的 Azure IoT 连接器提供了安全的数据管道，同时允许 Azure IoT 解决方案管理物理设备的预配和维护。
 
 ### <a name="applications-of-azure-iot-connector-for-fhir-preview"></a>应用适用于 FHIR 的 Azure IoT 连接器（预览版）
 
@@ -108,6 +108,4 @@ Microsoft 提供的 FHIR 功能有两种配置：
 >[!div class="nextstepaction"]
 >[部署适用于 FHIR 的 Azure IoT 连接器](iot-fhir-portal-quickstart.md)
 
-*在 Azure 门户中，适用于 FHIR 的 Azure IoT 连接器称为 IoT Connector（预览版）。
-
-FHIR 是 HL7 的注册商标，经 HL7 许可使用。
+*在 Azure 门户中，适用于 FHIR 的 Azure IoT 连接器称为 IoT Connector（预览版）。 FHIR 是 HL7 的注册商标，经 HL7 许可使用。 

@@ -1,24 +1,24 @@
 ---
-title: 从 Azure 流分析 Azure Functions 输出
-description: 本文介绍 azure 函数作为 Azure 流分析的输出。
+title: 从 Azure 流分析输出的 Azure Functions
+description: 本文介绍作为 Azure 流分析输出的 Azure Functions。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ffaf66cbb5d9fa0b294f5749a1923684f16c2979
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881910"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488077"
 ---
-# <a name="azure-functions-output-from-azure-stream-analytics"></a>从 Azure 流分析 Azure Functions 输出
+# <a name="azure-functions-output-from-azure-stream-analytics"></a>从 Azure 流分析输出的 Azure Functions
 
 Azure Functions 是一个无服务器计算服务，可以使用它按需运行代码，而无需显式预配或管理基础结构。 它允许实现由 Azure 或合作伙伴服务中出现的事件所触发的代码。 Azure Functions 响应触发的这一功能使其成为 Azure 流分析的自然输出。 此输出适配器允许用户将流分析连接到 Azure Functions，并运行脚本或一段代码来响应各种事件。
 
-流分析中的 Azure Functions 输出当前不可在 Azure 中国世纪互联和 Azure 德国 (T-Systems International) 区域中使用。
+流分析 Azure Functions 输出在 Azure 中国世纪互联和 Azure 德国 (的国际) 区域中不可用。 还不支持从多租户群集中运行的流分析作业连接到虚拟网络 (VNet) 中的 Azure Functions。
 
 Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下可配置属性的 Azure Functions 输出适配器：
 
@@ -41,7 +41,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 
 ## <a name="partitioning"></a>分区
 
-分区键基于查询中的 PARTITION BY 子句。 输出写入器的数目按照 [完全并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。
+分区键基于查询中的 PARTITION BY 子句。 输出编写器的数量与[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区一致。
 
 ## <a name="output-batch-size"></a>输出批大小
 

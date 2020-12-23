@@ -2,25 +2,25 @@
 title: 使用执行配置文件评估以 Azure Cosmos DB Gremlin API 编写的查询
 description: 了解如何使用执行配置文件步骤改善 Gremlin 查询及排查其问题。
 services: cosmos-db
-author: jasonwhowell
-manager: kfile
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: jasonh
-ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.author: chrande
+ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408226"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087479"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用执行配置文件步骤来评估 Gremlin 查询
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 本文概述如何使用适用于 Azure Cosmos DB Gremlin API 图形数据库的执行配置文件步骤。 此步骤提供故障排除和查询优化的相关信息，适用于可以针对 Cosmos DB Gremlin API 帐户执行的任何 Gremlin 查询。
 
-若要使用此步骤，只需在 Gremlin 查询的末尾追加 `executionProfile()` 函数调用即可。 **将执行你的 Gremlin 查询**，操作结果将返回包含查询执行配置文件的 JSON 响应对象。
+若要使用此步骤，只需在 Gremlin 查询的末尾追加 `executionProfile()` 函数调用即可。 **将执行你的 Gremlin 查询** ，操作结果将返回包含查询执行配置文件的 JSON 响应对象。
 
 例如：
 
@@ -139,12 +139,12 @@ ms.locfileid: "91408226"
 ## <a name="execution-profile-response-objects"></a>执行配置文件响应对象
 
 executionProfile() 函数的响应将生成采用以下结构的 JSON 对象层次结构：
-  - **Gremlin 操作对象**：表示已执行的整个 Gremlin 操作。 包含以下属性。
+  - **Gremlin 操作对象** ：表示已执行的整个 Gremlin 操作。 包含以下属性。
     - `gremlin`：已执行的显式 Gremlin 语句。
     - `totalTime`：执行该步骤所花费的时间（以毫秒为单位）。 
     - `metrics`：一个数组，其中包含为了完成查询而执行的每个 Cosmos DB 运行时运算符。 此列表已按执行顺序排序。
     
-  - **Cosmos DB 运行时运算符**：表示整个 Gremlin 操作的每个组件。 此列表已按执行顺序排序。 每个对象包含以下属性：
+  - **Cosmos DB 运行时运算符** ：表示整个 Gremlin 操作的每个组件。 此列表已按执行顺序排序。 每个对象包含以下属性：
     - `name`：运算符的名称。 这是已评估和执行的步骤的类型。 请在下表中了解详细信息。
     - `time`：给定的运算符所花费的时间（以毫秒为单位）。
     - `annotations`：包含特定于已执行的运算符的其他信息。
@@ -177,7 +177,7 @@ Cosmos DB Gremlin 运行时运算符|说明
 
 ### <a name="blind-fan-out-query-patterns"></a>盲目扇出查询模式
 
-假设某个**分区图形**返回了以下执行配置文件响应：
+假设某个 **分区图形** 返回了以下执行配置文件响应：
 
 ```json
 [
@@ -220,8 +220,8 @@ Cosmos DB Gremlin 运行时运算符|说明
 
 可以从中得出以下结论：
 - 该查询是单个 ID 查找，因为 Gremlin 语句遵循 `g.V('id')` 模式。
-- 从 `time` 指标判断，此查询的延迟似乎很高，因为它[针对某个单点读取操作花费了 10 毫秒以上](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide)。
-- 查看 `storeOps` 对象可以发现 `fanoutFactor` 为 `5`，这意味着，此操作访问了 [5 个分区](https://docs.microsoft.com/azure/cosmos-db/partition-data)。
+- 从 `time` 指标判断，此查询的延迟似乎很高，因为它[针对某个单点读取操作花费了 10 毫秒以上](./introduction.md#guaranteed-speed-at-any-scale)。
+- 查看 `storeOps` 对象可以发现 `fanoutFactor` 为 `5`，这意味着，此操作访问了 [5 个分区](./partitioning-overview.md)。
 
 根据此分析的结论，我们可以确定，第一个查询不必要地访问了多余的分区。 在查询中指定分区键作为谓词可以解决此问题。 这样可以降低延迟以及每个查询的开销。 详细了解[图形分区](graph-partitioning.md)。 更佳的查询是 `g.V('tt0093640').has('partitionKey', 't1001')`。
 

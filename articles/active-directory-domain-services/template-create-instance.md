@@ -2,20 +2,20 @@
 title: 使用模板启用 Azure DS 域服务 | Microsoft Docs
 description: 了解如何使用 Azure 资源管理器模板配置和启用 Azure Active Directory 域服务
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 316f77b2447bd75b03a05c4e6466d153bf51201d
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: e18825da64d0d200f55ce72985ac843b93b1e612
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722630"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618784"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure Active Directory 域服务托管域
 
@@ -71,10 +71,10 @@ Azure AD DS 需要一个服务主体和一个 Azure AD 组。 这些资源使托
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建一个 Azure AD 服务主体，以供 Azure AD DS 通信和验证自身身份。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。 请不要更改此应用程序 ID。
+使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建一个 Azure AD 服务主体，以供 Azure AD DS 通信和验证自身身份。 使用名称为“域控制器服务”的特定应用程序 ID 6ba9a5d4-8456-4118-b521-9c5ca10cdf84 。 请不要更改此应用程序 ID。
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 现在，使用 [New-AzureADGroup][New-AzureADGroup] cmdlet 创建名为“AAD DC 管理员”的 Azure AD 组。 然后，添加到此组的用户会被授予在托管域上执行管理任务的权限。
@@ -124,9 +124,9 @@ New-AzResourceGroup `
 | 参数               | 值 |
 |-------------------------|---------|
 | domainName              | 托管域的 DNS 域名，填写此参数时，请考虑到前面提到的有关命名前缀和冲突的要点。 |
-| filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。 <br /><br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
+| filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。<br /><br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
 | notificationSettings    | 如果托管域中生成了任何警报，可以发出电子邮件通知。 <br /><br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。<br /><br /> 如果需要，可以添加更多收件人来接收在有需要关注的警报时发出的通知。|
-| domainConfigurationType | 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。<br /><br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 将值设置为 ResourceTrusting 可创建资源林。<br /><br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。|
+| domainConfigurationType | 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。<br /><br /> *资源* 林仅同步直接在 Azure AD 中创建的用户和组。 将值设置为 ResourceTrusting 可创建资源林。<br /><br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。|
 
 以下精简参数定义演示了这些值的声明方式。 将创建名为 aaddscontoso.com 的用户林，其中包含已从 Azure AD 同步到托管域的所有用户：
 

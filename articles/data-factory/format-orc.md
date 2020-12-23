@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404709"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945781"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure 数据工厂中的 ORC 格式
 
@@ -59,7 +59,7 @@ ms.locfileid: "91404709"
 
 请注意以下几点：
 
-* 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）。
+* 复杂数据类型 (例如 MAP、LIST、STRUCT) 当前仅在数据流中受支持，而不是在复制活动中支持。 若要在数据流中使用复杂类型，请不要导入数据集中的文件架构，将架构留空。 然后，在源转换中导入投影。
 * 不支持列名称中的空格。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
@@ -109,11 +109,11 @@ ms.locfileid: "91404709"
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `orc` | 是 | `orc` | format |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | string[] | wildcardPaths |
-| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
+| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | 字符串 | partitionRootPath |
 | 文件列表 | 你的源是否指向列出要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
-| 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | String | rowUrlColumn |
+| 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
 | 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或 `false` <br> 移动 `[<from>, <to>]` | purgeFiles <br> moveFiles |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore |
 | 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>源示例

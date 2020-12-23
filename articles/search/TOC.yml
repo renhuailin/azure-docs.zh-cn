@@ -32,10 +32,10 @@
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
-    - name: Node.js
-      href: search-get-started-nodejs.md
-    - name: Postman
-      href: search-get-started-postman.md
+    - name: Javascript
+      href: search-get-started-javascript.md
+    - name: REST
+      href: search-get-started-rest.md
     - name: PowerShell
       href: search-get-started-powershell.md
     - name: Python
@@ -81,19 +81,21 @@
 - name: 示例
   items:
     - name: C# 示例
-      href: /samples/browse/?languages=csharp&products=azure-cognitive-search
+      href: samples-dotnet.md
     - name: Java 示例
-      href: /samples/browse/?languages=java&products=azure-cognitive-search
+      href: samples-java.md
     - name: JavaScript 示例
-      href: /samples/browse/?languages=javascript&products=azure-cognitive-search
+      href: samples-javascript.md
     - name: Python 示例
-      href: /samples/browse/?languages=python&products=azure-cognitive-search
+      href: samples-python.md
     - name: REST 示例
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
 - name: 概念
   items:
     - name: 全文搜索
       href: search-lucene-query-architecture.md
+    - name: 相关性评分
+      href: index-similarity-and-scoring.md
     - name: 索引器
       href: search-indexer-overview.md
     - name: AI 扩充
@@ -116,7 +118,7 @@
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-        - name: 保护索引器资源
+        - name: 访问受保护的内容
           href: search-indexer-securing-resources.md
         - name: 安全基线
           href: security-baseline.md
@@ -254,9 +256,11 @@
       items:
         - name: 查询类型和组合
           href: search-query-overview.md
-        - name: 创建简单查询
+        - name: 创建基本查询
+          href: search-query-create.md
+        - name: 使用简单语法（示例）
           href: search-query-simple-examples.md
-        - name: 使用完整的 Lucene 语法
+        - name: 使用完整的 Lucene（示例）
           href: search-query-lucene-examples.md
         - name: 部分词和特殊字符
           href: search-query-partial-matching.md
@@ -294,8 +298,6 @@
       items:
         - name: 处理结果
           href: search-pagination-page-layout.md
-        - name: 相关性评分
-          href: index-similarity-and-scoring.md
         - name: 为配置文件评分
           href: index-add-scoring-profiles.md
         - name: 相似性算法
@@ -304,10 +306,12 @@
       items:
         - name: 选择层
           href: search-sku-tier.md
-        - name: 服务限制
-          href: search-limits-quotas-capacity.md
+        - name: 估计容量和成本
+          href: search-sku-manage-costs.md
         - name: 调整容量
           href: search-capacity-planning.md
+        - name: 服务限制
+          href: search-limits-quotas-capacity.md
         - name: 性能规模
           href: search-performance-optimization.md
         - name: 多租户体系结构
@@ -320,9 +324,11 @@
           href: search-api-preview.md
         - name: 使用 .NET 进行开发
           items:
-            - name: 使用 Microsoft.Azure.Search (v10)
+            - name: 使用 Azure.Search.Documents
               href: search-howto-dotnet-sdk.md
-            - name: 开始使用 (v10)
+            - name: 使用 Microsoft.Azure.Search
+              href: search-howto-dotnet-sdk-v10.md
+            - name: 旧的快速入门 (Microsoft.Azure.Search)
               href: search-get-started-dotnet-v10.md
         - name: 升级 SDK
           items:
@@ -358,12 +364,6 @@
               href: service-configure-firewall.md
             - name: 创建专用终结点
               href: service-create-private-endpoint.md
-        - name: 基于标识的访问
-          items:
-            - name: 安全筛选器
-              href: search-security-trimming-for-azure-search.md
-            - name: 筛选用户标识
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: 出站安全（索引器）
           items:
             - name: 通过 IP 范围访问
@@ -372,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: 通过专用终结点访问
               href: search-indexer-howto-access-private.md
+        - name: 基于标识的访问
+          items:
+            - name: 安全筛选器
+              href: search-security-trimming-for-azure-search.md
+            - name: 筛选用户标识
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理
       items:
         - name: 门户
@@ -534,6 +540,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK 文件演示
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: NYC 作业演示
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: 培训
       items:
         - name: 简介 (Microsoft Learn)

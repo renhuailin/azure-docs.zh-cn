@@ -5,14 +5,14 @@
   items:
     - name: 什么是指标顾问？
       href: overview.md
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   items:
-    - name: 浏览演示站点
-      href: quickstarts/explore-demo.md
     - name: 使用 Web 门户
       href: quickstarts/web-portal.md
-    - name: 使用 REST API
-      href: quickstarts/rest-api.md
+    - name: 使用 REST API 或客户端库
+      href: quickstarts/rest-api-and-client-library.md
 - name: 操作指南
   items:
     - name: 载入数据
@@ -40,11 +40,13 @@
     - name: 指标顾问 API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI 参考
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: PowerShell 参考
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: 资源
   items:
+    - name: 支持和帮助选项
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
     - name: 定价
       href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: 区域可用性

@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
-ms.translationtype: MT
+ms.openlocfilehash: dfde9bbbeb7f6b349ecbdc4c2da605d39a0708da
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552337"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357872"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>教程：Azure Active Directory 与 Printix 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88552337"
 - 可以让用户使用其 Azure AD 帐户自动登录到 Printix（单一登录）
 - 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 的集成的详细信息，请参阅 [什么是使用 Azure Active Directory 的应用程序访问和单一登录](../manage-apps/what-is-single-sign-on.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,36 +59,36 @@ ms.locfileid: "88552337"
 
     ![Active Directory][1]
 
-1. 导航到“企业应用程序”。**** 然后转到“所有应用程序”****。
+1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![应用程序][2]
+    ![屏幕截图显示在 Azure 门户的“管理”下依次选择了“企业应用程序”、“所有应用程序”。][2]
     
 1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
-    ![应用程序][3]
+    ![屏幕截图显示选择了“新建应用程序”。][3]
 
-1. 在搜索框中，键入“Printix”。****
+1. 在搜索框中，键入“Printix”。
 
-    ![创建 Azure AD 测试用户](./media/printix-tutorial/tutorial_printix_search.png)
+    ![屏幕截图显示在“从库中添加”对话框中搜索 Printix。](./media/printix-tutorial/tutorial_printix_search.png)
 
-1. 在结果面板中，选择“Printix”****，然后单击“添加”**** 按钮添加该应用程序。
+1. 在结果面板中，选择“Printix”，然后单击“添加”按钮添加该应用程序。
 
-    ![创建 Azure AD 测试用户](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
+    ![屏幕截图显示选择了“Printix”选项。](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 本部分需根据名为“Britta Simon”的测试用户的情况，配置和测试 Printix 的 Azure AD 单一登录。
 
 若要使用单一登录，Azure AD 需要了解与 Azure AD 中的用户相对应的 Printix 中的用户是谁。 换句话说，需要建立 Azure AD 用户与 Printix 中相关用户之间的关联关系。
 
-可通过将 Azure AD 中“用户名”**** 的值指定为 Printix 中“用户名”**** 的值来建立此关联关系。
+可通过将 Azure AD 中“用户名”的值指定为 Printix 中“用户名”的值来建立此关联关系。
 
 若要使用 Printix 配置和测试 Azure AD 单一登录，需完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** -使用户能够使用此功能。
-1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** -使用 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 Printix 测试用户](#creating-a-printix-test-user) - 在 Printix 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户****。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 Printix 测试用户](#creating-a-printix-test-user) - 在 Printix 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
 1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-1. **[测试单一登录](#testing-single-sign-on)** -验证配置是否正常工作。
+1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -96,58 +96,58 @@ ms.locfileid: "88552337"
 
 **若要使用 Printix 配置 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中的 Printix 应用程序集成页上，单击“单一登录”。********
+1. 在 Azure 门户中的 Printix 应用程序集成页上，单击“单一登录”。
 
-    ![配置单一登录][4]
+    ![屏幕截图显示在 Azure 门户的“管理”下选择了“单一登录”。][4]
 
-1. 在“单一登录”**** 对话框中，选择“基于 SAML 的单一登录”**** 作为“模式”**** 以启用单一登录。
+1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
-    ![配置单一登录](./media/printix-tutorial/tutorial_printix_samlbase.png)
+    ![屏幕截图显示选择了“基于 SAML 的登录”模式。](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
-1. 在“Printix 域和 URL”部分中，执行以下步骤：****
+1. 在“Printix 域和 URL”部分中，执行以下步骤：
 
-    ![配置单一登录](./media/printix-tutorial/tutorial_printix_url.png)
+    ![屏幕截图显示“Printix 域和 URL”部分，可在其中指定登录 URL。](./media/printix-tutorial/tutorial_printix_url.png)
 
-    在 " **登录 url** " 文本框中，使用以下模式键入 URL： `https://<subdomain>.printix.net`
+    在“登录 URL”  文本框中，使用以下模式键入 URL： `https://<subdomain>.printix.net`
 
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Printix 客户端支持团队](mailto:support@printix.net)获取此值。 
  
-1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。********
+1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
-    ![配置单一登录](./media/printix-tutorial/tutorial_printix_certificate.png) 
+    ![屏幕截图显示了“SAML 签名证书”窗格，你可以在其中下载证书。](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
-1. 单击“保存”按钮****。
+1. 单击“保存”按钮  。
 
-    ![配置单一登录](./media/printix-tutorial/tutorial_general_400.png)
+    ![屏幕截图显示“保存”按钮。](./media/printix-tutorial/tutorial_general_400.png)
 
 1. 以管理员身份登录到 Printix 租户。
 
-1. 在顶部菜单中，单击右上角的图标，并选择“身份验证”。****
+1. 在顶部菜单中，单击右上角的图标，并选择“身份验证”。
    
-    ![配置单一登录](./media/printix-tutorial/tutorial_printix_06.png)
+    ![屏幕截图显示从菜单中选择了“身份验证”。](./media/printix-tutorial/tutorial_printix_06.png)
 
-1. 在“安装”选项卡上，选择“启用 Azure/Office 365 身份验证”********
+1. 在“安装”选项卡上，选择“启用 Azure/Office 365 身份验证”
    
-    ![配置单一登录](./media/printix-tutorial/tutorial_printix_07.png)
+    ![屏幕截图显示 Printix.net 页，可在其中选择“启用 Azure/Office 365 身份验证”。](./media/printix-tutorial/tutorial_printix_07.png)
 
-1. 在“Azure”选项卡上，将联合元数据 URL 输入到“联合元数据文档”文本框中。******** 
+1. 在“Azure”选项卡上，将联合元数据 URL 输入到“联合元数据文档”文本框中。 
 
     将从 Azure AD 下载的元数据 xml 文件以附件方式提供给 [Printix 支持团队](mailto:support@printix.net)。 然后，他们会上传该 xml 文件，并提供联合元数据 URL。
    
-    ![配置单一登录](./media/printix-tutorial/tutorial_printix_08.png)
+    ![屏幕截图显示 Printix.net 页，可在其中指定联合元数据文档。](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. 单击“测试”按钮，如果测试成功，则单击“确定”按钮。********
+1. 单击“测试”按钮，如果测试成功，则单击“确定”按钮。
    
-     单击“测试”按钮后，会显示 Azure Active Directory 页。**** 这里的“测试成功”是指在成功输入 Azure 测试帐户的凭据以后，会弹出“设置测试成功”消息。此时请单击“确定”按钮。****
+     单击“测试”按钮后，会显示 Azure Active Directory 页。 这里的“测试成功”是指在成功输入 Azure 测试帐户的凭据以后，会弹出“设置测试成功”消息。此时请单击“确定”按钮。
    
-    ![配置单一登录](./media/printix-tutorial/tutorial_printix_09.png)
+    ![屏幕截图显示测试结果。](./media/printix-tutorial/tutorial_printix_09.png)
 
-1. 单击“身份验证”页上的“保存”按钮。********
+1. 单击“身份验证”页上的“保存”按钮。
 
 
 > [!TIP]
-> 你现在可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本，同时设置应用！  从“Active Directory”>“企业应用程序”**** 部分添加此应用后，只需单击“单一登录”**** 选项卡，即可通过底部的“配置”**** 部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -157,27 +157,27 @@ ms.locfileid: "88552337"
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 **Azure 门户**的左侧导航窗格中，单击 **Azure Active Directory** 图标。
+1. 在 **Azure 门户** 的左侧导航窗格中，单击“Azure Active Directory”图标。
 
-    ![创建 Azure AD 测试用户](./media/printix-tutorial/create_aaduser_01.png) 
+    ![屏幕截图显示要创建的名称和用户名。](./media/printix-tutorial/create_aaduser_01.png) 
 
-1. 若要显示用户列表，请参阅 " **用户和组** "，然后单击 " **所有用户**"。
+1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
-    ![创建 Azure AD 测试用户](./media/printix-tutorial/create_aaduser_02.png) 
+    ![屏幕截图显示 Azure 门户中的 Azure AD 图标。](./media/printix-tutorial/create_aaduser_02.png) 
 
-1. 若要打开“用户”**** 对话框，请在对话框顶部单击“添加”****。
+1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  
-    ![创建 Azure AD 测试用户](./media/printix-tutorial/create_aaduser_03.png) 
+    ![屏幕截图显示从“管理”菜单中依次选择了“用户和组”、“所有用户”。](./media/printix-tutorial/create_aaduser_03.png) 
 
-1. 在“用户”**** 对话框页上，执行以下步骤：
+1. 在“用户”对话框页上，执行以下步骤：
  
-    ![创建 Azure AD 测试用户](./media/printix-tutorial/create_aaduser_04.png) 
+    ![屏幕截图显示“用户”对话框，可在其中输入所述的值。](./media/printix-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”**** 文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。********
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
-    c. 选择 " **显示密码** " 并记下 " **密码**" 的值。
+    c. 选择“显示密码”并记下“密码”的值。
 
     d. 单击“创建”。
  
@@ -195,31 +195,31 @@ ms.locfileid: "88552337"
 
 本部分需授予 Britta Simon 访问 Printix 的权限，使之能够使用 Azure 单一登录。
 
-![分配用户][200] 
+![屏幕截图显示具有默认访问权限的用户。][200] 
 
 **要将 Britta Simon 分配到 Printix，请执行以下步骤：**
 
-1. 在 Azure 门户中，打开 "应用程序" 视图，然后导航到 "目录" 视图，转到 " **企业应用程序** "，然后单击 " **所有应用程序**"。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![屏幕截图显示在“管理”下依次选择了“企业应用程序”、“所有应用程序”。][201] 
 
-1. 在应用程序列表中，选择“Printix”。****
+1. 在应用程序列表中，选择“Printix”。
 
-    ![配置单一登录](./media/printix-tutorial/tutorial_printix_app.png) 
+    ![屏幕截图显示应用程序列表，可在其中选择“Printix”。](./media/printix-tutorial/tutorial_printix_app.png) 
 
-1. 在左侧菜单中，单击“用户和组”****。
+1. 在左侧菜单中，单击“用户和组”。
 
-    ![分配用户][202] 
+    ![屏幕截图显示从“管理”菜单中选择了“用户和组”。][202] 
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。********
+1. 单击“添加”按钮。  然后在“添加分配”对话框中选择“用户和组”。
 
-    ![分配用户][203]
+    ![屏幕截图显示“添加”按钮和“添加分配”页，可在其中选择“用户和组”。][203]
 
-1. 在“用户和组”**** 对话框的“用户”列表中，选择“Britta Simon”。****
+1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-1. 在“用户和组”对话框中单击“选择”按钮。********
+1. 在“用户和组”对话框中单击“选择”按钮。
 
-1. 在“添加分配”对话框中单击“分配”按钮。********
+1. 在“添加分配”对话框中单击“分配”按钮。
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 

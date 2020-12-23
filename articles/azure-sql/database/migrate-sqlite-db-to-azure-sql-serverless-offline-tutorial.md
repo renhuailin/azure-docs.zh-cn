@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448895"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790400"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何将 SQLite 数据库迁移到 Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -109,4 +109,4 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要入门，请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](single-database-create-quickstart.md)。
-- 有关资源限制的信息，请参阅[无服务器计算层资源限制](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。
+- 有关资源限制的信息，请参阅[无服务器计算层资源限制](./resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)。

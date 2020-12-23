@@ -4,15 +4,15 @@ description: 了解如何使用 Power Automate 和 HTTPS 终结点管理来自 M
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120358"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489363"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 终结点管理商业市场潜在顾客
 
@@ -162,15 +162,15 @@ ms.locfileid: "86120358"
 
 1. 在“发送电子邮件”窗口中配置以下必填字段：
 
-   - **收件人**：至少输入一个有效的电子邮件地址，潜在顾客将发送到该地址。
-   - **使用者**：Power Automate 会提供用于添加动态内容的选项，例如以下屏幕中显示的 LeadSource。 首先输入字段名称。 然后从弹出窗口中选择动态内容选取列表。 
+   - **收件人** ：至少输入一个有效的电子邮件地址，潜在顾客将发送到该地址。
+   - **使用者** ：Power Automate 会提供用于添加动态内容的选项，例如以下屏幕中显示的 LeadSource。 首先输入字段名称。 然后从弹出窗口中选择动态内容选取列表。 
 
         >[!NOTE] 
         > 添加字段名称时，可以在每个名称后面加上一个冒号 (:)，然后选择 Enter 以创建新行。 添加了字段名称之后，随后可以从动态选取列表添加每个关联参数。
 
         ![使用动态内容添加电子邮件操作](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **正文**：从动态内容选取列表添加要包含在电子邮件正文中的信息。 例如，使用姓氏、名字、电子邮件和公司。 完成设置电子邮件通知后，该通知类似于以下屏幕中的示例。
+   - **正文** ：从动态内容选取列表添加要包含在电子邮件正文中的信息。 例如，使用姓氏、名字、电子邮件和公司。 完成设置电子邮件通知后，该通知类似于以下屏幕中的示例。
 
 
        ![电子邮件通知示例](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)

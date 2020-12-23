@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83652158"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544779"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>监视云存储应用程序并排查其问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "83652158"
 
 完成后，单击“保存” 
 
-![“诊断”窗格](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
+![突出显示包含用于启用日志记录和指标的配置设置的部分的屏幕截图。](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>启用警报
 
@@ -83,11 +83,11 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 存储日志将数据存储在存储帐户下名为 $logs 的 blob 容器内的一组 blob 中  。 如果列出帐户中的所有 blob 容器，则不会显示该容器，但如果直接访问它，则可查看其内容。
 
-此方案使用 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) 与 Azure 存储帐户进行交互。
+此方案使用 [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) 与 Azure 存储帐户进行交互。
 
 ### <a name="download-microsoft-message-analyzer"></a>下载 Microsoft Message Analyzer
 
-下载 [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) 并安装该应用程序。
+下载 [Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer) 并安装该应用程序。
 
 启动应用程序并选择“文件” > “打开” > “从其他文件源”  。
 
@@ -97,7 +97,7 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 连接后，可在存储树状视图中展开容器，查看日志 blob。 选择最新日志并单击“确定”  。
 
-![Microsoft Message Analyzer -“添加 Azure 存储连接”对话框](media/storage-monitor-troubleshoot-storage-application/figure4.png)
+![显示 Microsoft Message Analyzer 并突出显示所选日志文件的屏幕截图。](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
 在“新建会话”对话框中，单击“开始”查看日志   。
 

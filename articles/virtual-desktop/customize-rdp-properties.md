@@ -3,24 +3,24 @@ title: 通过 PowerShell 自定义 RDP 属性-Azure
 description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面自定义 RDP 属性。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462218"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018301"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自定义主机池 (RDP) 属性远程桌面协议
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
 
-通过自定义主机池的远程桌面协议 (RDP) 属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以通过使用 Azure 门户或在**AzWvdHostPool** cmdlet 中使用 *-CustomRdpProperty*参数自定义 Windows 虚拟桌面中的 RDP 属性。
+通过自定义主机池的远程桌面协议 (RDP) 属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以通过使用 Azure 门户或在 **AzWvdHostPool** cmdlet 中使用 *-CustomRdpProperty* 参数自定义 Windows 虚拟桌面中的 RDP 属性。
 
-有关支持的属性及其默认值的完整列表，请参阅 [支持的 RDP 文件设置](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) 。
+有关支持的属性及其默认值的完整列表，请参阅 [支持的 RDP 文件设置](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext) 。
 
 ## <a name="default-rdp-file-properties"></a>默认 RDP 文件属性
 
@@ -28,8 +28,8 @@ ms.locfileid: "89462218"
 
 |RDP 属性|在桌面上|作为 RemoteApp|
 |---|---|---|
-|多监视器模式|已启用|空值|
-|已启用驱动器重定向|驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡|驱动器、剪贴板和打印机|
+|多监视器模式|已禁用|已启用|
+|已启用驱动器重定向|驱动器、剪贴板、打印机、COM 端口和智能卡|驱动器、剪贴板和打印机|
 |远程音频模式|本地播放|本地播放|
 
 ## <a name="prerequisites"></a>先决条件
@@ -45,8 +45,9 @@ ms.locfileid: "89462218"
 3. 在 "服务" 下，选择 " **Windows 虚拟桌面**"。
 4. 在 Windows 虚拟桌面页面上，在屏幕左侧的菜单中选择 " **主机池** "。
 5. 选择要更新的 **主机池的名称** 。
-6. 在屏幕左侧的菜单中选择 " **属性** "。
-7. 在 " **属性** " 选项卡上，中转到 " **rdp 设置** " 开始编辑 rdp 属性。 属性应采用分号分隔的格式，如 PowerShell 示例。
+6. 在屏幕左侧的菜单中选择 " **RDP 属性** "。
+7. 设置所需的属性。
+   - 或者，你可以打开 " **高级** " 选项卡，并以分号分隔的格式添加 RDP 属性，如以下部分中的 PowerShell 示例所示。
 8. 完成后，选择 " **保存** " 以保存所做的更改。
 
 后续部分将介绍如何在 PowerShell 中手动编辑自定义 RDP 属性。

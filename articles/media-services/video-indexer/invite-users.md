@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4023f8584e7b901a19906235d98982abbbfbaaf8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79499748"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364128"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>快速入门：邀请用户加入视频索引器
 
@@ -27,17 +27,16 @@ ms.locfileid: "79499748"
 ## <a name="invite-new-users"></a>邀请新用户
 
 1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。 请确保使用管理员帐户进行连接。
-1. 单击顶部菜单上的“邀请其他人”  按钮：
+1. 如果你是管理员，可以看到右上角的“共享帐户”按钮。 单击该按钮即可邀请用户。 
 
-   ![邀请新用户](./media/invite-users/invite-users.png)
-
+   ![邀请新用户](./media/invite-users/share-account.png)
 1. 添加要添加到视频索引器帐户的人员的电子邮件地址：
 
     ![邀请用户加入此帐户](./media/invite-users/invite-to-account.png)
         
     >[!NOTE]
     > 你邀请的所有用户将拥有你帐户中的所有视频的读取和写入权限。
-1. 邀请的用户会收到一封包含链接的电子邮件。单击“加入视频索引器”  链接即可访问该帐户：
+1. 邀请的用户会收到一封包含链接的电子邮件。单击“加入视频索引器”链接即可访问该帐户：
 
     ![确认](./media/invite-users/invite-msg.png)
 

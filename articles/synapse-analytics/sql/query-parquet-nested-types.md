@@ -1,30 +1,30 @@
 ---
-title: 使用 SQL On-demand（预览版）查询 Parquet 嵌套类型
-description: 在本文中，你将了解如何使用 SQL 点播 (预览) 查询 Parquet 嵌套类型。
+title: 使用无服务器 SQL 池查询 Parquet 嵌套类型
+description: 本文介绍如何使用无服务器 SQL 池查询 Parquet 嵌套类型。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288250"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462554"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 SQL 点播 (预览版) 查询 Parquet 和 JSON 文件中的嵌套类型
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的无服务器 SQL 池查询 Parquet 和 JSON 文件中的嵌套类型
 
-本文介绍如何使用 Azure Synapse Analytics 中的 SQL 点播 (预览版) 来编写查询。 查询将读取 Parquet 嵌套类型。
+本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池编写查询。 查询将读取 Parquet 嵌套类型。
 嵌套类型是表示对象或数组的复杂结构。 嵌套类型可以存储在中： 
 - [Parquet](query-parquet-files.md)，其中你可以有多个包含数组和对象的复杂列。
 - 分层 [JSON 文件](query-json-files.md)，您可以在其中以单个列的形式读取复杂的 json 文档。
 - Azure Cosmos DB 集合 (目前处于封闭公共预览) ，其中每个文档都可以包含复杂的嵌套属性。
 
-Azure Synapse SQL 点播将所有嵌套类型的格式设置为 JSON 对象和数组。 因此，您可以 [使用 JSON 函数提取或修改复杂对象](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) ，或 [使用 OPENJSON 函数分析 JSON 数据](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
+无服务器 SQL 池将所有嵌套类型的格式设置为 JSON 对象和数组。 因此，您可以 [使用 JSON 函数提取或修改复杂对象](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) ，或 [使用 OPENJSON 函数分析 JSON 数据](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
 
 下面是一个从 [COVID-19 开放式搜索数据集](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON 文件（其中包含嵌套对象）提取标量和对象值的查询示例： 
 

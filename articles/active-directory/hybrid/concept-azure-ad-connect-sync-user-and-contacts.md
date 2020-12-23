@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279306"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861776"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步：了解用户、组和联系人
 有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。 常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。 但即使有纯模型，混合模型也是常见的模型。 Azure AD Connect 同步中的默认配置是不会假定任何特定模型，但观察到的行为可能会有所不同，这具体取决于安装指南中如何选择用户匹配。
@@ -41,7 +41,7 @@ ms.locfileid: "89279306"
 
 * Azure AD Connect 不支持将[主要组成员身份](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11))同步到 Azure AD。
 
-* Azure AD Connect 不支持将[动态分发组成员身份](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019)同步到 Azure AD。
+* Azure AD Connect 不支持将[动态分发组成员身份](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups)同步到 Azure AD。
 
 * 若要以启用邮件的组的形式将 Active Directory 组同步到 Azure AD：
 
@@ -58,7 +58,7 @@ ms.locfileid: "89279306"
 ## <a name="contacts"></a>联系人
 合并和收购之后，不同林中具有表示用户的联系人很常见，其中，GALSync 解决方案对两个或多个 Exchange 林桥接。 联系人对象始终使用邮件属性从连接器空间联接到 metaverse。 如果已存在具有相同邮件地址的联系人对象或用户对象，则会将这些对象联接在一起。 这是在规则 **In from AD – Contact Join** 中进行配置的。 此外还有一个名为 **In from AD – Contact Common** 的规则，使用流向 Metaverse 属性 **sourceObjectType** 的属性流，并使用常量 **Contact**。 此规则的优先级非常低，因此如果将任何用户对象联接到同一 Metaverse 对象，规则 **In from AD – User Common** 就会向该属性提供值“User”。 在使用此规则的情况下，如果没有联接任何用户，此属性则会具有值 Contact，如果至少找到了一个用户，则会具有值 User。
 
-对于为 Azure AD 设置对象，如果将 metaverse 属性 **sourceObjectType** 设置为 **Contact**，出站规则 **Out to AAD – Contact Join** 则会创建联系人对象。 如果将此属性设置为 **User**，**Out to AAD – User Join** 规则则会改为创建用户对象。
+若要将对象预配到 Azure AD，如果元节属性 **sourceObjectType** 设置为 "**联系人**"，则出站规则 **Out to AAD – Contact Join** 将创建 Contact 对象。 如果将此属性设置为 **user**，则规则 **Out To AAD – user Join** 将改为创建用户对象。
 当导入和同步更多源 Active Directory 时，对象很可能由 Contact 提升为 User。
 
 例如，在 GALSync 拓扑中，当我们导入第一个林时，我们会在第二个林中发现每个的联系人对象。 这会在 AAD 连接器中暂存新的联系人对象。 当我们之后导入并同步第二个林时，我们会找到实际用户并将他们联接到现有的 metaverse 对象。 然后我们会删除 AAD 中的联系人对象，并改为创建新的用户对象。

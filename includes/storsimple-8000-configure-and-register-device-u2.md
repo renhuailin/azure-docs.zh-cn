@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 56514f5dcf4bfe205ef46ee64dcf4dcf638d4f62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee92e145acd981bb8c84b43986b90306b994c262
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173155"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557010"
 ---
 #### <a name="to-configure-and-register-the-device"></a>配置和注册设备
 
@@ -19,7 +19,7 @@ ms.locfileid: "67173155"
 
 3. 系统会提示选择要为设备设置的语言。 指定语言，然后按 **enter**。
 
-4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”****。
+4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”。
      完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。**  串行控制台菜单指示标题消息中的控制器状态。 如果未连接到主动控制器，请断开连接，并连接到主动控制器。
 
 5. 在命令提示符处，键入密码。 默认设备密码为 **Password1**。
@@ -98,7 +98,7 @@ ms.locfileid: "67173155"
 
     ```
 
-12. 注册设备后，会显示一个服务数据加密密钥。 复制此密钥并将其保存到一个安全位置。 **向 StorSimple Device Manager 服务注册其他设备时会需要此密钥以及该服务注册密钥。** 有关此密钥的详细信息，请参阅 [StorSimple 安全性](../articles/storsimple/storsimple-security.md) 。
+12. 注册设备后，会显示一个服务数据加密密钥。 复制此密钥并将其保存到一个安全位置。 **向 StorSimple Device Manager 服务注册其他设备时会需要此密钥以及该服务注册密钥。** 有关此密钥的详细信息，请参阅 [StorSimple 安全性](../articles/storsimple/storsimple-8000-security.md) 。
     
     ![StorSimple 注册设备 7](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup1.png)
     
@@ -109,12 +109,11 @@ ms.locfileid: "67173155"
 14. 返回到 Azure 门户并完成以下步骤：
     
     1. 转到 StorSimple Device Manager 服务。
-    2. 单击“设备”****。
-    3. 在设备的表格式列表中，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“就绪可设置”****。
+    2. 单击“设备”。
+    3. 在设备的表格式列表中，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“就绪可设置”。
        
         ![StorSimple 设备页](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup2.png)
        
-        可能需要等待几分钟时间，设备状态才会更改为“就绪可设置”。****
+        可能需要等待几分钟时间，设备状态才会更改为“就绪可设置”。
        
         如果设备没有显示在此列表中，则需要确保已按 [StorSimple 设备的网络要求](../articles/storsimple/storsimple-8000-system-requirements.md)中所述配置了防火墙网络。 确认端口 9354 已对出站通信打开，因为 StorSimple 设备管理器服务到设备之间通信的服务总线将使用此端口。
-

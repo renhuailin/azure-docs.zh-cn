@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: be5c640ef069690c408460b7374aee82c35b3a67
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d87f57873a4bb84b20df3da3880017d9ef2484a5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272410"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008406"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -24,7 +24,7 @@ ms.locfileid: "88272410"
 在 Azure 门户中创建新的 Azure 订阅：
 
 1. 导航到[订阅边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
-1. 单击顶部的“+ 添加”按钮****
+1. 单击顶部的“+ 添加”按钮
 1. 如果提示，请登录
 1. 选择套餐，逐步完成创建新订阅的各个步骤
 
@@ -34,7 +34,7 @@ ms.locfileid: "88272410"
 
 有一些解决方法可允许非所有者创建 Azure 群集的 Avere vFXT。 这些方案涉及限制资源并向创建者分配其他 Azure 角色。 在所有这些情况下，订阅所有者还必须提前 [接受 Avere vFXT 软件条款](#accept-software-terms) 。
 
-| 方案 | 限制 | 创建 Avere vFXT 群集所需的访问角色 |
+| 场景 | 限制 | 创建 Avere vFXT 群集所需的访问角色 |
 |----------|--------|-------|
 | 资源组管理员创建 vFXT | 必须在资源组中创建虚拟网络、群集控制器和群集节点。 | "[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)" 和 "[参与者](../role-based-access-control/built-in-roles.md#contributor)" 角色，作用域为目标资源组。 |
 | 使用现有的外部虚拟网络 | 群集控制器和群集节点是在 vFXT 的资源组中创建的，但使用其他资源组中的现有虚拟网络。 |  (1) [用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator) 和作用域为 vFXT 资源组的 [参与者](../role-based-access-control/built-in-roles.md#contributor) 角色;和 (2) [虚拟机参与者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、 [用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)和 [Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor) 角色，作用域为虚拟网络的资源组。 |
@@ -42,7 +42,7 @@ ms.locfileid: "88272410"
 
 ## <a name="quota-for-the-vfxt-cluster"></a>vFXT 群集的配额
 
-检查以下 Azure 组件是否有足够的配额。 根据需要[请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
+检查以下 Azure 组件是否有足够的配额。 根据需要[请求增加配额](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
 > [!NOTE]
 > 此处列出的虚拟机和 SSD 组件适用于 vFXT 群集本身。 请记住，你还需要将用于计算场的 Vm 和 Ssd 的配额。
@@ -97,10 +97,10 @@ ms.locfileid: "88272410"
 1. 在门户中，打开虚拟网络列表。
 1. 选择群集的虚拟网络。
 1. 在左侧菜单中单击 " **服务终结点** "。
-1. 单击顶部的“添加”****。
+1. 单击顶部的 " **添加** "。
 1. 选择服务 ``Microsoft.Storage`` 。
 1. 选择群集的子网。
-1. 在底部单击“添加”****。
+1. 在底部单击“添加”。
 
    ![带注释的 Azure 门户屏幕截图，注释标明创建服务终结点的步骤](media/avere-vfxt-service-endpoint.png)
 

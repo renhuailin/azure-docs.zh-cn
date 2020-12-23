@@ -5,14 +5,14 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
 keywords: azure 应用服务, web 应用, linux, windows, docker, 容器
-ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
+ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312050"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558600"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自定义容器将自定义软件迁移到 Azure 应用服务
 
@@ -28,8 +28,8 @@ ms.locfileid: "91312050"
 
 - <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">将 Docker 切换为运行 Windows 容器</a>。
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">安装 Visual Studio 2019</a>，其中包含 **ASP.NET 和 web 开发**以及 **Azure 开发**工作负载。 如果已安装 Visual Studio 2019：
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">将 Docker 切换为运行 Windows 容器</a>。
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">安装 Visual Studio 2019</a>，其中包含 **ASP.NET 和 web 开发** 以及 **Azure 开发** 工作负载。 如果已安装 Visual Studio 2019：
     - 通过单击“帮助” > “检查更新”，在 Visual Studio 中安装最新的更新。
     - 在 Visual Studio 中，通过单击“工具” > “获取工具和功能”，添加工作负载。
 
@@ -64,7 +64,7 @@ ms.locfileid: "91312050"
 
 在解决方案资源管理器中，右键单击“CustomFontSample”项目，选择“添加” > “容器业务流程支持”  。
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="显示在默认浏览器中显示的应用的屏幕截图。":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="解决方案资源管理器窗口的屏幕截图，其中显示已选择 CustomFontSample 项目、“添加”和“容器业务流程协调程序支持”菜单项。":::
 
 选择“Docker Compose” > “确定” 。
 
@@ -98,13 +98,13 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 在解决方案资源管理器中，右键单击“CustomFontSample”项目，选择“发布” 。
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="显示在默认浏览器中显示的应用的屏幕截图。":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="解决方案资源管理器的屏幕截图，其中已选择 CustomFontSample 项目和“发布”。":::
 
 ### <a name="create-registry-and-publish"></a>创建注册表并发布
 
 在发布向导中，选择“容器注册表” > “新建 Azure 容器注册表” > “发布”  。
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="显示在默认浏览器中显示的应用的屏幕截图。":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="发布向导的屏幕截图，其中显示已选择“容器注册表”、“新建 Azure 容器注册表”和“发布”按钮。":::
 
 ### <a name="sign-in-with-azure-account"></a>使用 Azure 帐户登录
 
@@ -228,31 +228,16 @@ Azure 应用服务使用 Docker 容器技术同时托管内置映像和自定义
 
 ## <a name="set-up-your-initial-environment"></a>设置初始环境
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* 安装 [Docker](https://docs.docker.com/get-started/#setup)，用于构建 Docker 映像。 安装 Docker 可能需要重新启动计算机。
-* 安装 <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 或更高版本，使用它可以在任何 shell 中运行命令来预配和配置 Azure 资源。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 安装 [Docker](https://docs.docker.com/get-started/#setup)，用于构建 Docker 映像。 安装 Docker 可能需要重新启动计算机。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- 本教程需要 2.0.80 或更高版本 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-安装 Docker 和 Azure CLI 后，打开终端窗口，验证是否已安装 docker：
+安装 Docker 或运行 Azure Cloud Shell 后，打开终端窗口，验证是否已安装 docker：
 
 ```bash
 docker --version
 ```
-
-同时，验证 Azure CLI 版本是否为 2.0.80 或更高版本：
-
-```azurecli
-az --version
-```
-
-然后通过 CLI 登录到 Azure：
-
-```azurecli
-az login
-```
-
-`az login` 命令打开浏览器以收集凭据。 当命令完成时，会显示包含订阅相关信息的 JSON 输出。
-
-登录后，可以使用 Azure CLI 运行 Azure 命令，处理订阅中的资源。
 
 ## <a name="clone-or-download-the-sample-app"></a>克隆或下载示例应用
 
@@ -319,6 +304,10 @@ ENTRYPOINT ["init.sh"]
 
 ## <a name="build-and-test-the-image-locally"></a>在本地生成和测试映像
 
+> [!NOTE]
+> Docker Hub [对每个 IP 的匿名请求数和每个免费用户的经过身份验证的请求数都有配额（请参阅“数据传输”）](https://www.docker.com/pricing)。 如果发现来自 Docker Hub 的请求受到限制，请尝试 `docker login`（如果尚未登录）。
+> 
+
 1. 运行以下命令生成映像：
 
     ```bash
@@ -339,8 +328,6 @@ ENTRYPOINT ["init.sh"]
 1. 浏览到 `http://localhost:8000`，验证 Web 应用和容器是否正常运行。
 
     ![在本地测试 Web 应用](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
-
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a1f052df9b233fd564ed7e16c04c32c0c7234e1a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6453983ad4547139ef43af019a0dbf5ff77452c7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555648"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454472"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Dynatrace 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555648"
 * 让用户使用其 Azure AD 帐户自动登录到 Dynatrace。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88555648"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Dynatrace 支持 **SP 和 IDP** 发起的 SSO
-* Dynatrace 支持**实时**用户预配
+* Dynatrace 支持 **实时** 用户预配
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值。 一个租户中只能配置一个实例。
@@ -53,7 +53,7 @@ ms.locfileid: "88555648"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Dynatrace**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Dynatrace** 。 
 1. 从结果面板中选择“Dynatrace”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-dynatrace"></a>配置并测试 Dynatrace 的 Azure AD 单一登录
@@ -95,7 +95,7 @@ ms.locfileid: "88555648"
 
     a. “签名选项”设置已预先填充  。 请根据组织查看设置。
 
-    b. 单击“ **保存**”。
+    b. 单击“ **保存** ”。
 
     ![Communifire 签名选项](./media/dynatrace-tutorial/tutorial-dynatrace-signing-option.png)
 
@@ -145,14 +145,14 @@ ms.locfileid: "88555648"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击“访问面板”中的“Dynatrace”磁贴时，应当会自动登录到为其设置了 SSO 的 Dynatrace。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击“访问面板”中的“Dynatrace”磁贴时，应当会自动登录到为其设置了 SSO 的 Dynatrace。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Dynatrace](https://aad.portal.azure.com/)

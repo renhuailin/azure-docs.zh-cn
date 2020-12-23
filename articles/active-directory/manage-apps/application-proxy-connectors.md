@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319820"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591049"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -37,7 +37,7 @@ ms.locfileid: "91319820"
 在安装应用程序代理连接器之前，Windows Server 需要启用 TLS 1.2。 若要在服务器上启用 TLS 1.2：
 
 1. 设置以下注册表项：
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
@@ -61,13 +61,13 @@ ms.locfileid: "91319820"
 
 ![示例： Azure AD 应用程序代理连接器](./media/application-proxy-connectors/app-proxy-connectors.png)
 
-无需手动删除未使用的连接器。 当连接器运行时，它会在连接到服务时保持活动状态。 未使用的连接器标记为非活动状态，保持这种状态 10 天后将被删除。__ 不过，如果想要卸载某个连接器，则需要在服务器中卸载连接器服务和更新程序服务。 重新启动计算机以完全删除该服务。
+无需手动删除未使用的连接器。 当连接器运行时，它会在连接到服务时保持活动状态。 未使用的连接器标记为非活动状态，保持这种状态 10 天后将被删除。 不过，如果想要卸载某个连接器，则需要在服务器中卸载连接器服务和更新程序服务。 重新启动计算机以完全删除该服务。
 
 ## <a name="automatic-updates"></a>自动更新
 
 Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代理连接器更新程序服务保持运行，连接器就会自动更新。 如果在服务器上未看到连接器更新程序服务，需要[重新安装连接器](application-proxy-add-on-premises-application.md)才能获得所有更新。
 
-如果不想等连接器自动更新，可以执行手动升级。 转到连接器所在服务器上的[连接器下载页](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)，选择“下载”****。 此过程启动本地连接器升级。
+如果不想等连接器自动更新，可以执行手动升级。 转到连接器所在服务器上的[连接器下载页](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)，选择“下载”。 此过程启动本地连接器升级。
 
 对于有多个连接器的租户，每次自动更新每个组中的一个连接器，以防环境中出现停机现象。
 
@@ -86,7 +86,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)。
 
-## <a name="capacity-planning"></a>容量规划
+## <a name="capacity-planning"></a>容量计划
 
 请务必确保已在连接器之间规划足够的容量以处理预期的流量。 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。
 
@@ -104,7 +104,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 > [!NOTE]
 > 在 4 核心、8 核心和 16 核心计算机之间，最大 TPS 没有多大区别。 主要区别体现在预期的延迟。
 >
-> 此表还着重于基于其安装的计算机类型的连接器预期性能。 这不同于应用程序代理服务的阻止限制，请参阅 [服务限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。
+> 此表还着重于基于其安装的计算机类型的连接器预期性能。 这不同于应用程序代理服务的阻止限制，请参阅 [服务限制和限制](../enterprise-users/directory-service-limits-restrictions.md)。
 
 ## <a name="security-and-networking"></a>安全和网络
 
@@ -155,14 +155,17 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 第一次成功证书续订后，Azure AD 应用程序代理连接器服务 (网络服务) 没有从本地计算机存储中删除旧证书的权限。 如果证书已过期，或者服务不再使用它，则可以安全地将其删除。
 
-若要避免证书续订出现问题，请确保已启用从连接器向 [记录的目标](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) 的网络通信。
+若要避免证书续订出现问题，请确保已启用从连接器向 [记录的目标](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) 的网络通信。
 
 如果连接器有几个月未连接到服务，其证书可能会过时。 在这种情况下，需卸载后重装连接器来触发注册。 可运行以下 PowerShell 命令：
 
 ```
 Import-module AppProxyPSModule
-Register-AppProxyConnector
+Register-AppProxyConnector -EnvironmentName "AzureCloud"
 ```
+
+对于政府版，使用 `-EnvironmentName "AzureUSGovernment"` 。 有关更多详细信息，请参阅 [安装适用于 Azure 政府云的代理](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)。
+
 若要了解有关如何验证证书和解决问题的详细信息，请参阅 [验证计算机和后端组件是否支持应用程序代理信任证书](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)。
 
 ## <a name="under-the-hood"></a>揭秘
@@ -175,9 +178,9 @@ Register-AppProxyConnector
 
 ![使用性能监视器向连接器添加计数器](./media/application-proxy-connectors/performance-monitor.png)
 
-连接器具有 **管理** 日志和 **会话** 日志。 **管理**日志包括关键事件及其错误。 **会话**日志包含所有事务及其处理详细信息。
+连接器具有 **管理** 日志和 **会话** 日志。 **管理** 日志包括关键事件及其错误。 **会话** 日志包含所有事务及其处理详细信息。
 
-若要查看日志，请打开**事件查看器**，然后访问 "**应用程序和服务日志**" "  >  **Microsoft**  >  **AadApplicationProxy**  >  **连接器**"。 若要使 **会话** 日志可见，请在 " **视图** " 菜单上，选择 " **显示分析和调试日志**"。 **会话**日志通常用于疑难解答，默认情况下已禁用。 使其能够在不再需要事件时开始收集事件并将其禁用。
+若要查看日志，请打开 **事件查看器**，然后访问 "**应用程序和服务日志**" "  >  **Microsoft**  >  **AadApplicationProxy**  >  **连接器**"。 若要使 **会话** 日志可见，请在 " **视图** " 菜单上，选择 " **显示分析和调试日志**"。 **会话** 日志通常用于疑难解答，默认情况下已禁用。 使其能够在不再需要事件时开始收集事件并将其禁用。
 
 可在“服务”窗口中检查服务的状态。 连接器由两个 Windows 服务组成：实际的连接器和更新程序。 二者都必须一直运行。
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/06/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: d1059bae047774864868fbe90df50a877f9a3869
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d27e5b22fc0e24850a8c454ef1f07e77341ac15a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798051"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282527"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>在“我的应用”门户中使用集合
 
@@ -32,7 +32,7 @@ ms.locfileid: "88798051"
 
 “我的应用”门户中的集合列表默认为显示一个名为“所有应用”的集合，其中包括可访问的所有应用   ：
 
-![“我的应用”门户中的“所有应用”页](media/my-applications-portal-workspaces/my-apps-all.png)
+![“我的应用”门户中的“所有应用”页](media/my-applications-portal-workspaces/my-apps-all-apps.png)
 
 在此列表中看到的任何其他集合均由管理员创建并与你共享。 可以选择其中某个集合，以查看范围更受限的应用集，如以下示例中的“支持”  ：
 

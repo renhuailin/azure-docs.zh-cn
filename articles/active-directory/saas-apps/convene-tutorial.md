@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a7b1a7fc89e163b7c5405279418f78953c0cf6db
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f48c83f01612a907c459419cb4dfbb278ec06fa5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548084"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455232"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-convene"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Convene 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548084"
 * 让用户使用其 Azure AD 帐户自动登录到 Convene。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -93,7 +93,7 @@ ms.locfileid: "88548084"
     > [!NOTE] 
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Convene 客户端支持团队](mailto:support@convene.me.uk)，获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. Convene 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。 Convene 应用程序要求将  **nameidentifier** 与  **user.mail** 进行映射，因此需单击“ **编辑**”图标对属性映射进行编辑，然后更改属性映射  。
+1. Convene 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Convene 应用程序要求通过 user.mail 对 nameidentifier 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
     ![image](common/edit-attribute.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "88548084"
 
 ## <a name="configure-convene-sso"></a>配置 Convene SSO
 
-若要在 **Convene** 端配置单一登录，需要将下载的**证书(Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [Convene 支持团队](mailto:support@convene.me.uk)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Convene** 端配置单一登录，需要将下载的 **证书(Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [Convene 支持团队](mailto:support@convene.me.uk)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-convene-test-user"></a>创建 Convene 测试用户
 
@@ -150,15 +150,14 @@ ms.locfileid: "88548084"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Convene 磁贴时，应会自动登录到为其设置了 SSO 的 Convene。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Convene 磁贴时，应会自动登录到为其设置了 SSO 的 Convene。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试 Convene 与 Azure AD 集成](https://aad.portal.azure.com/)
-

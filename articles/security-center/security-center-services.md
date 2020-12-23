@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858007"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445245"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -28,49 +28,49 @@ ms.locfileid: "91858007"
 
 ### <a name="windows-machines"></a>[**Windows 计算机**](#tab/features-windows)
 
-|**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 虚拟机**|**需要 Azure Defender**
+|**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**已启用 Azure Arc 的计算机**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
+|[Microsoft Defender for Endpoint 集成](security-center-wdatp.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
 |[虚拟机行为分析（和安全警报）](alerts-reference.md)|✔|✔|✔|是|
 |[无文件安全警报](alerts-reference.md#alerts-windows)|✔|✔|✔|是|
 |[基于网络的安全警报](other-threat-protections.md#network-layer)|✔|✔|-|是|
 |[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|是|
-|[本机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|是|
+|[本机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|是|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|是|
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|是|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|是|
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|-|-|-|是|
-|缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|安全配置错误评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>已启用 Arc：是|
+|安全配置错误评估|✔|✔|✔|Azure：否<br><br>已启用 Arc：是|
+|[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>已启用 Arc：是|
 |磁盘加密评估|✔</br>（适用于[支持的场景](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)）|✔|-|否|
-|第三方漏洞评估|✔|-|-|否|
+|第三方漏洞评估|✔|-|✔|否|
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|否|
 
 
 ### <a name="linux-machines"></a>[**Linux 计算机**](#tab/features-linux)
 
-|**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 虚拟机**|**需要 Azure Defender**
+|**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**已启用 Azure Arc 的计算机**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|是|
-|[虚拟机行为分析（和安全警报）](security-center-alerts-iaas.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
+|[Microsoft Defender for Endpoint 集成](security-center-wdatp.md)|-|-|-|是|
+|[虚拟机行为分析（和安全警报）](./azure-defender.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
 |[无文件安全警报](alerts-reference.md#alerts-windows)|-|-|-|是|
 |[基于网络的安全警报](other-threat-protections.md#network-layer)|✔|✔|-|是|
 |[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|是|
-|[本机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|是|
+|[本机漏洞评估](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|是|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|是|
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|是|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|是|
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|✔|✔|✔|是|
-|缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|安全配置错误评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>已启用 Arc：是|
+|安全配置错误评估|✔|✔|✔|Azure：否<br><br>已启用 Arc：是|
 |[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|否|
 |磁盘加密评估|✔</br>（适用于[支持的场景](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)）|✔|-|否|
-|第三方漏洞评估|✔|-|-|否|
+|第三方漏洞评估|✔|-|✔|否|
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|否|
 
 --- 
@@ -96,10 +96,10 @@ ms.locfileid: "91858007"
 | Trend Micro – Deep Security | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
-| McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
-| Sophos V9+| Linux 服务器系列  | 否 | 是  **\***  |
+| McAfee v10+ | Linux 服务器系列  | 否 | 是 * *\** _ |
+| Sophos V9+| Linux 服务器系列  | 否 | 是 _*\**_  |
 
- **\*** 覆盖状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中提供。 这些数据不会在 Azure 安全中心门户中反映。
+ _ *\** * 覆盖率状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中可用。 这些数据不会在 Azure 安全中心门户中反映。
 
 > [!NOTE]
 > 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell（v3.0 或更高版本）之后安装 SCEP。

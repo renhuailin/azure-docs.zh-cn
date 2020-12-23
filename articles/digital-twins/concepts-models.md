@@ -7,22 +7,22 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 0a38f9b8135fed08a95df68f108e44c34fec6325
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616544"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955321"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的克隆模型
 
-Azure 数字孪生的一项重要特征是能够定义自己的词汇，并以业务的自定义条款构建克隆图形。 此功能是通过用户定义 **模型**提供的。 您可以将模型视为您的全球说明中的名词。 
+Azure 数字孪生的一项重要特征是能够定义自己的词汇，并以业务的自定义条款构建克隆图形。 此功能是通过用户定义 **模型** 提供的。 您可以将模型视为您的全球说明中的名词。 
 
 模型类似于面向对象的编程语言中的 **类** ，它定义了真实工作环境中一个特定概念的数据形状。 模型具有 (（如 *房间* 或 *温度传感器*) ）的名称，并且包含属性、遥测/事件和命令等元素，这些元素描述了环境中此类型实体的作用。 稍后，您将使用这些模型创建代表满足此类型说明的特定实体的 [**数字孪生**](concepts-twins-graph.md) 。
 
-使用基于 JSON LD 的 **数字克隆定义语言 (DTDL) **来编写模型。  
+Azure 数字孪生模型以基于 JSON LD 的 **数字克隆定义语言表示， (DTDL)**。  
 
-## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>数字克隆定义语言 (DTDL) 用于编写模型
+## <a name="digital-twin-definition-language-dtdl-for-models"></a>用于模型的数字克隆定义语言 (DTDL) 
 
 Azure 数字孪生的模型是使用数字孪生定义语言 (DTDL) 定义的。 DTDL 基于 JSON-LD，是独立于编程语言的。 DTDL 不是 Azure 数字孪生独有的，但也用于表示 [iot 即插即用](../iot-pnp/overview-iot-plug-and-play.md)等其他 IoT 服务中的设备数据。 
 
@@ -40,7 +40,7 @@ Azure 数字孪生使用 **DTDL _版本 2_**。 有关此版本的 DTDL 的详�
 DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字段：
 * **属性** -属性是表示实体的状态的数据字段 (类似于许多面向对象的编程语言) 中的属性。 属性具有后备存储，可随时读取。
 * **遥测** -遥测字段表示度量值或事件，通常用于描述设备传感器读数。 与属性不同，遥测数据不会存储在数字克隆上;这是一系列需要在发生时进行处理的时间限制的数据事件。 有关属性和遥测之间的差异的详细信息，请参阅下面的 " [*属性与遥测*](#properties-vs-telemetry) " 部分。
-* 如果需要，**组件**组件允许将模型接口构建为其他接口的程序集。 组件的一个示例是 (的 *frontCamera* 接口，另一个组件接口 *backCamera*) 用于为 *手机*定义模型。 必须先为 *frontCamera* 定义一个接口，就像它是其自己的模型一样，然后在定义 *手机*时可以引用它。
+* 如果需要，**组件** 组件允许将模型接口构建为其他接口的程序集。 组件的一个示例是 (的 *frontCamera* 接口，另一个组件接口 *backCamera*) 用于为 *手机* 定义模型。 必须先为 *frontCamera* 定义一个接口，就像它是其自己的模型一样，然后在定义 *手机* 时可以引用它。
 
     使用组件来描述作为解决方案不可分割但不需要单独标识的内容，而无需单独在克隆图形中创建、删除或重新排列。 如果希望实体在 existences 图中具有独立的，则将其表示为不同模型的单独数字孪生，通过 *关系* 进行连接 (参阅下一项目符号) 。
     
@@ -49,7 +49,7 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
 * **关系** -关系使你可以表示数字克隆如何与其他数字孪生一起使用。 关系可以表示不同的语义含义，如 *contains* ( "楼层包含空间" ) ， *冷却* ( "hvac 冷却房间" ) ， *isBilledTo* ( "为用户向用户计费" ) 等。关系允许解决方案提供关联实体的关系图。
 
 > [!NOTE]
-> [DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)还定义命令，这些**命令**可以在数字克隆 (（如 reset 命令）或用于切换风扇) 的命令。 但是， *Azure 数字孪生目前不支持命令。*
+> [DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)还定义命令，这些 **命令** 可以在数字克隆 (（如 reset 命令）或用于切换风扇) 的命令。 但是， *Azure 数字孪生目前不支持命令。*
 
 ### <a name="properties-vs-telemetry"></a>属性与遥测
 
@@ -57,7 +57,7 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
 
 Azure 数字孪生模型的属性和遥测的区别如下：
 * **属性** 应具有后备存储。 这意味着您可以随时读取属性并检索其值。 如果该属性是可写的，则还可以在属性中存储值。  
-* **遥测** 更像是事件流;这是一组具有短 lifespans 的数据消息。 如果不设置侦听事件和发生事件时要执行的操作，则不会在以后进行事件跟踪。 你不能返回它并稍后阅读。 
+* **遥测** 更像是事件流;这是一组具有短 lifespans 的数据消息。 如果不设置侦听事件和发生事件时要执行的操作，则不会在以后进行事件跟踪。 您无法返回到它，稍后再进行阅读。 
   - 在 c # 术语中，遥测类似于 c # 事件。 
   - 在 IoT 术语中，遥测通常是设备发送的一种度量。
 
@@ -82,7 +82,7 @@ Azure 数字孪生也不会 `writable` 对属性或关系观察属性。 尽管�
 
 ## <a name="example-model-code"></a>示例模型代码
 
-可以在任何文本编辑器中编写克隆类型模型。 DTDL 语言遵循 JSON 语法，因此应存储扩展名为 *JSON*的模型。 使用 JSON 扩展会使许多编程文本编辑器为你的 DTDL 文档提供基本语法检查和突出显示。 还有一个可用于[Visual Studio Code](https://code.visualstudio.com/)的[DTDL 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)。
+可以在任何文本编辑器中编写克隆类型模型。 DTDL 语言遵循 JSON 语法，因此应存储扩展名为 *JSON* 的模型。 使用 JSON 扩展会使许多编程文本编辑器为你的 DTDL 文档提供基本语法检查和突出显示。 还有一个可用于[Visual Studio Code](https://code.visualstudio.com/)的[DTDL 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)。
 
 本部分包含以 DTDL 接口形式编写的典型模型的示例。 此模型描述 **行星**，每个行星都具有名称、质量和温度。
  
@@ -144,7 +144,7 @@ Azure 数字孪生也不会 `writable` 对属性或关系观察属性。 尽管�
 | `@type` | 标识所描述的信息的类型。 对于接口，类型为 *interface*。 |
 | `@context` | 设置 JSON 文档的 [上下文](https://niem.github.io/json/reference/json-ld/context/) 。 模型应使用 `dtmi:dtdl:context;2` 。 |
 | `displayName` | 可有可无允许您为模型指定友好名称（如果需要）。 |
-| `contents` | 所有剩余的接口数据都放置在此处，作为特性定义的数组。 每个属性都必须 `@type` 提供 * (属性*、 *遥测*、 *命令*、 *关系*或 *组件*) ，以标识它所描述的接口信息的排序，然后是定义实际 (属性的一组属性（例如） `name` ，并 `schema` 定义 *属性*) 。 |
+| `contents` | 所有剩余的接口数据都放置在此处，作为特性定义的数组。 每个属性都必须 `@type` 提供 *(属性*、 *遥测*、 *命令*、 *关系* 或 *组件*) ，以标识它所描述的接口信息的排序，然后是定义实际 (属性的一组属性（例如） `name` ，并 `schema` 定义 *属性*) 。 |
 
 > [!NOTE]
 > 请注意，在此示例中 (*Crater* 的组件接口) 与 (*行星*) 使用该接口的接口在同一阵列中定义。 必须以这种方式在 API 调用中定义组件，才能找到接口。
@@ -162,7 +162,7 @@ Azure 数字孪生也不会 `writable` 对属性或关系观察属性。 尽管�
 
 ### <a name="model-inheritance"></a>模型继承
 
-有时，你可能需要进一步专用化模型。 例如，有一个通用的模型 *房间*，并使用专用变量 *ConferenceRoom* 和 *健身房*可能会很有用。 为了表达专用化，DTDL 支持继承：接口可以从一个或多个其他接口继承。 
+有时，你可能需要进一步专用化模型。 例如，有一个通用的模型 *房间*，并使用专用变量 *ConferenceRoom* 和 *健身房* 可能会很有用。 为了表达专用化，DTDL 支持继承：接口可以从一个或多个其他接口继承。 
 
 下面的示例将 imagines 中的 *行星* 模型重新调整为更大 *CelestialBody* 模型的子类型。 首先定义 "parent" 模型，然后使用该字段在其上构建 "child" 模型 `extends` 。
 
@@ -218,19 +218,35 @@ Azure 数字孪生也不会 `writable` 对属性或关系观察属性。 尽管�
 ]
 ```
 
-在此示例中， *CelestialBody* 向 *行星*提供名称、质量和温度。 `extends`部分是接口名称或接口名称的数组， (允许扩展接口从多个父模型继承（如果需要）) 。
+在此示例中， *CelestialBody* 向 *行星* 提供名称、质量和温度。 `extends`部分是接口名称或接口名称的数组， (允许扩展接口从多个父模型继承（如果需要）) 。
 
 应用继承后，扩展接口将公开整个继承链中的所有属性。
 
-扩展接口无法更改父接口的任何定义;它只能添加到其中。 即使将功能定义为同一) ，它也不能重新定义已在任何父接口中定义的功能 (。 例如，如果父接口定义了一个 `double` 属性 *质量*，则扩展接口不能包含 *质量*的声明，即使它也是 `double` 。
+扩展接口无法更改父接口的任何定义;它只能添加到其中。 即使将功能定义为同一) ，它也不能重新定义已在任何父接口中定义的功能 (。 例如，如果父接口定义了一个 `double` 属性 *质量*，则扩展接口不能包含 *质量* 的声明，即使它也是 `double` 。
 
-## <a name="validating-models"></a>验证模型
+## <a name="best-practices-for-designing-models"></a>设计模型的最佳做法
+
+设计模型以反映你的环境中的实体时，查看并考虑设计的 [查询](concepts-query-language.md) 含义可能会很有用。 你可能想要以一种可避免图形遍历的大型结果集的方式设计属性。 您可能还想要在单个查询中将作为单个级别的关系进行应答的关系建模。
+
+### <a name="validating-models"></a>验证模型
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
+## <a name="integrating-with-industry-standard-models"></a>与行业标准模型集成
+
+在设计 Azure 数字孪生模型时，使用基于行业标准或使用标准 ontology 表示形式（如 RDF 或 OWL）的模型可提供丰富的起点。 使用行业模型还有助于标准化和信息共享。
+
+要与 Azure 数字孪生一起使用，必须使用基于 JSON LD 的 [**数字孪生定义语言 (DTDL)**](concepts-models.md)来表示模型。 因此，本文介绍了如何在 DTDL 中表示行业标准模型，将现有行业概念与 DTDL 语义相集成，使 Azure 数字孪生可以使用它们。 然后，DTDL 模型充当 Azure 数字孪生中模型的真实来源。
+
+有两个主要路径可用于将行业标准模型与 DTDL 集成，具体取决于你的情况：
+* 如果你尚未创建模型，则可以在包含特定于你的行业的语言的 **现有 STARTER DTDL 本体论** 上对其进行设计。
+* 如果已有基于行业标准的现有模型，则需要 **将其转换为 DTDL** ，以便将其引入 Azure 数字孪生。
+
+有关这两个过程的详细信息，请参阅 [*如何：集成行业标准模型*](how-to-integrate-models.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
-请参阅如何通过 DigitalTwinsModels Api 管理模型：
+请参阅如何通过 DigitalTwinModels Api 管理模型：
 * [*操作说明：管理自定义模型*](how-to-manage-model.md)
 
 或者，了解如何基于模型创建数字孪生：

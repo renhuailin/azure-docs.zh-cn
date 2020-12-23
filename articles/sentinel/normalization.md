@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934581"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657017"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 中的规范化
 
@@ -132,7 +132,7 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 
 #### <a name="additional-information"></a>其他信息
 
-详细了解 (查询时间分析实现) 在 Log Analytics 中所 [保存的查询](../azure-monitor/log-query/saved-queries.md) 。
+详细了解 (查询时间分析实现) 在 Log Analytics 中所 [保存的查询](../azure-monitor/log-query/example-queries.md) 。
 
 
 ## <a name="next-steps"></a>后续步骤

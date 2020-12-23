@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a2f46440a4214e298bc6d2f3b9c2b5680437ead7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800494"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522696"
 ---
 # <a name="azure-resource-logs"></a>Azure 资源日志
 Azure 资源日志是[平台日志](platform-logs-overview.md)，可以通过它深入了解已在 Azure 资源中执行的操作。 资源日志的内容因 Azure 服务和资源类型而异。 默认不会收集资源日志。 必须为每个 Azure 资源创建诊断设置，以便将其资源日志发送到 Log Analytics 工作区与 [Azure Monitor 日志](data-platform-logs.md)一起使用，发送到 Azure 事件中心以转发到 Azure 外部，或者发送到 Azure 存储进行存档。
@@ -27,7 +27,7 @@ Azure 资源日志是[平台日志](platform-logs-overview.md)，可以通过它
 - 使用日志查询执行复杂分析，并深入了解日志数据。
 - 使用带有复杂警报逻辑的日志警报。
 
-[创建诊断设置](diagnostic-settings.md)，以便将资源日志发送到 Log Analytics 工作区。 如 [Azure Monitor 日志的结构](../log-query/logs-structure.md)中所述，此数据将存储在表中。 资源日志使用的表取决于资源使用的收集类型：
+[创建诊断设置](diagnostic-settings.md)，以便将资源日志发送到 Log Analytics 工作区。 如 [Azure Monitor 日志的结构](./data-platform-logs.md)中所述，此数据将存储在表中。 资源日志使用的表取决于资源使用的收集类型：
 
 - Azure 诊断 - 所有数据将写入到 _AzureDiagnostics_ 表中。
 - 特定于资源 - 每个类别的资源的数据将写入到单独的表中。
@@ -54,7 +54,7 @@ AzureDiagnostics 表的外观如下所示：
 | ... |
 
 ### <a name="resource-specific"></a>特定于资源
-在此模式下，将会根据在诊断设置中选择的每个类别，在所选工作区中创建各个表。 建议使用此方法，因为它可以大幅简化日志查询中数据的处理、更好地发现架构及其结构、改善引入延迟和查询时间方面的性能、可以授予针对特定表的 RBAC 权限，等等。 所有 Azure 服务最终都会迁移到特定于资源的模式。 
+在此模式下，将会根据在诊断设置中选择的每个类别，在所选工作区中创建各个表。 建议使用此方法，因为它可以更轻松地处理日志查询中的数据、提供架构及其结构的更好发现，提高引入延迟和查询时间的性能，并能够授予对特定表的 Azure RBAC 权限。 所有 Azure 服务最终都会迁移到特定于资源的模式。 
 
 以上示例会创建三个表：
  
@@ -90,7 +90,7 @@ AzureDiagnostics 表的外观如下所示：
    ![诊断设置模式选择器](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
 > [!NOTE]
-> 有关使用 resource manager 模板设置收集模式的示例，请参阅[Azure Monitor 中的诊断设置资源管理器模板示例](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault)。
+> 有关使用资源管理器模板设置收集模式的示例，请参阅 [Azure Monitor 中的诊断设置的资源管理器模板示例](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault)。
 
 
 可将现有的诊断设置修改为特定于资源的模式。 在这种情况下，已收集的数据将保留在 _AzureDiagnostics_ 表中，直到根据工作区的保留设置删除了这些数据。 新数据将收集到专用表中。 可以使用 [union](/azure/kusto/query/unionoperator) 运算符跨两个表查询数据。

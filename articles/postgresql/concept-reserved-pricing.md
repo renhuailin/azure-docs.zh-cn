@@ -1,17 +1,17 @@
 ---
 title: 保留计算定价-Azure Database for PostgreSQL-单服务器
 description: 为 Azure Database for PostgreSQL 计算资源预付预留容量
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 81180cc0d9cc7754e5a3e935c09441995f16c56a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dcc6cc40c936876c856326e330b67ef465f90cde
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907567"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240437"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>预付 Azure Database for PostgreSQL-具有保留容量的单一服务器计算资源
 
@@ -20,15 +20,15 @@ ms.locfileid: "90907567"
 不需要将保留分配给特定 Azure Database for PostgreSQL 服务器。 已运行的 Azure Database for PostgreSQL (或新部署的) 将自动获得预留价格的好处。 购买预订后，会提前支付一年或三年期的计算费用。 购买保留后，与预订属性匹配的 Azure database for PostgreSQL 计算费用不再按即用即付费率收费。 预订不涉及与 PostgreSQL 数据库服务器关联的软件、网络或存储费用。 在保留期结束时，计费权益过期，按即用即付价格对 Azure Database for PostgreSQL 进行计费。 虚拟机预留实例不自动续订。 有关定价信息，请参阅 [Azure Database for PostgreSQL 保留容量产品](https://azure.microsoft.com/pricing/details/postgresql/)。 </br>
 
 > [!IMPORTANT]
-> 为 [单服务器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) 和 [超大规模 Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) 部署选项中的 Azure Database for PostgreSQL 提供预留容量定价。 有关超大规模 (Citus) 上 RI 定价的信息，请参阅 [此页](concepts-hyperscale-reserved-pricing.md)。
+> 为 [单服务器](./overview.md#azure-database-for-postgresql---single-server) 和 [超大规模 Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) 部署选项中的 Azure Database for PostgreSQL 提供预留容量定价。 有关超大规模 (Citus) 上 RI 定价的信息，请参阅 [此页](concepts-hyperscale-reserved-pricing.md)。
 
-可以在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for PostgreSQL 保留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)的方式为预留付款。 购买保留容量：
+可以在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for PostgreSQL 保留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买保留容量：
 
 * 对于至少一个企业或个人订阅，你必须以即用即付费率作为所有者角色。
-* 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”****。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+* 对于企业订阅，必须在  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 * 对于云解决方案提供商 (CSP) 计划中，只有管理员代理或销售代理才能购买 Azure Database for PostgreSQL 保留容量。 </br>
 
-有关企业客户和即用即付客户如何针对预订购买付费的详细信息，请参阅 [了解企业注册的 azure 保留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) 和了解即 [用即付订阅的 azure 保留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)。
+有关企业客户和即用即付客户如何针对预订购买付费的详细信息，请参阅 [了解企业注册的 azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 和了解即 [用即付订阅的 azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>在购买之前确定正确的服务器大小
@@ -54,7 +54,7 @@ ms.locfileid: "90907567"
 | 字段 | 说明 |
 | :------------ | :------- |
 | 订阅   | 用于支付 Azure Database for PostgreSQL 预留容量预留的订阅。 订阅上的付款方式将收取 Azure Database for PostgreSQL 预留容量预留的前期成本。 订阅类型必须是企业协议 (产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或使用即用即付定价 (产品/服务的个人协议产品/服务) 。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。
-| 范围 | vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享**，vCore 预订折扣应用于计费上下文内任何订阅中运行的 Azure Database for PostgreSQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅**，vCore 预订折扣将应用到此订阅中的 Azure Database for PostgreSQL 服务器。 </br></br> **单个资源组**，预订折扣应用于所选订阅中的 Azure Database for PostgreSQL 服务器，以及该订阅内的所选资源组。
+| 范围 | vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享** ，vCore 预订折扣应用于计费上下文内任何订阅中运行的 Azure Database for PostgreSQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅** ，vCore 预订折扣将应用到此订阅中的 Azure Database for PostgreSQL 服务器。 </br></br> **单个资源组** ，预订折扣应用于所选订阅中的 Azure Database for PostgreSQL 服务器，以及该订阅内的所选资源组。
 | 区域 | Azure Database for PostgreSQL 保留容量保留所涵盖的 Azure 区域。
 | 部署类型 | 要为其购买预订的 Azure Database for PostgreSQL 资源类型。
 | 性能层 | Azure Database for PostgreSQL 服务器的服务层。
@@ -63,7 +63,7 @@ ms.locfileid: "90907567"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
-可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小灵活性
 
@@ -79,9 +79,9 @@ VCore 预订折扣将自动应用于与 Azure Database for PostgreSQL 保留容�
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-* [什么是 Azure 保留](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)？
-* [管理 Azure 预留项](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [了解 Azure 预留折扣](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [了解即用即付订阅的预留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
-* [了解企业合约的预留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)
+* [什么是 Azure 保留](../cost-management-billing/reservations/save-compute-costs-reservations.md)？
+* [管理 Azure 预留项](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [了解 Azure 预留折扣](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [了解即用即付订阅的预留使用情况](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)
+* [了解企业合约的预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](/partner-center/azure-reservations)

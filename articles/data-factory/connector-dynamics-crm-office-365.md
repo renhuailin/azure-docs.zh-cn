@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
-ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332094"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638170"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,14 +56,14 @@ ms.locfileid: "91332094"
 
 此连接器不支持其他应用程序类型，如“财务”、“运营”和“人才”。
 
-此 Dynamics 连接器基于 [Dynamics XRM 工具](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)构建。
+此 Dynamics 连接器基于 [Dynamics XRM 工具](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)构建。
 
 >[!TIP]
 >若要从 Dynamics 365 Finance and Operations 复制数据，可以使用 [Dynamics AX 连接器](connector-dynamics-ax.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要将此连接器与 Azure AD 服务主体身份验证配合使用，必须在 Common Data Service 或 Dynamics 中设置服务器到服务器 (S2S) 身份验证。 请参阅[此文](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication)，了解详细步骤。
+若要将此连接器与 Azure AD 服务主体身份验证配合使用，必须在 Common Data Service 或 Dynamics 中设置服务器到服务器 (S2S) 身份验证。 请参阅[此文](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication)，了解详细步骤。
 
 ## <a name="get-started"></a>入门
 
@@ -81,7 +81,7 @@ Dynamics 链接服务支持以下属性。
 |:--- |:--- |:--- |
 | type | type 属性必须设置为“Dynamics”、“DynamicsCrm”或“CommonDataServiceForApps”。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 对于联机 Dynamics，此值必须为“Online”。 | 是 |
-| serviceUri | Dynamics 实例的服务 URL，与浏览器访问的 URL 相同。 例如 "https:// \<organization-name> [x]. dynamics .com"。 | 是 |
+| serviceUri | Dynamics 实例的服务 URL，与从浏览器访问的 URL 相同。 例如“https://\<organization-name>.crm[x].dynamics.com”。 | 是 |
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 有效值为“AADServicePrincipal”和“Office365”。 | 是 |
 | servicePrincipalId | Azure AD 应用程序的客户端 ID。 | 当身份验证为“AADServicePrincipal”时，此项为必需的 |
 | servicePrincipalCredentialType | 要用于服务主体身份验证的凭据类型。 有效值为“ServicePrincipalKey”和“ServicePrincipalCert”。 | 当身份验证为“AADServicePrincipal”时，此项为必需的 |
@@ -172,7 +172,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>带有 IFD 的本地 Dynamics 365 和 Dynamics CRM
 
-与联机 Dynamics 进行对比的其他属性是 **hostName** 和 **port**。
+与联机 Dynamics 进行对比的其他属性是 **hostName** 和 **port** 。
 
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
@@ -255,7 +255,7 @@ Dynamics 链接服务支持以下属性。
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为“DynamicsSource”、“DynamicsCrmSource”或“CommonDataServiceForAppsSource”。 | 是 |
-| query | FetchXML 是在联机和本地 Dynamics 中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的 `entityName`） |
+| query | FetchXML 是在联机和本地 Dynamics 中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8))。 | 否（如果指定了数据集中的 `entityName`） |
 
 >[!NOTE]
 >即使在 FetchXML 查询中配置的列投影不包含 PK 列，也将始终复制该列。
@@ -326,12 +326,12 @@ Dynamics 链接服务支持以下属性。
 | writeBehavior | 操作的写入行为。 值必须是“Upsert”。 | 是 |
 | alternateKeyName | 在实体上定义的用于执行更新插入的备用密钥名称。 | 否。 |
 | writeBatchSize | 每批中写入到 Dynamics 的数据行计数。 | 否。 默认值为 10。 |
-| ignoreNullValues | 在执行写入操作期间是否忽略输入数据中的 NULL 值（键字段除外）。<br/><br/>有效值为 **TRUE** 和 **FALSE**：<ul><li>**TRUE**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。</li><li>**FALSE**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL 值。 执行插入操作时插入 NULL 值。</li></ul> | 否。 默认值为 **FALSE**。 |
+| ignoreNullValues | 在执行写入操作期间是否忽略输入数据中的 NULL 值（键字段除外）。<br/><br/>有效值为 **TRUE** 和 **FALSE** ：<ul><li>**TRUE** ：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。</li><li>**FALSE** ：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL 值。 执行插入操作时插入 NULL 值。</li></ul> | 否。 默认值为 **FALSE** 。 |
 
 >[!NOTE]
 >接收器“writeBatchSize”和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance-features.md#parallel-copy)” 的默认值都是 10。 因此，默认情况下会将 100 条记录并发提交到 Dynamics。
 
-对于联机 Dynamics 365，存在[每个组织进行两次并发批量调用](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出该限制，则会在运行第一个请求之前引发“服务器忙”异常。 使 **writeBatchSize** 保持小于或等于 10 可避免这种并发调用限制。
+对于联机 Dynamics 365，存在[每个组织进行两次并发批量调用](/previous-versions/dynamicscrm-2016/developers-guide/jj863631(v=crm.8)#Run-time%20limitations)的限制。 如果超出该限制，则会在运行第一个请求之前引发“服务器忙”异常。 使 **writeBatchSize** 保持小于或等于 10 可避免这种并发调用限制。
 
 **writeBatchSize** 和 **parallelCopies** 的最佳组合取决于实体的架构。 架构元素包括列数、行大小以及挂到这些调用的插件、工作流或工作流活动的数量。 默认设置 **writeBatchSize** (10) &times; **parallelCopies** (10) 是基于 Dynamics 服务提供的建议设置。 该值适用于大多数 Dynamics 实体，但可能无法提供最佳性能。 你可以通过在复制活动设置中调整组合来调整性能。
 
@@ -397,7 +397,7 @@ Dynamics 链接服务支持以下属性。
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> Dynamics 数据类型 **AttributeType.CalendarRules**、**AttributeType.MultiSelectPicklist** 和 **AttributeType.PartyList** 不受支持。
+> Dynamics 数据类型 **AttributeType.CalendarRules** 、 **AttributeType.MultiSelectPicklist** 和 **AttributeType.PartyList** 不受支持。
 
 ## <a name="writing-data-to-a-lookup-field"></a>将数据写入查找字段
 
@@ -416,12 +416,12 @@ Dynamics 链接服务支持以下属性。
 - 类型为 **GUID** 的 **CustomerField** 列，它是 Dynamics 中目标实体的主键值。
 - 类型为 **String** 的 **Target** 列，它是目标实体的逻辑名称。
 
-另外假设你希望将此类数据复制到类型为 **Customer** 的接收器 Dynamics 实体字段 **CustomerField**。
+另外假设你希望将此类数据复制到类型为 **Customer** 的接收器 Dynamics 实体字段 **CustomerField** 。
 
 在复制活动列映射中，如下所述映射这两个列：
 
-- 将 **CustomerField** 映射到 **CustomerField**。 此映射是标准字段映射。
-- 将 **Target** 映射到 **CustomerField\@EntityReference**。 接收器列是表示实体引用的虚拟列。 请在映射中输入此类字段名称，因为不可通过导入架构来显示它们。
+- 将 **CustomerField** 映射到 **CustomerField** 。 此映射是标准字段映射。
+- 将 **Target** 映射到 **CustomerField\@EntityReference** 。 接收器列是表示实体引用的虚拟列。 请在映射中输入此类字段名称，因为不可通过导入架构来显示它们。
 
 ![Dynamics 查找字段列映射](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

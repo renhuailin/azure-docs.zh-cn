@@ -1,25 +1,25 @@
 ---
 title: 使用客户管理的密钥进行数据加密 - Azure Database for PostgreSQL - 单一服务器
 description: Azure Database for PostgreSQL 单一服务器使用客户管理的密钥进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542115"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493777"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
 
 通过使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
 
-在服务器级别使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密。 客户管理的密钥被称为密钥加密密钥 (KEK)，它在给定的服务器中用于对该服务使用的数据加密密钥 (DEK) 进行加密。 KEK 是一种非对称密钥，它存储在客户自有和客户管理的 [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) 实例中。 本文稍后将更详细地描述密钥加密密钥 (KEK) 和数据加密密钥 (DEK)。
+在服务器级别使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密。 客户管理的密钥被称为密钥加密密钥 (KEK)，它在给定的服务器中用于对该服务使用的数据加密密钥 (DEK) 进行加密。 KEK 是一种非对称密钥，它存储在客户自有和客户管理的 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 实例中。 本文稍后将更详细地描述密钥加密密钥 (KEK) 和数据加密密钥 (DEK)。
 
-Key Vault 是一种基于云的外部密钥管理系统。 它具有高可用性，并为 RSA 加密密钥提供可扩展的安全存储，根据需要由 FIPS 140-2 级别 2 验证的硬件安全模块 (HSM) 提供支持。 它不允许直接访问存储的密钥，而是为已获授权的实体提供加密和解密服务。 Key Vault 可生成密钥并将其导入，或者[从本地 HSM 设备传输密钥](../key-vault/key-Vault-hsm-protected-keys.md)。
+Key Vault 是一种基于云的外部密钥管理系统。 它具有高可用性，并为 RSA 加密密钥提供可扩展的安全存储，根据需要由 FIPS 140-2 级别 2 验证的硬件安全模块 (HSM) 提供支持。 它不允许直接访问存储的密钥，而是为已获授权的实体提供加密和解密服务。 Key Vault 可生成密钥并将其导入，或者[从本地 HSM 设备传输密钥](../key-vault/keys/hsm-protected-keys.md)。
 
 > [!NOTE]
 > 此功能适用于所有 Azure 区域，其中 Azure Database for PostgreSQL 单一服务器支持“常规用途”和“内存优化”定价层。 有关其他限制，请参阅 [限制](concepts-data-encryption-postgresql.md#limitations) 部分。
@@ -68,7 +68,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 用于加密 DEK 的客户管理的密钥只能是非对称的 RSA 2048。
 * 密钥激活日期（如果已设置）必须是过去的日期和时间。 到期日期（若已设置）必须是将来的日期和时间。
 * 密钥必须处于“已启用”状态。
-* 如果要将 [现有密钥导入](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) 到密钥保管库中，请确保以支持的文件格式提供该密钥 `.pfx` (`.byok` 、 `.backup`) 。
+* 如果要将 [现有密钥导入](/rest/api/keyvault/ImportKey/ImportKey) 到密钥保管库中，请确保以支持的文件格式提供该密钥 `.pfx` (`.byok` 、 `.backup`) 。
 
 ## <a name="recommendations"></a>建议
 
@@ -79,13 +79,13 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 确保 Key Vault 和 Azure Database for PostgreSQL 单一服务器位于同一区域，从而保证能更快地访问 DEK 的“包装”和“取消包装”操作。
 * 锁定 Azure KeyVault，使其只能用于专用终结点和所选网络，且仅允许使用受信任的 Microsoft 服务来保护资源。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="显示“创建自己的密钥”概述的关系图":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
 下面是客户管理的密钥的配置建议：
 
 * 将客户管理的密钥副本保存在安全的位置，或将其托管到托管服务。
 
-* 如果 Key Vault 生成密钥，请在首次使用该密钥之前创建密钥备份。 只能将备份还原到 Key Vault。 要详细了解备份命令，请参阅 [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyVault/backup-azkeyVaultkey)。
+* 如果 Key Vault 生成密钥，请在首次使用该密钥之前创建密钥备份。 只能将备份还原到 Key Vault。 要详细了解备份命令，请参阅 [Backup-AzKeyVaultKey](/powershell/module/az.keyVault/backup-azkeyVaultkey)。
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>无法访问客户管理的密钥的情形
 
@@ -93,9 +93,9 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 
 * 如果为 Azure Database for PostgreSQL 单一服务器创建“时间点还原”服务器，而前者启用了数据加密，则新创建的服务器将处于“无法访问”状态。 可通过 [Azure 门户](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 修复服务器状态。
 * 如果为 Azure Database for PostgreSQL 单一服务器创建只读副本，而该服务器启用了数据加密，则副本服务器将处于“无法访问”状态。 可通过 [Azure 门户](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 修复服务器状态。
-* 如果删除 KeyVault，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复 [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) 并重新验证数据加密，使服务器的状态变为“可用”。
-* 如果从 KeyVault 中删除密钥，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复[密钥](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects)并重新验证数据加密，使服务器的状态变为“可用”。
-* 如果 Azure KeyVault 中存储的密钥过期，则该密钥将失效，且 Azure Database for PostgreSQL 单一服务器将变为“无法访问”状态。 请使用 [CLI](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-set-attributes) 将密钥到期日期延后，然后重新验证数据加密，使服务器的状态变为“可用”。
+* 如果删除 KeyVault，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复 [Key Vault](../key-vault/general/key-vault-recovery.md) 并重新验证数据加密，使服务器的状态变为“可用”。
+* 如果从 KeyVault 中删除密钥，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复[密钥](../key-vault/general/key-vault-recovery.md)并重新验证数据加密，使服务器的状态变为“可用”。
+* 如果 Azure KeyVault 中存储的密钥过期，则该密钥将失效，且 Azure Database for PostgreSQL 单一服务器将变为“无法访问”状态。 请使用 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) 将密钥到期日期延后，然后重新验证数据加密，使服务器的状态变为“可用”。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>从 Key Vault 意外撤消密钥访问
 
@@ -113,7 +113,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 若要监视数据库状态并在透明数据加密保护程序访问权限丢失时发出警报，请配置以下 Azure 功能：
 
 * [Azure 资源运行状况](../service-health/resource-health-overview.md)：在与数据库的第一次连接遭到拒绝后，已失去客户密钥访问权限的无法访问的数据库将显示为“无法访问”。
-* [活动日志](../service-health/alerts-activity-log-service-notifications.md)：对 Key Vault 中客户管理的密钥访问失败时，活动日志中会添加相应条目。 如果为这些事件创建警报，就可尽快恢复访问。
+* [活动日志](../service-health/alerts-activity-log-service-notifications-portal.md)：对 Key Vault 中客户管理的密钥访问失败时，活动日志中会添加相应条目。 如果为这些事件创建警报，就可尽快恢复访问。
 
 * [操作组](../azure-monitor/platform/action-groups.md)：定义这些组，使其根据首选项向你发送通知和警报。
 
@@ -135,7 +135,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 此功能仅在支持高达 16 TB 的存储的区域和服务器上受支持。 有关支持存储最多16TB 的 Azure 区域列表，请参阅[此处](concepts-pricing-tiers.md#storage)文档中的 "存储" 部分
 
     > [!NOTE]
-    > - 在上面列出的区域中创建的所有新 PostgreSQL 服务器都 **提供**对使用客户管理器密钥的加密支持。  (PITR) 服务器或读取副本的还原时间点在理论上是 "新的"。
+    > - 在上面列出的区域中创建的所有新 PostgreSQL 服务器都 **提供** 对使用客户管理器密钥的加密支持。  (PITR) 服务器或读取副本的还原时间点在理论上是 "新的"。
     > - 若要验证预配的服务器是否支持最大16TB，可以在门户中访问 "定价层" 边栏选项卡，并查看预配服务器支持的最大存储大小。 如果可以将滑块向上移动到4TB，则服务器可能不支持通过客户托管的密钥进行加密。 但是，始终使用服务托管密钥对数据进行加密。 AskAzureDBforPostgreSQL@service.microsoft.com如果你有任何疑问，请联系。
 
 * 只有 RSA 2048 加密密钥支持加密。
@@ -143,4 +143,3 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[通过 Azure 门户设置使用 Azure Database for PostgreSQL 单一服务器的客户管理的密钥进行数据加密的操作](howto-data-encryption-portal.md)。
-

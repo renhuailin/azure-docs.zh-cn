@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 48db08f856407b2ceba32798ed0e39eab967b72d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 344e0c142b905558bffbf339c8e7a29c92113c23
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553302"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purelyhr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PurelyHR 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553302"
 * 让用户使用其 Azure AD 帐户自动登录到 PurelyHR。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -127,7 +127,7 @@ ms.locfileid: "88553302"
 
 ## <a name="configure-purelyhr-sso"></a>配置 PurelyHR SSO
 
-1. 若要在 PurelyHR 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
+1. 若要在 PurelyHR 中自动执行配置，需要通过单击“安装扩展”  来安装 **我的应用安全登录浏览器扩展** 。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
@@ -183,14 +183,14 @@ ms.locfileid: "88553302"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 PurelyHR 磁贴时，应会自动登录到为其设置了 SSO 的 PurelyHR。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 PurelyHR 磁贴时，应会自动登录到为其设置了 SSO 的 PurelyHR。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 PurelyHR](https://aad.portal.azure.com/)

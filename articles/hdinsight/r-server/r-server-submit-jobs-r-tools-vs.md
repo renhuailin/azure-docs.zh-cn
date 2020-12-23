@@ -8,48 +8,48 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75435250"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993782"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
-[针对 Visual Studio 的 R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) 是一个免费的开源扩展，适用于 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更高版本的社区版（免费）、专业版和企业版。 RTVS 不适用于[Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)。
+[针对 Visual Studio 的 R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) 是一个免费的开源扩展，适用于 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更高版本的社区版（免费）、专业版和企业版。 RTVS 不适用于 [Visual Studio 2019](/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?preserve-view=true&view=vs-2019)。
 
-RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、Intellisense（代码完成）、通过 ggplot2 和 ggviz 等 R 库[绘制可视化效果](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R 代码调试](https://docs.microsoft.com/visualstudio/rtvs/debugging)等等。
+RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](/visualstudio/rtvs/interactive-repl) (REPL)、Intellisense（代码完成）、通过 ggplot2 和 ggviz 等 R 库[绘制可视化效果](/visualstudio/rtvs/visualizing-data)、[R 代码调试](/visualstudio/rtvs/debugging)等等。
 
-## <a name="set-up-your-environment"></a>设置环境
+## <a name="set-up-your-environment"></a>设置你的环境
 
 1. 安装[针对 Visual Studio 的 R 工具](/visualstudio/rtvs/installing-r-tools-for-visual-studio)。
 
     ![在 Visual Studio 2017 中安装 RTVS](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. 选择“数据科学和分析应用程序”** 工作负载，然后选择“R 语言支持”****、“对 R 开发工具的运行时支持”**** 和“Microsoft R Client”**** 选项。
+2. 选择“数据科学和分析应用程序”工作负载，然后选择“R 语言支持”、“对 R 开发工具的运行时支持”和“Microsoft R Client”选项。
 
 3. 需要有用于 SSH 身份验证的公钥和私钥。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. 在计算机上安装 [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML Server 提供 [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 和 `RxSpark` 函数。
+4. 在计算机上安装 [ML Server](/previous-versions/machine-learning-server/install/r-server-install-windows)。 ML Server 提供 [`RevoScaleR`](/machine-learning-server/r-reference/revoscaler/revoscaler) 和 `RxSpark` 函数。
 
 5. 安装 [PuTTY](https://www.putty.org/) 以提供计算上下文，用于从本地客户端针对 HDInsight 群集运行 `RevoScaleR` 函数。
 
 6. 可以选择向 Visual Studio 环境应用数据科学设置，从而为 R 工具的工作区提供新的布局。
-   1. 若要保存当前的 Visual Studio 设置，请使用“工具”>“导入和导出设置”**** 命令，然后选择“导出选定的环境设置”**** 并指定文件名。 若要还原这些设置，请使用相同的命令，并选择“导入选定的环境设置”****。
+   1. 若要保存当前的 Visual Studio 设置，请使用“工具”>“导入和导出设置”命令，然后选择“导出选定的环境设置”并指定文件名。 若要还原这些设置，请使用相同的命令，并选择“导入选定的环境设置”。
 
-   2. 转到“R 工具”**** 菜单项，然后选择“数据科学设置...”****。
+   2. 转到“R 工具”菜单项，然后选择“数据科学设置...”。
 
        ![Visual Studio 数据科学设置](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
-      > 通过使用步骤 1 中的方法，也可以保存和还原个性化的数据科学家布局，而不必重复使用“数据科学设置”**** 命令。
+      > 通过使用步骤 1 中的方法，也可以保存和还原个性化的数据科学家布局，而不必重复使用“数据科学设置”命令。
 
 ## <a name="execute-local-r-methods"></a>执行本地 R 方法
 
 1. 创建 HDInsight ML Services 群集。
-2. 安装 [RTVS 扩展](https://docs.microsoft.com/visualstudio/rtvs/installation)。
+2. 安装 [RTVS 扩展](/visualstudio/rtvs/installation)。
 3. 下载[示例 zip 文件](https://github.com/Microsoft/RTVS-docs/archive/master.zip)。
 4. 打开 `examples/Examples.sln` 以在 Visual Studio 中启动解决方案。
 5. 在 `A first look at R` 解决方案文件夹中打开 `1-Getting Started with R.R` 文件。
@@ -111,17 +111,17 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
     ![成功的 rx 命令执行 ](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
 1. 确保 `rxHadoopCopy` 已将 `people.json` 文件从示例数据文件夹成功复制到新创建的 `/user/RevoShare/newUser` 文件夹：
 
-    1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”****。
+    1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”。
 
         ![Azure HDInsight 存储帐户](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. 选择群集的默认存储帐户，记下容器/目录名称。
 
-    3. 从存储帐户窗格的左侧菜单中选择“容器”****。
+    3. 从存储帐户窗格的左侧菜单中选择“容器”。
 
         ![Azure HDInsight 存储容器](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. 选择群集的容器名称，浏览到 **user** 文件夹（可能需要单击列表底部的“加载更多”**），然后依次选择“RevoShare”**、“newUser”****。 `people.json` 文件应显示在 `newUser` 文件夹中。
+    4. 选择群集的容器名称，浏览到 **user** 文件夹（可能需要单击列表底部的“加载更多”），然后依次选择“RevoShare”、“newUser”。 `people.json` 文件应显示在 `newUser` 文件夹中。
 
         ![HDInsight 复制的文件文件夹位置](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

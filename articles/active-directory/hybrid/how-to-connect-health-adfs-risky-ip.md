@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57d74272d77183baa2284265aee298967f641250
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306389"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504876"
 ---
 # <a name="risky-ip-report-public-preview"></a> (公开预览版的有风险 IP 报表) 
 AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为最终用户提供身份验证服务，以访问 SaaS 应用程序，如 Microsoft 365。 在这种情况下，恶意参与者可能会尝试登录 AD FS 系统，用猜测最终用户密码的方式获得应用程序资源的访问权限。 AD FS 提供 Extranet 帐户锁定功能，可以防止这些类型的攻击，自 AD FS 出现在 Windows Server 2012 R2 中以后就是这样。 如果所用版本较低，强烈建议将 AD FS 系统升级到 Windows Server 2016。 <br />
@@ -35,8 +35,11 @@ AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为�
 
 > [!NOTE]
 > 若要使用此报表，请务必启用 AD FS 审核。 有关详细信息，请参阅 [为 AD FS 启用审核](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs)。 <br />
-> 若要访问预览版，需要提供全局管理员或[安全读取者](../../role-based-access-control/built-in-roles.md#security-reader)权限。  
-> 
+> 若要访问预览版，需要提供全局管理员或[安全读取者](../../role-based-access-control/built-in-roles.md#security-reader)权限。  
+>
+
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="what-is-in-the-report"></a>报表中有哪些内容？
 失败的登录活动客户端 IP 地址通过 Web 应用程序代理服务器进行聚合。 “风险 IP”报表中的每个项目都会显示有关失败的 AD FS 登录活动（失败次数超出指定阈值）的聚合信息。 它提供以下信息： ![ 屏幕截图，显示列标题突出显示的有风险 IP 报表。](./media/how-to-connect-health-adfs/report4a.png)
@@ -66,7 +69,7 @@ AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为�
 负载均衡器聚合失败的登录活动并命中警报阈值。 如果出现负载均衡器 IP 地址，很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。 请正确配置负载均衡器，使之传递转发客户端 IP 地址。 
 
 ## <a name="download-risky-ip-report"></a>下载有风险的 IP 报表 
-使用**下载**功能，可以将过去 30 天的整个风险 IP 地址列表从 Connect Health 门户导出 导出结果将包括每个检测时段所有失败的 AD FS 登录活动，因此可以在导出后自定义筛选功能。 除了门户中突出显示的聚合，导出结果还显示有关已失败登录活动（按 IP 地址划分）的更多详细信息：
+使用 **下载** 功能，可以将过去 30 天的整个风险 IP 地址列表从 Connect Health 门户导出 导出结果将包括每个检测时段所有失败的 AD FS 登录活动，因此可以在导出后自定义筛选功能。 除了门户中突出显示的聚合，导出结果还显示有关已失败登录活动（按 IP 地址划分）的更多详细信息：
 
 |  报告项  |  说明  | 
 | ------- | ----------- | 
@@ -76,19 +79,19 @@ AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为�
 | isWhitelistedIpAddress | 表示 IP 地址是否从警报和报表进行筛选的标志。 专用 IP 地址（<i>10.x.x.x、172.x.x.x 和 192.168.x.x</i>）和 Exchange IP 地址会在筛选后标记为 True。 如果看到专用 IP 地址范围，则很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。  | 
 
 ## <a name="configure-notification-settings"></a>配置通知设置
-可以通过“通知设置”更新报表的管理联系人。**** 默认情况下，风险 IP 警报电子邮件通知处于关闭状态。 若要启用通知，可以切换“获取 IP 地址超过失败活动阈值报表的电子邮件通知”下的按钮 与 Connect Health 中的泛型警报通知设置一样，它可以让你在此处自定义有关风险 IP 报表的指定通知接收者列表。 也可在进行更改时通知所有全局管理员。 
+可以通过“通知设置”更新报表的管理联系人。 默认情况下，风险 IP 警报电子邮件通知处于关闭状态。 若要启用通知，可以切换“获取 IP 地址超过失败活动阈值报表的电子邮件通知”下的按钮 与 Connect Health 中的泛型警报通知设置一样，它可以让你在此处自定义有关风险 IP 报表的指定通知接收者列表。 也可在进行更改时通知所有全局管理员。 
 
 ## <a name="configure-threshold-settings"></a>配置阈值设置
-可以通过“阈值设置”更新警报阈值。 首先，系统已默认设置阈值。 在风险 IP 报表阈值设置中，共有四个类别：
+可以通过“阈值设置”更新警报阈值。 首先，系统已默认设置阈值。 下面给出了默认值。 在风险 IP 报表阈值设置中，共有四个类别：
 
 ![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4d.png)
 
 | 阈值项 | 说明 |
 | --- | --- |
-| (错误 U/P + Extranet 锁定) / 天  | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**天**的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 |
-| (错误 U/P + Extranet 锁定) / 小时 | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**小时**的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 |
-| Extranet 锁定 / 天 | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**天**的“Extranet 锁定”错误的计数超出该阈值。 |
-| Extranet 锁定 / 小时| 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**小时**的“Extranet 锁定”错误的计数超出该阈值。 |
+| (错误 U/P + Extranet 锁定) / 天  | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每 **天** 的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 默认值为100。|
+| (错误 U/P + Extranet 锁定) / 小时 | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每 **小时** 的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 默认值为50。|
+| Extranet 锁定 / 天 | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每 **天** 的“Extranet 锁定”错误的计数超出该阈值。 默认值为 50。|
+| Extranet 锁定 / 小时| 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每 **小时** 的“Extranet 锁定”错误的计数超出该阈值。 默认值为25|
 
 > [!NOTE]
 > - 在一小时的设置更改以后，将会应用对报表阈值的更改。 
@@ -97,7 +100,7 @@ AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为�
 >
 >
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 **为何在报表中发现专用 IP 地址范围？**  <br />
 专用 IP 地址) <i>&</i> (8.x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x x 如果看到专用 IP 地址范围，则很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。
 

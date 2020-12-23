@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e3473a9afefe73fe7b07d3efda1f53675264fc8
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807146"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874621"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -20,17 +20,17 @@ ms.locfileid: "84807146"
 
 ## <a name="required-command-line-tools"></a>所需的命令行工具
 
-建议将[Azure Cloud Shell](https://shell.azure.com/)用于以下所有命令行操作。 从 shell.azure.com 或单击链接启动 shell：
+建议将 [Azure Cloud Shell](https://shell.azure.com/) 用于以下所有命令行操作。 从 shell.azure.com 或单击链接启动 shell：
 
-[![嵌入启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
 或者，使用以下图标从 Azure 门户启动 Cloud Shell：
 
 ![门户启动](./media/application-gateway-ingress-controller-install-new/portal-launch-icon.png)
 
-你的[Azure Cloud Shell](https://shell.azure.com/)已有所有必需的工具。 如果你选择使用其他环境，请确保已安装以下命令行工具：
+你的 [Azure Cloud Shell](https://shell.azure.com/) 已有所有必需的工具。 如果你选择使用其他环境，请确保已安装以下命令行工具：
 
-* `az` - Azure CLI：[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` - Azure CLI：[安装说明](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * `kubectl` - Kubernetes 命令行工具：[安装说明](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` - Kubernetes 包管理器：[安装说明](https://github.com/helm/helm/releases/latest)
 * `jq` - 命令行 JSON 处理器：[安装说明](https://stedolan.github.io/jq/download/)
@@ -38,9 +38,9 @@ ms.locfileid: "84807146"
 
 ## <a name="create-an-identity"></a>创建标识
 
-遵循以下步骤创建 Azure Active Directory (AAD) [服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 请记下 `appId`、`password` 和 `objectId` 值 - 在后续步骤中需要用到。
+遵循以下步骤创建 Azure Active Directory (AAD) [服务主体对象](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请记下 `appId`、`password` 和 `objectId` 值 - 在后续步骤中需要用到。
 
-1. 创建 AD 服务主体（[详细了解 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)）：
+1. 创建 AD 服务主体 ([详细了解 AZURE RBAC](../role-based-access-control/overview.md)) ：
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -66,16 +66,16 @@ ms.locfileid: "84807146"
     }
     EOF
     ```
-    若要部署启用 **RBAC** 的群集，请将 `aksEnableRBAC` 字段设置为 `true`
+    若要部署启用了 **KUBERNETES RBAC** 的群集，请将 `aksEnableRBAC` 字段设置为 `true`
 
 ## <a name="deploy-components"></a>部署组件
 此步骤将以下组件添加到订阅：
 
-- [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-- [应用程序网关](https://docs.microsoft.com/azure/application-gateway/overview) v2
-- 包含 2 个[子网](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)的[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- [AAD Pod Identity](https://github.com/Azure/aad-pod-identity/blob/master/README.md) 将要使用的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+- [Azure Kubernetes 服务](../aks/intro-kubernetes.md)
+- [应用程序网关](./overview.md) v2
+- 包含 2 个[子网](../virtual-network/virtual-networks-overview.md)的[虚拟网络](../virtual-network/virtual-networks-overview.md)
+- [公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md)
+- [AAD Pod Identity](https://github.com/Azure/aad-pod-identity/blob/master/README.md) 将要使用的[托管标识](../active-directory/managed-identities-azure-resources/overview.md)
 
 1. 下载 Azure 资源管理器模板，并根据需要修改该模板。
     ```bash
@@ -111,7 +111,7 @@ ms.locfileid: "84807146"
 ### <a name="setup-kubernetes-credentials"></a>设置 Kubernetes 凭据
 对于以下步骤，需要设置 [kubectl](https://kubectl.docs.kubernetes.io/) 命令用于连接到新的 Kubernetes 群集。 已安装[Cloud Shell](https://shell.azure.com/) `kubectl` 。 我们将使用 `az` CLI 获取 Kubernetes 的凭据。
 
-获取新部署的 AKS 的凭据（[详细了解](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)）：
+获取新部署的 AKS 的凭据（[详细了解](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)）：
 ```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
@@ -121,7 +121,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 ```
 
 ### <a name="install-aad-pod-identity"></a>安装 AAD Pod Identity
-  Azure Active Directory Pod Identity 提供对 [Azure 资源管理器 (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 的基于令牌的访问。
+  Azure Active Directory Pod Identity 提供对 [Azure 资源管理器 (ARM)](../azure-resource-manager/management/overview.md) 的基于令牌的访问。
 
   [AAD Pod Identity](https://github.com/Azure/aad-pod-identity) 会将以下组件添加到 Kubernetes 群集：
    * Kubernetes [CRD](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)：`AzureIdentity`、`AzureAssignedIdentity`、`AzureIdentityBinding`
@@ -131,24 +131,24 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 将 AAD Pod Identity 安装到群集：
 
-   - 已启用 RBAC 的 AKS 群集 
+   - *已启用 KUBERNETES RBAC* AKS 群集
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
      ```
 
-   - 已禁用 RBAC 的 AKS 群集 
+   - *已禁用 KUBERNETES RBAC* AKS 群集
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
      ```
 
 ### <a name="install-helm"></a>安装 Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 是 Kubernetes 的包管理器。 我们将利用它来安装 `application-gateway-kubernetes-ingress` 包：
+[Helm](../aks/kubernetes-helm.md) 是 Kubernetes 的包管理器。 我们将利用它来安装 `application-gateway-kubernetes-ingress` 包：
 
-1. 安装 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
+1. 安装 [Helm](../aks/kubernetes-helm.md) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
 
-    - 已启用 RBAC 的 AKS 群集 
+    - *已启用 KUBERNETES RBAC* AKS 群集
 
         ```bash
         kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -156,7 +156,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
         helm init --tiller-namespace kube-system --service-account tiller-sa
         ```
 
-    - 已禁用 RBAC 的 AKS 群集 
+    - *已禁用 KUBERNETES RBAC* AKS 群集
 
         ```bash
         helm init
@@ -228,7 +228,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
     #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
     
     ################################################################################
-    # Specify if the cluster is RBAC enabled or not
+    # Specify if the cluster is Kubernetes RBAC enabled or not
     rbac:
         enabled: false # true/false
     
@@ -251,8 +251,8 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
    值：
      - `verbosityLevel`：设置 AGIC 日志记录基础结构的详细级别。 有关可能的值，请参阅[日志记录级别](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)。
-     - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例：`a123b234-a3b4-557d-b2df-a0bc12de1234`
-     - `appgw.resourceGroup`：在其中创建了应用程序网关的 Azure 资源组的名称。 示例：`app-gw-resource-group`
+     - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例： `a123b234-a3b4-557d-b2df-a0bc12de1234`
+     - `appgw.resourceGroup`：在其中创建了应用程序网关的 Azure 资源组的名称。 示例： `app-gw-resource-group`
      - `appgw.name`：应用程序网关的名称。 示例： `applicationgatewayd0f0`
      - `appgw.shared`：此布尔标志应默认为 `false`。 如果需要[共享的应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 `true`。
      - `kubernetes.watchNamespace`：指定 AGIC 应监视的命名空间。 此命名空间可以是单字符串值，也可以是逗号分隔的命名空间列表。
@@ -277,7 +277,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
     ```
 
 ## <a name="install-a-sample-app"></a>安装示例应用
-现在，我们已安装了应用程序网关、AKS 和 AGIC，接下来可以通过[Azure Cloud Shell](https://shell.azure.com/)安装示例应用：
+现在，我们已安装了应用程序网关、AKS 和 AGIC，接下来可以通过 [Azure Cloud Shell](https://shell.azure.com/)安装示例应用：
 
 ```yaml
 cat <<EOF | kubectl apply -f -

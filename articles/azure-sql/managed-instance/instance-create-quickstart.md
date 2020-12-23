@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 09/26/2019
-ms.openlocfilehash: 2f2e8c6be128e5004769dca2f42a6c8013510cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf606af0425c04873dadcf47932c806a1099942a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325226"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788700"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>快速入门：创建 SQL 托管实例的托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -79,7 +79,7 @@ ms.locfileid: "91325226"
    | **虚拟网络** | 选择“创建新的虚拟网络”或有效的虚拟网络和子网。| 如果网络或子网不可用，则必须先[对其进行修改以满足网络要求](vnet-existing-add-subnet.md)，然后再选择它作为新托管实例的目标。 有关为 SQL 托管实例配置网络环境所要满足的要求的信息，请参阅[为 SQL 托管实例配置虚拟网络](connectivity-architecture-overview.md)。 |
    | **连接类型** | 选择“代理”或“重定向”连接类型。|有关连接类型的详细信息，请参阅 [Azure SQL 托管实例连接类型](../database/connectivity-architecture.md#connection-policy)。|
    | **公共终结点**  | 选择“启用”。 | 若要通过公共数据终结点访问托管实例，需启用此选项。 | 
-   | **允许的访问来源**（如果启用了“公共终结点”） | 选择一个选项。   |在门户体验中可以使用公共终结点配置安全组。 </br> </br> 根据具体的方案选择以下选项之一： </br> <ul> <li>**Azure 服务**：从 Power BI 或另一多租户服务进行连接时，建议使用此选项。 </li> <li> **Internet**：用于测试，可让你快速运转托管实例。 建议不要将它用于生产环境。 </li> <li> **不允许访问**：此选项创建一个“拒绝”安全规则。 修改此规则才能通过公共终结点访问托管实例。 </li> </ul> </br> 有关公共终结点安全性的详细信息，请参阅[通过公共终结点安全使用 Azure SQL 托管实例](public-endpoint-overview.md)。|
+   | **允许的访问来源** （如果启用了“公共终结点”） | 选择一个选项。   |在门户体验中可以使用公共终结点配置安全组。 </br> </br> 根据具体的方案选择以下选项之一： </br> <ul> <li>**Azure 服务** ：从 Power BI 或另一多租户服务进行连接时，建议使用此选项。 </li> <li> **Internet** ：用于测试，可让你快速运转托管实例。 建议不要将它用于生产环境。 </li> <li> **不允许访问** ：此选项创建一个“拒绝”安全规则。 修改此规则才能通过公共终结点访问托管实例。 </li> </ul> </br> 有关公共终结点安全性的详细信息，请参阅[通过公共终结点安全使用 Azure SQL 托管实例](public-endpoint-overview.md)。|
 
 - 选择“查看 + 创建”，在创建托管实例之前查看所做的选择。 也可配置更多自定义设置，方法是选择“下一步:其他设置”。
 
@@ -93,7 +93,7 @@ ms.locfileid: "91325226"
 
    | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
-   | **排序规则** | 选择需要用于托管实例的排序规则。 如果从 SQL Server 迁移数据库，请使用 `SELECT SERVERPROPERTY(N'Collation')` 检查源排序规则并使用该值。| 有关排序规则的信息，请参阅[设置或更改服务器排序规则](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)。|   
+   | **排序规则** | 选择需要用于托管实例的排序规则。 如果从 SQL Server 迁移数据库，请使用 `SELECT SERVERPROPERTY(N'Collation')` 检查源排序规则并使用该值。| 有关排序规则的信息，请参阅[设置或更改服务器排序规则](/sql/relational-databases/collations/set-or-change-the-server-collation)。|   
    | **时区** | 选择要求托管实例遵循的时区。|有关详细信息，请参阅[时区](timezones-overview.md)。|
    | **用作故障转移辅助托管实例** | 请选择“是”。 | 启用此选项即可将托管实例用作故障转移组辅助托管实例。|
    | 主 SQL 托管实例（如果“用作故障转移辅助托管实例”设置为“是”）   | 选择一个现有的主托管实例，该实例会加入你要创建的托管实例所在的 DNS 区域。 | 此步骤会启用对故障转移组进行创建后配置的功能。 有关详细信息，请参阅[教程：将托管实例添加到故障转移组](failover-group-add-instance-tutorial.md)。|
@@ -126,7 +126,7 @@ ms.locfileid: "91325226"
 > [!IMPORTANT]
 > - 创建 SQL 托管实例是一种长时间运行的操作，可能一次需要数个小时，具体取决于特定情况。 请参阅[管理操作持续时间](management-operations-overview.md#duration)以了解典型创建时间。
 > - 当存在其他冲突操作（例如，在同一子网中的其他托管实例上长时间运行的还原或缩放操作）时，SQL 托管实例创建的开始可能会延迟。 若要了解详细信息，请参阅[管理操作交叉影响](management-operations-overview.md#management-operations-cross-impact)。
-> - 若要获取托管实例创建状态，需要有资源组的**读取权限**。 如果没有此权限，或者在托管实例创建过程中将其撤消，则可能会导致 SQL 托管实例在资源组部署列表中不可见。
+> - 若要获取托管实例创建状态，需要有资源组的 **读取权限** 。 如果没有此权限，或者在托管实例创建过程中将其撤消，则可能会导致 SQL 托管实例在资源组部署列表中不可见。
 >
 
 ## <a name="view-resources-created"></a>查看创建的资源
@@ -173,7 +173,7 @@ ms.locfileid: "91325226"
 
    ![主机名](./media/instance-create-quickstart/host-name.png)
 
-   复制的值表示可用于连接到 SQL 托管实例的完全限定域名 (FQDN)。 FQDN 类似于以下地址示例：*your_host_name.a1b2c3d4e5f6.database.windows.net*。
+   复制的值表示可用于连接到 SQL 托管实例的完全限定域名 (FQDN)。 FQDN 类似于以下地址示例： *your_host_name.a1b2c3d4e5f6.database.windows.net* 。
 
 ## <a name="next-steps"></a>后续步骤
 

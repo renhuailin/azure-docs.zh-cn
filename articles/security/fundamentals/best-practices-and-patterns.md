@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889859"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412606"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全最佳实践和模式
 
@@ -28,8 +28,8 @@ ms.locfileid: "73889859"
 
 这些最佳做法是为 IT 专业人员准备的资源。 这可能包括构建和部署安全的 Azure 解决方案的设计人员、架构师、开发者和测试人员。
 
-* [Azure 边界安全最佳实践](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
-* [Azure 数据库安全性最佳做法](database-best-practices.md)
+* [Azure 边界安全最佳实践](./network-best-practices.md#adopt-a-zero-trust-approach)
+* [Azure 数据库安全性最佳做法](../../azure-sql/database/security-best-practice.md)
 * [Azure 数据安全与加密最佳实践](data-encryption-best-practices.md)
 * [Azure 标识管理和访问控制安全最佳做法](identity-management-best-practices.md)
 * [Azure 网络安全最佳实践](network-best-practices.md)
@@ -38,7 +38,7 @@ ms.locfileid: "73889859"
 * [Azure Service Fabric 安全性最佳做法](service-fabric-best-practices.md)
 * [Azure VM 安全性最佳做法](iaas.md)
 * [在 Azure 中实现安全的混合网络体系结构](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
-* [物联网安全最佳实践](iot-best-practices.md)
+* [物联网安全最佳实践](../../iot-fundamentals/iot-security-best-practices.md)
 * [在 Azure 中保护 PaaS 数据库](paas-applications-using-sql.md)
 * [使用 Azure App Service 保护 PaaS Web 和移动应用程序](paas-applications-using-app-services.md)
 * [使用 Azure 存储保护 PaaS Web 和移动应用程序](paas-applications-using-storage.md)

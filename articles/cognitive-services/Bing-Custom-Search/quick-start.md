@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 726a60d611abc392bc1a4629c5088ca4c6b703d9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80238854"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338327"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>快速入门：创建首个必应自定义搜索实例
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 若要使用必应自定义搜索，需创建自定义搜索实例来定义 Web 视图或切片。 此实例包含你要搜索的公共域、网站和网页，以及你要做出的任何排名调整。 
 
@@ -46,7 +51,7 @@ ms.locfileid: "80238854"
 
 5. 单击“发布”将更改发布到生产环境，并更新实例的终结点。
 
-6.  单击“终结点”下的“生产”选项卡，并复制**自定义配置 ID**。 调用自定义搜索 API 时，需将此 ID 追加到调用中的 `customconfig=` 查询参数。
+6.  单击“终结点”下的“生产”选项卡，并复制 **自定义配置 ID**。 调用自定义搜索 API 时，需将此 ID 追加到调用中的 `customconfig=` 查询参数。
 
 
 ## <a name="next-steps"></a>后续步骤

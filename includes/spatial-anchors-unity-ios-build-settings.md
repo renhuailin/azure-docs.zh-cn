@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/29/2019
-ms.author: rgarcia
-ms.openlocfilehash: cfd5cf77b9df8cdd5b856a0b36b9010077a7078a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 88fbe9d58f1742ae311958a6bb15134ffec3bdac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68562497"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185232"
 ---
 通过选择“文件” > “生成设置”，打开“生成设置”。
 
@@ -17,7 +17,7 @@ ms.locfileid: "68562497"
 
 选择“切换平台”，以将平台更改为“iOS”   。 Unity 可能会提示你安装 iOS 支持组件（若缺少这些组件）。
 
-![Unity 生成设置窗口](./media/spatial-anchors-unity/unity-ios-build-settings.png)
+![Unity 生成设置窗口的屏幕截图。](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
 关闭“生成设置”窗口  。
 

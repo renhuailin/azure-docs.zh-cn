@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: d104e0f1f2c6a978a5fce2c046a36e50a7056970
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 90853b5ff769b710c6c95e4f6e62b3a4aa19fadf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928494"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151075"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>使用 Azure SignalR Service 缩放 ASP.NET Core SignalR 应用程序
 
 ## <a name="developing-signalr-apps"></a>开发 SignalR 应用
 
-目前，可在 Web 应用程序中使用[两个版本](https://docs.microsoft.com/aspnet/core/signalr/version-differences) 的 SignalR：SignalR for ASP.NET 和 ASP.NET Core SignalR（此为最新版）。 Azure SignalR 服务是在 ASP.NET Core SignalR 上构建的 Azure 托管服务。
+目前，可在 Web 应用程序中使用[两个版本](/aspnet/core/signalr/version-differences) 的 SignalR：SignalR for ASP.NET 和 ASP.NET Core SignalR（此为最新版）。 Azure SignalR 服务是在 ASP.NET Core SignalR 上构建的 Azure 托管服务。
 
 ASP.NET Core SignalR 是以前版本的重写。 因此，ASP.NET Core SignalR 不与早期的 SignalR 版本后向兼容。 API 和行为不同。 ASP.NET Core SignalR SDK 面向 .NET Standard，因此仍可在 .NET Framework 中使用。 但是，必须改用新的 API（而不是旧的 API）。 如果正在使用 SignalR 并且想要迁移到 ASP.NET Core SignalR 或 Azure SignalR 服务，那么需要更改代码来处理 API 差异。
 
-通过 Azure SignalR 服务，ASP.NET Core SignalR 的服务器端组件托管在 Azure 中。 但是，由于该技术构建在 ASP.NET Core 之上，因此可在多个平台（Windows、Linux 和 MacOS）上运行实际 Web 应用程序，同时将其托管在 [Azure 应用服务](../app-service/overview.md)、[IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index)、[Nginx](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx)、[Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache) 和 [Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index) 中。 还可以在自己的进程中使用自托管。
+通过 Azure SignalR 服务，ASP.NET Core SignalR 的服务器端组件托管在 Azure 中。 但是，由于该技术构建在 ASP.NET Core 之上，因此可在多个平台（Windows、Linux 和 MacOS）上运行实际 Web 应用程序，同时将其托管在 [Azure 应用服务](../app-service/overview.md)、[IIS](/aspnet/core/host-and-deploy/iis/index)、[Nginx](/aspnet/core/host-and-deploy/linux-nginx)、[Apache](/aspnet/core/host-and-deploy/linux-apache) 和 [Docker](/aspnet/core/host-and-deploy/docker/index) 中。 还可以在自己的进程中使用自托管。
 
 如果应用程序的目标包括：支持最新功能，通过实时内容更新实现 Web 客户端更新；跨多个平台（Azure、Windows、Linux 和 macOS）运行；以及在不同环境中进行托管，那么最佳选项是利用 Azure SignalR Service。
 
@@ -34,7 +34,7 @@ ASP.NET Core SignalR 是以前版本的重写。 因此，ASP.NET Core SignalR �
 
 此外，通常情况下，WebSocket 是支持实时内容更新的首选技术。 但是，缩放时，负载均衡大量持久性 WebSocket 连接是要解决的复杂问题。 常见解决方案通常利用：DNS 负载均衡、硬件负载均衡器和软件负载均衡。 Azure SignalR 服务为用户解决此问题。
 
-使用它的另一原因可能是因为完全不需要实际托管一个 Web 应用程序。 Web 应用程序的逻辑可利用[无服务器计算](https://azure.microsoft.com/overview/serverless-computing/)。 例如，可能仅通过 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) 触发器按需托管和执行代码。 这种情况可能会很棘手，因为代码仅按需运行，并且不会与客户端维持长久连接。 Azure SignalR 服务可以处理这种情况，因为该服务已为用户管理连接。 有关详细信息，请参阅[如何结合使用 SignalR Service 和 Azure Functions 的概述](signalr-concept-azure-functions.md)。
+使用它的另一原因可能是因为完全不需要实际托管一个 Web 应用程序。 Web 应用程序的逻辑可利用[无服务器计算](https://azure.microsoft.com/overview/serverless-computing/)。 例如，可能仅通过 [Azure Functions](../azure-functions/index.yml) 触发器按需托管和执行代码。 这种情况可能会很棘手，因为代码仅按需运行，并且不会与客户端维持长久连接。 Azure SignalR 服务可以处理这种情况，因为该服务已为用户管理连接。 有关详细信息，请参阅[如何结合使用 SignalR Service 和 Azure Functions 的概述](signalr-concept-azure-functions.md)。
 
 ## <a name="how-does-it-scale"></a>它如何缩放？
 

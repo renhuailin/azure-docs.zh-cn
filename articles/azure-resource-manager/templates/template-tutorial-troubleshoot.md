@@ -1,25 +1,25 @@
 ---
 title: 对部署进行故障排除
-description: 了解如何监视和排查 Azure 资源管理器模板部署问题。 显示活动日志和部署历史记录。
+description: 了解如何监视和排查 Azure 资源管理器模板（ARM 模板）部署问题。 显示活动日志和部署历史记录。
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119338"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928522"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>教程：排查 ARM 模板部署问题
 
-了解如何排查 Azure 资源管理器 (ARM) 模板部署错误。 在本教程中，请先在模板中设置两个错误，然后了解如何使用活动日志和部署历史记录来解决问题。
+了解如何排查 Azure 资源管理器模板（ARM 模板）部署错误。 在本教程中，请先在模板中设置两个错误，然后了解如何使用活动日志和部署历史记录来解决问题。
 
 有两种类型的错误与模板部署相关：
 
-- **验证错误**源于部署之前可确定的方案。 原因包括模板中的语法错误，或尝试部署超出订阅配额的资源。
-- **部署错误**源于部署过程中发生的条件。 原因包括尝试访问并行部署的资源。
+- **验证错误** 源于部署之前可确定的方案。 原因包括模板中的语法错误，或尝试部署超出订阅配额的资源。
+- **部署错误** 源于部署过程中发生的条件。 原因包括尝试访问并行部署的资源。
 
 两种类型的错误都会返回用于对部署进行故障排除的错误代码。 两种类型的错误都会显示在活动日志中。 但是，验证错误不会显示在部署历史记录中，因为部署从未启动。
 
@@ -37,7 +37,7 @@ ms.locfileid: "86119338"
 
 若要完成本文，需要做好以下准备：
 
-- 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
+- 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="create-a-problematic-template"></a>创建有问题的模板
 
@@ -96,14 +96,14 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 打开资源组，方法是：选择“资源组”，然后选择资源组名称。 此时会看到“部署”下显示“1 个失败” 。
 
-    ![资源管理器教程故障排除](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+    ![屏幕截图突出显示了失败的部署。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
 3. 选择“错误详细信息”。
 
-    ![资源管理器教程故障排除](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![屏幕截图突出显示了“错误”详细信息链接。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
     错误消息与此前显示的相同：
 
-    ![资源管理器教程故障排除](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![屏幕截图显示了错误详细信息。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
 也可在活动日志中查找错误：
 

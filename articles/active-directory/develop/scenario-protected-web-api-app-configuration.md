@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bfbfb1ff5b6cb9c711d987608226c51822dfc935
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257446"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442950"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
 
@@ -111,15 +111,15 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 对包含 **[Authorize]** 属性的控制器操作调用某个应用时，ASP.NET 和 ASP.NET Core 将从 Authorization 标头的持有者令牌中提取访问令牌。 然后，该访问令牌将转发到 JwtBearer 中间件，而该中间件会调用适用于 .NET 的 Microsoft IdentityModel 扩展。
 
-#### <a name="microsoftidentityweb"></a>Web.config
+#### <a name="microsoftidentityweb"></a>Microsoft.Identity.Web
 
-Microsoft 建议你在使用 ASP.NET Core 开发 web API 时使用 [Microsoft](https://www.nuget.org/packages/Microsoft.Identity.Web) web.config NuGet 包。
+Microsoft 建议在使用 ASP.NET Core 开发 Web API 时使用 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet 包。
 
-_Microsoft_ 在 ASP.NET Core、身份验证中间件以及用于 .NET [ (MSAL) 的 Microsoft 身份验证库 ](msal-overview.md) 之间提供粘附。 它允许更清晰、更可靠的开发人员体验，并利用 Microsoft 标识平台和 Azure AD B2C 的强大功能。
+Microsoft.Identity.Web 提供 ASP.NET Core、身份验证中间件和适用于 .NET 的 [Microsoft 身份验证库 (MSAL)](msal-overview.md) 之间的连接。 它支持更清晰、更强大的开发人员体验，并利用 Microsoft 身份平台和 Azure AD B2C 的强大功能。
 
 #### <a name="using-microsoftidentityweb-templates"></a>使用 Microsoft.Identity.Web 模板
 
-可以通过使用 Microsoft.Identity.Web 项目模板从头开始创建一个 Web API。 有关详细信息，请参阅 [Microsoft.Identity.Web - Web API 项目模板](https://aka.ms/ms-id-web/webapi-project-templates)
+可以通过使用 Microsoft.Identity.Web 项目模板从头开始创建一个 Web API。 有关详细信息，请参阅 [Microsoft WEB API 项目模板](https://aka.ms/ms-id-web/webapi-project-templates)。
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>从现有 ASP.NET Core 3.1 应用程序开始
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 他们不会通过个人帐户登录用户。 但是，你可以通过使用*Startup.cs*替换以下代码，将模板更改为使用[microsoft 标识](https://www.nuget.org/packages/Microsoft.Identity.Web)平台终结点：
+ 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 他们不会通过个人帐户登录用户。 但是，你可以通过使用 *Startup.cs* 替换以下代码，将模板更改为使用 [microsoft 标识](https://www.nuget.org/packages/Microsoft.Identity.Web)平台终结点：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -242,5 +242,4 @@ https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-valid
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [验证代码中的范围和应用角色](scenario-protected-web-api-verification-scope-app-roles.md)
+转到本方案中的下一篇文章， [验证代码中的作用域和应用角色](scenario-protected-web-api-verification-scope-app-roles.md)。

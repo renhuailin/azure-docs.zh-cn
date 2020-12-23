@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3ac2eab68963d75cd5c916e06285d49edd37aed
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738135"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656081"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>从 Azure 资源管理器模板部署 NSG 流日志
 
@@ -31,15 +31,15 @@ ms.locfileid: "84738135"
 > - [Azure 资源管理器](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/) 是 Azure 本机的一个强大的方法，可将[基础结构作为代码](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)进行管理。
+[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/) 是 Azure 本机的一个强大的方法，可将[基础结构作为代码](/azure/devops/learn/what-is-infrastructure-as-code)进行管理。
 
-本文介绍如何使用 Azure 资源管理器模板和 Azure PowerShell 以编程方式启用 [NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 首先，提供 NSG 流日志对象属性的概述，并提供一些示例模板。 然后，使用本地 PowerShell 实例部署模板。
+本文介绍如何使用 Azure 资源管理器模板和 Azure PowerShell 以编程方式启用 [NSG 流日志](./network-watcher-nsg-flow-logging-overview.md)。 首先，提供 NSG 流日志对象属性的概述，并提供一些示例模板。 然后，使用本地 PowerShell 实例部署模板。
 
 
 ## <a name="nsg-flow-logs-object"></a>NSG 流日志对象
 
 下面显示了包含所有参数的 NSG 流日志对象。
-有关属性的完整概述，可以阅读 [NSG 流日志模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)。
+有关属性的完整概述，可以阅读 [NSG 流日志模板参考](/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)。
 
 ```json
 {
@@ -76,8 +76,8 @@ ms.locfileid: "84738135"
 
 如果是首次使用 Azure 资源管理器模板，可以通过以下链接了解有关这些模板的详细信息。
 
-* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
-* [教程：创建和部署你的第一个 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+* [教程：创建和部署你的第一个 Azure 资源管理器模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 
 下面是用于设置 NSG 流日志的完整模板的两个示例。
@@ -122,33 +122,32 @@ ms.locfileid: "84738135"
   "contentVersion": "1.0.0.0",
   "apiProfile": "2019-09-01",
   "resources": [
- {
-    "name": "NetworkWatcher_centraluseuap/Microsoft.NetworkDalanDemoPerimeterNSG",
-    "type": "Microsoft.Network/networkWatchers/FlowLogs/",
-    "location": "centraluseuap",
-    "apiVersion": "2019-09-01",
-    "properties": {
-      "targetResourceId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/DalanDemo/providers/Microsoft.Network/networkSecurityGroups/PerimeterNSG",
-      "storageId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/MyCanaryFlowLog/providers/Microsoft.Storage/storageAccounts/storagev2ira",
-      "enabled": true,
-      "flowAnalyticsConfiguration": {
-        "networkWatcherFlowAnalyticsConfiguration": {
+    {
+      "name": "NetworkWatcher_centraluseuap/Microsoft.NetworkDalanDemoPerimeterNSG",
+      "type": "Microsoft.Network/networkWatchers/FlowLogs/",
+      "location": "centraluseuap",
+      "apiVersion": "2019-09-01",
+      "properties": {
+        "targetResourceId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/DalanDemo/providers/Microsoft.Network/networkSecurityGroups/PerimeterNSG",
+        "storageId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/MyCanaryFlowLog/providers/Microsoft.Storage/storageAccounts/storagev2ira",
+        "enabled": true,
+        "flowAnalyticsConfiguration": {
+          "networkWatcherFlowAnalyticsConfiguration": {
             "enabled": true,
             "workspaceResourceId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/defaultresourcegroup-wcus/providers/Microsoft.OperationalInsights/workspaces/1c4f42e5-3a02-4146-ac9b-3051d8501db0",
             "trafficAnalyticsInterval": 10
-                }
-      },
-      "retentionPolicy": {
-        "days": 5,
-        "enabled": true
-      },
-      "format": {
-        "type": "JSON",
-        "version": 2            
+          }
+        },
+        "retentionPolicy": {
+          "days": 5,
+          "enabled": true
+        },
+        "format": {
+          "type": "JSON",
+          "version": 2          
+        }
       }
     }
-
-  }
   ]
 }
 ```
@@ -172,14 +171,14 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 ## <a name="verifying-your-deployment"></a>验证部署
 
-可以通过多种方法来检查部署是否成功。 PowerShell 控制台应将“ProvisioningState”显示为“Succeeded”。 此外，还可以访问 [NSG 流日志门户页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)来确认所做的更改。 如果部署出现问题，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)。
+可以通过多种方法来检查部署是否成功。 PowerShell 控制台应将“ProvisioningState”显示为“Succeeded”。 此外，还可以访问 [NSG 流日志门户页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)来确认所做的更改。 如果部署出现问题，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](../azure-resource-manager/templates/common-deployment-errors.md)。
 
 ## <a name="deleting-your-resource"></a>删除资源
-Azure 可通过“完整”部署模式删除资源。 若要删除流日志资源，请在“完整”模式下指定部署，而不包含要删除的资源。 详细了解[“完整”部署模式](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)
+Azure 可通过“完整”部署模式删除资源。 若要删除流日志资源，请在“完整”模式下指定部署，而不包含要删除的资源。 详细了解[“完整”部署模式](../azure-resource-manager/templates/deployment-modes.md#complete-mode)
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用以下工具直观地显示 NSG 流日志：
 * [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 * [打开源工具](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-* [Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Azure 流量分析](./traffic-analytics.md)

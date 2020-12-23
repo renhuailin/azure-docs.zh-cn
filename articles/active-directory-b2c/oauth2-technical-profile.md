@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/03/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 35b1f57a2361c5a4360e2ff1944b93e767168799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78ce6466521c7903187798d902056948c659653c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259384"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509846"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth2 技术配置文件
 
@@ -77,13 +77,14 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
 | authorization_endpoint | 是 | 符合 RFC 6749 规范的授权终结点的 URL。 |
 | AccessTokenEndpoint | 是 | 符合 RFC 6749 规范的令牌终结点的 URL。 |
 | ClaimsEndpoint | 是 | 符合 RFC 6749 规范的用户信息终结点的 URL。 |
+| end_session_endpoint | 是 | 每个 RFC 6749 的结束会话终结点的 URL。 |
 | AccessTokenResponseFormat | 否 | 访问令牌终结点调用的格式。 例如，Facebook 需要 HTTP GET 方法，但访问令牌响应采用 JSON 格式。 |
 | AdditionalRequestQueryParameters | 否 | 附加的请求查询参数。 例如，你可能需要向标识提供者发送更多参数。 可以使用逗号分隔符包含多个参数。 |
 | ClaimsEndpointAccessTokenName | 否 | 访问令牌查询字符串参数的名称。 某些标识提供者的声明终结点支持 GET HTTP 请求。 在这种情况下，将使用查询字符串参数而不是授权标头发送持有者令牌。 |
@@ -96,15 +97,16 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 | ResponseErrorCodeParamName | 否 | 包含连同 HTTP 200 (Ok) 一起返回的错误消息的参数的名称。 |
 | ExtraParamsInAccessTokenEndpointResponse | 否 | 包含可在某些标识提供者的 **AccessTokenEndpoint** 响应中返回的附加参数。 例如，**AccessTokenEndpoint** 的响应包含 `openid` 等附加参数，在 **ClaimsEndpoint** 请求查询字符串中，除 access_token 以外，此参数也是必需的参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
 | ExtraParamsInClaimsEndpointRequest | 否 | 包含可在某些标识提供者的 **ClaimsEndpoint** 请求中返回的附加参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
-| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#outputclaims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
+| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#output-claims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
 |token_endpoint_auth_method| 否| 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值：`client_secret_post`（默认值）和 `client_secret_basic`（公共预览版）。 有关详细信息，请参阅 [OpenID Connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
+|SingleLogoutEnabled| 否| 指示在登录时是否尝试从联合标识提供程序注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](session-behavior.md#sign-out)。 可能的值： `true` (默认) 或 `false` 。|
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据设置为 `id_token` ，则可以省略加密密钥。 |
 
@@ -112,6 +114,6 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 配置标识提供者的重定向 URI 时，请输入 `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp`。 请确保将替换为 `{tenant-name}` 你的租户名称 (例如 contosob2c) 。 重定向 URI 需要采用全小写形式。
 
-示例：
+示例:
 
-- [使用自定义策略添加 Google+ 作为 OAuth2 标识提供者](identity-provider-google-custom.md)
+- [使用自定义策略添加 Google+ 作为 OAuth2 标识提供者](identity-provider-google.md)

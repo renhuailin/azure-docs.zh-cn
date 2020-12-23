@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 8346edd0f6016f1751a392213e5d6321f875baf2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369903"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455652"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>有关从云合作伙伴门户过渡到合作伙伴中心的常见问题
 
@@ -77,25 +77,25 @@ ms.locfileid: "91369903"
 
 | 产品/服务类型 <img src="" width=150px>| 已移动到合作伙伴中心？ <img src="" width=100px>| 后续步骤 |
 | --- | --- | --- |
-| SaaS | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅在 [商用 marketplace 中创建新的 SaaS 产品](partner-center-portal/create-new-saas-offer.md)。 |
-| 虚拟机 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [在 Azure Marketplace 上创建 azure 虚拟机产品/服务](partner-center-portal/azure-vm-create-offer.md)。 |
-| Azure 应用程序 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Azure 应用程序产品/服务](partner-center-portal/create-new-azure-apps-offer.md)。 |
+| SaaS | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [为商用 Marketplace 规划 SaaS 产品](plan-saas-offer.md)。 |
+| 虚拟机 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 在 [规划虚拟机产品/服务](marketplace-virtual-machines.md)中了解详细信息。 |
+| Azure 应用程序 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Azure 应用程序产品/服务](create-new-azure-apps-offer.md)。 |
 | Dynamics 365 Business Central | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Dynamics 365 Business Central 产品](partner-center-portal/create-new-business-central-offer.md)。 |
 | Dynamics 365 for Customer Engagement & PowerApps | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Dynamics 365 For Customer Engagement & PowerApps 产品](partner-center-portal/create-new-customer-engagement-offer.md)。 |
 | Dynamics 365 for Operations | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建适用于操作的 Dynamics 365](partner-center-portal/create-new-operations-offer.md)。 |
 | Power BI 应用 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建适用于 AppSource 的 Power BI 应用](partner-center-portal/create-power-bi-app-offer.md)。 |
 | IoT Edge 模块 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅在 [Azure Marketplace 中创建、配置和发布 IoT Edge 模块产品](partner-center-portal/azure-iot-edge-module-creation.md)。 |
-| 容器 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Azure 容器产品](partner-center-portal/create-azure-container-offer.md)。 |
-| 咨询服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 请在 [创建咨询服务产品](partner-center-portal/create-consulting-service-offer.md)上了解详细信息。 |
+| 容器 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Azure 容器产品](./create-azure-container-offer.md)。 |
+| 咨询服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 请在 [创建咨询服务产品](./create-consulting-service-offer.md)上了解详细信息。 |
 | 托管服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 请在 [创建托管服务产品](partner-center-portal/create-new-managed-service-offer.md)中了解详细信息。 |
-| Dynamics Nav 托管服务 | 否 | Microsoft 已将 Dynamics NAV 托管服务发展为 [dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)，因此我们从 AppSource 中取消列出了 Dynamics Nav 托管服务实时优惠。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在 AppSource 中提供产品/服务，请将其调整为 Dynamics 365 Business Central 产品/服务，并将其提交到 [合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅 [创建 Dynamics 365 Business Central 产品](partner-center-portal/create-new-business-central-offer.md)。 |
-| Cortana Intelligence | 否 | Microsoft 为 Cortana Intelligence 发展了产品路线图，因此我们从 AppSource 中取消列出了 Cortana Intelligence live 产品。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在商业应用商店中提供产品/服务，请将你的产品/服务作为服务 (SaaS) 提供，并将其提交到 [合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅在 [合作伙伴中心创建清单](partner-center-portal/offer-creation-checklist.md)。 |
+| Dynamics Nav 托管服务 | 否 | Microsoft 已将 Dynamics NAV 托管服务发展为 [dynamics 365 Business Central](/dynamics365/business-central/)，因此我们从 AppSource 中取消列出了 Dynamics Nav 托管服务实时优惠。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在 AppSource 中提供产品/服务，请将其调整为 Dynamics 365 Business Central 产品/服务，并将其提交到 [合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅 [创建 Dynamics 365 Business Central 产品](partner-center-portal/create-new-business-central-offer.md)。 |
+| Cortana Intelligence | 否 | Microsoft 为 Cortana Intelligence 发展了产品路线图，因此我们从 AppSource 中取消列出了 Cortana Intelligence live 产品。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在商业应用商店中提供产品/服务，请将你的产品/服务作为服务 (SaaS) 提供，并将其提交到 [合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅在 [合作伙伴中心创建清单](./plan-saas-offer.md)。 |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>在合作伙伴中心找不到我的云合作伙伴门户产品/服务
 
 在 "合作伙伴中心" 中看到的内容取决于你在中注册的程序、你所属的帐户，以及已分配的用户角色和权限。 有很多合作伙伴中心计划可用，你可以在多个程序中注册。 你还可以访问具有相同用户凭据的多个帐户。
 
-在云合作伙伴门户中创建的产品/服务在 " **商业市场** " 计划下的 "合作伙伴中心" 下提供，并在用于创建产品/服务的帐户下提供。 若要确保您查看的是正确的程序和正确的帐户，请按照以下步骤进行操作。 有关其他疑难解答提示，请参阅 [管理合作伙伴中心帐户](https://docs.microsoft.com/partner-center/partner-center-account-setup)。
+在云合作伙伴门户中创建的产品/服务在 " **商业市场** " 计划下的 "合作伙伴中心" 下提供，并在用于创建产品/服务的帐户下提供。 若要确保您查看的是正确的程序和正确的帐户，请按照以下步骤进行操作。 有关其他疑难解答提示，请参阅 [管理合作伙伴中心帐户](/partner-center/partner-center-account-setup)。
 
 ### <a name="access-the-right-program-in-partner-center"></a>在合作伙伴中心访问正确的程序
 
@@ -135,7 +135,7 @@ ms.locfileid: "91369903"
 
 ### <a name="modular-publishing-capabilities"></a>模块化发布功能
 
-合作伙伴中心提供了一个模块化发布功能，你可用它来选择你想要发布的更改，而不是总是一次性发布所有更新。 例如，下面的屏幕显示，仅选择要发布的更改是对 **属性** 和  **服务列表**的更改。 您在预览页中所做的更改将不会发布。
+合作伙伴中心提供了一个模块化发布功能，你可用它来选择你想要发布的更改，而不是总是一次性发布所有更新。 例如，下面的屏幕显示，仅选择要发布的更改是对 **属性** 和  **服务列表** 的更改。 您在预览页中所做的更改将不会发布。
 
 [![屏幕截图显示合作伙伴中心评审和发布页。](media/cpp-pc-faq/review-page.png "显示合作伙伴中心审阅和发布页")](media/cpp-pc-faq/review-page.png#lightbox)
 
@@ -143,7 +143,7 @@ ms.locfileid: "91369903"
 
 ### <a name="enhanced-preview-options"></a>强化预览选项
 
-合作伙伴中心包含一个[“比较”功能](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers)，其中有改进后的筛选选项。 这使你能够根据产品/服务的预览版本和上线版本。
+合作伙伴中心包含一个[“比较”功能](partner-center-portal/update-existing-offer.md#compare-changes-to-your-offer)，其中有改进后的筛选选项。 这使你能够根据产品/服务的预览版本和上线版本。
 
 [![屏幕截图显示合作伙伴中心比较功能。](media/cpp-pc-faq/compare.png "显示合作伙伴中心比较功能")](media/cpp-pc-faq/compare.png#lightbox)
 
@@ -155,16 +155,16 @@ ms.locfileid: "91369903"
 
 此外，你之前在 **Marketplace** 或 **店面详细**  信息中提供的信息 (咨询服务，云合作伙伴门户中的 Power BI 应用) 页现在将收集到合作伙伴中心的 **产品/服务列表** 页：
 
-[![屏幕截图显示 "合作伙伴中心产品/服务" 列表页。](media/cpp-pc-faq/offer-listing.png "显示合作伙伴中心产品/服务列表页")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[![屏幕截图显示 "合作伙伴中心产品/服务" 列表页。] (media/cpp-pc-常见问题解答/offer-listing.png](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 你之前在云合作伙伴门户中的一个页面中提供的 Sku 信息现在可以在合作伙伴中心的几个页面中收集：
 
-- 计划设置页面
+- "计划设置" 页
 - 计划列表页面
 - 计划可用性页面
 - 规划技术配置页，如下所示：
 
-![![屏幕截图显示合作伙伴中心技术配置页。] (media/cpp-pc-常见问题解答/technical-configuration.png "显示合作伙伴中心技术配置页" ) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
+[![显示 "合作伙伴中心技术配置" 页。](media/cpp-pc-faq/technical-configuration.png)](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 产品/服务 ID 现在显示在 "产品/服务" 的左侧导航栏上：
 

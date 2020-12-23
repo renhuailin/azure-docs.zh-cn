@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065856"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342155"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -43,11 +43,11 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 8. 如果指标包含维度，则会显示一个维度表。 为每个维度选择一个或多个值。
     - 显示的维度值基于在过去 3 天内的指标数据。
     - 如果你要查看的维度值没有显示，请单击“+”来添加自定义值。
-    - 还可以针对任一维度**选择 \*** 。 **选择 \*** 会将选择范围动态调整为某个维度的所有当前和未来值。
+    - 您还可以为任何维度*选择 \* *"_"。 _*选择 \* *_ 会将所选内容动态缩放到维度的所有当前和未来值。
 
     指标警报规则将会针对所选值的所有组合对条件进行评估。 [详细了解如何针对多维指标发出警报](alerts-metric-overview.md)。
 
-9. 选择“阈值”  类型、“运算符”  和“聚合类型”  。 这将确定指标警报规则将评估的逻辑。
+9. 选择 _*阈值** 类型、 **运算符**和 **聚合类型**。 这将确定指标警报规则将评估的逻辑。
     - 如果使用“静态”  阈值，请继续定义“阈值”  。 指标图表可以帮助你确定可能合理的阈值。
     - 如果使用“动态”  阈值，请继续定义“阈值敏感度”  。 指标图表将显示基于最新数据计算得出的阈值。 [详细了解动态阈值条件类型和敏感度选项](alerts-dynamic-thresholds.md)。
 
@@ -57,7 +57,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 12. （可选）若要监视复杂的预警规则，请添加另一个条件。 目前，用户可以将包含动态阈值条件的预警规则用作单一条件。
 
-13. 填写“警报详细信息”，例如“警报规则名称”、“说明”和“严重性”。    
+13. 填写警报 **详细信息** ，如 **警报规则名称**、 **描述**和 **严重性**。
 
 14. 通过选择现有操作组或创建新的操作组，将一个操作组添加到警报中。
 
@@ -91,11 +91,11 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 ## <a name="with-azure-cli"></a>使用 Azure CLI
 
-前面的部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)。 对于本文，我们将使用 Cloud Shell。
+前面几个部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)。 对于本文，我们将使用 Cloud Shell。
 
-1. 请参阅 Azure 门户，单击**Cloud Shell**。
+1. 请参阅 Azure 门户，单击 **Cloud Shell**。
 
-2. 在提示符下，可以结合 ``--help`` 选项使用命令来详细了解相应的命令及其用法。 例如，以下命令显示了可用于创建、查看和管理指标警报的命令的列表
+2. 在提示符下，可以结合 ``--help`` 选项使用命令来详细了解相应的命令及其用法。 例如，以下命令显示可用于创建、查看和管理指标警报的命令列表
 
     ```azurecli
     az monitor metrics alert --help
@@ -137,25 +137,25 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 ## <a name="with-powershell"></a>使用 PowerShell
 
-指标警报规则提供了专用 PowerShell cmdlet：
+指标警报规则提供专用的 PowerShell cmdlet：
 
-- [AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)：创建新的指标警报规则或更新现有的指标警报规则。
-- [AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)：获取一个或多个指标警报规则。
-- [AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2)：删除指标警报规则。
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2):新建指标警报规则或更新现有指标警报规则。
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2):获取一个或多个指标警报规则。
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2):删除指标警报规则。
 
 ## <a name="with-rest-api"></a>使用 REST API
 
-- [创建或更新](/rest/api/monitor/metricalerts/createorupdate)：创建新的指标警报规则或更新现有的指标警报规则。
-- [Get](/rest/api/monitor/metricalerts/get)：获取特定指标警报规则。
-- [按资源组列出](/rest/api/monitor/metricalerts/listbyresourcegroup)：获取特定资源组中指标警报规则的列表。
-- [按订阅列出](/rest/api/monitor/metricalerts/listbysubscription)：获取特定订阅中指标警报规则的列表。
+- [创建或更新](/rest/api/monitor/metricalerts/createorupdate)：新建指标警报规则或更新现有指标警报规则。
+- [获取](/rest/api/monitor/metricalerts/get)：获取特定指标警报规则。
+- [按资源组列出](/rest/api/monitor/metricalerts/listbyresourcegroup)：获取特定资源组中的指标警报规则的列表。
+- [按订阅列出](/rest/api/monitor/metricalerts/listbysubscription)：获取特定订阅中的指标警报规则的列表。
 - [更新](/rest/api/monitor/metricalerts/update)：更新指标警报规则。
 - [删除](/rest/api/monitor/metricalerts/delete)：删除指标警报规则。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 资源管理器模板创建指标警报](./alerts-metric-create-templates.md)。
-- [了解指标警报的工作原理](alerts-metric-overview.md)。
-- [了解指标警报与动态阈值条件的工作原理](alerts-dynamic-thresholds.md)。
+- [使用 Azure 资源管理器模板创建指标警报](./alerts-metric-create-templates.md)
+- [了解指标警报的工作方式](alerts-metric-overview.md)
+- [了解具有动态阈值条件的指标警报的工作原理](alerts-dynamic-thresholds.md)
 - [了解指标警报的 Webhook 架构](./alerts-metric-near-real-time.md#payload-schema)
-
+- [解决指标警报中的问题](alerts-troubleshoot-metric.md)

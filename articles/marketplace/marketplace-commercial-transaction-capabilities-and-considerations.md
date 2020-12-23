@@ -4,27 +4,27 @@ description: 本文介绍商业市场交易选项的定价、计费、开票和�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 898c106fb961373889fbae87db6c755fe2495ff8
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006391"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621257"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
-本文介绍了 Microsoft 商业应用商店的定价、计费、开票和支出注意事项。 
+本文介绍了 Microsoft 商业应用商店的定价、计费、开票和支出注意事项。
 
 ## <a name="transactions-by-listing-option"></a>按列表选项列出的事务
 
-发布者或 Microsoft 负责管理商业市场中的产品/服务的软件许可证交易。 你为产品/服务选择的列表选项决定了管理交易的人员。 请参阅 [选择列表选项](./determine-your-listing-type.md#choose-a-listing-option) 以获取每个发布选项的可用性和说明。
+发布者或 Microsoft 负责管理商业市场中的产品/服务的软件许可证交易。 你为产品/服务选择的列表选项决定了管理交易的人员。 有关每个发布选项的可用性和说明，请参阅 [列表选项简介](determine-your-listing-type.md)
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>与我联系、免费试用和 BYOL 选项
 
-发布者可以选择 " _联系我_ " 和 " _免费试用版_"，这些选项用于促销和用户购置目的。 对于某些产品/服务类型，发布者可以选择 "自带许可证 (BYOL") 选项，使客户能够使用他们直接购买的许可证购买你的产品/服务的订阅。 使用这些选项，Microsoft 不直接参与发布者的软件许可证交易，因此没有相关的交易费。 
+发布者可以选择 " _联系我_ " 和 " _免费试用版_"，这些选项用于促销和用户购置目的。 对于某些产品/服务类型，发布者可以选择 "自带许可证 (BYOL") 选项，使客户能够使用他们直接购买的许可证购买你的产品/服务的订阅。 使用这些选项，Microsoft 不直接参与发布者的软件许可证交易，因此没有相关的交易费。
 
 发布者负责支持软件许可证事务的所有方面。 这包括但不限于订单、履单、计量、计费、开票、支付和收集。 通过 "联系我" 列表选项，发布者将保留从客户那里收集的100% 的出版商软件许可费用。
 
@@ -54,7 +54,7 @@ ms.locfileid: "90006391"
 
 根据所使用的事务选项，订阅费用如下所示：
 
-- **立即获取 (免费) ** –免费获取软件许可证。 使用免费产品/服务不会向客户收取 Azure Marketplace 费用。 免费产品/服务不能转换为付费产品/服务。 客户必须订购付费产品/服务。
+- **立即获取 (免费)** –免费获取软件许可证。 使用免费产品/服务不会向客户收取 Azure Marketplace 费用。 免费产品/服务不能转换为付费产品/服务。 客户必须订购付费产品/服务。
 - **自带许可 (BYOL)** - 直接在发布者和客户之间管理所有适用的软件许可证费用。 Microsoft 仅收取 Azure 基础结构使用费。 如果产品市场中列出了产品/服务，则在商业市场上获得访问或使用该产品/服务的客户不会收取商业 marketplace 费用。
 - **订阅定价** –软件许可证费用以按固定费率或按座位计费的每月或每年、定期订阅费用形式提供。 定期客户取消或未使用的服务不会按比例计费。 如果客户在订阅期的中间升级或降级订阅，则可能会按比例计费。
 - **基于使用情况的定价** –对于 Azure 虚拟机产品/服务，将根据其对产品/服务的使用程度向客户收费。 对于虚拟机映像，客户按发布者设置的每小时 Azure Marketplace 费用收费，用于从 VM 映像部署的虚拟机。 不同虚拟机大小的小时费用可能一致也可能不同。 不足一小时按分钟收费。 计划按月计费。
@@ -84,7 +84,15 @@ Microsoft 使客户能在 Microsoft 商业市场和你的最终用户许可协�
 
 除了使用产品/服务类型和计费模型将产品/服务转化为收益外，还可以交易专用产品/服务，采用经过协商的、特定于交易的定价或者自定义配置。 专用产品/服务受全部三个交易发布选项的支持。
 
-此选项允许采用比公开提供的产品/服务更高或更低的定价。 专用产品/服务可用于提供产品/服务折扣或为其添加奖励金。 可在产品/服务级别将其 Azure 订阅添加到允许列表，向一个或多个客户提供专用产品/服务。
+此选项允许采用比公开提供的产品/服务更高或更低的定价。 你可以使用专用产品/服务进行折扣或向产品/服务添加高级版。 可以通过以下方式向一个或多个客户提供专用产品/服务：在产品/服务级别列出其 Azure 订阅。
+
+### <a name="commercial-marketplace-service-fees"></a>商业 marketplace 服务费用
+
+当客户从商用 marketplace 购买你的产品/服务时，我们将收取20% 的标准存储服务费用。 有关此费用的详细信息，请参阅 [Microsoft 发行者协议](https://go.microsoft.com/fwlink/?LinkID=699560)第5c 部分。
+
+对于发布到商业应用商店的某些事务产品/服务，你可能会有超过10% 的商店服务费用。 对于合格的产品/服务，它必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 在每个日历月结束之前，必须至少在5个工作日内获得资格，以获得该月降低的 Marketplace 服务费用。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+
+降低的 Marketplace 服务费用适用于 Azure IP 共同销售的 incentivized SaaS、Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 解决方案。 付费 SaaS 产品/服务与一个 Microsoft 团队应用相关联，或至少 Microsoft 365 两个 (Excel、PowerPoint、Word、Outlook 和 SharePoint) 的外接程序，并已发布到 Microsoft AppSource 也可获得此折扣。
 
 ### <a name="examples"></a>示例
 
@@ -144,10 +152,6 @@ BYOL 的成本构成如下：
 |Microsoft 将许可证费用的 80% 支付给你 <br> \* 对于所有符合资格的 SaaS 应用，Microsoft 将为你垫付许可证费用的 90%   |   80.00 美元/月 <br> \* 90.00 美元/月    |
 |Microsoft 保留许可证费用的 20% <br> \* 对于所有符合资格的 SaaS 应用，Microsoft 保留许可证费用的 10%。  |  20.00 美元/月 <br> \* 10.00 美元     |
 
-### <a name="reduced-service-fee"></a>降低服务费用
-
-对于在商业市场上发布的特定产品/服务，Microsoft 将从 20% (降低其 Marketplace 服务费用，如 [Microsoft 发行者协议](https://go.microsoft.com/fwlink/?LinkID=699560)) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 在每个日历月结束之前，必须至少在5个工作日内获得资格，以获得该月降低的 Marketplace 服务费用。 降低的 Marketplace 服务费用适用于 Azure IP 共同销售 incentivized SaaS、Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。 付费 SaaS 产品/服务与一个 Microsoft 团队应用相关联，或至少两 Microsoft 365 加载项 (Excel、PowerPoint、Word、Outlook 和 SharePoint) ，并发布在 AppSource 上也会获得此折扣。
-
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 
 **开具发票与付款** - 可以使用客户的首选发票开具方法来递送订阅或 PAYGO 软件许可证费用。
@@ -197,7 +201,7 @@ Microsoft 作为代理收集的所有软件许可费用将收取 20% 的手续�
 
 - **Azure 应用程序：解决方案模板或托管应用** –必须预配一个或多个虚拟机，并提取虚拟机定价的总和。 对于单个计划的托管应用，可以选择固定费率每月订阅作为定价模型，而不是虚拟机定价。 在部分情况下，Azure 基础结构使用费将与软件许可证费用分开，单独传递给客户，但位于相同的账单上。 但是，如果你配置了托管应用产品/服务以实现 ISV 基础结构费用，则会向发布者计费 Azure 资源，并且客户会收到包含基础结构、软件许可证和管理服务成本的固定费用。
 
-- **Saas 应用程序** -必须是多租户解决方案，使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 进行身份验证，并与 [SaaS 履单 api](partner-center-portal/pc-saas-fulfillment-api-v2.md)集成。 Azure 基础结构的使用情况是直接 (合作伙伴) 进行管理和计费的，因此，你必须将 Azure 基础结构使用费和软件许可费用视为单个成本项。 有关详细指南，请参阅 [在商业应用商店中创建新的 SaaS 产品/服务](partner-center-portal/create-new-saas-offer.md)。
+- **Saas 应用程序** -必须是多租户解决方案，使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 进行身份验证，并与 [SaaS 履单 api](partner-center-portal/pc-saas-fulfillment-api-v2.md)集成。 Azure 基础结构的使用情况是直接 (合作伙伴) 进行管理和计费的，因此，你必须将 Azure 基础结构使用费和软件许可费用视为单个成本项。 有关详细指南，请参阅 [在商业应用商店中创建新的 SaaS 产品/服务](./create-new-saas-offer.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ecce689e287673a3b08f8f90f87c28e021106d6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037821"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427983"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>教程：创建用于视频分析的 IoT Edge 实例 (Intel NUC)
 
@@ -35,15 +35,15 @@ Azure IoT Edge 是一项完全托管的服务，可通过部署和运行以下�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在开始之前，应该先完成上一教程 - [在 Azure IoT Central 中创建实时视频分析应用程序](./tutorial-video-analytics-create-app.md)。
+* 在开始之前，应该先完成前置教程：[在 Azure IoT Central 中创建实时视频分析应用程序 (YOLO v3)](./tutorial-video-analytics-create-app-yolo-v3.md) 或[在 Azure IoT Central 中创建视频分析 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md)。
 * 一个运行 Linux 的设备（如 Intel NUC），该设备可以运行 Docker 容器，并且具有足够的处理能力来运行视频分析。
-* 已在设备上[安装 IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)并运行。
+* 已在设备上[安装 IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)并运行。
 * 可以从 Windows 计算机连接到 IoT Edge 设备，你需要 [PuTTY SSH 客户端](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)或等效的实用工具。
 * 还需要一个 Azure 订阅。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上免费创建一个。
 
 ## <a name="configure-the-iot-edge-device"></a>配置 IoT Edge 设备
 
-如果 Intel NUC 计算机上未安装 IoT Edge 运行时，请参阅[在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)说明。
+如果 Intel NUC 计算机上未安装 IoT Edge 运行时，请参阅[在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)说明。
 
 若要更新 IoT Edge 运行时：
 
@@ -117,9 +117,9 @@ Azure IoT Edge 是一项完全托管的服务，可通过部署和运行以下�
 
 1. 将 `{scope_id}` 替换为在上一教程中的 scratchpad.txt 文件中记下的“ID 范围”。
 
-1. 将 `{registration_id}` 替换为在上一教程中创建的设备 lva-gateway-001。
+1. 将 `{registration_id}` 替换为在上一教程中创建的设备 gateway-001。
 
-1. 将 `{symmetric_key}` 替换为在上一教程中的 scratchpad.txt 文件中记下的 lva-gateway-001 设备的“主密钥” 。
+1. 将 `{symmetric_key}` 替换为在上一教程中的 scratchpad.txt 文件中记下的 gateway-001 设备的“主密钥” 。
 
 1. 运行以下命令重启 IoT Edge 守护程序：
 
@@ -140,7 +140,7 @@ Azure IoT Edge 是一项完全托管的服务，可通过部署和运行以下�
 
 如果 IoT Edge 模块不能正常启动，请参阅[排查 IoT Edge 设备故障](../../iot-edge/troubleshoot.md)。
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>收集相机中的 RSTP 流
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>收集相机中的 RTSP 流
 
 标识连接到 IoT Edge 设备的相机的 RTSP 流 URL，例如：
 

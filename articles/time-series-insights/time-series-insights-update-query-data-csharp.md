@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99cde78f0944544941224927e84e117bd0e660d8
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 81725a28102caf0d69a9fb303eaccdcf2151587d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667837"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020021"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>使用 C# 查询 Azure 时序见解第 2 代环境中的数据
 
-本 C# 示例演示了如何在 Azure 时序见解 Gen2 环境中通过 [Gen2 数据访问 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) 查询数据。
+本 C# 示例演示了如何在 Azure 时序见解 Gen2 环境中通过 [Gen2 数据访问 API](/rest/api/time-series-insights/reference-data-access-overview) 查询数据。
 
 > [!TIP]
 > 可以访问 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) 查看 Gen2 C# 代码示例。
@@ -33,22 +33,22 @@ ms.locfileid: "91667837"
 * 如何使用 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) 通过 Azure Active Directory 获取访问令牌。
 * 如何在后续的数据访问 API 请求的 `Authorization` 标头中传递获取的访问令牌。
 * 该示例提供了一个控制台界面，其中演示了如何对以下项发出 HTTP 请求：
-  * [Gen2 环境 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis)
-    * [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability) 和[获取事件架构 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
-  * [Gen2 查询 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)
-    * [获取事件 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)、[获取时序 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries) 和[获取聚合时序 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-  * [时序模型 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-    * [获取层次结构 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) 和[层次结构批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-    * [获取类型 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) 和[类型批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-    * [获取实例 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) 和[实例批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+  * [Gen2 环境 API](/rest/api/time-series-insights/reference-environments-apis)
+    * [获取环境可用性 API](/rest/api/time-series-insights/dataaccessgen2/query/getavailability) 和[获取事件架构 API](/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
+  * [Gen2 查询 API](/rest/api/time-series-insights/reference-query-apis)
+    * [获取事件 API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)、[获取时序 API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries) 和[获取聚合时序 API](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+  * [时序模型 API](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+    * [获取层次结构 API](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) 和[层次结构批处理 API](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+    * [获取类型 API](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) 和[类型批处理 API](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+    * [获取实例 API](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) 和[实例批处理 API](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
 
-* 高级[搜索](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#search-features)和 [TSX](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) 功能。
+* 高级[搜索](/rest/api/time-series-insights/reference-model-apis#search-features)和 [TSX](/rest/api/time-series-insights/reference-time-series-expression-syntax) 功能。
 
 ## <a name="prerequisites-and-setup"></a>先决条件和设置
 
 在编译和运行示例代码之前，请完成以下步骤：
 
-1. [预配 Azure 时序见解 Gen2](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) 环境。
+1. [预配 Azure 时序见解 Gen2](./how-to-provision-manage.md#create-the-environment) 环境。
 1. 为 Azure Active Directory 配置 Azure 时序见解环境，如[身份验证和授权](time-series-insights-authentication-and-authorization.md)中所述。
 1. 按照 [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) 中指定的方式运行 [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat)，以生成 Azure 时序见解 Gen2 客户端依赖项。
 1. 打开 `TSIPreviewDataPlaneclient.sln` 解决方案，并将 `DataPlaneClientSampleApp` 设置为 Visual Studio 中的默认项目。
@@ -80,6 +80,6 @@ ms.locfileid: "91667837"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关查询的详细信息，请参阅[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)。
+* 若要了解有关查询的详细信息，请参阅[查询 API 参考](/rest/api/time-series-insights/reference-query-apis)。
 
 * 阅读如何[使用客户端 SDK 将 JavaScript 应用连接到 Azure 时序见解](https://github.com/microsoft/tsiclient)。

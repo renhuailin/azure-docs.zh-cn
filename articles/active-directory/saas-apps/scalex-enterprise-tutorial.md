@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: c7033886d55e381445d99035115654332491441c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547835"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895048"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ScaleX Enterprise 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88547835"
 * 让用户使用其 Azure AD 帐户自动登录到 ScaleX Enterprise。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -133,7 +133,7 @@ ms.locfileid: "88547835"
 
 ## <a name="configure-scalex-enterprise-sso"></a>配置 ScaleX Enterprise SSO
 
-1. 若要在 ScaleX Enterprise 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
+1. 若要在 ScaleX Enterprise 中自动执行配置，需要通过单击“安装扩展”  来安装 **我的应用安全登录浏览器扩展** 。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
@@ -148,11 +148,11 @@ ms.locfileid: "88547835"
     > [!NOTE]
     > Contoso 只是一个示例。 这应当是实际公司名称。
 
-    ![配置单一登录](./media/scalex-enterprise-tutorial/Test_Admin.png)
+    ![显示在右上角的菜单中选择了示例公司名称的屏幕截图。](./media/scalex-enterprise-tutorial/Test_Admin.png)
 
 1. 从顶部的菜单中选择“集成”并选择“单一登录”。  
 
-    ![配置单一登录](./media/scalex-enterprise-tutorial/admin_sso.png) 
+    ![显示选择了“集成”并从下拉菜单中选择了“单一登录”的屏幕截图。](./media/scalex-enterprise-tutorial/admin_sso.png) 
 
 1. 如下所示填写表单：
 
@@ -160,9 +160,9 @@ ms.locfileid: "88547835"
 
     a. 选择“创建可以通过 SSO 进行身份验证的任何用户” 
 
-    b. **服务提供商 saml**：粘贴 urn:oasis:names:tc:SAML:2.0:nameid-format:persistent 值
+    b. **服务提供商 saml** ：粘贴值 urn:oasis:names:tc:SAML:2.0:nameid-format:persistent_
 
-    c. **ACS 响应中的标识提供者名称电子邮件字段**：粘贴 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值
+    c. ACS 响应中的标识提供者名称电子邮件字段：粘贴 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值
 
     d. **标识提供者 EntityDescriptor 实体 ID：** 粘贴从 Azure 门户复制的“Azure AD 标识符”值  。
 
@@ -182,14 +182,14 @@ ms.locfileid: "88547835"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ScaleX Enterprise 磁贴时，应当会自动登录到已为其设置了 SSO 的 ScaleX Enterprise。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 ScaleX Enterprise 磁贴时，应当会自动登录到已为其设置了 SSO 的 ScaleX Enterprise。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 ScaleX Enterprise](https://aad.portal.azure.com/)

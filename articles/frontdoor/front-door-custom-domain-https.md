@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: bac1d1e41cab4aa3be10fb226df57277db20c78e
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030270"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368309"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -84,7 +84,7 @@ ms.locfileid: "90030270"
 > [!WARNING]
 > Azure Front Door 目前仅支持 Front Door 配置所在的同一订阅中的 Key Vault 帐户。 选择不包含你的 Front Door 的订阅中的 Key Vault 会导致失败。
 
-2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为**证书**对象，而不是**机密**。
+2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为 **证书** 对象，而不是 **机密** 。
 
 > [!NOTE]
 > 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。
@@ -94,7 +94,7 @@ ms.locfileid: "90030270"
 通过 PowerShell 将 Azure Front Door 的服务主体注册为 Azure Active Directory 中的应用。
 
 > [!NOTE]
-> 此操作需要全局管理员权限，并且每个租户只需要执行**一次**。
+> 此操作需要全局管理员权限，并且每个租户只需要执行 **一次** 。
 
 1. 根据需要在本地计算机上的 PowerShell 中安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -108,7 +108,7 @@ ms.locfileid: "90030270"
 
 1. 在 Key Vault 帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略   。
 
-2. 在“选择主体”中搜索 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然后选择“Microsoft.Azure.Frontdoor”。   单击“选择”  。
+2. 在“选择主体”中搜索 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** ，然后选择“Microsoft.Azure.Frontdoor”。   单击“选择”  。
 
 3. 在“机密权限”  中，选择 **Get** 以允许 Front Door 检索证书。
 
@@ -134,6 +134,11 @@ ms.locfileid: "90030270"
     - 订阅 ID 的 Key Vault 帐户。 
     - 所选 Key Vault 下的证书（机密）。 
     - 可用证书版本。 
+
+> [!NOTE]
+> 将证书版本留空将导致：
+> - 选择最新版本的证书。
+> - 在 Key Vault 中提供较新版本的证书时，会自动轮换到最新版本的证书。
  
 5. 使用自己的证书时，不需要对域进行验证。 转至[等待传播](#wait-for-propagation)。
 
@@ -148,13 +153,13 @@ ms.locfileid: "90030270"
 
 如果使用的是自己的证书，则不需要对域进行验证。
 
-CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 Front Door 的默认 .azurefd.net 主机名：
+CNAME 记录应采用以下格式，其中 *Name* 是自定义域名， *Value* 是 Front Door 的默认 .azurefd.net 主机名：
 
 | 名称            | 类型  | 值                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
-有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)。
+有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](../cdn/cdn-map-content-to-custom-domain.md)。
 
 如果 CNAME 记录采用正确的格式，DigiCert 会自动验证自定义域名，并为域名创建专用的证书。 DigitCert 不会向你发送验证电子邮件，并且你无需批准请求。 该证书会在一年内有效，并会在过期前自动续订。 转至[等待传播](#wait-for-propagation)。 
 

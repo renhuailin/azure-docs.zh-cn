@@ -3,19 +3,19 @@ title: 如何配置异常探测器 API 的容器
 titleSuffix: Azure Cognitive Services
 description: 使用命令参数配置异常探测器 API 容器运行时环境 `docker run` 。 此容器有多个必需设置，以及一些可选设置。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.author: aahi
-ms.openlocfilehash: c0bf08ae0b2d26b2f4992181d2e300e9dbeed818
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903542"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363708"
 ---
 # <a name="configure-anomaly-detector-containers"></a>配置异常检测器容器
 
@@ -25,10 +25,10 @@ ms.locfileid: "90903542"
 
 此容器具有以下配置设置：
 
-|必需|设置|目的|
+|必需|设置|用途|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
-|否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
+|否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](/azure/application-insights) 遥测支持。|
 |是|[Billing](#billing-configuration-setting)|指定 Azure 上服务资源的终结点 URI。|
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
@@ -45,7 +45,7 @@ ms.locfileid: "90903542"
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**异常探测器的**资源管理，**密钥**下
+* Azure 门户： **异常探测器的** 资源管理， **密钥** 下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -97,8 +97,8 @@ ms.locfileid: "90903542"
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](anomaly-detector-container-howto.md#stop-the-container)它。
 
-* **行继续**符：以下部分中的 Docker 命令使用反斜杠 `\` 作为 bash shell 的行继续符。 根据主机操作系统的要求替换或删除字符。 例如，Windows 的行继续符是插入符号 `^`。 将反斜杠替换为插入符号。 
-* **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
+* **行继续** 符：以下部分中的 Docker 命令使用反斜杠 `\` 作为 bash shell 的行继续符。 根据主机操作系统的要求替换或删除字符。 例如，Windows 的行继续符是插入符号 `^`。 将反斜杠替换为插入符号。 
+* **参数顺序** ：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
 将值替换为方括号， `{}` 并将替换为你自己的值：
 

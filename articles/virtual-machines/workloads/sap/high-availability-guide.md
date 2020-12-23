@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efd3f0f19325bdaccf98d10306c90488c78b3de7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b506ada0bc072a4174de6f884d1814a63f1f93ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653760"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012504"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -634,7 +635,7 @@ _**图 7：** 使用 SQL Server Always On 的高可用性 SAP DBMS 示例_
 
 ### <a name="deployment-scenario-using-architectural-template-1"></a>使用体系结构模板 1 的部署方案
 
-图 8 显示了 Azure 中适用于**一个** SAP 系统的 SAP NetWeaver 高可用性体系结构的示例。 此方案的设置方式如下：
+图 8 显示了 Azure 中适用于 **一个** SAP 系统的 SAP NetWeaver 高可用性体系结构的示例。 此方案的设置方式如下：
 
 - 一个专用群集用于 SAP ASCS/SCS 实例。
 - 一个专用群集用于 DBMS 实例。
@@ -646,9 +647,9 @@ _**图 8：** SAP 高可用性体系结构模板 1：包含 ASCS/SCS 和 DBMS �
 
 ### <a name="deployment-scenario-using-architectural-template-2"></a>使用体系结构模板 2 的部署方案
 
-图 9 显示了 Azure 中适用于**一个** SAP 系统的 SAP NetWeaver 高可用性体系结构的示例。 此方案的设置方式如下：
+图 9 显示了 Azure 中适用于 **一个** SAP 系统的 SAP NetWeaver 高可用性体系结构的示例。 此方案的设置方式如下：
 
-- 一个专用群集**同时**用于 SAP ASCS/SCS 实例和 DBMS。
+- 一个专用群集 **同时** 用于 SAP ASCS/SCS 实例和 DBMS。
 - SAP 应用程序服务器实例部署在自身的专用 VM 中。
 
 ![图 9：SAP 高可用性体系结构模板 2：包含 ASCS/SCS 的专用群集和 DBMS 的专用群集][sap-ha-guide-figure-2005]
@@ -657,9 +658,9 @@ _**图 9：** SAP 高可用性体系结构模板 2：包含 ASCS/SCS 的专用�
 
 ### <a name="deployment-scenario-using-architectural-template-3"></a>使用体系结构模板 3 的部署方案
 
-图 10 显示了 Azure 中**两个** SAP 系统（分别带有标记 &lt;SID1&gt; 和 &lt;SID2&gt;）的 SAP NetWeaver 高可用性体系结构示例。 此方案的设置方式如下：
+图 10 显示了 Azure 中 **两个** SAP 系统（分别带有标记 &lt;SID1&gt; 和 &lt;SID2&gt;）的 SAP NetWeaver 高可用性体系结构示例。 此方案的设置方式如下：
 
-- 一个专用群集**同时**用于 SAP ASCS/SCS SID1 实例*和* SAP ASCS/SCS SID2 实例（一个群集）。
+- 一个专用群集 **同时** 用于 SAP ASCS/SCS SID1 实例 *和* SAP ASCS/SCS SID2 实例（一个群集）。
 - 一个专用群集用于 DBMS SID1，另一个专用群集用于 DBMS SID2（两个群集）。
 - SAP 系统 SID1 的 SAP 应用程序服务器实例有其自身的专用 VM。
 - SAP 系统 SID2 的 SAP 应用程序服务器实例有其自身的专用 VM。
@@ -703,7 +704,7 @@ _**图 11：** 设置 SAP 高可用性 Azure 资源管理器参数_
 
   * **Azure 存储帐户**
 
-  * 以下组件的**可用性组**：
+  * 以下组件的 **可用性组**：
     * SAP Application Server 虚拟机：<*SAPSystemSID*>-avset-di
     * SAP ASCS/SCS 群集虚拟机：<*SAPSystemSID*>-avset-ascs
     * DBMS 群集虚拟机：<*SAPSystemSID*>-avset-db
@@ -774,7 +775,7 @@ _**图 11：** 设置 SAP 高可用性 Azure 资源管理器参数_
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>准备体系结构模板 3 的基础结构
 
-可以准备基础结构并在 SAP 中配置**多 SID**。 例如，将附加的 SAP ASCS/SCS 实例添加到*现有*群集配置。 有关详细信息，请参阅[使用 Azure 资源管理器在现有群集配置中配置附加的 SAP ASCS/SCS 实例以创建 SAP 多 SID 配置][sap-ha-multi-sid-guide]。
+可以准备基础结构并在 SAP 中配置 **多 SID**。 例如，将附加的 SAP ASCS/SCS 实例添加到 *现有* 群集配置。 有关详细信息，请参阅[使用 Azure 资源管理器在现有群集配置中配置附加的 SAP ASCS/SCS 实例以创建 SAP 多 SID 配置][sap-ha-multi-sid-guide]。
 
 若要新建多 SID 群集，可以使用 [GitHub 上的多 SID 快速入门模板](https://github.com/Azure/azure-quickstart-templates)。
 若要新建多 SID 群集，需要部署以下三个模板：
@@ -797,7 +798,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
   -  **SAP 系统计数**。 选择要在此群集中安装的 SAP 系统数目。
   -  **系统可用性**。 选择“HA”。
   -  **管理员用户名和管理员密码**。 创建可用于登录计算机的新用户。
-  -  **新的或现有的子网**。 设置是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择**现有**虚拟网络。
+  -  **新的或现有的子网**。 设置是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择 **现有** 虚拟网络。
   -  **子网 ID**。如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/<订阅 ID>/resourceGroups/<资源组名称>/providers/Microsoft.Network/virtualNetworks/<虚拟网络名称>/subnets/<子网名称>   
 
 模板将部署一个支持多个 SAP 系统的 Azure 负载均衡器实例。
@@ -1135,7 +1136,7 @@ _**表 4：** 更改第二个 TCP/IP 参数_
    _**图 27：** 输入第二个群集节点主机名_
 
    > [!IMPORTANT]
-   > **切勿**选中“将所有符合条件的存储添加到群集”复选框。  
+   > **切勿** 选中“将所有符合条件的存储添加到群集”复选框。  
    >
    >
 
@@ -1547,7 +1548,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
    }
    ```
 
-   将 **SAP <*SID*>** 群集角色联机之后，验证**ProbePort**是否已设置为新值。
+   将 **SAP <*SID*>** 群集角色联机之后，验证 **ProbePort** 是否已设置为新值。
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>

@@ -5,6 +5,7 @@
     - name: 什么是虚拟 WAN？
       href: virtual-wan-about.md
 - name: 教程
+  expanded: true
   items:
     - name: 创建站点到站点连接
       href: virtual-wan-site-to-site-portal.md
@@ -66,6 +67,10 @@
           href: virtual-wan-ipsec.md
         - name: 多个 ISP 链接 - Azure 路径选择
           href: path-selection-multiple-links.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 定价概念
       href: pricing-concepts.md
     - name: 关于虚拟中心中的 NVA
@@ -104,6 +109,8 @@
           href: about-vpn-profile-download.md
         - name: 全局和基于中心的配置文件
           href: global-hub-profile.md
+        - name: 配置适用于 Windows 10 的 Azure VPN 客户端
+          href: openvpn-azure-ad-client.md
         - name: 配置 OpenVPN 客户端
           href: howto-openvpn-clients.md?
         - name: 配置 Always On VPN 用户隧道
@@ -114,8 +121,6 @@
           href: openvpn-azure-ad-mfa.md
         - name: 配置 Azure AD 身份验证
           href: virtual-wan-point-to-site-azure-ad.md
-        - name: 配置适用于 Windows 10 的 Azure VPN 客户端
-          href: openvpn-azure-ad-client.md
         - name: 配置多应用程序 Azure AD 身份验证
           href: openvpn-azure-ad-tenant-multi-app.md
     - name: 路由
@@ -136,6 +141,8 @@
           href: howto-firewall.md
         - name: 配置专用链接连接
           href: howto-private-link.md
+        - name: 管理对资源的访问 - Spoke VNet P2S
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: 监视
       items:
         - name: 日志和指标

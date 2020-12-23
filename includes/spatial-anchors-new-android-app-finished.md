@@ -1,17 +1,17 @@
 ---
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.date: 06/22/2020
+ms.date: 11/20/2020
 ms.topic: include
-ms.author: rgarcia
+ms.author: parkerra
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4d20b7dee533dae17cfb1c6138e336b91c7e2b0c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: d57167a9a4713e268c6864f3f1b3f2b1498b4ddb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85296179"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95998375"
 ---
 ## <a name="putting-everything-together"></a>将所有内容放在一起
 
@@ -248,4 +248,4 @@ public class MainActivity extends AppCompatActivity {
 本教程介绍了如何使用 Azure 空间定位点创建与 ARCore 功能集成的新 Android 应用。 若要了解有关 Azure 空间定位点库的详细信息，请继续阅读我们有关如何创建并找到定位点的教程。
 
 > [!div class="nextstepaction"]
-> [使用 Azure 空间定位点创建并找到定位点](/azure/spatial-anchors/create-locate-anchors-overview)
+> [使用 Azure 空间定位点创建并找到定位点](../articles/spatial-anchors/create-locate-anchors-overview.md)

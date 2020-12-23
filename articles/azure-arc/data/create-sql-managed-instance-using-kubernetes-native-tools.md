@@ -4,23 +4,23 @@ description: 使用 Kubernetes 工具创建 SQL 托管实例
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: twright-msft
-ms.author: twright
+author: vin-yu
+ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 80aa323dfb08ec1e8156099bd5d04e790732b3b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2902274cfff11ac256459abd4fe0378146ee067b
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341525"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280181"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure SQL 托管实例
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 应该已经创建了一个 [Azure Arc 数据控制器](./create-data-controller.md)。
 
@@ -89,10 +89,10 @@ Kubernetes 机密存储为 base64 编码字符串-一个用于用户名，另一
 PowerShell
 
 ```console
-[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('<your string to encode here>'))
+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('<your string to encode here>'))
 
 #Example
-#[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('example'))
+#[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('example'))
 
 ```
 

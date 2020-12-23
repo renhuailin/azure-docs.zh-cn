@@ -1,15 +1,17 @@
 ---
 title: 为物理服务器设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备进行物理服务器评估。
-ms.service: azure-migrate
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 04/15/2020
-ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 21d40b1962a3e4000876686659b76d019991785d
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448068"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751676"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
@@ -18,19 +20,19 @@ ms.locfileid: "91448068"
 Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用于执行以下操作：
 
 - 发现本地服务器。
-- 将发现的服务器的元数据和性能数据发送到 Azure Migrate Server 评估。
+- 将已发现的服务器的元数据和性能数据发送到 Azure Migrate 服务器评估。
 
-[了解](migrate-appliance.md) Azure Migrate 设备的详细信息。
+[详细了解](migrate-appliance.md) Azure Migrate 设备。
 
 
 ## <a name="appliance-deployment-steps"></a>设备部署步骤
 
 若要设置该设备，请执行以下操作：
-- 提供设备名称并在门户中生成 Azure Migrate 项目项。
+- 提供设备名称，并在门户中生成 Azure Migrate 项目密钥。
 - 从 Azure 门户下载带有 Azure Migrate 安装程序脚本的压缩文件。
 - 从压缩文件中提取内容。 使用管理权限启动 PowerShell 控制台。
 - 执行 PowerShell 脚本以启动设备 Web 应用程序。
-- 第一次配置设备，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
+- 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
 
 ### <a name="generate-the-azure-migrate-project-key"></a>生成 Azure Migrate 项目密钥
 
@@ -122,7 +124,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
    
    不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。 
-4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](tutorial-prepare-physical.md)，会启动设备注册。
+4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](./tutorial-discover-physical.md)，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
 
@@ -130,7 +132,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 现在，从设备连接到要发现的物理服务器，并启动发现。
 
-1. 在**步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据**中，单击“添加凭据”，为凭据指定一个易记名称，并为 Windows 或 Linux 服务器添加“用户名”和“密码”  。 单击“保存” 。
+1. 在 **步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据** 中，单击“添加凭据”，为凭据指定一个易记名称，并为 Windows 或 Linux 服务器添加“用户名”和“密码”  。 单击“保存” 。
 1. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 物理服务器发现支持多个凭据。
 1. 在“步骤 2：提供物理服务器或虚拟服务器详细信息”中，单击“添加发现源”，以指定服务器 IP地址/FQDN 以及为用于连接到服务器的凭据指定易记名称  。
 1. 可以一次“添加单个项目”，也可以一次“添加多个项目” 。 还有一个选项是通过“导入 CSV”提供服务器详细信息。
@@ -152,10 +154,10 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 ## <a name="verify-servers-in-the-portal"></a>验证门户中的服务器
 
-发现完成后，可以验证服务器是否显示在门户中。
+发现完成后，可以验证服务器是否出现在门户中。
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了 **已发现服务器** 计数的图标。
 
 
 ## <a name="next-steps"></a>后续步骤

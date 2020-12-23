@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f81614005a1b0374dc249187c4ff3c920b7c97e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852321"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424838"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 
@@ -383,7 +383,7 @@ hub.send_baidu_notification(baidu_payload)
 
 如果在初始化 NotificationHub 时启用调试标志，则会显示详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，可从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：
 
-![控制台的屏幕截图，其中包含 "H T P 请求" 和 "响应转储" 的详细信息以及以红色列出的通知结果消息。][1]
+![控制台的屏幕截图，其中 HTTP 请求和响应转储以及通知结果消息的详细信息以红色框标出。][1]
 
 例如会出现详细的通知中心结果。
 
@@ -404,7 +404,7 @@ hub.send_baidu_notification(baidu_payload)
 hub.send_windows_notification(wns_payload)
 ```
 
-![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式的详细信息，以及以红色列出的 X W 类型值。][2]
+![控制台的屏幕截图，其中 HTTP 请求和服务总线通知格式以及 XWNS 类型值的详细信息以红色框标出。][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>发送通知指定标记（或标记表达式）
 
@@ -414,7 +414,7 @@ hub.send_windows_notification(wns_payload)
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式、服务总线通知标记以及以红色列出的 X W 类型值的详细信息。][3]
+![控制台的屏幕截图，其中详细介绍了 H T P P 请求和服务总线通知格式、服务总线通知标记，以及以红色列出的 X W 类型值。][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>发送通知指定多个标记
 
@@ -425,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式、服务总线通知标记以及以红色列出的 X W 类型值的详细信息。][4]
+![控制台的屏幕截图，其中详细介绍了 H T P P 请求和服务总线通知格式、多个服务总线通知标记，以及以红色列出的 X W 类型值。][4]
 
 ### <a name="templated-notification"></a>模板通知
 
@@ -444,14 +444,14 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![控制台的屏幕截图，其中包含有关 H T P 请求的详细信息，以及以红色列出的内容类型和服务总线通知格式值的详细信息。][5]
+![控制台的屏幕截图，其中 HTTP 请求、内容类型和服务总线通知格式值的详细信息以红色框标出。][5]
 
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何为通知中心创建 Python REST 客户端。 可以从此页执行下列操作：
 
 - 下载完整的 [Python REST 包装器示例]，其中包含本文中的所有代码。
-- 在[突发新闻教程]中继续学习通知中心标记功能
+- 在 [突发新闻教程]
 - 在[本地化新闻教程]中继续学习通知中心模板功能
 
 <!-- URLs -->

@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 2dbd4b9af3db122703a7f2b4e0140ec3305f1c3b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620046"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788394"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>在 Azure SQL 托管实例中配置最低 TLS 版本
 借助最低[传输层安全性 (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) 版本设置，客户可以控制其 Azure SQL 托管实例使用的 TLS 版本。
@@ -37,7 +37,7 @@ Login failed with invalid TLS version
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL 数据库仍然支持 PowerShell Azure 资源管理器模块，但所有后续开发都针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中命令的参数大体相同。 以下脚本需要 [Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+> Azure SQL 数据库仍然支持 PowerShell Azure 资源管理器模块，但所有后续开发都针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中命令的参数大体相同。 以下脚本需要 [Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 以下 PowerShell 脚本演示如何在实例级别 `Get` 和 `Set`“最低 TLS 版本”属性：
 
@@ -52,7 +52,7 @@ Set-AzSqlInstance -Name sql-instance-name -ResourceGroupName resource-group -Min
 ## <a name="set-minimal-tls-version-via-azure-cli"></a>通过 Azure CLI 设置最低 TLS 版本
 
 > [!IMPORTANT]
-> 本部分中的所有脚本都需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+> 本部分中的所有脚本都需要 [Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Bash shell 中的 Azure CLI
 

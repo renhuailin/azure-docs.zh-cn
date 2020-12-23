@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 266ad613a4966b26fc4a6ddffbb7b4196aa937b1
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372096"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894026"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源
 
@@ -40,11 +40,11 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 
 3. 选择要打开的资源。
 
-    ![在门户中打开 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![突出显示所选资源的屏幕截图。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
     存储帐户类似于：
 
-    ![在门户中打开 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![显示存储帐户的外观的屏幕截图。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
 按资源组打开资源：
 

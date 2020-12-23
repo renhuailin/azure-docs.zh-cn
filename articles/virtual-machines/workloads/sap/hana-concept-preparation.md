@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f0782738a8aa57b2bc0b87e1378972e3fa5d31c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70101265"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967850"
 ---
 # <a name="disaster-recovery-principles"></a>灾难恢复原则
 
@@ -64,11 +65,11 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 
 - 执行[备份和还原](hana-backup-restore.md)中介绍的存储快照准备工作的步骤 2。
 - 如果之前未执行该步骤，请为 HANA 大型实例单元的 DR 单元创建公钥。 请参阅[备份和还原](hana-backup-restore.md)中介绍的存储快照准备工作的步骤 3。
-- 使用新的 HANA 实例维护 HANABackupCustomerDetails.txt** 并测试是否可正确连接到存储。  
+- 使用新的 HANA 实例维护 HANABackupCustomerDetails.txt 并测试是否可正确连接到存储。  
 - 在 DR Azure 区域中的 HANA 大型实例单元上停止新安装的 SAP HANA 实例。
 - 卸载这些 PRD 卷并联系 Azure 上的 SAP HANA 服务管理部门。 卷无法一直保持在单元上，因为它们在作为存储复制目标运行时无法对其进行访问。  
 
-![建立复制之前的 DR 设置步骤](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![此图显示了生产 Azure 区域中的 PRD 卷与 DR Azure 区域中的 PRD 卷之间的复制关系。](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 运营团队在生产 Azure 区域中的 PRD 卷与 DR Azure 区域中的 PRD 卷之间建立复制关系。
 

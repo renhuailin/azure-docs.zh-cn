@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577707"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495281"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>在 IoT 解决方案中使用 IoT 即插即用模型
 
@@ -20,9 +20,9 @@ ms.locfileid: "91577707"
 
 IoT 解决方案分为两大类别：
 
-- *专门构建的解决方案*适用于将连接到解决方案的 IoT 即插即用设备的一组已知模型。 在开发解决方案时，可以使用这些模型。
+- *专门构建的解决方案* 适用于将连接到解决方案的 IoT 即插即用设备的一组已知模型。 在开发解决方案时，可以使用这些模型。
 
-- *模型驱动*的解决方案可与任何 IoT 即插即用设备的型号一起使用。 构建模型驱动的解决方案更为复杂，但优点在于，您的解决方案适用于将来可能添加的任何设备。 模型驱动的 IoT 解决方案检索模型，并使用它来确定设备实现的遥测、属性和命令。
+- *模型驱动* 的解决方案可与任何 IoT 即插即用设备的型号一起使用。 构建模型驱动的解决方案更为复杂，但优点在于，您的解决方案适用于将来可能添加的任何设备。 模型驱动的 IoT 解决方案检索模型，并使用它来确定设备实现的遥测、属性和命令。
 
 若要使用 IoT 即插即用模型，IoT 解决方案：
 
@@ -40,10 +40,10 @@ IoT 中心将设备型号 ID 作为设备连接流的一部分，通知解决方
 
 ### <a name="get-device-twin-api"></a>获取设备克隆 API
 
-解决方案可以使用 [获取设备](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) 克隆 API 来检索 IoT 即插即用设备的型号 ID。
+解决方案可以使用 [获取设备](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) 克隆 API 来检索 IoT 即插即用设备的型号 ID。
 
 > [!TIP]
-> 对于模块和 IoT Edge 模块，请使用 [getTwin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true)。
+> 对于模块和 IoT Edge 模块，请使用 [getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable)。
 
 在以下设备克隆的响应代码段中， `modelId` 包含 IoT 即插即用设备的型号 ID：
 
@@ -71,7 +71,7 @@ IoT 中心将设备型号 ID 作为设备连接流的一部分，通知解决方
 
 ### <a name="get-digital-twin-api"></a>获取数字克隆 API
 
-解决方案可以使用 " [获取数字](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) 克隆 API" 来检索 IoT 即插即用设备实现的模型的模型 ID。
+解决方案可以使用 " [获取数字](/rest/api/iothub/service/digitaltwin/getdigitaltwin) 克隆 API" 来检索 IoT 即插即用设备实现的模型的模型 ID。
 
 在下面的数字克隆响应代码段中， `$metadata.$model` 包含 IoT 即插即用设备的型号 ID：
 
@@ -121,11 +121,11 @@ content-encoding:utf-8
 
 确定新设备连接的模型 ID 后，请执行以下步骤：
 
-1. 使用模型存储库中的模型 ID 检索模型定义。 有关详细信息，请参阅 [获取模型](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)。
+1. 使用模型存储库中的模型 ID 检索模型定义。 有关详细信息，请参阅 [设备型号存储库](concepts-model-repository.md)。
 
 1. 使用已连接设备的模型定义，可以枚举设备的功能。
 
-1. 使用设备的枚举功能，你可以允许用户与 [设备交互](quickstart-service-node.md)。
+1. 使用设备的枚举功能，你可以允许用户与 [设备交互](quickstart-service.md)。
 
 ### <a name="custom-store"></a>自定义存储
 
@@ -137,12 +137,12 @@ content-encoding:utf-8
 
 1. 使用已连接设备的模型定义，可以枚举设备的功能。 
 
-1. 使用设备的枚举功能，你可以允许用户与 [设备交互](quickstart-service-node.md)。  
+1. 使用设备的枚举功能，你可以允许用户与 [设备交互](quickstart-service.md)。  
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已了解如何在 IoT 解决方案中集成 IoT 即插即用模型，以下是一些建议的后续步骤：
 
-- [与解决方案中的设备交互](quickstart-service-node.md)
-- [IoT 数字克隆 REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [与解决方案中的设备交互](quickstart-service.md)
+- [IoT 数字克隆 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 资源管理器](howto-use-iot-explorer.md)

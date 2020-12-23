@@ -1,6 +1,6 @@
 ---
 title: 使用 T-sql 循环
-description: 用于在 Synapse SQL 中使用 T-sql 循环、替换游标和开发相关解决方案的技巧。
+description: 有关在 Azure Synapse Analytics 中使用 T-sql 循环、替换游标和开发相关解决方案的提示。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,23 +10,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99ee41de7ffd66191ff712a5ffbda65f3233196f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289049"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324435"
 ---
-# <a name="use-t-sql-loops-in-synapse-sql"></a>在 Synapse SQL 中使用 T-sql 循环
-本文提供了有关在 Synapse SQL 中使用 T-sql 循环、替换游标和开发相关解决方案的重要提示。
+# <a name="use-t-sql-loops-with-synapse-sql-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中将 T-sql 循环用于 Synapse SQL
+
+本文提供了有关使用 T-sql 循环、替换游标以及使用 Synapse SQL 开发相关解决方案的重要技巧。
 
 ## <a name="purpose-of-while-loops"></a>WHILE 循环的用途
 
 Synapse SQL 支持重复执行语句块的 [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) 循环。 只要指定的条件都成立，或者在代码专门使用 BREAK 关键字终止循环之前，此 WHILE 循环将一直继续。 
 
-SQL 池中的循环用于替换 SQL 代码中定义的游标。 幸运的是，几乎所有以 SQL 代码编写的游标都是快进的只读变体。 因此，WHILE 循环是用于替换游标的绝佳替代方案。
+Synapse SQL 中的循环用于替换 SQL 代码中定义的游标。 幸运的是，几乎所有以 SQL 代码编写的游标都是快进的只读变体。 因此，WHILE 循环是用于替换游标的绝佳替代方案。
 
-## <a name="replace-cursors-in-sql-pool"></a>替换 SQL 池中的游标
+## <a name="replace-cursors-in-synapse-sql"></a>替换 Synapse SQL 中的游标
 
 在开始使用之前，应考虑以下问题： "此游标是否可重写以使用基于集的操作？" 在许多情况下，答案是肯定的，通常这也是最佳方法。 基于集的操作的执行速度通常比迭代的逐行方法要快。
 

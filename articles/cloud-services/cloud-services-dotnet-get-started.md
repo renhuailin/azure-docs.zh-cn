@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932536"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562287"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
@@ -33,7 +33,7 @@ ms.locfileid: "88932536"
 应用程序使用 [以队列为中心的工作模式](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>替代体系结构：应用服务和 WebJobs
-本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure 应用服务](/azure/app-service/)中运行前端，并对后端使用 [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务的信息，请参阅 [Azure 应用服务、云服务和虚拟机比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
+本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure App Service](../app-service/index.yml) 中运行前端，并为后端使用 [web 作业](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务的信息，请参阅 [Azure 应用服务、云服务和虚拟机比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
 
 ## <a name="what-youll-learn"></a>学习内容
 * 如何在计算机上安装 Azure SDK 以进行 Azure 开发。
@@ -44,7 +44,7 @@ ms.locfileid: "88932536"
 * 如何将 Azure 队列服务用于各层之间的通信。
 
 ## <a name="prerequisites"></a>先决条件
-本教程假定用户了解[有关 Azure 云服务的基本概念](cloud-services-choose-me.md)，例如 *Web 角色*和*辅助角色*这样的术语。  此外，还假定用户知道如何处理 Visual Studio 中的 [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 或 [Web 窗体](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)项目。 示例应用程序使用 MVC，但在本教程的大部分也适用于 Web 窗体。
+本教程假定用户了解 [有关 Azure 云服务的基本概念](cloud-services-choose-me.md)，例如 *Web 角色* 和 *辅助角色* 这样的术语。  此外，还假定用户知道如何处理 Visual Studio 中的 [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 或 [Web 窗体](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)项目。 示例应用程序使用 MVC，但在本教程的大部分也适用于 Web 窗体。
 
 在没有 Azure 订阅的情况下可以本地运行应用，但若要将应用程序部署到云中，则需要一个 Azure 订阅。 如果没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)或[注册获取免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "88932536"
 
 当用户上传一个图像时，Web 角色中运行的前端在 [Azure Blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) 中存储图像，并将广告信息存储在带有指向 Blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在辅助角色中定期运行的后端进程轮询队列是否有新消息。 显示新消息时，辅助角色会创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图演示了应用程序各部分之间如何交互：
 
-![Contoso 广告体系结构](./media/cloud-services-dotnet-get-started/apparchitecture.png)
+![演示应用程序各部分之间如何交互的关系图。](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
@@ -79,7 +79,7 @@ ms.locfileid: "88932536"
 6. 如果使用 Visual Studio 2015 或更高版本，请在 ContosoAdsWeb 项目的应用程序 *Web.config* 文件以及 ContosoAdsCloudService 项目的 *ServiceConfiguration.Local.cscfg* 文件中，更改 SQL Server 连接字符串。 对于每种情况，请将“(localdb)\v11.0”更改为“(localdb)\MSSQLLocalDB”。
 7. 按 Ctrl+F5 运行应用程序。
 
-    在本地运行云服务项目时，Visual Studio 会自动调用 Azure *计算模拟器*和 Azure *存储模拟器*。 计算仿真程序使用计算机资源模拟 Web 角色和辅助角色环境。 存储模拟器使用 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) 数据库模拟 Azure 云存储。
+    在本地运行云服务项目时，Visual Studio 会自动调用 Azure *计算模拟器* 和 Azure *存储模拟器*。 计算仿真程序使用计算机资源模拟 Web 角色和辅助角色环境。 存储模拟器使用 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) 数据库模拟 Azure 云存储。
 
     首次运行云服务项目时，模拟器会花费大约一分钟来启动。 模拟器完成启动后，默认浏览器中会打开应用程序的主页。
 
@@ -125,7 +125,7 @@ Azure 云服务是该应用程序的运行环境。
 5. 选择要在其中部署该应用程序的区域。
 
     此字段指定你的云服务将托管在哪个数据中心。 对于生产应用程序，可以选择离客户最近的区域。 对于本教程，选择最近的区域。
-5. 单击**创建**。
+5. 单击 **创建**。
 
     在下图中，使用 URL CSvccontosoads.cloudapp.net 创建了一个云服务。
 
@@ -154,7 +154,7 @@ Azure 云服务是该应用程序的运行环境。
 9. 针对新服务器单击“选择”。
 
     ![新建服务器](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. 单击**创建**。
+10. 单击 **创建**。
 
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
@@ -169,7 +169,7 @@ Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
 
 4. 将“复制”下拉列表设置为“本地冗余存储”。
 
-    为存储帐户启用异地复制时，会将存储内容复制到辅助数据中心，这样就能够在主要位置发生重大灾难时进行故障转移。 异地复制可能会产生额外的成本。 对于测试和开发帐户，你通常不希望因为异地复制而付款。 有关详细信息，请参阅[创建、管理或删除存储帐户](../storage/common/storage-create-storage-account.md)。
+    为存储帐户启用异地复制时，会将存储内容复制到辅助数据中心，这样就能够在主要位置发生重大灾难时进行故障转移。 异地复制可能会产生额外的成本。 对于测试和开发帐户，你通常不希望因为异地复制而付款。 有关详细信息，请参阅[创建、管理或删除存储帐户](../storage/common/storage-account-create.md)。
 
 5. 在“资源组”中，单击“使用现有资源组”，然后选择用于云服务的资源组。
 6. 将“位置”下拉列表设置为为云服务选择的同一区域。
@@ -177,7 +177,7 @@ Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
     当云服务和存储帐户位于不同的数据中心（不同区域）时，延迟将增加，并且需要为数据中心外的带宽付费。 数据中心内的带宽是免费的。
 
     Azure 地缘组实际上是一种机制，目的是最小化数据中心内不同资源之间的距离，这样可以降低延迟。 本教程不使用地缘组。 有关详细信息，请参阅 [如何在 Azure 中创建地缘组](/previous-versions/azure/reference/gg715317(v=azure.100))。
-7. 单击**创建**。
+7. 单击 **创建**。
 
     ![新的存储帐户](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -217,7 +217,7 @@ Web 项目和辅助角色项目都有自己的数据库连接字符串。当应�
 6. 选择并复制连接字符串，供在以下步骤中配置辅助角色项目的使用（不带周围的引号）。
 7. 在云服务项目的“角色”下的“解决方案资源管理器”中，右键单击“ContosoAdsWorker”并单击“属性”。
 
-    ![角色属性](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
+    ![突出显示“属性”菜单选项的屏幕截图。](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
 8. 单击“设置”选项卡。
 9. 将“服务配置”更改为“云”。
 10. 选择 `ContosoAdsDbConnectionString` 设置的“值”字段，并粘贴从本教程上一部分复制的连接字符串。
@@ -290,7 +290,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
     ![设置步骤](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    本教程可以使用“高级”选项卡中的默认设置  。 有关高级选项卡的信息，请参阅 [发布 Azure 应用程序向导](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard)。
+    本教程可以使用“高级”选项卡中的默认设置  。 有关高级选项卡的信息，请参阅 [发布 Azure 应用程序向导](/visualstudio/azure/vs-azure-tools-publish-azure-application-wizard)。
 4. 在“摘要”步骤中，单击“发布”。
 
     ![摘要步骤](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -378,7 +378,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 2. 保存所做更改。
 3. 在 ContosoAdsCloudService 项目中，右键单击“角色”下的 ContosoAdsWeb，并单击“属性”。
 
-    ![角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![突出显示“角色”下的“属性”菜单选项的屏幕截图。](./media/cloud-services-dotnet-get-started/roleproperties.png)
 4. 在“ContosoAdsWeb [角色]”属性窗口中，单击“设置”选项卡，并单击“添加设置”。
 
     将“服务配置”保留设置为“所有配置”。
@@ -484,7 +484,7 @@ public class ContosoAdsContext : DbContext
 类具有两个构造函数。 其中第一个由 web 项目使用，并指定存储在 Web.config 文件中的连接字符串的名称。 第二个构造函数用于传入辅助角色项目所使用的实际连接字符串，因为没有 Web.config 文件。 之前看到存储此连接字符串的位置，稍后会看到在实例化 DbContext 类时代码如何检索连接字符串。
 
 ### <a name="contosoadsweb---globalasaxcs"></a>ContosoAdsWeb - Global.asax.cs
-从 `Application_Start` 方法调用的代码创建*图像* Blob 容器和*图像*队列（如果它们尚不存在）。 这确保只要开始使用新的存储帐户，或在新的计算机上开始使用存储模拟器，就自动创建所需的 Blob 容器和队列。
+从 `Application_Start` 方法调用的代码创建 *图像* Blob 容器和 *图像* 队列（如果它们尚不存在）。 这确保只要开始使用新的存储帐户，或在新的计算机上开始使用存储模拟器，就自动创建所需的 Blob 容器和队列。
 
 此代码通过使用来自 *.cscfg* 文件的存储连接字符串获取存储帐户的访问权限。
 
@@ -532,7 +532,7 @@ imagesQueue.CreateIfNotExists();
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 在 AdController.cs 文件中，构造函数调用 `InitializeStorage` 方法来创建 Azure 存储客户端库对象，该对象提供用于处理 blob 和队列的 API。
 
-然后，代码获取对*图像* Blob 容器的引用，正如用户之前在 *Global.asax.cs* 中看到的那样。 在执行该操作时，它设置适用于 Web 应用程序的默认 [重试策略](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 默认的指数退避重试策略可能会导致 Web 应用在对暂时性错误进行重复重试时停止响应超过一分钟。 此处指定的重试策略将在每次尝试后等待三秒，最多可尝试三次。
+然后，代码获取对 *图像* Blob 容器的引用，正如用户之前在 *Global.asax.cs* 中看到的那样。 在执行该操作时，它设置适用于 Web 应用程序的默认 [重试策略](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 默认的指数退避重试策略可能会导致 Web 应用在对暂时性错误进行重复重试时停止响应超过一分钟。 此处指定的重试策略将在每次尝试后等待三秒，最多可尝试三次。
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -744,7 +744,7 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 按本教程中的说明操作时，如果出现异常现象，请参考如下常见错误信息和解决方法。
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
-在 Azure 中运行应用程序或使用 Azure 计算模拟器本地运行时， `RoleEnvironment` 对象由 Azure 提供。  如果您在本地运行时收到此错误，请确保您已将 ContosoAdsCloudService 项目设为启动项目。 这将项目设置为使用 Azure 计算仿真程序运行。
+`RoleEnvironment`当你在 azure 中运行应用程序或使用 Azure 计算仿真程序在本地运行时，对象由 azure 提供。  如果您在本地运行时收到此错误，请确保您已将 ContosoAdsCloudService 项目设为启动项目。 这会将项目设置为使用 Azure 计算仿真程序运行。
 
 应用程序使用 Azure RoleEnvironment 的内容之一是获取 *.cscfg* 文件中存储的连接字符串值，所以此异常的另一个原因是丢失连接字符串。 确保在 ContosoAdsWeb 项目中为云和本地配置创建 StorageConnectionString 设置，并且您会在 ContosoAdsWorker 项目中为两个配置创建两个连接字符串。 如果为整个解决方案中的 StorageConnectionString 进行 **查找全部** 搜索，应在 6 个文件中看到它 9 次。
 
@@ -754,7 +754,7 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 有关可能解决该问题的另一种方法，请参阅下一节。
 
 ### <a name="other-errors-when-running-locally"></a>在本地运行时出现其他错误
-默认情况下新的云服务项目使用 Azure 计算模拟器 express 版来模拟 Azure 环境。 这是完整计算仿真程序的轻型版本，在某些情况下完整仿真程序会在没有 express 版时工作。  
+默认情况下，新的云服务项目使用 Azure 计算模拟器 express 来模拟 Azure 环境。 这是完整计算仿真程序的轻型版本，在某些情况下完整仿真程序会在没有 express 版时工作。  
 
 如果要更改项目以使用完整模拟器，请右键单击 ContosoAdsCloudService 项目中，并单击“属性”。 在“属性”窗口中，单击“Web”选项卡，并单击“使用完整模拟器”单选按钮。
 
@@ -776,5 +776,5 @@ Contoso 广告应用程序有意保持入门教程的简单性。 例如，它�
 
 * [Azure 云服务第 1 部分：简介](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [如何管理云服务](cloud-services-how-to-manage-portal.md)
-* [Azure 存储](https://docs.microsoft.com/azure/storage/)
+* [Azure 存储](../storage/index.yml)
 * [如何选择云服务提供商](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

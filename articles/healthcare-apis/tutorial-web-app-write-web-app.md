@@ -10,11 +10,11 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: bb9c206a17a11f0cf710ac4ee3ac7ccae0fa9eb9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848020"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023289"
 ---
 # <a name="write-azure-web-application-to-read-fhir-data"></a>编写用于读取 FHIR 数据的 Azure Web 应用程序
 在可以连接到 FHIR 服务器并可以发布 (POST) 数据的情况下，便可以编写一个用于读取 FHIR 数据的 Web 应用程序。 本教程的这最后一个步骤将演练如何编写和访问 Web 应用程序。

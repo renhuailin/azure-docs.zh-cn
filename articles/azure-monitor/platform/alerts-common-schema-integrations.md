@@ -4,12 +4,12 @@ description: 了解如何创建一个逻辑应用，以利用常见警报架构�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322085"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000413"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
 
@@ -17,7 +17,7 @@ ms.locfileid: "87322085"
 
 ## <a name="overview"></a>概述
 
-[常见警报架构](https://aka.ms/commonAlertSchemaDocs)跨各种不同警报类型提供一种标准化的可扩展 JSON 架构。 在通过 Webhook、Runbook 和逻辑应用以编程方式利用时，常见警报架构最有用。 本文演示如何编写单个逻辑应用以处理所有警报。 对于其他编程方法，可以运用相同的原则。 本文中所述的逻辑应用为[“重要”字段](alerts-common-schema-definitions.md#essentials)创建了明确定义的变量，并且还描述了如何处理特定于[警报类型](alerts-common-schema-definitions.md#alert-context)的逻辑。
+[常见警报架构](./alerts-common-schema.md)跨各种不同警报类型提供一种标准化的可扩展 JSON 架构。 在通过 Webhook、Runbook 和逻辑应用以编程方式利用时，常见警报架构最有用。 本文演示如何编写单个逻辑应用以处理所有警报。 对于其他编程方法，可以运用相同的原则。 本文中所述的逻辑应用为[“重要”字段](alerts-common-schema-definitions.md#essentials)创建了明确定义的变量，并且还描述了如何处理特定于[警报类型](alerts-common-schema-definitions.md#alert-context)的逻辑。
 
 
 ## <a name="prerequisites"></a>必备条件 
@@ -31,11 +31,11 @@ ms.locfileid: "87322085"
 
 1. 请按照[概述的步骤创建逻辑应用](./action-groups-logic-app.md)。 
 
-1.  选择触发器：“当收到 HTTP 请求时”****。
+1.  选择触发器：“当收到 HTTP 请求时”。
 
     ![逻辑应用触发器](media/action-groups-logic-app/logic-app-triggers.png "逻辑应用触发器")
 
-1.  选择“编辑”更改 HTTP 请求触发器。****
+1.  选择“编辑”更改 HTTP 请求触发器。
 
     ![HTTP 请求触发器](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP 请求触发器")
 
@@ -109,7 +109,7 @@ ms.locfileid: "87322085"
         }
     ```
 
-1. 选择 " **+** **新建步骤**"，然后选择 "**添加操作**"。
+1. 依次选择“+ 新建步骤”、“添加操作”  。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 
@@ -138,5 +138,4 @@ ms.locfileid: "87322085"
 ## <a name="next-steps"></a>后续步骤
 
 * [详细了解操作组](./action-groups.md)。
-* [了解有关常见警报架构的详细信息](https://aka.ms/commonAlertSchemaDocs)。
-
+* [详细了解常见警报架构](./alerts-common-schema.md)。

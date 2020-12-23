@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 0fa3fb8040fd79d68f9260ab520d3b6823ab363d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515332"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629285"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>配置站点到站点 VPN 以与 Azure 文件存储一起使用
 你可以使用站点到站点 (S2S) VPN 连接从本地网络中通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 你可以使用 [Azure VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)设置站点到站点 VPN，该网关是提供 VPN 服务的 Azure 资源，与存储帐户或其他 Azure 资源一起部署在资源组中。
@@ -30,7 +30,7 @@ ms.locfileid: "85515332"
 
 - 本地数据中心内与 Azure VPN 网关兼容的网络设备或服务器。 Azure 文件存储与所选的本地网络设备无关，但 Azure VPN 网关会保留[已测试设备列表](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)。 不同的网络设备提供不同的特性、性能特征和管理功能，因此，在选择网络设备时要将这些因素考虑在内。
 
-    如果你没有现有的网络设备，Windows Server 包含内置服务器角色、路由和远程访问 (RRAS)，可使用它们作为本地网络设备。 若要详细了解如何在 Windows Server 中配置路由和远程访问，请参阅 [RAS 网关](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway)。
+    如果你没有现有的网络设备，Windows Server 包含内置服务器角色、路由和远程访问 (RRAS)，可使用它们作为本地网络设备。 若要详细了解如何在 Windows Server 中配置路由和远程访问，请参阅 [RAS 网关](/windows-server/remote/remote-access/ras-gateway/ras-gateway)。
 
 ## <a name="add-storage-account-to-vnet"></a>将存储帐户添加到 VNet
 在 Azure 门户中，导航到包含要本地装载的 Azure 文件共享的存储帐户。 在存储帐户的目录中，选择“防火墙和虚拟网络”项  。 除非在创建虚拟网络时将其添加到存储帐户中，否则显示的窗格中“允许的访问来源”部分应选中了“所有网络”单选按钮   。
@@ -48,15 +48,15 @@ ms.locfileid: "85515332"
 
 为了部署 Azure VPN 网关，必须填写以下字段：
 
-- **Name**：VPN 网关的 Azure 资源的名称。 此名称可以是任何你认为有助于管理的名称。
-- **区域**：要将 VPN 网关部署到的区域。
-- **网关类型**：为了部署站点到站点 VPN，必须选择“VPN”  。
-- **VPN 类型**：可以根据你的 VPN 设备选择“基于路由”或“基于策略”   。 基于路由的 VPN 支持 IKEv2，而基于策略的 VPN 仅支持 IKEv1。 若要详细了解两种类型的 VPN 网关，请参阅[基于策略的 VPN 网关和基于路由的 VPN 网关](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
-- **SKU**：SKU 控制允许的站点到站点隧道数和所需的 VPN 性能。 若要为用例选择适当的 SKU，请参阅[网关 SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) 列表。 如果需要，稍后可以更改 VPN 网关的 SKU。
-- **虚拟网络**：在上一步中创建的虚拟网络。
-- **公共 IP 地址**：要向 Internet 公开的 VPN 网关 IP 地址。 很可能需要创建新的 IP 地址，但如果现有未使用的 IP 地址适用，也可以使用它。 如果选择“新建”，则将在与 VPN 网关相同的资源组中创建新的 IP 地址，并且“公共 IP 地址名称”将是新建的 IP 地址的名称   。 如果选择“使用现有的”，则必须选择现有未使用的 IP 地址  。
-- **启用主动-主动模式**：仅当要创建主动-主动网关配置时，才选择“启用”，否则请保持选择“禁用”   。 若要详细了解主动-主动模式，请参阅[高可用性跨界连接与 VNet 到 VNet 连接](../../vpn-gateway/vpn-gateway-highlyavailable.md)。
-- **配置 BGP ASN**：仅在配置特别需要此设置的情况下选择“启用”  。 若要了解有关此设置的详细信息，请参阅[关于 Azure VPN 网关的 BGP](../../vpn-gateway/vpn-gateway-bgp-overview.md)。
+- **Name** ：VPN 网关的 Azure 资源的名称。 此名称可以是任何你认为有助于管理的名称。
+- **区域** ：要将 VPN 网关部署到的区域。
+- **网关类型** ：为了部署站点到站点 VPN，必须选择“VPN”  。
+- **VPN 类型** ：可以根据你的 VPN 设备选择“基于路由”或“基于策略”   。 基于路由的 VPN 支持 IKEv2，而基于策略的 VPN 仅支持 IKEv1。 若要详细了解两种类型的 VPN 网关，请参阅[基于策略的 VPN 网关和基于路由的 VPN 网关](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
+- **SKU** ：SKU 控制允许的站点到站点隧道数和所需的 VPN 性能。 若要为用例选择适当的 SKU，请参阅[网关 SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) 列表。 如果需要，稍后可以更改 VPN 网关的 SKU。
+- **虚拟网络** ：在上一步中创建的虚拟网络。
+- **公共 IP 地址** ：要向 Internet 公开的 VPN 网关 IP 地址。 很可能需要创建新的 IP 地址，但如果现有未使用的 IP 地址适用，也可以使用它。 如果选择“新建”，则将在与 VPN 网关相同的资源组中创建新的 IP 地址，并且“公共 IP 地址名称”将是新建的 IP 地址的名称   。 如果选择“使用现有的”，则必须选择现有未使用的 IP 地址  。
+- **启用主动-主动模式** ：仅当要创建主动-主动网关配置时，才选择“启用”，否则请保持选择“禁用”   。 若要详细了解主动-主动模式，请参阅[高可用性跨界连接与 VNet 到 VNet 连接](../../vpn-gateway/vpn-gateway-highlyavailable.md)。
+- **配置 BGP ASN** ：仅在配置特别需要此设置的情况下选择“启用”  。 若要了解有关此设置的详细信息，请参阅[关于 Azure VPN 网关的 BGP](../../vpn-gateway/vpn-gateway-bgp-overview.md)。
 
 选择“查看 + 创建”以创建 VPN 网关  。 VPN 网关可能需要最多 45 分钟才能创建和部署完毕。
 
@@ -65,13 +65,13 @@ ms.locfileid: "85515332"
 
 为了部署本地网络网关资源，必须写入以下字段：
 
-- **Name**：本地网络网关的 Azure 资源名称。 此名称可以是任何你认为有助于管理的名称。
-- **IP 地址**：本地网关的公共 IP 地址。
-- **地址空间**：此本地网络网关所代表的网络的地址范围。 你可以添加多个地址空间范围，但是请确保此处所指定的范围没有与要连接到的其他网络的范围相重叠。 
-- **配置 BGP 设置**：仅在配置需要 BGP 设置时才配置此设置。 若要了解有关此设置的详细信息，请参阅[关于 Azure VPN 网关的 BGP](../../vpn-gateway/vpn-gateway-bgp-overview.md)。
-- **订阅**：所需的订阅。 这不需要与用于 VPN 网关或存储帐户的订阅相匹配。
-- **资源组**：所需的资源组。 这不需要与用于 VPN 网关或存储帐户的资源组相匹配。
-- **位置**：应在其中创建本地网络网关资源的 Azure 区域。 这应该与你为 VPN 网关和存储帐户选择的区域匹配。
+- **Name** ：本地网络网关的 Azure 资源名称。 此名称可以是任何你认为有助于管理的名称。
+- **IP 地址** ：本地网关的公共 IP 地址。
+- **地址空间** ：此本地网络网关所代表的网络的地址范围。 你可以添加多个地址空间范围，但是请确保此处所指定的范围没有与要连接到的其他网络的范围相重叠。 
+- **配置 BGP 设置** ：仅在配置需要 BGP 设置时才配置此设置。 若要了解有关此设置的详细信息，请参阅[关于 Azure VPN 网关的 BGP](../../vpn-gateway/vpn-gateway-bgp-overview.md)。
+- **订阅** ：所需的订阅。 这不需要与用于 VPN 网关或存储帐户的订阅相匹配。
+- **资源组** ：所需的资源组。 这不需要与用于 VPN 网关或存储帐户的资源组相匹配。
+- **位置** ：应在其中创建本地网络网关资源的 Azure 区域。 这应该与你为 VPN 网关和存储帐户选择的区域匹配。
 
 选择“创建”以创建本地网络网关资源  。  
 
@@ -81,10 +81,10 @@ ms.locfileid: "85515332"
 ## <a name="create-the-site-to-site-connection"></a>创建站点到站点连接
 若要完成 S2S VPN 的部署，必须在本地网络设备（由本地网络网关资源表示）和 VPN 网关之间创建连接。 为此，请导航到前面创建的 VPN 网关。 在 VPN 网关目录中，选择“连接”，然后单击“添加”   。 将打开“添加连接”窗格，要求你填充以下字段  ：
 
-- **Name**：连接的名称。 VPN 网关可以承载多个连接，因此请选择一个有助于管理的名称来区分此特定连接。
-- **连接类型**：由于这是 S2S 连接，因此请在下拉列表中选择“站点到站点(IPSec)”  。
-- **虚拟网络网关**：此字段将自动选定到连接中的 VPN 网关，并且无法更改。
-- **本地网络网关**：这是要连接到 VPN 网关的本地网络网关。 将打开选择窗格，其名称与上面创建的本地网络网关相同。
+- **Name** ：连接的名称。 VPN 网关可以承载多个连接，因此请选择一个有助于管理的名称来区分此特定连接。
+- **连接类型** ：由于这是 S2S 连接，因此请在下拉列表中选择“站点到站点(IPSec)”  。
+- **虚拟网络网关** ：此字段将自动选定到连接中的 VPN 网关，并且无法更改。
+- **本地网络网关** ：这是要连接到 VPN 网关的本地网络网关。 将打开选择窗格，其名称与上面创建的本地网络网关相同。
 - **共享密钥(PSK)** ：字母和数字的组合，用于为连接实现加密。 虚拟网络网关和本地网络网关必须使用同一共享密钥。 如果网关设备没有提供密钥，可以在此处创建一个密钥，并将其提供给设备。
 
 单击“确定”以创建连接  。 可通过“连接”页面验证是否已成功完成连接  。

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c6a46f6c8a57b681f66bb98fced17bf0e2464fcd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86231227"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638238"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
 
@@ -28,7 +28,7 @@ ms.locfileid: "86231227"
 
 | Feature | 版本 1 | 当前版本 | 
 | ------- | --------- | --------- | 
-| 数据集 | 数据的命名视图，以输入和输出的形式引用活动中要使用的数据。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Azure Blob 存储中指定供活动读取数据的 Blob 容器和文件夹。<br/><br/>**可用性**定义数据集的处理时段切片模型（例如，每小时、每天等）。 | 数据集在当前版本中相同。 但不需要为数据集定义**可用性**计划。 可以定义触发器资源，以便根据时钟计划程序范例来计划管道。 有关详细信息，请参阅[触发器](concepts-pipeline-execution-triggers.md#trigger-execution)和[数据集](concepts-datasets-linked-services.md)。 | 
+| 数据集 | 数据的命名视图，以输入和输出的形式引用活动中要使用的数据。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Azure Blob 存储中指定供活动读取数据的 Blob 容器和文件夹。<br/><br/>**可用性** 定义数据集的处理时段切片模型（例如，每小时、每天等）。 | 数据集在当前版本中相同。 但不需要为数据集定义 **可用性** 计划。 可以定义触发器资源，以便根据时钟计划程序范例来计划管道。 有关详细信息，请参阅[触发器](concepts-pipeline-execution-triggers.md#trigger-execution)和[数据集](concepts-datasets-linked-services.md)。 | 
 | 链接服务 | 链接服务十分类似于连接字符串，用于定义数据工厂连接到外部资源时所需的连接信息。 | 链接服务与数据工厂 V1 中的相同，但有一个新的 **connectVia** 属性，可以利用数据工厂的当前版本的集成运行时计算环境。 有关详细信息，请参阅 [Azure 数据工厂中的 Integration Runtime](concepts-integration-runtime.md) 和 [Azure Blob 存储的链接服务属性](connector-azure-blob-storage.md#linked-service-properties)。 |
 | 管道 | 数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 可使用 startTime、endTime、isPaused 来计划和运行管道。 | 管道是对数据执行的成组活动。 但是，管道中活动的计划已单独划归到新的触发器资源中。 可以将数据工厂的当前版本中的管道视为“工作流单位”，可以单独地通过触发器对其进行计划，这样更贴切些。 <br/><br/>在数据工厂的当前版本中，管道不按时间“段”来执行。 数据工厂 V1 中的 startTime、endTime 和 isPaused 概念在数据工厂的当前版本中不再存在。 有关详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)与[管道和活动](concepts-pipelines-activities.md)。 |
 | 活动 | “活动”用于定义在管道中对数据执行的操作。 支持数据移动（复制活动）和数据转换活动（例如 Hive、Pig 和 MapReduce）。 | 在数据工厂的当前版本中，活动仍然是在管道中定义的操作。 数据工厂的当前版本引入了新的[控制流活动](concepts-pipelines-activities.md#control-flow-activities)。 可以在控制流（循环和分支）中使用这些活动。 在 V1 中受支持的数据移动和数据转换活动在当前版本中也受支持。 在当前版本中，在定义转换活动时可以不使用数据集。 |
@@ -87,7 +87,7 @@ ms.locfileid: "86231227"
 
 Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 预配 Azure-SSIS Integration Runtime 以后，即可使用曾经用过的相同工具将 SSIS 包部署到本地 SSIS 环境。 
 
-例如，可以使用 SQL Server Data Tools 或 SQL Server Management Studio 将 SSIS 包部署到 Azure 上的此运行时。 有关分步说明，请参阅教程：[将 SQL Server Integration Services 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 
+例如，可以使用 SQL Server Data Tools 或 SQL Server Management Studio 将 SSIS 包部署到 Azure 上的此运行时。 有关分步说明，请参阅教程：[将 SQL Server Integration Services 包部署到 Azure](./tutorial-deploy-ssis-packages-azure.md)。 
 
 ## <a name="flexible-scheduling"></a>灵活计划
 在数据工厂的当前版本中，不需定义数据集可用性计划。 可以定义触发器资源，以便根据时钟计划程序范例来计划管道。 对于灵活的计划和执行模型，还可以将参数从触发器传递到管道。 
@@ -120,11 +120,11 @@ Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管�
 
 - .NET SDK：.NET SDK 在当前版本中进行了更新。
 
-- PowerShell：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2**，例如：Get-AzDataFactoryV2. 
+- PowerShell：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2** ，例如：Get-AzDataFactoryV2. 
 
-- **Python SDK**：此 SDK 是当前版本中新增的。
+- **Python SDK** ：此 SDK 是当前版本中新增的。
 
-- **REST API**：REST API 在当前版本中进行了更新。 
+- **REST API** ：REST API 在当前版本中进行了更新。 
 
 在当前版本中进行了更新的 SDK 不能向后兼容 V1 客户端。 
 
@@ -133,11 +133,11 @@ Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管�
 | | 版本 2 | 版本 1 |
 | ------ | -- | -- | 
 | **Azure 门户** | [是](quickstart-create-data-factory-portal.md) | 否 |
-| **Azure PowerShell** | [是](quickstart-create-data-factory-powershell.md) | [是](data-factory-build-your-first-pipeline-using-powershell.md) |
-| **.NET SDK** | [是](quickstart-create-data-factory-dot-net.md) | [是](data-factory-build-your-first-pipeline-using-vs.md) |
-| **REST API** | [是](quickstart-create-data-factory-rest-api.md) | [是](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Azure PowerShell** | [是](quickstart-create-data-factory-powershell.md) | [是](./v1/data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [是](quickstart-create-data-factory-dot-net.md) | [是](./v1/data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [是](quickstart-create-data-factory-rest-api.md) | [是](./v1/data-factory-build-your-first-pipeline-using-rest-api.md) |
 | **Python SDK** | [是](quickstart-create-data-factory-python.md) | 否 |
-| **资源管理器模板** | [是](quickstart-create-data-factory-resource-manager-template.md) | [是](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **资源管理器模板** | [是](quickstart-create-data-factory-resource-manager-template.md) | [是](./v1/data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>角色和权限
 
@@ -148,4 +148,4 @@ Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管�
 
 
 ## <a name="next-steps"></a>后续步骤
-了解如何按照以下快速入门中的分步说明创建数据工厂：[PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md)。 
+了解如何按照以下快速入门中的分步说明创建数据工厂：[PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md)。

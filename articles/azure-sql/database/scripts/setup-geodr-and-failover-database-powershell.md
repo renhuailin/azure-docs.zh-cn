@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: eca19c7cf8beed033ae0f11a518677c4c8744506
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2fc9db7286fed71ec451ea4ccef911e344a17b80
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319361"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594050"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-database-in-azure-sql-database"></a>使用 PowerShell 为 Azure SQL 数据库中的数据库配置活动异地复制
 

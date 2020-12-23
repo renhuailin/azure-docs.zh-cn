@@ -32,6 +32,9 @@
     - name: 分配策略 - ARM 模板
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: 分配策略 - Terraform
+      displayName: 'assign, compliance, hcl, provider'
+      href: ./assign-policy-terraform.md
 - name: 教程
   items:
     - name: 创建和管理 Azure Policy
@@ -43,6 +46,12 @@
     - name: 管理标记治理
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: 通过 GitHub 实现 Azure Policy as Code
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./tutorials/policy-as-code-github.md
+    - name: Learn：使用 Azure Policy 控制和审核资源
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
 - name: 示例
   items:
     - name: 索引
@@ -113,7 +122,7 @@
     - name: 合规性
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
-    - name: 将策略设计为代码工作流
+    - name: 设计 Azure Policy as Code 工作流
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Kubernetes 集成
@@ -185,7 +194,15 @@
           href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: 启用用于 VM 的 Azure Monitor（预览版）
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Azure 存储集成
+      items:
+        - name: 使用 Azure Policy 审核 TLS
+          href: ../../storage/common/transport-layer-security-configure-minimum-version.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json#use-azure-policy-to-enforce-the-minimum-tls-version
+    - name: Azure Web 应用程序防火墙集成
+      items:
+        - name: 将 WAF 与 Azure Policy 集成
+          href: ../../web-application-firewall/shared/waf-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: 疑难解答
   items:
     - name: 常见问题
@@ -240,6 +257,8 @@
           href: /rest/api/resources/policyassignments
         - name: 策略定义
           href: /rest/api/resources/policydefinitions
+        - name: 策略豁免
+          href: /rest/api/resources/policyexemptions
         - name: 计划定义
           href: /rest/api/resources/policysetdefinitions
         - name: 策略受跟踪的资源
@@ -256,6 +275,16 @@
           href: /azure/templates/microsoft.authorization/policydefinitions
         - name: 计划定义
           href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Terraform 资源
+      items:
+        - name: 分配
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_assignment.html'
+        - name: 定义
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_definition.html'
+        - name: 计划（集定义）
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_set_definition.html'
+        - name: 补救
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_remediation.html'
 - name: 资源
   items:
     - name: GitHub - Azure Policy 示例
@@ -272,6 +301,8 @@
           href: 'https://www.azadvertizer.net/'
         - name: Azure 治理可视化工具
           href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+        - name: 用于 Azure Monitor 的 Azure Policy 脚本
+          href: 'https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts'
     - name: 反馈和支持
       items:
         - name: 有关 Azure Policy 的 Microsoft Q&A

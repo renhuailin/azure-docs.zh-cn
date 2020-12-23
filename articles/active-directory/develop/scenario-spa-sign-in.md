@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: c8ec151c813bfb0b9777e583a4ea5144e3b2079a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2a73af0a0488043d31722b4dc46ca19530cf34ac
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297053"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443766"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>单页应用程序：登录和注销
 
@@ -43,7 +43,7 @@ ms.locfileid: "89297053"
 ## <a name="sign-in-with-a-pop-up-window"></a>通过弹出窗口登录
 
 
-# <a name="javascript-msaljs-2x"></a>[JavaScript ( # A0 2. x) ](#tab/javascript2)
+# <a name="javascript-msaljs-2x"></a>[JavaScript (MSAL.js 2.x)](#tab/javascript2)
 
 ```javascript
 
@@ -84,7 +84,7 @@ myMsal.loginPopup(loginRequest)
     });
 ```
 
-# <a name="javascript-msaljs-1x"></a>[JavaScript ( # A0 1.x) ](#tab/javascript1)
+# <a name="javascript-msaljs-1x"></a>[JavaScript (MSAL.js 1.x)](#tab/javascript1)
 
 ```javascript
 
@@ -165,7 +165,7 @@ export class AppRoutingModule { }
 
 ## <a name="sign-in-with-redirect"></a>使用重定向登录
 
-# <a name="javascript-msaljs-2x"></a>[JavaScript ( # A0 2. x) ](#tab/javascript2)
+# <a name="javascript-msaljs-2x"></a>[JavaScript (MSAL.js 2.x)](#tab/javascript2)
 
 ```javascript
 
@@ -205,7 +205,7 @@ myMsal.handleRedirectPromise(handleResponse);
 myMsal.loginRedirect(loginRequest);
 ```
 
-# <a name="javascript-msaljs-1x"></a>[JavaScript ( # A0 1.x) ](#tab/javascript1)
+# <a name="javascript-msaljs-1x"></a>[JavaScript (MSAL.js 1.x)](#tab/javascript1)
 
 重定向方法不会返回承诺，因为已从主应用离开。 若要处理并访问返回的令牌，需要在调用重定向方法之前注册成功和错误回叫。
 
@@ -246,7 +246,7 @@ MSAL 库提供 `logout` 方法，该方法会清除浏览器存储中的缓存�
 
 可以通过设置 `postLogoutRedirectUri` 来配置此 URI（在注销后应该重定向到此 URI）。 还应该在应用程序注册中将此 URI 注册为“注销 URI”。
 
-# <a name="javascript-msaljs-2x"></a>[JavaScript ( # A0 2. x) ](#tab/javascript2)
+# <a name="javascript-msaljs-2x"></a>[JavaScript (MSAL.js 2.x)](#tab/javascript2)
 
 ```javascript
 const config = {
@@ -267,7 +267,7 @@ const logoutRequest = {
 myMsal.logout(logoutRequest);
 ```
 
-# <a name="javascript-msaljs-1x"></a>[JavaScript ( # A0 1.x) ](#tab/javascript1)
+# <a name="javascript-msaljs-1x"></a>[JavaScript (MSAL.js 1.x)](#tab/javascript1)
 
 ```javascript
 const config = {
@@ -306,5 +306,4 @@ this.authService.logout();
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [获取应用的令牌](scenario-spa-acquire-token.md)
+转到本方案中的下一篇文章， [获取应用的令牌](scenario-spa-acquire-token.md)。

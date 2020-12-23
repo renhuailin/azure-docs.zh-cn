@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 8aa2644f86f5c26fa861aba8c928e79b7bc58a6c
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f8b6f1f8b22435af33c9ae908bb0a3f6f3df8889
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873188"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535342"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight：Python 示例
 
@@ -35,7 +35,7 @@ ms.locfileid: "87873188"
 
 ## <a name="prerequisites"></a>先决条件
 
-[用于 Python 的 Azure HDInsight SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight#sdk-installation)
+[用于 Python 的 Azure HDInsight SDK](/python/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>群集管理 - 创建
 
@@ -48,4 +48,4 @@ ms.locfileid: "87873188"
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-在[用于 Python 的 HDInsight SDK 参考文档](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)中，可找到这一附加 SDK 功能的代码片段。
+在[用于 Python 的 HDInsight SDK 参考文档](/python/api/overview/azure/hdinsight)中，可找到这一附加 SDK 功能的代码片段。

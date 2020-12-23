@@ -1,20 +1,15 @@
 ---
-title: Azure 门户概述 | Microsoft Docs
+title: Azure 门户概述
 description: Azure 门户是一个图形用户界面，可用于管理 Azure 服务。 了解如何在 Azure 门户中导航和查找资源。
-services: azure-portal
 keywords: 门户
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: overview
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84763918"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745921"
 ---
 # <a name="azure-portal-overview"></a>Azure 门户概述
 
@@ -42,7 +37,7 @@ Azure 门户旨在实现复原能力和持续可用性。 每个 Azure 数据中
 
 作为 Azure 服务的新订阅者，[登录到门户](https://portal.azure.com)后，看到的第一个画面就是“Azure 主页”。 在此页面中，可以编译资源来帮助你充分利用 Azure 订阅。 其中包含了免费在线课程、文档、核心服务和有用站点的链接，使你随时掌握和应对组织发生的变化。 为了方便你快速访问正在处理的工作，该页面还会显示最近访问的资源列表。 无法自定义此页面，但可以选择是要将“Azure 主页”还是“Azure 仪表板”用作默认视图。  首次登录时，该页面的顶部会提示你要在哪个位置保存首选项。
 
-![显示默认视图选择器的屏幕截图](./media/azure-portal-overview/azure-portal-default-view.png)
+![显示保存首选项位置的屏幕截图。](./media/azure-portal-overview/azure-portal-default-view.png)
 
 可以在“门户设置”中更改 Azure 门户菜单和 Azure 默认视图。 如果更改所做的选择，会立即应用更改。
 
@@ -54,7 +49,7 @@ Azure 门户旨在实现复原能力和持续可用性。 每个 Azure 数据中
 
 ## <a name="getting-around-the-portal"></a>门户的布局
 
-最好是了解门户的基本布局以及如何与之交互。 本文将会介绍用户界面的组件，以及说明中使用的一些术语。 如需详细了解门户概览，请参阅课程[导航到门户](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal)。
+最好是了解门户的基本布局以及如何与之交互。 本文将会介绍用户界面的组件，以及说明中使用的一些术语。 如需详细了解门户概览，请参阅课程[导航到门户](/learn/modules/tour-azure-portal/3-navigate-the-portal)。
 
 Azure 门户菜单和页眉是始终存在的全局元素。 这些持久功能是与每个单独服务或功能关联的用户界面的“外壳”，而标头可提供对全局控件的访问。 资源的配置页面（有时称为“边栏选项卡”）还可能会提供一个资源菜单，以帮助你在功能之间切换。
 

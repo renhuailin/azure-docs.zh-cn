@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bddf1642b2013567fbc23278b3d8d32692601d55
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87906829"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974113"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教程：对 B2B 用户强制执行多重身份验证
 
@@ -87,9 +87,9 @@ ms.locfileid: "87906829"
 
     ![显示“云应用”页和“选择”选项的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
-12. 在“选择”页面上，选择“Microsoft Azure 管理”，然后勾选“选择”************。
+12. 在“选择”页面上，选择“Microsoft Azure 管理”，然后勾选“选择”。
 
-    ![显示已选中 Microsoft Azure 管理应用的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![突出显示了“Microsoft Azure 管理”选项的屏幕截图。](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. 在“云应用”页面上，选择“完成” 。
 14. 在“新建”页面的“访问控制”部分中，选择“授权”  。
@@ -107,14 +107,14 @@ ms.locfileid: "87906829"
 
 1.  在“条件访问 - 策略”页上，选择“What If” 。 
 
-    ![显示选择“What if”选项的位置的屏幕截图](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![突出显示了在“条件访问 - 策略”页面上选择“What if”选项的位置的屏幕截图。](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  依次选择“用户”和测试来宾用户，然后选中“选择” 。
 
     ![显示已选中一个来宾用户的屏幕截图](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
 3.  选择“云应用”。
-4.  在“云应用”页面上，选中“选择应用”，然后单击“选择”  。 在“选择”页面上，选择“Microsoft Azure 管理”，然后单击“选择”********。 
+4.  在“云应用”页面上，选中“选择应用”，然后单击“选择”  。 在“选择”页面上，选择“Microsoft Azure 管理”，然后单击“选择”。 
 
     ![显示已选中 Microsoft Azure 管理应用的屏幕截图](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 

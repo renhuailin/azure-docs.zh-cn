@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611909"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016652"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -22,21 +22,21 @@ ms.locfileid: "89611909"
 
 ## <a name="availability-considerations"></a>可用性注意事项
 
-将区域 (非区域性) 规模集部署到 API 版本 *2017-12-01*之外的一个或多个区域时，可以使用以下可用性选项：
+将区域 (非区域性) 规模集部署到 API 版本 *2017-12-01* 之外的一个或多个区域时，可以使用以下可用性选项：
 - 最大分配 (platformFaultDomainCount = 1) 
 - 静态固定分配 (platformFaultDomainCount = 5) 
 - 与存储磁盘容错域的分布 (platforFaultDomainCount = 2 或 3) 
 
 使用“最大分布”时，规模集会在每个区域中将 VM 分布到尽可能多的容错域。 这种分布可能会在每个区域中横跨五个以上或五个以下的容错域。 利用静态固定传播，规模集将 Vm 分布到每个区域正好五个容错域。 如果规模集在每个区域中找不到 5 个不同的容错域来满足分配请求，则请求会失败。
 
-建议对大多数工作负荷使用“最大分布”进行部署，因为此方法可在大多数情况下提供最佳分布****。 如果需要将副本跨不同的硬件隔离单元进行分布，建议先跨可用性区域进行分布，然后在每个区域中使用“最大分布”。
+建议对大多数工作负荷使用“最大分布”进行部署，因为此方法可在大多数情况下提供最佳分布。 如果需要将副本跨不同的硬件隔离单元进行分布，建议先跨可用性区域进行分布，然后在每个区域中使用“最大分布”。
 
 > [!NOTE]
 > 使用“最大分布”时，无论 VM 实际分布到多少个容错域，在规模集 VM 实例视图和实例元数据中都只能看到一个容错域。 每个区域中的分布是隐式的。
 
 ### <a name="placement-groups"></a>放置组
 
-部署规模集时，还可以选择为每个可用性区域部署单个[放置组](./virtual-machine-scale-sets-placement-groups.md)或多个放置组。 对于区域 (非区域性) 规模集，选择是在区域中使用单个放置组，或在区域中包含多个放置组。 对于大多数工作负荷，建议使用多个放置组，这样可以增大规模。 在 API 版本 *2017-12-01*中，对于单区域和跨区域规模集，规模集默认为多个放置组，但对于区域 (非区域性) 规模集，它们默认为单个放置组。
+部署规模集时，还可以选择为每个可用性区域部署单个[放置组](./virtual-machine-scale-sets-placement-groups.md)或多个放置组。 对于区域 (非区域性) 规模集，选择是在区域中使用单个放置组，或在区域中包含多个放置组。 对于大多数工作负荷，建议使用多个放置组，这样可以增大规模。 在 API 版本 *2017-12-01* 中，对于单区域和跨区域规模集，规模集默认为多个放置组，但对于区域 (非区域性) 规模集，它们默认为单个放置组。
 
 > [!NOTE]
 > 如果使用“最大分布”，则必须使用多个放置组。
@@ -52,7 +52,7 @@ ms.locfileid: "89611909"
 
 使用“尽量实现区域均衡”时，规模集会在维持均衡时尝试进行横向收缩和扩展。 但是，如果出于某种原因，这是不可能的 (例如，如果一个区域出现故障，规模集就无法在该区域中创建新的 VM) ，规模集就允许暂时不平衡成功地放大或缩小。在后续的横向扩展尝试中，规模集向需要更多 Vm 才能实现规模集均衡的区域添加 Vm。 同样，在后续的横向收缩尝试中，规模集会在需要减少 VM 才能实现规模集均衡的区域中删除 VM。 使用“严格执行区域均衡”时，如果在进行横向收缩或扩展尝试时会导致不均衡，规模集会放弃这样的尝试。
 
-要使用“尽量实现区域均衡”，请将“zoneBalance”设置为 false****。 此设置是 API 版本 2017-12-01 中的默认设置**。 要使用“严格执行区域均衡”，请将“zoneBalance”设置为 true****。
+要使用“尽量实现区域均衡”，请将“zoneBalance”设置为 false。 此设置是 API 版本 2017-12-01 中的默认设置。 要使用“严格执行区域均衡”，请将“zoneBalance”设置为 true。
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>单区域和区域冗余规模集
 
@@ -79,7 +79,7 @@ ms.locfileid: "89611909"
 
 创建使用可用性区域的规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 若要使用可用性区域，必须在受支持的 Azure 区域中创建规模集。
 
-在 [az vmss create](/cli/azure/vmss) 命令中添加 `--zones` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。 以下示例在区域 1 中创建名为 myScaleSet 的单个区域规模集****：
+在 [az vmss create](/cli/azure/vmss) 命令中添加 `--zones` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。 以下示例在区域 1 中创建名为 myScaleSet 的单个区域规模集：
 
 ```azurecli
 az vmss create \
@@ -96,9 +96,9 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>区域冗余规模集
 
-若要创建区域冗余规模集，请使用标准 SKU 公共 IP 地址和负载均衡器**。 为增强冗余，标准 SKU 创建区域冗余网络资源**。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
+若要创建区域冗余规模集，请使用标准 SKU 公共 IP 地址和负载均衡器。 为增强冗余，标准 SKU 创建区域冗余网络资源。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
-若要创建区域冗余规模集，可使用 `--zones` 参数指定多个区域。 下例跨区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集****：
+若要创建区域冗余规模集，可使用 `--zones` 参数指定多个区域。 下例跨区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集：
 
 ```azurecli
 az vmss create \
@@ -117,7 +117,7 @@ az vmss create \
 
 若要使用可用性区域，必须在受支持的 Azure 区域中创建规模集。 在 [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) 命令中添加 `-Zone` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。
 
-以下示例在美国东部 2 区域 1 中创建名为 myScaleSet 的单区域规模集******。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
+以下示例在美国东部 2 区域 1 中创建名为 myScaleSet 的单区域规模集。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
 
 ```powershell
 New-AzVmss `
@@ -134,7 +134,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>区域冗余规模集
 
-若要创建区域冗余规模集，可使用 `-Zone` 参数指定多个区域。 以下示例跨美国东部 2 区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集******。 虚拟网络、公共 IP 地址和负载均衡器的区域冗余 Azure 网络资源均会自动创建。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
+若要创建区域冗余规模集，可使用 `-Zone` 参数指定多个区域。 以下示例跨美国东部 2 区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集。 虚拟网络、公共 IP 地址和负载均衡器的区域冗余 Azure 网络资源均会自动创建。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
 
 ```powershell
 New-AzVmss `
@@ -153,7 +153,7 @@ New-AzVmss `
 
 创建使用可用性区域的规模集的过程与适用于 [Linux](quick-create-template-linux.md) 或 [Windows](quick-create-template-windows.md) 的入门文章中详述的过程相同。 若要使用可用性区域，必须在受支持的 Azure 区域中创建规模集。 在模板中的 *Microsoft.Compute/virtualMachineScaleSets* 资源类型中添加 `zones` 属性并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。
 
-以下示例在美国东部 2 区域 1 中创建名为 myScaleSet 的 Linux 单区域规模集******：
+以下示例在美国东部 2 区域 1 中创建名为 myScaleSet 的 Linux 单区域规模集：
 
 ```json
 {
@@ -197,7 +197,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>区域冗余规模集
 
-若要创建区域冗余规模集，则在 Microsoft.Compute/virtualMachineScaleSets 资源类型的 `zones` 属性中指定多个值**。 下例跨美国东部 2 区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集******：
+若要创建区域冗余规模集，则在 Microsoft.Compute/virtualMachineScaleSets 资源类型的 `zones` 属性中指定多个值。 下例跨美国东部 2 区域 1、2、3 创建名为 myScaleSet 的区域冗余规模集：
 
 ```json
 {
@@ -213,7 +213,7 @@ New-AzVmss `
 }
 ```
 
-如果创建公共 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源**。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
+如果创建公共 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 有关区域冗余规模集和网络资源的完整示例，请参阅[此示例资源管理器模板](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: alkohli
-ms.openlocfilehash: 79a239def70f0455f63c18d86397ec8d927f244c
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 309fa85d0a4d877522a89dd8f1e6e71fb2074744
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054901"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022932"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 查看和管理卷
 ## <a name="overview"></a>概述
@@ -45,7 +45,7 @@ ms.locfileid: "90054901"
 > 
 
 ## <a name="mount-volumes"></a>装载卷
-使用以下过程装载、初始化和格式化 StorSimple 卷。 此过程使用磁盘管理（一个系统实用工具）来管理硬盘和相应的卷或分区。 有关磁盘管理的详细信息，请转到 Microsoft TechNet 网站上的[磁盘管理](https://technet.microsoft.com/library/cc770943.aspx)。
+使用以下过程装载、初始化和格式化 StorSimple 卷。 此过程使用磁盘管理（一个系统实用工具）来管理硬盘和相应的卷或分区。 有关磁盘管理的详细信息，请转到 Microsoft TechNet 网站上的[磁盘管理](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11))。
 
 #### <a name="to-mount-volumes"></a>装载卷
 1. 在主计算机上，启动 Microsoft iSCSI 发起程序。
@@ -80,7 +80,7 @@ ms.locfileid: "90054901"
       * 选择 NTFS 文件系统。
       * 指定 64 KB 分配单元大小。
       * 执行快速格式化。
-7. 格式化多分区卷。 有关说明，请转到[实施磁盘管理](https://msdn.microsoft.com/library/dd163556.aspx)中的“分区和卷”部分。
+7. 格式化多分区卷。 有关说明，请转到[实施磁盘管理](/previous-versions/tn-archive/dd163556(v=technet.10))中的“分区和卷”部分。
 
 ## <a name="view-information-about-your-volumes"></a>查看卷的相关信息
 使用以下过程查看本地卷和 Azure StorSimple 卷的相关信息。
@@ -133,7 +133,7 @@ ms.locfileid: "90054901"
 ### <a name="prerequisites"></a>先决条件
 开始之前：
 
-* 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
+* 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](./storsimple-8000-deployment-walkthrough-u2.md)。
 * 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请参阅 [部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 
 #### <a name="to-configure-backup-of-a-basic-volume"></a>配置基本卷的备份
@@ -166,7 +166,7 @@ ms.locfileid: "90054901"
 * 在 StorSimple 设备上配置两个卷。 （在示例中，可用卷为 **“磁盘 1”** 和 **“磁盘 2”**。） 
 
 ### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>步骤 1：使用磁盘管理创建动态镜像的卷
-磁盘管理是一个系统实用工具，用于管理硬盘以及其中包含的卷或分区。 有关磁盘管理的详细信息，请转到 Microsoft TechNet 网站上的[磁盘管理](https://technet.microsoft.com/library/cc770943.aspx)。
+磁盘管理是一个系统实用工具，用于管理硬盘以及其中包含的卷或分区。 有关磁盘管理的详细信息，请转到 Microsoft TechNet 网站上的[磁盘管理](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11))。
 
 #### <a name="to-create-a-dynamic-mirrored-volume"></a>创建动态镜像卷
 1. 使用以下任意选项启动磁盘管理： 
@@ -178,7 +178,7 @@ ms.locfileid: "90054901"
 3. 在“磁盘管理”窗口底部窗格的右列中，右键单击 **“磁盘 1”**，然后选择 **“新建镜像卷”**。 
    
     ![新建镜像卷](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png) 
-4. 在“新建镜像卷”**** 向导页上，单击“下一步”****。
+4. 在“新建镜像卷”向导页上，单击“下一步”。
 5. 在 **“选择磁盘”** 页的 **“选定项”** 窗格中选择 **“磁盘 2”**，单击 **“添加”**，然后单击 **“下一步”**。 
 6. 在“**分配驱动器号或路径**”页上，接受默认值，并单击“**下一步**”。 
 7. 在 **“格式化卷”** 页的 **“分配单元大小”** 框中，选择 **“64K”**。 选择 **“执行快速格式化”** 复选框，然后单击 **“下一步”**。 
@@ -210,4 +210,4 @@ ms.locfileid: "90054901"
 * 了解如何[使用 StorSimple Snapshot Manager 创建和管理卷组](storsimple-snapshot-manager-manage-volume-groups.md)。
 
 <!--Reference links-->
-[1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee338480(v=ws.10)

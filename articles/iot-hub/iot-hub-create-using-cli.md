@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087841"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659907"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
 
@@ -20,29 +20,15 @@ ms.locfileid: "90087841"
 
 本文介绍如何使用 Azure CLI 创建 IoT 中心。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-若要完成本操作说明，需要 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="sign-in-and-set-your-azure-account"></a>登录并设置 Azure 帐户
-
-如果在本地运行 Azure CLI 而不是使用 Cloud Shell，则需要登录 Azure 帐户。
-
-在命令提示符中，运行 [login 命令](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)：
-
-   ```azurecli
-   az login
-   ```
-
-按照说明使用代码进行身份验证，并通过 Web 浏览器登录 Azure 帐户。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 使用 Azure CLI 创建资源组，并添加 IoT 中心。
 
-1. 创建 IoT 中心时，必须在资源组中创建它。 使用现有资源组，或运行以下[命令创建资源组](https://docs.microsoft.com/cli/azure/resource)：
+1. 创建 IoT 中心时，必须在资源组中创建它。 使用现有资源组，或运行以下[命令创建资源组](/cli/azure/resource)：
     
    ```azurecli-interactive
    az group create --name {your resource group name} --location westus
@@ -56,7 +42,7 @@ ms.locfileid: "90087841"
    > ```
    >
 
-2. 运行以下[命令，使用 IoT 中心的全局唯一名称在资源组中创建 IoT 中心](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)：
+2. 运行以下[命令，使用 IoT 中心的全局唯一名称在资源组中创建 IoT 中心](/cli/azure/iot/hub#az-iot-hub-create)：
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
@@ -70,16 +56,16 @@ ms.locfileid: "90087841"
 
 ## <a name="remove-an-iot-hub"></a>删除 IoT 中心
 
-可使用 Azure CLI [删除单个资源](https://docs.microsoft.com/cli/azure/resource)（例如 IoT 中心），或删除资源组及其所有资源（包括任何 IoT 中心）。
+可使用 Azure CLI [删除单个资源](/cli/azure/resource)（例如 IoT 中心），或删除资源组及其所有资源（包括任何 IoT 中心）。
 
-若要 [删除 IoT 中心](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete)，请运行以下命令：
+若要 [删除 IoT 中心](/cli/azure/iot/hub#az-iot-hub-delete)，请运行以下命令：
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-若要 [删除资源组](https://docs.microsoft.com/cli/azure/group#az-group-delete) 及其所有资源，请运行以下命令：
+若要 [删除资源组](/cli/azure/group#az-group-delete) 及其所有资源，请运行以下命令：
 
 ```azurecli-interactive
 az group delete --name {your resource group name}

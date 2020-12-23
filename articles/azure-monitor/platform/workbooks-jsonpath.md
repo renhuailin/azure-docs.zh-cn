@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a2411d9257b1083cb2bcbfcad289813a6c062dff
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081383"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143584"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>如何在工作簿中使用 JSONPath 转换 JSON 数据
 
@@ -22,7 +22,7 @@ ms.locfileid: "87081383"
 
 JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 与 XPath 类似，JSONPath 允许从 JSON 结构中提取和筛选数据。
 
-工作簿作者可以使用 JSONPath 转换将 JSON 转换为表结构。 然后，可以使用该表来绘制[工作簿可视化效果](workbooks-visualizations.md)。
+工作簿作者可以使用 JSONPath 转换将 JSON 转换为表结构。 然后，可以使用该表来绘制[工作簿可视化效果](./workbooks-overview.md#visualizations)。
 
 ## <a name="using-jsonpath"></a>使用 JSONPath
 

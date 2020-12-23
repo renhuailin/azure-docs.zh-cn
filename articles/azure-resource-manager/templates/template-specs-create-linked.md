@@ -2,24 +2,24 @@
 title: 创建具有链接模板的模板规格
 description: 了解如何创建具有链接模板的模板规格。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.date: 11/17/2020
+ms.openlocfilehash: 038fb3e6bbb6086535b83a69de7a3fe49a8e60bb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728533"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518883"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教程：创建具有链接模板的模板规格（预览）
 
-了解如何创建具有[链接模板](linked-templates.md#linked-template)的[模板规格](template-specs.md)。 使用模板规格与组织中的其他用户共享 ARM 模板。 本文介绍如何使用 `relativePath` [部署资源](/azure/templates/microsoft.resources/deployments)的属性创建模板规范以打包主模板及其链接的模板。
+了解如何创建具有主模板和[链接模板](linked-templates.md#linked-template)的[模板规范](template-specs.md)。 使用模板规格与组织中的其他用户共享 ARM 模板。 本文介绍如何使用 `relativePath` [部署资源](/azure/templates/microsoft.resources/deployments)的属性创建模板规范以打包主模板及其链接的模板。
 
 ## <a name="prerequisites"></a>先决条件
 
 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 模板规格当前提供预览版。 若要使用它，必须[注册预览版](https://aka.ms/templateSpecOnboarding)。
+> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装 [版本5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用 [2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-linked-templates"></a>创建链接模板
 

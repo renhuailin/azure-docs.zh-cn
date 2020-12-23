@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0cbbcc822765097f83fcd1a52ce775c69faba9fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836422"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489568"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>快速入门：使用 Windows 虚拟机创建和管理 Azure 文件存储共享
 
@@ -41,8 +41,8 @@ ms.locfileid: "87836422"
 
 接下来，创建文件共享。
 
-1. Azure 存储帐户部署完成后，请选择“转到资源”。****
-1. 在存储帐户窗格中选择“文件”****。
+1. Azure 存储帐户部署完成后，请选择“转到资源”。
+1. 在存储帐户窗格中选择“文件”。
 
     ![选择文件](./media/storage-files-quick-create-use-windows/click-files.png)
 
@@ -50,44 +50,44 @@ ms.locfileid: "87836422"
 
     ![选择”添加文件共享”按钮](./media/storage-files-quick-create-use-windows/create-file-share.png)
 
-1. 将新文件共享命名为 *qsfileshare*，在“配额”中输入“1”，然后选择“创建”。******** 配额最高可为 5 TiB，但本快速入门只需 1 GiB。
+1. 将新文件共享命名为 *qsfileshare* ，在“配额”中输入“1”，然后选择“创建”。 配额最高可为 5 TiB，但本快速入门只需 1 GiB。
 1. 在本地计算机上创建名为 *qsTestFile* 的新 txt 文件。
-1. 选择新文件共享，然后在文件共享位置选择“上传”。****
+1. 选择新文件共享，然后在文件共享位置选择“上传”。
 
     ![上传文件](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
-1. 浏览到创建 .txt 文件的位置，然后依次选择“qsTestFile.txt”、“上传”。******
+1. 浏览到创建 .txt 文件的位置，然后依次选择“qsTestFile.txt”、“上传”。
 
 目前已在 Azure 中创建 Azure 存储帐户和包含一个文件的文件共享。 接下来，请创建 Azure VM，其中的 Windows Server 2016 Datacenter 代表本快速入门中的本地服务器。
 
 ### <a name="deploy-a-vm"></a>部署 VM
 
-1. 接下来，请展开 Azure 门户左侧的菜单，然后在左上角选择“创建资源”。****
-1. 在 **Azure 市场**资源列表上方的搜索框中，搜索并选择“Windows Server 2016 Datacenter”，然后选择“创建”********。
-1. 在“基本信息”选项卡的“项目详细信息”下，选择为本快速入门创建的资源组。********
+1. 接下来，请展开 Azure 门户左侧的菜单，然后在左上角选择“创建资源”。
+1. 在 **Azure 市场** 资源列表上方的搜索框中，搜索并选择“Windows Server 2016 Datacenter”，然后选择“创建”。
+1. 在“基本信息”选项卡的“项目详细信息”下，选择为本快速入门创建的资源组。
 
    ![在门户边栏选项卡中输入 VM 的基本信息](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
-1. 在“实例详细信息”下，将 VM 命名为 *qsVM*。****
-1. 保留“区域”、“可用性选项”、“映像”和“大小”的默认设置。****************
-1. 在“管理员帐户”下，添加 *VMadmin* 作为**用户名**，并输入 VM 的**密码**。****
-1. 在“入站端口规则”**** 下，选择“允许所选端口”****，然后从下拉列表中选择“RDP (3389)”**** 和“HTTP”****。
+1. 在“实例详细信息”下，将 VM 命名为 *qsVM* 。
+1. 保留“区域”、“可用性选项”、“映像”和“大小”的默认设置。
+1. 在“管理员帐户”下，添加 *VMadmin* 作为 **用户名** ，并输入 VM 的 **密码** 。
+1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”和“HTTP”。
 1. 选择“查看 + 创建”。
 1. 选择“创建”。 创建新的 VM 需要数分钟才能完成。
 
-1. VM 部署完成以后，请选择“转到资源”。****
+1. VM 部署完成以后，请选择“转到资源”。
 
 目前已创建一个新虚拟机并附加一个数据磁盘。 现在需连接到 VM。
 
 ### <a name="connect-to-your-vm"></a>连接到 VM
 
-1. 选择虚拟机属性页上的“连接”。****
+1. 选择虚拟机属性页上的“连接”。
 
    ![从门户连接到 Azure VM](./media/storage-files-quick-create-use-windows/connect-vm.png)
 
-1. 在“连接到虚拟机”页面中，保留默认选项，以使用 IP 地址通过端口号 3389 进行连接，然后选择“下载 RDP 文件”************ ******。
+1. 在“连接到虚拟机”页面中，保留默认选项，以使用 IP 地址通过端口号 3389 进行连接，然后选择“下载 RDP 文件” 。
 1. 打开下载的 RDP 文件，然后在出现提示时选择“连接”。
-1. 在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 以 *localhost\username* 格式键入用户名，其中，&lt;username&gt; 是为虚拟机创建的 VM 管理员用户名。 输入针对虚拟机创建的密码，然后选择“确定”。****
+1. 在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 以 *localhost\username* 格式键入用户名，其中，&lt;username&gt; 是为虚拟机创建的 VM 管理员用户名。 输入针对虚拟机创建的密码，然后选择“确定”。
 
    ![更多选择](./media/storage-files-quick-create-use-windows/local-host2.png)
 
@@ -95,23 +95,23 @@ ms.locfileid: "87836422"
 
 ## <a name="map-the-azure-file-share-to-a-windows-drive"></a>将 Azure 文件共享映射到 Windows 驱动器
 
-1. 在 Azure 门户中，导航到“qsfileshare”文件共享并选择“连接”。******
-1. 复制第二个框中的内容并将其粘贴到**记事本**中。
+1. 在 Azure 门户中，导航到“qsfileshare”文件共享并选择“连接”。
+1. 复制第二个框中的内容并将其粘贴到 **记事本** 中。
 
-   ![Azure 文件“连接”窗格中的 UNC 路径](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
+   ![屏幕截图显示了“秒数”框的内容，你应将其复制并粘贴到记事本中。](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
-1. 在 VM 中打开“文件资源管理器”，并在窗口中选择“此电脑”。******** 这会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。********
-1. 选择驱动器号并输入 UNC 路径。 如果已按本快速入门中的建议命名，请从**记事本**中将复制 *\\qsstorageacct.file.core.windows.net\qsfileshare*。
+1. 在 VM 中打开“文件资源管理器”，并在窗口中选择“此电脑”。 这会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。
+1. 选择驱动器号并输入 UNC 路径。 如果已按本快速入门中的建议命名，请从 **记事本** 中将复制 *\\qsstorageacct.file.core.windows.net\qsfileshare* 。
 
    确保选中这两个复选框。
 
    ![“映射网络驱动器”对话框的屏幕截图](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
 
 1. 选择“完成”  。
-1. 在“Windows 安全性”对话框中：****
+1. 在“Windows 安全性”对话框中：
 
-   - 从记事本中复制前面带有 AZURE\ 的存储帐户名，并将其作为用户名粘贴到“Windows 安全性”对话框中。**** 如果已按本快速入门中的建议命名，请复制 *AZURE\qsstorageacct*。
-   - 从记事本中复制存储帐户密钥，并将其作为密码粘贴到“Windows 安全性”对话框中。****
+   - 从记事本中复制前面带有 AZURE\ 的存储帐户名，并将其作为用户名粘贴到“Windows 安全性”对话框中。 如果已按本快速入门中的建议命名，请复制 *AZURE\qsstorageacct* 。
+   - 从记事本中复制存储帐户密钥，并将其作为密码粘贴到“Windows 安全性”对话框中。
 
       ![Azure 文件“连接”窗格中的 UNC 路径](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
 
@@ -119,26 +119,26 @@ ms.locfileid: "87836422"
 
 映射驱动器后，可以创建快照。
 
-1. 在门户中，导航到你的文件共享并选择“创建快照”。****
+1. 在门户中，导航到你的文件共享并选择“创建快照”。
 
    ![创建快照](./media/storage-files-quick-create-use-windows/create-snapshot.png)
 
-1. 在 VM 中打开“qstestfile.txt”，键入“this file has been modified”，然后保存并关闭该文件。**
+1. 在 VM 中打开“qstestfile.txt”，键入“this file has been modified”，然后保存并关闭该文件。
 1. 创建另一个快照。
 
 ## <a name="browse-a-share-snapshot"></a>浏览共享快照
 
-1. 在文件共享中，选择“查看快照”****。
-1. 在“文件共享快照”窗格中，选择列表中的第一个快照。****
+1. 在文件共享中，选择“查看快照”。
+1. 在“文件共享快照”窗格中，选择列表中的第一个快照。
 
    ![时间戳列表中的选定快照](./media/storage-files-quick-create-use-windows/snapshot-list.png)
 
-1. 在该快照的窗格中，选择“qsTestFile.txt”。**
+1. 在该快照的窗格中，选择“qsTestFile.txt”。
 
 ## <a name="restore-from-a-snapshot"></a>从快照还原
 
-1. 从文件共享快照边栏选项卡，右键单击 qsTestFile，然后选择“还原”按钮******。
-1. 选择“覆盖原始文件”。****
+1. 从文件共享快照边栏选项卡，右键单击 qsTestFile，然后选择“还原”按钮。
+1. 选择“覆盖原始文件”。
 
    ![“下载”和“还原”按钮](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
 
@@ -146,8 +146,8 @@ ms.locfileid: "87836422"
 
 ## <a name="delete-a-share-snapshot"></a>删除共享快照
 
-1. 在文件共享中，选择“查看快照”****。
-1. 在“文件共享快照”窗格中，选择列表中的最后一个快照并单击“删除”。********
+1. 在文件共享中，选择“查看快照”。
+1. 在“文件共享快照”窗格中，选择列表中的最后一个快照并单击“删除”。
 
    ![“删除”按钮](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
@@ -159,13 +159,13 @@ ms.locfileid: "87836422"
 
    ![文件资源管理器中的已装载共享](./media/storage-files-quick-create-use-windows/snapshot-windows-mount.png)
 
-1. 选择“qsTestFile.txt”，然后单击右键并从菜单中选择“属性”。******
+1. 选择“qsTestFile.txt”，然后单击右键并从菜单中选择“属性”。
 
    ![所选目录的右键单击菜单](./media/storage-files-quick-create-use-windows/snapshot-windows-previous-versions.png)
 
 1. 选择"以前版本”，以查看此目录的共享快照列表。
 
-1. 选择“打开”以打开该快照。****
+1. 选择“打开”以打开该快照。
 
    ![“以前版本”选项卡](./media/storage-files-quick-create-use-windows/snapshot-windows-list.png)
 

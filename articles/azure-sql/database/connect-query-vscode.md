@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86515047"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672493"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>快速入门：使用 Visual Studio Code 进行连接和查询 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,13 +45,13 @@ ms.locfileid: "86515047"
 
 ## <a name="install-visual-studio-code"></a>安装 Visual Studio Code
 
-请确保已安装最新版 [Visual Studio Code](https://code.visualstudio.com/Download) 并加载了 [mssql 扩展](https://aka.ms/mssql-marketplace)。 有关 mssql 扩展的安装指南，请参阅[安装 Visual Studio Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) 和[适用于 Visual Studio Code 的 mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)。
+请确保已安装最新版 [Visual Studio Code](https://code.visualstudio.com/Download) 并加载了 [mssql 扩展](https://aka.ms/mssql-marketplace)。 有关 mssql 扩展的安装指南，请参阅[安装 Visual Studio Code](/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) 和[适用于 Visual Studio Code 的 mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)。
 
 ## <a name="configure-visual-studio-code"></a>配置 Visual Studio Code
 
 ### <a name="macos"></a>**macOS**
 
-对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 .NET Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL**。
+对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 .NET Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL** 。
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -86,7 +86,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 打开新的 Visual Studio Code 窗口。
 
-2. 按 **Ctrl**+**N**。 这会打开一个新的纯文本文件。
+2. 按 **Ctrl**+**N** 。 这会打开一个新的纯文本文件。
 
 3. 选择状态栏右下角的“纯文本”。
 
@@ -101,7 +101,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 在 Visual Studio Code 中，按 Ctrl+Shift+P（或 F1）打开命令面板 。
 
-2. 选择“MS SQL:Connect”，然后选择 **Enter**。
+2. 选择“MS SQL:Connect”，然后选择 **Enter** 。
 
 3. 选择“创建连接配置文件”。
 
@@ -121,7 +121,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="query-data"></a>查询数据
 
-运行以下 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句，按类别查询排名前 20 的产品。
+运行以下 [SELECT](/sql/t-sql/queries/select-transact-sql) Transact-SQL 语句，按类别查询排名前 20 的产品。
 
 1. 在编辑器窗口中，粘贴以下 SQL 查询。
 
@@ -138,7 +138,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="insert-data"></a>插入数据
 
-运行以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句来向 `SalesLT.Product` 表中添加新产品。
+运行以下 [INSERT](/sql/t-sql/statements/insert-transact-sql) Transact-SQL 语句来向 `SalesLT.Product` 表中添加新产品。
 
 1. 将之前的查询替换为此查询。
 
@@ -166,7 +166,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="update-data"></a>更新数据
 
-运行以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句来更新已添加的产品。
+运行以下 [UPDATE](/sql/t-sql/queries/update-transact-sql) Transact-SQL 语句来更新已添加的产品。
 
 1. 将之前的查询替换为此查询：
 
@@ -180,7 +180,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="delete-data"></a>删除数据
 
-运行以下 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句来删除新产品。
+运行以下 [DELETE](/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句来删除新产品。
 
 1. 将之前的查询替换为此查询：
 
@@ -195,4 +195,4 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 - 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[快速入门：使用 SQL Server Management Studio 连接到 Azure SQL 数据库中的数据库并查询数据](connect-query-ssms.md)。
 - 若要使用 Azure 门户进行连接和查询，请参阅[快速入门：使用 Azure 门户中的 SQL 查询编辑器进行连接并查询数据](connect-query-portal.md)。
-- 有关使用 Visual Studio Code 的 MSDN 杂志文章，请参阅[“利用 MSSQL 扩展创建数据库 IDE”博客文章](https://msdn.microsoft.com/magazine/mt809115)。
+- 有关使用 Visual Studio Code 的 MSDN 杂志文章，请参阅[“利用 MSSQL 扩展创建数据库 IDE”博客文章](/archive/msdn-magazine/2017/june/data-points-visual-studio-code-create-a-database-ide-with-mssql-extension)。

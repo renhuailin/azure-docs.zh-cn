@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 9447cec55c53861ca57d5416a91ffefd35fdd20b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571855"
 ---
 ## <a name="repeatability-during-copy"></a>复制期间的可重复性
@@ -76,7 +76,7 @@ ID    Product        Quantity    ModifiedDate
 > [!IMPORTANT]
 > Azure Synapse Analytics 目前不支持 sliceIdentifierColumnName。 
 
-实现可重复性的另一种机制是在目标表中使用专用列 (**sliceIdentifierColumnName**)。 Azure 数据工厂使用此列来确保源与目标保持同步。 如果可以灵活更改或定义目标 SQL 表架构，则很适合使用这种方法。 
+实现可重复性的另一种机制是在目标表中使用专用列 ( **sliceIdentifierColumnName** )。 Azure 数据工厂使用此列来确保源与目标保持同步。 如果可以灵活更改或定义目标 SQL 表架构，则很适合使用这种方法。 
 
 出于可重复性的目的，Azure 数据工厂将使用此列，在此过程中，Azure 数据工厂不会对表做出任何架构更改。 如何使用此方法：
 

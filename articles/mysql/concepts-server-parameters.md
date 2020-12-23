@@ -1,17 +1,17 @@
 ---
 title: 服务器参数 - Azure Database for MySQL
 description: 本主题提供了在 Azure Database for MySQL 中配置服务器参数的准则。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0fddc1e8f80e257548d0dda91758273eb8c8ac78
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627340"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534902"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器参数
 
@@ -31,7 +31,7 @@ Azure Database for MySQL 公开了通过 [Azure 门户](./howto-server-parameter
 
 ### <a name="thread-pools"></a>线程池
 
-MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户数量的增加，性能会相应下降。 由于上下文切换增加、线程争用以及 CPU 缓存位置不正确，许多活动线程会严重影响性能。
+MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户数量的增加，性能中会有相应的删除。 由于上下文切换增加、线程争用以及 CPU 缓存位置不正确，许多活动线程会严重影响性能。
 
 线程池是服务器端的一项功能。与连接池不同，它通过引入工作线程的动态池来最大限度提高性能，该动态池可用于限制服务器上运行的活动线程数，并最大程度地减少线程变动。 这有助于确保连接突发不会导致服务器资源用尽或因内存不足错误而崩溃。 对于短查询和 CPU 密集型工作负荷（例如 OLTP 工作负荷），线程池最有效。
 
@@ -57,9 +57,9 @@ MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户�
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-在 Azure Database for MySQL 中，始终启用二进制日志 (即 `log_bin`) 设置为 ON。 如果你想要使用触发器，你会收到类似于 *你未启用超级权限和二进制日志记录的错误 (你可能想要使用较不安全的 `log_bin_trust_function_creators` 变量) *。 
+在 Azure Database for MySQL 中，始终启用二进制日志（即，将 `log_bin` 设置为“ON”）。 如果你想使用触发器，则会收到如下错误：“你没有 SUPER 权限且二进制日志记录已启用(你可能需要使用安全性更低的 `log_bin_trust_function_creators` 变量)”。 
 
-二进制日志记录格式始终为 **行** ，与服务器的所有连接 **始终** 使用基于行的二进制日志记录。 利用基于行的二进制日志记录，不存在安全问题，二进制日志记录无法中断，因此可以安全地将设置 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 为 **TRUE**。
+二进制日志记录格式始终是“行”，所有与服务器的连接始终使用基于行的二进制日志记录。 使用基于行的二进制日志记录时，不存在安全问题并且二进制日志记录无法中断，因此可以安全地将 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 设置为 TRUE。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -83,7 +83,7 @@ MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户�
 |内存优化|16|65498251264|134217728|65498251264|
 |内存优化|32|132070244352|134217728|132070244352|
 
-#### <a name="servers-support-up-to-16-tb-storage"></a>服务器最多支持 16 TB 的存储
+#### <a name="servers-support-up-to-16-tb-storage"></a>服务器最多支持 16 TB 存储
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
@@ -108,7 +108,7 @@ MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户�
 
 MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同的表空间中。 [系统表空间](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html)是 InnoDB 数据字典的存储区域。 [file-per-table 表空间](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html)包含单个 InnoDB 表的数据和索引，并存储在文件系统内它自己的数据文件中。 此行为由 `innodb_file_per_table` 服务器参数控制。 将 `innodb_file_per_table` 设置为 `OFF` 会导致 InnoDB 在系统表空间中创建表。 否则，InnoDB 在 file-per-table 表空间中创建表。
 
-在单个数据文件中，Azure Database for MySQL 支持最大 1TB。 如果数据库大小超过 1TB，应在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) 表空间中创建表。 如果单个表的大小超过 1 TB，应使用分区表。
+在单个数据文件中，Azure Database for MySQL 最大支持 **4 TB** 。 如果数据库大小大于 4 TB，则应在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) 表空间中创建表。 如果单个表的大小大于 4 TB，则应使用分区表。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -217,10 +217,10 @@ lower_case_table_name 默认设置为 1，你可以在 MySQL 5.6 和 MySQL 5.7 �
 
 如果收到类似于“行大小太大(> 8126)”的错误，则可能需要关闭 innodb_strict_mode 参数。 不允许在服务器级别全局修改服务器参数 innodb_strict_mode，因为如果行数据大小大于 8k，该数据将会被截断，且不显示错误，这样就会导致有可能丢失数据。 建议修改架构以适应页面大小限制。 
 
-可以使用 `init_connect` 在会话级别设置此参数。 若要在会话级别设置 innodb_strict_mode，请参阅[设置未列出的参数](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
+可以使用 `init_connect` 在会话级别设置此参数。 若要在会话级别设置 innodb_strict_mode，请参阅[设置未列出的参数](./howto-server-parameters.md#setting-parameters-not-listed)。
 
 > [!NOTE]
-> 如果有读取副本服务器，请在源服务器上的会话级别将 **innodb_strict_mode** 设置为 OFF 将中断复制。 如果有只读副本，建议将该参数始终设置为 OFF。
+> 如果有只读副本服务器，在源服务器上的会话级别将 innodb_strict_mode 设置为 OFF 会中断复制。 如果有只读副本，建议将该参数始终设置为 OFF。
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

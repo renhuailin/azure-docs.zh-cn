@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 3f19733f01cf601c1145d5e2bb5deb58db828dc4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e1c3236c4c1957b4d0daee8d30c71f03fb8674dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538325"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587802"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>教程：将 Abstract 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88538325"
 * 让用户使用其 Azure AD 帐户自动登录到 Abstract。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -103,7 +103,7 @@ ms.locfileid: "88538325"
 
 1. 打开 [Abstract Web 应用](https://app.abstract.com/)。
 2. 转到左侧栏中的“权限”页。 
-3. 在“配置 SSO”部分，  输入**元数据 URL** 和**实体 ID**。
+3. 在“配置 SSO”部分，  输入 **元数据 URL** 和 **实体 ID**。
 4. 输入你可能有的任何手动例外。 列在手动例外部分的电子邮件会绕过 SSO，能够使用电子邮件和密码登录。 
 5. 单击 **“保存更改”** 。
 
@@ -130,7 +130,7 @@ ms.locfileid: "88538325"
 1. 在应用程序列表中，选择“Abstract”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
-   ![“用户和组”链接](common/users-groups-blade.png)
+    ![“用户和组”链接](common/users-groups-blade.png)
 
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
@@ -146,7 +146,7 @@ ms.locfileid: "88538325"
 
 1. 打开 [Abstract Web 应用](https://app.abstract.com/)。
 2. 转到左侧栏中的“权限”页。 
-3. 单击“使用我的帐户测试”。  如果测试失败，请[联系我们的支持团队](https://www.abstract.com/help/contact/)。
+3. 单击“使用我的帐户测试”。  如果测试失败，请[联系我们的支持团队](https://help.abstract.com/hc/)。
 
 >[!Note]
 >需要使用组织的管理员帐户进行身份验证，然后才能访问 Abstract 上的 SSO 设置。
@@ -156,13 +156,12 @@ ms.locfileid: "88538325"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Abstract 磁贴时，应会自动登录到为其设置了 SSO 的 Abstract。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Abstract 磁贴时，应会自动登录到为其设置了 SSO 的 Abstract。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

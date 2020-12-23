@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e9a776aad966bb74e22f6d7fb8d66530e4b4db92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255190"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150223"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>使用应用服务环境实现分层的安全体系结构
 由于应用服务环境提供部署到虚拟网络的隔离运行时环境，因此开发人员能够创建分层的安全体系结构，针对每个物理应用层提供不同级别的网络访问权限。
@@ -115,7 +115,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 将 NSG 应用到子网后，只有三个上游应用服务环境以及包含 API 后端的应用服务环境能够调用“apiase”环境。
 
 ## <a name="additional-links-and-information"></a>其他链接和信息
-有关[网络安全组](../../virtual-network/security-overview.md)的信息。
+有关[网络安全组](../../virtual-network/network-security-groups-overview.md)的信息。
 
 了解[出站 IP 地址][NetworkArchitecture]和应用服务环境。
 

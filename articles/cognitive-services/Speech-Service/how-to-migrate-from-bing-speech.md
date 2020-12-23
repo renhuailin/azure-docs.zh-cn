@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825592"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499129"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "91825592"
 * [语音转文本](speech-to-text.md)
 * [自定义语音到文本](https://cris.ai)
 * [文本转语音](text-to-speech.md)
-* [自定义文本转语音声音](how-to-customize-voice-font.md)
+* [自定义文本转语音声音](./how-to-custom-voice-create-voice.md)
 * [语音翻译](speech-translation.md)（不包括[文本翻译](../translator/translator-info-overview.md)）
 
 [语音 SDK](speech-sdk.md) 是必应语音客户端库的功能替换，但使用了不同 API。
@@ -63,7 +63,7 @@ ms.locfileid: "91825592"
 
 如果你或你的组织在开发或生产环境中具有使用必应语音 API 的应用程序，则应将其更新为尽快使用语音服务。 请参阅 [语音服务文档](index.yml) ，了解可用的 sdk、代码示例和教程。
 
-语音服务 [REST api](rest-apis.md) 与必应语音 api 兼容。 如果当前正在使用必应语音 REST Api，只需更改 REST 终结点，并切换到语音服务订阅密钥。
+语音服务 [REST api](./overview.md#reference-docs) 与必应语音 api 兼容。 如果当前正在使用必应语音 REST Api，只需更改 REST 终结点，并切换到语音服务订阅密钥。
 
 如果使用特定编程语言的必应语音客户端库，则迁移到[语音 SDK](speech-sdk.md) 需要更改应用程序，因为 API 不同。 语音 SDK 可以简化代码，同时使你可以访问新功能。 语音 SDK 提供多种编程语言。 所有平台上的 API 均类似，从而简化了多平台开发。
 
@@ -72,14 +72,14 @@ ms.locfileid: "91825592"
 语音 SDK 入门：
 
 1. 下载[语音 SDK](speech-sdk.md)。
-1. 完成语音服务 [快速入门指南](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) 和 [教程](how-to-recognize-intents-from-speech-csharp.md)。 另请查看[代码示例](samples.md)来体验新的 API。
+1. 完成语音服务 [快速入门指南](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) 和 [教程](how-to-recognize-intents-from-speech-csharp.md)。 另请查看[代码示例](./speech-sdk.md#sample-source-code)来体验新的 API。
 1. 更新应用程序以使用语音服务。
 
 ## <a name="support"></a>支持
 
 必应语音客户应通过打开[支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来联系客户支持。 如果你的支持需要一个[技术支持计划](https://azure.microsoft.com/support/plans/)，也可以与我们联系。
 
-有关 Speech service、SDK 和 API 支持，请访问语音服务 [支持页](support.md)。
+有关 Speech service、SDK 和 API 支持，请访问语音服务 [支持页](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
 
 ## <a name="next-steps"></a>后续步骤
 

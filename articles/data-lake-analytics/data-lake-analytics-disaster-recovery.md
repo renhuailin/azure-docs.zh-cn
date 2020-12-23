@@ -1,17 +1,16 @@
 ---
 title: Azure Data Lake Analytics 的灾难恢复指南
 description: 了解如何规划 Azure Data Lake Analytics 帐户的灾难恢复。
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: ab39ca8e71376fed681c049d338096ff992fed99
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ce5e96bf464eebb9b91e3ffac9312e89df9cbabe
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132562"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220969"
 ---
 # <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics 的灾难恢复指南
 
@@ -32,7 +31,7 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
    > [!NOTE]
    > 由于帐户名称是全局唯一的，因此请使用一致的命名方案来指示哪个帐户是辅助帐户。
 
-2. 对于非结构化数据，请参考[灾难恢复指南以了解 Azure Data Lake Storage Gen1 中的数据](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+2. 对于非结构化数据，请参考 [灾难恢复指南以了解 Azure Data Lake Storage Gen1 中的数据](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
 3. 对于存储在 ADLA 表和数据库中的结构化数据，创建元数据项目的副本，如数据库、表、表值函数和程序集。 在生产中发生更改时，需要定期重新同步这些项目。 例如，必须通过复制数据并将其插入到辅助表中，将新插入的数据复制到次要区域。
 

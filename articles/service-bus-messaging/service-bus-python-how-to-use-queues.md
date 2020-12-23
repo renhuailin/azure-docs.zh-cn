@@ -1,123 +1,211 @@
 ---
-title: 快速入门：通过 Python 使用 Azure 服务总线队列
-description: 本文介绍如何使用 Python 创建 Azure 服务总线队列，并向其发送消息和从中接收消息。
+title: 通过 Python azure-servicebus 包版本 7.0.0 使用 Azure 服务总线队列
+description: 本文介绍如何使用 Python 向 Azure 服务总线队列发送消息，并从中接收消息。
 author: spelluru
 documentationcenter: python
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: a09f20b2c392dbf219750a76e9570239227dc865
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7275e33e44c20ece6eb7d620e2c1e8032be41a7b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89458555"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498653"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>快速入门：通过 Python 使用 Azure 服务总线队列
-
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-本文介绍如何使用 Python 创建 Azure 服务总线队列，并向其发送消息和从中接收消息。 
-
-有关 Python Azure 服务总线库的详细信息，请参阅[适用于 Python 的服务总线库](/python/api/overview/azure/servicebus?view=azure-python)。
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>向 Azure 服务总线队列发送消息并从中接收消息 (Python)
+本文介绍如何使用 Python 向 Azure 服务总线队列发送消息，并从中接收消息。 
 
 ## <a name="prerequisites"></a>先决条件
 - Azure 订阅。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-- 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的主连接字符串，以便稍后在本文中使用。 
-- 装有 [Python Azure 服务总线][Python Azure Service Bus package]包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/developer/python/azure-sdk-install)。 
-
-## <a name="create-a-queue"></a>创建队列
-
-可通过某个 **ServiceBusService** 对象来使用队列。 若要以编程方式访问服务总线，请将以下行添加到 Python 文件的顶部附近：
-
-```python
-from azure.servicebus import ServiceBusClient
-```
-
-添加以下代码以创建 **ServiceBusClient** 对象。 请将 `<connectionstring>` 替换为服务总线的主连接字符串值。 可以在 [Azure 门户][Azure portal]上服务总线命名空间中的“共享访问策略”下找到此值。
-
-```python
-sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
-```
-
-以下代码使用 **ServiceBusClient** 的 `create_queue` 方法创建名为 `taskqueue` 且采用默认设置的队列：
-
-```python
-sb_client.create_queue("taskqueue")
-```
-
-可以使用相应的选项来重写默认队列设置，例如消息生存时间 (TTL) 或最大主题大小。 以下代码创建名为 `taskqueue` 的队列，其最大队列大小为 5 GB，TTL 值为 1 分钟：
-
-```python
-sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
-                       default_message_time_to_live=datetime.timedelta(minutes=1))
-```
+- 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。 记下服务总线命名空间的连接字符串以及创建的队列的名称 。
+- 已安装 [Python Azure 服务总线](https://pypi.python.org/pypi/azure-servicebus)包的 Python 2.7 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/developer/python/azure-sdk-install)。 
 
 ## <a name="send-messages-to-a-queue"></a>向队列发送消息
 
-若要向服务总线队列发送消息，应用程序需对 **ServiceBusService** 对象调用 `send` 方法。 以下代码示例创建一个队列客户端，并将测试消息发送到 `taskqueue` 队列。 请将 `<connectionstring>` 替换为服务总线的主连接字符串值。 
+1. 添加以下 import 语句。 
 
-```python
-from azure.servicebus import QueueClient, Message
+    ```python
+    from azure.servicebus import ServiceBusClient, ServiceBusMessage
+    ```
+2. 添加以下常量。 
 
-# Create the QueueClient
-queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
+    ```python
+    CONNECTION_STR = "<NAMESPACE CONNECTION STRING>"
+    QUEUE_NAME = "<QUEUE NAME>"
+    ```
 
-# Send a test message to the queue
-msg = Message(b'Test Message')
-queue_client.send(msg)
-```
+    > [!IMPORTANT]
+    > - 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串。
+    > - 将 `<QUEUE NAME>` 替换为该队列的名称。 
+3. 添加一个方法以发送一条消息。
 
-### <a name="message-size-limits-and-quotas"></a>消息大小限制和配额
+    ```python
+    def send_single_message(sender):
+        # create a Service Bus message
+        message = ServiceBusMessage("Single Message")
+        # send the message to the queue
+        sender.send_messages(message)
+        print("Sent a single message")
+    ```
 
-服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 队列中可以包含的消息数量不受限制，但队列包含的消息总大小有上限。 可以在创建时定义队列大小，上限为 5 GB。 
+    发送方是一个对象，充当你创建的队列的客户端。 稍后将创建它，并将其作为参数发送到此函数。 
+4. 添加一个方法以发送一列消息。
 
-有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
+    ```python
+    def send_a_list_of_messages(sender):
+        # create a list of messages
+        messages = [ServiceBusMessage("Message in list") for _ in range(5)]
+        # send the list of messages to the queue
+        sender.send_messages(messages)
+        print("Sent a list of 5 messages")
+    ```
+5. 添加一个方法以发送一批消息。
 
+    ```python
+    def send_batch_message(sender):
+        # create a batch of messages
+        batch_message = sender.create_message_batch()
+        for _ in range(10):
+            try:
+                # add a message to the batch
+                batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+            except ValueError:
+                # ServiceBusMessageBatch object reaches max_size.
+                # New ServiceBusMessageBatch object can be created here to send more data.
+                break
+        # send the batch of messages to the queue
+        sender.send_messages(batch_message)
+        print("Sent a batch of 10 messages")
+    ```
+6. 创建一个服务总线客户端，然后创建一个队列发送方对象来发送消息。
+
+    ```python
+    # create a Service Bus client using the connection string
+    servicebus_client = ServiceBusClient.from_connection_string(conn_str=CONNECTION_STR, logging_enable=True)
+    with servicebus_client:
+        # get a Queue Sender object to send messages to the queue
+        sender = servicebus_client.get_queue_sender(queue_name=QUEUE_NAME)
+        with sender:
+            # send one message        
+            send_single_message(sender)
+            # send a list of messages
+            send_a_list_of_messages(sender)
+            # send a batch of messages
+            send_batch_message(sender)
+    
+    print("Done sending messages")
+    print("-----------------------")
+    ```
+ 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
-
-队列客户端通过对 **ServiceBusClient** 对象使用 `get_receiver` 方法来从队列接收消息。 以下代码示例创建一个队列客户端，并从 `taskqueue` 队列接收消息。 请将 `<connectionstring>` 替换为服务总线的主连接字符串值。 
+在 print 语句的后面添加以下代码。 此代码将持续接收新消息，直到在 5 (`max_wait_time`) 秒内未收到任何新消息。 
 
 ```python
-from azure.servicebus import QueueClient
-
-# Create the QueueClient
-queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
-
-# Receive the message from the queue
-with queue_client.get_receiver() as queue_receiver:
-    messages = queue_receiver.fetch_next(timeout=3)
-    for message in messages:
-        print(message)
-        message.complete()
+with servicebus_client:
+    # get the Queue Receiver object for the queue
+    receiver = servicebus_client.get_queue_receiver(queue_name=QUEUE_NAME, max_wait_time=5)
+    with receiver:
+        for msg in receiver:
+            print("Received: " + str(msg))
+            # complete the message so that the message is removed from the queue
+            receiver.complete_message(msg)
 ```
 
-### <a name="use-the-peek_lock-parameter"></a>使用 peek_lock 参数
+## <a name="full-code"></a>完整代码
 
-`get_receiver` 的 `peek_lock` 可选参数确定服务总线在从队列读取消息后是否删除消息。 默认的消息接收模式是 *PeekLock* 或设置为 **True** 的 `peek_lock`，后者在读取（扫视）后锁定消息，而不会从队列中删除消息。 然后，必须显式完成每个消息以将其从队列中删除。
+```python
+# import os
+from azure.servicebus import ServiceBusClient, ServiceBusMessage
 
-若要在读取消息后将其从队列中删除，可将 `get_receiver` 的 `peek_lock` 参数设置为 **False**。 在执行接收操作过程中删除消息是最简单的模型，但仅当应用程序在发生失败的情况下能够容许消息缺失时，该模型才能正常工作。 为了理解此行为，可以设想这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 如果在接收消息时它已被删除，当应用程序重启并重新开始使用消息时，它便缺少了在发生崩溃之前收到的消息。
+CONNECTION_STR = "<NAMESPACE CONNECTION STRING>"
+QUEUE_NAME = "<QUEUE NAME>"
 
-如果应用程序不能容许消息缺失，则接收过程是由两个阶段组成的操作。 PeekLock 查找要使用的下一个消息，将其锁定以防其他使用方接收它，然后将该消息返回给应用程序。 处理或存储消息后，应用程序通过对 **Message** 对象调用 `complete` 方法完成接收过程的第二个阶段。  `complete` 方法会将消息标记为已使用，并将其从队列中删除。
+def send_single_message(sender):
+    message = ServiceBusMessage("Single Message")
+    sender.send_messages(message)
+    print("Sent a single message")
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>处理应用程序崩溃和不可读消息
+def send_a_list_of_messages(sender):
+    messages = [ServiceBusMessage("Message in list") for _ in range(5)]
+    sender.send_messages(messages)
+    print("Sent a list of 5 messages")
 
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 **Message** 对象调用 `unlock` 方法。 服务总线解锁队列中的消息，并使其能够重新被同一个或另一个使用方应用程序接收。
+def send_batch_message(sender):
+    batch_message = sender.create_message_batch()
+    for _ in range(10):
+        try:
+            batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+        except ValueError:
+            # ServiceBusMessageBatch object reaches max_size.
+            # New ServiceBusMessageBatch object can be created here to send more data.
+            break
+    sender.send_messages(batch_message)
+    print("Sent a batch of 10 messages")
 
-队列中锁定的消息还存在超时。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁消息，让它再次可供接收。
+servicebus_client = ServiceBusClient.from_connection_string(conn_str=CONNECTION_STR, logging_enable=True)
 
-如果应用程序在处理消息之后，但在调用 `complete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。 每条消息将至少处理一次，但在某些情况下，可能会重新传送同一消息。 如果方案无法容许重复处理，可以使用消息的 **MessageId** 属性（多次尝试传送时，该属性保持不变）来处理重复消息传送。 
+with servicebus_client:
+    sender = servicebus_client.get_queue_sender(queue_name=QUEUE_NAME)
+    with sender:
+        send_single_message(sender)
+        send_a_list_of_messages(sender)
+        send_batch_message(sender)
 
-> [!TIP]
-> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 可以使用服务总线资源管理器连接到服务总线命名空间并轻松管理消息传送实体。 该工具提供高级功能，例如导入/导出功能，以及用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。
+print("Done sending messages")
+print("-----------------------")
+
+with servicebus_client:
+    receiver = servicebus_client.get_queue_receiver(queue_name=QUEUE_NAME, max_wait_time=5)
+    with receiver:
+        for msg in receiver:
+            print("Received: " + str(msg))
+            receiver.complete_message(msg)
+```
+
+## <a name="run-the-app"></a>运行应用
+运行应用程序时，应显示以下输出： 
+
+```console
+Sent a single message
+Sent a list of 5 messages
+Sent a batch of 10 messages
+Done sending messages
+-----------------------
+Received: Single Message
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+```
+
+在 Azure 门户中，导航到你的服务总线命名空间。 在“概述”页上，验证传入和传出消息计数是否为 16  。 如果没有看到这些消息，请等待几分钟后再刷新页面。 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="传入和传出消息计数":::
+
+在此“概述”页上选择队列，导航到“服务总线队列”页面 。 还可在此页上看到传入和传出消息计数 。 还可看到其他信息，如队列的当前大小和活动消息计数 。 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-queues/queue-details.png" alt-text="队列详细信息":::
+
 
 ## <a name="next-steps"></a>后续步骤
+请参阅以下文档和示例： 
 
-了解服务总线队列的基本信息后，请参阅[队列、主题和订阅][Queues, topics, and subscriptions]以获取更多信息。
-
-[Azure portal]: https://portal.azure.com
-[Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  
-[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Service Bus quotas]: service-bus-quotas.md
+- [适用于 Python 的 Azure 服务总线客户端库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
+- [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
+    - sync_samples 文件夹包含一些示例，这些示例演示如何以同步方式与服务总线交互。 本快速入门就使用了此方法。 
+    - async_samples 文件夹包含一些示例，这些示例演示如何以异步方式与服务总线交互。 
+- [azure-servicebus 参考文档](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)

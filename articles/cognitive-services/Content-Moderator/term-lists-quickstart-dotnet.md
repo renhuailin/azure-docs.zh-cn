@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90993ea2ee66a23b5b629dfaf5bb34298ce15d9b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 93d90232fb530a6c14c40558fc6a9974a1da42de
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936276"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900922"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>对照以 C# 编写的自定义术语列表检查文本
 
@@ -70,7 +70,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Create the Content Moderator client
 
-添加以下代码来为订阅创建内容审查器客户端。 使用终结点 URL 和订阅密钥的值更新 `AzureEndpoint` 和 `CMSubscriptionKey` 字段。 可在 Azure 门户中资源的“快速启动”**** 选项卡中找到它们。
+添加以下代码来为订阅创建内容审查器客户端。 使用终结点 URL 和订阅密钥的值更新 `AzureEndpoint` 和 `CMSubscriptionKey` 字段。 可在 Azure 门户中资源的“快速启动”  选项卡中找到它们。
 
 ```csharp
 /// <summary>
@@ -134,10 +134,10 @@ private const double latencyDelay = 0.5;
 
 ## <a name="create-a-term-list"></a>创建术语列表
 
-使用 ContentModeratorClient.ListManagementTermLists.Create 创建术语列表****。 要创建的第一个参数是一个包含 MIME 类型的字符串，此类型应为“application/json”****。 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)。 第二个参数是 Body 对象，该对象包含新术语列表的名称和说明****。
+使用 ContentModeratorClient.ListManagementTermLists.Create 创建术语列表  。 要创建的第一个参数是一个包含 MIME 类型的字符串，此类型应为“application/json”  。 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)。 第二个参数是 Body 对象，该对象包含新术语列表的名称和说明  。
 
 > [!NOTE]
-> 最多只能使用 5 个术语列表****，每个列表中的术语数不得超过 10,000 个****。
+> 最多只能使用 5 个术语列表  ，每个列表中的术语数不得超过 10,000 个  。
 
 将以下方法定义添加到 TermLists 命名空间中的 Program 类。
 
@@ -172,7 +172,7 @@ static string CreateTermList (ContentModeratorClient client)
 
 ## <a name="update-term-list-name-and-description"></a>更新术语列表名称和说明
 
-使用 ContentModeratorClient.ListManagementTermLists.Update 更新术语列表信息****。 要更新的第一个参数是术语列表 ID****。 第二个参数是应为“application/json”的 MIME 类型。 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685)。 第三个参数是 Body 对象，它包含新名称和说明****。
+使用 ContentModeratorClient.ListManagementTermLists.Update 更新术语列表信息  。 要更新的第一个参数是术语列表 ID  。 第二个参数是应为“application/json”的 MIME 类型。 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685)。 第三个参数是 Body 对象，它包含新名称和说明  。
 
 将以下方法定义添加到 TermLists 命名空间中的 Program 类。
 
@@ -239,7 +239,7 @@ static void GetAllTerms(ContentModeratorClient client, string list_id)
 
 对术语列表进行更改后，刷新其搜索索引，使更改在下次使用术语列表时包含在内。 此步骤类似于桌面上的搜索引擎（如果启用）或 Web 搜索引擎的操作，即不断刷新其索引以包含新文件或页面。
 
-使用 ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod 刷新术语列表搜索索引****。
+使用 ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod 刷新术语列表搜索索引  。
 
 将以下方法定义添加到 TermLists 命名空间中的 Program 类。
 
@@ -259,18 +259,18 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 
 ## <a name="screen-text-using-a-term-list"></a>屏蔽使用术语列表的文本
 
-通过 ContentModeratorClient.TextModeration.ScreenText 屏蔽使用术语列表的文本，它将采用以下参数****。
+通过 ContentModeratorClient.TextModeration.ScreenText 屏蔽使用术语列表的文本，它将采用以下参数  。
 
 - 术语列表中的术语所采用的语言。
 - MIME 类型，可以是“text/html”、“text/xml”、“text/markdown”或“text/plain”。
 - 要屏蔽的文本。
-- 布尔值。 将此字段设置为 true，在屏蔽它之前自动更正文本****。
+- 布尔值。 将此字段设置为 true，在屏蔽它之前自动更正文本  。
 - 布尔值。 将此字段设置为 **true** 可检测文本中的个人数据。
 - 术语列表 ID。
 
 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)。
 
-ScreenText 返回 Screen 对象，该对象具有 Terms 属性，此属性可列出内容审查器在屏蔽期间检测到的任何术语************。 请注意，如果屏蔽期间内容审查器未检测到任何术语，则 Terms 属性的值为 null********。
+ScreenText 返回 Screen 对象，该对象具有 Terms 属性，此属性可列出内容审查器在屏蔽期间检测到的任何术语  。 请注意，如果屏蔽期间内容审查器未检测到任何术语，则 Terms 属性的值为 null  。
 
 将以下方法定义添加到 TermLists 命名空间中的 Program 类。
 
@@ -296,7 +296,7 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
             Console.WriteLine(String.Format("Found term: \"{0}\" from list ID {1} at index {2}.", term.Term, term.ListId, term.Index));
         }
     }
-    read.Sleep(throttleRate);
+    Thread.Sleep(throttleRate);
 }
 ```
 
@@ -304,9 +304,9 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 
 删除术语或列表非常简单。 使用 SDK 执行以下任务：
 
-- 删除术语。 (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- 删除列表中的所有术语而不删除列表。 (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- 删除列表及其所有内容。 (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- 删除术语。 ( **ContentModeratorClient.ListManagementTerm.DeleteTerm** )
+- 删除列表中的所有术语而不删除列表。 ( **ContentModeratorClient.ListManagementTerm.DeleteAllTerms** )
+- 删除列表及其所有内容。 ( **ContentModeratorClient.ListManagementTermLists.Delete** )
 
 ### <a name="delete-a-term"></a>删除术语
 

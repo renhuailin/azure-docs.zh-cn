@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 评估要迁移到 Azure VMware 解决方案 (AVS) 的 VMware VM
 description: 了解如何使用 Azure Migrate 服务器评估来评估要迁移到 AVS 的 VMware VM。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604234"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753070"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>教程：评估 VMware VM 以便迁移到 AVS
 

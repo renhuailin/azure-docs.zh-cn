@@ -14,18 +14,19 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: fe6c7f10ce64e25f46444cd2db8b67aab4ae2135
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+- devx-track-azurecli
+ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308242"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572331"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 
 可能需要更新连接到 IoT 中心的设备上的固件。 例如，可能需要向固件添加新功能，或者需要应用安全修补程序。 在许多 IoT 方案中，以物理方式访问设备并以手动方式对设备应用固件更新是不现实的。 本教程介绍如何通过连接到中心的后端应用程序以远程方式启动并监视固件更新过程。
 
-为了创建并监视固件更新过程，本教程中的后端应用程序在 IoT 中心创建了一个配置。 IoT 中心[自动设备管理](iot-hub-auto-device-config.md)使用此配置在所有冷却器设备上更新一组设备孪生所需属性。 所需属性指定所需固件更新的详细信息。 冷却器设备在运行固件更新过程时，会使用设备孪生报告属性将其状态报告给后端应用程序。 后端应用程序可以使用此配置监视从设备发送的报告属性，并跟踪固件更新过程至完成：
+为了创建并监视固件更新过程，本教程中的后端应用程序在 IoT 中心创建了一个配置。 IoT 中心[自动设备管理](./iot-hub-automatic-device-management.md)使用此配置在所有冷却器设备上更新一组设备孪生所需属性。 所需属性指定所需固件更新的详细信息。 冷却器设备在运行固件更新过程时，会使用设备孪生报告属性将其状态报告给后端应用程序。 后端应用程序可以使用此配置监视从设备发送的报告属性，并跟踪固件更新过程至完成：
 
 ![固件更新过程](media/tutorial-firmware-update/Process.png)
 
@@ -37,11 +38,9 @@ ms.locfileid: "91308242"
 > * 模拟设备上的固件更新过程。
 > * 在固件更新进行过程中从设备接收状态更新。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
@@ -103,7 +102,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>启动固件更新
 
-在后端应用程序中创建[自动设备管理配置](iot-hub-automatic-device-management.md#create-a-configuration)即可在其 **devicetype** 标记为冷却器的所有设备上开始固件更新过程。 本部分介绍以下操作：
+在后端应用程序中创建 [自动设备管理配置](iot-hub-automatic-device-management.md#create-a-configuration)即可在其 **devicetype** 标记为冷却器的所有设备上开始固件更新过程。 本部分介绍以下操作：
 
 * 在后端应用程序中创建配置。
 * 监视作业，直至其完成。
@@ -184,7 +183,7 @@ node ServiceClient.js "{your service connection string}"
 
 以下屏幕截图显示后端应用程序的输出，并突出显示它如何创建配置来更新固件所需属性：
 
-![后端应用程序](./media/tutorial-firmware-update/BackEnd1.png)
+![屏幕截图显示了后端应用程序的输出。](./media/tutorial-firmware-update/BackEnd1.png)
 
 以下屏幕截图显示后端应用程序的输出，并突出显示它如何监视模拟设备提供的固件更新指标：
 

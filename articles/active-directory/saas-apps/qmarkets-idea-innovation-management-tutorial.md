@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 588412691cad2715899888198c33c2630214788f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 89be6d631d56e9b3368a351a4f0c521ca327bf3f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552263"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522183"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-qmarkets-idea--innovation-management"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Qmarkets Idea & Innovation Management 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552263"
 * 让用户使用其 Azure AD 帐户自动登录到 Qmarkets Idea & Innovation Management。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "88552263"
 
 
 * Qmarkets Idea & Innovation Management 支持 **SP 和 IDP** 发起的 SSO
-* Qmarkets Idea & Innovation Management 支持**实时**用户预配
+* Qmarkets Idea & Innovation Management 支持 **实时** 用户预配
 
 
 ## <a name="adding-qmarkets-idea--innovation-management-from-the-gallery"></a>从库中添加 Qmarkets Idea & Innovation Management
@@ -129,7 +129,7 @@ ms.locfileid: "88552263"
 
 ## <a name="configure-qmarkets-idea--innovation-management-sso"></a>配置 Qmarkets Idea & Innovation Management SSO
 
-若要在 **Qmarkets Idea & Innovation Management** 端配置单一登录，需要将**应用联合元数据 URL** 发送给 [Qmarkets Idea & Innovation Management 支持团队](mailto:support@qmarkets.net)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Qmarkets Idea & Innovation Management** 端配置单一登录，需要将 **应用联合元数据 URL** 发送给 [Qmarkets Idea & Innovation Management 支持团队](mailto:support@qmarkets.net)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-qmarkets-idea--innovation-management-test-user"></a>创建 Qmarkets Idea & Innovation Management 测试用户
 
@@ -139,15 +139,14 @@ ms.locfileid: "88552263"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Qmarkets Idea & Innovation Management 磁贴时，应当会自动登录到为其设置了 SSO 的 Qmarkets Idea & Innovation Management。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Qmarkets Idea & Innovation Management 磁贴时，应当会自动登录到为其设置了 SSO 的 Qmarkets Idea & Innovation Management。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Qmarkets Idea & Innovation Management](https://aad.portal.azure.com/)
-

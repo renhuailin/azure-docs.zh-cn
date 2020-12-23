@@ -4,16 +4,16 @@ description: 本快速入门介绍如何使用适用于 Java 的 Azure Blob 存�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 09/10/2020
+ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e6f731a72308db98309d40bceb95f6108abab4eb
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 02752af77d443e19278a96206bb7516fedd59d7f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017041"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501118"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入门：使用 Java v12 SDK 管理 blob
 
@@ -24,7 +24,7 @@ ms.locfileid: "90017041"
 * [API 参考文档](/java/api/overview/azure/storage-blob-readme)
 * [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
 * [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
-* [示例](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [示例](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,17 +41,33 @@ ms.locfileid: "90017041"
 
 ### <a name="create-the-project"></a>创建项目
 
-创建名为 blob-quickstart-v12 的 Java 应用程序**。
+创建名为 blob-quickstart-v12 的 Java 应用程序。
 
-1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 blob-quickstart-v12 的新控制台应用**。 键入以下“mvn”命令，创建“Hello World!”**** Java 项目。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 blob-quickstart-v12 的新控制台应用。 键入以下“mvn”命令，创建“Hello World!” Java 项目。
 
-   ```console
-   mvn archetype:generate -DgroupId=com.blobs.quickstart \
-                          -DartifactId=blob-quickstart-v12 \
-                          -DarchetypeArtifactId=maven-archetype-quickstart \
-                          -DarchetypeVersion=1.4 \
-                          -DinteractiveMode=false
-   ```
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    mvn archetype:generate `
+        --define interactiveMode=n `
+        --define groupId=com.blobs.quickstart `
+        --define artifactId=blob-quickstart-v12 `
+        --define archetypeArtifactId=maven-archetype-quickstart `
+        --define archetypeVersion=1.4
+    ```
+
+    # <a name="bash"></a>[Bash](#tab/bash)
+
+    ```bash
+    mvn archetype:generate \
+        --define interactiveMode=n \
+        --define groupId=com.blobs.quickstart \
+        --define artifactId=blob-quickstart-v12 \
+        --define archetypeArtifactId=maven-archetype-quickstart \
+        --define archetypeVersion=1.4
+    ```
+
+    ---
 
 1. 生成项目的输出应如下所示：
 
@@ -96,7 +112,7 @@ ms.locfileid: "90017041"
    cd blob-quickstart-v12
    ```
 
-1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录****。 将在这里创建和存储 blob 数据文件。
+1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录。 将在这里创建和存储 blob 数据文件。
 
     ```console
     mkdir data
@@ -104,7 +120,7 @@ ms.locfileid: "90017041"
 
 ### <a name="install-the-package"></a>安装包
 
-在文本编辑器中打开 pom.xml 文件**。 将以下依赖项元素添加到依赖项组。
+在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。
 
 ```xml
 <dependency>
@@ -118,8 +134,8 @@ ms.locfileid: "90017041"
 
 从项目目录中执行以下操作：
 
-1. 导航到 /src/main/java/com/blobs/quickstart 目录**
-1. 在编辑器中打开 App.java 文件**
+1. 导航到 /src/main/java/com/blobs/quickstart 目录
+1. 在编辑器中打开 App.java 文件
 1. 删除 `System.out.println("Hello world!");` 语句
 1. 添加 `import` 指令
 
@@ -159,9 +175,9 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 Java 类与这些资源进行交互：
 
-* [ 类可用于操纵 Azure 存储资源和 blob 容器。 存储帐户为 Blob 服务提供顶级命名空间。
+* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。 存储帐户为 Blob 服务提供顶级命名空间。
 * [ 类提供流畅的生成器 API，以帮助对 ](/java/api/com.azure.storage.blob.blobserviceclientbuilder) 对象的配置和实例化。
-* [ 类可用于操纵 Azure 存储容器及其 blob。
+* [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
 * [ 类可用于操纵 Azure 存储 blob。
 * [BlobItem](/java/api/com.azure.storage.blob.models.blobitem)：`BlobItem` 类表示从对 [listBlobs](/java/api/com.azure.storage.blob.blobcontainerclient.listblobs) 的调用返回的单个 blob。
 
@@ -220,7 +236,7 @@ BlobContainerClient containerClient = blobServiceClient.createBlobContainer(cont
 
 以下代码片段：
 
-1. 在本地 data 目录中创建文本文件**。
+1. 在本地 data 目录中创建文本文件。
 1. 对在[创建容器](#create-a-container)部分创建的容器调用 [getBlobClient](/java/api/com.azure.storage.blob.blobcontainerclient.getblobclient) 方法，获取对 [BlobClient](/java/api/com.azure.storage.blob.blobclient) 对象的引用。
 1. 通过调用 [uploadFromFile](/java/api/com.azure.storage.blob.blobclient.uploadfromfile) 方法将本地文本文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），但不会覆盖 Blob（如果该 Blob 已存在）。
 
@@ -305,7 +321,7 @@ System.out.println("Done");
 
 此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对新旧文件进行对比。
 
-导航到包含 pom.xml 文件的目录，并使用以下 `mvn` 命令编译该项目**。
+导航到包含 pom.xml 文件的目录，并使用以下 `mvn` 命令编译该项目。
 
 ```console
 mvn compile
@@ -344,9 +360,9 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-在开始清理过程之前，请在“data”文件夹中查看这两个文件**。 可以打开它们，然后就会观察到它们完全相同。
+在开始清理过程之前，请在“data”文件夹中查看这两个文件。 可以打开它们，然后就会观察到它们完全相同。
 
-验证文件后，按 Enter 键以删除测试文件并完成演示****。
+验证文件后，按 Enter 键以删除测试文件并完成演示。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,15 +16,15 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57990fda7475b95bd6582fa5a495ac8d24aa55d5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "64918438"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408526"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的内容管理要求
-了解业务的内容管理要求可能会直接影响你决定使用哪一个混合标识解决方案。 随着设备数量的激增以及用户会自带设备 ([BYOD](https://aka.ms/byodcg))，公司必须确保自身数据的安全，同时也要使用户的隐私完好无损。 通常，当用户拥有自己的设备时，他们还可能具有多个凭据，会根据他们使用的应用程序交替使用这些凭据。 请务必区分使用个人凭据创建的内容与使用公司凭据创建的内容。 标识解决方案应能与云服务进行交互，从而向最终用户提供无缝体验的同时，确保用户的隐私以及增强针对数据泄漏的防护。 
+了解业务的内容管理要求可能会直接影响你决定使用哪一个混合标识解决方案。 随着设备数量的激增以及用户会自带设备 ([BYOD](/mem/intune/fundamentals/byod-technology-decisions))，公司必须确保自身数据的安全，同时也要使用户的隐私完好无损。 通常，当用户拥有自己的设备时，他们还可能具有多个凭据，会根据他们使用的应用程序交替使用这些凭据。 请务必区分使用个人凭据创建的内容与使用公司凭据创建的内容。 标识解决方案应能与云服务进行交互，从而向最终用户提供无缝体验的同时，确保用户的隐私以及增强针对数据泄漏的防护。 
 
 不同的技术控制会利用标识解决方案提供内容管理，如下图中所示：
 
@@ -69,4 +69,3 @@ ms.locfileid: "64918438"
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)
-

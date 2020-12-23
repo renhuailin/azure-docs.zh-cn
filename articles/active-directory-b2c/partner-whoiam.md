@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d1b2c7513562e951e1098cf327780387ddf6a495
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293143"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953536"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>有关配置 WhoIAM 与 Azure Active Directory B2C 的教程
 
@@ -30,7 +30,7 @@ BRIMS 是一组在你的环境中部署的应用和服务。 它为用户群提�
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- 链接到 Azure 订阅的[Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- 链接到 Azure 订阅的[Azure AD B2C 租户](./tutorial-create-tenant.md)。
 
 - WhoIAM [试用帐户](https://www.whoiam.ai/contact-us/)。
 
@@ -72,7 +72,7 @@ WhoIAM 集成包括以下组件：
 
     - [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：用于存储和检索设置。
 
-    -  (可选) [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#:~:text=Application%20Insights%2C%20a%20feature%20of%20Azure%20Monitor%2C%20is,professionals.%20Use%20it%20to%20monitor%20your%20live%20applications) ：用于登录 API 和管理门户。
+    -  (可选) [Application Insights](../azure-monitor/app/app-insights-overview.md) ：用于登录 API 和管理门户。
 
 3. 在你的 Azure 环境中部署 BRIMS API 和 BRIMS 管理门户。
 
@@ -102,6 +102,6 @@ WhoIAM 集成包括以下组件：
 
 有关其他信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80999777"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165666"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建店内分析应用程序
 
@@ -148,7 +148,7 @@ ms.locfileid: "80999777"
 
 1. 在完成时选择“下一步:  自定义”。
 
-    ![Azure IoT Central RuuviTag 传感器设备模板](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
+    ![突出显示“下一步:自定义”按钮的屏幕截图。](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
 1. 选择“创建”  。 应用程序将添加 RuuviTag 设备模板。
 
@@ -191,7 +191,7 @@ ms.locfileid: "80999777"
 
 1. 选择“保存”  以保存更改。
 
-    ![Azure IoT Central RuuviTag 设备模板自定义](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
+    ![显示“自定义”屏幕并突出显示“保存”按钮的屏幕截图。](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
 
 若要将云属性添加到应用程序中的设备模板，请执行以下操作：
 

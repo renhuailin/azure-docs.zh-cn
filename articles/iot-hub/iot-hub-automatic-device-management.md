@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 6d3661128008c13e5d4d459f6f8e7925aa18a9a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322765"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545389"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 门户自动管理 IoT 设备和模块
 
@@ -31,7 +31,7 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 * 目标内容定义要在目标设备孪生或模块孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
 
-* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。   自定义指标指定为孪生报告属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
+* **指标** 定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。   自定义指标指定为孪生报告属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
 
 自动配置在配置创建不久后就首次运行，然后按五分钟间隔运行。 每次自动配置运行时，都会运行指标查询。
 
@@ -236,14 +236,13 @@ SELECT deviceId, moduleId FROM devices.modules
 本文已介绍如何大规模配置和监视 IoT 设备。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [批量管理 IoT 中心设备标识](iot-hub-bulk-identity-mgmt.md)
-* [IoT 中心指标](iot-hub-metrics.md)
-* [操作监视](iot-hub-operations-monitoring.md)
+* [监视 IoT 中心](monitor-iot-hub.md)
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南](iot-hub-devguide.md)
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/quickstart-linux.md)
 
 若要了解如何使用 IoT 中心设备预配服务启用零接触实时预配，请参阅： 
 
-* [Azure IoT 中心设备预配服务](/azure/iot-dps)
+* [Azure IoT 中心设备预配服务](../iot-dps/index.yml)

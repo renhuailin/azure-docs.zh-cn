@@ -14,23 +14,23 @@ ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a5a4659671f8d4ded64a4f04f84abf1f67d8825
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0fbda588d99de44c77118586519055a8fc474104
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265249"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861759"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies
 以下参考文档介绍了 Exchange 使用的这些属性，以及编辑默认同步规则的适当方式。
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>什么是 msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies？
-Exchange Server 可以使用两种类型的[保留机制](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019)：诉讼保留和就地保留。 启用诉讼保留后，所有邮箱和项都会保留。  就地保留仅保留符合你使用 In-Place eDiscovery 工具定义的搜索查询条件的项。
+Exchange Server 可以使用两种类型的[保留机制](/Exchange/policy-and-compliance/holds/holds)：诉讼保留和就地保留。 启用诉讼保留后，所有邮箱和项都会保留。  就地保留仅保留符合你使用 In-Place eDiscovery 工具定义的搜索查询条件的项。
 
 MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 属性允许本地 AD 与 Azure AD 根据用户使用的是本地 Exchange 还是联机 Exchange，来确定哪些用户处于保留状态。
 
 ## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies 同步流
-默认情况下，MsExchUserHoldPolcies 通过 Azure AD Connect 直接与元节中的 msExchUserHoldPolicies 属性进行同步，然后将其同步到中的 msExchUserHoldPolicies 特性 Azure AD
+默认情况下，MsExchUserHoldPolcies 将由 Azure AD Connect 直接同步到 Metaverse 中的 msExchUserHoldPolicies 属性，然后同步到 Azure AD 中的 msExchUserHoldPolicies 属性
 
 下表描述了该流：
 
@@ -47,7 +47,7 @@ MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 属性允许本地 AD 与 
 |Azure Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolicies|Out to AAD – UserExchangeOnline|
 
 ## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies 同步流
-默认情况下，cloudMsExchUserHoldPolicies 通过 Azure AD Connect 直接同步到元节中的 cloudMsExchUserHoldPolicies 属性。 如果元节中的 msExchUserHoldPolicies 不为 null，则流出的属性将 Active Directory。
+默认情况下，cloudMsExchUserHoldPolicies 由 Azure AD Connect 直接同步到 Metaverse 中的 cloudMsExchUserHoldPolicies 属性。 如果 Metaverse 中的 msExchUserHoldPolicies 不为 null，该属性将流出到 Active Directory。
 
 下表描述了该流：
 
@@ -64,7 +64,7 @@ MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 属性允许本地 AD 与 
 |Azure Active Directory|cloudMsExchUserHoldPolicies|IF(NOT NULL)|msExchUserHoldPolicies|Out to AD – UserExchangeOnline|
 
 ## <a name="information-on-the-attribute-behavior"></a>有关属性行为的信息
-MsExchangeUserHoldPolicies 是一个权威属性。  可以针对本地目录或云目录中的对象（在本例中为用户对象）设置单机构属性。  “启动机构”规则规定，如果属性已从本地同步，则不允许 Azure AD 更新此属性。
+msExchangeUserHoldPolicies 是单机构属性。  可以针对本地目录或云目录中的对象（在本例中为用户对象）设置单机构属性。  “启动机构”规则规定，如果属性已从本地同步，则不允许 Azure AD 更新此属性。
 
 若要允许用户针对云中的用户对象设置保留策略，请使用 cloudMSExchangeUserHoldPolicies 属性。 之所以使用此属性，是因为 Azure AD 无法根据上述规则直接设置 msExchangeUserHoldPolicies。  如果 msExchangeUserHoldPolicies 不为 null，则此属性将同步回到本地目录，并替换 msExchangeUserHoldPolicies 的当前值。
 

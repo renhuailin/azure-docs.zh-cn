@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f36d842e14c91850bfeba47e9fef61d4747c33a9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594367"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630560"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>快速入门：使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）
 
-适用于 FHIR 的 Azure IoT 连接器* 是 Azure API for FHIR 的一项可选功能，使你能够引入来自医疗物联网 (IoMT) 设备的数据。 在预览阶段，适用于 FHIR 的 Azure IoT 连接器功能免费提供。 在本快速入门中，你将学习如何：
+适用于 Fast Healthcare Interoperability Resources (FHIR&#174;) 的 Azure IoT 连接器* 是 Azure API for FHIR 的一项可选功能，使你能够引入来自医疗物联网 (IoMT) 设备的数据。 在预览阶段，适用于 FHIR 的 Azure IoT 连接器功能免费提供。 在本快速入门中，你将学习如何：
 - 使用 Azure 门户部署和配置适用于 FHIR 的 Azure IoT 连接器
 - 使用模拟设备将数据发送到适用于 FHIR 的 Azure IoT 连接器
 - 查看在 Azure API for FHIR 上由适用于 FHIR 的 Azure IoT 连接器创建的资源
@@ -163,16 +163,16 @@ IoMT 设备需要连接字符串才能连接到适用于 FHIR 的 Azure IoT 连�
 
 Azure 提供了一套全面的 IoT 产品，用于连接和管理 IoT 设备。 你可以使用 Azure IoT 中心并基于 PaaS 构建自己的解决方案，也可以使用 Azure IoT Central 管理 IoT 应用平台。 在本教程中，我们将使用 Azure IoT Central，它包含行业专用的解决方案模板来帮助你入门。
 
-部署[持续患者监视应用程序模板](https://docs.microsoft.com/azure/iot-central/healthcare/tutorial-continuous-patient-monitoring#create-an-application-template)。 此模板包括两个模拟设备，可生成实时数据以帮助你入门：Smart Vitals Patch 和 Smart Knee Brace 。
+部署[持续患者监视应用程序模板](../iot-central/healthcare/tutorial-continuous-patient-monitoring.md#create-an-application-template)。 此模板包括两个模拟设备，可生成实时数据以帮助你入门：Smart Vitals Patch 和 Smart Knee Brace 。
 
 > [!NOTE]
-> 实际设备准备就绪后，可以使用相同的 IoT Central 应用程序[加入设备](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template)并替换设备模拟器。 设备数据也将自动开始流向 FHIR。 
+> 实际设备准备就绪后，可以使用相同的 IoT Central 应用程序[加入设备](../iot-central/core/howto-set-up-template.md)并替换设备模拟器。 设备数据也将自动开始流向 FHIR。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>使用适用于 FHIR 的 Azure IoT 连接器（预览版）连接 IoT 数据
 > [!WARNING]
 > 本指南中提供的设备映射模板旨在与 IoT Central 中的数据导出（旧版）一起使用。
 
-部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-legacy)。 在“连续数据导出”页上：
+部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](../iot-central/core/howto-export-data-legacy.md)。 在“连续数据导出”页上：
 - 选择“Azure 事件中心”作为导出目标。
 - 选择“事件中心命名空间”字段的“使用连接字符串”值。
 - 为“连接字符串”字段提供在上一步中获取的适用于 FHIR 的 Azure IoT 连接器的连接字符串。
@@ -207,6 +207,4 @@ Azure 提供了一套全面的 IoT 产品，用于连接和管理 IoT 设备。 
 >[!div class="nextstepaction"]
 >[适用于 FHIR 的 Azure IoT 连接器映射模板](iot-mapping-templates.md)
 
-*在 Azure 门户中，适用于 FHIR 的 Azure IoT 连接器称为 IoT Connector（预览版）。
-
-FHIR 是 HL7 的注册商标，经 HL7 许可使用。
+*在 Azure 门户中，适用于 FHIR 的 Azure IoT 连接器称为 IoT Connector（预览版）。 FHIR 是 HL7 的注册商标，经 HL7 许可使用。

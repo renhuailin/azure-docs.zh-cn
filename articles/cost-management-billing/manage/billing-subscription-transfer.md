@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 11/11/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: ef497439d77fef63f4b0c902aee06428a30c5ff5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276724"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027860"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -24,7 +24,7 @@ ms.locfileid: "91276724"
 
 若要保留计费所有权，但要更改订阅的类型，请参阅[将 Azure 订阅切换到另一套餐](switch-azure-offer.md)。 若要控制谁可以访问订阅中的资源，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
-如果你是企业协议 (EA) 客户，则你的企业管理员可以在帐户之间转移订阅的计费所有权。 有关详细信息，请参阅[更改帐户所有者](ea-portal-get-started.md#change-account-owner)。
+如果你是企业协议 (EA) 客户，则你的企业管理员可以在帐户之间转移订阅的计费所有权。 有关详细信息，请参阅[更改 Azure 订阅或帐户所有权](ea-portal-administration.md#change-azure-subscription-or-account-ownership)。
 
 只有帐户的计费管理员可转移订阅的所有权。
 
@@ -56,7 +56,7 @@ ms.locfileid: "91276724"
 
 创建新订阅时，该订阅将托管在帐户的 Azure AD 租户中。 若要为其他用户提供对你的订阅或其资源的访问权限，需要邀请他们加入你的租户。 这有助于控制对订阅和资源的访问。
 
-将订阅的计费所有权转移到另一个 Azure AD 租户中的帐户时，可将订阅移到新帐户的租户。 这样，以前拥有管理订阅及其资源的 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md) 的用户、组或服务主体将失去其访问权限。 只有新帐户中接受了转移请求的用户才有权管理这些资源。 新所有者必须手动将这些用户添加到订阅，才能为他们提供失去的访问权限。 有关详细信息，请参阅[将 Azure 订阅转移到其他 Azure AD 目录（预览版）](../../role-based-access-control/transfer-subscription.md)。
+将订阅的计费所有权转移到另一个 Azure AD 租户中的帐户时，可将订阅移到新帐户的租户。 这样，以前拥有管理订阅及其资源的 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md) 的用户、组或服务主体将失去其访问权限。 只有新帐户中接受了转移请求的用户才有权管理这些资源。 新所有者必须手动将这些用户添加到订阅，才能为他们提供失去的访问权限。 有关详细信息，请参阅[将 Azure 订阅转移到其他 Azure AD 目录](../../role-based-access-control/transfer-subscription.md)。
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>转移 Visual Studio 和合作伙伴网络订阅
 
@@ -69,7 +69,7 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
 1. 查看和更新服务管理员、共同管理员和 Azure 角色分配。 有关详细信息，请参阅[添加或更改 Azure 订阅管理员](add-change-subscription-administrator.md)和[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
 1. 更新与此订阅的服务关联的凭据，包括：
    1. 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../../cloud-services/cloud-services-certs-create.md)
-   1. 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)
+   1. 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-account-create.md)
    1. Azure 虚拟机等服务的远程访问凭据。
 1. 若正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。 可以在 [Azure 门户](https://portal.azure.com)中更新合作伙伴 ID。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](link-partner-id.md)。
 

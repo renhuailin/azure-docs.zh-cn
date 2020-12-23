@@ -9,23 +9,23 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: f3bbab14152f16515c93972e6b41ef34693e1143
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91367948"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302799"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>有关机器学习工作室（经典）的 Net# 神经网络规范语言的指南
 
-**适用于：** ![适用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) 不适 ![ 用于。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例如深度神经网络或任意维度的卷积）的语言。 可使用复杂的结构改进图像、视频或音频等数据的学习。
 
 在下列上下文中，可以使用 Net# 体系结构规范：
 
-+ Microsoft Azure 机器学习工作室（经典）中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Microsoft ML Server 中的神经网络函数：R 语言的 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
++ Microsoft Azure 机器学习工作室（经典）中的所有神经网络模块：[多类神经网络](/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft ML Server 中的神经网络函数：R 语言的 [NeuralNet](/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
 本文介绍了使用 Net# 开发自定义神经网络的基本概念和所需语法：
@@ -40,11 +40,11 @@ Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例�
 
 神经网络结构包括了在层中组织的节点，以及节点之间的加权连接（或边缘）。 连接是有方向的，每个连接具有一个源节点和一个目标节点。
 
-每个可训练层（隐藏或输出层）具有一个或多个**连接捆绑**。 连接捆绑包括一个源层和该源层中的连接规范。 给定捆绑中的所有连接共享源层和目标层。 在 Net # 中，连接捆绑将视为属于捆绑的目标层。
+每个可训练层（隐藏或输出层）具有一个或多个 **连接捆绑**。 连接捆绑包括一个源层和该源层中的连接规范。 给定捆绑中的所有连接共享源层和目标层。 在 Net # 中，连接捆绑将视为属于捆绑的目标层。
 
 Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射到输出的输入方式。
 
-默认或标准捆绑是一个**完整捆绑**，其中源层中的每个节点都连接到目标层中的每个节点。
+默认或标准捆绑是一个 **完整捆绑**，其中源层中的每个节点都连接到目标层中的每个节点。
 
 此外，Net# 支持以下四种高级连接捆绑：
 
@@ -52,7 +52,7 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 
 + **卷积捆绑**。 可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
 
-+ **池捆绑**和**响应规范化**捆绑。 这些与卷积捆绑类似，用户可在其中定义源层中小范围的邻域。 不同之处在于这些捆绑中边缘的权重不可训练。 相反，为源节点值应用预定义的函数可确定目标节点值。
++ **池捆绑** 和 **响应规范化** 捆绑。 这些与卷积捆绑类似，用户可在其中定义源层中小范围的邻域。 不同之处在于这些捆绑中边缘的权重不可训练。 相反，为源节点值应用预定义的函数可确定目标节点值。
 
 
 ## <a name="supported-customizations"></a>支持的自定义项
@@ -114,7 +114,7 @@ output Result[2] from Hidden all;
 若要指定自动确定层中节点数，请使用 `auto` 关键字。 `auto` 关键字具有不同的效果，具体取决于层：
 
 + 在输入层声明中，节点数是输入数据中的功能数。
-+ 在隐藏层声明中，节点数是**隐藏节点数**的参数值指定的数。
++ 在隐藏层声明中，节点数是 **隐藏节点数** 的参数值指定的数。
 + 在输出层声明中，双类分类的节点数是 2，回归的节点数是 1，最多分类的节点数与输出节点数相等。
 
 例如，以下网络定义可自动确定所有层的大小：
@@ -150,11 +150,11 @@ output Result auto from Hidden all;
 
 当前支持五种类型的连接捆绑：
 
-+ **完整**捆绑，由关键字 `all` 指示
-+ **经筛选的**捆绑，由后跟谓词表达式的关键字 `where` 指示
-+ **卷积**捆绑，由后跟卷积属性的关键字 `convolve` 指示
-+ **池**捆绑，由关键字 **max pool** 或 **mean pool** 指示
-+ **响应规范**捆绑，由关键字 **response norm** 指示
++ **完整** 捆绑，由关键字 `all` 指示
++ **经筛选的** 捆绑，由后跟谓词表达式的关键字 `where` 指示
++ **卷积** 捆绑，由后跟卷积属性的关键字 `convolve` 指示
++ **池** 捆绑，由关键字 **max pool** 或 **mean pool** 指示
++ **响应规范** 捆绑，由关键字 **response norm** 指示
 
 ## <a name="full-bundles"></a>完整捆绑
 
@@ -186,11 +186,11 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 如果训练数据具有同类结构，则通常使用卷积捆绑来了解数据的高级功能。 例如，映像、音频或视频数据中的空间或临时维数可以很统一。
 
-卷积捆绑使用通过维度滑动的矩形**内核**。 实质上，每个内核定义一组在本地邻域中应用的权重，称为**内核应用程序**。 每个内核应用程序对应一个源层中的节点，称为**内核节点**。 内核的权重在多个连接中共享。 在卷积捆绑中，每个内核都是矩形状的，并且所有内核应用程序都具有相同大小。
+卷积捆绑使用通过维度滑动的矩形 **内核**。 实质上，每个内核定义一组在本地邻域中应用的权重，称为 **内核应用程序**。 每个内核应用程序对应一个源层中的节点，称为 **内核节点**。 内核的权重在多个连接中共享。 在卷积捆绑中，每个内核都是矩形状的，并且所有内核应用程序都具有相同大小。
 
 卷积捆绑支持一下属性：
 
-**InputShape** 可定义用于此卷积捆绑的源层维数。 值必须是正整数的元组。 整数的乘积必须等于源层中的节点数，否则，不需要与源层声明的维数匹配。 此元组的长度会成为卷积捆绑的**实参数量**值。 通常，实参数量表示函数可采用的参数或操作的数量。
+**InputShape** 可定义用于此卷积捆绑的源层维数。 值必须是正整数的元组。 整数的乘积必须等于源层中的节点数，否则，不需要与源层声明的维数匹配。 此元组的长度会成为卷积捆绑的 **实参数量** 值。 通常，实参数量表示函数可采用的参数或操作的数量。
 
 若要定义内核的形状和位置，可使用属性 **KernelShape**、**Stride**、**Padding**、**LowerPad** 或 **UpperPad**：
 
@@ -206,7 +206,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 有两组控制填充的属性，这两个属性相互排斥：
 
-+ **Padding**：（可选）确定是否应该使用**默认填充方案**来填充输入。 值可以是单个布尔值或布尔值的元组（其长度为捆绑的实参数量）。
++ **Padding**：（可选）确定是否应该使用 **默认填充方案** 来填充输入。 值可以是单个布尔值或布尔值的元组（其长度为捆绑的实参数量）。
 
     单个布尔值扩展为正确长度的元组，所有组件都等于指定值。
 
@@ -214,7 +214,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当以上 **边距** 属性 **_未_ 定义为 _ 时，才能定义这些属性 *。值应为整数值元组，其长度为捆绑的实参数量。指定这些属性后，"虚拟" 节点将添加到输入层的每个维度的下限和上限。添加到每个维度中的下端和上端的节点数* 分别由 _ LowerPad**[i] 和 **UpperPad**[i] 确定。
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
   - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
@@ -225,12 +225,12 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 有关卷积网络及其应用程序的详细信息，请参阅这些文章：
 
-+ [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
++ [http://d2l.ai/chapter_convolutional-neural-networks/lenet.html ](http://d2l.ai/chapter_convolutional-neural-networks/lenet.html )
 + [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>池捆绑
 
-**池捆绑**适用于类似卷积连接的几何，但是它使用源节点的预定义函数来派生目标节点值。 因此，池捆绑不具有可训练状态（权重或偏差）。 池捆绑支持所有卷积属性，除了 **Sharing**、**MapCount** 和 **Weights**。
+**池捆绑** 适用于类似卷积连接的几何，但是它使用源节点的预定义函数来派生目标节点值。 因此，池捆绑不具有可训练状态（权重或偏差）。 池捆绑支持所有卷积属性，除了 **Sharing**、**MapCount** 和 **Weights**。
 
 通常情况下，按相邻池单位汇总的内核不会重叠。 如果在每个维度中 Stride[d] 等于KernelShape[d] ，那么获取的层为传统本地池层，其广泛应用于卷积神经网络。 每个目标节点将计算源层中其内核的最大活动数或平均值。
 
@@ -258,7 +258,7 @@ hidden P1 [5, 12, 12]
 
 ## <a name="response-normalization-bundles"></a>响应规范化捆绑
 
-**响应规范化**是本地规范化方案，由 Geoffrey Hinton 等人在 [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（深层卷积神经网络的 ImageNet 分类）一文中首次提出。
+**响应规范化** 是本地规范化方案，由 Geoffrey Hinton 等人在 [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（深层卷积神经网络的 ImageNet 分类）一文中首次提出。
 
 响应规范化用于避免神经网络中的通用化。 一个神经元在一个非常高的激活级别中激发时，本地响应规范化层将抑制周围神经元的激活级别。 这是通过使用三个参数（`α`、`β` 和 `k`）和一个卷积结构（或邻域形状）来完成的。 目标层 **y** 中的每个神经元对应于源层中神经元 **x**。 **y** 的激活级别由以下公式指定，其中 `f` 是神经元的激活级别，`Nx` 是内核（或包含 **x** 邻域中神经元的集），由以下卷积结构定义：
 
@@ -266,9 +266,9 @@ hidden P1 [5, 12, 12]
 
 响应规范化捆绑支持所有卷积属性，除了 **Sharing**、**MapCount** 和 **Weights**。
 
-+ 如果内核包含与 ***x*** 相同的映射中的神经元，则规范化方案称为**相同映射规范化**。 若要定义相同映射规范化，那么 **InputShape** 中的第一个坐标必须具有值 1.
++ 如果内核包含与 x _ 相同的映射 **_x_*，则规范化方案称为 _ 相同的* 映射规范化**。 若要定义相同映射规范化，那么 **InputShape** 中的第一个坐标必须具有值 1.
 
-+ 如果内核包含与 ***x*** 相同的空间位置中的神经元，但是神经元位于其他映射中，则规范化方案称为**跨映射规范化**。 这种类型的响应规范化可实现一种横向抑制，其灵感来源于从真实神经元中发现的类型，可创建不同映射上计算的神经元输出之间的大激活级别的竞争。 若要定义跨映射规范化，第一个坐标必须是大于 1 且不大于映射数的正整数，其他坐标则必须具有值 1.
++ 如果内核包含与 x _ 相同的空间位置中的神经元 **_x_*，但神经元在其他映射中，则标准化方案将* 在 maps 标准化中调用**。 这种类型的响应规范化可实现一种横向抑制，其灵感来源于从真实神经元中发现的类型，可创建不同映射上计算的神经元输出之间的大激活级别的竞争。 若要定义跨映射规范化，第一个坐标必须是大于 1 且不大于映射数的正整数，其他坐标则必须具有值 1.
 
 因为响应规范化捆绑应用源节点值的预定义函数以确定目标节点值，所以它们不具有可训练状态（权重或偏差）。
 
@@ -463,4 +463,4 @@ output Digit [10] from Hid3 all;
 
 ## <a name="acknowledgements"></a>致谢
 
-用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure Machine Learning studio - Introduction to Net#](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)（Azure 机器学习工作室中的神经网络 - Net# 简介）
+用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure Machine Learning studio - Introduction to Net#](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net)（Azure 机器学习工作室中的神经网络 - Net# 简介）

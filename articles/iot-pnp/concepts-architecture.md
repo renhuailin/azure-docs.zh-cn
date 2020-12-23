@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 2cccb1fdfe775250f80da6cc2ecdcc4ddaa3d88e
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574309"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484077"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT 即插即用体系结构
 
-IoT 即插即用使解决方案构建者能够将智能设备与其解决方案集成，无需任何手动配置。 IoT 即插即用的核心是一种设备 _型号_ ，用于描述设备对于启用 IoT 即插即用的应用程序的功能。 此模型的结构化为一组定义的接口：
+通过 IoT 即插即用，解决方案构建者无需进行任何手动配置即可将智能设备集成到解决方案中。 IoT 即插即用的核心是一种设备 _型号_ ，用于描述设备对于启用 IoT 即插即用的应用程序的功能。 此模型的结构化为一组定义的接口：
 
 - _属性_：表示设备或其他实体的只读或可写状态。 例如，设备序列号可以是只读属性，而调温器上的目标温度可以是可写属性。
 - _遥测_：设备发出的数据，包括常规的传感器读数流、偶发性错误或信息消息。
@@ -36,7 +36,7 @@ IoT 即插即用使解决方案构建者能够将智能设备与其解决方案�
 
 利用 web UI，你可以管理模型和接口。
 
-模型存储库使用 RBAC 来限制对接口定义的访问。
+模型存储库具有内置的基于角色的访问控制，使你可以限制对接口定义的访问。
 
 ## <a name="devices"></a>设备
 
@@ -56,7 +56,7 @@ IoT Edge 网关充当中介，用于连接无法直接连接到 IoT 中心的 Io
 
 利用 _IoT Edge 模块_ ，你可以部署和管理边缘上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。
 
-_IoT Edge 中心_是组成 Azure IoT Edge 运行时的模块之一。 它通过公开与 IoT 中心相同的协议终结点，充当 IoT 中心的本地代理。 这种一致性意味着客户端（无论是设备还是模块）可以连接到 IoT Edge 运行时，就像连接到 IoT 中心一样。
+_IoT Edge 中心_ 是组成 Azure IoT Edge 运行时的模块之一。 它通过公开与 IoT 中心相同的协议终结点，充当 IoT 中心的本地代理。 这种一致性意味着客户端（无论是设备还是模块）可以连接到 IoT Edge 运行时，就像连接到 IoT 中心一样。
 
 设备 Sdk 有助于模块生成器：
 
@@ -98,4 +98,4 @@ IoT 中心：
 
 - [模型存储库](./concepts-model-repository.md)
 - [数字克隆模型集成](./concepts-model-discovery.md)
-- [为 IoT 即插即用进行开发](./concepts-developer-guide-device-csharp.md)
+- [为 IoT 即插即用进行开发](./concepts-developer-guide-device.md)

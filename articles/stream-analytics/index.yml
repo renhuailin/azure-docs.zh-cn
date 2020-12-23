@@ -10,12 +10,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c5220c56f2925275461f4b9967822f544f31a575
+  ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "86119644"
+  ms.lasthandoff: 10/30/2020
+  ms.locfileid: "93129382"
 landingContent:
 - title: 关于 Azure 流分析
   linkLists:
@@ -143,7 +143,7 @@ landingContent:
       url: stream-analytics-machine-learning-anomaly-detection.md
     - text: 使用 Azure 机器学习工作室执行情绪分析（经典）
       url: stream-analytics-machine-learning-integration-tutorial.md
-    - text: 使用机器学习工作室函数扩展作业
+    - text: 使用 Azure 机器学习工作室（经典）函数扩展作业
       url: stream-analytics-scale-with-machine-learning-functions.md
 - title: 利用开发人员工具创建和管理作业
   linkLists:
@@ -200,7 +200,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 使用 Visual Studio Code 设置 CI/CD 管道
-      url: setup-cicd-vs-code.md
+      url: ./cicd-overview.md
     - text: 使用 Visual Studio 设置 CI/CD 管道
       url: stream-analytics-tools-for-visual-studio-cicd.md
     - text: 使用 REST API 为 IoT Edge 作业设置 CI/CD

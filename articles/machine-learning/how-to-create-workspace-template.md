@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 20fa52febaa42850609f3f793d6f4aa4ae2704a6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: bd9199bc73e56ec36343b30d9b24f0b48799835e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91626320"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445188"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -30,21 +30,18 @@ ms.locfileid: "91626320"
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-* 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
-* 某些方案要求你打开支持票证。 这些方案为：
+* 某些方案需要你开具支持票证。 这些方案为：
 
-    * __启用了专用链接的工作区，其中包含客户托管的密钥 (CMK) __
+    * __使用客户管理的密钥启用专用链接的工作区__
     * __虚拟网络后的工作区的 Azure 容器注册表__
 
-    有关详细信息，请参阅 [管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
+    有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
-* 某些方案要求你打开支持票证。 这些方案为：
+## <a name="limitations"></a>限制
 
-    * __启用了专用链接的工作区，其中包含客户托管的密钥 (CMK) __
-    * __虚拟网络后的工作区的 Azure 容器注册表__
-
-    有关详细信息，请参阅 [管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="workspace-resource-manager-template"></a>工作区资源管理器模板
 
@@ -60,9 +57,9 @@ ms.locfileid: "91626320"
 
 资源组是保存服务的容器。 Azure 机器学习工作区需要多种服务。
 
-示例模板具有两个**必需**参数：
+示例模板具有两个 **必需** 参数：
 
-* 将在其中创建资源的**位置**。
+* 将在其中创建资源的 **位置**。
 
     模板将使用你为大多数资源选择的位置。 例外的情况是 Application Insights 服务，它不像其他所有服务一样在所有位置都可用。 如果选择了 Application Insights 服务不可用的位置，将在美国中南部位置创建该服务。
 
@@ -76,7 +73,7 @@ ms.locfileid: "91626320"
 > [!TIP]
 > 当与本文档关联的模板创建了新的 Azure 容器注册表时，你还可以在无需创建容器注册表的情况下创建新工作区。 当你执行需要容器注册表的操作时，会创建容器注册表。 例如，训练或部署模型。
 >
-> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。 但是，所用的容器注册表必须已启用管理员帐户。 有关如何启用管理员帐户的信息，请参阅[管理员帐户](/azure/container-registry/container-registry-authentication#admin-account)。
+> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。 但是，所用的容器注册表必须已启用管理员帐户。 有关如何启用管理员帐户的信息，请参阅[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -84,7 +81,7 @@ ms.locfileid: "91626320"
 
 * [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
 * [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
-* [Microsoft.MachineLearningServices 资源类型](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Microsoft.MachineLearningServices 资源类型](/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="deploy-template"></a>部署模板
 
@@ -168,14 +165,16 @@ New-AzResourceGroupDeployment `
 
 以下示例模板演示如何创建具有三项设置的工作区：
 
-* 启用工作区的高保密性设置
-* 启用工作区加密
-* 使用现有的 Azure Key Vault 检索客户管理的密钥
+* 启用工作区的高保密性设置。 这将创建一个新的 Cosmos DB 实例。
+* 启用工作区加密。
+* 使用现有 Azure Key Vault 检索客户管理的密钥。 客户管理的密钥用于为工作区创建新的 Cosmos DB 实例。
+
+    [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 > [!IMPORTANT]
 > 创建工作区后，无法更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 要更改这些值，必须使用新值创建新工作区。
 
-有关详细信息，请参阅[静态加密](concept-enterprise-security.md#encryption-at-rest)。
+有关详细信息，请参阅[静态加密](concept-data-encryption.md#encryption-at-rest)。
 
 > [!IMPORTANT]
 > 在使用此模板之前，订阅必须满足一些特定要求：
@@ -257,7 +256,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-当使用客户管理的密钥时，Azure 机器学习会创建包含 Cosmos DB 实例的另一个资源组。 有关详细信息，请参阅[静态加密 - Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
+当使用客户管理的密钥时，Azure 机器学习会创建包含 Cosmos DB 实例的另一个资源组。 有关详细信息，请参阅[静态加密 - Cosmos DB](concept-data-encryption.md#encryption-at-rest)。
 
 你可为数据提供的一个附加配置是将 **confidential_data** 参数设置为 **true**。 为此，请执行以下操作：
 
@@ -269,7 +268,7 @@ New-AzResourceGroupDeployment `
     > [!IMPORTANT]
     > 创建工作区后，无法更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 要更改这些值，必须使用新值创建新工作区。
 
-  有关详细信息，请参阅[静态加密](concept-enterprise-security.md#encryption-at-rest)。
+  有关详细信息，请参阅[静态加密](concept-data-encryption.md#encryption-at-rest)。
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>将工作区部署到虚拟网络后面
 
@@ -546,7 +545,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 在到达“选择模板”屏幕时，从下拉列表中选择 **201-machine-learning-advanced** 模板。
+1. 遵循[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)中的步骤。 在到达“选择模板”屏幕时，从下拉列表中选择 **201-machine-learning-advanced** 模板。
 1. 选择“选择模板”以使用该模板。 根据你的部署方案，提供以下必需的信息和任何其他参数。
 
    * 订阅：选择用于这些资源的 Azure 订阅。
@@ -581,11 +580,11 @@ New-AzResourceGroupDeployment `
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    若要详细了解如何使用模板的 `accessPolicies` 部分，请参阅 [AccessPolicyEntry 对象参考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
+    若要详细了解如何使用模板的 `accessPolicies` 部分，请参阅 [AccessPolicyEntry 对象参考](/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
 
 * 查看 Key Vault 资源是否已存在。 如果是这样，请不要通过模板重新创建它。 例如，若要使用现有 Key Vault 而不是创建一个新的，请对模板进行以下更改：
 
-    * **添加**一个参数，该参数接受现有 Key Vault 资源的 ID：
+    * **添加** 一个参数，该参数接受现有 Key Vault 资源的 ID：
 
         ```json
         "keyVaultId":{
@@ -596,7 +595,7 @@ New-AzResourceGroupDeployment `
         }
       ```
 
-    * **删除**用于创建 Key Vault 资源的部分：
+    * **删除** 用于创建 Key Vault 资源的部分：
 
         ```json
         {
@@ -616,7 +615,7 @@ New-AzResourceGroupDeployment `
         },
         ```
 
-    * 从工作区的 `dependsOn` 部分**删除** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 另请**更改**工作区的 `properties` 部分中的 `keyVault` 条目，使之引用 `keyVaultId` 参数：
+    * 从工作区的 `dependsOn` 部分 **删除** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 另请 **更改** 工作区的 `properties` 部分中的 `keyVault` 条目，使之引用 `keyVaultId` 参数：
 
         ```json
         {

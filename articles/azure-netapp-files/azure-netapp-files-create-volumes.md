@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 413d1f787a39a5a79b94fa06b49436b49337d286
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2cc9d3e0fb711a0662852ce4f2c5a08dc626f246
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325583"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854727"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
-Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协议 (NFSv3 和 SMB) 创建卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 NFS 卷。 
+Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议 (NFSv3 和 SMB) 创建卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 NFS 卷。 
 
 ## <a name="before-you-begin"></a>开始之前 
 * 必须已设置容量池。  
@@ -36,7 +36,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 * 确定要使用的 NFS 版本  
   NFSv3 可以处理各种用例，通常部署在大多数企业应用程序中。 应该验证 (NFSv3 或 NFSv 4.1) 应用程序所需的版本，并使用适当的版本创建你的卷。 例如，如果使用 [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，则建议通过 NFSv3 使用 nfsv 4.1 进行文件锁定。 
 
-* 安全性  
+* 安全  
   支持 UNIX 模式位 (读取、写入和执行) 适用于 NFSv3 和 NFSv 4.1。 NFS 客户端上需要根级别的访问权限才能装载 NFS 卷。
 
 * NFSv 4.1 的本地用户/组和 LDAP 支持  
@@ -72,7 +72,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
         “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
 
-    * **吞吐量 (MiB/秒) **   
+    * **吞吐量 (MiB/秒)**   
         如果在手动 QoS 容量池中创建了卷，请指定要用于卷的吞吐量。   
 
         如果卷是在自动 QoS 容量池中创建的，则此字段中显示的值为 (配额 x 服务级别吞吐量) 。   
@@ -86,7 +86,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
         指定要用于卷的子网。  
         你指定的子网必须委派给 Azure NetApp 文件。 
         
-        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。**** 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 在每个 Vnet 中，只能将一个子网委托给 Azure NetApp 文件。   
+        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 在每个 Vnet 中，只能将一个子网委托给 Azure NetApp 文件。   
  
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
@@ -130,4 +130,4 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 * [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [为 NFS 卷配置导出策略](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
-* [了解 Azure 服务的虚拟网络集成](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [了解 Azure 服务的虚拟网络集成](../virtual-network/virtual-network-for-azure-services.md)

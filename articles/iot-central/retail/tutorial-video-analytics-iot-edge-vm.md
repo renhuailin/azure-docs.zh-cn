@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526385"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763870"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>教程：创建用于视频分析的 IoT Edge 实例 (Linux VM)
 
@@ -34,7 +34,7 @@ Azure IoT Edge 是一项完全托管的服务，可通过部署和运行以下�
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，应该先完成上一教程 - [在 Azure IoT Central 中创建视频分析应用程序](./tutorial-video-analytics-create-app.md)。
+在开始之前，应该先完成上一教程 - [在 Azure IoT Central 中创建视频分析应用程序](./tutorial-video-analytics-create-app-yolo-v3.md)或[在 Azure IoT Central 中创建视频分析 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md)。
 
 还需要一个 Azure 订阅。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上免费创建一个。
 
@@ -51,15 +51,15 @@ Azure IoT Edge 是一项完全托管的服务，可通过部署和运行以下�
 | 订阅 | 选择 Azure 订阅。 |
 | 资源组 | *lva-rg* - 在上一教程中创建的资源组。 |
 | 区域       | *美国东部* |
-| DNS 标签前缀 | 为 VM 选择唯一 DNS 前缀。 |
+| DNS 标签前缀 | 为 VM 选择唯一 DNS 前缀。 必须全部是字母字符，不含数字或特殊字符。 |
 | 管理员用户名 | *AzureUser* |
 | 管理员密码 | 输入密码。 记下 scratchpad.txt 文件中的密码，以便后续使用。 |
 | 作用域 ID | 在上一教程中添加网关设备时在 scratchpad.txt 文件中记下的作用域 ID。 |
-| 设备 ID | *lva-gateway-001* - 在上一教程中创建的网关设备。 |
+| 设备 ID | gateway-001 - 在上一教程中创建的网关设备。 |
 | 设备密钥 | 在上一教程中添加网关设备时在 scratchpad.txt 文件中记下的设备主密钥。 |
 | IoT Central 应用主机 | 在上一教程的 scratchpad.txt 文件中记下的应用程序 URL。 例如：traders.azureiotcentral.com。 |
-| IoT Central 应用 API 令牌 | 在上一教程中记下的运算符 API 令牌。 |
-| IoT Central 设备预配密钥 | 在上一教程的 scratchpad.txt 文件中记下的主要组共享访问签名令牌。 |
+| IoT Central 应用 API 令牌 | 在上一教程的 scratchpad.txt 文件中记下的运算符 API 令牌。 |
+| IoT Central 设备预配密钥 | 在上一教程的 scratchpad.txt 文件中记下的 SAS-IoT-Devices 组主密钥。 |
 | VM 大小 | *Standard_DS1_v2* |
 | Ubuntu OS 版本 | *18.04-LTS* |
 | 位置 | *[resourceGroup().location]* |
@@ -94,7 +94,7 @@ sudo iotedge list
 
 部署创建了一个自定义 IoT Edge 环境，其中包含实时视频分析所需的模块。 部署更新了默认的 config.yaml，以确保 IoT 设备预配服务所使用的 IoT Edge 运行时连接到 IoT Central。 部署还在 /data/storage 文件夹中创建了一个名为 state.json 的文件，用于为模块提供其他配置数据 。 有关详细信息，请参阅[创建用于视频分析的 IoT Edge 实例 (Intel NUC)](./tutorial-video-analytics-iot-edge-nuc.md) 教程。
 
-若要对 IoT Edge 设备进行故障排除，请参阅[对 IoT Edge 设备进行故障排除](https://docs.microsoft.com/azure/iot-edge/troubleshoot)
+若要对 IoT Edge 设备进行故障排除，请参阅[对 IoT Edge 设备进行故障排除](../../iot-edge/troubleshoot.md)
 
 ## <a name="use-the-rtsp-simulator"></a>使用 RTSP 模拟器
 

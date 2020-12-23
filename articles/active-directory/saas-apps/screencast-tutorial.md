@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e56684c30d243e0b7848355234fef896ccd220ce
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2b0c42046df716c8ae65046e5f3314817da0a17e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543289"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893737"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Screencast-O-Matic 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543289"
 * 使用户能够使用其 Azure AD 帐户自动登录到 Screencast-O-Matic。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -137,15 +137,15 @@ ms.locfileid: "88543289"
 
     ![订阅](./media/screencast-tutorial/tutorial_screencast_sub.png)
 
-1. 在“访问页”部分，单击“设置”   。
+1. 在“访问页”部分，单击“设置” 。
 
-    ![访问](./media/screencast-tutorial/tutorial_screencast_setup.png)
+    ![显示选择了“设置”按钮的“访问页”部分的屏幕截图。](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
 1. 在“设置访问页”  上，执行以下步骤。
 
-1. 在“访问 URL”部分的指定文本框中，键入  实例名。
+1. 在“访问 URL”部分的指定文本框中，键入实例名。
 
-    ![访问](./media/screencast-tutorial/tutorial_screencast_access.png)
+    ![显示“访问 URL”部分的屏幕截图，其中突出显示了实例名称文本框。](./media/screencast-tutorial/tutorial_screencast_access.png)
 
 1. 在“SAML 用户限制(可选)”部分选择“需要域用户”。  
 
@@ -163,14 +163,14 @@ ms.locfileid: "88543289"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Screencast-O-Matic 磁贴时，应会自动登录到为其设置了 SSO 的 Screencast-O-Matic。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Screencast-O-Matic 磁贴时，应会自动登录到为其设置了 SSO 的 Screencast-O-Matic。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 Screencast-O-Matic ](https://aad.portal.azure.com/)

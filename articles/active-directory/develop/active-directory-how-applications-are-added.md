@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 1f6fd0160988802e198ff9388cfeb3232b34b100
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706177"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861113"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -70,9 +70,9 @@ Azure AD 中的应用程序有两种表示形式：
 
 * 当用户登录到与 Azure AD 集成的第三方应用程序时
   * 在登录期间，系统要求用户向应用程序授予访问其配置文件的权限和其他权限。 第一个授权者导致生成一个服务主体，表示要添加到目录中的应用程序。
-* 当用户登录到 Microsoft 联机服务如 [Microsoft 365](https://products.office.com/)
-  * 当你订阅 Microsoft 365 或开始试用时，将在目录中创建一个或多个服务主体，表示用于传递与 Microsoft 365 相关的所有功能的各种服务。
-  * 某些 Microsoft 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
+* 当用户登录到 [Microsoft 365](https://products.office.com/) 等 Microsoft 联机服务时
+  * 当你订阅 Microsoft 365 或开始试用时，会在目录中创建一个或多个服务主体，表示用于传递所有与 Microsoft 365 关联的功能的各种服务。
+  * 某些 Microsoft 365 服务（如 SharePoint）会不断地创建服务主体，这样就可以在组件（包括工作流）之间安全地通信。
 * 当管理员从应用库添加应用程序时（这也会创建基础应用对象）
 * 添加一个应用程序以使用 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)
 * 连接应用程序，以使用 SAML 或密码单一登录 (SSO) 进行单一登录
@@ -91,7 +91,7 @@ Azure AD 中的应用程序有两种表示形式：
 
 与 Azure AD 集成的应用程序发布者/供应商需有一个发布目录（在右侧显示为“某个 SaaS 目录”）。
 
-自行添加的应用程序（在关系图中显示为**你的应用**）包括：
+自行添加的应用程序（在关系图中显示为 **你的应用**）包括：
 
 * 开发的应用（与 Azure AD 集成）
 * 为了进行单一登录而连接的应用程序
@@ -104,7 +104,7 @@ Azure AD 中的应用程序有两种表示形式：
   * 声明转换规则
   * 属性映射（用户设置）
 * 有关服务主体和应用程序对象的详细信息，请参阅 Microsoft Graph API 参考文档：
-  * [应用程序](/graph/api/resources/application?view=graph-rest-1.0)
+  * [应用程序](/graph/api/resources/application)
   * [Service Principal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>应用程序为何要与 Azure AD 集成？
@@ -116,8 +116,9 @@ Azure AD 中的应用程序有两种表示形式：
 * 使用联合身份验证或密码的 SSO
 * 用户预配和同步
 * 基于角色的访问控制 - 使用目录定义应用程序角色，以便在应用程序中执行基于角色的授权检查
-* OAuth 授权服务-Microsoft 365 和其他 Microsoft 应用程序使用这些服务来授予对 Api/资源的访问权限
+* OAuth 授权服务 - 供 Microsoft 365 和其他 Microsoft 应用程序用来授予对 API/资源的访问权限
 * 应用程序发布和代理 - 将应用程序从专用网络发布到 Internet
+* 目录架构扩展属性- [扩展服务主体和用户对象的架构](active-directory-schema-extensions.md) ，以存储其他数据 Azure AD 
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>谁有权向我的 Azure AD 实例添加应用程序？
 
@@ -137,14 +138,14 @@ Azure AD 中的应用程序有两种表示形式：
 
 * 阻止用户自行许可应用程序：
   1. 在 Azure 门户中，转到[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)下的“用户设置”部分。
-  2. 将**用户可以自行许可访问公司数据的应用**设置为**否**。
+  2. 将 **用户可以自行许可访问公司数据的应用** 设置为 **否**。
      
      > [!NOTE]
      > 如果决定关闭用户许可，则必须由管理员许可用户需要使用的任何新应用程序。
 
 * 阻止用户注册其自己的应用程序：
   1. 在 Azure 门户中，转到“Azure Active Directory”下的[用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)部分
-  2. 将**用户可以注册应用程序**更改为**否**。
+  2. 将 **用户可以注册应用程序** 更改为 **否**。
 
 > [!NOTE]
 > Microsoft 自身使用默认配置，允许用户自行注册应用程序和许可应用程序。

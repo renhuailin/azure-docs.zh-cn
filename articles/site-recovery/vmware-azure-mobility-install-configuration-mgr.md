@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2159ab8c2639f0f87fd53e8559dad518a3daa663
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77252221"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544811"
 ---
 # <a name="automate-mobility-service-installation"></a>自动执行移动服务安装
 
@@ -18,9 +18,9 @@ ms.locfileid: "77252221"
 
 如要部署 Site Recovery 以实现本地 VMware VM 和物理服务器灾难恢复到 Azure，请在每个要复制的计算机上安装移动服务代理。 移动服务可以捕获计算机上的数据写入，并将其转发到 Site Recovery 进程服务器进行复制。 可以通过以下几种方式部署移动服务：
 
-- **推送安装**：在 Azure 门户中为计算机启用复制后，让 Site Recovery 安装移动服务代理。
-- **手动安装**：在每台计算机上手动安装移动服务。 [详细了解](vmware-physical-mobility-service-overview.md)有关推送和手动安装的信息。
-- **自动部署**：通过软件部署工具（例如 Microsoft Endpoint Configuration Manager）或第三方工具（如 JetPatch）自动进行安装。
+- **推送安装** ：在 Azure 门户中为计算机启用复制后，让 Site Recovery 安装移动服务代理。
+- **手动安装** ：在每台计算机上手动安装移动服务。 [详细了解](vmware-physical-mobility-service-overview.md)有关推送和手动安装的信息。
+- **自动部署** ：通过软件部署工具（例如 Microsoft Endpoint Configuration Manager）或第三方工具（如 JetPatch）自动进行安装。
 
 如果出现以下情况，自动安装和更新可以提供解决方案：
 
@@ -56,8 +56,8 @@ ms.locfileid: "77252221"
 1. 在 Configuration Manager 中，[对要安装或更新移动服务的服务器进行分类](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections)。 其中一个集合应包含所有 Windows 服务器，而另一个集合应包含所有 Linux 服务器。
 1. 在网络共享上，创建文件夹：
 
-   - 若要在 Windows 计算机上安装，请创建一个名为 _MobSvcWindows_的文件夹。
-   - 若要在 Linux 计算机上安装，请创建名为 _MobSvcLinux_的文件夹。
+   - 若要在 Windows 计算机上安装，请创建一个名为 _MobSvcWindows_ 的文件夹。
+   - 若要在 Linux 计算机上安装，请创建名为 _MobSvcLinux_ 的文件夹。
 
 1. 登录到配置服务器计算机。
 1. 在配置服务器计算机上，打开管理命令提示符。
@@ -77,8 +77,8 @@ ms.locfileid: "77252221"
 
 1. 将以下安装文件复制到网络共享：
 
-   - 对于 Windows，将 _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ 复制到 _MobSvcWindows_。
-   - 对于 Linux，将以下文件复制到 _MobSvcLinux_：
+   - 对于 Windows，将 _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ 复制到 _MobSvcWindows_ 。
+   - 对于 Linux，将以下文件复制到 _MobSvcLinux_ ：
      - _Microsoft-ASR_UARHEL6-64release.tar.gz_
      - _Microsoft-ASR_UARHEL7-64release.tar.gz_
      - _Microsoft-ASR_UASLES11-SP3-64release.tar.gz_
@@ -95,7 +95,7 @@ ms.locfileid: "77252221"
 
 复制以下代码：
 
-- 将 _MobSvcWindows_ 文件夹中的代码另存为 _install.bat_。
+- 将 _MobSvcWindows_ 文件夹中的代码另存为 _install.bat_ 。
 - 将此脚本中的 `[CSIP]` 占位符替换为配置服务器的实际 IP 地址值。
 - 此脚本支持移动服务代理的全新安装和已安装代理的更新。
 
@@ -198,7 +198,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 复制以下代码：
 
-- 将 _MobSvcLinux_ 文件夹中的代码另存为 _install_linux. sh_。
+- 将 _MobSvcLinux_ 文件夹中的代码另存为 _install_linux. sh_ 。
 - 将此脚本中的 `[CSIP]` 占位符替换为配置服务器的实际 IP 地址值。
 - 此脚本支持移动服务代理的全新安装和已安装代理的更新。
 
@@ -342,13 +342,13 @@ cd /tmp
 1. 右键单击“包” > “创建包”   。
 1. 提供包详细信息，包括“名称”、“说明”、“制造商”、“语言”和“版本”。
 1. 选中“此包包含源文件”  。
-1. 单击“浏览”  ，然后选择包含相关安装程序的网络共享和文件夹（_MobSvcWindows_ 或 _MobSvcLinux_）。 然后，选择“下一步”  。
+1. 单击“浏览”  ，然后选择包含相关安装程序的网络共享和文件夹（ _MobSvcWindows_ 或 _MobSvcLinux_ ）。 然后，选择“下一步”  。
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
 1. 在“选择要创建的程序类型”页上，选择“标准程序” > “下一步”    。
 
-   ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![显示标准程序选项的创建包和程序向导的屏幕截图。](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
 1. 在“指定此标准程序的相关信息”页上，指定以下值  ：
 
@@ -359,7 +359,7 @@ cd /tmp
     程序可运行  | 用户是否已登录 | 用户是否已登录
     其他参数  | 使用默认设置 | 使用默认设置
 
-   ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
+   ![显示您可以为标准程序指定的信息的屏幕截图。](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
 1. 在“指定此标准程序的要求”  中，执行以下任务：
 
@@ -378,7 +378,7 @@ cd /tmp
 1. 完成该向导。 包随后开始复制到指定的分发点。
 1. 完成包分发后，右键单击“包”>“部署”  。
 
-   ![Configuration Manager 控制台的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+   ![显示 "部署" 菜单选项的 Configuration Manager 控制台的屏幕截图。](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 
 1. 选择之前创建的 Windows 或 Linux 设备集合。
 1. 在“指定内容目标”页上，选择“分发点”   。
@@ -392,7 +392,7 @@ cd /tmp
    - 为了避免不必要的重新启动，请在每月的维护时段或软件更新时段计划包安装。
 
 1. 在“分发点”页上，配置设置并完成向导  。
-1. 在 Configuration Manager 控制台中监视部署进度。 请参阅**监视**  >  **部署**  >  _\<your package name\>_ 。
+1. 在 Configuration Manager 控制台中监视部署进度。 请参阅 **监视**  >  **部署**  >  _\<your package name\>_ 。
 
 ### <a name="uninstall-the-mobility-service"></a>卸载移动服务
 

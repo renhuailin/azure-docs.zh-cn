@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 58c07654c174f5b94512574cb4c279d35897dc71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613759"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701936"
 ---
 # <a name="sky-reflections"></a>天空反射
 
@@ -95,7 +95,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
 
 ## <a name="sky-texture-types"></a>天空纹理类型
 
-可以使用[立体地图](https://en.wikipedia.org/wiki/Cube_mapping)和 *2D 纹理*作为环境地图。
+可以使用 [立体地图](https://en.wikipedia.org/wiki/Cube_mapping)和 *2D 纹理* 作为环境地图。
 
 所有纹理都必须采用[支持的纹理格式](../../concepts/textures.md#supported-texture-formats)。 不需要为天空纹理提供 mipmap。
 
@@ -138,12 +138,11 @@ Azure 远程渲染提供了几个始终可用的内置环境地图。 所有内�
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RemoteManager SkyReflectionSettings 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
-* [C + + RemoteManager：： SkyReflectionSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
+* [C # RemoteManager SkyReflectionSettings 属性](/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C + + RemoteManager：： SkyReflectionSettings ( # B1 ](/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [光线](../../overview/features/lights.md)
 * [材料](../../concepts/materials.md)
 * [纹理](../../concepts/textures.md)
-* [TexConv 命令行工具](../../resources/tools/tex-conv.md)

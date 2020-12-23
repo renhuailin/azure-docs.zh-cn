@@ -3,17 +3,17 @@ title: Azure Database for MySQL 文档
 summary: Azure Database for MySQL 是由 MySQL 社区版提供支持的关系数据库服务。你可以使用单服务器或灵活服务器（预览版）在 Azure 中托管 MySQL 数据库。 它是完全托管的数据库即服务产品，能够处理任务关键型工作负荷，并提供可预测的性能和动态可伸缩性。
 metadata:
   description: Azure Database for MySQL 是 Microsoft 云中的关系数据库服务，它专为开发人员而构建，由 MySQL 社区版提供支持。 你可以选择单服务器或灵活服务器（预览版）在 Azure 中部署 MySQL 数据库。
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 03deaa446b7db7790f751f226cb788faf9ebc2a7
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 82c736b3256a099aa0dbd2edca14f402a3b935be
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90903967"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94543028"
 landingContent:
 - title: 关于 Azure Database for MySQL
   linkLists:
@@ -138,7 +138,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: 用于常见任务的 Azure CLI 脚本
-      url: /azure/mysql/sample-scripts-azure-cli
+      url: ./sample-scripts-azure-cli.md
     - text: Azure 资源管理器模板
       url: /azure/templates/microsoft.dbformysql/allversions
   - linkListType: reference
@@ -148,4 +148,4 @@ landingContent:
     - text: REST API 开发人员参考
       url: /rest/api/mysql/
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.mysql
+      url: /powershell/module/az.mysql

@@ -14,6 +14,8 @@
   items:
     - name: 保护虚拟中心 - 门户
       href: secure-cloud-network.md
+    - name: 保护虚拟中心 - PowerShell
+      href: secure-cloud-network-powershell.md
     - name: 保护中心虚拟网络 - 门户
       href: secure-hybrid-network.md
 - name: 概念
@@ -26,6 +28,8 @@
       href: deployment-overview.md
     - name: 安全合作伙伴提供程序
       href: trusted-security-partners.md
+    - name: 使用 Check Point Cloudguard Connect 保护中心安全
+      href: check-point-overview.md
     - name: IP 组
       href: ip-groups.md
     - name: 规则处理逻辑
@@ -36,6 +40,10 @@
       href: threat-intelligence-settings.md
     - name: 网络规则中的 FQDN
       href: fqdn-filtering-network-rules.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 部署安全合作伙伴提供程序

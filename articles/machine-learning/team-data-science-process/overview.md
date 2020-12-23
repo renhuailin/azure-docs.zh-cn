@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: overview
-ms.date: 1/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 711c4ce8af613181d35d2850393c6c24d795c280
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 4a341d33c957af8fe7423bda80f1d34a7f59cdd6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799258"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737993"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 
@@ -28,10 +28,10 @@ Team Data Science Process (TDSP) 是一种敏捷的迭代式数据科学方法�
 
 TDSP 包括以下关键组件：
 
-- **数据科学生命周期**定义
+- **数据科学生命周期** 定义
 - **标准化项目结构**
-- 推荐数据科学项目使用的**基础结构和资源**
-- 推荐用于项目执行的**工具和实用程序**
+- 推荐数据科学项目使用的 **基础结构和资源**
+- 推荐用于项目执行的 **工具和实用程序**
 
 
 ## <a name="data-science-lifecycle"></a>数据科学生命周期
@@ -49,9 +49,9 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 * **建模**
 * **部署**
 
-以下是 **Team Data Science Process 生命周期**的可视化表示形式 。 
+以下是 **Team Data Science Process 生命周期** 的可视化表示形式 。 
 
-![TDSP-Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![关系图显示了数据科学生命周期，包括业务理解、数据采集/理解、建模和部署。](./media/overview/tdsp-lifecycle2.png) 
 
 [Team Data Science Process 生命周期](lifecycle.md)主题中介绍了 TDSP 中每个生命周期阶段的目标、任务和文档项目。 这些任务和项目与项目角色相关联：
 
@@ -100,7 +100,7 @@ TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
 
 ## <a name="tools-and-utilities-for-project-execution"></a>用于项目执行的工具和实用程序
 
-在大多数组织中引入过程很有难度。 TDSP 提供了工具用于实现数据科学过程和生命周期，帮助削减屏障，提高客户的采用一致性。 TDSP 提供了一套初始工具和脚本，帮助在团队中快速采用 TDSP。 另外，它还帮助自动完成数据科学生命周期中的某些常见任务，例如数据探索和基线建模。 提供了一个妥善定义的结构，供个人将共享工具和实用程序贡献到团队的共享代码存储库中。 然后，这些资源可由团队或组织中的其他项目利用。 TDSP 还计划为向整个社区贡献工具和实用程序提供支持。 可从 [GitHub](https://github.com/Azure/Azure-TDSP-Utilities) 克隆 TDSP 实用程序。
+在大多数组织中引入过程很有难度。 TDSP 提供了工具用于实现数据科学过程和生命周期，帮助削减屏障，提高客户的采用一致性。 TDSP 提供了一套初始工具和脚本，帮助在团队中快速采用 TDSP。 另外，它还帮助自动完成数据科学生命周期中的某些常见任务，例如数据探索和基线建模。 提供了一个妥善定义的结构，供个人将共享工具和实用程序贡献到团队的共享代码存储库中。 然后，这些资源可由团队或组织中的其他项目利用。  Microsoft 在 [Azure 机器学习](../index.yml)中提供了丰富的工具，前者既支持开源工具（Python、R、ONNX 和常见的深度学习框架）也支持 Microsoft 自己的工具 (AutoML)。
 
 
 ## <a name="next-steps"></a>后续步骤

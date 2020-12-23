@@ -1,18 +1,18 @@
 ---
 title: 管理启用了 Azure Arc 的服务器代理
 description: 本文介绍了在支持 Azure Arc 的服务器连接的计算机代理的生命周期中通常会执行的不同管理任务。
-ms.date: 09/09/2020
+ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5161bd097809f1feb6f84b07e07c63d06d0a9c94
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254986"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107186"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
-初始部署启用了 Azure Arc 的服务器（适用于 Windows 或 Linux）的已连接计算机代理后，你可能需要重新配置代理、进行升级，或者从计算机中删除它（如果它已在其生命周期中的停用阶段）。 可以轻松地手动或自动管理这些日常维护任务，从而减少运行错误并降低费用。
+初始部署启用了 Azure Arc 的服务器的已连接计算机代理（适用于 Windows 或 Linux）后，你可能需要重新配置并升级代理，或将其从计算机中删除。 可以轻松地手动或自动管理这些日常维护任务，从而减少运行错误并降低费用。
 
 ## <a name="before-uninstalling-agent"></a>卸载代理之前
 
@@ -38,7 +38,11 @@ ms.locfileid: "91254986"
 
 ## <a name="upgrading-agent"></a>升级代理
 
-适用于 Windows 和 Linux 的 Azure Connected Machine 代理可以手动或自动升级到最新版本，具体取决于你的要求。 下表介绍了执行代理升级所支持的方法。
+Azure 连接的计算机代理会定期更新，以解决 bug 修复、稳定性增强和新功能。 [Azure 顾问](../../advisor/advisor-overview.md) 会识别未使用最新版本的计算机代理的资源，并建议升级到最新版本。 当你通过在 " **概述** " 页上提供横幅，或通过 Azure 门户访问顾问时，它将在你选择 "已启用 Arc" 的服务器时通知你。
+
+适用于 Windows 和 Linux 的 Azure Connected Machine 代理可以手动或自动升级到最新版本，具体取决于你的要求。
+
+下表介绍了执行代理升级所支持的方法。
 
 | 操作系统 | 升级方法 |
 |------------------|----------------|
@@ -138,7 +142,7 @@ ms.locfileid: "91254986"
     zypper update
     ```
 
-[zypper](https://en.opensuse.org/Portal:Zypper) 命令的操作（如安装和删除包）记录在 `/var/log/zypper.log` 日志文件中。 
+[zypper](https://en.opensuse.org/Portal:Zypper) 命令的操作（如安装和删除包）记录在 `/var/log/zypper.log` 日志文件中。
 
 ## <a name="about-the-azcmagent-tool"></a>关于 Azcmagent 工具
 
@@ -148,20 +152,22 @@ Azcmagent 工具 ( # A0) 用于在安装期间配置启用了 Azure Arc 的服�
 
 * **Disconnect** - 断开计算机与 Azure Arc 的连接
 
-* **Reconnect** - 将断开连接的计算机重新连接到 Azure Arc
+* **Show** - 查看代理状态及其配置属性（资源组名称、订阅 ID、版本等），这有助于排查与代理相关的问题。 包括 `-j` 参数以 JSON 格式输出结果。
 
-* **Show** - 查看代理状态及其配置属性（资源组名称、订阅 ID、版本等），这有助于排查与代理相关的问题。
+* **日志** -在当前目录中创建一个 .zip 文件，该文件包含用于在进行故障排除时提供帮助的日志。
+
+* **版本** -显示连接的计算机代理版本。
 
 * **-h or --help** - 显示可用的命令行参数
 
-    例如，若要查看 Reconnect 参数的详细帮助，请键入 `azcmagent reconnect -h`。 
+    例如，若要查看 **Connect** 参数的详细帮助，请键入 `azcmagent connect -h` 。 
 
 * **-v or --verbose** - 启用详细日志记录
 
-你可以在以交互方式登录时手动执行“Connect”、“Disconnect”和“Reconnect”，也可以使用用于加入多个代理的相同服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)自动执行这些参数  。 如果未使用服务主体向启用了 Azure Arc 的服务器注册计算机，请参阅以下 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 创建服务主体。
+可以在交互式登录时手动执行连接和 **断开****连接**，也可以使用用于集成多个代理的相同服务主体或使用 Microsoft 标识平台 [访问令牌](../../active-directory/develop/access-tokens.md)来自动完成。 如果未使用服务主体向启用了 Azure Arc 的服务器注册计算机，请参阅以下 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 创建服务主体。
 
 >[!NOTE]
->若要运行**azcmagent**，必须具有 Linux 计算机上的*根*访问权限。
+>若要运行 **azcmagent**，必须具有 Linux 计算机上的 *根* 访问权限。
 
 ### <a name="connect"></a>连接
 
@@ -198,28 +204,7 @@ Azcmagent 工具 ( # A0) 用于在安装期间配置启用了 Azure Arc 的服�
 
 若要使用提升的登录凭据（交互式）断开连接，请运行以下命令：
 
-`azcmagent disconnect --tenant-id <tenantID>`
-
-### <a name="reconnect"></a>重新连接
-
-> [!WARNING]
-> `reconnect`命令已弃用，不应使用。 此命令将在将来的代理版本中删除，并且现有的代理将无法完成重新连接请求。 相反，请 [断开](#disconnect) 计算机的 [连接](#connect) ，然后重新连接。
-
-此参数将已注册或已连接的计算机与启用了 Azure Arc 的服务器重新连接。 如果计算机已关闭（至少 45 天）从而导致其证书过期，则可能需要执行此参数。 此参数使用提供的身份验证选项来检索与表示此计算机的 Azure 资源管理器资源相对应的新凭据。
-
-此命令需要高于 [Azure Connected Machine 加入](agent-overview.md#required-permissions)角色的权限。
-
-若要使用服务主体重新进行连接，请运行以下命令：
-
-`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
-
-若要使用访问令牌重新进行连接，请运行以下命令：
-
-`azcmagent reconnect --access-token <accessToken>`
-
-若要使用提升的登录凭据（交互式）重新进行连接，请运行以下命令：
-
-`azcmagent reconnect --tenant-id <tenantID>`
+`azcmagent disconnect`
 
 ## <a name="remove-the-agent"></a>删除代理
 
@@ -344,4 +329,4 @@ sudo azcmagent_proxy remove
 
 * 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
 
-* 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-intro.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。
+* 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。

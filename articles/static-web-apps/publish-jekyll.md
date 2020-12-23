@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797694"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000224"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>教程：将 Jekyll 网站发布到 Azure 静态 Web 应用（预览）
 
@@ -118,7 +118,7 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
 
 1. 对于“分支”，选择“主”。
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="已完成的 GitHub 信息":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="已填写的详细信息":::
 
 ### <a name="build"></a>构建
 
@@ -146,12 +146,9 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
 
 1. 在文本编辑器中打开 Jekyll 应用，然后打开 .github/workflows/azure-pages-<WORKFLOW_NAME>.yml 文件。
 
-1. 将 `- uses: actions/checkout@v2` 块后面的行添加到以下配置块。
+1. 在行 `- uses: actions/checkout@v2` 后，添加以下配置块。
 
     ```yml
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
@@ -174,7 +171,7 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
 
 1. 在 Azure 门户的“概述”窗口中，单击 URL 链接，打开已部署的应用程序 。
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="已部署的应用程序":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="已填写的详细信息":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

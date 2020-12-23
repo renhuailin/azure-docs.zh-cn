@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 36d843e80f024408747c1f94512a3ccc04c6709b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 52879eb7cb7a9d90113971aa66c590b99b2d5e88
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546878"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>教程：Azure Active Directory 与 Kantega SSO for Bitbucket 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88546878"
 * 可以让用户通过其 Azure AD 帐户自动登录到 Kantega SSO for Bitbucket（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88546878"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88546878"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Kantega SSO for Bitbucket 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -107,7 +107,7 @@ ms.locfileid: "88546878"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Kantega SSO for Bitbucket 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,39 +134,39 @@ ms.locfileid: "88546878"
 
 1. 单击齿轮，然后单击“查找新加载项”  。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon1.png)
+    ![屏幕截图显示选择了“查找新的加载项”的 BitBucket 管理。](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
 1. 搜索“Kantega SSO for Bitbucket SAML & Kerberos”  ，然后单击“安装”  按钮安装新的 SAML 插件。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon2.png)
+    ![屏幕截图显示了 Kantega SSO for Bitbucket SAML & Kerberos 以及安装选项。](./media/kantegassoforbitbucket-tutorial/addon2.png)
 
 1. 插件安装随即开始。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon31.png)
+    ![屏幕截图显示了“安装进度”。](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
 1. 安装完成后。 单击“关闭”  。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon33.png)
+    ![屏幕截图显示了“关闭”按钮。](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
 1. 单击“管理”。 
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon34.png)
+    ![屏幕截图显示了“管理”按钮。](./media/kantegassoforbitbucket-tutorial/addon34.png)
 
 1. 单击“配置”  配置新的插件。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon35.png)
+    ![屏幕截图显示“用户安装的加载项”，其中选择了“配置”。](./media/kantegassoforbitbucket-tutorial/addon35.png)
 
 1. 在“SAML”部分中  。 从“添加标识提供者”下拉菜单选择“Azure Active Directory (Azure AD)”   。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon4.png)
+    ![屏幕截图显示“Kantega 单一登录”，其中选择了“Azure AD”作为标识提供者。](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
 1. 选择订阅级别为“基本”  。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon5.png)
+    ![屏幕截图显示“准备 Azure AD”，其中选择了“基本”。](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
 1. 在“应用属性”部分，执行以下步骤  ：
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon6.png)
+    ![屏幕截图显示了“应用属性”部分，你可以在其中提供此步骤中的信息。](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
     a. 复制“应用 ID URI”值并将其用作 Azure 门户中“基本 SAML 配置”部分中的“标识符、回复 URL 和登录 URL”。
 
@@ -174,7 +174,7 @@ ms.locfileid: "88546878"
 
 1. 在“元数据导入”部分，执行以下步骤  ：
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon7.png)
+    ![屏幕截图显示了“元数据导入”部分，你可以在其中浏览元数据文件。](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
     a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件  。
 
@@ -182,7 +182,7 @@ ms.locfileid: "88546878"
 
 1. 在“名称和 SSO 位置”部分，执行以下步骤  ：
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon8.png)
+    ![屏幕截图显示了“名称和 SSO”位置，其中 Azure AD 是标识提供者名称。](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
     a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）  。
 
@@ -190,11 +190,11 @@ ms.locfileid: "88546878"
 
 1. 验证签名证书，然后单击“下一步”  。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon9.png)
+    ![屏幕截图显示了“签名验证”。](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
 1. 在“Bitbucket 用户帐户”  部分中，执行以下步骤：
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon10.png)
+    ![屏幕截图显示了可用于创建用户的 BitBucket 用户帐户。](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
     a. 选择“根据需要在 Bitbucket 的内部目录中创建用户”  ，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
@@ -202,11 +202,11 @@ ms.locfileid: "88546878"
 
 1. 单击“完成”  。
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon11.png)
+    ![屏幕截图显示了“摘要”页。](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
 1. 在“Azure AD 的已知域”部分，执行以下步骤  ：
 
-    ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon12.png)
+    ![屏幕截图显示了 Azure AD 的“已知域”，你可以在其中执行这些步骤。](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
     a. 从页的左侧面板中选择“已知域”  。
 
@@ -275,19 +275,19 @@ ms.locfileid: "88546878"
 
 1. 单击“设置”图标。
 
-    ![添加员工](./media/kantegassoforbitbucket-tutorial/user1.png) 
+    ![屏幕截图显示了“设置”图标。](./media/kantegassoforbitbucket-tutorial/user1.png) 
 
 1. 在“管理”  选项卡部分下，单击“用户”  。
 
-    ![添加员工](./media/kantegassoforbitbucket-tutorial/user2.png)
+    ![屏幕截图显示“BitBucket 管理”，其中选择了“用户”。 ](./media/kantegassoforbitbucket-tutorial/user2.png)
 
 1. 单击“创建用户”  。
 
-    ![添加员工](./media/kantegassoforbitbucket-tutorial/user3.png)   
+    ![屏幕截图显示选择了“创建用户”的“BitBucket 管理”。](./media/kantegassoforbitbucket-tutorial/user3.png)   
 
 1. 在“创建用户”  对话框页中，执行以下步骤：
 
-    ![添加员工](./media/kantegassoforbitbucket-tutorial/user4.png) 
+    ![屏幕截图显示了“创建用户”对话框，你可以在其中执行这些步骤。](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
     a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
@@ -305,13 +305,12 @@ ms.locfileid: "88546878"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Kantega SSO for Bitbucket 磁贴时，应当会自动登录到你为其设置了 SSO 的 Kantega SSO for Bitbucket。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Kantega SSO for Bitbucket 磁贴时，应当会自动登录到你为其设置了 SSO 的 Kantega SSO for Bitbucket。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

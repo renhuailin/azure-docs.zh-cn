@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 242e0e4614994c30d0a14b8fe3d7a5c2b217bb5a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91265266"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033334"
 ---
 # <a name="what-is-identity-protection"></a>什么是“标识保护”？
 
@@ -59,7 +59,7 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 
 要详细了解这些风险以及如何/何时计算，请参阅[什么是风险](concept-identity-protection-risks.md)一文。
 
-风险信号可能会触发修正措施，例如要求用户执行以下操作：执行 Azure 多重身份验证、使用自助式密码重置来重置其密码或阻止操作直到管理员执行操作。
+风险信号可能会触发修正措施，例如要求用户执行以下操作：执行 Azure AD 多重身份验证、使用自助式密码重置来重置其密码，或进行阻止直到管理员执行操作。
 
 ## <a name="risk-investigation"></a>风险调查
 
@@ -107,12 +107,14 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 | 风险策略 | 用户风险策略（通过标识保护实现）  | 否 | 否 |是 | 
 | 风险策略 | 登录风险策略（通过标识保护或条件访问实现）  | 否 |  否 |是 |
 | 安全报表 | 概述 |  否 | 否 |是 |
-| 安全报表 | 有风险用户  | 有限信息 | 有限信息 | 完全访问权限|
-| 安全报表 | 有风险的登录  | 有限信息 | 有限信息 | 完全访问权限|
-| 安全报表 | 风险检测   | 否 | 有限信息| 完全访问权限|
+| 安全报表 | 有风险用户  | 有限信息。 仅显示中等风险和高风险用户。 无详细信息抽屉或风险历史记录。 | 有限信息。 仅显示中等风险和高风险用户。 无详细信息抽屉或风险历史记录。 | 完全访问权限|
+| 安全报表 | 有风险的登录  | 有限信息。 未显示任何风险详细信息或风险级别。 | 有限信息。 未显示任何风险详细信息或风险级别。 | 完全访问权限|
+| 安全报表 | 风险检测   | 否 | 有限信息。 无详细信息抽屉。| 完全访问权限|
 | 通知 | 检测到用户存在风险的警报  | 否 | 否 |是 |
 | 通知 | 每周摘要| 否 | 否 | 是 | 
 | | MFA 注册策略 | 否 | 否 | 是 |
+
+有关这些丰富报表的详细信息，请参阅[操作说明：调查风险](howto-identity-protection-investigate-risk.md#navigating-the-reports)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

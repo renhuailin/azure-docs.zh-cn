@@ -1,30 +1,31 @@
 ---
-title: 查询类型和组合
+title: 查询类型
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 认知搜索中生成搜索查询并使用参数对结果进行筛选、选择和排序的基础知识。
+description: 了解认知搜索中支持的查询类型，包括可用文本、筛选器、自动完成和建议、异地搜索、系统查询和文档查找。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 12/14/2020
+ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537712"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400805"
 ---
-# <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的查询类型和组成部分
+# <a name="querying-in-azure-cognitive-search"></a>在 Azure 中查询认知搜索
 
-在 Azure 认知搜索中，查询是往返操作的完整规范。 在请求中，有参数可为引擎提供执行指令，还有参数来形成要返回的响应。 如果未指定这些内容 (`search=*`)、不使用匹配条件以及使用 null 或默认参数，查询会作为全文搜索操作针对所有可搜索字段执行，返回一个任意排序的未评分结果集。
+Azure 认知搜索提供丰富的查询语言，支持从自由文本搜索到高度指定的查询模式的各种方案。 本文介绍查询请求，以及可创建的查询类型。
 
-以下示例是在 [REST API](/rest/api/searchservice/search-documents) 中构造的代表性查询。 该示例针对的是[酒店演示索引](search-get-started-portal.md)，它包含常见参数，让你能够了解到查询是什么样子的。
+在认知搜索中，查询是指往返操作的完整规范 **`search`** ，其参数既用于通知查询执行，也可用于返回响应。 参数和分析器确定查询请求的类型。 下面的查询示例是一个带有布尔运算符的自由文本查询，它使用 [搜索文档 (REST API) ](/rest/api/searchservice/search-documents)，以目标为 [宾馆索引](search-get-started-portal.md) 文档集合为目标。
 
-```
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple" 
-    "search": "+New York +restaurant",
+    "queryType": "simple"
+    "search": "`New York` +restaurant",
     "searchFields": "Description, Address/City, Tags",
     "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
     "top": "10",
@@ -33,13 +34,15 @@ ms.locfileid: "91537712"
 }
 ```
 
-+ **`queryType`** 设置分析器，该分析器可以是[默认的简单查询分析器](search-query-simple-examples.md)（最适合用于全文搜索），也可以是[完整的 Lucene 查询分析器](search-query-lucene-examples.md)（用于正则表达式、邻近搜索、模糊和通配符搜索等高级查询构造）。
+查询执行过程中使用的参数包括：
 
-+ `search` 提供匹配条件（通常是整个搜索词或短语，但往往带有布尔运算符）。 包含单个独立字词的查询称为字词查询。 由括在引号中的多个部分组成的查询称为短语查询。 搜索可以不用定义（如 `search=*` 中所示），但如果没有要匹配的条件，则结果集由任意选定的文档组成。
++ **`queryType`** 设置分析器，该分析器可以是 [默认的简单查询分析器](search-query-simple-examples.md)（最适合用于全文搜索），也可以是 [完整的 Lucene 查询分析器](search-query-lucene-examples.md)（用于正则表达式、邻近搜索、模糊和通配符搜索等高级查询构造）。
 
-+ **`searchFields`** 将查询执行约束为特定的字段。 在索引架构中设置了 *searchable* 属性的任何字段都适合指定此参数。
++ **`search`** 提供包含或不含运算符的匹配条件，通常为整个词或短语。 在索引架构中设置了 *searchable* 属性的任何字段都适合指定此参数。
 
-还可通过查询中包含的参数来调整响应：
++ **`searchFields`** 将查询执行限制为特定的可搜索字段。
+
+用于对响应进行整形的参数：
 
 + `select` 指定要在响应中返回哪些字段。 仅可在 select 语句中使用索引内标记为“可检索”的字段。
 
@@ -47,127 +50,68 @@ ms.locfileid: "91537712"
 
 + `count` 指出整体上整个索引中多少文档匹配，该数目可能比返回的数目多。 
 
-+ 如果你想要按值（例如排名或位置）对结果分类，则使用 `orderby`。 否则，默认使用相关性分数对结果进行排名。
++ 如果你想要按值（例如排名或位置）对结果分类，则使用 `orderby`。 否则，默认使用相关性分数对结果进行排名。 字段的属性必须是可 *排序* 的，才能成为此参数的候选项。
 
-在 Azure 认知搜索中，查询执行始终针对一个使用请求中提供的 API 密钥进行身份验证的索引。 在 REST 中，两者均在请求标头中提供。
-
-### <a name="how-to-run-this-query"></a>如何运行此查询
-
-在编写任何代码之前，你都可使用查询工具来学习语法并用不同的参数进行试验。 最快捷的方法是使用内置门户工具 - [搜索浏览器](search-explorer.md)。
-
-如果按照这份[关于创建酒店演示索引的快速入门](search-get-started-portal.md)操作，则可将此查询字符串粘贴到浏览器的搜索栏中来运行你的第一个查询：`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
-
-## <a name="how-query-operations-are-enabled-by-the-index"></a>索引如何启用查询操作
-
-索引设计和查询设计在 Azure 认知搜索中紧密耦合。 需要提前知道的一个重要事实是，包含每个字段中属性的索引架构确定了可以生成的查询类型。 
-
-字段中的索引属性设置允许的操作 - 字段在索引中是否可搜索、在结果中是否可检索、是否可排序、是否可筛选，等等。 在示例查询字符串中，只有 `"$orderby": "Rating"` 可以正常工作，因为 Rating 字段在索引架构中标记为 *sortable*。 
-
-![酒店示例的索引定义](./media/search-query-overview/hotel-sample-index-definition.png "酒店示例的索引定义")
-
-以上屏幕截图是酒店示例的索引属性的部分列表。 可在门户中查看整个索引架构。 有关索引属性的详细信息，请参阅[创建索引 REST API](/rest/api/searchservice/create-index)。
-
-> [!Note]
-> 某些查询功能在索引范围启用，而不是按字段启用。 这些功能包括：[同义词映射](search-synonyms.md)、[自定义分析器](index-add-custom-analyzers.md)、[建议器构造（用于自动完成和建议的查询）](index-add-suggesters.md)、[排名结果的评分逻辑](index-add-scoring-profiles.md)。
-
-## <a name="elements-of-a-query-request"></a>查询请求的元素
-
-查询始终指向单个索引。 不能联接索引或者创建自定义或临时数据结构作为查询目标。 
-
-查询请求上的必需元素包括以下内容：
-
-+ 以 URL 表示的、包含固定和用户定义组件的服务终结点与索引文档集合： **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ 之所以需要 **`api-version`** （仅适用于 REST），是因为始终有多个可用的 API 版本。 
-+ **`api-key`** ：查询或管理 API 密钥，用于对服务请求进行身份验证。
-+ **`queryType`** ：简单或完整类型，如果想使用内置的默认简单语法，则可以省略此元素。
-+ **`search`** 或 **`filter`** 提供匹配条件，如果想要执行空搜索，则可以不指定此元素。 这两种查询类型都是作为简单分析器讨论的，但即使是高级查询，也需要通过搜索参数来传递复杂的查询表达式。
-
-所有其他搜索参数都为可选参数。 有关属性的完整列表，请参阅[创建索引 (REST)](/rest/api/searchservice/create-index)。 有关如何在处理期间使用参数的详细信息，请参阅 [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
-
-## <a name="choose-apis-and-tools"></a>选择 API 和工具
-
-下表列出用于提交查询的 API 和基于工具的方法。
-
-| 方法 | 说明 |
-|-------------|-------------|
-| [搜索浏览器（门户）](search-explorer.md) | 提供搜索栏，以及索引和 API 版本选项。 结果会以 JSON 文档的形式返回。 建议用于浏览、测试和验证。 <br/>[了解详细信息。](search-get-started-portal.md#query-index) | 
-| [Postman 或其他 REST 工具](search-get-started-postman.md) | Web 测试工具是用公式表示 REST 调用的极佳选择。 REST API 支持 Azure 认知搜索中的每个可能操作。 在本文中，了解如何设置 HTTP 请求标头和正文，以便向 Azure 认知搜索发送请求。  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | 可用于查询 Azure 认知搜索索引的客户端。  <br/>[了解详细信息。](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [搜索文档 (REST API)](/rest/api/searchservice/search-documents) | 索引上的 GET 或 POST 方法，使用查询参数进行其他输入。  |
-
-## <a name="choose-a-parser-simple--full"></a>选择一个分析器：简单 | 完整
-
-Azure 认知搜索基于 Apache Lucene ，提供两种查询分析器选择，分别用于处理典型查询和专用查询。 使用简单分析器的请求是通过[简单查询语法](query-simple-syntax.md)构建的。由于在自由格式文本查询中具有速度和效率优势，这种语法已选作默认语法。 此语法支持多种常用的搜索运算符，包括 AND、OR、NOT、短语、后缀和优先运算符。
-
-在将 `queryType=full` 添加到请求时所启用的[完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax)公开作为 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
-
-以下示例演示了一个要点：采用不同 queryType 设置的同一个查询会产生不同的结果。 在第一个查询中，`historic` 后面的 `^3` 被视为搜索字词的一部分。 此查询的最高排名结果是“Marquis Plaza & Suites”，其说明中包含 *ocean*
-
-```
-queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
-```
-
-使用完整 Lucene 分析器的同一查询会将 `^3` 解释为字段内字词提升器。 切换分析器会更改排名，并将包含 *historic* 一词的结果移到最前面。
-
-```
-queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
-```
+上面的列表是代表，但并不完整。 有关查询请求上参数的完整列表，请参阅 [搜索文档 (REST API) ](/rest/api/searchservice/search-documents)。
 
 <a name="types-of-queries"></a>
 
 ## <a name="types-of-queries"></a>查询类型
 
-Azure 认知搜索支持广泛的查询类型。 
+如果有几个值得注意的异常，则查询请求将循环访问为快速扫描而构建的反转索引，其中可以在任何数量的搜索文档中的任何字段中找到匹配项。 在认知搜索中，查找匹配项的主要方法是全文搜索或筛选器，但也可以实现其他众所周知的搜索体验，如自动完成或地理位置搜索。 本文的其余部分汇总了认知搜索中的查询，并提供了详细信息和示例的链接。
+
+## <a name="full-text-search"></a>全文搜索
+
+如果搜索应用包含收集术语输入的搜索框，则可能是全文搜索支持的查询操作。 全文搜索接受 **`search`** 索引中所有可 *搜索* 字段内的参数中传递的字词或短语。 查询字符串中的可选布尔运算符可指定包含或排除条件。 简单分析器和完全分析器都支持全文搜索。
+
+在认知搜索中，全文搜索基于 Apache Lucene 查询引擎构建。 全文搜索中的查询字符串经过词法分析以提高扫描效率。 分析包含小写的所有术语，删除诸如 "the" 之类的停止词，并将字词减为基元根窗体。 默认分析器为标准 Lucene。
+
+当找到匹配的字词时，查询引擎会重构一个包含匹配项的搜索文档，该文档包含使用文档键或 ID 组合字段值的匹配项，按照相关性顺序对文档进行排名，并在默认情况下返回前 50 (，如果指定了，则返回其他数字) **`top`** 。
+
+如果要实现全文搜索，则了解内容如何进行标记会有助于调试任何查询异常。 如果使用默认的 standard Lucene 以外的分析器查询，则可能需要使用默认标准 Lucene 以外的分析器，以确保索引包含正确的标记。 可以用 [语言分析器](index-add-language-analyzers.md#language-analyzer-list) 或用于修改词法分析的 [专用分析器](index-add-custom-analyzers.md#AnalyzerTable) 来覆盖默认值。 一个示例是将字段的全部内容视为单个标记的 [关键字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) 。 此分析器可用于邮政编码、ID 和某些产品名称等数据。 有关详细信息，请参阅 [部分术语搜索和带有特殊字符的模式](search-query-partial-matching.md)。
+
+如果预计使用布尔运算符（更有可能是包含大文本块的索引 (内容字段或详细说明) ），请确保使用参数测试查询， **`searchMode=Any|All`** 以评估该设置对布尔值的影响。
+
+## <a name="autocomplete-and-suggested-queries"></a>自动完成和建议的查询
+
+["自动完成" 或建议的结果](search-autocomplete-tutorial.md) 是根据 **`search`** 部分字符串输入触发连续查询请求的替代方法， (后面的每个字符) 在 "搜索即用" 体验中。 **`autocomplete`** **`suggestions`** 如 [本教程](tutorial-csharp-type-ahead-and-suggestions.md)中所述，您可以一起或单独使用和参数，但不能将它们与一起使用 **`search`** 。 已完成的字词和建议的查询均从索引内容派生而来。 引擎绝不会返回索引中不存在的字符串或建议。 有关详细信息，请参阅 [自动完成 (REST API) ](/rest/api/searchservice/autocomplete) 和 [建议 (REST API ](/rest/api/searchservice/suggestions)) 。
+
+## <a name="filter-search"></a>筛选器搜索
+
+筛选器广泛用于包括认知搜索的应用。 在应用程序页上，筛选器通常作为 "用户定向筛选" 的链接导航结构中的方面进行可视化。 筛选器还可以在内部用于公开索引内容的切片。 例如，您可以使用产品类别的筛选器来初始化搜索页，或者如果索引包含英语和法语字段，则使用一种语言。
+
+您可能还需要筛选器来调用专用查询窗体，如下表中所述。 您可以使用具有未指定搜索 (**`search=*`**) 或包含术语、短语、运算符和模式的查询字符串的筛选器。
+
+| 筛选方案 | 说明 |
+|-----------------|-------------|
+| 范围筛选器 | 在 Azure 认知搜索中，范围查询是使用筛选器参数生成的。 有关详细信息和示例，请参阅 [范围筛选器示例](search-query-simple-examples.md#example-4-range-filters)。 |
+| 地理位置搜索 | 如果可搜索字段为 [GeographyPoint 类型](/rest/api/searchservice/supported-data-types)，则可以为 "查找附近的用户" 或基于地图的搜索控件创建筛选器表达式。 驱动器异地搜索包含坐标的字段。 有关详细信息和示例，请参阅 [异地搜索示例](search-query-simple-examples.md#example-5-geo-search)。 |
+| 多面导航 | 当你调用筛选器来响应方面的事件时，分面导航结构会成为用户定向导航的作用 `onclick` 。 在这种情况下，facet 和筛选器将投入手。 如果添加分面导航，将需要筛选器来完成体验。 有关详细信息，请参阅 [如何构建分面筛选器](search-filters-facets.md)。 |
+
+> [!NOTE]
+> 在查询处理过程中，不会分析在筛选器表达式中使用的文本。 文本输入假定为逐字区分大小写的字符模式，这种模式在匹配时成功或失败。 筛选器表达式是使用 [OData 语法](query-odata-filter-orderby-syntax.md) 构造的，并传入 **`filter`** 索引中所有可 *筛选* 字段中的参数。 有关详细信息，请参阅 [Azure 认知搜索中的筛选器](search-filters.md)。
+
+## <a name="document-look-up"></a>文档查找
+
+与前面所述的查询窗体不同，此 [方法按 ID 检索单个搜索文档](/rest/api/searchservice/lookup-document)，而不会进行相应的索引搜索或扫描。 仅请求并返回一个文档。 当用户在搜索结果中选择某一项时，检索该文档并填充包含字段的详细信息页是典型的响应，并且文档查找是支持它的操作。
+
+## <a name="advanced-search-fuzzy-wildcard-proximity-regex"></a>高级搜索：模糊、通配符、邻近性、正则表达式
+
+高级查询窗体取决于触发特定查询行为的完整 Lucene 分析器和运算符。
 
 | 查询类型 | 使用情况 | 示例和详细信息 |
-|------------|--------|-------------------------------|
-| 自由格式文本搜索 | 搜索参数和任一分析器| 全文搜索在索引中所有可搜索字段内扫描一个或多个字词，其工作原理与 Google 或必应等搜索引擎相同。** 简介中的示例属于全文搜索。<br/><br/>全文搜索使用标准 Lucene 分析器进行词法分析 (默认情况下) 为小写的所有字词，删除 "the" 之类的停止词。 您可以用 [非英语分析器](index-add-language-analyzers.md#language-analyzer-list) 或用于修改词法分析的 [专用语言不可知分析器](index-add-custom-analyzers.md#AnalyzerTable) 替代默认值。 例如，将整个字段内容视为单个标记的[关键字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)。 此分析器可用于邮政编码、ID 和某些产品名称等数据。 | 
-| 筛选的搜索 | [OData 筛选表达式](query-odata-filter-orderby-syntax.md)和任一分析器 | 筛选器查询对索引中的所有可筛选字段计算布尔表达式  。 与搜索不同，筛选器查询与字段内容完全匹配，包括字符串字段的大小写区分。 另一项差别在于，筛选器查询以 OData 语法表示。 <br/>[筛选表达式示例](search-query-simple-examples.md#example-3-filter-queries) |
-| 地理搜索 | 字段中的 [Edm.GeographyPoint 类型](/rest/api/searchservice/supported-data-types)、筛选表达式和任一分析器 | 存储在字段中的具有 Edm.GeographyPoint 的坐标用于“附近查找”或基于地图的搜索控件。 <br/>[地理搜索示例](search-query-simple-examples.md#example-5-geo-search)|
-| 范围搜索 | 筛选表达式和简单分析器 | 在 Azure 认知搜索中，范围查询是使用筛选器参数生成的。 <br/>[范围筛选器示例](search-query-simple-examples.md#example-4-range-filters) | 
-| [字段化搜索](query-lucene-syntax.md#bkmk_fields) | 搜索参数和完整分析器 | 针对单个字段生成复合查询表达式。 <br/>[字段化搜索示例](search-query-lucene-examples.md#example-2-fielded-search) |
-| [模糊搜索](query-lucene-syntax.md#bkmk_fuzzy) | 搜索参数和完整分析器 | 匹配具有类似构造或拼写方式的字词。 <br/>[模糊搜索示例](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [邻近搜索](query-lucene-syntax.md#bkmk_proximity) | 搜索参数和完整分析器 | 查找在文档中相互靠近的字词。 <br/>[邻近搜索示例](search-query-lucene-examples.md#example-4-proximity-search) |
-| [术语提升](query-lucene-syntax.md#bkmk_termboost) | 搜索参数和完整分析器 | 如果某个文档包含提升的字词（相对于其他未提升的字词），则提高其排名。 <br/>[字词提升示例](search-query-lucene-examples.md#example-5-term-boosting) |
-| [正则表达式搜索](query-lucene-syntax.md#bkmk_regex) | 搜索参数和完整分析器 | 基于正则表达式的内容进行匹配。 <br/>[正则表达式示例](search-query-lucene-examples.md#example-6-regex) |
-|  [通配符或前缀搜索](query-lucene-syntax.md#bkmk_wildcard) | 搜索参数和完整分析器 | 基于前缀和波浪符 (`~`) 或单个字符 (`?`) 进行匹配。 <br/>[通配符搜索示例](search-query-lucene-examples.md#example-7-wildcard-search) |
+|------------|--------|------------------------------|
+| [字段化搜索](query-lucene-syntax.md#bkmk_fields) | **`search`**  参数 **`queryType=full`**  | 针对单个字段生成复合查询表达式。 <br/>[字段化搜索示例](search-query-lucene-examples.md#example-2-fielded-search) |
+| [模糊搜索](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** 参数 **`queryType=full`** | 匹配具有类似构造或拼写方式的字词。 <br/>[模糊搜索示例](search-query-lucene-examples.md#example-3-fuzzy-search) |
+| [邻近搜索](query-lucene-syntax.md#bkmk_proximity) | **`search`** 参数 **`queryType=full`** | 查找在文档中相互靠近的字词。 <br/>[邻近搜索示例](search-query-lucene-examples.md#example-4-proximity-search) |
+| [术语提升](query-lucene-syntax.md#bkmk_termboost) | **`search`** 参数 **`queryType=full`** | 如果某个文档包含提升的字词（相对于其他未提升的字词），则提高其排名。 <br/>[字词提升示例](search-query-lucene-examples.md#example-5-term-boosting) |
+| [正则表达式搜索](query-lucene-syntax.md#bkmk_regex) | **`search`** 参数 **`queryType=full`** | 基于正则表达式的内容进行匹配。 <br/>[正则表达式示例](search-query-lucene-examples.md#example-6-regex) |
+|  [通配符或前缀搜索](query-lucene-syntax.md#bkmk_wildcard) | **`search`** 带有 * *_`~`_* 或的 **`?`** 参数 **`queryType=full`**| 基于前缀和波浪符 (`~`) 或单个字符 (`?`) 进行匹配。 <br/>[通配符搜索示例](search-query-lucene-examples.md#example-7-wildcard-search) |
 
-## <a name="manage-search-results"></a>管理搜索结果 
+## <a name="next-steps"></a>后续步骤
 
-查询结果会流式处理为 REST API 中的 JSON 文档，但如果使用 .NET API，则会内置序列化功能。 可通过在查询中设置参数并为响应选择特定字段来调整结果。
+有关查询实现的详细说明，请查看每个语法的示例。 如果你不熟悉全文搜索，则更详细地了解查询引擎的功能可能是一个相当不错的选择。
 
-可通过以下方式使用查询上的参数来调整结果集的结构：
-
-+ 对结果中的文档数量（默认为 50 个）进行限制或分批
-+ 选择结果中要包含的字段
-+ 设置排列顺序
-+ 添加突出显示效果，以便在搜索结果正文中清楚看到匹配的搜索词
-
-### <a name="tips-for-unexpected-results"></a>意外结果提示
-
-有时可能会出现预料外的结果内容（而不是结构）。 如果查询结果并不是预期内容，可以尝试对查询进行以下修改，然后查看结果是否改进：
-
-+ 将 **`searchMode=any`** （默认）更改为 **`searchMode=all`** 可获取符合所有条件而不是某个条件的匹配项。 在查询包含布尔运算符时更应如此。
-
-+ 如果需要进行文本或词法分析但查询类型排除了语言处理环节，请更改查询方法。 在全文搜索中，文本或词法分析会自动更正拼写错误、单复数形式以及不合规范的谓词或名词。 对于模糊搜索和通配符搜索等一些查询，其查询分析管道中不包含词法分析。 在某些情况下会采用正则表达式作为解决方法。 
-
-### <a name="paging-results"></a>分页结果
-Azure 认知搜索可轻松对搜索结果进行分页。 使用 **`top`** 和 **`skip`** 参数可顺利地发出搜索请求，接收搜索结果总集，并通过其中易于管理的有序子集轻松完成效果良好的搜索 UI 操作。 接收较小的结果子集时，还可以在搜索结果总集中获得文档计数。
-
-有关对搜索结果分页的详细信息，请参阅 [如何在 Azure 认知搜索中对搜索结果分页](search-pagination-page-layout.md)一文。
-
-### <a name="ordering-results"></a>对结果排序
-接收搜索查询结果时，可请求 Azure 认知搜索按特定字段中的值对结果排序。 默认情况下，Azure 认知搜索会根据每个文档的搜索分数的排名对搜索结果进行排序，此排名是从 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)派生的。
-
-如果希望 Azure 认知搜索返回按搜索评分以外的某个值排序的结果，可以使用 **`orderby`** 搜索参数。 对于地理空间值，可以指定 **`orderby`** 参数的值，使其包含字段名称及对 [ **`geo.distance()` 函数**](query-odata-filter-orderby-syntax.md)的调用。 每个表达式可后接 `asc` 来指示按升序请求结果，或后接 **`desc`** 来指示按降序请求结果。 默认为升序。
-
-
-### <a name="hit-highlighting"></a>突出显示
-在 Azure 认知搜索中，使用 **`highlight`** 、 **`highlightPreTag`** 和 **`highlightPostTag`** 参数可轻松强调搜索结果中与搜索查询相匹配的确切部分。 可以指定应强调其匹配文本的可搜索字段，还可指定要附加到 Azure 认知搜索所返回匹配文本的开头和结尾的精确字符串标记  。
-
-## <a name="see-also"></a>另请参阅
-
-+ [Azure 认知搜索中全文搜索的工作原理（查询分析体系结构）](search-lucene-query-architecture.md)
-+ [搜索资源管理器](search-explorer.md)
-+ [如何在 .NET 中进行查询](./search-get-started-dotnet.md)
-+ [如何在 REST 中进行查询](./search-get-started-powershell.md)
++ [简单查询示例](search-query-simple-examples.md)
++ [生成高级查询的 Lucene 语法查询示例](search-query-lucene-examples.md)
++ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)

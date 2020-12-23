@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448135"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792389"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "91448135"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **一个 Azure 订阅**。 如果没有订阅，请注册 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- **一个 Azure 订阅** 。 如果没有订阅，请注册 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 - Visual Studio 2019 版本 16.3 或更高版本 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 
@@ -204,6 +204,6 @@ ms.locfileid: "91448135"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果已根据本教程完成上述操作，则为你设置的 Key Vault 权限适合与你自己的 Azure 订阅配合运行，但可能不适合于生产方案。 可以创建托管标识来管理应用的 Key Vault 访问权限。 请参阅[如何向 Key Vault 进行身份验证](/azure/key-vault/general/authentication)和[分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-portal)。
+如果已根据本教程完成上述操作，则为你设置的 Key Vault 权限适合与你自己的 Azure 订阅配合运行，但可能不适合于生产方案。 可以创建托管标识来管理应用的 Key Vault 访问权限。 请参阅[如何向 Key Vault 进行身份验证](./authentication.md)和[分配 Key Vault 访问策略](./assign-access-policy-portal.md)。
 
 在 [Key Vault 开发人员指南](developers-guide.md)中了解如何使用 Key Vault 进行开发。

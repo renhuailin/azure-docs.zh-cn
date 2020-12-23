@@ -1,0 +1,22 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 认知服务
+      tocHref: /azure/cognitive-services/
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: 文本分析
+          tocHref: /azure/cognitive-services/
+          topicHref: /azure/cognitive-services/text-analytics/index
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: 认知服务
+      tocHref: /legal/cognitive-services/text-analytics
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: 文本分析
+          tocHref: /legal/cognitive-services/text-analytics
+          topicHref: /azure/cognitive-services/text-analytics/index

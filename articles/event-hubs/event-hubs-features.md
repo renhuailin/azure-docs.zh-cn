@@ -3,12 +3,12 @@ title: Azure 事件中心功能概述 | Microsoft Docs
 description: 本文详细介绍 Azure 事件中心的功能和术语。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936225"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339976"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -33,7 +33,9 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ### <a name="publishing-an-event"></a>发布事件
 
-可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 服务总线提供了[客户端库和类](./event-hubs-dotnet-framework-getstarted-send.md)，用于从 .NET 客户端将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”（如下一部分所述）或其标识。
+可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 事件中心服务提供 [REST API](/rest/api/eventhub/)、[.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md) 和 [Go](event-hubs-go-get-started-send.md) 客户端库，用于将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 
+
+可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”（如下一部分所述）或其标识。
 
 是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 初始化会话时，AMQP 具有较高的网络成本，但是 HTTPS 需要为每个请求使用额外的 TLS 开销。 对于活动频繁的发布者，AMQP 的性能更高。
 
@@ -43,7 +45,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ### <a name="publisher-policy"></a>发布者策略
 
-使用事件中心可以通过*发布者策略*对事件发布者进行精细控制。 发布者策略是运行时功能，旨在为大量的独立事件发布者提供方便。 借助发布者策略，每个发布者在使用以下机制将事件发布到事件中心时可以使用自身的唯一标识符：
+使用事件中心可以通过 *发布者策略* 对事件发布者进行精细控制。 发布者策略是运行时功能，旨在为大量的独立事件发布者提供方便。 借助发布者策略，每个发布者在使用以下机制将事件发布到事件中心时可以使用自身的唯一标识符：
 
 ```http
 //<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
@@ -73,9 +75,9 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 在流处理体系结构中，每个下游应用程序相当于一个使用者组。 如果要将事件数据写入长期存储，则该存储写入器应用程序就是一个使用者组。 然后，复杂的事件处理可由另一个独立的使用者组执行。 只能通过使用者组访问分区。 事件中心内始终有一个默认的使用者组，最多可为一个标准层事件中心创建 20 个使用者组。
 
-每个使用者组的分区上最多可以有 5 个并发读取者，但是**建议每个使用者组的分区上只有一个活动接收者**。 在单个分区中，每个读取者接收所有消息。 如果在同一分区上有多个读取者，则处理重复消息。 需在代码中处理此问题，这并非易于处理的。 但是，在某些情况下，这是一种有效的方法。
+每个使用者组的分区上最多可以有 5 个并发读取者，但是 **建议每个使用者组的分区上只有一个活动接收者**。 在单个分区中，每个读取者接收所有消息。 如果在同一分区上有多个读取者，则处理重复消息。 需在代码中处理此问题，这并非易于处理的。 但是，在某些情况下，这是一种有效的方法。
 
-Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详细信息，以确保每个分区都有一个读取器，并读取事件中心的所有分区。 这样，你的代码就可以将精力集中于处理从事件中心读取的事件，使它可以忽略分区的很多详细信息。 有关详细信息，请参阅 [连接到分区](#connect-to-a-partition)。
+Azure SDK 提供的某些客户端是智能使用者代理，可以自动管理详细信息，以确保每个分区都有一个读取者，并确保正在读取事件中心的所有分区。 这样，你的代码的处理范围便可集中于从事件中心读取的事件，从而可以忽略分区的许多细节。 有关详细信息，请参阅[连接到分区](#connect-to-a-partition)。
 
 以下示例显示了使用者组 URI 约定：
 
@@ -92,7 +94,7 @@ Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详�
 
 偏移量  是事件在分区中的位置。 可以将偏移量视为客户端游标。 偏移量是事件的字节编号。 有了该偏移量，事件使用者（读取者）便可以在事件流中指定要从其开始读取事件的点。 可以时间戳或者偏移量值的形式指定偏移量。 使用者负责在事件中心服务的外部存储其自身的偏移量值。 在分区中，每个事件都包含一个偏移量。
 
-![分区偏移量](./media/event-hubs-features/partition_offset.png)
+![分区偏移](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>检查点
 
@@ -102,7 +104,7 @@ Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详�
 
 > [!NOTE]
 > 如果你在一个环境中使用 Azure Blob 存储作为检查点存储，该环境支持与 Azure 上通常可用的存储 Blob SDK 版本不同的版本，那么你需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果在 [Azure Stack Hub 版本 2002 上运行事件中心](/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本为 2017-11-09。 在这种情况下，需要使用代码将存储服务 API 版本设定为 2017-11-09。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅“GitHub 上的这些示例”： 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/) 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) 或 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
@@ -113,12 +115,12 @@ Azure Sdk 提供的某些客户端是智能使用者代理，可自动管理详�
 
 #### <a name="connect-to-a-partition"></a>连接到分区
 
-连接到分区时，常见的做法是使用租用机制来协调读取者与特定分区的连接。 这样一来，使用者组中的每个分区都有可能只有一个活动的读取者。 使用事件中心 Sdk 中的客户端（充当智能使用者代理）可以简化检查点、租用和管理读取器的操作。 它们是：
+在连接到分区时，常见的做法是使用租用机制来协调读取者与特定分区的连接。 这样，便可以做到一个使用者组中每分区只有一个活动的读取者。 使用事件中心 SDK 中的客户端（充当智能使用者代理）可以简化检查点、租用和管理读取者的操作。 它们是：
 
-- [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient) for .net
-- [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient) for Java
-- 用于 Python 的[EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
-- JavaScript/TypeScript 的[EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
+- 适用于 .NET 的 [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
+- 适用于 Java 的 [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)
+- 适用于 Python 的 [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
+- 适用于 JavaScript/TypeScript 的 [EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
 
 #### <a name="read-events"></a>读取事件
 

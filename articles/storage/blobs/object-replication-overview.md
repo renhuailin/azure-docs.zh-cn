@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612160"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549083"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -43,14 +43,36 @@ ms.locfileid: "91612160"
 
 启用更改源和 blob 版本控制可能会产生额外的成本。 有关更多详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/)。
 
+## <a name="how-object-replication-works"></a>对象复制的工作原理
+
+根据你配置的规则，对象复制以异步方式复制容器中的块 blob。 Blob 的内容、与 blob 关联的任何版本以及 blob 的元数据和属性都将从源容器复制到目标容器。
+
+> [!IMPORTANT]
+> 因为块 blob 数据是以异步方式复制的，所以源帐户和目标帐户不会立即同步。目前没有关于将数据复制到目标帐户所需时间的 SLA。 可以在源 blob 上检查复制状态，以确定复制是否已完成。 有关详细信息，请参阅 [检查 blob 的复制状态](object-replication-configure.md#check-the-replication-status-of-a-blob)。
+
+### <a name="blob-versioning"></a>Blob 版本控制
+
+对象复制要求在源帐户和目标帐户上启用 blob 版本控制。 当修改源帐户中的复制的 blob 时，将在修改之前，在源帐户中创建 blob 的新版本，以反映 blob 的以前状态。 源帐户中 (或基本 blob) 的当前版本反映了最新的更新。 更新的当前版本和新的早期版本都将复制到目标帐户。 有关写入操作如何影响 blob 版本的详细信息，请参阅 [编写操作的版本控制](versioning-overview.md#versioning-on-write-operations)。
+
+删除源帐户中的 blob 时，将在以前的版本中捕获 blob 的当前版本，然后将其删除。 即使在删除当前版本后，该 blob 的所有早期版本也会保持不变。 此状态被复制到目标帐户。 有关删除操作如何影响 blob 版本的详细信息，请参阅 [有关删除操作的版本控制](versioning-overview.md#versioning-on-delete-operations)。
+
+### <a name="snapshots"></a>快照
+
+对象复制不支持 blob 快照。 源帐户中的 blob 上的任何快照都不会复制到目标帐户。
+
+### <a name="blob-tiering"></a>Blob 分层
+
+当源帐户和目标帐户位于 "热" 层或 "冷" 层时，支持对象复制。 源帐户和目标帐户可能位于不同的层。 但是，如果源或目标帐户中的 blob 已移到存档层，对象复制将失败。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储的访问层-热、冷和存档](storage-blob-storage-tiers.md)。
+
+### <a name="immutable-blobs"></a>不可变 blob
+
+对象复制不支持不可变 blob。 如果源或目标容器具有基于时间的保留策略或合法保留，则对象复制将失败。 有关不可变 blob 的详细信息，请参阅 [将业务关键 blob 数据存储在不可变的存储](storage-blob-immutable-storage.md)中。
+
 ## <a name="object-replication-policies-and-rules"></a>对象复制策略和规则
 
 配置对象复制时，需要创建复制策略，以指定源存储帐户和目标帐户。 复制策略包括一个或多个规则，用于指定源容器和目标容器，并指明复制源容器中的哪些块 blob。
 
 配置对象复制以后，Azure 存储会定期检查源帐户的更改源，并将所有写入或删除操作以异步方式复制到目标帐户。 复制延迟取决于要复制的块 blob 的大小。
-
-> [!IMPORTANT]
-> 因为块 blob 数据是以异步方式复制的，所以源帐户和目标帐户不会立即同步。目前没有关于将数据复制到目标帐户所需时间的 SLA。
 
 ### <a name="replication-policies"></a>复制策略
 

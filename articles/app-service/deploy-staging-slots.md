@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962156"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150335"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
-将 Web 应用、Linux 上的 Web 应用、移动后端或 API 应用部署到 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”、“高级”或“隔离”应用服务计划层中运行，则可以使用单独的部署槽，而不是默认的生产槽。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
+将 Web 应用、Linux 上的 Web 应用、移动后端或 API 应用部署到 [Azure 应用服务](./overview.md)时，如果应用在“标准”、“高级”或“隔离”应用服务计划层中运行，则可以使用单独的部署槽，而不是默认的生产槽。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
 
 将应用程序部署到非生产槽具有以下优点：
 

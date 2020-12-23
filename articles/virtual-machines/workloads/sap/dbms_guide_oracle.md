@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP，Azure，Oracle，数据防护
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540704"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965249"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure 虚拟机 SAP 工作负荷的 Oracle DBMS 部署
 
@@ -389,12 +390,12 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 存储池 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | 高级或超磁盘 | None | 可用于高级  |
-| \oracle\<SID>\origlogaB | 高级或超磁盘 | None | 可用于高级 |
-| \oracle\<SID>\mirrlogAB | 高级或超磁盘 | None | 可用于高级 |
-| \oracle\<SID>\mirrlogBA | 高级或超磁盘 | None | 可用于高级 |
+| \oracle\<SID>\origlogaA | 高级或超磁盘 | 无 | 可用于高级  |
+| \oracle\<SID>\origlogaB | 高级或超磁盘 | 无 | 可用于高级 |
+| \oracle\<SID>\mirrlogAB | 高级或超磁盘 | 无 | 可用于高级 |
+| \oracle\<SID>\mirrlogBA | 高级或超磁盘 | 无 | 可用于高级 |
 | \oracle\<SID>\sapdata1...n | 高级或超磁盘 | 只读 | 建议用于高级  |
-| \oracle\SID\sapdata(n+1)* | 高级或超磁盘 | None | 可用于高级 |
+| \oracle\SID\sapdata(n+1)* | 高级或超磁盘 | 无 | 可用于高级 |
 | \oracle\<SID>\oraarch* | 高级或超磁盘 | 无 | 无需 |
 | Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
 
@@ -444,7 +445,7 @@ SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信�
 
 ### <a name="storage-configuration"></a>存储配置
 
-Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)或 [Azure 托管磁盘](../../managed-disks-overview.md)。
+Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)或 [Azure 托管磁盘](../../managed-disks-overview.md)。
 
 对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
 
@@ -482,12 +483,12 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | 高级或超磁盘 | None | 可用于高级  |
-| /oracle/\<SID>/origlogaB | 高级或超磁盘 | None | 可用于高级 |
-| /oracle/\<SID>/mirrlogAB | 高级或超磁盘 | None | 可用于高级 |
-| /oracle/\<SID>/mirrlogBA | 高级或超磁盘 | None | 可用于高级 |
+| /oracle/\<SID>/origlogaA | 高级或超磁盘 | 无 | 可用于高级  |
+| /oracle/\<SID>/origlogaB | 高级或超磁盘 | 无 | 可用于高级 |
+| /oracle/\<SID>/mirrlogAB | 高级或超磁盘 | 无 | 可用于高级 |
+| /oracle/\<SID>/mirrlogBA | 高级或超磁盘 | 无 | 可用于高级 |
 | /oracle/\<SID>/sapdata1...n | 高级或超磁盘 | 只读 | 建议用于高级  |
-| /oracle/\<SID>/sapdata(n+1)* | 高级或超磁盘 | None | 可用于高级 |
+| /oracle/\<SID>/sapdata(n+1)* | 高级或超磁盘 | 无 | 可用于高级 |
 | /oracle/\<SID>/oraarch* | 高级或超磁盘 | 无 | 无需 |
 | Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
 
@@ -508,7 +509,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 ### <a name="backuprestore"></a>备份/还原
 支持通过适用于 Oracle 的 SAP BR* 工具提供备份/还原功能，其方式与在裸机和 Hyper-V 上一样。 Oracle 恢复管理器 (RMAN) 也支持备份到磁盘以及从磁盘还原。
 
-有关如何使用 Azure 备份和恢复服务进行备份和恢复 Oracle Database 的详细信息，请参阅[在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库](../oracle/oracle-backup-recovery.md)。
+有关如何使用 Azure 备份和恢复服务进行备份和恢复 Oracle Database 的详细信息，请参阅[在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库](../oracle/oracle-overview.md)。
 
 ### <a name="high-availability"></a>高可用性
 支持通过 Oracle Data Guard 实现高可用性和灾难恢复。 若要在 Data Guard 中实现自动故障转移，需要使用快速启动故障转移 (FSFA)。 观察者功能 (FSFA) 触发故障转移。 如果不使用 FSFA，则只能使用手动故障转移配置。 有关详细信息，请参阅[在 Azure Linux 虚拟机上实施 Oracle Data Guard](../oracle/configure-oracle-dataguard.md)。
@@ -531,5 +532,3 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 阅读文章 
 
 - [部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](dbms_guide_general.md)
- 
-

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: a080c3953c48227301052a0bb151c8cba96e515a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666749"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737297"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>使用 Azure CLI 的虚拟网络服务终结点策略管理数据渗透到 Azure 存储帐户
 
@@ -37,15 +37,15 @@ ms.locfileid: "91666749"
 * 从子网确认对允许的存储帐户的访问权限。
 * 确认拒绝从子网到不允许的存储帐户的访问。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+- 本文要求 Azure CLI 版本2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -66,7 +66,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>启用服务终结点 
 
-在此示例中，为子网 "*专用*" 创建了*Microsoft*的服务终结点： 
+在此示例中，为子网 "*专用*" 创建了 *Microsoft* 的服务终结点： 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -297,7 +297,7 @@ az network vnet subnet update \
 
 若要测试对存储帐户的网络访问，请将 VM 部署到子网。
 
-使用[az VM create](/cli/azure/vm)在*专用*子网中创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
+使用 [az VM create](/cli/azure/vm)在 *专用* 子网中创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 
 ```azurecli-interactive
 az vm create \
@@ -325,7 +325,7 @@ ssh <publicIpAddress>
 sudo mkdir /mnt/MyAzureFileShare1
 ```
 
-将 Azure 文件共享装载到你创建的目录中。 执行下面的命令之前，请将替换 *\<storage-account-key>* **$saConnectionString 1**中*AccountKey*的值。
+将 Azure 文件共享装载到你创建的目录中。 执行下面的命令之前，请将替换 *\<storage-account-key>* **$saConnectionString 1** 中 *AccountKey* 的值。
 
 ```bash
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -335,7 +335,7 @@ sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share 
 
 ### <a name="confirm-access-is-denied-to-storage-account"></a>确认已拒绝对存储帐户的访问
 
-在同一 VM *myVmPrivate*中，为装入点创建一个目录：
+在同一 VM *myVmPrivate* 中，为装入点创建一个目录：
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare2
@@ -343,7 +343,7 @@ sudo mkdir /mnt/MyAzureFileShare2
 
 尝试将 Azure 文件共享从存储帐户 *notallowedstorageacc* 装载到你创建的目录中。 本文假定你已部署了 Ubuntu 的最新版本。 如果使用的是 Ubuntu 的早期版本，请参阅[在 Linux 上装载](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来了解有关装载文件共享的其他说明。 
 
-在执行下面的命令之前，请将替换 *\<storage-account-key>* 为 **$saConnectionString 2**中的*AccountKey*值。
+在执行下面的命令之前，请将替换 *\<storage-account-key>* 为 **$saConnectionString 2** 中的 *AccountKey* 值。
 
 ```bash
 sudo mount --types cifs //notallowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare2 --options vers=3.0,username=notallowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino

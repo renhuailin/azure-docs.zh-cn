@@ -3,12 +3,12 @@ title: Azure 中继混合连接协议指南 | Microsoft 文档
 description: 本文介绍如何与混合连接中继的客户端交互，以连接侦听器和发送方角色中的客户端。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8a812aa401077b81934d89ada99cf1dc312d8dbc
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531439"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862320"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 中继混合连接协议
 
@@ -55,7 +55,7 @@ Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 中继
 
 除了 Web 套接字连接以外，侦听器还可以从发送方接收 HTTP 请求帧（如果已对混合连接显式启用此功能）。
 
-附加到混合连接的、支持 HTTP 的侦听器必须处理 `request` 手势。 在连接时，不会处理 `request` 并导致重复超时错误的侦听器可能会在将来被服务阻止。
+附加到混合连接的、支持 HTTP 的侦听器必须处理 `request` 手势。 因不处理 `request` 而导致连接时重复出现超时错误的侦听器将来可能会被服务阻止。
 
 HTTP 帧标头元数据将转换为 JSON，以方便由侦听器框架处理；执行这种转换的另一个原因是，相比 JSON 分析器，HTTP 标头分析库极其少见。 仅与发送方与中继 HTTP 网关之间的关系相关的 HTTP 元数据（包括授权信息）不会转发。 HTTP 请求正文以透明方式作为二进制 Web 套接字帧传输。
 
@@ -326,7 +326,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 ##### <a name="responding-to-requests"></a>响应请求
 
-接收方必须做出响应。 若要在保持连接的情况下响应请求，则可能会导致侦听器被阻止。
+接收方必须做出响应。 在保持连接期间一直不响应请求可能导致侦听器被阻止。
 
 响应可按任意顺序发送，但必须在 60 秒内响应每个请求，否则会将传送报告为失败。 在服务收到 `response` 帧之前，会进行 60 秒倒计时。 包含多个二进制帧的处理中响应不能空闲 60 秒以上，否则会将其终止。
 
@@ -414,7 +414,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 其目标在于对端到端 WebSocket 实现最大透明度。 要连接到的地址与侦听器的相同，但是“操作”不同且令牌需要不同的权限：
 
 ```
-wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
+wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sb-hc-token=...
 ```
 
 _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全限定域名，通常格式为 `{myname}.servicebus.windows.net`。
@@ -433,7 +433,7 @@ _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全�
  `{path}` 是要注册此侦听器的预配置混合连接的 URL 编码命名空间路径。 `path` 表达式可以使用后缀和查询字符串表达式进行扩展，以供进一步通信。 如果混合连接注册在路径 `hyco` 下，则 `path` 表达式可以是 `hyco/suffix?param=value&...`，后跟此处定义的查询字符串参数。 完整的表达式可能如下所示：
 
 ```
-wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
+wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sb-hc-token=...
 ```
 
 `path` 表达式传递到“accept”控制消息所含地址 URI 中的侦听器。
@@ -462,12 +462,12 @@ HTTP 请求协议允许任意 HTTP 请求，但协议升级除外。
 HTTP 请求指向实体的常规运行时地址，不包括用于混合连接 Web 套接字客户端的 $hc 中缀。
 
 ```
-https://{namespace-address}/{path}?sbc-hc-token=...
+https://{namespace-address}/{path}?sb-hc-token=...
 ```
 
 _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全限定域名，通常格式为 `{myname}.servicebus.windows.net`。
 
-请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 所有提供的标头（在 RFC7230 中直接定义的标头除外 (参阅 [请求消息](#request-message)) 流向侦听器，并可在 `requestHeader` **请求** 消息的对象上找到。
+请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 提供的所有标头（RFC7230 中直接定义的标头除外，请参阅[请求消息](#request-message)）均流向侦听器并可在请求消息的 `requestHeader` 对象上找到。
 
 查询字符串参数选项如下所示：
 

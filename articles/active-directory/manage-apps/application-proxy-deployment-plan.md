@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9815237617566eda4759ecc31718786b6cb2cac8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642412"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176046"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划 Azure AD 应用程序代理部署
 
-) 应用程序代理 Azure Active Directory (Azure AD 是用于本地应用程序的安全且经济高效的远程访问解决方案。 它为 "Cloud First" 组织提供直接转换路径，以管理对旧的本地应用程序的访问，这些应用程序尚不能使用新式协议。 有关更多介绍性信息，请参阅 [什么是应用程序代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)。
+) 应用程序代理 Azure Active Directory (Azure AD 是用于本地应用程序的安全且经济高效的远程访问解决方案。 它为 "Cloud First" 组织提供直接转换路径，以管理对旧的本地应用程序的访问，这些应用程序尚不能使用新式协议。 有关更多介绍性信息，请参阅 [什么是应用程序代理](./application-proxy.md)。
 
 建议使用应用程序代理来使远程用户访问内部资源。 应用程序代理不需要对这些远程访问用例使用 VPN 或反向代理。 它不适用于位于企业网络上的用户。 使用应用程序代理进行 intranet 访问的这些用户可能会遇到意外的性能问题。
 
@@ -47,9 +47,9 @@ ms.locfileid: "88642412"
      * 必须先 [为 TLS 1.2 启用](application-proxy-add-on-premises-application.md) 连接器计算机，然后才能安装连接器。
 
      * 如果可能，请在与后端 web 应用程序服务器 [相同的网络](application-proxy-network-topology.md) 和网段中部署连接器。 在完成应用程序发现后，最好部署连接器。
-     * 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。 查看 [连接器容量表](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) ，以帮助确定要在其上安装连接器的计算机的类型。 计算机越大，连接器的缓冲区和性能就越多。
+     * 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。 查看 [连接器容量表](./application-proxy-connectors.md#capacity-planning) ，以帮助确定要在其上安装连接器的计算机的类型。 计算机越大，连接器的缓冲区和性能就越多。
 
-* **网络访问设置**： Azure AD 应用程序代理连接器 [通过 HTTPS 连接到 Azure (tcp 端口 443) 和 HTTP (TCP 端口 80) ](application-proxy-add-on-premises-application.md)。
+* **网络访问设置**： Azure AD 应用程序代理连接器 [通过 HTTPS 连接到 Azure (tcp 端口 443) 和 HTTP (TCP 端口 80)](application-proxy-add-on-premises-application.md)。
 
    * 不支持终止连接器 TLS 流量，并且会阻止连接器使用各自的 Azure 应用代理终结点建立安全通道。
 
@@ -63,9 +63,9 @@ ms.locfileid: "88642412"
 
 *  **Azure 载入**：在部署应用程序代理之前，必须从本地目录同步用户标识，或直接在 Azure AD 租户中创建用户标识。 标识同步允许 Azure AD 在授予用户对应用代理发布的应用程序的访问权限之前对用户进行预身份验证，并获得执行单一登录 (SSO) 所需的用户标识符信息。
 
-* **条件性访问要求**：我们不建议使用应用程序代理进行 intranet 访问，因为这会增加会影响用户的延迟。 建议将应用程序代理与预身份验证和条件访问策略一起使用，以便从 internet 进行远程访问。  提供 intranet 使用条件性访问的方法是实现应用程序的现代化，使其能够直接使用 AAD 进行身份验证。 有关详细信息，请参阅将 [应用程序迁移到 AAD 的资源](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) 。
+* **条件性访问要求**：我们不建议使用应用程序代理进行 intranet 访问，因为这会增加会影响用户的延迟。 建议将应用程序代理与预身份验证和条件访问策略一起使用，以便从 internet 进行远程访问。  提供 intranet 使用条件性访问的方法是实现应用程序的现代化，使其能够直接使用 AAD 进行身份验证。 有关详细信息，请参阅将 [应用程序迁移到 AAD 的资源](./migration-resources.md) 。
 
-* **服务限制**：若要防止单个租户过度资源，有每个应用程序和租户设置限制限制。 若要查看这些限制，请参阅 [Azure AD 服务限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。 这些限制基于比典型的使用量更高的基准，并为大多数部署提供充足的缓冲区。
+* **服务限制**：若要防止单个租户过度资源，有每个应用程序和租户设置限制限制。 若要查看这些限制，请参阅 [Azure AD 服务限制和限制](../enterprise-users/directory-service-limits-restrictions.md)。 这些限制基于比典型的使用量更高的基准，并为大多数部署提供充足的缓冲区。
 
 * **公共证书**：如果你使用的是自定义域名，则必须购买 TLS/SSL 证书。 根据组织的要求，获取证书可能需要一些时间，我们建议尽早开始此过程。 Azure 应用程序 Proxy 支持标准、 [通配符](application-proxy-wildcard.md)或基于 SAN 的证书。 有关更多详细信息，请参阅 [Azure AD 应用程序代理配置自定义域](application-proxy-configure-custom-domain.md)。
 
@@ -74,7 +74,7 @@ ms.locfileid: "88642412"
 
 * **Url 的 DNS 记录**
 
-   * 在应用程序代理中使用自定义域之前，必须在公用 DNS 中创建一个 CNAME 记录，以便客户端能够将自定义的外部 URL 解析为预定义的应用程序代理地址。 如果无法为使用自定义域的应用程序创建 CNAME 记录，将阻止远程用户连接到应用程序。 添加 CNAME 记录所需的步骤可能因 DNS 提供程序而异，因此，请了解如何 [使用 Azure 门户管理 dns 记录和记录集](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-portal)。
+   * 在应用程序代理中使用自定义域之前，必须在公用 DNS 中创建一个 CNAME 记录，以便客户端能够将自定义的外部 URL 解析为预定义的应用程序代理地址。 如果无法为使用自定义域的应用程序创建 CNAME 记录，将阻止远程用户连接到应用程序。 添加 CNAME 记录所需的步骤可能因 DNS 提供程序而异，因此，请了解如何 [使用 Azure 门户管理 dns 记录和记录集](../../dns/dns-operations-recordsets-portal.md)。
 
    * 同样，连接器主机必须能够解析发布的应用程序的内部 URL。
 
@@ -82,7 +82,7 @@ ms.locfileid: "88642412"
 
    * **连接器安装** 需要对其上安装的 Windows 服务器具有本地管理权限。 它还需要至少一个 *应用程序管理员* 角色来进行身份验证，并将连接器实例注册到 Azure AD 租户。
 
-   * **应用程序发布和管理** 需要 *应用程序管理员* 角色。 应用程序管理员可以管理目录中的所有应用程序，包括注册、SSO 设置、用户和组分配以及许可、应用程序代理设置和许可。 它不能授予管理条件访问的能力。 *云应用程序管理员*角色具有应用程序管理员的所有功能，但它不允许管理应用程序代理设置。
+   * **应用程序发布和管理** 需要 *应用程序管理员* 角色。 应用程序管理员可以管理目录中的所有应用程序，包括注册、SSO 设置、用户和组分配以及许可、应用程序代理设置和许可。 它不能授予管理条件访问的能力。 *云应用程序管理员* 角色具有应用程序管理员的所有功能，但它不允许管理应用程序代理设置。
 
 * **许可**：可通过 Azure AD Premium 订阅获取应用程序代理。 有关许可选项和功能的完整列表，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/) 。
 
@@ -97,7 +97,7 @@ ms.locfileid: "88642412"
 | 域成员身份| Web 服务器的完全限定域名 (FQDN)  |
 | 应用程序位置 | Web 服务器或场位于你的基础结构中的位置 |
 | 内部访问 | 内部访问应用程序时使用的准确 URL。 <br> 如果在场，使用哪种类型的负载平衡？ <br> 应用程序是否从本身的源中提取内容。<br> 确定应用程序是否在 Websocket 上运行。 |
-| 外部访问 | 应用程序已从外部公开到的供应商解决方案。 <br> 要用于外部访问的 URL。 如果是 SharePoint，请确保根据 [本指南](https://docs.microsoft.com/SharePoint/administration/configure-alternate-access-mappings)配置备用访问映射。 如果没有，则需要定义外部 Url。 |
+| 外部访问 | 应用程序已从外部公开到的供应商解决方案。 <br> 要用于外部访问的 URL。 如果是 SharePoint，请确保根据 [本指南](/SharePoint/administration/configure-alternate-access-mappings)配置备用访问映射。 如果没有，则需要定义外部 Url。 |
 | 公用证书 | 如果使用自定义域，则使用相应的使用者名称购买证书。 如果证书存在，请记下可获取该证书的序列号和位置。 |
 | 身份验证类型| 应用程序支持的身份验证类型，如基本、Windows 集成身份验证、基于窗体、基于标头和声明。 <br>如果将应用程序配置为在特定的域帐户下运行，请注意服务帐户 (FQDN) 的完全限定的域名。<br> 如果基于 SAML，则为标识符和回复 Url。 <br> 如果基于标头，则为供应商解决方案和处理身份验证类型的特定要求。 |
 | 连接器组名称 | 将指定向此后端应用程序提供管道和 SSO 的连接器组的逻辑名称。 |
@@ -176,7 +176,7 @@ ms.locfileid: "88642412"
 
 发布应用程序假定您已经满足所有先决条件，并且您有多个连接器在应用程序代理页中显示为已注册和活动状态。
 
-你还可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)发布应用程序。
+你还可以使用 [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview)发布应用程序。
 
 下面是发布应用程序时需要遵循的一些最佳做法：
 
@@ -218,9 +218,9 @@ ms.locfileid: "88642412"
 
 如果启用，则用户将能够登录到 MyApps 门户并请求访问权限，并将其自动批准并添加到已允许的自助服务组，或者需要指定审批者的批准。
 
-还可以 [通过 AZURE AD B2B 邀请来宾用户访问通过应用程序代理发布的内部应用程序](https://docs.microsoft.com/azure/active-directory/b2b/add-users-information-worker)。
+还可以 [通过 AZURE AD B2B 邀请来宾用户访问通过应用程序代理发布的内部应用程序](../external-identities/add-users-information-worker.md)。
 
-对于通常以匿名方式访问的本地应用程序，不需要进行身份验证，你可能更愿意禁用位于应用程序 **属性**中的选项。
+对于通常以匿名方式访问的本地应用程序，不需要进行身份验证，你可能更愿意禁用位于应用程序 **属性** 中的选项。
 
 ![图片26](media/App-proxy-deployment-plan/assignment-required.png)
 
@@ -235,7 +235,7 @@ ms.locfileid: "88642412"
 
 1. 导航到 " **Azure Active Directory**  >  **企业应用程序**  >  " "**所有应用程序**"，并选择要管理的应用。
 
-2. 选择“应用程序代理”****。
+2. 选择“应用程序代理”。
 
 3. 在 " **预身份验证** " 字段中，使用下拉列表选择 " **Azure Active Directory**"，然后选择 " **保存**"。
 
@@ -253,9 +253,9 @@ SSO 可提供最佳的用户体验和安全性，因为用户在访问 Azure AD 
 
 ###  <a name="working-with-other-types-of-applications"></a>使用其他类型的应用程序
 
-Azure AD 应用程序代理还可以支持已开发的应用程序，以使用 [Microsoft 身份验证库 (MSAL) ](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。 它通过使用在客户端请求的标头信息中收到 Azure AD 颁发的令牌，来代表用户执行预身份验证，从而支持本机客户端应用。
+Azure AD 应用程序代理还可以支持已开发的应用程序，以使用 [Microsoft 身份验证库 (MSAL) ](../develop/v2-overview.md)。 它通过使用在客户端请求的标头信息中收到 Azure AD 颁发的令牌，来代表用户执行预身份验证，从而支持本机客户端应用。
 
-若要了解应用程序代理的可用配置，请阅读 [发布本机和移动客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) 程序和 [基于声明的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) 。
+若要了解应用程序代理的可用配置，请阅读 [发布本机和移动客户端应用](./application-proxy-configure-native-client-application.md) 程序和 [基于声明的应用程序](./application-proxy-configure-for-claims-aware-applications.md) 。
 
 ### <a name="use-conditional-access-to-strengthen-security"></a>使用条件性访问增强安全性
 
@@ -263,11 +263,11 @@ Azure AD 应用程序代理还可以支持已开发的应用程序，以使用 [
 
 以下功能可用于支持 Azure AD 应用程序代理：
 
-* 基于用户和位置的条件访问：使用 [基于位置的条件性访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)限制基于地理位置或 IP 地址的用户访问来保护敏感数据。
+* 基于用户和位置的条件访问：使用 [基于位置的条件性访问策略](../conditional-access/location-condition.md)限制基于地理位置或 IP 地址的用户访问来保护敏感数据。
 
-* 基于设备的条件性访问：确保只有已注册、已批准和合规的设备才能使用 [基于设备的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)来访问公司数据。
+* 基于设备的条件性访问：确保只有已注册、已批准和合规的设备才能使用 [基于设备的条件访问](../conditional-access/require-managed-devices.md)来访问公司数据。
 
-* 基于应用程序的条件性访问：如果用户不在公司网络上，则不需要停止工作。 [安全访问公司云和本地应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) ，并使用条件访问维护控制。
+* 基于应用程序的条件性访问：如果用户不在公司网络上，则不需要停止工作。 [安全访问公司云和本地应用](../conditional-access/app-based-conditional-access.md) ，并使用条件访问维护控制。
 
 * 基于风险的条件性访问：使用基于风险的条件性访问策略（无论是在本地还是在云中），使用 [基于风险的条件性访问策略](https://www.microsoft.com/cloud-platform/conditional-access) 来保护数据免受恶意黑客的攻击。
 
@@ -277,7 +277,7 @@ Azure AD 应用程序代理还可以支持已开发的应用程序，以使用 [
 
 ### <a name="required-roles"></a>必需的角色
 
-Microsoft 在为 Azure AD 提供执行所需任务的最低权限的原则。 [查看可用的不同 Azure 角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) ，并选择正确的角色以满足每个角色的需求。 某些角色可能需要在部署完成后暂时应用并删除。
+Microsoft 在为 Azure AD 提供执行所需任务的最低权限的原则。 [查看可用的不同 Azure 角色](../roles/permissions-reference.md) ，并选择正确的角色以满足每个角色的需求。 某些角色可能需要在部署完成后暂时应用并删除。
 
 | 业务角色| 业务任务| Azure AD 角色 |
 |---|---|---|
@@ -288,7 +288,7 @@ Microsoft 在为 Azure AD 提供执行所需任务的最低权限的原则。 [�
 
 最大程度地减少有权访问安全信息或资源的人员的数量，有助于减少恶意执行组件获取未经授权的访问或被授权的用户无意中影响敏感资源的可能性。
 
-但是，用户仍需要执行日常的特权操作，因此强制执行基于 JIT) 的实时 ([Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) 策略，以提供对 Azure 资源的按需权限访问，Azure AD 是我们建议的方法来有效地管理管理访问和审核。
+但是，用户仍需要执行日常的特权操作，因此强制执行基于 JIT) 的实时 ([Privileged Identity Management](../privileged-identity-management/pim-configure.md) 策略，以提供对 Azure 资源的按需权限访问，Azure AD 是我们建议的方法来有效地管理管理访问和审核。
 
 ### <a name="reporting-and-monitoring"></a>报告和监视
 
@@ -296,17 +296,17 @@ Azure AD 通过 [审核日志和报告，](../reports-monitoring/concept-provisi
 
 #### <a name="application-audit-logs"></a>应用程序审核日志
 
-这些日志提供有关通过应用程序代理和设备以及访问应用程序的用户的应用程序登录的详细信息。 [审核日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 位于 "Azure 门户" 和 " [审核 API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) " 中的 "导出"。 此外，应用程序还可以 [使用 "使用情况" 和 "见解报表](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) "。
+这些日志提供有关通过应用程序代理和设备以及访问应用程序的用户的应用程序登录的详细信息。 [审核日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 位于 "Azure 门户" 和 " [审核 API](/graph/api/resources/directoryaudit?view=graph-rest-beta) " 中的 "导出"。 此外，应用程序还可以 [使用 "使用情况" 和 "见解报表](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) "。
 
 #### <a name="application-proxy-connector-monitoring"></a>应用程序代理连接器监视
 
-连接器和服务负责处理所有的高可用性任务。 可以通过 Azure AD 门户中的 "应用程序代理" 页来监视连接器的状态。 有关连接器维护的详细信息，请参阅 [了解 Azure AD 应用程序代理连接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance)。
+连接器和服务负责处理所有的高可用性任务。 可以通过 Azure AD 门户中的 "应用程序代理" 页来监视连接器的状态。 有关连接器维护的详细信息，请参阅 [了解 Azure AD 应用程序代理连接器](./application-proxy-connectors.md#maintenance)。
 
 ![示例： Azure AD 应用程序代理连接器](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows 事件日志和性能计数器
 
-连接器具有管理日志和会话日志。 管理日志包括关键事件及其错误。 会话日志包括所有事务及其处理详细信息。 日志和计数器位于 Windows 事件日志中。有关详细信息，请参阅 [了解 Azure AD 应用程序代理连接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#under-the-hood)。 按照本 [教程进行操作，在 Azure Monitor 中配置事件日志数据源](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events)。
+连接器具有管理日志和会话日志。 管理日志包括关键事件及其错误。 会话日志包括所有事务及其处理详细信息。 日志和计数器位于 Windows 事件日志中。有关详细信息，请参阅 [了解 Azure AD 应用程序代理连接器](./application-proxy-connectors.md#under-the-hood)。 按照本 [教程进行操作，在 Azure Monitor 中配置事件日志数据源](../../azure-monitor/platform/data-sources-windows-events.md)。
 
 ### <a name="troubleshooting-guide-and-steps"></a>疑难解答指南和步骤
 
@@ -323,7 +323,7 @@ Azure AD 通过 [审核日志和报告，](../reports-monitoring/concept-provisi
 * [为应用配置单一登录](application-proxy-config-sso-how-to.md)
 * [在管理门户中创建应用时出现问题](application-proxy-config-problem.md)
 * [配置 Kerberos 约束委派](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [使用 PingAccess 配置](application-proxy-back-end-ping-access-how-to.md)
+* [使用 PingAccess 配置](./application-proxy-ping-access-publishing-guide.md)
 * [“无法访问此企业应用程序”错误](application-proxy-sign-in-bad-gateway-timeout-error.md)
 * [安装应用程序代理程序连接器时出现问题](application-proxy-connector-installation-problem.md)
 * [登录问题](application-sign-in-problem-on-premises-application-proxy.md)

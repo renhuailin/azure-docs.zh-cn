@@ -1,26 +1,28 @@
 ---
-title: Synapse SQL-工作区预览版中支持的系统视图
+title: Synapse SQL 中支持的系统视图
 description: Synapse SQL 中支持的系统视图文档的链接。
 author: filippopovic
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e77c85b734784c37b8e0d599c02f8807123038dd
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796725"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317327"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL 中支持的系统视图
+
 Synapse SQL 中支持的 T-sql 语句的文档链接。
 
 > [!NOTE]
-> Synapse SQL 点播仅支持 SQL Server 目录视图。  
+> Synapse 无服务器 SQL 池仅支持 SQL Server 目录视图。  
 
-## <a name="sql-pool-catalog-views"></a>SQL 池目录视图
+## <a name="dedicated-sql-pool-and-serverless-sql-pool-catalog-views"></a>专用 SQL 池和无服务器 SQL 池目录视图
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -46,7 +48,7 @@ Synapse SQL 中支持的 T-sql 语句的文档链接。
 * [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)（预览版）
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)（预览版）
 
-## <a name="sql-pool-dynamic-management-views-dmvs"></a> (Dmv) 的 SQL 池动态管理视图
+## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a>专用 SQL 池动态管理视图 (Dmv) 
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -68,9 +70,9 @@ Synapse SQL 中支持的 T-sql 语句的文档链接。
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-sql-pool"></a>适用于 SQL 池的 SQL Server Dmv
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>适用于专用 SQL 池的 SQL Server Dmv
 
-以下 DMV 适用于 SQL 池，但必须在连接到 master 数据库后才能执行。
+以下 Dmv 适用于专用 SQL 池，但必须通过连接到 **master** 数据库来执行。
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -150,16 +152,16 @@ Synapse SQL 中支持的 T-sql 语句的文档链接。
 * [sys.types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-sql-pool"></a>SQL 池中提供的 SQL Server DMV
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>在专用 SQL 池中提供 SQL Server Dmv
 
-SQL 池公开了许多 SQL Server 动态管理视图 (DMV)。 在 SQL 池中查询这些视图时，它们将报告分布区上运行的 SQL 数据库的状态。
+SQL 池公开了许多 SQL Server 动态管理视图 (DMV)。 当在专用 SQL 池中查询时，这些视图将报告分布区上运行的 SQL 数据库的状态。
 
 SQL 池和分析平台系统的并行数据仓库 (PDW) 使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。
 
 > [!NOTE]
 > 若要使用这些视图，请在名称中插入“pdw_nodes_”，如下表所示：
 
-| SQL 池中的 DMV 名称 | SQL Server Transact-SQL 文章|
+| 专用 SQL 池中的 DMV 名称 | SQL Server Transact-SQL 文章|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -221,9 +223,9 @@ SQL 池和分析平台系统的并行数据仓库 (PDW) 使用相同的系统视
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>SQL 池中提供的 SQL Server 2016 PolyBase DMV
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>SQL Server 2016 PolyBase Dmv 在专用 SQL 池中可用
 
-以下 DMV 适用于 SQL 池，但必须在连接到 master 数据库后才能执行。
+以下 Dmv 适用于专用 SQL 池，但必须通过连接到 **master** 数据库来执行。
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

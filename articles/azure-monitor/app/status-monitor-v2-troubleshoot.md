@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761458"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616824"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）故障排除
 
@@ -52,6 +52,11 @@ ms.locfileid: "91761458"
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
 
+### <a name="powershell-versions"></a>PowerShell 版本
+此产品是使用 PowerShell v2.0 编写和测试的。
+此模块与 PowerShell 版本6或7不兼容。
+建议使用 PowerShell v2.0 和更高版本。 有关详细信息，请参阅将 [powershell 7 与 powershell 5.1 并行使用](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51)。
+
 ### <a name="conflict-with-iis-shared-configuration"></a>与 IIS 共享配置冲突
 
 如果拥有 Web 服务器群集，则可能会使用[共享配置](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
@@ -78,7 +83,7 @@ HttpModule 无法注入此共享配置。
 
     
     
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
     
 ### <a name="troubleshooting-powershell"></a>PowerShell 故障排除
 
@@ -137,19 +142,19 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
     - **Zip**
     - **合并**
     - **.NET 符号集合**
-5. 设置以下 **其他提供程序**： `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. 设置以下“其他提供程序”：`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>收集日志
 
 1. 在具有管理员权限的命令控制台中，运行 `iisreset /stop` 命令以禁用 IIS 和所有 Web 应用。
-2. 在 PerfView 中，选择“开始收集”****。
+2. 在 PerfView 中，选择“开始收集”。
 3. 在具有管理员权限的命令控制台中，运行 `iisreset /start` 命令以启动 IIS。
 4. 尝试浏览到你的应用。
-5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”****。
+5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看 [API 参考](status-monitor-v2-overview.md#powershell-api-reference) ，了解可能缺少的参数。
+- 请查看 [API 参考](status-monitor-v2-overview.md#powershell-api-reference)，以了解你可能错过的参数。

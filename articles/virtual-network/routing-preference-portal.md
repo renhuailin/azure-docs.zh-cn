@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 7d41893d734037e466ad786641fed98c461adcfc
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ef1e33a2e43f26dcaf794b2ed81f27d39639b52d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231805"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533972"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户配置公共 IP 地址的路由首选项
 
-本文介绍如何通过 ISP 网络为公共 IP 地址配置[路由首](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview)选项 (**Internet**选项) 。 创建公共 IP 地址后，可将其与以下 Azure 资源关联，以获得 Internet 的入站和出站流量：
+本文介绍如何通过 ISP 网络为公共 IP 地址配置 [路由首](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview) 选项 (**Internet** 选项) 。 创建公共 IP 地址后，可将其与以下 Azure 资源关联，以获得 Internet 的入站和出站流量：
 
 * 虚拟机
 * 虚拟机规模集
@@ -37,12 +37,6 @@ ms.locfileid: "86231805"
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="register-the-feature-for-your-subscription"></a>为订阅注册此功能
-路由首选项功能目前为预览版。 使用 Azure PowerShell 为订阅注册此功能，如下所示：
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>创建具有路由首选项的公共 IP 地址
 1. 登录 [Azure 门户](https://preview.portal.azure.com/)。

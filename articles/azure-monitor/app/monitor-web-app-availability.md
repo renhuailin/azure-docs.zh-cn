@@ -4,12 +4,12 @@ description: 在 Application Insights 中设置 Web 测试。 当网站不可用
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986035"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007919"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
@@ -54,7 +54,7 @@ ms.locfileid: "90986035"
 **如果 URL 在公共 Internet 中不可见，可以选择性地打开防火墙，只允许测试事务通过**。 若要详细了解可用性测试代理的防火墙例外，请参阅 [IP 地址指南](./ip-addresses.md#availability-tests)。
 
 > [!NOTE]
-> 强烈建议从多个位置进行测试，**至少为 5 个位置**。 这是为了防止可能由特定位置的暂时性问题导致的虚假警报。 此外，我们发现最佳配置是使**测试位置的数目等于警报位置阈值 + 2**。
+> 强烈建议从多个位置进行测试，**至少为 5 个位置**。 这是为了防止可能由特定位置的暂时性问题导致的虚假警报。 此外，我们发现最佳配置是使 **测试位置的数目等于警报位置阈值 + 2**。
 
 ### <a name="success-criteria"></a>成功标准
 
@@ -72,13 +72,48 @@ ms.locfileid: "90986035"
 |**经典** | 我们不再建议对新的可用性测试使用经典警报。|
 |**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置   。|
 
+### <a name="location-population-tags"></a>位置人口标记
+
+使用 Azure 资源管理器部署可用性 URL ping 测试时，可以将以下填充标记用于地理位置属性。
+
+#### <a name="azure-gov"></a>Azure Gov
+
+| 显示名称   | 总体名称     |
+|----------------|---------------------|
+| USGov Virginia | usgov-va-bc-op-nt-azr        |
+| USGov Arizona  | usgov-phx-bc-op-nt-azr       |
+| USGov Texas    | usgov-bc-op-nt-azr        |
+| USDoD 东部     | usgov-ddeast-bc-op-nt-azr    |
+| USDoD 中部  | usgov-ddcentral-bc-op-nt-azr |
+
+#### <a name="azure"></a>Azure
+
+| 显示名称                           | 总体名称   |
+|----------------------------------------|-------------------|
+| 澳大利亚东部                         | emea-au-syd  |
+| Brazil South                           | latam-gru-边缘 |
+| 美国中部                             | 美国 mia-边缘    |
+| 东亚                              | apac-hkn-bc-op-nt-azr   |
+| 美国东部                                | us-va-圣 bc-op-nt-azr     |
+| 法国南部 (以前的华北)  | emea-ch-zrh  |
+| 法国中部                         | emea-pra-边缘  |
+| Japan East                             | apac-jp-kaw-ft-85h  |
+| 北欧                           | emea-db3-bc-op-nt-azr   |
+| 美国中北部                       | us-ch1-bc-op-nt-azr     |
+| 美国中南部                       | us-sn1-bc-op-nt-azr     |
+| Southeast Asia                         | apac-sin-bc-op-nt-azr   |
+| 英国西部                                | emea-停止-边缘  |
+| 西欧                            | emea-nl-bc-op-nt-azr   |
+| 美国西部                                | us-sjc-dp1-bc-op-nt-azr     |
+| 英国南部                               | emea-ru-  |
+
 ## <a name="see-your-availability-test-results"></a>查看可用性测试结果
 
 可用性测试结果可以使用折线图和散点图的视图进行可视化。
 
 几分钟之后，单击“刷新”  即可查看测试结果。
 
-![屏幕截图显示 "刷新" 按钮突出显示的 "可用性" 页。](./media/monitor-web-app-availability/availability-refresh-002.png)
+![屏幕截图显示突出显示了“刷新”按钮的“可用性”页。](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 散点图视图显示其中有诊断测试步骤详细信息的测试结果示例。 测试引擎存储已失败的测试的诊断详细信息。 对于成功的测试，将存储执行子集的诊断详细信息。 将鼠标悬停在任何绿点/红点上，可查看测试、测试名称和位置。
 

@@ -1,17 +1,17 @@
 ---
 title: VNet 服务终结点 - Azure Database for MariaDB
 description: 介绍了 VNet 服务终结点如何为 Azure Database for MariaDB 服务器工作。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 6fc0add55caccd7721f3ee2c72db68fbcf6bc0dc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: bd7d08e4f65612b9a76b63e8153603d043209ad3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458495"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453378"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -24,7 +24,7 @@ ms.locfileid: "89458495"
 > [!NOTE]
 > Azure 中的所有区域均提供此功能，其中 Azure Database for MariaDB 部署用于常规用途和内存优化服务器。
 
-还可以考虑使用连接的 [专用链接](concepts-data-access-security-private-link.md) 。 专用链接在 VNet 中为 Azure Database for MariaDB 服务器提供专用 IP 地址。
+还可以考虑使用[专用链接](concepts-data-access-security-private-link.md)进行连接。 专用链接在 VNet 中为 Azure Database for MariaDB 服务器提供专用 IP 地址。
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -32,7 +32,7 @@ ms.locfileid: "89458495"
 
 **虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联。
 
-**子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+**子网：** 虚拟网络包含 **子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
 **虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务。 务必要注意的一点是，将 Microsoft.Sql 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点通信。
 
@@ -88,11 +88,11 @@ ms.locfileid: "89458495"
 - **网络管理员：** &nbsp; 启用终结点。
 - **数据库管理员：** &nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MariaDB 服务器。
 
-RBAC 备用：
+Azure RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-你可以选择使用 azure 中 [基于角色的访问控制 (AZURE RBAC) ][rbac-what-is-813s] 在 azure 中创建只具有必要的功能子集的单个自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+可以选择在 Azure 中使用[基于 Azure 角色的访问控制 (Azure RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
 > [!NOTE]
 > 在某些情况下，Azure Database for MariaDB 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
@@ -112,7 +112,7 @@ RBAC 备用：
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][resource-manager-deployment-model-568f]网络。
 
-- 使用 **Synapse 服务标记** 启用虚拟网络服务终结 Azure Database for MariaDB 点也会为所有 Azure 数据库服务启用终结点： Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Sql 数据库和 Azure Analytics (以前的 Sql 数据仓库) 。
+- 使用 Synapse 服务标记启用虚拟网络服务终结点 Azure Database for MariaDB，还可以为所有 **Azure 数据库服务** 启用终结点： Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Sql 数据库和 Azure 分析。
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
@@ -130,7 +130,7 @@ RBAC 备用：
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNET 服务终结点的情况下，将 VNET 防火墙规则添加到服务器
 
-仅设置 VNet 防火墙规则无助于将服务器保护到 VNet。 还必须**打开** VNet 服务终结点才能使安全性生效。 **打开**服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开” 的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
+仅设置 VNet 防火墙规则无助于将服务器保护到 VNet。 还必须 **打开** VNet 服务终结点才能使安全性生效。 **打开** 服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开” 的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
 
 可以使用 Azure CLI 或门户设置 **IgnoreMissingServiceEndpoint** 标志。
 
@@ -155,7 +155,7 @@ RBAC 备用：
 
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]: ../role-based-access-control/overview.md
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 

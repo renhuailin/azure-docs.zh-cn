@@ -1,19 +1,17 @@
 ---
 title: Azure Monitor 工作簿概述
 description: 了解工作簿如何为数据分析提供灵活的画布，以及如何在 Azure 门户中创建丰富的视觉对象报表。
-author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.author: mbullwin
-ms.openlocfilehash: e8ce4feaec6571adfb15f5928a6eb7c910173353
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825777"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143638"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
@@ -99,7 +97,7 @@ ms.locfileid: "91825777"
 
 ![基础 Kusto 查询的屏幕截图](./media/workbooks-overview/kusto.png)
 
-单击右侧的其他“编辑”按钮会显示一些构成了工作簿的核心组件，例如基于 Markdown 的[文本框](workbooks-visualizations.md#text)、[参数选择](workbooks-parameters.md) UI 元素，以及其他[图表/可视化类型](workbooks-visualizations.md)。 
+单击右侧的其他“编辑”按钮会显示一些构成了工作簿的核心组件，例如基于 Markdown 的[文本框](workbooks-text-visualizations.md)、[参数选择](workbooks-parameters.md) UI 元素，以及其他[图表/可视化类型](#visualizations)。 
 
 在编辑模式下探索预生成的模板，然后根据需要对其进行修改并保存自己的自定义工作簿，是开始了解 Azure Monitor 工作簿功能的极佳方式。
 
@@ -131,5 +129,5 @@ ms.locfileid: "91825777"
 
 ## <a name="next-step"></a>后续步骤
 
-* [开始](workbooks-visualizations.md)详细了解工作簿的丰富可视化选项。
+* [开始](#visualizations)详细了解工作簿的丰富可视化选项。
 * [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。

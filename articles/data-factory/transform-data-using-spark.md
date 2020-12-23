@@ -1,6 +1,6 @@
 ---
 title: 使用 Spark 活动转换数据
-description: 了解如何通过使用 Spark 活动从 Azure 数据工厂管道运行 Spark 程序来转换数据。
+description: 了解如何使用 Spark 活动通过 Azure 数据工厂管道运行 Spark 程序来转换数据。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: cac64b17e7aad9aa2bf88386f21d5f82b3013fa3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849206"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566769"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -59,13 +59,13 @@ ms.locfileid: "83849206"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-| properties              | 说明                              | 必选 |
+| 属性              | 说明                              | 必需 |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | 管道中活动的名称。    | 是      |
 | description           | 描述活动用途的文本。  | 否       |
 | type                  | 对于 Spark 活动，活动类型是 HDInsightSpark。 | 是      |
 | linkedServiceName     | 运行 Spark 程序的 HDInsight Spark 链接服务的名称。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
-| SparkJobLinkedService | 用于保存 Spark 作业文件、依赖项和日志的 Azure 存储链接服务。 此处仅支持 [Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)和 [ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) 链接服务 。 如果未指定此属性的值，将使用与 HDInsight 群集关联的存储。 此属性的值只能是 Azure 存储链接服务。 | 否       |
+| SparkJobLinkedService | 用于保存 Spark 作业文件、依赖项和日志的 Azure 存储链接服务。 此处仅支持 [Azure Blob 存储](./connector-azure-blob-storage.md)和 [ADLS Gen2](./connector-azure-data-lake-storage.md) 链接服务 。 如果未指定此属性的值，将使用与 HDInsight 群集关联的存储。 此属性的值只能是 Azure 存储链接服务。 | 否       |
 | rootPath              | 包含 Spark 文件的 Azure Blob 容器和文件夹。 文件名称需区分大小写。 有关此文件夹结构的详细信息，请参阅“文件夹结构”部分（下一部分）。 | 是      |
 | entryFilePath         | Spark 代码/包的根文件夹的相对路径 条目文件必须是 Python 文件或 .jar 文件。 | 是      |
 | className             | 应用程序的 Java/Spark main 类      | 否       |
@@ -79,15 +79,15 @@ ms.locfileid: "83849206"
 
 在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
 
-| 路径                  | 说明                              | 必选 | 类型   |
+| 路径                  | 描述                              | 必需 | 类型   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.`（根）            | Spark 作业在存储链接服务中的根路径 | 是      | Folder |
+| `.`（根）            | Spark 作业在存储链接服务中的根路径 | 是      | 文件夹 |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径 | 是      | 文件   |
-| ./jars                | 此文件夹下的所有文件将上传并放置在群集的 java 类路径中 | 否       | Folder |
-| ./pyFiles             | 此文件夹下的所有文件将上传并放置在群集的 PYTHONPATH 中 | 否       | Folder |
-| ./files               | 此文件夹下的所有文件将上传并放置在执行器工作目录中 | 否       | Folder |
-| ./archives            | 此文件夹下的所有文件未经压缩 | 否       | Folder |
-| ./logs                | 包含 Spark 群集的日志的文件夹。 | 否       | Folder |
+| ./jars                | 此文件夹下的所有文件将上传并放置在群集的 java 类路径中 | 否       | 文件夹 |
+| ./pyFiles             | 此文件夹下的所有文件将上传并放置在群集的 PYTHONPATH 中 | 否       | 文件夹 |
+| ./files               | 此文件夹下的所有文件将上传并放置在执行器工作目录中 | 否       | 文件夹 |
+| ./archives            | 此文件夹下的所有文件未经压缩 | 否       | 文件夹 |
+| ./logs                | 包含 Spark 群集的日志的文件夹。 | 否       | 文件夹 |
 
 以下示例显示了一个在 HDInsight 链接服务引用的 Azure Blob 存储中包含两个 Spark 作业文件的存储。
 
@@ -119,5 +119,5 @@ SparkJob2
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
+* [Azure 机器学习 Studio (经典) 批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c42180990f81e179a8fa8cdfe9e5d762323213b0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 71de0573f252cab7f2b479212551562de2b1d1c2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661057"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>教程：Azure Active Directory 与 Seismic 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "89661057"
 * 可让用户使用其 Azure AD 帐户自动登录到 Seismic（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -45,7 +45,7 @@ ms.locfileid: "89661057"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Seismic 支持 SP 发起的 SSO
-* 配置 Seismic 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Seismic 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-seismic-from-the-gallery"></a>从库中添加 Seismic
 
@@ -95,7 +95,7 @@ ms.locfileid: "89661057"
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新值。 请联系 [Seismic 客户端支持团队](mailto:support@seismic.com)获取这些值。 也可上传“服务提供程序元数据”，以便自动填充标识符值。有关“服务提供程序元数据”的详细信息，请联系 [Seismic 客户端支持团队](mailto:support@seismic.com)。 
 
-5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -139,18 +139,18 @@ ms.locfileid: "89661057"
 
 ### <a name="create-seismic-test-user"></a>创建 Seismic 测试用户
 
-在本部分，我们将在 Seismic 中创建一个名为“Britta Simon”的用户。 请与  [Seismic 支持团队](mailto:support@seismic.com)协作，将该用户添加到 Seismic 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 Seismic 中创建一个名为“Britta Simon”的用户。 与 [Seismic 支持团队](mailto:support@seismic.com)协作，在 Seismic 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Seismic 磁贴时，应会自动登录到为其设置了 SSO 的 Seismic。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Seismic 磁贴时，应会自动登录到为其设置了 SSO 的 Seismic。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

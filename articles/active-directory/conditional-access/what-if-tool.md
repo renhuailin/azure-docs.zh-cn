@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631420"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077636"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在条件访问中使用 What If 工具进行故障排除
 
@@ -44,11 +44,11 @@ ms.locfileid: "91631420"
 
 ## <a name="running-the-tool"></a>运行此工具
 
-可以在 Azure 门户中的“[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)”页上找到 **What If** 工具。
+可以在 Azure 门户中的“ [条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)”页上找到 **What If** 工具。
 
-若要启动此工具，请在策略列表顶部的工具栏中单击 **What If**。
+若要启动此工具，请在策略列表顶部的工具栏中单击 **What If** 。
 
-![What If](./media/what-if-tool/01.png)
+:::image type="content" source="./media/what-if-tool/01.png" alt-text="Azure 门户中的 &quot;条件访问-策略&quot; 页的屏幕截图。在工具栏中，突出显示 &quot;if&quot; 项。" border="false":::
 
 必须先配置设置，才可以运行评估。
 
@@ -56,7 +56,7 @@ ms.locfileid: "91631420"
 
 本部分介绍有关模拟运行的设置的信息。
 
-![What If](./media/what-if-tool/02.png)
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Azure 门户 &quot;What If&quot; 页的屏幕截图，其中包含用户的字段、云应用、I P 地址、设备平台、客户端应用和登录风险。" border="false":::
 
 ### <a name="user"></a>User
 
@@ -90,7 +90,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 通过单击 **What If** 启动评估。 评估结果提供包含以下内容的报表： 
 
-![What If](./media/what-if-tool/03.png)
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="计算报表的屏幕截图。文本指示至少配置了一个经典策略。选项卡可用于查看策略。" border="false":::
 
 - 一个指示器，指示环境中是否存在经典策略
 - 应用于用户的策略

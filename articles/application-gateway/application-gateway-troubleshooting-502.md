@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808159"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182931"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
@@ -82,7 +82,7 @@ DhcpOptions            : {
 
 下表列出了与默认运行状况探测关联的值：
 
-| 探测属性 | 值 | 描述 |
+| 探测属性 | Value | 说明 |
 | --- | --- | --- |
 | 探测 URL |`http://127.0.0.1/` |URL 路径 |
 | 时间间隔 |30 |探测间隔（秒） |
@@ -95,8 +95,8 @@ DhcpOptions            : {
 * 如果 BackendHttpSetting 指定的端口不是 80，则应将默认站点配置为侦听指定的端口。
 * 对 `http://127.0.0.1:port` 的调用应返回 HTTP 结果代码 200。 应在 30 秒超时期限内返回此代码。
 * 确保配置的端口已打开，并且没有任何防火墙或 Azure 网络安全组在配置的端口上阻止传入或传出流量。
-* 如果对 Azure 经典 VM 或云服务使用 FQDN 或公共 IP，请确保打开相应的[终结点](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)。
-* 如果 VM 是通过 Azure 资源管理器配置的并且位于应用程序网关部署所在的 VNet 的外部，则必须将[网络安全组](../virtual-network/security-overview.md)配置为允许在所需端口上进行访问。
+* 如果对 Azure 经典 VM 或云服务使用 FQDN 或公共 IP，请确保打开相应的[终结点](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%2fazure%2fapplication-gateway%2ftoc.json)。
+* 如果 VM 是通过 Azure 资源管理器配置的并且位于应用程序网关部署所在的 VNet 的外部，则必须将[网络安全组](../virtual-network/network-security-groups-overview.md)配置为允许在所需端口上进行访问。
 
 ## <a name="problems-with-custom-health-probe"></a>自定义运行状况探测出现问题
 
@@ -106,14 +106,14 @@ DhcpOptions            : {
 
 添加了以下附加属性：
 
-| 探测属性 | 描述 |
+| 探测属性 | 说明 |
 | --- | --- |
 | 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅当应用程序网关上配置了多站点时才适用。 这与 VM 主机名不同。 |
-| `Path` |探测的相对路径。 有效路径以“/”开头。 探测将发送给 \<protocol\> ：// \<host\> ：\<port\>\<path\> |
+| `Path` |探测的相对路径。 有效路径以“/”开头。 探测将发送到 \<protocol\>://\<host\>:\<port\>\<path\> |
 | 时间间隔 |探测间隔（秒）。 这是每两次连续探测之间的时间间隔。 |
-| 超时 |探测超时（秒）。 如果在此超时期间内未收到有效响应，则会将探测标记为失败。 |
+| 超时 |探测超时（秒）。 如果在此超时期间内未收到有效响应，则将探测标记为失败。 |
 | 不正常阈值 |探测重试计数。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |
 
 ### <a name="solution"></a>解决方案
@@ -122,7 +122,7 @@ DhcpOptions            : {
 
 * 确保已根据[指南](application-gateway-create-probe-ps.md)正确指定了探测。
 * 如果在应用程序网关中设置了单站点，则默认情况下，除非已在自定义探测中进行配置，否则应将主机名指定为 `127.0.0.1`。
-* 确保对 http://的调用 \<host\> \<port\> \<path\> 返回 http 结果代码200。
+* 确保对 http://\<host\>:\<port\>\<path\> 的调用返回 HTTP 结果代码 200。
 * 确保 Interval、Timeout 和 UnhealtyThreshold 都在可接受的范围内。
 * 如果使用 HTTPS 探测器，请通过在后端服务器本身上配置回退证书，确保后端服务器不需要 SNI。
 
@@ -195,4 +195,3 @@ BackendAddressPoolsText：
 ## <a name="next-steps"></a>后续步骤
 
 如果上述步骤无法解决问题，请开具[支持票证](https://azure.microsoft.com/support/options/)。
-

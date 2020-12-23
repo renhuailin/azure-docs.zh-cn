@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81dc3a4f55b214ea6ca7ad0388e57f4b4fdc7124
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1e6cd222c9ee8f40f81d4db3750956e8e698e3e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546468"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607663"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TextMagic 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546468"
 * 让用户使用其 Azure AD 帐户自动登录到 TextMagic。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -93,9 +93,9 @@ ms.locfileid: "88546468"
     | 名称 |   源属性| 命名空间  |
     | --------------- | --------------- | --------------- |
     | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | phone               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | phone | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -137,7 +137,7 @@ ms.locfileid: "88546468"
 
 ### <a name="configure-textmagic-sso"></a>配置 TextMagic SSO
 
-1. 若要在 TextMagic 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
+1. 若要在 TextMagic 中自动执行配置，需要通过单击“安装扩展”  来安装 **我的应用安全登录浏览器扩展**。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
@@ -149,11 +149,11 @@ ms.locfileid: "88546468"
 
 4. 在用户名下选择“帐户设置”。 
 
-    ![TextMagic 配置](./media/textmagic-tutorial/config1.png)
+    ![屏幕截图显示从用户选择了“帐户设置”。](./media/textmagic-tutorial/config1.png)
 
 5. 单击“单一登录(SSO)”  选项卡并填写以下字段：  
 
-    ![TextMagic 配置](./media/textmagic-tutorial/config2.png)
+    ![屏幕截图显示了“单一登录”选项卡，可在其中输入所述值。](./media/textmagic-tutorial/config2.png)
 
     a. 在“标识提供者实体 ID:”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
@@ -174,15 +174,14 @@ ms.locfileid: "88546468"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 TextMagic 磁贴时，应当会自动登录到为其设置了 SSO 的 TextMagic。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 TextMagic 磁贴时，应当会自动登录到为其设置了 SSO 的 TextMagic。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 TextMagic](https://aad.portal.azure.com/)
-

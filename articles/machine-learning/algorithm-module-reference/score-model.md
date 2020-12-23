@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0cc367b86507d6d819608795851052e8a0c1c73b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 67d17af4f615907ca50b27ce8fa26973e5869608
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890306"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314246"
 ---
 # <a name="score-model"></a>评分模型
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块可以通过经训练的分类或回归模型生成预测值。
 
@@ -48,8 +48,8 @@ ms.locfileid: "90890306"
 
 ## <a name="publish-scores-as-a-web-service"></a>将评分发布为 Web 服务
 
-评分的一个常见用途是在预测 Web 服务中返回输出。 有关详细信息，请参阅[此教程](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)，了解如何在 Azure 机器学习设计器中基于管道部署实时终结点。
+评分的一个常见用途是在预测 Web 服务中返回输出。 有关详细信息，请参阅[此教程](../tutorial-designer-automobile-price-deploy.md)，了解如何在 Azure 机器学习设计器中基于管道部署实时终结点。
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。

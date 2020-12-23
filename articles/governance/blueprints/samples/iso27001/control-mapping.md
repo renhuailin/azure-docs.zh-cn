@@ -1,23 +1,23 @@
 ---
 title: ISO 27001 蓝图示例控件
-description: ISO 27001 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 07/13/2020
+description: ISO 27001 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 5ae720bd5be9d80d8e1be8315d2aea88a99dc54e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 0c1c20ae8b740ce019441dbee880f883947af160
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927260"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842492"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 蓝图示例的控制映射
 
-以下文章详细说明了 Azure 蓝图 ISO 27001 蓝图示例如何映射到 ISO 27001 控制措施。 有关控制措施的详细信息，请参阅 [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)。
+下面的文章详细介绍了 Azure 蓝图 ISO 27001 蓝图示例如何映射到 ISO 27001 控件。 有关控制措施的详细信息，请参阅 [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)。
 
 以下映射适用于 **ISO 27001:2013** 控制措施。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“\[预览\] 审核 ISO 27001:2013 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略有助于[评估控制的合规性](../../../policy/how-to/get-compliance-data.md)；但是，控制与一个或多个策略之间通常不是一对一或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md)。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 职责分离
 
@@ -47,7 +47,7 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 管理特权访问权限
 
-此蓝图通过分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者和/或写入权限的外部帐户，以及拥有所有者和/或写入权限、但未启用多重身份验证的帐户，来帮助你限制和控制特权访问权限。 Azure 实施基于角色的访问控制 (RBAC) 来管理谁有权访问 Azure 资源。 此蓝图还分配了三个 Azure Policy 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此蓝图还分配一个 Azure Policy 定义用于审核自定义 RBAC 规则的使用。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。
+此蓝图通过分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者和/或写入权限的外部帐户，以及拥有所有者和/或写入权限、但未启用多重身份验证的帐户，来帮助你限制和控制特权访问权限。 Azure 基于角色的访问控制 (Azure RBAC) 可帮助管理谁有权访问 Azure 资源。 此蓝图还分配了三个 Azure Policy 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此蓝图还分配一个 Azure Policy 定义，用于审核自定义 Azure RBAC 规则的使用。 了解实施自定义 Azure RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 Azure RBAC 规则容易出错。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 应对订阅中拥有写入权限的帐户启用 MFA
@@ -65,11 +65,10 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 - 应在对订阅拥有读取权限的帐户上启用 MFA
 - 应对订阅中拥有写入权限的帐户启用 MFA
 - 显示未将密码文件权限设为 0644 的 Linux VM 中的审核结果
-- 部署先决条件以审核未将密码文件权限设置为 0644 的 Linux VM
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 评审用户访问权限
 
-Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该优先评审的帐户，包括已淘汰的帐户，以及具有提升权限的外部帐户。
+[Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该优先评审的帐户，包括已淘汰的帐户，以及具有提升权限的外部帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
@@ -78,14 +77,14 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A.9.2.6 删除或调整访问权限
 
-Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 RBAC 可以更新用户角色，以反映组织变化。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配两个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该考虑删除的已淘汰帐户。
+[Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可帮助你管理谁有权访问 Azure 中的资源。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 Azure RBAC 可以更新用户角色，以反映组织变化。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配两个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该考虑删除的已淘汰帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
 
 ## <a name="a942-secure-log-on-procedures"></a>A.9.4.2 安全登录过程
 
-此蓝图分配了三个 Azure Policy 定义，以用于审核未启用多重身份验证的帐户。 Azure 多重身份验证通过要求使用另一种形式的身份验证提供额外的安全性，从而提供增强式身份验证。 通过监视未启用多重身份验证的帐户，可以识别出更有可能会泄密的帐户。
+此蓝图分配了三个 Azure Policy 定义，以用于审核未启用多重身份验证的帐户。 Azure AD 多重身份验证通过要求使用另一种形式的身份验证提供额外的安全性，从而提供增强式身份验证。 通过监视未启用多重身份验证的帐户，可以识别出更有可能会泄密的帐户。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 应在对订阅拥有读取权限的帐户上启用 MFA
@@ -100,21 +99,14 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 - 显示未将最短密码期限设为 1 天的 Windows VM 中的审核结果
 - 显示未将最短密码长度限制为 14 个字符的 Windows VM 中的审核结果
 - 显示允许重用之前的 24 个密码的 Windows VM 中的审核结果
-- 部署先决条件，以便审核未启用密码复杂性设置的 Windows VM
-- 部署先决条件，以便审核未将最长密码期限设为 70 天的 Windows VM
-- 部署先决条件，以便审核未将最短密码期限设为 1 天的 Windows VM
-- 部署先决条件，以便审核未将最短密码长度限制为 14 个字符的 Windows VM
-- 部署先决条件，以便审核允许重用之前的 24 个密码的 Windows VM
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 有关使用加密控制措施的策略
 
-此蓝图通过分配 13 个 [Azure Policy](../../../policy/overview.md) 定义用于强制实施特定的加密控制措施并审核弱加密设置的使用，来帮助你针对加密控制措施的使用强制实施自己的策略。
-了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言，此蓝图分配的策略要求对 Blob 存储帐户和 Data Lake Storage 帐户加密；要求对 SQL 数据库实施透明数据加密；审核存储帐户、SQL 数据库、虚拟机磁盘和自动化帐户变量是否缺少加密；审核是否与存储帐户、函数应用、Web 应用、API 应用和 Redis 缓存建立了不安全的连接；审核虚拟机弱密码加密；审核未加密的 Service Fabric 通信。
+此蓝图通过分配 13 个 [Azure Policy](../../../policy/overview.md) 定义用于强制实施特定的加密控制措施并审核弱加密设置的使用，来帮助你针对加密控制措施的使用强制实施自己的策略。 了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言，此蓝图分配的策略要求对 Blob 存储帐户和 Data Lake Storage 帐户加密；要求对 SQL 数据库实施透明数据加密；审核存储帐户、SQL 数据库、虚拟机磁盘和自动化帐户变量是否缺少加密；审核是否与存储帐户、函数应用、Web 应用、API 应用和 Redis 缓存建立了不安全的连接；审核虚拟机弱密码加密；审核未加密的 Service Fabric 通信。
 
 - 应该只能通过 HTTPS 访问函数应用
 - 只能通过 HTTPS 访问 Web 应用程序
 - 只能通过 HTTPS 访问 API 应用
-- 部署先决条件，以便审核未存储使用可逆加密的密码的 Windows VM
 - 显示未存储使用可逆加密的密码的 Windows VM 中的审核结果
 - 应在虚拟机上启用磁盘加密
 - 自动化帐户变量应进行加密

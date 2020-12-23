@@ -8,16 +8,16 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: 434115ce6da775c4c8719081ad149e436de03b56
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c49437db6bc3651d27181ef8e8f5248b5785e089
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362276"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325664"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习工作室（经典）的支持和培训
 
-**适用于：** ![绿色复选标记。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ X，指示没有。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用于：** ![绿色复选标记。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ X，指示没有。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -27,8 +27,8 @@ ms.locfileid: "91362276"
 ## <a name="learn-more-about-studio-classic"></a>详细了解工作室（经典）
 
 请参阅我们的学习资源：
-+ [教程和操作说明文章](../studio/index.yml) 
-+ [初学者的数据科学视频](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
++ [教程和操作说明文章](./index.yml) 
++ [初学者的数据科学视频](./data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
 
 ## <a name="submit-doc-feedback"></a>提交文档反馈
 
@@ -38,10 +38,10 @@ ms.locfileid: "91362276"
 
 请查看这些支持资源：
 
-+ **面向 Azure 客户的技术支持**：通过 Azure 门户[提交和管理支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
++ **面向 Azure 客户的技术支持** ：通过 Azure 门户 [提交和管理支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
-+ **用户论坛**：在 [Azure 机器学习工作室（经典）支持论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)中提出问题、回答问题并与其他用户交流。
++ **用户论坛** ：在 [Azure 机器学习工作室（经典）支持论坛](/answers/topics/azure-machine-learning.html)中提出问题、回答问题并与其他用户交流。
 
-+ **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
++ **Stack Overflow** ：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 
-+ 在我们的 [Azure 机器学习反馈通道](https://feedback.azure.com/forums/257792-machine-learning)中**分享产品建议**和功能请求。 若要分享建议，请选择每篇文章末尾的“产品反馈”按钮。
++ 在我们的 [Azure 机器学习反馈通道](https://feedback.azure.com/forums/257792-machine-learning)中 **分享产品建议** 和功能请求。 若要分享建议，请选择每篇文章末尾的“产品反馈”按钮。

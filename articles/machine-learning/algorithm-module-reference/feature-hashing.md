@@ -1,7 +1,7 @@
 ---
 title: “特征哈希处理”模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“特征哈希处理”模块来特征化文本数据。
+description: 了解如何使用 Azure 机器学习设计器中的 "特征哈希" 模块来特征文本数据。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907924"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420778"
 ---
 # <a name="feature-hashing-module-reference"></a>“特征哈希处理”模块参考
 
-本文介绍 Azure 机器学习设计器中包含的模块。
+本文介绍 Azure 机器学习设计器中包含的一个模块。
 
 使用“特征哈希处理”模块可将英语文本流转换为一组整数特征。 然后，可将此哈希处理的特征集传递给机器学习算法，以训练文本分析模型。
 
-此模块中提供的特征哈希处理功能基于 nimbusml 框架。 有关详细信息，请参阅 [NgramHash 类](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)。
+此模块中提供的特征哈希处理功能基于 nimbusml 框架。 有关详细信息，请参阅 [NgramHash 类](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true)。
 
 ## <a name="what-is-feature-hashing"></a>什么是特征哈希处理？
 
@@ -46,7 +46,7 @@ ms.locfileid: "90907924"
 |I hated|1|
 |I love|1|
 
-可以使用 **N 元语法**属性来控制 n 元语法的大小。 如果选择双元语法，则也会计算单元语法。 字典还包含如下所示的单个字词：
+可以使用 **N 元语法** 属性来控制 n 元语法的大小。 如果选择双元语法，则也会计算单元语法。 字典还包含如下所示的单个字词：
 
 |字词（单元语法）|频率|
 |------------|---------------|
@@ -131,4 +131,4 @@ ms.locfileid: "90907924"
 
 ## <a name="next-steps"></a>后续步骤
             
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+参阅 Azure 机器学习[可用的模块集](module-reference.md)。

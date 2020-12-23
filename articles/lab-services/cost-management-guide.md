@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98e04ba6bb1310935c4893a3616dfd68c2e99a55
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 29f6be5319c5a142ad3ea0d73deb2f95d8cb0d7a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797626"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659720"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure 实验室服务的成本管理
 
@@ -31,7 +31,7 @@ ms.locfileid: "88797626"
 
 ## <a name="analyze-the-previous-months-usage"></a>分析上个月的使用情况
 
-成本分析用于查看上个月的使用情况，以帮助你确定实验室的任何调整。 你可以在 [订阅成本分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)中发现过去成本的细分。 在 Azure 门户中，可以在 "搜索" 框中输入 **订阅** ，然后选择 " **订阅** " 选项。 
+成本分析用于查看上个月的使用情况，以帮助你确定实验室的任何调整。 你可以在 [订阅成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)中发现过去成本的细分。 在 Azure 门户中，可以在 "搜索" 框中输入 **订阅** ，然后选择 " **订阅** " 选项。 
 
 > [!div class="mx-imgBorder"]
 > ![显示搜索框和订阅选项的屏幕截图。](./media/cost-management-guide/subscription-search.png)
@@ -46,7 +46,7 @@ ms.locfileid: "88797626"
 > [!div class="mx-imgBorder"]
 > ![显示图表上的订阅成本分析的屏幕截图。](./media/cost-management-guide/subscription-cost-analysis.png)
 
-此仪表板允许进行深度的成本分析，其中包括按计划导出到不同文件类型的功能。 有关详细信息，请参阅 [成本管理 + 计费概述](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)。
+此仪表板允许进行深度的成本分析，其中包括按计划导出到不同文件类型的功能。 有关详细信息，请参阅 [成本管理 + 计费概述](../cost-management-billing/cost-management-billing-overview.md)。
 
 可以按资源类型进行筛选。 使用 `microsoft.labservices/labaccounts` 将只显示与实验室服务关联的成本。
 
@@ -57,7 +57,7 @@ ms.locfileid: "88797626"
 > [!div class="mx-imgBorder"]
 > ![显示订阅的示例成本分析的屏幕截图。](./media/cost-management-guide/cost-analysis.png)
 
-默认情况下，有六列： **资源**、 **资源类型**、 **位置**、 **资源组名称**、 **标记**和 **成本**。 **资源**列包含有关实验室帐户、实验室名称和 VM 的信息。 显示实验室帐户、实验室名称和默认 (第二行和第三行) 的行是实验室的费用。 使用的 Vm 的成本是显示实验室帐户、实验室名称、默认值和 VM 名称的行。 
+默认情况下，有六列： **资源**、 **资源类型**、 **位置**、 **资源组名称**、 **标记** 和 **成本**。 **资源** 列包含有关实验室帐户、实验室名称和 VM 的信息。 显示实验室帐户、实验室名称和默认 (第二行和第三行) 的行是实验室的费用。 使用的 Vm 的成本是显示实验室帐户、实验室名称、默认值和 VM 名称的行。 
 
 在此示例中，添加第一个和第二行 (从 **aaalab/dockerlab** 开始) 将为你提供 "aaalab" 实验室帐户中实验室 "dockerlab" 的总费用。
 
@@ -70,7 +70,7 @@ ms.locfileid: "88797626"
 
 某些大学使用实验室帐户和资源组来分隔类。 每个类都有其自己的实验室帐户和资源组。 
 
-在 "成本分析" 窗格中，根据资源组名称添加类的筛选器，并为类添加适当的资源组名称。 然后，只有该类的成本才可见。 这样就可以在查看成本时，使类之间的略图更清晰。 您可以使用成本分析的 [计划导出](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) 功能，在单独的文件中下载每个类的成本。
+在 "成本分析" 窗格中，根据资源组名称添加类的筛选器，并为类添加适当的资源组名称。 然后，只有该类的成本才可见。 这样就可以在查看成本时，使类之间的略图更清晰。 您可以使用成本分析的 [计划导出](../cost-management-billing/costs/tutorial-export-acm-data.md) 功能，在单独的文件中下载每个类的成本。
 
 ## <a name="manage-costs"></a>管理成本
 
@@ -90,7 +90,7 @@ ms.locfileid: "88797626"
 > [!NOTE]
 > 此设置仅适用于 Windows 虚拟机。
 
-当启用 " **当虚拟机处于空闲状态时断开用户连接** " 设置时，如果 Windows OS 认为会话处于空闲状态，则该用户将从实验室中的所有计算机断开连接 (包括模板虚拟机) 。 [WINDOWS OS 的空闲定义](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state)使用两个条件： 
+当启用 " **当虚拟机处于空闲状态时断开用户连接** " 设置时，如果 Windows OS 认为会话处于空闲状态，则该用户将从实验室中的所有计算机断开连接 (包括模板虚拟机) 。 [WINDOWS OS 的空闲定义](/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state)使用两个条件： 
 
 * 用户缺勤：没有键盘或鼠标输入。
 * 缺少资源消耗：所有处理器和所有磁盘在一定时间百分比处于空闲状态。
@@ -107,7 +107,7 @@ ms.locfileid: "88797626"
 例如，如果配置设置，如下所示：
  
 * **当虚拟机处于空闲状态时断开用户连接**：检测到空闲状态后15分钟。
-* 用户**断开连接时，请关闭虚拟机**：用户断开连接5分钟。
+* 用户 **断开连接时，请关闭虚拟机**：用户断开连接5分钟。
  
 Windows 虚拟机将在用户停止使用后的20分钟后自动关闭。 
  
@@ -122,7 +122,7 @@ Windows 虚拟机将在用户停止使用后的20分钟后自动关闭。
 * 对于 Linux，SSH 连接已断开连接。
  
 > [!NOTE]
-> 仅支持 [特定的 linux 分发和版本](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) 。
+> 仅支持 [特定的 linux 分发和版本](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions) 。
  
 可以指定虚拟机在自动关机之前应等待用户重新连接的时间长度。 
 
@@ -160,6 +160,6 @@ Windows 虚拟机将在用户停止使用后的20分钟后自动关闭。
 
 实验室可以通过虚拟网络连接到其他 Azure 资源。 删除实验室后，应删除虚拟网络和其他资源。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 但愿您可以更好地理解本文中的信息，以便您更好地了解可帮助您减少使用成本的工具。

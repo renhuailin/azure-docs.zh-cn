@@ -3,20 +3,20 @@ title: 构建第一个数据工厂（Azure 门户）
 description: 本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 4b291dcc95e0beecb1fd9fbf038055d8a77c7b79
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254967"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496613"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "85254967"
 > 本文适用于 Azure 数据工厂第 1 版（即正式版）。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 > [!WARNING]
-> Azure 门户中用于创作和部署 ADF v1 管道的 JSON 编辑器将于 2019 年 7 月 31 日关闭。 2019 年 7 月 31 日之后，可以继续使用 [ADF v1 Powershell cmdlet](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](https://docs.microsoft.com/rest/api/datafactory/) 来创作和部署 ADF v1 管道。
+> Azure 门户中用于创作和部署 ADF v1 管道的 JSON 编辑器将于 2019 年 7 月 31 日关闭。 2019 年 7 月 31 日之后，可以继续使用 [ADF v1 Powershell cmdlet](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](/rest/api/datafactory/) 来创作和部署 ADF v1 管道。
 
 本教程介绍如何使用 [Azure 门户](https://portal.azure.com/)创建第一个数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。 
 
@@ -110,7 +110,7 @@ ms.locfileid: "85254967"
 
    ![存储链接服务](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. 将**帐户名称**替换为存储帐户的名称。 将**帐户密钥**替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
+1. 将 **帐户名称** 替换为存储帐户的名称。 将 **帐户密钥** 替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
 1. 选择命令栏上的“部署”，部署链接服务。
 
@@ -161,7 +161,7 @@ ms.locfileid: "85254967"
 
      c. HDInsight 群集在 Blob 存储中创建默认容器，该存储是在 JSON 属性 (**linkedServiceName**) 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (**timeToLive**)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
 
-     随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”模式。 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Blob 存储中的容器。
+     随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循“adf **yourdatafactoryname**-**linkedservicename**-datetimestamp”模式。 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Blob 存储中的容器。
 
      有关详细信息，请参阅[按需 HDInsight 链接服务](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。
 
@@ -171,7 +171,7 @@ ms.locfileid: "85254967"
 
 1. 确认左侧树视图中出现了 **AzureStorageLinkedService** 和 **HDInsightOnDemandLinkedService**。
 
-    ![包含链接服务的树视图](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
+    ![显示 AzureStorageLinkedService 与 HDInsightOnDemandLinkedService 链接在一起的屏幕截图。](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
 ## <a name="create-datasets"></a>创建数据集
 此步骤创建数据集来代表 Hive 处理的输入和输出数据。 这些数据集引用前面在本教程中创建的 AzureStorageLinkedService。 链接服务指向存储帐户。 数据集在存储输入和输出数据的存储中指定容器、文件夹和文件名称。   
@@ -228,7 +228,7 @@ ms.locfileid: "85254967"
 
 1. 在数据工厂编辑器中，选择“更多” > “新建数据集” > “Azure Blob 存储”。
 
-1. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobOutput**的数据集，指定 Hive 脚本生成的数据结构。 此外，指定将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定输出数据集每月生成一次。
+1. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobOutput** 的数据集，指定 Hive 脚本生成的数据结构。 此外，指定将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定输出数据集每月生成一次。
 
     ```JSON
     {

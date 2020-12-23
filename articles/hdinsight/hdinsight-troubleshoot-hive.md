@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895237"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288965"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
 
@@ -49,7 +49,7 @@ ms.locfileid: "75895237"
 
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 使用 SSH 连接到 HDInsight 群集。 有关详细信息，请参阅**其他阅读材料**。
+1. 使用 SSH 连接到 HDInsight 群集。 有关详细信息，请参阅 **其他阅读材料** 。
 
 2. 若要查看 Hive 客户端日志，请使用以下命令：
 
@@ -120,17 +120,17 @@ ms.locfileid: "75895237"
    必须提供一个示例程序作为第一个参数。
 
    有效的程序名称包括：
-    - **ContainerReuseAnalyzer**：列显 DAG 中的容器重用详细信息
-    - **CriticalPath**：查找 DAG 的关键路径
-    - **LocalityAnalyzer**：列显 DAG 中的区域详细信息
-    - **ShuffleTimeAnalyzer**：分析 DAG 中的随机排列时间详细信息
-    - **SkewAnalyzer**：分析 DAG 中的偏斜详细信息
-    - **SlowNodeAnalyzer**：列显 DAG 中的节点详细信息
-    - **SlowTaskIdentifier**：列显 DAG 中的慢速任务详细信息
-    - **SlowestVertexAnalyzer**：列显 DAG 中的最慢顶点详细信息
-    - **SpillAnalyzer**：列显 DAG 中的溢出详细信息
-    - **TaskConcurrencyAnalyzer**：列显 DAG 中的任务并发性详细信息
-    - **VertexLevelCriticalPathAnalyzer**：查找 DAG 中顶点级别的关键路径
+    - **ContainerReuseAnalyzer** ：列显 DAG 中的容器重用详细信息
+    - **CriticalPath** ：查找 DAG 的关键路径
+    - **LocalityAnalyzer** ：列显 DAG 中的区域详细信息
+    - **ShuffleTimeAnalyzer** ：分析 DAG 中的随机排列时间详细信息
+    - **SkewAnalyzer** ：分析 DAG 中的偏斜详细信息
+    - **SlowNodeAnalyzer** ：列显 DAG 中的节点详细信息
+    - **SlowTaskIdentifier** ：列显 DAG 中的慢速任务详细信息
+    - **SlowestVertexAnalyzer** ：列显 DAG 中的最慢顶点详细信息
+    - **SpillAnalyzer** ：列显 DAG 中的溢出详细信息
+    - **TaskConcurrencyAnalyzer** ：列显 DAG 中的任务并发性详细信息
+    - **VertexLevelCriticalPathAnalyzer** ：查找 DAG 中顶点级别的关键路径
 
 ### <a name="additional-reading"></a>其他阅读材料
 
@@ -163,10 +163,4 @@ ms.locfileid: "75895237"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
-
-- 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
-
-- 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
-
-- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

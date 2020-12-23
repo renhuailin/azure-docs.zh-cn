@@ -13,11 +13,11 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
 ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617632"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012438"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>确定 Azure SQL 托管实例所需的子网大小和范围
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,14 +52,14 @@ Azure SQL 托管实例必须部署在 Azure [虚拟网络 (VNet)](../../virtual-
 
 GP = 常规用途；BC = 业务关键；VC = 虚拟群集
 
-| **硬件代系** | **定价层** | **Azure 使用情况** | **VC 使用情况** | **实例使用情况** | **总计*** |
+| **硬件代系** | **定价层** | **Azure 使用情况** | **VC 使用情况** | **实例使用情况** | **总计** _ |
 | --- | --- | --- | --- | --- | --- |
 | Gen4 | GP | 5 | 1 | 5 | 11 |
 | Gen4 | BC | 5 | 1 | 5 | 11 |
 | Gen5 | GP | 5 | 6 | 3 | 14 |
 | Gen5 | BC | 5 | 6 | 5 | 16 |
 
-  \* 列总数显示在子网中部署一个实例时将采用的地址数。 子网中每增加一个实例，都会增加“实例使用情况”列表示的地址数。 “Azure 使用情况”列表示的地址在多个虚拟群集之间共享，而“VC 使用情况”列表示的地址在该虚拟群集中放置的实例之间共享。
+  \_ 列总数显示在子网中部署一个实例时将采用的地址数。 子网中每增加一个实例，都会增加“实例使用情况”列表示的地址数。 “Azure 使用情况”列表示的地址在多个虚拟群集之间共享，而“VC 使用情况”列表示的地址在该虚拟群集中放置的实例之间共享。
 
 执行更新操作时，通常需要调整虚拟群集的大小。 在某些情况下，执行更新操作需要创建虚拟群集（有关更多详细信息，请参阅[管理操作文章](sql-managed-instance-paas-overview.md#management-operations)）。 如果要创建虚拟群集，所需的额外地址数等于“VC 使用情况”列表示的地址数加上该虚拟群集中放置的实例所需的地址数（“实例使用情况”列）。
 
@@ -74,12 +74,12 @@ GP = 常规用途；BC = 业务关键；VC = 虚拟群集
 
 在缩放期间，实例临时需要额外的 IP 容量，该容量具体取决于定价层和硬件代系
 
-| **硬件代系** | **定价层** | **方案** | **更多地址*** |
+| **硬件代系** | **定价层** | **方案** | **其他地址** _ |
 | --- | --- | --- | --- |
 | Gen4 | GP 或 BC | 缩放 Vcore 数目 | 5 |
 | Gen4 | GP 或 BC | 缩放存储 | 5 |
 | Gen4 | GP 或 BC | 从 GP 切换到 BC 或从 BC 切换到 GP | 5 |
-| Gen4 | GP | 正在切换到 Gen5* | 9 |
+| Gen4 | GP | 切换到 Gen5_ | 9 |
 | Gen4 | BC | 正在切换到 Gen5* | 11 |
 | Gen5 | GP | 缩放 Vcore 数目 | 3 |
 | Gen5 | GP | 缩放存储 | 0 |

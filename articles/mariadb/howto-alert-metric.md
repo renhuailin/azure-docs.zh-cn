@@ -1,17 +1,17 @@
 ---
-title: 配置指标警报-Azure 门户-Azure Database for MariaDB
+title: 配置指标警报 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍了如何通过 Azure 门户配置和访问针对 Azure Database for MariaDB 的指标警报。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e108ca3aa346af20b31ff446130014e1250f49c0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742836"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541073"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 门户设置针对 Azure Database for MariaDB 指标的警报
 
@@ -27,7 +27,7 @@ ms.locfileid: "91742836"
 可使用以下项配置并获取预警规则相关信息：
 * [Azure 门户](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure 监视器 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure 监视器 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>在指标上创建警报规则
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择要监视的 Azure Database for MariaDB 服务器。
@@ -48,17 +48,17 @@ ms.locfileid: "91742836"
    
    ![选择指标](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率**。
+7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率** 。
    
    完成后选择“完成”  。
 
-   ![选择指标2](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![选择指标 2](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知   。
 
 9. 使用名称、短名称、订阅和资源组填写“添加操作组”表单。
 
-10. 配置“电子邮件/短信/推送/语音”操作类型****。
+10. 配置“电子邮件/短信/推送/语音”操作类型。
     
     选择“电子邮件 Azure 资源管理器角色”以选择订阅所有者、参与者和读取器来接收通知。
    
@@ -70,7 +70,7 @@ ms.locfileid: "91742836"
 
 11. 指定预警规则名称、说明和严重性。
 
-    ![操作组2](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![操作组 2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. 选择“创建警报规则”可以创建警报  。
 
@@ -85,5 +85,5 @@ ms.locfileid: "91742836"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[在警报中配置 Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)的详细信息。
-* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
+* 获取[指标集合概述](../azure-monitor/platform/data-platform.md)以确保服务可用且响应迅速。

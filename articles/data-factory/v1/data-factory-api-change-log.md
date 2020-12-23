@@ -3,8 +3,8 @@ title: 数据工厂-.NET API 更改日志
 description: 介绍适用于 Azure 数据工厂的 .NET API 的特定版本中的重大更改、功能添加、bug 修复等。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 70df35409d1c84efb996bb40f4e39bde6ad7d5a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438936"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496494"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
 > [!NOTE]
@@ -29,53 +29,53 @@ ms.locfileid: "89438936"
 新增功能：
 
 * 已添加以下链接服务类型：
-  * [OnPremisesMongoDbLinkedService](https://msdn.microsoft.com/library/mt765129.aspx)
-  * [AmazonRedshiftLinkedService](https://msdn.microsoft.com/library/mt765121.aspx)
-  * [AwsAccessKeyLinkedService](https://msdn.microsoft.com/library/mt765144.aspx)
+  * [OnPremisesMongoDbLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.onpremisesmongodblinkedservice)
+  * [AmazonRedshiftLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.amazonredshiftlinkedservice)
+  * [AwsAccessKeyLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.awsaccesskeylinkedservice)
 * 已添加以下数据集类型：
-  * [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
-  * [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
+  * [MongoDbCollectionDataset](/dotnet/api/microsoft.azure.management.datafactories.models.mongodbcollectiondataset)
+  * [AmazonS3Dataset](/dotnet/api/microsoft.azure.management.datafactories.models.amazons3dataset)
 * 已添加以下复制源类型：
-  * [MongoDbSource](https://msdn.microsoft.com/library/mt765123.aspx)
+  * [MongoDbSource](/dotnet/api/microsoft.azure.management.datafactories.models.mongodbsource)
 
 ## <a name="version-4100"></a>版本 4.10.0
 * 已向 TextFormat 添加了以下可选属性：
-  * [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
-  * [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
-  * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
+  * [SkipLineCount](/dotnet/api/microsoft.azure.management.datafactories.models.textformat)
+  * [FirstRowAsHeader](/dotnet/api/microsoft.azure.management.datafactories.models.textformat)
+  * [TreatEmptyAsNull](/dotnet/api/microsoft.azure.management.datafactories.models.textformat)
 * 已添加以下链接服务类型：
-  * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
-  * [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
+  * [OnPremisesCassandraLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice)
+  * [SalesforceLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.salesforcelinkedservice)
 * 已添加以下数据集类型：
-  * [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
+  * [OnPremisesCassandraTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset)
 * 已添加以下复制源类型：
-  * [CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
-* 向 AzureMLBatchExecutionActivity 添加了 [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) 属性
+  * [CassandraSource](/dotnet/api/microsoft.azure.management.datafactories.models.cassandrasource)
+* 向 AzureMLBatchExecutionActivity 添加了 [WebServiceInputs](/dotnet/api/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity) 属性
   * 能够将多个 Web 服务输入传递到 Azure 机器学习试验
 
 ## <a name="version-491"></a>版本 4.9.1
 ### <a name="bug-fix"></a>Bug 修复
-* 针对 [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)，已弃用基于 WebApi 的身份验证。
+* 针对 [WebLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.weblinkedservice)，已弃用基于 WebApi 的身份验证。
 
 ## <a name="version-490"></a>版本 4.9.0
 ### <a name="feature-additions"></a>新增功能
-* 向 CopyActivity 添加了 [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) 和 [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) 属性。 有关此功能的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
+* 向 CopyActivity 添加了 [EnableStaging](/dotnet/api/microsoft.azure.management.datafactories.models.copyactivity) 和 [StagingSettings](/dotnet/api/microsoft.azure.management.datafactories.models.stagingsettings) 属性。 有关此功能的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 
 ### <a name="bug-fix"></a>Bug 修复
-* 引入了 [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) 方法的重载，该方法采用 [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) 实例。
-* 在 CopySink 中将 [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) 和 [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) 标记为可选。
+* 引入了 [ActivityWindowOperationExtensions.List](/dotnet/api/microsoft.azure.management.datafactories.activitywindowoperationsextensions) 方法的重载，该方法采用 [ActivityWindowsByActivityListParameters](/dotnet/api/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters) 实例。
+* 在 CopySink 中将 [WriteBatchSize](/dotnet/api/microsoft.azure.management.datafactories.models.copysink) 和 [WriteBatchTimeout](/dotnet/api/microsoft.azure.management.datafactories.models.copysink) 标记为可选。
 
 ## <a name="version-480"></a>版本 4.8.0
 ### <a name="feature-additions"></a>新增功能
 * 已向复制活动类型添加了以下可选属性，以实现复制性能的优化：
-  * [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
-  * [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
+  * [ParallelCopies](/dotnet/api/microsoft.azure.management.datafactories.models.copyactivity)
+  * [CloudDataMovementUnits](/dotnet/api/microsoft.azure.management.datafactories.models.copyactivity)
 
 ## <a name="version-470"></a>版本 4.7.0
 ### <a name="feature-additions"></a>新增功能
-* 添加了新的 StorageFormat 类型 [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) 类型，以优化的行纵栏表 (ORC) 格式复制文件。
-* 向 SqlDWSink 添加了 [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) 和 PolyBaseSettings 属性。
-  * 允许使用 PolyBase 将数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) 。
+* 添加了新的 StorageFormat 类型 [OrcFormat](/dotnet/api/microsoft.azure.management.datafactories.models.orcformat) 类型，以优化的行纵栏表 (ORC) 格式复制文件。
+* 向 SqlDWSink 添加了 [AllowPolyBase](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) 和 PolyBaseSettings 属性。
+  * 允许使用 PolyBase 将数据复制到 Azure Synapse Analytics 中。
 
 ## <a name="version-461"></a>版本 4.6.1
 ### <a name="bug-fixes"></a>Bug 修复
@@ -84,86 +84,86 @@ ms.locfileid: "89438936"
 
 ## <a name="version-460"></a>版本 4.6.0
 ### <a name="feature-additions"></a>新增功能
-* 已向 [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx) 添加了以下属性：
-  * [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
-  * [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
-  * [数据集](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
-* 已向 [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx) 添加了以下属性：
-  * [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
-* 添加了新的 [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) 类型 [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) 类型以定义其数据为 JSON 格式的数据集。
+* 已向 [PipelineProperties](/dotnet/api/microsoft.azure.management.datafactories.models.pipelineproperties) 添加了以下属性：
+  * [PipelineMode](/dotnet/api/microsoft.azure.management.datafactories.models.pipelineproperties)
+  * [ExpirationTime](/dotnet/api/microsoft.azure.management.datafactories.models.pipelineproperties)
+  * [数据集](/dotnet/api/microsoft.azure.management.datafactories.models.pipelineproperties)
+* 已向 [PipelineRuntimeInfo](/dotnet/api/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo) 添加了以下属性：
+  * [PipelineState](/dotnet/api/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo)
+* 添加了新的 [StorageFormat](/dotnet/api/microsoft.azure.management.datafactories.models.storageformat) 类型 [JsonFormat](/dotnet/api/microsoft.azure.management.datafactories.models.jsonformat) 类型以定义其数据为 JSON 格式的数据集。
 
 ## <a name="version-450"></a>版本 4.5.0
 ### <a name="feature-additions"></a>新增功能
-* 添加了[活动窗口的操作列表](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx)。
+* 添加了[活动窗口的操作列表](/dotnet/api/microsoft.azure.management.datafactories.activitywindowoperationsextensions)。
   * 添加了使用筛选器基于实体类型（即数据工厂、数据集、管道和活动）检索活动窗口的方法。
 * 已添加以下链接服务类型：
-  * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx)、[WebLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
+  * [ODataLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.odatalinkedservice)、[WebLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.weblinkedservice)
 * 已添加以下数据集类型：
-  * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx)、[WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
+  * [ODataResourceDataset](/dotnet/api/microsoft.azure.management.datafactories.models.odataresourcedataset)、[WebTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.webtabledataset)
 * 已添加以下复制源类型：     
-  * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
+  * [WebSource](/dotnet/api/microsoft.azure.management.datafactories.models.websource)
 
 ## <a name="version-440"></a>版本 4.4.0
 ### <a name="feature-additions"></a>新增功能
 * 已将下面的链接服务类型添加为复制活动的数据源和接收器：
-  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。 有关概念性信息和示例，请参阅 [Azure 存储 SAS 链接服务](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)。
+  * [AzureStorageSasLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice)。 有关概念性信息和示例，请参阅 [Azure 存储 SAS 链接服务](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)。
 
 ## <a name="version-430"></a>版本 4.3.0
 ### <a name="feature-additions"></a>新增功能
 * 已将下面的链接服务类型添加为复制活动的数据源：
-  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx)。 有关概念性信息和示例，请参阅[使用数据工厂从 HDFS 中移动数据](data-factory-hdfs-connector.md)。
-  * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx)。 有关概念性信息和示例，请参阅[使用 Azure 数据工厂从 ODBC 数据存储中移动数据](data-factory-odbc-connector.md)。
+  * [HdfsLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.hdfslinkedservice)。 有关概念性信息和示例，请参阅[使用数据工厂从 HDFS 中移动数据](data-factory-hdfs-connector.md)。
+  * [OnPremisesOdbcLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice)。 有关概念性信息和示例，请参阅[使用 Azure 数据工厂从 ODBC 数据存储中移动数据](data-factory-odbc-connector.md)。
 
 ## <a name="version-420"></a>版本 4.2.0
 ### <a name="feature-additions"></a>新增功能
-* 已添加以下新的活动类型：[AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 有关活动的详细信息，请参阅[使用更新资源活动更新 Azure ML 模型](data-factory-azure-ml-batch-execution-activity.md)。
-* 一个新的可选属性 [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) 已被添加到 [AzureMLLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)。
-* [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) 和 [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) 属性已被添加到 [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) 类。
+* 已添加以下新的活动类型：[AzureMLUpdateResourceActivity](/dotnet/api/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity)。 有关活动的详细信息，请参阅[使用更新资源活动更新 Azure ML 模型](data-factory-azure-ml-batch-execution-activity.md)。
+* 一个新的可选属性 [updateResourceEndpoint](/dotnet/api/microsoft.azure.management.datafactories.models.azuremllinkedservice) 已被添加到 [AzureMLLinkedService 类](/dotnet/api/microsoft.azure.management.datafactories.models.azuremllinkedservice)。
+* [LongRunningOperationInitialTimeout](/dotnet/api/microsoft.azure.management.datafactories.datafactorymanagementclient) 和 [LongRunningOperationRetryTimeout](/dotnet/api/microsoft.azure.management.datafactories.datafactorymanagementclient) 属性已被添加到 [DataFactoryManagementClient](/dotnet/api/microsoft.azure.management.datafactories.datafactorymanagementclient) 类。
 * 允许对数据工厂服务的客户端调用配置超时。
 
 ## <a name="version-410"></a>版本 4.1.0
 ### <a name="feature-additions"></a>新增功能
 * 已添加以下链接服务类型：
-  * [AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
-  * [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
+  * [AzureDataLakeStoreLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice)
+  * [AzureDataLakeAnalyticsLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice)
 * 已添加以下活动类型：
-  * [DataLakeAnalyticsUSQLActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
+  * [DataLakeAnalyticsUSQLActivity](/dotnet/api/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity)
 * 已添加以下数据集类型：
-  * [AzureDataLakeStoreDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
+  * [AzureDataLakeStoreDataset](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestoredataset)
 * 已针对复制活动添加以下源和接收器类型：
-  * [AzureDataLakeStoreSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresource.aspx)
-  * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
+  * [AzureDataLakeStoreSource](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestoresource)
+  * [AzureDataLakeStoreSink](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestoresink)
 
 ## <a name="version-401"></a>版本 4.0.1
-### <a name="breaking-changes"></a>重大更改
+### <a name="breaking-changes"></a>中断性变更
 已重命名下面的类。 新名称是 4.0.0 版之前的类的原始名称。
 
 | 4.0.0 版中的名称 | 4.0.1 版中的名称 |
 |:--- |:--- |
-| AzureSqlDataWarehouseDataset |[AzureSqlDataWarehouseTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset.aspx) |
-| AzureSqlDataset |[AzureSqlTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqltabledataset.aspx) |
-| AzureDataset |[AzureTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuretabledataset.aspx) |
-| OracleDataset |[OracleTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.oracletabledataset.aspx) |
-| RelationalDataset |[RelationalTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.relationaltabledataset.aspx) |
-| SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
+| AzureSqlDataWarehouseDataset |[AzureSqlDataWarehouseTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset) |
+| AzureSqlDataset |[AzureSqlTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.azuresqltabledataset) |
+| AzureDataset |[AzureTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.azuretabledataset) |
+| OracleDataset |[OracleTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.oracletabledataset) |
+| RelationalDataset |[RelationalTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.relationaltabledataset) |
+| SqlServerDataset |[SqlServerTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.sqlservertabledataset) |
 
 ## <a name="version-400"></a>版本 4.0.0
-### <a name="breaking-changes"></a>重大更改
+### <a name="breaking-changes"></a>中断性变更
 * 已重命名下面的类/接口。
 
 | 旧名称 | 新名称 |
 |:--- |:--- |
-| ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
+| ITableOperations |[IDatasetOperations](/dotnet/api/microsoft.azure.management.datafactories.idatasetoperations) |
 | 表 |数据集 |
-| TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
-| TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
-| TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
-| TableCreateOrUpdateResponse |[DatasetCreateOrUpdateResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse.aspx) |
-| TableGetResponse |[DatasetGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetgetresponse.aspx) |
-| TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
-| CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
+| TableProperties |[DatasetProperties](/dotnet/api/microsoft.azure.management.datafactories.models.datasetproperties) |
+| TableTypeProprerties |[DatasetTypeProperties](/dotnet/api/microsoft.azure.management.datafactories.models.datasettypeproperties) |
+| TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](/dotnet/api/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters) |
+| TableCreateOrUpdateResponse |[DatasetCreateOrUpdateResponse](/dotnet/api/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse) |
+| TableGetResponse |[DatasetGetResponse](/dotnet/api/microsoft.azure.management.datafactories.models.datasetgetresponse) |
+| TableListResponse |[DatasetListResponse](/dotnet/api/microsoft.azure.management.datafactories.models.datasetlistresponse) |
+| CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](/dotnet/api/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters) |
 
-* **列表**方法现在返回分页的结果。 如果响应中包含非空 **NextLink** 属性，则客户端应用程序需要继续提取下一页直到返回所有页。  下面是一个示例：
+* **列表** 方法现在返回分页的结果。 如果响应中包含非空 **NextLink** 属性，则客户端应用程序需要继续提取下一页直到返回所有页。  以下是示例：
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
@@ -178,8 +178,8 @@ ms.locfileid: "89438936"
         nextLink = nextResponse.NextLink;
     }
     ```
-* **列表**管道 API 仅返回管道的摘要而不是完整的详细信息。 例如，管道摘要中的活动只包含名称和类型。
+* **列表** 管道 API 仅返回管道的摘要而不是完整的详细信息。 例如，管道摘要中的活动只包含名称和类型。
 
 ### <a name="feature-additions"></a>新增功能
-* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx)类支持两个新属性（ **SliceIdentifierColumnName**和**SqlWriterCleanupScript**），以支持将幂等复制到 azure azure Synapse Analytics。 有关这些属性的详细信息，请参阅 [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) 文章。
-* 现在，我们支持针对 Azure SQL 数据库和 Azure Synapse Analytics 源运行存储过程，作为复制活动的一部分。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [AZURE SQL 数据库](data-factory-azure-sql-connector.md#sqlsource) 和 [azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) 文章。  
+* [SqlDWSink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink)类支持两个新属性（ **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**），以支持将幂等复制到 azure azure Synapse Analytics。 有关这些属性的详细信息，请参阅 [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) 文章。
+* 现在，我们支持针对 Azure SQL 数据库和 Azure Synapse Analytics 源运行存储过程，作为复制活动的一部分。 [SqlSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) 和 [SqlDWSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [AZURE SQL 数据库](data-factory-azure-sql-connector.md#sqlsource) 和 [azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) 文章。

@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825253"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978588"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>通过 Azure 专用主机预留节省成本
 
-当你提交到 Azure 专用主机的保留实例时，可以节省资金。 预订折扣将自动应用于与预订范围和属性匹配的运行的专用主机的数量。 无需将预订分配给专用主机即可获取折扣。 购买的预订实例仅涵盖使用情况的计算部分，并包括软件许可成本。 请参阅[虚拟机的 Azure 专用主机概述](./windows/dedicated-hosts.md)。
+当你提交到 Azure 专用主机的保留实例时，可以节省资金。 预订折扣将自动应用于与预订范围和属性匹配的运行的专用主机的数量。 无需将预订分配给专用主机即可获取折扣。 购买的预订实例仅涵盖使用情况的计算部分，并包括软件许可成本。 请参阅 [虚拟机的 Azure 专用主机概述](./dedicated-hosts.md)。
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>购买之前确定适当的专用主机 SKU
 
 
 在购买预订之前，应确定所需的专用主机。 为代表 VM 系列和类型的专用主机定义 SKU。 
 
-首先，请使用[Windows 虚拟机](./sizes.md)或[Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的支持大小来识别 VM 系列。
+首先，请使用 [Windows 虚拟机](./sizes.md) 或 [Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的支持大小来识别 VM 系列。
 
-接下来，请检查 Azure 专用主机上是否支持该选项。 [Azure 专用主机定价](https://aka.ms/ADHPricing)页提供了专用主机 sku、其 CPU 信息和各种定价选项的完整列表， (包括) 的预订实例。
+接下来，请检查 Azure 专用主机上是否支持该选项。 [Azure 专用主机定价](https://aka.ms/ADHPricing) 页提供了专用主机 sku、其 CPU 信息和各种定价选项的完整列表， (包括) 的预订实例。
 
 你可能会发现多个 Sku 支持不同类型) 的 VM 序列 (。 通过比较主机的容量 () 个 vcpu 数来确定最佳 SKU。 请注意，你将能够将你的预订应用于多个支持同一 VM 系列的专用主机 Sku (例如 DSv3_Type1 和 DSv3_Type2) 但不能跨不同 VM 系列 (如 DSv3 和 ESv3) 。
 
@@ -129,7 +129,7 @@ ms.locfileid: "87825253"
 
 - [什么是 Azure 预订？](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [使用 Azure 专用主机](./windows/dedicated-hosts.md)
+- [使用 Azure 专用主机](./dedicated-hosts.md)
 
 - [专用主机定价](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 

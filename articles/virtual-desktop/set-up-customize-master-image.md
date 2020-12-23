@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433698"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023388"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
@@ -88,7 +88,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 若要通过本地组策略禁用自动更新：
 
-1. ** \\ 管理模板 \\ Windows 组件 \\ Windows 更新打开本地组策略编辑器**。
+1. **\\ 管理模板 \\ Windows 组件 \\ Windows 更新打开本地组策略编辑器**。
 2. 右键单击 " **配置自动更新** "，并将其设置为 " **已禁用**"。
 
 你还可以在命令提示符下运行以下命令，以禁用自动更新。
@@ -114,7 +114,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoam
 1. 在 Active Directory 服务器上，打开 **组策略管理控制台**。
 2. 展开你的域和组策略对象。
 3. 右键单击为 "组策略" 设置创建的 **组策略对象** ，然后选择 " **编辑**"。
-4. 在**组策略管理编辑器**中，导航到 "**计算机配置**  >  **策略**"  >  **管理模板**  >  **Windows 组件**"  >  **远程桌面服务**  >  **远程桌面会话主机**  >  **设备和资源重定向**"。
+4. 在 **组策略管理编辑器** 中，导航到 "**计算机配置**  >  **策略**"  >  **管理模板**  >  **Windows 组件**"  >  **远程桌面服务**  >  **远程桌面会话主机**  >  **设备和资源重定向**"。
 5. 启用 " **允许时区重定向** " 设置。
 
 你还可以在主映像上运行此命令以重定向时区：
@@ -125,7 +125,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 ### <a name="disable-storage-sense"></a>禁用存储感知
 
-对于使用 Windows 10 企业版或 Windows 10 企业多会话的 Windows 虚拟桌面会话主机，建议禁用存储感知。 可以在 " **存储**" 下的 "设置" 菜单中禁用存储感知，如以下屏幕截图所示：
+对于使用 Windows 10 企业版或 Windows 10 企业版多会话的 Windows 虚拟桌面会话主机，建议禁用存储感知。 可以在 " **存储**" 下的 "设置" 菜单中禁用存储感知，如以下屏幕截图所示：
 
 > [!div class="mx-imgBorder"]
 > !["设置" 下的 "存储" 菜单的屏幕截图。 "存储感知" 选项已关闭。](media/storagesense.png)
@@ -189,7 +189,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 1. 将 VM 映像 (VHD) 转换为固定（如果尚未这样做）。 如果未将图像转换为固定图像，则无法成功创建映像。
 
-2. 将 VHD 上传到存储帐户中的 blob 容器。 可以通过 [存储资源管理器工具](https://azure.microsoft.com/features/storage-explorer/)快速上传。 若要详细了解存储资源管理器工具，请参阅 [此文](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
+2. 将 VHD 上传到存储帐户中的 blob 容器。 可以通过 [存储资源管理器工具](https://azure.microsoft.com/features/storage-explorer/)快速上传。 若要详细了解存储资源管理器工具，请参阅 [此文](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)。
 
     > [!div class="mx-imgBorder"]
     > ![Microsoft Azure 存储资源管理器工具搜索窗口的屏幕截图。 选中 "将 .vhd 或 vhdx 文件作为页 blob 上传 (建议) " 复选框。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)

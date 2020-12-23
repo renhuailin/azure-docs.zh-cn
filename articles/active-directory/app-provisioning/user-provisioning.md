@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5b593add9c9d7be446798eecdd03b396c3fe513a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88235394"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174724"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>什么是 Azure AD 中的自动 SaaS 应用用户预配？
 
@@ -59,7 +59,7 @@ Azure AD 功能预先集成了对许多常见 SaaS 应用和人力资源系统�
 
    ![Salesforce 徽标](./media/user-provisioning/gallery-app-logos.png)
 
-   如果要请求新应用程序进行预配，可以[请求将应用程序与应用库集成集成](../azuread-dev/howto-app-gallery-listing.md)。 对于用户预配请求，我们要求应用程序具有与符合 SCIM 标准的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便我们可以将应用快速加入我们的平台。
+   如果要请求新应用程序进行预配，可以[请求将应用程序与应用库集成集成](../develop/v2-howto-app-gallery-listing.md)。 对于用户预配请求，我们要求应用程序具有与符合 SCIM 标准的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便我们可以将应用快速加入我们的平台。
 
 * 支持 SCIM 2.0 的应用程序。 有关如何在一般情况下连接实现基于 SCIM 2.0 的用户管理 API 的应用程序的信息，请参阅[生成 SCIM 终结点并配置用户预配](use-scim-to-provision-users-and-groups.md)。
 
@@ -77,7 +77,7 @@ Azure AD 库中的应用程序支持以下两种预配模式之一：
 
 * 手动预配意味着尚没有用于应用的自动 Azure AD 预配连接器。 用户帐户必须手动创建，例如通过将用户直接添加到应用的管理门户中，或上传包含用户帐户详细信息的电子表格。 请查阅应用提供的文档，或联系应用开发人员以确定可以使用哪些机制。
 
-* **自动化**意味着已为此应用程序开发了 Azure AD 预配连接器。 应遵循特定于设置应用程序预配的设置教程。 可以在[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)找到这些应用教程。
+* **自动化** 意味着已为此应用程序开发了 Azure AD 预配连接器。 应遵循特定于设置应用程序预配的设置教程。 可以在[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)找到这些应用教程。
 
 在 Azure AD 库中，支持自动预配的应用程序通过“预配”图标进行指定。 切换到新的库预览体验可查看这些图标（在“添加应用程序”页顶部的横幅中，选择显示“单击此处以试用新的和改进的应用库”的链接 ）。
 

@@ -3,18 +3,20 @@ title: Azure Cosmos DB Cassandra API 帐户中的索引编制
 description: 了解 Azure Cosmos DB Cassandra API 帐户中的辅助索引编制的工作原理。
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98e8f713ad2e4eef47e40d89a23dbf49a98ad67c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80758022"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339880"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的辅助索引编制
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB 中的 Cassandra API 利用底层索引基础结构来公开平台中固有的索引编制强度。 但是，与核心 SQL API 不同，Azure Cosmos DB 中的 Cassandra API 默认情况下不会为所有特性编制索引。 它支持使用辅助索引编制来为特定的特性创建索引，其行为方式与 Apache Cassandra 相同。  
 

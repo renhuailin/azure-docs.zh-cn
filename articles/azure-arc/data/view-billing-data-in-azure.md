@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760300"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206446"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>将计费数据上传到 Azure 并在 Azure 门户中查看
 
@@ -30,7 +30,7 @@ ms.locfileid: "91760300"
 - **间接连接** -不会直接连接到 Azure。 数据仅通过导出/上载过程发送到 Azure。 目前，所有 Azure Arc 数据服务部署在此模式下均以预览版的方式运行。
 - **直接连接** -在此模式下，将依赖于支持 azure Arc 的 Kubernetes 服务，以便在 azure 与启用了 azure arc 的数据服务的 Kubernetes 群集之间提供直接连接。 这可以实现更多功能，还可让你使用 Azure 门户和 Azure CLI 管理启用了 Azure Arc 的数据服务，就像在 Azure PaaS 中管理数据服务一样。  此连接模式目前尚不提供预览版，但即将推出。
 
-可以阅读有关 [连接模式](https://docs.microsoft.com/azure/azure-arc/data/connectivity)之间差异的详细信息。
+可以阅读有关 [连接模式](./connectivity.md)之间差异的详细信息。
 
 在间接连接模式下，计费数据会定期从 Azure Arc 数据控制器输出到安全文件，然后上传到 Azure 并进行处理。  在即将到来的直接连接模式下，计费数据会自动发送到 Azure 大约1小时，以便对服务成本进行近乎实时的查看。 在间接连接模式下导出和上传数据的过程也可以使用脚本自动进行，我们可能会构建一个可为你执行此操作的服务。
 
@@ -135,10 +135,10 @@ azdata arc dc upload -p usage.json
 
 请按照以下步骤设置计费导出作业：
 
-1. 单击左侧的 "导出"。
-1. 单击“添加”。
+1. 单击左侧的 " **导出** "。
+1. 单击“添加” 。
 1. 输入名称和导出频率，并单击 "下一步"。
-1. 选择创建新的存储帐户或创建一个新的存储帐户，并填写表单以指定要将帐单数据文件导出到的存储帐户、容器和目录路径，然后单击 "下一步"。
+1. 选择创建新的存储帐户或使用现有的存储帐户，并填写表单以指定要将帐单数据文件导出到的存储帐户、容器和目录路径，然后单击 "下一步"。
 1. 单击“创建”。
 
 计费数据导出文件将在大约4小时内可用，并将按照创建计费导出作业时指定的计划导出。
@@ -156,7 +156,7 @@ azdata arc dc upload -p usage.json
 5. 单击上面创建计费导出作业时指定的容器。
 6. 单击上面创建计费导出作业时指定的文件夹。
 7. 向下钻取生成的文件夹和文件，然后单击其中一个生成的 .csv 文件。
-8. 单击 "下载" 按钮，该按钮会将文件保存到本地下载文件夹。
+8. 单击 " **下载** " 按钮，该按钮会将文件保存到本地下载文件夹。
 9. 使用 .csv 文件查看器（如 Excel）打开该文件。
 10. 筛选结果以仅显示**资源类型**为的行  =  `Microsoft.AzureData/<data service resource type` 。
 11. 你将在 UsageQuantity 列中看到当前24小时内使用实例的小时数。

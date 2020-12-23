@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906928"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090822"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>将 Azure Spring Cloud 与 Azure 负载均衡解决方案集成
 
-**本文适用于：** ✔️ Java ✔️ C#
+本文适用于：✔️ Java ✔️ C#
 
 Azure 春季云在 Azure 上支持微服务。  提高企业可能需要多个数据中心，管理多个 Azure 春季云实例。
 
@@ -26,12 +26,12 @@ Azure 已提供不同的负载均衡解决方案。 有三个选项可用于将 
 2.  将 Azure 春季 Cloud 与 Azure 应用网关集成
 3.  将 Azure 春季云与 Azure 前门集成
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
-* Azure 春季云： [如何创建 azure 春季云服务](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
-* Azure 流量管理器： [如何创建流量管理器](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* Azure 应用网关： [如何创建应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* Azure 前门： [如何创建前门](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* Azure 春季云： [如何创建 azure 春季云服务](./spring-cloud-quickstart.md)
+* Azure 流量管理器： [如何创建流量管理器](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* Azure 应用网关： [如何创建应用程序网关](../application-gateway/quick-create-portal.md)
+* Azure 前门： [如何创建前门](../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-traffic-manager"></a>将 Azure 春季云与 Azure 流量管理器集成
 
@@ -92,6 +92,6 @@ Azure 已提供不同的负载均衡解决方案。 有三个选项可用于将 
     ![前门2](media/spring-cloud-load-balancers/front-door-2.png)
 
 ## <a name="next-steps"></a>后续步骤
-* [如何创建流量管理器](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* [如何创建应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* [如何创建前门](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* [如何创建流量管理器](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* [如何创建应用程序网关](../application-gateway/quick-create-portal.md)
+* [如何创建前门](../frontdoor/quickstart-create-front-door.md)

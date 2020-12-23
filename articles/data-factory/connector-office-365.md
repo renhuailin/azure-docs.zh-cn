@@ -11,35 +11,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 365896fec555340c3932192aa82086d140d4db0c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513290"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632985"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Office 365 复制到 Azure
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 数据工厂与 [Microsoft Graph 数据连接](https://docs.microsoft.com/graph/data-connect-concept-overview)相集成，允许你以可缩放的方式将 Office 365 租户中的丰富组织数据引入 Azure，并生成分析应用程序和基于这些有价值的数据资产提取见解。 与 Privileged Access Management 的集成为 Office 365 中组织有序的有价值的数据提供安全访问控制。  有关 Microsoft Graph 数据连接的概述，请参阅[此链接](https://docs.microsoft.com/graph/data-connect-concept-overview)，有关许可信息，请参阅[此链接](https://docs.microsoft.com/graph/data-connect-policies#licensing)。
+Azure 数据工厂与 [Microsoft Graph 数据连接](/graph/data-connect-concept-overview)相集成，允许你以可缩放的方式将 Office 365 租户中的丰富组织数据引入 Azure，并生成分析应用程序和基于这些有价值的数据资产提取见解。 与 Privileged Access Management 的集成为 Office 365 中组织有序的有价值的数据提供安全访问控制。  有关 Microsoft Graph 数据连接的概述，请参阅[此链接](/graph/data-connect-concept-overview)，有关许可信息，请参阅[此链接](/graph/data-connect-policies#licensing)。
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Office 365 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
-使用 ADF Office 365 连接器和 Microsoft Graph 数据连接可以从已启用 Exchange 电子邮件的邮箱中大规模地引入不同类型的数据集，包括通讯簿联系人、示例事件、电子邮件、用户信息和邮箱设置等。  请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets)以查看可用数据集的完整列表。
+使用 ADF Office 365 连接器和 Microsoft Graph 数据连接可以从已启用 Exchange 电子邮件的邮箱中大规模地引入不同类型的数据集，包括通讯簿联系人、示例事件、电子邮件、用户信息和邮箱设置等。  请参阅[此处](/graph/data-connect-datasets)以查看可用数据集的完整列表。
 
-目前，在单个复制活动中，只能**将 Office 365 中的数据复制到[Azure Blob 存储](connector-azure-blob-storage.md)、 [AZURE DATA LAKE STORAGE GEN1](connector-azure-data-lake-store.md)，并以 JSON 格式[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) ** （键入 setOfObjects）。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
+现在，在单个复制活动中，你只能 **将 Office 365 中的数据复制到 [Azure Blob 存储](connector-azure-blob-storage.md)、 [AZURE DATA LAKE STORAGE GEN1](connector-azure-data-lake-store.md)，并以 JSON 格式 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)** (类型 setOfObjects) 。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
 
 >[!IMPORTANT]
 >- 包含数据工厂和接收器数据存储的 Azure 订阅必须位于与 Office 365 租户相同的 Azure Active Directory (Azure AD) 租户下。
->- 确保用于复制活动的 Azure Integration Runtime 区域以及目标在 Office 365 租户用户邮箱所在的同一区域中。 若要了解如何确定 Azure IR 位置，请参阅[此处](concepts-integration-runtime.md#integration-runtime-location)。 有关受支持的 Office 区域和对应的 Azure 区域列表，请参阅[此处的表](https://docs.microsoft.com/graph/data-connect-datasets#regions)。
+>- 确保用于复制活动的 Azure Integration Runtime 区域以及目标在 Office 365 租户用户邮箱所在的同一区域中。 若要了解如何确定 Azure IR 位置，请参阅[此处](concepts-integration-runtime.md#integration-runtime-location)。 有关受支持的 Office 区域和对应的 Azure 区域列表，请参阅[此处的表](/graph/data-connect-datasets#regions)。
 >- 服务主体身份验证是唯一支持的身份验证机制，Azure Blob 存储、Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2 作为目标存储。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要将数据从 Office 365 复制到 Azure，需要完成下列必备步骤：
 
-- Office 365 租户管理员必须完成载入操作，如[此处](https://docs.microsoft.com/graph/data-connect-get-started)所述。
+- Office 365 租户管理员必须完成载入操作，如[此处](/graph/data-connect-get-started)所述。
 - 在 Azure Active Directory 中创建和配置 Azure AD Web 应用程序。  有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。
 - 记下下面的值，这些值将用于定义 Office 365 的链接服务：
     - 租户 ID。 有关说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
@@ -51,11 +51,11 @@ Azure 数据工厂与 [Microsoft Graph 数据连接](https://docs.microsoft.com/
 
 如果这是你首次请求此上下文（要访问的数据表、要将数据加载到的目标帐户和发出数据访问请求的用户标识的组合）的数据，则复制活动状态将显示为“正在进行”；仅当单击[“操作”下的“详细信息”](copy-activity-overview.md#monitoring)链接时，状态才显示为“正在请求许可”。  在继续执行数据提取之前，数据访问审批者组的成员需要在 Privileged Access Management 中审批该请求。
 
-有关审批者如何批准数据访问请求的信息，请参阅[此处](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal)，以及有关与 Privileged Access Management 的全面集成（包括如何设置数据访问审批者组）的说明，请参阅[此处](https://docs.microsoft.com/graph/data-connect-pam)。
+有关审批者如何批准数据访问请求的信息，请参阅[此处](/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal)，以及有关与 Privileged Access Management 的全面集成（包括如何设置数据访问审批者组）的说明，请参阅[此处](/graph/data-connect-pam)。
 
 ## <a name="policy-validation"></a>策略验证
 
-如果 ADF 作为托管应用程序的一部分创建，并且 Azure 策略分配在管理资源组的资源上进行，那么对于运行的每个副本活动，ADF 都将检查以确保强制实施策略分配。 有关受支持的策略列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-policies#policies)。
+如果 ADF 作为托管应用程序的一部分创建，并且 Azure 策略分配在管理资源组的资源上进行，那么对于运行的每个副本活动，ADF 都将检查以确保强制实施策略分配。 有关受支持的策略列表，请参阅[此处](/graph/data-connect-policies#policies)。
 
 ## <a name="getting-started"></a>入门
 
@@ -79,7 +79,7 @@ Office 365 链接服务支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**Office365** | 是 |
+| type | type 属性必须设置为： **Office365** | 是 |
 | office365TenantId | Office 365 帐户所属的 Azure 租户 ID。 | 是 |
 | servicePrincipalTenantId | 指定 Azure AD Web 应用程序所在的租户信息。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
@@ -119,8 +119,8 @@ Office 365 链接服务支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**Office365Table** | 是 |
-| tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | 是 |
+| type | 数据集的 type 属性必须设置为： **Office365Table** | 是 |
+| tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](/graph/data-connect-datasets#datasets)。 | 是 |
 
 如果在数据集中设置了 `dateFilterColumn`、`startTime`、`endTime` 和 `userScopeFilterUri`，则仍按原样支持该数据集，但建议你以后在活动源中使用新模型。
 
@@ -153,10 +153,10 @@ Office 365 链接服务支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为：**Office365Source** | 是 |
+| type | 复制活动 source 的 type 属性必须设置为： **Office365Source** | 是 |
 | allowedGroups | 组选择谓词。  可以使用此属性选择最多 10 个将为其检索数据的用户组。  如果未指定任何组，则会为整个组织返回数据。 | 否 |
 | userScopeFilterUri | 未指定 `allowedGroups` 属性时，可以使用在整个租户上应用的谓词表达式来筛选要从 Office 365 中提取的特定行。 谓词格式应当与 Microsoft Graph API 的查询格式匹配，例如 `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | 否 |
-| dateFilterColumn | 日期/时间筛选器列的名称。 可以使用此属性限制要提取 Office 365 数据的时间范围。 | 如果数据集有一个或多个日期/时间列，则为必需的。 有关需要此日期/时间筛选器的数据集的列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-filtering#filtering)。 |
+| dateFilterColumn | 日期/时间筛选器列的名称。 可以使用此属性限制要提取 Office 365 数据的时间范围。 | 如果数据集有一个或多个日期/时间列，则为必需的。 有关需要此日期/时间筛选器的数据集的列表，请参阅[此处](/graph/data-connect-filtering#filtering)。 |
 | startTime | 筛选时所依据的开始日期/时间值。 | 如果指定了 `dateFilterColumn`，则为必需的 |
 | endTime | 筛选时所依据的结束日期/时间值。 | 如果指定了 `dateFilterColumn`，则为必需的 |
 | outputColumns | 要复制到接收器的列的数组。 | 否 |

@@ -1,5 +1,5 @@
 ---
-title: 为文本分析 API 安装并运行 Docker 容器
+title: 安装并运行文本分析 API 的 Docker 容器
 titleSuffix: Azure Cognitive Services
 description: 使用文本分析 API 的 Docker 容器在本地执行自然语言处理，如情绪分析。
 services: cognitive-services
@@ -11,28 +11,28 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
-keywords: 本地、Docker、容器、情绪分析、自然语言处理
-ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+keywords: 本地, Docker, 容器, 情绪分析, 自然语言处理
+ms.openlocfilehash: 088cf407320dcf8ef6705c57d86836531d9bdfe6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461489"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965134"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
 > [!NOTE]
 > * 情绪分析 v3 的容器现已公开发布。 关键短语提取和语言检测容器以非封闭公开预览版的形式发布。
 > * 实体链接和 NER 当前不可用作容器。
-> * 访问运行状况容器的文本分析需要 [请求窗体](https://aka.ms/csgate)。 目前，不会向你收费。
-> * 容器映像位置最近可能已更改。 阅读本文，查看此容器的更新位置。
+> * 访问运行状况容器的文本分析需要[请求表单](https://aka.ms/csgate)。 目前，其使用不需付费。
+> * 容器映像位置最近可能已更改。 阅读本文以查看此容器的更新位置。
 
 容器使你能够在自己的环境中运行文本分析 API，最适合特定安全性和数据管理要求。 文本分析容器提供对原始文本的高级自然语言处理，并且包含三项主要功能：情绪分析、关键短语提取和语言检测。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 > [!IMPORTANT]
-> 免费帐户限制为每月5000个事务，并且只有**免费**和**标准**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定价层 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>对容器有效。 有关事务请求费率的更多信息，请参阅[数据限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
+> 免费帐户限制为每月5000个事务，并且只有 **免费** 和 **标准**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定价层 <span class="docon docon-navigate-external x-hidden-focus"></span></a>对容器有效。 有关事务请求费率的更多信息，请参阅[数据限制](../overview.md#data-limits)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,9 +44,9 @@ ms.locfileid: "91461489"
 
 |必须|目的|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **** 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|文本分析资源 |若要使用容器，必须具有：<br><br>一个用于获取关联 API 密钥和终结点 URI 的 Azure [文本分析资源](../../cognitive-services-apis-create-account.md)。 这两个值可以从 Azure 门户中的“文本分析概述”和“密钥”页面获得，并且是启动容器时所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个****<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点****|
+|文本分析资源 |若要使用容器，必须具有：<br><br>一个用于获取关联 API 密钥和终结点 URI 的 Azure [文本分析资源](../../cognitive-services-apis-create-account.md)。 这两个值可以从 Azure 门户中的“文本分析概述”和“密钥”页面获得，并且是启动容器时所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点|
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -89,7 +89,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 [!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
 
-***
+**_
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
 
@@ -103,7 +103,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令来运行容器。 容器将继续运行，直到停止它。
 
 > [!IMPORTANT]
-> * 以下各节中的 docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
+> 以下各部分中的 docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 > * 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
 > * 情绪分析 v3 容器现已正式发布，它将在响应时返回[情绪标签](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)。 关键字提取和语言检测容器使用 API 的 v2，并且提供预览版。
 
@@ -149,7 +149,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 ## <a name="billing"></a>计费
 
-文本分析容器使用 Azure 帐户中的_文本分析_资源向 Azure 发送账单信息。 
+文本分析容器使用 Azure 帐户中的 _文本分析_ 资源向 Azure 发送账单信息。 
 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 14f0c7177953e43b0c58b4f5432d0c08c5f03f45
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7cf86824bef5b6f521df0f0446d5337e2b7c418a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130130"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>为 Visual Studio Code 设置 PySpark 交互式环境
 
@@ -26,9 +26,7 @@ ms.locfileid: "87876608"
 
    * 从 [https://www.python.org/downloads/](https://www.python.org/downloads/) 安装 Python。 
    * 从 [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) 安装 pip（如果未从“Python 安装”进行安装）。
-   * 使用以下命令验证 Python 和 pip 是否成功安装。 (可选)
-
-        ![检查 Python pip 版本命令](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+   * （可选）使用命令和分别验证是否已成功安装 Python 和 pip `python --version` `pip --version` 。 
 
      > [!NOTE]
      > 建议手动安装 Python，而不是使用 macOS 默认版本。

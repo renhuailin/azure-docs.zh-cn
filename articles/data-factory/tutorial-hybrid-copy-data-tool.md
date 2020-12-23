@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 11/09/2020
+ms.openlocfilehash: d9cf9729d8be77845572efd9ef6e2486ddceaaaf
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660944"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002828"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -44,12 +44,12 @@ ms.locfileid: "84660944"
 ### <a name="azure-roles"></a>Azure 角色
 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须分配有“参与者”或“所有者”角色，或者必须是 Azure 订阅的管理员。
 
-若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
+若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
 在本教程中，需将 SQL Server 数据库用作源数据存储。 在本教程中创建的数据工厂中的管道将数据从这个 SQL Server 数据库（源）复制到 Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。
 
-1. 启动 SQL Server Management Studio。 如果此软件尚未安装在计算机上，请访问[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+1. 启动 SQL Server Management Studio。 如果此软件尚未安装在计算机上，请访问[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 1. 使用凭据连接到 SQL Server 实例。
 
@@ -109,7 +109,7 @@ ms.locfileid: "84660944"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“+ 创建资源” > “Analytics” > “数据工厂”。
+1. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  。
 
    ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "84660944"
 1. 选择要在其中创建数据工厂的 Azure **订阅**。
 1. 对于“资源组”，请执行以下步骤之一：
 
-   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
    - 选择“新建”，并输入资源组的名称。 
         
@@ -174,7 +174,7 @@ ms.locfileid: "84660944"
 
     e. 在“用户名”下输入有权访问 SQL Server 的用户名。
 
-    f. 输入该用户的**密码**。
+    f. 输入该用户的 **密码**。
 
     g. 测试连接并选择“完成”。
 
@@ -227,7 +227,7 @@ ms.locfileid: "84660944"
 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道可将数据从 SQL Server 数据库复制到 Blob 存储。 你已了解如何执行以下操作：
+此示例中的管道可将数据从 SQL Server 数据库复制到 Blob 存储。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

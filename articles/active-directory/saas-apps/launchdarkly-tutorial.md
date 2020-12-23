@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1ffa5d359e689220bd8cdbc7b9f6e305f451269a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519631"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>教程：Azure Active Directory 与 LaunchDarkly 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88519631"
 * 可以让用户使用其 Azure AD 帐户自动登录到 LaunchDarkly（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -90,7 +90,7 @@ ms.locfileid: "88519631"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "88519631"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![LaunchDarkly 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中键入 URL：`app.launchdarkly.com`
 
@@ -113,9 +113,9 @@ ms.locfileid: "88519631"
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://app.launchdarkly.com`
 
-    ![LaunchDarkly 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -135,19 +135,19 @@ ms.locfileid: "88519631"
 
 2. 从左侧导航面板中选择“帐户设置”  。
 
-    ![LaunchDarkly 配置](./media/launchdarkly-tutorial/configure1.png)
+    ![屏幕截图显示在“生产”下选择了“帐户设置”项。](./media/launchdarkly-tutorial/configure1.png)
 
 3. 单击“安全”选项卡  。
 
-    ![LaunchDarkly 配置](./media/launchdarkly-tutorial/configure2.png)
+    ![屏幕截图显示帐户设置的“安全性”选项卡。](./media/launchdarkly-tutorial/configure2.png)
 
 4. 单击“启用 SSO”，然后单击“编辑 SAML 配置”   。
 
-    ![LaunchDarkly 配置](./media/launchdarkly-tutorial/configure3.png)
+    ![屏幕截图显示可在其中启用 SSO 和编辑 SAML 配置的“单一登录”页。](./media/launchdarkly-tutorial/configure3.png)
 
 5. 在“编辑 SAML 配置”  部分执行以下步骤：
 
-    ![LaunchDarkly 配置](./media/launchdarkly-tutorial/configure4.png)
+    ![屏幕截图显示可在其中进行此处所述的更改的“编辑 SAML 配置”部分。](./media/launchdarkly-tutorial/configure4.png)
 
     a. 复制实例的“SAML 使用者服务 URL”并将其粘贴到 Azure 门户上“LaunchDarkly 域和 URL”部分的“回复 URL”文本框中   。
 
@@ -213,18 +213,18 @@ ms.locfileid: "88519631"
 本部分的目的是在 LaunchDarkly 中创建名为 Britta Simon 的用户。 LaunchDarkly 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 尝试访问 LaunchDarkly 期间，如果尚不存在用户，则会创建一个新用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系  [LaunchDarkly 客户端支持团队](mailto:support@launchdarkly.com)。
+> 如果需要手动创建用户，请联系 [LaunchDarkly 客户端支持团队](mailto:support@launchdarkly.com)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 LaunchDarkly 磁贴时，应会自动登录到为其设置了 SSO 的 LaunchDarkly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 LaunchDarkly 磁贴时，应会自动登录到为其设置了 SSO 的 LaunchDarkly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

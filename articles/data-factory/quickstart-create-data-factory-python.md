@@ -3,8 +3,8 @@ title: 快速入门：使用 Python 创建 Azure 数据工厂
 description: 使用数据工厂将数据从 Azure Blob 存储中的一个位置复制到另一位置。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cc25ce4aa51535bbfd03d99ed413afa66a184fdb
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89439106"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508775"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -32,7 +32,7 @@ ms.locfileid: "89439106"
 
 Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 可以使用 Azure 数据工厂创建和计划数据驱动型工作流（称为管道）。
 
-管道可以从不同的数据存储引入数据。 管道使用计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理或转换数据。 管道将输出数据发布到数据存储（例如 Azure Synapse Analytics [旧称 SQL 数据仓库]），供商业智能 (BI) 应用程序使用。
+管道可以从不同的数据存储引入数据。 管道使用计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理或转换数据。 管道将输出数据发布到数据存储（例如 Azure Synapse Analytics），供商业智能 (BI) 应用程序使用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +44,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 * [Azure 存储资源管理器](https://storageexplorer.com/)（可选）。
 
-* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。
+* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥** 和 **租户 ID**。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。
 
 ## <a name="create-and-upload-an-input-file"></a>创建并上传输入文件
 
@@ -58,7 +58,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 ## <a name="install-the-python-package"></a>安装 Python 包
 
-1. 使用管理员特权打开一个终端或命令提示符。 
+1. 使用管理员特权打开一个终端或命令提示符。 
 2. 首先，安装 Azure 管理资源的 Python 包：
 
     ```python
@@ -141,7 +141,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-向 **Main** 方法中添加用于创建**数据工厂**的以下代码。 如果资源组已存在，请注释掉第一个 `create_or_update` 语句。
+向 **Main** 方法中添加用于创建 **数据工厂** 的以下代码。 如果资源组已存在，请注释掉第一个 `create_or_update` 语句。
 
 ```python
     # create the resource group
@@ -159,7 +159,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 ## <a name="create-a-linked-service"></a>创建链接服务
 
-在 **Main** 方法中添加用于创建 **Azure 存储链接服务**的以下代码。
+在 **Main** 方法中添加用于创建 **Azure 存储链接服务** 的以下代码。
 
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在此快速入门中，只需创建一个同时作为复制源和接收器存储的 Azure 存储链接服务，在示例中名为“AzureStorageLinkedService”。 将 `<storageaccountname>` 和 `<storageaccountkey>` 替换为 Azure 存储帐户的名称和密钥。
 
@@ -212,7 +212,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 ## <a name="create-a-pipeline"></a>创建管道
 
-向 **Main** 方法中添加用于创建**包含复制活动的管道**的以下代码。
+向 **Main** 方法中添加用于创建 **包含复制活动的管道** 的以下代码。
 
 ```python
     # Create a copy activity
@@ -233,7 +233,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 ## <a name="create-a-pipeline-run"></a>创建管道运行
 
-在 **Main** 方法中添加用于**触发管道运行**的以下代码。
+在 **Main** 方法中添加用于 **触发管道运行** 的以下代码。
 
 ```python
     #Create a pipeline run.
@@ -421,7 +421,7 @@ main()
 
 下面是示例输出：
 
-```json
+```console
 Name: <data factory name>
 Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DataFactory/factories/<data factory name>
 Location: eastus

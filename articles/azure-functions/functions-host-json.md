@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321843"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654806"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -117,6 +117,11 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
     "managedDependency": {
         "enabled": true
     },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -124,7 +129,8 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -138,7 +144,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 此设置是[日志记录](#logging)的子项。
 
-Application Insights 的控制选项，包括[采样选项](./functions-monitoring.md#configure-sampling)。
+Application Insights 的控制选项，包括[采样选项](./configure-monitoring.md#configure-sampling)。
 
 若要了解完整的 JSON 结构，请参阅前面的[示例 host.json 文件](#sample-hostjson-file)。
 
@@ -156,6 +162,8 @@ Application Insights 的控制选项，包括[采样选项](./functions-monitori
 | snapshotConfiguration | 不适用 | 请参阅 [applicationInsights.snapshotConfiguration](#applicationinsightssnapshotconfiguration)。 |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
+
+有关这些设置的详细信息，请参阅 [Application Insights 中的采样](../azure-monitor/app/sampling.md)。 
 
 |属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
@@ -212,6 +220,28 @@ Application Insights 的控制选项，包括[采样选项](./functions-monitori
 
 可在 [Cosmos DB 触发器和绑定](functions-bindings-cosmosdb-v2-output.md#host-json)中查找配置设置。
 
+## <a name="customhandler"></a>customHandler
+
+自定义处理程序的配置设置。 有关详细信息，请参阅 [Azure Functions 自定义处理程序](functions-custom-handlers.md#configuration)。
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|properties | 默认 | 说明 |
+| --------- | --------- | --------- |
+| defaultExecutablePath | 不适用 | 要作为自定义处理程序进程启动的可执行文件。 当使用自定义处理程序，并且它的值相对于 function app root 时，它是必需的设置。 |
+| workingDirectory | *函数应用根* | 要在其中启动自定义处理程序进程的工作目录。 它是一个可选设置，它的值相对于 function app root。 |
+| 参数 | 不适用 | 要传递给自定义处理程序进程的命令行参数的数组。 |
+| enableForwardingHttpRequest | false | 如果设置，则仅包含 HTTP 触发器和 HTTP 输出的所有函数都将转发原始 HTTP 请求，而不是自定义处理程序 [请求负载](functions-custom-handlers.md#request-payload)。 |
+
 ## <a name="durabletask"></a>durableTask
 
 可在 [Durable Functions 的绑定](durable/durable-functions-bindings.md#host-json)中查找配置设置。
@@ -250,7 +280,7 @@ Application Insights 的控制选项，包括[采样选项](./functions-monitori
 | 高级<sup>1</sup> | 30 | -1（无限制）<sup>2</sup> |
 | 专用（应用服务） | 30 | -1（无限制）<sup>2</sup> |
 
-<sup>1</sup> 只有60分钟才保证高级计划执行，但在技术上不受限制。   
+<sup>1</sup> 高级计划执行只能保证 60 分钟，但技术上不限时长。   
 <sup>2</sup> 值为 `-1` 表示无限制执行，但建议保留固定上限。
 
 ```json
@@ -310,7 +340,7 @@ Application Insights 的控制选项，包括[采样选项](./functions-monitori
 |属性  |默认 | 说明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
-|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 2\.x 及更高版本遵循 ASP.NET Core 布局进行日志类别筛选。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
+|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 2\.x 及更高版本遵循 ASP.NET Core 布局进行日志类别筛选。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)。 |
 |控制台|不适用| [控制台](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
 
@@ -336,7 +366,7 @@ Application Insights 的控制选项，包括[采样选项](./functions-monitori
 
 ## <a name="manageddependency"></a>managedDependency
 
-托管依赖项是一项功能，目前仅支持基于 PowerShell 的函数。 它使依赖项可以由服务自动管理。 `enabled` 属性设置为 `true` 时，`requirements.psd1` 文件会被处理。 发布任何次要版本时会更新依赖项。 有关详细信息，请参阅 PowerShell 文章中的 [托管依赖项](functions-reference-powershell.md#dependency-management) 。
+托管依赖项是一项功能，目前仅支持基于 PowerShell 的函数。 它使依赖项可以由服务自动管理。 `enabled` 属性设置为 `true` 时，`requirements.psd1` 文件会被处理。 发布任何次要版本时会更新依赖项。 有关详细信息，请参阅 PowerShell 文章中的[托管依赖项](functions-reference-powershell.md#dependency-management)。
 
 ```json
 {
@@ -349,6 +379,28 @@ Application Insights 的控制选项，包括[采样选项](./functions-monitori
 ## <a name="queues"></a>queues
 
 可在[存储队列触发器和绑定](functions-bindings-storage-queue-output.md#host-json)中查找设置。  
+
+## <a name="retry"></a>retry
+
+控制应用中所有执行的[重试策略](./functions-bindings-error-pages.md#retry-policies-preview)选项。
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|properties  |默认 | 描述 |
+|---------|---------|---------| 
+|strategy|null|必需。 要使用的重试策略。 有效值为 `fixedDelay` or `exponentialBackoff`进行求值的基于 SQL 语言的筛选器表达式。|
+|maxRetryCount|null|必需。 每个函数执行允许的最大重试次数。 `-1` 表示无限重试。|
+|delayInterval|null|使用 `fixedDelay` 策略时在重试之间使用的延迟。|
+|minimumInterval|null|使用 `exponentialBackoff` 策略时的最小重试延迟。|
+|maximumInterval|null|使用 `exponentialBackoff` 策略时的最大重试延迟。| 
 
 ## <a name="sendgrid"></a>SendGrid
 
@@ -374,7 +426,7 @@ Application Insights 的控制选项，包括[采样选项](./functions-monitori
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -393,6 +445,16 @@ Application Insights 的控制选项，包括[采样选项](./functions-monitori
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="watchfiles"></a>watchFiles
+
+一个或多个文件名称的数组，这些文件将监视需要重新启动应用的更改。  这可保证当这些文件中的代码更改时，这些更新会由函数选取。
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 

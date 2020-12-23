@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395764"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842747"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
 本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
 
-## <a name="role-based-access-control"></a>基于角色的访问控制
+## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
-基于角色的访问控制 (RBAC) 为 Azure 资源提供详细的访问管理。 使用 RBAC，可以仅授予用户执行其作业所需的访问权限。 RBAC 还有助于确保用户离开组织后无法访问云中的资源。
+Azure RBAC) 的 azure 基于角色的访问控制 (提供 Azure 资源的详细访问管理。 使用 Azure RBAC，可以仅向用户授予执行作业所需的访问权限。 Azure RBAC 还可以帮助你确保当用户离开组织时，他们将失去对云中资源的访问权限。
 
 了解详细信息：
 
-* [有关 RBAC 的 Active Directory 团队博客](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [有关 Azure RBAC 的 Active Directory 团队博客](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>反恶意软件
@@ -48,25 +48,25 @@ ms.locfileid: "91395764"
 
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](antimalware.md)
-* [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](/azure/virtual-machines/windows/classic/install-trend)
-* [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](/azure/virtual-machines/windows/classic/install-symantec)
+* [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](../../virtual-machines/extensions/trend.md)
+* [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../../virtual-machines/extensions/symantec.md)
 * [New Antimalware Options for Protecting Azure Virtual Machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)（用于保护 Azure 虚拟机的新反恶意软件选项）
 
 ## <a name="multi-factor-authentication"></a>多重身份验证
 
-Azure 多重身份验证是一种需要使用多种验证方法的身份验证方法。 它为用户登录和事务添加了关键的附加安全层。
+Azure AD 多重身份验证是一种需要使用多个验证方法的身份验证方法。 它为用户登录和事务添加了关键的附加安全层。
 
 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码）和第三方 OATH 令牌来提供强大的身份验证。
 
 了解详细信息：
 
 * [多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [什么是 Azure 多重身份验证？](/azure/active-directory/authentication/multi-factor-authentication)
-* [Azure 多重身份验证的工作原理](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [什么是 Azure AD 多重身份验证？](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD 多重身份验证的工作原理](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
-可使用 Azure ExpressRoute 通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 通过 ExpressRoute，可以建立与 Microsoft 云服务（如 Azure、Microsoft 365 和 CRM Online）的连接。 连接可以来自：
+可使用 Azure ExpressRoute 通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Azure、Microsoft 365 和 CRM Online 等 Microsoft 云服务建立连接。 连接可以来自：
 
 * 任意位置之间的 (IP VPN) 网络。
 * 点到点以太网。
@@ -112,7 +112,7 @@ Azure AD 标识保护提供了可疑登录活动和潜在漏洞的统一视图�
 
 了解详细信息：
 
-* [Azure Active Directory 标识保护](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory 标识保护](../../active-directory/identity-protection/overview-identity-protection.md)
 * [第 9 频道：Azure AD 和标识展示：“标识保护”预览](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>安全中心
@@ -129,8 +129,8 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 
 了解详细信息：
 
-* [Azure 安全中心简介](../../security-center/security-center-intro.md)
-* [提高 Azure 安全中心中的安全评分](../../security-center/security-center-secure-score.md)
+* [Azure 安全中心简介](../../security-center/security-center-introduction.md)
+* [提高 Azure 安全中心中的安全评分](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 

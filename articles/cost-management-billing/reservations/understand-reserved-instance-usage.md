@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 522b67e62e7ad8560bb48e8d056ca6daeeb45251
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447883"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350902"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>了解采用即用即付费率的个人订阅的 Azure 预留使用情况
 
@@ -47,13 +47,13 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 ### <a name="daily-usage-section-of-csv-file"></a>CSV 文件的“每日使用情况”部分
 
-筛选“其他信息”，并键入**预留 ID**。 以下屏幕截图显示了与预订相关的字段。
+筛选“其他信息”，并键入 **预留 ID**。 以下屏幕截图显示了与预订相关的字段。
 
 ![每日使用详细信息及收费的屏幕截图](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
 1. “其他信息”字段中的 **ReservationId** 是应用到 VM 的预留。
 2. **ConsumptionMeter** 是 VM 的计量 ID。
-3. “预留-基础 VM”**计量子类别**行表示声明部分中的 0 美元成本。 已通过预留支付了运行此 VM 的成本。
+3. “预留-基础 VM”**计量子类别** 行表示声明部分中的 0 美元成本。 已通过预留支付了运行此 VM 的成本。
 4. “计量 ID”是预留的计量 ID。 此计量的成本是 0 美元。 对于任何符合预留折扣条件的 VM，将显示此计量 ID。
 5. Standard_DS1_v2 是 1 vCPU VM，此 VM 在不使用 Azure 混合权益的情况下部署。 因此，此计量涉及 Windows 软件的额外费用。 若要查找与 D 系列 1 核心 VM 相对应的计量，请参阅 [Azure 虚拟机预留实例 Windows 软件成本](reserved-instance-windows-software-costs.md)。 如果有 Azure 混合权益，则不会收取此额外费用。
 
@@ -80,7 +80,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 ### <a name="detail-section-of-csv-file"></a>CSV 文件的详细信息部分
 
-筛选“其他信息”，并键入**预留 ID**。 以下屏幕截图显示了与 SQL 数据库预留容量预订相关的字段。
+筛选“其他信息”，并键入 **预留 ID**。 以下屏幕截图显示了与 SQL 数据库预留容量预订相关的字段。
 
 ![屏幕截图显示预留容量的 CSV 文件的详细信息。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
@@ -97,7 +97,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
 - [什么是 Azure 预订？](save-compute-costs-reservations.md)
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 预留项](manage-reserved-vm-instance.md)
 - [了解预留折扣的应用方式](../manage/understand-vm-reservation-charges.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 067dccdd420f9ff293c74378b2d3c0eaa8ace550
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 290d70e4dc83a4db0b1c0c31e9d60a32d124dc75
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546978"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459316"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-josa"></a>教程：Azure Active Directory 与 JOSA 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546978"
 * 让用户使用其 Azure AD 帐户自动登录到 JOSA。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -75,7 +75,7 @@ ms.locfileid: "88546978"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分，如果有**服务提供程序元数据文件**，请执行以下步骤：
+1. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件** ，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -128,24 +128,24 @@ ms.locfileid: "88546978"
 
 ## <a name="configure-josa-sso"></a>配置 JOSA SSO
 
-若要在 **JOSA** 端配置单一登录，需要将**应用联合元数据 URL** 发送给 [JOSA 支持团队](mailto:hr@alldialogue.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **JOSA** 端配置单一登录，需要将 **应用联合元数据 URL** 发送给 [JOSA 支持团队](mailto:hr@alldialogue.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-josa-test-user"></a>创建 JOSA 测试用户
 
-在本部分中，将在 JOSA 中创建名为 B.Simon 的用户。 与  [JOSA 支持团队](mailto:hr@alldialogue.com)协作，将用户添加到 JOSA 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 JOSA 中创建名为 B.Simon 的用户。 与 [JOSA 支持团队](mailto:hr@alldialogue.com)协作，在 JOSA 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 JOSA 磁贴时，应会自动登录到为其设置了 SSO 的 JOSA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 JOSA 磁贴时，应会自动登录到为其设置了 SSO 的 JOSA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试通过 Azure AD 使用 JOSA](https://aad.portal.azure.com/)

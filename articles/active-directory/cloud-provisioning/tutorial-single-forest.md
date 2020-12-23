@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a63bd6be9b21a506054ab5a02fa7f5d6751f303a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ad5147971fc42e65e4621c8a3f0a98e01f2e0339
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228369"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237284"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>教程：将单个林与单个 Azure AD 租户集成
 
@@ -43,6 +43,7 @@ ms.locfileid: "89228369"
      | --- | --- |
      | **80** | 下载证书吊销列表 (CRL) 的同时验证 TLS/SSL 证书 |
      | **443** | 处理与服务的所有出站通信 |
+     | **8082** | 为安装所需|
      | **8080**（可选） | 如果端口 443 不可用，代理将每隔 10 分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 |
      
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
@@ -55,25 +56,25 @@ ms.locfileid: "89228369"
 2. 使用仅限云的全局管理员凭据登录到 Azure 门户。
 3. 在左侧选择“Azure Active Directory”，单击“Azure AD Connect”，然后在中心位置选择“管理预配(预览版)”  。
 
-   ![Azure 门户](media/how-to-install/install6.png)
+   ![Azure 门户](media/how-to-install/install-6.png)
 
 4. 单击“下载代理”。
 5. 运行 Azure AD Connect 预配代理。
-6. 在初始屏幕上**接受**许可条款，然后单击“安装”。
+6. 在初始屏幕上 **接受** 许可条款，然后单击“安装”。
 
-   ![欢迎屏幕](media/how-to-install/install1.png)
+   ![显示“Microsoft Azure AD Connect 预配代理包”初始屏幕的屏幕截图。](media/how-to-install/install-1.png)
 
 7. 此操作完成后，将启动配置向导。  使用 Azure AD 全局管理员帐户登录。  请注意，如果启用了 IE 增强的安全性，将会阻止登录。  如果存在这种情况，请关闭安装，服务器管理器中禁用 IE 增强的安全性，然后单击“AAD Connect 预配代理向导”重新开始安装。
 8. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 域管理员帐户登录。   注意：域管理员帐户不应附带密码更改要求。 如果密码过期或发生更改，则需要使用新凭据重新配置代理。 此操作将添加本地目录。  单击“下一步”。
 
-   ![欢迎屏幕](media/how-to-install/install3.png)
+   ![“连接 Active Directory”屏幕的屏幕截图。](media/how-to-install/install-3a.png)
 
 9. 在“配置完成”屏幕上，单击“确认”。   此操作将注册并重启代理。
 
-   ![欢迎屏幕](media/how-to-install/install4.png)
+   ![显示“配置完成”屏幕的屏幕截图。](media/how-to-install/install-4a.png)
 
 10. 此操作完成后，会显示一条通知：“已成功验证代理配置”。  可以单击“退出”。</br>
-![欢迎屏幕](media/how-to-install/install5.png)</br>
+![欢迎屏幕](media/how-to-install/install-5.png)</br>
 11. 如果仍然显示了初始屏幕，请单击“关闭”。
 
 
@@ -85,13 +86,13 @@ ms.locfileid: "89228369"
 
 1. 登录到 Azure 门户。
 2. 在左侧选择“Azure Active Directory”，单击“Azure AD Connect”，然后在中心位置选择“管理预配(预览版)”。  </br>
-![Azure 门户](media/how-to-install/install6.png)</br>
+![Azure 门户](media/how-to-install/install-6.png)</br>
 
 3.  在“Azure AD 预配(预览版)”屏幕上，单击“查看所有代理”。 
-![Azure AD 预配](media/how-to-install/install7.png)</br>
+![Azure AD 预配](media/how-to-install/install-7.png)</br>
  
-4. 在**本地预配代理屏幕上**，将看到已安装的代理。  验证相关的代理是否在该屏幕上，并且标记为“活动”。
-![预配代理](media/how-to-install/verify1.png)</br>
+4. 在 **本地预配代理屏幕上**，将看到已安装的代理。  验证相关的代理是否在该屏幕上，并且标记为“活动”。
+![预配代理](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>在本地服务器上
 若要验证代理是否正在运行，请执行以下步骤：
@@ -99,7 +100,7 @@ ms.locfileid: "89228369"
 1.  使用管理员帐户登录到服务器
 2.  导航到“服务”或者转到“开始”>“运行”并输入 Services.msc，打开“服务”。
 3.  确保“Microsoft Azure AD Connect Agent Updater”和“Microsoft Azure AD Connect Provisioning Agent”包含在“服务”中，并且其状态为“正在运行”。   
-![服务](media/how-to-troubleshoot/troubleshoot1.png)
+![服务](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>配置 Azure AD Connect 云预配
  使用以下步骤配置预配
@@ -111,8 +112,8 @@ ms.locfileid: "89228369"
 ![显示“管理预配(预览版)”链接的屏幕截图。](media/how-to-configure/manage1.png)
 5.  单击“新建配置”
 ![Azure AD 预配（预览版）屏幕的屏幕截图，突出显示了“新建配置”链接。](media/tutorial-single-forest/configure1.png)
-7.  在配置屏幕上输入一条**通知电子邮件**，将选择器切换到“启用”，然后单击“保存”。 
-![“配置”屏幕的屏幕截图，已填写通知电子邮件并选择了“启用”。](media/tutorial-single-forest/configure2.png)
+7.  在配置屏幕上输入一条 **通知电子邮件**，将选择器切换到“启用”，然后单击“保存”。 
+![“配置”屏幕的屏幕截图，已填写通知电子邮件并选择了“启用”。](media/how-to-configure/configure2.png)
 1.  现在，配置状态应为“正常”。
 ![Azure AD 设置（预览版）屏幕的屏幕截图，显示“正常运行”状态。](media/how-to-configure/manage4.png)
 
@@ -121,16 +122,15 @@ ms.locfileid: "89228369"
 
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
-2. 在左侧选择“Azure Active Directory”
+2. 在左侧选择“Azure Active Directory” 
 3. 在“管理”下，选择“用户” 。
 4. 验证租户中是否显示了新用户</br>
-![同步](media/tutorial-single-forest/synchronize1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
 
 1. 浏览到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用在我们的新租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。</br>
-   ![验证](media/tutorial-single-forest/verify1.png)</br>
+   ![验证](media/tutorial-single-forest/verify-1.png)</br>
 
 现在已经成功设置了一个混合标识环境，可以使用它来测试和熟悉 Azure 提供的功能。
 

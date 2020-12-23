@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557174"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281354"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>快速入门：转换用于渲染的模型
 
@@ -27,7 +27,7 @@ ms.locfileid: "85557174"
 ## <a name="prerequisites"></a>先决条件
 
 * 完整[快速入门：使用 Unity 渲染模型](render-model.md)
-* 安装 Azure PowerShell[（文档）](https://docs.microsoft.com/powershell/azure/)
+* 对于使用 PowerShell 脚本进行的转换：安装 Azure PowerShell[（文档）](/powershell/azure/)
   * 以管理员权限打开 PowerShell
   * 运行：`Install-Module -Name Az -AllowClobber`
 
@@ -44,7 +44,7 @@ ms.locfileid: "85557174"
 * 输出数据的 Blob 存储容器
 * 要转换的模型，具体请参阅[示例模型](../samples/sample-model.md)
   * 查看[支持的源格式](../how-tos/conversion/model-conversion.md#supported-source-formats)列表
-  * 若要使用示例转换脚本，请确保准备好一个包含模型和所有外部依赖项（例如外部纹理或几何结构）的输入文件夹
+  * 要使用示例转换脚本，请确保准备好一个包含模型和所有外部依赖项（例如外部纹理或几何结构）的输入文件夹
 
 ## <a name="azure-setup"></a>Azure 设置
 
@@ -108,12 +108,21 @@ ms.locfileid: "85557174"
 
 ## <a name="run-the-conversion"></a>运行转换
 
+可通过三种不同的方法来触发模型转换：
+
+### <a name="1-conversion-via-the-arrt-tool"></a>1.通过 ARRT 工具转换
+
+可通过一个[名为 ARRT 的基于 UI 的工具](./../samples/azure-remote-rendering-asset-tool.md)开始转换并与呈现的结果交互。
+![ARRT](./../samples/media/azure-remote-rendering-asset-tool.png "ARRT 屏幕截图")
+
+### <a name="2-conversion-via-a-powershell-script"></a>2.通过 PowerShell 脚本转换
+
 为了便于调用资产转换服务，我们提供了一个实用工具脚本。 该脚本位于 Scripts 文件夹中，其名称为 Conversion.ps1。
 
 具体而言，此脚本
 
 1. 将给定目录中的所有文件从本地磁盘上传到输入存储容器
-1. 调用[资产转换 REST API](../how-tos/conversion/conversion-rest-api.md)，以便从输入存储容器检索数据并启动转换，该转换将返回转换 ID
+1. 调用[资产转换 REST API](../how-tos/conversion/conversion-rest-api.md)，以便从输入存储容器中检索数据并启动转换，该转换会返回转换 ID
 1. 使用检索到的转换 ID 轮询转换状态 API，直到转换过程以成功或失败状态终止
 1. 在输出存储中检索已转换资产的链接
 
@@ -147,7 +156,7 @@ ms.locfileid: "85557174"
 应该以类似于[使用 Unity 渲染模型快速入门](render-model.md)中所述的凭据填写 accountSettings 组中的配置（帐户 ID 和密钥）。
 
 在 assetConversionSettings 组中，请确保按上面所示更改 resourceGroup、blobInputContainerName和 blobOutputContainerName。   
-请注意，需将 arrtutorialstorage 值替换为在创建存储帐户期间选取的唯一名称。
+请注意，需将 arrtutorialstorage 的值替换为在创建存储帐户期间选取的唯一名称。
 
 将 localAssetDirectoryPath 更改为指向磁盘上包含要转换的模型的目录。 请小心使用双反斜杠（“\\\\”）来正确转义路径中的反斜杠（“\\”）。
 
@@ -166,7 +175,7 @@ Connect-AzAccount
 ```
 
 > [!NOTE]
-> 如果你的组织有多个订阅，你可能需要指定 SubscriptionId 和 Tenant 参数。 在 [Connect-AzAccount 文档](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)中可以找到详细信息。
+> 如果你的组织有多个订阅，你可能需要指定 SubscriptionId 和 Tenant 参数。 在 [Connect-AzAccount 文档](/powershell/module/az.accounts/connect-azaccount)中可以找到详细信息。
 
 切换到 `azure-remote-rendering\Scripts` 目录并运行转换脚本：
 
@@ -175,6 +184,13 @@ Connect-AzAccount
 ```
 
 应看到与下面类似的内容：![Conversion.ps1](./media/successful-conversion.png)
+
+### <a name="3-conversion-via-api-calls"></a>3.通过 API 调用转换
+
+C# 和 C++ API 都提供了用于与服务进行交互的入口点：
+* [C# AzureFrontend.StartAssetConversionAsync()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
+* [C++ AzureFrontend::StartAssetConversionAsync()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+
 
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>向快速入门示例应用中插入新模型
 
@@ -189,7 +205,7 @@ Connect-AzAccount
 转换脚本创建的 SAS URI 仅在 24 小时内有效。 不过，在此 URI 过期之后，你不需要再次转换模型。 而可以根据后续步骤中所述，在门户中创建新的 SAS：
 
 1. 转到 [Azure 门户](https://www.portal.azure.com)
-1. 单击“存储帐户”资源：![访问签名](./media/portal-storage-accounts.png)
+1. 单击“存储帐户”资源：![屏幕截图突出显示所选存储帐户资源。](./media/portal-storage-accounts.png)
 1. 在如下所示的屏幕中，单击左侧面板中的“存储资源管理器”，并在“arroutput”Blob 存储容器中找到你的输出模型（.arrAsset 文件）。  右键单击该文件，并从上下文菜单中选择“获取共享访问签名”：![访问签名](./media/portal-storage-explorer.png)
 1. 此时会打开一个新屏幕，在其中可以选择过期日期。 按“创建”，并复制下一个对话框中显示的 URI。 这一新 URI 将替换脚本创建的临时 URI。
 

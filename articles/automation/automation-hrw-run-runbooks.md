@@ -1,16 +1,16 @@
 ---
 title: 在混合 Runbook 辅助角色上运行 Azure 自动化 Runbook
-description: 本文介绍如何通过混合 Runbook 辅助角色在本地数据中心或其他云提供商的计算机上运行 runbook。
+description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据中心或其他云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f1c703f2bd2e90e15c566b7e04e8a878c16f6de
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: b73fa80085cc0491c8b4d0856d0baacfef1b51c0
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772815"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301541"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中运行 Runbook
 
@@ -20,9 +20,9 @@ ms.locfileid: "91772815"
 
 ## <a name="plan-runbook-job-behavior"></a>计划 Runbook 作业行为
 
-Azure 自动化以不同于 Azure 沙盒中运行的作业来处理混合 Runbook 辅助角色上的作业。 对于长时间运行的 runbook，请确保它能在重启后复原。 有关作业行为的详细信息，请参阅[混合 Runbook 辅助角色作业](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)。
+Azure 自动化处理混合 Runbook 辅助角色上的作业的方式不同于处理 Azure 沙盒中运行的作业的方式。 对于长时间运行的 runbook，请确保它能在重启后复原。 有关作业行为的详细信息，请参阅[混合 Runbook 辅助角色作业](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)。
 
-混合 Runbook 辅助角色的作业在 Windows 上的本地 **系统** 帐户下运行，或在 Linux 上的 **nxautomation** 帐户下运行。 对于 Linux，验证 **nxautomation** 帐户是否有权访问存储 runbook 模块的位置。 使用 [Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请确保为 `Scope` 参数指定 AllUsers，以确保 nxautomation 帐户具有访问权限。 有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 PowerShell 的已知问题](/powershell/scripting/whats-new/known-issues-ps6#known-issues-for-powershell-on-non-windows-platforms)。
+混合 Runbook 辅助角色的作业在 Windows 上的本地 System 帐户下运行，或者在 Linux 上的 nxautomation 帐户下运行。 对于 Linux，请确保 nxautomation 帐户有权访问 Runbook 模块的存储位置。 使用 [Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请确保为 `Scope` 参数指定 AllUsers，以确保 nxautomation 帐户具有访问权限。 有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 PowerShell 的已知问题](/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1)。
 
 ## <a name="configure-runbook-permissions"></a>配置 runbook 权限
 
@@ -74,7 +74,7 @@ Azure 虚拟机上的混合 Runbook 辅助角色可以使用托管标识来向 A
 
 ### <a name="use-runbook-authentication-with-run-as-account"></a>将 Runbook 身份验证与运行方式帐户结合使用
 
-不需要让 Runbook 将自身的身份验证提供给本地资源，但可以针对混合 Runbook 辅助角色组指定运行方式帐户。 若要指定运行方式帐户，你必须定义有权访问本地资源的 [凭据资产](./shared-resources/credentials.md) 。 这些资源包括证书存储，所有 Runbook 在组中的混合 Runbook 辅助角色上使用这些凭据运行。
+不需要让 Runbook 将自身的身份验证提供给本地资源，但可以针对混合 Runbook 辅助角色组指定运行方式帐户。 若要指定运行方式帐户，必须定义有权访问本地资源的[凭据资产](./shared-resources/credentials.md)。 这些资源包括证书存储，所有 Runbook 在组中的混合 Runbook 辅助角色上使用这些凭据运行。
 
 凭据的用户名必须采用以下格式之一：
 
@@ -98,7 +98,7 @@ Azure 虚拟机上的混合 Runbook 辅助角色可以使用托管标识来向 A
 以下 PowerShell Runbook 称为 Export-RunAsCertificateToHybridWorker，其从 Azure 自动化帐户导出运行方式证书。 Runbook 下载证书并将其导入到连接到同一帐户的混合 Runbook 辅助角色上的本地计算机证书存储中。 完成该步骤后，Runbook 会验证辅助角色能否成功地使用运行方式帐户对 Azure 进行身份验证。
 
 >[!NOTE]
->此 PowerShell runbook 不是设计的，也不应作为目标计算机上的脚本在你的自动化帐户之外运行。
+>此 PowerShell Runbook 并非设计为或旨在作为目标计算机上的脚本在自动化帐户之外运行。
 >
 
 ```azurepowershell-interactive
@@ -277,7 +277,7 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 
 ### <a name="make-the-keyring-available-to-the-hybrid-runbook-worker"></a>使 keyring 可供混合 Runbook 辅助角色使用
 
-创建 keyring 后，需要使其可供混合 Runbook 辅助角色使用。 修改设置文件 **home/nxautomation/state/worker. 会议** ，将以下示例代码包含在文件部分下 `[worker-optional]` 。
+创建 keyring 后，需要使其可供混合 Runbook 辅助角色使用。 修改设置文件 home/nxautomation/state/worker.conf，在该文件的 `[worker-optional]` 节下添加以下示例代码。
 
 ```bash
 gpg_public_keyring_path = /home/nxautomation/run/.gnupg/pubring.kbx
@@ -305,7 +305,7 @@ gpg –-clear-sign <runbook name>
 
 ## <a name="start-a-runbook-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中启动 Runbook
 
-[在 Azure 自动化中启动 Runbook](start-runbooks.md) 介绍了用于启动 Runbook 的不同方法。 在混合 Runbook 辅助角色上启动 runbook 使用 **"运行方式"** 选项，该选项允许你指定混合 Runbook 辅助角色组的名称。 指定组时，该组中的其中一个辅助角色检索和运行 Runbook。 如果 Runbook 未指定此选项，Azure 自动化会照常运行 Runbook。
+[在 Azure 自动化中启动 Runbook](start-runbooks.md) 介绍了用于启动 Runbook 的不同方法。 在混合 Runbook 辅助角色上启动 Runbook 的操作将使用“运行位置”选项，该选项允许你指定混合 Runbook 辅助角色组的名称。 指定组时，该组中的其中一个辅助角色检索和运行 Runbook。 如果 Runbook 未指定此选项，Azure 自动化会照常运行 Runbook。
 
 在 Azure 门户中启动 Runbook 时，会看到一个“运行位置”选项，可以在其中选择“Azure”或“混合辅助角色”  。 如果选择“混合辅助角色”，则可以从下拉列表中选择混合 Runbook 辅助角色组。
 
@@ -326,5 +326,5 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 ## <a name="next-steps"></a>后续步骤
 
 * 如果 Runbook 未成功完成，请查看 [Runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
-* 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅 [Powershell 文档](/powershell/scripting/overview)。
+* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](/powershell/scripting/overview)。
 * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation#automation)。

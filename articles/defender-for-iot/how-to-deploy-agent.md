@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8e18b79cc14fe98879ec97361f6e275d8fd918bb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934846"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339959"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>在 IoT 设备上选择并部署安全代理
 
@@ -45,15 +45,15 @@ Defender for IoT 提供监视和收集 IoT 设备数据的安全代理的参考�
 | **开源** | [GitHub](https://aka.ms/iot-security-github-c)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 | [GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 |
 | **开发语言**    | C | C# |
 | **支持的 Windows 平台？** | 否 | 是 |
-| **Windows 先决条件** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Windows 先决条件** | --- | [WMI](/windows/desktop/wmisdk/) |
 | **支持的 Linux 平台？** | 是、x64 和 x86 | 是，仅 x64 |
 | **Linux 先决条件** | libunwind8、libcurl3、uuid-runtime、审核、audispd-插件 | libunwind8，libcurl3，uuid-runtime，审核，audispd-插件，sudo，netstat，iptables |
 | **磁盘占用量** | 10.5 MB | 90 MB |
 | **平均) 内存占用量 (** | 5.5 MB | 33 MB |
-| **向 IoT 中心进行[身份验证](concept-security-agent-authentication-methods.md)** | 是 | 是 |
+| **向 IoT 中心进行 [身份验证](concept-security-agent-authentication-methods.md)** | 是 | 是 |
 | **安全数据 [收集](how-to-agent-configuration.md#supported-security-events)** | 是 | 是 |
 | **事件聚合** | 是 | 是 |
-| **通过[安全模块](concept-security-module.md)克隆远程配置** | 是 | 是 |
+| **通过 [安全模块](concept-security-module.md)克隆远程配置** | 是 | 是 |
 
 ## <a name="security-agent-installation-guidelines"></a>安全代理安装指南
 
@@ -81,7 +81,7 @@ Defender for IoT 提供监视和收集 IoT 设备数据的安全代理的参考�
 两种代理风格都提供了相同的功能集，并支持类似的配置选项。
 有关详细信息，请参阅 [安全代理比较](how-to-deploy-agent.md#understand-security-agent-options) 。
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 
 以下列表包含当前支持的所有平台。
 

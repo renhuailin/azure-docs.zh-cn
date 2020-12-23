@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91660898"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621342"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
-本文介绍了向商业市场发布集成解决方案的总体过程和要求。 在单个捆绑产品/服务中，集成解决方案结合了软件供应商的点解决方案技术与服务合作伙伴的部署和支持。 服务合作伙伴在 Microsoft AppSource 或 Azure 市场中将产品/服务作为[咨询服务](./consulting-services.md)列出。
+本文介绍了向商业市场发布集成解决方案的总体过程和要求。 在单个捆绑产品/服务中，集成解决方案结合了软件供应商的点解决方案技术与服务合作伙伴的部署和支持。 服务合作伙伴在 Microsoft AppSource 或 Azure 市场中将产品/服务作为[咨询服务](./plan-consulting-service-offer.md)列出。
 
 集成解决方案旨在解决特定客户的需求或方案。 提供商首先要了解行业所面临的挑战或难点。 然后，他们可以将两种或更多同类最佳技术相集成，为客户创造统一且可重复的部署体验。 提供商可以让客户快速启动和运行。 他们为客户提供单一的联系点，进而提供相关的自定义、咨询和解决方案支持。 其结果是一个集成的解决方案，其中包括技术和服务。
 
@@ -32,18 +32,17 @@ ms.locfileid: "91660898"
 ## <a name="eligibility-criteria"></a>资格条件
 
 * 参与合作伙伴必须具有 MPN ID。
-* 参与的服务提供商应准备好进行联合销售。
-* 参与的软件供应商应准备好进行 IP 联合销售。
+* 参与服务提供商应 [共同销售](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+* 参与的软件供应商应该是 [IP 联销售准备就绪](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
 * 至少一个参与合作伙伴必须具有以下某个领域的黄金资格：
-
-    * 应用程序开发
-    * 应用程序集成
-    * 应用程序生命周期管理
-    * 云平台
-    * 数据分析
-    * 数据中心
-    * 数据平台
-    * DevOps
+    - 应用程序开发
+    - 应用程序集成
+    - 应用程序生命周期管理
+    - 云平台
+    - 数据分析
+    - 数据中心
+    - 数据平台
+    - DevOps
 
 * 解决方案必须包含至少两个合作伙伴组织，将 IP 和服务组合在一起，以形成完整的客户解决方案和体验。
 * 必须在 Azure、Dynamics 365 或 Power Platform 上构建合作伙伴 IP。
@@ -104,7 +103,7 @@ ms.locfileid: "91660898"
 
 ## <a name="publish-your-integrated-solution"></a>发布集成解决方案
 
-完成技术集成和营销宣传后，请参阅 [Microsoft AppSource 和 Azure 市场咨询服务](./consulting-services.md)发布者指南。 使用此资源确定是否将在 Microsoft AppSource 或 Azure 市场中发布解决方案。 还可以使用指南准备发布项目并完成发布过程。
+完成技术集成和营销宣传后，请参阅 [Microsoft AppSource 和 Azure 市场咨询服务](./plan-consulting-service-offer.md)发布者指南。 使用此资源确定是否将在 Microsoft AppSource 或 Azure 市场中发布解决方案。 还可以使用指南准备发布项目并完成发布过程。
 
 尽管有五种服务类型可用于咨询服务产品，但集成解决方案必须是概念证明或完整实现。
 

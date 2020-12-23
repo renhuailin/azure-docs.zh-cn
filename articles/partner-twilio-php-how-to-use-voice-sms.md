@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 2ce0e34032d8f0d07af3a7dcd3c47558814be7bd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: bf1ab01b39d594002bc5e677ffe6c3049fbb91ce
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826823"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521013"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>如何通过 PHP 使用 Twilio 实现语音和 SMS 功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅 [后续步骤](#NextSteps) 部分。
@@ -38,20 +38,20 @@ Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 谓词
-API 利用了 Twilio 谓词;例如， ** &lt; 口述 &gt; **谓词指示 Twilio 在调用时呼叫时传递一条消息。
+API 利用了 Twilio 谓词;例如， **&lt; 口述 &gt;** 谓词指示 Twilio 在调用时呼叫时传递一条消息。
 
 下面是 Twilio 谓词的列表。 通过 [Twilio 标记语言文档](https://www.twilio.com/docs/api/twiml)了解其他谓词和功能。
 
-* ** &lt; 拨 &gt; **：将呼叫方连接到其他电话。
-* ** &lt; 收集 &gt; **：收集在电话键盘上输入的数字。
-* ** &lt; 挂断 &gt; **：结束呼叫。
-* ** &lt; Play &gt; **：播放音频文件。
-* ** &lt; 暂停 &gt; **：在指定的秒数后自动等待。
-* ** &lt; 记录 &gt; **：记录调用方的声音并返回包含该记录的文件的 URL。
-* ** &lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
-* ** &lt; 拒绝 &gt; **：拒绝对 Twilio 号码的传入呼叫而不向你计费
-* ** &lt; 例如 &gt; **：将文本转换为在调用时发出的语音。
-* ** &lt; Sms &gt; **：发送短信。
+* **&lt; 拨 &gt;**：将呼叫方连接到其他电话。
+* **&lt; 收集 &gt;**：收集在电话键盘上输入的数字。
+* **&lt; 挂断 &gt;**：结束呼叫。
+* **&lt; Play &gt;**：播放音频文件。
+* **&lt; 暂停 &gt;**：在指定的秒数后自动等待。
+* **&lt; 记录 &gt;**：记录调用方的声音并返回包含该记录的文件的 URL。
+* **&lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
+* **&lt; 拒绝 &gt;**：拒绝对 Twilio 号码的传入呼叫而不向你计费
+* **&lt; 例如 &gt;**：将文本转换为在调用时发出的语音。
+* **&lt; Sms &gt;**：发送短信。
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
@@ -72,7 +72,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>创建 Twilio 帐户
 准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][twilio_account]上标记为“帐户 SID”**** 和“身份验证令牌”**** 的字段中。
+注册 Twilio 帐户时，将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][twilio_account]上标记为“帐户 SID”和“身份验证令牌”的字段中。
 
 ## <a name="create-a-php-application"></a><a id="create_app"></a>创建 PHP 应用程序
 使用 Twilio 服务且在 Azure 中运行的 PHP 应用程序与任何其他使用 Twilio 服务的 PHP 应用程序之间没有任何差别。 Twilio 服务是基于 REST 的且可通过几种方法从 PHP 中调用，本文将重点介绍如何将 Twilio 服务与 [GitHub 提供的用于 PHP 的 Twilio 库][twilio_php]一起使用。 有关使用用于 PHP 的 Twilio 库的详细信息，请参阅 [https://www.twilio.com/docs/libraries/php][twilio_lib_docs] 。
@@ -101,7 +101,7 @@ require_once 'Services/Twilio.php';
 有关详细信息，请参阅 [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme]。
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>如何拨打传出呼叫
-下面演示了如何使用 **Services_Twilio** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。************
+下面演示了如何使用 **Services_Twilio** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。
 
 ```php
 // Include the Twilio PHP library.
@@ -262,7 +262,7 @@ catch (Exception $e)
 [howto_phonecall_php]: partner-twilio-php-make-phone-call.md
 [twilio_voice_request]: https://www.twilio.com/docs/api/twiml/twilio_request
 [twilio_sms_request]: https://www.twilio.com/docs/api/twiml/sms/twilio_request
-[misc_role_config_settings]: https://msdn.microsoft.com/library/windowsazure/hh690945.aspx
+[misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message
 [twimlet_message_url_hello_world]: https://twimlets.com/message?Message%5B0%5D=Hello%20World
 [twiml_reference]: https://www.twilio.com/docs/api/twiml

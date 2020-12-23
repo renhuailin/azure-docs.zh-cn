@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903204"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635902"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>通过 Azure Stack Edge Pro GPU 设备上的 kubectl 连接并管理 Kubernetes 群集
 
-在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以通过本机工具（如 *kubectl*），从客户端计算机本地连接和管理群集。
+在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以通过本机工具（如 *kubectl* ），从客户端计算机本地连接和管理群集。
 
-本文介绍如何连接到 Azure Stack Edge Pro 设备上的 Kubernetes 群集，然后使用 *kubectl*对其进行管理。 
+本文介绍如何连接到 Azure Stack Edge Pro 设备上的 Kubernetes 群集，然后使用 *kubectl* 对其进行管理。 
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -44,13 +44,13 @@ ms.locfileid: "90903204"
 [!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 
-## <a name="configure-cluster-access-via-rbac"></a>通过 RBAC 配置群集访问
+## <a name="configure-cluster-access-via-kubernetes-rbac"></a>通过 Kubernetes RBAC 配置群集访问
 
 创建 Kubernetes 群集后，可以使用 *kubectl* via cmdline 访问该群集。 
 
 在此方法中，您将创建命名空间和用户。 然后，将用户与命名空间相关联。 还需要获取 *配置* 文件，该文件允许你使用 Kubernetes 客户端直接与你创建的 Kubernetes 群集通信，而无需连接到 Azure Stack Edge Pro 设备的 PowerShell 接口。
 
-1. 创建命名空间。 键入：
+1. 创建命名空间。 类型：
 
     `New-HcsKubernetesNamespace -Namespace <string>` 
 
@@ -61,7 +61,7 @@ ms.locfileid: "90903204"
 
     `[10.100.10.10]: PS> New-HcsKubernetesNamespace -Namespace "myasetest1"`
 
-2. 创建一个用户并获取一个配置文件。 键入：
+2. 创建一个用户并获取一个配置文件。 类型：
 
     `New-HcsKubernetesUser -UserName <string>`
 
@@ -105,7 +105,7 @@ ms.locfileid: "90903204"
 
     ![配置文件在客户端上的位置](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
 
-5. 将命名空间与您创建的用户关联。 键入：
+5. 将命名空间与您创建的用户关联。 类型：
 
     `Grant-HcsKubernetesNamespaceAccess -Namespace <string> -UserName <string>`
 
@@ -125,7 +125,7 @@ ms.locfileid: "90903204"
     例如，如果 Kubernetes 主节点正在运行 v 1.15.2，请在客户端上安装 v 1.15.2。
 
     > [!IMPORTANT]
-    > 下载客户端，该客户端不会从主节点中倾斜多个次要版本。 客户端版本，但最多只能有一个次要版本。 例如，v2.0 master 应该适用于1.1、1.2 和1.3 版节点，并且应该适用于 v2.0、v1.0 和 v2.0 客户端。 有关 Kubernetes 客户端版本的详细信息，请参阅 [Kubernetes 版本和版本歪斜支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。 有关 Azure Stack Edge Pro 上的 Kubernetes 服务器版本的详细信息，请转到获取 Kubernetes 服务器版本。<!-- insert link-->
+    > 下载客户端，与主节点相差不超过一个次要版本的客户端。 客户端版本，但最多只能有一个次要版本。 例如，v2.0 master 应该适用于1.1、1.2 和1.3 版节点，并且应该适用于 v2.0、v1.0 和 v2.0 客户端。 有关 Kubernetes 客户端版本的详细信息，请参阅 [Kubernetes 版本和版本歪斜支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。 有关 Azure Stack Edge Pro 上的 Kubernetes 服务器版本的详细信息，请转到获取 Kubernetes 服务器版本。<!-- insert link-->
     > 有时， `kubectl` 如果运行用于 Windows 的 Docker 或其他工具，则会在系统上预安装。 必须下载 `kubectl` 此部分中所述的特定版本，才能使用此 kubernetes 群集。 
 
     安装过程将花费几分钟时间。
@@ -160,7 +160,7 @@ ms.locfileid: "90903204"
 你现在可以在命名空间中部署应用程序，然后查看这些应用程序及其日志。
 
 > [!IMPORTANT]   
-> 您无法运行的命令有很多，例如需要管理员访问权限的命令。 只能在命名空间上执行所允许的操作。
+> 您无法运行的命令有很多，例如需要管理员访问权限的命令。 只能执行命名空间上允许的操作。
 
 
 ## <a name="remove-kubernetes-cluster"></a>删除 Kubernetes 群集

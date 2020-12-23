@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 30ca4d330d9b16214396ac81e5ab5722ca0e7569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6a6cbf51ef2ff1f1ef53b53a2b84c7a4f9510d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254282"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185519"
 ---
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择自己的 Azure Stack Edge 资源，然后转到“概览”。  设备应为“联机”状态。
 
@@ -34,6 +34,6 @@ ms.locfileid: "89254282"
     
 4. 如果选择这个新存储帐户并转到访问密钥，则可以找到 blob 服务终结点和相应的存储帐户名称。 复制此信息，因为这些值以及访问密钥将帮助你连接到 Edge 存储帐户。
 
-    ![添加存储帐户](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
+    ![添加存储帐户 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
     可以通过[使用 Azure 资源管理器连接到设备本地 API ](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)来获取访问密钥。 

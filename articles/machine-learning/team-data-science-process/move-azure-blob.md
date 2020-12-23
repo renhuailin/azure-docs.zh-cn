@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc58651bcb3b266b981fb953fd7341427d47fb2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5148084fa22266b1352046c7d8737b9804c5f4d0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76717575"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311855"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>将数据移入和移出 Azure Blob 存储
 
@@ -27,14 +27,14 @@ ms.locfileid: "76717575"
 以下文章介绍了如何使用不同技术将数据移入和移出 Azure Blob 存储。
 
 * [Azure 存储资源管理器](move-data-to-azure-blob-using-azure-storage-explorer.md)
-* [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
-* [Python](move-data-to-azure-blob-using-python.md)
+* [AzCopy](../../storage/common/storage-use-azcopy-v10.md)
+* [Python](../../storage/blobs/storage-quickstart-blobs-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 
 最合适的方法取决于具体的方案。 [用于 Azure 机器学习中高级分析的方案](plan-sample-scenarios.md)有助于确定用于高级分析过程的各种数据科学工作流所需的资源。
 
 > [!NOTE]
-> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
+> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../../storage/blobs/storage-quickstart-blobs-dotnet.md)和 [Azure Blob 服务](/rest/api/storageservices/Blob-Service-Concepts)。
 > 
 > 
 
@@ -53,5 +53,4 @@ ms.locfileid: "76717575"
 本文假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 在上传/下载数据之前，必须知道 Azure 存储帐户名称和帐户密钥。
 
 * 若要设置 Azure 订阅，请参阅[免费试用一个月版](https://azure.microsoft.com/pricing/free-trial/)。
-* 有关创建存储帐户以及获取帐户和密钥信息的说明，请参阅 [关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
-
+* 有关创建存储帐户以及获取帐户和密钥信息的说明，请参阅 [关于 Azure 存储帐户](../../storage/common/storage-account-create.md)。

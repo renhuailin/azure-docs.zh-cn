@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 80746d7cef4bb0a70c6bb9eb6ff2e053ea6c7a0a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a17e6cc0479cf8ff2306736994a369d9e44dfdda
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824697"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745938"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp 文件的指标
 
@@ -42,10 +42,8 @@ Azure NetApp 文件提供了有关已分配存储、实际存储使用情况、�
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>卷的使用情况指标
 
-<!-- ANF-5023: fixed version: 2020.08, 2020.09
-- *Percentage Volume Consumed Size*    
-    The percentage of the volume consumed, including snapshots.  
--->
+- *消耗的卷大小百分比*    
+    使用的卷的百分比，包括快照。  
 - *卷分配大小*   
     卷的预配大小
 - *卷配额大小*    
@@ -86,6 +84,10 @@ Azure NetApp 文件提供了有关已分配存储、实际存储使用情况、�
 
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>卷复制指标
+
+> [!NOTE] 
+> * 网络传输大小 (例如， *卷复制总传输* 指标) 可能不同于跨区域复制的源或目标卷。 此行为是由于使用有效的复制引擎来最大程度地减少网络传输成本而导致的。
+> * 卷复制指标当前填充了复制目标卷，而不是复制关系的源。
 
 - *卷复制状态是否正常*   
     复制关系的条件。 正常状态表示为 `1` 。 不正常状态表示为 `0` 。

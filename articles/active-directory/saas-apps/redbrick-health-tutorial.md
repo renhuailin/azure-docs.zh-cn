@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
-ms.openlocfilehash: c6acbd115dfb6a4411add844f91cff921c2a2371
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9612a45d61e2bab03516699f661e8404fef6b7d1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548780"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515075"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-redbrick-health"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RedBrick Health 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548780"
 * 让用户使用其 Azure AD 帐户自动登录到 RedBrick Health。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -95,7 +95,7 @@ ms.locfileid: "88548780"
 
 1. RedBrick Health 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 1. 在“用户属性”  对话框的“用户声明”  部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
@@ -110,9 +110,9 @@ ms.locfileid: "88548780"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![屏幕截图显示“用户声明”以及“添加新声明”选项。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -124,7 +124,7 @@ ms.locfileid: "88548780"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存**”。
+    g. 单击“ **保存** ”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -166,24 +166,24 @@ ms.locfileid: "88548780"
 
 ## <a name="configure-redbrick-health-sso"></a>配置 RedBrick Health SSO
 
-若要在 **RedBrick Health** 端配置单一登录，需要将下载的**证书 (Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [RedBrick Health 支持团队](https://home.redbrickhealth.com/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **RedBrick Health** 端配置单一登录，需要将下载的 **证书 (Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [RedBrick Health 支持团队](https://home.redbrickhealth.com/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-redbrick-health-test-user"></a>创建 RedBrick Health 测试用户
 
-在本部分中，将在 RedBrick Health 中创建一个名为 B.Simon 的用户。 请与  [RedBrick Health 支持团队](https://home.redbrickhealth.com/contact/)协作来在 RedBrick Health 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 RedBrick Health 中创建一个名为 B.Simon 的用户。 请与 [RedBrick Health 支持团队](https://home.redbrickhealth.com/contact/)协作来在 RedBrick Health 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 RedBrick Health 磁贴时，应当会自动登录到已为其设置了 SSO 的 RedBrick Health。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 RedBrick Health 磁贴时，应当会自动登录到已为其设置了 SSO 的 RedBrick Health。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 RedBrick Health](https://aad.portal.azure.com/)

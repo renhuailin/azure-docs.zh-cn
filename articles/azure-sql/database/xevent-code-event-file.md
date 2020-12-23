@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 06/06/2020
-ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620182"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501220"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL 数据库中扩展事件的事件文件目标代码
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91620182"
 
 需要完整的代码示例来可靠捕获和报告扩展事件的信息。
 
-在 Microsoft SQL Server 中，[事件文件目标](https://msdn.microsoft.com/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。 但是，此类文件并不适用于 Azure SQL 数据库。 我们改为使用 Azure 存储服务来支持事件文件目标。
+在 Microsoft SQL Server 中，[事件文件目标](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130))用于将事件输出存储在本地硬盘驱动器文件中。 但是，此类文件并不适用于 Azure SQL 数据库。 我们改为使用 Azure 存储服务来支持事件文件目标。
 
 本主题演示了一个两阶段代码示例：
 
@@ -39,17 +39,17 @@ ms.locfileid: "91620182"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 - Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 - 可在其中创建表的任何数据库。
   
-  - 或者，也可以在几分钟内[创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
+  - 或者，也可以在几分钟内 [创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
 
 - SQL Server Management Studio (ssms.exe)，最好是每月最新更新版。
   可从以下位置下载最新的 ssms.exe：
   
-  - 标题为[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 的主题。
+  - 标题为[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 的主题。
   - [直接指向下载位置的链接。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 - 必须安装 [Azure PowerShell 模块](https://go.microsoft.com/?linkid=9811175) 。
@@ -62,7 +62,7 @@ ms.locfileid: "91620182"
 
 脚本以用于在可能的上次运行后进行清理的命令开头，且可重复运行。
 
-1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单的文本编辑器中，并将脚本保存为扩展名为 **.ps1**的文件。
+1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单的文本编辑器中，并将脚本保存为扩展名为 **.ps1** 的文件。
 2. 以管理员身份启动 PowerShell ISE。
 3. 在提示符下键入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>，然后按 Enter。
 4. 在 PowerShell ISE 中打开 **.ps1** 文件。 运行该脚本。
@@ -496,11 +496,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 前面的 Transact-SQL 脚本使用以下系统函数来读取 event_file：
 
-- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql)
 
 可在以下位置获取用于查看扩展事件数据的高级选项的说明：
 
-- [扩展事件的目标数据的高级视图](https://msdn.microsoft.com/library/mt752502.aspx)
+- [扩展事件的目标数据的高级视图](/sql/relational-databases/extended-events/advanced-viewing-of-target-data-from-extended-events-in-sql-server)
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>转换代码示例以在 SQL Server 上运行
 
@@ -517,8 +517,8 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 有关 Azure 存储服务中帐户和容器的详细信息，请参阅：
 
 - [如何通过 .NET 使用 Blob 存储](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [命名和引用容器、Blob 与元数据](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-- [使用根容器](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [课程 1：在 Azure 容器上创建存储访问策略和共享访问签名](https://msdn.microsoft.com/library/dn466430.aspx)
-  - [第 2 课：使用共享访问签名创建 SQL Server 凭据](https://msdn.microsoft.com/library/dn466435.aspx)
-- [Microsoft SQL Server 扩展事件](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [命名和引用容器、Blob 与元数据](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+- [使用根容器](/rest/api/storageservices/Working-with-the-Root-Container)
+- [课程 1：在 Azure 容器上创建存储访问策略和共享访问签名](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage)
+  - [第 2 课：使用共享访问签名创建 SQL Server 凭据](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#2---create-a-sql-server-credential-using-a-shared-access-signature)
+- [Microsoft SQL Server 扩展事件](/sql/relational-databases/extended-events/extended-events)

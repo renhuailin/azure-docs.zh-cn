@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598297"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486336"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -68,6 +69,7 @@ ms.locfileid: "91598297"
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
   * [采用 RHEL 8-高可用性和群集的注意事项](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [在 RHEL 7.6 的 Pacemaker 中将 SAP S/4HANA ASCS/ERS 配置为 Standalone Enqueue Server 2 (ENSA2)](https://access.redhat.com/articles/3974941)
+  * [RHEL 适用于 Azure 上的 SAP 产品](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>群集安装
 
@@ -79,7 +81,7 @@ ms.locfileid: "91598297"
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
-1. **[A]** 注册。 如果使用已启用 RHEL 8.x HA 的映像，则不需要执行此步骤。  
+1. **[A]** 注册。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
 
    注册虚拟机，将其附加到包含适用于 RHEL 7 的存储库的池。
 
@@ -89,9 +91,9 @@ ms.locfileid: "91598297"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   通过将池附加到 Azure Marketplace PAYG RHEL 映像，你将能够有效地按 RHEL 使用情况进行双重计费：一次用于 PAYG 映像，一次用于附加的池中的 RHEL 权限。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。
+   通过将池附加到 Azure Marketplace PAYG RHEL 映像，你将能够有效地按 RHEL 使用情况进行双重计费：一次用于 PAYG 映像，一次用于附加的池中的 RHEL 权限。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。  
 
-1. **[A]** 启用 RHEL for SAP 存储库。 如果使用已启用 RHEL 8.x HA 的映像，则不需要执行此步骤。  
+1. **[A]** 启用 RHEL for SAP 存储库。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
 
    为了安装所需的包，启用以下存储库。
 
@@ -169,13 +171,13 @@ ms.locfileid: "91598297"
 
    运行以下命令以验证节点并创建群集。 将令牌设置为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇[适用于 Linux][virtual-machines-linux-maintenance] 的文章。  
    
-   如果在 **RHEL 7、windows**上构建群集，请使用以下命令：  
+   如果在 **RHEL 7、windows** 上构建群集，请使用以下命令：  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
    </code></pre>
 
-   如果在 **RHEL**2.x 上构建群集，请使用以下命令：  
+   如果在 **RHEL** 2.x 上构建群集，请使用以下命令：  
    <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
    sudo pcs cluster start --all
@@ -234,7 +236,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
    不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择“证书和机密”，然后单击“新建客户端机密”
 1. 输入新密钥的说明，选择“永不过期”，并单击“添加”
-1. 将节点设置为值。 此值用作服务主体的**密码**
+1. 将节点设置为值。 此值用作服务主体的 **密码**
 1. 选择“概述”。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色

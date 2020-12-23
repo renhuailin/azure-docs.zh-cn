@@ -1,26 +1,19 @@
 ---
 title: 部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项 | Microsoft Docs
 description: 部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: bburns
-editor: ''
-tags: azure-resource-manager
-keywords: SAP，DBMS，存储，超级磁盘，高级存储
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331346"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484339"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -167,8 +160,8 @@ Azure 会对每个数据磁盘或 NFS 共享强制实施 IOPS 配额。 对于�
 >
 > 仅支持使用 MDADM 和逻辑卷管理器 (LVM) 在 Linux 上构建软件 RAID。 有关详细信息，请参阅：
 >
-> - 使用 MDADM [在 Linux 上配置软件 RAID](../../linux/configure-raid.md)
-> - [使用 LVM 在 Azure 中的 Linux VM 上配置 LVM](../../linux/configure-lvm.md)
+> - 使用 MDADM [在 Linux 上配置软件 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)
+> - [使用 LVM 在 Azure 中的 Linux VM 上配置 LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm)
 >
 >
 
@@ -273,7 +266,7 @@ Microsoft Azure 存储将基础 VHD（含 OS）以及附加磁盘或 blob 存储
 
 
 ## <a name="vm-node-resiliency"></a>VM 节点复原
-Azure 为 VM 提供不同的 SLA。 有关详细信息，请参阅[虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) 的最新版本。 由于 DBMS 层对于 SAP 系统中的可用性至关重要，因此你需要了解可用性集、可用性区域和维护事件。 有关这些概念的详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](../../windows/manage-availability.md)和[在 Azure 中管理 Linux 虚拟机的可用性](../../linux/manage-availability.md)。
+Azure 为 VM 提供不同的 SLA。 有关详细信息，请参阅[虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) 的最新版本。 由于 DBMS 层对于 SAP 系统中的可用性至关重要，因此你需要了解可用性集、可用性区域和维护事件。 有关这些概念的详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](../../manage-availability.md)和[在 Azure 中管理 Linux 虚拟机的可用性](../../manage-availability.md)。
 
 针对具有 SAP 工作负载的生产 DBMS 方案的最低建议如下：
 
@@ -295,7 +288,7 @@ Azure 为 VM 提供不同的 SLA。 有关详细信息，请参阅[虚拟机的 
 - 将 SAP 应用程序部署到的虚拟网络无法访问 Internet。
 - 数据库 Vm 与应用程序层在同一虚拟网络中运行，并在不同于 SAP 应用程序层的子网中分离。
 - 虚拟网络中的 VM 具有专用 IP 地址的静态分配。 有关详细信息，请参阅 [Azure 中的 IP 地址类型和分配方法](../../../virtual-network/public-ip-addresses.md)。
-- DBMS VM 之间的路由限制不是由安装在本地 DBMS VM 上的防火墙设置。 相反，流量路由是通过[网络安全组 (NSG)](../../../virtual-network/security-overview.md) 定义的。
+- DBMS VM 之间的路由限制不是由安装在本地 DBMS VM 上的防火墙设置。 相反，流量路由是通过[网络安全组 (NSG)](../../../virtual-network/network-security-groups-overview.md) 定义的。
 - 若要将流量分离并隔离到 DBMS VM，请为 VM 分配不同的 NIC。 每个 NIC 都有一个不同的 IP 地址，每个 NIC 都分配到不同的虚拟网络子网。 每个子网都有不同的 NSG 规则。 网络流量的隔离或分离是路由的一种措施。 它不用于为网络吞吐量设置配额。
 
 > [!NOTE]
@@ -304,7 +297,7 @@ Azure 为 VM 提供不同的 SLA。 有关详细信息，请参阅[虚拟机的 
 
 
 > [!WARNING]
-> 不支持在 SAP 应用程序与基于 SAP NetWeaver、Hybris 或 S/4HANA的 SAP 系统的 DBMS 层之间的通信路径中配置 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)。 此限制是出于功能和性能方面的原因。 SAP 应用程序层与 DBMS 层之间的通信路径必须为直接通信路径。 如果 ASG 和 NSG 规则允许直接通信路径，该限制就不包括[应用程序安全组 (ASG) 和 NSG 规则](../../../virtual-network/security-overview.md)。 
+> 不支持在 SAP 应用程序与基于 SAP NetWeaver、Hybris 或 S/4HANA的 SAP 系统的 DBMS 层之间的通信路径中配置 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)。 此限制是出于功能和性能方面的原因。 SAP 应用程序层与 DBMS 层之间的通信路径必须为直接通信路径。 如果 ASG 和 NSG 规则允许直接通信路径，该限制就不包括[应用程序安全组 (ASG) 和 NSG 规则](../../../virtual-network/network-security-groups-overview.md)。 
 >
 > 不支持网络虚拟设备的其他方案包括：
 >
@@ -333,7 +326,7 @@ SQL Server Always On 或 HANA 系统复制等功能中使用的专用虚拟 IP �
 
 Azure 提供两种不同的[负载均衡器 SKU](../../../load-balancer/load-balancer-overview.md)：基本 SKU 和标准 SKU。 根据设置和功能的优点，你应该使用 Azure 负载均衡器的标准 SKU。 标准版负载均衡器的一个大优点是，数据流量不会通过负载均衡器本身路由。
 
-有关如何配置内部负载均衡器的示例，请参阅 [教程：在 Azure 虚拟机上手动配置 SQL Server 可用性组](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial#create-an-azure-load-balancer)
+有关如何配置内部负载均衡器的示例，请参阅 [教程：在 Azure 虚拟机上手动配置 SQL Server 可用性组](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer)
 
 > [!NOTE]
 > 基本 SKU 和标准 SKU 的行为与公共 IP 地址访问相关。 在[SAP 高可用性方案中，使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)文档介绍了如何解决标准 SKU 访问公共 IP 地址的限制。

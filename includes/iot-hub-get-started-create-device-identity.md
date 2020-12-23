@@ -7,13 +7,13 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
-ms.custom: include file
-ms.openlocfilehash: 68260bf8aafbbe5afd46ec7dfb763eb88ee2123e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: b1a863498603006e37ab98b838ffd426b962d788
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78893335"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755886"
 ---
 在本部分中，将使用 Azure CLI 为本文创建设备标识。 设备 ID 区分大小写。
 

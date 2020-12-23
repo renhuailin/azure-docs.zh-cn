@@ -13,11 +13,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401531"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003831"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理器流量视图
 
@@ -43,7 +43,7 @@ ms.locfileid: "89401531"
 
 ## <a name="visual-overview"></a>视觉概览
 
-导航到“流量管理器”页中的“流量视图”部分时，**** 会看到一个地理图，其中包含流量视图见解。 该图提供了有关用户群以及流量管理器配置文件终结点的信息。
+导航到“流量管理器”页中的“流量视图”部分时，会看到一个地理图，其中包含流量视图见解。 该图提供了有关用户群以及流量管理器配置文件终结点的信息。
 
 ![流量管理器流量视图地理视图][1]
 

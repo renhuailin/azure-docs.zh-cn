@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 91ccc4395bf328d14698e7fe5db634a773197660
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 11456a8dc55a98778bf44225bf659e506e2d3a3f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259517"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510050"
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
 

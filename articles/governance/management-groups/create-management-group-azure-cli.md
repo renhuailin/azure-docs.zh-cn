@@ -4,12 +4,12 @@ description: 本快速入门使用 Azure CLI 创建管理组，将资源整理�
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f07ae46c95f9ab9cc1ad973204ac5c50320fdf46
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 54d7afbaa4bfe2799ca0d68927394a38d9845c53
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89236843"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920655"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建管理组
 
@@ -29,7 +29,7 @@ ms.locfileid: "89236843"
 
 ### <a name="create-in-the-azure-cli"></a>在 Azure CLI 中创建
 
-在 Azure CLI 中，使用 [az account management-group create](/cli/azure/account/management-group#az-account-management-group-create) 命令创建新的管理组。 在本例中，管理组名称为 Contoso。
+在 Azure CLI 中，使用 [az account management-group create](/cli/azure/account/management-group#az_account_management_group_create) 命令创建新的管理组。 在本例中，管理组名称为 Contoso。
 
 ```azurecli-interactive
 az account management-group create --name 'Contoso'
@@ -51,7 +51,7 @@ az account management-group create --name 'ContosoSubGroup' --parent 'Contoso'
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除上面创建的管理组，请使用 [az account management-group delete](/cli/azure/account/management-group#az-account-management-group-delete) 命令：
+若要删除上面创建的管理组，请使用 [az account management-group delete](/cli/azure/account/management-group#az_account_management_group_delete) 命令：
 
 ```azurecli-interactive
 az account management-group delete --name 'Contoso'

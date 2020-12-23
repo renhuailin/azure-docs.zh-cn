@@ -1,7 +1,7 @@
 ---
 title: 使用 VS Code 扩展（预览版）创建和管理资源
 titleSuffix: Azure Machine Learning
-description: 使用 VS Code 扩展创建和管理资源
+description: 了解如何使用 Azure 机器学习 Visual Studio Code 扩展来创建和管理 Azure 机器学习资源。
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/30/2020
-ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 11/16/2020
+ms.openlocfilehash: f8eb18b190b72381f1a93575eb39b3d19d8d431b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530623"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010667"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>使用 VS Code 扩展（预览版）管理 Azure 机器学习资源
 
@@ -47,7 +47,7 @@ ms.locfileid: "91530623"
 
 用于创建工作区的其他方法包括：
 
-- 在 **命令面板 >** 打开命令面板视图，并在 " **Azure ML：创建工作区**" 文本提示符下输入。
+- 打开命令面板“视图”>“命令面板”，进入文本提示“Azure ML:创建工作区”。
 - 单击“Azure 机器学习”视图顶部的 `+` 图标。
 - 在预配其他资源的过程中，当系统提示你选择工作区时创建新的工作区。
 
@@ -201,7 +201,7 @@ VS Code 扩展目前支持以下类型的数据存储：
 1. 在工作区中展开“试验”节点。
 1. 右键单击要运行的试验。
 1. 选择活动栏中的“运行试验”图标。
-1. 选择是要本地运行试验还是以远程方式运行试验。 有关在本地运行和调试试验的详细信息，请参阅 [调试指南](how-to-debug-visual-studio-code.md) 。
+1. 选择是要本地运行试验还是远程运行试验。 有关在本地运行和调试试验的详细信息，请参阅[调试指南](how-to-debug-visual-studio-code.md)。
 1. 选择订阅。
 1. 选择要在其下运行试验的 Azure ML 工作区。
 1. 选择你的试验。
@@ -246,36 +246,36 @@ VS Code 扩展目前支持以下类型的数据存储：
 
 ## <a name="compute-instances"></a>计算实例
 
-有关详细信息，请参阅 [计算实例](concept-compute-instance.md)。
+有关详细信息，请参阅[计算实例](concept-compute-instance.md)。
 
 ### <a name="create-compute-instance"></a>创建计算实例
 
 1. 展开包含你的工作区的订阅节点。
 1. 展开要在其下创建计算实例的工作区节点。
-1. 右键单击 " **计算实例** " 节点，然后选择 " **创建计算实例**"。
+1. 右键单击“计算实例”节点，然后选择“创建计算实例” 。
 1. 在提示中执行以下操作：
-    1. 提供计算实例的名称。
+    1. 为计算实例提供一个名称。
     1. 从列表中选择 VM 大小。
     1. 选择是否要启用 SSH 访问。
-        1. 如果启用 SSH 访问，还必须提供公共 SSH 密钥或包含密钥的文件。 有关详细信息，请参阅有关 [在 Azure 上创建和使用 SSH 密钥的指南](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)。
+        1. 如果启用 SSH 访问，还必须提供公共 SSH 密钥或包含密钥的文件。 有关详细信息，请参阅[在 Azure 上创建和使用 SSH 密钥的指南](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 ### <a name="stop-or-restart-compute-instance"></a>停止或重启计算实例
 
 1. 展开包含你的工作区的订阅节点。
-1. 展开工作区中的 " **计算实例** " 节点。
-1. 右键单击要停止或重新启动的计算实例，并分别选择 " **停止计算实例** " 或 " **重启计算实例** "。
+1. 在工作区中展开“计算实例”节点。
+1. 右键单击要停止或重启的计算实例，分别选择“停止计算实例”或“重启计算实例”。
 
 ### <a name="view-compute-instance-configuration"></a>查看计算实例配置
 
 1. 展开包含你的工作区的订阅节点。
-1. 展开工作区中的 " **计算实例** " 节点。
-1. 右键单击要检查的计算实例，然后选择 " **查看计算实例属性**"。
+1. 在工作区中展开“计算实例”节点。
+1. 右键单击要检查的计算实例，然后选择“查看计算实例属性”。
 
 ### <a name="delete-compute-instance"></a>删除计算实例
 
 1. 展开包含你的工作区的订阅节点。
-1. 展开工作区中的 " **计算实例** " 节点。
-1. 右键单击要删除的计算实例，然后选择 " **删除计算实例**"。
+1. 在工作区中展开“计算实例”节点。
+1. 右键单击要删除的计算实例，然后选择“删除计算实例”。
 
 ## <a name="compute-clusters"></a>计算群集
 
@@ -293,7 +293,7 @@ VS Code 扩展目前支持以下类型的数据存储：
 1. 右键单击“计算群集”节点，然后选择“创建计算” 。
 1. 在提示中执行以下操作：
     1. 选择计算类型
-    1. 选择 VM 大小。 详细了解 [VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+    1. 选择 VM 大小。 详细了解 [VM 大小](../virtual-machines/sizes.md)。
     1. 为你的计算提供一个名称。
 
 ### <a name="view-compute-configuration"></a>查看计算配置
@@ -321,7 +321,7 @@ VS Code 扩展目前支持以下类型的数据存储：
 
 1. 展开包含你的工作区的订阅节点。
 1. 在工作区中展开“计算群集”节点。
-1. 右键单击要在其下创建运行配置的计算目标，然后选择 " **创建运行配置**"。
+1. 右键单击要在其下创建运行配置的计算目标，然后选择“创建运行配置”。
 1. 在提示中执行以下操作：
     1. 为你的计算目标提供一个名称
     1. 选择或创建一个新环境。

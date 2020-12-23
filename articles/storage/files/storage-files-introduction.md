@@ -7,15 +7,15 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2b5fa5211ad8d4de01f2b63e8267e297e13c4485
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ce2044f3ee0bff3335f46d8cf712e64394af2d3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570019"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628860"
 ---
 # <a name="what-is-azure-files"></a>什么是 Azure 文件？
-Azure 文件存储会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)进行访问。 Azure 文件共享可通过云部署或者本地部署并行装载。 可从 Windows、Linux 和 macOS 客户端访问Azure 文件存储 SMB 文件共享。 可从 Linux 或 macOS 客户端访问 Azure 文件存储 NFS 文件共享。 此外，可以使用 Azure 文件同步将 Azure 文件存储 SMB 文件共享缓存在 Windows Server 上，以供在使用数据的位置附近快速访问。
+Azure 文件存储会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)进行访问。 Azure 文件共享可通过云部署或者本地部署并行装载。 可从 Windows、Linux 和 macOS 客户端访问Azure 文件存储 SMB 文件共享。 可从 Linux 或 macOS 客户端访问 Azure 文件存储 NFS 文件共享。 此外，可以使用 Azure 文件同步将 Azure 文件存储 SMB 文件共享缓存在 Windows Server 上，以供在使用数据的位置附近快速访问。
 
 ## <a name="videos"></a>视频
 | Azure 文件同步简介 | Azure 文件存储与同步 (Ignite 2019)  |
@@ -53,7 +53,7 @@ Azure 文件共享可用于：
 * **完全托管**。 不需管理硬件或 OS 即可创建 Azure 文件共享。 这意味着，你不需使用关键的安全升级程序来修补服务器 OS，也不需更换故障硬盘。
 * **脚本和工具**。 在管理 Azure 应用程序的过程中，可以使用 PowerShell cmdlet 和 Azure CLI 来创建、装载和管理 Azure 文件共享。可以使用 Azure 门户和 Azure 存储资源管理器来创建和管理 Azure 文件共享。 
 * **复原能力**。 Azure 文件是从头开始构建的，我们的目的是确保其始终可用。 将本地文件共享取代为 Azure 文件之后，再也不需要半夜起来处理当地断电或网络问题。 
-* **熟悉的可编程性**。 在 Azure 中运行的应用程序可以通过文件[系统 I/O API](https://msdn.microsoft.com/library/system.io.file.aspx) 访问共享中的数据。 因此，开发人员可以利用其现有代码和技术迁移现有应用程序。 除了系统 IO API，还可以使用 [Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)或 [Azure 存储 REST API](/rest/api/storageservices/file-service-rest-api)。
+* **熟悉的可编程性**。 在 Azure 中运行的应用程序可以通过文件[系统 I/O API](/dotnet/api/system.io.file) 访问共享中的数据。 因此，开发人员可以利用其现有代码和技术迁移现有应用程序。 除了系统 IO API，还可以使用 [Azure 存储客户端库](/previous-versions/azure/dn261237(v=azure.100))或 [Azure 存储 REST API](/rest/api/storageservices/file-service-rest-api)。
 
 ## <a name="next-steps"></a>后续步骤
 * [了解可用的文件共享协议](storage-files-compare-protocols.md)

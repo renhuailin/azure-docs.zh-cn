@@ -12,18 +12,24 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: 4585538e552e73f8f7a4b7b105153a9d26eeb4c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ace584b51f0aa457e30d8e48d97834aa735a1a57
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934084"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026567"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
 语音服务 SDK 压缩音频输入流 API 提供了一种使用 `PullStream` 或 `PushStream` 将压缩音频流式传输到语音服务的方法。
 
-目前，Windows（不支持 UWP 应用程序）和 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8）上的 C#、C++、Java 和 Python 支持流式传输压缩输入音频。 Android 中的 Java 也支持此功能。
+平台 | 语言 | 支持的适用 gstreamer 版本
+| :--- | ---: | :---:
+Windows (排除 UWP)   | C + +、c #、Java、Python | [busybox-1.15.1-20.el6.x86](https://gstreamer.freedesktop.org/data/pkg/windows/1.15.1/)
+Linux  | C + +、c #、Java、Python | [支持的 Linux 分发和目标体系结构](~/articles/cognitive-services/speech-service/speech-sdk.md)
+Android  | Java | [1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/)
+
+## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>压缩的音频输入所需的语音 SDK 版本
 * RHEL 8 和 CentOS 8 需要语音 SDK 1.10.0 或更高版本
 * Windows 需要语音 SDK 版本 1.11.0 或更高版本。
 
@@ -68,4 +74,4 @@ ms.locfileid: "88934084"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何识别语音](quickstarts/speech-to-text-from-microphone.md)
+> [了解如何识别语音](./get-started-speech-to-text.md)

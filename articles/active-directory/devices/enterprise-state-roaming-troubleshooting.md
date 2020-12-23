@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705718"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837203"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "90705718"
 
 1. 已在设备上安装包含最新更新的 Windows 10，最低版本需为 1511（OS 内部版本 10586 或更高）。 
 1. 设备是已加入 Azure AD 的或已加入混合 Azure AD 的。 有关详细信息，请参阅[如何使设备受 Azure AD 控制](overview.md)。
-1. 确保如[启用企业状态漫游](enterprise-state-roaming-enable.md)中所述在 Azure AD 中为租户启用了**企业状态漫游**。 可以为所有用户启用漫游，也可以仅为选定的一组用户启用漫游。
+1. 确保如 [启用企业状态漫游](enterprise-state-roaming-enable.md)中所述在 Azure AD 中为租户启用了 **企业状态漫游**。 可以为所有用户启用漫游，也可以仅为选定的一组用户启用漫游。
 1. 为用户分配了 Azure Active Directory Premium 许可证。  
 1. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
 
@@ -60,7 +60,7 @@ ms.locfileid: "90705718"
    * 可以借助锁定和解锁屏幕 (Win + L) 来触发同步。
    * 必须在这两台 PC 上使用同一帐户登录，同步才能工作 - 因为企业状态漫游绑定到用户帐户，而不是计算机帐户。
 
-**潜在问题**：如果“设置”页中的控件不可用，并且看到了消息“仅当你使用的是 Microsoft 帐户或工作帐户时，某些 Windows 功能才可用。”**** 对于设置为要加入域并注册到 Azure AD 但尚未在 Azure AD 中成功进行身份验证的设备，可能会出现此问题。 一个可能的原因是必须应用设备策略，但这种策略应用是异步发生的，可能会延迟几个小时。 
+**潜在问题**：如果“设置”页中的控件不可用，并且看到了消息“仅当你使用的是 Microsoft 帐户或工作帐户时，某些 Windows 功能才可用。” 对于设置为要加入域并注册到 Azure AD 但尚未在 Azure AD 中成功进行身份验证的设备，可能会出现此问题。 一个可能的原因是必须应用设备策略，但这种策略应用是异步发生的，可能会延迟几个小时。 
 
 ### <a name="verify-the-device-registration-status"></a>验证设备注册状态
 
@@ -72,11 +72,11 @@ ms.locfileid: "90705718"
 
 **潜在问题**： **WamDefaultSet** 和 **AzureAdJoined** 在字段值中都有 "NO"，则设备已加入域并已注册到 Azure AD，设备不会同步。如果显示了此设备，则设备可能需要等待策略应用，或者在连接到 Azure AD 时，设备的身份验证失败。 用户可能需要等待几个小时来应用策略。 其他故障排除步骤可能包括通过注销并重新登录，或在任务计划程序中启动任务来重试自动注册。 某些情况下，在权限提升的命令提示窗口中运行“*dsregcmd.exe /leave*”，重新启动，并重试注册，可能有助于解决此问题。
 
-**潜在问题**： **SettingsUrl** 的字段为空，且设备未同步。在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 或者，在门户中，尝试让 IT 管理员导航到**Azure Active Directory**  >  **设备**，  >  **企业状态漫游**禁用和重新启用**用户可以跨设备同步设置和应用数据**。 重新启用后，重新启动设备并让用户登录。 如果这不能解决此问题，如果设备证书不正确， **SettingsUrl** 可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
+**潜在问题**： **SettingsUrl** 的字段为空，且设备未同步。在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 或者，在门户中，尝试让 IT 管理员导航到 **Azure Active Directory**  >  **设备**，  >  **企业状态漫游** 禁用和重新启用 **用户可以跨设备同步设置和应用数据**。 重新启用后，重新启动设备并让用户登录。 如果这不能解决此问题，如果设备证书不正确， **SettingsUrl** 可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>企业状态漫游和多重身份验证 
 
-在某些情况下，如果未配置 Azure 多重身份验证，企业状态漫游可能无法同步数据。 有关这些症状的详细信息，请参阅支持文档 [KB3193683](https://support.microsoft.com/kb/3193683)。 
+在某些情况下，如果配置了 Azure AD 多重身份验证，企业状态漫游可能无法同步数据。 有关这些症状的详细信息，请参阅支持文档 [KB3193683](https://support.microsoft.com/kb/3193683)。 
 
 **潜在问题**：如果在 Azure Active Directory 门户中将设备配置为需要多重身份验证，则在使用密码登录到 Windows 10 设备时可能无法对设置进行同步。 这种多重身份验证配置旨在保护 Azure 管理员帐户。 管理员用户仍可以通过其 Microsoft Passport for Work PIN 登录到其 Windows 10 设备，或在访问其他 Azure 服务（如 Microsoft 365）时完成多重身份验证，从而进行同步。
 
@@ -84,7 +84,7 @@ ms.locfileid: "90705718"
 
 ### <a name="event-viewer"></a>事件查看器
 
-要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 事件可在事件查看器 >**应用程序和服务日志**"下找到  >  **microsoft**  >  **windows**  >  **SettingSync-Azure** ，以及与同步**应用程序和服务日志**  >  **microsoft**  >  **windows**  >  **AAD**相关的标识相关问题。
+要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 事件可在事件查看器 >**应用程序和服务日志**"下找到  >  **microsoft**  >  **windows**  >  **SettingSync-Azure** ，以及与同步 **应用程序和服务日志**  >  **microsoft**  >  **windows**  >  **AAD** 相关的标识相关问题。
 
 ## <a name="known-issues"></a>已知问题
 
@@ -156,7 +156,7 @@ ms.locfileid: "90705718"
 如果用户具有混合大小写 UPN (例如，用户名而不是用户名) 并且用户位于已从 Windows 10 版本10586升级到14393的已加入 Azure AD 的设备上，则用户的设备可能无法同步。 
 
 **建议的操作**  
-用户将需要断开联接并将设备重新加入到云中。 为此，请以本地管理员用户身份登录，并通过转到 "**设置**  >  **系统**" 并  >  **About**选择 "管理或断开连接工作或学校" 来取消设备的连接。 清理以下文件，然后在 "**设置**系统" 中再次 Azure AD 加入设备，  >  **System**  >  **About**并选择 "连接到工作或学校"。 继续将设备加入到 Azure Active Directory 并完成该流。
+用户将需要断开联接并将设备重新加入到云中。 为此，请以本地管理员用户身份登录，并通过转到 "**设置**  >  **系统**" 并  >  **About** 选择 "管理或断开连接工作或学校" 来取消设备的连接。 清理以下文件，然后在 "**设置** 系统" 中再次 Azure AD 加入设备，  >  **System**  >  **About** 并选择 "连接到工作或学校"。 继续将设备加入到 Azure Active Directory 并完成该流。
 
 在清除步骤中，清理以下文件：
 - `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\` 中的 settings.dat

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bdce735bdacbe7ff0752650c6949fdb361342c73
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081896"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542550"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知
 
@@ -26,7 +26,7 @@ ms.locfileid: "80081896"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 SendGrid 电子邮件帐户。 有关说明，请参阅[如何在 Azure 中使用 SendGrid 发送电子邮件](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)。
+* 一个 SendGrid 电子邮件帐户。 有关说明，请参阅[如何在 Azure 中使用 SendGrid 发送电子邮件](../sendgrid-dotnet-how-to-send-email.md)。
 
 * HDInsight 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](./hdinsight-hadoop-create-linux-clusters-portal.md)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "80081896"
 
 1. 从“管理警报通知”  窗口中，选择 **+** 图标。
 
-    ![Ambari 创建警报通知](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![屏幕截图显示了“管理警报通知”对话框。](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. 在“创建警报通知”  对话框中，提供以下信息：
 
@@ -75,7 +75,7 @@ ms.locfileid: "80081896"
     |密码确认|重新输入密码。|
     |启动 TLS|选中此复选框|
 
-    ![Ambari 创建警报通知](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![屏幕截图显示了“创建警报通知”对话框。](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     选择“保存”。  你将返回到“管理警报通知”  窗口。
 

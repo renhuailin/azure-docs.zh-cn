@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: e8a3183e1fcac3f1a71d07835cacc37c2f57fb06
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 4ca8980123240a90f73a4866c37a79800ce403d1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839038"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538011"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>如何将 Redis 命令行工具与 Azure Redis 缓存配合使用
 
@@ -27,8 +27,8 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 
 可通过三种方式收集访问缓存所需的信息：
 
-1. 在 Azure CLI 中使用 [az redis list-keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
-2. 在 Azure PowerShell 中使用 [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey)
+1. 在 Azure CLI 中使用 [az redis list-keys](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
+2. 在 Azure PowerShell 中使用 [Get-AzRedisCacheKey](/powershell/module/az.rediscache/Get-AzRedisCacheKey)
 3. 使用 Azure 门户。
 
 本部分介绍如何从 Azure 门户检索密钥。
@@ -88,4 +88,3 @@ redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
 ## <a name="next-steps"></a>后续步骤
 
 了解使用 [Redis 控制台](cache-configure.md#redis-console)发出命令的详细信息。
-

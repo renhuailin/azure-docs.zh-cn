@@ -4,12 +4,12 @@ description: 本文讨论有关 Azure Site Recovery 的常见问题。
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950487"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109549"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "88950487"
 
 ### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Site Recovery 如何确保数据完整性？
 
-Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议在所有服务之间建立安全连接。 这可确保任何恶意软件或外部实体都无法篡改数据。 采用的另一个度量值是使用校验和。 源和目标之间的数据传输通过计算它们之间数据的校验和来执行。 这可确保传输的数据是一致的。
+Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议在所有服务之间建立安全连接。 这可确保任何恶意软件或外部实体都无法篡改数据。 采用的另一个措施是使用校验和。 源和目标之间的数据传输是通过计算它们之间数据的校验和来执行的。 这可确保传输的数据是一致的。
 
 ## <a name="service-providers"></a>服务提供商
 
@@ -71,7 +71,7 @@ Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议�
 
 可以使用[定价计算器](https://aka.ms/asr_pricing_calculator)来估算使用 Site Recovery 时的费用。
 
-若要对费用进行详细估算，请运行 [VMware](https://aka.ms/siterecovery_deployment_planner) 或 [Hyper-V](https://aka.ms/asr-deployment-planner) 的部署规划器工具并使用[成本估算报告](https://aka.ms/asr_DP_costreport)。
+若要对费用进行详细估算，请运行 [VMware](./site-recovery-deployment-planner.md) 或 [Hyper-V](https://aka.ms/asr-deployment-planner) 的部署规划器工具并使用[成本估算报告](./site-recovery-vmware-deployment-planner-cost-estimation.md)。
 
 
 ### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>现在，托管磁盘用于复制 VMware VM 和物理服务器。 使用托管磁盘的缓存存储帐户是否会产生其他费用？
@@ -116,13 +116,13 @@ DR 演练没有单独的费用。 如果在测试故障转移后创建 VM，则�
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>如何在 HyperV 到 Azure Site Recovery 方案中强制实施 TLS 1.2？
 Azure Site Recovery 的微服务之间的所有通信均通过 TLS 1.2 协议进行。 Site Recovery 使用系统 (OS) 中配置的安全提供程序，并使用可用的最新 TLS 协议。 用户需要在注册表中显式启用 TLS 1.2，然后 Site Recovery 将开始使用 TLS 1.2 与服务进行通信。 
 
-### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>如何对存储帐户强制实施受限访问权限，这些帐户由 Site Recovery 服务访问以读取/写入复制数据？
-可以通过转到 " *标识* " 设置来切换恢复服务保管库的托管标识。 将保管库注册到 Azure Active Directory 后，你可以进入存储帐户，并向保管库提供以下角色分配：
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>如何对存储帐户强制实施受限访问权限（Site Recovery 服务访问这些帐户来读取/写入复制数据）？
+可转到“标识”设置来打开恢复服务保管库的托管标识。 将保管库注册到 Azure Active Directory 后，便可以转到存储帐户，向保管库分配以下角色：
 
-- 基于资源管理器的存储帐户 (标准类型) ：
+- 基于资源管理器的存储帐户（标准类型）：
   - [参与者](../role-based-access-control/built-in-roles.md#contributor)
   - [存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
--  (高级类型) 资源管理器的存储帐户：
+- 基于资源管理器的存储帐户（高级类型）：
   - [参与者](../role-based-access-control/built-in-roles.md#contributor)
   - [存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 - 经典存储帐户：
@@ -255,7 +255,7 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 复制策略定义了恢复点的保留历史记录设置。 此策略还定义了应用一致性快照的频率。 默认情况下，Azure Site Recovery 使用以下默认设置创建新的复制策略：
 
 - 恢复点历史记录的保留期为 24 小时。
-- 应用一致的快照的频率为4小时。
+- 应用一致性快照的频率为 4 小时。
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>什么是崩溃一致性恢复点？
 
@@ -272,6 +272,9 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。
 应用程序一致性恢复点是从应用程序一致性快照创建的。 应用一致性恢复点除了捕获与故障一致性快照相同的数据，还捕获内存中数据以及进程中的所有事务。
 
 由于包含额外内容，因此应用一致性快照涉及最多且耗时最长。 我们建议对数据库操作系统以及 SQL Server 等应用程序使用应用程序一致性恢复点。
+
+>[!Note]
+>如果 Windows 计算机上的卷超过64个，则在 Windows 计算机上创建与应用程序一致的恢复点将失败。
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>应用程序一致性恢复点对应用程序性能有何影响？
 

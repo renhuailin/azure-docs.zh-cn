@@ -4,16 +4,16 @@ description: 了解 Azure Vm 的 ultra 磁盘
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/10/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 9c3c1acbc2606d882ad45744457137be5014bc4c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441193"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093479"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
 
@@ -29,7 +29,7 @@ Azure ultra 磁盘为 Azure IaaS 虚拟机 (Vm) 提供高吞吐量、高 IOPS �
 
 ### <a name="vms-using-availability-zones"></a>使用可用性区域的 Vm
 
-若要利用超磁盘，需要确定你所在的可用性区域。 并非每个区域都支持任何虚拟磁盘的 VM 大小。 若要确定你的区域、区域和 VM 大小是否支持 ultra 磁盘，请运行以下命令之一，确保首先替换 **region**、 **vmSize**和 **订阅** 值：
+若要利用超磁盘，需要确定你所在的可用性区域。 并非每个区域都支持任何虚拟磁盘的 VM 大小。 若要确定你的区域、区域和 VM 大小是否支持 ultra 磁盘，请运行以下命令之一，确保首先替换 **region**、 **vmSize** 和 **订阅** 值：
 
 #### <a name="cli"></a>CLI
 
@@ -135,7 +135,7 @@ UltraSSDAvailable                            True
 
 - 登录到 [Azure 门户](https://portal.azure.com/) ，导航到 "部署虚拟机" (VM) "。
 - 请确保选择支持的 [VM 大小和区域](#ga-scope-and-limitations)。
-- 选择**可用性选项**中的**可用性区域**。
+- 选择 **可用性选项** 中的 **可用性区域**。
 - 填写所选选择的其余条目。
 - 选择“磁盘”。
 
@@ -148,17 +148,14 @@ UltraSSDAvailable                            True
 
 - 在 " **创建新磁盘** " 边栏选项卡上，输入名称，然后选择 " **更改大小**"。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="&quot;创建新磁盘&quot; 边栏选项卡的屏幕截图，突出显示更改大小。&quot;:::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="&quot;创建新磁盘&quot; 边栏选项卡的屏幕截图，突出显示更改大小。":::
 
 
 - 将 **存储类型** 更改为 " **超小型磁盘**"。
-- 将 **自定义磁盘大小的值 (GiB) **、 **磁盘 IOPS**和 **磁盘吞吐量** 更改为所选的磁盘。
+- 将 **自定义磁盘大小的值 (GiB)**、 **磁盘 IOPS** 和 **磁盘吞吐量** 更改为所选的磁盘。
 - 在两个边栏选项卡中选择 **"确定"** 。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="&quot;创建新磁盘&quot; 边栏选项卡的屏幕截图，突出显示更改大小。&quot;:::
-
-
-- 将 **存储类型** 更改为 ":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="&quot;选择磁盘大小&quot; 边栏选项卡的屏幕截图、为存储类型选择的超磁盘、突出显示的其他值。":::
 
 - 继续执行 VM 部署，该部署将与部署任何其他 VM 的部署相同。
 
@@ -228,6 +225,78 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
 ---
+
+## <a name="deploy-an-ultra-disk---512-byte-sector-size"></a>部署超高磁盘-512 字节扇区大小
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+Azure 门户当前不支持创建512字节扇区大小的超磁盘。 您可以使用 Azure PowerShell 模块或 Azure CLI 来创建具有512字节扇区大小的超磁盘。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅 [GA 范围和限制](#ga-scope-and-limitations) 部分。
+
+必须创建能够使用 ultra 磁盘的 VM，才能附加超磁盘。
+
+将 **$vmname**、 **$rgname**、 **$diskname**、 **$location**、 **$password**、 **$user** 变量替换为你自己的值。 将 **$zone**  设置为从 [本文开头](#determine-vm-size-and-region-availability)获取的可用性区域值。 然后运行以下 CLI 命令，以创建具有512字节扇区大小的超磁盘的 VM：
+
+```azurecli
+#create an ultra disk with 512 sector size
+az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location --attach-data-disks $diskname
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅 [GA 范围和限制](#ga-scope-and-limitations) 部分。
+
+若要使用超磁盘，必须创建能够使用超磁盘的 VM。 将 **$resourcegroup** 和 **$vmName** 变量替换为自己的值。 将 **$zone** 设置为从 [本文开头](#determine-vm-size-and-region-availability)获取的可用性区域值。 然后运行以下 [new-azvm](/powershell/module/az.compute/new-azvm) 命令，以创建支持 HYPER-V 的 VM：
+
+```powershell
+New-AzVm `
+    -ResourceGroupName $resourcegroup `
+    -Name $vmName `
+    -Location "eastus2" `
+    -Image "Win2016Datacenter" `
+    -EnableUltraSSD `
+    -size "Standard_D4s_v3" `
+    -zone $zone
+```
+
+若要创建并附加具有512字节扇区大小的 ultra 磁盘，可以使用以下脚本：
+
+```powershell
+# Set parameters and select subscription
+$subscription = "<yourSubscriptionID>"
+$resourceGroup = "<yourResourceGroup>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$lun = 1
+Connect-AzAccount -SubscriptionId $subscription
+
+# Create the disk
+$diskconfig = New-AzDiskConfig `
+-Location 'EastUS2' `
+-DiskSizeGB 8 `
+-DiskIOPSReadWrite 1000 `
+-DiskMBpsReadWrite 100 `
+-LogicalSectorSize 512 `
+-AccountType UltraSSD_LRS `
+-CreateOption Empty `
+-zone $zone;
+
+New-AzDisk `
+-ResourceGroupName $resourceGroup `
+-DiskName $diskName `
+-Disk $diskconfig;
+
+# add disk to VM
+$vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
+$disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
+Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
+---
 ## <a name="attach-an-ultra-disk"></a>附加超磁盘
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
@@ -251,12 +320,15 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 - 填写新磁盘的名称，并选择 " **更改大小**"。
 - 将 **帐户类型** 更改为 " **超小型磁盘**"。
-- 将 **自定义磁盘大小的值 (GiB) **、 **磁盘 IOPS**和 **磁盘吞吐量** 更改为所选的磁盘。
+- 将 **自定义磁盘大小的值 (GiB)**、 **磁盘 IOPS** 和 **磁盘吞吐量** 更改为所选的磁盘。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="&quot;创建新磁盘&quot; 边栏选项卡的屏幕截图，突出显示更改大小。&quot;:::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="&quot;选择磁盘大小&quot; 边栏选项卡的屏幕截图、为存储类型选择的超磁盘、突出显示的其他值。":::
 
+- 选择 **"确定"** ，然后选择 " **创建**"。
+- 返回到磁盘的边栏选项卡后，选择 " **保存**"。
+- 重新启动 VM。
 
-- 将 **存储类型** 更改为 " 边栏选项卡。](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+![Vm 上的 "磁盘" 边栏选项卡。](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

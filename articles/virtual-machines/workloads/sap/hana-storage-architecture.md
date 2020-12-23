@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aff1c8f68e3950b49a0a1bd8e99020b77e0f2019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9254b3d19bd840b62d2f5f7023eba9a91e605d1e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677298"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967510"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA（大型实例）存储体系结构
 
@@ -130,11 +131,11 @@ HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为]
 > 
 > - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000
-> - 另请参阅 SAP 说明[#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-> - 请注意 SAP 说明[#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - 另请参阅 SAP 说明 [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - 请注意 SAP 说明 [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 
 
-**后续步骤**
+后续步骤
 - 请参阅 [HANA 大型实例支持的方案](hana-supported-scenario.md)

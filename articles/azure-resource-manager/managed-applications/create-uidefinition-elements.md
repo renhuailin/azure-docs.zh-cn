@@ -3,18 +3,18 @@ title: 创建 UI 定义元素
 description: 介绍了为 Azure 门户构造 UI 定义时要使用的元素。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 10/27/2020
 ms.author: tomfitz
-ms.openlocfilehash: 8b6c6e78c64f83ca39a29f319a103e893d8d8b38
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3e8bdd85c112d90fd5e10f6e65e48ca6b3f71b6e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923715"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410736"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
 
-本文介绍了 CreateUiDefinition 的所有受支持元素的架构和属性。 
+本文介绍了 CreateUiDefinition 的所有受支持元素的架构和属性。
 
 ## <a name="schema"></a>架构
 
@@ -48,28 +48,31 @@ ms.locfileid: "88923715"
 
 每个元素的文档都包含此元素的 UI 示例、架构、行为备注（通常涉及验证和支持的自定义）以及示例输出。
 
-- [Microsoft. Common. CheckBox](microsoft-common-checkbox.md)
+- [Microsoft.Common.CheckBox](microsoft-common-checkbox.md)
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
-- [EditableGrid](microsoft-common-editablegrid.md)
+- [Microsoft.Common.EditableGrid](microsoft-common-editablegrid.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
 - [Microsoft.Common.InfoBox](microsoft-common-infobox.md)
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
-- [Microsoft Common .。。](microsoft-common-slider.md)
+- [ServicePrincipalSelector](microsoft-common-serviceprincipalselector.md)
+- [Microsoft.Common.Slider](microsoft-common-slider.md)
 - [Microsoft.Common.TagsByResource](microsoft-common-tagsbyresource.md)
 - [Microsoft.Common.TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
-- [对 microsoft.managedidentity. IdentitySelector](microsoft-managedidentity-identityselector.md)
+- [KeyVault. KeyVaultCertificateSelector](microsoft-keyvault-keyvaultcertificateselector.md)
+- [Microsoft.ManagedIdentity.IdentitySelector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
-- [ArmApiControl](microsoft-solutions-armapicontrol.md)
-- [ResourceSelector](microsoft-solutions-resourceselector.md)
+- [Microsoft.Solutions.ArmApiControl](microsoft-solutions-armapicontrol.md)
+- [Microsoft.Solutions.ResourceSelector](microsoft-solutions-resourceselector.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
+- [StorageBlobSelector](microsoft-storage-storageblobselector.md)
 
 ## <a name="next-steps"></a>后续步骤
 

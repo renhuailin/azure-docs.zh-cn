@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: 什么是单一登录 (SSO)？
       href: what-is-single-sign-on.md
+    - name: Docs 中的新增内容
+      href: whats-new-docs.md
 - name: 快速入门
   expanded: true
   items:
@@ -61,12 +63,24 @@
           href: plan-sso-deployment.md
         - name: 单一登录选项
           href: sso-options.md
+        - name: 本地应用的单一登录
+          href: application-proxy-config-sso-how-to.md
+        - name: 基于 OIDC 的 SSO
+          href: configure-oidc-single-sign-on.md
         - name: 基于 SAML 的 SSO
           href: configure-saml-single-sign-on.md
+        - name: 基于 SAML 的 SSO（本地应用）
+          href: application-proxy-configure-single-sign-on-on-premises-apps.md
         - name: 基于密码的 SSO
           href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: 基于密码的 SSO（本地应用）
+          href: application-proxy-configure-single-sign-on-password-vaulting.md
         - name: 基于链接的 SSO
           href: configure-linked-sign-on.md
+        - name: 基于标头的 SSO（本地应用）
+          href: application-proxy-configure-single-sign-on-with-headers.md
+        - name: 基于 Kerberos 的 SSO（本地应用）
+          href: application-proxy-configure-single-sign-on-with-kcd.md
         - name: 一键式 SSO
           href: one-click-sso-tutorial.md
     - name: 应用程序安全性
@@ -178,24 +192,24 @@
           href: application-proxy-remove-personal-data.md
         - name: 配置自定义域
           href: application-proxy-configure-custom-domain.md
-        - name: 使用应用程序代理进行单一登录
+        - name: 保护旧应用
           items:
-            - name: Kerberos 约束委派 (KCD)
-              href: application-proxy-configure-single-sign-on-with-kcd.md
-            - name: 密码保管
-              href: application-proxy-configure-single-sign-on-password-vaulting.md
-            - name: 头文件
-              href: application-proxy-configure-single-sign-on-with-ping-access.md
-            - name: SAML SSO
-              href: application-proxy-configure-single-sign-on-on-premises-apps.md
-        - name: 通过应用交付控制器和网络保护旧版应用
-          href: secure-hybrid-access.md
+            - name: 使用 Azure AD 保护混合访问
+              href: secure-hybrid-access.md
+            - name: F5 和 Azure AD 集成
+              href: f5-aad-integration.md
+            - name: Azure IaaS 中的 F5 BIG-IP VE 部署
+              href: f5-bigip-deployment-guide.md
+            - name: 将 F5 BIG-IP VE 用于 Azure AD 以实现无密码 VPN
+              href: f5-aad-password-less-vpn.md
         - name: 发布演练
           items:
             - name: 与 NDES 服务器上的应用程序代理集成
               href: active-directory-app-proxy-protect-ndes.md
+            - name: 使用 PingAccess 与应用程序代理集成
+              href: application-proxy-ping-access-publishing-guide.md
             - name: 与 Azure AD 域服务集成
-              href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
+              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
             - name: 与 Power BI 集成
               href: application-proxy-integrate-with-power-bi.md
             - name: 与 Cloud App Security 集成
@@ -218,6 +232,8 @@
           href: troubleshoot-password-based-sso.md
         - name: 排查基于 SAML 的单一登录的问题
           href: troubleshoot-saml-based-sso.md
+        - name: 调试基于 SAML 的单一登录
+          href: debug-saml-sso-issues.md
         - name: 排查用户登录问题
           items:
             - name: 意外的许可提示
@@ -230,12 +246,8 @@
               href: application-sign-in-problem-application-error.md
             - name: 登录到 Microsoft 应用时出现问题
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: 使用联合单一登录时出现的问题 - 非库应用
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: 使用联合单一登录时出现的问题 - 库应用
+            - name: 单一登录方面的问题
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: 登录自定义开发的应用时出现的问题
-              href: application-sign-in-problem-custom-dev.md
         - name: 排查本地应用故障
           items:
             - name: 应用程序代理故障排除
@@ -254,14 +266,12 @@
               href: application-proxy-connectivity-no-working-connector.md
             - name: 在管理门户中配置
               href: application-proxy-config-how-to.md
-            - name: 为应用配置单一登录
-              href: application-proxy-config-sso-how-to.md
             - name: 在管理门户中创建应用时出现问题
               href: application-proxy-config-problem.md
             - name: 配置 Kerberos 约束委派
               href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
             - name: 使用 PingAccess 配置
-              href: application-proxy-back-end-ping-access-how-to.md
+              href: ./application-proxy-ping-access-publishing-guide.md
             - name: “无法访问此企业应用程序”错误
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: 安装应用程序代理程序连接器时出现问题
@@ -279,11 +289,11 @@
 - name: 资源
   items:
     - name: 开发人员的支持和帮助选项
-      href: /azure/active-directory/develop/developer-support-help-options?context=azure/active-directory/manage-apps/context/manage-apps-context
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
     - name: Azure 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: 服务更新

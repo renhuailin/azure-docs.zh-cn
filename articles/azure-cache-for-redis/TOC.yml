@@ -40,7 +40,7 @@
     - name: Java Spring
       items:
         - name: 使用 Spring Boot Initializer
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
+          href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
     - name: 创建排行榜
       href: cache-web-app-cache-aside-leaderboard.md
     - name: 部署机器学习模型
@@ -59,13 +59,15 @@
       href: cache-best-practices.md
     - name: 安全性
       items:
+        - name: 网络隔离选项
+          href: cache-network-isolation.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: 缓存体系结构
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+      href: /azure/architecture/best-practices/caching?toc=%2fazure%2fredis-cache%2ftoc.json
 - name: 操作指南
   items:
     - name: 计划
@@ -167,7 +169,7 @@
     - name: Azure CLI
       href: /cli/azure/redis
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/redis/'
+      href: /rest/api/redis/
     - name: 资源管理器模板
       href: /azure/templates/microsoft.cache/allversions
     - name: Azure Policy 内置策略定义
@@ -182,7 +184,7 @@
     - name: 视频
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+      href: /answers/topics/azure-cache-redis.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: 利用 Microsoft Learn 掌握技能

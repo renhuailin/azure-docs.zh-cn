@@ -1,438 +1,220 @@
 ---
 title: FortiGate 部署指南 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 FortiGate SSL VPN 之间配置单一登录。
+description: 设置并使用 Fortinet FortiGate 下一代防火墙产品。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 18a3d9d5-d81c-478c-be7e-ef38b574cb88
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 10/30/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 999e19ffad1d18e163881c844cbf30f8b7fef574
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88657027"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025418"
 ---
-# <a name="fortigate-deployment-guide"></a>FortiGate 部署指南
+# <a name="fortigate-azure-virtual-machine-deployment-guide"></a>FortiGate Azure 虚拟机部署指南
 
-## <a name="contents"></a>目录
+使用本部署指南，你将了解如何设置和使用部署为 Azure 虚拟机的 Fortinet FortiGate 下一代防火墙产品。 此外，你还将配置 FortiGate SSL VPN Azure AD 库应用，通过 Azure Active Directory 提供 VPN 身份验证。
 
-- 兑换 FortiGate 许可证
-- 下载固件
-- 部署 FortiGate VM
-   - 设置静态公共 IP 地址并分配完全限定的域名
-   - 为 TCP 端口创建新的入站网络安全组规则
-- 为 FortiGate 创建自定义 Azure 应用
-- 为组匹配做准备
-   - 为用户创建组
-- 配置 FortiGate VM
-   - 安装许可证
-   - 更新固件
-   - 将管理端口更改为 TCP
-   - 上传 Azure Active Directory SAML 签名证书
-   - 上传和配置自定义 SSL 证书
-   - 执行命令行配置
-   - 创建 VPN 门户和防火墙策略
-- 使用 Azure 测试登录
+## <a name="redeem-the-fortigate-license"></a>兑换 FortiGate 许可证
 
-## <a name="redeeming-the-fortigate-license"></a>兑换 FortiGate 许可证
+Fortinet FortiGate 下一代防火墙产品在 Azure 基础结构即服务 (IaaS) 中作为虚拟机提供。 此虚拟机有两种许可模式：即用即付和自带许可 (BYOL)。
 
-Fortinet FortiGate 下一代防火墙产品在 Azure IaaS 中作为虚拟机提供。 此虚拟机有两种授权模式 -
-
-- 即用即付 (PAYG)
-- 自带许可证 (BYOL)
-
-与 Fortinet 合作提供安全混合访问 (SHA) 指导时，Azure AD Get to Production SHA 团队的成员可得到 Fortinet 提供的许可证。 如果未提供任何许可证，PAYG 部署也将正常运行。
-
-如果已颁发许可证，Fortinet 提供了一个必须联机兑换的注册代码
-
-![Fortigate SSL VPN](registration-code.png)
-
-1. 在 https://support.fortinet.com/ 注册
-2. 注册后，在 https://support.fortinet.com/ 登录
-3. 导航到“资产”- >“注册/激活” 
-4. 输入 Fortinet 提供的注册代码
-5. 指定该注册代码，选择“该产品将由非政府用户使用”，然后单击“下一步” 
-6. 输入产品说明（例如 FortiGate），将 Fortinet 合作伙伴设置为“其他”- >“Microsoft”，然后单击“下一步”  
-7. 接受“Fortinet 产品注册协议”并单击“下一步” 
-8. 接受“条款”，然后单击“确认” 
-9. 单击“许可证文件下载”并保存以供之后使用
-
+如果你已购买 Fortinet 提供的 FortiGate 许可证，以便与 BYOL 虚拟机部署选项一起使用，请从 Fortinet 的产品激活页面 (https://support.fortinet.com ) 兑换许可证。 生成的许可证文件具有 .lic 文件扩展名。
 
 ## <a name="download-firmware"></a>下载固件
 
 编写时，Fortinet FortiGate Azure VM 不附带进行 SAML 身份验证所需的固件版本。 必须从 Fortinet 获取最新版本。
 
-1. 在 https://support.fortinet.com/ 登录
-2. 导航到“下载”- >“固件映像” 
-3. 单击“发行说明”右侧的“下载” 
-4. 单击“v6”。
-5. 单击“6”。
-6. 单击“6.4”。
-7. 单击同一行上的 HTTPS 链接，下载“FGT_VM64_AZURE-v6-build1637-FORTINET.out” 
-8. 保存该文件以供之后使用
-
+1. 在 https://support.fortinet.com/ 上登录。
+2. 转到“下载” > “固件映像”。
+3. 在“发行说明”的右侧，选择“下载”。 
+4. 选择“v6.00” > “6.4” > “6.4.2”  。
+5. 选择同一行上的 HTTPS 链接，下载“FGT_VM64_AZURE-v6-build1723-FORTINET.out” 。
+6. 保存该文件备用。
 
 ## <a name="deploy-the-fortigate-vm"></a>部署 FortiGate VM
 
-1. 导航到 https://portal.azure.com 并登录到要在其中部署 FortiGate 虚拟机的订阅
-2. 创建新的资源组，或打开要在其中部署 FortiGate 虚拟机的资源组
-3. 单击“添加”
-4. 在“搜索市场”对话框中输入“Forti”，然后选择“Fortinet FortiGate 下一代防火墙”  
-5. 选择软件计划（如果你有许可证，则选择 BYOL，否则选择 PAYG），然后单击“创建”
-6. 填充 VM 配置
+1. 转到 Azure 门户，登录到要在其中部署 FortiGate 虚拟机的订阅。
+2. 创建新的资源组，或打开要在其中部署 FortiGate 虚拟机的资源组。
+3. 选择“添加”。
+4. 在“在市场中搜索”中，输入“Forti”。 选择“Fortinet FortiGate 下一代防火墙”。
+5. 选择软件计划（如果你有许可证，则选择“自带许可”；如果没有，则选择“即用即付”）。 选择“创建”。
+6. 填充 VM 配置。
 
-    ![Fortigate SSL VPN](virtual-machine.png)
+    ![“创建虚拟机”的屏幕截图。](virtual-machine.png)
 
-7. 将身份验证类型设置为“密码”并提供 VM 的管理凭据
-8. 单击“查看 + 创建”
-9. 单击“创建” 
-10. 等待 VM 部署完成
-
-
-### <a name="set-a-statuc-public-ip-address-and-assign-a-fully-qualified-domain-name"></a>设置静态公共 IP 地址并分配完全限定的域名
-
-为获得一致的用户体验，最好将分配给 FortiGate VM 的公共 IP 地址设置为静态分配。 此外，将其映射到完全限定的域名也有助于获得一致的用户体验。
-
-设置静态公共 IP 地址
-
-1. 导航到 https://portal.azure.com 并打开 FortiGate VM 的设置
-2. 在“概述”屏幕上，单击该公共 IP 地址
-
-    ![Fortigate SSL VPN](public-ip-address.png)
-
-3. 单击“静态”，然后单击“保存” 
-
-分配完全限定的域名
-
-如果你拥有要在其中部署 FortiGate VM 的环境的公共可路由域名，请为 VM 创建一个映射到上面静态分配的公共 IP 地址的主机 (A) 记录。
-
-### <a name="create-a-new-inbound-network-security-group-rule-for-tcp-port"></a>为 TCP 端口创建新的入站网络安全组规则
-
-1. 导航到 https://portal.azure.com 并打开 FortiGate VM 的设置
-2. 在左侧菜单中，单击“网络”。 将列出网络接口并显示入站端口规则
-3. 单击“添加入站端口规则”
-4. 为 TCP 8443 创建新的入站端口规则
-
-    ![Fortigate SSL VPN](port-rule.png)
-
-5. 单击“添加”
+7. 将“身份验证类型”设置为“密码”，并提供 VM 的管理凭据。 
+8. 选择“查看 + 创建” > “创建”。
+9. 等待 VM 部署完成。
 
 
-## <a name="create-a-custom-azure-app-for-fortigate"></a>为 FortiGate 创建自定义 Azure 应用
+### <a name="set-a-static-public-ip-address-and-assign-a-fully-qualified-domain-name"></a>设置静态公共 IP 地址并分配完全限定的域名
 
-1. 导航到 https://portal.azure.com 并为租户打开将提供 FortiGate 登录标识的 Azure Active Directory 边栏选项卡
-2. 在左侧菜单中，单击“企业应用程序”
-3. 单击“新建应用程序”
-4. 单击“非库应用程序”
-5. 提供一个名称（如 FortiGate），然后单击“添加”
-6. 在左侧菜单中，单击“用户和组”
-7. 添加能够登录的用户，然后单击“分配”
-8. 在左侧菜单中，单击“单一登录”
-9. 单击“SAML”
-10. 在“基本 SAML 配置”下，单击铅笔以编辑配置
-11. 配置
-    - 标识符（实体 ID）为 `https://<address>/remote/saml/metadata`
-    - 回复 URL（断言使用者服务 URL）为 `https://<address>/remote/saml/login`
-    - 注销 URL 为 `https://<address>/remote/saml/logout`
+为获得一致的用户体验，请将分配给 FortiGate VM 的公共 IP 地址设置为静态分配。 此外，请将其映射到完全限定的域名 (FQDN)。
 
-    其中 `address` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址
+1. 转到 Azure 门户，并打开 FortiGate VM 的设置。
+2. 在“概览”屏幕上，选择该公共 IP 地址。
 
-    记录每个 URL 以供之后使用 -
+    ![FortiGate SSL VPN 的屏幕截图。](public-ip-address.png)
 
-    - 实体 ID
-    - 回复 URL
-    - 注销 URL
-12. 单击“保存” 
-13. 关闭“基本 SAML 配置”
-14. 在“3 – SAML 签名证书”下，下载“证书(Base64)”并将其保存以供之后使用 
-15. 在“4 – 设置(应用名称)”下，复制 Azure 登录 URL、Azure AD 标识符以及 Azure 注销 URL，并将它们保存以供之后使用
-    - Azure 登录 URL
-    - Azure AD 标识符
-    - Azure 注销 URL
-16. 在“2 – 用户特性和声明”下，单击铅笔以编辑配置
-17. 单击“添加新声明”
-18. 将“名称”设置为“username”
-19. 将“源属性”设置为“user.userprincipalname”
-20. 单击“保存” 
-21. 单击“添加组声明”
-22. 选择“所有组”
-23. 勾选“自定义组声明的名称”
-24. 将“名称”设置为“group”
-25. 单击“保存” 
+3. 选择“静态” > “保存”。
 
+如果你拥有要在其中部署 FortiGate VM 的环境的公共可路由域名，请为 VM 创建一个主机 (A) 记录。 此记录映射到上一个静态分配的公共 IP 地址。
 
-## <a name="prepare-for-group-matching"></a>为组匹配做准备
+### <a name="create-a-new-inbound-network-security-group-rule-for-tcp-port-8443"></a>为 TCP 端口 8443 创建新的入站网络安全组规则
 
-登录后，FortiGate 允许基于组成员身份提供不同的用户门户体验。 例如，可能会针对营销组提供一种体验，而针对财务组提供另一种体验。
+1. 转到 Azure 门户，并打开 FortiGate VM 的设置。
+2. 在左侧菜单中选择“网络”。 这将列出网络接口并显示入站端口规则。
+3. 选择“添加入站端口规则”。
+4. 为 TCP 8443 创建新的入站端口规则。
 
-按如下所述进行配置 -
+    ![“添加入站安全规则”的屏幕截图。](port-rule.png)
 
-### <a name="create-groups-for-users"></a>为用户创建组
+5. 选择“添加”。
 
-1. 导航到 https://portal.azure.com 并为租户打开将提供 FortiGate 登录标识的 Azure Active Directory 边栏选项卡
-2. 单击“组”
-3. 单击“新建组”
-4. 创建一个组，设置如下：
-    - 组类型 = 安全
-    - 组名 = `a meaningful name`
-    - 组说明 = `a meaningful description for the group`
-    - 成员身份类型 = 已分配
-    - 成员 = `users for the user experience that will map to this group`
-5. 对任何其他用户体验重复步骤 3 和 4
-6. 创建组后，选择每个组并记录其对象 ID
-7. 保存这些对象 ID 和组名以供之后使用
+## <a name="create-a-second-virtual-nic-for-the-vm"></a>为 VM 创建第二个虚拟 NIC
+
+要使用户能够使用内部资源，必须将第二个虚拟 NIC 添加到 FortiGate VM。 虚拟 NIC 所在的 Azure 虚拟网络必须具有通向这些内部资源的可路由连接。
+
+1. 转到 Azure 门户，并打开 FortiGate VM 的设置。
+2. 如果 FortiGate VM 尚未停止，请选择“停止”，等待 VM 关闭。
+3. 在左侧菜单中选择“网络”。
+4. 选择“附加网络接口”。
+5. 选择“创建并附加网络接口”。
+6. 配置新网络接口的属性，然后选择“创建”。
+
+    ![创建网络接口的屏幕截图。](new-network-interface.png)
+
+7. 启动 FortiGate VM。
 
 
 ## <a name="configure-the-fortigate-vm"></a>配置 FortiGate VM
 
+以下各部分将引导你完成设置 FortiGate VM 的过程。
+
 ### <a name="install-the-license"></a>安装许可证
 
-1. 导航到 `https://<address>`
+1. 转到 `https://<address>`。 这里的 `<address>` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址。
 
-    这里的 `address` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址
+2. 继续操作，忽略任何证书错误。
+3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录。
+4. 如果部署使用“自带许可证”模型，你会看到要求上传许可证的提示。 选择之前创建的许可证文件，将其上传。 选择“确定”，重启 FortiGate VM。
 
-2. 忽略任何证书错误后继续
-3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录
-4. 如果部署使用 BYOL 模型，一个上传许可证的提示随即显示。 选择之前创建的许可证文件并将其上传，单击“确定”并重启 FortiGate VM -
+    ![FortiGate VM 许可证的屏幕截图。](license.png)
 
-    ![Fortigate SSL VPN](license.png)
-
-5. 重启后，请通过管理员凭据再次登录，以验证许可证
+5. 重启后，使用管理员凭据再次登录以验证许可证。
 
 ### <a name="update-firmware"></a>更新固件
 
-1. 导航到 `https://<address>`
+1. 转到 `https://<address>`。 这里的 `<address>` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址。
 
-    这里的 `address` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址
+2. 继续操作，忽略任何证书错误。
+3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录。
+4. 在左侧菜单中，选择“系统” > “固件”。 
+5. 在“固件管理”中选择“浏览”，然后选择之前下载的固件文件。 
+6. 忽略警告，选择“备份配置并升级”。
 
-2. 忽略任何证书错误后继续
-3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录
-4. 在左侧菜单中，单击“系统”
-5. 在左侧菜单的“系统”下，选择“固件”
-6. 在“固件管理”页中，单击“浏览”并选择之前下载的固件文件
-7. 忽略警告，并单击“备份配置并升级”
+    ![“固件管理”的屏幕截图。](backup-configure-upgrade.png)
 
-    ![Fortigate SSL VPN](backup-configure-upgrade.png)
+7. 选择“继续”。 
+8. 当系统提示保存 FortiGate 配置（以 .conf 文件的形式）时，请选择“保存”。
+9. 等待固件上传并应用。 等待 FortiGate VM 重启。
+10. 在 FortiGate VM 重启后，使用管理员凭据再次登录。
+11. 当系统提示你设置仪表板时，选择“稍后”。
+12. 教程视频开始播放时，选择“确定”。
 
-8. 单击“继续”
-9. 当系统提示保存 FortiGate 配置（作为 .conf 文件）时，请单击“保存”
-10. 等待固件上传和应用，并等待 FortiGate VM 重启
-11. FortiGate VM 重启后，请使用管理员凭据再次登录
-12. 当系统提示执行仪表板设置时，单击“稍后”
-13. 教程视频开始播放时，单击“确定”
+### <a name="change-the-management-port-to-tcp-8443"></a>将管理端口更改为 TCP 8443
 
-### <a name="change-the-management-port-to-tcp"></a>将管理端口更改为 TCP
+1. 转到 `https://<address>`。 这里的 `<address>` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址。
 
-1. 导航到 `https://<address>`
+2. 继续操作，忽略任何证书错误。
+3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录。
+4. 在左侧菜单中，选择“系统”。
+5. 在“管理设置”下，将 HTTPS 端口更改为“8443”，然后选择“应用”。  
+6. 应用更改后，浏览器会尝试重载管理页面，但会失败。 从现在开始，管理页面地址是 `https://<address>:8443`。
 
-    这里的 `address` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址
+    ![“上传远程证书”的屏幕截图。](certificate.png)
 
-2. 忽略任何证书错误后继续
-3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录
-4. 在左侧菜单中，单击“系统”
-5. 在“管理设置”下，将 HTTPS 端口更改为“8443”
-6. 单击“应用”
-7. 应用更改后，浏览器将尝试重载管理页面，但它将失败。 从现在开始，管理页面地址将是 `https://<address>`
+### <a name="upload-the-azure-ad-saml-signing-certificate"></a>上传 Azure AD SAML 签名证书
 
-    ![Fortigate SSL VPN](certificate.png)
+1. 转到 `https://<address>:8443`。 这里的 `<address>` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址。
 
-### <a name="upload-the-azure-active-directory-saml-signing-certificate"></a>上传 Azure Active Directory SAML 签名证书
-
-1. 导航到 `https://<address>`
-
-    这里的 `address` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址
-
-2. 忽略任何证书错误后继续
-3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录
-4. 在左侧菜单中，单击“系统”
-5. 在“系统”下，单击“证书”
-6. 单击“导入”- >“远程证书” 
-7. 浏览到从 Azure 租户中 FortiGate 自定义应用部署下载的证书，将其选中，然后单击“确定”
+2. 继续操作，忽略任何证书错误。
+3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录。
+4. 在左侧菜单中，选择“系统” > “证书”。 
+5. 选择“导入” > “远程证书” 。
+6. 浏览到从 Azure 租户中的 FortiGate 自定义应用部署下载的证书。 将其选中，然后选择“确定”。
 
 ### <a name="upload-and-configure-a-custom-ssl-certificate"></a>上传和配置自定义 SSL 证书
 
-你可能希望使用自己的 SSL 证书（该证书支持你使用的 FQDN）配置 FortiGate VM。 如果你有权访问以 .PFX 格式与私钥打包在一起的 SSL 证书，则该证书可用于此目的
+你可能希望使用自己的 SSL 证书（该证书支持你使用的 FQDN）配置 FortiGate VM。 如果你有权访问以 PFX 格式与私钥打包在一起的 SSL 证书，则该证书可用于此目的。
 
-1. 导航到 `https://<address>`
+1. 转到 `https://<address>:8443`。 这里的 `<address>` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址。
 
-    这里的 `address` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址
+2. 继续操作，忽略任何证书错误。
+3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录。
+4. 在左侧菜单中，选择“系统” > “证书”。 
+5. 选择“导入” > “本地证书” > “PKCS #12 证书”。  
+6. 浏览到包含 SSL 证书和私钥的 .PFX 文件。
+7. 为证书提供 .PFX 密码和一个有意义的名称。 然后选择“确定”。 
+8. 在左侧菜单中，选择“系统” > “设置”。 
+9. 在“管理设置”下，展开“HTTPS 服务器证书”旁的列表，选择前面导入的 SSL 证书。 
+10. 选择“应用”。
+11. 关闭浏览器窗口并转到 `https://<address>:8443`。
+12. 使用 FortiGate 管理员凭据登录。 你现在应会看到正在使用正确的 SSL 证书。
 
-2. 忽略任何证书错误后继续
-3. 使用在 FortiGate VM 部署期间提供的管理员凭据登录
-4. 在左侧菜单中，单击“系统”
-5. 在“系统”下，单击“证书”
-6. 单击“导入”- >“本地证书” 
-7. 单击“PKCS #12 证书”
-8. 浏览到包含 SSL 证书和私钥的 .PFX 文件
-9. 提供 .PFX 密码
-10. 为证书提供一个有意义的名称
-11. 单击 **“确定”**
-12. 在左侧菜单中，单击“系统”
-13. 在“系统”下，单击“设置”
-14. 在“管理设置”下，展开 HTTPS 服务器证书旁的下拉列表并选择前面导入的 SSL 证书
-15. 单击“应用”
-16. 关闭浏览器窗口，然后再次导航到 `https://<address>`
-17. 使用 FortiGate 管理员凭据登录，并观察正在使用的正确 SSL 证书
+### <a name="configure-authentication-timeout"></a>配置身份验证超时
 
-
-### <a name="perform-command-line-configuration"></a>执行命令行配置
-
-执行用于 SAML 身份验证的命令行配置
-
-1. 导航到 https://portal.azure.com 并打开 FortiGate VM 的设置
-2. 在左侧菜单中，单击“串行控制台”
-3. 在串行控制台使用 FortiGate VM 管理员凭据登录
-
-    在下一步中，将需要前面记录的 URL。 即 -
-
-    - 实体 ID
-    - 回复 URL
-    - 注销 URL
-    - Azure 登录 URL
-    - Azure AD 标识符
-    - Azure 注销 URL
-4. 在串行控制台执行以下命令 -
-
-    ```
-    config user saml
-    edit azure
-    set entity-id <Entity ID>
-    set single-sign-on-url <Reply URL>
-    set single-logout-url <Logout URL>
-    set idp-single-sign-on-url <Azure Login URL>
-    set idp-entity-id <Azure AD Identifier>
-    set idp-single-logout-url <Azure Logout URL>
-    set idp-cert REMOTE_Cert_
-    set user-name username
-    set group-name group
-    end
-    ```
-    > [!NOTE]
-    > Azure 注销 URL 包含一个 ? 符号。 这需要一个特殊的键序列才能将其正确提供给 FortiGate 串行控制台。 该 URL 通常为 -
-
-    `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1`
-
-    若要在串行控制台中提供此项，请键入
-
-    ```
-    set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation
-    ```
-    然后按 CTRL+V，
-
-    再粘贴 URL 的剩余部分以完成该行
-
-    ```
-    set idp-single-logout-url
-    https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.
-    ```
-
-5. 若要确认配置，请执行 -
-
-    ```
-    show user saml
-    ```
-
-执行用于组匹配的命令行配置
-
-1. 导航到 https://portal.azure.com 并打开 FortiGate VM 的设置
-2. 在左侧菜单中，单击“串行控制台”
-3. 在串行控制台使用 FortiGate VM 管理员凭据登录
-4. 在串行控制台执行以下命令 -
-
-    ```
-    config user group
-    edit <group 1 name>
-    set member azure
-    config match
-    edit 1
-    set server-name azure
-    set group-name <group 1 Object Id>
-    next
-    end
-    next
-    ```
-
-    对于每个在 FortiGate 中具有不同门户体验的附加组，从 edit `group 1 name` 开始重复这些命令
-
-执行用于身份验证超时的命令行配置
-
-1. 导航到 https://portal.azure.com 并打开 FortiGate VM 的设置
-2. 在左侧菜单中，单击“串行控制台”
-3. 在串行控制台使用 FortiGate VM 管理员凭据登录
-4. 在串行控制台执行以下命令 -
+1. 转到 Azure 门户，并打开 FortiGate VM 的设置。
+2. 在左侧菜单中，选择“串行控制台”。
+3. 在串行控制台中使用 FortiGate VM 管理员凭据登录。
+4. 在串行控制台中运行以下命令：
 
     ```
     config system global
     set remoteauthtimeout 60
     end
     ```
-### <a name="create-vpn-portals-and-firewall-policy"></a>创建 VPN 门户和防火墙策略
 
-1. 导航到 `https://<address>`
+### <a name="ensure-network-interfaces-are-obtaining-ip-addresses"></a>确保网络接口正在获取 IP 地址
 
-    这里的 `address` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址
+1. 转到 `https://<address>:8443`。 这里的 `<address>` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址。
 
-2. 使用在 FortiGate VM 部署期间提供的管理员凭据登录
-3. 在左侧菜单中，单击“VPN”
-4. 在“VPN”下，单击“SSL-VPN 门户”
-5. 单击“新建”
-6. 提供一个名称（通常与用于提供自定义门户体验的 Azure 组相匹配）
-7. 单击“源 IP 池”旁边的加号 (+)，选择默认池，然后单击“关闭” 
-8. 自定义此组的体验。 对于测试，这可以是对门户消息和主题的自定义。 你也可在此处创建将用户定向到内部资源的自定义书签
-9. 单击 **“确定”**
-10. 对于将具有自定义门户体验的每个 Azure 组，重复步骤 5 到 9
-11. 在“VPN”下，单击“SSL-VPN 设置”
-12. 单击“侦听接口”旁边的加号 (+)
-13. 选择“Port1”，然后单击“关闭” 
+2. 使用在 FortiGate VM 部署期间提供的管理员凭据登录。
+3. 在左侧菜单中选择“网络”。
+4. 在“网络”下，选择“接口”。
+5. 检查 port1（外部接口）和 port2（内部接口），确保它们从正确的 Azure 子网中获取 IP 地址。
+    a. 如果任一端口未从子网中获取 IP 地址（通过 DHCP），请右键单击该端口，然后选择“编辑”。
+    b. 在“寻址模式”旁边，确保选择“DHCP”。
+    c. 选择“确定”。
 
+    ![网络接口寻址的屏幕截图。](addressing.png)
 
-14. 如果之前安装了自定义 SSL 证书，请在下拉菜单中更改服务器证书以使用自定义 SSL 证书
-15. 在“身份验证/门户映射”下，单击“新建”
-16. 选择第一个 Azure 组，并将其与相同名称的门户匹配
-17. 单击 **“确定”**
-18. 对于每个 Azure 组/门户对，重复步骤 15 到 17
-19. 在“身份验证/门户映射”下，编辑“所有其他用户/组”
-20. 将门户设置为“完全访问”
-21. 单击 **“确定”**
-22. 单击“应用”
-23. 滚动到“SSL-VPN 设置”页的顶部，单击警告“不存在 SSL-VPN 策略
-     **。** 单击此处以使用这些设置创建新的 SSL-VPN 策略”
-24. 提供一个名称，例如“VPN Grp”
-25. 将传出接口设置为“端口”
-26. 单击“源”
-27. 在“地址”下，选择“全部”
-28. 在“用户”下，选择第一个 Azure 组
-29. 单击 **“关闭”**。
-30. 单击“目标”
-31. 在“地址”下，这通常是内部网络。 选择 login.microsoft.com 进行测试
-32. 单击 **“关闭”**。
-33. 单击“服务”
-34. 单击“全部”
-35. 单击 **“关闭”**。
-36. 单击 **“确定”**
-37. 在左侧菜单中，单击“策略和对象”
-38. 在“策略和对象”下，单击“防火墙策略”
-39. 展开“SSL-VPN 隧道接口(ssl.root)”->“端口”
-40. 右键单击之前创建的 VPN 策略 (VPN Grp 1) 并选择“复制” 
-41. 在“VPN 策略”下单击右键并选择“粘贴”->“下方” 
-42. 编辑新策略，为其提供不同的名称（例如 VPN Grp2），并更改适用的组（另一个 Azure 组）
-43. 右键单击新策略，将状态设置为“已启用”
+### <a name="ensure-fortigate-vm-has-correct-route-to-on-premises-corporate-resources"></a>确保 FortiGate VM 具有到本地公司资源的正确路由
 
+多宿主 Azure VM 的所有网络接口都位于同一虚拟网络（但可能是单独的子网）。 这通常意味着两个网络接口都会与通过 FortiGate 发布的本地公司资源建立连接。 为此，需要创建自定义路由条目，确保在发出本地公司资源请求时，流量从正确的接口流出。
 
-## <a name="test-sign-in-using-azure"></a>使用 Azure 测试登录
+1. 转到 `https://<address>:8443`。 这里的 `<address>` 是分配给 FortiGate VM 的 FQDN 或公共 IP 地址。
 
-1. 使用私密浏览器会话，导航到 `https://<address>` 
-2. “登录”应重定向到 Azure Active Directory 以进行登录
-3. 为已分配到 Azure 租户中 FortiGate 应用的用户提供凭据后，相应的用户门户应会显示
+2. 使用在 FortiGate VM 部署期间提供的管理员凭据登录。
+3. 在左侧菜单中选择“网络”。
+4. 在“网络”下，选择“静态路由”。
+5. 选择“新建”。
+6. 选择“目标”旁边的“子网”。
+7. 在“子网”下，指定本地公司资源所在的子网的信息（例如 10.1.0.0/255.255.255.0）
+8. 在“网关地址”旁边，指定 port2 连接到的 Azure 子网上的网关（例如，此网关通常以 1 结尾，如 10.6.1.1）
+9. 选择“接口”旁的内部网络接口 port2
+10. 选择“确定”。
 
-    ![Fortigate SSL VPN](test-sign-in.png)
+    ![配置路由的屏幕截图。](route.png)
+
+## <a name="configure-fortigate-ssl-vpn"></a>配置 FortiGate SSL VPN
+
+请执行 https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial 中所述的步骤

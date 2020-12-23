@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398316"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348817"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -34,7 +34,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 **指南：** 启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 活动日志可让你深入了解在 Azure 开发测试实验室实例的管理平面上完成的操作。 使用 Azure 活动日志数据，您可以确定任何写入操作的 "内容、人员和时间" (PUT、POST、DELETE) 在开发测试实验室实例的管理平面级别完成。
 
-有关详细信息，请参阅 [创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/platform/diagnostic-settings.md)。
+有关详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/platform/diagnostic-settings.md)。
 
 **Azure 安全中心监视：** 当前不可用
 
@@ -43,7 +43,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 **指南：** 启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 活动日志可让你深入了解在 Azure 开发测试实验室实例的管理平面上完成的操作。 使用 Azure 活动日志数据，可以确定任何写入操作的 "操作内容、人员和时间" (PUT、POST、DELETE) 在开发测试实验室实例的管理平面级别完成。
 
-有关详细信息，请参阅 [创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/platform/diagnostic-settings.md)。
+有关详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/platform/diagnostic-settings.md)。
 
 **Azure 安全中心监视：** 当前不可用
 
@@ -62,7 +62,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 **责任：** 面向
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
-***指南：** 在 Azure Monitor 中，根据组织的符合性规定，设置与 Azure 开发测试实验室实例关联的 Log Analytics 工作区的日志保持期。
+**_指南：_* 在 Azure Monitor 中，根据组织的符合性规定，设置与 Azure 开发测试实验室实例关联的 Log Analytics 工作区的日志保持期。
 
 有关详细信息，请参阅以下文章： [如何设置日志保持参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -160,7 +160,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 **指南：** 开发测试实验室使用 Azure AD 服务进行标识管理。 当你为用户授予基于开发测试实验室的环境的访问权限时，请考虑以下两个重要方面：
 
 - **资源管理：** 它提供对 Azure 门户的访问权限，以管理 (创建 Vm、创建环境、启动、停止、重新启动、删除和应用) 项目等资源的资源。 使用 azure RBAC)  (azure 基于角色的访问控制在 Azure 中完成资源管理。 你将角色分配给用户，并设置资源和访问级别权限。
-- **虚拟机 (网络级) **：在默认配置中，vm 使用本地管理员帐户。 如果域服务 (Azure AD 域服务、本地域或基于云的域) ，则可以将计算机加入域。 然后，用户可以使用域加入项目将其基于域的标识连接到计算机。 
+- **虚拟机 (网络级)**：在默认配置中，vm 使用本地管理员帐户。 如果域服务 (Azure AD 域服务、本地域或基于云的域) ，则可以将计算机加入域。 然后，用户可以使用域加入项目将其基于域的标识连接到计算机。 
 
 - [开发测试实验室的参考体系结构](devtest-lab-reference-architecture.md#architecture)
 - [了解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
@@ -175,9 +175,9 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
-**Azure 安全中心监视：*** 是
+**Azure 安全中心监视：** _ 是
 
-**责任：** 面向
+_ *责任：** Customer
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
@@ -190,7 +190,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 
 **责任：** 面向
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
 **指南：** 当环境中发生可疑或不安全的活动时，使用 Azure Active Directory (Azure AD) 安全报告来生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
 - [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)  
@@ -264,7 +264,7 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 **指南：** 使用标记帮助跟踪存储或处理敏感信息的 Azure 资源。
 
-- [如何创建和使用标记](../azure-resource-manager/resource-group-using-tags.md)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视：** 不适用
 
@@ -273,10 +273,10 @@ Azure 开发测试实验室的 Azure 安全基准包含的建议可帮助你提�
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 **指南：** 为开发、测试和生产实施单独的订阅或管理组。 Azure 开发测试实验室实例应由虚拟网络/子网分隔并正确标记。 
 
-- [如何创建其他 Azure 订阅](../billing/billing-create-subscription.md)
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 - [如何为开发测试实验室配置虚拟网络](devtest-lab-configure-vnet.md)
-- [如何创建和使用标记](../azure-resource-manager/resource-group-using-tags.md)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 - [如何创建和使用开发测试实验室的标记](devtest-lab-add-tag.md)
 
 **Azure 安全中心监视：** 当前不可用
@@ -306,7 +306,7 @@ Microsoft 管理 Azure 开发测试实验室的底层基础结构，并实施了
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 **指南：** Azure 开发测试实验室尚不支持数据标识、分类和丢失防护功能。 标记包含敏感信息的实例，并根据需要实现第三方解决方案（如有必要）。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于由 Microsoft 管理的基础平台，Microsoft 会将所有客户内容都视为敏感信息，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -327,7 +327,7 @@ Microsoft 管理 Azure 开发测试实验室的底层基础结构，并实施了
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 **指南：** 如有必要在开发测试实验室中创建的计算资源的符合性，请实现第三方工具（例如基于主机的自动数据丢失防护解决方案），以便在将数据复制到系统时，对数据强制实施访问控制。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于由 Microsoft 管理的基础平台，Microsoft 会将所有客户内容都视为敏感信息，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -379,24 +379,24 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 **指南：** 使用 Azure 更新管理确保在开发测试实验室中托管的 Windows 和 Linux Vm 上安装最新的安全更新。 对于 Windows 虚拟机，请确保已启用 Windows 更新并将其设置为自动更新。 此设置当前不可通过开发测试实验室配置，但实验室管理员/订阅管理员可以在其订阅中的基础计算 Vm 上配置此设置。 
 
-- [如何在 Azure 中为 Vm 配置更新管理](../automation/update-management/update-mgmt-overview.md)
-- [了解通过安全中心监视的 Azure 安全策略](../security-center/security-center-policy-definitions.md)
+- [如何在 Azure 中为 Vm 配置更新管理](../automation/update-management/overview.md)
+- [了解通过安全中心监视的 Azure 安全策略](../security-center/policy-reference.md)
 
 **Azure 安全中心监视：** 不适用
 
 **责任：** 面向
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署第三方自动软件修补管理解决方案
-***指南：*** 作为实验室管理员，你可以使用 [开发测试实验室项目](add-artifact-vm.md) 自动更新对实验室自定义映像的更新，包括安全修补程序和其他更新。 
+**_指南：_* _ 作为实验室管理员，你可以使用 [开发测试实验室项目](add-artifact-vm.md) 自动更新到实验室自定义映像，包括安全修补程序和其他更新。 
 
 了解有关 [开发测试实验室映像工厂](image-factory-create.md)的详细信息，它是一种配置为代码的解决方案，可定期自动构建和分发映像以及所有需要的配置。 
 
 作为订阅管理员，你还可以使用 Azure 更新管理解决方案来管理开发测试实验室 Vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
-- [Azure 中的更新管理解决方案](../automation/update-management/update-mgmt-overview.md)
-- [管理 VM 的更新和修补程序](../automation/update-management/update-mgmt-overview.md)
+- [Azure 中的更新管理解决方案](../automation/update-management/overview.md)
+- [管理 VM 的更新和修补程序](../automation/update-management/overview.md)
 
-**Azure 安全中心监视：** 不适用
+_ *Azure 安全中心监视：** 不适用
 
 **责任：** 面向
 
@@ -444,7 +444,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **指南：** 使用标记、管理组和单独的订阅，并根据需要单独的实验室来组织和跟踪实验室与实验室相关的资源。 定期协调清点，并确保从订阅快速删除未经授权的资源。
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 - [如何使用开发测试实验室创建实验室](devtest-lab-create-lab.md)
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 - [如何为实验室配置标记](devtest-lab-add-tag.md)
@@ -493,7 +493,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **指南：** Azure Automation 在部署、操作和解除工作负荷和资源的实现过程中提供完全控制。 作为订阅管理员，你可以使用更改跟踪来确定在开发测试实验室中托管的 Vm 上安装的所有软件。 可以实现自己的过程，也可以使用 Azure Automation State Configuration 来删除未经授权的软件。
 
 - [Azure 自动化简介](../automation/automation-intro.md)
-- [使用更改跟踪解决方案跟踪环境中的更改](../automation/change-tracking.md)
+- [使用更改跟踪解决方案跟踪环境中的更改](../automation/change-tracking/overview.md)
 - [Azure 自动化状态配置概述](../automation/automation-dsc-overview.md)
 
 **Azure 安全中心监视：** 不可用
@@ -517,7 +517,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 请参阅以下文章： 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
-- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/not-allowed-resource-types.md)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视：** 是的
 
@@ -534,7 +534,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **责任：** 面向
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
-**指南：** 使用 Azure 条件性访问，通过为**Microsoft Azure 管理**应用配置 "**阻止访问**"，限制用户与 Azure 资源管理器的交互能力。
+**指南：** 使用 Azure 条件性访问，通过为 **Microsoft Azure 管理** 应用配置 "**阻止访问**"，限制用户与 Azure 资源管理器的交互能力。
 
 - [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -559,7 +559,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 - [为开发测试实验室配置虚拟网络](devtest-lab-configure-vnet.md)
 - [Azure 防火墙概述](../firewall/overview.md)
 - [Web 应用程序防火墙概述](../web-application-firewall/overview.md)
-- [网络安全概述](../virtual-network/security-overview.md)
+- [网络安全概述](../virtual-network/network-security-groups-overview.md)
 - [Azure 虚拟网络概述]()
 - [使用 Azure 管理组来组织资源](../governance/management-groups/overview.md)
 - [订阅决策指南](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -617,7 +617,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 此外，Microsoft 发布的 Azure Marketplace 虚拟机映像由 Microsoft 进行管理和维护。
 
-- [如何实现 Azure 安全中心漏洞评估建议](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation State Configuration 概述](../automation/automation-dsc-overview.md)
 - [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 - [如何在开发测试实验室中创建映像工厂](image-factory-create.md)
@@ -629,8 +629,8 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 **指南：** 使用 Azure DevOps 来安全地存储和管理代码，如自定义 Azure 策略、Azure 资源管理器模板和所需的状态配置脚本。 若要访问在 Azure DevOps 中管理的资源，可以授予或拒绝特定用户、内置安全组或 (Azure Active Directory 中定义的组的权限（如果与 Azure DevOps 集成） Azure AD) 。
 
-- [Azure Repos Git 教程](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [关于权限和组](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure Repos Git 教程](/azure/devops/repos/git/gitworkflow)
+- [关于权限和组](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Azure 开发测试实验室与 Azure DevOps 工作流之间的集成](devtest-lab-dev-ops.md)
 
 **Azure 安全中心监视：** 不适用
@@ -681,7 +681,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 **指南：** 使用 Azure 安全中心对 OS 和容器的 Docker 设置执行基线扫描。
 
-- [了解 Azure 安全中心容器建议](../security-center/security-center-container-recommendations.md)
+- [了解 Azure 安全中心容器建议](../security-center/container-security.md)
 
 **Azure 安全中心监视：** 不适用
 
@@ -692,8 +692,8 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 - [在开发测试实验室中配置托管标识以部署 Azure 资源管理器环境](use-managed-identities-environments.md)
 - [在开发测试实验室中配置托管标识以部署虚拟机](enable-managed-identities-lab-vms.md)
-- [如何创建密钥保管库](../key-vault/quick-create-portal.md)
-- [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+- [如何创建密钥保管库](../key-vault/general/quick-create-portal.md)
+- [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 - [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视：** 是的
@@ -701,7 +701,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **责任：** 面向
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
-**指南：** 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
+**指南：** 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
 
 - [在开发测试实验室中配置托管标识以部署 Azure 资源管理器环境](use-managed-identities-environments.md)
 - [在开发测试实验室中配置托管标识以部署虚拟机](enable-managed-identities-lab-vms.md)
@@ -721,7 +721,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 
 ## <a name="malware-defense"></a>恶意软件防护
-有关详细信息，请参阅*安全控制：恶意软件防护*。
+有关详细信息，请参阅 *安全控制：恶意软件防护*。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 **指南：** 使用适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件持续监视和保护你的资源。 对于 Linux，请使用第三方反恶意软件解决方案。 另外，使用 Azure 安全中心的数据服务威胁检测来检测上传到存储帐户的恶意软件。
@@ -823,7 +823,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **责任：** 面向
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
-**指南：** Azure 安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
+**指南：** Azure 安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 

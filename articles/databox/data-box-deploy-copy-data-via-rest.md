@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 71f966cd62ffd2c735259dcfa98b9b97f87d9a19
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926189"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337587"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>教程：使用 REST API 将数据复制到 Azure Data Box Blob 存储  
 
@@ -85,7 +85,7 @@ ms.locfileid: "87926189"
 
 1. 登录到 Azure 门户。
 2. 转到你的 Data Box 订单，然后导航到“常规”>“设备详细信息”。
-3. 在“设备凭据”下，转到设备的“访问 API”。  单击“下载”。 此操作将下载 **\<your order name>.cer** 证书文件。 **保存**此文件。 稍后将在用于连接到设备的客户端或主机上安装此证书。
+3. 在“设备凭据”下，转到设备的“访问 API”。  单击“下载”。 此操作将下载 **\<your order name>.cer** 证书文件。 **保存** 此文件。 稍后将在用于连接到设备的客户端或主机上安装此证书。
 
     ![在 Azure 门户中下载证书](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 
@@ -111,15 +111,15 @@ ms.locfileid: "87926189"
 1. 右键单击 `.cer` 文件并选择“安装证书”。 该操作会启动证书导入向导。
 2. 对于“存储位置”，选择“本地计算机”，并单击“下一步”。
 
-    ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![证书导入向导 - Windows Server](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
 3. 选择“将所有证书放入下列存储”，并单击“浏览”。 导航到远程主机的根存储，并单击“下一步”。
 
-    ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![证书导入向导 - 证书存储](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. 单击“完成”。 将显示一条提示已成功导入的消息。
 
-    ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![证书导入向导 - 完成导入](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>使用 Linux 系统
 
@@ -173,7 +173,7 @@ ms.locfileid: "87926189"
 2. 在左窗格中，展开需要在其中创建 Blob 容器的存储帐户。
 3. 右键单击“Blob 容器”，从上下文菜单中选择“创建 Blob 容器”。 
 
-   ![“创建 Blob 容器”上下文菜单](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![“Blob 容器”上下文菜单 -“创建 Blob 容器”](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
 4. 此时会在“Blob 容器”文件夹下面显示一个文本框。 输入 Blob 容器的名称。 有关 Blob 容器命名规则和限制的信息，请参阅[创建容器和设置权限](../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 5. 完成时按 **Enter** 可创建 Blob 容器，按 **Esc** 可取消相关操作。 成功创建 Blob 容器后，该容器会显示在所选存储帐户的“Blob 容器”文件夹下。

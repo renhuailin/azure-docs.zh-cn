@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708547"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243131"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>使用跨区域复制的要求和注意事项 
 
@@ -38,12 +38,14 @@ ms.locfileid: "90708547"
 * 目前不支持为从快照创建的源卷配置卷复制。
 * 设置跨区域复制后，复制过程将创建 *snapmirror 快照* 以提供源卷和目标卷之间的引用。 为每次增量传输创建新的快照时，将自动循环使用 Snapmirror 快照。 在删除复制关系和卷之前，不能删除 snapmirror 快照。 
 * 当复制关系处于活动或中断状态时，以及在删除复制关系之后，可以删除复制关系的源卷上的手动快照。 在复制关系中断之前，不能删除目标卷的手动快照。
+* 无法还原到创建复制目标卷之前拍摄的快照。
 
 ## <a name="next-steps"></a>后续步骤
-* [创建复制对等](cross-region-replication-create-peering.md)
-* [显示复制关系的运行状况状态](cross-region-replication-display-health-status.md)
+* [创建卷复制](cross-region-replication-create-peering.md)
+* [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
+* [删除卷复制或卷](cross-region-replication-delete.md)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)
 
 

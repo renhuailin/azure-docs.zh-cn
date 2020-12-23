@@ -1,44 +1,44 @@
 ---
-title: 教程：在 Azure Active Directory 中配置 Workday 写回Microsoft Docs
+title: 教程：在 Azure Active Directory 中配置 Workday 写回 | Microsoft Docs
 description: 了解如何配置从 Azure AD 到 Workday 的属性写回
 services: active-directory
 author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
-ms.translationtype: MT
+ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017466"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359725"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教程：配置从 Azure AD 到 Workday 的属性写回
-本教程的目的是说明从 Azure AD 到 Workday 的写回属性需要执行的步骤。 Workday 写回预配应用支持将值分配给以下 Workday 属性：
+本教程的目的是演示将属性从 Azure AD 写回到 Workday 需要执行的步骤。 Workday 写回预配应用支持为以下 Workday 属性分配值：
 * 工作电子邮件 
 * Workday 用户名
-* 工作座机电话号码 (包括国家/地区代码、区号、数字和分机) 
+* 工作座机电话号码（包括国家/地区代码、区号、号码和分机号码）
 * 工作座机电话号码主标志
-* 工作 mobile number (包括国家/地区代码、区号、数字) 
-* 工作移动主要标志
+* 工作手机号码（包括国家/地区代码、区号和号码）
+* 工作手机主标志
 
 ## <a name="overview"></a>概述
 
-使用 [workday 到本地 AD](workday-inbound-tutorial.md) 预配应用或 [workday 将](workday-inbound-cloud-only-tutorial.md) 入站预配集成设置为 Azure AD 预配应用程序后，可以选择配置 workday 写回应用程序，将联系人信息（如工作电子邮件和电话号码）写入 Workday。 
+使用 [Workday 到本地 AD](workday-inbound-tutorial.md) 预配应用或 [Workday 到 Azure AD](workday-inbound-cloud-only-tutorial.md) 预配应用设置入站预配集成之后，可以选择性地配置 Workday 写回应用，以将联系信息（如工作电子邮件和电话号码）写入 Workday。 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
-此 Workday 写回用户预配解决方案非常适合于：
+此 Workday 写回用户预配解决方案非常适合以下对象：
 
-* 使用需要对其管理的权威属性进行写回的 Microsoft 365 组织 (例如电子邮件地址、用户名和电话号码) 返回到 Workday
+* 需要将 IT 管理的官方属性（如电子邮件地址、用户名和电话号码）写回 Workday 的使用 Microsoft 365 的组织
 
 ## <a name="configure-integration-system-user-in-workday"></a>在 Workday 中配置集成系统用户
 
-请参阅 [配置集成系统用户](workday-inbound-tutorial.md#configure-integration-system-user-in-workday) 以创建有权检索辅助数据的 Workday 集成系统用户帐户部分。 
+若要创建 Workday 集成系统用户并使其具有检索工作人员数据的权限，请参阅[配置集成系统用户](workday-inbound-tutorial.md#configure-integration-system-user-in-workday)部分。 
 
 ## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>配置 Azure AD 属性写回到 Workday
 
@@ -82,9 +82,9 @@ ms.locfileid: "90017466"
 
 在此部分中，你将配置写回属性从 Azure AD 流到 Workday 的方式。 
 
-1. 在 " **映射**" 下的 "设置" 选项卡上，单击映射名称。
+1. 在“映射”下的“预配”选项卡上，单击映射名称。
 
-2. 在 " **源对象范围** " 字段中，你可以选择筛选，Azure Active Directory 中的哪些用户集应属于写回。 默认范围是“Azure AD 中的所有用户”。
+2. 在“源对象范围”字段中，可以有选择性地在 Azure Active Directory 中筛选要应属于写回一部分的用户集。 默认范围是“Azure AD 中的所有用户”。
 
 3. 在“属性映射”部分中，更新匹配的 ID 以指明 Azure Active Directory 中存储着 Workday 工作人员 ID 或员工 ID 的属性。 常用的匹配方法是将 Workday 工作人员 ID 或员工 ID 同步到 Azure AD 中的 extensionAttribute1-15，然后使用 Azure AD 中的此属性来重新匹配 Workday 中的用户。
 
@@ -93,41 +93,41 @@ ms.locfileid: "90017466"
      >[!div class="mx-imgBorder"]
      >![Azure 门户](./media/workday-inbound-tutorial/workday-writeback-mapping.png)
 
-5. 使用以下共享指南将电话号码属性值从 Azure AD 映射到 Workday。 
+5. 使用下面共享的指导将电话号码属性值从 Azure AD 映射到 Workday。 
 
-     | Workday 电话属性 | 预期值 | 映射指南 |
+     | Workday 电话属性 | 预期值 | 映射指导 |
      |-------------------------|----------------|------------------|
-     | WorkphoneLandlineIsPrimary | true/false | 其输出为 "true" 或 "false" 字符串值的常量或表达式映射。 |
-     | WorkphoneLandlineCountryCodeName | [三字母 ISO 3166-1 国家/地区代码](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 其输出为三个字母国家/地区代码的常量或表达式映射。 |
-     | WorkphoneLandlineCountryCodeNumber | [国际国家/地区电话号码](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 其输出为有效国家/地区代码 (没有 + 号) 的常量或表达式映射。 |
-     | WorkphoneLandlineNumber | 包含区号的完整电话号码 | 映射到 *telephoneNumber* 属性。 使用 regex 删除空格、方括号和国家/地区代码。 请参阅以下示例。 |
-     | WorkphoneLandlineExtension | 分机号 | 如果 *telephoneNumber* 包含 extension，请使用 regex 提取值。 |
-     | WorkphoneMobileIsPrimary | true/false | 输出为 "true" 或 "false" 字符串值的常量映射或表达式映射 |
-     | WorkphoneMobileCountryCodeName | [三字母 ISO 3166-1 国家/地区代码](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 其输出为三个字母国家/地区代码的常量或表达式映射。 |
-     | WorkphoneMobileCountryCodeNumber | [国际国家/地区电话号码](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 其输出为有效国家/地区代码 (没有 + 号) 的常量或表达式映射。 |
-     | WorkphoneMobileNumber | 包含区号的完整电话号码 | 映射到 *移动* 属性。 使用 regex 删除空格、方括号和国家/地区代码。 请参阅以下示例。 |
+     | WorkphoneLandlineIsPrimary | true/false | 其输出为“true”或“false”字符串值的常数或表达式映射。 |
+     | WorkphoneLandlineCountryCodeName | [三字母 ISO 3166-1 国家/地区代码](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 其输出为三字母国家/地区代码的常数或表达式映射。 |
+     | WorkphoneLandlineCountryCodeNumber | [国际国家/地区呼叫代码](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 其输出为有效国家/地区代码（没有 + 号）的常数或表达式映射。 |
+     | WorkphoneLandlineNumber | 包含区号的完整电话号码 | 映射到 telephoneNumber 属性。 使用正则表达式删除空格、括号和国家/地区代码。 请参阅以下示例。 |
+     | WorkphoneLandlineExtension | 分机号码 | 如果 telephoneNumber 包含分机号码，请使用正则表达式提取值。 |
+     | WorkphoneMobileIsPrimary | true/false | 其输出为“true”或“false”字符串值的常数映射或表达式映射 |
+     | WorkphoneMobileCountryCodeName | [三字母 ISO 3166-1 国家/地区代码](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 其输出为三字母国家/地区代码的常数或表达式映射。 |
+     | WorkphoneMobileCountryCodeNumber | [国际国家/地区呼叫代码](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 其输出为有效国家/地区代码（没有 + 号）的常数或表达式映射。 |
+     | WorkphoneMobileNumber | 包含区号的完整电话号码 | 映射到 mobile 属性。 使用正则表达式删除空格、括号和国家/地区代码。 请参阅以下示例。 |
 
      > [!NOTE]
-     > 调用 Change_Work_Contact Workday web 服务时，Azure AD 发送以下常数值： <br>
-     > * **Communication_Usage_Type_ID** 设置为常量字符串 "WORK" <br>
-     > * 对于移动电话号码， **Phone_Device_Type_ID**设置为常量字符串 "Mobile"; 对于座机电话号码，则设置为 "座机"。 <br>
+     > 调用 Change_Work_Contact Workday Web 服务时，Azure AD 发送以下常数值： <br>
+     > * Communication_Usage_Type_ID 设置为常数字符串“WORK” <br>
+     > * Phone_Device_Type_ID 对于移动电话号码设置为常数字符串“Mobile”，对于座机电话号码设置为“Landline”。 <br>
      > 
-     > 如果 Workday 租户使用不同 Type_IDs，则会遇到写回失败。 若要防止此类失败，可以使用 Workday **维护引用 id** 任务并更新 Type_IDs，以匹配 Azure AD 使用的值。 <br>
+     > 如果 Workday 租户使用不同 Type_ID，则会遇到写回失败。 若要防止此类失败，可以使用 Workday“维护首选项 ID”任务，并更新 Type_ID 以匹配 Azure AD 使用的值。 <br>
      >  
 
-     **引用 regex 表达式-示例1**
+     参考正则表达式 - 示例 1
 
-     如果 Azure AD 中的电话号码使用自助服务密码重置所需的格式设置 (SSPR) ，请使用下面的正则表达式。 <br>
-     示例：如果电话号码值为 + 1 1112223333->，则正则表达式将输出1112223333
+     如果 Azure AD 中的电话号码使用自助服务密码重置 (SSPR) 所需的格式进行设置，请使用下面的正则表达式。 <br>
+     示例：如果电话号码值为 +1 1112223333 ->，则正则表达式会输出 1112223333
 
      ```C#
      Replace([telephoneNumber], , "\\+(?<isdCode>\\d* )(?<phoneNumber>\\d{10})", , "${phoneNumber}", , )
      ```
 
-     **引用 regex 表达式-示例2**
+     参考正则表达式 - 示例 2
 
-     如果 Azure AD 中的电话号码是使用 (XXX) XXX-XXXX 格式设置的，请使用下面的正则表达式。 <br>
-     示例：如果电话号码值为 (111) 222-3333->，则 regex 表达式将输出1112223333
+     如果 Azure AD 中的电话号码使用格式 (XXX) XXX-XXXX 进行设置，请使用下面的正则表达式。 <br>
+     示例：如果电话号码值为 (111) 222-3333 ->，则正则表达式会输出 1112223333
 
      ```C#
      Replace([mobile], , "[()\\s-]+", , "", , )
@@ -144,16 +144,31 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。  
 
+1. 在“范围”下拉列表中，选择“同步所有用户和组” 。 使用此选项时，写回应用会将所有用户的映射属性从 Azure AD 写回 Workday（遵循“映射” -> “源对象范围”中定义的范围规则）。 
+
+   > [!div class="mx-imgBorder"]
+   > ![选择写回范围](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > Workday 写回预配应用不支持选项“仅同步已分配的用户和组”。
+ 
+
 2. 单击“ **保存**”。
 
-3. 此操作将启动初始同步，这可能会花费几小时的时间，具体取决于源目录中有多少个用户。 您可以查看进度栏，以跟踪同步周期的进度。 
+3. 此操作将启动初始同步；该过程会耗时数小时，具体时间取决源目录中的用户数。 可检查进度条来跟踪同步周期的进度。 
 
-4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志会列出预配服务执行的所有单个同步事件，例如要从源导入并导出到目标应用程序的用户。  
+4. 无论何时，检查 Azure 门户中的“预配日志”选项卡都可以查看预配服务执行的操作。 审核日志会列出预配服务执行的所有单个同步事件，例如从源导入和导出到目标应用程序的用户。  
 
-5. 初始同步完成后，它将在 " **预配** " 选项卡中写入摘要报告，如下所示。
+5. 完成初始同步后，系统会在“预配”选项卡中写入摘要报告，如下所示。
 
      > [!div class="mx-imgBorder"]
-     > ![设置进度栏](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+     > ![预配进度条](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>已知问题和限制
+
+* 写回应用对 Communication_Usage_Type_ID 和 Phone_Device_Type_ID  参数使用预定义值。 如果 Workday 租户对这些属性使用不同的值，则写回操作不会成功。 建议解决方法是是在 Workday 中更新 Type_ID。 
+* 写回应用配置为更新辅助电话号码时，不会在 Workday 中替换现有辅助电话号码。 它会向工作人员记录额外添加一个辅助电话号码。 没有针对此行为的解决方法。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

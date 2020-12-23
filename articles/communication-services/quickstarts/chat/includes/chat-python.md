@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3c05596e16edc5243b8a97002a5cc5990c69ec43
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b7d00335253772683b867acf0765b77fc493e79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943459"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523871"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
@@ -85,7 +85,7 @@ chat_client = ChatClient(endpoint, CommunicationUserCredential(<Access Token>))
 使用 `create_chat_thread` 方法创建聊天会话。
 
 - 使用 `topic` 提供一个会话主题；在创建聊天会话后可使用 `update_thread` 函数更新主题。
-- 使用 `members` 列出要添加到聊天会话中的 `ChatThreadMember`，`ChatThreadMember` 采用 `CommunicationUser` 类型作为 `user`，这是通过[创建用户](../../access-tokens.md#create-a-user)创建后得到的
+- 使用 `members` 列出要添加到聊天会话中的 `ChatThreadMember`，`ChatThreadMember` 采用 `CommunicationUser` 类型作为 `user`，这是通过[创建用户](../../access-tokens.md#create-an-identity)创建后得到的
 
 响应 `chat_thread_client` 用于在新创建的聊天会话上执行操作，如将成员添加到聊天会话、发送消息、删除消息等。它包含 `thread_id` 属性（聊天会话的唯一 ID）。
 
@@ -158,7 +158,7 @@ chat_messages = chat_thread_client.list_messages()
 使用 `add_members` 方法将会话成员添加到由 threadId 标识的会话中。
 
 - 使用 `members` 列出要添加到聊天会话的成员；
-- `user`（必需）是通过[创建用户](../../access-tokens.md#create-a-user)中的 `CommunicationIdentityClient` 创建的 `CommunicationUser`
+- `user`（必需）是通过[创建用户](../../access-tokens.md#create-an-identity)中的 `CommunicationIdentityClient` 创建的 `CommunicationUser`
 - `display_name`（可选）是会话成员的显示名称。
 - `share_history_time`（可选）是开始与成员共享聊天历史记录的时间。 若要在聊天会话开始后共享历史记录，请将此属性设置为等于或小于会话创建时间的任何日期。 若在添加成员之前不共享任何历史记录，请将其设置为当前日期。 若要共享部分历史记录，请将其设置为中间日期。
 

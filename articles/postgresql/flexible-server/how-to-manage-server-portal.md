@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13d78110f50d6ce72b8525914ed0e91dfcadd2cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: mvc
+ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933593"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961402"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for PostgreSQL 灵活的服务器
 
@@ -52,9 +52,7 @@ ms.locfileid: "90933593"
 2. 输入新密码并确认。 文本框会就密码复杂性要求提示你。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="为灵活的服务器重置密码":::
-
-3. 选择 " **保存** " 以保存新密码。
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="扩展存储灵活服务器" 以保存新密码。
 
 ## <a name="delete-a-server"></a>删除服务器
 
@@ -63,7 +61,7 @@ ms.locfileid: "90933593"
 1. 在 Azure 门户中选择服务器。 在“概览”窗口中，选择“删除”。  
 2. 在输入框中键入服务器的名称，确认要删除该服务器。
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="删除灵活的服务器":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="扩展存储灵活服务器":::
 
    > [!IMPORTANT]
    > 删除服务器的操作不可逆。

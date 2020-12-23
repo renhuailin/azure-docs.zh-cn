@@ -1,26 +1,28 @@
 ---
-title: 在 Azure Cosmos DB 中预配数据库吞吐量
-description: 了解如何使用 Azure 门户、CLI、PowerShell 以及各种其他 SDK 在 Azure Cosmos DB 中预配数据库级别的吞吐量。
+title: 在 SQL API 中预配数据库吞吐量 Azure Cosmos DB
+description: 了解如何使用 Azure 门户、CLI、PowerShell 和其他各种 Sdk Azure Cosmos DB SQL API 在数据库级别预配吞吐量。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/28/2019
+ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 668aa51bdb57dc4bcde0e3a95c481bb60e3d8ed3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4ecbee2260da735cd6ba74d3b9ffb55b4a652e9e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341988"
 ---
-# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库上预配标准（手动）吞吐量
+# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>预配标准 (在 Azure Cosmos DB-SQL API 中的数据库上手动) 吞吐量
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-本文说明了如何在 Azure Cosmos DB 的数据库中预配标准吞吐量。 可以为单个[容器](how-to-provision-container-throughput.md)预配吞吐量，也可以为数据库预配吞吐量，并在数据库中的容器之间共享吞吐量。 若要了解何时使用容器级别和数据库级别吞吐量，请参阅[容器和数据库预配吞吐量的用例](set-throughput.md)一文。 可以使用 Azure 门户或 Azure Cosmos DB SDK 来预配数据库级别吞吐量。
+本文介绍如何在 Azure Cosmos DB SQL API 中的数据库上预配标准 (手动) 吞吐量。 可以为单个[容器](how-to-provision-container-throughput.md)预配吞吐量，也可以为数据库预配吞吐量，并在数据库中的容器之间共享吞吐量。 若要了解何时使用容器级别和数据库级别吞吐量，请参阅[容器和数据库预配吞吐量的用例](set-throughput.md)一文。 可以使用 Azure 门户或 Azure Cosmos DB SDK 来预配数据库级别吞吐量。
+
+如果你使用的是其他 API，请参阅 [api For MongoDB](how-to-provision-throughput-mongodb.md)， [CASSANDRA API](how-to-provision-throughput-cassandra.md)， [Gremlin api](how-to-provision-throughput-gremlin.md) 文章来预配吞吐量。
 
 ## <a name="provision-throughput-using-azure-portal"></a>使用 Azure 门户预配吞吐量
-
-### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL（核心）API
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
@@ -29,11 +31,11 @@ ms.locfileid: "88997364"
 1. 打开“数据资源管理器”窗格，然后选择“新建数据库” 。 提供以下详细信息：
 
    * 输入数据库 ID。
-   * 选择“预配吞吐量”。
+   * 选择 " **设置数据库吞吐量** " 选项。
    * 输入吞吐量（例如 1000 RU）。
    * 选择“确定”。
 
-    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="“新建数据库”对话框屏幕截图":::
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="“新建数据库”对话框屏幕截图":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 预配吞吐量
 
@@ -45,9 +47,7 @@ ms.locfileid: "88997364"
 ## <a name="provision-throughput-using-net-sdk"></a>使用 .NET SDK 预配吞吐量
 
 > [!Note]
-> 使用适用于 SQL API 的 Cosmos SDK 为所有 API 预配吞吐量。 也可以选择将以下示例用于 Cassandra API。
-
-### <a name="all-apis"></a><a id="dotnet-all"></a>所有 API
+> 可以使用适用于 SQL API 的 Azure Cosmos Sdk 为所有 Api 预配吞吐量。 也可以选择将以下示例用于 Cassandra API。
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -70,20 +70,11 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 ---
 
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
-
-类似命令可以通过任何符合 CQL 标准的驱动程序执行。
-
-```csharp
-// Create a Cassandra keyspace and provision throughput of 400 RU/s
-session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");
-```
- 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅以下文章，了解在 Azure Cosmos DB 中预配的吞吐量：
 
-* [全局缩放预配的吞吐量](scaling-throughput.md)
+* [全局缩放预配的吞吐量](./request-units.md)
 * [在容器和数据库上预配吞吐量](set-throughput.md)
 * [如何在容器上预配标准（手动）吞吐量](how-to-provision-container-throughput.md)
 * [如何为容器预配自动缩放吞吐量](how-to-provision-autoscale-throughput.md)

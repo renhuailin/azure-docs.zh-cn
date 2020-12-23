@@ -1,6 +1,6 @@
 ---
 title: 从存档层解冻 Blob 数据
-description: 将 blob 从存档存储中解除冻结，以便可以访问 blob 数据。 将已存档的 blob 复制到联机层。
+description: 从存档存储中解冻 Blob，以便可以访问 Blob 数据。 将存档的 Blob 复制到联机层。
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,19 +9,19 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035138"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545920"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
 
 当 Blob 位于存档访问层时，它被视为脱机状态，无法对其进行读取或修改。 Blob 元数据保持联机和可用状态，你可以列出 Blob 及其属性。 只能读取和修改联机层（例如热层或冷层）中的 Blob 数据。 可使用两个选项来检索和访问存档访问层中存储的数据。
 
-1. [将存档的 Blob 解冻到联机层](#rehydrate-an-archived-blob-to-an-online-tier) - 使用[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)操作将存档的 Blob 解冻至热层或冷层。
-2. [将存档的 Blob 复制到联机层](#copy-an-archived-blob-to-an-online-tier) - 使用[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作创建已存档 Blob 的新副本。 指定不同的 Blob 名称，以及目标热层或冷层。
+1. [将存档的 Blob 解冻到联机层](#rehydrate-an-archived-blob-to-an-online-tier) - 使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作将存档的 Blob 解冻至热层或冷层。
+2. [将存档的 Blob 复制到联机层](#copy-an-archived-blob-to-an-online-tier) - 使用[复制 Blob](/rest/api/storageservices/copy-blob) 操作创建已存档 Blob 的新副本。 指定不同的 Blob 名称，以及目标热层或冷层。
 
  有关层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "88035138"
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>将存档的 Blob 复制到联机层
 
-如果你不想要解冻存档的 Blob，可以选择执行[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作。 原始 Blob 在存档中保持未修改状态，同时会在热层或冷层中联机创建新的 Blob 供你使用。 在“复制 Blob”操作中，还可以将可选的 x-ms-rehydrate-priority 属性置为“标准”或“高”，以指定要在哪个优先级创建你的 Blob 副本。
+如果你不想要解冻存档的 Blob，可以选择执行[复制 Blob](/rest/api/storageservices/copy-blob) 操作。 原始 Blob 在存档中保持未修改状态，同时会在热层或冷层中联机创建新的 Blob 供你使用。 在“复制 Blob”操作中，还可以将可选的 x-ms-rehydrate-priority 属性置为“标准”或“高”，以指定要在哪个优先级创建你的 Blob 副本。
 
 从存档中复制 Blob 可能需要数小时才能完成，具体取决于所选解冻优先级。 在幕后，“复制 Blob”操作会读取存档源 Blob，以便在所选目标层中创建新的联机 Blob。 列出 Blob 时，新 Blob 也许可见，但数据并不可用，直到从源存档 Blob 进行读取的操作完成并将数据写入到新的联机目标 Blob 为止。 新 Blob 充当独立的副本，对它进行的任何修改或删除操作不会影响源存档 Blob。
 
@@ -60,8 +60,8 @@ ms.locfileid: "88035138"
 ## <a name="quickstart-scenarios"></a>快速入门方案
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>将存档 Blob 解冻到联机层
-# <a name="portal"></a>[门户](#tab/azure-portal)
-1. 登录 [Azure 门户](https://portal.azure.com)。
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。
 

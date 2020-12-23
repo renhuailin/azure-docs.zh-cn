@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4e07285eca0fd10b73b386fcf139cdad5b94ddc2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057001"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696398"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -37,9 +37,13 @@ ms.locfileid: "86057001"
 
 有关对标准负载均衡器使用可用性区域的详细信息，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
 
-如果需要，也可以使用 [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) 完成本教程中的步骤。
+如果需要，也可以使用 [Azure CLI](./quickstart-load-balancer-standard-public-cli.md) 完成本教程中的步骤。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -93,7 +97,7 @@ ms.locfileid: "86057001"
     - *myNetworkSecurityGroup* - 网络安全组的名称。
     - *myResourceGroupLBAZ* - 现有资源组的名称。
    
-![创建虚拟网络](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![屏幕截图显示了“创建网络安全组”窗格。](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>创建网络安全组规则
 
@@ -112,7 +116,7 @@ ms.locfileid: "86057001"
     - *Allow HTTP* - 负载均衡器器规则的说明。
 4. 单击“确定”。
  
-   ![创建虚拟网络](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![屏幕截图显示了“添加入站安全规则”窗格。](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 重复步骤 2 到 4，使用以下值创建名为 *myRDPRule* 的另一规则，以允许来自端口 3389 的入站 RDP 连接：
     - 服务标记 - **源**。
     - *Internet* - **源服务标记**
@@ -196,8 +200,8 @@ ms.locfileid: "86057001"
     - *myHealthProbe* - 运行状况探测的名称。
     - **HTTP** - 协议类型。
     - *80* - 端口号。
-    - *15* - 两次探测尝试之间的**时间间隔**（以秒为单位）。
-    - *2* - 将 VM 视为不正常所对应的**不正常阈值**或连续探测失败次数。
+    - *15* - 两次探测尝试之间的 **时间间隔**（以秒为单位）。
+    - *2* - 将 VM 视为不正常所对应的 **不正常阈值** 或连续探测失败次数。
 4. 单击“确定”。
 
    ![添加探测器](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
@@ -231,8 +235,10 @@ ms.locfileid: "86057001"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若不再需要资源组、负载均衡器以及所有相关资源，请将其删除。 为此，请选择包含负载均衡器的资源组，然后单击“删除”。
+若不再需要资源组、负载均衡器以及所有相关资源，请将其删除。 为此，请选择包含负载均衡器的资源组，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[标准负载均衡器](load-balancer-standard-overview.md)。
+详细了解如何在特定可用性区域中对 VM 进行负载均衡。
+> [!div class="nextstepaction"]
+> [在可用性区域中对 VM 进行负载均衡](tutorial-load-balancer-standard-public-zonal-portal.md)

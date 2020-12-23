@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474a97f4b05fd1f944e18abebcef927232453e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 203c977fe9109cd8b2b6de561e975e20aacf700e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89080150"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185521"
 ---
 如果这是你首次使用存储资源管理器，则需要执行以下步骤。
 
@@ -24,11 +24,11 @@ ms.locfileid: "89080150"
 
 1. 在存储资源管理器中，选择存储帐户。 右键单击并选择“连接到 Azure 存储”选项。 
 
-    ![配置存储资源管理器](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
+    ![配置存储资源管理器 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
 
-2. 在“连接到 Azure 存储”对话框中，选择“使用存储帐户名称和密钥”。********
+2. 在“连接到 Azure 存储”对话框中，选择“使用存储帐户名称和密钥”。
 
-    ![配置存储资源管理器](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
+    ![配置存储资源管理器 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
 
 2. 在“使用名称和密钥连接”对话框中，执行以下步骤：
 
@@ -39,11 +39,11 @@ ms.locfileid: "89080150"
     5. 选中“使用 HTTP”选项，因为通过 http 进行传输。 
     6. 选择“**下一页**”。
 
-    ![配置存储资源管理器](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
+    ![配置存储资源管理器 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
 
-3. 在“连接摘要”**** 对话框中，复查所提供的信息。 选择“连接”。
+3. 在“连接摘要”对话框中，复查所提供的信息。 选择“连接”。
 
-    ![配置存储资源管理器](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
+    ![配置存储资源管理器 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
 
 4. 成功添加的帐户显示在存储资源管理器的左窗格中，并且其名称的末尾追加有 (外部, 其他)。 选择“Blob 容器”，查看容器。
 
@@ -59,27 +59,27 @@ ms.locfileid: "89080150"
 
 2. 在“上传文件”对话框中，导航到并选择要上传的文件。 选择“**下一页**”。
 
-    ![验证数据传输](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
+    ![验证数据传输 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
 
 3. 验证文件是否已上传。 上传的文件会显示在容器中。
 
-    ![验证数据传输](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
+    ![验证数据传输 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
 
 4. 接下来，将连接到已映射到该 Edge 存储帐户的 Azure 存储帐户。 上传到 Edge 存储帐户的所有数据应自动分层到 Azure 存储帐户。 
     
     若要获取 Azure 存储帐户的连接字符串，请转到“Azure 存储帐户”>“访问密钥”并复制连接字符串。
 
-    ![验证数据传输](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
+    ![验证数据传输 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
 
     使用连接字符串连接到 Azure 存储帐户。  
 
-    ![验证数据传输](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
+    ![验证数据传输 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
 
 
-5. 在“连接摘要”**** 对话框中，复查所提供的信息。 选择“连接”。
+5. 在“连接摘要”对话框中，复查所提供的信息。 选择“连接”。
 
-    ![验证数据传输](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
+    ![验证数据传输 6](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
 
 6. 你将看到在 Edge 存储帐户中上传的文件已传输到 Azure 存储帐户。
 
-    ![验证数据传输](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)
+    ![验证数据传输 7](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)

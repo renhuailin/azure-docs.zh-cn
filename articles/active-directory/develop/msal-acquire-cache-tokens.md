@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 47af4015fa5c6d9a73ee597146890a29b4b9ef9d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119889"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107832"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌
 
@@ -72,7 +72,7 @@ MSAL 维护一个令牌缓存（对于机密客户端应用程序，则会维护
 
 应用程序代码应该先尝试以无提示方式从缓存中获取令牌。 如果方法调用返回“需要 UI”错误或异常，请尝试通过其他方式获取令牌。
 
-但是，在下面的两个流中，**不应**尝试以无提示方式获取令牌：
+但是，在下面的两个流中，**不应** 尝试以无提示方式获取令牌：
 
 - [客户端凭据流](msal-authentication-flows.md#client-credentials)：不使用用户令牌缓存，而是使用应用程序令牌缓存。 在将请求发送到安全令牌服务 (STS) 之前，此方法负责验证此应用程序令牌缓存。
 - Web 应用中的[授权代码流](msal-authentication-flows.md#authorization-code)：因为它兑换应用程序通过将用户登录并让他们许可更多范围而获得的代码。 由于是将代码而不是将帐户作为参数传递，该方法在兑换代码之前无法查看缓存，而兑换代码需要调用服务。
@@ -101,7 +101,7 @@ MSAL 维护一个令牌缓存（对于机密客户端应用程序，则会维护
 
 对于机密客户端应用程序（Web 应用、Web API 或类似于 Windows 服务的守护程序应用程序），请执行以下操作：
 
-- 使用[客户端凭据流](msal-authentication-flows.md#client-credentials)获取**应用程序本身**而不是用户的令牌。 此方法可用于同步工具或者那些处理普通用户而不是特定用户的工具。
+- 使用 [客户端凭据流](msal-authentication-flows.md#client-credentials)获取 **应用程序本身** 而不是用户的令牌。 此方法可用于同步工具或者那些处理普通用户而不是特定用户的工具。
 - 使用适用于 Web API 的[代表流](msal-authentication-flows.md#on-behalf-of)代表用户调用 API。 系统会使用客户端凭据标识应用程序，以根据用户断言（例如 SAML 或 JWT 令牌）获取令牌。 需要在服务到服务调用中访问特定用户的资源的应用程序使用此流。
 - 在用户通过授权请求 URL 登录后，在 Web 应用中使用[授权代码流](msal-authentication-flows.md#authorization-code)获取令牌。 OpenID Connect 应用程序通常使用此机制，可让用户使用 Open ID Connect 登录，然后代表用户访问 Web API。
 
@@ -116,8 +116,14 @@ MSAL 维护一个令牌缓存（对于机密客户端应用程序，则会维护
 - 令牌的颁发范围。
 - 用户的唯一 ID。
 
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>（高级）在后台应用和服务中访问用户的缓存令牌
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-如果使用的是适用于 Java 的 MSAL，请了解[适用于 Java 的 MSAL 中的自定义令牌缓存序列化](msal-java-token-cache-serialization.md)。
-
-了解如何[处理错误和异常](msal-handling-exceptions.md)。
+MSAL 支持的几个平台在该平台库的文档中具有其他与令牌缓存相关的信息。 例如：
+- [使用 MSAL.NET 从令牌缓存获取令牌](msal-net-acquire-token-silently.md)
+- [使用 MSAL.js 进行单一登录](msal-js-sso.md)
+- [适用于 Python 的 MSAL 中的自定义令牌缓存序列化](msal-python-token-cache-serialization.md)
+- [MSAL for Java 中的自定义令牌缓存序列化](msal-java-token-cache-serialization.md)

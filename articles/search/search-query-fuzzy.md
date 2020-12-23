@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ac2690a5f18bb58c29b433f4a07e52096bbd268b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934882"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701579"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>使用模糊搜索来更正拼写错误
 
@@ -73,7 +73,7 @@ Azure 认知搜索支持模糊搜索 - 这是可以纠正输入字符串中的�
 
 ## <a name="testing-fuzzy-search"></a>测试模糊搜索
 
-要进行简单测试，我们建议使用[搜索浏览器](search-explorer.md)或 [Postman](search-get-started-postman.md) 来循环访问查询表达式。 这两个工具都是交互式的，这意味着，可以快速分步测试某个字词的多个变体，并评估返回的响应。
+要进行简单测试，我们建议使用[搜索浏览器](search-explorer.md)或 [Postman](search-get-started-rest.md) 来循环访问查询表达式。 这两个工具都是交互式的，这意味着，可以快速分步测试某个字词的多个变体，并评估返回的响应。
 
 当结果模糊时，[命中项突出显示](search-pagination-page-layout.md#hit-highlighting)可以帮助你识别响应中的匹配项。 
 

@@ -14,9 +14,17 @@
           href: security-center-services.md
         - name: 适用于 Azure PaaS 资源的功能覆盖范围
           href: features-paas.md
-    - name: 安全中心的新增功能
-      displayName: release notes
-      href: release-notes.md
+    - name: 新增功能
+      items:
+        - name: 发行说明
+          displayName: 'changelog, news'
+          href: release-notes.md
+        - name: 即将推出的重要更改
+          displayName: 'release notes, changelog, news'
+          href: upcoming-changes.md
+        - name: 已存档的发行说明（超过 6 个月）
+          displayName: 'changelog, news'
+          href: release-notes-archive.md
     - name: 安全中心基础知识
       items:
         - name: 安全中心概述页面
@@ -44,13 +52,17 @@
         - name: 适用于 SQL 的 Azure Defender
           displayName: database
           href: defender-for-sql-introduction.md
-        - name: 适用于 IoT 的 Azure Defender
-          href: defender-for-iot-introduction.md
         - name: 适用于 Key Vault 的 Azure Defender
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
+        - name: 适用于资源管理器的 Azure Defender
+          displayName: ARM
+          href: defender-for-resource-manager-introduction.md
+        - name: 适用于 DNS 的 Azure Defender
+          displayName: domain
+          href: defender-for-dns-introduction.md
         - name: 适用于 Kubernetes 的 Azure Defender
-          displayName: 'clusters, k8s'
+          displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
         - name: 适用于容器注册表的 Azure Defender
           displayName: 'ACR, registry, images'
@@ -58,7 +70,7 @@
         - name: 其他威胁防护
           href: other-threat-protections.md
     - name: 安全中心的容器安全功能
-      displayName: 'kubernetes, aks, acr, registries'
+      displayName: 'kubernetes, aks, acr, registries, k8s'
       href: container-security.md
     - name: 定价
       href: security-center-pricing.md
@@ -79,11 +91,14 @@
           href: quickstart-onboard-gcp.md
     - name: 使用 PowerShell 自动加入
       href: security-center-powershell-onboarding.md
-    - name: 配置数据收集
+    - name: 为管理组启用安全中心
+      href: onboard-management-group.md
+    - name: 配置自动预配
       href: security-center-enable-data-collection.md
     - name: 设置电子邮件通知
       href: security-center-provide-security-contact-details.md
     - name: 使用 ARM 模板创建对警报的自动响应
+      displayName: Resource Manager
       href: quickstart-automation-alert.md
 - name: 教程
   items:
@@ -131,22 +146,20 @@
           href: security-center-monitoring.md
         - name: 建议的参考列表
           href: recommendations-reference.md
-        - name: 保护网络资源
-          href: security-center-network-recommendations.md
-        - name: 保护标识和访问权限
-          href: security-center-identity-access.md
         - name: 管理安全建议
           items:
             - name: 自动响应建议
               displayName: workflow
               href: workflow-automation.md
-            - name: 导出建议
-              href: continuous-export.md
             - name: 从建议中免除资源
               href: exempt-resource.md
-    - name: Azure Defender 警报
+        - name: 保护网络资源
+          href: security-center-network-recommendations.md
+        - name: 保护标识和访问权限
+          href: security-center-identity-access.md
+    - name: 了解安全警报
       items:
-        - name: Azure Defender 警报概述
+        - name: 安全警报概述
           href: security-center-alerts-overview.md
         - name: 警报参考列表
           href: alerts-reference.md
@@ -169,37 +182,45 @@
           href: update-regulatory-compliance-packages.md
     - name: 使用适用于服务器的 Azure Defender
       items:
-        - name: 适用于 VM 的漏洞扫描
+        - name: 漏洞扫描
           items:
-            - name: 通过集成 VA 解决方案扫描 VM
-              displayName: 'qualys, vulnerability'
+            - name: 适用于计算机的集成 VA 扫描程序
+              displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: 通过 BYOL VA 解决方案扫描 VM
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
-            - name: 评审和修正 VM 上的漏洞
+            - name: 评审并修正漏洞
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
+            - name: 禁止显示特定漏洞结果
+              displayName: 'qualys, rapid7'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: 使用实时 VM 访问保护管理端口
           items:
             - name: 实时 VM 访问概述
               displayName: 'jit, management'
               href: just-in-time-explained.md
             - name: 管理实时访问
-              displayName: 'jit, management'
+              displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
+        - name: 使用集成的 Microsoft Defender for Endpoint 许可证
+          displayName: 'ATP, mdatp, wdatp'
+          href: security-center-wdatp.md
         - name: 管理自适应应用程序控制
+          displayName: 'aac, whitelist, allowlist, reviewgroup'
           href: security-center-adaptive-application.md
         - name: 使用文件完整性监视
           items:
             - name: 文件完整性监视概述
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring.md
             - name: 使用文件完整性监视比较基线
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
         - name: 管理自适应网络强化
+          displayName: anh
           href: security-center-adaptive-network-hardening.md
-        - name: 集成 Microsoft Defender ATP
-          href: security-center-wdatp.md
         - name: 强化 Docker 主机
           displayName: containers
           href: harden-docker-hosts.md
@@ -208,12 +229,28 @@
         - name: 在 Azure VM 上配置适用于 SQL 的 Azure Defender
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: 自定义信息保护策略
+        - name: 自定义 SQL 信息保护策略
+          displayName: 'sql, database, data discovery'
           href: security-center-info-protection-policy.md
     - name: 使用适用于容器注册表的 Azure Defender
-      displayName: 'ACR, registry, images'
-      href: defender-for-container-registries-usage.md
-    - name: 处理 Azure Defender 警报
+      items:
+        - name: 扫描注册表映像是否存在漏洞
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md
+        - name: 禁止显示特定映像漏洞结果
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
+    - name: 导出警报和建议
+      items:
+        - name: 导出到 SIEM、SOAR 或 ITSM
+          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+          href: export-to-siem.md
+        - name: 导出到 Log Analytics 工作区或 Azure 事件中心
+          displayName: continuous
+          href: continuous-export.md
+        - name: 下载所有警报的 CSV 报告
+          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
+    - name: 处理安全警报
       items:
         - name: 管理安全警报
           href: security-center-managing-and-responding-alerts.md
@@ -222,20 +259,23 @@
         - name: 响应适用于 Key Vault 的 Azure Defender 警报
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
+        - name: 响应适用于 DNS 的 Azure Defender 警报
+          href: defender-for-dns-usage.md
+        - name: 响应适用于资源管理器的 Azure Defender 警报
+          displayName: arm
+          href: defender-for-resource-manager-usage.md
         - name: 管理安全事件
           href: security-center-incident.md
         - name: 生成威胁情报报表
           href: security-center-threat-report.md
-        - name: 验证警报配置（EICAR 测试文件）
+        - name: 验证警报配置
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
         - name: 自动响应警报
           displayName: workflow
           href: workflow-automation.md
-        - name: 导出警报
-          displayName: continuous
-          href: continuous-export.md
     - name: 保护 Kubernetes 工作负载
-      displayName: 'k8s, containers'
+      displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
     - name: 管理调查用户数据
       href: security-center-investigation-user-data.md
@@ -244,13 +284,11 @@
 - name: 参考
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+      href: /rest/api/securitycenter/
     - name: Azure 安全中心常见问题解答
       items:
         - name: 一般问题
           href: faq-general.md
-        - name: 计费问题
-          href: faq-billing.md
         - name: 权限问题
           href: faq-permissions.md
         - name: 数据收集和代理问题
@@ -259,8 +297,6 @@
           href: faq-vms.md
         - name: Azure Log Analytics 的现有用户
           href: faq-azure-monitor-logs.md
-    - name: 安全中心的新增功能存档
-      href: release-notes-archive.md
     - name: Azure 路线图博客
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 终结点保护评估和建议
@@ -272,9 +308,9 @@
     - name: 管理用户数据
       href: security-center-privacy.md
     - name: 适用于 IoT 的 Azure Defender 文档
-      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
+      href: /azure/asc-for-iot/
     - name: Azure 安全文档
-      href: /azure/security/
+      href: ../security/index.yml
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: 就绪情况路线图

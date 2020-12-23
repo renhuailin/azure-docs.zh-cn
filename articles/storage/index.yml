@@ -10,140 +10,140 @@ metadata:
   author: twooley
   ms.author: twooley
   ms.date: 05/01/2020
-  ms.openlocfilehash: f4428556c33bc476b21932034fa43b020f9e779d
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: e7b4fc7988621c996966c77bf9dd9b74b60afe86
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "82735022"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96491989"
 highlightedContent:
   items:
   - title: 核心存储服务简介
     itemType: concept
-    url: /azure/storage/common/storage-introduction?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - title: 了解存储帐户类型
     itemType: concept
-    url: /azure/storage/common/storage-account-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - title: 创建存储帐户
     itemType: how-to-guide
-    url: /azure/storage/common/storage-account-create?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - title: 了解数据冗余
     itemType: concept
-    url: /azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - title: 将数据传输到 Azure
     itemType: concept
-    url: /azure/storage/common/storage-choose-data-transfer-solution?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    url: ./common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 additionalContent:
   sections:
   - title: 云存储解决方案
     items:
     - title: 用于应用的对象存储
       links:
-      - url: /azure/storage/blobs/storage-blobs-introduction
+      - url: ./blobs/storage-blobs-introduction.md
         text: 了解用于非结构化数据的存储（Blob 存储）
       - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
         text: 了解块 Blob、追加 Blob 和 页 Blob
-      - url: /azure/storage/blobs/
+      - url: ./blobs/index.yml
         text: 查看更多 >
     - title: 用于大数据分析的存储
       links:
-      - url: /azure/storage/blobs/data-lake-storage-introduction
+      - url: ./blobs/data-lake-storage-introduction.md
         text: 了解用于企业数据湖的存储 (Data Lake Storage)
-      - url: /azure/storage/blobs/data-lake-storage-data-scenarios
+      - url: ./blobs/data-lake-storage-data-scenarios.md
         text: 了解用于处理大数据的选项和工具
     - title: 云托管文件共享
       links:
-      - url: /azure/storage/files/storage-files-introduction
+      - url: ./files/storage-files-introduction.md
         text: 使用核心 Azure 存储平台提供的文件共享（Azure 文件存储）
-      - url: /azure/azure-netapp-files/azure-netapp-files-introduction
+      - url: ../azure-netapp-files/azure-netapp-files-introduction.md
         text: 使用 NetApp ONTAP 提供的卷（Azure NetApp 文件）
     - title: 用于 IaaS 工作负荷的磁盘存储
       links:
-      - url: /azure/virtual-machines/windows/managed-disks-overview
+      - url: ../virtual-machines/managed-disks-overview.md
         text: 了解 Azure VM 的块级存储卷
-      - url: /azure/virtual-machines/windows/disks-types
+      - url: ../virtual-machines/disks-types.md
         text: 了解可用磁盘类型
-      - url: /azure/virtual-machines/windows/attach-managed-disk-portal
+      - url: ../virtual-machines/windows/attach-managed-disk-portal.md
         text: 向 VM 添加新磁盘 - Windows
-      - url: /azure/virtual-machines/linux/attach-disk-portal
+      - url: ../virtual-machines/linux/attach-disk-portal.md
         text: 将数据磁盘附加到 VM - Linux
     - title: 用于异步消息队列的存储
       links:
-      - url: /azure/storage/queues/storage-queues-introduction
+      - url: ./queues/storage-queues-introduction.md
         text: 了解用于队列的 Azure 存储解决方案（队列存储）
-      - url: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
+      - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
         text: 队列存储与服务总线队列的比较
-      - url: /azure/storage/queues/
+      - url: ./queues/index.yml
         text: 查看更多 >
     - title: 用于结构化 NoSQL 数据的存储
       links:
-      - url: /azure/storage/tables/table-storage-overview
+      - url: ./tables/table-storage-overview.md
         text: 将结构化 NoSQL 数据存储在云中（表存储和 Cosmos DB）
-      - url: /azure/cosmos-db/table-support
+      - url: ../cosmos-db/table-support.md
         text: 表存储与 Cosmos DB 表 API 的比较
-      - url: /azure/storage/tables/
+      - url: ./tables/index.yml
         text: 查看更多 >
   - title: 混合存储解决方案
     items:
     - title: 将本地文件共享扩展到云
       links:
-      - url: /azure/storage/files/storage-sync-files-planning
+      - url: ./files/storage-sync-files-planning.md
         text: 将 Azure 文件共享与 Windows 文件服务器同步（Azure 文件同步）
-      - url: /azure/storage/files/storage-sync-files-deployment-guide
+      - url: ./files/storage-sync-files-deployment-guide.md
         text: 部署 Azure 文件同步
-      - url: /azure/storage/files/
+      - url: ./files/index.yml
         text: 查看更多 >
     - title: 联机数据传输（本地到 Azure）
       links:
-      - url: /azure/databox-online/data-box-gateway-overview
+      - url: ../databox-online/data-box-gateway-overview.md
         text: 将数据无缝传输到 Azure (Data Box Gateway)
-      - url: /azure/databox-online/data-box-edge-overview
+      - url: ../databox-online/azure-stack-edge-overview.md
         text: 传输到 Azure 之前在本地处理数据 (Azure Stack Edge)
-      - url: /azure/databox-online/
+      - url: ../databox-online/index.yml
         text: 查看更多 >
     - title: 用于高性能计算 (HPC) 工作负荷的缓存
       links:
-      - url: /azure/hpc-cache/hpc-cache-overview
+      - url: ../hpc-cache/hpc-cache-overview.md
         text: 使用完全托管的文件缓存服务（Azure HPC 缓存）
-      - url: /azure/avere-vfxt/avere-vfxt-overview
+      - url: ../avere-vfxt/avere-vfxt-overview.md
         text: 在 Azure 中缓存本地 NAS (Avere vFXT for Azure)
-      - url: /azure/fxt-edge-filer/fxt-overview
+      - url: ../fxt-edge-filer/fxt-overview.md
         text: 部署本地缓存设备 (Azure FXT Edge Filer)
   - title: 数据操作
     items:
     - title: 脱机批量传输到 Azure
       links:
-      - url: /azure/databox/data-box-disk-overview
+      - url: ../databox/data-box-disk-overview.md
         text: 传输少于 40 TB 的数据 (Data Box Disk)
-      - url: /azure/databox/data-box-overview
+      - url: ../databox/data-box-overview.md
         text: 传输 40-500 TB 的数据 (Data Box)
-      - url: /azure/databox/data-box-heavy-overview
+      - url: ../databox/data-box-heavy-overview.md
         text: 传输多于 500 TB 的数据 (Data Box Heavy)
-      - url: /azure/databox/
+      - url: ../databox/index.yml
         text: 查看更多 >
     - title: 传输小型数据集（联机）
       links:
-      - url: /azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         text: 使用 AzCopy 命令行工具
-      - url: /azure/storage/blobs/storage-quickstart-blobs-storage-explorer
+      - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
         text: 使用基于 Azure 存储资源管理器 GUI 的工具
     - title: 控制成本
       links:
-      - url: /azure/storage/blobs/storage-blob-storage-tiers
+      - url: ./blobs/storage-blob-storage-tiers.md
         text: 以经济高效的方式对 Blob 数据进行分层（热、冷、存档）
     - title: 共享数据
       links:
-      - url: /azure/data-share/
+      - url: ../data-share/index.yml
         text: 与客户和合作伙伴共享数据 (Azure Data Share)
-      - url: /azure/data-share/supported-data-stores
+      - url: ../data-share/supported-data-stores.md
         text: 支持共享的数据存储
-      - url: /azure/data-share/
+      - url: ../data-share/index.yml
         text: 查看更多 >
     - title: 备份数据
       links:
-      - url: /azure/backup/quick-backup-vm-portal
+      - url: ../backup/quick-backup-vm-portal.md
         text: 备份 VM（Azure 备份）
-      - url: /azure/backup/tutorial-backup-azure-files
+      - url: ../backup/backup-afs.md
         text: 备份 Azure 文件共享
-      - url: /azure/backup/
+      - url: ../backup/index.yml
         text: 查看更多 >

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d87be085331c174b58e2a475e18efa54a78cfea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546757"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88546757"
 * 可以让用户使用其 Azure AD 帐户自动登录到 SAP Cloud Platform（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -37,7 +37,7 @@ ms.locfileid: "88546757"
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 * 已启用 SAP Cloud Platform 单一登录的订阅
 
-完成本教程后，已向 SAP Cloud Platform 分配的 Azure AD 用户能够使用[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)单一登录到该应用程序。
+完成本教程后，已向 SAP Cloud Platform 分配的 Azure AD 用户能够使用[访问面板简介](../user-help/my-apps-portal-end-user-access.md)单一登录到该应用程序。
 
 >[!IMPORTANT]
 >用户需要部署自己的应用程序或订阅 SAP Cloud Platform 帐户上的应用程序来测试单一登录。 在本教程中，会在帐户中部署应用程序。
@@ -95,7 +95,7 @@ ms.locfileid: "88546757"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "88546757"
 
 3. 在“信任管理”部分中的“本地服务提供程序”下，执行以下步骤： 
 
-    ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
+    ![显示选择了“本地服务提供程序”选项卡并突出显示了所有文本框的“信任管理”部分的屏幕截图。](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
    
     a. 单击 **“编辑”** 。
 
@@ -158,7 +158,7 @@ ms.locfileid: "88546757"
 
     c. 对于“本地提供程序名称”  ，保留默认值。 复制此值并将其粘贴到 SAP Cloud Platform Azure AD 配置的“标识符”字段中。 
 
-    d. 若要生成**签名密钥**和**签名证书**密钥对，请单击“生成密钥对”  。
+    d. 若要生成 **签名密钥** 和 **签名证书** 密钥对，请单击“生成密钥对”  。
 
     e. 对于“主体传播”  ，选择“禁用”  。
 
@@ -178,7 +178,7 @@ ms.locfileid: "88546757"
 
 5. 单击“受信任的标识提供者”  选项卡，并单击“添加受信任的标识提供者”  。
    
-    ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信任管理")
+    ![显示选择了“受信任标识提供者”的“信任管理”页的屏幕截图。](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信任管理")
    
     >[!NOTE]
     >若要管理受信任的标识提供者的列表，需要已在本地服务提供程序部分中选择自定义配置类型。 如果选择“默认”配置类型，则对 SAP ID 服务有不可编辑的隐式信任。 如果选择“无”，则不具有任何信任设置。
@@ -211,9 +211,9 @@ ms.locfileid: "88546757"
      >属性的配置取决于如何开发 SCP 上的应用程序，即它们应在 SAML 响应中预期哪些属性，以及它们在哪个名称（主体属性）下通过代码访问此属性。
      > 
     
-    b. 屏幕截图中的**默认属性**仅用于说明目的。 它并不是使方案正常工作所必需的。  
+    b. 屏幕截图中的 **默认属性** 仅用于说明目的。 它并不是使方案正常工作所必需的。  
  
-    c. 屏幕截图中所示的**主体属性**的名称和值取决于如何开发应用程序。 很可能应用程序需要不同的映射。
+    c. 屏幕截图中所示的 **主体属性** 的名称和值取决于如何开发应用程序。 很可能应用程序需要不同的映射。
 
 ### <a name="assertion-based-groups"></a>基于断言的组
 
@@ -302,13 +302,12 @@ ms.locfileid: "88546757"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 SAP Cloud Platform 磁贴时，应会自动登录到为其设置了 SSO 的 SAP Cloud Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 SAP Cloud Platform 磁贴时，应会自动登录到为其设置了 SSO 的 SAP Cloud Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

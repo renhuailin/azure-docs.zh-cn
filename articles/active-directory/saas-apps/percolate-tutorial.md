@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 913ffc0670e40e749bd28382d492a16891fdc5c9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553969"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522251"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>教程：Azure Active Directory 与 Percolate 的集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "88553969"
 * 可让用户使用其 Azure AD 帐户自动登录到 Percolate（单一登录）。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 如果没有 Azure 订阅，可以在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -103,7 +103,7 @@ ms.locfileid: "88553969"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”，然后在“登录 URL”框中输入 https://percolate.com/app/login    ：
 
-   ![Percolate 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+   ![屏幕截图显示已选择“设置附加 URL”部分，其中突出显示了“登录 URL”文本框。](common/metadata-upload-additional-signon.png)
 6. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“复制”图标，以复制“应用联合元数据 URL”     。 保存此 URL。
 
     ![复制应用联合元数据 URL](common/copy-metadataurl.png)
@@ -112,11 +112,11 @@ ms.locfileid: "88553969"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL**。
+    1. **登录 URL** 。
 
-    1. **Azure AD 标识符**。
+    1. **Azure AD 标识符** 。
 
-    1. **注销 URL**。
+    1. **注销 URL** 。
 
 ### <a name="configure-percolate-single-sign-on"></a>配置 Percolate 单一登录
 
@@ -162,7 +162,7 @@ ms.locfileid: "88553969"
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”  框中，输入 **BrittaSimon**。
+    1. 在“姓名”  框中，输入 **BrittaSimon** 。
   
     1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
@@ -184,7 +184,7 @@ ms.locfileid: "88553969"
 
 3. 在左窗格中选择“用户和组”： 
 
-    ![选择“用户和组”](common/users-groups-blade.png)
+    ![屏幕截图显示已从左窗格中选择“用户和组”。](common/users-groups-blade.png)
 
 4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
@@ -222,12 +222,12 @@ ms.locfileid: "88553969"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“Percolate”磁贴时，应会自动登录到设置了 SSO 的 Percolate 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在访问面板中选择“Percolate”磁贴时，应会自动登录到设置了 SSO 的 Percolate 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

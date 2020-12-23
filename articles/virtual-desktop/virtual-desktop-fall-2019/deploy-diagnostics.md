@@ -3,25 +3,20 @@ title: 部署适用于 Windows 虚拟桌面 (经典) 的诊断工具-Azure
 description: 如何为 Windows 虚拟桌面 (经典) 部署诊断 UX 工具。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691405"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515631"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面 (经典) 诊断工具
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
-
->[!IMPORTANT]
->从2020年3月16日起，我们暂时禁用了影响用户体验的诊断查询，这是因为增加了对服务的需求。 这将导致工具停止工作，因为它依赖于这些查询才能运行。 当诊断查询再次可用时，我们将更新本文。
->
->在此之前，我们强烈建议你 [使用 Log Analytics](diagnostics-log-analytics-2019.md) 进行持续监视。
 
 Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
@@ -43,8 +38,8 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 在开始之前，还需要安装这两个 PowerShell 模块：
 
-- [Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Azure AD 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Azure AD 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 请确保在登录时已准备好订阅 ID。
 
@@ -121,7 +116,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
     -   处理器信息 (\*) \\ 处理器时间
     -   每个会话 (的用户输入延迟 \*) \\ 最大输入延迟
 
-[在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](/azure/azure-monitor/platform/data-sources-performance-counters)的性能计数器的详细信息。
+[在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](../../azure-monitor/platform/data-sources-performance-counters.md)的性能计数器的详细信息。
 
 >[!NOTE]
 >你配置的任何其他计数器将不会显示在诊断工具本身中。 若要使它显示在诊断工具中，需要配置该工具的配置文件。 有关如何使用高级管理完成此操作的说明，可在 GitHub 中的日后使用。
@@ -135,7 +130,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 若要确保你的应用注册具有 API 权限：
 
 1. 打开浏览器并使用管理帐户连接到 [Azure 门户](https://portal.azure.com/) 。
-2. 转到 Azure Active Directory****。
+2. 转到 Azure Active Directory。
 3. 请参阅 **应用注册** ，并选择 " **所有应用程序**"。
 4. 使用在 [创建 Azure Active Directory 应用注册](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)的步骤5中输入的相同应用名称查找 Azure AD 应用注册。
 
@@ -145,7 +140,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中转到 **Log Analytics 工作区** 以查看配置的 Windows 性能计数器。
 2. 在 " **设置**" 下，选择 " **高级设置**"。
-3. 之后，请跳到**数据**  >  **Windows 性能计数器**。
+3. 之后，请跳到 **数据**  >  **Windows 性能计数器**。
 4. 请确保预配置了以下计数器：
 
    - 逻辑磁盘 (\*) \\ % 可用空间：显示磁盘上总可用空间的可用空间量（以百分比表示）。
@@ -171,8 +166,8 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 1.  转到 [GitHub Azure RDS 模板页](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy)。
 2.  将模板部署到 Azure 并按照模板中的说明进行操作。 请确保提供以下信息：
 
-    -   客户端-Id
-    -   客户端-密码
+    -   Client-Id
+    -   Client-Secret
     -   Log Analytics 工作区 ID
 
 3.  提供输入参数后，接受 "条款和条件"，并选择 " **购买**"。
@@ -204,7 +199,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 在使诊断工具可供用户使用之前，请确保他们具有以下权限：
 
-- 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](/azure/azure-monitor/platform/roles-permissions-security)。
+- 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../../azure-monitor/platform/roles-permissions-security.md)。
 -  用户还需要对 Windows 虚拟桌面租户的 "读取" 访问权限 ("RDS 读取器角色") 。 有关详细信息，请参阅 [Windows 虚拟桌面中的委托访问](delegated-access-virtual-desktop-2019.md)。
 
 还需要为用户指定以下信息：

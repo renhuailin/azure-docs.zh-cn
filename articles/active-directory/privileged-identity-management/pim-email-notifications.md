@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232302"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394724"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
@@ -31,7 +31,7 @@ ms.locfileid: "82232302"
 
 从 Privileged Identity Management 针对 Azure AD 和 Azure 资源角色发送的电子邮件具有以下发件人电子邮件地址：
 
-- 电子邮件地址：**azure-noreply\@microsoft.com**
+- 电子邮件地址： **azure-noreply\@microsoft.com**
 - 显示名称：Microsoft Azure
 
 这些电子邮件在主题行中包括 PIM 前缀。 下面是一个示例：
@@ -79,10 +79,13 @@ Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件将发
 
 ## <a name="email-timing-for-activation-approvals"></a>激活审批的电子邮件发送时机
 
-当用户激活其角色且角色设置需要审批时，审批者每次审批会收到三封电子邮件：
+当用户激活其角色并且角色设置需要审批时，审批者将收到两封电子邮件用于每个批准：
 
 - 请求批准或拒绝用户的激活请求（由请求批准引擎发送）
 - 已批准用户请求（由请求批准引擎发送）
+
+此外，全局管理员和特权角色管理员会收到一封电子邮件，每次批准：
+
 - 已激活用户角色（由 Privileged Identity Management 发送）
 
 请求批准引擎发送的前两封电子邮件可以延迟。 目前，90% 的电子邮件需要三到十分钟才能送达，但是对于 1% 的客户来说，可能需要更长时间，最多十五分钟。

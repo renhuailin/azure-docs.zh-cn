@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75a2762a0937efbceaa168f8a2d6409e2e3a7ae4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890649"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967221"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -62,6 +62,6 @@ Azure IoT 中心设备预配服务是一项基于 REST API 的云服务，其目
 
 ## <a name="links-to-additional-documentation"></a>其他文档的链接
 
-设备预配服务 API 的完整文档位于 [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps)。
+设备预配服务 API 的完整文档位于 [https://docs.microsoft.com/rest/api/iot-dps](/rest/api/iot-dps)。
 
 Azure IoT 中心[客户数据请求功能](../iot-hub/iot-hub-customer-data-requests.md)。

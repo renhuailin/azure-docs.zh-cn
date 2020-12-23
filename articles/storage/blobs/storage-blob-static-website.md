@@ -9,20 +9,20 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 27ea88ad4d349d6a7aedd4e1e3bc8dc804683292
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b9eb65311951706863c3b18c5fc91bae8c41c7dc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326076"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007335"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
-可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 通过将内容托管在 Azure 存储中，你可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他平台即服务 (PaaS) 服务。 如果你不需要 web 服务器来呈现内容，Azure 存储静态网站托管是一个不错的选择。
+可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 通过将内容托管在 Azure 存储中，你可以使用无服务器体系结构，包括 [Azure Functions](../../azure-functions/functions-overview.md) 和其他平台即服务 (PaaS) 服务。 如果你不需要 Web 服务器来呈现内容，Azure 存储静态网站托管是一个不错的选择。
 
 [应用服务静态 Web 应用](https://azure.microsoft.com/services/app-service/static/) 是 Azure 存储静态网站托管的一种很好的替代方法，也适用于不需要 Web 服务器呈现内容的情况。 应用服务静态 Web 应用提供完全托管的持续集成和持续交付 (从 GitHub 源到全局部署的 CI/CD) 工作流。
 
-如果需要 web 服务器来呈现内容，可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/)。
+如果需要 Web 服务器来呈现内容，可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -60,7 +60,7 @@ ms.locfileid: "91326076"
 如果服务器返回 404 错误，并且你在启用网站时未指定错误文档，则会向用户返回默认 404 页面。
 
 > [!NOTE]
-> 静态网站不支持 [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
+> 静态网站不支持[对 Azure 存储的跨域资源共享 (CORS) 支持](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 
 ### <a name="regional-codes"></a>区域代码
 
@@ -84,11 +84,11 @@ ms.locfileid: "91326076"
 
 尽管主静态网站终结点不受影响，但更改公共访问级别会影响主 blob 服务终结点。
 
-例如，如果将 **$web** 容器的公共访问级别从**专用（不允许匿名访问）** 更改为 **Blob（仅允许匿名读取 blob）** ，则对主静态网站终结点 `https://contosoblobaccount.z22.web.core.windows.net/index.html` 的公共访问级别不会更改。
+例如，如果将 **$web** 容器的公共访问级别从 **专用（不允许匿名访问）** 更改为 **Blob（仅允许匿名读取 blob）** ，则对主静态网站终结点 `https://contosoblobaccount.z22.web.core.windows.net/index.html` 的公共访问级别不会更改。
 
 但是，对主 blob 服务终结点 `https://contosoblobaccount.blob.core.windows.net/$web/index.html` 的公共访问权限将从专用更改为公共。 现在，用户可以使用这两个终结点中的任意一个来打开该文件。
 
-在存储帐户上禁用公共访问不会影响该存储帐户中托管的静态网站。 有关详细信息，请参阅 [配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
+禁止对存储帐户的公共访问不会影响该存储帐户中承载的静态网站。 有关详细信息，请参阅[配置对容器和 Blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>将自定义域映射到静态网站 URL
 
@@ -103,13 +103,13 @@ ms.locfileid: "91326076"
 
 ## <a name="adding-http-headers"></a>添加 HTTP 标头
 
-无法将标头配置为静态网站功能的一部分。 但是，可以使用 Azure CDN 来添加标头和追加（或覆盖）标头值。 请参阅 [Azure CDN 的标准规则引擎参考](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)。
+无法将标头配置为静态网站功能的一部分。 但是，可以使用 Azure CDN 来添加标头和追加（或覆盖）标头值。 请参阅 [Azure CDN 的标准规则引擎参考](../../cdn/cdn-standard-rules-engine-reference.md)。
 
-如果要使用标头来控制缓存，请参阅[使用缓存规则控制 Azure CDN 缓存行为](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)。
+如果要使用标头来控制缓存，请参阅[使用缓存规则控制 Azure CDN 缓存行为](../../cdn/cdn-caching-rules.md)。
 
 ## <a name="multi-region-website-hosting"></a>多区域网站托管
 
-如果你计划在多个地理位置托管一个网站，我们建议你使用 [内容分发网络](https://docs.microsoft.com/azure/cdn/) 进行区域缓存。 如果要在每个区域中提供不同的内容，请使用 [Azure 前门](https://docs.microsoft.com/azure/frontdoor/) 。 它还提供故障转移功能。 如果你计划使用自定义域，则不建议使用[Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/)。 由于 Azure 存储验证自定义域名的方式，可能会出现问题。
+如果你计划在多个地理位置托管一个网站，我们建议你使用 [内容分发网络](../../cdn/index.yml) 进行区域缓存。 如果要在每个区域中提供不同的内容，请使用 [Azure 前门](../../frontdoor/index.yml) 。 它还提供故障转移功能。 如果你计划使用自定义域，则不建议使用[Azure 流量管理器](../../traffic-manager/index.yml)。 由于 Azure 存储验证自定义域名的方式，可能会出现问题。
 
 
 ## <a name="pricing"></a>定价
@@ -126,7 +126,7 @@ ms.locfileid: "91326076"
 
 * [在 Azure 存储中托管静态网站](storage-blob-static-website-how-to.md)
 * [将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure 应用服务](/azure/app-service/overview)
-* [生成首个无服务器 Web 应用程序](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
+* [Azure Functions](../../azure-functions/functions-overview.md)
+* [Azure 应用服务](../../app-service/overview.md)
+* [生成首个无服务器 Web 应用程序](/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [教程：在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)

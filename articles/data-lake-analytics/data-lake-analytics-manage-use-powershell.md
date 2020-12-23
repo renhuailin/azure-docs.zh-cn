@@ -1,20 +1,19 @@
 ---
 title: 使用 Azure PowerShell 管理 Azure Data Lake Analytics
 description: 本文介绍如何使用 Azure PowerShell 管理 Data Lake Analytics 帐户、数据源、用户和作业。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: afa21e6aae769e69e8bc83b9fa0d4f9b76396f7e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125626"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220306"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
+
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 本文介绍如何使用 Azure PowerShell 管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。
@@ -23,7 +22,7 @@ ms.locfileid: "87125626"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要将 PowerShell 与 Data Lake Analytics 配合使用，请收集以下信息： 
+若要将 PowerShell 与 Data Lake Analytics 配合使用，请收集以下信息：
 
 * **订阅 ID**：Data Lake Analytics 帐户所在的 Azure 订阅的 ID。
 * **资源组**：包含 Data Lake Analytics 帐户的 Azure 资源组的名称。
@@ -52,7 +51,7 @@ $location = "<Location>"
 Connect-AzAccount -SubscriptionId $subId
 
 # Using subscription name
-Connect-AzAccount -SubscriptionName $subname 
+Connect-AzAccount -SubscriptionName $subname
 ```
 
 ## <a name="saving-authentication-context"></a>保存身份验证上下文
@@ -64,23 +63,22 @@ Connect-AzAccount -SubscriptionName $subname
 Save-AzAccounts -Path D:\profile.json  
 
 # Load login session information
-Select-AzAccounts -Path D:\profile.json 
+Select-AzAccounts -Path D:\profile.json
 ```
 
 ### <a name="log-in-using-a-service-principal-identity-spi"></a>使用服务主体标识 (SPI) 登录
 
 ```powershell
 $tenantid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
-$spi_appname = "appname" 
-$spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" 
-$spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
+$spi_appname = "appname"
+$spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+$spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 $pscredential = New-Object System.Management.Automation.PSCredential ($spi_appid, (ConvertTo-SecureString $spi_secret -AsPlainText -Force))
 Login-AzAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential -Subscription $subid
 ```
 
 ## <a name="manage-accounts"></a>管理帐户
-
 
 ### <a name="list-accounts"></a>列出帐户
 
@@ -94,7 +92,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg
 
 ### <a name="create-an-account"></a>创建帐户
 
-每个 Data Lake Analytics 帐户都需要一个默认的 Data Lake Store 帐户，用于存储日志。 可以重复使用现有的帐户，也可以创建帐户。 
+每个 Data Lake Analytics 帐户都需要一个默认的 Data Lake Store 帐户，用于存储日志。 可以重复使用现有的帐户，也可以创建帐户。
 
 ```powershell
 # Create a data lake store if needed, or you can re-use an existing one
@@ -117,12 +115,13 @@ Test-AdlAnalyticsAccount -Name $adla
 ```
 
 ## <a name="manage-data-sources"></a>管理数据源
+
 Azure Data Lake Analytics 当前支持以下数据源：
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure 存储](../storage/common/storage-introduction.md)
 
-每个 Data Lake Analytics 帐户都有一个默认的 Data Lake Store 帐户。 默认 Data Lake Store 帐户用于存储作业元数据和作业审核日志。 
+每个 Data Lake Analytics 帐户都有一个默认的 Data Lake Store 帐户。 默认 Data Lake Store 帐户用于存储作业元数据和作业审核日志。
 
 ### <a name="find-the-default-data-lake-store-account"></a>查找默认 Data Lake Store 帐户
 
@@ -134,7 +133,7 @@ $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 可使用 `IsDefault` 属性，通过筛选数据源列表来查找默认的 Data Lake Store 帐户：
 
 ```powershell
-Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
+Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault }
 ```
 
 ### <a name="add-a-data-source"></a>添加数据源
@@ -148,7 +147,7 @@ Add-AdlAnalyticsDataSource -Account $adla -Blob $AzureStorageAccountName -Access
 
 # Add an additional Data Lake Store account.
 $AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
-Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
+Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName
 ```
 
 ### <a name="list-data-sources"></a>列出数据源
@@ -170,8 +169,8 @@ Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "Blob"
 
 ```powershell
 $script = @"
-@a  = 
-    SELECT * FROM 
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
@@ -182,7 +181,7 @@ OUTPUT @a
 "@
 
 $scriptpath = "d:\test.usql"
-$script | Out-File $scriptpath 
+$script | Out-File $scriptpath
 
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
@@ -191,7 +190,7 @@ Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 
 ```powershell
 $scriptpath = "d:\test.usql"
-$script | Out-File $scriptpath 
+$script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
@@ -241,9 +240,9 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 使用 `-Result` 参数检测结束作业是否成功完成。 它具有下列值：
 
 * 已取消
-* 失败
-* None
-* 成功
+* 已失败
+* 无
+* 已成功
 
 ``` powershell
 # List Successful jobs.
@@ -265,7 +264,6 @@ Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 
 按时间范围筛选时，可使用 `-SubmittedAfter`。
 
-
 ```powershell
 # List  jobs submitted in the last day.
 $d = [DateTime]::Now.AddDays(-1)
@@ -283,7 +281,6 @@ Get-AdlJob -Account $adla -SubmittedAfter $d
 ```powershell
 Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
-
 
 ### <a name="cancel-a-job"></a>取消作业
 
@@ -320,7 +317,6 @@ $recurrences = Get-AdlJobRecurrence -Account $adla
 $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>"
 ```
 
-
 ## <a name="manage-compute-policies"></a>管理计算策略
 
 ### <a name="list-existing-compute-policies"></a>列出现有计算策略
@@ -340,9 +336,10 @@ $userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
 
 New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
 ```
+
 ## <a name="manage-files"></a>管理文件
 
-### <a name="check-for-the-existence-of-a-file"></a>检查文件是否存在。
+### <a name="check-for-the-existence-of-a-file"></a>检查文件是否存在
 
 ```powershell
 Test-AdlStoreItem -Account $adls -Path "/data.csv"
@@ -353,7 +350,7 @@ Test-AdlStoreItem -Account $adls -Path "/data.csv"
 上传文件。
 
 ```powershell
-Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv" 
+Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv"
 ```
 
 以递归方式上传整个文件夹。
@@ -379,13 +376,13 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 
 ## <a name="manage-the-u-sql-catalog"></a>管理 U-SQL 目录
 
-可以使用 -SQL 目录组织数据和代码，以便通过 U-SQL 脚本共享数据和代码。 目录启用 Azure Data Lake 中数据的最高可能性能。 有关详细信息，请参阅 [使用 U-SQL 目录](data-lake-analytics-use-u-sql-catalog.md)。
+可以使用 -SQL 目录组织数据和代码，以便通过 U-SQL 脚本共享数据和代码。 目录启用 Azure Data Lake 中数据的最高可能性能。 有关详细信息，请参阅 [使用 U-SQL 目录](./data-lake-analytics-u-sql-get-started.md)。
 
 ### <a name="list-items-in-the-u-sql-catalog"></a>列出 U-SQL 目录中的项
 
 ```powershell
 # List U-SQL databases
-Get-AdlCatalogItem -Account $adla -ItemType Database 
+Get-AdlCatalogItem -Account $adla -ItemType Database
 
 # List tables within a database
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
@@ -478,7 +475,6 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
 Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
-
 ## <a name="working-with-azure"></a>使用 Azure
 
 ### <a name="get-error-details"></a>获取错误详细信息
@@ -556,4 +552,4 @@ foreach ($sub in $subs)
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * 使用[Azure 门户](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)开始使用 Data Lake Analytics  |  [Azure CLI](data-lake-analytics-get-started-cli.md)
-* 使用[Azure 门户](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure Data Lake Analytics 
+* 使用[Azure 门户](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure Data Lake Analytics

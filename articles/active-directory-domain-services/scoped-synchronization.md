@@ -2,7 +2,7 @@
 title: Azure AD 域服务的具有作用域的同步 | Microsoft Docs
 description: 了解如何使用 Azure 门户来配置从 Azure AD 到 Azure Active Directory 域服务托管域的区分范围的同步
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: iainfou
+ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe373b9aa08d6999a9c57dd0008a207071e1dddd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4e65b47b2a1fd71c69ecb350f60df1fedff66b74
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068892"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618903"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户配置从 Azure AD 到 Azure Active Directory 域服务的区分范围的同步
 

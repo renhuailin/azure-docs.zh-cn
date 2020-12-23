@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 24ffce1528aa5c82fec9666fa0cb7b8717107f54
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398300"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652256"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>排查 Azure 到 Azure VM 网络连接性问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "91398300"
 
 | **Name**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 VM 的所有缓存存储帐户，则可以对特定存储帐户 URL 使用允许列表。 例如，使用 `cache1.blob.core.windows.net` 和 `cache2.blob.core.windows.net` 而不是 `*.blob.core.windows.net`。 |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 VM 的所有缓存存储帐户，则可以对特定存储帐户 URL 使用允许列表。 例如，使用 `cache1.blob.core.windows.net` 和 `cache2.blob.core.windows.net` 而不是 `*.blob.core.windows.net`。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。 |
 | 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery IP”。 |
 | 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。 |
@@ -60,7 +60,7 @@ ms.locfileid: "91398300"
 #### <a name="resolution"></a>解决方法
 
 - Azure Site Recovery 需要访问 Microsoft 365 IP 范围才能进行身份验证。
-- 如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理来控制 VM 上的出站网络连接，请确保允许与 Microsoft 365 IP 范围通信。 创建一个基于 [Azure Active Directory (Azure AD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则，该规则允许访问与 Azure AD 对应的所有 IP 地址。
+- 如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理来控制 VM 上的出站网络连接，请确保允许与 Microsoft 365 IP 范围通信。 创建一个基于 [Azure Active Directory (Azure AD) 服务标记](../virtual-network/network-security-groups-overview.md#service-tags)的 NSG 规则，该规则允许访问与 Azure AD 对应的所有 IP 地址。
 - 如果将来向 Azure AD 添加新地址，则需创建新的 NSG 规则。
 
 ### <a name="example-nsg-configuration"></a>NSG 配置示例
@@ -74,11 +74,13 @@ ms.locfileid: "91398300"
 
 1. 为 NSG 创建 HTTPS 出站安全规则，如以下屏幕截图所示。 此示例使用 **目标服务标记**： _EastUS_ 和 **目标端口范围**： _443_。
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com-error":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="屏幕截图，其中显示了“为存储点美国东部安全规则的安全规则添加出站安全规则窗格”。":::
 
 1. 为 NSG 创建 HTTPS 出站安全规则，如以下屏幕截图所示。 此示例使用“目标服务标记”：“AzureActiveDirectory”和“目标端口范围”：“443”。
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com-error" 创建出站 HTTPS (443) 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="屏幕截图，其中显示了“为 Azure Active Directory 安全规则的安全规则 添加出站安全规则窗格”。":::
+
+1. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS (443) 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
 1. 在 NSG 上为“AzureSiteRecovery”创建出站 HTTPS (443) 安全规则。 这样就可以在任何区域访问 Site Recovery 服务。
 
 #### <a name="nsg-rules---central-us"></a>NSG 规则 - 美国中部

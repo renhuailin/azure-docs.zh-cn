@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054766"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022949"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 创建和管理卷组
 ## <a name="overview"></a>概述
@@ -53,10 +53,10 @@ ms.locfileid: "90054766"
 | 名称 |**“名称”** 列包含卷组的名称。 |
 | 应用程序 |**“应用程序”** 列显示当前已在 Windows 主机上安装并正在运行的 VSS 编写器的数量。 |
 | 选定 |**“已选择”** 列显示卷组中包含的卷数量。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
-| 已导入 |**“已导入”** 列显示已导入卷的数量。 设置为“True”**** 时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
+| 已导入 |**“已导入”** 列显示已导入卷的数量。 设置为“True”时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
 
 > [!NOTE]
-> StorSimple Snapshot Manager 卷组还会显示在 Azure 门户中的“备份策略”**** 选项卡上。
+> StorSimple Snapshot Manager 卷组还会显示在 Azure 门户中的“备份策略”选项卡上。
 > 
 > 
 
@@ -108,7 +108,7 @@ ms.locfileid: "90054766"
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
 2. 在 **“作用域”** 窗格中，展开 **“卷组”** 节点，右键单击卷组名称，然后单击 **“编辑”**。
 3. 此时将显示“创建卷组”对话框。 你可以更改 **“名称”**、**“应用程序”** 和 **“卷”** 条目。
-4. **** 单击“确定”以保存你的更改。
+4.  单击“确定”以保存你的更改。
 
 ## <a name="delete-a-volume-group"></a>删除卷组
 使用以下过程删除卷组。 

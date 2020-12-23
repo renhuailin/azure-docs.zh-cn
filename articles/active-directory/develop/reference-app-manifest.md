@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627000"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286955"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -82,7 +82,7 @@ ms.locfileid: "91627000"
 | :--- | :--- |
 | addIns | 集合 |
 
-定义自定义行为，供消耗型服务在特定上下文中调用应用。 例如，呈现文件流的应用程序可以设置其“FileHandler”功能的 `addIns` 属性。 此参数将允许诸如 Microsoft 365 的服务在用户正在处理的文档的上下文中调用该应用程序。
+定义自定义行为，供消耗型服务在特定上下文中调用应用。 例如，呈现文件流的应用程序可以设置其“FileHandler”功能的 `addIns` 属性。 Microsoft 365 等服务可以通过此参数在用户正在处理的文档上下文中调用该应用程序。
 
 示例：
 
@@ -130,7 +130,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| appId | String |
+| appId | 字符串 |
 
 指定由 Azure AD 分配给应用的应用唯一标识符。
 
@@ -169,7 +169,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| displayName | String |
+| displayName | 字符串 |
 
 应用的显示名称。
 
@@ -180,20 +180,21 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| errorUrl | String |
+| errorUrl | 字符串 |
 
-不受支持。
+不支持。
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-|groupMembershipClaims | String |
+|groupMembershipClaims | 字符串 |
 
 配置应用所需的用户访问令牌或 OAuth 2.0 访问令牌中颁发的 `groups` 声明。 若要设置此属性，请使用以下有效的字符串值之一：
 
 - `"None"`
 - `"SecurityGroup"`（适用于安全组和 Azure AD 角色）
+- `"ApplicationGroup"` (此选项仅包括分配给应用程序的组) 
 - `"All"`（该操作可获取登录用户所属的所有安全组、通讯组和 Azure AD 目录角色。
 
 示例：
@@ -206,7 +207,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| homepage |String |
+| homepage |字符串 |
 
 应用程序主页的 URL。
 
@@ -217,7 +218,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-|objectId | String |
+|objectId | 字符串 |
 
 应用在目录中的唯一标识符。
 
@@ -233,7 +234,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| optionalClaims | String |
+| optionalClaims | 字符串 |
 
 此特定应用的安全令牌服务在令牌中返回的可选声明。
 
@@ -265,7 +266,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| informationalUrls | String |
+| informationalUrls | 字符串 |
 
 指定应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 有关详细信息，请参阅[如何：为已注册的 Azure AD 应用添加服务条款和隐私声明](howto-add-terms-of-service-privacy-statement.md)。
 
@@ -322,7 +323,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| logoUrl | String |
+| logoUrl | 字符串 |
 
 只读值，指向已在门户中上传的徽标的 CDN URL。
 
@@ -336,7 +337,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| logoutUrl | String |
+| logoutUrl | 字符串 |
 
 用于注销应用的 URL。
 
@@ -350,7 +351,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| name | String |
+| name | 字符串 |
 
 应用的显示名称。
 
@@ -431,7 +432,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| parentalControlSettings | String |
+| parentalControlSettings | 字符串 |
 
 - `countriesBlockedForMinors` 指定禁止未成年人使用该应用的国家/地区。
 - `legalAgeGroupRule` 指定适用于应用用户的法定年龄组规则。 可设置为 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。
@@ -502,7 +503,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| publisherDomain | String |
+| publisherDomain | 字符串 |
 
 应用程序的已验证发布者域。 只读。
 
@@ -578,7 +579,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| samlMetadataUrl | String |
+| samlMetadataUrl | 字符串 |
 
 应用的 SAML 元数据 URL。
 
@@ -592,7 +593,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| signInUrl | String |
+| signInUrl | 字符串 |
 
 指定应用主页的 URL。
 
@@ -606,7 +607,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| signInAudience | String |
+| signInAudience | 字符串 |
 
 指定当前应用程序支持哪些 Microsoft 帐户。 支持的值是：
 - `AzureADMyOrg` - 在我组织的 Azure AD 租户（例如单租户）中具有 Microsoft 工作或学校帐户的用户
@@ -672,7 +673,7 @@ ms.locfileid: "91627000"
 显示这些错误之一时，建议执行以下操作：
 
 1. 在清单编辑器中逐个编辑属性，而不是上传之前下载的清单。 使用[清单参考](#manifest-reference)表来了解旧属性和新属性的语法与语义，以便能够成功编辑所需的属性。
-1. 如果工作流要求在源存储库中保存清单供以后使用，我们建议使用**应用注册**体验中显示的清单来变基存储库中保存的清单。
+1. 如果工作流要求在源存储库中保存清单供以后使用，我们建议使用 **应用注册** 体验中显示的清单来变基存储库中保存的清单。
 
 ## <a name="next-steps"></a>后续步骤
 

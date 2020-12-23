@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885167"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459660"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,12 +28,12 @@ ms.locfileid: "90885167"
 
 ### <a name="azure-sql-database-deployment-offers-covered-in-this-guide"></a>本指南涉及的 Azure SQL 数据库部署产品/服务
 
-- [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-single-index)：[服务器](logical-servers.md)中的[单一数据库](single-database-overview.md)和[弹性池](elastic-pool-overview.md)
-- [Azure SQL 托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
+- [Azure SQL 数据库](./index.yml)：[服务器](logical-servers.md)中的[单一数据库](single-database-overview.md)和[弹性池](elastic-pool-overview.md)
+- [Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>本指南不涉及的部署产品/服务
 
-- Azure Synapse Analytics（以前称为 SQL 数据仓库）
+- Azure Synapse Analytics
 - Azure SQL VM (IaaS)
 - SQL Server
 
@@ -91,7 +91,7 @@ ms.locfileid: "90885167"
 - 通过组分配向 Azure AD 主体分配资源访问权限：创建 Azure AD 组，向组授予访问权限，并将各个成员添加到组中。 在数据库中，创建包含的数据库用户用于映射 Azure AD 组。 若要在数据库中分配权限，请将与 Azure AD 组关联的用户置于具有适当权限的数据库角色中。
   - 请参阅文章[通过 SQL 配置和管理 Azure Active Directory 身份验证](authentication-aad-configure.md)以及[通过 SQL 使用 Azure AD 进行身份验证](authentication-aad-overview.md)。
   > [!NOTE]
-  > 在 SQL 托管实例中，还可以创建映射到 master 数据库中的 Azure AD 主体的登录名。 请参阅 [CREATE LOGIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
+  > 在 SQL 托管实例中，还可以创建映射到 master 数据库中的 Azure AD 主体的登录名。 请参阅 [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
 
 - 使用 Azure AD 组可以简化权限管理，组所有者和资源所有者都可以在组中添加/删除成员。
 
@@ -107,16 +107,16 @@ ms.locfileid: "90885167"
 > [!NOTE]
 >
 > - Azure AD 身份验证记录在 Azure SQL 审核日志中，而不是记录在 Azure AD 登录日志中。
-> - 在 Azure 中授予的 RBAC 权限不适用于 Azure SQL 数据库或 SQL 托管实例权限。 必须使用现有的 SQL 权限手动创建/映射此类权限。
+> - Azure 中授予的 azure RBAC 权限不适用于 Azure SQL 数据库或 SQL 托管实例权限。 必须使用现有的 SQL 权限手动创建/映射此类权限。
 > - 在客户端上，Azure AD 身份验证需要访问 Internet，或通过用户定义的路由 (UDR) 访问虚拟网络。
 > - Azure AD 访问令牌缓存在客户端，其生存期取决于令牌配置。 请参阅[Azure Active Directory 中可配置的令牌生存期](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)一文
 > - 有关解决 Azure AD 身份验证问题的指南，请参阅以下博客： [Azure AD 故障排除](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
-### <a name="azure-multi-factor-authentication"></a>Azure 多重身份验证
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证
 
 > 内容来源：OSA 做法 #2，ISO 访问控制 (AC)
 
-Azure 多重身份验证要求完成多种形式的身份验证，以此帮助提高安全性。
+Azure AD 多重身份验证通过要求多种形式的身份验证提供额外的安全性。
 
 **如何实现**：
 
@@ -136,15 +136,15 @@ Azure 多重身份验证要求完成多种形式的身份验证，以此帮助�
 
 - 对以交互方式请求密码的 Azure SQL 数据库和 Azure SQL 托管实例使用 Azure AD 交互式身份验证模式，然后启用多重身份验证：
   - 在 SSMS 中使用通用身份验证。 请参阅[在 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 中使用多重 Azure AD 身份验证（SSMS 对多重身份验证的支持）](authentication-mfa-ssms-overview.md)一文。
-  - 使用 SQL Server Data Tools (SSDT) 中支持的交互式身份验证。 请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)。
+  - 使用 SQL Server Data Tools (SSDT) 中支持的交互式身份验证。 请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](/sql/ssdt/azure-active-directory?view=azuresqldb-current)。
   - 使用其他支持多重身份验证的 SQL 工具。
     - SSMS 向导对导出/提取/部署数据库操作的支持  
-    - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)：选项“/ua”
-    - [sqlcmd 实用工具](https://docs.microsoft.com/sql/tools/sqlcmd-utility)：选项 -G（交互式）
-    - [bcp 实用工具](https://docs.microsoft.com/sql/tools/bcp-utility)：选项 -G（交互式）
+    - [sqlpackage.exe](/sql/tools/sqlpackage)：选项“/ua”
+    - [sqlcmd 实用工具](/sql/tools/sqlcmd-utility)：选项 -G（交互式）
+    - [bcp 实用工具](/sql/tools/bcp-utility)：选项 -G（交互式）
 
 - 实现你的应用程序，以使用支持多重身份验证的交互式身份验证连接到 Azure SQL 数据库或 Azure SQL 托管实例。
-  - 请参阅文章[使用 Azure 多重身份验证连接到 Azure SQL 数据库](active-directory-interactive-connect-azure-sql-db.md)。
+  - 请参阅 [通过 Azure AD 多重身份验证连接到 AZURE SQL 数据库](active-directory-interactive-connect-azure-sql-db.md)一文。
   > [!NOTE]
   > 此身份验证模式需要使用基于用户的标识。 如果使用的受信任标识模型会绕过个体 Azure AD 用户身份验证（例如，使用 Azure 资源的托管标识），则不会应用多重身份验证。
 
@@ -196,7 +196,7 @@ Azure 多重身份验证要求完成多种形式的身份验证，以此帮助�
 
 - 如果无法避免密码或机密的使用，请在 Azure Key Vault 中存储用户密码和应用程序机密，并通过 Key Vault 访问策略管理访问权限。
 
-- 各种应用开发框架还可能提供框架特定的机制来保护应用中的机密。 例如：[ASP.NET Core 应用](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-2.1&tabs=windows)。
+- 各种应用开发框架还可能提供框架特定的机制来保护应用中的机密。 例如：[ASP.NET Core 应用](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1)。
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>对旧式应用程序使用 SQL 身份验证
 
@@ -219,24 +219,24 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 > 内容来源：FedRamp 控制措施 AC-06，NIST：AC-6，OSA 做法 #3
 
-最低特权原则指出，用户拥有的特权不应超过他们完成任务所需的特权。 有关详细信息，请参阅 [Just Enough Administration](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) 一文。
+最低特权原则指出，用户拥有的特权不应超过他们完成任务所需的特权。 有关详细信息，请参阅 [Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview) 一文。
 
 **如何实现**：
 
-仅分配完成所需任务而需要的[权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)：
+仅分配完成所需任务而需要的[权限](/sql/relational-databases/security/permissions-database-engine)：
 
 - 在 SQL 数据库中：
   - 使用粒度权限和用户定义的数据库角色（或托管实例中的服务器角色）：
     1. 创建所需的角色
-       - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
-       - [CREATE SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-server-role-transact-sql)
+       - [CREATE ROLE](/sql/t-sql/statements/create-role-transact-sql)
+       - [CREATE SERVER ROLE](/sql/t-sql/statements/create-server-role-transact-sql)
     1. 创建所需的用户
-       - [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)
+       - [CREATE USER](/sql/t-sql/statements/create-user-transact-sql)
     1. 将用户作为成员添加到角色
-       - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
-       - [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
+       - [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql)
+       - [ALTER SERVER ROLE](/sql/t-sql/statements/alter-server-role-transact-sql)
     1. 然后将权限分配给角色。
-       - [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql)
+       - [GRANT](/sql/t-sql/statements/grant-transact-sql)
   - 确保不要将用户分配到不必要的角色。
 
 - 在 Azure 资源管理器中：
@@ -271,9 +271,9 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
   - 对象（表、视图、过程等）
 
   > [!NOTE]
-  > 不建议在对象级别应用权限，因为此级别会给整个实现带来不必要的复杂性。 如果决定使用对象级权限，应明确阐述这些权限。 这同样适用于列级权限，出于相同的原因，我们更不建议应用此类权限 另请注意，默认情况下，表级 [DENY](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) 不会覆盖列级授权。 这需要激活[通用标准合规性服务器配置](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)。
+  > 不建议在对象级别应用权限，因为此级别会给整个实现带来不必要的复杂性。 如果决定使用对象级权限，应明确阐述这些权限。 这同样适用于列级权限，出于相同的原因，我们更不建议应用此类权限 另请注意，默认情况下，表级 [DENY](/sql/t-sql/statements/deny-object-permissions-transact-sql) 不会覆盖列级授权。 这需要激活[通用标准合规性服务器配置](/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)。
 
-- 使用[漏洞评估 (VA)](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) 执行定期检查，以测试权限是否过多。
+- 使用[漏洞评估 (VA)](/sql/relational-databases/security/sql-vulnerability-assessment) 执行定期检查，以测试权限是否过多。
 
 ### <a name="implement-separation-of-duties"></a>实现职责分离
 
@@ -296,13 +296,13 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
   - 为数据库级任务创建数据库角色。
 
 - 对于某些敏感任务，考虑创建由证书签名的特殊存储过程，以代表用户执行这些任务。 数字签名存储过程的一个重要优点是，如果更改了该过程，则会立即删除授予该过程的旧版本的权限。
-  - 示例：[教程：使用证书为存储过程签名](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate)
+  - 示例：[教程：使用证书为存储过程签名](/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate)
 
 - 使用 Azure Key Vault 中客户管理的密钥实现透明数据加密 (TDE)，以便在数据所有者与安全所有者之间实现职责分离。
-  - 请参阅[通过 Azure 门户配置客户管理的密钥用于 Azure 存储加密](../../storage/common/storage-encryption-keys-portal.md)一文。
+  - 请参阅[通过 Azure 门户配置客户管理的密钥用于 Azure 存储加密](../../storage/common/customer-managed-keys-configure-key-vault.md)一文。
 
 - 为了确保 DBA 无法看到高度敏感的数据但仍可执行 DBA 任务，可将 Always Encrypted 与角色分离配合使用。
-  - 请参阅文章 [Always Encrypted 密钥管理概述](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)、[使用角色分离的密钥预配](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)和[使用角色分离的列主密钥轮换](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)。
+  - 请参阅文章 [Always Encrypted 密钥管理概述](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)、[使用角色分离的密钥预配](/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)和[使用角色分离的列主密钥轮换](/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)。
 
 - 如果使用 Always Encrypted 不可行（最起码在不付出极大成本和工作量的情况下做不到这一点，但如果付出，甚至可能会导致系统几乎不可用），可以通过补偿性的控制措施来采取折衷办法，例如：
   - 在过程中进行人工干预。
@@ -320,7 +320,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 还可以通过 T-SQL 的 SQL 代理作业步骤或适用于 Azure 角色的 Azure PIM 暂时执行角色分配（也称为动态职责分离 (DSD)）。
 
-- 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员无权访问数据库。 [ (EKM) 使用可扩展的密钥管理](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm)可以使此分离更容易实现。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可用于实现 EKM。
+- 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员无权访问数据库。 [ (EKM) 使用可扩展的密钥管理](/sql/relational-databases/security/encryption/extensible-key-management-ekm)可以使此分离更容易实现。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可用于实现 EKM。
 
 - 始终确保针对安全相关的操作提供审核线索。
 
@@ -337,9 +337,9 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 对于 Azure SQL 数据库和 SQL 托管实例：  
   - [控制和授予数据库访问权限](logins-create-manage.md)
-  - [应用程序开发人员的引擎职责分离](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100))
+  - [应用程序开发人员的引擎职责分离](/previous-versions/sql/sql-server-2008/cc974525(v=sql.100))
   - [职责分离](https://www.microsoft.com/download/details.aspx?id=39269)
-  - [对存储过程签名](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
+  - [对存储过程签名](/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - 对于 Azure 资源管理：
   - [Azure 内置角色](../../role-based-access-control/built-in-roles.md)
@@ -416,23 +416,23 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **如何实现**：
 
-- 使用 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 来确保不会以纯文本形式公开 Azure SQL 数据库或 SQL 托管实例中的敏感数据，即使是内存中/使用中的数据。 Always Encrypted 可以防止数据库管理员 (DBA) 和云管理员（或者可以仿冒未经授权的高特权用户的恶意行动者）查看数据，并使你能够以更高的力度控制谁可以访问数据。
+- 使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 来确保不会以纯文本形式公开 Azure SQL 数据库或 SQL 托管实例中的敏感数据，即使是内存中/使用中的数据。 Always Encrypted 可以防止数据库管理员 (DBA) 和云管理员（或者可以仿冒未经授权的高特权用户的恶意行动者）查看数据，并使你能够以更高的力度控制谁可以访问数据。
 
 **最佳做法**：
 
 - Always Encrypted 不能取代静态数据加密 (TDE) 或传输中数据加密 (SSL/TLS)。 为了尽量减轻对性能和功能的影响，请不要将 Always Encrypted 用于非敏感数据。 建议将 Always Encrypted 与 TDE 和传输层安全性 (TLS) 结合使用，以全面保护静态数据、传输中的数据和使用中的数据。
 
-- 在生产数据库中部署 Always Encrypted 之前，请先评估对所识别出的敏感数据列进行加密会带来的影响。 通常情况下，Always Encrypted 会降低对加密列的查询功能，并具有其他限制，如 [Always Encrypted - 功能详细信息](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)中所列。 因此，你可能需要在客户端重构你的应用程序来重新实现查询不支持的功能，或者/并且重构你的数据库架构，包括存储过程、函数、视图和触发器的定义。 如果现有应用程序未遵守 Always Encrypted 的限制，则可能无法使用加密列。 虽然支持 Always Encrypted 的 Microsoft 工具、产品和服务的生态系统在不断增长，但它们中还是有许多不能使用加密列。 加密列还可能会影响查询性能，具体取决于工作负荷的特征。
+- 在生产数据库中部署 Always Encrypted 之前，请先评估对所识别出的敏感数据列进行加密会带来的影响。 通常情况下，Always Encrypted 会降低对加密列的查询功能，并具有其他限制，如 [Always Encrypted - 功能详细信息](/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)中所列。 因此，你可能需要在客户端重构你的应用程序来重新实现查询不支持的功能，或者/并且重构你的数据库架构，包括存储过程、函数、视图和触发器的定义。 如果现有应用程序未遵守 Always Encrypted 的限制，则可能无法使用加密列。 虽然支持 Always Encrypted 的 Microsoft 工具、产品和服务的生态系统在不断增长，但它们中还是有许多不能使用加密列。 加密列还可能会影响查询性能，具体取决于工作负荷的特征。
 
 - 如果使用 Always Encrypted 来防止恶意 DBA 查看数据，请通过角色分离来管理 Always Encrypted 密钥。 安全管理员可以使用角色分离来创建物理密钥。 DBA 在数据库中创建用于描述物理密钥的列主密钥和列加密密钥元数据对象。 在此过程中，安全管理员不需要访问数据库，且 DBA 不需要访问纯文本形式的物理密钥。
-  - 有关详细信息，请参阅[使用角色分离管理密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)一文。
+  - 有关详细信息，请参阅[使用角色分离管理密钥](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)一文。
 
 - 将列主密钥存储在 Azure Key Vault 中，以方便管理。 避免使用会使密钥管理变得困难的 Windows 证书存储（以及一般的分布式密钥存储解决方案，而不是集中式密钥管理解决方案）。
 
 - 仔细考虑使用多个密钥（列主密钥或列加密密钥）的利弊。 保留少量的密钥以减小密钥管理成本。 在稳定态的环境中（而不是在密钥轮换的中途），为每个数据库准备一个列主密钥和一个列加密密钥通常已足够。 如果有不同的用户组，而每个组使用不同的密钥并访问不同的数据，则可能需要更多的密钥。  
 
 - 根据合规要求轮换列主密钥。 如果还需要轮换列加密密钥，请考虑使用在线加密来尽量减少应用程序停机时间。
-  - 请参阅[性能和可用性注意事项](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-column-encryption-using-powershell#performance-and-availability-considerations)一文。
+  - 请参阅[性能和可用性注意事项](/sql/relational-databases/security/encryption/configure-column-encryption-using-powershell#performance-and-availability-considerations)一文。
 
 - 如果需要支持数据计算（相等性），请使用确定性加密。 否则请使用随机加密。 避免将确定性加密用于低熵数据集或采用众所周知分布形式的数据集。
 
@@ -448,7 +448,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **如何实现**：
 
-- 使用单元级加密 (CLE)。 有关详细信息，请参阅[加密数据列](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data)一文。
+- 使用单元级加密 (CLE)。 有关详细信息，请参阅[加密数据列](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)一文。
 - 使用 Always Encrypted，但要注意其限制。 下面列出了限制。
 
 **最佳实践**
@@ -462,7 +462,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 - 使用非对称密钥/证书（而不是密码）来保护对称密钥，以避免使用 3DES。
 
 - 通过导出/导入（bacpac 文件）使用单元级加密迁移数据库时请小心。
-  - 有关在迁移数据时如何防止丢失密钥以及其他最佳做法指导，请参阅[有关在 Azure SQL 数据库中使用单元级加密的建议](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)。
+  - 有关在迁移数据时如何防止丢失密钥以及其他最佳做法指导，请参阅[有关在 Azure SQL 数据库中使用单元级加密的建议](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)。
 
 请记住，Always Encrypted 主要用于防止 Azure SQL 数据库的高特权用户（云操作员、DBA）查看使用中的敏感数据 - 请参阅[防止防止未经授权的高特权用户查看使用中的敏感数据](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)。 使用 Always Encrypted 防止应用程序用户查看数据时，请注意以下难点：
 
@@ -474,7 +474,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **如何实现**：
 
-- 使用[动态数据掩码](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)来模糊处理表列。
+- 使用[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)来模糊处理表列。
 
 > [!NOTE]
 > Always Encrypted 不能与动态数据掩码配合工作。 无法加密和掩码同一个列，这意味着，需确定是要优先保护使用中的数据，还是通过动态数据掩码来对应用用户掩码数据。
@@ -485,7 +485,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 > 动态数据掩码不可用于防止高特权用户查看数据。 掩码策略不适用于拥有管理访问权限的用户，例如 db_owner。
 
 - 不要允许应用用户运行临时查询（因为他们也许可以克服动态数据掩码）。  
-  - 有关详细信息，请参阅[使用推理或暴力破解技术绕过掩码](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking#security-note-bypassing-masking-using-inference-or-brute-force-techniques)一文。  
+  - 有关详细信息，请参阅[使用推理或暴力破解技术绕过掩码](/sql/relational-databases/security/dynamic-data-masking#security-note-bypassing-masking-using-inference-or-brute-force-techniques)一文。  
 
 - 使用适当的访问控制策略（通过 SQL 权限、角色、RLS）来限制用户在掩码列中进行更新的权限。 对列进行掩码不会阻止对该列进行更新。 如果查询掩码列时收到掩码数据的用户拥有写入权限，则他们可以更新这些数据。
 
@@ -510,9 +510,9 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 如果应用使用的驱动程序不支持 TLS 或者支持早期版本的 TLS，请尽可能地更换驱动程序。 如果无法做到这一点，请认真评估安全风险。
 
-- 减少通过 SSL 2.0、SSL 3.0、TLS 1.0 和 TLS 1.1 中的漏洞发起的攻击途径：根据[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-10)，在连接到 Azure SQL 数据库的客户端计算机上禁用相关的途径。
+- 减少通过 SSL 2.0、SSL 3.0、TLS 1.0 和 TLS 1.1 中的漏洞发起的攻击途径：根据[传输层安全性 (TLS) 注册表设置](/windows-server/security/tls/tls-registry-settings#tls-10)，在连接到 Azure SQL 数据库的客户端计算机上禁用相关的途径。
 
-- 检查客户端上的密码套件：[TLS/SSL (Schannel SSP) 中的密码套件](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel)。 具体而言，根据[配置 TLS 密码套件顺序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)禁用 3DES。
+- 检查客户端上的密码套件：[TLS/SSL (Schannel SSP) 中的密码套件](/windows/desktop/SecAuthN/cipher-suites-in-schannel)。 具体而言，根据[配置 TLS 密码套件顺序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)禁用 3DES。
 
 - 对于 Azure SQL 数据库和 SQL 托管实例，将对“代理”和“重定向”连接类型强制加密。 对于 Azure SQL 托管实例，请使用“代理”连接类型（默认设置），因为这可以强制在服务器端加密。 “重定向”连接类型目前不支持加密强制，仅在专用 IP 连接上可用。
 
@@ -530,7 +530,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 在服务器级别将“允许访问 Azure 服务”设置为“关闭”
 - 使用 VNet 服务终结点和 VNet 防火墙规则。
-- 使用 "专用链接 (预览") 。
+- 使用专用链接（预览）。
 
 在 SQL 托管实例中：
 
@@ -538,11 +538,11 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **最佳做法**：
 
-- 通过在专用终结点上连接来限制对 Azure SQL 数据库和 SQL 托管实例的访问 (例如，使用专用数据路径) ：
-  - 托管实例可在虚拟网络内隔离，以防止外部访问。 位于同一区域中相同或对等互连的虚拟网络中的应用程序和工具可以直接访问它。 位于不同区域的应用程序和工具可以使用虚拟网络到虚拟网络连接或 ExpressRoute 线路对等互连来建立连接。 客户应使用 (NSG) 的网络安全组来限制仅允许访问托管实例的资源访问端口1433。
-  - 对于 SQL 数据库，请使用 [专用链接](../../private-link/private-endpoint-overview.md) 功能，该功能为虚拟网络中的服务器提供专用专用 IP。 还可以将 [虚拟网络服务终结点用于虚拟网络防火墙规则](vnet-service-endpoint-rule-overview.md) ，以限制对服务器的访问。
-  - 移动用户应该使用点到站点 VPN 连接，通过数据路径进行连接。
-  - 连接到本地网络的用户应使用站点到站点 VPN 连接或 ExpressRoute 连接到数据路径。
+- 通过连接到专用终结点（例如，使用专用数据路径）来限制对 Azure SQL 数据库和 SQL 托管实例的访问：
+  - 可将托管实例隔离在虚拟网络内，防止外部访问。 位于同一区域的相同或对等虚拟网络中的应用程序和工具可以直接访问它。 位于不同区域的应用程序和工具可使用虚拟网络到虚拟网络连接，或使用 ExpressRoute 线路对等互连来建立连接。 客户应使用网络安全组 (NSG) 来仅限通过端口 1433 访问需要访问托管实例的资源。
+  - 对于 SQL 数据库，请使用 [专用链接](../../private-link/private-endpoint-overview.md) 功能，该功能为虚拟网络中的服务器提供专用专用 IP。 还可使用[配置了虚拟网络防火墙规则的虚拟网络服务终结点](vnet-service-endpoint-rule-overview.md)来限制对服务器的访问。
+  - 移动用户应使用点到站点 VPN 连接，通过数据路径进行连接。
+  - 连接到本地网络的用户应使用站点到站点 VPN 连接或 ExpressRoute，通过数据路径进行连接。
 
 - 可以通过连接到公共终结点（例如，使用公共数据路径）来访问 Azure SQL 数据库和 SQL 托管实例。 应考虑以下最佳做法：
   - 对于 SQL 数据库中的服务器，请使用 [IP 防火墙规则](firewall-configure.md)，仅限访问已授权的 IP 地址。
@@ -555,7 +555,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
   - 按照 [Azure 网络安全最佳做法](../../security/fundamentals/network-best-practices.md)进行操作。
   - 根据 [Azure 虚拟网络常见问题解答 (FAQ)](../../virtual-network/virtual-networks-faq.md) 和计划中所述的最佳做法规划虚拟网络配置。
   - 将虚拟网络划分为多个子网，并将类似角色的资源（例如，前端与后端资源）分配到同一子网。
-  - 使用[网络安全组 (NSG)](../../virtual-network/security-overview.md) 来控制 Azure 虚拟网络边界范围内子网之间的流量。
+  - 使用[网络安全组 (NSG)](../../virtual-network/network-security-groups-overview.md) 来控制 Azure 虚拟网络边界范围内子网之间的流量。
   - 为订阅启用 [Azure 网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)，以监视入站和出站网络流量。
 
 ### <a name="configure-power-bi-for-secure-connections-to-sql-databasesql-managed-instance"></a>配置 Power BI 以安全连接到 SQL 数据库/SQL 托管实例
@@ -564,11 +564,11 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 对于 Power BI Desktop，请尽可能地使用专用数据路径。
 
-- 根据[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)在客户端计算机上设置注册表项，确保 Power BI Desktop 使用 TLS1.2 进行连接。
+- 根据[传输层安全性 (TLS) 注册表设置](/windows-server/security/tls/tls-registry-settings)在客户端计算机上设置注册表项，确保 Power BI Desktop 使用 TLS1.2 进行连接。
 
-- 通过 [Power BI 行级安全性 (RLS)](https://docs.microsoft.com/power-bi/service-admin-rls) 限制特定用户的数据访问权限。
+- 通过 [Power BI 行级安全性 (RLS)](/power-bi/service-admin-rls) 限制特定用户的数据访问权限。
 
-- 对于 Power BI 服务，请使用[本地数据网关](https://docs.microsoft.com/power-bi/service-gateway-onprem)，同时请记住[限制和注意事项](https://docs.microsoft.com/power-bi/service-gateway-deployment-guidance#installation-considerations-for-the-on-premises-data-gateway)。
+- 对于 Power BI 服务，请使用[本地数据网关](/power-bi/service-gateway-onprem)，同时请记住[限制和注意事项](/power-bi/service-gateway-deployment-guidance#installation-considerations-for-the-on-premises-data-gateway)。
 
 ### <a name="configure-app-service-for-secure-connections-to-sql-databasesql-managed-instance"></a>配置应用服务以安全连接到 SQL 数据库/SQL 托管实例
 
@@ -614,7 +614,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 在 Azure 平台中，会自动启用 DDoS 保护。 它包括 always on 流量监视和对公共终结点上网络级别攻击的实时缓解。
 
-- 使用 [Azure DDoS 防护](../../virtual-network/ddos-protection-overview.md) 来监视与虚拟网络中部署的资源关联的公共 IP 地址。
+- 使用 [Azure DDoS 防护](../../ddos-protection/ddos-protection-overview.md) 来监视与虚拟网络中部署的资源关联的公共 IP 地址。
 
 - 使用 [AZURE SQL 数据库的高级威胁防护](threat-detection-overview.md) 来检测对数据库的拒绝服务 (DoS) 攻击。
 
@@ -647,7 +647,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **最佳做法**：
 
-- 为特定服务器或托管实例配置适用于 SQL 的[Azure Defender](azure-defender-for-sql.md)   。 通过切换到 [Azure 安全中心标准层](../../security-center/security-center-pricing.md)，还可以为订阅中的所有服务器和托管实例配置 azure DEFENDER for SQL。
+- 为特定服务器或托管实例配置 [Azure Defender for SQL](azure-defender-for-sql.md) 。 还可以通过切换到 [Azure 安全中心标准层](../../security-center/security-center-pricing.md)，为订阅中的所有服务器和托管实例配置 Azure Defender for SQL。
 
 - 若要获得完整的调查体验，建议启用  [SQL 数据库审核](../../azure-sql/database/auditing-overview.md)。 使用审核可以跟踪数据库事件，并将这些事件写入到 Azure 存储帐户或 Azure Log Analytics 工作区中的审核日志。
 
@@ -664,7 +664,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 **最佳做法**：
 
 - 在服务器上配置 [SQL 数据库审核](../../azure-sql/database/auditing-overview.md)或配置[托管实例审核](../managed-instance/auditing-configure.md)以审核事件后，该服务器上所有现有的和新建的数据库都会被审核。
-- 审核策略默认包括对数据库执行的所有操作（查询、存储过程，以及成功和失败的登录），这可能会导致生成大量的审核日志。 建议客户[使用 PowerShell 对不同类型的操作和操作组配置审核](../../sql-database/sql-database-auditing.md#manage-auditing)。 此项配置有助于控制审核的操作数量，并将事件丢失的风险降到最低。 自定义审核配置可让客户仅捕获所需的审核数据。
+- 审核策略默认包括对数据库执行的所有操作（查询、存储过程，以及成功和失败的登录），这可能会导致生成大量的审核日志。 建议客户[使用 PowerShell 对不同类型的操作和操作组配置审核](./auditing-overview.md#manage-auditing)。 此项配置有助于控制审核的操作数量，并将事件丢失的风险降到最低。 自定义审核配置可让客户仅捕获所需的审核数据。
 - 可以在 [Azure 门户](https://portal.azure.com/)中直接使用审核日志，或者从配置的存储位置使用。
 
 > [!NOTE]
@@ -673,7 +673,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 **其他资源**：
 
 - [SQL 数据库审核](../../azure-sql/database/auditing-overview.md)
-- [SQL Server 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+- [SQL Server 审核](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="secure-audit-logs"></a>保护审核日志
 
@@ -700,7 +700,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **如何实现**：
 
-- 启用 [SQL 漏洞评估](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) (VA) 来扫描数据库的安全问题，并使其定期对数据库自动运行。
+- 启用 [SQL 漏洞评估](/sql/relational-databases/security/sql-vulnerability-assessment) (VA) 来扫描数据库的安全问题，并使其定期对数据库自动运行。
 
 **最佳做法**：
 
@@ -714,7 +714,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **其他资源**：
 
-- [SQL 漏洞评估](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)
+- [SQL 漏洞评估](/sql/relational-databases/security/sql-vulnerability-assessment)
 - [SQL 漏洞评估服务有助于识别数据库漏洞](sql-vulnerability-assessment.md)
 
 ### <a name="identify-and-tag-sensitive-data"></a>识别并标记敏感数据
@@ -726,7 +726,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 - 使用 [SQL 数据发现和分类](data-discovery-and-classification-overview.md)来发现、分类、标记和保护数据库中的敏感数据。
   - 在 SQL 数据发现和分类仪表板中查看自动发现创建的分类建议。 接受相关的分类，以使用分类标签来持久标记敏感数据。
   - 对于未被自动机制发现的任何其他敏感数据字段，请手动添加分类。
-- 有关详细信息，请参与 [SQL 数据发现和分类](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification)。
+- 有关详细信息，请参与 [SQL 数据发现和分类](/sql/relational-databases/security/sql-data-discovery-and-classification)。
 
 **最佳做法**：
 
@@ -791,12 +791,14 @@ Azure SQL 数据库和 SQL 托管实例目前提供以下技术来缓解数据�
 
 - Azure 提供内置的高可用性：[SQL 数据库和 SQL 托管实例的高可用性](high-availability-sla.md)
 
-- 业务关键层包括故障转移组、多可用性区域、完整和差异日志备份，以及默认情况下启用的时间点还原备份：  
-  - [高可用性-区域冗余配置](high-availability-sla.md#zone-redundant-configuration)
+- “业务关键”层包括故障转移组、完整和差异日志备份，以及默认已启用的时间点还原备份：  
   - [自动备份](automated-backups-overview.md)
   - [使用自动数据库备份恢复数据库 - 时间点还原](recovery-using-backups.md#point-in-time-restore)
 
-- 可按以下文章中所述配置其他业务连续性功能，例如，跨不同的 Azure 地理区域自动故障转移组：[业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- 可以配置其他业务连续性功能，如跨不同 Azure 地域的区域冗余配置和自动故障转移组： 
+    - [高级 & 业务关键服务层的高可用性区域冗余配置](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
+    - [常规用途服务层的高可用性区域冗余配置](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+    - [业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 

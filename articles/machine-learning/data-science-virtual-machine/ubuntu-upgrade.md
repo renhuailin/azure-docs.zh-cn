@@ -10,12 +10,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: d57de4d52ccf3a029a8dd1350635fb65dd3ac829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828383"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320983"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>将 Data Science Virtual Machine 升级到 Ubuntu 18.04
 
@@ -36,13 +36,13 @@ ms.locfileid: "91828383"
 
 在 Azure 门户中，使用搜索栏查找 **快照** 功能。 
 
-:::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
+:::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *":::
 
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 " **区域**"，请选择目标存储所在的同一区域。 选择 DSVM 存储磁盘和其他备份选项。 对于此备份方案，**标准 HDD**是合适的存储类型。
+1. 选择 " **添加** "，这会转到 " **创建快照** " 页。 选择虚拟机的订阅和资源组。 对于 " **区域** "，请选择目标存储所在的同一区域。 选择 DSVM 存储磁盘和其他备份选项。 对于此备份方案， **标准 HDD** 是合适的存储类型。
 
-:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
+:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="显示 &quot;创建快照&quot; 选项的屏幕截图":::
 
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 " 来验证和创建快照。 快照成功完成后，你将看到一条消息，告知你部署已完成。
+2. 所有详细信息都已填满并经历验证后，请选择 " **查看 + 创建** " 来验证和创建快照。 快照成功完成后，你将看到一条消息，告知你部署已完成。
 
 ## <a name="in-place-migration"></a>就地迁移
 
@@ -56,7 +56,7 @@ ms.locfileid: "91828383"
     sudo do-release-upgrade
     ```
 
-升级过程需要一段时间才能完成。 结束时，程序将要求提供重新启动虚拟机的权限。 答案 **是**。 系统重新启动时，会断开 SSH 会话的连接。
+升级过程需要一段时间才能完成。 结束时，程序将要求提供重新启动虚拟机的权限。 答案 **是** 。 系统重新启动时，会断开 SSH 会话的连接。
 
 ### <a name="if-necessary-regenerate-ssh-keys"></a>如有必要，请重新生成 SSH 密钥
 
@@ -65,11 +65,17 @@ ms.locfileid: "91828383"
 
 VM 升级并重新启动后，尝试通过 SSH 再次访问。 IP 地址可能在重新启动过程中发生了更改，因此请在尝试连接之前进行确认。
 
-如果收到错误 " **远程主机标识已更改**"，则需要重新生成 SSH 凭据。
+如果收到错误 " **远程主机标识已更改** "，则需要重新生成 SSH 凭据。
 
-:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
+:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="显示远程主机标识更改警告的 PowerShell 屏幕截图":::
 
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 " 链接以 **解决 SSH 连接问题**。
+为此，请在本地计算机上运行以下命令：
+
+```bash
+ssh-keygen -R "your server hostname or ip"
+```
+
+现在应能够与 SSH 连接。 如果仍然遇到问题，请在 "连接" 页上，单击 " **连接** " 链接以 **解决 SSH 连接问题** 。
 
 ## <a name="side-by-side-migration"></a>并行迁移
 
@@ -97,19 +103,19 @@ VM 升级并重新启动后，尝试通过 SSH 再次访问。 IP 地址可能�
 
 如果尚未创建 VM 快照，请执行此操作。 
 
-1. 在 Azure 门户中，搜索 " **磁盘** " 并选择 " **添加**"，这将打开 " **磁盘** " 页。
+1. 在 Azure 门户中，搜索 " **磁盘** " 并选择 " **添加** "，这将打开 " **磁盘** " 页。
 
-:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
+:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Azure 门户显示 &quot;搜索磁盘&quot; 页和 &quot;添加&quot; 按钮的屏幕截图":::
 
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 " **快照** "，并选择 VM 快照作为 **源快照**。 查看并创建该磁盘。 
+2. 将 **订阅** 、 **资源组** 和 **区域** 设置为 VM 快照的值。 选择要创建的磁盘的 **名称** 。
 
-:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
+3. 选择 " **源类型** " 作为 " **快照** "，并选择 VM 快照作为 **源快照** 。 查看并创建该磁盘。 
 
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 ":::
+:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="显示选项的磁盘创建对话框的屏幕截图":::
 
 ### <a name="create-a-new-ubuntu-data-science-virtual-machine"></a>创建新的 Ubuntu Data Science Virtual Machine
 
-使用 [Azure 门户](https://portal.azure.com) 或 [ARM 模板](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager)创建新的 Ubuntu Data Science Virtual Machine。 
+使用 [Azure 门户](https://portal.azure.com) 或 [ARM 模板](./dsvm-tutorial-resource-manager.md)创建新的 Ubuntu Data Science Virtual Machine。 
 
 ### <a name="recreate-user-accounts-on-your-new-data-science-virtual-machine"></a>) 新的 Data Science Virtual Machine 重新创建用户帐户 (
 
@@ -117,19 +123,22 @@ VM 升级并重新启动后，尝试通过 SSH 再次访问。 IP 地址可能�
 
 Linux 的灵活性足以使您能够自定义新安装的目录和路径，以遵循您的旧计算机。 但一般情况下，使用新式 Ubuntu 的首选布局比修改用户环境和脚本更为容易。
 
-有关详细信息，请参阅 [快速入门：设置 Linux (Ubuntu) 的 Data Science Virtual Machine ](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)。
+有关详细信息，请参阅 [快速入门：设置 Linux (Ubuntu) 的 Data Science Virtual Machine ](./dsvm-ubuntu-intro.md)。
 
 ### <a name="mount-the-disk-of-the-snapshotted-vm-as-a-data-disk-on-your-new-data-science-virtual-machine"></a>在新的 Data Science Virtual Machine 上装载快照 VM 的磁盘作为数据磁盘
 
 1. 在 Azure 门户中，确保 Data Science Virtual Machine 正在运行。
 
-2. 在 Azure 门户中，请切换到 Data Science Virtual Machine 的页面。 选择左侧导轨上的 " **磁盘** " 边栏选项卡。 选择 " **附加现有磁盘**"。
+2. 在 Azure 门户中，请切换到 Data Science Virtual Machine 的页面。 选择左侧导轨上的 " **磁盘** " 边栏选项卡。 选择 " **附加现有磁盘** "。
 
 3. 在 " **磁盘名称** " 下拉列表中，选择从旧 VM 的快照创建的磁盘。
 
-:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
+:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="显示磁盘附件选项的 DSVM 选项页的屏幕截图":::
 
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 " **X** "，启动 VM，然后重新附加它。
+4. 选择 " **保存** " 以更新虚拟机。
+
+> [!Important]
+> 你的 VM 应在附加数据磁盘时运行。 如果 VM 未运行，则可以按不正确的顺序添加磁盘，从而导致令人费解且可能无法启动的系统。 如果向 VM 添加数据磁盘，请选择数据磁盘旁的 " **X** "，启动 VM，然后重新附加它。
 
 ### <a name="manually-copy-the-wanted-data"></a>手动复制所需的数据 
 
@@ -143,9 +152,7 @@ Linux 的灵活性足以使您能够自定义新安装的目录和路径，以�
     
     结果应类似于下图所示。 在映像中，磁盘在 `sda1` 根目录下装载， `sdb2` 是 `/mnt` 暂存磁盘。 从旧 VM 的快照创建的数据磁盘被标识为 `sdc1` ，但尚未提供，因为在缺少装载位置时出现。 你的结果可能具有不同的标识符，但你应看到类似的模式。
     
-    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
-
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 ":::
+    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="显示未装入数据驱动器的 lsblk 输出屏幕截图":::
     
 3. 若要访问数据驱动器，请为其创建一个位置并装载它。 替换 `/dev/sdc1` 为返回的适当值 `lsblk` ：
 
@@ -155,7 +162,7 @@ Linux 的灵活性足以使您能够自定义新安装的目录和路径，以�
     
 4. 现在， `/datadrive` 包含旧 Data Science Virtual Machine 的目录和文件。 根据需要将所需的目录或文件从数据驱动器移动或复制到新 VM。
 
-有关详细信息，请参阅 [使用门户将数据磁盘附加到 LINUX VM](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)。
+有关详细信息，请参阅 [使用门户将数据磁盘附加到 LINUX VM](../../virtual-machines/linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 ## <a name="connect-and-confirm-version-upgrade"></a>连接并确认版本升级
 
@@ -167,17 +174,13 @@ cat /etc/os-release
 
 你应该会看到你正在运行 Ubuntu 18.04。
 
-:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
-
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 ":::
+:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="显示操作系统版本数据的 Ubuntu 终端的屏幕截图":::
 
 版本的更改也会显示在 Azure 门户中。
 
-:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="显示 Azure 门户和搜索栏的屏幕截图，其中突出显示了 * * 快照 * *&quot;:::
-
-1. 选择 &quot; **添加**&quot;，这会转到 &quot; **创建快照** &quot; 页。 选择虚拟机的订阅和资源组。 对于 ":::
+:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="显示 DSVM 属性（包括操作系统版本）的门户屏幕截图":::
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 中的 Ubuntu 数据科学计算机进行数据科学](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough)
-- [哪些工具包含在 Azure Data Science Virtual Machine 中？](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/tools-included)
+- [使用 Azure 中的 Ubuntu 数据科学计算机进行数据科学](./linux-dsvm-walkthrough.md)
+- [哪些工具包含在 Azure Data Science Virtual Machine 中？](./tools-included.md)

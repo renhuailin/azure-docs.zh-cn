@@ -4,19 +4,21 @@ description: 了解如何使用 Azure Cosmos DB 更改源处理器读取更改�
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a802cc3d6178302445e0c31c52785d00207d0bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998537"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340220"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 更改源处理器是 [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) 的一部分。 它简化了读取更改源的过程，可有效地在多个使用者之间分布事件处理。
 
@@ -68,15 +70,15 @@ ms.locfileid: "88998537"
 
 更改源处理器可在发生用户代码错误后复原。 这意味着，如果委托实现具有未经处理的异常（步骤 #4），则将停止处理特定更改批次的线程，并将创建一个新线程。 新线程将检查租赁存储在该分区键值范围内的最新时间点，并从该时间点重启，从而有效地向委托发送同一批更改。 此行为一直持续到委托能正确处理更改为止，这也是更改源处理器能够提供“至少一次”保证的原因，因为如果委托代码引发异常，它将重试该批次。
 
-若要防止更改源处理器不断地重试同一批更改，应在委托代码中添加逻辑，以便在出现异常时将文档写入死信队列。 此设计可确保你可以跟踪未处理的更改，同时仍然能够继续处理将来的更改。 死信队列可能只是另一个 Cosmos 容器。 确切的数据存储并不重要，只是未处理的更改会被保留。
+若要防止更改源处理器不断地重试同一批更改，应在委托代码中添加逻辑，以便在出现异常时将文档写入死信队列。 此设计可确保你可以跟踪未处理的更改，同时仍然能够继续处理将来的更改。 死信队列可以是另一个 Cosmos 容器。 确切的数据存储并不重要，只是未处理的更改会被保留。
 
-此外，还可以使用[更改源估算器](how-to-use-change-feed-estimator.md)在更改源处理器实例读取更改源时监视其进度。 除了监视更改源处理器是否“卡在”持续重试同一批更改外，还可了解更改源处理器是否因可用资源（如 CPU、内存和网络带宽）而滞后。
+此外，还可以使用[更改源估算器](how-to-use-change-feed-estimator.md)在更改源处理器实例读取更改源时监视其进度。 你可以使用此估算来了解你的更改源处理器是否处于 "停滞" 或滞后，因为可用资源（如 CPU、内存和网络带宽）。
 
 ## <a name="deployment-unit"></a>部署单元
 
 单个更改源处理器部署单元由一个或多个具有相同 `processorName` 和租用容器配置的实例组成。 可以有多个部署单元，其中每个单元可以具有不同的更改业务流，且每个部署单元可由一个或多个实例组成。 
 
-例如，你可能有一个部署单元，只要容器发生更改，该部署单元就会触发外部 API。 另一个部署单元可能会在每次发生更改时实时移动数据。 当被监视的容器中发生更改时，所有部署单元都会收到通知。
+例如，你可能有一个部署单元，只要容器发生更改，该部署单元就会触发外部 API。 其他部署单位可能会在每次发生更改时实时移动数据。 当被监视的容器中发生更改时，所有部署单元都会收到通知。
 
 ## <a name="dynamic-scaling"></a>动态缩放
 
@@ -94,25 +96,50 @@ ms.locfileid: "88998537"
 
 ## <a name="change-feed-and-provisioned-throughput"></a>更改源和预配吞吐量
 
-消耗的 RU 会产生费用，将数据移入和移出 Cosmos 容器始终会消耗 RU。 租约容器消耗的 RU 也会产生费用。
+对受监视容器的更改源读取操作将使用 ru。 
 
-## <a name="where-to-host-the-change-feed-processor"></a>更改源处理器的宿主位置
+租用容器上的操作使用 ru。 使用相同租约容器的实例数越高，潜在的 RU 消耗就越高。 如果决定缩放和递增实例数量，请记住监视借用容器上的 RU 消耗量。
 
-更改源处理器可以托管在支持长时间运行的进程或任务的任何平台中：
+## <a name="starting-time"></a>开始时间
 
-* 连续运行 [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
-* [Azure 虚拟机](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines)中的进程。
-* [Azure Kubernetes 服务](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的后台作业。
-* [ASP.NET 托管服务](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
+默认情况下，在首次启动更改源处理器时，它将初始化租约容器，并启动其 [处理生命周期](#processing-life-cycle)。 不会检测在第一次初始化更改源处理器之前监视容器中发生的任何更改。
 
-尽管更改源处理器可以在较短的生存期环境中运行，但由于租赁容器维持了状态，这些环境的启动和停止周期将增加接收通知的延迟， (因为每次启动环境时启动处理器的开销都) 。
+### <a name="reading-from-a-previous-date-and-time"></a>从以前的某个日期和时间读取
+
+将 `DateTime` 的实例传递给 `WithStartTime` 生成器扩展，可将更改源处理器初始化为从 **特定的日期和时间** 开始读取更改：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
+
+更改源处理器将根据该特定日期和时间初始化，并开始读取此日期和时间之后发生的更改。
+
+### <a name="reading-from-the-beginning"></a>从头开始读取
+
+在其他方案（例如数据迁移，或分析容器的整个历史记录）中，需要从 **该容器的生存期开始时间** 读取更改源。 为此，可以在生成器扩展中使用 `WithStartTime`，但需要传递 `DateTime.MinValue.ToUniversalTime()`，以便生成最小 `DateTime` 值的 UTC 表示形式，如下所示：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
+
+更改源处理器将会初始化，并从容器生存期的开始时间读取更改。
+
+> [!NOTE]
+> 这些自定义选项仅用于设置更改源处理器的起始时间点。 首次初始化租约容器后，更改这些选项不起作用。
+
+## <a name="where-to-host-the-change-feed-processor"></a>托管更改源处理器的位置
+
+更改源处理器可以托管在任何支持长时间运行的进程或任务的平台中：
+
+* 连续运行 [Azure WebJob](/learn/modules/run-web-app-background-task-with-webjobs/)。
+* [Azure 虚拟机](/azure/architecture/best-practices/background-jobs#azure-virtual-machines)中的进程。
+* [Azure Kubernetes 服务](/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的后台作业。
+* [ASP.NET 托管服务](/aspnet/core/fundamentals/host/hosted-services)。
+
+尽管更改源处理器可以在较短的生存期环境中运行，但租赁容器会维持状态，因此，这些环境的启动周期将增加接收通知的延迟， (因为每次启动环境时启动处理器的开销都) 。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [GitHub 上的完整示例应用程序](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 * [GitHub 上的其他使用情况示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [更改源处理器 Cosmos DB 研讨会实验室](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
+* [针对更改源处理器的 Cosmos DB 研讨会实验室](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -122,4 +149,4 @@ ms.locfileid: "88998537"
 * [更改源请求模型](change-feed-pull-model.md)
 * [如何从更改源处理器库迁移](how-to-migrate-from-change-feed-library.md)
 * [使用更改源估算器](how-to-use-change-feed-estimator.md)
-* [更改源处理器开始时间](how-to-configure-change-feed-start-time.md)
+* [更改源处理器开始时间](#starting-time)

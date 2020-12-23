@@ -1,7 +1,7 @@
 ---
-title: 向 Microsoft 标识平台 ASP.NET Web 应用添加登录功能
+title: 教程：创建使用 Microsoft 标识平台进行身份验证的 ASP.NET Web 应用 | Azure
 titleSuffix: Microsoft identity platform
-description: 使用基于传统 Web 浏览器的应用程序和 OpenID Connect 标准，在 ASP.NET 解决方案中实现 Microsoft 登录
+description: 在本教程中，我们构建一个使用 Microsoft 标识平台和 OWIN 中间件来启用用户登录的 ASP.NET Web 应用程序。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,23 +12,31 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165577"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507755"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教程：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
-本指南演示如何使用基于传统 Web 浏览器的应用程序和 OpenID Connect，通过 ASP.NET MVC 解决方案实现 Microsoft 登录。
+在本教程中，将构建一个 ASP.NET MVC Web 应用，该应用通过使用 .NET (OWIN) 中间件的开放式 Web 接口和 Microsoft 标识平台来登录用户。
 
 在本指南完成时，你的应用程序将能够接受个人帐户（例如 outlook.com、live.com 等）的登录。 此外，来自任何与 Microsoft 标识平台集成的公司或组织的工作和学校帐户也能够登录到你的应用。
 
-> 本指南需要 Microsoft Visual Studio 2019。  尚未安装？  [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+本教程的内容：
 
->[!NOTE]
-> 如果你不熟悉 Microsoft 标识平台，我们建议你从[将 Microsoft 标识平台登录添加到 ASP.NET Web 应用](quickstart-v2-aspnet-webapp.md)开始。
+> [!div class="checklist"]
+> * 在 Visual Studio 中创建“ASP.NET Web 应用程序”项目
+> * 添加适用于 .NET 的开放式 Web 接口 (OWIN) 中间件组件
+> * 添加代码以支持用户登录和注销
+> * 在 Azure 门户中注册应用
+> * 测试应用程序
+
+## <a name="prerequisites"></a>先决条件
+
+* 已安装带有“ASP.NET 和 Web 开发”工作负荷的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 
@@ -61,7 +69,7 @@ ms.locfileid: "88165577"
 
 ## <a name="add-authentication-components"></a>添加身份验证组件
 
-1. 在 Visual Studio 中：转到“工具” > “Nuget 包管理器” > “包管理器控制台”。
+1. 在 Visual Studio 中：转到“工具” > “NuGet 包管理器” > “包管理器控制台”  。
 2. 在包管理器控制台窗口中键入以下命令，添加 *OWIN 中间件 NuGet 包*：
 
     ```powershell
@@ -264,7 +272,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
     ```
 
 ### <a name="more-information"></a>详细信息
-此页以 SVG 格式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 有关更多登录按钮，请转到[品牌准则](./howto-add-branding-in-azure-ad-apps.md "品牌准则")。
+此页以 SVG 格式添加登录按钮，背景为黑色：<br/>![“Microsoft 登录”按钮](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 有关更多登录按钮，请转到[品牌准则](./howto-add-branding-in-azure-ad-apps.md "品牌准则")。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
 此控制器演示如何使用 `[Authorize]` 属性来保护控制器。 此属性只允许通过身份验证的用户，从而限制对控制器的访问。 以下代码使用该属性来显示作为登录的一部分被检索的用户声明：
@@ -287,7 +295,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-            //You get the user’s first and last name below:
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
 
             // The 'preferred_username' claim can be used for showing the username
@@ -305,7 +313,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
     ```
 
 ### <a name="more-information"></a>详细信息
-因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 以上代码查看用户的 ID 令牌中包含的特定用户属性的声明列表。 这些属性包括用户的全名和用户名，以及全局用户标识符使用者。 它还包含*租户 ID*，表示用户的组织的 ID。
+因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 以上代码会在声明列表中查看用户的 ID 令牌中包含的特定用户属性。 这些属性包括用户的完整姓名和用户名，以及全局用户标识符使用者。 它还包含租户 ID，表示用户的组织的 ID。
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>创建视图来显示用户的声明
 
@@ -366,14 +374,15 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
    1. 将“已启用 SSL”更改为 `True`。
    1. 在 Visual Studio 中右键单击该项目，然后选择“属性”和“Web”选项卡 。在“服务器”部分，将“项目 URL”设置更改为“SSL URL”  。
    1. 复制 SSL URL。 需在下一步将此 URL 添加到注册门户的重定向 URL 列表。<br/><br/>![项目属性](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-1. 选择“新注册”。
-1. “注册应用程序”页出现后，请输入应用程序的注册信息：
-   1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 **ASPNET-Tutorial**。
-   1. 将在步骤 1 中从 Visual Studio 复制的 SSL URL（例如 `https://localhost:44368/`）添加到“回复 URL”中，然后选择“注册”。
-1. 选择“身份验证”菜单，在“隐式授权”下选择“ID 令牌”，然后选择“保存”。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册” > “新建注册”  。
+1. 输入应用程序的名称（例如 `ASPNET-Tutorial`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+1. 将在步骤 1 中从 Visual Studio 复制的 SSL URL（例如 `https://localhost:44368/`）添加到“重定向 URI”。
+1. 选择“注册”  。
+1. 在“管理”下，选择“身份验证”。 
+1. 在“隐式授权”部分中，选择“ID 令牌”，然后选择“保存”  。
 1. 在根文件夹中的 web.config 文件内的 `configuration\appSettings` 节下添加以下内容：
 
     ```xml
@@ -392,7 +401,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 准备好运行测试后，使用 Azure AD 帐户（工作或学校帐户）或个人 Microsoft 帐户（<span>live.</span>com 或 <span>outlook.</span>com）登录。
 
-![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![浏览器的“浏览器登录”页中显示的“Microsoft 登录”按钮](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![登录 Microsoft 帐户](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -407,7 +416,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 ### <a name="view-application-results"></a>查看应用程序结果
 
-登录后，用户将重定向到网站主页。 该主页是 Microsoft 应用程序注册门户上应用程序注册信息中指定的 HTTPS URL。 主页包括欢迎消息“你好，\<user>”、一个注销链接和一个用于查看用户声明的链接。 用户声明链接连接到你之前创建的“声明”控制器。
+登录后，用户将重定向到网站主页。 该主页是 Microsoft 应用程序注册门户上应用程序注册信息中指定的 HTTPS URL。 主页包括一条“你好，\<user>”欢迎消息、一个注销链接和一个用于查看用户声明的链接。 用户声明链接连接到你之前创建的“声明”控制器。
 
 ### <a name="view-the-users-claims"></a>查看用户的声明
 
@@ -417,12 +426,12 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 浏览到控制器视图后，应当会显示包含用户基本属性的表格：
 
-|属性 |值 |说明 |
+|properties |值 |说明 |
 |---|---|---|
 |**名称** |用户全名 | 用户的名字和姓氏
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名|
-|**主题** |使用者 |唯一标识 Web 上用户的字符串|
-|**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 **guid**|
+|**主题** |主题 |唯一标识 Web 上用户的字符串|
+|**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 Guid|
 
 此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [ID 令牌中的声明列表](./id-tokens.md)。
 
@@ -470,20 +479,11 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 可通过 IssuerValidator 参数实现自定义方法来验证颁发者。 有关如何使用此参数的详细信息，请参阅 [TokenValidationParameters 类](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters)。
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-了解 Web 应用如何调用 Web API。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>了解如何创建本快速入门中使用的应用程序
-
-详细了解使用 Microsoft 标识平台调用 Web API 的 Web 应用：
+了解如何通过 Microsoft 标识平台从 Web 应用调用受保护的 Web API：
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的 Web 应用](scenario-web-app-sign-user-overview.md)
-
-了解如何生成调用 Microsoft Graph 的 Web 应用：
-
-> [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET 教程](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

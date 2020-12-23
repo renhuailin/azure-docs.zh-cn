@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中心和 Firebase SDK 版本 0.6 将推送通知发送到 Android | Microsoft Docs
-description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase Cloud Messaging 将推送通知发送到 Android 设备。
+description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase Cloud Messaging 将推送通知发送到 Android 设备（版本 0.6）。
 services: notification-hubs
 documentationcenter: android
 keywords: 推送通知, 推送通知, android 推送通知, fcm, firebase cloud messaging
@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321456"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428378"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教程：使用 Firebase SDK 版本 0.6 将推送通知发送到 Android 设备
 
@@ -175,8 +175,8 @@ ms.locfileid: "87321456"
 
     确保在 `NotificationSettings` 类的以下代码中更新这三个占位符：
 
-   * **HubListenConnectionString**：中心的 **DefaultListenAccessSignature** 连接字符串。 可以复制此连接字符串，方法是在 [Azure 门户]的中心单击“访问策略”。
-   * **HubName**：使用 [Azure 门户]的中心页中显示的中心的名称。
+   * **HubListenConnectionString** ：中心的 **DefaultListenAccessSignature** 连接字符串。 可以复制此连接字符串，方法是在 [Azure 门户]的中心单击“访问策略”。
+   * **HubName** ：使用 [Azure 门户]的中心页中显示的中心的名称。
 
      `NotificationSettings` 代码：
 
@@ -411,7 +411,7 @@ ms.locfileid: "87321456"
     android:id="@+id/text_hello"
     ```
 
-    ![Azure 通知中心 - 测试发送](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
+    ![屏幕截图显示了应用于 TextView 控件的 android:id="@+id/text_hello" ID。](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
 10. 接下来，为 AndroidManifest.xml 中定义的接收者添加一个子类。 将另一个名为 `FirebaseService`的新类添加到项目。
 

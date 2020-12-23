@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f1a7bffc05d83b30fe9e5bcd6e17bf6bc0192e1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88650565"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348936"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>使用客户管理的密钥加密 Azure 数据工厂
 
@@ -47,8 +47,8 @@ Azure 数据工厂对静态数据进行加密，其中包括实体定义和在�
 
 要在数据工厂中使用客户管理的密钥，需要在密钥保管库上设置两个属性，即“软删除”和“不清除” 。 可以在新的或现有的密钥保管库上使用 PowerShell 或 Azure CLI 启用这些属性。 若要了解如何在现有的密钥保管库上启用这些属性，请参阅下方其中一篇文章中标题为“启用软删除”和“启用清除保护”的部分 ：
 
-- [如何在 PowerShell 中使用软删除](../key-vault/general/soft-delete-powershell.md)
-- [如何在 CLI 中使用软删除](../key-vault/general/soft-delete-cli.md)
+- [如何在 PowerShell 中使用软删除](../key-vault/general/key-vault-recovery.md)
+- [如何在 CLI 中使用软删除](../key-vault/general/key-vault-recovery.md)
 
 如果通过 Azure 门户新建 Azure 密钥保管库，可通过如下方式启用“软删除”和“不清除” ：
 

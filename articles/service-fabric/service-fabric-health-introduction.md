@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008270"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型，可对群集及其中所运行服务的状态进行准实时监视。 可以轻松获取运行状况信息，并在潜在问题级联并造成大规模停机之前予以更正。 在典型模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。
@@ -28,9 +28,9 @@ Service Fabric 组件使用这种提供丰富信息的运行状况模型报告�
 ## <a name="health-entities-and-hierarchy"></a>运行状况实体和层次结构
 运行状况实体采用逻辑层次结构进行组织，该结构会捕获不同实体之间的交互和依赖项。 基于从 Service Fabric 组件收到的报告，运行状况存储自动生成实体和层次结构。
 
-运行状况实体镜像 Service Fabric 实体。 （例如，**运行状况应用程序实体**匹配群集中部署的应用程序实例，**运行状况节点实体**匹配 Service Fabric 群集节点。）运行状况层次结构捕获系统实体的交互并且是进行高级运行状况评估的基础。 可以通过 [Service Fabric 技术概述](service-fabric-technical-overview.md)了解 Service Fabric 的关键概念。 有关应用程序的详细信息，请参阅 [Service Fabric 应用程序模型](service-fabric-application-model.md)。
+运行状况实体镜像 Service Fabric 实体。 （例如，**运行状况应用程序实体** 匹配群集中部署的应用程序实例，**运行状况节点实体** 匹配 Service Fabric 群集节点。）运行状况层次结构捕获系统实体的交互并且是进行高级运行状况评估的基础。 可以通过 [Service Fabric 技术概述](service-fabric-technical-overview.md)了解 Service Fabric 的关键概念。 有关应用程序的详细信息，请参阅 [Service Fabric 应用程序模型](service-fabric-application-model.md)。
 
-利用运行状况实体和层次结构，可有效报告、调试和监视群集和应用程序。 运行状况模型为群集中许多移动片段的运行状况提供准确而*精细*的表示。
+利用运行状况实体和层次结构，可有效报告、调试和监视群集和应用程序。 运行状况模型为群集中许多移动片段的运行状况提供准确而 *精细* 的表示。
 
 ![运行状况实体。][1]
 运行状况实体基于父-子关系在层次结构中进行组织。
@@ -45,7 +45,7 @@ Service Fabric 组件使用这种提供丰富信息的运行状况模型报告�
 * **服务**。 表示在群集中运行的服务的运行状况。 服务运行状况报告说明影响服务整体运行状况的条件。 报告者不能将问题范围缩小到不正常分区或副本。 示例包括导致全部分区问题的服务配置（如端口或外部文件共享）。 服务实体由服务名称 (URI) 标识。
 * **分区**。 表示服务分区的运行状况。 分区运行状况报告描述影响整个副本集的条件。 示例包括当副本数目低于目标计数以及分区发生仲裁丢失时的情况。 分区实体由分区 ID (GUID) 标识。
 * **副本**。 表示有状态服务副本或无状态服务实例的运行状况。 该副本是监视器和系统组件可针对应用程序进行报告的最小单位。 对于有状态服务，示例如下：主要副本不能将操作复制到辅助副本以及复制节奏缓慢。 还包含无状态实例，可在耗尽资源或存在连接问题时进行报告。 副本实体由分区 ID (GUID) 和副本或实例 ID（长型值）标识。
-* **DeployedApplication**。 表示 *在节点上运行的应用程序*的运行状况。 已部署应用程序运行状况报告描述特定于节点上应用程序的条件，不能将其缩小到部署在相同节点上的服务包。 示例包括无法从该节点下载应用程序包以及在节点上设置应用程序安全主体时出现问题。 已部署应用程序由应用程序名称 (URI) 和节点名称（字符串）标识。
+* **DeployedApplication**。 表示 *在节点上运行的应用程序* 的运行状况。 已部署应用程序运行状况报告描述特定于节点上应用程序的条件，不能将其缩小到部署在相同节点上的服务包。 示例包括无法从该节点下载应用程序包以及在节点上设置应用程序安全主体时出现问题。 已部署应用程序由应用程序名称 (URI) 和节点名称（字符串）标识。
 * **DeployedServicePackage**。 表示在群集中节点上运行的服务包的运行状况。 它描述特定于服务包的条件，该条件不会影响同一应用程序在同一节点上的其他服务包。 示例包括服务包中无法启动的代码包以及无法读取的配置包。 已部署服务包由应用程序名称 (URI)、节点名称（字符串）、服务清单名称（字符串）以及服务包激活 ID（字符串）标识。
 
 利用运行状况模型的精度，可以轻松地检测和更正问题。 例如，如果服务没有响应，则可报告应用程序实例不正常。 该级别的报告不是理想之选，因为该问题可能不会影响该应用程序中的所有服务。 应对不正常的服务或者对特定子分区（如果有更多信息指向该分区）应用报告。 数据通过层次结构自动呈现，会在服务和应用程序级别显示不正常的分区。 这种聚合有助于更快找出问题的根本原因并解决问题。
@@ -84,7 +84,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 指定运行状况评估期间是否将警告性运行状况报告视为错误。 默认值：false。
 * [MaxPercentUnhealthyApplications](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications)。 指定群集被视为“错误”之前可以容忍的不正常应用程序最大百分比。
 * [MaxPercentUnhealthyNodes](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes)。 指定群集被视为“错误”之前可以容忍的不正常节点最大百分比。 在大型群集中，某些节点始终处于关闭或无法修复的状态，因此应配置此百分比以便容忍这种情况。
-* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 群集运行状况评估期间，可使用应用程序类型运行状况策略，描述特殊应用程序类型。 默认情况下，所有应用程序都放入池中，并使用 MaxPercentUnhealthyApplications 进行评估。 如果某些应用程序类型应分别对待，可将其从全局池中提出。 根据与映射中应用程序类型名称关联的百分比来评估这些类型。 例如，群集中有数千个不同类型的应用程序，以及某个特殊应用程序类型的一些应用程序实例。 控制应用程序绝不应出错。 可以将全局 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但对于“ControlApplicationType”应用程序类型，请将 MaxPercentUnhealthyApplications 设为 0。 如此一来，如果众多应用程序中有一些运行不正常，但比例低于全局状况不良百分比，则将群集评估为“警告”。 “警告”健康状况不影响群集升级或“错误”健康状况将触发的其他监视。 但是，即使是一个控制应用程序出错，也会导致群集不正常，这会触发回滚或暂停群集升级，具体情况视升级配置而定。
+* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 群集运行状况评估期间，可使用应用程序类型运行状况策略，描述特殊应用程序类型。 默认情况下，所有应用程序都放入池中，并使用 MaxPercentUnhealthyApplications 进行评估。 如果某些应用程序类型应分别对待，可将其从全局池中提出。 根据与映射中应用程序类型名称关联的百分比来评估这些类型。 例如，群集中有数千个不同类型的应用程序，以及某个特殊应用程序类型的一些应用程序实例。 控制应用程序绝不应出错。 可以将全局 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但对于“ControlApplicationType”应用程序类型，请将 MaxPercentUnhealthyApplications 设为 0。 如此一来，如果众多应用程序中有一些运行不正常，但比例低于全局状况不良百分比，则将群集评估为“警告”。 “警告”健康状况不影响群集升级或“错误”健康状况将触发的其他监视。 但是，即使只有一个控制应用程序出错，也会造成群集运行不正常，根据升级配置，这会触发回滚或暂停群集升级。
   对于映射中定义的应用程序类型，所有应用程序实例都从应用程序的全局池中提出。 使用映射中的特定 MaxPercentUnhealthyApplications，根据该应用程序类型的应用程序总数对其进行评估。 所有其他应用程序都保留在全局池中，使用 MaxPercentUnhealthyApplications 进行评估。
 
 以下示例摘自某个群集清单。 若要定义应用程序类型映射中的条目，请在参数名称前面添加“ApplicationTypeMaxPercentUnhealthyApplications-”，后接应用程序类型名称。
@@ -195,10 +195,10 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
   * Replica。 有状态服务副本 ID 或无状态服务实例 ID (INT64)。
   * DeployedApplication。 应用程序名称 (URI) 和节点名称（字符串）。
   * DeployedServicePackage。 应用程序名称 (URI)、节点名称（字符串）和服务清单名称（字符串）。
-* **属性**。 允许报告器针对实体的特定属性分类运行状况事件的*字符串*（不是固定的枚举）。 例如，报告者 A 可以报告 Node01“存储”属性的运行状况，报告者 B 可以报告 Node01“连接”属性的运行状况。 在运行状况存储中，这两个报告被视为 Node01 实体的单独运行状况事件。
-* **说明**。 报告器用于提供有关运行状况事件的详细信息的字符串。 **SourceId**、**属性**和 **HealthState** 应完整说明报告。 说明中添加了用户可读的报告相关信息。 该文本可让管理员和用户更容易了解运行状况报告。
+* **属性**。 允许报告器针对实体的特定属性分类运行状况事件的 *字符串*（不是固定的枚举）。 例如，报告者 A 可以报告 Node01“存储”属性的运行状况，报告者 B 可以报告 Node01“连接”属性的运行状况。 在运行状况存储中，这两个报告被视为 Node01 实体的单独运行状况事件。
+* **说明**。 报告器用于提供有关运行状况事件的详细信息的字符串。 **SourceId**、**属性** 和 **HealthState** 应完整说明报告。 说明中添加了用户可读的报告相关信息。 该文本可让管理员和用户更容易了解运行状况报告。
 * **HealthState**。 说明报告的运行状况状态的[枚举](service-fabric-health-introduction.md#health-states)。 接受值的值有“正常”、“警告”和“错误”。
-* **TimeToLive**。 指示运行状况报告有效时长的时间跨度。 结合 **RemoveWhenExpired**时，它能够使运行状况存储知道如何评估过期的事件。 默认情况下，此值为无穷大，表示报告永远有效。
+* **TimeToLive**。 指示运行状况报告有效时长的时间跨度。 结合 **RemoveWhenExpired** 时，它能够使运行状况存储知道如何评估过期的事件。 默认情况下，此值为无穷大，表示报告永远有效。
 * **RemoveWhenExpired**。 布尔值。 如果设置为 true，将从运行状况存储自动删除过期的运行状况报告，并且该报告不会影响实体运行状况评估。 仅当报告在指定的一段时间内有效，报告器不需要将其显式清除时使用。也用于从运行状况存储删除报告（例如，监视器被更改并停止发送包含以前的源和属性的报告）。 它可以发送具有短暂的 TimeToLive 和 RemoveWhenExpired 的报告，以清除运行状况存储中的所有以往状态。 如果该值设置为 false，则运行状况评估中会将过期的报告视为错误。 false 值向运行状况存储指示，源应该对此属性进行定期报告。 如果没有定期报告，则监视器必然存在问题。 通过将事件视为错误来捕获监视器运行状况。
 * **SequenceNumber**。 需要不断增加的正整数，它表示报告的顺序。 运行状况存储使用它来检测因网络延迟或其他问题而较晚收到的过时报告。 如果序列号小于或等于实体、源和属性最近应用的序列号，则会拒绝报告。 如果未指定，则会自动生成序列号。 只有在报告状态转换时，才需放入序列号。 在此情况下，源需要记住它所发送的报告，并保留信息以便在故障转移时进行恢复。
 

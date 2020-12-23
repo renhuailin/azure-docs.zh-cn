@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: db47849575c097cf56824b623dddbb6e0835d1b4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 011bbbda07806f1493ae27fbeef8509f0d12c44b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543595"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518443"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>教程：将 RunMyProcess 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543595"
 * 让用户使用其 Azure AD 帐户自动登录到 RunMyProcess。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "88543595"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **RunMyProcess**。 
+1. 在“从库中添加”部分的搜索框中，键入 **RunMyProcess** 。 
 1. 在结果面板中选择“RunMyProcess”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
@@ -96,11 +96,11 @@ ms.locfileid: "88543595"
 
 1. 在左侧导航面板中，单击“帐户”  ，并选择“配置”  。
 
-    ![在应用端配置单一登录](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
+    ![显示从“帐户”选择了“配置”的屏幕截图。](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
 1. 转到“身份验证方法”  部分，并执行以下步骤：
 
-    ![在应用端配置单一登录](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
+    ![显示“身份验证方法”的屏幕截图，可在其中输入所述值。](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
     a. 对于“方法”  ，选择“使用 Samlv2 的 SSO”  。
 
@@ -166,7 +166,7 @@ ms.locfileid: "88543595"
 
     c. 选择“将帐户创建电子邮件发送给我”  。
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
     > [!NOTE]
     > 可以使用任何其他 RunMyProcess 用户帐户创建工具或 RunMyProcess 提供的 API 来预配 AAD 用户帐户。
@@ -175,12 +175,12 @@ ms.locfileid: "88543595"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“RunMyProcess”磁贴时，应会自动登录到设置了 SSO 的 RunMyProcess。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“RunMyProcess”磁贴时，应会自动登录到设置了 SSO 的 RunMyProcess。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

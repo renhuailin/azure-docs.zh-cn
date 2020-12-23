@@ -4,13 +4,13 @@ description: QnA Maker 对部分知识库和服务具有元限制。 为了测�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.date: 11/09/2020
+ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776249"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380890"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -20,7 +20,7 @@ ms.locfileid: "91776249"
 
 最大知识库数基于 [Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)。
 
-|**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure 认知搜索层** | 免费 | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |已发布知识库的最大允许数量|2|14|49|199|199|2,999|
 
@@ -49,11 +49,14 @@ ms.locfileid: "91776249"
 
 ### <a name="maximum-number-of-files"></a>最大文件数
 
-可以提取的最大文件数和最大文件大小取决于您 QnA Maker 的 **[定价层限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)**。
+可以提取的最大文件数和最大文件大小取决于您 QnA Maker 的 **[定价层限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** 。
+
+> [!NOTE]
+> QnA Maker 托管 (预览版) 是一种免费服务，对可以添加的源数量没有限制。 对于管理 Api 和预测 Api，吞吐量当前上限为10个事务/秒。
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL 中的最大深层链接数
 
-可爬网的最大深度链接数为从 URL 页中提取 Qna 的最大数目为 **20**。
+可爬网的最大深度链接数为从 URL 页中提取 Qna 的最大数目为 **20** 。
 
 ## <a name="metadata-limits"></a>元数据限制
 
@@ -61,9 +64,9 @@ ms.locfileid: "91776249"
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>由 Azure 认知搜索定价层
 
-每个知识库的元数据字段的最大数目取决于 **[Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)**。
+每个知识库的元数据字段的最大数目取决于 **[Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)** 。
 
-|**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure 认知搜索层** | 免费 | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |每个 QnA Maker 服务的元数据字段的最大数量（包括所有知识库）|1,000|100*|1,000|1,000|1,000|1,000|
 
@@ -71,7 +74,7 @@ ms.locfileid: "91776249"
 
 下表列出了元数据名称和值可接受的长度和可接受的字符。
 
-|项|允许的字符|Regex 模式匹配|最大字符数|
+|Item|允许的字符|Regex 模式匹配|最大字符数|
 |--|--|--|--|
 |名称 (密钥) |可用<br>字母数字 (字母和数字) <br>`_` (下划线) <br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
 |值|允许除以外的所有内容<br>`:` (冒号) <br>`|` (垂直管道) <br>仅允许一个值。|`^[^:|]+$`|500|
@@ -92,15 +95,15 @@ ms.locfileid: "91776249"
 * URL/HTML 页面：1000000个字符
 
 ## <a name="create-knowledge-base-call-limits"></a>创建知识库调用限制：
-表示每个创建知识库操作的限制；即，单击“创建知识库”或调用 CreateKnowledgeBase API**。
-* 每个回答的最大替代问题数：300
+表示每个创建知识库操作的限制；即，单击“创建知识库”或调用 CreateKnowledgeBase API。
+* 建议的每个回答的最大替代问题数：300
 * 最大 URL 数：10
 * 最大文件数：10
 
 ## <a name="update-knowledge-base-call-limits"></a>更新知识库调用限制
-表示每个更新操作的限制；即，单击“保存并培训”或调用 UpdateKnowledgeBase API**。
+表示每个更新操作的限制；即，单击“保存并培训”或调用 UpdateKnowledgeBase API。
 * 每个源名称的长度：300
-* 添加或删除的最大替代问题数：300
+* 建议添加或删除的最大替代问题数：300
 * 添加或删除的元数据字段的最大数量：10
 * 可以刷新的 URL 的最大数量：5
 

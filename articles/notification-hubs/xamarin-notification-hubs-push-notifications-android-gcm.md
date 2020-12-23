@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: ce47d2ae65a4ea9e6878381ce58d62cb6c998599
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 95e244f956940f9d75df50243714f0fb8f8d0654
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998197"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424161"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>教程：使用通知中心向 Xamarin.Android 应用发送推送通知
 
@@ -42,7 +42,7 @@ ms.locfileid: "88998197"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* **Azure 订阅** 。 如果还没有 Azure 订阅，可以在开始前[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 基于 Windows 的 [Visual Studio with Xamarin] 或基于 OS X 的 [Visual Studio for Mac]。
 * 有效的 Google 帐户
 
@@ -57,7 +57,7 @@ ms.locfileid: "88998197"
 ### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>配置通知中心的 GCM/FCM 设置
 
 1. 在左侧菜单的“设置”部分中选择“Google (GCM/FCM)”。 
-2. 输入先前从 Google Firebase Console 记下的**服务器密钥**。
+2. 输入先前从 Google Firebase Console 记下的 **服务器密钥** 。
 3. 在工具栏上选择“保存”。
 
     ![Azure 门户中通知中心的屏幕截图，突出显示并以红色框标出 Google GCM/FCM 选项。](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
@@ -74,14 +74,14 @@ ms.locfileid: "88998197"
 1. 在 Visual Studio 中打开“文件”菜单，选择“新建”，然后选择“项目”。 在“新建项目”窗口中执行以下步骤：
     1. 展开“已安装”、“Visual C#”，然后单击“Android”。
     2. 从列表中选择“Android 应用(Xamarin)”。
-    3. 输入项目的**名称**。
-    4. 选择项目的**位置**。
+    3. 输入项目的 **名称** 。
+    4. 选择项目的 **位置** 。
     5. 选择“确定”
 
         ![“新建项目”对话框](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
 2. 在“新建 Android 应用”对话框中，选择“空白应用”，然后选择“确定”。
 
-    ![“新建项目”对话框](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+    ![屏幕截图突出显示了“空白应用”模板。](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. 在“解决方案资源管理器”窗口中展开“属性”，然后单击“AndroidManifest.xml”。   更新包名，使之与你在 Google Firebase Console 中将 Firebase Cloud Messaging 添加到项目时输入的包名匹配。
 
     ![GCM 中的包名](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
@@ -91,19 +91,19 @@ ms.locfileid: "88998197"
     1. 在消息框中选择“是”以继续更改目标框架。
 1. 按照以下步骤将所需的 NuGet 包添加到项目中：
     1. 右键单击项目，然后选择“管理 NuGet 包...”。
-    1. 切换到“已安装”选项卡，选择 **Xamarin.Android.Support.Design**，并在右窗格中选择“更新”以将程序包更新到最新版本。
-    1. 切换到“浏览”选项卡。搜索 **Xamarin.GooglePlayServices.Base**。 在结果列表中选择 **Xamarin.GooglePlayServices.Base**。 然后，选择“安装”。
+    1. 切换到“已安装”选项卡，选择 **Xamarin.Android.Support.Design** ，并在右窗格中选择“更新”以将程序包更新到最新版本。
+    1. 切换到“浏览”选项卡。搜索 **Xamarin.GooglePlayServices.Base** 。 在结果列表中选择 **Xamarin.GooglePlayServices.Base** 。 然后，选择“安装”。
 
         ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
-    6. 在“NuGet 包管理器”窗口中，搜索“Xamarin.Firebase.Messaging” 。 在结果列表中选择 **Xamarin.Firebase.Messaging**。 然后，选择“安装”。
-    7. 现在，请搜索 **Xamarin.Azure.NotificationHubs.Android**。 在结果列表中选择 **Xamarin.Azure.NotificationHubs.Android**。 然后，选择“安装”。
+    6. 在“NuGet 包管理器”窗口中，搜索“Xamarin.Firebase.Messaging” 。 在结果列表中选择 **Xamarin.Firebase.Messaging** 。 然后，选择“安装”。
+    7. 现在，请搜索 **Xamarin.Azure.NotificationHubs.Android** 。 在结果列表中选择 **Xamarin.Azure.NotificationHubs.Android** 。 然后，选择“安装”。
 
 ### <a name="add-the-google-services-json-file"></a>添加 Google Services JSON 文件
 
 1. 将从 Google Firebase Console 下载的 `google-services.json` 文件复制到项目文件夹。
 2. 将 `google-services.json` 添加到项目。
 3. 在“解决方案资源管理器”窗口中选择 `google-services.json`。
-4. 在“属性”窗格中，将“生成操作”设置为“GoogleServicesJson”。  如果看不到 **GoogleServicesJson**，请在关闭 Visual Studio 后将其重新启动，重新打开项目，然后重试。
+4. 在“属性”窗格中，将“生成操作”设置为“GoogleServicesJson”。  如果看不到 **GoogleServicesJson** ，请在关闭 Visual Studio 后将其重新启动，重新打开项目，然后重试。
 
     ![GoogleServicesJson 生成操作](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
 
@@ -135,9 +135,9 @@ ms.locfileid: "88998197"
 
 3. 收集有关 Android 应用和通知中心的以下信息：
 
-   * **侦听连接字符串**：在 [Azure 门户]中的仪表板上，选择“查看连接字符串”。 复制此值的 `DefaultListenSharedAccessSignature` 连接字符串。
-   * **中心名称**：中心在 [Azure 门户]中的名称。 例如 *mynotificationhub2*。
-4. 在“解决方案资源管理器”窗口中右键单击你的**项目**，选择“添加”，然后选择“类”。  
+   * **侦听连接字符串** ：在 [Azure 门户]中的仪表板上，选择“查看连接字符串”。 复制此值的 `DefaultListenSharedAccessSignature` 连接字符串。
+   * **中心名称** ：中心在 [Azure 门户]中的名称。 例如 *mynotificationhub2* 。
+4. 在“解决方案资源管理器”窗口中右键单击你的 **项目** ，选择“添加”，然后选择“类”。  
 5. 为 Xamarin 项目创建 `Constants.cs` 类，并在该类中定义以下常量值。 将占位符替换成自己的值。
 
     ```csharp
@@ -313,8 +313,8 @@ ms.locfileid: "88998197"
             Log.Debug(TAG, $"Successful registration of ID {regID}");
         }
     ```
-1. **生成**项目。
-1. 在设备或加载的模拟器上**运行**应用
+1. **生成** 项目。
+1. 在设备或加载的模拟器上 **运行** 应用
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>从 Azure 门户发送测试通知
 
@@ -362,7 +362,7 @@ ms.locfileid: "88998197"
 [Visual Studio with Xamarin]: /visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 [Azure 门户]: https://portal.azure.com/
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for Android]: /previous-versions/azure/dn282661(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060657"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014391"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>在 Azure 逻辑应用中为逻辑应用工作流定义创建、编辑或扩展 JSON
 
@@ -46,7 +46,7 @@ ms.locfileid: "87060657"
 
 1. 打开包含逻辑应用的 Visual Studio 解决方案或 [Azure 资源组](../azure-resource-manager/management/overview.md)项目。
 
-2. 找到并打开逻辑应用的定义，默认情况下，该定义显示在[资源管理器模板](../azure-resource-manager/templates/overview.md)中，其名为 **LogicApp.json**。
+2. 找到并打开逻辑应用的定义，默认情况下，该定义显示在 [资源管理器模板](../azure-resource-manager/templates/overview.md)中，其名为 **LogicApp.json**。
 可以使用并自定义此模板，以部署到不同的环境中。
 
 3. 打开逻辑应用定义和模板的快捷菜单。
@@ -221,7 +221,7 @@ ms.locfileid: "87060657"
 
 ## <a name="get-data-with-date-functions"></a>使用日期函数获取数据
 
-若要从本质上不支持*触发器*的数据源中获取数据，可以改用日期函数处理时间和日期。
+若要从本质上不支持 *触发器* 的数据源中获取数据，可以改用日期函数处理时间和日期。
 例如，此表达式可算出该工作流的步骤执行多长时间，从内到外进行操作：
 
 ``` json

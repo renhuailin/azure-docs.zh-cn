@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 96c0242414c67d97fc324977b1259f63c27c3a26
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299195"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696806"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -44,29 +44,29 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 
 可以使用标准负载均衡器完成的关键方案包括：
 
-- 对发往 Azure 虚拟机的 **[内部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** 和 **[外部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** 流量进行负载均衡。
+- 对发往 Azure 虚拟机的 **[内部](./quickstart-load-balancer-standard-internal-portal.md)** 和 **[外部](./tutorial-load-balancer-standard-manage-portal.md)** 流量进行负载均衡。
 
-- 通过在区域 **[内部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** 和区域 **[之间](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** 分配资源，提高可用性。
+- 通过在区域 **[内部](./tutorial-load-balancer-standard-public-zonal-portal.md)** 和区域 **[之间](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** 分配资源，提高可用性。
 
-- 配置 Azure 虚拟机的 **[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** 。
+- 配置 Azure 虚拟机的 **[出站连接](./load-balancer-outbound-connections.md)** 。
 
-- 使用 **[运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** 来监视已实现负载均衡的资源。
+- 使用 **[运行状况探测](./load-balancer-custom-probe-overview.md)** 来监视已实现负载均衡的资源。
 
-- 使用 **[端口转发](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** 通过公共 IP 地址和端口访问虚拟网络中的虚拟机。
+- 使用 **[端口转发](./tutorial-load-balancer-port-forwarding-portal.md)** 通过公共 IP 地址和端口访问虚拟网络中的虚拟机。
 
-- 启用对 **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** **[负载均衡](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** 的支持。
+- 启用对 **[IPv6](../virtual-network/ipv6-overview.md)** **[负载均衡](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** 的支持。
 
-- 标准负载均衡器通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 提供多维度指标。  可以就给定维度对这些指标进行筛选、分组和细分。  可便于深入了解服务的当前及历史性能和运行状况。  还支持资源运行状况。 有关更多详细信息，请查看 **[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)** 。
+- 标准负载均衡器通过 [Azure Monitor](../azure-monitor/overview.md) 提供多维度指标。  可以就给定维度对这些指标进行筛选、分组和细分。  可便于深入了解服务的当前及历史性能和运行状况。  还支持资源运行状况。 有关更多详细信息，请查看 **[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)** 。
 
-- 对 **[多个端口和/或多个 IP 地址](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** 上的服务进行负载均衡。
+- 对 **[多个端口和/或多个 IP 地址](./load-balancer-multivip-overview.md)** 上的服务进行负载均衡。
 
-- 跨 Azure 区域移动 **[内部](https://docs.microsoft.com/azure/load-balancer/move-across-regions-internal-load-balancer-portal)** 和 **[外部](https://docs.microsoft.com/azure/load-balancer/move-across-regions-external-load-balancer-portal)** 负载均衡器资源。
+- 跨 Azure 区域移动 **[内部](./move-across-regions-internal-load-balancer-portal.md)** 和 **[外部](./move-across-regions-external-load-balancer-portal.md)** 负载均衡器资源。
 
-- 使用 **[HA 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** ，同时对所有端口上的 TCP 和 UDP 流进行负载均衡。
+- 使用 **[HA 端口](./load-balancer-ha-ports-overview.md)** ，同时对所有端口上的 TCP 和 UDP 流进行负载均衡。
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>默认保护
 
-标准负载均衡器的核心是零信任网络安全模型。 标准负载均衡器默认情况下保护你的虚拟网络并且是虚拟网络的一部分。 虚拟网络是一个专用的隔离网络。  这意味着除非由网络安全组打开，否则，标准负载均衡器和标准公用 IP 地址将对入站流关闭。 NSG 用于显式允许允许的流量。  如果虚拟机资源的子网或 NIC 上没有 NSG，禁止流量到达此资源。 若要详细了解 NSG 以及如何将其应用于自己的方案，请参阅[网络安全组](../virtual-network/security-overview.md)。
+标准负载均衡器的核心是零信任网络安全模型。 标准负载均衡器默认情况下保护你的虚拟网络并且是虚拟网络的一部分。 虚拟网络是一个专用的隔离网络。  这意味着除非由网络安全组打开，否则，标准负载均衡器和标准公用 IP 地址将对入站流关闭。 NSG 用于显式允许允许的流量。  如果虚拟机资源的子网或 NIC 上没有 NSG，禁止流量到达此资源。 若要详细了解 NSG 以及如何将其应用于自己的方案，请参阅[网络安全组](../virtual-network/network-security-groups-overview.md)。
 默认情况下，基本负载均衡器对 Internet 是开放的。 此外，负载均衡器不会存储客户数据。
 
 ## <a name="pricing-and-sla"></a>定价和 SLA
@@ -80,10 +80,7 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 订阅 RSS 源，并在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer)页上查看最新的 Azure 负载均衡器功能更新。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[升级基本负载均衡器](upgrade-basic-standard.md)，将基本负载均衡器升级为标准负载均衡器。
 
-请参阅[创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md)，开始使用负载均衡器。
+请参阅[创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md)以开始使用负载均衡器。
 
 有关 Azure 负载均衡器限制和组件的详细信息，请参阅 [Azure 负载均衡器组件](./components.md)和 [Azure 负载均衡器概念](./concepts.md)
-
-有关 Azure 负载均衡选项的比较，请参阅 [Azure 中的负载均衡选项概述](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)。

@@ -1,22 +1,22 @@
 ---
-title: 排查 Synapse Studio (预览) 与 PowerShell 的连接
+title: 排查 Synapse Studio 连接问题
 description: 使用 PowerShell 对 Azure Synapse Studio 连接进行故障排除
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.author: jrasnick
+ms.date: 10/30/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f0dc73877d7742d4fc6a0c5b9bcf0529d475e0a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287706"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445258"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>诊断 Azure Synapse Studio (预览) PowerShell 脚本的连接问题
+# <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>排查 Synapse Studio 与 PowerShell 的连接问题
 
-Azure Synapse Studio (预览) 依赖于一组 Web API 终结点才能正常工作。 本指南将帮助你在以下情况下确定连接问题的原因：
+Azure Synapse Studio 依赖于一组 Web API 终结点才能正常工作。 本指南将帮助你在以下情况下确定连接问题的原因：
 - 配置本地网络 (如在企业防火墙后面的网络) 用于访问 Azure Synapse Studio。
 - 使用 Azure Synapse Studio 遇到连接问题。
 

@@ -11,25 +11,26 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d160040620fcaa60a8adc955efcc54ac3ca2609e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289163"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321441"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 选项
+
 Synapse SQL 允许通过实施不同的 GROUP BY 选项来开发解决方案。 
 
-## <a name="what-does-group-by-do"></a>GROUP BY do
+## <a name="what-group-by-does"></a>分组依据
 
 [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 子句用于将数据聚合成摘要行集。
 
-SQL 点播支持整组分组选项。 SQL 池支持的 GROUP BY 选项数量有限。
+无服务器 SQL 池支持整组分组选项。 专用 SQL 池支持的 GROUP BY 选项数量有限。
 
-## <a name="group-by-options-supported-in-sql-pool"></a>SQL 池中支持的 GROUP BY 选项
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>专用 SQL 池中支持的 GROUP BY 选项
 
-GROUP BY 具有 SQL 池不支持的一些选项。 这些选项有解决方法，如下所示：
+"分组依据" 具有专用 SQL 池不支持的某些选项。 这些选项有解决方法，如下所示：
 
 * 带 ROLLUP 的 GROUP BY
 * GROUPING SETS

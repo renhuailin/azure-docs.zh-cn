@@ -5,23 +5,23 @@ description: 通过在 Azure 门户中创建和订阅资源，开始使用 Azure
 services: cognitive-services
 author: aahill
 manager: nitinme
-keywords: 认知服务，认知情报，认知解决方案，ai 服务
+keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827388"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368910"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建认知服务资源
 
 使用此快速入门开始使用 Azure 认知服务。 在 Azure 门户中创建认知服务资源后，你将获得用于验证应用程序的终结点和密钥。
 
-Azure 认知服务是一项基于云的服务，具有 REST Api 和客户端库 Sdk，可帮助开发人员无需直接智能 (AI) 或数据科学技能或知识即可在应用程序中构建认知智能。 借助 Azure 认知服务，开发人员可以通过能够看、听、说、理解甚至开始推理的认知解决方案，轻松将认知功能添加到他们的应用程序中。
+Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务，可帮助开发人员将认知智能内置于应用程序，而无需具备直接的人工智能 (AI) 或数据科学技能或知识。 借助 Azure 认知服务，开发人员可以通过能够看、听、说、理解甚至开始推理的认知解决方案，轻松将认知功能添加到他们的应用程序中。
 
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
@@ -64,15 +64,15 @@ Azure 认知服务是一项基于云的服务，具有 REST Api 和客户端库 
     | [墨迹识别器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文本分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [指标顾问](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [必应拼写检查](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [翻译](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [必应自动建议](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    ***
+    **_
 
-3. 在“创建”页中提供以下信息： 
+3. 在 _ *创建* * 页上，提供以下信息：
 
     #### <a name="multi-service-resource"></a>[多服务资源](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **名称** | 认知服务资源的描述性名称。 例如，*MyCognitiveServicesResource*。 |
+    | **名称** | 认知服务资源的描述性名称。 例如， *MyCognitiveServicesResource* 。 |
     | **订阅** | 选择一个可用的 Azure 订阅。 |
     | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
     | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
@@ -80,13 +80,13 @@ Azure 认知服务是一项基于云的服务，具有 REST Api 和客户端库 
 
     ![多服务资源资源创建屏幕](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    单击**创建**。
+    单击 **创建** 。
 
     #### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
     |    |    |
     |--|--|
-    | **名称** | 认知服务资源的描述性名称。 例如，*TextAnalyticsResource*。 |
+    | **名称** | 认知服务资源的描述性名称。 例如， *TextAnalyticsResource* 。 |
     | **订阅** | 选择一个可用的 Azure 订阅。 |
     | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
     | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
@@ -94,15 +94,15 @@ Azure 认知服务是一项基于云的服务，具有 REST Api 和客户端库 
 
     !["单服务资源创建" 屏幕](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    单击**创建**。
+    单击“创建”。
 
-    ***
+    **_
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
-1. 成功部署资源后，单击“后续步骤”下的“转到资源”。
+1. 成功部署资源后，单击 " **下一步** " 以打开 " *资源* *"。
 
     ![搜索“认知服务”](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
@@ -123,7 +123,7 @@ Azure 认知服务是一项基于云的服务，具有 REST Api 和客户端库 
 ## <a name="see-also"></a>另请参阅
 
 * [对 Azure 认知服务的请求进行身份验证](authentication.md)
-* [什么是 Azure 认知服务？](Welcome.md)
+* [什么是 Azure 认知服务？](./what-are-cognitive-services.md)
 * [使用 Azure 管理客户端库创建新资源](.\cognitive-services-apis-create-account-client-library.md)
 * [自然语言支持](language-support.md)
 * [Docker 容器支持](cognitive-services-container-support.md)

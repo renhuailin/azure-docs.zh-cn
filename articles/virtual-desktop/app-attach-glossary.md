@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556220"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518662"
 ---
 # <a name="msix-app-attach-glossary"></a>.MSIX 应用附加术语表
 
@@ -25,7 +25,7 @@ ms.locfileid: "88556220"
 
 ## <a name="msix-application"></a>.MSIX 应用程序 
 
-存储在 .MSIX 文件中的应用程序。
+存储在中的应用程序。.MSIX 文件。
 
 ## <a name="msix-package"></a>.MSIX 包 
 
@@ -35,13 +35,17 @@ ms.locfileid: "88556220"
 
 .MSIX 共享是保存扩展的 .MSIX 包的网络共享。 .MSIX 共享支持 SMB 3 或更高版本。 应用程序从该 .MSIX 共享进行过渡，无需将应用程序文件移到系统驱动器。
 
+## <a name="msix-image"></a>.MSIX 图
+
+.MSIX 映像为 VHD、VHDx 或 CIM 文件，其中包含一个或多个 .MSIX 封装应用程序。 每个应用程序都使用 MSIXMGR 工具在 .MSIX 映像中提供。
+
 ## <a name="repackage"></a>重新打包
 
 重新打包将使用 .MSIX 打包工具 () ，从而将其转换为 .MSIX。 有关详细信息，请参阅 [.Msix 打包工具概述](/windows/msix/packaging-tool/tool-overview)。
 
-## <a name="expand"></a>展开
+## <a name="expand-an-msix-package"></a>展开 .MSIX 包
 
-扩展 .MSIX 包是一个多步骤过程。 它采用 .MSIX 文件，并将其内容置于 VHD (x) 或 CIM 文件中。 
+展开 .MSIX 包是一个多步骤过程。 展开操作将获取 .MSIX 文件，并将其内容置于 VHD (x) 或 CIM 文件中。 
 
 展开 .MSIX 包：
 
@@ -63,11 +67,11 @@ ms.locfileid: "88556220"
 
 在 Windows 虚拟桌面中，每个 .MSIX 共享发生一次上传。 上传包后，同一订阅中的所有主机池都可以引用它。
 
-## <a name="publish-an-msix-package"></a>发布 .MSIX 包
+## <a name="add-an-msix-package"></a>添加 .MSIX 包
 
-在 Windows 虚拟桌面中，发布 .MSIX 包会将其链接到远程应用或桌面。
+在 Windows 虚拟桌面中，添加 .MSIX 包会将其链接到主机池。
 
-## <a name="assign-an-msix-package"></a>分配 .MSIX 包 
+## <a name="publish-an-msix-package"></a>发布 .MSIX 包 
 
 在 Windows 虚拟桌面中，必须将发布的 .MSIX 包分配到 Active Directory 域服务 (AD DS) 或 Azure Active Directory (Azure AD) 用户或用户组。
 
@@ -104,9 +108,21 @@ Destaging 通知 OS：无法卸载当前未运行且未为任何用户暂存的 
 
 ## <a name="cim"></a>CIM
 
-.CIM 是 (CimFS) 与复合映像文件系统关联的新文件扩展名。 安装和卸载 CIM 文件会加快 VHD 文件的安装速度。 CIM 还会消耗比 VHD 更少的 CPU 和内存。
+。 CIM 是与复合映像文件系统关联的新文件扩展名，系统 (CimFS) 。 安装和卸载 CIM 文件会加快 VHD 文件的安装速度。 CIM 还会消耗比 VHD 更少的 CPU 和内存。
 
-下表是 VHD 和 CimFS 之间的性能比较。 在 DSv4 计算机上运行的每个格式中，每个格式的测试运行都为 800 MB。
+CIM 文件是包含的文件。CIM 扩展，其中包含元数据和至少六个包含实际数据的附加文件。 CIM 文件中的文件不包含扩展名。 下表列出了可在 CIM 中找到的示例文件：
+
+| 文件名 | 分机 | 大小 |
+|-----------|-----------|------|
+| VSC | CIM | 1 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 264132 KB |
+
+下表是 VHD 和 CimFS 之间的性能比较。 在 DSv4 计算机上运行的每个格式中，每个格式的测试运行都为 500 300 MB。
 
 |  规格                          | VHD                    | CimFS   |
 |---------------------------------|--------------------------|-----------|
@@ -118,4 +134,3 @@ Destaging 通知 OS：无法卸载当前未运行且未为任何用户暂存的 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 .MSIX 应用附加的详细信息，请参阅 [概述](what-is-app-attach.md) 和 [常见问题解答](app-attach-faq.md)。 否则，开始 [安装应用程序](app-attach.md)。
-

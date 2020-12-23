@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210213"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563409"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 进行持续交付
 
@@ -256,7 +256,7 @@ Azure DevOps 中的模板是生成或部署应用的预定义任务组。
 
     - 你必须是 Azure DevOps 中的项目管理员。
 
-    - 您必须有权创建具有足够权限 (PAT) 的 GitHub 个人访问令牌。 有关详细信息，请参阅 [GITHUB PAT 权限要求。](https://aka.ms/azure-devops-source-repos)
+    - 您必须有权创建具有足够权限 (PAT) 的 GitHub 个人访问令牌。 有关详细信息，请参阅 [GITHUB PAT 权限要求。](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
 
     - 您必须有权提交到 GitHub 存储库中的主分支，才能提交自动生成的 YAML 文件。
 

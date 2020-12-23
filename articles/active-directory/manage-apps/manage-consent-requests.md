@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 4664bdd515c815dbd742c0d4e05f1e5c03978526
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420449"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649179"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理对应用程序的同意并评估同意请求
 
-Microsoft [建议](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#restrict-user-consent-operations) 禁用应用程序的最终用户许可。 这会将决策过程与组织的安全和身份管理员团队集中起来。
+Microsoft [建议](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations) 禁用应用程序的最终用户许可。 这会将决策过程与组织的安全和身份管理员团队集中起来。
 
 禁用或限制最终用户许可后，需要考虑几个重要的注意事项，以确保你的组织保持安全，同时仍允许使用业务关键应用程序。 这些步骤对将对组织的支持团队和 IT 管理员的影响降至最低至关重要，同时阻止在第三方应用程序中使用非托管帐户。
 
@@ -35,14 +35,14 @@ Microsoft [建议](https://docs.microsoft.com/azure/security/fundamentals/steps-
 
 ## <a name="auditing-and-monitoring"></a>审核和监视
 
-1. [审核应用并授予](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) 组织中的权限，以确保以前未向有人或可疑应用程序授予对数据的访问权限。
+1. [审核应用并授予](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) 组织中的权限，以确保以前未向有人或可疑应用程序授予对数据的访问权限。
 
-2. 查看 [在 Office 365 中检测和修正违法许可授予](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) 以获得其他最佳方案，并防范请求 OAuth 许可的可疑应用程序。
+2. 查看 [在 Office 365 中检测和修正违法许可授予](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) 以获得其他最佳方案，并防范请求 OAuth 许可的可疑应用程序。
 
 3. 如果你的组织具有适当的许可证：
 
-    * [在 Microsoft Cloud App Security 中使用其他 OAuth 应用程序审核功能](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)。
-    * 使用 [Azure Monitor 工作簿来监视权限和同意](../reports-monitoring/howto-use-azure-monitor-workbooks.md) 相关的活动。 *同意见解*工作簿提供按失败同意请求数显示的应用视图。 这对于确定管理员查看并决定是否向他们授予管理员许可的优先级设置很有用。
+    * [在 Microsoft Cloud App Security 中使用其他 OAuth 应用程序审核功能](/cloud-app-security/investigate-risky-oauth)。
+    * 使用 [Azure Monitor 工作簿来监视权限和同意](../reports-monitoring/howto-use-azure-monitor-workbooks.md) 相关的活动。 *同意见解* 工作簿提供按失败同意请求数显示的应用视图。 这对于确定管理员查看并决定是否向他们授予管理员许可的优先级设置很有用。
 
 ### <a name="additional-considerations-for-reducing-friction"></a>减少摩擦的其他注意事项
 
@@ -75,7 +75,7 @@ Microsoft [建议](https://docs.microsoft.com/azure/security/fundamentals/steps-
 
 * **了解所请求的权限。**
 
-   [许可提示](../develop/application-consent-experience.md)中列出了应用程序请求的权限。 展开权限标题将显示权限的说明。 应用程序权限的说明通常以 "无登录用户" 的结尾。 委托权限的说明通常以 "代表登录用户身份" 结束。 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)中介绍了 Microsoft Graph API 的权限-请参阅其他 api 的文档以了解其公开的权限。
+   [许可提示](../develop/application-consent-experience.md)中列出了应用程序请求的权限。 展开权限标题将显示权限的说明。 应用程序权限的说明通常以 "无登录用户" 的结尾。 委托权限的说明通常以 "代表登录用户身份" 结束。 [Microsoft Graph 权限参考](/graph/permissions-reference)中介绍了 Microsoft Graph API 的权限-请参阅其他 api 的文档以了解其公开的权限。
 
    如果你不了解请求的权限，请不要 *授予同意*。
 
@@ -97,15 +97,15 @@ Microsoft [建议](https://docs.microsoft.com/azure/security/fundamentals/steps-
 请参阅 [向租户范围内的管理员授予对应用程序的许可](grant-admin-consent.md) ，以获取有关从 Azure 门户、使用 Azure AD PowerShell 或同意提示本身授予租户范围管理员许可的分步说明。
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>代表特定用户授予许可
-管理员还可以使用 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api) 代表单个用户授予委派权限，而不是为整个组织授予许可。 有关详细信息，请参阅 [代表用户获取访问权限](https://docs.microsoft.com/graph/auth-v2-user)。
+管理员还可以使用 [MICROSOFT GRAPH API](/graph/use-the-api) 代表单个用户授予委派权限，而不是为整个组织授予许可。 有关详细信息，请参阅 [代表用户获取访问权限](/graph/auth-v2-user)。
 
 ## <a name="limiting-user-access-to-applications"></a>限制用户对应用程序的访问
-即使授予了租户范围内的管理员许可，用户对应用程序的访问仍可受到限制。 有关如何要求向应用程序分配用户的详细信息，请参阅 [分配用户和组的方法](methods-for-assigning-users-and-groups.md)。
+即使授予了租户范围内的管理员许可，用户对应用程序的访问仍可受到限制。 有关如何要求向应用程序分配用户的详细信息，请参阅 [分配用户和组的方法](./assign-user-or-group-access-portal.md)。
 
 有关更广泛的概述，包括如何处理其他复杂方案，请参阅 [使用 Azure AD 进行应用程序访问管理](what-is-access-management.md)。
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>禁用所有未来的用户同意操作到任何应用程序
-针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可以代表用户授予许可。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
+针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可以代表用户授予许可。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](../develop/howto-convert-app-to-be-multi-tenant.md)。
 
 若要禁用用户未来在整个目录中执行的所有同意操作，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
@@ -113,10 +113,10 @@ Microsoft [建议](https://docs.microsoft.com/azure/security/fundamentals/steps-
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 4.  在导航菜单中选择 " **用户和组** "。
 5.  选择 " **用户设置**"。
-6.  通过将“用户可以允许应用访问其数据”**** 切换为“否”**** 来禁用用户未来的所有同意操作，并单击“保存”**** 按钮。
+6.  通过将“用户可以允许应用访问其数据”切换为“否”来禁用用户未来的所有同意操作，并单击“保存”按钮。
 
 ## <a name="next-steps"></a>后续步骤
-* [保护标识基础结构的五个步骤](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [保护标识基础结构的五个步骤](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
 * [配置管理员同意工作流](configure-admin-consent-workflow.md)
 * [配置最终用户如何对应用程序表示同意](configure-user-consent.md)
-* [Microsoft 标识平台中的权限和许可](../develop/active-directory-v2-scopes.md)
+* [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)

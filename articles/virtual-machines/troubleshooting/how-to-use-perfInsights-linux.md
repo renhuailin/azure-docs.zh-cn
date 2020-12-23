@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 340164ef86d34f273b3d5a98b62300bc6cc50df7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360525"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109413"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -61,7 +61,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>PerfInsights 收集的信息类型
 
-收集有关 Linux 虚拟机、操作系统、块设备、高资源使用者、配置和各种日志的信息。 以下是更多详细信息：
+收集有关 Linux 虚拟机、操作系统、块设备、高资源使用者、配置和各种日志的信息。 下面是更多详细信息：
 
 - 操作系统
   - Linux 分发版和版本
@@ -130,12 +130,12 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
     | 分发               | 版本                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.6，7。5 |
-    | CentOS                     | 6.5 [ `*` ]，7。6                                    |
-    | RHEL                       | 7.2、7.5、8.0 [ `*` ]                               |
+    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.5，7.6，7.7，7。8 |
+    | CentOS                     | 6.5 [ `*` ]，7.6，7.7，7。8                                    |
+    | RHEL                       | 7.2、7.5、8.0 [ `*` ]、8.1、8。2                               |
     | Ubuntu                     | 14.04、16.04、18.04、20.04                               |
     | Debian                     | 8、9、10 [ `*` ]                                    |
-    | SLES                       | 12 SP4 [ `*` ]                                      |
+    | SLES                       | 12 SP4 [ `*` ]、12 SP5 [ `*` ]、15 [ `*` ]、15 SP1 [ `*` ]、15 SP2 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -234,9 +234,9 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ### <a name="storage-tab"></a>存储选项卡
 
-“结果”部分显示有关存储的各种发现结果和建议。****
+“结果”部分显示有关存储的各种发现结果和建议。
 
-**块设备**和其他相关章节（如**分区**、 **LVM**和**MDADM**选项卡）描述了如何配置块设备并相互相关。
+**块设备** 和其他相关章节（如 **分区**、 **LVM** 和 **MDADM** 选项卡）描述了如何配置块设备并相互相关。
 
 !["存储" 选项卡的屏幕截图](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
 !["MDADM" 选项卡的屏幕截图](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)

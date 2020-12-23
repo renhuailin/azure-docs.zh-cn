@@ -3,8 +3,10 @@
 - name: 概述
   href: media-services-overview.md
   items:
-    - name: 方案和可用性
+    - name: 常见方案
       href: scenarios-and-availability.md
+    - name: 区域可用性
+      href: availability-regions-v-2.md
     - name: 概念
       href: media-services-concepts.md
 - name: 入门

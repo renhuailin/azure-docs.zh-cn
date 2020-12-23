@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89084f0631b52631708db68a11595cb24d1b9fee
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690113"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131439"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>为 Azure 虚拟机添加扩展指标
 
@@ -50,7 +50,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 启用扩展指标的过程非常简单。 对每个 VM 启用来宾级监视。 启用来宾级监视时，将在 VM 上安装 Azure 诊断代理。 默认情况下会添加一组基本的扩展指标。 以下过程在经典和常规 VM，以及 Windows 和 Linux VM 上都是相同的。
 
-请记住，Azure 和 Linux 来宾级监视都需要一个存储帐户。 启用来宾级监视时，如果没有选择现有的存储帐户，则会为你创建一个。
+请记住，Windows 和 Linux 来宾级监视都需要一个存储帐户。 启用来宾级监视时，如果没有选择现有的存储帐户，则会为你创建一个。
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>在现有 VM 上启用来宾级监视
 
@@ -74,7 +74,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="resource-manager-credentials"></a>资源管理器凭据
 
-启用扩展指标后，请确保 Cloudyn 有权访问你的[资源管理器凭据](../../cost-management/activate-subs-accounts.md)。 Cloudyn 需要使用你的凭据来收集和显示 VM 的性能数据。 这些凭据还将用于创建成本优化建议。 Cloudyn 至少需要从实例中收集三天的性能数据，才能确定该实例是否适合减小大小。
+启用扩展指标后，请确保 Cloudyn 有权访问你的[资源管理器凭据](./activate-subs-accounts.md)。 Cloudyn 需要使用你的凭据来收集和显示 VM 的性能数据。 这些凭据还将用于创建成本优化建议。 Cloudyn 至少需要从实例中收集三天的性能数据，才能确定该实例是否适合减小大小。
 
 ## <a name="enable-vm-metrics-with-a-script"></a>使用脚本启用 VM 指标
 
@@ -88,4 +88,4 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果还没有为帐户启用 Azure 资源管理器 API 访问权限，请转到[激活 Azure 订阅和帐户](../../cost-management/activate-subs-accounts.md)。
+- 如果还没有为帐户启用 Azure 资源管理器 API 访问权限，请转到[激活 Azure 订阅和帐户](./activate-subs-accounts.md)。

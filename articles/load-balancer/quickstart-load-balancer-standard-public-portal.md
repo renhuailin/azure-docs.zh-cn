@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/17/2020
+ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f19b55a955b8e3e1500cf14fa221b46808ac857
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88607209"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698285"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡
 
@@ -49,10 +49,10 @@ ms.locfileid: "88607209"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
-    | 资源组         | 选择“新建”并在文本框中输入 myResourceGroupLB 。|
+    | 资源组         | 选择“新建”并在文本框中输入“CreatePubLBQS-rg” 。|
     | 名称                   | 输入“myLoadBalancer”                                   |
     | 区域         | 选择“西欧”。                                        |
     | 类型          | 选择“公共”。                                        |
@@ -60,7 +60,7 @@ ms.locfileid: "88607209"
     | 公共 IP 地址 | 选择“新建”。 若要使用现有的公共 IP，请选择“使用现有项”。 |
     | 公共 IP 地址名称 | 在文本框中键入 myPublicIP。|
     | 可用性区域 | 选择“区域冗余”以创建弹性负载均衡器。 若要创建区域负载均衡器，请选择特定的区域：1、2 或 3 |
-    | 添加一个公共 IPv6 地址 | 请选择“否”。 </br> 有关 IPv6 地址和负载均衡器的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 IPv6？](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)  |
+    | 添加一个公共 IPv6 地址 | 请选择“否”。 </br> 有关 IPv6 地址和负载均衡器的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 IPv6？](../virtual-network/ipv6-overview.md)  |
 
 3. 接受剩余设置的默认值，然后选择“查看 + 创建”。
 
@@ -100,13 +100,13 @@ ms.locfileid: "88607209"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
     | 端口 | 输入 **80**。|
-    | 时间间隔 | 输入 **15** 作为两次探测尝试之间的**时间间隔**（以秒为单位）。 |
-    | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的**不正常阈值**或连续探测失败次数。|
+    | 时间间隔 | 输入 **15** 作为两次探测尝试之间的 **时间间隔**（以秒为单位）。 |
+    | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的 **不正常阈值** 或连续探测失败次数。|
     | | |
 
 3. 将剩余的字段保留默认设置，然后选择“确定”。
@@ -128,7 +128,7 @@ ms.locfileid: "88607209"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -138,7 +138,9 @@ ms.locfileid: "88607209"
     | 后端端口 | 输入 **80**。 |
     | 后端池 | 选择“myBackendPool”。|
     | 运行状况探测 | 选择“myHealthProbe”。 |
-    | 创建隐式出站规则 | 请选择“否”。
+    | 空闲超时（分钟） | 将滑块移动到 15 分钟。 |
+    | TCP 重置 | 选择“启用”。  |
+    | 出站源网络地址转换 (SNAT) | 选择“(建议)使用出站规则为后端池成员提供对 Internet 的访问权限”。 |
 
 4. 将剩余的字段保留默认设置，然后选择“确定”。
 
@@ -162,7 +164,7 @@ ms.locfileid: "88607209"
     |------------------|-----------------------------------------------------------------|
     | **项目详细信息**  |                                                                 |
     | 订阅     | 选择 Azure 订阅                                  |
-    | 资源组   | 选择“myResourceGroupLB” |
+    | 资源组   | 选择“CreatePubLBQS-rg” |
     | **实例详细信息** |                                                                 |
     | 名称             | 输入“myVNet”                                    |
     | 区域           | 选择“西欧” |
@@ -186,7 +188,7 @@ ms.locfileid: "88607209"
 
 7. 选择“保存” 。
 
-8. 选择“安全”**** 选项卡。
+8. 选择“安全”选项卡。
 
 9. 在“BastionHost”下，选择“启用” 。 输入此信息：
 
@@ -211,11 +213,11 @@ ms.locfileid: "88607209"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | 值                                          |
+    | 设置 | “值”                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
-    | 资源组 | 选择“myResourceGroupLB” |
+    | 资源组 | 选择“CreatePubLBQS-rg” |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入“myVM1” |
     | 区域 | 选择“西欧” |
@@ -235,7 +237,7 @@ ms.locfileid: "88607209"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | myVNet |
@@ -254,7 +256,7 @@ ms.locfileid: "88607209"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | 值 |
+    | 设置 | “值” |
     |-|-|
     | **Monitoring** |  |
     | 启动诊断 | 选择“关闭” |
@@ -284,7 +286,7 @@ ms.locfileid: "88607209"
 
 3. 使用以下值配置出站规则：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 myOutboundRule。 |
     | 前端 IP 地址 | 选择“新建”。 </br> 在“名称”中输入“LoadBalancerFrontEndOutbound”。 </br> 选择“IP 地址”或“IP 前缀”。 </br> 在“公共 IP 地址”或“公共 IP 前缀”下选择“新建”。 </br> 对于“名称”，请输入“myPublicIPOutbound”或“myPublicIPPrefixOutbound”。 </br> 选择“添加”  。|
@@ -313,7 +315,7 @@ ms.locfileid: "88607209"
 
 7. 选择“添加”  。
 
-8. 选择“保存” ****。
+8. 选择“保存” 。
 
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-1-create-load-balancer-basic)
 
@@ -328,10 +330,10 @@ ms.locfileid: "88607209"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | Value                                              |
+    | 设置                 | “值”                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
-    | 资源组         | 选择“新建”并在文本框中键入 myResourceGroupLB 。|
+    | 资源组         | 选择“新建”并在文本框中键入“CreatePubLBQS-rg” 。|
     | 名称                   | 输入“myLoadBalancer”                                   |
     | 区域         | 选择“西欧”。                                        |
     | 类型          | 选择“公共”。                                        |
@@ -339,13 +341,13 @@ ms.locfileid: "88607209"
     | 公共 IP 地址 | 选择“新建”。 若要使用现有的公共 IP，请选择“使用现有项”。 |
     | 公共 IP 地址名称 | 在文本框中键入 myPublicIP。|
     | 分配 | 选择“动态” |
-    | 添加一个公共 IPv6 地址 | 请选择“否”。 </br> 有关 IPv6 地址和负载均衡器的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 IPv6？](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)  |
+    | 添加一个公共 IPv6 地址 | 请选择“否”。 </br> 有关 IPv6 地址和负载均衡器的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 IPv6？](../virtual-network/ipv6-overview.md)  |
 
 3. 接受剩余设置的默认值，然后选择“查看 + 创建”。
 
 4. 在“查看 + 创建”选项卡中，选择“创建”。   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="创建标准负载均衡器" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="创建基本负载均衡器" border="true":::
 
 ## <a name="create-load-balancer-resources"></a>创建负载均衡器资源
 
@@ -368,7 +370,7 @@ ms.locfileid: "88607209"
     |------------------|-----------------------------------------------------------------|
     | **项目详细信息**  |                                                                 |
     | 订阅     | 选择 Azure 订阅                                  |
-    | 资源组   | 选择“myResourceGroupLB” |
+    | 资源组   | 选择“CreatePubLBQS-rg” |
     | **实例详细信息** |                                                                 |
     | 名称             | 输入“myVNet”                                    |
     | 区域           | 选择“西欧” |
@@ -392,7 +394,7 @@ ms.locfileid: "88607209"
 
 7. 选择“保存” 。
 
-8. 选择“安全”**** 选项卡。
+8. 选择“安全”选项卡。
 
 9. 在“BastionHost”下，选择“启用” 。 输入此信息：
 
@@ -418,7 +420,7 @@ ms.locfileid: "88607209"
 
 3. 在“添加后端池”页上，输入或选择：
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入“myBackendPool”。 |
     | 虚拟网络 | 选择“myVNet”。 |
@@ -436,16 +438,16 @@ ms.locfileid: "88607209"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
     | 端口 | 输入 **80**。|
     | 路径 | 输入“/” |
-    | 时间间隔 | 输入 **15** 作为两次探测尝试之间的**时间间隔**（以秒为单位）。 |
-    | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的**不正常阈值**或连续探测失败次数。|
+    | 时间间隔 | 输入 **15** 作为两次探测尝试之间的 **时间间隔**（以秒为单位）。 |
+    | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的 **不正常阈值** 或连续探测失败次数。|
 
-3. 选择“确定”  。
+3. 选择“确定” 。
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
@@ -464,7 +466,7 @@ ms.locfileid: "88607209"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -474,6 +476,7 @@ ms.locfileid: "88607209"
     | 后端端口 | 输入 **80**。 |
     | 后端池 | 选择“myBackendPool”。|
     | 运行状况探测 | 选择“myHealthProbe”。 |
+    | 空闲超时（分钟） | 将滑块移动到 15 分钟。 |
  
 4. 将剩余的字段保留默认设置，然后选择“确定”。
 
@@ -497,11 +500,11 @@ ms.locfileid: "88607209"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | 值                                          |
+    | 设置 | “值”                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
-    | 资源组 | 选择“myResourceGroupLB” |
+    | 资源组 | 选择“CreatePubLBQS-rg” |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入“myVM1” |
     | 区域 | 选择“西欧” |
@@ -519,7 +522,7 @@ ms.locfileid: "88607209"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | 选择 myVNet |
@@ -534,7 +537,7 @@ ms.locfileid: "88607209"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | 值 |
+    | 设置 | “值” |
     |---|---|
     | **Monitoring** | |
     | 启动诊断 | 选择“关闭” |
@@ -573,7 +576,7 @@ ms.locfileid: "88607209"
 
 ## <a name="install-iis"></a>安装 IIS
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择位于“myResourceGroupLB”资源组中的“myVM1”。
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择位于“CreateStdLBQS-rg”资源组中的“myVM1”   。
 
 2. 在“概述”页上，选择“连接”，然后选择“Bastion”  。
 
@@ -616,7 +619,7 @@ ms.locfileid: "88607209"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要本教程中创建的资源组、负载均衡器和所有相关资源，请将其删除。 为此，请选择包含资源的资源组“myResourceGroupSLB”，然后选择“删除”。
+如果不再需要本教程中创建的资源组、负载均衡器和所有相关资源，请将其删除。 为此，请选择包含资源的“CreatePubLBQS-rg”资源组，然后选择“删除” 。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -626,6 +629,6 @@ ms.locfileid: "88607209"
 * 已将 3 个 VM 连接到负载均衡器。
 * 已配置负载均衡器流量规则、运行状况探测器，然后测试负载均衡器。 
 
-若要了解有关 Azure 负载均衡器的更多信息，请进一步阅读[什么是 Azure 负载均衡器？](load-balancer-overview.md)和[负载均衡器常见问题](load-balancer-faqs.md)。
-
-详细了解[负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
+若要详细了解 Azure 负载均衡器，请继续学习：
+> [!div class="nextstepaction"]
+> [什么是 Azure 负载均衡器？](load-balancer-overview.md)

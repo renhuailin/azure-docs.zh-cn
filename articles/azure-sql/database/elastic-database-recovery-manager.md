@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: fdd5f7d291d9c56361c17547628795b378091109
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 91bcd998849c619a328a198c97bb8c977b9d8232
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443446"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792219"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>使用 RecoveryManager 类解决分片映射问题
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) 类使 ADO.NET 应用程序能够轻松检测并更正分片数据库环境中全局分片映射 (GSM) 与本地分片映射 (LSM) 中的任何不一致性。
+[RecoveryManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) 类使 ADO.NET 应用程序能够轻松检测并更正分片数据库环境中全局分片映射 (GSM) 与本地分片映射 (LSM) 中的任何不一致性。
 
 GSM 和 LSM 跟踪分片环境中每个数据库的映射。 有时，GSM 和 LSM 之间会发生中断。 在这种情况下，请使用 RecoveryManager 类来检测和修复中断问题。
 
@@ -29,7 +29,7 @@ RecoveryManager 类是[弹性数据库客户端库](elastic-database-client-libr
 
 ![分片映射][1]
 
-有关术语定义，请参阅 [弹性数据库工具词汇表](elastic-scale-glossary.md)。 若要了解如何使用 **ShardMapManager** 来管理分片解决方案中的数据，请参阅[分片映射管理](elastic-scale-shard-map-management.md)。
+有关术语定义，请参阅 [弹性数据库工具词汇表](elastic-scale-glossary.md)。 若要了解如何使用 **ShardMapManager** 来管理分片解决方案中的数据，请参阅 [分片映射管理](elastic-scale-shard-map-management.md)。
 
 ## <a name="why-use-the-recovery-manager"></a>为何使用恢复管理器
 
@@ -37,7 +37,7 @@ RecoveryManager 类是[弹性数据库客户端库](elastic-database-client-libr
 
 GSM 和 LSM 可能会因为以下原因而出现不同步的情况：
 
-1. 删除其范围被认为是不再使用的分片，或重命名分片。 删除分片导致 **孤立的分片映射**。 类似地，重命名的数据库同样可能会造成孤立的分片映射。 根据更改的目的，可能需要删除分片或需要更新分片位置。 若要恢复已删除的数据库，请参阅[还原已删除的数据库](recovery-using-backups.md)。
+1. 删除其范围被认为是不再使用的分片，或重命名分片。 删除分片导致 **孤立的分片映射** 。 类似地，重命名的数据库同样可能会造成孤立的分片映射。 根据更改的目的，可能需要删除分片或需要更新分片位置。 若要恢复已删除的数据库，请参阅[还原已删除的数据库](recovery-using-backups.md)。
 2. 发生异地故障转移事件。 如果要继续，必须有人更新服务器名称和应用程序中分片映射管理器的数据库名称，并更新分片映射中所有分片的分片映射详细信息。 如果存在异地故障转移，此类恢复逻辑应该在故障转移工作流中自动化。 自动化修复操作能够实现顺畅地管理启用异地冗余的数据库，并避免人工操作。 若要了解在出现数据中心服务中断时用于恢复数据库的选项，请参阅[业务连续性](business-continuity-high-availability-disaster-recover-hadr-overview.md)和[灾难恢复](disaster-recovery-guidance.md)。
 3. 分片或 ShardMapManager 数据库还原到较早的时间点。 若要了解使用备份的时点恢复，请参阅[使用备份恢复](recovery-using-backups.md)。
 
@@ -49,7 +49,7 @@ GSM 和 LSM 可能会因为以下原因而出现不同步的情况：
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>从 ShardMapManager 检索 RecoveryManager
 
-第一个步骤是创建 RecoveryManager 实例。 [GetRecoveryManager 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager)返回当前 [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) 实例的恢复管理器。 若要解决分片映射中的任何不一致性，必须先检索特定分片映射的 RecoveryManager。
+第一个步骤是创建 RecoveryManager 实例。 [GetRecoveryManager 方法](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager)返回当前 [ShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) 实例的恢复管理器。 若要解决分片映射中的任何不一致性，必须先检索特定分片映射的 RecoveryManager。
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
@@ -63,7 +63,7 @@ GSM 和 LSM 可能会因为以下原因而出现不同步的情况：
 
 ## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>删除分片后从 ShardMap 中删除分片
 
-[DetachShard](https://docs.microsoft.com/previous-versions/azure/dn842083(v=azure.100)) 方法可从分片映射中分离给定的分片，并删除与该分片关联的映射。  
+[DetachShard](/previous-versions/azure/dn842083(v=azure.100)) 方法可从分片映射中分离给定的分片，并删除与该分片关联的映射。  
 
 * location 参数是分片位置，具体而言，包括要分离的分片的服务器名称和数据库名称。
 * shardMapName 参数是分片映射名称。 仅当多个分片映射由同一分片映射管理器管理时，才需要此参数。 可选。
@@ -83,7 +83,7 @@ GSM 和 LSM 可能会因为以下原因而出现不同步的情况：
 
 ## <a name="to-detect-mapping-differences"></a>检测映射差异
 
-[DetectMappingDifferences 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences)可选择并返回其中一个分片映射（本地或全局）做为真实源，并调解两个分片映射（GSM 和 LSM）上的映射。
+[DetectMappingDifferences 方法](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences)可选择并返回其中一个分片映射（本地或全局）做为真实源，并调解两个分片映射（GSM 和 LSM）上的映射。
 
    ```java
    rm.DetectMappingDifferences(location, shardMapName);
@@ -94,19 +94,19 @@ GSM 和 LSM 可能会因为以下原因而出现不同步的情况：
 
 ## <a name="to-resolve-mapping-differences"></a>解决映射差异
 
-[ResolveMappingDifferences 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences)可选择其中一个分片映射（本地或全局）做为真实源，并调解两个分片映射（GSM 和 LSM）上的映射。
+[ResolveMappingDifferences 方法](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences)可选择其中一个分片映射（本地或全局）做为真实源，并调解两个分片映射（GSM 和 LSM）上的映射。
 
    ```java
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
 * *RecoveryToken* 参数枚举特定分片的 GSM 与 LSM 之间映射的差异。
-* [MappingDifferenceResolution 枚举](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) 指示用于解决分片映射之间差异的方法。
+* [MappingDifferenceResolution 枚举](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) 指示用于解决分片映射之间差异的方法。
 * **MappingDifferenceResolution.KeepShardMapping** ，因此应该使用分片中的映射。 这通常是因为发生故障转移：分片现在驻留在新的服务器上。 由于必须先从 GSM 中删除分片（使用 RecoveryManager.DetachShard 方法），因此 GSM 上将不再存在映射。 因此，必须使用 LSM 重新建立分片映射。
 
 ## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>还原分片后将分片附加到 ShardMap
 
-[AttachShard 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) 可将给定的分片附加到分片映射。 然后，它会检测分片映射的任何不一致性，并更新映射以匹配分片还原时间点的分片。 假设对数据库也进行了重命名以反映原始数据库名称（在还原分片之前），因为时间点还原默认为追加时间戳的新数据库。
+[AttachShard 方法](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) 可将给定的分片附加到分片映射。 然后，它会检测分片映射的任何不一致性，并更新映射以匹配分片还原时间点的分片。 假设对数据库也进行了重命名以反映原始数据库名称（在还原分片之前），因为时间点还原默认为追加时间戳的新数据库。
 
    ```java
    rm.AttachShard(location, shardMapName)

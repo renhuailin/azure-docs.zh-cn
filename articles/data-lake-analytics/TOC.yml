@@ -68,7 +68,7 @@
             - name: 基础
               href: data-lake-analytics-u-sql-get-started.md
             - name: 语言参考
-              href: 'https://docs.microsoft.com/u-sql/'
+              href: 'https://docs.microsoft.com/u-sql'
             - name: 目录
               href: data-lake-analytics-u-sql-catalog.md
             - name: 用户定义的运算符
@@ -79,8 +79,6 @@
               href: data-lake-analytics-u-sql-r-extensions.md
             - name: 认知扩展
               href: data-lake-analytics-u-sql-cognitive.md
-            - name: 可编程性指南
-              href: data-lake-analytics-u-sql-programmability-guide.md
         - name: Visual Studio
           items:
             - name: 安装
@@ -113,8 +111,32 @@
               href: data-lake-analytics-data-lake-tools-for-vscode.md
             - name: 自定义代码
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+            - name: 访问资源
+              href: data-lake-analytics-data-lake-tools-for-vscode-access-resource.md
             - name: 本地运行和调试
               href: data-lake-tools-for-vscode-local-run-and-debug.md
+        - name: 可编程性指南
+          items:
+            - name: 可编程性指南概述
+              href: data-lake-analytics-u-sql-programmability-guide.md
+            - name: 可编程性指南 - UDT 和 UDAGG
+              href: data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md
+            - name: 可编程性指南 - UDO
+              items:
+                - name: 用户定义的对象概述
+                  href: data-lake-analytics-u-sql-programmability-guide-UDO.md
+                - name: 使用用户定义的提取器
+                  href: data-lake-analytics-u-sql-programmability-guide-extractor.md
+                - name: 使用用户定义的输出器
+                  href: data-lake-analytics-u-sql-programmability-guide-outputter.md
+                - name: 使用用户定义的处理器
+                  href: data-lake-analytics-u-sql-programmability-guide-processor.md
+                - name: 使用用户定义的应用器
+                  href: data-lake-analytics-u-sql-programmability-guide-applier.md
+                - name: 使用用户定义的合并器
+                  href: data-lake-analytics-u-sql-programmability-guide-combiner.md
+                - name: 使用用户定义的化简器
+                  href: data-lake-analytics-u-sql-programmability-guide-reducer.md
     - name: 计划 U-SQL 作业
       items:
         - name: 使用 SSIS 计划作业
@@ -139,7 +161,7 @@
           href: understand-spark-code-concepts.md
     - name: 排查 U-SQL 作业问题
       items:
-        - name: 排查 U-SQL 运行时故障
+        - name: 排查 U-SQL 运行时故障和已知问题
           href: runtime-troubleshoot.md
         - name: 排查 .NET 升级问题
           href: dotnet-upgrade-troubleshoot.md
@@ -152,26 +174,26 @@
     - name: Node.js
       href: 'https://www.npmjs.com/package/azure-arm-datalake-analytics'
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python'
+      href: /python/api/overview/azure/data-lake-analytics
     - name: REST
       href: /rest/api/datalakeanalytics/
     - name: 资源管理器模板
       href: /azure/templates/microsoft.datalakeanalytics/allversions
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/dla'
+      href: /cli/azure/dla
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: 资源
   items:
     - name: Azure Data Lake 博客
-      href: 'https://blogs.msdn.microsoft.com/azuredatalake/'
+      href: /archive/blogs/azuredatalake/
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: 请求更改
       href: 'https://feedback.azure.com/forums/327234-data-lake'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-lake-analytics.html'
+      href: /answers/topics/azure-data-lake-analytics.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/data-lake-analytics/'
     - name: 定价计算器

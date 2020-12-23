@@ -9,14 +9,14 @@ ms.topic: include
 ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: dc7849e52b3e00c87d271ee8aef8788d816dff7a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6e5885e076222cd23ba127f3be41c1218f327ca0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971036"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379861"
 ---
-- 按 [Azure AD 服务限制和局限性](../articles/active-directory/users-groups-roles/directory-service-limits-restrictions.md)中所述，每个托管标识都计入 Azure AD 租户中的对象配额限制。
+- 按 [Azure AD 服务限制和局限性](../articles/active-directory/enterprise-users/directory-service-limits-restrictions.md)中所述，每个托管标识都计入 Azure AD 租户中的对象配额限制。
 -   托管标识的创建速率有以下限制：
 
     1. 每个 Azure 区域每个 Azure AD 租户：每 20 秒 200 次创建操作。

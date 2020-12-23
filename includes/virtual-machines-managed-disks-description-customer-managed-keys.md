@@ -1,6 +1,6 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c301ed2b612c2f3a7aca40ed5ed733800323adcc
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bf79fe8766d36fe59595be43250341d49b5460c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230950"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558693"
 ---
 可以选择使用自己的密钥在每个托管磁盘的级别管理加密。 使用客户托管密钥对托管磁盘进行服务器端加密提供了与 Azure Key Vault 的集成体验。 可以将 [RSA 密钥](../articles/key-vault/keys/hsm-protected-keys.md)导入 Key Vault，也可以在 Azure Key Vault 中生成新的 RSA 密钥。 
 
@@ -21,9 +21,9 @@ Azure 托管磁盘使用[信封加密](../articles/storage/common/storage-client
 
 #### <a name="full-control-of-your-keys"></a>完全控制密钥
 
-必须授予对 Key Vault 中托管磁盘的访问权限，才能使用密钥对 DEK 进行加密和解密。 这允许你完全控制数据和密钥。 可以随时禁用密钥或撤销对托管磁盘的访问权限。 还可以通过 Azure Key Vault 监视来审核加密密钥用法，以确保仅托管磁盘或其他受信任的 Azure 服务访问你的密钥。
+必须授予对 Key Vault 中的托管磁盘的访问权限，才能使用你的密钥来加密和解密 DEK。 这允许你完全控制数据和密钥。 可以随时禁用密钥或撤销对托管磁盘的访问权限。 还可以通过 Azure Key Vault 监视来审核加密密钥用法，以确保仅托管磁盘或其他受信任的 Azure 服务访问你的密钥。
 
-禁用或删除密钥后，任何使用该密钥的虚拟机都将自动关闭。 之后，VM 将无法使用，除非再次启用密钥或分配新密钥。
+禁用或删除密钥后，包含使用该密钥的磁盘的任何 VM 都会自动关闭。 之后，VM 将无法使用，除非再次启用密钥或分配新密钥。
 
 对于高级 SSD、标准 SSD 和标准 HDD：禁用或删除密钥后，包含使用该密钥的磁盘的任何 VM 都会自动关闭。 之后，VM 将无法使用，除非再次启用密钥或分配新密钥。    
 
@@ -31,7 +31,7 @@ Azure 托管磁盘使用[信封加密](../articles/storage/common/storage-client
 
 下图显示了托管磁盘如何借助 Azure Active Directory 和 Azure Key Vault 使用客户托管密钥发出请求：
 
-:::image type="content" source="media/virtual-machines-managed-disks-description-customer-managed-keys/customer-managed-keys-sse-managed-disks-workflow.png" alt-text="托管磁盘和客户管理的密钥工作流。管理员创建 Azure Key Vault，然后创建磁盘加密集，并设置磁盘加密集。集与 VM 关联，这允许磁盘使用 Azure AD 进行身份验证":::
+:::image type="content" source="media/virtual-machines-managed-disks-description-customer-managed-keys/customer-managed-keys-sse-managed-disks-workflow.png" alt-text="托管磁盘和客户管理的密钥工作流。管理员创建 Azure Key Vault，然后创建并设置磁盘加密集。该集与 VM 关联，这允许磁盘使用 Azure AD 进行身份验证":::
 
 下表更详细地介绍了该图：
 
@@ -44,4 +44,4 @@ Azure 托管磁盘使用[信封加密](../articles/storage/common/storage-client
 1. 托管磁盘使用托管标识将请求发送到 Azure Key Vault。
 1. 若要读取或写入数据，托管磁盘会将请求发送到 Azure Key Vault 以加密（包装）和解密（解包）数据加密密钥，以便执行数据的加密和解密。 
 
-若要撤销对客户托管密钥的访问权限，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤销访问权限会实际阻止对存储帐户中所有数据的访问权限，因为 Azure 存储无法访问加密密钥。
+若要撤销对客户托管密钥的访问权限，请参阅 [Azure Key Vault PowerShell](/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤销访问权限会实际阻止对存储帐户中所有数据的访问权限，因为 Azure 存储无法访问加密密钥。

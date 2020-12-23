@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 090e3f93d025fe87ad5b89a98193574595f3d632
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: e525fc0705dffcd4765e6a1f6c5235bdef260fcd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614551"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339670"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>设置聚合命名空间
 
@@ -57,7 +57,7 @@ Azure Blob 存储目标只能有一个命名空间路径。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 Azure CLI 时，必须在创建存储目标时添加命名空间路径。 有关详细信息，请参阅 [添加新的 Azure Blob 存储目标](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) 。
 
@@ -83,7 +83,7 @@ NFS 存储系统的所有命名空间路径都是在一个存储目标上创建�
   * 6 TB 缓存-10 个命名空间路径
   * 23 TB 缓存-20 个命名空间路径
 
-* 最多 5 GB/秒的吞吐量：
+* 最大 4 GB/秒的吞吐量：
 
   * 6 TB 缓存-10 个命名空间路径
   * 12 TB 缓存-10 个命名空间路径
@@ -119,7 +119,7 @@ NFS 存储系统的所有命名空间路径都是在一个存储目标上创建�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
 使用 Azure CLI 时，必须在创建存储目标时至少添加一个命名空间路径。 有关详细信息，请参阅 [添加新的 NFS 存储目标](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) 。
 

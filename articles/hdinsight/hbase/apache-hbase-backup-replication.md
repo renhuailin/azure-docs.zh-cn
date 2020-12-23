@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 3ed55387034a383e402d027fd5cab60c4a59c23c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505023"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657034"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
 
@@ -52,11 +52,11 @@ HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储
 
 * 创建指向当前存储位置的新 HDInsight 实例。 新实例是使用所有现有数据创建的。
 
-* 将 `hbase` 文件夹复制到其他 Azure 存储 blob 容器或 Data Lake Storage 位置，然后使用该数据启动新群集。 对于 Azure 存储，可以使用 [AzCopy](../../storage/common/storage-use-azcopy.md)；对于 Data Lake Storage，可以使用 [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)。
+* 将 `hbase` 文件夹复制到其他 Azure 存储 blob 容器或 Data Lake Storage 位置，然后使用该数据启动新群集。 对于 Azure 存储，可以使用 [AzCopy](../../storage/common/storage-use-azcopy-v10.md)；对于 Data Lake Storage，可以使用 [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)。
 
 ## <a name="export-then-import"></a>导出再导入
 
-在源 HDInsight 群集上，使用 HBase) 附带的 [导出实用程序](https://hbase.apache.org/book.html#export) (将源表中的数据导出到默认的附加存储。 然后，可以将导出的文件夹复制到目标存储位置，并在目标 HDInsight 群集上运行 [导入实用工具](https://hbase.apache.org/book.html#import) 。
+在源 HDInsight 群集上，使用[“导出”实用工具](https://hbase.apache.org/book.html#export)（HBase 已随附）将数据从源表导出到默认的附加存储。 然后，可将导出的文件夹复制到目标存储位置，并在目标 HDInsight 群集上运行[“导入”实用工具](https://hbase.apache.org/book.html#import)。
 
 若要导出表数据，请先通过 SSH 连接到源 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
 
@@ -173,7 +173,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 
 ## <a name="snapshots"></a>快照
 
-使用[快照](https://hbase.apache.org/book.html#ops.snapshots)可为 HBase 数据存储中的数据创建时间点备份。 快照的开销极小，并且在数秒内即可完成，因为快照操作实际上是一种元数据操作，只捕获该时刻存储中所有文件的名称。 创建快照时，不会复制实际数据。 快照依赖于 HDFS 中存储的数据不可变性质，其中的更新、删除和插入都以新数据表示。 可以在同一群集上还原（克隆）快照，或者将快照导出到另一个群集。**
+使用[快照](https://hbase.apache.org/book.html#ops.snapshots)可为 HBase 数据存储中的数据创建时间点备份。 快照的开销极小，并且在数秒内即可完成，因为快照操作实际上是一种元数据操作，只捕获该时刻存储中所有文件的名称。 创建快照时，不会复制实际数据。 快照依赖于 HDFS 中存储的数据不可变性质，其中的更新、删除和插入都以新数据表示。 可以在同一群集上还原（克隆）快照，或者将快照导出到另一个群集。
 
 若要创建快照，请通过 SSH 连接到 HDInsight HBase 群集的头节点，然后启动 `hbase` shell：
 
@@ -219,6 +219,12 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -cop
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
+如果目标群集是 ADLS 第2代群集，请更改前面的命令，以调整 ADLS Gen 2 使用的配置：
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.<account_name>.dfs.core.windows.net=<key> -Dfs.azure.account.auth.type.<account_name>.dfs.core.windows.net=SharedKey -Dfs.azure.always.use.https.<account_name>.dfs.core.windows.net=false -Dfs.azure.account.keyprovider.<account_name>.dfs.core.windows.net=org.apache.hadoop.fs.azurebfs.services.SimpleKeyProvider -snapshot 'Snapshot1' -copy-to 'abfs://<container>@<account_name>.dfs.core.windows.net/hbase'
+```
+
 导出快照后，通过 SSH 连接到目标群集的头节点，然后根据前面所述使用 `restore_snapshot` 命令还原快照。
 
 快照提供执行 `snapshot` 命令时的表的完整备份。 快照不提供按时间窗口执行增量快照的功能，也无法指定要包含在快照中的列系列子集。
@@ -245,4 +251,4 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.mya
 ## <a name="next-steps"></a>后续步骤
 
 * [配置 Apache HBase 复制](apache-hbase-replication.md)
-* [使用 HBase 导入和导出实用工具](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [使用 HBase 导入和导出实用工具](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

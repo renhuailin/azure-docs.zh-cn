@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: 4b0e18e7bcc85dace93962c557d05d114df215d7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8607c10d0c5e2dd6544bf6edb7aa267dfa301a91
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082210"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545882"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "86082210"
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
-* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
+* [Java 开发人员工具包 (JDK) 版本 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 * [Eclipse IDE](https://www.eclipse.org/downloads/)。 本文使用适用于 Java 开发人员的 Eclipse IDE。
 
@@ -35,7 +35,7 @@ ms.locfileid: "86082210"
 
 ### <a name="install-azure-toolkit-for-eclipse"></a>安装用于 Eclipse 的 Azure 工具包
 
-有关安装说明，请参阅[安装用于 Eclipse 的 Azure 工具包](https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation)。
+有关安装说明，请参阅[安装用于 Eclipse 的 Azure 工具包](/azure/developer/java/toolkit-for-eclipse/installation)。
 
 ### <a name="install-the-scala-plug-in"></a>安装 Scala 插件
 
@@ -103,7 +103,7 @@ ms.locfileid: "86082210"
 
    ![Azure 资源管理器 hdi 链接群集](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)
 
-1. 还可以从 **Azure 资源管理器**取消链接群集。
+1. 还可以从 **Azure 资源管理器** 取消链接群集。
 
    ![Azure 资源管理器取消链接群集](./media/apache-spark-eclipse-tool-plugin/hdi-unlinked-cluster.png)
 
@@ -184,9 +184,9 @@ ms.locfileid: "86082210"
 
    ![Azure 资源管理器 Eclipse 作业视图节点](./media/apache-spark-eclipse-tool-plugin/eclipse-job-view-node.png)
 
-1. 选择“作业”节点。 如果 Java 版本低于 **1.8**，HDInsight 工具会自动提醒你安装 **E(fx)clipse** 插件。 选择“确定”继续，然后按照向导指示从 Eclipse Marketplace 安装该插件并重启 Eclipse。
+1. 选择“作业”节点。 如果 Java 版本低于 **1.8** ，HDInsight 工具会自动提醒你安装 **E(fx)clipse** 插件。 选择“确定”继续，然后按照向导指示从 Eclipse Marketplace 安装该插件并重启 Eclipse。
 
-   ![安装缺少的插件 E （fx） clipse](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
+   ![安装缺少的插件 E (fx) clipse](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
 
 1. 从“作业”节点打开作业视图。 在右窗格中，“Spark 作业视图”选项卡显示了群集上运行的所有应用程序。 选择想要查看其详细信息的应用程序的名称。
 
@@ -240,9 +240,9 @@ ms.locfileid: "86082210"
 
 ### <a name="prerequisite"></a>先决条件
 
-在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生这些异常的原因是 Windows 中缺少 **WinUtils.exe**。
+在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生这些异常的原因是 Windows 中缺少 **WinUtils.exe** 。
 
-若要解决此错误，需要将 [Winutils.exe](https://github.com/steveloughran/winutils) 下载到所需位置（例如 **C:\WinUtils\bin**），然后添加环境变量 **HADOOP_HOME**，并将该变量的值设为 **C\WinUtils**。
+若要解决此错误，需要将 [Winutils.exe](https://github.com/steveloughran/winutils) 下载到所需位置（例如 **C:\WinUtils\bin** ），然后添加环境变量 **HADOOP_HOME** ，并将该变量的值设为 **C\WinUtils** 。
 
 ### <a name="run-a-local-spark-scala-application"></a>运行本地的 Spark Scala 应用程序
 
@@ -254,7 +254,7 @@ ms.locfileid: "86082210"
 
 1. 若要提供项目详细信息，请执行前面部分[为 HDInsight Spark 群集设置 Spark Scala 项目](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster)中的步骤 3 到步骤 6。
 
-1. 模板将在 **src** 文件夹下面添加可在计算机上本地运行的示例代码 (**LogQuery**)。
+1. 模板将在 **src** 文件夹下面添加可在计算机上本地运行的示例代码 ( **LogQuery** )。
 
    ![LogQuery 本地 scala 应用程序的位置](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
 
@@ -299,7 +299,7 @@ ms.locfileid: "86082210"
 
    ![Azure 资源管理器中的 HDInsight Spark 群集（提交）](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer11.png)
 
-3. 选择对**群集名称**具有只读角色权限的群集。 此时会显示警告消息。可以单击“链接此群集”以链接群集。
+3. 选择对 **群集名称** 具有只读角色权限的群集。 此时会显示警告消息。可以单击“链接此群集”以链接群集。
 
    ![Azure 资源管理器中的 HDInsight Spark 群集（对此进行链接）](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer15.png)
 
@@ -327,7 +327,7 @@ ms.locfileid: "86082210"
 
 ![eclipse 在群集忙时收到错误 yarn](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "eclipse 在群集忙时收到错误 yarn")
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
@@ -346,8 +346,8 @@ ms.locfileid: "86082210"
 ### <a name="tools-and-extensions"></a>工具和扩展
 
 * [使用用于 IntelliJ 的 Azure 工具包创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
-* [使用 Azure Toolkit for IntelliJ 通过 VPN 远程调试 Apache Spark 应用程序](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [使用 Azure Toolkit for IntelliJ 通过 SSH 远程调试 Apache Spark 应用程序](../hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [使用 Azure Toolkit for IntelliJ 通过 VPN 远程调试 Apache Spark 应用程序](./apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [使用 Azure Toolkit for IntelliJ 通过 SSH 远程调试 Apache Spark 应用程序](./apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)

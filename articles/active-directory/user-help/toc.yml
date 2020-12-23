@@ -70,6 +70,8 @@
       href: my-account-portal-sign-ins-page.md
     - name: 更改门户设置
       href: my-account-portal-settings.md
+    - name: 切换组织
+      href: cross-tenant-switcher.md
 - name: 安全信息帮助
   items:
     - name: 在登录过程中添加安全信息
@@ -110,6 +112,8 @@
       href: my-apps-portal-end-user-groups.md
     - name: 利用集合组织应用
       href: my-applications-portal-workspaces.md
+    - name: “我的应用”中的集合预览
+      href: my-apps-portal-user-collections.md
     - name: 编辑或撤销应用权限
       href: my-applications-portal-permissions-saved-accounts.md
     - name: 执行自己的访问评审

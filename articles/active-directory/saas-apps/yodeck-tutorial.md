@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 68e961336d7e86f9983fea49044137894ab0f985
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546230"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>教程：Azure Active Directory 与 Yodeck 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88546230"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Yodeck（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88546230"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "88546230"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![image](common/both-preintegrated-signon.png)
+    ![屏幕截图显示了“基本 SAML 配置”，其中包含“上传元数据文件”链接。](common/both-preintegrated-signon.png)
 
     在“登录 URL”文本框中，键入 URL：`https://app.yodeck.com/login`
 
@@ -117,7 +117,7 @@ ms.locfileid: "88546230"
 
 1. 若要在 Yodeck 中自动完成配置，需要单击“安装扩展”安装“我的应用安全登录浏览器扩展”  。
 
-    ![图像](./media/target-process-tutorial/install_extension.png)
+    ![显示“安装扩展”按钮的屏幕截图。](./media/target-process-tutorial/install_extension.png)
 
 1. 将该扩展添加到浏览器后，单击“设置 Yodeck”定向到 Yodeck 应用程序。 在此处提供管理员凭据以登录到 Yodeck。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
 
@@ -127,21 +127,21 @@ ms.locfileid: "88546230"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Yodeck 公司站点。
 
-1. 单击页面右上角的“用户设置”选项表单，然后选择“帐户设置”********。
+1. 单击页面右上角的“用户设置”选项表单，然后选择“帐户设置”。
 
-    ![Yodeck 配置](./media/yodeck-tutorial/configure1.png)
+    ![屏幕截图显示为用户选择了“帐户设置”。](./media/yodeck-tutorial/configure1.png)
 
-1. 选择“SAML”并执行以下步骤****：
+1. 选择“SAML”并执行以下步骤：
 
-    ![Yodeck 配置](./media/yodeck-tutorial/configure2.png)
+    ![屏幕截图显示了“SAML”选项卡，可在其中执行这些步骤。](./media/yodeck-tutorial/configure2.png)
 
-    a. 选择“从 URL 导入”****。
+    a. 选择“从 URL 导入”。
 
-    b. 在“URL”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值，然后单击“导入”************。
+    b. 在“URL”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值，然后单击“导入”。
     
-    c. 导入“应用联合元数据 URL”后，其余字段将自动填充****。
+    c. 导入“应用联合元数据 URL”后，其余字段将自动填充。
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -171,11 +171,11 @@ ms.locfileid: "88546230"
 
 在本部分中，通过向 Britta Simon 授予 Yodeck 的访问权限来支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Yodeck”************。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Yodeck”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Yodeck”****。
+2. 在应用程序列表中，选择“Yodeck”。
 
     ![应用程序列表中的 Yodeck 链接](common/all-applications.png)
 
@@ -201,39 +201,38 @@ ms.locfileid: "88546230"
 
 1. 以管理员身份登录到 Yodeck 公司站点。
 
-2. 单击页面右上角的“用户设置”选项表单，然后选择“用户”********。
+2. 单击页面右上角的“用户设置”选项表单，然后选择“用户”。
 
-    ![添加员工](./media/yodeck-tutorial/user1.png)
+    ![屏幕截图显示为用户选择了“用户”。](./media/yodeck-tutorial/user1.png)
 
-3. 单击“+用户”以打开“用户详细信息”选项卡********。
+3. 单击“+用户”以打开“用户详细信息”选项卡。
 
-    ![添加员工](./media/yodeck-tutorial/user2.png)
+    ![屏幕截图显示了“用户”按钮。](./media/yodeck-tutorial/user2.png)
 
-4. 在“用户详细信息”**** 对话框页上，执行以下步骤：
+4. 在“用户详细信息”对话框页上，执行以下步骤：
 
-    ![添加员工](./media/yodeck-tutorial/user3.png)
+    ![屏幕截图显示了“用户详细信息”选项卡，可在其中执行这些步骤。](./media/yodeck-tutorial/user3.png)
 
-    a. 在“名字”文本框中，键入用户的名字（如“Britta”）********。
+    a. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 
     b. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
 
     c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 brittasimon@contoso.com）。
 
-    d. 根据组织要求选择适当的“帐户权限”选项****。
+    d. 根据组织要求选择适当的“帐户权限”选项。
     
-    e. 单击“ **保存**”。
+    e. 单击“ **保存** ”。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Yodeck 磁贴时，应会自动登录到为其设置了 SSO 的 Yodeck。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Yodeck 磁贴时，应会自动登录到为其设置了 SSO 的 Yodeck。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

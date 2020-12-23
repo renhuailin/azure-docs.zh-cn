@@ -12,61 +12,27 @@
     - name: 设置你的环境
       href: set-up-environment.md
     - name: 将设备连接到 IoT 中心
-      items:
-        - name: C
-          href: quickstart-connect-device-c.md
-        - name: Node.js
-          href: quickstart-connect-device-node.md
-        - name: Python
-          href: quickstart-connect-device-python.md
-        - name: C#
-          href: quickstart-connect-device-csharp.md
-        - name: Java
-          href: quickstart-connect-device-java.md
+      href: quickstart-connect-device.md
     - name: 与解决方案中的设备交互
-      items:
-        - name: Node.js
-          href: quickstart-service-node.md
-        - name: Python
-          href: quickstart-service-python.md
-        - name: C#
-          href: quickstart-service-csharp.md
-        - name: Java
-          href: quickstart-service-java.md
+      href: quickstart-service.md
 - name: 教程
   items:
-    - name: 连接多组件设备 (C)
-      href: tutorial-multiple-components-c.md
-    - name: 连接多组件设备 (C#)
-      href: tutorial-multiple-components-csharp.md
-    - name: 连接多组件设备 (Java)
-      href: tutorial-multiple-components-java.md
-    - name: 连接多组件设备 (Node.js)
-      href: tutorial-multiple-components-node.md
-    - name: 连接多组件设备 (Python)
-      href: tutorial-multiple-components-python.md
+    - name: 连接多组件设备
+      href: tutorial-multiple-components.md
     - name: 使用 MQTT 连接设备
       href: tutorial-use-mqtt.md
     - name: 与 MXChip 设备交互（示例）
-      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
-    - name: 将设备迁移到模块
+      href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
+    - name: 连接设备模块
       href: tutorial-migrate-device-to-module.md
+    - name: 预览 - 使用时序见解 Gen2 来连接和分析数据
+      href: tutorial-configure-tsi.md
 - name: 概念
   items:
     - name: 体系结构
       href: concepts-architecture.md
     - name: 设备开发人员指南
-      items:
-        - name: C#
-          href: concepts-developer-guide-device-csharp.md
-        - name: Node.js
-          href: concepts-developer-guide-device-node.md
-        - name: Java
-          href: concepts-developer-guide-device-java.md
-        - name: Python
-          href: concepts-developer-guide-device-python.md
-        - name: C
-          href: concepts-developer-guide-device-c.md
+      href: concepts-developer-guide-device.md
     - name: 服务开发人员指南
       href: concepts-developer-guide-service.md
     - name: 组件
@@ -85,8 +51,6 @@
       href: concepts-model-discovery.md
     - name: 模型分析程序
       href: concepts-model-parser.md
-    - name: 限制和配额
-      href: concepts-limits-quotas.md
     - name: 术语表
       href: iot-plug-and-play-glossary.md
 - name: 操作指南
@@ -95,8 +59,6 @@
       href: howto-use-iot-explorer.md
     - name: 安装和 IoT 即插即用桥接
       href: howto-use-iot-pnp-bridge.md
-    - name: 安装和使用 Azure IoT CLI 扩展
-      href: howto-use-iot-pnp-cli.md
     - name: 安装和使用 DTDL 创作工具
       href: howto-use-dtdl-authoring-tools.md
     - name: 使用嵌入的 C
@@ -110,34 +72,34 @@
     - name: 库和 SDK
       href: libraries-sdks.md
     - name: 数字孪生 REST API
-      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
+      href: /rest/api/iothub/service/digitaltwin
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: 资源
   items:
     - name: 支持和帮助选项
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT 服务
       items:
         - name: IoT 中心
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT 中心设备预配服务
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT 解决方案加速器
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT 即插即用
-          href: /azure/iot-pnp
+          href: ./index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: 时序见解
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT 设备 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks

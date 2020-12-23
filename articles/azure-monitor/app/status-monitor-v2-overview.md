@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318940"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186212"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -67,7 +67,7 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
   - [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) cmdlet 可用于验证启用是否成功。
   - 我们建议你使用[实时指标](./live-stream.md)来快速确定应用是否正在发送遥测数据。
 
-  - 还可以使用 [Log Analytics](../log-query/get-started-portal.md) 列出当前正在发送遥测数据的所有云角色：
+  - 还可以使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 列出当前正在发送遥测数据的所有云角色：
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -86,4 +86,3 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 * [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
 * [添加 Web 客户端遥测](./javascript.md)，以查看网页代码中的异常并启用跟踪调用。
 * [将 Application Insights SDK 添加到代码](./asp-net.md)，以便插入跟踪和日志调用。
-

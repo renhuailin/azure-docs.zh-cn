@@ -8,35 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 12/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532511"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504468"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
-作为[语音 SDK](speech-sdk.md) 的一种替代方法，语音服务允许使用 REST API 转换语音转文本。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。 REST API 非常有限，只应在[语音 SDK](speech-sdk.md) 不能使用的情况下使用。
+语音到文本具有两个不同的 REST Api。 每个 API 都为其特殊目的提供服务，并使用不同的终结点集。
 
-使用语音到文本 REST API 之前，请注意以下事项：
+语音到文本 REST Api 包括：
+- [语音到文本 REST API 3.0](#speech-to-text-rest-api-v30) 用于 [批处理](batch-transcription.md) 脚本和 [自定义语音](custom-speech-overview.md)。 3.0 是 v2.0 [的后继版本](/azure/cognitive-services/speech-service/migrate-v2-to-v3)。
+- [短音频的语音到文本 REST API](#speech-to-text-rest-api-for-short-audio) 用于在线脚本，作为 [语音 SDK](speech-sdk.md)的替代方法。 使用此 API 的请求每个请求最多只能传输60秒的音频。 
 
-* 使用 REST API 并直接传输音频的请求最多只能包含 60 秒的音频。
-* 语音转文本 REST API 仅返回最终结果。 不提供部分结果。
+## <a name="speech-to-text-rest-api-v30"></a>从语音到文本 REST API 3。0
 
-如果应用程序需要发送更长的音频，请考虑使用[语音 SDK](speech-sdk.md) 或基于文件的 REST API，如[批量转录](batch-transcription.md)。
+语音到文本 REST API 3.0 用于 [批处理](batch-transcription.md) 脚本和 [自定义语音](custom-speech-overview.md)。 如果需要通过 REST 与联机工作方式通信，请使用 [语音到文本 REST API 短音频](#speech-to-text-rest-api-for-short-audio)。
+
+使用 REST API 3.0 执行以下操作：
+- 如果希望同事有权访问生成的模型，或在要将模型部署到多个区域的情况下，请将模型复制到其他订阅
+- 转录容器中的数据 (大容量脚本) ，并提供多个音频文件 Url
+- 使用 SAS Uri 从 Azure 存储帐户上传数据
+- 如果已为终结点请求了日志，则获取每个终结点的日志
+- 请求创建的模型的清单，以便设置本地容器
+
+REST API 3.0 包含以下功能：
+- **通知-webhook**-服务的所有正在运行的进程现在支持 webhook 通知。 REST API 3.0 中提供了调用，使你能够注册发送通知的 webhook
+- **更新终结点后的模型** 
+- **具有多个数据集的模型** 调整-使用声音、语言和发音数据的多个数据集组合调整模型
+- **自带存储**-对日志、脚本文件和其他数据使用自己的存储帐户
+
+请参阅 [此文](batch-transcription.md)，了解有关使用批处理脚本 REST API 3.0 的示例。
+
+如果你使用的是语音到文本 REST API v2.0，请参阅 [本指南](/azure/cognitive-services/speech-service/migrate-v2-to-v3)中的如何迁移到3.0。
+
+可在 [此处](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)查看完整的语音到文本 REST API 3.0 参考。
+
+## <a name="speech-to-text-rest-api-for-short-audio"></a>短音频的语音到文本 REST API
+
+作为 [语音 SDK](speech-sdk.md)的替代方法，语音服务允许使用 REST API 转换语音到文本。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。 短音频的 REST API 非常有限，只应在 [语音 SDK](speech-sdk.md) 不能使用的情况下使用。
+
+使用语音到文本 REST API 短音频之前，请注意以下事项：
+
+* 使用短音频 REST API 和直接传输音频的请求最多只能包含60秒的音频。
+* 短音频的语音到文本 REST API 仅返回最终结果。 不提供部分结果。
+
+如果需要为应用程序发送更长的音频，请考虑使用 [语音 SDK](speech-sdk.md) 或 [语音到文本 REST API 3.0](#speech-to-text-rest-api-v30)。
 
 > [!TIP]
-> 请参阅适用于政府云的 Azure 政府 [文档](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) (FairFax) 终结点。
+> 请参阅适用于政府云的 Azure 政府 [文档](../../azure-government/compare-azure-government-global-azure.md) (FairFax) 终结点。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>区域和终结点
+### <a name="regions-and-endpoints"></a>区域和终结点
 
-REST API 的终结点具有以下格式：
+短音频 REST API 的终结点具有以下格式：
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
@@ -49,32 +80,32 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 > [!NOTE]
 > 必须将语言参数追加到 URL 以避免收到 4xx HTTP 错误。 例如，使用“美国西部”终结点设置为美国英语的语言为：`https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`。
 
-## <a name="query-parameters"></a>查询参数
+### <a name="query-parameters"></a>查询参数
 
 可将以下参数包含在 REST 请求的查询字符串中。
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必需 |
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必须 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 Detailed 响应包括显示文本的四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
-| `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在“部署”页上找到的其终结点 ID 使用自定义模型。 使用终结点 ID 作为 `cid` 查询字符串形式参数的实际参数。 | 可选 |
+| `cid` | 使用[自定义语音门户](./custom-speech-overview.md)创建自定义模型时，可以通过在“部署”页上找到的其终结点 ID 使用自定义模型。 使用终结点 ID 作为 `cid` 查询字符串形式参数的实际参数。 | 可选 |
 
-## <a name="request-headers"></a>请求标头
+### <a name="request-headers"></a>请求标头
 
-下表列出了语音转文本请求的必需和可选标头。
+此表列出了语音到文本请求的必需标头和可选标头。
 
 |标头| 说明 | 必需/可选 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
 | `Pronunciation-Assessment` | 指定用于在识别结果中显示发音分数的参数，这些参数评估语音输入的发音质量，并具有准确性、流畅性、完整性等指标。此参数是 Base64 编码的 json，其中包含多个详细的参数。 若要了解如何生成此标头，请参阅[发音评估参数](#pronunciation-assessment-parameters)。 | 可选 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必需 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必须 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务以 JSON 格式提供结果。 某些请求框架提供不兼容的默认值。 最好始终包含 `Accept`。 | 可选，但建议提供。 |
 
-## <a name="audio-formats"></a>音频格式
+### <a name="audio-formats"></a>音频格式
 
 在 HTTP `POST` 请求的正文中发送音频。 它必须采用下表中的格式之一：
 
@@ -84,16 +115,16 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 | OGG    | OPUS  | 256 kpbs | 16 kHz，单声道 |
 
 >[!NOTE]
->通过语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md) 当前支持使用 PCM 编解码器的 WAV 格式以及[其他格式](how-to-use-codec-compressed-audio-input-streams.md)。
+>使用语音服务中的短音频和 WebSocket REST API 支持上述格式。 [语音 SDK](speech-sdk.md) 当前支持使用 PCM 编解码器的 WAV 格式以及[其他格式](how-to-use-codec-compressed-audio-input-streams.md)。
 
-## <a name="pronunciation-assessment-parameters"></a>发音评估参数
+### <a name="pronunciation-assessment-parameters"></a>发音评估参数
 
 下表列出了发音评估的必需参数和可选参数。
 
-| 参数 | 说明 | 必需/可选 |
+| 参数 | 说明 | 必需？ |
 |-----------|-------------|---------------------|
 | ReferenceText | 用来对发音进行评估的文本。 | 必须 |
-| GradingSystem | 用于分数校准的分数系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
+| GradingSystem | 用于分数校准的分数系统。 `FivePoint`系统给出0-5 浮点评分，并 `HundredMark` 提供0-100 浮点分数。 默认值：`FivePoint`。 | 可选 |
 | 粒度 | 评估粒度。 接受的值为 `Phoneme`（显示全文、单词和音素级别的分数）、`Word`（显示全文和单词级别的分数）、`FullText`（只显示全文级别的分数）。 默认设置为 `Phoneme`。 | 可选 |
 | 维度 | 定义输出条件。 接受的值为 `Basic`（只显示准确度分数）、`Comprehensive`（显示更多维度的分数，例如，全文级别的流畅度分数和完整性分数、单词级别的错误类型）。 检查[响应参数](#response-parameters)以了解不同分数维度和单词错误类型的定义。 默认设置为 `Basic`。 | 可选 |
 | EnableMiscue | 启用误读计算。 启用此功能后，系统会将发音单词与参考文本进行比较，并会根据比较结果将其标记为省略/插入。 接受的值为 `False` 和 `True`。 默认设置为 `False`。 | 可选 |
@@ -123,7 +154,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 >[!NOTE]
 >发音评估功能目前只在 `westus`、`eastasia` 和 `centralindia` 区域可用。 此功能目前仅适用于 `en-US` 语言。
 
-## <a name="sample-request"></a>示例请求
+### <a name="sample-request"></a>示例请求
 
 以下示例包括主机名和必需的标头。 必须注意，服务同时预期提供音频数据，但此示例未包括这些数据。 如前所述，建议进行分块，但不是非要这样做。
 
@@ -143,7 +174,7 @@ Expect: 100-continue
 Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
-## <a name="http-status-codes"></a>HTTP 状态代码
+### <a name="http-status-codes"></a>HTTP 状态代码
 
 每个响应的 HTTP 状态代码指示成功或一般错误。
 
@@ -155,9 +186,9 @@ Pronunciation-Assessment: eyJSZWZlcm...
 | `401` | 未授权 | 指定区域中的订阅密钥或授权令牌无效，或终结点无效。 |
 | `403` | 禁止 | 缺少订阅密钥或授权令牌。 |
 
-## <a name="chunked-transfer"></a>分块传输
+### <a name="chunked-transfer"></a>分块传输
 
-分块传输 (`Transfer-Encoding: chunked`) 有助于降低识别延迟。 它允许语音服务在传输音频文件时开始处理该文件。 REST API 不提供部分结果或临时结果。
+分块传输 (`Transfer-Encoding: chunked`) 有助于降低识别延迟。 它允许语音服务在传输音频文件时开始处理该文件。 短音频的 REST API 不提供部分或临时结果。
 
 此代码示例演示如何以块的形式发送音频。 只有第一个区块应该包含音频文件的标头。 `request` 是连接到相应 REST 终结点的 `HttpWebRequest` 对象。 `audioFile` 是音频文件在磁盘上的路径。
 
@@ -191,7 +222,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>响应参数
+### <a name="response-parameters"></a>响应参数
 
 结果以 JSON 格式提供。 `simple` 格式包含以下顶级字段。
 
@@ -233,7 +264,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `PronScore` | 总分，表示给定语音的发音质量。 此分数按权重从 `AccuracyScore`、`FluencyScore` 和 `CompletenessScore` 聚合而成。 |
 | `ErrorType` | 此值指示与 `ReferenceText` 相比，是省略、插入还是错误读出字词。 可能的值为 `None`（表示此词没有错误）、`Omission`、`Insertion` 和 `Mispronunciation`。 |
 
-## <a name="sample-responses"></a>示例响应
+### <a name="sample-responses"></a>示例响应
 
 `simple` 识别的典型响应：
 
@@ -306,6 +337,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
-- [自定义声学模型](how-to-customize-acoustic-models.md)
-- [自定义语言模型](how-to-customize-language-model.md)
+- [创建免费的 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
+- [自定义声学模型](./how-to-custom-speech-train-model.md)
+- [自定义语言模型](./how-to-custom-speech-train-model.md)
+- [熟悉批处理](batch-transcription.md)

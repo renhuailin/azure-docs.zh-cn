@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1e417563b463d7033072b27bec505d10ef1adb47
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281066"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695735"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入门：在 Azure 门户中部署 Azure 机密计算 VM
 
@@ -47,7 +47,7 @@ ms.locfileid: "87281066"
 
 ## <a name="configure-a-confidential-computing-virtual-machine"></a>配置机密计算虚拟机
 
-1. 在“基本信息”选项卡中，选择自己的**订阅**和**资源组**。
+1. 在“基本信息”选项卡中，选择自己的 **订阅** 和 **资源组**。
 
 1. 在“虚拟机名称”中，为新 VM 输入一个名称。
 
@@ -56,13 +56,13 @@ ms.locfileid: "87281066"
    * **区域**：选择合适的 Azure 区域。
 
         > [!NOTE]
-        > 机密计算虚拟机仅在特定区域提供的专用硬件上运行。 有关 DCsv2 系列 VM 的最新可用区域，请参阅[可用区域](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
+        > 机密计算虚拟机仅在特定区域中可用的专用硬件上运行。 有关 DCsv2 系列 VM 的最新可用区域，请参阅[可用区域](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
 
 1. 配置要用于虚拟机的操作系统映像。
 
     * **选择映像**：对于本教程，请选择 Ubuntu 18.04 LTS。 还可以选择 Windows Server 2019、Windows Server 2016 或 Ubuntu 16.04 LTS。 如果选择这样做，则本教程会对你进行相应的重定向。
     
-    * **切换第 2 代的映像**：机密计算虚拟机仅在[第 2 代](../virtual-machines/linux/generation-2.md)映像上运行。 确保所选映像是第 2 代映像。 单击上方的“高级”选项卡，你将在其中配置虚拟机。 向下滚动，直至找到标签为“VM 代系”的部分。 选择“第 2 代”，然后返回到“基本信息”选项卡。
+    * **切换第 2 代的映像**：机密计算虚拟机仅在 [第 2 代](../virtual-machines/generation-2.md)映像上运行。 确保所选映像是第 2 代映像。 单击上方的“高级”选项卡，你将在其中配置虚拟机。 向下滚动，直至找到标签为“VM 代系”的部分。 选择“第 2 代”，然后返回到“基本信息”选项卡。
     
 
         ![“高级”选项卡](media/quick-create-portal/advanced-tab-virtual-machine.png)
@@ -88,7 +88,7 @@ ms.locfileid: "87281066"
 
     * **用户名**：输入 VM 的管理员名称。
 
-    * **SSH 公钥**：在适用情况下输入你的 RSA 公钥。
+    * **SSH 公钥**：如果适用，请输入你的 RSA 公钥。
     
     * 密码：在适用情况下输入你的身份验证密码。
 
@@ -111,15 +111,15 @@ ms.locfileid: "87281066"
 
 1. 选择“查看 + 创建”。
 
-1. 在“查看 + 创建”窗格中，选择“创建”。 
+1. 在“查看 + 创建”窗格中，选择“创建”。  
 
 > [!NOTE]
-> 如果已部署 Linux VM，请转到下一部分继续学习本教程。 如果已部署 Windows VM，请[按照这些步骤连接到 Windows VM](../virtual-machines/windows/connect-logon.md)，然后[在 Windows 上安装 OE SDK](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)。
+> 如果已部署了 Linux VM，请转到下一部分继续学习本教程。 如果部署了 Windows VM，请[遵循这些步骤连接到 Windows VM](../virtual-machines/windows/connect-logon.md)，然后[在 Windows 上安装 OE SDK](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)。
 
 
 ## <a name="connect-to-the-linux-vm"></a>连接到 Linux VM
 
-如果已使用 BASH shell，请通过 ssh 命令连接到 Azure VM。 在以下命令中，替换连接到 Linux VM 所需的 VM 用户名和 IP 地址。
+如果已使用 BASH shell，请通过 ssh 命令连接到 Azure VM。  在以下命令中，替换连接到 Linux VM 所需的 VM 用户名和 IP 地址。
 
 ```bash
 ssh azureadmin@40.55.55.555
@@ -137,12 +137,12 @@ ssh azureadmin@40.55.55.555
 
 1. 在 PuTTY 配置屏幕上，输入 VM 的公共 IP 地址。
 
-1. 选择“打开”，并根据提示输入用户名和密码。
+1. 选择“打开”，并根据提示输入用户名和密码。 
 
 若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
-> 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。 如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。 如果你不信任此主机，请选择“取消”以放弃连接。
+> 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。  如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。  如果你不信任此主机，请选择“取消”以放弃连接。 
 
 ## <a name="install-the-open-enclave-sdk-oe-sdk"></a>安装 Open Enclave SDK (OE SDK) <a id="Install"></a>
 
@@ -168,7 +168,7 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.4/linux/distro/ubuntuServer18.04/sgx_linux_x64_driver_1.21.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```
@@ -193,15 +193,13 @@ sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-
 
 当不再需要时，可以删除资源组、虚拟机和所有相关资源。 
 
-选择虚拟机的资源组，然后选择“删除”。 确认资源组名称，以完成资源删除。
+选择虚拟机的资源组，然后选择“删除”  。 确认资源组名称，以完成资源删除。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，你部署了一个机密计算虚拟机，并安装了 Open Enclave SDK。 有关 Azure 上的机密计算虚拟机的详细信息，请参阅[有关虚拟机的解决方案](virtual-machine-solutions.md)。 
 
-如果部署了 Windows VM，请使用 GitHub 上的[适用于 Windows 的 OE SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)，了解如何生成应用程序。 
-
-继续参阅 GitHub 上的 Open Enclave SDK Linux 示例，了解如何在 Linux 上生成机密计算应用程序。 
+继续参阅 GitHub 上的 Open Enclave SDK 示例，了解如何生成机密计算应用程序。 
 
 > [!div class="nextstepaction"]
-> [在 Linux 上生成 Open Enclave SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [生成 Open Enclave SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

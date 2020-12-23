@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021062"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203239"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>教程：优化材料、照明和效果
 
@@ -32,7 +32,7 @@ ms.locfileid: "89021062"
 
 向用户提供视觉反馈是任何应用程序中用户体验的重要组成部分。 Azure 远程渲染通过[分层状态替代](../../../overview/features/override-hierarchical-state.md)提供视觉反馈机制。 分层状态替代通过附加到模型本地实例的组件来实现。 我们已通过[将远程对象图同步到 Unity 层次结构中](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy)中的介绍了解了如何创建这些本地实例。
 
-首先，我们将围绕 [HierarchicalStateOverrideComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) 组件创建一个包装器。 HierarchicalStateOverrideComponent 是控制远程实体上替代操作的本地脚本。 [Tutorial Assets](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) 包含一个名为 BaseEntityOverrideController 的抽象基类，我们将对其进行扩展以创建包装器 。
+首先，我们将围绕 [HierarchicalStateOverrideComponent](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) 组件创建一个包装器。 HierarchicalStateOverrideComponent 是控制远程实体上替代操作的本地脚本。 [Tutorial Assets](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) 包含一个名为 BaseEntityOverrideController 的抽象基类，我们将对其进行扩展以创建包装器 。
 
 1. 创建名为 EntityOverrideController 的新脚本，并将其内容替换为以下代码：
 

@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853113"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958942"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>适用于 Windows 上的 Azure 虚拟机上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序 (SMB) 的 Azure Vm
 
@@ -143,10 +144,10 @@ SMB 文件共享的先决条件包括：
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>在第一个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
-1. 在第一个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航**到：**  >  **DBMS** > 安装 > 应用程序服务器 ABAP (或 Java) > 高可用性系统 > ASCS/SCS 实例 > 第一个群集节点。  
+1. 在第一个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到： **Product**  >  (或 Java) > High-Availability System > ASCS/SCS 实例 > 第一个群集节点的产品 **DBMS** > 安装 > 的应用程序服务器。  
 
 2. 在 SWPM 中选择 " **文件共享群集** " 作为群集共享配置。  
-3. 出现步骤 **SAP 系统群集参数**时，请输入已创建为 **文件共享主机名**的 Azure NetApp 文件的主机名。  在此示例中，SMB 共享主机名为 **anfsmb-9562**。 
+3. 出现步骤 **SAP 系统群集参数** 时，请输入已创建为 **文件共享主机名** 的 Azure NetApp 文件的主机名。  在此示例中，SMB 共享主机名为 **anfsmb-9562**。 
 
    > [!IMPORTANT]
    > 如果必备组件检查器导致 SWPM 显示不满足连续可用性功能的条件，则可以按照延迟错误消息中的说明来解决此问题，前提是 [尝试访问 Windows 中不再存在的共享文件夹](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l)。  
@@ -158,7 +159,7 @@ SMB 文件共享的先决条件包括：
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>在第二个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
-1. 在第二个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到**产品**  >  **DBMS** > 安装 > 应用程序服务器 ABAP (或 Java) > 高可用性系统 > ASCS/SCS 实例 > 附加群集节点。  
+1. 在第二个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到 **产品**  >  **DBMS** > 安装 > Application Server ABAP (或 Java) > High-Availability System > ASCS/SCS 实例 > 附加群集节点。  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 

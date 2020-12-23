@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 11a6df348ae623ccf75e61bc1abbb5e28c832237
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13f05005529d3983e042398f5274fd7f981b8c8c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548950"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516580"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>教程：Azure Active Directory 与 Questetra BPM Suite 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88548950"
 * 可让用户使用其 Azure AD 帐户自动登录到 Questetra BPM Suite（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -61,7 +61,7 @@ ms.locfileid: "88548950"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Questetra BPM Suite**，在结果面板中选择“Questetra BPM Suite”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Questetra BPM Suite** ，在结果面板中选择“Questetra BPM Suite”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“Questetra BPM Suite”](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "88548950"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "88548950"
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 可以从 **Questetra BPM Suite** 公司站点的“SP 信息”部分获取这些值（在本教程中的后面部分进行说明），或者联系 [Questetra BPM Suite 客户端支持团队](https://www.questetra.com/contact/)来获取。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -128,11 +128,11 @@ ms.locfileid: "88548950"
 
 2. 在顶部菜单中，单击“系统设置”  。 
    
-    ![Azure AD 单一登录][10]
+    ![显示从 Questetra BPM Suite 公司站点选择了“系统设置”的屏幕截图。][10]
 
 3. 若要打开“SingleSignOnSAML”  页，请单击“SSO (SAML)”  。 
    
-    ![Azure AD 单一登录][11]
+    ![显示选择了“SSO (SAML)”的屏幕截图。][11]
 
 4. 在 **Questetra BPM Suite** 公司站点的“SP 信息”  部分中，执行以下步骤：
 
@@ -222,9 +222,9 @@ ms.locfileid: "88548950"
    
     ![创建测试用户][300] 
    
-    a. 在“名称”文本框中，键入用户的**名称**britta.simon@contoso.com。
+    a. 在“名称”文本框中，键入用户的 **名称**britta.simon@contoso.com。
    
-    b. 在“电子邮件”文本框中，键入用户的**电子邮件地址**britta.simon@contoso.com。
+    b. 在“电子邮件”文本框中，键入用户的 **电子邮件地址**britta.simon@contoso.com。
    
     c. 在“密码”文本框中，键入用户的密码   。
     
@@ -234,15 +234,15 @@ ms.locfileid: "88548950"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Questetra BPM Suite”磁贴时，应会自动登录到设置了 SSO 的 Questetra BPM Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Questetra BPM Suite”磁贴时，应会自动登录到设置了 SSO 的 Questetra BPM Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 <!--Image references-->
 

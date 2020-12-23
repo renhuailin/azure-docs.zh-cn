@@ -1,5 +1,5 @@
 - name: VMware Solution by CloudSimple
-  href: /azure/vmware-cloudsimple
+  href: ./index.md
   items:
     - name: 概述
       items:
@@ -52,6 +52,8 @@
           href: node-quota.md
         - name: 维护和更新
           href: cloudsimple-maintenance-updates.md
+        - name: 禁止的操作
+          href: forbidden-actions.md
         - name: 常见问题解答
           href: cloudsimple-faq.md
     - name: 教程

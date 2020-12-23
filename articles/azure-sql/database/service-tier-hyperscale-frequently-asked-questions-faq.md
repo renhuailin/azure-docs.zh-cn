@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488858"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459638"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL 数据库“超大规模”常见问题解答
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,11 +114,11 @@ ms.locfileid: "89488858"
 
 “超大规模”支持所有 SQL Server 工作负荷，但它主要针对 OLTP 进行了优化。 还可以引入混合 (HTAP) 和分析（数据市场）工作负荷。
 
-### <a name="how-can-i-choose-between-azure-synapse-analytics-and-azure-sql-database-hyperscale"></a>如何在 Azure Synapse Analytics 和 Azure SQL Database 超大规模之间进行选择
+### <a name="how-can-i-choose-between-azure-synapse-analytics-and-azure-sql-database-hyperscale"></a>如何在 Azure Synapse Analytics 和 Azure SQL 数据库超大规模之间进行选择
 
 如果目前运行的是使用 SQL Server 作为数据仓库的交互式分析查询，“超大规模”是很好的选择，因为能以较低费用托管中小型数据仓库（例如几 TB 到 100 TB），并且只需对 T-SQL 代码进行极少量的更改，即可将 SQL Server 数据仓库工作负荷迁移到“超大规模”。
 
-如果使用复杂的查询和大于 100 MB/s 的持续引入速率在大规模运行数据分析，或者使用并行数据仓库 (PDW) 、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 Azure Synapse Analytics (以前的 SQL 数据仓库) 可能是最佳选择。
+如果你使用复杂的查询和大于 100 MB/s 的持续引入速率在大规模上运行数据分析，或者使用并行数据仓库 (PDW) 、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 Azure Synapse Analytics 可能是最佳选择。
   
 ## <a name="hyperscale-compute-questions"></a>“超大规模”计算问题
 
@@ -136,7 +136,7 @@ ms.locfileid: "89488858"
 
 ### <a name="how-many-read-scale-out-replicas-are-supported"></a>支持多少个读取扩展副本
 
-默认情况下，超大规模数据库是使用一个读取扩展副本（包括主要副本共有 2 个副本）创建的。 可以使用 [Azure 门户](https://portal.azure.com)或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) 将只读副本的数目缩放为 0 到 4 个。
+默认情况下，超大规模数据库是使用一个读取扩展副本（包括主要副本共有 2 个副本）创建的。 可以使用 [Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/sql/databases/createorupdate) 将只读副本的数目缩放为 0 到 4 个。
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-replicas"></a>若要实现高可用性，是否需要预配额外的计算副本
 
@@ -198,7 +198,7 @@ ms.locfileid: "89488858"
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>如果表格巨大，表格数据是否会分布在多个数据文件中
 
-是的。 与给定表格关联的数据页可在多个数据文件中出现，它们均属于相同文件组。 SQL Server 使用[按比例填充策略](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy)在数据文件间分布数据。
+是的。 与给定表格关联的数据页可在多个数据文件中出现，它们均属于相同文件组。 SQL Server 使用[按比例填充策略](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy)在数据文件间分布数据。
 
 ## <a name="data-migration-questions"></a>数据迁移问题
 
@@ -229,11 +229,11 @@ ms.locfileid: "89488858"
 
 “超大规模”每秒能够使用 100 MB 的新数据/更改的数据，但将数据移入 Azure SQL 数据库中的数据库所需的时间也会受到可用网络吞吐量、源读取速度和目标数据库服务级别目标的影响。
 
-### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>能否从 blob 存储中读取数据并执行快速负载 (如 Azure Synapse Analytics 中的 Polybase) 
+### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>能否从 blob 存储读取数据并执行快速加载（如 Azure Synapse Analytics 中的 Polybase）
 
-可让客户端应用程序从 Azure 存储中读取数据并将数据加载到“超大规模”数据库（就像对 Azure SQL 数据库中的任何其他数据库执行的操作一样）。 Azure SQL 数据库当前不支持 Polybase。 作为提供快速负载的替代方法，你可以使用[Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)，或在[SQL 的 spark 连接器](spark-connector.md) [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)中使用 spark 作业。 SQL 的 Spark 连接器支持批量插入。
+可让客户端应用程序从 Azure 存储中读取数据并将数据加载到“超大规模”数据库（就像对 Azure SQL 数据库中的任何其他数据库执行的操作一样）。 Azure SQL 数据库当前不支持 Polybase。 作为提供快速负载的替代方法，你可以使用[Azure 数据工厂](../../data-factory/index.yml)，或在[SQL 的 spark 连接器](spark-connector.md) [Azure Databricks](/azure/azure-databricks/)中使用 spark 作业。 SQL 的 Spark 连接器支持批量插入。
 
-还可以使用 BULK INSERT 或 OPENROWSET 从 Azure Blob 存储批量读取数据：[批量访问 Azure Blob 存储中的数据的示例](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
+还可以使用 BULK INSERT 或 OPENROWSET 从 Azure Blob 存储批量读取数据：[批量访问 Azure Blob 存储中的数据的示例](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
 
 “超大规模”数据库中不支持简单恢复或批量日志记录模式。 提供高可用性和时点恢复需要完整恢复模式。 但是，相比于其他 Azure SQL 数据库服务层级而言，“超大规模”日志体系结构提供更佳的数据引入速率。
 
@@ -269,7 +269,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-for-database-restore-in-hyperscale"></a>“超大规模”中的数据库还原的恢复点目标 (RPO)/恢复时间目标 (RTO) 是什么
 
-RPO 为0分钟。大多数还原操作在60分钟内完成，而不考虑数据库的大小。 对于较大的数据库，还原时间可能较长，并且数据库在还原点之前和之后经历过重要的写入活动。
+RPO 为 0 分钟。无论数据库大小如何，大多数还原操作都将在 60 分钟内完成。 对于较大的数据库，如果该数据库在还原时间点之前（直到还原时间点）进行了大量写入活动，则还原时间可能会更长。
 
 ### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>数据库备份是否影响主要副本或次要副本的计算性能
 
@@ -277,7 +277,7 @@ RPO 为0分钟。大多数还原操作在60分钟内完成，而不考虑数据�
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>能否对“超大规模”数据库执行异地还原
 
-是的。 完全支持异地还原。 与时间点还原不同，异地还原需要数据大小操作。 将并行复制数据文件，因此此操作的持续时间主要取决于数据库中最大文件的大小，而不是数据库总大小。 如果将数据库还原到与源数据库的区域[配对](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的 Azure 区域中，则异地还原时间会明显缩短。
+是的。 完全支持异地还原。 与时间点还原不同，异地还原需要数据大小操作。 将并行复制数据文件，因此此操作的持续时间主要取决于数据库中最大文件的大小，而不是数据库总大小。 如果将数据库还原到与源数据库的区域[配对](../../best-practices-availability-paired-regions.md)的 Azure 区域中，则异地还原时间会明显缩短。
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>能否对“超大规模”数据库设置异地复制
 
@@ -345,9 +345,9 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存�
 
 是由最终用户触发的。 不是自动的。  
 
-### <a name="does-the-size-of-my-tempdb-database-and-rbpex-cache-also-grow-as-the-compute-is-scaled-up"></a>在 `tempdb` 计算扩展时，数据库和 RBPEX 缓存的大小也会增长
+### <a name="does-the-size-of-my-tempdb-database-and-rbpex-cache-also-grow-as-the-compute-is-scaled-up"></a>计算纵向扩展时，`tempdb` 数据库和 RBPEX 缓存的大小是否也会随之增长
 
-可以。 `tempdb`随着内核数量的增加，计算节点上的数据库和[RBPEX 缓存](service-tier-hyperscale.md#distributed-functions-architecture)大小将自动增加。
+能。 随着内核数量的增加，计算节点上的 `tempdb` 数据库和 [RBPEX 缓存](service-tier-hyperscale.md#distributed-functions-architecture) 大小将自动增加。
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>能否预配多个主要计算副本（例如多主数据库系统，其中多个主要计算标头可以驱动更高的并发级别）？
 
@@ -357,11 +357,11 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存�
 
 ### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>可以预配多少个次要计算副本
 
-默认情况下，我们将为“超大规模”数据库创建一个辅助副本。 若要调整副本数目，可以使用 [Azure 门户](https://portal.azure.com)或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)。
+默认情况下，我们将为“超大规模”数据库创建一个辅助副本。 若要调整副本数目，可以使用 [Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/sql/databases/createorupdate)。
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>如何连接到这些次要计算副本
 
-将连接字符串的 `ApplicationIntent` 参数设置为 `ReadOnly`，即可连接到这些额外的只读计算副本。 任何标记为 `ReadOnly` 的连接均自动路由到某个额外的只读计算副本。 有关详细信息，请参阅 [使用只读副本卸载只读查询工作负荷](read-scale-out.md)。
+将连接字符串的 `ApplicationIntent` 参数设置为 `ReadOnly`，即可连接到这些额外的只读计算副本。 任何标记为 `ReadOnly` 的连接均自动路由到某个额外的只读计算副本。 有关详细信息，请参阅[使用只读副本卸载只读的查询工作负载](read-scale-out.md)。
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-replica-using-ssms-or-other-client-tools"></a>如何使用 SSMS 或其他客户端工具验证是否已成功连接到辅助计算副本？
 
@@ -390,7 +390,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存�
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>主要和次要计算副本之间的延迟是多少
 
-从事务在主副本上提交到其在辅助数据库上可读的时间的数据延迟取决于当前日志生成速率、事务大小、副本上的负载以及其他因素。 小型事务的典型数据延迟为数十毫秒，但数据延迟没有上限。 给定辅助副本上的数据始终处于事务一致状态。 但对于不同的辅助副本，在给定的时间点数据延迟可能不同。 需要直接读取已提交数据的工作负荷应在主副本上运行。
+从在主要副本上提交事务的时间开始算起，到该事务在次要副本上可读的时间为止，数据延迟取决于当前日志生成速率、事务大小、副本上的负载以及其他因素。 小型事务的典型数据延迟为数十毫秒，但数据延迟没有上限。 给定次要副本上的数据始终在事务上保持一致。 但在给定的时间点，不同次要副本的数据延迟可能不同。 需要立即读取已提交数据的工作负载应在主要副本上运行。
 
 ## <a name="next-steps"></a>后续步骤
 

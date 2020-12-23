@@ -1,21 +1,21 @@
 ---
 title: 设计器的示例管道和数据集
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习设计器中的示例来快速开始生成机器学习管道。
+description: 了解如何使用 Azure 机器学习设计器中的示例来快速开始生成机器学习管道。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a27e18d9b6f6307f1cc8ed48ca897dd4d1f0f1f3
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889751"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555492"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>用于 Azure 机器学习设计器的管道和数据集示例
 
@@ -67,8 +67,8 @@ ms.locfileid: "90889751"
 
 | 标题示例 | 说明 | 
 | --- | --- |
-| [回归 - 汽车价格预测（基本）](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md)。 | 使用线性回归预测汽车价格。 |
-| [回归 - 汽车价格预测（高级）](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | 使用决策林和提升决策树回归器预测汽车价格。 比较模型以找出最佳算法。
+| [回归 - 汽车价格预测（基本）](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-basic.md)。 | 使用线性回归预测汽车价格。 |
+| [回归 - 汽车价格预测（高级）](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) | 使用决策林和提升决策树回归器预测汽车价格。 比较模型以找出最佳算法。
 
 ## <a name="classification"></a>分类
 
@@ -76,19 +76,17 @@ ms.locfileid: "90889751"
 
 | 标题示例 | 说明 | 
 | --- | --- |
-| [通过特征选择进行二元分类 - 收入预测](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | 使用双类提升决策树预测收入的高低。 使用皮尔逊相关选择特征。
-| [通过自定义 Python 脚本进行二元分类 - 信用风险预测](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | 将信贷申请分类为高风险或低风险。 使用“执行 Python 脚本”模块为数据加权。
-| [二元分类 - 客户关系预测](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | 使用双类提升决策树预测客户流失率。 使用 SMOTE 对有偏差的数据采样。
-| [文本分类 - 维基百科 SP 500 数据集](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | 使用多类逻辑回归对维基百科文章中的公司类型进行分类。 |
+| [通过特征选择进行二元分类 - 收入预测](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | 使用双类提升决策树预测收入的高低。 使用皮尔逊相关选择特征。
+| [通过自定义 Python 脚本进行二元分类 - 信用风险预测](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | 将信贷申请分类为高风险或低风险。 使用“执行 Python 脚本”模块为数据加权。
+| [二元分类 - 客户关系预测](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | 使用双类提升决策树预测客户流失率。 使用 SMOTE 对有偏差的数据采样。
+| [文本分类 - 维基百科 SP 500 数据集](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | 使用多类逻辑回归对维基百科文章中的公司类型进行分类。 |
 | 多类分类 - 字母识别 | 创建二元分类器的系综，对手写字母进行分类。 |
 
 ## <a name="computer-vision"></a>计算机视觉
 
 探索这些内置的计算机视觉示例。 对于未提供文档链接的示例，可将其打开并查看模块注释来详细了解这些示例。
 
-| 标题示例 | 说明 | 
-| --- | --- |
-| 基于广度和深度的推荐 - 餐馆评分预测 | 基于餐馆/用户功能和评分构建餐馆推荐器引擎。|
+| 使用 DenseNet 的印象分类 | 使用计算机视觉模块基于 PyTorch DenseNet 构建图像分类模型。| 
 
 ## <a name="recommender"></a>推荐器
 
@@ -96,7 +94,8 @@ ms.locfileid: "90889751"
 
 | 标题示例 | 说明 | 
 | --- | --- |
-| 使用 DenseNet 进行的图像分类 | 使用计算机视觉模块基于 PyTorch DenseNet 构建图像分类模型。| 
+| 基于广度和深度的推荐 - 餐馆评分预测 | 基于餐馆/用户功能和评分构建餐馆推荐器引擎。|
+| 推荐 - 电影评级推文 | 基于电影/用户特征和评级生成电影推荐器引擎。|
 
 ## <a name="utility"></a>实用工具
 
@@ -105,7 +104,7 @@ ms.locfileid: "90889751"
 | 标题示例 | 说明 | 
 | --- | --- |
 | 使用 Vowpal Wabbit 模型的二元分类 - 成人收入预测 | Vowpal Wabbit 是一个机器学习系统，它使用在线、哈希、全约简、约简、learning2search、主动和交互式学习等技术来开拓机器学习的领域。 此示例展示了如何使用 Vowpal Wabbit 模型来构建二元分类模型。 
-| [使用自定义 R 脚本 - 航班延误预测](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | 使用自定义 R 脚本预测所计划的客运航班是否会延迟 15 分钟以上。
+| [使用自定义 R 脚本 - 航班延误预测](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/r-script-flight-delay-prediction.md) | 使用自定义 R 脚本预测所计划的客运航班是否会延迟 15 分钟以上。
 | 二元分类的交叉验证 - 成人收入预测 | 使用交叉验证生成用于预测成人收入的二元分类器。
 | 排列特征重要性 | 使用排列特征重要性来计算测试数据集的重要性评分。 
 | 优化二元分类的参数 - 成人收入预测 | 使用“优化模型超参数”找出用于生成二元分类器的最佳超参数。 |
@@ -119,7 +118,7 @@ ms.locfileid: "90889751"
 | 数据集名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 数据集说明 |
 |-------------|:--------------------|
 | 成年人口收入二元分类数据集 | 1994 年人口普查数据库的子集（其中在职人士年龄大于 16，调整后的收入指数大于 100）。<br/>**使用情况**：使用人口统计信息对人员分类，预测某人的年收入是否超过 5 万。<br/> **相关研究**：Kohavi, R.、Becker, B.（1996 年）。 [UCI 机器学习存储库](https://archive.ics.uci.edu/ml)。 加州大学欧文分校的信息与计算机科学学院|
-|汽车价格数据（原始）|有关汽车品牌和型号的信息，包括价格、汽缸数和 MPG 等特性以及保险风险评分。<br/> 风险评分最初与自动定价关联。 然后，针对精算师所熟知符号化过程中的实际风险进行调整。 值为 +3 表明汽车存在风险，值为 -3 表明汽车可能安全。<br/>**用法**：</b>按特性、使用回归或多元分类预测风险评分。<br/>**相关研究**：</b>Schlimmer, J.C. （1987 年）。 [UCI 机器学习存储库](https://archive.ics.uci.edu/ml)。 加州大学欧文分校的信息与计算机科学学院。 |
+|汽车价格数据（原始）|有关汽车品牌和型号的信息，包括价格、汽缸数和 MPG 等特性以及保险风险评分。<br/> 风险评分最初与自动定价关联。 然后，针对精算师所熟知符号化过程中的实际风险进行调整。 值为 +3 表明汽车存在风险，值为 -3 表明汽车可能安全。<br/>**使用情况**：按特性、使用回归或多元分类预测风险评分。<br/>**相关研究**：Schlimmer, J.C. （1987 年）。 [UCI 机器学习存储库](https://archive.ics.uci.edu/ml)。 加州大学欧文分校的信息与计算机科学学院。 |
 | 共享的 CRM 亲和力标签 |来自 KDD Cup 2009 客户关系预测挑战赛的标签 ([orange_small_train_appetency.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels))。|
 |共享的 CRM 流失情况标签|来自 KDD Cup 2009 客户关系预测挑战赛的标签 ([orange_small_train_churn.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels))。|
 |共享的 CRM 数据集 | 此数据来自 KDD Cup 2009 客户关系预测挑战赛 ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip))。 <br/>数据集包含法国电信公司 Orange 的 50K 个客户。 每个客户都有 230 个匿名特征，其中 190 个是数字的，其余 40 个是分类的。 特征非常稀疏。 |
@@ -130,7 +129,9 @@ ms.locfileid: "90889751"
 |电影评分|该数据集是电影迷你推文数据集的扩展版本。 数据集中具有 170K 个电影评分，从 Twitter 上结构良好的推文中提取。 每个实例表示一篇推文，是一个元组：用户 ID、IMDB 电影 ID、评分、时间戳、收藏此推文的数目和转发此推文的数目。 数据集由 A. Said、S. Dooms、B. Loni 和 D. Tikk 提供，用于 Recommender Systems Challenge 2014。|
 |天气数据集|美国国家海洋和大气局每小时发布的陆基天气观测（[从 201304 到 201310 的合并数据](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)）。<br/>该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 在上传到设计器之前，数据集的处理如下所述：    <br/> -    气象站 ID 已映射到相应的机场 ID    <br/> -    与 70 个最繁忙的机场无关的气象站已筛选掉    <br/> -    Date 列已拆分为单独的 Year、Month 和 Day 列    <br/> - 已选择以下各列：AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter|
 |维基百科 SP 500 数据集|数据来自维基百科 (https://www.wikipedia.org/) ，基于每个标准普尔 500 强公司的文章，存储为 XML 数据。    <br/>在上传到设计器之前，数据集的处理如下所述：    <br/> - 提取每个具体公司的文本内容    <br/> -    去除 wiki 格式设置    <br/> -    去除非字母数字字符    <br/> -    将所有文本都转换为小写    <br/> -    添加了已知的公司类别    <br/>请注意，可能找不到某些公司的文章，因此记录数小于 500。|
-
+|餐馆特色数据| 一组关于餐馆及其特色的元数据，如食物种类、就餐样式和位置。 <br/>**使用情况**：将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。<br/> **相关研究**：Bache, K. 和 Lichman, M.（2013 年）。 [UCI 机器学习存储库](https://archive.ics.uci.edu/ml)。 加州大学欧文分校的信息与计算机科学学院。|
+|餐馆评分| 包含用户对餐馆的评分，分数范围从 0 到 2。<br/>**使用情况**：将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 <br/>**相关研究**：Bache, K. 和 Lichman, M.（2013 年）。 [UCI 机器学习存储库](https://archive.ics.uci.edu/ml)。 加州大学欧文分校的信息与计算机科学学院。|
+|餐馆客户数据| 一组关于客户的元数据，其中包括人口统计信息和偏好。 <br/>**使用情况**：将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 <br/> **相关研究**：Bache, K. 和 Lichman, M.（2013 年）。 [UCI 机器学习存储库](https://archive.ics.uci.edu/ml) Irvine, CA：欧文分校的信息与计算机科学学院。|
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -14,14 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994620"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494771"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中通过用户和实体行为分析来识别高级威胁 (UEBA) 
+
+> [!IMPORTANT]
+>
+> - UEBA 和实体页功能现已在以下 Azure Sentinel 地理位置和区域 **公开上市** ：
+>    - 美国地域
+>    - 西欧地区
+>    - 澳大利亚地区
+>
+> - 在所有其他地理位置和区域，这些功能在 **预览** 阶段仍保留下来。 请参阅 [**Microsoft Azure 预览版的补充使用条款**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，了解适用于 Azure 功能的其他法律条款，这些功能适用于 beta 版、预览版或其他情况下尚未公开上市。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>什么是用户和实体行为分析 (UEBA) ？
 
@@ -64,9 +73,41 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 
 有关其工作原理的示例，请参阅如何在 [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) 中使用行为分析。
 
+## <a name="entities-in-azure-sentinel"></a>Azure 中的实体 Sentinel
 
+### <a name="entity-identifiers"></a>实体标识符
 
-## <a name="entity-pages"></a>实体页
+当向 Azure Sentinel 发送警报时，它们将包含 Azure Sentinel 标识并分类为实体的数据元素，例如用户帐户、主机、IP 地址和其他实体。 有时，如果警报不包含有关实体的足够信息，则此标识可能是一个难题。
+
+例如，可以通过多种方式标识用户帐户：使用 Azure AD 帐户的数字标识符 (GUID) 或其用户主体名称 (UPN) 值，或者使用其用户名及其 NT 域名的组合。 不同数据源可以通过不同方式标识同一用户。 因此，只要有可能，Azure Sentinel 就会将这些标识符合并到单个实体中，以便能够正确地识别。
+
+但可能会发生这种情况：其中一个资源提供程序创建了一个未充分标识实体的警报（例如，没有域名上下文的用户名）。 在这种情况下，不能将用户实体与相同用户帐户的其他实例进行合并，这会被标识为单独的实体，而这两个实体将保持独立，而不是统一。
+
+为了最大限度地降低这种情况发生的风险，您应该验证所有警报提供程序是否都正确地识别了它们产生的警报中的实体。 此外，将用户帐户实体与 Azure Active Directory 同步可能会创建统一目录，从而能够合并用户帐户实体。
+
+以下类型的实体当前在 Azure Sentinel 中标识：
+
+- 用户帐户 (帐户) 
+- 主机
+- Ip 地址 (IP) 
+- 恶意软件
+- 文件
+- 过程
+- 云应用程序 (CloudApplication) 
+- 域名 (DNS) 
+- Azure 资源
+- 文件 (Get-filehash) 
+- 注册表项
+- 注册表值
+- 安全组
+- URL
+- IoT 设备
+- 邮箱
+- 邮件群集
+- 邮件
+- 提交邮件
+
+### <a name="entity-pages"></a>实体页
 
 如果你遇到当前限制为用户和主机在搜索、警报或调查中) 的任何实体 (，则可以选择该实体，并将其转到 **实体页**，这是有关该实体的有用信息的完整数据表。 你将在此页上看到的信息类型包括有关实体的基本信息、与此实体相关的明显事件的时间线以及有关实体行为的见解。
  
@@ -87,7 +128,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 
 时间线中包含以下类型的项：
 
-- 警报-实体定义为 **映射实体**的任何警报。 请注意，如果你的组织已 [使用分析规则创建了自定义警报](./tutorial-detect-threats-custom.md)，你应该确保规则的实体映射正确完成。
+- 警报-实体定义为 **映射实体** 的任何警报。 请注意，如果你的组织已 [使用分析规则创建了自定义警报](./tutorial-detect-threats-custom.md)，你应该确保规则的实体映射正确完成。
 
 - 书签-包含页面上显示的特定实体的任何书签。
 
@@ -139,7 +180,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 
 ### <a name="querying-behavior-analytics-data"></a>查询行为分析数据
 
-使用 [KQL](https://docs.microsoft.com/azure/data-explorer/kusto/query/)，可以查询行为分析表。
+使用 [KQL](/azure/data-explorer/kusto/query/)，可以查询行为分析表。
 
 例如，如果要查找无法登录到 Azure 资源的用户的所有情况，在这种情况下，用户第一次尝试从给定的国家/地区进行连接，并且来自该国家/地区的连接不常见，但对于用户的对等，我们可以使用以下查询：
 
@@ -164,7 +205,7 @@ Azure Sentinel 根据用户的 Azure AD 安全组成员身份、邮件列表等�
 
 权限分析有助于确定攻击者对组织资产造成的潜在影响。 这种影响也称为资产的 "群发 radius"。 安全分析师可以使用此信息来确定调查和事件处理的优先级。
 
-Azure Sentinel 通过评估用户可以直接或通过组或服务主体访问的 Azure 订阅，确定给定用户对 Azure 资源持有的直接和可传递访问权限。 此信息以及用户 Azure AD 安全组成员身份的完整列表将存储在 **UserAccessAnalytics** 表中。 下面的屏幕截图显示了 UserAccessAnalytics 表中用户 Alex Johnson 的示例行。 **源实体** 是用户或服务主体帐户， **目标实体** 是源实体有权访问的资源。 " **访问级别** " 和 " **访问类型** " 的值取决于目标实体的访问控制模型。 你可以看到，Alex 有权访问 Azure 订阅 *Contoso 酒店租户*。 订阅的访问控制模型为 RBAC。   
+Azure Sentinel 通过评估用户可以直接或通过组或服务主体访问的 Azure 订阅，确定给定用户对 Azure 资源持有的直接和可传递访问权限。 此信息以及用户 Azure AD 安全组成员身份的完整列表将存储在 **UserAccessAnalytics** 表中。 下面的屏幕截图显示了 UserAccessAnalytics 表中用户 Alex Johnson 的示例行。 **源实体** 是用户或服务主体帐户， **目标实体** 是源实体有权访问的资源。 " **访问级别** " 和 " **访问类型** " 的值取决于目标实体的访问控制模型。 你可以看到，Alex 有权访问 Azure 订阅 *Contoso 酒店租户*。 订阅的访问控制模型是 Azure RBAC。   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="用户访问分析表的屏幕截图":::
 

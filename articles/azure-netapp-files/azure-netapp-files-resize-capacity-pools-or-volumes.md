@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325498"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012470"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>重设容量池或卷的大小
 可以根据需要更改容量池或卷的大小。 
@@ -36,7 +36,7 @@ ms.locfileid: "91325498"
 
 可以根据需要更改卷大小。 卷的容量消耗是依据其池的预配容量计数的。
 
-1. 在“管理 NetApp 帐户”边栏选项卡中，单击“卷”****。 
+1. 在“管理 NetApp 帐户”边栏选项卡中，单击“卷”。 
 2. 右键单击要重设大小的卷的名称，或单击卷所在行末尾的“...”图标以显示上下文菜单。
 3. 使用上下文菜单选项来重设卷大小或删除卷。
 

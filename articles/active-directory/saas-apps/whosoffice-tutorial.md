@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c99d1359c1d354e7464d473c6d859afde51577a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 021497fa7766b7eecfa935d4186ecc98edef8d61
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523265"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633682"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>教程：Azure Active Directory 单一登录 (SSO) 与 WhosOffice 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523265"
 * 让用户使用其 Azure AD 帐户自动登录到 WhosOffice。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88523265"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * WhosOffice 支持 **SP 和 IDP** 发起的 SSO
-* 配置 WhosOffice 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 WhosOffice 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -53,7 +53,7 @@ ms.locfileid: "88523265"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **WhosOffice**。 
+1. 在“从库中添加”部分的搜索框中，键入 **WhosOffice** 。 
 1. 在结果面板中选择“WhosOffice”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -135,19 +135,19 @@ ms.locfileid: "88523265"
 
 1. 单击“设置”并选择“公司”。  
 
-    ![WhosOffice 配置](./media/whosoffice-tutorial/configuration1.png)
+    ![显示从“设置”选择了“公司”的屏幕截图。](./media/whosoffice-tutorial/configuration1.png)
 
 1. 单击“应用/集成”。 
 
-    ![WhosOffice 配置](./media/whosoffice-tutorial/configuration2.png)
+    ![显示从“公司”设置选择了“应用/集成”的屏幕截图。](./media/whosoffice-tutorial/configuration2.png)
 
 1. 在提供程序下拉列表中选择“Microsoft Azure”，然后单击“激活登录提供程序”。  
 
-    ![WhosOffice 配置](./media/whosoffice-tutorial/configuration3.png)
+    ![显示为 Microsoft Azure 选择了“激活登录提供程序”的屏幕截图。](./media/whosoffice-tutorial/configuration3.png)
 
 1. 单击“上传”选项，上传从 Azure 门户下载的联合元数据文件。 
     
-    ![WhosOffice 配置](./media/whosoffice-tutorial/configuration4.png)
+    ![显示元数据文件的“上传”选项的屏幕截图。](./media/whosoffice-tutorial/configuration4.png)
 
 ### <a name="create-whosoffice-test-user"></a>创建 WhosOffice 测试用户
 
@@ -155,30 +155,30 @@ ms.locfileid: "88523265"
 
 1. 单击“设置”并选择“用户”。  
 
-    ![WhosOffice 配置](./media/whosoffice-tutorial/user1.png)
+    ![显示从“设置”选择了“用户”的屏幕截图。](./media/whosoffice-tutorial/user1.png)
 
 1. 选择“创建新用户”。 
 
-    ![WhosOffice 配置](./media/whosoffice-tutorial/user2.png)
+    ![显示“创建新用户”选项的屏幕截图。](./media/whosoffice-tutorial/user2.png)
 
 1. 根据组织要求提供该用户的必要详细信息。
 
-    ![WhosOffice 配置](./media/whosoffice-tutorial/user3.png)
+    ![显示“新建用户”对话框的屏幕截图，你可以在其中输入用户数据。](./media/whosoffice-tutorial/user3.png)
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“WhosOffice”磁贴时，应会自动登录到设置了 SSO 的 WhosOffice。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“WhosOffice”磁贴时，应会自动登录到设置了 SSO 的 WhosOffice。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 WhosOffice](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: a32a5a04c5c71cc06d60f3d2f21946f5361a2afd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080448"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843241"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
 本文介绍规模集的实例 ID 和显示这些 ID 的各种方法。
@@ -60,13 +60,13 @@ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 如你所见，“instanceId”属性只是一个十进制数。 删除旧实例后，实例 ID 可以重新用于新实例。
 
 >[!NOTE]
-> 对于将实例 ID 分配给规模集中的 VM 的方式**没有保证**。 有时它们可能会按顺序递增，但并非总是这种情况。 不要依赖于将实例 ID 分配给 VM 的特定方式。
+> 对于将实例 ID 分配给规模集中的 VM 的方式 **没有保证**。 有时它们可能会按顺序递增，但并非总是这种情况。 不要依赖于将实例 ID 分配给 VM 的特定方式。
 
 ## <a name="scale-set-vm-names"></a>规模集 VM 名称
 
 在上面的示例输出中，也有 VM 的“名称”。 此名称采用“{scale-set-name}_{instance-id}”格式。 在 Azure 门户中列出规模集中的实例时会看到此名称：
 
-![显示 Azure 门户中虚拟机规模集中的实例列表的屏幕截图。](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
+![显示 Azure 门户中虚拟机规模集的实例列表的屏幕截图。](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
 名称的 {instance-id} 部分是与前面所述的“instanceId”属性相同的十进制数。
 

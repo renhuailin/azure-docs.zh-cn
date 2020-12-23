@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 将 X.509 设备注册到 Azure 设备预配服务
+title: 快速入门 - 使用 Java 将 X.509 设备注册到 Azure 设备预配服务
 description: 本快速入门使用组注册和单独注册。 在本快速入门中，需使用 Java 将 X.509 设备注册到 Azure IoT 中心设备预配服务 (DPS)。
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 1d1b4e2573519fbd033121763d3e7fe6b071f075
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8591220eb80d9c60ed7873be546007449ab46f89
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327015"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463030"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "87327015"
 
 - 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
+- [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
 - [Maven 3](https://maven.apache.org/download.cgi)。
 - [Git](https://git-scm.com/download/)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "87327015"
 
 下面的步骤展示了如何向示例代码添加 X.509 设备的预配详细信息。 
 
-1. 打开命令提示符。 使用 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 克隆设备注册代码示例的 GitHub 存储库：
+1. 打开命令提示符。 使用 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) 克隆设备注册代码示例的 GitHub 存储库：
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -62,7 +62,7 @@ ms.locfileid: "87327015"
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    2. 添加此组设备的根证书。 如需示例根证书，请使用 _X.509 证书生成器_工具，如下所示：
+    2. 添加此组设备的根证书。 如需示例根证书，请使用 _X.509 证书生成器_ 工具，如下所示：
         1. 在命令窗口中，导航到文件夹 **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** 。
         2. 通过运行以下命令来生成工具：
 
@@ -146,7 +146,7 @@ Azure IoT 设备预配服务支持两类注册：
     mvn install -DskipTests
     ```
 
-   此命令将 Maven 包 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下载到计算机。 此包包括示例代码需要生成的适用于 Java 服务 SDK 的二进制文件。 如果在上一部分运行了 _X.509 证书生成器_工具，则此包已下载到计算机上。 
+   此命令将 Maven 包 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下载到计算机。 此包包括示例代码需要生成的适用于 Java 服务 SDK 的二进制文件。 如果在上一部分运行了 _X.509 证书生成器_ 工具，则此包已下载到计算机上。 
 
 3. 运行示例，方法是在命令窗口使用以下命令：
 
@@ -165,7 +165,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 若要注册单个 X.509 设备，请修改[使用 Java 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务](quick-enroll-device-tpm-java.md#javasample)一文中使用的单个注册  示例代码，如下所示：
 
-1.  将 X.509 客户端证书的“公用名称”复制到剪贴板。 如果希望使用[上一示例代码部分](#javasample)所示的  X.509 证书生成器工具，请输入证书的“公用名称”，或者使用默认的  **microsoftriotcore**。 将该“公用名称”用作  *REGISTRATION_ID* 变量的值。 
+1.  将 X.509 客户端证书的“公用名称”复制到剪贴板。 如果希望使用 [上一示例代码部分](#javasample)所示的  X.509 证书生成器工具，请输入证书的“公用名称”，或者使用默认的  **microsoftriotcore**。 将该“公用名称”用作  *REGISTRATION_ID* 变量的值。 
 
     ```Java
     // Use common name of your X.509 client certificate

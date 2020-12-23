@@ -1,17 +1,17 @@
 ---
 title: 定价层 - Azure Database for MySQL
 description: 了解 Azure Database for MySQL 的各种定价层，包括计算代系、存储类型、存储大小、vCore 数、内存和备份保留期。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 10/14/2020
+ms.openlocfilehash: c70e4a097a56b76089a26510bcf33b4c7c24c266
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171003"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018709"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
@@ -37,7 +37,7 @@ ms.locfileid: "87171003"
 
 ## <a name="compute-generations-and-vcores"></a>计算代数和 vCore 数
 
-计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 中国东部1、中国北部1、US DoD 中部和 US DoD 东部利用基于 Intel E5-2673 v3 （Haswell） 2.4 GHz 处理器的第4代逻辑 Cpu。 所有其他区域均利用基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器的第 5 代逻辑 CPU。
+计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 中国东部1、中国北部1、US DoD 中部和 US DoD 东部利用基于 Intel E5-2673 v3 的第4代逻辑 Cpu (Haswell) 2.4 GHz 处理器。 所有其他区域均利用基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器的第 5 代逻辑 CPU。
 
 ## <a name="storage"></a>存储
 
@@ -48,10 +48,10 @@ ms.locfileid: "87171003"
 | 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
-| IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS |
+| IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!NOTE]
-> 以下区域支持存储最多16TB 和 20000 IOPS：美国东部、美国东部2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部、美国西部2和美国西部。
+> 以下区域支持存储最多16TB 和 20000 IOPS：美国东部、美国东部2、美国中部、巴西南部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东部、日本东部、澳大利亚东部、澳大利亚东南部、美国西部2、美国中部、加拿大东部和加拿大中部。
 >
 > 所有其他区域支持最大4TB 的存储，最高可达 6000 IOPS。
 >
@@ -85,7 +85,7 @@ ms.locfileid: "87171003"
 
 ## <a name="backup-storage"></a>备份存储 
 
-Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 超出此数量的任何备份存储都按每月 GB 的费率计费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250 GB 的备份的存储按[定价模式](https://azure.microsoft.com/pricing/details/mysql/)收费。 若要了解影响备份存储使用情况、监视和控制备份存储成本的因素，可参阅[备份文档](concepts-backup.md)。
+Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何备份存储量超过此数量将按每月 GB 量收费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250GB 的备份存储量按[定价模型](https://azure.microsoft.com/pricing/details/mysql/)收费。 若要了解影响备份存储使用率的因素、监视和控制备份存储成本，可以参考[备份文档](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 
@@ -97,7 +97,7 @@ Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作�
 
 ## <a name="pricing"></a>定价
 
-有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mysql/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MySQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”****，展开“数据库”**** 类别，选择“Azure Database for MySQL”**** 自定义选项。
+有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mysql/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MySQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”，展开“数据库”类别，选择“Azure Database for MySQL”自定义选项。
 
 ## <a name="next-steps"></a>后续步骤
 

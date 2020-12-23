@@ -2,14 +2,14 @@
 title: 教程 - 使用 Docker Compose 部署多容器组
 description: 使用 Docker Compose 构建并运行多容器应用程序，然后将该应用程序引入到 Azure 容器实例中
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708241"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913834"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>教程：使用 Docker Compose 部署多容器组 
 
@@ -67,14 +67,16 @@ cd azure-voting-app-redis
 version: '3'
 services:
   azure-vote-back:
-    image: redis
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
     ports:
         - "6379:6379"
 
   azure-vote-front:
     build: ./azure-vote
-    image: azure-vote-front
+    image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
     container_name: azure-vote-front
     environment:
       REDIS: azure-vote-back
@@ -93,8 +95,10 @@ services:
 version: '3'
 services:
   azure-vote-back:
-    image: redis
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
     ports:
         - "6379:6379"
 
@@ -128,7 +132,7 @@ $ docker images
 
 REPOSITORY                                TAG        IMAGE ID            CREATED             SIZE
 myregistry.azurecr.io/azure-vote-front    latest     9cc914e25834        40 seconds ago      944MB
-redis                                     latest     a1b99da73d05        7 days ago          104MB
+mcr.microsoft.com/oss/bitnami/redis       6.0.8      3a54a920bb6c        4 weeks ago          103MB
 tiangolo/uwsgi-nginx-flask                python3.6  788ca94b2313        9 months ago        9444MB
 ```
 
@@ -137,9 +141,9 @@ tiangolo/uwsgi-nginx-flask                python3.6  788ca94b2313        9 month
 ```
 $ docker ps
 
-CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS                           NAMES
-82411933e8f9        myregistry.azurecr.io/azure-vote-front  "/entrypoint.sh /sta…"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:80->80/tcp   azure-vote-front
-b68fed4b66b6        redis                                   "docker-entrypoint.s…"   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
+CONTAINER ID        IMAGE                                      COMMAND                  CREATED             STATUS              PORTS                           NAMES
+82411933e8f9        myregistry.azurecr.io/azure-vote-front     "/entrypoint.sh /sta…"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:80->80/tcp   azure-vote-front
+b62b47a7d313        mcr.microsoft.com/oss/bitnami/redis:6.0.8  "/opt/bitnami/script…"   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
 若要查看正在运行的应用程序，请在本地 Web 浏览器中输入 `http://localhost:80`。 示例应用程序会加载，如以下示例所示：
@@ -205,14 +209,14 @@ docker ps
 示例输出：
 
 ```
-CONTAINER ID                           IMAGE                                    COMMAND             STATUS              PORTS
-azurevotingappredis_azure-vote-back    redis                                                        Running             52.179.23.131:6379->6379/tcp
-azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                       Running             52.179.23.131:80->80/tcp
+CONTAINER ID                           IMAGE                                         COMMAND             STATUS              PORTS
+azurevotingappredis_azure-vote-back    mcr.microsoft.com/oss/bitnami/redis:6.0.8                         Running             52.179.23.131:6379->6379/tcp
+azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                            Running             52.179.23.131:80->80/tcp
 ```
 
 若要查看云中正在运行的应用程序，请在本地 Web 浏览器中输入显示的 IP 地址。 在此示例中，输入 `52.179.23.131`。 示例应用程序会加载，如以下示例所示：
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="ACI 中的投票应用的图像":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="投票应用的图像":::
 
 若要查看前端容器的日志，请运行 [docker logs](https://docs.docker.com/engine/reference/commandline/logs) 命令。 例如：
 

@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0932104c55e705c76a8d2b086edf828caf60520
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f8e0d49c2a35a1e97c79e6d4b8c867a4a8ab88b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044084"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006672"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
 ## <a name="introduction-the-monitor-page"></a>简介：监视页
-Azure 门户提供了可用于监视和排查查询和作业性能问题的关键性能指标。 若要查看这些指标，请浏览到想要查看其指标的流分析作业并查看“概览”页上的“监视” **** 部分。  
+Azure 门户提供了可用于监视和排查查询和作业性能问题的关键性能指标。 若要查看这些指标，请浏览到想要查看其指标的流分析作业并查看“概览”页上的“监视”  部分。  
 
 ![流分析作业监视链接](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
@@ -39,17 +39,17 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 | 输入事件字节数      | 流分析作业收到的数据量（以字节为单位）。 这可以用于验证正在发送到输入源的事件。 |
 | 输入事件数           | 从输入事件反序列化的记录数。 此计数不包括导致反序列化错误的传入事件。 在内部恢复和自联接等方案中，流分析可以多次引入相同的事件。 因此，如果作业包含简单的“传递”查询，则建议不要预期输入事件与输出事件的指标相匹配。 |
 | 收到的输入源数       | 作业收到的消息数。 对于事件中心，消息是单个 EventData。 对于 Blob，消息是单个 Blob。 请注意，输入源在反序列化之前不计数。 如果存在反序列化错误，则输入源数可能大于输入事件数。 否则，它可能小于或等于输入事件数，因为每条消息可能包含多个事件。 |
-| 延迟输入事件数      | 到达时间晚于已配置的延迟到达容错时段的事件。 详细了解 [Azure 流分析事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。 |
+| 延迟输入事件数      | 到达时间晚于已配置的延迟到达容错时段的事件。 详细了解 [Azure 流分析事件顺序注意事项](./stream-analytics-time-handling.md)。 |
 | 无序事件数    | 收到的无序事件的数目，系统根据事件排序策略来删除这些事件，或者为其提供一个经过调整的时间戳。 这可能会受“无序容错时段”设置的影响。 |
 | 输出事件数          | 流分析作业发送到输出目标的数据量，以事件计数来衡量。 |
 | 运行时错误         | 与查询处理相关的错误总数（不包括引入事件或输出结果时发现的错误） |
-| 流单元利用率 %       | 从作业的“比例”选项卡向一个作业分配的流单元利用率。 如果此指标达到 80% 或以上，则很可能会出现事件处理延迟或停止处理的情况。 |
+| 流单元利用率 %       | 如果资源利用率持续超过80%，则水位线延迟会上升，而囤积事件的数量会增加，因此请考虑增加流式处理单位。 "高使用率" 指示作业使用接近分配的最大资源数。 |
 | 水印延迟       | 作业中所有输出的所有分区之间的最大水印延迟。 |
 
-可以使用这些指标来[监视流分析作业的性能](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)。 
+可以使用这些指标来[监视流分析作业的性能](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)。 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>在 Azure 门户中自定义监视
-可以在“编辑图表”设置中调整图表类型、显示的指标和时间范围。 有关详细信息，请参阅[如何自定义监视](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
+可以在“编辑图表”设置中调整图表类型、显示的指标和时间范围。 有关详细信息，请参阅[如何自定义监视](../azure-monitor/platform/data-platform.md)。
 
   ![流分析查询监视器时间图](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
@@ -59,11 +59,11 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 此时间是作业的最新输出的应用程序时间（即，使用来自事件数据的时间戳的时间）。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请参阅[有关 Azure 流分析的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
+如需进一步的帮助，请参阅[有关 Azure 流分析的 Microsoft 问答页](/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)

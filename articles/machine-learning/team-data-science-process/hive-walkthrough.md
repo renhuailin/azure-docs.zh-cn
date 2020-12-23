@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336507"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002215"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
@@ -64,7 +64,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 - **二元分类**：预测某个行程是否支付小费。 即大于 $0 的 *tip\_amount* 是正例，等于 $0 的 *tip\_amount* 是反例。
 
   - 级别 0：tip_amount = $0
-  - 类1： tip_amount > $0
+  - 级别 1：tip_amount > $0
 
 - **多类分类**：预测为行程支付的小费金额范围。 我们将 *tip\_amount* 划分成五个类：
 
@@ -85,10 +85,10 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 可以通过三个步骤为使用 HDInsight 群集的高级分析设置 Azure 环境：
 
 1. [创建存储帐户](../../storage/common/storage-account-create.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据也驻留在此处。
-2. [为高级分析过程和技术自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。 此步骤将创建一个在所有节点上都安装有 64 位 Anaconda Python 2.7 的 HDInsight Hadoop 群集。 自定义 HDInsight 群集时需牢记两个重要步骤。
+2. [为高级分析过程和技术自定义 Azure HDInsight Hadoop 群集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 此步骤将创建一个在所有节点上都安装有 64 位 Anaconda Python 2.7 的 HDInsight Hadoop 群集。 自定义 HDInsight 群集时需牢记两个重要步骤。
    
    * 创建 HDInsight 群集时，请记住将其与步骤 1 中创建的存储帐户相链接。 此存储帐户访问在该群集中处理的数据。
-   * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”**** 选项卡，并选择“启用远程”****。 此步骤指定用于远程登录的用户凭据。
+   * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”选项卡，并选择“启用远程”。 此步骤指定用于远程登录的用户凭据。
 3. [创建 Azure 机器学习工作区](../classic/create-workspace.md)：此工作区用于生成机器学习模型。 使用 HDInsight 群集完成初始数据探索并进行下采样后，此任务将得到解决。
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>从公共源获取数据
@@ -99,15 +99,15 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 若要将 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集从其公共位置复制，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法。
 
-此处介绍如何使用 AzCopy 传输包含数据的文件。 若要下载并安装 AzCopy，请按照 [AzCopy 命令行实用工具入门](../../storage/common/storage-use-azcopy.md)中的说明进行操作。
+此处介绍如何使用 AzCopy 传输包含数据的文件。 若要下载并安装 AzCopy，请按照 [AzCopy 命令行实用工具入门](../../storage/common/storage-use-azcopy-v10.md)中的说明进行操作。
 
-1. 在命令提示符窗口中，运行以下 AzCopy 命令，请将 \<path_to_data_folder> 替换为所需目标**：
+1. 在命令提示符窗口中，运行以下 AzCopy 命令，请将 \<path_to_data_folder> 替换为所需目标：
 
     ```console
     "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
     ```
 
-1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹在下文中称为 \<path\_to\_unzipped_data\_files\>**。
+1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹在下文中称为 \<path\_to\_unzipped_data\_files\>。
 
 ## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>将数据上传到 HDInsight Hadoop 群集的默认容器
 > [!NOTE]
@@ -117,23 +117,23 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 在以下 AzCopy 命令中，将以下参数替换为创建 Hadoop 群集和解压缩数据文件时所指定的实际值。
 
-* ***\<path_to_data_folder>*** 计算机上包含解压缩数据文件的目录（及路径）。  
-* ***\<storage account name of Hadoop cluster>*** 与 HDInsight 群集关联的存储帐户。
-* ***\<default container of Hadoop cluster>*** 群集使用的默认容器。 默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
-* ***\<storage account key>*** 群集使用的存储帐户密钥。
+* ***\<path_to_data_folder>** _ 目录 (，以及计算机上包含解压缩数据文件的路径) 。  
+_ * **\<storage account name of Hadoop cluster>** _ 与 HDInsight 群集关联的存储帐户。
+_ * **\<default container of Hadoop cluster>** _ 群集使用的默认容器。 默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
+_ * **\<storage account key>** _ 群集使用的存储帐户的密钥。
 
 在命令提示符或 Windows PowerShell 窗口中，运行以下两个 AzCopy 命令。
 
-此命令将行程数据上传到 Hadoop 群集的默认容器中的 ***nyctaxitripraw*** 目录。
+此命令将行程数据上传到 Hadoop 群集的默认容器中的 _*_nyctaxitripraw_*_ 目录。
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
 ```
 
-此命令将费用数据上传到 Hadoop 群集的默认容器中的 ***nyctaxifareraw*** 目录。
+此命令将费用数据上传到 Hadoop 群集的默认容器中的 ***nyctaxifareraw** _ 目录。
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
 ```
 
 现在，数据应在 Blob 存储中，并且可以在 HDInsight 群集中使用。
@@ -144,9 +144,9 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 > 
 > 
 
-若要访问群集的头节点以进行探索数据分析和数据的下采样，请按照[访问 Hadoop 群集的头节点](customize-hadoop-cluster.md)中所述的过程进行操作。
+若要访问群集的头节点以进行探索数据分析和数据的下采样，请按照[访问 Hadoop 群集的头节点](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中所述的过程进行操作。
 
-在本演练中，我们主要使用 [Hive](https://hive.apache.org/)（一种类似 SQL 的查询语言）编写的查询来执行初步数据探索。 Hive 查询存储在 "hql" 文件中。 然后，对此数据进行下采样，以便用于在机器学习中构建模型。
+在本演练中，我们主要使用 [Hive](https://hive.apache.org/)（一种类似 SQL 的查询语言）编写的查询来执行初步数据探索。 Hive 查询存储在“.hql”文件中。 然后，对此数据进行下采样，以便用于在机器学习中构建模型。
 
 若要准备用于探索数据分析的群集，需将包含相关 Hive 脚本的“.hql”文件从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) 下载到头节点上的本地目录 (C:\temp)。 从群集的头节点中打开命令提示符，并运行以下两个命令：
 
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-这两个命令会将本演练中需要的所有“.hql”文件下载到头节点中的本地目录 C:\temp&#92;******。
+这两个命令会将本演练中所需的所有 "hql" 文件下载到头节点中的本地目录 ***C：\temp&#92;** _。
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>创建按月分区的 Hive 数据库和表
 > [!NOTE]
@@ -182,7 +182,7 @@ cd %hive_home%\bin
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-下面是 C:\temp\sample\_hive\_create\_db\_and\_tables.hql 文件的内容，用于创建 Hive 数据库 nyctaxidb 以及表“行程”和“费用”**** **** **** ****。
+下面是 _ *C:\temp\sample \_ hive \_ create \_ db \_ 和 \_ tables** 文件的内容，用于创建 hive 数据库 **nyctaxidb** 以及表 **行程** 和 **费用**。
 
 ```hiveql
 create database if not exists nyctaxidb;
@@ -550,7 +550,7 @@ hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 * 已付小费（类 1，tip\_amount > $0）  
 * 无小费（类 0，tip\_amount = $0）
 
-以下 sample\_hive\_tipped\_frequencies.hql**** 文件显示要运行的命令：
+以下 sample\_hive\_tipped\_frequencies.hql 文件显示要运行的命令：
 
 ```hiveql
 SELECT tipped, COUNT(*) AS tip_freq
@@ -673,7 +673,7 @@ hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
 为了能够直接从机器学习中的[导入数据][import-data]模块使用已经过下采样的数据，应将上述查询的结果存储到内部 Hive 表中。 接下来，我们将创建一个内部 Hive 表，并使用已联接且已经过下采样的数据填充其内容。
 
-查询直接应用标准 Hive 函数，以从 pickup\_datetime 字段生成以下时间参数****：
+查询直接应用标准 Hive 函数，以从 pickup\_datetime 字段生成以下时间参数：
 - 一天的某一小时
 - 一年的某一周
 - 一周的某一天（“1”代表星期一，而“7”代表星期日）
@@ -813,7 +813,7 @@ where t.sample_key<=0.01
 hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 ```
 
-创建内部表 nyctaxidb.nyctaxi_downsampled_dataset 之后，可以使用机器学习中的[导入数据][import-data]模块访问该表****。 此外，可将此数据集用于构建机器学习模型。  
+创建内部表 nyctaxidb.nyctaxi_downsampled_dataset 之后，可以使用机器学习中的[导入数据][import-data]模块访问该表。 此外，可将此数据集用于构建机器学习模型。  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>使用机器学习中的“导入数据”模块访问已经过下采样的数据
 若要在机器学习的[导入数据][import-data]模块中发出 Hive 查询，你必须访问机器学习工作区。 此外，还需有权访问群集凭据及其关联的存储帐户。
@@ -830,7 +830,7 @@ hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
 **Azure 存储帐户名称**：与群集关联的默认存储帐户的名称。
 
-**Azure 容器名称**：群集的默认容器名称，通常与群集名称相同。 名为 abc123 的群集，它的容器名称为 abc123****。
+**Azure 容器名称**：群集的默认容器名称，通常与群集名称相同。 名为 abc123 的群集，它的容器名称为 abc123。
 
 > [!IMPORTANT]
 > 我们希望使用机器学习中的[导入数据][import-data]模块查询的任何表都必须是内部表。
@@ -920,7 +920,7 @@ hdfs dfs -ls wasb:///D.db/T
 > 
 
 ## <a name="license-information"></a>许可证信息
-此示例演练及其附带脚本在 MIT 许可证下由 Microsoft 共享。 有关详细信息，请查看 GitHub 上示例代码目录中的 LICENSE.txt 文件****。
+此示例演练及其附带脚本在 MIT 许可证下由 Microsoft 共享。 有关详细信息，请查看 GitHub 上示例代码目录中的 LICENSE.txt 文件。
 
 ## <a name="references"></a>参考
 •    [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)  
@@ -935,5 +935,5 @@ hdfs dfs -ls wasb:///D.db/T
 [15]: ./media/hive-walkthrough/amlreader.png
 
 <!-- Module References -->
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

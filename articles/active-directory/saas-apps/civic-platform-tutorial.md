@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 26109d4b8875dd0b442521513dbd219dc0de06e0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520356"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455963"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>教程：将 Civic Platform 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88520356"
 * 让用户使用其 Azure AD 帐户自动登录到 Civic Platform。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,7 +53,7 @@ ms.locfileid: "88520356"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Civic Platform**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Civic Platform** 。 
 1. 从结果面板中选择“Civic Platform”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -91,7 +91,7 @@ ms.locfileid: "88520356"
 
 1. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
-    ![证书下载链接](common/copy-metadataurl.png)
+    ![屏幕截图显示“SAML 签名证书”页，可在其中复制“应用联合元数据 URL”。](common/copy-metadataurl.png)
 
 1. 在 Azure AD 中导航到“Azure Active Directory” > “应用注册”，然后选择你的应用程序。  
 
@@ -120,21 +120,21 @@ ms.locfileid: "88520356"
 
 1. 单击“标准选项”。 
 
-    ![证书下载链接](media/civic-platform-tutorial/standard-choices.png)
+    ![屏幕截图显示 Atlassian Cloud 站点，其中突出显示了“管理员工具”下的“标准选项”。](media/civic-platform-tutorial/standard-choices.png)
 
-1. 创建标准选项 **ssoconfig**。
+1. 创建标准选项 **ssoconfig** 。
 
 1. 搜索 **ssoconfig** 并提交。
 
-    ![证书下载链接](media/civic-platform-tutorial/sso-config.png)
+    ![屏幕截图显示已输入 ssoconfig 的“标准选项搜索”。](media/civic-platform-tutorial/sso-config.png)
 
 1. 单击红点展开“SSOCONFIG”。
 
-    ![证书下载链接](media/civic-platform-tutorial/sso-config01.png)
+    ![屏幕截图显示 SSOCONFIG 可用的“标准选项浏览”。](media/civic-platform-tutorial/sso-config01.png)
 
 1. 在以下步骤中提供 SSO 相关的配置信息：
 
-    ![证书下载链接](media/civic-platform-tutorial/sso-config02.png)
+    ![屏幕截图显示 SSOCONFIG 的“标准选项项编辑”。](media/civic-platform-tutorial/sso-config02.png)
 
     1. 在“applicationid”字段中，输入从 Azure 门户复制的“应用程序 ID”值。  
 
@@ -182,13 +182,12 @@ ms.locfileid: "88520356"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Civic Platform”磁贴时，应会自动登录到设置了 SSO 的 Civic Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Civic Platform”磁贴时，应会自动登录到设置了 SSO 的 Civic Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

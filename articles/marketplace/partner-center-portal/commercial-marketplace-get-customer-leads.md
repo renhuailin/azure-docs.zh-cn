@@ -4,15 +4,15 @@ description: 了解如何生成和接收 Microsoft AppSource 和 Azure Marketpla
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 10/01/2020
-ms.openlocfilehash: 5627d6afab22defebeebd3f04695ef95390f1163
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 1d5f2248d94796d5e3ee76301642a95abddebfe4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653309"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489329"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>商业市场产品/服务的潜在客户
 
@@ -50,9 +50,9 @@ ms.locfileid: "91653309"
 
 在客户购买过程中收到的每个潜在顾客都在特定的字段中有数据。 要查找的第一个字段是 `LeadSource` 字段，其格式如下：Source-Action | Offer。
 
-**来源**：系统将根据生成潜在客户的市场填充此字段的值。 可能值为 `"AzureMarketplace"`、`"AzurePortal"` 和 `"AppSource (SPZA)"`。
+**来源** ：系统将根据生成潜在客户的市场填充此字段的值。 可能值为 `"AzureMarketplace"`、`"AzurePortal"` 和 `"AppSource (SPZA)"`。
 
-**操作**：系统会根据客户在生成潜在客户的市场中执行的操作来填充此字段的值。
+**操作** ：系统会根据客户在生成潜在客户的市场中执行的操作来填充此字段的值。
 
 可能的值包括：
 
@@ -62,7 +62,7 @@ ms.locfileid: "91653309"
 - "Create"：此操作只能在 Azure 门户中执行，它是在客户通过其帐户购买你的产品/服务时生成的。
 - "StartTestDrive"：此操作仅适用于“体验版”选项，它是在客户启动其体验版时生成的。
 
-**产品/服务**：你在商业市场可能有多个产品/服务。 系统根据生成潜在客户的产品/服务填充此字段的值。 发布者 ID 和产品/服务 ID 都会发送到此字段，是你在将产品/服务发布到市场时提供的值。
+**产品/服务** ：你在商业市场可能有多个产品/服务。 系统根据生成潜在客户的产品/服务填充此字段的值。 发布者 ID 和产品/服务 ID 都会发送到此字段，是你在将产品/服务发布到市场时提供的值。
 
 以下示例以所需的格式 `publisherid.offerid` 显示出值： 
 
@@ -89,9 +89,9 @@ ms.locfileid: "91653309"
 
 下面是通过销售周期推动潜在顾客的一些建议：
 
-- **过程**：使用里程碑、分析和明确的团队所有权定义一个明确的销售过程。
+- **过程** ：使用里程碑、分析和明确的团队所有权定义一个明确的销售过程。
 - 资格：定义先决条件，用于指示潜在客户是否完全符合资格。 请确保销售或营销代表先仔细鉴定潜在客户资格，再引导潜在客户完成整个销售流程。
-- **跟进**：不要忘记在24小时内跟进。 在客户部署了测试驱动器后，你将立即在你的 CRM 中获得潜在顾客;在仍处于热情的情况下将其发送给他们。 请求计划电话呼叫，以便更好地了解你的产品是否是解决问题的好办法。 预计典型事务需要大量跟进调用。
+- **跟进** ：不要忘记在24小时内跟进。 在客户部署了测试驱动器后，你将立即在你的 CRM 中获得潜在顾客;在仍处于热情的情况下将其发送给他们。 请求计划电话呼叫，以便更好地了解你的产品是否是解决问题的好办法。 预计典型事务需要大量跟进调用。
 - 巩固关系：培养潜在客户，助你获得更多利润。 签入，但不要 bombard 它们。 建议你在关闭之前至少经过几次电子邮件：第一次尝试后不放弃。 请记住，这些客户直接参与您的产品，并在免费试用中花费时间;它们是很棒的客户。
 
 完成技术性设置后，应当将这些潜在客户纳入到当前的销售和市场营销策略以及操作流程中。 我们希望更好地了解整个销售流程，还希望更紧密地与你合作来提供高质量的潜在客户和足够的数据来助你成功。 我们欢迎你提供有关如何优化发送给销售线索，以及如何使用额外的数据对其进行增强的反馈，以便帮助客户取得成功。 如果想要[提供反馈](mailto:AzureMarketOnboard@microsoft.com)和建议来使销售团队借助商业市场潜在客户信息取得更大的成功，请告知我们。

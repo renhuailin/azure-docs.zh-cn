@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397294"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151961"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 数据目录常见问题
 本文将解答有关 Azure 数据目录服务的常见问题。
@@ -87,7 +87,7 @@ ms.locfileid: "91397294"
 >
 
 > [!NOTE]
-> 对于具有一流“说明”**** 属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于 *本地* SQL Server 缺少第一类 **Description** 属性的关系数据库，数据目录数据源注册工具将从对象和列的 **ms_description** 扩展属性中提取值。 SQL Azure 不支持此属性。 有关详细信息，请参阅[对数据库对象使用扩展属性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 对于具有一流“说明”**** 属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于 *本地* SQL Server 缺少第一类 **Description** 属性的关系数据库，数据目录数据源注册工具将从对象和列的 **ms_description** 扩展属性中提取值。 SQL Azure 不支持此属性。 有关详细信息，请参阅[对数据库对象使用扩展属性](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))。
 >
 >
 
@@ -122,7 +122,7 @@ ms.locfileid: "91397294"
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>我能从注册的数据源中提取更多或更丰富的元数据吗？
 我们正在努力扩展数据目录的功能。 如果希望在注册期间从数据源中提取其他元数据，请在 [Azure 反馈论坛上的数据目录](https://feedback.azure.com/forums/906052-data-catalog)中提出建议（若已有建议则可为其投票）。 
 
-如果想要包含列/架构元数据、预览或其中的数据源注册工具，不提取此元数据的数据源的数据配置文件，可以使用数据目录 API 添加此元数据。 有关详细信息，请参阅 [Azure 数据目录 REST API](https://docs.microsoft.com/rest/api/datacatalog/)。
+如果想要包含列/架构元数据、预览或其中的数据源注册工具，不提取此元数据的数据源的数据配置文件，可以使用数据目录 API 添加此元数据。 有关详细信息，请参阅 [Azure 数据目录 REST API](/rest/api/datacatalog/)。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>如何限制已注册数据资产的可见性，仅允许特定人员发现它们？
 在数据目录中选择数据资产，然后单击“取得所有权”**** 按钮。 数据目录中数据资产的所有者可更改可见性设置，允许所有用户发现拥有的资产或对特定用户限制可见性。 有关详细信息，请参阅[在 Azure 数据目录中管理数据资产](data-catalog-how-to-manage.md)。

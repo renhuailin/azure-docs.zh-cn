@@ -1,17 +1,15 @@
 ---
 title: Reliable Actors 状态管理
 description: 介绍如何管理、持久保存和复制 Reliable Actors 状态以实现高可用性。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: badfc490f26b71881e7970c2c0be3472abfec25a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611711"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575595"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors 状态管理
 Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组件在 Reliable Services 上运行，因此，它们可以使用相同的持久性和复制机制可靠地维护状态。 这样，执行组件就不会在发生故障之后、在内存回收后重新激活时或者由于资源平衡和升级的原因而在群集中的节点之间移动时丢失其状态。
@@ -25,7 +23,7 @@ Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组
 * **易失性状态：** 状态被复制到 3 个或更多个副本，且仅保存在内存中。 易失性状态可针对节点故障、执行组件故障，以及在升级和资源均衡过程中提供复原能力。 但是，状态不会保留在磁盘中。 因此，如果同时丢失所有副本，状态也会丢失。
 * **非持久化状态**：状态不会复制或写入到磁盘，仅用于不需要可靠地维护状态的执行组件。
 
-每个级别的持久性只是服务的不同*状态提供程序*和*复制*配置。 是否要将状态写入磁盘取决于状态提供程序（可靠服务中存储状态的组件）。 复制取决于要使用多少个副本来部署服务。 如同 Reliable Services，可以轻松地手动设置状态提供程序和副本计数。 执行组件框架提供一个属性，对执行组件使用时，该属性会自动选择默认的状态提供程序，并自动生成副本计数的设置，以实现这三种持久性设置中的一个。 StatePersistence 属性不由派生类继承，每个执行组件类型必须提供其 StatePersistence 级别。
+每个级别的持久性只是服务的不同 *状态提供程序* 和 *复制* 配置。 是否要将状态写入磁盘取决于状态提供程序（可靠服务中存储状态的组件）。 复制取决于要使用多少个副本来部署服务。 如同 Reliable Services，可以轻松地手动设置状态提供程序和副本计数。 执行组件框架提供一个属性，对执行组件使用时，该属性会自动选择默认的状态提供程序，并自动生成副本计数的设置，以实现这三种持久性设置中的一个。 StatePersistence 属性不由派生类继承，每个执行组件类型必须提供其 StatePersistence 级别。
 
 ### <a name="persisted-state"></a>持久化状态
 ```csharp
@@ -73,7 +71,7 @@ class MyActorImpl extends FabricActor implements MyActor
 此设置使用仅在内存中的状态提供程序，并将副本计数设置为 1。
 
 ### <a name="defaults-and-generated-settings"></a>默认值和生成的设置
-如果使用 `StatePersistence` 属性，在执行组件服务启动时，系统会在运行时自动选择状态提供程序。 但是，副本计数会在编译时由 Visual Studio 执行组件构建工具设置。 构建工具在 ApplicationManifest.xml 中自动为执行组件服务生成*默认服务*。 参数是针对**副本集大小下限**和**目标副本集大小**创建的。
+如果使用 `StatePersistence` 属性，在执行组件服务启动时，系统会在运行时自动选择状态提供程序。 但是，副本计数会在编译时由 Visual Studio 执行组件构建工具设置。 构建工具在 ApplicationManifest.xml 中自动为执行组件服务生成 *默认服务*。 参数是针对 **副本集大小下限** 和 **目标副本集大小** 创建的。
 
 可手动更改这些参数。 但是，每当 `StatePersistence` 属性更改时，参数将设置为所选 `StatePersistence` 属性的默认副本集大小值，并覆盖所有旧值。 换言之，更改 `StatePersistence` 属性值时，在 ServiceManifest.xml 中设置的值将仅在生成时被覆盖。
 
@@ -115,7 +113,7 @@ class MyActorImpl extends FabricActor implements MyActor
 ### <a name="correctly-manage-the-actors-life-cycle"></a>正确管理执行组件的生命周期
 你应制定明确的策略来管理每个分区中执行组件服务状态的大小。 执行组件服务应具有固定数目的执行组件，并尽可能多地重复使用它们。 如果不断地创建新的执行组件，则必须在这些执行组件完成其工作后删除它们。 执行组件框架存储有关存在的每个执行组件的一些元数据。 删除某个执行组件的所有状态不会删除有关该执行组件的元数据。 必须删除执行组件（请参阅[删除执行组件及其状态](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)），才能删除系统中存储的有关它的所有信息。 作为额外的检查，应偶尔查询执行组件服务一次（请参阅[枚举执行组件](service-fabric-reliable-actors-enumerate.md)）以确保执行组件数在预期范围内。
  
-如果看到执行组件服务的数据库文件大小不断增加到超出预期大小，请确保你是按照前面的指南进行操作的。 如果遵循这些准则，但仍遇到数据库文件大小问题，则应与产品团队 [建立支持票证](service-fabric-support.md) ，以获得帮助。
+如果看到执行组件服务的数据库文件大小不断增加到超出预期大小，请确保你是按照前面的指南进行操作的。 如果你是按照这些指南操作的，但仍遇到数据库文件大小问题，则应通过产品团队[开具支持票证](service-fabric-support.md)以获取帮助。
 
 ## <a name="next-steps"></a>后续步骤
 

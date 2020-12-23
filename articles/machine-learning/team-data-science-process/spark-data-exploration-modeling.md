@@ -10,19 +10,19 @@ ms.subservice: team-data-science-process
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86027505"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028081"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
 
 了解如何使用 HDInsight Spark 训练机器学习模型以使用 Spark MLlib 预测出租车费用。
 
-本示例展示了 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的各个步骤。 NYC 出租车行程和车费 2013 数据集的一个子集用于加载、探索和准备数据。 然后，使用 Spark MLlib，对二元分类和回归模型进行训练，以预测是否将为行程支付小费并估算小费金额。
+本示例展示了 [Team Data Science Process](./index.yml) 中的各个步骤。 NYC 出租车行程和车费 2013 数据集的一个子集用于加载、探索和准备数据。 然后，使用 Spark MLlib，对二元分类和回归模型进行训练，以预测是否将为行程支付小费并估算小费金额。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -340,8 +340,8 @@ taxi_df_train_with_newFeatures.count()
 
 本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行编码。 根据模型，需要以不同方式为它们编制索引或进行编码：  
 
-* **基于树的建模**需要将类别编码为数值（例如，具有三个类别的特征可能会使用 0、1、2 进行编码）。 此算法由 MLlib 的 [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 函数提供。 此函数将标签的字符串列编码为标签索引列，它们将按标签频率进行排序。 虽然使用输入和数据处理的数值编制索引，但可指定基于树的算法，将其视为类别进行相应处理。 
-* **逻辑和线性回归模型**需要独热编码，例如，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
+* **基于树的建模** 需要将类别编码为数值（例如，具有三个类别的特征可能会使用 0、1、2 进行编码）。 此算法由 MLlib 的 [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 函数提供。 此函数将标签的字符串列编码为标签索引列，它们将按标签频率进行排序。 虽然使用输入和数据处理的数值编制索引，但可指定基于树的算法，将其视为类别进行相应处理。 
+* **逻辑和线性回归模型** 需要独热编码，例如，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
 下面是用于为分类特征编制索引和编码的代码：
 
@@ -581,9 +581,9 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 每个模型生成代码部分拆分为多个步骤： 
 
-1. 带有一个参数集的**模型训练**数据
-2. 测试数据集上的使用指标的**模型评估**
-3. 在 blob 中**保存模型**以供将来使用
+1. 带有一个参数集的 **模型训练** 数据
+2. 测试数据集上的使用指标的 **模型评估**
+3. 在 blob 中 **保存模型** 以供将来使用
 
 ### <a name="classification-using-logistic-regression"></a>使用逻辑回归的分类
 
@@ -851,9 +851,9 @@ ROC 下的面积 = 0.985297691373
 
 简介中介绍了这些模型。 每个模型生成代码部分拆分为多个步骤： 
 
-1. 带有一个参数集的**模型训练**数据
-2. 测试数据集上的使用指标的**模型评估**
-3. 在 blob 中**保存模型**以供将来使用
+1. 带有一个参数集的 **模型训练** 数据
+2. 测试数据集上的使用指标的 **模型评估**
+3. 在 blob 中 **保存模型** 以供将来使用
 
 ### <a name="linear-regression-with-sgd"></a>使用 SGD 的线性回归
 
@@ -1117,6 +1117,6 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。 高级数据浏览和建模笔记本深入探讨到包括交叉验证、超参数扫描和模型评估。 
 
-**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
+**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅 [评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
 
-**交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
+**交叉验证和超参数扫描**：请参阅 [使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型

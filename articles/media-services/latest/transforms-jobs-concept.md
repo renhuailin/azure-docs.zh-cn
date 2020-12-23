@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
-ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297971"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426781"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
 
@@ -62,7 +62,7 @@ ms.locfileid: "89297971"
 
 ### <a name="creating-transforms"></a>创建转换
 
-可以使用 REST、CLI 或任何已发布的 SDK 来创建转换。 媒体服务 v3 API 由 Azure 资源管理器驱动，因此，也可以使用资源管理器模板在媒体服务帐户中创建和部署转换。 可以使用基于角色的访问控制来锁定对转换的访问。
+可以使用 REST、CLI 或任何已发布的 SDK 来创建转换。 媒体服务 v3 API 由 Azure 资源管理器驱动，因此，也可以使用资源管理器模板在媒体服务帐户中创建和部署转换。 Azure 基于角色的访问控制可用于锁定对转换的访问权限。
 
 ### <a name="updating-transforms"></a>更新转换
 

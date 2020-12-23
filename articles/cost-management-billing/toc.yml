@@ -9,6 +9,7 @@
   items:
     - name: 开始分析成本
       href: costs/quick-acm-cost-analysis.md
+      displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
     - name: 创建预算 - ARM 模板
       href: costs/quick-create-budget-template.md
       displayName: 'ARM template, resource manager template'
@@ -26,6 +27,7 @@
       href: costs/tutorial-acm-create-budgets.md
     - name: 导出数据
       href: costs/tutorial-export-acm-data.md
+      displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
     - name: 根据建议采取措施
       href: costs/tutorial-acm-opt-recommendations.md
 - name: 概念
@@ -48,8 +50,8 @@
           href: costs/manage-automation.md
         - name: 面向合作伙伴的成本管理
           href: costs/get-started-partners.md
-        - name: 在成本管理与 Cloudyn 之间进行选择
-          href: costs/choose-between-azure-cost-management-cloudyn.md
+        - name: 从 EA 报告迁移到 Azure 资源管理器 API
+          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: 预留
       items:
         - name: 什么是 Azure 预留项？
@@ -122,6 +124,12 @@
           href: understand/subscription-transfer.md
         - name: 在合作伙伴之间转让订阅（预览）
           href: manage/azure-plan-subscription-transfer-partners.md
+        - name: 在 Azure EA 门户中开始
+          href: manage/ea-portal-get-started.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 配置 Azure 成本管理 + 计费
@@ -180,8 +188,16 @@
               href: manage/pay-by-invoice.md
             - name: 创建其他订阅
               href: manage/create-subscription.md
-            - name: 以编程方式创建订阅
-              href: manage/programmatically-create-subscription.md
+            - name: 以编程方式创建 EA 订阅
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: 以编程方式创建 MCA 订阅
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: 以编程方式创建 MPA 订阅
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: 创建订阅 - ARM 模板
+              href: manage/create-subscription-template.md
+            - name: 以编程方式创建订阅 - 预览
+              href: manage/programmatically-create-subscription-preview.md
             - name: 授予访问权限以创建 EA 订阅
               href: manage/grant-access-to-create-subscription.md
             - name: 导出订阅信息
@@ -200,8 +216,6 @@
               href: manage/cancel-azure-subscription.md
         - name: 管理企业协议订阅
           items:
-            - name: 在 Azure EA 门户中开始
-              href: manage/ea-portal-get-started.md
             - name: Azure 中的 EA 角色
               href: manage/understand-ea-roles.md
             - name: Azure EA 门户管理
@@ -311,11 +325,11 @@
             - name: SAP HANA 大型实例
               href: reservations/prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
             - name: SQL 数据库
-              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+              href: ../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2ftoc.json
             - name: Azure Synapse Analytics
               href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
             - name: 虚拟机
-              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
+              href: ../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2ftoc.json
         - name: 在购买后查看、管理和优化
           items:
             - name: 查看预留和利用率
@@ -338,6 +352,12 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: 疑难解答
       items:
+        - name: 带有使用情况文件的 EA 计费问题
+          href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
+        - name: 带有使用情况文件的 MCA 计费问题
+          href: manage/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables.md
+        - name: 带有使用情况文件的 CSP 计费问题
+          href: manage/troubleshoot-csp-billing-issues-usage-file-pivot-tables.md
         - name: 找不到任何订阅
           href: manage/no-subscriptions-found.md
         - name: 支付问题
@@ -357,31 +377,33 @@
 - name: 参考
   items:
     - name: Azure 成本管理 REST API
-      href: 'https://docs.microsoft.com/rest/api/cost-management'
+      href: /rest/api/cost-management
     - name: Azure 使用情况 REST API
-      href: 'https://docs.microsoft.com/rest/api/consumption'
+      href: /rest/api/consumption
     - name: 资源管理器模板
       href: /azure/templates/microsoft.consumption/budgets
     - name: 成本管理 REST API 示例
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+    - name: 成本管理 - Azure PowerShell
+      href: /powershell/module/Az.CostManagement
     - name: 计费自动化方案
       href: manage/cost-management-automation-scenarios.md
     - name: Azure 计费 API 概述
       href: manage/usage-rate-card-overview.md
     - name: Azure 计费 REST API
-      href: 'https://docs.microsoft.com/rest/api/billing'
+      href: /rest/api/billing
     - name: Azure 使用情况 API 概述
       href: manage/consumption-api-overview.md
     - name: Azure 使用情况 REST API
-      href: 'https://docs.microsoft.com/rest/api/consumption'
+      href: /rest/api/consumption
     - name: RateCard REST API
-      href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
+      href: /previous-versions/azure/reference/mt219005(v=azure.100)
     - name: 使用情况 REST API
-      href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
+      href: /previous-versions/azure/reference/mt219003(v=azure.100)
     - name: Enterprise Reporting 概述
       href: manage/enterprise-api.md
     - name: Enterprise Reporting REST API
-      href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
+      href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: 预留
       items:
         - name: 预留 REST API
@@ -432,10 +454,6 @@
           href: cloudyn/overview.md
     - name: 快速入门
       items:
-        - name: 查看成本数据
-          href: cloudyn/quick-register-azure-sub.md
-        - name: 查看成本数据 - EA
-          href: cloudyn/quick-register-ea.md
         - name: 查看成本数据 - CSP
           href: cloudyn/quick-register-csp.md
     - name: 教程
@@ -460,8 +478,6 @@
           href: cloudyn/activate-subs-accounts.md
         - name: 为 VM 添加扩展的指标
           href: cloudyn/azure-vm-extended-metrics.md
-        - name: 连接 Google 帐户
-          href: cloudyn/connect-google-account.md
         - name: 连接 AWS 帐户
           href: cloudyn/connect-aws-account.md
         - name: 配置存储帐户
@@ -485,4 +501,4 @@
         - name: Cloudyn 常见问题解答
           href: cloudyn/cost-mgt-faq.md
         - name: 联系 Cloudyn 支持人员
-          href: 'https://docs.microsoft.com/azure/cost-management-billing/costs/open-support-request'
+          href: ./costs/open-support-request.md

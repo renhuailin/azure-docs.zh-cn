@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 3723345b10524b2063b3ec8fe43608f49b5b279b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 042a3edf8efe080064a3c41fd55975a40bf47e5e
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87375800"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386476"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 Java 应用程序中。 本快速入门介绍了如何发送请求、接收 JSON 响应以及筛选和分析结果。
 
@@ -24,7 +24,7 @@ ms.locfileid: "87375800"
 
 下面是在开始本快速入门之前需要准备好的项目：
 
-* [JDK 7 或 8](https://aka.ms/azure-jdks)
+* [JDK 7 或 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Apache Maven](https://maven.apache.org/download.cgi) 或你喜欢使用的生成自动化工具
 * 订阅密钥
 
@@ -295,4 +295,4 @@ mvn compile exec:java
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure Java SDK 参考](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)
+* [Azure Java SDK 参考](/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

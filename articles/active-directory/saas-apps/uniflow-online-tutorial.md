@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bcda410e678e44916a4128d7ef097883e148ed79
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc1317ffce7c958f092ad01feff473e123581439
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551854"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521758"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>教程：Azure Active Directory 单一登录 (SSO) 与 uniFLOW Online 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551854"
 * 让用户使用其 Azure AD 帐户登录到 uniFLOW Online。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "88551854"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **uniFLOW Online**。 
+1. 在“从库中添加”部分的搜索框中，键入 **uniFLOW Online** 。 
 1. 在结果面板中选择“uniFLOW Online”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-uniflow-online"></a>配置并测试 uniFLOW Online 的 Azure AD 单一登录
@@ -152,34 +152,33 @@ ms.locfileid: "88551854"
 
 1. 从左侧导航窗格中，选择“用户”选项卡。 
 
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/configure1.png)
+    ![显示从 uniflow 在线网站选择了“用户”的屏幕截图。](./media/uniflow-online-tutorial/configure1.png)
 
 1. 单击“标识提供者”。 
 
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/configure2.png)
+    ![显示选择了“标识提供者”的屏幕截图。](./media/uniflow-online-tutorial/configure2.png)
 
 1. 单击“添加标识提供者”。 
 
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/configure3.png)
+    ![显示选择了“添加标识提供者”的屏幕截图。](./media/uniflow-online-tutorial/configure3.png)
 
 1. 在“添加标识提供者”部分执行以下步骤： 
 
+    ![显示“添加标识提供者”部分的屏幕截图，你可以在其中输入所述值。](./media/uniflow-online-tutorial/configure4.png)
 
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/configure4.png)
-
-    a. 输入显示名称，例如：*AzureAD SSO*。
+    a. 输入显示名称，例如： *AzureAD SSO* 。
 
     b. 对于“提供者类型”，请从下拉列表中选择“WS 联合身份验证”选项。  
 
     c. 对于“WS 联合身份验证类型”，请从下拉列表中选择“Azure Active Directory”选项。  
 
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 1. 在“常规”选项卡上执行以下步骤： 
 
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/configure5.png)
+    ![显示“常规”选项卡的屏幕截图，你可以在其中输入所述值。](./media/uniflow-online-tutorial/configure5.png)
 
-    a. 输入显示名称，例如：*AzureAD SSO*。
+    a. 输入显示名称，例如： *AzureAD SSO* 。
 
     b. 为“ADFS 联合元数据”选择“从 URL”选项。  
 
@@ -189,7 +188,7 @@ ms.locfileid: "88551854"
 
     e. 为“自动用户注册”选择“已激活”。  
 
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
 ### <a name="sign-in-to-uniflow-online-using-the-created-test-user"></a>使用创建的测试用户登录到 uniFLOW Online
 
@@ -201,10 +200,10 @@ ms.locfileid: "88551854"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 uniFLOW Online](https://aad.portal.azure.com/)

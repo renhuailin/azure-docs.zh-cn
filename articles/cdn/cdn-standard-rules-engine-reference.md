@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1a0f4456f38939632026645500dd48acbf7dbc88
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327487"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242202"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN 的标准规则引擎参考
 
@@ -20,7 +20,7 @@ ms.locfileid: "91327487"
 
 规则引擎旨在作为 Azure CDN 标准请求处理特定类型的请求的最终颁发机构。
 
-**规则的常见用途**：
+**规则的常见用途** ：
 
 - 重写或定义自定义缓存策略。
 - 将请求重定向。
@@ -34,7 +34,10 @@ ms.locfileid: "91327487"
 
 每个规则最多可以有10个匹配条件和五个操作。 每个 Azure CDN 端点最多可以有25个规则。 
 
-此限制中包含默认的 *全局规则*。 全局规则没有匹配条件;始终触发全局规则中定义的操作。
+此限制中包含默认的 *全局规则* 。 全局规则没有匹配条件;始终触发全局规则中定义的操作。
+
+   > [!IMPORTANT]
+   > 多个规则的列出顺序会影响处理规则的方式。 规则中指定的操作可能会被后续规则覆盖。
 
 ## <a name="limits-and-pricing"></a>限制和定价 
 

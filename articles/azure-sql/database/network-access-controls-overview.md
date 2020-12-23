@@ -1,7 +1,7 @@
 ---
 title: 网络访问控件
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: 概述如何管理和控制 Azure SQL 数据库和 Azure Synapse Analytics 的网络访问， (以前的 SQL 数据仓库) 。
+description: 概述如何管理和控制 Azure SQL 数据库和 Azure Synapse Analytics 的网络访问。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,16 +12,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435365"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460006"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制
 
-如果从 Azure SQL 数据库和 Azure Synapse Analytics [Azure 门户](single-database-create-quickstart.md) 创建逻辑 SQL server，则结果为 *yourservername.database.windows.net*格式的公共终结点。
+如果从 Azure SQL 数据库和 Azure Synapse Analytics [Azure 门户](single-database-create-quickstart.md) 创建逻辑 SQL server，则结果为 *yourservername.database.windows.net* 格式的公共终结点。
 
 可以使用以下网络访问控制来选择性地允许通过公共终结点访问数据库：
 
@@ -31,7 +31,7 @@ ms.locfileid: "89435365"
 还可以通过以下方式允许从[虚拟网络](../../virtual-network/virtual-networks-overview.md)对数据库进行专用访问：
 
 - 虚拟网络防火墙规则：使用此功能可以允许来自 Azure 边界内特定虚拟网络的流量
-- 专用链接：使用此功能可为特定虚拟网络中的 [逻辑 SQL server](logical-servers.md) 创建专用终结点
+- 专用链接：使用此功能可为特定虚拟网络内的[逻辑 SQL 服务器](logical-servers.md)创建专用终结点
 
 > [!IMPORTANT]
 > 本文不适用于“SQL 托管实例”。 有关网络配置的详细信息，请参阅[连接到 Azure SQL 托管实例](../managed-instance/connect-application-instance.md)。
@@ -42,7 +42,7 @@ ms.locfileid: "89435365"
 
 ## <a name="allow-azure-services"></a>允许 Azure 服务
 
-[从 Azure 门户](single-database-create-quickstart.md)创建新的逻辑 SQL Server 期间，此设置将保持未选中状态。
+默认情况下，在从 [Azure 门户](single-database-create-quickstart.md)创建新的逻辑 SQL 服务器期间，此设置将设置为“关”。 允许使用公共服务终结点建立连接时，将显示此设置。
 
 创建逻辑 SQL Server 后，也可以按如下所示通过防火墙窗格更改此设置。
   
@@ -56,7 +56,7 @@ ms.locfileid: "89435365"
 
 ### <a name="import-export-service"></a>导入/导出服务
 
-当“允许访问 Azure 服务”设置为“关闭”时，导入/导出服务无法正常工作 。 不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](https://docs.microsoft.com/azure/sql-database/import-export-from-vm)。
+当“允许访问 Azure 服务”设置为“关闭”时，导入/导出服务无法正常工作 。 不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](./database-import-export-azure-services-off.md)。
 
 ### <a name="data-sync"></a>数据同步
 
@@ -121,7 +121,7 @@ start          end
 
 **虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联
 
-**子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+**子网：** 虚拟网络包含 **子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
 **虚拟网络服务终结点**：[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 Microsoft.Sql 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
@@ -140,7 +140,7 @@ start          end
 
 ## <a name="private-link"></a>专用链接
 
-专用链接允许通过 **专用终结点**连接到服务器。 专用终结点是特定 [虚拟网络](../../virtual-network/virtual-networks-overview.md) 和子网中的专用 IP 地址。
+使用专用链接可以通过专用终结点连接到服务器。 专用终结点是特定[虚拟网络](../../virtual-network/virtual-networks-overview.md)和子网中的专用 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -148,9 +148,9 @@ start          end
 
 - 有关创建服务器级虚拟网络防火墙规则的快速入门，请参阅 [Azure SQL 数据库的虚拟网络服务终结点和规则](vnet-service-endpoint-rule-overview.md)。
 
-- 有关从开源应用程序或第三方应用程序连接到 SQL 数据库中的数据库的帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
+- 有关从开源应用程序或第三方应用程序连接到 SQL 数据库中的数据库的帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](/previous-versions/azure/ee336282(v=azure.100))。
 
-- 有关可能需要打开的其他端口的信息，请参阅 **SQL 数据库：外部与内部**部分（在[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](adonet-v12-develop-direct-route-ports.md)中）
+- 有关可能需要打开的其他端口的信息，请参阅 **SQL 数据库：外部与内部** 部分（在 [用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](adonet-v12-develop-direct-route-ports.md)中）
 
 - 有关 Azure SQL 数据库的连接概述，请参阅 [Azure SQL 连接体系结构](connectivity-architecture.md)
 
@@ -159,4 +159,3 @@ start          end
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png
 [2]: media/quickstart-create-single-database/manage-server-firewall.png
- 

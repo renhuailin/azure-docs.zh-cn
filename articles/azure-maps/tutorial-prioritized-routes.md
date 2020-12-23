@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Microsoft Azure Maps 查找和显示特定出行模式的路线
-description: 了解如何使用 Azure Maps 查找和显示特定出行模式的路线。
+title: 教程：按出行模式查找多个路线 | Microsoft Azure Maps
+description: 有关如何使用 Azure Maps 查找以特定出行模式到兴趣点的路线的教程。 了解如何在地图上显示多条路线。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085053"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896695"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找和显示不同出行模式的路线
 
-本教程演示如何使用 Azure Maps [路线服务](https://docs.microsoft.com/rest/api/maps/route)和[地图控件](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)为私家车和货物类型为 `USHazmatClass2` 的商用车（卡车）显示路线走向。 此外，我们还将演示如何在地图上直观呈现实时交通数据。 在本教程中，你将了解如何执行以下操作：
+本教程演示如何使用 Azure Maps [路线服务](/rest/api/maps/route)和[地图控件](./how-to-use-map-control.md)为私家车和货物类型为 `USHazmatClass2` 的商用车（卡车）显示路线走向。 此外，我们还将演示如何在地图上直观呈现实时交通数据。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在网页上创建和显示地图控件
@@ -117,7 +117,7 @@ ms.locfileid: "90085053"
     });
     ```
 
-    在地图 `ready` 事件处理程序中，地图上的交通流设置已设置为 `relative`，这是相对于自由流动的道路速度。 有关更多交通选项，请参阅 [TrafficOptions 接口](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions?view=azure-maps-typescript-latest&preserve-view=false)。
+    在地图 `ready` 事件处理程序中，地图上的交通流设置已设置为 `relative`，这是相对于自由流动的道路速度。 有关更多交通选项，请参阅 [TrafficOptions 接口](/javascript/api/azure-maps-control/atlas.trafficoptions?preserve-view=false&view=azure-maps-typescript-latest)。
 
 2. 保存“MapTruckRoute.html”文件并刷新浏览器中的页  。 如果放大地图并显示任何城市（如洛杉矶），你可看到显示了当前交通流数据的街道。
 
@@ -160,11 +160,13 @@ ms.locfileid: "90085053"
 
     ```
 
+
     在地图控件的 `ready` 事件处理程序中，将会创建一个数据源来存储从起点到终点的路线。 使用[表达式](data-driven-style-expressions-web-sdk.md)从路线功能的属性中检索路线宽度和颜色。 为了确保路线线条不遮盖道路标签，我们传递了第二个参数，其值为 `'labels'`。
 
     接下来，将会创建一个符号层并将其附加到数据源。 此层指定起点和终点的呈现方式。已添加表达式，用于从每个点对象的属性中检索图标图像和文本标签信息。 若要详细了解表达式，请参阅[数据驱动的样式表达式](data-driven-style-expressions-web-sdk.md)。
 
 2. 将起点设为西雅图一家名为 Fabrikam 的虚构公司，终点设为 Microsoft 办公室。  在地图控件的 `ready` 事件处理程序中，追加以下代码。
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -191,7 +193,7 @@ ms.locfileid: "90085053"
 
     此代码创建两个 [GeoJSON 点对象](https://en.wikipedia.org/wiki/GeoJSON)来表示起点和终点，这两个对象随后添加到数据源中。
 
-    最后一个代码块使用起点和终点的纬度和经度来设置相机视图。 起点和终点会添加到数据源。 起点和终点的边框使用 `atlas.data.BoundingBox.fromData` 函数计算。 此边框用于通过 `map.setCamera` 函数设置基于整个路线的地图相机视图。 将会添加一个填充来弥补符号图标的像素尺寸。 有关地图控件的 setCamera 属性的详细信息，请参阅 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) 属性。
+    最后一个代码块使用起点和终点的纬度和经度来设置相机视图。 起点和终点会添加到数据源。 起点和终点的边框使用 `atlas.data.BoundingBox.fromData` 函数计算。 此边框用于通过 `map.setCamera` 函数设置基于整个路线的地图相机视图。 将会添加一个填充来弥补符号图标的像素尺寸。 有关地图控件的 setCamera 属性的详细信息，请参阅 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) 属性。
 
 3. 保存 TruckRoute.html 并刷新浏览器。 现在，地图以西雅图为中心。 泪珠形蓝色图钉标记起点。 圆形蓝色图钉标记终点。
 
@@ -204,7 +206,7 @@ ms.locfileid: "90085053"
 本部分演示如何使用 Azure Maps 路线服务，根据交通方式获取从一个点到另一个点的走向。 我们将使用两种交通方式：卡车和小汽车。
 
 >[!TIP]
->路线服务提供多个 API，根据距离、路况和所用交通方式，规划最快、最短、环保或令人兴奋的路线   。 此服务还让用户可以根据历史路况规划将来的路线。 用户可以看到任何给定时间的路线时间预测。 有关详细信息，请参阅[获取路线走向 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。
+>路线服务提供多个 API，根据距离、路况和所用交通方式，规划最快、最短、环保或令人兴奋的路线   。 此服务还让用户可以根据历史路况规划将来的路线。 用户可以看到任何给定时间的路线时间预测。 有关详细信息，请参阅[获取路线走向 API](/rest/api/maps/route/getroutedirections)。
 
 1. 在 `GetMap` 函数的控件的 `ready` 事件处理程序中，将以下内容添加到 JavaScript 代码中。
 
@@ -219,7 +221,7 @@ ms.locfileid: "90085053"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)实例。 `routeURL` 表示 Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) 操作的 URL。
+   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](/javascript/api/azure-maps-rest/atlas.service.pipeline)实例。 `routeURL` 表示 Azure Maps [Route](/rest/api/maps/route) 操作的 URL。
 
 2. 在设置凭据和 URL 以后，请添加以下 JavaScript 代码，以便构建从起点到终点的卡车路线。 此路线是为装载 `USHazmatClass2` 类货物的卡车创建和显示的。
 
@@ -248,10 +250,10 @@ ms.locfileid: "90085053"
     });
     ```
 
-    上述代码通过 [Azure Maps 路线走向 API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) 查询 Azure Maps 路线服务。 然后，从使用 `geojson.getFeatures()` 方法提取的响应中的 GeoJSON 特征集合提取路线。 最后，该路线将添加到数据源。 我们要将它添加到索引 0 处，以确保先于数据源中的任何其他路线之前呈现卡车路线，因为卡车路线计算速度通常比小汽车路线计算速度慢。 如果先将小汽车路线添加到数据源，再次卡车路线添加到数据源，则会在小汽车路线的上面呈现卡车路线。 将会向卡车路线添加两个属性：一个是蓝色的描边色，另一个是九像素的描边宽度。
+    上述代码通过 [Azure Maps 路线走向 API](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) 查询 Azure Maps 路线服务。 然后，从使用 `geojson.getFeatures()` 方法提取的响应中的 GeoJSON 特征集合提取路线。 最后，该路线将添加到数据源。 我们要将它添加到索引 0 处，以确保先于数据源中的任何其他路线之前呈现卡车路线，因为卡车路线计算速度通常比小汽车路线计算速度慢。 如果先将小汽车路线添加到数据源，再次卡车路线添加到数据源，则会在小汽车路线的上面呈现卡车路线。 将会向卡车路线添加两个属性：一个是蓝色的描边色，另一个是九像素的描边宽度。
 
     >[!TIP]
-    > 要查看 Azure Maps 路线走向 API 的所有可能的选项和值，请参阅 [Post 路线走向的 URI 参数](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#uri-parameters)。
+    > 要查看 Azure Maps 路线走向 API 的所有可能的选项和值，请参阅 [Post 路线走向的 URI 参数](/rest/api/maps/route/postroutedirections#uri-parameters)。
 
 3. 现在追加以下 JavaScript 代码，以构造小汽车路线。
 
@@ -271,7 +273,7 @@ ms.locfileid: "90085053"
     });
     ```
 
-    上述代码通过 [Azure Maps 路线走向 API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) 方法来查询 Azure Maps 路线服务。 然后，从使用 `geojson.getFeatures()` 方法提取的响应中的 GeoJSON 特征集合提取路线。 最后，该路线将添加到数据源。 将会向卡车路线添加两个属性：一个是紫色的描边色，另一个是五像素的描边宽度。
+    上述代码通过 [Azure Maps 路线走向 API](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) 方法来查询 Azure Maps 路线服务。 然后，从使用 `geojson.getFeatures()` 方法提取的响应中的 GeoJSON 特征集合提取路线。 最后，该路线将添加到数据源。 将会向卡车路线添加两个属性：一个是紫色的描边色，另一个是五像素的描边宽度。
 
 4. 保存 TruckRoute.html 文件并刷新 web 浏览器。 地图现在应显示卡车路线和小汽车路线。
 
@@ -279,7 +281,11 @@ ms.locfileid: "90085053"
 
     卡车路线使用蓝色粗线显示。 小汽车路线使用紫色细线显示。 小汽车路线经 I-90 穿过华盛顿湖，会经过居民区下的隧道。 由于隧道靠近居住区，因此会限制危险货物。 卡车路线（指定 `USHazmatClass2` 货物类型）指向不同的公路。
 
-    可在[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)获得示例的完整源代码。 可在[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)找到实时示例。
+可在[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)获得示例的完整源代码。 可在[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)找到实时示例。
+
+还可以[使用数据驱动的样式表达式](data-driven-style-expressions-web-sdk.md)
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

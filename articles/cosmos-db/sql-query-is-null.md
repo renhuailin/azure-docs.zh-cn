@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 IS_NULL
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 IS_NULL。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4dbf21c3052ddd5ebdd62925e65a854c47f59017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38aeb0ba5a20da50716013075f086437dc39c0fe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303828"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338673"
 ---
 # <a name="is_null-azure-cosmos-db"></a>IS_NULL (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回一个布尔值，指示指定表达式的类型是否为 null。  
   
 ## <a name="syntax"></a>语法

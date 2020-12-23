@@ -6,15 +6,17 @@ ms.topic: conceptual
 description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes 服务中查看和测试拉取请求中的更改
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
-ms.custom: devx-track-js
-ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 447c41055ededfc55e44bebd92de89b3d23de3c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316097"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591559"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service (预览版 & GitHub 操作) 
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请求合并到存储库的主分支之前，直接在 AKS 中测试拉取请求中的更改。 让正在运行的应用程序检查拉取请求的更改会提高开发人员和团队成员的置信度。 此正在运行的应用程序还可以帮助团队成员（如产品经理和设计人员）在开发的早期阶段成为审核过程的一部分。
 
@@ -26,7 +28,7 @@ Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请�
 * 在完整应用程序的上下文中的隔离开发空间内测试单个微服务。
 
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前以预览版提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -92,7 +94,7 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 1. *RESOURCE_GROUP*： AKS 群集的资源组，在本示例中为 *MyResourceGroup*。
 1. *CLUSTER_NAME*： AKS 群集的名称，此示例中为 *MyAKS*。
 1. *CONTAINER_REGISTRY*： ACR 的 *loginServer* 。
-1. *Host*：开发人员空间的主机，其形式 *<MASTER_SPACE> <* APP_NAME> <HOST_SUFFIX>。 *dev.bikesharingweb.fedcab0987.eus.azds.io*
+1. *Host*：开发人员空间的主机，其形式 *<MASTER_SPACE> <* APP_NAME> <HOST_SUFFIX>。 
 1. *IMAGE_PULL_SECRET*：要使用的机密的名称，例如 *演示密钥*。
 1. *MASTER_SPACE*：父 dev 空间的名称，在本示例中为 *dev*。
 1. *REGISTRY_USERNAME*：从服务主体创建的 JSON 输出的 *clientId* 。
@@ -101,9 +103,9 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!NOTE]
 > GitHub 操作使用所有这些机密，并在 [github/工作流/docker-compose.override.yml][github-action-yaml]中进行配置。
 
-（可选）如果你想要在合并 PR 后更新主空间，请添加 *GATEWAY_HOST* 密钥，该密钥 *<采用 MASTER_SPACE> *<HOST_SUFFIX>（在本示例中为 *dev.gateway.fedcab0987.eus.azds.io*）。 将所做的更改合并到分支中的主分支后，将运行另一个操作来重建和运行主开发人员空间中的整个应用程序。 在此示例中，主空间为 *dev*。 此操作在 [github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
+（可选）如果你想要在合并 PR 后更新主空间，请添加 *GATEWAY_HOST* 密钥，该密钥 *<采用 MASTER_SPACE>*<HOST_SUFFIX>（在本示例中为 *dev.gateway.fedcab0987.eus.azds.io*）。 将所做的更改合并到分支中的主分支后，将运行另一个操作来重建和运行主开发人员空间中的整个应用程序。 在此示例中，主空间为 *dev*。 此操作在 [github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
 
-此外，如果你想要在孙空间中进行更改，请更新 *MASTER_SPACE* 和 *主机* 机密。 例如，如果你的应用程序在具有子空间*dev/azureuser1*的*开发环境*中运行，则此 PR 在*dev/azureuser1*的子空间中运行：
+此外，如果你想要在孙空间中进行更改，请更新 *MASTER_SPACE* 和 *主机* 机密。 例如，如果你的应用程序在具有子空间 *dev/azureuser1* 的 *开发环境* 中运行，则此 PR 在 *dev/azureuser1* 的子空间中运行：
 
 * 将 *MASTER_SPACE* 更新为所需的子区域，作为父空间，在此示例中为 *azureuser1*。
 * 将 *主机* 更新到 *<GRANDPARENT_SPACE> <* APP_NAME> <HOST_SUFFIX，在此示例中为 *dev.bikesharingweb.fedcab0987.eus.azds.io*。
@@ -160,7 +162,7 @@ git push origin bike-images
 
 通过从注释打开 URL，导航到 *bikesharingweb* 服务。 选择“Aurelia Briggs (客户)”作为用户，然后选择要租赁的自行车。 验证是否不再显示自行车的占位符图像。
 
-如果将所做的更改合并到分支中的 *主* 分支，则会运行另一个操作来重建和运行父开发人员空间中的整个应用程序。 在此示例中，父空间为 *dev*。 此操作在 [github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
+如果将所做的更改合并到分支中的 *主* 分支，则会运行另一个操作，以便在父开发人员空间中重建和运行整个应用程序。 在此示例中，父空间为 *dev*。 此操作在 [github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
 
 ## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
 

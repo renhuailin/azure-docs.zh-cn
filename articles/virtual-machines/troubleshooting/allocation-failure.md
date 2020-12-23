@@ -10,26 +10,31 @@ tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 04/13/2018
+ms.date: 11/06/2020
 ms.author: daberry
-ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79bc043a991404a3ee9da954b9639bf1a41f2c51
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509352"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365867"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 
 创建虚拟机 (VM)、重新启动已停止（解除分配）的 VM 和重设 VM 大小时，Microsoft Azure 会为订阅分配计算资源。 我们会不断投入其他基础结构和功能，确保始终提供可用于支持客户需求的所有 VM 类型。 但是，偶尔可能因特定区域中前所未有的 Azure 服务需求增长而遇到资源分配失败的情况。 当尝试在区域中创建或启动 VM，同时 VM 显示以下错误代码和消息时，会出现此问题：
 
-**错误代码**：AllocationFailed 或 ZonalAllocationFailed
+**错误代码** ：AllocationFailed 或 ZonalAllocationFailed
 
-**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https:\//aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
+**错误消息** ：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https:\//aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
+
+> [!NOTE]
+> 如果要对虚拟机规模集进行故障排除 (VMSS) ，该过程与标准 VM 相同。 若要解决此问题，你应按照本文中的说明进行操作。
+> 
+>**错误消息** ：“分配失败。 如果尝试使用单个放置组将新 VM 添加到虚拟机规模集，或使用单个放置组更新或调整虚拟机规模集中现有 VM 的大小，请注意，此类分配的作用域为单个群集，并且可能是群集空间不足。 请详细了解如何在 http：/aka.ms/allocation-guidance 中提高分配成功的可能性 \/ 。
 
 本文说明一些常见分配故障的原因，并建议可能的补救方法。
 
-如果本文未解决你的 Azure 问题，请访问[MSDN 上的 azure 论坛并 Stack Overflow](https://azure.microsoft.com/support/forums/)。 可以将问题发布到这些论坛上，或者发布到 Twitter 上的 @AzureSupport。 此外，还可以通过在 [Azure 支持](https://azure.microsoft.com/support/options/)站点上选择“获取支持”来发出 Azure 支持请求。
+如果本文未解决你的 Azure 问题，请访问 [MSDN 上的 azure 论坛并 Stack Overflow](https://azure.microsoft.com/support/forums/)。 可以将问题发布到这些论坛上，或者发布到 Twitter 上的 @AzureSupport。 此外，还可以通过在 [Azure 支持](https://azure.microsoft.com/support/options/)站点上选择“获取支持”来发出 Azure 支持请求。
 
 在你首选的 VM 类型在首选区域中提供前，建议遇到部署问题的客户考虑下表中的指南，作为临时解决办法。 
 

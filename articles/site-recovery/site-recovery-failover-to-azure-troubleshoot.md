@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355034"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371981"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -55,7 +55,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
     如果需要混合，则它提供以下结果：
 
     ```output
-    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
     This system doesn't meet no-hydration requirement.
     ```
@@ -168,7 +168,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 2. 如果前面命令的输出显示已定义 http_proxy 或 https_proxy 设置，请使用以下方法之一取消阻止主目标与配置服务器之间的通信：
    
-   - 下载 [PsExec 工具](https://aka.ms/PsExec)。
+   - 下载 [PsExec 工具](/sysinternals/downloads/psexec)。
    - 使用该工具访问系统用户上下文并确定是否配置了代理地址。 
    - 如果已配置代理，请使用 PsExec 工具在系统用户上下文中打开 IE。
   

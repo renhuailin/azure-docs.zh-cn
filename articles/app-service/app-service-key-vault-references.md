@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557905"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205840"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
@@ -30,8 +30,8 @@ ms.locfileid: "85557905"
 
 1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
 
-    > [!NOTE]
-    > Key Vault 引用目前无法解析 Key Vault 中存储的机密，并存在[网络限制](../key-vault/general/overview-vnet-service-endpoints.md)。
+   > [!IMPORTANT]
+   > Key Vault 引用目前无法解析密钥保管库中存储的具有 [网络限制](../key-vault/general/overview-vnet-service-endpoints.md) 的机密，除非该应用程序托管在 [应用服务环境](./environment/intro.md)中。
 
 ## <a name="reference-syntax"></a>引用语法
 
@@ -45,8 +45,8 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 
 > [!NOTE] 
 > 当前需要版本。 轮换机密时，需在应用程序配置中更新版本。
-
 例如，完整的引用将如下所示：
+
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
@@ -61,7 +61,7 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault 中的源应用程序设置
 
-Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，从而使你可以在 Key Vault 而不是站点配置中保存机密。应用程序设置在静态上进行安全加密，但是，如果你需要机密管理功能，它们应该进入 Key Vault。
+Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，以便将机密保存在 Key Vault 而不是站点配置中。可以对应用程序设置进行安全的静态加密，但如果需要机密管理功能，则应将它们置于 Key Vault 中。
 
 若要将 Key Vault 引用用于应用程序设置，请将引用设为设置的值。 应用可以通过密钥正常引用机密。 不需更改代码。
 
@@ -191,15 +191,15 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 ### <a name="using-the-detector-for-app-service"></a>使用应用服务的检测程序
 
 1. 在门户中导航到你的应用。
-2. 选择“诊断并解决问题”。
-3. 依次选择“可用性和性能”、“Web 应用关闭”。********
-4. 找到“Key Vault 应用程序设置诊断”，单击“更多信息”。********
+2. 选择“诊断和解决问题”。
+3. 依次选择“可用性和性能”、“Web 应用关闭”。 
+4. 找到“Key Vault 应用程序设置诊断”，单击“更多信息”。 
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>使用 Azure Functions 的检测程序
 
 1. 在门户中导航到你的应用。
-2. 导航到“平台功能”。****
-3. 选择“诊断并解决问题”。
-4. 依次选择“可用性和性能”、“函数应用关闭或报告错误”。********
-5. 单击“Key Vault 应用程序设置诊断”。****
+2. 导航到“平台功能”。
+3. 选择“诊断和解决问题”。
+4. 依次选择“可用性和性能”、“函数应用关闭或报告错误”。 
+5. 单击“Key Vault 应用程序设置诊断”。

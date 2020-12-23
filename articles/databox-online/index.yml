@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Stack Edge 和 Azure Data Box Gateway 文档 - 联机传输
-summary: 使用 Azure Stack Edge 和 Azure Data Box Gateway 设备，通过网络进行高性能数据传输。 在将数据移动到 Azure 之前，使用配备了计算加速硬件的 Azure Stack Edge Pro 设备来筛选、分析和转换数据。 选择 Data Box Gateway 发送数据，以便进行云存档、灾难恢复，或者处理云规模的数据。
+title: Azure Stack Edge 文档
+summary: 使用 Azure Stack Edge 设备将 Azure 功能（如计算、存储、网络和硬件加速机器学习）传递到任何边缘位置。
 metadata:
-  title: Azure Stack Edge 和 Azure Data Box Gateway 文档 - 联机传输
-  description: 介绍如何通过网络向 Azure 进行高性能数据传输的 Data Box Gateway 和 Azure Stack Edge 文档。
+  title: Azure Stack Edge 文档
+  description: 介绍如何通过网络向 Azure 进行高性能数据传输的 Azure Stack Edge 文档。
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,15 +11,15 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 09/08/2020
-  ms.openlocfilehash: 2995a94f1b56144afd191bc3e8eb97c2da4593ef
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.date: 10/27/2020
+  ms.openlocfilehash: e0b1c488635314a8583f216d966a75095ac5e279
+  ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90902998"
+  ms.lasthandoff: 12/12/2020
+  ms.locfileid: "97356083"
 landingContent:
-- title: 关于 Azure Stack Edge 和 Data Box Gateway
+- title: 关于 Azure Stack Edge
   linkLists:
   - linkListType: overview
     links:
@@ -29,20 +29,18 @@ landingContent:
       url: azure-stack-edge-overview.md
     - text: 什么是 Azure Stack Edge R？
       url: azure-stack-edge-j-series-overview.md
-    - text: 什么是 Azure Stack Edge Mini？
+    - text: 什么是 Azure Stack Edge Mini R？
       url: azure-stack-edge-k-series-overview.md
-    - text: 什么是 Data Box Gateway？
-      url: data-box-gateway-overview.md
   - linkListType: architecture
     links:
     - text: 选择 Azure 数据传输选项
-      url: /azure/storage/common/storage-choose-data-transfer-solution
+      url: ../storage/common/storage-choose-data-transfer-solution.md
     - text: 使用网络或脱机传输
-      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+      url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: 2009 发行说明
-      url: azure-stack-edge-gpu-2008-release-notes.md
+    - text: 2012 版发行说明
+      url: azure-stack-edge-gpu-2012-release-notes.md
 - title: 要求和限制
   linkLists:
   - linkListType: concept
@@ -51,12 +49,8 @@ landingContent:
       url: azure-stack-edge-gpu-system-requirements.md
     - text: Azure Stack Edge Pro FPGA 要求
       url: azure-stack-edge-gpu-system-requirements.md
-    - text: Data Box Gateway 要求
-      url: data-box-gateway-system-requirements.md
     - text: Azure Stack Edge Pro 限制
       url: azure-stack-edge-limits.md
-    - text: Data Box Gateway 限制
-      url: data-box-gateway-limits.md
 - title: 部署
   linkLists:
   - linkListType: tutorial
@@ -65,8 +59,6 @@ landingContent:
       url: azure-stack-edge-gpu-deploy-checklist.md
     - text: Azure Stack Edge Pro GPU
       url: azure-stack-edge-gpu-deploy-prep.md
-    - text: Data Box Gateway
-      url: data-box-gateway-deploy-prep.md
     - text: 通过市场的 GPU 模块
       url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
     - text: 通过 IoT Edge 传输 Kubernetes 工作负载
@@ -80,15 +72,13 @@ landingContent:
   - linkListType: download
     links:
     - text: 示例 - 用于 Azure Stack Edge Pro GPU 的 C#
-      url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+      url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
 - title: 管理
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure Stack Edge Pro 共享
       url: azure-stack-edge-manage-shares.md
-    - text: Data Box Gateway 共享
-      url: data-box-gateway-manage-shares.md
     - text: Edge 计算
       url: azure-stack-edge-manage-compute.md
     - text: Edge 存储帐户
@@ -99,8 +89,6 @@ landingContent:
     links:
     - text: Azure Stack Edge GPU
       url: azure-stack-edge-gpu-troubleshoot.md
-    - text: Data Box Gateway
-      url: data-box-gateway-troubleshoot.md
     - text: Edge 计算模块
       url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
     - text: 返回 Azure Stack Edge GPU

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250325"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026227"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>超大规模 (Citus) SQL API 中的函数
 
@@ -30,7 +30,7 @@ Create \_ distributed \_ table ( # A1 函数用于定义分布式表，如果它
 
 此函数将 \_ \_ \_ ( # A1 后跟 master \_ create \_ worker \_ 分片 ( # A3 的用法替换为 master create 分布式 table。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名称：** 需要分发的表的名称。
 
@@ -40,7 +40,7 @@ Create \_ distributed \_ table ( # A1 函数用于定义分布式表，如果它
 
 **归置 \_ with：** (Optional) 将当前表包含在另一个表的归置组中。 默认情况下，当表是由同一类型的列分配、具有相同的分片计数，并且具有相同的复制系数时，它们将被定位。 的可能值 `colocate_with` 为 `default` ， `none` 启动新的归置组，或使用该表归置的另一个表的名称。   (，请参阅 [归置表](concepts-hyperscale-colocation.md)。 ) 
 
-请记住，的默认值为 `colocate_with` 隐式归置。 在表相关或将联接时，[归置](concepts-hyperscale-colocation.md)可能是很好的做法。  但是，如果两个表不相关，但对于它们的分布列使用相同的数据类型，则意外归置它们会在 [分片重新平衡](howto-hyperscale-scaling.md#rebalance-shards)期间降低性能。  表分片将在级联中不必要地一起移动 \" 。\"
+请记住，的默认值为 `colocate_with` 隐式归置。 在表相关或将联接时，[归置](concepts-hyperscale-colocation.md)可能是很好的做法。  但是，如果两个表不相关，但对于它们的分布列使用相同的数据类型，则意外归置它们会在 [分片重新平衡](howto-hyperscale-scale-rebalance.md)期间降低性能。  表分片将在级联中不必要地一起移动 \" 。\"
 
 如果新的分布式表与其他表无关，最好指定 `colocate_with => 'none'` 。
 
@@ -64,7 +64,7 @@ SELECT create_distributed_table('github_events', 'repo_id',
 
 Create \_ reference \_ table ( # A1 函数用于定义小引用表或维度表。 此函数采用表名称，创建一个只包含一个分片的分布式表，并将其复制到每个辅助角色节点。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名称：** 需要分布的小型维度表或引用表的名称。
 
@@ -84,7 +84,7 @@ SELECT create_reference_table('nation');
 
 升级 \_ 到 \_ 引用 \_ 表 ( # A1 函数会获得一个分片计数为1的现有分布式表，并将其升级为可识别的引用表。 调用此函数后，表就像是用 [create_reference_table](#create_reference_table)创建的一样。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名：** 包含分片 count = 1) 的分布式 (表的名称，将以引用表的形式分发。
 
@@ -106,7 +106,7 @@ SELECT upgrade_to_reference_table('nation');
 
 归置表应通过 create_distributed_table 的参数在表分布时间完成 `colocate_with` ，但[create_distributed_table](#create_distributed_table) `mark_tables_colocated` 如果需要，可以在以后处理。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **源表 \_ \_ 名称：** 要为其分配目标以匹配的归置组的分布式表的名称。
 
@@ -142,7 +142,7 @@ SELECT mark_tables_colocated('stores', ARRAY['products', 'line_items']);
 
 在分布式函数执行期间，Postgres 搜索路径不会从协调器传播到辅助角色，因此分布式函数代码应完全限定数据库对象的名称。 函数发出的通知也不会显示给用户。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **函数 \_ 名：** 要分发的函数的名称。 名称必须在括号中包含函数的参数类型，因为在 PostgreSQL 中有多个函数可以具有相同的名称。 例如，与 `'foo(int)'` 不同 `'foo(int, text)'` 。
 
@@ -184,7 +184,7 @@ SELECT create_distributed_function(
 
 主 \_ 获取 \_ 表 \_ 元数据 ( # A1 函数可用于返回分布式表的与分发相关的元数据。 此元数据包括表的关系 ID、存储类型、分发方法、分布列、复制计数、最大分片大小和分片放置策略。 在涵盖的内容后面，此函数将查询超大规模 (Citus) 元数据表，以获取所需的信息，并将其连接到元组，然后将其返回给用户。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名：** 要为其提取元数据的分布式表的名称。
 
@@ -222,7 +222,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 超大规模 (Citus) 根据行的分布列的值和表的分发方法，将分布式表的每一行分配给分片。 在大多数情况下，精确映射是数据库管理员可忽略的低级别详细信息。 但对于手动数据库维护任务或只是为了满足好奇心，确定行的分片会很有用。 `get_shard_id_for_distribution_column`函数提供了用于哈希和范围分布式表以及引用表的信息。 它不适用于追加分布。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名：** 分布式表。
 
@@ -249,7 +249,7 @@ SELECT get_shard_id_for_distribution_column('my_table', 4);
 
 有关更详细的讨论，请参阅 [选择分布列](concepts-hyperscale-choose-distribution-column.md)。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名：** 分布式表。
 
@@ -284,7 +284,7 @@ SELECT column_to_column_name(logicalrelid, partkey) AS dist_col_name
 获取指定的分布式表的所有分片所使用的磁盘空间。
 磁盘空间包括 \" 主分叉的大小，但不包括 \" 分片的可见性映射和可用空间图。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **logicalrelid：** 分布式表的名称。
 
@@ -308,7 +308,7 @@ pg_size_pretty
 
 获取指定的分布式表的所有分片所使用的磁盘空间，但不包括 TOAST、可用空间图和可见性映射) 的索引 (。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **logicalrelid：** 分布式表的名称。
 
@@ -332,7 +332,7 @@ pg_size_pretty
 
 获取指定的分布式表的所有分片使用的总磁盘空间，包括所有索引和 TOAST 数据。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **logicalrelid：** 分布式表的名称。
 
@@ -357,7 +357,7 @@ pg_size_pretty
 从 [citus_stat_statements](reference-hyperscale-metadata.md#query-statistics-table)中移除所有行。
 此函数独立于使用 `pg_stat_statements_reset()` 。 若要重置所有统计信息，请调用这两个函数。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 空值
 
@@ -373,7 +373,7 @@ pg_size_pretty
 
 若要修复分片，该函数首先删除不正常的分片位置，并使用协调器上的架构重新创建它。 创建分片放置后，该函数将从正常位置复制数据，并更新元数据以将新的分片位置标记为正常。 此函数可确保在修复过程中，将对分片进行任何并发修改保护。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **分片 \_ id：** 要修复的分片的 id。
 
@@ -407,7 +407,7 @@ SELECT master_copy_shard_placement(12345, 'good_host', 5432, 'bad_host', 5432);
 
 成功移动操作后，会删除源节点中的分片。 如果移动在任何点上都失败，则此函数将引发错误，并使源节点和目标节点保持不变。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **分片 \_ id：** 要移动的分片的 id。
 
@@ -452,7 +452,7 @@ SELECT master_move_shard_placement(12345, 'from_host', 5432, 'to_host', 5432);
 
 建议在运行分片重新均衡表之前调用 [get_rebalance_table_shards_plan](#get_rebalance_table_shards_plan) \_ \_ ，以查看并验证要执行的操作。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名称：** (可选) 其分片需要为重新平衡的表的名称。 如果为 NULL，则重新平衡所有现有的归置组。
 
@@ -470,9 +470,9 @@ SELECT master_move_shard_placement(12345, 'from_host', 5432, 'to_host', 5432);
 > -   `force_logical`：使用逻辑复制，即使该表没有副本标识。 在复制过程中对表的任何并发 update/delete 语句都将失败。
 > -   `block_writes`：对缺少主键或副本标识的表使用复制 (阻止写入) 。
 
-** \_ 仅限排出：** (可选的) 如果为 true，则将 `shouldhaveshards` 分片中已设置为 false 的工作节点移到 [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table); 不移动其他。
+**\_ 仅限排出：** (可选的) 如果为 true，则将 `shouldhaveshards` 分片中已设置为 false 的工作节点移到 [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table); 不移动其他。
 
-重新**平衡 \_ 策略：** (可选) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table)中策略的名称。
+重新 **平衡 \_ 策略：** (可选) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table)中策略的名称。
 如果省略此参数，则函数将选择默认策略，如表中所示。
 
 #### <a name="return-value"></a>返回值
@@ -498,7 +498,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 输出 [rebalance_table_shards](#rebalance_table_shards) 的计划的分片运动而不执行它们。
 虽然不太可能，但 \_ "获取重新平衡" \_ 表 \_ 分片 \_ 计划可以输出略微不同的计划，而不是 \_ 使用相同的参数进行重新平衡表 \_ 分片调用。 它们不会同时执行，因此有关服务器组的事实数据（ \- 例如，磁盘空间） \- 可能会因调用而异。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 与重新平衡表分片的参数相同 \_ \_ ：关系、阈值、max \_ 分片 \_ 移动、排除 \_ 分片 \_ 列表和仅排出 \_ 。 有关参数的含义，请参阅该函数的文档。
 
@@ -509,7 +509,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 -   **表 \_ 名**：要移动其分片的表
 -   **shardid**：相关分片
 -   **分片 \_ 大小**：大小（字节）
--   未**用：源**节点的主机名
+-   未 **用：源** 节点的主机名
 -   **sourceport**：源节点的端口
 -   **targetname**：目标节点的主机名
 -   **targetport**：目标节点的端口
@@ -518,7 +518,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 
 分片重新平衡开始后，该 `get_rebalance_progress()` 函数将列出所涉及的每个分片的进度。 它监视由计划和执行的移动 `rebalance_table_shards()` 。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 空值
 
@@ -530,7 +530,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 -   **表 \_ 名**：要移动其分片的表
 -   **shardid**：相关分片
 -   **分片 \_ 大小**：大小（字节）
--   未**用：源**节点的主机名
+-   未 **用：源** 节点的主机名
 -   **sourceport**：源节点的端口
 -   **targetname**：目标节点的主机名
 -   **targetport**：目标节点的端口
@@ -557,7 +557,7 @@ SELECT * FROM get_rebalance_progress();
 
 向 [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md?#rebalancer-strategy-table) 追加行。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 有关这些参数的详细信息，请参阅中的相应列值 `pg_dist_rebalance_strategy` 。
 
@@ -567,7 +567,7 @@ SELECT * FROM get_rebalance_progress();
 
 **节点 \_ 容量 \_ 函数：** 标识用于测量节点容量的函数
 
-** \_ \_ \_ 节点 \_ 函数上允许的分片：** 标识函数，该函数确定哪些分片可放置在哪些节点上
+**\_ \_ \_ 节点 \_ 函数上允许的分片：** 标识函数，该函数确定哪些分片可放置在哪些节点上
 
 **默认 \_ 阈值：** 一个浮点阈值，用于调整在节点间平衡累积分片开销的精度
 
@@ -581,7 +581,7 @@ SELECT * FROM get_rebalance_progress();
 
 更新 [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table) 表，将其参数命名的策略更改为在重新平衡分片时选择的默认策略。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **名称：** pg \_ dist 重新 \_ 平衡 \_ 策略中的策略的名称
 
@@ -599,7 +599,7 @@ SELECT citus_set_default_rebalance_strategy('by_disk_size');
 
 Citus \_ 远程 \_ 连接 \_ 统计 ( # A1 函数显示每个远程节点的活动连接数。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 空值
 
@@ -620,7 +620,7 @@ SELECT * from citus_remote_connection_stats();
 
 Master \_ 排出 \_ 节点 ( # A1 函数将分片移出指定节点，并移到 `shouldhaveshards` 在 [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table)中设置为 true 的其他节点上。 在从服务器组删除节点并关闭节点的物理服务器之前调用函数。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **nodename：** 要排出的节点的主机名名称。
 
@@ -632,7 +632,7 @@ Master \_ 排出 \_ 节点 ( # A1 函数将分片移出指定节点，并移到 
 > -   `force_logical`：使用逻辑复制，即使该表没有副本标识。 在复制过程中对表的任何并发 update/delete 语句都将失败。
 > -   `block_writes`：对缺少主键或副本标识的表使用复制 (阻止写入) 。
 
-重新**平衡 \_ 策略：** (可选) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table)中策略的名称。
+重新 **平衡 \_ 策略：** (可选) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table)中策略的名称。
 如果省略此参数，则函数将选择默认策略，如表中所示。
 
 #### <a name="return-value"></a>返回值
@@ -675,7 +675,7 @@ Master \_ 排出 \_ 节点 ( # A1 函数将分片移出指定节点，并移到 
 
 复制 \_ 表 \_ 分片 ( # A1 函数将复制给定表中复制的分片。 函数首先计算分片复制的列表和可从其提取用于复制的位置。 然后，该函数将复制这些分片，并更新相应的分片元数据以反映副本。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名称：** 需要复制其分片的表的名称。
 
@@ -707,7 +707,7 @@ SELECT replicate_table_shards('github_events', max_shard_copies:=10);
 
 此函数创建一个新的分片，用于保存分布列中具有特定单个值的行。 这对于多租户超大规模 (Citus) 用例特别有用，其中，大型租户可单独放置在其自己的分片上，并最终位于其自身的物理节点上。
 
-#### <a name="arguments"></a>参数
+#### <a name="arguments"></a>自变量
 
 **表 \_ 名：** 要获取新分片的表的名称。
 

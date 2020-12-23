@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 956b57d7215a439c1e3df71c1d3441534fc25723
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547522"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88547522"
 * 可让用户使用其 Azure AD 帐户自动登录到 JIRA SAML SSO by Microsoft (V5.2)（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="description"></a>说明
@@ -115,7 +115,7 @@ ms.locfileid: "88547522"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -146,28 +146,28 @@ ms.locfileid: "88547522"
 
 2. 将鼠标悬停在小齿轮上，并单击“外接程序”  。
 
-    ![配置单一登录](./media/jira52microsoft-tutorial/addon1.png)
+    ![屏幕截图显示“设置”菜单中处于选中状态的“加载项”。](./media/jira52microsoft-tutorial/addon1.png)
 
 3. 在“加载项”选项卡部分，单击“管理加载项”  。
 
-    ![配置单一登录](./media/jira52microsoft-tutorial/addon7.png)
+    ![屏幕截图显示在“加载项”选项卡中选择了“管理加载项”。](./media/jira52microsoft-tutorial/addon7.png)
 
 4. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=56521)下载插件。 使用“上传加载项”  菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/servicesagreement/)涵盖了插件下载。
 
-    ![配置单一登录](./media/jira52microsoft-tutorial/addon12.png)
+    ![屏幕截图显示“管理加载项”，其中标注了“上传加载项”链接。](./media/jira52microsoft-tutorial/addon12.png)
 
 5. 插件安装后，会显示在“用户已安装”加载项部分  。 单击“配置”  配置新的插件。
 
-    ![配置单一登录](./media/jira52microsoft-tutorial/addon13.png)
+    ![屏幕截图显示“Jira 的 Azure AD SAML 单一登录”部分，其中“配置”处于选中状态。](./media/jira52microsoft-tutorial/addon13.png)
 
 6. 在配置页上执行下列步骤：
 
-    ![配置单一登录](./media/jira52microsoft-tutorial/addon52.png)
+    ![屏幕截图显示“Microsoft Jira SSO 连接器”配置页。](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
+    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的 **应用联合元数据 URL** 值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     b. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中“基本 SAML 配置”部分下的“标识符”、“回复 URL”和“登录 URL”文本框中    。
 
@@ -189,7 +189,7 @@ ms.locfileid: "88547522"
     i. 单击“保存”按钮保存设置。 
 
     > [!NOTE]
-    > 有关安装和故障排除的详细信息，请访问 [MS JIRA SSO 连接器管理员指南](../ms-confluence-jira-plugin-adminguide.md)，还可以参阅[常见问题解答](../ms-confluence-jira-plugin-faq.md)以获得帮助
+    > 有关安装和故障排除的详细信息，请访问 [MS JIRA SSO 连接器管理员指南](./ms-confluence-jira-plugin-adminguide.md)，还可以参阅[常见问题解答](./ms-confluence-jira-plugin-adminguide.md)以获得帮助
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -251,19 +251,19 @@ ms.locfileid: "88547522"
 
 2. 将鼠标悬停在小齿轮上，并单击“用户管理”  。
 
-    ![添加员工](./media/jira52microsoft-tutorial/user1.png)
+    ![屏幕截图显示“设置”菜单中处于选中状态的“用户管理”。](./media/jira52microsoft-tutorial/user1.png)
 
 3. 重定向到“管理员访问权限”页后，输入密码，  并单击“确认”按钮。 
 
-    ![添加员工](./media/jira52microsoft-tutorial/user2.png)
+    ![屏幕截图显示“管理员访问权限”页，可在其中输入凭据。](./media/jira52microsoft-tutorial/user2.png)
 
 4. 在“用户管理”  选项卡部分，单击“创建用户”  。
 
-    ![添加员工](./media/jira52microsoft-tutorial/user3.png) 
+    ![屏幕截图显示“用户管理”选项卡，可在其中“创建用户”。](./media/jira52microsoft-tutorial/user3.png) 
 
 5. 在“新建用户”对话框页中，执行以下步骤： 
 
-    ![添加员工](./media/jira52microsoft-tutorial/user4.png)
+    ![屏幕截图显示“新建用户”对话框，可在其中输入此步骤中的信息。](./media/jira52microsoft-tutorial/user4.png)
 
     a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
@@ -279,12 +279,12 @@ ms.locfileid: "88547522"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“JIRA SAML SSO by Microsoft (V5.2)”磁贴时，应会自动登录到设置了 SSO 的 JIRA SAML SSO by Microsoft (V5.2)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“JIRA SAML SSO by Microsoft (V5.2)”磁贴时，应会自动登录到设置了 SSO 的 JIRA SAML SSO by Microsoft (V5.2)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 0a94c66eb51298db226ceec5da5c86666576052a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5a65ff28a38e42e05844063a330c0325f16b2247
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850485"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363283"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>食谱：针对大数据的认知服务的智能美术探索
 
@@ -24,9 +24,9 @@ ms.locfileid: "87850485"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 您必须具有计算机视觉和认知搜索的订阅密钥。 按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取你的密钥。
+* 您必须具有计算机视觉和认知搜索的订阅密钥。 按照 [创建认知服务帐户](../../cognitive-services-apis-create-account.md) 中的说明订阅计算机视觉并获取你的密钥。
   > [!NOTE]
-  > 有关定价信息，请参阅[Azure 认知搜索](https://azure.microsoft.com/services/search/#pricing)。
+  > 有关定价信息，请参阅 [Azure 认知搜索](https://azure.microsoft.com/services/search/#pricing)。
 
 ## <a name="import-libraries"></a>导入库
 
@@ -117,5 +117,4 @@ requests.post(url, json={"search": "Glass"}, headers = {"api-key": AZURE_SEARCH_
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用[认知服务进行大数据的异常情况检测](anomaly-detection.md)。
-
+了解如何使用 [认知服务进行大数据的异常情况检测](anomaly-detection.md)。

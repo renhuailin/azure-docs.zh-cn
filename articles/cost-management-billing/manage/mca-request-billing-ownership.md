@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371858"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348972"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>从其他帐户获取 Azure 订阅的计费所有权
 
@@ -21,14 +21,14 @@ ms.locfileid: "91371858"
 
 本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-for-access)。
 
-只有**发票科目所有者**或**发票科目参与者**才能请求计费所有权。 有关详细信息，请参阅[发票科目角色任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+只有 **发票科目所有者** 或 **发票科目参与者** 才能请求计费所有权。 有关详细信息，请参阅[发票科目角色任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
 
 ## <a name="request-billing-ownership"></a>请求计费所有权
 
 1. 以 Microsoft 客户协议计费帐户的发票科目所有者或参与者身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索“成本管理 + 计费”。  
     ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. 在计费范围页中，选择用于订阅使用情况付款的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。  
+1. 在计费范围页中，选择“计费范围”，然后选择用于支付订阅使用费用的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。  
     [![显示“成本管理 + 计费”门户搜索的屏幕截图](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
     > Azure 门户会记住你访问的最后一个计费范围，并在你下一次转到“成本管理 + 计费”页时显示该范围。 如果你早前访问过“成本管理 + 计费”，则看不到计费范围页。 如果是这样，请检查你是否处于[正确的范围](#check-for-access)。 否则，请[切换范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)，选择 Microsoft 客户协议的计费帐户。
@@ -62,7 +62,7 @@ ms.locfileid: "91371858"
 1. 在计费范围页中，选择已发送其转账请求的计费帐户。
 1. 在左侧选择“计费对象信息”。  
     [![屏幕截图显示正在选择计费对象信息](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
-1. 选择已发送其转账请求的**计费对象信息**。
+1. 选择已发送其转账请求的 **计费对象信息**。
 1. 在左侧选择“发票科目”。  
     [![屏幕截图显示正在选择发票部分](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
 1. 从列表中选择已发送其转账请求的发票科目。

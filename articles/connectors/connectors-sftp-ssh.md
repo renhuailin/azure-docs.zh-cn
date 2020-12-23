@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 tags: connectors
-ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823614"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324245"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -40,6 +40,8 @@ ms.locfileid: "91823614"
 有关 SFTP-SSH 连接器和 SFTP 连接器之间的差异，请参阅本主题后面的[比较 SFTP-SSH 与 SFTP](#comparison) 部分。
 
 ## <a name="limits"></a>限制
+
+* SFTP SSH 连接器支持私钥身份验证或密码身份验证，而不是两者都支持。
 
 * 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 尽管默认的区块大小为 15 MB，但此大小可以根据网络延迟、服务器响应时间等因素动态变化，从 5 MB 开始逐渐增加到最大值 50 MB。
 
@@ -96,16 +98,16 @@ ms.locfileid: "91823614"
   >
   > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：
   >
-  > * **私钥格式**：采用 OpenSSH 和 ssh.com 格式的 RSA (Rivest Shamir Adleman) 和 DSA（数字签名算法）密钥。 如果私钥为 PuTTY (.ppk) 文件格式，请先[将密钥转换为 OpenSSH (.pem) 文件格式](#convert-to-openssh)。
+  > * **私钥格式** ：采用 OpenSSH 和 ssh.com 格式的 RSA (Rivest Shamir Adleman) 和 DSA（数字签名算法）密钥。 如果私钥为 PuTTY (.ppk) 文件格式，请先[将密钥转换为 OpenSSH (.pem) 文件格式](#convert-to-openssh)。
   >
-  > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
+  > * **加密算法** ：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   >
-  > * **指纹**：MD5
+  > * **指纹** ：MD5
   >
-  > 在向逻辑应用添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 为此连接提供 SSH 密钥时，***请勿手动输入或编辑密钥***，否则可能导致连接失败。 请确保从 SSH 私钥文件中复制密钥，并将该密钥粘贴到连接详细信息中。 
+  > 在向逻辑应用添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 为此连接提供 SSH 私钥时，* *_不要手动输入或编辑密钥_* _，这可能会导致连接失败。 相反，请确保从 SSH 私钥文件 _*_复制密钥_*_ ，并将该密钥 _*_粘贴_*_ 到连接详细信息中。 
   > 有关详细信息，请参阅本文后面的[使用 SSH 连接到 SFTP](#connect) 部分。
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+_ 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
 
 * 要在其中访问 SFTP 帐户的逻辑应用。 若要从 SFTP-SSH 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 操作，请使用另一个触发器（例如“重复”触发器）启动逻辑应用。
 
@@ -115,8 +117,8 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 | SFTP 客户端 | 操作 |
 |-------------|--------|
-| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用”      |
-| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用”   |
+| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用” |
+| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用” |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。
@@ -187,19 +189,19 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
    > [!IMPORTANT]
    >
-   > 在“SSH 私钥”属性中输入 SSH 私钥时，请遵循以下附加步骤，帮助确保提供此属性的完整正确值。 无效的密钥会导致连接失败。
+   > 在“SSH 私钥”属性中输入 SSH 私钥时，请遵循以下附加步骤，帮助确保提供此属性的完整正确值。  无效的密钥会导致连接失败。
 
    可以使用任何文本编辑器。以下步骤以 Notepad.exe 为例，说明如何正确复制并粘贴密钥。
 
    1. 在文本编辑器中打开 SSH 私钥文件。 这些步骤以记事本为例。
 
-   1. 在记事本的“编辑”菜单中，选择“全选”。 
+   1. 在记事本的“编辑”菜单中，选择“全选”。  
 
    1. 选择“编辑” > “复制”。
 
-   1. 在添加的 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。  请务必粘贴该密钥， 而不要手动输入或编辑密钥。
+   1. 在添加的 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。  **_请确保粘贴_* 此键。 _*_不要手动输入或编辑该密钥_*_ 。
 
-1. 输入完连接详细信息后，选择“创建”。
+1. 输入完连接详细信息后，选择 "创建"。
 
 1. 现在，为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
@@ -227,7 +229,7 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 在 SFTP 服务器上添加或更改文件时，此触发器将启动逻辑应用工作流。 例如，可以添加一个条件，用于检查文件内容，并根据该内容是否符合指定的条件来获取内容。 然后可以添加一个操作，用于获取文件内容并将其放在 SFTP 服务器上的某个文件夹中。
 
-**企业示例**：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
+**企业示例** ：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
 
 <a name="get-content"></a>
 
@@ -253,21 +255,23 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 1. 如果以后需要此文件元数据，可以使用“获取文件元数据”操作。
 
+<a name="connection-attempt-failed"></a>
+
 ### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504错误： "连接尝试失败，因为连接的参与方在一段时间后未正确响应，或已建立连接失败，因为连接的主机未响应" 或 "到 SFTP 服务器的请求已超过 ' 00:00:30 ' 秒"
 
-如果逻辑应用无法成功建立与 SFTP 服务器的连接，则会发生此错误。 可能有许多不同的原因，我们建议在以下方面对问题进行故障排除。 
+如果逻辑应用无法成功建立与 SFTP 服务器的连接，则会发生此错误。 此问题可能有不同的原因，请尝试以下疑难解答选项：
 
-1. 连接超时为20秒。 请确保 SFTP 服务器具有良好的性能，intermidiate 的设备（如防火墙）不会产生很大的开销。 
+* 连接超时值为20秒。 检查 SFTP 服务器是否具有良好的性能和中间设备（如防火墙）不会增加开销。 
 
-2. 如果涉及到防火墙，请确保将 **托管连接器 IP** 地址添加到已批准列表。 你可以为逻辑应用区域找到这些 IP 地址 [**此处**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+* 如果设置了防火墙，请确保将 **托管连接器 IP** 地址添加到已批准列表。 若要查找逻辑应用的区域的 IP 地址，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#multi-tenant-azure---outbound-ip-addresses)。
 
-3. 如果此问题是间歇性的，请测试重试设置，以查看是否有比默认值4更高的重试计数。
+* 如果此错误间歇发生，请将 SFTP SSH 操作上的 **重试策略** 设置更改为大于默认四次重试的重试次数。
 
-4. 请检查 SFTP 服务器是否对每个 IP 地址的连接数施加限制。 如果是这样，则可能需要限制并发逻辑应用实例的数目。 
+* 检查 SFTP 服务器是否对每个 IP 地址的连接数施加限制。 如果存在限制，则可能需要限制并发逻辑应用实例的数目。
 
-5. 将 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性增加到 SFTP 服务器上 SSH 配置中的1小时，以降低连接建立成本。
+* 若要减少连接建立成本，请在 SFTP 服务器的 SSH 配置中，将 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性增加一小时左右。
 
-6. 可以检查 SFTP 服务器日志，以查看逻辑应用的请求是否曾经到达 SFTP 服务器。 你还可以在防火墙和 SFTP 服务器上进行一些网络跟踪，进一步深入了解连接问题。
+* 查看 SFTP 服务器日志，检查逻辑应用的请求是否已到达 SFTP 服务器。 若要获取有关连接问题的详细信息，还可以在防火墙和 SFTP 服务器上运行网络跟踪。
 
 ## <a name="connector-reference"></a>连接器参考
 

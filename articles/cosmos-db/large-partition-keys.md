@@ -3,18 +3,20 @@ title: 使用大分区键创建 Azure Cosmos 容器
 description: 了解如何使用 Azure 门户和不同的 SDK 通过大分区键在 Azure Cosmos DB 中创建容器。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59781f9b86764d0982e1612f9671e8f0919ed490
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4ad26d63ca06f5a46a4a1f77d329d04896e96c52
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009502"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339285"
 ---
 # <a name="create-containers-with-large-partition-key"></a>使用大分区键创建容器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 使用基于哈希的分区方案实现数据的水平缩放。 在 2019 年 5 月 3 日之前创建的所有 Azure Cosmos 容器都使用哈希函数根据分区键的前 100 个字节计算哈希。 如果多个分区键的前 100 个字节相同，则服务会将这些逻辑分区视为同一逻辑分区。 这可能会导致问题，例如分区大小配额不正确、对不同的分区键应用了唯一索引。 为了解决此问题，我们引入了大分区键。 Azure Cosmos DB 现在支持其值最高为 2 KB 的大分区键。
 
@@ -83,4 +85,4 @@ database,
 * [Azure Cosmos DB 中的分区](partitioning-overview.md)
 * [Azure Cosmos DB 中的请求单位](request-units.md)
 * [在容器和数据库上预配吞吐量](set-throughput.md)
-* [使用 Azure Cosmos 帐户](account-overview.md)
+* [使用 Azure Cosmos 帐户](./account-databases-containers-items.md)

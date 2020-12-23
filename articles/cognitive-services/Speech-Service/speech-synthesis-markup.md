@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 199e19116e0d8ba6bcc4954e767265e6fb4cd238
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5d11f343a55d30e5d14d6f4ae0ddb1a74d9c61fa
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666341"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631969"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -33,6 +33,11 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 若要详细了解标准、神经和自定义语音，请参阅[文本转语音概述](text-to-speech.md)。
 
+
+> [!NOTE]
+> 您可以使用 ["文本转语音" 页](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)，收听不同样式的声音，并 pitches 阅读示例文本。
+
+
 ## <a name="special-characters"></a>特殊字符
 
 使用 SSML 时请注意，特殊字符（例如引号、撇号和括号）必须经过转义。 有关详细信息，请参阅[可扩展标记语言 (XML) 1.0：附录 D](https://www.w3.org/TR/xml/#sec-entexpand)。
@@ -46,7 +51,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ## <a name="create-an-ssml-document"></a>创建 SSML 文档
 
-`speak` 是根元素，对于所有 SSML 文档都是**必需的**。 `speak` 元素包含重要信息，例如版本、语言和标记词汇定义。
+`speak` 是根元素，对于所有 SSML 文档都是 **必需的**。 `speak` 元素包含重要信息，例如版本、语言和标记词汇定义。
 
 **语法**
 
@@ -56,7 +61,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必须 |
 | `xml:lang` | 指定根文档的语言。 该值可以包含小写的双字母语言代码（例如 `en`），或者语言代码加上大写的国家/地区代码（例如 `en-US`）。 | 必须 |
@@ -76,7 +81,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -99,7 +104,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -130,7 +135,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+有关详细信息，请参阅 <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```java
 speechConfig.setProperty(
@@ -148,7 +153,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+有关详细信息，请参阅 <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```javascript
 speechConfig.setProperty(
@@ -196,27 +201,52 @@ speechConfig!.setPropertyTo(
 
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
+* `zh-CN-YunxiNeural`（预览版）
+* `zh-CN-XiaohanNeural`（预览版）
+* `zh-CN-XiaomoNeural`（预览版）
+* `zh-CN-XiaoxuanNeural`（预览版）
+* `zh-CN-XiaoruiNeural`（预览版）
 
-更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。 可以通过[语音列表 API](rest-text-to-speech.md#get-a-list-of-voices) 查询每种语音支持的风格。
+可以进一步更改讲话风格的强度以更好地适应用例。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。 
 
-对于中文语音 XiaoxiaoNeural，可以进一步更改说话风格的强度以更好地适应你的使用场景。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。
+目前，支持调整以下神经语音的讲话风格：
+* `zh-CN-XiaoxiaoNeural`
+
+除了调整讲话样式和样式度以外，您还可以调整参数， `role` 使语音模拟不同的年龄和性别。 例如，男语音可以升高音调，并更改 intonation 以模仿女性声音。
+
+目前，以下神经声音支持角色扮演调整：
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
+
+以上更改在句子级别应用，并且样式和角色的播放因语音而异。 如果不支持样式或角色扮演，则该服务将以默认的非特定语言方式返回语音。 可以通过 [语音列表 API](rest-text-to-speech.md#get-a-list-of-voices) 或通过代码免费的 [音频内容创建](https://aka.ms/audiocontentcreation) 平台了解每个语音支持的样式和角色扮演情况。
 
 **语法**
 
 ```xml
+<mstts:express-as style="string"></mstts:express-as>
+```
+```xml
 <mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+```xml
+<mstts:express-as role="string" style="string"></mstts:express-as>
+```
 > [!NOTE]
-> 目前，`styledegree` 仅支持 XiaoxiaoNeural。 
+> 目前， `styledegree` 仅支持 zh-chs-XiaoxiaoNeural。 `role` 仅支持 zh-chs-XiaomoNeural 和 zh-chs-XiaoxuanNeural。
 
 **属性**
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
-| `styledegree` | 指定说话风格的强度。 接受的值：0.01 到 2（含边界值）。 默认值为 1，表示预定义的风格强度。 最小单位为 0.01，表示略倾向于目标风格。 值为 2 表示是默认风格强度的两倍。  | 可选（目前，`styledegree` 仅支持 XiaoxiaoNeural。）|
+| `styledegree` | 指定说话风格的强度。 接受的值：0.01 到 2（含边界值）。 默认值为 1，表示预定义的风格强度。 最小单位为 0.01，表示略倾向于目标风格。 值为 2 表示是默认风格强度的两倍。  | 可选 (此时， `styledegree` 仅支持 zh-chs-XiaoxiaoNeural。 ) |
+| `role` | 指定讲述角色扮演。 语音将充当不同的年龄和性别。  | 可选 (此时， `role` 仅支持 zh-chs-XiaomoNeural 和 zh-chs-XiaoxuanNeural。 ) |
 
 参考下表来确定每种神经语音支持的讲话风格。
 
@@ -228,6 +258,12 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | 表达轻松随意的语气                         |
 |                         | `style="cheerful"`        | 表达积极愉快的语气                         |
 |                         | `style="empathetic"`      | 表达关心和理解               |
+| `en-US-JennyNeural`     | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
+|                         | `style="chat"`            | 表达轻松随意的语气                         |
+|                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
+|                         | `style="newscast"`        | 以通用、随意的语气发布一般新闻   |
+| `en-US-GuyNeural`       | `style="newscast"`        | 以正式专业的语气叙述新闻 |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | 以沉着冷静的态度说话。 语气、音调、韵律与其他语音类型相比要统一得多。                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
@@ -243,6 +279,59 @@ speechConfig!.setPropertyTo(
 |                         | `style="gentle"`          | 以较低的音调和音量表达温和、礼貌和愉快的语气         |   
 |                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | 以友好热情的语气为客户提供支持  | 
+| `zh-CN-YunyeNeural`     | `style="calm"`            | 以沉着冷静的态度说话。 语气、音调、韵律与其他语音类型相比要统一得多。    | 
+|                         | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
+|                         | `style="sad"`             | 以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。            |
+|                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
+|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。              |
+|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
+|                         | `style="sad"`             | 以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。            |
+|                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
+|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。              |
+|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。    |
+|                         | `style="depressed"`       | 使用较低的音调和能量表达 melancholic 和 despondent 音    |
+|                         | `style="embarrassed"`     | 在说话者感到不安时表达不确定和不愿意的音调   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
+|                         | `style="sad"`             | 以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。            |
+|                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
+|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。              |
+|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。    |
+|                         | `style="embarrassed"`     | 在说话者感到不安时表达不确定和不愿意的音调   |
+|                         | `style="affectionate"`    | 以较高的音调和音量表达温暖而亲切的语气。 说话者处于吸引听众注意力的状态。 说话者的“个性”往往是讨人喜欢的。          |     
+|                         | `style="gentle"`          | 以较低的音调和音量表达温和、礼貌和愉快的语气         |   
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
+|                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
+|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。              |
+|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。    |
+|                         | `style="depressed"`       | 使用较低的音调和能量表达 melancholic 和 despondent 音    |
+|                         | `style="gentle"`          | 以较低的音调和音量表达温和、礼貌和愉快的语气         |  
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
+|                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
+|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。              |
+|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。    |
+|                         | `style="depressed"`       | 使用较低的音调和能量表达 melancholic 和 despondent 音    |
+|                         | `style="gentle"`          | 以较低的音调和音量表达温和、礼貌和愉快的语气         |   
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | 以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。            |
+|                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
+
+使用此表可确定每个神经语音支持哪些角色。
+
+| 语音                   | 角色                       | 说明                                                 |
+|-------------------------|----------------------------|-------------------------------------------------------------|
+| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | 将语音模仿给一位年轻人。                 |
+|                         | `role="OlderAdultMale"`    | 语音模仿到较早的成人男。                   |
+|                         | `role="Girl"`              | 向女孩模仿的声音。                               |
+|                         | `role="Boy"`               | 模仿的声音。                                |
+| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | 将语音模仿给一位年轻人。                 |
+|                         | `role="OlderAdultFemale"`  | 语音模仿给老的成人。                 |
+|                         | `role="OlderAdultMale"`    | 语音模仿到较早的成人男。                   |
 
 **示例**
 
@@ -271,6 +360,23 @@ speechConfig!.setPropertyTo(
 </speak>
 ```
 
+此 SSML 代码片段说明了如何 `role` 使用属性来更改 XiaomoNeural 的角色扮演。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaomoNeural">
+        女儿看见父亲走了进来，问道：
+        <mstts:express-as role="YoungAdultFemale" style="calm">
+            “您来的挺快的，怎么过来的？”
+        </mstts:express-as>
+        父亲放下手提包，说：
+        <mstts:express-as role="OlderAdultMale" style="calm">
+            “刚打车过来的，路上还挺顺畅。”
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
 ## <a name="add-or-remove-a-breakpause"></a>添加或删除中断/暂停
 
 使用元素 `break` 可在单词之间插入暂停（或中断），或者防止文本转语音服务自动添加暂停。
@@ -290,7 +396,7 @@ speechConfig!.setPropertyTo(
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
-| `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位。 例如，`2s` 和 `500` 是有效值 | 可选 |
+| `time` | 指定暂停的绝对持续时间（以秒或毫秒为单位），此值应设置为小于 5000 ms。 例如，`2s` 和 `500ms` 是有效值 | 可选 |
 
 | Strength                      | 说明 |
 |-------------------------------|-------------|
@@ -309,6 +415,37 @@ speechConfig!.setPropertyTo(
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
+```
+## <a name="add-silence"></a>添加无声
+
+使用 `mstts:silence` 元素在文本之前或之后或在两个相邻句子之间插入暂停。 
+
+> [!NOTE]
+>与之间的区别在于 `mstts:silence` `break` `break` 可以添加到文本中的任何位置，但无声仅适用于输入文本的开头或结尾，或位于2个相邻句子的边界。  
+
+
+**语法**
+
+```xml
+<mstts:silence  type="string"  value="string"/>
+```
+
+**属性**
+
+| 属性 | 说明 | 必需/可选 |
+|-----------|-------------|---------------------|
+| `type` | 指定添加无声的位置： <ul><li>前导–在文本开头 </li><li>月初和月末–在文本末尾 </li><li>Sentenceboundary –相邻句子之间 </li></ul> | 必需 |
+| `Value` | 指定暂停的绝对持续时间（以秒或毫秒为单位），此值应设置为小于 5000 ms。 例如，`2s` 和 `500ms` 是有效值 | 必需 |
+
+**示例** 在此示例中， `mtts:silence` 用于在两个句子之间添加200毫秒的静音。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
+<voice name="en-US-AriaNeural"> 
+<mstts:silence  type="Sentenceboundary" value="200ms"/> 
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
+</voice> 
+</speak> 
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>指定段落和句子
@@ -348,6 +485,9 @@ speechConfig!.setPropertyTo(
 `ph` 元素用于 SSML 文档中的发音。 `ph` 元素只能包含文本，而不能包含其他元素。 始终提供人类可读的语音作为回退。
 
 音标由音素构成，而这些音素由字母、数字或字符（有时是它们的组合）构成。 每个音素描述独特的语音。 这与拉丁音标不同，其中的任一字母可以表示多种语音。 想像一下单词“candy”和“cease”中字母“c”的不同发音，或者字母组合“th”在单词“thing”和“those”中的不同发音。
+
+> [!NOTE]
+> 对于这5个声音 (et-AnuNeural，ga-IE-OrlaNeural，lt-OnaNeural，lv-LV-) EveritaNeural，，，此时不支持音素标记。
 
 **语法**
 
@@ -395,6 +535,10 @@ speechConfig!.setPropertyTo(
 > [!NOTE]
 > 自定义词典当前支持 UTF-8 编码。 
 
+> [!NOTE]
+> 这5个声音 (et-AnuNeural、OrlaNeural、lt-OnaNeural、lv-LV EveritaNeural 和 mt-GarceNeural) 目前不支持自定义词典。
+
+
 **语法**
 
 ```XML
@@ -432,7 +576,7 @@ speechConfig!.setPropertyTo(
 
 `lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alias` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
 
-需要特别注意的是，您不能使用自定义词典直接设置词组的发音。 如果需要设置首字母缩略词或缩写词的发音，请首先提供 `alias`，再将 `phoneme` 与该 `alias` 关联。 例如：
+需要特别注意的是，不能使用自定义词典直接设置短语的发音。 如果需要设置首字母缩略词或缩写词的发音，请首先提供 `alias`，再将 `phoneme` 与该 `alias` 关联。 例如：
 
 ```xml
   <lexeme>
@@ -445,7 +589,7 @@ speechConfig!.setPropertyTo(
   </lexeme>
 ```
 
-你还可以直接 `alias` 为首字母缩写词或缩写词提供预期。 例如：
+也可以直接提供所需的`alias`作为首字母缩略词或缩写词。 例如：
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme> 
@@ -458,7 +602,7 @@ speechConfig!.setPropertyTo(
 
 有关自定义词典文件的详细信息，请参阅 [Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/)（发音词典规范 (PLS) 版本 1.0）。
 
-接下来，发布自定义词典文件。 虽然对此文件的存储位置没有限制，但建议使用 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+接下来，发布自定义词典文件。 虽然对此文件的存储位置没有限制，但建议使用 [Azure Blob 存储](../../storage/blobs/storage-quickstart-blobs-portal.md)。
 
 发布自定义词典后，可以从 SSML 引用它。
 
@@ -528,11 +672,11 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，600 Hz。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如：+80 Hz 或 -2st。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul>. | 可选 |
+| `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如 `<prosody pitch="600Hz">some text</prosody>`。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如 `<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul> | 可选 |
 | `contour` |调型现在同时支持神经语音和标准语音。 调型表示音节的变化。 这些变化以语音输出中指定时间处的目标数组形式表示。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
 | `range` | 表示文本音节范围的值。 可以使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
 | `rate` | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 如果值为 *0.5*，则速率会减慢一半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>默认值</li></ul></li></ul> | 可选 |
-| `duration` | 语音合成 (TTS) 服务读取文本时应该消逝的时长，以秒或毫秒为单位。 例如 *2s* 或 *1800ms*。 | 可选 |
+| `duration` | 语音合成 (TTS) 服务读取文本时应该消逝的时长，以秒或毫秒为单位。 例如 *2s* 或 *1800ms*。 持续时间仅支持标准语音。| 可选 |
 | `volume` | 指示语音的音量级别。 可将音量表述为：<ul><li>以从 0.0 到 100.0（从最安静到最大声）的数字表示的绝对值。 例如 75。 默认值为 100.0。</li><li>以前面带有“+”或“-”的数字表示的相对值，指定音量的变化量。 例如，+10 或 -5.5。</li><li>常量值：<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>默认值</li></ul></li></ul> | 可选 |
 
 ### <a name="change-speaking-rate"></a>更改语速

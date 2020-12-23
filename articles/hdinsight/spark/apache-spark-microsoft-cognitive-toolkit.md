@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 659e44ddc13cf093d7e571e904e177136ed21127
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7fa3355ff7e61d624d57da68d0f835faa7ca3736
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084488"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505420"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>将 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集配合使用
 
 在本文中，将执行以下步骤。
 
-1. 运行自定义脚本，以在 Azure HDInsight Spark 群集上安装 [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/)。
+1. 运行自定义脚本，以在 Azure HDInsight Spark 群集上安装 [Microsoft Cognitive Toolkit](/cognitive-toolkit/)。
 
 2. 将 [Jupyter Notebook](https://jupyter.org/) 上传到 [Apache Spark](https://spark.apache.org/) 群集，以了解如何使用 [Spark Python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html) 将定型的 Microsoft Cognitive Toolkit 深度学习模型应用于 Azure Blob 存储帐户中的文件
 
@@ -31,12 +31,12 @@ ms.locfileid: "86084488"
 
 ## <a name="how-does-this-solution-flow"></a>此解决方案的流程如何？
 
-此解决方案分为两部分，即本文和在本文中上传的 Jupyter 笔记本。 在本文中，完成以下步骤：
+此解决方案分为本文和您在本文中上载的 Jupyter Notebook。 在本文中，完成以下步骤：
 
 * 在 HDInsight Spark 群集上运行脚本操作，安装 Microsoft 认知工具包和 Python 包。
-* 将运行解决方案的 Jupyter 笔记本上传到 HDInsight Spark 群集中。
+* 将运行解决方案的 Jupyter Notebook 上传到 HDInsight Spark 群集。
 
-以下其余步骤涵盖在 Jupyter 笔记本中。
+Jupyter Notebook 中介绍了以下其余步骤。
 
 * 将示例图像加载到 Spark 弹性分布式数据集或 RDD 中。
   * 加载模块并定义预设。
@@ -66,17 +66,17 @@ ms.locfileid: "86084488"
 |节点类型：|头节点、工作器节点|
 |parameters|无|
 
-## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集
+## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>将 Jupyter Notebook 上传到 Azure HDInsight Spark 群集
 
-要将 Microsoft 认知工具包与 Azure HDInsight Spark 群集配合使用，必须将 Jupyter 笔记本 **CNTK_model_scoring_on_Spark_walkthrough.ipynb** 加载到 Azure HDInsight Spark 群集中。 GitHub 上的 [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) 位置提供了此 Notebook。
+若要将 Microsoft Cognitive Toolkit 与 Azure HDInsight Spark 群集一起使用，必须将 Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough ipynb** 到 Azure HDInsight Spark 群集。 GitHub 上的 [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) 位置提供了此 Notebook。
 
 1. 下载并解压缩 [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)。
 
 1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中的 `CLUSTERNAME` 是群集的名称。
 
-1. 在 Jupyter 笔记本中，选择右上角的“上传”  ，然后导航到“下载”并选择文件 `CNTK_model_scoring_on_Spark_walkthrough.ipynb`。
+1. 在 Jupyter Notebook 中，选择右上角的 " **上传** "，并导航到 "下载" 并选择 "文件" `CNTK_model_scoring_on_Spark_walkthrough.ipynb` 。
 
-    ![将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集")
+    ![将 Jupyter Notebook 上传到 Azure HDInsight Spark 群集](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "将 Jupyter Notebook 上传到 Azure HDInsight Spark 群集")
 
 1. 再次选择“上传”  。
 
@@ -104,8 +104,8 @@ ms.locfileid: "86084488"
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
-* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)
+* [适用于 HDInsight 的 Apache Spark 群集中的 Jupyter Notebook 可用的内核](apache-spark-jupyter-notebook-kernels.md)
+* [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理资源

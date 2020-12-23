@@ -11,18 +11,18 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
-ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7dc6cd580687544226b61a29ca9ccf2d1b8dff42
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443800"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671533"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>导出到 BACPAC 文件 - Azure SQL 数据库和 Azure SQL 托管实例
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-如果需要为存档或移动到其他平台而导出数据库，可将数据库架构和数据导出到 [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) 文件。 BACPAC 文件是一个扩展名为 BACPAC 的 ZIP 文件，它包含来自数据库的元数据和数据。 可将 BACPAC 文件存储在 Azure Blob 存储中或本地位置的本地存储中，之后可导入回 Azure SQL 数据库、Azure SQL 托管实例或 SQL Server 实例。
+如果需要为存档或移动到其他平台而导出数据库，可将数据库架构和数据导出到 [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#Anchor_4) 文件。 BACPAC 文件是一个扩展名为 BACPAC 的 ZIP 文件，它包含来自数据库的元数据和数据。 可将 BACPAC 文件存储在 Azure Blob 存储中或本地位置的本地存储中，之后可导入回 Azure SQL 数据库、Azure SQL 托管实例或 SQL Server 实例。
 
 ## <a name="considerations"></a>注意事项
 
@@ -34,7 +34,7 @@ ms.locfileid: "91443800"
 
   - 暂时提高计算大小。
   - 在导出期间终止所有读取和写入活动。
-  - 对所有大型表上的非 null 值使用[聚集索引](https://msdn.microsoft.com/library/ms190457.aspx)。 如果不使用聚集索引，当时间超过 6-12 个小时时，导出可能会失败。 这是因为导出服务需要完成表格扫描，才能尝试导出整个表格。 确认表是否针对导出进行优化的一个好方法是，运行 **DBCC SHOW_STATISTICS** 并确保 *RANGE_HI_KEY* 不是 null 并且值分布良好。 有关详细信息，请参阅 [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)。
+  - 对所有大型表上的非 null 值使用[聚集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)。 如果不使用聚集索引，当时间超过 6-12 个小时时，导出可能会失败。 这是因为导出服务需要完成表格扫描，才能尝试导出整个表格。 确认表是否针对导出进行优化的一个好方法是，运行 **DBCC SHOW_STATISTICS** 并确保 *RANGE_HI_KEY* 不是 null 并且值分布良好。 有关详细信息，请参阅 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql)。
 
 > [!NOTE]
 > BACPAC 不能用于备份和还原操作。 Azure 会自动为每个用户数据库创建备份。 有关详细信息，请参阅[业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)和 [SQL 数据库备份](automated-backups-overview.md)。
@@ -48,7 +48,7 @@ ms.locfileid: "91443800"
 
 1. 若要使用 [Azure 门户](https://portal.azure.com)导出数据库，请打开数据库页，并在工具栏上单击“导出”。
 
-   ![数据库导出](./media/database-export/database-export1.png)
+   ![突出显示 "导出" 按钮的屏幕截图。](./media/database-export/database-export1.png)
 
 2. 指定 BACPAC 文件名，为导出选择现有的 Azure 存储帐户和容器，然后提供用于访问源数据库的相应凭据。 即使你是 Azure 管理员，此处也需要 SQL Server 管理员登录名，因为是 Azure 管理员并不等同于在 Azure SQL 数据库或 Azure SQL 托管实例中拥有管理员权限。
 
@@ -62,9 +62,9 @@ ms.locfileid: "91443800"
 
 ## <a name="sqlpackage-utility"></a>SQLPackage 实用程序
 
-若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令行实用工具导出 SQL 数据库中的数据库，请参阅[导出参数和属性](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)。 可以使用 SQLPackage 实用工具附带的最新版本的 [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 和 [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx)，也可以直接从 Microsoft 下载中心下载最新版本的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
+若要使用 [SqlPackage](/sql/tools/sqlpackage) 命令行实用工具导出 SQL 数据库中的数据库，请参阅[导出参数和属性](/sql/tools/sqlpackage#export-parameters-and-properties)。 可以使用 SQLPackage 实用工具附带的最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt)，也可以直接从 Microsoft 下载中心下载最新版本的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
 
-在大多数生产环境中，建议使用 SQLPackage 实用工具来实现缩放和性能。 如需 SQL Server 客户顾问团队编写的有关使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
+在大多数生产环境中，建议使用 SQLPackage 实用工具来实现缩放和性能。 如需 SQL Server 客户顾问团队编写的有关使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 
 此示例演示如何通过 Active Directory 通用身份验证，使用 SqlPackage.exe 来导出数据库：
 
@@ -74,7 +74,7 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=apptestserver.d
 
 ## <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
-在 SQL Server Management Studio 的最新版本中，有向导来指示如何将 Azure SQL 数据库或 SQL 托管实例数据库中的数据库导出到 BACPAC 文件。 请参阅[导出数据层应用程序](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)。
+在 SQL Server Management Studio 的最新版本中，有向导来指示如何将 Azure SQL 数据库或 SQL 托管实例数据库中的数据库导出到 BACPAC 文件。 请参阅[导出数据层应用程序](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -106,10 +106,10 @@ $exportStatus
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解单一数据库和共用数据库的长期备份保留（作为导出数据库进行存档的替代方法），请参阅[长期备份保留](long-term-retention-overview.md)。 可以使用 SQL 代理作业来安排[仅复制数据库备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)作为长期备份保留的替代方案。
-- 如需 SQL Server 客户顾问团队编写的有关使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
-- 要了解如何将 BACPAC 导入到 SQL Server 数据库，请参阅[将 BACPAC 导入 SQL Server 数据库](https://msdn.microsoft.com/library/hh710052.aspx)。
-- 若要了解如何从 SQL Server 数据库导出 BACPAC，请参阅[导出数据层应用程序](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+- 若要了解单一数据库和共用数据库的长期备份保留（作为导出数据库进行存档的替代方法），请参阅[长期备份保留](long-term-retention-overview.md)。 可以使用 SQL 代理作业来安排[仅复制数据库备份](/sql/relational-databases/backup-restore/copy-only-backups-sql-server)作为长期备份保留的替代方案。
+- 如需 SQL Server 客户顾问团队编写的有关使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
+- 要了解如何将 BACPAC 导入到 SQL Server 数据库，请参阅[将 BACPAC 导入 SQL Server 数据库](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)。
+- 若要了解如何从 SQL Server 数据库导出 BACPAC，请参阅[导出数据层应用程序](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 - 若要了解如何使用数据迁移服务迁移数据库，请参阅[使用 DMS 从 SQL Server 脱机迁移到 Azure SQL 数据库](../../dms/tutorial-sql-server-to-azure-sql.md)。
 - 如果要从 SQL Server 中导出作为迁移到 Azure SQL 数据库的准备，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](migrate-to-database-from-sql-server.md)。
-- 若要了解如何安全地管理和共享存储密钥和共享访问签名，请参阅 [Azure 存储安全指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide)。
+- 若要了解如何安全地管理和共享存储密钥和共享访问签名，请参阅 [Azure 存储安全指南](../../storage/blobs/security-recommendations.md)。

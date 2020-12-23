@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396852"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127108"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online
 
@@ -21,9 +21,9 @@ ms.locfileid: "91396852"
 
 Microsoft Azure Data Box 服务可你通过 Microsoft Azure 门户订购设备。 然后，可将服务器中 TB 量级的数据复制到该设备。 将该设备寄回 Microsoft 之后，你的数据将复制到 Azure。 根据传输的数据大小，可以选择：
 
-- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview)：每笔订单提供 35-TB 的可用容量用于传输小中型数据集。
-- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview)：为每个设备提供 80-TB 的可用容量用于传输中大型数据集。
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview)：为每个设备提供 770-TB 的可用容量用于传输大型数据集。
+- [Data Box Disk](./data-box-disk-overview.md)：每笔订单提供 35-TB 的可用容量用于传输小中型数据集。
+- [Data Box](./data-box-overview.md)：为每个设备提供 80-TB 的可用容量用于传输中大型数据集。
+- [Data Box Heavy](./data-box-heavy-overview.md)：为每个设备提供 770-TB 的可用容量用于传输大型数据集。
 
 本文专门介绍如何使用 Data Box Heavy 将文件共享内容迁移到 SharePoint Online。
 
@@ -37,7 +37,7 @@ Microsoft Azure Data Box 服务可你通过 Microsoft Azure 门户订购设备�
 
 ### <a name="for-sharepoint-online"></a>SharePoint Online
 
-- 请查看 [SharePoint 迁移工具 (SPMT) 的最低要求](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
+- 请查看 [SharePoint 迁移工具 (SPMT) 的最低要求](/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
 
 ## <a name="workflow-overview"></a>工作流概述
 
@@ -84,7 +84,7 @@ Microsoft Azure Data Box 服务可你通过 Microsoft Azure 门户订购设备�
 3. [下载 SharePoint 迁移工具](https://spmtreleasescus.blob.core.windows.net/install/default.htm)并将其安装在 Azure VM 上。
 4. 启动 SharePoint 迁移工具。 单击 " **登录** " 并输入工作或学校帐户的用户名和密码。
 5. 出现“数据位于何处?”提示时，请选择“文件共享”。  输入数据所在的 Azure 文件共享的路径。
-6. 像平时一样遵循剩余的提示操作，包括输入目标位置。 有关详细信息，请参阅[如何使用 SharePoint 迁移工具](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
+6. 像平时一样遵循剩余的提示操作，包括输入目标位置。 有关详细信息，请参阅[如何使用 SharePoint 迁移工具](/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
 
 > [!IMPORTANT]
 > - 将数据引入 SharePoint Online 的速度受多种因素的影响，不管 Azure 中是否已包含你的数据。 了解这些因素有助于规划和最大化迁移的效率。  有关详细信息，请参阅 [SharePoint Online 和 OneDrive 迁移速度](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed)。

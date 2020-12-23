@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室虚拟机上启用浏览器连接
 description: 开发测试实验室现已与 Azure 堡垒集成，作为实验室的所有者，你可以通过浏览器启用访问所有实验室虚拟机。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 6d9d631c79c22f1f713cfc4ee7cdd766a4ad8f06
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870487"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341166"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>在 Azure 开发测试实验室虚拟机上启用浏览器连接 
 开发测试 Labs 与 [Azure 堡垒](../bastion/index.yml)集成，使你能够通过浏览器连接到你的虚拟机。 首先需要在实验室虚拟机上启用浏览器连接。
@@ -18,9 +18,9 @@ ms.locfileid: "88870487"
 
 本文介绍如何在实验室虚拟机上启用浏览器连接。
 
-## <a name="prerequisites"></a>必备条件 
-- 在现有实验室的虚拟网络中部署堡垒主机 ** (或) ** 将实验室与已配置的堡垒虚拟网络连接。
-若要了解如何在虚拟网络中部署堡垒主机，请参阅  [创建 Azure 堡垒主机](../bastion/bastion-create-host-portal.md)。 创建堡垒主机时，选择实验室的虚拟网络。 
+## <a name="prerequisites"></a>先决条件 
+- 在现有实验室的虚拟网络中部署堡垒主机 **(或)** 将实验室与已配置的堡垒虚拟网络连接。
+若要了解如何在虚拟网络中部署堡垒主机，请参阅  [创建 Azure 堡垒主机](../bastion/tutorial-create-host-portal.md)。 创建堡垒主机时，选择实验室的虚拟网络。 
 - 实验室用户需要在堡垒主机上拥有 " **读取** 者" 角色，并在配置了堡垒的虚拟网络上拥有该角色。 
 
 ## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>在堡垒虚拟网络中创建第二个子网
@@ -31,7 +31,7 @@ ms.locfileid: "88870487"
 ## <a name="enable-vm-creation-in-the-subnet"></a>在子网中启用 VM 创建
 现在，通过执行以下步骤，在此子网中启用 Vm 的创建： 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择左侧导航菜单中的 " **所有服务** "。 
 1. 从列表中选择 " **开发测试实验室** "。 
 1. 从实验室列表中，选择 *实验室*。 
@@ -47,7 +47,7 @@ ms.locfileid: "88870487"
 
     ![在子网中启用 VM 创建](./media/connect-virtual-machine-through-browser/enable-vm-creation-subnet.png)
 1. 选择 **"在虚拟机创建中使用"** 选项。 
-1. 在工具栏上选择“保存”。  
+1. 在工具栏上选择“保存”。 
 1. 如果有用于实验室的旧虚拟网络，请选择 "**...*  " 和 **删除**。 
 
 ## <a name="enable-browser-connection"></a>启用浏览器连接 
@@ -57,7 +57,7 @@ ms.locfileid: "88870487"
 若要在实验室虚拟机上启用浏览器连接，请执行以下步骤：
 
 1. 在 Azure 门户中，导航到 *实验室*。
-1. 选择“配置和策略”。****
+1. 选择“配置和策略”。
 1. 在 " **设置**" 中，选择 " **浏览器连接**"。 如果看不到此选项，请关闭 " **配置策略** " 页，然后重新打开它。 
 
     ![启用浏览器连接](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)

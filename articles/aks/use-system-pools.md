@@ -5,17 +5,17 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: 9c9479fca538c36f4f5eb430c4befb76e39370e6
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888946"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900015"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中管理系统节点池
 
-在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。 节点池包含运行应用程序的底层 VM。 系统节点池和用户节点池是 AKS 群集的两种不同的节点池模式。 系统节点池提供托管关键系统箱（如和）的主要 `CoreDNS` 目的 `metrics-server` 。 用户节点池主要用于托管应用程序 Pod。 但是，如果希望在 AKS 群集中只有一个池，可以在系统节点池上计划应用程序 Pod。 每个 AKS 群集必须至少包含一个系统节点池，该池至少包含一个节点。
+在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。 节点池包含运行应用程序的底层 VM。 系统节点池和用户节点池是 AKS 群集的两种不同的节点池模式。 系统节点池主要用于托管关键系统 Pod（例如 `CoreDNS` 和 `metrics-server`）。 用户节点池主要用于托管应用程序 Pod。 但是，如果希望在 AKS 群集中只有一个池，可以在系统节点池上计划应用程序 Pod。 每个 AKS 群集必须至少包含一个系统节点池，该池至少包含一个节点。
 
 > [!Important]
 > 如果在生产环境中为 AKS 群集运行单个系统节点池，则建议至少将三个节点用作节点池。
@@ -46,7 +46,7 @@ ms.locfileid: "90888946"
 * 系统节点池需要一个至少具有 2 个 vCPU 和 4GB 内存的 VM SKU。
 * 系统节点池必须支持至少 30 个 Pod，如 [Pod 的最小值和最大值公式][maximum-pods]中所述。
 * 现成节点池需要用户节点池。
-* 添加其他系统节点池或更改哪个节点池为系统节点池 *不* 会自动移动系统箱。 即使将系统箱更改为用户节点池，系统盒也可以继续在同一节点池上运行。 如果删除或缩小运行系统箱的节点池，而该节点池以前是系统节点池，则会将这些系统箱重新部署到新的系统节点池。
+* 添加其他系统节点池或更改哪个节点池为系统节点池不会自动移动系统 Pod。 即使将系统 Pod 更改为用户节点池，该系统 Pod 也可以继续在同一节点池上运行。 如果删除或纵向缩减运行系统 Pod 的节点池（以前是系统节点池），则这些系统 Pod 将通过优先调度重新部署到新的系统节点池。
 
 对于节点池，可以执行以下操作：
 
@@ -164,7 +164,7 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 > [!Note]
 > 若要在 API 版本 2020-03-02 之前的 AKS 群集上使用系统节点池，请添加新的系统节点池，并删除原始的默认节点池。
 
-你必须在 AKS 群集上至少有两个系统节点池，然后才能删除其中的一个。
+AKS 群集上必须至少包含两个系统节点池，才能删除其中的一个。
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
@@ -193,7 +193,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
-[aks-taints]: use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
+[aks-taints]: use-multiple-node-pools.md#setting-nodepool-taints
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create

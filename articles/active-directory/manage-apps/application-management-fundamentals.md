@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642429"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656401"
 ---
 # <a name="application-management-best-practices"></a>应用程序管理最佳做法
 
@@ -30,7 +30,7 @@ ms.locfileid: "88642429"
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Cloud app and 单一登录建议
 | 建议 | 注释 |
 | --- | --- |
-| 检查应用的 Azure AD 应用程序库  | Azure AD 包含了包含数千个预先集成的应用程序的库，这些应用程序通过企业单一登录 (SSO) 启用。 有关特定于应用的安装指南，请参阅 [SaaS 应用教程的列表](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)。  | 
+| 检查应用的 Azure AD 应用程序库  | Azure AD 包含了包含数千个预先集成的应用程序的库，这些应用程序通过企业单一登录 (SSO) 启用。 有关特定于应用的安装指南，请参阅 [SaaS 应用教程的列表](../saas-apps/tutorial-list.md)。  | 
 | 使用基于 SAML 的联合 SSO  | 当应用程序支持该应用程序时，将基于 SAML 的联合 SSO 与 Azure AD 而不是基于密码的 SSO 和 ADFS 结合使用。  | 
 | 使用 SHA-256 进行证书签名  | 默认情况下，Azure AD 使用 SHA-256 算法为 SAML 响应签名。 使用 SHA-256，除非应用程序需要 SHA-1 (参阅 [证书签名选项](certificate-signing-options.md) 和 [应用程序登录问题](application-sign-in-problem-application-error.md)。 )   | 
 | 需要用户分配  | 默认情况下，用户可以访问你的企业应用程序，而无需将其分配给他们。 但是，如果应用程序公开角色或者希望应用程序出现在用户的 "我的应用" 中，则需要用户分配。  (请参阅 [开发应用程序的开发人员指南](developer-guidance-for-integrating-applications.md)。 )   | 
@@ -41,7 +41,7 @@ ms.locfileid: "88642429"
 ## <a name="provisioning-recommendations"></a>预配建议
 | 建议 | 注释 |
 | --- | --- |
-| 使用教程通过云应用设置预配 | 请查看 [SaaS 应用教程列表](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) ，以获取有关为要添加的库应用配置预配的分步指导。 |
+| 使用教程通过云应用设置预配 | 请查看 [SaaS 应用教程列表](../saas-apps/tutorial-list.md) ，以获取有关为要添加的库应用配置预配的分步指导。 |
 | 使用预配日志 (预览) 监视状态 | [预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)提供了预配服务执行的所有操作的详细信息，包括各个用户的状态。 |
 | 将通讯组分配给预配通知电子邮件 | 若要增加预配服务发送的关键警报的可见性，请将通讯组分配给通知电子邮件设置。 |
 

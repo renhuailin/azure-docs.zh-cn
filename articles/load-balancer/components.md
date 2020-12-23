@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ddfe581bb3f2f584fdec0229981321297c9a77f
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88589701"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399176"
 ---
 # <a name="azure-load-balancer-components"></a>Azure 负载均衡器组件
 
@@ -36,7 +36,7 @@ Azure 负载均衡器的 IP 地址。 这是客户端的联系点。 这些 IP �
 
 IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专用 IP 地址”将创建内部负载均衡器。 选择“公共 IP 地址”将创建公共负载均衡器。
 
-|  | 公共负载均衡器  | Internal 负载均衡器（内部负载均衡器） |
+|  | 公共负载均衡器  | 内部负载均衡器 |
 | ---------- | ---------- | ---------- |
 | 前端 IP 配置| 公共 IP 地址 | 专用 IP 地址|
 | **说明** | 公共负载均衡器将传入流量的公共 IP 和端口映射到 VM 的专用 IP 和端口。 负载均衡器将来自 VM 的响应流量映射到另一个方向。 你可以通过应用负载均衡规则，在多个 VM 或服务之间分配特定类型的流量。 例如，可将 Web 请求流量负载分配到多个 Web 服务器。| 内部负载均衡器将流量分配给虚拟网络内的各个资源。 Azure 会限制对虚拟网络的负载均衡前端 IP 地址的访问。 前端 IP 地址和虚拟网络不会直接在 Internet 终结点上公开。 内部业务线应用程序可在 Azure 中运行，并可从 Azure 内或从本地资源访问这些应用程序。 |
@@ -44,7 +44,7 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 
 ![分层的负载均衡器示例](./media/load-balancer-overview/load-balancer.png)
 
-负载均衡器可以具有多个前端 IP。 详细了解[多个前端](load-balancer-multivip-overview.md)。
+负载均衡器可有多个前端 IP。 详细了解[多个前端](load-balancer-multivip-overview.md)。
 
 ## <a name="backend-pool"></a>后端池
 
@@ -68,15 +68,13 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 
 基本负载均衡器不支持 HTTPS 探测。 基本负载均衡器会关闭所有 TCP 连接（包括已建立的连接）。
 
-## <a name="load-balancing-rules"></a>负载均衡规则
+## <a name="load-balancing-rules"></a>负载均衡算法
 
 负载均衡器规则用于定义将传入的流量分配至后端池中所有实例的方式。 负载均衡规则将给定的前端 IP 配置和端口映射到多个后端 IP 地址和端口。
 
 例如，使用端口 80 的负载均衡规则将流量从前端 IP 路由到后端实例的端口 80。
 
-<p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="负载均衡规则">
-</p>
+:::image type="content" source="./media/load-balancer-components/lbrules.png" alt-text="负载均衡器规则参考关系图" border="false":::
 
 图：负载均衡规则
 
@@ -92,7 +90,7 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 2. 源端口
 3. 目标 IP 地址
 4. 目标端口
-5. 协议
+5. protocol
 
 HA 端口负载均衡规则可帮助实现关键方案，如虚拟网络内部网络虚拟设备 (NVA) 的高可用性和缩放。 当大量端口必须进行负载均衡时，此功能可以帮助完成。
 
@@ -106,13 +104,9 @@ HA 端口负载均衡规则可帮助实现关键方案，如虚拟网络内部�
 
 ## <a name="inbound-nat-rules"></a>入站 NAT 规则
 
-入站 NAT 规则转发发送到前端 IP 地址和端口组合的传入流量。 该流量将被转发到后端池中的特定虚拟机或实例。 可以通过与负载均衡相同的基于哈希的分配来实现此端口转发。
+入站 NAT 规则将转发发送到前端 IP 地址和端口组合的传入流量。 该流量将被转发到后端池中的特定虚拟机或实例。 可以通过与负载均衡相同的基于哈希的分配来实现此端口转发。
 
-例如需要让远程桌面协议 (RDP) 或安全外壳 (SSH) 会话对后端池中的 VM 实例进行分隔。 可将多个内部终结点映射到同一前端 IP 地址上的多个端口。 可以使用前端 IP 地址来远程管理 VM，无需额外配置跳转盒。
-
-<p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="入站 NAT 规则">
-</p>
+:::image type="content" source="./media/load-balancer-components/inboundnatrules.png" alt-text="入站 NAT 规则参考关系图" border="false":::
 
 图：入站 NAT 规则
 
@@ -126,16 +120,28 @@ HA 端口负载均衡规则可帮助实现关键方案，如虚拟网络内部�
 
 基本负载均衡器不支持出站规则。
 
+:::image type="content" source="./media/load-balancer-components/outbound-rules.png" alt-text="出站规则参考关系图" border="false":::
+
+图：出站规则
+
+## <a name="limitations"></a>限制
+
+- 了解负载均衡器[限制](../azure-resource-manager/management/azure-subscription-service-limits.md) 
+- 负载均衡器针对特定的 TCP 或 UDP 协议提供了负载均衡和端口转发。 负载均衡规则和入站 NAT 规则支持 TCP 和 UDP，但不支持其他 IP 协议（包括 ICMP）。
+- 从后端 VM 到内部负载均衡器前端的出站流将会失败。
+- 负载均衡器规则不能跨越两个虚拟网络。  前端及其后端实例必须位于同一个虚拟网络中。  
+- 负载均衡规则不支持转发 IP 片段。 负载均衡规则不支持 UDP 和 TCP 数据包的 IP 片段。 HA 端口负载均衡规则可用于转发现有 IP 片段。 有关详细信息，请参阅[高可用性端口概述](load-balancer-ha-ports-overview.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅[创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md)，开始使用负载均衡器。
 - 详细了解 [Azure 负载均衡器](load-balancer-overview.md)。
-- 了解[公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- 了解[专用 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)
+- 了解[公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md)
+- 了解[专用 IP 地址](../virtual-network/private-ip-addresses.md)
 - 了解如何使用[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
-- 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
+- 了解[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)。
 - 了解如何[在空闲时重置 TCP](load-balancer-tcp-reset.md)。
 - 了解[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)。
-- 详细了解[网络安全组](../virtual-network/security-overview.md)。
-- 详细了解[负载均衡器限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)。
-- 了解如何使用[端口转发](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)。
+- 详细了解[网络安全组](../virtual-network/network-security-groups-overview.md)。
+- 详细了解[负载均衡器限制](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)。
+- 了解如何使用[端口转发](./tutorial-load-balancer-port-forwarding-portal.md)。

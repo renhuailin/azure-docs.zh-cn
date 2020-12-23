@@ -2,6 +2,8 @@
   href: cut-planes.md
 - name: 调试渲染
   href: debug-rendering.md
+- name: 菲涅尔透镜效果
+  href: fresnel-effect.md
 - name: 分层状态替代
   href: override-hierarchical-state.md
 - name: 照相机
@@ -18,6 +20,8 @@
   href: color-materials.md
 - name: 轮廓渲染
   href: outlines.md
+- name: Shell 呈现
+  href: shell-effect.md
 - name: 单面渲染
   href: single-sided-rendering.md
 - name: 空间查询

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 6f089af71e4d32023e9cebd6613872f7db0eed7a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664867"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694953"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述
 
-当你通过 HA 端口使用内部负载均衡器时，Azure 标准负载均衡器可帮助你同时对**所有**端口上的**所有**协议流进行负载均衡。
+通过 HA 端口使用内部负载均衡器时，Azure 标准负载均衡器可帮助你同时对所有端口上的所有协议流进行均衡 。
 
-高可用性 (HA) 端口是一种负载均衡规则，可提供一种简单的方法来对到达内部标准负载均衡器**所有**端口的**所有**流进行负载平衡。 按流进行负载均衡决策。 此操作基于以下五元组连接：“源 IP 地址”、“源端口”、“目标 IP 地址”、“目标端口”和“协议”
+高可用性 (HA) 端口是一种负载均衡规则，它提供一种简单的方法来对到达内部标准负载均衡器的所有端口的所有流进行均衡 。 按流进行负载均衡决策。 此操作基于以下五元组连接：“源 IP 地址”、“源端口”、“目标 IP 地址”、“目标端口”和“协议”
 
 HA 端口负载均衡规则可帮助你实现关键方案，例如虚拟网络中网络虚拟设备 (NVA) 的高可用性和缩放。 当大量端口必须进行负载均衡时，此功能也可以帮助完成。 
 
@@ -54,7 +54,7 @@ HA 端口负载均衡规则可帮助你实现关键方案，例如虚拟网络�
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>对大量端口进行负载均衡
 
-对于需要负载均衡大量端口的应用程序，也可以使用 HA 端口。 可以通过将内部[标准负载均衡器](load-balancer-standard-overview.md)与 HA 端口配合使用来简化这些方案。 单个负载均衡规则可替换多个单独的负载均衡规则（每个端口一个）。
+对于需要负载均衡大量端口的应用程序，也可以使用 HA 端口。 可以通过将内部[标准负载均衡器](./load-balancer-overview.md)与 HA 端口配合使用来简化这些方案。 单个负载均衡规则可替换多个单独的负载均衡规则（每个端口一个）。
 
 ## <a name="region-availability"></a>上市区域
 
@@ -92,12 +92,11 @@ HA 端口功能在所有全局 Azure 区域中均可用。
 ## <a name="limitations"></a>限制
 
 - HA 端口负载均衡规则仅适用于内部标准负载均衡器。
-- **不**支持将 HA 端口负载平衡规则和非 ha 端口负载平衡规则与指向同一)  (后端 IP 配置的非 HA 端口负载平衡规则结合使用，除非同时启用了浮动 ip。
+- 单个前端 IP 配置不支持将 HA 端口负载均衡规则和指向相同后端 ipconfiguration 的非 HA 端口负载均衡规则组合在一起，除非这两者都启用了浮动 IP。
 - 现有 IP 片段将由 HA 端口负载均衡规则转发到与第一个数据包相同的目标。  不支持对 UDP 或 TCP 数据包进行 IP 分段。
 - 只有使用方式如上方的示意图所示并且使用了 HA 端口负载均衡规则时，才会通过后端实例和单一 NIC（以及单 IP 配置）来支持流对称（主要是针对 NVA 方案）。 任何其他方案中都不提供此功能。 这意味着，两个或多个负载均衡器资源和及其各自的规则都独立做出决策，永远不会进行协调。 请参阅[网络虚拟设备](#nva)的说明和示意图。 如果使用了多个 NIC 或者将 NVA 置于公共负载均衡器与内部负载均衡器之间，则流对称功能不可用。  通过对发往设备 IP 的传入流执行来源 NAT 操作以允许回复到达同一 NVA，也许能够解决此问题。  但是，强烈建议使用单一 NIC，并使用上方示意图中所示的参考体系结构。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何通过门户为 ILB 配置 HA 端口](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)，也可通过 [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、[CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule) 或[模板](quickstart-load-balancer-standard-internal-template.md)来这样做。
-- [了解标准负载均衡器](load-balancer-standard-overview.md)
+- [了解标准负载均衡器](load-balancer-overview.md)

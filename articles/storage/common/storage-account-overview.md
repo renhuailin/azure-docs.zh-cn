@@ -1,20 +1,20 @@
 ---
 title: 存储帐户概述
 titleSuffix: Azure Storage
-description: 阅读 Azure 存储中存储帐户的概述。 查看帐户命名、性能层、访问层、冗余、加密、终结点等。
+description: 阅读 Azure 存储中的存储帐户概述。 查看帐户命名、性能层、访问层、冗余、加密、终结点等。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280141"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357375"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -54,13 +54,13 @@ Azure 存储帐户包含所有的 Azure 存储数据对象：Blob、文件、队
 - 队列
 - 表
 
-大多数情况下，应使用常规用途 v2 帐户。 以下情况可以使用常规用途 v1 帐户：
+在大多数情况下，Microsoft 建议常规用途 v2 帐户。 以下情况可以使用常规用途 v1 帐户：
 
 - 应用程序要求使用 Azure 经典部署模型。 常规用途 v2 帐户和 Blob 存储帐户只支持 Azure 资源管理器部署模型。
 
 - 应用程序为事务密集型，或者使用很大的异地复制带宽，但不需要大的容量。 在这种情况下，常规用途 v1 可能是最经济的选择。
 
-- 使用的[存储服务 REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 版本早于 2014-02-14，或使用的客户端库的版本低于 4.x， 并且无法升级应用程序。
+- 使用的[存储服务 REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) 版本早于 2014-02-14，或使用的客户端库的版本低于 4.x， 并且无法升级应用程序。
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage 帐户
 
@@ -106,9 +106,9 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 
 可用的访问层包括：
 
-- **热**访问层。 此层已优化，适合频繁访问存储帐户中的对象。 访问热层中的数据最经济高效，但存储费用较高。 新的存储帐户默认在热层中创建。
-- **冷**访问层。 此层已优化，适合存储大量不常访问且存储时间至少为 30 天的数据。 将数据存储在冷层中更经济高效，但与访问热层中的数据相比，访问该数据的费用可能较高。
-- **存档**层。 此层仅适用于单个块 Blob。 存档层已针对可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据进行优化。 存档层是最经济高效的数据存储选项。 但是，访问这些数据的开销比访问热层或冷层中的数据要高。
+- **热** 访问层。 此层已优化，适合频繁访问存储帐户中的对象。 访问热层中的数据最经济高效，但存储费用较高。 新的存储帐户默认在热层中创建。
+- **冷** 访问层。 此层已优化，适合存储大量不常访问且存储时间至少为 30 天的数据。 将数据存储在冷层中更经济高效，但与访问热层中的数据相比，访问该数据的费用可能较高。
+- **存档** 层。 此层仅适用于单个块 Blob。 存档层已针对可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据进行优化。 存档层是最经济高效的数据存储选项。 但是，访问这些数据的开销比访问热层或冷层中的数据要高。
 
 如果数据的使用模式有所更改，可以随时在这些访问层之间切换。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
 
@@ -133,7 +133,7 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 - 表存储：`https://*mystorageaccount*.table.core.windows.net`
 - 队列存储：`https://*mystorageaccount*.queue.core.windows.net`
 - Azure 文件存储：`https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [专门针对大数据进行优化的 ABFS 驱动程序](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)。 ) 
+- Azure Data Lake Storage Gen2：`https://*mystorageaccount*.dfs.core.windows.net`（使用[已针对大数据进行专门优化的 ABFS 驱动程序](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)。）
 
 > [!NOTE]
 > 块 blob 和 blob 存储帐户仅公开 Blob 服务终结点。
@@ -152,7 +152,7 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 
 - **Azure Active Directory：** 使用 Azure Active Directory (Azure AD) 凭据对访问 Blob 和队列数据的用户、组或其他标识进行身份验证。 如果某个标识的身份验证成功，则 Azure AD 会返回一个令牌，在对访问 Azure Blob 存储或队列存储的请求授权时可以使用该令牌。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。
 - **共享密钥授权：** 使用存储帐户访问密钥构造一个连接字符串，应用程序在运行时将使用该连接字符串来访问 Azure 存储。 连接字符串中的值用于构造传递给 Azure 存储的 *Authorization* 标头。 有关详细信息，请参阅[配置 Azure 存储连接字符串](storage-configure-connection-string.md)。
-- **共享访问签名：** 如果不使用 Azure AD 授权，则使用共享访问签名来委托对存储帐户中资源的访问权限。 共享访问签名是一个令牌，其中封装了对目标对象为 URL 上的 Azure 存储的请求进行授权所需的所有信息。 可以在共享访问签名中指定存储资源、授予的权限以及权限有效时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
+- **共享访问签名：** (SAS) 的共享访问签名是一个令牌，该令牌允许对存储帐户中的资源进行委托访问。 SAS 令牌封装了向 URL 请求 Azure 存储请求所需的所有信息。 创建 SAS 时，可以指定 SAS 向其授予资源的权限以及权限有效的时间间隔。 可以使用 Azure AD 凭据或共享密钥来签署 SAS 令牌。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
 
 > [!NOTE]
 > 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。
@@ -167,7 +167,7 @@ Microsoft 提供了用于从本地存储设备或第三方云存储提供程序�
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制到 Azure 存储（或从中进行复制）。 可以使用 AzCopy 将数据从现有的常规用途存储帐户复制到 Blob 存储帐户，或者将数据从本地存储设备上传。 有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制到 Azure 存储（或从中进行复制）。 可以使用 AzCopy 将数据从现有的常规用途存储帐户复制到 Blob 存储帐户，或者将数据从本地存储设备上传。 有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ### <a name="data-movement-library"></a>数据移动库
 
@@ -175,9 +175,9 @@ AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制�
 
 ### <a name="rest-api-or-client-library"></a>REST API 或客户端库
 
-可以创建自定义应用程序，以便将数据从常规用途 v1 存储帐户迁移到 Blob 存储帐户中。 使用其中一个 Azure 客户端库或 Azure 存储服务 REST API。 Azure 存储对多种语言和平台（如 .NET、Java、C++、Node.JS、PHP、Ruby 和 Python）提供了内容丰富的客户端库。 客户端库提供高级功能，如重试逻辑、日志记录和并行上传。 也可以直接针对 REST API（可发出 HTTP/HTTPS 请求的任何语言都可调用它）进行开发。
+可以创建自定义应用程序，以便将数据从常规用途 v1 存储帐户迁移到 Blob 存储帐户中。 使用 Azure 客户端库之一或 Azure 存储服务 REST API。 Azure 存储对多种语言和平台（如 .NET、Java、C++、Node.JS、PHP、Ruby 和 Python）提供了内容丰富的客户端库。 客户端库提供高级功能，如重试逻辑、日志记录和并行上传。 也可以直接针对 REST API（可发出 HTTP/HTTPS 请求的任何语言都可调用它）进行开发。
 
-有关 Azure 存储 REST API 的详细信息，请参阅 [Azure Storage Services REST API Reference](https://docs.microsoft.com/rest/api/storageservices/)（Azure 存储服务 REST API 参考）。
+有关 Azure 存储 REST API 的详细信息，请参阅 [Azure Storage Services REST API Reference](/rest/api/storageservices/)（Azure 存储服务 REST API 参考）。
 
 > [!IMPORTANT]
 > 使用客户端加密进行加密的 Blob 会将与加密相关的元数据与 Blob 一起存储。 如果复制使用客户端加密来加密的 Blob，请确保复制操作保留 Blob 元数据，尤其是与加密相关的元数据。 如果复制不包含此加密元数据的 Blob，则不能再次检索 Blob 内容。 有关加密相关元数据的详细信息，请参阅 [Azure 存储客户端加密](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
@@ -192,3 +192,5 @@ AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制�
 
 - [创建存储帐户](storage-account-create.md)
 - [创建块 Blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)
+- [升级到常规用途 v2 存储帐户](storage-account-upgrade.md)
+- [恢复删除的存储帐户](storage-account-recover.md)

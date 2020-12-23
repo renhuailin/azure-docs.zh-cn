@@ -1,35 +1,39 @@
 ---
 title: 使用存储过程
-description: 用于在 Synapse SQL 中实现存储过程以开发解决方案的提示。
+description: 使用 Azure Synapse Analytics 中的 Synapse SQL 实现存储过程以进行解决方案开发的技巧。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 09/23/2020
+ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f2046614f3665a699d02c76210676fb32f99fc73
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3940d762dbc249e0303ddf905acbeeed7f96aa4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288913"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315563"
 ---
-# <a name="use-stored-procedures-in-synapse-sql"></a>使用 Synapse SQL 中的存储过程
+# <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 Synapse SQL 存储过程
 
-用于在 Synapse SQL 池中实现存储过程的技巧 (数据仓库) 用于开发解决方案。
+使用 Synapse SQL 预配和无服务器池可以将复杂的数据处理逻辑放入 SQL 存储过程。 使用存储过程可以很好地封装 SQL 代码，并将其存储在数据仓库中的数据附近。 存储过程通过将代码封装到可管理的单元中来帮助开发人员模块化其解决方案，从而提高代码的可重用性。 每个存储过程还可接受参数，使其更具弹性。
+在本文中，你将了解一些用于在 Synapse SQL 池中实现存储过程以开发解决方案的提示。
 
 ## <a name="what-to-expect"></a>期望
 
-Synapse SQL 支持许多 SQL Server 中使用的 T-sql 功能。 更重要的是，可使用特定的横向扩展功能将解决方案的性能最大化。
+Synapse SQL 支持许多 SQL Server 中使用的 T-sql 功能。 更重要的是，可使用特定的横向扩展功能将解决方案的性能最大化。 在本文中，你将了解你可以在存储过程中设置的功能。
+
+> [!NOTE]
+> 在过程主体中，你只能使用 Synapse SQL surface 区域中支持的功能。 查看 [本文](overview-features.md) ，确定可用于存储过程的对象和语句。 这些文章中的示例使用了在无服务器和专用外围应用中都可用的通用功能。 请参阅本文末尾的 [预配和无服务器 SYNAPSE SQL 池中](#limitations) 的其他限制。
 
 为了保持 SQL 池的缩放性和性能，还有一些特性和功能存在行为差异，其他功能并不受支持。
 
 ## <a name="stored-procedures-in-synapse-sql"></a>Synapse SQL 中的存储过程
 
-使用存储过程可以很好地封装 SQL 代码，并将其存储在数据仓库中的数据附近。 存储过程通过将代码封装到可管理的单元中，帮助开发人员模块化其解决方案，从而提高代码的可重用性。 每个存储过程还可接受参数，使其更具弹性。 在下面的示例中，可以看到删除外部对象的过程（如果它们存在于数据库中）：
+在下面的示例中，可以看到删除外部对象的过程（如果它们存在于数据库中）：
 
 ```sql
 CREATE PROCEDURE drop_external_table_if_exists @name SYSNAME
@@ -181,23 +185,26 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-Synapse SQL 不允许通过 INSERT 语句使用存储过程的结果集。 可以使用其他方法。 有关示例，请参阅[临时表](develop-tables-temporary.md)上的文章。
+预配的 Synapse SQL 池不允许使用 INSERT 语句来使用存储过程的结果集。 可以使用其他方法。 有关示例，请参阅有关预配的 Synapse SQL 池的 [临时表](develop-tables-temporary.md) 的文章。
 
 ## <a name="limitations"></a>限制
 
 Synapse SQL 中未实现 Transact-sql 存储过程的某些方面，例如：
 
-* 临时存储过程
-* 编号的存储过程
-* 扩展的存储过程
-* CLR 存储过程
-* 加密选项
-* 复制选项
-* 表值参数
-* 只读参数
-* 预配池中 (默认参数) 
-* 执行上下文
-* return 语句
+| 功能/选项 | 已预配 | 无服务器 |
+| --- | --- |
+| 临时存储过程 | 否 | 是 |
+| 带编号的存储过程 | 否 | 否 |
+| 扩展的存储过程 | 否 | 否 |
+| CLR 存储过程 | 否 | 否 |
+| 加密选项 | 否 | 是 |
+| 复制选项 | 否 | 否 |
+| 表值参数 | 否 | 否 |
+| 只读参数 | 否 | 否 |
+| 默认参数 | 否 | 是 |
+| 执行上下文 | 否 | 否 |
+| Return 语句 | 否 | 是 |
+| 向中插入。 EXEC | 否 | 是 |
 
 ## <a name="next-steps"></a>后续步骤
 

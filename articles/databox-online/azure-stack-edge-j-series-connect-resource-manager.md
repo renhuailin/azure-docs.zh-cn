@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 048f2585d8e9ac1b10293083bda0900e7ce468bb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891267"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447591"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure 资源管理器提供了一个管理层，使你能够在 Azure 订阅中创建、更新和删除资源。 Azure Stack Edge Pro 设备支持相同的 Azure 资源管理器 Api 来创建、更新和删除本地订阅中的 Vm。 此支持使你能够以与云一致的方式管理设备。 
+Azure 资源管理器提供一个管理层，用于在 Azure 订阅中创建、更新和删除资源。 Azure Stack Edge Pro 设备支持相同的 Azure 资源管理器 Api 来创建、更新和删除本地订阅中的 Vm。 此支持使你能够以与云一致的方式管理设备。 
 
 本教程介绍如何使用 Azure PowerShell 通过 Azure 资源管理器连接到 Azure Stack Edge Pro 设备上的本地 Api。
 
@@ -57,7 +57,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 以下部分详细介绍了连接到 Azure 资源管理器的上述每个步骤。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保用于通过 Azure 资源管理器连接到设备的客户端使用的是 TLS 1.2。 有关详细信息，请参阅 [在 Windows 客户端上配置 TLS 1.2，访问 Azure Stack Edge Pro 设备 "](azure-stack-edge-j-series-configure-tls-settings.md)。
 
@@ -138,9 +138,9 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
     比较 **主要** 版本，并确保其为5.0 或更高版本。
 
-    如果版本已过时，请参阅[升级现有的 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)。
+    如果版本已过时，请参阅[升级现有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)。
 
-    如果 \' 没有 PowerShell 5.0，请遵循 [安装 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6)。
+    如果 \' 没有 PowerShell 5.0，请遵循 [安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)。
 
     下面显示了示例输出。
 
@@ -175,11 +175,11 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-如果你的存储库不受信任，或者需要详细信息，请参阅 [验证 PowerShell 库辅助功能](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)。
+如果你的存储库不受信任，或者需要详细信息，请参阅 [验证 PowerShell 库辅助功能](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)。
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>步骤4：在客户端上设置 Azure PowerShell 
 
-<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. 你将在客户端上安装 Azure PowerShell 模块，这些模块将适用于你的设备。
 
@@ -297,9 +297,9 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
 设置 Azure 资源管理器环境，并验证你的设备到通过 Azure 资源管理器的客户端通信是否正常工作。 执行此验证的步骤如下：
 
 
-1. 使用 `Add-AzureRmEnvironment` cmdlet 可以进一步确保通过 azure 资源管理器进行的通信正常工作，并且 API 调用会经历专用于 Azure 资源管理器-443 的端口。
+1. 使用 `Add-AzureRmEnvironment` cmdlet 进一步确保通过 Azure 资源管理器进行的通信正常工作，并且 API 调用通过 Azure 资源管理器专用端口 443。
 
-    `Add-AzureRmEnvironment`Cmdlet 将添加终结点和元数据，以使 azure 资源管理器 cmdlet 能够与新的 azure 资源管理器实例连接。 
+    `Add-AzureRmEnvironment` cmdlet 会添加终结点和元数据，使 Azure 资源管理器 cmdlet 能够与新的 Azure 资源管理器实例连接。 
 
 
     > [!IMPORTANT]
@@ -319,7 +319,7 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. 将环境设置为 Azure Stack Edge Pro，将 Azure 资源管理器调用的端口设置为443。 可以通过两种方式定义环境：
+2. 将环境设置为 Azure Stack Edge Pro，将用于 Azure 资源管理器调用的端口设置为 443。 可以通过两种方式定义环境：
 
     - 设置环境。 键入以下命令：
 
@@ -327,13 +327,13 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    有关详细信息，请参阅 [get-azurermenvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)。
+    有关详细信息，请参阅 [get-azurermenvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)。
 
     - 为您执行的每个 cmdlet 定义内联环境。 这可确保所有 API 调用都通过正确的环境。 默认情况下，调用将通过 Azure 公共，但你希望这些调用通过为 Azure Stack Edge Pro 设备设置的环境完成。
 
     - 有关 [如何切换 AzureRM 环境](#switch-environments)的详细信息，请参阅。
 
-2. 调用本地设备 Api 对 Azure 资源管理器的连接进行身份验证。 
+2. 调用本地设备 API 来对与 Azure 资源管理器的连接进行身份验证。 
 
     1. 这些凭据适用于本地计算机帐户，仅用于 API 访问。
 
@@ -460,4 +460,4 @@ ExtendedProperties : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack Edge Pro 设备上部署 vm](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。
+[在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。

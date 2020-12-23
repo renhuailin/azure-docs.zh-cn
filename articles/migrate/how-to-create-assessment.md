@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Migrate Server 评估创建 Azure VM 评估 |Microsoft Docs
 description: 介绍如何使用 Azure Migrate Server 评估工具创建 Azure VM 评估
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/15/2019
-ms.author: raynew
-ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: cc7101c61db8f0863c3a16b1c17f04188f9bee4e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361086"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754294"
 ---
 # <a name="create-an-azure-vm-assessment"></a>创建 Azure VM 评估
 
@@ -19,9 +19,9 @@ ms.locfileid: "91361086"
 
 [Azure Migrate](migrate-services-overview.md) 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。 
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
-- 请确保已 [创建](how-to-add-tool-first-time.md) Azure Migrate 项目。
+- 请确保已 [创建](./create-manage-projects.md) Azure Migrate 项目。
 - 如果已创建项目，请确保已 [添加](how-to-assess.md) Azure Migrate： Server 评估工具。
 - 若要创建评估，需要为 [VMware](how-to-set-up-appliance-vmware.md) 或 [hyper-v](how-to-set-up-appliance-hyper-v.md)设置 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
 

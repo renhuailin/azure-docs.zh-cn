@@ -3,15 +3,15 @@ title: 测试 Azure Functions
 description: 为 Visual Studio 中的 C# 函数和 VS Code 中的 JavaScript 函数创建自动测试
 author: craigshoemaker
 ms.topic: conceptual
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212902"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601384"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -28,7 +28,7 @@ ms.locfileid: "88212902"
 
 ## <a name="c-in-visual-studio"></a>Visual Studio 中的 C#
 
-以下示例描述如何在 Visual Studio 中创建 C# 函数应用，并使用 [xUnit](https://xunit.github.io) 运行和测试该应用。
+以下示例描述如何在 Visual Studio 中创建 C# 函数应用，并使用 [xUnit](https://github.com/xunit/xunit) 运行和测试该应用。
 
 ![使用 Visual Studio 中的 C# 测试 Azure Functions](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "88212902"
 1. [创建新函数应用](./functions-create-first-azure-function.md)并将其命名为 **Functions**
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为“MyHttpTrigger”。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为“MyTimerTrigger”。
-4. 在解决方案中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)并将其命名为“Functions.Tests”。
+4. 在解决方案中[创建 xUnit 测试应用](https://xunit.net/docs/getting-started/netcore/cmdline)并将其命名为“Functions.Tests”。
 5. 使用 NuGet 从测试应用添加对 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 的引用
 6. [从 Functions.Tests 应用引用 Functions 应用](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
@@ -251,7 +251,7 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**：此测试创建 `ListLogger` 的实例并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
 
-如果要在测试中访问应用程序设置，可以使用 [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
+如果要在测试中访问应用程序设置，可以将包含模拟环境变量值的 `IConfiguration` 实例[注入](./functions-dotnet-dependency-injection.md)到函数中。
 
 ### <a name="run-tests"></a>运行测试
 
@@ -315,7 +315,7 @@ module.exports = {
 
 此模块实现 `IsPastDue` 属性，表示该实例是一个虚构的计时器实例。 此处不需要计时器配置（如 NCRONTAB 表达式），因为测试工具只是直接调用函数以测试结果。
 
-接下来，使用 VS Code Functions 扩展[创建新的 JavaScript HTTP 函数](/azure/developer/javascript/tutorial-vscode-serverless-node-01)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
+接下来，使用 VS Code Functions 扩展 [创建新的 JavaScript HTTP 函数](/azure/developer/javascript/tutorial-vscode-serverless-node-01)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
 
 ```javascript
 const httpFunction = require('./index');

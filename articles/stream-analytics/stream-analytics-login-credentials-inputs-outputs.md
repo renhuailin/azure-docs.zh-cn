@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 47afaea03e58cf6a24382727c6fc7193fde5abe4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044407"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012095"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>轮转流分析作业的输入和输出的登录凭据
 
@@ -49,11 +49,11 @@ ms.locfileid: "86044407"
 
 ### <a name="sql-database"></a>SQL 数据库
 
-你需要连接到 SQL 数据库以更新现有用户的登录凭据。 可以使用 Azure 门户或客户端工具（如 SQL Server Management Studio）更新凭据。 本部分演示使用 Azure 门户更新凭据的过程。
+需要连接到 SQL 数据库以更新现有用户的登录凭据。 可以使用 Azure 门户或客户端工具（如 SQL Server Management Studio）更新凭据。 本部分演示使用 Azure 门户更新凭据的过程。
 
 1. 登录 Azure 门户，浏览用作流分析作业输出的 SQL 数据库。    
 2. 从“数据资源管理器”中，登录/连接到数据库 > 选择“SQL server 身份验证”作为“授权类型”> 在“登录”和“密码”中键入相应详细信息>选择“确定”      。  
-   ![为 SQL 数据库重新生成凭据](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
+   ![重新生成 SQL 数据库凭据](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. 在查询选项卡中，通过运行以下查询（确保使用用户名替换 `<user_name>`，使用新密码替换 `<new_password>`）更改其中一个用户的密码：  
 
@@ -64,13 +64,13 @@ ms.locfileid: "86044407"
 
 4. 记录新的密码。    
 5. 从 Azure 门户中，浏览流分析作业>选择“停止”并等待作业停止  。    
-6. 找到要为其轮换凭据的 SQL 数据库输出。 更新密码并保存更改。    
+6. 找到要轮换凭据的 SQL 数据库输出。 更新密码并保存更改。    
 7. 保存所做的更改时，连接测试自动启动，请确保连接测试已成功通过。    
 8. 进行至[从上次停止的时间启动作业](#start-your-job-from-the-last-stopped-time)部分。
 
 ### <a name="power-bi"></a>Power BI
-1. 登录 Azure 门户，浏览流分析作业，选择“停止”并等待作业停止****。    
-2. 找到要续订凭据的 Power BI 输出 > 单击“续订授权”（应会看到成功消息）>“保存”更改********。    
+1. 登录 Azure 门户，浏览流分析作业，选择“停止”并等待作业停止。    
+2. 找到要续订凭据的 Power BI 输出 > 单击“续订授权”（应会看到成功消息）>“保存”更改。    
 3. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。    
 4. 进行至[从上次停止的时间启动作业](#start-your-job-from-the-last-stopped-time)部分。
 
@@ -84,5 +84,5 @@ ms.locfileid: "86044407"
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)

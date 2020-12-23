@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569995"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320217"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL 超大规模服务器组故障排除
 本文介绍可用于排查服务器组问题的一些方法。 除本文外，你可能还需要了解如何使用 [Kibana](monitor-grafana-kibana.md) 来搜索日志，或使用 [Grafana](monitor-grafana-kibana.md) 来可视化有关服务器组的指标。 
@@ -51,13 +51,13 @@ azdata arc postgres server create --help
 
 ### <a name="install-tools"></a>安装工具
 
-`kubectl` `azdata` 在 Azure Data Studio 中安装 Azure Data Studio 和用于运行笔记本的客户端计算机上。 为此，请按照[安装客户端工具](install-client-tools.md)中的说明进行操作
+`kubectl` [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 在 Azure Data Studio 中安装 Azure Data Studio 和用于运行笔记本的客户端计算机上。 为此，请按照[安装客户端工具](install-client-tools.md)中的说明进行操作
 
 ### <a name="update-the-path-environment-variable"></a>更新 PATH 环境变量
 
 请确保可从该客户端计算机上的任何位置调用这些工具。 例如，在 Windows 客户端计算机上，更新 PATH 系统环境变量并添加安装了 kubectl 的文件夹。
 
-### <a name="sign-in-with-azdata"></a>登录方式 `azdata`
+### <a name="sign-in-with-azure-data-cli-azdata"></a>登录方式 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 在开始 Azure Data Studio 之前，从此客户端计算机登录到 Arc 数据控制器。 为此，请运行命令，如下所示：
 

@@ -11,12 +11,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 03/04/2020
-  ms.openlocfilehash: 6a0c4ecff3f381dc12ba3ce6f385782754857bfe
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: e844a428910a220d77c143baa74124a112135387
+  ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "78297718"
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96435206"
 highlightedContent:
   items:
   - title: 什么是资源管理器？
@@ -90,7 +90,7 @@ conceptualContent:
     - url: managed-applications/create-uidefinition-overview.md
       itemType: how-to-guide
       text: 定义用于创建应用的门户窗格
-    - url: managed-applications/publish-marketplace-app.md
+    - url: ../marketplace/create-new-azure-apps-offer.md
       itemType: tutorial
       text: 将应用添加到市场
     footerLink:

@@ -1,6 +1,6 @@
 ---
-title: 使用现有的本地代理服务器和 Azure AD | Microsoft 文档
-description: 介绍如何使用现有的本地代理服务器。
+title: 使用现有的本地代理服务器和 Azure Active Directory
+description: 介绍如何在 Azure Active Directory 中使用现有的本地代理服务器。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 808357b95f4de904ead0741d848480d548a2e26a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077503"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030070"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -111,18 +111,19 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 允许访问以下 URL：
 
-| 代码 | 用途 |
-| --- | --- |
-| \*.msappproxy.net<br>\*.servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 连接器使用这些 URL 来验证证书 |
-| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | 在注册过程中，连接器将使用这些 URL。 |
+| 代码 | 端口 |  用途 |
+| --- | --- | --- |
+| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | 连接器与应用程序代理云服务之间的通信 |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | 连接器使用这些 URL 来验证证书。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS | 在注册过程中，连接器将使用这些 URL。 |
+| ctldl.windowsupdate.com | 80/HTTP | 在注册过程中，连接器将使用此 URL。 |
 
-如果防火墙或代理允许你配置 DNS 允许列表，则你可以允许与 \*.msappproxy.net 和 \*.servicebus.windows.net 建立连接。 如果没有，则需要允许访问[Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
+如果防火墙或代理允许你配置 DNS 允许列表，则你可以允许与 \*.msappproxy.net 和 \*.servicebus.windows.net 建立连接。
 
 如果不能通过 FQDN 允许连接，请使用以下选项改为指定 IP 范围：
 
 * 允许连接器对所有目标进行出站访问。
-* 允许连接器对所有 [Azure 数据中心 IP 范围](https://www.microsoft.com//download/details.aspx?id=41653)进行出站访问。 使用 Azure 数据中心 IP 范围列表的难点在于，该列表每周更新。 需要制定一个流程来确保相应地更新访问规则。 只使用 IP 地址的子集可能导致配置中断。
+* 允许连接器对所有 Azure 数据中心 IP 范围进行出站访问。 使用 Azure 数据中心 IP 范围列表的难点在于，该列表每周更新。 需要制定一个流程来确保相应地更新访问规则。 只使用 IP 地址的子集可能导致配置中断。 若要下载最新的 Azure 数据中心 IP 范围，请导航到 [https://download.microsoft.com](https://download.microsoft.com) 并搜索 "AZURE IP 范围和服务标记"。 请确保选择相关的云。 例如，可以在 "Azure IP 范围和服务标记–公有云" 中找到公有云 IP 范围。 可以通过搜索 "Azure IP 范围和服务标记–美国政府云" 找到美国政府云。
 
 #### <a name="proxy-authentication"></a>代理身份验证
 
@@ -167,6 +168,9 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 可以使用自选的监视工具。 本文使用了 Microsoft 消息分析器。
 
+> [!NOTE]
+> [Microsoft Message Analyzer (MMA) 已停](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) 用，并且其下载包已从11月 25 2019 上的 microsoft.com 站点中删除。  目前，开发中目前不会替换 Microsoft Message Analyzer。  对于类似的功能，请考虑使用第三方网络协议分析器工具，例如 Wireshark。
+
 以下示例特定于消息分析器，但其原理适用于任何分析工具。
 
 ### <a name="take-a-capture-of-connector-traffic"></a>创建连接器流量的捕获
@@ -207,4 +211,4 @@ SYN 数据包是为了建立 TCP 连接而发送的第一个数据包。 如果�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)
-* 如有任何关于连接器连接的问题，请在[有关 Azure Active Directory 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-active-directory.html)中提问，或向我们的支持团队提交一个票证。
+* 如有任何关于连接器连接的问题，请在[有关 Azure Active Directory 的 Microsoft 问答页](/answers/topics/azure-active-directory.html)中提问，或向我们的支持团队提交一个票证。

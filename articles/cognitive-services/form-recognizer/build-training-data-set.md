@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276929"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911709"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>为自定义模型构建定型数据集
 
@@ -41,7 +41,7 @@ ms.locfileid: "91276929"
 
 ## <a name="upload-your-training-data"></a>上传定型数据
 
-将用于定型的窗体文档集中在一起后，需要将其上传到 Azure blob 存储容器。 如果你不知道如何使用容器创建 Azure 存储帐户，请遵循 [适用于 Azure 门户的 Azure 存储快速入门](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。 使用标准性能层。
+将用于定型的窗体文档集中在一起后，需要将其上传到 Azure blob 存储容器。 如果你不知道如何使用容器创建 Azure 存储帐户，请遵循 [适用于 Azure 门户的 Azure 存储快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。 使用标准性能层。
 
 如果要使用手动标记的数据，则还必须上传与训练文档对应的文件上的 *.labels.js* 和 *.ocr.js* 。 您可以使用 [示例标签工具](./quickstarts/label-tool.md) (或自己的 UI) 来生成这些文件。
 

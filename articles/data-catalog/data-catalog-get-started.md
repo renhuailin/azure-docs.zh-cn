@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88118784"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151998"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>快速入门：创建 Azure 数据目录
 
@@ -24,7 +24,7 @@ Azure 数据目录是一个完全托管的云服务，具有企业数据资产�
 ## <a name="prerequisites"></a>先决条件
 
 > [!Note]
-> 由于 Azure 安全要求，Azure 数据目录已强制执行传输层安全性 (TLS) 1.2。 已禁用 TLS 1.0 和 TLS 1.1。 如果你的计算机未针对 TLS 1.2 进行更新，则在运行注册工具时可能会遇到错误。 请参阅[启用传输层安全性 (1.2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) 以将计算机更新到 TLS 1.2。
+> 由于 Azure 安全要求，Azure 数据目录已强制执行传输层安全性 (TLS) 1.2。 已禁用 TLS 1.0 和 TLS 1.1。 如果你的计算机未针对 TLS 1.2 进行更新，则在运行注册工具时可能会遇到错误。 请参阅[启用传输层安全性 (1.2)](/mem/configmgr/core/plan-design/security/enable-tls-1-2) 以将计算机更新到 TLS 1.2。
 
 在开始之前，需要准备好以下各项：
 

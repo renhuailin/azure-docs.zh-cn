@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd87265140a0bfaeb7ef4dada6dd76be1269654b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501195"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369363"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
@@ -48,7 +48,7 @@ ms.locfileid: "87501195"
 
 ## <a name="select-a-protection-goal"></a>选择保护目标
 
-1. 在“恢复服务保管库”中，选择保管库名称。 我们在此方案中使用 **ContosoVMVault**。
+1. 在“恢复服务保管库”中，选择保管库名称。 我们在此方案中使用 **ContosoVMVault** 。
 2. 在“入门”中，选择“Site Recovery”， 然后选择“准备基础结构”。
 3. 在“保护目标” > “计算机所在位置”中，选择“本地”。
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure” 。
@@ -60,9 +60,9 @@ ms.locfileid: "87501195"
 
 在源环境中，需要部署一台高度可用的本地计算机来托管这些本地 Site Recovery 组件：
 
-- **配置服务器**：配置服务器在本地与 Azure 之间协调通信并管理数据复制。
-- **进程服务器**：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 进程服务器还会将移动服务代理安装在要复制的 VM 上，并在本地 VMware VM 上执行自动发现。
-- **主目标服务器**：主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
+- **配置服务器** ：配置服务器在本地与 Azure 之间协调通信并管理数据复制。
+- **进程服务器** ：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 进程服务器还会将移动服务代理安装在要复制的 VM 上，并在本地 VMware VM 上执行自动发现。
+- **主目标服务器** ：主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
 
 
 所有这些组件一起安装在称作“配置服务器”的一台本地计算机上。 默认情况下，为了实现 VMware 灾难恢复，我们会将一个高度可用的 VMware VM 设置为配置服务器。 为此，请下载一个已准备好的开放虚拟化应用程序 (OVA) 模板，并将该模板导入 VMware 以创建该 VM。
@@ -144,7 +144,7 @@ ms.locfileid: "87501195"
 注册配置服务器后，Site Recovery 将使用指定的设置连接到 VMware 服务器，并发现 VM。
 
 > [!NOTE]
-> 帐户名可能需要 15 分钟或更长时间才能出现在门户中。 若要立即更新，请选择“配置服务器” > ***服务器名称*** > “刷新服务器”。
+> 帐户名可能需要 15 分钟或更长时间才能出现在门户中。 若要立即更新，请选择“配置服务器” > “服务器名称”>“刷新服务器” 。
 
 ## <a name="set-up-the-target-environment"></a>设置目标环境
 
@@ -158,9 +158,9 @@ ms.locfileid: "87501195"
 ## <a name="create-a-replication-policy"></a>创建复制策略
 
 1. 打开 [Azure 门户](https://portal.azure.com)。 搜索并选择“恢复服务保管库”。
-2. 选择恢复服务保管库（在本教程中为 **ContosoVMVault**）。
+2. 选择恢复服务保管库（在本教程中为 **ContosoVMVault** ）。
 3. 若要创建复制策略，请选择“Site Recovery 基础结构” > “复制策略” > “+复制策略”。
-4. 在“创建复制策略”中，输入策略名称。 我们使用 **VMwareRepPolicy**。
+4. 在“创建复制策略”中，输入策略名称。 我们使用 **VMwareRepPolicy** 。
 5. 在“RPO 阈值”中，使用默认值 60 分钟。 此值确定创建恢复点的频率。 如果连续复制超出此限制，则会生成警报。
 6. 在“恢复点保留期”中，指定每个恢复点的保留时间。 在本教程中，我们将使用 72 小时。 可以将复制的 VM 恢复到保留窗口中的任何点。
 7. 在“应用一致性快照频率”中，指定创建应用一致性快照的频率。 我们将使用默认值，即 60 分钟。 选择“确定”以创建策略。
@@ -168,7 +168,7 @@ ms.locfileid: "87501195"
    ![创建复制策略选项的屏幕截图。](./media/vmware-azure-tutorial/replication-policy.png)
 
 - 此策略自动与配置服务器关联。
-- 默认情况下会自动创建一个匹配策略，用于故障回复。 例如，如果复制策略是 **rep-policy**，则故障回复策略将是 **rep-policy-failback**。 从 Azure 启动故障回复之前，不会使用此策略。
+- 默认情况下会自动创建一个匹配策略，用于故障回复。 例如，如果复制策略是 **rep-policy** ，则故障回复策略将是 **rep-policy-failback** 。 从 Azure 启动故障回复之前，不会使用此策略。
 
 注意：在 VMware 到 Azure 方案中，崩溃一致性快照的拍摄间隔为 5 分钟。
 
@@ -180,11 +180,11 @@ ms.locfileid: "87501195"
 2. 在“源”中选择“本地”，然后在“源位置”中选择配置服务器。
 3. 在“计算机类型”中，选择“虚拟机” 。
 4. 在“vCenter/vSphere 虚拟机监控程序”中选择 vSphere 主机或管理该主机的 vCenter 服务器。
-5. 选择进程服务器（默认安装在配置服务器 VM 上）。 然后选择“确定”。 每个进程服务器的运行状况状态是根据建议的限制和其他参数指示的。 选择一个正常运行的进程服务器。 不能选择[有严重错误的](vmware-physical-azure-monitor-process-server.md#process-server-alerts)进程服务器。 你可以[进行故障排除并解决](vmware-physical-azure-troubleshoot-process-server.md)错误**或者**设置一个[横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md)。
+5. 选择进程服务器（默认安装在配置服务器 VM 上）。 然后选择“确定”。 每个进程服务器的运行状况状态是根据建议的限制和其他参数指示的。 选择一个正常运行的进程服务器。 不能选择[有严重错误的](vmware-physical-azure-monitor-process-server.md#process-server-alerts)进程服务器。 你可以 [进行故障排除并解决](vmware-physical-azure-troubleshoot-process-server.md)错误 **或者** 设置一个 [横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md)。
 6. 在“目标”中，选择要创建故障转移 VM 的订阅和资源组。 我们将使用资源管理器部署模型。
 7. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。
 8. 选择“立即为选定的计算机配置”，以便将网络设置应用到在其上启用了复制的所有 VM。 选择“稍后配置”以选择每个计算机的 Azure 网络。
-9. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机 。 只能选择可以启用复制的计算机。 然后选择“确定”。 如果无法查看/选择特定的虚拟机，请[详细了解](https://aka.ms/doc-plugin-VM-not-showing)如何解决此问题。
+9. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机 。 只能选择可以启用复制的计算机。 然后选择“确定”。 如果无法查看/选择特定的虚拟机，请[详细了解](./vmware-azure-troubleshoot-replication.md)如何解决此问题。
 10. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。
 11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略 。
 12. 选择“启用复制”。 为 VM 启用复制后，Site Recovery 会安装移动服务。

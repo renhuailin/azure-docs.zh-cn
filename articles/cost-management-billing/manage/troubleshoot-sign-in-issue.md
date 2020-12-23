@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686490"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132323"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>排查 Azure 订阅登录问题
 
 本指南可帮助解决无法登录到 Azure 门户或 Azure 帐户中心的问题。
 
 > [!NOTE]
-> 如果在注册新的 Azure 帐户时遇到问题，请参阅[排查 Azure 订阅登录问题](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)。
+> 如果在注册新的 Azure 帐户时遇到问题，请参阅[排查 Azure 订阅登录问题](./troubleshoot-azure-sign-up.md)。
 
 ## <a name="page-hangs-in-the-loading-status"></a>页面在加载状态下挂起
 
@@ -66,7 +66,7 @@ ms.locfileid: "88686490"
 解决此问题：
 
 - 选择右上角的帐户，确认是否选择了正确的 Azure 目录。
-- 如果已选择正确的 Azure 目录，但仍收到错误消息，请将帐户[添加为所有者](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator)。
+- 如果已选择正确的 Azure 目录，但仍收到错误消息，请将帐户[添加为所有者](./add-change-subscription-administrator.md)。
 
 **场景 2：** 登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)时收到错误
 
@@ -80,11 +80,11 @@ ms.locfileid: "88686490"
 
 Azure 计费和订阅的其他疑难解答文章
 
-- [银行卡被拒绝](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [订阅注册问题](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [找不到任何订阅](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [企业成本视图已禁用](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Azure 计费文档](https://docs.microsoft.com/azure/cost-management-billing/)
+- [银行卡被拒绝](./troubleshoot-declined-card.md)
+- [订阅注册问题](./troubleshoot-azure-sign-up.md)
+- [找不到任何订阅](./no-subscriptions-found.md)
+- [企业成本视图已禁用](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Azure 计费文档](../index.yml)
 
 ## <a name="contact-us-for-help"></a>联系我们以获取帮助
 

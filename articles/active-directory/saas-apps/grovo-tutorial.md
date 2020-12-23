@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c43a50dbbd2276573a80b866ee673e4391d9736b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 84bbec783630aadc68a9632c90ee90f4a8cc98d3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551395"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92446659"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Grovo 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551395"
 * 让用户使用其 Azure AD 帐户自动登录到 Grovo。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88551395"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Grovo 支持 **SP 和 IDP** 发起的 SSO
-* Grovo 支持**实时**用户预配
+* Grovo 支持 **实时** 用户预配
 
 ## <a name="adding-grovo-from-the-gallery"></a>从库中添加 Grovo
 
@@ -137,11 +137,11 @@ ms.locfileid: "88551395"
 
 2. 转到“管理” > “集成”。  
  
-    ![Grovo 配置](./media/grovo-tutorial/tutorial_grovo_admin.png) 
+    ![屏幕截图显示“管理”菜单，其中选择了“集成”。](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
 3. 单击“SP 发起的 SAML 2.0”部分下的“设置”。  
 
-    ![Grovo 配置](./media/grovo-tutorial/tutorial_grovo_setup.png)
+    ![屏幕截图显示“S P Initiateds SAML 2.0”部分，其中选择了“设置”按钮。](./media/grovo-tutorial/tutorial_grovo_setup.png)
 
 4. 在“SP 发起的 SAML 2.0”弹出窗口中执行以下步骤： 
 
@@ -153,7 +153,7 @@ ms.locfileid: "88551395"
 
     c. 为“单一登录服务终结点绑定”选择 `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`。 
     
-    d. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书**，将其粘贴到“公钥”文本框中。 
+    d. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书** ，将其粘贴到“公钥”文本框中。 
 
     e. 单击“下一步”。 
 
@@ -168,14 +168,14 @@ ms.locfileid: "88551395"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Grovo”磁贴时，应会自动登录到设置了 SSO 的 Grovo。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Grovo”磁贴时，应会自动登录到设置了 SSO 的 Grovo。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Grovo](https://aad.portal.azure.com/)

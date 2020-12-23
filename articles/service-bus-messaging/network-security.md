@@ -3,12 +3,12 @@ title: Azure 服务总线的网络安全性
 description: 本文介绍网络安全功能，如服务标记、IP 防火墙规则、服务终结点和专用终结点。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766403"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310460"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure 服务总线的网络安全性 
 本文介绍如何在 Azure 服务总线中使用以下安全功能： 
@@ -22,7 +22,7 @@ ms.locfileid: "91766403"
 ## <a name="service-tags"></a>服务标记
 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量减少频繁更新网络安全规则所需的复杂操作。 有关服务标记的详细信息，请参阅[服务标记概述](../virtual-network/service-tags-overview.md)。
 
-可以在[网络安全组](../virtual-network/security-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 通过在规则的相应源或目标字段中指定服务标记名（例如，ServiceBus），可以允许或拒绝相应服务的流量    。
+可以在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 通过在规则的相应源或目标字段中指定服务标记名（例如，ServiceBus），可以允许或拒绝相应服务的流量    。
 
 | 服务标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可在 Azure 防火墙中使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|

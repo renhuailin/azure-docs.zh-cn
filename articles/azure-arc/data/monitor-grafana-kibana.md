@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3693c30a34601512770f5d9071f5d786410fb00e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934520"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360371"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>使用 Kibana 和 Grafana 查看日志和指标
 
-提供了 Kibana 和 Grafana web 仪表板，可让你深入了解 Azure Arc 启用的数据服务所使用的 Kubernetes 命名空间。
+提供了 Kibana 和 Grafana Web 仪表板，可让你深入了解启用了 Azure Arc 的数据服务所使用的 Kubernetes 命名空间。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "90934520"
 
 若要检索公共 IP 地址，请使用以下命令：
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -66,7 +66,7 @@ mgmtproxy-svc-external   LoadBalancer   10.0.186.28   52.152.148.25   30777:3084
 
 ### <a name="find-the-name-of-the-nsg"></a>查找 NSG 的名称
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -74,7 +74,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 获得 NSG 的名称后，可以使用以下命令添加规则：
 
-```console
+```azurecli
 az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 600 -g azurearcvm-rg --access Allow --description 'Allow Kibana and Grafana ports' --destination-address-prefixes '*' --destination-port-ranges 30777 --direction Inbound --protocol Tcp --source-address-prefixes '*' --source-port-ranges '*'
 ```
 

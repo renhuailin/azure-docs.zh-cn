@@ -7,12 +7,12 @@ keywords: 更改, 跟踪, 更改跟踪, 清单, 自动化
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 28c440f27dcbd4ac509adea83d5c3085488cb488
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530533"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204242"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>排查 Azure VM 上的更改问题
 
@@ -238,4 +238,4 @@ ConfigurationChange
 继续阅读更改跟踪和清单功能的概述可以了解其详细信息。
 
 > [!div class="nextstepaction"]
-> [更改跟踪和清单概述](./change-tracking.md)
+> [更改跟踪和清单概述](change-tracking/overview.md)

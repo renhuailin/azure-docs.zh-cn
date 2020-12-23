@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575174"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205313"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
 
@@ -195,7 +195,7 @@ ms.locfileid: "91575174"
 
 各种格式的内存占用量如下：
 
-| 格式 | 描述 | 字节/ :::no-loc text="vertex"::: |
+| 格式 | 说明 | 字节/ :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|双组件全浮点精度|8
 |16_16_FLOAT|双组件半浮点精度|4
@@ -258,7 +258,7 @@ ms.locfileid: "91575174"
 ### <a name="texture-sizes"></a>纹理大小
 
 根据方案的类型，纹理数据量可能超出网格数据所用的内存量。 Photogrammetry 模型是候选。
-转换配置不提供自动缩减纹理的方式。 如有必要，纹理缩放必须作为客户端预处理步骤完成。 不过，转换步骤会选取合适的 [纹理压缩格式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
+转换配置不提供自动缩减纹理的方式。 如有必要，纹理缩放必须作为客户端预处理步骤完成。 不过，转换步骤会选取合适的 [纹理压缩格式](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
 
 * `BC1` 对于不透明颜色纹理
 * `BC7` 对于带有 alpha 通道的源颜色纹理

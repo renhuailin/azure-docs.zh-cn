@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 17a29621d3d70d56745d2e51e0ce80974876a9ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399034"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782155"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答
 
@@ -55,7 +55,7 @@ ms.locfileid: "91399034"
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>在创建导出作业时我是否需要执行任何磁盘准备操作？
 
-否。 但建议执行一些预先检查。 若要检查所需的磁盘数，请使用 WAImportExport 工具的 PreviewExport 命令。 有关详细信息，请参阅[预览导出作业的驱动器使用情况](https://msdn.microsoft.com/library/azure/dn722414.aspx)。 此命令可以根据要使用的驱动器的大小，帮助你预览所选 Blob 的驱动器使用情况。 此外，请检查是否可以向要寄送的用于导出作业的硬盘驱动器进行读取和写入。
+否。 但建议执行一些预先检查。 若要检查所需的磁盘数，请使用 WAImportExport 工具的 PreviewExport 命令。 有关详细信息，请参阅[预览导出作业的驱动器使用情况](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1)。 此命令可以根据要使用的驱动器的大小，帮助你预览所选 Blob 的驱动器使用情况。 此外，请检查是否可以向要寄送的用于导出作业的硬盘驱动器进行读取和写入。
 
 ## <a name="importexport-jobs"></a>导入/导出作业
 
@@ -132,7 +132,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>如何才能访问此服务导入的数据？
 
-使用 Azure 门户或[存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)在你的 Azure 存储帐户下访问该数据。  
+使用 Azure 门户或[存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)在你的 Azure 存储帐户下访问该数据。  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>导入完成后，我的数据在存储帐户中看起来是什么样的？ 是否会保留我的目录层次结构？
 
@@ -144,7 +144,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>WAImportExport 工具是否与 32 位操作系统兼容？
 
-否。 WAImportExport 工具仅与 64 位 Windows 操作系统兼容。 有关受支持的 OS 的完整列表，请转到[受支持的操作系统](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)。
+否。 WAImportExport 工具仅与 64 位 Windows 操作系统兼容。 有关受支持的 OS 的完整列表，请转到[受支持的操作系统](./storage-import-export-requirements.md)。
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure 导入/导出支持的最大块 Blob 和页 Blob 大小是多少？
 

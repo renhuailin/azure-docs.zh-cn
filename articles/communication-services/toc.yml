@@ -16,6 +16,8 @@
       items:
         - name: 向应用添加聊天
           href: quickstarts/chat/get-started.md
+        - name: 将你的聊天应用连接到 Teams 会议
+          href: quickstarts/chat/meeting-interop.md
     - name: 电话服务和短信
       items:
         - name: 获取电话号码
@@ -34,6 +36,8 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: 使用呼叫客户端库
           href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: 在 Teams 会议中加入通话应用
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
 - name: 教程
   expanded: false
   items:
@@ -62,6 +66,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: 语音和视频概念
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Teams 互操作性
+          href: concepts/voice-video-calling/teams-interop.md
     - name: 客户端和服务器体系结构
       href: concepts/client-and-server-architecture.md
     - name: 呼叫流
@@ -70,29 +76,77 @@
       href: concepts/sdk-options.md
     - name: 定价模型
       href: concepts/pricing.md
+    - name: 隐私
+      href: concepts/privacy.md
+    - name: 标识模型
+      href: concepts/identity-model.md
     - name: 身份验证
       href: concepts/authentication.md
     - name: 事件处理
       href: concepts/event-handling.md
     - name: 通知
       href: concepts/notifications.md
+    - name: 日志记录和诊断
+      href: concepts/logging-and-diagnostics.md
+    - name: 指标
+      href: concepts/metrics.md
+    - name: 疑难解答
+      href: concepts/troubleshooting-info.md
 - name: 示例
   items:
     - name: 出色的分组呼叫示例
       href: samples/calling-hero-sample.md
     - name: 分组聊天英雄示例
       href: samples/chat-hero-sample.md
+    - name: Web 调用示例
+      href: samples/web-calling-sample.md
 - name: 参考
   items:
+    - name: 参考文档概述
+      href: concepts/reference.md
     - name: REST API 文档
-      href: 'https://docs.microsoft.com/rest/api/azure/'
-    - name: 调用库 (Android/Java)
-      href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
-    - name: 调用库 (JS)
-      href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
-    - name: 调用库 (iOS)
-      href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
+      href: /rest/api/communication/
+    - name: 通话库
+      items:
+        - name: 通话 (JavaScript)
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
+        - name: 通话 (Android/Java)
+          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
+        - name: 通话 (iOS)
+          href: /objectivec/communication-services/calling/
+    - name: 聊天库
+      items:
+        - name: 聊天 (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-chat'
+        - name: 聊天 (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
+        - name: 聊天 (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
+    - name: 短信库
+      items:
+        - name: 短信 (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-sms'
+        - name: 短信 (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
+        - name: 短信 (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
+    - name: 管理库
+      items:
+        - name: 管理 (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-administration'
+        - name: 管理 (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationadministration'
+        - name: 管理 (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-administration'
+    - name: 公用库
+      items:
+        - name: 公用 (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-common'
+        - name: 公用 (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
+        - name: 公用 (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
 - name: 资源
   items:
     - name: 发行说明
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

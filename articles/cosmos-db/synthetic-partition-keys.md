@@ -2,20 +2,22 @@
 title: 在 Azure Cosmos DB 中创建合成分区键
 description: 了解如何在 Azure Cosmos 容器中使用合成分区键在分区键之间均匀分配数据和工作负荷
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75441225"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340645"
 ---
 # <a name="create-a-synthetic-partition-key"></a>创建合成分区键
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-采用具有大量（例如，几百甚至几千个）非重复性值的分区键是最佳做法。 目标是在与这些分区键值关联的项之间均匀分配数据和工作负荷。 如果数据中不存在此类属性，则可以构造*合成分区键*。 本文档介绍为 Cosmos 容器生成合成分区键的几种基本方法。
+采用具有大量（例如，几百甚至几千个）非重复性值的分区键是最佳做法。 目标是在与这些分区键值关联的项之间均匀分配数据和工作负荷。 如果数据中不存在此类属性，则可以构造 *合成分区键* 。 本文档介绍为 Cosmos 容器生成合成分区键的几种基本方法。
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>连接某个项的多个属性
 
@@ -58,7 +60,7 @@ ms.locfileid: "75441225"
 
 可通过以下文章详细了解分区的概念：
 
-* 详细了解[逻辑分区](partition-data.md)。
+* 详细了解[逻辑分区](partitioning-overview.md)。
 * 详细了解如何[对 Azure Cosmos 容器和数据库预配吞吐量](set-throughput.md)。
 * 了解[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 * 了解[如何对 Azure Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)。

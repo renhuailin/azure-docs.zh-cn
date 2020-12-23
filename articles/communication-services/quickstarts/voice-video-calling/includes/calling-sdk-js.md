@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: d50ce842a1b2bca26ef14dfbc81aab90d4ac2d8c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779445"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97691945"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
-- `User Access Token`要启用调用客户端的。 有关[如何获取 `User Access Token` ](../../access-tokens.md)
+- 用于启用呼叫客户端的`User Access Token`。 详细了解[如何获取`User Access Token`](../../access-tokens.md)
 - 可选：完成快速入门[添加对应用程序调用](../getting-started-with-calling.md)的入门教程
 
 ## <a name="setting-up"></a>设置
@@ -53,7 +53,7 @@ npm install @azure/communication-calling --save
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationUserCredential(userToken);
-const callAgent = await callClient.createCallAgent(tokenCredential);
+const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
 const deviceManager = await callClient.getDeviceManager()
 ```
 
@@ -89,7 +89,9 @@ const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 > 当前可以有一个以上的传出本地视频流。
 若要进行视频呼叫，必须使用 deviceManager API 枚举本地相机 `getCameraList` 。
 选择所需的照相机后，使用它来构造 `LocalVideoStream` 实例，并将其 `videoOptions` 作为数组中的项传入 `localVideoStream` 到 `call` 方法。
-呼叫连接后，会自动开始将视频流从所选照相机发送到其他 (的参与者) 
+呼叫连接后，它会自动开始将视频流从所选照相机发送到其他 () 的参与者。
+
+这也适用于调用。接受 ( # A1 视频选项和 CallAgent ( # A3 视频选项。
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
@@ -99,13 +101,41 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
-### <a name="join-a-group-call"></a>加入组调用
+### <a name="receiving-an-incoming-call"></a>接收传入呼叫
+```js
+callAgent.on('callsUpdated', e => {
+    e.added.forEach(addedCall => {
+        if(addedCall.isIncoming) {
+        addedCall.accept();
+    }
+    });
+})
+```
+
+### <a name="join-a-group-call"></a>加入群组通话
 若要启动新组调用或加入正在进行的组调用，请使用 "join" 方法并向属性传递对象 `groupId` 。 该值必须是 GUID。
 ```js
 
-const context = { groupId: <GUID>}
-const call = callAgent.join(context);
+const locator = { groupId: <GUID>}
+const call = callAgent.join(locator);
 
+```
+
+### <a name="join-a-teams-meeting"></a>加入团队会议
+若要加入团队会议，请使用 "联接" 方法并传递会议链接或会议的坐标
+```js
+// Join using meeting link
+const locator = { meetingLink: <meeting link>}
+const call = callAgent.join(locator);
+
+// Join using meeting coordinates
+const locator = {
+    threadId: <thread id>,
+    organizerId: <organizer id>,
+    tenantId: <tenant id>,
+    messageId: <message id>
+}
+const call = callAgent.join(locator);
 ```
 
 ## <a name="call-management"></a>呼叫管理
@@ -147,7 +177,8 @@ const callState = call.state;
 * "已连接"-调用已连接
 * "保持"-呼叫处于暂挂状态，本地终结点与远程参与者之间没有媒体流动 (s) 
 * 在调用进入 "断开连接" 状态之前，"断开"-转换状态
-* "Disconnected"-最终调用状态
+* "Disconnected"-最终调用状态。
+   * 如果网络连接丢失，在大约2分钟后状态将变为 "已断开连接"。
 
 
 * 若要查看给定调用结束的原因，请检查 `callEndReason` 属性。
@@ -161,6 +192,11 @@ const callEndReason = call.callEndReason;
 * 若要了解当前调用是否为传入调用，请检查 `isIncoming` 属性，返回 `Boolean` 。
 ```js
 const isIncoming = call.isIncoming;
+```
+
+* 若要检查是否正在记录调用，请检查 `isRecordingActive` 属性，返回 `Boolean` 。
+```js
+const isResordingActive = call.isRecordingActive;
 ```
 
 *  若要检查当前麦克风是否静音，请检查 `muted` 属性，返回 `Boolean` 。
@@ -233,6 +269,9 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
+### <a name="faq"></a>常见问题解答
+ * 如果网络连接中断，呼叫状态是否更改为 "已断开连接"？
+    * 是的，如果网络连接丢失了2分钟以上，则调用会转换为断开连接状态，并且调用将结束。
 
 ## <a name="remote-participants-management"></a>远程参与者管理
 
@@ -270,7 +309,8 @@ const state = remoteParticipant.state;
 * "已连接"-参与者已连接到呼叫
 * "保持"-参与者处于暂停状态
 * "EarlyMedia"-在参与者连接到呼叫之前播放公告
-* "断开连接"-最终状态-参与者已与呼叫断开连接
+* "Disconnected"-最终状态-参与者已与呼叫断开连接。
+   * 如果远程参与者丢失了其网络连接，则在大约2分钟后远程参与者状态将变为 "已断开连接"。
 
 若要了解参与者离开呼叫的原因，请检查 `callEndReason` 属性：
 ```js
@@ -410,7 +450,9 @@ document.body.appendChild(rendererView.target);
 ```js
 view.updateScalingMode('Crop')
 ```
-
+### <a name="faq"></a>常见问题解答
+* 如果远程参与者丢失了其网络连接，其状态将更改为 "已断开连接"。
+    * 是的，如果远程参与者的网络连接丢失了2分钟以上，则其状态将转换为 "已断开连接"，并将从调用中删除它们。
 ## <a name="device-management"></a>设备管理
 
 `DeviceManager` 允许你枚举可在调用中用于传输音频/视频流的本地设备。 它还允许你请求用户使用本机浏览器 API 访问其麦克风和照相机的权限。

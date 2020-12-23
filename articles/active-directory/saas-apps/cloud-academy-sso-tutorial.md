@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 37ed9bb09b6b15af0c32f489cbc3c02ec27c2827
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461946"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180993"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>教程：Azure Active Directory 单一登录与 Cloud Academy - SSO 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "89461946"
 * 让用户使用其 Azure AD 帐户自动登录到 Cloud Academy - SSO。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是单一登录？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "89461946"
 
 Cloud Academy - SSO 支持 SP 发起的 SSO。
 
-配置 Cloud Academy - SSO 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Cloud Academy - SSO 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>从库中添加 Cloud Academy - SSO
 
@@ -138,7 +138,7 @@ Cloud Academy - SSO 支持 SP 发起的 SSO。
 
     d. 在“名称 ID 格式”框中，保留默认值：`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`。
 
-1. 选择**保存**。
+1. 选择 **保存**。
 
     > [!NOTE]
     > 有关如何配置 Cloud Academy - SSO 的详细信息，请参阅[设置单一登录](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On)。
@@ -163,18 +163,18 @@ Cloud Academy - SSO 支持 SP 发起的 SSO。
 
 现在使用访问面板测试 Azure AD SSO 配置。
 
-在访问面板中选择“Cloud Academy - SSO”磁贴时，应会自动登录到设置了 SSO 的 Cloud Academy - SSO 实例。 有关详细信息，请参阅[访问面板简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在访问面板中选择“Cloud Academy - SSO”磁贴时，应会自动登录到设置了 SSO 的 Cloud Academy - SSO 实例。 有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Cloud Academy - SSO](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 Cloud Academy - SSO](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用高级可见性和控制保护 Cloud Academy - SSO](/cloud-app-security/proxy-intro-aad)

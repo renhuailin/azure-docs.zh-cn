@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 5367e5027bfae2fa3ed7e87a779e50e4048ba608
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776130"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861725"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory 标识保护和 Microsoft Graph 入门
 
@@ -39,13 +39,13 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 ### <a name="retrieve-your-domain-name"></a>检索域名 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。  
-1. 浏览到**Azure Active Directory**  >  **自定义域名**。 
+1. 登录 [Azure 门户](https://portal.azure.com)。  
+1. 浏览到 **Azure Active Directory**  >  **自定义域名**。 
 1. 记下 `.onmicrosoft.com` 域，稍后的步骤中将需要此信息。
 
 ### <a name="create-a-new-app-registration"></a>创建新的应用注册
 
-1. 在 Azure 门户中，浏览到**Azure Active Directory**  >  **应用注册**"。
+1. 在 Azure 门户中，浏览到 **Azure Active Directory**  >  **应用注册**"。
 1. 选择“新注册”。
 1. 在 " **创建** " 页上，执行以下步骤：
    1. 在 " **名称** " 文本框中，键入应用程序的名称 (例如： Azure AD 风险检测 API) 。
@@ -57,8 +57,8 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 1. 从创建的 **应用程序** 中，选择 " **API 权限**"。
 1. 在 " **已配置权限** " 页顶部的工具栏中，单击 " **添加权限**"。
-1. 在“添加 API 访问权限”页中，单击“选择 API”********。
-1. 在“选择 API”页中，选择“Microsoft Graph”，然后单击“选择”************。
+1. 在“添加 API 访问权限”页中，单击“选择 API”。
+1. 在“选择 API”页中，选择“Microsoft Graph”，然后单击“选择”。
 1. 在 " **请求 API 权限** " 页上： 
    1. 选择“应用程序权限”。
    1. 选中和旁边的复选 `IdentityRiskEvent.Read.All` 框 `IdentityRiskyUser.Read.All` 。
@@ -173,4 +173,4 @@ GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskD
 - [Azure Active Directory Identity Protection 检测到的风险检测类型](./overview-identity-protection.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Microsoft Graph 概述](https://developer.microsoft.com/graph/docs)
-- [Azure AD 标识保护服务根](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)
+- [Azure AD 标识保护服务根](/graph/api/resources/identityprotectionroot)

@@ -9,21 +9,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6947c567ee2ffd70fdb3a1dfc17a641f63124ffb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 62cecc011980c2d11e6f99895c90b0ced744039a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91337794"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325343"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
-
+**适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是**由三个部分构成的系列教程的第一部分**。
+在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第一部分**。
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
@@ -119,7 +118,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 打开机器学习工作室（经典版）主页 ([https://studio.azureml.net](https://studio.azureml.net))。 
 
-2. 单击窗口左上角菜单![菜单](./media/tutorial-part1-credit-risk/menu.png)，单击“Azure 机器学习”，选择“工作室”，并登录。
+2. 单击窗口左上角的菜单 ![这是菜单图标 - 三条堆叠线。](./media/tutorial-part1-credit-risk/menu.png)， 单击“Azure 机器学习”，选择“工作室”，并登录 。
 
 3. 单击窗口底部的“+ 新建”。
 
@@ -137,7 +136,7 @@ sed 's/ /,/g' german.data > german.csv
 
 9. 添加说明（如果需要）。
 
-10. 单击**确定**复选标记。  
+10. 单击 **确定** 复选标记。  
 
     ![上传数据集](./media/tutorial-part1-credit-risk/upload-dataset.png)
 
@@ -213,7 +212,7 @@ sed 's/ /,/g' german.data > german.csv
    ![其中选择了所有列的列选择器](./media/tutorial-part1-credit-risk/select-columns.png)
 
 
-1. 单击**确定**复选标记。
+1. 单击 **确定** 复选标记。
 
 1. 回到“属性”窗格中，查找“新列名称”参数。 在此字段中，输入数据集中 21 列的名称列表，以逗号分隔并按列排序。 可以从 UCI 网站上的数据集文档中获取列名称，或为了方便起见，也可以复制并粘贴以下列表：  
 
@@ -242,7 +241,7 @@ sed 's/ /,/g' german.data > german.csv
 1. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”参数。 这意味着，随机的一半数据通过[拆分数据][split]模块的一个端口输出，另一半通过另一个端口输出。 可以调整这些参数，以及“随机种子”参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持不变。
    
    > [!TIP]
-   > **第一个输出数据集中行的分数**属性决定了通过*左*输出端口输出的数据量。 例如，如果将比率设置为 0.7，则 70% 的数据将通过左端口输出，30% 通过右端口输出。  
+   > **第一个输出数据集中行的分数** 属性决定了通过 *左* 输出端口输出的数据量。 例如，如果将比率设置为 0.7，则 70% 的数据将通过左端口输出，30% 通过右端口输出。  
    > 
    > 
 
@@ -260,7 +259,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 双击[执行 R 脚本][execute-r-script]模块，并输入注释“设置成本调整”。
 
-1. 在“属性”窗格中，删除 **R 脚本**参数中的默认文本，并输入以下脚本：
+1. 在“属性”窗格中，删除 **R 脚本** 参数中的默认文本，并输入以下脚本：
    
     ```r
     dataset1 <- maml.mapInputPort(1)
@@ -313,6 +312,6 @@ sed 's/ /,/g' german.data > german.csv
 > [教程 2 - 训练和评估模型](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
-[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
-[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[split]: /azure/machine-learning/studio-module-reference/split-data

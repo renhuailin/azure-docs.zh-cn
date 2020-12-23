@@ -4,6 +4,8 @@
   items:
     - name: Azure 备份概述
       href: backup-overview.md
+    - name: Azure 备份中的新增功能
+      href: whats-new.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: 快速入门
@@ -64,6 +66,8 @@
           href: sap-hana-backup-support-matrix.md
         - name: Azure 文件共享备份支持矩阵
           href: azure-file-share-support-matrix.md
+        - name: Active Directory 域控制器
+          href: active-directory-backup-restore.md
         - name: Azure Policy 支持的 VM SKU
           href: backup-azure-policy-supported-skus.md
     - name: 常见问题 (FAQ)
@@ -158,6 +162,8 @@
           items:
             - name: 管理 Azure VM 备份
               href: backup-azure-manage-vms.md
+            - name: 管理恢复点
+              href: manage-recovery-points.md
     - name: 备份 Azure VM 上的 SQL Server 数据库
       items:
         - name: 概述
@@ -284,6 +290,8 @@
           href: backup-azure-alternate-dpm-server.md
         - name: 使用 Azure 备份服务器还原 VMware VM
           href: restore-azure-backup-server-vmware.md
+        - name: 备份 MABS 服务器
+          href: backup-the-mabs-server.md
     - name: Azure Stack 上的 Azure 备份服务器
       items:
         - name: 安装 Azure 备份服务器
@@ -384,7 +392,7 @@
       items:
         - name: 概述
           href: security-overview.md
-        - name: 基于角色的访问控制
+        - name: Azure 基于角色的访问控制
           href: backup-rbac-rs-vault.md
         - name: 软删除
           items:
@@ -404,8 +412,8 @@
           href: backup-encryption.md
         - name: 使用客户管理的密钥进行加密
           href: encryption-at-rest-with-cmk.md
-        - name: 内置安全控件
-          href: backup-security-controls.md
+        - name: 传输层安全性
+          href: transport-layer-security.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -415,6 +423,8 @@
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
+        - name: Azure VM 文件恢复
+          href: backup-azure-vm-file-recovery-troubleshoot.md
         - name: Azure 备份代理或 VM 扩展超时
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Azure 备份代理

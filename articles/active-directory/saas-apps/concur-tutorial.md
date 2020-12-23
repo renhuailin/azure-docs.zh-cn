@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 38cc5458b2e62e071227a2372d56e4647e347338
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 8a23cff3f7bfe6d88e6a818117e62762abb6d226
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055973"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455363"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Concur 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "90055973"
 * 让用户使用其 Azure AD 帐户自动登录到 Concur。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "90055973"
 
 * Concur 支持 SP 发起的 SSO 
 * Concur 支持实时用户预配 
-* 配置 Concur 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Concur 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-concur-from-the-gallery"></a>从库中添加 Concur
 
@@ -99,7 +99,7 @@ ms.locfileid: "90055973"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Concur”部分中，根据要求复制相应 URL****。
+6. 在“设置 Concur”部分中，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "90055973"
 在本部分中，将通过授予 B.Simon 访问 Concur 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“Concur”****。
+1. 在应用程序列表中，选择“Concur”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
     ![“用户和组”链接](common/users-groups-blade.png)
@@ -135,7 +135,7 @@ ms.locfileid: "90055973"
 
 ## <a name="configure-concur-sso"></a>配置 Concur SSO
 
-若要在 **Concur** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Concur 支持团队](https://www.concur.co.in/contact)。**** 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
   > [!NOTE]
   > 为 Concur 订阅配置基于 SAML 的联合 SSO 是一个单独的任务，必须联系 [Concur 客户端支持团队](https://www.concur.co.in/contact)来执行。
@@ -148,16 +148,16 @@ ms.locfileid: "90055973"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Concur 磁贴时，应会自动登录到为其设置了 SSO 的 Concur。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Concur 磁贴时，应会自动登录到为其设置了 SSO 的 Concur。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Concur](https://aad.portal.azure.com)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
-ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60870700"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000906"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array 更新 0.6 发行说明
 
@@ -29,7 +29,7 @@ ms.locfileid: "60870700"
 
 发行说明会持续进行更新，并且会陆续将所发现的需要解决的重要问题添加到说明中。 部署 StorSimple Virtual Array 之前，请仔细查看发行说明中包含的信息。
 
-更新 0.6 对应软件版本 10.0.10293.0****。
+更新 0.6 对应软件版本 10.0.10293.0。
 
 > [!IMPORTANT]
 > - 更新会造成中断，并且会使设备重新启动。 如果正在进行 I/O，则会导致设备停机。 有关如何应用此更新的详细说明，请转到[安装更新 0.6](storsimple-virtual-array-install-update-06.md)。
@@ -40,12 +40,12 @@ ms.locfileid: "60870700"
 ## <a name="whats-new-in-the-update-06"></a>更新 0.6 中的新增内容
 更新 0.6 是关键更新，应该立即部署。 此更新包含以下修补程序： 
 
-- Windows 安全修补程序 - 此版本具有 Windows 关键安全修补程序********。 查看以下安全更新，详细了解安全问题及相关的修补程序：
+- Windows 安全修补程序 - 此版本具有 Windows 关键安全修补程序。 查看以下安全更新，详细了解安全问题及相关的修补程序：
     - [2016 年 12 月 Windows 8.1 和 Windows Server 2012 R2 仅用于安全的质量更新](https://support.microsoft.com/help/3205400/december-2016-security-only-quality-update-for-windows-8.1-and-windows-server-2012-r2)
     - [2017 年 3 月 Windows 8.1 和 Windows Server 2012 R2 仅用于安全的质量更新](https://support.microsoft.com/help/4012213/march-2017-security-only-quality-update-for-windows-8-1-and-windows-server-2012-r23)
     - [2017 年 5 月 9 日—KB4019213（仅用于安全的更新）](https://support.microsoft.com/help/4019213/windows-8-update-kb4019213)
 
-- 还原修补程序 - 早期版本中存在阻止还原完成的 bug****。 此版本中已修复这个 bug。
+- 还原修补程序 - 早期版本中存在阻止还原完成的 bug。 此版本中已修复这个 bug。
 
 
 ## <a name="issues-fixed-in-the-update-06"></a>更新 0.6 中修复的问题
@@ -92,5 +92,4 @@ ms.locfileid: "60870700"
 * [StorSimple 虚拟阵列更新0.4 发行说明](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple 虚拟阵列更新0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Virtual Array 正式版发行说明]()

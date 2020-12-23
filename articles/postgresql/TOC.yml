@@ -1,4 +1,4 @@
-- name: Azure DB for PostgreSQL 文档
+- name: Azure Database for PostgreSQL 文档
   href: index.yml
 - name: 概述
   items:
@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: 分享的文档
   items:
+    - name: 数据库部署
+      items:
+        - name: Github Actions
+          href: how-to-deploy-github-action.md
     - name: 迁移
       items:
         - name: 通过 pg_dump 和 pg_restore 迁移数据
@@ -23,6 +27,9 @@
         - name: 通过 DMS 实现停机时间最短的迁移
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
+    - name: 版本控制策略
+      href: concepts-version-policy.md
+      displayName: 'version, postgresql'
 - name: 单台服务器
   expanded: true
   items:
@@ -103,8 +110,6 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
-        - name: Azure Policy 内置策略定义
-          href: policy-samples.md
     - name: 概念
       items:
         - name: 服务器
@@ -144,6 +149,9 @@
             - name: 基础结构双重加密
               href: concepts-infrastructure-double-encryption.md
               displayName: 'security, infrastructure encryption'
+            - name: Azure Policy 的安全控件
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: 安全基线
               href: security-baseline.md
         - name: 网络
@@ -157,6 +165,8 @@
             - name: 专用链接
               href: concepts-data-access-and-security-private-link.md
               displayName: 'security, private link, private endpoint'
+        - name: 计划内维护
+          href: concepts-planned-maintenance-notification.md
         - name: 业务连续性
           items:
             - name: 业务连续性简介
@@ -196,6 +206,8 @@
               displayName: 'query store, performance, optimize, recommendations'
         - name: 应用开发
           items:
+            - name: 最佳做法
+              href: application-best-practices.md
             - name: 连接库
               href: concepts-connection-libraries.md
               displayName: 'libraries, drivers'
@@ -250,6 +262,9 @@
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore, georestore, geo-restore, outage'
+            - name: 恢复已删除的服务器
+              href: howto-restore-dropped-server.md
+              displayName: 'restore server,dropped, recover'
         - name: 启用身份验证
           items:
             - name: 创建用户
@@ -380,6 +395,8 @@
           items:
             - name: Azure 门户
               href: howto-move-regions-portal.md
+        - name: 主版本升级
+          href: how-to-upgrade-using-dump-and-restore.md
 - name: 灵活服务器（预览版）
   expanded: true
   items:
@@ -397,6 +414,7 @@
             - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM 模板
+              displayName: Resource Manager
               href: flexible-server/quickstart-create-server-arm-template.md
         - name: 连接和查询
           items:
@@ -404,10 +422,16 @@
               href: flexible-server/connect-python.md
     - name: 教程
       items:
-        - name: 在虚拟网络中创建 Web 应用
-          href: flexible-server/tutorial-webapp-server-vnet.md
-        - name: 部署 Django 应用
-          href: flexible-server/tutorial-django-app-service-postgres.md
+        - name: 使用 AKS 生成
+          items:
+            - name: 在 Kubernetes 上部署 Python 应用
+              href: flexible-server/tutorial-django-aks-database.md
+        - name: 使用应用程序服务生成
+          items:
+            - name: 在虚拟网络中创建 Web 应用
+              href: flexible-server/tutorial-webapp-server-vnet.md
+            - name: 在应用服务上部署 Django 应用
+              href: flexible-server/tutorial-django-app-service-postgres.md
     - name: 概念
       items:
         - name: 服务器
@@ -454,6 +478,8 @@
               href: flexible-server/how-to-manage-server-portal.md
             - name: Azure CLI
               href: flexible-server/how-to-manage-server-cli.md
+            - name: 连接和查询指南
+              href: flexible-server/how-to-connect-query-guide.md
         - name: 计划性维护
           items:
             - name: Azure 门户
@@ -527,6 +553,12 @@
               displayName: 'portal, create hyperscale'
     - name: 教程
       items:
+        - name: 创建服务器组
+          href: tutorial-hyperscale-server-group.md
+        - name: 数据建模和加载
+          items:
+            - name: 工作器节点上的数据分片
+              href: tutorial-hyperscale-shard.md
         - name: 设计多租户数据库
           href: tutorial-design-database-hyperscale-multi-tenant.md
           displayName: 'hyperscale, tutorial, multi-tenant'
@@ -540,7 +572,7 @@
           displayName: 'samples, azure cli'
         - name: Azure Policy 内置策略定义
           displayName: 'samples, policies, definitions'
-          href: ./policy-samples.md
+          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 分布式数据
@@ -591,8 +623,14 @@
           href: reference-hyperscale-metadata.md
     - name: 操作指南
       items:
-        - name: 缩放服务器组
-          href: howto-hyperscale-scaling.md
+        - name: 服务器组大小
+          items:
+            - name: 选取初始大小
+              href: howto-hyperscale-scale-initial.md
+            - name: 缩放服务器组
+              href: howto-hyperscale-scale-grow.md
+            - name: 重新均衡分区
+              href: howto-hyperscale-scale-rebalance.md
         - name: 防火墙规则
           items:
             - name: Azure 门户
@@ -627,6 +665,9 @@
       href: /rest/api/postgresql
     - name: 资源管理器模板
       href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能
@@ -638,7 +679,7 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-postgresql.html'
+      href: /answers/topics/azure-database-postgresql.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: 视频

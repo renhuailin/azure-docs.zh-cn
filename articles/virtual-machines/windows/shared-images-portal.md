@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57cebed8ac229ed54945d75786b84b3cd2a36252
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792133"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844193"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
@@ -21,7 +21,7 @@ ms.locfileid: "82792133"
 
 使用共享映像库，你可以在 AAD 租户内在同一区域或跨区域与组织中的其他用户共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 你可以创建多个库，以便可以按逻辑方式对共享映像进行分组。 
 
-库是顶级资源，它提供完全基于角色的访问控制 (RBAC)。 你可以控制映像的版本，并且可以选择将每个映像版本复制到一组不同的 Azure 区域。 库仅适用于托管映像。
+库是顶级资源，它提供完整的 Azure 基于角色的访问控制 (Azure RBAC)。 你可以控制映像的版本，并且可以选择将每个映像版本复制到一组不同的 Azure 区域。 库仅适用于托管映像。
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
@@ -38,25 +38,25 @@ ms.locfileid: "82792133"
  
 ## <a name="create-vms"></a>创建 VM
 
-现在，可以创建一个或多个新的 VM。 此示例在*美国东部*数据中心的*myResourceGroup*中创建名为*myVM*的 VM。
+现在，可以创建一个或多个新的 VM。 此示例在 *美国东部* 数据中心的 *myResourceGroup* 中创建名为 *myVM* 的 VM。
 
 1. 转到映像定义。 可以使用资源筛选器显示所有可用的映像定义。
-1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。****
-1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。**** ****
-1. 在“虚拟机名称”中键入 *myVM*。****
-1. 对于“区域”，请选择“美国东部”。 
-1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。******
-1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。****
+1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。
+1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。 
+1. 在“虚拟机名称”中键入 *myVM*。
+1. 对于“区域”，请选择“美国东部”。
+1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。
+1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。
 1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。  
 1. 在“管理员帐户”  下，如果映像已通用化，则需提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 如果映像已专用化，则用户名和密码字段会灰显，因为使用的是源 VM 的用户名和密码。
 1. 若要允许远程访问 VM，请在“公共入站端口”下选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”。    如果你不希望允许远程访问 VM，请为“公共入站端口”保留选择“无”。  
-1. 完成后，选择页面底部的“查看 + 创建”按钮。****
-1. VM 通过验证后，选择页面底部的“创建”以开始部署。****
+1. 完成后，选择页面底部的“查看 + 创建”按钮。
+1. VM 通过验证后，选择页面底部的“创建”以开始部署。
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”****，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
 
 若要删除单个资源，需要按相反的顺序删除。 例如，若要删除某个映像定义，需要先删除基于该映像创建的所有映像版本。
 
@@ -69,5 +69,4 @@ ms.locfileid: "82792133"
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。
-
+有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../troubleshooting-shared-images.md)。

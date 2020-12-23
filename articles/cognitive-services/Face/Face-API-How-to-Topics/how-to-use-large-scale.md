@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4667b810e4d3d5f13e13572e2420880da5a8a0b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b35b66615bd5c577dd73faca77d3ea20468442f8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931618"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913511"
 ---
 # <a name="example-use-the-large-scale-feature"></a>示例：使用大规模使用的功能
 
@@ -232,7 +232,7 @@ LargePersonGroup 或 LargeFaceList 中的人员/人脸仅在训练后才可搜�
 
 如果可以接受相对较长的时间延迟，则不需要在添加新数据后立即触发训练操作。 相反，可从主逻辑中拆分定型操作并定期触发该操作。 此策略适用于可接受延迟的动态方案。 可将它应用到静态方案，以进一步降低训练频率。
 
-假设存在类似于 `TrainLargeFaceList` 的 `TrainLargePersonGroup` 函数。 通过调用 `System.Timers` 中的 [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) 类，针对 LargePersonGroup 的独立训练的典型实现为：
+假设存在类似于 `TrainLargeFaceList` 的 `TrainLargePersonGroup` 函数。 通过调用 `System.Timers` 中的 [`Timer`](/dotnet/api/system.timers.timer) 类，针对 LargePersonGroup 的独立训练的典型实现为：
 
 ```csharp
 private static void Main()
@@ -260,7 +260,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-有关数据管理和识别相关实现的详细信息，请参阅[添加人脸](how-to-add-faces.md)和[在图像中识别人脸](HowtoIdentifyFacesinImage.md)。
+若要详细了解数据管理以及与识别相关的实现，请参阅[添加人脸](how-to-add-faces.md)。
 
 ## <a name="summary"></a>总结
 
@@ -271,7 +271,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 ## <a name="next-steps"></a>后续步骤
 
-请遵循操作指南了解如何将人脸添加到 PersonGroup，或针对 PersonGroup 执行“识别”操作。
+参照操作指南了解如何将人脸添加到 PersonGroup，或编写脚本以针对 PersonGroup 执行“识别”操作。
 
 - [添加人脸](how-to-add-faces.md)
-- [识别图像中的人脸](HowtoIdentifyFacesinImage.md)
+- [人脸客户端库快速入门](../Quickstarts/client-libraries.md)

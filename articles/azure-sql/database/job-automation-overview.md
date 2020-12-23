@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7ecd7e847a91847db8f57c640a374dc329fce7ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91450352"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782937"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期�
 
 可以使用以下作业计划技术：
 
-- **SQL 代理作业**是经典的且经过实战检验的 SQL Server 作业计划组件，可在 Azure SQL 托管实例中使用。 SQL 代理作业在 Azure SQL 数据库中不可用。
+- **SQL 代理作业** 是经典的且经过实战检验的 SQL Server 作业计划组件，可在 Azure SQL 托管实例中使用。 SQL 代理作业在 Azure SQL 数据库中不可用。
 - **弹性数据库作业（预览）** 是针对一个或多个 Azure SQL 数据库中的数据库执行自定义作业的作业计划服务。
 
 值得注意的是，SQL 代理（可以在本地使用以及作为 SQL 托管实例的一部分使用）与数据库弹性作业代理（适用于 Azure SQL 数据库中的单一数据库和 Azure Synapse Analytics 中的数据库）之间存在一些差异。
@@ -64,9 +64,9 @@ SQL 代理作业是针对数据库指定的 T-SQL 脚本系列。 使用作业�
 一个作业可在一台本地服务器或者多台远程服务器上运行。 SQL 代理作业是内部的数据库引擎组件，在托管实例服务中执行。
 SQL 代理作业有几个关键概念：
 
-- **作业步骤**集是指应在作业中执行的一个或多个步骤。 对于每个作业步骤，可以定义重试策略，以及该作业步骤成功或失败时应执行的操作。
-- **计划**定义何时应执行该作业。
-- 使用**通知**可以定义作业完成后，用于通过电子邮件通知操作员的规则。
+- **作业步骤** 集是指应在作业中执行的一个或多个步骤。 对于每个作业步骤，可以定义重试策略，以及该作业步骤成功或失败时应执行的操作。
+- **计划** 定义何时应执行该作业。
+- 使用 **通知** 可以定义作业完成后，用于通过电子邮件通知操作员的规则。
 
 ### <a name="job-steps"></a>作业步骤
 
@@ -173,13 +173,13 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 - 不支持代理。
 - 不支持事件日志。
 
-有关 SQL Server 代理的信息，请参阅 [SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)。
+有关 SQL Server 代理的信息，请参阅 [SQL Server 代理](/sql/ssms/agent/sql-server-agent)。
 
 ## <a name="elastic-database-jobs-preview"></a>弹性数据库作业（预览版）
 
-使用**弹性数据库作业**，可以按计划或按需跨大量数据库并行运行一个或多个 T-SQL 脚本。
+使用 **弹性数据库作业** ，可以按计划或按需跨大量数据库并行运行一个或多个 T-SQL 脚本。
 
-**针对数据库的任意组合运行作业**：可以是一个或多个单独的数据库，可以是一个服务器上的所有数据库，可以是一个弹性池中的所有数据库，也可以是分片映射，而且还可以灵活地包括或排除任何特定的数据库。 **作业可以跨多个服务器、多个池来运行，甚至可以针对不同订阅中的数据库来运行。** 服务器和池会在运行时进行动态枚举，因此作业会针对执行时目标组中存在的所有数据库来运行。
+**针对数据库的任意组合运行作业** ：可以是一个或多个单独的数据库，可以是一个服务器上的所有数据库，可以是一个弹性池中的所有数据库，也可以是分片映射，而且还可以灵活地包括或排除任何特定的数据库。 **作业可以跨多个服务器、多个池来运行，甚至可以针对不同订阅中的数据库来运行。** 服务器和池会在运行时进行动态枚举，因此作业会针对执行时目标组中存在的所有数据库来运行。
 
 下图显示了一个跨不同类型的目标组执行作业的作业代理：
 
@@ -210,7 +210,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 作业数据库不一定需要是新的，但应该干净且为空，其服务目标应该为 S0 或更高。 作业数据库的服务对象建议使用 S1 或更高，但最佳选择取决于作业的性能需求：作业步骤数，作业目标数，以及作业的运行频率。 例如，对于每小时只运行数个作业且以十个以下数据库为目标的作业代理，也许 S0 数据库就够用了，但 S0 数据库的每分钟运行一个作业的速度可能不够快，因此使用更高的服务层级可能会更好。
 
-如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV [监视](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](service-tiers-dtu.md)或 [vCore 模型](service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
+如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV [监视](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](service-tiers-dtu.md)或 [vCore 模型](service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
 
 ##### <a name="job-database-permissions"></a>作业数据库权限
 
@@ -233,7 +233,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 - **分片映射** - 一个分片映射的数据库。
 
 > [!TIP]
-> 在执行作业时，动态枚举会重新评估包含服务器或池的目标组中的数据库集。 动态枚举确保**在执行作业时，作业可以跨服务器或池中存在的所有数据库运行**。 在池或服务器成员身份更改频繁的情况下，在运行时重新评估数据库列表特别有用。
+> 在执行作业时，动态枚举会重新评估包含服务器或池的目标组中的数据库集。 动态枚举确保 **在执行作业时，作业可以跨服务器或池中存在的所有数据库运行** 。 在池或服务器成员身份更改频繁的情况下，在运行时重新评估数据库列表特别有用。
 
 可以将池和单个数据库指定为包括在组中或从组中排除。 这样就可以使用任意数据库组合来创建目标组。 例如，可以向目标组添加一个服务器，但将弹性池中的特定数据库排除出去（也可以排除整个池）。
 
@@ -245,13 +245,13 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 **示例 1** 演示的目标组包含一个由各个数据库组成的列表。 使用此目标组执行某个作业步骤时，作业步骤的操作会在这其中的每个数据库中执行。<br>
 **示例 2** 演示的目标组包含一个充当目标的服务器。 使用此目标组执行某个作业步骤时，会动态枚举服务器，以便确定目前在服务器中的数据库的列表。 作业步骤的操作会在这其中的每个数据库中执行。<br>
-**示例 3** 演示的目标组与*示例 2* 的类似，但明确排除了单个数据库。 作业步骤的操作不会在排除的数据库中执行。<br>
-**示例 4** 演示的目标组包含一个充当目标的弹性池。 与*示例 2* 类似，此池会在作业运行时动态枚举，以便确定池中数据库的列表。
+**示例 3** 演示的目标组与 *示例 2* 的类似，但明确排除了单个数据库。 作业步骤的操作不会在排除的数据库中执行。<br>
+**示例 4** 演示的目标组包含一个充当目标的弹性池。 与 *示例 2* 类似，此池会在作业运行时动态枚举，以便确定池中数据库的列表。
 <br><br>
 
 ![更多目标组示例](./media/job-automation-overview/targetgroup-examples2.png)
 
-**示例 5** 和**示例 6** 演示高级方案，其中的服务器、弹性池和数据库可以使用包括和排除规则进行组合。<br>
+**示例 5** 和 **示例 6** 演示高级方案，其中的服务器、弹性池和数据库可以使用包括和排除规则进行组合。<br>
 **示例 7** 表明分片映射中的分片也可在作业运行时进行评估。
 
 > [!NOTE]
@@ -288,7 +288,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [什么是 SQL Server 代理](/sql/ssms/agent/sql-server-agent)
 - [如何创建和管理弹性作业](elastic-jobs-overview.md)
 - [使用 PowerShell 创建和管理弹性作业](elastic-jobs-powershell-create.md)
 - [使用 Transact-SQL (T-SQL) 创建和管理弹性作业](elastic-jobs-tsql-create-manage.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a35fb30ca19e08c68c99c9c9524231706b066e11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 367f6713102912786ce258c471278373636f7326
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549885"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458908"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>教程：Azure Active Directory 单一登录 (SSO) 与 KnowledgeOwl 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549885"
 * 让用户使用其 Azure AD 帐户自动登录到 KnowledgeOwl。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -167,11 +167,11 @@ ms.locfileid: "88549885"
 
 1. 单击“设置”，然后选择“安全性”   。
 
-    ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure1.png)
+    ![屏幕截图显示从“设置”菜单中选择了“安全”。](./media/knowledgeowl-tutorial/configure1.png)
 
 1. 滚动至“SAML SSO 集成”并执行以下步骤  ：
 
-    ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure2.png)
+    ![屏幕截图显示了“SAML SSO 集成”，你可以在其中进行此处所述的更改。](./media/knowledgeowl-tutorial/configure2.png)
 
     a. 选择“启用 SAML SSO”  。
 
@@ -189,7 +189,7 @@ ms.locfileid: "88549885"
 
     h. 单击“映射 SAML 属性”以映射属性并执行以下操作  ：
 
-    ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure3.png)
+    ![屏幕截图显示了“映射 SAML 属性”页面，你可以在其中进行此处所述更改。](./media/knowledgeowl-tutorial/configure3.png)
 
     * 在“SSO ID”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` 
     * 在“用户名/电子邮件”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`  。
@@ -199,7 +199,7 @@ ms.locfileid: "88549885"
 
     i. 单击页面底部的“保存”  。
 
-    ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure4.png)
+    ![屏幕截图显示“保存”按钮。](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>创建 KnowledgeOwl 测试用户
 
@@ -212,14 +212,14 @@ ms.locfileid: "88549885"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“KnowledgeOwl”磁贴时，应会自动登录到设置了 SSO 的 KnowledgeOwl。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“KnowledgeOwl”磁贴时，应会自动登录到设置了 SSO 的 KnowledgeOwl。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 KnowledgeOwl](https://aad.portal.azure.com/)

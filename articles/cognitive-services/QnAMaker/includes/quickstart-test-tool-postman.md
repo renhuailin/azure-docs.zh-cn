@@ -4,16 +4,16 @@ description: include 文件
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132871"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386664"
 ---
 此基于 Postman 的快速入门详细介绍如何从知识库获取答案。
 
@@ -28,6 +28,8 @@ ms.locfileid: "87132871"
 > 准备好从知识库生成问题的答案后，必须[训练](../Quickstarts/create-publish-knowledge-base.md#save-and-train)并[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)该知识库。 发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案。 “Postman”选项卡将显示生成答案所需的设置。
 
 ## <a name="set-up-postman-for-requests"></a>为请求设置 Postman
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 本快速入门对 Postman **POST** 请求使用相同的设置，并根据你尝试查询的内容，对发送到服务的 POST 正文 JSON 进行配置。
 
@@ -44,6 +46,25 @@ ms.locfileid: "87132871"
     ||`{"question":"<Your question>"}`|POST 请求的正文，采用 JSON 对象形式。 在后续的每个部分，此值将会根据查询的目的发生更改。|
 
 1. 打开 Postman，使用发布的知识库设置创建新的基本 **POST** 请求。 在以下部分，请改动 POST 正文 JSON，以更改知识库查询。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+
+本快速入门对 Postman **POST** 请求使用相同的设置，并根据你尝试查询的内容，对发送到服务的 POST 正文 JSON 进行配置。
+
+请使用此过程来配置 Postman，然后阅读每个后续部分来配置 POST 正文 JSON。
+
+1. 在知识库的“设置”页中选择“Postman”选项卡，以查看用于从知识库生成答案的配置。  复制以下信息以便在 Postman 中使用。
+
+    |名称|设置|用途和值|
+    |--|--|--|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|这是 URL 的 HTTP 方法和路由。|
+    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|这是 URL 的宿主。 将 Host 和 Post 值串联在一起可以获取完整的 generateAnswer URL。|
+    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|用于授权请求的标头值。 |
+    |`Content-type`|`application/json`|内容的标头值。|
+    ||`{"question":"<Your question>"}`|POST 请求的正文，采用 JSON 对象形式。 在后续的每个部分，此值将会根据查询的目的发生更改。|
+
+1. 打开 Postman，使用发布的知识库设置创建新的基本 **POST** 请求。 在以下部分，请改动 POST 正文 JSON，以更改知识库查询。
+---
 
 ## <a name="use-metadata-to-filter-answer"></a>使用元数据筛选答案
 

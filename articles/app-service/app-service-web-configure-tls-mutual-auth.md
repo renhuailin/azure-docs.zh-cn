@@ -3,14 +3,14 @@ title: 配置 TLS 相互身份验证
 description: 了解如何在 TLS 上对客户端证书进行身份验证。 Azure App Service 使客户端证书可用于应用程序代码进行验证。
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213639"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347707"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 
@@ -24,20 +24,33 @@ ms.locfileid: "88213639"
 
 ## <a name="enable-client-certificates"></a>启用客户端证书
 
-若要将应用设置为需要客户端证书，可以通过从 Azure 门户选择“配置” > “常规设置”将“需要传入证书”切换到“开”，或者需要将应用的 `clientCertEnabled` 设置设为 `true`。 若要设置此设置，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令。
+若要将应用设置为需要客户端证书：
+
+1. 在应用的 "管理" 页的左侧导航栏中，选择 "**配置**  >  **常规设置**"。
+
+1. 将 **客户端证书模式** 设置为 " **需要**"。 单击页顶部的“保存”。 
+
+若要对 Azure CLI 执行相同操作，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>使路径不要求身份验证
 
-为应用程序启用相互身份验证时，应用根目录下的所有路径都需要客户端证书才能进行访问。 若要允许某些路径对匿名访问保持开放，可以将排除路径定义为应用程序配置的一部分。
+为应用程序启用相互身份验证时，应用程序根目录下的所有路径都需要用于访问的客户端证书。 若要消除特定路径的这一要求，请在应用程序配置中定义排除路径。
 
-可以通过选择“配置” > “常规设置”并定义排除路径来配置排除路径。 在此示例中，应用程序的 `/public` 路径下的任何内容都不会请求客户端证书。
+1. 在应用的 "管理" 页的左侧导航栏中，选择 "**配置**  >  **常规设置**"。
+
+1. 单击 " **客户端排除路径**" 旁边的 "编辑" 图标。
+
+1. 单击 " **新建路径**"，指定路径，然后单击 **"确定"**。
+
+1. 单击页顶部的“保存”。 
+
+在下面的屏幕截图中，应用路径下的任何内容都 `/public` 不会请求客户端证书。
 
 ![证书排除路径][exclusion-paths]
-
 
 ## <a name="access-client-certificate"></a>访问客户端证书
 

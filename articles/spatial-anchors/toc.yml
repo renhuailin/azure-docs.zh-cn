@@ -14,33 +14,44 @@
           href: unity-overview.md
         - name: HoloLens
           href: quickstarts/get-started-unity-hololens.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
         - name: Android
           href: quickstarts/get-started-unity-android.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
     - name: 创建 HoloLens 应用
       href: quickstarts/get-started-hololens.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
     - name: 创建 Android 应用
       href: quickstarts/get-started-android.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
     - name: 创建 iOS 应用
       href: quickstarts/get-started-ios.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
     - name: 创建 Xamarin 应用
       items:
         - name: Android
           href: quickstarts/get-started-xamarin-android.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
         - name: iOS
           href: quickstarts/get-started-xamarin-ios.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
 - name: 教程
   items:
     - name: 跨会话、设备进行共享
       href: tutorials/tutorial-share-anchors-across-devices.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
       items:
         - name: 通过 Azure Cosmos DB 进行永久共享
           href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
     - name: 启动新的 Unity HoloLens 应用
       href: tutorials/tutorial-new-unity-hololens-app.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
     - name: 启动新的 Android 应用
       href: tutorials/tutorial-new-android-app.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
 - name: 操作说明
   items:
     - name: 创建并找到定位点
@@ -97,15 +108,15 @@
 - name: 参考
   items:
     - name: 适用于 Unity 的 SDK
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'
+      href: /dotnet/api/Microsoft.Azure.SpatialAnchors/
     - name: 适用于 iOS Objective-C 的 SDK
-      href: 'https://docs.microsoft.com/objectivec/api/spatial-anchors/'
+      href: /objectivec/api/spatial-anchors/
     - name: 适用于 Android Java 的 SDK
-      href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/'
+      href: /java/api/com.microsoft.azure.spatialanchors/
     - name: 适用于 Android NDK 的 SDK
-      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
+      href: /cpp/api/spatial-anchors/ndk/
     - name: 适用于 HoloLens C++/WinRT 的 SDK
-      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+      href: /cpp/api/spatial-anchors/winrt/
     - name: Azure CLI
       href: /cli/azure/ext/mixed-reality/spatial-anchors-account
     - name: Azure PowerShell
@@ -115,7 +126,7 @@
     - name: 发行说明
       href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
     - name: Azure 混合现实资源管理 REST API
-      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+      href: /rest/api/mixedreality/
     - name: 常见问题解答
       href: spatial-anchor-faq.md
     - name: 提供产品反馈

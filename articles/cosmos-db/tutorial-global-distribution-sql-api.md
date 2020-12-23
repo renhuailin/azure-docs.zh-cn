@@ -4,18 +4,20 @@ description: 教程：了解如何将 SQL API 与 .NET、Java、Python 和各种
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ebb6bdf6e5072d1024ba7abcd1db1cf7bebfcd3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aacb8d4ffb98d553b17aa52e4c4b11a4837dc1c6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334372"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337857"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>教程：使用 SQL API 设置 Azure Cosmos DB 全局分发
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文介绍了如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，并使用 SQL API 进行连接。
 
@@ -23,7 +25,7 @@ ms.locfileid: "91334372"
 
 > [!div class="checklist"]
 > * 使用 Azure 门户配置全局分发
-> * 使用 [SQL API](sql-api-introduction.md) 配置全局分发
+> * 使用 [SQL API](./introduction.md) 配置全局分发
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
@@ -240,4 +242,3 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 > [通过模拟器在本地开发](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
-

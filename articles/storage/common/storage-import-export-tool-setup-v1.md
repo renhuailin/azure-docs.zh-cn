@@ -1,6 +1,6 @@
 ---
 title: 设置 Azure 导入/导出工具 v1 | Microsoft Docs
-description: 了解如何设置 Azure 导入/导出服务的驱动器准备和修复工具。 本文是指导入/导出工具的版本1。
+description: 了解如何设置 Azure 导入/导出服务的驱动器准备和修复工具。 本文是指导入/导出工具版本 1。
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,28 +8,28 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e03601bc929354a69e7f9027db5ac9b7697c3c82
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5f9b69cef5741ab609b72f6c2c34e3aa50b45648
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054069"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782070"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>设置 Azure 导入/导出工具 v1
 Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务配合使用的驱动器准备和修复工具。 可以使用该工具实现以下功能：  
 
--   在创建导入作业之前，可以使用此工具将数据复制到要寄送到 Microsoft Azure 数据中心的硬盘驱动器。  
+-   在创建导入作业之前，可以使用此工具将数据复制到要寄送给 Windows Azure 数据中心的硬盘驱动器。  
 
 -   完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。  
 
 -   通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。  
 
 ## <a name="prerequisites"></a>必备条件  
-如果要为导入作业准备驱动器，需要满足以下先决条件：  
+若要为导入作业准备驱动器，需要满足以下先决条件：  
 
 -   必须拥有一个有效的 Azure 订阅。  
 
--   订阅必须包含一个存储帐户，其中有足够的可用空间来存储要导入的文件。  
+-   该订阅必须包含一个存储帐户，其中有足够的可用空间来存储所要导入的文件。  
 
 -   需要存储帐户的至少一个帐户密钥。  
 
@@ -39,7 +39,7 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 
 -   必须在复制计算机上启用 BitLocker。  
 
--   需要一个或多个驱动器，其中包含要导入的数据或连接到复制计算机的空3.5 英寸 SATA 硬盘驱动器。  
+-   需要一个或多个包含所要导入数据的驱动器，或者与复制计算机连接的空 3.5 英寸 SATA 硬盘驱动器。  
 
 -   打算导入的文件必须可从复制计算机访问，无论这些文件是位于网络共享还是本地硬盘驱动器上。
 
@@ -72,7 +72,7 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 
 - Hddid.dll  
 
-  请将这些文件复制到某个工作目录，如 `c:\WAImportExport`。 接下来，在管理员模式下打开命令行窗口，并将上述目录设为当前目录。  
+  请将这些文件复制到某个工作目录，如 `c:\WAImportExport`。 接下来，在管理员模式下打开命令行窗口，将上述目录设为当前目录。  
 
   若要输出命令帮助，请不带参数运行该工具：  
 
@@ -249,8 +249,8 @@ Examples:
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [预览导出作业的驱动器使用情况](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
-* [使用复制日志文件查看作业状态](../storage-import-export-tool-reviewing-job-status-v1.md)   
-* [修复导入作业](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [修复导出作业](../storage-import-export-tool-repairing-an-export-job-v1.md)
+* [为导入作业准备硬盘驱动器](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
+* [预览导出作业的驱动器使用情况](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1)   
+* [使用复制日志文件查看作业状态](./storage-import-export-tool-reviewing-job-status-v1.md)   
+* [修复导入作业](./storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [修复导出作业](./storage-import-export-tool-repairing-an-export-job-v1.md)

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718809"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359806"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复窗体识别器模型
 
@@ -41,7 +41,7 @@ ms.locfileid: "88718809"
 1. 你将使用源资源凭据来查询进度 URL，直到操作成功为止。 您还可以在目标资源中查询新的模型 ID 以获取新模型的状态。
 
 > [!CAUTION]
-> 复制 API 目前不支持 [组合自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)的模型 id。 模型撰写是 v 2.1-preview. 1 预览版中的预览功能。 
+> 复制 API 目前不支持 [组合自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)的模型 id。 模型撰写是 v 2.1-preview. 2 预览版中的预览功能。 
 
 ## <a name="generate-copy-authorization-request"></a>生成复制授权请求
 
@@ -69,7 +69,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-请求正文需要采用以下格式。 需要输入目标资源的资源 ID 和区域名称。 你还需要从上一步骤中复制的 "模型 ID"、"访问令牌" 和 "过期" 值。
+请求正文需要采用以下格式。 需要输入目标资源的资源 ID 和区域名称。 你可以在资源的 " **属性** " 选项卡上找到你的资源 ID Azure 门户中，你可以在 " **密钥和终结点** " 选项卡上找到区域名称。你还需要从上一步骤中复制的 "模型 ID"、"访问令牌" 和 "过期" 值。
 
 ```json
 {
@@ -82,7 +82,7 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 > [!NOTE]
 > 复制 API 以透明方式支持 [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) 功能。 这不需要任何特殊处理，但请注意，如果在未加密的资源之间复制到已加密的资源，则需要包含请求标头 `x-ms-forms-copy-degrade: true` 。 如果未包括此标头，则复制操作将失败，并返回 `DataProtectionTransformServiceError` 。
 
-你将收到 `202\Accepted` 包含操作位置标头的响应。 此值是用于跟踪操作进度的 URL。 将其复制到临时位置，以供下一步使用。
+你将收到一个 `202\Accepted` Operation-Location 标头的响应。 此值是用于跟踪操作进度的 URL。 将其复制到临时位置，以供下一步使用。
 
 ```
 HTTP/1.1 202 Accepted

@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MySQL 的内置策略定义
 description: 列出 Azure Database for MySQL 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: reference
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 67c98295f37e00073ceb1933736f7bd1808fb37b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 46a0e25b2672de5c663201ef44e457f164f3a534
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816221"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985649"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>Azure Database for MySQL 的 Azure Policy 内置定义
 

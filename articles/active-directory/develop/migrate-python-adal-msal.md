@@ -12,14 +12,14 @@ ms.tgt_pltfrm: Python
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
-ms.reviewer: rayluo, nacanuma
+ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 574615a6b6e4b399605ca1863c0f764f814b2bd9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258296"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107849"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>适用于 Python 的 ADAL 到 MSAL 迁移指南
 
@@ -50,7 +50,7 @@ ADAL Python 获取资源的令牌，而 MSAL Python 则是获取范围的令牌�
 
 ### <a name="error-handling"></a>错误处理。
 
-适用于 Python 的 Azure Active Directory 身份验证库 (ADAL) 使用异常 `AdalError` 来指示问题。 而适用于 Python 的 MSAL 通常使用错误代码。 有关详细信息，请参阅[适用于 Python 的 MSAL 错误处理](./msal-handling-exceptions.md?tabs=python)。
+适用于 Python 的 Azure Active Directory 身份验证库 (ADAL) 使用异常 `AdalError` 来指示问题。 而适用于 Python 的 MSAL 通常使用错误代码。 有关详细信息，请参阅 [MSAL For Python 错误处理](msal-error-handling-python.md)。
 
 ### <a name="api-changes"></a>API 更改
 
@@ -73,7 +73,7 @@ ADAL Python 获取资源的令牌，而 MSAL Python 则是获取范围的令牌�
 
 ## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>迁移 MSAL Python 的现有刷新令牌
 
-Microsoft 身份验证库 (MSAL) 将刷新令牌的概念抽象化。 MSAL Python 默认提供内存中令牌缓存，因此你无需存储、查找或更新刷新令牌。 用户看到的登录提示更少，因为刷新令牌通常无需用户的干预即可更新。 有关令牌缓存的详细信息，请参阅[适用于 Python 的 MSAL 中的自定义令牌缓存序列化](msal-python-token-cache-serialization.md)。
+Microsoft 身份验证库 (MSAL) 已将刷新令牌的概念抽象化。 MSAL Python 默认提供内存中令牌缓存，因此你无需存储、查找或更新刷新令牌。 用户看到的登录提示更少，因为刷新令牌通常无需用户的干预即可更新。 有关令牌缓存的详细信息，请参阅[适用于 Python 的 MSAL 中的自定义令牌缓存序列化](msal-python-token-cache-serialization.md)。
 
 以下代码可帮助你迁移由另一个 OAuth2 库（包括但不限于 ADAL Python）管理的刷新令牌，使之由适用于 Python 的 MSAL 管理。 迁移这些刷新令牌的一个原因是，在将应用迁移到适用于 Python 的 MSAL 时，避免现有用户再次登录。
 
@@ -88,7 +88,7 @@ def get_preexisting_rt_and_their_scopes_from_elsewhere():
     #   https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/1.2.3/sample/device_code_sample.py#L72
     # which uses a resource rather than a scope,
     # you need to convert your v1 resource into v2 scopes
-    # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
+    # See https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#scopes-not-resources
     # You may be able to append "/.default" to your v1 resource to form a scope
     # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 

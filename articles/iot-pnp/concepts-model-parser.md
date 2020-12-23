@@ -1,24 +1,23 @@
 ---
 title: 了解数字孪生模型分析器 |Microsoft Docs
-description: 作为开发人员，了解如何使用 DTDL 分析器来验证模型
+description: 作为开发人员，了解如何使用 DTDL 分析器来验证模型。
 author: rido-min
 ms.author: rmpablos
-ms.date: 04/29/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: peterpr
-ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352137"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331781"
 ---
-# <a name="understand-the-digital-twins-model-parser"></a>了解数字孪生模型分析器
+# <a name="understand-the-digital-twins-model-parser"></a>了解数字孪生模型分析程序
 
-数字孪生定义语言（DTDL）在[DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl)中进行了介绍。 用户可以使用_数字孪生模型分析器_NuGet 包来验证和查询在多个文件中定义的模型。
+[DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl)中介绍了数字孪生定义语言 (DTDL) 。 用户可以使用 _数字孪生模型分析器_ NuGet 包来验证和查询在多个文件中定义的模型。
 
 ## <a name="install-the-dtdl-model-parser"></a>安装 DTDL 模型分析器
 
@@ -28,9 +27,12 @@ ms.locfileid: "87352137"
 dotnet add package Microsoft.Azure.DigitalTwins.Parser
 ```
 
+> [!NOTE]
+> 编写时，分析器的版本为 `3.12.5` 。
+
 ## <a name="use-the-parser-to-validate-a-model"></a>使用分析器验证模型
 
-要验证的模型可能由 JSON 文件中描述的一个或多个接口组成。 您可以使用分析器加载给定文件夹中的所有文件，并使用分析器来验证所有文件，包括文件之间的所有引用：
+模型可由 JSON 文件中描述的一个或多个接口组成。 您可以使用分析器加载给定文件夹中的所有文件，并使用分析器来验证所有文件，包括文件之间的所有引用：
 
 1. `IEnumerable<string>`使用所有模型内容的列表创建：
 
@@ -57,18 +59,20 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
     IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     ```
 
-1. 检查验证错误。 如果分析器发现任何错误，则会引发， `AggregateException` 其中包含一系列详细的错误消息：
+1. 检查验证错误。 如果分析器发现任何错误，则会引发 `ParsingException` 并出现错误列表：
 
     ```csharp
     try
     {
         IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     }
-    catch (AggregateException ae)
+    catch (ParsingException pex)
     {
-        foreach (var e in ae.InnerExceptions)
+        Console.WriteLine(pex.Message);
+        foreach (var err in pex.Errors)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(err.PrimaryID);
+            Console.WriteLine(err.Message);
         }
     }
     ```
@@ -76,19 +80,10 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
 1. 检查 `Model` 。 如果验证成功，则可以使用模型分析器 API 来检查模型。 下面的代码段演示如何循环访问所有分析的模型，并显示现有属性：
 
     ```csharp
-    foreach (var m in parseResult)
+    foreach (var item in parseResult)
     {
-        Console.WriteLine(m.Key);
-        foreach (var item in m.Value.AsEnumerable<DTEntityInfo>())
-        {
-            var p = item as DTInterfaceInfo;
-            if (p!=null)
-            {
-                Console.WriteLine($"\t{p.Id}");
-                Console.WriteLine($"\t{p.Description.FirstOrDefault()}");
-            }
-            Console.WriteLine("--------------");
-        }
+        Console.WriteLine($"\t{item.Key}");
+        Console.WriteLine($"\t{item.Value.DisplayName?.Values.FirstOrDefault()}");
     }
     ```
 

@@ -4,12 +4,12 @@ description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 AP
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 9828682fa71d023356b174d528c2137ed29f368d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613724"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682496"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -21,19 +21,19 @@ ms.locfileid: "91613724"
 
 本文介绍如何使用 Azure CLI 创建 AKS 群集。
 
-需要安装并配置 Azure CLI 2.0.76 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.76 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ### <a name="limitations"></a>限制
 
-"API 服务器授权的 IP 范围" 功能具有以下限制：
-- 在将 API 服务器授权的 IP 地址范围移出 2019 年 10 月的预览后所创建的群集上，仅标准 SKU 负载均衡器支持 API 服务器授权的 IP 地址范围。 配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器 。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。 专用群集不支持 API 服务器授权的 IP 地址范围。
+API 服务器授权的 IP 范围功能具有以下限制：
+- 在将 API 服务器授权的 IP 地址范围移出 2019 年 10 月的预览后所创建的群集上，仅标准 SKU 负载均衡器支持 API 服务器授权的 IP 地址范围。 配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器 。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。 专用群集不支持 API 服务器授权 IP 地址范围。
 - 此功能与使用 [每个节点的公共 IP 节点池预览功能](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)的群集不兼容。
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API 服务器已授权 IP 范围的概述
 
-Kubernetes API 服务器用于公开基础 Kubernetes API。 此组件为管理工具（如 `kubectl` 或 Kubernetes 仪表板）提供交互。 AKS 提供具有专用 API 服务器的单租户群集控制平面。 默认将为 API 服务器分配一个公共 IP 地址，你应使用基于角色的访问控制 (RBAC) 来控制访问。
+Kubernetes API 服务器用于公开基础 Kubernetes API。 此组件为管理工具（如 `kubectl` 或 Kubernetes 仪表板）提供交互。 AKS 提供单租户群集控制平面和专用 API 服务器。 默认情况下，API 服务器分配有一个公共 IP 地址，你应使用 Kubernetes 的基于角色的访问控制 (Kubernetes RBAC) 或 Azure RBAC 来控制访问权限。
 
-若要保护对其他可公开访问的 AKS 控制平面/API 服务器的访问，可以启用并使用已授权 IP 范围。 这些已授权 IP 范围仅允许定义的 IP 地址范围与 API 服务器通信。 从不属于这些授权 IP 范围的 IP 地址向 API 服务器发出的请求被阻止。 请继续使用 RBAC 来授权用户及其请求的操作。
+若要保护对其他可公开访问的 AKS 控制平面/API 服务器的访问，可以启用并使用已授权 IP 范围。 这些已授权 IP 范围仅允许定义的 IP 地址范围与 API 服务器通信。 从不属于这些授权 IP 范围的 IP 地址向 API 服务器发出的请求被阻止。 继续使用 Kubernetes RBAC 或 Azure RBAC 向用户及其请求的操作授权。
 
 有关 API 服务器和其他群集组件的详细信息，请参阅 [AKS 的 Kubernetes 核心概念][concepts-clusters-workloads]。
 
@@ -85,7 +85,7 @@ az aks create \
 
 在上面的示例中，允许参数 *`--load-balancer-outbound-ip-prefixes`* 中提供的所有 IP 以及 *`--api-server-authorized-ip-ranges`* 参数中的 IP。
 
-相反，你可以指定 *`--load-balancer-outbound-ip-prefixes`* 参数以允许出站负载均衡器 IP 前缀。
+相反，可以指定 `--load-balancer-outbound-ip-prefixes` 参数以允许出站负载均衡器 IP 前缀。
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>仅允许标准 SKU 负载均衡器的出站公共 IP
 
@@ -106,7 +106,7 @@ az aks create \
 
 ## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>更新群集的 API 服务器已授权 IP 范围
 
-要在现有群集上更新 API 服务器授权的 IP 范围，请使用[ az aks update ][az-aks-update]命令并使用 `--api-server-authorized-ip-ranges`、--load-balancer-outbound-ip-prefixes *、`--load-balancer-outbound-ips` 或 --load-balancer-outbound-ip-prefixes* 参数。
+要在现有群集上更新 API 服务器授权的 IP 范围，请使用 [ az aks update][az-aks-update]命令并使用 `--api-server-authorized-ip-ranges`、--load-balancer-outbound-ip-prefixes *、`--load-balancer-outbound-ips` 或 --load-balancer-outbound-ip-prefixes* 参数。
 
 以下示例更新名为 *myResourceGroup* 的资源组中名为 *myAKSCluster* 的群集上的 API 服务器已授权 IP 范围。 要授权的 IP 地址范围为 *73.140.245.0/24*：
 
@@ -130,13 +130,13 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
-## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>如何查找我的 IP 以便加入 `--api-server-authorized-ip-ranges` ？
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>如何找到要包含在 `--api-server-authorized-ip-ranges` 中的 IP？
 
-必须将开发计算机、工具或自动化 IP 地址添加到已批准 IP 范围的 AKS 群集列表中，以便从该列表访问 API 服务器。 
+必须将开发计算机、工具或自动化 IP 地址添加到 AKS 群集的已批准 IP 范围列表，以便从该处访问 API 服务器。 
 
-另一种做法是在防火墙虚拟网络中的单独子网内，使用所需的工具配置 Jumpbox。 这假设你的环境中有防火墙，其中包含各自的网络，已将防火墙 Ip 添加到授权范围。 同样，如果将 AKS 子网中的强制隧道设置为防火墙子网，则与群集子网中的 jumpbox 也不一样。
+另一种做法是在防火墙虚拟网络中的单独子网内，使用所需的工具配置 Jumpbox。 这假设环境有具有相应网络的防火墙，并且你已将防火墙 IP 添加到授权的范围。 同样，如果已强制建立从 AKS 子网到防火墙子网的隧道，那么也可以在群集子网中设置 jumpbox。
 
-用以下命令将其他 IP 地址添加到已批准的范围。
+使用以下命令将另一个 IP 地址添加到已批准范围。
 
 ```bash
 # Retrieve your IP address
@@ -146,15 +146,15 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 ```
 
 >> [!NOTE]
-> 上面的示例在群集上追加了 API 服务器授权的 IP 范围。 若要禁用授权的 IP 范围，请使用 az aks update 并指定空范围 ""。 
+> 上面的示例在群集上追加了 API 服务器已授权 IP 范围。 若要禁用已授权 IP 范围，请使用“az aks update”并指定空范围 ""。 
 
-另一种方法是在 Windows 系统上使用以下命令来获取公用 IPv4 地址，也可以使用 [查找 IP 地址](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)中的步骤。
+另一种方法是在 Windows 系统上使用以下命令来获取公共 IPv4 地址，也可以使用[查找 IP 地址](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)中的步骤。
 
 ```azurepowershell-interactive
 Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 ```
 
-还可以通过在 internet 浏览器中搜索 "我的 IP 地址" 来查找此地址。
+也可以通过在 Internet 浏览器中搜索“我的 IP 地址是什么”来找到此地址。
 
 ## <a name="next-steps"></a>后续步骤
 

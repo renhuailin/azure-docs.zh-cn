@@ -10,12 +10,12 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 08/28/2019
-  ms.openlocfilehash: 5a75e2ef81c2ea584e7819d278f63e5ae53b9ce9
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 8619e0948cc08d06d27a09864bbff13ad6ad3791
+  ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "70885624"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96780325"
 landingContent:
 - title: 关于 VPN 网关
   linkLists:
@@ -35,20 +35,16 @@ landingContent:
       url: vpn-gateway-vpn-faq.md
 - title: 入门
   linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 创建 VPN 网关
-      url: create-routebased-vpn-gateway-portal.md
-    - text: 创建站点到站点连接
-      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
-    - text: 创建点到站点连接
-      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
   - linkListType: tutorial
     links:
     - text: 创建和管理 VPN 网关
-      url: vpn-gateway-tutorial-create-gateway-powershell.md
-    - text: 创建并管理站点到站点连接
-      url: vpn-gateway-tutorial-vpnconnection-powershell.md
+      url: tutorial-create-gateway-portal.md
+    - text: 创建站点到站点 VPN 连接
+      url: tutorial-site-to-site-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建点到站点 VPN 连接
+      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
 - title: VPN 设备
   linkLists:
   - linkListType: concept
@@ -67,10 +63,10 @@ landingContent:
     links:
     - text: 网关配置设置
       url: vpn-gateway-about-vpn-gateway-settings.md
-    - text: 点到站点路由
-      url: vpn-gateway-about-point-to-site-routing.md
     - text: 网关 SKU
       url: vpn-gateway-about-vpn-gateway-settings.md#gwsku
+    - text: 点到站点路由
+      url: vpn-gateway-about-point-to-site-routing.md
   - linkListType: how-to-guide
     links:
     - text: 验证 VPN 网关
@@ -84,7 +80,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 安全控件
-      url: vpn-gateway-security-controls.md
+      url: ./security-baseline.md
   - linkListType: how-to-guide
     links:
     - text: 监视和警报

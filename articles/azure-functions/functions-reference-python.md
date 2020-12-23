@@ -2,20 +2,24 @@
 title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642191"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167839"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
 本文介绍了如何使用 Python 开发 Azure Functions。 以下内容假定你已阅读 [Azure Functions 开发人员指南](functions-reference.md)。
 
-有关使用 Python 的独立函数示例项目，请参阅 [Python Functions 示例](/samples/browse/?products=azure-functions&languages=python)。
+作为 Python 开发人员，你可能还会对以下文章之一感兴趣：
+
+| 入门 | 概念| 方案/示例 |
+| -- | -- | -- | 
+| <ul><li>[使用 Visual Studio Code 的 Python 函数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[具有终端/命令提示符的 Python 函数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> | <ul><li>[图像分类与 PyTorch](machine-learning-pytorch.md)</li><li>[Azure 自动化示例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[将机器学习与 TensorFlow 配合使用](functions-machine-learning-tensorflow.md)</li><li>[浏览 Python 示例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>编程模型
 
@@ -44,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-使用 [ azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) 包中附带的 Python 注释将输入和输出绑定到方法。
+使用 [ azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) 包中附带的 Python 注释将输入和输出绑定到方法。
 
 ## <a name="alternate-entry-point"></a>备用入口点
 
@@ -65,72 +69,70 @@ def main(req: azure.functions.HttpRequest) -> str:
 Python 函数项目的建议文件夹结构如以下示例所示：
 
 ```
- __app__
- | - my_first_function
+ <project_root>/
+ | - .venv/
+ | - .vscode/
+ | - my_first_function/
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - my_second_function
+ | - my_second_function/
  | | - __init__.py
  | | - function.json
- | - shared_code
+ | - shared_code/
+ | | - __init__.py
  | | - my_first_helper_function.py
  | | - my_second_helper_function.py
+ | - tests/
+ | | - test_my_second_function.py
+ | - .funcignore
  | - host.json
+ | - local.settings.json
  | - requirements.txt
  | - Dockerfile
- tests
 ```
-主项目文件夹 (\_\_app\_\_) 可以包含以下文件：
+主项目文件夹 ( # B0 project_root>) 可以包含以下文件：
 
 * *local.settings.json*：用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。 若要了解详细信息，请参阅 [local.settings.file](functions-run-local.md#local-settings-file)。
-* requirements.txt：包含系统在发布到 Azure 时安装的包列表。
+* *requirements.txt*：包含在发布到 Azure 时系统安装的 Python 包的列表。
 * *host.json*：包含在函数应用中影响所有函数的全局配置选项。 此文件会被发布到 Azure。 本地运行时，并非所有选项都受支持。 若要了解详细信息，请参阅 [host.json](functions-host-json.md)。
-* .funcignore：（可选）声明不应发布到 Azure 的文件。
-* Dockerfile：（可选）在[自定义容器](functions-create-function-linux-custom-image.md)中发布项目时使用。
+* *. vscode/*： (可选) 包含存储 vscode 配置。 若要了解详细信息，请参阅 [VSCode 设置](https://code.visualstudio.com/docs/getstarted/settings)。
+* *. venv/*： (可选) 包含本地开发使用的 Python 虚拟环境。
+* *Dockerfile*：在 [自定义容器](functions-create-function-linux-custom-image.md)中发布项目时使用 (可选) 。
+* test */*： (可选) 包含 function app 的测试用例。
+* *. funcignore*： (可选) 声明不应发布到 Azure 的文件。 通常，此文件包含 `.vscode/` 忽略编辑器设置、忽略 `.venv/` 本地 Python 虚拟环境、 `tests/` 忽略测试用例以及 `local.settings.json` 阻止发布本地应用设置。
 
 每个函数都有自己的代码文件和绑定配置文件 (function.json)。
 
-在 Azure 中将项目配置到函数应用时，主项目 (\_\_app\_\_) 文件夹的整个内容应包含在包中，但不包含该文件夹本身。 在此示例 `tests` 中，建议你在独立于项目文件夹的文件夹中维护测试。 这样可防止对应用部署测试代码。 有关详细信息，请参阅[单元测试](#unit-testing)。
+将项目部署到 Azure 中的函数应用时，主项目 (*<project_root>*) 文件夹的全部内容应包含在包中，而不是包含在 `host.json` 包根目录中。 建议在此示例中，将你的测试与其他函数一起保留在一个文件夹中 `tests/` 。 有关详细信息，请参阅[单元测试](#unit-testing)。
 
 ## <a name="import-behavior"></a>导入行为
 
-可以使用显式相对引用和绝对引用在函数代码中导入模块。 根据以上所示的文件夹结构，以下导入在函数文件 \_\_app\_\_\my\_first\_function\\_\_init\_\_.py 中工作：
+您可以使用绝对引用和相对引用来导入函数代码中的模块。 根据上面所示的文件夹结构，以下导入函数文件中的 *<project_root> \my \_ first \_ 函数 \\ _ \_ \_ \_ py*：
 
 ```python
-from . import example #(explicit relative)
+from shared_code import my_first_helper_function #(absolute)
 ```
 
 ```python
-from ..shared_code import my_first_helper_function #(explicit relative)
+import shared_code.my_second_helper_function #(absolute)
 ```
 
 ```python
-from __app__ import shared_code #(absolute)
+from . import example #(relative)
+```
+
+> [!NOTE]
+>  *Shared_code/* 文件夹需要包含 \_ \_ \_ \_ py 文件，以便在使用绝对导入语法时将其标记为 Python 包。
+
+不 \_ \_ 推荐使用以下应用程序 \_ \_ 导入和顶层相对导入，因为它不受静态类型检查器支持，并且 Python 测试框架不支持此功能：
+
+```python
+from __app__.shared_code import my_first_helper_function #(deprecated __app__ import)
 ```
 
 ```python
-import __app__.shared_code #(absolute)
-```
-
-以下导入不在同一文件中工作：
-
-```python
-import example
-```
-
-```python
-from example import some_helper_code
-```
-
-```python
-import shared_code
-```
-
-共享代码应保留在 \_\_app\_\_ 下一个单独的文件夹中。 若要引用 shared\_code 文件夹中的模块，可以使用以下语法：
-
-```python
-from __app__.shared_code import my_first_helper_function
+from ..shared_code import my_first_helper_function #(deprecated beyond top-level relative import)
 ```
 
 ## <a name="triggers-and-inputs"></a>触发器和输入
@@ -194,7 +196,7 @@ def main(req: func.HttpRequest,
 
 若要使用函数的返回值作为输出绑定的值，则绑定的 `name` 属性应在 `function.json` 中设置为 `$return`。
 
-若要生成多个输出，请使用 [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) 接口提供的 `set()` 方法将值分配给绑定。 例如，以下函数可以将消息推送到队列，还可返回 HTTP 响应。
+若要生成多个输出，请使用 [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 接口提供的 `set()` 方法将值分配给绑定。 例如，以下函数可以将消息推送到队列，还可返回 HTTP 响应。
 
 ```json
 {
@@ -295,21 +297,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 同样，你可以在返回的 [HttpResponse] 对象中为响应消息设置 `status_code` 和 `headers`。
 
-## <a name="scaling-and-concurrency"></a>缩放和并发
+## <a name="scaling-and-performance"></a>缩放和性能
 
-默认情况下，Azure Functions 会自动监视应用程序的负载，并根据需要为 Python 创建其他主机实例。 Functions 针对不同触发器类型使用内置（用户不可配置）阈值来确定何时添加实例，例如 QueueTrigger 的消息和队列大小。 有关详细信息，请参阅[消耗计划和高级计划的工作原理](functions-scale.md#how-the-consumption-and-premium-plans-work)。
+务必要了解函数的执行方式和性能如何影响函数应用的缩放方式。 在设计高性能应用程序时，这一点尤其重要。 下面是在设计、编写和配置函数应用时要考虑的几个因素。
 
-此缩放行为对许多应用程序都已经足够。 但是，具有以下任何特征的应用程序可能无法有效进行缩放：
+### <a name="horizontal-scaling"></a>水平扩展
+默认情况下，Azure Functions 会自动监视应用程序的负载，并根据需要为 Python 创建其他主机实例。 函数为不同的触发器类型使用内置阈值，以决定何时添加实例，如 QueueTrigger 的消息和队列大小的期限。 这些阈值不是用户可配置的。 有关详细信息，请参阅[消耗计划和高级计划的工作原理](functions-scale.md#how-the-consumption-and-premium-plans-work)。
 
-- 应用程序需要处理许多并发调用。
-- 应用程序处理大量 I/O 事件。
-- 应用程序受 I/O 约束。
+### <a name="improving-throughput-performance"></a>提高吞吐量性能
 
-在此类情况下，可以通过采用异步模式和使用多个语言工作进程来进一步提高性能。
+提高性能的关键是了解应用如何使用资源，并相应地配置 function app。
 
-### <a name="async"></a>异步
+#### <a name="understanding-your-workload"></a>了解工作负荷
 
-由于 Python 是单线程运行时，因此 Python 的主机实例一次只能处理一次函数调用。 对于处理大量 I/O 事件和/或受 I/O 约束的应用程序，可以通过异步运行函数来提高性能。
+默认配置适用于大多数 Azure Functions 应用程序。 不过，你可以通过基于工作负荷配置文件使用配置来提高应用程序吞吐量的性能。 第一步是了解正在运行的工作负荷的类型。
+
+| | I/o 绑定的工作负荷 | CPU 绑定工作负荷 |
+|--| -- | -- |
+|**函数应用特征**| <ul><li>应用需要处理多个并发调用。</li> <li> 应用处理大量 i/o 事件，例如网络调用和磁盘读/写。</li> </ul>| <ul><li>应用执行长时间运行的计算，例如调整图像大小。</li> <li>应用进行数据转换。</li> </ul> |
+|**示例**| <ul><li>Web API</li><ul> | <ul><li>数据处理</li><li> 机器学习推理</li><ul>|
+
+
+> [!NOTE]
+>  由于现实世界中的工作负荷通常是 i/o 和 CPU 界限的混合，因此我们建议在实际的生产负载下分析工作负荷。
+
+
+#### <a name="performance-specific-configurations"></a>特定于性能的配置
+
+了解 function app 的工作负荷配置文件后，可以使用以下配置来提高函数的吞吐量性能。
+
+##### <a name="async"></a>Async
+
+由于 [python 是单线程运行时](https://wiki.python.org/moin/GlobalInterpreterLock)，因此用于 python 的主机实例一次只能处理一个函数调用。 对于处理大量 i/o 事件和/或 i/o 绑定的应用程序，你可以通过异步运行函数来显著提高性能。
 
 若要以异步方式运行函数，请使用 `async def` 语句，该语句直接使用 [asyncio](https://docs.python.org/3/library/asyncio.html) 运行该函数：
 
@@ -317,6 +336,21 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 async def main():
     await some_nonblocking_socket_io_op()
 ```
+下面是一个使用 HTTP 触发器的函数的示例，该函数使用 [aiohttp](https://pypi.org/project/aiohttp/) http 客户端：
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
+
 
 没有 `async` 关键字的函数在 asyncio 线程池中自动运行：
 
@@ -327,15 +361,29 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>使用多个语言工作进程
+为了获得异步运行函数的全部好处，你的代码中使用的 i/o 操作/库还需要实现异步。 在定义为异步的函数中使用同步 i/o 操作 **可能会** 影响整体性能。
+
+下面是已实现异步模式的几个客户端库示例：
+- [aiohttp](https://pypi.org/project/aiohttp/) -asyncio 的 Http 客户端/服务器 
+- [流 API](https://docs.python.org/3/library/asyncio-stream.html) -用于处理网络连接的高级异步/等待就绪基元
+- [Janus 队列](https://pypi.org/project/janus/) -线程安全 asyncio 感知队列
+- [pyzmq](https://pypi.org/project/pyzmq/) -ZeroMQ 的 Python 绑定
+ 
+
+##### <a name="use-multiple-language-worker-processes"></a>使用多个语言工作进程
 
 默认情况下，每个函数主机实例都有一个语言工作进程。 使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 应用程序设置可增加每个主机的工作进程数（最多 10 个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。
 
+对于 CPU 绑定的应用，应将语言辅助角色的数量设置为等于或高于每个 function app 可用的内核数。 若要了解详细信息，请参阅 [可用实例 sku](functions-premium-plan.md#available-instance-skus)。 
+
+I/o 绑定的应用程序的数量也可能会增加，因为这会增加超出可用核心数的工作进程数。 请记住，由于所需的上下文切换次数增加，将工作线程数设置得过高可能会影响整体性能。 
+
 FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序来满足需求时创建的每一个主机。
+
 
 ## <a name="context"></a>上下文
 
-若要在执行过程中获取函数的调用上下文，请在其签名中包含 [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) 参数。
+若要在执行过程中获取函数的调用上下文，请在其签名中包含 [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) 参数。
 
 例如：
 
@@ -348,7 +396,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[Context](/python/api/azure-functions/azure.functions.context?view=azure-python) 类具有以下字符串属性：
+[Context](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) 类具有以下字符串属性：
 
 `function_directory` 在其中运行函数的目录。
 
@@ -443,7 +491,7 @@ func azure functionapp publish <APP_NAME>
 
 请记住将 `<APP_NAME>` 替换为 Azure 中的函数应用名称。
 
-默认情况下，[适用于 Visual Studio Code 的 Azure Functions 扩展](functions-create-first-function-vs-code.md#publish-the-project-to-azure)还会请求远程生成。
+默认情况下，[适用于 Visual Studio Code 的 Azure Functions 扩展](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)还会请求远程生成。
 
 ### <a name="local-build"></a>本地生成
 
@@ -489,12 +537,14 @@ func azure functionapp publish <APP_NAME> --no-build
 
 可以使用标准测试框架像测试其他 Python 代码那样测试使用 Python 编写的函数。 对于大多数绑定，可以通过从 `azure.functions` 包创建适当类的实例来创建 mock 输入对象。 由于 [`azure.functions`](https://pypi.org/project/azure-functions/) 包不可供立即可用，请务必通过 `requirements.txt` 文件安装该包，如上文[包管理](#package-management)部分所述。
 
-例如，以下是 HTTP 触发函数的 mock 测试：
+例如，下面是 HTTP 触发函数的模拟测试： *my_second_function*
+
+首先，我们需要 *在文件上创建<project_root>/my_second_function/function.js* 并将此函数定义为 http 触发器。
 
 ```json
 {
   "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
+  "entryPoint": "main",
   "bindings": [
     {
       "authLevel": "function",
@@ -515,106 +565,72 @@ func azure functionapp publish <APP_NAME> --no-build
 }
 ```
 
+现在，我们可以实现 *my_second_function* 和 *shared_code _second_helper_function*。
+
 ```python
-# __app__/HttpTrigger/__init__.py
+# <project_root>/my_second_function/__init__.py
 import azure.functions as func
 import logging
 
-def my_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+# Use absolute import to resolve shared_code modules
+from shared_code import my_second_helper_function
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+# Define an http trigger which accepts ?value=<int> query parameter
+# Double the value and return the result in HttpResponse
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Executing my_second_function.')
 
-    if name:
-        return func.HttpResponse(f"Hello {name}")
-    else:
-        return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
-        )
+    initial_value: int = int(req.params.get('value'))
+    doubled_value: int = my_second_helper_function.double(initial_value)
+
+    return func.HttpResponse(
+      body=f"{initial_value} * 2 = {doubled_value}",
+      status_code=200
+    )
 ```
 
 ```python
-# tests/test_httptrigger.py
+# <project_root>/shared_code/__init__.py
+# Empty __init__.py file marks shared_code folder as a Python package
+```
+
+```python
+# <project_root>/shared_code/my_second_helper_function.py
+
+def double(value: int) -> int:
+  return value * 2
+```
+
+我们可以开始编写 http 触发器的测试用例。
+
+```python
+# <project_root>/tests/test_my_second_function.py
 import unittest
 
 import azure.functions as func
-from __app__.HttpTrigger import my_function
+from my_second_function import main
 
 class TestFunction(unittest.TestCase):
-    def test_my_function(self):
+    def test_my_second_function(self):
         # Construct a mock HTTP request.
         req = func.HttpRequest(
             method='GET',
             body=None,
-            url='/api/HttpTrigger',
-            params={'name': 'Test'})
+            url='/api/my_second_function',
+            params={'value': '21'})
 
         # Call the function.
-        resp = my_function(req)
+        resp = main(req)
 
         # Check the output.
         self.assertEqual(
             resp.get_body(),
-            b'Hello Test',
+            b'21 * 2 = 42',
         )
 ```
 
-下面是另一个示例，其中含有队列触发函数：
+在 `.venv` Python 虚拟环境中安装最喜欢的 Python 测试框架 (例如 `pip install pytest`) 。 只需运行 `pytest tests` 检查测试结果。
 
-```json
-{
-  "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "python-queue-items",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-```python
-# __app__/QueueTrigger/__init__.py
-import azure.functions as func
-
-def my_function(msg: func.QueueMessage) -> str:
-    return f'msg body: {msg.get_body().decode()}'
-```
-
-```python
-# tests/test_queuetrigger.py
-import unittest
-
-import azure.functions as func
-from __app__.QueueTrigger import my_function
-
-class TestFunction(unittest.TestCase):
-    def test_my_function(self):
-        # Construct a mock Queue message.
-        req = func.QueueMessage(
-            body=b'test')
-
-        # Call the function.
-        resp = my_function(req)
-
-        # Check the output.
-        self.assertEqual(
-            resp,
-            'msg body: test',
-        )
-```
 ## <a name="temporary-files"></a>临时文件
 
 `tempfile.gettempdir()` 方法返回一个临时文件夹，这在 Linux 上为 `/tmp`。 应用程序可使用此目录存储函数在执行期间生成和使用的临时文件。
@@ -655,7 +671,7 @@ Python 标准库包含每个 Python 分发附带的内置 Python 模块列表。
 
 ### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python 辅助角色依赖项
 
-功能 Python 辅助角色需要一组特定的库。 你还可以在函数中使用这些库，但它们并不是 Python 标准的一部分。 如果函数依赖于其中的任何库，则在 Azure Functions 之外运行时，它们可能无法用于代码。 可以在[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)文件中的**安装 \_ 需要**部分找到依赖项的详细列表。
+功能 Python 辅助角色需要一组特定的库。 你还可以在函数中使用这些库，但它们并不是 Python 标准的一部分。 如果函数依赖于其中的任何库，则在 Azure Functions 之外运行时，它们可能无法用于代码。 可以在 [setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)文件中的 **安装 \_ 需要** 部分找到依赖项的详细列表。
 
 > [!NOTE]
 > 如果函数应用的 requirements.txt 包含 `azure-functions-worker` 条目，请将其删除。 函数工作线程由 Azure Functions 平台自动管理，并定期使用新功能和 bug 修复进行更新。 在 requirements.txt 中手动安装旧版本的辅助角色可能会导致意外问题。
@@ -678,8 +694,8 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 |  Functions 运行时  | Debian 版本 | Python 版本 |
 |------------|------------|------------|
-| 版本 2.x | 拉伸  | [Python 3。6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3\.x 版 | Buster | [Python 3。6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| 版本 2.x | 拉伸  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3\.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>跨域资源共享
 
@@ -700,7 +716,7 @@ Python 函数应用完全支持 CORS。
 
 有关详细信息，请参阅以下资源：
 
-* [Azure Functions 包 API 文档](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Azure Functions 包 API 文档](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [Blob 存储绑定](functions-bindings-storage-blob.md)
@@ -708,6 +724,8 @@ Python 函数应用完全支持 CORS。
 * [存储绑定](functions-bindings-storage-queue.md)
 * [计时器触发器](functions-bindings-timer.md)
 
+[存在问题？请告诉我们。](https://aka.ms/python-functions-ref-survey)
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

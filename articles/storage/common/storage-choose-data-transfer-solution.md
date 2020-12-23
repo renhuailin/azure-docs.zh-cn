@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400532"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784042"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -42,7 +42,7 @@ ms.locfileid: "91400532"
 
 ![Azure 数据传输工具](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-*脱机传输设备（Data Box Disk、Data Box 和 Data Box Heavy）的上限可以通过对一种设备类型下多个订单来进行扩展。**
+*脱机传输设备（Data Box Disk、Data Box 和 Data Box Heavy）的上限可以通过对一种设备类型下多个订单来进行扩展。 
 
 ## <a name="selecting-a-data-transfer-solution"></a>选择数据传输解决方案
 
@@ -71,15 +71,15 @@ ms.locfileid: "91400532"
 ## <a name="next-steps"></a>后续步骤
 
 - [获取 Azure 存储资源管理器简介](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/)。
-- [阅读 AzCopy 概述](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
+- [阅读 AzCopy 概述](./storage-use-azcopy-v10.md)。
 - [快速入门：使用 PowerShell 上传、下载和列出 blob](../blobs/storage-quickstart-blobs-powershell.md)
 - [快速入门：使用 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
 - 学习内容：
 
-    - [用于脱机传输的 Azure Data Box、Azure Data Box Disk 和 Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/)。
-    - [用于联机传输的 Azure Data Box Gateway 和 Azure Stack 边缘](https://docs.microsoft.com/azure/databox-online/)。
-- [了解什么是 Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)。
+    - [用于脱机传输的 Azure Data Box、Azure Data Box Disk 和 Azure Data Box Heavy](../../databox/index.yml)。
+    - [用于联机传输的 Azure Data Box Gateway 和 Azure Stack 边缘](../../databox-online/index.yml)。
+- [了解什么是 Azure 数据工厂](../../data-factory/copy-activity-overview.md)。
 - 使用 REST API 传输数据
 
-    - [在 .NET 中](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [在 Java 中](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [在 .NET 中](/dotnet/api/overview/azure/storage)
+    - [在 Java 中](/java/api/overview/azure/storage)

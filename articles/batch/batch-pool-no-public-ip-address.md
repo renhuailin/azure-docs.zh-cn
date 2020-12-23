@@ -3,15 +3,15 @@ title: 创建不具有公共 IP 地址的 Azure Batch 池
 description: 了解如何创建不带公共 IP 地址的池
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: fcc0538dfef1581a244ae5fd9a3515be3470026c
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91850925"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007664"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>创建不具有公共 IP 地址的 Azure Batch 池
 
@@ -25,16 +25,17 @@ ms.locfileid: "91850925"
 
 > [!IMPORTANT]
 > 对在 Azure Batch 中没有公共 IP 地址的池的支持目前处于公共预览版中的以下区域：美国西部、东亚、美国西部、美国中南部、美国西部2、美国东部、北欧、美国东部2、美国中部、西欧、美国中北部、美国西部、澳大利亚东部、日本东部、日本西部。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- “身份验证”。 若要在 [虚拟网络](./batch-virtual-network.md)中使用没有公共 IP 地址的池，Batch 客户端 API 必须使用 AZURE ACTIVE DIRECTORY (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 如果不是在虚拟网络中创建池，则可以使用 Azure AD 身份验证，也可以使用基于密钥的身份验证。
+- **身份验证**。 若要在 [虚拟网络](./batch-virtual-network.md)中使用没有公共 IP 地址的池，Batch 客户端 API 必须使用 AZURE ACTIVE DIRECTORY (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 如果不是在虚拟网络中创建池，则可以使用 Azure AD 身份验证，也可以使用基于密钥的身份验证。
 
 - **一个 Azure VNet**。 如果要在 [虚拟网络](batch-virtual-network.md)中创建池，请遵循以下要求和配置。 若要提前准备具有一个或多个子网的 VNet，可以使用 Azure 门户、Azure PowerShell、Azure 命令行接口 (CLI) 或其他方法。
   - VNet 必须与用于创建池的 Batch 帐户位于同一订阅和区域中。
   - 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。
-  - 必须禁用专用链接服务和终结点网络策略。 这可以通过使用 Azure CLI 来完成： ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+  - 必须禁用专用链接服务和终结点网络策略。 这可以通过使用 Azure CLI 来完成： ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resouce-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
 
 > [!IMPORTANT]
 > 对于每个100专用节点或低优先级节点，Batch 分配一个专用链接服务和一个负载均衡器。 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 对于较大的池，你可能需要为这些资源中的一个或多个 [请求增加配额](batch-quota-limit.md#increase-a-quota) 。 此外，不应将资源锁应用于由 Batch 创建的任何资源，因为这样可以防止由于用户启动的操作（如删除池或调整为零）而清理资源。
@@ -52,9 +53,9 @@ ms.locfileid: "91850925"
 1. 在“池”窗口中，选择“添加”。 
 1. 在“添加池”窗口中，从“映像类型”下拉列表中选择要使用的选项。 
 1. 选择正确的映像 **发布者/产品/服务/Sku** 。
-1. 指定剩余的必需设置，包括 **节点大小**、 **目标专用节点**和 **低优先级节点**，以及任何所需的可选设置。
+1. 指定剩余的必需设置，包括 **节点大小**、 **目标专用节点** 和 **低优先级节点**，以及任何所需的可选设置。
 1. 根据需要选择要使用的虚拟网络和子网。 此虚拟网络必须与要创建的池位于同一资源组中。
-1. 在 " **IP 地址" 设置类型**中，选择 " **NoPublicIPAddresses**"。
+1. 在 " **IP 地址" 设置类型** 中，选择 " **NoPublicIPAddresses**"。
 
 ![选择了 NoPublicIPAddresses 的 "添加池" 屏幕屏幕截图。](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
 

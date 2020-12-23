@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/29/2020
 ms.author: aahi
-ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244289"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996113"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 部署多个容器
 
 本文介绍如何部署多个 Azure 认知服务容器。 具体而言，其中将会介绍如何使用 Docker Compose 来协调多个 Docker 容器映像。
 
-> [Docker Compose](https://docs.docker.com/compose/) 是用于定义和运行多容器 Docker 应用程序的工具。 使用 YAML 文件来配置应用程序的服务。 然后，运行一条命令，即可从配置中创建并启动所有服务。
+> [Docker Compose](https://docs.docker.com/compose/) 是用于定义和运行多容器 Docker 应用程序的工具。 在 Compose 中，可以使用 YAML 文件来配置应用程序的服务。 然后，运行一条命令，即可从配置中创建并启动所有服务。
 
-使用 Compose 可在一台主计算机上方便地协调多个容器映像。 在本文中，我们会将读取和窗体识别器容器组合在一起。
+使用 Compose 可在一台主计算机上方便地协调多个容器映像。 在本文中，我们会将“读取”和“表单识别器”容器组合到一起。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,17 +32,10 @@ ms.locfileid: "88244289"
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)。 确认 Docker CLI 是否可在控制台窗口中工作。
 * 具有适当定价层的 Azure 资源。 只有以下定价层适用于此容器：
-  * 仅限使用 F0 或标准定价层的“计算机视觉”资源。****
-  * 仅具有 F0 或标准定价层的**窗体识别器**资源。
-  * 具有 S0 定价层的认知服务资源****。
-
-## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
-
-完成并提交[认知服务语音容器请求表单](https://aka.ms/speechcontainerspreview/)。 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+  * 仅限使用 F0 或标准定价层的“计算机视觉”资源。
+  * 仅限使用 F0 或标准定价层的“表单识别器”资源。
+  * 具有 S0 定价层的认知服务资源。
+* 如果你使用的是封闭预览版容器，你将需要完成 [联机请求窗体](https://aka.ms/csgate/) 才能使用。
 
 ## <a name="docker-compose-file"></a>Docker Compose 文件
 
@@ -52,7 +45,7 @@ YAML 文件定义要部署的所有服务。 这些服务依赖于 `DockerFile` 
 version: '3.7'
 services:
   forms:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
+    image: "mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout"
     environment:
        eula: accept
        billing: # < Your form recognizer billing URL >
@@ -70,7 +63,7 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
+    image: "mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview"
     environment:
       eula: accept
       apikey: # < Your computer vision API key >
@@ -87,9 +80,9 @@ services:
 使用 Docker Compose 文件可以管理所定义服务的生命周期中的所有阶段：启动、停止和重新生成服务；查看服务状态；记录流。 从项目目录（docker-compose.yaml 文件所在的位置）打开命令行接口。
 
 > [!NOTE]
-> 为了避免出错，请确保主计算机与 Docker 引擎正确共享驱动器。 例如，如果将 *E:\publicpreview* 用作 *docker yaml* 文件中的目录，请将驱动器 **E** 与 docker 共享。
+> 为了避免出错，请确保主计算机与 Docker 引擎正确共享驱动器。 例如，如果在 docker-compose.yaml 文件中将 E:\publicpreview 用作目录，请与 Docker 共享驱动器 E 。
 
-在命令行界面中，执行以下命令以启动 (或重启) 在 *docker yaml* 文件中定义的所有服务：
+在命令行接口中执行以下命令，以启动（或重启）docker-compose.yaml 文件中定义的所有服务：
 
 ```console
 docker-compose up
@@ -98,8 +91,8 @@ docker-compose up
 当 Docker 首次使用此配置执行 **docker-compose up** 命令时，它将提取 **services** 节点下配置的映像，然后下载并装载这些映像：
 
 ```console
-Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
-latest: Pulling from microsoft/cognitive-services-form-recognizer
+Pulling forms (mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout:)...
+latest: Pulling from azure-cognitive-services/form-recognizer/layout
 743f2d6c1f65: Pull complete
 72befba99561: Pull complete
 2a40b9192d02: Pull complete
@@ -113,8 +106,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
-latest: Pulling from microsoft/cognitive-services-read
+Pulling ocr (mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview:)...
+latest: Pulling from /azure-cognitive-services/vision/read:3.1-preview
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -166,13 +159,13 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
-2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
+2ce533f88e80        mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout          latest
+4be104c126c5        mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview         latest
 ```
 
 ### <a name="test-containers"></a>测试容器
 
-在主计算机上打开浏览器，并使用*yaml*文件中的指定端口（例如）来使用**localhost** http://localhost:5021/swagger/index.html 。 例如，可以在 API 中使用 " **尝试 It** " 功能来测试窗体识别器终结点。 这两个容器 swagger 页面应可用且可测试。
+在主机上打开浏览器，使用 docker-compose.yaml 文件中指定的端口（例如 http://localhost:5021/swagger/index.html ）转到 localhost。 例如，可以使用 API 中的“试用”功能来测试“表单识别器”终结点。 这两个容器 swagger 页面应可用且可测试。
 
 ![“表单识别器”容器](media/form-recognizer-swagger-page.png)
 

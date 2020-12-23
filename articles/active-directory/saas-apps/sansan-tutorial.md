@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: fa4e91a087c7dcfce247cacc2dff83458bc87f64
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6c35ce5e4b420b7f203b33b640a3175ba4c2739b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079976"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181499"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>教程：将 Sansan 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "89079976"
 * 让用户使用其 Azure AD 帐户自动登录到 Sansan。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "89079976"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 * Sansan 支持 **SP** 发起的 SSO。
-* 配置 Sansan 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Sansan 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-sansan-from-the-gallery"></a>从库中添加 Sansan
 
@@ -49,12 +49,12 @@ ms.locfileid: "89079976"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Sansan”********。
-1. 从结果面板中选择“Sansan”，然后添加该应用****。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Sansan”。
+1. 从结果面板中选择“Sansan”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 
-使用名为 Britta Simon 的测试用户配置和测试 Sansan 的 Azure AD SSO****。 若要运行 SSO，需要在 Azure AD 用户与 Sansan 相关用户之间建立链接关系。
+使用名为 Britta Simon 的测试用户配置和测试 Sansan 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Sansan 相关用户之间建立链接关系。
 
 若要配置和测试 Sansan 的 Azure AD SSO，请完成以下构建基块：
 
@@ -69,7 +69,7 @@ ms.locfileid: "89079976"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Sansan”应用程序集成页上，找到“管理”部分，选择“单一登录”************。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Sansan”应用程序集成页上，找到“管理”部分，选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -79,7 +79,7 @@ ms.locfileid: "89079976"
 
     1. 在“登录 URL”文本框中，键入 URL：`https://ap.sansan.com/`
 
-   1. 在“标识符(实体 ID)”文本框中，键入 URL：****  
+   1. 在“标识符(实体 ID)”文本框中，键入 URL：  
    `https://ap.sansan.com/saml2/<company name>`
 
    1. 在“回复 URL”文本框中，使用以下模式键入任一 URL：
@@ -98,7 +98,7 @@ ms.locfileid: "89079976"
 
    ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Sansan”部分中，根据要求复制相应 URL****。
+1. 在“设置 Sansan”部分中，根据要求复制相应 URL。
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -147,12 +147,12 @@ ms.locfileid: "89079976"
 
 ## <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“Sansan”磁贴时，应会自动登录到设置了 SSO 的 Sansan。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中选择“Sansan”磁贴时，应会自动登录到设置了 SSO 的 Sansan。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80681644"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206537"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>将 Azure Blob 存储用于模型转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "80681644"
 可以通过以下工具之一来创建存储帐户和 blob 容器：
 
 - [Azure 门户](https://portal.azure.com)
-- [az 命令行](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az 命令行](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
 - Sdk (c #、Python ... ) 
 
@@ -46,13 +46,13 @@ Azure 远程呈现需要从存储帐户检索模型数据，并将数据写回�
 
 存储访问签名 (SAS) 用于授予对输入的读取访问权限以及写入访问权限。 建议每次转换模型时生成新的 Uri。 由于 Uri 将在一段时间后过期，将它们保持较长的持续时间可能会导致应用程序意外中断。
 
-有关 SAS 的详细信息，请参阅 [sas 文档](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
+有关 SAS 的详细信息，请参阅 [sas 文档](../../../storage/common/storage-sas-overview.md)。
 
 可以使用以下项之一生成 SAS URI：
 
 - az PowerShell module
   - 请参阅 [PowerShell 脚本示例](../../samples/powershell-example-scripts.md)
-- [az 命令行](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az 命令行](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
   - 右键单击 "获取共享访问签名" 容器 (读取、列出输入容器的访问权限、对输出容器的写访问权限) 
 - Sdk (c #、Python ... ) 
@@ -64,11 +64,11 @@ Conversion.ps1 [Powershell 示例脚本](../../samples/powershell-example-script
 若要开始转换模型，需要使用以下选项之一上载它：
 
 - [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/) -一种方便的 UI，可用于上传/下载/管理 Azure blob 存储上的文件
-- [Azure 命令行](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
-- [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.2.0)
+- [Azure 命令行](../../../storage/blobs/storage-quickstart-blobs-cli.md)
+- [Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.2.0)
   - 请参阅 [PowerShell 脚本示例](../../samples/powershell-example-scripts.md)
-- [使用存储 SDK (Python、c # ... ) ](https://docs.microsoft.com/azure/storage/)
-- [使用 Azure 存储 REST Api](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
+- [使用存储 SDK (Python、c # ... ) ](../../../storage/index.yml)
+- [使用 Azure 存储 REST Api](/rest/api/storageservices/blob-service-rest-api)
 
 有关如何上传用于转换的数据的示例，请参阅 [Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)的 Conversion.ps1。
 

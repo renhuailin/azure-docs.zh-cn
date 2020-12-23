@@ -4,12 +4,12 @@ description: '了解 Azure Database for PostgreSQL 具有长期保留 (预览版
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: ae18a5bb40d8993c82b2f3e03f231711ba3beebe
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: edbfdb6ea741cdb344a121acdbee3b8bd4bc743c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994676"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927883"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL 具有长期保留 (预览版的备份) 
 
@@ -17,7 +17,7 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 
 除了长期保留外，该解决方案还有其他许多功能，如下所示：
 
-- 使用 Azure Active Directory 和托管服务标识 (MSI) 身份验证的基于 RBAC 的数据库访问权限。
+- Azure 基于角色的访问控制 (Azure RBAC) 使用 Azure Active Directory 并托管服务标识 (MSI) 身份验证。
 - 在单独的数据库级别进行客户控制的计划和按需备份。
 - 数据库级还原到任何 Postgres 服务器或直接存储到 blob 存储。
 - 长期保留。
@@ -32,7 +32,7 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 |支持  |详细信息  |
 |---------|---------|
 |支持的部署   |  Azure Database for PostgreSQL 独立单一服务器     |
-|支持的 Azure 区域 |  美国东部、美国东部2、美国中南部、美国西部 |
+|支持的 Azure 区域 |  美国东部、美国东部2、美国中部、美国中南部、美国西部、美国西部2、美国中部、巴西南部、加拿大中部、北欧、西欧、英国南部、英国西部、德国中西部、瑞士北部、瑞士西部、东亚、南部东亚、日本东部、日本西部、韩国中部、澳大利亚中部、澳大利亚中部、澳大利亚东部、澳大利亚中部、澳大利亚中部  |
 |支持的 Azure PostgreSQL 版本    |   9.5、9.6、10、11      |
 
 ## <a name="feature-considerations-and-limitations"></a>功能注意事项和限制
@@ -55,7 +55,7 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
   
 5. 在所选数据库上触发配置保护后，备份服务会为协调器设置备份计划和其他策略详细信息。
 
-6. 在计划的时间，协调器会与插件通信，并使用 **pg_dump**从 Postgres 服务器开始流式传输备份数据。
+6. 在计划的时间，协调器会与插件通信，并使用 **pg_dump** 从 Postgres 服务器开始流式传输备份数据。
 
 7. 此插件将数据直接发送到备份保管库，从而无需暂存位置。 使用 Microsoft 托管的密钥对数据进行加密，并将其存储在存储帐户中。
 
@@ -71,25 +71,25 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 
 1. 可以通过两种方法开始执行此过程：
 
-    1. 请参阅[备份中心](backup-center-overview.md)  ->  **概述**  ->  **备份**。
+    1. 请参阅 [备份中心](backup-center-overview.md)  ->  **概述**  ->  **备份** 。
 
         ![中转到备份中心](./media/backup-azure-database-postgresql/backup-center.png)
 
-        在 " **启动：配置备份**" 下，选择 " **数据源类型** " 作为 **Azure Database for PostgreSQL**。
+        在 " **启动：配置备份** " 下，选择 " **数据源类型** " 作为 **Azure Database for PostgreSQL** 。
 
         ![在 "启动：配置备份" 中，选择 "数据源类型"](./media/backup-azure-database-postgresql/initiate-configure-backup.png)
 
-    1. 或者，可以直接执行[备份保管库](backup-vault-overview.md)  ->  **备份**。
+    1. 或者，可以直接执行 [备份保管库](backup-vault-overview.md)  ->  **备份** 。
 
         ![中转到备份保管库](./media/backup-azure-database-postgresql/backup-vaults.png)
 
         ![选择备份保管库中的备份](./media/backup-azure-database-postgresql/backup-backup-vault.png)
 
-1. 在 " **配置备份**" 下，选择要将 Postgres 数据库备份到的 **备份保管库** 。 如果已在保管库上下文中，则会预先填充此信息。
+1. 在 " **配置备份** " 下，选择要将 Postgres 数据库备份到的 **备份保管库** 。 如果已在保管库上下文中，则会预先填充此信息。
 
     ![选择 "配置备份" 中的备份保管库](./media/backup-azure-database-postgresql/configure-backup.png)
 
-1. 选择或创建 **备份策略**。
+1. 选择或创建 **备份策略** 。
 
     ![选择备份策略](./media/backup-azure-database-postgresql/backup-policy.png)
 
@@ -102,7 +102,7 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
     ![选择服务器](./media/backup-azure-database-postgresql/choose-servers.png)
 
 1. 服务对所选数据库运行这些检查，以验证保管库是否有权备份所选的 Postgres 服务器和数据库。
-    1. 所有数据库的**备份就绪**状态应为 "**成功**" 才能继续。
+    1. 所有数据库的 **备份就绪** 状态应为 " **成功** " 才能继续。
     1. 如果出现错误，请 **修复** 错误，然后重新 **验证** 或删除所选内容中的数据库。
 
     ![要修复的验证错误](./media/backup-azure-database-postgresql/validation-errors.png)
@@ -121,7 +121,7 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 
 ## <a name="create-backup-policy"></a>创建备份策略
 
-1. 请参阅 "**备份中心**  ->  **备份策略**" "  ->  **添加**"。 或者，你可以执行 "**备份保管库**  ->  **备份策略**" "  ->  **添加**"。
+1. 请参阅 " **备份中心**  ->  **备份策略** " "  ->  **添加** "。 或者，你可以执行 " **备份保管库**  ->  **备份策略** " "  ->  **添加** "。
 
     ![添加备份策略](./media/backup-azure-database-postgresql/add-backup-policy.png)
 
@@ -135,20 +135,20 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 
 1. 定义 **保留** 设置。 您可以添加一个或多个保留规则。 每个保留规则都假定特定备份的输入，以及这些备份的数据存储和保留期。
 
-1. 你可以选择将备份存储在两个数据存储的其中一个 (或层) ： ** (热** 层) 或 **存档数据存储** (在预览版) 中。 可以在 **两个分层选项** 之间进行选择，以定义在两个数据存储中分层备份的时间：
+1. 你可以选择将备份存储在两个数据存储的其中一个 (或层) ： **(热** 层) 或 **存档数据存储** (在预览版) 中。 可以在 **两个分层选项** 之间进行选择，以定义在两个数据存储中分层备份的时间：
 
     - 如果希望在备份和存档数据存储中同时使用备份副本，请选择 **立即** 复制。
     - 如果你希望在备份数据存储中将备份存储到存档数据存储，请选择 **在过期** 时将其移到 "过期"。
 
-1. **默认保留规则**在缺少任何其他保留规则的情况下应用，默认值为3个月。
+1. **默认保留规则** 在缺少任何其他保留规则的情况下应用，默认值为3个月。
 
-    - 保留期的范围为 **备份数据存储**中的7天到10年。
-    - 保留期的范围为 **存档数据存储**中的六个月到10年。
+    - 保留期的范围为 **备份数据存储** 中的7天到10年。
+    - 保留期的范围为 **存档数据存储** 中的六个月到10年。
 
     ![编辑保留期](./media/backup-azure-database-postgresql/edit-retention.png)
 
 >[!NOTE]
->保留规则按优先顺序计算。 **每年**规则的优先级最高，后跟**每月**和**每周**规则。 当没有其他规则合格时，将应用默认的保留设置。 例如，同一个恢复点可能是每周执行的第一次成功备份，以及每个月第一次成功备份。 不过，由于每月规则优先级高于每周规则的优先级，因此，每个月的第一次成功备份的保留期都适用。
+>保留规则按优先顺序计算。 **每年** 规则的优先级最高，后跟 **每月** 和 **每周** 规则。 当没有其他规则合格时，将应用默认的保留设置。 例如，同一个恢复点可能是每周执行的第一次成功备份，以及每个月第一次成功备份。 不过，由于每月规则优先级高于每周规则的优先级，因此，每个月的第一次成功备份的保留期都适用。
 
 ## <a name="restore"></a>还原
 
@@ -157,15 +157,15 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 遵循以下分步指南来触发还原：
 
 1. 可以通过两种方式启动还原过程：
-    1. 请参阅[备份中心](backup-center-overview.md)  ->  **概述**  ->  **还原**。
+    1. 请参阅 [备份中心](backup-center-overview.md)  ->  **概述**  ->  **还原** 。
 
     ![在备份中心选择 "还原"](./media/backup-azure-database-postgresql/backup-center-restore.png)
 
-    在 " **启动：还原**" 下，选择 " **数据源类型** " 作为 **Azure Database for PostgreSQL**。 选择 **备份实例**。
+    在 " **启动：还原** " 下，选择 " **数据源类型** " 作为 **Azure Database for PostgreSQL** 。 选择 **备份实例** 。
 
     ![选择启动中的数据源类型：还原](./media/backup-azure-database-postgresql/initiate-restore.png)
 
-    1. 或者，可以直接跳到**备份保管库**  ->  **备份实例**。 选择对应于要还原的数据库的 " **备份实例** "。
+    1. 或者，可以直接跳到 **备份保管库**  ->  **备份实例** 。 选择对应于要还原的数据库的 " **备份实例** "。
 
     ![用于还原的备份实例](./media/backup-azure-database-postgresql/backup-instances-restore.png)
 
@@ -173,31 +173,31 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 
     ![选择“还原”](./media/backup-azure-database-postgresql/select-restore.png)
 
-1. 从适用于所选备份实例的所有完整备份的列表中**选择 "恢复点**"。 默认情况下，将选择最新的恢复点。
+1. 从适用于所选备份实例的所有完整备份的列表中 **选择 "恢复点** "。 默认情况下，将选择最新的恢复点。
 
     ![选择恢复点](./media/backup-azure-database-postgresql/select-recovery-point.png)
 
     ![恢复点列表](./media/backup-azure-database-postgresql/list-recovery-points.png)
 
-1. 输入 **还原参数**。 此时，你可以从两种类型的还原中进行选择： **还原为数据库** 并 **还原为文件**。
+1. 输入 **还原参数** 。 此时，你可以从两种类型的还原中进行选择： **还原为数据库** 并 **还原为文件** 。
 
-1. **还原为数据库**：还原备份数据以在目标 PostgreSQL 服务器上创建新数据库。
+1. **还原为数据库** ：还原备份数据以在目标 PostgreSQL 服务器上创建新数据库。
 
     - 目标服务器可以与源服务器相同。 但是，不支持覆盖原始数据库。
     - 你可以在所有订阅中从服务器中进行选择，但在保管库所在的同一区域中进行选择。
-    - 选择 "查看" 和 " **还原**"。 这将触发验证，以检查服务在目标服务器上是否具有适当的还原权限。
+    - 选择 "查看" 和 " **还原** "。 这将触发验证，以检查服务在目标服务器上是否具有适当的还原权限。
 
     ![还原为数据库](./media/backup-azure-database-postgresql/restore-as-database.png)
 
-1. **还原为文件**：将备份文件转储到目标存储帐户 (blob) 。
+1. **还原为文件** ：将备份文件转储到目标存储帐户 (blob) 。
 
     - 你可以从存储帐户中选择所有订阅中的存储帐户，但在保管库所在的同一区域中进行选择。
     - 从为所选存储帐户筛选的容器列表中选择目标容器。
-    - 选择 "查看" 和 " **还原**"。 这将触发验证，以检查服务在目标服务器上是否具有适当的还原权限。
+    - 选择 "查看" 和 " **还原** "。 这将触发验证，以检查服务在目标服务器上是否具有适当的还原权限。
 
     ![还原为文件](./media/backup-azure-database-postgresql/restore-as-files.png)
 
-1. 查看信息，然后选择 " **还原**"。 这会触发可以在 " **备份作业**" 下跟踪的相应还原作业。
+1. 查看信息，然后选择 " **还原** "。 这会触发可以在 " **备份作业** " 下跟踪的相应还原作业。
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>配置备份和还原的先决条件权限
 
@@ -207,11 +207,11 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 ## <a name="manage-the-backed-up-azure-postgresql-databases"></a>管理已备份的 Azure PostgreSQL 数据库
 
-这些是可在 **备份实例**上执行的管理操作：
+这些是可在 **备份实例** 上执行的管理操作：
 
 ### <a name="on-demand-backup"></a>按需备份
 
-若要触发不在策略中指定的计划的备份，请立即执行**备份实例**  ->  **备份**。
+若要触发不在策略中指定的计划的备份，请立即执行 **备份实例**  ->  **备份** 。
 从关联的备份策略中定义的保留规则列表中进行选择。
 
 ![立即触发备份](./media/backup-azure-database-postgresql/backup-now.png)
@@ -228,7 +228,7 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 你可以使用备份实例更改关联的策略。
 
-1. 选择**备份实例**  ->  **更改策略**。
+1. 选择 **备份实例**  ->  **更改策略** 。
 
     ![更改策略](./media/backup-azure-database-postgresql/change-policy.png)
 
@@ -244,17 +244,17 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 在要备份或还原的 PG 服务器上授予备份保管库 MSI **读取** 访问权限：
 
-为了建立与 PostgreSQL 数据库的安全连接，Azure 备份使用 [托管服务标识 (MSI) ](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 身份验证模型。 这意味着备份保管库将只能访问那些已被用户显式授予权限的资源。
+为了建立与 PostgreSQL 数据库的安全连接，Azure 备份使用 [托管服务标识 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md) 身份验证模型。 这意味着备份保管库将只能访问那些已被用户显式授予权限的资源。
 
 创建时，系统 MSI 会自动分配给保管库。 需要为此保管库 MSI 授予对要从中备份数据库的 PostgreSQL 服务器的访问权限。
 
 步骤：
 
-1. 在 Postgres 服务器中， **访问 (IAM) ** 窗格中的 "访问控制"。
+1. 在 Postgres 服务器中， **访问 (IAM)** 窗格中的 "访问控制"。
 
     ![访问控制窗格](./media/backup-azure-database-postgresql/access-control-pane.png)
 
-1. 选择 " **添加角色分配**"。
+1. 选择 " **添加角色分配** "。
 
     ![添加角色分配](./media/backup-azure-database-postgresql/add-role-assignment.png)
 
@@ -280,7 +280,7 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 将 Active Directory 管理员添加到 OSS 服务器：
 
-若要通过可以使用 Azure Active Directory 而不是密码进行身份验证的用户连接到数据库，则需要执行此步骤。 Azure Database for PostgreSQL 中的 Azure AD 管理员用户将拥有角色 **azure_ad_admin**。 只有 **azure_ad_admin** 角色才能创建可以使用 Azure AD 进行身份验证的新数据库用户。
+若要通过可以使用 Azure Active Directory 而不是密码进行身份验证的用户连接到数据库，则需要执行此步骤。 Azure Database for PostgreSQL 中的 Azure AD 管理员用户将拥有角色 **azure_ad_admin** 。 只有 **azure_ad_admin** 角色才能创建可以使用 Azure AD 进行身份验证的新数据库用户。
 
 1. 在服务器视图的左侧导航窗格中转到 "Active Directory 管理" 选项卡，并添加自己的 (或其他) 作为 Active Directory 管理员。
 
@@ -294,7 +294,7 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 ### <a name="usererrormissingnetworksecuritypermissions"></a>UserErrorMissingNetworkSecurityPermissions
 
-启用服务器视图中的 " **允许访问 Azure 服务** " 标志，建立网络视觉。 在服务器视图的 " **连接安全性** " 窗格下，将 " **允许访问 Azure 服务** " 标志设置为 **"是"**。
+启用服务器视图中的 " **允许访问 Azure 服务** " 标志，建立网络视觉。 在服务器视图的 " **连接安全性** " 窗格下，将 " **允许访问 Azure 服务** " 标志设置为 **"是"** 。
 
 ![允许访问 Azure 服务](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
 
@@ -303,19 +303,19 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 #### <a name="permission-to-restore-to-a-storage-account-container-when-restoring-as-files"></a>还原为文件时还原到存储帐户容器的权限
 
 1. 为备份保管库 MSI 授予使用 Azure 门户访问存储帐户容器的权限。
-    1. 请参阅**存储帐户**  ->  **访问控制**  ->  **添加角色分配**。
+    1. 请参阅 **存储帐户**  ->  **访问控制**  ->  **添加角色分配** 。
     1. 将 **存储 Blob 数据参与者** 角色分配到备份保管库 MSI。
 
     ![分配存储 Blob 数据参与者角色](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
 
-1. 或者，通过使用 Azure CLI [az role create create](https://docs.microsoft.com/cli/azure/role/assignment) 命令，对要还原到的特定容器授予精细的权限。
+1. 或者，通过使用 Azure CLI [az role create create](/cli/azure/role/assignment) 命令，对要还原到的特定容器授予精细的权限。
 
     ```azurecli
     az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id
     ```
 
     1. 将 "代理人" 参数替换为保管库的 MSI 的 **应用程序 ID** ，并将 "作用域" 参数替换为指向特定容器。
-    1. 若要获取保管库 MSI 的**应用程序 ID** ，请选择 "**应用程序类型**" 下的 "**所有应用**程序"：
+    1. 若要获取保管库 MSI 的 **应用程序 ID** ，请选择 " **应用程序类型** " 下的 " **所有应用** 程序"：
 
         ![选择所有应用程序](./media/backup-azure-database-postgresql/select-all-applications.png)
 

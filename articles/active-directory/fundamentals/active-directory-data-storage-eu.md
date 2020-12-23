@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 7a8b013723707c4a3a087a90674227c3d41c5108
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395883"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836931"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
 标识数据由 Azure AD 存储在地理位置，这是在订阅 Microsoft Online 服务（例如 Microsoft 365 和 Azure）时由你的组织提供的地址。 若要了解标识数据的存储位置，可以使用 Microsoft 信任中心的 " [你的数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) " 部分。
 
 对于在欧洲提供地址的客户，Azure AD 保留欧洲数据中心内的大多数标识数据。 本文档提供了有关 Azure AD 服务在欧洲之外存储的任何数据的信息。
 
-## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure 多重身份验证
+## <a name="microsoft-azure-ad-multi-factor-authentication"></a>Microsoft Azure AD 多重身份验证
 
-对于基于云的 Azure 多重身份验证，在最接近用户的数据中心完成身份验证。 Azure 多重身份验证的数据中心存在于北美、欧洲和亚太中。
+对于基于云的 Azure AD 多重身份验证，在最接近用户的数据中心完成身份验证。 北美、欧洲和亚太存在 Azure AD 多重身份验证的数据中心。
 
 * 使用电话呼叫的多重身份验证源自美国数据中心，由全局提供商路由。
 * 使用 SMS 的多重身份验证由全局提供程序进行路由。
@@ -34,9 +34,9 @@ ms.locfileid: "91395883"
     * 特定于设备供应商的服务，如 Apple 推送通知，可以在欧洲外。
 * 使用来自欧盟数据中心的 OATH 代码的多重身份验证请求在 EU 进行验证。
 
-若要详细了解 Azure 多重身份验证服务器 (MFA 服务器) 和基于云的 Azure MFA 收集的用户信息，请参阅 [Azure 多重身份验证用户数据收集](../authentication/howto-mfa-reporting-datacollection.md)。
+若要详细了解 Azure 多重身份验证服务器收集哪些用户信息 (MFA Server) 和基于云的 Azure AD MFA，请参阅 [Azure 多重身份验证用户数据收集](../authentication/howto-mfa-reporting-datacollection.md)。
 
-## <a name="password-based-single-sign-on-for-enterprise-applications"></a>适用于企业应用程序的基于密码的单一登录
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>适用于企业应用程序的基于密码的单一 Sign-On
  
 如果客户创建新的企业应用程序 (通过 Azure AD 库或非库) 并启用基于密码的 SSO，则应用程序登录 URL 和自定义捕获登录字段将存储在美国中。 有关此功能的详细信息，请参阅 [配置基于密码的单一登录](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 

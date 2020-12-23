@@ -1,18 +1,18 @@
 ---
 title: 模板函数
-description: 介绍在 Azure Resource Manager 模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。
+description: 介绍用于在 Azure 资源管理器模板中使用的函数 (ARM 模板) 检索值、处理字符串和数字以及检索部署信息。
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 10/12/2020
+ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378400"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931701"
 ---
 # <a name="arm-template-functions"></a>ARM 模板函数
 
-本文介绍可以在 Azure 资源管理器 (ARM) 模板中使用的所有函数。 若要了解如何在模板中使用函数，请参阅[模板语法](template-expressions.md)。
+本文介绍了可在 Azure 资源管理器模板 (ARM 模板) 中使用的所有函数。 若要了解如何在模板中使用函数，请参阅[模板语法](template-expressions.md)。
 
 若要创建自己的函数，请参阅[用户定义函数](template-syntax.md#functions)。
 
@@ -104,9 +104,11 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 * [and](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
+* [false](template-functions-logical.md#false)
 * [if](template-functions-logical.md#if)
 * [not](template-functions-logical.md#not)
 * [or](template-functions-logical.md#or)
+* true
 
 <a id="add" aria-hidden="true"></a>
 <a id="copyindex" aria-hidden="true"></a>
@@ -141,10 +143,12 @@ Resource Manager 提供以下用于处理整数的函数：
 Resource Manager 提供以下用于处理对象的函数。
 
 * [contains](template-functions-object.md#contains)
+* [createObject](template-functions-object.md#createobject)
 * [empty](template-functions-object.md#empty)
 * [intersection](template-functions-object.md#intersection)
 * [json](template-functions-object.md#json)
 * [length](template-functions-object.md#length)
+* [null](template-functions-object.md#null)
 * [union](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -246,7 +250,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各节的说明，请参阅[创作 ARM 模板](template-syntax.md)
-* 若要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](linked-templates.md)（将链接模板与 Azure 资源管理器配合使用）
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
-* 若要了解如何部署已创建的模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)
+* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。
+* 若要合并多个模板，请参阅 [部署 Azure 资源时使用链接的模板和嵌套的模板](linked-templates.md)。
+* 若要在创建资源类型时迭代指定的次数，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
+* 若要查看如何部署已创建的模板，请参阅 [利用 ARM 模板部署资源和 Azure PowerShell](deploy-powershell.md)。

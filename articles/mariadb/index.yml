@@ -3,17 +3,17 @@ title: Azure Database for MariaDB 文档
 summary: Azure Database for MariaDB 是基于开源 MariaDB Server 引擎的关系型数据库服务。  它是完全托管的数据库即服务产品，能够处理任务关键型工作负荷，并提供可预测的性能和动态可伸缩性。 利用所选的开源工具和平台，通过 Azure Database for MariaDB 开发应用程序。 参考我们的快速入门、教程和示例了解如何使用 Azure Database for MariaDB。
 metadata:
   description: Azure Database for MariaDB 是 Microsoft 云中的关系型数据库服务，它基于开源 MariaDB 数据库引擎，专为开发人员而构建。
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.openlocfilehash: bd4bb93a43bd493069ed03f6197595fe782d605a
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: a94e88dc1f7dca73f20cfee3b8cbea8cfad011af
+  ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "70735381"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97516563"
 landingContent:
 - title: 关于 Azure Database for MariaDB
   linkLists:
@@ -110,12 +110,12 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 用于常见任务的 Azure CLI 脚本
-      url: /azure/mariadb/sample-scripts-azure-cli/
+      url: ./sample-scripts-azure-cli.md
   - linkListType: reference
     links:
     - text: Azure CLI 开发人员参考
-      url: /rest/api/mariadb/
+      url: /cli/azure/mariadb/
     - text: REST API 开发人员参考
-      url: /cli/azure/mariadb
+      url: /rest/api/mariadb/
     - text: Azure 资源管理器模板
       url: /azure/templates/microsoft.dbformariadb/allversions

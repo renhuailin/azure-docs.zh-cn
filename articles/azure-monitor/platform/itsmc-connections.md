@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 86fd136cdf03c9bdd6bd1f610cccc339512f8fbc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058761"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657101"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](./itsmc-overview.md)。
@@ -25,8 +25,7 @@ ms.locfileid: "90058761"
 
 > [!NOTE]
 > 
-> 从2020年10月 Cherwell 和 Provance ITSM 集成的 Azure 警报将不再为新客户启用。 不支持新的 ITSM 连接。 
-> 将支持现有的 ITSM 连接。
+> 我们建议 Cherwell 和 Provance 客户使用 [Webhook 操作](./action-groups.md#webhook) 来 Cherwell 和 Provance 终结点作为集成的另一个解决方案。
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>将 System Center Service Manager 连接到 Azure 中的 IT 服务管理连接器
 
@@ -36,15 +35,17 @@ ms.locfileid: "90058761"
 
 请确保满足以下先决条件：
 
-- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-definition.md)。
 - 已部署并配置 Service Manager Web 应用程序（Web 应用）。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Web 应用的信息。
 - 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
 - 用户角色：[高级操作员](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
+- 现在，从 Azure Monitor 发送的警报可以在 System Center Service Manager 事件中创建。
 
 > [!NOTE]
 > 
-> ITSM 连接器只能连接到基于云的 ServiceNow 实例。 当前不支持本地 ServiceNow 实例。
+> - ITSM 连接器只能连接到基于云的 ServiceNow 实例。 当前不支持本地 ServiceNow 实例。
+> - 为了使用自定义 [模板](./itsmc-definition.md#template-definitions) 作为操作的一部分，SCSM 模板中的参数 "ProjectionType" 应映射到 "servicemanager.incidentmanagement.configuration.xml！ProjectionType "。
 
 ### <a name="connection-procedure"></a>连接过程
 
@@ -84,7 +85,7 @@ ms.locfileid: "90058761"
 - 在此 Service Manager 实例中，可以根据 Log Analytics 警报、日志记录或 Azure 警报创建事件。
 
 
-了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>创建和部署 Service Manager Web 应用服务
 
@@ -93,7 +94,7 @@ ms.locfileid: "90058761"
 若要为 Service Manager 设置 ITSM Web 应用，请执行以下操作：
 
 - **部署 Web 应用** – 部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。 可以使用 Microsoft 提供的[自动化脚本](./itsmc-service-manager-script.md)部署 Web 应用。
-- 手动**配置混合连接** - [配置此连接](#configure-the-hybrid-connection)。
+- 手动 **配置混合连接** - [配置此连接](#configure-the-hybrid-connection)。
 
 #### <a name="deploy-the-web-app"></a>部署 Web 应用
 使用自动化[脚本](./itsmc-service-manager-script.md)部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。
@@ -107,7 +108,7 @@ ms.locfileid: "90058761"
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。
 
-该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、**客户端 ID** 和**客户端机密**。
+该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、**客户端 ID** 和 **客户端机密**。
 
 保存这些值，因为在与 ITSMC 建立连接时需要使用。
 
@@ -183,8 +184,9 @@ ms.locfileid: "90058761"
 
 ### <a name="prerequisites"></a>先决条件
 请确保满足以下先决条件：
-- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-definition.md#add-it-service-management-connector)。
 - ServiceNow 支持的版本：奥兰多、纽约、马德里、伦敦、Kingston、雅加达、伊斯坦布尔、赫尔辛基、Geneva。
+- 现在，从 Azure Monitor 发送的警报可以在 ServiceNow 中创建以下元素之一：事件、事件或警报。
 > [!NOTE]
 > ITSMC 仅支持 ServiceNow 的官方 SaaS 产品/服务。 当前不支持 ServiceNow 的专用部署。 
 
@@ -203,7 +205,7 @@ ms.locfileid: "90058761"
 > [!NOTE]
 > 在定义“设置 OAuth”的过程中，我们建议：
 >
-> 1) **将刷新令牌的生命期更新为 90 天 (7,776,000 秒)：** 在[设置 OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) 的阶段 2：[为客户端创建用于访问实例的终结点](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) 定义终结点之后，在“ServiceNow”边栏选项卡中搜索“系统 OAuth”，而不是选择“应用程序注册表”。 选择已定义的 OAuth 的名称，并将“刷新令牌生命期”字段更新为 7,776,000（以秒为单位，即 90 天）。
+> 1) **将刷新令牌的生命期更新为 90 天 (7,776,000 秒)：** 在 [设置 OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) 的阶段 2：[为客户端创建用于访问实例的终结点](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) 定义终结点之后，在“ServiceNow”边栏选项卡中搜索“系统 OAuth”，而不是选择“应用程序注册表”。 选择已定义的 OAuth 的名称，并将“刷新令牌生命期”字段更新为 7,776,000（以秒为单位，即 90 天）。
 > 最后单击“更新”。
 > 2) **建议建立一个内部程序，用于确保连接保持活动状态：** 根据刷新令牌生命期来刷新令牌。 请确保在刷新令牌的预期到期时间之前（建议在刷新令牌生命期到期前几天）执行以下操作：
 >
@@ -213,6 +215,8 @@ ms.locfileid: "90058761"
 > 3. 单击“撤销访问权限”，然后单击“撤消”。
 
 - 安装用于 Microsoft Log Analytics 集成的用户应用（ServiceNow 应用）。 [了解详细信息](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
+> [!NOTE]
+> ITSMC 仅支持从 ServiceNow 存储下载的适用于 Microsoft Log Analytics 集成的官方用户应用。 ITSMC 不支持 ServiceNow 端或不属于官方 ServiceNow 解决方案一部分的应用程序中的任何代码引入。 
 - 为安装的用户应用创建集成用户角色。 [此处](#create-integration-user-role-in-servicenow-app)提供了有关如何创建集成用户角色的信息。
 
 ### <a name="connection-procedure"></a>**连接过程**
@@ -253,7 +257,7 @@ ms.locfileid: "90058761"
 
 - 在此 ServiceNow 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 
 > [!NOTE]
@@ -263,7 +267,7 @@ ms.locfileid: "90058761"
 
 使用以下过程：
 
-1. 访问 [ServiceNow 应用商店](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1)，并在 ServiceNow 实例中安装**用于 ServiceNow 和 Microsoft OMS 集成的用户应用**。
+1. 访问 [ServiceNow 应用商店](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1)，并在 ServiceNow 实例中安装 **用于 ServiceNow 和 Microsoft OMS 集成的用户应用**。
    
    >[!NOTE]
    >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现在称为 Log Analytics。     
@@ -305,15 +309,14 @@ ms.locfileid: "90058761"
 
 > [!NOTE]
 > 
-> 从2020年10月，Provance ITSM 与 Azure 警报的集成将不再为新客户启用。 不支持新的 ITSM 连接。 
-> 将支持现有的 ITSM 连接。
+> 建议 Provance 客户使用 [Webhook 操作](./action-groups.md#webhook) Cherwell 和 Provance 终结点作为集成的另一种解决方案。
 
 ### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
 
-- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-definition.md#add-it-service-management-connector)。
 - Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../../app-service/configure-authentication-provider-aad.md)。
 
 - 用户角色：管理员。
@@ -347,7 +350,7 @@ ms.locfileid: "90058761"
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天。 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，ITSMC 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。|
 
-![Provance 连接](media/itsmc-connections/itsm-connections-provance-latest.png)
+![突出显示 "连接名称" 和 "合作伙伴类型" 列表的屏幕截图。](media/itsmc-connections/itsm-connections-provance-latest.png)
 
 成功连接并同步后：
 
@@ -355,7 +358,7 @@ ms.locfileid: "90058761"
 
 - 在此 Provance 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>将 Cherwell 连接到 Azure 中的 IT 服务管理连接器
 
@@ -363,14 +366,13 @@ ms.locfileid: "90058761"
 
 > [!NOTE]
 > 
-> 从2020年10月，Cherwell ITSM 与 Azure 警报的集成将不再为新客户启用。 不支持新的 ITSM 连接。 
-> 将支持现有的 ITSM 连接。
+> 建议 Cherwell 客户使用 [Webhook 操作](./action-groups.md#webhook) Cherwell 和 Provance 终结点作为集成的另一种解决方案。
 
 ### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
-- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-definition.md#add-it-service-management-connector)。
 - 已生成客户端 ID。 详细信息：[为 Cherwell 生成客户端 ID](#generate-client-id-for-cherwell)。
 - 用户角色：管理员。
 
@@ -412,7 +414,7 @@ ms.locfileid: "90058761"
 
 - 在此 Cherwell 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>为 Cherwell 生成客户端 ID
 
@@ -424,7 +426,7 @@ ms.locfileid: "90058761"
 
     ![Cherwell 用户 ID](media/itsmc-connections/itsmc-cherwell-client-id.png)
 
-
 ## <a name="next-steps"></a>后续步骤
- - [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
 
+[ITSM 连接器概述](itsmc-overview.md)[从 Azure 警报创建 ITSM 工作项](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) 
+ [ITSM 连接器中的问题疑难解答](./itsmc-resync-servicenow.md)

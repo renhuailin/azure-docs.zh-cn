@@ -1,20 +1,17 @@
 ---
-title: PowerShell 脚本：创建和查看 Azure 数据共享快照触发器 |Microsoft Docs
+title: PowerShell 脚本：创建和查看 Azure 数据共享快照触发器
 description: 此 PowerShell 脚本创建并获取共享快照触发器。
-services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 31d9754ddd9e9dfd0cca258901a6c8ab2c4a9cdb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 05b70641873ab352ca92ac199d99c05b2fe0f4e6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497159"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221292"
 ---
 # <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>使用 PowerShell 创建和共享快照触发器
 
@@ -47,12 +44,12 @@ Get-AzDataShareTrigger -ResourceGroupName $resourceGroupName -AccountName $dataS
 
 | 命令 | 说明 |
 |---|---|
-| [新-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger?view=azps-2.6.0) | 创建共享快照触发器。 |
-| [AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | 获取共享同步的同步设置。 |
+| [新-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger) | 创建共享快照触发器。 |
+| [AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting) | 获取共享同步的同步设置。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/)。
+有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/)。
 
-可以在[Azure 数据共享 powershell 示例](../../samples-powershell.md)中找到其他 Azure 数据共享 powershell 脚本示例。
+可以在 [Azure 数据共享 powershell 示例](../../samples-powershell.md)中找到其他 Azure 数据共享 powershell 脚本示例。

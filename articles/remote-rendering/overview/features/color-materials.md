@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613777"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024089"
 ---
 # <a name="color-materials"></a>颜色材料
 
@@ -22,7 +22,7 @@ ms.locfileid: "89613777"
 
 这些属性是所有材料共有的：
 
-* **albedoColor：** 此颜色与其他颜色（如*albedoMap*或* :::no-loc text="vertex"::: 颜色*）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
+* **albedoColor：** 此颜色与其他颜色（如 *albedoMap* 或 *:::no-loc text="vertex"::: 颜色*）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
 
   > [!NOTE]
   > 由于颜色材料不反映环境，因此完全透明的颜色材料将变得不可见。 这对于 [.pbr 材料](pbr-materials.md)是不同的。
@@ -33,9 +33,17 @@ ms.locfileid: "89613777"
 
 * **textureCoordinateScale** 和 **textureCoordinateOffset：** 将刻度与 UV 纹理坐标相乘，并向其添加偏移量。 可用于拉伸和移动纹理。 默认小数位数为1，1) ，偏移量为 (0，0)  (。
 
-* **useVertexColor：** 如果网格包含 :::no-loc text="vertex"::: 颜色且已启用此选项，则网格的 :::no-loc text="vertex"::: 颜色将被相乘到 *albedoColor* 和 *albedoMap*中。 默认情况下， *useVertexColor* 处于禁用状态。
+* **useVertexColor：** 如果网格包含 :::no-loc text="vertex"::: 颜色且已启用此选项，则网格的 :::no-loc text="vertex"::: 颜色将被相乘到 *albedoColor* 和 *albedoMap* 中。 默认情况下， *useVertexColor* 处于禁用状态。
 
 * **isDoubleSided：** 如果将 sidedness 设置为 true，则即使相机正在查看背景面，也会呈现带有此材料的三角形。 默认情况下，此选项处于禁用状态。 另请参阅[ :::no-loc text="Single-sided"::: 呈现](single-sided-rendering.md)。
+
+* **TransparencyWritesDepth：** 如果对材料设置了 TransparencyWritesDepth 标志，而材料是透明的，则使用此材料的对象也会对最终的深度缓冲区产生影响。 请参阅下一节中的颜色材料属性 *transparencyMode* 。 如果用例需要更变得合理的 [延迟阶段 reprojection](late-stage-reprojection.md) 完全透明的场景，则建议启用此功能。 对于混合的不透明/透明场景，此设置可能会引入可能 reprojection 行为或 reprojection 项目。 出于此原因，一般用例的默认设置和推荐设置是禁用此标志。 书写的深度值取自离相机最近的对象的每像素深度层。
+
+* **FresnelEffect：** 此材料标志启用对各自材料的加法 [菲涅尔衰减效果](../../overview/features/fresnel-effect.md) 。 此效果的外观由以下所述的其他菲涅尔衰减参数控制。 
+
+* **FresnelEffectColor：** 此材料使用的菲涅尔衰减颜色。 仅当已对此材料设置了菲涅尔衰减效果位时，才 (参阅上面) 。 此属性控制菲涅尔衰减照射 (的基本颜色，请参阅 [菲涅尔衰减效果](../../overview/features/fresnel-effect.md) 以获取完整说明) 。 目前只有 rgb 通道值非常重要，并且 alpha 值将被忽略。
+
+* **FresnelEffectExponent：** 此材料使用的菲涅尔衰减指数。 仅当已对此材料设置了菲涅尔衰减效果位时，才 (参阅上面) 。 此属性控制菲涅尔衰减的照射的传播。 最小值0.01 导致整个对象分布。 最大值10.0 限制仅显示最 gracing 边缘。
 
 ## <a name="color-material-properties"></a>颜色材料属性
 
@@ -45,7 +53,7 @@ ms.locfileid: "89613777"
 
 * **transparencyMode：** 与 [.pbr 材料](pbr-materials.md)相反，颜色材料区分不同的透明模式：
 
-  1. 不**透明：** 默认模式禁用透明度。 不过，即使有足够的，也仍然可以进行 Alpha 剪裁。
+  1. 不 **透明：** 默认模式禁用透明度。 不过，即使有足够的，也仍然可以进行 Alpha 剪裁。
   
   1. **AlphaBlended：** 此模式类似于 .PBR 材料的透明模式。 它应该用于查看-通过玻璃等材料。
 
@@ -53,10 +61,10 @@ ms.locfileid: "89613777"
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # ColorMaterial 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
-* [C # RemoteManager CreateMaterial ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
-* [C + + ColorMaterial 类](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
-* [C + + RemoteManager：： CreateMaterial ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C # ColorMaterial 类](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C # RemoteManager CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C + + ColorMaterial 类](/cpp/api/remote-rendering/colormaterial)
+* [C + + RemoteManager：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>后续步骤
 

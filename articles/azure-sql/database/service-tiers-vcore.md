@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
-ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614421"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793137"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ vCore 模型中的服务层级选项包括“常规用途”、“业务关键�
 |-|**常规用途**|**业务关键**|**超大规模**|
 |---|---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |它使用多个独立副本为商业应用程序提供最高级别的故障恢复能力，为每个数据库副本提供最高的 I/O 性能。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，提供更高的故障恢复能力。 |
-|存储|使用远程存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**SQL 托管实例**：32 GB - 8 TB |使用本地 SSD 存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**SQL 托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
-|IOPS 和吞吐量（近似值）|**SQL 数据库**：请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。<br/>**SQL 托管实例**：请参阅 [Azure SQL 托管实例资源限制概述](../managed-instance/resource-limits.md#service-tier-characteristics)。|请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。|超大规模是具有多个级别缓存的多层体系结构。 有效的 IOPS 和吞吐量将取决于工作负载。|
+|存储|使用远程存储。<br/>**SQL 数据库预配计算** ：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**SQL 托管实例** ：32 GB - 8 TB |使用本地 SSD 存储。<br/>**SQL 数据库预配计算** ：<br/>5 GB – 4 TB<br/>**SQL 托管实例** ：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
+|IOPS 和吞吐量（近似值）|**SQL 数据库** ：请查看 [单一数据库](resource-limits-vcore-single-databases.md)和 [弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。<br/>**SQL 托管实例** ：请参阅 [Azure SQL 托管实例资源限制概述](../managed-instance/resource-limits.md#service-tier-characteristics)。|请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。|超大规模是具有多个级别缓存的多层体系结构。 有效的 IOPS 和吞吐量将取决于工作负载。|
 |可用性|1 个副本，无读取缩放副本|3个副本，1 [个读取缩放副本](read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](read-scale-out.md)|
 |备份|[读取访问异地冗余存储 (RA-GRS)](../../storage/common/geo-redundant-design.md)，7-35 天（默认为 7 天）|[RA-GRS](../..//storage/common/geo-redundant-design.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
 |内存中|不支持|支持|不支持|
@@ -106,12 +106,12 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 |硬件代次  |计算  |内存  |
 |:---------|:---------|:---------|
-|Gen4     |-Intel® E5-2673 v3 (Haswell) 2.4 GHz 处理器<br>- 最多预配 24 个 vCore（1 个 vCore = 1 个物理核心）  |- 每个 vCore 7 GB<br>- 最多预配 168 GB|
-|Gen5     |**预配计算**<br>-Intel® E5-2673 v4 (Broadwell) 2.3-GHz、Intel® SP-8160 (Skylake) \* ，以及 intel® 8272CL (2.5 GHz \* 处理器<br>- 最多预配 80 个 vCore（1 个 vCore = 1 个超线程）<br><br>**无服务器计算**<br>-Intel® E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel® SP-8160 (Skylake) * 处理器<br>- 自动扩展为 40 个 vCore（1 个 vCore = 1 个超线程）|**预配计算**<br>- 每个 vCore 5.1 GB<br>- 最多预配 408 GB<br><br>**无服务器计算**<br>- 自动扩展为每个vCore 24 GB<br>- 自动纵向扩展为最大 120 GB|
+|Gen4     |- Intel® E5-2673 v3 (Haswell) 2.4 GHz 处理器<br>- 最多预配 24 个 vCore（1 个 vCore = 1 个物理核心）  |- 每个 vCore 7 GB<br>- 最多预配 168 GB|
+|Gen5     |**预配计算**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz、Intel® SP-8160 (Skylake)\* 和 Intel® 8272CL (Cascade Lake) 2.5 GHz\* 处理器<br>- 最多预配 80 个 vCore（1 个 vCore = 1 个超线程）<br><br>**无服务器计算**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel® SP-8160 (Skylake)* 处理器<br>- 自动扩展为 40 个 vCore（1 个 vCore = 1 个超线程）|**预配计算**<br>- 每个 vCore 5.1 GB<br>- 最多预配 408 GB<br><br>**无服务器计算**<br>- 自动扩展为每个vCore 24 GB<br>- 自动纵向扩展为最大 120 GB|
 |Fsv2 系列     |-Intel® 8168 (Skylake) 处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-预配多达 72 Vcore (1 vCore = 1 超线程) |-1.9 GB/vCore<br>-预配高达 136 GB|
 |M 系列     |-Intel® E7-8890 v3 2.5 GHz 和 Intel® 8280M 2.7 GHz (级联 Lake) 处理器<br>-预配多达 128 Vcore (1 vCore = 1 超线程) |-每个 vCore 29 GB<br>-预配高达 3.7 TB|
 
-\* 在 Skylake 动态管理视图 [dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 中，使用 INTEL® SP-8160 () 处理器的数据库的硬件生成显示为 Gen6，而使用 INTEL® 8272CL (Cascade Lake) 的数据库的硬件生成则显示为 Gen7。 不管处理器类型如何（Broadwell、Skylake 或 Cascade Lake），所有 Gen5 数据库的资源限制都相同。
+\* 在 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 动态管理视图中，使用 Intel® SP-8160 (Skylake) 处理器的数据库的硬件代系会显示为 Gen6，而使用 Intel® 8272CL (Cascade Lake) 的数据库的硬件代系会显示为 Gen7。 不管处理器类型如何（Broadwell、Skylake 或 Cascade Lake），所有 Gen5 数据库的资源限制都相同。
 
 有关资源限制的详细信息，请参阅[单一数据库的资源限制 (vCore)](resource-limits-vcore-single-databases.md) 或[弹性池的资源限制 (vCore)](resource-limits-vcore-elastic-pools.md)。
 
@@ -168,7 +168,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-有关更多详细信息，请查看 [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) 命令。
+有关更多详细信息，请查看 [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) 命令。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -178,7 +178,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-有关更多详细信息，请查看 [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) 命令。
+有关更多详细信息，请查看 [az sql mi update](/cli/azure/sql/mi#az-sql-mi-update) 命令。
 
 ---
 
@@ -238,5 +238,4 @@ Approved support requests are typically fulfilled within 5 business days.
 
 - [Azure SQL 数据库基于 vCore 的资源限制](resource-limits-vcore-single-databases.md)。
 - [共用 Azure SQL 数据库基于 vCore 的资源限制](resource-limits-vcore-elastic-pools.md)。
-- [Azure SQL 托管实例基于 vCore 的资源限制](../managed-instance/resource-limits.md)。 
-
+- [Azure SQL 托管实例基于 vCore 的资源限制](../managed-instance/resource-limits.md)。

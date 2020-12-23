@@ -66,6 +66,7 @@
     - name: 媒体图
       href: media-graph-concept.md
     - name: 媒体图扩展
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: 视频录制
       href: video-recording-concept.md
@@ -95,8 +96,14 @@
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: 在 Azure Stack Edge 上部署
       href: deploy-azure-stack-edge-how-to.md
+    - name: 配置信号入口
+      href: configure-signal-gate-how-to.md
     - name: 疑难解答
       href: troubleshoot-how-to.md
+    - name: 正在升级
+      href: upgrading-lva-module.md
+    - name: 开发和部署 gRPC 推理服务器
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: 参考
   items:
     - name: HTTP 扩展协议
@@ -115,3 +122,5 @@
       href: faq.md
     - name: 生产就绪情况和最佳做法
       href: production-readiness.md
+    - name: 透明度和负责任的 AI 原则
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'

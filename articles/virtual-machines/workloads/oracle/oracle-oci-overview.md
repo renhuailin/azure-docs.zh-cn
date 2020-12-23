@@ -1,25 +1,19 @@
 ---
 title: 将 Microsoft Azure 与 Oracle 云基础结构集成 | Microsoft Docs
 description: 了解将 Microsoft Azure 上运行的 Oracle 应用与 Oracle 云基础结构 (OCI) 中的数据库集成的解决方案。
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: e8e9bf23c236f805135d7d46b969c564975448ac
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274497"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965402"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成 Microsoft Azure 和 Oracle 云基础结构的 Oracle 应用程序解决方案
 
@@ -55,6 +49,7 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量的跨云连接，使�
 * Azure 加拿大中部 (CanadaCentral) 和 OCI 多伦多（加拿大东南部）
 * Azure 西欧 (WestEurope) 和 OCI 阿姆斯特丹（荷兰西北部）
 * Azure 日本东部 (JapanEast) 和 OCI 东京（日本东部）
+* Azure 美国西部 (WestUS) & OCI 圣马力诺 (美国西部) 
 
 ## <a name="networking"></a>网络
 
@@ -68,7 +63,7 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量的跨云连接，使�
 
 网络安全是任何企业应用程序的重要组成部分，是这种多云解决方案的核心。 经由 ExpressRoute 和 FastConnect 的任何流量通过专用网络传递。 此配置可实现 Azure 虚拟网络与 Oracle 虚拟云网络的安全通信。 无需向 Azure 中的任何虚拟机提供公共 IP 地址。 同样，在 OCI 中不需要 Internet 网关。 所有通信都通过计算机的专用 IP 地址进行。
 
-此外，还可以在 OCI 虚拟云网络和安全规则（附加到 Azure [网络安全组](../../../virtual-network/security-overview.md)）上设置[安全列表](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)。 使用这些规则来控制虚拟网络中计算机之间的流量流。 可以在计算机级别、子网级别以及虚拟网络级别添加网络安全规则。
+此外，还可以在 OCI 虚拟云网络和安全规则（附加到 Azure [网络安全组](../../../virtual-network/network-security-groups-overview.md)）上设置[安全列表](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)。 使用这些规则来控制虚拟网络中计算机之间的流量流。 可以在计算机级别、子网级别以及虚拟网络级别添加网络安全规则。
 
 每个 [WebLogic Server Azure 应用程序](oracle-weblogic.md)都会创建预配置为使用 WebLogic Server 端口配置的网络安全组。
  

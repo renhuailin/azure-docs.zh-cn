@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73836767"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024970"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>合成语音技术的负责任部署指南
 下面是 Microsoft 提供的使用合成语音技术时的一般设计准则。 Microsoft 在配音员、消费者以及有言语障碍的个人的协助下进行了研究，在研究中制定了这些准则，用以指导合成语音的负责任部署。
@@ -39,7 +39,7 @@ ms.locfileid: "73836767"
 与配音员（例如声优）合作创建合成语音时，以下准则适用。
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>获得配音员的实质性同意
-配音员希望能够控制他们的语音字体（如何使用以及在哪里使用），并在其语音被使用时获得补偿。 因此，系统所有者应获得配音员的明确书面许可，并在用例、使用期限、补偿等合同细节方面明确化。 一些配音员不知道该技术的潜在恶意使用，因此系统所有者应向他们介绍该技术的功能。 有关配音员和许可的详细信息，请阅读[针对配音员的披露内容](https://aka.ms/disclosure-voice-talent)。
+配音员希望能够控制他们的语音字体（如何使用以及在哪里使用），并在其语音被使用时获得补偿。 因此，系统所有者应获得配音员的明确书面许可，并在用例、使用期限、补偿等合同细节方面明确化。 一些配音员不知道该技术的潜在恶意使用，因此系统所有者应向他们介绍该技术的功能。 有关配音员和许可的详细信息，请阅读[针对配音员的披露内容](/legal/cognitive-services/speech-service/disclosure-voice-talent)。
 
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>针对言语障碍患者的注意事项
@@ -57,13 +57,13 @@ ms.locfileid: "73836767"
 
 ## <a name="reference-docs"></a>参考文档
 
-* [针对配音员的披露内容](https://aka.ms/disclosure-voice-talent)
+* [针对配音员的披露内容](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [管控概述](concepts-gating-overview.md)
 * [如何披露](concepts-disclosure-guidelines.md)
 * [披露设计模式](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [针对配音员的披露内容](https://aka.ms/disclosure-voice-talent)
+* [针对配音员的披露内容](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [如何披露](concepts-disclosure-guidelines.md)
 * [披露设计模式](concepts-disclosure-patterns.md)

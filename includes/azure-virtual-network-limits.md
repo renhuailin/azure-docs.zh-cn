@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8d5f9b360e1d81bae62e34a8e20d61636e1d22ea
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91859148"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366394"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure 资源管理器
 以下限制仅适用于通过每个订阅的每个区域的 Azure 资源管理器进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
@@ -55,6 +55,7 @@ ms.locfileid: "91859148"
 | 公共 IP 地址<sup>1</sup> | 基本版为 10。 | 请联系支持人员。 |
 | 静态公共 IP 地址<sup>1</sup> | 基本版为 10。 | 请联系支持人员。 |
 | 标准公共 IP 地址<sup>1</sup> | 10 | 请联系支持人员。 |
+| [每个资源组的公共 IP 地址](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | 请联系支持人员。 | 
 | 公共 IP 前缀 | 受订阅中的标准公共 IP 数限制 | 请联系支持人员。 |
 | 公共 IP 前缀长度 | /28 | 请联系支持人员。 |
 
@@ -72,9 +73,10 @@ ms.locfileid: "91859148"
 | 每个 NIC 的规则数（在 NIC 上的所有 IP 上） | 300                           |
 | 前端 IP 配置数              | 600                           |
 | 后端池大小                       | 单个虚拟网络 1000 个 IP 配置 |
-| 每个负载均衡器的后端资源数 <sup>1<sup> | 150                   |
+| 每个负载均衡器的后端资源数 <sup>1<sup> | 250                   |
 | 高可用性端口                 | 每个内部前端 1 个       |
 | 每个负载均衡器的出站规则        | 600                           |
+| 每个 VM 的负载均衡器数                   | 2（1 个公共，1 个内部）   |
 
 <sup>1</sup>限制是最多 150 种资源，采用独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合。
 
@@ -88,6 +90,7 @@ ms.locfileid: "91859148"
 | 前端 IP 配置数              | 200                          |
 | 后端池大小                       | 单个可用性集 300 个 IP 配置 |
 | 每个负载均衡器的可用性集数     | 1                            |
+| 每个 VM 的负载均衡器数                   | 2（1 个公共，1 个内部）  |
 
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -104,6 +107,6 @@ ms.locfileid: "91859148"
 | 每个路由表的用户定义的路由数 |400 |400 |
 | 公共 IP 地址 (动态) |500 |500 |
 | 保留的公共 IP 地址 |500 |500 |
-| 每个部署的公共 VIP |5 |联系支持人员 |
-| 每个部署的专用 VIP（内部负载均衡） |1 |1 |
+| 每个部署的公共 IP |5 |联系支持人员 |
+| 每个部署的专用 IP（内部负载均衡） |1 |1 |
 | 终结点访问控制列表 (ACL) |50 |50 |

@@ -1,5 +1,5 @@
 ---
-title: 自定义 SQL 信息保护-Azure 安全中心
+title: Azure 安全中心中的 SQL 信息保护策略
 description: 了解如何在 Azure 安全中心中自定义信息保护策略。
 services: security-center
 documentationcenter: na
@@ -11,81 +11,141 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: aa73fed0af0d6cd7154118d8987f42e55814e25a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448938"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013779"
 ---
-# <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略
+# <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure 安全中心中的 SQL 信息保护策略
  
-可以在 Azure 安全中心为整个 Azure 租户定义和自定义 SQL 信息保护策略。
+SQL 信息保护的 [数据发现和分类机制](../azure-sql/database/data-discovery-and-classification-overview.md) 提供了高级功能，可用于发现、分类、标记和报告数据库中的敏感数据。 它内置于 [AZURE Sql 数据库](../azure-sql/database/sql-database-paas-overview.md)、 [azure Sql 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)和 [azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中。
 
-信息保护是一项高级安全功能，用于发现、分类、标记和报告 Azure 数据资源中的敏感数据。 发现和分类您最敏感的数据 (业务、财务、医疗保健、个人数据等 ) 可以在您的组织信息保护威望中扮演 pivotal 角色。 它可以充当基础结构，用于：
-- 帮助满足数据隐私标准和法规遵从性要求
-- 安全方案，如监视 (审核) 和警报对敏感数据的异常访问
-- 控制对包含高度敏感数据的数据存储的访问并增强其安全性
- 
-[SQL 信息保护](../azure-sql/database/data-discovery-and-classification-overview.md)为 SQL 数据存储实现此范例，目前 Azure SQL 数据库支持该范例。 SQL 信息保护自动发现和分类潜在的敏感数据，提供标记机制，用于通过分类属性永久标记敏感数据，并提供显示数据库分类状态的详细仪表板。 此外，它还会计算 SQL 查询的结果集敏感性，以便可以显式审核提取敏感数据的查询，并且可以保护数据。 有关 SQL 信息保护的详细信息，请参阅 [AZURE SQL 数据库数据发现和分类](../azure-sql/database/data-discovery-and-classification-overview.md)。
- 
-该分类机制基于构成分类的两个主要构造：标签和信息类型********。
-- **标签** -主要分类属性，用于定义列中存储数据的敏感度级别。 
-- **信息类型**：为列中存储的数据的类型提供其他粒度。
- 
-信息保护服务随内置的一组标签和信息类型（默认使用）提供。 若要自定义这些标签和类型，可以在安全中心自定义信息保护策略。
- 
-## <a name="customize-the-information-protection-policy"></a>自定义信息保护策略
-要自定义 Azure 租户的信息保护策略，需要拥有[租户根管理组的管理权限](security-center-management-groups.md)。 
- 
-1. 在安全中心主菜单的 " **资源安全** " 下，单击 " **数据 & 存储** "，然后单击 " **SQL 信息保护** " 按钮。
+分类机制基于以下两个元素：
 
-   ![配置信息保护策略](./media/security-center-info-protection-policy/security-policy.png) 
+- **标签** -主要分类属性，用于定义列中存储 *数据的敏感度级别* 。 
+- **信息类型** -为列中存储的 *数据类型* 提供了额外的粒度。
+
+安全中心内的信息保护策略选项提供了一组预定义的标签和信息类型，用作分类引擎的默认值。 你可以根据组织的需求自定义策略，如下所述。
+
+> [!IMPORTANT]
+> 若要为你的 Azure 租户自定义信息保护策略，你将需要租户的根管理组的管理权限。 若要深入了解 [Azure 安全中心，请参阅获取租户范围的可见性](security-center-management-groups.md)。
+
+:::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="显示 SQL 信息保护策略的页面":::
  
-2. 在 **SQL 信息保护** 页中，可以查看当前的标签集。 这些是用于对数据的敏感度级别进行分类的主要分类属性。 此处，可以为租户配置信息保护标签和信息类型********。 
+
+
+
+## <a name="how-do-i-access-the-sql-information-protection-policy"></a>如何实现访问 SQL 信息保护策略吗？
+
+有三种方法可以访问信息保护策略：
+
+- **(建议)** 从安全中心的 "定价和设置" 页
+- 根据安全建议，应将 SQL 数据库中的敏感数据分类
+- 从 Azure SQL DB 数据发现页
+
+以下各项显示在下面的相关选项卡中。
+
+
+
+### <a name="from-security-centers-settings"></a>[**从安全中心的设置**](#tab/sqlip-tenant)
+
+### <a name="access-the-policy-from-security-centers-pricing-and-settings-page"></a>从安全中心的 "定价和设置" 页访问策略 <a name="sqlip-tenant"></a>
+
+在安全中心的 " **定价和设置** " 页中，选择 " **SQL 信息保护**"。
+
+> [!NOTE]
+> 此选项仅对具有租户级别权限的用户显示。 
+
+:::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="从 Azure 安全中心的 &quot;定价和设置&quot; 页访问 SQL 信息保护策略":::
+
+
+
+### <a name="from-security-centers-recommendation"></a>[**从安全中心的建议**](#tab/sqlip-db)
+
+### <a name="access-the-policy-from-the-security-center-recommendation"></a>从安全中心建议访问策略 <a name="sqlip-db"></a>
+
+使用安全中心的建议 "应该对 SQL 数据库中的敏感数据进行分类"，以便查看数据库的 "数据发现" 和 "分类" 页。 在这里，你还会看到发现的列包含我们建议你进行分类的信息。
+
+1. 在安全中心的 " **建议** " 页上，搜索 **应分类的 SQL 数据库中的建议敏感数据**。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="查找提供对 SQL 信息保护策略的访问的建议":::
+
+1. 从 "建议详细信息" 页中，从 " **正常** " 或 "不 **正常** " 选项卡中选择数据库。
+
+1. 此时将打开 " **数据发现 & 分类** " 页。 选择“配置” 。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-security-center-recommendation.png" alt-text="从 Azure 安全中心的相关建议打开 SQL 信息保护策略":::
+
+
+
+### <a name="from-azure-sql"></a>[**从 Azure SQL**](#tab/sqlip-azuresql)
+
+### <a name="access-the-policy-from-azure-sql"></a>从 Azure SQL 访问策略 <a name="sqlip-azuresql"></a>
+
+1. 在 Azure 门户中，打开 Azure SQL。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/open-azure-sql.png" alt-text="从 Azure 门户打开 Azure SQL":::
+
+1. 选择任何数据库。
+
+1. 在菜单的 " **安全** " 区域中，打开 "& 分类" 页上的 " **数据发现** " (1) 并选择 " **配置** (2) "。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-azure-sql.png" alt-text="从 Azure SQL 打开 SQL 信息保护策略":::
+
+--- 
+
+
+## <a name="customize-your-information-types"></a>自定义信息类型
+
+管理和自定义信息类型：
+
+1. 选择 " **管理信息类型**"。
+
+    :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="管理信息保护策略的信息类型":::
+
+1. 若要添加新类型，请选择 " **创建信息类型**"。 你可以为信息类型配置名称、说明和搜索模式字符串。 搜索模式字符串可以选择使用带有通配符的关键字（使用字符 %），自动发现引擎根据列的元数据使用该关键字来识别数据库中的敏感数据。
  
-### <a name="customizing-labels"></a>自定义标签
+    :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="为信息保护策略配置新的信息类型":::
+
+1. 还可以通过添加其他搜索模式字符串、禁用一些现有字符串或更改说明来修改内置类型。 
+
+    > [!TIP]
+    > 不能删除或更改内置类型。 
+
+1. 信息类型按发现排名升序列出，这意味着列表中排名较高的类型将先尝试匹配。 要更改信息类型之间的排名，请将类型拖动到表格中的正确位置，或使用“上移”和“下移”按钮更改顺序。 
+
+1. 完成后，选择 **"确定"** 。
+
+1. 完成信息类型管理后，请确保关联相关类型和相关标签，方法是单击特定标签的“配置”，然后根据需要添加或删除信息类型。
+
+1. 若要应用更改，请在主 **标签** 页面中选择 "**保存**"。
  
-1. 可以编辑或删除任何现有标签，也可以添加新标签。 要编辑现有标签，请选择该标签，然后单击顶部或右侧上下文菜单中的“配置”****。 要添加新标签，请单击顶部菜单栏或标签表底部的“创建标签”****。
-2. 在“配置敏感度标签”屏幕中，可以创建或更改标签名称和描述****。 还可以通过打开或关闭“已启用”开关来设置标签的状态（活动或禁用）****。 最后，可以添加或删除与标签关联的信息类型。 若发现与该信息类型匹配的任何数据，该数据将自动在分类建议中包含关联的敏感度标签。
-3. 单击 **“确定”** 。
- 
-   ![配置敏感度标签](./media/security-center-info-protection-policy/config-sensitivity-label.png)
- 
-4. 标签按敏感度升序排列。 要更改标签之间的排名，请拖动标签以在表格中重新排序，或使用“上移”和“下移”按钮更改顺序********。 
- 
-    ![标签列表](./media/security-center-info-protection-policy/move-up.png)
- 
-5. 完成设置后，请务必单击屏幕顶部的“保存”****。
- 
- 
-## <a name="adding-and-customizing-information-types"></a>添加和自定义信息类型
- 
-1. 可以通过单击“管理信息类型”来管理和自定义信息类型****。
-2. 要添加新的信息类型，请在顶部菜单中选择“创建信息类型”********。 可以为“信息类型”配置名称、描述和搜索模式字符串****。 搜索模式字符串可以选择使用带有通配符的关键字（使用字符 %），自动发现引擎根据列的元数据使用该关键字来识别数据库中的敏感数据。
- 
-    ![创建信息类型](./media/security-center-info-protection-policy/info-types.png)
- 
-3. 还可以通过添加其他搜索模式字符串、禁用某些现有字符串或更改说明来配置内置信息类型****。 无法删除内置信息类型或编辑其名称****。 
-4. 信息类型按发现排名升序列出，这意味着列表中排名较高的类型将先尝试匹配****。 要更改信息类型之间的排名，请将类型拖动到表格中的正确位置，或使用“上移”和“下移”按钮更改顺序********。 
-5. 完成后单击“确定”****。
-6. 完成信息类型管理后，请确保关联相关类型和相关标签，方法是单击特定标签的“配置”，然后根据需要添加或删除信息类型****。
-7. 请务必单击主“标签”边栏选项卡中的“保存”以应用所有更改********。
- 
-完全定义并保存信息保护策略后，该策略将应用于租户中所有 Azure SQL 数据库的数据分类。
+
+## <a name="exporting-and-importing-a-policy"></a>导出和导入策略
+
+你可以使用定义的标签和信息类型下载 JSON 文件，在所选编辑器中编辑该文件，然后导入更新的文件。 
+
+:::image type="content" source="./media/security-center-info-protection-policy/export-import.png" alt-text="导出和导入信息保护策略":::
+
+> [!NOTE]
+> 你将需要租户级别的权限才能导入策略文件。 
+
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>使用 Azure PowerShell 管理 SQL 信息保护
 
-- [AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy)：检索有效的租户 SQL 信息保护策略。
-- [AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy)：设置有效的租户 SQL 信息保护策略。
+- [AzSqlInformationProtectionPolicy](/powershell/module/az.security/get-azsqlinformationprotectionpolicy)：检索有效的租户 SQL 信息保护策略。
+- [AzSqlInformationProtectionPolicy](/powershell/module/az.security/set-azsqlinformationprotectionpolicy)：设置有效的租户 SQL 信息保护策略。
  
+
 ## <a name="next-steps"></a>后续步骤
  
-本文介绍了如何在 Azure 安全中心中定义 SQL 信息保护策略。 若要详细了解如何使用 SQL 信息保护对 SQL 数据库中的敏感数据进行分类和保护，请参阅 [Azure SQL 数据库数据发现和分类](../azure-sql/database/data-discovery-and-classification-overview.md)。 
+本文介绍了如何在 Azure 安全中心定义信息保护策略。 若要详细了解如何使用 SQL 信息保护对 SQL 数据库中的敏感数据进行分类和保护，请参阅 [Azure SQL 数据库数据发现和分类](../azure-sql/database/data-discovery-and-classification-overview.md)。
 
-有关 Azure 安全中心中的安全策略和数据安全性的详细信息，请参阅以下文章：
+有关安全中心安全策略和数据安全的详细信息，请参阅以下文章：
  
 - [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md)：了解如何为 Azure 订阅和资源组配置安全策略
 - [Azure 安全中心数据安全](security-center-data-security.md)：了解安全中心如何管理和保护数据

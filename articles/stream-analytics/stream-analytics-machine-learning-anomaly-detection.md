@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044373"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023391"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
@@ -42,7 +42,7 @@ Azure 流分析可在云和 Azure IoT Edge 中使用，它提供内置的机器�
 
 ## <a name="spike-and-dip"></a>高峰和低谷
 
-时序事件流中的暂时性异常称为高峰和低谷。 可以使用基于机器学习的运算符 [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+时序事件流中的暂时性异常称为高峰和低谷。 可以使用基于机器学习的运算符 [AnomalyDetection_SpikeAndDip](/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ) 来监视高峰和低谷。
 
 ![高峰和低谷异常示例](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
@@ -74,9 +74,9 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>变化点
 
-时序事件流中的永久性异常是指事件流中的值分布变化，例如级别变化和趋势。 在流分析中，将使用基于机器学习的 [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 运算符检测此类异常。
+时序事件流中的永久性异常是指事件流中的值分布变化，例如级别变化和趋势。 在流分析中，将使用基于机器学习的 [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 运算符检测此类异常。
 
-永久性变化的持续时间比高峰和低谷要长得多，可能表示发生了灾难性事件。 通常肉眼很难观察到永久性变化，但可以使用“AnomalyDetection_ChangePoint”运算符来检测****。
+永久性变化的持续时间比高峰和低谷要长得多，可能表示发生了灾难性事件。 通常肉眼很难观察到永久性变化，但可以使用“AnomalyDetection_ChangePoint”运算符来检测。
 
 下图是级别变化的示例：
 
@@ -114,10 +114,10 @@ FROM AnomalyDetectionStep
 
 这些模型的性能取决于历史记录大小、窗口持续时间、事件负载，以及是否使用函数级分区。 本部分讨论这些配置，并通过示例来说明如何保持每秒 1K、5K 和 10K 个事件的引入速率。
 
-* **历史记录大小** - 这些模型的性能与**历史记录大小**呈线性关系。 历史记录越长，模型为新事件评分所需的时间就越长。 这是因为，这些模型会将新事件与历史缓冲区中的每个以往事件进行比较。
-* **窗口持续时间** - **窗口持续时间**应反映接收历史记录大小指定的事件数所花费的时间。 如果窗口中没有这么多事件，Azure 流分析会插补缺失值。 因此，CPU 消耗量取决于历史记录大小。
-* **事件负载** - **事件负载**越大，模型执行的工作就越多，因而会影响 CPU 消耗量。 假设易并行有利于业务逻辑利用更多的输入分区，则可以通过易并行来横向扩展作业。
-* **函数级别分区**  - **函数级别分区**是通过 ```PARTITION BY``` 在异常检测函数调用中使用来完成的。 此类分区会增大开销，因为需要同时保留多个模型的状态。 函数级分区在设备级分区等方案中使用。
+* **历史记录大小** - 这些模型的性能与 **历史记录大小** 呈线性关系。 历史记录越长，模型为新事件评分所需的时间就越长。 这是因为，这些模型会将新事件与历史缓冲区中的每个以往事件进行比较。
+* **窗口持续时间** - **窗口持续时间** 应反映接收历史记录大小指定的事件数所花费的时间。 如果窗口中没有这么多事件，Azure 流分析会插补缺失值。 因此，CPU 消耗量取决于历史记录大小。
+* **事件负载** - **事件负载** 越大，模型执行的工作就越多，因而会影响 CPU 消耗量。 假设易并行有利于业务逻辑利用更多的输入分区，则可以通过易并行来横向扩展作业。
+* **函数级别分区**  - **函数级别分区** 是通过 ```PARTITION BY``` 在异常检测函数调用中使用来完成的。 此类分区会增大开销，因为需要同时保留多个模型的状态。 函数级分区在设备级分区等方案中使用。
 
 ### <a name="relationship"></a>关系
 历史记录大小、窗口持续时间和总事件负载之间的关系如下：
@@ -152,13 +152,12 @@ Azure 示例[大规模流式处理存储库](https://github.com/Azure-Samples/st
 > 若要获得更准确的估算值，请根据具体的方案自定义示例。
 
 ### <a name="identifying-bottlenecks"></a>识别瓶颈
-使用 Azure 流分析作业中的“指标”窗格可识别管道中的瓶颈。 查看针对吞吐量的“输入/输出事件”，以及[“水印延迟”](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或“积压事件”，可以确定作业是否跟得上输入速率。**** **** 对于事件中心指标，请查看“受限制的请求数”并相应地调整阈值单位。**** 对于 Cosmos DB 指标，请查看“吞吐量”下的“每个分区键范围的最大 RU/秒消耗量”，以确保均匀消耗分区键范围。**** 对于 Azure SQL 数据库，请监视“日志 IO”和“CPU”。**** ****
+使用 Azure 流分析作业中的“指标”窗格可识别管道中的瓶颈。 查看针对吞吐量的“输入/输出事件”，以及[“水印延迟”](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或“积压事件”，可以确定作业是否跟得上输入速率。  对于事件中心指标，请查看“受限制的请求数”并相应地调整阈值单位。 对于 Cosmos DB 指标，请查看“吞吐量”下的“每个分区键范围的最大 RU/秒消耗量”，以确保均匀消耗分区键范围。 对于 Azure SQL 数据库，请监视“日志 IO”和“CPU”。 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)

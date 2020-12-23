@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 12b20f7556a460506067305401fb2379678ee58e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 773334787ec7b2706c16e517281d6a60215ad482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371688"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353011"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>适用于 Azure 预留自动化的 API
 
@@ -62,7 +62,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 也可在 Azure 门户中购买预留。 有关详细信息，请参阅以下文章：
 
 服务计划：
-- [虚拟机](../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
+- [虚拟机](../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fbilling%2fTOC.json)
 -  [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json)
 - [SQL 数据库](../../azure-sql/database/reserved-capacity-overview.md?toc=/azure/billing/TOC.json)
 
@@ -115,4 +115,4 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 - [了解即用即付订阅的预留使用情况](understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](understand-reserved-instance-usage-ea.md)
 - [预留未包含的 Windows 软件成本](reserved-instance-windows-software-costs.md)
-- [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)
+- [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](/partner-center/azure-reservations)

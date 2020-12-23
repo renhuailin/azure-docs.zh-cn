@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 988077a8a14339dea51bc36fdf6405b0f2f549ff
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019455"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139314"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中心将文件从设备上传到云 (Python)
 
@@ -109,7 +109,7 @@ ms.locfileid: "90019455"
             return (False, ex)
     ```
 
-    此函数分析传递给它的 blob_info  结构，以创建用于初始化 [azure.storage.blob.BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python) 的 URL。 然后，它使用此客户端将文件上传到 Azure Blob 存储。
+    此函数分析传递给它的 blob_info  结构，以创建用于初始化 [azure.storage.blob.BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python) 的 URL。 然后，它使用此客户端将文件上传到 Azure Blob 存储。
 
 1. 添加下述用来连接客户端并上传文件的代码：
 
@@ -209,6 +209,6 @@ ms.locfileid: "90019455"
 
 使用以下链接详细了解 Azure Blob 存储：
 
-* [Azure Blob 存储文档](https://docs.microsoft.com/azure/storage/blobs/)
+* [Azure Blob 存储文档](../storage/blobs/index.yml)
 
-* [适用于 Python API 的 Azure Blob 存储文档](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [适用于 Python API 的 Azure Blob 存储文档](/python/api/overview/azure/storage-blob-readme?view=azure-python)

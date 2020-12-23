@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797711"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171487"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用（预览版）
 
@@ -115,7 +115,7 @@ ms.locfileid: "88797711"
 
 1. 对于“SKU”，选择“免费”。
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="已填写的详细信息":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
 
 1. 单击“使用 GitHub 登录”按钮。
 
@@ -125,7 +125,7 @@ ms.locfileid: "88797711"
 
 1. 对于“分支”，选择“主”。
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="已完成的 GitHub 信息":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
 
 ### <a name="build"></a>构建
 
@@ -149,7 +149,38 @@ ms.locfileid: "88797711"
 
 1. 在 Azure 门户的新建 Azure 静态 Web 应用资源的“概述”窗口中，单击“URL”链接以打开已部署的应用程序。
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="已部署的应用程序":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
+
+#### <a name="custom-hugo-version"></a>自定义 Hugo 版本
+
+生成静态 Web 应用时，将生成一个[工作流文件](./github-actions-workflow.md)，其中包含应用程序的发布配置设置。 可通过在 `env` 部分中输入 `HUGO_VERSION` 的值，在工作流文件中指定特定的 Hugo 版本。 以下示例配置演示了如何将 Hugo 设置为特定版本。
+
+```yaml
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "api" # Api source code path - optional
+          app_artifact_location: "public" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+        env:
+          HUGO_VERSION: 0.58.0
+```
 
 ## <a name="clean-up-resources"></a>清理资源
 

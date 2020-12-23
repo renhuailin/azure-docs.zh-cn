@@ -1,16 +1,16 @@
 ---
 title: Azure 函数事件网格本地调试
-description: 了解如何在本地调试事件网格事件触发的 Azure 函数
+description: 了解事件网格事件触发的本地调试 Azure Functions
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: fdd046a855c4e2114e96e7911a928165f808710c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530538"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833055"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure 函数事件网格触发器本地调试
 
@@ -52,7 +52,7 @@ ngrok http -host-header=localhost 7071
 ```
 设置该实用工具后，命令窗口应如以下屏幕截图所示：
 
-![启动 "ngrok" 实用工具后显示命令提示符的屏幕截图。](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![屏幕截图显示了启动“ngrok”实用程序后的命令提示符。](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
 复制运行 *ngrok* 时生成的 **HTTPS** URL。 配置事件网格事件终结点时将使用此值。
 

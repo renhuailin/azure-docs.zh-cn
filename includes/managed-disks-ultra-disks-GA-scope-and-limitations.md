@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441187"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016620"
 ---
 目前，超磁盘有其他限制，如下所示：
 
@@ -34,6 +34,7 @@ ms.locfileid: "91441187"
 |美国中南部    |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |US Gov 亚利桑那州     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |US Gov 弗吉尼亚州     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
+|US Gov 德克萨斯州     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |美国西部     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持)         |
 |澳大利亚中部    |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |澳大利亚东部     |三个可用性区域         |
@@ -66,7 +67,7 @@ ms.locfileid: "91441187"
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - 并非每个 VM 大小都可在包含 ultra 磁盘的每个受支持的区域中使用。
 - 仅作为数据磁盘提供。 
-- 默认情况下支持4k 物理扇区大小。 512E 扇区大小作为一款公开提供的产品提供，但你必须 [注册它](https://aka.ms/ultradisk512e)。 大多数应用程序都与4k 扇区大小兼容，但某些应用程序需要512字节扇区大小。 Oracle Database，其中一个示例需要12.2 版或更高版本才能支持4k 本地磁盘。 对于较旧版本的 Oracle DB，需要512字节扇区大小。
+- 默认情况下支持4k 物理扇区大小。 512E 扇区大小以 (不需要注册的产品/服务的形式提供) 但目前仅可使用 CLI 或 powershell。 大多数应用程序都与4k 扇区大小兼容，但某些应用程序需要512字节扇区大小。 Oracle Database，其中一个示例需要12.2 版或更高版本才能支持4k 本地磁盘。 对于较旧版本的 Oracle DB，需要512字节扇区大小。
 - 只能创建为空磁盘。
 - 当前不支持磁盘快照、VM 映像、可用性集、Azure 专用主机或 Azure 磁盘加密。
 - 当前不支持与 Azure 备份或 Azure Site Recovery 集成。

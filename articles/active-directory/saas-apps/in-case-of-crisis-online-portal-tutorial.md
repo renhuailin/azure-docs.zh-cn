@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 26aa415a50104cdfa86aca4cc0d264b6d2b9325e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 124b53297c04d3c9958a233cf40f56ecda57bbc5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552996"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460200"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---online-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 In Case of Crisis - Online Portal 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552996"
 * 让用户使用其 Azure AD 帐户自动登录到 In Case of Crisis - Online Portal。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88552996"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * In Case of Crisis - Online Portal 支持 **IDP** 发起的 SSO
-* 配置 In Case of Crisis - Online Portal 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 In Case of Crisis - Online Portal 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-in-case-of-crisis---online-portal-from-the-gallery"></a>从库中添加 In Case of Crisis - Online Portal
 
@@ -50,7 +50,7 @@ ms.locfileid: "88552996"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **In Case of Crisis - Online Portal**。 
+1. 在“从库中添加”部分的搜索框中，键入 **In Case of Crisis - Online Portal** 。 
 1. 在结果面板中选择“In Case of Crisis - Online Portal”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -124,22 +124,22 @@ ms.locfileid: "88552996"
 
 ### <a name="create-in-case-of-crisis-online-portal-test-user"></a>创建 In Case of Crisis - Online Portal 测试用户
 
-在本部分，你将在 In Case of Crisis - Online Portal 中创建名为 B.Simon 的用户。 在  [In Case of Crisis - Online Portal 支持团队](mailto:support@rockdovesolutions.com)的配合下，将用户添加到 In Case of Crisis - Online Portal 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，你将在 In Case of Crisis - Online Portal 中创建名为 B.Simon 的用户。 请与 [In Case of Crisis - Online Portal 支持团队](mailto:support@rockdovesolutions.com)协作，在 In Case of Crisis - Online Portal 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“In Case of Crisis - Online Portal”磁贴时，应会自动登录到设置了 SSO 的 In Case of Crisis - Online Portal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“In Case of Crisis - Online Portal”磁贴时，应会自动登录到设置了 SSO 的 In Case of Crisis - Online Portal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 In Case of Crisis - Online Portal](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

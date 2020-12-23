@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: 68620b644ef85f7b627b7b6380c16959b25299f0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 76df8baaf170b05762b93478a496eb1e9ed802d5
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297325"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916740"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>连接到媒体服务 v3 API - Python
 
@@ -44,11 +44,13 @@ ms.locfileid: "89297325"
 * `azure-mgmt-resource` 模块，其中包括用于 Active Directory 的 Azure 模块。
 * `azure-mgmt-media` 模块，其中包括媒体服务实体。
 
+    请确保获取 [最新版本的适用于 Python 的媒体服务 SDK](https://pypi.org/project/azure-mgmt-media/)。
+
 打开命令行工具并使用以下命令安装这些模块。
 
 ```
 pip3 install azure-mgmt-resource
-pip3 install azure-mgmt-media==1.1.1
+pip3 install azure-mgmt-media==3.0.0
 ```
 
 ## <a name="connect-to-the-python-client"></a>连接到 Python 客户端
@@ -107,4 +109,4 @@ pip3 install azure-mgmt-media==1.1.1
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [Python SDK](https://aka.ms/ams-v3-python-sdk)。
-- 查看媒体服务 [Python 参考](https://aka.ms/ams-v3-python-ref)文档。
+- 查看媒体服务 [Python 参考](/python/api/overview/azure/mediaservices/management)文档。

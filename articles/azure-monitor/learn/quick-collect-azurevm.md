@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067547"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186824"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 从 Azure 虚拟机收集数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "87067547"
 2. 选择“创建”，然后为以下各项选择选项：
 
    * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。  
-   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
+   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的 **订阅**。
    * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
    * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
    * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
@@ -87,7 +87,7 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 
 7. 首次为新的 Log Analytics 工作区配置 Windows 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。
 
-    ![选中的默认 Windows 性能计数器](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![“Windows 性能计数器”窗格的屏幕截图，其中显示了所选计数器的列表，并且选中了“添加选定的性能计数器”按钮。](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     选择“添加所选性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。
   
@@ -107,7 +107,7 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 
 6. 首次为新的 Log Analytics 工作区配置 Linux 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。
 
-    ![选中的默认 Windows 性能计数器](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![“Linux 性能计数器”窗格的屏幕截图，其中显示了所选计数器的列表，并且选中了“添加选定的性能计数器”按钮。](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     选择“将下列配置应用到我的计算机”，然后选择“添加选定的性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
 
@@ -141,4 +141,4 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 若要了解如何查看和分析数据，请继续本教程。
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../log-query/get-started-portal.md)
+> [在 Log Analytics 中查看或分析数据](../log-query/log-analytics-tutorial.md)

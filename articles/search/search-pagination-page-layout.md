@@ -7,23 +7,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 12/09/2020
+ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934916"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008477"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
-本文介绍如何获取返回的查询响应，其中包含匹配文档的总数、已分页的结果、已排序的结果和突出显示的字词。
+本文介绍如何在 Azure 认知搜索中制定查询响应。 响应的结构由查询中的参数确定：在 REST API 中 [搜索文档](/rest/api/searchservice/Search-Documents) ，或在 .net SDK 中的 [SearchResults 类](/dotnet/api/azure.search.documents.models.searchresults-1) 中搜索。 可通过以下方式使用查询上的参数来调整结果集的结构：
 
-响应的结构由查询中的参数决定：REST API 中的[搜索文档](/rest/api/searchservice/Search-Documents)，或 .NET SDK 中的 [DocumentSearchResult 类](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
++ 默认情况下，将结果中的文档数限制或批处理 (50) 
++ 选择要包含在结果中的字段
++ 订单结果
++ 突出显示搜索结果正文中的匹配整个或部分字词
 
 ## <a name="result-composition"></a>结果的构成
 
-尽管搜索文档可能由大量的字段组成，但通常只需少量的几个字段就能表示结果集中的每个文档。 在查询请求中，追加 `$select=<field list>` 可以指定要在响应中显示的字段。 必须在索引中通过某个属性将字段指定为“可检索的”，才能在结果中包含该字段****。 
+尽管搜索文档可能由大量的字段组成，但通常只需少量的几个字段就能表示结果集中的每个文档。 在查询请求中，追加 `$select=<field list>` 可以指定要在响应中显示的字段。 必须在索引中通过某个属性将字段指定为“可检索的”，才能在结果中包含该字段。 
 
 最合适的字段包括能够对比和区分文档，并提供足够的信息来邀请用户一端做出点击响应的字段。 在电子商务网站上，这些字段可能是产品名称、说明、品牌、颜色、尺寸、价格和评级。 对于 hotels-sample-index 内置示例，它们可能是以下示例中的字段：
 
@@ -37,7 +40,15 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 ```
 
 > [!NOTE]
-> 若要在结果中包括图像文件（例如产品照片或徽标），请将其存储在 Azure 认知搜索外部，但在索引中包含一个字段，以引用搜索文档中的图像 URL。 支持在结果中包含图像的示例索引包括此[快速入门](search-create-app-portal.md)中专门介绍的 realestate-sample-us 演示，以及[纽约市工作岗位演示应用](https://aka.ms/azjobsdemo)****。
+> 若要在结果中包括图像文件（例如产品照片或徽标），请将其存储在 Azure 认知搜索外部，但在索引中包含一个字段，以引用搜索文档中的图像 URL。 支持在结果中包含图像的示例索引包括此[快速入门](search-create-app-portal.md)中专门介绍的 realestate-sample-us 演示，以及[纽约市工作岗位演示应用](https://aka.ms/azjobsdemo)。
+
+### <a name="tips-for-unexpected-results"></a>意外结果提示
+
+有时可能会出现预料外的结果内容（而不是结构）。 如果查询结果不是预期的，你可以尝试这些查询修改以查看结果是否提高：
+
++ 将 **`searchMode=any`** （默认）更改为 **`searchMode=all`** 可获取符合所有条件而不是某个条件的匹配项。 在查询包含布尔运算符时更应如此。
+
++ 尝试不同的词法分析器或自定义分析器，以查看它是否更改了查询结果。 默认分析器将分解断字符单词并将单词缩减为根窗体，这通常会提高查询响应的可靠性。 但是，如果需要保留连字符，或者字符串包含特殊字符，则可能需要配置自定义分析器，以确保索引包含正确格式的标记。 有关详细信息，请参阅 [部分术语搜索和带有特殊字符的模式 (连字符、通配符、正则表达式、模式) ](search-query-partial-matching.md)。
 
 ## <a name="paging-results"></a>分页结果
 
@@ -52,7 +63,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 + 跳过前 15 个匹配文档，返回第二组 15 个文档：`$top=15&$skip=15`。 跳过前两组匹配文档，返回第三组 15 个匹配文档：`$top=15&$skip=30`
 
 如果基础索引会发生变化，则无法保证分页查询的结果稳定。 分页会更改每页的 `$skip` 值，但每个查询是独立的，并针对查询时存在于索引中的当前数据视图运行（换言之，对于在常规用途数据库等位置中发现的结果，不存在结果缓存或快照）。
- 
+ 
 以下示例展示了如何获取重复项。 假设某个索引包含四个文档：
 
 ```text
@@ -61,28 +72,28 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 { "id": "3", "rating": 2 }
 { "id": "4", "rating": 1 }
 ```
- 
+ 
 现在假设你希望每次返回按评级排序的两个结果。 你将执行此查询来获取第一页结果：`$top=2&$skip=0&$orderby=rating desc`，将生成以下结果：
 
 ```text
 { "id": "1", "rating": 5 }
 { "id": "2", "rating": 3 }
 ```
- 
+ 
 在服务上，假设在两次查询调用之间将第五个文档添加到索引中：`{ "id": "5", "rating": 4 }`。  片刻之后，你执行查询来提取第二页：`$top=2&$skip=2&$orderby=rating desc`，将获得以下结果：
 
 ```text
 { "id": "2", "rating": 3 }
 { "id": "3", "rating": 2 }
 ```
- 
+ 
 请注意，文档 2 提取了两次。 这是因为，新文档 5 的评级值较大，因此它排在文档 2 的前面，并出现在第一页中。 尽管这种行为可能让人意外，但它却是搜索引擎的典型行为。
 
 ## <a name="ordering-results"></a>对结果排序
 
-对于全文搜索查询，结果将按照搜索评分自动排名，搜索评分是根据文档中的字词频率和邻近性计算的，根据搜索字词，匹配项越多或者匹配程度越高的文档，其评分越高。 
+对于全文搜索查询，结果将根据搜索评分自动排名，该搜索分数基于从 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 派生的 (文档中的字词频率和邻近性进行计算，较高的分数表示在搜索词中具有更多或更多匹配的文档。 
 
-搜索评分表达了对相关性的总体认知，反映了相对于同一结果集中其他文档的匹配强度。 评分在不同的查询之间并非始终一致，因此，在处理查询时，你可能会注意到搜索文档的排序方式存在细微差别。 下面对发生这种情况的可能原因给出了几条解释。
+搜索评分传达一般的相关性，反映相对于同一结果集中其他文档的匹配程度。 但是，分数并非总是与下一次查询一致，因此在处理查询时，你可能会注意到搜索文档的排序方式的细微差异。 下面对发生这种情况的可能原因给出了几条解释。
 
 | 原因 | 说明 |
 |-----------|-------------|
@@ -90,17 +101,17 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 | 多个副本 | 对于使用多个副本的服务，将并行针对每个副本发出查询。 用于计算搜索评分的索引统计信息是根据每个副本计算的，结果将在查询响应中合并和排序。 副本基本上是彼此的镜像，但由于状态存在细微差别，因此统计信息可能有所不同。 例如，一个副本可能删除了对统计信息有影响的文档，这些统计信息由其他副本合并而来。 通常，按副本的统计信息的差异在较小索引中更明显。 |
 | 相同的评分 | 如果多个文档具有相同的评分，其中的任何一个文档都可能会首先出现。  |
 
-### <a name="consistent-ordering"></a>一致的排序
+### <a name="how-to-get-consistent-ordering"></a>如何获取一致的顺序
 
-假设结果的排序是灵活的，如果一致性是应用程序的一项要求，你可能需要使用其他选项。 最简单的方法是按字段值（例如评级或日期）排序。 若要按特定的字段（例如评级或日期）排序，可以显式定义一个 [`$orderby` 表达式](query-odata-filter-orderby-syntax.md)，该表达式可应用于在索引中设置为“可排序”的任何字段****。
+如果一致排序是应用程序要求，则可以在字段上显式定义一个 [ **`$orderby`** ] 表达式 (query-odata-filter-orderby-syntax.md) 。 只有索引为的字段 **`sortable`** 才能用于对结果进行排序。 **`$orderby`** 如果将参数的值指定 **`orderby`** 为包含字段名称和对地理空间值的 [**`geo.distance()` 函数**](query-odata-filter-orderby-syntax.md)的调用，则在包含 "分级"、"日期" 和 "位置" 字段中通常使用的字段。
 
-另一个选项是使用[自定义评分配置文件](index-add-scoring-profiles.md)。 使用评分配置文件可以提高在特定字段中有匹配项的项的分数，从而可以让你更好地控制搜索结果中各个项的排名。 这一附加的评分逻辑有助于覆盖副本之间的细微差异，因为每个文档的搜索评分会在更大程度上拉开差距。 我们建议对此方法使用[排名算法](index-ranking-similarity.md)。
+提升一致性的另一种方法是使用 [自定义计分配置文件](index-add-scoring-profiles.md)。 使用评分配置文件可以提高在特定字段中有匹配项的项的分数，从而可以让你更好地控制搜索结果中各个项的排名。 这一附加的评分逻辑有助于覆盖副本之间的细微差异，因为每个文档的搜索评分会在更大程度上拉开差距。 我们建议对此方法使用[排名算法](index-ranking-similarity.md)。
 
 ## <a name="hit-highlighting"></a>突出显示
 
 命中项突出显示是指对结果中的匹配字词应用文本格式设置（例如粗体或黄色突出显示），以便轻松找到匹配项。 [查询请求](/rest/api/searchservice/search-documents)上提供了命中词突出显示说明。 
 
-若要启用“命中词突出显示”，请添加 `highlight=[comma-delimited list of string fields]` 以指定将要使用突出显示的字段。 突出显示适合用于较长的内容字段（如“说明”字段），因为在这些字段中，匹配内容不是立即就能看到。 只有定义被特性化为“可搜索”的字段才适用“命中词突出显示”****。
+若要启用“命中词突出显示”，请添加 `highlight=[comma-delimited list of string fields]` 以指定将要使用突出显示的字段。 突出显示适合用于较长的内容字段（如“说明”字段），因为在这些字段中，匹配内容不是立即就能看到。 只有定义被特性化为“可搜索”的字段才适用“命中词突出显示”。
 
 默认情况下，Azure 认知搜索最多为每个字段返回五处突出显示。 你可以通过在字段后面附加一个破折号并后跟一个整数来调整此数字。 例如，`highlight=Description-10` 在“说明”字段中返回最多 10 个匹配内容的突出显示。
 
@@ -131,7 +142,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
     ```html
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
-  请注意，字词“bowl of chips”没有任何突出显示效果，因为它不与完整短语匹配**。
+  请注意，字词“bowl of chips”没有任何突出显示效果，因为它不与完整短语匹配。
 
 编写实现命中项突出显示的客户端代码时，请注意此项更改。 请注意，除非创建全新的搜索服务，否则你不会受到影响。
 

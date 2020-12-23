@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5dd6d682c9db044763cad64eec420c1974d4ac03
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 55151ab965b13a944fee5517a2ca8b4f9eb64bb0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613700"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207234"
 ---
 # <a name="outline-rendering"></a>轮廓渲染
 
@@ -63,8 +63,8 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RemoteManager OutlineSettings 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
-* [C + + RemoteManager：： OutlineSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#outlinesettings)
+* [C # RemoteManager OutlineSettings 属性](/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
+* [C + + RemoteManager：： OutlineSettings ( # B1 ](/cpp/api/remote-rendering/remotemanager#outlinesettings)
 
 ## <a name="next-steps"></a>后续步骤
 

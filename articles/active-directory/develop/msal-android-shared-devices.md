@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550261"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562162"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
 
-> [!NOTE]
-> 此功能目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>[!IMPORTANT]
+> 此功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 一线工作人员（例如零售助理、机组人员和现场服务工人）通常使用共享移动设备来完成其工作。 当他们开始共享密码或 PIN 号来访问共享设备上的客户和业务数据时，这会造成问题。
 
@@ -36,7 +34,7 @@ ms.locfileid: "80550261"
 开发人员和云设备管理员可以共同创建共享设备模式应用：
 
 - 开发人员编写单帐户应用（共享设备模式不支持多帐户应用），将 `"shared_device_mode_supported": true` 添加到应用的配置，并编写代码来处理共享设备注销等任务。
-- 设备管理员通过安装 Authenticator 应用，并使用 Authenticator 应用将设备设置为共享模式，来准备要共享的设备。 只有处于 [云设备管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) 角色中的用户才能使用 [验证器应用](../user-help/user-help-auth-app-overview.md)将设备置于共享模式。 可通过以下选项在 Azure 门户中配置组织角色的成员身份：“Azure Active Directory” > “角色和管理员” > “云设备管理员”。   
+- 设备管理员通过安装 Authenticator 应用，并使用 Authenticator 应用将设备设置为共享模式，来准备要共享的设备。 只有处于 [云设备管理员](../roles/permissions-reference.md#cloud-device-administrator-permissions) 角色中的用户才能使用 [验证器应用](../user-help/user-help-auth-app-overview.md)将设备置于共享模式。 可通过以下选项在 Azure 门户中配置组织角色的成员身份：“Azure Active Directory” > “角色和管理员” > “云设备管理员”。   
 
  本文重点介绍开发人员应考虑的事项。
 
@@ -44,7 +42,7 @@ ms.locfileid: "80550261"
 
 使用 Microsoft 身份验证库 SDK (MSAL) 编写的应用程序可以管理一个或多个帐户。 有关详细信息，请参阅[单帐户模式或多帐户模式](single-multi-account.md)。 适用于应用的 Microsoft 标识平台功能根据应用程序是在单帐户模式还是多帐户模式下运行而异。
 
-**共享设备模式应用只能在单帐户模式下工作**。
+**共享设备模式应用只能在单帐户模式下工作** 。
 
 > [!IMPORTANT]
 > 仅支持多帐户模式的应用程序无法在共享设备上运行。 如果员工加载不支持单帐户模式的应用，该应用不会在共享设备上运行。

@@ -6,28 +6,28 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69733071c5b43ee9c8e6450e3a9924bc656d5c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53763e62e8d7aa5b77ae451ef6427c1e09bff9f0
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485490"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742691"
 ---
 # <a name="configure-mfa-server-settings"></a>配置 MFA 服务器设置
 
 本文可帮助你管理 Azure 门户中的 Azure MFA 服务器设置。
 
 > [!IMPORTANT]
-> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
+> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望其用户需要多重身份验证的新客户应使用基于云的 Azure AD 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 
 以下 MFA 服务器设置可用：
 
-| 功能 | 说明 |
+| Feature | 说明 |
 | ------- | ----------- |
 | 服务器设置 | 下载 MFA 服务器并生成激活凭据，以便初始化环境 |
 | [免验证一次](#one-time-bypass) | 允许用户在有限时间无需执行多重身份验证的情况下进行身份验证。 |
@@ -68,4 +68,4 @@ ms.locfileid: "84485490"
 
 ## <a name="next-steps"></a>后续步骤
 
-其他 MFA 服务器配置选项可从 MFA 服务器自身的 web 控制台获得。 你还可以[配置 AZURE MFA 服务器以实现高可用性](howto-mfaserver-deploy-ha.md)。
+其他 MFA 服务器配置选项可从 MFA 服务器自身的 web 控制台获得。 你还可以 [配置 AZURE MFA 服务器以实现高可用性](howto-mfaserver-deploy-ha.md)。

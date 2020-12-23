@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91851032"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341747"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心的自适应网络强化
 了解如何在安全中心配置自适应网络强化。
@@ -33,7 +33,7 @@ ms.locfileid: "91851032"
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>什么是自适应网络强化？
-应用[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) 来筛选发往/来自资源的流量，可以改善网络安全状况。 但是，仍然可能存在一些这样的情况：通过 NSG 流动的实际流量是所定义 NSG 规则的子集。 在这些情况下，可以根据实际流量模式强化 NSG 规则，从而进一步改善安全状况。
+应用[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 来筛选发往/来自资源的流量，可以改善网络安全状况。 但是，仍然可能存在一些这样的情况：通过 NSG 流动的实际流量是所定义 NSG 规则的子集。 在这些情况下，可以根据实际流量模式强化 NSG 规则，从而进一步改善安全状况。
 
 自适应网络强化为进一步强化 NSG 规则提供了建议。 它使用机器学习算法，这种算法会将实际流量、已知受信任的配置、威胁情报和其他泄露标志都考虑在内，然后提供仅允许来自特定 IP/端口元组的流量的建议。
 
@@ -89,7 +89,7 @@ ms.locfileid: "91851032"
 * 不能将“允许”规则更改为“拒绝”规则。 
 
   > [!NOTE]
-  > 创建和修改“拒绝”规则是直接在 NSG 上执行的。 有关详细信息，请参阅[创建、更改或删除网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
+  > 创建和修改“拒绝”规则是直接在 NSG 上执行的。 有关详细信息，请参阅[创建、更改或删除网络安全组](../virtual-network/manage-network-security-group.md)。
 
 * **拒绝所有流量**规则是此处列出的唯一“拒绝”规则类型，并且该规则不能修改。 不过，你可以删除它（请参阅[删除规则](#delete-rule)）。
   > [!NOTE]
@@ -117,7 +117,7 @@ ms.locfileid: "91851032"
 可以添加安全中心未建议的“允许”规则。
 
 > [!NOTE]
-> 在这里只能添加“允许”规则。 如果要添加“拒绝”规则，可以直接在 NSG 上执行此操作。 有关详细信息，请参阅[创建、更改或删除网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
+> 在这里只能添加“允许”规则。 如果要添加“拒绝”规则，可以直接在 NSG 上执行此操作。 有关详细信息，请参阅[创建、更改或删除网络安全组](../virtual-network/manage-network-security-group.md)。
 
 *添加自适应网络强化规则：*
 

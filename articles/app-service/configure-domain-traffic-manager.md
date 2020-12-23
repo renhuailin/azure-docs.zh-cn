@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962870"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012931"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>使用流量管理器集成在 Azure 应用服务中配置自定义域名
 
@@ -19,7 +19,7 @@ ms.locfileid: "88962870"
 > [!NOTE]
 > 对于云服务，请查看[为 Azure 云服务配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。
 
-使用[Azure 流量管理器](../traffic-manager/index.yml)将流量负载平衡到[Azure App Service](overview.md)时，可以使用** \<traffic-manager-endpoint> trafficmanager.net**访问应用服务应用。 还可以将自定义域名（例如 www\.contoso.com）与应用服务应用相关联，为用户提供更易识别的域名。
+使用 [Azure 流量管理器](../traffic-manager/index.yml)将流量负载均衡到 [Azure 应用服务](overview.md)时，可以使用 \<traffic-manager-endpoint>.trafficmanager.net 来访问应用服务应用。 还可以将自定义域名（例如 www\.contoso.com）与应用服务应用相关联，为用户提供更易识别的域名。
 
 本文介绍如何使用与[流量管理器](../traffic-manager/traffic-manager-overview.md)集成的应用服务应用配置自定义域名。
 
@@ -66,10 +66,10 @@ ms.locfileid: "88962870"
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-虽然每个域提供程序的具体内容各不相同，但你可以将[非根自定义域名](#what-about-root-domains) (如**www.contoso.com** *) 映射**到*与你的应用集成 (**contoso.trafficmanager.net**) 的流量管理器域名。 
+虽然每个域提供程序的具体内容各不相同，但你可以将 [非根自定义域名](#what-about-root-domains) (如 **www.contoso.com** *) 映射**到* 与你的应用集成 (**contoso.trafficmanager.net**) 的流量管理器域名。 
 
 > [!NOTE]
-> 如果某条记录已被使用并且需要提前将应用绑定到该记录，可以创建其他 CNAME 记录。 例如，若要提前将 **www \. contoso.com** 绑定到你的应用，请创建从 **AWVERIFY** 到 **contoso.trafficmanager.net**的 CNAME 记录。 然后，可以将 "www \. contoso.com" 添加到应用程序，而无需更改 "www" CNAME 记录。 有关详细信息，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
+> 如果某条记录已被使用并且需要提前将应用绑定到该记录，可以创建其他 CNAME 记录。 例如，若要提前将 **www \. contoso.com** 绑定到你的应用，请创建从 **AWVERIFY** 到 **contoso.trafficmanager.net** 的 CNAME 记录。 然后，可以将 "www \. contoso.com" 添加到应用程序，而无需更改 "www" CNAME 记录。 有关详细信息，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
 
 在域提供商处添加或修改完 DNS 记录后，请保存这些更改。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8ac20378cbae9334cedb59878311f2541b40bd3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e605e162e4639a876cc5b6d763e81fdd7ff93aa8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020586"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674542"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 中使用 SendGrid 发送电子邮件
 ## <a name="overview"></a>概述
@@ -50,17 +50,17 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
 若要在应用程序中安装 SendGrid NuGet 包，请执行以下操作：
 
-1. 单击“新建项目”****，并选择“模板”。 ****
+1. 单击“新建项目”，并选择“模板”。 
 
    ![创建新项目][create-new-project]
-2. 在“解决方案资源管理器”中，右键单击“引用”，并单击“管理 NuGet 包”。************
+2. 在“解决方案资源管理器”中，右键单击“引用”，并单击“管理 NuGet 包”。
 
    ![SendGrid NuGet 包][SendGrid-NuGet-package]
 3. 搜索 **SendGrid**，并在结果列表中选择 **SendGrid** 项。
 4. 从版本下拉列表中选择 Nuget 包的最新稳定版本，以便使用本文中演示的对象模型和 API。
 
    ![SendGrid 包][sendgrid-package]
-5. 单击“安装”以完成安装，并关闭此对话框。****
+5. 单击“安装”以完成安装，并关闭此对话框。
 
 SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
 
@@ -107,7 +107,7 @@ msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
 
 可以通过单击 "应用程序设置" 并在 "应用设置" 下添加键/值对，通过 Azure 门户存储这些凭据。
 
- ![Azure 应用设置][azure_app_settings]
+![Azure 应用设置][azure_app_settings]
 
 然后，可按如下所示访问这些凭据：
 
@@ -159,17 +159,17 @@ namespace Example
 
 `appsettings.json` 文件的内容类似于：
 
-```csharp
+```json
 {
-   "Logging": {
-   "IncludeScopes": false,
-   "LogLevel": {
-   "Default": "Debug",
-   "System": "Information",
-   "Microsoft": "Information"
-     }
-   },
- "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 }
 ```
 
@@ -208,8 +208,8 @@ namespace SendgridMailApp.Controllers
        public NotificationController(IConfiguration configuration)
        {
          _configuration = configuration;
-       }      
-    
+       }
+
        [Route("SendNotification")]
        public async Task PostMessage()
        {
@@ -222,7 +222,7 @@ namespace SendgridMailApp.Controllers
               new EmailAddress("test3@example.com", "Example User 3"),
               new EmailAddress("test4@example.com","Example User 4")
           };
-        
+
           var subject = "Hello world email from Sendgrid ";
           var htmlContent = "<strong>Hello world with HTML content</strong>";
           var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
@@ -258,10 +258,10 @@ SendGrid 通过使用邮件设置和跟踪设置提供其他电子邮件功能�
 ### <a name="footer-settings"></a>页脚设置
 
 ```csharp
-msg.SetFooterSetting(
-                     true,
-                     "Some Footer HTML",
-                     "<strong>Some Footer Text</strong>");
+    msg.SetFooterSetting(
+        true,
+        "Some Footer HTML",
+        "<strong>Some Footer Text</strong>");
 ```
 
 ### <a name="click-tracking"></a>单击跟踪

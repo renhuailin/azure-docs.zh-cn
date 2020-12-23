@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 027165f797977311fd77f3cd3e626b126c26e47b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 043d450a1b968174ad263579d39de06a296a98e4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494666"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741461"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 通过路由表路由网络流量
 
@@ -36,11 +36,11 @@ ms.locfileid: "87494666"
 * 将虚拟机 (VM) 部署到不同子网
 * 通过 NVA 将从一个子网的流量路由到另一个子网
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+- 本文要求 Azure CLI 版本2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-route-table"></a>创建路由表
 
@@ -160,7 +160,7 @@ az vm extension set \
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
-在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过 NVA 路由到专用子网。   
+在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过 NVA 路由到专用子网。 
 
 使用 [az vm create](/cli/azure/vm) 在公共子网中创建一个 VM。 `--no-wait` 参数支持 Azure 在后台中执行命令，因此可以继续执行下一个命令。 为了简化本文的内容，此处使用了密码。 在生产部署中通常使用密钥。 如果使用密钥，还必须配置 SSH 代理转发。 有关详细信息，请参阅 SSH 客户端的文档。 将以下命令中的 `<replace-with-your-password>` 替换为所选的密码。
 
@@ -178,7 +178,7 @@ az vm create \
   --no-wait
 ```
 
-在专用子网中创建一个 VM  。
+在专用子网中创建一个 VM。
 
 ```azurecli-interactive
 az vm create \
@@ -206,7 +206,7 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。  在后面的步骤中会使用此地址通过 Internet 访问 VM。
+记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。
 
 ## <a name="route-traffic-through-an-nva"></a>通过 NVA 路由流量
 
@@ -265,7 +265,7 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 2  10.0.1.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
 
-可以看到，第一个跃点为 10.0.2.4，即 NVA 的专用 IP 地址。 第二个跃点为 10.0.1.4，即 *myVmPrivate* VM 的专用 IP 地址。 添加到 *myRouteTablePublic* 路由表并关联到公共子网的路由导致 Azure 通过 NVA 路由流量，而不是直接将流量路由到专用子网。  
+可以看到，第一个跃点为 10.0.2.4，即 NVA 的专用 IP 地址。 第二个跃点为 10.0.1.4，即 *myVmPrivate* VM 的专用 IP 地址。 添加到 *myRouteTablePublic* 路由表并关联到公共子网的路由导致 Azure 通过 NVA 路由流量，而不是直接将流量路由到专用子网。
 
 同时关闭与 *myVmPublic* VM 和 *myVmPrivate* VM 的 SSH 会话。
 

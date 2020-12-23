@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403562"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358386"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
 
@@ -27,7 +27,7 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 ## <a name="use-the-push-api"></a>使用推送 API
 
-使用 " [添加文档" REST API](/rest/api/searchservice/addupdate-or-delete-documents) 或 [index 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)将数据推送到索引中时，有几个关键注意事项会影响索引速度。 以下部分概述了这些因素，范围从将服务容量设置为代码优化。
+使用 " [添加文档" REST API](/rest/api/searchservice/addupdate-or-delete-documents) 或 [IndexDocuments 方法](/dotnet/api/azure.search.documents.searchclient.indexdocuments)将数据推送到索引中时，有几个关键注意事项会影响索引速度。 以下部分概述了这些因素，范围从将服务容量设置为代码优化。
 
 有关演示推送模型索引的详细信息和代码示例，请参阅 [教程：优化索引速度](tutorial-optimize-indexing-push-api.md)。
 
@@ -45,14 +45,14 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 ### <a name="review-index-schema"></a>查看索引架构
 
-索引架构在编制数据索引方面扮演重要角色。 你具有的字段越多，你设置的属性越多 (例如，可 *搜索*、 *可查找*或可 *筛选*) 会导致索引时间增加。 通常，只应在搜索索引中创建并指定实际需要的字段。
+索引架构在编制数据索引方面扮演重要角色。 你具有的字段越多，你设置的属性越多 (例如，可 *搜索* 、 *可查找* 或可 *筛选* ) 会导致索引时间增加。 通常，只应在搜索索引中创建并指定实际需要的字段。
 
 > [!NOTE]
 > 若要保持较小的文档大小，请避免向索引添加不可查询的数据。 图像和其他二进制数据不可直接搜索，不应存储在索引中。 若要将不可查询的数据集成到搜索结果中，应定义用于存储资源的 URL 引用的不可搜索字段。
 
 ### <a name="check-the-batch-size"></a>检查批大小
 
-为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 不管你在 .NET SDK 中使用[添加文档 REST API](/rest/api/searchservice/addupdate-or-delete-documents) 还是[索引方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)，这些限制均适用。 不管什么 API，你都会在每个请求的正文中打包 1000 个文档。
+为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 无论你使用的是 " [添加文档" REST API](/rest/api/searchservice/addupdate-or-delete-documents) 还是 .net SDK 中的 [IndexDocuments 方法](/dotnet/api/azure.search.documents.searchclient.indexdocuments) ，这些限制都适用。 不管什么 API，你都会在每个请求的正文中打包 1000 个文档。
 
 使用批处理为文档编制索引可显著提高索引编制性能。 确定数据的最佳批大小是优化索引编制速度的关键。 影响最佳批大小的两个主要因素是：
 

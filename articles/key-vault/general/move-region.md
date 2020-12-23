@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: 7d58cd26b6e4ca77da98f8c2f82dbdb481ccbb50
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585746"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285214"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>跨区域移动 Azure 密钥保管库
 
@@ -35,7 +35,7 @@ Azure 密钥保管库不支持资源移动操作，使用这个操作可以将�
 
 ## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>选项 1：使用密钥保管库备份和还原命令
 
-可以使用备份命令来备份保管库中的每个机密、密钥和证书。 下载的机密是加密形式的 blob。 然后，可以将 blob 还原到新的密钥保管库中。 有关命令的列表，请参阅 [Azure 密钥保管库命令](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault)。
+可以使用备份命令来备份保管库中的每个机密、密钥和证书。 下载的机密是加密形式的 blob。 然后，可以将 blob 还原到新的密钥保管库中。 有关命令的列表，请参阅 [Azure 密钥保管库命令](/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault)。
 
 使用备份和还原命令存在两个限制：
 

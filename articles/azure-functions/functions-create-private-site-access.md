@@ -6,16 +6,16 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540275"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182491"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教程：建立 Azure Functions 专用站点访问
 
-本教程介绍如何对 Azure Functions 启用[专用站点访问](./functions-networking-options.md#private-site-access)。 使用专用站点访问可以要求仅从特定的虚拟网络触发函数代码。
+本教程介绍如何对 Azure Functions 启用[专用站点访问](./functions-networking-options.md#private-endpoint-connections)。 使用专用站点访问可以要求仅从特定的虚拟网络触发函数代码。
 
 需要将函数应用访问限制到特定的虚拟网络时，专用站点访问很有用。 例如，该函数应用可能仅适用于特定组织的员工，或者仅适用于指定虚拟网络中的服务（如另一 Azure 函数、Azure 虚拟机或 AKS 群集）。
 
@@ -73,7 +73,7 @@ ms.locfileid: "86540275"
 1. 选择“网络”选项卡，然后选择“新建”配置新的虚拟网络。
 
     >[!div class="mx-imgBorder"]
-    >![为新 VM 创建新的虚拟网络](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![显示“网络”选项卡的屏幕截图，其中突出显示了“虚拟网络”部分中的“新建”操作。](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. 在“创建虚拟网络”中，使用插图下面的表格中的设置：
 
@@ -113,7 +113,7 @@ ms.locfileid: "86540275"
     | _子网_ | AzureBastionSubnet | 虚拟网络中的子网，Bastion 主机资源将部署到该子网。 必须使用名称值 AzureBastionSubnet 创建子网。 此值告知 Azure 要将 Bastion 资源部署到哪个子网。 必须使用至少为 /27 或更大（/27、/26 等）的子网。 |
 
     > [!NOTE]
-    > 有关创建 Azure Bastion 资源的详细分步指导，请参阅[创建 Azure Bastion 主机](../bastion/bastion-create-host-portal.md)教程。
+    > 有关创建 Azure Bastion 资源的详细分步指导，请参阅[创建 Azure Bastion 主机](../bastion/tutorial-create-host-portal.md)教程。
 
 1. 创建一个可供 Azure 在其中预配 Azure Bastion 主机的子网。 选择“管理子网配置”会打开一个新窗格，在其中可以定义新的子网。  选择“+ 子网”创建新子网。
 1. 该子网的名称必须为 AzureBastionSubnet，子网前缀必须至少为 /27 。  选择“确定”以创建子网。
@@ -159,7 +159,7 @@ ms.locfileid: "86540275"
 
 下一步是配置[访问限制](../app-service/app-service-ip-restrictions.md)，以确保只有虚拟网络中的资源能够调用该函数。
 
-通过在函数应用与指定的虚拟网络之间创建 Azure 虚拟网络[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，来启用[专用站点](functions-networking-options.md#private-site-access)访问。 访问限制是通过服务终结点实现的。 服务终结点确保只有源自指定虚拟网络内部的流量可以访问指定的资源。 在本例中，指定的资源是 Azure 函数。
+通过在函数应用与指定的虚拟网络之间创建 Azure 虚拟网络[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，来启用[专用站点](functions-networking-options.md#private-endpoint-connections)访问。 访问限制是通过服务终结点实现的。 服务终结点确保只有源自指定虚拟网络内部的流量可以访问指定的资源。 在本例中，指定的资源是 Azure 函数。
 
 1. 在函数应用中，选择“设置”部分标头下的“网络”链接。
 1. “网络”页面是配置 Azure Front Door、Azure CDN 和访问限制的起点。
@@ -172,7 +172,7 @@ ms.locfileid: "86540275"
 1. “访问限制”页现在会显示有新的限制。 终结点状态从“通过预配禁用”更改为“已启用”可能需要几秒时间。
 
     >[!IMPORTANT]
-    > 每个函数应用都有一个用于管理函数应用部署的[高级工具 (Kudu) 站点](../app-service/app-service-ip-restrictions.md#scm-site)。 可从如下所示的 URL 访问此站点：`<FUNCTION_APP_NAME>.scm.azurewebsites.net`。 在 Kudu 站点上启用访问限制会阻止从本地开发人员工作站部署项目代码，此时在虚拟网络中需要代理来执行部署。
+    > 每个函数应用都有一个用于管理函数应用部署的[高级工具 (Kudu) 站点](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site)。 可从如下所示的 URL 访问此站点：`<FUNCTION_APP_NAME>.scm.azurewebsites.net`。 在 Kudu 站点上启用访问限制会阻止从本地开发人员工作站部署项目代码，此时在虚拟网络中需要代理来执行部署。
 
 ## <a name="access-the-functions-app"></a>访问函数应用
 
@@ -194,10 +194,10 @@ ms.locfileid: "86540275"
 
 1. 遵循以下快速入门之一，以便创建和部署 Azure Functions 应用。
 
-    * [Visual Studio Code](./functions-create-first-function-vs-code.md)
+    * [Visual Studio Code](./create-first-function-vs-code-csharp.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
-    * [命令行](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
+    * [命令行](./create-first-function-cli-csharp.md)
+    * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. 发布 Azure Functions 项目时，请选择前面在本教程中创建的函数应用资源。
 1. 验证是否已部署该函数。

@@ -5,15 +5,15 @@ description: 了解如何使用 Azure PowerShell 在应用程序网关上配置�
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/09/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: 3ac0540856d8cb8ccba6f1d176292d634d2dc80f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: how-to
+ms.openlocfilehash: ef4337b187500695d9ef1c0b896d6ae8b5663ca6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856596"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938845"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每个站点的 WAF 策略
 
@@ -28,7 +28,7 @@ Web 应用程序防火墙 (WAF) 设置包含在 WAF 策略中，若要更改 WAF
 * 设置网络
 * 创建 WAF 策略
 * 创建启用 WAF 的应用程序网关
-*  (预览中全局、按站点和按 URI 应用 WAF 策略) 
+* 在全局范围、每个站点和每个 URI 上应用 WAF 策略 
 * 创建虚拟机规模集
 * 创建存储帐户和配置诊断
 * 测试应用程序网关
@@ -249,7 +249,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy-preview"></a> (预览中应用每 URI 策略) 
+### <a name="apply-a-per-uri-policy"></a>应用每 URI 策略
 
 若要应用每 URI 策略，只需创建一个新策略并将其应用于路径规则配置即可。 
 
@@ -296,6 +296,8 @@ Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw `
 
 在此示例中，将创建虚拟机规模集，以便为应用程序网关的后端池提供服务器。 配置 IP 设置时将规模集分配给后端池。
 
+将和替换为你自己的值 `-AdminUsername` `-AdminPassword` 。
+
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
@@ -311,7 +313,7 @@ $backendPool = Get-AzApplicationGatewayBackendAddressPool `
 
 $ipConfig = New-AzVmssIpConfig `
   -Name myVmssIPConfig `
-  -SubnetId $vnet.Subnets[1].Id `
+  -SubnetId $vnet.Subnets[0].Id `
   -ApplicationGatewayBackendAddressPoolsId $backendPool.Id
 
 $vmssConfig = New-AzVmssConfig `
@@ -328,8 +330,8 @@ Set-AzVmssStorageProfile $vmssConfig `
   -OsDiskCreateOption FromImage
 
 Set-AzVmssOsProfile $vmssConfig `
-  -AdminUsername azureuser `
-  -AdminPassword "Azure123456!" `
+  -AdminUsername <username> `
+  -AdminPassword <password> `
   -ComputerNamePrefix myvmss
 
 Add-AzVmssNetworkInterfaceConfiguration `

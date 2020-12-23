@@ -9,18 +9,18 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 5b4e2fa95b9a5eebf393d7c64feecd3997b7ecfd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eb71de223e2d840e0caa0444b837e16e1f091414
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280022"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484781"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
 存储分析记录成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。
 
- 默认未对存储帐户启用存储分析日志记录。 可以在 [Azure 门户](https://portal.azure.com/)中启用它；有关详细信息，请参阅[在 Azure 门户中监视存储帐户](/azure/storage/storage-monitor-storage-account)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用[获取 Blob 服务属性](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)、[获取队列服务属性](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)和[获取表服务属性](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties)操作为每个服务启用存储分析。
+ 默认未对存储帐户启用存储分析日志记录。 可以在 [Azure 门户](https://portal.azure.com/)中启用它；有关详细信息，请参阅[在 Azure 门户中监视存储帐户](./storage-monitor-storage-account.md)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用[获取 Blob 服务属性](/rest/api/storageservices/Blob-Service-REST-API)、[获取队列服务属性](/rest/api/storageservices/Get-Queue-Service-Properties)和[获取表服务属性](/rest/api/storageservices/Get-Table-Service-Properties)操作为每个服务启用存储分析。
 
  仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有该活动，则仅创建与 Blob 服务有关的日志。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91280022"
  }  
  ```  
 
-有关以编程方式列出 blob 的信息，请参阅[枚举 blob 资源](https://msdn.microsoft.com/library/azure/hh452233.aspx)以及[设置并检索 blob 资源的属性和元数据](https://msdn.microsoft.com/library/azure/dd179404.aspx)。  
+有关以编程方式列出 blob 的信息，请参阅[枚举 blob 资源](/rest/api/storageservices/Enumerating-Blob-Resources)以及[设置并检索 blob 资源的属性和元数据](/rest/api/storageservices/Setting-and-Retrieving-Properties-and-Metadata-for-Blob-Resources)。  
 
 ### <a name="log-naming-conventions"></a>日志命名约定
 
@@ -153,7 +153,7 @@ Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,w
 Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
- 若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)。  
+ 若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azure/)。  
 
 ### <a name="enable-storage-logging-programmatically"></a>以编程方式启用存储日志记录  
 
@@ -179,9 +179,9 @@ queueClient.SetServiceProperties(serviceProperties);
 ---
 
 
- 有关使用 .NET 语言配置存储日志记录的详细信息，请参阅[存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)。  
+ 有关使用 .NET 语言配置存储日志记录的详细信息，请参阅[存储客户端库参考](/previous-versions/azure/dn261237(v=azure.100))。  
 
- 有关使用 REST API 配置存储日志记录的一般信息，请参阅[启用和配置存储分析](https://msdn.microsoft.com/library/azure/hh360996.aspx)。  
+ 有关使用 REST API 配置存储日志记录的一般信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。  
 
 ## <a name="download-storage-logging-log-data"></a>下载存储日志记录日志数据
 
@@ -204,7 +204,7 @@ queueClient.SetServiceProperties(serviceProperties);
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-要了解有关如何下载特定文件的详细信息，请参阅[下载特定文件](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)。
+要了解有关如何下载特定文件的详细信息，请参阅[下载特定文件](./storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)。
 
 下载日志数据后，可以查看文件中的日志条目。 这些日志文件使用一种分隔文本格式，其中许多日志读取工具都能够分析 (。有关详细信息，请参阅 Microsoft Azure 存储) 的 [监视、诊断和疑难解答](storage-monitoring-diagnosing-troubleshooting.md) 。 不同的工具提供不同的功能用于筛选、排序和搜索日志文件的内容及设置其格式。 有关存储日志记录日志文件格式和内容的详细信息，请参阅[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)和[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
 

@@ -1,5 +1,5 @@
 ---
-title: 从 web 应用调用 web api |Microsoft
+title: 从 Web 应用调用 Web API | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的 Web 应用（调用受保护的 Web API）
 services: active-directory
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 016a2917c02deaecf35c526426cb2a6dbc89e338
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396121"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173183"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
-现在你已有令牌，可以调用受保护的 Web API 了。 通常会从 web 应用的控制器或页面调用下游 API。
+现在你已有令牌，可以调用受保护的 Web API 了。 通常从 Web 应用的控制器或页面调用下游 API。
 
 ## <a name="call-a-protected-web-api"></a>调用受保护的 Web API
 
@@ -29,15 +29,15 @@ ms.locfileid: "91396121"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-如果使用的是 *web.config*，则可以使用三种方法来调用 API：
+使用 Microsoft.Identity.Web 时，有三个用于调用 API 的使用选项：
 
-- [选项1：通过 Microsoft Graph SDK 调用 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
-- [选项2：使用帮助器类调用下游 web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
-- [选项3：在不使用 helper 类的情况下调用下游 web API](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [选项 1：通过 Microsoft Graph SDK 调用 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
+- [选项 2：使用帮助程序类调用下游 Web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [选项 3：在不使用帮助程序类的情况下调用下游 Web API](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
-#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>选项1：通过 SDK 调用 Microsoft Graph
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>选项 1：使用 SDK 调用 Microsoft Graph
 
-要调用 Microsoft Graph。 在这种情况下，你已添加到 " `AddMicrosoftGraph` [代码配置](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph)" 中指定的*Startup.cs*中，并且可以直接在 `GraphServiceClient` 控制器或页构造函数中插入，以便在操作中使用。 以下示例 Razor 页面显示已登录用户的照片。
+你要调用 Microsoft Graph。 在此方案中，你已按[代码配置](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph)中的指定将 `AddMicrosoftGraph` 添加到 Startup.cs 中，现可直接将 `GraphServiceClient` 注入控制器或页构造函数中，以便在操作中使用。 以下示例 Razor 页面显示已登录用户的照片。
 
 ```CSharp
 [Authorize]
@@ -71,9 +71,9 @@ public class IndexModel : PageModel
 }
 ```
 
-#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>选项2：使用帮助器类调用下游 web API
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>选项 2：使用帮助程序类调用下游 Web API
 
-需要调用 Microsoft Graph 之外的 web API。 在这种情况下，你已按照 `AddDownstreamWebApi` [代码配置](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)中的指定添加到*Startup.cs* ，并且可以直接在 `IDownstreamWebApi` 控制器或页构造函数中注入服务，并在操作中使用它：
+你想要调用 Microsoft Graph 以外的 Web API。 在这种情况下，你已按[代码配置](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)中的指定将 `AddDownstreamWebApi` 添加到 Startup.cs 中，现可直接将 `IDownstreamWebApi` 服务注入控制器或页构造函数中并在操作中使用它：
 
 ```CSharp
 [Authorize]
@@ -101,7 +101,7 @@ public class TodoListController : Controller
 }
 ```
 
-`CallWebApiForUserAsync`还具有强类型的泛型重写，使你能够直接接收对象。 例如，下面的方法接收 `Todo` 实例，该实例是 WEB API 返回的 JSON 的强类型表示形式。
+`CallWebApiForUserAsync` 还具有强类型的泛型重写，使你能够直接接收对象。 例如，下面的方法收到一个 `Todo` 实例，该实例是 Web API 返回的 JSON 的强类型表示形式。
 
 ```CSharp
     // GET: TodoList/Details/5
@@ -119,11 +119,11 @@ public class TodoListController : Controller
     }
    ```
 
-#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>选项3：在不使用 helper 类的情况下调用下游 web API
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>选项 3：在不使用帮助程序类的情况下调用下游 Web API
 
-你已决定使用服务手动获取令牌 `ITokenAcquisition` ，现在需要使用该令牌。 在这种情况下，以下代码将继续在 web 应用中显示的示例代码 [，该应用程序调用 Web api：获取应用程序的令牌](scenario-web-app-call-api-acquire-token.md)。 代码在 web 应用控制器的操作中调用。
+你已决定使用 `ITokenAcquisition` 服务手动获取令牌，现在需要使用该令牌。 在这种情况下，以下代码继续演示[调用 Web API 的 Web 应用：获取应用的令牌](scenario-web-app-call-api-acquire-token.md)中显示的示例代码。 该代码将在 Web 应用控制器的操作中调用。
 
-获取令牌后，将其用作持有者令牌以调用下游 API，在本例中为 Microsoft Graph。
+获取令牌后，将其用作持有者令牌以调用下游 API（在本例中为 Microsoft Graph）。
 
  ```csharp
 public async Task<IActionResult> Profile()
@@ -152,7 +152,7 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > 可以使用相同的原则来调用任何 Web API。
 >
-> 大多数 Azure web Api 都提供 SDK，可简化对 Microsoft Graph 的调用。 例如， [创建一个 web 应用程序，该应用程序使用 Azure AD 获取对 Blob 存储的访问权限，该应用程序](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet) 使用 Microsoft 和 AZURE 存储 SDK 的 web 应用的示例。
+> 大多数 Azure Web API 都提供了可简化 API 调用的 SDK，Microsoft Graph 就是这样。 例如，如果需要一个使用 Microsoft.Identity.Web 和 Azure 存储 SDK 的 Web 应用的示例，请参阅[创建一个授权使用 Azure AD 访问 Blob 存储的 Web 应用程序](../../storage/common/storage-auth-aad-app.md?tabs=dotnet&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -199,5 +199,4 @@ def graphcall():
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [转移到生产环境](scenario-web-app-call-api-production.md)
+转到本方案中的下一篇文章， [转到 "生产](scenario-web-app-call-api-production.md)"。

@@ -4,17 +4,17 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255227"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999415"
 ---
 虽然此功能很容易设置，但这并不意味着你的体验不会遇到任何问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具” > “Kudu”。 此外，还可以通过 [sitename].scm.azurewebsites.net 访问 Kudo 控制台。 打开网站负载后，转到“调试控制台”选项卡。若要从应用访问 Azure 门户托管的控制台，请转到“工具” > “控制台”。
 
 #### <a name="tools"></a>工具
-在本机 Windows 应用程序中，工具 **ping**、 **nslookup**和 **tracert** 不会通过控制台工作，因为它们 (它们在 [自定义 Windows 容器](../articles/app-service/quickstart-custom-container.md)) 中工作。 为了填补此空白，我们添加了两个单独的工具。 我们添加了名为 nameresolver.exe 的工具，用于测试 DNS 功能。 语法为：
+在本机 Windows 应用程序中，工具 **ping**、 **nslookup** 和 **tracert** 不会通过控制台工作，因为它们 (它们在 [自定义 Windows 容器](../articles/app-service/quickstart-custom-container.md)) 中工作。 为了填补此空白，我们添加了两个单独的工具。 我们添加了名为 nameresolver.exe 的工具，用于测试 DNS 功能。 语法为：
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -46,7 +46,7 @@ tcpping.exe hostname [optional: port]
 * 你的目标是不是 RFC1918 的地址，并且未将 WEBSITE_VNET_ROUTE_ALL 设置为1？
 * 你的集成子网是否有 NSG 阻止出口？
 * 如果要跨越 Azure ExpressRoute 或 VPN，是否配置了本地网关，以将流量重新路由到 Azure？ 如果可以访问虚拟网络中的终结点，但不能访问本地的终结点，请检查路由。
-* 你是否有足够的权限在集成子网上设置委派？ 在区域 VNet 集成配置期间，集成子网将委托给 Microsoft。 VNet 集成 UI 会自动将子网委托给 Microsoft。 如果你的帐户没有足够的网络权限来设置委派，你将需要可设置集成子网中的属性的用户来委派子网。 若要手动委派集成子网，请参阅 Azure 虚拟网络子网 UI，并设置 Microsoft 的委派。
+* 你是否有足够的权限在集成子网上设置委派？ 在区域 VNet 集成配置期间，集成子网会委托给 serverFarms/。 VNet 集成 UI 会自动将子网委托给 serverFarms/。 如果你的帐户没有足够的网络权限来设置委派，你将需要可设置集成子网中的属性的用户来委派子网。 若要手动委派集成子网，请参阅 Azure 虚拟网络子网 UI，并设置 serverFarms/的委派。
 
 **需要网关的 VNet 集成**
 * 点到站点地址范围是否在 RFC 1918 范围内 (10.0.0.0-10.255.255.255 / 172.16.0.0-172.31.255.255 / 192.168.0.0-192.168.255.255)？

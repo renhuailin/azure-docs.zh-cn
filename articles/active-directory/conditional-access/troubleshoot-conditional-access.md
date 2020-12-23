@@ -5,22 +5,39 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032962"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145093"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>排查使用条件访问时的登录问题
 
 可以参考本文中的信息，使用错误消息和 Azure AD 登录日志来排查与条件访问相关的意外登录结果。
+
+## <a name="select-all-consequences"></a>选择 "所有" 结果
+
+条件访问框架提供了极大的配置灵活性。 不过，很大的灵活性还意味着您应该仔细检查每个配置策略，然后再发布它以避免产生不良结果。 在这种情况下，应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
+
+组织应避免以下配置：
+
+**对于所有用户、所有云应用：**
+
+- **阻止访问** -此配置将阻止整个组织。
+- **要求设备标记为合规** -对于尚未注册其设备的用户，此策略将阻止所有访问权限，包括对 Intune 门户的访问权限。 如果是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
+- **需要混合 Azure AD 加入域的设备** -此策略阻止访问还可能会阻止组织中所有用户的访问，前提是这些用户未加入混合 Azure AD 设备。
+- **需要应用保护策略** - 如果没有 Intune 策略，此阻止访问权限的策略还可能会阻止组织中所有用户的访问权限。 如果你是管理员，没有设置了 Intune 应用保护策略的客户端应用程序，则此策略会阻止你返回到 Intune 和 Azure 之类的门户。
+
+**对于所有用户、所有云应用、所有设备平台：**
+
+- **阻止访问** -此配置将阻止整个组织。
 
 ## <a name="conditional-access-sign-in-interrupt"></a>条件访问登录中断
 
@@ -58,13 +75,13 @@ ms.locfileid: "88032962"
 
 ### <a name="policy-details"></a>策略详细信息
 
-在登录事件中选择策略右侧的省略号将显示策略详细信息。 这让管理员能进一步了解策略应用成功或失败的原因。
+选择登录事件中策略右侧的省略号将显示策略详细信息。 这让管理员能进一步了解策略应用成功或失败的原因。
 
    ![登录事件的“条件访问”选项卡](./media/troubleshoot-conditional-access/image5.png)
 
    ![策略详细信息（预览版）](./media/troubleshoot-conditional-access/policy-details.png)
 
-左侧提供登录时收集的详细信息，右侧提供了有关这些详细信息是否满足应用的条件访问策略要求的详细信息。 仅当满足所有条件或未配置时，条件访问策略才适用。
+左侧提供登录时收集的详细信息，右侧提供的详细信息介绍这些详细信息是否满足所应用的条件访问策略的要求。 仅当满足所有条件时，或者所有条件都未配置时，条件访问策略才适用。
 
 如果事件中的信息不足以让你了解登录结果或调整策略来获取所需结果，可以提出支持事件。 导航到该登录事件的“故障排除和支持”选项卡，然后选择“创建新的支持请求”。 
 
@@ -82,8 +99,14 @@ ms.locfileid: "88032962"
 | 53003 | BlockedByConditionalAccess |
 | 53004 | ProofUpBlockedDueToRisk |
 
+## <a name="what-to-do-if-you-are-locked-out-of-the-azure-portal"></a>如果已 Azure 门户锁定，该怎么办？
+
+如果由于条件性访问策略中的设置不正确而导致 Azure 门户锁定：
+
+- 检查组织中是否有其他管理员尚未被阻止。 具有 Azure 门户访问权限的管理员可以禁用影响你登录的策略。 
+- 如果组织中的任何管理员都无法更新策略，请提交支持请求。 Microsoft 支持人员可以检查并确认更新了阻止访问的条件访问策略。
+
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Active Directory 门户中的“登录活动”报表](../reports-monitoring/concept-sign-ins.md)
 - [使用 What If 工具排查条件访问问题](troubleshoot-conditional-access-what-if.md)
-- [Azure Active Directory 中的条件访问](best-practices.md)的最佳做法

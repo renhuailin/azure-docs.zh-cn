@@ -3,28 +3,28 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 12/11/2020
 ms.author: aahi
-ms.openlocfilehash: 9a7846d1a63ee0b3042bbea473babffbe52f06a6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: da5aae933de1317dd97f74c97f9c08ca6cc1d090
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779109"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366505"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[v3.1 参考文档](https://docs.microsoft.com/python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3.1 包 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3.1 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 包 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
-[v3 参考文档](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 包(PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 包(PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
-[v2 参考文档](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics) | [v2 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2 包(PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[v2 参考文档](/python/api/overview/azure/cognitiveservices/textanalytics) | [v2 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2 包(PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
@@ -35,6 +35,7 @@ ms.locfileid: "91779109"
 * 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 若要使用“分析”功能，需要标准 (S) 定价层的“文本分析”资源。
 
 ## <a name="setting-up"></a>设置
 
@@ -103,7 +104,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 # <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
-文本分析客户端是一个 [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient) 对象，它使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来分析文本，文本可以是单个字符串，也可以是批处理。 
+文本分析客户端是一个 [TextAnalyticsClient](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient) 对象，它使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来分析文本，文本可以是单个字符串，也可以是批处理。 
 
 文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
 
@@ -117,6 +118,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [情绪分析](#sentiment-analysis)
+* [观点挖掘](#opinion-mining)
 * [语言检测](#language-detection)
 * [命名实体识别](#named-entity-recognition-ner) 
 * [个人身份信息识别](#personally-identifiable-information-recognition) 
@@ -253,8 +255,7 @@ Negative=0.02
 def sentiment_analysis_with_opinion_mining_example(client):
 
     documents = [
-        "The food and service were unacceptable, but the concierge were nice",
-        "The rooms were beautiful but dirty. The AC was good and quiet, but the elevator was broken"
+        "The food and service were unacceptable, but the concierge were nice"
     ]
 
     result = client.analyze_sentiment(documents, show_opinion_mining=True)
@@ -285,8 +286,17 @@ def sentiment_analysis_with_opinion_mining_example(client):
             for mined_opinion in sentence.mined_opinions:
                 aspect = mined_opinion.aspect
                 print("......'{}' aspect '{}'".format(aspect.sentiment, aspect.text))
+                print("......Aspect score:\n......Positive={0:.2f}\n......Negative={1:.2f}\n".format(
+                    aspect.confidence_scores.positive,
+                    aspect.confidence_scores.negative,
+                ))
                 for opinion in mined_opinion.opinions:
                     print("......'{}' opinion '{}'".format(opinion.sentiment, opinion.text))
+                    print("......Opinion score:\n......Positive={0:.2f}\n......Negative={1:.2f}\n".format(
+                        opinion.confidence_scores.positive,
+                        opinion.confidence_scores.negative,
+                    ))
+            print("\n")
         print("\n")
           
 sentiment_analysis_with_opinion_mining_example(client)
@@ -306,38 +316,41 @@ Neutral=0.00
 Negative=0.16
 
 ......'negative' aspect 'food'
+......Aspect score:
+......Positive=0.01
+......Negative=0.99
+
 ......'negative' opinion 'unacceptable'
+......Opinion score:
+......Positive=0.01
+......Negative=0.99
+
 ......'negative' aspect 'service'
+......Aspect score:
+......Positive=0.01
+......Negative=0.99
+
 ......'negative' opinion 'unacceptable'
+......Opinion score:
+......Positive=0.01
+......Negative=0.99
+
 ......'positive' aspect 'concierge'
+......Aspect score:
+......Positive=1.00
+......Negative=0.00
+
 ......'positive' opinion 'nice'
+......Opinion score:
+......Positive=1.00
+......Negative=0.00
 
 
-Document Sentiment: negative
-Overall scores: positive=0.00; neutral=0.00; negative=1.00
 
-Sentence: The rooms were beautiful but dirty.
-Sentence sentiment: negative
-Sentence score:
-Positive=0.01
-Neutral=0.00
-Negative=0.99
 
-......'mixed' aspect 'rooms'
-......'positive' opinion 'beautiful'
-......'negative' opinion 'dirty'
-Sentence: The AC was good and quiet, but the elevator was broken
-Sentence sentiment: negative
-Sentence score:
-Positive=0.00
-Neutral=0.00
-Negative=1.00
 
-......'positive' aspect 'AC'
-......'positive' opinion 'good'
-......'positive' opinion 'quiet'
-......'negative' aspect 'elevator'
-......'negative' opinion 'broken'
+Press any key to continue . . .
+
 ```
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
@@ -391,7 +404,7 @@ Negative=0.02
 
 # <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
-对客户端对象进行身份验证，并调用 [sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数。 循环访问结果，输出每个文档的 ID 和情绪分数。 评分接近 0 表示消极情绪，评分接近 1 表示积极情绪。
+对客户端对象进行身份验证，并调用 [sentiment()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数。 循环访问结果，输出每个文档的 ID 和情绪分数。 评分接近 0 表示消极情绪，评分接近 1 表示积极情绪。
 
 [!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
 
@@ -462,7 +475,7 @@ Language:  French
 
 # <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
-使用前面创建的客户端，调用 [detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 并获取结果。 然后循环访问结果，输出每个文档的 ID 和第一种返回的语言。
+使用前面创建的客户端，调用 [detect_language()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 并获取结果。 然后循环访问结果，输出每个文档的 ID 和第一种返回的语言。
 
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
@@ -762,7 +775,7 @@ Linked Entities:
 > [!NOTE]
 > 在版本 2.1 中，实体链接包含在 NER 响应中。
 
-使用前面创建的客户端，调用 [entities()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和其中包含的实体。
+使用前面创建的客户端，调用 [entities()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和其中包含的实体。
 
 [!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
 
@@ -879,7 +892,7 @@ key_phrase_extraction_example(client)
 
 # <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
-使用前面创建的客户端，调用 [key_phrases()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和其中包含的关键短语。
+使用前面创建的客户端，调用 [key_phrases()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和其中包含的关键短语。
 
 [!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
 
@@ -905,4 +918,76 @@ Document ID: 4
                 fútbol
 ```
 
---- 
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
+
+# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+
+> [!CAUTION]
+> 若要使用“分析”操作，必须使用标准 (S) 定价层的“文本分析”资源。  
+
+创建一个名为 `analyze_example()` 的新函数，该函数采用客户端作为参数，然后调用 `begin_analyze()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
+
+```python
+    def analyze_example(client):
+        documents = [
+            "Microsoft was founded by Bill Gates and Paul Allen."
+        ]
+
+        poller = text_analytics_client.begin_analyze(
+            documents,
+            display_name="Sample Text Analysis",
+            entities_recognition_tasks=[EntitiesRecognitionTask()]
+        )
+
+        result = poller.result()
+
+        for page in result:
+            for task in page.entities_recognition_results:
+                print("Results of Entities Recognition task:")
+                
+                docs = [doc for doc in task.results if not doc.is_error]
+                for idx, doc in enumerate(docs):
+                    print("\nDocument text: {}".format(documents[idx]))
+                    for entity in doc.entities:
+                        print("Entity: {}".format(entity.text))
+                        print("...Category: {}".format(entity.category))
+                        print("...Confidence Score: {}".format(entity.confidence_score))
+                        print("...Offset: {}".format(entity.offset))
+                    print("------------------------------------------")
+
+analyze_example(client)
+```
+
+### <a name="output"></a>Output
+
+```console
+Results of Entities Recognition task:
+Document text: Microsoft was founded by Bill Gates and Paul Allen.
+Entity: Microsoft
+...Category: Organization
+...Confidence Score: 0.83
+...Offset: 0
+Entity: Bill Gates
+...Category: Person
+...Confidence Score: 0.85
+...Offset: 25
+Entity: Paul Allen
+...Category: Person
+...Confidence Score: 0.9
+...Offset: 40
+------------------------------------------
+```
+
+还可以使用“分析”操作来检测 PII 和关键短语提取。 请参阅 GitHub 上的[分析示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/async_samples/sample_analyze_async.py)。
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+此功能在版本 3.0 中不可用。
+
+# <a name="version-21"></a>[版本 2.1](#tab/version-2)
+
+此功能在版本 2.1 中不可用。
+
+---

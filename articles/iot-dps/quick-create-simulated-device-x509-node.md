@@ -1,5 +1,5 @@
 ---
-title: 使用 Node.js 将模拟的 X.509 设备预配到 Azure IoT 中心
+title: 快速入门 - 使用 Node.js 将模拟的 X.509 设备预配到 Azure IoT 中心
 description: 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 Node.js 设备 SDK 创建和预配模拟的 X.509 设备。本快速入门使用单个注册。
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: fe5279725a3d01001b44074eca8656e88d778cab
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422107"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968156"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配 X.509 模拟设备
 
@@ -24,7 +24,7 @@ ms.locfileid: "87422107"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 查看[自动预配概念](concepts-auto-provisioning.md)。
+- 熟悉[预配](about-iot-dps.md#provisioning-process)概念。
 - 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Node.js v4.0+](https://nodejs.org)。
@@ -76,7 +76,7 @@ Azure IoT 设备预配服务支持两类注册：
     npm install
     ```
 
-3. 使用自己的 _certificate-name_ 运行脚本，创建_叶_ X.509 证书。 叶证书的公用名称会成为[注册 ID](https://docs.microsoft.com/azure/iot-dps/concepts-device#registration-id)，因此请确保只使用小写的字母数字和连字符。
+3. 使用自己的 _certificate-name_ 运行脚本，创建 _叶_ X.509 证书。 叶证书的公用名称会成为[注册 ID](./concepts-service.md#registration-id)，因此请确保只使用小写的字母数字和连字符。
 
     ```cmd/sh
     node create_test_cert.js device {certificate-name}
@@ -101,7 +101,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="simulate-the-device"></a>模拟设备
 
-[Azure IoT 中心 Node.js 设备 SDK](https://github.com/Azure/azure-iot-sdk-node) 提供了进行设备模拟的简单方式。 若要阅读更多材料，请参阅[设备概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)。
+[Azure IoT 中心 Node.js 设备 SDK](https://github.com/Azure/azure-iot-sdk-node) 提供了进行设备模拟的简单方式。 若要阅读更多材料，请参阅[设备概念](./concepts-service.md)。
 
 1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，记下“全局设备终结点”和“ID 范围”的值。   
 

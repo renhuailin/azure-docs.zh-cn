@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 60c699e35cb182c6a90ae60efe93303569a35014
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540765"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445488"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教程：在 Azure Active Directory 与 F5 之间配置单一登录 (SSO)
 
@@ -26,7 +26,7 @@ ms.locfileid: "88540765"
 * 让用户使用其 Azure AD 帐户自动登录到 F5。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要详细了解 SaaS 应用与 Azure AD 单一登录的集成，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要详细了解 SaaS 应用与 Azure AD 单一登录的集成，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,15 +73,15 @@ ms.locfileid: "88540765"
 
 1. 在“引导式配置”页，单击左上角的“升级引导式配置”   。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure14.png) 
+    ![显示“引导式配置”页面的屏幕截图，其中包含“更新引导式配置”链接。](./media/headerf5-tutorial/configure14.png) 
 
 1. 在“升级引导配置”弹出屏幕上，选择“选择文件”以上传已下载的用例包，然后单击“上传和安装”按钮   。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure15.png) 
+    ![显示“升级引导式配置”对话框的屏幕截图，其中已选中“选择文件”。](./media/headerf5-tutorial/configure15.png) 
 
 1. 升级完成后，单击“继续”按钮  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure16.png)
+    ![显示“升级引导式配置”对话框的屏幕截图，其中包含完成消息。](./media/headerf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -117,7 +117,7 @@ ms.locfileid: "88540765"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **F5**。
+1. 在“从库中添加”部分的搜索框中，键入 **F5** 。
 1. 在结果面板中选择“F5”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>配置并测试 F5 的 Azure AD 单一登录
@@ -211,39 +211,39 @@ ms.locfileid: "88540765"
 
 1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”  。 指定稍后会在配置中引用的“证书名称”  。 在“证书源”中，选择“上传文件”，指定在配置 SAML 单一登录时从 Azure 下载的证书  。 单击“导入”  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure12.png)
+    ![显示 SSL 证书列表的屏幕截图，可以在其中选择证书名称和证书源。](./media/headerf5-tutorial/configure12.png)
  
 1. 此外，还需要 **SSL 证书以获取应用程序主机名。导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”** 。 在右下角选择“导入”  。 “导入类型”将为“PKCS 12(IIS)”   。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件  。 为 PFX 指定“密码”  。 单击“导入”  。
 
     >[!NOTE]
     >在此示例中，我们的应用名称是 `Headerapp.superdemo.live`，我们使用通配符证书，我们的密钥名称为 `WildCard-SuperDemo.live`。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure13.png)
+    ![显示“SSL 证书/密钥源”页面的屏幕截图。](./media/headerf5-tutorial/configure13.png)
 
 1. 我们将使用引导式体验来设置 Azure AD 联合身份验证和应用程序访问。 转到 F5 BIG-IP 主页，选择“访问”>“引导式配置”>“联合”>“SAML 服务提供程序”   。 单击“下一步”，然后单击“下一步”以开始配置   。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure01.png)
+    ![显示“引导式配置”页面的屏幕截图，其中已选择“联合”。](./media/headerf5-tutorial/configure01.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure02.png)
+    ![显示“SAML 服务提供程序”页面的屏幕截图。](./media/headerf5-tutorial/configure02.png)
  
 1. 提供配置名称  。 指定“实体 ID”（与在 Azure AD 应用程序配置中配置的 ID 相同）  。 指定“主机名”  。 添加引用的说明  。 接受其余默认条目，选择并单击“保存并进行下一步”  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure03.png) 
+    ![显示“服务提供程序属性”页面的屏幕截图。](./media/headerf5-tutorial/configure03.png) 
 
 1. 在本示例中，我们将新建一个虚拟服务，IP 为 192.168.30.20，端口 443。 在“目标地址”中指定虚拟服务器 IP 地址  。 选择客户端“SSL 配置文件”，然后选择“新建”  。 指定之前上传的应用程序证书（在本示例中为通配符证书）和关联的密钥，然后单击“保存并进行下一步”  。
 
     >[!NOTE]
     >在此示例中，我们的内部 Web 服务器在端口 888 上运行，我们希望使用端口 443 发布它。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure04.png) 
+    ![显示“虚拟服务器属性”页面的屏幕截图。](./media/headerf5-tutorial/configure04.png) 
 
 1. 在“选择配置 IdP 连接器的方法”下指定“元数据”，单击“选择文件”，然后上传之前从 Azure AD 下载的元数据 XML 文件  。 为 SAML IDP 连接器指定唯一名称  。 选择之前上传的元数据签名证书  。 单击“保存并进行下一步”  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure05.png)
+    ![显示“外部标识提供者连接器设置”页面的屏幕截图。](./media/headerf5-tutorial/configure05.png)
  
 1. 在“选择池”下指定“新建”（或者选择已有的池）   。 其余项保持默认值。 在“池服务器”下，在“IP 地址/节点名称”下键入 IP 地址  。 指定端口  。 单击“保存并进行下一步”  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure06.png)
+    ![显示“池属性”页面的屏幕截图。](./media/headerf5-tutorial/configure06.png)
 
 1. 在“单一登录设置”屏幕上，选择“启用单一登录”  。 在选择的单一登录类型下，选择“基于 HTTP 标头”  。 在“用户名源”下使用 session.saml.last.attr.name.Identity（此变量是使用 Azure AD 中的声明映射设置的）替代 session.saml.last.Identity   。 在 SSO 标头下。
 
@@ -258,21 +258,21 @@ ms.locfileid: "88540765"
     >[!NOTE]
     >帐户名是创建的 F5 委托帐户（请查看 F5 文档）。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure07.png) 
+    ![显示“单一登录设置”页面的屏幕截图。](./media/headerf5-tutorial/configure07.png) 
 
 1. 出于本指南的目的，我们将跳过终结点检查。  有关详细信息，请参阅 F5 文档。 选择“保存并进行下一步”  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure08.png)
+    ![显示“终结点检查属性”页面的屏幕截图。](./media/headerf5-tutorial/configure08.png)
 
 1. 接受默认设置，然后单击“保存并进行下一步”  。 有关 SAML 会话管理设置的详细信息，请参阅 F5 文档。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure09.png)
+    ![显示“超时设置”页面的屏幕截图。](./media/headerf5-tutorial/configure09.png)
 
 1. 查看摘要屏幕，然后选择“部署”以配置 BIG-IP  。 单击“完成”  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure10.png)
+    ![显示“应用程序已可用于部署”页面的屏幕截图。](./media/headerf5-tutorial/configure10.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure11.png)
+    ![显示“应用程序已部署”页面的屏幕截图。](./media/headerf5-tutorial/configure11.png)
 
 ## <a name="advanced-configuration"></a>高级配置
 
@@ -283,7 +283,7 @@ ms.locfileid: "88540765"
     >[!NOTE]
     >在此示例中，我们的应用名称是 `Headerapp.superdemo.live`，我们使用通配符证书，我们的密钥名称为 `WildCard-SuperDemo.live`。
   
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure17.png)
+    ![显示“高级配置的 SSL 证书/密钥源”页面的屏幕截图。](./media/headerf5-tutorial/configure17.png)
 
 ### <a name="adding-a-new-web-server-to-bigip-f5"></a>向 BigIP-F5 添加新的 Web 服务器
 
@@ -291,7 +291,7 @@ ms.locfileid: "88540765"
 
 1. 提供名称，并在“模板”下选择“f5.http”    。
  
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure18.png)
+    ![显示具有“模板选择”的“应用程序服务”页面的屏幕截图。](./media/headerf5-tutorial/configure18.png)
 
 1. 在这种情况下，我们会在外部将 HeaderApp2 作为 HTTPS 发布。在“BIG-IP 系统应如何处理 SSL 流量?”下我们指定“终止来自客户端的 SSL、发往服务器的纯文本(SSL 卸载)”   。 在“希望使用哪个 SSL 证书?”和“希望使用哪个 SSL 私钥?”下指定证书和密钥  。 在“希望虚拟服务器采用什么 IP 地址?”下指定虚拟服务器 IP  。 
 
@@ -303,15 +303,15 @@ ms.locfileid: "88540765"
 
         * 如果要创建新的应用服务器，请指定内部 IP 地址和端口号   。
 
-        ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure19.png) 
+        ![显示可在其中指定这些详细信息的窗格页面的屏幕截图。](./media/headerf5-tutorial/configure19.png) 
 
 1. 单击“完成”  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure20.png) 
+    ![显示完成后的页面的屏幕截图。](./media/headerf5-tutorial/configure20.png) 
 
 1. 确保可以修改应用属性。 单击“主页”>“IApps”>“应用程序服务”：  “应用程序”>>“HeaderApp2”。 取消选中“严格更新”（我们将修改 GUI 之外的部分设置）  。 单击“更新”按钮  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure21.png) 
+    ![显示选择了“属性”选项卡的“应用程序服务”页面的屏幕截图。](./media/headerf5-tutorial/configure21.png) 
 
 1. 此时，应该能够浏览虚拟服务器。
 
@@ -319,27 +319,27 @@ ms.locfileid: "88540765"
 
 1.  单击“访问”>“联合”>“SAML 服务提供程序”>“本地 SP 服务”，单击“创建”或 + 号  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure22.png)
+    ![显示“关于此 BIG IP”页面的屏幕截图。 ](./media/headerf5-tutorial/configure22.png)
 
 1. 指定服务提供程序服务的详细信息。 指定表示 F5 SP 配置的“名称”  。 指定“实体 ID”，通常与应用程序 URL 相同  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure23.png)
+    ![显示具有“新建 SAML SP 服务”对话框的“SAML 服务提供程序”页面的屏幕截图。](./media/headerf5-tutorial/configure23.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure24.png)
+    ![显示选择了“终结点设置”的“新建 SAML SP 服务”对话框的屏幕截图。](./media/headerf5-tutorial/configure24.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure25.png)
+    ![显示选择了“安全设置”的“新建 SAML SP 服务”对话框的屏幕截图。](./media/headerf5-tutorial/configure25.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure26.png)
+    ![显示选择了“身份验证上下文”的“新建 SAML SP 服务”对话框的屏幕截图。](./media/headerf5-tutorial/configure26.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure27.png)
+    ![显示选择了“请求的属性”的“新建 SAML SP 服务”对话框的屏幕截图。](./media/headerf5-tutorial/configure27.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure28.png)
+    ![显示选择了“高级设置”的“编辑 SAML SP 服务”对话框的屏幕截图。](./media/headerf5-tutorial/configure28.png)
 
 ### <a name="create-idp-connector"></a>创建 Idp 连接器
 
 1. 单击“绑定/取消绑定 IdP 连接器”按钮，选择“新建 IdP 连接器”，并在“元数据”选项中进行选择，然后执行以下步骤    ：
  
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure29.png)
+    ![显示使用此 SP 对话框（其中已选中“新建 IdP 连接器”）的“编辑 SAML IdP”的屏幕截图。](./media/headerf5-tutorial/configure29.png)
 
     a. 浏览到从 Azure AD 下载的 metadata.xml 文件，并指定标识提供程序名称  。
 
@@ -347,7 +347,7 @@ ms.locfileid: "88540765"
 
     c. 创建连接器后，将自动从元数据 xml 文件中准备好证书。
     
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure30.png)
+    ![显示“新建 SAML IdP 连接器”对话框的屏幕截图。](./media/headerf5-tutorial/configure30.png)
 
     d. 配置 F5BIG-IP 以将所有请求发送到 Azure AD。
 
@@ -355,15 +355,15 @@ ms.locfileid: "88540765"
 
     f. 匹配源   =  %{session.server.landinguri} 
 
-    g. 匹配值     = /  *
+    g. 匹配值     = /_
 
-    h. 单击“更新”
+    h. 单击“更新”*
 
     i. 单击 **“确定”**
 
     j. SAML IDP 设置已完成
     
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure31.png)
+    ![显示使用此 SP 对话框的“编辑 SAML IdP”的屏幕截图。](./media/headerf5-tutorial/configure31.png)
 
 ### <a name="configure-f5-policy-to-redirect-users-to-azure-saml-idp"></a>配置 F5 策略以将用户重定向到 Azure SAML IDP
 
@@ -373,39 +373,39 @@ ms.locfileid: "88540765"
 
     b. 单击“创建”按钮。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure32.png)
+    ![显示“访问配置文件”页面的屏幕截图。](./media/headerf5-tutorial/configure32.png)
  
     c. 指定名称，本例中为 HeaderAppAzureSAMLPolicy  。
 
     d. 可以自定义其他设置，请参阅 F5 文档。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure33.png)
+    ![显示“常规属性”页面的屏幕截图。](./media/headerf5-tutorial/configure33.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure34.png) 
+    ![显示“常规属性”页面（续）的屏幕截图。](./media/headerf5-tutorial/configure34.png) 
 
     e. 单击“完成”  。
 
     f. 策略创建完成后，单击策略，并转到“访问策略”选项卡  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure35.png)
+    ![显示具有“常规属性”的“访问策略”选项卡的屏幕截图。](./media/headerf5-tutorial/configure35.png)
  
     g. 单击“Visual Policy”编辑器，编辑“配置文件的访问策略”链接   。
 
     h. 单击“Visual Policy”编辑器中的 + 号并选择“SAML 身份验证”  。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure36.png)
+    ![显示“访问策略”的屏幕截图。](./media/headerf5-tutorial/configure36.png)
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure37.png)
+    ![显示选择了“SAML 身份验证”的搜索对话框的屏幕截图。](./media/headerf5-tutorial/configure37.png)
  
     i. 单击“添加项”  。
 
     j. 在“属性”下指定名称，在“AAA 服务器”下选择之前配置的 SP，单击“保存”     。
  
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure38.png)
+    ![显示项的属性的屏幕截图，其中包括其 AAA 服务器。](./media/headerf5-tutorial/configure38.png)
 
     k. 基本策略已准备就绪，可以自定义策略以合并其他源/属性存储。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure39.png)
+    ![显示自定义策略的屏幕截图。](./media/headerf5-tutorial/configure39.png)
  
     l. 请务必单击顶部的“应用访问策略”链接  。
 
@@ -415,21 +415,21 @@ ms.locfileid: "88540765"
 
     a. 单击“主页” > “本地流量” > “虚拟服务器”    。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure40.png)
+    ![显示“虚拟服务器列表”页的屏幕截图。](./media/headerf5-tutorial/configure40.png)
  
     b. 单击虚拟服务器，滚动至“访问策略”部分的“访问配置文件”下拉菜单，并选择已创建的 SAML 策略，本例中为 HeaderAppAzureSAMLPolicy
 
     c. 单击“更新”
  
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure41.png)
+    ![显示“访问策略”窗格的屏幕截图。](./media/headerf5-tutorial/configure41.png)
 
     d. 创建一个 F5 BIG-IP iRule®，以便从传入断言中提取自定义 SAML 属性，并将其作为 HTTP 标头传递到后端测试应用程序。 单击“主页”>“本地流量”>“iRules”>“iRule 列表”> 单击“创建”
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure42.png)
+    ![显示“本地流量 iRule 列表”的屏幕截图。](./media/headerf5-tutorial/configure42.png)
  
     e. 将下面的 F5 BIG-IP iRule 文本粘贴到定义窗口中。
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure43.png)
+    ![显示“新建 iRule”页面的屏幕截图。](./media/headerf5-tutorial/configure43.png)
  
     when RULE_INIT {  set static::debug 0  }  when ACCESS_ACL_ALLOWED {
 
@@ -441,29 +441,28 @@ ms.locfileid: "88540765"
 
     下面是示例输出
 
-    ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure44.png)
+    ![显示示例输出的屏幕截图。](./media/headerf5-tutorial/configure44.png)
  
 ### <a name="create-f5-test-user"></a>创建 F5 测试用户
 
-在本部分，你将在 F5 中创建名为 B.Simon 的用户。 在  [F5 支持团队](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)的配合下，将用户添加到 F5 平台。 使用单一登录前，必须先创建并激活用户。 
+在本部分，你将在 F5 中创建名为 B.Simon 的用户。 请与 [F5 客户端支持团队](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)协作，在 F5 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“F5”磁贴时，应会自动登录到设置了 SSO 的 F5。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“F5”磁贴时，应会自动登录到设置了 SSO 的 F5。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 F5](https://aad.portal.azure.com/)
 
 - [为 Kerberos 应用程序配置 F5 单一登录](kerbf5-tutorial.md)
 
 - [为 Advanced Kerberos 应用程序配置 F5 单一登录](advance-kerbf5-tutorial.md)
-

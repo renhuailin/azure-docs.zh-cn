@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082269"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628688"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
@@ -25,11 +25,11 @@ ms.locfileid: "86082269"
 
 此代码原本是针对 Azure 上 HDInsight 群集中的 Spark 上运行的 ML Server 编写的。 但在一个脚本中混合使用 SparkR 和 ScaleR 的思路同样适用于本地环境。
 
-本文档中的步骤假定你对 R 和 ML Server 的 [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) 库有中等水平的了解。 在完成此方案时，你会[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 。
+本文档中的步骤假定你对 R 和 ML Server 的 [ScaleR](/machine-learning-server/r/concept-what-is-revoscaler) 库有中等水平的了解。 在完成此方案时，你会 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 。
 
 ## <a name="the-airline-and-weather-datasets"></a>航班和天气数据集
 
-航班数据是从[美国政府存档](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 它还可作为[AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)的 zip。
+航班数据是从[美国政府存档](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 它还可作为 [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)的 zip。
 
 可以从[美国海洋与大气管理存储库](https://www.ncdc.noaa.gov/orders/qclcd/)下载原始格式的每月天气数据 zip 文件。 就此示例来说，请下载 2007 年 5 月 – 2012 年 12 月期间的数据。 使用每个 zip 中的每小时数据文件和 `YYYYMMMstation.txt` 文件。
 
@@ -218,7 +218,7 @@ weatherDF <- read.df(sqlContext, weatherPath, source = "com.databricks.spark.csv
 
 ## <a name="data-cleansing-and-transformation"></a>数据清理和和转换
 
-接下来，针对导入的航班数据执行一些清理工作，以便重命名列。 仅保留所需的变量，将计划的出发时间向下舍入为最接近的小时，以便与出发前的最新天气数据合并：
+接下来，我们对航班数据执行一些清理，然后重命名列。 仅保留所需的变量，将计划的出发时间向下舍入为最接近的小时，以便与出发前的最新天气数据合并：
 
 ```
 logmsg('clean the airline data') 
@@ -459,7 +459,7 @@ rxGetInfo(testDS)
 
 ## <a name="train-and-test-a-logistic-regression-model"></a>训练并测试逻辑回归模型
 
-现在，我们已准备好构建模型。 为了查看天气数据对延误抵达时间的影响，将使用 ScaleR 的逻辑回归例程。 我们用它来建模，确定超过 15 分钟的抵达延误是否受到了出发地和目的地机场天气的影响：
+现在，我们已准备好构建模型。 为了查看天气数据对抵达时间延迟的影响，我们使用了 ScaleR 的逻辑回归例程。 我们用它来建模，确定超过 15 分钟的抵达延误是否受到了出发地和目的地机场天气的影响：
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>在其他位置评分
 
-还可以使用该模型在另一个平台上为数据评分： 将数据保存到 RDS 文件，然后将该 RDS 传输并导入到 MIcrosoft SQL Server R Services 等目标评分环境。 必须确保要评分的数据的系数级别与构建模型的数据级别相匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到预测用的输入数据源。 下面保存了测试数据集的几行数据，接下来将从此示例中提取列信息并在预测脚本中使用：
+还可以使用该模型在另一个平台上为数据评分： 将其保存到 RDS 文件，然后将该 RDS 传输并导入到目标计分环境（例如 Microsoft SQL Server R Services）。 必须确保要评分的数据的系数级别与构建模型的数据级别相匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到预测用的输入数据源。 在下面的代码示例中，我们保存几行测试数据集，并在预测脚本中提取并使用本示例中的列信息：
 
 ```
 # save the model and a sample of the test dataset 
@@ -529,18 +529,18 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 在本文中，我们展示了如何在 Hadoop Spark 中将用于数据操作的 SparkR 和用于模型开发的 ScaleR 配合使用。 此方案要求保留单独的 Spark 会话，一次只运行一个会话，并通过 CSV 文件交换数据。 尽管此过程现已相当简单直接，但在将来的 ML Services 版本中还会得到进一步简化，因为到时 SparkR 和 ScaleR 可以共享 Spark 会话，因而也能共享 Spark DataFrame。
 
 ## <a name="next-steps-and-more-information"></a>后续步骤和详细信息
 
-- 有关 Apache Spark 使用 ML Server 的详细信息，请参阅[入门指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)。
+- 有关 Apache Spark 使用 ML Server 的详细信息，请参阅 [入门指南](/machine-learning-server/r/how-to-revoscaler-spark)。
 
-- 有关 HDInsight 上的 ML 服务的信息，请参阅[hdinsight 上的 Ml 服务概述](r-server/r-server-overview.md)。
+- 有关 HDInsight 上的 ML 服务的信息，请参阅 [hdinsight 上的 Ml 服务概述](r-server/r-server-overview.md)。
 
 有关 SparkR 用法的详细信息，请参阅：
 
 - [Apache SparkR 文档](https://spark.apache.org/docs/2.1.0/sparkr.html)。
 
-- Databricks 中的[SparkR 概述](https://docs.databricks.com/spark/latest/sparkr/overview.html)。
+- [SparkR 概述](/azure/databricks/spark/latest/sparkr/overview)

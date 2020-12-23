@@ -1,7 +1,7 @@
 ---
 title: 教程：使用自己的数据
 titleSuffix: Azure Machine Learning
-description: Azure ML 入门系列第 4 部分介绍了如何在远程训练运行中使用自己的数据。
+description: Azure 机器学习入门系列的第 4 部分介绍了如何在远程训练运行中使用你自己的数据。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,126 +11,53 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 876ba76655572979a1d831a1ca07e5f3871a3283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52b46d67d745017237a8c648abed66e2693d9d6a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929252"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573011"
 ---
-# <a name="tutorial-use-your-own-data-part-4-of-4"></a>教程：使用自己的数据（第 4 部分，共 4 部分）
+# <a name="tutorial-use-your-own-data-part-4-of-4"></a>教程：使用你自己的数据（第 4 部分，共 4 部分）
 
 本教程介绍了如何在 Azure 机器学习中上传并使用你自己的数据来训练机器学习模型。
 
-本教程是**由四个部分组成的教程系列的第四部分**。你可以在其中了解 Azure 机器学习基础知识，并在 Azure 中完成基于作业的机器学习任务。 本教程以你在[第 1 部分：设置](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部分：运行“Hello World”](tutorial-1st-experiment-hello-world.md)和[第 3 部分：训练模型](tutorial-1st-experiment-sdk-train.md)中完成的工作为基础编写。
+本教程是由四部分组成的系列教程的第 4 部分，你可以在其中了解 Azure 机器学习基础知识，并在 Azure 中完成基于作业的机器学习任务。 本教程以你在[第 1 部分：设置](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部分：运行“Hello World!”](tutorial-1st-experiment-hello-world.md)和[第 3 部分：训练模型](tutorial-1st-experiment-sdk-train.md)中完成的工作为基础编写。
 
-在[第 3 部分：训练模型](tutorial-1st-experiment-sdk-train.md)中，已使用 PyTorch API 中的内置 `torchvision.datasets.CIFAR10` 方法下载了数据。 但在许多情况下，你需要在远程训练运行中使用自己的数据。 本文介绍了可用于在 Azure 机器学习中处理你自己的数据的工作流。
+在[第 3 部分：训练模型](tutorial-1st-experiment-sdk-train.md)中，已通过 PyTorch API 中内置的 `torchvision.datasets.CIFAR10` 方法下载了数据。 但在许多情况下，你将会需要在远程训练运行中使用自己的数据。 本文介绍了可用于在 Azure 机器学习中使用你自己的数据的工作流。
 
 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 将训练脚本配置为使用本地目录中的数据
-> * 在本地测试训练脚本
-> * 将数据上传到 Azure
-> * 创建控制脚本
-> * 了解新的 Azure 机器学习概念（传递参数、数据集、数据存储）
-> * 提交并运行训练脚本
-> * 在云中查看代码输出
+> * 将训练脚本配置为使用本地目录中的数据。
+> * 在本地测试训练脚本。
+> * 将数据上传到 Azure。
+> * 创建控制脚本。
+> * 了解新的 Azure 机器学习概念（传递参数、数据集、数据存储）。
+> * 提交并运行训练脚本。
+> * 在云中查看代码输出。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 完成本系列的[第 3 部分](tutorial-1st-experiment-sdk-train.md)。
 * Python 语言和机器学习工作流的入门知识。
-* 本地开发环境。 这包括但不限于 Visual Studio Code、Jupyter 或 PyCharm。
-* Python（版本 3.5-3.7）。
+* 本地开发环境，如 Visual Studio Code、Jupyter 或 PyCharm。
+* Python（版本 3.5 至 3.7）。
 
 ## <a name="adjust-the-training-script"></a>调整训练脚本
-现在，你已在 Azure 机器学习中运行训练脚本 (tutorial/src/train.py)，并且可以监视模型性能。 让我们通过引入参数来参数化训练脚本。 使用参数可轻松比较不同的超参数。
 
-目前，我们的训练脚本设置为在每次运行时下载 CIFAR10 数据集。 以下 Python 代码已调整为读取某个目录中的数据。
+现在，你的训练脚本 (tutorial/src/train.py) 已在 Azure 机器学习中运行，并且你可以监视模型性能。 让我们通过引入参数来将训练脚本参数化。 使用参数可轻松比较不同的超参数。
+
+我们的训练脚本现在设置为在每次运行时下载 CIFAR10 数据集。 以下 Python 代码已调整为从某个目录中读取数据。
 
 >[!NOTE] 
-> 使用 `argparse` 来参数化脚本。
+> 使用 `argparse` 将脚本参数化。
 
-```python
-# tutorial/src/train.py
-import os
-import argparse
-import torch
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
-
-from model import Net
-from azureml.core import Run
-
-run = Run.get_context()
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', type=str, help='Path to the training data')
-    parser.add_argument('--learning_rate', type=float, default=0.001, help='Learning rate for SGD')
-    parser.add_argument('--momentum', type=float, default=0.9, help='Momentum for SGD')
-    args = parser.parse_args()
-    
-    print("===== DATA =====")
-    print("DATA PATH: " + args.data_path)
-    print("LIST FILES IN DATA PATH...")
-    print(os.listdir(args.data_path))
-    print("================")
-    
-    # prepare DataLoader for CIFAR10 data
-    transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-    trainset = torchvision.datasets.CIFAR10(
-        root=args.data_path,
-        train=True,
-        download=False,
-        transform=transform,
-    )
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
-
-    # define convolutional network
-    net = Net()
-
-    # set up pytorch loss /  optimizer
-    criterion = torch.nn.CrossEntropyLoss()
-    optimizer = optim.SGD(
-        net.parameters(),
-        lr=args.learning_rate,
-        momentum=args.momentum,
-    )
-
-    # train the network
-    for epoch in range(2):
-
-        running_loss = 0.0
-        for i, data in enumerate(trainloader, 0):
-            # unpack the data
-            inputs, labels = data
-
-            # zero the parameter gradients
-            optimizer.zero_grad()
-
-            # forward + backward + optimize
-            outputs = net(inputs)
-            loss = criterion(outputs, labels)
-            loss.backward()
-            optimizer.step()
-
-            # print statistics
-            running_loss += loss.item()
-            if i % 2000 == 1999:
-                loss = running_loss / 2000
-                run.log('loss', loss) # log loss metric to AML
-                print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
-                running_loss = 0.0
-
-    print('Finished Training')
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/code/pytorch-cifar10-your-data/train.py":::
 
 ### <a name="understanding-the-code-changes"></a>了解代码更改
 
-`train.py` 中使用的代码利用了 `argparse` 库来设置 `data_path`、`learning_rate` 和 `momentum`。
+`train.py` 中的代码已使用 `argparse` 库来设置 `data_path`、`learning_rate` 和 `momentum`。
 
 ```python
 # .... other code
@@ -142,7 +69,7 @@ args = parser.parse_args()
 # ... other code
 ```
 
-此外，`train.py` 脚本已改编，更新了优化器以使用用户定义的参数：
+此外，`train.py` 脚本已经过改编，以将优化器更新为使用用户定义的参数：
 
 ```python
 optimizer = optim.SGD(
@@ -151,8 +78,10 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+> [!div class="nextstepaction"]
+> [我调整了训练脚本](?success=adjust-training-script#test-locally) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
-## <a name="test-the-script-locally"></a>在本地测试脚本
+## <a name="test-the-script-locally"></a><a name="test-locally"></a> 在本地测试脚本
 
 你的脚本现在接受数据路径作为参数。 若要开始，请在本地对其进行测试。 向教程目录结构添加一个名为 `data` 的文件夹。 目录结构应类似于：
 
@@ -172,7 +101,7 @@ tutorial
 └──04-run-pytorch.py
 ```
 
-如果在上一教程中未在本地运行 `train.py`，则不会有 `data/` 目录。 在此示例中，请在 `train.py` 脚本中在 `download=True` 的情况下在本地运行 `torchvision.datasets.CIFAR10` 方法。
+如果在上一教程中未在本地运行 `train.py`，将不会有 `data/` 目录。 在此示例中，请在 `train.py` 脚本中在 `download=True` 的情况下在本地运行 `torchvision.datasets.CIFAR10` 方法。
 
 若要在本地运行修改后的训练脚本，请调用：
 
@@ -180,36 +109,35 @@ tutorial
 python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 ```
 
-可以通过传入数据的本地路径来避免下载 CIFAR10 数据集。 此外，还可以为“学习速率”和“动量”超参数使用不同的值进行试验，无需在训练脚本中对其进行硬编码。
+可以通过传入数据的本地路径来避免下载 CIFAR10 数据集。 对于“学习速率”和“动量”超参数，你也可以使用不同的值进行试验，而无需在训练脚本中对这些超参数进行硬编码 。
 
-## <a name="upload-the-data-to-azure"></a>将数据上传到 Azure
+> [!div class="nextstepaction"]
+> [我在本地测试脚本](?success=test-locally#upload) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=test-locally)
 
-若要在 Azure 机器学习中运行此脚本，需要使训练数据在 Azure 中可用。 Azure 机器学习工作区附带了一个默认的数据存储（一个 Azure Blob 存储帐户），它可以用来存储训练数据。
+## <a name="upload-the-data-to-azure"></a><a name="upload"></a> 将数据上传到 Azure
+
+若要在 Azure 机器学习中运行此脚本，需要使训练数据在 Azure 中可用。 Azure 机器学习工作区附带默认的数据存储。 这是一个 Azure Blob 存储帐户，你可以在其中存储训练数据。
 
 >[!NOTE] 
-> Azure 机器学习允许连接其他基于云的数据存储，用来存储你的数据。 如需更多详细信息，请参阅[数据存储文档](./concept-data.md)。  
+> Azure 机器学习允许连接其他基于云的数据存储，用来存储你的数据。 有关详细信息，请参阅[数据存储文档](./concept-data.md)。  
 
 在 `tutorial` 目录中，创建一个名为 `05-upload-data.py` 的新 Python 控制脚本：
 
-```python
-# tutorial/05-upload-data.py
-from azureml.core import Workspace
-ws = Workspace.from_config()
-datastore = ws.get_default_datastore()
-datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=True)
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/05-upload-data.py":::
 
-`target_path` 指定将在其中上传 CIFAR10 数据的数据存储的路径。
+`target_path` 值指定 CIFAR10 数据将要上传到的数据存储的路径。
 
 >[!TIP] 
-> 使用 Azure 机器学习上传数据时，可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)来上传临时文件。 如果需要 ETL 工具，可使用 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/introduction)将数据引入 Azure。
+> 在使用 Azure 机器学习上传数据时，可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)来上传临时文件。 如果需要 ETL 工具，可以使用 [Azure 数据工厂](../data-factory/introduction.md)将数据引入 Azure。
 
-运行 Python 文件以上传数据（注意：上传速度应快，时间应少于 60 秒。）
+运行该 Python 文件来上传数据。 （上传速度应该会很快，时间应短于 60 秒。）
 
 ```bash
 python 05-upload-data.py
 ```
+
 应该会看到以下标准输出：
+
 ```txt
 Uploading ./data\cifar-10-batches-py\data_batch_2
 Uploaded ./data\cifar-10-batches-py\data_batch_2, 4 files out of an estimated total of 9
@@ -220,58 +148,25 @@ Uploaded ./data\cifar-10-batches-py\data_batch_5, 9 files out of an estimated to
 Uploaded 9 files
 ```
 
+> [!div class="nextstepaction"]
+> [我上传了数据](?success=upload-data#control-script) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=upload-data)
 
-## <a name="create-a-control-script"></a>创建控制脚本
+## <a name="create-a-control-script"></a><a name="control-script"></a> 创建控制脚本
 
-如之前所做的那样，创建一个名为 `06-run-pytorch-data.py` 的新 Python 控制脚本：
+像之前的操作一样，新建一个名为“`06-run-pytorch-data.py`”的 Python 控制脚本：
 
-```python
-# tutorial/06-run-pytorch-data.py
-from azureml.core import Workspace
-from azureml.core import Experiment
-from azureml.core import Environment
-from azureml.core import ScriptRunConfig
-from azureml.core import Dataset
-
-if __name__ == "__main__":
-    ws = Workspace.from_config()
-    
-    datastore = ws.get_default_datastore()
-    dataset = Dataset.File.from_files(path=(datastore, 'datasets/cifar10'))
-
-    experiment = Experiment(workspace=ws, name='day1-experiment-data')
-
-    config = ScriptRunConfig(
-        source_directory='./src',
-        script='train.py',
-        compute_target='cpu-cluster',
-        arguments=[
-            '--data_path', dataset.as_named_input('input').as_mount(),
-            '--learning_rate', 0.003,
-            '--momentum', 0.92],
-        )
-    
-    # set up pytorch environment
-    env = Environment.from_conda_specification(name='pytorch-env',file_path='.azureml/pytorch-env.yml')
-    config.run_config.environment = env
-
-    run = experiment.submit(config)
-    aml_url = run.get_portal_url()
-    print("Submitted to an Azure Machine Learning compute cluster. Click on the link below")
-    print("")
-    print(aml_url)
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/06-run-pytorch-data.py":::
 
 ### <a name="understand-the-code-changes"></a>了解代码更改
 
-此控制脚本类似于[此系列第 3 部分](tutorial-1st-experiment-sdk-train.md)的控制脚本，其中包含以下新行：
+该控制脚本类似于[此系列第 3 部分](tutorial-1st-experiment-sdk-train.md)中的控制脚本，包含以下新行：
 
 :::row:::
    :::column span="":::
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true)用于引用上传到 Azure Blob 存储的数据。 数据集是基于数据的抽象层，旨在提高可靠性和可信任性。
+      [数据集](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py)用于引用上传到 Azure Blob 存储的数据。 数据集是基于数据的抽象层，旨在提高可靠性和可信任性。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,11 +174,14 @@ if __name__ == "__main__":
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 已修改，包含将传递到 `train.py` 中的参数列表。 `dataset.as_named_input('input').as_mount()` 参数表示指定的目录将装载到计算目标。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 已修改，包含将传递到 `train.py` 中的参数列表。 `dataset.as_named_input('input').as_mount()` 参数表示指定的目录将会被装载到计算目标。
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>将运行提交到 Azure 机器学习
+> [!div class="nextstepaction"]
+> [我创建了控制脚本](?success=control-script#submit-to-cloud) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=control-script)
+
+## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-to-cloud"></a> 将该运行提交到 Azure 机器学习
 
 现在，请重新提交该运行以使用新配置：
 
@@ -291,11 +189,14 @@ if __name__ == "__main__":
 python 06-run-pytorch-data.py
 ```
 
-这将在 Azure 机器学习工作室中输出试验的 URL。 导航到该链接就可以看到代码在运行。
+此代码将会在 Azure 机器学习工作室中输出一个指向试验的 URL。 如果访问该链接，就可以看到代码在运行。
 
-### <a name="inspect-the-70_driver_log-log-file"></a>检查 70_driver_log 日志文件
+> [!div class="nextstepaction"]
+> [我重新提交了运行](?success=submit-to-cloud#inspect-log) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=submit-to-cloud)
 
-在 Azure 机器学习工作室中导航到试验运行（单击上面单元格中的 URL 输出），然后单击“输出 + 日志”。 单击 70_driver_log.txt 文件，应该会看到以下输出：
+### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> 检查日志文件
+
+在工作室中，转到试验运行（通过选择前面的 URL 输出），然后选择“输出 + 日志”。 选择 `70_driver_log.txt` 文件。 应会看到以下输出：
 
 ```txt
 Processing 'input'.
@@ -331,8 +232,11 @@ LIST FILES IN DATA PATH...
 
 注意：
 
-1. Azure 机器学习已自动为你将 blob 存储装载到计算群集。
-2. 控制脚本中使用的 ``dataset.as_named_input('input').as_mount()`` 将解析为装入点
+- Azure 机器学习已自动为你将 Blob 存储装载到计算群集。
+- 控制脚本中使用的 ``dataset.as_named_input('input').as_mount()`` 将解析为装入点。
+
+> [!div class="nextstepaction"]
+> [我检查了日志文件](?success=inspect-log#clean-up-resources) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=inspect-log)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -342,10 +246,10 @@ LIST FILES IN DATA PATH...
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 `Datastore` 将数据上传到 Azure。 数据存储充当工作区的云存储，为你提供了一个持久且灵活的数据保存位置。
+在本教程中，我们了解了如何通过使用 `Datastore` 将数据上传到 Azure。 数据存储充当工作区的云存储，为你提供了一个持久且灵活的数据保存位置。
 
-你已了解如何修改训练脚本，以通过命令行接受数据路径。 可以通过使用 `Dataset` 将目录安装到远程运行。 
+你已了解如何修改训练脚本，以通过命令行接受数据路径。 通过使用 `Dataset`，可以将目录装载到远程运行。 
 
 有了模型后，接下来请学习：
 
-* 如何[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)
+* 如何[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。

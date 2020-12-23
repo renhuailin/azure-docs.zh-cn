@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269567"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435751"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -30,7 +30,7 @@ ms.locfileid: "89269567"
 
 如果你有 Active Directory (AD) 环境的本地，并且想要将已加入 AD 域的计算机加入 Azure AD，则可以通过混合 Azure AD 联接来完成此操作。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设你熟悉 [Azure Active Directory 中设备标识管理的简介](./overview.md)。
 
@@ -56,8 +56,8 @@ ms.locfileid: "89269567"
 
 - Windows 10
 - Windows Server 2016
-  - **注意**： Azure 国内云客户需要1809版
-- Windows Server Standard 2012 R2
+  - **注意**： Azure 国内云客户需要1803版
+- Windows Server 2019
 
 对于运行 Windows 桌面操作系统的设备，受支持的版本将在 [Windows 10 版本信息](/windows/release-information/)中列出。 最佳做法是，Microsoft 建议升级到最新版本的 Windows 10。
 
@@ -105,6 +105,8 @@ ms.locfileid: "89269567"
 - 对于符合 FIPS 的 TPM 2.0，支持混合 Azure AD 联接，不适用于 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续混合 Azure AD 联接。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。 
 
 - 从 Windows 10 1903 版本开始，Tpm 1.2 不与混合 Azure AD 联接一起使用，具有这些 Tpm 的设备将视为没有 TPM。
+
+- UPN 更改仅受 Windows 10 2004 更新的支持。 对于 Windows 10 2004 更新之前的设备，用户将在其设备上出现 SSO 和条件性访问问题。 若要解决此问题，需要将设备从 Azure AD 中脱离 (以提升的权限运行 "dsregcmd.exe/leave") ，并自动重新加入 () 。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的受控验证
 
@@ -166,8 +168,8 @@ ms.locfileid: "89269567"
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |
-| 可路由的 | 托管 | 从 1803 版本开始 | Azure AD 不支持 Windows 锁屏上的 SSPR |
-| 非可路由的 | 托管 | 不支持 | |
+| 可路由的 | Managed | 从 1803 版本开始 | Azure AD 不支持 Windows 锁屏上的 SSPR |
+| 非可路由的 | Managed | 不支持 | |
 
 ## <a name="next-steps"></a>后续步骤
 

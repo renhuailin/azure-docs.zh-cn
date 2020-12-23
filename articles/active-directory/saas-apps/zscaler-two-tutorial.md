@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: c76e37e56adc9fc282b0c6b869db1a2ad8e7ebad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7acbc736fc297a55a97173893cb4873acd02059
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545793"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教程：Azure Active Directory 与 Zscaler Two 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88545793"
 * 可让用户使用其 Azure AD 帐户自动登录到 Zscaler Two（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -91,7 +91,7 @@ ms.locfileid: "88545793"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -110,19 +110,19 @@ ms.locfileid: "88545793"
 
 5. Zscaler Two 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 6. 除了上述属性，Zscaler Two 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
     | 名称 | 源属性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![屏幕截图显示“用户声明”以及“添加新声明”选项。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -135,9 +135,9 @@ ms.locfileid: "88545793"
     f. 单击“保存”  。
 
     > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)
+    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/active-directory-enterprise-app-role-management.md)
 
-7. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "88545793"
 
 4. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤： 
    
-    ![管理](./media/zscaler-two-tutorial/ic800206.png "管理")
+    ![显示包含所述步骤的 Zscaler One 站点的屏幕截图。](./media/zscaler-two-tutorial/ic800206.png "管理")
 
     a. 在“身份验证类型”下选择“SAML”。 
 
@@ -193,7 +193,7 @@ ms.locfileid: "88545793"
 
 6. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
-    ![管理](./media/zscaler-two-tutorial/ic800207.png)
+    ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-two-tutorial/ic800207.png)
 
     a. 将鼠标悬停在左下角附近的“激活”菜单上。 
 
@@ -276,15 +276,15 @@ ms.locfileid: "88545793"
 
 5. 在“用户和组”对话框中，从列表中选择用户（例如“Britta Simon”），然后单击屏幕底部的“选择”按钮    。
 
-    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
+    ![显示“用户和组”对话框的屏幕截图，你可以在其中选择用户。](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
 
 6. 从“选择角色”对话框中，选择列表中合适的用户角色，然后单击屏幕底部的“选择”按钮   。
 
-    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
+    ![显示“选择角色”对话框的屏幕截图，你可以在其中选择用户角色。](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
 
 7. 在“添加分配”  对话框中，选择“分配”  按钮。
 
-    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
+    ![显示“添加分配”对话框的屏幕截图，你可以在其中选择“分配”。](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
 
 ### <a name="create-zscaler-two-test-user"></a>创建 Zscaler Two 测试用户
 
@@ -297,13 +297,12 @@ ms.locfileid: "88545793"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Zscaler Two 磁贴时，应当会自动登录到为其设置了 SSO 的 Zscaler Two。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Zscaler Two 磁贴时，应当会自动登录到为其设置了 SSO 的 Zscaler Two。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

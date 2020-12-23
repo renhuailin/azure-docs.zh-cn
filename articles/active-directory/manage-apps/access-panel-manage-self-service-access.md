@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181708"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372457"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助服务应用程序访问
 
@@ -37,7 +37,7 @@ ms.locfileid: "89181708"
 
 ## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>启用自助服务应用程序访问以允许用户查找自己的应用程序
 
-自助应用程序访问是帮助用户自己发现应用程序的绝佳方式，可选择性地允许业务组批准对这些应用程序的访问。 可以从 "我的应用" 页中，允许业务组管理分配给这些用户的、用于密码单一登录应用程序的凭据。
+自助应用程序访问是帮助用户自己发现应用程序的绝佳方式，可选择性地允许业务组批准对这些应用程序的访问。 可以从 "我的应用" 页中，允许业务组管理分配给这些用户的密码 Single-Sign 的凭据。
 
 若要启用应用程序的自助应用程序访问，请执行以下步骤：
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
@@ -67,4 +67,4 @@ ms.locfileid: "89181708"
 -   如果最近配置了自助应用程序访问，请在几分钟后尝试再次登录到用户的 "我的应用"，以查看是否显示了自助服务访问更改。
 
 ## <a name="next-steps"></a>后续步骤
-[为自助组管理设置 Azure Active Directory](../users-groups-roles/groups-self-service-management.md)
+[为自助组管理设置 Azure Active Directory](../enterprise-users/groups-self-service-management.md)

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 09/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 8ac8cf172a13e7198233170634ee4a3954793cd2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526946"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743422"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录 (预览) 
 
@@ -25,11 +25,11 @@ ms.locfileid: "90526946"
 本文档重点介绍如何启用基于安全密钥的无密码身份验证。 本文末尾，你将能够使用 FIDO2 安全密钥通过 Azure AD 帐户登录到基于 web 的应用程序。
 
 > [!NOTE]
-> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅  [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="requirements"></a>要求
 
-- [Azure 多重身份验证](howto-mfa-getstarted.md)
+- [Azure AD 多重身份验证](howto-mfa-getstarted.md)
 - 启用 [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md)
 - 兼容的 [FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN 需要 Windows 10 版本1903或更高版本 * *
@@ -38,7 +38,7 @@ ms.locfileid: "90526946"
 
 ## <a name="prepare-devices-for-preview"></a>为预览版准备设备
 
-你试点的 Azure AD 联接的设备必须运行 Windows 10 版本1909或更高版本。 最佳体验是在 Windows 10 版本1903或更高版本上。
+对于 Azure AD 联接的设备，最佳体验是在 Windows 10 版本1903或更高版本上。
 
 混合 Azure AD 联接的设备必须运行 Windows 10 版本2004或更高版本。
 
@@ -51,7 +51,7 @@ ms.locfileid: "90526946"
 ### <a name="enable-fido2-security-key-method"></a>启用 FIDO2 安全密钥方法
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory**  >  **安全**  >  **身份验证**方法 "  >  **身份验证方法策略 (预览版) **。
+1. 浏览到 **Azure Active Directory**  >  **安全**  >  **身份验证** 方法 "  >  **身份验证方法策略 (预览版)**。
 1. 在 "方法 **FIDO2 安全密钥**" 下，选择以下选项：
    1. **启用** -是或否
    1. **目标** -所有用户或选择用户
@@ -62,13 +62,13 @@ ms.locfileid: "90526946"
 1. 浏览到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。
 1. 如果尚未登录，请登录。
 1. 单击 " **安全信息**"。
-   1. 如果用户已注册至少一个 Azure 多重身份验证方法，则可以立即注册 FIDO2 安全密钥。
-   1. 如果它们没有注册至少一个 Azure 多重身份验证方法，则它们必须添加一个。
+   1. 如果用户已注册至少一个 Azure AD 多重身份验证方法，则可以立即注册 FIDO2 安全密钥。
+   1. 如果它们没有注册至少一个 Azure AD 多重身份验证方法，则它们必须添加一个。
 1. 通过单击 " **添加方法** " 并选择 " **安全密钥**" 来添加 FIDO2 安全密钥。
 1. 选择 " **USB 设备** " 或 " **NFC 设备**"。
 1. 准备好密钥，然后选择 " **下一步**"。
 1. 将显示一个框，要求用户为你的安全密钥创建/输入 PIN，然后为密钥（生物识别或触摸）执行所需的笔势。
-1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“下一步”。
+1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“下一步”  。
 1. 单击 " **完成** " 以完成该过程。
 
 ## <a name="sign-in-with-passwordless-credential"></a>用无密码凭据登录
@@ -105,4 +105,4 @@ ms.locfileid: "90526946"
 
 [了解有关设备注册的详细信息](../devices/overview.md)
 
-[了解 Azure 多重身份验证](../authentication/howto-mfa-getstarted.md)
+[详细了解 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md)

@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934887"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517183"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>在 Azure 上部署安全应用程序
-本文介绍了在为云部署应用程序时需要考虑的安全活动和控制措施。 介绍了在 Microsoft [安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 的发布和响应阶段要考虑的安全问题和概念。 目标是帮助你定义可用于部署更安全应用程序的活动和 Azure 服务。
+本文介绍了在为云部署应用程序时需要考虑的安全活动和控制措施。 介绍了在 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的发布和响应阶段要考虑的安全问题和概念。 目标是帮助你定义可用于部署更安全应用程序的活动和 Azure 服务。
 
 本文涵盖以下 SDL 阶段：
 
@@ -40,7 +40,7 @@ ms.locfileid: "68934887"
 
 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击是 SQL 注入攻击和跨站点脚本攻击。 在应用程序代码中防止这些攻击可能会很困难。 这可能需要在应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 WAF 有助于简化安全管理。 相较于保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞来响应安全威胁。
 
-[Azure 应用程序网关 WAF](../../application-gateway/waf-overview.md) 可对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞的危害。 WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。
+[Azure 应用程序网关 WAF](../../web-application-firewall/ag/ag-overview.md) 可对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞的危害。 WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。
 
 ### <a name="create-an-incident-response-plan"></a>创建事件响应计划
 
@@ -75,9 +75,9 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 #### <a name="azure-security-center"></a>Azure 安全中心
 
-[Azure 安全中心](../../security-center/security-center-intro.md)有助于预防、检测和响应威胁，同时增加 Azure 资源（包括 Web 应用程序）在安全方面的可见性和可控性。 Azure 安全中心可帮助检测可能被忽略的威胁。 它可以与各种安全解决方案协同工作。
+[Azure 安全中心](../../security-center/security-center-introduction.md)有助于预防、检测和响应威胁，同时增加 Azure 资源（包括 Web 应用程序）在安全方面的可见性和可控性。 Azure 安全中心可帮助检测可能被忽略的威胁。 它可以与各种安全解决方案协同工作。
 
-安全中心的免费层仅为 Azure 资源提供有限的安全性。 [安全中心标准层](../../security-center/security-center-onboarding.md)将这些功能扩展到本地资源和其他云。
+安全中心的免费层仅为 Azure 资源提供有限的安全性。 [安全中心标准层](../../security-center/security-center-get-started.md)将这些功能扩展到本地资源和其他云。
 安全中心标准层可帮助你：
 
   - 查找并修复安全漏洞。

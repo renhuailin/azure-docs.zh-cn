@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 75e75a2fe8c81ae928617149018ac2afaab07faa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cee037b7f92dd55bb8fba264e164087a1cf8983b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545142"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460268"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---mobile"></a>教程：Azure Active Directory 单一登录 (SSO) 与 In Case of Crisis - Mobile 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545142"
 * 让用户使用其 Azure AD 帐户自动登录到 In Case of Crisis - Mobile。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -78,7 +78,7 @@ ms.locfileid: "88545142"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本  **SAML** 配置”部分，应用程序已预配置为采用“ **IDP**”发起模式，并且已在 Azure 中预先填充了所需的 URL。   用户需要单击“ **保存**”按钮来保存配置。 
+1. 在基本 SAML 配置  部分，应用程序在 **IDP** 发起的模块中进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -124,21 +124,20 @@ ms.locfileid: "88545142"
 
 ### <a name="create-in-case-of-crisis---mobile-test-user"></a>创建 In Case of Crisis - Mobile 测试用户
 
-本部分在 In Case of Crisis - Mobile 中创建名为 Britta Simon 的用户。 与  [In Case of Crisis - Mobile 支持团队](https://www.rockdovesolutions.com/features/enterprise-ready)协作，在 In Case of Crisis - Mobile 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分在 In Case of Crisis - Mobile 中创建名为 Britta Simon 的用户。 请与 [In Case of Crisis - Mobile 支持团队](https://www.rockdovesolutions.com/features/enterprise-ready)协作，在 In Case of Crisis - Mobile 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 In Case of Crisis - Mobile 磁贴时，应当会自动登录到你为其设置了 SSO 的 In Case of Crisis - Mobile。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 In Case of Crisis - Mobile 磁贴时，应当会自动登录到你为其设置了 SSO 的 In Case of Crisis - Mobile。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 In Case of Crisis - Mobile](https://aad.portal.azure.com/)
-

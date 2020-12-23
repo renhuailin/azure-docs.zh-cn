@@ -1,22 +1,23 @@
 ---
 title: 通过 Visual Studio 和 SSDT 连接和查询 Synapse SQL
-description: 通过 Visual Studio 使用 Azure Synapse Analytics 查询 SQL 池。
+description: 使用 Visual Studio 查询使用 Azure Synapse Analytics 的专用 SQL 池。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089237"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451592"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 连接到 Synapse SQL
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -26,19 +27,20 @@ ms.locfileid: "87089237"
 > 
 > 
 
-通过 Visual Studio 使用 Azure Synapse Analytics 查询 SQL 池。 此方法使用 Visual Studio 2019 中的 SQL Server Data Tools (SSDT) 扩展。 
+使用 Visual Studio 查询使用 Azure Synapse Analytics 的专用 SQL 池。 此方法使用 Visual Studio 2019 中的 SQL Server Data Tools (SSDT) 扩展。 
 
 > [!NOTE]
-> SSDT 不支持 SQL 按需版本（预览版）。
+> SSDT 不支持无服务器 SQL 池。
 
 ## <a name="prerequisites"></a>先决条件
+
 若要使用本教程，需要具备以下组件：
 
-* 现有的 SQL 池。 如果没有，请参阅[创建 SQL 池](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)以完成此先决条件要求的操作。
+* 现有专用 SQL 池。 如果没有，请参阅 [创建专用 SQL 池](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 来完成此必备组件。
 * 适用于 Visual Studio 的 SSDT。 如果安装了 Visual Studio，则可能已有了此组件。 有关安装指说明和选项，请参阅 [安装 Visual Studio 和 SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
-* 完全限定的 SQL Server 名称。 若要查找此服务器名称，请参阅[连接到 SQL 池](connect-overview.md)。
+* 完全限定的 SQL Server 名称。 若要查找此服务器名称，请参阅 [连接到专用 SQL 池](connect-overview.md)。
 
-## <a name="1-connect-to-sql-pool"></a>1.连接到 SQL 池
+## <a name="1-connect-to-a-dedicated-sql-pool"></a>1. 连接到专用 SQL 池
 1. 打开 Visual Studio 2019。
 2. 通过选择“视图” > “SQL Server 对象资源管理器”来打开 SQL Server 对象资源管理器 。
    
@@ -52,7 +54,7 @@ ms.locfileid: "87089237"
    
    * **服务器名称**：输入前面标识的 **服务器名称** 。
    * **身份验证**：选择“SQL Server 身份验证”或“Active Directory 集成身份验证”：
-   * **用户名**和**密码**：如果在上面选择了“SQL Server 身份验证”，请输入用户名和密码。
+   * **用户名** 和 **密码**：如果在上面选择了“SQL Server 身份验证”，请输入用户名和密码。
    * 单击“连接”。
 5. 要浏览，请展开 Azure SQL 服务器。 可以查看与服务器关联的数据库。 展开 AdventureWorksDW 以查看示例数据库中的表。
    
@@ -79,5 +81,5 @@ ms.locfileid: "87089237"
 
 ## <a name="next-steps"></a>后续步骤
 可以进行连接和查询后，接下来请尝试[使用 Power BI 可视化数据](get-started-power-bi-professional.md)。
-若要配置适用于 Azure Active Directory 身份验证的环境，请参阅[向 SQL 池进行身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要为 Azure Active Directory 身份验证配置环境，请参阅对 [专用 SQL 池进行身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
  

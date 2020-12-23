@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: e1121f1d1217ebd48c744135c976587545323f44
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 3ed71e49ebc550cb7bc2041e25aa6b9bde77b1ef
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91565151"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629708"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -21,19 +21,20 @@ ms.locfileid: "91565151"
 - 仅可为新的恢复服务保管库创建专用终结点（没有任何项已注册到保管库）。 因此必须先创建专用终结点，然后才能尝试保护保管库中的任何项。
 - 一个虚拟网络可以包含用于多个恢复服务保管库的专用终结点。 此外，一个恢复服务保管库可以在多个虚拟网络中包含要使用的专用终结点。 但是，最多只能为保管库创建 12 个专用终结点。
 - 为保管库创建专用终结点后，保管库将被锁定。 除包含该保管库的专用终结点的网络之外，无法从其他网络访问它（用于备份和还原）。 如果删除该保管库的所有专用终结点，则可以从所有网络访问该保管库。
-- 用于备份的专用终结点连接使用子网中的总11个专用 Ip，其中包括 Azure 备份用于存储的 Ip。 对于某些 Azure 区域，此数字最多可以 (25 个) 。 因此，我们建议你在尝试创建用于备份的专用终结点时，拥有足够的可用专用 IP。
+- 用于备份的专用终结点连接在子网中总共使用 11 个专用 IP，其中包括 Azure 备份用于存储的 IP。 对于某些 Azure 区域，此数字可能更高（最多 25 个）。 因此，我们建议你在尝试创建用于备份的专用终结点时，拥有足够的可用专用 IP。
 - 尽管恢复服务保管库可用于 Azure 备份和 Azure Site Recovery 这两种服务，但本文仅介绍将专用终结点用于 Azure 备份的情况。
 - Azure Active Directory 当前不支持专用终结点。 因此在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure Active Directory 在区域中操作所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。
 - 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要禁用网络策略。
-- 如果在 2020 年 5 月 1 日之前注册了恢复服务资源提供程序，则需在订阅中重新注册它。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的 " **资源提供程序** "，然后选择 " **microsoft.recoveryservices** "，然后选择 " **重新注册**"。
+- 如果在 2020 年 5 月 1 日之前注册了恢复服务资源提供程序，则需在订阅中重新注册它。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的“资源提供程序”，然后选择“Microsoft.RecoveryServices”，并选择“重新注册”  。
+- 如果保管库启用了专用终结点，则不支持 SQL 和 SAP HANA 数据库备份的[跨区域还原](backup-create-rs-vault.md#set-cross-region-restore)。
 
 ## <a name="recommended-and-supported-scenarios"></a>推荐和支持的方案
 
-虽然为保管库启用了专用终结点，但它们仅用于在 Azure VM 中备份和还原 SQL 和 SAP HANA 工作负载以及进行 MARS 代理备份。 还可以使用保管库来备份其他工作负载， (它们不需要) 的私有终结点。 除了使用 MARS 代理备份 SQL 和 SAP HANA 工作负荷和备份以外，专用终结点还用于对 Azure VM 备份执行文件恢复。 有关详细信息，请参阅下表：
+虽然为保管库启用了专用终结点，但它们仅用于在 Azure VM 中备份和还原 SQL 和 SAP HANA 工作负载以及进行 MARS 代理备份。 还可以使用保管库来备份其他工作负载（尽管它们不需要专用终结点）。 除了备份 SQL 和 SAP HANA 工作负载以及使用 MARS 代理进行备份，专用终结点还可用于在 Azure VM 备份时执行文件恢复。 有关详细信息，请参阅下表：
 
 | 在 Azure VM 中备份工作负载（SQL、SAP HANA）和使用 MARS 代理进行备份 | 建议使用专用终结点，以允许进行备份和还原，而无需从虚拟网络列出用于 Azure 备份或 Azure 存储的任何 IP/FQDN。 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **Azure VM 备份**                                         | VM 备份不要求你允许访问任何 IP 或 FQDN。 因此，它不需要专用终结点来备份和还原磁盘。  <br><br>   但是，将包含专用终结点的保管库中的文件恢复限制为包含保管库专用终结点的虚拟网络。 <br><br>    使用 ACL 非托管磁盘时，请确保包含磁盘的存储帐户允许访问受信任的 Microsoft 服务（如果为 ACL）。 |
+| **Azure VM 备份**                                         | VM 备份不要求你允许访问任何 IP 或 FQDN。 因此，它不需要专用终结点来备份和还原磁盘。  <br><br>   但是，从包含专用终结点的保管库执行文件恢复将限制为包含该保管库的终结点的虚拟网络。 <br><br>    使用 ACL 非托管磁盘时，请确保包含磁盘的存储帐户允许访问受信任的 Microsoft 服务（如果为 ACL）。 |
 | **Azure 文件备份**                                      | Azure 文件备份存储在本地存储帐户中。 因此，它不需要专用终结点来进行备份和还原。 |
 
 ## <a name="creating-and-using-private-endpoints-for-backup"></a>创建和使用专用终结点以进行备份
@@ -41,7 +42,7 @@ ms.locfileid: "91565151"
 本部分介绍在虚拟网络中创建和使用 Azure 备份的专用终结点时所涉及的步骤。
 
 >[!IMPORTANT]
-> 强烈建议你遵循本文档中所述的相同顺序执行的步骤。 如果未按照顺序操作，可能导致保管库呈现为不兼容，无法使用专用终结点，并要求你使用新保管库重启此进程。
+> 强烈建议按照本文档中所述的顺序执行步骤。 如果未按照顺序操作，可能导致保管库呈现为不兼容，无法使用专用终结点，并要求你使用新保管库重启此进程。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -60,7 +61,7 @@ ms.locfileid: "91565151"
 1. 此时将生成一个“对象 ID”，它是保管库的托管标识。
 
     >[!NOTE]
-    >启用后， **不** 能 (禁用托管标识，即使暂时) 也是如此。 禁用托管标识可能导致出现不一致的行为。
+    >启用后，不得禁用托管标识（即使是暂时禁用）。 禁用托管标识可能导致出现不一致的行为。
 
 ## <a name="grant-permissions-to-the-vault-to-create-required-private-endpoints"></a>授予保管库创建所需专用终结点的权限
 
@@ -68,7 +69,7 @@ ms.locfileid: "91565151"
 
 - 包含目标 VNet 的资源组
 - 要在其中创建专用终结点的资源组
-- 包含专用 DNS 区域的资源组，如[此处](#creating-private-endpoints-for-backup)所述
+- 包含专用 DNS 区域的资源组，如[此处](#creating-private-endpoints-for-backup)详细讨论的那样
 
 建议向保管库（托管标识）授予这三个资源组的“参与者”角色。 以下步骤介绍了如何针对特定的资源组执行此操作（需要为三个资源组中的每个资源组执行此操作）：
 
@@ -77,7 +78,7 @@ ms.locfileid: "91565151"
 
     ![添加角色分配](./media/private-endpoints/add-role-assignment.png)
 
-1. 在“添加角色分配”中，选择“参与者”作为“角色”，然后使用保管库的“名称”作为“主体”    。 选择保管库，并在完成后选择 " **保存** "。
+1. 在“添加角色分配”中，选择“参与者”作为“角色”，然后使用保管库的“名称”作为“主体”    。 选择保管库，并在完成后选择“保存”。
 
     ![选择角色和主体](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -93,7 +94,7 @@ ms.locfileid: "91565151"
 
     ![搜索专用链接](./media/private-endpoints/search-for-private-link.png)
 
-1. 在左侧导航栏上，选择 " **专用终结点**"。 进入 " **专用终结点** " 窗格后，选择 " **+ 添加** " 开始为保管库创建专用终结点。
+1. 选择左侧导航栏中的“专用终结点”。 转到“专用终结点”窗格后，选择“+ 添加”以开始为保管库创建专用终结点 。
 
     ![在专用链接中心添加专用终结点](./media/private-endpoints/add-private-endpoint.png)
 
@@ -107,15 +108,15 @@ ms.locfileid: "91565151"
 
         ![填写“资源”选项卡](./media/private-endpoints/resource-tab.png)
 
-    1. **配置**：从配置中，指定要在其中创建专用终结点的虚拟网络和子网。 这将是存在 VM 的 Vnet。 可以选择将专用终结点与专用 DNS 区域集成。 或者，也可以使用自定义 DNS 服务器或创建专用 DNS 区域。
+    1. **配置**：从配置中，指定要在其中创建专用终结点的虚拟网络和子网。 这将是 VM 所在的 Vnet。 可以选择将专用终结点与专用 DNS 区域集成。 或者，也可以使用自定义 DNS 服务器或创建专用 DNS 区域。
 
         ![填写“配置”选项卡](./media/private-endpoints/configuration-tab.png)
 
-        如果要使用自定义 DNS 服务器，而不是与 Azure 专用 DNS 区域集成，请参阅 [此部分](#dns-changes-for-custom-dns-servers) 。  
+        如果要使用自定义 DNS 服务器，而不与 Azure 专用 DNS 区域集成，请参阅[此部分](#dns-changes-for-custom-dns-servers)。  
 
     1. （可选）可以为专用终结点添加标记。
 
-    1. 完成输入详细信息后，继续 **查看并创建** 。 验证完成后，选择 " **创建** " 以创建专用终结点。
+    1. 输入详细信息后，继续“查看 + 创建”。 完成验证后，选择“创建”以创建专用终结点。
 
 ## <a name="approving-private-endpoints"></a>批准专用终结点
 
@@ -134,9 +135,9 @@ ms.locfileid: "91565151"
 当 VNet 中为保管库创建的专用终结点获得批准后，即可开始使用它们来执行备份和还原。
 
 >[!IMPORTANT]
->在继续操作之前，请确保已成功完成本文档中所述的所有步骤。 概括起来，必须完成以下清单中的步骤：
+>在继续之前，请确保已成功完成文档中的上述所有步骤。 概括起来，必须完成以下清单中的步骤：
 >
->1. 已创建 (新的) 恢复服务保管库
+>1. 已创建（新的）恢复服务保管库
 >1. 已启用保管库，以使用系统分配的托管标识
 >1. 已向保管库的托管标识分配相关权限
 >1. 已为保管库创建专用终结点
@@ -157,7 +158,7 @@ ms.locfileid: "91565151"
 
 ### <a name="create-a-recovery-services-vault-using-the-azure-resource-manager-client"></a>使用 Azure 资源管理器客户端创建恢复服务保管库
 
-你可以创建恢复服务保管库并启用其托管标识 (需要启用托管标识，因为我们稍后将看到使用 Azure 资源管理器客户端) 。 执行此操作的示例如下所示：
+可以使用 Azure 资源管理器客户端创建恢复服务保管库，并启用其托管标识（必须启用托管标识，稍后会进行介绍）。 执行此操作的示例如下所示：
 
 ```rest
 armclient PUT /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/Microsoft.RecoveryServices/Vaults/<vaultname>?api-version=2017-07-01-preview @C:\<filepath>\MSIVault.json
@@ -398,9 +399,9 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 请参阅[此列表](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)，了解地区代码。 请参阅以下链接，了解国家地区的 URL 命名约定：
 
-- [中国](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [德国](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [德国](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 #### <a name="adding-dns-records-for-custom-dns-servers"></a>为自定义 DNS 服务器添加 DNS 记录
 

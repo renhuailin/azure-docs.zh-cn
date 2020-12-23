@@ -1,14 +1,14 @@
 ---
 title: 通过门户进行新策略分配
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
-ms.openlocfilehash: 956ec05b5a7fac862eeea86cf96a2db37f1c0536
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 51ca2f9e5d3f3df9304804ba3da2c5c5ceb0c19b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651975"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875302"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>创建策略分配以识别不合规资源。
 
@@ -58,7 +58,7 @@ ms.locfileid: "89651975"
 1. “分配名称”中自动填充了所选的策略名称，但可以更改它。**** 对于此示例，请保留“审核未使用托管磁盘的 VM”__。 还可根据需要添加“说明”****。 该说明提供有关此策略分配的详细信息。
    将根据登录的用户自动填写“分配者”****。 此字段是可选字段，因此可输入自定义值。
 
-1. 不选中“创建托管标识”****。 当策略或计划包含具有 [deployIfNotExists](./concepts/effects.md#deployifnotexists) 效果的策略时，必须选中此复选框__。 由于本快速入门所使用的策略中未包含上述策略，请将其留空。 有关详细信息，请参阅[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](./how-to/remediate-resources.md#how-remediation-security-works)。
+1. 不选中“创建托管标识”****。 当策略或计划包含具有 [deployIfNotExists](./concepts/effects.md#deployifnotexists) 或 [modify](./concepts/effects.md#modify) 效果的策略时，必须勾选此框。 由于本快速入门所使用的策略中未包含上述策略，请将其留空。 有关详细信息，请参阅[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](./how-to/remediate-resources.md#how-remediation-security-works)。
 
 1. 选择“分配”。****
 
@@ -74,15 +74,15 @@ ms.locfileid: "89651975"
 
 针对现有资源评估某条件时，如果结果为 true，则会将这些资源标记为与策略不符。 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的。 尽管在 Azure 门户中看不到评估逻辑，但会显示符合性状态结果。 符合性状态结果为符合或不符合。
 
-| **资源状态** | **效果** | **策略评估** | **符合性状态** |
+| 资源状态 | 效果 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不合规 |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 符合 |
-| 新建 | Audit、AuditIfNotExist\* | True | 不合规 |
-| 新建 | Audit、AuditIfNotExist\* | False | 符合 |
+| 新功能或更新功能 | Audit、Modify、AuditIfNotExist | True | 不合规 |
+| 新功能或更新功能 | Audit、Modify、AuditIfNotExist | False | 符合 |
+| Exists | Deny、Audit、Append、Modify、DeployIfNotExist、AuditIfNotExist | True | 不合规 |
+| Exists | Deny、Audit、Append、Modify、DeployIfNotExist、AuditIfNotExist | False | 符合 |
 
-\*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
-这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
+> [!NOTE]
+> DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE，而存在条件为 FALSE，即为不符合。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
 
 ## <a name="clean-up-resources"></a>清理资源
 

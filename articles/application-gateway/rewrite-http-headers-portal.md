@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79314db13531f1fcf518c7931d4a1aa9158a172b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807894"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397189"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure 门户
 
-本文介绍如何使用 Azure 门户配置[应用程序网关 v2 SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) 实例，重写请求和响应中的 HTTP 标头。
+本文介绍如何使用 Azure 门户配置[应用程序网关 v2 SKU](./application-gateway-autoscaling-zone-redundant.md) 实例，重写请求和响应中的 HTTP 标头。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
-若要完成本文中的步骤，需要有应用程序网关 v2 SKU 实例。 v1 SKU 不支持重写标头。 如果没有 v2 SKU，请在开始之前创建[应用程序网关 v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) 实例。
+若要完成本文中的步骤，需要有应用程序网关 v2 SKU 实例。 v1 SKU 不支持重写标头。 如果没有 v2 SKU，请在开始之前创建[应用程序网关 v2 SKU](./tutorial-autoscale-ps.md) 实例。
 
 ## <a name="create-required-objects"></a>创建所需对象
 
@@ -31,17 +31,17 @@ ms.locfileid: "84807894"
 
 1. 创建 HTTP 标头重写所需的对象：
 
-   - **重写操作**：用于指定要重写的请求和请求标头字段，以及标头的新值。 可将一个或多个重写条件关联到一个重写操作。
+   - **重写操作** ：用于指定要重写的请求和请求标头字段，以及标头的新值。 可将一个或多个重写条件关联到一个重写操作。
 
-   - **重写条件**：一个可选配置。 重写条件评估 HTTP(S) 请求和响应的内容。 如果 HTTP(S) 请求或响应与重写条件匹配，则会发生重写操作。
+   - **重写条件** ：一个可选配置。 重写条件评估 HTTP(S) 请求和响应的内容。 如果 HTTP(S) 请求或响应与重写条件匹配，则会发生重写操作。
 
      如果将多个条件关联到一个操作，仅当满足所有条件时，才会发生该操作。 换言之，操作属于逻辑 AND 运算。
 
-   - **重写规则**：包含多个重写操作/重写条件的组合。
+   - **重写规则** ：包含多个重写操作/重写条件的组合。
 
-   - **规则顺序**：帮助确定重写规则的执行顺序。 在一个重写集中使用多个重写规则时，此配置非常有用。 规则顺序值较小的重写规则最先运行。 如果为两个重写规则分配了相同的规则顺序值，则执行顺序是不确定的。
+   - **规则顺序** ：帮助确定重写规则的执行顺序。 在一个重写集中使用多个重写规则时，此配置非常有用。 规则顺序值较小的重写规则最先运行。 如果为两个重写规则分配了相同的规则顺序值，则执行顺序是不确定的。
 
-   - **重写集**：包含要与请求路由规则关联的多个重写规则。
+   - **重写集** ：包含要与请求路由规则关联的多个重写规则。
 
 2. 将重写集附加到路由规则。 重写配置将通过路由规则附加到源侦听器。 使用基本路由规则时，标头重写配置与源侦听器相关联，并且是全局标头重写。 使用基于路径的路由规则时，将在 URL 路径映射中定义标头重写配置。 在这种情况下，该规则只会应用到站点的特定路径区域。
 
@@ -67,7 +67,7 @@ ms.locfileid: "84807894"
 
    - 在“名称”框中输入重写集的名称。 
    - 选择在“关联的路由规则”列表中列出的一个或多个规则。  只能选择尚未与其他重写集关联的规则。 已经与其他重写集关联的规则处于灰显状态。
-   - 选择“**下一步**”。
+   - 选择“ **下一步** ”。
    
      ![添加名称和关联](media/rewrite-http-headers-portal/name-and-association.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "84807894"
 
    - 在“常用标头”列表中选择“Location”。  
 
-   - 输入标头值。 在此示例中，我们将使用 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 作为标头值。 此值将用 location 标头中的*contoso.com*替换*azurewebsites.net* 。
+   - 输入标头值。 在此示例中，我们将使用 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 作为标头值。 此值将用 location 标头中的 *contoso.com* 替换 *azurewebsites.net* 。
 
    - 选择“确定”  。
 
@@ -131,4 +131,4 @@ ms.locfileid: "84807894"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何设置某些常见用例，请参阅[常见标头重写方案](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)。
+若要详细了解如何设置某些常见用例，请参阅[常见标头重写方案](./rewrite-http-headers.md)。

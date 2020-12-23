@@ -1,21 +1,23 @@
 ---
 title: Azure 堡垒常见问题解答 |Microsoft Docs
-description: 解决 Azure 堡垒的常见问题，例如可用性、支持的并发会话数、配置和定价问题。
+description: 解决 Azure Bastion 的常见问题，例如可用性、支持的并发会话数、配置问题、定价。
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.author: charwen
-ms.openlocfilehash: e546888689ff290c750d594f1e737857049bf1ff
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.date: 11/05/2020
+ms.author: cherylmc
+ms.openlocfilehash: 502e57e442c48ae6b216d6b8399cee2fef4efa8f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270540"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356635"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion 常见问题解答
 
 这是 Azure Bastion 的常见问题解答。
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
+
+[!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]

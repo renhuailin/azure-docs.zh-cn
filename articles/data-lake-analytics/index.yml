@@ -4,19 +4,18 @@ summary: 使用 Data Lake Analytics 可以运行可扩展为大规模数据集�
 metadata:
   title: Azure Data Lake Analytics
   description: 使用 Data Lake Analytics 可以运行可扩展为大规模数据集的大数据分析作业。
-  services: data-lake-analytics
   ms.service: data-lake-analytics
   ms.topic: landing-page
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 5dadcad164a309a7251a1e4627cf1e78f6e927d4
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 014dbc3b2337238604cfd585ee1d39c4e8dab85b
+  ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87475713"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96511366"
 landingContent:
 - title: 关于 Data Lake Analytics
   linkLists:
@@ -41,7 +40,7 @@ landingContent:
     - text: U-SQL 入门
       url: data-lake-analytics-u-sql-get-started.md
     - text: U-SQL 语言参考
-      url: https://docs.microsoft.com/u-sql/
+      url: https://docs.microsoft.com/u-sql
     - text: U-SQL 目录入门
       url: data-lake-analytics-u-sql-catalog.md
     - text: 使用用户定义的运算符

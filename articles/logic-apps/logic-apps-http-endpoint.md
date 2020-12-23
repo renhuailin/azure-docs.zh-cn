@@ -1,35 +1,36 @@
 ---
-title: 使用请求触发器调用、触发或嵌套逻辑应用
-description: 设置 HTTPS 终结点，以便在 Azure 逻辑应用中调用、触发或嵌套逻辑应用工作流
+title: 使用请求触发器来调用、触发或嵌套逻辑应用
+description: 设置用于在 Azure 逻辑应用中调用、触发或嵌套逻辑应用工作流的 HTTPS 终结点
 services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/27/2020
-ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 11/19/2020
+ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230800"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981198"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTPS 终结点调用、触发或嵌套逻辑应用
 
-若要使逻辑应用可通过 URL 调用并能接收来自其他服务的入站请求，你可以通过在逻辑应用中使用基于请求的触发器，以本机方式公开同步 HTTPS 终结点。 利用此功能，可以从其他逻辑应用调用逻辑应用，并创建可调用终结点的模式。 若要设置用于处理入站调用的可调用终结点，可以使用以下任何触发器类型：
+若要使逻辑应用可通过 URL 调用，以便逻辑应用能够从其他服务接收传入请求，你可以在逻辑应用上使用基于请求的触发器以原生方式公开同步 HTTPS 终结点。 使用此功能可以从其他逻辑应用调用逻辑应用，并创建一种可调用终结点的模式。 若要设置可调用终结点来处理传入调用，可以使用以下任意一种触发器类型：
 
 * [请求](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
-* 具有 [ApiConnectionWebhook 类型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) 并且可以接收入站 HTTPS 请求的托管连接器触发器
+* 采用 [ApiConnectionWebhook 类型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)并可接收传入 HTTPS 请求的托管连接器触发器
 
-本文介绍如何使用请求触发器在逻辑应用上创建可调用的终结点，并从另一逻辑应用调用该终结点。 所有原则同样适用于可用于接收入站请求的其他触发器类型。
+本文介绍如何使用请求触发器在逻辑应用上创建可调用终结点，以及从另一个逻辑应用调用该终结点。 所有原理均完全适用于可用于接收传入请求的其他触发器类型。
 
-有关对逻辑应用的入站调用的加密、安全和授权（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前称为安全套接字层 (SSL) ），或 [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
+
+有关对逻辑应用的入站调用的安全、授权和加密的详细信息（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，以前称为安全套接字层 (SSL) ）， [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，使用 Azure API 管理公开逻辑应用，或限制发起入站调用的 IP 地址，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 要在其中使用触发器来创建可调用终结点的逻辑应用。 你可以从空白逻辑应用或现有逻辑应用开始，你可以在其中替换当前触发器。 本示例以空白的逻辑应用着手。 如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 你要在其中使用触发器来创建可调用终结点的逻辑应用。 可以从一个空白的逻辑应用着手，也可以从可在其中替换当前触发器的现有逻辑应用着手。 本示例以空白的逻辑应用着手。 如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-a-callable-endpoint"></a>创建可调用的终结点
 
@@ -103,7 +104,7 @@ ms.locfileid: "89230800"
 
    * 在“HTTP POST URL”框的右侧，选择“复制 URL”（复制文件图标）。
 
-   * 发出以下 POST 调用：
+   * 使用请求触发器需要的方法进行此调用。 此示例使用 `POST` 方法：
 
      `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
@@ -123,7 +124,7 @@ ms.locfileid: "89230800"
 
 ## <a name="select-expected-request-method"></a>选择预期的请求方法
 
-默认情况下，“请求”触发器预期的是 POST 请求。 你可以指定预期的其他方法，但只能指定一种方法。
+默认情况下，请求触发器需要 `POST` 请求。 不过，你可以指定调用方必须使用的其他方法，但只能指定一个方法。
 
 1. 在“请求”触发器中打开“添加新参数”列表，然后选择“方法”，将此属性添加到触发器中。 
 
@@ -261,7 +262,7 @@ ms.locfileid: "89230800"
 
 ## <a name="call-logic-app-through-endpoint-url"></a>通过终结点 URL 调用逻辑应用
 
-创建终结点后，可以通过将 HTTPS `POST` 请求发送到终结点的完整 URL 来触发逻辑应用。 逻辑应用对直接访问终结点提供内置支持。
+创建终结点后，可以通过将 HTTPS 请求发送到终结点的完整 URL 来触发逻辑应用。 逻辑应用对直接访问终结点提供内置支持。
 
 <a name="generated-tokens"></a>
 
@@ -301,7 +302,7 @@ ms.locfileid: "89230800"
 
 ## <a name="create-nested-logic-apps"></a>创建嵌套的逻辑应用
 
-通过添加可接收请求的其他逻辑应用，可以在逻辑应用中嵌套工作流。 若要包含这些逻辑应用，请执行以下步骤：
+可以通过添加可接收请求的其他逻辑应用，将工作流嵌套到逻辑应用中。 若要包含这些逻辑应用，请执行以下步骤：
 
 1. 在要调用另一个逻辑应用的步骤下，选择“新建步骤” > “添加操作”。 
 
@@ -338,7 +339,7 @@ ms.locfileid: "89230800"
 
 ## <a name="respond-to-requests"></a>对请求的响应
 
-有时，你希望通过向调用方返回内容，对触发逻辑应用的某些请求做出响应。 若要构造响应的状态代码、标头和正文，请使用“响应”操作。 此操作可以出现在逻辑应用中的任何位置，而不仅仅是工作流的末尾。 如果逻辑应用不包含“响应”操作，则终结点会*立即*以“202 已接受”状态进行响应。
+有时，你希望通过向调用方返回内容，对触发逻辑应用的某些请求做出响应。 若要构造响应的状态代码、标头和正文，请使用“响应”操作。 此操作可以出现在逻辑应用中的任何位置，而不仅仅是工作流的末尾。 如果逻辑应用不包含“响应”操作，则终结点会 *立即* 以“202 已接受”状态进行响应。
 
 要使原始调用方能够成功获取响应，除非调用用作嵌套逻辑应用的已触发逻辑应用，否则响应所需的所有步骤必须在[请求超时限制](./logic-apps-limits-and-config.md)内完成。 如果在此限制时间内未返回响应，传入请求将会超时，并收到“408 客户端超时”响应。
 
@@ -383,13 +384,15 @@ ms.locfileid: "89230800"
 
 #### <a name="q-what-about-url-security"></a>问：URL 的安全性如何？
 
-**答**：Azure 使用[共享访问签名 (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature) 安全生成逻辑应用回调 URL。 此签名以查询参数的形式传递，在运行逻辑应用之前必须先验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
+**答**：Azure 使用 [共享访问签名 (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature) 安全生成逻辑应用回调 URL。 此签名以查询参数的形式传递，在运行逻辑应用之前必须先验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
 
 > [!IMPORTANT]
 > 对于生产系统和安全性较高的系统，强烈建议不要直接从浏览器中调用逻辑应用，原因如下：
 >
 > * URL 中会出现共享访问密钥。
 > * 由于域在 Azure 逻辑应用客户之间共享，你将无法管理安全内容策略。
+
+有关对逻辑应用的入站调用的安全、授权和加密的详细信息（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，以前称为安全套接字层 (SSL) ）， [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，使用 Azure API 管理公开逻辑应用，或限制发起入站调用的 IP 地址，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>问：是否可以进一步配置可调用终结点？
 

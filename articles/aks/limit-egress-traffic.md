@@ -4,15 +4,14 @@ description: 了解控制 Azure Kubernetes Service (AKS) 中的出口流量所�
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570369"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701596"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -29,13 +28,13 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 默认情况下，AKS 群集具有不受限制的出站（出口）Internet 访问权限。 此级别的网络访问权限允许运行的节点和服务根据需要访问外部资源。 如果希望限制出口流量，则必须限制可访问的端口和地址数量，才能维护正常的群集维护任务。 保护出站地址的最简单解决方案在于使用可基于域名控制出站流量的防火墙设备。 例如，Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。 还可配置首选的防火墙和安全规则，以允许所需的端口和地址。
 
 > [!IMPORTANT]
-> 本文档仅介绍如何锁定离开 AKS 子网的流量。 默认情况下，AKS 没有入口需求。  不支持使用网络安全组 (NSG) 和防火墙阻止内部子网流量。 若要控制和阻止群集内的流量，请使用[网络策略][network-policy]。
+> 本文档仅介绍如何锁定离开 AKS 子网的流量。 默认情况下，AKS 没有入口需求。  不支持使用网络安全组 (NSG) 和防火墙阻止内部子网流量。 若要控制和阻止群集内的流量，请使用[网络策略*_][network-policy]。
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>AKS 群集所需的出站网络规则和 FQDN
 
 以下网络和 FQDN/应用程序规则为 AKS 群集所必需，若要配置 Azure 防火墙以外的解决方案，可以使用它们。
 
-* IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
+_ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 * 可将 FQDN HTTP/HTTPS 终结点放在防火墙设备中。
 * 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 AKS 群集一起变化的依赖项。
 * AKS 使用准入控制器将 FQDN 作为环境变量注入 kube-system 和 gatekeeper-system下的所有部署，确保节点和 API 服务器之间的所有系统通信使用 API 服务器 FQDN 而不是 API 服务器 IP。 
@@ -49,11 +48,11 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 | 目标终结点                                                             | 协议 | 端口    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 对于[专用群集](private-clusters.md)，这不是必需的|
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 对于[专用群集](private-clusters.md)，这不是必需的 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 这不是[专用群集](private-clusters.md)所必需的|
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 这不是[专用群集](private-clusters.md)所必需的 |
 | `*:123` 或 `ntp.ubuntu.com:123`（如果使用 Azure 防火墙网络规则）   | UDP      | 123     | 在 Linux 节点上进行网络时间协议 (NTP) 时间同步时需要。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果使用的是自定义 DNS 服务器，必须确保群集节点可以访问这些服务器。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。 对于[专用群集](private-clusters.md)，这不是必需的  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。 这不是[专用群集](private-clusters.md)所必需的  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Azure 全球的必需 FQDN/应用程序规则 
 
@@ -63,7 +62,6 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Node <-> API 服务器通信时需要。 将 \<location\> 替换为部署 AKS 群集的区域。 |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | 访问 Microsoft 容器注册表 (MCR) 中的映像时需要。 此注册表包含第一方映像/图表（例如 coreDNS 等）。 这些映像是正确创建和正常运行群集所必需的，包括缩放和升级操作。  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
 | **`management.azure.com`**       | **`HTTPS:443`** | 对于针对 Azure API 的 Kubernetes 操作是必需的。 |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | 对于 Azure Active Directory 身份验证是必需的。 |
@@ -76,12 +74,12 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 | 目标终结点                                                             | 协议 | 端口    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.Region:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 |
-| **`*:22`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:22` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:22` <br/> *Or* <br/> **`APIServerIP:22`** `(only known after cluster creation)`  | TCP           | 22      | 用于节点与控制平面之间的隧道安全通信。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.Region:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 |
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 |
+| **`*:22`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:22` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:22` <br/> *Or* <br/> **`APIServerPublicIP:22`** `(only known after cluster creation)`  | TCP           | 22      | 用于节点与控制平面之间的隧道安全通信。 |
 | `*:123` 或 `ntp.ubuntu.com:123`（如果使用 Azure 防火墙网络规则）   | UDP      | 123     | 在 Linux 节点上进行网络时间协议 (NTP) 时间同步时需要。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果使用的是自定义 DNS 服务器，必须确保群集节点可以访问这些服务器。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。  |
 
 ### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure 中国世纪互联的必需 FQDN/应用程序规则
 
@@ -92,7 +90,6 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Node <-> API 服务器通信时需要。 将 \<location\> 替换为部署 AKS 群集的区域。 |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Node <-> API 服务器通信时需要。 将 \<location\> 替换为部署 AKS 群集的区域。 |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | 访问 Microsoft 容器注册表 (MCR) 中的映像时需要。 此注册表包含第一方映像/图表（例如 coreDNS 等）。 这些映像是正确创建和正常运行群集所必需的，包括缩放和升级操作。 |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | 对于针对 Azure API 的 Kubernetes 操作是必需的。 |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | 对于 Azure Active Directory 身份验证是必需的。 |
@@ -105,11 +102,11 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 | 目标终结点                                                             | 协议 | 端口    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 |
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 |
 | `*:123` 或 `ntp.ubuntu.com:123`（如果使用 Azure 防火墙网络规则）   | UDP      | 123     | 在 Linux 节点上进行网络时间协议 (NTP) 时间同步时需要。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果使用的是自定义 DNS 服务器，必须确保群集节点可以访问这些服务器。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。  |
 
 ### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure 美国政府的必需 FQDN/应用程序规则 
 
@@ -119,7 +116,6 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Node <-> API 服务器通信时需要。 将 \<location\> 替换为部署 AKS 群集的区域。|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | 访问 Microsoft 容器注册表 (MCR) 中的映像时需要。 此注册表包含第一方映像/图表（例如 coreDNS 等）。 这些映像是正确创建和正常运行群集所必需的，包括缩放和升级操作。 |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | 对于针对 Azure API 的 Kubernetes 操作是必需的。 |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | 对于 Azure Active Directory 身份验证是必需的。 |
@@ -213,8 +209,10 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 | FQDN                                          | 端口      | 用途      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此地址用于正确操作 Azure Policy。 （AKS 中目前为预览版） |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此地址用于从 GitHub 请求内置策略，以确保正确操作 Azure Policy。 （AKS 中目前为预览版） |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | 此地址用于请求 Kubernetes 策略，并向策略服务报告群集相容性状态。 |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | 此地址用于拉取内置策略的网关守卫项目。 |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此地址用于正确操作 Azure Policy。  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此地址用于从 GitHub 请求内置策略，以确保正确操作 Azure Policy。 |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy 加载项，用于向应用程序见解终结点发送遥测数据。 |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>使用 Azure 防火墙限制出口流量
@@ -453,7 +451,7 @@ SUBNETID=$(az network vnet subnet show -g $RG --vnet-name $VNET_NAME --name $AKS
 
 
 > [!TIP]
-> 可以向群集部署（如 [**专用群集**](private-clusters.md)）添加其他功能。 
+> 可向群集部署添加更多功能，例如 [**专用群集**](private-clusters.md)。 
 >
 > 可以添加 [API 服务器已授权 IP 范围](api-server-authorized-ip-ranges.md) AKS 功能，以便限制 API 服务器仅访问防火墙的公共终结点。 已授权 IP 范围功能在图中表示为可选。 启用已授权 IP 范围功能来限制 API 服务器访问权限时，开发人员工具必须使用防火墙虚拟网络中的 Jumpbox，或者必须将所有开发人员终结点添加到已授权 IP 范围。
 
@@ -762,7 +760,7 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 应看到 AKS 投票应用程序。 此示例中，防火墙公共 IP 为 `52.253.228.132`。
 
 
-![屏幕截图显示了一个具有猫、狗、重置和总计按钮的 K S 投票应用程序。](media/limit-egress-traffic/aks-vote.png)
+![屏幕截图显示了包含“猫”、“狗”、“重置”和“合计”按钮的 A K S Voting 应用。](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>清理资源

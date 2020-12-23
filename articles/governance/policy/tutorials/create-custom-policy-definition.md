@@ -1,14 +1,14 @@
 ---
 title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876288"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -66,12 +66,15 @@ ms.locfileid: "89649834"
 
 ### <a name="arm-templates"></a>ARM 模板
 
-可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)。
+可通过多种方式查看包含要管理的属性的 [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)。
 
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
 查找属性的最简单方法是查找相同类型的现有资源。 已使用所要强制实施的设置配置的资源也会提供用于比较的值。
 在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下） 。
+
+> [!WARNING]
+> Azure 门户导出的 ARM 模板无法直接插入到 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 策略定义中 ARM 模板的 `deployment` 属性。
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure 门户中现有资源上的“导出模板”页的屏幕截图。" border="false":::
 
@@ -350,7 +353,7 @@ Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccount
 }
 ```
 
-### <a name="metadata"></a>元数据
+### <a name="metadata"></a>Metadata
 
 前三个组成部分是策略元数据。 由于我们知道要为哪些对象创建规则，因此可以轻松提供这些组成部分的值。 [Mode](../concepts/definition-structure.md#mode) 主要与标记和资源位置相关。 由于我们不需要将评估范围限制为支持标记的资源，因此将对 **mode** 使用 _all_ 值。
 

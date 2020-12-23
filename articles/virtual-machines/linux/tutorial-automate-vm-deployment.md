@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 57e336093ece0906033b86cefe72ed9f2b940573
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 456c42dc0b25e168744ce283cddbd63b877813ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279342"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747155"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教程 - 如何在 Azure 中的 Linux 虚拟机首次启动时使用 cloud-init 对其进行自定义
 
@@ -270,7 +270,7 @@ az vm open-port \
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你使用 cloud-init 在首次启动时配置了 VM。 你已了解如何执行以下操作：
+在本教程中，你使用 cloud-init 在首次启动时配置了 VM。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 cloud-init 配置文件

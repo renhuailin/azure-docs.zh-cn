@@ -1,20 +1,20 @@
 ---
-title: 指标监视器 REST API 快速入门
+title: 指标顾问 REST API 快速入门
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/23/2020
-ms.author: aahi
-ms.openlocfilehash: 603668f5bd4bb3909c895c3b2816b7521312ab59
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 42ea166119d3cc405b3d73e184c44dbfd6708a97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91253730"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96231474"
 ---
 ## <a name="prerequisites"></a>先决条件
 

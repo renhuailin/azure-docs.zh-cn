@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235802"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861385"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -29,7 +29,7 @@ ms.locfileid: "88235802"
 * **从 Azure AD 到 SaaS 应用程序的出站预配**。 当 Azure AD 是源系统时，[用户和组分配](../manage-apps/assign-user-or-group-access-portal.md)是确定预配范围内用户的最常用方法。 这些分配也用于启用单一登录，它们提供单一方法来管理访问权限和预配。 除分配外，还可选择性地使用范围筛选器，根据属性值筛选用户。
 
     >[!TIP]
-    > 可将预配设置下的[范围](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)菜单中的设置更改为“同步所有用户和组”，根据企业应用程序的分配禁用预配。**** 
+    > 可将预配设置下的[范围](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)菜单中的设置更改为“同步所有用户和组”，根据企业应用程序的分配禁用预配。 
 
 * **从 HCM 应用程序到 Azure AD 和 Active Directory 的入站预配**。 当 [Workday 等 HCM 应用程序](../saas-apps/workday-tutorial.md)是源系统时，范围筛选器是确定应从 HCM 应用程序预配到 Active Directory 或 Azure AD 的用户的主要方法。
 
@@ -37,7 +37,7 @@ ms.locfileid: "88235802"
 
 ## <a name="scoping-filter-construction"></a>范围筛选器构造
 
-范围筛选器包含一个或多个子句**。 子句通过评估每个用户的属性来确定允许哪些用户通过范围筛选器。 例如，可能有一个子句要求用户的“state”属性等于“New York”，因此只有纽约用户将预配到应用程序。 
+范围筛选器包含一个或多个子句。 子句通过评估每个用户的属性来确定允许哪些用户通过范围筛选器。 例如，可能有一个子句要求用户的“state”属性等于“New York”，因此只有纽约用户将预配到应用程序。 
 
 单个子句定义单个属性值的单个条件。 如果在单个范围筛选器中创建多个子句，则将使用“AND”逻辑评估它们。 这意味着所有子句必须评估为“true”方可预配用户。
 
@@ -60,19 +60,19 @@ ms.locfileid: "88235802"
 在每个 Azure AD 用户预配连接器的属性映射过程中，配置范围筛选器。 以下过程假设已为[受支持的应用程序之一](../saas-apps/tutorial-list.md)设置了自动预配，且要向其添加范围筛选器。
 
 ### <a name="create-a-scoping-filter"></a>创建范围筛选器
-1. 在 [Azure 门户](https://portal.azure.com)中，转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”部分。************
+1. 在 [Azure 门户](https://portal.azure.com)中，转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”部分。
 
 2. 选择已为其配置自动预配的应用程序，例如“ServiceNow”。
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
-4. 在“映射”部分，选择要为其预配范围筛选器的映射，例如“将 Azure Active Directory 用户同步到 ServiceNow”。****
+4. 在“映射”部分，选择要为其预配范围筛选器的映射，例如“将 Azure Active Directory 用户同步到 ServiceNow”。
 
-5. 选择“源对象范围”**** 菜单。
+5. 选择“源对象范围”菜单。
 
-6. 选择“添加范围筛选器”****。
+6. 选择“添加范围筛选器”。
 
-7. 选择要匹配的源“属性名称”、“运算符”和“属性值”来定义子句************。 支持以下运算符：
+7. 选择要匹配的源“属性名称”、“运算符”和“属性值”来定义子句。 支持以下运算符：
 
    a. **等于**。 如果评估的属性与输入字符串值完全匹配（区分大小写），则子句返回“true”。
 
@@ -94,7 +94,7 @@ ms.locfileid: "88235802"
    
    j. **Greater_Than_OR_EQUALS。** 如果计算属性大于或等于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
-   k. **涵盖.** 如果计算的属性包含的字符串值 (区分大小写) ，则该子句返回 "true"，如 [此处](/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
+   k. **涵盖.** 如果计算的属性包含的字符串值 (区分大小写) ，则该子句返回 "true"，如 [此处](/dotnet/api/system.string.contains)所述。 
 
 
 >[!IMPORTANT] 
@@ -103,13 +103,13 @@ ms.locfileid: "88235802"
 
 9. 可重复步骤 7-8 以添加其他范围子句。
 
-10. 在“范围筛选器标题”中，为范围筛选器添加名称****。
+10. 在“范围筛选器标题”中，为范围筛选器添加名称。
 
-11. 选择“确定”。
+11. 选择“确定”  。
 
-12. 在“范围筛选器”屏幕上再次选择“确定”。******** （可选）重复步骤 6-11 添加另一范围筛选器。
+12. 在“范围筛选器”屏幕上再次选择“确定”。 （可选）重复步骤 6-11 添加另一范围筛选器。
 
-13. 在“属性映射”屏幕上选择“保存”********。 
+13. 在“属性映射”屏幕上选择“保存”。 
 
 >[!IMPORTANT] 
 > 保存新的范围筛选器将触发新的应用程序完全同步，其中将针对新的范围筛选器再次对源系统中的所有用户进行评估。 如果应用程序中的用户以前在预配范围内，但现在不在范围内，则会在应用程序中禁用或取消预配其帐户。 若要替代此默认行为，请参阅 [跳过对超出范围的用户帐户的删除](../app-provisioning/skip-out-of-scope-deletions.md)。

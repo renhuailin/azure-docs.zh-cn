@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a789cb3fde05d12a8793196043f1c246bbab6559
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85921941"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342407"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 借助必应自定义搜索，可以为关注的主题创建定制的搜索体验。 例如，如果拥有提供搜索体验的武术网站，则可指定供必应搜索的域、子网站和网页。 用户会看到根据他们关注的内容定制的搜索结果，而不必浏览可能会包含不相关内容的常规搜索结果。 
 
@@ -35,7 +40,7 @@ ms.locfileid: "85921941"
 ## <a name="prerequisites"></a>先决条件
 
 - 要继续学习本教程，需要 Bing 自定义搜索 API 的订阅密钥。  若要获取密钥，请在 Azure 门户中[创建必应自定义搜索资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)。
-- 如果尚未安装 Visual Studio 2017 或更高版本，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。
+- 如果尚未安装 Visual Studio 2017 或更高版本，可以下载并使用 **免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-custom-search-instance"></a>创建自定义搜索实例
 
@@ -118,7 +123,7 @@ ms.locfileid: "85921941"
   
 5. 从下拉列表中选择订阅密钥。 或者，可以手动输入订阅密钥。
   
-   ![在“托管 UI”中进行其他配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-subscription-key.png)
+   ![“托管 UI”订阅密钥的屏幕截图](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +149,7 @@ ms.locfileid: "85921941"
   
 4. 在“新建 ASP.NET Core Web 应用程序”窗口中，选择“Web 应用程序”，单击“确定”  。  
   
-   ![“新建项目”窗口的屏幕截图](./media/custom-search-new-webapp.png)  
+   ![新建 Webapp 窗口的屏幕截图](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>编辑 index.cshtml
 

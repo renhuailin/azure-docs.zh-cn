@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68965010"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954080"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple 设备上支持的适用于 10 GbE 网络接口的硬件
 
@@ -125,5 +125,4 @@ Mellanox 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，�
 | 7. |1GbE |6120G |HP ProCurve 6120G/XG 1GbE 刀片式交换机 |HP |
 
 ## <a name="next-steps"></a>后续步骤
-[了解有关 StorSimple 硬件组件和状态的详细信息](storsimple-monitor-hardware-status.md)。
-
+[了解有关 StorSimple 硬件组件和状态的详细信息](./storsimple-8000-monitor-hardware-status.md)。

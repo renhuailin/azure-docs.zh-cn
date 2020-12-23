@@ -2,24 +2,24 @@
 title: 将模板规格部署为链接模板
 description: 了解如何在链接的部署中部署现有模板规格。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 11/17/2020
+ms.openlocfilehash: b30a99a469ec010dcc2e128bbeb446b493631608
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369104"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518866"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教程：将模板规格部署为链接模板（预览版）
 
-了解如何使用[链接的部署](linked-templates.md#linked-template)部署现有[模板规格](template-specs.md)。 使用模板规格与组织中的其他用户共享 ARM 模板。 创建模板规范后，可以使用 Azure PowerShell 或 Azure CLI 来部署模板规范。 还可以使用链接的模板将模板规格作为解决方案的一部分进行部署。
+了解如何使用[链接的部署](linked-templates.md#linked-template)部署现有[模板规格](template-specs.md)。 使用模板规格与组织中的其他用户共享 ARM 模板。 创建模板规格后，可以使用 Azure PowerShell 或 Azure CLI 部署模板规格。 还可以使用链接的模板将模板规格作为解决方案的一部分进行部署。
 
 ## <a name="prerequisites"></a>先决条件
 
 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 模板规格当前提供预览版。 若要使用它，必须[注册预览版](https://aka.ms/templateSpecOnboarding)。
+> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装 [版本5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用 [2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-template-spec"></a>创建模板规格
 
@@ -160,7 +160,10 @@ New-AzResourceGroup `
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
-  -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
+  -TemplateFile "c:\Templates\deployTS\azuredeploy.json" `
+  -tsResourceGroup templateSpecRg `
+  -tsName storageSpec `
+  -tsVersion 1.0
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -172,8 +175,8 @@ az group create \
 
 az deployment group create \
   --resource-group webRG \
-  --template-file "c:\Templates\deployTS\azuredeploy.json"
-
+  --template-file "c:\Templates\deployTS\azuredeploy.json" \
+  --parameters tsResourceGroup=templateSpecRG tsName=storageSpec tsVersion=1.0
 ```
 
 ---

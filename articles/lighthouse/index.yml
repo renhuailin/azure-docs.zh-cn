@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 07/20/2020
-  ms.openlocfilehash: 0748df5bdc961ff198d91d2584072cd07965995d
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.date: 12/03/2020
+  ms.openlocfilehash: 02b9ed9bb6146a73da26083718176447a7402f2a
+  ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90971907"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96602319"
 landingContent:
 - title: 关于 Azure Lighthouse
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
     links:
     - text: 将客户加入 Azure Lighthouse
       url: ./how-to/onboard-customer.md
-    - text: 关联 ID 以获取合作伙伴获得的额度
+    - text: 链接你的合作伙伴 ID
       url: ./how-to/partner-earned-credit.md
   - linkListType: concept
     links:
@@ -89,6 +89,8 @@ landingContent:
       url: ./how-to/deploy-policy-remediation.md
     - text: 利用 Azure Arc 管理混合计算机
       url: ./how-to/manage-hybrid-infrastructure-arc.md
+    - text: 管理迁移项目
+      url: ./how-to/migration-at-scale.md
 - title: 参考 - SDK
   linkLists:
   - linkListType: reference

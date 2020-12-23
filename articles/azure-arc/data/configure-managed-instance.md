@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f687923f1185d848c2c4f2f40d949c71a7743d65
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934797"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311125"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>配置启用了 Azure Arc 的 SQL 托管实例
 
@@ -22,11 +22,11 @@ ms.locfileid: "90934797"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configure-resources-for-azure-arc-enabled-sql-managed-instance"></a>为启用了 Azure Arc 的 SQL 托管实例配置资源
+## <a name="configure-resources"></a>配置资源
 
-### <a name="configure-using-azdata"></a>使用 azdata 进行配置
+### <a name="configure-using-azure-data-cli-azdata"></a>配置使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
-可以通过 CLI 编辑启用了 Azure Arc 的 SQL 托管实例的配置 `azdata` 。 运行以下命令以查看配置选项。 
+可以编辑启用了 Azure Arc 的 SQL 托管实例的配置 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 。 运行以下命令以查看配置选项。 
 
 ```
 azdata arc sql mi edit --help
@@ -75,6 +75,6 @@ azdata arc sql mi show -n <NAME_OF_SQL_MI>
    ```
 
 
-**已知限制**
+**已知的限制**
 - 以上步骤需要 Kubernetes 群集管理员权限
 - 这会在整个预览版中随时更改

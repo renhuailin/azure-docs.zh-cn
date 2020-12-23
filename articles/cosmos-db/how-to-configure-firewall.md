@@ -4,17 +4,28 @@ description: 了解如何配置 IP 访问控制策略，以为 Azure Cosmos 帐�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 12/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 69c39d2478ed7d488c1209c2c7e16c241c59bcef
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b4e01375388f12b828d9adcb1e2ed8851061a0bf
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814172"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560723"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+为了保护帐户中存储的数据，Azure Cosmos DB 支持基于机密的授权模型，该模型利用强大的基于哈希的消息身份验证代码 (HMAC)。 此外，Azure Cosmos DB 支持使用基于 IP 的访问控制来提供入站防火墙支持。 此模型与传统数据库系统的防火墙规则类似，并且为帐户提供额外级别的安全性。 利用防火墙，可以配置为仅允许从一组已批准的计算机和/或云服务访问你的 Azure Cosmos 帐户。 从这些已批准的计算机和服务访问 Azure Cosmos 数据库中存储的数据仍需调用方提供有效的授权令牌。
+
+## <a name="ip-access-control"></a><a id="ip-access-control-overview"></a>IP 访问控制
+
+默认情况下，只要请求附有有效的授权令牌，即可从 Internet 访问你的 Azure Cosmos 帐户。 若要配置基于 IP 策略的访问控制，用户必须提供 CIDR（无类域间路由）格式的、要作为客户端 IP 允许列表包含的 IP 地址或 IP 地址范围集，这样才能访问给定的 Azure Cosmos 帐户。 应用此配置后，源自此允许列表外部的计算机的所有请求将收到 403（禁止访问）响应。 使用 IP 防火墙时，我们建议允许 Azure 门户访问你的帐户。 需有相应的访问权限才能允许使用数据资源管理器，以及检索 Azure 门户中显示的帐户指标。 使用数据资源管理器时，除了要允许 Azure 门户访问你的帐户，还需更新防火墙设置，将当前 IP 地址添加到防火墙规则中。 请注意，可能需要长达15分钟的时间才能传播防火墙更改，在此期间，防火墙可能会出现不一致的行为。
+
+可将基于 IP 的防火墙与子网和 VNET 访问控制结合使用。 将这两种策略相结合，可以限制访问具有某个公共 IP 的任何源，和/或从 VNET 中的特定子网访问任何源。 若要详细了解如何使用基于子网和 VNET 的访问控制，请参阅[从虚拟网络访问 Azure Cosmos DB 资源](./how-to-configure-vnet-service-endpoint.md)。
+
+总而言之，始终需要提供授权令牌才能访问 Azure Cosmos 帐户。 如果未设置 IP 防火墙和 VNET 访问控制列表 (ACL)，可以使用授权令牌访问 Azure Cosmos 帐户。 在 Azure Cosmos 帐户中设置 IP 防火墙和/或 VNET ACL 后，只有源自指定的源（并且具有授权令牌）的请求才能收到有效的响应。 
 
 可以使用 IP 防火墙保护存储在 Azure Cosmos DB 帐户中的数据。 Azure Cosmos DB 支持使用基于 IP 的访问控制来提供入站防火墙支持。 可通过以下方法之一为 Azure Cosmos DB 帐户设置 IP 防火墙：
 
@@ -52,7 +63,7 @@ ms.locfileid: "88814172"
 
 如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 要想允许从 Azure 中的其他源进行访问，可以选择“接受来自 Azure 数据中心内部的连接”选项，如以下屏幕截图所示  ：
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="显示如何接受来自 Azure 数据中心的连接的屏幕截图":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="屏幕截图，演示如何接受来自 Azure 数据中心的连接":::
 
 如果启用此选项，则会将 IP 地址 `0.0.0.0` 添加到允许的 IP 地址列表中。 `0.0.0.0` IP 地址仅限从 Azure 数据中心 IP 范围向 Azure Cosmos DB 帐户发送请求。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
 
@@ -81,7 +92,7 @@ ms.locfileid: "88814172"
 
 ### <a name="requests-from-virtual-machines"></a>来自虚拟机的请求
 
-还可以使用[虚拟机](https://azure.microsoft.com/services/virtual-machines/)或[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)通过 Azure Cosmos DB 托管中间层服务。 要配置 Cosmos DB 帐户使其允许从虚拟机访问，必须将虚拟机和/或虚拟机规模集的公共 IP 地址配置为你的 Azure Cosmos DB 帐户允许的一个 IP 地址，方法是[配置 IP 访问控制策略](#configure-ip-policy)。
+还可以使用[虚拟机](https://azure.microsoft.com/services/virtual-machines/)或[虚拟机规模集](../virtual-machine-scale-sets/overview.md)通过 Azure Cosmos DB 托管中间层服务。 要配置 Cosmos DB 帐户使其允许从虚拟机访问，必须将虚拟机和/或虚拟机规模集的公共 IP 地址配置为你的 Azure Cosmos DB 帐户允许的一个 IP 地址，方法是[配置 IP 访问控制策略](#configure-ip-policy)。
 
 如以下屏幕截图所示，可以在 Azure 门户中检索虚拟机的 IP 地址：
 
@@ -95,12 +106,12 @@ ms.locfileid: "88814172"
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>使用资源管理器模板配置 IP 防火墙
 
-若要配置 Azure Cosmos DB 帐户的访问控制，请确保资源管理器模板使用允许的 IP 范围数组指定 **ipRules** 属性。 如果将 IP 防火墙配置为已部署的 Cosmos 帐户，请确保 `locations` 数组与当前部署的位置匹配。 不能同时修改 `locations` 数组和其他属性。 有关用于 Azure Cosmos DB 的 Azure 资源管理器模板的详细信息和示例，请参阅[用于 Azure Cosmos DB 的 Azure 资源管理器模板](resource-manager-samples.md)
+若要配置对 Azure Cosmos DB 帐户的访问控制，请确保资源管理器模板使用允许的 IP 范围数组指定 ipRules 属性。 如果将 IP 防火墙配置为已部署的 Cosmos 帐户，请确保 `locations` 数组与当前部署的位置匹配。 不能同时修改 `locations` 数组和其他属性。 有关用于 Azure Cosmos DB 的 Azure 资源管理器模板的详细信息和示例，请参阅[用于 Azure Cosmos DB 的 Azure 资源管理器模板](./templates-samples-sql.md)
 
 > [!IMPORTANT]
-> **IpRules**属性是在 API 版本2020-04-01 中引入的。 以前版本公开了 **ipRangeFilter** 属性，它是逗号分隔 IP 地址的列表。
+> ipRules 属性已随 API 版本 2020-04-01 引入。 之前的版本公开的是 ipRangeFilter 属性，该属性是以逗号分隔的 IP 地址的列表。
 
-下面的示例演示如何在 API 版本2020-04-01 或更高版本中公开 **ipRules** 属性：
+下面的示例演示如何在 API 2020-04-01 或更高版本中公开 ipRules 属性：
 
 ```json
 {
@@ -132,7 +143,7 @@ ms.locfileid: "88814172"
 }
 ```
 
-下面是适用于2020-04-01 之前的任何 API 版本的相同示例：
+下面是适用于 2020-04-01 之前的任何 API 版本的同一示例：
 
 ```json
 {
@@ -211,19 +222,19 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="source-ips-in-blocked-requests"></a>受阻止请求中的源 IP
 
-对 Azure Cosmos DB 帐户启用诊断日志记录。 这些日志显示每个请求和响应。 会记录带有 403 返回代码的防火墙相关消息。 通过筛选这些消息，可以查看已阻止请求的源 IP。 请参阅 [Azure Cosmos DB 诊断日志记录](logging.md)。
+对 Azure Cosmos DB 帐户启用诊断日志记录。 这些日志显示每个请求和响应。 会记录带有 403 返回代码的防火墙相关消息。 通过筛选这些消息，可以查看已阻止请求的源 IP。 请参阅 [Azure Cosmos DB 诊断日志记录](./monitor-cosmos-db.md)。
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>来自已启用 Azure Cosmos DB 服务终结点的子网的请求
 
-来自虚拟网络中已启用 Azure Cosmos DB 服务终结点的子网的请求向 Azure Cosmos DB 帐户发送虚拟网络和子网标识。 这些请求不包含源的公共 IP，因此 IP 筛选器将拒绝它们。 若要允许从虚拟网络中的特定子网进行访问，请添加[如何为 Azure Cosmos DB 帐户配置基于虚拟网络和子网的访问](how-to-configure-vnet-service-endpoint.md)中所述的访问控制列表。 应用防火墙规则最多可能需要 15 分钟。
+来自虚拟网络中已启用 Azure Cosmos DB 服务终结点的子网的请求向 Azure Cosmos DB 帐户发送虚拟网络和子网标识。 这些请求不包含源的公共 IP，因此 IP 筛选器将拒绝它们。 若要允许从虚拟网络中的特定子网进行访问，请添加[如何为 Azure Cosmos DB 帐户配置基于虚拟网络和子网的访问](how-to-configure-vnet-service-endpoint.md)中所述的访问控制列表。 应用防火墙规则最长可能需要15分钟，在此期间，防火墙可能会出现不一致的行为。
 
 ### <a name="private-ip-addresses-in-list-of-allowed-addresses"></a>允许的地址列表中的专用 IP 地址
 
-创建或更新包含包含专用 IP 地址的允许地址列表的 Azure Cosmos 帐户将会失败。 请确保未在列表中指定专用 IP 地址。
+使用包含专用 IP 地址的允许地址列表创建或更新 Azure Cosmos 帐户会失败。 请确保未在列表中指定专用 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要为 Azure Cosmos DB 帐户配置虚拟网络服务终结点，请参阅以下文章：
 
-* [适用于 Azure Cosmos DB 帐户的虚拟网络和子网访问控制](vnet-service-endpoint.md)
+* [适用于 Azure Cosmos DB 帐户的虚拟网络和子网访问控制](how-to-configure-vnet-service-endpoint.md)
 * [为 Azure Cosmos DB 帐户配置基于虚拟网络和子网的访问](how-to-configure-vnet-service-endpoint.md)

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5257e8730830c6b51808d5d014bc3bdec6036bfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3cbda70fd836482448aa381f6e781ed15666f2c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843957"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675169"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 Python 查询 Azure SQL 数据库中的数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "87843957"
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  若要安装 Homebrew 和 Python、ODBC 驱动程序和 SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请使用[在 macOS 上创建使用 SQL Server 的 Python 应用](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)中的步骤 **1.2**、**1.3** 和 **2.1**。
+  若要安装 Homebrew 和 Python、ODBC 驱动程序和 SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请使用 [在 macOS 上创建使用 SQL Server 的 Python 应用](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)中的步骤 **1.2** 、 **1.3** 和 **2.1** 。
 
   有关更多信息，请参阅 [macOS 上的 Microsoft ODBC 驱动程序](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
 
@@ -130,6 +130,5 @@ ms.locfileid: "87843957"
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Azure SQL 数据库中设计第一个数据库](design-first-database-tutorial.md)
-- [用于 SQL Server 的 Microsoft Python 驱动程序](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
+- [用于 SQL Server 的 Microsoft Python 驱动程序](/sql/connect/python/python-driver-for-sql-server/)
 - [Python 开发人员中心](https://azure.microsoft.com/develop/python/?v=17.23h)
-

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中心向特定的 Android 应用程序发送通知
-description: 了解如何使用 Azure 通知中心向特定用户推送通知。
+description: 了解如何使用 Azure 通知中心向特定 Android 用户发送推送通知。
 documentationcenter: android
 services: notification-hubs
 author: sethmanheim
@@ -15,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 349f8bf5c22f1e48ad733356c0e4720f5b7cd7e6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c137cbf0c2290bdbe228f7902e616e7f79cb459e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004167"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016975"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）向特定 Android 用户发送推送通知
 
@@ -260,7 +260,7 @@ ms.locfileid: "88004167"
     }
     ```
 
-    此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 它使用你在单击“登录”按钮时存储在本地存储中的授权令牌。
+    此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如 [从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 它使用你在单击“登录”按钮时存储在本地存储中的授权令牌。
 4. 在你的类中，删除或注释掉针对 `NotificationHub` 的专用字段，并添加一个用于 `RegisterClient` 类的字段和一个用于 ASP.NET 后端终结点的字符串。 确保使用前面获取的实际后端终结点来替换 `<Enter Your Backend Endpoint>`。 例如，`http://mybackend.azurewebsites.net`。
 
     ```java

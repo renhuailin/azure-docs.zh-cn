@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092722"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069919"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 `http://contoso.cloudapp.net`）上访问应用程序。 Azure 还会分配一个虚拟 IP 地址。
@@ -75,14 +75,14 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
 4. 若要为 **www\.customdomain.com** 创建别名，还必须为 CNAME 提供域或子域别名，例如 **www**。 如果希望为根域创建别名，它可能在注册机构的 DNS 工具中以符号“ **\@** ”的形式列出。
 5. 然后，必须提供一个规范主机名，在此示例中它是应用程序的“cloudapp.net”**** 域。
 
-例如，以下 CNAME 记录会将**www \. contoso.com**中的所有流量转发到**contoso.cloudapp.net**（已部署的应用程序的自定义域名）：
+例如，以下 CNAME 记录会将 **www \. contoso.com** 中的所有流量转发到 **contoso.cloudapp.net**（已部署的应用程序的自定义域名）：
 
 | 别名/主机名/子域 | 规范域 |
 | --- | --- |
 | www |contoso.cloudapp.net |
 
 > [!NOTE]
-> **Www \. contoso.com**的访问者将不会看到真正的主机（contoso.cloudapp.net），因此，转发过程对最终用户不可见。
+> **Www \. contoso.com**的访问者将不会看到真正的主机 (contoso.cloudapp.net) ，因此，转发过程对最终用户不可见。
 > 
 > 上述示例仅适用于 **www** 子域的流量。 因为无法为 CNAME 记录使用通配符，所以必须为每个域/子域创建一个 CNAME。 如果希望将子域（例如 .*.contoso.com）的流量定向到 cloudapp.net 地址，则可以在 DNS 设置中配置“URL 重定向”**** 或“URL 转发”**** 条目，或者创建一条 A 记录。
 
@@ -119,7 +119,7 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
 此示例展示了如何为根域创建 A 记录。 若要创建一个通配符条目来涵盖所有子域，请输入“*****”作为子域。
 
 > [!WARNING]
-> Azure 中的 IP 地址默认为动态 IP 地址。 可能需要使用[保留 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md)，确保 IP 地址不变。
+> Azure 中的 IP 地址默认为动态 IP 地址。 可能需要使用[保留 IP 地址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)，确保 IP 地址不变。
 > 
 > 
 
@@ -138,6 +138,3 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
 [Azure 门户]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-

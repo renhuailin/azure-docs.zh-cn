@@ -7,17 +7,19 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
 ms.author: sngun
-ms.openlocfilehash: 4ac5222e735e0699e507ca1392dc5dd42fc77105
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 4e638fdff67ad2d0bc6f191cdfd46867ab847923
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400462"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080101"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Azure Cosmos DB Gremlin 限制
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 本文介绍 Azure Cosmos DB Gremlin 引擎的限制，并说明他们可能会如何影响客户遍历。
 
-Cosmos DB Gremlin 基于 Cosmos DB 基础结构而构建。 由于此原因，[Azure Cosmos DB 服务限制](https://docs.microsoft.com/azure/cosmos-db/concepts-limits)中所述的所有限制仍然适用。
+Cosmos DB Gremlin 基于 Cosmos DB 基础结构而构建。 由于此原因，[Azure Cosmos DB 服务限制](./concepts-limits.md)中所述的所有限制仍然适用。
 
 ## <a name="limits"></a>限制
 

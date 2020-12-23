@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 132a9b7ad3eef17f4ca27fb76a0c05f94c82fd37
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469110"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428275"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>教程：连接到 Azure Red Hat OpenShift 4 群集
 
@@ -63,7 +63,7 @@ az aro list-credentials \
 
 登录到 OpenShift Web 控制台后，单击右上角的“?”，  然后单击“命令行工具”。  下载适用于你的计算机的版本。
 
-![Azure Red Hat OpenShift 登录屏幕](media/aro4-download-cli.png)
+![屏幕截图突出显示了当你选择“?”时列表中的“命令行工具”选项。 来折叠导航窗格。](media/aro4-download-cli.png)
 
 也可从 <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> 下载适用于你的计算机的最新 CLI 版本。
 

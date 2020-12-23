@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 245818b60647539c7fff7c45dcecdc6840153fb5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b9a85c7093d0f42ac97c4a548ba6f0feebae8b89
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549035"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350715"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教程：Azure Active Directory 单一登录 (SSO) 与 NetDocuments 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549035"
 * 让用户使用其 Azure AD 帐户自动登录到 NetDocuments。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -136,7 +136,7 @@ ms.locfileid: "88549035"
 
 3. 选择“安全中心”  。
    
-    ![存储库](./media/netdocuments-tutorial/security-center.png "安全中心")
+    ![屏幕截图显示从“法律文档”选择了“安全中心”。](./media/netdocuments-tutorial/security-center.png "安全中心")
 
 4. 选择“高级身份验证”  。
     
@@ -166,7 +166,7 @@ ms.locfileid: "88549035"
 
 3. 选择“用户和组”  。
    
-    ![存储库](./media/netdocuments-tutorial/users-groups.png "存储库")
+    ![屏幕截图显示从“法律文档”中选择了“用户和组”。](./media/netdocuments-tutorial/users-groups.png "存储库")
 
 4. 在“电子邮件地址”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件地址，并单击“添加用户”。  
    
@@ -179,14 +179,14 @@ ms.locfileid: "88549035"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 NetDocuments 磁贴时，应当会自动登录到你为其设置了 SSO 的 NetDocuments。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 NetDocuments 磁贴时，应当会自动登录到你为其设置了 SSO 的 NetDocuments。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 NetDocuments](https://aad.portal.azure.com/)

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6684c4269f14b91ded651dadff3f0a2e0878a4f2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91024868"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025906"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>是否所有 Azure VPN 网关 SKU 都支持自定义 IPsec/IKE 策略？
 除基本 SKU 外，所有 Azure SKU 都支持自定义 IPsec/IKE 策略。
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>在一个连接上可以指定多少个策略？
-一个给定的连接只能指定一个策略组合。
+只能对一个给定的连接指定一个策略组合。
 
 ### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>能否在一个连接上指定部分策略？ （例如，仅指定 IKE 算法，不指定 IPsec）
 否，必须指定 IKE（主模式）和 IPsec（快速模式）的所有算法和参数。 不允许指定部分策略。
@@ -27,7 +27,7 @@ ms.locfileid: "91024868"
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>自定义策略中支持的算法和密钥强度有哪些？
 下表列出了支持的加密算法和密钥强度，客户可自行配置。 必须为每个字段选择一个选项。
 
-| **IPsec/IKEv2**  | **选项**                                                                   |
+| IPsec/IKEv2*  | **选项**                                                                   |
 | ---              | ---                                                                           |
 | IKEv2 加密 | AES256、AES192、AES128、DES3、DES                                             |
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5                                                     |
@@ -107,7 +107,7 @@ SA 生存期是本地规范，不需匹配。
 不是。 只能通过 Azure VPN 网关在 S2S VPN 和 VNet 到 VNet 连接上使用 IPsec/IKE 策略。
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>如何创建 IKEv1 或 IKEv2 协议类型的连接？
-除基本的 SKU、标准 SKU 和其他[旧版 SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku) 以外，可以在所有 RouteBased VPN 类型 SKU 上创建 IKEv1 连接。 创建连接时，可以指定 IKEv1 或 IKEv2 连接协议类型。 如果未指定连接协议类型，IKEv2 将用作默认选项（如果适用）。 有关详细信息，请参阅 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) 文档。 有关 SKU 类型和 IKEv1/IKEv2 支持，请参阅[将网关连接到基于策略的 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
+除基本的 SKU、标准 SKU 和其他[旧版 SKU](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#gwsku) 以外，可以在所有 RouteBased VPN 类型 SKU 上创建 IKEv1 连接。 创建连接时，可以指定 IKEv1 或 IKEv2 连接协议类型。 如果未指定连接协议类型，IKEv2 将用作默认选项（如果适用）。 有关详细信息，请参阅 [PowerShell cmdlet](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) 文档。 有关 SKU 类型和 IKEv1/IKEv2 支持，请参阅[将网关连接到基于策略的 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>是否允许在 IKEv1 和 IKEv2 连接之间传输？
 是的。 支持在 IKEv1 连接和 IKEv2 连接之间传输。

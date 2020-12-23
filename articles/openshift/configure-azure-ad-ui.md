@@ -7,19 +7,19 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
-ms.custom: mvc
-ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 1b9e4d1f1b989caa317384292d013af255530f11
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469875"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748066"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>为 Azure Red Hat OpenShift 4 群集 (门户配置 Azure Active Directory 身份验证) 
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 构造群集的 **OAuth 回调 URL** 并记下它。 请确保将 **aro-rg** 替换为资源组的名称，并将 **aro 群集** 名称替换为群集的名称。
 
@@ -36,15 +36,15 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 登录到 Azure 门户，导航到 " [应用注册" 边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，然后单击 " **新建注册** " 以创建新的应用程序。
 
-提供应用程序的名称（例如， **azuread**），并使用之前检索到的 OAUTH 回调 URL 的值填充 **重定向 URI** 。
+提供应用程序的名称（例如， **azuread** ），并使用之前检索到的 OAUTH 回调 URL 的值填充 **重定向 URI** 。
 
-![新建应用程序注册](media/aro4-ad-registerapp.png)
+![新应用程序注册](media/aro4-ad-registerapp.png)
 
 导航到 " **证书" & "机密** "，单击 " **新建客户端密钥** "，并填写详细信息。 记下密钥值，因为你将在后面的阶段中使用它。 你将无法再次检索它。
 
 ![创建机密](media/aro4-ad-clientsecret.png)
 
-导航到 " **概述** " 并记下 **应用程序 (客户端) id** 和 **目录 (租户) ID**。 稍后需要用到它们。
+导航到 " **概述** " 并记下 **应用程序 (客户端) id** 和 **目录 (租户) ID** 。 稍后需要用到它们。
 
 ![检索应用程序 (客户端) 和目录 (租户) Id](media/aro4-ad-ids.png)
 
@@ -60,9 +60,9 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 我们会将 OpenShift 配置为使用 `email` 声明，并回退到 `upn` 以设置首选用户名，方法是将添加 `upn` 为 AZURE ACTIVE DIRECTORY 返回的 ID 令牌的一部分。
 
-导航到 " **令牌配置 (预览") ** 并单击 " **添加可选声明**"。 选择 " **ID** "，然后检查 **电子邮件** 和 **upn** 声明。
+导航到 " **令牌配置 (预览")** 并单击 " **添加可选声明** "。 选择 " **ID** "，然后检查 **电子邮件** 和 **upn** 声明。
 
-![创建机密](media/aro4-ad-tokens.png)
+![显示已添加的电子邮件和 upn 声明的屏幕截图。](media/aro4-ad-tokens.png)
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>将用户和组分配给群集 (可选) 
 
@@ -100,12 +100,12 @@ az aro list-credentials \
 
 在浏览器中启动控制台 URL，使用 `kubeadmin` 凭据登录。
 
-导航到 " **管理**"，单击 " **群集设置**"，然后选择 " **全局配置** " 选项卡。滚动以选择 " **OAuth**"。
+导航到 " **管理** "，单击 " **群集设置** "，然后选择 " **全局配置** " 选项卡。滚动以选择 " **OAuth** "。
 
-向下滚动到 "**标识提供者**" 下的 "**添加**"，然后选择 " **OpenID connect**"
+向下滚动到 " **标识提供者** " 下的 " **添加** "，然后选择 " **OpenID connect** "
 ![从标识提供程序下拉列表中选择 OpenID Connect](media/aro4-oauth-idpdrop.png)
 
-将名称填充为 **AAD**，将 **客户端 Id** 作为 **应用程序 id** 和 **客户端密钥**。 **颁发者 URL**的格式如下： `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 。 将占位符替换为前面检索到的租户 ID。
+将名称填充为 **AAD** ，将 **客户端 Id** 作为 **应用程序 id** 和 **客户端密钥** 。 **颁发者 URL** 的格式如下： `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 。 将占位符替换为前面检索到的租户 ID。
 
 ![填写 OAuth 详细信息](media/aro4-oauth-idp-1.png)
 
@@ -115,6 +115,6 @@ az aro list-credentials \
 
 ## <a name="verify-login-through-azure-active-directory"></a>验证登录名 Azure Active Directory
 
-如果你现在注销了 OpenShift Web 控制台并再次尝试登录，则会看到一个新选项，用于使用 **AAD**登录。 可能需要等待几分钟时间。
+如果你现在注销了 OpenShift Web 控制台并再次尝试登录，则会看到一个新选项，用于使用 **AAD** 登录。 可能需要等待几分钟时间。
 
 ![Azure Active Directory 选项的登录屏幕](media/aro4-login-2.png)

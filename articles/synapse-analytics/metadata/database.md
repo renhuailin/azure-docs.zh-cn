@@ -1,6 +1,6 @@
 ---
 title: 共享数据库
-description: Azure Synapse Analytics 提供一个共享的元数据模型，通过该模型在 Apache Spark 中创建一个数据库后，可以从该数据库的 SQL 按需版本（预览版）和 SQL 池引擎访问该数据库。
+description: Azure Synapse Analytics 提供一个共享的元数据模型，通过该模型在无服务器 Apache Spark 池中创建一个数据库后，可以从该数据库的无服务器 SQL 池和 SQL 池引擎访问该数据库。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,36 +10,34 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409311594cc26680217948e2394420fdaea29024
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015367"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451821"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共享数据库
 
-Azure Synapse Analytics 允许不同的计算工作区引擎在其 Spark 池（预览版）和 SQL 按需版本（预览版）引擎之间共享数据库和表。
+Azure Synapse Analytics 允许不同的计算工作区引擎在其无服务器 Apache Spark 池与无服务器 SQL 池引擎之间共享数据库和表。
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
+使用 Spark 作业创建的数据库会以相同的名称对工作区中所有当前的和将来的 Spark 池（包括无服务器 SQL 池引擎）变得可见。
 
-使用 Spark 作业创建的数据库将以上述数据库的名称向工作区中所有当前和未来 Spark 池（预览版）以及 SQL 按需版本引擎显示。
+Spark 默认数据库（名为 `default`）还会在无服务器 SQL 池上下文中显示为名为 `default` 的数据库。
 
-Spark 默认数据库（名为 `default`）还会在 SQL 按需版本上下文中显示为名为 `default` 的数据库。
-
-由于数据库以异步方式同步到 SQL 按需版本，因此它们出现的时间会有延迟。
+由于数据库以异步方式同步到无服务器 SQL 池，因此它们出现的时间会有延迟。
 
 ## <a name="manage-a-spark-created-database"></a>管理 Spark 创建的数据库
 
 使用 Spark 管理 Spark 创建的数据库。 例如，通过 Spark 池作业删除数据库，通过 Spark 在数据库中创建表。
 
-如果使用 SQL 按需版本在 Spark 创建的数据库中创建对象，或尝试删除数据库，该操作会成功。 但是，原始 Spark 数据库不会更改。
+如果使用无服务器 SQL 池在 Spark 创建的数据库中创建对象，或尝试删除数据库，该操作会成功。 但是，原始 Spark 数据库不会更改。
 
 ## <a name="how-name-conflicts-are-handled"></a>如何处理名称冲突
 
-如果某个 Spark 数据库的名称与现有 SQL 按需版本数据库的名称冲突，则在 SQL 按需版本中，会将一个后缀追加到这个 Spark 数据库。 SQL 按需版本中的后缀是 `_<workspace name>-ondemand-DefaultSparkConnector`。
+如果某个 Spark 数据库的名称与现有无服务器 SQL 池数据库的名称冲突，则在无服务器 SQL 池中，会将一个后缀追加到这个 Spark 数据库。 无服务器 SQL 池中的后缀是 `_<workspace name>-ondemand-DefaultSparkConnector`。
 
-例如，如果在 Azure Synapse 工作区 `myws` 中创建了名为 `mydb` 的 Spark 数据库，并且已存在同名的 SQL 按需版本数据库，则必须使用名称 `mydb_myws-ondemand-DefaultSparkConnector` 引用 SQL 按需版本中的 Spark 数据库。
+例如，如果在 Azure Synapse 工作区 `myws` 中创建了名为 `mydb` 的 Spark 数据库，并且已存在同名的无服务器 SQL 池数据库，则必须使用名称 `mydb_myws-ondemand-DefaultSparkConnector` 引用无服务器 SQL 池中的 Spark 数据库。
 
 > [!CAUTION]
 > 警告：不应依赖于此行为。
@@ -58,7 +56,7 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式将在基础
 
 ## <a name="examples"></a>示例
 
-### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>使用 SQL 按需版本创建并连接到 Spark 数据库
+### <a name="create-and-connect-to-spark-database-with-serverless-sql-pool"></a>使用无服务器 SQL 池创建并连接到 Spark 数据库
 
 首先使用已在工作区中创建的 Spark 群集创建名为 `mytestdb` 的新 Spark 数据库。 例如，可以将 Spark C# 笔记本和以下 .NET for Spark 语句配合使用以实现此目的：
 
@@ -66,7 +64,7 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式将在基础
 spark.Sql("CREATE DATABASE mytestdb")
 ```
 
-在短暂的延迟后，就能在 SQL 按需版本中看到该数据库。 例如，在 SQL 按需版本中运行以下语句。
+在短暂的延迟后，可从无服务器 SQL 池中看到该数据库。 例如，在无服务器 SQL 池中运行以下语句。
 
 ```sql
 SELECT * FROM sys.databases;

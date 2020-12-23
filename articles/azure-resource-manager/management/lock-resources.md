@@ -1,50 +1,50 @@
 ---
 title: 锁定资源以防止更改
-description: 通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。
+description: 通过对所有用户和角色应用锁来防止用户更新或删除 Azure 资源。
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827276"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555662"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
-作为管理员，可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
+作为管理员，可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly** 。 在门户中，锁定分别称为 **删除** 和 **只读** 。
 
 * **CanNotDelete** 味着经授权的用户仍可读取和修改资源，但不能删除资源。
-* **ReadOnly** 意味着经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于“读者”**** 角色授予的权限。
+* **ReadOnly** 意味着经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于“读者”角色授予的权限。
 
 ## <a name="how-locks-are-applied"></a>锁的应用方式
 
 在父范围应用锁时，该范围内所有资源都会继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 
-与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
+与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。
 
-Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com`的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 会允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
+Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com`的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库逻辑服务器上的 ReadOnly 锁将阻止删除或修改服务器。 它不会阻止你在该服务器上的数据库中创建、更新或删除数据。 会允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 
 ## <a name="considerations-before-applying-locks"></a>应用锁之前的注意事项
 
 应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 被锁阻止的一些常见操作的示例包括：
 
-* **存储帐户**上的只读锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
+* **存储帐户** 上的只读锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
 
-* **应用服务**资源上的只读锁将阻止 Visual Studio 服务器资源管理器显示资源的文件，因为该交互需要写入访问权限。
+* **应用服务** 资源上的只读锁将阻止 Visual Studio 服务器资源管理器显示资源的文件，因为该交互需要写入访问权限。
 
-* 包含**虚拟机**的**资源组**上的只读锁将阻止所有用户启动或重启该虚拟机。 这些操作需要 POST 请求。
+* 包含 **虚拟机** 的 **资源组** 上的只读锁将阻止所有用户启动或重启该虚拟机。 这些操作需要 POST 请求。
 
-* 资源组**** 上的不可删除锁可防止 Azure 资源管理器[自动删除历史记录中的部署](../templates/deployment-history-deletions.md)。 如果历史记录中达到 800 个部署，则部署会失败。
+* 资源组上的不可删除锁可防止 Azure 资源管理器[自动删除历史记录中的部署](../templates/deployment-history-deletions.md)。 如果历史记录中达到 800 个部署，则部署会失败。
 
-* **Azure 备份服务**创建的**资源组**上的“不能删除”锁会导致备份失败。 该服务最多支持 18 个还原点。 锁定后，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题解答 - 备份 Azure VM](../../backup/backup-azure-vm-backup-faq.md)。
+* **Azure 备份服务** 创建的 **资源组** 上的“不能删除”锁会导致备份失败。 该服务最多支持 18 个还原点。 锁定后，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题解答 - 备份 Azure VM](../../backup/backup-azure-vm-backup-faq.md)。
 
-* **订阅**上的只读锁会导致 **Azure 顾问**无法正常运行。 顾问将无法存储其查询的结果。
+* **订阅** 上的只读锁会导致 **Azure 顾问** 无法正常运行。 顾问将无法存储其查询的结果。
 
 ## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
 
-若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。**** ****
+若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。 
 
 ## <a name="managed-applications-and-locks"></a>托管应用程序和锁
 
@@ -58,7 +58,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ![选择服务](./media/lock-resources/select-service.png)
 
-请注意，服务包含**托管资源组**的链接。 该资源组包含基础结构且已锁定。 无法直接将其删除。
+请注意，服务包含 **托管资源组** 的链接。 该资源组包含基础结构且已锁定。 无法直接将其删除。
 
 ![显示托管组](./media/lock-resources/show-managed-group.png)
 
@@ -66,25 +66,99 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ![删除服务](./media/lock-resources/delete-service.png)
 
-## <a name="portal"></a>门户
+## <a name="configure-locks"></a>配置锁
+
+### <a name="portal"></a>门户
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>模板
+### <a name="arm-template"></a>ARM 模板
 
-使用资源管理器模板来部署某个锁定时，请根据锁定范围对名称和类型使用不同的值。
+使用 Azure 资源管理器模板 (ARM 模板) 部署锁时，需要知道锁的作用域和部署的范围。 若要在部署范围应用锁（如锁定资源组或订阅），请不要设置作用域属性。 锁定部署范围内的资源时，请设置作用域属性。
 
-对**资源**应用锁定时，请使用以下格式：
+以下模板将对其部署到的资源组应用锁定。 请注意，锁资源上没有范围属性，因为锁的作用域与部署范围匹配。 此模板部署在资源组级别。
 
-* name - `{resourceName}/Microsoft.Authorization/{lockName}`
-* type - `{resourceProviderNamespace}/{resourceType}/providers/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {  
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/locks",
+            "apiVersion": "2016-09-01",
+            "name": "rgLock",
+            "properties": {
+                "level": "CanNotDelete",
+                "notes": "Resource Group should not be deleted."
+            }
+        }
+    ]
+}
+```
 
-对**资源组**或**订阅**应用锁定时，请使用以下格式：
+若要创建资源组并对其进行锁定，请在订阅级别部署以下模板。
 
-* name - `{lockName}`
-* type - `Microsoft.Authorization/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('rgName')]",
+            "location": "[parameters('rgLocation')]",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "lockDeployment",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/locks",
+                            "apiVersion": "2016-09-01",
+                            "name": "rgLock",
+                            "properties": {
+                                "level": "CanNotDelete",
+                                "notes": "Resource group and its resources should not be deleted."
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
-以下示例演示可创建应用服务计划、网站和网站上的锁的模板。 锁的资源类型是要锁定的资源的资源类型和 **/providers/locks**。 锁名是通过将包含 **/Microsoft.Authorization/** 的资源名称与锁名连接起来创建的。
+将锁定应用于资源组中的 **资源** 时，请添加作用域属性。 将范围设置为要锁定的资源的名称。
+
+以下示例演示可创建应用服务计划、网站和网站上的锁的模板。 锁定的范围设置为网站。
 
 ```json
 {
@@ -93,6 +167,10 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
   "parameters": {
     "hostingPlanName": {
       "type": "string"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -101,9 +179,9 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('hostingPlanName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "sku": {
         "tier": "Free",
         "name": "f1",
@@ -115,9 +193,9 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[variables('siteName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
@@ -126,9 +204,10 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
       }
     },
     {
-      "type": "Microsoft.Web/sites/providers/locks",
+      "type": "Microsoft.Authorization/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "name": "siteLock",
+      "scope": "[concat('Microsoft.Web/sites/', variables('siteName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
       ],
@@ -141,9 +220,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 }
 ```
 
-如需在资源组上设置锁定的示例，请参阅[创建资源组并将其锁定](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)。
-
-## <a name="powershell"></a>PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 可以通过 Azure PowerShell 使用 [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) 命令锁定已部署的资源。
 
@@ -184,7 +261,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI
 
 可以通过 Azure CLI 使用 [az lock create](/cli/azure/lock#az-lock-create) 命令锁定已部署的资源。
 
@@ -225,7 +302,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --re
 az lock delete --ids $lockid
 ```
 
-## <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST API
 
 可以使用 [管理锁的 REST API](/rest/api/resources/managementlocks)锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
 
@@ -235,7 +312,7 @@ az lock delete --ids $lockid
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-作用域可能是订阅、资源组或资源。 锁名称可以是要对该锁使用的任何称谓。 对于 api 版本，请使用 **2016-09-01**。
+作用域可能是订阅、资源组或资源。 锁名称可以是要对该锁使用的任何称谓。 对于 api 版本，请使用 **2016-09-01** 。
 
 在请求中，包括指定锁属性的 JSON 对象。
 

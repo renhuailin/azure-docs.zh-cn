@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure 安全中心监管合规仪表板中更新为动态监管合规监视 | Microsoft Docs
-description: 更新监管合规包
+title: 使用 Azure 安全中心中的规章相容性仪表板
+description: 了解如何在安全中心的法规符合性仪表板中添加和删除法规标准
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 306a4773563b829ecad09a021f6763192e8246f5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e7e1567a487dc6cadc94a42f02c597ff0e02665b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445854"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372755"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 
@@ -41,7 +41,7 @@ Microsoft 还会自行跟踪监管标准，并随时间推移自动改进其在�
 
 可以添加标准，如 NIST SP 800-53 R4、SWIFT CSP CSCF-v2020、UK Official and UK NHS、Canada Federal PBMM 以及 Azure CIS 1.1.0（新）- Azure CIS 1.1.0 的更完整表示形式。 
 
-此外，可以添加 Azure 安全基准，它是由 Microsoft 创作的特定于 Azure 的准则，适用于基于常见合规框架的安全与合规最佳做法。 （[详细了解 Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/introduction)。）
+此外，可以添加 Azure 安全基准，它是由 Microsoft 创作的特定于 Azure 的准则，适用于基于常见合规框架的安全与合规最佳做法。 （[详细了解 Azure 安全基准](../security/benchmarks/introduction.md)。）
 
 其他标准会在可用时在仪表板中受支持。 
 
@@ -68,6 +68,7 @@ Microsoft 还会自行跟踪监管标准，并随时间推移自动改进其在�
 
     - Azure 安全基准
     - **NIST SP 800-53 R4**
+    - **NIST SP 800 171 R2**
     - SWIFT CSP CSCF-v2020
     - UKO and UK NHS
     - Canada PBMM
@@ -85,12 +86,37 @@ Microsoft 还会自行跟踪监管标准，并随时间推移自动改进其在�
 
     [![显示旧的和新的 Azure CIS 的监管合规仪表板](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
 
+
+## <a name="removing-a-standard-from-your-dashboard"></a>从仪表板中删除标准
+
+如果任何提供的法规标准与您的组织不相关，则只需将其从 UI 中删除即可简单。 这样，你便可以进一步自定义合规性仪表板，仅关注适用于你的标准。
+
+删除标准：
+
+1. 从安全中心的菜单中，选择 " **安全策略** "。
+
+1. 选择要从中删除标准的相关订阅。
+
+    > [!NOTE]
+    > 你可以从订阅中删除标准，但不能从管理组中删除。 
+
+    此时会打开 "安全策略" 页。 对于所选订阅，它会显示默认策略、行业和法规标准以及您创建的任何自定义计划。
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="从 Azure 安全中心的规章相容性仪表板中删除法规标准":::
+
+1. 对于要删除的标准，选择 " **禁用** "。 此时将显示一个确认窗口。
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="确认确实要删除所选的规章标准":::
+
+1. 请选择“是”。 将删除此标准。 
+
+
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，你了解了如何添加合规包以监视是否符合附加标准。 
 
 如需其他相关材料，请参阅以下文章： 
 
-- [Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Azure 安全基准](../security/benchmarks/introduction.md)
 - [安全中心监管合规仪表板](security-center-compliance-dashboard.md)
 - [使用安全策略](tutorial-security-policy.md)

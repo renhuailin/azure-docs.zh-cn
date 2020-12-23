@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783682"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362716"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>使用 Azure AD 访问评审管理已从条件访问策略中排除的用户
 
@@ -38,7 +38,7 @@ ms.locfileid: "88783682"
 
 ![条件访问中的命名位置](./media/conditional-access-exclusion/named-locations.png)
 
-遗憾的是，某些用户可能仍有正当理由从这些已阻止的国家/地区登录。 例如，用户因公事出差，并需要访问公司资源。 在这种情况下，阻止这些国家/地区的条件访问策略可对已从策略中排除的用户使用云安全组。 在旅行期间需要进行访问的用户可以使用 [Azure AD 自助服务组管理](../users-groups-roles/groups-self-service-management.md)将自己添加到该组。
+遗憾的是，某些用户可能仍有正当理由从这些已阻止的国家/地区登录。 例如，用户因公事出差，并需要访问公司资源。 在这种情况下，阻止这些国家/地区的条件访问策略可对已从策略中排除的用户使用云安全组。 在旅行期间需要进行访问的用户可以使用 [Azure AD 自助服务组管理](../enterprise-users/groups-self-service-management.md)将自己添加到该组。
 
 另举一例，某个条件访问策略可能会[阻止大多数用户的旧式身份验证](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)。 但是，如果某些用户需要使用旧式身份验证方法通过 Office 2010 或基于 IMAP/SMTP/POP 的客户端来访问你的资源，则你可以从阻止旧式身份验证方法的策略中排除这些用户。
 

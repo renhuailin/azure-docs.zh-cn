@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575854"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499316"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -50,7 +50,7 @@ ms.locfileid: "91575854"
 
 **是否可以使用 Azure 存储帐户中的 VHD 文件在不同的区域中创建托管磁盘？**
 
-否。
+不是。
 
 客户使用托管磁盘是否存在任何规模限制？
 
@@ -58,7 +58,7 @@ ms.locfileid: "91575854"
 
 可用性集中的 VM 是否可以同时包含托管和非托管磁盘？
 
-否。 可用性集中的 VM 必须全部使用托管磁盘或全部使用非托管磁盘。 创建可用性集时，可以选择要使用的磁盘类型。
+不是。 可用性集中的 VM 必须全部使用托管磁盘或全部使用非托管磁盘。 创建可用性集时，可以选择要使用的磁盘类型。
 
 **托管磁盘是否是 Azure 门户中的默认选项？**
 
@@ -76,7 +76,7 @@ ms.locfileid: "91575854"
 
 设置 VM 诊断的专用存储帐户。
 
-托管磁盘支持哪类基于角色的访问控制？
+**托管磁盘可以使用哪种类型的 Azure 基于角色的访问控制支持？**
 
 托管磁盘支持三个密钥默认角色：
 
@@ -110,15 +110,15 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 是否可以收缩或缩小托管磁盘？
 
-否。 目前，不支持此功能。
+不是。 目前，不支持此功能。
 
 是否可以在磁盘上中断租用？
 
-否。 目前不支持此功能，因为租用的作用是防止磁盘在使用时被意外删除。
+不是。 目前不支持此功能，因为租用的作用是防止磁盘在使用时被意外删除。
 
 当使用专用（未使用系统准备工具创建或未通用化）操作系统磁盘预配 VM 时，是否可以更改计算机名称属性？
 
-否。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
+不是。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
 
 在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure 资源管理器模板？
 * [List of templates using Managed Disks](https://github.com/Azure/azure-quickstart-templates/)（使用托管磁盘的模板列表）
@@ -136,7 +136,7 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 第 1 代映像只能在数据磁盘而不是 OS 磁盘上使用 GPT 分区。 操作系统磁盘必须使用 MBR 分区样式。
 
-[第 2 代映像](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)可以在 OS 磁盘和数据磁盘上使用 GPT 分区。
+[第 2 代映像](./generation-2.md)可以在 OS 磁盘和数据磁盘上使用 GPT 分区。
 
 哪些磁盘类型支持快照？
 
@@ -151,7 +151,7 @@ Azure 磁盘预留提供的选项可用于购买为期一年的采用指定 SKU�
 预留采用磁盘（而不是容量）的形式。 换句话说，预留 P80 (32 TiB) 磁盘时，你会收到单个 P80 磁盘，因此，无法将该特定预留划分为两个较小的 P70 (16 TiB) 磁盘。 当然，可以根据自己的需要预留任意数量的磁盘，包括两个单独的 P70 (16 TiB) 磁盘。
 
 如何应用 Azure 磁盘预留？    
-磁盘预留遵循类似于预留虚拟机 (VM) 实例的模型。 不同之处在于，磁盘预留无法应用于不同的 SKU，而 VM 实例可以。 有关 VM 实例的详细信息，请参阅[通过 Azure 虚拟机预留实例节省成本](./linux/prepay-reserved-vm-instances.md)。     
+磁盘预留遵循类似于预留虚拟机 (VM) 实例的模型。 不同之处在于，磁盘预留无法应用于不同的 SKU，而 VM 实例可以。 有关 VM 实例的详细信息，请参阅[通过 Azure 虚拟机预留实例节省成本](./prepay-reserved-vm-instances.md)。     
 
 是否可以跨多个区域使用通过 Azure 磁盘预留购买的数据存储？    
 Azure 磁盘预留是针对特定区域和 SKU（如美国东部 2 中的 P30）购买的，因此无法在这些构造外部使用。 始终可以购买额外的 Azure 磁盘预留来满足其他区域或 SKU 的磁盘存储需求。    
@@ -171,7 +171,7 @@ Azure 磁盘预留是针对特定区域和 SKU（如美国东部 2 中的 P30）
 
 哪些区域支持共享磁盘？
 
-有关区域信息，请参阅我们的 [概念文章](./linux/disks-shared.md)。
+有关区域信息，请参阅我们的 [概念文章](disks-shared.md)。
 
 共享磁盘是否可用作操作系统磁盘？
 
@@ -179,7 +179,7 @@ Azure 磁盘预留是针对特定区域和 SKU（如美国东部 2 中的 P30）
 
 哪些磁盘大小支持共享磁盘？
 
-有关支持的大小，请参阅我们的 [概念文章](./linux/disks-shared.md)。
+有关支持的大小，请参阅我们的 [概念文章](disks-shared.md)。
 
 **如果有现成的磁盘，是否可以在其上启用共享磁盘？**
 
@@ -241,15 +241,15 @@ Azure 备份是否可用于超级磁盘？
 
 **如何上传到托管磁盘？**
 
-创建一个托管磁盘，并将 [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) 的 [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) 属性设置为“Upload”，然后可以将数据上传到该磁盘。
+创建一个托管磁盘，并将 [creationData](/rest/api/compute/disks/createorupdate#creationdata) 的 [createOption](/rest/api/compute/disks/createorupdate#diskcreateoption) 属性设置为“Upload”，然后可以将数据上传到该磁盘。
 
 是否可以在 VM 处于上传状态时将磁盘附加到它？
 
-否。
+不是。
 
 **是否可以创建处于上传状态的托管磁盘的快照？**
 
-否。
+不是。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
@@ -288,11 +288,11 @@ Azure 标准 SSD 盘是什么？
 
 **是否支持将现有虚拟机规模集从非托管磁盘自动迁移到托管磁盘？**
 
-否。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
+不是。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
 
 是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？
 
-否。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
+不是。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
 
 是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？
 
@@ -300,7 +300,7 @@ Azure 标准 SSD 盘是什么？
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
-否。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
+不是。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
@@ -322,11 +322,11 @@ Azure 标准 SSD 盘是什么？
 
 是否可以为托管磁盘禁用服务器端加密？
 
-否。
+不是。
 
 服务器端加密是否仅适用于特定区域？
 
-否。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
+不是。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
 
 对于本地到 Azure 和 Azure 到 Azure 灾难恢复方案，Azure Site Recovery 是否支持使用客户托管密钥的服务器端加密？
 
@@ -346,7 +346,7 @@ Azure 标准 SSD 盘是什么？
 
 是否会同时加密从托管磁盘或快照导出的 VHD？
 
-否。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
+不是。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>高级磁盘：托管和非托管
 
@@ -396,18 +396,18 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 否，任何大小的标准 SSD 托管磁盘都不能与非托管磁盘或页 blob 配合使用。
 
-**Gen1 Vm 上的操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
+**Gen1 VM 上的操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的 Gen1 操作系统磁盘的分区类型是主启动记录 (MBR) 。 尽管 Gen1 OS 磁盘仅支持 MBR，但数据磁盘支持 GPT。 尽管可以分配最多4个 TiB 的 OS 磁盘，但 MBR 分区类型只能为操作系统使用最多2个 TiB 的磁盘空间。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
+Azure 支持的 Gen1 操作系统磁盘的分区类型是主启动记录 (MBR)。 尽管 Gen1 OS 磁盘仅支持 MBR，但数据磁盘支持 GPT。 虽然你可以分配的 OS 磁盘最大大小为 4 TiB，但 MBR 分区类型最多只能将此磁盘空间的 2 TiB 用于操作系统。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
 
-**Gen2 Vm 上的操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
+**Gen2 VM 上的操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的 Gen2 操作系统磁盘的分区类型为 GUID 分区表 (GPT) 。 Gen2 Vm 最多支持4个 TiB 操作系统磁盘。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
+Azure 支持的 Gen2 操作系统磁盘的分区类型是 GUID 分区表 (GPT)。 Gen2 VM 支持的 OS 磁盘最大大小为 4 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
 
 
 **操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
 
-Azure 支持使用非托管磁盘的操作系统磁盘的分区类型是主启动记录 (MBR) 。  尽管可以分配最多4个 TiB 的 OS 磁盘，但 MBR 分区类型只能为操作系统使用最多2个 TiB 的磁盘空间。 对于非托管数据磁盘，Azure 最多支持4个 TiB。
+Azure 支持的使用非托管磁盘的操作系统磁盘的分区类型是主启动记录 (MBR)。  虽然你可以分配的 OS 磁盘最大大小为 4 TiB，但 MBR 分区类型最多只能将此磁盘空间的 2 TiB 用于操作系统。 Azure 支持的非托管数据磁盘最大大小为 4 TiB。
 
 
 支持的最大页 blob 大小是多少？
@@ -427,7 +427,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 非托管磁盘或页 blob 是否支持 P4 和 P6 磁盘大小？
 
-非托管磁盘和页 blob 不支持 P4 (32 GiB) 和 P6 (64 GiB) 磁盘大小作为默认磁盘层。 需要显式[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)，将其设为 P4 和 P6，以便存储映射到这些层的磁盘。 如果使用少于 32 GiB 或介于 32 GiB 到 64 GiB 之间的磁盘大小或内容长度部署非托管磁盘或页 blob 而不设置 Blob 层，则将继续停留在 P10（500 IOPS 和 100 MiB/秒）和映射的定价层。
+非托管磁盘和页 blob 不支持 P4 (32 GiB) 和 P6 (64 GiB) 磁盘大小作为默认磁盘层。 需要显式[设置 Blob 层](/rest/api/storageservices/set-blob-tier)，将其设为 P4 和 P6，以便存储映射到这些层的磁盘。 如果使用少于 32 GiB 或介于 32 GiB 到 64 GiB 之间的磁盘大小或内容长度部署非托管磁盘或页 blob 而不设置 Blob 层，则将继续停留在 P10（500 IOPS 和 100 MiB/秒）和映射的定价层。
 
 **如果在支持较小磁盘（约 2017 年 6 月 15 日）之前创建了小于 64 GiB 的高级托管磁盘，将如何计费？**
 
@@ -473,15 +473,15 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以将多个虚拟网络链接到相同的磁盘访问对象？**
 
-否。 目前，只能将磁盘访问对象链接到一个虚拟网络。
+不是。 目前，只能将磁盘访问对象链接到一个虚拟网络。
 
 **是否可以将虚拟网络链接到其他订阅中的磁盘访问对象？**
 
-否。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
+不是。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
 
 **是否可以将虚拟网络链接到其他订阅中的磁盘访问对象？**
 
-否。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
+不是。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
 
 **可以同时发生多少次使用同一磁盘访问对象的导出或导入？**
 
@@ -489,14 +489,14 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以使用磁盘/快照的 SAS URI 来下载与该磁盘关联的专用终结点的子网中的 VM 的基础 VHD？**
 
-是。
+是的。
 
 **是否可以使用磁盘/快照的 SAS URI 下载 VM 的基础 VHD，该虚拟机不在与该磁盘关联的专用终结点的子网中。**
 
-否。
+不是。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 
-如果未在此处找到相关问题，请联系我们获取帮助。 你可以在本文末尾的评论中发布问题。 若要与 Azure 存储团队和其他社区成员合作了解本文，请使用 [Microsoft 问答&Azure 存储的问题页](https://docs.microsoft.com/answers/products/azure?product=storage)。
+如果未在此处找到相关问题，请联系我们获取帮助。 你可以在本文末尾的评论中发布问题。 若要与 Azure 存储团队和其他社区成员合作了解本文，请使用 [Microsoft 问答&Azure 存储的问题页](/answers/products/azure?product=storage)。
 
 若要提出功能请求，请将请求和想法提交到 [Azure 存储反馈论坛](https://feedback.azure.com/forums/217298-storage)。

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716070"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695888"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>适用于 SMB 访问的 Azure 文件基于标识的身份验证选项概述
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,23 +26,23 @@ ms.locfileid: "91716070"
 
 -   **Kerberos 身份验证**
 
-    Kerberos 是一种身份验证协议，用于验证用户或主机的标识。 有关 Kerberos 的详细信息，请参阅 [Kerberos 身份验证概述](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview)。
+    Kerberos 是一种身份验证协议，用于验证用户或主机的标识。 有关 Kerberos 的详细信息，请参阅 [Kerberos 身份验证概述](/windows-server/security/kerberos/kerberos-authentication-overview)。
 
 -  **服务器消息块 (SMB) 协议**
 
-    SMB 是行业标准网络文件共享协议。 也称为通用 Internet 文件系统或 CIFS。 有关 SMB 的详细信息，请参阅 [Microsoft SMB 协议和 CIFS协议概述](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)。
+    SMB 是行业标准网络文件共享协议。 也称为通用 Internet 文件系统或 CIFS。 有关 SMB 的详细信息，请参阅 [Microsoft SMB 协议和 CIFS协议概述](/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)。
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) 是 Microsoft 的基于云的多租户目录和标识管理服务。 Azure AD 将核心目录服务、应用程序访问管理和标识保护融入一个解决方案中。 Azure AD 联接的 Windows 虚拟机 (Vm) 可以使用 Azure AD 凭据访问 Azure 文件共享。 有关详细信息，请参阅[什么是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
+    Azure Active Directory (Azure AD) 是 Microsoft 的基于云的多租户目录和标识管理服务。 Azure AD 将核心目录服务、应用程序访问管理和标识保护融入一个解决方案中。 Azure AD 联接的 Windows 虚拟机 (Vm) 无法使用 Azure AD 凭据访问 Azure 文件共享。 有关详细信息，请参阅[什么是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure Active Directory 域服务 (Azure AD DS)**
 
     Azure AD DS 提供了托管域服务，例如域加入、组策略、LDAP 和 Kerberos/NTLM 身份验证。 这些服务与 Active Directory 域服务完全兼容。 有关详细信息，请参阅 [Azure Active Directory 域服务](../../active-directory-domain-services/overview.md)。
 
-- **本地 Active Directory 域服务 (AD DS) **
+- **本地 Active Directory 域服务 (AD DS)**
 
-    本地 Active Directory 域服务 (AD DS) 与 Azure 文件集成提供了存储目录数据的方法，同时使其可供网络用户和管理员使用。 通过登录身份验证和对目录中对象的访问控制，安全与 AD DS 集成。 通过单一网络登录，管理员可以管理其整个网络中的目录数据和组织，授权网络用户可以访问网络上任何位置的资源。 AD DS 通常由本地环境中的企业采用，AD DS 凭据用作访问控制的标识。 有关详细信息，请参阅 [Active Directory 域服务概述](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
+    本地 Active Directory 域服务 (AD DS) 与 Azure 文件集成提供了存储目录数据的方法，同时使其可供网络用户和管理员使用。 通过登录身份验证和对目录中对象的访问控制，安全与 AD DS 集成。 通过单一网络登录，管理员可以管理其整个网络中的目录数据和组织，授权网络用户可以访问网络上任何位置的资源。 AD DS 通常由本地环境中的企业采用，AD DS 凭据用作访问控制的标识。 有关详细信息，请参阅 [Active Directory 域服务概述](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
 -   **Azure 基于角色的访问控制 (Azure RBAC)**
 
@@ -104,7 +104,7 @@ Azure 文件共享利用 Kerberos 协议在本地 AD DS 或 Azure AD DS 进行�
 
 下图描绘了本地 AD DS 通过 SMB 对 Azure 文件共享进行身份验证。 必须使用 Azure AD Connect 同步将本地 AD DS 同步到 Azure AD。仅本地 AD DS 和 Azure AD 中存在的混合用户可以通过 Azure 文件共享访问进行身份验证和授权。 这是因为 "共享级别" 权限是根据 Azure AD 中表示的标识进行配置的，其中使用在 AD DS 中强制执行目录/文件级权限。 请确保正确配置对同一混合用户的权限。
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="关系图":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="描述本地 AD DS 通过 SMB 对 Azure 文件共享进行身份验证的关系图。":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 
@@ -128,7 +128,7 @@ Azure 文件共享利用 Kerberos 协议在本地 AD DS 或 Azure AD DS 进行�
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>配置 Azure 文件的目录或文件级权限
 
-Azure 文件共享在目录和文件级别（包括根目录）强制实施标准 Windows 文件权限。 SMB 和 REST 都支持目录或文件级权限的配置。 从 VM 装载目标文件共享并使用 Windows 文件资源管理器、Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或 [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) 命令配置权限。
+Azure 文件共享在目录和文件级别（包括根目录）强制实施标准 Windows 文件权限。 SMB 和 REST 都支持目录或文件级权限的配置。 从 VM 装载目标文件共享并使用 Windows 文件资源管理器、Windows [icacls](/windows-server/administration/windows-commands/icacls)或 [Set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) 命令配置权限。
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>使用存储帐户密钥获取超级用户权限
 
@@ -139,7 +139,7 @@ Azure 文件共享在目录和文件级别（包括根目录）强制实施标�
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>将数据导入 Azure 文件共享时保留目录和文件 Acl
 
-将数据复制到 Azure 文件共享时，Azure 文件支持保留目录或文件级 Acl。 你可以使用 Azure 文件同步或常见文件移动工具集将目录或文件上的 Acl 复制到 Azure 文件共享。 例如，可以将 [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 与标志一起使用， `/copy:s` 以便将数据和 Acl 复制到 Azure 文件共享。 默认情况下，将保留 Acl，无需在存储帐户上启用基于标识的身份验证来保留 Acl。
+将数据复制到 Azure 文件共享时，Azure 文件支持保留目录或文件级 Acl。 你可以使用 Azure 文件同步或常见文件移动工具集将目录或文件上的 Acl 复制到 Azure 文件共享。 例如，可以将 [robocopy](/windows-server/administration/windows-commands/robocopy) 与标志一起使用， `/copy:s` 以便将数据和 Acl 复制到 Azure 文件共享。 默认情况下，将保留 Acl，无需在存储帐户上启用基于标识的身份验证来保留 Acl。
 
 ## <a name="pricing"></a>定价
 在存储帐户上通过 SMB 启用基于身份的身份验证不会产生额外的服务费用。 有关定价的详细信息，请参阅 [Azure 文件定价](https://azure.microsoft.com/pricing/details/storage/files/) 和 [Azure AD 域服务价格](https://azure.microsoft.com/pricing/details/active-directory-ds/)。
@@ -150,4 +150,4 @@ Azure 文件共享在目录和文件级别（包括根目录）强制实施标�
 - [规划 Azure 文件存储部署](storage-files-planning.md)
 - [启用 Azure 文件共享的通过 SMB 进行本地 Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-enable.md)
 - [启用 Azure 文件上 Azure Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)
-- [常见问题](storage-files-faq.md)
+- [常见问题解答](storage-files-faq.md)

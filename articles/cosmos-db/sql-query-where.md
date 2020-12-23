@@ -3,17 +3,19 @@ title: Azure Cosmos DB 中的 WHERE 子句
 description: 了解 Azure Cosmos DB 的 SQL WHERE 子句
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: ceffb203ccc2cca1ff6e1c53644cde955c2e0acb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5620a9fb95fb52a487095afd75d5f30c82a8bce1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523496"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341461"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 可选的 WHERE 子句 (`WHERE <filter_condition>`) 指定条件，查询只会将满足这些条件的源 JSON 项包含在结果中。 JSON 项必须将指定的条件评估为 `true` 才被视作结果。 索引层使用 WHERE 子句来确定可以作为结果的一部分的源项的最小子集。
   
@@ -105,7 +107,7 @@ WHERE <filter_condition>
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `true` 的 `isRegistered` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。 此外，还可以使用 `IS_DEFINED` 类型检查函数根据给定的 JSON 属性是否存在进行查询。 例如， `SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` 返回没有值的任何 JSON 项 `isRegistered` 。
+还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `true` 的 `isRegistered` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。 此外，还可以使用 `IS_DEFINED` 类型检查函数根据是否存在给定 JSON 属性进行查询。 例如，`SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` 返回没有 `isRegistered` 值的所有 JSON 项。
 
 ## <a name="next-steps"></a>后续步骤
 

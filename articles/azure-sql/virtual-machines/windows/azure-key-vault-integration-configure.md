@@ -8,32 +8,33 @@ editor: ''
 tags: azure-service-management
 ms.assetid: cd66dfb1-0e9b-4fb0-a471-9deaf4ab4ab8
 ms.service: virtual-machines-sql
+ms.subservice: security
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7fab8db1fcc02e26d1b19d3889414565ff56351b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6955b7fc4948faaea6db426545f8cc3d1eece35
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91293521"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359891"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>为 Azure VM (Resource Manager) 上的 SQL Server 配置 Azure 密钥保管库集成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)、[列级加密 (CLE)](https://msdn.microsoft.com/library/ms173744.aspx) 和[备份加密](https://msdn.microsoft.com/library/dn449489.aspx)。 这些加密形式要求管理和存储用于加密的加密密钥。 Azure 密钥保管库服务专用于在一个高度可用的安全位置改进这些密钥的安全性和管理。 [SQL Server 连接器](https://www.microsoft.com/download/details.aspx?id=45344) 使 SQL Server 能够使用 Azure 密钥保管库中的这些密钥。
+SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)、[列级加密 (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql) 和[备份加密](/sql/relational-databases/backup-restore/backup-encryption)。 这些加密形式要求管理和存储用于加密的加密密钥。 Azure 密钥保管库服务专用于在一个高度可用的安全位置改进这些密钥的安全性和管理。 [SQL Server 连接器](https://www.microsoft.com/download/details.aspx?id=45344) 使 SQL Server 能够使用 Azure 密钥保管库中的这些密钥。
 
-如果在本地运行 SQL Server，请按照此处提供的步骤[通过本地 SQL Server 实例访问 Azure Key Vault](https://msdn.microsoft.com/library/dn198405.aspx)。 但对于 Azure VM 中的 SQL Server，可以使用 *Azure Key Vault 集成*功能节省时间。
+如果在本地运行 SQL Server，请按照此处提供的步骤[通过本地 SQL Server 实例访问 Azure Key Vault](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server)。 但对于 Azure VM 中的 SQL Server，可以使用 *Azure Key Vault 集成* 功能节省时间。
 
 启用此功能后，它会自动安装 SQL Server 连接器、配置 EKM 提供程序以访问 Azure 密钥保管库，并创建凭据以使你能够访问保管库。 在前面提到的本地文档列出的步骤中，可以看到此功能自动完成步骤 2 和步骤 3。 仍需手动执行的唯一操作是创建密钥保管库和密钥。 之后，会自动进行 SQL Server VM 的整个设置。 在此功能完成设置后，可以执行 Transact-SQL (T-SQL) 语句，以按照通常的方式加密数据库或备份。
 
 [!INCLUDE [Prepare for Key Vault integration](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
   >[!NOTE]
-  > 可扩展密钥管理 (EKM) 提供程序版本 1.0.4.0 通过 [SQL 基础结构即服务 (IaaS) 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)安装在 SQL Server VM 上。 升级 SQL IaaS 扩展将不会更新提供程序版本。 如有需要（例如，迁移到 SQL 托管实例时），请考虑手动更新 EKM 提供程序版本。
+  > 可扩展密钥管理 (EKM) 提供程序版本 1.0.4.0 通过 [SQL 基础结构即服务 (IaaS) 扩展](./sql-server-iaas-agent-extension-automate-management.md)安装在 SQL Server VM 上。 升级 SQL IaaS 扩展将不会更新提供程序版本。 如有需要（例如，迁移到 SQL 托管实例时），请考虑手动更新 EKM 提供程序版本。
 
 
 ## <a name="enabling-and-configuring-key-vault-integration"></a>启用和配置密钥保管库集成
@@ -50,7 +51,7 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-对于现有的 SQL 虚拟机，请打开 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)并在“设置”下选择“安全”。  选择 **启用**以启用 Azure Key Vault 集成。 
+对于现有的 SQL 虚拟机，请打开 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)并在“设置”下选择“安全”。  选择 **启用** 以启用 Azure Key Vault 集成。 
 
 ![现有 VM 的 SQL 密钥保管库集成](./media/azure-key-vault-integration-configure/azure-sql-rm-akv-existing-vms.png)
 

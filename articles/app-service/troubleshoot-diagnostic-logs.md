@@ -4,13 +4,13 @@ description: 了解如何启用诊断日志记录并将检测添加到应用程�
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 99a3c9a9c26eebe8dfdf11baf718fd13f7539607
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264365"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025270"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -70,7 +70,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 完成后，选择“保存”。
 
-## <a name="enable-application-logging-linuxcontainer"></a> (Linux/容器) 启用应用程序日志记录
+## <a name="enable-application-logging-linuxcontainer"></a>启用应用程序日志记录（Linux/容器）
 
 若要在 [Azure 门户](https://portal.azure.com)中启用适用于 Linux 应用或自定义容器应用的应用程序日志记录，请导航到应用并选择 " **应用服务日志**"。
 
@@ -187,14 +187,16 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 | 日志类型 | Windows | Windows 容器 | Linux | Linux 容器 | 说明 |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | TBA | TBA | 是 | 是 | 标准输出和标准错误 |
-| AppServiceHTTPLogs | 是 | TBA | 是 | 是 | Web 服务器日志 |
+| AppServiceConsoleLogs | Java SE 和 Tomcat | 是 | 是 | 是 | 标准输出和标准错误 |
+| AppServiceHTTPLogs | 是 | 是 | 是 | 是 | Web 服务器日志 |
 | AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
-| AppServiceAuditLogs | 是 | TBA | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
-| AppServiceFileAuditLogs | 是 | TBA | TBA | TBA | 对网站内容所做的文件更改;仅适用于高级层和更高版本 |
-| AppServiceAppLogs | ASP .NET | TBA | Java SE 和 Tomcat | Java SE 和 Tomcat | 应用程序日志 |
-| AppServiceIPSecAuditLogs  | 是 | TBA | 是 | 是 | 来自 IP 规则的请求 |
-| AppServicePlatformLogs  | TBA | TBA | 是 | 是 | 容器操作日志 |
+| AppServiceAuditLogs | 是 | 是 | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
+| AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对站点内容所做的文件更改；仅适用于高级层和更高层级 |
+| AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat 赋予映像 <sup>1</sup> | Java SE & Tomcat 赋予映像 <sup>1</sup> | 应用程序日志 |
+| AppServiceIPSecAuditLogs  | 是 | 是 | 是 | 是 | 来自 IP 规则的请求 |
+| AppServicePlatformLogs  | TBA | 是 | 是 | 是 | 容器操作日志 |
+
+<sup>1</sup> 对于 Java SE 应用，请将 "$WEBSITE _AZMON_PREVIEW_ENABLED" 添加到应用设置，并将其设置为1或 true。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤
 * [使用 Azure Monitor 查询日志](../azure-monitor/log-query/log-query-overview.md)

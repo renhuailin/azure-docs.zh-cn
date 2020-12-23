@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 蓝图示例控件
-description: SWIFT CSP-CSCF v2020 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
+description: SWIFT CSP-CSCF v2020 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 06a334ff05db1cfc7ad1fb09e370963486ee1515
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5aa4ee556c4ec7348566f45592b5e9fbf00eaf20
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297411"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009392"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 蓝图示例的控制映射。
 
@@ -17,11 +17,11 @@ ms.locfileid: "89297411"
 以下映射是映射到 **SWIFT CSP-CSCF v2020** 控制。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“ **\[预览\]：** 审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/swift-2020/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略有助于[评估控制的合规性](../../../policy/how-to/get-compliance-data.md)；但是，控制与一个或多个策略之间通常不是一对一或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/swift-2020/control-mapping.md)。
 
 ## <a name="12-and-51-account-management"></a>1.2 和 5.1 帐户管理
 
-此蓝图可帮助你查看可能不符合你组织的帐户管理要求的帐户。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义，这些定义用于审核对订阅和弃用帐户具有读、写和所有者权限的外部帐户。 通过查看受到这些策略审核的帐户，可以采取适当的措施，确保满足帐户管理要求。
+此蓝图可帮助你查看可能不符合组织的帐户管理要求的帐户。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义，这些定义用于审核对订阅和弃用帐户具有读、写和所有者权限的外部帐户。 通过查看受到这些策略审核的帐户，可以采取适当的措施，确保满足帐户管理要求。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
@@ -31,7 +31,7 @@ ms.locfileid: "89297411"
 
 ## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>2.6、5.1、6.4 和 6.5A 帐户管理 | 基于角色的方案
 
-Azure 实施了[基于角色的访问控制](../../../../role-based-access-control/overview.md) (RBAC) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此外，此蓝图还分配一个 Azure Policy 定义用于审核自定义 RBAC 规则的使用。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。
+[Azure 基于角色的访问控制](../../../../role-based-access-control/overview.md) (Azure RBAC)，可帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 另外，此蓝图还分配一个 Azure Policy 定义，用于审核自定义 Azure RBAC 规则的使用。 了解实施自定义 Azure RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 Azure RBAC 规则容易出错。
 
 - 应该为 SQL 服务器预配 Azure Active Directory 管理员
 - 审核不使用托管磁盘的 VM
@@ -54,7 +54,7 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 
 ## <a name="13-51-and-64-least-privilege--review-of-user-privileges"></a>1.3、5.1 和 6.4 最小特权 | 用户特权评审
 
-Azure 实施了[基于角色的访问控制](../../../../role-based-access-control/overview.md) (RBAC) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核应优先评审的帐户。 评审这些帐户指标可帮助确保实现最低特权控制措施。
+[Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核应优先评审的帐户。 评审这些帐户指标可帮助确保实现最低特权控制措施。
 
 - 只多只为订阅指定 3 个所有者
 - 显示未加入指定域的 Windows VM 的审核结果
@@ -63,7 +63,7 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 
 ## <a name="22-and-27-security-attributes"></a>2.2 和 2.7 安全属性
 
-Azure SQL 数据库高级数据安全性的数据发现和分类功能提供用于发现、分类、标记和保护数据库中敏感数据的功能。 它可用于直观查看数据库分类状态，以及跟踪对数据库内和其边界外的敏感数据的访问。 高级数据安全性有助于确保信息与组织的相应安全属性相关联。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于在 SQL 服务器上监视和强制使用高级数据安全性。 
+Azure SQL 数据库高级数据安全性的数据发现和分类功能提供用于发现、分类、标记和保护数据库中敏感数据的功能。 它可用于直观查看数据库分类状态，以及跟踪对数据库内和其边界外的敏感数据的访问。 高级数据安全性有助于确保信息与组织的相应安全属性相关联。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于在 SQL 服务器上监视和强制使用高级数据安全性。
 
 - 应在 SQL 服务器上启用高级数据安全性
 - 在 SQL 服务器上部署高级数据安全
@@ -105,7 +105,8 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1.3、2.2、2.7、6.4 和 6.5A 审核生成
 
-此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。 这些策略定义审核并强制部署 Azure 虚拟机上的 Log Analytics 代理并强制配置针对其他 Azure 资源类型的审核设置。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 此外，审核和高级数据安全在 SQL 服务器上配置。
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。
+这些策略定义审核并强制部署 Azure 虚拟机上的 Log Analytics 代理并强制配置针对其他 Azure 资源类型的审核设置。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 此外，审核和高级数据安全在 SQL 服务器上配置。
 
 - 审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - 为 Linux VM 规模集(VMSS)部署 Log Analytics 代理
@@ -164,7 +165,7 @@ Azure 安全中心中的自适应应用程序控制是一种智能的自动化�
 
 ## <a name="23-and-41-authenticator-management--password-based-authentication"></a>2.3 和 4.1 验证器管理 |基于密码的身份验证
 
-此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核不强制实施最低强度和其他密码要求的 Windows 虚拟机，来帮助你强制实施强密码。 感知虚拟机是否违反密码强度策略有助于采取纠正措施，确保所有虚拟机用户帐户的密码与组织的密码策略相符。
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核不强制实施最低强度和其他密码要求的 Windows 虚拟机，来帮助你强制实施强密码。 感知虚拟机是否违反密码强度策略有助于采取纠正措施，确保所有虚拟机用户帐户的密码符合组织的密码策略。
 
 - 显示允许重用之前的 24 个密码的 Windows VM 中的审核结果
 - 显示未将最长密码期限设为 70 天的 Windows VM 中的审核结果
@@ -181,7 +182,8 @@ Azure 安全中心中的自适应应用程序控制是一种智能的自动化�
 
 ## <a name="22-and-27-vulnerability-scanning"></a>2.2 和 2.7 漏洞扫描
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于在 Azure 安全中心内监视操作系统漏洞、SQL 漏洞和虚拟机漏洞，来帮助你管理信息系统漏洞。 Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。 此蓝图还会分配策略定义用于审核和强制执行 SQL 服务器上的高级数据安全。 高级数据安全包括漏洞评估和高级威胁防护功能，可帮助你了解已部署资源中的漏洞。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于在 Azure 安全中心内监视操作系统漏洞、SQL 漏洞和虚拟机漏洞，来帮助你管理信息系统漏洞。
+Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。 此蓝图还会分配策略定义用于审核和强制执行 SQL 服务器上的高级数据安全。 高级数据安全包括漏洞评估和高级威胁防护功能，可帮助你了解已部署资源中的漏洞。
 
 - 应在 SQL 服务器上启用高级数据安全性
 - 应启用 SQL 服务器上的审核
@@ -197,8 +199,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="11-and-61-boundary-protection"></a>1.1 和 6.1 边界保护
 
-此蓝图通过分配一个 [Azure Policy](../../../policy/overview.md) 定义用于根据 Azure 安全中心的网络安全组强化建议进行监视，以此帮助你管理和控制系统边界。 Azure 安全中心分析面向 Internet 的虚拟机的流量模式，并提供网络安全组规则建议，以减少潜在的攻击面。
-此外，此蓝图还会分配策略定义用于监视不受保护的终结点、应用程序和存储帐户。 不受防火墙保护的终结点和应用程序，以及具有无限制访问权限的存储帐户，可能会允许意外访问信息系统中包含的信息。
+此蓝图通过分配一个 [Azure Policy](../../../policy/overview.md) 定义用于根据 Azure 安全中心的网络安全组强化建议进行监视，以此帮助你管理和控制系统边界。 Azure 安全中心分析面向 Internet 的虚拟机的流量模式，并提供网络安全组规则建议，以减少潜在的攻击面。 此外，此蓝图还会分配策略定义用于监视不受保护的终结点、应用程序和存储帐户。 不受防火墙保护的终结点和应用程序，以及具有无限制访问权限的存储帐户，可能会允许意外访问信息系统中包含的信息。
 
 - 应在面向 Internet 的虚拟机上应用自适应网络强化建议
 - 应该限制通过面向 Internet 的终结点进行访问
@@ -218,7 +219,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="21-24-24a-25a-and-26-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>2.1、2.4、2.4A、2.5A 和 2.6 传输保密性和完整性 | 加密或备用物理保护
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义来帮助你监视针对通信协议实施的加密机制，以此帮助你保护传输信息的机密性和完整性。 确保通信得到适当的加密可帮助你满足组织的要求，或者防范信息遭到未经授权的透漏和修改。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义来帮助你监视针对通信协议实施的加密机制，以此帮助你保护传输信息的机密性和完整性。 确保通信得到适当的加密可帮助你满足组织的要求，或者防范信息遭到未经授权的泄漏和修改。
 
 - 只能通过 HTTPS 访问 API 应用
 - 显示未使用安全通信协议的 Windows Web 服务器中的审核结果

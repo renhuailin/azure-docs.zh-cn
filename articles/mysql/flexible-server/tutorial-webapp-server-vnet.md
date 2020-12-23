@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9cbcbeb9d9e216a0b686cba258288db8439e0a9c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a7b673dc8dfeb2ebf86aec5b7449df91c2ffd635
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929255"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534050"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>教程：在虚拟网络中创建 Azure Database for MySQL 灵活服务器（预览版）和应用服务 Web 应用
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-本教程介绍如何在[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)中创建 Azure 应用服务 Web 应用和 MySQL 灵活服务器（预览版）。
+本教程介绍如何在[虚拟网络](../../virtual-network/virtual-networks-overview.md)中创建 Azure 应用服务 Web 应用和 MySQL 灵活服务器（预览版）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "90929255"
 
 本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-你将需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登录到你的帐户。 记下与订阅名称相对应的命令输出中的 **id** 属性。
+你将需要使用 [az login](/cli/azure/reference-index#az-login) 命令登录到你的帐户。 记下与订阅名称相对应的命令输出中的 **id** 属性。
 
 ```azurecli
 az login
@@ -111,4 +111,4 @@ az group delete -n myresourcegroup
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 DNS 名称映射到 Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+> [将现有的自定义 DNS 名称映射到 Azure 应用服务](../../app-service/app-service-web-tutorial-custom-domain.md)

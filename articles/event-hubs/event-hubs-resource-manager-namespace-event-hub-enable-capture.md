@@ -4,12 +4,12 @@ description: 使用 Azure 资源管理器模板创建包含一个事件中心的
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1ba98bb47d53e3f95a1f212c5dc9459f983a30c2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9f86c5bc554bc1ed7f246aa1738a79f39cc9f0e8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079755"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654245"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
@@ -41,7 +41,7 @@ ms.locfileid: "89079755"
 
 [![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
@@ -330,7 +330,7 @@ ms.locfileid: "89079755"
 
 ## <a name="resources-to-deploy-for-azure-data-lake-store-as-destination"></a>要针对 Azure Data Lake Store（作为目标）进行部署的资源
 
-创建包含一个事件中心的 **** EventHub 类型的命名空间，并启用“捕获到 Azure Data Lake Store”。
+创建包含一个事件中心的 EventHub 类型的命名空间，并启用“捕获到 Azure Data Lake Store”。
 
 ```json
  "resources": [

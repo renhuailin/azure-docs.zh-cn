@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: cc64e36e5fa65a8d6eca117f33be8cac89514177
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2fd7425169ddc3ebed11ddaf513f0182dd397703
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538155"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313542"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Academy Attendance 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88538155"
 * 让用户使用其 Azure AD 帐户自动登录到 Academy Attendance。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -94,7 +94,7 @@ ms.locfileid: "88538155"
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
-    > Academy Attendance 支持两种用户角色：“教员”和“学生”。   在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 请参阅[此文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)，其中介绍了如何在 Azure AD 中创建自定义角色。
+    > Academy Attendance 支持两种用户角色：“教员”和“学生”。   在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 请参阅[此文档](../develop/active-directory-enterprise-app-role-management.md)，其中介绍了如何在 Azure AD 中创建自定义角色。
 
 1. 除了上述属性，Academy Attendance 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
@@ -152,15 +152,14 @@ ms.locfileid: "88538155"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Academy Attendance”磁贴时，应会自动登录到设置了 SSO 的 Academy Attendance。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Academy Attendance”磁贴时，应会自动登录到设置了 SSO 的 Academy Attendance。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [使用 Azure AD 试用 Academy Attendance](https://aad.portal.azure.com/)
-

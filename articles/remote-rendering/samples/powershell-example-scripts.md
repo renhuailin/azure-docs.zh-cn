@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075267"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009749"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell 脚本示例
 
@@ -22,18 +22,21 @@ Azure 远程渲染提供以下两个 REST API：
 
 [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering)的 Scripts 文件夹中包含了用来与服务的 REST API 进行交互的示例脚本。 本文介绍这些脚本的用法。
 
+> [!TIP]
+> 还可以使用[基于 UI 的 ARRT 工具](azure-remote-rendering-asset-tool.md)与服务进行交互，这是使用脚本的另一种简便方法。 ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT 屏幕截图")
+
 > [!CAUTION]
-过于频繁地调用 REST API 函数，将导致服务器停止运行并最终返回失败。 在本例中，http 失败代码 ID 为 429（“请求过多”）。 根据经验法则，后续调用之间应有 5-10 秒的延迟。
+> 过于频繁地调用 REST API 函数，将导致服务器停止运行并最终返回失败。 在本例中，http 失败代码 ID 为 429（“请求过多”）。 根据经验法则，后续调用之间应有 5-10 秒的延迟。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要执行示例脚本，需要正确安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)。
+若要执行示例脚本，需要正确安装 [Azure PowerShell](/powershell/azure/)。
 
 1. 安装 Azure PowerShell：
     1. 以管理员权限打开 PowerShell 窗口。
     1. 运行：`Install-Module -Name Az -AllowClobber`
 
-1. 如果出现了有关运行脚本的错误，请确保正确设置[执行策略](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)：
+1. 如果出现了有关运行脚本的错误，请确保正确设置[执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)：
     1. 以管理员权限打开 PowerShell 窗口。
     1. 运行：`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
@@ -44,9 +47,9 @@ Azure 远程渲染提供以下两个 REST API：
     1. 运行 `Connect-AzAccount`，并按照屏幕上的指示进行操作。
 
     > [!NOTE]
-    > 如果你的组织有多个订阅，你可能需要指定 SubscriptionId 和 Tenant 参数。 在 [Connect-AzAccount 文档](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)中可以找到详细信息。
+    > 如果你的组织有多个订阅，你可能需要指定 SubscriptionId 和 Tenant 参数。 在 [Connect-AzAccount 文档](/powershell/module/az.accounts/connect-azaccount)中可以找到详细信息。
 
-1. 从 [Azure 远程渲染 GithHub 存储库](https://github.com/Azure/azure-remote-rendering)下载 Scripts 文件夹。
+1. 从 [Azure 远程渲染 GitHub 存储库](https://github.com/Azure/azure-remote-rendering)下载 Scripts 文件夹。
 
 ## <a name="configuration-file"></a>配置文件
 
@@ -275,6 +278,6 @@ Azure 远程渲染提供以下两个 REST API：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门：使用 Unity 来渲染模型](../quickstarts/render-model.md)
+- [快速入门：使用 Unity 渲染模型](../quickstarts/render-model.md)
 - [快速入门：转换要渲染的模型](../quickstarts/convert-model.md)
 - [模型转换](../how-tos/conversion/model-conversion.md)

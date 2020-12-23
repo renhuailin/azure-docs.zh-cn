@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460110"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187793"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
@@ -63,7 +63,7 @@ DLL 或程序集缺失的症状可能为：
 
 1. 确保安装了 Azure SDK 1.3 或更高版本。
 2. 在使用 Visual Studio 部署解决方案的过程中，启用远程桌面。 有关详细信息，请参阅[使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接](cloud-services-role-enable-remote-desktop-visual-studio.md)。
-3. 在 Microsoft Azure 门户中，一旦实例显示“就绪”状态，则远程连接到该实例****。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
+3. 在 Microsoft Azure 门户中，一旦实例显示“就绪”状态，则远程连接到该实例。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
 5. 使用在远程桌面配置期间指定的凭据登录到虚拟机。
 6. 打开命令窗口。
 7. 键入 `IPconfig`。
@@ -82,7 +82,7 @@ DLL 或程序集缺失的症状可能为：
 !['/' 应用程序中出现显式服务器错误](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>使用计算模拟器诊断问题
-可以使用 Microsoft Azure 计算模拟器来诊断并解决缺失依赖项和出现 web.config 错误的问题。
+您可以使用 Microsoft Azure 计算模拟器来诊断和解决缺少依赖关系和 web.config 错误的问题。
 
 为了在使用此诊断方法时获得最佳结果，应使用包含 Windows 的干净安装的计算机或虚拟机。 若要以最佳效果模拟 Azure 环境，请使用 Windows Server 2008 R2 x64。
 
@@ -122,6 +122,6 @@ DLL 或程序集缺失的症状可能为：
 确认所有错误均已更正后，可以在不选中“**为 .NET 4 角色启用 IntelliTrace**”复选框的情况下部署服务。
 
 ## <a name="next-steps"></a>后续步骤
-查看更多针对云服务的 [故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
+查看更多针对云服务的 [故障排除文章](../index.yml?product=cloud-services&tag=top-support-issue) 。
 
-若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。
+若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。

@@ -1,6 +1,6 @@
 ---
 title: 审核与日志记录 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 了解 Threat Modeling Tool 中的审核和日志记录缓解。 请参阅缓解信息和查看代码示例。
+description: 在 Threat Modeling Tool 中了解有关审核和日志记录缓解的信息。 请参阅缓解措施信息并查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bac17073650736df9ec48e951290852e082e9417
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9d3f3ca7b5d4516c2ad5dc9cb19a2eaed0a8a4a8
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542987"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518271"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>安全框架：审核和日志记录 | 缓解措施 
 
@@ -131,7 +131,7 @@ ms.locfileid: "87542987"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [配置登录审核](https://msdn.microsoft.com/library/ms175850.aspx) |
+| **参考**              | [配置登录审核](/sql/ssms/configure-login-auditing-sql-server-management-studio) |
 | **步骤** | <p>必须启用数据库服务器登录审核，以检测/确认密码猜测攻击。 必须捕获失败的登录尝试。 捕获成功和失败的登录尝试可在取证调查期间提供额外的优势</p>|
 
 ## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>在 Azure SQL 中启用威胁检测
@@ -142,18 +142,18 @@ ms.locfileid: "87542987"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure |
 | **属性**              | SQL 版本 - V12 |
-| **参考**              | [SQL 数据库威胁检测入门](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **参考**              | [SQL 数据库威胁检测入门](../../azure-sql/database/threat-detection-configure.md)|
 | **步骤** |<p>威胁检测会检测异常的数据库活动，指出数据库有潜在的安全威胁。 威胁检测提供新的安全层，在发生异常活动时提供安全警报，让客户检测潜在威胁并做出响应。</p><p>用户可以使用 Azure SQL 数据库审核来探查可疑事件，判断这些可疑事件是否是因为有人尝试访问、破坏或利用数据库中的数据而生成的。</p><p>不必是安全专家，也不需要管理先进的安全监视系统，就能使用威胁检测轻松解决数据库的潜在威胁。</p>|
 
 ## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>使用 Azure 存储分析来审核对 Azure 存储的访问
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值 |
-| **参考**              | [使用存储分析来监视授权类型](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **参考**              | [使用存储分析来监视授权类型](../../storage/blobs/security-recommendations.md#loggingmonitoring) |
 | **步骤** | <p>对于每个存储帐户，可以启用 Azure 存储分析来执行日志记录和存储指标数据。 存储分析日志提供重要的信息，例如，某人在访问存储时使用的身份验证方法。</p><p>如果要严密监视存储的访问，这可能非常有用。 例如，在 Blob 存储中，可以将所有容器设置为专用，并通过应用程序实现 SAS 服务的使用。 然后可以定期检查日志，以了解 Blob 是否是使用存储帐户密钥访问的（这可能表示出现安全违规），或者 Blob 是公共的但它们不应该是公共的。</p>|
 
 ## <a name="implement-sufficient-logging"></a><a id="sufficient-logging"></a>实现充分的日志记录
@@ -164,7 +164,7 @@ ms.locfileid: "87542987"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET framework |
 | **属性**              | 空值  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
+| **参考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
 | **步骤** | <p>发生安全事件后缺少适当的审核线索可能会给取证工作造成阻碍。 Windows Communication Foundation (WCF) 提供记录成功和/或失败身份验证尝试的功能。</p><p>记录失败的身份验证尝试可以警示管理员发生了潜在的暴力破解攻击。 同样，记录成功身份验证事件可在合法帐户遭到入侵时提供有用的审核线索。 启用 WCF 的服务安全审核功能 |
 
 ### <a name="example"></a>示例
@@ -193,7 +193,7 @@ ms.locfileid: "87542987"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET framework |
 | **属性**              | 空值  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
+| **参考**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
 | **步骤** | <p>开发的解决方案配置为在无法写入审核日志时不生成异常。 如果 WCF 配置为在无法写入审核日志时不引发异常，则程序将不知道发生了失败，并且无法对关键的安全事件进行审核。</p>|
 
 ### <a name="example"></a>示例
@@ -242,5 +242,5 @@ ms.locfileid: "87542987"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [IoT 中心操作监视简介](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **参考**              | [IoT 中心操作监视简介](../../iot-hub/iot-hub-operations-monitoring.md) |
 | **步骤** | <p>规划如何通过 IoT 中心操作监视收集和存储审核数据。 启用以下监视类别：</p><ul><li>设备标识操作</li><li>设备到云的通信</li><li>云到设备的通信</li><li>连接</li><li>文件上传</li></ul>|

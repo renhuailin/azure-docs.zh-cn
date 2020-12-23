@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f86b0fc847ade3153c8eaddb0d82bd968913b46
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899629"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976061"
 ---
-# <a name="tutorial-configure-device-settings-for-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 配置 Azure Stack Edge Pro 的设备设置
+# <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 配置 Azure Stack Edge Pro 的设备设置
 
 本教程介绍如何使用板载 GPU 为 Azure Stack Edge Pro 设备配置设备相关设置。 可以通过本地 Web UI 设置设备名称、更新服务器和时间服务器。
 
@@ -67,7 +67,7 @@ ms.locfileid: "90899629"
 
     5. 应用设置后，选择“下一步:更新服务器”。
 
-        ![本地 Web UI“设备”页](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
+        ![本地 Web UI“设备”页 3](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
 ## <a name="configure-update"></a>配置更新
 
@@ -79,7 +79,7 @@ ms.locfileid: "90899629"
 
         也可以选择从“Windows Server Update Services”(WSUS) 部署更新。 提供 WSUS 服务器的路径。
         
-        ![本地 Web UI“更新服务器”页](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
+        ![本地 Web UI“更新服务器”页 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
         > 如果配置了单独的 Windows 更新服务器，并且选择通过 https（而不是 http）进行连接，则需要提供连接到更新服务器所需的签名链证书。 有关如何创建和上传证书的信息，请转到[管理证书](azure-stack-edge-j-series-manage-certificates.md)。 

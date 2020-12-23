@@ -2,20 +2,20 @@
 title: Azure AD 域服务中经典部署迁移的优点 | Microsoft Docs
 description: 详细了解将 Azure Active Directory 域服务的经典部署迁移到资源管理器部署模型的优点
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: iainfou
-ms.openlocfilehash: 93dcc1202c08be905cf08513f38e79a8a7674e01
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.author: justinha
+ms.openlocfilehash: 8cc5f5ebf389d35df02474d0561dc7827cde4d0b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650121"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620080"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中从经典部署模型迁移到资源管理器部署模型的优点
 

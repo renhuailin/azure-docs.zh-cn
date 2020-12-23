@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224853"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920434"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -37,7 +37,7 @@ ms.locfileid: "86224853"
 
 **步骤 1** - 证书颁发机构 (CA) 提供者  
 -   对于任何给定公司（例如 Contoso）来说，以 IT 管理员、PKI 管理员或任何可以使用 CA 来管理帐户的人员的身份加入 是使用 Key Vault 证书的先决条件。  
-    以下 CA 是目前可以与 Key Vault 配合使用的提供者：  
+    以下 Ca 是 Key Vault 的当前合作提供商。 在[此处](./create-certificate.md#partnered-ca-providers)了解详细信息   
     -   DigiCert - Key Vault 提供 DigiCert 的 OV TLS/SSL 证书。  
     -   GlobalSign - Key Vault 提供 GlobalSign 的 OV TLS/SSL 证书。  
 
@@ -50,9 +50,9 @@ ms.locfileid: "86224853"
     -   提供程序  
     -   凭据 - CA 帐户凭据。 每个 CA 都有其自身的特定数据。  
 
-    若要详细了解如何通过 CA 提供者来创建帐户，请参阅 [Key Vault 博客](https://aka.ms/kvcertsblog)上的相关文章。  
+    若要详细了解如何通过 CA 提供者来创建帐户，请参阅 [Key Vault 博客](/archive/blogs/kv/manage-certificates-via-azure-key-vault)上的相关文章。  
 
-**步骤 3.1** - 设置用于接收通知的[证书联系人](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)。 这是 Key Vault 用户的联系人。 Key Vault 不强制执行此步骤。  
+**步骤 3.1** - 设置用于接收通知的 [证书联系人](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)。 这是 Key Vault 用户的联系人。 Key Vault 不强制执行此步骤。  
 
 注意 - 上述过程（一直到步骤 3.1）是一次性操作。  
 
@@ -81,8 +81,8 @@ ms.locfileid: "86224853"
       -   状态：“已完成”、“失败并显示错误消息”或“已取消”  
       -   由于创建操作延迟，因此可能会启动取消操作。 取消操作可能生效，也可能不生效。  
 
-### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>与集成 CA 关联的网络安全和访问策略
-Key Vault 服务 (出站流量) 向 CA 发送请求。 因此，它与启用防火墙的密钥保管库完全兼容。 Key Vault 不与 CA 共享访问策略。 CA 必须配置为单独接受签名请求。 [有关集成受信任 CA 的指南](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>与集成 CA 关联的网络安全性和访问策略
+Key Vault 服务将请求发送到 CA（出站流量）。 因此，它与启用了防火墙的密钥保管库完全兼容。 Key Vault 不与 CA 共享访问策略。 CA 必须配置为独立接受签名请求。 [有关集成受信任 CA 的指南](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>导入证书  
  也可将证书导入 Key Vault - PFX 或 PEM。  
@@ -106,14 +106,13 @@ Azure Key Vault 支持 .pem 和 .pfx 证书文件（用于将证书导入到 Key
 
 -----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
 
-导入证书时，需要确保该密钥包含在文件本身中。 如果让私钥单独采用另一格式，则需将私钥与证书组合在一起。 某些证书颁发机构提供不同格式的证书，因此在导入证书之前，请确保它们采用的是 pem 或 .pfx 格式。 
+导入证书时，需要确保该密钥包含在文件本身中。 如果让私钥单独采用另一格式，则需将私钥与证书组合在一起。 某些证书颁发机构提供不同格式的证书，因此在导入证书之前，请确保证书采用 .pem 或 .pfx 格式。 
 
 ### <a name="formats-of-merge-csr-we-support"></a>我们支持的合并 CSR 的格式
 AKV 支持 2 种基于 PEM 的格式。 可以合并单个 PKCS#8 编码的证书或 base64 编码的 P7B（由 CA 签名的证书链） 
 
 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
-我们目前不支持 PEM 格式的 EC 密钥。
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>使用不与 Key Vault 配合使用的 CA 创建证书  
  此方法允许使用除 Key Vault 的合作提供者之外的其他 CA，也就是说，组织可以使用自选的 CA。  

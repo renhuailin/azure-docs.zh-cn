@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 126a8e48a8db1c41299a7cb7a34f172342110667
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084407"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023116"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
@@ -26,7 +26,7 @@ ms.locfileid: "90084407"
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>获取 Windows 10 企业多会话映像
 
-若要使用 Windows 10 企业多会话映像，请转到 Azure Marketplace，选择 "**入门**  >  **Microsoft Windows 10** > 和[Windows 10 企业版多会话，版本 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)。
+若要使用 Windows 10 企业多会话映像，请转到 Azure Marketplace，选择 "**入门**  >  **Microsoft Windows 10** > 和 [Windows 10 企业版多会话，版本 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)。
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>使用 Azure 门户创建主机池时遇到的问题
 
@@ -57,9 +57,9 @@ ms.locfileid: "90084407"
 
 按照以下说明解决 Azure 资源管理器模板和 PowerShell DSC 的不成功部署。
 
-1. 使用 [Azure 资源管理器的 "查看部署" 操作](../azure-resource-manager/resource-manager-deployment-operations.md)查看部署中的错误。
-2. 如果部署中没有错误，请使用查看活动日志查看活动日志中的错误， [以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
-3. 确定错误后，请使用错误消息和资源 [解决 azure 资源管理器的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md) ，以解决此问题。
+1. 使用 [Azure 资源管理器的 "查看部署" 操作](../azure-resource-manager/templates/deployment-history.md)查看部署中的错误。
+2. 如果部署中没有错误，请使用查看活动日志查看活动日志中的错误， [以审核对资源的操作](../azure-resource-manager/management/view-activity-logs.md)。
+3. 确定错误后，请使用错误消息和资源 [解决 azure 资源管理器的常见 Azure 部署错误](../azure-resource-manager/templates/common-deployment-errors.md) ，以解决此问题。
 4. 删除在之前的部署过程中创建的任何资源，然后重试部署模板。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>错误：部署失败 .... \<hostname> /joindomain

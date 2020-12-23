@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5175575bcd968ab9d9bb9db7e284eb332bc7f675
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497040"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542414"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教程：构建 Power BI 提供程序仪表板
 
@@ -44,14 +44,14 @@ ms.locfileid: "86497040"
 
 * Azure IoT Central 患者持续监视应用程序模板。 如果没有所需的应用程序模板，可以遵循[部署应用程序模板](overview-iot-central-healthcare.md)的步骤。
 
-* Azure [事件中心命名空间和事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
+* Azure [事件中心命名空间和事件中心](../../event-hubs/event-hubs-create.md)。
 
-* 用于访问事件中心的逻辑应用。 若要使用 Azure 事件中心触发器启动逻辑应用，需要一个[空白逻辑应用](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)。
+* 用于访问事件中心的逻辑应用。 若要使用 Azure 事件中心触发器启动逻辑应用，需要一个[空白逻辑应用](../../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* 一个 Power BI 服务帐户。 如果没有该帐户，可以[创建 Power BI 服务的免费试用帐户](https://app.powerbi.com/)。 如果你以前未用过 Power BI，请浏览 [Power BI 入门](https://docs.microsoft.com/power-bi/service-get-started)。
+* 一个 Power BI 服务帐户。 如果没有该帐户，可以[创建 Power BI 服务的免费试用帐户](https://app.powerbi.com/)。 如果你以前未用过 Power BI，请浏览 [Power BI 入门](/power-bi/service-get-started)。
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>设置到 Azure 事件中心的持续数据导出
-首先需要在订阅中设置从 Azure IoT Central 应用程序模板到 Azure 事件中心的持续数据导出。 可以遵循本 Azure IoT Central 教程所述的[导出到事件中心](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)的步骤来完成此设置。 对于本教程，只需导出遥测数据。
+首先需要在订阅中设置从 Azure IoT Central 应用程序模板到 Azure 事件中心的持续数据导出。 可以遵循本 Azure IoT Central 教程所述的[导出到事件中心](../core/howto-export-data.md)的步骤来完成此设置。 对于本教程，只需导出遥测数据。
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>创建 Power BI 流数据集
 
@@ -62,9 +62,9 @@ ms.locfileid: "86497040"
     >[!div class="mx-imgBorder"] 
     >![创建流数据集](media/create-streaming-dataset.png)
 
-3. 选择数据集的源对应的 **API**。
+3. 选择数据集的源对应的 **API** 。
 
-4. 输入数据集的**名称**（例如患者姓名），并填写流中的值。 根据来自模拟设备的值，患者持续监视应用程序模板中会显示以下示例信息。 该示例涉及到两个患者：
+4. 输入数据集的 **名称** （例如患者姓名），并填写流中的值。 根据来自模拟设备的值，患者持续监视应用程序模板中会显示以下示例信息。 该示例涉及到两个患者：
 
     * Teddy Silvers，其数据来自 Smart Knee Brace
     * Yesenia Sanford，其数据来自 Smart Vitals Patch
@@ -72,10 +72,10 @@ ms.locfileid: "86497040"
     >[!div class="mx-imgBorder"] 
     >![输入数据集值](media/enter-dataset-values.png)
 
-若要详细了解 Power BI 中的流数据集，可以阅读这篇有关 [Power BI 中的实时流](https://docs.microsoft.com/power-bi/service-real-time-streaming)的文档。
+若要详细了解 Power BI 中的流数据集，可以阅读这篇有关 [Power BI 中的实时流](/power-bi/service-real-time-streaming)的文档。
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>将逻辑应用连接到 Azure 事件中心
-若要将逻辑应用连接到 Azure 事件中心，可以按照这篇有关[使用 Azure 事件中心和 Azure 逻辑应用发送事件](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)的文档中的说明操作。 下面是一些建议的参数：
+若要将逻辑应用连接到 Azure 事件中心，可以按照这篇有关[使用 Azure 事件中心和 Azure 逻辑应用发送事件](../../connectors/connectors-create-api-azure-event-hubs.md#add-event-hubs-action)的文档中的说明操作。 下面是一些建议的参数：
 
 |参数|值|
 |---|---|
@@ -91,7 +91,7 @@ ms.locfileid: "86497040"
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>将数据从逻辑应用流式传输到 Power BI
 下一步是分析来自事件中心的数据，以将其流式传输到前面创建的 Power BI 数据集。
 
-1. 在执行此操作之前，需要了解从设备发送到事件中心的 JSON 有效负载。 为此，可以查看此[示例架构](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry)并根据自己的架构对其进行修改，或使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)检查消息。 如果使用的是患者持续监视应用程序，则消息将如下所示：
+1. 在执行此操作之前，需要了解从设备发送到事件中心的 JSON 有效负载。 为此，可以查看此[示例架构](../core/howto-export-data.md#telemetry-format)并根据自己的架构对其进行修改，或使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)检查消息。 如果使用的是患者持续监视应用程序，则消息将如下所示：
 
 **Smart Vitals Patch 遥测数据**
 
@@ -183,12 +183,12 @@ ms.locfileid: "86497040"
 13. 对于 **Smart Knee Brace** 切换案例，请添加一个“分析 JSON”操作来分析内容（类似于步骤 7）。 然后选择“将行添加到数据集”，以更新 Power BI 中的 Teddy Silvers 数据集。
 
     >[!div class="mx-imgBorder"] 
-    >![Smart Vitals - 添加条件](media/knee-brace-pbi.png)
+    >![显示如何将行添加到数据集的屏幕截图。](media/knee-brace-pbi.png)
 
 14. 按“保存”，然后运行逻辑应用。
 
 ## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>构建患者生命体征数据的实时仪表板
-现在，请返回到 Power BI 并选择“+ 创建”，以创建新的**仪表板**。 为仪表板命名并点击“创建”。
+现在，请返回到 Power BI 并选择“+ 创建”，以创建新的 **仪表板** 。 为仪表板命名并点击“创建”。
 
 选择顶部导航栏中的省略号图标，然后选择“+ 添加磁贴”。
 

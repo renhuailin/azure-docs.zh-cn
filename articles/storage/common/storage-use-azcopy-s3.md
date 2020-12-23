@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 07a8d2b394e8ca690925c677af676643064a9ba8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037110"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901824"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -38,17 +38,17 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 ### <a name="authorize-with-aws-s3"></a>对 AWS S3 授权
 
-收集 AWS 访问密钥和机密访问密钥，然后设置以下环境变量：
+收集 AWS 访问密钥和密钥访问密钥，然后设置以下环境变量：
 
 | 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
-| **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
+| **macOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
 ## <a name="copy-objects-directories-and-buckets"></a>复制对象、目录和桶
 
-AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，因此数据将在 AWS S3 与存储服务器之间直接复制。 这些复制操作不会占用计算机的网络带宽。
+AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) API，因此数据将在 AWS S3 与存储服务器之间直接复制。 这些复制操作不会占用计算机的网络带宽。
 
 > [!TIP]
 > 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
@@ -83,11 +83,11 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 | **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 > [!NOTE]
-> 此示例将添加 `--recursive` 标记以复制所有子目录中的文件。
+> 此示例追加 `--recursive` 标志以复制所有子目录中的文件。
 
 ### <a name="copy-the-contents-of-a-directory"></a>复制目录的内容
 
-可以复制目录的内容，而无需使用通配符 ( * ) 来复制包含目录本身。
+可以使用通配符 (*) 复制目录的内容，而无需复制包含内容的目录本身。
 
 |    |     |
 |--------|-----------|
@@ -135,7 +135,7 @@ AzCopy 会处理可能出现的两个最常见问题：包含句点的桶，以�
 
 ## <a name="handle-differences-in-object-metadata"></a>处理对象元数据的差异
 
-AWS S3 和 Azure 允许在对象键名称中使用不同的字符集。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)了解 AWS S3 使用的字符。 在 Azure 端，Blob 对象键遵守 [C# 标识符](https://docs.microsoft.com/dotnet/csharp/language-reference/)的命名规则。
+AWS S3 和 Azure 允许在对象键名称中使用不同的字符集。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)了解 AWS S3 使用的字符。 在 Azure 端，Blob 对象键遵守 [C# 标识符](/dotnet/csharp/language-reference/)的命名规则。
 
 在 AzCopy `copy` 命令中，可为 `s2s-handle-invalid-metadata` 可选标志提供一个值，用于指定如何处理其中的元数据包含不兼容键名称的文件。 下表描述了每个标志值。
 
@@ -155,11 +155,11 @@ AzCopy 执行以下步骤：
 
 2. 将字符串 `rename_` 添加到新的有效键的开头。
 
-   此键将用于保存原始元数据的**值**。
+   此键将用于保存原始元数据的 **值**。
 
 3. 将字符串 `rename_key_` 添加到新的有效键的开头。
-   此键将用于保存原始元数据的无效**键**。
-   可以使用此键在 Azure 端尝试恢复元数据，因为元数据键作为值保留在 Blob 存储服务中。
+   此键将用于保存原始元数据的无效 **键**。
+   你可以使用此密钥来尝试恢复 Azure 中的元数据，因为元数据密钥会保留为 Blob 存储服务中的值。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -167,7 +167,7 @@ AzCopy 执行以下步骤：
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 
-- [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [传输数据](storage-use-azcopy-v10.md#transfer-data)
 
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 

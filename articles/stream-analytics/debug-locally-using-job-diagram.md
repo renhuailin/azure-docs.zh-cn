@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045393"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130980"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>在 Visual Studio 中使用作业关系图在本地调试 Azure 流分析查询
 
@@ -87,7 +87,7 @@ ms.locfileid: "86045393"
   
 #### <a name="output-sinks-live-output"></a>输出接收器（实时输出）
 
-![作业关系图 - 本地输出接收器](./media/debug-locally-using-job-diagram/live-output.png)
+![显示本地输出接收器的作业关系图。](./media/debug-locally-using-job-diagram/live-output.png)
 
 |指标|说明|
 |-|-|
@@ -111,7 +111,7 @@ ms.locfileid: "86045393"
 
 ### <a name="view-job-level-metrics-and-stop-running"></a>查看作业级指标并停止运行
 
-其他作业级指标将显示在弹出控制台中。 若要停止作业，请在控制台中按 **Ctrl+C**。
+其他作业级指标将显示在弹出控制台中。 若要停止作业，请在控制台中按 **Ctrl+C** 。
 
 ![作业关系图 - 停止作业](./media/debug-locally-using-job-diagram/stop-job.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "86045393"
 
 * 由于身份验证模型的限制，Power BI 和 Azure Data Lake Storage Gen1 输出接收器不受支持。
 
-* 只有云输入选项具有[时间策略](stream-analytics-out-of-order-and-late-events.md)支持，本地输入选项不具备此支持。
+* 只有云输入选项具有[时间策略](./stream-analytics-time-handling.md)支持，本地输入选项不具备此支持。
 
 ## <a name="next-steps"></a>后续步骤
 

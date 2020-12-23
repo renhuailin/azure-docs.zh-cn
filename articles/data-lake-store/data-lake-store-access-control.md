@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190159"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094856"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 ## <a name="access-control-lists-on-files-and-folders"></a>文件和文件夹访问控制列表
 
-访问控制列表 (ACL) 有两种类型：**访问 ACL** 和**默认 ACL**。
+访问控制列表 (ACL) 有两种类型：**访问 ACL** 和 **默认 ACL**。
 
 * **访问 ACL**：控制对象访问权限。 文件和文件夹都具有访问 ACL。
 
@@ -34,8 +34,6 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 访问 ACL 和默认 ACL 具有相同的结构。
 
-
-
 > [!NOTE]
 > 更改父级的默认 ACL 不影响现有子项的访问 ACL 或默认 ACL。
 >
@@ -43,12 +41,12 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 ## <a name="permissions"></a>权限
 
-文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：************
+文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：
 
-|            |    文件     |   文件夹 |
+|            |    文件     |   Folder |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需要 " **读取** " 和 " **执行** " 来列出文件夹的内容|
-| **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项******** |
+| **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项 |
 | **执行 (X)** | 不表示 Data Lake Storage Gen1 上下文中的任何内容 | 需要遍历文件夹的子项 |
 
 ### <a name="short-forms-for-permissions"></a>权限的简短形式
@@ -74,7 +72,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 | 操作 | 对象              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 读取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | 删除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 创建    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 列出      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
@@ -104,11 +102,11 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 超级用户拥有 Data Lake Storage Gen1 帐户中所有用户的大多数权限。 超级用户：
 
-* 拥有**所有**文件和文件夹的 RWX 权限。
+* 拥有 **所有** 文件和文件夹的 RWX 权限。
 * 可以更改任何文件或文件夹的权限。
 * 可以更改任何文件或文件夹的拥有用户或拥有组。
 
-属于 Data Lake Storage Gen1 帐户“所有者”角色的所有用户都自动成为超级用户。****
+属于 Data Lake Storage Gen1 帐户“所有者”角色的所有用户都自动成为超级用户。
 
 ### <a name="the-owning-user"></a>拥有用户
 
@@ -118,7 +116,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 * 更改所拥有文件的拥有组，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 所有者用户无法更改某个文件或文件夹的所有者用户。** 只有超级用户可以更改文件或文件夹的拥有用户。
+> 所有者用户无法更改某个文件或文件夹的所有者用户。 只有超级用户可以更改文件或文件夹的拥有用户。
 >
 >
 
@@ -142,9 +140,9 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 * 拥有用户，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 所有者组无法更改某个文件或文件夹的 ACL。**
+> 所有者组无法更改某个文件或文件夹的 ACL。
 >
-> 对于在 2018 年 9 月或之前创建的帐户，拥有组设置为在上面**案例 1** 的根文件夹情况下创建帐户的用户。  单个用户帐户无法通过拥有组提供权限，因此此默认设置不授予任何权限。 可以将此权限分配给有效的用户组。
+> 对于在 2018 年 9 月或之前创建的帐户，拥有组设置为在上面 **案例 1** 的根文件夹情况下创建帐户的用户。  单个用户帐户无法通过拥有组提供权限，因此此默认设置不授予任何权限。 可以将此权限分配给有效的用户组。
 
 
 ## <a name="access-check-algorithm"></a>访问检查算法
@@ -194,7 +192,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>掩码
 
-如访问检查算法中所示，掩码限制对 **命名用户**、 **拥有组**和 **命名组**的访问。  
+如访问检查算法中所示，掩码限制对 **命名用户**、 **拥有组** 和 **命名组** 的访问。  
 
 > [!NOTE]
 > 对于新 Data Lake Storage Gen1 帐户，根文件夹（“/”）的访问 ACL 的掩码默认为 RWX。
@@ -216,7 +214,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的一个9位值，其中包含用于 **拥有用户**、 **拥有组**和 **其他**的 RWX 值。
+创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的一个9位值，其中包含用于 **拥有用户**、 **拥有组** 和 **其他** 的 RWX 值。
 
 Azure Data Lake Storage Gen1 的 umask 是设置为007的常量值。 此值将转换为
 
@@ -254,8 +252,8 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>以递归方式删除文件夹及其内容需要哪些权限？
 
-* 父文件夹必须拥有“写入 + 执行”权限。****
-* 要删除的文件夹及其中的每个文件夹都需要“读取 + 写入 + 执行”权限。****
+* 父文件夹必须拥有“写入 + 执行”权限。
+* 要删除的文件夹及其中的每个文件夹都需要“读取 + 写入 + 执行”权限。
 
 > [!NOTE]
 > 不需要有“写入”权限即可删除文件夹中的文件。 此外，也 **永远** 无法删除根文件夹 "/"。
@@ -280,7 +278,11 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 
 ### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-im-using-the-azure-portal"></a>使用 Azure 门户时，为什么有时会在 ACL 中看到 GUID？
 
-如果用户在 Azure AD 中不再存在，会显示 GUID。 当用户离职，或者其帐户已在 Azure AD 中删除时，往往会发生这种情况。
+如果用户在 Azure AD 中不再存在，会显示 GUID。 当用户离职，或者其帐户已在 Azure AD 中删除时，往往会发生这种情况。 此外，请确保使用正确的 ID 在以下)  (详细信息。
+
+### <a name="when-using-service-principal-what-id-should-i-use-to-set-acls"></a>使用服务主体时，我应该使用哪个 ID 来设置 Acl？
+
+在 Azure 门户中转到 **Azure Active Directory > 企业应用程序** 并选择应用程序。 " **概述** " 选项卡应显示 "对象 ID"，这是为数据访问 (而不是应用程序 ID) 添加 acl 时应使用的内容。
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Data Lake Storage Gen1 是否支持 ACL 继承？
 

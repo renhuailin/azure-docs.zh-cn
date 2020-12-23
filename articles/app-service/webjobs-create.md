@@ -8,12 +8,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 235d82e54c79350f110ab0cda4f4b672e396c61d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 2743efa5a9067f0667d54be0b7df75a627e60fcd
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652000"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674041"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
@@ -31,7 +31,7 @@ Azure Functions 提供了运行程序和脚本的另一种方式。 有关 WebJo
 
 ## <a name="webjob-types"></a>Web 作业类型
 
-下表描述了*连续*和*触发* Web 作业之间的差别。
+下表描述了 *连续* 和 *触发* Web 作业之间的差别。
 
 
 |连续  |触发  |
@@ -61,6 +61,9 @@ Several steps in the three "Create..." sections are identical;
 when making changes in one don't forget the other two.
 -->
 
+> [!IMPORTANT]
+> 如果你使用应用程序配置了源代码管理，则 Web 作业应作为源代码管理集成的一部分进行部署。 在应用程序中配置源代码管理后，将无法从 Azure 门户添加 WebJob。
+
 1. 在 [Azure 门户](https://portal.azure.com)中，转到应用服务 Web 应用、API 应用或移动应用的“应用服务”页。
 
 2. 选择“Web 作业”。
@@ -73,9 +76,9 @@ when making changes in one don't forget the other two.
 
 3. 使用表中指定的“添加 Web 作业”设置。
 
-   ![屏幕截图，显示需要配置的 "添加 Web 作业" 设置。](./media/web-sites-create-web-jobs/addwjcontinuous.png)
+   ![显示需要配置的“添加 Web 作业”设置的屏幕截图。](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | 设置      | 示例值   | 说明  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
    | **名称** | myContinuousWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
@@ -111,9 +114,9 @@ when making changes in one don't forget the other two.
 
 3. 使用表中指定的“添加 Web 作业”设置。
 
-   ![屏幕截图，显示需要设置以创建手动触发的 WebJob 的设置。](./media/web-sites-create-web-jobs/addwjtriggered.png)
+   ![显示创建手动触发的 Web 作业所需设置的设置项的屏幕截图。](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | 设置      | 示例值   | 说明  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
    | **名称** | myTriggeredWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。|
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
@@ -151,7 +154,7 @@ when making changes in one don't forget the other two.
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | 设置      | 示例值   | 说明  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
    | **名称** | myScheduledWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |

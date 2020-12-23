@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 0a7f5ec0231612a2cee2a9435144c886527c228e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972438"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014469"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教程：在 IoT Central 中创建连接的废弃物管理应用程序
 
@@ -92,18 +92,18 @@ ms.locfileid: "90972438"
 
 仪表板包含不同种类的磁贴：
 
-* ***Wide World Waste 废弃物处理厂图像磁贴***：仪表板中的第一个磁贴是虚构的废弃物处理厂“Wide World Waste”的图像磁贴。 可以自定义磁贴并放置自己的图像或将其删除。 
+* Wide World Waste 废弃物处理厂图像磁贴：仪表板中的第一个磁贴是虚构的废弃物处理厂“Wide World Waste”的图像磁贴*。 可以自定义磁贴并放置自己的图像或将其删除。 
 
-* ***垃圾箱图像磁贴***：可以使用图像和内容磁贴创建正在受监视的设备的可视化表示形式以及描述性文本。 
+垃圾箱图像磁贴：可以使用图像和内容磁贴创建正在受监视的设备的可视化表示形式以及描述性文本。 
 
-* ***填充级别 KPI 磁贴***：该磁贴显示垃圾桶中的填充级别传感器报告的值  。 可以远程监控垃圾箱中的填充级别和其他传感器（例如“气味测量仪”或“重量”）    。 操作员可以采取行动，比如调度垃圾收集车。 
+填充级别 KPI 磁贴：该磁贴显示垃圾桶中的填充级别传感器报告的值。 可以远程监控垃圾箱中的填充级别和其他传感器（例如“气味测量仪”或“重量”）    。 操作员可以采取行动，比如调度垃圾收集车。 
 
-*  ***废弃物监视区域地图***：该地图使用 Azure Maps，你可以直接在 Azure IoT Central 中对其进行配置。 地图磁贴显示设备位置。 尝试将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开。
+*  废弃物监视区域地图：该地图使用 Azure Maps，你可以直接在 Azure IoT Central 中对其进行配置*。 地图磁贴显示设备位置。 尝试将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开。
 
      ![连接的废弃物管理仪表板地图](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
 
-* ***填充、气味、重量级别条形图**：可以在条形图中可视化一个或多个设备遥测数据。 还可以展开条形图。  
+填充、气味、重量级别条形图：可以在条形图中可视化一个或多个设备遥测数据。 还可以展开条形图。  
 
   ![连接的废弃物管理仪表板条形图](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
 
@@ -197,7 +197,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
 ## <a name="explore-and-configure-rules"></a>浏览并配置规则
 
-在 Azure IoT Central 中，可以创建规则来自动监视设备上的遥测，并在满足一个或多个条件时触发操作。 这些操作可能包括发送电子邮件通知、触发 Microsoft Flow 操作或向其他服务发送数据的 webhook 操作。
+在 Azure IoT Central 中，可以创建规则来自动监视设备上的遥测，并在满足一个或多个条件时触发操作。 这些操作可能包括发送电子邮件通知、触发 Power Automate 操作或向其他服务发送数据的 Webhook 操作。
 
 “连接的废弃物管理”应用程序有四个示例规则  。
 
@@ -210,7 +210,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
      ![箱满警报](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 3. 在满足**条件** `Fill level is greater than or equal to Bin full alert threshold` 时，检查 `Bin full alert`。
+ 3. 在满足 **条件** `Fill level is greater than or equal to Bin full alert threshold` 时，检查 `Bin full alert`。
 
     `Bin full alert threshold` 是在 `Connected waste bin` 设备模板中定义的“云属性”  。 
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001911"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
@@ -37,7 +37,7 @@ ms.locfileid: "85962197"
 
 在某项服务启动时，可以通过将选项（有时称为 opts 或参数）传递到 JVM 来启用堆转储。 对于大多数 [Apache Hadoop](https://hadoop.apache.org/) 服务，可以修改用于启动该服务的 shell 脚本来传递这些选项。
 
-在每个脚本**中，有一个用于选择 \* \_ **的导出，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
+在每个脚本 **中，有一个用于选择 \* \_** 的导出，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
 
 映射和化简进程稍有不同，因为这些操作是 MapReduce 服务的子进程。 每个映射或化简进程都在子容器中运行，并且有两个包含 JVM 选项的条目。 二者均包含在 **mapred-site.xml** 中：
 
@@ -113,6 +113,6 @@ ms.locfileid: "85962197"
     ![Apache Ambari 重新启动所有受影响的条目](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
-   > 其他服务的 "**重新启动**" 按钮条目可能会有所不同。
+   > 其他服务的 " **重新启动** " 按钮条目可能会有所不同。
 
 8. 一旦重启服务，可使用“服务操作”  按钮“关闭维护模式”  。 这样一来，Ambari 就可以继续监视服务的警报。

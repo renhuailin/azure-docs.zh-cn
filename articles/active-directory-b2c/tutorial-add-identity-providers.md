@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9f9abf9105da773ec5f8321c0f8e70e20516618c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 166bdb7a2cf15a84e1b826a9a798042c568bb227
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922143"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608225"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 
@@ -99,21 +100,23 @@ ms.locfileid: "87922143"
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“标识提供程序”，然后选择“新建 OpenID Connect 提供程序” 。
 1. 输入“名称”。 例如，输入“Contoso Azure AD”。
-1. 对于“元数据 URL”，输入以下 URL，并将 `your-AD-tenant-domain` 替换为 Azure AD 租户的域名：
+1. 对于“元数据 URL”，输入以下 URL，并将 `{tenant}` 替换为 Azure AD 租户的域名：
 
     ```
-    https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
+    https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    例如，`https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`。
+    例如，`https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`。
+    例如，`https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`。
 
 1. 对于“客户端 ID”，输入之前记录的应用程序 ID。
-1. 对于“客户端密码”，输入之前记录的客户端密码。
-1. 将“范围”、“响应类型”和“响应模式”保留为默认值  。
-1. （可选）输入 Domain_hint 的值。 例如 ContosoAD。 [域提示](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)是应用程序的身份验证请求中包含的指令。 它们可用于加速将用户转到其联合的 IdP 登录页。 或者可由多租户应用程序用来帮助用户更快地直接转到其租户的品牌 Azure AD 登录页。
-1. 在“标识提供程序声明映射”下，输入以下声明映射值：
+1. 对于“客户端机密”，请输入之前记录的客户端机密。
+1. 对于“范围”，请输入 `openid profile`。
+1. 对于“响应类型”和“响应模式” ，请保留默认值。
+1. （可选）对于“域提示”，请输入 `contoso.com`。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md#redirect-sign-in-to-a-social-provider)。
+1. 在“标识提供者声明映射”下，选择以下声明：
 
-    * 用户 ID：oid
+    * **用户 ID**：*oid*
     * 显示名称：name
     * 给定名称：given_name
     * 姓氏：family_name

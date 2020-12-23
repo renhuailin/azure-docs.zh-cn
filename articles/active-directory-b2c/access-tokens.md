@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115534"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631387"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中请求访问令牌
 
@@ -50,10 +50,15 @@ scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-如果请求的作用域数超过为客户端应用程序授予的数目，则只有在授予至少一个权限的情况下，调用才会成功。 生成的访问令牌的 **scp** 声明中只会填充已成功授予的权限。 OpenID Connect 标准指定了多个特殊的作用域值。 以下作用域表示访问用户配置文件的权限：
+如果请求的作用域数超过为客户端应用程序授予的数目，则只有在授予至少一个权限的情况下，调用才会成功。 生成的访问令牌的 **scp** 声明中只会填充已成功授予的权限。 
+
+### <a name="openid-connect-scopes"></a>OpenID Connect 范围
+
+OpenID Connect 标准指定了多个特殊的作用域值。 以下作用域表示访问用户配置文件的权限：
 
 - **openid** - 请求 ID 令牌。
-- **offline_access** - 使用[授权代码流](authorization-code-flow.md)请求刷新令牌。
+- **offline_access** - 使用 [授权代码流](authorization-code-flow.md)请求刷新令牌。
+- **00000000-0000-0000-0000-000000000000** -使用客户端 id 作为范围表示你的应用需要一个访问令牌，该令牌可用于你自己的服务或 web API （由同一客户端 ID 表示）。
 
 如果 `/authorize` 请求中的 **response_type** 参数包含 `token`，那么 **scope** 参数必须包含至少一个将被授予的资源作用域（除 `openid` 和 `offline_access` 以外）。 否则，`/authorize` 请求会失败。
 
@@ -69,7 +74,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - `<redirect-uri>` - 注册客户端应用程序时输入的重定向 URI。
 
 ```http
-GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
+GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms

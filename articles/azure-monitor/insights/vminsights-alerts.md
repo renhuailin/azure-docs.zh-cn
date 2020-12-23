@@ -5,16 +5,19 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/23/2020
-ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/10/2020
+ms.openlocfilehash: f582f0dc7547a607351fcfc4ff9d39e8c5a077df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254799"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686170"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>如何从用于 VM 的 Azure Monitor 创建警报
 [Azure Monitor 中的警报在](../platform/alerts-overview.md) 监视数据中主动通知你感兴趣的数据和模式。 用于 VM 的 Azure Monitor 不包括预配置的警报规则，但你可以基于它收集的数据创建自己的警报规则。 本文提供了有关创建警报规则的指导，包括一组示例查询。
+
+> [!IMPORTANT]
+> 本文中所述的警报基于用于 VM 的 Azure Monitor 收集的数据中的日志查询。 这不同于 [VM 来宾健康 Azure Monitor](vminsights-health-overview.md) 创建的警报，这是目前公共预览版中的一项功能。 由于此功能接近公开上市，因此会合并警报指南。
 
 
 ## <a name="alert-rule-types"></a>预警规则类型
@@ -27,13 +30,13 @@ Azure Monitor 中有两种类型的日志警报：
 
 
 ## <a name="alert-rule-walkthrough"></a>警报规则演练
-本部分逐步讲解如何使用用于 VM 的 Azure Monitor 中的性能数据创建指标度量警报规则。 可以将此基本过程用于各种日志查询，以对不同的性能计数器发出警报。
+本部分逐步讲解如何使用用于 VM 的 Azure Monitor 中的性能数据创建指标度量警报规则。 可以将此基本过程与各种日志查询一起使用，以发出针对不同性能计数器的警报。
 
 首先，按照 [使用 Azure Monitor 创建、查看和管理日志警报](../platform/alerts-log.md)中的过程创建新的警报规则。 对于 **资源**，请选择 Azure Monitor vm 在订阅中使用的 Log Analytics 工作区。 由于日志警报规则的目标资源始终是 Log Analytics 工作区，因此日志查询必须包含针对特定虚拟机或虚拟机规模集的任何筛选器。 
 
-对于警报规则的 **条件** ，请使用 [下面部分](#sample-alert-queries) 中的查询之一作为 **搜索查询**。 查询必须返回一个名为 *AggregatedValue*的数值属性。 它应按计算机汇总数据，以便您可以为每个超过阈值的虚拟机创建一个单独的警报。
+对于警报规则的 **条件** ，请使用 [下面部分](#sample-alert-queries) 中的查询之一作为 **搜索查询**。 查询必须返回一个名为 *AggregatedValue* 的数值属性。 它应按计算机汇总数据，以便您可以为每个超过阈值的虚拟机创建一个单独的警报。
 
-在 **警报逻辑**中，选择 " **指标度量** "，然后提供 **阈值**。 在 " **基于触发警报**" 中，指定在创建警报之前必须超过阈值的次数。 例如，您可能不关心处理器是否超出阈值一次，然后返回正常，但如果它在多个连续度量的情况下继续超出阈值，则您也可以谨慎。
+在 **警报逻辑** 中，选择 " **指标度量** "，然后提供 **阈值**。 在 " **基于触发警报**" 中，指定在创建警报之前必须超过阈值的次数。 例如，您可能不关心处理器是否超出阈值一次，然后返回正常，但如果它在多个连续度量的情况下继续超出阈值，则您也可以谨慎。
 
 " **基于计算** 依据" 部分定义运行查询的频率以及查询的时间范围。 在下面所示的示例中，查询每15分钟运行一次，并评估过去15分钟内收集的性能值。
 

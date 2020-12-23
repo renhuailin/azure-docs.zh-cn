@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 6884b0c5d351d5cca160a1e00e409397f21311ef
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380700"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746142"
 ---
 # <a name="how-to-configure-your-saas-offer-listing-details"></a>如何配置 SaaS 产品/服务的详细信息
 
@@ -24,7 +24,7 @@ ms.locfileid: "89380700"
 
 ## <a name="marketplace-details"></a>市场详细信息
 
-在 " **产品/服务列表** " 页上的 " **Marketplace 详细信息**" 下，完成以下步骤。 若要详细了解这些必需的详细信息，请参阅 [产品/服务列表详细信息](plan-saas-offer.md#offer-listing-details)。
+在 " **产品/服务列表** " 页上的 " **Marketplace 详细信息**" 下，完成以下步骤。 若要详细了解这些必需的详细信息，请参阅 [产品/服务列表详细信息](plan-azure-application-offer.md#offer-listing-details)。
 
 1. " **名称** " 框中填入之前在 "  **新建产品/服务** " 对话框中输入的名称。 可随时更改名称。
 1. 在 " **搜索结果摘要** " 框中，输入最多50个字符的文本。 此摘要在 marketplace 列出搜索结果时使用。
@@ -33,7 +33,9 @@ ms.locfileid: "89380700"
 1.  (可选) 在 " **搜索关键字** " 框中，输入客户可用于在商业 marketplace 中查找产品/服务的最多三个搜索关键字。 不需要包含产品/服务 **名称** 和 **说明**：文本自动包含在搜索中。
 1. 在 " **隐私策略链接** " 框中，输入从 https) 开始 (组织的隐私策略的链接。 你需要负责确保你的应用符合隐私法律和法规，并提供有效的隐私策略。
 
-## <a name="add-links-to-supplemental-online-documentation-optional"></a>将链接添加到补充联机文档 (可选) 
+## <a name="add-supplemental-links-optional"></a>添加补充链接 (可选) 
+
+完成以下步骤以添加指向补充联机文档的链接。
 
 1. 若要添加有关应用或相关服务的可选补充联机文档，请在 " **有用链接**" 下选择 " **添加链接**"。
 1. 在出现的字段中，输入标题 (最多255个字符) ，并 (从 https) 开始到联机文档的链接。
@@ -47,7 +49,7 @@ ms.locfileid: "89380700"
 - **工程师联系人**  (必需的) –有关技术问题。 当你的产品/服务出现问题时，我们将使用此信息与你联系，其中包括认证问题。
 - **CSP 计划联系** (可选) –以获取支持和业务问题。 此信息仅向 CSP 合作伙伴显示。
 
-对于每个联系人，你将提供姓名、电话号码和电子邮件地址， (这些信息不会公开) 。 支持**联系人**需要**支持 URL** (这将公开) 显示。
+对于每个联系人，你将提供姓名、电话号码和电子邮件地址， (这些信息不会公开) 。 支持 **联系人** 需要 **支持 URL** (这将公开) 显示。
 
 1. 在 " **支持联系人** " 框中，输入 "名称"、"电子邮件地址"、"电话号码" 和 "支持" 页的 URL。
 1. 在 **工程联系人** 框中，输入名称、电子邮件地址和电话号码。
@@ -74,14 +76,14 @@ ms.locfileid: "89380700"
 所有三种徽标大小都在联机商店中的不同位置使用。
 
 - 在 Microsoft Azure 中创建新资源时，将显示 " **中** " 徽标。
-- **大**徽标显示在 Azure Marketplace 中的产品/服务列表页上，并 Microsoft AppSource。
-- **小**徽标出现在 Azure Marketplace 搜索结果中，并显示在 "Microsoft AppSource" 主页和 "搜索结果" 页上。
-   
+- **大** 徽标显示在 Azure Marketplace 中的产品/服务列表页上，并 Microsoft AppSource。
+- **小** 徽标出现在 Azure Marketplace 搜索结果中，并显示在 "Microsoft AppSource" 主页和 "搜索结果" 页上。
+
 ### <a name="add-screenshots"></a>添加屏幕截图
 
 您必须至少添加一个，最多添加5个屏幕截图来演示您的产品/服务。 所有图像的大小必须为 1280 x 720 像素。PNG 格式。
 
-1. 在 **屏幕截图**下，拖放。PNG 文件放在 **屏幕快照** 框上。
+1. 在 **屏幕截图** 下，拖放。PNG 文件放在 **屏幕快照** 框上。
 2. 单击 " **添加图像标题**" 旁边的 "编辑" 图标。
 3. 在出现的对话框中，输入一个标题。
 4. 重复步骤1到3以添加其他屏幕快照。
@@ -103,4 +105,4 @@ ms.locfileid: "89380700"
 ## <a name="next-steps"></a>后续步骤
 
 - 如果你要通过 Microsoft 销售产品/服务，请参阅 [如何为 SaaS 产品/服务添加预览版](create-new-saas-offer-preview.md)。 
-- 否则，请参阅 [如何推销 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
+- 否则，请参阅 [如何出售 SaaS 产品/服务](create-new-saas-offer-marketing.md)。

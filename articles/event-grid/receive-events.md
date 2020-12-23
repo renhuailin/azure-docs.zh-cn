@@ -2,14 +2,14 @@
 title: 将来自 Azure 事件网格的事件接收到 HTTP 终结点中
 description: 描述如何验证 HTTP 终结点，以及随后如何接收和反序列化来自 Azure 事件网格的事件
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326467"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023699"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>将事件接收到 HTTP 终结点
 
@@ -140,9 +140,11 @@ module.exports = function (context, req) {
 }]
 ```
 
-单击“运行”时，输出应为“200 确定”且正文中显示 `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}`：
+单击“运行”时，输出应为“200 确定”且正文中显示 `{"validationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}`：
 
-![验证响应](./media/receive-events/validation-response.png)
+:::image type="content" source="./media/receive-events/validation-request.png" alt-text="验证请求":::
+
+:::image type="content" source="./media/receive-events/validation-output.png" alt-text="验证输出":::
 
 ## <a name="handle-blob-storage-events"></a>处理 Blob 存储事件
 
@@ -394,6 +396,8 @@ module.exports = function (context, req) {
 ```
 
 还可实时测试此功能，方式是[在门户中通过 CURL 发送自定义事件](./custom-event-quickstart-portal.md)，或者使用任何可通过 POST 发送到终结点（如 [Postman](https://www.getpostman.com/)）的服务或应用程序[发布到自定义主题](./post-to-custom-topic.md)。 使用终结点集作为函数 URL，创建自定义主题和事件订阅。
+
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

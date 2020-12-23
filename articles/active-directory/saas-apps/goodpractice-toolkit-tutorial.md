@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 57598ea22874cfba772f6cf0e6b2ba779ef7c482
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550632"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>教程：Azure Active Directory 与 Mind Tools Toolkit 的集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "88550632"
 * 允许用户使用其 Azure AD 帐户自动登录到 Mind Tools Toolkit（单一登录）。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "88550632"
 
 * Mind Tools Toolkit 支持 SP 发起的 SSO。
 * Mind Tools Toolkit 支持实时用户预配。
-* 配置 Mind Tools Toolkit 后，可以强制实施会话控制。 此控制可实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Mind Tools Toolkit 后，可以强制实施会话控制。 此控制可实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-mind-tools-toolkit-from-the-gallery"></a>从库中添加 Mind Tools Toolkit
 
@@ -111,7 +111,7 @@ ms.locfileid: "88550632"
 1. 在 Azure 门户的最左侧，选择“Azure Active Directory” > “用户” > “所有用户”。  
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“姓名”字段中输入 **B.Simon**。  
+   1. 在“姓名”字段中输入 **B.Simon** 。  
    1. 在“用户名”字段中，输入“B.Simon@companydomain.extension”。  例如，B.Simon@contoso.com 。
    1. 选中“显示密码”复选框，并记下“密码”框中显示的值。 
    1. 选择“创建”。
@@ -148,18 +148,18 @@ Mind Tools Toolkit 支持默认启用的实时预配。 在本部分中无需采
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“Mind Tools Toolkit”磁贴时，你将自动登录到设置了 SSO 的 Mind Tools Toolkit。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在“我的应用”门户中选择“Mind Tools Toolkit”磁贴时，你将自动登录到设置了 SSO 的 Mind Tools Toolkit。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Mind Tools Toolkit](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 Mind Tools Toolkit](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用高级可见性和控制保护 Mind Tools Toolkit](/cloud-app-security/proxy-intro-aad)

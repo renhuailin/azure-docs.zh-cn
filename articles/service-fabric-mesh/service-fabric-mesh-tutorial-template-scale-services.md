@@ -1,17 +1,17 @@
 ---
 title: 教程 - 缩放 Azure Service Fabric 网格中运行的应用
 description: 本教程介绍如何缩放在 Service Fabric 网格中运行的应用程序中的服务。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: df28083a0522178b7327d9f6d24029d303e417a1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351825"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747872"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>教程：缩放在 Service Fabric 网格中运行的应用程序
 

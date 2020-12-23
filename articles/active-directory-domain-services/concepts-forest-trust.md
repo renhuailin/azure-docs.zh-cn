@@ -2,20 +2,20 @@
 title: 信任如何作用于 Azure AD 域服务 | Microsoft Docs
 description: 详细了解林信任如何作用于 Azure AD 域服务
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: justinha
+ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258773"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620199"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>信任关系如何作用于 Azure Active Directory 域服务中的资源林
 
@@ -104,7 +104,7 @@ AD DS 林中的所有域信任都是双向可传递信任。 创建新的子域�
     > [!IMPORTANT]
     > Azure AD 域服务资源林必须使用此 DNS 配置。 承载除资源林 DNS 命名空间之外的 DNS 命名空间不是 Azure AD 域服务的功能。 条件转发器是正确的配置。
 
-* 如果没有共享根 DNS 服务器，并且每个林 DNS 命名空间中的根 DNS 服务器使用 DNS 辅助区域，则会在每个 DNS 命名空间中配置 DNS 辅助区域以路由其他命名空间中的名称查询。
+* 如果没有共享的根 DNS 服务器，并且每个林 DNS 命名空间中的根 DNS 服务器使用 DNS 辅助区域，让每个 DNS 命名空间路由对其他命名空间中名称的查询。
 
 若要创建林信任，你必须是（林根域中的）“域管理员”组或 Active Directory 中的“企业管理员”组的成员。 为每个信任分配一个密码，这两个林中的管理员都必须知道该密码。 两个林中的“企业管理员”成员可以同时在这两个林中创建信任，在这种情况下，会自动为这两个林生成并写入随机加密的密码。
 

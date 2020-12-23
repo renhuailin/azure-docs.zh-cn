@@ -1,19 +1,19 @@
 ---
 title: 管理防火墙规则-Azure CLI-Azure Database for MariaDB
 description: 本文介绍如何使用 Azure CLI 命令行创建和管理 Azure Database for MariaDB 防火墙规则。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3edf6248d42878bb79115fad925ef38e3353c979
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ef04e2b4c820c14ea7df6c35ecb0189ef31ef7dc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502265"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540893"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MariaDB 防火墙规则
 可以使用服务器级防火墙规则，管理从特定的 IP 地址或某个范围的 IP 地址对 Azure Database for MariaDB 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MariaDB 的概述，请参阅 [Azure Database for MariaDB 服务器防火墙规则](./concepts-firewall-rules.md)。
@@ -21,18 +21,18 @@ ms.locfileid: "87502265"
 也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-cli.md)。
 
 ## <a name="prerequisites"></a>必备条件
-* [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* [安装 Azure CLI](/cli/azure/install-azure-cli)。
 * [Azure Database for MariaDB 服务器和数据库](quickstart-create-mariadb-server-database-using-azure-cli.md)。
 
 ## <a name="firewall-rule-commands"></a>防火墙规则命令：
 在 Azure CLI 中使用 **az mariadb server firewall-rule** 命令创建、删除、列出、显示和更新防火墙规则。
 
 命令：
-- **create**：创建 Azure MariaDB 服务器防火墙规则。
-- **delete**：删除 Azure MariaDB 服务器防火墙规则。
-- **list**：列出 Azure MariaDB 服务器防火墙规则。
-- **show**：显示 Azure MariaDB 服务器防火墙规则的详细信息。
-- **update**：更新 Azure MariaDB 服务器防火墙规则。
+- **create** ：创建 Azure MariaDB 服务器防火墙规则。
+- **delete** ：删除 Azure MariaDB 服务器防火墙规则。
+- **list** ：列出 Azure MariaDB 服务器防火墙规则。
+- **show** ：显示 Azure MariaDB 服务器防火墙规则的详细信息。
+- **update** ：更新 Azure MariaDB 服务器防火墙规则。
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>登录到 Azure，并列出你的 Azure Database for MariaDB 服务器
 使用 az login  命令通过 Azure 帐户安全连接到 Azure CLI。

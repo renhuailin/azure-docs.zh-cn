@@ -1,6 +1,6 @@
 ---
 title: 使用 DistCp 将数据复制到 Azure Data Lake Storage Gen2 | Microsoft Docs
-description: 使用 Apache Hadoop 分布式复制工具 (DistCp) ，将数据复制到 Azure Data Lake Storage Gen2。
+description: 使用 Apache Hadoop 分布式复制工具 (DistCp) 在 Azure Data Lake Storage Gen2 之间复制数据。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 734ad2d45dbb27894e5da4fbeb11c0e8b60df8bd
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e69a97a86a357fb36dde572f292b5cac7963d14a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912478"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
@@ -27,7 +27,7 @@ DistCp 提供了各种命令行参数，强烈建议你阅读本文以优化对 
 * 未启用 Data Lake Storage Gen2 功能（分层命名空间）的现有 Azure 存储帐户。
 * 启用 Data Lake Storage Gen2 功能（分层命名空间）的 Azure 存储帐户。 有关如何创建 Azure 存储帐户的说明，请参阅[创建 Azure 存储帐户](../common/storage-account-create.md)
 * 在已启用分层命名空间的存储帐户中创建的容器。
-* 可以访问启用了分层命名空间功能的存储帐户的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 请确保对该群集启用远程桌面。
+* 可以访问启用了分层命名空间功能的存储帐户的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 请确保对该群集启用远程桌面。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>从 HDInsight Linux 群集使用 DistCp
 
@@ -85,7 +85,7 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 * **步骤 2：计算映射器数** - **m** 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
 
-    m = (的节点数 * 每个节点的 YARN 内存) /YARN 容器大小
+    m = (number of nodes * YARN memory for each node) / YARN container size
 
 **示例**
 
@@ -93,11 +93,11 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 * **总 YARN 内存**：从 Ambari 门户确定一个 D14 节点的 YARN 内存为 96 GB。 因此，具有 4 个节点的群集的总 YARN 内存是： 
 
-    YARN memory = 4 * 96 GB = 384GB
+    YARN memory = 4 * 96GB = 384GB
 
 * **映射器数**：从 Ambari 门户确定一个 D14 群集节点的 YARN 容器大小为 3,072 MB。 因此，映射器数为：
 
-    m = (4 节点 * 96 GB) /3072MB = 128 映射器
+    m = (4 nodes * 96GB) / 3072MB = 128 mappers
 
 如果其他应用程序正在使用内存，则可以选择仅将群集的部分 YARN 内存用于 DistCp。
 

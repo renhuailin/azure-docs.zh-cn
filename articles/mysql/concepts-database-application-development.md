@@ -1,17 +1,17 @@
 ---
 title: 应用程序开发-Azure Database for MySQL
 description: 介绍开发人员为连接 Azure Database for MySQL 而编写应用程序代码时应遵循的设计注意事项
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 02ce6b00b6555f849d162b9f3b381c0ab358d712
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20c6841bb596c7f4a32ef689423515a8da59a945
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532835"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541549"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Azure Database for MySQL 应用程序开发概述 
 本文介绍开发人员为连接 Azure Database for MySQL 而编写应用程序代码时应遵循的设计注意事项。 
@@ -36,7 +36,7 @@ Azure Database for MySQL 提供用于在 MySQL Database 中限制访问、保护
 ## <a name="authentication"></a>身份验证
 Azure Database for MySQL 支持用户和登录名这两种服务器身份验证方式。
 
-## <a name="resiliency"></a>复原
+## <a name="resiliency"></a>复原能力
 如果在连接到 MySQL Database 时发生暂时性错误，代码应重试调用。 建议让重试逻辑使用退让逻辑，这样就不会因为多个客户端同时重试而对 SQL 数据库造成混乱。
 
 - 代码示例：有关演示重试逻辑的代码示例，请在以下位置参阅所选语言的示例：[用于连接 Azure Database for MySQL 的连接库](concepts-connection-libraries.md)

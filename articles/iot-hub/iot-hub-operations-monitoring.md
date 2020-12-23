@@ -1,27 +1,27 @@
 ---
 title: Azure IoT 中心操作监视（已弃用）| Microsoft Docs
 description: 如何使用 Azure IoT 中心操作监视功能实时监视 IoT 中心上的操作状态。
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
+ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 9d9824be536ca657d9213a47898ad19b0c39d8b4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022014"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408118"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中心操作监视（已弃用）
 
 IoT 中心操作监视可让你实时监视 IoT 中心上的操作状态。 IoT 中心可以跟踪多个操作类别的事件。 可以选择将一个或多个类别的事件发送到 IoT 中心的终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
 
 >[!NOTE]
->IoT 中心操作监视功能已弃用，已于 2019 年 3 月 10 日从 IoT 中心中删除。 有关如何监视 IoT 中心的操作和运行状况，请参阅[监视 Azure IoT 中心运行状况并快速诊断问题](iot-hub-monitor-resource-health.md)。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
+>IoT 中心操作监视功能已弃用，已于 2019 年 3 月 10 日从 IoT 中心中删除。 若要监视 IoT 中心的操作和运行状况，请参阅 [监视 Iot 中心](monitor-iot-hub.md)。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
 
 IoT 中心监视 6 种类别的事件：
 
@@ -39,11 +39,11 @@ IoT 中心监视 6 种类别的事件：
 
 1. 创建 IoT 中心。 有关如何创建 IoT 中心的说明，请参阅[入门](quickstart-send-telemetry-dotnet.md)指南。
 
-2. 打开 IoT 中心的边栏选项卡。 在此处单击“**操作监视**”。
+2. 打开 IoT 中心的边栏选项卡。 在此处单击“ **操作监视** ”。
 
     ![访问门户中的操作监视配置](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. 选择要监视的监视类别，并单击“保存”。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
+3. 选择要监视的监视类别，并单击“保存”。 可以从“ **监视设置** ”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
 
     ![在 IoT 中心配置操作监视](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -191,7 +191,7 @@ IoT 中心监视 6 种类别的事件：
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>连接到监视终结点
 
-IoT 中心上的监视终结点是与事件中心兼容的终结点。 可使用任何适用于事件中心的机制从此终结点读取监视消息。 以下示例创建的基本读取器不适用于高吞吐量部署。 若要深入了解如何处理来自事件中心的消息，请参阅[事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)教程。
+IoT 中心上的监视终结点是与事件中心兼容的终结点。 可使用任何适用于事件中心的机制从此终结点读取监视消息。 以下示例创建的基本读取器不适用于高吞吐量部署。 若要深入了解如何处理来自事件中心的消息，请参阅[事件中心入门](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)教程。
 
 若要连接到监视终结点，需要一个连接字符串和终结点名称。 以下步骤介绍如何在门户中查找必需的值：
 
@@ -267,8 +267,8 @@ class Program
 
 ## <a name="next-steps"></a>后续步骤
 
-若要进一步探索 IoT 中心的功能，请参阅：
+若要进一步了解如何使用 Azure Monitor 来监视 IoT 中心，请参阅：
 
-* [IoT 中心开发人员指南](iot-hub-devguide.md)
+* [监视 IoT 中心](monitor-iot-hub.md)
 
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [从 IoT 中心操作监视迁移到 Azure Monitor](iot-hub-migrate-to-diagnostics-settings.md)

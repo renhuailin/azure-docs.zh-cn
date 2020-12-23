@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 01/29/2020
+ms.date: 10/02/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: da84fee4e974f02f29dc9006fe740c415632ae53
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029012"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545860"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 代码示例
 
@@ -37,7 +37,8 @@ ms.locfileid: "90029012"
 | 示例 | 说明 |
 |--------| ----------- |
 | [dotnet-webapp-and-webapi](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) | 调用了一个 .NET Web API 的 .NET Web 应用程序的组合示例，两者都使用 Azure AD B2C 提供保护。 |
-| [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | 一个 ASP.NET Core Web 应用程序，它可以使用 Azure AD B2C 完成用户登录，使用 MSAL.NET 获取访问令牌，并调用一个 API。 |
+| [dotnetcore-webapp-openidconnect](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-5-B2C) | 使用 OpenID Connect 在 Azure AD B2C 中登录用户的 ASP.NET Core Web 应用程序。 |
+| [dotnetcore-webapp-msal-api](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/4-WebApp-your-API/4-2-B2C) | 一个 ASP.NET Core Web 应用程序，它可以使用 Azure AD B2C 完成用户登录，使用 MSAL.NET 获取访问令牌，并调用一个 API。 |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | 一个 Node.js 应用，它提供了一种便捷的方法来使用 OpenID Connect 设置通过 Express 开发的 Web 应用程序。 |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | 一个用于 Azure AD B2C 的小 node.js Web API，它展示了如何使用 passport.js 保护 Web API 并接受 B2C 访问令牌。 |
 | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | 演示如何将 Microsoft 标识平台的 B2C 与 Python Web 应用程序集成。  |
@@ -46,10 +47,46 @@ ms.locfileid: "90029012"
 
 | 示例 | 说明 |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 调用了一个 Web API 的单页应用程序 (SPA)。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 |
+| [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | 调用了一个 Web API 的单页应用程序 (SPA)。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 此示例通过 PKCE 使用授权代码流。 |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 调用了一个 Web API 的单页应用程序 (SPA)。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 此示例使用隐式流。|
 
 ## <a name="saml-test-application"></a>SAML 测试应用程序
 
 | 示例 | 说明 |
 |--------| ----------- |
 | [saml-sp-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | SAML 测试应用程序，用于测试已配置为充当 SAML 标识提供者的 Azure AD B2C。 |
+
+## <a name="api-connectors"></a>API 连接器
+
+下表提供了一些代码示例的链接，这些示例使用 [API 连接器](api-connectors-overview.md)在用户流中利用 Web API。
+
+### <a name="azure-function-quickstarts"></a>Azure Function 快速入门
+
+| 示例                                                                                                                          | 说明                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | 此 .NET Core Azure Function 示例演示如何将登录限制为特定电子邮件域并验证用户提供的信息。 |
+| [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | 此 Node.js Azure Function 示例演示如何将登录限制为特定电子邮件域并验证用户提供的信息。  |
+| [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | 此 Python Azure Function 示例演示如何将登录限制为特定电子邮件域并验证用户提供的信息。    |
+
+
+### <a name="automated-fraud-protection-services--captcha"></a>自动防欺诈服务和 CAPTCHA
+| 示例                                                                                                            | 说明                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Arkose Labs 欺诈和滥用防护](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | 此示例演示如何使用 Arkose Labs 欺诈和滥用防护服务保护用户登录。 |
+| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | 此示例演示如何使用 reCAPTCHA 质询保护用户登录，以防自动滥用。 |
+
+
+### <a name="identity-verification"></a>身份验证
+
+| 示例                                                                                                            | 说明                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | 此示例演示如何使用 API 连接器与 IDology 集成，以在注册流中验证用户标识。 |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | 此示例演示如何使用 API 连接器与 Experian 集成，以在注册流中验证用户标识。 |
+
+
+### <a name="other"></a>其他
+
+| 示例                                                                                                            | 说明                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [邀请码](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-invitation-code) | 此示例演示如何使用邀请码限制特定访问群体注册。|
+| [API 连接器社区示例](https://github.com/azure-ad-b2c/api-connector-samples) | 此存储库包含由 API 连接器启用的社区维护的方案示例。|

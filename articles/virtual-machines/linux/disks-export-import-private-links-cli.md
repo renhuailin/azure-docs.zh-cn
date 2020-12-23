@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 5c846bc126d6a6a8b0a8ed4a599c6d43a4d83616
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 9a005712eda1e735608e3ddf93be2bba98fbdcd3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421214"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630018"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问
 
-目前以预览版形式提供对具有托管磁盘的专用链接的支持。 可以使用[专用终结点](../../private-link/private-endpoint-overview.md)来限制托管磁盘的导出和导入，并通过[专用链接](../../private-link/private-link-overview.md)从 Azure 虚拟网络上的客户端安全地访问数据。 专用终结点将虚拟网络地址空间中的 IP 地址用于托管磁盘服务。 虚拟网络上客户端与托管磁盘之间的网络流量仅穿过虚拟网络以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。
+可以使用[专用终结点](../../private-link/private-endpoint-overview.md)来限制托管磁盘的导出和导入，并通过[专用链接](../../private-link/private-link-overview.md)从 Azure 虚拟网络上的客户端安全地访问数据。 专用终结点将虚拟网络地址空间中的 IP 地址用于托管磁盘服务。 虚拟网络上客户端与托管磁盘之间的网络流量仅穿过虚拟网络以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。
 
 若要使用专用链接导出/导入托管磁盘，首先要创建磁盘访问资源，并通过创建专用终结点将其链接到同一订阅中的虚拟网络。 然后，将磁盘或快照与磁盘访问的实例相关联。 最后，将磁盘或快照的 NetworkAccessPolicy 属性设置为 `AllowPrivate`。 这将限制对虚拟网络的访问。 
 
@@ -27,9 +27,6 @@ ms.locfileid: "89421214"
 
 [!INCLUDE [virtual-machines-disks-private-links-limitations](../../../includes/virtual-machines-disks-private-links-limitations.md)]
 
-## <a name="regional-availability"></a>区域可用性
-
-[!INCLUDE [virtual-machines-disks-private-links-regions](../../../includes/virtual-machines-disks-private-links-regions.md)]
 
 ## <a name="log-in-into-your-subscription-and-set-your-variables"></a>登录到订阅并设置变量
 

@@ -1,17 +1,15 @@
 ---
 title: 使用 ASP.NET Core 与服务通信
 description: 了解如何在无状态和有状态 Azure Service Fabric Reliable Services 应用程序中使用 ASP.NET Core。
-author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022184"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576785"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -33,7 +31,7 @@ ASP.NET Core 和 Service Fabric 应用都可以在 .NET Core 或完整的 .NET F
 
 ## <a name="service-fabric-service-hosting"></a>Service Fabric 服务托管
 
-在 Service Fabric 中，服务的一个或多个实例和/或副本在*服务主机进程*（运行服务代码的可执行文件）中运行。 服务作者拥有服务主机进程，Service Fabric 为服务作者激活并监视此进程。
+在 Service Fabric 中，服务的一个或多个实例和/或副本在 *服务主机进程*（运行服务代码的可执行文件）中运行。 服务作者拥有服务主机进程，Service Fabric 为服务作者激活并监视此进程。
 
 传统的 ASP.NET（最高为 MVC 5）通过 System.Web.dll 与 IIS 紧密耦合。 ASP.NET Core 在 Web 服务器和 Web 应用程序之间提供分隔。 这种隔离使 Web 应用程序能够在不同的 Web 服务器之间移植。 此外，还允许 Web 服务器自我托管  。 这意味着，你可以在自己的进程（而不是由 IIS 等专用 Web 服务器软件拥有的进程）中启动 Web 服务器。
 
@@ -136,7 +134,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 对于使用 Windows HTTP Server API 的 Web 服务器（包括 HTTP.sys），需要配置 `Endpoint`。 使用 Windows HTTP Server API 的 Web 服务器首先必须保留带有 HTTP.sys 的 URL（通常可使用 [netsh](/windows/win32/http/netsh-commands-for-http) 工具实现）。 
 
-此操作需要提升的权限，默认情况下服务不具备此权限。 用于 ServiceManifest.xml 中 `Endpoint` 配置的 `Protocol` 属性的“http”或“https”选项，可专门用于指示 Service Fabric 运行时代表你注册带有 HTTP.sys 的 URL。 它使用[*强通配符*](/windows/win32/http/urlprefix-strings) URL 前缀来提供此指示。
+此操作需要提升的权限，默认情况下服务不具备此权限。 用于 ServiceManifest.xml 中 `Endpoint` 配置的 `Protocol` 属性的“http”或“https”选项，可专门用于指示 Service Fabric 运行时代表你注册带有 HTTP.sys 的 URL。 它使用 [*强通配符*](/windows/win32/http/urlprefix-strings) URL 前缀来提供此指示。
 
 例如，若要保留服务的 `http://+:80`，请在 ServiceManifest.xml 中使用以下配置：
 
@@ -459,9 +457,9 @@ Service Fabric 配置提供程序还支持配置更新。 可以使用 ASP.NET C
  - 仅限内部的 ASP.NET Core 无状态服务
  - 仅限内部的 ASP.NET Core 有状态服务
 
-**外部公开的服务**公开可从群集外部调用的终结点（通常通过负载均衡器）。
+**外部公开的服务** 公开可从群集外部调用的终结点（通常通过负载均衡器）。
 
-**仅限内部**的服务的终结点只能从群集内部调用。
+**仅限内部** 的服务的终结点只能从群集内部调用。
 
 > [!NOTE]
 > 通常不应将有状态服务终结点公开到 Internet。 位于无法识别 Service Fabric 服务解析的负载均衡器（如 Azure 负载均衡器）后的群集将无法公开有状态服务。 这是因为，负载均衡器无法找到流量并将其路由到相应的有状态服务副本。 

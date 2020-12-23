@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8d9740e05bf4236f1b2b722c9a91b3644533fce
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707894"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365504"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>适用于 Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -49,12 +49,12 @@ ms.locfileid: "90707894"
     Connect-AzureAD -Credential $AzureAdCred
     ```
 
-1. 转到**Azure Active Directory**  >  **Properties**  >  **Directory id**查找 Azure AD 组织的租户 ID。 在“cmdlet”部分，每当需要提供 resourceId 时，都需要使用此 ID。
+1. 转到“Azure Active Directory” > “属性” > “目录 ID”，找到你的 Azure AD 组织的租户 ID。   在“cmdlet”部分，每当需要提供 resourceId 时，都需要使用此 ID。
 
     ![在 Azure AD 组织的属性中查找组织 ID](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 以下部分提供了简单的示例来帮助你开始操作。 可以在中找到有关以下 cmdlet 的更详细文档 [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) 。 但是，必须在 providerID 参数中将 "azureResources" 替换为 "aadRoles"。 还需要记得使用 Azure AD 组织的租户 ID 作为 resourceId 参数。
+> 以下部分提供了简单的示例来帮助你开始操作。 可以在 [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) 中找到有关以下 cmdlet 的更详细文档。 但是，必须将 providerID 参数中的“azureResources”替换为“aadRoles”。 此外，还需要记得使用 Azure AD 组织的租户 ID 作为 resourceId 参数。
 
 ## <a name="retrieving-role-definitions"></a>检索角色定义
 
@@ -162,4 +162,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 - [分配 Azure AD 自定义角色](azure-ad-custom-roles-assign.md)
 - [删除或更新 Azure AD 自定义角色分配](azure-ad-custom-roles-update-remove.md)
 - [配置 Azure AD 自定义角色分配](azure-ad-custom-roles-configure.md)
-- [Azure AD 中的角色定义](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 中的角色定义](../roles/permissions-reference.md)

@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e2d43290946969643b10d2ecad2f076df208a5d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea7ea08fc07a895bc038b27701d7038a5f76c26f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88925384"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187493"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](~/articles/cognitive-services/speech-service/get-started.md)
+> * [创建 Azure 语音资源](../../../../overview.md#try-the-speech-service-for-free)
 > * [设置开发环境并创建空项目](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * 创建连接到 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
+> * 创建连接到 [Direct Line 语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
 > * 请确保你有权访问麦克风，以便进行音频捕获
 > 
   > [!NOTE]
@@ -277,7 +277,7 @@ ms.locfileid: "88925384"
    > 请参阅[语音助手支持的区域列表](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)，确保你的资源部署在其中一个区域中。
 
    > [!NOTE]
-   > 有关配置机器人的信息，请参阅 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文档。
+   > 有关配置机器人的信息，请参阅 [Direct Line 语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文档。
 
 1. 将字符串 `YourSpeechSubscriptionKey` 和 `YourServiceRegion` 分别替换为自己的语音订阅和[区域](~/articles/cognitive-services/speech-service/regions.md)值。
 

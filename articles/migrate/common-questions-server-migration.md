@@ -1,14 +1,17 @@
 ---
 title: 有关 Azure Migrate 服务器迁移的常见问题
 description: 获取有关使用 Azure Migrate 服务器迁移迁移计算机的常见问题的解答。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1f32e9788b2255be373a4db8c159ef2a6b6ccf04
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275534"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753835"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 迁移：常见问题
 
@@ -34,8 +37,8 @@ Azure Migrate：服务器迁移工具将基于 UEFI 的计算机迁移到 Azure�
 | SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | Ubuntu Server 16.04、18.04、19.04、19.10                | Y                                                                                                                                         | Y                              | Y                                                          |
-| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、1。x        | Y<br>                 _RHEL 8.x 需要 [手动准备](https://go.microsoft.com/fwlink/?linkid=2143939)_   | Y                              | Y                                                          |
-| O o 8.1、8.0、7.7、7.6、7.5、7.4、1。x               | Y<br>_% O o 8. x 需要 [手动准备](https://go.microsoft.com/fwlink/?linkid=2143939)_ | Y                              | Y                                                          |
+| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、1。x        | Y<br>                 _RHEL 8.x 需要 [手动准备](./prepare-for-migration.md#linux-machines)_   | Y                              | Y                                                          |
+| O o 8.1、8.0、7.7、7.6、7.5、7.4、1。x               | Y<br>_% O o 8. x 需要 [手动准备](./prepare-for-migration.md#linux-machines)_ | Y                              | Y                                                          |
 | Oracle Linux 7.7、7.7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>能否使用由 Azure Migrate 创建的恢复服务保管库用于灾难恢复方案？
@@ -43,11 +46,11 @@ Azure Migrate：服务器迁移工具将基于 UEFI 的计算机迁移到 Azure�
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>应将复制设备安装在何处才能进行基于代理的迁移？
 
-应将复制设备安装在专用计算机上。 复制设备不应安装在要复制的源计算机上，也不应安装在以前可能已安装的 Azure Migrate 发现和评估设备上。 请按照 [教程](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) 了解更多详细信息。
+应将复制设备安装在专用计算机上。 复制设备不应安装在要复制的源计算机上，也不应安装在以前可能已安装的 Azure Migrate 发现和评估设备上。 请按照 [教程](./tutorial-migrate-physical-virtual-machines.md) 了解更多详细信息。
 
 ## <a name="how-can-i-migrate-my-aws-ec2-instances-to-azure"></a>如何将 AWS EC2 实例迁移到 Azure？
 
-查看 [本文](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines) ，了解如何将 AWS EC2 实例进行评估并将其迁移到 Azure。
+查看 [本文](./tutorial-migrate-aws-virtual-machines.md) ，了解如何将 AWS EC2 实例进行评估并将其迁移到 Azure。
 
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>能否迁移运行 Amazon Linux 操作系统的 AWS Vm？
 
@@ -79,18 +82,18 @@ Azure Migrate：服务器迁移工具提供了两种方法来执行源服务器/
 在决定迁移选项时，请注意以下事项。
 
 **无代理迁移** 不需要在要迁移的源 vm/服务器上部署任何软件 (代理) 。 无代理选项通过集成虚拟化提供程序提供的功能来协调复制。
-无代理复制选项适用于 [VMware vm](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) 和 [hyper-v vm](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)。
+无代理复制选项适用于 [VMware vm](./tutorial-migrate-vmware.md) 和 [hyper-v vm](./tutorial-migrate-hyper-v.md)。
 
 **基于代理的迁移** 需要在要迁移的源 vm/计算机上安装 Azure Migrate 软件 (代理) 。 基于代理的选项不依赖于用于复制功能的虚拟化平台，因此可用于运行 x86/x64 体系结构的任何服务器和基于代理的复制方法所支持的操作系统版本。
 
-基于代理的迁移选项可用于 [VMware vm](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent)、 [hyper-v vm](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)、 [物理服务器](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)、 [运行在 AWS](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines)上的 vm、在 GCP 上运行的 vm，或在其他虚拟化提供程序上运行的 vm。 基于代理的迁移将计算机作为物理服务器对待，以便进行迁移。
+基于代理的迁移选项可用于 [VMware vm](./tutorial-migrate-vmware-agent.md)、 [hyper-v vm](./tutorial-migrate-physical-virtual-machines.md)、 [物理服务器](./tutorial-migrate-physical-virtual-machines.md)、 [运行在 AWS](./tutorial-migrate-aws-virtual-machines.md)上的 vm、在 GCP 上运行的 vm，或在其他虚拟化提供程序上运行的 vm。 基于代理的迁移将计算机作为物理服务器对待，以便进行迁移。
 
 尽管无代理迁移对 VMWare 和 Hyper-v) 支持 (方案的基于代理的复制选项提供了额外的便利性和简单性，但你可能需要考虑在以下用例中使用基于代理的方案：
 
 - IOPS 限制环境：无代理复制使用快照并使用存储 IOPS/带宽。 如果对环境中的存储/IOPS 有限制，则建议采用基于代理的迁移方法。
 - 如果没有 vCenter Server，则可以将 VMware Vm 视为物理服务器，并使用基于代理的迁移工作流。
 
-若要了解详细信息，请参阅此 [文](https://docs.microsoft.com/azure/migrate/server-migrate-overview) ，比较 VMware 迁移的迁移选项。
+若要了解详细信息，请参阅此 [文](./server-migrate-overview.md) ，比较 VMware 迁移的迁移选项。
 
 ## <a name="how-does-agentless-migration-work"></a>无代理迁移是如何工作的？
 
@@ -101,13 +104,13 @@ Azure Migrate：服务器迁移为 VMware 虚拟机和运行 Windows 或 Linux �
 为虚拟机配置复制时，它首先会经历初始复制阶段。 在初始复制期间，会创建一个 VM 快照，并将快照磁盘中的数据的完整副本复制到订阅中的托管磁盘。 VM 的初始复制完成后，复制过程会转换为增量复制 (增量复制) 阶段。 在增量复制阶段，会定期复制自上次完成的复制周期以来发生的数据更改，并将其应用于副本托管磁盘，从而使复制与 VM 上发生的更改保持同步。 对于 VMware 虚拟机，VMware 更改了阻止跟踪技术，用于跟踪复制循环之间的更改。 在复制周期开始时，将使用 VM 快照并更改块跟踪，以获取当前快照与上次成功复制快照之间的更改。 这样，就只需要复制自上次完成的复制周期以来发生更改的数据，以便保持同步 VM 的复制。在每个复制周期结束时，将释放快照，并对虚拟机执行快照合并。 同样，如果是 Hyper-v 虚拟机，则使用 Hyper-v 副本更改跟踪引擎跟踪连续复制循环之间的更改。
 在复制虚拟机上执行迁移操作时，可以选择关闭本地虚拟机并执行一个最终增量复制，以确保零数据丢失。 执行 "迁移" 选项时，会使用与虚拟机对应的副本托管磁盘在 Azure 中创建虚拟机。
 
-若要开始，请参阅 [VMware 无代理迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) 和 [hyper-v 无代理迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v) 教程。
+若要开始，请参阅 [VMware 无代理迁移](./tutorial-migrate-vmware.md) 和 [hyper-v 无代理迁移](./tutorial-migrate-hyper-v.md) 教程。
 
 ## <a name="how-does-agent-based-migration-work"></a>基于代理的迁移如何工作？
 
 除了适用于 VMware 虚拟机和 Hyper-v 虚拟机的无代理迁移选项，服务器迁移工具还提供基于代理的迁移选项，以迁移物理服务器上运行的 Windows 和 Linux 服务器，或在 VMware、Hyper-v、AWS、Google Cloud Platform 等上作为 x86/x64 虚拟机运行。
 
-基于代理的迁移方法使用所迁移的服务器上安装的代理软件将服务器数据复制到 Azure。 复制过程使用卸载体系结构，在该体系结构中，代理将复制数据中继到称为复制设备或配置服务器 (的专用复制服务器或) 的横向扩展进程服务器。 [了解](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture) 有关基于代理的迁移选项如何工作的详细信息。 
+基于代理的迁移方法使用所迁移的服务器上安装的代理软件将服务器数据复制到 Azure。 复制过程使用卸载体系结构，在该体系结构中，代理将复制数据中继到称为复制设备或配置服务器 (的专用复制服务器或) 的横向扩展进程服务器。 [了解](./agent-based-migration-architecture.md) 有关基于代理的迁移选项如何工作的详细信息。 
 
 注意：复制设备不同于 Azure Migrate 发现设备，必须安装在单独的/专用计算机上。
 
@@ -127,7 +130,7 @@ VM 的复制开始时，将发生初始复制循环，其中复制了磁盘的�
 
 ### <a name="agent-based-vmware-vm-migration"></a>基于代理的 VMware VM 迁移
 
-对于基于代理的复制方法，部署规划器可以帮助分析数据改动的环境，并帮助预测所需的带宽要求。 若要了解详细信息，请参阅此 [文](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture#plan-vmware-deployment)。 
+对于基于代理的复制方法，部署规划器可以帮助分析数据改动的环境，并帮助预测所需的带宽要求。 若要了解详细信息，请参阅此 [文](./agent-based-migration-architecture.md#plan-vmware-deployment)。 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>使用 Azure Migrate 设备进行无代理 VMware 复制的如何实现限制复制？  
 
@@ -135,7 +138,7 @@ VM 的复制开始时，将发生初始复制循环，其中复制了磁盘的�
 
 要在 New-netqospolicy 中使用的 AppNamePrefix 为 "GatewayWindowsService.exe"。 可以通过创建如下策略，在 Azure Migrate 设备上创建策略，以限制设备的复制流量：
 
-New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1 MB
+New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1 MB
 
 ## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>如何将数据从本地环境传输到 Azure？ 传输前是否对其进行加密？
 
@@ -143,7 +146,7 @@ New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWi
 
 ## <a name="how-does-churn-rate-affect-agentless-replication"></a>改动速度如何影响无代理复制？
 
-由于无代理复制会在数据中折叠，因此 *改动模式* 比 *改动速度*更重要。 再次编写文件时，速率不会产生很大的影响。 但是，每个其他扇区的写入模式在下一个周期中会导致较高的变动。 由于我们最大限度地减少了传输的数据量，因此，我们允许数据在计划下一个周期之前折叠尽可能多。
+由于无代理复制会在数据中折叠，因此 *改动模式* 比 *改动速度* 更重要。 再次编写文件时，速率不会产生很大的影响。 但是，每个其他扇区的写入模式在下一个周期中会导致较高的变动。 由于我们最大限度地减少了传输的数据量，因此，我们允许数据在计划下一个周期之前折叠尽可能多。
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>复制循环计划的频率如何？
 
@@ -153,10 +156,10 @@ New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWi
 
 ## <a name="how-do-i-migrate-windows-server-2003-running-on-vmwarehyper-v-to-azure"></a>如何实现将 VMware/Hyper-v 上运行的 Windows Server 2003 迁移到 Azure？
 
-[Windows Server 2003 扩展支持](https://go.microsoft.com/fwlink/?linkid=2140400) 于2015年7月14日结束。  Azure 支持团队将继续帮助排查在 Azure 上运行 Windows Server 2003 时遇到的问题。 但是，这种支持仅限于不需要操作系统级故障排除或修补程序的问题。
+[Windows Server 2003 扩展支持](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support) 于2015年7月14日结束。  Azure 支持团队将继续帮助排查在 Azure 上运行 Windows Server 2003 时遇到的问题。 但是，这种支持仅限于不需要操作系统级故障排除或修补程序的问题。
 建议将应用程序迁移到运行较新版本 Windows Server 的 Azure 实例，以确保有效地利用 Azure 云的灵活性和可靠性。
 
-但是，如果你仍选择将 Windows Server 2003 迁移到 Azure，则可以使用 Azure Migrate： Server 迁移工具（如果你的 Windows Server 是在 VMware 或 Hyper-v 上运行的 VM）查看本文，为 [迁移准备 Windows server 2003 计算机](https://go.microsoft.com/fwlink/?linkid=2140302)。
+但是，如果你仍选择将 Windows Server 2003 迁移到 Azure，则可以使用 Azure Migrate： Server 迁移工具（如果你的 Windows Server 是在 VMware 或 Hyper-v 上运行的 VM）查看本文，为 [迁移准备 Windows server 2003 计算机](./prepare-windows-server-2003-migration.md)。
 
 ## <a name="what-is-the-difference-between-the-test-migration-and-migrate-operations"></a>测试迁移与迁移操作之间有何区别？
 

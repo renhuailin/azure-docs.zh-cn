@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a36eb588c7128f13fb21b368d308ed00171fbb4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335528"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296108"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
-Kubernetes 社区大约会每隔三个月发布次要版本。 最近，Kubernetes 社区已将 [每个版本的支持时段从9个月增加到了12个月，从](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)版本1.19 开始。 这些版本包括新增功能和改进。 修补程序版本会更频繁地 (每周) ，适用于次要版本中的关键 bug 修复。 这些修补程序版本包括针对安全漏洞或主要 bug 的修复。
+Kubernetes 社区大约会每隔三个月发布次要版本。 最近，Kubernetes 社区[将每个版本的支持时间从 9 个月增加到了 12 个月](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)，从版本 1.19 开始。 这些版本包括新增功能和改进。 补丁发布更为频繁（有时每周都会发布），适用于次要版本中的关键 Bug 修复。 这些修补程序版本包括针对安全漏洞或主要 bug 的修复。
 
 ## <a name="kubernetes-versions"></a>Kubernetes 版本
 
@@ -103,12 +103,15 @@ New Supported Version List
 
 你可以在 [AKS Kubernetes 发布日历](#aks-kubernetes-release-calendar)上参考即将推出的版本发布和弃用。
 
-对于 Kubernetes 的新**次要**版本
+对于 Kubernetes 的新 **次要** 版本
 1. AKS 至少在删除前 30 天在 [AKS 发行说明](https://aka.ms/aks/releasenotes)中发布预告，其中包含新版本发布的计划日期以及相应的旧版本弃用。
 2. AKS 会向具有 AKS 和门户访问权限的所有用户发布一个[服务运行状况通知](../service-health/service-health-overview.md)，并向订阅管理员发送一封电子邮件，其中包含计划的版本删除日期。
+````
+To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator).
+````
 3. 自版本删除起，用户有 30 天的时间升级到受支持的次要版本发布，以继续获得支持。
 
-对于 Kubernetes 的新**修补程序**版本
+对于 Kubernetes 的新 **修补程序** 版本
   * 由于修补程序版本的紧急性质，可以在修补程序变为可用时将其引入到服务中。
   * 通常情况下，对于新修补程序版本的发布，AKS 不会进行广泛的通信。 但是，AKS 会持续监视和验证可用的 CVE 修补程序，以便及时在 AKS 中支持它们。 如果发现修补程序或需要用户进行操作，AKS 将通知用户升级到新发布的修补程序。
   * 自从 AKS 中删除修补程序版本之时起，用户有 30 天的时间升级到受支持的修补程序并继续获取支持。
@@ -131,21 +134,24 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes 发布日历
 
-对于过去的版本历史记录，请参阅 [此处](https://en.wikipedia.org/wiki/Kubernetes#History)。
+对于过去的版本历史记录，请参阅 [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History)。
 
-|  K8s 版本 | 上游版本  | AKS 预览版  | AKS GA  | 生命周期终止 |
+|  K8s 版本 | 上游版本  | AKS 预览版  | AKS GA  | 生命周期结束 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | 09月19-19  | 2019 年 1 月   | 2020 年 3 月  | 1.19 GA | 
+| 1.16  | 2019 年 9 月 19 日  | 2019 年 1 月   | 2020 年 3 月  | 2021年1月 * | 
 | 1.17  | 19-12-09  | 2019 年 1 月   | 2020 年 7 月  | 1.20 GA | 
 | 1.18  | 20-03-23  | 2020 年 5 月   | 2020 年 8 月  | 1.21 GA | 
-| 1.19  | 20-08-04  | 09月2020   | 2020 年 11 月  | 1.22 GA | 
-| 1.20  | 08-20 年12月  | Jan 2021   | 三月2021  | 1.23 GA | 
+| 1.19  | 20-08-04  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA | 
+| 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
+
+\* 由于假日季节，AKS 延长了1.16 年11月2020到2021年1月的生活。 [了解详细信息](https://github.com/Azure/AKS/releases/tag/2020-10-12)。
+
 
 ## <a name="faq"></a>常见问题解答
 
-**我应该多久升级 Kubernetes 版本以保持支持？**
+**我应该多久升级一次 Kubernetes 版本才能始终获得支持？**
 
-Kubernetes 1.19 说明， [开源社区已将支持扩展为1年](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)。 AKS 承诺启用与上游承诺匹配的修补程序和支持（至少）。 这意味着从1.19 上的 AKS 群集开始，你将能够每年至少升级一次，使其保持在受支持的版本。 对于1.18 或更低版本上的版本，支持时段保持为9个月，这需要每9个月升级一次，才能保持在受支持的版本。 强烈建议定期测试新版本，并准备升级到较新版本，以便在 Kubernetes 中捕获最新的稳定增强功能。
+从 Kubernetes 1.19 开始，[开源社区已将支持时间延长到 1 年](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)。 AKS 承诺至少启用补丁并提供与上游承诺使用量匹配的支持。 这意味着从 1.19 版的 AKS 群集开始，你将能够每年至少升级一次，这样就能始终使用受支持的版本。 对于 1.18 或更低版本，支持时间仍为 9 个月，这要求你每 9 个月升级一次才能始终使用受支持的版本。 强烈建议你定期测试新版本，并准备升级到更新的版本，以便在 Kubernetes 中捕获最新的稳定增强功能。
 
 **用户升级的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？**
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 07/21/2020
-ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f0f352e2c803eb1f0638f2f517b97a931ebcc889
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87087775"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996927"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 
@@ -56,13 +56,13 @@ ms.locfileid: "87087775"
 
     - 选择一个容易记住且唯一的服务名称，用于标识 Azure 数据库迁移服务的实例。
     - 选择要在其中创建实例的 Azure **订阅**。
-    - 选择现有的**资源组**或创建一个新资源组。
+    - 选择现有的 **资源组** 或创建一个新资源组。
     - 选择距离源或目标服务器最近的“位置”。
     - 选择一个现有的虚拟网络或创建一个。
 
         虚拟网络为 Azure 数据库迁移服务提供了对源数据库和目标环境的访问权限。
 
-        有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/vnet)一文。
+        有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)一文。
 
     - 对于“定价层”选择“基本: 1 vCore”。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87087775"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以通过删除 [Azure 资源组](../azure-resource-manager/management/overview.md)来清理在本快速入门中创建的资源。 若要删除资源组，请导航到所创建的 Azure 数据库迁移服务实例。 选择该**资源组**的名称，然后选择“删除资源组”。 此操作会删除资源组本身及其包含的所有资产。
+可以通过删除 [Azure 资源组](../azure-resource-manager/management/overview.md)来清理在本快速入门中创建的资源。 若要删除资源组，请导航到所创建的 Azure 数据库迁移服务实例。 选择该 **资源组** 的名称，然后选择“删除资源组”。 此操作会删除资源组本身及其包含的所有资产。
 
 ## <a name="next-steps"></a>后续步骤
 

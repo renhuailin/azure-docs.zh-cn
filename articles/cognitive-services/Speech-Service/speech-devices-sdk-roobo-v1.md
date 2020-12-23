@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 73eb1225ffc5fd01f9a27ca99ad2b059d45a36cf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387976"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015284"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>设备：Roobo 智能音频开发工具包
 
@@ -73,4 +73,4 @@ Roobo 提供一个工具用于将所有音频捕获到闪存。 它可能有助�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [运行 Android 示例应用](speech-devices-sdk-android-quickstart.md)
+* [运行 Android 示例应用](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android)

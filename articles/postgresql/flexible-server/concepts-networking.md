@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 38dd103189446e287f3d62d93344ed89a364d238
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708775"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901926"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>网络概述-Azure Database for PostgreSQL-灵活服务器
 
@@ -33,7 +33,7 @@ ms.locfileid: "91708775"
    * 使用 VPN 或 ExpressRoute 从非 Azure 资源连接到灵活服务器
    * 灵活的服务器没有公共终结点
 
-* **公共访问 (允许的 IP 地址) ** –通过公共终结点访问你的灵活服务器。 公共终结点是可公开解析的 DNS 地址。 “允许的 IP 地址”一词是指你选择向其授予访问服务器的权限的一系列 IP。 这些权限称为“防火墙规则”。 
+* **公共访问 (允许的 IP 地址)** –通过公共终结点访问你的灵活服务器。 公共终结点是可公开解析的 DNS 地址。 “允许的 IP 地址”一词是指你选择向其授予访问服务器的权限的一系列 IP。 这些权限称为“防火墙规则”。 
 
    如果需要以下功能，请选择公共访问方法：
    * 从不支持虚拟网络的 Azure 资源进行连接
@@ -62,7 +62,7 @@ ms.locfileid: "91708775"
 
    PostgreSQL 灵活的服务器必须位于为 PostgreSQL 灵活服务器仅 **委派** 的子网中。 这种委托意味着只有 Azure Database for PostgreSQL 灵活的服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。 可以通过将子网分配为 DBforPostgreSQL/flexibleServers，来委托子网。
 
-* ** (NSG 的网络安全组) ** 网络安全组中的安全规则使你可以筛选可以流入和流出虚拟网络子网和网络接口的网络流量类型。 有关详细信息，请参阅 [网络安全组概述](../../virtual-network/network-security-groups-overview.md) 。
+* **(NSG 的网络安全组)** 网络安全组中的安全规则使你可以筛选可以流入和流出虚拟网络子网和网络接口的网络流量类型。 有关详细信息，请参阅 [网络安全组概述](../../virtual-network/network-security-groups-overview.md) 。
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不受支持的虚拟网络方案
@@ -72,6 +72,9 @@ ms.locfileid: "91708775"
 * 不支持跨区域的对等互连 Vnet
 
 了解如何在 [Azure 门户](how-to-manage-virtual-network-portal.md) 或 [Azure CLI](how-to-manage-virtual-network-cli.md)中创建具有私有访问权限的灵活服务器 (VNet 集成) 。
+
+> [!NOTE]
+> 如果使用的是自定义 DNS 服务器，则必须使用 DNS 转发器解析 Azure Database for MySQL 灵活服务器的 FQDN。 请参阅 [使用自己的 DNS 服务器的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) 以了解详细信息。
 
 ## <a name="public-access-allowed-ip-addresses"></a>公共访问（允许的 IP 地址）
 公共访问方法的特征包括：
@@ -90,12 +93,12 @@ ms.locfileid: "91708775"
 如果某个固定的传出 IP 地址不适用于 Azure 服务，可以考虑启用来自所有 Azure 数据中心 IP 地址的连接。
 
 > [!IMPORTANT]
-> **允许 azure 中的 azure 服务和资源的公共访问**选项将防火墙配置为允许来自 azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问限制为仅允许授权用户访问。
+> **允许 azure 中的 azure 服务和资源的公共访问** 选项将防火墙配置为允许来自 azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问限制为仅允许授权用户访问。
 
 ### <a name="troubleshooting-public-access-issues"></a>排查公共访问问题
 在对 Microsoft Azure Database for PostgreSQL 服务器服务的访问与期望不符时，请考虑以下几点：
 
-* 对允许列表的更改尚未生效：**** 对 Azure Database for PostgreSQL 服务器防火墙配置所做的更改可能需要多达 5 分钟的延迟才可生效。
+* 对允许列表的更改尚未生效：对 Azure Database for PostgreSQL 服务器防火墙配置所做的更改可能需要多达 5 分钟的延迟才可生效。
 
 * **身份验证失败：** 如果用户对 Azure Database for PostgreSQL 服务器没有权限或者使用的密码不正确，则拒绝连接到 Azure Database for PostgreSQL 服务器。 创建防火墙设置仅向客户端提供尝试连接到服务器的机会。 每个客户端仍必须提供必需的安全凭据。
 
@@ -104,6 +107,7 @@ ms.locfileid: "91708775"
    * 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for PostgreSQL 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
    * 改为获取客户端计算机的静态 IP 地址，然后将该静态 IP 地址作为防火墙规则添加。
 
+* **防火墙规则不适用于 IPv6 格式：** 防火墙规则必须为 IPv4 格式。 如果以 IPv6 格式指定防火墙规则，则会显示验证错误。
 
 ## <a name="hostname"></a>主机名
 无论你选择哪种网络选项，我们都建议你始终使用完全限定的域名 (FQDN) 在连接到灵活的服务器时使用主机名。 不保证服务器的 IP 地址保持静态。 使用 FQDN 有助于避免更改连接字符串。 
@@ -119,5 +123,5 @@ Azure Database for PostgreSQL 灵活的服务器支持使用传输层安全性 (
 Azure Database for PostgreSQL-灵活服务器仅支持使用传输层安全性加密的连接。 将拒绝所有 TLS 为1.0 和 TLS 1.1 的传入连接。 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何在[Azure 门户](how-to-manage-virtual-network-portal.md)或[Azure CLI](how-to-manage-virtual-network-cli.md)中创建具有**私有访问权限的灵活服务器 (VNet 集成) ** 。
-* 了解如何在[Azure 门户](how-to-manage-firewall-portal.md)或[Azure CLI](how-to-manage-firewall-cli.md)中创建具有公共访问权限的灵活服务器** (允许的 IP 地址) ** 。
+* 了解如何在 [Azure 门户](how-to-manage-virtual-network-portal.md)或 [Azure CLI](how-to-manage-virtual-network-cli.md)中创建具有 **私有访问权限的灵活服务器 (VNet 集成)** 。
+* 了解如何在 [Azure 门户](how-to-manage-firewall-portal.md)或 [Azure CLI](how-to-manage-firewall-cli.md)中创建具有公共访问权限的灵活服务器 **(允许的 IP 地址)** 。

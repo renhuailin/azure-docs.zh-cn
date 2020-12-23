@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 993793d21e6253188dfc199d8701cbe117503517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb4c4c5a0cf6610af17aabc562c42d2e0eb4e6a4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408420"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409087"
 ---
 # <a name="security-control-incident-response"></a>安全控制：事件响应
 
@@ -42,9 +42,9 @@ ms.locfileid: "81408420"
 
 此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
-- [Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Azure 安全中心中的安全警报](../../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -64,7 +64,7 @@ ms.locfileid: "81408420"
 
 如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的一方访问了你的数据，Microsoft 将使用安全事件联系人信息来与你取得联系。 事后审查事件，确保问题得到解决。
 
-- [如何设置 Azure 安全中心安全联系人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [如何设置 Azure 安全中心安全联系人](../../security-center/security-center-provide-security-contact-details.md)
 
 ## <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
@@ -74,9 +74,9 @@ ms.locfileid: "81408420"
 
 使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
-- [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [如何配置连续导出](../../security-center/continuous-export.md)
 
-- [如何将警报流式传输到 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [如何将警报流式传输到 Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
 ## <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -86,7 +86,7 @@ ms.locfileid: "81408420"
 
 使用 Azure 安全中心的工作流自动化功能，通过 "逻辑应用" 自动触发有关安全警报和建议的响应，以保护 Azure 资源。
 
-- [如何配置工作流自动化和逻辑应用](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [如何配置工作流自动化和逻辑应用](../../security-center/workflow-automation.md)
 
 
 ## <a name="next-steps"></a>后续步骤

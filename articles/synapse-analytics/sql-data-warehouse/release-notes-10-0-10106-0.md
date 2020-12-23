@@ -1,6 +1,6 @@
 ---
-title: 发行说明
-description: Azure Synapse Analytics 的发行说明
+title: 专用 SQL 池 (以前的 SQL DW) 的发行说明
+description: Azure Synapse Analytics 中 (以前的 SQL DW) 专用 SQL 池的发行说明。
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -12,20 +12,20 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 0cad8fcdf58f4827f28b40550ae93e607e0c0858
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89457985"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368998"
 ---
-# <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 发行说明
+# <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 发行说明 (以前的 sql DW) 专用 SQL DW
 
-本文汇总了 Azure Synapse 中最新版本的 [Synapse SQL](sql-data-warehouse-overview-what-is.md) 的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)。
+本文总结了 Azure Synapse Analytics 中以前版本的 [SQL DW) 专用 sql (池 ](sql-data-warehouse-overview-what-is.md) 的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)。
 
-## <a name="check-your-azure-synapse-version"></a>检查 Azure Synapse 版本
+## <a name="check-your-dedicated-sql-pool-formerly-sql-dw-version"></a>检查专用 SQL 池 (以前的 SQL DW) 版本
 
-虽然我们已向所有区域推出新功能，但请检查部署到实例的版本以及最新的发行说明，以了解功能可用性。 若要检查版本，请通过 SQL Server Management Studio (SSMS) 连接到 SQL 池，然后运行 `SELECT @@VERSION;` 来返回当前版本。 使用此版本来确认已应用于 SQL 池的发行版。 输出中的日期确定了发行版应用于 SQL 池的月份。 这只适用于服务级别改进。 
+虽然我们已向所有区域推出新功能，但请检查部署到实例的版本以及最新的发行说明，以了解功能可用性。 若要检查版本，请通过 SQL Server Management Studio (SSMS) 连接到专用 SQL 池 (以前的 SQL DW) ，并运行 `SELECT @@VERSION;` 以返回当前版本。 使用此版本确认 (以前的 SQL DW) 中已应用到专用 SQL 池的版本。 输出中的日期用于标识应用到专用 SQL 池的发布月份 (以前的 SQL DW) 。 这只适用于服务级别改进。 
 
 对于工具改进，请确保安装了发行说明中指定的正确版本。 
 
@@ -35,25 +35,39 @@ ms.locfileid: "89457985"
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics:
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
-## <a name="aug-2020"></a>2020年8月
+## <a name="dec-2020"></a>Dec 2020
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**工作负荷管理-门户体验**|用户可以通过 Azure 门户来配置和管理自己的工作负荷管理设置。 可以配置[工作负荷组](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal)和[工作负荷分类器](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)（含重要性）。|
-|**改进的表映射目录视图**|新的目录视图 [sys.databases pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) 将永久用户表 **object_ids** 映射到其物理表名称。|
+|**(预览的列的存储过程 sp_rename)**|如果不使用 [CTAS](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas) 重命名列，就变得更加简单。 Azure Synapse SQL 现在已添加了对系统存储过程的支持 sp_rename (preview) 重命名用户表中的非分布列。 此功能目前以预览版提供，正式发布时将受到工具支持。 有关详细信息，请参阅 [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest)。|
+|**T-sql 预测的其他参数**|在这个新版本中，将为现有 T-sql PREDICT 语句添加一个名为 "运行时" 的必需附加参数。 若要更新现有脚本，请参阅 [T-SQL 预测](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)中的示例。|
+
+## <a name="oct-2020"></a>2020 年 10 月
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+|T-SQL 内联表值函数（预览版）|在此版本中，现在可以使用 Transact-SQL 创建内联表值函数，并像查询表一样查询其结果。 此功能目前以预览版提供，正式发布时将受到工具支持。 有关详细信息，请参阅 [CREATE FUNCTION (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest)。|
+|MERGE 命令（预览版）|根据与源表联接的结果，现在可以对目标表运行插入、更新或删除操作。 例如，根据在另一个表中找到的差异在一个表中插入、更新或删除行，可以对两个表进行同步。  有关详细信息，请参阅 [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current)。|
+
+## <a name="aug-2020"></a>2020 年 8 月
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+|工作负载管理 - 门户体验|用户可以通过 Azure 门户来配置和管理自己的工作负荷管理设置。 可以配置[工作负荷组](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal)和[工作负荷分类器](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)（含重要性）。|
+|改进了表映射目录视图|新的目录视图 [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) 将永久用户表的 object_id 映射到它们的物理表名称。|
 
 ## <a name="july-2020"></a>2020 年 7 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**列级加密 (公共预览版) **|使用 Transact-sql 对数据列应用对称加密，以保护 Azure Synapse 分析中的敏感信息。 列级加密具有内置函数，可用于通过使用证书、密码、对称密钥或非对称密钥进一步保护的对称密钥来加密数据。 有关详细信息，请访问 [加密列数据](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
-|** (GA) 兼容级别支持 **|在此版本中，用户现在可以设置数据库的兼容性级别，以获取 Synapse SQL 引擎的特定版本的 Transact-SQL 语言和查询处理行为。 有关详细信息，请参阅 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[更改数据库范围的配置](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
-|**行级别安全性**|此版本包含对在其上实施了 RLS 的行的更新和删除操作的改进。 在此版本中，如果内部函数（如 "is_rolemember"）包含内部函数的更新和删除操作，则这些函数将成功。 在此改进之前，由于基础 DML 操作的限制，这些操作失败。|
+|列级加密（公共预览版）|使用 Transact-SQL 对数据列应用对称加密，从而保护 Azure Synapse Analytics 中的敏感信息。 列级加密具有内置函数，可用于使用对称密钥（通过证书、密码、对称密钥或非对称密钥受到进一步保护）来加密数据。 有关详细信息，请访问[加密数据列](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
+|兼容性级别支持 (GA)|在此版本中，用户现在可以设置数据库的兼容性级别，以获取 Synapse SQL 引擎的特定版本的 Transact-SQL 语言和查询处理行为。 有关详细信息，请参阅 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[更改数据库范围的配置](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
+|**行级别安全性**|此版本包含对于在强制执行了 RLS 的行上进行的更新和删除操作的改进。 在此版本中，如果内部函数（如 "is_rolemember"）包含内部函数的更新和删除操作，则这些函数将成功。 在此次改进之前，这些操作会因基础 DML 操作中的限制而失败。|
 |DBCC SHRINKDATABASE (GA)|现在可以收缩指定数据库中的数据文件和日志文件的大小。 有关详细信息，请参阅[文档](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
 
 ## <a name="may-2020"></a>2020 年 5 月
@@ -66,8 +80,8 @@ ms.locfileid: "89457985"
 |**使用 COPY 命令（预览版）对 Parquet 文件执行自动架构检测**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持在加载 Parquet 文件时执行自动架构检测。 此命令会在加载文件前先自动检测 Parquet 文件架构并创建表。 若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。 |
 |**使用 COPY 命令（预览版）加载复杂的 Parquet 数据类型**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持加载复杂的 Parquet 类型。 可以将复杂类型（如 Maps 和 Lists）加载到字符串列中。  若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。 |
 |**使用 COPY 命令对 Parquet 文件执行自动压缩检测**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持自动检测一个或多个 Parquet 文件的压缩方法。 若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。|
-|**其他加载建议**|[加载建议](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)现在可用于 Synapse SQL。 在以下情况下收到主动通知：应拆分文件来最大限度地提高吞吐量、将存储帐户与 SQL 池归置在一起，或在使用加载实用工具（如 SQLBulkCopy API 或 BCP）时增加批大小|
-|**T-SQL 可更新的分布列 (GA)**|用户现在可以更新在分布列中存储的数据。 有关详细信息，请查看[关于在 Synapse SQL 池中设计分布式表的指南](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)。|
+|**其他加载建议**|[加载建议](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)现在可用于 Synapse SQL。 如果你应该拆分你的文件以获得最大吞吐量，请将你的存储帐户与专用 SQL DW (在以前的 SQL DW) 中，或者在使用加载实用程序（例如 SQLBulkCopy API 或 BCP）时增加批大小，以获取主动通知|
+|**T-SQL 可更新的分布列 (GA)**|用户现在可以更新在分布列中存储的数据。 有关详细信息，请参阅 [在专用 sql DW (以前的 sql DW) 中设计分布式表的指南 ](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute) 。|
 |**T-SQL 根据联接结果进行更新/删除 (GA)**|现在可以根据与其他表联接的结果进行更新和删除。 有关详细信息，请参阅 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) 和 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) 文档。|
 |**T-SQL PREDICT（预览）**|现在可以对数据仓库中的机器学习模型进行预测，从而避免需要进行大型且复杂的数据移动。 T-SQL PREDICT 函数依赖开放模型框架，需要使用数据和机器学习模型作为输入来生成预测。 有关详细信息，请参阅这篇[文档](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)。|
 
@@ -113,8 +127,8 @@ ms.locfileid: "89457985"
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**Azure 专用链接（预览）**|通过 [Azure 专用链接](https://azure.microsoft.com/blog/announcing-azure-private-link/)，可以在虚拟网络 (VNet) 中创建专用终结点，并将它映射到 SQL 池。 然后，可通过 VNet 中的专用 IP 地址访问这些资源，从而能够通过 Azure ExpressRoute 专用对等互连和/或 VPN 网关从本地连接。 总的来说，这简化了网络配置，因为不需要向公共 IP 地址开放它。 这还可以规避数据外泄风险。 如需了解更多详情，请参阅[概述](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [SQL Analytics](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 文档。|
-|**数据发现和分类 (GA)**|[数据发现和分类](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)功能现已推出正式版。 此功能提供高级功能用于**发现、分类、标记和保护**数据库中的敏感数据。|
+|**Azure 专用链接（预览）**|使用 [Azure 专用链接](https://azure.microsoft.com/blog/announcing-azure-private-link/)，你可以在虚拟网络中创建一个专用终结点， (VNet) 并将其映射到专用 SQL 池。 然后，可通过 VNet 中的专用 IP 地址访问这些资源，从而能够通过 Azure ExpressRoute 专用对等互连和/或 VPN 网关从本地连接。 总的来说，这简化了网络配置，因为不需要向公共 IP 地址开放它。 这还可以规避数据外泄风险。 如需了解更多详情，请参阅[概述](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [SQL Analytics](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 文档。|
+|**数据发现和分类 (GA)**|[数据发现和分类](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)功能现已推出正式版。 此功能提供高级功能用于 **发现、分类、标记和保护** 数据库中的敏感数据。|
 |**Azure 顾问一键式集成**|现在，Azure Synapse 中的 SQL Analytics 直接在概览边栏选项卡中与 Azure 顾问建议集成，并提供一键式体验。 现在可以在概述边栏选项卡中发现建议，而无需转到 Azure 顾问边栏选项卡。 在[此处](sql-data-warehouse-concept-recommendations.md)详细了解建议。|
 |**读取提交的快照隔离（预览）**|可以使用 ALTER DATABASE 为用户数据库启用或禁用快照隔离。  为了避免对当前工作负荷造成影响，不妨在数据库维护时段期间设置此选项，或等到数据库没有其他任何活动连接时设置此选项。 有关详细信息，请参阅 [ALTER DATABASE SET 选项](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**EXECUTE AS (Transact-SQL)**| 现已提供 [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 支持，使客户能够将会话的执行上下文设置为指定的用户。|
@@ -201,13 +215,13 @@ ms.locfileid: "89457985"
 |**加速数据库恢复 (ADR)**|Azure Synapse 加速的数据库恢复 (ADR) 现在为公共预览版。 ADR 是一项新的 SQL Server 引擎功能，通过完全从头开始重新设计当前的恢复过程，极大地提高了数据库可用性（尤其是在存在长时间运行事务的情况下）。 ADR 的主要优点是快速且一致的数据库恢复和即时事务回滚。|
 |**Azure Monitor 资源日志**|Azure Synapse 现可通过直接与 Azure Monitor 资源日志集成，增强对分析工作负载的见解。 这项新功能使开发者可分析长时段内的工作负载行为，并针对查询优化或容量管理作出明智决策。 我们现在通过 [Azure Monitor 资源日志](../../azure-monitor/platform/data-platform.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#logs)引入了外部日志记录过程，这些日志提供了有关数据仓库工作负载的其他见解。 现在，只需单击一下按钮，即可使用 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 为历史查询性能故障排除功能配置资源日志。 Azure Monitor 资源日志支持通过将日志保存到存储帐户以进行审核来自定义保留期，将日志流式传输到事件中心以获得近实时遥测见解，以及通过日志查询使用 Log Analytics 来分析日志。 资源日志由数据仓库的遥测视图组成，相当于 Azure Synapse 中的 SQL Analytics 的最常用性能故障排除 DMV。 对于此初始版本，我们为以下系统动态管理视图启用了视图：<br/><br/>&bull; &nbsp; [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**列存储内存管理**|随着压缩列存储行组数量的增加，管理这些行组的内部列段元数据所需的内存也会增加。  因此，针对某些列存储动态管理视图 (DMV) 执行的查询和查询性能可能会降级。  此版本中的改进旨在优化这些情况下的内部元数据大小，从而改善此类查询的体验并提高此类查询的性能。|
-|**Azure Data Lake Storage Gen2 集成 (GA)**|Synapse Analytics 现在与 Azure Data Lake Storage Gen2 本机集成。 客户现在可以使用外部表将数据从 ABFS 加载到 Synapse SQL 池。 此功能使客户能够与 Data Lake Storage Gen2 中的 data lake 集成。|
+|**Azure Data Lake Storage Gen2 集成 (GA)**|Synapse Analytics 现在与 Azure Data Lake Storage Gen2 本机集成。 现在，客户可以使用外部表将数据从 ABFS 加载到专用 SQL 池 (以前的 SQL DW) 。 此功能使客户能够与 Data Lake Storage Gen2 中的 data lake 集成。|
 |**值得注意的 Bug**|在 DW2000 等数据仓库上的小资源类中执行到 Parquet 的 CETAS 时发生失败 - 此项修复可正确识别 Create External Table As to Parquet 代码路径中的 null 引用。<br/><br/>在某些 CTAS 操作中可能会丢失标识列值 - 在执行 CTAS 到另一个表后，可能不会暂留标识列的值。 已在[博客](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)中报告。<br/><br/>在某些情况下，当查询仍在运行时，在会话终止时发生内部故障 - 在查询仍在运行时，如果终止会话，此修复会触发 InvalidOperationException。<br/><br/>（部署于 2018 年 11 月）尝试使用 Polybase 从 ADLS (Gen1) 加载多个小文件时，客户体验的性能不佳。 在 AAD 安全令牌验证期间，系统性能出现瓶颈。 通过启用安全令牌的缓存来缓解性能问题。 |
 | | |
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 SQL 池](create-data-warehouse-portal.md)
+- [ (以前的 SQL DW) 创建专用 SQL 池 ](create-data-warehouse-portal.md)
 
 ## <a name="more-information"></a>详细信息
 

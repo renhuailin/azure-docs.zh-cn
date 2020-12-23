@@ -2,20 +2,22 @@
 title: 针对 Azure Cosmos DB 的高级威胁防护
 description: 了解 Azure Cosmos DB 如何提供静态数据加密及其实现方式。
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85119263"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334406"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>针对 Azure Cosmos DB 的高级威胁防护（预览版）
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 针对 Azure Cosmos DB 的高级威胁防护提供额外的一层安全智能，用于检测是否存在访问或利用 Azure Cosmos DB 帐户的异常且可能有害的企图。 无需成为安全专家，就能利用此保护层来应对威胁，并将威胁与中央安全监视系统集成。
 
@@ -26,7 +28,7 @@ ms.locfileid: "85119263"
 > * 针对 Azure Cosmos DB 的高级威胁防护目前仅适用于 SQL API。
 > * 针对 Azure Cosmos DB 的高级威胁防护目前在 Azure 政府和主权云区域中不可用。
 
-为了获取安全警报的完整调查体验，建议启用 [Azure Cosmos DB 中的诊断日志记录](https://docs.microsoft.com/azure/cosmos-db/logging)，它会记录对数据库本身执行的操作，包括对所有文档、容器和数据库执行的 CRUD 操作。
+为了获取安全警报的完整调查体验，建议启用 [Azure Cosmos DB 中的诊断日志记录](./monitor-cosmos-db.md)，它会记录对数据库本身执行的操作，包括对所有文档、容器和数据库执行的 CRUD 操作。
 
 ## <a name="threat-types"></a>威胁类型
 
@@ -59,16 +61,16 @@ ms.locfileid: "85119263"
 
 使用 Rest API 命令可创建、更新或获取特定 Azure Cosmos DB 帐户的高级威胁防护设置。
 
-* [高级威胁防护 - 创建](https://go.microsoft.com/fwlink/?linkid=2099745)
-* [高级威胁防护 - 获取](https://go.microsoft.com/fwlink/?linkid=2099643)
+* [高级威胁防护 - 创建](/rest/api/securitycenter/advancedthreatprotection/create)
+* [高级威胁防护 - 获取](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用以下 PowerShell cmdlet：
 
-* [启用高级威胁防护](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
-* [获取高级威胁防护](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
-* [禁用高级威胁防护](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+* [启用高级威胁防护](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [获取高级威胁防护](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [禁用高级威胁防护](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
 
 ### <a name="arm-template"></a>[ARM 模板](#tab/arm-template)
 
@@ -81,16 +83,16 @@ ms.locfileid: "85119263"
 
 1. 启动“Azure Policy - 定义”页面，然后搜索“部署针对 Cosmos DB 的高级威胁防护”策略。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="设置 ATP"::: 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="搜索策略"::: 
 
 1. 单击“部署针对 CosmosDB 的高级威胁防护”策略，然后单击“分配”。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="设置 ATP":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="选择订阅或组":::
 
 
 1. 在“范围”字段中，单击三个点，选择 Azure 订阅或资源组，然后单击“选择”。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="设置 ATP":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="策略定义页":::
 
 
 1. 输入其他参数，然后单击“分配”。
@@ -104,17 +106,17 @@ ms.locfileid: "85119263"
 
  可从 Azure 安全中心查看和管理当前[安全警报](../security-center/security-center-alerts-overview.md)。  单击[安全中心](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0)内的特定警报以查看可能的原因以及用于调查和缓解潜在威胁的建议操作。 下图显示了安全中心提供的警报详细信息的示例。
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="设置 ATP":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="威胁详细信息":::
 
 电子邮件通知还会随警报详细信息和建议的操作一起发送。 下图显示了警报电子邮件的示例。
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="设置 ATP":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="警报详细信息":::
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP 警报
 
- 若要查看在监视 Azure Cosmos DB 帐户时生成的警报的列表，请参阅 Azure 安全中心文档中的 [Cosmos DB 警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos)部分。
+ 若要查看在监视 Azure Cosmos DB 帐户时生成的警报的列表，请参阅 Azure 安全中心文档中的 [Cosmos DB 警报](../security-center/alerts-reference.md#alerts-azurecosmos)部分。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解有关 [Azure Cosmos DB 中的诊断日志记录](cosmosdb-monitor-resource-logs.md)的详细信息
-* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+* 了解有关 [Azure 安全中心](../security-center/security-center-introduction.md)的详细信息

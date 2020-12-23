@@ -11,23 +11,26 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613979"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355386"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
 若要使用 [api 连接器](api-connectors-overview.md)，首先要创建 api 连接器，然后在用户流中启用它。
+
+> [!IMPORTANT]
+>**从2021年1月4日开始**，Google 是 [弃用 web 视图登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果你使用 Google federation 或使用 Gmail 进行自助注册，则应 [测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
 
 ## <a name="create-an-api-connector"></a>创建 API 连接器
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择 " **所有 api 连接器" (预览 ") **，然后选择" **新建 api 连接器**"。
+4. 选择 " **所有 api 连接器" (预览 ")**，然后选择" **新建 api 连接器**"。
 
    ![添加新的 API 连接器](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
 
@@ -35,16 +38,16 @@ ms.locfileid: "91613979"
 6. 提供 API 调用的 **终结点 URL** 。
 7. 提供 API 的身份验证信息。
 
-   - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的虚拟 **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如，https： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
+   - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的虚拟 **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如，https： []() //contoso.azurewebsites.net/api/endpoint <b>？ code = 0123456789</b>) 。
 
    ![配置新的 API 连接器](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
-8. 选择“保存”  。
+8. 选择“保存”。
 
 > [!IMPORTANT]
 > 以前，你必须配置要发送到 API ( "声明发送" 的用户属性 ) 以及要从 API 中接受哪些用户属性 ( "声明接收" ) 。 现在，默认情况下，如果所有用户属性都具有值并且 API 可以在 "继续" 响应中返回任何用户属性，则默认情况下将发送所有用户属性。
 
 ## <a name="the-request-sent-to-your-api"></a>发送到 API 的请求
-API 连接器具体化为 **HTTP POST** 请求，发送 ( "声明" ) 为 JSON 正文中的键值对的用户属性。 特性的序列化与 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) 用户属性类似。 
+API 连接器具体化为 **HTTP POST** 请求，发送 ( "声明" ) 为 JSON 正文中的键值对的用户属性。 特性的序列化与 [Microsoft Graph](/graph/api/resources/user#properties) 用户属性类似。 
 
 **示例请求**
 ```http
@@ -75,17 +78,17 @@ Content-type: application/json
 }
 ```
 
-只有**Azure Active Directory**  >  **External 标识**  >  **自定义用户属性**中列出的用户属性和自定义属性可在请求中发送。
+只有 **Azure Active Directory**  >  **External 标识**  >  **自定义用户属性** 中列出的用户属性和自定义属性可在请求中发送。
 
 自定义属性在目录的 **extension_ \<extensions-app-id> _AttributeName**  格式中存在。 你的 API 应该会接收此相同序列化格式的声明。 有关自定义属性的详细信息，请参阅 [定义自助服务注册流的自定义属性](user-flow-add-custom-attributes.md)。
 
-此外，默认情况下，在所有请求中发送 ** ( "ui_locales" ) 声明的 UI 区域设置 ** 。 它提供在其设备上配置的用户区域设置 () ，API 可以使用此区域设置来返回国际化响应。
+此外，默认情况下，在所有请求中发送 **( "ui_locales" ) 声明的 UI 区域设置** 。 它提供在其设备上配置的用户区域设置 () ，API 可以使用此区域设置来返回国际化响应。
 
 > [!IMPORTANT]
 > 如果发送的声明在调用 API 终结点时没有值，则不会将该声明发送到 API。 API 应设计为显式检查其预期的值。
 
 > [!TIP] 
-> [**标识 ( "标识" ) **](https://docs.microsoft.com/graph/api/resources/objectidentity) 并且 **电子邮件地址 ( "email" ) ** 声明在用户拥有租户中的帐户之前，你的 API 可以使用它来标识该用户。 当用户使用标识提供程序（如 Google 或 Facebook）进行身份验证时，将发送 "标识" 声明。 始终发送 "email"。
+> [**标识 ( "标识" )**](/graph/api/resources/objectidentity) 并且 **电子邮件地址 ( "email" )** 声明在用户拥有租户中的帐户之前，你的 API 可以使用它来标识该用户。 当用户使用标识提供程序（如 Google 或 Facebook）进行身份验证时，将发送 "标识" 声明。 始终发送 "email"。
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在用户流中启用 API 连接器
 
@@ -94,7 +97,7 @@ Content-type: application/json
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择 " **用户流 (预览") **，然后选择要向其添加 API 连接器的用户流。
+4. 选择 " **用户流 (预览")**，然后选择要向其添加 API 连接器的用户流。
 5. 选择 " **api 连接器**"，然后选择要在用户流中的以下步骤调用的 api 终结点：
 
    - **使用标识提供者登录后**
@@ -102,11 +105,11 @@ Content-type: application/json
 
    ![向用户流添加 Api](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. 选择“保存”  。
+6. 选择“保存”。
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录后
 
-在用户使用标识提供者进行身份验证 (Google、Facebook、Azure AD) 后，立即调用注册过程中的 API 连接器。 此步骤优先于 " ***属性集合" 页***，它是向用户显示的用于收集用户属性的窗体。 
+在用户使用标识提供者进行身份验证 (Google、Facebook、Azure AD) 后，立即调用注册过程中的 API 连接器。 此步骤优先于 **_属性集合页_* _，这是向用户显示的用于收集用户特性的窗体。 
 
 <!-- The following are examples of API connector scenarios you may enable at this step:
 - Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
@@ -246,10 +249,10 @@ Content-type: application/json
 
 | 参数                                          | 类型              | 必需 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 版本                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
-| action                                             | String            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中 **接收的声明** ，则这些值可以存储在目录中，并可存储在用户流的 **用户属性** 中。 如果选择作为 **应用程序声明**，则可以在令牌中返回值。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的**用户属性**中**接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
+| 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
+| action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 值可以存储在目录中，前提是这些值在 API 连接器配置和用户流的 **用户属性** 中被选为 _ *声明来接收**。 如果选择作为 **应用程序声明**，则可以在令牌中返回值。                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的 **用户属性** 中 **接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
 
 ### <a name="example-of-a-blocking-response"></a>阻塞响应的示例
 
@@ -268,10 +271,10 @@ Content-type: application/json
 
 | 参数   | 类型   | 必需 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| 版本     | String | 是      | API 的版本。                                                    |
-| action      | String | 是      | 值必须是 `ShowBlockPage`                                              |
-| userMessage | String | 是      | 要向用户显示的消息。                                            |
-| code        | String | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
+| 版本     | 字符串 | 是      | API 的版本。                                                    |
+| action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
+| userMessage | 字符串 | 是      | 要向用户显示的消息。                                            |
+| code        | 字符串 | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
 **阻止响应的最终用户体验**
 
@@ -294,11 +297,11 @@ Content-type: application/json
 
 | 参数   | 类型    | 必需 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| 版本     | String  | 是      | API 的版本。                                                    |
-| action      | String  | 是      | 值必须是 `ValidationError`。                                           |
+| 版本     | 字符串  | 是      | API 的版本。                                                    |
+| action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
 | status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
-| userMessage | String  | 是      | 要向用户显示的消息。                                            |
-| code        | String  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
+| userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
+| code        | 字符串  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
 **验证-错误响应的最终用户体验**
 

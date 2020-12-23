@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb2ecd9ab63345954356d18164a2afe94a5aae24
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82925443"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028356"
 ---
 ## <a name="register-an-azure-ad-app"></a>注册 Azure AD 应用
 
@@ -20,7 +20,7 @@ ms.locfileid: "82925443"
 1. 请确保使用的是包含组织 Azure AD 租户的目录（例如，contoso.com）。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“新注册”。
-1. 输入应用程序的**名称**。 例如，`Azure AD B2C App`。
+1. 输入应用程序的 **名称**。 例如，`Azure AD B2C App`。
 1. 对于此应用程序，接受默认选择“仅此组织目录中的帐户”。
 1. 对于“重定向 URI”，接受值 **Web**，并以全小写字母输入以下 URL，其中 `your-B2C-tenant-name` 将替换为 Azure AD B2C 租户的名称。
 
@@ -36,7 +36,7 @@ ms.locfileid: "82925443"
 
 ### <a name="configuring-optional-claims"></a>配置可选声明
 
-如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](/azure/active-directory/develop/active-directory-optional-claims)。
+如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../articles/active-directory/develop/active-directory-optional-claims.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
 1. 在“管理”部分，选择“应用注册”。 

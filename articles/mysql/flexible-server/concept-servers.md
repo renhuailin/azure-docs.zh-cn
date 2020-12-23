@@ -1,17 +1,17 @@
 ---
 title: 服务器概念-Azure Database for MySQL 灵活的服务器
 description: 本主题提供有关使用 Azure Database for MySQL 灵活服务器的注意事项和指南
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 7217817e9add6214c2da8362a2769cad0c2cf330
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934401"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240743"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的服务器概念) 
 
@@ -59,6 +59,6 @@ Azure Database for MySQL 灵活的服务器使你能够在未使用时 **停止*
 
 ## <a name="next-steps"></a>后续步骤
 
--   了解 [创建服务器](./quickstart-create-server-portal.md)
+-   了解 [创建服务器](./quickstart-create-server-portal.md)
 -   了解 [监视和警报](./how-to-alert-on-metric.md)
 

@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: angle
-ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: shlo
+ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74776616"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021977"
 ---
 # <a name="disclosure-design-patterns"></a>披露设计模式
 你已经确定了合成语音体验的正确[披露级别](concepts-disclosure-guidelines.md#disclosure-assessment)，现在正是探索潜在设计模式的好时机。
@@ -184,7 +184,7 @@ ms.locfileid: "74776616"
 
 可通过对数字助理能够执行的操作设置准确期望来隐式实现披露。 提供示例命令，以便用户可以了解如何与数字助理交互，并提供上下文帮助，以在体验的早期阶段了解有关合成语音的详细信息。
 
-![视觉提示和反馈](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![对可创建的会话默认响应的示例。](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>对话透明度
 
@@ -241,17 +241,17 @@ ms.locfileid: "74776616"
 
 ## <a name="additional-resources"></a>其他资源
 - [Microsoft 机器人指南](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana 设计指南](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP 语音设计指南](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows 混合现实语音命令指南](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Cortana 设计指南](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP 语音设计指南](/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows 混合现实语音命令指南](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>参考文档
 
-* [向配音员公开](https://aka.ms/disclosure-voice-talent)
+* [向配音员公开](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [合成语音技术的负责任的部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
 * [管控概述](concepts-gating-overview.md)
 * [如何披露](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [向配音员公开](https://aka.ms/disclosure-voice-talent)
+* [向配音员公开](/legal/cognitive-services/speech-service/disclosure-voice-talent)

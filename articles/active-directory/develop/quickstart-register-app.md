@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, identityplatformtop40, contperfq1
+ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4e9e6c9179c7fbf405cf8fc661a209da3c9d3b61
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436682"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031260"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -32,15 +32,15 @@ ms.locfileid: "89436682"
 
 ## <a name="register-an-application"></a>注册应用程序
 
-注册应用程序会在应用与 Microsoft 标识平台之间建立信任关系。 信任是单向的：应用信任 Microsoft 标识平台，而不是标识平台信任应用。
+注册应用程序会在应用与 Microsoft 标识平台之间建立信任关系。 信任是单向的：应用信任 Microsoft 标识平台，但标识平台并不信任应用。
 
 按照以下步骤创建应用注册：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
-1. 在“管理”下，选择“应用注册”，然后选择“新建注册”  。
-1. 输入应用程序的**名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+1. 在“管理”下，选择“应用注册” > “新建注册”  。
+1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 指定可使用该应用程序的人员，这有时称为“登录访问者”。
 
     | 支持的帐户类型 | 说明 |
@@ -65,7 +65,7 @@ ms.locfileid: "89436682"
 
 重定向 URI 是 Microsoft 标识平台重定向用户客户端并在身份验证后发送安全令牌的位置。
 
-例如，在生产 Web 应用程序中，重定向 URI 通常是运行应用的公共终结点，比如 `https://contoso.com/auth-response`。 在开发过程中，通常还会在本地运行应用中添加终结点，例如 `https://127.0.0.1/auth-response`。
+例如，在生产 Web 应用程序中，重定向 URI 通常是运行应用的公共终结点，比如 `https://contoso.com/auth-response`。 在开发过程中，通常还会添加在本地运行应用的终结点，例如 `https://127.0.0.1/auth-response` 或 `http://localhost/auth-response`。
 
 可通过配置已注册应用程序的[平台设置](#configure-platform-settings)来添加和修改它的重定向 URI。
 

@@ -8,12 +8,13 @@ ms.service: web-application-firewall
 ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 036503f95a7dc1aaa5690bacc01d07034e6d162f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs
+ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91266925"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091315"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>快速入门：使用 ARM 模板在应用程序网关上创建 Azure WAF v2
 

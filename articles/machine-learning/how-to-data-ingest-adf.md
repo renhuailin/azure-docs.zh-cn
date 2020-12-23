@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure 数据工厂进行数据引入
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 数据工厂生成数据引入管道。
+description: 了解使用 Azure 数据工厂构建数据引入管道的可用选项，以及每种方法的优点。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,19 +11,19 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 73850d8022618dd6544d19564e425288aff09771
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986402"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360626"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>使用 Azure 数据工厂进行数据引入
 
-本文介绍如何使用 Azure 数据工厂 (ADF) 生成数据引入管道。 此管道用于引入要在 Azure 机器学习中使用的数据。 Azure 数据工厂可让你轻松提取、转换和加载 (ETL) 数据。 转换数据并将其载入存储后，可以使用这些数据来训练机器学习模型。
+本文介绍如何使用 Azure 数据工厂 (ADF) 生成数据引入管道的可用选项。 此管道用于引入要在 Azure 机器学习中使用的数据。 Azure 数据工厂可让你轻松提取、转换和加载 (ETL) 数据。 转换数据并将其载入存储后，可以使用这些数据来训练机器学习模型。
 
-可以使用本机 ADF 活动和[数据流](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity)等检测工具来处理简单的数据转换。 涉及到较复杂的方案时，可以使用一些自定义代码来处理数据。 例如 Python 或 R 代码。
+可以使用本机 ADF 活动和[数据流](../data-factory/control-flow-execute-data-flow-activity.md)等检测工具来处理简单的数据转换。 涉及到较复杂的方案时，可以使用一些自定义代码来处理数据。 例如 Python 或 R 代码。
 
 在引入期间，可以通过多种常用方法使用 Azure 数据工厂来转换数据。 每种方法有各自的优缺点，这也决定了它是否适合特定的用例：
 
@@ -39,11 +39,11 @@ ms.locfileid: "90986402"
 
 Azure Functions 允许运行小段代码（函数），且不需要担心应用程序基础结构。 使用此选项时，数据将通过包装在 Azure 函数中的自定义 Python 代码进行处理。 
 
-该函数是使用 [ADF Azure 函数活动](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)调用的。 此方法非常适合轻型数据转换。 
+该函数是使用 [ADF Azure 函数活动](../data-factory/control-flow-azure-function-activity.md)调用的。 此方法非常适合轻型数据转换。 
 
 * 优点：
     * 以相对较低的延迟在无服务器计算资源中处理数据
-    * ADF 管道可以调用一个[持久性 Azure 函数](/azure/azure-functions/durable/durable-functions-overview)，该函数可实现复杂的数据转换流 
+    * ADF 管道可以调用一个[持久性 Azure 函数](../azure-functions/durable/durable-functions-overview.md)，该函数可实现复杂的数据转换流 
     * 可重复使用且可从其他位置调用的 Azure 函数会抽象掉数据转换的详细信息
 * 缺点：
     * 在与 ADF 结合使用之前，必须先创建 Azure Functions
@@ -53,10 +53,10 @@ Azure Functions 允许运行小段代码（函数），且不需要担心应用�
 
 ![关系图显示了一个 Azure 数据工厂管道，其中包含一个自定义组件并运行 M L 管道，以及一个带有定型模型的 Azure 机器学习管道，以及如何与原始数据和准备好的数据进行交互。](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
-使用此选项时，数据将通过包装在可执行文件中的自定义 Python 代码进行处理。 该可执行文件是使用 [ADF 自定义组件活动](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)调用的。 与前面的方法相比，此方法更适合较大的数据。
+使用此选项时，数据将通过包装在可执行文件中的自定义 Python 代码进行处理。 该可执行文件是使用 [ADF 自定义组件活动](../data-factory/transform-data-using-dotnet-custom-activity.md)调用的。 与前面的方法相比，此方法更适合较大的数据。
 
 * 优点：
-    * 数据将在 [Azure Batch](https://docs.microsoft.com/azure/batch/batch-technical-overview) 池中进行处理，该池提供大规模并行和高性能计算
+    * 数据将在 [Azure Batch](../batch/batch-technical-overview.md) 池中进行处理，该池提供大规模并行和高性能计算
     * 可用于运行繁重的算法并处理大量数据
 * 缺点：
     * 在与 ADF 结合使用之前，必须先创建 Azure Batch 池
@@ -68,7 +68,7 @@ Azure Functions 允许运行小段代码（函数），且不需要担心应用�
 
 [Azure Databricks](https://azure.microsoft.com/services/databricks/) 是 Microsoft 云中基于 Apache Spark 的分析平台。
 
-使用此方法时，数据转换将由 Azure Databricks 群集上运行的某个 [Python 笔记本](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)执行。 这也许是全面利用 Azure Databricks 服务的强大之处的最常见方法。 它旨在用于大规模的分布式数据处理。
+使用此方法时，数据转换将由 Azure Databricks 群集上运行的某个 [Python 笔记本](../data-factory/transform-data-using-databricks-notebook.md)执行。 这也许是全面利用 Azure Databricks 服务的强大之处的最常见方法。 它旨在用于大规模的分布式数据处理。
 
 * 优点：
     * 在以 Apache Spark 环境为后盾的最强大数据处理 Azure 服务中转换数据
@@ -84,12 +84,12 @@ Azure Functions 允许运行小段代码（函数），且不需要担心应用�
 
 ![关系图显示了一个 Azure 数据工厂管道和一个 Azure 机器学习管道，以及它们如何与原始数据和准备的数据进行交互。 数据工厂管道将数据馈送到准备好的数据数据库，该数据库将数据存储在机器学习工作区中馈送数据集。](media/how-to-data-ingest-adf/aml-dataset.png)
 
-从 ADF 管道转换的数据将保存到数据存储 (如 Azure Blob) 。 Azure 机器学习可以使用 [数据存储](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores) 和 [数据集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)访问此数据。
+从 ADF 管道转换的数据将保存到数据存储 (如 Azure Blob) 。 Azure 机器学习可以使用 [数据存储](./how-to-access-data.md#create-and-register-datastores) 和 [数据集](./how-to-create-register-datasets.md)访问此数据。
 
 每次运行 ADF 管道时，数据将保存到存储中的不同位置。 若要将位置传递到 Azure 机器学习，ADF 管道将调用 Azure 机器学习管道。 调用 ML 管道时，数据位置和运行 ID 作为参数发送。 然后，ML 管道可以使用数据位置创建数据存储/数据集。 
 
 > [!TIP]
-> 数据集 [支持版本控制](https://docs.microsoft.com/azure/machine-learning/how-to-version-track-datasets)，因此 ML 管道可以注册一个新版本的数据集，该数据集指向 ADF 管道中的最新数据。
+> 数据集 [支持版本控制](./how-to-version-track-datasets.md)，因此 ML 管道可以注册一个新版本的数据集，该数据集指向 ADF 管道中的最新数据。
 
 数据可通过数据存储或数据集访问后，可以使用它来训练 ML 模型。 训练过程可能是从 ADF 中调用的同一 ML 管道的一部分。 或者，它可能是一个单独的进程，如 Jupyter 笔记本中的试验。
 
@@ -97,8 +97,7 @@ Azure Functions 允许运行小段代码（函数），且不需要担心应用�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Azure 数据工厂中运行 Databricks 笔记本](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)
-* [访问 Azure 存储服务中的数据](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)
-* [Azure 机器学习中的数据集定型模型](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets)
-* [数据引入管道的 DevOps](https://docs.microsoft.com/azure/machine-learning/how-to-cicd-data-ingestion)
-
+* [在 Azure 数据工厂中运行 Databricks 笔记本](../data-factory/transform-data-using-databricks-notebook.md)
+* [访问 Azure 存储服务中的数据](./how-to-access-data.md#create-and-register-datastores)
+* [Azure 机器学习中的数据集定型模型](./how-to-train-with-datasets.md)
+* [数据引入管道的 DevOps](./how-to-cicd-data-ingestion.md)

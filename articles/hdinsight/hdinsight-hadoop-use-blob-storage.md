@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855661"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547429"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -27,13 +27,13 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 * 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](./hdinsight-hadoop-provision-linux-clusters.md)。
 
 > [!IMPORTANT]  
-> 存储帐户类型 BlobStorage 仅可用作 HDInsight 群集的辅助存储器****。
+> 存储帐户类型 BlobStorage 仅可用作 HDInsight 群集的辅助存储器  。
 
 | 存储帐户类型 | 支持的服务 | 支持的性能层 |不支持的性能层| 支持的访问层 |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2（常规用途 v2）  | Blob     | 标准                    |高级| 热、冷、存档\*   |
 | 存储（常规用途 v1）   | Blob     | 标准                    |高级| 空值                    |
-| BlobStorage                    | Blob     | Standard                    |高级| 热、冷、存档\*   |
+| BlobStorage                    | Blob     | 标准                    |高级| 热、冷、存档\*   |
 
 建议不要使用默认 blob 容器来存储业务数据。 最佳做法是每次使用之后删除默认 Blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
@@ -44,23 +44,23 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 
 ## <a name="access-files-from-within-cluster"></a>从群集中访问文件
 
-可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用 wasb: 前缀的未加密访问和使用 wasbs 的 TLS 加密访问** **。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
+可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用 wasb: 前缀的未加密访问和使用 wasbs 的 TLS 加密访问   。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
 
-* **使用完全限定的名称**。 使用此方法时，需提供要访问的文件的完整路径。
+* **使用完全限定的名称** 。 使用此方法时，需提供要访问的文件的完整路径。
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **使用缩短的路径格式**。 使用此方法时，需将群集根的路径替换为：
+* **使用缩短的路径格式** 。 使用此方法时，需将群集根的路径替换为：
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **使用相对路径**。 使用此方法时，仅需提供要访问的文件的相对路径。
+* **使用相对路径** 。 使用此方法时，仅需提供要访问的文件的相对路径。
 
     ```
     /<file.path>/
@@ -141,17 +141,17 @@ Microsoft 提供以下工具用于操作 Azure 存储：
 
 * 若要标识指向配置的默认存储的完整路径，请导航至：
 
-    “HDFS”**** > ****“配置”，然后在筛选器输入框中输入 `fs.defaultFS`。
+    “HDFS”  >  “配置”，然后在筛选器输入框中输入 `fs.defaultFS`。
 
 * 若要检查是否已将 wasb 存储配置为辅助存储器，请导航到
 
-    HDFS > Configs 并在筛选器输入框输入 `blob.core.windows.net`**** ****。
+    HDFS > Configs 并在筛选器输入框输入 `blob.core.windows.net`  。
 
 若要使用 Ambari REST API 获取路径，请参阅[获取默认存储](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
 
 ## <a name="blob-containers"></a>Blob 容器
 
-若要使用 Blob，必须先创建 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 作为此步骤的一部分，可指定在其中创建存储帐户的 Azure 区域。 群集和存储帐户必须位于同一区域。 Hive 元存储 SQL Server 数据库和 Apache Oozie 元存储 SQL Server 数据库必须位于同一区域。
+若要使用 Blob，必须先创建 [Azure 存储帐户](../storage/common/storage-account-create.md)。 作为此步骤的一部分，可指定在其中创建存储帐户的 Azure 区域。 群集和存储帐户必须位于同一区域。 Hive 元存储 SQL Server 数据库和 Apache Oozie 元存储 SQL Server 数据库必须位于同一区域。
 
 无论所创建的每个 Blob 位于何处，它都属于 Azure 存储帐户中的某个容器。 该容器可以是在 HDInsight 外部创建的现有 blob。 也可以是为 HDInsight 群集创建的容器。
 

@@ -2,151 +2,171 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2a8937debc38dab4b2d38b56d1c6a9c3edcbe2a7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 10/26/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 3942d4e7316c9617e1d2f61820cfa91b42d4b883
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508501"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625205"
 ---
-本文介绍如何开始通过 Node.js 使用自定义视觉客户端库来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Node.js 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
+本指南提供说明和示例代码，以帮助你开始使用适用于 Node.js 的自定义视觉客户端库来构建图像分类模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
+
+> [!NOTE]
+> 若要在不编写代码的情况下构建和训练分类模型，请改为参阅[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
+
+使用适用于 .NET 的自定义视觉客户端库可以：
+
+* 创建新的自定义视觉项目
+* 将标记添加到项目中
+* 上传和标记图像
+* 定型项目
+* 发布当前迭代
+* 测试预测终结点
+
+参考文档[（训练）](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [（预测）](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | 库源代码[（训练）](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [（预测）](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction)| 包 (npm) [（训练）](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [（预测）](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [示例](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 ## <a name="prerequisites"></a>先决条件
 
-- 安装了 [Node.js 8](https://www.nodejs.org/en/download/) 或更高版本。
-- 安装了 [npm](https://www.npmjs.com/)。
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 最新版本的 [Node.js](https://nodejs.org/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision"  title="创建自定义视觉资源"  target="_blank">创建自定义视觉资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以创建训练和预测资源并获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到自定义视觉。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
+## <a name="setting-up"></a>设置
 
-若要安装适用于 Node.js 的自定义视觉服务客户端库，请在 PowerShell 中运行以下命令：
+### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
+
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
+
+```console
+mkdir myapp && cd myapp
+```
+
+运行 `npm init` 命令以使用 `package.json` 文件创建一个 node 应用程序。 
+
+```console
+npm init
+```
+
+### <a name="install-the-client-library"></a>安装客户端库
+
+若要使用适用于 Node.js 的自定义视觉编写图像分析应用，需要自定义视觉 NPM 包。 若要安装它们，请在 PowerShell 中运行以下命令：
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
+应用的 `package.json` 文件将使用依赖项进行更新。
 
-[!INCLUDE [node-get-images](../../includes/node-get-images.md)]
+创建一个名为 `index.js` 的文件，并导入以下库：
 
-## <a name="add-the-code"></a>添加代码
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_imports)]
 
-在首选项目目录中创建名为 sample.js  的新文件。
 
-### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
+> [!TIP]
+> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js) 上找到它，其中包含此快速入门中的代码示例。
 
-将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在相应的定义中插入订阅密钥，并将 sampleDataRoot 路径值设置为图像文件夹路径。 请确保终结点值与你在 [Customvision.ai](https://www.customvision.ai/) 创建的训练和预测终结点匹配。 请注意，创建对象检测和图像分类项目之间的区别是 **createProject** 调用中指定的域。
+为资源的 Azure 终结点和密钥创建变量。 
 
-```javascript
-const util = require('util');
-const fs = require('fs');
-const TrainingApi = require("@azure/cognitiveservices-customvision-training");
-const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
-const msRest = require("@azure/ms-rest-js");
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_creds)]
 
-const setTimeoutPromise = util.promisify(setTimeout);
+> [!IMPORTANT]
+> 转到 Azure 门户。 如果在“先决条件”部分中创建的 [产品名称] 资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
+>
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
-const trainingKey = "<your training key>";
-const predictionKey = "<your prediction key>";
-const predictionResourceId = "<your prediction resource id>";
-const sampleDataRoot = "<path to image files>";
+此外，为项目名称添加字段，并为异步调用添加超时参数。
 
-const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_vars)]
 
-const publishIterationName = "classifyModel";
 
-const credentials = new msRest.ApiKeyCredentials({ inHeader: { "Training-key": trainingKey } });
-const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
+## <a name="object-model"></a>对象模型
 
-(async () => {
-    console.log("Creating project...");
-    const sampleProject = await trainer.createProject("Sample Project");
-```
+|名称|说明|
+|---|---|
+|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | 此类处理模型的创建、训练和发布。 |
+|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| 此类处理用于图像分类预测的模型查询。|
+|[预测](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| 此接口定义对单一图像的单一预测。 它包括对象 ID 和名称的属性，以及可信度分数。|
 
-### <a name="create-tags-in-the-project"></a>在项目中创建标记
+## <a name="code-examples"></a>代码示例
 
-若要在项目中创建分类标记，请将以下代码添加到 sample.js  末尾：
+这些代码片段演示如何使用适用于 JavaScript 的自定义视觉客户端库执行以下任务：
 
-```javascript
-    const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
-    const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
-```
+* [对客户端进行身份验证](#authenticate-the-client)
+* [创建新的自定义视觉项目](#create-a-new-custom-vision-project)
+* [将标记添加到项目中](#add-tags-to-the-project)
+* [上传和标记图像](#upload-and-tag-images)
+* [定型项目](#train-the-project)
+* [发布当前迭代](#publish-the-current-iteration)
+* [测试预测终结点](#test-the-prediction-endpoint)
 
-### <a name="upload-and-tag-images"></a>上传和标记图像
+## <a name="authenticate-the-client"></a>验证客户端
 
-要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。 最多可以在单个批次中上传 64 个图像。
+使用终结点和密钥实例化客户端对象。 使用你的密钥创建 ApiKeyCredentials 对象，并将其用于终结点，以创建 [TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) 和 [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) 对象。
 
-> [!NOTE]
-> 需根据此前下载认知服务 Node.js SDK 示例项目的位置将 sampleDataRoot  更改为图像的路径。
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_auth)]
 
-```javascript
-    console.log("Adding images...");
-    let fileUploadPromises = [];
-    
-    const hemlockDir = `${sampleDataRoot}/Hemlock`;
-    const hemlockFiles = fs.readdirSync(hemlockDir);
-    hemlockFiles.forEach(file => {
-        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${hemlockDir}/${file}`), { tagIds: [hemlockTag.id] }));
-    });
-    
-    const cherryDir = `${sampleDataRoot}/Japanese Cherry`;
-    const japaneseCherryFiles = fs.readdirSync(cherryDir);
-    japaneseCherryFiles.forEach(file => {
-        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${cherryDir}/${file}`), { tagIds: [cherryTag.id] }));
-    });
-    
-    await Promise.all(fileUploadPromises);
-```
 
-### <a name="train-the-classifier-and-publish"></a>训练分类器和发布
+## <a name="create-a-new-custom-vision-project"></a>创建新的自定义视觉项目
 
-此代码创建预测模型的第一个迭代，然后将该迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
+编写新函数，使其包含所有自定义视觉函数调用。 添加以下代码以创建新的自定义视觉服务项目。
 
-```javascript
-    console.log("Training...");
-    let trainingIteration = await trainer.trainProject(sampleProject.id);
-    
-    // Wait for training to complete
-    console.log("Training started...");
-    while (trainingIteration.status == "Training") {
-        console.log("Training status: " + trainingIteration.status);
-        await setTimeoutPromise(1000, null);
-        trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
-    }
-    console.log("Training status: " + trainingIteration.status);
-    
-    // Publish the iteration to the end point
-    await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
-```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>获取并使用预测终结点上发布的迭代
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_create)]
 
-若要将图像发送到预测终结点并检索预测，请将以下代码添加到文件末尾：
 
-```javascript
-    const predictor_credentials = new msRest.ApiKeyCredentials({ inHeader: { "Prediction-key": predictionKey } });
-    const predictor = new PredictionApi.PredictionAPIClient(predictor_credentials, endPoint);
-    const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_image.jpg`);
+## <a name="add-tags-to-the-project"></a>将标记添加到项目中
 
-    const results = await predictor.classifyImage(sampleProject.id, publishIterationName, testFile);
+若要在项目中创建分类标记，请将以下代码添加到你的函数：
 
-    // Step 6. Show results
-    console.log("Results:");
-    results.predictions.forEach(predictedResult => {
-        console.log(`\t ${predictedResult.tagName}: ${(predictedResult.probability * 100.0).toFixed(2)}%`);
-    });
-})()
-```
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_tags)]
+
+
+## <a name="upload-and-tag-images"></a>上传和标记图像
+
+首先，下载此项目的示例图像。 将[示例图像文件夹](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)的内容保存到本地设备。
+
+要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_upload)]
+
+> [!IMPORTANT]
+> 需根据下载认知服务 Python SDK 示例存储库的位置更改图像 (`sampleDataRoot`) 的路径。
+
+## <a name="train-the-project"></a>定型项目
+
+此代码用于创建预测模型的第一次迭代。 
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_train)]
+
+## <a name="publish-the-current-iteration"></a>发布当前迭代
+
+此代码用于将训练好的迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_publish)]
+
+
+## <a name="test-the-prediction-endpoint"></a>测试预测终结点
+
+若要将图像发送到预测终结点并检索预测，请将以下代码添加到你的函数。 
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_test)]
+
+然后，关闭你的自定义视觉函数并调用它。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_function_close)]
+
 
 ## <a name="run-the-application"></a>运行应用程序
 
-运行 *sample.js*。
+在快速入门文件中使用 `node` 命令运行应用程序。
 
-```shell
-node sample.js
+```console
+node index.js
 ```
 
 应用程序的输出应类似于以下文本：
@@ -165,7 +185,7 @@ Results:
          Japanese Cherry: 0.01%
 ```
 
-然后，可以验证测试图像（在 **<base_image_url>/Images/Test/** 中找到）是否已正确标记。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
+然后，可以验证是否已正确标记（在 **<sampleDataRoot>/Test/** 中找到的）测试图像。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
@@ -175,3 +195,8 @@ Results:
 
 > [!div class="nextstepaction"]
 > [测试和重新训练模型](../../test-your-model.md)
+
+* 什么是自定义视觉？
+* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js) 上找到此示例的源代码
+* [SDK 参考文档（训练）](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK 参考文档（预测）](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

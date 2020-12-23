@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: 9b151e566f0cc3e086277c101a796e7dde059ef9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442577"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791760"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>配置和管理内容参考信息 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "91442577"
 
 - [手动优化](performance-guidance.md)
 - [使用 DMV 监视性能](monitoring-with-dmvs.md)
-- [使用查询存储监视性能](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [使用查询存储监视性能](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [启用自动优化](automatic-tuning-enable.md)来让 Azure SQL 数据库优化工作负荷的性能。
 - [启用自动优化的电子邮件通知](automatic-tuning-email-notifications-configure.md)以获取有关优化建议的信息。
 - [应用性能建议](database-advisor-find-recommendations-portal.md)并优化数据库。
@@ -84,7 +84,7 @@ ms.locfileid: "91442577"
 - [SQL 数据同步](sql-data-sync-data-sql-server-sql-database.md)
 - [Data Sync Agent](sql-data-sync-agent-overview.md)
 - [复制架构更改](sql-data-sync-update-sync-schema.md)
-- [使用 OMS 进行监视](sql-data-sync-monitor-sync.md)
+- [使用 OMS 进行监视](./monitor-tune-overview.md)
 - [数据同步最佳做法](sql-data-sync-best-practices.md)
 - [数据同步故障排除](sql-data-sync-troubleshoot.md)
 

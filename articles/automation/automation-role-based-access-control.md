@@ -1,21 +1,21 @@
 ---
 title: 在 Azure 自动化中管理角色权限和安全性
-description: 本文介绍如何使用 azure RBAC)  (azure 基于角色的访问控制，以启用对 Azure 资源的访问管理。
+description: 本文介绍如何使用 Azure 基于角色的访问控制 (Azure RBAC)，这种访问控制可用于对 Azure 资源进行访问管理。
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716163"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003695"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
-Azure RBAC) 的 azure 基于角色的访问控制可用于对 Azure 资源进行访问管理 (。 使用 [AZURE RBAC](../role-based-access-control/overview.md)，可以在团队中对职责进行隔离，只向用户、组和应用程序授予执行作业所需的访问权限。 可以使用 Azure 门户、Azure 命令行工具或 Azure 管理 API 将基于角色的访问权限授予用户。
+Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行访问管理。 使用 [Azure RBAC](../role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅向用户、组和应用程序授予执行作业所需的访问权限。 可以使用 Azure 门户、Azure 命令行工具或 Azure 管理 API 将基于角色的访问权限授予用户。
 
 ## <a name="roles-in-automation-accounts"></a>自动化帐户中的角色
 
@@ -272,7 +272,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ## <a name="configure-azure-rbac-for-your-automation-account"></a>为自动化帐户配置 Azure RBAC
 
-以下部分说明如何通过 [Azure 门户](#configure-azure-rbac-using-the-azure-portal) 和 [PowerShell](#configure-azure-rbac-using-powershell)在自动化帐户上配置 Azure RBAC。
+以下部分演示如何通过 [Azure 门户](#configure-azure-rbac-using-the-azure-portal)和 [PowerShell](#configure-azure-rbac-using-powershell) 在自动化帐户上配置 Azure RBAC。
 
 ### <a name="configure-azure-rbac-using-the-azure-portal"></a>使用 Azure 门户配置 Azure RBAC
 
@@ -400,7 +400,7 @@ Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -R
 
 ## <a name="configure-azure-rbac-for-runbooks"></a>为 runbook 配置 Azure RBAC
 
-Azure 自动化允许将 Azure 角色分配给特定的 runbook。 若要执行此操作，运行以下脚本将用户添加到特定 Runbook。 自动化帐户管理员或租户管理员可以运行此脚本。
+通过 Azure 自动化，可以将 Azure 角色分配给特定的 runbook。 若要执行此操作，运行以下脚本将用户添加到特定 Runbook。 自动化帐户管理员或租户管理员可以运行此脚本。
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -423,7 +423,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 运行脚本后，用户就可以登录到 Azure 门户并选择“所有资源”。 在列表中，用户可以看到以自动化 Runbook 操作员身份添加的 Runbook。
 
-![在门户中为 Azure RBAC Runbook](./media/automation-role-based-access-control/runbook-rbac.png)
+![门户中的 Runbook Azure RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>自动化操作员角色的用户体验 - Runbook
 
@@ -433,6 +433,6 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关使用 PowerShell 的 Azure RBAC 的详细信息，请参阅 [使用 Azure PowerShell 添加或删除 azure 角色分配](../role-based-access-control/role-assignments-powershell.md)。
+* 若要详细了解使用 PowerShell 的 Azure RBAC，请参阅[使用 Azure PowerShell 添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-powershell.md)。
 * 有关 Runbook 类型的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)。
 * 若要启动 Runbook，请参阅[在 Azure 自动化中启动 Runbook](start-runbooks.md)。

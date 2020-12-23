@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 15396467e92b3e035add03d0d29888558571aa2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711232"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965623"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
 
@@ -44,7 +44,7 @@ Azure 应用服务目前不支持反向 DNS。
 例如：假定 PublicIpAddress 资源的 DNS 名称为 contosoapp1.northus.cloudapp.azure.com，IP 地址为 23.96.52.53。 PublicIpAddress 的 ReverseFqdn 可指定为：
 * PublicIpAddress 的 DNS 名称 contosoapp1.northus.cloudapp.azure.com
 * 同一订阅中另一个 PublicIpAddress 的 DNS 名称，如 contosoapp2.westus.cloudapp.azure.com
-* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 contosoapp1.northus.cloudapp.azure.com 或同一订阅中另一个 PublicIpAddress 的 CNAME**。
+* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 contosoapp1.northus.cloudapp.azure.com 或同一订阅中另一个 PublicIpAddress 的 CNAME。
 * 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 IP 地址 23.96.52.53 或同一订阅中另一个 PublicIpAddress 的 IP 地址的 A 记录  。
 
 相同的约束也适用于云服务的反向 DNS。
@@ -247,11 +247,10 @@ FQDN 以正向顺序指定，且必须以点号结尾（例如“app1.contoso.co
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>是否可以从 Azure 计算服务将电子邮件发送到外部域？
 
-直接从 Azure 部署发送电子邮件的技术能力取决于订阅类型。 无论是哪种订阅类型，Microsoft 都建议使用受信任的邮件中继服务来发送邮件。 有关更多详细信息，请参阅 [Enhanced Azure Security for sending Emails – November 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/)（增强 Azure 发送电子邮件的安全性 - 2017 年 11 月更新）。
+直接从 Azure 部署发送电子邮件的技术能力取决于订阅类型。 无论是哪种订阅类型，Microsoft 都建议使用受信任的邮件中继服务来发送邮件。 有关更多详细信息，请参阅 [Enhanced Azure Security for sending Emails – November 2017 Update](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)（增强 Azure 发送电子邮件的安全性 - 2017 年 11 月更新）。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
 <br>
 了解如何[在 Azure DNS 中为 ISP 分配的 IP 范围托管反向查找区域](dns-reverse-dns-for-azure-services.md)。
-

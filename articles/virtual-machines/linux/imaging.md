@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89319536"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842611"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
 
@@ -46,7 +46,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 
 ### <a name="generalized-images"></a>通用映像
 
-通用映像在首次启动时需要完成设置。 例如，在首次启动时，设置主机名、管理员用户和其他特定于 VM 的配置。 需要多次重用映像以及在创建期间传入参数时，此类映像非常有用。 如果通用映像包含 Azure 代理，则代理将处理参数，并向平台返回指示初始配置已完成的信号。 此过程称为“预配”。 
+通用映像在首次启动时需要完成设置。 例如，在首次启动时，设置主机名、管理员用户和其他特定于 VM 的配置。 需要多次重用映像以及在创建期间传入参数时，此类映像非常有用。 如果通用映像包含 Azure 代理，则代理将处理参数，并向平台返回指示初始配置已完成的信号。 此过程称为“预配”[](./provisioning.md)。 
 
 预配要求映像中包含配置程序。 以下两个配置程序可供使用：
 - [Azure Linux 代理](../extensions/agent-linux.md)
@@ -83,7 +83,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 - 支持映像全局复制。
 - 对映像进行版本控制和分组，以便于管理。
 - 在支持可用性区域的区域中，支持具有区域冗余存储 (ZRS) 的高可用性映像。 ZRS 提高了针对区域性故障的恢复能力。
-- 使用 RBAC 在订阅之间，甚至在 Active Directory (AD) 租户之间共享。
+- 使用 Azure RBAC 在订阅之间，甚至在 Active Directory (AD) 租户之间共享。
 - 使用每个区域中的映像副本缩放部署。
 
 概括而言，创建的 SIG 包含：
@@ -94,7 +94,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 
 ## <a name="hyper-v-generation"></a>Hyper-V 代系
 
-Azure 支持 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)。Gen2 是最新一代的 Hyper-V，与 Gen1 相比提供了更多功能， 例如更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些特性。 有关详细信息，请参阅“特性和功能”部分。 有关详细信息，请参阅此[文章](../windows/generation-2.md)。 如果需要其他功能，请创建 Gen2 映像。
+Azure 支持 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)。Gen2 是最新一代的 Hyper-V，与 Gen1 相比提供了更多功能， 例如更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些特性。 有关详细信息，请参阅“特性和功能”部分。 有关详细信息，请参阅此[文章](../generation-2.md)。 如果需要其他功能，请创建 Gen2 映像。
 
 如果仍需要创建自己的映像，请确保映像符合[映像先决条件](./create-upload-generic.md)，并将其上传到 Azure。 以下是分发特定要求：
 

@@ -5,16 +5,16 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119304"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931361"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教程：在 ARM 模板中使用条件
 
-了解如何根据 Azure 资源管理器 (ARM) 模板中的条件部署 Azure 资源。
+了解如何根据 Azure 资源管理器模板（ARM 模板）中的条件部署 Azure 资源。
 
 [设置资源部署顺序](./template-tutorial-create-templates-with-dependent-resources.md)教程介绍如何创建虚拟机、虚拟网络以及其他一些依赖资源（包括存储帐户）。 无需每次都创建新的存储帐户，可让用户选择是创建新的存储帐户还是使用现有的存储帐户。 为实现此目的，需定义附加的参数。 如果参数值为“new”，则创建新存储帐户。 否则，将使用具有所提供名称的现有存储帐户。
 
@@ -41,7 +41,7 @@ ms.locfileid: "86119304"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```console
@@ -88,7 +88,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 1. 在整个模板中，将三个 **variables('storageAccountName')** 替换为 **parameters('storageAccountName')** 。
 1. 删除以下变量定义：
 
-    ![资源管理器模板使用条件关系图](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![突出显示需要删除的变量定义的屏幕截图。](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. 将以下两个参数添加到 parameters 节的开头：
 
@@ -121,7 +121,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
     更新的存储帐户定义如下所示：
 
-    ![在资源管理器中使用条件](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+    ![显示更新的存储帐户定义的屏幕截图。](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
 1. 使用以下值更新虚拟机资源定义的 **storageUri** 属性：
 
     ```json

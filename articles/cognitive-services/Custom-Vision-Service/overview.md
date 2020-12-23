@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 09/14/2020
+ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像标识符, 图像识别应用, 自定义视觉
-ms.openlocfilehash: 47227a60b1ed45499afdb42fbc062abc5ae51ff9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7274fed961c4bbac8841e1c741f54031614cea5c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605371"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562984"
 ---
 # <a name="what-is-custom-vision"></a>什么是自定义视觉？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 自定义视觉是一种图像识别服务，可用于构建、部署和改进你自己的图像标识符。 图像标识符根据图像的视觉特征将标签（表示类或对象）应用于图像。 与[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服务不同，自定义视觉允许你指定标签并训练自定义模型以对其进行检测。
+Azure 自定义视觉是一种图像识别服务，可用于构建、部署和改进你自己的图像标识符。 图像标识符根据图像的视觉特征将标签（表示类或对象）应用于图像。 与[计算机视觉](../computer-vision/overview.md)服务不同，自定义视觉允许你指定标签并训练自定义模型以对其进行检测。
 
 ## <a name="what-it-does"></a>作用
 
@@ -31,7 +31,7 @@ Azure 自定义视觉是一种图像识别服务，可用于构建、部署和�
 
 ### <a name="classification-and-object-detection"></a>分类和对象检测
 
-可以将自定义视觉功能分为两种功能。 **图像分类**可将一个或多个标签应用到图像。 **对象检测**与之类似，但还在图像中返回坐标，坐标中可以找到应用的标签。
+可以将自定义视觉功能分为两种功能。 **图像分类** 可将一个或多个标签应用到图像。 **对象检测** 与之类似，但还在图像中返回坐标，坐标中可以找到应用的标签。
 
 ### <a name="optimization"></a>Optimization
 

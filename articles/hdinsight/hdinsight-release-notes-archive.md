@@ -7,19 +7,134 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 08/09/2020
-ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.openlocfilehash: d5103cbbeb5a8ab12f9ce497ee4ed227ca180728
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442383"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350290"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
 ## <a name="summary"></a>摘要
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
+
+## <a name="release-date-11092020"></a>发布日期：11/09/2020
+
+此版本适用于 HDInsight 3.6 和 HDInsight 4.0。 HDInsight 发行版在几天后即会在所有区域中推出。 此处的发行日期是指在第一个区域中的发行日期。 如果看不到以下更改，请耐心等待，几天后发行版会在你所在的区域推出。
+
+### <a name="new-features"></a>新增功能
+#### <a name="hdinsight-identity-broker-hib-is-now-ga"></a>HDInsight 标识代理 (HIB) 现已正式发布
+在此版本中，支持 ESP 群集的 OAuth 身份验证的 HDInsight Identity Broker (HIB) 现已正式发布。 此版本后创建的 HIB 群集将具有最新的 HIB 功能：
+- 高可用性 (HA) 
+- 支持多因素身份验证 (MFA) 
+- 联合用户不用密码哈希同步登录到 AAD-DS 登录有关详细信息，请参阅 [HIB 文档](./domain-joined/identity-broker.md)。
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，该服务将逐渐迁移到 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。 整个过程可能需要几个月。 迁移区域和订阅后，新创建的 HDInsight 群集将在虚拟机规模集上运行，而无需客户执行任何操作。 预计不会有中断性变更。
+
+### <a name="deprecation"></a>弃用
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>弃用 HDInsight 3.6 ML 服务群集
+HDInsight 3.6 ML 服务群集类型将在12月 31 2020 结束支持。 31 2020 年12月之后，客户不会创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
+
+#### <a name="disabled-vm-sizes"></a>禁用的 VM 大小
+自 16 2020 年11月起，HDInsight 将阻止使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集的新客户。 过去三个月内使用这些 VM 大小的现有客户将不会受到影响。 从 9 2021 年1月开始，HDInsight 会阻止使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集的所有客户。 现有群集将按原样运行。 请考虑移动到 HDInsight 4.0，以避免潜在的系统/支持中断。
+
+### <a name="behavior-changes"></a>行为更改
+此版本没有行为变更。
+
+### <a name="upcoming-changes"></a>即将推出的更改
+即将发布的版本中将推出以下变更。
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>能够为 Spark、Hadoop 和 ML 服务选择不同的 Zookeeper 虚拟机大小
+目前，HDInsight 不支持为 Spark、Hadoop 和 ML 服务群集类型自定义 Zookeeper 节点大小。 默认情况下为 A2_v2/A2 虚拟机大小（免费提供）。 在即将发布的版本中，可以选择最适合自己方案的 Zookeeper 虚拟机大小。 虚拟机大小不是 A2_v2/A2 的 Zookeeper 节点需要付费。 A2_v2 和 A2 虚拟机仍免费提供。
+
+#### <a name="default-cluster-version-will-be-changed-to-40"></a>默认群集版本将更改为4。0
+从2021年2月开始，HDInsight 群集的默认版本将从3.6 更改为4.0。 有关可用版本的详细信息，请参阅 [可用版本](./hdinsight-component-versioning.md#available-versions)。 详细了解[HDInsight 4.0](./hdinsight-version-release.md)中的新增功能
+
+#### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>3.6 年 6 30 2021 月的 HDInsight 结束支持
+HDInsight 3.6 将提供支持。 启动窗体6月 30 2021，客户无法创建新的 HDInsight 3.6 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请考虑移动到 HDInsight 4.0，以避免潜在的系统/支持中断。
+
+### <a name="bug-fixes"></a>Bug 修复
+HDInsight 会持续改善群集的可靠性和性能。 
+#### <a name="fix-issue-for-restarting-vms-in-cluster"></a>解决在群集中重新启动 Vm 时出现的问题
+已修复群集中重新启动 Vm 的问题，你可以使用 [PowerShell 或 REST API 再次重新启动群集中的节点](./cluster-reboot-vm.md) 。
+
+### <a name="component-version-change"></a>组件版本更改
+此发行版未发生组件版本更改。 可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+
+## <a name="release-date-10082020"></a>发行日期：2020/10/08
+
+此版本适用于 HDInsight 3.6 和 HDInsight 4.0。 HDInsight 发行版在几天后即会在所有区域中推出。 此处的发行日期是指在第一个区域中的发行日期。 如果看不到以下更改，请耐心等待，几天后发行版会在你所在的区域推出。
+
+### <a name="new-features"></a>新增功能
+#### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>没有公共 IP 和专用链接的 HDInsight 专用群集（预览版）
+HDInsight 现支持创建没有公共 IP 和专用链接（用于访问相应群集）的群集（处于预览状态）。 客户可以使用新的高级网络设置来创建没有公共 IP 的完全独立的群集，并可以使用自己的专用终结点来访问该群集。 
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，该服务将逐渐迁移到 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。 整个过程可能需要几个月。 迁移区域和订阅后，新创建的 HDInsight 群集将在虚拟机规模集上运行，而无需客户执行任何操作。 预计不会有中断性变更。
+
+### <a name="deprecation"></a>弃用
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>弃用 HDInsight 3.6 ML 服务群集
+HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 之后，客户将不会创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
+
+### <a name="behavior-changes"></a>行为更改
+此版本没有行为变更。
+
+### <a name="upcoming-changes"></a>即将推出的更改
+即将发布的版本中将推出以下变更。
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>能够为 Spark、Hadoop 和 ML 服务选择不同的 Zookeeper 虚拟机大小
+目前，HDInsight 不支持为 Spark、Hadoop 和 ML 服务群集类型自定义 Zookeeper 节点大小。 默认情况下为 A2_v2/A2 虚拟机大小（免费提供）。 在即将发布的版本中，可以选择最适合自己方案的 Zookeeper 虚拟机大小。 虚拟机大小不是 A2_v2/A2 的 Zookeeper 节点需要付费。 A2_v2 和 A2 虚拟机仍免费提供。
+
+### <a name="bug-fixes"></a>Bug 修复
+HDInsight 会持续改善群集的可靠性和性能。 
+
+### <a name="component-version-change"></a>组件版本更改
+此发行版未发生组件版本更改。 可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+
+## <a name="release-date-09282020"></a>发行日期：2020/09/28
+
+此版本适用于 HDInsight 3.6 和 HDInsight 4.0。 HDInsight 发行版在几天后即会在所有区域中推出。 此处的发行日期是指在第一个区域中的发行日期。 如果看不到以下更改，请耐心等待，几天后发行版会在你所在的区域推出。
+
+### <a name="new-features"></a>新增功能
+#### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>对于 HDInsight 4.0，Interactive Query 的自动缩放现已正式发布
+对于 HDInsight 4.0，Interactive Query 群集类型的自动缩放现已正式发布 (GA)。 2020 年 8 月 27 日之后创建的所有 Interactive Query 4.0 群集都将对自动缩放功能提供 GA 支持。
+
+#### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase 群集支持高级 ADLS Gen2
+HDInsight 现在支持将高级 ADLS Gen2 作为 HDInsight HBase 3.6 和 4.0 群集的主要存储帐户。 不仅可以[加速写入](./hbase/apache-hbase-accelerated-writes.md)，还可以获得更佳的 HBase 群集性能。
+
+#### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Azure 容错域上的 Kafka 分区分发
+容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 对之前的 HDInsight，Kafka 可能将所有分区副本存储在同一容错域中。 从此版本开始，HDInsight 现支持根据 Azure 容错域自动分发 Kafka 分区。 
+
+#### <a name="encryption-in-transit"></a>传输中加密
+客户可以使用 IPSec 加密和平台管理的密钥在群集节点之间启用传输中加密。 可以在创建群集时启用此选项。 查看有关[如何启用传输中加密的更多详细信息](./domain-joined/encryption-in-transit.md)。
+
+#### <a name="encryption-at-host"></a>主机加密
+启用主机加密时，存储在 VM 主机上的数据将静态加密，且已加密的数据将流向存储服务。 在此版本中，可以在创建群集时在临时数据磁盘上启用主机加密。 只有[有限区域中的某些 VM SKU](../virtual-machines/disks-enable-host-based-encryption-portal.md) 上支持主机加密。 HDInsight 支持[以下节点配置和 SKU](./hdinsight-supported-node-configuration.md)。 查看有关[如何启用主机加密](./disk-encryption.md#encryption-at-host-using-platform-managed-keys)的更多详细信息。
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，该服务将逐渐迁移到 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。 整个过程可能需要几个月。 迁移区域和订阅后，新创建的 HDInsight 群集将在虚拟机规模集上运行，而无需客户执行任何操作。 预计不会有中断性变更。
+
+### <a name="deprecation"></a>弃用
+此版本没有任何弃用功能。
+
+### <a name="behavior-changes"></a>行为更改
+此版本没有行为变更。
+
+### <a name="upcoming-changes"></a>即将推出的更改
+即将发布的版本中将推出以下变更。
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>能够为 Spark、Hadoop 和 ML 服务选择不同的 Zookeeper SKU
+HDInsight 目前不支持更改 Spark、Hadoop 和 ML 服务群集类型的 Zookeeper SKU。 它为 Zookeeper 节点使用 A2_v2/A2 SKU，客户无需对此付费。 在即将发布的版本中，客户可以按需更改 Spark、Hadoop 和 ML 服务的 Zookeeper SKU。 会对不使用 A2_v2/A2 SKU 的 Zookeeper 节点收取费用。 默认 SKU 仍为 A2_V2/A2 并免费。
+
+### <a name="bug-fixes"></a>Bug 修复
+HDInsight 会持续改善群集的可靠性和性能。 
+
+### <a name="component-version-change"></a>组件版本更改
+此发行版未发生组件版本更改。 可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 
 ## <a name="release-date-08092020"></a>发行日期：2020/08/09
 
@@ -47,7 +162,7 @@ Apache Tez 视图用于跟踪和调试 Hive Tez 作业的执行情况。 从此�
 
 ### <a name="behavior-changes"></a>行为更改
 #### <a name="ambari-stack-version-change"></a>Ambari 堆栈版本更改
-在此版本中，Ambari 版本更改为4.1。 可以在 Ambari： Ambari > 用户 > 版本中验证 (HDInsight 4.1) 的堆栈版本。
+在此版本中，Ambari 版本从 2.x.x.x 更改为 4.1。 可以在 Ambari 中验证堆栈版本 (HDInsight 4.1)：“Ambari”>“用户”>“版本”。
 
 ### <a name="upcoming-changes"></a>即将推出的更改
 没有需要注意的即将发生的中断性变更。
@@ -69,11 +184,11 @@ HDInsight 会持续改善群集的可靠性和性能。
 * [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
 
 ### <a name="component-version-change"></a>组件版本更改
-此发行版未发生组件版本更改。 可以在[此文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+此发行版未发生组件版本更改。 可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 
 ### <a name="known-issues"></a>已知问题
 
-Azure 门户中已解决了问题，即用户使用 SSH 身份验证类型的公钥创建 Azure HDInsight 群集时遇到错误。 当用户单击“查看 + 创建”时，他们将收到错误“不得包含 SSH 用户名中的任意三个连续字符。” 此问题已修复，但可能要求你通过按 CTRL + F5 加载更正的视图来刷新浏览器缓存。 解决此问题的方法是使用 ARM 模板创建群集。 
+Azure 门户中已修复了一个问题，即用户在使用 SSH 身份验证类型的公钥创建 Azure HDInsight 群集时会遇到错误。 当用户单击“查看 + 创建”时，他们将收到错误“不得包含 SSH 用户名中的任意三个连续字符。” 此问题已修复，但可能要求你通过按 CTRL + F5 加载更正的视图来刷新浏览器缓存。 解决此问题的方法是使用 ARM 模板创建群集。 
 
 ## <a name="release-date-07132020"></a>发行日期：2020/07/13
 
@@ -81,10 +196,10 @@ Azure 门户中已解决了问题，即用户使用 SSH 身份验证类型的公
 
 ### <a name="new-features"></a>新增功能
 #### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>支持 Microsoft Azure 客户密码箱
-Azure HDInsight 现在支持 Azure 客户密码箱。 客户可通过其提供的界面查看和批准/拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用它。 有关详细信息，请参阅 [Microsoft Azure 客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)。
+Azure HDInsight 现在支持 Azure 客户密码箱。 客户可通过其提供的界面查看和批准/拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用它。 有关详细信息，请参阅 [Microsoft Azure 客户密码箱](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview)。
 
 #### <a name="service-endpoint-policies-for-storage"></a>存储的服务终结点策略
-现在，客户可以在 HDInsight 群集子网上使用服务终结点策略 (SEP)。 详细了解 [Azure 服务终结点策略](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
+现在，客户可以在 HDInsight 群集子网上使用服务终结点策略 (SEP)。 详细了解 [Azure 服务终结点策略](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。
 
 ### <a name="deprecation"></a>弃用
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>弃用 HDInsight 3.6 Spark 群集中的 Spark 2.1 和 2.2
@@ -114,7 +229,7 @@ HDInsight 会持续改善群集的可靠性和性能。
 Zeppelin 过去会在字符串格式的表输出中错误地截断起始零。 此版本已修复此问题。
 
 ### <a name="component-version-change"></a>组件版本更改
-此发行版未发生组件版本更改。 可以在[此文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+此发行版未发生组件版本更改。 可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 
 ## <a name="release-date-06112020"></a>发行日期：2020/06/11
 
@@ -122,7 +237,7 @@ Zeppelin 过去会在字符串格式的表输出中错误地截断起始零。 �
 
 ### <a name="new-features"></a>新增功能
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
-HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本起，新创建的 HDInsight 群集开始使用 Azure 虚拟机规模集。 此更改将逐步推出。 预计不会有中断性变更。 详细了解 [Azure 虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本起，新创建的 HDInsight 群集开始使用 Azure 虚拟机规模集。 此更改将逐步推出。 预计不会有中断性变更。 详细了解 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。
  
 #### <a name="reboot-vms-in-hdinsight-cluster"></a>重启 HDInsight 群集中的 VM
 在此版本中，我们支持重启 HDInsight 群集中的 VM 以重启无响应的节点。 目前只能通过 API 完成此操作，即将支持使用 PowerShell 和 CLI。 有关此 API 的详细信息，请参阅[此文档](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json)。
@@ -145,15 +260,15 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本起，新�
 头节点至少需要 4 核 VM，以确保 HDInsight 群集的高可用性和可靠性。 从 2020 年 4 月 6 日开始，客户只能选择至少有 4 个核心的 VM 作为新 HDInsight 群集的头节点。 现有群集将继续按预期方式运行。 
  
 #### <a name="cluster-worker-node-provisioning-change"></a>群集工作器节点预配更改
-当 80% 的工作器节点准备就绪时，群集将进入**可运行**阶段。 在此阶段中，客户可以执行所有数据平面操作，例如运行脚本和作业。 但客户不能执行任何控制平面操作，例如纵向扩展/缩减。 仅支持删除。
+当 80% 的工作器节点准备就绪时，群集将进入 **可运行** 阶段。 在此阶段中，客户可以执行所有数据平面操作，例如运行脚本和作业。 但客户不能执行任何控制平面操作，例如纵向扩展/缩减。 仅支持删除。
  
-在进入**可运行**阶段后，群集会再等待 60 分钟，等待的对象是其余的 20% 的工作器节点。 在 60 分钟结束时，即使仍有部分工作节点不可用，群集也会进入**正在运行**阶段。 在群集进入**正在运行**阶段后，你可以正常使用它。 控制平面操作（例如纵向扩展/缩减）和数据平面操作（例如运行脚本和作业）都会被接受。 如果所请求的某些工作器节点不可用，则群集会被标记为部分成功。 你需要为已成功部署的节点付费。 
+在进入 **可运行** 阶段后，群集会再等待 60 分钟，等待的对象是其余的 20% 的工作器节点。 在 60 分钟结束时，即使仍有部分工作节点不可用，群集也会进入 **正在运行** 阶段。 在群集进入 **正在运行** 阶段后，你可以正常使用它。 控制平面操作（例如纵向扩展/缩减）和数据平面操作（例如运行脚本和作业）都会被接受。 如果所请求的某些工作器节点不可用，则群集会被标记为部分成功。 你需要为已成功部署的节点付费。 
  
 #### <a name="create-new-service-principal-through-hdinsight"></a>通过 HDInsight 创建新的服务主体
-以前，在创建群集的过程中，客户可以创建新的服务主体来访问 Azure 门户中已连接的 ADLS 第 1 代帐户。 从 2020 年 6 月 15 日起，客户无法在 HDInsight 创建工作流中创建新的服务主体，我们只支持现有的服务主体。 请参阅[使用 Azure Active Directory 创建服务主体和证书](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+以前，在创建群集的过程中，客户可以创建新的服务主体来访问 Azure 门户中已连接的 ADLS 第 1 代帐户。 从 2020 年 6 月 15 日起，客户无法在 HDInsight 创建工作流中创建新的服务主体，我们只支持现有的服务主体。 请参阅[使用 Azure Active Directory 创建服务主体和证书](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 #### <a name="time-out-for-script-actions-with-cluster-creation"></a>创建群集时脚本操作的超时
-HDInsight 支持在创建群集的过程中运行脚本操作。 在此版本中，群集创建过程中的所有脚本操作都必须在 60 分钟内完成，否则会超时。提交到正在运行的群集的脚本操作不会受到影响。 请访问[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process)了解更多详细信息。
+HDInsight 支持在创建群集的过程中运行脚本操作。 在此版本中，群集创建过程中的所有脚本操作都必须在 60 分钟内完成，否则会超时。提交到正在运行的群集的脚本操作不会受到影响。 请访问[此处](./hdinsight-hadoop-customize-cluster-linux.md#script-action-in-the-cluster-creation-process)了解更多详细信息。
  
 ### <a name="upcoming-changes"></a>即将推出的更改
 没有需要注意的即将发生的中断性变更。
@@ -171,7 +286,7 @@ Spark 版本已从 2.4.0 升级到 2.4.4。
 #### <a name="kafka-210-to-211"></a>Kafka 2.1.0 到 2.1.1
 Kafka 版本已从 2.1.0 升级到 2.1.1。
  
-可以在[此文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本
+可以在[此文档](./hdinsight-component-versioning.md)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本
 
 ### <a name="known-issues"></a>已知问题
 
@@ -189,7 +304,7 @@ Kafka 版本已从 2.1.0 升级到 2.1.1。
 在此发行版中，客户只能为通过公共群集终结点建立的所有连接启用 TLS 1.2。 为了支持此方案，我们引入了新属性 **minSupportedTlsVersion**，在创建群集期间可以指定此属性。 如果不设置该属性，群集仍支持 TLS 1.0、1.1 和 1.2，这与当前的行为相同。 客户可以将此属性的值设置为“1.2”，这意味着群集仅支持 TLS 1.2 和更高版本。 有关详细信息，请参阅[传输层安全性](./transport-layer-security.md)。
 
 #### <a name="bring-your-own-key-for-disk-encryption"></a>为磁盘加密创建自己的密钥
-通过 Azure 存储服务加密 (SSE) 保护 HDInsight 中的所有托管磁盘。 这些磁盘上的数据默认已使用 Microsoft 托管的密钥进行加密。 从此发行版开始，可以创建自己的密钥 (BYOK) 进行磁盘加密，并使用 Azure Key Vault 管理该密钥。 BYOK 加密是创建群集期间完成的单步配置，不额外收费。 只需将 HDInsight 作为托管标识注册到 Azure Key Vault，并在创建群集时添加加密密钥。 有关详细信息，请参阅[客户管理的密钥磁盘加密](https://docs.microsoft.com/azure/hdinsight/disk-encryption)。
+通过 Azure 存储服务加密 (SSE) 保护 HDInsight 中的所有托管磁盘。 这些磁盘上的数据默认已使用 Microsoft 托管的密钥进行加密。 从此发行版开始，可以创建自己的密钥 (BYOK) 进行磁盘加密，并使用 Azure Key Vault 管理该密钥。 BYOK 加密是创建群集期间完成的单步配置，不额外收费。 只需将 HDInsight 作为托管标识注册到 Azure Key Vault，并在创建群集时添加加密密钥。 有关详细信息，请参阅[客户管理的密钥磁盘加密](./disk-encryption.md)。
 
 ### <a name="deprecation"></a>弃用
 此版本无弃用。 若要为即将到来的弃用做好准备，请参阅[即将推出的变更](#upcoming-changes)。
@@ -240,7 +355,7 @@ HDInsight 会持续改善群集的可靠性和性能。
 ### <a name="new-features"></a>新增功能
 
 #### <a name="service-tags"></a>服务标记
-服务标记通过使你轻松限制 Azure 服务的网络访问，以此简化 Azure 虚拟机和 Azure 虚拟网络的安全性。 你可在网络安全组 (NSG) 规则中使用服务标记，允许或拒绝全局或每个 Azure 区域的特定 Azure 服务流量。 Azure 会对每个标记下面的 IP 地址进行维护。 网络安全组 (NSG) 的 HDInsight 服务标记是运行状况和管理服务的 IP 地址组。 这些组有助于尽量降低创建安全规则时的复杂性。 HDInsight 客户可以通过 Azure 门户、PowerShell 和 REST API 启用服务标记。 有关详细信息，请参阅 [Azure HDInsight 的网络安全组 (NSG) 服务标记](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)。
+服务标记通过使你轻松限制 Azure 服务的网络访问，以此简化 Azure 虚拟机和 Azure 虚拟网络的安全性。 你可在网络安全组 (NSG) 规则中使用服务标记，允许或拒绝全局或每个 Azure 区域的特定 Azure 服务流量。 Azure 会对每个标记下面的 IP 地址进行维护。 网络安全组 (NSG) 的 HDInsight 服务标记是运行状况和管理服务的 IP 地址组。 这些组有助于尽量降低创建安全规则时的复杂性。 HDInsight 客户可以通过 Azure 门户、PowerShell 和 REST API 启用服务标记。 有关详细信息，请参阅 [Azure HDInsight 的网络安全组 (NSG) 服务标记](./hdinsight-service-tags.md)。
 
 #### <a name="custom-ambari-db"></a>自定义 Ambari DB
 通过 HDInsight，你现在可将自己的 SQL DB 用于 Apache Ambari。 可以通过 Azure 门户或资源管理器模板来配置此自定义 Ambari DB。  此功能可让你为处理和容量需求选择合适的 SQL DB。 你还可轻松升级以匹配业务增长需求。 有关详细信息，请参阅[使用自定义 Ambari 数据库设置 HDInsight 群集](hdinsight-custom-ambari-db.md)。
@@ -264,7 +379,7 @@ HDInsight 会持续改善群集的可靠性和性能。
 今年晚些时候，预计从 2020/6/30 开始，Azure HDInsight 将为所有 HTTPS 连接强制实行 TLS 2.1 或更高版本。 我们建议你确保所有客户端都已准备好处理 TLS 1.2 或更高版本。
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
-HDInsight 目前使用 Azure 虚拟机来预配群集。 从 2020 年 2 月开始（将在稍后传达确切日期），HDInsight 将改为使用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从 2020 年 2 月开始（将在稍后传达确切日期），HDInsight 将改为使用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。
 
 #### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 群集节点大小变更 
 在即将推出的版本中：
@@ -284,7 +399,7 @@ HDInsight 4.0 无组件版本变更。
 
 HDInsight 3.6 上的 Apache Zeppelin：0.7.0-->0.7.3. 
 
-可以在[此文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中获取最新的组件版本。
+可以在[此文档](./hdinsight-component-versioning.md)中获取最新的组件版本。
 
 ### <a name="new-regions"></a>新区域
 
@@ -304,7 +419,7 @@ HDInsight 标识中介 (HIB) 可让用户使用多重身份验证 (MFA) 登录�
 
 #### <a name="kafka-rest-api-proxy-preview"></a>Kafka Rest API 代理（预览版）
 
-Kafka Rest API 代理通过受保护的 AAD 授权和 OAuth 协议，为 Kafka 群集提供一键式的高可用性 REST 代理部署。 
+Kafka Rest API 代理通过安全 Azure AD 授权和 OAuth 协议，通过 Kafka 群集提供一次单击部署高可用性 REST 代理。 
 
 #### <a name="auto-scale"></a>自动缩放
 
@@ -312,19 +427,19 @@ Kafka Rest API 代理通过受保护的 AAD 授权和 OAuth 协议，为 Kafka �
 
 可以根据要求，在基于负载和基于计划的自动缩放之间进行选择。 基于负载的自动缩放可根据当前资源需求增大和缩小群集大小，而基于计划的自动缩放可根据预定义的计划更改群集大小。 
 
-适用于 HBase 和 LLAP 工作负荷的自动缩放支持也推出了公共预览版。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)。
+适用于 HBase 和 LLAP 工作负荷的自动缩放支持也推出了公共预览版。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](./hdinsight-autoscale-clusters.md)。
 
 #### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>适用于 Apache HBase 的 HDInsight 加速写入 
 
-加速写入使用 Azure 高级 SSD 托管磁盘，可以改善 Apache HBase 预写日志 (WAL) 的性能。 有关详细信息，请参阅[面向 Apache HBase 的 Azure HDInsight 加速写入](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)。
+加速写入使用 Azure 高级 SSD 托管磁盘，可以改善 Apache HBase 预写日志 (WAL) 的性能。 有关详细信息，请参阅[面向 Apache HBase 的 Azure HDInsight 加速写入](./hbase/apache-hbase-accelerated-writes.md)。
 
 #### <a name="custom-ambari-db"></a>自定义 Ambari DB
 
-HDInsight 现在提供新的容量，使客户能够使用自己的适用于 Ambari 的 SQL 数据库。 现在，客户可以选择适当的用于 Ambari 的 SQL 数据库，并根据自己的业务增长需求轻松对其进行升级。 部署是使用 Azure 资源管理器模板完成的。 有关详细信息，请参阅[使用自定义 Ambari 数据库设置 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)。
+HDInsight 现在提供新的容量，使客户能够使用自己的适用于 Ambari 的 SQL 数据库。 现在，客户可以选择适当的用于 Ambari 的 SQL 数据库，并根据自己的业务增长需求轻松对其进行升级。 部署是使用 Azure 资源管理器模板完成的。 有关详细信息，请参阅[使用自定义 Ambari 数据库设置 HDInsight 群集](./hdinsight-custom-ambari-db.md)。
 
 #### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>现已推出适用于 HDInsight 的 F 系列虚拟机
 
-F 系列虚拟机 (VM) 非常适合用于体验处理要求很低的 HDInsight。 根据每个 vCPU 的 Azure 计算单位 (ACU)，F 系列以较低的小时定价，在 Azure 产品组合中具有最高性价比。 有关详细信息，请参阅[为 Azure HDInsight 群集选择适当的 VM 大小](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size)。
+F 系列虚拟机 (VM) 非常适合用于体验处理要求很低的 HDInsight。 根据每个 vCPU 的 Azure 计算单位 (ACU)，F 系列以较低的小时定价，在 Azure 产品组合中具有最高性价比。 有关详细信息，请参阅[为 Azure HDInsight 群集选择适当的 VM 大小](./hdinsight-selecting-vm-size.md)。
 
 ### <a name="deprecation"></a>弃用
 
@@ -343,7 +458,7 @@ HDInsight 在群集中提供托管磁盘空间。 从此发行版开始，新建
 即将发布的版本中将发生以下更改。 
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
-HDInsight 目前使用 Azure 虚拟机来预配群集。 从 12 月开始，HDInsight 将改用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从 12 月开始，HDInsight 将改用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。
 
 #### <a name="hbase-20-to-21"></a>HBase 2.0 到 2.1
 在即将推出的 HDInsight 4.0 版本中，HBase 版本将从 2.0 升级到 2.1。
@@ -355,7 +470,7 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从 12 月开始，HDIn
 HDInsight 会持续改善群集的可靠性和性能。 
 
 ### <a name="component-version-change"></a>组件版本更改
-此版本未发生组件版本更改。 可在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+此版本未发生组件版本更改。 可在[此处](./hdinsight-component-versioning.md)查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 
 
 ## <a name="release-date-08072019"></a>发布日期：2019/08/07
@@ -477,17 +592,17 @@ Apache Storm 和机器学习服务在 HDInsight 4.0 中不可用。
 
 新的更新和功能划分为以下类别：
 
-*  ***更新 Hadoop 和其他开源项目*** - 除了超过 20 个开源项目的 1000 多个 bug 修复，此更新还包含 **Spark (2.3)** 和 **Kafka (1.0)** 的新版本。
+*  ***更新 Hadoop 和其他开源项目** _ - 除了超过 20 个开源项目的 1000 多个 bug 修复，此更新还包含 _Spark (2.3)* 和 Kafka (1.0) 的新版本。
 
     a.  [**Apache Spark 2.3 中的新增功能**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
     b.  [**Apache Kafka 1.0 中的新增功能**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***更新 R Server 9.1 到机器学习服务 9.3*** –在此版本中，我们将向数据科学家和工程师提供最优秀的开源，其中包含算法创新和易用性，并以 Apache Spark 的速度提供其首选语言。 此版本扩展了 R Server 的功能，添加了对 Python 的支持，群集名称因而从 R Server 更改为 ML Services。 
+*  ***将 R Server 9.1 更新到机器学习服务 9.3** _ –在此版本中，我们将向数据科学家和工程师提供最优秀的开源，其中包含算法创新和易用性，并以 Apache Spark 的速度提供其首选语言。 此版本扩展了 R Server 的功能，添加了对 Python 的支持，群集名称因而从 R Server 更改为 ML Services。 
 
-*  ***支持 Azure Data Lake Storage Gen2*** - HDInsight 将支持 Azure Data Lake Storage Gen2 的预览版本。 在可用区域中，客户可以选择将 ADLS Gen2 帐户作为 HDInsight 群集的主要存储或辅助存储。
+_  ***支持 Azure Data Lake Storage Gen2** _ - HDInsight 将支持 Azure Data Lake Storage Gen2 的预览版本。 在可用区域中，客户可以选择将 ADLS Gen2 帐户作为 HDInsight 群集的主要存储或辅助存储。
 
-*  ***HDInsight 企业安全性套餐更新（预览版）*** -（预览版）[虚拟网络服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)支持 Azure Blob 存储、ADLS Gen1、Cosmos DB 和 Azure DB。
+_  ***HDInsight 企业安全性套餐更新（预览版）** _ -（预览版）[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)支持 Azure Blob 存储、ADLS Gen1、Cosmos DB 和 Azure DB。
 
 ### <a name="component-versions"></a>组件版本
 
@@ -685,7 +800,7 @@ HDP 2.6.4 提供 Hadoop Common 2.7.3 和以下 Apache 修补程序：
 
 除以下修补程序以外，此版本还提供 Hive 1.2.1 和 Hive 2.1.0：
 
-**Hive 1.2.1 Apache 修补程序：**
+_Hive 1.2.1 Apache 修补程序：*
 
 -   [*HIVE-10697*](https://issues.apache.org/jira/browse/HIVE-10697)：ObjectInspectorConvertors\#UnionConvertor 执行错误的转换。
 
@@ -1588,7 +1703,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 | BUG-97605              | [HIVE-18858](https://issues.apache.org/jira/browse/HIVE-18858)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 提交 MR 作业时不会解析作业配置中的系统属性                                                                     |
 | BUG-97674              | [OOZIE-3186](https://issues.apache.org/jira/browse/OOZIE-3186)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Oozie 无法使用通过 jceks://file/... 链接的配置                                                                             |
 | BUG-97743              | 空值                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 部署 storm 拓扑时发生 java.lang.NoClassDefFoundError 异常                                                                        |
-| BUG-97756              | [PHOENIX-4576](https://issues.apache.org/jira/browse/PHOENIX-4576)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 修复主分支中失败的 LocalIndexSplitMergeIT 测试                                                                                      |
+| BUG-97756              | [PHOENIX-4576](https://issues.apache.org/jira/browse/PHOENIX-4576)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 修复 LocalIndexSplitMergeIT 测试失败 |
 | BUG-97771              | [HDFS-11711](https://issues.apache.org/jira/browse/HDFS-11711)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 发生“打开的文件过多”异常时 DN 不应删除块                                                                              |
 | BUG-97869              | [KNOX-1190](https://issues.apache.org/jira/browse/KNOX-1190)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Google OIDC 的 Knox SSO 支持已中断。                                                                                                    |
 | BUG-97879              | [PHOENIX-4489](https://issues.apache.org/jira/browse/PHOENIX-4489)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Phoenix MR 作业中的 HBase 连接泄漏                                                                                                       |
@@ -1884,6 +1999,6 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 ### <a name="upgrading"></a>正在升级
 
-所有这些功能已在 HDInsight 3.6 中提供。 若要获取最新版本的 Spark、Kafka 和 R Server（机器学习服务），请在[创建 HDInsight 3.6 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)时选择 Spark、Kafka 和 机器学习服务版本。 若要获取 ADLS 支持，可以选择 ADLS 存储类型作为选项。 现有群集不会自动升级到这些版本。
+所有这些功能已在 HDInsight 3.6 中提供。 若要获取最新版本的 Spark、Kafka 和 R Server（机器学习服务），请在[创建 HDInsight 3.6 群集](./hdinsight-hadoop-provision-linux-clusters.md)时选择 Spark、Kafka 和 机器学习服务版本。 若要获取 ADLS 支持，可以选择 ADLS 存储类型作为选项。 现有群集不会自动升级到这些版本。
 
-在 2018 年 6 月后创建的所有新群集将自动获取所有开源项目的 1000 多个 bug 修复。 请遵循[此指南](https://docs.microsoft.com/azure/hdinsight/hdinsight-upgrade-cluster)，获取有关升级到较新 HDInsight 版本的最佳做法。
+在 2018 年 6 月后创建的所有新群集将自动获取所有开源项目的 1000 多个 bug 修复。 请遵循[此指南](./hdinsight-upgrade-cluster.md)，获取有关升级到较新 HDInsight 版本的最佳做法。

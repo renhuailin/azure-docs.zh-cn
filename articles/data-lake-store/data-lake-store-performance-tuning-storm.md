@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 68f30079d85e2064b92718c65b38dbb5069d810b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192808"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101641"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -22,8 +22,8 @@ ms.locfileid: "88192808"
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-* **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
-* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)。  
+* **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](../hdinsight/storm/apache-storm-overview.md)。
+* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](./data-lake-store-performance-tuning-guidance.md)。  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>优化拓扑的并行度
 
@@ -89,7 +89,7 @@ ms.locfileid: "88192808"
 
 在 Storm 中，Spout 不断将数据保存到元组，直到该元组被 Bolt 显式确认。 如果元组已由 Bolt 读取但尚未确认，Spout 可能无法持久保存在 Data Lake Storage Gen1 后端。 确认元组后，可以保证 Spout 持久保存在 Bolt 中，随后可从 Bolt 读取的任何源中删除源数据。  
 
-若要在 Data Lake Storage Gen1 中获得最佳性能，可为元组数据提供 4 MB 的 Bolt 缓冲区。 然后，将写入到 Data Lake Storage Gen1 的后端。 成功将数据写入存储（通过调用 hflush()）后，Bolt 可以向 Spout 确认数据。 这就是此处提供的示例 Bolt 的作用。 在发出 hflush() 调用和确认元组之前，还接受保存更大数量的元组。 但是，这会增加 Spout 需要保存的进行中元组数量，因此也会增加每个 JVM 所需的内存量。
+若要在 Data Lake Storage Gen1 中获得最佳性能，可为元组数据提供 4 MB 的 Bolt 缓冲区。 然后写入到 Data Lake Storage Gen1 的后端为 1 4 MB。 成功将数据写入存储（通过调用 hflush()）后，Bolt 可以向 Spout 确认数据。 这就是此处提供的示例 Bolt 的作用。 在发出 hflush() 调用和确认元组之前，还接受保存更大数量的元组。 但是，这会增加 Spout 需要保存的进行中元组数量，因此也会增加每个 JVM 所需的内存量。
 
 > [!NOTE]
 > 出于其他与性能无关的原因，应用程序可能要求更频繁地确认元组（以小于 4 MB 的数据大小）。 但是，这可能会影响存储后端的 I/O 吞吐量。 应该针对 Bolt 的 I/O 性能认真权衡这种利弊。
@@ -130,6 +130,6 @@ ms.locfileid: "88192808"
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen1 限制异常。
 
 ## <a name="next-steps"></a>后续步骤
-有关风暴的其他性能调整，请参阅 [此博客](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)。
+有关风暴的其他性能调整，请参阅 [此博客](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)。
 
 有关可运行的其他示例，请参阅 [GitHub 上的这篇文章](https://github.com/hdinsight/storm-performance-automation)。

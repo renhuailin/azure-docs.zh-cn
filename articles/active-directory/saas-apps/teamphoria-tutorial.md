@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 30971c9c5280bfba37f46aaab0aaf2c2506502c0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a8cf58f49cba1bcc77c96a0da2061a037bb62bf2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542337"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504733"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Teamphoria 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542337"
 * 让用户使用其 Azure AD 帐户自动登录到 Teamphoria。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "88542337"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Teamphoria**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Teamphoria** 。 
 1. 从结果面板中选择“Teamphoria”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-teamphoria"></a>配置并测试 Teamphoria 的 Azure AD 单一登录
@@ -134,23 +134,23 @@ ms.locfileid: "88542337"
 
 4. 转到左侧工具栏中的“管理员设置”  选项，并在“配置”选项卡下单击“单一登录”  ，以打开 SSO 配置窗口。
 
-    ![配置单一登录](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![显示可在其中选择“单一登录”的“管理员设置”的屏幕截图。](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 5. 单击右上角的“添加新的标识提供程序”  选项，以打开用于添加 SSO 设置的窗体。
 
-    ![配置单一登录](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![显示可选择“添加新标识提供者”的位置的屏幕截图。](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 6. 在字段中输入详细信息，如下所述 -
 
-    ![配置单一登录](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![屏幕截图显示了可以在其中输入所述值的页。](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **显示名称**：在管理页上输入插件的显示名称。
+    a. **显示名称** ：在管理页上输入插件的显示名称。
 
-    b. **按钮名称**：会在用于通过 SSO 登录的登录页上显示的选项卡的名称。
+    b. **按钮名称** ：会在用于通过 SSO 登录的登录页上显示的选项卡的名称。
 
-    c. **证书**：在记事本中打开之前从 Azure 门户下载的证书，复制相同的内容并将其粘贴到此处的框中。
+    c. **证书** ：在记事本中打开之前从 Azure 门户下载的证书，复制相同的内容并将其粘贴到此处的框中。
 
-    d. **入口点**：粘贴前面从 Azure 门户复制的“登录 URL”。 
+    d. **入口点** ：粘贴前面从 Azure 门户复制的“登录 URL”。 
 
     e. 将选项切换为“打开”  ，然后单击“保存”  。
 
@@ -168,17 +168,17 @@ ms.locfileid: "88542337"
 
 1. 单击“手动邀请”  选项。
 
-    ![邀请人员](./media/teamphoria-tutorial/admin_manage_add_users.png)
+    ![显示“手动邀请”选项的屏幕截图。](./media/teamphoria-tutorial/admin_manage_add_users.png)
 
 1. 在此页上，执行以下操作。
 
-    ![邀请人员](./media/teamphoria-tutorial/manual_user_invite.png)
+    ![显示可在其中输入姓名和电子邮件地址的“手动邀请用户”页的屏幕截图。](./media/teamphoria-tutorial/manual_user_invite.png)
 
-    a. 在“电子邮件地址”文本框中，输入用户的**电子邮件地址**，例如 B.Simon。 
+    a. 在“电子邮件地址”文本框中，输入用户的 **电子邮件地址** ，例如 B.Simon。 
 
-    b. 在“名字”文本框中，输入用户的名字，例如 **B**。 
+    b. 在“名字”文本框中，输入用户的名字，例如 **B** 。 
 
-    c. 在“姓氏”文本框中，输入用户的姓氏，例如 **Simon**。 
+    c. 在“姓氏”文本框中，输入用户的姓氏，例如 **Simon** 。 
 
     d. 单击“邀请 1 名用户”  。 用户需要接受邀请，才能在系统中创建用户。
 
@@ -186,15 +186,14 @@ ms.locfileid: "88542337"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Teamphoria”磁贴时，应会自动登录到设置了 SSO 的 Teamphoria。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Teamphoria”磁贴时，应会自动登录到设置了 SSO 的 Teamphoria。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Teamphoria](https://aad.portal.azure.com/)
-

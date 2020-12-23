@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: a1de313245e826511a7e9c864165ac44bcb48530
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 650ce0cc9586118b30593767c6a3ddb92f494ac3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80234262"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972636"
 ---
 ### <a name="standard-and-neural-voices"></a>标准语音和神经语音
 
@@ -18,7 +18,7 @@ ms.locfileid: "80234262"
 | 区域 | 端点 | 标准语音 | 神经语音 |
 |--------|----------|-----------------|---------------|
 | 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| 巴西南部 | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 加拿大中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | 美国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 东亚 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
@@ -26,17 +26,20 @@ ms.locfileid: "80234262"
 | 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 印度中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| 日本东部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
+| Japan East | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 日本西部 | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 韩国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 美国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 北欧 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 美国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
-| 东南亚 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+| Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | 西欧 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | 美国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
 | 美国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
+
+> [!TIP]
+> [预览版](../articles/cognitive-services/Speech-Service/language-support.md#neural-voices-in-preview) 中的语音仅在以下3个区域提供：美国东部、西欧和东南亚。
 
 ### <a name="custom-voices"></a>自定义语音
 

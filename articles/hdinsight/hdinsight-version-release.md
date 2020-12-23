@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b8f9759d19089f74d62def41b205d862ce9a7d43
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749180"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359721"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概述
 
@@ -38,7 +38,12 @@ Hive 现在支持动态具体化视图或相关摘要的预先计算。 这些�
 
 ### <a name="hive-transactional-tables"></a>Hive 事务表
 
-HDI 4.0 包括 Apache Hive 3。 Hive 3 要求驻留在 Hive 仓库中的事务表具有原子性、一致性、隔离性和持久合规性。 符合 ACID 的表和表数据由 Hive 访问和管理。 位于创建、检索、更新和删除 (CRUD) 表中的数据必须采用优化行列 (ORC) 文件格式， 但仅限插入的表支持所有文件格式。
+HDI 4.0 包括 Apache Hive 3。 Hive 3 要求驻留在 Hive 仓库中的事务表具有原子性、一致性、隔离性和持久合规性。 符合 ACID 的表和表数据由 Hive 访问和管理。 位于创建、检索、更新和删除 (CRUD) 表中的数据必须采用优化行列 (ORC) 文件格式， 但仅限插入的表支持所有文件格式。 
+
+> [!Note]
+> ACID/事务性支持仅适用于托管表而非外部表。 Hive 外部表的设计使外部方可以读取和写入表数据，而不包含 Hive perfoming 对基础数据的任何更改。 对于 ACID 表，Hive 可以通过 compactions 和事务来更改基础数据。
+
+ACID 表的一些优点如下：
 
 * ACID v2 在存储格式和执行引擎方面均进行了性能提升。
 
@@ -91,10 +96,10 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 * HDInsight 4.0 不支持将 MapReduce 用于 Apache Hive。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
 * HDInsight 4.0 不支持 Apache Storm。
-* HDInsight 4.0 不支持 ML 服务群集类型。
-* Hive 视图仅在版本号等于或大于4.1 的 HDInsight 4.0 群集上可用。 此版本号在 Ambari 管理 > 版本中提供。
+* HDInsight 4.0 不支持 ML Services 群集类型。
+* Hive 视图仅在版本号等于或大于 4.1 的 HDInsight 4.0 群集上可用。 可在“Ambari 管理员”->“版本”中查看此版本号。
 * Spark 和 Interactive Query 群集不支持 Apache Zeppelin 中的 Shell 解释器。
-* 无法在 Spark-LLAP 群集上*禁用* LLAP。 只能关闭 LLAP。
+* 无法在 Spark-LLAP 群集上 *禁用* LLAP。 只能关闭 LLAP。
 * Azure Data Lake Storage Gen2 无法在 Spark 群集中保存 Jupyter Notebook。
 * 默认情况下，Apache Pig 在 Tez 上运行，但你可以将其更改为 Mapreduce
 * 为了提高行和列安全性而推出的 Spark SQL Ranger 集成已弃用
@@ -102,5 +107,9 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 ## <a name="next-steps"></a>后续步骤
 
+* [HBase 迁移指南](./hbase/apache-hbase-migrate-new-version.md)
+* [Hive 迁移指南](./interactive-query/apache-hive-migrate-workloads.md)
+* [Kafka 迁移指南](./kafka/migrate-versions.md)
+* [Spark 迁移指南](./spark/migrate-versions.md)
 * [Azure HDInsight 文档](index.yml)
 * [发行说明](hdinsight-release-notes.md)

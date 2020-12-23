@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 00661043d1ec9769adbf4119a2c9c1925dcd29fa
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: f99aedc21c3b51975649f8944ab53536d365a7d1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186340"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096259"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -34,14 +34,18 @@ NVIDIA Tesla (CUDA) 的 NC、NCv2、NCv3、NCasT4_v3、ND 和 NDv2 系列 Vm 的
 
 Microsoft 为用作虚拟工作站或虚拟应用程序的 NV 和 NVv3 系列 Vm 重新分发 NVIDIA 网格驱动程序安装程序。 仅在 Azure NV 系列 Vm 上安装这些网格驱动程序，且仅在下表中列出的操作系统上安装。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 无需设置 NVIDIA vGPU 软件许可证服务器。
 
-Azure 重新分发的网格驱动程序不适用于非 NV 系列 Vm，如 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm。
+Azure 重新发布的网格驱动程序不适用于非 NV 系列 Vm，如 NCv2、NCv3、ND 和 NDv2 系列 Vm。 一种例外情况是 NCas_T4_V3 VM 系列，其中网格驱动程序将启用类似于 NV 系列的图形功能。
+
+Nvidia K80 Gpu 的 NC-Series 不支持网格/图形应用程序。  
 
 请注意，Nvidia 扩展将始终安装最新的驱动程序。 我们在此处提供了与旧版本相关的客户的以前版本的链接。
 
 对于 Windows Server 2019、Windows Server 2016 和 Windows 10 (生成 2004) ：
-- [GRID 11 (451.48) ](https://go.microsoft.com/fwlink/?linkid=874181) () 
-- [网格 10.1 (442.06) ](https://download.microsoft.com/download/b/8/f/b8f5ecec-b8f9-47de-b007-ac40adc88dc8/442.06_grid_win10_64bit_international_whql.exe) ()  
+- [网格 11.2 (452.57) ](https://go.microsoft.com/fwlink/?linkid=874181) () 
+- [网格 11.1 (452.39) ](https://download.microsoft.com/download/9/9/1/99186e1b-d27d-47d5-9957-175c88f4efbe/452.39_grid_win10_64bit_whql.exe) ()  
 
 对于 Windows Server 2012 R2： 
-- [GRID 11 (451.48) ](https://go.microsoft.com/fwlink/?linkid=874184) () 
+- [网格 11.0 (451.48) ](https://download.microsoft.com/download/f/7/2/f729e28b-57b8-4141-b577-38d2390973ef/451.48_grid_server2012R2_64bit_international.exe) ()  
 - [网格 10.1 (442.66) ](https://download.microsoft.com/download/4/3/3/4330fd5c-c685-4ca1-abca-3b2fb3c11d2e/442.06_grid_win8_win7_64bit_international_whql.exe) ()   
+
+有关所有以前的 Nvidia GRID 驱动程序链接的完整列表，请访问 [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json)

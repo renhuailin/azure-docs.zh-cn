@@ -1,6 +1,6 @@
 ---
 title: 渗透测试 |Microsoft Docs
-description: 本文概述了渗透测试过程，以及如何对 Azure 基础结构中运行的应用执行笔测试。
+description: 本文概述了渗透测试过程，以及对运行在 Azure 基础结构中的应用进行渗透测试的方式。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2020
 ms.author: terrylan
-ms.openlocfilehash: dfacf124f8db0e5323c9abff56c4a78f85f6f014
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: af61b6ee1e69d175f47170df30f75832033d61d5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816127"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489711"
 ---
 # <a name="penetration-testing"></a>渗透测试
 
@@ -28,7 +28,7 @@ ms.locfileid: "88816127"
 
 快速创建环境非常好，但仍需确保执行正常的安全截止。 你可能想要做的事情之一就是对部署在 Azure 中的应用程序进行渗透测试。
 
-用户可能已经知道，Microsoft 将执行[对 Azure 环境的渗透测试](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)。 此测试可帮助推动 Azure 的改进。
+用户可能已经知道，Microsoft 将执行[对 Azure 环境的渗透测试](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)。 此测试有助于推动 Azure 改进。
 
 我们不会对你的应用程序进行渗透测试，但我们知道你需要并且需要在你自己的应用程序上执行测试。 这是好事，因为改进自己的应用程序的安全性可以加强整个 Azure 生态系统的安全性。
 
@@ -43,11 +43,11 @@ ms.locfileid: "88816127"
 * 终结点的[模糊测试](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
 * 终结点的[端口扫描](https://en.wikipedia.org/wiki/Port_scanner)
 
-您无法执行的一种笔测试是 [ (DoS) 攻击的拒绝服务 ](https://en.wikipedia.org/wiki/Denial-of-service_attack) 。 此测试包括发起 DoS 攻击，或者执行相关的测试，以便确定、演示或模拟任何类型的 DoS 攻击。
+您无法执行的一种笔测试是 [ (DoS) 攻击的拒绝服务 ](https://en.wikipedia.org/wiki/Denial-of-service_attack) 。 此测试包括：自行发起 DoS 攻击，或者执行相关的测试，以便确定、演示或模拟任何类型的 DoS 攻击。
 
 >[!Note]
->Mircosoft 已与 BreakingPoint Cloud 合作构建接口，用户可在其中针对已启用 DDoS 保护的公共 IP 地址生成用于模拟的流量。 若要了解有关断点云模拟的详细信息，请参阅 [验证 DDoS 检测](../../virtual-network/manage-ddos-protection.md#validate-ddos-detection)。
+>Mircosoft 已与 BreakingPoint Cloud 合作构建接口，用户可在其中针对已启用 DDoS 保护的公共 IP 地址生成用于模拟的流量。 若要了解有关断点云模拟的详细信息，请参阅 [验证 DDoS 检测](../../ddos-protection/manage-ddos-protection.md#validate-and-test)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 Engagement 的 [渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2)。
+* 详细了解[渗透测试参与规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2)。

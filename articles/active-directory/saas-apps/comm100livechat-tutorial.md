@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: abeb52155b933c223ee0621e8ab203ac035e5f36
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9636c8cbb517c7aece450f53cfc37e4ddd9803b7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519661"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Comm100 Live Chat 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88519661"
 * 让用户使用其 Azure AD 帐户自动登录到 Comm100 Live Chat。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -144,7 +144,7 @@ ms.locfileid: "88519661"
 
 1. 在菜单左侧单击“安全性”，然后单击“代理单一登录”。  
 
-   ![Comm100 Live Chat - 安全性](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![显示左侧帐户菜单的屏幕截图，其中突出显示了“安全性”和“代理单一登录”。](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
 1. 在“代理单一登录”  页上，执行以下步骤：
 
@@ -184,27 +184,26 @@ ms.locfileid: "88519661"
 
     b. 在“名字”文本框中，输入用户的名字，例如 B   。
 
-    c. 在“姓氏”文本框中，输入用户的姓氏，例如 **simon**。 
+    c. 在“姓氏”文本框中，输入用户的姓氏，例如 **simon** 。 
 
     d. 在“显示名称”文本框中，输入用户的显示名称，例如 B.Simon   。
 
     e. 在“密码”文本框中键入密码。 
 
-    f. 单击“ **保存**”。
+    f. 单击“ **保存** ”。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Comm100 Live Chat 磁贴时，应当会自动登录到你为其设置了 SSO 的 Comm100 Live Chat。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Comm100 Live Chat 磁贴时，应当会自动登录到你为其设置了 SSO 的 Comm100 Live Chat。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Comm100 Live Chat](https://aad.portal.azure.com/)
-

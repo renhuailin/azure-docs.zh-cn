@@ -1,7 +1,7 @@
 ---
-title: 设计器模块错误疑难解答
+title: 对设计器模块错误进行故障排除
 titleSuffix: Azure Machine Learning
-description: Azure 机器学习设计器中的模块错误代码疑难解答
+description: 了解如何在 Azure 机器学习设计器中阅读和解决自动模块错误代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 11/25/2020
+ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908089"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753903"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
@@ -203,7 +203,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  如果消息中的列索引在两个输入数据集中具有不同的列名称，则将在 Azure 机器学习中收到此错误。  
 
-**解决方法：** 使用[编辑元数据](edit-metadata.md)或修改原始数据集，使指定的列索引具有相同的列名。  
+**解决方法：** 使用 [编辑元数据](edit-metadata.md)或修改原始数据集，使指定的列索引具有相同的列名。  
 
 |异常消息|
 |------------------------|
@@ -279,13 +279,22 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 ## <a name="error-0014"></a>错误 0014  
  如果列中唯一值计数大于允许值，将出现异常。  
 
- 当列包含的唯一值过多时，将出现此错误。  例如，如果你指定将某列作为分类数据进行处理，但由于列中的唯一值过多而难以完成处理，则可能会看到此错误。 如果两个输入中的唯一值数目不匹配，也可能会看到此错误。   
+ 当列包含太多唯一值（如 ID 列或文本列）时，会出现此错误。 如果您指定将某列作为分类数据进行处理，但列中的唯一值太多以允许处理完成，则您可能会看到此错误。 如果两个输入中的唯一值数目不匹配，也可能会看到此错误。   
+
+如果同时满足以下 **两个** 条件，将会出现唯一值的错误：
+
+- 一个列超过97% 的实例是唯一值，这意味着几乎所有类别都是不同的。
+- 一列具有超过1000个唯一值。
 
 **解决方法：**
 
 打开生成错误的模块，并标识用作输入的列。 对于某些模块，可以右键单击数据集输入，然后选择“可视化”以获取各列的统计信息，包括唯一值的数目及其分布。
 
 对于打算用于分组或分类的列，请采取措施来减少列中的唯一值数目。 根据列的数据类型，可以通过不同的方式减小唯一值数目。 
+
+对于在定型模型期间不是有意义的功能的 ID 列，您可以使用 " [编辑元数据](../algorithm-module-reference/edit-metadata.md) " 将该列标记为 " **清除" 功能** ，而不会在训练模型时使用。 
+
+对于文本列，可以使用 " [功能哈希](../algorithm-module-reference/feature-hashing.md) " 或 " [从文本中提取 N 元语法特征" 功能](../algorithm-module-reference/extract-n-gram-features-from-text.md) 来预处理文本列。
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -318,7 +327,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  如果在两个或更多个数据集中传递的列的类型不兼容，则将在 Azure 机器学习中收到此错误。  
 
-**解决方法：** 使用[编辑元数据](edit-metadata.md)或修改原始输入数据集<!--, or use [Convert to Dataset](convert-to-dataset.md)--> 以确保列类型兼容。  
+**解决方法：** 使用 [编辑元数据](edit-metadata.md)或修改原始输入数据集<!--, or use [Convert to Dataset](convert-to-dataset.md)--> 以确保列类型兼容。  
 
 |异常消息|
 |------------------------|
@@ -372,7 +381,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  若要确定要求和数据应有的格式，请查看将使用数据集作为输入的模块的帮助主题。  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->上获取。  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
 
 |异常消息|
 |------------------------|
@@ -521,7 +530,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  如果多个列具有相同的名称，则 Azure 机器学习中会出现此错误。 如果数据集没有标题行，并且自动分配了Col0、Col1 等列名，你可能会收到此错误。  
 
-**解决方法：** 如果列具有相同的名称，请在输入数据集和该模块之间插入[编辑元数据](edit-metadata.md)模块。 使用[编辑元数据](edit-metadata.md)中的列选择器来选择要重命名的列，并将新名称键入“新列名”文本框中。  
+**解决方法：** 如果列具有相同的名称，请在输入数据集和该模块之间插入 [编辑元数据](edit-metadata.md)模块。 使用[编辑元数据](edit-metadata.md)中的列选择器来选择要重命名的列，并将新名称键入“新列名”文本框中。  
 
 |异常消息|
 |------------------------|
@@ -553,7 +562,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  如果列名重复，即列名不是唯一的，则 Azure 机器学习中会出现此错误。  
 
-**解决方法：** 如果任何列具有相同的名称，请在输入数据集和引发错误的模块之间添加[编辑元数据](edit-metadata.md)的实例。 使用[编辑元数据](edit-metadata.md)中的列选择器来选择要重命名的列，并将新名称键入“新列名”文本框中。 如果要重命名多个列，请确保在“新列名”中键入的值是唯一的。  
+**解决方法：** 如果任何列具有相同的名称，请在输入数据集和引发错误的模块之间添加 [编辑元数据](edit-metadata.md)的实例。 使用[编辑元数据](edit-metadata.md)中的列选择器来选择要重命名的列，并将新名称键入“新列名”文本框中。 如果要重命名多个列，请确保在“新列名”中键入的值是唯一的。  
 
 |异常消息|
 |------------------------|
@@ -713,7 +722,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **解决方法：** 此错误可由多种情况引起，因此没有特定的补救措施。  
  下表包含此错误的通用消息，后跟具体情况说明。 
 
- 如果没有可用的详细信息，请访问 [Microsoft 问答页以发送反馈](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html)，并提供有关生成该错误的模块和相关情况的信息。
+ 如果没有可用的详细信息，请访问 [Microsoft 问答页以发送反馈](/answers/topics/azure-machine-learning-studio-classic.html)，并提供有关生成该错误的模块和相关情况的信息。
 
 |异常消息|
 |------------------------|
@@ -862,7 +871,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  如果用于访问 Azure 存储帐户的密钥不正确，则 Azure 机器学习中会出现此错误。 例如，如果在复制和粘贴 Azure 存储密钥时将其截断了，或者使用了错误的密钥，那么你可能会看到此错误。  
 
- 有关如何获取 Azure 存储帐户的密钥的详细信息，请参阅[查看、复制和重新生成存储访问密钥](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/)。  
+ 有关如何获取 Azure 存储帐户的密钥的详细信息，请参阅[查看、复制和重新生成存储访问密钥](../../storage/common/storage-account-create.md)。  
 
 **解决方法：** 重新访问该模块，并验证该帐户的 Azure 存储密钥是否正确；如有必要，请从 Azure 经典门户重新复制密钥。  
 
@@ -1083,9 +1092,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 请参阅以下文章，获取有关针对机器学习的 Hive 查询的帮助：
 
-+ [从 Azure Blob 存储创建 Hive 表并加载数据](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [使用 Hive 查询浏览表中的数据](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [使用 Hive 查询在 Hadoop 群集中为数据创建功能](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [从 Azure Blob 存储创建 Hive 表并加载数据](../team-data-science-process/move-hive-tables.md)
++ [使用 Hive 查询浏览表中的数据](../team-data-science-process/explore-data-hive-tables.md)
++ [使用 Hive 查询在 Hadoop 群集中为数据创建功能](../team-data-science-process/create-features-hive.md)
 + [适用于 SQL 的 Hive 用户速查表 (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1164,7 +1173,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 在早期版本的 Azure 机器学习中引入了此事件的错误处理，该版本允许对分箱方法进行更多自定义操作。 当前所有分箱方法都可从下拉列表中进行选择，因此从技术上讲，应该不可能再收到此错误。
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |异常消息|
 |------------------------|
@@ -1201,7 +1210,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  如果指定的 Azure 存储容器名称不正确，则 Azure 机器学习中会出现此错误。 如果在写入 Azure Blob 存储时，尚未使用“以 container 开头的 blob 路径”选项指定容器和 blob（文件）名称，你将收到此错误。  
 
-**解决方法：** 重新访问[导出数据](export-data.md)模块，并验证指定的 blob 路径是否包含容器和文件名（格式为 container/filename）。  
+**解决方法：** 重新访问 [导出数据](export-data.md)模块，并验证指定的 blob 路径是否包含容器和文件名（格式为 container/filename）。  
 
 |异常消息|
 |------------------------|
@@ -1400,7 +1409,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 当模块需要标签列，但列选择中没有标签列，或者标签列缺失过多的值时，会出现此错误。
 
-如果之前的操作更改了数据集，从而没有足够的行可供下游操作使用，也会出现此错误。 例如，假设你使用**分区和示例**模块中的表达式来按值划分数据集。 如果没有找到表达式的匹配项，则由该分区生成的其中一个数据集将为空。
+如果之前的操作更改了数据集，从而没有足够的行可供下游操作使用，也会出现此错误。 例如，假设你使用 **分区和示例** 模块中的表达式来按值划分数据集。 如果没有找到表达式的匹配项，则由该分区生成的其中一个数据集将为空。
 
 解决方法： 
 
@@ -1516,11 +1525,10 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 提供此错误是为了捕获未通过其他方式处理的内部引擎错误。 因此，导致此错误的原因可能有所不同，具体取决于产生错误的模块。  
 
-若要获得更多帮助，建议你将错误附带的详细消息发布到 [Azure 机器学习论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)，同时提供方案说明（包括用作输入的数据）。 此反馈将帮助我们确定错误的优先级，并确定接下来要处理的最重要的问题。  
+若要获得更多帮助，建议将错误附带的详细消息发布到 [Azure 机器学习论坛](/answers/topics/azure-machine-learning.html)，同时提供情况说明（包括用作输入的数据）。 此反馈将帮助我们确定错误的优先级，并确定接下来要处理的最重要的问题。  
 
 |异常消息|
 |------------------------|
 |库异常。|
 |库异常: {exception}。|
 |未知库异常: {exception}。 {customer_support_guidance}。|
-

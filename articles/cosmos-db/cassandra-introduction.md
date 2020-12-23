@@ -7,19 +7,23 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
-ms.date: 05/21/2019
-ms.openlocfilehash: 70dbceb51ed030124d1b793d77c6bc287da91065
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/25/2020
+ms.openlocfilehash: 2a778c2e9a44bda148fd40112776858943cffe4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81687642"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188609"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 简介
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB Cassandra API 可以充当为 [Apache Cassandra](https://cassandra.apache.org) 编写的应用的数据存储。 这意味着通过使用现有的符合 CQLv4 的 [Apache 驱动程序](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)，现有 Cassandra 应用程序现在可以与 Azure Cosmos DB Cassandra API 通信。 在许多情况下，只需更改连接字符串，就可以从使用 Apache Cassandra 切换为使用 Azure Cosmos DB Cassandra API。 
 
 通过 Cassandra API 可以使用 Cassandra 查询语言 (CQL)、基于 Cassandra 的工具（如 cqlsh）和熟悉的 Cassandra 客户端驱动程序与 Azure Cosmos DB 中存储的数据进行交互。
+
+> [!NOTE]
+> [无服务器容量模式](serverless.md)现在在 Azure Cosmos DB 的 Cassandra API 上可用。
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>使用 Azure Cosmos DB Cassandra API 的优势是什么？
 
@@ -31,15 +35,15 @@ Azure Cosmos DB Cassandra API 可以充当为 [Apache Cassandra](https://cassand
 
 **能够使用现有的代码和工具**：Azure Cosmos DB 提供的线路协议级别与现有 Cassandra SDK 和工具兼容。 此兼容性确保只需经过细微的更改，就可以将现有代码库用于 Azure Cosmos DB Cassandra API。
 
-**吞吐量和存储弹性**：Azure Cosmos DB 可以通过 Azure门户、PowerShell 或 CLI 操作跨所有区域提供有保证的吞吐量，并可缩放预配的吞吐量。 可以根据需要[弹性缩放](manage-scale-cassandra.md)表的存储和吞吐量，其性能可以预测。
+**吞吐量和存储弹性**：Azure Cosmos DB 可以通过 Azure门户、PowerShell 或 CLI 操作跨所有区域提供吞吐量，并可缩放预配的吞吐量。 可以根据需要[弹性缩放](manage-scale-cassandra.md)表的存储和吞吐量，其性能可以预测。
 
 **全球分发和可用性**：Azure Cosmos DB 可以在所有 Azure 区域全局分发数据，在本地处理数据，同时确保低延迟数据访问和高可用性。 Azure Cosmos DB 在区域内提供 99.99% 的高可用性，跨多个区域提供 99.999% 的读写可用性，并且没有任何运营开销。 在[在全球范围内分发数据](distribute-data-globally.md)一文中了解详细信息。 
 
 **一致性选择**：Azure Cosmos DB 提供五个定义明确的一致性级别以供选择，可在一致性和性能之间实现最佳平衡。 这些一致性级别分别是：强、有限过期、会话、一致前缀和最终。 通过这些定义明确、实用且直观的一致性级别，开发者可以在一致性、可用性和延迟之间实现精确的平衡。 在[一致性级别](consistency-levels.md)一文中了解详细信息。 
 
-**企业级**：Azure cosmos DB 提供[符合性认证](https://www.microsoft.com/trustcenter)，以确保用户可以安全地使用该平台。 Azure Cosmos DB 还提供静态和动态加密、IP 防火墙和审核日志以控制平面活动。
+**企业级**：Azure cosmos DB 提供 [符合性认证](https://www.microsoft.com/trustcenter)，以确保用户可以安全地使用该平台。 Azure Cosmos DB 还提供静态和动态加密、IP 防火墙和审核日志以控制平面活动。
 
-**事件溯源**：Cassandra API 可以访问持久性更改日志（即[更改源](cassandra-change-feed.md)），这便于直接从数据库中获取事件源。 在 Apache Cassandra 中，唯一的等效项是变更数据捕获 (CDC)，它只是一种机制，用于标记要存档的特定表，并在达到 CDC 日志的可配置磁盘空间后拒绝对这些表的写入（这些功能在 Cosmos DB 中是冗余的，因为系统对相关方面进行自动管理）。
+**事件溯源**：Cassandra API 可以访问持久性更改日志（即 [更改源](cassandra-change-feed.md)），这便于直接从数据库中获取事件源。 在 Apache Cassandra 中，唯一的等效项是变更数据捕获 (CDC)，它只是一种机制，用于标记要存档的特定表，并在达到 CDC 日志的可配置磁盘空间后拒绝对这些表的写入（这些功能在 Cosmos DB 中是冗余的，因为系统对相关方面进行自动管理）。
 
 ## <a name="next-steps"></a>后续步骤
 

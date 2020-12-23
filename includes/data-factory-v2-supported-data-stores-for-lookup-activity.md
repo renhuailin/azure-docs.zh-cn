@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 09/24/2020
+ms.date: 12/18/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: f3678045eae269429909f7ba0e007e13d2b02bc6
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: a749de57a1c57c828332957def27d68a121318b1
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91422071"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97691992"
 ---
 | Category | 数据存储 |
 |:--- |:--- |
@@ -29,7 +29,7 @@ ms.locfileid: "91422071"
 | &nbsp; |[Azure 文件](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Azure SQL 托管实例](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
-| &nbsp; |[Azure Synapse Analytics（以前称为 SQL 数据仓库）](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
+| &nbsp; |[Azure Synapse Analytics](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) |
 | **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
@@ -47,7 +47,7 @@ ms.locfileid: "91422071"
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) 
-| &nbsp; |[Presto（预览）](../articles/data-factory/connector-presto.md) |
+| &nbsp; |[Presto](../articles/data-factory/connector-presto.md) |
 | &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
 | &nbsp; |[通过 MDX 实现的 SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
@@ -76,7 +76,7 @@ ms.locfileid: "91422071"
 | &nbsp; |[Dynamics AX](../articles/data-factory/connector-dynamics-ax.md) |
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Google AdWords](../articles/data-factory/connector-google-adwords.md) |
-| &nbsp; |[HubSpot（预览）](../articles/data-factory/connector-hubspot.md) |
+| &nbsp; |[HubSpot](../articles/data-factory/connector-hubspot.md) |
 | &nbsp; |[Jira](../articles/data-factory/connector-jira.md) |
 | &nbsp; |[Magento（预览）](../articles/data-factory/connector-magento.md) |
 | &nbsp; |[Marketo（预览）](../articles/data-factory/connector-marketo.md) |

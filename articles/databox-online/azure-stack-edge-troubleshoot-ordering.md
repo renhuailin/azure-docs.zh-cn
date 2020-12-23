@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903638"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446371"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>排查 Azure Stack Edge Pro 排序问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "90903638"
 
 ![不支持的订阅或区域](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**建议的解决方案：**  请确保使用受支持的订阅，例如 [Microsoft 企业协议 (EA) ](https://azure.microsoft.com/overview/sales-number/)、 [云解决方案提供商 (CSP) ](https://docs.microsoft.com/partner-center/azure-plan-lp)或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 有关详细信息，请参阅 [Azure Stack Edge 资源先决条件](azure-stack-edge-deploy-prep.md#prerequisites)。
+**建议的解决方案：**  请确保使用受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、 [云解决方案提供商 (CSP)](/partner-center/azure-plan-lp)或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 有关详细信息，请参阅 [Azure Stack Edge 资源先决条件](azure-stack-edge-deploy-prep.md#prerequisites)。
 
 Microsoft 可能会根据具体情况，允许订阅类型的升级。 请与 [Microsoft 支持](https://azure.microsoft.com/support/options/) 部门联系，以便他们能够了解你的需求并相应地调整这些限制。
 
@@ -45,7 +45,7 @@ Microsoft 可能会根据具体情况，允许订阅类型的升级。 请与 [M
 
 **建议的解决方案：** 请按照以下步骤注册 Azure Stack Edge 资源提供程序：
 
-1. 在 Azure 门户中，请参阅**Home**  >  **订阅**。
+1. 在 Azure 门户中，请参阅 **Home**  >  **订阅**。
 
 2. 选择用于订购设备的订阅。
 

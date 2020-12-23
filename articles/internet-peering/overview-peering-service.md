@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83849376"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023439"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internet 对等互连与对等互连服务
 
@@ -53,5 +53,5 @@ Internet 对等互连是指 Microsoft 的全球网络 (AS8075) 与运营商或�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[对等互连服务](https://docs.microsoft.com/azure/peering-service/)的客户权益。
+* 详细了解[对等互连服务](../peering-service/index.yml)的客户权益。
 * 了解在[对等互连服务合作伙伴演练](walkthrough-peering-service-all.md)中为对等互连服务启用直接对等互连的步骤。

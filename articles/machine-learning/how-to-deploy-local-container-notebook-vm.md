@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, deploy
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 7992283c1652199d665aad07c027b88e9489ddf0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889825"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527303"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
 
@@ -40,7 +40,7 @@ ms.locfileid: "90889825"
 
 1. 从 [Azure 机器学习工作室](https://ml.azure.com)选择 Azure 机器学习计算实例。
 
-1. 打开 `samples-*` 子目录，然后打开 `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`。 打开后，运行笔记本。
+1. 打开 `samples-*` 子目录，然后打开 `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb`。 打开后，运行笔记本。
 
     ![笔记本上运行的本地服务的屏幕截图](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "90889825"
 > [!NOTE]
 > 对计算实例上的部署进行身份验证时，将使用 Azure Active Directory 进行身份验证。 对示例代码中 `interactive_auth.get_authentication_header()` 的调用将使用 AAD 对你进行身份验证，并返回一个标头，然后可使用该标头向计算实例上的服务进行身份验证。 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#interactive-authentication)。
 >
-> 对 Azure Kubernetes 服务或 Azure 容器实例上的部署进行身份验证时，将使用不同的身份验证方法。 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#web-service-authentication)。
+> 对 Azure Kubernetes 服务或 Azure 容器实例上的部署进行身份验证时，将使用不同的身份验证方法。 有关的详细信息，请参阅为 [部署为 web 服务的 Azure 计算机型号配置身份验证](how-to-authenticate-web-service.md)。
 
 ```python
 import requests

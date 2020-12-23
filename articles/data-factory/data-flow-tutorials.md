@@ -1,17 +1,17 @@
 ---
 title: 映射数据流视频教程
 description: 介绍映射数据流概念的视频教程列表
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 09/02/2020
-ms.openlocfilehash: 332eb274b7ae632a3496b9ff43439bb48cfed5e4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.date: 11/02/2020
+ms.openlocfilehash: 605d740b56b4f1cd57ab705e442a8b3e3946fcff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419276"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490697"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -84,6 +84,10 @@ ms.locfileid: "89419276"
 [平展转换](https://youtu.be/VY2tFQJoAXE)
 
 [转换层次结构数据](https://youtu.be/oAEh21NFgWQ)
+
+[排名转换](https://youtu.be/6XvgkbMtws0)
+
+[缓存查找](https://www.youtube.com/watch?v=HqCn42FaRJs)
 
 ## <a name="source-and-sink"></a>源和接收器
 
@@ -172,3 +176,7 @@ ms.locfileid: "89419276"
 [数据质量表达式](https://www.youtube.com/watch?v=O8gmv5-lXhs)
 
 [收集聚合函数](https://www.youtube.com/watch?v=zneE18EHJSE)
+
+## <a name="metadata"></a>Metadata
+
+[元数据验证规则](https://www.youtube.com/watch?v=E_UD3R-VpYE)

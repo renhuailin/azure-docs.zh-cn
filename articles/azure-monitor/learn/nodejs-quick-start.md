@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 76cc09ab5283e10e8f25af3aba4278ec6cca4838
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 550097272f90a2f7fa06af7f06810fd3fa0ed94f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91333267"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173880"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入门：使用 Azure Application Insights 开始监视 Node.js Web 应用程序
 
@@ -50,7 +50,7 @@ ms.locfileid: "91333267"
 
 ## <a name="configure-appinsights-sdk"></a>配置 AppInsights SDK
 
-1. 选择“概述”，然后复制应用程序的**检测密钥**。 
+1. 选择“概述”，然后复制应用程序的 **检测密钥** 。 
 
    ![查看 Application Insights 检测密钥](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "91333267"
    npm install applicationinsights --save
    ```
 
-3. 编辑应用的第一个 .js  文件并将以下两行添加到脚本的最顶部。 如果使用的是 [Node.js 快速入门应用](../../app-service/quickstart-nodejs.md)，则将修改 index.js  文件。 将 `<instrumentation_key>` 替换为应用程序的检测密钥。 
+3. 编辑应用的第一个 .js  文件并将以下两行添加到脚本的最顶部。 如果使用的是 [Node.js 快速入门应用](../../app-service/quickstart-nodejs.md)，则将修改 index.js  文件。 将 `<instrumentation_key>` 替换为应用程序见解的检测密钥。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -126,7 +126,7 @@ ms.locfileid: "91333267"
 > 如果使用了现有资源组，以下说明将不起作用，只需删除单个 Application Insights 资源即可。 请记住，无论何时删除资源组，属于该组的所有底层资源都将被删除。
 
 1. 在 Azure 门户的左侧菜单中，选择“资源组”  ，然后选择“myResourceGroup”  。
-2. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup**，然后选择“删除”  。
+2. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup** ，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

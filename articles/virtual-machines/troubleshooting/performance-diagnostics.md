@@ -1,7 +1,7 @@
 ---
 title: Azure 虚拟机的性能诊断 | Microsoft Docs
 description: 介绍适用于 Windows 的 Azure 性能诊断。
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: cshepard
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 70d1a52ff3326fcd3a628cc7f0f9d91edc9274e7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090629"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655384"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虚拟机的性能诊断
 
@@ -48,12 +48,12 @@ ms.locfileid: "90090629"
 
     | 分发               | 版本                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.6，7。5 |
-    | CentOS                     | 6.5 [ `*` ]，7。6                                    |
-    | RHEL                       | 7.2、7.5、8.0 [ `*` ]                               |
+    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.5，7.6，7.7，7。8 |
+    | CentOS                     | 6.5 [ `*` ]，7.6，7.7，7。8                                    |
+    | RHEL                       | 7.2、7.5、8.0 [ `*` ]、8.1、8。2                               |
     | Ubuntu                     | 14.04、16.04、18.04、20.04                               |
     | Debian                     | 8、9、10 [ `*` ]                                    |
-    | SLES                       | 12 SP4 [ `*` ]                                      |
+    | SLES                       | 12 SP4 [ `*` ]、12 SP5 [ `*` ]、15 [ `*` ]、15 SP1 [ `*` ]、15 SP2 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -61,11 +61,11 @@ ms.locfileid: "90090629"
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在 VM 上安装并运行性能诊断
 
-性能诊断会安装一个 VM 扩展，该扩展可运行名为 PerfInsights 的诊断工具。 PerfInsights 适用于 [Windows](https://aka.ms/perfinsights) 和 [Linux](https://aka.ms/perfinsightslinux)。 若要安装并运行性能诊断，请执行以下步骤：
+性能诊断会安装一个 VM 扩展，该扩展可运行名为 PerfInsights 的诊断工具。 PerfInsights 适用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how-to-use-perfinsights-linux.md)。 若要安装并运行性能诊断，请执行以下步骤：
 
-1. 在左侧的命令列中，选择“虚拟机”。****
+1. 在左侧的命令列中，选择“虚拟机”。
 1. 在 VM 名称列表中，选择要对其运行诊断的 VM。
-1. 在右侧的命令列中，选择“性能诊断”。****
+1. 在右侧的命令列中，选择“性能诊断”。
 
     ![Azure 门户的屏幕截图，其中突出显示了“安装性能诊断”按钮](media/performance-diagnostics/performance-diagnostics-install.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "90090629"
     > 在此屏幕截图中，VM 名称的边栏选项卡处于隐藏状态。
 1. 选择存储帐户（可选）
 
-    若要使用单个存储帐户来存储多个 VM 的性能诊断结果，可在工具栏中单击“设置”按钮来选择存储帐户。**** 选择存储帐户后，单击“确定”按钮。****
+    若要使用单个存储帐户来存储多个 VM 的性能诊断结果，可在工具栏中单击“设置”按钮来选择存储帐户。 选择存储帐户后，单击“确定”按钮。
 
     如果未指定存储帐户，默认会创建一个新存储帐户。
 
@@ -81,8 +81,8 @@ ms.locfileid: "90090629"
 
     ![在性能诊断设置边栏选项卡中选择存储帐户的屏幕截图](media/performance-diagnostics/select-storage-account.png)
 
-1. 选择“安装性能诊断”按钮。****
-1. 若要在完成安装后运行诊断，请选中“运行诊断”复选框。**** 如果做出了此项选择，则可以选择性能分析方案和相关选项。
+1. 选择“安装性能诊断”按钮。
+1. 若要在完成安装后运行诊断，请选中“运行诊断”复选框。 如果做出了此项选择，则可以选择性能分析方案和相关选项。
 
     ![性能诊断安装按钮的屏幕截图](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -91,16 +91,16 @@ ms.locfileid: "90090629"
 Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择一个分析方案。 选择分析所需的持续时间和跟踪选项。
 
 * **快速性能分析**  
-    检查已知问题、分析最佳做法并收集诊断数据。 此分析需要几分钟的时间来运行。 了解更多 [Windows](https://aka.ms/perfinsights/quick) 或 [Linux](https://aka.ms/perfinsightslinux/quick)
+    检查已知问题、分析最佳做法并收集诊断数据。 此分析需要几分钟的时间来运行。 了解更多 [Windows](./how-to-use-perfinsights.md) 或 [Linux](./how-to-use-perfinsights-linux.md)
 
 * **性能分析**  
-    包括快速性能分析中的所有检查，并监视资源消耗量较高的情况。 使用此版本可以排查一般性的性能问题，例如 CPU、内存和磁盘使用率较高的情况。 此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 了解更多 [Windows](https://aka.ms/perfinsights/vmslow) 或 [Linux](https://aka.ms/perfinsightslinux/vmslow)
+    包括快速性能分析中的所有检查，并监视资源消耗量较高的情况。 使用此版本可以排查一般性的性能问题，例如 CPU、内存和磁盘使用率较高的情况。 此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 了解更多 [Windows](./how-to-use-perfinsights.md) 或 [Linux](./how-to-use-perfinsights-linux.md)
 
 * **高级性能分析**`*`  
-    包括性能分析中的所有检查，并收集下一部分中所列的一项或多项跟踪。 使用此方案可以排查需要更多跟踪的复杂问题。 长时间运行此方案会增大诊断输出的整体大小，具体输出大小取决于 VM 大小以及选择的跟踪选项。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](https://aka.ms/perfinsights/advanced)
+    包括性能分析中的所有检查，并收集下一部分中所列的一项或多项跟踪。 使用此方案可以排查需要更多跟踪的复杂问题。 长时间运行此方案会增大诊断输出的整体大小，具体输出大小取决于 VM 大小以及选择的跟踪选项。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](./how-to-use-perfinsights.md)
 
 * **Azure 文件分析** `*`  
-    包括性能分析中的所有检查，并捕获网络跟踪和 SMB 计数器。 使用此方案可以排查 Azure 文件的性能问题。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](https://aka.ms/perfinsights/azurefiles)
+    包括性能分析中的所有检查，并捕获网络跟踪和 SMB 计数器。 使用此方案可以排查 Azure 文件的性能问题。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[ `*` ] 仅在 Windows 上支持这些分析方案。
@@ -135,11 +135,11 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ## <a name="how-to-change-performance-diagnostics-settings"></a>如何更改性能诊断设置
 
-使用“设置”工具栏按钮来更改可以存储诊断见解和输出的存储帐户。**** 可对使用性能诊断的多个 VM 使用同一个存储帐户。 更改存储帐户时，不会删除旧的报告和见解。 但是，它们不再显示在诊断报告列表中。
+使用“设置”工具栏按钮来更改可以存储诊断见解和输出的存储帐户。 可对使用性能诊断的多个 VM 使用同一个存储帐户。 更改存储帐户时，不会删除旧的报告和见解。 但是，它们不再显示在诊断报告列表中。
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>查看见解和性能诊断报告
 
-每个诊断运行包含见解和建议的列表、受影响的资源、日志文件、其他收集的丰富诊断信息，以及供脱机查看的报告。 有关所有收集的诊断数据的完整列表，请参阅[Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights)或[Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights)上的**PerfInsights 收集的信息类型**。
+每个诊断运行包含见解和建议的列表、受影响的资源、日志文件、其他收集的丰富诊断信息，以及供脱机查看的报告。 有关所有收集的诊断数据的完整列表，请参阅 [Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights)或 [Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights)上的 **PerfInsights 收集的信息类型**。
 
 ### <a name="select-a-performance-diagnostics-report"></a>选择性能诊断报告
 
@@ -163,11 +163,11 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>下载并查看完整的性能诊断报告
 
-可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。**** 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅 [Windows](how-to-use-perfinsights.md#review-the-diagnostics-report) 或 [Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
+可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅 [Windows](how-to-use-perfinsights.md#review-the-diagnostics-report) 或 [Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
 
 ## <a name="manage-performance-diagnostics-reports"></a>管理性能诊断报告
 
-可以使用“删除报告”按钮删除一个或多个性能诊断报告。****
+可以使用“删除报告”按钮删除一个或多个性能诊断报告。
 
 ## <a name="how-to-uninstall-performance-diagnostics"></a>如何卸载性能诊断
 
@@ -175,7 +175,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ![“性能诊断”边栏选项卡工具栏的屏幕截图，其中突出显示了“卸载”按钮](media/performance-diagnostics/uninstal-button.png)
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="where-is-the-diagnostics-data-from-my-vm-stored"></a>其中存储了 VM 中的诊断数据
 
@@ -188,18 +188,18 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 可通过多种方式来与 Microsoft 共享诊断报告。
 
 **选项 1：** 自动共享最新报告  
-向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。**** 只会将最新的报告提供给支持工程师。
+向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。 只会将最新的报告提供给支持工程师。
 
 **选项 2：** 为诊断报告压缩文件生成共享访问签名  
-可以使用共享访问签名来共享报告压缩文件的链接。 为此，请按照下列步骤进行操作：
+可以使用共享访问签名来共享报告压缩文件的链接。 要实现这一点，请执行下列操作：
 
 1. 在 Azure 门户中，浏览到存储了诊断数据的存储帐户。
-1. 在“Blob 服务”部分选择“Blob”。********
-1. 选择“azdiagextnresults”容器。****
+1. 在“Blob 服务”部分选择“Blob”。
+1. 选择“azdiagextnresults”容器。
 1. 选择要共享的性能诊断输出压缩文件。
-1. 在“生成 SAS”选项卡上，选择共享条件。****
-1. 单击“生成 Blob SAS 令牌和 URL”。****
-1. 复制“Blob SAS URL”并与支持工程师共享。****
+1. 在“生成 SAS”选项卡上，选择共享条件。
+1. 单击“生成 Blob SAS 令牌和 URL”。
+1. 复制“Blob SAS URL”并与支持工程师共享。
 
 **选项 3：** 从存储帐户下载报告
 

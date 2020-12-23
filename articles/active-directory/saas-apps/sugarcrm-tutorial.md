@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cd1be43bd8984df8fef690e595ec99f4b112c3c1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c875c89d5b565e95fccaceebdccad82da75b238e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533610"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521911"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sugar CRM 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88533610"
 * 让用户使用其 Azure AD 帐户自动登录到 Sugar CRM。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -142,11 +142,11 @@ ms.locfileid: "88533610"
 
 1. 在“管理”  部分中，单击“密码管理”  。
 
-    ![管理](./media/sugarcrm-tutorial/ic795889.png "管理")
+    ![显示可在其中选择“密码管理”的“管理”部分的屏幕截图。](./media/sugarcrm-tutorial/ic795889.png "管理")
 
 1. 选择“启用 SAML 身份验证”  。
 
-    ![管理](./media/sugarcrm-tutorial/ic795890.png "管理")
+    ![显示用于选择 SAML 身份验证的选项的屏幕截图。](./media/sugarcrm-tutorial/ic795890.png "管理")
 
 1. 在“SAML 身份验证”  部分中，执行以下步骤：
 
@@ -158,7 +158,7 @@ ms.locfileid: "88533610"
   
     c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将整个证书粘贴到“X.509 证书”文本框中。 
   
-    d. 单击“ **保存**”。
+    d. 单击“ **保存** ”。
 
 ### <a name="create-sugar-crm-test-user"></a>创建 Sugar CRM 测试用户
 
@@ -174,7 +174,7 @@ ms.locfileid: "88533610"
 
 1. 在“管理”  部分中，单击“用户管理”  。
 
-    ![管理](./media/sugarcrm-tutorial/ic795893.png "管理")
+    ![显示可在其中选择“用户管理”的“管理”部分的屏幕截图。](./media/sugarcrm-tutorial/ic795893.png "管理")
 
 1. 转到“用户”\>“创建新用户”  。
 
@@ -182,7 +182,7 @@ ms.locfileid: "88533610"
 
 1. 在“用户配置文件”  选项卡上，执行以下步骤：
 
-    ![新建用户](./media/sugarcrm-tutorial/ic795895.png "新建用户")
+    ![显示可在其中输入所述值的“用户个人资料”选项卡的屏幕截图。](./media/sugarcrm-tutorial/ic795895.png "新建用户")
 
     * 在相关文本框中键入有效 Azure Active Directory 用户的用户名、姓氏和电子邮件地址。   
   
@@ -190,11 +190,11 @@ ms.locfileid: "88533610"
 
 1. 在“密码”选项卡中，执行以下步骤：
 
-    ![新建用户](./media/sugarcrm-tutorial/ic795896.png "新建用户")
+    ![显示可在其中输入所述值的“密码”选项卡的屏幕截图。](./media/sugarcrm-tutorial/ic795896.png "新建用户")
 
     a. 在相关文本框中键入密码。
 
-    b. 单击“ **保存**”。
+    b. 单击“ **保存** ”。
 
 > [!NOTE]
 > 可以使用 Sugar CRM 提供的任何其他 Sugar CRM 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
@@ -203,15 +203,14 @@ ms.locfileid: "88533610"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Sugar CRM”磁贴时，应会自动登录到设置了 SSO 的 Sugar CRM。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Sugar CRM”磁贴时，应会自动登录到设置了 SSO 的 Sugar CRM。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Sugar CRM](https://aad.portal.azure.com/)
-

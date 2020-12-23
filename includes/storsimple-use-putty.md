@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67172988"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995416"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>通过串行控制台进行连接
 1. 将串行电缆连接到设备（直接连接或通过 USB 串行适配器连接）。
-2. 打开“控制面板”，并打开“设备管理器”********。
+2. 打开“控制面板”，并打开“设备管理器”。
 3. 标识 COM 端口（如下图所示）。
    
      ![通过串行控制台进行连接](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)

@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de416277de34e1c3717d581697f05c98c48d1959
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508890"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146001"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,11 +69,11 @@ ms.locfileid: "84508890"
 
 1. 若要将管道附加到此触发器，请转到管道画布，然后单击“添加触发器”并选择“新建/编辑”。  出现边侧导航栏时，单击“选择触发器...”下拉列表，然后选择创建的触发器。 单击“下一步:数据预览”确认配置是否正确，然后单击“下一步”验证数据预览是否正确。
 
-1. 如果管道具有参数，则你可以在触发器运行参数边侧导航栏中指定这些参数。 事件触发器将 Blob 的文件夹路径和文件名捕获到属性 `@trigger().outputs.body.folderPath` 和 `@trigger().outputs.body.fileName` 中。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline().parameters.parameterName` 表达式访问由触发器捕获的值。 完成后，单击“完成”。
+1. 如果管道具有参数，则你可以在触发器运行参数边侧导航栏中指定这些参数。 事件触发器将 Blob 的文件夹路径和文件名捕获到属性 `@triggerBody().folderPath` 和 `@triggerBody().fileName` 中。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline().parameters.parameterName` 表达式访问由触发器捕获的值。 完成后，单击“完成”。
 
     ![将属性映射至管道参数](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-在前面的示例中，触发器配置为在容器 sample-data 中的文件夹 event-testing 内创建以 .csv 结尾的 Blob 路径时激发。 **folderPath** 和 **fileName** 属性捕获新 Blob 的位置。 例如，将 MoviesDB.csv 添加到路径 sample-data/event-testing 时，`@trigger().outputs.body.folderPath` 的值为 `sample-data/event-testing`，`@trigger().outputs.body.fileName` 的值为 `moviesDB.csv`。 示例中的这些值将映射到管道参数 `sourceFolder` 和 `sourceFile`，这两个参数在整个管道中分别可以用作 `@pipeline().parameters.sourceFolder` 和 `@pipeline().parameters.sourceFile`。
+在前面的示例中，触发器配置为在容器 sample-data 中的文件夹 event-testing 内创建以 .csv 结尾的 Blob 路径时激发。 **folderPath** 和 **fileName** 属性捕获新 Blob 的位置。 例如，将 MoviesDB.csv 添加到路径 sample-data/event-testing 时，`@triggerBody().folderPath` 的值为 `sample-data/event-testing`，`@triggerBody().fileName` 的值为 `moviesDB.csv`。 示例中的这些值将映射到管道参数 `sourceFolder` 和 `sourceFile`，这两个参数在整个管道中分别可以用作 `@pipeline().parameters.sourceFolder` 和 `@pipeline().parameters.sourceFile`。
 
 ## <a name="json-schema"></a>JSON 架构
 
@@ -92,9 +92,9 @@ ms.locfileid: "84508890"
 本部分提供了基于事件的触发器的设置示例。
 
 > [!IMPORTANT]
-> 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段，如以下示例所示。 对于 **blobPathBeginsWith**，数据工厂 UI 将自动在触发器 JSON 中的文件夹与容器名称之间添加 `/blobs/`。
+> 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段，如以下示例所示。 对于 **blobPathBeginsWith** ，数据工厂 UI 将自动在触发器 JSON 中的文件夹与容器名称之间添加 `/blobs/`。
 
-| properties | 示例 | 说明 |
+| 属性 | 示例 | 说明 |
 |---|---|---|
 | **Blob 路径开头** | `/containername/` | 接收容器中任何 blob 事件。 |
 | **Blob 路径开头** | `/containername/blobs/foldername/` | 接收 `containername` 容器和 `foldername` 文件夹中的任何 blob 事件。 |

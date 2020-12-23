@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 07ac0ac4d7b86b644ca5d1876b1332fee7358cac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bec931309cbd6bc8bfa96ba3e054d06336c031e1
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552592"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459530"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>教程：将 JFrog Artifactory 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552592"
 * 让用户使用其 Azure AD 帐户自动登录到 JFrog Artifactory。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88552592"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * JFrog Artifactory 支持 **SP 和 IDP** 发起的 SSO
-* JFrog Artifactory 支持**实时**用户预配
+* JFrog Artifactory 支持 **实时** 用户预配
 
 ## <a name="adding-jfrog-artifactory-from-the-gallery"></a>从库中添加 JFrog Artifactory
 
@@ -50,7 +50,7 @@ ms.locfileid: "88552592"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **JFrog Artifactory**。 
+1. 在“从库中添加”部分的搜索框中，键入 **JFrog Artifactory** 。 
 1. 从结果面板中选择“JFrog Artifactory”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -92,19 +92,19 @@ ms.locfileid: "88552592"
 
 1. JFrog Artifactory 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”部分的屏幕截图，其中标出了编辑控件。](common/edit-attribute.png)
 
 1. 除上述属性以外，JFrog Artifactory 应用程序还要求在 SAML 响应中传回其他几个属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
 
-    a. 单击“声明中返回的组”旁边的**笔**。 
+    a. 单击“声明中返回的组”旁边的 **笔** 。 
 
-    ![image](./media/jfrog-artifactory-tutorial/config04.png)
+    ![显示“用户属性和声明”部分的屏幕截图，其中标出了“编辑”图标。](./media/jfrog-artifactory-tutorial/config04.png)
 
-    ![image](./media/jfrog-artifactory-tutorial/config05.png)
+    ![显示“组声明”部分的屏幕截图，其中“所有组”处于选中状态。](./media/jfrog-artifactory-tutorial/config05.png)
 
     b. 从单选列表中选择“所有组”。 
 
-    c. 单击“ **保存**”。
+    c. 单击“ **保存** ”。
 
 4. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -156,13 +156,12 @@ ms.locfileid: "88552592"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“JFrog Artifactory”磁贴时，应会自动登录到设置了 SSO 的 JFrog Artifactory。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“JFrog Artifactory”磁贴时，应会自动登录到设置了 SSO 的 JFrog Artifactory。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

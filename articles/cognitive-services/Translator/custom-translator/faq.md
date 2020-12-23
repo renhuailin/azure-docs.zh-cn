@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f3d8131635fae55fd8dc2fd2649ae5dda1e62ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507223"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368230"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>自定义翻译人员常见问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "88507223"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>如何访问已部署的系统？
 
-可以使用 Microsoft 文本翻译 API V3 并指定 CategoryID 来访问已部署的系统。 在 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页中可以找到有关文本翻译 API 的详细信息。
+可以使用 Microsoft 文本翻译 API V3 并指定 CategoryID 来访问已部署的系统。 在 [API 参考](../reference/v3-0-reference.md)网页中可以找到有关文本翻译 API 的详细信息。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>如果我的数据已进行句子对齐，如何跳过对齐和断句？
 

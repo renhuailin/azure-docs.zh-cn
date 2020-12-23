@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b6fd26b4965b92f5f06a008d67e2d585fd1b41b7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053484"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652070"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>教程：在 Azure Sentinel 中设置自动威胁响应
 
@@ -39,7 +39,7 @@ ms.locfileid: "88053484"
 
 ## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Azure Sentinel 中的安全性 playbook 是指什么？
 
-安全性 playbook 是在 Azure Sentinel 中运行以响应警报的一个流程集合。 安全性 playbook 可帮助自动处理和编排响应，它可手动运行，也可设置为在触发特定警报时自动运行。 Azure Sentinel 中的安全性 playbook 基于 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)，这意味着你可获得逻辑应用的所有功能、自定义能力和内置模板。 每个 playbook 都是针对所选的特定订阅创建的，但当你查看 Playbook 页面时，你将看到所有选定订阅中的全部 playbook。
+安全性 playbook 是在 Azure Sentinel 中运行以响应警报的一个流程集合。 安全性 playbook 可帮助自动处理和编排响应，它可手动运行，也可设置为在触发特定警报时自动运行。 Azure Sentinel 中的安全性 playbook 基于 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，这意味着你可获得逻辑应用的所有功能、自定义能力和内置模板。 每个 playbook 都是针对所选的特定订阅创建的，但当你查看 Playbook 页面时，你将看到所有选定订阅中的全部 playbook。
 
 > [!NOTE]
 > Playbook 使用 Azure 逻辑应用，因此要收费。 有关更多详细信息，请访问 [Azure 逻辑应用](https://azure.microsoft.com/pricing/details/logic-apps/)定价页。
@@ -70,15 +70,15 @@ ms.locfileid: "88053484"
 
 4. 在“创建逻辑应用”页面上，键入所请求的信息以创建新的逻辑应用，然后单击“创建” 。 
 
-5. 在[**逻辑应用设计器中，选择要使用的模板**](../logic-apps/logic-apps-overview.md)。 如果选择必须使用凭据的模板，则必须提供凭据。 或者，可从头开始创建新的空白 playbook。 选择“空白逻辑应用”。 
+5. 在 [**逻辑应用设计器中，选择要使用的模板**](../logic-apps/logic-apps-overview.md)。 如果选择必须使用凭据的模板，则必须提供凭据。 或者，可从头开始创建新的空白 playbook。 选择“空白逻辑应用”。 
 
-   ![逻辑应用设计器](./media/tutorial-respond-threats-playbook/playbook-template.png)
+   ![显示“空白逻辑应用”面板的屏幕截图。](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
 6. 你将转到逻辑应用设计器，可在此处构建新的模板或编辑模板。 详细了解如何使用[逻辑应用](../logic-apps/logic-apps-create-logic-apps-from-templates.md)创建 playbook。
 
 7. 若要创建空白 playbook，请在“搜索所有连接器和触发器”字段中，键入 Azure Sentinel，再选择“当触发对 Azure Sentinel 警报的响应时”。 <br>创建后，新的 playbook 显示在“Playbook”列表中。 如果未显示，请单击“刷新”。
 
-1. 使用**获取实体**函数，使你能够从**实体**列表中获取相关实体，例如帐户、IP 地址和主机。 这使你可以对特定实体运行操作。
+1. 使用 **获取实体** 函数，使你能够从 **实体** 列表中获取相关实体，例如帐户、IP 地址和主机。 这使你可以对特定实体运行操作。
 
 7. 现在可以定义触发攻略时的响应。 可添加操作、逻辑条件、switch case 条件或循环。
 
@@ -118,5 +118,3 @@ SIEM/SOC 团队可能会定期收到海量的安全警报。 生成的警报量�
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你学习了如何在 Azure Sentinel 中运行 playbook。 继续学习[如何使用 Azure Sentinel 来搜寻威胁](hunting.md)。
-
-

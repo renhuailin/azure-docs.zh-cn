@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 IS_OBJECT
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 IS_OBJECT。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 43d8237d859249317d7b581e25ed9a2b34d39d00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1582fd0bbb89bb3e7d4f207d474f4a7e1e0b38b1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303794"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338588"
 ---
 # <a name="is_object-azure-cosmos-db"></a>IS_OBJECT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回一个布尔值，指示指定表达式的类型是否为 JSON 对象。  
   
 ## <a name="syntax"></a>语法

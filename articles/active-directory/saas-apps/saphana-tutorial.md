@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: fc3b5b096e339d0c0f4bca7afc92d7315246fcd4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552273"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993206"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88552273"
 * 可让用户使用其 Azure AD 帐户自动登录到 SAP HANA（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -87,7 +87,7 @@ ms.locfileid: "88552273"
 2. **[配置 SAP HANA 单一登录](#configure-sap-hana-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **创建 SAP HANA 测试用户[ - 在 SAP HANA 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式](#create-sap-hana-test-user)** 。
+5. **创建 SAP HANA 测试用户 [ - 在 SAP HANA 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式](#create-sap-hana-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -100,7 +100,7 @@ ms.locfileid: "88552273"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -121,13 +121,13 @@ ms.locfileid: "88552273"
 
 5. SAP HANA 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”部分的屏幕截图，其中已选择“编辑”图标。](common/edit-attribute.png)
 
 6. 在“用户属性和声明”对话框中的“用户属性”部分，执行以下步骤：
  
     a. 单击“编辑图标”，打开“管理用户声明”对话框   。
 
-    ![image](./media/saphana-tutorial/tutorial_usermail.png)
+    ![显示“用户属性和声明”对话框的屏幕截图，其中选择了“编辑”图标。](./media/saphana-tutorial/tutorial_usermail.png)
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "88552273"
 
     a. 在“添加标识提供者信息”  窗格中，将从 Azure 门户下载的元数据 XML 内容粘贴到“元数据”  框中。
 
-    ![添加标识提供者设置](./media/saphana-tutorial/sap2.png)
+    ![屏幕截图显示了“添加标识提供者信息”窗格，其中突出显示了“元数据”和“名称”框。](./media/saphana-tutorial/sap2.png)
 
     b. 如果 XML 文档的内容有效，则分析过程会提取“常规数据”屏幕区域中的“使用者、实体 ID 和颁发者”字段所需的信息。   此外，还会提取“目标”屏幕区域中的 URL 字段（例如，“基 URL”和“单一登录 URL (*)”   字段）所需的信息。
 
@@ -169,7 +169,7 @@ ms.locfileid: "88552273"
 
     ![“保存”按钮](./media/saphana-tutorial/sap4.png)
 
-4. 在 HANA Studio 中“配置”选项卡的系统属性内，根据 **saml** 筛选设置。 然后将 **assertion_timeout** 从 **10 秒**调整为 **120 秒**。
+4. 在 HANA Studio 中“配置”选项卡的系统属性内，根据 **saml** 筛选设置。 然后将 **assertion_timeout** 从 **10 秒** 调整为 **120 秒**。
 
     ![assertion_timeout 设置](./media/saphana-tutorial/sap7.png)
 
@@ -260,13 +260,12 @@ SAP HANA 支持默认启用的“实时预配”  。
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 SAP HANA 磁贴时，应会自动登录到为其设置了 SSO 的 SAP HANA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 SAP HANA 磁贴时，应会自动登录到为其设置了 SSO 的 SAP HANA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -1,103 +1,86 @@
 ---
-title: 认知服务文档：2020年9月1日（年9月30日2020）的新增功能
-description: 2020年9月1日（年9月30日2020）认知服务文档的新增功能。
+title: 认知服务：文档中的新增功能
+description: '2020年11月1日至年11月30日2020，认知服务文档的新增功能。 '
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 10/02/2020
-ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/07/2020
+ms.openlocfilehash: 9069a53166b30e206559f0c68c4bcef2ec136ac5
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857803"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631493"
 ---
-# <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>认知服务文档：2020年9月1日（年9月30日2020）的新增功能
+# <a name="cognitive-services-docs-whats-new-for-november-1-2020---november-30-2020"></a>认知服务文档：2020年11月1日（年11月30日2020）的新增功能
 
-欢迎使用2020年9月1日至年9月 2020 31 日的认知服务文档中的新增功能。 本文列出了 7 月份对文档进行的一些重大更改。
+欢迎使用2020年11月1日至年11月 30 2020 日的认知服务文档中的新增功能。 本文列出了 7 月份对文档进行的一些重大更改。
 
 ## <a name="cognitive-services"></a>认知服务
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [快速入门：使用 Azure Command-Line 接口 (CLI 创建认知服务资源) ](cognitive-services-apis-create-account-cli.md)
-- [快速入门：使用 Azure 管理客户端库创建认知服务资源](cognitive-services-apis-create-account-client-library.md)
-- [快速入门：使用 Azure 门户创建认知服务资源](cognitive-services-apis-create-account.md)
-- [快速入门：使用 ARM 模板创建认知服务资源](create-account-resource-manager-template.md)
-
-## <a name="computer-vision"></a>计算机视觉
-
-### <a name="new-articles"></a>新文章
-
-- [计算机视觉空间分析简介](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context)
-- [在 AI 部署中用于计算机视觉空间分析的责任](https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context)
-- [计算机视觉空间分析的研究见解](https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context)
-- [计算机视觉空间分析的披露设计准则](https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context)
-- [计算机视觉空间分析的相容性、隐私性和安全性](https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context)
-- [计算机视觉空间分析的特征和限制](https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context)
+- [快速入门：使用 Azure 命令行接口 (CLI) 创建认知服务资源](cognitive-services-apis-create-account-cli.md)
+- [认知服务开发选项](cognitive-services-development-options.md)
+- [Azure 认知服务的支持和帮助选项](cognitive-services-support-options.md)
+- [为 Azure 认知服务启用诊断日志记录](diagnostic-logging.md)
+- [Azure 认知服务的自然语言支持](language-support.md)
+- [认知服务的 Azure 安全基线](security-baseline.md)
 
 ## <a name="containers"></a>容器
 
-### <a name="new-articles"></a>新文章
-
-- [ (预览中安装并运行空间分析容器) ](/azure/cognitive-services/computer-vision/spatial-analysis-container.md)
-
 ### <a name="updated-articles"></a>更新的文章
 
-- [Azure 认知服务容器图像标记](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure 认知服务容器映像标记和发行说明](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>表单识别器
 
-### <a name="updated-articles"></a>更新的文章
+### <a name="new-articles"></a>新文章
 
-- [表单识别器的语言支持](/azure/cognitive-services/form-recognizer/language-support.md)
-- [为自定义模型构建定型数据集](/azure/cognitive-services/form-recognizer/build-training-data-set.md)
-- [回执概念](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [格式识别静态数据的加密](/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
-- [表单识别器的新增功能](/azure/cognitive-services/form-recognizer/whats-new.md)
-- [名片概念](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
-- [什么是表单识别器？](/azure/cognitive-services/form-recognizer/overview.md)
-- [快速入门：使用表单识别器客户端库](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
-
-## <a name="immersive-reader"></a>沉浸式阅读器
+- [窗体识别器预生成发票型号](/azure/cognitive-services/form-recognizer/concept-invoices)
+- [表单识别器布局服务](/azure/cognitive-services/form-recognizer/concept-layout)
+- [快速入门：将表单识别器 REST API 与 Python 结合使用来提取账单数据](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [沉浸式阅读器的语言支持](/azure/cognitive-services/immersive-reader/language-support.md)
-- [沉浸式读者 JavaScript SDK 参考 (1.1) ](/azure/cognitive-services/immersive-reader/reference.md)
-- [快速入门：开始使用沉浸式阅读器](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries.md)
-- [教程：使用 Python 示例项目启动沉浸式阅读器](/azure/cognitive-services/immersive-reader/tutorial-python.md)
-- [创建沉浸式读者资源并配置 Azure Active Directory 身份验证](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [回执概念](/azure/cognitive-services/form-recognizer/concept-receipts)
+- [什么是表单识别器？](/azure/cognitive-services/form-recognizer/overview)
+- [使用示例标记工具通过标签来训练表单识别器模型](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [快速入门：通过 Python 使用表单识别器 REST API 以提取名片数据](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
+- [表单识别器的新增功能](/azure/cognitive-services/form-recognizer/whats-new)
 
 ## <a name="metrics-advisor"></a>指标顾问
 
 ### <a name="new-articles"></a>新文章
 
-- [如何：配置度量值和微调检测配置](/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics.md)
-- [将来自不同数据源的数据馈送添加到指标顾问](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [快速入门：使用 REST API 自定义解决方案](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
-- [操作说明：配置警报并使用挂钩获取通知](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
+- [指标顾问：文档中的新增内容](/azure/cognitive-services/metrics-advisor/whats-new)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [提供异常反馈](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback)
+- [指标顾问常见问题解答](/azure/cognitive-services/metrics-advisor/faq)
+- [快速入门：使用客户端库或 REST API 自定义解决方案](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library)
+
+## <a name="qna-maker"></a>QnA Maker 
+
+### <a name="new-articles"></a>新文章 
+
+* [QnA Maker 托管公共预览版公告](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575)
+* [创建新的 QnA Maker 托管服务](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v2)
+* [将现有知识库迁移到 QnA Maker 托管](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/migrate-knowledge-base)
 
 ## <a name="text-analytics"></a>文本分析
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [如何在文本分析中使用命名实体识别](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [文本分析 API 中的模型版本控制](/azure/cognitive-services/text-analytics/concepts/model-versioning.md)
-- [快速入门：使用文本分析客户端库](/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk.md)
-
-## <a name="community-contributors"></a>社区参与者
-
-在此期间，以下人员参与认知服务文档。 谢谢！ 了解如何通过以下 " [新增功能" 登录页](index.yml)中的 "获取内容" 下的链接进行参与。
-
-- [AzureMentor](https://github.com/AzureMentor) (1) 
-- [BeigeBadger](https://github.com/BeigeBadger) -Matt Stannett (1) 
-- [gurry](https://github.com/gurry) -Gurinder singh)  (1) 
-- [hyoshioka0128](https://github.com/hyoshioka0128) - Hiroshi Yoshioka (1)
-- [iAmBipinPaul](https://github.com/iAmBipinPaul) Bipin Paul (1) 
-- [rexwan](https://github.com/rexwan) -Rex Wang (1) 
-- [rglidden](https://github.com/rglidden) -Richard Glidden (1) 
+- [文本分析 API 的数据和速率限制](/azure/cognitive-services/text-analytics/concepts/data-limits)
+- [如何：使用健康状况文本分析（预览）](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
+- [如何调用文本分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [如何在文本分析中使用命名实体识别](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [如何：情绪分析和观点挖掘](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis)
+- [文本分析 API 中有哪些新功能？](/azure/cognitive-services/text-analytics/whats-new)
+- [示例：通过文本分析检测语言](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 RIGHT
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 RIGHT。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be950fed563d8e80339dc80181e7fe5a78092734
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302145"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341564"
 ---
 # <a name="right-azure-cosmos-db"></a>RIGHT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回具有指定字符数的字符串的右侧部分。  
   
 ## <a name="syntax"></a>语法

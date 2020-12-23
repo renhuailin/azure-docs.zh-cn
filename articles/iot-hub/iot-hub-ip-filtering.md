@@ -7,22 +7,22 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 501b609d745e0a86bc1e00bccae54bb4f6e49376
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074730"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545270"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
-安全性对于基于 Azure IoT 中心的任何 IoT 解决方案来说都是一个重要方面。 作为安全配置的一部分，有时需要显式指定设备可从其连接的 IP 地址。 使用 *IP 筛选器*功能，可以配置规则来拒绝或接受来自特定 IPv4 地址的流量。
+安全性对于基于 Azure IoT 中心的任何 IoT 解决方案来说都是一个重要方面。 作为安全配置的一部分，有时需要显式指定设备可从其连接的 IP 地址。 使用 *IP 筛选器* 功能，可以配置规则来拒绝或接受来自特定 IPv4 地址的流量。
 
 ## <a name="when-to-use"></a>何时使用
 
 对于需要阻止特定 IP 地址的 IoT 中心终结点的情况，有两个具体用例：
 
-* IoT 中心应仅从指定范围内的 IP 地址接收流量并拒绝任何其他流量。 例如，将 IoT 中心与 [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) 配合使用，以在 IoT 中心与本地基础结构之间创建专用连接。
+* IoT 中心应仅从指定范围内的 IP 地址接收流量并拒绝任何其他流量。 例如，将 IoT 中心与 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 配合使用，以在 IoT 中心与本地基础结构之间创建专用连接。
 
 * 需要拒绝来自 IoT 中心管理员已标识为可疑地址的 IP 地址的流量。
 
@@ -47,13 +47,13 @@ ms.locfileid: "87074730"
 
 若要添加 IP 筛选器规则，请选择“+ 添加 IP 筛选器规则”。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="向 IoT 中心添加 IP 筛选器规则":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 选择“添加 IP 筛选器规则”后，请填写字段。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="选择“添加 IP 筛选器规则”后":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
-* 提供 IP 筛选器规则的**名称**。 此项必须是不区分大小写的唯一字母数字字符串，长度不超过 128 个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
+* 提供 IP 筛选器规则的 **名称** 。 此项必须是不区分大小写的唯一字母数字字符串，长度不超过 128 个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
 
 * 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。
 
@@ -61,7 +61,7 @@ ms.locfileid: "87074730"
 
 填写这些字段后，请选择“保存”以保存该规则。 会出现一个提醒，通知你更新正在进行。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="关于保存 IP 筛选器规则的通知":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 当存在的 IP 筛选规则达到最大数目 10 时，“添加”选项被禁用。
 
@@ -71,11 +71,11 @@ ms.locfileid: "87074730"
 
 若要删除 IP 筛选器规则，请选择与该行对应的垃圾桶图标，然后选择“保存”。 此时会删除规则并保存所做的更改。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="删除 IoT 中心 IP 筛选器规则":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>使用 Azure CLI 检索和更新 IP 筛选器
 
-可以通过 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 检索和更新 IoT 中心的 IP 筛选器。
+可以通过 [Azure CLI](/cli/azure/) 检索和更新 IoT 中心的 IP 筛选器。
 
 若要检索 IoT 中心的当前 IP 筛选器，请运行：
 
@@ -149,7 +149,7 @@ $iothubResource | Set-AzResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>使用 REST 更新 IP 筛选器
 
-还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate)`properties.ipFilterRules`。
+还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](/rest/api/iothub/iothubresource/createorupdate)`properties.ipFilterRules`。
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
 
@@ -161,10 +161,10 @@ IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定�
 
 若要保存新的 IP 筛选器规则顺序，请单击“保存”。
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="更改 IoT 中心 IP 筛选器规则的顺序":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 ## <a name="next-steps"></a>后续步骤
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [IoT 中心指标](iot-hub-metrics.md)
+* [监视 IoT 中心](monitor-iot-hub.md)

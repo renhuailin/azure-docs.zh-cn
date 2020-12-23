@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd90be6d93dc5ca399ac87daba0ca44fa7e88ff8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85202308"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532488"
 ---
 # <a name="verification-display-control"></a>验证显示控件
 
@@ -26,15 +26,13 @@ ms.locfileid: "85202308"
 
 验证显示控件包含两个步骤（操作）：
 
-1. 从用户那里请求要将验证码发送到的目标，例如电子邮件地址或电话号码。 当用户选择“发送代码”  按钮时，将执行验证显示控件的 **SendCode 操作**。 **SendCode 操作**生成一个代码，构造要发送的内容并将其发送给用户。 地址值可以预填充，并充当第二重身份验证。
+1. 从用户那里请求要将验证码发送到的目标，例如电子邮件地址或电话号码。 当用户选择“发送代码”  按钮时，将执行验证显示控件的 **SendCode 操作** 。 **SendCode 操作** 生成一个代码，构造要发送的内容并将其发送给用户。 地址值可以预填充，并充当第二重身份验证。
 
     ![发送代码操作的示例页](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. 发送代码后，用户将读取消息，将验证码输入到显示控件提供的控件中，并选择“验证代码”  。 通过选择“验证代码”  ，将执行 **VerifyCode 操作**来验证与该地址关联的代码。 如果用户选择了“发送新代码”  ，则会再次执行第一个操作。
+1. 发送代码后，用户将读取消息，将验证码输入到显示控件提供的控件中，并选择“验证代码”  。 通过选择“验证代码”  ，将执行 **VerifyCode 操作** 来验证与该地址关联的代码。 如果用户选择了“发送新代码”  ，则会再次执行第一个操作。
 
     ![验证代码操作的示例页](media/display-control-verification/display-control-verification-email-action-02.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="verificationcontrol-required-elements"></a>VerificationControl 必需的元素
 
@@ -51,7 +49,7 @@ ms.locfileid: "85202308"
 
 在下面的示例中，页面上将显示一个 **email** 文本框。 当用户输入其电子邮件地址并选择 **SendCode** 时，将在 Azure AD B2C 后端触发 **SendCode** 操作。
 
-然后，用户输入 **verificationCode** 并选择 **VerifyCode**，以在后端触发 **VerifyCode** 操作。 如果所有验证都通过，则 **VerificationControl** 将被视为已完成，用户可以继续执行下一步。
+然后，用户输入 **verificationCode** 并选择 **VerifyCode** ，以在后端触发 **VerifyCode** 操作。 如果所有验证都通过，则 **VerificationControl** 将被视为已完成，用户可以继续执行下一步。
 
 ```xml
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">

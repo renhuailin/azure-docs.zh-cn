@@ -3,19 +3,21 @@ title: Azure Cosmos DB 中的索引
 description: 了解索引在 Azure Cosmos DB 中的工作原理，学习受支持的不同类型的索引，例如范围索引、空间索引和组合索引。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068381"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339745"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 是一种架构不可知的数据库，你可用它来迭代应用程序，而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 自动对[容器](databases-containers-items.md#azure-cosmos-containers)中所有项的每个属性编制索引，不用定义任何架构或配置辅助索引。
+Azure Cosmos DB 是一种架构不可知的数据库，你可用它来迭代应用程序，而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 自动对[容器](account-databases-containers-items.md#azure-cosmos-containers)中所有项的每个属性编制索引，不用定义任何架构或配置辅助索引。
 
 本文的目的是说明 Azure Cosmos DB 如何为数据编制索引以及如何使用索引来提高查询性能。 建议先阅读本部分，然后再探索如何自定义[索引策略](index-policy.md)。
 
@@ -144,7 +146,7 @@ Azure Cosmos DB 目前支持三种类型的索引。
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-空间索引可在格式正确的 [GeoJSON](geospatial.md) 对象上使用。 目前支持点、线串、多边形和多面。
+空间索引可在格式正确的 [GeoJSON](./sql-query-geospatial-intro.md) 对象上使用。 目前支持点、线串、多边形和多面。
 
 ### <a name="composite-indexes"></a>组合索引
 

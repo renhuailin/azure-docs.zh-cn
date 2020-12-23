@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282017"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071483"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>生成并部署 OPC 保管库证书管理服务
 
 > [!IMPORTANT]
-> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 本文介绍如何在 Azure 中部署 OPC 保管库证书管理服务。
 
@@ -31,7 +31,7 @@ ms.locfileid: "91282017"
 
 当前，生成和部署操作仅限于 Windows。
 这些示例都是用 c # 编写的 .NET Standard，需要为部署生成服务和示例。
-.NET Standard 所需的所有工具都附带 .NET Core 工具。 请参阅 [.Net Core 入门](https://docs.microsoft.com/dotnet/articles/core/getting-started)。
+.NET Standard 所需的所有工具都附带 .NET Core 工具。 请参阅 [.Net Core 入门](/dotnet/articles/core/getting-started)。
 
 1. [安装 .Net Core 2.1 +][dotnet-install]。
 2. 仅当需要) 本地 Docker 生成时，才能[安装 Docker][docker-url] (可选的。

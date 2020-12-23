@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: jeedes
-ms.openlocfilehash: f9fd458ea19fa0dad2f630f94a67d5e1db96cee3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b244d5e6aa9dd732aa670fd645b6bbc266c9535
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543306"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897273"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP Cloud for Customer 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543306"
 * 让用户使用其 Azure AD 帐户自动登录到 SAP Cloud for Customer。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "88543306"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **SAP Cloud for Customer**。 
+1. 在“从库中添加”部分的搜索框中，键入 **SAP Cloud for Customer** 。 
 1. 从结果面板中选择“SAP Cloud for Customer”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-cloud-for-customer"></a>配置和测试 SAP Cloud for Customer 的 Azure AD 单一登录
@@ -86,13 +86,13 @@ ms.locfileid: "88543306"
 
 1. SAP Cloud for Customer 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”对话框的屏幕截图，其中选择了“编辑”图标。](common/edit-attribute.png)
 
 1. 在“用户属性和声明”对话框中的“用户属性”部分，执行以下步骤   ：
 
     a. 单击“编辑图标”，打开“管理用户声明”对话框   。
 
-    ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
+    ![屏幕截图显示了“用户属性和声明”，其中选择了“编辑”图标。](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "88543306"
     d. 从“参数 1”列表中，选择要用于实现的用户属性  。
     例如，如果想要使用 EmployeeID 作为唯一用户标识符并且已在 ExtensionAttribute2 中存储属性值，则选择 user.extensionattribute2。
 
-    e. 单击“ **保存**”。
+    e. 单击“ **保存** ”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -147,13 +147,13 @@ ms.locfileid: "88543306"
 
 1. 打开新的 Web 浏览器窗口，以管理员身份登录到 SAP Cloud for Customer 公司站点。
 
-2. 在菜单左侧单击“ **标识提供者**” > “**企业标识提供者**” > “**添加**”，在弹出窗口中添加标识提供者名称（例如 **Azure AD**），单击“**保存**”，然后单击“**SAML 2.0 配置**”。
+2. 在菜单左侧单击“标识提供者” > “企业标识提供者 > ”“添加”，在弹出窗口中添加标识提供者名称（例如 Azure AD），单击“保存”，然后单击“SAML 2.0 配置”     。
 
-    ![SAP 配置](./media/sap-customer-cloud-tutorial/configure01.png)
+    ![屏幕截图显示了“标识提供者”页，其中突出显示了“添加标识提供者”对话框文本框，并选择了“保存”按钮。](./media/sap-customer-cloud-tutorial/configure01.png)
 
 3. 在“SAML 2.0 配置”  部分，执行以下步骤：
 
-    ![SAP 配置](./media/sap-customer-cloud-tutorial/configure02.png)
+    ![屏幕截图显示了“SAML 2.0 配置”，其中选择了“浏览”按钮。](./media/sap-customer-cloud-tutorial/configure02.png)
 
     a. 单击“浏览”，上传从 Azure 门户下载的联合身份验证元数据 XML 文件  。
 
@@ -167,15 +167,15 @@ ms.locfileid: "88543306"
 
 1. 以安全管理员身份登录 SAP Cloud for Customer。
 
-2. 从菜单的左侧，单击“ **用户和授权** > **“用户管理”**  > **添加用户**”。
+2. 从菜单的左侧，单击“用户和授权” > “用户管理” > 添加用户”  。
 
-    ![SAP 配置](./media/sap-customer-cloud-tutorial/configure03.png)
+    ![屏幕截图显示了“用户管理”页，其中选择了“添加用户”按钮。](./media/sap-customer-cloud-tutorial/configure03.png)
 
 3. 在“添加新用户”  部分，执行以下步骤：
 
     ![SAP 配置](./media/sap-customer-cloud-tutorial/configure04.png)
 
-    a. 在“名字”文本框中，输入用户的名字，例如 **B**。 
+    a. 在“名字”文本框中，输入用户的名字，例如 **B** 。 
 
     b. 在“姓氏”文本框中，输入用户的姓氏，例如 Simon   。
 
@@ -191,15 +191,14 @@ ms.locfileid: "88543306"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 SAP Cloud for Customer 磁贴时，应会自动登录到为其设置了 SSO 的 SAP Cloud for Customer。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 SAP Cloud for Customer 磁贴时，应会自动登录到为其设置了 SSO 的 SAP Cloud for Customer。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 SAP Cloud for Customer](https://aad.portal.azure.com/)
-

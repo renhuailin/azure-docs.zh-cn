@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681730"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149356"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用情况和费用文件中的术语
 
@@ -90,8 +90,8 @@ PublisherType | All | 发布者的类型（值：**Azure**、**AWS**、**Marketp
 数量 | All | 购买或消耗的单位数。
 预订 ID | EA、MCA | 购买的预留实例的唯一标识符。
 ReservationName | EA、MCA | 购买的预留实例的名称。
-ResourceGroup | All | 资源所在的[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名称。 并非所有费用都来自部署到资源组的资源。 没有资源组的费用将显示为 null/空、“其他”或“不适用”。
-ResourceId<sup>1</sup> | All | [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/resources)资源的唯一标识符。
+ResourceGroup | All | 资源所在的[资源组](../../azure-resource-manager/management/overview.md)的名称。 并非所有费用都来自部署到资源组的资源。 没有资源组的费用将显示为 null/空、“其他”或“不适用”。
+ResourceId<sup>1</sup> | All | [Azure 资源管理器](/rest/api/resources/resources)资源的唯一标识符。
 ResourceLocation | All | 资源运行时所在的数据中心位置。 参见“位置”。
 ResourceName | EA、PAYG | 资源的名称。 并非所有费用都来所部署的资源。 没有资源类型的费用将显示为 null/空、“其他”或“不适用”。
 ResourceType | MCA | 资源实例的类型。 并非所有费用都来所部署的资源。 没有资源类型的费用将显示为 null/空、“其他”或“不适用”。

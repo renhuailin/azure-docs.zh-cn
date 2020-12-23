@@ -4,19 +4,22 @@ description: 使用 Azure 专用终结点以私密方式连接到 Web 应用
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/07/2020
+ms.date: 10/09/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bebc7dcbc18a25b0d6d0761a8ca3ac476e83e581
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857259"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183033"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>使用 Azure Web 应用的专用终结点
+
+> [!IMPORTANT]
+> 专用终结点可用于在这些应用服务计划中托管的 Windows 和 Linux Web 应用： **独立主机**、 **PremiumV2**、 **PremiumV3**、 **函数 Premium** (有时称为弹性高级计划) 。 
 
 可以为 Azure Web 应用使用专用终结点，以允许位于专用网络中的客户端通过专用链接安全地访问应用。 专用终结点使用你的 Azure VNet 地址空间中的 IP 地址。 专用网络上客户端与 Web 应用之间的网络流量将通过 VNet 以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。
 
@@ -88,10 +91,10 @@ ms.locfileid: "91857259"
 
 |名称 |类型 |值 |备注 |
 |-----|-----|------|-------|
-|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<-Azure 会在 Azure 公共 DNS 中创建此项，将应用服务指向 privatelink，这由我们管理|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<--在 DNS 系统中管理此项以指向专用终结点 IP 地址|
 
-在此 DNS 配置之后，可以通过默认名称 mywebappname.azurewebsites.net 访问 Web 应用。
+在此 DNS 配置之后，可以通过默认名称 mywebappname.azurewebsites.net 访问 Web 应用。 必须使用此名称，因为为 *. azurewebsites.net 颁发了默认证书。
 
 
 如果你需要使用自定义 DNS 名称，则必须在 Web 应用中添加自定义名称。 自定义名称必须使用公共 DNS 解析方式验证为任意自定义名称。 有关详细信息，请参阅[自定义 DNS 验证][dnsvalidation]。
@@ -115,9 +118,9 @@ ms.locfileid: "91857259"
 
 最多可以将100专用终结点连接到特定的 Web 应用。
 
-为 Web 应用启用专用终结点时，远程调试功能不可用。 建议将代码部署到槽并对其进行远程调试。
+槽不能使用专用终结点。
 
-专用终结点适用于 PremiumV2、PremiumV3、Windows 和 Linux Web 应用（容器化或不提供），Azure Functions 高级计划 (有时称为弹性高级计划) 。 
+为 Web 应用启用专用终结点时，远程调试功能不可用。 建议将代码部署到槽并对其进行远程调试。
 
 我们会定期改进专用链接功能和专用终结点。若要了解有关限制的最新信息，请查看[此文][pllimitations]。
 
@@ -141,7 +144,7 @@ ms.locfileid: "91857259"
 [dnsvalidation]: ../app-service-web-tutorial-custom-domain.md
 [pllimitations]: ../../private-link/private-endpoint-overview.md#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/
-[howtoguide1]: ../../private-link/create-private-endpoint-webapp-portal.md
+[howtoguide1]: ../../private-link/tutorial-private-endpoint-webapp-portal.md
 [howtoguide2]: ../scripts/cli-deploy-privateendpoint.md
 [howtoguide3]: ../scripts/powershell-deploy-private-endpoint.md
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md

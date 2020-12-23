@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e7f441a727bea8d1a5d401fb5e9757dee1044fc
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 8f2adc846247c4f06c9356f482501fd01c5463bf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613800"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202678"
 ---
 # <a name="remote-rendering-sessions"></a>远程渲染会话
 
@@ -149,12 +149,12 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # AzureSession 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession)
-* [C # AzureFrontend CreateNewRenderingSessionAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
-* [C # AzureFrontend OpenRenderingSession ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
-* [C + + AzureSession 类](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession)
-* [C + + AzureFrontend：： CreateNewRenderingSessionAsync](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
-* [C + + AzureFrontend：： OpenRenderingSession](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
+* [C # AzureSession 类](/dotnet/api/microsoft.azure.remoterendering.azuresession)
+* [C # AzureFrontend CreateNewRenderingSessionAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
+* [C # AzureFrontend OpenRenderingSession ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
+* [C + + AzureSession 类](/cpp/api/remote-rendering/azuresession)
+* [C + + AzureFrontend：： CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
+* [C + + AzureFrontend：： OpenRenderingSession](/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
 
 ## <a name="next-steps"></a>后续步骤
 

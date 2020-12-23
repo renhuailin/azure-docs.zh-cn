@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6037ece7f4cbe0edc9cf44bded3ee34815f76a48
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 982ca04237d16979d65260a040f5aed783822ac7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620199"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023218"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>教程：创建 Azure 时序见解 Gen1 环境
 
@@ -36,7 +36,7 @@ ms.locfileid: "91620199"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 所用的 Azure 登录帐户还必须是订阅的“所有者”角色的成员。 有关详细信息，请阅读[使用基于角色的访问控制和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
+* 所用的 Azure 登录帐户还必须是订阅的“所有者”角色的成员。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="review-video"></a>查看视频
 
@@ -101,7 +101,7 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 
    参数|说明
    ---|---
-   **环境名称** | 为 Azure 时序见解环境选择唯一名称。 该名称由 Azure 时序见解资源管理器和[查询 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) 使用。
+   **环境名称** | 为 Azure 时序见解环境选择唯一名称。 该名称由 Azure 时序见解资源管理器和[查询 API](/rest/api/time-series-insights/gen1-query) 使用。
    **订阅** | 订阅是 Azure 资源的容器。 选择一个订阅，以便创建 Azure 时序见解环境。
    **资源组** | 资源组是 Azure 资源的容器。 为 Azure 时序见解环境资源选择现有的资源组或创建新的资源组。
    **位置** | 为 Azure 时序见解环境选择数据中心区域。 为了避免额外的延迟，请在与其他 IoT 资源相同的区域中创建 Azure 时序见解环境。

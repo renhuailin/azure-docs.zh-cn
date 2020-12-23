@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: cf051d96651161658796689639b5d268230d4b5a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570253"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560517"
 ---
 | 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -39,9 +39,9 @@ ms.locfileid: "89570253"
 <sup>2</sup>每单位缓存大小取决于定价层。 若要查看定价层及其缩放限制，请参阅 [API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
 <sup>3</sup>除非被后端明确关闭，否则将共用并重新使用连接。<br/>
 <sup>4</sup>此限制按“基本”、“标准”和“高级”层级的单位计算。 开发人员层限制为 1,024。 此限制不适用于消耗层。<br/>
-<sup>5</sup>此限制适用于“基本”、“标准”和“高级”层级。 在消耗层，策略文档的大小限制为 4 KiB。<br/>
+<sup>5</sup>此限制适用于“基本”、“标准”和“高级”层级。 在消耗层中，策略文档大小限制为 16 KiB。<br/>
 <sup>6</sup>仅开发人员层和高级层中支持多个自定义域。<br/>
 <sup>7</sup>消耗层中不支持 CA 证书。<br/>
 <sup>8</sup>此限制仅适用于消耗层。 对于其他层，这些类别没有限制。<br/>
 <sup>9</sup>仅适用于消耗层。 包含最长 2048 字节的查询字符串。<br/>
-<sup>10</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。
+<sup>10</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](/rest/api/apimanagement/2019-12-01/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。

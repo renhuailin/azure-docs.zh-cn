@@ -7,12 +7,13 @@
 - name: 快速入门
   items:
     - name: ARM 模板
+      displayName: Resource Manager
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md
 - name: 教程
   items:
-    - name: 创作证明策略并对其签名
+    - name: 创作证明策略
       href: author-sign-policy.md
     - name: SGX 证明代码示例
       href: /samples/browse/?expanded=azure&terms=attestation
@@ -34,17 +35,25 @@
           href: claim-sets.md
     - name: 工作流
       href: workflow.md
+    - name: 查看审核日志
+      href: audit-logs.md
 - name: 参考
   items:
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: 常见问题
       href: faq.md
     - name: REST
       href: /rest/api/attestation/
     - name: Azure PowerShell
-      href: /powershell/module/az.attestation/?view=azps-4.3.0#attestation
+      href: /powershell/module/az.attestation/?view=azps-5.0.0#attestation
+    - name: Azure CLI
+      href: /cli/azure/ext/attestation/attestation?view=azure-cli-latest
     - name: 用于 Windows 的 Azure DCAP 库
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: 用于 Linux 的 Azure DCAP 库
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
+    - name: 排查问题
+      href: troubleshoot-guide.md
     - name: VBS 证明协议
       href: virtualization-based-security-protocol.md

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
-ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1118dfcec67a49365f1f6e5e522e98b97694d052
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66420598"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960183"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>StorSimple 虚拟阵列更新1.2 发行说明
 
@@ -46,7 +46,7 @@ ms.locfileid: "66420598"
 
 下表提供了此版本中所修复问题的摘要。
 
-| 不是。 | 功能 | 问题 |
+| 不是。 | Feature | 问题 |
 | --- | --- | --- |
 | 1 |删除| 在软件的以前版本中，即使在删除文件时设备的使用未更改，也会出现问题。 此问题已在此版本中解决。 在处理已删除的文件时，分层代码路径更具弹性。|
 | 2 |异常处理| 在软件的以前版本中，系统重新启动后会出现问题，这可能会导致备份、还原、从云读取以及自动回收空间时出现故障。 此版本包含对在启动路径中处理异常的方式所做的更改。|
@@ -69,4 +69,4 @@ ms.locfileid: "66420598"
 * [StorSimple 虚拟阵列更新0.4 发行说明](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple 虚拟阵列更新0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
+* [StorSimple Virtual Array 正式版发行说明](./storsimple-virtual-array-update-06-release-notes.md)

@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3c20bf1c5856276c4c7ee0e37ed4ef2120d1d93d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085304"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322033"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
 本文档演示如何在 Azure 上为存储于 SQL Server VM 中的数据生成功能，用于帮助算法更有效地从数据中进行学习。 可以使用 SQL 或 Python 等编程语言来完成此任务。 下面演示了这两种方法。
 
-此任务是[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
+此任务是[团队数据科学过程 (TDSP)](./index.yml) 中的一个步骤。
 
 > [!NOTE]
 > 有关实际的示例，可以参阅 [NYC 出租车数据集](https://www.andresmh.com/nyctaxitrips/)[使用 IPython Notebook 和 SQL Server 处理 NYC 数据](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)获取端到端的演练。
@@ -47,7 +47,7 @@ ms.locfileid: "86085304"
 > 
 
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>基于计数生成特征
-本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用 where 子句。 然后，这些新功能可以与原始表联接（使用主键列），以使统计功能与原始数据一起使用。
+本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用 where 子句。 之后可以（使用主键列）将这些新功能与原始表联接，这样就可以在原始数据旁边设置计数功能。
 
 ```sql
 select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
@@ -78,9 +78,9 @@ SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <
 * 第三位小数值达 110 m：可以定大型农业区域或工业园区。
 * 第四位小数值达 11 m：可识别小块土地。 其准确性相当于未更正的、无干扰的 GPS 部件的典型准确性。
 * 第五位小数值达 1.1 m：可将树与树区分开。 可通过差异更正获得该级别的、商用 GPS 计价单位的准确性。
-* 第六个小数位最高可达 0.11 m：可以使用此级别来详细布局结构，以便设计环境，构建道路。 对于追踪冰川和河流的运动，它是不二之选。 此目标可通过将 painstaking 度量值与 GPS 结合使用来实现，例如差异纠正 GPS。
+* 第六个小数位值达 0.11 米：你可以使用此级别详细布局结构、设计景观和修建道路等。 对于追踪冰川和河流的运动，它是不二之选。 此目标可以借助 GPS（例如差异纠正 GPS）采取繁杂的措施来实现。
 
-位置信息可具有以下特征：分离地区、位置和城市信息。 还可以调用 REST 终结点（如 Bing 地图 API）（请参阅 `https://msdn.microsoft.com/library/ff701710.aspx` 获取区域/地区信息）。
+位置信息可具有以下特征：分离地区、位置和城市信息。 还可以一次调用 REST 终结点，例如必应地图 API（若要获取区域/地区信息，请参阅 `https://msdn.microsoft.com/library/ff701710.aspx`）。
 
 ```sql
 select
@@ -99,12 +99,12 @@ from <tablename>
 
 > [!TIP]
 > 可以使用设定语言，以编程方式插入记录。 可能需要将数据插入区块以提高写入效率。 [下面是如何使用 pyodbc 执行此操作的示例](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)。
-> 另一种方法是采用 [BCP 实用工具](https://msdn.microsoft.com/library/ms162802.aspx)将数据插入数据库中
+> 另一种方法是采用 [BCP 实用工具](/sql/tools/bcp-utility)将数据插入数据库中
 > 
 > 
 
 ### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>连接到 Azure 机器学习
-新生成的功能可作为列添加到现有表或存储在新表中，也可与原始表结合以进行机器学习。 如果已经创建，可使用 Azure ML 中的[导入数据](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)模块生成或访问生成功能，如下所示：
+新生成的功能可作为列添加到现有表或存储在新表中，也可与原始表结合以进行机器学习。 如果已经创建，可使用 Azure ML 中的[导入数据](/azure/machine-learning/studio-module-reference/import-data)模块生成或访问生成功能，如下所示：
 
 ![Azure ML 读取器](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
 
@@ -126,5 +126,4 @@ Python 中的 [Pandas 库](https://pandas.pydata.org/)提供一组丰富的数�
 data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 ```
 
-现在可根据 [Panda 创建 Azure blob 存储数据](create-features-blob.md) 主题中的说明来使用 Pandas 数据框架。
-
+现在可根据 [Panda 创建 Azure blob 存储数据](./explore-data-blob.md) 主题中的说明来使用 Pandas 数据框架。

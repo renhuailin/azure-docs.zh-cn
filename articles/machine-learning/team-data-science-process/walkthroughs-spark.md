@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1662af6cd3499fdf851d4e1bd8a0db48da7635b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864139"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320127"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>在 Azure 上使用 PySpark 和 Scala 进行 HDInsight Spark 数据科学演练
 
 这些演练在 Azure Spark 群集上使用 PySpark 和 Scala 执行预测分析。 它们遵循 Team Data Science Process 中所述的步骤。 有关 Team Data Science Process 的概述，请参阅[数据科学过程](overview.md)。 有关 Spark on HDInsight 的概述，请参阅 [Spark on HDInsight 简介](../../hdinsight/spark/apache-spark-overview.md)。
 
-其他执行 Team Data Science Process 的数据科学演练按所使用的**平台**分组。 有关这些示例的明细，请参阅[执行 Team Data Science Process 的演练](walkthroughs.md)。
+其他执行 Team Data Science Process 的数据科学演练按所使用的 **平台** 分组。 有关这些示例的明细，请参阅[执行 Team Data Science Process 的演练](walkthroughs.md)。
 
 ## <a name="predict-taxi-tips-using-pyspark-on-azure-spark"></a>在 Azure Spark 上使用 PySpark 预测出租车小费
 
@@ -40,12 +40,11 @@ ms.locfileid: "75864139"
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>在 Azure Spark 上使用 Scala 预测出租车小费
 
-将 [Scala 与在 Azure 上](scala-walkthrough.md) 运行的 Spark 演练一起，可预测是否支付了提示，以及要支付的金额范围。 该演练介绍如何通过 Azure HDInsight Spark 群集上的 Spark 机器学习库 (MLlib) 和 SparkML 包，对受监督的机器学习任务使用 Scala。 它指导完成构成[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 生成的模型包括逻辑和线性回归、随机林和梯度提升树。
+将 [Scala 与在 Azure 上](scala-walkthrough.md) 运行的 Spark 演练一起，可预测是否支付了提示，以及要支付的金额范围。 该演练介绍如何通过 Azure HDInsight Spark 群集上的 Spark 机器学习库 (MLlib) 和 SparkML 包，对受监督的机器学习任务使用 Scala。 它指导完成构成[数据科学过程](./index.yml)的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 生成的模型包括逻辑和线性回归、随机林和梯度提升树。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 有关团队数据科学过程的概述，请参阅 [团队数据科学过程概述](overview.md)。
 
-有关 Team Data Science Process 生命周期的讨论，请参阅 [Team Data Science Process 生命周期](lifecycle.md)。 此生命周期概述了执行项目时，其从开始到结束所遵循的步骤。 
-
+有关 Team Data Science Process 生命周期的讨论，请参阅 [Team Data Science Process 生命周期](lifecycle.md)。 此生命周期概述了执行项目时，其从开始到结束所遵循的步骤。

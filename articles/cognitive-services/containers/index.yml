@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Azure 认知服务容器
+summary: Azure 认知服务提供多个容器，以便在本地使用 AI。 借助容器，你能够以灵活的方式将认知服务多多引入数据，以满足合规性、安全性或其他操作目的。
+metadata:
+  title: Azure 认知服务容器
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.topic: landing-page
+  ms.date: 10/27/2020
+  ms.author: aahi
+  ms.openlocfilehash: 28eb8450201280e58e24dd5ad9b8826165b614c3
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93328064"
+landingContent:
+- title: 关于认知服务容器
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是认知服务容器？
+      url: ../cognitive-services-container-support.md
+    - text: 常见问题
+      url: container-faq.md
+    - text: 容器映像标记
+      url: container-image-tags.md
+- title: 容器方案
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 容器重复使用方案
+      url: container-reuse-recipe.md
+    - text: 在 Azure 容器实例上进行部署
+      url: azure-container-instance-recipe.md
+    - text: 在 Kubernetes 上部署
+      url: azure-kubernetes-recipe.md
+    - text: 使用 Docker Compose 进行部署
+      url: azure-kubernetes-recipe.md
+- title: 视觉容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../computer-vision/computer-vision-how-to-install-containers.md
+      text: 读取 OCR
+    - url: ../computer-vision/spatial-analysis-container.md
+      text: 空间分析
+    - url: ../face/face-how-to-install-containers.md
+      text: 人脸
+    - url: ../form-recognizer/form-recognizer-container-howto.md
+      text: 表单识别器
+- title: 语言容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+      text: 情绪分析
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
+      text: 关键短语提取
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
+      text: 文本语言检测
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare
+      text: 运行状况文本分析
+    - url: ../luis/luis-container-howto.md
+      text: LUIS 容器
+- title: 语音容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../speech-service/speech-container-howto.md?tabs=stt
+      text: 语音转文本
+    - url: ../speech-service/speech-container-howto.md?tabs=cstt
+      text: 自定义语音转文本
+    - url: ../speech-service/speech-container-howto.md?tabs=tts
+      text: 文本到语音转换
+    - url: ../speech-service/speech-container-howto.md?tabs=ctts
+      text: 自定义文本转语音
+    - url: ../speech-service/speech-container-howto.md?tabs=ntts
+      text: 神经文本转语音
+    - url: ../speech-service/speech-container-howto.md?tabs=lid
+      text: 语音语言检测
+- title: 决策容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../anomaly-detector/anomaly-detector-container-howto.md
+      text: 异常检测器

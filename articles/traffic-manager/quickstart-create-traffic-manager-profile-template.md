@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
-ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299144"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676003"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>快速入门：使用 ARM 模板创建流量管理器配置文件
 
@@ -43,7 +43,7 @@ ms.locfileid: "89299144"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 从以下代码块中选择“试用”，以打开 Azure Cloud Shell，然后按照相关说明登录到 Azure****。 
+1. 从以下代码块中选择“试用”，以打开 Azure Cloud Shell，然后按照相关说明登录到 Azure。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -60,13 +60,13 @@ ms.locfileid: "89299144"
 
     等到控制台中显示提示。
 
-1. 从上一个代码块中选择“复制”****，以复制 PowerShell 脚本。
+1. 从上一个代码块中选择“复制”，以复制 PowerShell 脚本。
 
-1. 右键单击 shell 控制台窗格，然后选择“粘贴”****。
+1. 右键单击 shell 控制台窗格，然后选择“粘贴”。
 
 1. 输入相应的值。
 
-    模板部署将创建包含两个外部终结点的配置文件。 “Endpoint1”使用位于“欧洲北部”的 w<span>ww.microsoft</span>.com 目标终结点。 “Endpoint2”使用位于“美国中南部”的 d<span>ocs.microsoft</span>.com 目标终结点。 
+    模板部署将创建包含两个外部终结点的配置文件。 “Endpoint1”使用位于欧洲北部的目标终结点 `www.microsoft.com` 。 “Endpoint2”使用位于美国中南部的目标终结点 `docs.microsoft.com` 。
 
     资源组名称是追加了 **rg** 的项目名称。
 
@@ -87,21 +87,23 @@ ms.locfileid: "89299144"
     Get-AzTrafficManagerProfile -Name ExternalEndpointExample -ResourceGroupName $resourceGroupName | Select RelativeDnsName
     ```
 
-    复制 **RelativeDnsName** 值。 流量管理器配置文件的 DNS 名称为 *<* relativednsname *>.trafficmanager.net*。 
+    复制 **RelativeDnsName** 值。 流量管理器配置文件的 DNS 名称为 `<relativednsname>.trafficmanager.net`。
 
-1. 在本地 PowerShell 中，通过将 {relativeDNSname} 变量替换为 <relativednsname>.trafficmanager.net 运行以下命令 。
+1. 在本地 PowerShell 中，运行以下命令，将 {relativeDNSname} 变量替换为 `<relativednsname>.trafficmanager.net`。
 
     ```powershell
     Resolve-DnsName -Name {relativeDNSname} | Select-Object NameHost | Select -First 1
     ```
-    你应该获得的 NameHost 为 w<span>ww.microsoft</span>.com 或 d<span>ocs.microsoft</span>.com，具体取决于哪个区域离你更近 。
 
-1. 若要检查是否可以解析为其他终结点，请禁用在上一步中获得的目标的终结点。 将“{endpointName}”替换为“endpoint1”或“endpoint2”，以分别禁用 w<span>ww.microsoft</span>.com 或 d<span>ocs.microsoft</span>.com 的目标   。
+    你应该获得的 NameHost 为 `www.microsoft.com` 或 `docs.microsoft.com`，具体取决于哪个区域离你更近。
+
+1. 若要检查是否可以解析为其他终结点，请禁用在上一步中获得的目标的终结点。 将 {endpointName} 替换为 endpoint1 或 endpoint2，分别禁用 `www.microsoft.com` 或 `docs.microsoft.com` 的目标  。
 
     ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name {endpointName} -Type ExternalEndpoints -ProfileName ExternalEndpointExample -ResourceGroupName $resourceGroupName -Force
     ```
-1. 在本地 PowerShell 中再次运行步骤 2 中的命令。 这一次你应该获得其他终结点的其他 NameHost。 
+
+1. 在本地 PowerShell 中再次运行步骤 2 中的命令。 这一次你应该获得其他终结点的其他 NameHost。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -115,8 +117,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，我们创建了：
-* 流量管理器配置文件
+本快速入门介绍了如何创建流量管理器配置文件，
 
 若要详细了解如何路由流量，请继续学习流量管理器教程。
 

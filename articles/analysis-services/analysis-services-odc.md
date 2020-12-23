@@ -4,19 +4,19 @@ description: 了解如何创建 Office 数据连接文件以连接到 Azure 中�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 12/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36031006f155f1651845dbce48b6c6ec84397e93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fa657f3b343cdf49723dc68601bb1c9513ff504
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361415"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487331"
 ---
 # <a name="create-an-office-data-connection-file"></a>创建 Office 数据连接文件
 
-本文中的信息描述了如何创建 Office Data Connection 文件，以从 Excel 2016 版本号 16.0.7369.2117 或更早版本或 Excel 2013 连接到 Azure Analysis Services 服务器。 还需要更新的 [MSOLAP.7 提供程序](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)。
+本文中的信息描述了如何创建 Office Data Connection 文件，以从 Excel 2016 版本号 16.0.7369.2117 或更早版本或 Excel 2013 连接到 Azure Analysis Services 服务器。 还需要更新的 [MSOLAP.7 提供程序](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)。
 
 
 1. 复制下面的示例连接文件，并粘贴到文本编辑器中。 
@@ -144,6 +144,3 @@ function init() {
 </html>
 
 ```
-
-
-

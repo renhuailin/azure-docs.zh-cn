@@ -6,24 +6,25 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801471"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099328"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何监视 Azure Cosmos 容器或帐户的规范化 RU/秒
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 适用于 Azure Cosmos DB 的 Azure Monitor 提供了用来监视帐户和创建仪表板的指标视图。 Azure Cosmos DB 指标是默认收集的，此功能不需要你显式启用或配置任何项。
 
-**规范化 RU 消耗**指标用于查看分区键范围相对于流量的饱和程度。 Azure Cosmos DB 在所有分区键范围内平均分配吞吐量。 此指标提供分区键范围的最大吞吐量使用率的每秒视图。 使用此度量值可以计算给定容器的分区键范围内的 RU/秒使用量。 使用此度量值时，如果在 Azure monitor 中的所有分区键范围内看到的请求单位利用率很高，则应增加吞吐量以满足工作负荷的需求。 示例-标准化利用率定义为所有分区键范围内的 RU/s 利用率的最大值。 例如，假设最大吞吐量为 20000 RU/s，并且有两个分区键范围（P_1 和 P_2），每个分区键都可以缩放到 10000 RU/秒。 在给定的秒数内，如果 P_1 已使用 6000 RU，而 P_2 已使用 8000 RU，则标准化利用率为 MAX(6000 RU / 10,000 RU, 8000 RU / 10,000 RU) = 0.8。
+**规范化 RU 消耗** 指标用于查看分区键范围相对于流量的饱和程度。 Azure Cosmos DB 在所有分区键范围内平均分配吞吐量。 此指标提供分区键范围的最大吞吐量使用率的每秒视图。 使用此度量值可以计算给定容器的分区键范围内的 RU/秒使用量。 使用此度量值时，如果在 Azure monitor 中的所有分区键范围内看到的请求单位利用率很高，则应增加吞吐量以满足工作负荷的需求。 示例-标准化利用率定义为所有分区键范围内的 RU/s 利用率的最大值。 例如，假设最大吞吐量为 20000 RU/s，并且有两个分区键范围（P_1 和 P_2），每个分区键都可以缩放到 10000 RU/秒。 在给定的秒数内，如果 P_1 已使用 6000 RU，而 P_2 已使用 8000 RU，则标准化利用率为 MAX(6000 RU / 10,000 RU, 8000 RU / 10,000 RU) = 0.8。
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>规范化 RU/秒较高时会发生的事情和应该做的事情
 
 当标准化的 RU/s 消耗在给定的分区键范围内达到100% 时，如果客户端仍在该时间窗口中向该特定分区键范围发出请求，则会收到速率限制错误。 客户端应遵循建议的等待时间，并重试请求。 SDK 使你可以通过相应的等待重试预配置时间轻松地处理这种情况。  这并不是必需的，因为规范化的 RU 已达到100%。 这是因为，规范化 RU 是一个表示所有分区键范围的最大使用量的单个值，而另一个分区键范围可能正忙，但其他分区键范围可为这些请求提供服务。 例如，单个操作（如使用分区键范围内的所有 RU/s 的存储过程）将导致规范化的 RU/s 消耗中出现短暂峰值。 在这种情况下，如果请求速率较低或对不同分区键范围内的其他分区发出请求，则不会有任何即时速率限制错误。 
 
-Azure Monitor 指标通过使用 **Total Requests** 指标帮助你查找 SQL API 的每个状态代码的操作。 稍后，你可以通过 429 状态代码对这些请求进行筛选，并按**操作类型**来划分这些请求。  
+Azure Monitor 指标通过使用 **Total Requests** 指标帮助你查找 SQL API 的每个状态代码的操作。 稍后，你可以通过 429 状态代码对这些请求进行筛选，并按 **操作类型** 来划分这些请求。  
 
 若要查找速率受限的请求，建议使用诊断日志获取此信息。
 
@@ -53,7 +54,7 @@ Azure Monitor 指标通过使用 **Total Requests** 指标帮助你查找 SQL AP
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>针对规范化请求单位消耗的筛选器
 
-还可以按特定的 **CollectionName**、**DatabaseName**、**PartitionKeyRangeID** 和**区域**筛选所显示的指标和图表。 若要筛选指标，请选择“添加筛选器”，并选择所需的属性（例如 **CollectionName**）和所关注的相应值。 然后，图中会显示在所选时间段内针对该容器消耗的规范化 RU 消耗单位。  
+还可以按特定的 **CollectionName** 、 **DatabaseName** 、 **PartitionKeyRangeID** 和 **区域** 筛选所显示的指标和图表。 若要筛选指标，请选择“添加筛选器”，并选择所需的属性（例如 **CollectionName** ）和所关注的相应值。 然后，图中会显示在所选时间段内针对该容器消耗的规范化 RU 消耗单位。  
 
 可以使用“应用拆分”选项对指标进行分组。  
 

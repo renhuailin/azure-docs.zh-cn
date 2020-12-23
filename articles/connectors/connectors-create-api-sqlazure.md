@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326773"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130929"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用自动完成 SQL 数据库的工作流
 
@@ -67,6 +67,9 @@ ms.locfileid: "91326773"
 
 ### <a name="connect-to-azure-sql-database-or-managed-instance"></a>连接到 Azure SQL 数据库或托管实例
 
+若要访问 Azure SQL 托管实例而不使用本地数据网关或 integration services 环境，则必须 [在 AZURE SQL 托管实例上设置公共终结点](../azure-sql/managed-instance/public-endpoint-configure.md)。 公共终结点使用端口3342，因此，请确保在从逻辑应用创建连接时指定此端口号。
+
+
 第一次添加 [SQL 触发器](#add-sql-trigger)或 [SQL 操作](#add-sql-action)时，如果尚未创建到数据库的连接，系统会提示你完成以下步骤：
 
 1. 对于“身份验证类型”，选择所需的并已在 Azure SQL 数据库或 Azure SQL 托管实例中的数据库上启用的身份验证：
@@ -77,9 +80,9 @@ ms.locfileid: "91326773"
    | [**SQL Server 身份验证**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 支持非 ISE 和 ISE SQL Server 连接器。 <p><p>- 需要一个在你的数据库中创建并存储的有效用户名和强密码。 <p>有关详细信息，请参阅以下主题： <p>- [Azure SQL 安全概述 - 身份验证](../azure-sql/database/security-overview.md#authentication) <br>- [授权数据库访问 Azure SQL - 身份验证和授权](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
-   此示例将继续使用 **Azure AD 集成**：
+   此示例将继续使用 **Azure AD 集成** ：
 
-   ![屏幕截图，显示已打开 "身份验证类型" 列表并选择 "Azure AD 集成" 的 "SQL Server" 连接窗口。](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
+   ![此屏幕截图显示在其中打开了“身份验证类型”列表并选择了“Azure AD 集成”的“SQL Server”连接窗口。](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
 1. 在选择“Azure AD 集成”后，选择“登录”。 根据你使用的是 Azure SQL 数据库还是 Azure SQL 托管实例，选择用于身份验证的用户凭据。
 
@@ -93,9 +96,14 @@ ms.locfileid: "91326773"
    ||||
 
    > [!TIP]
-   > 可在数据库的连接字符串中找到此信息。 例如，在 Azure 门户中，找到并打开你的数据库。 在数据库菜单上，选择你可以在其中找到此字符串的“连接字符串”或“属性”：
+   > 若要提供数据库和表信息，你可以使用以下选项：
+   > 
+   > * 在数据库的连接字符串中找到此信息。 例如，在 Azure 门户中，找到并打开你的数据库。 在 "数据库" 菜单上，选择 " **连接字符串** " 或 " **属性** "，可以在其中找到此字符串：
    >
-   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >
+   > * 默认情况下，系统数据库中的表将被筛选掉，因此当您选择系统数据库时，它们可能不会自动出现。 作为替代方法，可以在从 "数据库" 列表中选择 " **输入自定义值** " 后手动输入表名称。
+   >
 
    此示例显示了这些值的可能外观：
 
@@ -121,7 +129,7 @@ ms.locfileid: "91326773"
    | [**SQL Server 身份验证**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 支持非 ISE 和 ISE SQL Server 连接器。 <p><p>- 需要一个在你的 SQL Server 中创建并存储的有效用户名和强密码。 <p>有关详细信息，请参阅 [SQL Server 身份验证](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
    |||
 
-   此示例将继续使用 **Windows 身份验证**：
+   此示例将继续使用 **Windows 身份验证** ：
 
    ![选择要使用的身份验证类型](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
 
@@ -134,7 +142,7 @@ ms.locfileid: "91326773"
    | **用户名** | 是 | 你用于 SQL Server 和数据库的用户名 |
    | **密码** | 是 | 你用于 SQL Server 和数据库的密码 |
    | **订阅** |  是（对于 Windows 身份验证） | 你之前在 Azure 中创建的数据网关资源的 Azure 订阅 |
-   | **连接网关** | 是（对于 Windows 身份验证） | 你之前在 Azure 中创建的数据网关资源的名称 <p><p>**提示**：如果网关未出现在列表中，请检查是否已经正确[设置网关](../logic-apps/logic-apps-gateway-connection.md)。 |
+   | **连接网关** | 是（对于 Windows 身份验证） | 你之前在 Azure 中创建的数据网关资源的名称 <p><p>**提示** ：如果网关未出现在列表中，请检查是否已经正确 [设置网关](../logic-apps/logic-apps-gateway-connection.md)。 |
    |||
 
    > [!TIP]
@@ -197,7 +205,7 @@ ms.locfileid: "91326773"
 
 1. 如果你是首次连接到 SQL 数据库，系统会提示你[立即创建 SQL 数据库连接](#create-connection)。 创建此连接后，可以继续执行下一步。
 
-1. 选择“表名”，在此示例中为 `SalesLT.Customer`。 输入所需记录的**行 ID**。
+1. 选择“表名”，在此示例中为 `SalesLT.Customer`。 输入所需记录的 **行 ID** 。
 
    ![选择表名并指定行 ID](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
@@ -207,23 +215,24 @@ ms.locfileid: "91326773"
 
    此步骤自动在 Azure 中实时启用和发布逻辑应用。
 
+<a name="handle-bulk-data"></a>
+
 ## <a name="handle-bulk-data"></a>处理批量数据
 
 有时，你必须处理大到连接器不能同时返回所有结果的结果集，或者你希望更好地控制结果集的大小和结构。 下面提供了一些可用于处理此类大型结果集的方法：
 
-* 为了帮助你将结果作为较小的集进行管理，请启用“分页”。 有关详细信息，请参阅[使用分页获取批量数据、记录和项](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)。
+* 为了帮助你将结果作为较小的集进行管理，请启用“分页”。 有关详细信息，请参阅[使用分页获取批量数据、记录和项](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)。 有关详细信息，请参阅 [对逻辑应用进行批量数据传输的 SQL 分页](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)。
 
-* 创建按所需方式组织结果的存储过程。
+* 创建一个 [*存储过程，该存储过程*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) 按所需的方式组织结果。 SQL 连接器提供多种后端功能，你可以使用 Azure 逻辑应用访问这些功能，以便你可以更轻松地自动执行与 SQL 数据库表一起使用的业务任务。
 
-  获取或插入多个行时，逻辑应用可以在这些[限制](../logic-apps/logic-apps-limits-and-config.md)中使用 [*until loop*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) 来循环访问这些行。 但是，当逻辑应用必须处理非常大的记录（例如，数千或数百万行）时，你希望将调用数据库的成本降到最低。
+  获取或插入多个行时，逻辑应用可以在这些 [限制](../logic-apps/logic-apps-limits-and-config.md)中使用 [*until loop*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) 来循环访问这些行。 但是，当逻辑应用必须处理非常大的记录（例如，数千或数百万行）时，你希望将调用数据库的成本降到最低。
 
-  若要按所需方式组织结果，可以创建在 SQL 实例中运行并使用 **SELECT - ORDER BY** 语句的[*存储过程*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)。 此解决方案可以更好地控制结果的大小和结构。 逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。
+  若要按所需方式组织结果，可以创建在 SQL 实例中运行并使用 SELECT - ORDER BY 语句的 **存储过程** 。 此解决方案可以更好地控制结果的大小和结构。 逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。 有关详细信息，请参阅 [SELECT-ORDER By 子句](/sql/t-sql/queries/select-order-by-clause-transact-sql)。
 
-  如需更多解决方案详细信息，请参阅以下文章：
-
-  * [SQL Pagination for bulk data transfer with Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)（通过 SQL 分页使用逻辑应用进行批量数据传输）
-
-  * [SELECT - ORDER BY 子句](/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  > [!NOTE]
+  > SQL 连接器的存储过程超时限制 [小于2分钟](/connectors/sql/#known-issues-and-limitations)。 某些存储过程可能需要比此限制更长的时间才能完成，从而导致 `504 Timeout` 错误。 可以通过使用 SQL 完成触发器、本机 SQL 传递查询、状态表和服务器端作业来解决此问题。
+  > 
+  > 对于此任务，你可以使用适用于[AZURE SQL 数据库](../azure-sql/database/sql-database-paas-overview.md)的[Azure 弹性作业代理](../azure-sql/database/elastic-jobs-overview.md)。 对于 [本地](/sql/sql-server/sql-server-technical-documentation) 和 [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)SQL Server，可以使用 [SQL Server 代理](/sql/ssms/agent/sql-server-agent)。 若要了解详细信息，请参阅 [在 Azure 逻辑应用的 SQL 连接器中处理长时间运行的存储过程超时](../logic-apps/handle-long-running-stored-procedures-sql-connector.md)。
 
 ### <a name="handle-dynamic-bulk-data"></a>处理动态批量数据
 
@@ -235,7 +244,7 @@ ms.locfileid: "91326773"
 
 1. 在设计器中，选择你调用存储过程的操作下的“新建步骤”。
 
-1. 在“选择操作”下，查找并选择[**分析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) 操作。
+1. 在“选择操作”下，查找并选择 [**分析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) 操作。
 
 1. 在“分析 JSON”操作中，选择“使用示例有效负载生成架构” 。
 
@@ -246,7 +255,17 @@ ms.locfileid: "91326773"
 
 1. 在设计器工具栏上选择“保存”。
 
-1. 若要引用 JSON 内容属性，请在你要在其中引用这些属性的编辑框中单击，以便显示动态内容列表。 在列表中的[**分析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) 标题下，为你所需的 JSON 内容属性选择数据令牌。
+1. 若要引用 JSON 内容属性，请在你要在其中引用这些属性的编辑框中单击，以便显示动态内容列表。 在列表中的 [**分析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) 标题下，为你所需的 JSON 内容属性选择数据令牌。
+
+## <a name="troubleshoot-problems"></a>排查问题
+
+* 通常会发生连接问题，因此，若要排查和解决这类问题，请查看 [解决连接错误以 SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)。 下面是一些示例：
+
+  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
@@ -255,4 +274,3 @@ ms.locfileid: "91326773"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)
-

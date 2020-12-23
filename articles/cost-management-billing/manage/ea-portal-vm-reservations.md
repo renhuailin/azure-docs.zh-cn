@@ -3,17 +3,17 @@ title: Azure EA 虚拟机预留实例
 description: 本文总结了针对 VM 预留实例的 Azure 预留如何帮助你节省企业注册的费用。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4970852634039bddfb14be579db5dd355fff9740
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442439"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348919"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 
@@ -22,6 +22,12 @@ ms.locfileid: "89442439"
 ## <a name="reservation-exchanges-and-refunds"></a>预留交换和退款
 
 可以用一个预留来交换同一类型的另一个预留。 如果不再需要某个预留，还可以请求预留退款（每年最多 50,000 美元）。 Azure 门户可用于预留的交换或退款。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../reservations/exchange-and-refund-azure-reservations.md)。
+
+### <a name="partial-refunds"></a>部分退款
+
+当 EA 客户退还使用超额（而不是货币承诺）购买的预留时，我们将发放部分退款。
+
+此退款将在 EA 门户中显示为上个月的负调整和当月的正调整。 它的显示方式类似于预留交换。 贷项凭单将引用原始发票号；因此，若要将初始购买与贷项凭单进行核对，请参考原始发票号。
 
 ## <a name="reservation-costs-and-usage"></a>预留成本和使用情况
 
@@ -59,7 +65,7 @@ ms.locfileid: "89442439"
 
 要购买 Azure 虚拟机预留实例，Enterprise Azure 合约管理员必须启用“预留实例”购买选项。 该选项位于 [Azure EA 门户](https://ea.azure.com/)“合约”选项卡的“合约详细信息”部分中 。
 
-一旦启用了 EA 合约以添加预留实例，任何拥有与 EA 合约关联的有效订阅的帐户所有者都可以在 [Azure 门户](https://aka.ms/reservations)中购买虚拟机预留实例。 有关详细信息，请参阅 [Prepay for virtual machines and save money with Reserved Virtual Machine Instances](https://go.microsoft.com/fwlink/?linkid=861721)（通过虚拟机预留实例预付虚拟机款项以节省资金）。
+一旦启用了 EA 合约以添加预留实例，任何拥有与 EA 合约关联的有效订阅的帐户所有者都可以在 [Azure 门户](https://aka.ms/reservations)中购买虚拟机预留实例。 有关详细信息，请参阅 [Prepay for virtual machines and save money with Reserved Virtual Machine Instances](../../virtual-machines/prepay-reserved-vm-instances.md)（通过虚拟机预留实例预付虚拟机款项以节省资金）。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>如何查看预留实例购买详细信息
 

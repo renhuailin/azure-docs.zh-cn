@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a6aed0630acf6ee6624c72831a2cdc88e6c0a91d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013055"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480677"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>使用异地冗余设计高度可用的应用程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "89013055"
 
 Azure 存储为异地冗余复制提供两个选项。 这两个选项之间的唯一差别在于如何在主要区域中复制数据：
 
-* 区域[冗余存储 (GZRS) ](storage-redundancy.md)：使用*区域冗余存储 (ZRS) *以同步方式跨主要区域的三个 Azure 可用性区域复制数据，并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用 (GZRS) 的读取访问区域冗余存储。
+* 区域[冗余存储 (GZRS) ](storage-redundancy.md)：使用*区域冗余存储 (ZRS) *以同步方式跨主要区域的三个 Azure 可用性区域复制数据，并将其异步复制到次要区域。 若要对次要区域进行读取访问，可启用读取访问异地区域冗余存储 (RA-GZRS)。
 
     对于需要最大可用性和持久性的方案，Microsoft 建议使用 GZRS/RA-GZRS。
 
@@ -146,7 +146,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
 可使用三个主要选项监视主要区域中的重试频率，以便确定何时切换到次要区域并将应用程序更改为在只读模式下运行。
 
-* 为传递到存储请求的 [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) 对象上的[**重试**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都会触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
+* 为传递到存储请求的 [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) 对象上的[**重试**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都会触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -157,7 +157,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
     };
     ```
 
-* 在自定义重试策略的 [**Evaluate**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) 方法中，每次重试时均可运行自定义代码。 除了在重试时进行记录外，还可利用此操作修改重试行为。
+* 在自定义重试策略的 [**Evaluate**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) 方法中，每次重试时均可运行自定义代码。 除了在重试时进行记录外，还可利用此操作修改重试行为。
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,

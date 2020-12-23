@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 3f02b671d73f49fd085cf4486e0fe5887e499fcd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e47691c82d43a35a7235eb5c3fd3cf7bca081aee
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316590"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351906"
 ---
 # <a name="video-search-api-upgrade-guide"></a>视频搜索 API 升级指南
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 本升级指南确定了必应视频搜索 API 版本 5 与版本 7 的不同之处。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 
@@ -38,7 +43,7 @@ ms.locfileid: "91316590"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|说明
+|代码|SubCode|描述
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，响应就会包含这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
@@ -71,11 +76,10 @@ InsufficientScope|InsufficientAuthorization
 
 ### <a name="query-parameters"></a>查询参数
 
-- 已将 `modulesRequested` 查询参数重命名为 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)。  
+- 已将 `modulesRequested` 查询参数重命名为 [modules](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)。  
 
 ### <a name="object-changes"></a>对象变化
 
-- 已将 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 的 `nextOffsetAddCount` 字段重命名为 `nextOffset`。 offset 的使用方式也已变化。 以前会将 [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) 查询参数设置为，`nextOffset` 值加上前一 offset 值，再加上结果中的视频数。 现在可以直接将 `offset` 查询参数设置为 `nextOffset` 值。  
+- 已将 [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 的 `nextOffsetAddCount` 字段重命名为 `nextOffset`。 offset 的使用方式也已变化。 以前会将 [offset](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) 查询参数设置为，`nextOffset` 值加上前一 offset 值，再加上结果中的视频数。 现在可以直接将 `offset` 查询参数设置为 `nextOffset` 值。  
   
-- 已将 `relatedVideos` 字段的数据类型从 `Video[]` 更改为 [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule)（请参阅 [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)）。
-
+- 已将 `relatedVideos` 字段的数据类型从 `Video[]` 更改为 [VideosModule](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule)（请参阅 [VideoDetails](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)）。

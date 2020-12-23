@@ -7,22 +7,22 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
-ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696825"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965725"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
 
 本文演示如何通过使用 Azure 门户来管理 DNS 区域的记录集和记录。
 
-请务必了解 DNS 记录集与单独的 DNS 记录之间的差异。 记录集是区域中具有相同名称和相同类型的记录的集合。 有关详细信息，请参阅[使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)。
+请务必了解 DNS 记录集与单独的 DNS 记录之间的差异。 记录集是区域中具有相同名称和相同类型的记录的集合。 有关详细信息，请参阅[使用 Azure 门户创建 DNS 记录集和记录](./dns-getstarted-portal.md)。
 
 ## <a name="create-a-new-record-set-and-record"></a>创建新的记录集和记录
 
-若要在 Azure 门户中创建记录集，请参阅[使用 Azure 门户创建 DNS 记录](dns-getstarted-create-recordset-portal.md)。
+若要在 Azure 门户中创建记录集，请参阅[使用 Azure 门户创建 DNS 记录](./dns-getstarted-portal.md)。
 
 ## <a name="view-a-record-set"></a>查看记录集
 

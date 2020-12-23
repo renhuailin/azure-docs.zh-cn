@@ -1,37 +1,37 @@
 ---
-title: 配置 Azure 多重身份验证 - Azure Active Directory
-description: 了解如何在 Azure 门户中配置 Azure 多重身份验证的设置
+title: 配置 Azure AD 多重身份验证-Azure Active Directory
+description: 了解如何在 Azure 门户中配置 Azure AD 多重身份验证的设置
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441620"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026993"
 ---
-# <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
+# <a name="configure-azure-ad-multi-factor-authentication-settings"></a>配置 Azure AD 多重身份验证设置
 
-若要自定义 Azure 多重身份验证的最终用户体验，可以配置帐户锁定阈值或欺诈警报和通知等设置的选项。 某些设置直接存在于 Azure Active Directory 的 Azure 门户中 (Azure AD) ，还有一些设置在单独的 Azure 多重身份验证门户中。
+若要自定义 Azure AD 多重身份验证的最终用户体验，可以配置帐户锁定阈值或欺诈警报和通知等设置的选项。 某些设置直接存在于 Azure Active Directory 的 Azure 门户中 (Azure AD) ，某些设置则在单独的 Azure AD 多因素身份验证门户中进行。
 
-Azure 门户中提供以下 Azure 多重身份验证设置：
+Azure 门户中提供了以下 Azure AD 多重身份验证设置：
 
-| Feature | 说明 |
+| Feature | 描述 |
 | ------- | ----------- |
-| [帐户锁定](#account-lockout) | 如果行中拒绝过多的身份验证尝试次数过多，请暂时锁定帐户以使用 Azure 多重身份验证。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
-| [阻止/解除阻止用户](#block-and-unblock-users) | 阻止特定用户接收 Azure 多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户在被阻止或被手动解除阻止时，将在90天内保持被阻止。 |
+| [帐户锁定](#account-lockout) | 如果行中拒绝过多的身份验证尝试，请暂时锁定帐户以使用 Azure AD 多重身份验证。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
+| [阻止/解除阻止用户](#block-and-unblock-users) | 阻止特定用户接收 Azure AD 多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户在被阻止或被手动解除阻止时，将在90天内保持被阻止。 |
 | [欺诈警报](#fraud-alert) | 配置允许用户报告欺诈验证请求的设置。 |
 | [通知](#notifications) | 允许通过 MFA 服务器来通知事件。 |
-| [OATH 令牌](concept-authentication-oath-tokens.md) | 用在基于云的 Azure MFA 环境中，为用户托管 OATH 令牌。 |
+| [OATH 令牌](concept-authentication-oath-tokens.md) | 在基于云的 Azure AD MFA 环境中用于管理用户的 OATH 令牌。 |
 | [电话呼叫设置](#phone-call-settings) | 为云和本地环境配置与电话呼叫和问候语相关的设置。 |
 | 提供程序 | 此项会显示任何现有的与帐户相关联的身份验证提供程序。 自 2018 年 9 月 1 日起，可能无法创建新的身份验证提供程序 |
 
@@ -50,14 +50,14 @@ Azure 门户中提供以下 Azure 多重身份验证设置：
 若要配置帐户锁定设置，请完成以下设置：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **帐户锁定**。
+1. 浏览到 **Azure Active Directory**  >  **安全**  >  **MFA**  >  **帐户锁定**。
 1. 输入环境的 "需要值"，然后选择 " **保存**"。
 
     ![Azure 门户中的帐户锁定设置的屏幕截图](./media/howto-mfa-mfasettings/account-lockout-settings.png)
 
 ## <a name="block-and-unblock-users"></a>阻止和解除阻止用户
 
-如果用户的设备丢失或被盗，你可以阻止对关联帐户的 Azure 多重身份验证尝试。 对阻止的用户的任何 Azure 多重身份验证尝试都将被自动拒绝。 用户将在阻止日起 90 天内受到阻止。
+如果用户的设备丢失或被盗，你可以阻止为关联的帐户 Azure AD 多因素身份验证尝试。 对阻止的用户的任何 Azure AD 多重身份验证尝试都将被自动拒绝。 用户将在阻止日起 90 天内受到阻止。
 
 ### <a name="block-a-user"></a>阻止用户
 
@@ -85,7 +85,7 @@ Azure 门户中提供以下 Azure 多重身份验证设置：
 
 以下欺诈警报配置选项可用：
 
-* **自动阻止报告欺诈的用户**：如果用户报告欺诈行为，则用户帐户的 Azure MFA 身份验证尝试将被阻止90天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
+* **自动阻止报告欺诈的用户**：如果用户报告欺诈，则将在90天内阻止用户帐户的 Azure AD MFA 身份验证尝试，直到管理员取消阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
 * **在初始问候期间报告欺诈的代码**：当用户接收到执行多重身份验证的电话呼叫时，他们通常按 **#** 确认登录。 如果他们想要报告欺诈，则可在按 **#** 之前输入代码。 此代码默认为 **0**，但可以自定义此代码。
 
    > [!NOTE]
@@ -110,7 +110,7 @@ Azure 门户中提供以下 Azure 多重身份验证设置：
 
 若要配置欺诈警报通知，请完成以下设置：
 
-1. 浏览到**Azure Active Directory**  >  **安全**  >  **多重身份验证**  >  **通知**。
+1. 浏览到 **Azure Active Directory**  >  **安全**  >  **多重身份验证**  >  **通知**。
 1. 输入要添加到下一个框中的电子邮件地址。
 1. 若要删除现有的电子邮件地址，请选择所需电子邮件地址旁边的 " **...** " 选项，然后选择 " **删除**"。
 1. 准备就绪后，选择“保存”。
@@ -156,7 +156,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> 当 Azure 多重身份验证呼叫通过公共电话网络放置时，有时会通过不支持呼叫方 ID 的运营商来路由呼叫。 因此，即使 Azure 多重身份验证始终发送，也不能保证调用方 ID。 这同时适用于电话呼叫和 Azure 多重身份验证提供的短信。 如果需要验证短信是否来自 Azure 多重身份验证，请参阅 [使用哪些 SMS 短代码发送消息？](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
+> 当通过公共电话网络放置 Azure AD 多重身份验证呼叫时，有时会通过不支持呼叫方 ID 的运营商来路由呼叫。 因此，即使 Azure AD 多因素身份验证始终发送，也无法保证调用方 ID。 这同时适用于电话呼叫和 Azure AD 多重身份验证提供的短信。 如果需要验证文本消息是否来自 Azure AD 多重身份验证，请参阅 [用于发送消息的 SMS 短代码？](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 若要配置自己的调用方 ID 号，请完成以下步骤：
 
@@ -166,7 +166,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 
 ### <a name="custom-voice-messages"></a>自定义语音消息
 
-你可以将自己的录制或问候语用于 Azure 多重身份验证，并提供自定义语音消息功能。 除了或替换默认的 Microsoft 录制，还可以使用这些消息。
+使用自定义语音消息功能，你可以将自己的录制或问候语用于 Azure AD 多重身份验证。 除了或替换默认的 Microsoft 录制，还可以使用这些消息。
 
 在开始之前，请注意以下限制：
 
@@ -220,23 +220,23 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 
 1. 浏览到“Azure Active Directory” > “安全性” > “MFA” > “电话呼叫设置”。   
 1. 选择“添加问候语”。
-1. 选择问候的 **类型** ，如 *问候语 (标准) * 或  *身份验证成功*。
-1. 根据上一节中的[自定义消息语言行为](#custom-message-language-behavior)选择**语言**。
+1. 选择问候的 **类型** ，如 *问候语 (标准)* 或  *身份验证成功*。
+1. 根据上一节中的 [自定义消息语言行为](#custom-message-language-behavior)选择 **语言**。
 1. 浏览并选择要上传的 *mp3* 或 *.wav* 声音文件。
 1. 准备就绪后，选择 " **添加**"，然后单击 " **保存**"。
 
 ## <a name="mfa-service-settings"></a>MFA 服务设置
 
-Azure 多重身份验证的应用密码、受信任 IP、验证选项以及“记住多重身份验证”设置可以在服务设置中找到。 这更多是旧门户，不属于常规 Azure AD 门户。
+可在服务设置中找到应用密码、受信任的 Ip、验证选项和记住多重身份验证 Azure AD 的设置。 这更多是旧门户，不属于常规 Azure AD 门户。
 
 可以从 Azure 门户访问服务设置，方法是：浏览到“Azure Active Directory” > “安全性” > “MFA” > “入门” > “配置” > “其他基于云的 MFA 设置”     。 此时将打开一个新窗口或选项卡，其中包含其他 *服务设置* 选项。
 
 ## <a name="trusted-ips"></a>受信任的 IP
 
-Azure 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地址范围登录的用户的多重身份验证提示。 你可以为本地环境设置受信任的 IP 范围，以便在用户处于这些位置之一时，没有 Azure 多重身份验证提示。
+Azure AD 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地址范围登录的用户的多重身份验证提示。 你可以为本地环境设置受信任的 IP 范围，以便在用户处于这些位置之一时，无 Azure AD 多重身份验证提示。
 
 > [!NOTE]
-> 仅当使用 MFA 服务器时，受信任的 ip 才能包含专用 IP 范围。 对于基于云的 Azure 多重身份验证，只能使用公共 IP 地址范围。
+> 仅当使用 MFA 服务器时，受信任的 ip 才能包含专用 IP 范围。 对于基于云的 Azure AD 多重身份验证，只能使用公共 IP 地址范围。
 >
 > 只有 [命名位置（预览版）](../conditional-access/location-condition.md#preview-features) 接口中支持 IPv6 范围。
 
@@ -263,7 +263,7 @@ Azure 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地
 
 可以使用条件性访问规则来定义命名位置，步骤如下：
 
-1. 在 Azure 门户中，搜索并选择**Azure Active Directory**，然后浏览到**安全**  >  **条件访问**  >  **命名位置**。
+1. 在 Azure 门户中，搜索并选择 **Azure Active Directory**，然后浏览到 **安全**  >  **条件访问**  >  **命名位置**。
 1. 选择“新建位置”。
 1. 输入位置的名称。
 1. 选择“标记为受信任位置”。
@@ -274,7 +274,7 @@ Azure 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地
 
 若要使用条件访问策略启用受信任的 Ip，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索并选择**Azure Active Directory**，然后浏览到**安全**  >   **条件访问**  >  **命名位置**。
+1. 在 Azure 门户中，搜索并选择 **Azure Active Directory**，然后浏览到 **安全**  >   **条件访问**  >  **命名位置**。
 1. 选择“配置 MFA 受信任的 IP”。
 1. 在“服务设置”页的“受信任的 IP”下，从以下两个选项中进行选择 ：
 
@@ -291,7 +291,7 @@ Azure 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>使用服务设置启用受信任的 IP 功能
 
-如果不想使用条件性访问策略来启用受信任的 Ip，可以使用以下步骤配置 Azure 多重身份验证的 *服务设置* ：
+如果不想使用条件性访问策略来启用受信任的 Ip，则可以使用以下步骤配置 Azure AD 多重身份验证的 *服务设置* ：
 
 1. 在 Azure 门户中，搜索并选择 " **Azure Active Directory**"，然后选择 " **用户**"。
 1. 选择“多重身份验证”。
@@ -311,7 +311,7 @@ Azure 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地
 
 ## <a name="verification-methods"></a>验证方法
 
-可以在 "服务设置" 门户中选择可供用户使用的验证方法。 用户为其帐户注册 Azure 多重身份验证时，可从你启用的选项中选择其首选验证方法。 [设置我的帐户进行多重身份验证](../user-help/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程指导。
+可以在 "服务设置" 门户中选择可供用户使用的验证方法。 用户为 Azure AD 多重身份验证注册帐户时，会从已启用的选项中选择其首选验证方法。 [设置我的帐户进行多重身份验证](../user-help/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程指导。
 
 提供以下验证方法：
 
@@ -319,7 +319,7 @@ Azure 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地
 |:--- |:--- |
 | 拨打电话 |拨打自动语音电话。 用户接听电话，并按电话键盘上的 # 进行身份验证。 此电话号码不会同步到本地 Active Directory。 |
 | 向手机发送短信 |发送包含验证码的短信。 系统会提示用户在登录界面中输入验证代码。 此过程称为单向短信。 双向短信意味着用户必须短信回复一个特定代码。 已弃用双向短信，2018 年 11 月 14 日后不再受到支持。 管理员应为之前使用双向短信的用户启用其他方法。|
-| 通过移动应用发送通知 |向手机或已注册设备发送推送通知。 用户将查看通知并选择**验证**来完成验证。 Microsoft Authenticator 应用可用于 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)。 |
+| 通过移动应用发送通知 |向手机或已注册设备发送推送通知。 用户将查看通知并选择 **验证** 来完成验证。 Microsoft Authenticator 应用可用于 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)。 |
 | 移动应用或硬件标志提供的验证码 |Microsoft Authenticator 应用每隔 30 秒会生成一个新的 OATH 验证码。 用户将此验证码输入到登录界面中。 Microsoft Authenticator 应用可用于 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)。 |
 
 有关详细信息，请参阅 [Azure AD 中有哪些身份验证和验证方法？](concept-authentication-methods.md)
@@ -376,4 +376,4 @@ Azure 多重身份验证的 _受信任的 ip_ 功能会绕过从定义的 IP 地
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 多重身份验证中使用的可用方法的详细信息，请参阅 [Azure Active Directory 中有哪些身份验证和验证方法？](concept-authentication-methods.md)
+要了解 Azure AD 多重身份验证中使用的可用方法的详细信息，请参阅 [Azure Active Directory 中提供了哪些身份验证和验证方法？](concept-authentication-methods.md)

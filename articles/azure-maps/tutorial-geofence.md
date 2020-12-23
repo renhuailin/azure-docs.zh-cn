@@ -1,20 +1,20 @@
 ---
-title: 教程：在 Azure Map 上创建地理围栏并跟踪设备
-description: 了解如何设置地理围栏。 请参阅如何使用 Azure Maps 空间服务跟踪与地理围栏相关的设备。
+title: 教程：在 Microsoft Azure Map 上创建地理围栏并跟踪设备
+description: 有关如何设置地理围栏的教程。 了解如何使用 Azure Maps 空间服务跟踪与地理围栏相关的设备
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 8/11/2020
+ms.date: 8/20/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056503"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997267"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -25,10 +25,10 @@ ms.locfileid: "90056503"
 Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的跟踪。 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 上传用于定义要监视的构造站点区域的[地理围栏 GeoJSON 数据](geofence-geojson.md)。 你将使用[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 将地理围栏作为多边形坐标上传到你的 Azure Maps 账户。
-> * 设置两个[逻辑应用](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps)，当设备进入或退出地理围栏区域，将触发应用并向构造站点的运营管理员发送邮件通知。
-> * 使用 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/overview)订阅 Azure Maps 地理围栏进入和退出事件。 你将设置两个 Webhook 事件订阅，用于调用两个逻辑应用中定义的 HTTP 终结点。 然后，逻辑应用将发送有关设备移出或移入地理围栏的相应邮件通知。
-> * 使用[搜索地理围栏 GET API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 在有设备退出和进入地理围栏区域时接收通知。
+> * 上传用于定义要监视的构造站点区域的[地理围栏 GeoJSON 数据](geofence-geojson.md)。 你将使用[数据上传 API](/rest/api/maps/data/uploadpreview) 将地理围栏作为多边形坐标上传到你的 Azure Maps 账户。
+> * 设置两个[逻辑应用](../event-grid/handler-webhooks.md#logic-apps)，当设备进入或退出地理围栏区域，将触发应用并向构造站点的运营管理员发送邮件通知。
+> * 使用 [Azure 事件网格](../event-grid/overview.md)订阅 Azure Maps 地理围栏进入和退出事件。 你将设置两个 Webhook 事件订阅，用于调用两个逻辑应用中定义的 HTTP 终结点。 然后，逻辑应用将发送有关设备移出或移入地理围栏的相应邮件通知。
+> * 使用[搜索地理围栏 GET API](/rest/api/maps/spatial/getgeofence) 在有设备退出和进入地理围栏区域时接收通知。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 在本教程中，你将上传包含 `FeatureCollection` 的地理围栏 GeoJSON 数据。 `FeatureCollection` 包含用于定义站点内多边形区域的两个地理围栏。 第一个地理围栏不设过期时间或时间限制。 第二个地理围栏只能在营业时间（太平洋时区上午 9:00 到下午 5:00）接受查询，且在 2022 年 1 月 1 日后将失效。 有关 GeoJSON 数据格式的详细信息，请参阅[为 GeoJSON 数据设置地理围栏](geofence-geojson.md)。
 
 >[!TIP]
->可以随时更新地理围栏数据。 有关详细信息，请参阅[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)。
+>可以随时更新地理围栏数据。 有关详细信息，请参阅[数据上传 API](/rest/api/maps/data/uploadpreview)。
 
 1. 打开 Postman 应用。 在顶部附近选择“新建”。 在“新建”窗口中，选择“集合”。 命名集合，然后选择“创建”。
 
@@ -186,7 +186,7 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 
 ## <a name="create-workflows-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建工作流
 
-接下来，你将创建两个用于触发电子邮件通知的[逻辑应用](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps)终结点。 下面介绍如何创建首个终结点：
+接下来，你将创建两个用于触发电子邮件通知的[逻辑应用](../event-grid/handler-webhooks.md#logic-apps)终结点。 下面介绍如何创建首个终结点：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -209,22 +209,22 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 
 7. 选择触发器类型。 向下滚动到“从常见触发器开始”部分。 选择“收到 HTTP 请求时”。
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="创建逻辑应用的屏幕截图。":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="创建逻辑应用 HTTP 触发器的屏幕截图。":::
 
 8. 在逻辑应用设计器的右上角，选择“保存”。 随即自动生成“HTTP POST URL”。 保存 URL。 下一部分中需要用它来创建事件终结点。
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="逻辑应用 HTTP 请求 URL 和 JSON 的屏幕截图。":::
 
 9. 选择“+ 新步骤”。 现在选择一项操作。 在搜索框中键入“`outlook.com email`”。 在“操作”列表中，向下滚动并选择“发送电子邮件 (V2)” 。
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="创建逻辑应用设计器的屏幕截图。":::
 
 10. 登录到 Outlook 帐户。 确保选择“是”以允许逻辑应用访问该帐户。 填充用于发送电子邮件的字段。
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="创建逻辑应用发送电子邮件步骤的屏幕截图。":::
 
     >[!TIP]
-    > 在电子邮件通知中检索 GeoJSON 响应数据（如 `geometryId` 或 `deviceId`）。 可以将逻辑应用配置为读取事件网格发送的数据。 有关如何配置逻辑应用以使用事件数据并将其传递到电子邮件通知的详细信息，请参阅[教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)。
+    > 在电子邮件通知中检索 GeoJSON 响应数据（如 `geometryId` 或 `deviceId`）。 可以将逻辑应用配置为读取事件网格发送的数据。 有关如何配置逻辑应用以使用事件数据并将其传递到电子邮件通知的详细信息，请参阅[教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。
 
 11. 在逻辑应用设计器的左上角，选择“保存”。
 
@@ -232,17 +232,17 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 
 ## <a name="create-azure-maps-events-subscriptions"></a>创建 Azure Maps 事件订阅
 
-Azure Maps 支持[三种事件类型](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)。 此处需要创建两个不同的事件订阅：一个用于地理围栏进入事件，另一个用于地理围栏退出事件。
+Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)。 此处需要创建两个不同的事件订阅：一个用于地理围栏进入事件，另一个用于地理围栏退出事件。
 
 以下步骤演示如何针对地理围栏进入事件创建事件订阅。 可按类似的方式，重复这些步骤来订阅地理围栏退出事件。
 
 1. 转到你的 Azure Maps 帐户。 在仪表板中，选择“订阅”。 选择订阅名称，然后在设置菜单中选择“事件”。
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="转到 Azure Maps 帐户事件的屏幕截图。":::
 
 2. 要创建事件订阅，请从“事件”页中选择“+ 事件订阅”。
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="创建 Azure Maps 事件订阅的屏幕截图。":::
 
 3. 在“创建事件订阅”页中输入以下值：
     * 事件订阅的“名称”。
@@ -252,7 +252,7 @@ Azure Maps 支持[三种事件类型](https://docs.microsoft.com/azure/event-gri
     * 对于“终结点类型”，选择 `Web Hook`。
     * 对于“终结点”，复制在上一个部分创建的“逻辑应用进入”终结点的 HTTP POST URL。 如果忘记保存，可以直接返回到逻辑应用设计器并从 HTTP 触发器步骤复制它。
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="创建逻辑应用的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure Maps 事件订阅详细信息的屏幕截图。":::
 
 4. 选择“创建”。
 
@@ -260,13 +260,13 @@ Azure Maps 支持[三种事件类型](https://docs.microsoft.com/azure/event-gri
 
 ## <a name="use-spatial-geofence-get-api"></a>使用空间地理围栏获取 API
 
-使用[空间地理围栏获取 API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 在有设备进入或退出地理围栏时向运营管理员发送电子邮件通知。
+使用[空间地理围栏获取 API](/rest/api/maps/spatial/getgeofence) 在有设备进入或退出地理围栏时向运营管理员发送电子邮件通知。
 
 每个设备都有一个 `deviceId`。 在本教程中，你将跟踪单个设备，其唯一 ID 为 `device_1`。
 
 下图显示了一段时间内设备的五个位置，并从位于地理围栏外的“启动”位置开始。 考虑到本教程的目的，不定义“启动”位置，因为我们不会在该位置查询设备。
 
-当使用某个设备位置（指示最初进入或退出地理围栏的位置）查询[空间地理围栏获取 API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 时，事件网格将调用相应的逻辑应用终结点，并向运营管理员发送电子邮件通知。
+当使用某个设备位置（指示最初进入或退出地理围栏的位置）查询[空间地理围栏获取 API](/rest/api/maps/spatial/getgeofence) 时，事件网格将调用相应的逻辑应用终结点，并向运营管理员发送电子邮件通知。
 
 以下每个部分都使用设备的 5 个不同位置坐标发出 API 请求。
 
@@ -429,14 +429,14 @@ Azure Maps 支持[三种事件类型](https://docs.microsoft.com/azure/event-gri
 
 在上述 GeoJSON 响应中，设备仍留在主站点地理围栏中，但已退出子站点地理围栏。 但是，如果留意，会发现 `userTime` 值在 `expiredTime` 之后（如地理围栏数据中所定义）。 因此，将 `isEventPublished` 参数设置为 `false`，运营管理员不会收到任何电子邮件通知。
 
-### <a name="location-547637988-1221338344"></a>位置 5(47.637988,-122.1338344)
+### <a name="location-5-4763799--122134505"></a>位置 5 (47.63799, -122.134505)
 
 1. 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 输入“位置 5”。 选择在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中创建的集合，然后选择“保存”。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 确保将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`。
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 3. 选择“发送”。 随即响应窗口中出现以下 GeoJSON：
@@ -469,13 +469,10 @@ Azure Maps 支持[三种事件类型](https://docs.microsoft.com/azure/event-gri
 
 在上述 GeoJSON 响应中，设备已退出主站点地理围栏。 因此，将 `isEventPublished` 参数设置为 `true`，运营管理员将收到指示设备已退出地理围栏的电子邮件通知。
 
+
+还可以[使用事件网格和逻辑应用发送电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)，并使用 Azure Maps 检查[事件网格中支持的事件处理程序](../event-grid/event-handlers.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [在 Azure 逻辑应用中处理内容类型](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
-
-> [!div class="nextstepaction"]
-> [使用事件网格和逻辑应用发送电子邮件通知](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
-
-> [!div class="nextstepaction"]
-> [事件网格中支持的事件处理程序](https://docs.microsoft.com/azure/event-grid/event-handlers)
+> [在 Azure 逻辑应用中处理内容类型](../logic-apps/logic-apps-content-type.md)

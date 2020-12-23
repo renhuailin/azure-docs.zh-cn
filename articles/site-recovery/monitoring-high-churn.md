@@ -6,12 +6,12 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
-ms.openlocfilehash: 51f45b5c0b8a2729f64eb376e06875719474cbfc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663741"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359860"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>监视虚拟机上的改动模式
 
@@ -21,7 +21,7 @@ ms.locfileid: "89663741"
 
 如果计算机托管在 Azure 中，并且使用托管或非托管磁盘进行存储，则可以通过跟踪磁盘指标轻松跟踪性能。 这使你可以密切监视和选择正确的磁盘，以适合你的应用程序使用模式。 你还可以使用它来创建警报、诊断和生成自动化。 [了解详细信息](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
-使用 Azure Site Recovery 保护计算机后，可以通过使用 Azure Monitor 日志和 Log Analytics 来监视计算机。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics)。
+使用 Azure Site Recovery 保护计算机后，可以通过使用 Azure Monitor 日志和 Log Analytics 来监视计算机。 [了解详细信息](./monitor-log-analytics.md)。
 
 还可以使用一些特定于操作系统的工具。
 
@@ -62,7 +62,7 @@ ms.locfileid: "89663741"
 
     ![性能监视器步骤3](./media/monitoring-high-churn/perfmon-step3.png)
 
-[在此处](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data)了解有关性能监视器的详细信息。
+[在此处](/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data)了解有关性能监视器的详细信息。
 
 ## <a name="for-linux-machines"></a>对于 Linux 计算机
 

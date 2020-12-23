@@ -9,11 +9,11 @@ ms.date: 10/07/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 21278eab6da23282465c807be103ab47271bbe60
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817293"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019764"
 ---
 > [!NOTE]
 >* Azure AD 身份验证仅支持用于 OpenVPN®协议连接。

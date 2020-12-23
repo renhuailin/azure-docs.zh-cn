@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4bf53561e7788b1d4ce9789c3b555cb1e089545b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe6faf72f17dae23f6e8a6c7cc56f8577881281a
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267287"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96615755"
 ---
 你可以查看本部分中的链接，了解有关合作伙伴提供的服务的更多信息。 如果你的分支设备合作伙伴未在下面的部分中列出，请让你的分支设备提供商联系我们。 他们可以通过向 azurevirtualwan@microsoft.com 发送电子邮件来与我们联系。
 
@@ -27,12 +27,12 @@ ms.locfileid: "91267287"
 | [Fortinet](https://www.fortinet.com/azure-vwan) |[FortiGate 和 Microsoft Azure 虚拟 WAN 集成部署指南](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf)，[路由方案博客 ](https://www.fortinet.com/blog/business-and-technology/fortinet-secure-sd-wan-enhances-azure-virtual-wan-integrations)|
 |[HPE Aruba]( https://www.arubanetworks.com/microsoft-vwan/)|[Aruba SD-WAN 和 Microsoft Azure 虚拟 WAN 部署指南](https://www.arubanetworks.com/assets/tg/DG_Using-Aruba-SD-WAN-with-Microsoft-Azure-Virtual-WAN.pdf)|
 | [NetFoundry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Netfoundry 支持中心：Azure 虚拟 WAN](https://support.netfoundry.io/hc/en-us/articles/360018137891-Introduction-to-Azure-Virtual-WAN-sites)|
-|[Nuage/Nokia（仅通过英国电信提供）](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|* |
+|[Nuage/Nokia](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[Nuage 和 Azure 虚拟 WAN 部署指南](https://onestore.nokia.com/asset/210073)|
 |[开放式系统]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[开放式系统和 Azure 虚拟 WAN 部署指南](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
-|[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |
+|[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |[Palo Alto Networks Azure 虚拟 WAN 部署指南](https://github.com/PaloAltoNetworks/microsoft_azure_virtual_wan)|
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |
 |[Silver-Peak]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[EdgeConnect 和 Microsoft Azure 虚拟 WAN 集成指南](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
 |[Velocloud-VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Azure 虚拟 WAN Velocloud 部署指南](https://kb.vmware.com/s/article/79000)|
 | [Versa](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) | [配置 Versa SD-WAN 和 Microsoft Azure vWAN（适用于已注册的客户）](https://docs.versa-networks.com/Versa_Director/Versa_Director_Configuration/Integrate_Director_and_Azure_Virtual_WAN) |
 
-\* 直接链接不可用。** 请联系合作伙伴公司寻求支持。
+\* 直接链接不可用。请联系合作伙伴公司寻求支持。

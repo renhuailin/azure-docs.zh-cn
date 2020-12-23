@@ -1,29 +1,32 @@
 ---
-title: 在 Azure Monitor 中收集和分析 Windows 事件日志 | Microsoft Docs
+title: 在 Azure Monitor 中使用 Log Analytics 代理收集 Windows 事件日志数据源
 description: 介绍了如何通过 Azure Monitor 配置 Windows 事件日志的收集，以及它们创建的记录的详细信息。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/21/2020
+ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075251"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012589"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 事件日志数据源
-由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
+# <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Windows 事件日志数据源
+由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是 Windows 虚拟机上 Log Analytics 代理最常见的[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
+
+> [!IMPORTANT]
+> 本文介绍如何使用 [Log Analytics 代理](log-analytics-agent.md)收集 Windows 事件，该代理是 Azure Monitor 使用的代理之一。 其他代理收集的数据不同，且配置也不同。 有关可用代理及其可收集的数据的列表，请参阅 [Azure Monitor 代理概述](agents-overview.md)。
 
 ![Windows 事件](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>配置 Windows 事件日志
-可以从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Windows 事件日志。
+从 Log Analytics 工作区的[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Windows 事件日志。
 
 Azure Monitor 仅从在设置中指定的 Windows 事件日志收集事件。  可以通过键入日志名称并单击“+”添加事件日志。  对于每个日志，仅收集具有所选严重级别的事件。  检查要收集的特定日志的严重级别。  不能向筛选事件提供任何其他条件。
 
-键入事件日志名称时，Azure Monitor 会提供常见事件日志名称的建议。 如果要添加的日志未显示在列表中，仍可以通过键入日志全名添加。 可以使用事件查看器查找日志全名。 在事件查看器中，打开日志的“属性”  页面，并从“全名”  字段复制字符串。
+键入事件日志名称时，Azure Monitor 会提供常见事件日志名称的建议。 如果要添加的日志未显示在列表中，仍可以通过键入日志全名添加。 可以使用事件查看器查找日志全名。 在事件查看器中，打开日志的“属性”页面，并从“全名”字段复制字符串。
 
 ![配置 Windows 事件](media/data-sources-windows-events/configure.png)
 
@@ -38,9 +41,9 @@ Azure Monitor 在事件创建时从受监视的事件日志中收集与所选严
 >
 
 ## <a name="windows-event-records-properties"></a>Windows 事件的记录属性
-Windows 事件记录都有一个**事件**类型，并且具有下表中的属性：
+Windows 事件记录都有一个 **事件** 类型，并且具有下表中的属性：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机的名称。 |
 | EventCategory |事件的类别。 |

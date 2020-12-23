@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 949a007a51fce4a76dcc840f187ca353c88e8ede
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 665692e1d902dfed8cdab535d0639f356f4e709c
+  ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87291597"
+  ms.lasthandoff: 11/19/2020
+  ms.locfileid: "94885914"
 landingContent:
 - title: 入门
   linkLists:
@@ -40,12 +40,6 @@ landingContent:
     links:
     - text: 通过 Node.js 使用设备孪生
       url: iot-hub-node-node-twin-getstarted.md
-    - text: 了解 IoT 指标
-      url: iot-hub-metrics.md
-    - text: 诊断日志记录
-      url: iot-hub-monitor-resource-health.md
-    - text: 针对与 IoT 的连接断开进行监视、诊断和故障排除
-      url: iot-hub-troubleshoot-connectivity.md
 - title: 缩放解决方案
   linkLists:
   - linkListType: concept
@@ -84,6 +78,20 @@ landingContent:
       url: tutorial-routing-config-message-routing-rm-template.md
     - text: 运行和查看路由结果
       url: tutorial-routing-view-message-routing-results.md
+- title: Azure Stack Hub 上的 IoT 中心（预览）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 运算符概述
+      url: /azure-stack/operator/iot-hub-rp-overview
+    - text: 用户概述
+      url: /azure-stack/user/iot-hub-overview
+  - linkListType: how-to-guide
+    links:
+    - text: 安装先决条件
+      url: /azure-stack/operator/iot-hub-rp-prerequisites
+    - text: 如何在 Azure Stack Hub 上安装 IoT 中心
+      url: /azure-stack/operator/iot-hub-rp-install
 - title: 使用 IoT 中心工具
   linkLists:
   - linkListType: how-to-guide
@@ -91,7 +99,19 @@ landingContent:
     - text: 使用适用于 VS Code 的 IoT Tools
       url: iot-hub-create-use-iot-toolkit.md
     - text: IoT 资源管理器
-      url: ../iot-pnp/howto-install-iot-explorer.md
+      url: ../iot-pnp/howto-use-iot-explorer.md
+- title: 对 IoT 中心进行监视和故障排除
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 监视 IoT 中心
+      url: monitor-iot-hub.md
+    - text: 监视 IoT 中心数据引用
+      url: monitor-iot-hub-reference.md
+    - text: 针对与 IoT 中心断开连接的情况进行监视、诊断和故障排除
+      url: iot-hub-troubleshoot-connectivity.md
+    - text: 使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
+      url: iot-hub-how-to-order-connection-state-events.md
 - title: 使用 IoT 安全证书
   linkLists:
   - linkListType: concept

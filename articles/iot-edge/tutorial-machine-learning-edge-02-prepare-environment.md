@@ -8,37 +8,45 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078947"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932364"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 
-> [!NOTE]
-> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
-
 本文将帮助你准备好用于开发和部署的环境。 首先，在开发计算机上设置好所有必需工具。 然后，在 Azure 中创建必要的云资源。
+
+本教程的此部分介绍了如何：
+
+> [!div class="checklist"]
+>
+> * 设置用于开发的虚拟机。
+> * 设置 IoT 中心和云存储以供开发环境使用。
+
+## <a name="prerequisites"></a>先决条件
+
+有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="set-up-the-development-vm"></a>设置开发 VM
 
 此步骤通常由云开发人员执行。 其中一些软件也可能对数据科学家有所帮助。
 
-我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 虚拟机大小。
+我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](../virtual-machines/windows/nested-virtualization.md)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 虚拟机大小。
 
 为开发 VM 设置以下项：
 
 * Windows 10
 * [Chocolatey](https://chocolatey.org/)
 * [适用于 Windows 的 Docker Desktop](https://www.docker.com/products/docker-desktop)
-* [Git for Windows](https://gitforwindows.org/)
+* [用于 Windows 的 Git](https://gitforwindows.org/)
 * [适用于 Windows 的 Git 凭据管理器](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/)
 * [VS Code Extensions](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -60,7 +68,7 @@ ms.locfileid: "87078947"
 
    DevVM 目录包含创建适合完成本教程的 Azure 虚拟机所需的文件。
 
-1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”  。
+1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”。
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
@@ -76,13 +84,13 @@ ms.locfileid: "87078947"
 
     * **Azure 订阅 ID**：你的订阅 ID，可在门户中的“[Azure 订阅](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)”中找到。
     * **资源组名称**：Azure 中新的或现有的资源组的名称。
-    * **位置**：选择将在其中创建虚拟机的 Azure 位置。 例如“美国西部 2”或“北欧”。 有关详细信息，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
+    * 位置：选择将在其中创建虚拟机的 Azure 位置。 例如“美国西部 2”或“北欧”。 有关详细信息，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
     * **用户名**：为 VM 的管理员帐户提供一个易记的名称。
-    * **密码**：为 VM 的管理员帐户设置密码。
+    * 密码：为 VM 的管理员帐户设置密码。
 
    脚本在执行以下步骤时，会运行几分钟：
 
-    1. 安装 [Azure PowerShell Az 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
+    1. 安装 [Azure PowerShell Az 模块](/powershell/azure/new-azureps-module-az)。
     1. 系统会提示你登录到 Azure。
     1. 确认用于创建 VM 的信息。 按 **y** 或 **Enter** 继续操作。
     1. 创建资源组（如果不存在）。
@@ -100,9 +108,9 @@ ms.locfileid: "87078947"
 
 1. 在 Azure 门户中，导航到脚本创建的 VM。
 
-1. 在左侧窗格菜单中的“操作”下，选择“自动关闭”。  
+1. 在左侧窗格菜单中的“操作”下，选择“自动关闭”。
 
-1. 根据需要调整“计划的关闭”和“时区”，然后选择“保存”。   
+1. 根据需要调整“计划的关闭”和“时区”，然后选择“保存”。
 
 ## <a name="connect-to-the-development-vm"></a>连接到开发 VM
 
@@ -110,11 +118,11 @@ ms.locfileid: "87078947"
 
 1. 在桌面上双击脚本创建的 RDP 文件。
 
-1. 系统将显示一个对话框，其中显示远程连接的发布者未知。 这是正常情况，因此请选择“连接”。 
+1. 系统将显示一个对话框，其中显示远程连接的发布者未知。 这是正常情况，因此请选择“连接”。
 
-1. 提供创建 VM 时所提供的管理员密码，然后单击“确定”。 
+1. 提供创建 VM 时所提供的管理员密码，然后单击“确定”。
 
-1. 系统将提示你是否接受 VM 的证书。 请选择“是”。 
+1. 系统将提示你是否接受 VM 的证书。 请选择“是”。
 
 ## <a name="install-visual-studio-code-extensions"></a>安装 Visual Studio Code 扩展
 
@@ -126,7 +134,7 @@ ms.locfileid: "87078947"
     cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”  。
+1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”。
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
@@ -183,41 +191,39 @@ Azure IoT 中心是任何 IoT 应用程序的核心，它会处理 IoT 设备和
 
 1. 在资源列表中，选择脚本创建的 IoT 中心。 其名称以随机字符结尾，例如 `IotEdgeAndMlHub-jrujej6de6i7w`。
 
-1. 在左侧窗格菜单中的“消息”下，选择“消息路由”。  
+1. 在左侧窗格菜单中的“消息”下，选择“消息路由”。
 
-1. 在“消息路由”页上，选择“自定义终结点”选项卡。  
+1. 在“消息路由”页上，选择“自定义终结点”选项卡。
 
-1. 展开“存储”部分： 
+1. 展开“存储”部分：
 
    ![检查 turbofanDeviceStorage 是否在自定义终结点列表中](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
    我们会看到 **turbofanDeviceStorage** 在自定义终结点列表中。 请注意有关此终结点的以下特征：
 
-   * 它指向你创建的名为 `devicedata` 的 Blob 存储容器，如“容器名称”所示。 
-   * 其“文件名格式”使用分区作为名称中的最后一个元素。  我们发现，对于将在本教程后面部分使用 Azure Notebooks 执行的文件操作，此格式更为方便。
-   * 其状态应为“正常”。 
+   * 它指向你创建的名为 `devicedata` 的 Blob 存储容器，如“容器名称”所示。
+   * 其“文件名格式”使用分区作为名称中的最后一个元素。 我们发现，对于将在本教程后面部分使用 Azure Notebooks 执行的文件操作，此格式更为方便。
+   * 其状态应为“正常”。
 
-1. 选择“路由”选项卡  。
+1. 选择“路由”选项卡。
 
-1. 选择名为“turbofanDeviceDataToStorage”的路由  。
+1. 选择名为“turbofanDeviceDataToStorage”的路由。
 
-1. 在“路由详细信息”页上，请注意，路由的终结点是 **turbofanDeviceStorage** 终结点。 
+1. 在“路由详细信息”页上，请注意，路由的终结点是 **turbofanDeviceStorage** 终结点。
 
    ![查看有关 turbofanDeviceDataToStorage 路由的详细信息](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. 查看设置为“true”的“路由查询”   。 此设置意味着所有设备遥测消息都将与此路由匹配，因此所有消息将发送到 **turbofanDeviceStorage** 终结点。
+1. 查看设置为“true”的“路由查询”。 此设置意味着所有设备遥测消息都将与此路由匹配，因此所有消息将发送到 **turbofanDeviceStorage** 终结点。
 
 1. 由于我们未进行任何编辑，因此请直接关闭此页。
+
+## <a name="clean-up-resources"></a>清理资源
+
+本教程是一系列文章的一部分，其中每篇文章都基于前一篇文章中介绍的内容。 在完成最后一个教程之前，请等待清理所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，我们创建了 IoT 中心，并配置了 Azure 存储帐户的路由。 接下来，我们将通过 IoT 中心将来自一组模拟设备的数据发送到存储帐户。 在本教程的后面部分，在配置 IoT Edge 设备和模块之后，我们将再次关注路由并详细了解路由查询。
-
-有关 IoT Edge 上的机器学习教程这部分所涵盖的步骤详细信息，请参阅：
-
-* [Azure IoT 基础](https://docs.microsoft.com/azure/iot-fundamentals/)
-* [使用 IoT 中心配置消息路由](../iot-hub/tutorial-routing.md)
-* [使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)
 
 继续阅读下一篇文章，创建模拟设备以进行监视。
 

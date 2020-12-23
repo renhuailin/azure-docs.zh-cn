@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372351"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132289"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -180,7 +180,7 @@ Azure 订阅嵌套在发票科目下，就如同嵌套在 EA 注册帐户下一�
 
 只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。  有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
-仅当 CSP 合作伙伴客户签署了 Microsoft 客户协议时，Azure 成本管理才支持这些客户。 对于 CSP 支持的但尚未签署 Microsoft 客户协议的客户，请参阅[合作伙伴中心](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)。
+仅当 CSP 合作伙伴客户签署了 Microsoft 客户协议时，Azure 成本管理才支持这些客户。 对于 CSP 支持的但尚未签署 Microsoft 客户协议的客户，请参阅[合作伙伴中心](/azure/cloud-solution-provider/overview/partner-center-overview)。
 
 成本管理不支持 CSP 范围中的管理组。 如果你有 CSP 订阅，并在成本分析中将范围设置为管理组，则会看到如下错误：
 

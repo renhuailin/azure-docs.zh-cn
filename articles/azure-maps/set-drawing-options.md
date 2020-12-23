@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b40dbd91357038d1e98b04628bd866ebb336381
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328881"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890626"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用绘图工具模块
 
-Azure Maps Web SDK 提供了一个 " *绘图工具" 模块*。 使用此模块，可以轻松地使用输入设备（如鼠标或触摸屏）绘制和编辑地图上的形状。 此模块的核心类是 [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)。 绘图管理器提供了在地图上绘制和编辑形状所需的所有功能。 它可直接使用，并与自定义工具栏 UI 集成。 还可以使用内置的 "绘图" [工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) 类。 
+Azure Maps Web SDK 提供了一个 " *绘图工具" 模块* 。 使用此模块，可以轻松地使用输入设备（如鼠标或触摸屏）绘制和编辑地图上的形状。 此模块的核心类是 [绘图管理器](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)。 绘图管理器提供了在地图上绘制和编辑形状所需的所有功能。 它可直接使用，并与自定义工具栏 UI 集成。 还可以使用内置的 "绘图" [工具栏](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) 类。 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>在网页中加载绘图工具模块
 
-1. 创建一个新的 HTML 文件，并 [照常实现该映射](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
+1. 创建一个新的 HTML 文件，并 [照常实现该映射](./how-to-use-map-control.md)。
 2. 加载 Azure Maps 绘图工具模块。 可以通过以下两种方式之一加载它：
     - 使用 Azure Maps services 模块的全球托管的 Azure 内容分发网络版本。 在文件的元素中添加对 JavaScript 和 CSS 样式表的引用 `<head>` ：
 
@@ -44,7 +44,7 @@ Azure Maps Web SDK 提供了一个 " *绘图工具" 模块*。 使用此模块�
 
 ## <a name="use-the-drawing-manager-directly"></a>直接使用绘图管理器
 
-在应用程序中加载 "绘图工具" 模块后，可以使用 " [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)" 启用绘图和编辑功能。 可以在对其进行实例化或使用函数时，为绘图管理器指定选项 `drawingManager.setOptions()` 。
+在应用程序中加载 "绘图工具" 模块后，可以使用 " [绘图管理器](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)" 启用绘图和编辑功能。 可以在对其进行实例化或使用函数时，为绘图管理器指定选项 `drawingManager.setOptions()` 。
 
 ### <a name="set-the-drawing-mode"></a>设置绘制模式
 
@@ -122,10 +122,10 @@ Azure Maps (<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawin
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Map](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [绘图管理器](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [绘图工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [绘图工具栏](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

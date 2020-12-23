@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/12/2019
 ms.author: alkohli
-ms.openlocfilehash: f69f3ed4a439deec58d4e5d30cefe48c4834cd66
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1f93f4d4e3295a0f08ac2e9f3e5826d3c8e6f6e4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083606"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556434"
 ---
 远程连接到设备的过程不同，具体取决于客户端的操作系统。
 
@@ -58,11 +58,11 @@ ms.locfileid: "89083606"
 
 在将用于连接的 Linux 客户端上：
 
-- 从 GitHub[安装最新的适用于 Linux 的 PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6)以获取 SSH 远程处理功能。 
+- 从 GitHub[安装最新的适用于 Linux 的 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6)以获取 SSH 远程处理功能。 
 - [仅 `gss-ntlmssp` 从 NTLM 模块安装包](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 对于 Ubuntu 客户端，请使用以下命令：
     - `sudo apt-get install gss-ntlmssp`
 
-有关详细信息，请参阅 [通过 SSH 进行 PowerShell 远程处理](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)。
+有关详细信息，请参阅 [通过 SSH 进行 PowerShell 远程处理](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)。
 
 请按照以下步骤从 NFS 客户端进行远程连接。
 

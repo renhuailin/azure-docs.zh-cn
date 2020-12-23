@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 11539e7d6e685703810537cf69e0e7ed3ec0be4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523987"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609082"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Wdesk 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523987"
 * 允许用户使用其 Azure AD 帐户自动登录到 Wdesk。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88523987"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Wdesk 支持 **SP** 和 **IDP** 发起的 SSO
-* 配置 Wdesk 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Wdesk 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-wdesk-from-the-gallery"></a>从库中添加 Wdesk
 
@@ -77,7 +77,7 @@ ms.locfileid: "88523987"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "88523987"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    ![Wdesk 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
@@ -95,7 +95,7 @@ ms.locfileid: "88523987"
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![Wdesk 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
@@ -170,41 +170,41 @@ ms.locfileid: "88523987"
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Wdesk。
 
-2. 在左下角，单击“管理员”，然后选择“管理员帐户”   ：
+1. 在左下角，单击“管理员”，然后选择“管理员帐户”   ：
  
-     ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+    ![显示从“管理员”菜单选择了“帐户管理员”的屏幕截图。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. 在 Wdesk 管理员中，导航到“安全性”、“SAML”、“SAML 设置”    >   ：
+1. 在 Wdesk 管理员中，导航到“安全性”、“SAML”、“SAML 设置”    >   ：
 
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+    ![显示从“SAML”选项卡选择了“SAML 设置”的屏幕截图。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
 1. 在“SAML 用户 ID 设置”下，勾选“SAML 用户 ID 为 Wdesk 用户名”。  
 
-    ![配置单一登录](./media/wdesk-tutorial/wdesk-username.png)
+    ![显示“SAML 用户 ID 设置”的屏幕截图，可在其中选择“SAML 用户 ID 为 Wdesk 用户名”。](./media/wdesk-tutorial/wdesk-username.png)
 
 4. 在“常规设置”下，选中“启用 SAML 单一登录”   ：
 
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+    ![显示“编辑 SAML 设置”的屏幕截图，可在其中选择“启用 SAML 单一登录”。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
 5. 在“服务提供程序详细信息”下，执行以下步骤  ：
 
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+    ![显示“服务提供程序详细信息”的屏幕截图，你可以在其中输入所述值。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
-      a. 复制登录 URL 并将其粘贴到 Azure 门户的“登录 URL”文本框   。
-   
-      b. 复制元数据 URL 并将其粘贴到 Azure 门户的“标识符”文本框   。
-       
-      c. 复制使用者 URL 并将其粘贴到 Azure 门户的“回复 URL”文本框   。
-   
-      d. 单击 Azure 门户的“保存”以保存更改  。      
+    1. 复制登录 URL 并将其粘贴到 Azure 门户的“登录 URL”文本框   。
 
-6. 单击“配置 IdP 设置”以打开“编辑 IdP 设置”对话框   。 单击“选择文件”以查找从 Azure 门户保存的 Metadata.xml 文件，然后将其上传   。
+    1. 复制元数据 URL 并将其粘贴到 Azure 门户的“标识符”文本框   。
+
+    1. 复制使用者 URL 并将其粘贴到 Azure 门户的“回复 URL”文本框   。
+
+    1. 单击 Azure 门户的“保存”以保存更改  。      
+
+1. 单击“配置 IdP 设置”以打开“编辑 IdP 设置”对话框   。 单击“选择文件”以查找从 Azure 门户保存的 Metadata.xml 文件，然后将其上传   。
     
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+    ![显示“编辑 IdP 设置”的屏幕截图，可在其中上传元数据。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-7. 单击“保存更改”。 
+1. 单击“保存更改”。 
 
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+    ![显示“保存更改”按钮的屏幕截图。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 ### <a name="create-wdesk-test-user"></a>创建 Wdesk 测试用户
 
@@ -216,21 +216,21 @@ ms.locfileid: "88523987"
 
 2. 导航到“管理员” > “管理员帐户”   。
 
-     ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![显示从“管理员”菜单选择了“帐户管理员”的屏幕截图。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 3. 单击“人员”下的“成员”   。
 
 4. 现在请单击“添加成员”以打开“添加成员”对话框   。 
    
-    ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser1.png)  
+    ![显示可在其中选择“添加成员”的“成员”选项卡的屏幕截图。](./media/wdesk-tutorial/createuser1.png)  
 
 5. 在“用户”文本框中输入用户的用户名（例如 b.simon@contoso.com），然后单击“继续”按钮。  
 
-    ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser3.png)
+    ![显示可在其中输入用户的“添加成员”对话框的屏幕截图。](./media/wdesk-tutorial/createuser3.png)
 
 6.  输入详细信息，如下所示：
   
-    ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser4.png)
+    ![显示可在其中为用户添加“基本信息”的“添加成员”对话框的屏幕截图。](./media/wdesk-tutorial/createuser4.png)
  
     a. 在“电子邮件”文本框中输入用户的电子邮件，例如 b.simon@contoso.com。 
 
@@ -240,20 +240,20 @@ ms.locfileid: "88523987"
 
 7. 单击“保存成员”按钮  。  
 
-    ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser5.png)
+    ![显示包含“保存成员”按钮的“发送欢迎电子邮件”的屏幕截图。](./media/wdesk-tutorial/createuser5.png)
 
 ### <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Wdesk”磁贴时，应会自动登录到设置了 SSO 的 Wdesk。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Wdesk”磁贴时，应会自动登录到设置了 SSO 的 Wdesk。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

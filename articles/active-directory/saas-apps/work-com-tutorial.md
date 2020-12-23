@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 5fe8697327203a84f91b42e8742db75150b6cb19
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541438"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636147"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88541438"
 * 可让用户使用其 Azure AD 帐户自动登录到 Work.com（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -61,7 +61,7 @@ ms.locfileid: "88541438"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Work.com**，在结果面板中选择“Work.com”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Work.com** ，在结果面板中选择“Work.com”，然后单击“添加”按钮添加该应用程序。  
 
     ![结果列表中的“Work.com”](common/search-new-app.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "88541438"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "88541438"
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Work.com 客户端支持团队](https://help.salesforce.com/articleView?id=000159855&type=3)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -129,11 +129,11 @@ ms.locfileid: "88541438"
 
 2. 转到“设置”  。
    
-    ![安装](./media/work-com-tutorial/ic794108.png "设置")
+    ![显示从用户菜单选择了“设置”的屏幕截图。](./media/work-com-tutorial/ic794108.png "设置")
 
 3. 在左侧导航窗格中的“管理”  部分中，单击“域管理”  以展开相关部分，并单击“我的域”  ，打开“我的域”  页。 
    
-    ![我的域](./media/work-com-tutorial/ic767825.png "我的域")
+    ![显示在“管理”窗格中的“域管理”中选择了“我的域”的屏幕截图。](./media/work-com-tutorial/ic767825.png "我的域")
 
 4. 要验证域是否已正确设置，请确保它在“步骤 4 部署到用户”  中，并复查“我的域设置”  。
    
@@ -143,7 +143,7 @@ ms.locfileid: "88541438"
 
 6. 转到“设置”  。
     
-    ![安装](./media/work-com-tutorial/ic794108.png "设置")
+    ![显示从用户菜单选择了“设置”的屏幕截图。](./media/work-com-tutorial/ic794108.png "设置")
 
 7. 展开“安全控件”  菜单，并单击“单一登录设置”  。
     
@@ -182,19 +182,19 @@ ms.locfileid: "88541438"
     
     i. 对于“服务提供程序发起的请求绑定”  ，请选择“HTTP Post”  。
     
-    j. 单击“ **保存**”。
+    j. 单击“ **保存** ”。
 
 10. 在 Work.com 经典门户内，从左侧导航窗格中，单击“域管理”  以展开相关部分，并单击“我的域”  ，打开“我的域”  页。 
     
-    ![我的域](./media/work-com-tutorial/ic794115.png "我的域")
+    ![显示从“域管理”选择了“我的域”的屏幕截图。](./media/work-com-tutorial/ic794115.png "我的域")
 
 11. 在“我的域”  页上的“登录页品牌打造”  部分中，单击“编辑”  。
     
-    ![登录页品牌打造](./media/work-com-tutorial/ic767826.png "登录页品牌打造")
+    ![显示“登录页品牌打造”部分的屏幕截图，你可以在其中选择“编辑”。](./media/work-com-tutorial/ic767826.png "登录页品牌打造")
 
-12. 在“登录页品牌打造”  页上的“身份验证服务”  部分中，会显示 **SAML SSO 设置**的名称。 选择它，并单击“保存”  。
+12. 在“登录页品牌打造”  页上的“身份验证服务”  部分中，会显示 **SAML SSO 设置** 的名称。 选择它，并单击“保存”  。
     
-    ![登录页品牌打造](./media/work-com-tutorial/ic784366.png "登录页品牌打造")
+    ![显示“登录页品牌打造”的屏幕截图，你可以在其中选择设置的名称，即 PPE。](./media/work-com-tutorial/ic784366.png "登录页品牌打造")
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -256,7 +256,7 @@ ms.locfileid: "88541438"
 
 2. 转到“设置”  。
    
-    ![安装](./media/work-com-tutorial/IC794108.png "设置")
+    ![显示从用户菜单选择了“设置”的屏幕截图。](./media/work-com-tutorial/ic794108.png "设置")
 
 3. 转到“管理用户”\>“用户”  。
    
@@ -270,21 +270,21 @@ ms.locfileid: "88541438"
    
     ![用户编辑](./media/work-com-tutorial/ic794118.png "用户编辑")
    
-    a. 在“名字”文本框中，键入用户的**名字** (**Britta**)  。
+    a. 在“名字”文本框中，键入用户的 **名字** ( **Britta** )  。
     
-    b. 在“姓氏”文本框中，键入用户的**姓氏** (**Simon**)  。
+    b. 在“姓氏”文本框中，键入用户的 **姓氏** ( **Simon** )  。
     
-    c. 在“别名”文本框中，键入用户的**别名** (**BrittaS**)  。
+    c. 在“别名”文本框中，键入用户的 **别名** ( **BrittaS** )  。
     
-    d. 在“电子邮件”文本框中，键入用户的**电子邮件地址**Brittasimon@contoso.com。 
+    d. 在“电子邮件”文本框中，键入用户的 **电子邮件地址**Brittasimon@contoso.com。 
     
     e. 在“用户名”  文本框中，键入用户的用户名（例如 Brittasimon@contoso.com）。
     
-    f. 在“昵称”  文本框中，键入用户的**昵称** (**Simon**)。
+    f. 在“昵称”  文本框中，键入用户的 **昵称** ( **Simon** )。
     
     g. 选择“角色”  、“用户许可证”  和“配置文件”  。
     
-    h. 单击“ **保存**”。  
+    h. 单击“ **保存** ”。  
       
     > [!NOTE]
     > Azure AD 帐户持有者会收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
@@ -294,13 +294,12 @@ ms.locfileid: "88541438"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Work.com”磁贴时，应会自动登录到设置了 SSO 的 Work.com。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Work.com”磁贴时，应会自动登录到设置了 SSO 的 Work.com。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

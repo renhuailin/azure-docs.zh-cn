@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602806"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188541"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 你可以通过与 CQL 二进制协议 v4 [线路协议](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)兼容的开放源代码 Cassandra 客户端[驱动程序](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)与 Azure Cosmos DB Cassandra API 通信。 
 
@@ -72,6 +73,8 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 | udts  | 是 |
 | map | 是 |
 
+数据类型声明支持静态。
+
 ## <a name="cql-functions"></a>CQL 函数
 
 Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
@@ -83,17 +86,24 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 | writetime | 是 |
 | 强制转换 | 否 |
 
-\* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。
+> [!NOTE]
+> \* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。
+
 
 
 聚合函数：
 
 |Command  |支持 |
 |---------|---------|
-| min | 是 |
-| max | 是 |
 | avg | 是 |
 | count | 是 |
+| min | 是 |
+| max | 是 |
+| sum | 是 |
+
+> [!NOTE]
+> 聚合函数适用于常规列，而不适用于聚类分析列。
+
 
 Blob 转换函数：
  
@@ -149,6 +159,7 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 | CREATE USER（在原生 Apache Cassandra 中已弃用） | 否 |
 | DELETE | 是 |
 | DELETE（使用 IF 条件的轻型事务）| 是 |
+| DISTINCT | 否 |
 | DROP AGGREGATE | 否 |
 | .DROP FUNCTION | 否 |
 | DROP INDEX | 是 |
@@ -194,9 +205,9 @@ Azure Cosmos DB Cassandra API 是一个托管的服务平台。 它不需要任�
 
 ## <a name="hosted-cql-shell-preview"></a>托管 CQL shell（预览版）
 
-可以直接从 [Azure 门户](data-explorer.md)或 [Azure Cosmos 资源管理器](https://cosmos.azure.com/)中的数据资源管理器中打开托管的本机 Cassandra Shell (CQLSH v5.0.1)。 启用 CQL shell 之前，必须[启用帐户中的笔记本](enable-notebooks.md)功能（如果尚未启用，则在单击 `Open Cassandra Shell` 时会提示你）。 查看[为 Azure Cosmos DB 帐户启用笔记本](enable-notebooks.md)中突出显示的注解，以了解支持的 Azure 区域。
+可以直接从 [Azure 门户](data-explorer.md)或 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)中的数据资源管理器中打开托管的本机 Cassandra Shell (CQLSH v5.0.1)。 启用 CQL shell 之前，必须[启用帐户中的笔记本](enable-notebooks.md)功能（如果尚未启用，则在单击 `Open Cassandra Shell` 时会提示你）。 查看[为 Azure Cosmos DB 帐户启用笔记本](enable-notebooks.md)中突出显示的注解，以了解支持的 Azure 区域。
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="开放 CQLSH&quot;:::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="开放 CQLSH":::
 
 还可以使用安装在本地计算机上的 CQLSH 连接到 Azure Cosmos DB 中的 Cassandra API。 它随 Apache Cassandra 3.1.1 一起提供，设置一些环境变量即可直接使用。 以下部分包括使用 CQLSH 在 Windows 或 Linux 上的 Azure Cosmos DB 中安装、配置和连接到 Cassandra API 的说明。
 
@@ -205,7 +216,7 @@ Azure Cosmos DB Cassandra API 是一个托管的服务平台。 它不需要任�
 
 **Windows：**
 
-如果使用 Windows，建议启用[适用于 Linux 的 Windows 文件系统](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 然后即可按照以下 linux 命令进行操作。
+如果使用 Windows，建议启用[适用于 Linux 的 Windows 文件系统](/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 然后即可按照以下 linux 命令进行操作。
 
 **Unix/Linux/Mac：**
 
@@ -220,7 +231,7 @@ curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
 keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
-echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra
@@ -252,11 +263,11 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>一致性映射 
 
-Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。  一致性映射的信息详见[此文](consistency-levels-across-apis.md#cassandra-mapping)。
+Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。  一致性映射的信息详见[此文](./cassandra-consistency.md#mapping-consistency-levels)。
 
 ## <a name="permission-and-role-management"></a>权限和角色管理
 
-Azure Cosmos DB 支持基于角色的访问控制 (RBAC) 用于预配、旋转密钥、查看指标以及读写和只读密码/密钥（可通过 [Azure 门户](https://portal.azure.com)获取）。 Azure Cosmos DB 不支持 CRUD 活动的角色。
+Azure Cosmos DB 支持 Azure 基于角色的访问控制 (Azure RBAC) 用于预配、旋转密钥、查看指标以及读写和只读密码/密钥（可通过 [Azure 门户](https://portal.azure.com)获取）。 Azure Cosmos DB 不支持 CRUD 活动的角色。
 
 ## <a name="keyspace-and-table-options"></a>密钥空间和表选项
 
@@ -273,7 +284,8 @@ CREATE TABLE sampleks.t1(user_id int PRIMARY KEY, lastname text) WITH cosmosdb_p
 ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ```
-
+## <a name="secondary-index"></a>辅助索引
+Cassandra API 支持所有数据类型的辅助索引，但冻结的集合类型、十进制和变量类型除外。 
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>使用 Cassandra 重试连接策略
 

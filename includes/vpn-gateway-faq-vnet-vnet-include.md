@@ -9,10 +9,10 @@ ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "67172771"
 ---
 VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 有关 VNet 对等互连的信息，请参阅[虚拟网络对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 246fbcd9bc72683e41489daf105f174f9380c029
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 5b4aadc506b2f4a251ccef5e9488066b609ba5a5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400258"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130521"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>公司工作帐户和合作伙伴中心
 
@@ -24,7 +24,7 @@ ms.locfileid: "91400258"
 
 请按照以下步骤检查：
 1. 登录到 Azure 管理门户，网址为 https://portal.azure.com 。
-2. 从左侧导航菜单中选择 " **Azure Active Directory** "，然后选择 " **自定义域名**"。
+2. 从左侧导航菜单中选择 " **Azure Active Directory** "，然后选择 " **自定义域名** "。
 3. 如果你已有工作帐户，门户将列出你的域名。
 
 如果你的公司尚未拥有工作帐户，则会在合作伙伴中心注册过程中为你创建一个。
@@ -38,13 +38,13 @@ ms.locfileid: "91400258"
 若要为你的公司创建新的工作帐户，请按照以下步骤操作。 你可能需要请求对你的公司的 Microsoft Azure 帐户具有管理权限的人员的帮助。
 
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
-2. 从左侧导航菜单中，选择 " **Azure Active Directory**  ->  **用户**"。
+2. 从左侧导航菜单中，选择 " **Azure Active Directory**  ->  **用户** "。
 3. 通过输入名称和电子邮件地址，选择 " **新建用户** " 并创建新的 Azure 工作帐户。 确保将 " **目录角色** " 设置为 " **用户** "，并选择底部的 " **显示密码** " 复选框，以查看并记下自动生成的密码。
 4. 选择 " **创建** " 以保存新用户。
 
-用户帐户的电子邮件地址必须是目录中已验证的域名。 可以通过**Azure Active Directory**  ->  在左侧导航菜单中选择 "Azure Active Directory**自定义域名**" 来列出目录中所有已验证的域。
+用户帐户的电子邮件地址必须是目录中已验证的域名。 可以通过 **Azure Active Directory**  ->  在左侧导航菜单中选择 "Azure Active Directory **自定义域名** " 来列出目录中所有已验证的域。
 
-若要详细了解如何在 Azure Active Directory 中添加自定义域，请参阅 [在 Azure AD 中添加或关联域](../../active-directory/active-directory-add-domain.md)。
+若要详细了解如何在 Azure Active Directory 中添加自定义域，请参阅 [在 Azure AD 中添加或关联域](../../active-directory/fundamentals/add-custom-domain.md)。
 
 ## <a name="troubleshoot-work-email-sign-in"></a>排查工作电子邮件登录问题
 
@@ -54,4 +54,4 @@ ms.locfileid: "91400258"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在合作伙伴中心管理商业市场帐户](./manage-account.md) 
+- [在合作伙伴中心管理商业市场帐户](./manage-account.md)

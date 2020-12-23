@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c1c2c5f27143be7fc10269c948bee9d5465d565a
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187432"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530436"
 ---
 # <a name="what-is-routing-preference-preview"></a>什么是路由首选项（预览版）？
 
@@ -70,19 +70,7 @@ Azure 路由首选项允许你选择流量在 Azure 和 Internet 之间的路由
 * Azure DataLake
 
 ## <a name="pricing"></a>定价
-这两个选项之间的价格差异反映在 Internet 出口数据传输定价中。 通过 Microsoft 全球网络路由的数据传输价格与当前 Internet 出口价格相同。 有关最新定价信息，请访问 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)。 通过公共 Internet 路由的价格要低于下表显示的价格：
-
-| 出口源区域 | 0-5 GB/月 | 5 GB-10 TB/月 | 10-50 TB/月 | 50-150 TB/月 | 150-500 TB/月 |
-| --- | --- | --- | --- | --- | --- |
-| 区域 1 | 0 美元/GB | 0\.085 美元/GB | 0\.065 美元/GB | 0\.06 美元/GB | 0\.04 美元/GB |
-| 区域 2 | 0 美元/GB | 0\.11 美元/GB | 0\.075 美元/GB | 0\.07 美元/GB | 0\.06 美元/GB  |
-
-如果每月流量超过 500 TB，[请联系我们](https://azure.microsoft.com/overview/sales-number/)。
-* 区域 1 - 澳大利亚中部、澳大利亚中部 2、加拿大中部、加拿大东部、北欧、西欧、法国中部、法国南部、德国北部（公共）、德国中西部（公共）、挪威东部、挪威西部、瑞士北部、瑞士西部、英国南部、英国西部、美国中部、美国东部、美国东部 2、美国中北部、美国中南部、美国西部、美国西部 2 和美国中部。
-
-* 区域 2 - 东亚、东南亚、澳大利亚东部、澳大利亚东南部、印度中部、印度南部、印度西部、日本东部、日本西部、韩国中部和韩国南部。
-
-* 区域 3 - 巴西南部、南非北部、南非西部、阿拉伯联合酋长国中部和阿拉伯联合酋长国北部。
+这两个选项之间的价格差异反映在 Internet 出口数据传输定价中。 通过 Microsoft 全球网络路由的数据传输价格与当前 Internet 出口价格相同。 有关最新定价信息，请访问 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)。 
 
 ## <a name="availability"></a>可用性
 

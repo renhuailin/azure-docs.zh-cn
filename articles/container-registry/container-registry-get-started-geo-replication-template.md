@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
-ms.date: 05/26/2020
-ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/06/2020
+ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649595"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827042"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建异地复制容器注册表
 
@@ -23,7 +23,7 @@ ms.locfileid: "88649595"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,21 +46,24 @@ ms.locfileid: "88649595"
 
  1. 选择下图登录到 Azure 并打开一个模板。
 
-    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
+    [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
- 2. 选择或输入以下值。
+ 1. 选择或输入以下值。
 
     * 订阅：选择一个 Azure 订阅。
     * **资源组**：选择“新建”，为资源组输入一个独一无二的名称，然后选择“确定”。 
-    * **位置**：选择资源组的位置。 示例：“美国中部”。
+    * 区域：选择资源组的位置。 示例：“美国中部”。
     * **Acr 名称**：接受为注册表生成的名称，或者输入一个名称。 它必须全局唯一。
+    * **已启用 Acr 管理员用户**：接受默认值。
     * **位置**：接受为注册表的主副本生成的位置，或输入一个位置，例如美国中部。 
+    * **Acr Sku**：接受默认值。
     * **Acr 副本位置**：使用区域的短名称输入注册表副本的位置。 该位置必须与主注册表的位置不同。 示例：westeurope。
-    * **我同意上述条款和条件**：选中。
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="模板属性":::
 
- 3. 如果接受条款和条件，请选择“购买”。 成功创建注册表后，你会收到通知：
+1. 选择“查看 + 创建”，然后查看条款和条件。 如果同意，请选择“创建”。
+
+1. 成功创建注册表后，你会收到通知：
 
      :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="模板属性":::
 
@@ -83,6 +86,8 @@ ms.locfileid: "88649595"
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要资源组、注册表和注册表副本，请将其删除。 为此，请访问 Azure 门户，选择包含注册表的资源组，然后选择“删除资源组”。
+
+删除资源组
 
 ## <a name="next-steps"></a>后续步骤
 

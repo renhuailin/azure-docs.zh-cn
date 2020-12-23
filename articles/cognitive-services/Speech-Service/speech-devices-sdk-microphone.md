@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232519"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015335"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 
@@ -27,11 +27,11 @@ ms.locfileid: "86232519"
 
 建议将以下阵列几何结构用于 Microsoft 音频堆栈。 借助更多的麦克风以及与特定应用程序、用户方案和设备外形规格之间的依赖关系，可以改善音源定位和环境噪声的抑制。
 
-| Mic & 几何 | 环形阵列 | 环形阵列 | 线性阵列 | 线性阵列 |
+| 麦克风数和几何结构 | 环形阵列 | 环形阵列 | 线性阵列 | 线性阵列 |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \# 麦克风数目 | 7 | 4 | 4 | 2 |
-| 几何图形 | 6 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 3 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 长度 = 120 毫米，间距 = 40 毫米 | 间距 = 40 毫米 |
+| 几何结构 | 6 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 3 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 长度 = 120 毫米，间距 = 40 毫米 | 间距 = 40 毫米 |
 
 应根据上述每个阵列的编号（从 0 开始递增）排列麦克风声道的顺序。 需要为 Microsoft 音频堆栈提供额外的音频播放参考流才能让它执行回声消除。
 
@@ -97,13 +97,13 @@ ms.locfileid: "86232519"
 | 采样时钟      | 设备音频不可出现低偏差的抖动和断续 |
 | 录制功能   | 设备必须能够同时录制单个原声道流 |
 | USB                 | 所有 USB 音频输入设备必须根据 [USB 音频设备修订版 3 规范](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement)设置描述符 |
-| 麦克风几何结构 | 驱动程序必须正确实现[麦克风阵列几何描述符](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
+| 麦克风几何结构 | 驱动程序必须正确实现[麦克风阵列几何描述符](/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
 | 可发现性     | 设备中不能包含任何不可发现或不可控的硬件、固件或第三方基于软件的非线性音频处理算法 |
 | 捕获格式      | 捕获格式必须使用最小 16 kHz 采样率和建议的 24 位深度 |
 
 ## <a name="electrical-architecture-considerations"></a>电力体系结构注意事项
 
-在适用的情况下，阵列可能连接到 USB 主机 (例如，在运行 Microsoft 音频堆栈的 SoC) 并将接口连接到语音服务或其他应用程序。
+在适用的情况下，阵列可以连接到 USB 主机（例如，运行 Microsoft 音频堆栈的 SoC），并可与语音服务或其他应用程序对接。
 
 硬件组件（例如 PDM-TDM 转换组件）应确保在再采样器中保留麦克风的动态范围和信噪比。
 

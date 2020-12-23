@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887434"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978025"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure CDN 资产
 
@@ -170,7 +170,7 @@ ms.locfileid: "84887434"
 
    9. 可以自定义请求被拒绝时返回的响应代码类型。 选择“启用”，然后选择“响应代码”列表中的响应代码。 “标头名称”自动设置为“位置”。 选择“保存”，实现新的响应代码。 对于某些响应代码，还必须在“标头值”框中输入错误页面的 URL。 默认情况下将选择 403 响应代码（禁止）。 
 
-3. 在“HTTP Large”下，选择“规则引擎” 。 使用此规则引擎来定义应用功能、启用令牌身份验证功能以及启用其他令牌身份验证相关功能的路径。 有关详细信息，请参阅[规则引擎引用](cdn-rules-engine-reference.md)。
+3. 在“HTTP Large”下，选择“规则引擎” 。 使用此规则引擎来定义应用功能、启用令牌身份验证功能以及启用其他令牌身份验证相关功能的路径。 有关详细信息，请参阅[规则引擎引用](./cdn-verizon-premium-rules-engine-reference.md)。
 
    1. 选择现有规则或创建新规则，定义想要应用令牌身份验证的资产或路径。 
    2. 要对规则启用令牌身份验证，请从“功能”列表中选择[“令牌身份验证”](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)，然后选择“启用”。 选择“更新”更新规则，或选择“添加”创建规则 。

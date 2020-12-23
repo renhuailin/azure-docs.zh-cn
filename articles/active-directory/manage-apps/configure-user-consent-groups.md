@@ -11,26 +11,27 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: e590981fabcd20f23f25d12b4176b6730cb0fc3c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: d14e4808d5bec03dff9406f37e63ee4c76e601f8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804290"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033215"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
 
-组和团队所有者可以授权应用程序（如第三方供应商发布的应用程序）访问组织的与组关联的数据。 例如，Microsoft Teams 中的团队所有者可允许应用读取团队中的所有 Teams 消息，或允许列出组成员的基本个人资料。 若要了解详细信息，请参阅 [Microsoft 团队中的资源特定同意](https://docs.microsoft.com/microsoftteams/resource-specific-consent) 。
+组和团队所有者可以授权应用程序（如第三方供应商发布的应用程序）访问组织的与组关联的数据。 例如，Microsoft Teams 中的团队所有者可允许应用读取团队中的所有 Teams 消息，或允许列出组成员的基本个人资料。 若要了解详细信息，请参阅 [Microsoft 团队中的资源特定同意](/microsoftteams/resource-specific-consent) 。
 
 ## <a name="manage-group-owner-consent-to-apps"></a>管理组所有者同意应用
 
 你可以配置允许哪些用户同意访问其组或团队数据的应用，也可以为所有用户禁用此设置。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 请按照以下步骤管理对访问组数据的应用的组所有者同意：
 
-1. 以[全局管理员](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)的身份登录 [Azure 门户](https://portal.azure.com)。
+1. 以[全局管理员](../roles/permissions-reference.md#global-administrator--company-administrator)的身份登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “企业应用程序” > “同意和权限” > “用户同意设置”   。
 3. 在“针对应用访问数据的组所有者同意”下，选择要启用的选项。
 4. 选择“保存”以保存设置。
@@ -41,9 +42,9 @@ ms.locfileid: "91804290"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-可使用 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 允许或禁止组所有者同意应用程序访问你组织的数据来查找他们拥有的组。
+可使用 Azure AD PowerShell 预览版模块 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 允许或禁止组所有者同意应用程序访问你组织的数据来查找他们拥有的组。
 
-1. 请确保使用 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模块。 如果同时安装了 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) 模块和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模块，则此步骤非常重要。
+1. 请确保使用 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块。 如果同时安装了 [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) 模块和 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块，则此步骤非常重要。
 
     ```powershell
     Remove-Module AzureAD
@@ -120,7 +121,7 @@ ms.locfileid: "91804290"
 * [配置管理员同意工作流](configure-admin-consent-workflow.md)
 * [了解如何管理对应用程序的同意并评估同意请求](manage-consent-requests.md)
 * [向应用程序授予租户范围的管理许可](grant-admin-consent.md)
-* [Microsoft 标识平台中的权限和许可](../develop/active-directory-v2-scopes.md)
+* [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
 * [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

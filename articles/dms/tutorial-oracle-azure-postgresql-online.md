@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: df789161bb9db8d49f069992600b5fcb4f78dd03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006536"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
 
-可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将本地或虚拟机中的 Oracle 数据库迁移到 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)。 换而言之，完成这种迁移只会对应用程序造成极短暂的停机。 本教程介绍如何使用 Azure 数据库迁移服务中的联机迁移活动，将 **HR** 示例数据库从 Oracle 11g 的本地或虚拟机实例迁移到 Azure Database for PostgreSQL。
+可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将本地或虚拟机中的 Oracle 数据库迁移到 [Azure Database for PostgreSQL](../postgresql/index.yml)。 换而言之，完成这种迁移只会对应用程序造成极短暂的停机。 本教程介绍如何使用 Azure 数据库迁移服务中的联机迁移活动，将 **HR** 示例数据库从 Oracle 11g 的本地或虚拟机实例迁移到 Azure Database for PostgreSQL。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -48,14 +48,14 @@ ms.locfileid: "91363165"
 要完成本教程，需要：
 
 * 下载并安装 [Oracle 11g 发行版 2（Standard Edition、Standard Edition One 或 Enterprise Edition）](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)。
-* 从[此处](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)下载示例 **HR** 数据库。
+* 从 [此处](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)下载示例 **HR** 数据库。
 * 下载 ora2pg 并[将其安装在 Windows 或 Linux 上](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)。
-* [在 Azure Database for PostgreSQL 中创建实例](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。
-* 参考[此文档](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)中的说明连接到该实例并创建数据库。
-* 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，其中该模型使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* [在 Azure Database for PostgreSQL 中创建实例](../postgresql/quickstart-create-server-database-portal.md)。
+* 参考[此文档](../postgresql/tutorial-design-database-using-azure-portal.md)中的说明连接到该实例并创建数据库。
+* 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，其中该模型使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](../virtual-network/index.yml)，尤其是提供了分步详细信息的快速入门文章。
 
   > [!NOTE]
-  > 在虚拟网络设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，则请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到要在其中预配该服务的子网：
+  > 在虚拟网络设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，则请将以下服务[终结点](../virtual-network/virtual-network-service-endpoints-overview.md)添加到要在其中预配该服务的子网：
   >
   > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
   > * 存储终结点
@@ -63,11 +63,11 @@ ms.locfileid: "91363165"
   >
   > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
 
-* 确保虚拟网络网络安全组 (NSG) 规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
-* 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
+* 确保虚拟网络网络安全组 (NSG) 规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 配置[针对数据库引擎访问的 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 Oracle 服务器（默认使用 TCP 端口 1521）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-* 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
+* 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](../azure-sql/database/firewall-configure.md)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 启用对源 Oracle 数据库的访问。
 
   > [!NOTE]
@@ -206,7 +206,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 > [!IMPORTANT]
 > Azure 数据库迁移服务仅创建表架构；不会创建其他数据库对象，如存储过程、包、索引等。
 
-同时确保删除目标数据库中的外键，以运行完全加载。 有关可用于删除外键的脚本，请参阅[此文](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)中的“迁移示例架构”部分。  使用 Azure 数据库迁移服务运行完整加载和同步。
+同时确保删除目标数据库中的外键，以运行完全加载。 有关可用于删除外键的脚本，请参阅[此文](./tutorial-postgresql-azure-postgresql-online.md)中的“迁移示例架构”部分。  使用 Azure 数据库迁移服务运行完整加载和同步。
 
 ### <a name="when-the-postgresql-table-schema-already-exists"></a>如果已存在 PostgreSQL 表架构
 
@@ -237,7 +237,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 2. 在“选择架构”步骤中，指定目标数据库和目标架构。
 3. 根据在 Azure Database for PostgreSQL 中创建的架构，Azure 数据库迁移服务使用以下转换规则：
 
-    如果 Oracle 源中的架构名称与 Azure Database for PostgreSQL 中的架构名称匹配，则 Azure 数据库迁移服务将*使用与目标相同的大小写来创建表架构*。
+    如果 Oracle 源中的架构名称与 Azure Database for PostgreSQL 中的架构名称匹配，则 Azure 数据库迁移服务将 *使用与目标相同的大小写来创建表架构*。
 
     例如：
 
@@ -267,7 +267,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 ## <a name="create-a-dms-instance"></a>创建 DMS 实例
 
-1. 在 Azure 门户中，选择 **+ 创建资源**，搜索 Azure 数据库迁移服务，然后从下拉列表选择**Azure 数据库迁移服务**。
+1. 在 Azure 门户中，选择 **+ 创建资源**，搜索 Azure 数据库迁移服务，然后从下拉列表选择 **Azure 数据库迁移服务**。
 
     ![Azure 市场](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
 
@@ -281,7 +281,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
     虚拟网络为 Azure 数据库迁移服务提供源 Oracle 和目标 Azure Database for PostgreSQL 实例的访问权限。
 
-    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)一文。
 
 5. 选择定价层。
 
@@ -304,7 +304,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
     ![查找 Azure 数据库迁移服务实例](media/tutorial-oracle-azure-postgresql-online/dms-instance-search.png)
 
 3. 选择“+ 新建迁移项目”。
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“Oracle”，在“目标服务器类型”文本框中选择“Azure Database for PostgreSQL”。********************
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“Oracle”，在“目标服务器类型”文本框中选择“Azure Database for PostgreSQL”。
 5. 在“选择活动类型”部分选择“联机数据迁移”。 
 
    ![创建数据库迁移服务项目](media/tutorial-oracle-azure-postgresql-online/dms-create-project5.png)
@@ -312,11 +312,11 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
    > [!NOTE]
    > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
-6. 选择“保存”，注意成功使用 Azure 数据库迁移服务执行联机迁移所要满足的要求，然后选择“创建并运行活动”。********
+6. 选择“保存”，注意成功使用 Azure 数据库迁移服务执行联机迁移所要满足的要求，然后选择“创建并运行活动”。
 
 ## <a name="specify-source-details"></a>指定源详细信息
 
-* 在“添加源详细信息”屏幕上，指定源 Oracle 实例的连接详细信息。****
+* 在“添加源详细信息”屏幕上，指定源 Oracle 实例的连接详细信息。
 
   ![“添加源详细信息”屏幕](media/tutorial-oracle-azure-postgresql-online/dms-add-source-details.png)
 
@@ -333,7 +333,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
-1. 选择“保存”，然后在“目标详细信息”屏幕上指定目标 Azure Database for PostgreSQL 服务器的连接详细信息，这是 **HR** 架构已部署到的 Azure Database for PostgreSQL 的提前预配实例********。
+1. 选择“保存”，然后在“目标详细信息”屏幕上指定目标 Azure Database for PostgreSQL 服务器的连接详细信息，这是 **HR** 架构已部署到的 Azure Database for PostgreSQL 的提前预配实例。
 
     ![“目标详细信息”屏幕](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 
@@ -378,13 +378,13 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
    ![启动直接转换](media/tutorial-oracle-azure-postgresql-online/dms-start-cutover.png)
 
 3. 依次选择“确认”、“应用” 。
-4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure Database for PostgreSQL 实例。****
+4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure Database for PostgreSQL 实例。
 
  > [!NOTE]
- > 由于 PostgreSQL 的 schema.table.column 默认采用小写，你可以使用本文前面的“在 Azure Database for PostgreSQL 中设置架构”部分中的脚本，将大写转换为小写。****
+ > 由于 PostgreSQL 的 schema.table.column 默认采用小写，你可以使用本文前面的“在 Azure Database for PostgreSQL 中设置架构”部分中的脚本，将大写转换为小写。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解联机迁移到 Azure Database for PostgreSQL 时的已知问题和限制，请参阅 [Azure Database for PostgreSQL 联机迁移的已知问题和解决方法](known-issues-azure-postgresql-online.md)一文。
-* 若要了解 Azure 数据库迁移服务，请参阅[什么是 Azure 数据库迁移服务？](https://docs.microsoft.com/azure/dms/dms-overview)一文。
-* 有关 Azure Database for PostgreSQL 的信息，请参阅[什么是 Azure Database for PostgreSQL？](https://docs.microsoft.com/azure/postgresql/overview)一文。
+* 若要了解 Azure 数据库迁移服务，请参阅[什么是 Azure 数据库迁移服务？](./dms-overview.md)一文。
+* 有关 Azure Database for PostgreSQL 的信息，请参阅[什么是 Azure Database for PostgreSQL？](../postgresql/overview.md)一文。

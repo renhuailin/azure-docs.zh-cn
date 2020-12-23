@@ -1,5 +1,5 @@
 ---
-title: 将 Azure Active Directory 日志流式传输到 Azure Monitor 日志 |Microsoft Docs
+title: 将 Azure Active Directory 日志流式传输到 Azure Monitor 日志 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 日志与 Azure Monitor 日志集成
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230562"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180449"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
 
@@ -44,14 +44,15 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 可以将审核活动日志和登录活动日志路由到 Azure Monitor 日志以供进一步分析。 
 
-* **审核日志**：可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
-* **登录日志**：可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
+* **审核日志**：可以通过 [审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
+* **登录日志**：可以通过 [登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
+* **预配日志**：借助 [预配日志](../app-provisioning/application-provisioning-log-analytics.md)，可以监视在所有第三方应用程序中创建、更新和删除的用户。 
 
 > [!NOTE]
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 若要使用此功能，需满足以下条件:
 
@@ -68,15 +69,15 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 
-2. 选择**Azure Active Directory**"  >  **诊断设置**" "  ->  **添加诊断设置**"。 还可以从“审核日志”**** 或“登录”**** 页选择“导出设置”****，以转到诊断设置配置页。  
+2. 选择“Azure Active Directory” > “诊断设置” -> “添加诊断设置”。 还可以从“审核日志”或“登录”页选择“导出设置”，以转到诊断设置配置页。  
     
-3. 在“诊断设置”菜单中，选中“发送到 Log Analytics 工作区”复选框，并选择“配置”************。
+3. 在“诊断设置”菜单中，选中“发送到 Log Analytics 工作区”复选框，并选择“配置”。
 
 4. 选择要将日志发送到的 Log Analytics 工作区，或在提供的对话框中创建新的工作区。  
 
 5. 执行下列两项操作或之一：
-    * 若要将审核日志发送到 Log Analytics 工作区，请选中“AuditLogs”**** 复选框。 
-    * 若要将登录日志发送到 Log Analytics 工作区，请选中“SignInLogs”**** 复选框。
+    * 若要将审核日志发送到 Log Analytics 工作区，请选中“AuditLogs”复选框。 
+    * 若要将登录日志发送到 Log Analytics 工作区，请选中“SignInLogs”复选框。
 
 6. 选择“保存”，保存设置。
 

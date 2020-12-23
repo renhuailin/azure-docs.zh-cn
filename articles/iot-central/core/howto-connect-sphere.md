@@ -8,12 +8,12 @@ ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
-ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 770f6e56a669ab2d9b425a7a2879eeef5d37377b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017687"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123417"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>将 Azure Sphere 设备连接到 Azure IoT Central 应用程序
 
@@ -21,7 +21,7 @@ ms.locfileid: "90017687"
 
 本文介绍如何将 Azure Sphere (DevKit) 设备连接到 Azure IoT Central 应用程序。
 
-Azure Sphere 是一个安全的高级应用程序平台，具有针对互连设备的内置通信和安全功能。 它包括一个安全的、连接的跨接微控制器单元 (MCU)、一个定制的基于 linux 的高级操作系统 (OS) 和一个基于云的安全服务（提供连续的可续订安全性）。 有关详细信息，请参阅[什么是 Azure Sphere？](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)。
+Azure Sphere 是一个安全的高级应用程序平台，具有针对互连设备的内置通信和安全功能。 它包括一个安全的、连接的跨接微控制器单元 (MCU)、一个定制的基于 linux 的高级操作系统 (OS) 和一个基于云的安全服务（提供连续的可续订安全性）。 有关详细信息，请参阅[什么是 Azure Sphere？](/azure-sphere/product-overview/what-is-azure-sphere)。
 
 [Azure Sphere 开发工具包](https://azure.microsoft.com/services/azure-sphere/get-started/)提供开始原型制作和开发 Azure Sphere 应用程序所需的一切。 带有 Azure Sphere 的 Azure IoT Central 可使 IoT 解决方案实现端到端堆栈。 Azure Sphere 提供设备支持和 IoT Central，作为一个零代码的托管 IoT 应用程序平台。
 
@@ -38,7 +38,7 @@ Azure Sphere 是一个安全的高级应用程序平台，具有针对互连设�
 
 - Azure IoT Central 应用程序。
 - Visual Studio 2019，版本 16.4 或更高版本。
-- [Seeed Studios 的 Azure Sphere MT3620 开发工具包](https://docs.microsoft.com/azure-sphere/hardware/mt3620-reference-board-design)。
+- [Seeed Studios 的 Azure Sphere MT3620 开发工具包](/azure-sphere/hardware/mt3620-reference-board-design)。
 
 > [!NOTE]
 > 如果没有物理设备，则在第一步之后跳到最后一部分以尝试创建模拟设备。
@@ -67,7 +67,7 @@ Azure Sphere 是一个安全的高级应用程序平台，具有针对互连设�
 
 将设备连接到 IoT Central 时，可以在仪表板上看到遥测。
 
-:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere DevKit 的仪表板":::
+:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere DevKit 的设备模板":::
 
 ## <a name="create-a-simulated-device"></a>创建模拟设备
 

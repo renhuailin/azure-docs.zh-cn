@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Synapse SQL 创建和更新表的统计信息
-description: 本文提供的建议和示例适用于创建和更新 Synapse SQL 池中有关表的查询优化统计信息。
+title: 在表上创建和更新统计信息
+description: 有关创建和更新专用 SQL 池中的表的查询优化统计信息的建议和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,43 +10,43 @@ ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 914c3128805c9875249bb1998fcdb6e456e73b16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: e7fc89dcc0e7938ea2958d5c804abe82e20f186d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799309"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447934"
 ---
-# <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 池中的表统计信息
+# <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的表统计信息
 
-本文提供的建议和示例适用于创建和更新 SQL 池中有关表的查询优化统计信息。
+在本文中，你将找到有关创建和更新专用 SQL 池中的表的查询优化统计信息的建议和示例。
 
 ## <a name="why-use-statistics"></a>为何使用统计信息
 
-SQL 池对数据了解得越多，其针对数据执行查询的速度就越快。 将数据载入 SQL 池之后，收集有关数据的统计信息是优化查询时可做的最重要事情之一。
+更为专用的 SQL 池知道您的数据，它对它执行查询的速度就越快。 在将数据加载到专用 SQL 池之后，收集数据的统计信息是优化查询时可以执行的最重要的操作之一。
 
-SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。
+专用的 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。
 
 例如，如果优化器估计查询筛选的日期会返回一行数据，则它会选择一个计划。 如果优化器估计选定的日期会返回 1 百万行数据，则它会返回另一个计划。
 
 ## <a name="automatic-creation-of-statistic"></a>自动创建统计信息
 
-启用数据库的 AUTO_CREATE_STATISTICS 选项时，SQL 池会分析传入的用户查询中是否缺少统计信息。
+当数据库 AUTO_CREATE_STATISTICS 选项为 on 时，专用 SQL 池会分析传入的用户查询是否缺少统计信息。
 
 如果缺少统计信息，查询优化器将在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
 
 > [!NOTE]
 > 默认情况下，自动创建统计信息目前处于开启状态。
 
-可运行以下命令来检查是否为 SQL 池配置了 AUTO_CREATE_STATISTICS：
+可以通过运行以下命令来检查专用 SQL 池是否 AUTO_CREATE_STATISTICS 配置：
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-如果 SQL 池未配置 AUTO_CREATE_STATISTICS，建议通过运行以下命令来启用此属性：
+如果专用 SQL 池未配置 AUTO_CREATE_STATISTICS，则建议通过运行以下命令启用此属性：
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -82,11 +82,11 @@ table_name 是包含要显示的统计信息的表的名称。 此表不能为�
 
 ## <a name="update-statistics"></a>更新统计信息
 
-最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入 SQL 池时，就会添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
+最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次将新行加载到专用 SQL 池时，将添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
 
 有关客户表中的国家/地区列的统计信息可能永远不需要更新，因为值的分布通常不会变化。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-但是，如果 SQL 池只包含一个国家/地区，并且引入了来自新国家/地区的数据，导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
+但是，如果专用 SQL 池只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，则需要更新 "国家/地区" 列中的统计信息。
 
 下面是关于更新统计信息的建议：
 
@@ -150,9 +150,6 @@ on objIdsWithStats.object_id = actualRowCounts.object_id
 
 ```
 
->[!TIP]
-> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
-
 **查询 2：** 通过检查每个表中上次更新统计信息的时间，找出统计信息的使用年限。 
 
 > [!NOTE]
@@ -185,11 +182,11 @@ WHERE
     st.[user_created] = 1;
 ```
 
-例如，SQL 池中的日期列往往需要经常更新统计信息  。 每次有新行载入 SQL 池时，就会添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
+例如，专用 SQL 池中的 **日期列** 通常需要频繁统计信息更新。 每次将新行加载到专用 SQL 池时，将添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
 
 相反地，客户表上性别列的统计信息可能永远不需要更新。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-如果 SQL 池只包含一种性别，而新的要求会导致出现多种性别，则需更新性别列的统计信息。
+如果专用 SQL 池只包含一种性别，而新的要求导致了多个性别，则需要更新 "性别" 列中的统计信息。
 
 有关详细信息，请参阅[统计信息](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的通用指南。
 
@@ -217,7 +214,7 @@ WHERE
 
 若要基于某个列创建统计信息，需要提供统计信息对象的名称和列的名称。
 
-此语法使用所有默认选项。 默认情况下，SQL 池在创建统计信息时会提取 **20%** 的表数据作为样本。
+此语法使用所有默认选项。 默认情况下，在创建统计信息时对 **20%** 的表采样。
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -315,11 +312,11 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>使用存储过程基于数据库中的所有列创建统计信息
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>使用存储过程创建 SQL 池中所有列的统计信息
 
-SQL 池不提供相当于 SQL Server 中 sp_create_stats 的系统存储过程。 此存储过程基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
+专用 SQL 池没有与 SQL Server 中的 sp_create_stats 相同的系统存储过程。 此存储过程在 SQL 池中尚未包含统计信息的每个列上创建单个列统计信息对象。
 
-以下示例可以帮助你开始进行数据库设计。 可以根据需要任意改写此存储过程。
+下面的示例将帮助你开始 SQL 池设计。 可以根据需要任意改写此存储过程。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -465,7 +462,7 @@ UPDATE STATISTICS dbo.table1;
 UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。  如果性能不是一个考虑因素，这是保证拥有最新统计信息的最简单、最全面的操作方式。
 
 > [!NOTE]
-> 更新表中的所有统计信息时，SQL 池将执行扫描，以针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
+> 更新表中的所有统计信息时，专用 SQL 池会执行扫描，以针对每个统计信息对象的表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
 
 有关 `UPDATE STATISTICS` 过程的实现，请参阅[临时表](sql-data-warehouse-tables-temporary.md)。 实现方法与上述 `CREATE STATISTICS` 过程略有不同，但最终结果相同。
 
@@ -549,7 +546,7 @@ DBCC SHOW_STATISTICS() 显示统计信息对象中保存的数据。 这些数�
 有关统计信息的标头元数据。 直方图显示统计信息对象的第一个键列中的值分布。 密度向量可度量跨列相关性。
 
 > [!NOTE]
-> SQL 池使用统计信息对象中的任何数据来计算基数估计值。
+> 专用 SQL 池用 statistics 对象中的任何数据来计算基数估计值。
 
 ### <a name="show-header-density-and-histogram"></a>显示标头、密度和直方图
 
@@ -581,7 +578,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差异
 
-相比于 SQL Server，在 SQL 池中，DBCC SHOW_STATISTICS() 的实现更加严格。
+与 SQL Server 相比，在专用的 SQL 池中，DBCC SHOW_STATISTICS ( # A1 更严格实现：
 
 - 未阐述的功能不受支持。
 - 不能使用 Stats_stream。

@@ -7,16 +7,16 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 10/07/2020
 ms.author: banders
-ms.openlocfilehash: a579dd22aa814340b4b72d74907739c942570c23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 15d6c7731b541de638ceaf7828a7ce962cbf154a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270659"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827540"
 ---
-# <a name="delete-an-azure-billing-payment-method-preview"></a>删除 Azure 账单付款方式（预览）
+# <a name="delete-an-azure-billing-payment-method"></a>删除 Azure 账单付款方式
 
 本文档提供了相关说明，可帮助你从不同类型的 Azure 订阅中删除付款方式（如信用卡）。 你可删除以下付款方式：
 
@@ -39,10 +39,10 @@ ms.locfileid: "91270659"
 1. 在“计费”下的左侧菜单列表中，选择“计费对象信息” 。  
     :::image type="content" source="./media/delete-azure-payment-method/billing-profiles.png" alt-text="显示 Azure 门户中计费对象信息的示例屏幕截图" lightbox="./media/delete-azure-payment-method/billing-profiles.png" :::
 1. 在计费对象信息列表中，选择使用付款方式的帐户。  
-    :::image type="content" source="./media/delete-azure-payment-method/select-billing-profile.png" alt-text="显示 Azure 门户中计费对象信息的示例屏幕截图" :::
+    :::image type="content" source="./media/delete-azure-payment-method/select-billing-profile.png" alt-text="显示计费对象信息列表的示例图像" :::
 1. 在左侧菜单列表中的“设置”下，选择“付款方式” 。
 1. 在计费对象信息的“付款方式”页面上，“你的信用卡”部分下显示了一张付款方式的表。 找到要删除的信用卡，选择省略号 (…)，然后选择“删除” 。  
-    :::image type="content" source="./media/delete-azure-payment-method/delete-credit-card.png" alt-text="显示 Azure 门户中计费对象信息的示例屏幕截图" :::
+    :::image type="content" source="./media/delete-azure-payment-method/delete-credit-card.png" alt-text="显示删除信用卡的位置的示例" :::
 1. 此时会出现“删除付款方式”页面。 Azure 会检查该付款方式是否正在使用。
     - 如果该付款方式未在使用，则已启用“删除”选项。 将其选中以删除信用卡信息。
     - 如果付款方式正在使用中，则必须将其替换或拆离。 继续阅读以下各部分。 它们介绍了如何拆离订阅正在使用的付款方式。
@@ -51,7 +51,7 @@ ms.locfileid: "91270659"
 
 如果 MCA 计费对象信息正在使用你的付款方式，则你将看到一条如下例所示的消息。
 
-:::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-microsoft-customer-agreement.png" alt-text="显示 Azure 门户中计费对象信息的示例屏幕截图" :::
+:::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-microsoft-customer-agreement.png" alt-text="显示 Microsoft 客户协议正在使用付款方式的示例图像" :::
 
 若要拆离付款方式，必须满足一系列条件。 如果不满足某一条件，则会出现说明，指出如何满足该项条件。 还会出现一个链接，它将转到你可解决该问题的位置。
 
@@ -65,7 +65,7 @@ ms.locfileid: "91270659"
 1. 在“删除付款方式”区域中，选择“拆离当前付款方式”链接。
 1. 如果满足所有条件，请选择“拆离”。 否则，继续执行下一步。
 1. 如果“拆离”选项不可用，会显示条件列表。 执行所列出的操作。 选择“拆离默认付款方式”区域中显示的链接。 下面是纠正措施的示例，它介绍了需要执行的操作。  
-    :::image type="content" source="./media/delete-azure-payment-method/azure-subscriptions.png" alt-text="显示 Azure 门户中计费对象信息的示例屏幕截图" :::
+    :::image type="content" source="./media/delete-azure-payment-method/azure-subscriptions.png" alt-text="显示拆离 MCA 付款方式所需的纠正措施的示例" :::
 1. 选择“纠正措施”链接时，你会被重定向到执行操作的 Azure 页面。 执行所需的任何纠正措施。
 1. 如有必要，请完成其他所有纠正措施。
 1. 导航回到“成本管理 + 计费” > “计费对象信息” > “付款方式”  。 选择“拆离”。 在“拆离默认付款方式”页面的底部，选择“拆离”。
@@ -86,10 +86,10 @@ ms.locfileid: "91270659"
 1. 在左侧菜单列表中的“计费”下，选择“付款方式” 。
 1. 在“付款方式”区域中，选择付款方式所在的行。 请勿选择付款方式链接。 可能没有视觉指示来指出你已选择付款方式。
 1. 选择“删除” 。  
-    :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="显示 Azure 门户中计费对象信息的示例屏幕截图" :::
+    :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="显示拆离 MOSP 付款方式所需的纠正措施的示例" :::
 1. 如果满足所有条件，请在“删除付款方式”区域中选择“删除”。 如果“删除”选项不可用，请继续执行下一步。
 1. 这会显示条件列表。 执行所列出的操作。 选择“删除付款方式”区域中显示的链接。  
-    :::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-mosp.png" alt-text="显示 Azure 门户中计费对象信息的示例屏幕截图" :::
+    :::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-mosp.png" alt-text="显示 MOSP 订阅正在使用付款方式的示例图像" :::
 1. 选择“纠正措施”链接时，你会被重定向到执行操作的 Azure 页面。 执行所需的任何纠正措施。
 1. 如有必要，请完成其他所有纠正措施。
 1. 导航回到“成本管理 + 计费” > “计费对象信息” > “付款方式”，然后删除付款方式  。

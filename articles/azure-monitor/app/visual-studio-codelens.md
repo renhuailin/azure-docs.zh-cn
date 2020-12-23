@@ -2,17 +2,14 @@
 title: Visual Studio CodeLens 中的 Application Insights 遥测 | Microsoft Docs
 description: 借助 Visual Studio 中的 CodeLens，快速访问 Application Insights 请求和异常遥测。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
 ms.date: 03/17/2017
-ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 2a562378ae626351922e43d33f38e62331ab58de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323479"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538489"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遥测
 使用有关运行时异常和请求响应时间的遥测，可以批注 Web 应用代码中的方法。 如果在应用程序中安装 [Azure Application Insights](./app-insights-overview.md)，遥测会在 Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) 中显示，即每个函数顶端的备注，通常在此处查看有用的信息，例如引用函数的位置数量或最后编辑函数的人员。
@@ -33,7 +30,7 @@ ms.locfileid: "87323479"
 > 
 
 ## <a name="exceptions-in-codelens"></a>CodeLens 中的异常
-![TBD](./media/visual-studio-codelens/codelens-exceptions.png)
+![屏幕截图显示 CodeLens 中显示的47异常。](./media/visual-studio-codelens/codelens-exceptions.png)
 
 异常 CodeLens 指示器会在处理方法提供的请求时，显示过去 24 小时内应用程序中发生的十五大最频繁发生的异常的数量。
 
@@ -55,7 +52,7 @@ ms.locfileid: "87323479"
 > 
 
 ## <a name="requests-in-codelens"></a>CodeLens 中的请求
-![TBD](./media/visual-studio-codelens/codelens-requests.png)
+![屏幕截图显示684请求的详细信息，包括7% 故障。](./media/visual-studio-codelens/codelens-requests.png)
 
 请求 CodeLens 指示器显示过去 24 小时内某个方法提供的 HTTP 请求的数量，以及失败请求的百分比。
 
@@ -68,9 +65,6 @@ ms.locfileid: "87323479"
 * 选择 CodeLens 详细信息视图左上角的 Application Insights 资源名称，更改 CodeLens 数据源对应的资源。
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
-|  |  |
-| --- | --- |
-| **[在 Visual Studio 中使用 Application Insights](./visual-studio.md)**<br/>搜索遥测、查看 CodeLens 中的数据以及配置 Application Insights。 一切尽在 Visual Studio 中。 |![右键单击项目，并依次选择“Application Insights”、“搜索”](./media/visual-studio-codelens/34.png) |
-| **[添加更多数据](./asp-net-more.md)**<br/>监视使用情况、可用性、依赖项、异常。 集成来自记录框架的跟踪。 编写自定义遥测。 |![Visual Studio](./media/visual-studio-codelens/64.png) |
-| **[使用 Application Insights 门户](./overview-dashboard.md)**<br/>仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测导出。 |![Visual Studio](./media/visual-studio-codelens/62.png) |
+* **[在 Visual Studio 中使用 Application Insights](./visual-studio.md)** 。 搜索遥测、查看 CodeLens 中的数据以及配置 Application Insights。 一切尽在 Visual Studio 中。 
+* **[使用 Application Insights 门户](./overview-dashboard.md)** 。 仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测导出。 
 

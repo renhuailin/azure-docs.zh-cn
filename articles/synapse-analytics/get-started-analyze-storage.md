@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: a0d5c758873413e549b31e3ec4cc41791fc8c371
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667406"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917675"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析存储帐户中的数据
 
@@ -35,16 +36,18 @@ ms.locfileid: "89667406"
 %%pyspark
 df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df = df.repartition(1) # This ensure we'll get a single file during write()
-df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats.csv")
-df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
+df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats_csvformat")
+df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>分析存储帐户中的数据
 
+可以在工作区默认 ADLS Gen2 帐户中分析数据，也可以通过“管理”>“链接服务”>“新建”  （以下步骤将引用主 ADLS Gen2 帐户）将 ADLS Gen2 或 Blob 存储帐户链接到工作区。
+
 1. 在 Synapse Studio 中，转到“数据”中心，然后选择“已关联” 。
 1. 转到“存储帐户” > “myworkspace (主 - contosolake)” 。
-1. 选择“用户(主)”。 应会看到 NYCTaxi 文件夹。 在内部应该会看到名为 PassengerCountStats.csv 和 PassengerCountStats.parquet 的两个文件夹 。
-1. 打开 PassengerCountStats.parquet 文件夹。 在文件夹内，你将看到名称类似于 `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` 的 Parquet 文件。
+1. 选择“用户(主)”。 应会看到 NYCTaxi 文件夹。 在内部应会看到名为 PassengerCountStats_csvformat 和 PassengerCountStats_parquetformat 的两个文件夹 。
+1. 打开 PassengerCountStats_parquetformat 文件夹。 在文件夹内，你将看到名称类似于 `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` 的 Parquet 文件。
 1. 右键单击“.parquet”，然后选择“新建笔记本” 。 它会创建一个包含如下所示的单元的笔记本：
 
     ```py
@@ -64,7 +67,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ) AS [r];
     ```
 
-    在脚本窗口中，“连接到”字段将设置为“按需 SQL” 。
+    在脚本窗口中，“连接到”字段将设置为“无服务器 SQL 池” 。
 
 1. 运行该脚本。
 

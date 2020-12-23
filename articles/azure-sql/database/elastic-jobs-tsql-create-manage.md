@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 9c9f5972cdd2690b86610ea585bdd82d736ed163
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803851"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792134"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -179,7 +179,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 以下示例创建一个新作业，以便从多个数据库收集性能数据。
 
-默认情况下，作业代理将创建输出表以存储返回的结果。 因此，与输出凭据关联的数据库主体至少必须具有以下权限：数据库上的 `CREATE TABLE`、输出表或其架构上的 `ALTER`、`SELECT`、`INSERT`、`DELETE`，以及 [sys.indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) 目录视图上的 `SELECT`。
+默认情况下，作业代理将创建输出表以存储返回的结果。 因此，与输出凭据关联的数据库主体至少必须具有以下权限：数据库上的 `CREATE TABLE`、输出表或其架构上的 `ALTER`、`SELECT`、`INSERT`、`DELETE`，以及 [sys.indexes](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) 目录视图上的 `SELECT`。
 
 如果要提前手动创建表，则该表需要具有以下属性：
 
@@ -1344,9 +1344,9 @@ GO
 
 ## <a name="resources"></a>资源
 
-- ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主题链接图标") [Transact-SQL 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+- ![主题链接图标](/sql/database-engine/configure-windows/media/topic-link.gif "主题链接图标") [Transact-SQL 语法约定](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 PowerShell 创建和管理弹性作业](elastic-jobs-powershell-create.md)
-- [授权和权限](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
+- [授权和权限](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

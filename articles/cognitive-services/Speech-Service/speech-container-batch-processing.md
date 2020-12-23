@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319072"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631986"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>用于语音容器的批处理工具包
 
@@ -75,9 +75,8 @@ Batch 客户端可以动态检测终结点是否变为不可用 (例如，由于
 > [!NOTE] 
 > * 此示例对 `/my_nfs` 配置文件、输入、输出和日志目录使用相同的目录 () 。 可以对这些文件夹使用托管或 NFS 装载的目录。
 > * 使用运行客户端 `–h` 将列出可用的命令行参数及其默认值。 
+> * 仅 Linux 支持批处理容器。
 
-
-#### <a name="linux"></a>[Linux](#tab/linux)
 使用 Docker `run` 命令启动容器。 这会在容器中启动一个交互式 shell。
 
 ```Docker
@@ -87,25 +86,14 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 运行 batch 客户端：  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 若要在单个命令中运行 batch 客户端和容器：
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-若要在单个命令中运行 batch 客户端和容器：
-
-```Docker
-docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
-
-```
-
----
 
 
 客户端将开始运行。 如果某个音频文件已在以前的运行中转录，则客户端将自动跳过该文件。 如果发生暂时性错误，则会随自动重试一起发送文件，并且可以区分想要客户端重试的错误。 出现脚本错误时，客户端将继续运行，并且可以重试而不会丢失进度。  
@@ -133,7 +121,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `DAEMON` mode 转录指定文件夹中的现有文件，并在添加新的音频文件时连续转录这些文件。          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="显示批处理模式下的批处理套件容器处理文件的关系图。":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="显示批处理模式下的批工具包容器处理文件的关系图。":::
 
 1. 定义 batch 客户端将在文件中使用的语音容器终结点 `config.yaml` 。 
 2. 调用输入目录中的容器。 Batch 客户端将开始监视传入文件的目录。 
@@ -146,7 +134,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `REST` 模式是一种 API 服务器模式，它提供了一组基本的 HTTP 终结点，用于批处理提交、状态检查和长时间轮询。 还使用 python 模块扩展启用编程，或以子模块的形式导入。
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="显示批处理模式下的批处理套件容器处理文件的关系图。":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="显示以 REST 模式处理文件的批处理套件容器的关系图。":::
 
 1. 定义 batch 客户端将在文件中使用的语音容器终结点 `config.yaml` 。 
 2. 将 HTTP 请求请求发送到 API 服务器的一个终结点。 
@@ -163,14 +151,14 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 ---
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>日志记录
 
 > [!NOTE]
-> 如果批处理客户端变得太大，则可能会定期覆盖*该文件。*
+> 如果批处理客户端变得太大，则可能会定期覆盖 *该文件。*
 
-客户端在*run.log* `-log_folder` docker 命令中由自变量指定的目录中创建运行文件。 `run` 默认情况下，在调试级别捕获日志。 相同的日志会发送到 `stdout/stderr` ，并根据参数进行筛选 `-log_level` 。 此日志只是调试所必需的，或者，如果需要发送支持的跟踪，则为。 日志记录文件夹还包含每个音频文件的语音 SDK 日志。
+客户端在 `-log_folder` docker 命令中由自变量指定的目录中创建运行文件。 `run` 默认情况下，在调试级别捕获日志。 相同的日志会发送到 `stdout/stderr` ，并根据或参数进行筛选 `-file_log_level` `console_log_level` 。 此日志只是调试所必需的，或者，如果需要发送支持的跟踪，则为。 日志记录文件夹还包含每个音频文件的语音 SDK 日志。
 
-指定的输出目录 `-output_folder` 将包含一个*run_summary.js*   文件，该文件将在每30秒或完成新转录时定期重写。 您可以使用此文件在批处理过程中检查进度。 它还将在批处理完成后包含每个文件的最终运行统计信息和最终状态。 当进程有干净退出时，批处理即已完成。 
+指定的输出目录 `-output_folder` 将包含一个 *run_summary.js*   文件，该文件将在每30秒或完成新转录时定期重写。 您可以使用此文件在批处理过程中检查进度。 它还将在批处理完成后包含每个文件的最终运行统计信息和最终状态。 当进程有干净退出时，批处理即已完成。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,22 +1,23 @@
 ---
-title: Synapse Analytics 的 Azure 安全基线
+title: Azure Synapse Analytics 的 azure 安全基线
 description: Synapse Analytics security 基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: synapse-analytics
+ms.subservice: security
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bbec83c655d568b43b319f30a96da0a8fc1effe8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 972788e04e12553e7c05f30cc246c6fb562031a4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230647"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461365"
 ---
-# <a name="azure-security-baseline-for-synapse-analytics"></a>Synapse Analytics 的 Azure 安全基线
+# <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的 azure 安全基线
 
-适用于 Synapse Analytics 的 Azure 安全基线包含的建议可帮助你提高部署的安全状况。
+Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全状况的建议。
 
 此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
@@ -46,9 +47,9 @@ ms.locfileid: "89230647"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视并记录虚拟网络、子网和网络接口的配置与流量
 
-**指南**：连接到 AZURE Synapse SQL 池时，如果已启用网络安全组 (NSG) 流日志，请将日志发送到 Azure 存储帐户以进行流量审核。
+**指南**：连接到专用 SQL 池时，如果已启用网络安全组 (NSG) 流日志，则会将日志发送到 Azure 存储帐户以进行流量审核。
 
-还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 * [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -64,7 +65,7 @@ ms.locfileid: "89230647"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用;此建议适用于 Azure 应用服务或托管 web 应用程序的计算资源。
+**指导**：不适用；此建议适用于 Azure 应用服务或托管 Web 应用程序的计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -92,7 +93,7 @@ ms.locfileid: "89230647"
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
-**指南**：连接到 AZURE Synapse SQL 池时，如果已启用网络安全组 (NSG) 流日志，请将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将流日志发送到 Log Analytics 工作区，或将流日志流式传输到事件中心。 启用网络观察程序数据包捕获（如果调查异常活动时有此需要）。
+**指南**：连接到专用 SQL 池时，如果已启用网络安全组 (NSG) 流日志，请将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将流日志发送到 Log Analytics 工作区，或将流日志流式传输到事件中心。 启用网络观察程序数据包捕获（如果调查异常活动时有此需要）。
 
 * [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -114,7 +115,7 @@ ms.locfileid: "89230647"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用;此建议适用于 Azure 应用服务或托管 web 应用程序的计算资源。
+**指导**：不适用；此建议适用于 Azure 应用服务或托管 Web 应用程序的计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -124,7 +125,7 @@ ms.locfileid: "89230647"
 
 **指南**：使用虚拟网络服务标记定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
-使用 Azure Synapse SQL 池的服务终结点时，需要出站到 Azure SQL 数据库的公共 IP 地址：必须在 Azure SQL 数据库 Ip 上打开网络安全)  (组，以允许连接到 Azure SQL 数据库 Ip。 为此，可以使用适用于 Azure SQL 数据库的 NSG 服务标记。
+将服务终结点用于专用 SQL 池时，需要出站到 Azure SQL 数据库的公共 IP 地址：必须打开网络安全组 (Nsg) ，才能允许连接到 Azure SQL 数据库 Ip。 为此，可以使用适用于 Azure SQL 数据库的 NSG 服务标记。
 
 * [了解 Azure SQL 数据库的服务终结点的服务标记](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -136,7 +137,7 @@ ms.locfileid: "89230647"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指南**：定义和实现与 Azure 策略相关的 SQL 池资源的网络安全配置。 你可以使用 "Sql-dmo" 命名空间来定义自定义策略定义，或使用为 Azure SQL 数据库/服务器网络保护设计的任何内置策略定义。 适用于 Azure SQL 数据库服务器的适用内置网络安全策略的一个示例是： "SQL Server 应使用虚拟网络服务终结点"。
+**指南**：定义和实现与 Azure 策略的专用 SQL 池相关的资源的网络安全配置。 你可以使用 "Sql-dmo" 命名空间来定义自定义策略定义，或使用为 Azure SQL 数据库/服务器网络保护设计的任何内置策略定义。 适用于 Azure SQL 数据库服务器的适用内置网络安全策略的一个示例是： "SQL Server 应使用虚拟网络服务终结点"。
 
 使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于 Azure 角色的访问控制 (Azure RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
@@ -150,7 +151,7 @@ ms.locfileid: "89230647"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**：对网络安全组使用标记 (NSG) 以及与网络安全和流量流相关的其他资源。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
+**指导**：将标记用于网络安全组 (NSG) 以及其他与网络安全和通信流有关的资源。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
 
 使用标记相关的任何内置 Azure Policy 定义（例如“需要标记及其值”）来确保使用标记创建所有资源，并在有现有资源不带标记时发出通知。
 
@@ -164,7 +165,7 @@ ms.locfileid: "89230647"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
-**指南**：使用 Azure 活动日志监视网络资源配置，并检测与 AZURE Synapse SQL 池相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
+**指南**：使用 Azure 活动日志监视网络资源配置，并检测与专用 SQL 池相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
 * [如何查看和检索 Azure 活动日志事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -180,7 +181,7 @@ ms.locfileid: "89230647"
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
-**指南**： Microsoft 维护 Azure 资源的时间源。 你可以为计算部署更新时间同步。
+**指导**：由 Microsoft 维护 Azure 资源的时间源。 你可以为计算部署更新时间同步。
 
 * [如何为 Azure 计算资源配置时间同步](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
 
@@ -208,7 +209,7 @@ ms.locfileid: "89230647"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**：在 azure sql server 级别上为 Synapse SQL 池启用审核，并为 (Azure 存储、Log Analytics 或事件中心) 的审核日志选择存储位置。
+**指南**：在 azure sql server 级别上为专用 SQL 池启用审核，并为 (Azure 存储、Log Analytics 或事件中心) 的审核日志选择存储位置。
 
 可以在数据库级别或服务器级别上启用审核，并且建议仅在服务器级别启用审核，除非你需要为特定数据库配置单独的数据接收器或保留期。
 
@@ -224,7 +225,7 @@ ms.locfileid: "89230647"
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指南**：不适用;此基准用于计算资源。
+**指南**：不适用；此基准适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -232,7 +233,7 @@ ms.locfileid: "89230647"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在存储帐户、Log Analytics 的工作区或事件中心中存储与你的 Synapse SQL 池相关的日志时，请根据你的组织的符合性法规设置日志保持期。
+**指南**：在存储帐户、Log Analytics 的工作区或事件中心中存储与专用 SQL 池相关的日志时，请根据组织的符合性法规设置日志保持期。
 
 * [管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
 
@@ -254,7 +255,7 @@ ms.locfileid: "89230647"
 
 * [如何为 Azure SQL Database 启用高级数据安全性](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
-* [如何配置 Azure SQL 数据库的自定义警报](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal?view=azps-1.4.0)
+* [如何配置 Azure SQL 数据库的自定义警报](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal?view=azps-1.4.0&preserve-view=true)
 
 * [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
@@ -266,7 +267,7 @@ ms.locfileid: "89230647"
 
 **指南**：将 Azure SQL 数据库的高级威胁防护 (ATP) 与 Azure 安全中心结合使用，监视异常活动并发出警报。 ATP 是高级数据安全 (ADS) 产品的一部分，可通过门户中的中央 SQL 广告进行访问和管理。 广告包括用于发现和分类敏感数据、呈现和缓解潜在的数据库漏洞，以及检测可能指示数据库威胁的异常活动的功能。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。
+或者，可以启用数据并将其载入 Azure Sentinel。
 
 * [了解 Azure SQL 数据库的高级威胁防护和警报](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 
@@ -282,7 +283,7 @@ ms.locfileid: "89230647"
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
-**指南**：不适用;对于与 Synapse SQL 池相关的资源，反恶意软件解决方案由 Microsoft 在底层平台上进行管理。
+**指南**：不适用;对于与专用 SQL 池相关的资源，反恶意软件解决方案由 Microsoft 在底层平台上进行管理。
 
 **Azure 安全中心监视**：不适用
 
@@ -290,7 +291,7 @@ ms.locfileid: "89230647"
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：启用 DNS 查询日志记录
 
-**指南**：不适用;与 Synapse SQL 池相关的资源不生成 DNS 日志。
+**指南**：不适用;与专用 SQL 池相关的资源不会生成任何 DNS 日志。
 
 **Azure 安全中心监视**：不适用
 
@@ -322,9 +323,9 @@ ms.locfileid: "89230647"
 
 * [使用 Azure Active Directory 帐户进行身份验证](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-additional-logins-and-users-having-administrative-permissions)
 
-* [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
 
-* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
 
 * [如何管理 Azure SQL 中的现有登录名和管理员帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
@@ -336,7 +337,7 @@ ms.locfileid: "89230647"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**： Azure Active Directory 没有默认密码的概念。 预配 Azure Synapse SQL 池时，建议选择将身份验证与 Azure Active Directory 集成。 使用此身份验证方法时，用户将提交用户帐户名，并请求服务使用 Azure Active Directory (Azure AD) 中存储的凭据信息。
+**指导**：Azure Active Directory 没有默认密码的概念。 预配专用 SQL 池时，建议选择将身份验证与 Azure Active Directory 集成。 使用此身份验证方法时，用户将提交用户帐户名，并请求服务使用 Azure Active Directory (Azure AD) 中存储的凭据信息。
 
 * [如何配置和管理 Azure SQL Azure Active Directory 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#active-directory-password-authentication)
 
@@ -360,7 +361,7 @@ ms.locfileid: "89230647"
 
 **责任**：客户
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory (SSO 的单一登录) 
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录 (SSO)
 
 **指南**：使用 Azure 应用注册 (服务主体) 来检索可用于在控制面与数据仓库交互的令牌 (通过 API 调用 Azure 门户) 。
 
@@ -388,7 +389,7 @@ ms.locfileid: "89230647"
 
 **责任**：客户
 
-### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：对管理任务使用 Azure 托管的安全工作站
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
 **指南**：使用具有多重身份)  (验证的特权访问工作站 (PAW) 配置为登录和配置 Azure 资源。
 
@@ -416,7 +417,7 @@ ms.locfileid: "89230647"
 
 * [了解 Azure SQL 中的登录名和用户帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
 
-* [了解 SQL Server 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15)
+* [了解 SQL Server 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15&preserve-view=true)
 
 **Azure 安全中心监视**：是
 
@@ -434,7 +435,7 @@ ms.locfileid: "89230647"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：在 Synapse SQL 池中创建 Azure sql 数据库服务器的 AZURE ACTIVE DIRECTORY (AD) 管理员。
+**指南**：为专用 SQL 池中的 Azure SQL 数据库服务器创建 AZURE ACTIVE DIRECTORY (AD) 管理员。
 
 * [如何配置和管理 Azure SQL Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
 
@@ -476,7 +477,7 @@ ms.locfileid: "89230647"
 
 **责任**：客户
 
-### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帐户登录行为偏差时发出警报
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
 **指南**：使用 Azure Active Directory (Azure AD) Identity Protection 和风险检测功能，以配置对检测到的与用户标识相关的可疑操作的自动响应。 此外，还可以将数据导入到 Azure Sentinel，进一步进行调查。
 
@@ -496,7 +497,7 @@ ms.locfileid: "89230647"
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Microsoft 提供对相关客户数据的访问权限
 
-**指南**：在 Microsoft 需要访问 Synapse SQL 池中的 Azure SQL 数据库相关数据的支持方案中，Azure 客户密码箱提供了一个用于查看和批准或拒绝数据访问请求的接口。
+**指南**：在支持方案中，Microsoft 需要访问与专用 SQL 池中的 Azure SQL 数据库相关的数据，Azure 客户密码箱提供了一个用于查看和批准或拒绝数据访问请求的接口。
 
 * [了解客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -540,11 +541,11 @@ ms.locfileid: "89230647"
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
-**指南**：对于 Synapse SQL 池中的任何 Azure sql 数据库，存储或处理敏感信息，使用标记将数据库和相关资源标记为敏感。 在 Azure SQL 数据库实例上，将专用链接配置为结合网络安全组 (NSG) 服务标记，以防止敏感信息的渗透。
+**指南**：对于专用 SQL 池中的任何 Azure SQL 数据库，存储或处理敏感信息，使用标记将数据库和相关资源标记为敏感。 在 Azure SQL 数据库实例上，将专用链接配置为结合网络安全组 (NSG) 服务标记，以防止敏感信息的渗透。
 
 此外，适用于 Azure SQL 数据库的高级威胁防护、Azure SQL 托管实例和 Azure Synapse 可检测异常活动，指示访问或利用数据库的异常和潜在有害尝试。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 * [如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
 
@@ -574,7 +575,7 @@ ms.locfileid: "89230647"
 
 此外，还可以在 Azure 门户中 (DDM) 策略设置动态数据掩码。 DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，这可能是掩蔽的候选项。
 
-* [如何使用 Azure SQL Server 的数据发现和分类](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+* [如何使用 Azure SQL Server 的数据发现和分类功能](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 
 * [了解 Azure Synapse SQL 的动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)
 
@@ -584,7 +585,7 @@ ms.locfileid: "89230647"
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指导**：使用 azure RBAC)  (azure 基于角色的访问控制来管理对 Synapse SQL 池中的 Azure SQL 数据库的访问。
+**指导**：使用 azure RBAC)  (azure 基于角色的访问控制来管理对专用 SQL 池中的 Azure SQL 数据库的访问。
 
 授权是由用户帐户的数据库角色成员身份和对象级权限控制。 作为最佳实践，应向用户授予所需的最低权限。
 
@@ -646,7 +647,7 @@ ms.locfileid: "89230647"
 
 * [如何对 Azure SQL 数据库运行漏洞评估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
-* [如何启用高级数据安全性](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何启用高级数据安全](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
 * [如何实现 Azure 安全中心漏洞评估建议](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
@@ -700,13 +701,13 @@ ms.locfileid: "89230647"
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图在)  (中查询和发现与订阅中的 Synapse SQL 池相关的所有资源。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
+**指南**：使用 Azure 资源关系图在)  (中查询和发现与你的专用 SQL 池相关的所有资源。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 尽管可以通过 Azure Resource Graph 发现经典 Azure 资源，但我们强烈建议今后创建并使用 Azure 资源管理器资源。
 
 * [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-* [如何查看你的 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true)
 
 * [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -740,7 +741,7 @@ ms.locfileid: "89230647"
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
-**指南**：定义与 Synapse SQL 池相关的已批准 Azure 资源的列表。
+**指南**：定义与专用 SQL 池相关的已批准 Azure 资源的列表。
 
 **Azure 安全中心监视**：不适用
 
@@ -748,11 +749,11 @@ ms.locfileid: "89230647"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
-使用 Azure 资源关系图查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 * [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -830,7 +831,7 @@ ms.locfileid: "89230647"
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：对于业务操作所需的与 Synapse SQL 池相关的任何资源，但可能会对组织造成更高的风险，应在其自己的虚拟机和/或虚拟网络中隔离，并使用 Azure 防火墙或网络安全组进行充分的保护。
+**指南**：对于业务操作所需的与专用 SQL 池相关的任何资源，但可能会给组织带来更高的风险，应在其自己的虚拟机和/或虚拟网络中隔离，并使用 Azure 防火墙或网络安全组进行充分的保护。
 
 * [如何创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
@@ -846,11 +847,11 @@ ms.locfileid: "89230647"
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指南**：使用 "sql-dmo" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行与 Synapse Sql 池相关的资源的配置。 你还可以使用 Azure 数据库/服务器的内置策略定义，例如：
+**指南**：使用 "sql-dmo" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行与专用 Sql 池相关的资源的配置。 你还可以使用 Azure 数据库/服务器的内置策略定义，例如：
 - 在 SQL 服务器上部署威胁检测
 - SQL Server 应使用虚拟网络服务终结点
 
-* [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true)
 
 * [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -890,9 +891,9 @@ ms.locfileid: "89230647"
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-* [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure 安全中心监视**：不适用
 
@@ -924,7 +925,7 @@ ms.locfileid: "89230647"
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
-**指南**：利用 Azure 安全中心对任何与 Synapse SQL 池相关的资源执行基线扫描。
+**指南**：利用 Azure 安全中心对与专用 SQL 池相关的任何资源执行基线扫描。
 
 * [如何在 Azure 安全中心修正建议](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
@@ -980,7 +981,7 @@ ms.locfileid: "89230647"
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指南**：不适用；此建议适用于计算资源。 Microsoft 处理底层平台的反恶意软件。
+**指南**：不适用；此建议适用于计算资源。 Microsoft 会处理基础平台的反恶意软件。
 
 **Azure 安全中心监视**：不适用
 
@@ -1000,7 +1001,7 @@ ms.locfileid: "89230647"
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
-**指南**：不适用；此建议适用于计算资源。 Microsoft 处理底层平台的反恶意软件。
+**指南**：不适用；此建议适用于计算资源。 Microsoft 会处理基础平台的反恶意软件。
 
 **Azure 安全中心监视**：不适用
 
@@ -1012,9 +1013,9 @@ ms.locfileid: "89230647"
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
-**指南**：在一整天内会自动创建 Synapse SQL 池的快照，创建7天可用的还原点。 无法更改此保留期。 SQL 池支持八小时恢复点目标 (RPO)。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
+**指南**：在创建七天可用的还原点当天，会自动创建专用 SQL 池的快照。 无法更改此保留期。 专用 SQL 池支持 (RPO) 的8小时恢复点目标。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
 
-* [Azure Synapse SQL 池中的备份和还原](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [在专用 SQL 池中备份和还原](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure 安全中心监视**：不适用
 
@@ -1022,13 +1023,13 @@ ms.locfileid: "89230647"
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
-**指南**：数据仓库的快照在一整天内会自动创建，创建的还原点可用于七天。 无法更改此保留期。 SQL 池支持八小时恢复点目标 (RPO)。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
+**指南**：数据仓库的快照在一整天内会自动创建，创建的还原点可用于七天。 无法更改此保留期。 专用 SQL 池支持 (RPO) 的8小时恢复点目标。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
 
 如果使用客户管理的密钥来加密数据库加密密钥，请确保密钥正在备份。
 
-* [Azure Synapse SQL 池中的备份和还原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [在专用 SQL 池中备份和还原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
-* [如何备份 Azure Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何备份 Azure Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
 
 **Azure 安全中心监视**：不适用
 
@@ -1036,13 +1037,13 @@ ms.locfileid: "89230647"
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
-**指南**：定期测试还原点以确保快照有效。 若要从还原点还原现有的 SQL 池，可以使用 Azure 门户或 PowerShell。 测试已备份客户托管密钥的还原。
+**指南**：定期测试还原点以确保快照有效。 若要从还原点还原现有专用 SQL 池，可以使用 Azure 门户或 PowerShell。 测试对备份的客户管理的密钥进行还原。
 
-* [如何还原 Azure Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何还原 Azure Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
 
-* [Azure Synapse SQL 池中的备份和还原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [在专用 SQL 池中备份和还原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
-* [如何还原现有的 SQL 池](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
+* [如何还原现有专用 SQL 池](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
 
 **Azure 安全中心监视**：不适用
 
@@ -1056,7 +1057,7 @@ ms.locfileid: "89230647"
 
 * [管理 Azure SQL 数据库长期备份保留](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure)
 
-* [静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [适用于静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 
 * [如何在 Key Vault 中启用软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
@@ -1090,7 +1091,7 @@ ms.locfileid: "89230647"
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 * [可以参考 NIST 发布：针对 IT 计划和功能的测试、培训和运用计划指南](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 

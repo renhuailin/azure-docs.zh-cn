@@ -6,37 +6,35 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 09/12/2020
+ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4338152579170bf809577262992f0db9a1a95ff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90524940"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445785"
 ---
-# <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什么是 Azure Synapse Analytics（工作区预览版）？
+# <a name="what-is-azure-synapse-analytics"></a>什么是 Azure Synapse Analytics？
 
-[!INCLUDE [preview](includes/note-preview.md)]
+企业分析需要大规模地处理任何类型的数据（无论是原始数据、提炼的数据还是特选程度很高的数据）。 这通常要求企业将大数据和数据仓库技术结合到可以对关系存储区和数据湖中的数据进行处理的复杂数据管道中。 很难构建、维护和保护这类解决方案。 这种复杂性会延迟企业所需见解的交付。
 
-企业分析需要大规模地处理任何类型的数据（无论是原始数据、提炼的数据还是特选程度很高的数据）。 这要求企业将大数据和数据仓库技术（如 Spark 和 SQL）结合到可以对关系存储和数据湖中的数据进行处理的丰富数据管道中。 此类解决方案难以构建、保护和维护。 这种复杂性会延迟企业所需见解的交付。
-
-Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大数据分析系统中进行见解提取所需的时间。 Azure Synapse 在其核心汇集了企业数据仓库中所用 SQL 技术的精华、用于大数据的 Spark 技术，以及用于数据集成和 ETL/ELT 的 Pipelines。   Synapse 有一个基于 Web 的工作室，可以集中进行管理、监视、编码和保护。 Synapse 功能与其他 Azure 服务（例如 PowerBI、CosmosDB 和 AzureML）深度集成。
+Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大数据系统中进行见解提取所需的时间。 Azure Synapse 汇集了企业数据仓库中所用 SQL 技术的精华、用于大数据的 Spark 技术，以及用于数据集成和 ETL/ELT 的 Pipelines  。 Synapse Studio 提供了进行管理、监视、编码和保护的统一体验。 Synapse 与其他 Azure 服务（例如 Power BI、CosmosDB 和 AzureML）深度集成  。
 
 ## <a name="key-features--benefits"></a>重要功能和优势
 
 ### <a name="industry-leading-sql"></a>行业领先的 SQL
 
-* Synapse SQL 是一个分布式查询系统，使企业能够使用数据工程师所熟悉的标准 T-SQL 体验来实现数据仓库和数据虚拟化方案。**** 它还扩展了 SQL 的功能，可以解决流式处理和机器学习方案的问题。
+* Synapse SQL 是一个分布式查询系统，使企业能够使用熟悉的标准 T-SQL 体验来实现数据仓库和数据虚拟化方案。 它还扩展了 SQL 的功能，可以解决流式处理和机器学习方案的问题。
 
 * Synapse SQL 提供无服务器和专用资源模型，并根据需求提供消耗和计费选项。  若要使性能和成本可预测，可以创建专用 SQL 池，以保留对 SQL 表中存储的数据进行处理的能力。 对于计划外或突发性的工作负荷，请使用始终可用的无服务器 SQL 终结点。
-* 使用内置的流式处理功能可将数据从云数据源载入到 SQL 表中****
-* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)对数据进行评分****，将 AI 与 SQL 集成
+* 使用内置的流式处理功能可将数据从云数据源载入到 SQL 表中
+* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)对数据进行评分，将 AI 与 SQL 集成
 
 ### <a name="industry-standard-apache-spark"></a>行业标准 Apache Spark
 
-Apache Spark for Azure Synapse**** 深入无缝地集成了 Apache Spark - 用于数据准备、数据工程、ETL 和机器学习的最流行的开源大数据引擎。
+Apache Spark for Azure Synapse 深入无缝地集成了 Apache Spark - 用于数据准备、数据工程、ETL 和机器学习的最流行的开源大数据引擎。
 
 * Apache Spark 2.4 的集成了 SparkML 算法和 AzureML 的 ML 模型原生支持 Linux Foundation Delta Lake。
 * 简化的资源模型使你无需担心群集的管理。
@@ -53,7 +51,7 @@ Azure Synapse 消除了结合使用 SQL 和 Spark 时存在的传统技术阻碍
 
 ### <a name="built-in-data-integration-via-pipelines"></a>通过管道内置的数据集成
 
-Azure Synapse 内置了与 Azure 数据工厂相同的数据集成引擎和体验，使你可以创建丰富的大规模 ETL 管道，而无需离开 Synapse Analytics。
+Azure Synapse 内置了与 Azure 数据工厂相同的数据集成引擎和体验，使你可以创建丰富的大规模 ETL 管道，而无需离开 Azure Synapse Analytics。
 
 * 从 90 多个数据源引入数据
 * 使用数据流活动的无代码 ETL
@@ -69,14 +67,19 @@ Azure Synapse 为企业提供单一方式来管理分析资源、监视使用情
 
 ### <a name="synapse-studio"></a>Synapse Studio
 
-Synapse Studio 是一个 Web 原生的体验，它将数据工程师所需的全部信息整合在一起，使他们能够在一个位置执行生成完整解决方案所需完成的每项任务。****
+Synapse Studio 是一个 Web 原生的体验，它将数据工程师所需的全部信息整合在一起，使他们能够在一个位置执行生成完整解决方案所需完成的每项任务。
 
 * 在一个位置生成端到端的分析解决方案：引入、浏览、准备、协调、可视化
 * 让编写 SQL 或 Spark 代码的数据工程师保持行业领先的工作效率：创作、调试和性能优化
 * 与企业 CI/CD 过程集成
 
+## <a name="engage-with-the-synapse-engineering-team"></a>与 Synapse 工程团队合作
+
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse)：询问开发问题。
+- [Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)：询问技术问题。
+
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Synapse Analytics 入门](get-started.md)
 * [创建工作区](quickstart-create-workspace.md)
-* [使用 SQL 按需版本](quickstart-sql-on-demand.md)
+* [使用无服务器 SQL 池](quickstart-sql-on-demand.md)

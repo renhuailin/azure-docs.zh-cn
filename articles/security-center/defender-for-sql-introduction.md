@@ -3,30 +3,32 @@ title: 适用于 SQL 的 Azure Defender - 优点和功能
 description: 了解适用于 SQL 的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 12/13/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 328a565dbb22a13c71a7001d43941e7be062dff9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449055"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387796"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 简介
 
-适用于 SQL 的 Azure Defender 包括两个 Azure Defender 计划，这些计划可扩展 Azure 安全中心的[数据安全包](../azure-sql/database/advanced-data-security.md)以保护任何位置的数据库及其数据。 
+适用于 SQL 的 Azure Defender 包括两个 Azure Defender 计划，这些计划可扩展 Azure 安全中心的[数据安全包](../azure-sql/database/azure-defender-for-sql.md)以保护任何位置的数据库及其数据。 
+
+> [!VIDEO https://www.youtube.com/embed/V7RdB6RSVpc]
 
 ## <a name="availability"></a>可用性
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|**适用于 Azure SQL 数据库服务器的 Azure Defender** - 正式发布 (GA)<br>**适用于计算机上的 SQL 服务器的 Azure Defender** - 预览|
+|发布状态：|**适用于 Azure SQL 数据库服务器的 Azure Defender** - 正式发布 (GA)<br>**适用于计算机上的 SQL Server 的 Azure Defender** - 正式发布 (GA) |
 |定价：|适用于 SQL 的 Azure Defender 包含的两个计划按[定价页](security-center-pricing.md)中的定价计费|
-|受保护的 SQL 版本：|Azure SQL Database <br>Azure SQL 托管实例<br>Azure Synapse Analytics（以前称为 SQL DW）<br>SQL Server（所有受支持的版本）|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
+|受保护的 SQL 版本：|[Azure 虚拟机上的 SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[已启用 Azure Arc 的 SQL Server](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>不带 Azure Arc 的 Windows 计算机上的本地 SQL Server<br>Azure SQL [单一数据库](../azure-sql/database/single-database-overview.md)和[弹性池](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics（以前称为 SQL DW）专用 SQL 池](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) China Gov（部分：SQL Server 的警报和漏洞评估的子集。 行为威胁防护功能不可用。）|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>适用于 SQL 的 Azure Defender 保护了哪些项目？
@@ -34,11 +36,15 @@ ms.locfileid: "91449055"
 适用于 SQL 的 Azure Defender 包含两个单独的 Azure Defender 计划：
 
 - 适用于 Azure SQL 数据库服务器的 Azure Defender 保护：
-  - [Azure SQL 数据库](../azure-sql/database/sql-database-paas-overview.md)
-  - [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+    - [Azure SQL 数据库](../azure-sql/database/sql-database-paas-overview.md)
+    - [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
+    - [Azure Synapse 中的专用 SQL 池](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-- 适用于计算机上的 SQL 服务器的 Azure Defender（预览版）会扩展对 Azure 原生 SQL Server 的保护以完全支持混合环境，并保护在 Azure、其他云环境甚至本地计算机上托管的 SQL server（所有受支持的版本）
+- 适用于计算机上的 SQL Server 的 Azure Defender 会扩展对 Azure 原生 SQL Server 的保护以完全支持混合环境，并保护在 Azure、其他云环境，甚至本地计算机上托管的 SQL server（所有受支持的版本）：
+    - [虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
+    - 本地 SQL Server：
+        - [已启用 Azure Arc 的 SQL Server（预览）](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [在不带 Azure Arc 的 Windows 计算机上运行的 SQL Server](../azure-monitor/platform/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 有哪些优点？
@@ -52,11 +58,11 @@ ms.locfileid: "91449055"
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>适用于 SQL 的 Azure Defender 提供哪种类型的警报？
 
-当存在以下情况时，会触发安全警报：
+存在以下情况时，会触发具有大量威胁情报的安全警报：
 
 - **潜在的 SQL 注入攻击** - 包括应用程序在数据库中生成错误的 SQL 语句时检测到的漏洞
 - **异常的数据库访问和查询模式** - 例如，使用不同的凭据尝试登陆，但登录失败的次数异常多（强制尝试）
-- **可疑的数据库活动** - 例如，SQL 导入和导出操作的导出存储目标发生了变化
+- **可疑的数据库活动** - 例如，合法用户从遭到入侵的计算机访问 SQL Server，而此计算机曾与加密挖掘 C&C 服务器通信
 
 警报包含触发警报的事件的详细信息，并提供有关如何调查和消除威胁的建议。
 
@@ -66,8 +72,10 @@ ms.locfileid: "91449055"
 
 本文介绍了适用于 SQL 的 Azure Defender。
 
+> [!div class="nextstepaction"]
+> [使用 Azure Defender 扫描 SQL Server 是否存在漏洞](defender-for-sql-usage.md)
+
 如需相关材料，请参阅以下文章： 
 
-- [如何启用适用于计算机上的 SQL 服务器的 Azure Defender](defender-for-sql-usage.md)
-- [如何启用适用于 SQL 数据库服务器的 Azure Defender](../azure-sql/database/advanced-data-security.md)
-- [适用于 SQL 的 Azure Defender 警报列表](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [如何启用适用于 SQL 数据库服务器的 Azure Defender](../azure-sql/database/azure-defender-for-sql.md)
+- [SQL Server 安全警报列表](alerts-reference.md#alerts-sql-db-and-warehouse)

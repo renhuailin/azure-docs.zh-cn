@@ -9,38 +9,38 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c0373e8a476e65a61ef4b3ea945b98e0763c0a22
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c2daef64b110e59da76d8342508c19c7f1b3cd08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032922"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452775"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
-外部表指向位于 Hadoop、Azure 存储 Blob 或 Azure Data Lake Storage 中的数据。 外部表用于读取文件中的数据，或将数据写入 Azure 存储中的文件。 借助 Synapse SQL，可以使用外部表在 SQL 池或 SQL 按需版本（预览版）中读取和写入数据。
+外部表指向位于 Hadoop、Azure 存储 Blob 或 Azure Data Lake Storage 中的数据。 外部表用于读取文件中的数据，或将数据写入 Azure 存储中的文件。 借助 Synapse SQL，可以使用外部表在专用 SQL 池或无服务器 SQL 池中读取和写入数据。
 
-## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>Synapse SQL 池和按需版本中的外部表
+## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>专用 SQL 池和无服务器 SQL 池中的外部表
 
-### <a name="sql-pool"></a>[SQL 池](#tab/sql-pool) 
+### <a name="dedicated-sql-pool"></a>[专用 SQL 池](#tab/sql-pool) 
 
-在 SQL 池中，可以使用外部表来执行以下操作：
+在专用 SQL 池中，可使用外部表来执行以下操作：
 
 - 使用 Transact-SQL 语句查询 Azure Blob 存储和 Azure Data Lake Gen2。
-- 将 Azure Blob 存储与 Azure Data Lake Storage 中的数据导入和存储到 SQL 池。
+- 将 Azure Blob 存储与 Azure Data Lake Storage 中的数据导入和存储到专用 SQL 池。
 
-与 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 语句结合使用时，从外部表中选择数据可将数据导入到 SQL 池中的表。 除了 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)以外，外部表也可用于加载数据。 
+与 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 语句结合使用时，从外部表中选择数据可将数据导入到 SQL 池中的表。 除了 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)以外，外部表也可用于加载数据。 
 
 有关加载操作的教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-### <a name="sql-on-demand"></a>[SQL 按需版本](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[无服务器 SQL 池](#tab/sql-on-demand)
 
-对于 SQL 按需版本，使用外部表可以执行以下操作：
+对于无服务器 SQL 池，你将使用外部表来执行以下操作：
 
 - 使用 Transact-SQL 语句查询 Azure Blob 存储或 Azure Data Lake Storage 中的数据。
-- 使用 [CETAS](develop-tables-cetas.md) 将 SQL 按需版本查询结果存储到 Azure Blob 存储或 Azure Data Lake Storage 中的文件
+- 使用 [CETAS](develop-tables-cetas.md) 将无服务器 SQL 池查询结果存储到 Azure Blob 存储或 Azure Data Lake Storage 中的文件
 
-可通过以下步骤使用 SQL 按需版本创建外部表：
+可通过以下步骤使用无服务器 SQL 池创建外部表：
 
 1. CREATE EXTERNAL DATA SOURCE
 2. CREATE EXTERNAL FILE FORMAT
@@ -56,15 +56,15 @@ ms.locfileid: "90032922"
 - 数据源可以使用凭据，使外部表能够使用 SAS 令牌或工作区托管标识，仅访问 Azure 存储上的文件。有关示例，请参阅[开发存储文件存储访问控制](develop-storage-files-storage-access-control.md#examples)一文。
 
 > [!IMPORTANT]
-> 在 SQL 池中，若数据源没有凭据，Azure AD 用户可使用其 Azure AD 标识访问存储文件。 在 SQL 按需版本中，需要创建存在数据库范围的凭据（具有 `IDENTITY='User Identity'` 属性）的数据源，请参阅[此处示例](develop-storage-files-storage-access-control.md#examples)。
+> 在专用 SQL 池中，若创建的数据源没有凭据，Azure AD 用户可使用其 Azure AD 标识访问存储文件。 在无服务器 SQL 池中，需要创建存在数据库范围凭据（具有 `IDENTITY='User Identity'` 属性）的数据源，请参阅[此处示例](develop-storage-files-storage-access-control.md#examples)。
 
 ## <a name="create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE
 
-外部数据源用于连接到存储帐户。 [此处](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)提供了完整文档。
+外部数据源用于连接到存储帐户。 [此处](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)提供了完整文档。
 
 ### <a name="syntax-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE 的语法
 
-#### <a name="sql-pool"></a>[SQL 池](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[专用 SQL 池](#tab/sql-pool)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[SQL 按需版本](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[无服务器 SQL 池](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -110,16 +110,16 @@ LOCATION = `'<prefix>://<path>'` - 提供连接协议和外部数据源的路径
 #### <a name="credential"></a>凭据
 CREDENTIAL = `<database scoped credential>` 是可选凭据，用于在 Azure 存储上进行身份验证。 没有凭据的外部数据源可以访问公共存储帐户。 
 
-SQL 池中没有凭据的外部数据源还可以使用调用方 Azure AD 标识来访问存储中的文件。 具有凭据的外部数据源使用凭据中指定的标识来访问文件。
-- 在 SQL 池中，数据库范围的凭据可以指定自定义应用程序标识、工作区托管标识或 SAK 密钥。 
-- 在 SQL 按需版本中，数据库范围的凭据可以指定调用方的 Azure AD 标识、工作区托管标识或 SAK 密钥。 
+专用 SQL 池中没有凭据的外部数据源将使用调用方的 Azure AD 标识来访问存储中的文件。 无服务器 SQL 池中有 `IDENTITY='User Identity'` 凭据的外部数据源将使用调用方的 Azure AD 标识来访问文件。
+- 在专用 SQL 池中，数据库范围的凭据可以指定自定义应用程序标识、工作区托管标识或 SAK 密钥。 
+- 在无服务器 SQL 池中，数据库范围的凭据可以指定调用方的 Azure AD 标识、工作区托管标识或 SAK 密钥。 
 
 #### <a name="type"></a>TYPE
-TYPE = `HADOOP` 在 SQL 池中是强制选项，并指定使用 Polybase 技术来访问基础文件。 此参数不能用于使用内置本机读取器的 SQL 按需版本服务。
+TYPE = `HADOOP` 在专用 SQL 池中是强制选项，并指定使用 Polybase 技术来访问基础文件。 此参数不能用于使用内置原生读取器的无服务器 SQL 池。
 
 ### <a name="example-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE 的示例
 
-#### <a name="sql-pool"></a>[SQL 池](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[专用 SQL 池](#tab/sql-pool)
 
 以下示例为 Azure Data Lake Gen2 创建一个指向 New York 数据集的外部数据源：
 
@@ -133,7 +133,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[SQL 按需版本](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[无服务器 SQL 池](#tab/sql-on-demand)
 
 以下示例为 Azure Data Lake Gen2 创建一个可使用 SAS 凭据进行访问的外部数据源：
 
@@ -159,11 +159,13 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-创建一个外部文件格式对象，用于定义存储在 Azure Blob 存储或 Azure Data Lake Storage 中的外部数据。 创建外部文件格式是创建外部表的先决条件。 [此处](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)提供了完整文档。
+创建一个外部文件格式对象，用于定义存储在 Azure Blob 存储或 Azure Data Lake Storage 中的外部数据。 创建外部文件格式是创建外部表的先决条件。 [此处](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)提供了完整文档。
 
 创建外部文件格式会指定外部表引用的数据的实际布局。
 
 ### <a name="syntax-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT 的语法
+
+#### <a name="sql-pool"></a>[SQL 池](#tab/sql-pool)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -192,6 +194,40 @@ WITH (
     | Encoding = {'UTF8' | 'UTF16'}
 }
 ```
+
+#### <a name="serverless-sql-pool"></a>[无服务器 SQL 池](#tab/sql-on-demand)
+
+```syntaxsql
+-- Create an external file format for PARQUET files.  
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = PARQUET  
+    [ , DATA_COMPRESSION = {  
+        'org.apache.hadoop.io.compress.SnappyCodec'  
+      | 'org.apache.hadoop.io.compress.GzipCodec'      }  
+    ]);  
+
+--Create an external file format for DELIMITED TEXT files
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = DELIMITEDTEXT  
+    [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' ]
+    [ , FORMAT_OPTIONS ( <format_options> [ ,...n  ] ) ]  
+    );  
+
+<format_options> ::=  
+{  
+    FIELD_TERMINATOR = field_terminator  
+    | STRING_DELIMITER = string_delimiter
+    | First_Row = integer
+    | USE_TYPE_DEFAULT = { TRUE | FALSE }
+    | Encoding = {'UTF8' | 'UTF16'}
+    | PARSER_VERSION = {'parser_version'}
+}
+```
+
+---
+
 
 ### <a name="arguments-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT 的参数
 
@@ -230,7 +266,7 @@ TRUE - 如果从文本文件中检索数据，则使用外部表定义中对应�
 
 FALSE - 将所有缺失值作为 NULL 存储。 在带分隔符的文本文件中使用 NULL 一词存储的任何 NULL 值都会作为字符串“NULL”导入。
 
-Encoding = {'UTF8' | 'UTF16'} - SQL 按需版本可以读取 UTF8 和 UTF16 编码的带分隔符的文本文件。
+Encoding = {'UTF8' | 'UTF16'} - 无服务器 SQL 池可以读取 UTF8 和 UTF16 编码的带分隔符的文本文件。
 
 DATA_COMPRESSION = *data_compression_method* - 此参数为外部数据指定数据压缩方法。 
 
@@ -244,6 +280,8 @@ PARQUET 文件格式类型支持以下压缩方法：
 DELIMITEDTEXT 文件格式类型支持以下压缩方法：
 
 - DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
+
+PARSER_VERSION = 'parser_version' 指定读取文件时要使用的分析器版本。 有关详细信息，请查看 [OPENROWSET 参数](develop-openrowset.md#arguments)中的 PARSER_VERSION 参数。
 
 ### <a name="example-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT 的示例
 
@@ -283,7 +321,7 @@ column_name <data_type>
 
 { database_name.schema_name.table_name | schema_name.table_name | table_name }
 
-要创建的表的一到三部分名称。 对于外部表，SQL 按需版本仅存储表元数据。 不会将任何实际数据移动或存储到 SQL 按需版本中。
+要创建的表的一到三部分名称。 对于外部表，无服务器 SQL 池仅存储表元数据。 不会在无服务器 SQL 池中移动或存储任何实际数据。
 
 <column_definition>, ...*n* ]
 
@@ -298,12 +336,12 @@ LOCATION = '*folder_or_filepath*'
 
 为 Azure Blob 存储中的实际数据指定文件夹或文件路径和文件名。 位置从根文件夹开始。 根文件夹是外部数据源中指定的数据位置。
 
-如果指定文件夹 LOCATION，则 SQL 按需版本查询将从外部表中进行选择，并从该文件夹中检索文件。
+如果指定文件夹 LOCATION，则无服务器 SQL 池查询将从外部表中进行选择，并从该文件夹中检索文件。
 
 > [!NOTE]
-> 与 Hadoop 和 PolyBase 不同，SQL 按需版本不返回子文件夹。 它返回文件名以下划线 (_) 或句点 (.) 开头的文件。
+> 与 Hadoop 和 PolyBase 不同，无服务器 SQL 池不返回子文件夹。 它返回文件名以下划线 (_) 或句点 (.) 开头的文件。
 
-在此示例中，如果 LOCATION='/webdata/'，则 SQL 按需版本查询将返回 mydata.txt 和 _hidden.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
+在此示例中，如果 LOCATION='/webdata/'，则无服务器 SQL 池查询将返回 mydata.txt 和 _hidden.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
 
 ![外部表的递归数据](./media/develop-tables-external-tables/folder-traversal.png)
 
@@ -343,21 +381,19 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>从 Azure Data Lake 中的文件创建和查询外部表
 
-现在，可以使用 Data Lake 浏览功能，通过简单的右键单击文件操作，使用 SQL 池或 SQL 按需版本创建和查询外部表。
+现在可使用 Data Lake 浏览功能，通过简单的右键单击文件操作，使用专用 SQL 池或无服务器 SQL 池创建和查询外部表。
 
 ### <a name="prerequisites"></a>先决条件
 
 - 必须有权访问工作区，并且至少对 ADLS Gen2 帐户具有存储 Blob 数据参与者 ARM 访问角色
 
-- 必须至少拥有在 SQL 池或 SQL OD 中创建和查询外部表的[权限](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2)
-
-- 与 ADLS Gen2 帐户关联的链接服务必须有权访问文件。 例如，如果链接服务身份验证机制为“托管标识”，则工作区托管标识必须至少对存储帐户拥有存储 Blob 读取者权限
+- 必须至少拥有在 SQL 池或 SQL OD 中创建和查询外部表的[权限](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true)
 
 在“数据”面板中，选择要从其创建外部表的文件：
 > [!div class="mx-imgBorder"]
 >![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-此时会打开一个对话框窗口。 选择“SQL 池”或“SQL 按需版本”，为表命名，然后选择“打开脚本”：
+此时会打开一个对话框窗口。 选择“专用 SQL 池”或“无服务器 SQL 池”，为表命名，然后选择“打开脚本”：
 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)

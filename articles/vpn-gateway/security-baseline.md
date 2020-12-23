@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 68299bae559d25155dda04a58aa1e4826a188b7f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91626252"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657833"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN 网关的 Azure 安全基线
 
-此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用到 VPN 网关。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的 **安全控制措施** 进行分组，以及适用于 VPN 网关的相关指南。 排除了不适用于 VPN 网关的**控件**。
+此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用到 VPN 网关。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的 **安全控制措施** 进行分组，以及适用于 VPN 网关的相关指南。 排除了不适用于 VPN 网关的 **控件**。
 
 若要查看 VPN 网关如何完全映射到 Azure 安全基准，请参阅 [完整的 Vpn 网关安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "91626252"
 
 - [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md) 
 
-- [使用 Azure 门户创建基于路由的 VPN 网关](create-routebased-vpn-gateway-portal.md)
+- [使用 Azure 门户创建基于路由的 VPN 网关](./tutorial-create-gateway-portal.md)
 
 **Azure 安全中心监视**：是
 
@@ -66,7 +66,7 @@ ms.locfileid: "91626252"
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [用于网络的 Azure Policy 示例](/azure/governance/policy/samples/#network) 
+- [用于网络的 Azure Policy 示例](../governance/policy/samples/built-in-policies.md#network) 
 
 - [如何创建 Azure 蓝图](../governance/blueprints/create-blueprint-portal.md)
 
@@ -78,7 +78,7 @@ ms.locfileid: "91626252"
 
 **指南**：使用 Azure 活动日志监视资源配置，并检测对虚拟网络资源所做的更改。 在 Azure Monitor 中创建警报，该警报将在与 VPN 网关相关的关键资源发生更改时触发。
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -122,7 +122,7 @@ ms.locfileid: "91626252"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，根据组织的符合性法规设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户进行长期和存档存储。 
+**指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。 
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
 
@@ -134,13 +134,13 @@ ms.locfileid: "91626252"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。 
+**指导**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。 
 
 或者，你可以将和机载数据启用到 Azure Sentinel 或第三方 SIEM。 
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md) 
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md) 
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -150,9 +150,9 @@ ms.locfileid: "91626252"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
-**指南**：将 Azure 安全中心与 Log Analytics 工作区结合使用，以便在安全日志和事件中发现异常活动时进行监视和警报。
+**指南**：使用 Azure 安全中心和 Log Analytics 工作区监视安全日志和事件中的异常活动并发出警报。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。
+或者，可以启用数据并将其载入 Azure Sentinel。
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -178,11 +178,11 @@ ms.locfileid: "91626252"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： Azure 基于角色的访问控制 (RBAC) 使你可以通过角色分配管理对 Azure 资源的访问权限。 你可以将这些角色分配给用户、组服务主体和托管标识。 某些资源有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。
+**指南**：借助基于 Azure 角色的访问控制 (Azure RBAC)，可以通过角色分配管理对 Azure 资源的访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 安全中心监视**：是
 
@@ -192,9 +192,9 @@ ms.locfileid: "91626252"
 
 **指南**：围绕专用管理帐户的使用创建标准操作程序。 
 
-你还可以使用 Azure AD Privileged Identity Management 和 Azure 资源管理器启用实时访问。 
+还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用即时访问权限。 
 
-- [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 安全中心监视**：是
 
@@ -238,7 +238,7 @@ ms.locfileid: "91626252"
 
 **指导**：使用 Azure Active Directory 安全报告和监视来检测环境中何时发生可疑活动或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
 
-- [如何确定标记为存在风险活动的 Azure AD 用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
@@ -270,7 +270,7 @@ ms.locfileid: "91626252"
 
 **指导**：Azure Active Directory (Azure AD) 提供日志来帮助发现过时的帐户。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/) 
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml) 
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -284,7 +284,7 @@ ms.locfileid: "91626252"
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。 
 
-- [如何将 Azure 活动日志与 Azure Monitor 集成](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志与 Azure Monitor 集成](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -292,9 +292,9 @@ ms.locfileid: "91626252"
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。 
+**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。 
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -310,13 +310,13 @@ ms.locfileid: "91626252"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指南**： VPN 网关为每个客户虚拟网络提供专用的 VM 实例。 为单独的安全域（如环境类型和数据敏感度级别）使用单独的虚拟网络、订阅和管理组实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Active Directory 基于角色的访问控制来控制对 Azure 资源的访问。
+**指南**： VPN 网关为每个客户虚拟网络提供专用的 VM 实例。 为单独的安全域（如环境类型和数据敏感度级别）使用单独的虚拟网络、订阅和管理组实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure 基于角色的访问控制 (Azure RBAC) 来控制对 Azure 资源的访问。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -362,11 +362,11 @@ ms.locfileid: "91626252"
 
 **责任**：客户
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 Azure AD RBAC 来控制对数据和资源的访问，否则使用服务特定的访问控制方法。 使用内置的基于角色的访问控制角色，如 "所有者"、"参与者" 或 "网络参与者"，然后将该角色分配给相应的作用域。 通过创建自定义角色并将虚拟网络、子网、VPN 网关、网络接口、网络安全组和路由表的特定权限分配给角色，为虚拟网络功能的子集分配特定权限。
+**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对数据和资源的访问，否则使用服务特定的访问控制方法。 使用内置角色，如 "所有者"、"参与者" 或 "网络参与者"，然后将该角色分配给相应的作用域。 通过创建自定义角色并将虚拟网络、子网、VPN 网关、网络接口、网络安全组和路由表的特定权限分配给角色，为虚拟网络功能的子集分配特定权限。
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [计划虚拟网络](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -394,9 +394,9 @@ ms.locfileid: "91626252"
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
-**指南**：使用常见的风险评分计划 (例如，常见漏洞评分系统) 或第三方扫描工具提供的默认风险评级。
+**指南**：使用通用风险评分程序（例如通用漏洞评分系统）或第三方扫描工具提供的默认风险评级。
 
-- [NIST 发布-常见漏洞计分系统](https://www.nist.gov/publications/common-vulnerability-scoring-system)
+- [NIST 出版物 - 通用漏洞评分系统](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
 **Azure 安全中心监视**：不适用
 
@@ -412,9 +412,9 @@ ms.locfileid: "91626252"
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [VPN 网关的 Azure CLI](https://docs.microsoft.com/cli/azure/network/vnet-gateway?view=azure-cli-latest)
+- [VPN 网关的 Azure CLI](/cli/azure/network/vnet-gateway?view=azure-cli-latest)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -426,7 +426,7 @@ ms.locfileid: "91626252"
 
 **指南**：将标记应用到 VPN 网关资源，以根据定义的分类对它们进行逻辑组织。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -436,11 +436,11 @@ ms.locfileid: "91626252"
 
 **指南**：在适当的位置使用标记、管理组和单独的订阅来组织和跟踪 VPN 网关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。 
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription) 
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何创建管理组](/azure/governance/management-groups/create) 
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -468,7 +468,7 @@ ms.locfileid: "91626252"
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](../virtual-network/policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -486,7 +486,7 @@ ms.locfileid: "91626252"
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略将对可在订阅中创建的资源类型的限制设置为使用以下内置策略定义：
+**指南**：使用 Azure Policy 对可使用以下内置策略定义在订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 
@@ -494,9 +494,9 @@ ms.locfileid: "91626252"
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](../virtual-network/policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -524,11 +524,11 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 还可以使用来自 Azure 安全中心的建议作为 Azure 资源的安全配置基线。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [教程：创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](../virtual-network/policy-reference.md)
 
 - [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -550,7 +550,7 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 - [适用于虚拟网络的 Azure 资源管理器模板示例](../virtual-network/template-samples.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](../virtual-network/policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -560,7 +560,7 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 **指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略定义、azure 资源管理器模板和所需状态配置脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。 
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
 - [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 
@@ -570,7 +570,7 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
-**指导**：使用 Azure Policy 为 Azure 资源定义和实施标准安全配置。 使用 Azure 策略别名创建自定义策略，以审核或强制执行 Azure 资源的配置。 你还可以使用与特定资源相关的内置策略定义。 此外，还可以使用 Azure 自动化来部署配置更改。 
+**指导**：使用 Azure Policy 为 Azure 资源定义和实施标准安全配置。 使用 Azure 策略别名创建自定义策略，以审核或强制执行 Azure 资源的配置。 你还可以使用与特定资源相关的内置策略定义。 此外，也可以使用 Azure 自动化来部署配置更改。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -586,7 +586,7 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](../virtual-network/policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -646,7 +646,7 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 - [适用于虚拟网络的 Azure 资源管理器模板示例](../virtual-network/template-samples.md)
 
-- [资源组-导出模板](/rest/api/resources/resourcegroups/exporttemplate)
+- [资源组 - 导出模板](/rest/api/resources/resourcegroups/exporttemplate)
 
 - [Azure 自动化简介](../automation/automation-intro.md)
 
@@ -660,7 +660,7 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 - [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
-- [资源组-导出模板](/rest/api/resources/resourcegroups/exporttemplate)
+- [资源组 - 导出模板](/rest/api/resources/resourcegroups/exporttemplate)
 
 - [Azure 自动化简介](../automation/automation-intro.md)
 
@@ -670,11 +670,11 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
-**指南**：如果需要，请确保定期定期将 Azure 资源管理器模板部署到隔离的订阅。
+**指导**：确保能够将 Azure 资源管理器模板定期部署到隔离订阅（如果需要）。
 
 - [使用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
 
-- [如何在 Azure 中还原密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 安全中心监视**：是
 
@@ -682,13 +682,13 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略定义和 azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以授予或拒绝特定用户、内置安全组或 (Azure Active Directory 中定义的组的权限（如果与 Azure DevOps 集成） Azure AD) 。
+**指南**：使用 Azure DevOps 安全地存储和管理你的代码，例如自定义 Azure Policy 定义和 Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以授予或拒绝特定用户、内置安全组或 (Azure Active Directory 中定义的组的权限（如果与 Azure DevOps 集成） Azure AD) 。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 
-- [Azure 存储 Blob 的软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure 存储 Blob 的软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 
@@ -720,7 +720,7 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md) 
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -786,5 +786,5 @@ Azure 资源管理器能够以 Java Script Object 符号 (JSON) 导出模板，�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

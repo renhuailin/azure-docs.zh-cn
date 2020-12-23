@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 3e5eb49a91e2c8bbd73f5dd37ed90f10b406fa3d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564352"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496040"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
@@ -50,12 +50,12 @@ ms.locfileid: "90564352"
 此模式直接从房间逻辑上读取，而不是 IoT 设备，这使你可以灵活地更改温度的基础数据源，而无需更新映射逻辑。 例如，可以添加多个温度计或设置此空间以与其他房间共享温度计，无需更新映射逻辑。
 
 1. 创建事件网格主题，该主题将从你的 Azure 数字孪生实例接收事件。
-    ```azurecli
+    ```azurecli-interactive
     az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
     ```
 
 2. 创建终结点，将事件网格主题链接到 Azure 数字孪生。
-    ```azurecli
+    ```azurecli-interactive
     az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
     ```
 
@@ -64,9 +64,9 @@ ms.locfileid: "90564352"
     >[!NOTE]
     >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
     >
-    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
-    ```azurecli
+    ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
@@ -74,7 +74,7 @@ ms.locfileid: "90564352"
 
 从端到端教程 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，在函数应用中创建一个事件网格触发的函数。 此函数将解包这些通知，并将更新发送到 Azure Maps 功能 stateset，以更新一个房间的温度。 
 
-有关参考信息，请参阅以下文档： [*Azure Functions 的 Azure 事件网格触发器*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger)。
+有关参考信息，请参阅以下文档： [*Azure Functions 的 Azure 事件网格触发器*](../azure-functions/functions-bindings-event-grid-trigger.md)。
 
 将函数代码替换为以下代码。 它仅筛选孪生空间的更新、读取更新的温度，并将该信息发送到 Azure Maps。
 
@@ -135,7 +135,7 @@ namespace SampleFunctionsApp
 
 需要在 function app 中设置两个环境变量。 其中一项是你的 [Azure Maps 主要订阅密钥](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)，一个是你 [AZURE MAPS 的 stateset ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
 az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-stateset-ID> -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
@@ -152,7 +152,7 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 这两个示例都发送兼容范围内的温度，因此，每隔30秒就会在地图上看到房间121更新的颜色。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="显示房间121彩色橙色的办公地图":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示室内地图集成块":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>在 Azure 数字孪生中存储地图信息
 

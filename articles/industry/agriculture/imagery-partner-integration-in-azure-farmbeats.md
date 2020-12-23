@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82613279"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675934"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 
 本文介绍如何使用 Azure FarmBeats 转换器组件将图像数据发送到 FarmBeats。 可以从各种源（如 multispectral 相机、卫星和无人机）生成农业的图像数据。 农业图像合作伙伴可与 FarmBeats 集成，为客户提供其场的自定义生成的地图。
 
-数据一经提供，就可以通过 FarmBeats 加速器进行可视化，并可能用于由农业企业或客户系统集成商构建的数据合成和机器学习/人工智能（ML/AI）模型。
+数据一经提供，就可以通过 FarmBeats 加速器进行可视化，并可能用于数据合成，并可用于机器学习/人工智能 (ML/AI) 模型由农业企业或客户系统集成商构建。
 
 FarmBeats 提供以下功能：
 
@@ -26,7 +26,7 @@ FarmBeats 提供以下功能：
 
 以下信息重点介绍如何在 FarmBeats 系统中获取图像的任何形式。
 
-选择 "**无人机图像**" 部分时，会打开一个弹出窗口，显示无人机 orthomosaic 的高分辨率图像。 你可以访问合作伙伴软件，该软件有助于规划无人机航班和获取原始数据。 你将继续使用合作伙伴的软件进行路径规划和 orthomosaic 图像拼接。
+选择 " **无人机图像** " 部分时，会打开一个弹出窗口，显示无人机 orthomosaic 的高分辨率图像。 你可以访问合作伙伴软件，该软件有助于规划无人机航班和获取原始数据。 你将继续使用合作伙伴的软件进行路径规划和 orthomosaic 图像拼接。
 
 无人机合作伙伴需要使客户能够将其客户帐户与其在 Azure 上的 FarmBeats 实例链接在一起。
 
@@ -39,13 +39,13 @@ FarmBeats 提供以下功能：
 
 ## <a name="api-development"></a>API 开发
 
-API 包含 Swagger 技术文档。 有关 Api 和相应的请求或响应的信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
+API 包含 Swagger 技术文档。 有关 Api 和相应的请求或响应的信息，请参阅 [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 ## <a name="authentication"></a>身份验证
 
-FarmBeats 使用 Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) （Azure AD）。  Azure 应用服务提供内置的身份验证和授权支持。 
+FarmBeats 使用 Microsoft Azure [Active Directory](../../app-service/overview-authentication-authorization.md) (Azure AD) 。  Azure 应用服务提供内置的身份验证和授权支持。 
 
-有关 Azure AD 的详细信息，请参阅 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。   
+有关 Azure AD 的详细信息，请参阅 [Azure Active Directory](../../app-service/overview-authentication-authorization.md)。   
 
 FarmBeats 数据中心使用持有者身份验证，该验证方法需要以下凭据：
 
@@ -100,9 +100,9 @@ Accept  | 响应格式。 对于 FarmBeats 数据中心 API，格式为 JSON。 
 
 若要发出 REST API 请求，请结合以下内容：
 
-- HTTP 方法（GET、POST 和 PUT）。
+- HTTP 方法 (GET、POST 和 PUT) 。
 - API 服务的 URL。
-- 用于查询、提交数据、更新或删除的资源 URI。
+- 用于查询、提交数据、更新或删除)  (资源 URI。
 - 一个或多个 HTTP 请求标头。
 
 或者，可在 GET 调用中包含查询参数以筛选数据、限制数据的大小，并对响应中的数据进行排序。
@@ -130,7 +130,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>数据格式
 
-JSON 是一种与语言无关的常见数据格式，该格式提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅[JSON org](https://JSON.org)。
+JSON 是一种与语言无关的常见数据格式，该格式提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅 [JSON org](https://JSON.org)。
 
 ## <a name="ingest-imagery-into-farmbeats"></a>将图像引入 FarmBeats
 
@@ -138,10 +138,10 @@ JSON 是一种与语言无关的常见数据格式，该格式提供任意数据
 
 1.  根据要上传的图像的类型，为以下字段创建新的扩展类型：
 
-    - **场景源**：例如，drone_partner_name
-    - **场景类型**：例如，无人机
-    - **场景文件类型**：例如，chlorophyll index
-    - **场景文件内容类型**：例如，image/tiff
+    - **场景源** ：例如，drone_partner_name
+    - **场景类型** ：例如，无人机
+    - **场景文件类型** ：例如，chlorophyll index
+    - **场景文件内容类型** ：例如，image/tiff
 
 2.  调用/Farms API，从 Azure FarmBeats 系统中获取场列表。
 3.  让客户能够从场列表中选择单个场。
@@ -363,7 +363,7 @@ JSON 是一种与语言无关的常见数据格式，该格式提供任意数据
 
 ### <a name="step-2-get-farm-details"></a>步骤2：获取场详细信息
 
-幕后（tiff 或 .csv 文件）位于场的上下文中。 你需要通过在/Farm API 上执行 GET 来获取场详细信息。 API 返回 FarmBeats 中可用的场列表。 您可以选择要为其引入数据的场。
+后台 ( tiff 或 .csv 文件) 在服务器场的上下文中。 你需要通过在/Farm API 上执行 GET 来获取场详细信息。 API 返回 FarmBeats 中可用的场列表。 您可以选择要为其引入数据的场。
 
 获取/Farm 响应：
 
@@ -411,11 +411,11 @@ JSON 是一种与语言无关的常见数据格式，该格式提供任意数据
 }
  ```
 
-### <a name="step-3-create-a-scene-id-post-call"></a>步骤3：创建场景 ID （POST 呼叫）
+### <a name="step-3-create-a-scene-id-post-call"></a>步骤3：创建场景 ID (POST 呼叫) 
 
-使用给定的信息创建一个新的场景（tiff 或 .csv 文件），该信息提供与该场景关联的日期、序列和场 ID。 可以在 "属性" 下定义与场景关联的元数据，其中包括 "度量值" 的 "持续时间" 和 "类型"。
+使用给定的信息创建新的场景 ( tiff 或 .csv 文件) ，该信息提供与该场景关联的日期、序列和场 ID。 可以在 "属性" 下定义与场景关联的元数据，其中包括 "度量值" 的 "持续时间" 和 "类型"。
 
-创建新场景会创建一个与场关联的新场景 ID。 创建场景 ID 后，用户可以使用相同的创建新文件（tiff 或 .csv），并存储该文件的内容。
+创建新场景会创建一个与场关联的新场景 ID。 创建场景 ID 后，用户可以使用相同的创建新文件 ( tiff 或 .csv) 并存储该文件的内容。
 
 /Scene API 上的 POST 调用的输入有效负载示例：
 
@@ -500,4 +500,4 @@ API 响应：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关基于 REST API 的集成详细信息的详细信息，请参阅[REST API](rest-api-in-azure-farmbeats.md)。
+有关基于 REST API 的集成详细信息的详细信息，请参阅 [REST API](rest-api-in-azure-farmbeats.md)。

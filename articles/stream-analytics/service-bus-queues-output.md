@@ -1,20 +1,20 @@
 ---
-title: 来自 Azure 流分析的服务总线队列输出
-description: 本文介绍了作为 Azure 流分析的输出的服务总线队列。
+title: 服务总线队列：Azure 流分析输出
+description: 本文介绍作为 Azure 流分析输出的服务总线队列。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317765"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348383"
 ---
-# <a name="service-bus-queues-output-from-azure-stream-analytics"></a>来自 Azure 流分析的服务总线队列输出
+# <a name="service-bus-queues-output-from-azure-stream-analytics"></a>服务总线队列：Azure 流分析输出
 
 [服务总线队列](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)为一个或多个竞争使用方提供 FIFO 消息传递方式。 通常，接收方按照消息添加到队列中的临时顺序来接收并处理消息。 每条消息仅由一个消息使用者接收和处理。
 
@@ -42,17 +42,17 @@ ms.locfileid: "91317765"
 
 ## <a name="partitioning"></a>分区
 
-自动选择分区。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。 输出写入器的数量与输出队列中的分区数相同。
+分区是自动选择的。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。 输出写入器的数量与输出队列中的分区数相同。
 
 ## <a name="output-batch-size"></a>输出批大小
 
-对于标准层，最大消息大小为 256 KB，对于高级层，最大消息大小为1MB。 有关详细信息，请参阅 [服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 若要优化，请对每条消息使用一个事件。
+标准层的每条消息的最大消息大小为 256 KB，高级层则为 1 MB。 有关详细信息，请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 若要进行优化，请对每条消息使用单个事件。
 
 ## <a name="custom-metadata-properties-for-output"></a>输出的自定义元数据属性
 
 可将查询列作为用户属性附加到传出的消息。 这些列不会进入有效负载。 这些属性以字典形式在输出消息中提供。 键是列名，值是属性字典中的列值。  支持除“记录”和“数组”以外的其他所有流分析数据类型。
 
-在下面的示例中，字段 `DeviceId` 和 `DeviceStatus` 添加到元数据。
+在以下示例中，字段 `DeviceId` 和 `DeviceStatus` 将添加到元数据中。
 
 1. 使用以下查询：
 
@@ -60,30 +60,30 @@ ms.locfileid: "91317765"
    select *, DeviceId, DeviceStatus from iotHubInput
    ```
 
-1. `DeviceId,DeviceStatus`在输出中将配置为属性列。
+1. 将 `DeviceId,DeviceStatus` 配置为输出中的属性列。
 
    :::image type="content" source="media/service-bus-queues-output/property-columns.png" alt-text="属性列":::
 
-下图是使用 [服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)在 EventHub 中检查的预期输出消息属性。
+下图显示了在事件中心使用 [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) 检查的预期输出消息属性。
 
 :::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="事件自定义属性":::
 
 ## <a name="system-properties"></a>系统属性
 
-可以将查询列作为[系统属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)附加到传出的服务总线队列或主题消息。
+可以将查询列作为[系统属性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)附加到传出的服务总线队列或主题消息。
 
-这些列不会进入有效负载，而是将查询列值填充到相应的 BrokeredMessage [系统属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)中。
+这些列不会进入有效负载，而是将查询列值填充到相应的 BrokeredMessage [系统属性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)中。
 支持这些系统属性 - `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
 
 这些列的字符串值将分析成相应的系统属性值类型，任何分析失败将被视为数据错误。
-此字段以 JSON 对象格式提供。 此格式的详细信息如下所示：
+此字段以 JSON 对象格式提供。 有关此格式的详细信息如下：
 
 * 用大括号 {} 括住。
 * 以键值对的形式编写。
 * 键和值必须是字符串。
 * 键是系统属性名称，值是查询列名。
 * 键和值以冒号分隔。
-* 每个键/值对用逗号分隔。
+* 每个键值对以逗号分隔。
 
 下面展示了如何使用此属性 –
 

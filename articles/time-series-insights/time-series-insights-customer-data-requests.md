@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: b5ecbabe4a5c3458c77d145fbce1281550470e00
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665899"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019066"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -34,7 +34,7 @@ Azure 时序见解将个人数据视为与时序见解的管理员和用户相�
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-但是，在通过门户删除客户数据之前，应该从 Azure 门户内的时序见解环境中删除用户的访问策略。 有关详细信息，请参阅[使用 Azure 门户授予对时序见解环境的数据访问权限](time-series-insights-data-access.md)。
+但是，在通过门户删除客户数据之前，应该从 Azure 门户内的时序见解环境中删除用户的访问策略。 有关详细信息，请参阅[使用 Azure 门户授予对时序见解环境的数据访问权限](./concepts-access-policies.md)。
 
 也可使用 REST API 对访问策略执行删除操作。 有关详细信息，请参阅[访问策略 - 删除](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/delete)。
 
@@ -46,7 +46,7 @@ Azure 时序见解将个人数据视为与时序见解的管理员和用户相�
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-如果你是租户管理员，则可在 Azure 门户的时序见解环境中查看数据访问策略。 有关详细信息，请参阅[使用 Azure 门户授予对时序见解环境的数据访问权限](time-series-insights-data-access.md)。
+如果你是租户管理员，则可在 Azure 门户的时序见解环境中查看数据访问策略。 有关详细信息，请参阅[使用 Azure 门户授予对时序见解环境的数据访问权限](./concepts-access-policies.md)。
 
 也可使用提供的 REST API 中的“按环境列出”操作对访问策略执行导出操作。 有关详细信息，请参阅[访问策略 - 按环境列出](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment)。
 
@@ -68,7 +68,7 @@ Azure 时序见解将个人数据视为与时序见解的管理员和用户相�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读有关[授予对 Azure 时序见解环境的数据访问权限](./time-series-insights-data-access.md)的更多信息。
+* 阅读有关[授予对 Azure 时序见解环境的数据访问权限](./concepts-access-policies.md)的更多信息。
 
 * 查看 [Azure 时序见解资源管理器](time-series-insights-explorer.md)。
 

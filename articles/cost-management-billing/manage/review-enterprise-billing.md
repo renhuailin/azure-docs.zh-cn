@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 652348d5feb7e382287c91536f1479f9aec126e1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031800"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132408"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>使用 Azure REST API 查看企业合约计费信息
 
@@ -37,9 +37,9 @@ Authorization: Bearer
 |请求标头|说明|  
 |--------------------|-----------------|  
 |Content-Type： |必需。 设置为 `application/json`。|  
-|Authorization： |必需。 设置为有效的 `Bearer` [API 密钥](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
+|Authorization： |必需。 设置为有效的 `Bearer` [API 密钥](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
 
-此示例演示返回当前计费周期的详细信息的同步调用。 出于性能原因，同步调用返回上一个月的信息。  还可以[采用异步方式调用 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 来返回 36 个月的数据。
+此示例演示返回当前计费周期的详细信息的同步调用。 出于性能原因，同步调用返回上一个月的信息。  还可以[采用异步方式调用 API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 来返回 36 个月的数据。
 
 
 ## <a name="response"></a>响应  
@@ -90,9 +90,9 @@ Authorization: Bearer
 |请求标头|说明|  
 |--------------------|-----------------|  
 |Content-Type： |必需。 设置为 `application/json`。|  
-|Authorization： |必需。 设置为有效的 `Bearer` [API 密钥](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
+|Authorization： |必需。 设置为有效的 `Bearer` [API 密钥](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
 
-此示例演示返回当前计费周期的详细信息的同步调用。 出于性能原因，同步调用返回上一个月的信息。  还可以[采用异步方式调用 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 来返回 36 个月的数据。
+此示例演示返回当前计费周期的详细信息的同步调用。 出于性能原因，同步调用返回上一个月的信息。  还可以[采用异步方式调用 API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 来返回 36 个月的数据。
 
 ### <a name="response"></a>响应  
 
@@ -146,9 +146,9 @@ Authorization: Bearer
 |请求标头|说明|  
 |--------------------|-----------------|  
 |Content-Type： |必需。 设置为 `application/json`。|  
-|Authorization： |必需。 设置为有效的 `Bearer` [API 密钥](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
+|Authorization： |必需。 设置为有效的 `Bearer` [API 密钥](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
 
-此示例演示返回当前计费周期的详细信息的同步调用。 出于性能原因，同步调用返回上一个月的信息。  还可以[采用异步方式调用 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 来返回 36 个月的数据。
+此示例演示返回当前计费周期的详细信息的同步调用。 出于性能原因，同步调用返回上一个月的信息。  还可以[采用异步方式调用 API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 来返回 36 个月的数据。
 
 ### <a name="response"></a>响应  
 
@@ -183,6 +183,6 @@ Authorization: Bearer
 此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为合约帐户获取使用情况详细信息](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy)。
 
 ## <a name="next-steps"></a>后续步骤
-- 查看 [Enterprise Reporting 概述](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- 详细研究[企业计费 REST API](https://docs.microsoft.com/rest/api/billing/)   
-- [Azure REST API 入门](https://docs.microsoft.com/rest/api/azure/)   
+- 查看 [Enterprise Reporting 概述](./enterprise-api.md)
+- 详细研究[企业计费 REST API](/rest/api/billing/)   
+- [Azure REST API 入门](/rest/api/azure/)

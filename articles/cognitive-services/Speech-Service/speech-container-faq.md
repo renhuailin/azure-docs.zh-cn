@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918462"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95894144"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>语音服务容器常见问题 (常见问题) 
 
@@ -43,7 +43,7 @@ ms.locfileid: "88918462"
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-最后，你可以使用变量在 *单个* 容器中设置所需的解码器数目 `DECODER MAX_COUNT` 。 基本上，我们应该从你的 SKU 开始 (CPU/内存) ，我们可以建议如何充分利用它。 一个很好的起点是指推荐的主机资源规格。
+您可以使用变量在 *单个* 容器中设置所需的解码器数目 `DECODER MAX_COUNT` 。 基本上，我们应该从你的 SKU 开始 (CPU/内存) ，我们可以建议如何充分利用它。 一个很好的起点是指推荐的主机资源规格。
 
 <br>
 </details>
@@ -290,7 +290,7 @@ WebSocket
 
 你是否能帮助填充以下测试指标，包括要测试的函数，以及如何测试 SDK 和 REST Api？ 特别是 "交互式" 和 "对话" 中的差异，我在现有的文档/示例中看不到这些差异。
 
-| 端点                                                | 功能测试                                                   | SDK 中 IsInRole 中的声明 | REST API |
+| 终结点                                                | 功能测试                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
 | `/speech/synthesize/cognitiveservices/v1`               | 文本 (文本到语音转换的合成)                                   |     | 是      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | 认知服务本地听写 v1 websocket 终结点        | 是 | 否       |
@@ -324,7 +324,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>对于各种音频文件，我应该使用哪种模式？</b>
 </summary>
 
-**答案：** 下面是 [使用 Python 的快速入门](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python)教程。 您可以在文档网站上找到其他所链接的语言。
+**答案：** 下面是 [使用 Python 的快速入门](./get-started-speech-to-text.md?pivots=programming-language-python)教程。 您可以在文档网站上找到其他所链接的语言。
 
 只是为了阐明交互式、对话和听写;这是一个高级方法，用于指定服务处理语音请求的特定方式。 遗憾的是，对于本地容器，我们必须指定完整的 URI (因为它包含本地计算机) ，因此此信息泄露自抽象。 我们正在与 SDK 团队合作，使其更易于使用。
 
@@ -367,7 +367,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 
-**答案：** 尝试 `-p <outside_unique_port>:5000` 。 例如，`-p 5001:5000`。
+**答案：** 尝试 `-p <outside_unique_port>:5000` 。 例如 `-p 5001:5000`。
 
 
 <br>
@@ -395,7 +395,7 @@ Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 
 **答案：** 与我们的最新 `en-US` 信息，我们建议使用超过6个并发请求的更多 docker 容器。 它获取的 crazier 超过16个内核，并且 (NUMA) 节点敏感的情况下，它将成为非一致性内存访问。 下表描述了每个语音容器的最小和建议的资源分配。
 
-# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 | 容器      | 最小值             | 建议         |
 |----------------|---------------------|---------------------|
@@ -407,7 +407,7 @@ Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 |-----------------------|---------------------|---------------------|
 | 自定义语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
-# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
+# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
 | 容器      | 最小值             | 建议         |
 |----------------|---------------------|---------------------|
@@ -419,7 +419,7 @@ Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 |-----------------------|---------------------|---------------------|
 | 自定义文本到语音转换 | 单核，2-GB 内存 | 2核，3 GB 内存 |
 
-***
+**_
 
 - 每个核心必须至少为 2.6 GHz 或更快。
 - 对于文件，限制将在语音 SDK 中，在 2x (前5秒的音频) 不会受到限制。
@@ -438,7 +438,7 @@ Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 <b>语音容器是否支持标点符号？</b>
 </summary>
 
-**答案：** 本地容器中提供了大写 (故障) 。 标点依赖于语言，不支持某些语言，包括中文和日语。
+_ *答：** 故障本地容器中提供了大写 (可用的) 。 标点依赖于语言，不支持某些语言，包括中文和日语。
 
 对于现有容器，我们 *确实* 支持隐式和基本标点，但 `off` 默认情况下为。 这意味着你可以获取 `.` 示例中的字符，但不能获取 `。` 字符。 若要启用此隐式逻辑，下面是一个示例，说明如何使用我们的语音 SDK 在 Python 中执行此操作， (它在其他语言中是类似的) ：
 
@@ -480,6 +480,16 @@ Content-Length: 0
 
 **答案：** 我们不支持在 "语音到文本" 容器中 REST API，仅通过语音 SDK 支持 Websocket。 请始终参阅正式文档，请参阅 [查询预测终结点](speech-container-howto.md#query-the-containers-prediction-endpoint)。
 
+<br>
+</details>
+
+
+<details>
+<summary>
+<b> 为什么容器作为非根用户运行？由于此原因，可能会发生什么问题？</b>
+</summary>
+
+**答案：** 请注意，容器中的默认用户为非根用户。 这可以防止进程转义容器和获取对主机节点的提升权限。 默认情况下，某些平台（如 OpenShift 容器平台）已经通过使用任意分配的用户 ID 运行容器来实现此目的。 对于这些平台，非根用户需要具有写入任何需要写入的外部映射的卷的权限。 例如，日志记录文件夹或自定义模型下载文件夹。
 <br>
 </details>
 
@@ -561,11 +571,11 @@ Python [示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/b
 在 c # 中，若要启用听写，请调用 `SpeechConfig.EnableDictation()` 函数。
 
 ### <a name="fromendpoint-apis"></a>`FromEndpoint` Api
-| 语言 | API 详细信息 |
+| Language | API 详细信息 |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-dotnet" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-java-stable" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | JavaScript | 目前不受支持，也不计划。 |
@@ -582,11 +592,11 @@ Python [示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/b
 
 ### <a name="fromhost-apis"></a>`FromHost` Api
 
-| 语言 | API 详细信息 |
+| Language | API 详细信息 |
 |--|:-|
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-java-stable" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | JavaScript | 目前不支持 |

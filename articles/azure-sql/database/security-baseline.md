@@ -7,25 +7,25 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9930f42e7d76820674405a98ef53489b91f31f5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885205"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985682"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>适用于 Azure SQL 数据库的 azure 安全基线 & SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 适用于 Azure SQL 数据库的 Azure 安全基准包含有助于改进部署安全状况的建议。
 
-此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
-有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+有关详细信息，请参阅 [Azure 安全基线概述](../../security/benchmarks/security-baselines-overview.md)。
 
 ## <a name="network-security"></a>网络安全
 
-有关详细信息，请参阅[安全控制：网络安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
+有关详细信息，请参阅[安全控制：网络安全性](../../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
@@ -77,7 +77,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用;此建议适用于 Azure 应用服务或托管 web 应用程序的计算资源。
+**指导**：不适用；此建议适用于 Azure 应用服务或托管 Web 应用程序的计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -127,7 +127,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用;此建议适用于 Azure 应用服务或托管 web 应用程序的计算资源。
+**指导**：不适用；此建议适用于 Azure 应用服务或托管 Web 应用程序的计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -155,7 +155,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 **指南**：通过 azure 策略为 Azure SQL 数据库定义和实施网络安全配置。 你可以使用 "Sql-dmo" 命名空间来定义自定义策略定义，或者使用为服务器网络保护设计的任何内置策略定义。 适用于服务器的内置网络安全策略的一个示例是： "SQL 数据库应使用虚拟网络服务终结点"。
 
-使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于角色的访问控制 (RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
+使用 Azure 蓝图，可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于 Azure 角色的访问控制 (Azure RBAC) 和策略）来简化大规模 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 如何配置和管理 Azure Policy： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -199,11 +199,11 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-有关详细信息，请参阅[安全控制：日志记录和监视](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。
+有关详细信息，请参阅[安全控制：日志记录和监视](../../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
-**指南**： Microsoft 维护 Azure 资源的时间源。 你可以为计算部署更新时间同步。
+**指导**：由 Microsoft 维护 Azure 资源的时间源。 你可以为计算部署更新时间同步。
 
 如何为 Azure 计算资源配置时间同步：
 
@@ -249,7 +249,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指南**：不适用;此基准用于计算资源。
+**指南**：不适用；此基准适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -329,7 +329,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。
+有关详细信息，请参阅[安全控制：标识和访问控制](../../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -411,7 +411,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **责任**：客户
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
 
 **指导**：使用 Azure Active Directory 安全报告在环境中发生可疑活动或不安全的活动时生成日志和警报。
 
@@ -517,7 +517,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 ## <a name="data-protection"></a>数据保护
 
-有关详细信息，请参阅[安全控制：数据保护](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。
+有关详细信息，请参阅[安全控制：数据保护](../../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
@@ -533,7 +533,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 资源应由 Vnet/子网进行分隔，对其进行适当标记，并在 NSG 或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在 Vnet 中部署 Azure SQL 数据库，并使用专用终结点进行私下连接。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 资源应由 Vnet/子网进行分隔，对其进行适当标记，并在 NSG 或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在 Vnet 中部署 Azure SQL 数据库，并使用专用终结点进行私下连接。
 
 如何创建其他 Azure 订阅：
 
@@ -559,7 +559,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-over
 
 **指南**：对于 Azure SQL 数据库中的数据库，存储或处理敏感信息，使用标记将数据库和相关资源标记为敏感。 在 Azure SQL 数据库实例上，将专用链接配置为结合网络安全组服务标记，以防止渗透敏感信息。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透：
 
@@ -587,7 +587,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-security-overview#inf
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
-**指南**：使用 Azure SQL 数据库数据发现和分类功能。 数据发现和分类提供了内置于 Azure SQL 数据库的高级功能，用于发现、分类、 &amp; 保护数据库中的敏感数据。
+**指南**：使用 Azure SQL 数据库数据发现和分类功能。 数据发现和分类提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。
 
 如何使用 Azure SQL 数据库的数据发现和分类：
 
@@ -651,7 +651,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-有关详细信息，请参阅[安全控制：漏洞管理。](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)
+有关详细信息，请参阅[安全控制：漏洞管理。](../../security/benchmarks/security-control-vulnerability-management.md)
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -683,7 +683,7 @@ https://docs.microsoft.com/azure/security-center/security-center-vulnerability-a
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署第三方自动软件修补管理解决方案
 
-**指南**：不适用;此基准用于计算资源。
+**指南**：不适用；此基准适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -715,11 +715,11 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 ## <a name="inventory-and-asset-management"></a>清单和资产管理
 
-有关详细信息，请参阅[安全控制：清单和资产管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。
+有关详细信息，请参阅[安全控制：清单和资产管理](../../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
-**指南**：使用 Azure 资源关系图查询和发现所有资源 (包括订阅 () 中的 Azure SQL 数据库) 。  确保你在租户中拥有适当（读取）权限，并且能够枚举所有 Azure 订阅以及订阅中的资源。
+**指南**：使用 Azure 资源关系图查询和发现所有资源 (包括订阅 () 中的 Azure SQL 数据库) 。  确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
@@ -869,7 +869,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ## <a name="secure-configuration"></a>安全配置
 
-有关详细信息，请参阅[安全控制：安全配置](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。
+有关详细信息，请参阅[安全控制：安全配置](../../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -999,7 +999,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql
 
-如何配置托管标识： 
+如何配置托管标识：
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
@@ -1019,7 +1019,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-有关详细信息，请参阅[安全控制：恶意软件防护](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。
+有关详细信息，请参阅[安全控制：恶意软件防护](../../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -1051,7 +1051,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 ## <a name="data-recovery"></a>数据恢复
 
-有关详细信息，请参阅[安全控制：数据恢复](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。
+有关详细信息，请参阅[安全控制：数据恢复](../../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
@@ -1067,7 +1067,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
 **责任**：共享
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份所有客户托管密钥
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份所有客户管理的密钥
 
 **指南**： Azure SQL 数据库会自动创建保留7到35天之间的数据库备份，并使用 Azure 读取访问异地冗余存储 (RA-GRS) ，以确保即使数据中心不可用也会保留这些备份。 这些备份是自动创建的。 如果需要，为 Azure SQL 数据库启用长期冗余备份。
 
@@ -1087,7 +1087,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
-**指导**：确保能够定期在 Azure 备份中执行内容数据还原。 如有必要，请测试将内容还原到隔离的 VLAN 中。 测试对备份的客户管理的密钥进行还原。
+**指导**：确保能够定期在 Azure 备份中执行内容数据还原。 如有必要，在隔离的 VLAN 中对还原内容进行测试。 测试对备份的客户管理的密钥进行还原。
 
 如何在 Azure 中还原 Key Vault 密钥：
 
@@ -1115,7 +1115,7 @@ https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azu
 
 ## <a name="incident-response"></a>事件响应
 
-有关详细信息，请参阅[安全控制：事件响应](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。
+有关详细信息，请参阅[安全控制：事件响应](../../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -1141,7 +1141,7 @@ Azure 安全中心中的安全警报： https://docs.microsoft.com/azure/securit
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 可以参考 NIST 发布：针对 IT 计划和功能的测试、培训和试验计划指南：
 
@@ -1193,7 +1193,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：渗透测试和红队演练](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：渗透测试和红队演练](../../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：定期对 Azure 资源执行渗透测试，确保在 60 天内修正所有发现的关键安全问题
 
@@ -1209,5 +1209,5 @@ https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准](../../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../../security/benchmarks/security-baselines-overview.md)

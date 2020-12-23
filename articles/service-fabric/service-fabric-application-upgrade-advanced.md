@@ -4,11 +4,11 @@ description: 本文介绍有关升级 Service Fabric 应用程序的一些高级
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248078"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022983"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 
@@ -20,21 +20,21 @@ ms.locfileid: "86248078"
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>避免在无状态服务计划内停机期间断开连接
 
-对于计划的无状态实例停机时间（例如应用程序/群集升级或节点停用），连接可能会在实例关闭后删除公开的终结点，从而导致强制连接闭包。
+对于计划内无状态实例停机（例如，应用程序/群集升级或节点停用），由于实例关闭后公开的终结点被删除，因此连接可能会断开，从而导致强制关闭连接。
 
-若要避免这种情况，请通过在服务配置中添加*实例关闭延迟持续时间*来配置*RequestDrain*功能，以允许来自群集内的现有请求排出公开的终结点。 这是因为，在关闭实例之前，无状态实例所公布的终结点在延迟启动*之前*会被删除。 此延迟可使现有请求在实例实际关闭之前正常排空。 在开始延迟时，客户端通过回调函数获取有关终结点发生更改的通知，因此它们可以重新解析终结点，并避免向正在停止的实例发送新请求。 这些请求可能源自使用[反向代理](./service-fabric-reverseproxy.md)的客户端，或者将服务终结点解析 api 与通知模型一起使用 ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) 来更新终结点。
+为了避免这种情况，请通过在服务配置中添加“实例关闭延迟持续时间”来配置 RequestDrain 功能，以允许来自群集内部的现有请求在公开的终结点上排出 。 这是通过在延迟开始之前删除无状态实例播发的终结点，然后再关闭实例实现的。 此延迟可使现有请求在实例实际关闭之前正常排空。 在开始延迟时，客户端通过回调函数获取有关终结点发生更改的通知，因此它们可以重新解析终结点，并避免向正在停止的实例发送新请求。 这些请求可能源自使用[反向代理](./service-fabric-reverseproxy.md)的客户端，或使用服务终结点解析 API 和通知模型 ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) 来更新终结点的客户端。
 
 ### <a name="service-configuration"></a>服务配置
 
 可通过多种方式在服务端配置延迟。
 
- * **创建新服务时**指定 `-InstanceCloseDelayDuration`：
+ * **创建新服务时** 指定 `-InstanceCloseDelayDuration`：
 
     ```powershell
     New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
- * **在应用程序清单的 defaults 节中定义服务**时分配 `InstanceCloseDelayDurationSeconds` 属性：
+ * **在应用程序清单的 defaults 节中定义服务** 时分配 `InstanceCloseDelayDurationSeconds` 属性：
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -42,13 +42,13 @@ ms.locfileid: "86248078"
           </StatelessService>
     ```
 
- * **更新现有服务时**指定 `-InstanceCloseDelayDuration`：
+ * **更新现有服务时** 指定 `-InstanceCloseDelayDuration`：
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
- * **通过 ARM 模板创建或更新现有服务时**，请指定 `InstanceCloseDelayDuration` 受支持的最低 API 版本 (值： 2019-11-01-preview) ：
+ * 通过 ARM 模板创建或更新现有服务时，请指定 `InstanceCloseDelayDuration` 值（支持的最低 API 版本：2019-11-01-preview）：
 
     ```ARM template to define InstanceCloseDelayDuration of 30seconds
     {
@@ -90,17 +90,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-重写的延迟持续时间仅适用于调用的升级实例，不以其他方式更改单个服务延迟配置。 例如，可以使用此方法指定 `0` 延迟，以跳过任何预配置的升级延迟。
+重写的延迟持续时间仅应用于调用的升级实例，而不会更改单个服务延迟配置。 例如，可以使用此方法指定 `0` 延迟，以跳过任何预配置的升级延迟。
 
 > [!NOTE]
-> * 用于排出请求的设置将无法阻止 Azure 负载均衡器将新请求发送到即将排出的终结点。
-> * 基于投诉的解决机制不会导致正常排出请求，因为它在发生故障后会触发服务解析。 如前文所述，这应改为使用[ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)订阅终结点更改通知。
-> * 当升级是 impactless 时，设置不起作用，即 在升级过程中不会关闭副本。
+> * 用于排出请求的设置将无法阻止 Azure 负载均衡器将新请求发送到正在进行排出操作的终结点。
+> * 基于投诉的解决机制不会导致请求的正常排出，因为它会在发生故障后触发服务解析。 如前所述，应该对其进行增强，以使用 [ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription) 订阅终结点更改通知。
+> * 当升级是无影响的升级时（例如 在升级期间不会关闭副本时），则不遵循这些设置。
 >
 >
 
 > [!NOTE]
-> 当群集代码版本为7.1.XXX 或更高版本时，可以使用 Get-servicefabricservice cmdlet 或 ARM 模板在现有服务中配置此功能。
+> 当群集代码版本为 7.1.XXX 或更高版本时，可以如上所述使用 Update-ServiceFabricService cmdlet 或 ARM 模板在现有服务中配置此功能。
 >
 >
 
@@ -205,9 +205,9 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>回滚应用程序升级
 
-虽然升级可以通过三种模式之一（*Monitored*、*UnmonitoredAuto* 或 *UnmonitoredManual*）进行前滚，但它们只能在 *UnmonitoredAuto* 或 *UnmonitoredManual* 模式下进行回滚。 在 *UnmonitoredAuto* 模式下进行回滚与进行前滚时行为相同，唯一的例外是 *UpgradeReplicaSetCheckTimeout* 的默认值不同 - 请参阅[应用程序升级参数](service-fabric-application-upgrade-parameters.md)。 在 *UnmonitoredManual* 模式下进行回滚与进行前滚时行为相同 - 回滚在完成每个 UD 后会将其自己暂停，并且必须使用 [Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 显式继续执行回滚。
+虽然升级可以通过三种模式之一（*Monitored*、*UnmonitoredAuto* 或 *UnmonitoredManual*）进行前滚，但它们只能在 *UnmonitoredAuto* 或 *UnmonitoredManual* 模式下进行回滚。 在 *UnmonitoredAuto* 模式下进行回滚与进行前滚时行为相同，唯一的例外是 *UpgradeReplicaSetCheckTimeout* 的默认值不同 - 请参阅 [应用程序升级参数](service-fabric-application-upgrade-parameters.md)。 在 *UnmonitoredManual* 模式下进行回滚与进行前滚时行为相同 - 回滚在完成每个 UD 后会将其自己暂停，并且必须使用 [Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 显式继续执行回滚。
 
-当违反了在 *Monitored* 模式下进行的升级的运行状况策略并且 *FailureAction* 为 *Rollback* 时，可以自动触发回滚（请参阅[应用程序升级参数](service-fabric-application-upgrade-parameters.md)）；也可以使用 [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps) 显式触发回滚。
+当违反了在 *Monitored* 模式下进行的升级的运行状况策略并且 *FailureAction* 为 *Rollback* 时，可以自动触发回滚（请参阅 [应用程序升级参数](service-fabric-application-upgrade-parameters.md)）；也可以使用 [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps) 显式触发回滚。
 
 在回滚期间，可以随时使用 [Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) 更改 *UpgradeReplicaSetCheckTimeout* 的值和模式。
 

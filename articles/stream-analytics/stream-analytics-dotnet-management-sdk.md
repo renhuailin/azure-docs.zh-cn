@@ -8,22 +8,22 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015588"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126849"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
 了解如何通过管理 .NET SDK 设置和运行使用 .NET 版流分析 API 的分析作业。 设置项目、创建输入和输出源、转换，以及开始和停止作业。 就分析作业来说，可以从 Blob 存储或事件中心流式传输数据。
 
-请参阅 [.NET 版流分析 API 的管理参考文档](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
+请参阅 [.NET 版流分析 API 的管理参考文档](/previous-versions/azure/dn889315(v=azure.100))。
 
 Azure 流分析是一种完全托管的服务，可以在云中通过流式数据处理复杂的事件，具有延迟性低、可用性高和大小灵活等特点。 客户可以使用流分析来设置流式处理作业，分析数据流和进行近实时分析。  
 
 > [!NOTE]
-> 本文中的示例代码已使用 Azure 流分析的 Management .NET SDK v2.x 版本进行了更新。 有关使用旧版 (1.x) SDK 的示例代码，请参阅[使用流分析的 Management .NET SDK v1.x ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)。
+> 本文中的示例代码已使用 Azure 流分析的 Management .NET SDK v2.x 版本进行了更新。 有关使用旧版 (1.x) SDK 的示例代码，请参阅[使用流分析的 Management .NET SDK v1.x ]()。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须完成以下要求：
@@ -167,7 +167,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>创建流分析输入源
-下面的代码使用 blob 输入源类型和 CSV 序列化创建流分析输入源。 若要创建事件中心输入源，请使用 **EventHubStreamInputDataSource** 而非 **BlobStreamInputDataSource**。 同样，可以自定义输入源的序列化类型。
+下面的代码使用 blob 输入源类型和 CSV 序列化创建流分析输入源。 若要创建事件中心输入源，请使用 **EventHubStreamInputDataSource** 而非 **BlobStreamInputDataSource** 。 同样，可以自定义输入源的序列化类型。
 
    ```csharp
    // Create an input
@@ -212,7 +212,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 ## <a name="create-a-stream-analytics-output-target"></a>创建流分析输出目标
 创建输出目标类似于创建流分析输入源。 像输入源一样，输出目标将绑定到特定作业。 要将同一输出目标用于不同的作业，必须再次调用该方法并指定不同的作业名称。
 
-下面的代码 (Azure SQL 数据库) 创建输出目标。 可以自定义输出目标的数据类型和/或序列化类型。
+以下代码可创建一个输出目标（Azure SQL 数据库）。 可以自定义输出目标的数据类型和/或序列化类型。
 
    ```csharp
    // Create an output
@@ -285,7 +285,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
    ```
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请参阅[ Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需进一步的帮助，请参阅[ Azure 流分析的 Microsoft 问答问题页面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 现已学习了使用 .NET SDK 创建和运行分析作业的基础知识。 要了解更多信息，请参阅下列文章：
@@ -293,9 +293,9 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析管理 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析管理 .NET SDK](/previous-versions/azure/dn889315(v=azure.100))。
+* [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
@@ -305,17 +305,17 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 <!--Link references-->
 [azure.blob.storage]: https://azure.microsoft.com/documentation/services/storage/
-[azure.blob.storage.use]: https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
+[azure.blob.storage.use]: ../storage/blobs/storage-quickstart-blobs-dotnet.md
 
 [azure.event.hubs]: https://azure.microsoft.com/services/event-hubs/
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
 [stream.analytics.forum]: https://go.microsoft.com/fwlink/?LinkId=512151
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

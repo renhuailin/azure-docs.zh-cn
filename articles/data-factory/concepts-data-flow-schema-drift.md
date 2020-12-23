@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324342"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027476"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射数据流中的架构偏差
 
@@ -43,7 +43,7 @@ Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行�
 
 ![架构偏差源](media/data-flow/schemadrift001.png "架构偏差源")
 
-启用架构偏差后，将在执行过程中从源读取所有传入字段，并将整个流传递到接收器。 默认情况下，所有新检测到的列（称为 *偏移列*）将作为字符串数据类型到达。 如果希望数据流自动推断偏移列的数据类型，请选中 "在源设置中 **推断偏移列类型** "。
+启用架构偏差后，将在执行过程中从源读取所有传入字段，并将整个流传递到接收器。 默认情况下，所有新检测到的列（称为 *偏移列* ）将作为字符串数据类型到达。 如果希望数据流自动推断偏移列的数据类型，请选中 "在源设置中 **推断偏移列类型** "。
 
 ## <a name="schema-drift-in-sink"></a>接收器中的架构偏差
 
@@ -69,11 +69,11 @@ Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行�
 
 若要显式引用偏移列，可以通过数据预览快速操作快速生成这些列的映射。 启用 [调试模式](concepts-data-flow-debug-mode.md) 后，请进入 "数据预览" 选项卡，然后单击 " **刷新** " 以获取数据预览。 如果数据工厂检测到偏移列存在，则可以单击 **Map 偏移** 并生成一个派生列，使您可以在下游的架构视图中引用所有偏移列。
 
-![地图偏移](media/data-flow/mapdrifted1.png "地图偏移")
+![屏幕截图显示 "数据预览" 选项卡，其中包含名为偏移的地图。](media/data-flow/mapdrifted1.png "地图偏移")
 
 在生成的派生列转换中，每个偏移列都映射到其检测到的名称和数据类型。 在上面的数据预览中，将 "movieId" 列检测为一个整数。 单击 **Map 偏移** 后，MovieId 在派生列中定义为，在 `toInteger(byName('movieId'))` 下游转换中包含在架构视图中。
 
-![地图偏移](media/data-flow/mapdrifted2.png "地图偏移")
+![屏幕截图显示了派生列的 "设置" 选项卡。](media/data-flow/mapdrifted2.png "地图偏移")
 
 ## <a name="next-steps"></a>后续步骤
 在 [数据流表达式语言](data-flow-expression-functions.md)中，你将找到用于列模式和架构偏移的其他功能，包括 "byName" 和 "byPosition"。

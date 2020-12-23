@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13706b900c64b1d0aa5ce03fc95442e8dfc41051
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91627357"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099821"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 构建 Cassandra 应用
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -36,7 +37,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
 
 此外，还需要： 
-* 如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
+* 如果尚未安装 Visual Studio 2019，可以下载并使用 **免费** 的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 * 安装 [Git](https://www.git-scm.com/) 以克隆示例。
 
 <a id="create-account"></a>
@@ -97,7 +98,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 * 使用有连接到配置文件密钥空间的新会话的 IMapper 对象插入用户实体。
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * 通过查询获取所有用户的信息。
@@ -158,13 +159,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ```
 3. 按 CTRL + F5 运行应用程序。 应用将显示在控制台窗口中。 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="查看并验证输出":::
 
     按 CTRL + C 停止执行程序并关闭控制台窗口。 
     
 4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在数据资源管理器中查看数据":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

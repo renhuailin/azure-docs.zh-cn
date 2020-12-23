@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0f3dce3ca79b12b05325a1d8284dd3304653d5fa
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317049"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488861"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除（预览）
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -74,7 +74,7 @@ ms.locfileid: "91317049"
 | 智能见解选项 | Azure SQL 数据库支持 | Azure SQL 托管实例支持 |
 | :----------------------------- | ----- | ----- |
 | **配置智能见解** - 配置针对数据库的智能见解分析。 | 是 | 是 |
-| 将**见解流式处理到 Azure SQL Analytics** --将见解传递到 Azure SQL Analytics。 | 是 | 是 |
+| 将 **见解流式处理到 Azure SQL Analytics** --将见解传递到 Azure SQL Analytics。 | 是 | 是 |
 | **将见解流式传输到 Azure 事件中心** - 将见解流式传输到事件中心，以便进一步进行自定义集成。 | 是 | 是 |
 | **将见解流式传输到 Azure 存储** - 将见解流式传输到 Azure 存储，以便进一步进行分析和长期存档。 | 是 | 是 |
 
@@ -85,7 +85,7 @@ ms.locfileid: "91317049"
 
 可以将智能见解的输出流式传输到多个目标之一进行分析：
 
-- 流式传输到 Log Analytics 工作区的输出可以与 [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) 结合使用，以便通过 Azure 门户的用户界面查看见解。 这是集成式 Azure 解决方案，是用于查看见解的最典型方式。
+- 流式传输到 Log Analytics 工作区的输出可以与 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) 结合使用，以便通过 Azure 门户的用户界面查看见解。 这是集成式 Azure 解决方案，是用于查看见解的最典型方式。
 - 使用流式传输到 Azure 事件中心的输出，可以开发自定义监视和警报方案
 - 使用流式传输到 Azure 存储的输出，可以进行自定义应用程序开发，例如自定义报告、长期数据存档，等等。
 
@@ -107,7 +107,7 @@ Azure SQL Analytics 解决方案使用智能见解资源日志数据，为数据
 
 ### <a name="set-up-with-event-hubs"></a>通过事件中心进行设置
 
-若要将智能见解与事件中心配合使用，配置要流式传输到事件中心的智能见解日志数据，请参阅[指标和诊断日志记录](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)和[将 Azure 诊断日志流式传输到事件中心](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)。
+若要将智能见解与事件中心配合使用，配置要流式传输到事件中心的智能见解日志数据，请参阅[指标和诊断日志记录](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)和[将 Azure 诊断日志流式传输到事件中心](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)。
 
 若要使用事件中心设置自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)。
 

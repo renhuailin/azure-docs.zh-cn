@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 服务器评估工具发现 VMware VM
 description: 了解如何使用 Azure Migrate 服务器评估工具发现本地 VMware VM
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: cbe1561f58af8f65285ffb005b0232bff8225d3b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: ff82b90189e134db7d39b259c2c135489d14595d
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604047"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752781"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>教程：使用服务器评估发现 VMware VM
 
@@ -72,6 +75,7 @@ ms.locfileid: "90604047"
 
     ![在用户设置中，验证用户是否可以注册 Active Directory 应用](./media/tutorial-discover-vmware/register-apps.png)
 
+9. 或者，租户/全局管理员可将“应用程序开发人员”角色分配给帐户，以允许注册 AAD 应用。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-vmware"></a>准备 VMware
 
@@ -165,7 +169,7 @@ ms.locfileid: "90604047"
   
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
    
-   用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+   用法示例：```C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
 
 3. 验证最新的设备版本和哈希值：
 
@@ -173,13 +177,13 @@ ms.locfileid: "90604047"
     
         **算法** | **下载** | **SHA256**
         --- | --- | ---
-        VMware (11.6 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+        VMware (11.9 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
     - 对于 Azure 政府：
     
         **算法** | **下载** | **SHA256**
         --- | --- | ---
-        VMware (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | 47179f47eba2842337bbe533c424dd1da56baccdcf68b1d87b71a5a4280108c2
+        VMware (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
 
 
@@ -195,7 +199,7 @@ ms.locfileid: "90604047"
 6. 在“存储”中，指定 VM 的存储目标。
 7. 在“磁盘格式”中，指定磁盘类型和大小。
 8. 在“网络映射”中，指定 VM 要连接到的网络。 该网络需要与 Internet 建立连接，这样才能向 Azure Migrate 服务器评估发送元数据。
-9. 检查并确认设置，然后单击“完成”****。
+9. 检查并确认设置，然后单击“完成”。
 
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
@@ -237,7 +241,7 @@ ms.locfileid: "90604047"
    
    不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。 
-4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](tutorial-prepare-vmware.md#prepare-azure)，会启动设备注册。
+4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的权限，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
 
@@ -246,13 +250,13 @@ ms.locfileid: "90604047"
 
 设备需连接 vCenter Server，以发现 VM 的配置和性能数据。
 
-1. 在**步骤 1：提供 vCenter Server 凭据**中，单击“添加凭据”以指定凭据的易记名称，为设备将用于在 vCenter Server 实例上发现 VM 的 vCenter Server 帐户添加“用户名”和“密码”  。
-    - 你应该已在[上一教程](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)中设置具有所需权限的帐户。
+1. 在 **步骤 1：提供 vCenter Server 凭据** 中，单击“添加凭据”以指定凭据的易记名称，为设备将用于在 vCenter Server 实例上发现 VM 的 vCenter Server 帐户添加“用户名”和“密码”  。
+    - 你应该已在上一教程中设置具有所需权限的帐户。
     - 如果要将发现范围限定于特定的 VMware 对象（vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM），请参阅[此文](set-discovery-scope.md)中的说明，以限制 Azure Migrate 所使用的帐户。
-1. 在**步骤 2：提供 vCenter Server 详细信息**中，单击“添加发现源”，从下拉列表中选择凭据的易记名称，指定 vCenter Server 实例的 IP 地址/FQDN 。 可以保留“端口”的默认值 443，或指定 vCenter Server 侦听的自定义端口，然后单击“保存” 。
+1. 在 **步骤 2：提供 vCenter Server 详细信息** 中，单击“添加发现源”，从下拉列表中选择凭据的易记名称，指定 vCenter Server 实例的 IP 地址/FQDN 。 可以保留“端口”的默认值 443，或指定 vCenter Server 侦听的自定义端口，然后单击“保存” 。
 1. 单击“保存”后，设备将尝试通过提供的凭据验证与 vCenter Server 的连接，并根据 vCenter Server IP 地址/FQDN 在表中显示验证状态。
 1. 在开始发现之前，可以随时重新验证与 vCenter Server 之间的连接。
-1. 在**步骤 3：提供 VM 凭据来发现已安装的应用程序并执行无代理依赖项映射**中，单击“添加凭据”，并指定为其提供凭据的操作系统、凭据的易记名称以及“用户名”和“密码”  。 然后单击“保存”。
+1. 在 **步骤 3：提供 VM 凭据来发现已安装的应用程序并执行无代理依赖项映射** 中，单击“添加凭据”，并指定为其提供凭据的操作系统、凭据的易记名称以及“用户名”和“密码”  。 然后单击“保存”。
 
     - 如果已创建用于[应用程序发现功能](how-to-discover-applications.md)或[无代理依赖项分析功能](how-to-create-group-machine-dependencies-agentless.md)的帐户，则可选择在此处添加凭据。
     - 如果不想使用这些功能，请通过单击滑块跳过该步骤。 你以后可以随时恢复使用这些功能。
@@ -267,5 +271,5 @@ ms.locfileid: "90604047"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [评估 VMware VM](tutorial-assess-vmware.md) 以便迁移到 Azure VM。
+- [评估 VMware VM](./tutorial-assess-vmware-azure-vm.md) 以便迁移到 Azure VM。
 - [查看设备在发现期间收集的数据](migrate-appliance.md#collected-data---vmware)。

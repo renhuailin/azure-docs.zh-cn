@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/13/2020
-ms.openlocfilehash: 292d80f7fad796b2ee4f80478c55099148d7f855
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a82606be62007816d545942161774e776c38a4e3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086687"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637286"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 
@@ -67,9 +67,9 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 Salesforce 链接服务支持以下属性。
 
-| properties | 描述 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type |类型属性必须设置为 **Salesforce**。 |是 |
+| type |类型属性必须设置为 **Salesforce** 。 |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
@@ -144,15 +144,15 @@ Salesforce 链接服务支持以下属性。
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Salesforce 数据集支持的属性列表。
 
-要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为 **SalesforceObject**。 支持以下属性。
+要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为 **SalesforceObject** 。 支持以下属性。
 
-| properties | 描述 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **SalesforceObject**。  | 是 |
+| type | type 属性必须设置为 **SalesforceObject** 。  | 是 |
 | objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
 
 > [!IMPORTANT]
-> 任何自定义对象均需要 **API 名称**的“__c”部分。
+> 任何自定义对象均需要 **API 名称** 的“__c”部分。
 
 ![数据工厂 Salesforce 连接 API 名称](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
@@ -178,9 +178,9 @@ Salesforce 链接服务支持以下属性。
 >[!NOTE]
 >为了向后兼容：从 Salesforce 复制数据时，如果使用以前的“RelationalTable”类型数据集，它会在你看到切换到新的“SalesforceObject”类型的建议时继续工作。
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 **RelationalTable**。 | 是 |
+| type | 数据集的 type 属性必须设置为 **RelationalTable** 。 | 是 |
 | tableName | 在 Salesforce 中表的名称。 | 否（如果指定了活动源中的“query”） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
@@ -189,16 +189,16 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="salesforce-as-a-source-type"></a>将 Salesforce 用作源类型
 
-要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”****。 复制活动的 **source** 节支持以下属性。
+要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”  。 复制活动的 **source** 节支持以下属性。
 
-| properties | 描述 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 **SalesforceSource**。 | 是 |
+| type | 复制活动源的 type 属性必须设置为 **SalesforceSource** 。 | 是 |
 | 查询 |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
-| readBehavior | 指示是查询现有记录，还是查询包括已删除记录在内的所有记录。 如果未指定，默认行为是前者。 <br>允许的值：**query**（默认值）、**queryAll**。  | 否 |
+| readBehavior | 指示是查询现有记录，还是查询包括已删除记录在内的所有记录。 如果未指定，默认行为是前者。 <br>允许的值： **query** （默认值）、 **queryAll** 。  | 否 |
 
 > [!IMPORTANT]
-> 任何自定义对象均需要 **API 名称**的“__c”部分。
+> 任何自定义对象均需要 **API 名称** 的“__c”部分。
 
 ![数据工厂 Salesforce 连接 API 名称列表](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
@@ -239,15 +239,15 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="salesforce-as-a-sink-type"></a>将 Salesforce 用作接收器类型
 
-要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”****。 复制活动 **sink** 节支持以下属性。
+要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”  。 复制活动 **sink** 节支持以下属性。
 
-| properties | 描述 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为 **SalesforceSink**。 | 是 |
-| writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
-| externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce 对象中定义为 "外部 ID 字段"。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
+| type | 复制活动接收器的 type 属性必须设置为 **SalesforceSink** 。 | 是 |
+| writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert** 。 | 否（默认值为 Insert） |
+| externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce 对象中定义为“外部 ID 字段”。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
 | writeBatchSize | 每批中写入到 Salesforce 的数据行计数。 | 否（默认值为5,000） |
-| ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
+| ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false** 。<br>- **True** ：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False** ：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 **示例：复制活动中的 Salesforce 接收器**
 
@@ -296,13 +296,13 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="difference-between-soql-and-sql-query-syntax"></a>SOQL 与 SQL 查询语法之间的差异
 
-从 Salesforce 中复制数据时，可以使用 SOQL 查询或 SQL 查询。 请注意，这两者具有不同的语法和功能支持，不要混用。 建议使用 SOQL 查询，该查询在本地受 Salesforce 支持。 下表列出了主要差异：
+从 Salesforce 中复制数据时，可以使用 SOQL 查询或 SQL 查询。 请注意，这两者具有不同的语法和功能支持，不要混用。 建议使用 Salesforce 原本就支持的 SOQL 查询。 下表列出了主要差异：
 
 | 语法 | SOQL 模式 | SQL 模式 |
 |:--- |:--- |:--- |
 | 列选择 | 需要枚举要在查询中复制的字段，例如 `SELECT field1, filed2 FROM objectname` | 除了列选择之外，还支持 `SELECT *`。 |
 | 引号 | 字段/对象名称不能用引号引起来。 | 字段/对象名称可以用引号引起来，例如 `SELECT "id" FROM "Account"` |
-| 日期时间格式 |  请参考[此处的](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)详细信息和下一部分中的示例。 | 请参考[此处的](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)详细信息和下一部分中的示例。 |
+| 日期时间格式 |  请参考[此处的](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)详细信息和下一部分中的示例。 | 请参考[此处的](/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)详细信息和下一部分中的示例。 |
 | 布尔值 | 表示为 `False` 和 `True`，例如 `SELECT … WHERE IsDeleted=True`。 | 表示为 0 或 1，例如 `SELECT … WHERE IsDeleted=1`。 |
 | 列重命名 | 不支持。 | 支持，例如：`SELECT a AS b FROM …`。 |
 | 关系 | 支持，例如 `Account_vod__r.nvs_Country__c`。 | 不支持。 |
@@ -311,10 +311,10 @@ Salesforce 链接服务支持以下属性。
 
 当指定 SOQL 或 SQL 查询时，请注意 DateTime 的格式差异。 例如：
 
-* **SOQL 示例**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL 示例**：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
+* **SOQL 示例** ：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL 示例** ：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformed_query-truncated"></a>MALFORMED_QUERY 错误：已截断
+### <a name="error-of-malformed_query-truncated"></a>MALFORMED_QUERY:Truncated 错误
 
 如果遇到“MALFORMED_QUERY:Truncated”错误，通常是因为在数据中存在 JunctionIdList 类型列，而 Salesforce 在支持此类具有大量行的数据方面存在限制。 若要缓解这种情况，请尝试排除 JunctionIdList 列或限制要复制的行数（可以将其划分为多个复制活动运行）。
 
@@ -324,24 +324,24 @@ Salesforce 链接服务支持以下属性。
 
 | Salesforce 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| 自动编号 |字符串 |
+| 自动编号 |String |
 | 复选框 |布尔 |
 | 货币 |小数 |
 | Date |DateTime |
 | 日期/时间 |DateTime |
-| Email |字符串 |
-| ID |字符串 |
-| 查找关系 |字符串 |
-| 多选择列表 |字符串 |
+| Email |String |
+| ID |String |
+| 查找关系 |String |
+| 多选择列表 |String |
 | Number |小数 |
 | 百分比 |小数 |
-| 电话 |字符串 |
-| 选择列表 |字符串 |
-| 文本 |字符串 |
-| 文本区域 |字符串 |
-| 文本区域（长型值） |字符串 |
-| 文本区域（丰富） |字符串 |
-| 文本（加密） |字符串 |
+| 电话 |String |
+| 选择列表 |String |
+| 文本 |String |
+| 文本区域 |String |
+| 文本区域（长型值） |String |
+| 文本区域（丰富） |String |
+| 文本（加密） |String |
 | URL |String |
 
 ## <a name="lookup-activity-properties"></a>查找活动属性

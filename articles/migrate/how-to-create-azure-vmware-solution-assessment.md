@@ -2,16 +2,16 @@
 title: 使用 Azure Migrate Server 评估创建 AVS 评估 |Microsoft Docs
 description: 介绍如何使用 Azure Migrate Server 评估工具创建 AVS 评估
 author: rashi-ms
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 89dc962c73a6446afc79eec2a0fcfd5c0e32e84e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.manager: abhemraj
+ms.topic: how-to
+ms.date: 06/26/2020
+ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576704"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752067"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a> (AVS) 评估创建 Azure VMware 解决方案
 
@@ -21,10 +21,10 @@ ms.locfileid: "91576704"
 
 ## <a name="before-you-start"></a>开始之前
 
-- 请确保已 [创建](how-to-add-tool-first-time.md) Azure Migrate 项目。
+- 请确保已 [创建](./create-manage-projects.md) Azure Migrate 项目。
 - 如果已创建项目，请确保已 [添加](how-to-assess.md) Azure Migrate： Server 评估工具。
 - 若要创建评估，需要设置用于 [VMware](how-to-set-up-appliance-vmware.md)的 Azure Migrate 设备，该设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
-- 还可以 (CSV) 格式以逗号分隔 [的值导入服务器元数据](tutorial-assess-import.md) 。
+- 还可以 (CSV) 格式以逗号分隔 [的值导入服务器元数据](./tutorial-discover-import.md) 。
 
 
 ## <a name="azure-vmware-solution-avs-assessment-overview"></a>Azure VMware 解决方案 (AVS) 评估概述
@@ -101,7 +101,7 @@ Azure VMware 解决方案 (AVS) 评估介绍：
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>查看 Azure VMware 解决方案 (AVS) 准备情况
 
-1. 在 **Azure 准备情况**下，验证 vm 是否已准备好迁移到 AVS。
+1. 在 **Azure 准备情况** 下，验证 vm 是否已准备好迁移到 AVS。
 
 2. 查看 VM 状态：
     - **适用于 AVS**：计算机可以按原样迁移到 AZURE (AVS) ，无需任何更改。 它将在具有完全 AVS 支持的 AVS 中开始。

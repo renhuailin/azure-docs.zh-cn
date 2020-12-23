@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460027"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325408"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
 
@@ -45,10 +45,10 @@ ms.locfileid: "91460027"
 1. 在左侧选择“笔记本”。 
 1. 在“我的文件”部分的“用户文件”列表上方，选择“新建文件”图标。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="新建文件&quot;:::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="新建文件":::
 
 1. 为文件命名。 
-1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** " 作为文件类型。
+1. 对于 Jupyter Notebook 文件，请选择“Notebook”作为文件类型。
 1. 选择文件目录。
 1. 选择“创建” 。
 
@@ -80,28 +80,24 @@ ms.locfileid: "91460027"
 1. 选择 **计算** 目标或创建一个新的目标，并等待它运行。
 1. 选择“打开终端”图标。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="新建文件&quot;:::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="打开终端":::
 
-1. 为文件命名。 
-1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** " **打开终端**"。
+1. 如果看不到该图标，请选择计算目标右侧的 " **...** "，然后选择 " **打开终端** "。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="新建文件&quot;:::
-
-1. 为文件命名。 
-1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** ":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="从“...”打开终端":::
 
 
 详细了解如何[将 Git 存储库克隆到工作区文件系统](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)。
 
 ### <a name="copy-and-paste-in-terminal"></a>在终端中复制和粘贴
 
-> * Windows： `Ctrl-Insert` 复制和使用 `Ctrl-Shift-v` 或 `Shift-Insert` 粘贴。
+> * Windows：使用 `Ctrl-Insert` 复制，使用 `Ctrl-Shift-v` 或 `Shift-Insert` 粘贴。
 > * Mac OS：使用 `Cmd-c` 复制，使用 `Cmd-v` 粘贴。
 > * FireFox/IE 可能不会正确支持剪贴板权限。
 
 ### <a name="share-notebooks-and-other-files"></a>共享笔记本和其他文件
 
-复制并粘贴 URL 可以共享笔记本或文件。  只有工作区的其他用户可以访问此 URL。  详细了解如何[授权访问工作区](how-to-assign-roles.md)。
+复制并粘贴 URL 可以共享笔记本或文件。  只有工作区的其他用户才能访问此 URL。  详细了解如何[授权访问工作区](how-to-assign-roles.md)。
 
 ## <a name="edit-a-notebook"></a>编辑笔记本
 
@@ -113,42 +109,47 @@ ms.locfileid: "91460027"
 
 另外，还可以从笔记本工具栏中启动 Jupyter 或 JupyterLab。  Azure 机器学习不提供来自 Jupyter 或 JupyterLab 的更新，也不修复其中的 bug，因为这些开源产品不在 Microsoft 支持的范围内。
 
+### <a name="focus-mode"></a>焦点模式
+
+使用焦点模式展开您的当前视图，以便您可以专注于活动选项卡。 焦点模式隐藏笔记本文件资源管理器。
+
+1. 在终端窗口工具栏中，选择 " **焦点模式** " 以打开焦点模式。 根据窗口宽度，此位置可能位于工具栏中的 " **...** " 菜单项下。
+1. 在焦点模式下，通过选择 " **标准视图** " 返回到标准视图。
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="切换焦点模式/标准视图":::
+
+
 ### <a name="use-intellisense"></a>使用 IntelliSense
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) 是一个代码完成辅助插件，其中包括许多功能：“列出成员”、“参数信息”、“快速信息”和“完成单词”。 这些功能可帮助你详细了解所使用的代码、跟踪正在键入的参数，只需几次击键即可添加对属性和方法的调用。  
 
 键入代码时，请使用“Ctrl+空格键”来触发 IntelliSense。
 
-### <a name="clean-your-notebook-preview"></a>清理笔记本 (预览) 
+### <a name="clean-your-notebook-preview"></a>清理笔记本（预览版）
 
 > [!IMPORTANT]
 > 收集功能目前为公共预览版。
 > 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-在创建笔记本的过程中，通常最终会获得用于数据浏览或调试的单元格。 " *收集* " 功能可帮助你在不使用这些多余单元的情况下生成干净的笔记本。
+在创建笔记本的过程中，通常最终会得到用于数据浏览或调试的单元格。 “收集”功能会帮助你生成一个没有这些无关单元格的纯净笔记本。
 
-1. 运行所有笔记本单元。
-1. 选择包含想要新笔记本运行的代码的单元格。 例如，提交实验的代码或可能注册模型的代码。
-1. 选择显示在 "单元格" 工具栏上的 " **集合** " 图标。
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="新建文件&quot;:::
+1. 运行所有笔记本单元格。
+1. 选择特定的单元格，其中包含的代码是你希望新笔记本运行的。 例如，用于提交试验的代码，或者用于注册模型的代码。
+1. 选择单元格工具栏上出现的“收集”图标。
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="屏幕截图：选择“收集”图标":::
+1. 输入新的“已收集”笔记本的名称。  
 
-1. 为文件命名。 
-1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** " 笔记本的名称。  
-
-新笔记本只包含代码单元，所有单元格都需要生成与你为收集所选单元产生的结果相同的结果。
+新笔记本只包含代码单元格，所有单元格都需要生成与你选择用于收集的单元格相同的结果。
 
 ### <a name="save-and-checkpoint-a-notebook"></a>将笔记本保存并设置检查点
 
-Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
+Azure 机器学习在创建 *ipynb* 文件时创建一个检查点文件。
 
 在笔记本工具栏中，选择“菜单”，然后选择“文件”&gt;“保存并设置检查点”以手动保存笔记本，它会添加与笔记本关联的检查点文件。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="新建文件&quot;:::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="笔记本工具栏中保存工具的屏幕截图":::
 
-1. 为文件命名。 
-1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** ":::
-
-每个笔记本每隔30秒自动保存一次。自动保存仅更新初始 *ipynb*   文件，而不更新检查点文件。
+每个笔记本每隔 30 秒会自动保存一次。 自动保存仅更新初始 *ipynb* 文件，而不更新检查点文件。
  
 在“笔记本”菜单中选择“检查点”以创建命名检查点，并将笔记本还原为已保存的检查点。
 
@@ -187,7 +188,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 ### <a name="view-logs-and-output"></a>查看日志和输出
 
-使用[笔记本小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)可以查看运行进度和日志。 小组件具有异步性，在训练结束之前，它会一直提供更新。 Jupyter 和 JupterLab 也支持 Azure 机器学习小组件。
+使用[笔记本小组件](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)可以查看运行进度和日志。 小组件具有异步性，在训练结束之前，它会一直提供更新。 Jupyter 和 JupterLab 也支持 Azure 机器学习小组件。
 
 ## <a name="change-the-notebook-environment"></a>更改笔记本环境
 
@@ -217,7 +218,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 1. 选择笔记本工具栏中的“[打开终端](#terminal)”。
 1. 使用终端窗口创建新环境。  例如，以下代码会创建 `newenv`：
     ```shell
-    conda create --name newenv
+    conda create -y --name newenv
     ```
 1. 激活该环境。  例如，创建 `newenv` 的结果如下：
 
@@ -227,10 +228,13 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 1. 在新环境中安装 pip 和 ipykernel 包，并为该 conda 环境创建内核
 
     ```shell
-    conda install pip
-    conda install ipykernel
+    conda install -y pip
+    conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+
+> [!NOTE]
+> 对于笔记本内的包管理，使用 **% pip** 或 **% conda** 幻函数将包自动安装到 **当前正在运行的内核** 中，而不是引用所有 **(包（** 包括当前正在运行的内核之外的包） **，而不** 是引用所有包) 
 
 可以安装任何[可用的 Jupyter 内核](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)。
 

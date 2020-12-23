@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600790"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412368"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 进行强身份验证的四个步骤
 
@@ -83,7 +83,7 @@ Azure AD 应用程序代理具有以下优势：
 
 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) 可帮助你确定很有用的应用程序，这些应用程序可能批准并添加到企业应用程序库，以便用户受益于 SSO 和条件性访问等功能。
 
-<em>"**Cloud App Security** 可帮助我们以支持有助于保护 Accenture 的基础安全策略的方式正确地使用我们的云和 SaaS 应用程序。"</em> --- [John Blasi，管理总监，信息安全，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>" **Cloud App Security** 可帮助我们以支持有助于保护 Accenture 的基础安全策略的方式正确地使用我们的云和 SaaS 应用程序。"</em> --- [John Blasi，管理总监，信息安全，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 除了检测影子 IT 外，MCAS 还可以确定应用程序的风险级别，防止未经授权访问公司数据、可能的数据泄漏和应用程序固有的其他安全风险。
 
@@ -131,7 +131,7 @@ Azure AD Connect 在预配过程中扮演着关键角色。 如果同步服务�
 
 本部分列出了通过在保持警惕的同时为用户提供的有关删除组织中的摩擦的建议。
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>为所有用户启用自助密码重置
+### <a name="enable-self-service-password-reset-for-all-users"></a>为所有用户启用 Self-Service 密码重置
 
 Azure 的 [自助密码重置](../authentication/tutorial-enable-sspr.md) (SSPR) 为 IT 管理员提供了一种简单的方法，使用户能够在无需管理员干预的情况下重置和解锁其密码或帐户。 系统提供详细的报告，用于跟踪用户访问系统的时间，同时还提供通知，提醒用户存在误用或滥用情况。
 
@@ -147,7 +147,7 @@ Azure 提供可供你和你的组织使用的报表，以确保用户已注册 M
 
 ### <a name="self-service-app-management"></a>自助服务应用管理
 
-在用户可以从其访问面板中自行发现应用程序之前，你需要启用对你希望允许用户自行发现并请求访问的任何应用程序的 [自助服务应用程序访问权限](../manage-apps/access-panel-manage-self-service-access.md) 。 自助应用程序访问是允许用户自行发现应用程序并可以选择允许业务组批准对这些应用程序的访问权限的一种绝佳方式。 您可以允许业务组从其访问面板中管理分配给这些用户的 [密码单一登录应用程序](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) 的凭据。
+在用户可以从其访问面板中自行发现应用程序之前，你需要启用对你希望允许用户自行发现并请求访问的任何应用程序的 [自助服务应用程序访问权限](../manage-apps/access-panel-manage-self-service-access.md) 。 自助应用程序访问是允许用户自行发现应用程序并可以选择允许业务组批准对这些应用程序的访问权限的一种绝佳方式。 可以允许业务组从其访问面板中管理分配给这些用户的 [密码 Single-Sign](../manage-apps/troubleshoot-password-based-sso.md#automatically-capture-sign-in-fields-for-an-app) 的凭据。
 
 ### <a name="self-service-group-management"></a>自助组管理
 
@@ -156,7 +156,7 @@ Azure 提供可供你和你的组织使用的报表，以确保用户已注册 M
 * 基于属性的使用动态组成员身份
 * 委托给应用所有者
 
-Azure AD 提供使用安全组和 Microsoft 365 组管理对资源的访问的能力。 可以批准或拒绝成员身份请求并委派组成员身份的控制权限的组所有者可以管理这些组。 此功能称为 [自助服务组管理](../users-groups-roles/groups-self-service-management.md)，通过允许没有分配管理角色的组所有者来创建和管理组，而无需依赖管理员来处理其请求，从而节省了时间。
+Azure AD 提供使用安全组和 Microsoft 365 组管理对资源的访问的能力。 可以批准或拒绝成员身份请求并委派组成员身份的控制权限的组所有者可以管理这些组。 此功能称为 [自助服务组管理](../enterprise-users/groups-self-service-management.md)，通过允许没有分配管理角色的组所有者来创建和管理组，而无需依赖管理员来处理其请求，从而节省了时间。
 
 ## <a name="step-4---operationalize-your-insights"></a>步骤 4-操作你的见解
 
@@ -172,9 +172,9 @@ Azure AD 提供使用安全组和 Microsoft 365 组管理对资源的访问的�
 
 考虑到操作方法时，需要考虑几个级别的管理。 第一层将管理工作负担 () 。 始终使用全局管理员角色可能适用于小型公司。 但对于具有支持特定任务的技术支持人员和管理员的大型组织而言，分配全局管理员角色可能会带来安全风险，因为它让这些用户能够管理高于和超出其功能的任务。
 
-在这种情况下，你应该考虑下一层的管理。 使用 Azure AD，你可以将最终用户指定为 "受限管理员"，这些用户可以在权限较低的角色中管理任务。 例如，你可以向技术支持人员分配 [安全读者](../users-groups-roles/directory-assign-admin-roles.md#security-reader) 角色，使其能够使用只读访问权限来管理与安全相关的功能。 或者，将 [身份验证管理员](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator) 角色分配给个人是有意义的，使其能够重置非密码凭据或读取和配置 Azure 服务运行状况。
+在这种情况下，你应该考虑下一层的管理。 使用 Azure AD，你可以将最终用户指定为 "受限管理员"，这些用户可以在权限较低的角色中管理任务。 例如，你可以向技术支持人员分配 [安全读者](../roles/permissions-reference.md#security-reader) 角色，使其能够使用只读访问权限来管理与安全相关的功能。 或者，将 [身份验证管理员](../roles/permissions-reference.md#authentication-administrator) 角色分配给个人是有意义的，使其能够重置非密码凭据或读取和配置 Azure 服务运行状况。
 
-若要了解详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
+若要了解详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../roles/permissions-reference.md)。
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视混合组件 (Azure AD Connect 同步、AD FS) 
 
@@ -212,7 +212,7 @@ Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理�
 
 *"借助 Cloud App Security，我们可以快速发现异常并采取措施。"* --- [Eric LePenske，高级经理，信息安全，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>摘要
 
 实现混合标识解决方案有许多方面，但这四个步骤的清单将帮助你快速完成一个标识基础结构，使用户能够更高效、更安全。
 
@@ -267,6 +267,6 @@ Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 Azure Active Directory 的功能和此五步检查列表（ [用于保护标识基础结构的五个步骤](https://aka.ms/securitysteps)）中的功能提高安全状况。
+了解如何使用 Azure Active Directory 的功能和此五步检查列表（ [用于保护标识基础结构的五个步骤](../../security/fundamentals/steps-secure-identity.md)）中的功能提高安全状况。
 
-了解 Azure AD 中的身份功能如何帮助你通过提供解决方案和功能来帮助你加快向云管理管理的过渡，并使组织能够快速将更多的标识管理从传统的本地系统中迁移到 Azure AD- [Azure AD 为本地工作负荷提供云控制管理](https://aka.ms/cloudgoverned)。
+了解 Azure AD 中的身份功能如何帮助你通过提供解决方案和功能来帮助你加快向云管理管理的过渡，并使组织能够快速将更多的标识管理从传统的本地系统中迁移到 Azure AD- [Azure AD 为本地工作负荷提供云控制管理](./cloud-governed-management-for-on-premises.md)。

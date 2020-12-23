@@ -3,12 +3,12 @@ title: 如何使用 Azure 事件网格将事件从 Auth0 发送到 Azure
 description: 如何使用 Azure 事件网格将事件从 Auth0 发送到 Azure 服务。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 6cd440075c6400b58c23f879b53da26abe4f9e75
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a66a60cb926b933a6b0628a67506d0d52ab7a905
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103273"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077857"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>将 Azure 事件网格与 Auth0 集成
 
@@ -67,7 +67,7 @@ ms.locfileid: "86103273"
 1. 在你的 Auth0 集成的“合作伙伴主题”边栏选项卡上，选择顶部的“+ 事件订阅”。
 1. 在“创建事件订阅”页面上：
     1. 为事件订阅输入一个名称。
-    1. 为“终结点类型”选择你创建的 Azure 服务或 WebHook。
+    1. 选择为终结点类型创建的 Azure 服务或 Webhook。
     1. 按照适用于特定服务的说明进行操作。
     1. 单击“创建”。
 
@@ -90,5 +90,5 @@ Auth0 事件将通过流式传输机制传送到 Azure。 在 Auth0 中触发每
 ## <a name="next-steps"></a>后续步骤
 
 - [Auth0 合作伙伴主题](auth0-overview.md)
-- [合作伙伴主题概述](partner-topics-overview.md)
+- [合作伙伴主题概述](partner-events-overview.md)
 - [成为事件网格合作伙伴](partner-onboarding-overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4026bd9c5b4d73953509617fe4a8623987d22341
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545397"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456936"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BlueJeans for Azure AD 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545397"
 * 让用户使用其 Azure AD 帐户自动登录到 BlueJeans for Azure AD。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -150,7 +150,7 @@ ms.locfileid: "88545397"
 
 2. 依次转到“管理”\>“组设置”\>“安全”。
 
-    ![管理员](./media/bluejeans-tutorial/ic785868.png "管理员")
+    ![屏幕截图显示浏览器窗口的一部分，其中“管理”选项卡处于选中状态，并选中了“组设置”和“安全”。](./media/bluejeans-tutorial/ic785868.png "管理员")
 
 3. 在“安全”部分中，执行以下步骤：
 
@@ -192,14 +192,14 @@ ms.locfileid: "88545397"
 
 2. 转到“管理”\>“管理用户”\>“添加用户”。
 
-    ![管理员](./media/bluejeans-tutorial/ic785877.png "管理员")
+    ![屏幕截图显示浏览器窗口的一部分，其中“管理”选项卡处于选中状态，并选中了“管理用户”和“添加用户”。](./media/bluejeans-tutorial/ic785877.png "管理员")
 
     > [!IMPORTANT]
     > “添加用户”选项卡仅在“安全”选项卡中的的“启用自动预配”处于未选中状态时可用。
 
 3. 在“添加用户”部分中，执行以下步骤：
 
-    ![添加用户](./media/bluejeans-tutorial/ic785886.png "添加用户")
+    ![屏幕截图显示“添加用户”部分，可在其中输入此步骤中所述的信息。](./media/bluejeans-tutorial/ic785886.png "添加用户")
 
     a. 在“名字”文本框中，输入用户的名字，例如 B 。
 
@@ -219,7 +219,7 @@ ms.locfileid: "88545397"
 
     i. 单击“继续”。
 
-    ![添加用户](./media/bluejeans-tutorial/ic785887.png "添加用户")
+    ![屏幕截图显示“添加用户”部分，可在其中查看设置和功能，“添加用户”按钮处于选中状态。](./media/bluejeans-tutorial/ic785887.png "添加用户")
 
     J. 单击“添加用户”。
 
@@ -230,14 +230,14 @@ ms.locfileid: "88545397"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 BlueJeans for Azure AD 磁贴时，应当会自动登录到为其设置了 SSO 的 BlueJeans for Azure AD。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 BlueJeans for Azure AD 磁贴时，应当会自动登录到为其设置了 SSO 的 BlueJeans for Azure AD。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 BlueJeans for Azure AD](https://aad.portal.azure.com/)

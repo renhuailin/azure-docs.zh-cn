@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886485"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422121"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>设置 IoT Edge 模块和连接
 
@@ -49,27 +49,30 @@ ms.locfileid: "90886485"
    用户名|用户名
    密码|密码
   
-## <a name="deploy-the-data-generator-module"></a>部署数据生成器模块
+## <a name="build-push-and-deploy-the-data-generator-module"></a>生成、推送和部署数据生成器模块
 
-1. 在“自动设备管理”下的“IoT Edge”部分，单击“设备 ID”。 在本教程中，ID 为 `IronOrePredictionDevice`，然后单击“设置模块”。
-
-2.  在“在设备上设置模块：”页的“IoT Edge 模块”部分下，单击“+ ADD”并选择“IoT Edge 模块”   。
-
-3. 为 IoT Edge 模块提供有效的名称和映像 URI。
-   可以在本教程第一部分中创建的资源组的容器注册表中找到映像 URI。 选择“服务”下的“存储库”部分。 对于本教程，请选择名为 `silicaprediction` 的存储库。 选择相应标记。 映像 URI 的格式为：
-
-   containerregistry 登录服务器/存储库名称:标记名称
-
-   例如：
-
+1. 将[项目文件](https://github.com/microsoft/sqlsourabh/tree/main/SQLEdgeSamples/IoTEdgeSamples/IronOreSilica)克隆到计算机。
+2. 使用 Visual Studio 2019 打开文件 IronOre_Silica_Predict.sln
+3. 在 deployment.template.json 中更新容器注册表详细信息 
+   ```json
+   "registryCredentials":{
+        "RegistryName":{
+            "username":"",
+            "password":""
+            "address":""
+        }
+    }
    ```
-   ASEdemocontregistry.azurecr.io/silicaprediction:amd64
+4. 更新 modules.json 文件以指定目标容器注册表（或模块的存储库）
+   ```json
+   "image":{
+        "repository":"samplerepo.azurecr.io/ironoresilicapercent",
+        "tag":
+    }
    ```
-
-4. 按原样保留“重启策略”和“所需状态”字段 。
-
-5. 单击“添加”  。
-
+5. 在调试或发布模式下执行项目，确保项目运行不会出现任何问题 
+6. 右键单击项目名称，然后选择“生成和推送 IoT Edge 模块”，将项目推送到容器注册表。
+7. 将数据生成器模块作为 IoT Edge 模块部署到 Edge 设备。 
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>部署 Azure SQL Edge 模块
 
@@ -77,7 +80,7 @@ ms.locfileid: "90886485"
 
 2. 在“IoT Edge 模块市场”边栏选项卡上，搜索“Azure SQL Edge”并选择“Azure SQL Edge 开发人员” 。 
 
-3. 单击“IoT Edge 模块”下新添加的“Azure SQL Edge”模块，以配置 Azure SQL Edge 模块。 有关配置选项的详细信息，请参阅[部署 Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)。
+3. 单击“IoT Edge 模块”下新添加的“Azure SQL Edge”模块，以配置 Azure SQL Edge 模块。 有关配置选项的详细信息，请参阅[部署 Azure SQL Edge](./deploy-portal.md)。
 
 4. 将 `MSSQL_PACKAGE` 环境变量添加到 Azure SQL Edge 模块部署中，并指定在本教程[第一部分](tutorial-deploy-azure-resources.md)的步骤 8 中创建的数据库 dacpac 文件的 SAS URL。
 

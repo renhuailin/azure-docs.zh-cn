@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8690b1a4b8527a397fcf4c04892e167b5332358d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3766db0d5070f15216ac612353e2c25737ad092a
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035394"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741620"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>自定义 Azure Active Directory 自助式密码重置的用户体验
 
@@ -50,7 +50,7 @@ ms.locfileid: "87035394"
 
 在所有情况下，最多会向 100 个收件人发送通知。
 
-若要了解有关不同管理员角色以及如何分配它们的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。
+若要了解有关不同管理员角色以及如何分配它们的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../roles/permissions-reference.md)。
 
 ### <a name="disable-contact-your-administrator-emails"></a>禁用“联系管理员”电子邮件
 
@@ -61,7 +61,7 @@ ms.locfileid: "87035394"
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>自定义登录页面和访问面板
 
-可以自定义登录页面，例如，添加一个与符合公司品牌形象的图像一起显示的徽标。 有关如何配置公司品牌的详细信息，请参阅[Azure AD 中的将公司品牌添加到登录页](../fundamentals/customize-branding.md)。
+可以自定义登录页面，例如，添加一个与符合公司品牌形象的图像一起显示的徽标。 有关如何配置公司品牌的详细信息，请参阅 [Azure AD 中的将公司品牌添加到登录页](../fundamentals/customize-branding.md)。
 
 在以下情况下会显示所选图形：
 
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 若要了解如何在环境中使用 SSPR，请参阅[用于 Azure AD 密码管理的报告选项](howto-sspr-reporting.md)。
 
-如果你或用户遇到 SSPR 问题，请参阅[排查自助式密码重置问题](active-directory-passwords-troubleshoot.md)
+如果你或用户遇到 SSPR 问题，请参阅[排查自助式密码重置问题](./troubleshoot-sspr.md)

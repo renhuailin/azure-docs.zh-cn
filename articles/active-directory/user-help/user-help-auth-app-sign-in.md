@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 19e441334395f600c3adaa867660345164537f96
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3a9e4c8f3dd9e4cf291388bc102ae9a73d8de6dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799445"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131558"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用登录到帐户
 
@@ -51,11 +51,11 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 打开 Microsoft Authenticator 应用，转到工作或学校帐户，然后启用手机登录。
 
-- **点击 "帐户" 磁贴时**，会看到该帐户的全屏视图。 如果看到“已启用手机登录”，则表示已完全设置，无需密码即可登录。 如果看到“启用手机登录”，请点击它以启用手机登录。
-- **如果你已经使用了应用进行双重验证**，则可以点击 "帐户" 磁贴以查看帐户的全屏视图。 然后点击“启用手机登录”以启用手机登录。
+- **点击 "帐户" 磁贴时** ，会看到该帐户的全屏视图。 如果看到“已启用手机登录”，则表示已完全设置，无需密码即可登录。 如果看到“启用手机登录”，请点击它以启用手机登录。
+- **如果你已经使用了应用进行双重验证** ，则可以点击 "帐户" 磁贴以查看帐户的全屏视图。 然后点击“启用手机登录”以启用手机登录。
 - 如果在应用的“帐户”屏幕上找不到工作或学校帐户，则意味着尚未将其添加到应用。  按照 [添加工作或学校帐户帮助](user-help-auth-app-add-work-school-account.md)中的步骤操作，添加工作或学校帐户。
 
-打开手机登录后，只能使用 Microsoft Authenticator 应用登录。 以下是操作方法：
+打开手机登录后，只能使用 Microsoft Authenticator 应用登录。 下面介绍如何操作：
 
 1. 登录到工作或学校帐户。
 
@@ -82,8 +82,8 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 打开 Microsoft Authenticator 应用，转到工作或学校帐户，然后启用手机登录。
 
-- **点击 "帐户" 磁贴时**，会看到该帐户的全屏视图。 如果看到“已启用手机登录”，则表示已完全设置，无需密码即可登录。 如果看到“启用手机登录”，请点击它以启用手机登录。
-- **如果已将应用用于双因素验证**，则可以点击 "帐户" 磁贴以查看帐户的全屏视图。 然后点击“启用手机登录”以启用手机登录。
+- **点击 "帐户" 磁贴时** ，会看到该帐户的全屏视图。 如果看到“已启用手机登录”，则表示已完全设置，无需密码即可登录。 如果看到“启用手机登录”，请点击它以启用手机登录。
+- **如果已将应用用于双因素验证** ，则可以点击 "帐户" 磁贴以查看帐户的全屏视图。 然后点击“启用手机登录”以启用手机登录。
 - 如果在应用的“帐户”屏幕上找不到帐户，则意味着尚未将其添加到应用。  请按照[添加 Microsoft 个人帐户](user-help-auth-app-add-personal-ms-account.md)一文中的步骤添加 Microsoft 个人帐户。
 
 ### <a name="sign-in-to-your-account-using-phone-sign-in"></a>使用手机登录登录到帐户
@@ -111,7 +111,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 | 手机登录是否会替代双重验证？ 我是否应将其关闭？ | 手机登录是一种在移动设备上进行的双重验证。 应该让双重验证保持启用状态，以便为帐户提供额外的安全性。 |
 | 如果为帐户保持启用双重验证，是否必须批准两个通知？ | 不是。 使用手机登录到 Microsoft 帐户也算作双重验证，因此不需要再次批准。 |
 | 如果手机遗失或未随身携带， 如何访问我的帐户？ | 始终可以在登录页中选择“改用密码”链接，重新改用密码登录。 但是，如果使用双重验证，则仍需要使用第二种方法来验证身份。<br><br>**重要说明**<br>强烈建议确保有多个最新的验证方法与你的帐户相关联。<br><br>可以通过[安全设置](https://account.live.com/proofs/manage)页管理个人帐户的验证方法。 对于工作或学校帐户，如果管理员已启用安全信息，则你可以转到组织的[其他安全验证](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)页或“保护帐户安全”页。 有关安全信息的详细信息，请参阅[安全信息（预览版）概述](./security-info-setup-signin.md)。<br><br>如果无法管理验证方法，则必须与管理员联系。 |
-| 如何停用此功能，并重新改用密码登录？ | 对于个人帐户，请在登录期间选择“改用密码”链接。 系统会记住你最近的选择，并在下次登录时默认提供此选项。 如果想要改用手机登录，请在登录期间选择“改用应用”链接。<br><br>对于工作或学校帐户，必须从 Microsoft Authenticator 应用的“设置”页中取消注册设备，或从配置文件的“设备和活动”区域中禁用设备。 有关从配置文件禁用设备的详细信息，请参阅[从“我的应用”门户更新配置文件和帐户信息](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)。 |
+| 如何停用此功能，并重新改用密码登录？ | 对于个人帐户，请在登录期间选择“改用密码”链接。 系统会记住你最近的选择，并在下次登录时默认提供此选项。 如果想要改用手机登录，请在登录期间选择“改用应用”链接。<br><br>对于工作或学校帐户，必须从 Microsoft Authenticator 应用的“设置”页中取消注册设备，或从配置文件的“设备和活动”区域中禁用设备。 有关从配置文件禁用设备的详细信息，请参阅[从“我的应用”门户更新配置文件和帐户信息](./my-account-portal-devices-page.md#disable-a-device)。 |
 | 为何不能使用多个工作或学校帐户进行手机登录？ | 一部手机只能注册到单个工作或学校帐户。 如果想要为不同的工作或学校帐户启用手机登录，必须先通过“设置”页从此设备取消注册帐户。 |
 | 是否可以使用手机登录到电脑？ | 我们建议使用 Windows 10 上的 Windows Hello 登录到电脑。 Windows Hello 允许使用人脸、指纹或 PIN 登录。 |
 

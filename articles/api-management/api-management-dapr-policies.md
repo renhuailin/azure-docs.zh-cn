@@ -1,31 +1,31 @@
 ---
-title: Azure API 管理 Dapr 集成策略 |Microsoft Docs
+title: Azure API 管理 Dapr 集成策略 | Microsoft Docs
 description: 了解用于与 Dapr 微服务扩展进行交互的 Azure API 管理策略。
 author: vladvino
 ms.author: vlvinogr
-ms.date: 9/13/2020
+ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9d1ba226e3ca1276658f7e72e9094918f0379a77
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341304"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653531"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 集成策略
 
-本主题提供 Dapr 集成 API 管理策略的参考。 Dapr 是一种可移植运行时，可使用任何语言或框架构建无状态和有状态的基于微服务的应用程序。 它整理常见的微服务模式，如使用内置重试逻辑进行服务发现和调用、使用至少一次传递语义发布和订阅，或可插入绑定资源，以使用外部服务简化组合。 转到 [dapr.io](https://dapr.io) ，了解有关如何开始 dapr 的详细信息和说明。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。
+本主题提供 Dapr 集成 API 管理策略的参考。 Dapr 是一种可移植运行时，用于通过任何语言或框架来构建无状态和有状态的基于微服务的应用程序。 它能对常见的微服务模式进行编码，例如使用内置重试逻辑进行服务发现和调用，使用至少一次的传递语义进行发布和订阅，或者使用可插拔的绑定资源来简化使用外部服务的组合。 请转到 [dapr.io](https://dapr.io) 以获取有关如何开始使用 Dapr 的详细信息和说明。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。
 
 > [!CAUTION]
 > 本主题中所述的策略是公共预览版，并受 [Microsoft Azure 预览版补充使用条款的约束](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 > [!IMPORTANT]
-> 本主题中引用的策略仅适用于启用了 Dapr 支持的 [自承载版本的 API 管理网关](self-hosted-gateway-overview.md) 。
+> 本主题中引用的策略仅在启用了 Dapr 支持的 [API 管理网关的自承载版本](self-hosted-gateway-overview.md)中有效。
 
-## <a name="enable-dapr-support-in-the-self-hosted-gateway"></a>在自承载网关上启用 Dapr 支持
+## <a name="enable-dapr-support-in-the-self-hosted-gateway"></a>在自承载网关中启用 Dapr 支持
 
-若要在自承载网关上启用 Dapr 支持，请将下面的 [Dapr 批注](https://github.com/dapr/docs/blob/master/howto/configure-k8s/README.md) 添加到 [Kubernetes 部署模板](how-to-deploy-self-hosted-gateway-kubernetes.md) ，将 "app name" 替换为所需的名称。 [此处](https://aka.ms/apim/dapr/walkthru)提供了使用 Dapr 设置和使用 API 管理的完整演练。
+若要在自承载网关中启用 Dapr 支持，请将下面的 [Dapr 注释](https://github.com/dapr/docs/blob/master/README.md)添加到 [ Kubernetes 部署模板](how-to-deploy-self-hosted-gateway-kubernetes.md)中，将“app-name”替换为所需的名称。 [此处](https://aka.ms/apim/dapr/walkthru)提供了有关通过 Dapr 设置和使用 API 管理的完整演练。
 ```yml
 template:
     metadata:
@@ -37,17 +37,17 @@ template:
 ```
 
 
-## <a name="distributed-application-runtime-dapr-integration-policies"></a>分布式应用程序运行时 (Dapr) 集成策略
+## <a name="distributed-application-runtime-dapr-integration-policies"></a>分布式 Application Runtime (Dapr) 集成策略
 
--  向[服务发送请求](api-management-dapr-policies.md#invoke)：使用 Dapr 运行时找到 Dapr 微服务并可靠地与之通信。 若要详细了解 Dapr 中的服务调用，请参阅此 [自述](https://github.com/dapr/docs/blob/master/concepts/service-invocation/README.md#service-invocation) 文件中的说明。
--  [将消息发送到发布/订阅主题](api-management-dapr-policies.md#pubsub)：使用 Dapr 运行时将消息发布到发布/订阅主题。 若要详细了解 Dapr 中的发布/订阅消息，请参阅此 [自述](https://github.com/dapr/docs/blob/master/concepts/publish-subscribe-messaging/README.md) 文件中的说明。
--  [Trigger output binding](api-management-dapr-policies.md#bind)：通过输出绑定使用 Dapr 运行时调用外部系统。 若要详细了解 Dapr 中的绑定，请参阅此 [自述](https://github.com/dapr/docs/blob/master/concepts/bindings/README.md) 文件中的说明。
+-  [发送对服务的请求](api-management-dapr-policies.md#invoke)：使用 Dapr 运行时查找 Dapr 微服务并与之进行可靠的通信。 若要了解有关 Dapr 中服务调用的详细信息，请参阅这个 [README](https://github.com/dapr/docs/blob/master/README.md#service-invocation) 文件中的说明。
+-  [将消息发送到发布/订阅主题](api-management-dapr-policies.md#pubsub)：使用 Dapr 运行时将消息发布到发布/订阅主题。 若要了解有关 Dapr 中发布/订阅消息的详细信息，请参阅这个 [README](https://github.com/dapr/docs/blob/master/README.md) 文件中的说明。
+-  [触发器输出绑定](api-management-dapr-policies.md#bind)：使用 Dapr 运行时通过输出绑定调用外部系统。 若要了解有关 Dapr 中绑定的详细信息，请参阅此 [README](https://github.com/dapr/docs/blob/master/README.md) 文件中的说明。
 
-## <a name="send-request-to-a-service"></a><a name="invoke"></a> 向服务发送请求
+## <a name="send-request-to-a-service"></a><a name="invoke"></a> 发送对服务的请求
 
-此策略设置当前请求的目标 URL，以将 `http://localhost:3500/v1.0/invoke/{app-id}/method/{method-name}` 模板参数替换为 policy 语句中指定的值。
+此策略将当前请求的目标 URL 设置为 `http://localhost:3500/v1.0/invoke/{app-id}/method/{method-name}`，并且用策略语句中指定的值替换模板参数。
 
-策略假定 Dapr 在网关所在的同一 pod 中的挎斗容器中运行。 收到请求后，Dapr 运行时将执行服务发现和实际调用，包括 HTTP 和 gRPC、重试、分布式跟踪和错误处理之间的可能的协议转换。
+策略假设 Dapr 在网关所在的 pod 中的 sidecar 容器中运行。 接收到请求后，Dapr 运行时执行服务发现和实际调用，包括 HTTP 和 gRPC 之间可能的协议转换、重试、分布式跟踪和错误处理。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -59,9 +59,9 @@ template:
 
 #### <a name="example"></a>示例
 
-下面的示例演示如何在名为 "echo" 的微服务上调用名为 "back" 的方法。 `set-backend-service`策略设置目标 URL。 `forward-request`策略会将请求调度到 Dapr 运行时，这会将其传递到微服务。
+下面的示例演示如何在名为“echo”的微服务上调用名为“back”的方法。 `set-backend-service` 策略设置目标 URL。 `forward-request` 策略将请求分派到 Dapr 运行时，Dapr 运行时将请求传递给微服务。
 
-`forward-request`为清楚起见，此处显示了策略。 策略通常通过关键字从全局作用域 "继承" `base` 。
+为清楚起见，`forward-request` 策略在这里显示。 策略通常通过 `base` 关键字从全局范围“继承”。
 
 ```xml
 <policies>
@@ -89,11 +89,11 @@ template:
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 说明                     | 必须 | 默认 |
+| 特性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
-| backend-id       | 必须设置为 "dapr"           | 是      | 空值     |
-| dapr-id      | 目标微服务的名称。 映射到 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 参数。| 是 | 空值 |
-| dapr-方法      | 要在目标微服务上调用的方法的名称或 URL。 映射到 Dapr 中的 [方法名称](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 参数。| 是 | 空值 |
+| backend-id       | 必须设置为“dapr”           | 是      | 不适用     |
+| dapr-app-id      | 目标微服务的名称。 映射到 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
+| dapr-method      | 要在目标微服务上调用的方法或 URL 的名称。 映射到 Dapr 中的 [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 空值 |
 
 ### <a name="usage"></a>使用情况
 
@@ -104,14 +104,14 @@ template:
 
 ## <a name="send-message-to-pubsub-topic"></a><a name="pubsub"></a> 将消息发送到发布/订阅主题
 
-此策略指示 API 管理网关将消息发送到 Dapr 发布/订阅主题。 此策略通过发出 HTTP POST 请求来 `http://localhost:3500/v1.0/publish/{{pub-name}}/{{topic}}` 替换模板参数并添加在 policy 语句中指定的内容来完成此过程。
+此策略指示 API 管理网关向 Dapr 发布/订阅主题发送消息。 策略通过向 `http://localhost:3500/v1.0/publish/{{pubsub-name}}/{{topic}}` 发出 HTTP POST 请求、替换模板参数并添加策略语句中指定的内容来实现这一点。
 
-此策略假定 Dapr 运行时在与网关相同的 pod 中的挎斗容器中运行。 Dapr 运行时实现 Pub/Sub 语义。
+策略假设 Dapr 运行时正在网关所在的 pod 中的 sidecar 容器中运行。 Dapr 运行时实现发布/订阅语义。
 
 ### <a name="policy-statement"></a>策略语句
 
 ```xml
-<publish-to-dapr topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
+<publish-to-dapr pubsub-name="pubsub-name" topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
     <!-- message content -->
 </publish-to-dapr>
 ```
@@ -120,18 +120,19 @@ template:
 
 #### <a name="example"></a>示例
 
-下面的示例演示如何将当前请求的主体发送到 "订单" 发布/订阅[组件](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md#url-parameters)的 "新"[主题](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md#url-parameters)。 从 Dapr 运行时收到的响应存储在 [上下文](api-management-policy-expressions.md#ContextVariables) 对象中 Variables 集合的 "Dapr" 项中。
+下面的示例演示如何将当前请求的主体发送到“orders”发布/订阅[组件](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md#url-parameters)的“new”[主题](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md#url-parameters)。 从 Dapr 运行时接收到的响应存储在 [context](api-management-policy-expressions.md#ContextVariables) 对象的“变量”集合的“daprresponse”项中。
 
-例如，如果 Dapr 运行时找不到目标主题，并响应错误，则会触发 "错误" 部分。 从 Dapr 运行时收到的响应将按原义返回到调用方。 否则， `200 OK` 将返回默认响应。
+例如，如果 Dapr 运行时找不到目标主题，并且响应错误，则会触发“on-error”部分。 从 Dapr 运行时收到的响应被逐字返回给调用方。 否则，返回默认的 `200 OK` 响应。
 
-"后端" 部分为空，请求不会转发到后端。
+“backend”部分为空，请求不会转发到后端。
 
 ```xml
 <policies>
      <inbound>
         <base />
         <publish-to-dapr
-               topic="@("orders/new")"
+           pubsub-name="orders"
+               topic="new"
                response-variable-name="dapr-response">
             @(context.Request.Body.As<string>())
         </publish-to-dapr>
@@ -152,18 +153,19 @@ template:
 
 | 元素             | 说明  | 必需 |
 |---------------------|--------------|----------|
-| 发布到 dapr     | Root 元素 | 是      |
+| publish-to-dapr     | Root 元素 | 是      |
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 说明                     | 必须 | 默认 |
+| 特性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
-| 主题            | 目标主题名称               | 是      | 空值     |
-| ignore-error     | 如果设置为， `true` 则在从 Dapr 运行时收到错误时指示策略不触发 ["错误时"](api-management-error-handling-policies.md) 部分 | 否 | `false` |
-| response-variable-name | 用于存储来自 Dapr 运行时的响应的 [Variables](api-management-policy-expressions.md#ContextVariables) 集合项的名称 | 否 | 无 |
-| timeout | ) 等待 Dapr 运行时响应的时间 (秒。 范围介于1到240秒之间。 | 否 | 5 |
-| template | 用于转换消息内容的模板化引擎。 "液体" 是唯一受支持的值。 | 否 | 无 |
-| content-type | 消息内容的类型。 "application/json" 是唯一受支持的值。 | 否 | 无 |
+| pubsub-name      | 目标 PubSub 组件的名称。 映射到 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。 如果不存在，则 topic 属性值必须采用 `pubsub-name/topic-name` 形式。    | 否       | 无    |
+| 主题            | 主题的名称。 映射到 Dapr 中的 [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。               | 是      | 空值     |
+| ignore-error     | 如果设置为 `true`，则指示策略在收到来自 Dapr 运行时的错误时不触发[“on error”](api-management-error-handling-policies.md)部分 | 否 | `false` |
+| response-variable-name | 用于存储来自 Dapr 运行时的响应的[变量](api-management-policy-expressions.md#ContextVariables)集合项的名称 | 否 | 无 |
+| timeout | 等待 Dapr 运行时做出响应的时间（以秒为单位）。 范围为 1 到 240 秒。 | 否 | 5 |
+| template | 用于转换消息内容的模板引擎。 “Liquid”是唯一支持的值。 | 否 | 无 |
+| content-type | 消息内容的类型。 “application/json”是唯一支持的值。 | 否 | 无 |
 
 ### <a name="usage"></a>使用情况
 
@@ -174,9 +176,9 @@ template:
 
 ## <a name="trigger-output-binding"></a><a name="bind"></a> 触发器输出绑定
 
-此策略指示 API 管理网关触发出站 Dapr [绑定](https://github.com/dapr/docs/blob/master/concepts/bindings/README.md)。 此策略通过发出 HTTP POST 请求来 `http://localhost:3500/v1.0/bindings/{{bind-name}}` 替换模板参数并添加在 policy 语句中指定的内容来完成此过程。
+此策略指示 API 管理网关触发出站 Dapr [绑定](https://github.com/dapr/docs/blob/master/README.md)。 策略通过向 `http://localhost:3500/v1.0/bindings/{{bind-name}}` 发出 HTTP POST 请求、替换模板参数并添加策略语句中指定的内容来实现这一点。
 
-此策略假定 Dapr 运行时在与网关相同的 pod 中的挎斗容器中运行。 Dapr 运行时负责调用绑定所表示的外部资源。
+策略假设 Dapr 运行时正在网关所在的 pod 中的 sidecar 容器中运行。 Dapr 运行时负责调用绑定表示的外部资源。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -195,11 +197,11 @@ template:
 
 #### <a name="example"></a>示例
 
-下面的示例演示了名为 "external systems"、操作名称为 "create"、由名为 "source" 和 "client-ip" 的两个键/值项组成的出站绑定，以及来自原始请求的正文。 从 Dapr 运行时收到的响应在 [上下文](api-management-policy-expressions.md#ContextVariables) 对象中的 Variables 集合的 "绑定响应" 条目中捕获。
+下面的示例演示了如何触发名为“external-systems”的出站绑定，其操作名称为“create”，元数据由两个名为“source”和“client-ip”的键/值项组成，并且主体来自原始请求。 从 Dapr 运行时接收到的响应在 [context](api-management-policy-expressions.md#ContextVariables) 对象的“变量”集合的“bind-response”项中捕获。
 
-如果 Dapr 运行时由于某种原因而失败，并且响应错误，则会触发 "错误" 部分，并且从 Dapr 运行时收到的响应将按原义返回到调用方。 否则， `200 OK` 将返回默认响应。
+如果 Dapr 运行时由于某种原因而失败并返回错误，则会触发“on-error”部分，并且从 Dapr 运行时收到的响应会逐字返回给调用方。 否则，返回默认的 `200 OK` 响应。
 
-"后端" 部分为空，请求不会转发到后端。
+“backend”部分为空，请求不会转发到后端。
 
 ```xml
 <policies>
@@ -234,22 +236,22 @@ template:
 
 | 元素             | 说明  | 必需 |
 |---------------------|--------------|----------|
-| dapr-binding | Root 元素 | 是      |
-| metadata            | 以键/值对的形式绑定特定元数据。 映射到 Dapr 中的 [元数据](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 属性。 | 否 |
-| 数据            | 消息的内容。 映射到 Dapr 中的 [数据](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 属性。 | 否 |
+| invoke-dapr-binding | Root 元素 | 是      |
+| metadata            | 以键/值对的形式绑定特定的元数据。 映射到 Dapr 中的[元数据](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings)属性。 | 否 |
+| 数据            | 消息的内容。 映射到 Dapr 中的[数据](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings)属性。 | 否 |
 
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 说明                     | 必须 | 默认 |
+| 特性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
-| name            | 目标绑定名称。 必须与 Dapr 中 [定义](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) 的绑定的名称相匹配。           | 是      | 空值     |
-| operation       | 目标操作名称 (绑定特定) 。 映射到 Dapr 中的 [操作](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 属性。 | 否 | 无 |
-| ignore-error     | 如果设置为， `true` 则在从 Dapr 运行时收到错误时指示策略不触发 ["错误时"](api-management-error-handling-policies.md) 部分 | 否 | `false` |
-| response-variable-name | 用于存储来自 Dapr 运行时的响应的 [Variables](api-management-policy-expressions.md#ContextVariables) 集合项的名称 | 否 | 无 |
-| timeout | ) 等待 Dapr 运行时响应的时间 (秒。 范围介于1到240秒之间。 | 否 | 5 |
-| template | 用于转换消息内容的模板化引擎。 "液体" 是唯一受支持的值。 | 否 | 无 |
-| content-type | 消息内容的类型。 "application/json" 是唯一受支持的值。 | 否 | 无 |
+| name            | 目标绑定名称。 必须与 Dapr 中的[已定义](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure)的绑定名称匹配。           | 是      | 不适用     |
+| operation       | 目标操作名称（特定于绑定）。 映射到 Dapr 中的[操作](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings)属性。 | 否 | 无 |
+| ignore-error     | 如果设置为 `true`，则指示策略在收到来自 Dapr 运行时的错误时不触发[“on error”](api-management-error-handling-policies.md)部分 | 否 | `false` |
+| response-variable-name | 用于存储来自 Dapr 运行时的响应的[变量](api-management-policy-expressions.md#ContextVariables)集合项的名称 | 否 | 无 |
+| timeout | 等待 Dapr 运行时做出响应的时间（以秒为单位）。 范围为 1 到 240 秒。 | 否 | 5 |
+| template | 用于转换消息内容的模板引擎。 “Liquid”是唯一支持的值。 | 否 | 无 |
+| content-type | 消息内容的类型。 “application/json”是唯一支持的值。 | 否 | 无 |
 
 ### <a name="usage"></a>使用情况
 

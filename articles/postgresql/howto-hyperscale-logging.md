@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
-ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f8840d5115cb552ed203705d37f8c692b3418947
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895873"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492329"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模 (Citus 中的日志) 
 
@@ -34,5 +34,5 @@ PostgreSQL 日志在超大规模 (Citus) 服务器组的每个节点上可用。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Log analytics 查询入门](/azure/azure-monitor/log-query/get-started-portal)
-- 了解 [Azure 事件中心](/azure/event-hubs/event-hubs-about)
+- [Log analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
+- 了解 [Azure 事件中心](../event-hubs/event-hubs-about.md)

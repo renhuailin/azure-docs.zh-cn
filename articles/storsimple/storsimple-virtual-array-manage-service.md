@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 92041be4d3d5ef4d980c17fa0a5870b740c1784a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994991"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>为 StorSimple 虚拟阵列部署 StorSimple Device Manager 服务
 
@@ -36,7 +36,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 * 获取服务注册密钥
 * 重新生成服务注册密钥
 
-本教程介绍了如何执行上述每个任务。 本文中包含的信息仅适用于 StorSimple Virtual Array。 有关 StorSimple 8000 系列的详细信息，请转到[部署 StorSimple Manager 服务](storsimple-manage-service.md)。
+本教程介绍了如何执行上述每个任务。 本文中包含的信息仅适用于 StorSimple Virtual Array。 有关 StorSimple 8000 系列的详细信息，请转到[部署 StorSimple Manager 服务](./storsimple-8000-manage-service.md)。
 
 ## <a name="create-a-service"></a>创建服务
 
@@ -77,7 +77,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
    
     ![删除服务](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
-3. 当系统提示确认时，请单击确认通知中的“是”****。 
+3. 当系统提示确认时，请单击确认通知中的“是”。 
    
     ![确认服务删除](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
 4. 可能需要花费几分钟时间才能删除服务。 成功删除服务后，会收到通知。
@@ -89,15 +89,15 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
  ![已更新的服务列表](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>获取服务注册密钥
-成功创建服务后，需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-security.md)。 可以通过访问服务的“密钥”**** 边栏选项卡来获取注册密钥。
+成功创建服务后，需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](./storsimple-8000-security.md)。 可以通过访问服务的“密钥”边栏选项卡来获取注册密钥。
 
 可以执行以下步骤来获取服务注册密钥。
 
 #### <a name="to-get-the-service-registration-key"></a>获取服务注册密钥
-1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”“密钥”******&gt;** ****。
+1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”“密钥”**&gt;** 。
    
    ![“密钥”边栏选项卡](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. 在“密钥”**** 边栏选项卡中，会显示服务注册密钥。 使用“复制”图标复制该注册密钥。 
+2. 在“密钥”边栏选项卡中，会显示服务注册密钥。 使用“复制”图标复制该注册密钥。 
 
 将服务注册密钥保存在安全位置。 要为其他设备注册此服务，需要使用此密钥以及服务数据加密密钥。 获取服务注册密钥后，需要通过 StorSimple 接口的 Windows PowerShell 配置设备。
 
@@ -107,13 +107,13 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 执行以下步骤，重新生成服务注册密钥。
 
 #### <a name="to-regenerate-the-service-registration-key"></a>重新生成服务注册密钥
-1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”“密钥”******&gt;** ****。
+1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”“密钥”**&gt;** 。
    
    ![密钥边栏选项卡](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. 在“密钥”**** 边栏选项卡中，单击“重新生成”****。
+2. 在“密钥”边栏选项卡中，单击“重新生成”。
    
    ![单击“重新生成”](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. 在“重新生成服务注册密钥”**** 边栏选项卡中，查看重新生成密钥时所需的操作。 后续将注册到此服务的所有设备将使用新的注册密钥。 单击“重新生成”**** 以确认。 完成注册后，将收到通知。
+3. 在“重新生成服务注册密钥”边栏选项卡中，查看重新生成密钥时所需的操作。 后续将注册到此服务的所有设备将使用新的注册密钥。 单击“重新生成”以确认。 完成注册后，将收到通知。
    
    ![确认重新生成密钥](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. 将显示新的服务注册密钥。
@@ -125,4 +125,3 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [开始](storsimple-virtual-array-deploy1-portal-prep.md) 使用 StorSimple 虚拟阵列。
 * 了解如何[管理 StorSimple 设备](storsimple-ova-web-ui-admin.md)。
-

@@ -4,17 +4,18 @@ description: Synapse SQL 支持使用 Active Directory 通用身份验证从 SQL
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: 52964c906df7a96685c8eb80c1d23ef9a9efc6e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91361834"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843292"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>将多重 AAD 身份验证与 Synapse SQL（针对 MFA 的 SSMS 支持）配合使用
 
@@ -22,7 +23,7 @@ Synapse SQL 支持使用 Active Directory 通用身份验证从 SQL Server Manag
 
 本文讨论各种身份验证选项之间的差异，以及与使用通用身份验证相关的限制。 
 
-**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 下载最新版本的 SSMS。
+**下载最新 SSMS** - 在客户端计算机上，从 [下载 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 下载最新版本的 SSMS。
 
 对于本文中讨论的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新连接对话框的外观应类似于下图：
 
@@ -39,11 +40,11 @@ Active Directory 通用身份验证支持两种非交互式身份验证方法：
 - `Active Directory - Password`
 - `Active Directory - Integrated`
 
-同时支持 Azure 多重身份验证 (MFA) 的交互式方法是：
+同时支持 Azure AD 多重身份验证 (MFA) 的交互式方法是：
 
 - `Active Directory - Universal with MFA`
 
-Azure MFA 可满足用户简单登录过程的需求，同时可帮助保护数据访问权限和应用程序。 它利用一系列简单的验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证，用户可以根据自己的偏好选择所用的方法。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。
+Azure AD MFA 可保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它利用一系列简单的验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证，用户可以根据自己的偏好选择所用的方法。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。
 
 有关多重身份验证的说明，请参阅[多重身份验证](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 

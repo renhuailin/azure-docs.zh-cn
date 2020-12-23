@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987205"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751285"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>配置“在空闲时间启动/停止 VM”
 
@@ -48,7 +48,7 @@ ms.locfileid: "90987205"
 
 2. 添加一个逗号分隔的 Vm 列表，其中包含在 **VMList** 参数字段中不包含空格)  (。 示例列表是 `vm1,vm2,vm3` 。
 
-3. 将 " **WHATIF** 参数" 字段设置为 True。
+3. 将 " **WHATIF** 参数" 字段设置为 "True"，以预览所做的更改。
 
 4. 使用以 `External_ExcludeVMNames` 逗号分隔的 vm 列表配置变量， (VM1，VM2，VM3) ，逗号分隔值之间没有空格。
 
@@ -63,7 +63,7 @@ ms.locfileid: "90987205"
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>针对订阅和资源组确定启动和停止操作的目标
 
-1. 将具有正整数值的 `sequencestart` 和 `sequencestop` 标记添加到 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 变量中的目标 VM。 按升序执行启动和停止操作。 若要了解如何标记 VM，请参阅[在 Azure 中标记 Windows 虚拟机](../virtual-machines/windows/tag.md)和[在 Azure 中标记 Linux 虚拟机](../virtual-machines/linux/tag.md)。
+1. 将具有正整数值的 `sequencestart` 和 `sequencestop` 标记添加到 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 变量中的目标 VM。 按升序执行启动和停止操作。 若要了解如何标记 VM，请参阅[在 Azure 中标记 Windows 虚拟机](../virtual-machines/tag-portal.md)和[在 Azure 中标记 Linux 虚拟机](../virtual-machines/tag-cli.md)。
 
 2. 修改计划 **Sequenced-StartVM** 和 **Sequenced-StopVM** 的日期和时间，以满足要求并启用计划。
 
@@ -79,7 +79,7 @@ ms.locfileid: "90987205"
 
 3. 添加一个逗号分隔的 Vm 列表，其中包含在 **VMList** 参数字段中不包含空格)  (。 示例列表是 `vm1,vm2,vm3` 。
 
-4. 将 **WHATIF** 设置为 True。 
+4. 将 " **WHATIF** " 设置为 "True" 以预览所做的更改。 
 
 5. 使用以 `External_ExcludeVMNames` 逗号分隔的 vm 列表配置变量，逗号分隔值之间没有空格。
 
@@ -139,7 +139,7 @@ ms.locfileid: "90987205"
 
 1. 在 Azure 门户中，依次导航到“监视”和“操作组” 。 选择名为“StartStop_VM_Notication”的操作组。
 
-    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text=""监视"-"操作组" 页的屏幕截图。":::
+    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="&quot;监视&quot;-&quot;操作组&quot; 页的屏幕截图。":::
 
 2. 在“StartStop_VM_Notification”页上，单击“详细信息”下的“编辑详细信息” 。 “电子邮件/短信/推送/语音”页面随即打开。 更新电子邮件地址，并单击“确定”以保存更改。
 

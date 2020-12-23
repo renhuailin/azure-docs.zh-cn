@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314481"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784161"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -59,9 +59,9 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 若要管理安全警报和保护资源，请参考以下资源。
 
 项目    
-- [在 Azure 安全中心进行安全运行状况监视](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-- [保护 Azure 安全中心中的网络](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-- [在 Azure 安全中心保护 Azure SQL 服务和数据](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [在 Azure 安全中心进行安全运行状况监视](./security-center-monitoring.md)
+- [保护 Azure 安全中心中的网络](./security-center-network-recommendations.md)
+- [在 Azure 安全中心保护 Azure SQL 服务和数据](./security-center-remediate-recommendations.md)
 
 
 视频    
@@ -77,8 +77,8 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 * [Respond quickly to threats with next-generation security operation, and investigation](https://youtu.be/e8iFCz5RM4g)（通过下一代安全操作和调查对威胁进行快速响应）
 
 项目    
-* [利用 Azure 安全中心进行事件响应](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [通过工作流自动化自动响应](workflow-automation.md)
+* [利用 Azure 安全中心进行事件响应](./tutorial-security-incident.md)
+* [使用自动化来响应安全中心触发器](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>高级云防御
 
@@ -91,8 +91,8 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 * [Azure Security Center - Adaptive Application Controls](https://youtu.be/wWWekI1Y9ck)（Azure 安全中心 - 自适应应用程序控制）
 
 项目    
-* [使用实时功能管理虚拟机访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
-* [Azure 安全中心的自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [使用实时功能管理虚拟机访问](./security-center-just-in-time.md)
+* [Azure 安全中心的自适应应用程序控制](./security-center-adaptive-application.md)
 
 ## <a name="hands-on-activities"></a>动手活动
 
@@ -101,17 +101,17 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 * [Azure 安全中心 Playbook：安全警报](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>其他资源
-* [安全中心文档页](https://docs.microsoft.com/azure/security-center/)
-* [安全中心 REST API 文档页](https://msdn.microsoft.com/library/mt704034.aspx)
-* [Azure 安全中心常见问题 (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq)
+* [安全中心文档页](./index.yml)
+* [安全中心 REST API 文档页](/previous-versions/azure/reference/mt704034(v=azure.100))
+* [Azure 安全中心常见问题 (FAQ)](./faq-general.md)
 * [安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)
-* [标识安全最佳做法](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
-* [网络安全最佳实践](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
-* [PaaS 建议](https://docs.microsoft.com/azure/security/security-paas-deployments)
+* [标识安全最佳做法](../security/fundamentals/identity-management-best-practices.md)
+* [网络安全最佳实践](../security/fundamentals/network-best-practices.md)
+* [PaaS 建议](../security/fundamentals/paas-deployments.md)
 * [遵从性](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Log Analytics 客户现在可以使用 Azure 安全中心来保护其混合云工作负荷](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Log Analytics 客户现在可以使用 Azure 安全中心来保护其混合云工作负荷](/archive/blogs/msoms/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads)
 
 ## <a name="community-resources"></a>社区资源
 
 * [安全中心 UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [问答&安全中心页面](https://docs.microsoft.com/answers/topics/azure-security-center.html)
+* [问答&安全中心页面](/answers/topics/azure-security-center.html)

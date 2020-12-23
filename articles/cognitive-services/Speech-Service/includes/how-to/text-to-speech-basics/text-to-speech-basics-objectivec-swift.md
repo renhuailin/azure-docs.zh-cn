@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 9/22/2020
 ms.author: v-demjoh
-ms.openlocfilehash: e2551952b2d70199b73ac7972a6a6934aa34dd2a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 213d2a0e6f5c156ee0592a1f1389e1fd6e569b29
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332414"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425026"
 ---
 可以使用适用于 Swift 和 Objective-C 的语音 SDK 从文本合成语音。
 
@@ -27,4 +27,4 @@ ms.locfileid: "91332414"
 * [在 iOS 上使用 Swift 合成语音](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios/text-to-speech)
 * [有关 iOS 上 Objective-C 的其他示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios)
 
-我们还提供了在线的[适用于 Objective-C 的语音 SDK 参考](https://docs.microsoft.com/objectivec/cognitive-services/speech/)。
+我们还提供了在线的[适用于 Objective-C 的语音 SDK 参考](/objectivec/cognitive-services/speech/)。

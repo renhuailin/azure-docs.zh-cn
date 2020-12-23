@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053144"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011415"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
@@ -21,7 +21,7 @@ ms.locfileid: "88053144"
 
 ## <a name="resource-logs-schema"></a>资源日志架构
 
-请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md#resource-logs-schema)，了解资源日志的架构。 以下 JSON 是数据错误资源日志的“属性”字段示例值****。
+请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md#resource-logs-schema)，了解资源日志的架构。 以下 JSON 是数据错误资源日志的“属性”字段示例值。
 
 ```json
 {
@@ -168,7 +168,7 @@ ms.locfileid: "88053144"
 * 原因：应用程序时间与抵达时间之间的差大于延期抵达容限时限。
 * 提供的门户通知：否
 * 资源日志级别：信息
-* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理延期输入事件。 有关详细信息，请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
+* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理延期输入事件。 有关详细信息，请参阅[时间处理策略](/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
    * 应用程序时间和抵达时间。 
    * 最大若干 KB 的实际有效负载。
@@ -184,7 +184,7 @@ ms.locfileid: "88053144"
 * 原因：应用程序时间与抵达时间之间的差大于 5 分钟。
 * 提供的门户通知：否
 * 资源日志级别：信息
-* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理提前输入事件。 有关详细信息，请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
+* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理提前输入事件。 有关详细信息，请参阅[时间处理策略](/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
    * 应用程序时间和抵达时间。 
    * 最大若干 KB 的实际有效负载。
@@ -200,7 +200,7 @@ ms.locfileid: "88053144"
 * 原因：根据定义的失序容限时限将事件视为失序。
 * 提供的门户通知：否
 * 资源日志级别：信息
-* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理失序事件。 有关详细信息，请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
+* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理失序事件。 有关详细信息，请参阅[时间处理策略](/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
    * 最大若干 KB 的实际有效负载。
 
@@ -212,12 +212,16 @@ ms.locfileid: "88053144"
 
 ## <a name="output-data-errors"></a>输出数据错误
 
+Azure 流分析可以根据配置，识别有无 i/o 请求的输出数据错误。 例如，  `PartitionKey` 在没有 i/o 请求的情况下，如果使用 Azure 表输出，则缺少所需的列（例如）。 但是，SQL 输出中的约束冲突确实需要 i/o 请求。
+
+在调用输出接收器后，只能检测到几个数据错误，这可能会降低处理速度。 若要解决此问题，请更改作业的配置或导致数据错误的查询。
+
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 
 * 原因：输出所需的列不存在。 例如，定义为 Azure 表 PartitionKey 的列不存在。
 * 提供的门户通知：是
 * 资源日志级别：警告
-* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括缺少必需的列。
+* 影响：将会根据[输出数据策略](./stream-analytics-output-error-policy.md)设置处理所有输出数据转换错误，包括缺少必需的列。
 * 日志详细信息
    * 列名称，以及记录标识符或记录部分。
 
@@ -232,7 +236,7 @@ ms.locfileid: "88053144"
 * 原因：列值不符合输出。 例如，列名称不是有效的 Azure 表列。
 * 提供的门户通知：是
 * 资源日志级别：警告
-* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括无效的列名称。
+* 影响：将会根据[输出数据策略](./stream-analytics-output-error-policy.md)设置处理所有输出数据转换错误，包括无效的列名称。
 * 日志详细信息
    * 列名称，以及记录标识符或记录部分。
 
@@ -247,7 +251,7 @@ ms.locfileid: "88053144"
 * 原因：列无法转换为输出中的有效类型。 例如，列的值与 SQL 表中定义的约束或类型不兼容。
 * 提供的门户通知：是
 * 资源日志级别：警告
-* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括类型转换错误。
+* 影响：将会根据[输出数据策略](./stream-analytics-output-error-policy.md)设置处理所有输出数据转换错误，包括类型转换错误。
 * 日志详细信息
    * 列的名称。
    * 记录标识符或记录部分。
@@ -263,7 +267,7 @@ ms.locfileid: "88053144"
 * 原因：消息的值大于支持的输出大小。 例如，事件中心输出的记录大于 1 MB。
 * 提供的门户通知：是
 * 资源日志级别：警告
-* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括记录超过大小限制。
+* 影响：将会根据[输出数据策略](./stream-analytics-output-error-policy.md)设置处理所有输出数据转换错误，包括记录超过大小限制。
 * 日志详细信息
    * 记录标识符或记录部分。
 
@@ -278,7 +282,7 @@ ms.locfileid: "88053144"
 * 原因：记录中已包含与 System 列同名的列。 例如，CosmosDB 输出中包含一个名为 ID 的列，而另外还有一个 ID 列。
 * 提供的门户通知：是
 * 资源日志级别：警告
-* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括重复的键。
+* 影响：将会根据[输出数据策略](./stream-analytics-output-error-policy.md)设置处理所有输出数据转换错误，包括重复的键。
 * 日志详细信息
    * 列的名称。
    * 记录标识符或记录部分。

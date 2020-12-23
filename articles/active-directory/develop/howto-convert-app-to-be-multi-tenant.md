@@ -9,27 +9,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/17/2020
+ms.date: 10/27/2020
 ms.author: ryanwi
-ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
+ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631301"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779747"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
-如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为 *使应用程序成为多租户应用程序*。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
+如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为使应用程序成为多租户应用程序。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
 
 如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需要注册应用，通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，并按下应用程序中的[“使用 Microsoft 登录”按钮][AAD-App-Branding]。
 
 > [!NOTE]
-> 本文假设已熟悉如何为 Azure AD 构建单租户应用程序。 如果不是，则从[开发人员指南主页][AAD-Dev-Guide]上其中一个快速入门开始。
+> 本文假设你已熟悉如何为 Azure AD 构建单租户应用程序。 如果不是，则从[开发人员指南主页][AAD-Dev-Guide]上其中一个快速入门开始。
 
-将应用程序转换成 Azure AD 多租户应用包括四个简单的步骤：
+将应用程序转换成 Azure AD 多租户应用包括四个步骤：
 
 1. [将应用程序注册更新为多租户](#update-registration-to-be-multi-tenant)
 2. [将代码更新为向 /common 终结点发送请求](#update-your-code-to-send-requests-to-common)
@@ -46,16 +46,13 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门�
 
 默认情况下，通过 Azure 门户创建的应用在创建应用时设置了一个全局唯一的应用 ID URI，但你可以更改此值。 例如，如果租户的名称为 contoso.onmicrosoft.com，则有效的应用 ID URI 为 `https://contoso.onmicrosoft.com/myapp`。 如果租户具有已验证的域 `contoso.com`，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。 如果应用程序 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
 
-> [!NOTE]
-> 默认情况下，本机客户端注册以及 [Microsoft 标识平台应用程序](./v2-overview.md)是多租户的。 不需要采取任何措施将这些应用程序注册转换为多租户。
-
 ## <a name="update-your-code-to-send-requests-to-common"></a>将代码更新为向 /common 发送请求
 
 在单租户应用程序中，登录请求将发送到租户的登录终结点。 以 contoso.onmicrosoft.com 为例，终结点将是：`https://login.microsoftonline.com/contoso.onmicrosoft.com`。 发送到租户终结点的请求可以让该租户中的用户（或来宾）登录该租户中的应用程序。
 
 使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.microsoftonline.com/common`
 
-当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /Common 终结点可与 Azure AD 支持的所有身份验证协议配合使用： OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
+当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
 
 然后，对应用程序做出的登录响应会包含代表该用户的令牌。 令牌中的颁发者值告知应用程序该用户来自哪个租户。 从 /common 终结点返回响应时，令牌中的颁发者值将与用户的租户相对应。
 
@@ -67,34 +64,36 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门�
 Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令牌。
 
 > [!NOTE]
-> 尽管本机客户端应用程序从 Microsoft 标识平台请求并接收令牌，但它们这样做是为了将令牌发送到 API 来进行验证。 本机应用程序不会验证令牌，并且必须将它们视为不透明。
+> 尽管本机客户端应用程序从 Microsoft 标识平台请求并接收令牌，但它们这样做是为了将令牌发送到 API 进行验证。 本机应用程序不会验证访问令牌，必须将它们视为不透明。
 
 让我们看看应用程序如何验证它从 Microsoft 标识平台接收的令牌。 单租户应用程序通常采用类似于下面的终结点值：
 
 ```http
-    https://login.microsoftonline.com/contoso.onmicrosoft.com
+https://login.microsoftonline.com/contoso.onmicrosoft.com
 ```
 
 并使用该值构造元数据 URL（在本例中为 OpenID Connect），例如：
 
 ```http
-    https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
 ```
 
-以下载用于验证令牌的两项关键信息：租户的签名密钥和颁发者值。 每个 Azure AD 租户使用以下格式的唯一颁发者值：
+以下载用于验证令牌的两项关键信息：租户的签名密钥和颁发者值。
+
+每个 Azure AD 租户使用以下格式的唯一颁发者值：
 
 ```http
-    https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
 ```
 
 其中，GUID 值是租户的租户 ID 重命名安全版本。 如果选择上面的 `contoso.onmicrosoft.com` 元数据链接，就可以在文档中看到此颁发者值。
 
-单租户应用程序对令牌进行验证时，它将对照来自元数据文档的签名密钥检查令牌的签名。 此测试使得它可以确保令牌中的颁发者值与在元数据文档中找到的颁发者值相匹配。
+单租户应用程序对令牌进行验证时，会对照来自元数据文档的签名密钥检查令牌的签名。 此测试使得它可以确保令牌中的颁发者值与在元数据文档中找到的颁发者值相匹配。
 
 由于 /common 终结点既不对应于租户也不是颁发者，因此在检查 /common 的元数据中的颁发者值时，它具有的是一个模板化的 URL 而不是实际值：
 
 ```http
-    https://sts.windows.net/{tenantid}/
+https://sts.windows.net/{tenantid}/
 ```
 
 因此，多租户应用程序无法仅通过将元数据中的颁发者值与令牌中的 `issuer` 值进行匹配来验证令牌。 多租户应用程序需要一个逻辑来根据颁发者值的租户 ID 部分来确定哪些颁发者值有效、哪些颁发者值无效。
@@ -105,7 +104,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 ## <a name="understand-user-and-admin-consent"></a>了解用户同意和管理员同意
 
-若要让用户登录 Azuer AD 中的某个应用程序，必须以用户租户的形式表示该应用程序。 这样，组织便可以采取一些措施，例如，当其租户中的用户登录应用程序时应用唯一策略。 对于单租户应用程序，此注册过程相当简单，它与在 [Azure 门户][AZURE-portal]中注册应用程序时的过程相同。
+若要让用户登录 Azuer AD 中的某个应用程序，必须以用户租户的形式表示该应用程序。 这样，组织便可以采取一些措施，例如，当其租户中的用户登录应用程序时应用唯一策略。 对于单租户应用程序，此注册过程更简单，它与在 [Azure 门户][AZURE-portal]中注册应用程序时的过程相同。
 
 对于多租户应用程序，应用程序的初始注册过程是在开发人员使用的 Azure AD 租户中进行的。 当来自不同租户的用户首次登录应用程序时，Azure AD 会要求他们同意应用程序所请求的权限。 如果他们同意，系统将在用户的租户中创建一个称为“服务主体”  的应用程序表示形式，然后登录即可继续进行。 系统还会在记录用户对应用程序的同意意向的目录中创建委托。 有关应用程序的 Application 和 ServicePrincipal 对象以及它们之间关系的详细信息，请参阅[应用程序对象和服务主体对象][AAD-App-SP-Objects]。
 
@@ -117,6 +116,8 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 * 仅限应用的权限直接授予给应用程序的标识。 例如，可以向应用程序授予仅限应用的权限来读取租户中的用户列表，无论是谁登录此应用程序，该应用程序都能够执行此操作。
 
 有些权限可由普通用户同意，有些则需要租户管理员同意。
+
+若要了解有关用户和管理员同意的详细信息，请参阅 [配置管理员许可工作流](../manage-apps/configure-admin-consent-workflow.md)。
 
 ### <a name="admin-consent"></a>管理员同意
 
@@ -130,10 +131,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 `prompt=admin_consent` 参数还可以由请求权限但不要求管理员同意的应用程序使用。 何时会使用此功能的一个示例是当应用程序需要如下所述的体验时，即：租户管理员“注册”一次，在此之后不再提示其他用户确认同意。
 
-如果某个应用程序需要管理员同意并且管理员登录而没有发送 `prompt=admin_consent` 参数，则当管理员成功地向该应用程序表示同意时，它**仅适用于其用户帐户**。 普通用户仍然无法登录或同意该应用程序。 如果想要让租户管理员浏览应用程序，然后允许其他用户访问，则此功能就很有用。
-
-> [!NOTE]
-> 某些应用程序想要提供一种体验，让普通用户能够一开始即表示同意，应用程序可让管理员参与操作并请求需要管理员同意的权限。 当前 Azure AD 中的 v1.0 应用程序注册没有办法做到这一点；但是，使用 Microsoft 标识平台 (v2.0) 终结点允许应用程序在运行时（而不是在注册时）请求权限，从而启用此方案。 有关详细信息，请参阅 [Microsoft 标识平台终结点][AAD-V2-Dev-Guide]。
+如果某个应用程序需要管理员同意并且管理员登录而没有发送 `prompt=admin_consent` 参数，则当管理员成功地向该应用程序表示同意时，它 **仅适用于其用户帐户**。 普通用户仍然无法登录或同意该应用程序。 如果想要让租户管理员浏览应用程序，然后允许其他用户访问，则此功能就很有用。
 
 ### <a name="consent-and-multi-tier-applications"></a>同意和多层应用程序
 
@@ -143,8 +141,8 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 如果逻辑应用程序包含两个或更多个应用程序注册（例如独立的客户端和资源），这可能造成问题。 如何先将资源添加到客户租户中？ Azure AD 通过实现在单个步骤中连接客户端和资源来涵盖了此情况。 用户在同意页面上会看到由客户端和资源请求的权限的总和。 若要启用此行为，资源的应用程序注册必须在其[应用程序清单][AAD-App-Manifest]中以 `knownClientApplications` 形式包含客户端的应用 ID。 例如：
 
-```aad-app-manifest
-    knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```json
+"knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 ```
 
 在本文末尾的[相关内容](#related-content)部分的多层本机客户端调用 Web API 示例中对此进行了演示。 下图针对在单个租户中注册的多层应用提供了同意概览。
@@ -153,7 +151,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>多个租户中的多个层
 
-如果在不同的租户中注册不同的应用程序层，将发生类似的情况。 例如，假设构建调用 Exchange Online API 的本机客户端应用程序。 如果要开发该本机应用程序，并让该本机应用程序在客户的租户中运行，必须存在 Exchange Online 服务主体。 在此情况下，开发人员和客户必须购买 Exchange Online，才能在其租户中创建服务主体。
+如果在不同的租户中注册不同的应用程序层，将发生类似的情况。 例如，考虑构建一个调用 Exchange Online API 的本机客户端应用程序的情况。 如果要开发该本机应用程序，并让该本机应用程序在客户的租户中运行，必须存在 Exchange Online 服务主体。 在此情况下，开发人员和客户必须购买 Exchange Online，才能在其租户中创建服务主体。
 
 如果它是由 Microsoft 以外的组织生成的 API，则 API 的开发人员需要提供一个可供其客户许可将其应用程序添加到客户租户中的方式。 对于第三方开发人员，建议的设计是使所生成的 API 能够同时用作 Web 客户端来实现注册。 为此，请按以下步骤操作：
 
@@ -177,7 +175,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>多租户应用程序和缓存访问令牌
 
-多租户应用程序也可以获取访问令牌来调用受 Azure AD 保护的 API。 配合多租户应用程序使用 Active Directory 身份验证库 (ADAL) 时经常会出现一个错误，就是一开始即使用 /common 来为用户请求令牌、接收响应，然后同样使用 /common 来为同一用户请求后续令牌。 由于从 Azure AD 返回的响应来自租户而不是 /common，因此 ADAL 缓存令牌时将它视为来自租户。 后续为了为用户获取访问令牌而执行的 /common 调用会错过缓存项，因此系统会再次提示用户登录。 为了避免缓存未命中，请确保后续为登录用户执行的调用是针对租户的终结点发出的。
+多租户应用程序也可以获取访问令牌来调用受 Azure AD 保护的 API。 在多租户应用程序中使用 Microsoft 身份验证库 (MSAL) 时经常会出现一个错误，就是一开始即使用 /common 为用户请求令牌、接收响应，然后同样使用 /common 为同一用户请求后续令牌。 由于从 Azure AD 返回的响应来自租户而不是 /common，因此 MSAL 缓存令牌时将它视为来自租户。 后续为了为用户获取访问令牌而执行的 /common 调用会错过缓存项，因此系统会再次提示用户登录。 为了避免缓存未命中，请确保后续为登录用户执行的调用是针对租户的终结点发出的。
 
 ## <a name="related-content"></a>相关内容
 
@@ -190,7 +188,9 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 启用应用与 Azure AD 之间 (SSO) 的单一登录后，还可以更新应用程序以访问 Microsoft 资源（如 Microsoft 365）公开的 Api。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要详细了解如何对 Azure AD 和 Microsoft 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用，请访问 [MICROSOFT GRAPH API][MSFT-Graph-overview]。
+本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用和 Azure AD 之间启用单个 Sign-On (SSO) 后，还可以更新应用程序以访问 Microsoft 资源（如 Microsoft 365）公开的 Api。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。
+
+若要详细了解如何对 Azure AD 和 Microsoft 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用，请访问 [Microsoft Graph API][MSFT-Graph-overview]。
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

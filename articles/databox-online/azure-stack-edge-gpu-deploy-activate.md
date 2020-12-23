@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903466"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938345"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 激活 Azure Stack Edge Pro
 
@@ -52,12 +52,12 @@ ms.locfileid: "90903466"
 
 4. 选择“应用”。 
 
-    ![本地 Web UI“云详细信息”页](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
+    ![本地 Web UI“云详细信息”页 2](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
 
 
 5. 首先激活设备。 随后系统会提示你下载密钥文件。
     
-    ![本地 Web UI“云详细信息”页](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
+    ![本地 Web UI“云详细信息”页 3](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
     选择“下载并继续”，并将 device-serial-no.json 文件保存在设备之外的安全位置。 该密钥文件包含设备上的 OS 磁盘和数据磁盘的恢复密钥。 可能需要这些密钥来辅助将来的系统恢复。
 
@@ -88,10 +88,11 @@ ms.locfileid: "90903466"
 
 6. 转至“概述”页面。 设备状态应显示为“已激活”。
 
-    ![本地 Web UI“云详细信息”页](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
+    ![本地 Web UI“云详细信息”页 4](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
  
 已完成设备激活。 现在可以在设备上添加共享。
 
+如果在激活期间遇到任何问题，请转到[对激活和 Azure Key Vault 错误进行故障排除](azure-stack-edge-gpu-troubleshoot-activation.md#activation-errors)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,37 +6,37 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-keywords: 认知服务，认知情报，认知解决方案，ai 服务
+keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e276d96e8a81b435ec4d0c270cf818555d512ae0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262427"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368893"
 ---
-# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入门：使用 Azure 命令行接口 (CLI 创建认知服务资源) 
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入门：使用 Azure Command-Line 接口 (CLI 创建认知服务资源) 
 
-使用本快速入门可通过 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 开始使用 Azure 认知服务。
+使用本快速入门可通过 [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest) 开始使用 Azure 认知服务。
 
 Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮助开发人员将认知智能内置于应用程序，而无需具备直接的人工智能 (AI) 或数据科学技能或知识。 借助 Azure 认知服务，开发人员可以通过能够看、听、说、理解甚至开始推理的认知解决方案，轻松将认知功能添加到他们的应用程序中。
 
-认知服务由你在 Azure 订阅中创建的 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示。 创建资源后，请使用生成的密钥和终结点对应用程序进行身份验证。
+认知服务由你在 Azure 订阅中创建的 Azure [资源](../azure-resource-manager/management/manage-resources-portal.md)表示。 创建资源后，请使用生成的密钥和终结点对应用程序进行身份验证。
 
-本快速入门介绍如何使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 注册 Azure 认知服务以及创建包含单服务或多服务订阅的帐户。 这些服务由 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示，可用于连接到一个或多个 Azure 认知服务 API。
+本快速入门介绍如何使用 [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest) 注册 Azure 认知服务以及创建包含单服务或多服务订阅的帐户。 这些服务由 Azure [资源](../azure-resource-manager/management/manage-resources-portal.md)表示，可用于连接到一个或多个 Azure 认知服务 API。
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 订阅-免费 [创建一个](https://azure.microsoft.com/free/cognitive-services) 。
-* [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>安装 Azure CLI 并登录
 
-安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要登录到本地安装的 CLI，请运行 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令：
+安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要登录到本地安装的 CLI，请运行 [az login](/cli/azure/reference-index#az-login) 命令：
 
 ```azurecli-interactive
 az login
@@ -134,7 +134,7 @@ az group create \
 | 内容审查器 | `ContentModerator` |
 | 个性化体验创建服务      | `Personalizer`     |
 
-可以使用 [az cognitiveservices account list-kinds](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) 命令查找可用认知服务“种类”的列表：
+可以使用 [az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) 命令查找可用认知服务“种类”的列表：
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -142,7 +142,7 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>将新资源添加到资源组
 
-若要创建并订阅新的认知服务资源，请使用 [az cognitiveservices account create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) 命令。 此命令会将新的可计费资源添加到前面创建的资源组。 创建新资源时，需要知道你要使用哪种服务，及其定价层（或 SKU）和 Azure 位置：
+若要创建并订阅新的认知服务资源，请使用 [az cognitiveservices account create](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) 命令。 此命令会将新的可计费资源添加到前面创建的资源组。 创建新资源时，需要知道你要使用哪种服务，及其定价层（或 SKU）和 Azure 位置：
 
 可以使用以下命令为异常检测器创建名为 `anomaly-detector-resource` 的 F0（免费）资源。
 
@@ -160,13 +160,13 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
-若要登录到本地安装的命令行接口 (CLI)，请使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
+若要登录到本地安装的命令行接口 (CLI)，请使用 [az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az cognitiveservices account keys list](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) 命令获取认知服务资源的密钥。
+使用 [az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) 命令获取认知服务资源的密钥。
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -185,7 +185,7 @@ az login
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>获取资源的当前配额使用情况
 
-使用 [az cognitiveservices account list-usage](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) 命令获取认知服务资源的使用情况。
+使用 [az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) 命令获取认知服务资源的使用情况。
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \
@@ -207,6 +207,6 @@ az group delete --name cognitive-services-resource-group
 ## <a name="see-also"></a>另请参阅
 
 * [对 Azure 认知服务的请求进行身份验证](authentication.md)
-* [什么是 Azure 认知服务？](Welcome.md)
+* [什么是 Azure 认知服务？](./what-are-cognitive-services.md)
 * [自然语言支持](language-support.md)
 * [Docker 容器支持](cognitive-services-container-support.md)

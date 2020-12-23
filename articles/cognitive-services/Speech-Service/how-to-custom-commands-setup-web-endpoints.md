@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e64c5ddfafb8bc8e9041e6d6b3e473a9a20565ed
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843118"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025885"
 ---
 # <a name="set-up-web-endpoints"></a>设置 Web 终结点
 
@@ -49,10 +49,10 @@ ms.locfileid: "91843118"
    | 标头 | 键：app，Value：取 applicationId 的前 8 位 | 要包含在请求头中的标头参数。|
 
     > [!NOTE]
-    > - 使用 [Azure Function](https://docs.microsoft.com/azure/azure-functions/) 创建的示例 Web 终结点，该终结点与保存电视和风扇设备状态的数据库挂钩
+    > - 使用 [Azure Function](../../azure-functions/index.yml) 创建的示例 Web 终结点，该终结点与保存电视和风扇设备状态的数据库挂钩
     > - 建议的标头只是示例终结点需要而已
     > - 若要确保标头值在示例终结点中具有唯一性，请使用 applicationId 的前 8 位
-    > - 在实际中，Web 终结点可以是管理设备的 [IoT 中心](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) 的终结点
+    > - 在实际中，Web 终结点可以是管理设备的 [IoT 中心](../../iot-hub/about-iot-hub.md) 的终结点
 
 1. 单击“ **保存**”。
 
@@ -125,14 +125,14 @@ ms.locfileid: "91843118"
     1. 将下面的 JSON 复制到“活动内容”
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-    > [!div class="mx-imgBorder"]
-    > ![成功时发送活动](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
 现在，只有当对 Web 终结点的请求成功时才向客户端发送活动。
 
@@ -206,4 +206,5 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为自定义命令应用程序启用 CI/CD 过程](./how-to-custom-commands-deploy-cicd.md)
+> [以远程技能导出自定义命令应用程序](./how-to-custom-commands-integrate-remote-skills.md)
+

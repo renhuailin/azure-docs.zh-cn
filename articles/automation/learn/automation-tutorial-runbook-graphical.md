@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b6c02778b0ee790d81c713283e653058c29c153
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987656"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899791"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>教程：创建图形 Runbook
 
@@ -46,7 +46,7 @@ ms.locfileid: "90987656"
 
 3. 选择“创建 Runbook”，创建一个新的 Runbook。
 
-4. 将该 Runbook 命名为 **MyFirstRunbook-Graphical**。
+4. 将该 Runbook 命名为 **MyFirstRunbook-Graphical** 。
 
 5. 在本例中，你将创建一个[图形 Runbook](../automation-graphical-authoring-intro.md)。 选择“图形”作为“Runbook 类型”。
 
@@ -78,7 +78,7 @@ ms.locfileid: "90987656"
 
    可以使用来自另一个活动、自动化资产或 PowerShell 表达式之类的源的输出。 在本例中，输出内容只是 `Hello World`。 可以使用 PowerShell 表达式并指定一个字符串。
 
-8. 在“表达式”字段中键入 `Hello World`，然后单击“确定”两次以返回到画布。
+8. 在“表达式”字段中键入 `"Hello World"`，然后单击“确定”两次以返回到画布。
 
 9. 通过单击“保存” 保存 Runbook。
 
@@ -335,7 +335,7 @@ Runbook 当前会启动资源组中为 `Start-AzVM` cmdlet 指定的 VM。 如�
 
 18. 对于“条件表达式”，请键入 `$ActivityOutput['Get Status'] -eq "Stopped"`。 现在，仅当 VM 已停止时，`Start-AzVM` 才会运行。
 
-19. 在库控件中，展开 **Cmdlet** 节点，并展开 **Microsoft.PowerShell.Utility**。
+19. 在库控件中，展开 **Cmdlet** 节点，并展开 **Microsoft.PowerShell.Utility** 。
 
 20. 将 `Write-Output` 添加到画布两次。
 

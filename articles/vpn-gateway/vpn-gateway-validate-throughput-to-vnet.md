@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398501"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660927"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
@@ -119,7 +119,7 @@ VPN 网关连接涉及以下组件：
 1. 完成上述步骤后，请调换角色以使服务器节点变为客户端节点（反之亦然），然后执行相同的步骤。
 
 > [!Note]
-> Iperf 不是唯一工具。 [NTTTCP 是用于测试的备用解决方案](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing)。
+> Iperf 不是唯一工具。 [NTTTCP 是用于测试的备用解决方案](../virtual-network/virtual-network-bandwidth-testing.md)。
 
 ## <a name="test-vms-running-windows"></a>测试运行 Windows 的 VM
 
@@ -225,7 +225,7 @@ Make install 速度较快
 
 即使使用上述步骤评估得出的总体吞吐量（iPERF/NTTTCP/等）良好，在使用 Windows 资源管理器或通过 RDP 会话拖放时，也仍可能会遇到文件复制速度缓慢的情况。 此问题通常是由以下的一个或两个因素造成的：
 
-* 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx)）使用 16 或 32 个线程来复制文件。 若要更改 Richcopy 中的文件复制线程数目，请单击“操作”   > “复制选项”   > “文件复制”  。
+* 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](/previous-versions/technet-magazine/dd547088(v=msdn.10))）使用 16 或 32 个线程来复制文件。 若要更改 Richcopy 中的文件复制线程数目，请单击“操作”   > “复制选项”   > “文件复制”  。
 
    ![文件复制速度缓慢问题](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -233,7 +233,7 @@ Make install 速度较快
    > 并非所有应用程序的工作方式都相同，此外，并非所有应用程序/进程都利用所有线程。 如果运行测试，可以看到某些线程是空的，不能提供准确的吞吐量结果。
    > 若要检查应用程序文件的传输性能，请通过增加连续线程数来使用多线程，或减少线程数，以找到应用程序或文件传输的最佳吞吐量。
 
-* VM 磁盘读/写速度不够快。 有关详细信息，请参阅 [Azure 存储故障排除](../storage/common/storage-e2e-troubleshooting.md)。
+* VM 磁盘读/写速度不够快。 有关详细信息，请参阅 [Azure 存储故障排除](/previous-versions/azure/storage/common/storage-e2e-troubleshooting)。
 
 ## <a name="on-premises-device-external-facing-interface"></a>本地设备上的对外接口
 

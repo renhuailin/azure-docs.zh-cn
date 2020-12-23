@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569605"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629028"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -138,7 +138,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 * 使用用户定义的路由可为需要 Internet 连接的每个子网建立 Internet 连接。
 
 > [!NOTE]
-> 播发默认路由会中断 Windows 和其他 VM 许可证激活。 请按照 [此处](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) 的说明来解决此问题。
+> 播发默认路由会中断 Windows 和其他 VM 许可证激活。 请按照 [此处](/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) 的说明来解决此问题。
 > 
 > 
 
@@ -185,11 +185,11 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | 东亚 | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 | 12076:55010 |
 | Southeast Asia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
 | **日本** | |
-| 日本东部 | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
+| Japan East | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
 | 日本西部 | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 | 12076:55013 |
 | **澳大利亚** | |
 | 澳大利亚东部 | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 | 12076:55015 |
-| 澳大利亚东南部 | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
+| Australia Southeast | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
 | **澳大利亚政府** | |
 | 澳大利亚中部 | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 | 12076:55032 |
 | 澳大利亚中部 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 | 12076:55033 |
@@ -226,12 +226,15 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | CRM Online\*\*\*\* |12076:5040 |
 | Azure 全局服务\* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
-| Azure 资源管理器 |12076:5070 |
+| Azure Resource Manager |12076:5070 |
 | 其他 Office 365 联机服务 * * | 12076:5100 |
 
 \* Azure 全局服务目前仅包含 Azure DevOps。
-\*\* Microsoft 要求的授权，请参阅 [为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)\
+
+\*\* Microsoft 要求的授权，请参阅 [为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)
+
 \*\*\* 此社区还发布了 Microsoft 团队服务所需的路由。
+
 \*\*\*\* CRM Online 支持 Dynamics 8.2 和更低的版本。 对于更高版本，请选择 Dynamics 部署的区域社区。
 
 > [!NOTE]
@@ -258,6 +261,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype For Business Online |12076:5130 |
+| Azure Active Directory |12076:5160 |
 | 其他 Office 365 Online 服务 |12076:5200 |
 
 ## <a name="next-steps"></a>后续步骤

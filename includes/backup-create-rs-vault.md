@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: c111752dcca03781dfb2a11fb100dafc4bad90f7
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 69259023484457249acd4c7b4a65c4cbe3e660ca
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91401109"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184734"
 ---
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -65,4 +65,4 @@ ms.locfileid: "91401109"
      ![刷新备份保管库列表](./media/backup-create-rs-vault/refresh-button.png)
 
 >[!IMPORTANT]
-> 强烈建议先查看“存储复制类型”和“安全设置”的默认设置，再在保管库中配置备份。  有关详细信息，请参阅[设置存储冗余](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)部分。
+> 强烈建议先查看“存储复制类型”和“安全设置”的默认设置，再在保管库中配置备份。  有关详细信息，请参阅[设置存储冗余](../articles/backup/backup-create-rs-vault.md#set-storage-redundancy)部分。

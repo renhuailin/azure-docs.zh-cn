@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/01/2020
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: bc811ab3cab4b79b81b16dd94a2c72225046e35a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91459823"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488272"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义条件访问技术配置文件
 
@@ -53,7 +53,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 | Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| OperationType | 是 | 必须是 **Evaluation**。  |
+| OperationType | 是 | 必须是 **Evaluation** 。  |
 
 ### <a name="input-claims"></a>输入声明
 
@@ -115,7 +115,7 @@ InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation
 
 | Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| OperationType | 是 | 必须是 **Remediation**。  |
+| OperationType | 是 | 必须是 **Remediation** 。  |
 
 ### <a name="input-claims"></a>输入声明
 
@@ -130,7 +130,7 @@ InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation
 
 ### <a name="output-claims"></a>输出声明
 
-条件访问协议提供程序不返回任何 **OutputClaims**，因此无需指定输出声明。 但是，只要设置了 `DefaultValue` 属性，就可以包含条件访问协议提供程序不会返回的声明。
+条件访问协议提供程序不返回任何 **OutputClaims** ，因此无需指定输出声明。 但是，只要设置了 `DefaultValue` 属性，就可以包含条件访问协议提供程序不会返回的声明。
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
@@ -428,7 +428,7 @@ InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
               <Value>CAChallengeIsMfa</Value>
-              <Value>false</Value>
+              <Value>False</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -458,7 +458,7 @@ InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
-              <Value>true</Value>
+              <Value>True</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -521,3 +521,7 @@ InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation
   </RelyingParty>
 </TrustFrameworkPolicy>
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+- 可在 [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)上找到条件性访问策略的示例。

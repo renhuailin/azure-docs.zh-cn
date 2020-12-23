@@ -3,18 +3,18 @@ title: 'Azure 数据工厂：常见问题 '
 description: 获取有关 Azure 数据工厂的常见问题的解答。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 2d1b9f0e25c460b7f26c31c3d2c6ebe51d958017
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440501"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485003"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 
@@ -70,7 +70,7 @@ ms.locfileid: "89440501"
 在选择“调试”之前，不需要将所做的更改发布至数据工厂服务。 在开发、测试或生产环境中更新数据工厂工作流之前，如果想确保新添加的内容或更改能按预期工作，这一点就很有帮助。 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>将 SSIS 包部署到 Azure 的功能 
-如果想要移动 SSIS 工作负荷，可以创建一个数据工厂，并预配 Azure-SSIS 集成运行时。 Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 有关分步说明，请参阅[将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md) 教程。 
+如果想要移动 SSIS 工作负荷，可以创建一个数据工厂，并预配 Azure-SSIS 集成运行时。 Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 有关分步说明，请参阅[将 SSIS 包部署到 Azure](./tutorial-deploy-ssis-packages-azure.md) 教程。 
  
 ### <a name="sdks"></a>SDK
 对于正在寻求编程接口的高级用户，数据工厂提供了一组丰富的 SDK，让用户在偏好的 IDE 中创作、管理和监视管道。 语言支持包括 .NET、PowerShell、Python 以及 REST。
@@ -97,7 +97,7 @@ ms.locfileid: "89440501"
 
 - **数据移动**：就数据移动而言，集成运行时在源和目标数据存储之间移动数据，同时为内置连接器、格式转换、列映射和高性能可缩放数据传输提供支持。
 - **调动活动**：就转换而言，集成运行时提供本机执行 SSIS 包的能力。
-- **执行 SSIS 包**：Integration Runtime 在托管的 Azure 计算环境中本机执行 SSIS 包。 集成运行时还支持调度和监视在各种计算服务（例如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
+- **执行 SSIS 包**：Integration Runtime 在托管的 Azure 计算环境中本机执行 SSIS 包。 Integration Runtime 还支持调度和监视各种计算服务（如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
 
 可以按需部署一个或多个集成运行时实例来移动和转换数据。 集成运行时可以在 Azure 公用网络或专用网络（本地、Azure 虚拟网络或 Amazon Web Services 虚拟私有云 [VPC]）中运行。 
 
@@ -127,7 +127,7 @@ ms.locfileid: "89440501"
 数据工厂中的链接服务有两个用途：
 
 - 代表数据存储，包括但不限于 SQL Server 实例、Oracle 数据库实例、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储列表，请参阅 [Azure 数据工厂中的复制活动](copy-activity-overview.md)。
-- 代表可托管活动执行的*计算资源*。 例如，HDInsight Hive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[在 Azure 数据工厂中转换数据](transform-data.md)。
+- 代表可托管活动执行的 *计算资源*。 例如，HDInsight Hive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[在 Azure 数据工厂中转换数据](transform-data.md)。
 
 ### <a name="triggers"></a>触发器
 触发器表示处理单元，确定何时启动管道执行。 不同类型的事件有不同类型的触发器类型。 
@@ -159,7 +159,7 @@ ms.locfileid: "89440501"
 有关 Azure 数据工厂的最新信息，请访问以下站点：
 
 - [博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [文档主页](/azure/data-factory)
+- [文档主页](./index.yml)
 - [产品主页](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>技术深入了解 
@@ -190,7 +190,7 @@ ms.locfileid: "89440501"
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>使用数据工厂中的其他90数据集类型如何实现访问数据？
 
-映射数据流功能目前允许 Azure SQL 数据库、Azure Synapse Analytics (以前的 SQL 数据仓库) 、从 Azure Blob 存储或 Azure Data Lake Storage Gen2 中分隔的文本文件，以及从 Blob 存储中 Parquet 文件，或为源和接收器本地 Data Lake Storage Gen2。 
+映射数据流功能目前允许 Azure SQL 数据库、Azure Synapse Analytics、来自 Azure Blob 存储的带分隔符的文本文件，Azure Data Lake Storage Gen2 或从 Blob 存储中的 Parquet 文件或本机为源和接收器 Data Lake Storage Gen2 的文件。 
 
 使用复制活动可从任何其他连接器暂存数据，然后执行数据流活动，在暂存数据后对其进行转换。 例如，管道将首先复制到 Blob 存储，然后数据流活动将使用源中的数据集来转换该数据。
 

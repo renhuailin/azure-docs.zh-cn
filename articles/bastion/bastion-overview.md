@@ -5,20 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89291868"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183871"
 ---
 # <a name="what-is-azure-bastion"></a>什么是 Azure Bastion？
 
-Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 TLS 直接在 Azure 门户中实现与虚拟机之间的安全无缝的 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。
+Azure Bastion 是你部署的一项服务，借此可使用浏览器和 Azure 门户连接到虚拟机。 Azure Bastion 服务是的一种完全平台管理的 PaaS 服务，可在虚拟网络中进行预配。 可通过 TLS 直接从 Azure 门户实现与虚拟机之间的安全无缝的 RDP/SSH 连接。 通过 Azure Bastion 连接时，你的虚拟机无需公共 IP、代理或特殊的客户端软件。
 
-Bastion 为预配它的虚拟网络中的所有 VM 提供安全的 RDP 和 SSH 连接。 使用 Azure Bastion 可防止虚拟机向外部公开 RDP/SSH 端口，同时仍然使用 RDP/SSH 提供安全访问。 使用 Azure Bastion，可直接从 Azure 门户连接到虚拟机。 无需额外的客户端、代理或软件。
+Bastion 为预配它的虚拟网络中的所有 VM 提供安全的 RDP 和 SSH 连接。 使用 Azure Bastion 可防止虚拟机向外部公开 RDP/SSH 端口，同时仍然使用 RDP/SSH 提供安全访问。
 
 ## <a name="architecture"></a>体系结构
 
@@ -57,5 +57,5 @@ RDP 和 SSH 是连接 Azure 中运行的工作负载的基本方法。 不要通
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建 Azure Bastion 主机资源](bastion-create-host-portal.md)。
+* [教程：创建 Azure Bastion 主机并连接到 Windows VM](tutorial-create-host-portal.md)。
 * 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。

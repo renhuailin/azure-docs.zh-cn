@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dc38b53705c24cb12a001237a9a80ec66ec33e14
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: b951dab1ad01187c7612fad047bc52eb6aa9700e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613789"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701868"
 ---
 # <a name="textures"></a>纹理
 
@@ -26,7 +26,7 @@ ms.locfileid: "89613789"
 
 ## <a name="supported-texture-formats"></a>支持的纹理格式
 
-为 ARR 指定的所有纹理都必须采用 [DDS 格式](https://en.wikipedia.org/wiki/DirectDraw_Surface)。 最好使用纹理图和纹理压缩。 若要自动执行转换过程，请参阅 [TexConv 命令行工具](../resources/tools/tex-conv.md)。
+为 ARR 指定的所有纹理都必须采用 [DDS 格式](https://en.wikipedia.org/wiki/DirectDraw_Surface)。 最好使用纹理图和纹理压缩。
 
 ## <a name="loading-textures"></a>加载纹理
 
@@ -89,12 +89,12 @@ void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # 纹理类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.texture)
-* [C # RemoteManager LoadTextureAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
-* [C # RemoteManager LoadTextureFromSASAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
-* [C + + 纹理类](https://docs.microsoft.com/cpp/api/remote-rendering/texture)
-* [C + + RemoteManager：： LoadTextureAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtextureasync)
-* [C + + RemoteManager：： LoadTextureFromSASAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
+* [C # 纹理类](/dotnet/api/microsoft.azure.remoterendering.texture)
+* [C # RemoteManager LoadTextureAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
+* [C # RemoteManager LoadTextureFromSASAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C + + 纹理类](/cpp/api/remote-rendering/texture)
+* [C + + RemoteManager：： LoadTextureAsync ( # B1 ](/cpp/api/remote-rendering/remotemanager#loadtextureasync)
+* [C + + RemoteManager：： LoadTextureFromSASAsync ( # B1 ](/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>后续步骤
 

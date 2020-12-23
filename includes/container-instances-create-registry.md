@@ -7,17 +7,17 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 08/13/2020
 ms.author: danlep
-ms.custom: include file
-ms.openlocfilehash: 2b1d9b7f9ff07a3e0c7745191decc3e82181553e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 173c9156f253e43111299b53287e97ab7b2c0aa5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708013"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746929"
 ---
 ## <a name="create-azure-container-registry"></a>创建 Azure 容器注册表
 
-在创建容器注册表之前，需要创建一个资源组，以便将容器注册表部署到其中。** 资源组是在其中部署和管理所有 Azure 资源的逻辑集合。
+在创建容器注册表之前，需要创建一个资源组，以便将容器注册表部署到其中。 资源组是在其中部署和管理所有 Azure 资源的逻辑集合。
 
 使用“[az group create][az-group-create]”命令创建资源组。 以下示例在 *eastus* 区域创建名为 *myResourceGroup* 的资源组：
 

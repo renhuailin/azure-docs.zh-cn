@@ -3,12 +3,12 @@ title: 排查错误：Azure Functions 运行时不可访问
 description: 了解如何排查存储帐户无效的问题。
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: c46ca214ab6c0798fdc39ead575fb2873b8c51c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385851"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579005"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>排查错误：“Azure Functions 运行时不可访问”
 
@@ -36,7 +36,7 @@ ms.locfileid: "87385851"
 
 * 必需：
     * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
-* 对于消耗计划函数是必需的：
+* 需要它才能使用和高级计划功能：
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
     * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
@@ -76,7 +76,7 @@ ms.locfileid: "87385851"
 
 * 函数应用托管在[内部负载均衡的应用服务环境](../app-service/environment/create-ilb-ase.md)中，并配置为阻止入站 Internet 流量。
 
-* 函数应用的[入站 IP 限制](functions-networking-options.md#inbound-ip-restrictions)配置为阻止 Internet 访问。 
+* 函数应用的[入站 IP 限制](functions-networking-options.md#inbound-access-restrictions)配置为阻止 Internet 访问。 
 
 Azure 门户直接调用正在运行的应用以提取函数列表，并对 Kudu 终结点发出 HTTP 调用。 仍可使用“平台功能”选项卡下的平台级设置。 
 

@@ -9,12 +9,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b1e044c6f61e51de1d8f2ba07f64918307109e46
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ce6e20e5e4866bc4daa3f331fa2a8612ac6c260
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494717"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184155"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>删除 Azure Redis 缓存
 
@@ -34,11 +34,11 @@ ms.locfileid: "87494717"
 
 | Command | 说明 |
 |---|---|
-| [az redis 删除](https://docs.microsoft.com/cli/azure/redis) | 删除 Azure Redis 缓存实例。 |
+| [az redis 删除](/cli/azure/redis) | 删除 Azure Redis 缓存实例。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Redis 缓存文档](../cli-samples.md)中找到其他 Azure Redis 缓存 CLI 脚本示例。

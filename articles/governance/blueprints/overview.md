@@ -1,14 +1,14 @@
 ---
 title: Azure 蓝图概述
 description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050771"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892721"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
@@ -25,7 +25,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 ## <a name="how-its-different-from-arm-templates"></a>与 ARM 模板的不同之处
 
-此服务旨在帮助进行环境设置。 此设置通常包括一组资源组、策略、角色分配和 ARM 模板部署。 蓝图是将每个项目类型组合在一起的包，通过蓝图可编写和版本化该包（包括通过 CI/CD 管道）。 最终可在一个可审计和跟踪的操作中将每个蓝图分配给订阅。
+此服务旨在帮助进行环境设置。 此设置通常包括一组资源组、策略、角色分配和 ARM 模板部署。 蓝图是将每个项目类型组合在一起的包，通过蓝图可编写和版本化该包（包括通过持续集成和持续交付 [CI/CD] 管道）。 最终可在一个可审计和跟踪的操作中将每个蓝图分配给订阅。
 
 几乎所有要包含在 Azure 蓝图中部署的内容都可以使用 ARM 模板完成。 但是，ARM 模板是 Azure 中不以本机方式存在的文档 - 每个模板均存储在本地或源代码管理中。 该模板用于部署一个或多个 Azure 资源，但部署了这些资源后，资源与模板之间就不再存在有效的连接或关系。
 
@@ -74,11 +74,16 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 ## <a name="blueprint-assignment"></a>蓝图分配
 
-可将蓝图的每个已发布版本（最大名称长度为 90 个字符）分配给现有订阅 。 在门户中，该蓝图默认使用最新发布的版本 。 若存在项目参数（或蓝图参数），则在分配过程中定义参数。
+可将蓝图的每个已发布的版本（最大名称长度为 90 个字符）分配给现有管理组或订阅 。 在门户中，该蓝图默认使用最新发布的版本 。 如果存在项目参数或蓝图参数，则在分配过程中定义参数。
+
+> [!NOTE]
+> 将蓝图定义分配给管理组意味着该管理组中存在分配对象。 项目部署的目标仍然是订阅。 若要执行管理组分配，必须按照[创建或更新 REST API](/rest/api/blueprints/assignments/createorupdate) 进行操作，而且请求正文必须包含 `properties.scope` 的值才能定义目标订阅。
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure 蓝图中的权限
 
-若要使用蓝图，必须通过[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 获得授权。 要创建蓝图，帐户需要以下权限：
+若要使用蓝图，必须通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 获得授权。 若要在 Azure 门户中读取或查看蓝图，你的帐户必须对蓝图定义所在范围具有读取访问权限。
+
+要创建蓝图，帐户需要以下权限：
 
 - `Microsoft.Blueprint/blueprints/write` - 创建蓝图定义
 - `Microsoft.Blueprint/blueprints/artifacts/write` - 在蓝图定义上创建项目

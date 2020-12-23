@@ -6,18 +6,21 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/01/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650300"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559834"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID (预览版登录到 Azure Active Directory) 
+
+> [!NOTE]
+> 使用电子邮件作为备用登录 ID 登录到 Azure AD 是 Azure Active Directory 的一项公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 许多组织希望让用户使用与其本地目录环境相同的凭据登录到 Azure Active Directory (Azure AD) 。 使用此方法（称为混合身份验证），用户只需记住一组凭据。
 
@@ -32,7 +35,10 @@ ms.locfileid: "91650300"
 本文介绍如何启用电子邮件并将其用作备用登录 ID。 Azure AD Free 版和更高版本中提供此功能。
 
 > [!NOTE]
-> 使用电子邮件作为备用登录 ID 登录到 Azure AD 是 Azure Active Directory 的一项公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能仅适用于通过云身份验证的 Azure AD 用户。
+
+> [!NOTE]
+> 目前，在通过云身份验证的租户 Azure AD 加入的 Windows 10 设备上不支持此功能。 此功能不适用于混合 Azure AD 联接的设备。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD 登录方法概述
 
@@ -44,7 +50,7 @@ ms.locfileid: "91650300"
 
 此问题的典型解决方法是将 Azure AD UPN 设置为用户希望登录时所用的电子邮件地址。 虽然这种方法有效，但在本地 AD 与 Azure AD 中的 Upn 不同，并且此配置与所有 Microsoft 365 工作负荷都不兼容。
 
-另一种方法是将 Azure AD 和本地 Upn 同步到相同的值，然后将 Azure AD 配置为允许用户使用已验证的电子邮件登录到 Azure AD。 若要提供此功能，请在本地目录中的用户 *ProxyAddresses* 属性中定义一个或多个电子邮件地址。 然后，将*ProxyAddresses*同步到使用 Azure AD Connect 自动 Azure AD。
+另一种方法是将 Azure AD 和本地 Upn 同步到相同的值，然后将 Azure AD 配置为允许用户使用已验证的电子邮件登录到 Azure AD。 若要提供此功能，请在本地目录中的用户 *ProxyAddresses* 属性中定义一个或多个电子邮件地址。 然后，将 *ProxyAddresses* 同步到使用 Azure AD Connect 自动 Azure AD。
 
 ## <a name="preview-limitations"></a>预览版限制
 
@@ -169,6 +175,72 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
 
 若要测试用户是否能够使用电子邮件登录，请浏览到 [https://myprofile.microsoft.com][my-profile] 并使用基于其电子邮件地址（例如 `balas@fabrikam.com` ）而不是其 UPN（例如 `balas@contoso.com` ）的用户帐户登录。 登录体验应类似于基于 UPN 的登录事件。
 
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>启用分步推出以测试使用电子邮件地址的用户登录  
+
+通过[分步推出][staged-rollout]，租户管理员可以启用特定组的功能。 建议租户管理员使用分阶段推出来测试用户使用电子邮件地址进行登录。 当管理员准备好将此功能部署到其整个租户时，它们应使用主领域发现策略。  
+
+
+需要使用租户管理员权限完成以下步骤：
+
+1. 以管理员身份打开 PowerShell 会话，然后使用 [安装模块][Install-Module]Cmdlet 安装 *AzureADPreview* 模块：
+
+    ```powershell
+    Install-Module AzureADPreview
+    ```
+
+    如果出现提示，选择“Y”以安装 NuGet 或从不受信任的存储库进行安装。
+
+2. 使用 [Connect-AzureAD][Connect-AzureAD] cmdlet 以租户管理员身份登录到 Azure AD 租户：
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+    该命令将返回有关你的帐户、环境和租户 ID 的信息。
+
+3. 使用以下 cmdlet 列出所有现有的过渡推出策略：
+   
+   ```powershell
+   Get-AzureADMSFeatureRolloutPolicy
+   ``` 
+
+4. 如果没有针对此功能的现有暂存推出策略，请创建新的分步推出策略，并记下策略 ID：
+
+   ```powershell
+   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   ```
+
+5. 查找要添加到分阶段推出策略的组的 directoryObject ID。 请注意为 *Id* 参数返回的值，因为它将在下一步中使用。
+   
+   ```powershell
+   Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
+   ```
+
+6. 如以下示例中所示，将组添加到分步推出策略中。 将 *-Id* 参数中的值替换为步骤4中为策略 Id 返回的值，并将 *-RefObjectId* 参数中的值替换为步骤5中所述的 *id* 。 可能需要长达1小时的时间，组中的用户才能使用其代理地址登录。
+
+   ```powershell
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   ```
+   
+对于添加到组中的新成员，可能需要长达24小时才能使用其代理地址登录。
+
+### <a name="removing-groups"></a>删除组
+
+若要从分步推出策略中删除组，请运行以下命令：
+
+```powershell
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+```
+
+### <a name="removing-policies"></a>删除策略
+
+若要删除分步推出策略，请先禁用该策略，然后将其从系统中删除：
+
+```powershell
+Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 
+Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
+```
+
 ## <a name="troubleshoot"></a>疑难解答
 
 如果用户在使用其电子邮件地址进行登录时遇到问题，请查看以下故障排除步骤：
@@ -202,4 +274,5 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
 [Get-AzureADPolicy]: /powershell/module/azuread/get-azureadpolicy
 [New-AzureADPolicy]: /powershell/module/azuread/new-azureadpolicy
 [Set-AzureADPolicy]: /powershell/module/azuread/set-azureadpolicy
+[staged-rollout]: /powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged-rollout
 [my-profile]: https://myprofile.microsoft.com

@@ -7,20 +7,20 @@ ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3b7c9b51bad45bb348f70c8b0e433404b49b5aac
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761356"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96004256"
 ---
 # <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>为 IoT 即插即用快速入门和教程设置环境
 
 你需要在 Azure 订阅中配置 IoT 中心和设备预配服务 (DPS) ，然后才能完成任何 IoT 即插即用快速入门和教程。 还需要示例应用程序和 Azure IoT 管理器工具使用的模型文件的本地副本。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-若要避免要求本地安装 Azure CLI，可以使用 Azure Cloud Shell 设置云服务。
+为了绕开在本地安装 Azure CLI 的要求，可使用 Azure Cloud Shell 设置云服务。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -84,7 +84,7 @@ az iot dps enrollment create --attestation-type symmetrickey --dps-name my-pnp-d
 服务示例需要以下环境变量来确定要连接到的集线器和设备：
 
 * **IOTHUB_CONNECTION_STRING**：之前记下的 IoT 中心连接字符串。
-* **IOTHUB_DEVICE_ID**： `my-pnp-device` 。
+* **IOTHUB_DEVICE_ID**：`my-pnp-device`。
 
 例如，在 Linux bash shell 中：
 
@@ -128,7 +128,7 @@ set IOTHUB_DEVICE_ID=my-pnp-device
 
 将工具配置为使用你先前下载的模型文件。 在工具的主页中，选择 " **IoT 即插即用设置**"，然后单击 " **+ 添加 > 本地文件夹**"。 选择之前创建的 " *模型* " 文件夹。 然后选择 " **保存** " 以保存设置。
 
-若要了解详细信息，请参阅 [安装和使用 Azure IoT 浏览器](howto-use-iot-explorer.md)。
+若要了解详细信息，请参阅[安装并使用 Azure IoT 资源管理器](howto-use-iot-explorer.md)。
 
 ## <a name="remove-the-resources"></a>删除资源
 
@@ -143,4 +143,4 @@ az group delete --name my-pnp-resourcegroup
 设置环境后，可以尝试执行以下快速入门或教程之一：
 
 > [!div class="nextstepaction"]
-> [将示例 IoT 即插即用设备应用程序连接到 IoT 中心 ( # A0) ](quickstart-connect-device-node.md)
+> [将示例 IoT 即插即用设备应用程序连接到 IoT 中心](quickstart-connect-device.md)

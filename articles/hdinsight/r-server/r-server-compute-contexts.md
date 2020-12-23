@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087599"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536328"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>适用于 HDInsight 上的 ML Services 的计算上下文选项
 
@@ -23,18 +23,18 @@ Azure HDInsight 上的 ML Services 可设置计算上下文，从而控制执行
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML Services
 
-[Azure HDInsight 上的 ML Services](r-server-overview.md) 提供最新的基于 R 的分析功能。 它可以使用存储在[Azure Blob](../../storage/common/storage-introduction.md "Azure Blob 存储")存储帐户、Data Lake Store 或本地 Linux 文件系统中 Apache Hadoop HDFS 容器中的数据。 由于 ML 服务是在开源 R 上构建的，因此你构建的基于 R 的应用程序可以应用任何 8000 + 开源 R 包。 这些应用程序还可以利用 [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)（ML Services 附带的 Microsoft 的大数据分析包）中的例程。  
+[Azure HDInsight 上的 ML Services](r-server-overview.md) 提供最新的基于 R 的分析功能。 它可以使用存储在 [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob 存储") 存储帐户、Data Lake Store 或本地 Linux 文件系统中 Apache Hadoop HDFS 容器中的数据。 由于 ML 服务是在开源 R 上构建的，因此你构建的基于 R 的应用程序可以应用任何 8000 + 开源 R 包。 这些应用程序还可以利用 [RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler)（ML Services 附带的 Microsoft 的大数据分析包）中的例程。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>边缘节点的计算上下文
 
 一般而言，在边缘节点上的 ML Services 群集中运行的 R 脚本会在该节点上的 R 解释器内运行。 但是，调用 RevoScaleR 函数的步骤例外。 RevoScaleR 调用会在计算环境中运行，而计算环境取决于如何设置 RevoScaleR 计算上下文。  从边缘节点运行 R 脚本时，计算上下文的值可能有：
 
-- 本地顺序 (local)**
-- 本地并行 (localpar)**
+- 本地顺序 (local) 
+- 本地并行 (localpar) 
 - Map Reduce
 - Spark
 
-local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式********。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 RevoScaleR **numCoresToUse** 选项另外指定，例如，`rxOptions(numCoresToUse=6)`。 并行执行选项提供最佳性能。
+local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式  。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 RevoScaleR **numCoresToUse** 选项另外指定，例如，`rxOptions(numCoresToUse=6)`。 并行执行选项提供最佳性能。
 
 下表总结了用于设置调用执行方式的各个计算上下文选项：
 
@@ -59,12 +59,12 @@ local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式*****
 
 ### <a name="local"></a>Local
 
-- 如果要分析的数据量较小，并且不需要重复的分析，请使用*local*或*localpar*将其直接流式传输到分析例程。
-- 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析****。
+- 如果要分析的数据量较小，并且不需要重复的分析，请使用 *local* 或 *localpar* 将其直接流式传输到分析例程。
+- 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析  。
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- 如果要分析的数据量较大，可使用 RxHiveData 或 RxParquetData 将它导入到 Spark DataFrame，或导入到 HDFS 中的 XDF（除非存储有问题），然后通过 Spark 计算上下文进行分析********。
+- 如果要分析的数据量较大，可使用 RxHiveData 或 RxParquetData 将它导入到 Spark DataFrame，或导入到 HDFS 中的 XDF（除非存储有问题），然后通过 Spark 计算上下文进行分析  。
 
 ### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Map Reduce
 
@@ -77,7 +77,7 @@ local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式*****
 > ?rxSetComputeContext
 ```
 
-也可以参阅 [Machine Learning Server 文档](https://docs.microsoft.com/machine-learning-server/)中的[分布式计算概述](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)。
+也可以参阅 [Machine Learning Server 文档](/machine-learning-server/)中的[分布式计算概述](/machine-learning-server/r/how-to-revoscaler-distributed-computing)。
 
 ## <a name="next-steps"></a>后续步骤
 

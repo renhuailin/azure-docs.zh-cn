@@ -3,12 +3,12 @@ title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81757518"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832817"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -93,7 +93,8 @@ ms.locfileid: "81757518"
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -230,7 +231,7 @@ ms.locfileid: "81757518"
 
 ## <a name="logger"></a>logger
 
-控制 [ILogger 对象](functions-monitoring.md#write-logs-in-c-functions)或 [context.log](functions-monitoring.md#write-logs-in-javascript-functions) 写入的日志的筛选。
+控制由 [ILogger](functions-dotnet-class-library.md#ilogger) 对象或 [context.log](functions-reference-node.md#contextlog-method) 写入的日志的筛选。
 
 ```json
 {
@@ -249,9 +250,9 @@ ms.locfileid: "81757518"
 
 |属性  |默认 | 说明 |
 |---------|---------|---------| 
-|categoryFilter|不适用|指定按类别进行筛选| 
+|categoryFilter|n/a|指定按类别进行筛选| 
 |defaultLevel|信息|对于 `categoryLevels` 数组中未指定的任何类别，会将此级别和更高级别的日志发送到 Application Insights。| 
-|categoryLevels|不适用|一个类别数组，指定每个类别的、要发送到 Application Insights 的最低日志级别。 此处指定的类别控制以相同值开头的所有类别，较长的值优先。 在前面的示例 *host.json* 文件中，将在 `Information` 级别记录以“Host.Aggregator”开头的所有类别的日志。 在 `Error` 级别记录以“Host”开头的其他所有类别（例如“Host.Executor”）的日志。| 
+|categoryLevels|n/a|一个类别数组，指定每个类别的、要发送到 Application Insights 的最低日志级别。 此处指定的类别控制以相同值开头的所有类别，较长的值优先。 在前面的示例 *host.json* 文件中，将在 `Information` 级别记录以“Host.Aggregator”开头的所有类别的日志。 在 `Error` 级别记录以“Host”开头的其他所有类别（例如“Host.Executor”）的日志。| 
 
 ## <a name="queues"></a>queues
 
@@ -286,11 +287,12 @@ ms.locfileid: "81757518"
     "sendGrid": {
         "from": "Contoso Group <admin@contoso.com>"
     }
+}    
 ```
 
 |属性  |默认 | 说明 |
 |---------|---------|---------| 
-|from|不适用|所有函数的发件人电子邮件地址。| 
+|from|n/a|所有函数的发件人电子邮件地址。| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -301,7 +303,8 @@ ms.locfileid: "81757518"
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     }
 }
 ```
@@ -310,7 +313,8 @@ ms.locfileid: "81757518"
 |---------|---------|---------| 
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 | 
 |prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。| 
-|autoRenewTimeout|00:05:00|自动续订消息锁的最长持续时间。| 
+|autoRenewTimeout|00:05:00|自动续订消息锁的最长持续时间。|
+|autoComplete|是|如果为 true，则触发器将在成功执行操作后自动完成消息处理。 为 false 时，函数负责在返回前完成消息。|
 
 ## <a name="singleton"></a>singleton
 
@@ -340,7 +344,7 @@ ms.locfileid: "81757518"
 
 *版本 1.x*
 
-使用 `TraceWriter` 对象创建的日志的配置设置。 请参阅 [C# 日志记录](functions-reference-csharp.md#logging)和 [Node.js 日志记录](functions-reference-node.md#writing-trace-output-to-the-console)。
+使用 `TraceWriter` 对象创建的日志的配置设置。 若要了解详细信息，请参阅 [C# 日志记录]。
 
 ```json
 {

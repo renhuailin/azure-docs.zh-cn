@@ -1,35 +1,33 @@
 ---
 title: 配置 Java 应用
-description: 了解如何将 Java 应用配置为在 Azure App Service 上运行。 本文介绍最常见的配置任务。
-keywords: azure 应用服务，web 应用，windows，oss，java，tomcat，jboss
+description: 了解如何配置在 Azure 应用服务上运行的 Java 应用。 本文介绍最常见的配置任务。
+keywords: azure app service, web app, windows, oss, java, tomcat, jboss
 author: jasonfreeberg
 ms.devlang: java
 ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
-ms.custom: seodec18, devx-track-java
+ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0b6d4ebd199e1db9e5b325df5ea08eaede8e581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311880"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183135"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
-Azure App Service 允许 Java 开发人员在完全托管的服务上快速生成、部署和缩放其 Java SE、Tomcat 和 JBoss EAP web 应用程序。 通过 Maven 插件、命令行或编辑器（如 IntelliJ、Eclipse 或 Visual Studio Code）部署应用程序。
+Azure 应用服务可让 Java 开发人员在完全托管服务中快速生成、部署和缩放其 Java SE、Tomcat 和 JBoss EAP Web 应用程序。 可以在命令行或者 IntelliJ、Eclipse 或 Visual Studio Code 等编辑器中使用 Maven 插件部署应用程序。
 
-本指南为使用应用服务的 Java 开发人员提供重要的概念和说明。 如果你从未用过 Azure 应用服务，首先应该通读 [Java 快速入门](quickstart-java.md)。 有关使用不特定于 Java 开发的应用服务的一般问题，请在 [应用服务常见问题解答](faq-configuration-and-management.md)中进行回答。
+本指南为使用应用服务的 Java 开发人员提供了重要概念和说明。 如果你从未用过 Azure 应用服务，首先应该通读 [Java 快速入门](quickstart-java.md)。 [应用服务常见问题解答](faq-configuration-and-management.md)中解答了有关使用应用服务且非特定于 Java 开发的一般问题。
 
 ## <a name="deploying-your-app"></a>部署应用
 
-可以使用用于 [Maven 的 Azure Web 应用插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) 来部署 war 或 .jar 文件。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/)或[Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse)还支持通过常用 ide 进行部署。
+可以使用[适用于 Maven 的 Azure Web 应用插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)来部署 .war 或 .jar 文件。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) 或 [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) 还支持通过流行的 IDE 进行部署。
 
 否则，则部署方法将取决于存档类型：
-
-::: zone pivot="platform-windows"  
 
 ### <a name="java-se"></a>Java SE
 
@@ -39,14 +37,13 @@ Azure App Service 允许 Java 开发人员在完全托管的服务上快速生�
 
 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
 
-::: zone-end
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP
 
-若要将 war 文件部署到 JBoss，请使用 `/api/wardeploy/` 终结点发布存档文件。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
+若要将 .war 文件部署到 JBoss，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
 
-若要部署 ear 文件，请 [使用 FTP](deploy-ftp.md)。
+若要部署 .ear 文件，请[使用 FTP](deploy-ftp.md)。
 
 ::: zone-end
 
@@ -71,11 +68,11 @@ Azure App Service 允许 Java 开发人员在完全托管的服务上快速生�
 
 有关详细信息，请参阅[在 Cloud Shell 中流式传输日志](troubleshoot-diagnostic-logs.md#in-cloud-shell)。
 
+::: zone pivot="platform-linux"
+
 ### <a name="ssh-console-access"></a>SSH 控制台访问
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
-
-::: zone pivot="platform-linux"
 
 ### <a name="troubleshooting-tools"></a>故障排除工具
 
@@ -85,7 +82,7 @@ Azure App Service 允许 Java 开发人员在完全托管的服务上快速生�
 
 ### <a name="flight-recorder"></a>网络流量记录器
 
-应用服务上使用 Azul JVM 的所有 Java 运行时均附带 Zulu 网络流量记录器。 你可以使用它来记录 JVM、系统和应用程序事件，并在 Java 应用程序中解决问题。
+应用服务上使用 Azul JVM 的所有 Java 运行时均附带 Zulu 网络流量记录器。 可以使用它来记录 JVM、系统和应用程序事件，并对 Java 应用程序中的问题进行故障排除。
 
 ::: zone pivot="platform-windows"
 
@@ -102,7 +99,7 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 ::: zone-end
 ::: zone pivot="platform-linux"
 
-通过 SSH 连接到应用服务并运行 `jcmd` 命令，以查看所有正在运行的 Java 进程的列表。 除了 jcmd 本身，你还会看到正在运行的 Java 应用程序以及进程 ID 号 (PID)。
+使用 SSH 进入应用服务，运行 `jcmd` 命令以查看所有正在运行的 Java 进程的列表。 除了 jcmd 本身，你还会看到正在运行的 Java 应用程序以及进程 ID 号 (PID)。
 
 ```shell
 078990bbcd11:/home# jcmd
@@ -340,8 +337,8 @@ keyStore.load(
 6. 修改位于 /home/site/wwwroot/apm/newrelic/newrelic.yml 处的 YAML 文件，并将占位符许可证值替换为你自己的许可证密钥。
 7. 在 Azure 门户中，浏览到你在应用服务中的应用程序并创建一个新的应用程序设置。
 
-    - 对于 **JAVA SE** 应用，请创建一个名为、值为的环境变量 `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
-    - 对于 **Tomcat**，请创建一个名为、值为的环境变量 `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
+    - 对于 Java SE 应用，请创建一个名为 `JAVA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 的环境变量。
+    - 对于 Tomcat，请创建一个名为 `CATALINA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 的环境变量。
 
 ::: zone-end
 ::: zone pivot="platform-linux"
@@ -354,8 +351,8 @@ keyStore.load(
 6. 修改位于 /home/site/wwwroot/apm/newrelic/newrelic.yml 处的 YAML 文件，并将占位符许可证值替换为你自己的许可证密钥。
 7. 在 Azure 门户中，浏览到你在应用服务中的应用程序并创建一个新的应用程序设置。
    
-    - 对于 **JAVA SE** 应用，请创建一个名为、值为的环境变量 `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
-    - 对于 **Tomcat**，请创建一个名为、值为的环境变量 `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
+    - 对于 Java SE 应用，请创建一个名为 `JAVA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 的环境变量。
+    - 对于 Tomcat，请创建一个名为 `CATALINA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 的环境变量。
 
 ::: zone-end
 
@@ -371,8 +368,8 @@ keyStore.load(
 4. 将 Java 代理文件上传到 /home/site/wwwroot/apm 下的一个目录中。 代理的文件应位于 /home/site/wwwroot/apm/appdynamics 中。
 5. 在 Azure 门户中，浏览到你在应用服务中的应用程序并创建一个新的应用程序设置。
 
-   - 对于 **JAVA SE** 应用，创建一个名为的环境变量，其 `JAVA_OPTS` 值 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 为，其中 `<app-name>` 是你的应用服务名称。
-   - 对于 **Tomcat** 应用，请创建一个名为的环境变量，其 `CATALINA_OPTS` 值 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 为，其中 `<app-name>` 是你的应用服务名称。
+   - 对于 Java SE 应用，请创建一个名为 `JAVA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的环境变量，其中，`<app-name>` 是你的应用服务名称。
+   - 对于 Tomcat 应用，请创建一个名为 `CATALINA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的环境变量，其中，`<app-name>` 是你的应用服务名称。
 
 ::: zone-end
 ::: zone pivot="platform-linux"
@@ -383,8 +380,8 @@ keyStore.load(
 4. 将 Java 代理文件上传到 /home/site/wwwroot/apm 下的一个目录中。 代理的文件应位于 /home/site/wwwroot/apm/appdynamics 中。
 5. 在 Azure 门户中，浏览到你在应用服务中的应用程序并创建一个新的应用程序设置。
 
-   - 对于 **JAVA SE** 应用，创建一个名为的环境变量，其 `JAVA_OPTS` 值 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 为，其中 `<app-name>` 是你的应用服务名称。
-   - 对于 **Tomcat** 应用，请创建一个名为的环境变量，其 `CATALINA_OPTS` 值 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 为，其中 `<app-name>` 是你的应用服务名称。
+   - 对于 Java SE 应用，请创建一个名为 `JAVA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的环境变量，其中，`<app-name>` 是你的应用服务名称。
+   - 对于 Tomcat 应用，请创建一个名为 `CATALINA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的环境变量，其中，`<app-name>` 是你的应用服务名称。
 
 ::: zone-end
 
@@ -549,11 +546,11 @@ keyStore.load(
 启动脚本将进行 [xsl 转换](https://www.w3schools.com/xml/xsl_intro.asp)，转换为 server.xml 文件，并将所得的 xml 文件输出到 `/usr/local/tomcat/conf/server.xml`。 启动脚本应通过 apk 安装 libxslt。 你的 xsl 文件和启动脚本均可通过 FTP 上传。 下面是一个示例启动脚本。
 
 ```sh
-# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
 apk add --update libxslt
 
-# Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 下面提供了一个示例 xsl 文件。 该文件向 Tomcat server.xml 添加了一个新的连接器节点。
@@ -644,7 +641,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
 
 ### <a name="jboss-eap"></a>JBoss EAP
 
-[向 JBOSS EAP 注册数据源](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/datasource_management)时，有三个核心步骤：上传 jdbc 驱动程序、将 jdbc 驱动程序添加为模块、注册模块。 应用服务是一个无状态宿主服务，因此，在容器启动时，必须编写用于添加和注册数据源模块的配置命令并将其应用。
+[使用 JBoss EAP 注册数据源](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/datasource_management)时，有三个核心步骤：上传 JDBC 驱动程序、添加 JDBC 驱动程序作为模块以及注册此模块。 应用服务是一种无状态托管服务，因此，必须对用于添加和注册数据源模块的配置命令编写脚本并在容器启动时应用该脚本。
 
 1. 获取数据库的 JDBC 驱动程序。 
 2. 为 JDBC 驱动程序创建 XML 模块定义文件。 下面显示的示例是 PostgreSQL 的模块定义。
@@ -663,7 +660,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
     </module>
     ```
 
-1. 将 JBoss CLI 命令放到名为的文件中 `jboss-cli-commands.cli` 。 JBoss 命令必须添加模块，并将其注册为数据源。 以下示例显示了用于 PostgreSQL 的 JBoss CLI 命令。
+1. 将 JBoss CLI 命令放入名为 `jboss-cli-commands.cli` 的文件中。 JBoss 命令必须添加模块，并将其注册为数据源。 以下示例显示了用于 PostgreSQL 的 JBoss CLI 命令。
 
     ```bash
     #!/usr/bin/env bash
@@ -674,16 +671,16 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
     data-source add --name=postgresDS --driver-name=postgres --jndi-name=java:jboss/datasources/postgresDS --connection-url=${POSTGRES_CONNECTION_URL,env.POSTGRES_CONNECTION_URL:jdbc:postgresql://db:5432/postgres} --user-name=${POSTGRES_SERVER_ADMIN_FULL_NAME,env.POSTGRES_SERVER_ADMIN_FULL_NAME:postgres} --password=${POSTGRES_SERVER_ADMIN_PASSWORD,env.POSTGRES_SERVER_ADMIN_PASSWORD:example} --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=org.postgresql.Driver --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker
     ```
 
-1. 创建 `startup_script.sh` 调用 JBOSS CLI 命令的启动脚本。 下面的示例演示如何调用 `jboss-cli-commands.cli` 。 稍后，将 configre 应用服务在容器启动时运行此脚本。 
+1. 创建调用此 JBoss CLI 命令的启动脚本 `startup_script.sh`。 以下示例演示了如何调用 `jboss-cli-commands.cli`。 稍后，你需要将应用服务配置为在容器启动时运行此脚本。 
 
     ```bash
     $JBOSS_HOME/bin/jboss-cli.sh --connect --file=/home/site/deployments/tools/jboss-cli-commands.cli
     ```
 
-1. 使用所选的 FTP 客户端，将 JDBC 驱动程序、 `jboss-cli-commands.cli` 、 `startup_script.sh` 和模块定义上传到 `/site/deployments/tools/` 。
-2. 将站点配置为在 `startup_script.sh` 容器启动时运行。 在 Azure 门户中，导航到 "**配置**" "  >  **常规设置**" "  >  **启动命令**"。 将 "启动" 命令字段设置为 `/home/site/deployments/tools/startup_script.sh` 。 单击“保存”以保存更改  。
+1. 使用所选的 FTP 客户端，将 JDBC 驱动程序、`jboss-cli-commands.cli`、`startup_script.sh` 和模块定义上传到 `/site/deployments/tools/`。
+2. 将站点配置为在容器启动时运行 `startup_script.sh`。 在 Azure 门户中，导航到“配置” > “通用设置” > “启动命令”  。 将“启动命令”字段设置为 `/home/site/deployments/tools/startup_script.sh`。 单击“保存”以保存更改。
 
-若要确认已将数据源添加到 JBoss 服务器，请通过 SSH 连接到 webapp 并运行 `$JBOSS_HOME/bin/jboss-cli.sh --connect` 。 连接到 JBoss 后，请运行 `/subsystem=datasources:read-resource` 以打印数据源的列表。
+若要确认已将数据源添加到 JBoss 服务器，请使用 SSH 进入 webapp 并运行 `$JBOSS_HOME/bin/jboss-cli.sh --connect`。 连接到 JBoss 后，运行 `/subsystem=datasources:read-resource` 以打印数据源列表。
 
 ::: zone-end
 
@@ -691,17 +688,21 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
 
 ## <a name="choosing-a-java-runtime-version"></a>选择 Java 运行时版本
 
-应用服务允许用户选择 JVM 的主要版本，如 Java 8 或 Java 11，以及次要版本，如 1.8.0 _232 或11.0.5。 你还可以选择在新的次要版本可用时自动更新次要版本。 在大多数情况下，生产站点应使用固定的次要 JVM 版本。 这会阻止在次要版本自动更新期间发生 unnanticipated 中断。
+通过应用服务，用户可以选择 JVM 的主要版本（如 Java 8 或 Java 11）和次要版本（如 1.8.0_232 或 11.0.5）。 还可以选择在新的次要版本可用时自动更新次要版本。 在大多数情况下，生产站点应使用 JVM 的固定次要版本。 这将防止在次要版本自动更新期间发生意外中断。
 
-如果你选择固定次版本，你将需要定期更新站点上的 JVM 次版本。 若要确保应用程序在较新的次要版本上运行，请创建一个过渡槽并递增暂存站点上的次版本。 确认应用程序在新的次版本上正确运行后，可以交换过渡和生产槽。
+如果选择固定次要版本，则需要定期更新站点上 JVM 的次要版本。 为了确保应用程序在较新的次要版本上运行，请创建一个过渡槽并在暂存站点上递增次要版本。 确认应用程序在新的次要版本上正常运行后，可以交换过渡槽和生产槽。
+
+## <a name="jboss-eap-hardware-options"></a>JBoss EAP 硬件选项
+
+JBoss EAP 仅适用于高级和独立硬件选项。 在公共预览版期间，在 "免费"、"共享"、"基本" 或 "标准" 层上创建了 JBoss
 
 ## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和维护
 
-Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。 Azul Zulu Enterprise 内部版 OpenJDK 是适用于 Azure 和 Azure Stack 的 OpenJDK 的免费、多平台、生产就绪型发行版，由 Microsoft 及 Azul Systems 提供支持。 这些版本包含构建和运行 Java SE 应用程序所需的所有组件。 你可以通过 [Java JDK 安装](https://aka.ms/azure-jdks)安装 JDK。
+Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。 Azul Zulu Enterprise 内部版 OpenJDK 是适用于 Azure 和 Azure Stack 的 OpenJDK 的免费、多平台、生产就绪型发行版，由 Microsoft 及 Azul Systems 提供支持。 这些版本包含构建和运行 Java SE 应用程序所需的所有组件。 你可以通过 [Java JDK 安装](/azure/developer/java/fundamentals/java-jdk-long-term-support)安装 JDK。
 
-主要版本更新将通过 Azure App Service 中的新运行时选项提供。 客户可以通过配置应用服务部署来更新到这些较新的 Java 版本，他们需要负责测试和确保重大更新符合其需求。
+主要版本更新将通过 Azure 应用服务中的新运行时选项提供。 客户可以通过配置应用服务部署来更新到这些较新的 Java 版本，他们需要负责测试和确保重大更新符合其需求。
 
 支持的 JDK 将在每年的 1 月、4 月、7 月和 10 月按季度自动修补。 有关 Azure 上的 Java 的详细信息，请参阅[此支持文档](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 

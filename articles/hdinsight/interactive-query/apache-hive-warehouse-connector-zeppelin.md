@@ -7,16 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6ee1c70ec02af2a24f7867a6e6b06593361612b2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bccf2b9a3dfe42ca439a45eb1e35cfaff58d0208
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083111"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426956"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Apache Zeppelin 与 Hive Warehouse Connector 集成
 
 HDInsight Spark 群集包含具有不同解释器的 Apache Zeppelin 笔记本。 在本文中，我们将只关注 Livy 解释器如何使用 Hive Warehouse Connector 从 Spark 访问 Hive 表。
+
+> [!NOTE]
+> 本文包含对术语 " *白名单*" 的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
 
 ## <a name="prerequisite"></a>先决条件
 
@@ -78,14 +81,14 @@ HDInsight Spark 群集包含具有不同解释器的 Apache Zeppelin 笔记本�
     | 配置                 | 值                                      |
     | ----------------------------- |:------------------------------------------:|
     | livy.spark.hadoop.hive.llap.daemon.service.hosts | @llap0 |
-    | livy.spark.security.credentials.hiveserver2.enabled | true |
-    | livy.spark.sql.hive.llap | true |
-    | livy.spark.yarn.security.credentials.hiveserver2.enabled | true |
+    | livy.spark.security.credentials.hiveserver2.enabled | 是 |
+    | livy.spark.sql.hive.llap | 是 |
+    | livy.spark.yarn.security.credentials.hiveserver2.enabled | 是 |
     | livy.superusers | livy,zeppelin |
-    | livy.spark.jars | `file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar` 列中的一个值匹配。<br>将 VERSION 替换为之前在[入门](#getting-started)中获取的值。 |
-    | livy.spark.submit.pyFiles | `file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip` 列中的一个值匹配。<br>将 VERSION 替换为之前在[入门](#getting-started)中获取的值。 |
+    | livy.spark.jars | `file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar`.<br>将 VERSION 替换为之前在[入门](#getting-started)中获取的值。 |
+    | livy.spark.submit.pyFiles | `file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip`.<br>将 VERSION 替换为之前在[入门](#getting-started)中获取的值。 |
     | livy.spark.sql.hive.hiveserver2.jdbc.url | 将其设置为 Interactive Query 群集的 HiveServer2 Interactive JDBC URL。 |
-    | spark.security.credentials.hiveserver2.enabled | true |
+    | spark.security.credentials.hiveserver2.enabled | 是 |
 
 1. 仅针对 ESP 群集添加以下配置：
 
@@ -93,15 +96,15 @@ HDInsight Spark 群集包含具有不同解释器的 Apache Zeppelin 笔记本�
     |---|---|
     | livy.spark.sql.hive.hiveserver2.jdbc.url.principal | `hive/<llap-headnode>@<AAD-Domain>` |
 
-    * 在 web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` 其中 CLUSTERNAME 是您的交互式查询群集的名称。 单击 " **HiveServer2 Interactive**"。 你将看到运行 LLAP 的头节点的完全限定的域名（FQDN），如屏幕截图中所示。 替换 `<llap-headnode>` 为此值。
+    * 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`，其中 CLUSTERNAME 是 Interactive Query 群集的名称。 单击 HiveServer2 Interactive。 将看到运行 LLAP 的头节点的完全限定的域名 (FQDN)，如屏幕截图中所示。 将 `<llap-headnode>` 替换为此值。
 
-        ![hive 仓库连接器头节点](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        ![Hive Warehouse Connector 头节点](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 
-    * 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到交互式查询群集。 `default_realm`在文件中查找参数 `/etc/krb5.conf` 。 替换 `<AAD-DOMAIN>` 为大写字符串形式的此值，否则将找不到凭据。
+    * 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Interactive Query 群集。 在 `/etc/krb5.conf` 文件中查找 `default_realm` 参数。 以大写字符串的形式使用此值替换 `<AAD-DOMAIN>`，否则会找不到凭据。
 
-        ![hive 仓库连接器 AAD 域](./media/apache-hive-warehouse-connector/aad-domain.png)
+        ![Hive Warehouse Connector AAD 域](./media/apache-hive-warehouse-connector/aad-domain.png)
 
-    * 例如， `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` 。
+    * 例如：`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`。
 
 1. 保存更改并重启 Livy 解释器。
 

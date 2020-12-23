@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理服务器
 description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: ca50f41f1f0eadbc9cfb916a7f68a90712bef52e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090415"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753189"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>教程：评估物理服务器以便迁移到 Azure
 

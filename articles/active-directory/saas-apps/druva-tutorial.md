@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d0dffe602aef01af2fb2ef8ee9462a0bb99c1ae0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7868d702ff3f1190d7f51e4ad7316508d453015
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555677"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454518"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Druva 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555677"
 * 让用户使用其 Azure AD 帐户自动登录到 Druva。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88555677"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Druva 支持 **IDP** 发起的 SSO
-* 配置 Druva SSO 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Druva SSO 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -53,7 +53,7 @@ ms.locfileid: "88555677"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Druva**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Druva** 。 
 1. 在结果面板中选择“Druva”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-druva"></a>配置和测试 Druva 的 Azure AD 单一登录
@@ -85,7 +85,7 @@ ms.locfileid: "88555677"
     
     b. 在“回复 URL (断言使用者服务 URL)”  文本框中，键入 URL：`https://cloud.druva.com/wrsaml/consume`。
 
-1. 单击“ **保存**”。
+1. 单击“ **保存** ”。
 
 1. Druva 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -146,7 +146,7 @@ ms.locfileid: "88555677"
 
 1. 在“单一登录”选项卡上，单击“编辑”   。
 
-    ![单一登录设置](./media/druva-tutorial/ic795092.png "单一登录设置")
+    ![显示“访问设置 - 单一登录”选项卡的屏幕截图，其中已选择“编辑”按钮。](./media/druva-tutorial/ic795092.png "单一登录设置")
 
 1. 在“编辑单一登录设置”页上，执行以下步骤： 
 
@@ -159,7 +159,7 @@ ms.locfileid: "88555677"
        > [!NOTE]
        > 若要为管理员启用单一登录，请选中“管理员通过 SSO 提供程序登录到 Druva 云”和“允许对 Druva 云管理员进行防故障访问(推荐)”复选框   。 Druva 建议启用“面向管理员的防故障”  ，以便在 IdP 中出现任何故障时，必须访问 DCP 控制台。 它还使管理员能够使用 SSO 和 DCP 密码来访问 DCP 控制台。
 
-    1. 单击“ **保存**”。 这样，便可以使用 SSO 访问 Druva 云平台。
+    1. 单击“ **保存** ”。 这样，便可以使用 SSO 访问 Druva 云平台。
 
 ### <a name="create-druva-test-user"></a>创建 Druva 测试用户
 
@@ -169,16 +169,16 @@ ms.locfileid: "88555677"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Druva 磁贴时，应会自动登录到为其设置了 SSO 的 Druva。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Druva 磁贴时，应会自动登录到为其设置了 SSO 的 Druva。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Druva](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

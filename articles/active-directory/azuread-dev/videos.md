@@ -12,13 +12,13 @@ ms.date: 02/12/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-titleSuffix: Microsoft identity platform
-ms.openlocfilehash: 7865fbe758b35ae9ff1ffe526da5e7100e83c966
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: a4bb9151e9d4b76507b0c7f8ab5aaa7f5f1820b8
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117543"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608191"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory 开发人员平台视频
 
@@ -73,4 +73,4 @@ ms.locfileid: "88117543"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解新的[Microsoft 标识平台](../develop/index.yml)
+了解新的 [Microsoft 标识平台](../develop/index.yml)

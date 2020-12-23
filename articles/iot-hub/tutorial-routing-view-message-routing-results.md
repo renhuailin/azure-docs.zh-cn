@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019158"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149205"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
 
@@ -82,7 +82,7 @@ ms.locfileid: "89019158"
 
    ![Office365 选项](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. 登录到 Office 365 帐户并设置连接。 如果此操作超时，只需重试即可。 为电子邮件收件人指定电子邮件地址。 同时指定主题，并在正文键入想要让收件人看到的消息。 测试时，可填入自己的电子邮件地址作为收件人。
+8. 登录到工作或学校帐户以设置连接。 如果此操作超时，只需重试即可。 为电子邮件收件人指定电子邮件地址。 同时指定主题，并在正文键入想要让收件人看到的消息。 测试时，可填入自己的电子邮件地址作为收件人。
 
    选择“添加动态内容”，以显示消息中可包含的内容  。 选择“内容”- 将包含电子邮件中的消息  。
 
@@ -280,7 +280,7 @@ ms.locfileid: "89019158"
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
+若要删除资源组，请使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -288,7 +288,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>使用 PowerShell 清理资源
 
-若要删除资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
+若要删除资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

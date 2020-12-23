@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 5d81e37ab547d12e33cfacb9725d9bdb22666142
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779805"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628651"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
-- `User Access Token`要启用调用客户端的。 有关[如何获取 `User Access Token` ](../../access-tokens.md)
+- 用于启用呼叫客户端的`User Access Token`。 详细了解[如何获取`User Access Token`](../../access-tokens.md)
 - 可选：完成快速入门[添加对应用程序调用](../getting-started-with-calling.md)的入门教程
 
 ## <a name="setting-up"></a>设置
@@ -78,6 +78,19 @@ android.content.Context appContext = this.getApplicationContext(); // From withi
 CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential).get();
 DeviceManage deviceManager = await callClient.getDeviceManager().get();
 ```
+若要为调用方设置显示名称，请使用以下替代方法：
+
+```java
+String userToken = '<user token>';
+CallClient callClient = new CallClient();
+CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
+CallAgentOptions callAgentOptions = new CallAgentOptions();
+callAgentOptions.setDisplayName("Alice Bob");
+CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
+DeviceManage deviceManager = await callClient.getDeviceManager().get();
+```
+
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>发出传出呼叫并加入组呼叫
 
@@ -114,11 +127,21 @@ Call groupCall = callAgent.call(participants, startCallOptions);
 > 目前仅支持一个传出的本地视频流来向视频发出呼叫，你必须使用 API 枚举本地相机 `deviceManager` `getCameraList` 。
 选择所需的照相机后，可以使用它来构造 `LocalVideoStream` 实例，并将其 `videoOptions` 作为数组中的项传递 `localVideoStream` 给 `call` 方法。
 呼叫连接后，会自动开始将视频流从所选照相机发送到其他 () 的参与者。
+
+> [!NOTE]
+> 由于隐私方面的问题，如果未在本地预览视频，则不会将视频共享到呼叫。
+有关更多详细信息，请参阅 [本地相机预览](#local-camera-preview) 。
 ```java
 Context appContext = this.getApplicationContext();
 VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentVideoStream);
+
+// Render a local preview of video so the user knows that their video is being shared
+Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
+View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+// Attach the uiView to a viewable location on the app at this point
+layout.addView(uiView);
 
 CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
 StartCallOptions startCallOptions = new StartCallOptions();
@@ -126,7 +149,7 @@ startCallOptions.setVideoOptions(videoOptions);
 Call call = callAgent.call(context, participants, startCallOptions);
 ```
 
-### <a name="join-a-group-call"></a>加入组调用
+### <a name="join-a-group-call"></a>加入群组通话
 若要启动新组调用或加入正在进行的组调用，必须调用 "join" 方法并使用属性传递对象 `groupId` 。 该值必须是 GUID。
 ```java
 Context appContext = this.getApplicationContext();
@@ -136,6 +159,49 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
+### <a name="accept-a-call"></a>接受呼叫
+若要接受调用，请对调用对象调用 "accept" 方法。
+
+```java
+Context appContext = this.getApplicationContext();
+Call incomingCall = retrieveIncomingCall();
+incomingCall.accept(context).get();
+```
+
+若要在上接受视频相机的呼叫：
+
+```java
+Context appContext = this.getApplicationContext();
+Call incomingCall = retrieveIncomingCall();
+AcceptCallOptions acceptCallOptions = new AcceptCallOptions();
+VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
+acceptCallOptions.setVideoOptions(new VideoOptions(new LocalVideoStream(desiredCamera, appContext)));
+incomingCall.accept(context, acceptCallOptions).get();
+```
+
+可以通过订阅 `CallsUpdated` 对象上的事件 `callAgent` 并通过添加的调用来获取传入呼叫：
+
+```java
+// Assuming "callAgent" is an instance property obtained by calling the 'createCallAgent' method on CallClient instance 
+public Call retrieveIncomingCall() {
+    Call incomingCall;
+    callAgent.addOnCallsUpdatedListener(new CallsUpdatedListener() {
+        void onCallsUpdated(CallsUpdatedEvent callsUpdatedEvent) {
+            // Look for incoming call
+            List<Call> calls = callsUpdatedEvent.getAddedCalls();
+            for (Call call : calls) {
+                if (call.getState() == CallState.Incoming) {
+                    incomingCall = call;
+                    break;
+                }
+            }
+        }
+    });
+    return incomingCall;
+}
+```
+
+
 ## <a name="push-notifications"></a>推送通知
 
 ### <a name="overview"></a>概述
@@ -143,8 +209,8 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 
 ### <a name="prerequisites"></a>先决条件
 
-若要完成本部分，请创建 Firebase 帐户，并 (FCM) 启用云消息传送。 确保 Firebase 云消息传送已连接到 Azure 通知中心 (ANH) 实例。 有关说明，请参阅 [将 Firebase 连接到 Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) 。
-本部分还假设你使用 Android Studio 版本3.6 或更高版本来生成应用程序。
+使用云消息 (FCM) 启用，并将 Firebase 云消息服务连接到 Azure 通知中心实例来设置 Firebase 帐户。 有关详细信息，请参阅 [通信服务通知](../../../concepts/notifications.md) 。
+此外，本教程假定你使用 Android Studio 版本3.6 或更高版本来生成应用程序。
 
 Android 应用程序需要一组权限，以便能够接收来自 Firebase 云消息传送的通知消息。 在 `AndroidManifest.xml` 文件中，在 *<manifest ... >* 或标记下面添加以下权限集 *</application>*
 
@@ -195,21 +261,21 @@ import com.google.firebase.iid.InstanceIdResult;
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            Log.w("PushNotification", "getInstanceId failed", task.getException());
                             return;
                         }
 
                         // Get new Instance ID token
                         String deviceToken = task.getResult().getToken();
                         // Log
-                        Log.d(TAG, "Device Registration token retrieved successfully");
+                        Log.d("PushNotification", "Device Registration token retrieved successfully");
                     }
                 });
 ```
 向传入呼叫推送通知的调用服务客户端库注册设备注册令牌：
 
 ```java
-String deviceRegistrationToken = "some_token";
+String deviceRegistrationToken = "<Device Token from previous section>";
 try {
     callAgent.registerPushNotification(deviceRegistrationToken).get();
 }
@@ -220,22 +286,22 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>推送通知处理
 
-若要接收传入的调用推送通知，请在具有有效负载的*CallAgent*实例上调用*HandlePushNotification ( # B1* 。
+若要接收传入的调用推送通知，请在具有有效负载的 *CallAgent* 实例上调用 *HandlePushNotification ( # B1* 。
 
 若要从 Firebase 云消息传送中获取有效负载，请首先创建一个新的服务 (文件 > 新的 > 服务 > 服务) 扩展 *FirebaseMessagingService* Firebase 客户端库类，并重写 `onMessageReceived` 方法。 此方法是在 Firebase Cloud 消息传递将推送通知传递到应用程序时调用的事件处理程序。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private java.util.Map<String, String> pushNotificationMessageData;
+    private java.util.Map<String, String> pushNotificationMessageDataFromFCM;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("PushNotification", "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
         else {
-            pushNotificationMessageData = serializeDictionaryAsJson(remoteMessage.getData());
+            pushNotificationMessageDataFromFCM = remoteMessage.getData();
         }
     }
 }
@@ -252,10 +318,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-检索有效负载后，可以通过对实例调用方法来将其传递到通信服务客户端库 `handlePushNotification` `CallAgent` 。
+- 检索有效负载后，可以通过对 *CallAgent* 实例调用 *handlePushNotification* 方法，将其传递给 *通信服务* 客户端库。 `CallAgent`通过 `createCallAgent(...)` 在类上调用方法来创建实例 `CallClient` 。
 
 ```java
-java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
 try {
     callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
 }
@@ -517,7 +582,7 @@ boolean availability = remoteVideoStream.getIsAvailable();
 // Create a view for a video stream
 renderer.createView()
 ```
-* Dispose 呈现器和 `RendererView` 与此呈现器相关联的所有
+* Dispose 呈现器和 `RendererView` 与此呈现器关联的所有。 从 UI 中删除所有关联的视图时要调用的。
 ```java
 renderer.dispose()
 ```
@@ -608,9 +673,9 @@ currentVideoStream = new LocalVideoStream(videoDevice, appContext);
 videoOptions = new VideoOptions(currentVideoStream);
 
 Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
-View uiView previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 
-// Attach the renderingSurface to a viewable location on the app at this point
+// Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 ```
 

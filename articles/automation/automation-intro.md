@@ -7,12 +7,12 @@ keywords: azure 自动化, DSC, powershell, 状态配置, 更新管理, 更改�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448066"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182812"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
 
@@ -35,7 +35,7 @@ Azure 自动化中的配置管理允许访问以下两项功能：
 
 ### <a name="change-tracking-and-inventory"></a>更改跟踪和库存
 
-“更改跟踪和库存”结合了更改跟踪和库存功能，可跟踪虚拟机和服务器基础结构的更改。 该服务支持对环境中的不同服务、守护程序、软件、注册表和文件执行“更改跟踪”，以帮助诊断不需要的更改和引发警报。 库存支持可让你查询来宾中的资源，以洞察已安装的应用程序和其他配置项。 有关此功能的详细信息，请参阅[更改跟踪和库存](change-tracking.md)。
+“更改跟踪和库存”结合了更改跟踪和库存功能，可跟踪虚拟机和服务器基础结构的更改。 该服务支持对环境中的不同服务、守护程序、软件、注册表和文件执行“更改跟踪”，以帮助诊断不需要的更改和引发警报。 库存支持可让你查询来宾中的资源，以洞察已安装的应用程序和其他配置项。 有关此功能的详细信息，请参阅[更改跟踪和库存](change-tracking/overview.md)。
 
 ### <a name="azure-automation-state-configuration"></a>Azure 自动化状态配置
 
@@ -43,7 +43,7 @@ Azure 自动化中的配置管理允许访问以下两项功能：
 
 ## <a name="update-management"></a>更新管理
 
-Azure 自动化包含适用于跨混合环境的 Windows 和 Linux 系统的[更新管理](update-management/update-mgmt-overview.md)。 使用更新管理可以洞察 Azure、其他云和本地的更新合规性。 使用此功能可以创建计划的部署，用于在定义的维护时段内协调更新的安装。 如果不应在计算机上安装某项更新，可以使用更新管理功能从部署中排除该项更新。
+Azure 自动化包含适用于跨混合环境的 Windows 和 Linux 系统的[更新管理](./update-management/overview.md)。 使用更新管理可以洞察 Azure、其他云和本地的更新合规性。 使用此功能可以创建计划的部署，用于在定义的维护时段内协调更新的安装。 如果不应在计算机上安装某项更新，可以使用更新管理功能从部署中排除该项更新。
 
 ## <a name="shared-capabilities"></a>共享功能
 
@@ -64,7 +64,7 @@ Azure 自动化包含一组共享资源，方便用户大规模地完成环境�
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 
-Azure 自动化支持使用基于角色的访问控制 (RBAC) 来调控对自动化帐户及其资源的访问。 若要详细了解如何对自动化帐户、Runbook 和作业配置 RBAC，请参阅 [Azure 自动化的基于角色的访问控制](automation-role-based-access-control.md)。
+Azure 自动化支持使用 Azure 基于角色的访问控制 (Azure RBAC) 来调控对自动化帐户及其资源的访问。 若要详细了解如何对自动化帐户、Runbook 和作业配置 Azure RBAC，请参阅 [Azure 自动化的基于角色的访问控制](automation-role-based-access-control.md)。
 
 ### <a name="source-control-integration"></a>源代码管理集成
 
@@ -86,7 +86,7 @@ Azure 自动化支持在基础结构和应用程序的整个生命周期内进�
 * **查找更改** - 确定哪些更改可导致配置错误，哪些更改可改善运营合规性。
 * **监视** - 隔离导致问题的计算机更改，采取补救措施，或者将这些更改上报到管理系统。
 * **保护** - 在安全警报被引发时隔离计算机。 设置来宾内要求。
-* **监管** - 为团队设置 RBAC。 恢复未使用的资源。
+* **监管** - 为团队设置 Azure RBAC。 恢复未使用的资源。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

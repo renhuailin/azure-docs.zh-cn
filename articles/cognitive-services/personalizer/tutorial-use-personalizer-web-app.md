@@ -1,15 +1,17 @@
 ---
 title: 使用 Web 应用 - 个性化体验创建服务
 description: 自定义具有个性化体验创建服务循环的 C# .NET Web 应用，以根据操作（包含特征）和上下文特征向用户提供正确的内容。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c004887e3883ae711974b544510dff16a98d4ef9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935613"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363912"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>教程：向 .NET Web 应用添加个性化体验创建服务
 
@@ -214,7 +216,7 @@ HttpRequestFeatures 类库将此字符串通用化为具有多个值的 userAgen
 
 * [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1) - 示例后端服务器使用 .NET Core
 * [Node.js](https://nodejs.org/) - 客户端/前端依赖于此应用程序
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 或 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/) - 使用 Visual Studio 2019 的开发人员环境或 .NET Core CLI 生成和运行应用
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 或 [.NET Core CLI](/dotnet/core/tools/) - 使用 Visual Studio 2019 的开发人员环境或 .NET Core CLI 生成和运行应用
 
 ### <a name="set-up-the-sample"></a>设置示例
 1. 克隆 Azure 个性化体验创建服务示例存储库。
@@ -233,7 +235,7 @@ HttpRequestFeatures 类库将此字符串通用化为具有多个值的 userAgen
 
 1. 在 Azure 门户的“密钥和终结点”选项卡中，找到 `Endpoint` 和 `Key1`/`Key2`（两者均可）。这是你的 `PersonalizerServiceEndpoint` 和 `PersonalizerApiKey`。
 1. 填写 appsettings.json 中的 `PersonalizerServiceEndpoint`。
-1. 按以下一种方式将 `PersonalizerApiKey` 配置为[应用机密](https://docs.microsoft.com/aspnet/core/security/app-secrets)：
+1. 按以下一种方式将 `PersonalizerApiKey` 配置为[应用机密](/aspnet/core/security/app-secrets)：
 
     * 如果使用的是 .NET Core CLI，则可以使用 `dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` 命令。
     * 如果使用的是 Visual Studio，则可以右键单击项目，然后选择“管理用户机密”菜单选项来配置个性化体验创建服务密钥。 执行此操作后，Visual Studio 将打开一个 `secrets.json` 文件，你可以在其中添加密钥，如下所示：
@@ -254,7 +256,7 @@ HttpRequestFeatures 类库将此字符串通用化为具有多个值的 userAgen
 通过 Web 浏览器，可以发送排名请求和奖励请求并查看其响应，还可查看从你的环境中提取的 http 请求特征。
 
 > [!div class="mx-imgBorder"]
-> ![生成并运行 HTTPRequestFeaturesExample 项目。 此时将打开一个浏览器窗口，其中显示单页应用程序。](./media/tutorial-web-app/web-app-single-page.png)
+> ![屏幕截图显示了 Web 浏览器中 Http 请求特征的示例。](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>演示个性化体验创建服务循环
 
@@ -267,7 +269,7 @@ HttpRequestFeatures 类库将此字符串通用化为具有多个值的 userAgen
 1. 设置奖励值，然后选择“发送奖励请求”按钮。 如果不更改奖励值，客户端应用程序将始终向个性化体验创建服务发送值 `1`。
 
     > [!div class="mx-imgBorder"]
-    > ![生成并运行 HTTPRequestFeaturesExample 项目。 此时将打开一个浏览器窗口，其中显示单页应用程序。](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![屏幕截图显示了“奖励请求”部分。](./media/tutorial-web-app/reward-score-api-call.png)
 
     对于你自己将来的应用程序，在收集客户端上的用户行为信息以及服务器上的业务逻辑后，可能会生成奖励分数。
 

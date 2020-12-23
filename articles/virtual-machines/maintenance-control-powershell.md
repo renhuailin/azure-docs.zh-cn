@@ -5,18 +5,18 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2cc935e81e867609159b5c150b6ee7c346bb9f8e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306933"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026142"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
 
-维护控制允许你决定何时向隔离的 VM 和 Azure 专用主机应用更新。 本主题介绍维护控制的 Azure PowerShell 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
+维护控制允许您决定何时将平台更新应用于隔离 Vm 和 Azure 专用主机的主机基础结构。 本主题介绍维护控制的 Azure PowerShell 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
  
 ## <a name="enable-the-powershell-module"></a>启用 PowerShell 模块
 
@@ -39,7 +39,7 @@ Install-Module -Name Az.Maintenance
 
 ## <a name="create-a-maintenance-configuration"></a>创建维护配置
 
-创建一个资源组作为适用于配置的容器。 在此示例中，在*eastus*中创建名为*myMaintenanceRG*的资源组。 如果已有一个可供使用的资源组，则可跳过此部分，并在其余示例中将资源组名称替换为你自己的名称。
+创建一个资源组作为适用于配置的容器。 在此示例中，在 *eastus* 中创建名为 *myMaintenanceRG* 的资源组。 如果已有一个可供使用的资源组，则可跳过此部分，并在其余示例中将资源组名称替换为你自己的名称。
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -67,15 +67,9 @@ $config = New-AzMaintenanceConfiguration `
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>在预览版中使用计划的窗口 (创建维护配置) 
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>使用计划的窗口创建维护配置
 
-
-> [!IMPORTANT]
-> 计划的窗口功能目前为公共预览版。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-当 Azure 将对资源应用更新时，使用 AzMaintenanceConfiguration 创建具有计划窗口的维护配置。 此示例将创建一个名为 Myconfig.xml 的维护配置，其中每个月的第四个星期一的计划窗口为5小时。 创建计划的窗口后，不再需要手动应用更新。
+你还可以在 Azure 将对资源应用更新时声明计划的窗口。 此示例将创建一个名为 Myconfig.xml 的维护配置，其中每个月的第四个星期一的计划窗口为5小时。 创建计划的窗口后，不再需要手动应用更新。
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -91,8 +85,11 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > 维护 **持续时间** 必须是 *2 小时* 或更长时间。 在35天内，必须至少将维护 **重复** 设置为一次。
 
-**定期**维护可以表示为每日、每周或每月计划。 每日计划示例都是 recurEvery： Day，recurEvery：3Days。 每周计划示例是 recurEvery：3Weeks，recurEvery： Week 周六，星期日。 每月计划示例是 recurEvery： Month day23，day24，recurEvery： Month 上月，recurEvery： Month 第四个月。
-
+可以按每日、每周或每月来表示维护 **定期** 。 一些示例如下：
+ - **每日**-RecurEvery "Day" **或** "3Days" 
+ - **每周**-RecurEvery "3Weeks" **或** "Week 周六，星期日" 
+ - **每月**-RecurEvery "month day23、day24" **或** "month 上月" **或** "month 第四个月"  
+      
 
 ## <a name="assign-the-configuration"></a>分配此配置
 

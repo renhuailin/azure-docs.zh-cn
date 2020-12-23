@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 8868b17766513ba1e93b25bf2aeff6553c62ba62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4a5ea47352bfbe86fe194821da0b6bf10818caf9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536149"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454722"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>教程：将 dmarcian 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88536149"
 * 让用户使用其 Azure AD 帐户自动登录到 dmarcian。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -113,7 +113,7 @@ ms.locfileid: "88536149"
 
 ### <a name="configure-dmarcian-sso"></a>配置 dmarcian SSO
 
-1. 若要在 dmarcian 中自动执行配置，需要通过单击“安装扩展”来安装**我的应用安全登录浏览器扩展**  。
+1. 若要在 dmarcian 中自动执行配置，需要通过单击“安装扩展”来安装 **我的应用安全登录浏览器扩展**  。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "88536149"
         > [!Note]
         > 可以根据组织的情况修改“登录 URL”。 
 
-    * 单击“ **保存**”。
+    * 单击“ **保存** ”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -210,13 +210,12 @@ ms.locfileid: "88536149"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 dmarcian 磁贴时，应当会自动登录到为其设置了 SSO 的 dmarcian。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 dmarcian 磁贴时，应当会自动登录到为其设置了 SSO 的 dmarcian。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

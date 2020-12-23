@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f29474705919f402b1c114c3fd2df0df037cdae
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316148"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696058"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure 数据工厂中映射数据流的疑难解答
 
@@ -118,6 +118,14 @@ ms.locfileid: "91316148"
 - **原因**：联接条件与任何行都不匹配，或在数据预览期间导致了大量的 null 值。
 - **建议**：中转到 "调试" 设置，并增加源行限制中的行数。 请确保已选择一个具有足够大的数据流群集的 Azure IR 来处理更多数据。
 
+### <a name="error-code-validation-error-at-source-with-multiline-csv-files"></a>错误代码：包含多行 CSV 文件的源中的验证错误 
+
+- **消息**：你可能会看到以下错误消息之一：
+   - 最后一列为 null 或缺失。
+   - 源上的架构验证失败。
+   - 架构导入无法正确显示在 UX 中，最后一列的名称中包含新的行字符。
+- **原因**：在映射数据流中，多行 CSV 源无法与 \r\n 作为行分隔符一起使用。 有时，换行符处的额外行返回中断源值。 
+- **建议**：在源中生成文件 \n 作为行分隔符，而不是 \r\n。 或者，使用复制活动将 CSV 文件的 \r\n 转换为 \n 作为行分隔符。
 
 ## <a name="general-troubleshooting-guidance"></a>一般故障排除指南
 
@@ -131,7 +139,7 @@ ms.locfileid: "91316148"
 *  [数据工厂博客](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure 视频](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
-*  [Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Microsoft Q&A 问题页](/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)
 *  [ADF 映射数据流性能指南](concepts-data-flow-performance.md)

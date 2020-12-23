@@ -2,17 +2,18 @@
 title: 在加密设备上配置 LVM 和 RAID-Azure 磁盘加密
 description: 本文提供了有关在适用于 Linux Vm 的加密设备上配置 LVM 和 RAID 的说明。
 author: jofrance
-ms.service: security
+ms.service: virtual-machines
+ms.subservice: security
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
-ms.custom: seodec18
-ms.openlocfilehash: 6ccb74fe58742974798732605b4a017a06777bcc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 46d2c039806e4e6a72e091458d44e7b21b3dfa70
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328167"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843513"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>在加密设备上配置 LVM 和 RAID
 
@@ -297,7 +298,7 @@ echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ![验证是否已创建物理卷](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
 
 >[!NOTE] 
->此处的/dev/mapper/device 名称需要替换为基于 **lsblk**输出的实际值。
+>此处的/dev/mapper/device 名称需要替换为基于 **lsblk** 输出的实际值。
 
 #### <a name="verify-the-information-for-physical-volumes"></a>验证物理卷的信息
 ```bash
@@ -367,9 +368,9 @@ mount -a
 lsblk -fs
 df -h
 ```
-![已装载的文件系统的信息](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![屏幕截图显示了一个控制台窗口，其中包含装载为 data0 和 data1 的文件系统。](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-在这种 **lsblk**的情况下，我们将按相反的顺序列出显示依赖关系的设备。 此选项有助于识别按逻辑卷（而不是原始/dev/sd [磁盘] 设备名称）分组的设备。
+在这种 **lsblk** 的情况下，我们将按相反的顺序列出显示依赖关系的设备。 此选项有助于识别按逻辑卷（而不是原始/dev/sd [磁盘] 设备名称）分组的设备。
 
 请务必确保已将 **nofail** 选项添加到在通过 Azure 磁盘加密加密的设备上创建的 LVM 卷的装入点选项中。 它可防止操作系统在启动过程中停滞 (或处于维护模式) 。
 
@@ -405,7 +406,7 @@ mdadm --create /dev/md10 \
 ![通过 mdadm 命令配置的 RAID 的信息](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
 
 >[!NOTE] 
->此处的/dev/mapper/device 名称需要替换为实际值，具体取决于 **lsblk**的输出。
+>此处的/dev/mapper/device 名称需要替换为实际值，具体取决于 **lsblk** 的输出。
 
 ### <a name="checkmonitor-raid-creation"></a>检查/监视 RAID 创建
 ```bash
@@ -436,7 +437,7 @@ done
 lsblk -fs
 df -h
 ```
-![已装载的文件系统的信息](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![屏幕截图显示了一个控制台窗口，其中包含装载为 raiddata 的文件系统。](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 请务必确保已将 **nofail** 选项添加到在通过 Azure 磁盘加密进行加密的设备上创建的 RAID 卷的装入点选项中。 它可防止操作系统在启动过程中停滞 (或处于维护模式) 。
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258330"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363447"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>将应用标记为“发布者已验证”
 
@@ -42,7 +42,7 @@ ms.locfileid: "91258330"
 
 1. 确保你已使用 [多重身份验证](../fundamentals/concept-fundamentals-mfa-get-started.md) 登录到组织的 (Azure AD) 帐户，该帐户有权更改应用 () 你希望标记为已验证的发布者，并在合作伙伴中心的 MPN 帐户中。
 
-    - 在 Azure AD 此用户必须是以下 [角色](../users-groups-roles/directory-assign-admin-roles.md)之一的成员： "应用程序管理员"、"云应用程序管理员" 和 "全局管理员"。 
+    - 在 Azure AD 此用户必须是以下 [角色](../roles/permissions-reference.md)之一的成员： "应用程序管理员"、"云应用程序管理员" 和 "全局管理员"。 
 
     - 在合作伙伴中心，该用户必须拥有以下[角色](/partner-center/permissions-overview)之一。MPN 管理员、帐户管理员或全局管理员（这是 Azure AD 中主导的共享角色）。 
 

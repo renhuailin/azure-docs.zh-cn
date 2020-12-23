@@ -132,6 +132,8 @@
           href: how-to-connect-install-existing-tenant.md
         - name: 安装后任务
           href: how-to-connect-post-installation.md
+        - name: 卸载 Azure AD Connect
+          href: how-to-connect-uninstall.md
     - name: 规划和设计
       items:
         - name: 设计概念

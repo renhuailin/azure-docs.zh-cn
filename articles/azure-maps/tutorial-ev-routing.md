@@ -1,33 +1,33 @@
 ---
-title: 教程：使用 Azure Notebooks (Python) 规划电动车路线 | Microsoft Azure Maps
-description: 使用 Microsoft Azure Maps 路线规划 API 和 Azure Notebooks 规划电动车路线。
+title: 教程：通过 Microsoft Azure Maps 使用 Azure Notebooks (Python) 规划电动车路线
+description: 本教程介绍如何使用 Microsoft Azure Maps 路线规划 API 和 Azure Notebooks 规划电动车路线
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/12/2019
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639743"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905734"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
 Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发人员、企业和 ISV 可以使用这些 API 开发位置感知应用、IoT、移动、物流与资产跟踪解决方案。 
 
-可以从 Python 和 R 等语言调用 Azure Maps REST API，以实现地理空间数据分析和机器学习方案。 Azure Maps 提供一组可靠的[路线 API](https://docs.microsoft.com/rest/api/maps/route)，让用户根据各种条件计算多个数据点之间的路线。 计算基于各种条件，例如车辆类型或可抵达区域。 
+可以从 Python 和 R 等语言调用 Azure Maps REST API，以实现地理空间数据分析和机器学习方案。 Azure Maps 提供一组可靠的[路线 API](/rest/api/maps/route)，让用户根据各种条件计算多个数据点之间的路线。 计算基于各种条件，例如车辆类型或可抵达区域。 
 
 本教程介绍如何为遇到电量不足情况的电动车司机提供帮助。 该司机需要找到离当前车辆位置最近的充电站。
 
 在本教程中，将：
 
 > [!div class="checklist"]
-> * 在云中的 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) 上创建并运行 Jupyter Notebook 文件。
+> * 在云中的 [Azure Notebooks](../notebooks/index.yml) 上创建并运行 Jupyter Notebook 文件。
 > * 在 Python 中调用 Azure Maps REST API。
 > * 根据电动车的耗电模型搜索可抵达的范围。
 > * 在可抵达范围（或等时线）内搜索电动车充电站。
@@ -49,7 +49,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 若要遵循本教程，需要创建一个 Azure Notebooks 项目，然后下载并运行 Jupyter Notebook 文件。 该 Jupyter Notebook 文件包含用于实现本教程中的方案的 Python 代码。 若要创建 Azure Notebooks 项目并将 Jupyter Notebook 文档上传到其中，请执行以下步骤：
 
-1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门：登录并设置用户 ID](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)。
+1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门：登录并设置用户 ID](../notebooks/quickstart-sign-in-azure-notebooks.md)。
 1. 在公共个人资料页的顶部，选择“我的项目”。 
 
     ![“我的项目”按钮](./media/tutorial-ev-routing/myproject.png)
@@ -108,7 +108,7 @@ from IPython.display import Image, display
 
 包裹递送公司在其车队中添置了一些电动车。 在这一天，电动车必须能够在不返回仓库的情况下完成充电。 每当剩余电量不足一小时的行程时，你需要搜索可抵达范围内的一系列充电站。 实质上，每当电池电量不足时，就要搜索充电站。 同时，需要获取充电站分布范围的边界信息。 
 
-由于公司倾向于使用经济性和速度均衡的路线，因此请求的线路类型为“经济”。  以下脚本调用 Azure Maps 路由服务的[获取路线范围 API](https://docs.microsoft.com/rest/api/maps/route/getrouterange)。 它使用参数来表示车辆的耗电模型。 然后，该脚本分析响应以创建 geojson 格式的多边形对象来表示汽车的最大可抵达范围。
+由于公司倾向于使用经济性和速度均衡的路线，因此请求的线路类型为“经济”。  以下脚本调用 Azure Maps 路由服务的[获取路线范围 API](/rest/api/maps/route/getrouterange)。 它使用参数来表示车辆的耗电模型。 然后，该脚本分析响应以创建 geojson 格式的多边形对象来表示汽车的最大可抵达范围。
 
 若要确定电动车可抵达范围的边界，请运行以下单元中的脚本：
 
@@ -156,7 +156,7 @@ boundsData = {
 
 获取电动车的可抵达范围（等时线）后，可以在该范围内搜索充电站。 
 
-以下脚本调用 Azure Maps 的[在几何结构内发布搜索 API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。 它在汽车的最大可抵达范围边界内搜索电动车充电站。 然后，脚本将响应分析成可抵达位置的数组。
+以下脚本调用 Azure Maps 的[在几何结构内发布搜索 API](/rest/api/maps/search/postsearchinsidegeometry)。 它在汽车的最大可抵达范围边界内搜索电动车充电站。 然后，脚本将响应分析成可抵达位置的数组。
 
 若要在可抵达范围内搜索电动车充电站，请运行以下脚本：
 
@@ -171,9 +171,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>将可抵达范围和充电站上传到 Azure Maps 数据服务
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>将可抵达范围和充电站上传到 Azure Maps 数据服务（预览版）
 
-你需要在地图上直观显示电动车的充电站和最大可抵达范围边界。 为此，请将边界数据和充电站数据作为 geojson 对象上传到 Azure Maps 数据服务。 可使用[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)。 
+你需要在地图上直观显示电动车的充电站和最大可抵达范围边界。 为此，请将边界数据和充电站数据作为 geojson 对象上传到 Azure Maps 数据服务（预览版）。 可使用[数据上传 API](/rest/api/maps/data/uploadpreview)。 
 
 若要将边界和充电站数据上传到 Azure Maps 数据服务，请运行以下两个单元：
 
@@ -194,7 +194,7 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data Service.
+# Upload the range data to Azure Maps Data service (Preview).
 uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -223,7 +223,7 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data Service.
+# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
 uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -239,7 +239,7 @@ poiUdid = getPoiUdid["udid"]
 
 ## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>在地图上呈现充电站和可抵达范围
 
-将数据上传到数据服务后，调用 Azure Maps 的[获取地图图像服务](https://docs.microsoft.com/rest/api/maps/render/getmapimage)。 此服务可运行以下脚本，在静态地图图像上呈现充电站和最大可抵达边界：
+将数据上传到数据服务后，调用 Azure Maps 的[获取地图图像服务](/rest/api/maps/render/getmapimage)。 此服务可运行以下脚本，在静态地图图像上呈现充电站和最大可抵达边界：
 
 ```python
 # Get boundaries for the bounding box.
@@ -283,7 +283,7 @@ display(Image(poiRangeMap))
 
 首先需要确定可抵达范围内的所有可能的充电站。 然后需要知道在最短时间内可以抵达其中的哪个充电站。 
 
-以下脚本调用 Azure Maps 的[矩阵路线 API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)。 它会返回指定车辆的位置、行程时间，以及与每个充电站之间的距离。 下一个单元中的脚本将分析响应，以找到在给定时间内可抵达的最近充电站。
+以下脚本调用 Azure Maps 的[矩阵路线 API](/rest/api/maps/route/postroutematrix)。 它会返回指定车辆的位置、行程时间，以及与每个充电站之间的距离。 下一个单元中的脚本将分析响应，以找到在给定时间内可抵达的最近充电站。
 
 若要查找可在最短时间内抵达的最近充电站，请运行以下单元中的脚本：
 
@@ -314,7 +314,7 @@ closestChargeLoc = ",".join(str(i) for i in minDistLoc)
 
 ## <a name="calculate-the-route-to-the-closest-charging-station"></a>计算到最近充电站的路线
 
-找到最近的充电站后，可以调用[获取路线方向 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)，请求从电动车当前位置到该充电站的详细路线。
+找到最近的充电站后，可以调用[获取路线方向 API](/rest/api/maps/route/getroutedirections)，请求从电动车当前位置到该充电站的详细路线。
 
 若要获取充电站的路线并分析响应以创建表示路线的 geojson 对象，请运行以下单元中的脚本：
 
@@ -336,12 +336,12 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>直观显示路线
 
-为了帮助直观显示路线，首先请将路线数据作为 geojson 对象上传到 Azure Maps 数据服务。 为此，可使用 Azure Maps 的[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)。 然后调用呈现服务[获取地图图像 API](https://docs.microsoft.com/rest/api/maps/render/getmapimage)，在地图上呈现并直观显示路线。
+为了帮助直观显示路线，首先请将路线数据作为 geojson 对象上传到 Azure Maps 数据服务（预览版）。 为此，可使用 Azure Maps 的[数据上传 API](/rest/api/maps/data/uploadpreview)。 然后调用呈现服务[获取地图图像 API](/rest/api/maps/render/getmapimage)，在地图上呈现并直观显示路线。
 
 若要获取地图上呈现的路线图像，请运行以下脚本：
 
 ```python
-# Upload the route data to Azure Maps Data Service.
+# Upload the route data to Azure Maps Data service (Preview).
 routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -387,19 +387,21 @@ display(Image(staticMapImage))
 
 ![显示路线的地图](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>后续步骤
-
 本教程已介绍如何使用 Python 直接调用 Azure Maps REST API 和直观显示 Azure Maps 数据。
 
 若要了解本教程中使用的 Azure Maps API，请参阅：
 
-* [获取路线范围](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
-* [在几何结构中发布搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
-* [数据上传](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
-* [呈现器 - 获取地图图像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [发布路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
-* [获取路线方向](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [获取路线范围](/rest/api/maps/route/getrouterange)
+* [在几何结构中发布搜索](/rest/api/maps/search/postsearchinsidegeometry)
+* [数据上传](/rest/api/maps/data/uploadpreview)
+* [呈现器 - 获取地图图像](/rest/api/maps/render/getmapimage)
+* [发布路线矩阵](/rest/api/maps/route/postroutematrix)
+* [获取路线方向](/rest/api/maps/route/getroutedirections)
+* [Azure Maps REST API](./consumption-model.md)
 
-有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)。
+## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Notebooks，请参阅 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)。
+若要详细了解 Azure Notebooks，请参阅：
+
+> [!div class="nextstepaction"]
+> [Azure Notebook](../notebooks/index.yml)

@@ -1,7 +1,7 @@
 ---
 title: 配置训练运行
 titleSuffix: Azure Machine Learning
-description: 在各种训练环境（计算目标）上训练机器学习模型。 可以轻松地在训练环境之间切换。 在本地开始训练。 如果需要横向扩展，请切换到基于云的计算目标。
+description: 在各种训练环境（计算目标）上训练机器学习模型。 可以轻松地在训练环境之间切换。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -10,39 +10,39 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 53d821809820b11a9a126a826db79726dd43e382
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: 2197d5be91af4c93e9691e1dc2b953198669deaf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708231"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027401"
 ---
-# <a name="configure-and-submit-training-runs"></a>配置并提交定型运行
+# <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
-本文介绍如何配置和提交 Azure 机器学习运行，以对模型进行定型。
+本文介绍如何配置和提交 Azure 机器学习运行以训练模型。 代码片段说明了配置和提交训练脚本的关键部分。  然后使用其中一个 [示例笔记本](#notebooks) 查找完整的端到端工作示例。
 
-训练时，通常会在本地计算机上启动，然后再扩展到基于云的群集。 使用 Azure 机器学习，你可以在各种计算目标上运行脚本，而无需更改训练脚本。
+训练时，通常先在本地计算机上启动，然后再横向扩展到基于云的群集。 使用 Azure 机器学习，你可以在各种计算目标上运行脚本，而无需更改训练脚本。
 
 只需在脚本运行配置中为每个计算目标定义环境即可。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
-* [用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ( # B0 = 1.13.0) 
+* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
 * [Azure 机器学习工作区](how-to-manage-workspace.md) `ws`
 * 计算目标 `my_compute_target`。  [创建计算目标](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>什么是脚本运行配置？
-[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)用于配置作为实验的一部分提交定型运行所需的信息。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 用于配置在试验中提交训练运行所需的信息。
 
 使用 ScriptRunConfig 对象提交训练实验。  此对象包含：
 
 * **source_directory**：包含训练脚本的源目录
-* **脚本**：要运行的训练脚本
+* **script**：要运行的训练脚本
 * **compute_target**：要在其上运行的计算目标
-* **环境**：运行脚本时要使用的环境
-* 其他一些可配置选项 (参阅 [参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 以了解详细信息) 
+* **environment**：运行脚本时要使用的环境
+* 一些其他的可配置选项（有关详细信息，请参阅[参考文档](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)）
 
 ## <a name="train-your-model"></a><a id="submit"></a>训练模型
 
@@ -72,14 +72,14 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 
 ## <a name="select-a-compute-target"></a>选择计算目标
 
-选择要在其中运行训练脚本的计算目标。 如果未在 ScriptRunConfig 中指定任何计算目标，或者如果为 `compute_target='local'` ，则 AZURE ML 将在本地执行脚本。 
+选择要在其中运行训练脚本的计算目标。 如果 ScriptRunConfig 中未指定任何计算目标，或者 `compute_target='local'`，则 Azure ML 会在本地执行脚本。 
 
-本文中的示例代码假设您已 `my_compute_target` 根据 "先决条件" 部分创建了计算目标。
+本文中的示例代码假设你已创建了“先决条件”部分的计算目标 `my_compute_target`。
 
 ## <a name="create-an-environment"></a>创建环境
-Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 它们指定了有关训练和评分脚本的 Python 包、Docker 映像、环境变量和软件设置。 它们还 (Python、Spark 或 Docker) 指定运行时。
+Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 此类学习环境会指定与训练和评分脚本有关的 Python 包、Docker 映像、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。
 
-可以定义自己的环境，也可以使用 Azure ML 特选环境。 [特选环境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#use-a-curated-environment) 是工作区中默认提供的预定义环境。 这些环境由缓存的 Docker 映像支持，降低了运行准备成本。 有关可用特选环境的完整列表，请参阅 [Azure 机器学习特选的环境](https://docs.microsoft.com/azure/machine-learning/resource-curated-environments) 。
+你可以定义自己的环境，也可以使用 Azure ML 特选环境。 [特选环境](./how-to-use-environments.md#use-a-curated-environment)是默认情况下在工作区中可用的预定义环境。 这些环境由缓存的 Docker 映像支持，降低了运行准备成本。 有关可用特选环境的完整列表，请参阅 [Azure 机器学习特选环境](./resource-curated-environments.md)。
 
 对于远程计算目标，可以从使用以下常用特选环境之一开始：
 
@@ -123,19 +123,19 @@ src = ScriptRunConfig(source_directory=project_folder,
 script_run_config.run_config.target = my_compute_target
 ```
 
-如果未指定环境，则将为您创建一个默认环境。
+如果你未指定环境，系统会为你创建一个默认环境。
 
-如果要将命令行参数传递给训练脚本，可以通过 **`arguments`** ScriptRunConfig 构造函数的参数指定这些参数，例如 `arguments=['--arg1', arg1_val, '--arg2', arg2_val]` 。
+如果要将命令行参数传递给训练脚本，则可以通过 ScriptRunConfig 构造函数的 `arguments` 参数来指定这些参数，例如 `arguments=['--arg1', arg1_val, '--arg2', arg2_val]`。
 
-如果要重写默认允许运行的最长时间，可以通过参数执行此操作 **`max_run_duration_seconds`** 。 如果运行时间超过此值，系统将尝试自动取消运行。
+如果要替代允许用于运行的默认最长时间，可以通过 `max_run_duration_seconds`  参数来实现。 如果运行时间超过此值，系统会尝试自动取消运行。
 
 ### <a name="specify-a-distributed-job-configuration"></a>指定分布式作业配置
-如果要运行分布式培训作业，请向参数提供分布式作业特定配置 **`distributed_job_config`** 。 支持的配置类型包括 [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true)、 [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true)和 [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true)。 
+如果要运行分布式训练作业，请为 `distributed_job_config` 参数提供分布式作业特定配置。 支持的配置类型包括 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) 和 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)。 
 
-有关运行分布式 Horovod、TensorFlow 和 PyTorch 作业的详细信息和示例，请参阅：
+有关运行 Horovod、TensorFlow 和 PyTorch 分布式作业的详细信息和示例，请参阅：
 
-* [训练 TensorFlow 模型](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow#distributed-training)
-* [训练 PyTorch 模型](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch#distributed-training)
+* [训练 TensorFlow 模型](./how-to-train-tensorflow.md#distributed-training)
+* [训练 PyTorch 模型](./how-to-train-pytorch.md#distributed-training)
 
 ## <a name="submit-the-experiment"></a>提交试验
 
@@ -152,7 +152,7 @@ run.wait_for_completion(show_output=True)
 > 有关快照的详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
 > [!IMPORTANT]
-> **特殊文件夹**两个文件夹 *outputs* 和 *logs* 接收 Azure 机器学习的特殊处理。 在训练期间，如果将文件写入相对于根目录（分别为 `./outputs` 和 `./logs`）的名为 outputs 和 logs 的文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限 。
+> **特殊文件夹** 两个文件夹 *outputs* 和 *logs* 接收 Azure 机器学习的特殊处理。 在训练期间，如果将文件写入相对于根目录（分别为 `./outputs` 和 `./logs`）的名为 outputs 和 logs 的文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限 。
 >
 > 要在训练期间创建项目（如模型文件、检查点、数据文件或绘制的图像），请将其写入 `./outputs` 文件夹。
 >
@@ -164,11 +164,11 @@ run.wait_for_completion(show_output=True)
 
 如果以本地 Git 存储库作为源目录开始训练运行，有关存储库的信息将存储在运行历史记录中。 有关详细信息，请参阅 [Azure 机器学习的 Git 集成](concept-train-model-git-integration.md)。
 
-## <a name="notebook-examples"></a>Notebook 示例
+## <a name="notebook-examples"></a><a name="notebooks"></a>Notebook 示例
 
-有关为各种培训方案配置运行的示例，请参阅以下笔记本：
-* [针对各种计算目标的培训](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [ML 框架培训](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
+有关为各种训练方案配置运行的示例，请参阅以下笔记本：
+* [对各种计算目标的训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [使用 ML 框架进行训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
@@ -176,8 +176,8 @@ run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：训练模型](tutorial-train-models-with-aml.md)使用一个托管计算目标来训练模型。
-* 了解如何通过特定 ML 框架（如 [scikit-learn](how-to-train-scikit-learn.md)、 [TensorFlow](how-to-train-tensorflow.md)和 [PyTorch](how-to-train-pytorch.md)）训练模型。
+* 了解如何使用特定的 ML 框架（如 [Scikit-learn](how-to-train-scikit-learn.md)、[TensorFlow](how-to-train-tensorflow.md) 和 [PyTorch](how-to-train-pytorch.md)）来训练模型。
 * 若要构建更好的模型，请了解如何[高效地优化超参数](how-to-tune-hyperparameters.md)。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
-* 查看 [ScriptRunConfig 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) SDK 参考。
-* [通过 Azure 虚拟网络使用 Azure 机器学习](how-to-enable-virtual-network.md)
+* 查看 [ScriptRunConfig 类](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) SDK 参考。
+* [通过 Azure 虚拟网络使用 Azure 机器学习](./how-to-network-security-overview.md)

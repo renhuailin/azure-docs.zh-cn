@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272587"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001994"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
 
@@ -46,7 +46,7 @@ ms.locfileid: "81272587"
 在文本屏幕中选择要使用的查询参数。 在本例中，使用语言  的默认值。 也可以将其留空，因为作为其执行的一部分，该操作将自动检测可能的语言。
 
 > [!NOTE]
-> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
+> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的 **分类** 响应（预览功能）。 **此功能仅支持英语**。
 >
 > 对于不雅用语  检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
@@ -137,4 +137,4 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP:
 
 ## <a name="next-steps"></a>后续步骤
 
-请在代码中使用 REST API，或按照 [.NET SDK 快速入门](dotnet-sdk-quickstart.md) 与应用程序集成。
+请在代码中使用 REST API，或按照 [.NET SDK 快速入门](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) 与应用程序集成。

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921667"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108377"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -29,7 +29,7 @@ ms.locfileid: "87921667"
 
 * **目录** - 目录是 Azure AD B2C 将用户的凭据和配置文件数据以及应用程序注册存储到的位置。
 * **应用程序注册** - 将 Web、移动和本机应用程序注册到 Azure AD B2C 以启用标识管理。 此外，应用程序注册还包括要使用 Azure AD B2C 保护的 API。
-* **用户流**和**自定义策略** - 应用程序的内置标识体验（用户流）和完全可自定义的标识体验（自定义策略）。
+* **用户流** 和 **自定义策略** - 应用程序的内置标识体验（用户流）和完全可自定义的标识体验（自定义策略）。
   * 使用用户流可以快速配置和启用常见标识任务，例如注册、登录和配置文件编辑。
   * 使用自定义策略不仅可为常见标识任务启用用户体验，而且还能为组织、客户、员工、合作伙伴和市民的独特复杂标识工作流构建支持。
 * **标识提供者** - 以下对象的联合设置：
@@ -56,8 +56,8 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 可将使用者帐户关联到以下标识类型：
 
-* **本地**标识：将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
-* **社交**或**企业**标识：用户的标识由 Facebook、Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
+* **本地** 标识：将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
+* **社交** 或 **企业** 标识：用户的标识由 Facebook、Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
 
 具有使用者帐户的用户可以通过多个标识（例如用户名、电子邮件、员工 ID、政府 ID 等）登录。 单个帐户可以有多个本地和社交标识。
 
@@ -87,9 +87,9 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 
 在 Azure AD B2C 中，可以通过两个主要途径来提供这些标识体验：用户流和自定义策略。
 
-* **用户流**是我们提供的预定义的内置可配置策略，使你能够在几分钟内创建注册、登录和策略编辑体验。
+* **用户流** 是我们提供的预定义的内置可配置策略，使你能够在几分钟内创建注册、登录和策略编辑体验。
 
-* 使用**自定义策略**可为复杂的标识体验方案创建自己的用户旅程。
+* 使用 **自定义策略** 可为复杂的标识体验方案创建自己的用户旅程。
 
 用户流和自定义策略均由 *Identity Experience Framework*（Azure AD B2C 的策略业务流程引擎）提供支持。
 
@@ -101,7 +101,7 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 
 * 用于登录的帐户类型，例如 Facebook 等社交帐户，或者使用电子邮件地址和密码进行登录的本地帐户
 * 要从使用者收集的属性，例如名字、邮政编码，或居住地所在国家/地区
-* Azure 多重身份验证 (MFA)
+* Azure AD 多重身份验证 (MFA)
 * 用户界面的自定义
 * 在用户完成用户流后由应用程序接收的令牌中的声明集
 * 会话管理
@@ -162,7 +162,7 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 ![按品牌自定义的注册/登录页的屏幕截图](media/technical-overview/seamless-ux.png)
 
-有关 UI 自定义的信息，请参阅[关于 Azure Active Directory B2C 中的用户界面自定义](customize-ui-overview.md)。
+有关 UI 自定义的信息，请参阅[关于 Azure Active Directory B2C 中的用户界面自定义](customize-ui-with-html.md)。
 
 ## <a name="localization"></a>本地化
 
@@ -170,7 +170,7 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 ![以不同语言显示 UI 文本的三个注册/登录页](media/technical-overview/localization.png)
 
-在 [Azure Active Directory B2C 中的语言自定义](user-flow-language-customization.md)中了解本地化的工作原理。
+在 [Azure Active Directory B2C 中的语言自定义](language-customization.md)中了解本地化的工作原理。
 
 ## <a name="add-your-own-business-logic"></a>添加自己的业务逻辑
 
@@ -215,13 +215,13 @@ Azure AD B2C 租户与用于员工和合作伙伴的企业 Azure Active Director
 * 在 Identity Experience Framework 中创建和管理信任框架策略（自定义策略）
 * 在 Identity Experience Framework 中管理用于联合身份验证和加密的机密（自定义策略）
 
-有关 Azure AD 角色的详细信息，包括 Azure AD B2C 管理角色支持，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+有关 Azure AD 角色的详细信息，包括 Azure AD B2C 管理角色支持，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/roles/permissions-reference.md)。
 
 ### <a name="multi-factor-authentication-mfa"></a>多重身份验证 (MFA)
 
 Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求另一种形式的身份验证来提供额外的安全性，并通过提供一系列易于使用的身份验证方法来实现强式身份验证。 根据管理员做出的配置决策，用户可能会受到 MFA 的质询，也可能不会受到 MFA 的质询。
 
-有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](custom-policy-multi-factor-authentication.md)。
+有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](multi-factor-authentication.md)。
 
 ### <a name="smart-account-lockout"></a>智能帐户锁定
 
@@ -235,7 +235,7 @@ Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的
 
 在注册或密码重置期间，用户必须提供符合复杂性规则的密码。 默认情况下，Azure AD B2C 实施强密码策略。 Azure AD B2C 还提供相应的配置选项用于指定客户所用密码的复杂性要求。
 
-可以在[用户流](user-flow-password-complexity.md)和[自定义策略](custom-policy-password-complexity.md)中配置密码复杂性要求。
+可以在[用户流](password-complexity.md)和[自定义策略](password-complexity.md)中配置密码复杂性要求。
 
 ## <a name="auditing-and-logs"></a>审核和日志
 

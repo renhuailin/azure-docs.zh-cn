@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441477"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444522"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "91441477"
 
 不是。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
-- **Azure Defender off** –安全中心在默认工作区中启用 "SecurityCenterFree" 解决方案。 如果 Azure Defender 处于关闭状态，则不会向你收费。
+- **Azure Defender off** –安全中心在默认工作区中启用 "SecurityCenterFree" 解决方案。 如果 Azure Defender 处于关闭状态，则你无需付费。
 
 - **Azure Defender on** –安全中心在默认工作区中启用 "安全" 解决方案。
 
@@ -43,13 +43,13 @@ ms.locfileid: "91441477"
 
 ## <a name="what-is-the-log-analytics-agent"></a>什么是 Log Analytics 代理？
 
-为了监视安全漏洞和威胁，Azure 安全中心依赖于 [Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) -这是 Azure Monitor 服务所使用的同一代理。 
+Azure 安全中心依赖 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)来监视安全漏洞和威胁。该代理与 Azure Monitor 服务所用的代理相同， 
 
-代理有时称为 Microsoft Monitoring Agent (或 "MMA" ) 。 
+有时又称为 Microsoft Monitoring Agent（或“MMA”）。 
 
-代理从连接的计算机收集各种与安全相关的配置详细信息和事件日志，然后将数据复制到 Log Analytics 工作区以便进一步分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
+该代理从已连接的计算机中收集各种与安全相关的配置详细信息和事件日志，然后将数据复制到 Log Analytics 工作区以进行进一步分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
 
-确保计算机运行的是代理支持的操作系统之一，如以下页面所述：
+请确保计算机正在运行此代理支持的操作系统之一，如以下页面所述：
 
 * [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
@@ -66,7 +66,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 - 当前未在该 VM 上安装 Log Analytics 代理扩展。
 - 该 VM 处于正在运行状态。
-- 安装了 Windows 或 Linux [Azure 虚拟机代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
+- 安装了 Windows 或 Linux [Azure 虚拟机代理](../virtual-machines/extensions/agent-windows.md)。
 - 该 VM 未用作应用程序，例如 Web 防火墙或下一代防火墙。
 
 
@@ -86,12 +86,12 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 - 对于澳大利亚的 VM，工作区位置为澳大利亚
 
 
-## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics 代理收集哪些数据？
+## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Log Analytics 代理收集哪些安全事件？
 
-有关代理所监视的应用程序和服务的完整列表，请参阅 [什么是受 Azure Monitor？](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)。
+有关代理收集的安全事件的完整列表，请参阅 [为 "常用" 和 "最小" 安全事件设置存储的事件类型](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)。
 
 > [!IMPORTANT]
-> 请注意，对于某些服务（例如 Azure 防火墙），如果已启用日志记录，并选择了一个要记录 (的繁忙资源，则将日志设置为 " *详细* ") 你可能会看到 Log Analytics 的工作区存储需求的严重影响。 
+> 请注意，对于某些服务（例如 Azure 防火墙），如果启用了日志记录并选择记录琐碎资源（例如，将日志设置为“详细”），则可能会对 Log Analytics 工作区的存储需求产生重大影响。 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>是否可以删除安全中心创建的默认工作区？
@@ -109,14 +109,19 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 选择现有 Log Analytics 工作区的具体步骤：
 
-1. 在“安全策略 - 数据收集”下，选择“使用另一个工作区”。
+1. 从安全中心的菜单中，选择“定价和设置”。
+1. 选择相关订阅。
+1. 打开 " **自动设置** " 页，
+1. 对于 Log Analytics 代理，选择 " **编辑配置**"。 
 
-    ![使用另一个工作区][4]
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="要在使用自动部署时使用的 Log Analytics 代理的配置" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. 从下拉菜单中，选择一个工作区，用于存储所收集的数据。
+1. 选择 " **将 Azure Vm 连接到不同的工作区** "，并选择现有的工作区。
 
-    > [!NOTE]
-    > 下拉菜单中只显示用户有权访问且 Azure 订阅包含的工作区。
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="选择要向其报告的 Log Analytics 代理的非默认工作区" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
+
+    > [!TIP]
+    > 此列表仅包含你有权访问的工作区和 Azure 订阅中的工作区。
 
 1. 选择“保存”。 系统会询问是否要重新配置受监视的 VM。
 
@@ -126,7 +131,6 @@ Windows 或 Linux IaaS VM 的合格条件如下：
     > [!NOTE]
     > 如果选择“是”，不得删除安全中心创建的任何工作区，除非所有 VM 都已重新连接到新的目标工作区。 如果过早删除工作区，此操作将会失败。
 
-    - 若要取消该操作，请选择“取消”。
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果 Log Analytics 代理已作为扩展安装到 VM 上，会怎样？<a name="mmaextensioninstalled"></a>
 
@@ -162,14 +166,19 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>如何停止自动安装代理和创建工作区？
 
-可以在安全策略中为订阅禁用自动预配，但不建议这样做。 禁用自动预配会限制安全中心的建议和警报。 禁用自动预配的具体步骤：
+可以在安全策略中为订阅禁用自动预配，但不建议这样做。 关闭自动设置会限制安全中心的建议和警报。 禁用自动预配的具体步骤：
 
-1. 如果订阅已启用 Azure Defender，请打开该订阅的安全策略，并选择 " **Azure defender**"。
+1. 从安全中心的菜单中，选择“定价和设置”。
+1. 选择相关订阅。
+1. 如果订阅已启用 Azure Defender，请打开 **Azure defender 计划** ，并选择 " **azure defender**"。
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
 
-1. 接下来，在“安全策略 - 数据收集”页上选择“关”，禁用自动预配。
-   ![数据收集][2]
+1. 从 " **自动设置** " 页中，选择 "笔" 并在 "  **安全策略-数据收集** " 页中关闭自动设置。
+
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="为 Log Analytics 代理启用自动部署":::
+
+1. 选择“保存”。
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>是否应选择禁用自动安装代理和创建工作区？
@@ -230,15 +239,13 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 强烈建议使用自动预配，以获取有关系统更新、OS 漏洞和终结点保护的安全警报和建议。 默认情况下，自动预配处于禁用状态。
 
-如果已启用该功能，但现在想要将其禁用：
+如果已启用该功能，但现在想禁用它：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，打开 " **安全中心** " 并选择 " **安全策略**"。
+1. 在 [Azure 门户](https://portal.azure.com)中打开 " **安全中心** "，然后选择 " **定价和设置**"。
 
-1. 选择要对其禁用自动设置的订阅。
+1. 选择要禁用自动预配的订阅。
 
-    **安全策略-** 将打开 "数据收集"。
-
-1. 在“自动设置”下，选择“关闭” 。
+1. 在 " **自动预配**" 下，关闭 Log Analytics 代理的切换。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>如何启用数据收集？

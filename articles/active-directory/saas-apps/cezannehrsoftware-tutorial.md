@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0aa0dab7b512c85fbbdf374c962e6ee8e1c7d616
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529979"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456269"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>教程：Azure Active Directory 与 Cezanne HR Software 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88529979"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Cezanne HR Software（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88529979"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "88529979"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 若要获取这些值，请联系 [Cezanne HR Software 客户端支持团队](https://cezannehr.com/services/support/)。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -130,19 +130,19 @@ ms.locfileid: "88529979"
 
 2. 在左侧导航窗格中，单击“系统设置”。  转到“安全设置”。  然后导航到“单一登录配置”。 
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![屏幕截图显示 Cezanne HR Software 租户，其中“安全设置”和“单一登录配置”处于选中状态。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
 3. 在“允许用户使用以下单一登录 (SSO) 服务进行登录”面板上，选中“SAML 2.0”框并选择“高级配置”选项。   
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![屏幕截图显示“允许用户”窗格，其中“SAML 2.0”和“高级配置”处于选中状态。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 4. 单击“新增”按钮。 
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![屏幕截图显示“新增”按钮。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
 5. 在“SAML 2.0 标识提供者”部分中执行以下步骤。 
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![屏幕截图显示一个窗格，可在其中输入此步骤所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
     a. 对于“显示名称”，输入标识提供者的名称。 
 
@@ -160,7 +160,7 @@ ms.locfileid: "88529979"
 
 6. 单击“保存”按钮  。
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![屏幕截图显示单一登录配置的“保存”按钮。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -223,11 +223,11 @@ ms.locfileid: "88529979"
 
 2. 在左侧导航窗格中，单击“系统设置”。  转到“管理用户”。  然后导航到“添加新用户”。 
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "新建用户")
+    ![屏幕截图显示 Cezanne HR Software 租户，其中“管理用户”和“添加新用户”处于选中状态。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "新建用户")
 
 3. 在“人员详细信息”  部分中，执行以下步骤：
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "新建用户")
+    ![屏幕截图显示“人员详细信息”部分，可在其中输入此步骤所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "新建用户")
 
     a. 将“内部用户”设置为“关闭”。 
 
@@ -239,7 +239,7 @@ ms.locfileid: "88529979"
 
 4. 在“帐户信息”  部分中，执行以下步骤：
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新建用户")
+    ![屏幕截图显示“帐户信息”，可在其中输入此步骤所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新建用户")
 
     a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
@@ -251,26 +251,26 @@ ms.locfileid: "88529979"
 
 5. 导航到“单一登录”选项卡，并在“SAML 2.0 标识符”区域中选择“新增”。   
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "用户")
+    ![屏幕截图显示“单一登录”选项卡，可在其中选择“新增”。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "用户")
 
 6. 对于“标识提供者”，选择标识提供者，在“用户标识符”文本框中，输入 Britta Simon 帐户的电子邮件地址。  
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "用户")
+    ![屏幕截图显示“SAML 2.0 标识符”，可在其中选择“标识提供者”和“用户标识符”。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "用户")
 
 7. 单击“保存”按钮  。
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "用户")
+    ![屏幕截图显示“用户设置”的“保存”按钮。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "用户")
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Cezanne HR Software”磁贴时，应会自动登录到已为其设置了 SSO 的 Cezanne HR Software。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“Cezanne HR Software”磁贴时，应会自动登录到已为其设置了 SSO 的 Cezanne HR Software。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

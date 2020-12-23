@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130403"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007352"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
 
@@ -96,7 +96,7 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 ### <a name="azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>在使用 AUTO_CLOSE DB 托管任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败
 
-**如何修复：** 请参阅[托管包含 AUTO_CLOSE DB 的 SQL Server 实例上的非组件 VSS 备份（例如 Azure Site Recovery 作业）失败](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)一文。
+**如何修复：** 请参阅 [托管包含 AUTO_CLOSE DB 的 SQL Server 实例上的非组件 VSS 备份（例如 Azure Site Recovery 作业）失败](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)一文。
 
 ### <a name="known-issue-in-sql-server-2016-and-2017"></a>SQL Server 2016 和 2017 中的已知问题
 
@@ -108,7 +108,7 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>Linux 服务器上未启用应用一致性
 
-**如何修复**：针对 Linux 操作系统的 Azure Site Recovery 支持应用程序自定义脚本以实现应用程序一致性。 使用 pre 和 post 选项的自定义脚本将由 Azure Site Recovery 移动代理用于应用程序一致性。 [下面](./site-recovery-faq.md#replication)是启用该方法的步骤。
+**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](./site-recovery-faq.md#replication)是启用此功能的步骤。
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>更多的原因在于 VSS 相关的问题：
 

@@ -1,17 +1,17 @@
 ---
 title: 停止/启动-Azure 门户-Azure Database for MySQL 灵活的服务器
 description: 本文介绍如何通过 Azure 门户在 Azure Database for MySQL 中停止/启动操作。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: e3e08ae9bbf00e1c9a44e6ba913cac1d842928b7
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 15b08ea67afe0d307470b5a4fb0f7d26e0f4ea82
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567465"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241916"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>停止/启动 Azure Database for MySQL 灵活的服务器 (预览版) 
 

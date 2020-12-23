@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307800"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545066"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 灵活的服务器防火墙规则
 
@@ -25,7 +25,7 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 - 公共访问（允许的 IP 地址）
 - 专用访问（VNet 集成）
 
-在本文中，我们将重点介绍如何使用 **公共访问 (允许的 IP 地址) ** 使用 Azure CLI 创建 MySQL 服务器，并概述创建服务器后可用于创建、更新、删除、列出和显示防火墙规则的 Azure CLI 命令。 通过 *公共访问 (允许的 ip 地址) *，与 MySQL 服务器的连接仅限于允许的 ip 地址。 需要在防火墙规则中使用客户端 IP 地址。 若要了解详细信息，请参阅 [公共访问 (允许的 IP 地址) ](./concepts-networking.md#public-access-allowed-ip-addresses)。 可以在创建服务器时定义防火墙规则 (建议的) 但也可在以后添加。
+在本文中，我们将重点介绍如何使用 **公共访问 (允许的 IP 地址)** 使用 Azure CLI 创建 MySQL 服务器，并概述创建服务器后可用于创建、更新、删除、列出和显示防火墙规则的 Azure CLI 命令。 通过 *公共访问 (允许的 ip 地址)* ，与 MySQL 服务器的连接仅限于允许的 ip 地址。 需要在防火墙规则中使用客户端 IP 地址。 若要了解详细信息，请参阅 [公共访问 (允许的 IP 地址) ](./concepts-networking.md#public-access-allowed-ip-addresses)。 可以在创建服务器时定义防火墙规则 (建议的) 但也可在以后添加。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -33,17 +33,17 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 
 若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以在单独的浏览器标签页中通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 打开 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后选择 Enter 来运行它。  
 
-如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登录账户。 请注意 **ID** 属性，它是指 Azure 帐户的 **订阅 id** 。
+需要使用 [az login](/cli/azure/reference-index#az-login) 命令登录账户。 请注意 ID 属性，该属性指的是 Azure 帐户的订阅 ID 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下**az login**输出中的**ID**值，以用作命令中的 "**订阅**参数" 的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
+使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下 az login 输出中的 ID 值，将其用作命令中 subscription 参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -51,7 +51,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-firewall-rule-during-flexible-server-create-using-azure-cli"></a>使用 Azure CLI 在灵活的服务器创建过程中创建防火墙规则
 
-你可以使用 `az mysql flexible-server --public access` 命令创建具有 *公共访问权限的灵活服务器 (允许的 IP 地址) * 并在创建灵活的服务器期间配置防火墙规则。 你可以使用 **--公共访问** 开关来提供能够连接到服务器的允许的 IP 地址。 你可以提供要包括在允许的 ip 地址列表中的一个或多个 IP 地址。 IP 地址范围必须是短划线，并且不包含任何空格。 使用 CLI 创建灵活的服务器有多种选项，如下例所示。
+你可以使用 `az mysql flexible-server --public access` 命令创建具有 *公共访问权限的灵活服务器 (允许的 IP 地址)* 并在创建灵活的服务器期间配置防火墙规则。 你可以使用 **--公共访问** 开关来提供能够连接到服务器的允许的 IP 地址。 你可以提供要包括在允许的 ip 地址列表中的一个或多个 IP 地址。 IP 地址范围必须是短划线，并且不包含任何空格。 使用 CLI 创建灵活的服务器有多种选项，如下例所示。
 
 请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server) ，了解可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
 
@@ -89,11 +89,11 @@ az account set --subscription <subscription id>
 在 Azure CLI 中使用 **az mysql 灵活服务器防火墙规则** 命令来创建、删除、列出、显示和更新防火墙规则。
 
 命令：
-- **create**：创建灵活的服务器防火墙规则。
-- **list**：列出灵活的服务器防火墙规则。
-- **更新**：更新灵活的服务器防火墙规则。
-- **显示**：显示灵活的服务器防火墙规则的详细信息。
-- **删除**：删除灵活的服务器防火墙规则。
+- **create** ：创建灵活的服务器防火墙规则。
+- **list** ：列出灵活的服务器防火墙规则。
+- **更新** ：更新灵活的服务器防火墙规则。
+- **显示** ：显示灵活的服务器防火墙规则的详细信息。
+- **删除** ：删除灵活的服务器防火墙规则。
 
 请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server) ，了解可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
 

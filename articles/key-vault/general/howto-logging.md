@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744743"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285648"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>如何启用 Key Vault 日志记录
 
@@ -34,7 +34,7 @@ ms.locfileid: "91744743"
 az login
 ```
 
-如果选择在本地安装并使用 PowerShell，则需要 Azure PowerShell 模块版本1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则需要 Azure PowerShell 模块版本1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ```powershell-interactive
 Connect-AzAccount
@@ -64,7 +64,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 尽管可以使用现有的存储帐户来存储日志，但我们会创建一个专用于 Key Vault 日志的新存储帐户。 
 
-为了进一步简化管理，我们还使用了包含 Key Vault 的同一个资源组。 在 [Azure CLI 快速入门](quick-create-cli.md) 和 [Azure PowerShell 快速入门](quick-create-powershell.md)中，此资源组名为 **myResourceGroup**，并且位置为 *eastus*。 将这些值替换为您自己的值（如果适用）。 
+为了进一步简化管理，我们还使用了包含 Key Vault 的同一个资源组。 在 [Azure CLI 快速入门](quick-create-cli.md) 和 [Azure PowerShell 快速入门](quick-create-powershell.md)中，此资源组名为 **myResourceGroup** ，并且位置为 *eastus* 。 将这些值替换为您自己的值（如果适用）。 
 
 我们还需要提供存储帐户名称。 存储帐户名称必须唯一，长度为3到24个字符，并且只能使用数字和小写字母。  最后，我们将创建 "Standard_LRS" SKU 的存储帐户。
 
@@ -147,7 +147,7 @@ Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enab
   * 创建、修改或删除这些密钥或机密。
   * 签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密（及其版本）。
 * 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。  
-* 即将过期、已过期和保管库访问策略已更改的事件网格通知事件（不记录新版本事件）。 无论是否在密钥保管库上创建了事件订阅，都会记录事件。 有关详细信息，请参阅 [Key Vault 的事件网格事件架构](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
+* 即将过期、已过期和保管库访问策略已更改的事件网格通知事件（不记录新版本事件）。 无论是否在密钥保管库上创建了事件订阅，都会记录事件。 有关详细信息，请参阅 [Key Vault 的事件网格事件架构](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="access-your-logs"></a>访问日志
 

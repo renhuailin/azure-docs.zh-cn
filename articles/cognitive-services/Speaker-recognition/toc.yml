@@ -1,9 +1,9 @@
 - name: 说话人识别文档
-  href: Home.md
+  href: ../speech-service/speaker-recognition-overview.md
 - name: 概述
   items:
     - name: 了解说话人识别
-      href: Home.md
+      href: ../speech-service/speaker-recognition-overview.md
 - name: 参考
   items:
     - name: API 参考

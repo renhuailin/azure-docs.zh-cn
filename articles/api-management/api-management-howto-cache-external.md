@@ -1,6 +1,6 @@
 ---
 title: 在 Azure API 管理中使用外部缓存 | Microsoft Docs
-description: 了解如何在 Azure API 管理中配置和使用外部缓存。 使用外部缓存可克服内置缓存的某些限制。
+description: 了解如何在 Azure API 管理中配置和使用外部缓存。 使用外部缓存可以避免内置缓存的一些限制。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,18 +11,18 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904949"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018216"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>在 Azure API 管理中使用外部 Redis 兼容缓存
 
 除了利用内置缓存外，Azure API 管理还允许将响应缓存在外部 Redis 兼容缓存中，例如 Azure Cache for Redis。
 
-使用外部缓存可克服内置缓存的几个限制：
+使用外部缓存可以避免内置缓存的一些限制：
 
 * 避免在执行 API 管理更新期间定期清除缓存
 * 更好地控制你的缓存配置
@@ -60,12 +60,12 @@ ms.locfileid: "87904949"
 
 按照以下步骤在 Azure API 管理中添加用于 Redis 的外部 Azure 缓存。
 
-![将自己的缓存带到 APIM](media/api-management-howto-cache-external/add-external-cache.png)
+![介绍如何在 Azure API 管理中为 Redis 添加外部 Azure 缓存的屏幕截图。](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
 > “使用位置”设置指定将使用配置的缓存的 Azure 区域或自承载网关位置。 配置为“默认值”的缓存将由具有特定匹配区域或位置值的缓存进行重写。
 >
-> 例如，如果 API 管理承载在“美国东部”、“东南亚”和“西欧”，并且配置了两个缓存，一个用于**默认**，另一个用于**东南亚**，则**东南亚**中的 API 管理将使用其自己的缓存，而其他两个区域将使用**默认**缓存项。
+> 例如，如果 API 管理承载在“美国东部”、“东南亚”和“西欧”，并且配置了两个缓存，一个用于 **默认**，另一个用于 **东南亚**，则 **东南亚** 中的 API 管理将使用其自己的缓存，而其他两个区域将使用 **默认** 缓存项。
 
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>从同一订阅中添加用于 Redis 的 Azure 缓存
 

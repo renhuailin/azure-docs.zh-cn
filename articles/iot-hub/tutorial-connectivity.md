@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 0d886fc6797011ff3a0adeb69f50358ece9c5f57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252147"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572671"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
@@ -36,15 +36,7 @@ ms.locfileid: "91252147"
 > * 检查云到设备的连接性
 > * 检查设备孪生同步
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>先决条件
-
-本教程中运行的 CLI 脚本使用[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md)。 若要安装此扩展，请运行以下 CLI 命令：
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -70,7 +62,7 @@ node --version
 
 ## <a name="check-device-authentication"></a>检查设备身份验证
 
-设备在与中心交换数据之前，必须通过中心进行身份验证。 可以使用门户的“设备管理”部分的 **IoT 设备**工具来管理设备并检查其使用的身份验证密钥。 在教程的此部分，请添加一个新的测试设备，检索其密钥，并检查此测试设备能否连接到中心。 稍后请重置身份验证密钥，观察在设备尝试使用过期密钥时会发生什么情况。 教程的此部分使用 Azure 门户来创建、管理和监视设备以及示例 Node.js 设备模拟器。
+设备在与中心交换数据之前，必须通过中心进行身份验证。 可以使用门户的“设备管理”部分的 **IoT 设备** 工具来管理设备并检查其使用的身份验证密钥。 在教程的此部分，请添加一个新的测试设备，检索其密钥，并检查此测试设备能否连接到中心。 稍后请重置身份验证密钥，观察在设备尝试使用过期密钥时会发生什么情况。 教程的此部分使用 Azure 门户来创建、管理和监视设备以及示例 Node.js 设备模拟器。
 
 登录门户，导航到 IoT 中心。 然后导航到“IoT 设备”工具：
 
@@ -273,4 +265,4 @@ az iot hub device-twin update --set properties.desired='{"mydesiredproperty":"pr
 本教程介绍了如何检查设备密钥、如何检查设备到云的连接性、如何检查云到设备的连接性，以及如何检查设备孪生同步。 若要详细了解如何监视 IoT 中心，请访问有关 IoT 中心监视的操作方法文章。
 
 > [!div class="nextstepaction"]
-> [使用诊断进行监视](iot-hub-monitor-resource-health.md)
+> [监视 IoT 中心](monitor-iot-hub.md)

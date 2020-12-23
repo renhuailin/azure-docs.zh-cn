@@ -4,14 +4,14 @@ description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/05/2020
 ms.author: v-erkel
-ms.openlocfilehash: 9454dd8d1d6648396980f5148384d2e0119e0dab
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612976"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412504"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -59,13 +59,26 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 缓存需要 DNS 来访问其虚拟网络外部的资源。 根据所使用的资源，可能需要设置自定义 DNS 服务器并配置该服务器与 Azure DNS 服务器之间的转发：
 
 * 若要访问 Azure Blob 存储终结点和其他内部资源，需要基于 Azure 的 DNS 服务器。
-* 若要访问本地存储，需配置可解析存储主机名的自定义 DNS 服务器。
+* 若要访问本地存储，需配置可解析存储主机名的自定义 DNS 服务器。 在创建缓存 **之前** ，必须执行此操作。
 
 如果只需要访问 Blob 存储，则可以使用 Azure 提供的默认 DNS 服务器作为缓存。 但是，如果需要访问其他资源，则应创建自定义 DNS 服务器并将其配置为将任何特定于 Azure 的解析请求转发到 Azure DNS 服务器。
 
+若要使用自定义 DNS 服务器，你需要在创建缓存之前执行以下设置步骤：
+
+* 创建将承载 Azure HPC 缓存的虚拟网络。
+* 创建 DNS 服务器。
+* 将 DNS 服务器添加到缓存的虚拟网络中。
+
+  按照以下步骤将 DNS 服务器添加到 Azure 门户中的虚拟网络：
+
+  1. 在 Azure 门户中打开虚拟网络。
+  1. 从侧栏的 " **设置** " 菜单中选择 " **DNS 服务器** "。
+  1. 选择“自定义”
+  1. 在字段中输入 DNS 服务器的 IP 地址。
+
 简单的 DNS 服务器还可用于对所有可用缓存装入点中的客户端连接进行负载均衡。
 
-若要详细了解 azure 虚拟网络中的资源，请参阅 [名称解析中的](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)azure 虚拟网络和 DNS 服务器配置。
+若要详细了解 azure 虚拟网络中的资源，请参阅 [名称解析中的](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)azure 虚拟网络和 DNS 服务器配置。
 
 ## <a name="permissions"></a>权限
 
@@ -73,7 +86,7 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
 * 缓存实例需要能够创建 (Nic) 的虚拟网络接口。 创建缓存的用户必须在订阅中具有足够的权限才能创建 Nic。
 
-* 如果使用 Blob 存储，Azure HPC 缓存需要授权才能访问存储帐户。 使用基于角色的访问控制 (RBAC) 来授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。
+* 如果使用 Blob 存储，Azure HPC 缓存需要授权才能访问存储帐户。 使用 azure RBAC)  (Azure 基于角色的访问控制，以授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。
 
   按照 [添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) 中的说明添加角色。
 
@@ -92,8 +105,8 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 若要创建兼容的存储帐户，请使用以下设置：
 
 * 性能： **标准**
-* 帐户类型： **StorageV2 (常规用途 v2) **
-* 复制： **本地冗余存储 (LRS) **
+* 帐户类型： **StorageV2 (常规用途 v2)**
+* 复制： **本地冗余存储 (LRS)**
 *  (默认) 的访问层： **热**
 
 最好使用与缓存位于同一位置的存储帐户。
@@ -110,7 +123,7 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
 有关 [解决 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md)的详细信息。
 
-* **网络连接：** Azure HPC 缓存需要在缓存子网和 NFS 系统的数据中心之间进行高带宽的网络访问。 建议使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或类似的访问。 如果使用的是 VPN，你可能需要将其配置为将 TCP MSS 固定在1350，以确保不会阻止较大的数据包。 阅读 [vpn 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) ，了解有关 vpn 设置疑难解答的详细信息。
+* **网络连接：** Azure HPC 缓存需要在缓存子网和 NFS 系统的数据中心之间进行高带宽的网络访问。 建议使用[ExpressRoute](../expressroute/index.yml)或类似的访问。 如果使用的是 VPN，你可能需要将其配置为将 TCP MSS 固定在1350，以确保不会阻止较大的数据包。 阅读 [vpn 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) ，了解有关 vpn 设置疑难解答的详细信息。
 
 * **端口访问：** 缓存需要访问存储系统上的特定 TCP/UDP 端口。 不同类型的存储具有不同的端口要求。
 
@@ -143,7 +156,7 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 * **目录访问：**`showmount`在存储系统中启用命令。 Azure HPC 缓存使用此命令来检查存储目标配置是否指向有效导出，并确保多个装载不会访问相同的子目录 () 发生文件冲突的风险。
 
   > [!NOTE]
-  > 如果你的 NFS 存储系统使用 NetApp 的 ONTAP 9.2 操作系统，请**不要启用 `showmount` **。 [请与 Microsoft 服务和支持部门联系](hpc-cache-support-ticket.md) 以获取帮助。
+  > 如果你的 NFS 存储系统使用 NetApp 的 ONTAP 9.2 操作系统，请 **不要启用 `showmount`** 。 [请与 Microsoft 服务和支持部门联系](hpc-cache-support-ticket.md) 以获取帮助。
 
   有关目录列表访问权限的详细信息，请参阅 NFS 存储目标 [故障排除一文](troubleshoot-nas.md#enable-export-listing)。
 

@@ -19,6 +19,9 @@
       href: signalr-quickstart-azure-functions-java.md
     - name: Azure Functions - Python
       href: signalr-quickstart-azure-functions-python.md
+    - name: Azure SignalR 服务部署 - ARM 模板
+      href: signalr-quickstart-azure-signalr-service-arm-template.md
+      displayName: deploy azure resource manager template
     - name: REST API
       href: signalr-quickstart-rest-api.md
 - name: 教程
@@ -63,6 +66,10 @@
       href: signalr-concept-authenticate-oauth.md
     - name: 事件处理
       href: signalr-concept-event-grid-integration.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 缩放
@@ -95,6 +102,12 @@
           href: signalr-howto-diagnostic-logs.md
         - name: 使用 Azure Policy 审核符合性
           href: signalr-howto-azure-policy.md
+    - name: 疑难解答
+      items:
+        - name: 疑难解答指南
+          href: signalr-howto-troubleshoot-guide.md
+        - name: 疑难解答方法
+          href: signalr-howto-troubleshoot-method.md
 - name: 参考
   items:
     - name: Azure CLI
@@ -102,7 +115,7 @@
     - name: REST API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
     - name: ASP.NET Core SignalR
-      href: 'https://docs.microsoft.com/aspnet/core/signalr'
+      href: /aspnet/core/signalr
     - name: Azure SignalR 服务协议
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
     - name: Azure Policy 内置策略定义
@@ -111,7 +124,7 @@
 - name: 资源
   items:
     - name: 解决方案
-      href: 'https://docs.microsoft.com/azure/architecture/'
+      href: /azure/architecture/
     - name: 客户案例
       href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
     - name: SignalR 路线图
@@ -123,7 +136,7 @@
     - name: 常见问题解答
       href: signalr-resource-faq.md
     - name: SignalR 服务订阅级别限制
-      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: 视频

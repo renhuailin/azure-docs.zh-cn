@@ -3,18 +3,20 @@ title: Azure Cosmos DB 查询语言中的 Contains
 description: 了解 Azure Cosmos DB 中的 CONTAINS SQL 系统函数如何返回一个布尔值，指示第一个字符串表达式是否包含第二个字符串表达式
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b6835b22e5cfa4ca703b95d70e20112b8723def
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322697"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339166"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。  
   

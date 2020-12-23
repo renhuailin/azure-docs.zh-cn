@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 22753b80931956af6ce448cfee974ae746fff6e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529469"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456205"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>教程：将 Chargebee 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88529469"
 * 让用户使用其 Azure AD 帐户自动登录到 Chargebee。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "88529469"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Chargebee**。 
+1. 在“从库中添加”部分的搜索框中，键入 **Chargebee** 。 
 1. 在结果面板中选择“Chargebee”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-chargebee"></a>配置并测试 Chargebee 的 Azure AD 单一登录
@@ -132,11 +132,11 @@ ms.locfileid: "88529469"
 
 4. 在菜单左侧，单击“设置” > “安全性” > “管理”。   
 
-    ![Chargebee 配置](./media/chargebee-tutorial/config01.png)
+    ![屏幕截图显示 Chargebee 公司站点，其中已选择“设置”、“安全性”和“管理”。](./media/chargebee-tutorial/config01.png)
 
 5. 在“单一登录”弹出窗口中执行以下步骤： 
 
-    ![Chargebee 配置](./media/chargebee-tutorial/config02.png)
+    ![屏幕截图显示“单一登录”对话框，其中显示已选择“SAML”和“确认”选项。](./media/chargebee-tutorial/config02.png)
 
     a. 选择“SAML”。 
 
@@ -156,23 +156,22 @@ ms.locfileid: "88529469"
 
 2. 在菜单左侧单击“客户”，然后导航到“创建新客户”。  
 
-    ![Freedcamp 配置](./media/chargebee-tutorial/config03.png)
+    ![屏幕截图显示 Chargebee 站点，其中已选择“客户”和“创建新客户”。](./media/chargebee-tutorial/config03.png)
 
 3. 在“新建客户”页上，填写下面所示的相应字段，然后单击“创建客户”以创建用户。  
 
-    ![Freedcamp 配置](./media/chargebee-tutorial/config04.png)
+    ![屏幕截图显示“新建客户”页，可在其中输入客户信息。](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Chargebee”磁贴时，应会自动登录到设置了 SSO 的 Chargebee。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Chargebee”磁贴时，应会自动登录到设置了 SSO 的 Chargebee。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

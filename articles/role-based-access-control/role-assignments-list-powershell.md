@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 53f31bca59bf316b6664a6c9daec886c84c1b072
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372070"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648338"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 角色分配
 
@@ -28,11 +28,11 @@ ms.locfileid: "87372070"
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 如果你的组织对使用[Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
+> 如果你的组织对使用 [Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](/azure/cloud-shell/overview)
+- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](../cloud-shell/overview.md)
 
 ## <a name="list-role-assignments-for-the-current-subscription"></a>列出当前订阅的角色分配
 
@@ -144,19 +144,19 @@ PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGr
 
 ## <a name="list-role-assignments-for-a-resource"></a>列出资源的角色分配
 
-若要列出特定资源的角色分配，请使用[AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)和 `-Scope` 参数。 范围将因资源而异。 若要获取作用域，可以 `Get-AzRoleAssignment` 不带任何参数运行来列出所有角色分配，然后查找要列出的作用域。
+若要列出特定资源的角色分配，请使用 [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) 和 `-Scope` 参数。 范围将因资源而异。 若要获取作用域，可以运行不带任何参数的 `Get-AzRoleAssignment` 来列出所有角色分配，然后查找要列出的作用域。
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope "/subscriptions/<subscription_id>/resourcegroups/<resource_group_name>/providers/<provider_name>/<resource_type>/<resource>
 ```
 
-下面的示例演示如何列出存储帐户的角色分配。 请注意，此命令还会列出适用于此存储帐户的更高范围内的角色分配，如资源组和订阅。
+以下示例演示如何列出存储帐户的角色分配。 请注意，此命令还会列出应用于此存储帐户的更高作用域（如资源组和订阅）内的角色分配。
 
 ```Example
 PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"
 ```
 
-如果只想列出直接在资源上分配的角色分配，则可以使用[Where-Object](/powershell/module/microsoft.powershell.core/where-object)命令筛选列表。
+如果只想列出直接分配到资源上的角色分配，可以使用 [Where-Object](/powershell/module/microsoft.powershell.core/where-object) 命令来筛选列表。
 
 ```Example
 PS C:\> Get-AzRoleAssignment | Where-Object {$_.Scope -eq "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"}

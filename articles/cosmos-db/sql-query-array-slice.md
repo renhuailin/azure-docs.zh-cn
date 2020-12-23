@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 ARRAY_SLICE
 description: 了解 Azure Cosmos DB 中的 Array slice SQL 系统函数如何返回部分数组表达式
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1808070f374614ae6cac9a27098ddf2f4d9d2d12
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78303318"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332519"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回部分数组表达式。
   
 ## <a name="syntax"></a>语法

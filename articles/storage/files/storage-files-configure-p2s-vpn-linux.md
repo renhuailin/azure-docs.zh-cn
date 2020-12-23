@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515311"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629268"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
 你可以使用点到站点 (P2S) VPN 连接从 Azure 外部通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 点到站点 VPN 连接是 Azure 与单个客户端之间的 VPN 连接。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 如果有多个客户端需要从本地网络连接到 Azure 文件共享，则可以为每个客户端使用站点到站点 (S2S) VPN 连接，而不使用点到站点连接。 若要了解详细信息，请参阅[配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
@@ -22,7 +22,7 @@ ms.locfileid: "85515311"
 本文详细介绍了在 Linux 上配置点到站点 VPN 以直接在本地装载 Azure 文件共享的步骤。 如果想要通过 VPN 路由 Azure 文件同步流量，请参阅[配置 Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)。
 
 ## <a name="prerequisites"></a>先决条件
-- 最新版本的 Azure CLI。 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure PowerShell CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并选择操作系统。 如果你想要在 Linux 上使用 Azure PowerShell 模块，也可以使用，但是下面是针对 Azure CLI 的说明。
+- 最新版本的 Azure CLI。 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure PowerShell CLI](/cli/azure/install-azure-cli) 并选择操作系统。 如果你想要在 Linux 上使用 Azure PowerShell 模块，也可以使用，但是下面是针对 Azure CLI 的说明。
 
 - 要在本地装载的 Azure 文件共享。 Azure 文件共享部署在存储帐户中，是代表共享存储池的管理结构，可以在其中部署多个文件共享以及其他存储资源（例如 Blob 容器或队列）。 可以在[创建 Azure 文件共享](storage-how-to-create-file-share.md)中详细了解如何部署 Azure 文件共享和存储帐户。
 
@@ -119,7 +119,7 @@ Azure 虚拟网络网关是本地 Linux 计算机将连接到的服务。 部署
 > [!Note]  
 > 部署 Azure 虚拟网络网关最多需要 45 分钟。 部署此资源时，此 bash script 脚本将阻止部署完成。
 >
-> **基本**SKU 不支持 P2S IKEv2/OpenVPN 连接。 此脚本将对虚拟网络网关使用**VpnGw1** SKU。
+> **基本** SKU 不支持 P2S IKEv2/OpenVPN 连接。 此脚本将对虚拟网络网关使用 **VpnGw1** SKU。
 
 ```bash
 vpnName="<desired-vpn-name-here>"
@@ -210,7 +210,7 @@ smbPath="//$storageAccountPrivateIP/$fileShareName"
 sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [Azure 文件存储网络概述](storage-files-networking-overview.md)
 - [在 Windows 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-p2s-vpn-windows.md)
 - [配置站点到站点 (S2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)

@@ -4,36 +4,36 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bff61cfbf89aee3566d677ccf593b102cff36d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173140"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375785"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>添加 StorSimple 备份策略
 
-1. 转到 StorSimple 设备并单击“备份策略”。****
+1. 转到 StorSimple 设备并单击“备份策略”。
 
-2. 在“备份策略”边栏选项卡中，从命令栏中单击“+ 添加策略”。********
+2. 在“备份策略”边栏选项卡中，从命令栏中单击“+ 添加策略”。
    
     ![添加备份策略](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
 
-3. 在“创建备份策略”**** 边栏选项卡中，执行以下步骤：
+3. 在“创建备份策略”边栏选项卡中，执行以下步骤：
    
-   1. “选择设备”会根据你选择的设备自动填充。****
+   1. “选择设备”会根据你选择的设备自动填充。
    
-   2. 指定备份**策略名称**，其中包含 3 到 150 个字符。 创建策略后，无法重命名该策略。
+   2. 指定备份 **策略名称** ，其中包含 3 到 150 个字符。 创建策略后，无法重命名该策略。
        
-   3. 要向此备份策略分配卷，请选择“添加卷”，然后在卷的表格式列表中，单击相应的复选框来将一个或多个卷分配到此备份策略。****
+   3. 要向此备份策略分配卷，请选择“添加卷”，然后在卷的表格式列表中，单击相应的复选框来将一个或多个卷分配到此备份策略。
 
-       ![添加备份策略](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![添加备份策略 2](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
 
-   4. 要为此备份策略定义计划，请单击“第一个计划”****，并修改以下参数：
+   4. 要为此备份策略定义计划，请单击“第一个计划”，并修改以下参数：
 
-       ![添加备份策略](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![添加备份策略3](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
 
-       1. 从“快照类型”中，选择“云”或“本地”。************
+       1. 从“快照类型”中，选择“云”或“本地”。
 
        2. 指示备份频率 (指定一个数字，然后从下拉列表中选择 " **天** " 或 " **周** "。
 
@@ -41,13 +41,13 @@ ms.locfileid: "67173140"
 
        4. 输入备份策略开始的时间和日期。
 
-       5. 单击“确定”来定义计划。****
+       5. 单击“确定”来定义计划。
 
-   5. 单击“创建”来创建备份策略。****
+   5. 单击“创建”来创建备份策略。
 
-       ![添加备份策略](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
+       ![添加备份策略4](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
-   6. 在备份策略创建后，将收到通知。 新添加的策略会显示在“备份策略”**** 边栏选项卡上的表格式视图中。
+   6. 在备份策略创建后，将收到通知。 新添加的策略会显示在“备份策略”边栏选项卡上的表格式视图中。
 
-       ![添加备份策略](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
+       ![添加备份策略5](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
 

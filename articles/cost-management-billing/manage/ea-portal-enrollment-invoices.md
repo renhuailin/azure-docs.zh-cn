@@ -3,21 +3,102 @@ title: Azure Enterprise 注册发票
 description: 本文介绍如何管理和处理 Azure 企业发票。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq1
+ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316131"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410943"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
 本文介绍如何管理和处理 Azure 企业协议 (Azure EA) 发票。 发票代表帐单。 请检查发票以确保其准确。 你还应该熟悉管理发票时可能需要执行的其他任务。
+
+## <a name="view-usage-summary-and-download-reports"></a>查看使用情况摘要和下载报告
+
+企业管理员可以查看对其使用情况数据、使用的 Azure 预付款以及与 Azure Enterprise 门户中其他使用量相关的费用的摘要。 费用以摘要形式显示，适用于所有帐户和订阅。
+
+若要查看特定帐户的详细使用情况，请下载使用情况详细信息报表：
+
+1. 登录到 Azure Enterprise 门户。
+1. 选择“报告”。
+1. 选择“下载使用情况”选项卡。
+1. 在报表列表中，选择要获取的月份报表对应的“下载”。
+
+   > [!NOTE]
+   > 使用情况详细信息报表不包含任何适用的税费。
+   >
+   > 从使用服务开始算起，最长可能需要在延迟八小时之后，其费用才会反映在报表中。
+
+查看使用情况摘要报表和关系图：
+
+1. 登录到 Azure Enterprise 门户。
+
+1. 选择预付款期限。
+
+   若要更改“使用情况摘要”的日期范围，可以在页面右上角从“M”（每月）切换为“C”（自定义），然后输入自定义的开始日期和结束日期。  
+
+   ![在自定义视图中创建和查看使用情况摘要并下载报表](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+1. 若要查看更多详细信息，可以在图表上选择某个时段或月份。
+
+   - 该图表显示了每月的使用情况，其中细分了使用量、服务额外费用、单独计收的费用和 Azure 市场费用。
+   - 对于选定的月份，可以使用图表下面的字段按部门、帐户和订阅进行筛选。
+   - 可以在“按服务列出的费用”与“按层次结构列出的费用”之间切换。 
+   - 展开相关的部分可以查看“Azure 服务”、“单独计收的费用”和“Azure 市场”中的详细信息。  
+
+观看以下视频来了解如何查看使用情况：
+
+> [!VIDEO https://www.youtube.com/embed/Cv2IZ9QCn9E]
+
+### <a name="download-csv-reports"></a>下载 CSV 报告
+
+企业管理员可以使用“月份报表下载”页以 CSV 文件形式下载以下报表：
+
+- 余额和费用
+- 使用情况详细信息
+- Azure 市场费用
+- 价目表
+
+若要下载报告：
+
+1. 在 Azure Enterprise 门户中选择“报表”。
+2. 选择页面顶部的“下载使用情况”。
+3. 选择月份报告旁边的“下载”。
+
+   > [!NOTE]
+   > 从使用日期开始算起，最长可能需要延迟五天，其费用才会显示在报告中。
+   >
+   > 用户在使用 Safari 将 CSV 文件下载到 Excel 时可能会遇到格式错误。 为避免错误，请使用文本编辑器打开文件。
+
+![显示“下载使用情况”页的示例](./media/ea-portal-enrollment-invoices/create-ea-download-csv-reports.png)
+
+观看以下视频来了解如何下载使用情况信息：
+
+> [!VIDEO https://www.youtube.com/embed/eY797htT1qg]
+
+### <a name="advanced-report-download"></a>高级报表下载
+
+可以使用高级报表下载来获取涵盖特定日期范围或帐户的报表。 输出文件采用 CSV 格式，以容纳较大的记录集。
+
+1. 在 Azure Enterprise 门户中选择“高级报表下载”。
+1. 选择适当的日期范围和帐户。
+1. 选择“请求使用情况数据”。
+1. 选择“刷新”按钮，直到报表状态更新为“下载”。 
+1. 下载报表。
+
+### <a name="download-usage-reports-and-billing-information-for-a-prior-enrollment"></a>下载先前注册的使用情况报表和计费信息
+
+发生注册转移后，可以下载先前某个注册的使用情况报表和计费信息。 Azure Enterprise 门户和成本管理中都会提供历史报表。
+
+Azure Enterprise 门户会从视图中筛选出非活动的注册。 需要取消选中“活动”框才能查看非活动的已转移注册。  
+
+![取消选中“活动”框可让用户查看非活动的注册](./media/ea-portal-enrollment-invoices/unchecked-active-box.png)
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>更改即将推出的超额发票的 PO 编号
 
@@ -61,20 +142,20 @@ Microsoft 每年在注册生效日期对 Microsoft Azure 服务的任何预付�
 
 收到超额发票的日期取决于注册开始日期和设置：
 
-- **开始日期在 2018 年 5 月 1 日之前的直接合约**：
+- **开始日期在 2018 年 5 月 1 日之前的直接合约** ：
   - 如果你签署的是直接企业协议 (EA)，则 Azure 服务（不包括 Azure 市场服务）采用每年计费周期。 计费周期基于周年日期：协议生效的日期。
   - 如果超过了 Azure EA 预付款阈值的 150%，则会自动转换为基于周年日期的按季计费周期。 此外，你还会收到 Azure 服务超额发票。
   - 如果未超过 Azure 预付款阈值的 150%，则注册将保持采用按年计费周期。 预付款年份结束时，你将收到超额发票。
 
-- **开始日期在 2018 年 5 月 1 日之后的直接合约**：
+- **开始日期在 2018 年 5 月 1 日之后的直接合约** ：
   - Azure 使用量和单独计费发票采用每月计费周期。
   - Azure 预付款未涵盖的任何费用计为超额款项。  
 
-- **登记开始日期在 2018 年 5 月 1 日之前的间接合约**：
+- **登记开始日期在 2018 年 5 月 1 日之前的间接合约** ：
 
   如果你是在开始日期 2018 年 5 月 1 日之前签署间接企业协议 (EA) 的客户，则系统已为你设置每季计费周期。 渠道合作伙伴 (CP) 将直接向你开票。  
 
-- **开始日期在 2018 年 5 月 1 日之后的间接合约**：
+- **开始日期在 2018 年 5 月 1 日之后的间接合约** ：
 
   采用每月计费周期。  
 
@@ -88,9 +169,9 @@ Microsoft 每年在注册生效日期对 Microsoft Azure 服务的任何预付�
 
 对于发票上的每个项，你将看到：
 
-- **应付金额**：总费用
-- **预付款使用量**：用于支付费用的预付款金额
-- **净额**：超出预付款的费用
+- **应付金额** ：总费用
+- **预付款使用量** ：用于支付费用的预付款金额
+- **净额** ：超出预付款的费用
 
 仅对超出预付款的净额计算适用税金。
 
@@ -110,9 +191,9 @@ Microsoft 每年在注册生效日期对 Microsoft Azure 服务的任何预付�
 
 客户的计费频率为每年、每季或每月。 计费周期是客户签署协议时确定的。 每月计费是最短的计费间隔。
 
-- 将直接注册的计费周期从每年更改为每季需要经过企业管理员的**批准**。 对于间接注册，需要合作伙伴管理员的批准。 更改将在当前计费季度结束时生效。
-- 若要将计费周期从每年或每季更改为每月，需要对协议进行**修正**。  对现有注册计费周期进行任何更改都需要经过企业管理员的批准，或者经过“接收帐单的联系人”的批准。
-- 将审批内容**提交**给 [Azure Enterprise 门户支持人员](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)。 选择问题类别：“计费和开票”。
+- 将直接注册的计费周期从每年更改为每季需要经过企业管理员的 **批准** 。 对于间接注册，需要合作伙伴管理员的批准。 更改将在当前计费季度结束时生效。
+- 若要将计费周期从每年或每季更改为每月，需要对协议进行 **修正** 。  对现有注册计费周期进行任何更改都需要经过企业管理员的批准，或者经过“接收帐单的联系人”的批准。
+- 将审批内容 **提交** 给 [Azure Enterprise 门户支持人员](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)。 选择问题类别：“计费和开票”。
 
 更改将在当前计费季度结束时生效。
 

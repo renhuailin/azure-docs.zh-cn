@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605118"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649222"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中应用程序的最终用户体验
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 * Azure AD 我的应用
 * Microsoft 365 应用程序启动器
 * 直接登录联合应用
-* 联合、基于密码或现有的应用的深层链接
+* 联合、基于密码或现有应用的深层链接
 
 请自行决定要选择哪种方法在组织中进行部署。
 
@@ -37,13 +37,13 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 
 "我的应用" 与 Azure 门户分离，无需用户拥有 Azure 订阅或 Microsoft 365 订阅。
 
-有关 Azure AD 应用的详细信息，请参阅 [我的应用简介](../user-help/active-directory-saas-access-panel-introduction.md)。
+有关 Azure AD 应用的详细信息，请参阅 [我的应用简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="microsoft-365-application-launcher"></a>Microsoft 365 应用程序启动器
 
 对于已部署 Microsoft 365 的组织，通过 Azure AD 分配给用户的应用程序也会出现在 Office 365 门户中的 [https://portal.office.com/myapps](https://portal.office.com/myapps) 。 这样，组织中的用户便可以轻松、方便地启动其应用程序，而无需使用第二个门户，而是建议的应用程序为使用 Microsoft 365 的组织启动解决方案。
 
-有关 Office 365 应用程序启动器的详细信息，请参阅[让应用出现在 Office 365 应用启动器中](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)。
+有关 Office 365 应用程序启动器的详细信息，请参阅[让应用出现在 Office 365 应用启动器中](/previous-versions/office/office-365-api/)。
 
 ## <a name="direct-sign-on-to-federated-apps"></a>直接登录联合应用
 

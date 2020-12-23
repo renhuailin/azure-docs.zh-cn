@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191157"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018675"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 计费
 
@@ -38,7 +38,7 @@ ms.locfileid: "88191157"
 
 - 区域 5：印度
 
-有关接入点 (POP) 区域的信息，请参阅[按区域列出的 Azure CDN 的 POP 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。 例如，位于墨西哥的 POP 属于北美区域，因此包括在区域 1 中。 
+有关接入点 (POP) 区域的信息，请参阅[按区域列出的 Azure CDN 的 POP 位置](./cdn-pop-locations.md)。 例如，位于墨西哥的 POP 属于北美区域，因此包括在区域 1 中。 
 
 有关 Azure CDN 定价的信息，请参阅[内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
 
@@ -48,7 +48,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 例如，如果某位墨西哥用户发出了一个请求，而该请求因受对等互连或通信条件影响而由位于美国 POP 的服务器处理，则计费区域为美国。
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>什么是 Azure CDN 计费事务？
-任何在 CDN 上终止的 HTTP(S) 请求都是计费事件，其中包括所有响应类型：成功、失败或其他。 但是，不同的响应可能生成不同的流量。 例如，“304 未修改”** 和其他仅标头响应会生成很少的流量，因为它们是小型标头响应；同样，错误响应（例如，“404 未找到”）是计费的，但产生的费用很少，因为响应有效负载很小。**
+任何在 CDN 上终止的 HTTP(S) 请求都是计费事件，其中包括所有响应类型：成功、失败或其他。 但是，不同的响应可能生成不同的流量。 例如，“304 未修改”和其他仅标头响应会生成很少的流量，因为它们是小型标头响应；同样，错误响应（例如，“404 未找到”）是计费的，但产生的费用很少，因为响应有效负载很小。
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>与 Azure CDN 使用相关联的其他 Azure 费用有哪些？
 使用 Azure CDN 时，还会对用作对象的源的服务造成一些使用费用。 这些费用通常只占全部 CDN 使用费用的一小部分。
@@ -66,7 +66,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 
 有关 Azure 存储计费的详细信息，请参阅 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)（了解 Azure 存储计费 - 带宽、事务和容量）。
 
-如果使用托管服务分发**，则会产生下述费用：
+如果使用托管服务分发，则会产生下述费用：
 
 - Azure 计算时间：充当源的计算实例。
 
@@ -74,7 +74,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 
 如果客户端使用字节范围请求（不考虑源服务），请注意以下事项：
 
-- 字节范围请求是 CDN 上的计费事务。** 当客户端发出字节范围请求时，该请示是针对一部分（一系列）对象的。 CDN 只使用一部分请求的内容进行响应。 此部分响应是计费事务，传输量以范围响应（加上标头）的大小为限。
+- 字节范围请求是 CDN 上的计费事务。 当客户端发出字节范围请求时，该请示是针对一部分（一系列）对象的。 CDN 只使用一部分请求的内容进行响应。 此部分响应是计费事务，传输量以范围响应（加上标头）的大小为限。
 
 - 当某个到达的请求针对的只是对象的一部分时（通过指定字节范围标头来实现这一点），CDN 可能会将整个对象提取到其缓存中。 因此，即使来自 CDN 的计费事务是针对部分响应的，来自源的计费事务也会涉及完整大小的对象。
 
@@ -116,7 +116,7 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 - Azure 机器学习 
 - Azure SQL 数据库
 - Azure SQL 托管实例
-- Azure Redis 缓存
+- 用于 Redis 的 Azure 缓存
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>如何才能最有效地管理费用？
-将内容的 TTL 尽可能设置得长一点。 
+将内容的 TTL 尽可能设置得长一点。

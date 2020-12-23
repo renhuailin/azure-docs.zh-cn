@@ -1,30 +1,36 @@
 ---
-title: '概念-基于角色的访问控制 (RBAC) '
-description: 了解 Azure VMware 解决方案的基于角色的访问控制的主要功能
+title: '概念-vSphere 基于角色的访问控制 (vSphere RBAC) '
+description: 了解适用于 Azure VMware 解决方案的 vSphere 基于角色的访问控制的关键功能
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.date: 10/23/2020
+ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579685"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888396"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>适用于 Azure VMware 解决方案的基于角色的访问控制 (RBAC) 
+# <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere Azure VMware 解决方案的基于角色的访问控制 (vSphere RBAC) 
 
-在 vCenter 和 ESXi 本地部署中，管理员具有对 vCenter 帐户的访问权限， administrator@vsphere.local 并且可能会分配 Active Directory (AD) 用户/组。 但是，在 Azure VMware 解决方案部署中，管理员无权访问管理员用户帐户，但可将 AD 用户和组分配到 vCenter 上的 CloudAdmin 角色。  此外，Azure VMware 解决方案私有云用户无权访问或配置 Microsoft 支持和管理的特定管理组件，例如群集、主机、数据存储和分布式虚拟交换机。
-
-
-在 Azure VMware 解决方案中，vCenter 包含一个名为 cloudadmin 的内置本地用户，该用户分配给内置 CloudAdmin 角色。 本地 cloudadmin 用户用于在 AD 中设置其他用户。 通常，CloudAdmin 角色有权在私有云中 (虚拟机、资源池、数据存储和网络) 创建和管理工作负荷。 Azure VMware 解决方案中的 CloudAdmin 角色具有一组特定的 vCenter 特权，这些特权不同于其他 VMware 云解决方案。   
+在 Azure VMware 解决方案中，vCenter 具有名为 cloudadmin 的内置本地用户，并分配给内置 CloudAdmin 角色。 本地 cloudadmin 用户用于设置 AD 中的用户。 通常，CloudAdmin 角色会在私有云中创建和管理工作负荷。 在 Azure VMware 解决方案中，CloudAdmin 角色具有的 vCenter 权限不同于其他 VMware 云解决方案。     
 
 > [!NOTE]
 > Azure VMware 解决方案目前不在 vCenter 或 Azure VMware 解决方案门户上提供自定义角色。 
+
+在 vCenter 和 ESXi 本地部署中，管理员有权访问 vCenter administrator@vsphere.local 帐户。 它们还可以 Active Directory 分配 (AD) 用户/组。 
+
+在 Azure VMware 解决方案部署中，管理员无权访问管理员用户帐户。 但它们可以将 AD 用户和组分配到 vCenter 上的 CloudAdmin 角色。  
+
+私有云用户无权访问和配置由 Microsoft 支持和管理的特定管理组件。 例如，群集、主机、数据存储和分布式虚拟交换机。
+
+
+
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>VCenter 上的 Azure VMware 解决方案 CloudAdmin 角色
 
 可以在 Azure VMware 解决方案私有云 vCenter 上查看授予 Azure VMware 解决方案 CloudAdmin 角色的特权。
 
-1. 登录到 SDDC vSphere 客户端并进入**菜单**  >  **管理**。
+1. 登录到 SDDC vSphere 客户端并进入 **菜单**  >  **管理**。
 1. 在 " **访问控制**" 下，选择 " **角色**"。
 1. 从角色列表中，选择 " **CloudAdmin** "，然后选择 " **特权**"。 
 
@@ -32,7 +38,7 @@ ms.locfileid: "91579685"
 
 Azure VMware 解决方案中的 CloudAdmin 角色在 vCenter 上具有以下权限。 有关每个权限的详细说明，请参阅 [VMware 产品文档](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) 。
 
-| Privilege | 说明 |
+| Privilege | 描述 |
 | --------- | ----------- |
 | **警报** | 确认警报<br />创建警报<br />禁用警报操作<br />修改警报<br />删除警报<br />设置警报状态 |
 | **权限** | 修改权限 |

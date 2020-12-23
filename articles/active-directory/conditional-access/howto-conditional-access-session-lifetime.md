@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265929"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837458"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
 
@@ -37,7 +37,7 @@ ms.locfileid: "91265929"
 
 "用户登录频率" Azure Active Directory (Azure AD) 默认配置为90天滚动窗口。 经常要求用户提供凭据看似很明智，但有时适得其反：平时不加思索输入凭据的用户可能会意外中收到恶意的凭据提示。
 
-不要求用户重新登录看似不安全，但实际上，任何违反 IT 策略的行为都会撤销会话。 部分示例包括（但不限于）密码更改、设备不合规或禁用帐户。 也可以[使用 PowerShell 显式吊销用户会话](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 的默认配置是“如果用户会话的安全状况未发生变化，则不要求用户提供其凭据”。
+不要求用户重新登录看似不安全，但实际上，任何违反 IT 策略的行为都会撤销会话。 部分示例包括（但不限于）密码更改、设备不合规或禁用帐户。 也可以[使用 PowerShell 显式吊销用户会话](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true)。 Azure AD 的默认配置是“如果用户会话的安全状况未发生变化，则不要求用户提供其凭据”。
 
 "登录频率" 设置适用于已根据标准实现了 OAUTH2 或 OIDC 协议的应用。 大多数适用于 Windows、Mac 和 Mobile 的 Microsoft 本机应用（包括以下 Web 应用程序）都符合该设置。
 
@@ -85,12 +85,12 @@ ms.locfileid: "91265929"
 
 ## <a name="configuring-authentication-session-controls"></a>配置身份验证会话控制
 
-条件访问是一项 Azure AD Premium 功能，要求安装高级版许可证。 如果要了解有关条件性访问的详细信息，请参阅 [什么是 Azure Active Directory 中的条件性访问？](overview.md#license-requirements)
+条件访问是一项 Azure AD Premium 功能，要求安装高级版许可证。 若要了解有关条件访问的详细信息，请参阅[什么是 Azure Active Directory 中的条件访问？](overview.md#license-requirements)
 
 > [!WARNING]
-> 如果使用的是公共预览版中的 [可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md) 功能，请注意，我们不支持为同一用户或应用组合创建两种不同的策略：一个使用此功能，另一个具有可配置的令牌生存期功能。 Microsoft 计划在 2020 5 月1日停用可配置的令牌生存期功能，并将其替换为条件访问身份验证会话管理功能。  
+> 如果使用的是公共预览版中的 [可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md) 功能，请注意，我们不支持为同一用户或应用组合创建两种不同的策略：一个使用此功能，另一个具有可配置的令牌生存期功能。 Microsoft 计划在2021年1月30日为刷新和会话令牌生存期停用可配置的令牌生存期功能，并将其替换为条件访问身份验证会话管理功能。  
 >
-> 在启用登录频率之前，请确保租户中禁用了其他重新身份验证设置。 如果已启用 "记住受信任的设备上的 MFA"，请确保在使用登录频率之前禁用该功能，因为这两个设置一起使用可能会导致用户意外提示。 若要了解有关重新验证提示和会话生存期的详细信息，请参阅文章： [优化重新验证提示和了解 Azure 多重身份验证的会话生存期](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
+> 在启用登录频率之前，请确保租户中禁用了其他重新身份验证设置。 如果已启用 "记住受信任的设备上的 MFA"，请确保在使用登录频率之前禁用该功能，因为这两个设置一起使用可能会导致用户意外提示。 若要了解有关重新验证提示和会话生存期的详细信息，请参阅文章： [优化重新验证提示和了解 Azure AD 多重身份验证的会话生存期](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 
 ### <a name="policy-1-sign-in-frequency-control"></a>策略1：登录频率控制
 
@@ -102,7 +102,7 @@ ms.locfileid: "91265929"
 
 1. 中转到 "**访问控制**  >  "**会话**，并单击 "**登录频率**"
 1. 在第一个文本框中输入所需的天数和小时值
-1. 从下拉列表中选择“小时”或“天”的值********
+1. 从下拉列表中选择“小时”或“天”的值
 1. 保存策略
 
 ![为登录频率配置的条件访问策略](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
@@ -134,9 +134,8 @@ ms.locfileid: "91265929"
 
 ## <a name="policy-deployment"></a>策略部署
 
-若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 有关详细信息，请参阅 [Azure Active Directory 中的条件访问的最佳做法](best-practices.md)一文。
+若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 有关详细信息，请参阅 [规划条件性访问部署](plan-conditional-access.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](../authentication/tutorial-enable-azure-mfa.md) 一文。
-* 如果已准备好针对环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)一文。
+* 如果已准备好为环境配置条件访问策略，请参阅 [规划条件性访问部署](plan-conditional-access.md)一文。

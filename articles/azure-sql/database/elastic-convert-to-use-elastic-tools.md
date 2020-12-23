@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443478"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787136"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>迁移要扩展的现有数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -168,7 +168,7 @@ GitHub 上也提供了这些工具：[Azure/elastic-db-tools](https://github.com
 
 ## <a name="questions-and-feature-requests"></a>问题和功能请求
 
-如有问题，请使用 [适用于 Sql 数据库的 Microsoft Q&问题页面](https://docs.microsoft.com/answers/topics/azure-sql-database.html) 和功能请求，并将其添加到 [sql 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)。
+如有问题，请使用 [适用于 Sql 数据库的 Microsoft Q&问题页面](/answers/topics/azure-sql-database.html) 和功能请求，并将其添加到 [sql 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)。
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png

@@ -1,7 +1,7 @@
 ---
-title: 向 ASP.NET Core Web 应用添加 Microsoft 登录功能 | Azure
+title: 快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何使用 OpenID Connect 在 ASP.NET Core Web 应用上实现 Microsoft 登录
+description: 本快速入门介绍应用如何使用 OpenID Connect 在 ASP.NET Core Web 应用上实现 Microsoft 登录
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,18 +12,25 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 085ebcc147082ac78de9f8b97c810dee5bb1e96a
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902364"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762799"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
-在本快速入门中，你将通过代码示例了解 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录个人帐户（hotmail.com、outlook.com 和其他）以及工作和学校帐户。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 组织中登录用户。  
+
+有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>先决条件
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 或 [Visual Studio Code](https://code.visualstudio.com/)
+> * [.NET Core SDK 3.1+](https://dotnet.microsoft.com/download)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > 可以使用两个选项来启动快速入门应用程序：
 > * [快速][选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -38,12 +45,12 @@ ms.locfileid: "90902364"
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
-> 若要注册应用程序并将应用的注册信息手动添加到解决方案，请执行以下步骤：
+> 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
 > 1. 登录 [Azure 门户](https://portal.azure.com)。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
-> 1. 在“管理”下，选择“应用注册”，然后选择“新建注册”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的名称（例如 `AspNetCore-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 输入 `https://localhost:44321/` 的“重定向 URI”
 > 1. 选择“注册”  。
@@ -90,9 +97,9 @@ ms.locfileid: "90902364"
 >    "TenantId": "common",
 >    ```
 >
->    - 将 `Enter_the_Application_Id_here` 替换为在 Azure 门户中注册的应用程序的应用程序(客户端) ID。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。
->    - 将 `common` 替换为以下内容之一：
->       - 如果应用程序仅支持此组织目录中的帐户，请将此值替换为目录（租户）ID (GUID) 或租户名称（例如，`contoso.onmicrosoft.com`）  。 你可以在应用的概述页面上找到目录（租户）ID 。
+>    - 将 `Enter_the_Application_Id_here` 替换为在 Azure 门户中注册的应用程序的“应用程序(客户端) ID”。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。
+>    - 将 `common` 替换为以下其中一项：
+>       - 如果应用程序支持“仅限此组织目录中的帐户”，请将此值替换为“目录(租户) ID”(GUID) 或“租户名称”（例如 `contoso.onmicrosoft.com`）  。 你可以在应用的”概述”页上找到“目录(租户) ID” 。
 >       - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
 >       - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值保留为 `common`
 >
@@ -145,21 +152,26 @@ Microsoft.AspNetCore.Authentication 中间件使用主机进程初始化时执�
 
 | *appsettings.json* 密钥 | 说明                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ClientId`             | Azure 门户中注册的应用程序的应用程序（客户端）ID。                                                                                       |
+| `ClientId`             | Azure 门户中注册的应用程序的“应用程序(客户端) ID”。                                                                                       |
 | `Instance`             | 用户进行身份验证时使用的安全令牌服务 (STS) 终结点。 此值通常为 `https://login.microsoftonline.com/`，指示 Azure 公有云。 |
 | `TenantId`             | 租户的名称或其租户 ID (GUID)，或使用工作帐户或学校帐户或 Microsoft 个人帐户进行用户登录时常用的名称。                             |
 
-`Configure()` 方法包含两个重要的方法 `app.UseCookiePolicy()` 和 `app.UseAuthentication()`，这些方法实现了命名功能。
+`Configure()` 方法包含两个重要的方法 `app.UseAuthentication()` 和 `app.UseAuthorization()`，这些方法实现了命名功能。 此外，在 `Configure()` 方法中，必须至少调用一次 `endpoints.MapControllerRoute()` 或调用 `endpoints.MapControllers()`来注册 Microsoft Identity Web 的路由。
 
 ```csharp
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
 {
-    // more code
-    app.UseAuthentication();
-    app.UseAuthorization();
-    // more code
-}
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
+});
+
+// endpoints.MapControllers(); // REQUIRED if MapControllerRoute() isn't called.
 ```
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>保护控制器或控制器的方法

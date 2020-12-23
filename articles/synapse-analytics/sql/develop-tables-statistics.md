@@ -11,30 +11,30 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288658"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451800"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的统计信息
 
-本文介绍关于使用 Synapse SQL 资源创建和更新查询优化统计信息的建议和示例：SQL 池和 SQL 按需版本（预览版）。
+本文提供了有关使用 Synapse SQL 资源创建和更新查询优化统计信息的建议和示例：专用 SQL 池和无服务器 SQL 池。
 
-## <a name="statistics-in-sql-pool"></a>SQL 池中的统计信息
+## <a name="statistics-in-dedicated-sql-pool"></a>专用 SQL 池中的统计信息
 
 ### <a name="why-use-statistics"></a>为何使用统计信息
 
-SQL 池资源对数据了解得越多，执行查询的速度就越快。 将数据载入 SQL 池后，收集有关数据的统计信息就是对查询优化而言最重要的操作之一。  
+更为专用的 SQL 池知道您的数据，它可以更快地执行查询。 在将数据加载到专用的 SQL 池中之后，收集数据的统计信息是可以为查询优化所做的最重要的一项操作。  
 
-SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，所选计划也是执行速度最快的计划。
+专用的 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，所选计划也是执行速度最快的计划。
 
 例如，如果优化器预估在针对查询的日期进行筛选后将返回一行，它会选择某个计划。 如果它预计所选日期将返回 1 百万行，就会返回另一个计划。
 
 ### <a name="automatic-creation-of-statistics"></a>自动创建统计信息
 
-当数据库 AUTO_CREATE_STATISTICS 选项设置为 `ON` 时，SQL 池会分析传入的用户查询，确定是否缺少统计信息。  如果缺少统计信息，查询优化器会在查询谓词或联接条件中各个列上创建统计信息。 
+当数据库 AUTO_CREATE_STATISTICS 选项设置为时，专用 SQL 池引擎将分析传入的用户查询是否缺少统计信息 `ON` 。  如果缺少统计信息，查询优化器会在查询谓词或联接条件中各个列上创建统计信息。 
 
 此功能用于改进查询计划的基数估计。
 
@@ -137,7 +137,7 @@ WHERE
     st.[user_created] = 1;
 ```
 
-例如，数据仓库中的**日期列**往往需要经常更新统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
+例如，数据仓库中的 **日期列** 往往需要经常更新统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
 
 客户表上性别列的统计信息可能永远不需要更新。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
@@ -166,7 +166,7 @@ WHERE
 #### <a name="create-single-column-statistics-with-default-options"></a>使用默认选项创建单列统计信息
 
 若要基于某个列创建统计信息，需要提供统计信息对象的名称和列的名称。
-此语法使用所有默认选项。 默认情况下，SQL 池在创建统计信息时会提取 **20%** 的表数据作为样本。
+此语法使用所有默认选项。 默认情况下，专用 SQL 池在创建统计信息时对 **20%** 的表采样。
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -430,7 +430,7 @@ UPDATE STATISTICS 语句的使用很简单。 只需要记住，它会更新表�
 如果性能不是一个考虑因素，此办法就是保证拥有最新统计信息的最简单、最全面的操作方式。
 
 > [!NOTE]
-> 更新表中的所有统计信息时，SQL 池将执行扫描，以针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
+> 更新表中的所有统计信息时，专用 SQL 池会执行扫描，以针对每个统计信息对象的表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
 
 有关 `UPDATE STATISTICS` 过程的实现，请参阅[临时表](develop-tables-temporary.md)。 实现方法与上述 `CREATE STATISTICS` 过程略有不同，但最终结果相同。
 有关完整语法，请参阅[更新统计信息](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
@@ -512,7 +512,7 @@ DBCC SHOW_STATISTICS() 显示统计信息对象中保存的数据。 这些数�
 
 标头是有关统计信息的元数据。 直方图显示统计信息对象的第一个键列中的值分布。 
 
-密度向量可度量跨列相关性。 SQL 池使用统计信息对象中的任何数据来计算基数估计值。
+密度向量可度量跨列相关性。 专用 SQL 池用 statistics 对象中的任何数据来计算基数估计值。
 
 #### <a name="show-header-density-and-histogram"></a>显示标头、密度和直方图
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差异
 
-与在 SQL Server 中相比，`DBCC SHOW_STATISTICS()` 在 SQL 池中的实现相对更严格：
+`DBCC SHOW_STATISTICS()` 与 SQL Server 相比，在专用的 SQL 池中更严格地实现了：
 
 - 未阐述的功能不受支持。
 - 不能使用 Stats_stream。
@@ -556,25 +556,25 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - 不能使用列名来标识统计信息对象。
 - 不支持自定义错误 2767。
 
-### <a name="next-steps"></a>后续步骤
 
-有关进一步提升查询性能的信息，请参阅[监视工作负荷](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-
-## <a name="statistics-in-sql-on-demand-preview"></a>SQL 按需版本（预览版）中的统计信息
+## <a name="statistics-in-serverless-sql-pool"></a>无服务器 SQL 池中的统计信息
 
 统计信息按特定数据集（存储路径）的特定列进行创建。
 
+> [!NOTE]
+> 无法为 LOB 列创建统计信息。
+
 ### <a name="why-use-statistics"></a>为何使用统计信息
 
-SQL 按需版本（预览版）对数据了解得越多，其针对数据执行查询的速度就越快。 收集数据统计信息对于查询优化而言是最重要的操作之一。 
+更多无服务器 SQL 池知道您的数据，对其执行查询的速度就越快。 收集数据统计信息对于查询优化而言是最重要的操作之一。 
 
-SQL 按需版本查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，所选计划也是执行速度最快的计划。 
+无服务器 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。 
 
-例如，如果优化器预估在针对查询的日期进行筛选后将返回一行，它会选择某个计划。 如果它预计所选日期将返回 1 百万行，就会返回另一个计划。
+例如，如果优化器估计查询筛选的日期会返回一行数据，则它会选择一个计划。 如果它预计所选日期将返回 1 百万行，就会返回另一个计划。
 
 ### <a name="automatic-creation-of-statistics"></a>自动创建统计信息
 
-SQL 按需版本会分析传入的用户查询，确定是否缺少统计信息。 如果缺少统计信息，查询优化器在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
+无服务器 SQL 池会分析传入的用户查询是否缺少统计信息。 如果缺少统计信息，查询优化器在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
 
 SELECT 语句将触发“自动创建统计信息”。
 
@@ -585,7 +585,7 @@ SELECT 语句将触发“自动创建统计信息”。
 
 ### <a name="manual-creation-of-statistics"></a>手动创建统计信息
 
-使用 SQL 按需版本，可手动创建统计信息。 对于 CSV 文件，需要手动创建统计信息，因为未对 CSV 文件启用“自动创建统计信息”。 
+无服务器 SQL 池允许您手动创建统计信息。 对于 CSV 文件，需要手动创建统计信息，因为未对 CSV 文件启用“自动创建统计信息”。 
 
 有关如何手动创建统计信息的说明，请参见以下示例。
 
@@ -593,7 +593,7 @@ SELECT 语句将触发“自动创建统计信息”。
 
 更改文件中的数据、删除和添加文件会导致数据分发更改并使统计信息过时。 在这种情况下，需要更新统计信息。
 
-如果数据发生了重大更改，SQL 按需版本会自动重新创建统计信息。 每次自动创建统计信息时，会同时保存数据集的当前状态：文件路径、大小、上次修改日期。
+如果数据发生了重大更改，无服务器 SQL 池会自动重新创建统计信息。 每次自动创建统计信息时，会同时保存数据集的当前状态：文件路径、大小、上次修改日期。
 
 当统计信息已过时，将创建新的统计信息。 相关算法会遍历数据，并将其与数据集的当前状态进行比较。 如果更改内容的大小超过特定阈值，会删除旧的统计信息，并在新数据集上重新创建统计信息。
 
@@ -616,7 +616,7 @@ SELECT 语句将触发“自动创建统计信息”。
 下面提供了有关更新统计信息的一些指导原则：
 
 - 确保数据集至少更新了一个统计信息对象。 这会在统计信息更新过程中更新大小（行计数和页计数）信息。
-- 将重点放在参与 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的列上。
+- 专注于参与 WHERE、JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的列。
 - 更频繁地更新“递增键”列（例如事务日期），因为这些值不包含在统计信息直方图中。
 - 相对不那么频繁地更新静态分布列。
 
@@ -629,12 +629,12 @@ SELECT 语句将触发“自动创建统计信息”。
 > [!NOTE]
 > 目前只能创建单列统计信息。
 >
-> 过程 sp_create_file_statistics 将重命名为 sp_create_openrowset_statistics。 公共服务器角色具有 ADMINISTER BULK OPERATIONS 权限，而公共数据库角色具有对 sp_create_file_statistics 和 sp_drop_file_statistics 的 EXECUTE 权限。 这在将来可能会更改。
+> 执行 sp_create_openrowset_statistics 和 sp_drop_openrowset_statistics 需要以下权限：管理大容量操作或管理数据库大容量操作。
 
 以下存储过程用于创建统计信息：
 
 ```sql
-sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 参数：[ @stmt = ] N'statement_text' - 指定 Transact-SQL 语句，可返回要用于统计信息的列值。 可以使用 TABLESAMPLE 来指定要使用的数据的示例。 如果未指定 TABLESAMPLE，将使用 FULLSCAN。
@@ -650,7 +650,7 @@ sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 
 若要对列创建统计信息，请提供一个查询，该查询返回需要统计信息的列。
 
-默认情况下，如果未指定列，SQL 按需版本在创建统计信息时会使用数据集中提供的全部数据。
+默认情况下，如果未指定其他设置，则无服务器 SQL 池在创建统计信息时将使用数据集中提供的数据的100%。
 
 例如，若要使用默认选项 (FULLSCAN) 为基于“人口.csv”文件的数据集的“年份”列创建统计信息：
 
@@ -666,7 +666,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT year
+EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
         FORMAT = ''CSV'',
@@ -698,7 +698,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -712,18 +712,18 @@ FROM OPENROWSET(
 若要更新统计信息，需要删除并创建统计信息。 以下存储过程用于删除统计信息：
 
 ```sql
-sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> 过程 sp_drop_file_statistics 将重命名为 sp_drop_openrowset_statistics。 公共服务器角色具有 ADMINISTER BULK OPERATIONS 权限，而公共数据库角色具有对 sp_create_file_statistics 和 sp_drop_file_statistics 的 EXECUTE 权限。 这在将来可能会更改。
+> 执行 sp_create_openrowset_statistics 和 sp_drop_openrowset_statistics 需要以下权限：管理大容量操作或管理数据库大容量操作。
 
 参数：[ @stmt = ] N'statement_text' - 指定创建统计信息时使用的同一 Transact-SQL 语句。
 
 若要更新数据集（基于“人口.csv”文件）中“年份”列的统计信息，需要删除并创建统计信息：
 
 ```sql
-EXEC sys.sp_drop_file_statistics N'SELECT payment_type
+EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -743,7 +743,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -814,6 +814,76 @@ CREATE STATISTICS sState
     WITH FULLSCAN, NORECOMPUTE
 ```
 
+### <a name="statistics-metadata"></a>统计信息元数据
+
+可以使用多个系统视图和函数来查找有关统计信息的信息。 例如，可通过使用 STATS_DATE() 函数，了解统计信息对象是否可能已过时。 使用 STATS_DATE()，可以查看上次创建或更新统计信息的时间。
+
+> [!NOTE]
+> 统计信息元数据仅适用于外部表列。 统计信息元数据不可用于 OPENROWSET 列。
+
+#### <a name="catalog-views-for-statistics"></a>统计信息的目录视图
+
+这些系统视图提供有关统计信息的信息：
+
+| 目录视图                                                 | 说明                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对每个列提供一行。                                     |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对数据库中的每个对象提供一行。                     |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对数据库中的每个架构提供一行。                     |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对每个统计信息对象提供一行。                          |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对统计信息对象中的每个列提供一行。 链接回到 sys.columns。 |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对每个表（包括外部表）提供一行。           |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对每个数据类型提供一行。                                  |
+
+#### <a name="system-functions-for-statistics"></a>统计信息的系统函数
+
+这些系统函数适合用于处理统计信息：
+
+| 系统函数                                              | 说明                                  |
+| :----------------------------------------------------------- | :------------------------------------------- |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 上次更新统计信息对象的日期。 |
+
+#### <a name="combine-statistics-columns-and-functions-into-one-view"></a>将统计信息列和函数合并成一个视图
+
+此视图将统计信息相关的列以及 STATS_DATE() 函数的结果合并在一起。
+
+```sql
+CREATE VIEW dbo.vstats_columns
+AS
+SELECT
+        sm.[name]                           AS [schema_name]
+,       tb.[name]                           AS [table_name]
+,       st.[name]                           AS [stats_name]
+,       st.[filter_definition]              AS [stats_filter_definition]
+,       st.[has_filter]                     AS [stats_is_filtered]
+,       STATS_DATE(st.[object_id],st.[stats_id])
+                                            AS [stats_last_updated_date]
+,       co.[name]                           AS [stats_column_name]
+,       ty.[name]                           AS [column_type]
+,       co.[max_length]                     AS [column_max_length]
+,       co.[precision]                      AS [column_precision]
+,       co.[scale]                          AS [column_scale]
+,       co.[is_nullable]                    AS [column_is_nullable]
+,       co.[collation_name]                 AS [column_collation_name]
+,       QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS two_part_name
+,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS three_part_name
+FROM    sys.objects                         AS ob
+JOIN    sys.stats           AS st ON    ob.[object_id]      = st.[object_id]
+JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
+                            AND         st.[object_id]      = sc.[object_id]
+JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
+                            AND         sc.[object_id]      = co.[object_id]
+JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
+WHERE   st.[user_created] = 1
+;
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-有关进一步改进查询性能的信息，请参阅[有关 SQL 池的最佳做法](best-practices-sql-pool.md#maintain-statistics)。
+若要进一步改善专用 SQL 池的查询性能，请参阅监视[专用 sql 池](best-practices-sql-pool.md#maintain-statistics)的[工作负荷](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)和最佳实践。
+
+若要进一步提高无服务器 SQL 池的查询性能，请参阅 [无服务器 sql 池的最佳实践](best-practices-sql-on-demand.md)

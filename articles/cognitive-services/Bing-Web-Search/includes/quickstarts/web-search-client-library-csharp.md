@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3f8f7c41e4d18909ec4f483a0e37d83b4d05e79d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88931075"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386606"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 C# 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 
@@ -36,7 +36,7 @@ ms.locfileid: "88931075"
 > [!TIP]
 > 从 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) 获取作为 Visual Studio 解决方案的最新代码。
 
-第一步是创建新的控制台项目。 如需控制台项目设置方面的帮助，请参阅 [Hello World -- 你的第一个程序（C# 编程指南）](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)。 若要在应用程序中使用必应 Web 搜索 SDK，需使用 NuGet 包管理器来安装 `Microsoft.Azure.CognitiveServices.Search.WebSearch`。
+第一步是创建新的控制台项目。 如需控制台项目设置方面的帮助，请参阅 [Hello World -- 你的第一个程序（C# 编程指南）](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)。 若要在应用程序中使用必应 Web 搜索 SDK，需使用 NuGet 包管理器来安装 `Microsoft.Azure.CognitiveServices.Search.WebSearch`。
 
 [Web 搜索 SDK 包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)还安装：
 
@@ -54,6 +54,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch.Models;
 using System.Linq;
+using System.Threading.Tasks;
 ```
 
 ## <a name="create-project-scaffolding"></a>创建项目基架
@@ -79,7 +80,7 @@ namespace WebSearchSDK
 以下代码构造搜索查询。
 
 ```csharp
-public static async void WebResults(WebSearchClient client)
+public static async Task WebResults(WebSearchClient client)
 {
     try
     {
@@ -206,11 +207,11 @@ else
 在此应用程序中，main 方法包括了用来实例化客户端、验证 `subscriptionKey` 和调用 `WebResults` 的代码。 请确保输入你的 Azure 帐户的有效订阅密钥，然后再继续。
 
 ```csharp
-static void Main(string[] args)
+static async Task Main(string[] args)
 {
     var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-    WebResults(client);
+    await WebResults(client);
 
     Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
@@ -236,7 +237,7 @@ dotnet run
 1. 将以下代码添加到控制台项目：
 
     ```csharp
-    public static async void WebResultsWithCountAndOffset(WebSearchClient client)
+    public static async Task WebResultsWithCountAndOffset(WebSearchClient client)
     {
         try
         {
@@ -273,13 +274,13 @@ dotnet run
 2. 将 `WebResultsWithCountAndOffset` 添加到 `main`：
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -295,7 +296,7 @@ dotnet run
 1. 将以下代码添加到控制台项目：
 
     ```csharp
-    public static async void WebSearchWithResponseFilter(WebSearchClient client)
+    public static async Task WebSearchWithResponseFilter(WebSearchClient client)
     {
         try
         {
@@ -334,15 +335,15 @@ dotnet run
 2. 将 `WebResultsWithCountAndOffset` 添加到 `main`：
 
     ```csharp
-    static void Main(string[] args)
+    static Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
         // Search with news filter...
-        WebSearchWithResponseFilter(client);
+        await WebSearchWithResponseFilter(client);
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -358,7 +359,7 @@ dotnet run
 1. 将以下代码添加到控制台项目：
 
     ```csharp
-    public static async void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
+    public static async Task WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
     {
         try
         {
@@ -396,17 +397,17 @@ dotnet run
 2. 将 `WebResultsWithCountAndOffset` 添加到 `main`：
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
         // Search with news filter...
-        WebSearchWithResponseFilter(client);
+        await WebSearchWithResponseFilter(client);
         // Search with answer count, promote, and safe search
-        WebSearchWithAnswerCountPromoteAndSafeSearch(client);
+        await WebSearchWithAnswerCountPromoteAndSafeSearch(client);
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -423,4 +424,3 @@ dotnet run
 
 > [!div class="nextstepaction"]
 > [认知服务 Node.js SDK 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
-                                    

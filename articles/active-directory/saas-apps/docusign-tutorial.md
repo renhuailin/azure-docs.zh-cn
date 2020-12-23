@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 51ad28319a372cd791575b5a3e67cc0fd6934be2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981638"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454688"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 DocuSign 的集成
 
@@ -42,11 +42,11 @@ ms.locfileid: "90981638"
 
 * DocuSign 支持服务提供商 SP 发起的 SSO。
 
-* DocuSign 支持**实时**用户预配。
+* DocuSign 支持 **实时** 用户预配。
 
-* DocuSign 支持[自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)。
+* DocuSign 支持[自动用户预配](./docusign-provisioning-tutorial.md)。
 
-* 配置 DocuSign 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 DocuSign 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>从库中添加 DocuSign
 
@@ -56,7 +56,7 @@ ms.locfileid: "90981638"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **DocuSign**。
+1. 在“从库中添加”部分的搜索框中，键入 **DocuSign** 。
 1. 在结果面板中选择“DocuSign”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
@@ -118,7 +118,7 @@ ms.locfileid: "90981638"
 1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。  
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“姓名”字段中输入 **B.Simon**。  
+   1. 在“姓名”字段中输入 **B.Simon** 。  
    1. 在“用户名”字段中输入 `<username>@<companydomain>.<extension>`。 例如：`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值 。
    1. 选择“创建”。
@@ -193,7 +193,7 @@ ms.locfileid: "90981638"
 
        ![“自定义属性映射”UI][62]
 
-    i. 选择要映射到 Azure AD 声明的字段。 在本示例中，**emailaddress** 声明已映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 选择“保存”。
+    i. 选择要映射到 Azure AD 声明的字段。 在本示例中， **emailaddress** 声明已映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 选择“保存”。
 
        ![“自定义属性映射”字段][57]
 
@@ -235,12 +235,12 @@ ms.locfileid: "90981638"
 
 2. 直接转到 DocuSign 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击“DocuSign”磁贴时，应会自动登录到设置了 SSO 的 DocuSign。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击“DocuSign”磁贴时，应会自动登录到设置了 SSO 的 DocuSign。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 DocuSign 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+配置 DocuSign 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

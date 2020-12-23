@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 6253deb53229172cd499a6aa14b8d8f19bc07b63
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515328"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629251"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>在 Windows 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
 你可以使用点到站点 (P2S) VPN 连接从 Azure 外部通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 点到站点 VPN 连接是 Azure 与单个客户端之间的 VPN 连接。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 如果有多个客户端需要从本地网络连接到 Azure 文件共享，则可以为每个客户端使用站点到站点 (S2S) VPN 连接，而不使用点到站点连接。 若要了解详细信息，请参阅[配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
@@ -22,7 +22,7 @@ ms.locfileid: "85515328"
 本文详细介绍了在 Windows（Windows 客户端和 Windows Server）上配置点到站点 VPN 以直接在本地装载 Azure 文件共享的相关步骤。 如果想要通过 VPN 路由 Azure 文件同步流量，请参阅[配置 Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)。
 
 ## <a name="prerequisites"></a>先决条件
-- 最新版本的 Azure PowerShell 模块。 若要详细了解如何安装 Azure PowerShell，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)并选择操作系统。 如果你更想在 Windows 上使用 Azure CLI，也可以使用，但下面是针对 Azure PowerShell 的说明。
+- 最新版本的 Azure PowerShell 模块。 若要详细了解如何安装 Azure PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)并选择操作系统。 如果你更想在 Windows 上使用 Azure CLI，也可以使用，但下面是针对 Azure PowerShell 的说明。
 
 - 要在本地装载的 Azure 文件共享。 Azure 文件共享部署在存储帐户中，是代表共享存储池的管理结构，可以在其中部署多个文件共享以及其他存储资源（例如 Blob 容器或队列）。 可以在[创建 Azure 文件共享](storage-how-to-create-file-share.md)中详细了解如何部署 Azure 文件共享和存储帐户。
 
@@ -212,7 +212,7 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>配置 VPN 客户端
-Azure 虚拟网络网关将创建一个可下载的包，其中包含在本地 Windows 计算机上初始化 VPN 连接所需的配置文件。 我们将使用 Windows 10/Windows Server 2016 及更高版本的 [Always On VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) 功能配置 VPN 连接。 此包还包含将配置旧版 Windows VPN 客户端的可执行包（如果确实需要）。 本指南使用 Always On VPN 而不是旧版 Windows VPN 客户端，因为使用 Always On VPN 客户端，最终用户无需拥有对其计算机的管理员权限，即可连接 Azure VPN 或断开与其建立的连接。 
+Azure 虚拟网络网关将创建一个可下载的包，其中包含在本地 Windows 计算机上初始化 VPN 连接所需的配置文件。 我们将使用 Windows 10/Windows Server 2016 及更高版本的 [Always On VPN](/windows-server/remote/remote-access/vpn/always-on-vpn/) 功能配置 VPN 连接。 此包还包含将配置旧版 Windows VPN 客户端的可执行包（如果确实需要）。 本指南使用 Always On VPN 而不是旧版 Windows VPN 客户端，因为使用 Always On VPN 客户端，最终用户无需拥有对其计算机的管理员权限，即可连接 Azure VPN 或断开与其建立的连接。 
 
 以下脚本将安装针对虚拟网络网关进行身份验证所需的客户端证书，下载并安装 VPN 包。 请记得将 `<computer1>` 和 `<computer2>` 替换为所需的计算机。 通过将更多的 PowerShell 会话添加到 `$sessions` 数组，可以在所需的任意数量的计算机上运行此脚本。 使用帐户必须是每台计算机上的管理员。 如果其中一台计算机是正在运行脚本的本地计算机，则必须从提升权限的 PowerShell 会话运行该脚本。 
 

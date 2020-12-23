@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82983068"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131830"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>排查 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 问题
 
@@ -174,7 +174,7 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 
 在此示例中可以看到，输入了 *1=1* 字符串的字段名为 **text1**。
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="进度 Telerik Fiddler Web 调试器的屏幕截图。在原始选项卡中，1 = 1 在名称 text1 后可见。" border="false":::
 
 这是一个可以排除的字段。 若要详细了解排除列表，请参阅 [Web 应用程序防火墙请求大小限制和排除列表](application-gateway-waf-configuration.md#waf-exclusion-lists)。 在本例中，可以通过配置以下排除项来排除评估：
 
@@ -299,7 +299,7 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 
 在 Fiddler 中还能够很方便地查找请求标头名称。 在以下屏幕截图中，可以看到此 GET 请求的标头，其中包括 *Content-Type*、*User-Agent* 等。
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="进度 Telerik Fiddler Web 调试器的屏幕截图。原始选项卡列出请求标头详细信息，如连接、内容类型和用户代理。" border="false":::
 
 查看请求和响应标头的另一种方式是使用 Chrome 的开发人员工具。 可以按 F12，或右键单击并选择“检查” -> “开发人员工具”->“网络”选项卡。  加载一个网页，然后单击要检查的请求。
 

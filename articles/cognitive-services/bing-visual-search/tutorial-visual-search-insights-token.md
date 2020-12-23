@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c03800696897dc6cbb4cd793879e734366829b7d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a9005082148803423ac20b4f18dd974bb5b43b80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925107"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486855"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>教程：使用图像见解令牌在前面的搜索结果中查找类似的图像
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 可以使用视觉搜索客户端库从以前返回 `ImageInsightsToken` 的搜索结果中以联机方式查找图像。 此应用程序获取 `ImageInsightsToken` 并在后续搜索中使用该令牌。 然后，它将 `ImageInsightsToken` 发送到必应，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。
 
@@ -39,7 +44,7 @@ ms.locfileid: "88925107"
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>从必应图像搜索客户端库获取 ImageInsightsToken
 
-此应用程序使用一个通过[必应图像搜索客户端库](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)获得的 `ImageInsightsToken`。 在新的 C# 控制台应用程序中创建一个客户端，以便使用 `ImageSearchClient()` 来调用 API。 然后，将 `SearchAsync()` 与查询配合使用：
+此应用程序使用一个通过[必应图像搜索客户端库](../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)获得的 `ImageInsightsToken`。 在新的 C# 控制台应用程序中创建一个客户端，以便使用 `ImageSearchClient()` 来调用 API。 然后，将 `SearchAsync()` 与查询配合使用：
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -124,7 +129,7 @@ if (visualSearchResults.Tags.Count > 0)
     }
 ```
 
-有关这些数据类型的详细信息，请参阅[图像 - 视觉搜索](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)。
+有关这些数据类型的详细信息，请参阅[图像 - 视觉搜索](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)。
 
 ## <a name="returned-urls"></a>返回的 URL
 

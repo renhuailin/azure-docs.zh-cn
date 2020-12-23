@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 85665dbda2ed11ffa04b71e4317f2b34b83d317f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642310"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349361"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -36,7 +36,7 @@ ms.locfileid: "88642310"
  |**设置**          |  **建议的值**  | **字段说明** |
  |:-------------       |:-------------         |:----------            |
  |订阅         | 订阅名称|这是 Azure 服务的计费单位 - 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
- |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的资源组名称 |
+ |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅[资源组](../azure-resource-manager/management/overview.md#resource-groups)。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的资源组名称 |
  |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称 |
  |位置                   | 美国西部 2                    |    在美国西部 2、西欧和东南亚提供服务 |
 
@@ -70,7 +70,7 @@ pip install msgen
 如果使用基于包的安装或 setup.py，则会安装所有必需的包。
 
 ### <a name="test-msgen-python-client"></a>测试 `msgen` Python 客户端
-若要测试 Microsoft 基因组学客户端，请从基因组学帐户下载配置文件。 在 Azure 门户中导航到你的基因组学帐户：选择左上角的“所有服务”，然后搜索并选择“基因组学帐户”。****
+若要测试 Microsoft 基因组学客户端，请从基因组学帐户下载配置文件。 在 Azure 门户中导航到你的基因组学帐户：选择左上角的“所有服务”，然后搜索并选择“基因组学帐户”。
 
 ![在 Azure 门户上查找“Microsoft 基因组学”](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "在 Azure 门户上查找“Microsoft 基因组学”")
 
@@ -86,7 +86,7 @@ msgen list -f "<full path where you saved the config file>"
 
 ## <a name="create-a-microsoft-azure-storage-account"></a>创建 Microsoft Azure 存储帐户 
 Microsoft 基因组学服务要求将输入作为块 Blob 存储在 Azure 存储帐户中。 它也会将输出文件作为块 Blob 写入到 Azure 存储帐户中用户指定的容器。 输入和输出可以驻留在不同的存储帐户中。
-如果已将数据置于 Azure 存储帐户中，则只需确保该数据与基因组学帐户处于同一位置即可。 否则在运行 Microsoft 基因组学服务时会产生传出费用。 如果你没有 Azure 存储帐户，需要创建一个存储帐户并上传数据。 可在[此处](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)找到有关 Azure 存储帐户的详细信息，包括存储帐户是什么，以及它提供哪些服务。 若要创建 Azure 存储帐户，请在 Azure 门户中导航到[“创建存储帐户”](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)。  
+如果已将数据置于 Azure 存储帐户中，则只需确保该数据与基因组学帐户处于同一位置即可。 否则在运行 Microsoft 基因组学服务时会产生传出费用。 如果你没有 Azure 存储帐户，需要创建一个存储帐户并上传数据。 可在[此处](../storage/common/storage-account-create.md)找到有关 Azure 存储帐户的详细信息，包括存储帐户是什么，以及它提供哪些服务。 若要创建 Azure 存储帐户，请在 Azure 门户中导航到[“创建存储帐户”](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)。  
 
 ![存储帐户创建页](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade1.png "存储帐户创建页")
 
@@ -98,12 +98,12 @@ Microsoft 基因组学服务要求将输入作为块 Blob 存储在 Azure 存储
  |资源组       | MyResourceGroup       |  可以选择同一资源组作为基因组学帐户。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的资源组名称 |
  |存储帐户名称         | MyStorageAccount     |选择唯一的帐户标识符。 请参阅[命名规则](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称 |
  |位置                  | 美国西部 2                  | 使用的位置与基因组学帐户的位置相同，目的是降低传出费用和延迟。  | 
- |性能                  | 标准                   | 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
+ |性能                  | 标准                   | 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)    |
  |帐户类型       | BlobStorage       |  Blob 存储帐户的下载和上传速度可以是常规用途帐户的 2-5 倍。 |
- |复制                  | 本地冗余存储                  | 本地冗余存储在创建存储帐户时所在区域的数据中心内复制数据。 有关详细信息，请参阅 [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
+ |复制                  | 本地冗余存储                  | 本地冗余存储在创建存储帐户时所在区域的数据中心内复制数据。 有关详细信息，请参阅 [Azure 存储复制](../storage/common/storage-redundancy.md)    |
  |访问层                  | 热                   | 热访问是指存储帐户中对象的访问频率会更高。    |
 
-然后选择“查看 + 创建”，以创建存储帐户。 与创建基因组学帐户时一样，可以选择顶部菜单栏中的“通知”来监视部署过程****。 
+然后选择“查看 + 创建”，以创建存储帐户。 与创建基因组学帐户时一样，可以选择顶部菜单栏中的“通知”来监视部署过程。 
 
 ## <a name="upload-input-data-to-your-storage-account"></a>将输入数据上传到存储帐户
 
@@ -112,12 +112,12 @@ Microsoft 基因组学服务要求使用双端测序读长（fastq 或 bam 文�
 [https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz)
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
-需要在存储帐户中为输入数据创建一个 Blob 容器，为输出数据创建另一个 Blob 容器。  请将输入数据上传到输入 Blob 容器中。 执行此操作可以使用各种工具，包括 [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter) 或 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
+需要在存储帐户中为输入数据创建一个 Blob 容器，为输出数据创建另一个 Blob 容器。  请将输入数据上传到输入 Blob 容器中。 执行此操作可以使用各种工具，包括 [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter) 或 [AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
 ## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>使用 `msgen` Python 客户端通过 Microsoft 基因组学服务运行工作流
 
 若要通过 Microsoft 基因组学服务运行工作流，请编辑 *config.txt* 文件，为数据指定输入和输出存储容器。
-打开从基因组学帐户下载的 *config.txt* 文件。 需指定的部分包括：订阅密钥和底部的六个项、存储帐户名称、输入和输出的密钥和容器名称。 若要查找该信息，可以在 Azure 门户中导航到存储帐户的“访问密钥”，也可以直接从 Azure 存储资源管理器导航****。  
+打开从基因组学帐户下载的 *config.txt* 文件。 需指定的部分包括：订阅密钥和底部的六个项、存储帐户名称、输入和输出的密钥和容器名称。 若要查找该信息，可以在 Azure 门户中导航到存储帐户的“访问密钥”，也可以直接从 Azure 存储资源管理器导航。  
 
 ![基因组学配置](./media/quickstart-run-genomics-workflow-portal/genomics-config.PNG "基因组学配置")
 
@@ -144,4 +144,4 @@ msgen list -f c:\temp\config.txt
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已将示例输入数据上传到 Azure 存储中，并通过 `msgen` Python 客户端将工作流提交到了 Microsoft 基因组学服务。 要详细了解可以与 Microsoft 基因组学服务配合使用的其他输入文件类型，请查看以下页面：[配对的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md)。 还可下载“Genomics Tutorial.ipynb”文件并使用 [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) 等笔记本阅读器打开并运行该文件，使用 [Azure Notebooks 示例](https://aka.ms/genomicsnotebook)浏览本教程。
+在本文中，你已将示例输入数据上传到 Azure 存储中，并通过 `msgen` Python 客户端将工作流提交到了 Microsoft 基因组学服务。 要详细了解可以与 Microsoft 基因组学服务配合使用的其他输入文件类型，请查看以下页面：[配对的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md)。 还可下载“Genomics Tutorial.ipynb”文件并使用 [Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md) 等笔记本阅读器打开并运行该文件，使用 [Azure Notebooks 示例](https://aka.ms/genomicsnotebook)浏览本教程。

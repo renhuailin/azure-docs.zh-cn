@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 2742a08d97d537e8a5e0670c40f0ab69b34a4d9f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: f12c823f609ac309d4b5ddbbaa7d5a076a7bb9ad
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619587"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447290"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>使用提取的数据运行跨租户分析 - 多租户应用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
  
 本教程将逐步完成一个多租户实现的完整分析方案。 该方案演示企业如何通过分析做出明智的决策。 借助从分片数据库提取的数据，可以使用分析来获取租户行为的见解，包括租户如何使用示例 Wingtip Tickets SaaS 应用程序。 此方案涉及三个步骤： 
 
-1.  从每个租户数据库**提取数据**到分析存储。
-2.  **优化提取的数据**以进行分析处理。
-3.  使用**商业智能**工具抽取有用的见解，以引导做出决策。 
+1.  从每个租户数据库 **提取数据** 到分析存储。
+2.  **优化提取的数据** 以进行分析处理。
+3.  使用 **商业智能** 工具抽取有用的见解，以引导做出决策。 
 
 本教程介绍如何执行下列操作：
 
@@ -44,7 +44,7 @@ ms.locfileid: "91619587"
 
 如果所有数据只是在一个多租户数据库中，则访问所有租户的数据就很简单。 但是，如果数据大量分散在几千个数据库中，则访问就会变得更复杂。 克服复杂性的方法之一是将数据提取到分析数据库或数据仓库。 然后，可以查询数据仓库，以便从所有租户的票证数据中收集见解。
 
-本教程将会介绍此示例 SaaS 应用程序的完整分析方案。 首先，使用弹性作业来计划从每个租户数据库提取数据。 将数据发送到分析存储。 分析存储可以是 SQL 数据库或 Azure Synapse Analytics（以前称为“SQL 数据仓库”）。 对于大规模数据提取，建议使用 [Azure 数据工厂](../../data-factory/introduction.md)。
+本教程将会介绍此示例 SaaS 应用程序的完整分析方案。 首先，使用弹性作业来计划从每个租户数据库提取数据。 将数据发送到分析存储。 分析存储可以是 SQL 数据库或 Azure Synapse Analytics。 对于大规模数据提取，建议使用 [Azure 数据工厂](../../data-factory/introduction.md)。
 
 接下来，将聚合的数据分片成一组[星型架构](https://www.wikipedia.org/wiki/Star_schema)表。 这些表由一个中心事实数据表和相关的维度表组成：
 
@@ -70,15 +70,15 @@ ms.locfileid: "91619587"
 
 若要完成本教程，请确保满足以下先决条件：
 
-- 已部署 Wingtip 票证 SaaS 多租户数据库应用程序。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 多租户数据库应用程序](../../sql-database/saas-multitenantdb-get-started-deploy.md)。
-- 已从 GitHub 下载 Wingtip SaaS 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。** 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
+- 已部署 Wingtip 票证 SaaS 多租户数据库应用程序。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 多租户数据库应用程序](./saas-multitenantdb-get-started-deploy.md)。
+- 已从 GitHub 下载 Wingtip SaaS 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 - 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-- 已预配其他租户批，具体请参阅[**有关预配租户的教程**](../../sql-database/saas-multitenantdb-provision-and-catalog.md)。
-- 已创建作业代理和作业代理数据库。 请参阅[**架构管理教程**](../../sql-database/saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent)中的相应步骤。
+- 已预配其他租户批，具体请参阅 [**有关预配租户的教程**](./saas-multitenantdb-provision-and-catalog.md)。
+- 已创建作业代理和作业代理数据库。 请参阅 [**架构管理教程**](./saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent)中的相应步骤。
 
 ### <a name="create-data-for-the-demo"></a>创建用于演示的数据
 
-在本教程中，将门票销售数据执行分析。 在当前步骤中，请为所有租户生成门票数据。  稍后将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得有意义的数据量。** 数量够大的数据能够揭示不同购票模式的范围。
+在本教程中，将门票销售数据执行分析。 在当前步骤中，请为所有租户生成门票数据。  稍后将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得有意义的数据量。 数量够大的数据能够揭示不同购票模式的范围。
 
 1. 在“PowerShell ISE”中，打开“…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1”，并设置以下值：
     - **$DemoScenario** = **1** 购买所有会场举行的活动的门票
@@ -94,14 +94,14 @@ ms.locfileid: "91619587"
     - 若要使用包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **3**  
 3. 按 **F5** 运行演示脚本（用于调用 *Deploy-TenantAnalytics\<XX>.ps1* 脚本），以创建租户分析存储。 
 
-至此，你已部署应用程序并在其中填充了所需的租户数据。接下来，请使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 并以登录名“developer”和密码“P\@ssword1”连接“tenants1-mt-\<User\>”和“catalog-mt-\<User\>”服务器。
+至此，你已部署应用程序并在其中填充了所需的租户数据。接下来，请使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 并以登录名“developer”和密码“P\@ssword1”连接“tenants1-mt-\<User\>”和“catalog-mt-\<User\>”服务器。
 
 ![architectureOverView](./media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
 在对象资源管理器中执行以下步骤：
 
 1. 展开“tenants1-mt-\<User\>”服务器。
-2. 展开数据库节点，会看到包含多个租户的 tenants1** 数据库。
+2. 展开数据库节点，会看到包含多个租户的 tenants1 数据库。
 3. 展开“catalog-mt-\<User\>”服务器。
 4. 确认是否能够看到该分析存储和 jobaccount 数据库。
 
@@ -109,7 +109,7 @@ ms.locfileid: "91619587"
 
 - 表 **TicketsRawData** 和 **EventsRawData** 保存从租户数据库提取的原始数据。
 - 星型架构表为 **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
-- sp_ShredRawExtractedData**** 存储过程用于在星型架构表中填充来自原始数据表的数据。
+- sp_ShredRawExtractedData 存储过程用于在星型架构表中填充来自原始数据表的数据。
 
 ![屏幕截图显示了分析存储节点的 SSMS 对象资源管理器，包括表、视图和节点。](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "91619587"
 
 ### <a name="extract-raw-data-from-all-tenants"></a>从所有租户提取原始数据
 
-相比活动和会场** 数据而言，票证和客户** 数据的事务出现的频率可能更大。 因此，请考虑以高于活动和会场数据的提取频率单独提取门票和客户数据。 在本部分，定义并计划两个单独的作业：
+相比活动和会场数据而言，票证和客户数据的事务出现的频率可能更大。 因此，请考虑以高于活动和会场数据的提取频率单独提取门票和客户数据。 在本部分，定义并计划两个单独的作业：
 
 - 提取门票和客户数据。
 - 提取活动和会场数据。
@@ -170,9 +170,9 @@ ms.locfileid: "91619587"
 使用以下步骤连接到 Power BI，并导入前面创建的视图：
 
 1. 启动 Power BI Desktop。
-2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...”******** 。
-3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。****
-4. 在数据库登录窗口中，输入服务器名称 (catalog-mt-\<User\>.database.windows.net)。 为“数据连接模式”选择“导入”，单击“确定”。******** 
+2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...” 。
+3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。
+4. 在数据库登录窗口中，输入服务器名称 (catalog-mt-\<User\>.database.windows.net)。 为“数据连接模式”选择“导入”，单击“确定”。 
 
     ![屏幕截图显示了“SQL Server 数据库”对话框，你可以在其中输入服务器和数据库。](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
@@ -180,7 +180,7 @@ ms.locfileid: "91619587"
 
     ![屏幕截图显示了“SQL Server 数据库”对话框，你可以在其中输入用户名和密码。](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
-6. 在“导航器”窗格中的分析数据库下，选择以下星型架构表：fact_Tickets、dim_Events、dim_Venues、dim_Customers 和 dim_Dates。**** 然后选择“加载”。**** 
+6. 在“导航器”窗格中的分析数据库下，选择以下星型架构表：fact_Tickets、dim_Events、dim_Venues、dim_Customers 和 dim_Dates。 然后选择“加载”。 
 
 恭喜！ 数据已成功载入 Power BI。 现在，可以开始探索有趣的可视化效果，以帮助自己深入了解租户。 本教程接下来逐步讲解如何使用分析向 Wingtip Tickets 业务团队提供数据驱动的建议。 借助建议可以优化业务模型和客户体验。
 
@@ -210,7 +210,7 @@ ms.locfileid: "91619587"
 
 门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层级。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层级可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
 
-同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。**** 针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
+同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。 针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
@@ -241,6 +241,6 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="additional-resources"></a>其他资源
 
-其他[基于 Wingtip SaaS 应用程序编写的教程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。 
-- [弹性作业](../../sql-database/elastic-jobs-overview.md)。
-- [使用提取的数据运行跨租户分析 - 单租户应用](saas-tenancy-tenant-analytics.md) 
+其他[基于 Wingtip SaaS 应用程序编写的教程](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。 
+- [弹性作业](./elastic-jobs-overview.md)。
+- [使用提取的数据运行跨租户分析 - 单租户应用](saas-tenancy-tenant-analytics.md)

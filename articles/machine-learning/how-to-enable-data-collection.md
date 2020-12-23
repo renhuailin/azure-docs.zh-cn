@@ -1,7 +1,7 @@
 ---
 title: 在生产模型上收集数据
 titleSuffix: Azure Machine Learning
-description: 了解如何从已部署的 Azure 机器学习模型中收集数据
+description: 了解如何从部署在 Azure Kubernetes Service (AKS) 群集上的 Azure 机器学习模型收集数据。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,15 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 195fc6100229fca2a05198ffa80108057ad8ad65
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, data4ml
+ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897584"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680964"
 ---
 # <a name="collect-data-from-models-in-production"></a>收集生产中模型的数据
-
-
 
 本文演示如何从 Azure Kubernetes 服务 (AKS) 群集上部署的 Azure 机器学习模型中收集数据， 然后将收集的数据存储在 Azure Blob 存储中。
 
@@ -38,7 +36,7 @@ ms.locfileid: "90897584"
 
 可以收集以下数据：
 
-* 从部署在 AKS 群集中的 Web 服务收集模型输入数据。 不收集语音、音频、图像和视频数据。**
+* 从部署在 AKS 群集中的 Web 服务收集模型输入数据。 不收集语音、音频、图像和视频数据。
   
 * 使用生产输入数据进行模型预测。
 
@@ -67,11 +65,11 @@ Blob 中输出数据的路径遵循以下语法：
 
 - 需要一个 AKS 群集。 有关如何创建此类群集并部署到其中的信息，请参阅[部署方式和部署位置](how-to-deploy-and-where.md)。
 
-- [设置环境](how-to-configure-environment.md)并安装 [Azure 机器学习监视 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+- [设置环境](how-to-configure-environment.md)并安装 [Azure 机器学习监视 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 
 ## <a name="enable-data-collection"></a>启用数据收集
 
-无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用[数据收集](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true)。
+无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用[数据收集](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py)。
 
 若要启用数据收集，需要：
 
@@ -87,7 +85,7 @@ Blob 中输出数据的路径遵循以下语法：
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3", "feat4", "feat5", "feat6"])
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
@@ -104,7 +102,7 @@ Blob 中输出数据的路径遵循以下语法：
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true**。** 如以下示例所示更新配置文件：
+1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true**。 如以下示例所示更新配置文件：
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
@@ -117,6 +115,12 @@ Blob 中输出数据的路径遵循以下语法：
     ```
 
 1. 若要创建新映像并部署机器学习模型，请参阅[部署方式和部署位置](how-to-deploy-and-where.md)。
+
+1. 将 "Azure 监视" pip 包添加到 web 服务环境的 conda 依赖项：
+  ```Python
+    env = Environment('webserviceenv')
+    env.python.conda_dependencies = CondaDependencies.create(conda_packages=['numpy'],pip_packages=['azureml-defaults','azureml-monitoring','inference-schema[numpy-support]'])
+  ```
 
 
 ## <a name="disable-data-collection"></a>禁用数据收集
@@ -138,7 +142,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 打开你的工作区。
 
-1. 选择“存储”****。
+1. 选择“存储”。
 
     [![选择“存储”选项](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -153,33 +157,33 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 下载并打开 [Power BI Desktop](https://www.powerbi.com)。
 
-1. 选择“获取数据”，然后选择“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。**** ****
+1. 选择“获取数据”，然后选择“[Azure Blob 存储](/power-bi/desktop-data-sources)”。 
 
     [![Power BI Blob 设置](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. 添加存储帐户名称并输入存储密钥。 可以通过在 Blob 中选择“设置” > “访问密钥”找到此信息。**** ****
+1. 添加存储帐户名称并输入存储密钥。 可以通过在 Blob 中选择“设置” > “访问密钥”找到此信息。 
 
-1. 选择“模型数据”容器，然后选择“编辑”。**** ****
+1. 选择“模型数据”容器，然后选择“编辑”。 
 
     [![Power BI Navigator](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户。****
+1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户。
 
 1. 在筛选器中输入模型路径。 如果只想查看特定年份或月份的文件，则只需展开筛选器路径即可。 例如，如果只想查看三月份的数据，请使用以下筛选路径：
 
    /modeldata/\<subscriptionid>/\<resourcegroupname>/\<workspacename>/\<webservicename>/\<modelname>/\<modelversion>/\<designation>/\<year>/3
 
-1. 基于“名称”值筛选相关的数据。**** 如果存储了预测和输入，则需要针对每个预测和输入创建一个查询。
+1. 基于“名称”值筛选相关的数据。 如果存储了预测和输入，则需要针对每个预测和输入创建一个查询。
 
-1. 选择“内容”列标题旁边的向下双箭头，将文件合并在一起。****
+1. 选择“内容”列标题旁边的向下双箭头，将文件合并在一起。
 
     [![Power BI 内容](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. 选择“确定” ****。 数据将预先加载。
+1. 选择“确定” 。 数据将预先加载。
 
     [![Power BI 合并文件](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
-1. 选择“关闭并应用”。****
+1. 选择“关闭并应用”。
 
 1. 如果添加了输入和预测，则表会自动按 **RequestId** 值排序。
 
@@ -187,15 +191,15 @@ Blob 中输出数据的路径遵循以下语法：
 
 ### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> 使用 Azure Databricks 分析模型数据
 
-1. 创建一个 [Azure Databricks 工作区](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
+1. 创建一个 [Azure Databricks 工作区](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。
 
 1. 转到该 Databricks 工作区。
 
-1. 在 Databricks 工作区中，选择“上传数据”。****
+1. 在 Databricks 工作区中，选择“上传数据”。
 
     [![选择 Databricks“上传数据”选项](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. 选择“创建新表”，然后选择“其他数据源” > “Azure Blob 存储” > “在笔记本中创建表”。**** **** **** ****
+1. 选择“创建新表”，然后选择“其他数据源” > “Azure Blob 存储” > “在笔记本中创建表”。   
 
     [![Databricks 表创建](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

@@ -3,12 +3,12 @@ title: 注册表服务层级和功能
 description: 了解 Azure 容器注册表的“基本”、“标准”和“高级”服务层级 (SKU) 中的功能和限制。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 66cb5d7c3cdca45f7a44f0f23bfa449d5ade6dbf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512600"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048468"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure 容器注册表服务层级
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 0896df301718c74e63a9e18c74615130fa80c952
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: aca8c75f262e472cbc770c052b86d6e760ee449a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986244"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026465"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 
@@ -41,7 +41,7 @@ ms.locfileid: "90986244"
 
 #### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
-1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](https://aka.ms/azure-jdks) 上的文档。
+1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) 上的文档。
 2. 下载适用于系统的正确二进制程序包：
 
    ```bash
@@ -195,7 +195,7 @@ sudo /etc/init.d/logstash start
 
 3. 若要查看 Kibana Web 界面，请导航到 `http://localhost:5601`
 4. 对于本方案，用于流日志的索引模式为“nsg-flow-logs”。 可以更改 logstash.conf 文件“output”节中的索引模式。
-5. 如果想要远程查看 Kibana 仪表板，请创建允许访问**端口 5601** 的入站 NSG 规则。
+5. 如果想要远程查看 Kibana 仪表板，请创建允许访问 **端口 5601** 的入站 NSG 规则。
 
 ### <a name="create-a-kibana-dashboard"></a>创建 Kibana 仪表板
 
@@ -207,7 +207,7 @@ sudo /etc/init.d/logstash start
 
 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“仪表板”选项卡打开并加载示例仪表板。
 
-还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
+还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)，详细了解如何创建 Kibana 可视化效果。
 
 ### <a name="visualize-nsg-flow-logs"></a>可视化 NSG 流日志
 

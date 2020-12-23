@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908353"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735584"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入门：生成应用并将其部署到 Azure Spring Cloud
 
@@ -187,10 +187,10 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 
 ## <a name="prerequisites"></a>先决条件
 
-* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [安装 JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [注册 Azure 订阅](https://azure.microsoft.com/free/)
-* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
-* （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
+* （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>部署过程
 
@@ -248,7 +248,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
     az spring-cloud app update -n gateway --is-public true
     ```
 
-2. 查询**网关**应用程序的公共 IP，这样就可以验证该应用程序是否正在运行：
+2. 查询 **网关** 应用程序的公共 IP，这样就可以验证该应用程序是否正在运行：
 
     ```azurecli
     az spring-cloud app show --name gateway --query properties.url
@@ -261,7 +261,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 1. 通过运行以下命令，克隆 Git 存储库：
 
     ```
-    git clone https://github.com/Azure-Samples/PiggyMetrics
+    git clone https://github.com/Azure-Samples/piggymetrics
     ```
   
 1. 通过运行以下命令更改目录并生成项目：
@@ -276,7 +276,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 1. 通过在包含父 POM 的 PiggyMetrics 的根文件夹中运行以下命令来生成配置。 如果已使用 Azure CLI 登录，则该命令将自动提取凭据。 否则，它将提示你登录。 有关详细信息，请参阅我们的 [wiki 页面](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)。
 
     ```
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.3.0:config
     ```
     
     系统会提示你选择：
@@ -304,7 +304,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
     ![导入项目](media/spring-cloud-intellij-howto/revision-import-project-1.png)
 
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>将网关应用部署到 Azure Spring Cloud
-若要部署到 Azure，必须通过 Azure Toolkit for IntelliJ 使用 Azure 帐户登录，然后选择你的订阅。 有关登录的详细信息，请参阅[安装和登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
+若要部署到 Azure，必须通过 Azure Toolkit for IntelliJ 使用 Azure 帐户登录，然后选择你的订阅。 有关登录的详细信息，请参阅[安装和登录](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
 
 1. 在 IntelliJ 项目资源管理器中右键单击你的项目，选择“Azure” -> “部署到 Azure Spring Cloud”。 
 
@@ -313,7 +313,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 1. 在“名称”字段中，将“:gateway”追加到现有“名称”。
 1. 在“项目”文本框中，选择“com.piggymetrics:gateway:1.0-SNAPSHOT”。
 1. 在“订阅”文本框中，验证订阅。
-1. 在“Spring Cloud”文本框中，选择你在[预配 Azure Spring Cloud 实例](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)中创建的 Azure Spring Cloud 实例。
+1. 在“Spring Cloud”文本框中，选择你在[预配 Azure Spring Cloud 实例](./spring-cloud-quickstart-provision-service-instance.md)中创建的 Azure Spring Cloud 实例。
 1. 将“公共终结点”设置为“启用”。
 1. 在“应用:”文本框中，选择“创建应用…” 。
 1. 输入“网关”，然后单击“确定”。
@@ -353,23 +353,9 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>清理资源
-
-如果打算继续学习本系列的下一个快速入门，请跳过此步骤。
-
-在这些快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，并认为将来不需要这些资源，请通过门户删除资源组，或通过在 Cloud Shell 中运行以下命令：
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-在前面的快速入门中，你还设置了默认资源组名称。 如果不打算继续学习下一个快速入门，请通过运行以下 CLI 命令清除该默认名称：
-
-```azurecli
-az configure --defaults group=
-```
-
 ## <a name="next-steps"></a>后续步骤
+
+在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，请参阅[清理资源](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)。 否则，请继续学习下一个快速入门：
+
 > [!div class="nextstepaction"]
 > [日志、指标和跟踪](spring-cloud-quickstart-logs-metrics-tracing.md)
-

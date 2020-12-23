@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967911"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995516"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教程 - 在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
@@ -51,11 +51,11 @@ ms.locfileid: "90967911"
 
 1. 在“复查”页上，选择“创建”将该设备模板添加到应用程序。   
 
-若要创建“RS40 占位传感器”设备的设备模板： 
+若要创建“RS40 占位传感器”设备的设备模板：
 
 1. 在左窗格中选择“设备模板”  。 然后选择 **+** 开始添加模板。
 
-1. 向下滚动，直到看到“RS40 占位传感器”设备的磁贴。  选择该磁贴，然后选择“下一步:  自定义”。
+1. 向下滚动，直到看到“RS40 占位传感器”设备的磁贴。 选择该磁贴，然后选择“下一步:  自定义”。
 
 1. 在“复查”页上，选择“创建”将该设备模板添加到应用程序。   
 
@@ -142,7 +142,7 @@ ms.locfileid: "90967911"
 
 3. 在“发布设备模板”对话框中，选择“发布”   。
 
-发布设备模板后，它将显示在“设备”页上，操作员可以看到它。  在发布的设备模板中，除非创建新的版本，否则无法编辑设备功能模型。 但是，可以在发布的设备模板中更新云属性、自定义项和视图。 这些更新不会导致创建新版本。 进行任何更改后，选择“发布”将这些更改推送给操作员。 
+发布设备模板后，它将显示在“设备”页上，操作员可以看到它。  在发布的设备模板中，除非创建新的版本，否则无法编辑设备模型。 但是，可以在发布的设备模板中更新云属性、自定义项和视图。 这些更新不会导致创建新版本。 进行任何更改后，选择“发布”将这些更改推送给操作员。 
 
 ## <a name="create-the-simulated-devices"></a>创建模拟设备
 

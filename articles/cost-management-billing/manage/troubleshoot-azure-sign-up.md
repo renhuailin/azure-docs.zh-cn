@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326600"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344481"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>排查在 Azure 门户或 Azure 帐户中心注册新帐户时遇到的问题
 
 尝试在 Microsoft Azure 门户或 Azure 帐户中心注册新帐户时，可能会遇到问题。 本简短指南将指导你完成注册过程，并在每个步骤讨论一些常见问题。
 
 > [!NOTE]
-> 如果你已有一个现有帐户，并且正在寻求排查登录问题的指导，请参阅[排查 Azure 订阅登录问题](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)。
+> 如果你已有一个现有帐户，并且正在寻求排查登录问题的指导，请参阅[排查 Azure 订阅登录问题](./troubleshoot-sign-in-issue.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -76,8 +76,8 @@ InPrivate 浏览如何？
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>你会看到消息“你当前的帐户类型不受支持”
 
-如果该帐户是在[非托管 Azure AD 目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)中注册的，并且不在你组织的 Azure AD 目录中，则可能会发生此问题。
-若要解决此问题，请使用其他帐户注册 Azure 帐户，或接管非托管 AD 目录。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。
+如果该帐户是在[非托管 Azure AD 目录](../../active-directory/enterprise-users/directory-self-service-signup.md)中注册的，并且不在你组织的 Azure AD 目录中，则可能会发生此问题。
+若要解决此问题，请使用其他帐户注册 Azure 帐户，或接管非托管 AD 目录。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../../active-directory/enterprise-users/domains-admin-takeover.md)。
 
 ## <a name="identity-verification-by-phone"></a>通过手机进行身份验证
 
@@ -107,7 +107,7 @@ InPrivate 浏览如何？
 
 #### <a name="credit-card-declined-or-not-accepted"></a>信用卡被拒绝或不被接受
 
-虚拟或预付信用卡或借记卡不能作为 Azure 订阅有效的付款选项。 要查看可能导致卡被拒绝的其他原因，请参阅[对 Azure 注册时卡被拒绝进行故障排除](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)。
+虚拟或预付信用卡或借记卡不能作为 Azure 订阅有效的付款选项。 要查看可能导致卡被拒绝的其他原因，请参阅[对 Azure 注册时卡被拒绝进行故障排除](./troubleshoot-declined-card.md)。
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>信用卡窗体不支持我的帐单地址
 
@@ -144,7 +144,7 @@ InPrivate 浏览如何？
 请检查使用的是否是正确的登录凭据。 然后检查权益计划，并验证是否符合资格。
 - MSDN
   - 在 [MSDN 帐户页](https://msdn.microsoft.com/subscriptions/manage/default.aspx)上验证资格状态。
-  - 如果无法验证资格状态，请联系 [MSDN 订阅客服中心](https://msdn.microsoft.com/library/aa493452.aspx)。
+  - 如果无法验证资格状态，请联系 [MSDN 订阅客服中心](/previous-versions/mappoint/aa493452(v=msdn.10))。
 - 适用于初创企业的 Microsoft
   - 登录到[适用于初创企业的 Microsoft 门户](https://startups.microsoft.com/#start-two)，验证你的资格状态，看你是否符合适用于初创企业的 Microsoft 的资格。
   - 如果无法验证你的状态，可以在[适用于初创企业的 Microsoft 论坛](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups)上获取帮助。
@@ -161,10 +161,10 @@ InPrivate 浏览如何？
 
 Azure 计费和订阅的其他疑难解答文章
 
-- [银行卡被拒绝](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [订阅登录问题](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [找不到任何订阅](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [企业成本视图已禁用](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [银行卡被拒绝](./troubleshoot-declined-card.md)
+- [订阅登录问题](./troubleshoot-sign-in-issue.md)
+- [找不到任何订阅](./no-subscriptions-found.md)
+- [企业成本视图已禁用](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>联系我们以获取帮助
 
@@ -172,4 +172,4 @@ Azure 计费和订阅的其他疑难解答文章
 
 ## <a name="find-out-more-about-azure-cost-management"></a>详细了解 Azure 成本管理
 
-- [Azure 成本管理和计费文档](https://docs.microsoft.com/azure/cost-management-billing)
+- [Azure 成本管理和计费文档](../index.yml)

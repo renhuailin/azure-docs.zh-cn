@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776147"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500387"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -130,7 +130,7 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 | **最大内存** |顺利运行应用程序所需的内存量 |提交的在用字节数百分比 |使用 vmstat |
 | **最大CPU** |顺利运行应用程序所需的 CPU 速度 |处理器时间百分比 |%util |
 
-详细了解 [iostat](https://linux.die.net/man/1/iostat) 和 [PerfMon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)。
+详细了解 [iostat](https://linux.die.net/man/1/iostat) 和 [PerfMon](/windows/win32/perfctrs/performance-counters-portal)。
 
 
 
@@ -222,7 +222,7 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 
 下表总结了这种情况下标准存储和高级存储的成本明细。
 
-| &nbsp; | **Standard** | **高级** |
+| &nbsp; | **标准** | **高级** |
 | --- | --- | --- |
 | **VM 每月的成本** |$1,570.58 (Standard\_D14) |$1,003.66 (Standard\_DS13) |
 | **每月磁盘成本** |$1,638.40（32 x 1-TB 磁盘） |$544.34（4 x P30 磁盘） |
@@ -305,11 +305,11 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 
 ## <a name="optimize-performance-on-linux-vms"></a>优化 Linux Vm 的性能
 
-对于所有高级 Ssd 或超磁盘，你可能会对磁盘上的文件系统禁用 "屏障"，以便在已知没有可能丢失数据的缓存的情况下提高性能。  如果 Azure 磁盘缓存设置为 "只读" 或 "无"，则可以禁用屏障。  但是，如果将缓存设置为 ReadWrite，则关卡应保持启用状态以确保写入持续性。  通常情况下，屏障默认情况下处于启用状态，但你可以根据文件系统类型使用以下方法之一来禁用关卡：
+对于所有高级 Ssd 或超磁盘，你可能会对磁盘上的文件系统禁用 "屏障"，以便在已知没有可能丢失数据的缓存的情况下提高性能。  如果 Azure 磁盘缓存设置为 ReadOnly 或 None，则可以禁用屏障。  但是，如果缓存设置为 ReadWrite，则屏障应保持启用状态以确保写入持续性。  默认情况下，屏障通常处于启用状态，但你可以根据文件系统类型使用以下方法之一禁用屏障：
 
-* 对于 **reiserFS**，请使用屏障 = none 装载选项来禁用屏障。  若要显式启用屏障，请使用关卡 = flush。
-* 对于 **ext3/ext4**，请使用关卡 = 0 mount 选项来禁用屏障。  若要显式启用屏障，请使用关卡 = 1。
-* 对于 **XFS**，请使用 nobarrier 装入选项来禁用屏障。  若要显式启用屏障，请使用障碍。  请注意，在更高版本的 Linux 内核版本中，XFS 文件系统的设计始终确保持续性，禁用关卡不起作用。  
+* 对于 reiserFS，请使用 barrier=none 装入选项来禁用屏障。  若要显式启用屏障，请使用 barrier=flush。
+* 对于 ext3/ext4，请使用 barrier=0 装入选项来禁用屏障。  若要显式启用屏障，请使用 barrier=1。
+* 对于 XFS，请使用 nobarrier 装入选项来禁用屏障。  若要显式启用屏障，请使用 barrier。  请注意，在更高版本的 Linux 内核版本中，XFS 文件系统的设计始终确保持续性，禁用屏障没有任何效果。  
 
 ## <a name="disk-striping"></a>磁盘条带化
 
@@ -319,7 +319,7 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 
 重要说明：使用服务器管理器 UI，可以将列的总数设置为每个条带化卷最多 8 个。 连接 8 个以上的磁盘时，可使用 PowerShell 来创建卷。 使用 PowerShell，可以将列数设置为与磁盘数相等。 例如，如果一个条带集中有 16 个磁盘，可在 *New-VirtualDisk* PowerShell cmdlet 的 *NumberOfColumns* 参数中指定 16 个列。
 
-在 Linux 中，可使用 MDADM 实用工具将磁盘条带化。 有关在 Linux 中对磁盘进行条带化操作的详细步骤，请参阅[在 Linux 上配置软件 RAID](linux/configure-raid.md)。
+在 Linux 中，可使用 MDADM 实用工具将磁盘条带化。 有关在 Linux 中对磁盘进行条带化操作的详细步骤，请参阅[在 Linux 上配置软件 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)。
 
 *条带大小*  
 进行磁盘条带化操作时，一项重要配置是条带大小。 条带大小或块大小是应用程序可以在条带化卷上处理的最小数据块区。 配置的条带大小取决于应用程序类型及其请求模式。 如果选择了错误的条带大小，可能导致 IO 不一致，从而导致应用程序性能下降。
@@ -343,7 +343,7 @@ Azure 将高级存储平台设计为可以进行大规模并行处理。 因此�
 
 例如，假设应用程序使用 SQL Server，且同时执行大型查询和索引操作。 假设想让索引操作性能优于大型查询。 在这种情况下，可以将索引操作的 MAXDOP 值设为高于查询的 MAXDOP 值。 这样一来，SQL Server 在进行索引操作时，就可以利用比进行大型查询所需的处理器更多的处理器。 请记住，无法人为控制 SQL Server 要用于每个操作的线程数。 可以控制多线程处理专用的最大处理器数。
 
-详细了解 SQL Server 中的[并行度](https://technet.microsoft.com/library/ms188611.aspx)。 找出应用程序中影响多线程处理的此类设置及其配置，以便优化性能。
+详细了解 SQL Server 中的[并行度](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105))。 找出应用程序中影响多线程处理的此类设置及其配置，以便优化性能。
 
 ## <a name="queue-depth"></a>队列深度
 

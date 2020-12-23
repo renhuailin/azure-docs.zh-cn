@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af7900faff18d526686b80f23b9de3b3bce5ec5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721823"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309615"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>使用 Azure Pipelines、Docker 和 Kubernetes 为 AI 应用创建 CI/CD 管道
 
@@ -34,9 +34,9 @@ ms.locfileid: "76721823"
 - [源代码存储库](https://github.com/Azure/DevOps-For-AI-Apps)分叉到 GitHub 帐户
 - [Azure DevOps 组织](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [Azure CLI](/cli/azure/install-azure-cli)
-- [适用于 Kubernetes 的 Azure 容器服务 (AKS) 群集](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+- [适用于 Kubernetes 的 Azure 容器服务 (AKS) 群集](/previous-versions/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
 - 用于运行命令并从 AKS 群集中提取配置的 [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 
-- [Azure 容器注册表 (ACR) 帐户](/azure/container-registry/container-registry-get-started-portal)
+- [Azure 容器注册表 (ACR) 帐户](../../container-registry/container-registry-get-started-portal.md)
 
 ## <a name="cicd-pipeline-summary"></a>CI/CD 管道摘要
 
@@ -62,7 +62,7 @@ ms.locfileid: "76721823"
 
 ## <a name="see-also"></a>另请参阅
 
-- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Azure 机器学习 (AML)](/azure/machine-learning/)
+- [Team Data Science Process (TDSP)](./index.yml)
+- [Azure 机器学习 (AML)](../index.yml)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes 服务 (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes 服务 (AKS)](../../aks/intro-kubernetes.md)

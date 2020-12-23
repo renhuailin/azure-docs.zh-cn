@@ -3,17 +3,17 @@ title: Windows 虚拟桌面中有哪些新增功能？ - Azure
 description: Windows 虚拟桌面的新增功能和产品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 12/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319808"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533955"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -25,6 +25,96 @@ Windows 虚拟桌面会定期更新。 本文介绍了以下内容：
 - Bug 修复
 
 本文每月更新一次。 请务必时常查看本文，以及时了解最新更新。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="azure-portal-experience"></a>Azure 门户体验
+
+我们已经修复了 Azure 门户用户体验中的两个 bug：
+
+- 桌面应用程序易记名称不会再在“添加 VM”工作流中被覆盖。
+- 如果会话主机是规模集的一部分，现在将加载会话主机选项卡。
+
+### <a name="fslogix-client-version-2009"></a>FSLogix 客户端，版本 2009 
+
+我们发布了 FSLogix 客户端的新版本，其中包括许多修补程序和改进。 有关详细信息，请参阅[我们的博客文章](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix)。
+
+### <a name="rdp-shortpath-public-preview"></a>RDP Shortpath 公共预览版
+
+RDP Shortpath 使用点到站点和站点到站点 VPN 和 ExpressRoute 引入与 Windows 虚拟桌面会话主机的直接连接。 它还引入了 URCP 传输协议。 RDP Shortpath 旨在减少延迟和网络跃点，以改善用户体验。 有关详细信息，请参阅 [Windows 虚拟桌面 RDP Shortpath](shortpath.md)。
+
+### <a name="azdesktopvirtualization-version-201"></a>Az.DesktopVirtualization，版本 2.0.1
+
+我们发布了 Windows 虚拟桌面 cmdlet 版本 2.0.1。 此更新包括支持管理 MSIX 应用附加的 cmdlet。 可以在 [PowerShell 库](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1)中下载新版本。
+
+### <a name="azure-advisor-updates"></a>Azure 顾问更新
+
+Azure 顾问现在提供有关 Windows 虚拟桌面中邻近指导的新建议。 有关详细信息，请访问 [Azure 网站](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+以下是 2020 年 10 月的更改内容：
+
+### <a name="improved-performance"></a>提高了性能
+
+- 我们通过减少以下 Azure 地域的连接延迟优化了性能：
+    - 瑞士
+    - 加拿大
+
+现在可以使用[体验评估器](https://azure.microsoft.com/services/virtual-desktop/assessment/)来评估这些区域的用户体验质量。
+
+### <a name="azure-government-cloud-availability"></a>Azure 政府云可用性
+
+Azure 政府云现已正式发布。 有关详细信息，请参阅[我们的博客文章](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/)。
+
+### <a name="windows-virtual-desktop-azure-portal-updates"></a>Windows 虚拟桌面 Azure 门户更新
+
+我们已对 Windows 虚拟桌面 Azure 门户做了一些更新：
+
+- 已修复阻止用户打开“会话”选项卡的 resourceID 错误。
+- 已简化“会话主机”选项卡上的 UI。
+- 已修复 RDP 属性下的“默认值”、“可用性”和“还原默认值”设置。
+- 已使“移除”和“删除”功能在所有选项卡上保持一致。
+- 门户现在可验证“添加应用”工作流中的应用名称。
+- 已修复会话主机导出数据在列中没有对齐的问题。
+- 已修复门户无法检索用户会话的问题。
+- 已修复在其他资源组中创建虚拟机时发生的会话主机检索问题。
+- 已更新“会话主机”选项卡以列出活动会话和断开连接的会话。
+- “应用程序”选项卡现在包含页面。
+- 已修复“需要命令行”文本在“应用程序列表”选项卡中无法正确显示的问题。
+- 已修复门户在使用德语版共享映像库时无法部署主机池或虚拟机的问题。
+
+### <a name="client-updates-for-october-2020"></a>2020 年 10 月的客户端更新
+
+我们已发布新版本的客户端。 请查看以下文章了解详细信息：
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+
+有关其他客户端的详细信息，请参阅[客户端更新](#client-updates)。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+以下是 2020 年 9 月的更改：
+
+- 我们通过减少以下 Azure 地域的连接延迟优化了性能：
+    - 德国
+    - 南非（仅限验证环境）
+
+现在可以使用[体验评估器](https://azure.microsoft.com/services/virtual-desktop/assessment/)来评估这些区域的用户体验质量。
+
+- 我们为 Windows 虚拟桌面发布了 Windows 桌面客户端版本 1.2.1364。 在此更新中，我们进行了以下更改：
+    - 修复了 Windows 7 上单一登录 (SSO) 失效的问题。
+    - 修复了在以下情况下导致客户端断开连接的问题：为 Teams 启用了媒体优化的用户在另一个应用以独占模式打开音频流时，尝试呼叫或加入 Teams 会议。
+    - 修复了为 Teams 启用媒体优化后，Teams 不枚举音频或视频设备的问题。
+    - 向桌面设置页面添加了一个 “需要设置方面的帮助吗？”链接。
+    - 解决了在使用高对比度深色主题时“订阅”按钮发生的问题。
+    
+- 感谢用户的大力帮助，我们修复了 Microsoft Store 远程桌面客户端的两个关键问题。 随着全球越来越多用户使用该客户端的分阶段发行版，我们将继续审查反馈并解决问题。
+    
+- 我们添加了一项新功能，可用于更改 VM 位置、映像、资源组、前缀名称和网络配置，作为在 Azure 门户中向部署添加 VM 的工作流的一部分。
+
+- IT 专业人员现在可以使用 Microsoft Endpoint Manager 管理已加入混合 Azure Active Directory 的 Windows 10 企业版 VM。 要了解详细信息，请参阅[我们的博客文章](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048)。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -45,7 +135,7 @@ Windows 虚拟桌面会定期更新。 本文介绍了以下内容：
 
 - Windows 虚拟桌面现包含 Azure 顾问。 通过 Azure 门户访问 Windows 虚拟桌面时，你可以查看关于优化 Windows 虚拟桌面环境的建议。 有关详细信息，请参阅 [Azure 顾问](azure-advisor.md)。
 
-- Azure CLI 现支持 Windows 虚拟桌面 (`az desktopvirtualization`)，可帮助你自动执行 Windows 虚拟桌面部署。 如需查看扩展命令的列表，请查看 [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest)。
+- Azure CLI 现支持 Windows 虚拟桌面 (`az desktopvirtualization`)，可帮助你自动执行 Windows 虚拟桌面部署。 如需查看扩展命令的列表，请查看 [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true)。
 
 - 我们更新了部署模板，更新后的模板与 Windows 虚拟桌面 Azure 资源管理器接口完全兼容。 你可在 [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) 上找到这些模板。
 
@@ -110,14 +200,13 @@ Windows 虚拟桌面现已集成到 Azure 资源管理器中。 在最新更新�
 
 - 不再需要完成 Azure Active Directory (Azure AD) 同意即可使用 Windows 虚拟桌面。 在此更新中，Azure 订阅上的 Azure AD 租户会对用户进行身份验证，并为管理员提供 Azure RBAC 控制权限。
 
-
 ### <a name="powershell-support"></a>PowerShell 支持
 
 我们已在此更新中向 Azure PowerShell Az 模块添加了新的 AzWvd cmdlet。 在 .NET Core 上运行的 PowerShell Core 支持此新模块。
 
 要安装该模块，请按照[为 Windows 虚拟桌面设置 PowerShell 模块](powershell-module.md)中的说明操作。
 
-还可以在 [AzWvd PowerShell 参考](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization)处查看可用命令的列表。
+还可以在 [AzWvd PowerShell 参考](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true)处查看可用命令的列表。
 
 有关新增功能的详细信息，请参阅[我们的博客文章](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)。
 
@@ -144,4 +233,3 @@ Windows 虚拟桌面现已集成到 Azure 资源管理器中。 在最新更新�
 ## <a name="next-steps"></a>后续步骤
 
 请在 [Microsoft 365 Windows 虚拟桌面路线图](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)了解未来的计划。
-

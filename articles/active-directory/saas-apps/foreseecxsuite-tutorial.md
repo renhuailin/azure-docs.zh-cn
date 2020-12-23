@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: fb0ed4a48eaef2168791abbaf94fb8991fa14132
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b4a8ea5c08f66bc0c64d4762e695dd4e2822af44
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551083"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92451955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教程：Azure Active Directory 与 ForeSee CX Suite 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88551083"
 * 可让用户使用其 Azure AD 帐户自动登录到 ForeSee CX Suite（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -91,7 +91,7 @@ ms.locfileid: "88551083"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88551083"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分，如果有**服务提供程序元数据文件**，请执行以下步骤：
+4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件** ，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -115,7 +115,7 @@ ms.locfileid: "88551083"
 
     a. 在“登录 URL”文本框中，键入 URL：  `https://cxsuite.foresee.com/`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：https:\//www.okta.com/saml2/service-provider/\<UniqueID>****
+    b. 在“标识符”文本框中，使用以下模式键入 URL：https:\//www.okta.com/saml2/service-provider/\<UniqueID>
 
     > [!Note]
     > 如果“标识符”值未自动填充，请根据上述模式手动填充该值  。 标识符非实际值。 请使用实际标识符更新此值。 请联系 [ForeSee CX Suite 客户端支持团队](mailto:support@foresee.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -196,13 +196,12 @@ ms.locfileid: "88551083"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ForeSee CX Suite 磁贴时，应当会自动登录到为其设置了 SSO 的 ForeSee CX Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 ForeSee CX Suite 磁贴时，应当会自动登录到为其设置了 SSO 的 ForeSee CX Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

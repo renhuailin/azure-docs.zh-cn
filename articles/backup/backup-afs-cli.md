@@ -3,14 +3,14 @@ title: 与 Azure CLI 备份 Azure 文件共享
 description: 了解如何使用 Azure CLI 在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 12d258a3242530745cc8ce31afae18f622323488
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34eea8daa6a0a8920c842178664055838b06a78a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91293248"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565885"
 ---
-# <a name="back-up-azure-file-shares-with-cli"></a>通过 CLI 备份 Azure 文件共享
+# <a name="back-up-azure-file-shares-with-azure-cli"></a>与 Azure CLI 备份 Azure 文件共享
 
 Azure 命令行接口 (CLI) 提供了用于管理 Azure 资源的命令行体验。 这是一个很好的工具，用于构建自定义自动化以使用 Azure 资源。 本文详细介绍如何将 Azure 文件共享与 Azure CLI 备份。 也可以使用 [Azure PowerShell](./backup-azure-afs-automation.md) 或 [Azure 门户](backup-afs.md)执行这些步骤。
 
@@ -20,9 +20,9 @@ Azure 命令行接口 (CLI) 提供了用于管理 Azure 资源的命令行体验
 * 为 Azure 文件共享启用备份
 * 触发文件共享的按需备份
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-若要在本地安装和使用 CLI，必须运行 Azure CLI 2.0.18 或更高版本。 若要查找 CLI 版本，请 `run az --version` 。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教程需要 Azure CLI 版本的2.0.18 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -62,7 +62,7 @@ Azure 命令行接口 (CLI) 提供了用于管理 Azure 资源的命令行体验
 
 若要为文件共享启用备份，你需要创建一个保护策略来定义备份作业的运行时间以及恢复点的存储时间。 你可以使用 [az backup policy create](/cli/azure/backup/policy#az-backup-policy-create) cmdlet 创建备份策略。
 
-下面的示例使用[az backup protection azurefileshare](/cli/azure/backup/protection#az-backup-protection-enable-for-azurefileshare) cmdlet 在*afsaccount*存储帐户中使用*计划 1*备份策略为*azurefiles*文件共享启用备份：
+下面的示例使用 [az backup protection azurefileshare](/cli/azure/backup/protection#az-backup-protection-enable-for-azurefileshare) cmdlet 在 *afsaccount* 存储帐户中使用 *计划 1* 备份策略为 *azurefiles* 文件共享启用备份：
 
 ```azurecli-interactive
 az backup protection enable-for-azurefileshare --vault-name azurefilesvault --resource-group  azurefiles --policy-name schedule1 --storage-account afsaccount --azure-file-share azurefiles  --output table
@@ -86,7 +86,7 @@ Name                                  ResourceGroup
 * **--name** 是要触发按需备份的文件共享的名称。 若要检索已备份项的 **名称** 或 **友好名称** ，请使用 [az backup item list](/cli/azure/backup/item#az-backup-item-list) 命令。
 * **--保留-直到** 指定要保留恢复点的日期。 应将此值设置为 UTC 时间格式， (yyyy-mm-dd) 。
 
-下面的示例为*afsaccount*存储帐户中的*azurefiles*文件共享启用按需备份，并保留到*20-01-2020*。
+下面的示例为 *afsaccount* 存储帐户中的 *azurefiles* 文件共享启用按需备份，并保留到 *20-01-2020* 。
 
 ```azurecli-interactive
 az backup protection backup-now --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --retain-until 20-01-2020 --output table

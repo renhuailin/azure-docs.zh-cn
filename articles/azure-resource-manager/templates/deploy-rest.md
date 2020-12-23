@@ -2,34 +2,34 @@
 title: 使用 REST API 和模板部署资源
 description: 使用 Azure 资源管理器和资源管理器 REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/22/2020
+ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079487"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675416"
 ---
-# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>使用 ARM 模板和资源管理器 REST API 部署资源
+# <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>利用 ARM 模板和 Azure 资源管理器部署资源 REST API
 
-本文介绍如何将资源管理器 REST API 与 Azure 资源管理器模板 (ARM) 配合使用向 Azure 部署资源。
+本文介绍如何使用 Azure 资源管理器 REST API 与 Azure 资源管理器模板 (ARM 模板) 将资源部署到 Azure。
 
 可以在请求正文中包含模板或链接到文件。 使用文件时，它可以是本地文件，也可以是通过 URI 提供的外部文件。 如果模板位于存储帐户中，可以限制对该模板的访问，并在部署过程中提供共享访问签名 (SAS) 令牌。
 
 ## <a name="deployment-scope"></a>部署范围
 
-可将部署目标设定为管理组、Azure 订阅或资源组。 大多数情况下，我们会将部署目标设定为资源组。 使用管理组或订阅部署在指定范围内应用策略和角色分配。 还可以使用订阅部署创建资源组，并将资源部署到该资源组。 你将根据部署范围使用不同的命令。
+可以将部署定向到资源组、Azure 订阅、管理组或租户。 你将根据部署范围使用不同的命令。
 
-* 若要部署到资源组，请使用[部署 - 创建](/rest/api/resources/deployments/createorupdate)。 请求将发送到：
+* 若要部署到资源组，请使用[部署 - 创建](/rest/api/resources/deployments/createorupdate)。 请求发送到：
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
 * 若要部署到订阅，请使用[部署 - 在订阅范围内创建](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 请求发送到：
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
@@ -37,7 +37,7 @@ ms.locfileid: "87079487"
 * 若要部署到管理组，请使用[部署 - 在管理组范围内创建](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 请求发送到：
 
   ```HTTP
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   有关管理组级别部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
@@ -45,7 +45,7 @@ ms.locfileid: "87079487"
 * 若要部署到租户，请使用[部署 - 在租户范围内创建或更新](/rest/api/resources/deployments/createorupdateattenantscope)。 请求发送到：
 
   ```HTTP
-  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   有关租户级别部署的详细信息，请参阅[在租户级别创建资源](deploy-to-tenant.md)。
@@ -56,10 +56,10 @@ ms.locfileid: "87079487"
 
 1. 设置 [常见参数和标头](/rest/api/azure/)，包括身份验证令牌。
 
-1. 如果目前没有资源组，请创建资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅 [创建资源组](/rest/api/resources/resourcegroups/createorupdate)。
+1. 如果要部署到不存在的资源组，请创建资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅 [创建资源组](/rest/api/resources/resourcegroups/createorupdate)。
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-10-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2020-06-01
    ```
 
    使用如下所示请求正文：
@@ -83,7 +83,7 @@ ms.locfileid: "87079487"
 
    在请求正文中，提供指向模板和参数文件的链接。 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
-   请注意，**mode** 设置为 **Incremental**。 要运行完整部署，请将 **mode** 设置为 **Complete**。 使用完整模式时要小心，因为可能会无意中删除不在模板中的资源。
+   请注意， **mode** 设置为 **Incremental** 。 要运行完整部署，请将 **mode** 设置为 **Complete** 。 使用完整模式时要小心，因为可能会无意中删除不在模板中的资源。
 
    ```json
    {
@@ -101,7 +101,7 @@ ms.locfileid: "87079487"
    }
    ```
 
-    如果你想要记录响应内容和/或请求内容，请 `debugSetting` 在请求中包括。
+    如果想要记录响应内容或/和请求内容，请在请求中包括 `debugSetting`。
 
    ```json
    {
@@ -197,19 +197,19 @@ ms.locfileid: "87079487"
 
 ## <a name="deployment-name"></a>部署名称
 
-可以为部署命名（例如） `ExampleDeployment` 。
+可为部署提供一个名称，如 `ExampleDeployment`。
 
-每次运行部署时，会在资源组的部署历史记录中添加一个包含部署名称的条目。 如果运行另一个部署并为其指定了相同的名称，则会将以前的条目替换为当前部署。 如果要在部署历史记录中维护唯一条目，请为每个部署指定唯一名称。
+每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
 
-若要创建唯一名称，可以分配一个随机数字。 或者，添加日期值。
+若要创建唯一名称，你可以分配一个随机数。 或者，添加日期值。
 
-如果以相同的部署名称运行对同一资源组的并发部署，则只完成最后一个部署。 任何没有完成的同名部署都将替换为最后一个部署。 例如，如果你运行一个名为 `newStorage` 的部署，它将部署一个名为的存储帐户 `storage1` ，同时运行名为的另一个部署， `newStorage` 该部署将部署名为的存储帐户 `storage2` ，你只部署一个存储帐户。 生成的存储帐户名为 `storage2` 。
+如果使用相同的部署名称对同一资源组运行并发部署，则仅会完成最后一个部署。 尚未完成的具有相同名称的任何部署都将被最后一个部署所替换。 例如，如果你运行一个名为 `newStorage` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你运行了另一个名为 `newStorage` 的部署，它部署了一个名为 `storage2` 的存储帐户，则你将仅部署一个存储帐户。 生成的存储帐户名为 `storage2`。
 
-但是，如果运行名为的部署 `newStorage` （部署名为的存储帐户 `storage1` ），并且在完成后立即运行名为的另一个部署 `newStorage` ，该部署将部署名为的存储帐户 `storage2` ，则你有两个存储帐户。 一个名为 `storage1` ，另一个名为 `storage2` 。 但是，部署历史记录中只有一个条目。
+但是，如果你运行一个名为 `newStorage` 的部署，它部署了一个名为 `storage1` 的存储帐户；在该部署完成时你又立即运行了另一个名为 `newStorage` 的部署，它部署了一个名为 `storage2` 的存储帐户，则你将有两个存储帐户。 一个名为 `storage1`，另一个名为 `storage2`。 但是，部署历史记录中只有一个条目。
 
-为每个部署指定唯一名称时，可以在不发生冲突的情况下同时运行它们。 如果运行名为的部署 `newStorage1` ，该部署将部署名为的存储帐户 `storage1` ，同时运行名为的另一个部署，该部署将部署 `newStorage2` 名为的存储帐户 `storage2` ，则部署历史记录中有两个存储帐户和两个条目。
+为每个部署指定唯一的名称时，可以并发运行它们而不会发生冲突。 如果你运行一个名为 `newStorage1` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你又运行了另一个名为 `newStorage2` 的部署，它部署了一个名为 `storage2` 的存储帐户，则部署历史记录中将有两个存储帐户和两个条目。
 
-若要避免与并发部署冲突并确保部署历史记录中的唯一条目，请为每个部署指定唯一名称。
+为避免与并发部署冲突并确保部署历史记录中的条目是唯一的，请为每个部署指定唯一的名称。
 
 ## <a name="next-steps"></a>后续步骤
 

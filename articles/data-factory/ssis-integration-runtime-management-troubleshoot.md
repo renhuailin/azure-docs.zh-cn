@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172020"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637915"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
 
@@ -78,11 +78,11 @@ ms.locfileid: "86172020"
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-这种错误消息如下所示： "无效的对象名称" 目录。 catalog_properties "。在这种情况下，你已经有一个名为 SSISDB 的数据库，但它不是由 SSIS IR 创建的，或者该数据库处于无效状态，这是由上一个 SSIS IR 预配中的错误引起的。 可以删除名称为 SSISDB 的现有数据库，也可以为 IR 配置新的 SQL 数据库或 SQL 托管实例。
+这种错误消息如下所示： "对象名称" catalog.catalog_properties "无效"。在这种情况下，你已经有一个名为 SSISDB 的数据库，但它不是由 SSIS IR 创建的，或者该数据库处于无效状态，这是由上一个 SSIS IR 预配中的错误引起的。 可以删除名称为 SSISDB 的现有数据库，也可以为 IR 配置新的 SQL 数据库或 SQL 托管实例。
 
 ## <a name="custom-setup-issues"></a>自定义安装问题
 
-自定义安装提供了一个接口，用于在预配或重新配置 SSIS IR 时添加自己的安装步骤。 有关详细信息，请参阅[自定义 Azure-SSIS Integration Runtime 的安装](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)。
+自定义安装提供了一个接口，用于在预配或重新配置 SSIS IR 时添加自己的安装步骤。 有关详细信息，请参阅[自定义 Azure-SSIS Integration Runtime 的安装](./how-to-configure-azure-ssis-ir-custom-setup.md)。
 
 确保容器只包含必需的自定义安装文件，且容器中的所有文件都将下载到 SSIS IR 工作器节点。 建议在本地计算机上测试自定义安装脚本，以便在 SSIS IR 中运行脚本之前解决任何脚本执行问题。
 
@@ -114,8 +114,8 @@ ms.locfileid: "86172020"
 
 ## <a name="virtual-network-configuration"></a>虚拟网络配置
 
-将 SSIS IR 加入 Azure 虚拟网络时，SSIS IR 使用用户订阅下的虚拟网络。 有关详细信息，请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
-成功启动 SSIS IR 后，如果遇到网络连接问题，可以尝试使用[诊断连接工具](ssis-integration-runtime-diagnose-connectivity-faq.md)来自行诊断问题。
+将 SSIS IR 加入 Azure 虚拟网络时，SSIS IR 使用用户订阅下的虚拟网络。 有关详细信息，请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](./join-azure-ssis-integration-runtime-virtual-network.md)。
+成功启动 SSIS IR 后，如果遇到网络连接问题，可以尝试使用[诊断连接工具](ssis-integration-runtime-diagnose-connectivity-faq.md)自行诊断问题。
 出现与虚拟网络相关的问题时，将显示以下错误之一。
 
 ### <a name="invalidvnetconfiguration"></a>InvalidVnetConfiguration
@@ -141,7 +141,7 @@ ms.locfileid: "86172020"
 
 这种错误消息可能与以下情况类似：“未能在 VNet 中预配 Integration Runtime。 如果配置了 DNS 服务器或 NSG 设置，请确保 DNS 服务器可访问，并且 NSG 配置正确。”
 
-在这种情况下，你可能有一个自定义的 DNS 服务器或 NSG 设置配置，这将阻止解析或访问 SSIS IR 所需的 Azure 服务器名称。 有关详细信息，请参阅 [SSIS IR 虚拟网络配置](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 如果仍有问题，请联系 Azure 数据工厂支持团队。
+在这种情况下，你可能有一个自定义的 DNS 服务器或 NSG 设置配置，这将阻止解析或访问 SSIS IR 所需的 Azure 服务器名称。 有关详细信息，请参阅 [SSIS IR 虚拟网络配置](./join-azure-ssis-integration-runtime-virtual-network.md)。 如果仍有问题，请联系 Azure 数据工厂支持团队。
 
 ### <a name="vnetresourcegrouplockedduringupgrade"></a>VNetResourceGroupLockedDuringUpgrade
 
@@ -157,11 +157,11 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
-此错误发生在 IR 运行时，这意味着 IR 已变得不正常。 此错误始终是由 DNS 服务器或 NSG 配置中的更改引起的，该更改阻止 SSIS IR 连接到必要服务。 由于 DNS 服务器和 NSG 的配置由客户控制，因此客户必须自行修复阻止问题。 有关详细信息，请参阅 [SSIS IR 虚拟网络配置](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 如果仍有问题，请联系 Azure 数据工厂支持团队。
+此错误发生在 IR 运行时，这意味着 IR 已变得不正常。 此错误始终是由 DNS 服务器或 NSG 配置中的更改引起的，该更改阻止 SSIS IR 连接到必要服务。 由于 DNS 服务器和 NSG 的配置由客户控制，因此客户必须自行修复阻止问题。 有关详细信息，请参阅 [SSIS IR 虚拟网络配置](./join-azure-ssis-integration-runtime-virtual-network.md)。 如果仍有问题，请联系 Azure 数据工厂支持团队。
 
 ## <a name="static-public-ip-addresses-configuration"></a>静态公共 IP 地址配置
 
-将 Azure-SSIS IR 加入到 Azure 虚拟网络时，还可以为 IR 引入你自己的静态公共 IP 地址，以便 IR 可以访问仅限从特定 IP 地址访问的数据源。 有关详细信息，请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
+将 Azure-SSIS IR 加入到 Azure 虚拟网络时，还可以为 IR 引入你自己的静态公共 IP 地址，以便 IR 可以访问仅限从特定 IP 地址访问的数据源。 有关详细信息，请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](./join-azure-ssis-integration-runtime-virtual-network.md)。
 
 除了以上虚拟网络问题之外，你还可以解决与静态公共 IP 地址相关的问题。 请检查以下错误以获得帮助。
 
@@ -174,7 +174,7 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 | 提供的静态公共 IP 地址已被使用，请为你的 Azure-SSIS Integration Runtime 提供两个未使用的静态公共 IP 地址。 | 你应当选择两个未使用的静态公共 IP 地址，或者删除对指定公共 IP 地址的当前引用，然后重启 Azure-SSIS IR。 |
 | 提供的静态公共 IP 地址没有 DNS 名称，请为你的 Azure-SSIS Integration Runtime 提供两个具有 DNS 名称的静态公共 IP 地址。 | 可以在 Azure 门户中设置公共 IP 地址的 DNS 名称，如下图所示。 具体步骤如下所述：(1) 打开 Azure 门户并转到此公共 IP 地址的资源页；(2) 选择“配置”部分并设置 DNS 名称，然后单击“保存”按钮；(3) 重启你的 Azure-SSIS IR。 |
 | 为 Azure-SSIS Integration Runtime 提供的 VNet 和静态公共 IP 地址必须位于同一位置。 | 根据 Azure 网络的要求，静态公共 IP 地址和虚拟网络应当位于同一位置和订阅中。 请提供两个有效的静态公共 IP 地址，然后重启 Azure-SSIS IR。 |
-| 提供的静态公共 IP 地址是一个基本地址，请为你的 Azure-SSIS Integration Runtime 提供两个标准静态公共 IP 地址。 | 有关帮助信息，请参阅[公共 IP 地址的 SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)。 |
+| 提供的静态公共 IP 地址是一个基本地址，请为你的 Azure-SSIS Integration Runtime 提供两个标准静态公共 IP 地址。 | 有关帮助信息，请参阅[公共 IP 地址的 SKU](../virtual-network/public-ip-addresses.md#sku)。 |
 
 ![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 

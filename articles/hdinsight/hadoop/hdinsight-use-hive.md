@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462269"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540391"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -34,7 +34,7 @@ HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 
 
 使用下表来了解将 Hive 与 HDInsight 配合使用的各种方法：
 
-| **使用此方法**，如果想要... | ...**交互式**查询 | ...**批处理** | ...从此 **客户端操作系统** |
+| **使用此方法** ，如果想要... | ... **交互式** 查询 | ... **批处理** | ...从此 **客户端操作系统** |
 |:--- |:---:|:---:|:--- |:--- |
 | [Visual Studio Code 的 HDInsight 工具](../hdinsight-for-vscode.md) |✔ |✔ | Linux、Unix、Mac OS X 或 Windows |
 | [用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
@@ -64,7 +64,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化程序/反序列化程序 (SerDe)**。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)文档。
+Hive 还支持对复杂或不规则的结构化数据使用自定义 **序列化程序/反序列化程序 (SerDe)** 。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)文档。
 
 有关 Hive 支持的文件格式的详细信息，请参阅[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
@@ -72,14 +72,14 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
 
 使用 Hive 可以创建两种类型的表：
 
-* __内部__：数据存储在 Hive 数据仓库中。 数据仓库位于群集的默认存储中的 `/hive/warehouse/` 上。
+* __内部__ ：数据存储在 Hive 数据仓库中。 数据仓库位于群集的默认存储中的 `/hive/warehouse/` 上。
 
     当下列条件之一成立时，请使用内部表：
 
     * 数据是临时性的。
     * 希望 Hive 管理表和数据的生命周期。
 
-* __外部__：数据存储在数据仓库外部。 数据可以存储在可由群集访问的任何存储中。
+* __外部__ ：数据存储在数据仓库外部。 数据可以存储在可由群集访问的任何存储中。
 
     当下列条件之一成立时，请使用外部表：
 
@@ -88,11 +88,11 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
     * 需要一个自定义位置，例如非默认存储帐户。
     * Hive 之外的程序管理数据格式、位置等。
 
-有关详细信息，请参阅 [Hive 内部和外部表简介](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)博客文章。
+有关详细信息，请参阅 [Hive 内部和外部表简介](/archive/blogs/cindygross/hdinsight-hive-internal-and-external-tables-intro)博客文章。
 
 ## <a name="user-defined-functions-udf"></a>用户定义函数 (UDF)
 
-还可以通过**用户定义函数 (UDF)** 扩展 Hive。 UDF 允许实现 HiveQL 中不容易建模的功能或逻辑。 有关将 UDF 与 Hive 配合使用的示例，请参阅以下文档：
+还可以通过 **用户定义函数 (UDF)** 扩展 Hive。 UDF 允许实现 HiveQL 中不容易建模的功能或逻辑。 有关将 UDF 与 Hive 配合使用的示例，请参阅以下文档：
 
 * [将 Java 用户定义函数与 Apache Hive 配合使用](../hadoop/apache-hadoop-hive-java-udf.md)
 
@@ -100,7 +100,7 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
 
 * [将 C# 用户定义函数与 Apache Hive 配合使用](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [如何将自定义的 Apache Hive 用户定义函数添加到 HDInsight](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
+* [如何将自定义的 Apache Hive 用户定义函数添加到 HDInsight](/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [将日期/时间格式转换为 Apache Hive 时间戳的 Hive 用户定义函数示例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -137,15 +137,15 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 |CREATE EXTERNAL TABLE|在 Hive 中创建一个新的 **外部** 表。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。|
 |ROW FORMAT|让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。|
 |STORED AS TEXTFILE LOCATION|告知 Hive 在目录)  (存储数据 `example/data` ，并将其存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。|
-|SELECT|选择“t4”列中包含值“[ERROR]”的所有行的计数********。 此语句返回的值为 **3**，因为有三行包含此值。|
+|SELECT|选择“t4”列中包含值“[ERROR]”的所有行的计数  。 此语句返回的值为 **3** ，因为有三行包含此值。|
 |INPUT__FILE__NAME LIKE '%.log'|Hive 会尝试对目录中的所有文件应用架构。 在此示例中，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。|
 
 > [!NOTE]  
 > 如果希望通过外部源更新基础数据，应使用外部表。 例如，自动化数据上传过程或 MapReduce 操作。
 >
-> 删除外部表**不会**删除数据，只会删除表定义。
+> 删除外部表 **不会** 删除数据，只会删除表定义。
 
-若要创建**内部**表而非外部表，请使用以下 HiveQL：
+若要创建 **内部** 表而非外部表，请使用以下 HiveQL：
 
 ```hiveql
 CREATE TABLE IF NOT EXISTS errorLogs (
@@ -168,7 +168,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 |---|---|
 |CREATE TABLE IF NOT EXISTS|如果该表不存在，则创建它。 因为不使用 **EXTERNAL** 关键字，所以此语句创建一个内部表。 该表存储在 Hive 数据仓库中，并完全由 Hive 管理。|
 |STORED AS ORC|以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。|
-|INSERT OVERWRITE ...SELECT|从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中************。|
+|INSERT OVERWRITE ...SELECT|从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中  。|
 
 > [!NOTE]  
 > 与外部表不同，删除内部表会同时删除基础数据。
@@ -197,11 +197,11 @@ Azure 数据工厂允许将 HDInsight 用作数据工厂管道的一部分。 �
 
 可以使用 SQL Server Integration Services (SSIS) 来运行 Hive 作业。 Azure Feature Pack for SSIS 提供适用于 HDInsight 上的 Hive 作业的以下组件。
 
-* [Azure HDInsight Hive 任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Azure HDInsight Hive 任务](/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure 订阅连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Azure 订阅连接管理器](/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-有关详细信息，请参阅 [Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis)文档。
+有关详细信息，请参阅 [Azure 功能包](/sql/integration-services/azure-feature-pack-for-integration-services-ssis)文档。
 
 ### <a name="apache-oozie"></a>Apache Oozie
 

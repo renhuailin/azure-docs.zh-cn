@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.date: 12/08/2020
+ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405167"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902079"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Snowflake 中复制和转换数据
 
@@ -36,8 +36,6 @@ ms.locfileid: "91405167"
 
 - 从 Snowflake 复制数据：利用 Snowflake 的 [COPY into [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) 命令实现最佳性能。
 - 将数据复制到 Snowflake 中：利用 Snowflake 的 [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) 命令实现最佳性能。 它支持 Azure 上的 Snowflake。 
-
-使用 Azure Synapse Analytics 工作区时，不支持雪花作为接收器。
 
 ## <a name="get-started"></a>入门
 
@@ -152,8 +150,8 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 | type                         | 复制活动源的类型属性必须设置为 SnowflakeSource。 | 是      |
 | 查询          | 指定要从 Snowflake 读取数据的 SQL 查询。 如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。<br>不支持执行存储过程。 | 否       |
 | exportSettings | 用于从 Snowflake 检索数据的高级设置。 可以配置 COPY into 命令支持的此类设置。在调用相关语句时，数据工厂会传递此类设置。 | 否       |
-| 在 `exportSettings` 下： |  |  |
-| type | 导出命令的类型，设置为 **SnowflakeExportCopyCommand**。 | 是 |
+| ***在 `exportSettings` 下：** _ |  |  |
+| type | 导出命令的类型，设置为“SnowflakeExportCopyCommand”。 | 是 |
 | additionalCopyOptions | 其他复制选项，作为键值对的字典提供。 示例:MAX_FILE_SIZE、OVERWRITE。 有关详细信息，请参阅 [Snowflake 复制选项](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 作为键值对的字典提供给 COPY 命令的其他文件格式选项。 示例:DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 有关详细信息，请参阅 [Snowflake 格式类型选项](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -161,7 +159,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 
 如果接收器数据存储和格式符合此部分所述条件，则可使用复制活动将数据从 Snowflake 直接复制到接收器。 数据工厂将检查设置，如果不符合以下条件，复制活动运行将会失败：
 
-- “接收器链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。
+- “接收器链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。 如果要以以下受支持的格式将数据直接复制到 Azure Data Lake Storage Gen2，则可以使用针对 ADLS Gen2 帐户的 SAS 身份验证创建 Azure Blob 链接服务，以避免使用 [来自雪花的暂存副本](#staged-copy-from-snowflake)。
 
 - 接收器数据格式为“Parquet”、“带分隔符的文本”或“JSON”，其配置如下   ：
 
@@ -175,7 +173,6 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
         - `compression` 可为“无压缩”、 **gzip**、**bzip2** 或 **deflate**。
         - `encodingName` 保留为默认值或设置为 **utf-8**。
         - `filePattern` 在复制活动接收器中保留为默认值或设置为“setOfObjects”。
-
 - 在复制活动源中，`additionalColumns` 未指定。
 - 列映射未指定。
 
@@ -283,8 +280,8 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 | type              | 复制活动接收器的类型属性设置为 SnowflakeSink。 | 是                                           |
 | preCopyScript     | 指定在每次运行中将数据写入到 Snowflake 之前要由复制活动运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
 | importSettings | 用于将数据写入 Snowflake 的高级设置。 可以配置 COPY into 命令支持的此类设置。在调用相关语句时，数据工厂会传递此类设置。 | 否 |
-| 在 `importSettings` 下： |                                                              |  |
-| type | 导入命令的类型，设置为 **SnowflakeImportCopyCommand**。 | 是 |
+| **_在 `importSettings` 下：_* _ |                                                              |  |
+| type | 导入命令的类型，设置为“SnowflakeImportCopyCommand”。 | 是 |
 | additionalCopyOptions | 其他复制选项，作为键值对的字典提供。 示例:ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 有关详细信息，请参阅 [Snowflake 复制选项](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供给 COPY 命令的其他文件格式选项，作为键值对的字典提供。 示例:DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 有关详细信息，请参阅 [Snowflake 格式类型选项](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -292,7 +289,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 如果源数据存储和格式符合此部分所述条件，则可使用复制活动将数据从源直接复制到 Snowflake。 Azure 数据工厂将检查设置，如果不符合以下条件，复制活动运行将会失败：
 
-- “源链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。
+- “源链接服务”是使用“共享访问签名”身份验证的 [Azure Blob 存储](connector-azure-blob-storage.md)  。 如果要以以下受支持的格式直接复制 Azure Data Lake Storage Gen2 的数据，则可以使用针对 ADLS Gen2 帐户的 SAS 身份验证创建 Azure Blob 链接服务，以避免使用  [暂存复制到雪花](#staged-copy-to-snowflake)。
 
 - “源数据格式”为“Parquet”、“带分隔符的文本”或“JSON”，其配置如下   ：
 
@@ -357,7 +354,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 #### <a name="staged-copy-to-snowflake"></a>暂存复制到 Snowflake
 
-如果源数据存储或格式与雪花复制命令不在本机上兼容（如上一部分中所述），请使用临时 Azure Blob 存储实例启用内置暂存复制。 暂存复制功能也能提供更高的吞吐量。 数据工厂会自动转换数据，以满足 Snowflake 的数据格式要求。 然后，它会调用 COPY 命令将数据载入 Snowflake。 最后，它会从 Blob 存储中清理临时数据。 若要详细了解如何通过暂存方式复制数据，请参阅[暂存复制](copy-activity-performance-features.md#staged-copy)。
+如果源数据存储或格式与上一部分所述的 Snowflake COPY 命令并非以本机方式兼容，请通过临时的 Azure Blob 存储实例启用内置暂存复制。 暂存复制功能也能提供更高的吞吐量。 数据工厂会自动转换数据，以满足 Snowflake 的数据格式要求。 然后，它会调用 COPY 命令将数据载入 Snowflake。 最后，它会从 Blob 存储中清理临时数据。 若要详细了解如何通过暂存方式复制数据，请参阅[暂存复制](copy-activity-performance-features.md#staged-copy)。
 
 若要使用此功能，请创建一个引用 Azure 存储帐户作为临时暂存位置的 [Azure Blob 存储链接服务](connector-azure-blob-storage.md#linked-service-properties)。 然后，在复制活动中指定 `enableStaging` 和 `stagingSettings` 属性。
 
@@ -413,8 +410,8 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | String | * 仅限内联数据集的 () *<br>tableName<br>schemaName |
-| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。 | 否 | String | query |
+| 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | 字符串 | *仅限内联数据集的 ()*<br>tableName<br>schemaName |
+| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。 | 否 | 字符串 | query |
 
 #### <a name="snowflake-source-script-examples"></a>雪花源脚本示例
 

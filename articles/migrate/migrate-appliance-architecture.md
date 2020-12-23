@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 设备体系结构
 description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42d4a722be25eec4b3e27012350346018fdba0f3
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322251"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754107"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 设备体系结构
 
@@ -21,7 +24,7 @@ Azure Migrate 设备用于以下应用场景。
 **方案** | **工具** | **用于** 
 --- | --- | ---
 **VMware VM 评估** | Azure Migrate：服务器评估 | 发现 VMware Vm。<br/><br/> 发现计算机应用和依赖项。<br/><br/> 收集计算机元数据和性能元数据并将其发送到 Azure。
-**VMware VM 迁移 (无代理) ** | Azure Migrate：服务器迁移 | 发现 VMware VM<br/><br/>  复制 VMware Vm 和 [无代理迁移](server-migrate-overview.md)。
+**VMware VM 迁移 (无代理)** | Azure Migrate：服务器迁移 | 发现 VMware VM<br/><br/>  复制 VMware Vm 和 [无代理迁移](server-migrate-overview.md)。
 **Hyper-V VM 评估** | Azure Migrate：服务器评估 | 发现 Hyper-v Vm。<br/><br/> 收集计算机元数据和性能元数据并将其发送到 Azure。
 **物理机** |  Azure Migrate：服务器评估 |  发现物理服务器。<br/><br/> 收集计算机元数据和性能元数据并将其发送到 Azure。
 
@@ -29,12 +32,12 @@ Azure Migrate 设备用于以下应用场景。
 
 设备有多个组件。
 
-- **** 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。
-- **** 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。 
+- 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。
+- 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。 
 - **收集器代理**：代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。
-- **** DRA 代理：协调 VM 复制，并协调复制计算机与 Azure 之间的通信。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
-- **** 网关：将复制的数据发送到 Azure。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
-- **** 自动更新服务：更新设备组件（每 24 小时运行一次）。
+- DRA 代理：协调 VM 复制，并协调复制计算机与 Azure 之间的通信。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
+- 网关：将复制的数据发送到 Azure。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
+- 自动更新服务：更新设备组件（每 24 小时运行一次）。
 
 
 
@@ -51,8 +54,8 @@ Azure Migrate 设备用于以下应用场景。
 **操作** | **详细信息** | **权限**
 --- | --- | ---
 **注册源提供程序** | 这些资源提供程序在设备设置过程中所选的订阅中注册： OffAzure、KeyVault。<br/><br/> 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 | 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。
-**创建 Azure AD 应用程序通信** | Azure Migrate 将在设备上运行的代理和在 Azure 上运行的相应服务之间创建一个 Azure Active Directory (Azure AD) 的身份验证和授权 (应用程序。<br/><br/> 此应用没有权限进行 Azure 资源管理器调用，或对任何资源的 RBAC 访问权限。 | 需要 [这些权限](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps) 才能 Azure Migrate 创建应用。
-**创建 Azure AD 应用-密钥保管库** | 仅为 VMware Vm 到 Azure 的无代理迁移创建此应用。<br/><br/> 它以独占方式用于访问在用户订阅中为无代理迁移创建的密钥保管库。<br/><br/> 当从设备启动发现时，它会在客户的租户)  (创建的 Azure 密钥保管库中具有 RBAC 访问权限。 | 需要 [这些权限](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) 才能 Azure Migrate 创建应用。
+**创建 Azure AD 应用程序通信** | Azure Migrate 将在设备上运行的代理和在 Azure 上运行的相应服务之间创建一个 Azure Active Directory (Azure AD) 的身份验证和授权 (应用程序。<br/><br/> 此应用无权对任何资源进行 Azure 资源管理器调用或 Azure RBAC 访问权限。 | 需要 [这些权限](./tutorial-discover-vmware.md#prepare-an-azure-user-account) 才能 Azure Migrate 创建应用。
+**创建 Azure AD 应用-密钥保管库** | 仅为 VMware Vm 到 Azure 的无代理迁移创建此应用。<br/><br/> 它以独占方式用于访问在用户订阅中为无代理迁移创建的密钥保管库。<br/><br/> 当从设备启动发现时，它会在客户的租户)  (创建的 Azure 密钥保管库上提供 Azure RBAC 访问权限。 | 需要 [这些权限](./tutorial-discover-vmware.md#prepare-an-azure-user-account) 才能 Azure Migrate 创建应用。
 
 
 
@@ -85,10 +88,9 @@ Azure Migrate 设备用于以下应用场景。
 
 当设备上运行的 Azure Migrate 代理更新时，设备也会随之升级。 这会自动发生，因为默认情况下在设备上启用了自动更新。 您可以更改此默认设置以手动更新代理。
 
-在注册表中关闭自动更新，方法是将 HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "自动更新" 项设置为 0 (DWORD) 。
+通过将 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "自动更新" 项设置为 0 (DWORD) ，可以关闭注册表中的自动更新。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 [查看](migrate-appliance.md) 设备支持矩阵。
-

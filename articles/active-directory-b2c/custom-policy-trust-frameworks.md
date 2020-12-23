@@ -1,5 +1,5 @@
 ---
-title: 参考 - Azure Active Directory B2C 中的信任框架 | Microsoft Docs
+title: Azure AD B2C 自定义策略概述 |Microsoft Docs
 description: 本主题介绍了 Azure Active Directory B2C 自定义策略和标识体验框架。
 services: active-directory-b2c
 author: msmimart
@@ -7,121 +7,170 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/04/2017
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d29bd05f67d00047499dc256e5e1a82f98693a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388793"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387031"
 ---
-# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>使用 Azure AD B2C 标识体验框架定义信任框架
+# <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C 自定义策略概述
 
-利用标识体验框架的 Azure Active Directory B2C (Azure AD B2C) 自定义策略可以为组织提供集中式服务。 此服务降低了大型社区利益体中联合身份验证的复杂性。 复杂性会降低到单一信任关系和单个元数据交换。
+自定义策略是定义 Azure Active Directory B2C (Azure AD B2C) 租户行为的配置文件。 尽管 [用户流](user-flow-overview.md) 是在 Azure AD B2C 门户中预定义的，可用于最常见的标识任务。 标识开发人员可以完全编辑自定义策略来完成许多不同的任务。
 
-使用 Identity Experience Framework 的 Azure AD B2C 自定义策略使你能够回答以下问题：
+自定义策略是完全可配置的、策略驱动的，它在标准协议格式（例如 OpenID Connect、OAuth、SAML 和一些非标准协议）之间协调实体之间的信任，例如 REST API 的系统间声明交换。 框架创建了用户友好的、带白色标签的体验。
 
-- 必须遵守哪些法律、安全、隐私和数据保护策略？
-- 谁是联系人，成为认可参与者的过程是什么？
-- 谁是认可的标识信息提供者（也称为“声明提供方”），他们发挥哪些作用？
-- 谁是认可的信赖方（还可以询问他们需要什么）？
-- 参与者的“在线”技术互操作性要求是什么？
-- 必须强制实施哪些“运行时”操作规则来交换数字标识信息？
+自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义生成 blokes、与用户交互以及与其他方交互以及业务逻辑。 
 
-为了解答这些问题，使用标识体验框架的 Azure AD B2C 自定义策略利用了信任框架 (TF) 构造。 我们来分析此构造及其作用。
+## <a name="custom-policy-starter-pack"></a>自定义策略新手包
 
-## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>了解信任框架和联合管理的基础
+Azure AD B2C 自定义策略 [初学者包](custom-policy-get-started.md#get-the-starter-pack) 附带了几个预先构建的策略，可让你快速完成。 每个新手包中都有实现所述方案必需的最少数量的技术配置文件和用户旅程：
 
-此信任框架是相关社区中的参与者必须遵守的标识、安全、隐私和数据保护策略的书面规范。
+- **LocalAccounts** - 仅允许使用本地帐户。
+- **SocialAccounts** - 仅允许使用社交（或联合）帐户。
+- **SocialAndLocalAccounts** - 允许使用本地帐户和社交帐户。 我们的大多数示例引用此策略。
+- **SocialAndLocalAccountsWithMFA** - 启用社交、本地和多重身份验证选项。
 
-联合标识为实现 Internet 规模的最终用户标识保证提供了基础。 通过将标识管理委派给第三方，可对多个信赖方重复使用某个最终用户的单一数字标识。
+## <a name="understanding-the-basics"></a>了解基础知识 
 
-标识保证要求标识提供者 (Idp) 和属性提供者 (AtP) 遵守特定的安全、隐私和操作策略与做法。  如果无法执行直接检查，信赖方 (RP) 必须与它们合作的 Idp 和 AtP 发展信任关系。
+### <a name="claims"></a>声明
 
-随着数字标识信息的使用者和提供者数目的增长，继续以成对的方式管理这些信任关系，甚至以成对的方式交换网络连接所需的技术元数据，将变得困难。  联合中心在解决这些问题上只是获得了有限的成功。
+声明可在 Azure AD B2C 策略执行过程中提供数据的临时存储。 它可以存储有关用户的信息，例如名字、姓氏或从用户或其他系统获取的任何其他声明 (声明交换) 。 [声明架构](claimsschema.md)是发出声明的位置。 
 
-### <a name="what-a-trust-framework-specification-defines"></a>信任框架规范定义
-TF 是开放标识交换 (OIX) 信任框架模型的关键，在这种模型中，每个相关社区都受到特定 TF 规范的监管。 此类 TF 规范定义：
+当策略运行时，Azure AD B2C 向内部和外部方发送和接收声明，然后将这些声明的一个子集作为令牌的一部分发送给信赖方应用程序。 通过以下方式使用声明： 
 
-- **相关社区的安全和隐私指标，其定义包括：**
-    - 参与者提供/所需的保证级别 (LOA)；例如，数字标识信息真实性的一组有序置信度评级。
-    - 参与者提供/所需的保护级别 (LOP)；例如，相关社区中参与者处理的数字标识信息受保护程度的一组有序置信度评级。
+- 针对目录用户对象保存、读取或更新声明。
+- 从外部标识提供者收到声明。
+- 使用自定义 REST API 服务发送或接收声明。
+- 在注册或编辑配置文件流期间，会将数据收集为用户的声明。
 
-- **参与者提供/所需的数字标识信息的说明**。
+### <a name="manipulating-your-claims"></a>操作你的声明
 
-- **有关生成和使用数字标识信息的技术策略，因而这些策略也与度量 LOA 和 LOP 有关。这些书面策略通常包括以下策略类别：**
-    - 身份证明策略，例如：*个人身份信息的审查强度如何？*
-    - 安全策略，例如：*信息完整性和保密性的保护强度如何？*
-    - 隐私策略，例如：*用户对个人身份信息 (PII) 拥有哪些控制权？*
-    - 留存性策略，例如：*当提供者停止操作时 PII 的持续性和保护如何？*
+[声明转换](claimstransformations.md)是预定义的函数，可用于将给定声明转换为另一个声明，计算声明或设置声明值。 例如，将项添加到字符串集合，更改字符串的大小写，或者计算数据和时间声明。 声明转换指定转换方法。 
 
-- **有关生成和使用数字标识信息的技术配置文件。这些配置文件包括：**
-    - 为根据指定 LOA 提供数字标识信息界定了接口范围。
-    - 在线互操作性的技术要求。
+### <a name="customize-and-localize-your-ui"></a>自定义和本地化 UI
 
-- **描述社区中的参与者可以履行的各种角色，以及履行这些角色所需的资格。**
+如果希望通过在 web 浏览器中呈现页面来收集用户的信息，请使用 [自断言技术配置文件](self-asserted-technical-profile.md)。 您可以编辑您的自断言技术配置文件，以 [添加声明和自定义用户输入](custom-policy-configure-user-input.md)。
 
-因此，TF 规范控制了在相关社区的以下参与者之间交换标识信息的方式：信赖方、标识提供者、属性提供者和属性验证程序。
+若要自定义自断言技术配置文件的 [用户界面](customize-ui-with-html.md) ，请在 [内容定义](contentdefinitions.md) 元素中使用自定义 HTML 内容指定 URL。 在自断言技术配置文件中，指向此内容定义 ID。
 
-TF 规范是用于相关社区治理的一个或多个参考文档，让相关社区调控社区中数字标识信息的断言和使用。 它是一组书面的策略和过程，目的是在相关社区的成员之间的、用于联机事务的数字标识中建立信任。
+若要自定义特定于语言的字符串，请使用 [本地化](localization.md) 元素。 内容定义可能包含 [本地化](localization.md) 引用，该引用指定要加载的本地化资源的列表。 Azure AD B2C 将用户界面元素与从 URL 加载的 HTML 内容合并，然后向用户显示页面。 
 
-也就是说，TF 规范定义有关为某个社区创建可行联合标识生态系统的规则。
+## <a name="relying-party-policy-overview"></a>信赖方策略概述
 
-目前已针对此类做法带来的优势达成了广泛的共识。 毫无疑问，信任框架规范有助于营造具有可验证安全性、保证和隐私特征的数字标识生态系统，这意味着可跨多个相关社区重复使用。
+如果是信赖方应用程序，或在 SAML 协议中称为服务提供程序，则会调用 [信赖方策略](relyingparty.md) 来执行特定的用户旅程。 信赖方策略指定要执行的用户旅程，以及令牌包含的声明列表。 
 
-出于此原因，使用标识体验框架的 Azure AD B2C 自定义策略利用此规范作为呈现其数据的基础，以便 TF 简化互操作性。
+![显示策略执行流的示意图](./media/custom-policy-trust-frameworks/custom-policy-execution.png)
 
-利用标识体验框架的 Azure AD B2C 自定义策略以人工和计算机可读数据的组合形式来表示 TF 规范。 此模型的某些部分（通常是更侧重于治理的部分）作为已发布的安全性和隐私策略文档以及相关过程（如果有的话）的参考进行介绍。 其他部分详细介绍了配置元数据和运行时规则，这些规则有助于操作自动化。
+所有使用同一策略的信赖方应用程序都接收相同的令牌声明，用户会经历相同的用户旅程。
 
-## <a name="understand-trust-framework-policies"></a>了解信任框架策略
+### <a name="user-journeys"></a>用户旅程
 
-在实现方面，TF 规范包含一组允许完全控制标识行为和体验的策略。  利用标识体验框架的 Azure AD B2C 自定义策略可以让你通过此类可定义和配置的声明性策略编写和创建自己的 TF：
+[用户旅程](userjourneys.md) 可让你使用路径来定义业务逻辑，用户可通过该路径获取应用程序的访问权限。 用户通过用户旅程来检索要显示给应用程序的声明。 用户旅程是根据一系列 [业务流程步骤](userjourneys.md#orchestrationsteps)构建的。 用户必须到达最后一步才能获取令牌。 
 
-- 定义 TF 相关社区的联合标识生态系统的文档参考。 这些参考是 TF 文档的链接。 （预定义的）“运行时”操作规则，或者用于自动化和/或控制声明交换与使用的用户旅程。 这些用户旅程与 LOA（和 LOP）关联。 因此，策略可以包含具有不同 LOA（和 LOP）的用户旅程。
+下面介绍如何将业务流程步骤添加到 [社交和本地帐户初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) 策略中。 下面是已添加的 REST API 调用的示例。
 
-- 相关社区中的标识提供者和属性提供者或声明提供程序、它们支持的技术配置文件，以及相关的（带外）LOA/LOP 认证。
+![自定义用户旅程](media/custom-policy-trust-frameworks/user-journey-flow.png)
 
-- 与属性验证程序或声明提供程序的集成。
 
-- 社区中的信赖方（根据推断）。
+### <a name="orchestration-steps"></a>业务流程步骤
 
-- 用于在参与者之间建立网络通信的元数据。 在信赖方与其他社区参与者之间执行“在线”互操作性协调的事务过程中，将配合技术配置文件使用此元数据。
+业务流程步骤引用实现其预期目的或功能的方法。 此方法称为 [技术配置文件](technicalprofiles.md)。 当用户旅程需要分支以更好地表示业务逻辑时，业务流程步骤引用了 [下级旅程](subjourneys.md)。 Sub 旅程包含自己的一组业务流程步骤。
 
-- 任何协议转换（例如，SAML 2.0、OAuth2、WS-Federation 和 OpenID Connect）。
+用户必须到达用户旅程中的最后一个业务流程步骤，才能获取令牌。 但用户可能不需要经历所有业务流程步骤。 可以根据在业务流程步骤中定义的 [前置条件](userjourneys.md#preconditions) ，有条件地执行业务流程步骤。 
 
-- 身份验证要求。
+业务流程步骤完成后，Azure AD B2C 将输出声明存储在 **声明包** 中。 用户旅程中的任何其他业务流程步骤都可以利用声明包中的声明。
 
-- 多重协调（如果有）。
+下图显示了用户旅程的业务流程步骤如何访问声明袋。
 
-- 所有可用声明的共享架构，以及与相关社区的参与者的映射。
+![Azure AD B2C 用户旅程](media/custom-policy-trust-frameworks/user-journey-diagram.png)
 
-- 用于维持声明交换和使用的所有声明转换以及此上下文中的可能数据最小化。
+### <a name="technical-profile"></a>技术配置文件
 
-- 绑定和加密。
+技术配置文件提供与不同类型的参与方进行通信的接口。 用户旅程通过业务流程步骤将调用技术配置文件结合起来，以定义业务逻辑。
 
-- 声明存储。
+所有类型的技术配置文件都具有相同的概念。 发送输入声明，运行声明转换，并与配置的参与方通信。 完成此过程后，技术配置文件会将输出声明返回给声明包。 有关详细信息，请参阅 [技术配置文件概述](technicalprofiles.md)
 
-### <a name="understand-claims"></a>了解声明
+### <a name="validation-technical-profile"></a>验证技术配置文件
 
-> [!NOTE]
-> 我们将所有可能类型的、可交换的标识信息统称为“声明”：有关最终用户身份验证凭据、标识审查、通信设备、物理位置、个人身份属性等的声明。
->
-> 我们使用术语“声明”而不是“属性”，这是因为在联机事务中，无法直接由信赖方验证这些数据项目。 而是有关事实的断言或声明，信赖方必须为其建立充分的置信度以授予最终用户所请求的事务。
->
-> 使用术语“声明”的另一个原因在于，使用标识体验框架的 Azure AD B2C 自定义策略旨在以一致的方式简化所有类型的数字标识信息的交换，而不考虑是否为用户身份验证或属性检索定义了基本协议。  同样，如果我们不想要区分标识提供者、属性提供者和属性验证程序的具体功能，我们会使用术语“声明提供程序”来统称这些参与者。
+当用户与用户界面进行交互时，可能需要验证收集的数据。 若要与用户交互，必须使用 [自断言技术配置文件](self-asserted-technical-profile.md) 。
 
-因此，声明提供程序控制了信赖方、标识提供者、属性提供者和属性验证程序之间的标识信息交换方式。 它们控制了需要使用哪些标识提供者和属性提供者来完成信赖方的身份验证。 应该将它们视为域特定的语言 (DSL)，即，包含继承、if  语句和多形性的特定应用程序域专用的计算机语言。
+若要验证用户输入，请从自断言技术配置文件中调用 [验证技术配置文件](validation-technical-profile.md) 。 
 
-这些策略构成利用标识体验框架的 Azure AD B2C 自定义策略中 TF 构造的计算机可读部分。 它们包括所有操作详细信息，具体涵盖声明提供程序的元数据和技术配置文件、声明架构定义、声明转换函数以及填充的用户旅程，以便推动操作业务流程和自动化。
+验证技术配置文件是一种用于调用任何非交互式技术配置文件的方法。 在这种情况下，技术配置文件可以返回输出声明或错误消息。 错误消息在屏幕上呈现给用户，允许用户重试。
 
-它们被假定为动态文档  ，因其内容很有可能随着时间的推移而发生变化，其中涉及策略中声明的活动参与者。 此外，成为参与者的条款和条件也有可能会发生更改。
+下图说明了 Azure AD B2C 如何使用验证技术配置文件来验证用户凭据。
 
-当不同的声明提供程序/验证程序加入或离开策略集（社区代表方）时，将信赖方与不断进行的信任和连接重新配置相区分可以大大简化联合的设置和维护。
+![验证技术配置文件示意图](media/custom-policy-trust-frameworks/validation-technical-profile.png)
 
-互操作性是另一个重大难题。 必须集成其他的声明提供程序/验证程序，因为信赖方不太可能支持全部所需的协议。 Azure AD B2C 自定义策略支持行业标准协议，并可在信赖方和属性提供者不支持相同的协议时应用特定的用户旅程来转置请求，因此解决了此问题。
+## <a name="inheritance-model"></a>继承模型
 
-用户旅程包含用于在信赖方与其他参与者之间协调“在线”互操作性的协议配置文件和元数据。 还会向标识信息交换请求/响应消息应用操作运行时规则，强制与 TF 规范中发布的策略相符。 用户旅程的概念是自定义客户体验的关键所在。 它还阐明了系统在协议级别的工作方式。
+每个初学者包都包含以下文件：
 
-在此基础上，信赖方应用程序和门户可以根据其上下文，通过传递特定策略的名称来调用利用标识体验框架的 Azure AD B2C 自定义策略，并准确获取所需的行为和信息交换，而不会出现任何混乱或风险。
+- **基本** 文件：包含大多数定义。 为了帮助进行故障排除和长期维护策略，我们建议对此文件进行极少量的更改。
+- **扩展** 文件：保存租户的独特配置更改。 此策略文件派生自“基本”文件。 使用此文件可以添加新功能或替代现有功能。 例如，使用此文件可与新的标识提供者联合。
+- **信赖方 (RP)** 文件：注重单个任务的文件，由信赖方应用程序（例如 Web、移动或桌面应用程序）直接调用。 每个独特的任务（例如，注册、登录、密码重置或配置文件编辑）都需要有自己的信赖方策略文件。 此策略文件是从扩展文件派生的。
+
+继承模型如下所示：
+
+- 任何级别的子策略可以继承自父策略，并通过添加新元素来扩展父策略。
+- 对于更复杂的方案，你可以添加更多的 inhabitance 级别 (最多5个) 
+- 可以添加更多的信赖方策略。 例如，删除我的帐户，更改电话号码，SAML 信赖方策略等。
+
+下图显示了策略文件与信赖方应用程序之间的关系。
+
+![显示信任框架策略继承模型的示意图](media/custom-policy-trust-frameworks/policies.png)
+
+
+## <a name="guidance-and-best-practices"></a>指南和最佳做法
+
+### <a name="best-practices"></a>最佳做法
+
+在 Azure AD B2C 自定义策略中，你可以将自己的业务逻辑集成，以生成用户需要的服务和扩展功能。 我们有一组最佳实践和建议，可以开始使用。
+
+- 在 **扩展策略** 中创建逻辑，或在 **中继参与方策略** 中创建逻辑。 你可以添加新元素，这将通过引用相同的 ID 覆盖基本策略。 这样一来，你就可以在 Microsoft 发布新的初学者包时，扩展你的项目，并更轻松地升级基本策略。
+- 在 **基本策略** 中，强烈建议避免进行任何更改。  必要时，请在进行更改时发出注释。
+- 重写元素（例如技术配置文件元数据）时，请避免从基本策略复制整个技术配置文件。 相反，只复制元素的必需部分。 有关如何进行更改的示例，请参阅 [禁用电子邮件验证](custom-policy-disable-email-verification.md) 。
+- 若要减少技术配置文件的重复，其中核心功能是共享的，请使用 [技术配置文件包含](technicalprofiles.md#include-technical-profile)。
+- 在登录过程中避免写入 Azure AD 目录，这可能会导致阻止问题。
+- 如果策略具有外部依赖项（例如 REST API 确保它们高度可用）。
+- 为了获得更好的用户体验，请确保自定义 HTML 模板是使用 [联机内容传递](https://docs.microsoft.com/azure/cdn/)进行全局部署的。 Azure 内容分发网络 (CDN) 使你可以减少加载时间、节省带宽和加快响应速度。
+- 如果要对用户旅程做出更改。 将整个用户旅程从基本策略复制到扩展策略。 向已复制的用户旅程提供唯一的用户旅程 ID。 然后在 [信赖方策略](relyingparty.md)中，将 [默认用户旅程](relyingparty.md#defaultuserjourney) 元素更改为指向新用户旅程。
+
+## <a name="troubleshooting"></a>疑难解答
+
+当开发 Azure AD B2C 策略时，您可能会遇到错误或异常，同时执行用户旅程。 可以使用 Application Insights 来调查。
+
+- 将 Application Insights 与 Azure AD B2C 集成以 [诊断异常](troubleshoot-with-application-insights.md)。
+- [VS code 的 Azure AD B2C 扩展](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)可帮助你根据策略名称和时间访问和[可视化日志](https://github.com/azure-ad-b2c/vscode-extension/blob/master/src/help/app-insights.md)。
+- 设置自定义策略时最常见的错误是设置了不正确的 XML 格式。 在上载 XML 文件之前，请使用 [xml 架构验证](troubleshoot-custom-policies.md) 来识别错误。
+
+## <a name="continuous-integration"></a>持续集成
+
+通过使用在 Azure Pipelines 中设置的 CI/CD) 管道 (持续集成和交付功能，你可以在软件传递和代码控制自动化 [中包含 Azure AD B2C 自定义策略](deploy-custom-policies-devops.md) 。 部署到不同的 Azure AD B2C 环境（例如开发、测试和生产环境）时，建议删除手动过程，并使用 Azure Pipelines 执行自动测试。
+
+## <a name="prepare-your-environment"></a>准备环境
+
+Azure AD B2C 自定义策略入门：
+
+1. [创建 Azure AD B2C 租户](tutorial-create-tenant.md)
+1. 使用 Azure 门户[注册 web 应用程序](tutorial-register-applications.md)。 因此，你将能够测试策略。
+1. 添加必要的 [策略密钥](custom-policy-get-started.md#add-signing-and-encryption-keys) 并 [注册标识体验框架应用程序](custom-policy-get-started.md#register-identity-experience-framework-applications)
+1. [获取 Azure AD B2C 策略初学者包](custom-policy-get-started.md#get-the-starter-pack) 并上传到你的租户。 
+1. 上传 starter pack 后， [测试注册或登录策略](custom-policy-get-started.md#test-the-custom-policy)
+1. 建议下载并安装 [Visual Studio Code](https://code.visualstudio.com/) (VS Code) 。 Visual Studio Code 是一种在桌面上运行的轻型但功能强大的源代码编辑器，适用于 Windows、macOS 和 Linux。 通过 VS Code 可以编辑 Azure AD B2C 自定义策略 XML 文件。
+1. 若要快速浏览 Azure AD B2C 自定义策略，建议安装 [Azure AD B2C 扩展 VS Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)
+ 
+## <a name="next-steps"></a>后续步骤
+
+设置并测试 Azure AD B2C 策略后，可以开始自定义策略。 阅读以下文章，了解如何：
+
+- [添加声明并使用自定义策略自定义用户输入](custom-policy-configure-user-input.md) 。 了解如何定义声明，通过自定义一些 starter pack 技术配置文件，将声明添加到用户界面。
+- 使用自定义策略自定义应用程序的[用户界面](customize-ui-with-html.md)。 了解如何创建您自己的 HTML 内容并自定义内容定义。
+- 使用自定义策略本地化应用程序的[用户界面](custom-policy-localization.md)。 了解如何设置受支持语言的列表，并通过添加已本地化的资源元素提供特定于语言的标签。
+- 在策略的开发和测试期间，可以 [禁用电子邮件验证](custom-policy-disable-email-verification.md)。 了解如何覆盖技术配置文件元数据。
+- 使用自定义策略[设置使用 Google 帐户进行登录](identity-provider-google-custom.md)。 了解如何使用 OAuth2 技术配置文件创建新的声明提供程序。 然后自定义用户旅程以包含 Google 登录选项。
+- 若要诊断自定义策略的问题，可以 [Application Insights 收集 Azure Active Directory B2C 日志](troubleshoot-with-application-insights.md)。 了解如何添加新的技术配置文件，以及如何配置中继方策略。

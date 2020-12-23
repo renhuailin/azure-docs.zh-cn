@@ -1,36 +1,37 @@
 ---
-title: '旧 c # 快速入门'
+title: 旧版 C# 快速入门
 titleSuffix: Azure Cognitive Search
-description: '此 c # 快速入门使用版本10客户端库 () 来创建、加载和查询搜索索引。'
+description: 此 C# 快速入门使用版本 10 客户端库 (Microsoft.Azure.Search) 来创建、加载和查询搜索索引。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462082"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701834"
 ---
-# <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入门：使用 v10 客户端库创建搜索索引
+# <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>快速入门：使用旧的 v10 客户端库创建搜索索引
 
-本文是适用于旧版 (的 c # 快速入门版) 客户端库，现已由 Azure.Search.Documents (版本 11) 客户端库所取代。 如果现有的搜索解决方案使用的是 Microsoft Azure，则可以使用本快速入门来了解这些 Api。 
-
-对于新解决方案，建议新的 Azure.Search.Documents 库。 有关简介，请参阅 [快速入门：使用 Azure.Search.Documents 库创建搜索索引](search-get-started-dotnet.md)。
-
-## <a name="about-this-quickstart"></a>关于本快速入门
-
-在 c # 中创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和 [Microsoft azure](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)认知搜索索引创建、加载和查询 Azure 索引。 
-
-本文介绍如何创建应用程序。 你还可以 [下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)。
+本文是适用 [**于旧版 (**](/dotnet/api/overview/azure/search/client10) 的 c # 快速入门版) 客户端库，现已由 [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) (版本 11) 客户端库所取代。
 
 > [!NOTE]
-> 本文中的演示代码使用 Azure 认知搜索第10版 .NET SDK 的同步方法，以便于简单。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
+> 如果现有或即时开发项目，则可以继续使用版本10。 但对于新项目，或若要使用新功能，您应该过渡到 [新库](/dotnet/api/overview/azure/search.documents-readme)。
+
+## <a name="about-this-quickstart"></a>关于此快速入门
+
+使用 C# 创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和 [Microsoft.Azure.Search 客户端库](/dotnet/api/overview/azure/search/client10)创建、加载和查询 Azure 认知搜索索引。 
+
+本文介绍了如何创建该应用程序。 也可以[下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)。
+
+> [!NOTE]
+> 为简单起见，本文中的演示代码使用 Azure 认知搜索版本 10 .NET SDK 的同步方法。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +55,7 @@ ms.locfileid: "89462082"
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
-![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
+![获取 HTTP 终结点和访问密钥](media/search-get-started-rest/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -64,15 +65,15 @@ ms.locfileid: "89462082"
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
 
-[Microsoft Azure. 搜索包](https://www.nuget.org/packages/Microsoft.Azure.Search/)包含分发为 NuGet 包的几个客户端库。
+[Microsoft.Azure.Search 包](https://www.nuget.org/packages/Microsoft.Azure.Search/)由以 NuGet 包形式分发的几个客户端库组成。
 
-对于此项目，请使用 nuget 包的版本 10 `Microsoft.Azure.Search` 和最新 `Microsoft.Extensions.Configuration.Json` nuget 包。
+对于此项目，请使用 `Microsoft.Azure.Search` NuGet 包的版本 10 和 `Microsoft.Extensions.Configuration.Json` NuGet 包的最新版。
 
 1. 在“工具” > “NuGet 包管理器”中，选择“管理解决方案的 NuGet 包...”  。 
 
 1. 单击“浏览”。
 
-1. 搜索 `Microsoft.Azure.Search` 并选择 "版本 10"。
+1. 搜索 `Microsoft.Azure.Search` 并选择版本 10。
 
 1. 单击右侧的“安装”，将该程序集添加到你的项目和解决方案。
 
@@ -99,11 +100,11 @@ ms.locfileid: "89462082"
     }
     ```
 
-1. 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理员 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效值。 如果你的服务终结点为 `https://mydemo.search.windows.net` ，则服务名称将为 " `mydemo` "。
+1. 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理员 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效值。 如果服务终结点是 `https://mydemo.search.windows.net`，服务名称就会是“`mydemo`”。
 
 ### <a name="add-class-method-files-to-your-project"></a>将类“.Method”文件添加到你的项目
 
-若要在控制台中生成有意义的输出，需要执行此步骤。 将结果打印到控制台窗口时，必须以字符串形式返回 Hotel 对象的各个字段。 此步骤实现 [ToString()](/dotnet/api/system.object.tostring?view=netframework-4.8) 来执行此任务，方法是将所需的代码复制到两个新文件中。
+若要在控制台中生成有意义的输出，需要执行此步骤。 将结果打印到控制台窗口时，必须以字符串形式返回 Hotel 对象的各个字段。 此步骤实现 [ToString()](/dotnet/api/system.object.tostring) 来执行此任务，方法是将所需的代码复制到两个新文件中。
 
 1. 将两个空的类定义添加到你的项目：Address.Methods.cs、Hotel.Methods.cs
 
@@ -198,15 +199,15 @@ ms.locfileid: "89462082"
     该字段的特性决定字段在应用程序中的使用方式。 例如，`IsSearchable` 属性必须分配给每个应包含在全文搜索中的字段。 
     
     > [!NOTE]
-    > 在 .NET SDK 中，必须显式将字段属性化为 [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) 和 [`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet)。 此行为与 REST API 相反，后者基于数据类型隐式启用属性（例如，简单的字符串字段是自动可搜索的）。
+    > 在 .NET SDK 中，必须显式将字段属性化为 [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable)、[`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable)、[`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable) 和 [`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable)。 此行为与 REST API 相反，后者基于数据类型隐式启用属性（例如，简单的字符串字段是自动可搜索的）。
 
     类型为 `string` 的索引中必须恰好有一个字段为“密钥”字段，用于唯一地标识每个文档。 在此架构中，密钥为 `HotelId`。
 
-    在此索引中，“说明”字段使用可选的 [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) 属性，该属性在需要替代默认标准 Lucene 分析器时指定。 `description_fr` 字段使用法语 Lucene 分析器 ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet))，因为该字段存储法语文本。 `description` 使用可选的 Microsoft 语言分析器 ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet))。
+    在此索引中，“说明”字段使用可选的 [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) 属性，该属性在需要替代默认标准 Lucene 分析器时指定。 `description_fr` 字段使用法语 Lucene 分析器 ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene))，因为该字段存储法语文本。 `description` 使用可选的 Microsoft 语言分析器 ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft))。
 
-1. 在 Program.cs 中，使用存储在应用程序配置文件 (appsettings.json) 中的值，创建 [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 类的实例，以连接到服务。 
+1. 在 Program.cs 中，使用存储在应用程序配置文件 (appsettings.json) 中的值，创建 [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) 类的实例，以连接到服务。 
 
-   `SearchServiceClient` 具有 [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) 属性，提供创建、列出、更新或删除 Azure 认知搜索索引所需的所有方法。 
+   `SearchServiceClient` 具有 [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes) 属性，提供创建、列出、更新或删除 Azure 认知搜索索引所需的所有方法。 
 
     ```csharp
     using System;
@@ -306,7 +307,7 @@ ms.locfileid: "89462082"
 
 在 Azure 认知搜索中，文档这一数据结构既是索引输入，也是查询输出。 文档输入从外部数据源获取，可能是数据库中的行、Blob 存储中的 blob 或磁盘上的 JSON 文档。 在此示例中，我们采用了快捷方式，并在代码本身中嵌入了四个酒店的 JSON 文档。 
 
-上传文档时，必须使用 [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 对象。 `IndexBatch` 包含 [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 对象的集合，其中每个对象均包含一个文档和一个属性，该属性用于指示 Azure 认知搜索要执行什么操作（[上传、合并、删除和 mergeOrUpload](search-what-is-data-import.md#indexing-actions)）。
+上传文档时，必须使用 [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch) 对象。 `IndexBatch` 包含 [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction) 对象的集合，其中每个对象均包含一个文档和一个属性，该属性用于指示 Azure 认知搜索要执行什么操作（[上传、合并、删除和 mergeOrUpload](search-what-is-data-import.md#indexing-actions)）。
 
 1. 在 Program.cs 中，创建文档和索引操作的数组，然后将该数组传递给 `IndexBatch`。 以下文档符合酒店和地址类定义的 hotel-quickstart 索引。
 
@@ -428,7 +429,7 @@ ms.locfileid: "89462082"
     }
     ```
 
-    初始化 `IndexBatch` 对象后，即可通过对 [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) 对象调用 [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)，将其发送到索引。 `Documents` 是 `SearchIndexClient` 的属性，后者提供在索引中添加、修改、删除或查询文档的方法。
+    初始化 `IndexBatch` 对象后，即可通过对 [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient) 对象调用 [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)，将其发送到索引。 `Documents` 是 `SearchIndexClient` 的属性，后者提供在索引中添加、修改、删除或查询文档的方法。
 
     `Index` 方法的调用周围的 `try`/`catch` 捕获索引失败，如果服务负载过大，可能发生索引失败。 在生产代码中，可以延迟已失败的文档索引编制并重试，也可以像示例那样记录并继续运行，还能以满足应用程序数据一致性要求的其他方式进行处理。
 
@@ -446,16 +447,15 @@ ms.locfileid: "89462082"
 
     如果成功构建项目，则会打开控制台窗口，在其中写入状态消息，这次是有关上传文档的消息。 在 Azure 门户的搜索服务“概述”页面中，hotels-quickstart 索引现在应该具有 4 个文档。
 
-有关文档处理的详细信息，请参阅[“.NET SDK 如何处理文档”](search-howto-dotnet-sdk.md#how-dotnet-handles-documents)。
+有关文档处理的详细信息，请参阅[“.NET SDK 如何处理文档”](search-howto-dotnet-sdk-v10.md#how-dotnet-handles-documents)。
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
 对第一个文档编制索引后，可立即获取查询结果，但索引的实际测试应等到对所有文档编制索引后进行。 
 
-此部分添加了两个功能：查询逻辑和结果。 对于查询，请使用 [`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
-) 方法。 此方法采用搜索文本以及其他[参数](/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet)。 
+此部分添加了两个功能：查询逻辑和结果。 对于查询，请使用 [`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search) 方法。 此方法采用搜索文本以及其他[参数](/dotnet/api/microsoft.azure.search.models.searchparameters)。 
 
-[`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) 类表示结果。
+[`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) 类表示结果。
 
 
 1. 在 Program.cs 中，创建 WriteDocuments 方法，该方法用于将搜索结果输出到控制台。

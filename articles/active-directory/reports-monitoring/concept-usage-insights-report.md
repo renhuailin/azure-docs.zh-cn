@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74008269"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122735"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的使用情况和见解报告
 
@@ -42,10 +42,10 @@ ms.locfileid: "74008269"
 ## <a name="access-the-usage-and-insights-report"></a>访问使用情况和见解报告
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 选择正确的目录，然后选择 " **Azure Active Directory** "，然后选择 " **企业应用程序**"。
+2. 选择正确的目录，然后选择 " **Azure Active Directory** "，然后选择 " **企业应用程序** "。
 3. 从 " **活动** " 部分中，选择 " **使用情况 & insights** " 以打开报表。 
 
-![使用情况和见解报表](./media/concept-usage-insights-report/main-menu.png)
+![屏幕截图显示在 "活动" 部分中选择 & insights 的使用情况。](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>使用报表
@@ -58,7 +58,7 @@ ms.locfileid: "74008269"
 
 当你在 "应用程序使用情况" 图中选择一天时，将获取该应用程序的登录活动的详细列表。  
 
-![使用情况和见解报表](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![屏幕截图显示应用程序活动的使用情况 & 见解，你可以在其中选择范围并查看不同应用的登录活动。](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>后续步骤
 

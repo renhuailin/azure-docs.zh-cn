@@ -3,17 +3,17 @@ title: Azure 存储代码示例 | Microsoft 文档
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 .NET、Java、Python、Node.js、Azure CLI 和 C++ 存储客户端库发现 Blob、队列、表和文件的入门示例。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/06/2019
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: edf30d628a73c879ce81f68bda7cd2d7daa6cde3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de587483f5dc15b17fa32e044b569ef9d7f007f7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503644"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792950"
 ---
 # <a name="azure-storage-samples"></a>Azure 存储示例
 
@@ -49,29 +49,29 @@ ms.locfileid: "87503644"
 
 ## <a name="c-samples"></a>C ++ 示例
 
-若要浏览 C++ 示例，请从 NuGet 下载 [C++ 存储客户端库](https://www.nuget.org/packages/wastorage/)。
+若要浏览 C++ 示例，请从 GitHub 获取[用于 C++ 的 Azure 存储客户端库](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)。
 
-* [Blob 入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
-* [表使用入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
-* [队列使用入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
+* [Azure blob 入门](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-blobs/sample/blob_getting_started.cpp)
+* [Azure Data Lake 入门](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-datalake/sample/datalake_getting_started.cpp)
+* [Azure 文件存储入门](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-shares/sample/file_share_getting_started.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
 若要浏览 Azure CLI 示例，请首先[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 * [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)
-* [使用 Azure CLI 的 Azure 存储示例](/azure/storage/blobs/storage-samples-blobs-cli)
+* [使用 Azure CLI 的 Azure 存储示例](../blobs/storage-samples-blobs-cli.md)
 * [有关将 Azure CLI 用于 Azure 存储的热门文章](/cli/azure/popular-articles-using-the-azure-cli#storage)
 
 ## <a name="api-reference-and-source-code"></a>API 参考和源代码
 
 | 语言 | API 参考 | 源代码 |
 |----------|---------------|-------------|
-| .NET | [.NET 客户端库参考](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [.NET 存储客户端库的源代码](https://github.com/Azure/azure-storage-net) |
-| Java | [Java 客户端库参考](https://docs.microsoft.com/java/api/overview/azure/storage) | [Java 存储客户端库的源代码](https://github.com/azure/azure-storage-java) |
+| .NET | [.NET 客户端库参考](/dotnet/api/overview/azure/storage) | [.NET 存储客户端库的源代码](https://github.com/Azure/azure-storage-net) |
+| Java | [Java 客户端库参考](/java/api/overview/azure/storage) | [Java 存储客户端库的源代码](https://github.com/azure/azure-storage-java) |
 | Python | [Python 客户端库参考](https://azure-storage.readthedocs.io/) | [Python 存储客户端库的源代码](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Node.js 客户端库参考](https://azure.github.io/azure-storage-node) | [Node.js 存储客户端库的源代码](https://github.com/Azure/azure-storage-node) |
-| C++ | [C++ 客户端库参考](https://azure.github.io/azure-storage-cpp/) | [C++ 存储客户端库的源代码](https://github.com/Azure/azure-storage-cpp)|
+| C++ | [C++ 客户端库参考](https://azure.github.io/azure-sdk-for-cpp/) | [C++ 存储客户端库的源代码](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)|
 | Azure CLI | [Azure CLI 库参考](/cli/azure/storage) | [Azure CLI 存储客户端库的源代码](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
 
 ## <a name="next-steps"></a>后续步骤
@@ -82,4 +82,5 @@ ms.locfileid: "87503644"
 * [使用 Java 的 Azure 存储示例](storage-samples-java.md)
 * [使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
 * [使用 Python 的 Azure 存储示例](storage-samples-python.md)
-* [使用 Azure CLI 的 Azure 存储示例](/azure/storage/blobs/storage-samples-blobs-cli)
+* [使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
+* [使用 Azure CLI 的 Azure 存储示例](../blobs/storage-samples-blobs-cli.md)

@@ -1,230 +1,294 @@
 ---
-title: 使用 Azure PowerShell 创建 Azure 专用终结点 |Microsoft Docs
-description: 了解 Azure 专用链接
+title: 快速入门 - 使用 Azure PowerShell 创建 Azure 专用终结点
+description: 借助本快速入门了解如何使用 Azure PowerShell 创建专用终结点。
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
-ms.topic: how-to
-ms.date: 09/16/2019
+ms.topic: quickstart
+ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 7add424c23e430a8ca5059d45acd037fff8836ad
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737370"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368655"
 ---
-# <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
-专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
+# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用终结点
 
-在本快速入门中，你将了解如何在 Azure 虚拟网络上创建虚拟机，以及如何使用 Azure PowerShell 创建具有 Azure 专用终结点的逻辑 SQL server。 然后，可以从该 VM 安全访问 SQL 数据库。
+使用专用终结点安全连接到 Azure Web 应用以开始使用 Azure 专用链接。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+在本快速入门中，你将创建 Azure Web 应用的专用终结点，并部署虚拟机以测试专用连接。  
+
+可以为不同类型的 Azure 服务（例如 Azure SQL 和 Azure 存储）创建专用终结点。
+
+## <a name="prerequisites"></a>必备条件
+
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 订阅中部署了 PremiumV2 层或更高版本应用服务计划的 Azure Web 应用。  
+    * 有关详细信息及示例，请参阅[快速入门：在 Azure 中创建 ASP.NET Core Web 应用](../app-service/quickstart-dotnetcore.md)。 
+    * 有关创建 Web 应用和终结点的详细教程，请参阅[教程：使用 Azure 专用终结点连接到 Web 应用](tutorial-private-endpoint-webapp-portal.md)。
+
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-创建资源之前，必须先创建一个资源组，该资源组使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 托管虚拟网络和专用终结点。 以下示例在 " *WestUS* " 位置创建名为 " *myResourceGroup* " 的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-```azurepowershell
-
-New-AzResourceGroup `
-  -ResourceGroupName myResourceGroup `
-  -Location westcentralus
-```
-
-## <a name="create-a-virtual-network"></a>创建虚拟网络
-在本部分，请创建虚拟网络和子网。 接下来，请将子网关联到虚拟网络。
-
-### <a name="create-a-virtual-network"></a>创建虚拟网络
-
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 为专用终结点创建虚拟网络。 以下示例创建名为 *MyVirtualNetwork* 的虚拟网络：
- 
-```azurepowershell
-
-$virtualNetwork = New-AzVirtualNetwork `
-  -ResourceGroupName myResourceGroup `
-  -Location westcentralus `
-  -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/16
-```
-
-### <a name="add-a-subnet"></a>添加子网
-
-Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“mySubnet”** 的子网配置。 以下示例创建一个名为 *mySubnet* 的子网，并将专用终结点网络策略标志设置为“禁用”****。
-
-```azurepowershell
-$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
-  -Name mySubnet `
-  -AddressPrefix 10.0.0.0/24 `
-  -PrivateEndpointNetworkPoliciesFlag "Disabled" `
-  -VirtualNetwork $virtualNetwork
-```
-
-> [!CAUTION]
-> `PrivateEndpointNetworkPoliciesFlag` 参数很容易与另一可用标志（即 `PrivateLinkServiceNetworkPoliciesFlag`）混淆，因为它们都是长词，外观也类似。  请确保使用正确的，即 `PrivateEndpointNetworkPoliciesFlag`。
-
-### <a name="associate-the-subnet-to-the-virtual-network"></a>将子网关联到虚拟网络
-
-可以使用 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) 将子网配置写入虚拟网络。 此命令创建子网：
-
-```azurepowershell
-$virtualNetwork | Set-AzVirtualNetwork
-```
-
-## <a name="create-a-virtual-machine"></a>创建虚拟机
-
-使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在虚拟网络中创建 VM。 运行下一个命令时，系统会提示输入凭据。 为 VM 输入用户名和密码：
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组：
 
 ```azurepowershell-interactive
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVm" `
-    -Location "westcentralus" `
-    -VirtualNetworkName "MyVirtualNetwork" `
-    -SubnetName "mySubnet" `
-    -SecurityGroupName "myNetworkSecurityGroup" `
-    -PublicIpAddressName "myPublicIpAddress" `
-    -OpenPorts 80,3389 `
-    -AsJob  
+New-AzResourceGroup -Name 'CreatePrivateEndpointQS-rg' -Location 'eastus'
 ```
 
-`-AsJob` 选项在后台创建 VM。 可以继续执行下一步。
+## <a name="create-a-virtual-network-and-bastion-host"></a>创建虚拟网络和堡垒主机
 
-Azure 开始在后台创建 VM 时，将得到如下结果：
+在本部分中，你将创建虚拟网络、子网和堡垒主机。 
 
-```powershell
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
-```
+堡垒主机将用于安全地连接到虚拟机，以测试专用终结点。
 
-## <a name="create-a-logical-sql-server"></a>创建逻辑 SQL 服务器 
+使用以下命令创建虚拟网络和堡垒主机：
 
-使用 AzSqlServer 命令创建逻辑 SQL 服务器。 请记住，你的服务器名称必须在 Azure 中是唯一的，因此请将括号中的占位符值替换为你自己的唯一值：
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
+* [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
+* [New-AzBastion](/powershell/module/az.network/new-azbastion)
 
 ```azurepowershell-interactive
-$adminSqlLogin = "SqlAdmin"
-$password = "ChangeYourAdminPassword1"
+## Create backend subnet config. ##
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name myBackendSubnet -AddressPrefix 10.0.0.0/24
 
-$server = New-AzSqlServer -ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver" `
-    -Location "WestCentralUS" `
-    -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminSqlLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+## Create Azure Bastion subnet. ##
+$bastsubnetConfig = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.1.0/24
 
-New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver"`
-    -DatabaseName "myda"`
-    -RequestedServiceObjectiveName "S0" `
-    -SampleName "AdventureWorksLT"
+## Create the virtual network. ##
+$parameters1 = @{
+    Name = 'MyVNet'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    AddressPrefix = '10.0.0.0/16'
+    Subnet = $subnetConfig, $bastsubnetConfig
+}
+$vnet = New-AzVirtualNetwork @parameters1
+
+## Create public IP address for bastion host. ##
+$parameters2 = @{
+    Name = 'myBastionIP'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'Static'
+}
+$publicip = New-AzPublicIpAddress @parameters2
+
+## Create bastion host ##
+$parameters3 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'myBastion'
+    PublicIpAddress = $publicip
+    VirtualNetwork = $vnet
+}
+New-AzBastion @parameters3
 ```
 
-## <a name="create-a-private-endpoint"></a>创建专用终结点
+部署 Azure Bastion 主机需要几分钟时间。
 
-具有[AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)的虚拟网络中的服务器的专用终结点： 
+## <a name="create-test-virtual-machine"></a>创建测试虚拟机
 
-```azurepowershell
+在本部分中，你将创建将用来测试专用终结点的虚拟机。
 
-$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnection" `
-  -PrivateLinkServiceId $server.ResourceId `
-  -GroupId "sqlServer" 
- 
-$virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  "myResourceGroup" -Name "MyVirtualNetwork"  
- 
-$subnet = $virtualNetwork `
-  | Select -ExpandProperty subnets `
-  | Where-Object  {$_.Name -eq 'mysubnet'}  
- 
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
-  -Name "myPrivateEndpoint" `
-  -Location "westcentralus" `
-  -Subnet  $subnet `
-  -PrivateLinkServiceConnection $privateEndpointConnection
-``` 
+使用以下内容创建虚拟机：
 
-## <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域 
-创建 SQL 数据库域的专用 DNS 区域，创建与虚拟网络关联的链接，并创建 DNS 区域组以将专用终结点与专用 DNS 区域相关联。
-
-```azurepowershell
-
-$zone = New-AzPrivateDnsZone -ResourceGroupName "myResourceGroup" `
-  -Name "privatelink.database.windows.net" 
- 
-$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup" `
-  -ZoneName "privatelink.database.windows.net"`
-  -Name "mylink" `
-  -VirtualNetworkId $virtualNetwork.Id  
-
-$config = New-AzPrivateDnsZoneConfig -Name "privatelink.database.windows.net" -PrivateDnsZoneId $zone.ResourceId
-
-$privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceGroup" `
- -PrivateEndpointName "myPrivateEndpoint" -name "MyZoneGroup" -PrivateDnsZoneConfig $config
-``` 
-  
-## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
-
-使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回 myVM** VM 的公共 IP 地址：
-
-```azurepowershell
-Get-AzPublicIpAddress `
-  -Name myPublicIpAddress `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress 
-```  
-在本地计算机上打开命令提示符。 运行 mstsc 命令。 将 <publicIpAddress> 替换为上一步骤中返回的公共 IP 地址： 
+  * [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)
+  * [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 
+  * [New-AzVM](/powershell/module/az.compute/new-azvm)
+  * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+  * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
+  * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
+  * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
 
-> [!NOTE]
-> 如果在本地计算机上已从 PowerShell 提示符运行了这些命令，并且使用的是 Az PowerShell 模块 1.0 版本或更高版本，那么可以继续使用该接口。
-```
-mstsc /v:<publicIpAddress>
+```azurepowershell-interactive
+## Set credentials for server admin and password. ##
+$cred = Get-Credential
+
+## Command to get virtual network configuration. ##
+$vnet = Get-AzVirtualNetwork -Name myVNet -ResourceGroupName CreatePrivateEndpointQS-rg
+
+## Command to create network interface for VM ##
+$parameters1 = @{
+    Name = 'myNicVM'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+}
+$nicVM = New-AzNetworkInterface @parameters1
+
+## Create a virtual machine configuration.##
+$parameters2 = @{
+    VMName = 'myVM'
+    VMSize = 'Standard_DS1_v2'
+}
+$parameters3 = @{
+    ComputerName = 'myVM'
+    Credential = $cred
+}
+$parameters4 = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'
+}
+$vmConfig = 
+New-AzVMConfig @parameters2 | Set-AzVMOperatingSystem -Windows @parameters3 | Set-AzVMSourceImage @parameters4 | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine ##
+New-AzVM -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Location 'eastus' -VM $vmConfig
 ```
 
-1. 出现提示时，选择“连接”****。 
-2. 输入在创建 VM 时指定的用户名和密码。
-  > [!NOTE]
-  > 可能需要选择“更多选择”>“使用其他帐户”，以指定在创建 VM 时输入的凭据。 
-  
-3. 选择“确定” ****。 
-4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”**** ****。 
+## <a name="create-private-endpoint"></a>创建专用终结点
 
-## <a name="access-sql-database-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库
+在本部分中，你将使用以下命令创建专用终结点和连接：
 
-1. 在 myVM 的远程桌面中，打开 PowerShell。
-2. 输入 `nslookup myserver.database.windows.net`。 切记将 `myserver` 替换为你的 SQL Server 名称。
+* [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)
+* [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
 
-    将收到类似于下面的消息：
-    
-    ```azurepowershell
+```azurepowershell-interactive
+## Place web app into variable. Replace <webapp-resource-group-name> with the resource group of your webapp. ##
+## Replace <your-webapp-name> with your webapp name ##
+$webapp = Get-AzWebApp -ResourceGroupName <webapp-resource-group-name> -Name <your-webapp-name>
+
+## Create private endpoint connection. ##
+$parameters1 = @{
+    Name = 'myConnection'
+    PrivateLinkServiceId = $webapp.ID
+    GroupID = 'sites'
+}
+$privateEndpointConnection = New-AzPrivateLinkServiceConnection @parameters1
+
+## Place virtual network into variable. ##
+$vnet = Get-AzVirtualNetwork -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Name 'myVNet'
+
+## Disable private endpoint network policy ##
+$vnet.Subnets[0].PrivateEndpointNetworkPolicies = "Disabled"
+$vnet | Set-AzVirtualNetwork
+
+## Create private endpoint
+$parameters2 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'myPrivateEndpoint'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    PrivateLinkServiceConnection = $privateEndpointConnection
+}
+New-AzPrivateEndpoint @parameters2
+```
+## <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域
+
+在本部分中，你将使用以下命令创建和配置专用 DNS 区域：
+
+* [New-AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
+* [New-AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
+* [New-AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig)
+* [New-AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup)
+
+```azurepowershell-interactive
+## Place virtual network into variable. ##
+$vnet = Get-AzVirtualNetwork -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Name 'myVNet'
+
+## Create private dns zone. ##
+$parameters1 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'privatelink.azurewebsites.net'
+}
+$zone = New-AzPrivateDnsZone @parameters1
+
+## Create dns network link. ##
+$parameters2 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    ZoneName = 'privatelink.azurewebsites.net'
+    Name = 'myLink'
+    VirtualNetworkId = $vnet.Id
+}
+$link = New-AzPrivateDnsVirtualNetworkLink @parameters2
+
+## Create DNS configuration ##
+$parameters3 = @{
+    Name = 'privatelink.azurewebsites.net'
+    PrivateDnsZoneId = $zone.ResourceId
+}
+$config = New-AzPrivateDnsZoneConfig @parameters3
+
+## Create DNS zone group. ##
+$parameters4 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    PrivateEndpointName = 'myPrivateEndpoint'
+    Name = 'myZoneGroup'
+    PrivateDnsZoneConfig = $config
+}
+New-AzPrivateDnsZoneGroup @parameters4
+```
+
+## <a name="test-connectivity-to-private-endpoint"></a>测试到专用终结点的连接
+
+本部分将使用在上一步骤中创建的虚拟机通过专用终结点连接到 SQL 服务器。
+
+1. 登录到 [Azure 门户](https://portal.azure.com) 
+ 
+2. 在左侧导航窗格中选择“资源组”。
+
+3. 选择“CreatePrivateEndpointQS-rg”。
+
+4. 选择“myVM”。
+
+5. 在 **myVM** 的“概述”页上，选择“连接”，然后选择“堡垒”。
+
+6. 选择蓝色的“使用堡垒”按钮。
+
+7. 输入在创建虚拟机期间输入的用户名和密码。
+
+8. 连接后，在服务器上打开 Windows PowerShell。
+
+9. 输入 `nslookup <your-webapp-name>.azurewebsites.net`。 将 \<your-webapp-name> 替换为在之前的步骤中创建的 Web 应用的名称。  你将收到类似于以下所示内容的消息：
+
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
-    Address:  10.0.0.5
-    Aliases:   myserver.database.windows.net
-    ```
-    
-3. 安装 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)。
-4. 在“连接服务器”中，输入或选择以下信息****：
 
-    | 设置 | Value |
-    | --- | --- |
-    | 服务器类型 | 数据库引擎 |
-    | 服务器名称 | myserver.database.windows.net |
-    | 用户名 | 输入在创建过程中提供的用户名 |
-    | 密码 | 输入在创建过程中提供的密码 |
-    | 记住密码 | 是 |
-    
-5. 选择“连接” ****。
-6. 浏览左侧菜单中的“数据库”****。 
-7. （可选）创建或查询 mydatabase 中的信息。
-8. 关闭与 *myVM* 的远程桌面连接。 
+    Non-authoritative answer:
+    Name:    mywebapp8675.privatelink.azurewebsites.net
+    Address:  10.0.0.5
+    Aliases:  mywebapp8675.azurewebsites.net
+    ```
+
+    将为 Web 应用名称返回专用 IP 地址 10.0.0.5。  此地址位于你之前创建的虚拟网络的子网中。
+
+10. 在到 myVM 的堡垒连接中，打开 Internet Explorer。
+
+11. 输入 Web 应用的 URL： https://\<your-webapp-name>.azurewebsites.net。
+
+12. 如果你的应用程序尚未部署，你将收到默认 Web 应用页：
+
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="默认 Web 应用页面。" border="true":::
+
+13. 关闭到 **myVM** 的连接。
 
 ## <a name="clean-up-resources"></a>清理资源 
-使用完专用终结点、SQL 数据库和 VM 后，请使用[AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除该资源组及其包含的所有资源：
+用完专用终结点和 VM 后，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和组内所有资源：
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name CreatePrivateEndpointQS-rg -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解 [Azure 专用链接](private-link-overview.md)
+
+在本快速入门中，我们创建了：
+
+* 虚拟网络和堡垒主机。
+* 虚拟机。
+* Azure Web 应用的专用终结点。
+
+你使用虚拟机通过专用终结点安全测试了到 Web 应用的连接。
+
+有关支持专用终结点的服务的详细信息，请参阅：
+> [!div class="nextstepaction"]
+> [专用链接可用性](private-link-overview.md#availability)

@@ -7,18 +7,19 @@ author: sasarava
 manager: hrushib
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/21/2020
 ms.author: sasarava
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18e97aea5c556c4f8e6ff1fb1b91a82da6de1b59
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6d9ae1f7b8741da1116c6591ee672e4073cfc5af
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749356"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955542"
 ---
 # <a name="compatible-operating-systems-for-hana-large-instances"></a>适用于 HANA 大型实例的兼容操作系统
 
@@ -39,14 +40,15 @@ ms.locfileid: "88749356"
   | SLES 12 SP4      | 可用    | S224oo、S224om、S224ooo、S224oom |
   
 ## <a name="hana-large-instance-type-ii"></a>HANA 大型实例示例 II     
-  |  操作系统       | 可用性        | SKU                                                              |
-  |-------------------------|---------------------|-------------------------------------------------------------------|
-  | SLES 12 SP2             | 不再提供 | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m |
-  | SLES 12 SP3             | 可用           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m |
-  | SLES 12 SP4             | 可用           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m |
+  |  操作系统       | 可用性        | SKU                                                                     |
+  |-------------------------|---------------------|--------------------------------------------------------------------------|
+  | SLES 12 SP2             | 不再提供 | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m        |
+  | SLES 12 SP3             | 可用           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m        |
+  | SLES 12 SP4             | 可用           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m        |
   | SLES 12 SP5             | 可用           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S896m、S960m |
   | SLES 15 SP1             | 可用           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S896m、S960m |
-  
+  | RHEL 7.6                | 可用           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S896m、S960m |
+
 ## <a name="related-documents"></a>相关文档
 
 - 了解有关[可用 SKU](hana-available-skus.md) 的更多信息

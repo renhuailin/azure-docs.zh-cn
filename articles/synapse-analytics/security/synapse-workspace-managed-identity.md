@@ -5,17 +5,17 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3c2b2ce5bd9af60d6d1fd4ac066681ee8473521
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249444"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461295"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse 工作区托管标识（预览版）
+# <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse 工作区托管标识
 
 本文介绍 Azure Synapse 工作区中的托管标识。
 
@@ -32,7 +32,7 @@ Azure 资源托管标识是以前称为托管服务标识 (MSI) 的服务的新�
 >[!NOTE]
 >在此文档的剩余部分中，我们将此工作区托管标识称为托管标识。
 
-Azure Synapse 使用托管标识来协调管道。 托管标识生命周期直接绑定到 Azure Synapse 工作区。 如果删除 Azure Synapse 工作区，则还会清除托管标识。
+Azure Synapse 使用托管标识来集成管道。 托管标识生命周期直接绑定到 Azure Synapse 工作区。 如果删除 Azure Synapse 工作区，则还会清除托管标识。
 
 工作区托管标识需要在管道中执行操作的权限。 授予权限时，可以使用对象 ID 或 Azure Synapse 工作区名称来查找托管标识。
 

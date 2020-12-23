@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 48a2c00f7ff487def13e9872c4f43a3ca36809ba
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 5202145af6f60f34bdce57aa94f4fec92a8b227f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444636"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677269"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的 Azure 资源管理器模板
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "91444636"
 | [使用 SQL 数据库的 Azure Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | 此示例在“基本”服务级别创建免费的 Azure Web 应用和 Azure SQL 数据库中的数据库。|
 | [使用 SQL 数据库的 Azure Web 应用和 Redis 缓存](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | 此模板在同一资源组中创建 Web 应用、Redis 缓存和数据库，并在适用于数据库和 Redis 缓存的 Web 应用中创建两个连接字符串。|
 | [使用 ADF V2 从 Blob 存储导入数据](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | 此 Azure 资源管理器模板创建 Azure 数据工厂 V2 的实例，用于将数据从 Azure Blob 存储复制到 SQL 数据库。|
-| [带有数据库的 HDInsight 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 使用此模板可以创建一个 HDInsight 群集、一个逻辑 SQL 服务器、一个数据库和两个表。 [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)一文中使用了此模板。 |
+| [带有数据库的 HDInsight 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 使用此模板可以创建一个 HDInsight 群集、一个逻辑 SQL 服务器、一个数据库和两个表。 [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hadoop/hdinsight-use-sqoop.md)一文中使用了此模板。 |
 | [按计划运行 SQL 存储过程的 Azure 逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | 使用此模板可以创建一个按计划运行 SQL 存储过程的逻辑应用。 可将该过程的所有参数放入该模板的正文部分。|
 
 ## <a name="azure-sql-managed-instance"></a>[Azure SQL 托管实例](#tab/managed-instance)
@@ -54,4 +54,3 @@ ms.locfileid: "91444636"
 | [使用虚拟机的 SQL Managed Instance](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | 此部署将创建包含两个子网 `ManagedInstance` 和 `Management` 的 Azure 虚拟网络。 SQL Managed Instance 将部署在 `ManagedInstance` 子网中。 使用最新版 SQL Server Management Studio (SSMS) 的虚拟机将部署在 `Management` 子网中。 |
 
 ---
-

@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541316"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018746"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 应用的 API v1 到 v2 迁移指南
 第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 已弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)和[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API。
 
 ## <a name="new-azure-regions"></a>新的 Azure 区域
-LUIS 为 LUIS API 提供新的[区域](https://aka.ms/LUIS-regions)。 LUIS 为区域组提供另一个门户。 必须在要用于查询的区域中编写应用程序。 应用程序不会自动迁移区域。 若要在新区域中使用应用，请从一个区域中将其导出，再将其导入到另一个区域。
+LUIS 为 LUIS API 提供新的[区域](./luis-reference-regions.md)。 LUIS 为区域组提供另一个门户。 必须在要用于查询的区域中编写应用程序。 应用程序不会自动迁移区域。 若要在新区域中使用应用，请从一个区域中将其导出，再将其导入到另一个区域。
 
 ## <a name="authoring-route-changes"></a>创作路由的更改
 创作 API 路由从使用 prog 路由改为使用 api 路由   。
@@ -132,7 +132,7 @@ v2 终结点成功响应：
 
 
 ## <a name="sample-renamed-to-suggest"></a>“示例”已重命名为“建议”
-LUIS 会从现有[终结点话语](luis-how-to-review-endpoint-utterances.md)中推荐能增强模型的话语。 在前一版本中，此功能名为“样本”  。 在新版本中，其名称从“样本”改为“建议”  。 在 LUIS 网站上名为[查看终结点话语](luis-how-to-review-endpoint-utterances.md)****。
+LUIS 会从现有[终结点话语](luis-how-to-review-endpoint-utterances.md)中推荐能增强模型的话语。 在前一版本中，此功能名为“样本”  。 在新版本中，其名称从“样本”改为“建议”  。 在 LUIS 网站上名为[查看终结点话语](luis-how-to-review-endpoint-utterances.md)。
 
 | 版本 | 路由 |
 |--|--|
@@ -143,7 +143,7 @@ LUIS 会从现有[终结点话语](luis-how-to-review-endpoint-utterances.md)中
 
 
 ## <a name="create-app-from-prebuilt-domains"></a>从预生成的域创建应用
-[预生成的域](luis-how-to-use-prebuilt-domains.md)提供一个预定义的域模型。 借助预生成的域，可快速开发常见域的 LUIS 应用程序。 使用此 API，可基于预生成的域新建应用。 响应内容为新的应用 ID。
+[预生成的域](./howto-add-prebuilt-models.md)提供一个预定义的域模型。 借助预生成的域，可快速开发常见域的 LUIS 应用程序。 使用此 API，可基于预生成的域新建应用。 响应内容为新的应用 ID。
 
 |v2 路由|谓词|
 |--|--|
@@ -154,7 +154,7 @@ LUIS 会从现有[终结点话语](luis-how-to-review-endpoint-utterances.md)中
 导出的 1.x 应用的 JSON 有某些区域需要在导入到 [LUIS][LUIS] 2.0 之前进行更改。
 
 ### <a name="prebuilt-entities"></a>预生成的实体
-已更改[预生成的实体](luis-prebuilt-entities.md)。 请确保使用 V2 预生成实体。 这包括使用 [datetimeV2](luis-reference-prebuilt-datetimev2.md) 而不是 datetime。
+已更改[预生成的实体](./howto-add-prebuilt-models.md)。 请确保使用 V2 预生成实体。 这包括使用 [datetimeV2](luis-reference-prebuilt-datetimev2.md) 而不是 datetime。
 
 ### <a name="actions"></a>操作
 操作属性不再有效。 应该为空
@@ -169,4 +169,4 @@ V1 允许标记的话语在字词或短语的开头或末尾包含空格。 删�
 
 使用 v2 API 文档更新对 LUIS [终结点](https://go.microsoft.com/fwlink/?linkid=2092356)和[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API 的现有 REST 调用。
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[LUIS]: ./luis-reference-regions.md

@@ -2,17 +2,17 @@
 title: Azure 应用程序配置常见问题解答
 description: 阅读常见问题解答 (常见问题的答案) 有关 Azure 应用配置，例如它与 Azure Key Vault 的不同之处。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.author: lcozzens
-ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: alkemper
+ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715451"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929559"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 应用程序配置常见问题解答
 
@@ -43,13 +43,13 @@ ms.locfileid: "91715451"
 
 是。 应用程序配置加密它持有的所有键值，并加密网络通信。 键名称和标签充当检索配置数据的索引，且不进行加密。
 
-## <a name="where-does-data-stored-in-app-configuration-reside"></a>应用配置中存储的数据驻留在何处？ 
+## <a name="where-does-data-stored-in-app-configuration-reside"></a>应用配置中存储的数据位于何处？ 
 
-应用配置中存储的客户数据位于创建客户应用配置存储的区域。 应用配置可能会将数据复制到 [配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) 以进行数据恢复，但不会复制或移动其地域外部的客户数据（如 [Azure 中的数据常驻服务](https://azure.microsoft.com/global-infrastructure/data-residency/)所定义）。 客户和最终用户可从全球任何位置移动、复制或访问客户数据。
+应用配置中存储的客户数据位于创建客户的应用配置存储的区域中。 应用配置可能会将数据复制到[配对区域](../best-practices-availability-paired-regions.md)以获得数据复原能力，但它不会将客户数据复制或移动到其地理位置之外，如 [Azure 中的数据驻留](https://azure.microsoft.com/global-infrastructure/data-residency/)所定义的那样。 客户和最终用户可从全球任何位置移动、复制或访问其客户数据。
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>应用程序配置与 Azure 应用服务有什么不同？
 
-通过 Azure 应用服务，可以为每个应用服务实例定义应用设置。 这些设置作为环境变量传递给应用程序代码。 如果需要，可以将设置与特定部署槽关联。 有关详细信息，请参阅[配置应用设置](/azure/app-service/configure-common#configure-app-settings)。
+通过 Azure 应用服务，可以为每个应用服务实例定义应用设置。 这些设置作为环境变量传递给应用程序代码。 如果需要，可以将设置与特定部署槽关联。 有关详细信息，请参阅[配置应用设置](../app-service/configure-common.md#configure-app-settings)。
 
 而通过 Azure 应用程序配置，你能够定义可在多个应用之间共享的设置。 这包括在应用服务中运行的应用以及其他平台。 应用程序代码通过面向 .NET 和 Java 的配置提供程序、通过 Azure SDK 或直接通过 REST API 访问这些设置。
 
@@ -88,14 +88,14 @@ ms.locfileid: "91715451"
 
 - **每个订阅的资源数**：资源由单个配置存储区组成。 每个订阅在免费层中只能有一个配置存储区。 订阅在标准层中可以有无限数量的配置存储区。
 - **每个资源的存储空间**：在免费层中，每个配置存储区限 10 MB 的存储空间。 在标准层中，每个配置存储区最多使用 1GB 的存储空间。
-- **键历史记录**：“应用程序配置”会存储对键所做的所有更改的历史记录。 在免费层中，会存储七天的历史记录。 在标准层中，此历史记录存储 30 天。
-- **每日请求数**：免费层存储限每日 1,000 个请求。 一旦存储量达到 1,000 个请求，它会针对后续所有请求返回 HTTP 状态代码 429，直到 UTC 午夜时间。
+- **修订历史记录**：“应用程序配置”会存储对键所做的所有更改的历史记录。 在免费层中，会存储七天的历史记录。 在标准层中，此历史记录存储 30 天。
+- **请求配额**：免费层存储限每日 1,000 个请求。 当存储达到 1,000 个请求时，它会针对所有请求返回 HTTP 状态代码 429，直到 UTC 午夜时间。
 
-    对于标准层存储，每日前 200,000 个请求包含在每日费用中。 其他请求按超额计费。
+    标准层存储限制为每小时 20,000 个请求。 此配额用尽后，系统会对所有请求返回 HTTP 状态代码 429，直到该小时结束为止。
 
 - **服务级别协议**：标准层具有 99.9% 的 SLA 可用性。 免费层没有 SLA。
-- **安全功能**：这两个层都包含基本的安全功能，包括对 Microsoft 托管密钥的加密、通过 HMAC 或 Azure Active Directory 的身份验证、Azure RBAC 支持和托管标识。 标准层提供更高级的安全功能，包括对客户管理的密钥的私有链接支持和加密。
-- **成本**：标准层存储每日收取使用费。 对超过每日配额的请求也收取超额费用。 免费层的存储可免费使用。
+- **安全功能**：这两个层都包括基本安全功能，包括使用 Microsoft 管理的密钥进行的加密、通过 HMAC 或 Azure Active Directory 进行的身份验证、Azure RBAC 支持、托管标识和服务标记。 标准层提供更高级的安全功能，包括专用链接支持和使用客户管理的密钥进行的加密。
+- **成本**：标准层存储每日收取使用费。 每日前 200,000 个请求包含在每日费用中。 对超过每日配额的请求也收取超额费用。 免费层的存储可免费使用。
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>我可以将存储从免费层升级到标准层吗？ 我可以将存储从标准层降级到免费层吗？
 

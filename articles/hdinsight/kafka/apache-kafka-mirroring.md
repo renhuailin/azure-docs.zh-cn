@@ -8,50 +8,53 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087356"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428243"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
 了解如何使用 Apache Kafka 镜像功能将主题复制到辅助群集。 镜像可以作为连续的进程运行，或者间接用作将数据从一个群集复制到另一个群集的方法。
 
+> [!NOTE]
+> 本文包含对术语 " *白名单*" 的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+
 在此示例中，镜像用于在两个 HDInsight 群集之间复制主题。 这两个群集位于不同数据中心内的不同虚拟网络中。
 
 > [!WARNING]  
-> 不应将镜像视为一种实现容错的方式。 主题中项的偏移在主要群集与辅助群集之间有所不同，因此客户端不能换用这两种群集。
+> 不应将镜像视为实现容错的方法。 主题中项的偏移在主要群集与辅助群集之间有所不同，因此客户端不能换用这两种群集。
 >
-> 如果关心容错能力，应该为群集中的主题设置复制。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
+> 如果担心容错，应在群集内为主题设置复制。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
 
 ## <a name="how-apache-kafka-mirroring-works"></a>Apache Kafka 镜像的工作原理
 
-镜像通过使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 工具（Apache Kafka 的一部分）来使用主要群集上主题中的记录，然后在辅助群集上创建本地副本。 MirrorMaker 使用一个或多个使用者从主要群集读取记录，使用生成者将记录写入本地（辅助）群集。  
+镜像通过使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 工具（Apache Kafka 的一部分）来使用主要群集上主题中的记录，然后在辅助群集上创建本地副本。 MirrorMaker 使用一个或多个使用者从主要群集读取记录，使用生成者将记录写入本地（辅助）群集。****
 
 最有用的灾难恢复镜像设置利用不同 Azure 区域中的 Kafka 群集。 为实现此目的，群集所在的虚拟网络将对等互连到一起。
 
 下图演示了镜像过程以及群集之间的通信流动方式：
 
-![镜像过程示意图](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
+![镜像过程图示](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
 
-主要和辅助群集在节点与分区数目方面可以不同，主题中的偏移也可以不同。 镜像将维护用于分区的键值，因此，会根据键保留记录顺序。
+主要和辅助群集在节点与分区数目方面可以不同，主题中的偏移也可以不同。 镜像维护用于分区的密钥值，因此会按密钥来保留记录顺序。
 
 ### <a name="mirroring-across-network-boundaries"></a>跨网络边界执行镜像操作
 
-如果需要在不同网络中的 Kafka 群集之间镜像，请注意以下附加事项：
+如果需要在不同网络中的 Kafka 群集之间执行镜像操作，还需要考虑以下注意事项：
 
-* **网关**：网络必须能够在 TCP/IP 级别通信。
+* **网关**：网络必须能够在 tcp/ip 级别进行通信。
 
-* **服务器寻址**：可以选择使用群集节点的 IP 地址或完全限定域名来寻址这些节点。
+* **服务器寻址**：可以选择使用群集节点的 IP 地址或完全限定的域名来寻址群集节点。
 
-    * **IP 地址**：如果将 Kafka 群集配置为使用 IP 地址播发，则可以使用代理节点和 Zookeeper 节点的 IP 地址继续进行镜像设置。
+    * **IP 地址**：如果将 Kafka 群集配置为使用 ip 地址广告，则可以使用代理节点和 zookeeper 节点的 IP 地址继续进行镜像设置。
     
-    * **域名**：如果未在 Kafka 群集上配置 IP 地址播发，则群集必须能够使用完全限定的域名 (FQDN) 相互连接。 这需要在每个网络中设置一台域名系统 (DNS) 服务器，并将其配置为向其他网络转发请求。 创建 Azure 虚拟网络时，请不要使用网络提供的自动 DNS，必须指定一台自定义 DNS 服务器以及该服务器的 IP 地址。 创建虚拟网络后，必须创建使用该 IP 地址的 Azure 虚拟机，并在该虚拟机上安装并配置 DNS 软件。
+    * **域名**：如果你未配置 Kafka 群集以进行 IP 地址播发，则群集必须能够使用完全限定的域名)  (fqdn 连接到对方。 这需要在每个网络中设置一台域名系统 (DNS) 服务器，并将其配置为向其他网络转发请求。 创建 Azure 虚拟网络时，必须指定自定义 DNS 服务器和服务器的 IP 地址，而不是使用网络提供的自动 DNS。 创建虚拟网络后，必须创建一个使用该 IP 地址的 Azure 虚拟机，并在其上安装和配置 DNS 软件。
 
     > [!WARNING]  
-    > 请先创建并配置自定义 DNS 服务器，此后再将 HDInsight 安装到虚拟网络中。 无需对 HDInsight 进行其他配置即可使用针对虚拟网络配置的 DNS 服务器。
+    > 在将 HDInsight 安装到虚拟网络之前，需先创建和配置自定义 DNS 服务器。 HDInsight 不需要再进行其他配置，便可使用为虚拟网络配置的 DNS 服务器。
 
 有关连接两个 Azure 虚拟网络的详细信息，请参阅[配置 VNet 到 VNet 的连接](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 
@@ -79,20 +82,20 @@ ms.locfileid: "86087356"
     | kafka-secondary-cluster | kafka-secondary-rg | kafka-secondary-vnet | kafkasecondarystorage |
 
 1. 创建虚拟网络对等互连。 此步骤创建两个对等互连：一个从 **kafka-primary-vnet** 连接到 **kafka-secondary-vnet**，一个从 **kafka-secondary-vnet** 连接回到 **kafka-primary-vnet**。
-    1. 选择“kafka-primary-vnet”虚拟网络。 
-    1. 在“设置”  下，选择“对等互连”  。
-    1. 选择“添加”   。
-    1. 在“添加对等互连”屏幕上输入详细信息，如以下屏幕截图所示。 
+    1. 选择“kafka-primary-vnet”虚拟网络。****
+    1. 在“设置”**** 下，选择“对等互连”****。
+    1. 选择 **添加** 。
+    1. 在“添加对等互连”屏幕上输入详细信息，如以下屏幕截图所示。****
 
         ![HDInsight Kafka 添加 vnet 对等互连](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-### <a name="configure-ip-advertising"></a>配置 IP 播发
+### <a name="configure-ip-advertising"></a>配置 IP 广告
 
-配置 IP 播发，使客户端可以使用中转站 IP 地址而不是域名进行连接。
+配置 IP 播发，使客户端能够使用 broker IP 地址而不是域名来进行连接。
 
 1. 转到主要群集的 Ambari 仪表板：`https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
-1. 选择“服务” > “Kafka”。   单击“配置”选项卡  。
-1. 将以下配置行添加到底部的 **kafka-env template** 节。 选择“保存”  。
+1. 选择 "**服务**  >  **Kafka**"。 单击“配置”选项卡 ****。
+1. 将以下配置行添加到底部的 **kafka-env template** 节。 选择“保存”。
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -102,22 +105,22 @@ ms.locfileid: "86087356"
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. 在“保存配置”屏幕上输入备注，然后单击“保存”。  
-1. 如果出现配置警告提示，请单击“仍然继续”。 
-1. 在“保存配置更改”屏幕上选择“确定”。  
-1. 在“需要重启”通知中，选择“重启” > “重启所有受影响的服务”。    选择“确认全部重启”  。
+1. 在“保存配置”屏幕上输入备注，然后单击“保存”。********
+1. 如果出现配置警告提示，请单击“仍然继续”。****
+1. 在“保存配置更改”屏幕上选择“确定”。********
+1. 选择**Restart**重新启动  >  **所需**通知中的 "重新启动**所有受影响**的"。 选择 " **确认全部重启**"。
 
     ![Apache Ambari 重新启动所有受影响的服务](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>将 Kafka 配置为侦听所有网络接口。
     
-1. 不要关闭“服务” > “Kafka”下的“配置”选项卡。    在“Kafka 代理”部分，将“侦听器”属性设置为 `PLAINTEXT://0.0.0.0:9092`。  
-1. 选择“保存”  。
-1. 依次选择“重启”、“确认全部重启”。  
+1. 不要关闭“服务” > “Kafka”下的“配置”选项卡。************ 在“Kafka 代理”部分，将“侦听器”属性设置为 `PLAINTEXT://0.0.0.0:9092`。********
+1. 选择“保存”。
+1. 依次选择“重启”、“确认全部重启”。********
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>记下主要群集的代理 IP 地址和 Zookeeper 地址。
 
-1. 在 Ambari 仪表板上选择“主机”。 
+1. 在 Ambari 仪表板上选择“主机”。****
 1. 记下代理和 Zookeeper 的 IP 地址。 代理节点主机名的前两个字母为 **wn**，Zookeeper 节点主机名的前两个字母为 **zk**。
 
     ![Apache Ambari 查看节点 ip 地址](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
@@ -132,11 +135,11 @@ ms.locfileid: "86087356"
     ssh sshuser@PRIMARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    将 **sshuser** 替换为创建群集时使用的 SSH 用户名。 将 **PRIMARYCLUSTER** 替换为创建群集时使用的基名称。
+    用创建群集时使用的 SSH 用户名替换 **sshuser**。 将 **PRIMARYCLUSTER** 替换为创建群集时使用的基名称。
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-1. 使用以下命令创建一个变量，其中包含主要群集的 Apache Zookeeper 主机。 必须将类似于 `ZOOKEEPER_IP_ADDRESS1` 的字符串替换为前面记下的实际 IP 地址，例如 `10.23.0.11` 和 `10.23.0.7`。 如果对自定义 DNS 服务器使用 FQDN 解析，请按照[以下步骤](apache-kafka-get-started.md#getkafkainfo)获取 broker 和 zookeeper 名称。：
+1. 使用以下命令创建一个变量，其中包含主要群集的 Apache Zookeeper 主机。 必须将类似于 `ZOOKEEPER_IP_ADDRESS1` 的字符串替换为前面记下的实际 IP 地址，例如 `10.23.0.11` 和 `10.23.0.7`。 如果对自定义 DNS 服务器使用 FQDN 解析，请按照 [以下步骤](apache-kafka-get-started.md#getkafkainfo) 获取 broker 和 zookeeper 名称。：
 
     ```bash
     # get the zookeeper hosts for the primary cluster
@@ -149,7 +152,7 @@ ms.locfileid: "86087356"
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-1. 使用以下命令验证是否已创建主题：
+1. 使用以下命令验证是否已创建该主题：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
@@ -163,7 +166,7 @@ ms.locfileid: "86087356"
     echo $PRIMARY_ZKHOSTS
     ```
 
-    此命令返回类似于以下文本的信息：
+    这会返回类似于以下文本的信息：
 
     `10.23.0.11:2181,10.23.0.7:2181,10.23.0.9:2181`
 
@@ -177,7 +180,7 @@ ms.locfileid: "86087356"
     ssh sshuser@SECONDARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    将 **sshuser** 替换为创建群集时使用的 SSH 用户名。 将 **SECONDARYCLUSTER** 替换为创建群集时使用的名称。
+    用创建群集时使用的 SSH 用户名替换 **sshuser**。 将 **SECONDARYCLUSTER** 替换为创建群集时使用的名称。
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -187,7 +190,7 @@ ms.locfileid: "86087356"
     nano consumer.properties
     ```
 
-    使用以下文本作为 `consumer.properties` 文件的内容：
+    将以下文本用作 `consumer.properties` 文件的内容：
 
     ```yaml
     zookeeper.connect=PRIMARY_ZKHOSTS
@@ -196,11 +199,11 @@ ms.locfileid: "86087356"
 
     将 **PRIMARY_ZKHOSTS** 替换为**主要**群集中的 Zookeeper IP 地址。
 
-    此文件说明从 Kafka 主要群集读取记录时要使用的使用者信息。 有关使用者配置的详细信息，请参阅 kafka.apache.org 上的 [Consumer Configs](https://kafka.apache.org/documentation#consumerconfigs) （使用者配置）。
+    此文件说明从 Kafka 主要群集读取记录时要使用的使用者信息。 有关使用者配置的详细信息，请参阅 kafka.apache.org 中的[使用者配置](https://kafka.apache.org/documentation#consumerconfigs)。
 
-    若要保存文件，请使用 Ctrl+X、Y，然后按 Enter。   
+    要保存文件，请使用 **Ctrl + X**、**Y**，并按 **Enter**。
 
-1. 在配置与辅助群集通信的生成者之前，请为**辅助**群集的 broker IP 地址设置一个变量。 使用以下命令创建此变量：
+1. 在配置与辅助群集通信的生成者之前，请为 **辅助** 群集的 broker IP 地址设置一个变量。 使用以下命令创建此变量：
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
@@ -216,7 +219,7 @@ ms.locfileid: "86087356"
     nano producer.properties
     ```
 
-    使用以下文本作为 `producer.properties` 文件的内容：
+    将以下文本用作 `producer.properties` 文件的内容：
 
     ```yaml
     bootstrap.servers=SECONDARY_BROKERHOSTS
@@ -225,7 +228,7 @@ ms.locfileid: "86087356"
 
     将 **SECONDARY_BROKERHOSTS** 替换为在上一步骤中使用的代理 IP 地址。
 
-    有关生成者配置的详细信息，请参阅 kafka.apache.org 上的 [Producer Configs](https://kafka.apache.org/documentation#producerconfigs) （生成者配置）。
+    有关创建器配置的详细信息，请参阅 kafka.apache.org 中的[创建器配置](https://kafka.apache.org/documentation#producerconfigs)。
 
 1. 使用以下命令创建一个环境变量，其中包含辅助群集的 Zookeeper 主机 IP 地址：
 
@@ -236,7 +239,7 @@ ms.locfileid: "86087356"
 
 1. Kafka on HDInsight 的默认配置不允许自动创建主题。 在开始镜像过程之前，你必须使用以下选项之一：
 
-    * **在辅助群集上创建主题**：此选项还允许设置分区和复制因子的数目。
+    * **在辅助群集上创建主题**：此选项还允许您设置分区数和复制因子。
 
         可以使用以下命令提前创建新的主题：
 
@@ -246,15 +249,15 @@ ms.locfileid: "86087356"
 
         将 `testtopic` 替换为要创建的主题的名称。
 
-    * **将群集配置为自动主题创建**：此选项允许 MirrorMaker 自动创建主题，但创建这些主题时使用的分区数或复制因子可能不同于主要主题。
+    * **将群集配置为自动创建主题**：此选项允许 MirrorMaker 自动创建主题，不过，它可以使用与主要主题不同的分区或复制系数来创建它们。
 
         若要配置辅助群集以自动创建主题，请执行以下步骤：
 
         1. 转到辅助群集的 Ambari 仪表板：`https://SECONDARYCLUSTERNAME.azurehdinsight.net`。
-        1. 单击“服务” > “Kafka”。   单击“配置”选项卡  。
-        1. 在“筛选器”  字段中输入值 `auto.create`。 这将筛选的属性，并显示列表`auto.create.topics.enable`设置。
+        1. 单击 "**服务**  >  **Kafka**"。 单击“配置”**** 选项卡。
+        1. 在 " __筛选器__ " 字段中，输入值 `auto.create` 。 这将筛选的属性，并显示列表`auto.create.topics.enable`设置。
         1. 更改的值`auto.create.topics.enable`为 true，然后选择__保存__。 添加注释，然后选择__保存__。
-        1. 选择 __Kafka__ 服务，选择__重启__，然后选择__重启所有受影响的__。 出现提示时，选择“确认全部重启”  。
+        1. 选择 __Kafka__ 服务，选择 " __重新启动__"，然后选择 " __重新启动所有受影响__的"。 出现提示时，选择“确认全部重启”____。
 
         ![kafka 启用自动创建主题](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
@@ -266,12 +269,12 @@ ms.locfileid: "86087356"
     /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.MirrorMaker --consumer.config consumer.properties --producer.config producer.properties --whitelist testtopic --num.streams 4
     ```
 
-    本示例中使用的参数为：
+    此示例中使用的参数有：
 
     |参数 |说明 |
     |---|---|
     |--consumer.config|指定包含使用者属性的文件。 这些属性用于创建可从*主要* Kafka 群集读取记录的使用者。|
-    |--producer.config|指定包含生成者属性的文件。 这些属性用于创建可向*辅助* Kafka 群集写入记录的生成者。|
+    |--producer.config|指定包含创建者属性的文件。 这些属性用于创建可向*辅助* Kafka 群集写入记录的生成者。|
     |--whitelist|MirrorMaker 从主要群集复制到辅助群集的主题列表。|
     |--num.streams|要创建的使用者线程数。|
 
@@ -284,7 +287,7 @@ ms.locfileid: "86087356"
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
-     出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到**主要**群集上的主题。 完成后，按 **Ctrl + C** 结束生成者进程。
+     出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到**主要**群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
 
 3. 与**辅助**群集建立 SSH 连接后，使用 **Ctrl + C** 结束 MirrorMaker 进程。 它可能需要几秒钟时间结束进程。 若要验证是否已将主题和消息复制到辅助群集，请使用以下命令：
 
@@ -302,9 +305,9 @@ ms.locfileid: "86087356"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文档已介绍如何使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 创建 [Apache Kafka](https://kafka.apache.org/) 群集的副本。 请使用以下链接探索 Kafka 的其他用法：
+本文档已介绍如何使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 创建 [Apache Kafka](https://kafka.apache.org/) 群集的副本。 使用以下链接来发现与 Kafka 配合使用的其他方式：
 
-* [Apache Kafka MirrorMaker 文档](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 。
+* cwiki.apache.org 上的 [Apache Kafka MirrorMaker 文档](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)。
 * [Kafka 镜像 Maker 最佳实践](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)
 * [将 Apache Spark 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)

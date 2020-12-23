@@ -1,30 +1,30 @@
 ---
-title: Microsoft 365 外部共享和 B2B 协作-Azure AD
+title: Microsoft 365 外部共享和 B2B 协作 - Azure AD
 description: 讨论使用 Microsoft 365 和 Azure Active Directory B2B 协作与外部合作伙伴共享资源。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 11/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563d925aa3e0d6922756ab037226f5a86534b19f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 35ffae55e749c7493b9cd8af13dfd5216abf5822
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705429"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515500"
 ---
-# <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 外部共享和 Azure Active Directory (Azure AD) B2B 协作
+# <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 外部共享与 Azure Active Directory (Azure AD) B2B 协作
 
-在 Azure AD B2B 协作和 Microsoft 365 外部共享 (OneDrive、SharePoint Online、统一组等 ) ，使用 Azure AD B2B 对外部用户进行身份验证。
+在 Azure AD B2B 协作和 Microsoft 365 外部共享（OneDrive、SharePoint Online、统一组等）中，均使用 Azure AD B2B 对外部用户进行身份验证。
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B 与 SharePoint Online 中的外部共享有何区别？
 
-OneDrive/SharePoint Online 具有单独的邀请管理器。 在 Azure AD 开发其外部共享支持之前，OneDrive/SharePoint Online 中已开始支持外部共享。 随着时间推移，OneDrive/SharePoint Online 外部共享已积累了多个功能和使用该产品的内置共享模式的数百万名用户。 但是，OneDrive/SharePoint Online 外部共享的工作方式与 Azure AD B2B 协作的工作方式之间有一些细微的差异。 可以在[外部共享概述](https://docs.microsoft.com/sharepoint/external-sharing-overview)中详细了解 OneDrive/SharePoint Online 外部共享。 该过程在以下方面通常不同于 Azure AD B2B：
+OneDrive/SharePoint Online 具有单独的邀请管理器。 在 Azure AD 开发其外部共享支持之前，OneDrive/SharePoint Online 中已开始支持外部共享。 随着时间推移，OneDrive/SharePoint Online 外部共享已积累了多个功能和使用该产品的内置共享模式的数百万名用户。 但是，OneDrive/SharePoint Online 外部共享的工作方式与 Azure AD B2B 协作的工作方式之间有一些细微的差异。 可以在[外部共享概述](/sharepoint/external-sharing-overview)中详细了解 OneDrive/SharePoint Online 外部共享。 该过程在以下方面通常不同于 Azure AD B2B：
 
 - OneDrive/SharePoint Online 在用户兑换其邀请后将用户添加到目录中。 因此，在兑换之前，在 Azure AD 门户中看不到用户。 如果另一个站点在此期间邀请了用户，会生成一个新的邀请。 但是，使用 Azure AD B2B 协作时，在邀请时会立即添加用户，以便他们显示在任何位置。
 
@@ -32,7 +32,7 @@ OneDrive/SharePoint Online 具有单独的邀请管理器。 在 Azure AD 开发
 
 - 可以从 OneDrive/SharePoint Online 共享对话框选取 Azure AD B2B 协作邀请的用户。 OneDrive/SharePoint Online 邀请的用户在他们兑换其邀请后也会显示在 Azure AD 中。
 
-- 许可要求不同。 对于每个付费 Azure AD 许可证，最多可以让 5 名来宾用户访问你的付费 Azure AD 功能。 若要详细了解许可，请参阅 [Azure AD B2B 许可](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)和 [SharePoint Online 外部共享概述中的“什么是外部用户？”](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share)。
+- 许可要求不同。 若要详细了解许可，请参阅 [Azure AD B2B 许可](./external-identities-pricing.md)和 [SharePoint Online 外部共享概述中的“什么是外部用户？”](/sharepoint/external-sharing-overview#what-happens-when-users-share)。
 
 若要通过 Azure AD B2B 协作管理 OneDrive/SharePoint Online 中的外部共享，请将 OneDrive/SharePoint Online 外部共享设置设为“仅允许与组织的目录中已存在的外部用户共享”。 用户可以转到外部共享站点，从管理员已添加的外部协作者中进行选取。 管理员可以通过 B2B 协作邀请 API 添加外部协作者。
 

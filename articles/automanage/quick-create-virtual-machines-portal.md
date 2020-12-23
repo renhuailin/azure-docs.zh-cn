@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 43e0805a828a2ed32d23984b6ffef95a7e710953
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 69f43b626bb50171ceaca1b7a8761bec040d1dd6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943404"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897222"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>快速入门：在 Azure 门户中启用适用于虚拟机的 Azure 自动管理
 
@@ -28,7 +28,7 @@ ms.locfileid: "90943404"
 > 免费试用帐户无法访问本教程中使用的虚拟机。 请升级为即用即付订阅。
 
 > [!IMPORTANT]
-> 启用自动管理需要以下 RBAC 权限：“所有者”角色或“参与者”以及“用户访问管理员”角色  。
+> 必须在包含 VM 的资源组上具有“参与者”角色，才能使用现有自动管理帐户启用自动管理。 如果要使用新的自动管理帐户启用自动管理，则需要具有以下权限：订阅上的“所有者”角色或“参与者”以及“用户访问管理员”角色  。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -61,10 +61,12 @@ ms.locfileid: "90943404"
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="浏览生产配置文件。":::
 
-6. 单击“启用”按钮****。
+6. 单击“启用”按钮。
 
 
 ## <a name="enable-automanage-for-vms-on-a-new-vm"></a>在新 VM 上启用适用于 VM 的自动管理
+
+在[此处](https://aka.ms/automanageportalnextstep)登录到 Azure 门户，以创建新的 VM 并启用自动管理。
 
 1. 按照[快速入门 - 在 Azure 门户中创建 Windows VM](..\virtual-machines\windows\quick-create-portal.md) 中的创建步骤进行操作。
 
@@ -86,8 +88,7 @@ ms.locfileid: "90943404"
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="浏览生产配置文件。":::
 
-7. 单击“启用”按钮****。
-
+7. 单击“启用”按钮。
 
 ## <a name="disable-automanage-for-vms"></a>禁用适用于 VM 的自动管理
 

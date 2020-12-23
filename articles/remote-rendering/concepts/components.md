@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a488e2499b92b290ad2b55120c3c70a18d45d426
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: a17bfe4dac2007d3ad136598c3c4e335e2397293
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613935"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203715"
 ---
 # <a name="components"></a>组件
 
@@ -63,12 +63,12 @@ Unity 集成具有其他扩展函数，用于与组件进行交互。 请参阅 
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # ComponentBase](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.componentbase)
-* [C # RemoteManager CreateComponent ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createcomponent)
-* [C # FindComponentOfType ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
-* [C + + ComponentBase](https://docs.microsoft.com/cpp/api/remote-rendering/componentbase)
-* [C + + RemoteManager：： CreateComponent ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createcomponent)
-* [C + + Entity：： FindComponentOfType ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/entity#findcomponentoftype)
+* [C # ComponentBase](/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [C # RemoteManager CreateComponent ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.createcomponent)
+* [C # FindComponentOfType ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [C + + ComponentBase](/cpp/api/remote-rendering/componentbase)
+* [C + + RemoteManager：： CreateComponent ( # B1 ](/cpp/api/remote-rendering/remotemanager#createcomponent)
+* [C + + Entity：： FindComponentOfType ( # B1 ](/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>后续步骤
 

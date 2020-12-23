@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b945b984210dc3fc3338da8a5670a7813198e40
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 962f022e5ed38e5c60f327fa4f85a5edc872b938
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919465"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742041"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 身份验证和 Azure 多重身份验证服务器
 
@@ -27,9 +27,9 @@ ms.locfileid: "88919465"
 * 受信任 IP 依赖于应用程序是否可以为客户端 IP 提供身份验证。 目前只支持终端服务。  
 
 > [!IMPORTANT]
-> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure 多重身份验证。
+> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure AD 多重身份验证。
 >
-> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure AD 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
 >
 > 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
 
@@ -40,9 +40,9 @@ ms.locfileid: "88919465"
 
 1. 在 Azure 多重身份验证服务器中，单击“Windows 身份验证”图标。
    ![MFA 服务器中的 Windows 身份验证](./media/howto-mfaserver-windows/windowsauth.png)
-2. 选中“启用 Windows 身份验证”复选框。**** 默认情况下，此框处于未选中状态。
+2. 选中“启用 Windows 身份验证”复选框。 默认情况下，此框处于未选中状态。
 3. 使用“应用程序”选项卡，管理员可以为 Windows 身份验证配置一个或多个应用程序。
-4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。 单击“确定”。
+4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。 单击" **确定**"。
 5. 单击 "**添加 ...** "
 6. 使用“受信任 IP”选项卡，可以跳过从特定 IP 发起的 Windows 会话的 Azure 多重身份验证。 例如，如果员工可以在办公室和家里使用应用程序，你可以决定不让其在办公室进行 Azure 多重身份验证时电话响铃。 为此，可将办公室子网指定为受信任 IP 条目。
 7. 单击 "**添加 ...** "

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 240bc8429ca786eb2f474a5a0b6ee296deb3b356
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b9cf9e031c73b1412ab9fc20f5ffe94736d28eb4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310116"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896899"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps 支持的类型
 
-执行兴趣点的[类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)时，会涉及到 100 多个支持的类别。 下面是支持的类别名称的类别代码列表。 类别代码是针对顶级类别生成的。 所有子类别共享相同的类别代码。 每次发布新数据时，此类别列表都会变化。
+执行兴趣点的[类别搜索](/rest/api/maps/search/getsearchpoicategory)时，会涉及到 100 多个支持的类别。 下面是支持的类别名称的类别代码列表。 类别代码是针对顶级类别生成的。 所有子类别共享相同的类别代码。 每次发布新数据时，此类别列表都会变化。
 
 <br/>
 

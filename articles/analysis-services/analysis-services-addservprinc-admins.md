@@ -8,21 +8,21 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015402"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100722"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
  若要自动执行无人参与的 PowerShell 任务，服务主体在托管的 Analysis Services 服务器上必须具备“服务器管理员”权限。 本文介绍如何将服务主体添加到 Azure AS 服务器上的服务器管理员角色。 可以使用 SQL Server Management Studio 或资源管理器模板来执行此操作。 
 
 > [!NOTE]
-> 必须直接将服务主体添加到服务器管理员角色。 不支持将服务主体添加到安全组，然后将该安全组添加到服务器管理员角色。 
+> 必须直接将服务主体添加到服务器管理员角色。 不支持先将服务主体添加到安全组，然后再将该安全组添加到服务器管理员角色。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 在完成此项任务之前，必须有一个在 Azure Active Directory 中注册的服务主体。
 
 [创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)   
@@ -40,11 +40,11 @@ ms.locfileid: "87015402"
 
 4. 验证服务主体帐户 ID，然后单击“确定”。
     
-    ![搜索服务主体帐户](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![屏幕截图，显示服务主体帐户 ID 并突出显示 "确定" 按钮。](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>使用资源管理器模板
 
-还可以通过使用 Azure 资源管理器模板部署 Analysis Services 服务器来配置服务器管理员。 运行部署的标识必须属于[azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)中资源的**参与者**角色。
+还可以通过使用 Azure 资源管理器模板部署 Analysis Services 服务器来配置服务器管理员。 运行部署的身份必须在 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 中属于资源的“参与者”角色。
 
 > [!IMPORTANT]
 > 必须使用格式 `app:{service-principal-client-id}@{azure-ad-tenant-id}` 来添加服务主体。
@@ -117,5 +117,5 @@ az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o ts
 
 ## <a name="related-information"></a>相关信息
 
-* [下载 SQL Server PowerShell 模块](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [下载 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [下载 SQL Server PowerShell 模块](/sql/ssms/download-sql-server-ps-module)   
+* [下载 SSMS](/sql/ssms/download-sql-server-management-studio-ssms)

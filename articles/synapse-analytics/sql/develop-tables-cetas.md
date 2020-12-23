@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8ffb3a0948267ea40a5d0511de63a80ad23584d1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885344"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454662"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL 提供的 CETAS
 
-可以在 SQL 池或 SQL 按需版本（预览版）中使用 CREATE EXTERNAL TABLE AS SELECT (CETAS) 来完成以下任务：  
+可在专用 SQL 池或无服务器 SQL 池中使用 CREATE EXTERNAL TABLE AS SELECT (CETAS) 来完成以下任务：  
 
 - 创建外部表
 - 将 Transact-SQL SELECT 语句的结果并行导出到：
@@ -27,14 +27,13 @@ ms.locfileid: "90885344"
   - Azure 存储 Blob
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>SQL 池中的 CETAS
+## <a name="cetas-in-dedicated-sql-pool"></a>专用 SQL 池中的 CETAS
 
-对于 SQL 池 CETAS 用法和语法，请参阅 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，有关使用 SQL 池的 CTAS 的指导，请参阅 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
-对于 SQL 池 CETAS 用法和语法，请参阅 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，有关使用 SQL 池的 CTAS 的指导，请参阅 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
+对于专用 SQL 池的 CETAS 用法和语法，请查看 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，有关使用专用 SQL 池的 CTAS 的指导，请参阅 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
 
-## <a name="cetas-in-sql-on-demand"></a>SQL 按需版本中的 CETAS
+## <a name="cetas-in-serverless-sql-pool"></a>无服务器 SQL 池的 CETAS
 
-使用 SQL 按需版本时，CETAS 用来创建外部表，并将查询结果导出到 Azure 存储 Blob 或 Azure Data Lake Storage Gen2。
+使用无服务器 SQL 池时，CETAS 用来创建外部表，并将查询结果导出到 Azure 存储 Blob 或 Azure Data Lake Storage Gen2。
 
 ## <a name="syntax"></a>语法
 
@@ -57,7 +56,7 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 *[ [ *database_name* . [ *schema_name* ] . ] | *schema_name* . ] *table_name**
 
-要创建的表的一到三部分名称。 对于外部表，SQL 按需版本仅存储表元数据。 不会在 SQL 按需版本中移动或存储任何实际数据。
+要创建的表的一到三部分名称。 对于外部表，无服务器 SQL 池仅存储表元数据。 不会在无服务器 SQL 池中移动或存储任何实际数据。
 
 LOCATION = *'path_to_folder'*
 
@@ -69,7 +68,7 @@ DATA_SOURCE = *external_data_source_name*
 
 FILE_FORMAT = *external_file_format_name*
 
-指定包含外部数据文件格式的外部文件格式对象的名称。 若要创建外部文件格式，请使用 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)。 目前仅支持 FORMAT_TYPE=PARQUET 和 FORMAT_TYPE=DELIMITEDTEXT 的外部文件格式。
+指定包含外部数据文件格式的外部文件格式对象的名称。 若要创建外部文件格式，请使用 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)。 目前仅支持 FORMAT_TYPE=PARQUET 和 FORMAT_TYPE=DELIMITEDTEXT 的外部文件格式。 不支持 DELIMITEDTEXT 格式的 GZip 压缩。
 
 WITH *<common_table_expression>*
 
@@ -145,32 +144,30 @@ CETAS 可用于存储包含以下 SQL 数据类型的结果集：
 - varbinary
 - char
 - varchar
+- nchar
+- nvarchar
+- smalldate
 - date
-- time
+- datetime
 - datetime2
+- datetimeoffset
+- time
 - Decimal
 - numeric
 - FLOAT
 - real
 - bigint
-- int
-- smallint
 - tinyint
+- smallint
+- int
+- bigint
 - bit
-
-> [!NOTE]
-> LOB 不能用于 CETAS。
-
-以下数据类型不能在 CETAS 的 SELECT 部分中使用：
-
-- nchar
-- nvarchar
-- datetime
-- smalldatetime
-- datetimeoffset
 - money
 - smallmoney
 - uniqueidentifier
+
+> [!NOTE]
+> 大于 1MB 的 LOB 无法与 CETAS 一起使用。
 
 ## <a name="next-steps"></a>后续步骤
 

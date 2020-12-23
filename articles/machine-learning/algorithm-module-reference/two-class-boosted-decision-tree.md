@@ -1,7 +1,7 @@
 ---
 title: 双类提升决策树：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“双类提升决策树”模块，以便根据提升决策树算法创建机器学习模型。
+description: 了解如何使用设计器中的 "Two-Class 提升决策树" 模块来创建二进制分类器。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 833caa0cf264fb49d8b32255f429132cd888c6c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 810878956a89b6e7400be99692cf43925d1cd134
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907739"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375903"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>“双类提升决策树”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块，可以根据提升决策树算法创建机器学习模型。 
 
@@ -34,13 +34,13 @@ ms.locfileid: "90907739"
 
 你可以使用[训练模型](././train-model.md)来训练这种类型的模型。 
 
-1.  在 Azure 机器学习中，将**提升决策树**模块添加到你的管道。
+1.  在 Azure 机器学习中，将 **提升决策树** 模块添加到你的管道。
   
 2.  通过设置“创建训练程序模式”选项，指定要如何对模型进行训练。
   
-    + “单个参数”****：如果你知道自己想要如何配置模型，可以提供一组特定的值作为参数。
+    + “单个参数”：如果你知道自己想要如何配置模型，可以提供一组特定的值作为参数。
   
-    + **参数范围**：如果不确定最佳参数，可以使用[优化模型超参数](tune-model-hyperparameters.md)模块来找到最佳参数。 你提供某个值范围，然后训练程序就会循环访问多个设置组合，以确定可产生最佳结果的值组合。
+    + **参数范围** ：如果不确定最佳参数，可以使用 [优化模型超参数](tune-model-hyperparameters.md)模块来找到最佳参数。 你提供某个值范围，然后训练程序就会循环访问多个设置组合，以确定可产生最佳结果的值组合。
   
 3.  对于“每个树的最大叶数”，请指定可在任何树中创建的终端节点（叶）的最大数目。
   
@@ -56,7 +56,7 @@ ms.locfileid: "90907739"
   
 6.  对于“构造的树数”，请指定要在集成中创建的决策树的总数。 通过创建更多决策树，你可能会获得更好的覆盖范围，但训练时间将会增加。
   
-     此值还控制对训练后的模型进行可视化时显示的树的数量。 如果希望查看或打印单个树，请将此值设置为 1。 但是，如果这样做，只会生成一个树（该树采用初始的参数集），不会执行进一步的迭代。
+     如果将此值设置为1，则在树 (仅生成一个树，其中) 初始参数集，并且不执行进一步的迭代。
   
 7.  对于“随机数种子”，可以键入非负整数作为随机种子值。 指定种子可以确保具有相同数据和参数的运行之间的可再现性。  
   
@@ -83,7 +83,7 @@ ms.locfileid: "90907739"
 
 + 若要保存已训练模型的快照，请选择“训练模型”模块右侧面板中的“输出”选项卡。 选择“注册数据集”图标将模型保存为可重用模块。
 
-+ 若要使用模型进行评分，请向管道中添加**评分模型**模块。
++ 若要使用模型进行评分，请向管道中添加 **评分模型** 模块。
 
 ## <a name="next-steps"></a>后续步骤
 

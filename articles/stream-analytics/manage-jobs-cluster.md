@@ -8,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 6b475e34c01ca26abd3d8ab1d904521de19f941b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01efb5736d7becf1b46c7c2898c22648b0421dd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943357"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305813"
 ---
-# <a name="create-and-delete-jobs-in-an-azure-stream-analytics-cluster"></a>在 Azure 流分析群集中创建和删除作业
+# <a name="add-and-remove-jobs-in-an-azure-stream-analytics-cluster"></a>在 Azure 流分析群集中添加和删除作业
 
 可以在流分析群集上运行多个 Azure 流分析作业。 在群集上运行作业是一个简单的过程，分为两步：将作业添加到群集并启动作业。 本文介绍如何在现有群集中添加和删除作业。 如果还没有流分析群集，请按照快速入门[创建流分析群集](create-cluster.md)。
 

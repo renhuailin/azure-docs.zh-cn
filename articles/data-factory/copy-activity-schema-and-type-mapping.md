@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85249646"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507517"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,13 +54,13 @@ ms.locfileid: "85249646"
 | path     | 要提取或映射的每个字段的 JSON 路径表达式。 适用于分层源和接收器，例如 Cosmos DB、MongoDB 或 REST 连接器。<br>对于根对象下的字段，JSON 路径以根 `$` 开头；对于 `collectionReference` 属性选择的数组内的字段，JSON 路径从没有 `$` 的数组元素开始。 | 否       |
 | type     | 源或接收器列的数据工厂临时数据类型。 通常无需指定或更改此属性。 详细了解[数据类型映射](#data-type-mapping)。 | 否       |
 | culture  | 源或接收器列的区域性。 当类型为 `Datetime` 或 `Datetimeoffset` 时应用。 默认为 `en-us`。<br>通常无需指定或更改此属性。 详细了解[数据类型映射](#data-type-mapping)。 | 否       |
-| format   | 当类型为 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 通常无需指定或更改此属性。 详细了解[数据类型映射](#data-type-mapping)。 | 否       |
+| format   | 当类型为 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 通常无需指定或更改此属性。 详细了解[数据类型映射](#data-type-mapping)。 | 否       |
 
 除 `mappings` 外，`translator` 下还支持以下属性：
 
 | 属性            | 说明                                                  | 必须 |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | 从分层源（例如 Cosmos DB、MongoDB 或 REST 连接器）复制数据时适用。<br>若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
+| collectionReference | 从分层源（例如 Cosmos DB、MongoDB 或 REST 连接器）复制数据时适用。<br>若要进行迭代操作，以同一模式从 **数组字段中** 的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
 
 #### <a name="tabular-source-to-tabular-sink"></a>表格源到表格接收器
 
@@ -314,9 +314,9 @@ ms.locfileid: "85249646"
 | 在 `typeConversionSettings` 下 |                                                              |          |
 | allowDataTruncation              | 复制期间使用不同类型将源数据转换为接收器数据（例如，从小数转换为整数，从 DatetimeOffset 转换为 Datetime）时，允许数据截断。 <br>默认值为 true。 | 否       |
 | treatBooleanAsNumber             | 将布尔值视为数字，例如，将 true 视为 1。<br>默认值为 false。 | 否       |
-| dateTimeFormat                   | 在日期（不包含时区偏移）和字符串之间进行转换时的格式字符串，例如 `yyyy-MM-dd HH:mm:ss.fff`。  请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解详细信息。 | 否       |
-| dateTimeOffsetFormat             | 在日期（包含时区偏移）和字符串之间进行转换时的格式字符串，例如 `yyyy-MM-dd HH:mm:ss.fff zzz`。  请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解详细信息。 | 否       |
-| timeSpanFormat                   | 在时间段和字符串之间进行转换时的格式字符串，例如 `dd\.hh\:mm`。 请参阅[自定义 TimeSpan 格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings)，了解详细信息。 | 否       |
+| dateTimeFormat                   | 在日期（不包含时区偏移）和字符串之间进行转换时的格式字符串，例如 `yyyy-MM-dd HH:mm:ss.fff`。  请参阅[自定义日期和时间格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解详细信息。 | 否       |
+| dateTimeOffsetFormat             | 在日期（包含时区偏移）和字符串之间进行转换时的格式字符串，例如 `yyyy-MM-dd HH:mm:ss.fff zzz`。  请参阅[自定义日期和时间格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解详细信息。 | 否       |
+| timeSpanFormat                   | 在时间段和字符串之间进行转换时的格式字符串，例如 `dd\.hh\:mm`。 请参阅[自定义 TimeSpan 格式字符串](/dotnet/standard/base-types/custom-timespan-format-strings)，了解详细信息。 | 否       |
 | culture                          | 转换类型时要使用的区域性信息，例如 `en-us` 或 `fr-fr`。 | 否       |
 
 **示例：**
@@ -455,8 +455,8 @@ ms.locfileid: "85249646"
 | 属性            | 说明                                                  | 必须 |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是      |
-| schemaMapping       | 键值对的集合，代表**从源端到接收器端**的映射关系。<br/>- **键：** 代表源。 对于**表格源**，指定数据集结构中定义的列名称；对于**分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于**表格接收器**，指定数据集结构中定义的列名称；对于**分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。 | 是      |
-| collectionReference | 若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否       |
+| schemaMapping       | 键值对的集合，代表 **从源端到接收器端** 的映射关系。<br/>- **键：** 代表源。 对于 **表格源**，指定数据集结构中定义的列名称；对于 **分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于 **表格接收器**，指定数据集结构中定义的列名称；对于 **分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。 | 是      |
+| collectionReference | 若要进行迭代操作，以同一模式从 **数组字段中** 的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否       |
 
 **示例：从 MongoDB 复制到 Oracle：**
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020085"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331985"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中监视 Service Fabric 群集
 
@@ -57,7 +57,7 @@ Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测
 
 在“概述”中，将看到每个已启用解决方案的图形磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
 
-![Service Fabric 解决方案](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![显示 Service Fabric 图的屏幕截图。](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 下图是 Service Fabric 分析解决方案的主页。 此主页提供了群集中正在发生的事件的快照视图。
 

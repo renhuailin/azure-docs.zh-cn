@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1d651f3136b096eae957f0271e33cd11b1fb5571
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317848"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617419"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
 
@@ -25,7 +25,13 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 ### <a name="partition-key-options"></a>分区键选项
 
-用于分区输入数据的分区键或列名称可能包含带有连字符、下划线和空格的字母数字字符。 除非与别名一起使用，否则无法将嵌套字段用作分区键。 分区键必须为 NVARCHAR (MAX) 、BIGINT、FLOAT 或 BIT (1.2 兼容级别或更高版本) 。 有关详细信息，请参阅 [Azure 流分析数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
+用于对输入数据进行分区的分区键或列名称可能包含对 [blob 名称](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)接受的任何字符。 不能使用嵌套字段作为分区键，除非将其与别名结合使用，但你可以使用特定字符创建文件层次结构。 例如，您可以使用以下查询来创建一个列，该列将两个其他列中的数据合并为一个唯一的分区键。
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+分区键必须为 NVARCHAR(MAX)、BIGINT、FLOAT 或 BIT（1.2 兼容级别或更高级别）。 不支持 DateTime、Array 和记录类型，但如果将其转换为字符串，则可以将其用作分区键。 有关详细信息，请参阅 [Azure 流分析数据类型](/stream-analytics-query/data-types-azure-stream-analytics)。
 
 ### <a name="example"></a>示例
 
@@ -44,7 +50,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 ![“客户端”容器](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-每个文件夹都可能包含多个 blob，其中每个 blob 包含一个或多个记录。 在上面的示例中，文件夹中有一个名为 "06000000" 的 blob，其中包含以下内容：
+每个文件夹都可能包含多个 blob，其中每个 blob 包含一个或多个记录。 在上面的示例中，标记为“06000000”的文件夹中有一个 blob，其中包含以下内容：
 
 ![blob 内容](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
@@ -62,6 +68,8 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 2. 由于分区键不区分大小写，因此像“John”和“john”这样的分区键是等效的。 另外，无法使用表达式作为分区键。 例如，{columnA + columnB} 不起作用。  
 
 3. 如果输入流由分区键基数低于 8000 的记录组成，记录会附加到现有 blob，并且仅在必要时新建 blob。 如果基数超过 8000，无法保证将写入现有 blob，并且不会为具有相同分区键的任意数量记录新建 blob。
+
+4. 如果将 blob 输出 [配置为不可变](../storage/blobs/storage-blob-immutable-storage.md)，则流分析将在每次发送数据时创建新的 blob。
 
 ## <a name="custom-datetime-path-patterns"></a>自定义 DateTime 路径模式
 
@@ -113,7 +121,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>示例
 
-根据 [Azure 流分析 Azure 门户](stream-analytics-quick-create-portal.md) 快速入门指南创建存储帐户、资源组、流分析作业和输入源。 使用在快速入门指南中使用的同一示例数据，该数据也可以在 [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) 上获取。
+根据 [Azure 流分析 Azure 门户](stream-analytics-quick-create-portal.md)快速入门指南中的说明，创建存储帐户、资源组、流分析作业和输入源。 使用在快速入门指南中使用的同一示例数据，该数据也可以在 [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) 上获取。
 
 使用以下配置创建 Blob 输出接收器：
 

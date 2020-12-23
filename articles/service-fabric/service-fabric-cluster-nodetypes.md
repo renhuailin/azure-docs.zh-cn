@@ -4,17 +4,16 @@ description: 了解 Azure Service Fabric 节点类型如何与虚拟机规模集
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9e30c02de54806006a1881448bcb9f788a57310c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561884"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095247"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 节点类型与虚拟机规模集
 
-[虚拟机规模集](../virtual-machine-scale-sets/index.yml)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 在 Azure Service Fabric 群集中定义的每个节点类型都只设置了一个规模集：多个节点类型不能由同一规模集提供支持，而一个节点类型（在大多数情况下）不应由多个规模集提供支持。 此情况的一个例外是[垂直缩放](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)节点类型这一罕见情况，即当副本从原始规模集迁移到已升级规模集时，临时有两个具有相同 `nodeTypeRef` 值的规模集。
+[虚拟机规模集](../virtual-machine-scale-sets/index.yml)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 在 Azure Service Fabric 群集中定义的每个节点类型仅设置一个规模集：多个节点类型不能由同一规模集支持，一个节点类型不应由多个规模集支持。
 
 规模集中每个虚拟机上均通过 Microsoft.Azure.ServiceFabric 虚拟机扩展安装了 Service Fabric 运行时。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
 
@@ -32,7 +31,7 @@ ms.locfileid: "90561884"
 
 如果已在 Azure 门户部署群集，或使用了示例 Azure 资源管理器模板，将列出资源组下所有的资源。 可看到每个规模集或节点类型的负载均衡器。 负载均衡器名称使用以下格式：LB-&lt;节点类型名称&gt;。 例如，下图中显示的 LB-sfcluster4doc-0：
 
-![屏幕截图显示了一个突出显示了两个负载均衡器的资源组。][Resources]
+![屏幕截图显示了一个资源组，其中突出显示了两个负载均衡器。][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric 虚拟机扩展
 

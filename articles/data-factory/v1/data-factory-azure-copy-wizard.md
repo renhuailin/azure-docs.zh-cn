@@ -10,21 +10,22 @@ ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2dfb5876922fd53c372afe82ecdfa843179fb135
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439004"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462222"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure 数据工厂复制向导
+
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 
 
-Azure 数据工厂复制向导可简化数据引入过程，这通常是端到端数据集成方案中的第一步。 使用 Azure 数据工厂复制向导时，不需要了解有关链接服务、数据集和管道的任何 JSON 定义。 向导会自动创建管道，将数据从所选数据源复制到所选目标。 此外，复制向导可帮助用户验证创作时所引入的数据。 这可节省时间，特别适用于从数据源首次引入数据时。 若要启动复制向导，请单击数据工厂主页上的“复制数据”**** 磁贴。
+Azure 数据工厂复制向导可简化数据引入过程，这通常是端到端数据集成方案中的第一步。 使用 Azure 数据工厂复制向导时，不需要了解有关链接服务、数据集和管道的任何 JSON 定义。 向导会自动创建管道，将数据从所选数据源复制到所选目标。 此外，复制向导可帮助用户验证创作时所引入的数据。 这可节省时间，特别适用于从数据源首次引入数据时。 若要启动复制向导，请单击数据工厂主页上的“复制数据”磁贴。
 
 ![复制向导](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
@@ -35,8 +36,6 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 
 > [!NOTE]
 > 有关创建示例管道将数据从 Azure Blob 复制到 Azure SQL 数据库表的分步说明，请参阅[复制向导教程](data-factory-copy-data-wizard-tutorial.md)。
->
->
 
 该向导从设计之初就考虑到了大数据，支持多种数据和对象类型。 可创建移动数百个文件夹、文件或表的数据工厂管道。 该向导支持自动数据预览、架构捕获和映射，以及筛选数据。
 
@@ -49,8 +48,7 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 某些情况下，输入数据的架构可能与输出数据的架构不匹配。 在这种情况下，需要将源架构中的列映射到目标架构中的列。
 
 > [!TIP]
-> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse 分析 (以前的 SQL 数据仓库) ，如果目标存储中不存在该表，数据工厂将支持使用源架构自动创建表。 了解有关 [使用 Azure 数据工厂将数据移入和移出 Azure Synapse 分析](./data-factory-azure-sql-data-warehouse-connector.md)的详细信息。
->
+> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics 时，如果目标存储中不存在该表，则数据工厂支持使用源架构自动创建表。 了解有关 [使用 Azure 数据工厂将数据移入和移出 Azure Synapse 分析](./data-factory-azure-sql-data-warehouse-connector.md)的详细信息。
 
 使用下拉列表从源架构中选择列，映射到目标架构中的列。 复制向导尝试了解列映射的模式。 它将相同模式应用于其余列，从而不需要单独选择每个列以完成架构映射。 如需要，可通过使用下拉列表逐个映射列来替代这些映射。 映射的列越多，模式越准确。 复制向导不断更新模式，最终达到想要完成的列映射的正确模式。     
 
@@ -80,7 +78,7 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 
 ![使用系统变量](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-如以下屏幕截图所示，还可以使用“自定义”**** 变量和任何[支持格式的字符串](https://msdn.microsoft.com/library/8kb3ddd4.aspx)。 若要选择具有该结构的文件夹，请首先使用“浏览”**** 按钮。 然后将值替换为 **{custom}**，并按 **Tab** 键，查看可在其中键入格式字符串的文本框。     
+如以下屏幕截图所示，还可以使用“自定义”变量和任何[支持格式的字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 若要选择具有该结构的文件夹，请首先使用“浏览”按钮。 然后将值替换为 **{custom}**，并按 **Tab** 键，查看可在其中键入格式字符串的文本框。     
 
 ![使用自定义变量](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -90,6 +88,49 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 一次性复制操作仅支持一次性将数据从源移动到目标。 它适用于任何大小的数据和任何受支持的格式。 通过计划的复制，可以按规定的重复周期复制数据。 可使用丰富的设置（例如，重试、超时和警报）来配置计划的复制。
 
 ![计划属性](./media/data-factory-copy-wizard/scheduling-properties.png)
+
+## <a name="troubleshooting"></a>疑难解答
+
+本部分探讨 Azure 数据工厂中复制向导的常见故障排除方法。
+
+> [!NOTE] 
+> 这些故障排除提示适用于数据工厂版本1中的复制向导。 有关数据工厂 v2，请参阅 [Azure 数据工厂故障](../data-factory-ux-troubleshoot-guide.md)排除指南。
+
+### <a name="error-code-unable-to-validate-in-copy-wizard"></a>错误代码：无法在复制向导中验证
+
+- **症状**：在复制向导的第一步中，你遇到了 "无法验证" 的警告消息。
+- 原因：禁用所有第三方 Cookie 时可能会发生这种情况。
+- **解决方法**： 
+    - 使用 Internet Explorer 或 Microsoft Edge 浏览器。
+    - 如果使用的是 Chrome 浏览器，请按照以下说明为 microsoftonline.com 和 windows.net 添加 Cookie 例外 。
+        1.  打开 Chrome 浏览器。
+        2.  单击右侧的扳手或三条线（自定义并控制 Google Chrome）。
+        3.  单击“设置”。
+        4.  在“高级设置”下搜索 Cookie 或转到“隐私” 。
+        5.  选择“内容设置”。    
+        6.  Cookie 应设置为“允许设置本地数据(推荐)”。
+        7.  单击“管理例外”。 在“主机名模式”下输入以下内容，并确保已设置为“允许” 。
+            - login.microsoftonline.com
+            - login.windows.net
+        8.  关闭浏览器并重新启动。
+    - 如果使用的是 Firefox 浏览器，请按照以下说明添加 Cookie 例外。
+        1. 从 Firefox 菜单中转到“工具” > “选项” 。
+        2. 在“隐私” > “历史记录”下，可能会看到当前设置为“对历史记录使用自定义设置”  。
+        3. 在“接受第三方 Cookie”中，当前设置可能为“从不”，则应在右侧单击“例外”以添加以下站点  。
+            - https://login.microsoftonline.com
+            - https://login.windows.net
+        4.  关闭浏览器并重新启动。 
+
+
+### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>错误代码：无法打开登录页并输入密码
+
+- **症状**：复制向导将您重定向到登录页，但登录页面未成功显示。
+- 原因：如果将网络环境从办公室网络更改为家庭网络，则可能会发生此问题。 浏览器中有一些缓存。 
+- **解决方法**： 
+    1.  请关闭浏览器并重试。 如果问题仍然存在，请继续执行下一步。   
+    2.  如果使用的是 Internet Explorer 浏览器，请尝试以隐私模式打开它（按 Ctrl+Shift+P）。 如果使用的是 Chrome 浏览器，请尝试以无痕模式打开它（按 Ctrl+Shift+N）。 如果问题仍然存在，请继续执行下一步。 
+    3.  尝试使用其他浏览器。 
+
 
 ## <a name="next-steps"></a>后续步骤
 有关使用数据工厂复制向导创建具有复制活动的管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。

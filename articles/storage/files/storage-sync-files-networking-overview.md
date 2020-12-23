@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 76d97e3312c1df51193d8a881f3ee07fcd155d75
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267782"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629353"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure 文件同步的网络注意事项
 可以通过两种方式连接到 Azure 文件共享：
@@ -55,7 +55,7 @@ Azure 文件同步需要以下服务的 IP 地址范围，由其服务标记标�
 | Azure 资源管理器 | Azure 资源管理器是 Azure 的管理接口。 所有管理调用（包括 Azure 文件同步服务器注册和正在进行的同步服务器任务）都通过 Azure 资源管理器进行。 | `AzureResourceManager` |
 | Azure Active Directory | Azure Active Directory 简称 Azure AD，包含对存储同步服务授权服务器注册所需的用户主体，以及授权 Azure 文件同步访问云资源所需的服务主体。 | `AzureActiveDirectory` |
 
-如果在 Azure 中使用 Azure 文件同步，即使是不同的区域，也可以直接在网络安全组中使用服务标记的名称，以允许流量发送到该服务。 若要了解有关如何执行此操作的详细信息，请参阅[网络安全组](../../virtual-network/security-overview.md)。 
+如果在 Azure 中使用 Azure 文件同步，即使是不同的区域，也可以直接在网络安全组中使用服务标记的名称，以允许流量发送到该服务。 若要了解有关如何执行此操作的详细信息，请参阅[网络安全组](../../virtual-network/network-security-groups-overview.md)。 
 
 如果是在本地使用 Azure 文件同步，则可以使用服务标记 API 为防火墙的允许列表获取特定的 IP 地址范围。 可以通过两种方法获取此信息：
 
@@ -65,9 +65,9 @@ Azure 文件同步需要以下服务的 IP 地址范围，由其服务标记标�
     - [Azure 中国：](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure 德国](https://www.microsoft.com/download/details.aspx?id=57064)
 - 服务标记发现 API（预览版）允许以编程方式检索最新服务标记列表。 在预览版中，服务标记发现 API 返回的信息可能早于从 Microsoft 下载中心发布的 JSON 文档返回的信息。 可以根据自动化首选项使用 API 接口：
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 若要详细了解如何使用服务标记 API 来检索服务的地址，请参阅 [Azure 文件同步 IP 地址允许列表](storage-sync-files-firewall-and-proxy.md#allow-list-for-azure-file-sync-ip-addresses)。
 

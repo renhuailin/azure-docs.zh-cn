@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e212b8c72a8cf7000a2789034f3ee83a5a0c9cda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 91d48e42dc1c92e05e963b4c8b53e44daa403378
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542736"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456682"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>教程：Azure Active Directory 与 Brightspace by Desire2Learn 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88542736"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Brightspace by Desire2Learn（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -92,7 +92,7 @@ ms.locfileid: "88542736"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -187,7 +187,7 @@ ms.locfileid: "88542736"
 
 ### <a name="create-brightspace-by-desire2learn-test-user"></a>创建 Brightspace by Desire2Learn 测试用户
 
-在本部分，将在 Brightspace by Desire2Learn 中创建一个名为 Britta Simon 的用户。 与  [Brightspace by Desire2Learn 支持团队](https://www.d2l.com/contact/)协作，将用户添加到 Brightspace by Desire2Learn 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分，将在 Brightspace by Desire2Learn 中创建一个名为 Britta Simon 的用户。 请与 [Brightspace by Desire2Learn 支持团队](https://www.d2l.com/contact/)协作，将用户添加到 Brightspace by Desire2Learn 平台。 使用单一登录前，必须先创建并激活用户。
 
 > [!NOTE]
 > 可以使用 Brightspace by Desire2Learn 提供的任何其他 Brightspace by Desire2Learn 用户帐户创建工具或 API 来预配 Azure Active Directory 用户帐户。
@@ -196,12 +196,12 @@ ms.locfileid: "88542736"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Brightspace by Desire2Learn 磁贴时，应当会自动登录到为其设置了 SSO 的 Brightspace by Desire2Learn。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Brightspace by Desire2Learn 磁贴时，应当会自动登录到为其设置了 SSO 的 Brightspace by Desire2Learn。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

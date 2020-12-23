@@ -2,19 +2,21 @@
 title: 使用 Azure Cosmos DB 中的日期
 description: 了解如何在 Azure Cosmos DB 中存储、索引和查询 DataTime 对象
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a524d34fcf8e629914d4fbc4669caada210866b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ba4d4e63bdd1e795bc1c599d0eae8a595aa0d643
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019182"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359517"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 通过本机 [JSON](https://www.json.org) 数据模型提供架构灵活性和丰富的索引。 所有 Azure Cosmos DB 资源（包括数据库、容器、文档和存储过程）均作为 JSON 文档进行建模和存储。 为使代码可移植，JSON（及 Azure Cosmos DB）仅支持一小组基本类型：字符串、数字、布尔值、数组、对象和 Null。 但是，JSON 具有相当的灵活性，允许开发人员和框架使用这些基元并将其编写为对象或数组，以便表示更复杂的类型。
 
@@ -66,7 +68,7 @@ Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、
     }
 ```  
 
-也可将 DateTime 存储为 Unix 时间戳，即存储为数字，用于表示自 1970 年 1 月 1 日以来已过去的秒数。 Azure Cosmos DB 的内部时间戳 (`_ts`) 属性遵循这种方法。 可以使用 [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) 类将 DateTime 序列化为数字。
+也可将 DateTime 存储为 Unix 时间戳，即存储为数字，用于表示自 1970 年 1 月 1 日以来已过去的秒数。 Azure Cosmos DB 的内部时间戳 (`_ts`) 属性遵循这种方法。 可以使用 [UnixDateTimeConverter](/dotnet/api/microsoft.azure.documents.unixdatetimeconverter) 类将 DateTime 序列化为数字。
 
 ## <a name="querying-datetimes-in-linq"></a>在 LINQ 中查询 Datetime
 
@@ -92,6 +94,6 @@ SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 下载并运行 [GitHub 上的代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
+* 下载并运行 [GitHub 上的代码示例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples)
 * 详细了解 [SQL 查询](sql-query-getting-started.md)
 * 详细了解 [Azure Cosmos DB 索引策略](index-policy.md)

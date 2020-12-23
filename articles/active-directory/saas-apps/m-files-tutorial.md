@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554815"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>教程：Azure Active Directory 与 M-Files 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88554815"
 * 可让用户使用其 Azure AD 帐户自动登录到 M-Files（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88554815"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -133,11 +133,11 @@ ms.locfileid: "88554815"
 
 1. 打开“M-Files 桌面设置”窗口。  然后，单击“添加”  。
    
-    ![配置单一登录](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![屏幕截图显示了“M-Files 桌面设置”，你可以在其中选择“添加”。](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. 在“文档保管库连接属性”窗口中，执行以下步骤： 
    
-    ![配置单一登录](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![屏幕截图显示了“文档保管库连接属性”，你可以在其中输入所述值。](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     在“服务器”部分键入如下值：  
 
@@ -212,13 +212,12 @@ ms.locfileid: "88554815"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 M-Files 磁贴时，应当会自动登录到已为其设置了 SSO 的 M-Files。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 M-Files 磁贴时，应当会自动登录到已为其设置了 SSO 的 M-Files。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

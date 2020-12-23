@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f455a1132a0f63e1ba3eb5d2a57a1f9bfa9a867
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335545"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895675"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
 
@@ -24,7 +24,7 @@ ms.locfileid: "91335545"
  - 可以使用填充模式图像呈现多边形层。 
  - HTML 标记可以使用图像和其他 HTML 元素呈现点。
 
-为了确保层具有良好的性能，请在呈现前将图像加载到地图图像动画处理资源。 默认情况下，SymbolLayer 的 [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)将几个颜色的标记图像预加载到地图图像的子画面。 这些标记图像和其他标记图像作为 SVG 模板提供。 它们可用于创建具有自定义比例的图像，或用作客户主要和辅助颜色。 总共提供了42个图像模板：27个符号图标和15个多边形填充模式。
+为了确保层具有良好的性能，请在呈现前将图像加载到地图图像动画处理资源。 默认情况下，SymbolLayer 的 [IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions)将几个颜色的标记图像预加载到地图图像的子画面。 这些标记图像和其他标记图像作为 SVG 模板提供。 它们可用于创建具有自定义比例的图像，或用作客户主要和辅助颜色。 总共提供了42个图像模板：27个符号图标和15个多边形填充模式。
 
 可以使用函数将图像模板添加到地图图像 sprite 资源 `map.imageSprite.createFromTemplate` 。 此函数允许传入多达五个参数;
 
@@ -122,7 +122,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 | 名称 | 返回类型 | 说明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 向塔命名空间添加自定义 SVG 图像模板。 |
-|  `getImageTemplate(templateName: string, scale?: number)`| string | 按名称检索 SVG 模板。 |
+|  `getImageTemplate(templateName: string, scale?: number)`| 字符串 | 按名称检索 SVG 模板。 |
 | `getAllImageTemplateNames()` | string[] |  按名称检索 SVG 模板。 |
 
 SVG 图像模板支持以下占位符值：
@@ -216,7 +216,7 @@ SVG 图像模板支持以下占位符值：
       标记-方形舍入-分类
    :::column-end:::
    :::column span="":::
-      标志
+      flag
    :::column-end:::
    :::column span="":::
       标记-三角形
@@ -514,10 +514,10 @@ SVG 图像模板支持以下占位符值：
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [ImageSpriteManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
+> [ImageSpriteManager](/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [阿特拉斯命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#functions
+> [阿特拉斯命名空间](/javascript/api/azure-maps-control/atlas#functions
 )
 
 请参阅以下文章，了解可以使用图像模板的更多代码示例：

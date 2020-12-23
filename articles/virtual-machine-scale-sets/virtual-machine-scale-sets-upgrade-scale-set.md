@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029291"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358735"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -87,7 +87,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
     ```
 
-- 还可以使用[resources.azure.com](https://resources.azure.com)或特定于语言的[azure sdk](https://azure.microsoft.com/downloads/)
+- 还可以使用 [resources.azure.com](https://resources.azure.com) 或特定于语言的 [azure sdk](https://azure.microsoft.com/downloads/)
 
 输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
@@ -181,7 +181,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- 还可以使用[resources.azure.com](https://resources.azure.com)或[azure sdk](https://azure.microsoft.com/downloads/)
+- 还可以使用 [resources.azure.com](https://resources.azure.com) 或 [azure sdk](https://azure.microsoft.com/downloads/)
 
 输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
@@ -348,14 +348,14 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>只能在当前值的基础上更改的属性
 某些属性可以更改，但也有例外，具体取决于当前值。 这些属性包括：
 
-- **singlePlacementGroup** - 如果 singlePlacementGroup 为 true，则可将其修改为 false。 但是，如果 singlePlacementGroup 为 false，则**不可**将其修改为 true。
+- **singlePlacementGroup** - 如果 singlePlacementGroup 为 true，则可将其修改为 false。 但是，如果 singlePlacementGroup 为 false，则 **不可** 将其修改为 true。
 - **subnet** - 修改规模集的子网的前提是，原始子网和新子网在同一虚拟网络中。
+- **imageReferenceSku** -可以针对认可的 [Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)、Windows server/客户端映像和无 [计划信息](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties)的映像更新映像参考 SKU。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>需要解除分配才能更改的属性
 某些属性只有在规模集中的 VM 已解除分配的情况下，才能更改为特定值。 这些属性包括：
 
-- **SKU 名称** - 如果新 VM SKU 在规模集当前所在的硬件上不受支持，则需先将规模集中的 VM 解除分配，然后才能修改 SKU 名称。 有关详细信息，请参阅[如何调整 Azure VM 的大小](../virtual-machines/windows/resize-vm.md)。
-
+- **SKU 名称**-如果新的 VM SKU 在规模集当前所在的硬件上不受支持，则需要在修改 SKU 名称之前解除分配规模集中的 vm。 有关详细信息，请参阅[如何调整 Azure VM 的大小](../virtual-machines/windows/resize-vm.md)。 
 
 ## <a name="vm-specific-updates"></a>特定于 VM 的更新
 某些修改可以应用于特定的 VM，但不能应用于全局规模集属性。 目前，唯一受支持的特定于 VM 的更新是将数据磁盘附加到规模集中的 VM 或者从其分离数据磁盘。 此功能为预览版。 有关详细信息，请参阅[预览版文档](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)。
@@ -364,7 +364,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ## <a name="scenarios"></a>方案
 
 ### <a name="application-updates"></a>应用程序更新
-如果应用程序已通过扩展部署到规模集，则更新扩展配置会导致应用程序按升级策略进行更新。 例如，如果新版脚本在自定义脚本扩展中运行，则可更新 *fileUris* 属性，使之指向新脚本。 在某些情况下，可能需要强制进行更新，即使扩展配置未更改（例如，在未更改脚本 URI 的情况下更新脚本）。 在这些情况下，可以通过修改 *forceUpdateTag* 来强制进行更新。 Azure 平台不解释此属性。 如果更改此值，不会影响扩展的运行方式。 更改只是会强制扩展重新运行。 有关 *forceUpdateTag* 的详细信息，请参阅[针对扩展的 REST API 文档](/rest/api/compute/virtualmachineextensions/createorupdate)。 请注意，*forceUpdateTag* 可用于所有扩展，而不仅仅是自定义脚本扩展。
+如果应用程序已通过扩展部署到规模集，则更新扩展配置会导致应用程序按升级策略进行更新。 例如，如果新版脚本在自定义脚本扩展中运行，则可更新 *fileUris* 属性，使之指向新脚本。 在某些情况下，可能需要强制进行更新，即使扩展配置未更改（例如，在未更改脚本 URI 的情况下更新脚本）。 在这些情况下，可以通过修改 *forceUpdateTag* 来强制进行更新。 Azure 平台不解释此属性。 如果更改此值，不会影响扩展的运行方式。 更改只是会强制扩展重新运行。 有关 *forceUpdateTag* 的详细信息，请参阅 [针对扩展的 REST API 文档](/rest/api/compute/virtualmachineextensions/createorupdate)。 请注意，*forceUpdateTag* 可用于所有扩展，而不仅仅是自定义脚本扩展。
 
 通过自定义映像来部署应用程序也很常见。 以下部分介绍此情景。
 
@@ -372,7 +372,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 如果使用 Azure 平台映像，可以通过修改 *imageReference* 来更新映像（有关详细信息，请参阅 [REST API 文档](/rest/api/compute/virtualmachinescalesets/createorupdate)）。
 
 >[!NOTE]
-> 使用平台映像时，通常指定 "latest" 作为映像引用版本。 在你执行创建、横向扩展和重置映像操作时，将使用最新发布的脚本创建 VM。 但是，这**并不**意味着 OS 映像会随新映像版本的发布自动进行更新。 当前处于预览版状态的一个独立功能提供了自动 OS 升级功能。 有关详细信息，请参阅[自动 OS 升级文档](virtual-machine-scale-sets-automatic-upgrade.md)。
+> 使用平台映像时，通常指定 "latest" 作为映像引用版本。 在你执行创建、横向扩展和重置映像操作时，将使用最新发布的脚本创建 VM。 但是，这 **并不** 意味着 OS 映像会随新映像版本的发布自动进行更新。 当前处于预览版状态的一个独立功能提供了自动 OS 升级功能。 有关详细信息，请参阅[自动 OS 升级文档](virtual-machine-scale-sets-automatic-upgrade.md)。
 
 如果使用自定义映像，可以通过更新 *imageReference* ID 来更新映像（有关详细信息，请参阅 [REST API 文档](/rest/api/compute/virtualmachinescalesets/createorupdate)）。
 

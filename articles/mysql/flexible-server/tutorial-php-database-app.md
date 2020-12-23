@@ -7,20 +7,20 @@ ms.service: mysql
 ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929277"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844431"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP (Laravel) 应用和 MySQL 灵活服务器（预览版）
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure 中的 PHP Web 应用与灵活服务器":::
 
-[Azure 应用服务](https://docs.microsoft.com/azure/app-service/overview)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何在 Azure 中创建 PHP 应用，并将其连接到 MySQL 数据库。 完成本教程后，Linux 上的 Azure 应用服务中将会运行一个 [Laravel](https://laravel.com/) 应用。
+[Azure 应用服务](../../app-service/overview.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何在 Azure 中创建 PHP 应用，并将其连接到 MySQL 数据库。 完成本教程后，Linux 上的 Azure 应用服务中将会运行一个 [Laravel](https://laravel.com/) 应用。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -31,7 +31,7 @@ ms.locfileid: "90929277"
 > * 更新数据模型并重新部署应用
 > * 在 Azure 门户中管理应用
 
-如果还没有 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+如果还没有 [Azure 订阅](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -139,7 +139,7 @@ php artisan serve
 在终端键入 `Ctrl + C` 可停止 PHP。
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>创建 MySQL 灵活服务器（预览版）
-在此步骤中，在以预览版形式提供的 [Azure Database for MySQL 灵活服务器](/azure/mysql)中创建 MySQL 数据库。 稍后需要将 PHP 应用程序配置为连接到此数据库。 在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中，使用 [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) 命令在该数据库中创建服务器。
+在此步骤中，在以预览版形式提供的 [Azure Database for MySQL 灵活服务器](../index.yml)中创建 MySQL 数据库。 稍后需要将 PHP 应用程序配置为连接到此数据库。 在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中，使用 [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) 命令在该数据库中创建服务器。
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
@@ -280,7 +280,7 @@ git commit -m "database.php updates"
 
 可以使用“deployment user”将 FTP 和本地 Git 部署到 Azure Web 应用。 配置部署用户之后，可对所有 Azure 部署使用此用户。 帐户级部署用户名和密码不同于 Azure 订阅凭据。
 
-若要配置部署用户，请在 Azure Cloud Shell 中运行 [az webapp deployment user set](https://docs.microsoft.com/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) 命令。 将 &lt;username> 和 &lt;password> 替换为你的部署用户名和密码 。
+若要配置部署用户，请在 Azure Cloud Shell 中运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) 命令。 将 &lt;username> 和 &lt;password> 替换为你的部署用户名和密码 。
 
 用户名在 Azure 中必须唯一，并且为了本地Git推送，不能包含“@”符号。
 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
@@ -293,7 +293,7 @@ JSON 输出会将该密码显示为 Null。 如果出现“冲突”- 详细信�
 
 ### <a name="create-an-app-service-plan"></a>创建应用服务计划
 
-在 Cloud Shell 中，使用 [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) 命令在资源组中创建应用服务计划。 以下示例在免费定价层 (--sku F1) 和 Linux 容器 (--is-linux) 中创建名为 myAppServicePlan 的应用服务计划。
+在 Cloud Shell 中，使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) 命令在资源组中创建应用服务计划。 以下示例在免费定价层 (--sku F1) 和 Linux 容器 (--is-linux) 中创建名为 myAppServicePlan 的应用服务计划。
 
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
 
@@ -301,9 +301,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
-在 myAppServicePlan 应用服务计划中创建 [Web 应用](https://docs.microsoft.com/azure/app-service/overview#app-service-on-linux)。
+在 myAppServicePlan 应用服务计划中创建 [Web 应用](../../app-service/overview.md#app-service-on-linux)。
 
-在 Cloud Shell 中可以使用 [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) 命令。 在以下示例中，将 &lt;app-name> 替换为全局唯一的应用名称（有效字符包括 `a-z`、`0-9` 和 `-`）。 运行时设置为 `PHP|7.0`。 若要查看所有受支持的运行时，请运行 [az webapp list-runtimes --linux](https://docs.microsoft.com/cli/azure/webapp#az-webapp-list-runtimes)。
+在 Cloud Shell 中可以使用 [az webapp create](/cli/azure/webapp#az-webapp-create) 命令。 在以下示例中，将 &lt;app-name> 替换为全局唯一的应用名称（有效字符包括 `a-z`、`0-9` 和 `-`）。 运行时设置为 `PHP|7.0`。 若要查看所有受支持的运行时，请运行 [az webapp list-runtimes --linux](/cli/azure/webapp#az-webapp-list-runtimes)。
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -377,17 +377,17 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 [Laravel 应用程序生命周期](https://laravel.com/docs/5.4/lifecycle)在 public 目录中开始，而不是在应用程序的根目录中开始。 适用于应用服务的默认 PHP Docker 映像使用 Apache，不允许为 Laravel 自定义 `DocumentRoot`。 但是，可以使用 `.htaccess` 来重写所有请求，使之指向 _/public_ 而不是根目录。 在存储库根目录中，已针对此目的添加了 `.htaccess`。 有了它即可部署 Laravel 应用程序。
 
-有关详细信息，请参阅[更改站点根](https://docs.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#change-site-root)。
+有关详细信息，请参阅[更改站点根](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root)。
 
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
 
-回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 将 _&lt;deploymentLocalGitUrl-from-create-step>_ 替换为从[创建 Web 应用](#create-a-web-app)保存的 Git 远程 URL。
+回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 将 _&lt;deploymentLocalGitUrl-from-create-step>_ 替换为从 [创建 Web 应用](#create-a-web-app)保存的 Git 远程 URL。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-使用以下命令推送到 Azure 远程库以部署应用。 当 Git 凭据管理器提示输入凭据时，请确保输入在**配置部署用户**中创建的凭据，而不是用于登录到 Azure 门户的凭据。
+使用以下命令推送到 Azure 远程库以部署应用。 当 Git 凭据管理器提示输入凭据时，请确保输入在 **配置部署用户** 中创建的凭据，而不是用于登录到 Azure 门户的凭据。
 
 ```bash
 git push azure master
@@ -572,6 +572,6 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何在 Azure 门户中管理资源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal) <br/>
+> [如何在 Azure 门户中管理资源](../../azure-resource-manager/management/manage-resources-portal.md) <br/>
 > [!div class="nextstepaction"]
 > [如何管理服务器](how-to-manage-server-cli.md)

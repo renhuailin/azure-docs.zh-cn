@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/11/2019
+ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-js
-ms.openlocfilehash: 2701b4cd17a132de07c031166bbe4cb1086227e9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ec73394e184e3c16fbc4eebf2a1090c9e52ddee4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91324722"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188190"
 ---
 本指南介绍如何安装可以在网页中使用的 JavaScript 版[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 

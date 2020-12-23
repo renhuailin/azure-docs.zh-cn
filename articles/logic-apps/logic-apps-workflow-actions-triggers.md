@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: c15724643fb3c8c74d3afe58509822c56d2d17f3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821962"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920057"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -62,7 +62,7 @@ ms.locfileid: "91821962"
 |-------|------|-------------| 
 | <*array-with-conditions*> | Array | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
 | <runtime-config-options> | JSON 对象 | 通过设置 `runtimeConfiguration` 属性可更改触发器运行时行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
-| <splitOn-expression> | String | 对于返回数组的触发器，可指定一个将数组项[拆分或解除批处理*到多个工作流实例进行处理的表达式*](#split-on-debatch)。 | 
+| <splitOn-expression> | String | 对于返回数组的触发器，可指定一个将数组项 [拆分或解除批处理 *到多个工作流实例进行处理的表达式*](#split-on-debatch)。 | 
 | <operation-option> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
@@ -84,7 +84,7 @@ ms.locfileid: "91821962"
 
 | 触发器类型 | 说明 | 
 |--------------|-------------| 
-| [**ApiConnection**](#apiconnection-trigger) | 使用 [Microsoft 托管 API](../connectors/apis-list.md) 检查或轮询终结点**。 | 
+| [**ApiConnection**](#apiconnection-trigger) | 使用 [Microsoft 托管 API](../connectors/apis-list.md) 检查或轮询终结点。 | 
 | [**ApiConnectionWebhook**](#apiconnectionwebhook-trigger) | 通过调用 [Microsoft 托管 API](../connectors/apis-list.md) 为逻辑应用创建可调用的终结点以进行订阅和取消订阅。 | 
 ||| 
 
@@ -94,7 +94,7 @@ ms.locfileid: "91821962"
 
 ### <a name="apiconnection-trigger"></a>APIConnection 触发器  
 
-此触发器通过使用 [Microsoft 托管 API](../connectors/apis-list.md) 检查或轮询终结点，因此该触发器的参数可能基于终结点而有所不同**。 此触发器定义中的许多部分是可选的。 触发器的行为取决于是否包含部分。
+此触发器通过使用 [Microsoft 托管 API](../connectors/apis-list.md) 检查或轮询终结点，因此该触发器的参数可能基于终结点而有所不同。 此触发器定义中的许多部分是可选的。 触发器的行为取决于是否包含部分。
 
 ```json
 "<APIConnection_trigger_name>": {
@@ -160,7 +160,7 @@ ms.locfileid: "91821962"
 
 *示例*
 
-此触发器定义在工作或学校帐户的收件箱中每天检查电子邮件：
+此触发器定义每天都会在工作或学校帐户的收件箱中检查电子邮件：
 
 ```json
 "When_a_new_email_arrives": {
@@ -191,7 +191,7 @@ ms.locfileid: "91821962"
 
 ### <a name="apiconnectionwebhook-trigger"></a>ApiConnectionWebhook 触发器
 
-此触发器使用 [Microsoft 托管 API](../connectors/apis-list.md) 向终结点发送订阅请求，提供此终结点可将响应发送到的回叫 URL，并等待终结点响应**。 有关详细信息，请参阅[终结点订阅](#subscribe-unsubscribe)。
+此触发器使用 [Microsoft 托管 API](../connectors/apis-list.md) 向终结点发送订阅请求，提供此终结点可将响应发送到的回叫 URL，并等待终结点响应。 有关详细信息，请参阅[终结点订阅](#subscribe-unsubscribe)。
 
 ```json
 "<ApiConnectionWebhook_trigger_name>": {
@@ -681,7 +681,7 @@ ms.locfileid: "91821962"
 
 ## <a name="trigger-multiple-runs"></a>触发多个运行
 
-触发器可能会返回一个可供逻辑应用处理的数组，但有时候，“for each”循环可能会花过长的时间来处理每个数组项。 此时可改用触发器中的 **SplitOn** 属性，对数组执行解除批处理操作。 解除批处理时会拆分数组项，并启动一个针对每个数组项来运行的新工作流实例。 多种情况下可以使用此方法。例如，需要轮询一个终结点，而该终结点可能在不同的轮询间隔期之间返回多个新项。 若要了解 **SplitOn** 在单个逻辑应用运行中可以处理的最大数组项数，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 
+触发器可能会返回一个可供逻辑应用处理的数组，但有时候，“for each”循环可能会花过长的时间来处理每个数组项。 此时可改用触发器中的 **SplitOn** 属性，对数组执行解除批处理操作。 解除批处理时会拆分数组项，并启动一个针对每个数组项来运行的新工作流实例。 多种情况下可以使用此方法。例如，需要轮询一个终结点，而该终结点可能在不同的轮询间隔期之间返回多个新项。 若要了解 **SplitOn** 在单个逻辑应用运行中可以处理的最大数组项数，请参阅 [限制和配置](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 
 
 > [!NOTE]
 > 无法对同步响应模式使用 SplitOn。 任何使用 **SplitOn** 并包括一个响应操作的工作流都会异步运行并即时发送 `202 ACCEPTED` 响应。
@@ -909,7 +909,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *示例*
 
-此定义演示 Office 365 Outlook 连接器（属于 Microsoft 托管 API）的“发送电子邮件”操作****： 
+此定义演示 Office 365 Outlook 连接器（属于 Microsoft 托管 API）的“发送电子邮件”操作： 
 
 ```json
 "Send_an_email": {
@@ -936,7 +936,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 ### <a name="apiconnectionwebhook-action"></a>APIConnectionWebhook 操作
 
-此操作使用 [Microsoft 托管 API](../connectors/apis-list.md) 通过 HTTP 向终结点发送订阅请求，提供此终结点可将响应发送到的回叫 URL，并等待终结点响应**。 有关详细信息，请参阅[终结点订阅](#subscribe-unsubscribe)。
+此操作使用 [Microsoft 托管 API](../connectors/apis-list.md) 通过 HTTP 向终结点发送订阅请求，提供此终结点可将响应发送到的回叫 URL，并等待终结点响应。 有关详细信息，请参阅[终结点订阅](#subscribe-unsubscribe)。
 
 ```json
 "<action-name>": {
@@ -1074,7 +1074,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | <*JavaScript 代码段*> | 多种多样 | 要运行的 JavaScript 代码。 有关代码要求和详细信息，请参阅 [通过内联代码添加和运行代码片段](../logic-apps/logic-apps-add-run-inline-code.md)。 <p>在 `code` 特性中，代码片段可以使用只读的 `workflowContext` 对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。 有关对象的详细信息 `workflowContext` ，请参阅 [代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。 |
 ||||
 
-在某些情况下是必需的**
+在某些情况下是必需的
 
 `explicitDependencies` 特性指定要将触发器和/或先前操作的结果显式包含为代码片段的依赖项。 有关添加这些依赖项的详细信息，请参阅为 [内联代码添加参数](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters)。 
 
@@ -1506,7 +1506,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 * 工作流可在任意位置使用 Response 操作，但 Foreach 循环和 Until 循环（包括序列循环和并行分支）内除外 。 
 
-* 仅当 Response 操作所需的所有操作都在 [HTTP 请求超时限制](../logic-apps/logic-apps-limits-and-config.md#request-limits)内完成时，原始 HTTP 请求才会获取工作流的响应。
+* 仅当 **响应** 操作所需的所有操作在 [HTTP 超时限制](../logic-apps/logic-apps-limits-and-config.md#http-limits)内完成时，原始请求才会获得工作流的响应。
 
   但是，如果工作流调用另一个逻辑应用作为嵌套工作流，则父级工作流在嵌套工作流完成之前将处于等待状态，而不管嵌套工作流完成需要多久时间。
 
@@ -2309,6 +2309,9 @@ ID,Product_Name
 | <loop-timeout> | String | 针对循环可运行的最长时间的限制。 默认 `timeout` 值为 `PT1H`，即要求的 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 |||| 
 
+> [!NOTE]
+> 如果表达式依赖于 Until 循环中任何操作的输出，请确保考虑到该操作导致的任何失败。
+
 *示例*
 
 此循环操作定义向指定 URL 发送一个 HTTP 请求，直到满足以下某个条件：
@@ -2397,8 +2400,7 @@ ID,Product_Name
 | 操作选项 | 类型 | 说明 | 触发器或操作 | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | 以同步方式而非异步方式运行基于 HTTP 的操作。 <p><p>若要设置此选项，请参阅[同步运行操作](#disable-asynchronous-pattern)。 | 操作： <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[响应](#response-action) | 
-| `IncludeAuthorizationHeadersInOutputs` | String | 对于 [启用 Azure Active Directory 开放身份验证 (Azure AD OAuth) ](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) 的逻辑应用，以授权对基于请求的触发器终结点的入站调用的访问权限，请 `Authorization` 在触发器输出中包含 OAuth 访问令牌中的标头。 有关详细信息，请参阅 [在请求触发器输出中包含 "Authorization" 标头](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header)。 | 触发器： <p>[请求](#request-trigger)， <br>[HTTP Webhook](#http-webhook-trigger) | 
-| `OptimizedForHighThroughput` | String | 将针对每 5 分钟的操作执行数的[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)更改为[最大限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 <p><p>若要设置此选项，请参阅[在高吞吐量模式下运行](#run-high-throughput-mode)。 | 所有操作 | 
+| `IncludeAuthorizationHeadersInOutputs` | String | 对于[启用 Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) 的逻辑应用，若要授予对基于请求的触发器终结点的入站调用的访问权限，请在触发器输出中包含来自 OAuth 访问令牌的 `Authorization` 标头。 有关详细信息，请参阅[在 Request 触发器输出中包含“Authorization”标头](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header)。 | 触发器： <p>[Request](#request-trigger)、 <br>[HTTP Webhook](#http-webhook-trigger) | 
 | `Sequential` | String | 每次运行一个“for each”循环迭代，而不是同时并行运行所有迭代。 <p>此选项与将 `runtimeConfiguration.concurrency.repetitions` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p><p>若要设置此选项，请参阅[按顺序运行“for each”循环](#sequential-for-each)。| 操作： <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | 按顺序对每个逻辑应用实例运行此触发器，并在等待上一个活动运行完成后，再触发下一个逻辑应用实例。 <p><p>此选项与将 `runtimeConfiguration.concurrency.runs` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要设置此选项，请参阅[按顺序触发实例](#sequential-trigger)。 | 所有触发器 | 
 ||||
@@ -2705,24 +2707,6 @@ ID,Product_Name
    "type": "Http",
    "inputs": { "<action-inputs>" },
    "operationOptions": "DisableAsyncPattern",
-   "runAfter": {}
-}
-```
-
-<a name="run-high-throughput-mode"></a>
-
-### <a name="run-in-high-throughput-mode"></a>在高吞吐量模式下运行
-
-对于单个逻辑应用定义，每 5 分钟执行的操作数具有[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 若要将此限制提高到可能的[最大值](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)，请将 `operationOptions` 属性设为 `OptimizedForHighThroughput`。 此设置将逻辑应用置于“高吞吐量”模式之中。
-
-> [!NOTE]
-> 高吞吐量模式处于预览状态。 此外，还可根据需要在多个逻辑应用之间分配工作负荷。
-
-```json
-"<action-name>": {
-   "type": "<action-type>",
-   "inputs": { "<action-inputs>" },
-   "operationOptions": "OptimizedForHighThroughput",
    "runAfter": {}
 }
 ```

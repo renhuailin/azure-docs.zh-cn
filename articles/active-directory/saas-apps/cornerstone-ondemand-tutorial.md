@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: d01f2235f65cefd893f0dd3291ad98a9ee391eab
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f770ca49fb76019b6b17b1dac910bc9d2da6f4c2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555923"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674055"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cornerstone OnDemand 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555923"
 * 让用户通过其 Azure AD 帐户自动登录到 Cornerstone OnDemand。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +44,7 @@ ms.locfileid: "88555923"
 
 * Cornerstone OnDemand 支持 **SP** 发起的 SSO
 * Cornerstone OnDemand 支持[自动用户预配](cornerstone-ondemand-provisioning-tutorial.md)
-* 配置 Cornerstone OnDemand 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Cornerstone OnDemand 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>从库中添加 Cornerstone OnDemand
 
@@ -54,8 +54,8 @@ ms.locfileid: "88555923"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分的搜索框中，键入“Cornerstone OnDemand”********。
-1. 从结果面板中选择“Cornerstone OnDemand”，然后添加该应用****。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Cornerstone OnDemand”。
+1. 从结果面板中选择“Cornerstone OnDemand”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>为 Cornerstone OnDemand 配置和测试 Azure AD 单一登录
 
@@ -74,7 +74,7 @@ ms.locfileid: "88555923"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Cornerstone OnDemand”应用程序集成页上，找到“管理”部分，选择“单一登录”************。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Cornerstone OnDemand”应用程序集成页上，找到“管理”部分，选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -82,18 +82,18 @@ ms.locfileid: "88555923"
 
 1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.csod.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company>.csod.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Cornerstone OnDemand 客户端支持团队](mailto:moreinfo@csod.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Cornerstone OnDemand 客户端支持团队](mailto:moreinfo@csod.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 4. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Cornerstone OnDemand”部分，根据要求复制相应 URL****。
+6. 在“设置 Cornerstone OnDemand”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -129,11 +129,11 @@ ms.locfileid: "88555923"
 
 ## <a name="configure-cornerstone-ondemand-sso"></a>配置 Cornerstone OnDemand SSO
 
-若要在 **Cornerstone OnDemand** 端配置单一登录，需要将下载的**证书(Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [Cornerstone OnDemand 支持团队](mailto:moreinfo@csod.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Cornerstone OnDemand** 端配置单一登录，需要将下载的 **证书(Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [Cornerstone OnDemand 支持团队](mailto:moreinfo@csod.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-cornerstone-ondemand-test-user"></a>创建 Cornerstone OnDemand 测试用户
 
-本部分的目的是在 Cornerstone OnDemand 中创建名为“B.Simon”的用户。 Cornerstone OnDemand 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](https://docs.microsoft.com/azure/active-directory/saas-apps/cornerstone-ondemand-provisioning-tutorial)。
+本部分的目的是在 Cornerstone OnDemand 中创建名为“B.Simon”的用户。 Cornerstone OnDemand 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](./cornerstone-ondemand-provisioning-tutorial.md)。
 
 如果需要手动创建用户，请执行以下步骤：
 
@@ -146,16 +146,16 @@ ms.locfileid: "88555923"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Cornerstone OnDemand”磁贴时，应会自动登录到设置了 SSO 的 Cornerstone OnDemand。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Cornerstone OnDemand”磁贴时，应会自动登录到设置了 SSO 的 Cornerstone OnDemand。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 Cornerstone OnDemand](https://aad.portal.azure.com)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)

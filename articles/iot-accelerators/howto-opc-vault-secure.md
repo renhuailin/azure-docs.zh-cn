@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: e95edf21b7d6dce29b31220533269439fac120e4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a1b7564988c8a4d63a37b53d18ed3a7359e65d72
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281943"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926404"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>使用 OPC 保管库证书管理服务
 
 > [!IMPORTANT]
-> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 本文介绍如何注册应用程序，以及如何为 OPC UA 设备颁发已签名的应用程序证书。
 
@@ -40,7 +40,7 @@ ms.locfileid: "91281943"
 > 注册应用程序需要编写者角色。
 
 1. 在处打开证书服务 `https://myResourceGroup-app.azurewebsites.net` ，并登录。
-2. 请参阅 **注册新**。 对于应用程序注册，用户需要至少分配编写者角色。
+2. 请参阅 **注册新** 。 对于应用程序注册，用户需要至少分配编写者角色。
 2. 条目窗体遵循 OPC UA 中的命名约定。 例如，在以下屏幕截图中，会显示 OPC UA .NET Standard 堆栈中的 [OPC Ua 引用服务器](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) 示例的设置：
 
    ![UA 引用服务器注册的屏幕截图](media/howto-opc-vault-secure/reference-server-registration.png "UA 引用服务器注册")
@@ -53,7 +53,7 @@ ms.locfileid: "91281943"
 
 #### <a name="request-a-new-certificate-with-a-new-keypair"></a>使用新的密钥对请求新证书
 
-1. 请参阅 **应用程序**。
+1. 请参阅 **应用程序** 。
 3. 为列出的应用程序选择 " **新建请求** "。
 
    ![请求新证书的屏幕截图](media/howto-opc-vault-secure/request-new-certificate.png "请求新证书")
@@ -64,21 +64,21 @@ ms.locfileid: "91281943"
 
 4. 使用主题和域名填写表单。 对于私钥，选择 PEM 或具有密码的 PFX。 选择 " **生成新的密钥** 对" 以创建证书申请。
 
-   ![查看证书请求详细信息的屏幕截图](media/howto-opc-vault-secure/approve-reject.png "批准证书")
+   ![显示 "查看证书请求详细信息" 屏幕和 "生成新的密钥对" 按钮的屏幕截图。](media/howto-opc-vault-secure/approve-reject.png "批准证书")
 
 5. 审批要求具有审批者角色的用户和 Azure Key Vault 中的签名权限。 在典型的工作流中，应将审批者和请求者角色分配给不同的用户。 选择 " **批准** " 或 " **拒绝** " 以启动或取消实际创建密钥对和签名操作。 新的密钥对创建并安全地存储在 Azure Key Vault 中，直到证书请求方下载。 使用公钥生成的证书由 CA 进行签名。 这些操作可能需要几秒钟才能完成。
 
    ![查看证书请求详细信息的屏幕截图，最底部的审批消息](media/howto-opc-vault-secure/view-key-pair.png "查看密钥对")
 
 7. 可以通过选择 "二进制文件下载" 的格式从此处下载生成的 (PFX 或 PEM) 和证书 (DER) 的私钥。 例如，可将证书复制并粘贴到命令行或文本输入中，这也提供了 base64 编码版本。 
-8. 安全下载并存储私钥后，可以选择 " **删除私钥**"。 带有公钥的证书仍然可用，供将来使用。
+8. 安全下载并存储私钥后，可以选择 " **删除私钥** "。 带有公钥的证书仍然可用，供将来使用。
 9. 由于使用的是 CA 签名证书，因此还应在此处下载 (CRL) 的 CA 证书和证书吊销列表。
 
 现在，它依赖于 OPC UA 设备如何应用新的密钥对。 通常会将 CA 证书和 CRL 复制到 `trusted` 文件夹，而应用程序证书的公钥和私钥会应用于 `own` 证书存储区中的文件夹。 某些设备可能已支持服务器推送以实现证书更新。 请参阅 OPC UA 设备的文档。
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>使用 CSR 请求新证书 
 
-1. 请参阅 **应用程序**。
+1. 请参阅 **应用程序** 。
 3. 为列出的应用程序选择 " **新建请求** "。
 
    ![请求新证书的屏幕截图](media/howto-opc-vault-secure/request-new-certificate.png "请求新证书")
@@ -87,16 +87,16 @@ ms.locfileid: "91281943"
 
    ![生成新证书的屏幕截图](media/howto-opc-vault-secure/generate-new-certificate.png "生成新证书")
 
-4. 通过选择本地文件或通过在表单中粘贴 base64 编码的 CSR 来上传 CSR。 选择 " **生成新证书**"。
+4. 通过选择本地文件或通过在表单中粘贴 base64 编码的 CSR 来上传 CSR。 选择 " **生成新证书** "。
 
    ![查看证书请求详细信息的屏幕截图](media/howto-opc-vault-secure/approve-reject-csr.png "审批 CSR")
 
 5. 审批要求具有审批者角色的用户和 Azure Key Vault 中的签名权限。 选择 " **批准** " 或 " **拒绝** " 以启动或取消实际签名操作。 使用公钥生成的证书由 CA 进行签名。 此操作可能需要几秒钟才能完成。
 
-   ![查看证书请求详细信息的屏幕截图，最底部的审批消息](media/howto-opc-vault-secure/view-cert-csr.png "查看证书")
+   ![屏幕截图，显示查看证书请求详细信息，并在底部包含审批消息。](media/howto-opc-vault-secure/view-cert-csr.png "查看证书")
 
 6. 生成的证书 (DER) 可以从此处下载为二进制文件。 例如，可将证书复制并粘贴到命令行或文本输入中，这也提供了 base64 编码版本。 
-10. 安全下载并存储证书后，可以选择 " **删除证书**"。
+10. 安全下载并存储证书后，可以选择 " **删除证书** "。
 11. 由于使用的是 CA 签名证书，因此还应在此处下载 CA 证书和 CRL。
 
 现在，它依赖于 OPC UA 设备如何应用新证书。 通常会将 CA 证书和 CRL 复制到 `trusted` 文件夹，而应用程序证书将应用于 `own` 证书存储区中的文件夹。 某些设备可能已支持服务器推送以实现证书更新。 请参阅 OPC UA 设备的文档。

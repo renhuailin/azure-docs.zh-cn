@@ -1,20 +1,15 @@
 ---
 title: Azure 门户“操作说明”视频系列
 description: 查找视频演示，了解如何在门户中使用 Azure 服务。 查看并直接链接到最新的操作方法视频。
-services: azure-portal
 keywords: ''
-author: mgblythe
-ms.author: mblythe
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 131ec94e321388a3578cd2fd59fdb2fd75339c5e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522940"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852602"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure 门户“操作说明”视频系列
 
@@ -22,18 +17,17 @@ Azure 门户操作方法视频系列展示了如何在 Azure 门户中使用 Azu
 
 ## <a name="featured-video"></a>特色视频
 
-在此特色视频中，我们将向你展示如何部署 Azure 静态 Web 应用。
+在此特色视频中，我们将向你展示如何使用 Azure 快速入门中心开始使用 Azure。
 
-> [!VIDEO https://www.youtube.com/embed/H2MPsgujpNk]
+> [!VIDEO https://www.youtube.com/embed/mb5k9nXMtBM]
 
-[如何部署 Azure 静态 Web 应用](https://www.youtube.com/watch?v=H2MPsgujpNk)
+[如何使用 Azure 快速入门中心实现 Azure 入门](https://www.youtube.com/watch?v=mb5k9nXMtBM)
 
 了解你可能会错过的这一最近的视频：
 
-| [如何监视 Azure Functions](https://www.youtube.com/watch?v=eVDZz8h0s00)  | [如何使用 blob 版本控制](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [使用 Azure 专用链接连接到存储帐户](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
+| [如何在 Azure Kubernetes 服务中管理应用程序](https://www.youtube.com/watch?v=YfARHb52Bp4)  | [如何使用日志和参数生成 Azure 工作簿](https://www.youtube.com/watch?v=EC7n1Oo6D-o)  | [如何在应用服务 web 应用上添加和保护自定义域](https://www.youtube.com/watch?v=bXP6IvNYISw) |
 | ------| ------ | ------ |
-| [![有关如何监视 Azure Functions 的 YouTube 视频图像](https://i.ytimg.com/vi/eVDZz8h0s00/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=eVDZz8h0s00) | [![有关如何使用 blob 版本控制的 YouTube 视频图像](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) | [![有关使用 Azure 专用链接连接到存储帐户的 YouTube 视频图像](https://i.ytimg.com/vi/vM7yDwHSc_o/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?v=vM7yDwHSc_o) |
-
+| [![有关如何管理 Azure Kubernetes 服务中的应用程序的 YouTube 视频图像](https://i.ytimg.com/vi/YfARHb52Bp4/hqdefault.jpg)](https://www.youtube.com/watch?YfARHb52Bp4) | [![有关如何使用日志和参数生成 Azure 工作簿的 YouTube 视频图像](https://i.ytimg.com/vi/EC7n1Oo6D-o/hqdefault.jpg)](http://www.youtube.com/watch?v=EC7n1Oo6D-o) | [![有关如何在应用服务 web 应用中添加和保护自定义域的 YouTube 视频图像](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg)](http://www.youtube.com/watch?v=bXP6IvNYISw) |
 
 ## <a name="video-playlist"></a>视频播放列表
 

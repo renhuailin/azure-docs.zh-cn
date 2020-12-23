@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: cfd7a007c8f26a96d929026e231cb412cdc70279
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440841"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179225"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ekarda 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "89440841"
 * 让用户使用其 Azure AD 帐户自动登录 ekarda。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解软件即服务 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是单一登录 (SSO)？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解软件即服务 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是单一登录 (SSO)？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "89440841"
 
 * ekarda 支持 SP 和 IdP 发起的 SSO。
 * ekarda 支持实时用户预配。
-* 配置 ekarda 后，可强制实施会话控制。 此预防措施可实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问应用控制。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 ekarda 后，可强制实施会话控制。 此预防措施可实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问应用控制。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-ekarda-from-the-gallery"></a>从库中添加 ekarda
 
@@ -81,7 +81,7 @@ ms.locfileid: "89440841"
    ![“设置 SAML 单一登录”页面的屏幕截图，其中突出显示了铅笔图标。](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”部分，如果有服务提供程序元数据文件，请执行以下步骤 ：
-    1. 选择“上传元数据文件”****。
+    1. 选择“上传元数据文件”。
     1. 选择文件夹图标将元数据文件选中，然后选择“上传”。
     1. 成功上传元数据文件后，标识符和回复 URL 的值会自动显示在 ekarda 部分的文本框中 。
 
@@ -168,14 +168,14 @@ ms.locfileid: "89440841"
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择 ekarda 磁贴时，应自动登录到已为其设置 SSO 的 ekarda 站点。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在“我的应用”门户中选择 ekarda 磁贴时，应自动登录到已为其设置 SSO 的 ekarda 站点。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-* [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 * [通过 Azure AD 试用 ekarda](https://aad.portal.azure.com/)
 * 使用 [ekarda 的企业 eCard 解决方案](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise)预配任意数量的员工，将具有公司徽标品牌的 eCard 发送给其客户和同事。 详细了解如何[设置 ekarda 作为 SSO 解决方案](https://support.ekarda.com/#SSO-Implementation)。
-* [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-* [如何通过高级可见性和控制保护 ekarda](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+* [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
+* [如何通过高级可见性和控制保护 ekarda](/cloud-app-security/proxy-intro-aad)

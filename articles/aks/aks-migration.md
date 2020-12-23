@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280216"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929729"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87280216"
 * 将[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)支持的 AKS 群集迁移到[虚拟机规模集](../virtual-machine-scale-sets/overview.md)
 * 迁移 AKS 群集以使用[标准 SKU 负载均衡器](./load-balancer-standard.md)
 * 从 [Azure 容器服务 (ACS) - 2020 年 1 月 31 日停用](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)迁移到 AKS
-* 从[AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)迁移到 AKS
+* 从 [AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) 迁移到 AKS
 * 从不是基于 Azure 的 Kubernetes 群集迁移到 AKS
 * 将现有资源移到另一个区域
 
@@ -103,7 +103,7 @@ az aks create \
 
 ![将 AKS 与流量管理器配合使用](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-[Azure 前门服务](../frontdoor/front-door-overview.md)是路由 AKS 群集流量的另一种选择。  在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 
+[Azure 前门服务](../frontdoor/front-door-overview.md) 是路由 AKS 群集流量的另一种选择。  在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 
 
 ### <a name="considerations-for-stateless-applications"></a>无状态应用程序的注意事项
 
@@ -132,7 +132,7 @@ az aks create \
 * 将实时流量指向新的 AKS 群集。
 * 断开旧群集的连接。
 
-若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) 命令迁移数据。
+若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](/cli/azure/storage/file/copy) 命令迁移数据。
 
 
 #### <a name="migrating-persistent-volumes"></a>迁移永久性卷。
@@ -159,7 +159,7 @@ az aks create \
 
 ### <a name="deployment-of-your-cluster-configuration"></a>群集配置的部署
 
-建议使用现有的持续集成 (CI) 和持续交付 (CD) 管道将已知正常的配置部署到 AKS。 可以使用 Azure Pipelines [生成应用程序并将其部署到 AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)。 克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
+建议使用现有的持续集成 (CI) 和持续交付 (CD) 管道将已知正常的配置部署到 AKS。 可以使用 Azure Pipelines [生成应用程序并将其部署到 AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)。 克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
 
 如果无法做到这一点，请从现有 Kubernetes 群集导出资源定义，并将其应用到 AKS。 可以使用 `kubectl` 导出对象。
 
@@ -169,7 +169,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 ### <a name="moving-existing-resources-to-another-region"></a>将现有资源移到另一个区域
 
-你可能需要将 AKS 群集移到 [AKS 支持的不同区域][region-availability]。 我们建议你在其他区域中创建一个新群集，然后将资源和应用程序部署到新群集。 此外，如果在 AKS 群集上运行[Azure Dev Spaces][azure-dev-spaces]任何服务，则还需要在新区域中的群集上安装和配置这些服务。
+你可能需要将 AKS 群集移到 [AKS 支持的不同区域][region-availability]。 我们建议你在其他区域中创建一个新群集，然后将资源和应用程序部署到新群集。 此外，如果在 AKS 群集上运行 [Azure Dev Spaces][azure-dev-spaces] 任何服务，则还需要在新区域中的群集上安装和配置这些服务。
 
 
 本文汇总了以下各项的迁移详细信息：

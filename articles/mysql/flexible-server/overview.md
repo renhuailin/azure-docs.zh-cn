@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b79ee0999db0a19794cc167ae79ed6e58193b30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944060"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348281"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）
 
@@ -20,7 +20,7 @@ ms.locfileid: "90944060"
 - 单台服务器 
 - 灵活服务器（预览版）
 
-本文概述和介绍了灵活服务器部署模型的核心概念。 
+本文概述和介绍了灵活服务器部署模型的核心概念。 若要了解如何确定适合工作负荷的部署选项，请参阅[在 Azure 中选择合适的 MySQL 服务器选项](./../select-right-deployment-type.md)。
 
 ## <a name="overview"></a>概述
 
@@ -54,7 +54,9 @@ Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务�
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>具有托管维护时段的自动修补
 
-该服务执行基础硬件、OS 和数据库引擎的自动修补。 修补包括安全更新和软件更新。 对于 MySQL 引擎，次要版本升级也包括在计划内维护版本中。 用户可以将修补计划配置为系统托管或定义自己的自定义计划。 在维护计划期间，将应用补丁，并且在修补过程中，可能需要重启服务器才能完成更新。 使用自定义计划，用户可以使修补周期可预测，并选择对业务影响最小的维护时段。 一般来说，作为持续集成和发布的一部分，该服务遵循每月发布计划。 
+该服务执行基础硬件、OS 和数据库引擎的自动修补。 修补包括安全更新和软件更新。 对于 MySQL 引擎，次要版本升级也包括在计划内维护版本中。 用户可以将修补计划配置为系统托管或定义自己的自定义计划。 在维护计划期间，将应用补丁，并且在修补过程中，可能需要重启服务器才能完成更新。 使用自定义计划，用户可以使修补周期可预测，并选择对业务影响最小的维护时段。 一般来说，作为持续集成和发布的一部分，该服务遵循每月发布计划。
+
+有关更多详细信息，请参阅[计划性维护](concepts-maintenance.md)。 
 
 ## <a name="automatic-backups"></a>自动备份
 
@@ -83,9 +85,22 @@ Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务�
 
 有关详细信息，请参阅[计算和存储概念](concepts-compute-storage.md)。
 
+## <a name="scale-out-your-read-workload-with-up-to-10-read-replicas"></a>通过多达 10 个只读副本扩展读取工作负载
+
+MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web 和移动应用程序。 许多客户将其用于在线教育服务、视频流式处理服务、数字支付解决方案、电子商务平台、游戏服务、新闻门户、政府和医疗保健网站。 这些服务需要随着 Web 或移动应用程序流量的增加而服务和扩展。
+
+在应用程序端，应用程序通常是用 Java 或 php 开发的，并迁移到  [Azure 虚拟机规模集](../../virtual-machine-scale-sets/overview.md) 或  [Azure 应用服务](../../app-service/overview.md) 上运行，或容器化以在  [Azure Kubernetes 服务 (AKS)](../../aks/intro-kubernetes.md) 上运行。 使用虚拟机规模集、应用服务或 AKS 作为底层基础结构，可以通过即时预配新的 VM 并复制应用程序的无状态组件来满足请求，以简化应用程序的缩放，但是数据库通常会成为集中式有状态组件的瓶颈。
+
+使用只读副本功能可将数据从 Azure Database for MySQL 灵活服务器复制到只读服务器。 可将源服务器中的数据复制到最多 10 个副本。 使用 MySQL 引擎的[基于二进制日志 (binlog) 文件位置的原生复制技术](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)以异步方式更新副本。 可以使用负载均衡器代理解决方案（如 [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)）将应用程序工作负载无缝扩展到只读副本，而无需任何应用程序重构成本。 
+
+有关详细信息，请参阅[只读副本概念](concepts-read-replicas.md)。 
+
+
 ## <a name="stopstart-server-to-optimize-cost"></a>停止/启动服务器以优化成本
 
 灵活服务器服务允许你根据需要停止和启动服务器以优化成本。 服务器停止后，计算层计费会立即停止。 这使你可在开发和测试期间以及针对有时限的可预测生产工作负载，节省大量成本。 服务器将保持停止状态七天（除非提前重启它）。 
+
+若要了解详细信息，请参阅[服务器概念](concept-servers.md)。 
 
 ## <a name="enterprise-grade-security-and-privacy"></a>企业级安全和隐私
 
@@ -93,9 +108,9 @@ Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务�
 
 该服务使用默认实施的传输层安全性对动态数据进行加密。 灵活服务器仅支持使用传输层安全性 (TLS 1.2) 的加密连接，并且所有使用 TLS 1.0 和 TLS 1.1 的传入连接都将被拒绝。 
 
-有关详细信息，请参阅[如何使用与灵活服务器的加密连接](/articles/mysql/flexible-server/how-to-connect-tls-ssl.md)。
+有关详细信息，请参阅[如何使用与灵活服务器的加密连接](https://docs.mongodb.com/manual/tutorial/configure-ssl)。
 
-灵活服务器允许使用 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNet) 集成对服务器进行完全专用访问。 只能通过专用 IP 地址才能访问和连接 Azure 虚拟网络中的服务器。 使用 VNet 集成，公共访问遭到拒绝，使用公共终结点无法访问服务器。 
+灵活服务器允许使用 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md) (VNet) 集成对服务器进行完全专用访问。 只能通过专用 IP 地址才能访问和连接 Azure 虚拟网络中的服务器。 使用 VNet 集成，公共访问遭到拒绝，使用公共终结点无法访问服务器。 
 
 有关详细信息，请参阅[网络概念](concepts-networking.md)。
 
@@ -111,7 +126,35 @@ Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务�
 该服务运行 MySQL 的社区版本。 这样可以实现完全的应用程序兼容性，并且只需最小的重构成本就能将在 MySQL 引擎上开发的现有应用程序迁移到单一服务器服务。 可以使用以下任一选项来执行向单一服务器的迁移：
 
 - 转储和还原 - 对于脱机迁移（在此情况下，用户可承受一定的故障时间），使用社区工具（如 mysqldump/mydumper）的转储和还原可以提供最快的迁移方式。 有关详细信息，请参阅“使用转储和还原进行迁移”。 
-- Azure 数据库迁移服务 - 为了在最短的故障时间内实现向单一服务器的无缝简化迁移，可以利用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)。 
+- Azure 数据库迁移服务 - 为了在最短的故障时间内实现向单一服务器的无缝简化迁移，可以利用 [Azure 数据库迁移服务](../../dms/tutorial-mysql-azure-mysql-online.md)。 
+
+## <a name="azure-regions"></a>Azure 区域
+
+在 Azure 中运行工作负载的一个优点是，它可覆盖全球范围。 现在，在以下 Azure 区域提供适用于 Azure Database for MySQL 的灵活服务器：
+
+- 西欧
+- 北欧
+- 英国南部
+- 美国东部 2
+- 美国西部 2
+- 美国中部
+- 美国东部
+- 加拿大中部
+- 东南亚
+- 韩国中部
+- 日本东部
+- 澳大利亚东部
+
+即将添加新的服务器。
+
+## <a name="contacts"></a>联系人
+如果有任何关于使用 Azure Database for MySQL 灵活服务器的问题或建议，请发送电子邮件至 Azure Database for MySQL 团队 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 此电子邮件地址不是技术支持别名。
+
+另外，请酌情考虑以下联系点：
+
+- 若要联系 Azure 支持，请[从 Azure 门户提交票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- 若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+- 若要提供反馈或请求新功能，请通过 [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) 创建条目。
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已阅读 Azure Database for MySQL 单一服务器部署模式简介，接下来可以：

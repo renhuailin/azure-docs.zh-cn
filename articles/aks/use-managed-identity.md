@@ -3,14 +3,13 @@ title: 在 Azure Kubernetes 服务中使用托管标识
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用托管标识
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.author: thomasge
-ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.date: 12/16/2020
+ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397039"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607280"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
@@ -22,16 +21,14 @@ ms.locfileid: "91397039"
 
 必须安装了以下资源：
 
-- Azure CLI 版本 2.8.0 或更高版本
+- Azure CLI 2.15.1 或更高版本
 
 ## <a name="limitations"></a>限制
 
-* 具有托管标识的 AKS 群集只能在群集创建过程中启用。
-* 现有 AKS 群集无法迁移到托管标识。
 * 在群集升级操作期间，托管标识暂时不可用。
 * 不支持启用了托管标识的群集的租户移动/迁移。
-* 如果已启用群集 `aad-pod-identity` ，节点托管标识 (NMI) 盒修改节点的 iptables，以截获对 Azure 实例元数据终结点的调用。 此配置意味着对元数据终结点发出的任何请求都将被 NMI 截获，即使 pod 不使用也是如此 `aad-pod-identity` 。 可以将 AzurePodIdentityException .CRD 配置为通知来自与 `aad-pod-identity` 在 .crd 中定义的标签相匹配的 pod 的元数据终结点的任何请求都应该在无 NMI 处理的情况下代理。 `kubernetes.azure.com/managedby: aks` _Kube_命名空间中带标签的系统箱应 `aad-pod-identity` 通过配置 AzurePodIdentityException .crd 排除在中。 有关详细信息，请参阅 [禁用特定 pod 或应用程序的 aad-pod 标识](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)。
-  若要配置异常，请安装 [mic-EXCEPTION YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
+* 如果已启用群集 `aad-pod-identity` ，Node-Managed 标识 (NMI) pod 会修改节点的 iptables，以截获对 Azure 实例元数据终结点的调用。 此配置意味着对元数据终结点发出的任何请求都将被 NMI 拦截，即使 pod 不使用 `aad-pod-identity`。 可以将 AzurePodIdentityException CRD 配置为通知 `aad-pod-identity` 应在不使用 NMI 进行出任何处理的情况下，代理与 CRD 中定义的标签匹配的 pod 所发起的对元数据终结点的任何请求。 应通过配置 AzurePodIdentityException CRD 在 `aad-pod-identity` 中排除在 _kube-system_ 命名空间中具有 `kubernetes.azure.com/managedby: aks` 标签的系统 pod。 有关详细信息，请参阅[禁用特定 pod 或应用程序的 aad-pod-identity](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)。
+  若要配置例外情况，请安装 [mic-exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
 
 ## <a name="summary-of-managed-identities"></a>托管标识摘要
 
@@ -39,19 +36,19 @@ AKS 对内置服务和加载项使用多个托管标识。
 
 | 标识                       | 名称    | 使用案例 | 默认权限 | 自带标识
 |----------------------------|-----------|----------|
-| 控制面板 | 不可见 | 由 AKS 用于托管网络资源，包括入口负载均衡器和 AKS 托管公共 IP | 节点资源组的参与者角色 | 预览
-| Kubelet | AKS Cluster Name-agentpool | 向 Azure 容器注册表 (ACR) 进行身份验证 | NA (kubernetes v 1.15 +)  | 目前不支持
+| 控制面板 | 不可见 | 由 AKS 控制平面组件用于管理群集资源，包括入口负载均衡器和 AKS 托管的公共 Ip，以及群集自动缩放程序操作 | 节点资源组的参与者角色 | 受支持
+| Kubelet | AKS Cluster Name-agentpool | 向 Azure 容器注册表 (ACR) 进行身份验证 | NA（对于 kubernetes v1.15+） | 目前不支持
 | 加载项 | AzureNPM | 无需标识 | 不可用 | 否
 | 加载项 | AzureCNI 网络监视 | 无需标识 | 不可用 | 否
-| 加载项 | azurepolicy（网关守卫） | 无需标识 | 不可用 | 否
-| 加载项 | azurepolicy | 无需标识 | 不可用 | 否
+| 加载项 | azure-策略 (看门程序)  | 无需标识 | 不可用 | 否
+| 加载项 | azure-策略 | 无需标识 | 不可用 | 否
 | 加载项 | Calico | 无需标识 | 不可用 | 否
 | 加载项 | 仪表板 | 无需标识 | 不可用 | 否
 | 加载项 | HTTPApplicationRouting | 管理所需的网络资源 | 节点资源组的读取者角色，DNS 区域的参与者角色 | 否
 | 加载项 | 入口应用程序网关 | 管理所需的网络资源| 节点资源组的参与者角色 | 否
 | 加载项 | omsagent | 用于将 AKS 指标发送到 Azure Monitor | “监视指标发布者”角色 | 否
 | 加载项 | Virtual-Node (ACIConnector) | 管理 Azure 容器实例 (ACI) 所需的网络资源 | 节点资源组的参与者角色 | 否
-| OSS 项目 | aad-pod-标识 | 使应用程序能够使用 Azure Active Directory (AAD) 安全地访问云资源 | NA | 要授予权限的步骤 https://github.com/Azure/aad-pod-identity#role-assignment 。
+| OSS 项目 | aad-pod-identity | 通过 Azure Active Directory (AAD) 使应用程序可安全访问云资源 | NA | 要授予权限的步骤 https://github.com/Azure/aad-pod-identity#role-assignment 。
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>创建具有托管标识的 AKS 群集
 
@@ -106,45 +103,44 @@ az aks show -g myResourceGroup -n myManagedCluster --query "identity"
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a> (预览将 AKS 群集更新为托管标识) 
 
-## <a name="bring-your-own-control-plane-mi-preview"></a>自带控制平面 MI (预览) 
-使用自定义控制平面标识，可以在创建群集之前将访问权限授予现有标识。 这可以实现以下方案：将自定义 VNET 或 outboundType 与托管标识结合使用。
+你现在可以通过使用以下 CLI 命令，更新当前使用服务主体的 AKS 群集以使用托管标识。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+首先，为系统分配的标识注册功能标志：
 
-必须已安装以下资源：
-- Azure CLI 2.9.0 或更高版本
-- Aks-preview 0.4.57 扩展
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
+```
 
-自带控制平面 MI (预览) 的限制：
+更新系统分配的标识：
+
+```azurecli-interactive
+az aks update -g <RGName> -n <AKSName> --enable-managed-identity
+```
+
+为用户分配的标识注册功能标志：
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
+```
+
+更新用户分配的标识：
+
+```azurecli-interactive
+az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
+```
+> [!NOTE]
+> 系统分配的标识或用户分配的标识更新为托管标识后，请 `az nodepool upgrade --node-image-only` 在节点上执行，以完成对托管标识的更新。
+
+## <a name="bring-your-own-control-plane-mi"></a>自带控制平面 MI
+使用自定义控制平面标识，可以在创建群集之前将访问权限授予现有标识。 此功能启用了方案，例如，将自定义 VNET 或 outboundType UDR 与预先创建的托管标识结合使用。
+
+必须安装 Azure CLI 版本2.15.1 或更高版本。
+
+### <a name="limitations"></a>限制
 * 当前不支持 Azure 政府版。
 * 当前不支持 Azure 中国世纪互联。
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
-```
-
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令来检查注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
-```
-
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 如果还没有托管标识，应继续使用 [az IDENTITY CLI][az-identity-create]创建一个示例。
 

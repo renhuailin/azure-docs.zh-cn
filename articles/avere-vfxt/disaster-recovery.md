@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75966652"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342240"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>适用于 Azure 的 Avere vFXT 的灾难恢复指南
 
@@ -117,7 +117,7 @@ Azure 群集的每个 Avere vFXT 必须位于单个可用性区域中，但你�
 * 有关为 Azure 的 Avere vFXT 自定义设置的详细信息，请参阅 [群集优化](avere-vfxt-tuning.md)。
 * 了解有关灾难恢复的详细信息，以及如何在 Azure 中构建可复原应用程序：
 
-  * [Azure 复原技术指南](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-  * [发生区域范围的服务中断后进行恢复](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
-  * [Azure 应用程序的灾难恢复和高可用性](<https://docs.microsoft.com/azure/resiliency/resiliency-disaster-recovery-high-availability-azure-applications>)
+  * [Azure 复原技术指南](/azure/architecture/framework/resiliency/overview)
+  * [发生区域范围的服务中断后进行恢复](/azure/architecture/resiliency/recovery-loss-azure-region)
+  * [Azure 应用程序的灾难恢复和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

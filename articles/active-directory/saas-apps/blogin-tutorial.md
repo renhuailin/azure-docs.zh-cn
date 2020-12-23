@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 2a50d7b037cec2c10f83fdbbd875f80513c00a6d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a47a3ae27fd1a18b7e9acd7d8b25748f6274c3e9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517101"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456987"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BlogIn 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88517101"
 * 让用户使用其 Azure AD 帐户自动登录到 BlogIn。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88517101"
 
 * BlogIn 支持 SP 和 IDP 发起的 SSO
 * BlogIn 支持实时用户设置
-* 配置 BlogIn 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 BlogIn 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-blogin-from-the-gallery"></a>从库中添加 BlogIn
 
@@ -143,7 +143,7 @@ ms.locfileid: "88517101"
 1. 转到“设置” > “用户身份验证” > “配置 SSO 和用户预配”  。
 2. 在下一个屏幕上，将单一登录状态更改为“开启”，并为将显示在登录屏幕上的 SSO 登录按钮选择自定义名称。
 
-3. 如果你在上一部分的最后一步中保存了应用联合元数据 URL，请选择配置方法“元数据 URL”并将应用联合元数据 URL 粘贴到元数据 URL 字段中  。 否则，请将配置方法更改为“手动”，手动填充“标识提供程序 SSO URL”（登录 URL）和“标识提供程序颁发者”（实体 ID），并上传从 Azure AD 获得的证书 (base64)   。
+3. 如果你在上一部分的最后一步中保存了应用联合元数据 URL，请选择配置方法“元数据 URL”并将应用联合元数据 URL 粘贴到元数据 URL 字段中  。 否则，请将配置方法更改为“手动”，手动填充“标识提供程序 SSO URL (登录 URL)”和“标识提供程序颁发者(实体 ID)”，并上传从 Azure AD 获得的“证书(base64)”   。
 
 4. 使用 SSO 为加入 BlogIn 的新用户选择默认用户角色。
 
@@ -159,18 +159,18 @@ ms.locfileid: "88517101"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 BlogIn 磁贴时，应会自动登录到为其设置了 SSO 的 BlogIn。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 BlogIn 磁贴时，应会自动登录到为其设置了 SSO 的 BlogIn。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [使用 Azure AD 试用 BlogIn](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 BlogIn](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用高级可见性和控制保护 BlogIn](/cloud-app-security/proxy-intro-aad)

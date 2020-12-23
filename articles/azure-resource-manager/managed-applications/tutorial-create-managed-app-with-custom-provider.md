@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8824f534f573d97353cc86d2a1b112b1acdb211
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494496"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437042"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教程：创建包含自定义操作和资源的托管应用程序
 
@@ -41,7 +41,7 @@ ms.locfileid: "87494496"
 
 在本教程中，你将创建一个托管应用程序，其托管资源组将包含自定义提供程序实例、存储帐户和函数。 本示例中使用的 Azure 函数实现了一个 API，该 API 可以处理用于执行操作和创建资源的自定义提供程序操作。 Azure 存储帐户用作自定义提供程序资源的基本存储。
 
-用于创建托管应用程序实例的用户界面定义包括 `funcname` 和 `storagename` 输入元素。 存储帐户名称和函数名称必须全局唯一。 默认情况下，将从[示例函数包](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)部署函数文件，但你可以通过以下方式更改此部署方式：为 *createUIDefinition.json* 中的包链接添加一个输入元素：
+用于创建托管应用程序实例的用户界面定义包括 `funcname` 和 `storagename` 输入元素。 存储帐户名称和函数名称必须全局唯一。 默认情况下，将从 [示例函数包](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)部署函数文件，但你可以通过以下方式更改此部署方式：为 *createUiDefinition.json* 中的包链接添加一个输入元素：
 
 ```json
 {
@@ -74,7 +74,7 @@ ms.locfileid: "87494496"
 }
 ```
 
-并在 *createUIDefinition.json* 中添加一个输出元素：
+并在 *createUiDefinition.json* 中添加一个输出元素：
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -82,13 +82,13 @@ ms.locfileid: "87494496"
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-完整的 *createUIDefinition.json* 示例可在[参考：用户界面元素项目](reference-createuidefinition-artifact.md)中找到。
+完整的 *createUiDefinition.json* 示例可在 [参考：用户界面元素项目](reference-createuidefinition-artifact.md)中找到。
 
 ## <a name="template-with-custom-provider"></a>带有自定义提供程序的模板
 
 若要使用自定义提供程序创建托管应用程序实例，需要在 **mainTemplate.json** 中使用名称 **public** 和类型 **Microsoft.CustomProviders/resourceProviders** 定义自定义提供程序资源。 在该资源中，定义服务的资源类型和操作。 若要部署 Azure 函数和 Azure 存储帐户实例，请分别定义 `Microsoft.Web/sites` 和 `Microsoft.Storage/storageAccounts` 类型的资源。
 
-在本教程中，你将创建一个 `users` 资源类型、`ping` 自定义操作，以及要在 `users` 自定义资源的上下文中执行的 `users/contextAction` 自定义操作。 对于每个资源类型和操作，请提供一个终结点，该终结点指向名称为 [createUIDefinition.json](#user-interface-definition) 中所提供名称的函数。 对于资源类型和操作，请分别指定 `Proxy,Cache` 和 `Proxy` 作为 **routingType**：
+在本教程中，你将创建一个 `users` 资源类型、`ping` 自定义操作，以及要在 `users` 自定义资源的上下文中执行的 `users/contextAction` 自定义操作。 对于每个资源类型和操作，请提供一个终结点，该终结点指向名称为 [createUiDefinition.json](#user-interface-definition) 中所提供名称的函数。 对于资源类型和操作，请分别指定 `Proxy,Cache` 和 `Proxy` 作为 **routingType**：
 
 ```json
 {
@@ -123,7 +123,7 @@ ms.locfileid: "87494496"
 }
 ```
 
-完整的 *mainTemplate.json* 示例可在[参考：部署模板项目](reference-main-template-artifact.md)中找到。
+完整的 *mainTemplate.json* 示例可在 [参考：部署模板项目](reference-main-template-artifact.md)中找到。
 
 ## <a name="view-definition-artifact"></a>视图定义项目
 
@@ -175,7 +175,7 @@ ms.locfileid: "87494496"
   }
 ```
 
-完整的 *viewDefinition.json* 示例可在[参考：视图定义项目](reference-view-definition-artifact.md)中找到。
+完整的 *viewDefinition.json* 示例可在 [参考：视图定义项目](reference-view-definition-artifact.md)中找到。
 
 ## <a name="managed-application-definition"></a>托管应用程序定义
 
@@ -254,8 +254,8 @@ az managedapp definition create \
 
 3. 提供用于创建服务目录定义的值：
 
-    * 提供唯一的服务目录定义**名称**、**显示名称**和*说明*（可选）。
-    * 选择要在其中创建应用程序定义的**订阅**、**资源组**和**位置**。 可以使用 zip 包所用的同一资源组，或创建新的资源组。
+    * 提供唯一的服务目录定义 **名称**、**显示名称** 和 *说明*（可选）。
+    * 选择要在其中创建应用程序定义的 **订阅**、**资源组** 和 **位置**。 可以使用 zip 包所用的同一资源组，或创建新的资源组。
     * 对于“包文件 URI”，请提供在上一步骤中创建的 zip 文件的路径。 
 
     ![提供值](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
@@ -314,7 +314,7 @@ az managedapp create \
 
 4. 提供用于从服务目录定义创建托管应用程序实例的值：
 
-    * 选择要在其中创建应用程序实例的**订阅**、**资源组**和**位置**。
+    * 选择要在其中创建应用程序实例的 **订阅**、**资源组** 和 **位置**。
     * 提供唯一的 Azure 函数名称和 Azure 存储帐户名称。
 
     ![应用程序设置](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
@@ -327,11 +327,11 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>自定义操作和资源
 
-部署服务目录应用程序实例后，你会获得两个新的资源组。 第一个资源组 `applicationGroup` 包含托管应用程序的实例，第二个资源组 `managedResourceGroup` 包含托管应用程序（包括**自定义提供程序**）的资源。
+部署服务目录应用程序实例后，你会获得两个新的资源组。 第一个资源组 `applicationGroup` 包含托管应用程序的实例，第二个资源组 `managedResourceGroup` 包含托管应用程序（包括 **自定义提供程序**）的资源。
 
 ![应用程序资源文件](./media/tutorial-create-managed-app-with-custom-provider/application-resource-groups.png)
 
-可以转到托管应用程序实例，在“概述”页中执行**自定义操作**、在“用户”页中创建**用户**自定义资源，并针对自定义资源运行**自定义上下文操作**。
+可以转到托管应用程序实例，在“概述”页中执行 **自定义操作**、在“用户”页中创建 **用户** 自定义资源，并针对自定义资源运行 **自定义上下文操作**。
 
 * 转到“概述”页并单击“Ping 操作”按钮：
 
@@ -339,11 +339,11 @@ az managedapp create \
 
 * 转到“用户”页并单击“添加”按钮。 提供用于创建资源的输入，并提交表单：
 
-![创建自定义资源](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
+![屏幕截图显示了从“用户”选择的“添加”按钮。](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
 
 * 转到“用户”页，选择一个“用户”资源，然后单击“自定义上下文操作”：
 
-![创建自定义资源](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
+![屏幕截图显示了选定的“自定义上下文操作”。](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
 
 [!INCLUDE [clean-up-section-portal](../../../includes/clean-up-section-portal.md)]
 
@@ -353,6 +353,6 @@ az managedapp create \
 
 ## <a name="next-steps"></a>后续步骤
 
-若要将托管应用程序发布到 Azure 市场，请参阅[市场中的 Azure 托管应用程序](publish-marketplace-app.md)。
+若要将托管应用程序发布到 Azure 市场，请参阅[市场中的 Azure 托管应用程序](../../marketplace/create-new-azure-apps-offer.md)。
 
 详细了解 [Azure 自定义提供程序](../custom-providers/overview.md)。

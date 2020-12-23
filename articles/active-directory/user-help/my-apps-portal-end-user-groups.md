@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798068"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004139"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>在“我的应用”门户上更新群组信息
 
-可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
+你可以通过基于 web 的 **"我的应用** " 门户使用工作或学校帐户来查看和启动你的组织中的多个基于云的应用，更新你的某些配置文件和帐户信息，查看你的 **组** 信息，并为应用和组执行 **访问评审** 。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -44,13 +44,11 @@ ms.locfileid: "88798068"
 
     将显示“应用”页面，显示组织拥有并可供你使用的所有基于云的应用。
 
-    ![“我的应用”门户中的“应用”页](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![“我的应用”门户中的“应用”页](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. 选择“组”磁贴以查看与组相关的信息。
+3. 下拉 " **我的应用** " 菜单并选择 **"我的组** "，查看与组相关的信息。
 
-    ![同时包含拥有的组和成员组的组页面](media/my-apps-portal/my-apps-portal-groups-page.png)
-
-4. 根据你的权限，你可以使用“组”页面：
+4. 根据你的权限，你可以使用 " **我的组** " 页执行以下操作：
 
     - **查看你拥有的组。** 从“我拥有的组”区域查看有关你在组织内拥有的任何组的信息。 选择特定组名称可查看有关组的更多详细信息，包括组类型、成员数、加入策略和活动成员列表。
 
@@ -80,7 +78,7 @@ ms.locfileid: "88798068"
 
     - **组类型：**
 
-        - **安全性。** 用于管理成员和一组用户对共享资源的计算机访问权限。 例如，可以为某一特定安全策略创建一个安全组。 以此方式可以一次性为所有成员赋予一组权限，而不必单独地向每个成员添加权限。
+        - **安全性。** 用于管理成员和一组用户对共享资源的计算机访问权限。 例如，你可以创建一个安全组来实施特定的安全策略。 以此方式可以一次性为所有成员赋予一组权限，而不必单独地向每个成员添加权限。
 
         - **Office 365。** 通过向成员赋予对共享邮箱、日历、文件、SharePoint 站点等的访问权限，提供协作机会。 你也可以通过此选项向组织外部的人员赋予对组的访问权限。
 
@@ -168,6 +166,6 @@ ms.locfileid: "88798068"
 
 - [访问并使用“我的应用”门户上的应用](my-apps-portal-end-user-access.md)。
 
-- [更改个人资料信息](my-apps-portal-end-user-update-profile.md)。
+- [更改个人资料信息](./my-account-portal-settings.md)。
 
 - [执行自己的访问评审](my-apps-portal-end-user-access-reviews.md)。

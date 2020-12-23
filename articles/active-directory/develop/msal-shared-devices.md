@@ -13,21 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 514782d62f117af5bfff4a5d2b3354c4e263eece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550235"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562077"
 ---
 # <a name="overview-of-shared-device-mode"></a>共享设备模式的概述
 
 共享设备模式是 Azure Active Directory 的一项功能，使用该模式可以生成能够为一线工作人员提供支持的应用程序，并在部署给这些人员的设备上启用共享设备模式。
 
-> [!NOTE]
-> 此功能目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>[!IMPORTANT]
+> 此功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="what-are-firstline-workers"></a>什么是一线工作人员？
 
@@ -56,7 +54,7 @@ Azure Active Directory 使用称作“共享设备模式”的功能来实现这
 
 ### <a name="build-applications-that-support-firstline-workers"></a>生成可为一线工作人员提供支持的应用程序
 
-可以通过使用 Microsoft 身份验证库 (MSAL) 和 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 来支持应用程序中的 Firstline 工作线程，以启用名为 *共享设备模式*的设备状态。 当设备处于共享设备模式时，Microsoft 将为应用程序提供所需的信息，使应用程序能够根据设备上用户的状态修改其行为，从而保护用户数据。
+可以通过使用 Microsoft 身份验证库 (MSAL) 和 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 来支持应用程序中的 Firstline 工作线程，以启用名为 *共享设备模式* 的设备状态。 当设备处于共享设备模式时，Microsoft 将为应用程序提供所需的信息，使应用程序能够根据设备上用户的状态修改其行为，从而保护用户数据。
 
 支持的功能包括：
 

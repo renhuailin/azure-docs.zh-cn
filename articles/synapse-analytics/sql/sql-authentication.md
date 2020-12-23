@@ -4,16 +4,17 @@ description: 了解 Azure Synapse Analytics 中的 SQL 身份验证。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: d43c223c0a3e67ff784688255bd75fc61e5c120c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288012"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462398"
 ---
 # <a name="sql-authentication"></a>SQL 身份验证
 
@@ -21,14 +22,14 @@ Azure Synapse Analytics 有两个可用来控制资源消耗的 SQL 组成要素
 
 若要向 Synapse SQL 授权，可以使用两种授权类型：
 
-- AAD 授权
+- Azure Active Directory 授权
 - SQL 授权
 
-AAD 授权依赖于 Azure Active Directory，使你能够在单一位置进行用户管理。 SQL 授权使旧版应用程序能够以一种熟悉的方式使用 Synapse SQL。
+Azure Active Directory 使你能够在单一位置进行用户管理。 SQL 授权使旧版应用程序能够以一种熟悉的方式使用 Synapse SQL。
 
 ## <a name="administrative-accounts"></a>管理帐户
 
-有两个充当管理员的管理帐户（**服务器管理员**和 **Active Directory 管理员**）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到你的 Synapse SQL 的“属性”选项卡。
+有两个充当管理员的管理帐户（**服务器管理员** 和 **Active Directory 管理员**）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到你的 Synapse SQL 的“属性”选项卡。
 
 ![SQL 服务器管理员](./media/sql-authentication/sql-admins.png)
 
@@ -50,18 +51,18 @@ AAD 授权依赖于 Azure Active Directory，使你能够在单一位置进行�
 - 可以在 `dbmanager` 和 `loginmanager` 角色中添加和删除成员。
 - 可以查看 `sys.sql_logins` 系统表。
 
-## <a name="sql-on-demand-preview"></a>[SQL 按需版本（预览版）](#tab/serverless)
+## <a name="serverless-sql-pool"></a>[无服务器 SQL 池](#tab/serverless)
 
-若要管理有权访问 SQL 按需版本的用户，可以按以下说明操作。
+若要管理有权访问无服务器 SQL 池的用户，可以按以下说明操作。
 
-若要创建用于 SQL 按需版本的登录名，请使用以下语法：
+若要创建用于无服务器 SQL 池的登录名，请使用以下语法：
 
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-在登录名存在后，可以在按需 SQL 终结点内的各个数据库中创建用户，并向这些用户授予所需的权限。 若要创建用户，可以使用以下语法：
+在登录名存在后，可以在无服务器 SQL 池终结点内的各个数据库中创建用户，并向这些用户授予所需的权限。 若要创建用户，可以使用以下语法：
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -76,7 +77,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ### <a name="administrator-access-path"></a>管理员访问路径
 
-适当地配置服务器级防火墙后，**SQL 服务器管理员**和 **Azure Active Directory 管理员**可以使用 SQL Server Management Studio 或 SQL Server Data Tools 等客户端工具进行连接。 仅最新工具提供所有的特性和功能。 
+适当地配置服务器级防火墙后，**SQL 服务器管理员** 和 **Azure Active Directory 管理员** 可以使用 SQL Server Management Studio 或 SQL Server Data Tools 等客户端工具进行连接。 仅最新工具提供所有的特性和功能。 
 
 下图显示了这两个管理员帐户的典型配置：
  
@@ -157,7 +158,7 @@ GRANT ALTER ANY USER TO Mary;
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-在 SQL 池中，请使用 [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+在专用 SQL 池中，请使用 [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -205,12 +206,12 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 管理 SQL 数据库中的登录名和用户时，请注意以下要点：
 
 - 执行 `CREATE/ALTER/DROP DATABASE` 语句时，必须连接到 **master** 数据库。
-- 不能更改或删除对应于**服务器管理员**登录名的数据库用户。
-- 美国英语是**服务器管理员**登录名的默认语言。
-- 只有管理员（**服务器管理员**登录名或 Azure AD 管理员）和 **master** 数据库中 **dbmanager** 数据库角色的成员才有权执行 `CREATE DATABASE` 和 `DROP DATABASE` 语句。
+- 不能更改或删除对应于 **服务器管理员** 登录名的数据库用户。
+- 美国英语是 **服务器管理员** 登录名的默认语言。
+- 只有管理员（**服务器管理员** 登录名或 Azure AD 管理员）和 **master** 数据库中 **dbmanager** 数据库角色的成员才有权执行 `CREATE DATABASE` 和 `DROP DATABASE` 语句。
 - 执行 `CREATE/ALTER/DROP LOGIN` 语句时，必须连接到 master 数据库。 但不建议使用登录名。 改用包含的数据库用户。
 - 若要连接到用户数据库，必须在连接字符串中提供数据库的名称。
-- 只有服务器级别主体登录名和 **master** 数据库中**loginmanager** 数据库角色的成员才有权执行 `CREATE LOGIN`、`ALTER LOGIN` 和 `DROP LOGIN` 语句。
+- 只有服务器级别主体登录名和 **master** 数据库中 **loginmanager** 数据库角色的成员才有权执行 `CREATE LOGIN`、`ALTER LOGIN` 和 `DROP LOGIN` 语句。
 - 在 ADO.NET 应用程序中执行 `CREATE/ALTER/DROP LOGIN` 和 `CREATE/ALTER/DROP DATABASE` 语句时，不允许使用参数化命令。 有关详细信息，请参阅[命令和参数](/dotnet/framework/data/adonet/commands-and-parameters?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 - 在执行 `CREATE/ALTER/DROP DATABASE` 和 `CREATE/ALTER/DROP LOGIN` 语句时，上述每个语句都必须是 Transact-SQL 批处理中的唯一语句。 否则，将会出错。 例如，以下 Transact-SQL 会检查该数据库是否存在。 如果该数据库存在，则调用 `DROP DATABASE` 语句删除该数据库。 因为 `DROP DATABASE` 语句不是该批处理中的唯一语句，所以执行以下 Transact-SQL 将导致错误。
 

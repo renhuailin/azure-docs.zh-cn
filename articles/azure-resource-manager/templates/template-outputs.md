@@ -1,18 +1,20 @@
 ---
 title: 模板中的输出
-description: 介绍如何在 Azure 资源管理器模板中定义输出值。
+description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义输出值。
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/24/2020
+ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460018"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353521"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的输出
+# <a name="outputs-in-arm-templates"></a>ARM 模板中的输出
 
-本文介绍如何在 Azure 资源管理器模板中定义输出值。 需要从部署的资源返回值时，可以使用输出。
+本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义输出值。 需要从部署的资源返回值时，可以使用输出。
+
+每个输出值的格式必须与其中一个 [数据类型](template-syntax.md#data-types)匹配。
 
 ## <a name="define-output-values"></a>定义输出值
 
@@ -45,7 +47,7 @@ ms.locfileid: "79460018"
 
 ## <a name="dynamic-number-of-outputs"></a>动态输出数量
 
-在某些情况下，创建模板时你不知道需要返回的值的实例数量。 可以使用 **copy** 元素返回可变的值数。
+在某些情况下，在创建模板时，您不知道需要返回的值的实例数。 您可以使用 **copy** 元素返回值的可变数量。
 
 ```json
 "outputs": {
@@ -59,7 +61,7 @@ ms.locfileid: "79460018"
 }
 ```
 
-有关详细信息，请参阅 [Azure 资源管理器模板中的输出迭代](copy-outputs.md)。
+有关详细信息，请参阅 [在 Azure 资源管理器模板中输出迭代](copy-outputs.md)。
 
 ## <a name="linked-templates"></a>链接模板
 
@@ -118,4 +120,4 @@ az deployment group show \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解输出的可用属性，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+* 若要了解有关输出的可用属性，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。

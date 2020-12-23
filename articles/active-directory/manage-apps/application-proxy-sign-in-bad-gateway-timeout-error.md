@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0339e9f7688555b4d99c2d3255461b5675f642ff
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690266"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649545"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
@@ -87,7 +87,7 @@ ms.locfileid: "88690266"
 
 ## <a name="check-for-other-connector-errors"></a>检查其他连接器错误
 
-如果上述步骤未能解决此问题，下一步是查找连接器本身的问题或错误。 可以在[故障排除文档](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)中查看一些常见错误。
+如果上述步骤未能解决此问题，下一步是查找连接器本身的问题或错误。 可以在[故障排除文档](./application-proxy-troubleshoot.md#connector-errors)中查看一些常见错误。
 
 也可以直接查看连接器日志以识别任何错误。 很多错误消息都提供了具体的修复建议。 若要查看日志，请参阅[连接器文档](application-proxy-connectors.md#under-the-hood)。
 

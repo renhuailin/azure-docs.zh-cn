@@ -8,26 +8,29 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea791e4fc1031c0a5c041119c409f8623ce7aee9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260370"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461335"
 ---
-# <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>使用专用链接连接到 Azure Synapse 工作区（预览版）
+# <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>使用专用链接连接到 Azure Synapse 工作区
 
-本文介绍如何为 Azure Synapse 工作区创建专用终结点。 有关详细信息，请参阅[专用链接和专用终结点](https://docs.microsoft.com/azure/private-link/)。
+本文介绍如何在 Azure Synapse 工作区中创建专用终结点。 有关详细信息，请参阅[专用链接和专用终结点](https://docs.microsoft.com/azure/private-link/)。
 
 ## <a name="step-1-register-network-resource-provider"></a>步骤 1：注册网络资源提供程序
 
 注册网络资源提供程序（如果尚未这样做）。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 [注册](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)时，从资源提供程序列表中选择“Microsoft.Network”。 如果已注册网络资源提供程序，则继续执行步骤 2。
 
-
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>步骤 2：在 Azure 门户中打开 Azure Synapse 工作区
 
-在“安全性”下选择“专用终结点连接”，然后选择“+ 专用终结点”  。
+选择 "**安全**" 下的 **专用终结点连接**。 
 ![在 Azure 门户中打开 Azure Synapse 工作区](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1.png)
+
+在下一个屏幕上，选择 " **+ 专用终结点**"。
+
+![在 Azure 门户中打开专用终结点](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1a.png)
 
 ## <a name="step-3-select-your-subscription-and-region-details"></a>步骤 3：选择订阅和区域详细信息
 

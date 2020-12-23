@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2020
-author: djpmsft
-ms.author: daperlov
+ms.date: 12/09/2020
+author: dcstwh
+ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 081d19cc845750f1392e2c1a14229a51d0df4cbc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: da38dd99d0f27d83d5810a664d0c05f979f47080
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276437"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920077"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -26,34 +26,37 @@ ms.locfileid: "91276437"
 可以使用 Azure 门户中的数据工厂 UI 或编程接口来参数化链接服务。
 
 > [!TIP]
-> 我们建议不要参数化密码或机密。 而应将所有连接字符串都存储在 Azure Key Vault 中，并参数化*机密名称*。
+> 我们建议不要参数化密码或机密。 而应将所有连接字符串都存储在 Azure Key Vault 中，并参数化 *机密名称*。
 
 有关此功能的 7 分钟介绍和演示，请观看以下视频：
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>支持的数据存储
+## <a name="supported-linked-service-types"></a>支持的链接服务类型
 
-可以参数化任何类型的链接服务。
-在 UI 上创作链接服务时，数据工厂为以下类型的连接器提供内置参数化体验。 在 "链接的服务创建/编辑" 边栏选项卡中，可以找到新参数的选项和添加动态内容。
+可以将任何类型的链接服务参数化。
+在 UI 上创作链接服务时，数据工厂会为以下类型的链接服务提供内置参数化体验。 在“链接服务创建/编辑”边栏选项卡中，可以找到新参数的选项并添加动态内容。
 
 - Amazon Redshift
+- Amazon S3
 - Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
-- Azure SQL 数据库
-- Azure Synapse Analytics（以前称为 SQL DW）
+- Azure Databricks
+- Azure SQL Database
+- Azure SQL 托管实例
+- Azure Synapse Analytics 
 - MySQL
 - Oracle
 - SQL Server
 - 泛型 HTTP
 - 泛型 REST
 
-对于其他类型，可以通过在 UI 上编辑 JSON 来参数化该链接服务：
+对于不在上述列表中的其他链接服务类型，可以通过在 UI 上编辑 JSON 来参数化该链接服务：
 
-- 在 "链接服务创建/编辑" 边栏选项卡中 > 展开 "高级"，> 选中 "以 JSON 格式指定动态内容" 复选框-> 指定链接的服务 JSON 有效负载。 
-- 或者，在创建未参数化的链接服务之后，在 " [管理中心](author-visually.md#management-hub) -> 链接服务-> 查找特定的链接服务-> 单击" 代码 " (按钮" {} ") 编辑 JSON。 
+- 在“链接服务创建/编辑”边栏选项卡中 -> 展开底部的“高级”-> 选中“以 JSON 格式指定动态内容”复选框 -> 指定链接服务 JSON 有效负载。 
+- 或者，在创建没有参数化的链接服务后，转到[管理中心](author-visually.md#management-hub) ->“链接服务”-> 查找特定的链接服务 -> 单击“代码”（“{}”按钮）以编辑 JSON。 
 
-请参阅要[JSON sample](#json)添加 ` parameters` 部分以定义参数并使用引用参数的 JSON 示例 ` @{linkedService().paraName} ` 。
+请参考 [JSON 示例](#json)来添加 ` parameters` 节，以定义参数并使用 ` @{linkedService().paraName} ` 来引用参数。
 
 ## <a name="data-factory-ui"></a>数据工厂 UI
 

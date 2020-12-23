@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920064"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075172"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
 本文提供了一些可能需要在云服务中执行的常见启动任务示例。 角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 
@@ -52,7 +52,7 @@ ms.locfileid: "85920064"
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>使用 AppCmd.exe 配置 IIS 启动
-[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。 AppCmd.exe 对要在 Azure 上的启动任务中使用的配置设置提供方便的命令行访问。 使用 *AppCmd.exe*，可以为应用程序和站点添加、修改或删除网站设置。
+[AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。 AppCmd.exe 对要在 Azure 上的启动任务中使用的配置设置提供方便的命令行访问。 使用 *AppCmd.exe*，可以为应用程序和站点添加、修改或删除网站设置。
 
 但是，在使用 *AppCmd.exe* 作为启动任务时有几点需要注意：
 
@@ -178,7 +178,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 ```
 
-此任务将导致每次初始化 Web 角色时都运行 startup.cmd 批处理文件，确保所需的 ipSecurity 部分处于解锁状态。 
+此任务将导致每次初始化 Web 角色时都运行 startup.cmd 批处理文件，确保所需的 ipSecurity 部分处于解锁状态。
 
 最后，修改 web 角色的 [web.config](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) 文件的 **system.webServer 节** 以添加被授予访问权限的 IP 地址列表，如下面的示例所示：
 
@@ -377,7 +377,7 @@ EXIT /B 0
 以下是在配置 web 角色或辅助角色的任务时应遵循的一些最佳做法。
 
 ### <a name="always-log-startup-activities"></a>始终记录启动活动
-Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（stdout 和 stderr），以便在尝试调试和修复批处理文件时使用该信息 。 若要记录 %TEMP% 环境变量指向的目录中 StartupLog.txt 文件的 stdout 和 stderr，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，若要在 **% PathToApp1Install%** 目录中执行 setup.exe，请执行以下操作：`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
+Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（stdout 和 stderr），以便在尝试调试和修复批处理文件时使用该信息 。 若要记录 %TEMP% 环境变量指向的目录中 StartupLog.txt 文件的 stdout 和 stderr，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，要在 %PathToApp1Install% 目录中执行 setup.exe，请运行以下命令：`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 要简化 xml，可以创建一个包装器 *cmd* 文件，使该文件调用所有启动任务以及日志记录并确保每个子任务共享相同的环境变量。
 
@@ -499,14 +499,14 @@ background 启动任务和 foreground 启动任务之间的区别在于 foregrou
 [创建和部署](cloud-services-how-to-create-deploy-portal.md)云服务包。
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[环境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[变量]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Endpoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
-[LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[任务]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[环境]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[变量]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
+[Endpoints]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
+[LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue

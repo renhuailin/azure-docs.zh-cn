@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 12/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9e3aaf0747e9b28526a43d9f734084f8a75662
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a618da7c9a66b8f687c1b75914530080ed56bea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743688"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905819"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中创建对 Azure 资源角色的访问评审
 
@@ -30,7 +30,7 @@ ms.locfileid: "84743688"
 
 ## <a name="prerequisites"></a>必备条件
 
-[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[特权角色管理员](../roles/permissions-reference.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>打开访问评审
 
@@ -40,7 +40,7 @@ ms.locfileid: "84743688"
 
 1. 在左侧菜单中，选择“Azure 资源”  。
 
-1. 选择要管理的资源，如订阅或管理组。
+1. 选择要管理的资源，例如订阅。
 
 1. 在“管理”下，选择“访问评审”  。
 

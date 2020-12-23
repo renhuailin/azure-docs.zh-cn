@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 业务连续性体系结构
-description: 本文介绍适用于 HDInsight 的不同业务连续性体系结构
+description: 本文介绍了适用于 HDInsight 的各种可能的业务连续性体系结构
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,243 +8,201 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856426"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344107"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight 业务连续性体系结构
 
-本文提供了几个适用于 Azure HDInsight 的业务连续性体系结构示例。 在发生灾难时，降低功能的容差是从一个应用程序到下一个应用程序的业务决策。 某些应用程序不可用或在某个时间段内降低功能或延迟处理可能是可接受的。 对于其他应用程序，任何缩减的功能都可能是不可接受的。
+本文提供了几个你可以考虑将其用于 Azure HDInsight 的业务连续性体系结构示例。 对于灾难期间功能降低的容忍度是一个业务决策，每个应用程序都会有所不同。 对于某些应用程序，可以接受其不可用，或者部分可用但功能降低，或者处理操作延迟一段时间。 对于另一些应用程序，任何功能降低可能都是不可接受的。
 
 > [!NOTE]
-> 本文中所述的体系结构没有详尽介绍。 你应设计自己的独特体系结构，一旦你制定了关于预期业务连续性、运营复杂性和所有权成本的客观决定。
+> 本文中介绍的体系结构并不是详尽无遗的。 在对预期的业务连续性、运营复杂性和拥有成本做出客观的判断后，你应该设计自己独特的体系结构。
 
-## <a name="apache-hive-and-interactive-query"></a>Apache Hive 和交互式查询
+## <a name="apache-hive-and-interactive-query"></a>Apache Hive 和 Interactive Query
 
-在 HDInsight Hive 和交互式查询群集中，建议使用[Hive 复制 V2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS)来实现业务连续性。 需要复制的独立 Hive 群集的永久部分为存储层和 Hive 元存储。 具有企业安全性套餐的多用户方案中的 Hive 群集需要 Azure Active Directory 域服务和 Ranger 元存储。
+为 HDInsight Hive 和交互式查询群集中的业务连续性建议使用[Hive 复制 V2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) 。 需要复制的独立 Hive 群集的永久部分是存储层和 Hive 元存储。 多用户方案中具有企业安全性套餐的 Hive 群集需要 Azure Active Directory 域服务和 Ranger 元存储。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hive-interactive-query.png" alt-text="Hive 和交互式查询体系结构&quot;:::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hive-interactive-query.png" alt-text="Hive 和 Interactive Query 体系结构":::
 
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
+Hive 基于事件的复制是在主群集与辅助群集之间配置的。 这包括两个不同的阶段，即启动和增量运行：
 
-* &quot;引导" 会将整个 Hive 仓库（包括从主副本 Hive 元存储信息）复制到辅助副本。
+* “启动”会将整个 Hive 仓库（包括 Hive 元存储信息）从主群集复制到辅助群集。
 
-* 增量运行在主群集上自动运行，在增量运行期间生成的事件将在辅助群集上播放。 辅助群集与从主群集生成的事件相结合，从而确保辅助群集与复制运行后的主要群集事件一致。
+* 增量运行在主群集上自动进行，在增量运行期间生成的事件会在辅助群集上回放。 辅助群集的事件会跟上从主群集生成的事件的进度，确保辅助群集的事件在复制运行后与主群集的事件一致。
 
-仅当复制运行分布式副本时才需要辅助群集 `DistCp` ，但存储和元存储需要是永久性的。 你可以选择在复制之前按需启动脚本辅助群集，对其运行复制脚本，然后在成功复制后将其关闭。
+只有在复制时才需要使用辅助群集来运行分布式复制 `DistCp`，但是存储和元存储需要是永久性的。 你可以选择在复制之前按需启动脚本化的辅助群集，在其上运行复制脚本，然后在成功复制后将其销毁。
 
-辅助群集通常是只读的。 可以将辅助群集设置为读写，但这会增加额外的复杂性，涉及将更改从辅助群集复制到主群集。
+辅助群集通常是只读的。 你可以将辅助群集设置为可读写的，但这会增加额外的复杂性，涉及将更改从辅助群集复制到主群集。
 
-### <a name="hive-event-based-replication-rpo--rto"></a>基于 Hive 事件的复制 RPO & RTO
+### <a name="hive-event-based-replication-rpo--rto"></a>Hive 基于事件的复制 RPO 和 RTO
 
-* RPO：数据丢失限制为从主站点到辅助副本的最后一个成功的增量复制事件。
+* RPO：数据丢失限制为从主群集到辅助群集的最后一个成功的增量复制事件。
 
-* RTO：上游和下游事务与辅助副本之间的故障与恢复之间的时间。
+* RTO：故障之后恢复与辅助群集进行的上游和下游事务所需的时间。
 
-### <a name="apache-hive-and-interactive-query-architectures"></a>Apache Hive 和交互式查询体系结构
+### <a name="apache-hive-and-interactive-query-architectures"></a>Apache Hive 和 Interactive Query 体系结构
 
-#### <a name="hive-active-primary-with-on-demand-secondary"></a>具有按需辅助副本的 Hive 活动主节点
+#### <a name="hive-active-primary-with-on-demand-secondary"></a>与按需辅助群集配合使用的 Hive 主动主群集
 
-在 *具有按需辅助* 体系结构的活动主节点中，应用程序将写入活动的主要区域，而在正常操作过程中，不会在次要区域中预配任何群集。 辅助区域中的 SQL 元存储和存储是永久性的，而 HDInsight 群集只在计划的 Hive 复制运行之前按需编写和部署。
+在“与按需辅助群集配合使用的主动主群集”体系结构中，在正常操作期间，应用程序会写入到主动主区域，不会在辅助区域中预配任何群集。 辅助区域中的 SQL 元存储和存储是永久性的，你只在计划的 Hive 复制运行之前针对 HDInsight 群集按需编写脚本并进行部署。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Hive 和交互式查询体系结构&quot;:::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="与按需辅助群集配合使用的主动主群集":::
 
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
+#### <a name="hive-active-primary-with-standby-secondary"></a>与备用辅助群集配合使用的 Hive 主动主群集
 
-* &quot;引导":::
+在“与备用辅助群集配合使用的主动主群集”体系结构中，在正常操作期间，应用程序会将内容写入到主动主区域，而备用纵向缩减辅助群集则以只读模式运行。 在正常操作期间，你可以选择将特定于区域的读取操作负荷转移到辅助区域。
 
-#### <a name="hive-active-primary-with-standby-secondary"></a>带有备用辅助副本的 Hive 活动主节点
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="与备用辅助群集配合使用的主动主群集":::
 
-在 *带有备用辅助副本的活动主*区域中，应用程序将写入活动的主要区域，而只读模式下的备用缩减辅助群集会在正常操作期间运行。 在正常操作过程中，可以选择将区域特定的读取操作卸载到辅助数据库。
-
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive 和交互式查询体系结构&quot;:::
-
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
-
-* &quot;引导":::
+有关 Hive 复制和代码示例的详细信息，请参阅 [Azure HDInsight 群集中的 Apache Hive 复制](./interactive-query/apache-hive-replication.md)
 
 ## <a name="apache-spark"></a>Apache Spark
 
-Spark 工作负荷不一定涉及 Hive 组件。 为了使 Spark SQL 工作负荷能够从 Hive 读取和写入数据，HDInsight Spark 群集在同一区域中与 Hive/Interactive 查询群集共享 Hive 自定义元存储。 在这种情况下，Spark 工作负载的跨区域复制还必须伴随 Hive 元存储和存储的复制。 本部分中的故障转移方案适用于这两种情况：
+Spark 工作负荷可能涉及也可能不涉及 Hive 组件。 为了使 Spark SQL 工作负荷能够从 Hive 读取和写入数据，HDInsight Spark 群集共享来自同一区域中的 Hive/Interactive Query 群集的 Hive 自定义元存储。 在这种情况下，Spark 工作负荷的跨区域复制还必须伴随着 Hive 元存储和存储的复制。 本部分的故障转移方案适用于以下两种情况：
 
-* [使用 Hive 仓库连接器 (HWC 使用 HDInsight 交互式查询群集在 ACID 表上 SPARK SQL) 安装程序](./interactive-query/apache-hive-warehouse-connector.md) 。
-* 使用 HDInsight Hadoop 群集在非 ACID 表上 Spark SQL 工作负荷。
+* [使用 Hive Warehouse Connector(HWC) 设置的 ACID 表上的 Spark SQL](./interactive-query/apache-hive-warehouse-connector.md)（使用 HDInsight Interactive Query 群集）。
+* 使用 HDInsight Hadoop 群集的非 ACID 表上的 Spark SQL 工作负荷。
 
-对于在独立模式下运行的应用程序，需要使用 Azure 数据工厂定期将 Livy) 作业的特选数据和存储的 Spark Jar (从主要区域复制到次要区域 `DistCP` 。
+对于 Spark 以独立模式工作的场景，需要使用 Azure 数据工厂的 `DistCP` 定期将特选数据和存储的 Spark Jar（适用于 Livy 作业）从主区域复制到辅助区域。
 
-建议你使用版本控制系统来存储 Spark 笔记本和库，它们可在主要或次要群集上轻松部署。 确保在主工作区或辅助工作区中加载正确的数据，以确保基于笔记本的解决方案和非笔记本解决方案都已准备就绪。
+建议你使用版本控制系统来存储 Spark 笔记本和库，这样可以轻松将它们部署在主群集或辅助群集上。 请确保基于笔记本的解决方案和不基于笔记本的解决方案都已准备就绪，以在主工作区或辅助工作区中加载正确的数据装载内容。
 
-如果有客户特定的库，这些库超出了 HDInsight 本机提供的功能，则必须对其进行跟踪，并定期将其加载到备用辅助群集。  
+如果有特定于客户的库，但这些库超出了 HDInsight 本身的提供能力，则必须对其进行跟踪，并定期将其加载到备用辅助群集。  
 
-### <a name="apache-spark-replication-rpo--rto"></a>& RTO Apache Spark 复制 RPO
+### <a name="apache-spark-replication-rpo--rto"></a>Apache Spark 复制 RPO 和 RTO
 
-* RPO：数据丢失限制为最后一次成功的增量复制 (Spark 和 Hive) 从主数据库到辅助副本。
+* RPO：数据丢失限制为从主群集到辅助群集的最后一个成功的增量复制（Spark 和 Hive）。
 
-* RTO：上游和下游事务与辅助副本之间的故障与恢复之间的时间。
+* RTO：故障之后恢复与辅助群集进行的上游和下游事务所需的时间。
 
 ### <a name="apache-spark-architectures"></a>Apache Spark 体系结构
 
-#### <a name="spark-active-primary-with-on-demand-secondary"></a>具有按需辅助数据库的 Spark 活动主节点
+#### <a name="spark-active-primary-with-on-demand-secondary"></a>与按需辅助群集配合使用的 Spark 主动主群集
 
-在正常操作过程中，应用程序在主要区域中的 Spark 和 Hive 群集上进行读取和写入，而不会在次要区域中设置群集。 SQL 元存储、Hive 存储和 Spark 存储在次要区域中是永久性的。 Spark 和 Hive 群集按需编写和部署。 Hive 复制用于复制 Hive 存储和 Hive 元存储，而 Azure 数据工厂 `DistCP` 可用于复制独立 Spark 存储。 在每个 Hive 复制运行之前，需要部署 hive 群集，因为依赖项 `DistCp` 计算。
+在正常操作期间，应用程序在主区域中的 Spark 和 Hive 群集上进行读取和写入，不在辅助区域中预配任何群集。 SQL 元存储、Hive 存储和 Spark 存储在辅助区域中是永久性的。 针对 Spark 和 Hive 群集按需编写脚本并进行部署。 Hive 复制用来复制 Hive 存储和 Hive 元存储，而 Azure 数据工厂的 `DistCP` 可用来复制独立的 Spark 存储。 由于进行依赖关系 `DistCp` 计算，每次运行 Hive 复制之前都需要部署 Hive 群集。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Hive 和交互式查询体系结构&quot;:::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Apache Spark“与按需辅助群集配合使用的主动主群集”体系结构":::
 
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
+#### <a name="spark-active-primary-with-standby-secondary"></a>与备用辅助群集配合使用的 Spark 主动主群集
 
-* &quot;引导":::
+在正常操作期间，应用程序在主区域中的 Spark 和 Hive 群集上进行读取和写入，而辅助区域中的备用横向缩减 Hive 和 Spark 群集以只读模式运行。 在正常操作期间，你可以选择将特定于区域的 Hive 和 Spark 读取操作负荷转移到辅助区域。
 
-#### <a name="spark-active-primary-with-standby-secondary"></a>带有备用辅助数据库的 Spark 活动主节点
-
-应用程序对主区域中的 Spark 和 Hive 群集进行读取和写入，而处于只读模式下的备用扩展配置单元和 Spark 群集在正常操作过程中运行于辅助区域。 在正常操作过程中，可以选择将区域特定的 Hive 和 Spark 读取操作卸载到辅助数据库。
-
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="Hive 和交互式查询体系结构&quot;:::
-
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
-
-* &quot;引导":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="与备用辅助群集配合使用的 Apache Spark 主动主群集 ":::
 
 ## <a name="apache-hbase"></a>Apache HBase
 
 HBase 导出和 HBase 复制是在 HDInsight HBase 群集之间实现业务连续性的常用方法。
 
-HBase 导出是一个批处理复制过程，该过程使用 HBase 导出实用程序将表从主 HBase 群集导出到其基础 Azure Data Lake Storage 第2代存储。 然后，可以从辅助 HBase 群集访问导出的数据，并将其导入到必须 preexist 在辅助站点中的表中。 尽管 HBase 导出功能提供表级别的粒度，但在增量更新情况下，导出自动化引擎控制每次运行时要包含的增量行范围。 有关详细信息，请参阅 [HDInsight HBase 备份和复制](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#export-then-import)。
+HBase 导出是一个批量复制过程，它使用 HBase 导出实用工具将表从主 HBase 群集导出到其基础 Azure Data Lake Storage Gen2 存储。 然后，可以从辅助 HBase 群集访问导出的数据，并将其导入到必须永久保存在辅助群集中的表中。 尽管 HBase 导出提供表级粒度，但在增量更新情况下，将由导出自动化引擎控制每次运行时要包括的增量行范围。 有关详细信息，请参阅 [HDInsight HBase 备份和复制](./hbase/apache-hbase-backup-replication.md#export-then-import)。
 
-HBase 复制以完全自动的方式在 HBase 群集之间使用近乎实时的复制。 复制是在表级别上完成的。 所有表或特定表都可以作为复制的目标。 HBase 复制最终是一致的，这意味着对主要区域中的表进行的最新编辑操作可能无法立即用于所有辅助副本。 辅助副本最终会与主副本保持一致。 如果以下情况，可以在两个或多个 HDInsight HBase 群集之间设置 HBase 复制：
+HBase 复制以完全自动化方式在 HBase 群集之间使用近实时复制。 复制在表级别进行。 可以将所有表或特定表作为复制的目标。 HBase 复制是最终一致的，这意味着最近对主区域中的表的编辑可能不会立即可用于所有辅助区域。 辅助区域保证最终会变得与主区域一致。 在以下情况下，可以在两个或多个 HDInsight HBase 群集之间设置 HBase 复制：
 
-* 主数据库和辅助数据库位于同一虚拟网络中。
-* 主数据库和辅助数据库位于同一区域中的不同对等互连 Vnet。
-* 主数据库和辅助数据库位于不同区域的不同对等互连 Vnet 中。
+* 主群集和辅助群集位于同一虚拟网络中。
+* 主群集和辅助群集位于同一区域中对等互连的不同 VNet 中。
+* 主群集和辅助群集位于不同区域中对等互连的不同 VNet 中。
 
-有关详细信息，请参阅 [在 Azure 虚拟网络中设置 Apache HBase 群集复制](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-replication)。
+有关详细信息，请参阅[在 Azure 虚拟网络中设置 Apache HBase 群集复制](./hbase/apache-hbase-replication.md)。
 
-还有其他几种方式来执行 HBase 群集的备份，如 [复制 hbase 文件夹](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-the-hbase-folder)、 [复制表](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-tables) 和 [快照](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#snapshots)。
+还有一些其他方式可用来执行 HBase 群集的备份，例如[复制 hbase 文件夹](./hbase/apache-hbase-backup-replication.md#copy-the-hbase-folder)、[复制表](./hbase/apache-hbase-backup-replication.md#copy-tables)和[快照](./hbase/apache-hbase-backup-replication.md#snapshots)。
 
-### <a name="hbase-rpo--rto"></a>HBase RPO & RTO
+### <a name="hbase-rpo--rto"></a>HBase RPO 和 RTO
 
 #### <a name="hbase-export"></a>HBase 导出
 
-* RPO：数据丢失限制为第一次成功的批处理增量导入主要副本。
-* RTO：主要和恢复辅助数据库上的 i/o 操作失败之间的时间。
+* RPO：数据丢失限制为辅助群集从主群集执行的最后一次成功的批量增量导入。
+* RTO：主群集上发生故障与辅助群集上的 I/O 操作恢复之间的时间间隔。
 
 #### <a name="hbase-replication"></a>HBase 复制
 
-* RPO：数据丢失仅限于在辅助副本上收到的最后一个 WalEdit 发货。
-* RTO：主要和恢复辅助数据库上的 i/o 操作失败之间的时间。
+* RPO：数据丢失限制为在辅助群集上收到的最后一次 WalEdit 发货。
+* RTO：主群集上发生故障与辅助群集上的 I/O 操作恢复之间的时间间隔。
 
 ### <a name="hbase-architectures"></a>HBase 体系结构
 
-可以在三种模式下设置 HBase 复制：引导 Leader-Leader 和循环。
+可以采用三种模式设置 HBase 复制：“领导者-追随者”、“领导者-领导者”和“循环”。
 
-#### <a name="hbase-replication--leader--follower-model"></a>HBase 复制：领导者–从后模型
+#### <a name="hbase-replication--leader--follower-model"></a>HBase 复制：“领导者-追随者”模型
 
-在此跨区域设置中，复制从主要区域复制到次要区域。 可以为单向复制标识主副本上的所有表或特定表。 在正常操作期间，辅助群集可用于在其自己的区域中提供读取请求。
+在此跨区域设置中，复制从主区域到辅助区域单向进行。 可以在主区域中标识要进行单向复制的所有表或特定表。 在正常操作期间，辅助群集可用于处理其自己的区域中的读取请求。
 
-辅助群集作为一般 HBase 群集运行，可以托管其自身的表，并且可以提供区域应用程序的读取和写入操作。 但是，对复制的表或本机到辅助数据库的表的写入不会复制回主副本。
+辅助群集作为普通的 HBase 群集运行，它可以承载自己的表，并且可以处理区域应用程序的读写操作。 但是，在已复制的表或辅助群集原有的表上进行的写入不会复制回主群集。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="Hive 和交互式查询体系结构&quot;:::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="HBase“领导者-追随者”模型":::
 
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
+#### <a name="hbase-replication--leader--leader-model"></a>HBase 复制：“领导者-领导者”模型
 
-* &quot;引导":::
+此跨区域设置非常类似于单向设置，只不过复制在主区域与辅助区域之间双向进行。 应用程序可以在读写模式下使用这两个群集，并在它们之间异步交换更新。
 
-#### <a name="hbase-replication--leader--leader-model"></a>HBase 复制：领导者–领导者模型
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="HBase“领导者-领导者”模型":::
 
-这种跨区域设置非常类似于单向设置，只不过复制发生在主要区域和次要区域之间双向。 应用程序可以在读写模式下使用两个群集，并且更新在它们之间异步交换。
+#### <a name="hbase-replication-multi-region-or-cyclic"></a>HBase 复制：“多区域”或“循环”
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="Hive 和交互式查询体系结构&quot;:::
+“多区域/循环”复制模型是 HBase 复制的扩展，可用于创建包含多个应用程序的全局冗余 HBase 体系结构，这些应用程序可在特定于区域的 HBase 群集中进行读取和写入。 可以根据业务要求按不同的“领导者/领导者”或“领导者/追随者”组合来设置群集。
 
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
-
-* &quot;引导":::
-
-#### <a name="hbase-replication-multi-region-or-cyclic"></a>HBase 复制：多区域或循环
-
-多区域/循环复制模型是 HBase 复制的扩展，可用于创建包含多个应用程序的全局冗余 HBase 体系结构，这些应用程序可读取和写入区域特定 HBase 群集。 根据业务要求，可以根据业务要求，在负责人/领导者或组长/后的各种组合中设置群集。
-
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Hive 和交互式查询体系结构&quot;:::
-
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
-
-* &quot;引导":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="HBase 循环模型":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-若要启用跨区域可用性，HDInsight 4.0 支持 Kafka MirrorMaker，可用于在不同区域中维护主要 Kafka 群集的辅助副本。 MirrorMaker 充当高级使用者的使用者对，使用主群集中的特定主题，并使用同一名称在辅助副本中生成。 使用 MirrorMaker 进行跨群集复制以实现高可用性灾难恢复，假设创建者和使用者需要故障转移到副本群集。 有关详细信息，请参阅 [使用 MirrorMaker 在 HDInsight 上使用 Kafka 复制 Apache Kafka 主题](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-mirroring)
+为了实现跨区域可用性，HDInsight 4.0 支持 Kafka MirrorMaker，后者可用于在另一区域中维护主 Kafka 群集的辅助副本。 MirrorMaker 充当高级“使用者-生成者”对，使用主群集中某个特定主题提供的内容，将内容生成到辅助群集中名称相同的主题。 使用 MirrorMaker 进行跨群集复制以实现高可用性灾难恢复的假设条件是生成者和使用者需要故障转移到副本群集。 有关详细信息，请参阅[使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题](./kafka/apache-kafka-mirroring.md)
 
-根据启动复制时的主题生存期，MirrorMaker 主题复制可能会导致源和副本主题之间出现不同的偏移量。 HDInsight Kafka 群集还支持主题分区复制，这是单个群集级别的高可用性功能。
+MirrorMaker 主题复制可能会在源主题与副本主题之间导致不同的偏移量，具体取决于复制开始时的主题生存期。 HDInsight Kafka 群集还支持主题分区复制，这是在单个群集级别的高可用性功能。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Hive 和交互式查询体系结构&quot;:::
-
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
-
-* &quot;引导":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Apache Kafka 复制":::
 
 ### <a name="apache-kafka-architectures"></a>Apache Kafka 体系结构
 
-#### <a name="kafka-replication-active--passive"></a>Kafka 复制：主动-被动
+#### <a name="kafka-replication-active--passive"></a>Kafka 复制：主动 – 被动
 
-Active-Passive 安装程序允许从活动到被动的异步单向镜像。 制造者和使用者需要知道是否存在主动和被动群集，并且在活动失败时必须准备好将故障转移到被动。 下面是 Active-Passive 安装程序的一些优点和缺点。
-
-优点：
-
-* 群集之间的网络延迟不会影响活动群集的性能。
-* 简单的单向复制。
-
-缺点：
-
-* 被动群集可能仍未充分利用。
-* 设计复杂性：将故障转移感知纳入应用程序创建者和使用者。
-* 在活动群集出现故障期间可能会丢失数据。
-* 主动和被动群集之间的主题之间的最终一致性。
-* 故障回复到主要副本可能会导致主题中出现消息不一致的情况。
-
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Hive 和交互式查询体系结构&quot;:::
-
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
-
-* &quot;引导":::
-
-#### <a name="kafka-replication-active--active"></a>Kafka 复制：活动–活动
-
-Active-Active 设置涉及两个突破独立的 VNet 对等互连 HDInsight Kafka 群集，其中包含带有 MirrorMaker 的双向异步复制。 在此设计中，主要用户使用的消息也可以在辅助数据库中使用，反之亦然。 下面是 Active-Active 安装程序的一些优点和缺点。
+主动-被动设置启用从主动群集到被动群集的异步单向镜像。 生成者和使用者需要知道主动和被动群集的存在，并且必须准备好在主动群集发生故障时故障转移到被动群集。 下面是“主动-被动”设置的一些优点和缺点。
 
 优点：
 
-* 由于故障转移和故障回复的重复状态，因此更易于执行。
+* 群集之间的网络延迟不会影响主动群集的性能。
+* 单向复制的简单性。
 
 缺点：
 
-* 设置、管理和监视比主动-被动更复杂。
+* 被动群集可能一直未充分利用。
+* 在应用程序生成者和使用者中纳入故障转移感知的设计复杂性。
+* 在主动群集故障期间可能会丢失数据。
+* 主动与被动群集的主题之间的最终一致性。
+* 故障回复到主群集可能会导致主题中的消息不一致。
+
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Apache Kafka 主动 - 被动模型":::
+
+#### <a name="kafka-replication-active--active"></a>Kafka 复制：主动 – 主动
+
+“主动-主动”设置涉及两个进行了区域分离的、VNet 对等互连的 HDInsight Kafka 群集，采用 MirrorMaker 进行双向异步复制。 在此设计中，主区域中的使用者使用的消息也可以供辅助区域中的使用者使用，反之亦然。 下面是“主动-主动”设置的一些优点和缺点。
+
+优点：
+
+* 由于其状态是重复的，故障转移和故障回复更容易执行。
+
+缺点：
+
+* 设置、管理和监视比“主动-被动”设置更复杂。
 * 循环复制的问题需要解决。  
 * 双向复制会导致更高的区域数据出口费用。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Hive 和交互式查询体系结构&quot;:::
-
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
-
-* &quot;引导":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Apache Kafka “主动-主动”模型":::
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight 企业安全性套餐
 
-此设置用于在主副本和辅助副本中启用多用户功能，以及 [AZURE AD DS 副本集](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-replica-set) ，以确保用户可以对这两个群集进行身份验证。 在正常操作过程中，需要在辅助副本中设置 Ranger 策略，以确保将用户限制为读取操作。 下面的体系结构说明启用了 ESP 的配置单元活动主要-备用辅助设置可能的外观。
+此设置用于在主群集和辅助群集以及 [Azure AD DS 副本集](../active-directory-domain-services/tutorial-create-replica-set.md)中启用多用户功能，以确保用户可以向这两个群集进行身份验证。 在正常操作期间，需要在辅助群集中设置 Ranger 策略，以确保用户只能进行读取操作。 下面的体系结构说明了启用了 ESP 的 Hive“主动主群集 – 备用辅助群集”设置的情况。
 
 Ranger 元存储复制：
 
-Ranger 元存储用于永久存储和提供 Ranger 策略来控制数据授权。 建议在主数据库和辅助数据库中维护独立的 Ranger 策略，并将辅助数据库作为读取副本维护。
+Ranger 元存储用于永久存储和提供 Ranger 策略来控制数据授权。 建议在主群集和辅助群集中保留独立的 Ranger 策略，并保留辅助群集作为只读副本。
   
-如果要求在主和辅助数据库之间保持 Ranger 策略同步，请使用 [Ranger 导入/导出](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export#:~:text=Ranger%20has%20introduced%20a%20new,can%20import%20and%20export%20policies.&text=Also%20can%20export%2Fimport%20a,repositories\)%20via%20Ranger%20Admin%20UI) 定期备份，并将 Ranger 策略从主副本导入到辅助副本。
+如果要求在主群集与辅助群集之间保持 Ranger 策略同步，请使用 [Ranger 导入/导出](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export)定期备份 Ranger 策略并将其从主群集导入到辅助群集。
 
-如果在主数据库和辅助数据库之间复制 Ranger 策略，则可能导致辅助数据库变为启用写入，这可能会导致在辅助数据库上意外写入，导致数据不一致。  
+如果在主群集与辅助群集之间复制 Ranger 策略，则可能会导致辅助群集变为支持写入的群集，这可能会导致在辅助群集上出现意外的写入，导致数据不一致。  
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Hive 和交互式查询体系结构&quot;:::
-
-基于 Hive 事件的复制是在主群集和辅助群集之间配置的。 这包括两个不同的阶段：引导和增量运行：
-
-* &quot;引导":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="HDInsight 企业安全性套餐体系结构":::
 
 ## <a name="next-steps"></a>后续步骤
 

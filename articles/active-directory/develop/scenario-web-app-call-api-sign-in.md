@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5246100815fde569c55027a555464c44a240d4b3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b7f59f235f4baa270b36b01cc4532227ab23fbc8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119991"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442525"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>调用 Web API 的 Web 应用：在全局注销时从令牌缓存中删除帐户
 
@@ -30,7 +30,7 @@ ms.locfileid: "88119991"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Microsoft.Identity.Web 负责为你实现注销。 有关详细信息[，请参阅](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L168-L176)
+Microsoft.Identity.Web 负责为你实现注销。 有关详细信息，请参阅 [Microsoft.Identity.Web 源代码](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L168-L176)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -50,22 +50,18 @@ Python 示例不会在全局注销时删除缓存中的帐户。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [获取 Web 应用的令牌](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore)
+转到此方案中的下一篇文章， [获取 web 应用的令牌](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [获取 Web 应用的令牌](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet)
+转到此方案中的下一篇文章， [获取 web 应用的令牌](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [获取 Web 应用的令牌](./scenario-web-app-call-api-acquire-token.md?tabs=java)
+转到此方案中的下一篇文章， [获取 web 应用的令牌](./scenario-web-app-call-api-acquire-token.md?tabs=java)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [获取 Web 应用的令牌](./scenario-web-app-call-api-acquire-token.md?tabs=python)
+转到此方案中的下一篇文章， [获取 web 应用的令牌](./scenario-web-app-call-api-acquire-token.md?tabs=python)。
 
 ---

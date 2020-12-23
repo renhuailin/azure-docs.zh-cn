@@ -2,18 +2,18 @@
 title: 异常检测器 Python 客户端库快速入门
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/22/2020
-ms.author: aahi
-ms.openlocfilehash: ec13ee65595ccb0bdca1656522a7cd5f21b49a10
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/25/2020
+ms.author: mbullwin
+ms.openlocfilehash: ccfb6f767a977ed9af1019d736aa23c5f8e9950c
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319230"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356170"
 ---
 适用于 Python 的异常检测器客户端库入门。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
@@ -23,7 +23,7 @@ ms.locfileid: "91319230"
 * 在时序中检测最新数据点的异常状态
 * 检测数据集中的趋势更改点。
 
-[库参考文档](https://go.microsoft.com/fwlink/?linkid=2090370) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/) | [在 GitHub 上查找示例代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
+[库参考文档](https://go.microsoft.com/fwlink/?linkid=2090370) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/) | [在 GitHub 上查找示例代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector/samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,11 +43,22 @@ ms.locfileid: "91319230"
 
  创建新的 Python 文件并导入以下库。
 
-[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
+```python
+import os
+from azure.ai.anomalydetector import AnomalyDetectorClient
+from azure.ai.anomalydetector.models import DetectRequest, TimeSeriesPoint, TimeGranularity, \
+    AnomalyDetectorError
+from azure.core.credentials import AzureKeyCredential
+import pandas as pd
+```
 
 将密钥的变量创建为环境变量，同时创建时序数据文件的路径，以及订阅的 Azure 位置。 例如，`westus2`。
 
-[!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
+```python
+SUBSCRIPTION_KEY = os.environ["ANOMALY_DETECTOR_KEY"]
+ANOMALY_DETECTOR_ENDPOINT = os.environ["ANOMALY_DETECTOR_ENDPOINT"]
+TIME_SERIES_DATA_PATH = os.path.join("./sample_data", "request-data.csv")
+```
 
 ### <a name="install-the-client-library"></a>安装客户端库
 
@@ -59,11 +70,11 @@ pip install --upgrade azure-ai-anomalydetector
 
 ## <a name="object-model"></a>对象模型
 
-异常检测器客户端是 [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) 对象，该对象使用你的密钥向 Azure 进行身份验证。 客户端可以使用 [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) 对整个数据集进行异常情况检测，或使用 [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) 对最新的数据点进行异常情况检测。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090370) 函数可检测在趋势中标记更改的点。
+异常检测器客户端是 [AnomalyDetectorClient](https://github.com/Azure/azure-sdk-for-python/blob/0b8622dc249969c2f01c5d7146bd0bb36bb106dd/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector/azure/cognitiveservices/anomalydetector/_anomaly_detector_client.py) 对象，该对象使用你的密钥向 Azure 进行身份验证。 客户端可使用 [detect_entire_series](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/operations/_anomaly_detector_client_operations.py#L26) 对整个数据集进行异常情况检测，或者使用 [detect_last_point](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/operations/_anomaly_detector_client_operations.py#L87) 对最新的数据点进行异常情况检测。 [detect_change_point](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/aio/operations_async/_anomaly_detector_client_operations_async.py#L142) 函数可检测在趋势中标记更改的点。
 
-时序数据作为 [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python) 对象中的一系列 [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) 进行发送。 `Request` 对象包含描述数据的属性（例如[Granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)）以及异常检测的参数。
+时序数据作为一系列 [TimeSeriesPoints](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L370) 对象进行发送。 `DetectRequest` 对象包含描述数据的属性（例如 `TimeGranularity`）以及异常情况检测的参数。
 
-异常检测器响应是 [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)、[EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 或 [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370) 对象，具体取决于所使用的方法。
+异常检测器响应是 [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)、[EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 或 [ChangePointDetectResponse](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L107) 对象，具体取决于所使用的方法。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -79,7 +90,9 @@ pip install --upgrade azure-ai-anomalydetector
 
 将 Azure 位置变量添加到终结点，并使用密钥对客户端进行身份验证。
 
-[!code-python[Client authentication](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=client)]
+```python
+client = AnomalyDetectorClient(AzureKeyCredential(SUBSCRIPTION_KEY), ANOMALY_DETECTOR_ENDPOINT)
+```
 
 ## <a name="load-time-series-data-from-a-file"></a>从文件加载时序数据
 
@@ -90,31 +103,86 @@ pip install --upgrade azure-ai-anomalydetector
 
 此时序数据的格式为 .csv 文件，它将被发送到异常检测器 API。
 
-使用 Pandas 库的 `read_csv()` 方法加载数据文件，并构建一个空的列表变量来存储数据系列。 循环访问该文件，并将数据作为 [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) 对象追加。 此对象将包含 .csv 数据文件的行中的时间戳和数字值。
+使用 Pandas 库的 `read_csv()` 方法加载数据文件，并构建一个空的列表变量来存储数据系列。 循环访问该文件，并将数据作为 `TimeSeriesPoint` 对象追加。 此对象将包含 .csv 数据文件的行中的时间戳和数字值。
 
-[!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
+```python
+series = []
+data_file = pd.read_csv(TIME_SERIES_DATA_PATH, header=None, encoding='utf-8', parse_dates=[0])
+for index, row in data_file.iterrows():
+    series.append(TimeSeriesPoint(timestamp=row[0], value=row[1]))
+```
 
-使用时序创建一个 [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python) 对象，以及其数据点的[粒度](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)（或周期）。 例如，`Granularity.daily`。
+使用时序创建一个 `DetectRequest` 对象，以及其数据点的`TimeGranularity`（或周期）。 例如，`TimeGranularity.daily`。
 
-[!code-python[Create the request object](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=request)]
+```python
+request = DetectRequest(series=series, granularity=TimeGranularity.daily)
+```
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>在整个数据集中检测异常
 
-调用 API，以便使用客户端的 [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) 方法检测整个时序数据中的异常。 存储返回的 [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 对象。 循环访问响应的 `is_anomaly` 列表，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
+调用 API，以便使用客户端的 `detect_entire_series` 方法检测整个时序数据中的异常。 存储返回的 [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 对象。 循环访问响应的 `is_anomaly` 列表，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
 
-[!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=detectAnomaliesBatch)]
+```python
+print('Detecting anomalies in the entire time series.')
+
+try:
+    response = client.detect_entire_series(request)
+except AnomalyDetectorError as e:
+    print('Error code: {}'.format(e.error.code), 'Error message: {}'.format(e.error.message))
+except Exception as e:
+    print(e)
+
+if any(response.is_anomaly):
+    print('An anomaly was detected at index:')
+    for i, value in enumerate(response.is_anomaly):
+        if value:
+            print(i)
+else:
+    print('No anomalies were detected in the time series.')
+```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测最新数据点的异常状态
 
-调用异常检测器 API，以便使用客户端的 [last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) 方法确定最新数据点是否异常，并存储返回的 [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) 对象。 响应的 `is_anomaly` 值是一个布尔值，用于指定该点的异常状态。  
+调用异常检测器 API，以便使用客户端的 `detect_last_point` 方法确定最新数据点是否异常，并存储返回的 `LastDetectResponse` 对象。 响应的 `is_anomaly` 值是一个布尔值，用于指定该点的异常状态。  
 
-[!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
+```python
+print('Detecting the anomaly status of the latest data point.')
+
+try:
+    response = client.detect_last_point(request)
+except AnomalyDetectorError as e:
+    print('Error code: {}'.format(e.error.code), 'Error message: {}'.format(e.error.message))
+except Exception as e:
+    print(e)
+
+if response.is_anomaly:
+    print('The latest point is detected as anomaly.')
+else:
+    print('The latest point is not detected as anomaly.')
+```
 
 ## <a name="detect-change-points-in-the-data-set"></a>检测数据集中的更改点
 
-调用 API，以使用客户端的 [detect_change_point()](https://go.microsoft.com/fwlink/?linkid=2090370) 方法检测时序数据中的更改点。 存储返回的 [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370) 对象。 循环访问响应的 `is_change_point` 列表，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于趋势更改点的索引。
+调用 API，以使用客户端的 `detect_change_point` 方法检测时序数据中的更改点。 存储返回的 `ChangePointDetectResponse` 对象。 循环访问响应的 `is_change_point` 列表，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于趋势更改点的索引。
 
-[!code-python[detect change points](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=changePointDetection)]
+```python
+print('Detecting change points in the entire time series.')
+
+try:
+    response = client.detect_change_point(request)
+except AnomalyDetectorError as e:
+    print('Error code: {}'.format(e.error.code), 'Error message: {}'.format(e.error.message))
+except Exception as e:
+    print(e)
+
+if any(response.is_change_point):
+    print('An change point was detected at index:')
+    for i, value in enumerate(response.is_change_point):
+        if value:
+            print(i)
+else:
+    print('No change point were detected in the time series.')
+```
 
 ## <a name="run-the-application"></a>运行应用程序
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 36be61fd65db7ea02a3baec4b519a13231c420ec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629737"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514435"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>适用于虚拟网络的 Azure 安全基准
 
@@ -118,7 +118,7 @@ ms.locfileid: "91629737"
 
 请参阅安全中心的默认策略，其中包含与虚拟网络相关的可用安全建议。
 
-使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、基于角色的访问控制 (Azure RBAC) 分配和策略）来简化大规模的 Azure 部署。 可以通过版本控制将 Azure 蓝图应用到新的订阅，以便进行微调控制和管理。 
+使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure 基于角色的访问控制 (Azure RBAC) 分配和策略）来简化大规模的 Azure 部署。 可以通过版本控制将 Azure 蓝图应用到新的订阅，以便进行微调控制和管理。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -196,7 +196,7 @@ ms.locfileid: "91629737"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行安全日志存储保留的长期/存档存储。
+**指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户进行安全日志存储保留的长期/存档存储。
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -408,13 +408,13 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 **责任**：共享
 
-### <a name="46-use-role-based-access-control-to-manage-access-to-resources"></a>4.6：使用基于角色的访问控制来管理对资源的访问 
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 管理对资源的访问 
 
 **指南**：使用 azure RBAC)  (azure 基于角色的访问控制来管理对数据和资源的访问。 否则，请使用特定于服务的访问控制方法。 
 
 选择 "所有者"、"参与者" 或 "网络参与者" 等内置角色，并将角色分配给相应的作用域。 例如，你可以将虚拟网络功能的一个子集指定为虚拟网络对任何这些角色所需的特定权限。 
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [计划虚拟网络](virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -708,7 +708,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略定义和 azure 资源管理器模板。 
+**指南**：使用 Azure DevOps 安全地存储和管理你的代码，例如自定义 Azure Policy 定义和 Azure 资源管理器模板。 
 
 如果与 Azure DevOps 集成，则授予或拒绝特定用户、内置安全组或组 Azure Active Directory Azure AD (中定义的组) （如果与 Azure 集成）或 Active Directory （如果与 Team Foundation Server 集成）。  
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7fbdeda4cce737a6220d42642473e5f86ef8e525
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836870"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96295955"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中运行 OpenSUSE Linux 的虚拟机上安装 MySQL
 
@@ -26,7 +26,7 @@ ms.locfileid: "87836870"
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>创建运行 OpenSUSE Linux 的虚拟机
 
-首先创建一个资源组。 在此示例中，资源组名为 *mySQSUSEResourceGroup*，并在“美国东部”** 区域中创建。
+首先创建一个资源组。 在此示例中，资源组名为 *mySQSUSEResourceGroup*，并在“美国东部”区域中创建。
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
@@ -117,7 +117,7 @@ mysql_secure_installation
 现在，可以登录并输入 MySQL 提示符。
 
 ```bash  
-mysql -u root -p
+sudo mysql -u root -p
 ```
 它可切换到 MySQL 提示符，你可以在其中发出用于与数据库交互的 SQL 语句。
 

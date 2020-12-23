@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761708"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660723"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>利用事件指标更好地管理 SOC
 
@@ -33,13 +33,13 @@ ms.locfileid: "88761708"
 
 ## <a name="use-the-security-incidents-table"></a>使用安全事件表
 
-**SecurityIncident**表内置于 Azure Sentinel 中。 在 "**日志**" 下，你会发现**SecurityInsights**集合中的其他表。 可以像在 Log Analytics 中的任何其他表一样对其进行查询。
+**SecurityIncident** 表内置于 Azure Sentinel 中。 在 "**日志**" 下，你会发现 **SecurityInsights** 集合中的其他表。 可以像在 Log Analytics 中的任何其他表一样对其进行查询。
 
 :::image type="content" source="./media/manage-soc-with-incident-metrics/security-incident-table.png" alt-text="安全事件表":::
 
 每次创建或更新事件时，都会向表中添加一个新的日志条目。 这使你可以跟踪对事件所做的更改，并允许更强大的 SOC 指标，但你需要注意这一点，因为你可能需要删除事件的重复条目 (依赖于你) 运行的确切查询。 
 
-例如，如果想要返回按事件编号排序的所有事件的列表，但只想返回每个事件的最新日志，则可以使用 KQL [汇总运算符](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) 和 `arg_max()` [聚合函数](https://docs.microsoft.com/azure/data-explorer/kusto/query/arg-max-aggfunction)来执行此操作：
+例如，如果想要返回按事件编号排序的所有事件的列表，但只想返回每个事件的最新日志，则可以使用 KQL [汇总运算符](/azure/data-explorer/kusto/query/summarizeoperator) 和 `arg_max()` [聚合函数](/azure/data-explorer/kusto/query/arg-max-aggfunction)来执行此操作：
 
 
 ```Kusto
@@ -80,7 +80,7 @@ SecurityIncident
 - 最近的活动 
 - 最近的结束分类  
 
-可以通过从 Azure Sentinel 导航菜单中选择 **工作** 簿并选择 " **模板** " 选项卡来查找此新的工作簿模板。从库中选择 " **安全操作效率** "，然后单击 " **查看保存的工作簿** " 和 " **查看模板** " 按钮之一。
+可以通过从 Azure Sentinel 导航菜单中选择 **工作簿** 并选择 " **模板** " 选项卡来查找此新的工作簿模板。从库中选择 " **安全操作效率** "，然后单击 " **查看保存的工作簿** " 和 " **查看模板** " 按钮之一。
 
 :::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="安全事件工作簿库":::
 

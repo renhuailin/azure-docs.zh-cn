@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 05/20/2020
+ms.date: 12/08/2020
 ms.author: curtand
-ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: HT
+ms.openlocfilehash: 7b3af7c5bd55e748b1d1f4cf8f192797187da30a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323019"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901790"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>中国公有云中的适用于 Android 的 Microsoft Authenticator
 
@@ -57,6 +57,7 @@ Microsoft Authenticator 功能 | 在中国的可用性
 手机登录注册 | 否
 现有手机登录使用推送通知 | 否
 通过手动检查是否存在身份验证请求对现有手机登录进行验证 | 是
+支持个人 Microsoft 帐户的验证器应用 | 否
 
 ## <a name="next-steps"></a>后续步骤
 

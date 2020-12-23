@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450418"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837257"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
-主刷新令牌 (PRT) 是 Windows 10、iOS 和 Android 设备上 Azure AD 身份验证的关键项目。 它是专门颁发给 Microsoft 第一方令牌代理的 JSON Web 令牌 (JWT)，用于在这些设备上使用的应用程序之间实现单一登录 (SSO)。 本文将详细介绍如何在 Windows 10 设备上颁发、使用和保护 PRT。
+主刷新令牌 (PRT) 是 Windows 10、Windows Server 2016 及更高版本、iOS 和 Android 设备上的 Azure AD 身份验证的关键项目。 它是专门颁发给 Microsoft 第一方令牌代理的 JSON Web 令牌 (JWT)，用于在这些设备上使用的应用程序之间实现单一登录 (SSO)。 本文将详细介绍如何在 Windows 10 设备上颁发、使用和保护 PRT。
 
 本文假设你已了解 Azure AD 中的不同设备状态以及 Windows 10 中单一登录的工作原理。 要详细了解 Azure AD 中的设备，请参阅 [Azure Active Directory 中的设备管理是什么？](overview.md)
 
@@ -57,7 +57,7 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 
 在以下两种方案中，当用户在 Windows 10 设备上进行身份验证时，会颁发 PRT：
 
-* **已建立 Azure AD 联接**或**已建立混合 Azure AD 联接**：当用户使用组织凭据登录时，在 Windows 登录过程中将颁发 PRT。 使用 Windows 10 支持的所有凭据（例如密码和 Windows Hello 企业版）颁发 PRT。 在此方案中，Azure AD CloudAP 插件是 PRT 的主要颁发机构。
+* **已建立 Azure AD 联接** 或 **已建立混合 Azure AD 联接**：当用户使用组织凭据登录时，在 Windows 登录过程中将颁发 PRT。 使用 Windows 10 支持的所有凭据（例如密码和 Windows Hello 企业版）颁发 PRT。 在此方案中，Azure AD CloudAP 插件是 PRT 的主要颁发机构。
 * **Azure AD 注册设备**：当用户将辅助工作帐户添加到 Windows 10 设备时，将颁发 PRT。 用户可以通过两种不同的方式将帐户添加到 Windows 10：  
    * 登录到某个应用（例如 Outlook）后，会出现“在此设备上的所有位置使用此帐户”提示，通过该提示添加帐户
    * 通过“设置” > “帐户” > “访问工作或学校” > “连接”添加帐户   
@@ -65,7 +65,7 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 在设备已注册 Azure AD 的方案中，Azure AD WAM 插件是 PRT 的主要颁发机构，因为此 Azure AD 帐户未发生 Windows 登录。
 
 > [!NOTE]
-> 第三方标识提供者需要支持 WS-Trust 协议，才能在 Windows 10 设备上颁发 PRT。 在没有 WS-TRUST 的情况下，不能将 PRT 颁发给混合 Azure AD 已加入或已加入 Azure AD 设备上的用户。 仅在 ADFS 上需要 usernamemixed 终结点。 Adfs/services/trust/2005/windowstransport 和 adfs/services/trust/13/windowstransport 都应作为仅面向 intranet 的终结点启用，且不能通过 Web 应用程序代理作为面向 extranet 的终结点**公开**
+> 第三方标识提供者需要支持 WS-Trust 协议，才能在 Windows 10 设备上颁发 PRT。 在没有 WS-TRUST 的情况下，不能将 PRT 颁发给混合 Azure AD 已加入或已加入 Azure AD 设备上的用户。 仅在 ADFS 上需要 usernamemixed 终结点。 Adfs/services/trust/2005/windowstransport 和 adfs/services/trust/13/windowstransport 都应作为仅面向 intranet 的终结点启用，且不能通过 Web 应用程序代理作为面向 extranet 的终结点 **公开**
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT 的生存期有多长？
 
@@ -85,9 +85,9 @@ PRT 通过两种不同的方法续订：
 * **通过 Azure AD CloudAP 插件每 4 小时续订一次**：在 Windows 登录过程中，CloudAP 插件每 4 小时就会续订一次 PRT。 如果在这段时间内用户没有 Internet 连接，CloudAP 插件将在设备连接到 Internet 后续订 PRT。
 * **通过 Azure AD WAM 插件在应用令牌请求中续订**：WAM 插件通过启用应用程序的无提示令牌请求，在 Windows 10 设备上启用 SSO。 WAM 插件可以通过两种不同的方式在这些令牌请求中续订 PRT：
    * 应用以无提示的方式向 WAM 请求访问令牌，但没有该应用可用的刷新令牌。 在这种情况下，WAM 使用 PRT 请求应用的令牌，并在响应中返回新的 PRT。
-   * 应用向 WAM 请求访问令牌，但 PRT 无效或 Azure AD 需要额外的授权（例如 Azure 多重身份验证）。 在此方案中，WAM 会启动交互式登录，要求用户重新进行身份验证或提供附加验证，并会在身份验证成功后颁发新的 PRT。
+   * 应用程序请求 WAM 访问令牌，但 PRT 无效或 Azure AD 需要额外的授权 (例如，Azure AD 多重身份验证) 。 在此方案中，WAM 会启动交互式登录，要求用户重新进行身份验证或提供附加验证，并会在身份验证成功后颁发新的 PRT。
 
-在 ADFS 环境中，无需直接向域控制器进行直接线路即可续订 PRT。 PRT 续订只需要使用 WS-TRUST 协议在代理上启用/adfs/services/trust/2005/usernamemixed 和/adfs/services/trust/13/usernamemixed 终结点。
+在 ADFS 环境中，无需直接向域控制器进行直接线路即可续订 PRT。 PRT 续订只需使用 WS-Trust 协议在代理上启用/adfs/services/trust/2005/usernamemixed 和/adfs/services/trust/13/usernamemixed 终结点。
 
 仅当更改了密码，而不是 PRT 续订时，才需要 Windows 传输终结点进行密码身份验证。
 
@@ -122,7 +122,7 @@ PRT 通过两种不同的方法续订：
 * **WAM 交互式登录中的 MFA**：在通过 WAM 请求令牌时，如果用户需要进行 MFA 才能访问应用，则在此交互过程中续订的 PRT 将带有 MFA 声明。
    * 在这种情况下，MFA 声明不会持续更新，因此，MFA 的持续时间取决于目录上设置的生存期。
    * 使用已有的 PRT 和 RT 访问应用时，PRT 和 RT 将被视为身份验证的第一项证明。 将需要具有第二项证明和 MFA 声明的新 AT。 这还将颁发新的 PRT 和 RT。
-* **设备注册期间的 MFA**：如果管理员已将 Azure AD 中的设备设置配置为[需要完成 MFA 才能注册设备](device-management-azure-portal.md#configure-device-settings)，则用户需要进行 MFA 才能完成注册。 在此过程中，颁发给用户的 PRT 具有在注册期间获得的 MFA 声明。 此功能仅适用于执行联接操作的用户，不适用于登录到该设备的其他用户。
+* **设备注册期间的 MFA**：如果管理员已将 Azure AD 中的设备设置配置为 [需要完成 MFA 才能注册设备](device-management-azure-portal.md#configure-device-settings)，则用户需要进行 MFA 才能完成注册。 在此过程中，颁发给用户的 PRT 具有在注册期间获得的 MFA 声明。 此功能仅适用于执行联接操作的用户，不适用于登录到该设备的其他用户。
    * 与 WAM 交互式登录类似，MFA 声明不会持续更新，因此，MFA 的持续时间取决于目录上设置的生存期。
 
 Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、密码或智能卡中的每一个都有 PRT。 此分区确保根据使用的凭据隔离 MFA 声明，而不会在令牌请求过程中混合在一起。

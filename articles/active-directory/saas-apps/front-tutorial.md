@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3edd1e9bf3b42b3d4ad0c7c533dedb23ea05e5ec
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550963"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92450775"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>教程：Azure Active Directory 与 Front 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88550963"
 * 可让用户使用其 Azure AD 帐户自动登录到 Front（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -89,7 +89,7 @@ ms.locfileid: "88550963"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "88550963"
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Front 客户端支持团队](mailto:support@frontapp.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -128,23 +128,23 @@ ms.locfileid: "88550963"
 
 2. 转到“设置(左侧边栏底部的齿轮图标) > 首选项”。 
    
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_000.png)
+    ![显示“设置(齿轮图标)”的屏幕截图，其中突出显示了“首选项”。](./media/front-tutorial/tutorial_front_000.png)
 
 3. 单击“单一登录”链接。 
    
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_001.png)
+    ![显示已选择“单一登录”链接的“公司首选项”部分的屏幕截图。](./media/front-tutorial/tutorial_front_001.png)
 
 4. 在“单一登录”下拉列表中选择“SAML”。  
    
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_002.png)
+    ![显示选择了“SAML”的“单一登录”下拉列表的屏幕截图。](./media/front-tutorial/tutorial_front_002.png)
 
 5. 在“入口点”  文本框中放置 Azure AD 应用程序配置向导中“登录 URL”的值。 
     
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_003.png)
+    ![显示“入口点”文本框的屏幕截图。](./media/front-tutorial/tutorial_front_003.png)
 
 6. 在记事本中打开下载的“证书(Base64)”文件，将其内容复制到剪贴板，然后将其粘贴到“签名证书”文本框中   。
     
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_004.png)
+    ![突出显示“签名证书”的屏幕截图，其中的文本框显示为灰色。](./media/front-tutorial/tutorial_front_004.png)
 
 7. 在“服务提供商设置”  部分中，执行以下步骤：
 
@@ -215,13 +215,12 @@ ms.locfileid: "88550963"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Front 磁贴时，应当会自动登录到已为其设置了 SSO 的 Front。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Front 磁贴时，应当会自动登录到已为其设置了 SSO 的 Front。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

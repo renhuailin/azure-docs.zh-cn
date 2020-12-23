@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856103"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922287"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -62,11 +62,9 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 |----------|----------------------------|
 | 灾难恢复 | [Azure 异地冗余备份](automated-backups-overview.md) |
 | 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](read-scale-out.md) |
-| ETL（OLTP 到 OLAP） | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)或 [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| 从 SQL Server 迁移到 Azure SQL 数据库 | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
+| ETL（OLTP 到 OLAP） | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)或 [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
+| 从 SQL Server 迁移到 Azure SQL Database。 但是，可以在迁移完成后使用 SQL 数据同步，以确保源和目标保持同步。  | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -81,7 +79,15 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | | 数据同步 | 事务复制 |
 |---|---|---|
 | **优点** | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 <br/>\- Azure SQL 托管实例支持 |
-| **缺点** | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
+| **缺点** | - 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
+
+## <a name="private-link-for-data-sync-preview"></a>数据同步 (预览的专用链接) 
+使用新的私有链接 (预览版) 功能，你可以选择服务托管的专用终结点，以便在数据同步过程中在同步服务与成员/中心数据库之间建立安全连接。 服务托管的专用终结点是特定虚拟网络和子网中的专用 IP 地址。 在数据同步中，服务托管的专用终结点由 Microsoft 创建，由数据同步服务专门用于给定的同步操作。 在设置专用链接之前，请阅读功能的 [一般要求](sql-data-sync-data-sql-server-sql-database.md#general-requirements) 。 
+
+![数据同步的专用链接](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> 在同步组部署过程中或使用 PowerShell 时，必须在 Azure 门户的 " **专用终结点连接** " 页中手动批准服务托管的专用终结点。
 
 ## <a name="get-started"></a>入门 
 
@@ -101,7 +107,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 ### <a name="did-something-go-wrong"></a>出现了错误
 
-- [Azure SQL 数据同步问题疑难解答](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Azure SQL 数据同步问题疑难解答](./sql-data-sync-troubleshoot.md)
 
 ## <a name="consistency-and-performance"></a>一致性和性能
 
@@ -126,7 +132,9 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 > - 即使同步未报告任何问题，中心和成员之间的数据也会丢失。
 > - 由于主键更改，跟踪表的源行不存在，同步可能会失败。
 
-- 必须同时为同步成员和中心启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
+- 必须同时为同步成员和中心启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
+
+- 若要将专用链接与数据同步结合使用，成员和中心数据库都必须托管在 Azure (相同或不同的区域) 在同一云类型中 (例如，在公有云中或同时在政府云) 中。 此外，若要使用专用链接，必须为托管中心服务器和成员服务器的订阅注册网络资源提供程序。 最后，必须在同步配置期间，在 "Azure 门户" 或 "通过 PowerShell" 的 "专用终结点连接" 部分中手动批准 "数据同步" 专用链接。 有关如何批准专用链接的详细信息，请参阅 [Set up SQL 数据同步](./sql-data-sync-sql-server-configure.md)。批准服务托管的专用终结点后，同步服务和成员/中心数据库之间的所有通信都将通过专用链接进行。 可以更新现有同步组以启用此功能。
 
 ### <a name="general-limitations"></a>一般限制
 
@@ -135,8 +143,9 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 主键不能具有以下数据类型：sql_variant、binary、varbinary、image、xml。
 - 使用以下数据类型作为主键时请小心谨慎，因为支持的精度仅到秒：time、datetime、datetime2、datetimeoffset。
 - 对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
+- 表名不能包含可打印字符：！ "# $%" ( ) * +-space
 - 不支持 Azure Active Directory 身份验证。
-- 不支持具有相同名称但架构不同（例如，dbo.customers 和 sales.customers）的表。
+- 如果存在名称相同但架构不同的表（例如，dbo.customers 和 sales.customers），则只能将其中一个表添加到同步中。
 - 不支持具有用户定义数据类型的列
 - 不支持在不同订阅之间移动服务器。 
 
@@ -165,17 +174,19 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 | 同步组中的表                                          | 500                    | 创建多个同步组 |
 | 同步组中的表列                              | 1000                   |                             |
 | 表中的数据行大小                                        | 24MB                  |                             |
-| 最小同步间隔                                           | 5 分钟              |                             |
 
 > [!NOTE]
 > 如果只有一个同步组，则单个同步组中最多可能有 30 个终结点。 如果有多个同步组，则所有同步组中的终结点总数不能超过 30。 如果数据库属于多个同步组，则该数据库计算为多个终结点，而不是一个。
 
 ### <a name="network-requirements"></a>网络要求
 
+> [!NOTE]
+> 如果使用专用链接，则这些网络要求不适用。 
+
 在建立同步组后，数据同步服务需要连接到中心数据库。 建立同步组时，Azure SQL server 的设置中必须具有以下配置 `Firewalls and virtual networks` ：
 
  * *拒绝公共网络访问* 必须设置为 *Off*。
- * "*允许 Azure 服务和资源访问此服务器*" 必须设置为 *"是"*，或者必须为[数据同步服务使用的 ip 地址](network-access-controls-overview.md#data-sync)创建 ip 规则。
+ * "*允许 Azure 服务和资源访问此服务器*" 必须设置为 *"是"*，或者必须为 [数据同步服务使用的 ip 地址](network-access-controls-overview.md#data-sync)创建 ip 规则。
 
 创建并设置了同步组后，你可以禁用这些设置。 同步代理将直接连接到中心数据库，你可以使用服务器的 [防火墙 IP 规则](firewall-configure.md) 或 [专用终结点](private-endpoint-overview.md) 来允许代理访问中心服务器。
 
@@ -247,20 +258,19 @@ SQL 数据同步在所有区域中都可用。
 
 是否必须更新同步组中数据库的架构？ 不会自动复制架构更改。 有关某些解决方案，请参阅以下文章：
 
-- [在 Azure SQL 数据同步中自动复制架构更改](../../sql-database/sql-database-update-sync-schema.md)
+- [在 Azure SQL 数据同步中自动复制架构更改](./sql-data-sync-update-sync-schema.md)
 - [使用 PowerShell 更新现有同步组中的同步架构](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>监视和故障排除
 
 SQL 数据同步是否按预期执行？ 若要监视活动和排查问题，请参阅以下文章：
 
-- [使用 Azure Monitor 日志监视 SQL 数据同步](../../sql-database/sql-database-sync-monitor-oms.md)
-- [Azure SQL 数据同步问题疑难解答](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [使用 Azure Monitor 日志监视 SQL 数据同步](./monitor-tune-overview.md)
+- [Azure SQL 数据同步问题疑难解答](./sql-data-sync-troubleshoot.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>了解有关 Azure SQL 数据库的详细信息
 
 有关 Azure SQL 数据库的详细信息，请参阅以下文章：
 
 - [SQL 数据库概述](sql-database-paas-overview.md)
-- [数据库生命周期管理](https://msdn.microsoft.com/library/jj907294.aspx)
- 
+- [数据库生命周期管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

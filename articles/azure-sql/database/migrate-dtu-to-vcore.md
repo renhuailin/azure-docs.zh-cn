@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 05/28/2020
-ms.openlocfilehash: b8c7671e655594456621e4489cb06191d820b134
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aa236ecaaa9c38c68e66d1813280cd98b85b9463
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333148"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790383"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>将 Azure SQL 数据库从基于 DTU 的模型迁移到基于 vCore 的模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -94,9 +94,9 @@ FROM dtu_vcore_map;
 除了 vCore（逻辑 CPU）数目和硬件代系之外，还有一些其他因素也可能影响 vCore 服务目标的选择：
 
 - 映射 T-SQL 查询根据 CPU 容量来匹配 DTU 和 vCore 服务目标，因此对于 CPU 密集型工作负载，结果更准确。
-- 硬件代系和 vCore 数目相同时，vCore 数据库的 IOPS 和事务日志吞吐量资源限制通常高于 DTU 数据库。 对于 IO 密集型工作负载，在 vCore 模型中使用较少数量的 vCore 就有可能达到相同的性能级别。 DTU 和 vCore 数据库的资源限制（以绝对值表示）在 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图中公开。 在要迁移的 DTU 数据库和使用近似匹配服务目标的 vCore 数据库之间比较这些值有助于更精确地选择 vCore 服务目标。
+- 硬件代系和 vCore 数目相同时，vCore 数据库的 IOPS 和事务日志吞吐量资源限制通常高于 DTU 数据库。 对于 IO 密集型工作负载，在 vCore 模型中使用较少数量的 vCore 就有可能达到相同的性能级别。 DTU 和 vCore 数据库的资源限制（以绝对值表示）在 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图中公开。 在要迁移的 DTU 数据库和使用近似匹配服务目标的 vCore 数据库之间比较这些值有助于更精确地选择 vCore 服务目标。
 - 映射查询还返回要迁移的 DTU 数据库或弹性池以及 vCore 模型中每个硬件代系的每个内核的内存量。 对于需要大量内存数据缓存来实现足够性能的工作负载或需要大量内存授予来进行查询处理的工作负载，必须确保在迁移到 vCore 之后具有相似或更高的总内存。 对于此类工作负载，可能有必要增加 vCore 的数量以获得足够的总内存，具体取决于实际性能。
-- 选择 vCore 服务目标时，应考虑 DTU 数据库的[历史资源使用率](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)。 若 DTU 数据库的 CPU 资源一直未得到充分利用，则其需要的 vCore 数目可能比映射查询所返回的数目少。 相反，对于因持续的 CPU 高利用率而导致工作负载性能不足的 DTU 数据库，其需要的 vCore 数目可能比映射查询所返回的数量多。
+- 选择 vCore 服务目标时，应考虑 DTU 数据库的[历史资源使用率](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)。 若 DTU 数据库的 CPU 资源一直未得到充分利用，则其需要的 vCore 数目可能比映射查询所返回的数目少。 相反，对于因持续的 CPU 高利用率而导致工作负载性能不足的 DTU 数据库，其需要的 vCore 数目可能比映射查询所返回的数量多。
 - 如果要迁移具有间歇性或不可预测的使用模式的数据库，请考虑使用[无服务器](serverless-tier-overview.md)计算层。  请注意，无服务器中并发辅助角色（请求）的最大数目是所配置最大 vCore 的预配计算限制的 75%。  此外，无服务器中可用的最大内存为配置的最大 vCore 数目乘以 3 GB。例如，当配置的最大 vCore 数目为 40 时，最大内存为 120 GB。   
 - 在 vCore 模型中，支持的最大数据库大小可能因硬件代系而异。 对于大型数据库，请检查 vCore 模型中支持的[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)最大大小。
 - 对于弹性池，[DTU](resource-limits-dtu-elastic-pools.md) 和 [vCore](resource-limits-vcore-elastic-pools.md) 模型中每个池支持的数据库最大数目有所不同。 迁移包含多个数据库的弹性池时，应该考虑这一点。
@@ -105,7 +105,7 @@ FROM dtu_vcore_map;
 > [!IMPORTANT]
 > 上述从 DTU 到 vCore 的大小调整指南旨在帮助初步估计目标数据库服务目标。
 >
-> 目标数据库的最佳配置取决于工作负荷。 因此，要在迁移后达到最佳性价比，可能需要利用 vCore 模型的灵活性来调整 vCore 数目、[硬件代系](service-tiers-vcore.md#hardware-generations)、[服务层级](service-tiers-vcore.md#service-tiers)和[计算层](service-tiers-vcore.md#compute-tiers)，以及优化其他数据库配置参数，例如[最大并行度](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)。
+> 目标数据库的最佳配置取决于工作负荷。 因此，要在迁移后达到最佳性价比，可能需要利用 vCore 模型的灵活性来调整 vCore 数目、[硬件代系](service-tiers-vcore.md#hardware-generations)、[服务层级](service-tiers-vcore.md#service-tiers)和[计算层](service-tiers-vcore.md#compute-tiers)，以及优化其他数据库配置参数，例如[最大并行度](/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)。
 > 
 
 ### <a name="dtu-to-vcore-migration-examples"></a>DTU 到 vCore 的迁移示例

@@ -1,6 +1,6 @@
 ---
 title: Azure 密钥保管库的虚拟网络服务终结点 - Azure 密钥保管库 | Microsoft Docs
-description: 了解 Azure Key Vault 的虚拟网络服务终结点如何允许你限制对指定的虚拟网络（包括使用方案）的访问。
+description: 了解如何使用 Azure Key Vault 的虚拟网络服务终结点将访问限制为仅允许通过指定的虚拟网络（包括使用方案）进行访问。
 services: key-vault
 author: amitbapat
 ms.author: ambapat
@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 3b1e71a5aadbe9e6a4fa89d4b3ec0fb6b1d9e6ce
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 9cbce00e2c2743aec57cd857b6f38d20bce33698
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530448"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532901"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -63,24 +63,24 @@ ms.locfileid: "90530448"
 
 |受信服务|支持的使用方案|
 | --- | --- |
-|Azure 虚拟机部署服务|[将证书从客户托管的 Key Vault 部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
+|Azure 虚拟机部署服务|[将证书从客户托管的 Key Vault 部署到 VM](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault)。|
 |Azure 资源管理器模板部署服务|[在部署期间传递安全值](../../azure-resource-manager/templates/key-vault-parameter.md)。|
-|Azure 应用程序网关 v2 SKU|[使用 Key Vault 证书进行 TLS 终止](/azure/application-gateway/key-vault-certs)|
+|Azure 应用程序网关 v2 SKU|[使用 Key Vault 证书进行 TLS 终止](../../application-gateway/key-vault-certs.md)|
 |Azure 磁盘加密卷加密服务|允许在虚拟机部署期间访问 BitLocker 密钥 (Windows VM) 或 DM 密码 (Linux VM) 和密钥加密密钥。 这将启用 [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)。|
-|Azure 备份|允许使用 [Azure 备份](../../backup/backup-introduction-to-azure-backup.md)在 Azure 虚拟机备份期间备份和还原相关密钥和机密。|
+|Azure 备份|允许使用 [Azure 备份](../../backup/backup-overview.md)在 Azure 虚拟机备份期间备份和还原相关密钥和机密。|
 |Exchange Online 和 SharePoint Online|允许使用[客户密钥](/microsoft-365/compliance/customer-key-overview)访问 Azure 存储服务加密的客户密钥。|
-|Azure 信息保护|允许访问 [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)的租户密钥。|
+|Azure 信息保护|允许访问 [Azure 信息保护](/azure/information-protection/what-is-information-protection)的租户密钥。|
 |Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL 数据库|[透明数据加密创建自己的密钥支持 AZURE Sql 数据库和 Azure Synapse Analytics (以前的 SQL 数据仓库) ](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
-|Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../../storage/common/storage-service-encryption-customer-managed-keys.md)。|
+|Azure SQL 数据库|[透明数据加密 AZURE SQL 数据库和 Azure Synapse Analytics 的创建自己的密钥支持](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
+|Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../../storage/common/customer-managed-keys-configure-key-vault.md)。|
 |Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../../data-lake-store/data-lake-store-encryption.md)。|
-|Azure Databricks|[基于 Apache Spark 的快速、简单、协作分析服务](../../azure-databricks/what-is-azure-databricks.md)|
+|Azure Databricks|[基于 Apache Spark 的快速、简单、协作分析服务](/azure/databricks/scenarios/what-is-azure-databricks)|
 |Azure API 管理|[使用 MSI 从 Key Vault 部署自定义域证书](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
 |Azure 数据工厂|[从数据工厂获取 Key Vault 中的数据存储凭据](https://go.microsoft.com/fwlink/?linkid=2109491)|
-|Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
-|Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
-|Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure 容器注册表|[使用客户管理的密钥进行注册表加密](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[将项目传输到另一个注册表](../../container-registry/container-registry-transfer-images.md)
+|Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](../../event-hubs/configure-customer-managed-key.md)|
+|Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](../../service-bus-messaging/configure-customer-managed-key.md)|
+|Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](../../storage/common/storage-import-export-encryption-key-portal.md)
+|Azure 容器注册表|[使用客户管理的密钥进行注册表加密](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > 必须设置相关 Key Vault 访问策略，才能允许相应的服务访问 Key Vault。

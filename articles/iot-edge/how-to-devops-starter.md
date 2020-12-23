@@ -1,18 +1,18 @@
 ---
 title: 带 Azure DevOps 的 CI/CD 管道入门-Azure IoT Edge |Microsoft Docs
 description: 可以通过 Azure DevOps Starter 轻松地完成 Azure 入门。 使用它可以快速启动所选的 Azure IoT Edge 应用。
-author: shizn
+author: kgremban
 ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297124"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436991"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps Starter 为 IoT Edge 创建 CI/CD 管道
 
@@ -62,7 +62,7 @@ DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azu
 
    ![名称并创建项目](media/how-to-devops-starter/create-project.png)
 
-几分钟后，DevOps 入门仪表板将显示在 Azure 门户中。 选择项目名称以查看进度。 可能需要刷新页面。 首先会在 Azure DevOps 组织的存储库中设置示例 IoT Edge 应用程序，然后执行生成并将应用程序部署到 IoT Edge 设备。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
+几分钟后，DevOps Starter 仪表板会显示在 Azure 门户中。 选择项目名称以查看进度。 可能需要刷新页面。 首先会在 Azure DevOps 组织的存储库中设置示例 IoT Edge 应用程序，然后执行生成并将应用程序部署到 IoT Edge 设备。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
 
    ![查看 Azure 门户中的项目](./media/how-to-devops-starter/portal.png)
 
@@ -74,14 +74,14 @@ DevOps Starter 在 Azure Repos 中为项目创建了 Git 存储库。 在本部�
 
    ![查看 Azure Repos 中生成的存储库](./media/how-to-devops-starter/view-repositories.png)
 
-> [!NOTE]
-> 以下步骤演示如何使用 Web 浏览器进行代码更改。 如果要在本地克隆存储库，请从窗口的右上角选择“克隆”。 使用提供的 URL 在 Visual Studio Code 或首选开发工具中克隆 Git 存储库。
+   > [!NOTE]
+   > 以下步骤演示如何使用 Web 浏览器进行代码更改。 如果要在本地克隆存储库，请从窗口的右上角选择“克隆”。 使用提供的 URL 在 Visual Studio Code 或首选开发工具中克隆 Git 存储库。
 
 2. 基于在创建过程中选择的应用程序语言，存储库已包含名为 FilterModule 的模块的代码。 打开 modules/FilterModule/module.json 文件。
 
    ![打开 Azure Repos 中的 module.json 文件](./media/how-to-devops-starter/open-module-json.png)
 
-3. 请注意，此文件在 version 参数中使用 [Azure DevOps 生成变量](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)。 此配置可确保在每次运行新生成时都创建模块的新版本。
+3. 请注意，此文件在 version 参数中使用 [Azure DevOps 生成变量](/azure/devops/pipelines/build/variables#build-variables)。 此配置可确保在每次运行新生成时都创建模块的新版本。
 
 ## <a name="examine-the-cicd-pipeline"></a>检查 CI/CD 管道
 
@@ -105,7 +105,7 @@ DevOps Starter 在 Azure Repos 中为项目创建了 Git 存储库。 在本部�
 
 6. 从生成管道菜单中选择“触发器”。 DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
 
-7. 选择“保留期”。  单击链接可将你重定向到保留策略所在的项目设置。 可以根据方案指定策略，以保留或删除特定数目的生成。
+7. 选择“保留期”。 单击链接可将你重定向到保留策略所在的项目设置。 可以根据方案指定策略，以保留或删除特定数目的生成。
 
 8. 选择“历史记录”。 “历史记录”面板包含最近针对生成所做的更改的审核线索。 Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 

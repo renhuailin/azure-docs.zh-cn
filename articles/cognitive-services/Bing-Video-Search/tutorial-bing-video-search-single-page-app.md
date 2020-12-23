@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 2bdd51218c098dcd778d9a72a98fe42b96357b4e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 76d7f4e31934480be57cd5ac133c1c7e6a9dd364
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328711"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349599"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教程：单页视频搜索应用
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 使用必应视频搜索 API 可以搜索 Web，并获取与搜索查询相关的视频结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -42,7 +47,7 @@ ms.locfileid: "91328711"
 
 教程页是完全独立的；它不使用任何外部框架、样式表或图像文件， 而仅使用广泛支持的 JavaScript 语言功能，并且适用于所有主要 Web 浏览器的当前版本。
 
-本教程将讨论源代码的选定部分。 提供了完整的[源代码](tutorial-bing-video-search-single-page-app-source.md)。 若要运行该示例，请将源代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
+本教程将讨论源代码的选定部分。 提供了完整的[源代码]()。 若要运行该示例，请将源代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
 
 ## <a name="app-components"></a>应用组件
 与任何单页 Web 应用一样，本教程应用程序包含以下三个部分：

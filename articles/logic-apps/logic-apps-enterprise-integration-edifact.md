@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006517"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 EDIFACT 消息以实现 B2B 企业集成
 
@@ -57,7 +57,7 @@ ms.locfileid: "91570759"
 
    ![选择“添加”](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. 在“添加”下面，输入协议的**名称**。 对于“协议类型”，请选择“EDIFACT”。  为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。   
+6. 在“添加”下面，输入协议的 **名称**。 对于“协议类型”，请选择“EDIFACT”。  为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。   
 
    ![提供协议详细信息](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 

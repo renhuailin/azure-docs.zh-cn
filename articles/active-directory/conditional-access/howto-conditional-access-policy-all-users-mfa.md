@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45ce7bee04716612431effe77315d739f328dba
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6e6185c4bde71285fc163cae2af46f64ba052195
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049292"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994751"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>条件访问：要求所有用户执行 MFA
 
@@ -31,8 +31,8 @@ ms.locfileid: "89049292"
 条件访问策略是功能强大的工具，建议从策略中排除以下帐户：
 
 * 紧急访问帐户或不受限帐户，用于防止租户范围的帐户锁定 。 在极少数情况下，所有管理员都被锁定在租户外，紧急访问管理帐户可用于登录租户，以采取措施来恢复访问。
-   * 有关详细信息，请参阅文章[在 Azure AD 中管理紧急访问帐户](../users-groups-roles/directory-emergency-access.md)。
-* **服务帐户**和**服务主体**，例如 Azure AD Connect 同步帐户。 服务帐户是不与任何特定用户关联的非交互式帐户。 它们通常由允许对应用程序进行编程访问的后端服务使用，但也用于出于管理目的登录到系统。 应该排除这样的服务帐户，因为无法以编程方式完成 MFA。 服务主体进行的调用不被条件访问阻止。
+   * 有关详细信息，请参阅文章[在 Azure AD 中管理紧急访问帐户](../roles/security-emergency-access.md)。
+* **服务帐户** 和 **服务主体**，例如 Azure AD Connect 同步帐户。 服务帐户是不与任何特定用户关联的非交互式帐户。 它们通常由允许对应用程序进行编程访问的后端服务使用，但也用于出于管理目的登录到系统。 应该排除这样的服务帐户，因为无法以编程方式完成 MFA。 服务主体进行的调用不被条件访问阻止。
    * 如果组织在脚本或代码中使用这些帐户，请考虑将它们替换为[托管标识](../managed-identities-azure-resources/overview.md)。 作为临时解决方法，可以从基线策略中排除这些特定的帐户。
 
 ## <a name="application-exclusions"></a>应用程序排除
@@ -53,7 +53,7 @@ ms.locfileid: "89049292"
    1. 选择“完成” 。
 1. 在“云应用或操作” > “包括”下，选择“所有云应用”。
    1. 在“排除”下，选择任何不需要多重身份验证的应用程序。
-1. 在 "**条件**  >  **客户端应用 (预览") **下，在 "**选择要应用此策略的客户端应用**，保留所有默认值并选择"**完成**"。
+1. 在“条件” > “客户端应用(预览版)”下，在“选择该策略应用到的客户端应用”下保留选择的所有默认值，然后选择“完成”   。
 1. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  
 1. 确认设置，然后将“启用策略”设置为“打开”。 
 1. 选择“创建”，以便创建启用策略所需的项目。
@@ -74,7 +74,7 @@ ms.locfileid: "89049292"
 
 ## <a name="next-steps"></a>后续步骤
 
-[常用条件访问策略](concept-conditional-access-policy-common.md)
+[条件访问常见策略](concept-conditional-access-policy-common.md)
 
 [使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 

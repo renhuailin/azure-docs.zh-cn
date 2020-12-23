@@ -3,12 +3,12 @@ title: 死信和重试策略 - Azure 事件网格
 description: 介绍了如何自定义事件网格的事件传递设置。 设置死信目标并指定重试传递的时间间隔。
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261798"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460931"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>设置死信位置和重试策略
 
@@ -17,7 +17,7 @@ ms.locfileid: "91261798"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 若要了解消息传送、重试和死信，请参阅概念文章：[事件网格消息传送和重试]()。
+> 若要了解消息传送、重试和死信，请参阅概念文章：[事件网格消息传送和重试](delivery-and-retry.md)。
 
 ## <a name="set-dead-letter-location"></a>设置死信位置
 

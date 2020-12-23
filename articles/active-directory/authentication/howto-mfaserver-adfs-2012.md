@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a57f42400468d69970c7c0b5d05d99a21b2d6b9
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6fd1bf4f9c463973d70f5289f7a82f372d0156cb
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949552"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742539"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
 
@@ -25,11 +25,11 @@ ms.locfileid: "88949552"
 本文介绍如何将 Azure 多重身份验证服务器与 Windows Server 2012 R2 或 Windows Server 2016 中的 AD FS 配合使用。 请阅读如何 [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云资源和本地资源](howto-mfaserver-adfs-2.md)，了解详细信息。
 
 > [!IMPORTANT]
-> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure 多重身份验证。
+> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure AD 多重身份验证。
 >
 > 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
 >
-> 如果你使用基于云的 MFA，请参阅 [使用 Azure 多重身份验证保护云资源和 AD FS](howto-mfa-adfs.md)。
+> 如果你使用基于云的 MFA，请参阅 [使用 Azure AD 多重身份验证和 AD FS 保护云资源](howto-mfa-adfs.md)。
 >
 > 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
 
@@ -164,7 +164,7 @@ ms.locfileid: "88949552"
 
 1. 在 MFA 服务器界面中打开 AD FS 部分，然后选中“启用日志记录”复选框。
 2. 在每个 AD FS 服务器上，使用 **regedit.exe** 创建值为 `C:\Program Files\Multi-Factor Authentication Server\` 的字符串值注册表项 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Positive Networks\PhoneFactor\InstallPath`（或所选其他目录）。  **请注意，尾随反斜杠很重要。**
-3. 创建 `C:\Program Files\Multi-Factor Authentication Server\Logs` 目录（或**步骤 2** 中提到的其他目录）。
+3. 创建 `C:\Program Files\Multi-Factor Authentication Server\Logs` 目录（或 **步骤 2** 中提到的其他目录）。
 4. 在 AD FS 服务帐户的 Logs 目录上授予“修改”访问权限。
 5. 重启 AD FS 服务。
 6. 验证 `MultiFactorAuthAdfsAdapter.log` 文件是否已在 Logs 目录中创建。

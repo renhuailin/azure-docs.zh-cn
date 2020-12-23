@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c728b219168f61f7f791b7db280a701ff216985
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 822bb43aaeb3cc1cf5914bb1600ef754441c4206
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362378"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310198"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中执行 Python 机器学习脚本
 
-**适用于：** ![适用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) 不适 ![ 用于。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Python 是许多数据科学家珍藏的一个有用工具。 它可以在典型机器学习工作流的每个阶段（包括数据探索、特征提取、模型训练和验证，以及部署）中使用。
@@ -81,7 +81,7 @@ Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范
 
 ![包含用户定义的 Python 代码的 zip 文件](./media/execute-python-scripts/figure5.png)
 
-将 zip 文件作为数据集上传到工作室（经典版）中。 然后，创建使用 Hello.zip 文件中的 Python 代码的试验，并通过将此试验附加到“执行 Python 脚本”模块的第三个输入端口来运行此试验，如下图所示。****
+将 zip 文件作为数据集上传到工作室（经典版）中。 然后，创建使用 Hello.zip 文件中的 Python 代码的试验，并通过将此试验附加到“执行 Python 脚本”模块的第三个输入端口来运行此试验，如下图所示。
 
 ![使用 Hello.zip 的示例试验，用作“执行 Python 脚本”模块的输入](./media/execute-python-scripts/figure6a.png)
 
@@ -106,7 +106,7 @@ from azure.storage.blob import BlockBlobService
 block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
 ```
 
-1. 在存储的“配置”设置选项卡中禁用“需要安全传输”********
+1. 在存储的“配置”设置选项卡中禁用“需要安全传输”
 
 ![在 Azure 门户中禁用“需要安全传输”](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
@@ -186,5 +186,5 @@ Python 入口点仅允许将单个数据帧返回为输出。 目前无法将诸
 有关详细信息，请参阅 [Python 开发人员中心](https://azure.microsoft.com/develop/python/)。
 
 <!-- Module References -->
-[execute-python-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-python-script
-[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
+[execute-python-script]: /azure/machine-learning/studio-module-reference/execute-python-script
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

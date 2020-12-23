@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118094"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844176"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "84118094"
 
 使用 Azure 数据工厂门户检查 SSIS 包执行活动的输出。 输出包括执行结果、错误消息和操作 ID。 有关详细信息，请参阅[监视管道](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline)。
 
-使用 SSIS 目录 (SSISDB) 检查执行活动的详细日志。 有关详细信息，请参阅[监视正在运行的包和其他操作](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)。
+使用 SSIS 目录 (SSISDB) 检查执行活动的详细日志。 有关详细信息，请参阅[监视正在运行的包和其他操作](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)。
 
 ## <a name="common-errors-causes-and-solutions"></a>常见错误、原因和解决方法
 
@@ -56,7 +56,7 @@ ms.locfileid: "84118094"
 
 ### <a name="error-message-the-connection--is-not-found"></a>错误消息：“找不到连接 '...'”
 
-旧版 SQL Server Management Studio (SSMS) 中的某个已知问题可能导致此错误。 如果此包包含的自定义组件（例如 SSIS Azure Feature Pack 或合作伙伴组件）未安装在使用 SSMS 来执行部署的计算机上，则 SSMS 会删除该组件，导致此错误。 将 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 升级到已解决该问题的最新版本。
+旧版 SQL Server Management Studio (SSMS) 中的某个已知问题可能导致此错误。 如果此包包含的自定义组件（例如 SSIS Azure Feature Pack 或合作伙伴组件）未安装在使用 SSMS 来执行部署的计算机上，则 SSMS 会删除该组件，导致此错误。 将 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) 升级到已解决该问题的最新版本。
 
 ### <a name="error-messagessis-executor-exit-code--1073741819"></a>错误消息：“SSIS 执行程序退出代码: -1073741819。”
 
@@ -91,17 +91,17 @@ ms.locfileid: "84118094"
 当包执行在 SSIS Integration Runtime 中的本地磁盘内找不到文件时，将发生此错误。 请尝试以下操作：
 * 不要在 SSIS Integration Runtime 中执行的包内使用绝对路径。 改用当前执行工作目录 (.) 或临时文件夹 (%TEMP%)。
 * 如果需要在 SSIS Integration Runtime 节点上保留某些文件，请根据[自定义安装](how-to-configure-azure-ssis-ir-custom-setup.md)中所述准备文件。 执行完成后，系统会清理工作目录中的所有文件。
-* 改用 Azure 文件来存储 SSIS Integration Runtime 节点中的文件。 有关详细信息，请参阅[使用 Azure文件共享](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares)。
+* 改用 Azure 文件来存储 SSIS Integration Runtime 节点中的文件。 有关详细信息，请参阅[使用 Azure文件共享](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares)。
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>错误消息：“数据库 'SSISDB' 已达到大小配额”
 
 可能的原因是，在 Azure SQL 数据库或 SQL 托管实例中创建的 SSISDB 数据库已达到其配额。 请尝试以下操作：
-* 考虑增加数据库的 DTU。 有关详细信息，可参阅[逻辑服务器的 SQL 数据库限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)。
+* 考虑增加数据库的 DTU。 有关详细信息，可参阅[逻辑服务器的 SQL 数据库限制](../azure-sql/database/resource-limits-logical-server.md)。
 * 检查包是否会生成许多日志。 如果是，则可配置一项弹性作业来清理这些日志。 有关详细信息，请参阅[使用 Azure 弹性数据库作业清理 SSISDB 日志](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md)。
 
 ### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>错误消息：“数据库的请求限制是 ...，现已达到该限制。”
 
-如果在 SSIS Integration Runtime 中同时运行许多的包，可能会发生此错误，因为 SSISDB 已达到请求限制。 请考虑增加 SSISDB 的 DTC 来解决此问题。 有关详细信息，可参阅[逻辑服务器的 SQL 数据库限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)。
+如果在 SSIS Integration Runtime 中同时运行许多的包，可能会发生此错误，因为 SSISDB 已达到请求限制。 请考虑增加 SSISDB 的 DTC 来解决此问题。 有关详细信息，可参阅[逻辑服务器的 SQL 数据库限制](../azure-sql/database/resource-limits-logical-server.md)。
 
 ### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>错误消息：“SSIS 操作失败并出现意外的操作状态: ...”
 
@@ -113,7 +113,7 @@ ms.locfileid: "84118094"
 
 ### <a name="error-message-there-is-no-active-worker"></a>错误消息：“没有任何活动的辅助角色。”
 
-此错误通常表示 SSIS Integration Runtime 处于不正常状态。 请在 Azure 门户中检查状态和详细错误。 有关详细信息，请参阅 [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)。
+此错误通常表示 SSIS Integration Runtime 处于不正常状态。 请在 Azure 门户中检查状态和详细错误。 有关详细信息，请参阅 [Azure-SSIS Integration Runtime](./monitor-integration-runtime.md#azure-ssis-integration-runtime)。
 
 ### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>错误消息：“集成运行时无法升级，最终将会停止工作，因为我们无法访问你为自定义安装提供的 Azure Blob 容器。”
 
@@ -121,9 +121,9 @@ ms.locfileid: "84118094"
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>错误消息：“Microsoft OLE DB Provider for Analysis Services。 ‘Hresult:0x80004005 说明:’COM 错误:COM 错误: mscorlib；某个调用的目标引发了异常”
 
-一种潜在原因是为 Azure Analysis Services 身份验证配置了已启用 Azure 多重身份验证的用户名或密码。 SSIS Integration Runtime 不支持这种身份验证。 尝试使用服务主体进行 Azure Analysis Services 身份验证：
+一个可能的原因是为启用了 Azure AD 多重身份验证的用户名或密码配置了 Azure Analysis Services 身份验证。 SSIS Integration Runtime 不支持这种身份验证。 尝试使用服务主体进行 Azure Analysis Services 身份验证：
 
-1. 请根据[使用服务主体进行自动化](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)中所述准备服务主体。
+1. 请根据[使用服务主体进行自动化](../analysis-services/analysis-services-service-principal.md)中所述准备服务主体。
 2. 在连接管理器中，配置“使用特定的用户名和密码”：将“AppID”设为用户名，将“clientSecret”设为密码。  
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>错误消息：使用托管标识时发生错误“ADONET 源无法获取连接 {GUID} 并出现以下错误消息:用户 'NT AUTHORITY\ANONYMOUS LOGON' 登录失败”
@@ -132,7 +132,7 @@ ms.locfileid: "84118094"
 
 ### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>错误消息：“0xC020801F 出现在...，OData 源 [...]:无法从运行时连接管理器获取托管连接”
 
-一个可能的原因是，未在 SSIS 集成运行时中启用 OData 源所需的传输层安全性 (TLS)。 可以使用自定义设置在 SSIS 集成运行时中启用 TLS。 有关更多详细信息，请参见[无法通过 SSIS 连接 Project Online Odata](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) 和[自定义 Azure-SSIS 集成运行时的设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
+一个可能的原因是，未在 SSIS 集成运行时中启用 OData 源所需的传输层安全性 (TLS)。 可以使用自定义设置在 SSIS 集成运行时中启用 TLS。 有关更多详细信息，请参见[无法通过 SSIS 连接 Project Online Odata](/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) 和[自定义 Azure-SSIS 集成运行时的设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>错误消息：“由于出现错误，请求操作 guid 为 ... 的暂存任务失败:无法调度暂存操作，错误消息如下:Microsoft.SqlServer.IntegrationServices.AisAgentCore.AisAgentException:无法加载数据代理。”
 
@@ -154,7 +154,7 @@ ms.locfileid: "84118094"
 
 * 可能的原因和建议的操作：
   * 如果在执行日志中还出现警告消息“该组件不支持使用 ConnectByProxy 值设为 true 的连接管理器”，则意味着在尚不支持“ConnectByProxy”的组件上使用了连接管理器。 支持的组件可以在[在 ADF 中将自承载 IR 配置为 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)中找到
-  * 可以在 [SSMS 报告](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)或在 SSIS 包执行活动中指定的日志文件夹中找到执行日志。
+  * 可以在 [SSMS 报告](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)或在 SSIS 包执行活动中指定的日志文件夹中找到执行日志。
   * 作为替代方法，vNet 也可用于访问本地数据。 有关更多详细信息，请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>错误消息：“暂存任务状态:已失败。 暂存任务错误:ErrorCode:2906, ErrorMessage:包执行失败，输出: {"OperationErrorMessages":"SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
@@ -165,7 +165,7 @@ ms.locfileid: "84118094"
 
 * 可能的原因和建议的操作：
   * ADF 存储过程活动或 Lookup 活动用于触发 SSIS 包执行。 t-sql 命令可能会遇到暂时性问题，并触发重新运行，这将导致多个包执行。
-  * 请改用 ExecuteSSISPackage 活动，以确保除非用户在活动中设置重试计数，否则包执行不会重新运行。 可以在 [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) 中找到详细信息
+  * 请改用 ExecuteSSISPackage 活动，以确保除非用户在活动中设置重试计数，否则包执行不会重新运行。 可以在 [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](./how-to-invoke-ssis-package-ssis-activity.md) 中找到详细信息
   * 优化 t-sql 命令，以便能够通过检查是否已触发执行来重新运行
 
 ### <a name="package-execution-takes-too-long"></a>包执行时间太长
@@ -187,7 +187,7 @@ ms.locfileid: "84118094"
 
 * 确保 SSIS Integration Runtime 与数据源和目标位于同一区域。
 
-* 将包执行的日志记录级别设置为“性能”，以收集执行中每个组件的持续时间信息。 有关详细信息，请参阅 [Integration Services (SSIS) 日志记录](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging)。
+* 将包执行的日志记录级别设置为“性能”，以收集执行中每个组件的持续时间信息。 有关详细信息，请参阅 [Integration Services (SSIS) 日志记录](/sql/integration-services/performance/integration-services-ssis-logging)。
 
 * 在 Azure 门户中检查 IR 节点性能：
   * 有关如何监视 SSIS Integration Runtime 的信息，请参阅 [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime)。

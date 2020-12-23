@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925039"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844687"
 ---
 # <a name="create-an-additional-azure-subscription"></a>创建另外的 Azure 订阅
 
@@ -30,7 +30,7 @@ ms.locfileid: "88925039"
 |---------|---------|
 |企业协议 (EA) |  企业协议许可登记表上的“帐户所有者”角色。 有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](understand-ea-roles.md)。    |
 |Microsoft 客户协议 (MCA) |  发票科目、计费对象信息或计费帐户上的所有者或参与者角色。 或发票科目上的 Azure 订阅创建者角色。  有关详细信息，请参阅[订阅计费角色和任务](understand-mca-roles.md#subscription-billing-roles-and-tasks)。    |
-|Microsoft 合作伙伴协议 (MPA) |   CSP 合作伙伴组织中的“全局管理员”和“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。  用户需登录到合作伙伴租户才能创建 Azure 订阅。   |
+|Microsoft 合作伙伴协议 (MPA) |   CSP 合作伙伴组织中的“全局管理员”和“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](/partner-center/permissions-overview)。  用户需登录到合作伙伴租户才能创建 Azure 订阅。   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>在 Azure 门户中创建订阅
 
@@ -73,13 +73,17 @@ ms.locfileid: "88925039"
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>以编程方式创建另一个 Azure 订阅
 
-你还可以通过编程方式创建另外的订阅。 有关详细信息，请参阅[以编程方式创建 Azure 订阅](programmatically-create-subscription.md)。
+你还可以通过编程方式创建另外的订阅。 有关详细信息，请参阅：
+
+- [使用最新的 API 以编程方式创建 EA 订阅](programmatically-create-subscription-enterprise-agreement.md)
+- [使用最新的 API 以编程方式创建 MCA 订阅](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [使用最新的 API 以编程方式创建 MPA 订阅](Programmatically-create-subscription-microsoft-customer-agreement.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [添加或更改 Azure 订阅管理员](add-change-subscription-administrator.md)
 - [将资源移到新资源组或订阅中](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [创建用来组织和管理资源的管理组](../../governance/management-groups/create.md)
+- [创建用来组织和管理资源的管理组](../../governance/management-groups/create-management-group-portal.md)
 - [取消针对 Azure 的订阅](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。

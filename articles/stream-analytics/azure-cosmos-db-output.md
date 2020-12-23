@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 流分析 Azure Cosmos DB 输出
+title: 来自 Azure 流分析的 Azure Cosmos DB 输出
 description: 本文介绍如何将数据从 Azure 流分析输出到 Azure Cosmos DB。
 author: mamccrea
 ms.author: mamccrea
@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906252"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491726"
 ---
-# <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>从 Azure 流分析 Azure Cosmos DB 输出
+# <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>来自 Azure 流分析的 Azure Cosmos DB 输出
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 是一种分布全球的数据库服务，它提供全球范围内不设限的弹性缩放、丰富查询和自动索引（经由与构架无关的数据模型）。 若要了解流分析的 Azure Cosmos DB 容器选项，请参阅[将 Azure Cosmos DB 用作输出的流分析](stream-analytics-documentdb-output.md)一文。
 
@@ -34,12 +34,12 @@ ms.locfileid: "90906252"
 | 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
 | 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
 | 数据库 | Azure Cosmos DB 数据库名称。 |
-| 容器名称 | 要使用的容器名称，该名称必须在 Cosmos DB 中存在。 示例：  <br /><ul><li> _MyContainer_：名为“MyContainer”的容器必须存在。</li>|
+| 容器名称 | 要使用的容器名称，该名称必须在 Cosmos DB 中存在。 示例：  <br /><ul><li> _MyContainer_ ：名为“MyContainer”的容器必须存在。</li>|
 | 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 ## <a name="partitioning"></a>分区
 
-分区键基于查询中的 PARTITION BY 子句。 输出写入器的数目按照 [完全并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。 流分析将 Cosmos DB 输出分区键转换为字符串。 例如，如果您的分区键的值为1且类型为 bigint，则将其转换为类型字符串的 "1"。
+分区键基于查询中的 PARTITION BY 子句。 输出编写器的数量与[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区一致。 流分析会将 Cosmos DB 输出分区键转换为字符串。 例如，如果分区键的值为 bigint 类型的 1，则它将转换为字符串类型的“1”。 无论是否将分区属性写入 Cosmos DB，都将始终发生此转换。
 
 ## <a name="output-batch-size"></a>输出批大小
 

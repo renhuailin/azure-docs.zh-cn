@@ -1,17 +1,17 @@
 ---
 title: 数据传入复制 - Azure Database for MySQL
 description: 了解如何使用数据传入复制从外部服务器同步到 Azure Database for MySQL 服务。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996213"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
 
@@ -28,23 +28,23 @@ ms.locfileid: "91537151"
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 
 ### <a name="data-not-replicated"></a>不会复制的数据
-不会复制源服务器上的 [*mysql 系统数据库*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) 。 对源服务器上的帐户和权限所做的更改不会被复制。 如果在源服务器上创建一个帐户，并且此帐户需要访问副本服务器，请在副本服务器端手动创建相同的帐户。 若要了解哪些表包含在系统数据库中，请参阅 [MySQL 手册](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)。
+不会复制源服务器上的 [mysql 系统数据库](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)。 不会复制对源服务器上的帐户和权限所做的更改。 如果在源服务器上创建帐户，并且此帐户需要访问副本服务器，则在副本服务器端手动创建相同的帐户。 若要了解哪些表包含在系统数据库中，请参阅 [MySQL 手册](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)。
 
 ### <a name="filtering"></a>Filtering
-若要跳过从源服务器复制表 (托管在本地、虚拟机或由其他云提供程序托管的数据库服务) ， `replicate_wild_ignore_table` 支持参数。 （可选）使用 [Azure 门户](howto-server-parameters.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 在副本服务器（在 Azure 中托管）上更新此参数。
+若要跳过从源服务器（托管在本地、虚拟机中或其他云提供程序托管的数据库服务中）复制表的操作，需支持 `replicate_wild_ignore_table` 参数。 （可选）使用 [Azure 门户](howto-server-parameters.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 在副本服务器（在 Azure 中托管）上更新此参数。
 
 查看 [MySQL 文档](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)详细了解此参数。
 
 ### <a name="requirements"></a>要求
-- 源服务器版本必须至少为 MySQL 5.6 版。 
-- 源和副本服务器版本必须相同。 例如，两者必须同时是 MySQL 5.6 版或 MySQL 5.7 版。
+- 源服务器版本必须至少是 MySQL 5.6 版。 
+- 源服务器版本和副本服务器版本必须相同。 例如，两者必须同时是 MySQL 5.6 版或 MySQL 5.7 版。
 - 每个表都必须有主键。
 - 源服务器应使用 MySQL InnoDB 引擎。
-- 用户必须具有配置二进制日志记录的权限，并在源服务器上创建新用户。
-- 如果源服务器已启用 SSL，请确保在存储过程中包含为域提供的 SSL CA 证书 `mysql.az_replication_change_master` 。 请参阅以下[示例](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication)和 `master_ssl_ca` 参数。
-- 确保已将源服务器的 IP 地址添加到 Azure Database for MySQL 副本服务器的防火墙规则。 使用 [Azure 门户](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) 更新防火墙规则。
-- 确保托管源服务器的计算机允许端口3306上的入站和出站流量。
-- 请确保源服务器具有 **公共 IP 地址**、DNS 可公开访问，或者 (FQDN) 具有完全限定的域名。
+- 用户必须具有权限才能在源服务器上配置二进制日志记录和创建新用户。
+- 如果源服务器启用了 SSL，请确保为域提供的 SSL CA 证书已包含在 `mysql.az_replication_change_master` 存储过程中。 请参阅以下[示例](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)和 `master_ssl_ca` 参数。
+- 请确保源服务器的 IP 地址已添加到 Azure Database for MySQL 副本服务器的防火墙规则中。 使用 [Azure 门户](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 更新防火墙规则。
+- 请确保托管源服务器的计算机在端口 3306 上允许入站和出站流量。
+- 请确保源服务器具有 **公共 IP 地址**，DNS 可公开访问，或具有完全限定的域名 (FQDN)。
 
 ### <a name="other"></a>其他
 - 仅可在常规用途和优化内存定价层中使用数据传入复制功能。

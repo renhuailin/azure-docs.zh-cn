@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 3bc71e10167b21b65616dd20f8edb9a1d902527e
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798354"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785096"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>应用程序网关上的 Azure Web 应用程序防火墙的常见问题解答
 
@@ -58,6 +58,9 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 是的。 可以在部署应用程序网关的虚拟网络上启用 DDos 防护。 此设置可确保 Azure DDos 防护服务还保护应用程序网关虚拟 IP (VIP)。
 
+### <a name="does-waf-store-customer-data"></a>WAF 是否存储客户数据？
+
+不，WAF 不存储客户数据。
 
 ## <a name="next-steps"></a>后续步骤
 

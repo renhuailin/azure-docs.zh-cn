@@ -1,18 +1,18 @@
 ---
 title: Azure 存储的内置策略定义
 description: 列出 Azure 存储的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 27d0c246754c05b80518fc2151ab5e1526cd8cac
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4eaa15e26be1b18884f3969f1f3a8b10fce14ba6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819520"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986723"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-storage"></a>Azure 存储的 Azure Policy 内置定义
 

@@ -4,13 +4,13 @@ description: 认知服务提供两个自然语言处理服务：语言理解和 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: c1c0bdcd620b29e3bbf4c6bb21d5213131d25cdb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/20/2020
+ms.openlocfilehash: 1bdcc2e0bc266adae729ce24954e236efd5c7fb4
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327232"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315435"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-chat-bot-conversations"></a>使用认知服务和自然语言处理 (NLP) 来丰富聊天机器人对话
 

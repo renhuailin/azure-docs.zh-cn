@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903683"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951785"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>教程：使用 Azure Stack Edge Pro 转换用于高级部署流的数据
 
@@ -58,7 +58,7 @@ ms.locfileid: "90903683"
 
 2. 在“配置 Edge 计算”磁贴上，选择“配置计算”。 
 
-    ![开始使用计算](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
+    ![开始使用计算 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
 3. 在“配置 Edge 计算”边栏选项卡上输入以下内容：
 
@@ -68,11 +68,11 @@ ms.locfileid: "90903683"
     |IoT 中心     | 选择“新建”或“现有”。  <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Azure Stack Edge 资源所用的同一订阅和资源组。     |
     |名称     |输入 IoT 中心资源的名称。         |
 
-    ![开始使用计算](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
+    ![开始使用计算 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
 4. 选择“创建”。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置 Edge 计算”磁贴会更新，以显示计算配置。 若要确认已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看配置” 。
     
-    ![开始使用计算](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
+    ![开始使用计算 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
     如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 某个 IoT Edge 运行时也在此 IoT Edge 设备上运行。
 
@@ -136,17 +136,17 @@ ms.locfileid: "90903683"
     |触发器类型     | 选择“文件”触发器。 每当发生文件事件（例如，将文件写入输入共享）时，文件触发器就会激发。 另一方面，计划的触发器根据定义的计划激发。 在本示例中，我们需要文件触发器。    |
     |输入共享     | 选择一个输入共享。 在本例中，Edge 本地共享是输入共享。 此处使用的模块将文件从 Edge 本地共享移到 Edge 共享，然后，这些文件将从 Edge 共享上传到云中。        |
 
-    ![添加触发器](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
+    ![添加触发器 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
 
 3. 创建触发器后会收到通知。 触发器列表会更新，以显示新创建的触发器。 选择刚才创建的触发器。
 
-    ![添加触发器](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
+    ![添加触发器 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
 
 4. 复制并保存示例路由。 此示例路由将进行修改并稍后用于 IoT 中心。
 
     `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
-    ![添加触发器](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
+    ![添加触发器 4](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
 
 ## <a name="add-a-module"></a>添加模块
 
@@ -213,7 +213,7 @@ ms.locfileid: "90903683"
  
     4. 根据需要选择配置高级 Edge 运行时设置，然后单击“下一步”。
 
-        ![添加自定义模块](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
+        ![添加自定义模块 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
 5. 在“指定路由”下，设置模块之间的路由。  
    
@@ -229,11 +229,11 @@ ms.locfileid: "90903683"
 
 6. 在“检查部署”下检查所有设置，然后选择“提交”以提交模块进行部署。 
 
-   ![“设置模块”页](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![“设置模块”页 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     此操作将启动模块部署。 部署完成后，模块的“运行时状态”为“正在运行” 。
 
-    ![添加自定义模块](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
+    ![添加自定义模块 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
 
 ## <a name="verify-data-transform-transfer"></a>验证数据转换并传输
 
@@ -247,15 +247,15 @@ ms.locfileid: "90903683"
  
 1. 将数据添加到本地共享。
 
-   ![验证数据转换](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![验证数据转换 2](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     数据将移到云共享。
 
-    ![验证数据转换](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
+    ![验证数据转换 3](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
 
     然后，将数据从云共享推送到存储帐户。 若要查看数据，请转到存储帐户，然后选择“存储资源管理器”。 可以在存储帐户中查看上传的数据。
 
-    ![验证数据转换](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
+    ![验证数据转换 4](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
  
 现已完成验证过程。
 

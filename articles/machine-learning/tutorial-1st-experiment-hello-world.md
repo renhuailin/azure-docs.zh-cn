@@ -1,7 +1,7 @@
 ---
-title: 教程：运行“Hello World”Python 脚本
+title: 教程：运行“Hello world!” Python 脚本
 titleSuffix: Azure Machine Learning
-description: Azure ML 入门系列的第 2 部分介绍了如何将简单的“Hello World”Python 脚本提交到云中。
+description: Azure 机器学习入门系列的第 2 部分介绍了如何将简单的“Hello world!” Python 脚本提交到云中。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,35 +11,34 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 98f4c30d03763e070b1bdc32a5e6e099556916ab
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929250"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570954"
 ---
-# <a name="tutorial-run-hello-world-python-script-part-2-of-4"></a>教程：运行“Hello World”Python 脚本（第 2 部分，共 4 部分）
+# <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教程：运行“Hello world!” Python 脚本（第 2 部分，共 4 部分）
 
-在本教程中，你将了解如何使用 Azure 机器学习 Python SDK 提交和运行 Python“Hello World”脚本。
+在本教程中，你将了解如何使用适用于 Python 的 Azure 机器学习 SDK 提交并运行 Python“Hello world!” 脚本。
 
-本教程是**由四个部分组成的教程系列的第二部分**。你可以在其中了解 Azure 机器学习基础知识，并在 Azure 中完成基于作业的机器学习任务。 本教程以你在[教程第 1 部分：为 Azure 机器学习设置本地计算机](
-tutorial-1st-experiment-sdk-setup-local.md)中完成的工作为基础。
+本教程是由四部分组成的系列教程的第 2 部分，你可以在其中了解 Azure 机器学习基础知识，并在 Azure 中完成基于作业的机器学习任务。 本教程的基础是你在[第 1 部分：为 Azure 机器学习设置本地计算机](tutorial-1st-experiment-sdk-setup-local.md)中完成的工作。
 
 在本教程中，将：
 
 > [!div class="checklist"]
-> * 在本地创建并运行“Hello World”Python 脚本
-> * 创建一个 Python 控制脚本，将“Hello world”提交到 Azure 机器学习
-> * 了解控制脚本中的 Azure 机器学习概念
-> * 提交并运行“Hello World”
-> * 在云中查看代码输出
+> * 在本地创建并运行“Hello world!” Python 脚本。
+> * 创建一个 Python 控制脚本，以将“Hello world!”提交 到 Azure 机器学习。
+> * 了解控制脚本中的 Azure 机器学习概念。
+> * 提交并运行“Hello world!” 脚本。
+> * 在云中查看代码输出。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果你还没有 Azure 机器学习工作区，请完成[教程中有关本地计算机设置的第 1 部分](tutorial-1st-experiment-sdk-setup-local.md)。
+- 如果你还没有 Azure 机器学习工作区，请先完成[第 1 部分](tutorial-1st-experiment-sdk-setup-local.md)。
 - Python 语言和机器学习工作流的入门知识。
-- 本地开发环境。 这包括但不限于 Visual Studio Code、Jupyter 或 PyCharm。
-- Python（版本 3.5-3.7）。
+- 本地开发环境，如 Visual Studio Code、Jupyter 或 PyCharm。
+- Python（版本 3.5 至 3.7）。
 
 ## <a name="create-and-run-a-python-script-locally"></a>在本地创建并运行一个 Python 脚本
 
@@ -62,20 +61,24 @@ tutorial
 └──02-create-compute.py
 ```
 
-### <a name="test-your-script-locally"></a>在本地测试你的脚本
 
-你可以在本地运行代码，这样就可以通过你最喜欢的 IDE 或通过某个终端对代码进行交互式调试：
+### <a name="test-your-script-locally"></a><a name="test"></a>在本地测试你的脚本
+
+你可以通过使用你常用的 IDE 或终端在本地运行代码。 在本地运行代码具有可对代码进行交互式调试的好处。
 
 ```bash
 cd <path/to/tutorial>
 python ./src/hello.py
 ```
 
-## <a name="create-a-control-script"></a>创建控制脚本
+> [!div class="nextstepaction"]
+> [我在本地运行脚本](?success=run-local#control-script) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=run-local)
 
-使用控制脚本，你可以在云中运行 `hello.py` 脚本。  使用控制脚本，你可以控制机器学习代码如何运行以及在何处运行。  
+## <a name="create-a-control-script"></a><a name="control-script"></a> 创建控制脚本
 
-在你的教程目录中，创建一个新的名为 `03-run-hello.py` 的 python 文件，并将下面的代码复制并粘贴到该文件中：
+使用控制脚本，你可以在云中运行 `hello.py` 脚本。 可以使用控制脚本来控制如何运行以及在何处运行机器学习代码。  
+
+在你的教程目录中，创建名为 `03-run-hello.py` 的新 Python 文件，然后将以下代码复制并粘贴到该文件中：
 
 ```python
 # tutorial/03-run-hello.py
@@ -91,6 +94,8 @@ aml_url = run.get_portal_url()
 print(aml_url)
 ```
 
+
+
 ### <a name="understand-the-code"></a>了解代码
 
 下面是有关控制脚本工作方式的说明：
@@ -100,7 +105,7 @@ print(aml_url)
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [工作区](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)连接到你的 Azure 机器学习工作区，以便你可以与 Azure 机器学习资源通信。
+      [工作区](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)连接到你的 Azure 机器学习工作区，以便你可以与 Azure 机器学习资源通信。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -108,7 +113,7 @@ print(aml_url)
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      可以通过[试验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true)轻松地将多个运行组织到单个名称下。 稍后，你可以了解如何使用试验轻松地在数十个运行之间比较指标。
+      可以通过[试验](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)轻松地将多个运行组织到单个名称下。 稍后，你可以了解如何使用试验轻松地在数十个运行之间比较指标。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -116,7 +121,7 @@ print(aml_url)
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 包装你的 `hello.py` 代码并将其传递到你的工作区。 顾名思义，你可以使用此类来配置你希望脚本如何在 Azure 机器学习中运行。   另请指定将在其上运行脚本的计算目标。  在此代码中，目标是在[设置教程](tutorial-1st-experiment-sdk-setup-local.md)中创建的计算群集。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 包装你的 `hello.py` 代码并将其传递到你的工作区。 顾名思义，你可以使用此类来配置你希望脚本如何在 Azure 机器学习中运行。   此类还会指定该脚本将会在哪个计算目标上运行。 在此代码中，目标是在[设置教程](tutorial-1st-experiment-sdk-setup-local.md)中创建的计算群集。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -124,7 +129,7 @@ print(aml_url)
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       提交脚本。 此提交称为[运行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)。  运行会封装你的代码的单次执行。 可以使用某个运行来监视脚本进度、捕获输出、分析结果、将指标可视化，等等。
+       提交脚本。 此提交被称为[运行](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)。 运行会封装你的代码的单次执行。 可以使用运行来监视脚本进度、捕获输出、分析结果、将指标可视化，等等。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -132,23 +137,40 @@ print(aml_url)
       `aml_url = run.get_portal_url()` 
    :::column-end:::
    :::column span="2":::
-        `run` 对象提供了一个便于执行你的代码的句柄。 可以使用从 Python 脚本输出的 URL 在 Azure 机器学习工作室中监视脚本的进度。  
+        `run` 对象提供了一个便于执行你的代码的句柄。 可以使用从 Python 脚本输出的 URL 从 Azure 机器学习工作室中监视代码执行进度。  
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-and-run-your-code-in-the-cloud"></a>在云中提交并运行代码
+> [!div class="nextstepaction"]
+> [我创建了控制脚本](?success=create-control-script#submit) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=create-control-script)
 
-运行你的控制脚本，该脚本将在你在[设置教程](tutorial-1st-experiment-sdk-setup-local.md)中创建的计算群集上运行 `hello.py`。
+## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> 在云中提交并运行代码
+
+运行你的控制脚本，该脚本继而会在[设置教程](tutorial-1st-experiment-sdk-setup-local.md)中创建的计算群集上运行 `hello.py`。
+
+首次运行将需要 5 - 10 分钟才能完成。 这是因为发生了以下情况：
+
+* docker 映像在云中构建
+* 计算群集的大小从 0 个节点调整到 1 个节点
+* docker 映像被下载到该计算。 
+
+当 docker 映像缓存到该计算上时，后续的运行速度将快得多（约 15 秒），你可以通过在第一次运行完成后重新提交以下代码来进行测试。
 
 ```bash
 python 03-run-hello.py
 ```
 
-## <a name="monitor-your-code-in-the-cloud-using-studio"></a>使用工作室在云中监视代码
+> [!TIP]
+> 如果运行此代码返回错误“你没有访问订阅的权限”，请参阅[连接到工作区](how-to-manage-workspace.md?tab=python#connect-multi-tenant)，以获取有关身份验证选项的信息。
 
-输出将包含一个指向 Azure 机器学习工作室的链接，该链接如下所示：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
+> [!div class="nextstepaction"]
+> [我在云中提交了代码](?success=submit-to-cloud#monitor) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
 
-单击该链接，导航到“输出和日志”选项卡。在那里你可以看到如下所示的 `70_driver_log.txt` 文件：
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>通过使用工作室在云中监视代码
+
+输出中将会包含一个指向工作室的链接，该链接类似于：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
+
+单击该链接，转到“输出 + 日志”选项卡。在那里可以看到 `70_driver_log.txt` 文件，该文件的内容类似于：
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.
@@ -174,11 +196,14 @@ python 03-run-hello.py
 
 在第 8 行，你会看到“Hello world!” 输出。
 
-`70_driver_log.txt` 文件包含来自运行的标准输出。 当调试云中的远程运行时，此文件会很有用。
+`70_driver_log.txt` 文件包含来自运行的标准输出。 当你在云中调试远程运行时，此文件会很有用。
+
+> [!div class="nextstepaction"]
+> [我在工作室看到了该日志](?success=monitor-in-studio#next-steps) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你使用了一个简单的“hello world”脚本并在 Azure 上运行了它。 你了解了如何连接到 Azure 机器学习工作区、如何创建试验，以及如何将 `hello.py` 代码提交到云。
+在本教程中，你使用了一个简单的“hello world!” 脚本，并在 Azure 上运行了该脚本。 你了解了如何连接到 Azure 机器学习工作区、如何创建试验，以及如何将 `hello.py` 代码提交到云中。
 
 在接下来的教程中，你将在这些知识的基础上通过运行比 `print("Hello world!")` 更有趣的脚本来进一步学习。
 
@@ -186,4 +211,4 @@ python 03-run-hello.py
 > [教程：定型模型](tutorial-1st-experiment-sdk-train.md)
 
 >[!NOTE] 
-> 如果你想就此完成本教程系列而不继续学习，请记得[清理你的资源](tutorial-1st-experiment-bring-data.md#clean-up-resources)
+> 如果你想就此完成本教程系列，不再继续进行下一步，请记得[清理你的资源](tutorial-1st-experiment-bring-data.md#clean-up-resources)。

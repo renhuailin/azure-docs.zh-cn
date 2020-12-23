@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115095"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169267"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -74,7 +74,7 @@ ms.locfileid: "88115095"
 ## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
 错误代码和消息可能会更改。  有关最新信息，请查看 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
 
-针对返回的错误代码的数字部分进行搜索。  例如，如果收到错误代码“AADSTS16000”，则在 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 中搜索“16000”。  还可以通过将错误代码编号添加到 URL [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) 来直接链接到特定错误。
+例如，如果收到错误代码 "AADSTS50058"，则在中搜索 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "50058"。  还可以通过将错误代码编号添加到 URL [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) 来直接链接到特定错误。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
@@ -95,7 +95,7 @@ ms.locfileid: "88115095"
 | AADSTS50000 | TokenIssuanceError - 登录服务出现问题。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
 | AADSTS50001 | InvalidResource - 资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。 |
-| AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 查看中概述的分辨率[。/manage-apps/application-sign-in-problem-federated-sso-gallery.md # 未配置证书](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured)。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
+| AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 查看中概述的分辨率 [。/manage-apps/application-sign-in-problem-federated-sso-gallery.md # 未配置证书](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured)。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
 | AADSTS50005 | DevicePolicyError - 用户尝试从条件访问策略目前不支持的平台登录到设备。 |
 | AADSTS50006 | InvalidSignature - 由于签名无效，签名验证失败。 |
 | AADSTS50007 | PartnerEncryptionCertificateMissing - 未找到此应用的合作伙伴加密证书。 请向 Microsoft [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
@@ -156,7 +156,7 @@ ms.locfileid: "88115095"
 | AADSTS50136 | RedirectMsaSessionToApp - 检测到单个 MSA 会话。 |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken - 由于缺少外部刷新令牌，会话无效。 |
 | AADSTS50140 | KmsiInterrupt - 此错误是由于用户登录时出现“使我保持登录状态”中断而发生的。 [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。 |
-| AADSTS50143 | 会话不匹配 - 会话无效，由于资源不同，用户租户与域提示不匹配。请使用关联 ID、请求 ID 和错误代码 [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，以获得更多详细信息。 |
+| AADSTS50143 | 会话不匹配 - 会话无效，因为不同的资源导致用户租户与域提示不匹配。 [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。 |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword - 用户的 Active Directory 密码已过期。 为用户生成新密码，或者让用户使用自助重置工具重置其密码。 |
 | AADSTS50146 | MissingCustomSigningKey - 需要为此应用配置特定于应用的签名密钥。 没有为此应用程序配置签名密钥，或者密钥已过期或尚未生效。 |
 | AADSTS50147 | MissingCodeChallenge - 代码质询参数的大小无效。 |
@@ -188,7 +188,7 @@ ms.locfileid: "88115095"
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
 | AADSTS65004 | UserDeclinedConsent - 用户已拒绝许可访问该应用。 让用户重试登录并许可应用|
-| AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。 使用以下链接试用为 SAML 列出的解决方法：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。 使用以下链接试用为 SAML 列出的解决方法： [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS650052 | 应用需要访问你的组织 `\"{organization}\"` 尚未订阅或启用的服务 `(\"{name}\")`。 若要查看服务订阅的配置，请与 IT 管理员联系。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 身份验证失败。 刷新令牌无效。 该错误的可能原因如下：<ul><li>令牌绑定标头为空</li><li>令牌绑定哈希不匹配</li></ul> |
@@ -200,7 +200,7 @@ ms.locfileid: "88115095"
 | AADSTS70007 | UnsupportedResponseMode - 请求令牌时，应用返回了不受支持的 `response_mode` 值。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 刷新令牌由于非活动状态而过期。 该令牌是在 XXX 颁发的，并在特定的时间内处于非活动状态。 |
 | AADSTS70011 | InvalidScope - 应用请求的范围无效。 |
-| AADSTS70012 | MsaServerError - 对 MSA（使用者）用户进行身份验证时发生服务器错误。 重试。 如果仍然失败，请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError - 对 MSA（使用者）用户进行身份验证时发生服务器错误。 重试。 如果仍然失败，请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 设备流错误。 授权处于挂起状态。 设备将重试轮询请求。 |
 | AADSTS70018 | BadVerificationCode - 由于用户为设备代码流键入了错误的用户代码，验证码无效。 授权未获批准。 |
 | AADSTS70019 | CodeExpired - 验证码已过期。 让用户重试登录。 |
@@ -250,8 +250,8 @@ ms.locfileid: "88115095"
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 已禁用该功能。 |
 | AADSTS90051 | InvalidNationalCloudId - 国家云标识符包含无效的云标识符。 |
 | AADSTS90055 | TenantThrottlingError - 传入的请求过多。 此异常是针对阻止的租户引发的。 |
-| AADSTS90056 | BadResourceRequest - 若要兑换访问令牌的代码，应用应该向 `/token` 终结点发送 POST 请求。 另外，在此之前，应该提供授权代码，并在发往 `/token` 终结点的 POST 请求中发送此代码。 有关 OAuth 2.0 授权代码流的概述，请参阅此文章： [。/azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)。 将用户定向到 `/authorize` 终结点，该终结点会返回 authorization_code。 通过向 `/token` 终结点发布请求，用户可以获取访问令牌。 在 Azure 门户中登录，并检查“应用注册”>“终结点”以确认是否正确配置了两个终结点。 |
-| AADSTS90072 | PassThroughUserMfaError - 用户登录时所用的外部帐户在其登录到的租户中不存在；因此，该用户无法满足该租户的 MFA 要求。 必须先将该帐户作为外部用户添加到该租户中。 请注销并使用其他 Azure AD 用户帐户登录。 |
+| AADSTS90056 | BadResourceRequest - 若要兑换访问令牌的代码，应用应该向 `/token` 终结点发送 POST 请求。 另外，在此之前，应该提供授权代码，并在发往 `/token` 终结点的 POST 请求中发送此代码。 有关 OAuth 2.0 授权代码流的概述，请参阅此文：[../azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)。 将用户定向到 `/authorize` 终结点，该终结点会返回 authorization_code。 通过向 `/token` 终结点发布请求，用户可以获取访问令牌。 在 Azure 门户中登录，并检查“应用注册”>“终结点”以确认是否正确配置了两个终结点。 |
+| AADSTS90072 | PassThroughUserMfaError - 用户登录时所用的外部帐户在其登录到的租户中不存在；因此，该用户无法满足该租户的 MFA 要求。 如果用户已同步，但在 Active Directory 和 Azure AD 之间的 ImmutableID (sourceAnchor) 属性中存在不匹配，也可能会发生此错误。 必须先将该帐户作为外部用户添加到该租户中。 请注销并使用其他 Azure AD 用户帐户登录。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - 服务尝试处理 WS 联合身份验证消息时出错。 消息无效。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 目前不支持对该请求使用所选的身份验证策略。 |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed - 此站点不允许来宾帐户。 |
@@ -264,7 +264,7 @@ ms.locfileid: "88115095"
 | AADSTS90093 | GraphUserUnauthorized - Graph 返回了针对请求的禁止访问错误代码。 |
 | AADSTS90094 | AdminConsentRequired - 需要管理员许可。 |
 | AADSTS900382 | 跨云请求不支持机密客户端。 |
-| AADSTS90099 | 应用程序 "{appId}" ( {appName} ) 在租户 "{tenant}" 中未获得授权。 必须授权应用程序访问客户租户，然后合作伙伴委派的管理员才能使用它们。 提供预先同意或执行适当的合作伙伴中心 API 来授权应用程序。 |
+| AADSTS90099 | 应用程序“{appId}”({appName}) 未在租户“{tenant}”中获得授权。 应用程序必须获得访问客户租户的授权，然后合作伙伴委托的管理员才能使用应用程序。 若要为应用程序授权，请提供预先许可或执行相应的合作伙伴中心 API。 |
 | AADSTS90100 | InvalidRequestParameter - 参数为空或无效。 |
 | AADSTS901002 | AADSTS901002：不支持“resource”请求参数。 |
 | AADSTS90101 | InvalidEmailAddress - 提供的数据不是有效的电子邮件地址。 电子邮件地址必须采用 `someone@example.com` 格式。 |
@@ -315,11 +315,12 @@ ms.locfileid: "88115095"
 | AADSTS700022 | InvalidMultipleResourcesScope - 为输入参数范围提供的值无效，因为它包含多个资源。 |
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
 | AADSTS7000215 | 提供的客户端密码无效。 开发人员错误 - 应用尝试在没有必需的或正确的身份验证参数的情况下登录。|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 提供的客户端密钥已过期。 访问 Azure 门户，为你的应用创建新密钥，或者考虑使用证书凭据提高安全性：[https://aka.ms/certCreds](https://aka.ms/certCreds) |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 提供的客户端密钥已过期。 访问 Azure 门户，为你的应用创建新密钥，或者考虑使用证书凭据提高安全性：[https://aka.ms/certCreds](./active-directory-certificate-credentials.md) |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 提供的授权代码是用于其他租户的，因此已被拒绝。 兑换 OAuth2 授权代码时所针对的租户必须是获取该代码时所针对的租户（根据情况使用 /common 或 {tenant ID} 进行指定） |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled - 应用程序处于禁用状态。 |
+| AADSTS7000114| 不允许使用应用程序“appIdentifier”进行应用程序代理调用。|
 | AADSTS7500529 | 值“SAMLId-Guid”不是有效的 SAML ID - Azure AD 使用此属性填充返回的响应的 InResponseTo 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示形式前面加上类似于“id”的字符串。 例如，id6c1c178c166d486687be4aaf5e482730 是有效的 ID。 |
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 78ac7e849a3a8f1742701006638a2cb72299bad7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4839f8211e678f5fc2fb3572c7eaa545fbee6c6c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055769"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961186"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>用于从 StorSimple 8000 系列迁移数据的选项
 
@@ -31,7 +31,7 @@ StorSimple 8000 系列在12月 2022 [结束支持](https://support.microsoft.com
 
 这种全新的迁移选项使客户能够将其组织的文件共享存储在 Azure 文件中。 然后可以集中这些文件共享，以使用 Azure 文件同步 (AFS) 进行本地访问。 可在 Windows Server 主机上部署 AFS。 然后，可以通过主机复制或迁移工具执行实际的数据迁移。
 
-有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅 [StorSimple 8100 和8600迁移到 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)。
+有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅 [StorSimple 8100 和8600迁移到 Azure 文件同步](../storage/files/storage-files-migration-storsimple-8000.md)。
 
 ### <a name="third-party-options"></a>第三方选项
 
@@ -111,4 +111,4 @@ A. 迁移数据所需的时间取决于数据量和选择的升级选项。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将数据从 StorSimple 8000 系列迁移到 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)
+* [将数据从 StorSimple 8000 系列迁移到 Azure 文件同步](../storage/files/storage-files-migration-storsimple-8000.md)

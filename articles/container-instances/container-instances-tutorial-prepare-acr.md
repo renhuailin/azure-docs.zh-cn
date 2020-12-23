@@ -3,13 +3,13 @@ title: 教程 - 准备容器注册表以部署映像
 description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azure 容器注册表并推送映像
 ms.topic: tutorial
 ms.date: 12/18/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 44a7f21c067897b046413851ef5a2c73bfccc24f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 2eda960c53fc7ba851ffcfbe96bd8e9a48844910
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708030"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746928"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>教程：创建 Azure 容器注册表并推送容器映像
 
@@ -40,7 +40,7 @@ Azure 容器注册表是你在 Azure 中的专用 Docker 注册表。 本教程�
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-例如，如果注册表名为 *mycontainerregistry082*：
+例如，如果注册表名为 *mycontainerregistry082* ：
 
 ```azurecli
 az acr show --name mycontainerregistry082 --query loginServer --output table
@@ -58,7 +58,7 @@ mycontainerregistry082.azurecr.io
 docker images
 ```
 
-此时应会显示在[前一篇教程](container-instances-tutorial-prepare-app.md)中生成的 *aci-tutorial-app* 映像，以及计算机上包含的其他所有映像：
+此时应会显示在 [前一篇教程](container-instances-tutorial-prepare-app.md)中生成的 *aci-tutorial-app* 映像，以及计算机上包含的其他所有映像：
 
 ```console
 $ docker images
@@ -66,7 +66,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-使用容器注册表的登录服务器标记 aci-tutorial-app 映像**。 此外，请将 `:v1` 标记添加到映像名称的末尾，指示映像版本号。 将 `<acrLoginServer>` 替换为前面执行的 [az acr show][az-acr-show] 命令的结果。
+使用容器注册表的登录服务器标记 aci-tutorial-app 映像  。 此外，请将 `:v1` 标记添加到映像名称的末尾，指示映像版本号。 将 `<acrLoginServer>` 替换为前面执行的 [az acr show][az-acr-show] 命令的结果。
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -83,7 +83,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-使用专用注册表的完整登录服务器名称标记 aci-tutorial-app 映像后，可以使用 [docker push][docker-push] 命令将该映像推送到注册表**。 将 `<acrLoginServer>` 替换为在前面步骤中获取的完整登录服务器名称。
+使用专用注册表的完整登录服务器名称标记 aci-tutorial-app 映像后，可以使用  。 将 `<acrLoginServer>` 替换为在前面步骤中获取的完整登录服务器名称。
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -123,7 +123,7 @@ Result
 aci-tutorial-app
 ```
 
-若要查看特定映像的标记，请使用 [az acr repository show-tags][az-acr-repository-show-tags] 命令。**
+若要查看特定映像的标记，请使用 
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table

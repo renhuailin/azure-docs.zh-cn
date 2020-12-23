@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1758cca902eb77ffc66824cb56b8add9446fabf9
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090240"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749141"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>在 Visual Studio 中使用 Azure 逻辑应用和 Azure Functions 生成第一个无服务器应用
 
-你可以使用 Azure 中的无服务器工具和功能（如[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[Azure Functions](../azure-functions/functions-overview.md)）快速开发和部署云应用。 本文介绍如何在 Visual Studio 中开始生成一个使用逻辑应用来调用 Azure 函数的无服务器应用。 若要详细了解 Azure 中的无服务器解决方案，请参阅[将 Azure Serverless 与 Functions 和逻辑应用配合使用](../logic-apps/logic-apps-serverless-overview.md)。
+可以使用 Azure 中的无服务器工具和功能（例如 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Azure Functions](../azure-functions/functions-overview.md)）快速开发和部署云应用。 本文介绍如何在 Visual Studio 中开始生成一个使用逻辑应用来调用 Azure 函数的无服务器应用。 若要详细了解 Azure 中的无服务器解决方案，请参阅[将 Azure Serverless 与 Functions 和逻辑应用配合使用](../logic-apps/logic-apps-serverless-overview.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "87090240"
     > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。 
 
   * [用于 .NET 的 Microsoft Azure SDK（2.9.1 或更高版本）](https://azure.microsoft.com/downloads/)。 
-  详细了解[用于 .NET 的 Azure SDK](/dotnet/azure/dotnet-tools?view=azure-dotnet)。
+  详细了解[用于 .NET 的 Azure SDK](/dotnet/azure/intro)。
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)。
 
@@ -83,7 +83,7 @@ ms.locfileid: "87090240"
    > [!TIP]
    > 如果你不想要将解决方案预先部署到 Azure 资源组，可以使用空白的“逻辑应用”模板，该模板只会创建一个空的逻辑应用。 
 
-1. 从 "**显示此位置的模板**" 列表中，选择 " **Azure 快速入门（github.com/Azure/azure-quickstart-templates）**"。
+1. 从 " **显示此位置的模板** " 列表中，选择 " **Azure 快速入门 (github.com/Azure/azure-quickstart-templates)**"。
 
 1. 在搜索框中，输入“logic-app”作为筛选器。 从结果中选择 **101-logic-app-and-function-app** 模板。
 

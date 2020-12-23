@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 60bd416cf330676485f83720be4365b56c56baaf
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019719"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436702"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教程：使用 Azure IoT 中心消息根据
 
@@ -38,13 +38,13 @@ ms.locfileid: "89019719"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 安装 [Visual Studio](https://www.visualstudio.com/)。
+- 必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 确保已在防火墙中打开端口 8883。 本教程中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+- 安装 [Visual Studio](https://www.visualstudio.com/)。
 
+- 确保已在防火墙中打开端口 8883。 本教程中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="retrieve-the-iot-c-samples-repository"></a>检索 IoT c # 示例存储库
 
@@ -75,9 +75,9 @@ ms.locfileid: "89019719"
 
 如果尚未执行此操作，请打开 Azure [Cloud Shell 窗口](https://shell.azure.com) ，并确保将其设置为 Bash。 在解压缩的存储库中打开脚本，按 Ctrl + A 选择所有该脚本，然后按 Ctrl + C 进行复制。 或者，你可以复制以下 CLI 脚本或直接在 Cloud Shell 中打开它。 右键单击命令行并选择 " **粘贴**"，将该脚本粘贴到 "Cloud Shell" 窗口中。 脚本一次运行一条语句。 脚本停止运行后，按 **Enter** 确保运行最后一条命令。 下面的代码块显示了所使用的脚本，并带有说明其操作内容的注释。
 
-下面是脚本创建的资源。 "扩充"*是指资源*适用于带有根据的消息。 "*原始*" 表示资源适用于未得到丰富的消息。
+下面是脚本创建的资源。 "扩充"*是指资源* 适用于带有根据的消息。 "*原始*" 表示资源适用于未得到丰富的消息。
 
-| 名称 | “值” |
+| 名称 | 值 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名称 | 原配  |
@@ -259,7 +259,7 @@ az iot hub route create \
 
 2. 将这些值添加到 ContosoStorageEndpointEnriched 终结点的列表。
 
-   | 键 | “值” | 终结点 (下拉列表)  |
+   | 键 | 值 | 终结点 (下拉列表)  |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | Msds-devicelocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -274,12 +274,12 @@ az iot hub route create \
 
    ![包含所有已添加扩充的表](./media/tutorial-message-enrichments/all-message-enrichments.png)
 
-4. 选择“应用”保存更改。**** 跳到 [Test message 根据](#test-message-enrichments) 部分。
+4. 选择“应用”保存更改。 跳到 [Test message 根据](#test-message-enrichments) 部分。
 
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>使用资源管理器模板创建和配置
 您可以使用资源管理器模板来创建和配置资源、消息路由和消息根据。
 
-1. 登录到 Azure 门户。 选择 " **+ 创建资源** " 以打开搜索框。 输入 *模板部署*，并搜索。 在结果窗格中，选择 " **使用自定义模板 (模板部署部署) **"。
+1. 登录到 Azure 门户。 选择 " **+ 创建资源** " 以打开搜索框。 输入 *模板部署*，并搜索。 在结果窗格中，选择 " **使用自定义模板 (模板部署部署)**"。
 
    ![Azure 门户中的模板部署](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -287,7 +287,7 @@ az iot hub route create \
 
 1. 在 " **自定义部署** " 窗格中，选择 **"在编辑器中生成自己的模板"**。
 
-1. 在 **编辑模板** 窗格中，选择 " **加载文件**"。 出现 Windows 资源管理器。 在 **/iot-hub/Tutorials/Routing/SimulatedDevice/resources**中的解压缩存储库文件中查找文件中的**template_messageenrichments.js** 。 
+1. 在 **编辑模板** 窗格中，选择 " **加载文件**"。 出现 Windows 资源管理器。 在 **/iot-hub/Tutorials/Routing/SimulatedDevice/resources** 中的解压缩存储库文件中查找文件中的 **template_messageenrichments.js** 。 
 
    ![从本地计算机中选择模板](./media/tutorial-message-enrichments/template-select.png)
 
@@ -295,9 +295,9 @@ az iot hub route create \
 
    此模板设置为使用全局唯一的 IoT 中心名称和存储帐户名称，方法是将随机值添加到默认名称的末尾，以便可以使用模板，而无需对其进行任何更改。
 
-   下面是通过加载模板创建的资源。 "扩充"**是指资源**适用于带有根据的消息。 "**原始**" 表示资源适用于未得到丰富的消息。 这些值与 Azure CLI 脚本中使用的值相同。
+   下面是通过加载模板创建的资源。 "扩充"**是指资源** 适用于带有根据的消息。 "**原始**" 表示资源适用于未得到丰富的消息。 这些值与 Azure CLI 脚本中使用的值相同。
 
-   | 名称 | “值” |
+   | 名称 | 值 |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | 容器名称 | 原配  |
@@ -310,7 +310,7 @@ az iot hub route create \
    | 路由名称 1 | ContosoStorageRouteOriginal |
    | 路由名称 2 | ContosoStorageRouteEnriched |
 
-1. 选择“保存” 。 此时将显示 " **自定义部署** " 窗格，并显示模板使用的所有参数。 需要设置的唯一字段是 " **资源组**"。 请创建一个新的，或从下拉列表中选择一个。
+1. 选择“保存”。 此时将显示 " **自定义部署** " 窗格，并显示模板使用的所有参数。 需要设置的唯一字段是 " **资源组**"。 请创建一个新的，或从下拉列表中选择一个。
 
    下面是 " **自定义部署** " 窗格的上半部分。 你可以查看在何处填充资源组。
 
@@ -338,7 +338,7 @@ az iot hub route create \
 
 双击解决方案文件 **IoT_SimulatedDevice .sln** ，在 Visual Studio 中打开代码，并打开 " **Program.cs**"。 将标记 `{your hub name}` 替换为 IoT 中心名称。 IoT 中心主机名的格式为 **{中心名称}.azure-devices.net**。 本教程中的中心主机名为 ContosoTestHubMsgEn.azure-devices.net。 接下来，请在运行脚本来创建标记的资源时，替换之前保存的设备密钥 `{your device key}` 。
 
-如果没有设备密钥，可以从门户中检索。 登录后，请前往 " **资源组**"，选择资源组，然后选择 IoT 中心。 在 " **IoT 设备** " 下查看测试设备，并选择设备。 选择“主密钥”旁边的复制图标，将主密钥复制到剪贴板。****
+如果没有设备密钥，可以从门户中检索。 登录后，请前往 " **资源组**"，选择资源组，然后选择 IoT 中心。 在 " **IoT 设备** " 下查看测试设备，并选择设备。 选择“主密钥”旁边的复制图标，将主密钥复制到剪贴板。
 
    ```csharp
         private readonly static string s_myDeviceId = "Contoso-Test-Device";
@@ -358,11 +358,11 @@ az iot hub route create \
 
 1. 选择“资源组”。 找到资源组 " **ContosoResourcesMsgEn**"，并选择它。
 
-2. 选择存储帐户，该帐户为 **contosostorage**。 然后，在左窗格中选择 " **存储资源管理器 () 预览 ** "。
+2. 选择存储帐户，该帐户为 **contosostorage**。 然后，在左窗格中选择 " **存储资源管理器 () 预览** "。
 
    ![选择存储资源管理器](./media/tutorial-message-enrichments/select-storage-explorer.png)
 
-   选择“BLOB 容器”查看可用的两个容器。****
+   选择“BLOB 容器”查看可用的两个容器。
 
    ![查看存储帐户中的容器](./media/tutorial-message-enrichments/show-blob-containers.png)
 
@@ -382,11 +382,11 @@ az iot hub route create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除在本教程中创建的所有资源，请删除该资源组。 此操作会一并删除组中包含的所有资源。 在此示例中，它会删除 IoT 中心、存储帐户和资源组本身。
+若要删除在本教程中创建的所有资源，请删除该资源组。 此操作会一并删除组中包含的所有资源。 本例删除 IoT 中心、存储帐户和资源组本身。
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 请记住， `$resourceGroup` 本教程开始时设置为 **ContosoResourcesMsgEn** 。
+若要删除资源组，请使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 请记住， `$resourceGroup` 本教程开始时设置为 **ContosoResourcesMsgEn** 。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

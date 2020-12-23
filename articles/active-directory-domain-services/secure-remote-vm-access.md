@@ -1,25 +1,25 @@
 ---
 title: 在 Azure AD 域服务中保护远程 VM 访问 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 域服务托管域中通过对远程桌面服务部署使用网络策略服务器 (NPS) 和 Azure 多重身份验证来保护对 VM 的远程访问。
+description: 了解如何使用网络策略服务器 (NPS 保护对 Vm 的远程访问，) 并使用 Azure Active Directory 域服务托管域中的远程桌面服务部署 Azure AD 多重身份验证。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 462e0ff8ef8baadf40ba81ed2ae137d8904fbf7a
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: f0605cbd81d8131014a1f6a6bf30e3db0ce9aa90
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722511"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618920"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中保护对虚拟机的远程访问
 
-若要保护对 Azure Active Directory 域服务 (Azure AD DS) 托管域中运行的虚拟机 (VM) 的远程访问，可以使用远程桌面服务 (RDS) 和网络策略服务器 (NPS)。 Azure AD DS 在用户请求通过 RDS 环境进行访问时对用户进行身份验证。 为了提高安全性，你可以集成 Azure 多重身份验证，以便在发生登录事件期间提供额外的身份验证提示。 Azure 多重身份验证使用 NPS 的一个扩展来提供此功能。
+若要保护对 Azure Active Directory 域服务 (Azure AD DS) 托管域中运行的虚拟机 (VM) 的远程访问，可以使用远程桌面服务 (RDS) 和网络策略服务器 (NPS)。 Azure AD DS 在用户请求通过 RDS 环境进行访问时对用户进行身份验证。 为了增强安全性，可以将 Azure AD 多重身份验证集成，以便在登录事件期间提供额外的身份验证提示。 Azure AD 多重身份验证使用 NPS 扩展来提供此功能。
 
 > [!IMPORTANT]
 > 若要安全地连接到 Azure AD DS 托管域中的 VM，建议使用 Azure Bastion，这是在虚拟网络中预配的一项完全由平台托管的 PaaS 服务。 堡垒主机直接在 Azure 门户中通过 SSL 提供与 VM 的安全无缝远程桌面协议 (RDP) 连接。 通过堡垒主机进行连接时，VM 不需要公共 IP 地址，你无需使用网络安全组在 TCP 端口 3389 上公开对 RDP 的访问。
@@ -28,7 +28,7 @@ ms.locfileid: "88722511"
 >
 > 有关详细信息，请参阅[什么是 Azure Bastion？][bastion-overview]。
 
-本文介绍了如何在 Azure AD DS 中配置 RDS，以及如何选择使用 Azure 多重身份验证 NPS 扩展。
+本文介绍如何在 Azure AD DS 中配置 RDS，并选择性地使用 Azure AD 多重身份验证 NPS 扩展。
 
 ![远程桌面服务 (RDS) 概述](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
@@ -66,32 +66,32 @@ RD 环境部署包含许多步骤。 可以使用现有的 RD 部署指南，不
 
 将 RD 部署到托管域后，你可以像使用本地 AD DS 域一样管理和使用该服务。
 
-## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>部署和配置 NPS 和 Azure MFA NPS 扩展
+## <a name="deploy-and-configure-nps-and-the-azure-ad-mfa-nps-extension"></a>部署和配置 NPS 和 Azure AD MFA NPS 扩展
 
-如果要提高用户登录体验的安全性，可以选择将 RD 环境与 Azure 多重身份验证集成。 使用此配置，用户会在登录过程中收到额外的提示，以确认其身份。
+如果希望提高用户登录体验的安全性，可以选择将 RD 环境与 Azure AD 多重身份验证相集成。 使用此配置，用户会在登录过程中收到额外的提示，以确认其身份。
 
-为了提供此功能，会随 Azure 多重身份验证 NPS 扩展一起在你的环境中安装 (NPS) 的其他网络策略服务器。 此扩展与 Azure AD 集成，以请求并返回多重身份验证提示的状态。
+为了提供此功能，将在你的环境中安装 (NPS) 的其他网络策略服务器以及 Azure AD 多重身份验证 NPS 扩展。 此扩展与 Azure AD 集成，以请求并返回多重身份验证提示的状态。
 
-必须注册用户 [才能使用 Azure 多重身份验证][user-mfa-registration]，这可能需要额外的 Azure AD 许可证。
+必须注册用户 [才能使用 Azure AD 多重身份验证][user-mfa-registration]，这可能需要额外 Azure AD 许可证。
 
-若要将 Azure 多重身份验证集成到 Azure AD DS 远程桌面环境中，请创建一个 NPS 服务器并安装扩展：
+若要将 Azure AD 多重身份验证集成到 Azure AD DS 远程桌面环境中，请创建一个 NPS 服务器并安装该扩展：
 
-1. 创建连接到 Azure AD DS 虚拟网络中的*工作负荷*子网的附加 Windows Server 2016 或 2019 VM，如*NPSVM01*。 将 VM 加入托管域。
+1. 创建连接到 Azure AD DS 虚拟网络中的 *工作负荷* 子网的附加 Windows Server 2016 或 2019 VM，如 *NPSVM01*。 将 VM 加入托管域。
 1. 以作为 *AZURE AD DC Administrators* 组的一部分的帐户（如 *contosoadmin*）登录到 NPS VM。
-1. 在 **服务器管理器**中，选择 " **添加角色和功能**"，然后安装 " *网络策略和访问服务* " 角色。
-1. 使用现有的操作方法文章来 [安装和配置 AZURE MFA NPS 扩展][nps-extension]。
+1. 在 **服务器管理器** 中，选择 " **添加角色和功能**"，然后安装 " *网络策略和访问服务* " 角色。
+1. 使用现有的操作方法文章来 [安装和配置 AZURE AD MFA NPS 扩展][nps-extension]。
 
-安装了 NPS 服务器和 Azure 多重身份验证 NPS 扩展后，请完成下一部分，将其配置为用于 RD 环境。
+安装了 NPS 服务器和 Azure AD 多重身份验证 NPS 扩展后，请完成下一部分，将其配置为用于 RD 环境。
 
-## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>集成远程桌面网关和 Azure 多重身份验证
+## <a name="integrate-remote-desktop-gateway-and-azure-ad-multi-factor-authentication"></a>集成远程桌面网关和 Azure AD 多重身份验证
 
-若要集成 Azure 多重身份验证 NPS 扩展，请使用现有的操作方法文章，将 [远程桌面网关基础结构与使用网络策略服务器 (NPS) 扩展和 Azure AD 集成][azure-mfa-nps-integration]。
+若要集成 Azure AD 多重身份验证 NPS 扩展，请使用现有的操作方法文章，将 [使用网络策略服务器的远程桌面网关基础结构与 (NPS) 扩展和 Azure AD 集成][azure-mfa-nps-integration]。
 
 与托管域集成需要以下附加配置选项：
 
 1. 请勿 [在 Active Directory 中注册 NPS 服务器][register-nps-ad]。 此步骤在托管域中失败。
 1. 在 [步骤4中，若要配置网络策略][create-nps-policy]，还请选中复选框以 **忽略用户帐户的拨入属性**。
-1. 如果为 NPS 服务器和 Azure 多重身份验证 NPS 扩展使用 Windows Server 2019，请运行以下命令来更新安全通道，使 NPS 服务器能够正确通信：
+1. 如果为 NPS 服务器使用 Windows Server 2019，并 Azure AD 多重身份验证 NPS 扩展，请运行以下命令更新安全通道，使 NPS 服务器能够正确通信：
 
     ```powershell
     sc sidtype IAS unrestricted
@@ -103,7 +103,7 @@ RD 环境部署包含许多步骤。 可以使用现有的 RD 部署指南，不
 
 若要详细了解如何提高部署复原能力，请参阅[远程桌面服务 - 高可用性][rds-high-availability]。
 
-若要详细了解如何保护用户登录，请参阅[工作原理：Azure 多重身份验证][concepts-mfa]。
+有关保护用户登录的详细信息，请参阅 [工作方式： Azure AD 多重身份验证][concepts-mfa]。
 
 <!-- INTERNAL LINKS -->
 [bastion-overview]: ../bastion/bastion-overview.md

@@ -3,18 +3,21 @@ title: Azure Cosmos DB 查询语言中的 ToString
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ToString。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85406a1c4a8d5780354d4161581550b02262f36b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78304253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340747"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  返回标量表达式的字符串表示形式。 
   
 ## <a name="syntax"></a>语法

@@ -1,18 +1,18 @@
 ---
 title: 来自 Azure 流分析的表存储输出
-description: 本文介绍 azure 表存储作为 Azure 流分析的输出。
+description: 本文介绍作为 Azure 流分析输出的 Azure 表存储。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 3e5b747e55c8f246167bcf8bbde3542146e69706
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea775ef472687485dbd2f30c4f60adc33c0eaa73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891964"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127342"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>来自 Azure 流分析的表存储输出
 
@@ -28,15 +28,15 @@ ms.locfileid: "90891964"
 | 表名称 |表的名称。 如果表不存在，则创建该表。 |
 | 分区键 |包含分区键的输出列的名称。 分区键是某个表中分区的唯一标识符，分区键构成了实体主键的第一部分。 它是最大可为 1 KB 的字符串值。 |
 | 行键 |包含行键的输出列的名称。 行键是分区中实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是一个最大为 1 KB 的字符串值。 |
-| 批大小 |批处理操作的记录数。 默认值 (100) 对大部分作业来说都已足够。 有关修改设置的详细信息，请参阅[表批处理操作规范](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation)。 |
+| 批大小 |批处理操作的记录数。 默认值 (100) 对大部分作业来说都已足够。 有关修改设置的详细信息，请参阅[表批处理操作规范](/java/api/com.microsoft.azure.storage.table.tablebatchoperation)。 |
 
 ## <a name="partitioning"></a>分区
 
-分区键为任何输出列。 输出写入器的数目按照 [完全并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。
+分区键为任何输出列。 输出编写器的数量与[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区一致。
 
 ## <a name="output-batch-size"></a>输出批大小
 
-有关最大消息大小，请参阅 [Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 默认值为每个单个事务100个实体，但你可以根据需要将其配置为较小的值。
+有关最大消息大小，请参阅 [Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 默认为每个单一事务 100 个实体，但可根据需要将其配置为更小的值。
 
 ## <a name="next-steps"></a>后续步骤
 

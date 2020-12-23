@@ -3,14 +3,14 @@ title: 在 Azure 自动化中管理变量
 description: 本文介绍如何在 Runbook 和 DSC 配置中使用变量。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/05/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766188"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461450"
 ---
 # <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 
@@ -26,10 +26,10 @@ ms.locfileid: "91766188"
 
 Azure 自动化会持久保存变量，因此即使 Runbook 或 DSC 配置失败，变量也仍然可用。 此行为允许一个 Runbook 或 DSC 配置设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
 
-Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../security-center/recommendations-reference.md#recs-computeapp)中所述。
+Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 如果你的自动化帐户变量存储尚未加密的敏感数据，则需要将其删除并重新创建为加密变量。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 如果你希望从此安全建议中排除的未加密变量，请参阅 [从建议和安全分数中免除资源](../../security-center/exempt-resource.md) 以创建免除规则。
 
 >[!NOTE]
->Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥进行加密并存储在 Azure 自动化中。 Azure 自动化将密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。 
+>Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥进行加密并存储在 Azure 自动化中。 Azure 自动化将密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。
 
 ## <a name="variable-types"></a>变量类型
 
@@ -43,7 +43,7 @@ Azure 自动化会安全存储每个加密的变量。 创建变量时，可以�
 
 该变量并不局限于指定的数据类型。 但如果要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指示 `Not defined`，则变量的值将设置为 Null。 必须使用 [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) cmdlet 或内部 `Set-AutomationVariable` cmdlet 来设置值。
 
-不能使用 Azure 门户来创建或更改复杂变量类型的值。 但是，可以使用 Windows PowerShell 提供任何类型的值。 复杂类型作为 [Newtonsoft.Js检索。](https://www.newtonsoft.com/json/help/html/N_Newtonsoft_Json_Linq.htm) 对于复杂的对象类型而不是 PSObject 类型 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)，则为 JProperty。
+不能使用 Azure 门户来创建或更改复杂变量类型的值。 但是，可以使用 Windows PowerShell 提供任何类型的值。 复杂类型会作为 Complex 对象类型的 [Newtonsoft.Json.Linq.JProperty](https://www.newtonsoft.com/json/help/html/N_Newtonsoft_Json_Linq.htm)（而不是 PSObject 类型 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)）进行检索。
 
 可以通过创建一个数组或哈希表并将其保存到变量，来将多个值存储到单一变量。
 
@@ -123,7 +123,7 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-下面的示例演示如何创建复杂类型的变量，并检索其属性。 在这种情况下，将使用 [new-azvm](/powershell/module/Az.Compute/Get-AzVM) 中的虚拟机对象来指定其属性的子集。
+下面的示例演示如何创建复杂类型的变量，并检索其属性。 在本例中，我们使用了 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 返回的虚拟机对象（通过指定其属性的子集）。
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01" | Select Name, Location, Extensions

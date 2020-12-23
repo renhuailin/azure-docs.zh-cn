@@ -5,27 +5,27 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 11/30/2020
 ms.author: raynew
-ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 0aca0e49d72025686cf44d434fa7a43ae0c86e0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670333"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461115"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>在 PowerShell 中跨区域移动资源
 
 了解如何使用 Azure 资源移动器中的 PowerShell 将 Azure 资源移到另一个区域。 
 
 > [!NOTE]
-> Azure 资源移动器当前为预览版。
+> Azure 资源转移器目前提供预览版。
 
 
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
-- 你的 Azure 订阅应有权访问资源移动器，你应具有订阅的 [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) 或 [用户访问管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) 权限。
+- 你的 Azure 订阅应有权访问资源移动器，你应具有订阅的 [所有者](../role-based-access-control/built-in-roles.md#owner) 或 [用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator) 权限。
 - 资源移动器并不跟踪更改和升级，因此在开始移动它们之前，对资源进行任何所需的更改。
 - 在将资源与 PowerShell 一起移动时，当前无法编辑任何目标区域设置。 直接在门户中修改这些设置。
 - 向移动集合添加资源时，为将资源移到另一个区域，有关移动的元数据将存储在为此目的而创建的资源组中。 此资源组目前可以位于美国东部2或北欧地区。 可以使用其中任何一个区域中的元数据，在任何公共区域之间移动 Azure 资源。
@@ -49,7 +49,7 @@ ms.locfileid: "89670333"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到你的 Azure 订阅。
+登录到 Azure 订阅。
 
 ```azurepowershell-interactive
 # Sign in to an Azure subscription
@@ -61,7 +61,7 @@ Connect-AzAccount – Subscription "<subscription-id>"
 创建资源组以保存移动集合元数据和配置信息。
 
 ```azurepowershell-interactive
-# Sign in to an Azure subscription
+# Create the resource group for metadata
 New-AzResourceGroup -Name MoveCollection-centralus-westcentralus -Location "East US 2"
 ```
 
@@ -89,7 +89,7 @@ While(((Get-AzResourceProvider -ProviderNamespace Microsoft.Migrate)| where {$_.
 
 MoveCollection 对象存储有关要移动的资源的元数据和配置信息。
 
-- 对于 MoveCollection 对象，若要访问 Azure 资源移动器服务所在的订阅，需要使用 [系统分配的托管 (标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) （以前称为托管服务）标识 (MSI) # A3，该订阅由订阅信任。
+- 对于 MoveCollection 对象，若要访问 Azure 资源移动器服务所在的订阅，需要使用 [系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) ， (以前称为托管服务标识 (订阅所信任的 MSI) # A3。
 - 为该标识分配源订阅的 "参与者" 或 "用户访问管理员" 角色。
 - 若要将角色分配给标识，需要具有以下权限的订阅中的角色 (如所有者或用户访问管理员) ：
     -  Microsoft.Authorization/roleAssignments/write
@@ -98,7 +98,7 @@ MoveCollection 对象存储有关要移动的资源的元数据和配置信息�
 
 ```azurepowershell-interactive
 # Create a MoveCollection object
-New-AzResourceMoverMoveCollection -Name "MoveCollection-centralus-westcentralus " -ResourceGroupName "RegionMoveRG-centralus-westcentralus " -SubscriptionId "<subscription-id>" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location  "East US 2" -IdentityType SystemAssigned
+New-AzResourceMoverMoveCollection -Name "MoveCollection-centralus-westcentralus" -ResourceGroupName "RegionMoveRG-centralus-westcentralus" -SubscriptionId "<subscription-id>" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location  "East US 2" -IdentityType SystemAssigned
 ```
 **预期输出**：
 
@@ -115,7 +115,7 @@ New-AzResourceMoverMoveCollection -Name "MoveCollection-centralus-westcentralus 
 $subscriptionId = "<subscription-id>"
 
 # Retrieve the principal managed identity of the MoveCollection
-$moveCollection = Get-AzResourceMoverMoveCollection -SubscriptionId $subscriptionId -ResourceGroupName "RegionMoveRG-centralus-westcentralus " -Name "MoveCollection-centralus-westcentralus "
+$moveCollection = Get-AzResourceMoverMoveCollection -SubscriptionId $subscriptionId -ResourceGroupName "RegionMoveRG-centralus-westcentralus" -Name "MoveCollection-centralus-westcentralus"
 
 # Set the IdentityPrincipalID
 $identityPrincipalId = $moveCollection.IdentityPrincipalId
@@ -124,7 +124,6 @@ $identityPrincipalId = $moveCollection.IdentityPrincipalId
 New-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName Contributor -Scope "/subscriptions/$subscriptionId"
 
 New-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName "User Access Administrator" -Scope "/subscriptions/$subscriptionId"
-
 ```
 
 ## <a name="add-resources-to-the-move-collection"></a>向移动集合添加资源
@@ -143,7 +142,7 @@ Get-AzResource -Name PSDemoVM -ResourceGroupName PSDemoRM
 
 ```azurepowershell-interactive
 # Add the resource to the move collection
-New-AzResourceMoverMoveResource -SubscriptionId “<subscription-id>” -ResourceGroupName “RegionMoveRG-centralus-westcentralus ” -MoveCollectionName “MoveCollection-centralus-westcentralus ” -SourceId “/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM” -Name “PSDemoVM” -ResourceSettingResourceType “ Microsoft.Compute/virtualMachines” -ResourceSettingTargetResourceName “PSDemoVM”
+New-AzResourceMoverMoveResource -SubscriptionId “<subscription-id>” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -MoveCollectionName “MoveCollection-centralus-westcentralus” -SourceId “/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM” -Name “PSDemoVM” -ResourceSettingResourceType “Microsoft.Compute/virtualMachines” -ResourceSettingTargetResourceName “PSDemoVM”
 ```
 
 **预期输出** 
@@ -169,7 +168,7 @@ Resolve-AzResourceMoverMoveCollectionDependency -SubscriptionId “<subscription
 
 ```azurepowershell-interactive
 # Identify dependencies
-Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-centralus-westcentralus ” -ResourceGroupName “RegionMoveRG-centralus-westcentralus ” -SubscriptionId  “<subscription-id>”
+Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-centralus-westcentralus” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -SubscriptionId  “<subscription-id>”
 ```
 
 **预期输出**
@@ -192,8 +191,7 @@ Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-ce
 
 ```azurepowershell-interactive
 # Get the NIC name and resource type
-Get-AzResource -ResourceId “/subscriptions/ <subscription-id> /resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm62”
-
+Get-AzResource -ResourceId “/subscriptions/<subscription-id>/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm62”
 ```
 
 **预期输出**
@@ -204,7 +202,7 @@ Get-AzResource -ResourceId “/subscriptions/ <subscription-id> /resourcegroups/
 
 ```azurepowershell-interactive
 # Add the NIC to the collection. 
-New-AzResourceMoverMoveResource -SubscriptionId “<subscription-id>” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -MoveCollectionName “MoveCollection-centralus-westcentralus ” -SourceId “/subscriptions/<subscription-id>/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkInterfaces/psdemovm62” -Name “psdemovm62” -ResourceSettingResourceType “Microsoft.Network/networkInterfaces” -ResourceSettingTargetResourceName “psdemovm62”
+New-AzResourceMoverMoveResource -SubscriptionId “<subscription-id>” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -MoveCollectionName “MoveCollection-centralus-westcentralus” -SourceId “/subscriptions/<subscription-id>/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkInterfaces/psdemovm62” -Name “psdemovm62” -ResourceSettingResourceType “Microsoft.Network/networkInterfaces” -ResourceSettingTargetResourceName “psdemovm62”
 ```
 
 **预期输出**
@@ -230,7 +228,7 @@ New-AzResourceMoverMoveResource -SubscriptionId “<subscription-id>” -Resourc
 再次检查是否缺少依赖项。
 
 ```azurepowershell-interactive
-Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-centralus-westcentralus ” -ResourceGroupName “RegionMoveRG-centralus-westcentralus ” -SubscriptionId  “<subscription-id>”
+Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-centralus-westcentralus” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -SubscriptionId  “<subscription-id>”
 ```
 
 **输出**
@@ -243,7 +241,7 @@ Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-ce
 
 ```azurepowershell-interactive
 # Identify dependencies
-Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-centralus-westcentralus ” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -SubscriptionId  “<subscription-id>”
+Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-centralus-westcentralus” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -SubscriptionId  “<subscription-id>”
 ```
 
 **预期输出**
@@ -273,7 +271,7 @@ Get-AzResourceMoverUnresolvedDependency -MoveCollectionName “MoveCollection-ce
 
 ```azurepowershell-interactive
 # Prepare the source resource group
-Invoke-AzResourceMoverPrepare -SubscriptionId “<subscription-id>” -ResourceGroupName “RegionMoveRG-centralus-westcentralus ” -MoveCollectionName “MoveCollection-centralus-westcentralus ” -MoveResource “PSDemoRM”
+Invoke-AzResourceMoverPrepare -SubscriptionId “<subscription-id>” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -MoveCollectionName “MoveCollection-centralus-westcentralus” -MoveResource “PSDemoRM”
 ```
 
 **预期输出**
@@ -284,16 +282,17 @@ Invoke-AzResourceMoverPrepare -SubscriptionId “<subscription-id>” -ResourceG
 
 ```azurepowershell-interactive
 # Initiate move
-Invoke-AzResourceMoverInitiateMove -SubscriptionId “<subscription-id>” -ResourceGroupName “RegionMoveRG-centralus-westcentralus ” -MoveCollectionName “MoveCollection-centralus-westcentralus ” -MoveResource “PSDemoRM”
+Invoke-AzResourceMoverInitiateMove -SubscriptionId “<subscription-id>” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -MoveCollectionName “MoveCollection-centralus-westcentralus” -MoveResource “PSDemoRM”
+```
 
-**Expected output**
+**预期输出**
 
-![Output text after initiating move of the source resource group](./media/move-region-powershell/initiate-move-resource-group.png)
+![初始移动源资源组后输出文本](./media/move-region-powershell/initiate-move-resource-group.png)
 
 
 ```azurepowershell-interactive
 # Commit move
-Invoke-AzResourceMoverCommit -SubscriptionId “<subscription-id” -ResourceGroupName “RegionMoveRG-centralus-westcentralus ” -MoveCollectionName “PS-centralus-
+Invoke-AzResourceMoverCommit -SubscriptionId “<subscription-id” -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -MoveCollectionName “PS-centralus-
 westcentralus-demoRM” -MoveResource “PSDemoRM”
 ```
 
@@ -308,7 +307,7 @@ westcentralus-demoRM” -MoveResource “PSDemoRM”
 
 ```azurepowershell-interactive
 # Retrieve resources in the collection
-Get-AzResourceMoverMoveResource  -SubscriptionId “ <subscription-id> “ -ResourceGroupName “RegionMoveRG-centralus-westcentralus ” -MoveCollectionName “MoveCollection-centralus-westcentralus ”   | Where-Object {  $_.MoveStatusMoveState -eq “PreparePending” } | Select Name
+Get-AzResourceMoverMoveResource  -SubscriptionId “<subscription-id>“ -ResourceGroupName “RegionMoveRG-centralus-westcentralus” -MoveCollectionName “MoveCollection-centralus-westcentralus”   | Where-Object {  $_.MoveStatusMoveState -eq “PreparePending” } | Select Name
 ```
 **预期输出**
 
@@ -339,15 +338,16 @@ Invoke-AzResourceMoverPrepare -SubscriptionId  <subscription-id> -ResourceGroupN
 # Initiate the move 
 Invoke-AzResourceMoverInitiateMove -SubscriptionId <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus   -MoveResource $('psdemovm62', 'PSDemoVM-ip', 'PSDemoRM-vnet','PSDemoVM-nsg', ‘PSDemoVM’)
 ```
-**预期输出** 
- ![启动资源移动后输出文本](./media/move-region-powershell/initiate-resource-move.png)
+**预期输出**
+
+![启动资源移动后输出文本](./media/move-region-powershell/initiate-resource-move.png)
 
 ## <a name="discard-or-commit-the-move"></a>放弃或提交移动
 
-初始移动后，您可以决定是要提交移动还是放弃移动。 
+初始移动后，你可以决定是提交移动，还是放弃它。 
 
-- **丢弃**：如果正在测试，你可能会放弃移动，并且不希望实际移动源资源。 如果放弃移动，则会将资源返回到 *启动移动挂起*状态。 如果需要，你可以重新启动移动。
-- **Commit**： commit 完成移动到目标区域。 提交后，源资源将处于 " *删除源挂起*" 状态，你可以决定是否要将其删除。
+- **放弃**：如果要测试，并且不想实际移动源资源，则可能需要放弃移动。 放弃移动会将资源返回到“启动移动挂起”状态。 如果需要，你可以重新启动移动。
+- **提交**：提交即完成移动到目标区域的操作。 提交后，源资源将处于“删除源挂起”状态，你可以决定是否要删除它。
 
 ### <a name="discard"></a>弃用
 
@@ -357,8 +357,9 @@ Invoke-AzResourceMoverInitiateMove -SubscriptionId <subscription-id> -ResourceGr
 # Discard the move 
 Invoke-AzResourceMoverDiscard -SubscriptionId  <subscription-id> `-ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus   -MoveResource $('psdemovm62', 'PSDemoVM-ip', 'PSDemoRM-vnet','PSDemoVM-nsg', ‘PSDemoVM’)
 ```
-**预期输出** 
- ![丢弃移动后的输出文本](./media/move-region-powershell/discard-move.png)
+**预期输出**
+
+![丢弃移动后的输出文本](./media/move-region-powershell/discard-move.png)
 
 
 ### <a name="commit"></a>Commit

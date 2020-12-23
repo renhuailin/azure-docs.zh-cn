@@ -11,12 +11,13 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-azurecli
+ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327559"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588788"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心的实时传感器数据
 
@@ -40,7 +41,7 @@ ms.locfileid: "87327559"
 
 ## <a name="what-you-need"></a>所需条件
 
-* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如，[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
+* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
 
   * 一个有效的 Azure 订阅
   * 已在订阅中创建一个 IoT 中心
@@ -50,17 +51,11 @@ ms.locfileid: "87327559"
 
 * 本文中的步骤假设使用 Windows 开发计算机；但是，也可以在 Linux 系统上使用偏好的 shell 轻松执行这些步骤。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
 
-[使用者组](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)提供事件流的独立视图，可让应用和 Azure 服务单独使用同一事件中心终结点内的数据。 在本部分中，你要将一个使用者组添加到 IoT 中心的内置终结点，Web 应用将从该终结点读取数据。
+[使用者组](../event-hubs/event-hubs-features.md#event-consumers)提供事件流的独立视图，可让应用和 Azure 服务单独使用同一事件中心终结点内的数据。 在本部分中，你要将一个使用者组添加到 IoT 中心的内置终结点，Web 应用将从该终结点读取数据。
 
 运行以下命令，将使用者组添加到 IoT 中心的内置终结点：
 
@@ -156,11 +151,11 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="host-the-web-app-in-app-service"></a>在应用服务中托管 Web 应用
 
-[Azure 应用服务的 Web 应用功能](https://docs.microsoft.com/azure/app-service/overview)提供用于托管 Web 应用程序的平台即服务 (PAAS)。 托管在 Azure 应用服务中的 Web 应用程序可受益于强大的 Azure 功能（例如更高的安全性、负载均衡和可伸缩性）以及 Azure 和合作伙伴 DevOps 解决方案（例如持续部署、包管理等）。 Azure 应用服务支持以多种流行语言开发并部署在 Windows 或 Linux 基础结构上的 Web 应用程序。
+[Azure 应用服务的 Web 应用功能](../app-service/overview.md)提供用于托管 Web 应用程序的平台即服务 (PAAS)。 托管在 Azure 应用服务中的 Web 应用程序可受益于强大的 Azure 功能（例如更高的安全性、负载均衡和可伸缩性）以及 Azure 和合作伙伴 DevOps 解决方案（例如持续部署、包管理等）。 Azure 应用服务支持以多种流行语言开发并部署在 Windows 或 Linux 基础结构上的 Web 应用程序。
 
-在本部分中，你将在应用服务中预配一个 Web 应用，然后使用 Azure CLI 命令将代码部署到该应用。 可以在 [az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) 文档中查找所用命令的详细信息。 在开始之前，请确保已完成[将资源组添加到 IoT 中心](#add-a-consumer-group-to-your-iot-hub)、[获取 IoT 中心的服务连接字符串](#get-a-service-connection-string-for-your-iot-hub)以及[从 GitHub 下载 Web 应用](#download-the-web-app-from-github)的步骤。
+在本部分中，你将在应用服务中预配一个 Web 应用，然后使用 Azure CLI 命令将代码部署到该应用。 可以在 [az webapp](/cli/azure/webapp?view=azure-cli-latest) 文档中查找所用命令的详细信息。 在开始之前，请确保已完成[将资源组添加到 IoT 中心](#add-a-consumer-group-to-your-iot-hub)、[获取 IoT 中心的服务连接字符串](#get-a-service-connection-string-for-your-iot-hub)以及[从 GitHub 下载 Web 应用](#download-the-web-app-from-github)的步骤。
 
-1. [应用服务计划](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)为应用服务中托管的应用定义一组计算资源，使其能够运行。 本教程使用开发人员/免费层来托管 Web 应用。 使用免费层时，你的 Web 应用将在与其他应用服务应用（包括其他客户的应用）共享的 Windows 资源上运行。 Azure 还提供用于在 Linux 计算资源上部署 Web 应用的应用服务计划。 如果已有要使用的应用服务计划，则可以跳过此步骤。
+1. [应用服务计划](../app-service/overview-hosting-plans.md)为应用服务中托管的应用定义一组计算资源，使其能够运行。 本教程使用开发人员/免费层来托管 Web 应用。 使用免费层时，你的 Web 应用将在与其他应用服务应用（包括其他客户的应用）共享的 Windows 资源上运行。 Azure 还提供用于在 Linux 计算资源上部署 Web 应用的应用服务计划。 如果已有要使用的应用服务计划，则可以跳过此步骤。
 
    若要使用 Windows 免费层创建应用服务计划，请运行以下命令。 使用 IoT 中心所在的同一资源组。 服务计划名称可以包含大小写字母、数字和连字符。
 
@@ -187,9 +182,9 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. 若要将代码部署到应用服务，需使用[用户级部署凭据](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。 用户级部署凭据不同于 Azure 凭据，用于在 Web 应用中实现 Git 本地部署和 FTP 部署。 设置后，可对 Azure 帐户中所有订阅内的所有应用服务应用使用这些凭据。 如果以前设置了用户级部署凭据，则可以使用这些凭据。
+5. 若要将代码部署到应用服务，需使用[用户级部署凭据](../app-service/deploy-configure-credentials.md)。 用户级部署凭据不同于 Azure 凭据，用于在 Web 应用中实现 Git 本地部署和 FTP 部署。 设置后，可对 Azure 帐户中所有订阅内的所有应用服务应用使用这些凭据。 如果以前设置了用户级部署凭据，则可以使用这些凭据。
 
-   如果以前未设置过用户级部署凭据或不记得密码，请运行以下命令。 部署用户名在 Azure 中必须唯一，并且不得包含用于本地 Git 推送的“@”符号。 出现提示时，请输入并确认新密码。 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
+   如果以前未设置过用户级部署凭据或不记得密码，请运行以下命令。 部署用户名在 Azure 中必须唯一，并且不能包含 \@ 本地 Git 推送的 "" 符号。 出现提示时，请输入并确认新密码。 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>
@@ -201,16 +196,16 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. 将远程库添加到克隆中，该克隆引用了应用服务中 Web 应用的 Git 存储库。 对于 \<Git clone URL\> ，请使用上一步中返回的 URL。 在命令窗口中运行以下命令。
+7. 将远程库添加到克隆中，该克隆引用了应用服务中 Web 应用的 Git 存储库。 对于 \<Git clone URL\>，请使用上一步骤返回的 URL。 在命令窗口中运行以下命令。
 
    ```cmd
    git remote add webapp <Git clone URL>
    ```
 
-8. 若要将代码部署到应用服务，请在命令窗口中输入以下命令。 系统提示输入凭据时，请输入在步骤 5 中创建的用户级部署凭据。 确保推送到应用服务远程库的主分支。
+8. 若要将代码部署到应用服务，请在命令窗口中输入以下命令。 系统提示输入凭据时，请输入在步骤 5 中创建的用户级部署凭据。 请确保推送到应用服务远程的主要分支。
 
     ```cmd
-    git push webapp master:master
+    git push webapp main:main
     ```
 
 9. 命令窗口中的部署进度将会更新。 如果部署成功，将返回类似于以下输出的行：
@@ -221,7 +216,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
     remote: Running post deployment command(s)...
     remote: Deployment successful.
     To https://contoso-web-app-3.scm.azurewebsites.net/contoso-web-app-3.git
-    6b132dd..7cbc994  master -> master
+    6b132dd..7cbc994  main -> main
     ```
 
 10. 运行以下命令，以查询 Web 应用的状态并确保它正在运行：

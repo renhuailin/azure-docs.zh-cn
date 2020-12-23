@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4077ade7de93470aaf03acef1dc1cefca8bd3d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278850"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837356"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -38,8 +38,8 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 
 你可以使用以下步骤访问设备门户：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory**  >  **设备**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 浏览到 **Azure Active Directory**  >  **设备**"。
 
 ## <a name="manage-devices"></a>管理设备
 
@@ -71,7 +71,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 
 ### <a name="manage-an-intune-device"></a>管理 Intune 设备
 
-如果你是 Intune 管理员，则可以管理将 MDM 标记 **Microsoft Intune**的设备。 如果设备未注册到 Microsoft Intune，则 "管理" 选项将灰显。
+如果你是 Intune 管理员，则可以管理将 MDM 标记 **Microsoft Intune** 的设备。 如果设备未注册到 Microsoft Intune，则 "管理" 选项将灰显。
 
 ### <a name="enable-or-disable-an-azure-ad-device"></a>启用或禁用 Azure AD 设备
 
@@ -139,8 +139,8 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 
 ![启用筛选预览功能](./media/device-management-azure-portal/device-filter-preview-enable.png)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory**  >  **设备**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 浏览到 **Azure Active Directory**  >  **设备**"。
 1. 选择显示的标题， **尝试新的设备筛选改进。单击以启用预览。**
 
 你现在可以 **将筛选器添加** 到 " **所有设备** " 视图。
@@ -164,8 +164,8 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 > **用户可以将设备加入到 Azure AD** 设置仅适用于 Windows 10 上的 Azure AD 加入。
 
 - **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 将这些用户添加到 Azure AD 中的 " *设备管理员* " 角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
-- **用户可能将其设备注册到 Azure AD** -需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、IOS、Android 和 macOS 设备。 如果选择 " **无**"，则不允许设备注册 Azure AD。 注册 Microsoft Intune 或移动设备管理 (MDM) Microsoft 365 需要注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用********。
-- **需要多重身份验证才能加入设备** -可以选择是否要求用户提供附加身份验证因素，以将其设备加入 Azure AD。 默认值为 No****。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-howitworks.md)。 
+- **用户可能将其设备注册到 Azure AD** -需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、IOS、Android 和 macOS 设备。 如果选择 " **无**"，则不允许设备注册 Azure AD。 注册 Microsoft Intune 或移动设备管理 (MDM) Microsoft 365 需要注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。
+- **需要多重身份验证才能加入设备** -可以选择是否要求用户提供附加身份验证因素，以将其设备加入 Azure AD。 默认值为 No。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关不同 Azure AD 多重身份验证服务的详细信息，请参阅 [Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)入门。 
 
 > [!NOTE]
 > **需要多重身份验证加入设备** "设置适用于 Azure AD 联接或 Azure AD 注册的设备。 此设置不适用于混合 Azure AD 连接设备。
@@ -185,7 +185,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 - 更改设备设置
 - 删除设备或更新设备等设备操作
 
-审核数据的入口点为“设备”页的“活动”部分中的“审核日志”************。
+审核数据的入口点为“设备”页的“活动”部分中的“审核日志”。
 
 审核日志有一个默认列表视图，其中显示：
 
@@ -194,11 +194,11 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 - 活动的发起者/参与者（人员）
 - 活动（内容）
 
-![审核日志](./media/device-management-azure-portal/63.png)
+:::image type="content" source="./media/device-management-azure-portal/63.png" alt-text="&quot;设备&quot; 页的 &quot;活动&quot; 部分中的表的屏幕截图，其中列出了四个审核日志的 &quot;日期&quot;、&quot;目标&quot;、&quot;参与者&quot; 和 &quot;活动&quot;。" border="false":::
 
 单击工具栏中的“列”即可自定义列表视图。 
 
-![审核日志](./media/device-management-azure-portal/64.png)
+:::image type="content" source="./media/device-management-azure-portal/64.png" alt-text="显示 &quot;设备&quot; 页的工具栏的屏幕截图。列项已突出显示。" border="false":::
 
 要将所报告数据的范围缩小到适当的级别，可以使用以下字段筛选审核数据：
 
@@ -211,7 +211,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 
 除筛选器外，还可搜索特定条目。
 
-![审核日志](./media/device-management-azure-portal/65.png)
+:::image type="content" source="./media/device-management-azure-portal/65.png" alt-text="审核数据筛选器控件的屏幕截图，其中包含类别、活动资源类型、活动、日期范围、目标和参与者字段和搜索字段。" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

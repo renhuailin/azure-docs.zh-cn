@@ -10,18 +10,23 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d93b6d024fc966f3b260602f4798a2d77669a35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883550"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501152"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>必应视觉搜索 API 的语言和区域支持
 
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
+
 必应视觉搜索 API 支持超过 36 个国家/地区，其中很多具有多种语言。 每个请求都应包含用户所选的国家/地区和语言。 知道用户的市场有助于必应返回合适的结果。 如果用户未指定国家/地区和语言，必应将尽量确定这些内容。 因为结果可能包含指向必应的链接，如果用户单击必应链接，知道国家/地区和语言可以提供首选的本地化必应用户体验。
 
-要指定国家/地区和语言，请将 `mkt`（市场）查询参数设置为下面的“市场”表中的一个代码****。 市场同时指定国家/地区和语言。 如果用户希望以其他语言查看显示文本，请将 `setLang` 查询参数设置为相应的语言代码。
+要指定国家/地区和语言，请将 `mkt`（市场）查询参数设置为下面的“市场”表中的一个代码。 市场同时指定国家/地区和语言。 如果用户希望以其他语言查看显示文本，请将 `setLang` 查询参数设置为相应的语言代码。
 
 另外，也可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
 
@@ -98,7 +103,7 @@ ms.locfileid: "68883550"
 |印度尼西亚|英语|en-ID|
 |意大利|意大利语|it-IT|
 |日本|日语|ja-JP|
-|韩国|韩语|ko-KR|
+|韩国|朝鲜语|ko-KR|
 |马来西亚|英语|en-MY|
 |墨西哥|西班牙语|es-MX|
 |荷兰|荷兰语|nl-NL|
@@ -117,5 +122,5 @@ ms.locfileid: "68883550"
 |台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|美国|英语|zh-CN|
+|美国|英语|en-US|
 |美国|西班牙语|es-US|

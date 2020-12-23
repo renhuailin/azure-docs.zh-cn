@@ -7,18 +7,20 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 12264a79ee5428e98d6cf7d37bef6706295e68dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448380"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310385"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
 Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，它在中心注册表中存储和管理用于 Azure 部署的容器映像。 它基于开源 Docker 注册表 2.0。
 
-若要保护订阅中所有基于 Azure 资源管理器的注册表项，请在订阅级别启用**适用于容器注册表的 Azure Defender**。 然后，安全中心将扫描推送到注册表、导入注册表或在过去 30 天内提取的任何映像。 此功能按映像收费。
+若要保护订阅中所有基于 Azure 资源管理器的注册表项，请在订阅级别启用 **适用于容器注册表的 Azure Defender**。 然后，安全中心将扫描推送到注册表、导入注册表或在过去 30 天内提取的任何映像。 此功能按映像收费。
+
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 有哪些优点？
 
@@ -32,6 +34,12 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 安全中心仅在出现问题时发出通知，这样会降低发送不必要的信息警报的可能性。
 
+
+> [!TIP]
+> 若要详细了解安全中心的容器安全功能，请参阅：
+>
+> - [Azure 安全中心和容器安全性](container-security.md)
+> - [适用于 Kubernetes 的 Azure Defender 简介](defender-for-kubernetes-introduction.md)
 
 ## <a name="when-are-images-scanned"></a>何时扫描映像？
 
@@ -66,19 +74,22 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>是否可以通过 REST API 获取扫描结果？
 是的。 结果位于[子评估 Rest API](/rest/api/securitycenter/subassessments/list/) 下。 此外，还可以对所有资源使用 Azure Resource Graph (ARG)，一个类似于 Kusto 的 API：查询可以提取特定扫描。
- 
+
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>会扫描哪些类型的注册表？ 会对哪些类型计费？
 有关适用于容器注册表的 Azure Defender 支持的容器注册表类型的列表，请参阅[可用性](defender-for-container-registries-usage.md#availability)。
 
 如果将不支持的注册表连接到 Azure 订阅，不会对其进行扫描，也不会收取扫描费。
 
+### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>是否可以自定义漏洞扫描程序中的发现结果？
+是的。 如果组织需要忽略发现结果，而不是修正漏洞，则可以选择禁用发现结果。 禁用发现结果不会影响安全分数，也不会产生有害的噪音。
+
+[了解如何创建规则来禁用集成漏洞评估工具中的发现结果](defender-for-container-registries-usage.md#disable-specific-findings-preview)
+
+### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>有个映像不在我的注册表中，它存在漏洞。为什么安全中心要就这些漏洞向我发送警报？
+安全中心会对在注册表中拉取或推送的每个映像提供漏洞评估。 某些映像可能会重复使用来自已扫描的某个映像的标记。 例如，每次你向摘要添加一张映像时，都可能重新分配名为“最新”的标记。 在这种情况下，“旧”映像仍然在注册表中，可能仍会被其摘要拉取。 如果发现该映像存在安全问题，而它被拉取了，那么就将暴露安全漏洞。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解安全中心的容器安全功能，请参阅：
-
-- [Azure 安全中心和容器安全性](container-security.md)
-
-- [适用于 Kubernetes 的 Azure Defender 简介](defender-for-kubernetes-introduction.md)
-
-
+> [!div class="nextstepaction"]
+> [扫描映像中的漏洞](defender-for-container-registries-usage.md)

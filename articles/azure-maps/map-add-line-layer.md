@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: c1968df19ebc62d47da77b0338d93ceb5f49f2c0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310520"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891153"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>向地图添加线条层
 
@@ -23,7 +23,7 @@ ms.locfileid: "91310520"
 > [!TIP]
 > 默认情况下，线条层将呈现数据源中的多边形和线条的坐标。 若要限制该层以便仅呈现 LineString 特征，请将该层的 `filter` 属性设置为 `['==', ['geometry-type'], 'LineString']` 或 `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]`（如果还想要包含 MultiLineString 特征）。
 
-以下代码演示如何创建线条。 将线条添加到数据源，然后使用 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) 类通过线条层呈现它。
+以下代码演示如何创建线条。 将线条添加到数据源，然后使用 [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) 类通过线条层呈现它。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -88,7 +88,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) 
+> [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) 
 
 > [!div class="nextstepaction"]
 > [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)

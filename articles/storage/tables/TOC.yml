@@ -1,12 +1,12 @@
 - name: Azure 表存储文档
-  href: /azure/storage/tables/
+  href: ./index.yml
 - name: 概述
   expanded: true
   items:
     - name: Azure 表存储概述
       href: table-storage-overview.md
     - name: 选择表存储或表 API
-      href: /azure/cosmos-db/table-support
+      href: ../../cosmos-db/table-support.md
       maintainContext: true
 - name: 快速入门
   items:
@@ -15,31 +15,31 @@
 - name: 示例
   items:
     - name: .NET
-      href: /azure/cosmos-db/table-storage-how-to-use-dotnet
+      href: ../../cosmos-db/tutorial-develop-table-dotnet.md
       maintainContext: true
     - name: F#
-      href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+      href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
       maintainContext: true
     - name: Java
-      href: /azure/cosmos-db/table-storage-how-to-use-java
+      href: ../../cosmos-db/table-storage-how-to-use-java.md
       maintainContext: true
     - name: Node.js
-      href: /azure/cosmos-db/table-storage-how-to-use-nodejs
+      href: ../../cosmos-db/table-storage-how-to-use-nodejs.md
       maintainContext: true
     - name: C++
-      href: /azure/cosmos-db/table-storage-how-to-use-c-plus
+      href: ../../cosmos-db/table-storage-how-to-use-c-plus.md
       maintainContext: true
     - name: PHP
-      href: /azure/cosmos-db/table-storage-how-to-use-php
+      href: ../../cosmos-db/table-storage-how-to-use-php.md
       maintainContext: true
     - name: Python
-      href: /azure/cosmos-db/table-storage-how-to-use-python
+      href: ../../cosmos-db/table-storage-how-to-use-python.md
       maintainContext: true
     - name: Ruby
-      href: /azure/cosmos-db/table-storage-how-to-use-ruby
+      href: ../../cosmos-db/table-storage-how-to-use-ruby.md
       maintainContext: true
     - name: PowerShell
-      href: /azure/storage/tables/table-storage-how-to-use-powershell
+      href: ./table-storage-how-to-use-powershell.md
       maintainContext: true
 - name: 概念
   items:
@@ -89,8 +89,10 @@
       maintainContext: true
     - name: 升级存储帐户
       href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: 恢复删除的存储帐户
+      href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: 使用存储模拟器
-      href: /azure/storage/common/storage-use-emulator?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+      href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
     - name: 保护表数据
       items:
@@ -153,9 +155,9 @@
     - name: 传输数据
       items:
         - name: Windows 上的 AzCopy (v8)
-          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy'
+          href: /previous-versions/azure/storage/storage-use-azcopy
         - name: Linux 上的 AzCopy (v8)
-          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux'
+          href: /previous-versions/azure/storage/storage-use-azcopy-linux
     - name: 疑难解答
       items:
         - name: 延迟问题
@@ -164,10 +166,10 @@
   items:
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: Microsoft Q&A 上的 Azure 存储
-      href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
-    - name: Stack Overflow 上的 Azure 存储
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Microsoft Q&A 上的表存储
+      href: /answers/topics/azure-table-storage.html
+    - name: Stack Overflow 上的表存储
+      href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
     - name: 表存储的定价
       href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
     - name: Azure 定价计算器
@@ -185,5 +187,5 @@
         - name: 存储资源提供程序
           href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: 表存储 REST API
-      href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
+      href: /rest/api/storageservices/table-service-rest-api
       maintainContext: true

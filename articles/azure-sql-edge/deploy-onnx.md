@@ -1,22 +1,22 @@
 ---
-title: 部署并通过 ONNX 进行预测
+title: 使用 ONNX 进行部署并做出预测
 titleSuffix: SQL machine learning
-description: 了解如何定型模型，如何将其转换为 ONNX，将其部署到 Azure SQL Edge 或 Azure SQL 托管实例 (preview) ，然后使用上传的 ONNX 模型对数据运行本机预测。
+description: 了解如何训练模型，将其转换为 ONNX 并部署到 Azure SQL Edge 或 Azure SQL 托管实例（预览版），然后使用上传的 ONNX 模型对数据运行本机 PREDICT。
 keywords: 部署 SQL Edge
 ms.prod: sql
 ms.technology: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 07/14/2020
-ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/13/2020
+ms.openlocfilehash: 6dd7715292470d186806443d0a0b05bdbb084a43
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298899"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392174"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>使用 ONNX 模型进行部署和预测
+# <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>使用 ONNX 模型和 SQL 机器学习部署和预测
 
 在本快速入门中，你将了解如何定型模型，如何将其转换为 ONNX，将其部署到 [AZURE Sql Edge](onnx-overview.md) 或 [azure sql 托管实例 (preview) ](../azure-sql/managed-instance/machine-learning-services-overview.md)，然后使用上传的 ONNX 模型对数据运行本机预测。
 
@@ -24,15 +24,15 @@ ms.locfileid: "91298899"
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 如果你使用的是 Azure SQL Edge，但尚未部署 Azure SQL Edge 模块，请遵循 [使用 Azure 门户部署 SQL edge](deploy-portal.md)的步骤。
+* 如果使用的是 Azure SQL Edge，但尚未部署 Azure SQL Edge 模块，请按照[使用 Azure 门户部署 SQL Edge](deploy-portal.md) 的步骤进行操作。
 
-* 安装 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)。
+* 安装 [Azure Data Studio](/sql/azure-data-studio/download)。
 
-* 安装此快速入门所需的 Python 包：
+* 安装本快速入门所需的 Python 包：
 
-  1. 打开连接到 Python 3 Kernel 的[新笔记本](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks)。 
-  1. 单击 "**管理包**"
-  1. 在 " **已安装** " 选项卡中，在已安装的包列表中查找以下 Python 包。 如果未安装这些包中的任何一个，请选择 " **添加新** " 选项卡，搜索包，然后单击 " **安装**"。
+  1. 打开连接到 Python 3 Kernel 的[新笔记本](/sql/azure-data-studio/sql-notebooks)。 
+  1. 单击“管理包”
+  1. 在“已安装”选项卡中，在已安装包列表中查找以下 Python 包。 如果未安装这些包中的任何一个，请选择“添加新包”选项卡，搜索该包，然后单击“安装” 。
      - **scikit-learn**
      - **numpy**
      - **onnxmltools**
@@ -72,14 +72,14 @@ y_train = pd.DataFrame(df.iloc[:,df.columns.tolist().index(target_column)])
 print("\n*** Training dataset x\n")
 print(x_train.head())
 
-print("\n*** Training dataset y\n")
+print("\n**_ Training dataset y\n")
 print(y_train.head())
 ```
 
-**输出**：
+_ * 输出 * *：
 
 ```text
-*** Training dataset x
+**_ Training dataset x
 
         CRIM    ZN  INDUS  CHAS    NOX     RM   AGE     DIS  RAD    TAX  \
 0  0.00632  18.0   2.31   0.0  0.538  6.575  65.2  4.0900  1.0  296.0
@@ -95,7 +95,7 @@ print(y_train.head())
 3     18.7  394.63   2.94  
 4     18.7  396.90   5.33  
 
-*** Training dataset y
+_*_ Training dataset y
 
 0    24.0
 1    21.6
@@ -137,15 +137,15 @@ from sklearn.metrics import r2_score, mean_squared_error
 y_pred = model.predict(x_train)
 sklearn_r2_score = r2_score(y_train, y_pred)
 sklearn_mse = mean_squared_error(y_train, y_pred)
-print('*** Scikit-learn r2 score: {}'.format(sklearn_r2_score))
-print('*** Scikit-learn MSE: {}'.format(sklearn_mse))
+print('_*_ Scikit-learn r2 score: {}'.format(sklearn_r2_score))
+print('_*_ Scikit-learn MSE: {}'.format(sklearn_mse))
 ```
 
-**输出**：
+_ * 输出 * *：
 
 ```text
-*** Scikit-learn r2 score: 0.7406426641094094
-*** Scikit-learn MSE: 21.894831181729206
+**_ Scikit-learn r2 score: 0.7406426641094094
+_*_ Scikit-learn MSE: 21.894831181729206
 ```
 
 ## <a name="convert-the-model-to-onnx"></a>将模型转换为 ONNX
@@ -177,7 +177,7 @@ def convert_dataframe_schema(df, drop=None, batch_axis=False):
 
 ```python
 # Convert the scikit model to onnx format
-onnx_model = skl2onnx.convert_sklearn(model, 'Boston Data', convert_dataframe_schema(x_train))
+onnx_model = skl2onnx.convert_sklearn(model, 'Boston Data', convert_dataframe_schema(x_train), final_types=[('variable1',FloatTensorType([1,1]))])
 # Save the onnx model locally
 onnx_model_path = 'boston1.model.onnx'
 onnxmltools.utils.save_model(onnx_model, onnx_model_path)
@@ -208,18 +208,18 @@ onnx_r2_score = r2_score(y_train, y_pred)
 onnx_mse = mean_squared_error(y_train, y_pred)
 
 print()
-print('*** Onnx r2 score: {}'.format(onnx_r2_score))
-print('*** Onnx MSE: {}\n'.format(onnx_mse))
+print('_*_ Onnx r2 score: {}'.format(onnx_r2_score))
+print('_*_ Onnx MSE: {}\n'.format(onnx_mse))
 print('R2 Scores are equal' if sklearn_r2_score == onnx_r2_score else 'Difference in R2 scores: {}'.format(abs(sklearn_r2_score - onnx_r2_score)))
 print('MSE are equal' if sklearn_mse == onnx_mse else 'Difference in MSE scores: {}'.format(abs(sklearn_mse - onnx_mse)))
 print()
 ```
 
-**输出**：
+_ * 输出 * *：
 
 ```text
-*** Onnx r2 score: 0.7406426691136831
-*** Onnx MSE: 21.894830759270633
+**_ Onnx r2 score: 0.7406426691136831
+_*_ Onnx MSE: 21.894830759270633
 
 R2 Scores are equal
 MSE are equal
@@ -227,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>插入 ONNX 模型
 
-在数据库的表中的 Azure SQL Edge 或 Azure SQL 托管实例中存储模型 `models` `onnx` 。 在连接字符串中，指定“服务器地址”、“用户名”和“密码”。
+将 Azure SQL Edge 或 Azure SQL 托管实例中的模型存储在 `onnx` 数据库的 `models` 表中。 在 "连接字符串" 中，指定 "服务器地址"、" **用户名** " 和 " **密码** "。
 
 ```python
 import pyodbc
@@ -358,7 +358,7 @@ y_train.to_sql(target_table_name, sql_engine, if_exists='append', index=False)
 
 ## <a name="run-predict-using-the-onnx-model"></a>使用 ONNX 模型运行 PREDICT
 
-使用 SQL 中的模型，使用上传的 ONNX 模型对数据运行本机预测。
+通过 SQL 中的模型，使用上传的 ONNX 模型对数据运行本机 PREDICT。
 
 > [!NOTE]
 > 将笔记本内核更改为 SQL，以运行剩余单元格。

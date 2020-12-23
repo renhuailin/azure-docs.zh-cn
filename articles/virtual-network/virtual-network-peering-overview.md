@@ -1,7 +1,7 @@
 ---
 title: Azure 虚拟网络对等互连
 titlesuffix: Azure Virtual Network
-description: 了解 Azure 中的虚拟网络对等互连，其中包括如何使你能够在 Azure 虚拟网络中连接网络。
+description: 了解 Azure 中的虚拟网络对等互连，包括如何通过它连接 Azure 虚拟网络中的网络。
 services: virtual-network
 documentationcenter: na
 author: altambaw
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
 ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531864"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004970"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 

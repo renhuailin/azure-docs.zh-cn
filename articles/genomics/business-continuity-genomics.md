@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3097041c96f70dda384f0b116bbbc9bc9130be4d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72249181"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395744"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>使用 Microsoft 基因组学实现业务连续性的概述
 本概述介绍 Microsoft 基因组学针对业务连续性和灾难恢复所提供的功能。 了解在发生可能导致数据丢失的中断事件（如 Azure 区域中断）后进行恢复的选项。 
@@ -43,7 +43,7 @@ ms.locfileid: "72249181"
 如果希望在发生数据中心中断的情况下更快地进行恢复，可以采取多种措施来减少将 Microsoft 基因组学工作流重新提交到次要区域所花费的时间：
 
 * 标识相应的次要区域，并在该区域中主动创建基因组学帐户
-* 在主要和次要区域中重复数据，以便数据在次要区域中立即可用。 可以手动或使用 Azure 存储中的[异地冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy)实现此目的。 
+* 在主要和次要区域中重复数据，以便数据在次要区域中立即可用。 可以手动或使用 Azure 存储中的[异地冗余存储](../storage/common/storage-redundancy.md)实现此目的。 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了使用 Microsoft 基因组学服务时实现业务连续性和灾难恢复的选项。 有关 Azure 中业务连续性和灾难恢复的一般详细信息，请参阅 [Azure 复原技术指南](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)。 
+本文介绍了使用 Microsoft 基因组学服务时实现业务连续性和灾难恢复的选项。 有关 Azure 中业务连续性和灾难恢复的一般详细信息，请参阅 [Azure 复原技术指南](/azure/architecture/resiliency/recovery-loss-azure-region)。

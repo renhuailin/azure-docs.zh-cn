@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b8f8403617a5fc8b442e8a3f74ab9226fe1479fe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423076"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588754"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
 
@@ -34,7 +34,7 @@ Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)
 
 对于列出的每个 SDK，Microsoft 将会：
 
-* 在多个流行平台上，针对 GitHub 中的相关 SDK 的主分支持续构建并运行端到端测试。  为了提供覆盖不同编译器版本的测试，我们通常会针对最新的 LTS 版本和最常用的版本进行测试。
+* 在多个常用平台上持续构建并运行针对相关 SDK 的主要分支的端到端测试。  为了提供覆盖不同编译器版本的测试，我们通常会针对最新的 LTS 版本和最常用的版本进行测试。
 
 * 在适用的情况下提供安装指南或安装包。
 
@@ -60,7 +60,7 @@ Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)
 | 操作系统                  | 编译器                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2.7.*、3.5 或更高版本 |
-| MacOS High Sierra   | Python 2.7.*、3.5 或更高版本 |
+| macOS High Sierra   | Python 2.7.*、3.5 或更高版本 |
 | Windows 10 系列   | Python 2.7.*、3.5 或更高版本 |
 
 只有 Python 3.5.3 或更高版本支持异步 API，我们建议使用 3.7 版或更高版本。
@@ -74,7 +74,7 @@ Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 桌面版和 Server SKU   | .NET Core 2.1、.NET Framework 4.5.1 或 .NET Framework 4.7 |
 
-.NET SDK 还可与包含 [Azure 设备代理](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md)或包含[可使用 RPC 来与 UWP 应用程序通信的自定义 NTService](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/) 的 Windows IoT Core 配合使用。
+.NET SDK 还可与包含 [Azure 设备代理](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md)或包含[可使用 RPC 来与 UWP 应用程序通信的自定义 NTService](/samples/microsoft/windows-iotcore-samples/ntservice-rpc/) 的 Windows IoT Core 配合使用。
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
@@ -116,15 +116,15 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 * 若要浏览 Azure IoT 认证的设备，请参阅 [Microsoft Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)。
 
-* 若要了解有关 Azure IoT 认证生态系统的详细信息，请参阅[加入 IoT 认证生态系统](https://catalog.azureiotsolutions.com/register)。
+* 若要了解有关 Azure IoT 认证生态系统的详细信息，请参阅 [加入 IoT 认证生态系统](https://catalog.azureiotsolutions.com/register)。
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>在不使用 SDK 的情况下连接到 IoT 中心
 
-如果你无法使用某个 IoT 中心设备 SDK，可以在能够发送和接收 HTTPS 请求与响应的任何应用程序中使用 [IoT 中心 REST API](https://docs.microsoft.com/rest/api/iothub/) 直接连接到 IoT 中心。
+如果无法使用其中一个 IoT 中心设备 SDK，可以使用受支持的通信协议直接连接到 IoT 中心。 若要了解详细信息，请参阅[在不使用 Azure IoT SDK 的情况下进行开发](iot-hub-devguide-no-sdk.md)。
 
 ## <a name="support-and-other-resources"></a>支持和其他资源
 
-如果你在使用 Azure IoT 设备 Sdk 时遇到问题，可以通过多种方式来查找下面汇总的支持。 有关所有支持选项的完整信息，请参阅[Azure IoT 支持和帮助选项](https://aka.ms/iothelp)。 
+如果在使用 Azure IoT 设备 SDK 时遇到问题，可通过以下总结的多种方式寻求支持。 有关所有支持选项的完整信息，请参阅 [Azure IoT 支持和帮助选项](../iot-fundamentals/iot-support-help.md)。 
 
 **报告 bug** – 可在相关 GitHub 项目的“问题”页上报告设备 SDK 中的 Bug。 修复很快就会从项目实施到产品更新中。
 
@@ -138,9 +138,9 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 * [Azure IoT 中心 Python SDK 问题](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**技术问题**–可以使用标记*azure iot sdk* [&](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)和[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk)上的技术问题。
+**技术问题**–可以使用标记 *azure iot sdk* [&](/answers/topics/azure-iot-sdk.html)和 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk)上的技术问题。
 
-**Microsoft 客户支持团队** – 拥有[支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)创建新的支持请求来与 Microsoft 客户支持团队进行沟通。
+**Microsoft 客户支持团队** – 拥有 [支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)创建新的支持请求来与 Microsoft 客户支持团队进行沟通。
 
 **功能请求** – 我们会通过产品的 [User Voice 页](https://feedback.azure.com/forums/321918-azure-iot)跟踪 Azure IoT 功能请求。
 

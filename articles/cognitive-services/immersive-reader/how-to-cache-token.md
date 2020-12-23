@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.author: metan
+ms.author: metang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 250fe6279288002fad1b6c12b158ffae3d83c264
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd92de3bc5f306cd5ebbcd80b9f1d92af3a9e45d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318851"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633309"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>如何缓存身份验证令牌
 

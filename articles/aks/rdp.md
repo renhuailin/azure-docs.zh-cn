@@ -5,12 +5,12 @@ description: 了解如何与 Azure Kubernetes 服务 (AKS) 群集 Windows Server
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f221a98adb779d32fc5567b201699672c8b90f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82208034"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183271"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>使用 RDP 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点以进行维护或故障排除
 
@@ -20,9 +20,9 @@ ms.locfileid: "82208034"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文假设你已有一个 AKS 群集，其中包含 Windows Server 节点。 如果需要 AKS 群集，请参阅有关[使用 Azure CLI 创建包含 Windows 容器的 AKS 群集][aks-windows-cli]的文章。 你需要用于想要进行故障排除的 Windows Server 节点的 Windows 管理员用户名和密码。 你还需要一个 RDP 客户端，例如 [Microsoft 远程桌面][rdp-mac]。
+本文假设你已有一个 AKS 群集，其中包含 Windows Server 节点。 如果需要 AKS 群集，请参阅有关[使用 Azure CLI 创建包含 Windows 容器的 AKS 群集][aks-windows-cli]的文章。 你需要用于想要进行故障排除的 Windows Server 节点的 Windows 管理员用户名和密码。 如果你不知道它们，则可以通过 [在 WINDOWS VM 中执行重置远程桌面服务或其管理员密码 ](../virtual-machines/troubleshooting/reset-rdp.md)进行重置。 你还需要一个 RDP 客户端，例如 [Microsoft 远程桌面][rdp-mac]。
 
-还需安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>将虚拟机部署到与群集相同的子网
 

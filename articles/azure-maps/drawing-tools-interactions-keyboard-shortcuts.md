@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 429baa4d5dc85476192758e4500f4c1f14610e6d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b609a21348222150faf5fb828f2cc38ca6658f5d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089303"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895811"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>绘图工具模块中的交互类型和键盘快捷方式
 
@@ -131,7 +131,7 @@ ms.locfileid: "90089303"
 **取消绘图**
  - 按 `Escape` 键。
 
-## <a name="keyboard-shortcuts"></a>键盘快捷键
+## <a name="keyboard-shortcuts"></a>键盘快捷方式
 
 绘图工具支持键盘快捷方式。 当地图处于焦点时，这些键盘快捷方式将正常运行。
 
@@ -146,7 +146,7 @@ ms.locfileid: "90089303"
 详细了解 "绘图工具" 模块中的类：
 
 > [!div class="nextstepaction"]
-> [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [绘图管理器](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [绘图工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [绘图工具栏](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

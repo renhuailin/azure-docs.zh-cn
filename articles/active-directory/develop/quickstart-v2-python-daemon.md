@@ -1,6 +1,7 @@
 ---
-title: Microsoft 标识平台 Python 守护程序 | Azure
-description: 了解 Python 进程如何使用应用的自身标识获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
+title: 快速入门：从 Python 守护程序调用 Microsoft Graph | Microsoft
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍 Python 进程如何使用应用的自身标识获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,16 +12,16 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d116e4775d39d3b78c1250714250d64318f9d457
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683736"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995125"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从 Python 控制台应用中调用 Microsoft Graph API
 
-在本快速入门中，首先编写 Python 应用程序，该应用程序使用其标识获取访问令牌，然后调用 Microsoft Graph API，以便在目录中显示[用户列表](/graph/api/user-list)。 此方案适用于无外设且无人参与的作业或 Windows 服务需要使用应用程序标识而非用户标识运行的情况。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Python 应用程序如何使用应用的标识获取访问令牌以调用 Microsoft Graph API 并在目录中显示[用户列表](/graph/api/user-list)。 代码示例演示无人参与的作业或 Windows 服务如何使用应用程序标识而不是用户标识运行。 
 
 > [!div renderon="docs"]
 > ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
@@ -79,7 +80,7 @@ ms.locfileid: "88683736"
 > [!div renderon="docs"]
 > [下载 Python 守护程序项目](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [下载代码示例](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -100,8 +101,8 @@ ms.locfileid: "88683736"
 >    "secret": "Enter_the_Client_Secret_Here"
 >    ```
 >    其中：
->    - `Enter_the_Application_Id_Here` - 是已注册应用程序的**应用程序（客户端）ID**。
->    - `Enter_the_Tenant_Id_Here` - 将此值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+>    - `Enter_the_Application_Id_Here` - 是已注册应用程序的 **应用程序（客户端）ID**。
+>    - `Enter_the_Tenant_Id_Here` - 将此值替换为 **租户 ID** 或 **租户名称**（例如 contoso.microsoft.com）
 >    - `Enter_the_Client_Secret_Here` - 将此值替换为在步骤 1 中创建的客户端机密。
 >
 > > [!TIP]
@@ -135,8 +136,8 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 > [!div renderon="docs"]
 >> 其中：
->> * `Enter_the_Tenant_Id_Here` - 将此值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
->> * `Enter_the_Application_Id_Here` - 是已注册应用程序的**应用程序（客户端）ID**。
+>> * `Enter_the_Tenant_Id_Here` - 将此值替换为 **租户 ID** 或 **租户名称**（例如 contoso.microsoft.com）
+>> * `Enter_the_Application_Id_Here` - 是已注册应用程序的 **应用程序（客户端）ID**。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-4-run-the-application"></a>步骤 4：运行应用程序
@@ -192,7 +193,7 @@ app = msal.ConfidentialClientApplication(
 > | 其中： |说明 |
 > |---------|---------|
 > | `config["secret"]` | 是在 Azure 门户中为应用程序创建的客户端机密。 |
-> | `config["client_id"]` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
+> | `config["client_id"]` | 是在 Azure 门户中注册的应用程序的 **应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
 > | `config["authority"]`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 `https://login.microsoftonline.com/{tenant}`，其中 {tenant} 是租户名称或租户 ID。|
 
 有关详细信息，请参阅 [`ConfidentialClientApplication` 的参考文档](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication)
@@ -224,18 +225,3 @@ if not result:
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)
-
-有关守护程序应用程序教程，请参阅：
-
-> [!div class="nextstepaction"]
-> [守护程序 Python 控制台教程](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-了解有关权限和许可的详细信息：
-
-> [!div class="nextstepaction"]
-> [权限和许可](v2-permissions-and-consent.md)
-
-若要详细了解此方案的身份验证流，请查看 Oauth 2.0 客户端凭据流：
-
-> [!div class="nextstepaction"]
-> [客户端凭据 Oauth 流](v2-oauth2-client-creds-grant-flow.md)

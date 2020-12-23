@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: 98f1ea8a4994515b437841174ae95563ea53ed88
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aa39a1eca04621fc4db75f755402d3679403e814
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933335"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920602"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 
@@ -19,9 +19,12 @@ ms.locfileid: "88933335"
 需要 [Microsoft Azure](https://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 > [!NOTE]
-> *强烈建议*为任何控制台应用程序使用[此处](./worker-service.md)的[applicationinsights.config WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包和相关说明。 此包面向 [`NetStandard2.0`](/dotnet/standard/net-standard) ，因此可在 .Net Core 2.1 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
+> 强烈建议将 [ Microsoft.ApplicationInsights.WorkerService ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 包以及[此处](./worker-service.md)的相关说明用于任何控制台应用程序。 此包针对 [`NetStandard2.0`](/dotnet/standard/net-standard)，因此可在 .NET Core 2.1 或更高版本，以及 .NET Framework 4.7.2 或更高版本中使用。
 
 ## <a name="getting-started"></a>入门
+
+> [!IMPORTANT]
+> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 * 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](./create-new-resource.md)。 对于应用程序类型，选择“常规”。
 * 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。

@@ -2,40 +2,45 @@
 title: 数据集成合作伙伴
 description: 列出了其数据集成解决方案支持 Azure Synapse Analytics 的第三方合作伙伴。
 services: synapse-analytics
-author: mabasile-MSFT
+author: periclesrocha
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/27/2019
-ms.author: mabasile
+ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 272a5dc75ca1ef2a4829eb85f5a57738cb663963
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 779add921b82f4cd39e86864c600f056489e904e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710222"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368575"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 数据集成合作伙伴
 
-有各种行业领先的工具可供选择，帮助你使用 Azure Synapse 的 Synapse SQL 池功能创建数据仓库解决方案。 本文重点介绍其官方数据集成解决方案支持 Azure Synapse 的 Microsoft 合作伙伴公司。
+若要在 Azure Synapse Analytics 中使用专用 SQL 池创建数据仓库解决方案，可以从各种行业领先工具中进行选择。 本文重点介绍其官方数据集成解决方案支持 Azure Synapse 的 Microsoft 合作伙伴公司。
 
 ## <a name="data-integration-partners"></a>数据集成合作伙伴
 
 | 合作伙伴 | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
+| ![Ab Initio](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**Ab Initio**<br> Ab Initio 的敏捷数字工程平台可帮助解决公司计算中最棘手的数据处理和数据管理问题。 使用 Ab Initio 的云本机平台，无论是在 Azure 中还是在本地（包括存储在旧系统上的数据），都可以访问和使用公司生态系统中任何位置的数据。 利用功能强大的自动化、数据质量、数据管理和活动的元数据功能的直观界面的组合，可以实现快速、高效的快速开发和真正的数据服务，使分析人员能够快速高效地完成工作。 使用 Ab Initio 将大数据转换为有意义的数据。 |[产品页面](https://www.abinitio.com/) |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma 是一种提取、转换和加载 (ETL) 解决方案，可让数据团队集成来自各种数据接收器的数据、对其进行丰富并流式传输到 Azure Synapse 数据仓库 - 全部操作均实时完成。 |[产品页面](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[产品页面](https://www.alteryx.com/partners/microsoft/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
 | ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam 提供一种自动化的解决方案，可将数据加载到 Azure Synapse 数据仓库。 通过它，可更轻松地从多个源（SQL Server、Oracle、DB2、Sybase 和 MySQL 等）批量加载和增量复制数据。 |[产品页面](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/attunity_cloudbeam.cloudbeam-dw-byol) <br> |
+| ![CData](./media/sql-data-warehouse-partner-data-integration/cdata-logo.png) |**CData 同步-云数据管道**<br>在数分钟内为 Microsoft Azure Synapse 生成高性能数据管道。 CData "同步" 是一种易于使用的可从任意位置使用的 ETL/ELT 管道，可简化从200多个以上的企业数据源到 Azure Synapse 的数据流。  借助 CData Sync，用户可以轻松地在会计、CRM、ERP、市场营销自动化、本地和云数据之间创建自动连续数据复制。|[产品页面](https://www.cdata.com/sync/to/azuresynapse/?utm_source=azuresynapse&utm_medium=partner)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/cdatasoftware.cdatasync?tab=Overview)<br>|
 | ![Denodo](./media/sql-data-warehouse-partner-data-integration/denodo_logo.png) |**Denodo**<br>Denodo 跨组织的众多数据源提供对数据的实时访问。 它通过数据虚拟化，不用复制就跨多个源将数据桥接在一起。 Denodo 提供对驻留在企业、大数据和云源中的结构化和非结构化数据的广泛访问，同时还包括批处理时间和实时数据。|[产品页面](https://www.denodo.com/en)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0)<br> |
 | ![Dimodelo](./media/sql-data-warehouse-partner-data-integration/dimodelo-logo.png) |**Dimodelo**<br>Dimodelo 数据仓库工作室是适用于 Azure 数据平台的数据仓库自动化工具。 Dimodelo 通过专用的数据仓库建模和 ETL 设计工具、基于模式的最佳做法代码生成、一键式部署和 ETL 业务流程，提高开发人员的工作效率。 Dimodelo 增强了可维护性和更改传播，使开发人员能够关注业务成果，并跨数据平台实现可移植性。|[产品页面](https://www.dimodelo.com/data-warehouse-studio-for-azure-synapse/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/dimodelosolutions.dimodeloazurevs)<br> |
 | ![Fivetran](./media/sql-data-warehouse-partner-data-integration/fivetran_logo.png) |**Fivetran**<br>Fivetran 可帮助你集中管理来自不同来源的数据。 它提供一项零维护、零配置的数据管道产品，还有不断扩增的面向各种常用数据源的内置连接器。 在对数据源和目标数据仓库进行身份验证后，需要用 5 分钟时间进行设置。|[产品页面](https://fivetran.com/)<br> |
+| ![HVR](./media/sql-data-warehouse-partner-data-integration/hvr-logo.png) |**HVR**<br>HVR 提供了支持企业现代化工作的实时云数据复制解决方案。 HVR 平台是一种可靠、安全且可缩放的方式，可在复杂环境中快速有效地集成大数据卷，实现实时数据更新、访问和分析。 各种行业的全球市场领导者都信任 HVR，以解决其实时数据集成挑战并使其业务革新。 HVR 是一种私下持有的公司，位于旧金山，办事处跨北美、欧洲和亚洲。|[产品页面](https://www.hvr-software.com/solutions/azure-data-integration/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/hvr.hvr-for-azure?tab=Overview)<br>|
+| ![Incorta](./media/sql-data-warehouse-partner-data-integration/incorta-logo.png) |**Incorta**<br>Incorta 使组织可以从原始数据中转到在 Azure 中快速发现可操作的见解，方法是自动执行通常需要用于分析复杂数据的各种数据准备步骤。 （. 利用称为直接数据映射和 Incorta 蓝图的专有技术 (预先构建的内容库和从真实客户实现中捕获的最佳实践) ，客户在访问、组织和呈现数据以及深入了解关键业务决策方面获得了前所未有的速度和简易性。|[产品页面](https://www.incorta.com/solutions/microsoft-azure-synapse)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/incorta.incorta?tab=Overview)<br>|
 | ![Informatica](./media/sql-data-warehouse-partner-data-integration/informatica_logo.png) |**1. Informatica Cloud Services for Azure**<br> Informatica Cloud 提供同类最佳的解决方案来实现自助式数据迁移、集成和管理功能。 客户可从各种不同的来源快速可靠地将 PB 量级的数据导入和导出到 Azure。 适用于 Azure 的 Informatica 云服务为 Azure Synapse、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能原生连接。 <br><br> **2. Informatica PowerCenter** PowerCenter 是一个元数据驱动的数据集成平台，可以直接启动和加速数据集成项目，以快于人工编程的速度将数据传送到业务平台。 它用作数据集成投资的基础 |**Informatica Cloud services for Azure**<br>[产品页面](https://www.informatica.com/products/cloud-integration.html)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter)<br><br> **Informatica PowerCenter**<br>[产品页面](https://www.informatica.com/products/data-integration/powercenter.html)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/)<br>|
 | ![Information Builders](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**Information Builders（Omni-Gen 数据管理）**<br>Information Builder 的 Omni-Gen 数据管理平台提供了数据集成、数据质量和主数据管理解决方案。 无论格式、位置、数据量或延迟如何，都能通过它轻松访问、移动和混合各种数据。|[产品页面](https://www.informationbuilders.com/3i-platform)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
+| ![Lyftron](./media/sql-data-warehouse-partner-data-integration/lyftron-logo.png) |**Lyftron**<br>Lyftron 新式数据中心将一个毫不费力的数据中心与数据源的敏捷访问相结合。 Lyftron 利用自动数据管道消除了传统的 ETL/ELT 瓶颈，并使 BI 用户能够立即通过 Azure Synapse、Spark & 雪花的新式云计算来访问数据。 Lyftron 连接器将任何源自动转换为规范化的、可查询的关系格式和复制。 它提供高级的安全、数据管理和转换功能，以及企业数据目录中的搜索功能。| [产品页面](https://lyftron.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/lyftron.lyftronapp?tab=Overview) |
 | ![Matillion](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**Matillion**<br>Matillion 是一款面向云数据仓库的数据转换软件。 只有 Matillion 才是专门为 Azure Synapse 构建的数据转换软件，它使企业能够将简单性、速度、缩放性和成本节省提升到新的水平。 Matillion 产品获得了各种规模的公司的很高评价和信任，可以满足它们的数据集成和转换需求。 详细了解如何使用 Matillion 的基于云的数据转换方法来解锁数据的潜力。| [产品页面](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/matillion.matillion-etl-azure-synapse?tab=Overview) |
-| ![oh22 HEDDA.IO](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**oh22 HEDDA<span></span>.IO**<br>oh22 HEDDA<span></span>.IO 是一款知识驱动型数据质量产品，它专为 Microsoft Azure 构建。 它使您可以生成知识库，并使用它来执行各种关键数据质量任务，包括数据的更正、扩充和标准化。 此外，HEDDA<span></span>.IO 通过使用参考数据提供商提供的或者由你开发和提供的基于云的参考数据服务，让你能够执行数据清理。| [产品页面](https://hedda.io)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/oh22.hedda-io) |
+| ![oh22 HEDDA.IO](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**oh22 HEDDA <span></span>.IO**<br>oh22 HEDDA<span></span>.IO 是一款知识驱动型数据质量产品，它专为 Microsoft Azure 构建。 它使您可以生成知识库，并使用它来执行各种关键数据质量任务，包括数据的更正、扩充和标准化。 此外，HEDDA<span></span>.IO 通过使用参考数据提供商提供的或者由你开发和提供的基于云的参考数据服务，让你能够执行数据清理。| [产品页面](https://github.com/oh22is/HEDDA.IO)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/oh22.hedda-io) |
 | ![出](./media/sql-data-warehouse-partner-data-integration/precisely-logo.png) |**出**<br>精确连接 ETL 允许将数据从多个源传输到 Azure 目标 (ETL) 传输和加载。 连接 ETL 是一种易于配置的工具，无需编码或优化。 ETL 转换可以动态完成，无需昂贵的数据库临时区域或手动推送，使用户能够创建自己的数据混合，并具有一致的持久性能。 从多个源（包括大型机 DB2、VSAM、IMS、Oracle、SQL Server、Teradata）导入旧数据，并将其写入云目标，包括 Azure Databricks、Azure Synapse 分析和 Azure Data Lake Storage。 利用高性能连接 ETL 引擎，你可以获得最佳的性能和一致性。|[产品页面](https://www.precisely.com/solution/microsoft-azure)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/syncsort.dmx) |
 | ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole 提供一个云原生平台，让用户能够执行 ETL、分析和 AI/ML 工作负载。 它支持不同类型的开源引擎，例如 Apache Spark、TensorFlow、Presto、Airflow、Hadoop 和 Hive 等。 它提供易于使用的最终用户工具，用于从 SQL 查询工具、笔记本和使用强大的开源引擎的仪表板进行数据处理。|[产品页面](https://www.qubole.com/company/partners/partners-microsoft-azure/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
 | ![Segment](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**Segment**<br>Segment 是一种数据管理和分析解决方案，可帮助你理解来自各种来源的客户数据。 通过它，你可将数据连接到 200 多种数据，从而创建更好的决策、产品和体验。 Segment 将多个数据源转换并加载到仓库中，让你能够使用它的内置数据连接器|[产品页面](https://segment.com/)<br> |
@@ -43,9 +48,10 @@ ms.locfileid: "91710222"
 | ![SnapLogic](./media/sql-data-warehouse-partner-data-integration/snaplogic_logo.png) |**SnapLogic**<br>SnapLogic 平台让客户能够快速将数据传输到 Azure Synapse 数据仓库并从中快速传输数据。 通过它，可在一个解决方案中集成数百个应用程序、服务和 IoT 方案。|[产品页面](https://www.snaplogic.com/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/snaplogic.snaplogic-elastic-integration-windows)<br> |
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>StreamSets 为 DataOps 提供了一个数据集成平台。 它实施完整的设计-部署-操作生命周期，将数据集成到 Azure Synapse 数据仓库。 你可通过流式传输、批处理或已更改数据的捕获数据传输方法，将数据快速引入和集成到仓库中并从中快速提取数据。 此外，还可使用智能数据管道确保持续操作，这些管道提供端到端数据流可见性和复原能力。|[产品页面](https://streamsets.com/partners/microsoft)|
 | ![Talend](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Talend Cloud**<br>Talend Cloud 是一个企业数据集成平台，可用于连接、访问和转换跨云或本地的任何数据。 它是一个集成平台即服务 (iPaaS)，提供广泛的连接、内置数据质量，且原生支持最新的大数据和云技术。 |[产品页面](https://www.talend.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
-| ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>TimeXtender Discovery Hub 提供一个集成的数据管理平台，将获取数据见解的时间缩短多达 10 倍，帮助公司构建新式数据空间。 除每日 ETL 和 ELT 以外，它还提供在单个平台中进行数据访问、数据建模和符合性的功能。 Discovery Hub 为云规模的分析提供了统一数据结构，让你能够连接和集成各种数据接收器、目录、模型、移动项和文档数据来实现分析和 AI。 | [产品页面](https://www.timextender.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
+| ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>TimeXtender Discovery Hub 提供一个集成的数据管理平台，将获取数据见解的时间缩短多达 10 倍，帮助公司构建新式数据空间。 除每日 ETL 和 ELT 以外，它还提供在单个平台中进行数据访问、数据建模和符合性的功能。 发现中心为云规模分析提供了一个统一的数据结构。 它允许连接和集成各种数据接收器、目录、模型、移动和文档数据以便进行分析和 AI。 | [产品页面](https://www.timextender.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta 可帮助个人和组织探索各种数据并将它们结合起来进行分析。 Trifacta Wrangler 旨在处理需要支持大规模数据和大量最终用户的数据整理工作负载。|[产品页面](https://www.trifacta.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape RED**<br> WhereScape RED 是一个 IDE，它向团队提供自动化工具来简化 ETL 工作流。 IDE 提供了最佳做法，针对常用数据目录优化了原生代码。 WhereScape RED 有助于更快开发、部署和操作数据基础结构。|[产品页面](https://www.wherescape.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
+| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> 借助 Xplenty ETL 和 ELT 平台，你可以使用简单的数据集成云服务快速轻松地准备数据以供分析和生产用例。 Xplenty 点 & 单击，拖 & drop 接口可实现数据集成、处理和准备，无需安装、部署或维护任何软件。 连接并与一组广泛的数据存储库和 SaaS 应用程序（包括 Azure Synapse、Azure blob 存储、Azure 和本地 MSSQL）集成。 Xplenty 还支持可通过 Rest API 访问的所有 Web 服务。|[产品页面](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
 
 
 ## <a name="next-steps"></a>后续步骤

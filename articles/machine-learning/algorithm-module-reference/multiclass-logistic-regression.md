@@ -1,7 +1,7 @@
 ---
 title: 多类逻辑回归：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“多类逻辑回归”模块创建可用于预测多个值的逻辑回归模型。
+description: 了解如何使用 Azure 机器学习设计器中的 "多类逻辑回归" 模块来预测多个值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 247a0bef8e166c72f185f2d384067fc5814a602e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e2bbc28735bcbfd952c4941453956acd0568ea67
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893735"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420727"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多类逻辑回归模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块创建可用于预测多个值的逻辑回归模型。
 
@@ -38,13 +38,13 @@ Azure 机器学习还提供了[两类逻辑回归](./two-class-logistic-regressi
 
 2. 通过设置“创建训练程序模式”选项，指定所希望的模型训练方式。
 
-    + **单个参数**：如果知道自己想要如何配置模型，请使用此选项并提供一组特定的值作为参数。
+    + **单个参数** ：如果知道自己想要如何配置模型，请使用此选项并提供一组特定的值作为参数。
 
-    + **参数范围**：如果无法确定最佳参数并想要运行参数扫描，请选择此选项。 选择要循环访问的值范围，[优化模型超参数](tune-model-hyperparameters.md)模块将循环访问所提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
+    + **参数范围** ：如果无法确定最佳参数并想要运行参数扫描，请选择此选项。 选择要循环访问的值范围，[优化模型超参数](tune-model-hyperparameters.md)模块将循环访问所提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
 
 3. 优化容差，指定优化器收敛的阈值。 如果迭代间的改进小于阈值，则算法将停止并返回当前模型。
 
-4. **L1 正则化权重**，**L2 正则化权重**：键入要用于正则化参数 L1 和 L2 的值。 对于这两个值，建议使用非零值。
+4. **L1 正则化权重** ， **L2 正则化权重** ：键入要用于正则化参数 L1 和 L2 的值。 对于这两个值，建议使用非零值。
 
     正则化是一种通过处罚具有极端系数值的模型来防止过度拟合的方法。 正则化的工作原理是将与系数值相关联的处罚添加到假设的错误。 具有极端系数值的准确模型受到的处罚相较而言更大，而值更保守的不准确的模型受到的处罚相较而言更小。
 
@@ -52,7 +52,7 @@ Azure 机器学习还提供了[两类逻辑回归](./two-class-logistic-regressi
 
      已为逻辑回归模型设计了 L1 和 L2 术语的不同线性组合，例如[弹性网络正则化](https://wikipedia.org/wiki/Elastic_net_regularization)。
 
-6. **随机数种子**：如果希望结果在运行期间是可重复的，请键入一个整数值作为算法的种子。 否则，将使用系统时钟值作为种子，这可能会在同一管道的运行中产生略微不同的结果。
+6. **随机数种子** ：如果希望结果在运行期间是可重复的，请键入一个整数值作为算法的种子。 否则，将使用系统时钟值作为种子，这可能会在同一管道的运行中产生略微不同的结果。
 
 8. 连接标记的数据集，并训练模型：
 

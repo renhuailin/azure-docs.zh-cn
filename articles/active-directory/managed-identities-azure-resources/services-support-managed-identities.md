@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: e875eda2a59841d3238a13389768c6fa37cef774
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 2da0407f848b0795414b071b9e082c7ed60a633d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843169"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861878"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -41,6 +41,16 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - [Azure Resource Manager 模板](../../api-management/api-management-howto-use-managed-service-identity.md)
 
+### <a name="azure-app-configuration"></a>Azure 应用配置
+
+| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | :-: | :-: | :-: | :-: |
+| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
+| 用户分配 | ![可用][check] | ![可用][check]  | 不可用  | ![可用][check] |
+
+请参阅以下列表，为可用) 的区域中的 Azure 应用配置 (配置托管标识：
+
+- [Azure CLI](../../azure-app-configuration/overview-managed-identity.md)
 
 ### <a name="azure-app-service"></a>Azure 应用服务
 
@@ -60,10 +70,20 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | 预览 | 不可用 | 不可用 | 不可用 | 
+| 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 启用 Azure Arc 的 Kubernetes 目前 [支持系统分配的标识](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes)。 所有启用了 Azure Arc 的 Kubernetes 代理使用托管服务标识证书来与 Azure 通信。
+
+### <a name="azure-automanage"></a>Azure 自动管理
+
+| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | :-: | :-: | :-: | :-: |
+| 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
+
+如果已将订阅移到新租户，请参阅以下文档来重新配置托管标识：
+* [修复损坏的 Automanage 帐户](../../automanage/repair-automanage-account.md)
 
 ### <a name="azure-blueprints"></a>Azure 蓝图
 
@@ -141,7 +161,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 
 
-### <a name="azure-event-grid"></a>Azure 事件网格 
+### <a name="azure-event-grid"></a>Azure 事件网格
 
 托管标识类型 |所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
@@ -192,8 +212,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] | 
-| 用户分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
+| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | 不可用 |
+| 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
 
 
 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识](../../aks/use-managed-identity.md)。
@@ -212,6 +232,14 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager 模板](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
+### <a name="azure-machine-learning"></a>Azure 机器学习
+
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | :-: | :-: | :-: | :-: |
+| 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
+
+有关详细信息，请参阅[将托管标识与 Azure 机器学习配合使用](../../machine-learning/how-to-use-managed-identities.md)。
 
 ### <a name="azure-policy"></a>Azure Policy
 
@@ -224,7 +252,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - [Azure 门户](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure CLI](/cli/azure/policy/assignment#az-policy-assignment-create)
 - [Azure Resource Manager 模板](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
@@ -246,7 +274,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | 不可用 | 不可用 | 不可用 | 
+| 系统分配 | ![可用][check] | 不可用 | 不可用 | ![可用][check] |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 
@@ -256,15 +284,15 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
-| 系统分配 | 在可用 Azure Stack Edge 服务的区域内可用 | 不可用 | 不可用 | 不可用 |
+| 系统分配 | 在提供 Azure Stack Edge 服务的区域中可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集
 
 |托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | 预览 | 预览 | 预览 |
-| 用户分配 | ![可用][check] | 预览 | 预览 | 预览 |
+| 系统分配 | ![可用][check] | ![可用][check] | 预览 | ![可用][check] |
+| 用户分配 | ![可用][check] | ![可用][check] | 预览 | ![可用][check] |
 
 请参阅以下列表来配置 Azure 虚拟机规模集的托管标识（在可用的区域中）：
 
@@ -280,8 +308,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | ![可用][check] | 预览 | 预览 | 
-| 用户分配 | ![可用][check] | ![可用][check] | 预览 | 预览 |
+| 系统分配 | ![可用][check] | ![可用][check] | 预览 | ![可用][check] |
+| 用户分配 | ![可用][check] | ![可用][check] | 预览 | ![可用][check] |
 
 请参阅以下列表来配置 Azure 虚拟机的托管标识（在可用的区域中）：
 
@@ -297,7 +325,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | 不可用 | 不可用 | 不可用 | 不可用 | 
+| 系统分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | [在支持的区域中可用](../../virtual-machines/windows/image-builder-overview.md#regions) | 不可用 | 不可用 | 不可用 |
 
 若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅 [映像生成器概述](../../virtual-machines/windows/image-builder-overview.md#permissions)。

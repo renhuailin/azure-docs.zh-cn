@@ -11,21 +11,23 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 59fa68d12f1d8be598810399fc5623c2af983979
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289066"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462259"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>在 Synapse SQL 中使用查询标签
+
 本文中包含的是有关在 Synapse SQL 中使用查询标签的基本技巧。
 
 > [!NOTE]
-> SQL 点播 (预览) 不支持标签查询。
+> 无服务器 SQL 池不支持标签查询。
 
 ## <a name="what-are-query-labels"></a>什么是查询标签
-SQL 池支持称为“查询标签”的概念。 在继续之前，让我们看一个示例：
+
+专用 SQL 池支持称为查询标签的概念。 在继续之前，让我们看一个示例：
 
 ```sql
 SELECT *

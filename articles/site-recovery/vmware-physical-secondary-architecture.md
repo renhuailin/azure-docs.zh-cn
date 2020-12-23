@@ -1,5 +1,5 @@
 ---
-title: 体系结构-VMware/物理灾难恢复到具有 Azure Site Recovery 的辅助站点
+title: 使用 Azure Site Recovery 将 Architecture-VMware/物理灾难恢复到辅助站点
 description: 本文概述使用 Azure Site Recovery 将本地 VMware VM 或物理 Windows/Linux 服务器灾难恢复到辅助 VMware 站点时使用的组件和体系结构。
 author: rayne-wiselman
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d400e6bcda0a2114d798a3289f01f52b677a6f94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496961"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656489"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>将 VMware/物理服务器复制到辅助本地站点的体系结构
 
@@ -33,7 +33,7 @@ ms.locfileid: "87496961"
 
 ## <a name="set-up-outbound-network-connectivity"></a>设置出站网络连接
 
-要使 Site Recovery 按预期运行，你需要修改出站网络连接，以允许你的环境进行复制。
+若要使 Site Recovery 按预期工作，需修改出站网络连接以允许环境复制。
 
 > [!NOTE]
 > Site Recovery 不支持使用身份验证代理来控制网络连接。
@@ -42,9 +42,9 @@ ms.locfileid: "87496961"
 
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许访问以下 URL：
 
-| **Name**                  | **商用**                               | **Government**                                 | **说明** |
+| **名称**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允许 VM 与 Site Recovery 服务进行通信。 |
 | 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
@@ -55,7 +55,7 @@ ms.locfileid: "87496961"
 2. 在初始复制之后，每台计算机上的代理会将增量复制更改发送到进程服务器。
 3. 进程服务器将优化这些数据，并将其传输到辅助站点上的主目标服务器。 配置服务器将管理复制进程。
 
-![显示将 VMware Vm 和物理服务器复制到辅助数据中心的图示](./media/site-recovery-components/vmware-to-vmware.png)
+![此图显示将 VMware VM 和物理服务器复制到辅助数据中心的情况](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 

@@ -3,12 +3,12 @@ title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
 description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: acd741101928f5a2dfd72eab1598af6e4556a3d1
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894526"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022127"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
@@ -36,22 +36,28 @@ ms.locfileid: "90894526"
  [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
 
 ### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 服务总线将客户数据存储在何处？
-Azure 服务总线存储客户数据。 服务总线会自动将此数据存储在单个区域中，因此，此服务会自动满足区域数据派驻要求，其中包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)中指定的要求。
+Azure 服务总线存储客户数据。 服务总线会自动将此数据存储在单个区域中，因此此服务会自动满足区域内数据驻留要求，包括[信任中心](https://azuredatacentermap.azurewebsites.net/)内指定的要求。
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
 可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
 
-- 高级消息队列协议 (AMQP)
-- 服务总线消息传送协议 (SBMP)
-- HTTP
+- 高级消息队列协议 1.0 (AMQP)
+- 具有 TLS 的超文本传输协议 1.1 (HTTPS)
 
-请查看下表，了解需要打开哪些出站端口，以便使用这些协议与 Azure 事件中心通信。 
+请查看下表，了解需要打开哪些出站 TCP 端口，以便使用这些协议与 Azure 服务总线通信：
 
-| 协议 | 端口 | 详细信息 | 
+| 协议 | Port | 详细信息 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 到 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
-| HTTP、HTTPS | 80、443 | 
+| AMQP | 5671 | 具有 TLS 的 AMQP。 请参阅 [AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
+| HTTPS | 443 | 此端口用于 HTTP/REST API 和 AMQP-over-WebSockets |
+
+在 AMQP 通过端口 5671 使用时，通常还需要使用 HTTPS 端口进行出站通信，因为客户端 SDK 执行的一些管理操作和从 Azure Active Directory（使用时）获取令牌的操作都是通过 HTTPS 运行的。 
+
+正式的 Azure SDK 通常使用 AMQP 协议通过服务总线发送和接收消息。 
+
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
+.NET Framework 的较旧 WindowsAzure.ServiceBus 包可选择使用旧的“服务总线消息传送协议”(SBMP)，也称为“NetMessaging”。 此协议使用 TCP 端口 9350-9354。 此包的默认模式用于自动检测这些端口是否可用于通信，如果不可用，将通过端口 443 切换到具有 TLS 的 WebSockets。 可以通过在 [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) 设置上设置 `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) 来替代此设置并强制执行此模式，这将全局应用于应用程序。
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>需要将哪些 IP 地址添加到允许列表？
 若要查找要添加到允许列表以进行连接的正确 IP 地址，请执行以下步骤：
@@ -63,7 +69,7 @@ Azure 服务总线存储客户数据。 服务总线会自动将此数据存储�
     ```
 2. 记下 `Non-authoritative answer` 中返回的 IP 地址。 
 
-如果对命名空间使用 **区域冗余** ，则需要执行一些附加步骤： 
+如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
 
 1. 首先，在命名空间中运行 nslookup。
 
@@ -80,10 +86,10 @@ Azure 服务总线存储客户数据。 服务总线会自动将此数据存储�
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
     > [!NOTE]
-    > 命令返回的 IP 地址 `nslookup` 不是静态 ip 地址。 但是，在将基础部署删除或移动到其他群集之前，它将保持不变。
+    > `nslookup` 命令返回的 IP 地址不是静态 IP 地址。 但是，在删除基础部署或将其移至其他群集之前，该地址保持不变。
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>我可以在哪里找到客户端向命名空间发送/从中接收消息的 IP 地址？ 
-我们不记录客户端向命名空间发送或从中接收消息的 IP 地址。 重新生成密钥，以便所有现有的客户端将无法进行身份验证并查看基于角色的访问控制 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) 设置，以确保仅允许的用户或应用程序可以访问该命名空间。 
+我们不记录客户端向命名空间发送或从中接收消息的 IP 地址。 重新生成密钥，以便所有现有的客户端将无法进行身份验证并查看 [Azure 基于角色的访问控制 (Azure RBAC)](authenticate-application.md#azure-built-in-roles-for-azure-service-bus) 设置，以确保仅允许的用户或应用程序可以访问该命名空间。 
 
 如果使用的是高级命名空间，请使用 [IP 筛选](service-bus-ip-filtering.md)、[虚拟网络服务终结点](service-bus-service-endpoints.md)和[专用终结点](private-link-service.md)来限制对命名空间的访问。 
 

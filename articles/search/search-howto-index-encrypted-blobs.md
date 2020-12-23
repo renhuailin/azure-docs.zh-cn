@@ -8,22 +8,21 @@ ms.author: chalton
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 11/02/2020
+ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542872"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530929"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>如何在认知搜索 Azure 中使用 blob 索引器和技能集为加密的 blob 编制索引
 
-本文介绍如何使用[azure 认知搜索](search-what-is-azure-search.md)对以前使用[Azure Key Vault](../key-vault/general/overview.md)在[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中加密的文档编制索引。 通常，索引器无法从加密的文件中提取内容，因为它不具有对加密密钥的访问权限。 但是，通过利用[DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)后面的[DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile)自定义技能，你可以提供对密钥的受控访问权限，以对文件进行解密，然后将内容从中提取内容。 这样就可以解除对这些文档进行索引的功能，而不必担心数据是以不加密的形式存储的。
+本文介绍如何使用[azure 认知搜索](search-what-is-azure-search.md)对以前使用[Azure Key Vault](../key-vault/general/overview.md)在[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中加密的文档编制索引。 通常，索引器无法从加密的文件中提取内容，因为它不具有对加密密钥的访问权限。 但是，通过利用[DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)后面的[DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile)自定义技能，你可以提供对密钥的受控访问权限，以对文件进行解密，然后将内容从中提取内容。 这将解除对这些文档进行索引的功能，而不会影响存储文档的加密状态。
 
-本指南使用 Postman 和搜索 REST Api 来执行以下任务：
+从以前加密的整篇文档开始， (非结构化文本) 例如，Azure Blob 存储中的 PDF、HTML、.DOCX 和 .PPTX），本指南使用 Postman 和搜索 REST Api 来执行以下任务：
 
 > [!div class="checklist"]
-> * 从整个文档开始， (非结构化文本) 例如，Azure Blob 存储中的 PDF、HTML、.DOCX 和 .PPTX，已使用 Azure Key Vault 进行了加密。
 > * 定义一个管道，用于解密文档并从中提取文本。
 > * 定义用于存储输出的索引。
 > * 执行该管道以创建并加载索引。
@@ -36,13 +35,10 @@ ms.locfileid: "91542872"
 此示例假设你已将文件上传到 Azure Blob 存储，并在此过程中对它们进行了加密。 如果你需要帮助来初步上传和加密文件，请查看 [本教程](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) ，了解如何执行此操作。
 
 + [Azure 存储](https://azure.microsoft.com/services/storage/)
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 与 Azure 认知搜索在同一订阅中。 密钥保管库必须启用“软删除”和“清除保护”。 
++ 在任何区域中， [Azure 认知搜索](search-create-service-portal.md) (Basic 或更高[级别](search-sku-tier.md#tier-descriptions)) 
 + [Azure Function](https://azure.microsoft.com/services/functions/)
 + [Postman 桌面应用](https://www.getpostman.com/)
-+ [创建](search-create-service-portal.md)或[查找现有搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
-
-> [!Note]
-> 你可以使用本指南的免费服务。 免费搜索服务限制了三个索引、三个索引器、三个数据源和三个技能集。 本指南将分别创建一个。 在开始之前，请确保服务中有足够的空间可接受新资源。
 
 ## <a name="1---create-services-and-collect-credentials"></a>1-创建服务并收集凭据
 
@@ -108,7 +104,7 @@ AI 扩充和技能组合执行由认知服务提供支持，其中包括用于�
 
 2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-   ![获取服务名称以及管理密钥和查询密钥](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![获取服务名称以及管理密钥和查询密钥](media/search-get-started-javascript/service-name-and-keys.png)
 
 所有请求要求在发送到服务的每个请求的标头中指定 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -132,24 +128,23 @@ AI 扩充和技能组合执行由认知服务提供支持，其中包括用于�
 
 ![Postman 应用变量选项卡](media/indexing-encrypted-blob-files/postman-variables-window.jpg "Postman 的变量窗口")
 
-
 | 变量    | 从何处获取 |
 |-------------|-----------------|
 | `admin-key` | 在 Azure 认知搜索服务的“密钥”页上。  |
-| `search-service-name` | Azure 认知搜索服务的名称。 该 URL 为 `https://{{search-service-name}}.search.windows.net`。 | 
-| `storage-connection-string` | 在存储帐户中的“访问密钥”选项卡上，选择“密钥 1” > “连接字符串”。 | 
-| `storage-container-name` | 包含要编制索引的加密文件的 blob 容器的名称。 | 
-| `function-uri` |  在主页上的 " **Essentials** " 下的 Azure 函数中。 | 
-| `function-code` | 在 Azure 函数中，导航到 " **应用程序密钥**"，单击 "显示 **默认** 密钥"，然后复制值。 | 
+| `search-service-name` | Azure 认知搜索服务的名称。 该 URL 为 `https://{{search-service-name}}.search.windows.net`。 |
+| `storage-connection-string` | 在存储帐户中的“访问密钥”选项卡上，选择“密钥 1” > “连接字符串”。 |
+| `storage-container-name` | 包含要编制索引的加密文件的 blob 容器的名称。 |
+| `function-uri` |  在主页上的 " **Essentials** " 下的 Azure 函数中。 |
+| `function-code` | 在 Azure 函数中，导航到 " **应用程序密钥**"，单击 "显示 **默认** 密钥"，然后复制值。 |
 | `api-version` | 保留为“2020-06-30”。 |
-| `datasource-name` | 保留为 **加密 blob-ds**。 | 
-| `index-name` | 保留为 **加密 blob-idx**。 | 
-| `skillset-name` | 保留为 **加密 blob-ss**。 | 
-| `indexer-name` | 保留为 **加密 blob-ixr**。 | 
+| `datasource-name` | 保留为 **加密 blob-ds**。 |
+| `index-name` | 保留为 **加密 blob-idx**。 |
+| `skillset-name` | 保留为 **加密 blob-ss**。 |
+| `indexer-name` | 保留为 **加密 blob-ixr**。 |
 
 ### <a name="review-the-request-collection-in-postman"></a>查看 Postman 中的请求集合
 
-运行本指南时，必须发出四个 HTTP 请求： 
+运行本指南时，必须发出四个 HTTP 请求：
 
 - **创建索引的 PUT 请求**：此索引保存 Azure 认知搜索使用和返回的数据。
 - **POST 请求以创建数据源**：此数据源会将 Azure 认知搜索服务连接到你的存储帐户，从而将加密的 blob 文件连接起来。 

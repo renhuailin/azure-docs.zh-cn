@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 93a3adf00203e317be912e3e72de7a3f7ca666c6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918785"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001078"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用适用于 C# 的语音 SDK 从语音中识别意向
 
-认知服务[语音 SDK](speech-sdk.md) 与[语言理解服务 (LUIS)](https://www.luis.ai/home) 相集成，以提供**意向识别**。 意向是用户想要做的某件事：预订航班、查看天气预报或拨打电话。 用户可以使用任何普通字词。 LUIS 使用机器学习将用户请求映射到定义的意向。
+认知服务 [语音 SDK](speech-sdk.md) 与 [语言理解服务 (LUIS)](https://www.luis.ai/home) 相集成，以提供 **意向识别**。 意向是用户想要做的某件事：预订航班、查看天气预报或拨打电话。 用户可以使用任何普通字词。 LUIS 使用机器学习将用户请求映射到定义的意向。
 
 > [!NOTE]
 > LUIS 应用程序定义所要识别的意向和实体。 它与使用语音服务的 C# 应用程序不同。 在本文中，“应用”是指 LUIS 应用，“应用程序”是指 C# 代码。
@@ -55,7 +55,7 @@ LUIS 使用三种密钥：
 | 初学者   | 仅允许使用纯文本测试 LUIS 应用程序   |
 | 端点  | 授权访问特定的 LUIS 应用            |
 
-对于本指南，需要使用终结点密钥类型。 本指南使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
+对于本指南，需要使用终结点密钥类型。 本指南使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](../luis/luis-get-started-create-app.md)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
 
 当你创建 LUIS 应用时，LUIS 会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥不会启用语音服务集成，因此不适用于本指南。 在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 在本指南中，可以使用免费订阅层。
 
@@ -201,4 +201,4 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [快速入门：识别来自麦克风的语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [快速入门：识别来自麦克风的语音](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)

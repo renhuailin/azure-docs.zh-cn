@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998526"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>创建“Azure 远程渲染”帐户
 
@@ -101,7 +101,7 @@ ms.locfileid: "91318086"
 
 如果你已添加全部三个角色，则 Azure 远程渲染帐户可以使用系统分配的托管服务标识访问你的存储帐户。
 > [!IMPORTANT]
-> Azure 角色分配由 Azure 存储缓存，因此，在你授予远程呈现帐户的访问权限以及可用于访问你的存储帐户时，可能会有最多30分钟的延迟。 有关详细信息，请参阅 [角色基本访问控制文档](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) 。
+> Azure 角色分配由 Azure 存储缓存，因此，在你授予远程呈现帐户的访问权限以及可用于访问你的存储帐户时，可能会有最多30分钟的延迟。 有关详细信息，请参阅 azure [RBAC) 文档 (azure 基于角色的访问控制](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) 。
 
 ## <a name="next-steps"></a>后续步骤
 

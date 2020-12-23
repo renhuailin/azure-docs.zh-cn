@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801318"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296533"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 通过提供预配的吞吐量模型，Azure Cosmos DB 可在任何规模下提供可预测的性能。 预留或提前预配吞吐量消除了对性能造成的“干扰性邻居影响”。 只需指定所需的确切吞吐量，然后，Azure Cosmos DB 就能确保配置的吞吐量，并以 SLA 作为保障。
 
@@ -26,7 +27,7 @@ ms.locfileid: "91801318"
 
 * 如果针对某个数据库预配吞吐量，该数据库中的所有容器（例如集合/表/图形）可以基于负载共享该吞吐量。 在数据库级别预留的吞吐量将会根据特定容器集上的工作负荷以不均匀的方式进行共享。
 
-* 如果针对某个容器预配吞吐量，则可以保证该容器的吞吐量，并提供 SLA 保障。 所选的逻辑分区键对于在容器的所有逻辑分区之间均匀分配负载至关重要。 有关更多详细信息，请参阅[分区](partitioning-overview.md)和[水平缩放](partition-data.md)文章。
+* 如果针对某个容器预配吞吐量，则可以保证该容器的吞吐量，并提供 SLA 保障。 所选的逻辑分区键对于在容器的所有逻辑分区之间均匀分配负载至关重要。 有关更多详细信息，请参阅[分区](partitioning-overview.md)和[水平缩放](partitioning-overview.md)文章。
 
 下面是确定预配吞吐量策略时可以参考的一些指导原则：
 
@@ -54,7 +55,7 @@ ms.locfileid: "91801318"
 
 如下表中所示，根据所选的 API，可以不同的粒度预配吞吐量。
 
-|API|对于**共享**吞吐量，请配置 |对于**专用**吞吐量，请配置 |
+|API|对于 **共享** 吞吐量，请配置 |对于 **专用** 吞吐量，请配置 |
 |----|----|----|
 |SQL API|数据库|容器|
 |Azure Cosmos DB 的用于 MongoDB 的 API|数据库|集合|
@@ -80,7 +81,7 @@ HTTP Status 429,
 
 如果累计有多个客户端一贯在超过请求速率的情况下运行，则当前设置为 9 的默认重试计数可能并不足够。 在这种情况下，客户端会向应用程序引发 `RequestRateTooLargeException` 并返回状态代码 429。 可以通过在 ConnectionPolicy 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后返回状态代码为 429 的 `RequestRateTooLargeException`。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) 设置为 3，因此在这种情况下，如果请求操作因超出容器的保留吞吐量而受到速率限制，则请求操作会重试三次，然后再向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 设置为 60，因此在这种情况下，如果自第一次请求以来的累积重试等待时间（以秒为单位）超过 60 秒，则会引发异常。
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) 设置为 3，因此在这种情况下，如果请求操作因超出容器的保留吞吐量而受到速率限制，则请求操作会重试三次，然后再向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 设置为 60，因此在这种情况下，如果自第一次请求以来的累积重试等待时间（以秒为单位）超过 60 秒，则会引发异常。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -112,7 +113,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="optimize-by-changing-indexing-policy"></a>通过更改索引策略进行优化 
 
-默认情况下，Azure Cosmos DB 自动为每条记录的每个属性编制索引。 这是为了简化开发，并确保跨许多不同类型的即席查询具有优异的性能。 如果你的大型记录包含数千个属性，购买吞吐量来为每个属性编制索引的做法可能并不有效，尤其是只针对其中的 10 个或 20 个属性运行查询时。 在接近于能够控制特定的工作负荷时，我们的指导原则是优化索引策略。 在[此处](indexing-policies.md)可以找到有关 Azure Cosmos DB 索引策略的完整详细信息。 
+默认情况下，Azure Cosmos DB 自动为每条记录的每个属性编制索引。 这是为了简化开发，并确保跨许多不同类型的即席查询具有优异的性能。 如果你的大型记录包含数千个属性，购买吞吐量来为每个属性编制索引的做法可能并不有效，尤其是只针对其中的 10 个或 20 个属性运行查询时。 在接近于能够控制特定的工作负荷时，我们的指导原则是优化索引策略。 在[此处](index-policy.md)可以找到有关 Azure Cosmos DB 索引策略的完整详细信息。 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>监视预配的吞吐量和消耗的吞吐量 
 
@@ -136,7 +137,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 若要确定新工作负荷的预配吞吐量，可使用以下步骤： 
 
-1. 使用容量规划器执行初始的粗略评估，并借助 Azure 门户中的 Azure Cosmos Explorer 调整估算值。 
+1. 使用容量规划器执行初始、粗略的评估，并使用 Azure 门户中 Azure Cosmos DB 资源管理器的帮助调整估计值。 
 
 2. 建议使用超过预期的吞吐量创建容器，然后根据需要进行缩减。 
 
@@ -156,7 +157,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 1. 如果容器和数据库明显超过预配的吞吐量，应该检查预配的 RU 和消耗的 RU，并微调工作负荷。  
 
-2. 有一种方法可以估算应用程序所需的预留吞吐量：在针对应用程序所用的代表性 Azure Cosmos 容器或数据库运行典型操作时，记录与之相关的请求单位 (RU) 费用，然后估算预计每秒会执行的操作数目。 同时请务必测量并包含典型查询及其用量。 若要了解如何以编程方式或使用门户估算查询的 RU 成本，请参阅[优化查询成本](optimize-cost-queries.md)。 
+2. 有一种方法可以估算应用程序所需的预留吞吐量：在针对应用程序所用的代表性 Azure Cosmos 容器或数据库运行典型操作时，记录与之相关的请求单位 (RU) 费用，然后估算预计每秒会执行的操作数目。 同时请务必测量并包含典型查询及其用量。 若要了解如何以编程方式或使用门户估算查询的 RU 成本，请参阅[优化查询成本](./optimize-cost-reads-writes.md)。 
 
 3. 获取操作及其 RU 成本的另一种方法是启用 Azure Monitor 日志，它会提供操作/持续时间的细目以及请求费用。 Azure Cosmos DB 提供每个操作的请求费用，因此，可以存储响应中的每笔操作费用，然后将其用于分析。 
 
@@ -182,6 +183,5 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 * 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)
-* 详细了解如何[优化查询成本](optimize-cost-queries.md)
+* 详细了解如何[优化查询成本](./optimize-cost-reads-writes.md)
 * 详细了解[优化多区域 Azure Cosmos 帐户的成本](optimize-cost-regions.md)
-

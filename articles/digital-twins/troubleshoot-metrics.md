@@ -1,18 +1,18 @@
 ---
-title: 通过 Azure Monitor 查看指标
+title: 使用 Azure Monitor 查看指标
 titleSuffix: Azure Digital Twins
 description: 请参阅如何 Azure Monitor 查看 Azure 数字孪生指标。
 author: baanders
 ms.author: baanders
 ms.date: 8/4/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322625"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347891"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure 数字孪生：度量值疑难解答
 
@@ -28,22 +28,18 @@ ms.locfileid: "91322625"
 
     从实例的菜单中，选择 " **指标**"。
    
-    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 &quot;指标&quot; 页的屏幕截图&quot;:::
+    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 &quot;指标&quot; 页的屏幕截图":::
 
     此页面显示 Azure 数字孪生实例的指标。 你还可以通过从列表中选择你想要查看的指标来创建其自定义视图。
     
-3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 &quot; **诊断设置** &quot;，然后单击 " **添加诊断设置**"。
+3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 " **诊断设置** "，然后单击 " **添加诊断设置**"。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 Azure 数字孪生的 &quot;指标&quot; 页的屏幕截图&quot;:::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 &quot;诊断设置&quot; 页和要添加的按钮的屏幕截图":::
 
-    此页面显示 Azure 数字孪生实例的指标。 你还可以通过从列表中选择你想要查看的指标来创建其自定义视图。
-    
-3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 &quot; **诊断设置** &quot;，然后单击 " **+ 新建警报规则**"，可以选择为指标数据设置警报。
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示 Azure 数字孪生的 &quot;指标&quot; 页的屏幕截图&quot;:::
+    有关此过程的详细信息，请参阅 [*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
 
-    此页面显示 Azure 数字孪生实例的指标。 你还可以通过从列表中选择你想要查看的指标来创建其自定义视图。
-    
-3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 &quot; **诊断设置** &quot;，然后单击 ":::
+4. 通过从菜单中选择 " **警报** "，然后选择 " **+ 新建警报规则**"，可以选择为指标数据设置警报。
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示 &quot;警报&quot; 页和要添加的按钮的屏幕截图":::
 
     有关此过程的详细信息，请参阅 [*故障排除：设置警报*](troubleshoot-alerts.md)。
 
@@ -53,28 +49,38 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 
 下表描述了每个 Azure 数字孪生实例跟踪的指标，以及每个指标如何与实例的总体状态相关。
 
+#### <a name="metrics-for-tracking-service-limits"></a>跟踪服务限制的指标
+
+您可以配置这些度量值，以跟踪您的解决方案的某个方面接近 [发布的服务限制](reference-service-limits.md#functional-limits) 的时间。 
+
+若要进行此设置，请使用 Azure Monitor 中的 [警报](troubleshoot-alerts.md) 功能。 你可以为这些指标定义阈值，以便在指标达到一定百分比的已发布限制时接收警报。
+
+| 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
+| --- | --- | --- | --- | --- | --- |
+| TwinCount |  (预览的克隆计数)  | 计数 | 总计 | Azure 数字孪生实例中的孪生总数。 使用此指标来确定是否接近每个实例允许的最大孪生数的 [服务限制](reference-service-limits.md#functional-limits) 。 |  无 |
+| ModelCount |  (预览的模型计数)  | 计数 | 总计 | Azure 数字孪生实例中的总模型数。 使用此指标来确定是否接近每个实例允许的最大模型数的 [服务限制](reference-service-limits.md#functional-limits) 。 | 无 |
+
 #### <a name="api-request-metrics"></a>API 请求度量值
 
 与 API 请求有关的指标：
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| ApiRequests |  (预览版的 API 请求)  | Count | 总计 | 为数字孪生读取、写入、删除和查询操作发出的 API 请求数。 |  验证 <br>运作 <br>协议 <br>状态代码， <br>状态代码类， <br>状态文本 |
-| ApiRequestsFailureRate | API 请求失败率 (预览)  | 百分比 | 平均值 | 服务为你的实例接收到内部错误 (500) 响应代码的 API 请求百分比，用于数字孪生的读取、写入、删除和查询操作。 | 验证 <br>运作 <br>协议 <br>状态代码， <br>状态代码类， <br>状态文本
-| ApiRequestsLatency |  (预览版的 API 请求延迟)  | 毫秒 | 平均值 | API 请求的响应时间。 这是指从 Azure 数字孪生收到请求到服务发送数字孪生读取、写入、删除和查询操作的成功/失败结果起的时间。 | 验证 <br>运作 <br>协议 |
+| ApiRequests | API 请求 | 计数 | 总计 | 为数字孪生读取、写入、删除和查询操作发出的 API 请求数。 |  验证 <br>运作 <br>协议 <br>状态代码， <br>状态代码类， <br>状态文本 |
+| ApiRequestsFailureRate | API 请求失败率 | 百分比 | 平均值 | 服务为你的实例接收到内部错误 (500) 响应代码的 API 请求百分比，用于数字孪生的读取、写入、删除和查询操作。 | 验证 <br>运作 <br>协议 <br>状态代码， <br>状态代码类， <br>状态文本
+| ApiRequestsLatency | API 请求延迟 | 毫秒 | 平均值 | API 请求的响应时间。 这是指从 Azure 数字孪生收到请求到服务发送数字孪生读取、写入、删除和查询操作的成功/失败结果起的时间。 | 验证 <br>运作 <br>协议 |
 
 #### <a name="billing-metrics"></a>计费指标
 
 与计费有关的指标：
 
->[!NOTE]
-> 在预览期间， **计费为零成本**。 尽管这些指标仍显示在可选列表中，但在预览期间不适用，并且在服务超出预览状态之前将保持为零。
-
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| BillingApiOperations |  (预览) 计费 API 操作 | Count | 总计 | 针对 Azure 数字孪生服务发出的所有 API 请求计数的计费指标。 | 计量 Id |
-| BillingMessagesProcessed |  (预览处理的计费消息)  | Count | 总计 | 从 Azure 数字孪生发送到外部终结点的消息数的计费指标。<br><br>若要将单个消息视为计费，则有效负载不得超过 1 KB。 大于该值的负载将被视为 1 KB 递增的附加消息 (因此，介于1和 2 KB 之间的消息将被视为2条消息，介于2到 3 KB 之间将为3条消息，依此类推) 。<br>此限制也适用于响应，因此，在响应正文中返回 1.5 KB 的调用将按2个操作计费。 | 计量 Id |
-| BillingQueryUnits | 计费查询单位 (预览)  | Count | 总计 | 查询单位数，即，用于执行查询的服务资源使用情况的内部计算度量值。 还有一个帮助器 API 可用于测量查询单位： [QueryChargeHelper 类](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | 计量 Id |
+| BillingApiOperations | 计费 API 操作 | 计数 | 总计 | 针对 Azure 数字孪生服务发出的所有 API 请求计数的计费指标。 | 计量 Id |
+| BillingMessagesProcessed | 已处理计费消息 | 计数 | 总计 | 从 Azure 数字孪生发送到外部终结点的消息数的计费指标。<br><br>若要将单个消息视为计费，则有效负载不得超过 1 KB。 大于该值的负载将被视为 1 KB 递增的附加消息 (因此，介于1和 2 KB 之间的消息将被视为2条消息，介于2到 3 KB 之间将为3条消息，依此类推) 。<br>此限制也适用于响应，因此，在响应正文中返回 1.5 KB 的调用将按2个操作计费。 | 计量 Id |
+| BillingQueryUnits | 计费查询单位 | 计数 | 总计 | 查询单位数，即，用于执行查询的服务资源使用情况的内部计算度量值。 还有一个帮助器 API 可用于测量查询单位： [QueryChargeHelper 类](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | 计量 Id |
+
+有关如何对 Azure 数字孪生计费的详细信息，请参阅 [*Azure 数字孪生定价*](https://azure.microsoft.com/pricing/details/digital-twins/)。
 
 #### <a name="ingress-metrics"></a>入口指标
 
@@ -82,19 +88,19 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| IngressEvents |  (预览的入口事件)  | Count | 总计 | 传入的遥测事件数到 Azure 数字孪生。 | 结果 |
-| IngressEventsFailureRate | 入口事件失败率 (预览)  | 百分比 | 平均值 | 服务为其返回内部错误 (500) 响应代码的传入遥测事件的百分比。 | 结果 |
-| IngressEventsLatency |  (预览版的入口事件延迟)  | 毫秒 | 平均值 | 当某个事件已准备就绪，可供 Azure 数字孪生出口时的时间，服务将发送成功/失败结果。 | 结果 |
+| IngressEvents | 入口事件 | 计数 | 总计 | 传入的遥测事件数到 Azure 数字孪生。 | 结果 |
+| IngressEventsFailureRate | 入口事件失败率 | 百分比 | 平均值 | 服务为其返回内部错误 (500) 响应代码的传入遥测事件的百分比。 | 结果 |
+| IngressEventsLatency | 入口事件滞后时间 | 毫秒 | 平均值 | 当某个事件已准备就绪，可供 Azure 数字孪生出口时的时间，服务将发送成功/失败结果。 | 结果 |
 
-#### <a name="routing-metrics"></a>路由度量值
+#### <a name="routing-metrics"></a>路由指标
 
 与路由有关的指标：
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted |  (预览路由的消息)  | Count | 总计 | 路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）的消息数。 | 终结点类型， <br>结果 |
-| RoutingFailureRate | 路由失败率 (预览)  | 百分比 | 平均值 | 导致错误的事件百分比，因为这些事件从 Azure 数字孪生路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）。 | 终结点类型， <br>结果 |
-| RoutingLatency |  (预览的路由延迟)  | 毫秒 | 平均值 | 在事件从 Azure 数字孪生路由到终结点（例如事件中心、服务总线或事件网格）发送到该服务之间所经过的时间。 | 终结点类型， <br>结果 |
+| MessagesRouted | 路由的消息 | 计数 | 总计 | 路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）的消息数。 | 终结点类型， <br>结果 |
+| RoutingFailureRate | 路由失败率 | 百分比 | 平均值 | 导致错误的事件百分比，因为这些事件从 Azure 数字孪生路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）。 | 终结点类型， <br>结果 |
+| RoutingLatency | 路由延迟 | 毫秒 | 平均值 | 在事件从 Azure 数字孪生路由到终结点（例如事件中心、服务总线或事件网格）发送到该服务之间所经过的时间。 | 终结点类型， <br>结果 |
 
 ## <a name="dimensions"></a>维度
 
@@ -103,7 +109,7 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 | 维度 | 值 |
 | --- | --- |
 | 身份验证 | OAuth |
-| API 请求的操作 ()  | DigitalTwins/DigitalTwins/delete， <br>DigitalTwins/DigitalTwins/write， <br>DigitalTwins/DigitalTwins/read， <br>DigitalTwins/eventroutes/read， <br>DigitalTwins/eventroutes/write， <br>DigitalTwins/eventroutes/delete， <br>DigitalTwins/模型/读取、 <br>DigitalTwins/模型/写入， <br>DigitalTwins/模型/删除， <br>DigitalTwins/查询/操作 |
+| API 请求的操作 ()  | DigitalTwins/DigitalTwins/delete， <br>DigitalTwins/DigitalTwins/write， <br>DigitalTwins/DigitalTwins/read， <br>DigitalTwins/eventroutes/read， <br>DigitalTwins/eventroutes/write， <br>DigitalTwins/eventroutes/delete， <br>DigitalTwins/模型/读取、 <br>DigitalTwins/模型/写入， <br>DigitalTwins/模型/删除， <br>Microsoft.DigitalTwins/query/action |
 | 终结点类型 | 事件网格， <br>事件中心， <br>服务总线 |
 | 协议 | HTTPS |
 | 结果 | 辉煌 <br>失败 |

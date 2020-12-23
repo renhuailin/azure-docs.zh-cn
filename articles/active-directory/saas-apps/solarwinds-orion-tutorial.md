@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dbccf38bcb89a6e0715604567be021cc890f209b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545087"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514803"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>教程：Azure Active Directory 的单一登录 (SSO) 与 SolarWinds Orion 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545087"
 * 让用户使用其 Azure AD 帐户自动登录到 SolarWinds Orion。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88545087"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * SolarWinds Orion 支持 SP 和 IDP 发起的 SSO
-* 配置 SolarWinds Orion 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 SolarWinds Orion 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-solarwinds-orion-from-the-gallery"></a>从库中添加 SolarWinds Orion
 
@@ -144,19 +144,19 @@ ms.locfileid: "88545087"
 
 1. 登录 SolarWinds Orion，并转到“设置” -> “所有设置”。
 
-    ![ 配置 SolarWinds Orion ](./media/solarwinds-orion-tutorial/settings.png)
+    ![显示从“设置”选择了“所有设置”的屏幕截图。](./media/solarwinds-orion-tutorial/settings.png)
 
 1. 在“用户帐户”部分中，选择“SAML 配置”。
 
-    ![ 配置 SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![显示从“用户帐户”选择了“SAML 配置”的屏幕截图。](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
 1. 单击“添加标识提供者”。
 
-    ![ 配置 SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![显示 SAML 配置的屏幕截图，可在其中选择“添加标识提供者”。](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
 1. 在“添加标识提供者”页中执行以下步骤：
 
-    ![ 配置 SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![显示“添加标识提供者”页的屏幕截图，可在其中输入所述值。](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
     a. 转到“配置”选项卡。
 
@@ -174,43 +174,42 @@ ms.locfileid: "88545087"
 
 1. 登录 SolarWinds Orion 网站，并转到“设置” -> “所有设置”。
 
-    ![ SolarWinds Orion 创建测试用户 ](./media/solarwinds-orion-tutorial/settings.png)
+    ![显示从“设置”选择了“所有设置”的屏幕截图。](./media/solarwinds-orion-tutorial/settings.png)
 
 1. 在“用户帐户”部分中，选择“管理帐户”。
 
-    ![ SolarWinds Orion 创建测试用户 ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![显示选择了“SAML 配置”的屏幕截图。](./media/solarwinds-orion-tutorial/user-accounts.png)
 
 1. 在“个人帐户”选项卡中，单击“添加新帐户”。
 
-    ![ SolarWinds Orion 创建测试用户 ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![显示在“管理帐户”中选择了“添加新帐户”的屏幕截图。](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. 选择需要创建 SAML 个人用户或组的帐户类型。
 
-    ![ SolarWinds Orion 创建测试用户 ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![显示可在其中选择帐户类型的“添加新帐户”的屏幕截图。](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  在“名称 ID”文本框中，输入必须与 Azure AD 中的用户名或组名完全匹配的名称。
 
 1.  单击“下一步”，然后提交该页。
 
-    ![ SolarWinds Orion 创建测试用户 ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![显示“添加新帐户”的屏幕截图，可在其中输入 Azure AD 的“名称 ID”。](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“SolarWinds Orion”磁贴时，应会自动登录到为其设置了 SSO 的 SolarWinds Orion。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“SolarWinds Orion”磁贴时，应会自动登录到为其设置了 SSO 的 SolarWinds Orion。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [在 Azure AD 中试用 SolarWinds Orion](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用高级可见性和控制保护 SolarWinds Orion](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [如何使用高级可见性和控制保护 SolarWinds Orion](/cloud-app-security/proxy-intro-aad)

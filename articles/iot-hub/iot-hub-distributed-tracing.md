@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462029"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452399"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -29,7 +29,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 为 IoT 中心启用分布式跟踪可以：
 
 - 使用[跟踪上下文](https://github.com/w3c/trace-context)准确监视每个消息流经 IoT 中心的情况。 此跟踪上下文包含关联 ID。使用关联 ID 可将来自一个组件的事件与来自另一个组件的事件相关联。 可以使用[设备孪生](iot-hub-devguide-device-twins.md)对一部分或所有 IoT 设备消息应用关联 ID。
-- 自动将跟踪上下文记录到 [Azure Monitor 诊断日志](iot-hub-monitor-resource-health.md)。
+- 自动将跟踪上下文记录到 [Azure Monitor 日志](monitor-iot-hub.md)。
 - 度量并了解设备与 IoT 中心之间的消息流和延迟以及路由终结点。
 - 开始考虑如何针对 IoT 解决方案中的非 Azure 服务实施分布式跟踪。
 
@@ -55,11 +55,11 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到 IoT 中心。
 
-1. 在 IoT 中心的左窗格中，向下滚动到“监视”部分并单击“诊断设置”。********
+1. 在 IoT 中心的左窗格中，向下滚动到“监视”部分并单击“诊断设置”。
 
-1. 如果尚未启用诊断设置，请单击“启用诊断”。**** 如果已启用诊断设置，请单击“添加诊断设置”。****
+1. 单击“添加诊断设置”。
 
-1. 在“名称”字段中，输入新诊断设置的名称。**** 例如 **DistributedTracingSettings**。
+1. 在“名称”字段中，输入新诊断设置的名称。 例如 **DistributedTracingSettings**。
 
 1. 选择以下一个或多个选项用于确定要将日志发送到何处：
 
@@ -67,13 +67,13 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     - **流式传输到事件中心**：将事件中心配置为包含日志记录信息。
     - **发送到 Log Analytics**：配置 Log Analytics 工作区以包含日志记录信息。
 
-1. 在“日志”部分，选择要记录其信息的操作。****
+1. 在“日志”部分，选择要记录其信息的操作。
 
-    请务必包含“DistributedTracing”，并配置“保留期”以指定要将日志保留几天。******** 保留日志会影响存储费用。
+    请务必包含“DistributedTracing”，并配置“保留期”以指定要将日志保留几天。 保留日志会影响存储费用。
 
     ![显示 DistributedTracing 类别在 IoT 诊断设置中的位置的屏幕截图](./media/iot-hub-distributed-tracing/diag-logs.png)
 
-1. 单击新设置旁边的“保存”。****
+1. 单击新设置旁边的“保存”。
 
 1. （可选）若要了解消息如何流向不同的位置，请[对至少两个不同的终结点设置路由规则](iot-hub-devguide-messages-d2c.md)。
 
@@ -83,7 +83,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 - IoT 中心处理消息。
 - 消息路由到自定义终结点。 必须启用路由。
 
-若要详细了解这些日志及其架构，请参阅 [IoT 中心诊断日志中的分布式跟踪](iot-hub-monitor-resource-health.md#distributed-tracing-preview)。
+若要了解有关这些日志及其架构的详细信息，请参阅[在 Iot 中心资源日志中](monitor-iot-hub-reference.md#distributed-tracing-preview)[监视 Iot 中心](monitor-iot-hub.md)和分布式跟踪。
 
 ## <a name="set-up-device"></a>设置设备
 
@@ -93,7 +93,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="clone-the-source-code-and-initialize"></a>克隆源代码并初始化
 
-1. 安装 Visual Studio 2019 的 ["带有 c + + 的桌面开发" 工作负荷](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) 。 还支持 Visual Studio 2017 和2015。
+1. 安装 Visual Studio 2019 的 ["带有 c + + 的桌面开发" 工作负荷](/cpp/build/vscpp-step-0-installation?view=vs-2019) 。 还支持 Visual Studio 2017 和2015。
 
 1. 安装 [CMake](https://cmake.org/)。 在命令提示符下键入 `cmake -version`，确保 CMake 位于 `PATH` 中。
 
@@ -115,7 +115,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     cmake ..
     ```
 
-    如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。 
+    如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。 
 
     生成成功后，最后的几个输出行如下所示：
 
@@ -169,7 +169,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     cmake --build . --target iothub_ll_telemetry_sample --config Debug
     ```
 
-1. 运行应用程序。 设备将发送支持分布式跟踪的遥测数据。
+1. 运行该应用程序。 设备将发送支持分布式跟踪的遥测数据。
 
     ```cmd
     Debug/iothub_ll_telemetry_sample.exe
@@ -183,7 +183,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 无需使用 C **SDK 即可预览** 分布式跟踪功能。 因此，不建议使用此方法。
 
-首先，必须遵循开发指南 [创建和读取 Iot 中心消息](iot-hub-devguide-messages-construct.md)，在消息中实现所有 IoT 中心协议基元。 然后，在 MQTT/AMQP 消息中编辑要添加 `tracestate` 为 **系统属性**的协议属性。 具体而言：
+首先，必须遵循开发指南 [创建和读取 Iot 中心消息](iot-hub-devguide-messages-construct.md)，在消息中实现所有 IoT 中心协议基元。 然后，在 MQTT/AMQP 消息中编辑要添加 `tracestate` 为 **系统属性** 的协议属性。 具体而言：
 
 * 对于 MQTT，请将添加 `%24.tracestate=timestamp%3d1539243209` 到消息主题，其中 `1539243209` 应该替换为 unix 时间戳格式的消息创建时间。 作为示例，请参阅[C SDK 中](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)的实现
 * 对于 AMQP，将 `key("tracestate")` 和添加 `value("timestamp=1539243209")` 为消息注释。 有关引用实现，请参阅 [此处](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)。
@@ -196,19 +196,19 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="update-using-the-portal"></a>使用门户更新
 
-1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 IoT 中心，然后单击“IoT 设备”。****
+1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 IoT 中心，然后单击“IoT 设备”。
 
 1. 单击自己的设备。
 
-1. 找到“启用分布式跟踪(预览版)”，然后选择“启用”。********
+1. 找到“启用分布式跟踪(预览版)”，然后选择“启用”。
 
     ![在 Azure 门户中启用分布式跟踪](./media/iot-hub-distributed-tracing/azure-portal.png)
 
-1. 选择介于 0% 与 100% 之间的**采样率**。
+1. 选择介于 0% 与 100% 之间的 **采样率**。
 
-1. 单击“保存” 。
+1. 单击“保存”  。
 
-1. 等待几秒钟，然后点击“刷新”，如果设备已成功确认，则会显示一个带有勾选标记的同步图标。****
+1. 等待几秒钟，然后点击“刷新”，如果设备已成功确认，则会显示一个带有勾选标记的同步图标。
 
 1. 返回到遥测消息应用的控制台窗口。 将会看到正在发送消息，消息的应用程序属性中包含 `tracestate`。
 
@@ -222,11 +222,11 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. 打开 VS Code 并[设置 IoT 中心连接字符串](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)。
 
-1. 展开设备，并找到“分布式跟踪设置(预览版)”。**** 在该选项的下面，单击子节点对应的“更新分布式跟踪设置(预览版)”。****
+1. 展开设备，并找到“分布式跟踪设置(预览版)”。 在该选项的下面，单击子节点对应的“更新分布式跟踪设置(预览版)”。
 
     ![在 Azure IoT 中心扩展中启用分布式跟踪](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
-1. 在弹出窗口中选择“启用”，然后按 Enter 确认使用 100 作为采样率。****
+1. 在弹出窗口中选择“启用”，然后按 Enter 确认使用 100 作为采样率。
 
     ![更新采样模式](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
@@ -234,7 +234,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="bulk-update-for-multiple-devices"></a>针对多个设备进行批量更新
 
-若要更新多个设备的分布式跟踪采样配置，请使用[自动设备配置](iot-hub-auto-device-config.md)。 确保遵循此孪生架构：
+若要更新多个设备的分布式跟踪采样配置，请使用[自动设备配置](./iot-hub-automatic-device-management.md)。 确保遵循此孪生架构：
 
 ```json
 {
@@ -260,7 +260,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="query-using-log-analytics"></a>使用 Log Analytics 进行查询
 
-如果已设置[使用诊断日志的 Log Analytics](../azure-monitor/platform/resource-logs-collect-storage.md)，请通过查找 `DistributedTracing` 类别中的日志进行查询。 例如，以下查询显示记录所有的跟踪：
+如果已设置 [了包含资源日志的 Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)，请通过查找类别中的日志进行查询 `DistributedTracing` 。 例如，以下查询显示记录所有的跟踪：
 
 ```Kusto
 // All distributed traces 
@@ -278,11 +278,11 @@ Log Analytics 显示的示例日志：
 | 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | 信息 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
 | 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | 信息 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
-若要了解不同类型的日志，请参阅 [Azure IoT 中心诊断日志](iot-hub-monitor-resource-health.md#distributed-tracing-preview)。
+若要了解不同类型的日志，请参阅 [Azure IoT 中心分布式跟踪日志](monitor-iot-hub-reference.md#distributed-tracing-preview)。
 
 ### <a name="application-map"></a>应用程序地图
 
-若要可视化 IoT 消息流，请设置应用程序映射示例应用。 该示例应用使用 Azure 函数和事件中心将分布式跟踪日志发送到[应用程序映射](../application-insights/app-insights-app-map.md)。
+若要可视化 IoT 消息流，请设置应用程序映射示例应用。 该示例应用使用 Azure 函数和事件中心将分布式跟踪日志发送到[应用程序映射](../azure-monitor/app/app-map.md)。
 
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">获取 GitHub 上的示例</a>
@@ -295,11 +295,11 @@ Log Analytics 显示的示例日志：
 
 ### <a name="context"></a>上下文
 
-许多 IoT 解决方案，包括我们自己的[参考体系结构](https://aka.ms/iotrefarchitecture)（仅有英语版），通常遵循[微服务体系结构](https://docs.microsoft.com/azure/architecture/microservices/)的某种变体。 随着 IoT 解决方案变得越来越复杂，最终会使用十多个甚至更多的微服务。 这些微服务不一定来自 Azure。 可能很难查明 IoT 消息是在哪个位置删除或减慢的。 例如，某个 IoT 解决方案使用 5 个不同的 Azure 服务和 1500 个活动设备。 每个设备每秒发送 10 条设备到云的消息（每秒总共发送 15,000 条消息），但你注意到，Web 应用每秒只收到了 10,000 条消息。 问题出在哪里？ 如何查明原因？
+许多 IoT 解决方案，包括我们自己的[参考体系结构](/azure/architecture/reference-architectures/iot)（仅有英语版），通常遵循[微服务体系结构](/azure/architecture/microservices/)的某种变体。 随着 IoT 解决方案变得越来越复杂，最终会使用十多个甚至更多的微服务。 这些微服务不一定来自 Azure。 可能很难查明 IoT 消息是在哪个位置删除或减慢的。 例如，某个 IoT 解决方案使用 5 个不同的 Azure 服务和 1500 个活动设备。 每个设备每秒发送 10 条设备到云的消息（每秒总共发送 15,000 条消息），但你注意到，Web 应用每秒只收到了 10,000 条消息。 问题出在哪里？ 如何查明原因？
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>微服务体系结构中的分布式跟踪模式
 
-若要跨不同的服务重建 IoT 消息流，每个服务应该传播一个用于唯一标识消息的关联 ID。** 在集中式系统中收集后，关联 ID 可让你查看消息流。 此方法称为[分布式跟踪模式](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing)。
+若要跨不同的服务重建 IoT 消息流，每个服务应该传播一个用于唯一标识消息的关联 ID。 在集中式系统中收集后，关联 ID 可让你查看消息流。 此方法称为[分布式跟踪模式](/azure/architecture/microservices/logging-monitoring#distributed-tracing)。
 
 为了使分布式跟踪得到更广泛的采用，Microsoft 正在努力制定[分布式跟踪的 W3C 标准提案](https://w3c.github.io/trace-context/)。
 
@@ -313,7 +313,7 @@ Log Analytics 显示的示例日志：
 1. IoT 设备将消息发送到 IoT 中心。
 1. 消息抵达 IoT 中心网关。
 1. IoT 中心查找 `tracestate` 消息属性中的，并检查其格式是否正确。
-1. 如果是这样，IoT 中心将为消息生成全局唯一的 `trace-id` ， `span-id` 对于 "跃点"，则将其记录到操作下 Azure Monitor 诊断日志 `DiagnosticIoTHubD2C` 。
+1. 如果是这样，IoT 中心将为消息生成全局唯一的 `trace-id` ， `span-id` 对于 "跃点"，则将其记录到操作下的 [IoT 中心分布式跟踪日志](monitor-iot-hub-reference.md#distributed-tracing-preview) `DiagnosticIoTHubD2C` 。
 1. 消息处理完成后，IoT 中心会生成另一个， `span-id` 并将其与该操作下的现有记录一起记录 `trace-id` `DiagnosticIoTHubIngress` 。
 1. 如果为消息启用了路由，则 IoT 中心会将消息写入自定义终结点，并在 `DiagnosticIoTHubEgress` 类别下记录名为 `trace-id` 的另一个 `span-id`。
 1. 针对生成的每条消息重复上述步骤。
@@ -328,5 +328,6 @@ Log Analytics 显示的示例日志：
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解微服务中的一般分布式跟踪模式，请参阅[微服务体系结构模式：分布式跟踪](https://microservices.io/patterns/observability/distributed-tracing.html)。
-- 若要设置配置以将分布式跟踪设置应用到大量设备，请参阅[大规模配置和监视 IoT 设备](iot-hub-auto-device-config.md)。
+- 若要设置配置以将分布式跟踪设置应用到大量设备，请参阅[大规模配置和监视 IoT 设备](./iot-hub-automatic-device-management.md)。
 - 若要详细了解 Azure Monitor，请参阅[什么是 Azure Monitor？](../azure-monitor/overview.md)。
+- 若要详细了解如何将 Azure Monitor 与 IoT 中心配合使用，请参阅 [监视 Iot 中心](monitor-iot-hub.md)

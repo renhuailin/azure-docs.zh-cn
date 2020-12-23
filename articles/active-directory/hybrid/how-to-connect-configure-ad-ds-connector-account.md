@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279289"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349933"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
@@ -41,7 +41,7 @@ ms.locfileid: "89279289"
 | Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
 | 密码写回 |针对用户属性的读写权限，详见[密码管理入门](../authentication/tutorial-enable-sspr-writeback.md)。 |
 | 设备写回 |针对设备对象和容器的读写权限，详见[设备写回](how-to-connect-device-writeback.md)。 |
-| 组写回 |读取、创建、更新和删除同步的 **Office 365 组**的组对象。|
+| 组写回 |读取、创建、更新和删除同步的 **Office 365 组** 的组对象。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>使用 ADSyncConfig PowerShell 模块 
 ADSyncConfig 模块需要[适用于 AD DS 的远程服务器管理工具 (RSAT)](/windows-server/remote/remote-server-administration-tools)，因为它依赖于 AD DS PowerShell 模块和工具。 若要安装适用于 AD DS 的 RSAT，请使用“以管理员身份运行”打开 Windows PowerShell 窗口并执行： 
@@ -149,7 +149,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>配置 MS-DS-Consistency-Guid 权限 
-若要在使用 ms-Ds-Consistency-Guid 属性作为源定位点（也就是“让 Azure 为我管理源定位点”选项）时为 AD DS 连接器帐户设置权限，请运行： 
+若要在将 ms-Ds 一致性 Guid 属性用作源锚点时设置 AD DS 连接器帐户的权限 (也称为 "让 Azure 为我管理源锚点" 选项) ，请运行： 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 

@@ -1,21 +1,21 @@
 ---
 title: Query Performance Insight-Azure Database for MariaDB
 description: 本文介绍中的 Query Performance Insight 功能 Azure Database for MariaDB
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 88777ee44551ed6abdb7a6c7c909d6bf55db48c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79527838"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536326"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的 Query Performance Insight
 
-**适用于：** Azure Database for MariaDB 10。2
+**适用于：** Azure Database for MariaDB 10.2
 
 Query Performance Insight 可帮助你快速确定运行时间最长的查询、它们如何随时间的推移而变化，以及哪些等待因素会影响它们。
 
@@ -43,7 +43,7 @@ Query Performance Insight 可帮助你快速确定运行时间最长的查询、
 
 Azure 门户中的 [Query Performance Insight](concepts-query-performance-insight.md) 视图将显示来自查询存储的关键信息的可视化效果。
 
-在 Azure Database for MariaDB 服务器的 "门户" 页上，选择菜单栏的 "**智能性能**" 部分下的 " **Query Performance Insight** "。
+在 Azure Database for MariaDB 服务器的 "门户" 页上，选择菜单栏的 " **智能性能** " 部分下的 " **Query Performance Insight** "。
 
 ### <a name="long-running-queries"></a>长时间运行的查询
 
@@ -56,7 +56,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 ### <a name="wait-statistics"></a>等待统计信息 
 
 > [!NOTE]
-> 等待统计信息用于排查查询性能问题。 建议仅在进行故障排除时启用。 <br>如果收到错误消息，请在 Azure 门户 ""*DBforMariaDB 遇到的问题 ";无法完成请求。如果此问题仍然存在或意外出现，请与支持人员联系以了解此信息。*" ，请使用较短的时间段。
+> 等待统计信息用于排查查询性能问题。 建议仅在进行故障排除时启用。 <br>如果收到错误消息，请在 Azure 门户 "" *DBforMariaDB 遇到的问题 ";无法完成请求。如果此问题仍然存在或意外出现，请与支持人员联系以了解此信息。* " ，请使用较短的时间段。
 
 “等待统计信息”提供特定查询的执行期间发生的等待事件的视图。 若要详细了解等待事件类型，请参阅 [MySQL 引擎文档](https://go.microsoft.com/fwlink/?linkid=2098206)。
 
@@ -68,4 +68,4 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure Database for MariaDB 中的[监视和优化](concepts-monitoring.md)。
+- 详细了解如何在 Azure Database for MariaDB 中进行[监视和优化](concepts-monitoring.md)。

@@ -8,12 +8,13 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.subservice: workloads
+ms.openlocfilehash: ad3dbd8cdc6fff7eca8c24bb6e5258022d52cb9b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987482"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018488"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安装 TmaxSoft OpenFrame
 
@@ -96,7 +97,7 @@ WinSCP：可使用的常用 SFTP 客户端和 FTP 客户端<br/>
 
 <!-- markdownlint-enable MD033 -->
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 计划花费几天时间来收集所有必需的软件并完成所有手动过程。
 
@@ -118,11 +119,11 @@ WinSCP：可使用的常用 SFTP 客户端和 FTP 客户端<br/>
 
 1. 中转到 Azure 门户 <https://portal.azure.com> ，并登录到你的帐户。
 
-2. 单击“虚拟机”****。
+2. 单击“虚拟机”。
 
     ![Azure 门户中的资源列表](media/vm-01.png)
 
-3. 单击“添加”  。
+3. 单击“添加”。
 
     ![Azure 门户中的 "添加" 选项](media/vm-02.png)
 
@@ -139,7 +140,7 @@ WinSCP：可使用的常用 SFTP 客户端和 FTP 客户端<br/>
 7. 完成 (包括 **身份验证类型**) 的公钥/私钥对时，单击 " **提交**"。
 
 > [!NOTE]
-> 如果对 **身份验证类型**使用 SSH 公钥，请参阅下一节中的步骤，以生成公钥/私钥对，并继续执行此处的步骤。
+> 如果对 **身份验证类型** 使用 SSH 公钥，请参阅下一节中的步骤，以生成公钥/私钥对，并继续执行此处的步骤。
 
 ### <a name="generate-a-publicprivate-key-pair"></a>生成公钥/私钥对
 
@@ -162,9 +163,9 @@ WinSCP：可使用的常用 SFTP 客户端和 FTP 客户端<br/>
 
     ![PuTTY 接口](media/puttygen-01.png)
 
-3.  单击“生成”。
+3.  单击“生成”  。
 
-    !["PuTTY 密钥生成器" 对话框](media/puttygen-02.png)
+    ![屏幕截图，显示 "PuTTY 密钥生成器" 对话框，并突出显示 "生成" 按钮。](media/puttygen-02.png)
 
 4.  生成后，保存公钥和私钥。 将公钥的内容粘贴到 "**创建虚拟机 \> 基础知识**" 窗格的 " **SSH 公钥**" 部分中， (前面一节) 的步骤6和7中所示。
 
@@ -191,7 +192,7 @@ WinSCP：可使用的常用 SFTP 客户端和 FTP 客户端<br/>
 
 7. 对于 " **主机名**"，请键入您的用户名和复制的公共 IP 地址。 例如， **用户名 \@ publicip**。
 
-    !["PuTTY 配置" 对话框](media/putty-01.png)
+    ![屏幕截图，显示 "PuTTY 配置" 对话框，并突出显示 "主机名" (或 "IP 地址") 字段。](media/putty-01.png)
 
 8. 在 " **类别** " 框中，单击 " **连接 \> SSH \> 身份验证**"。提供 **私钥** 文件的路径。
 

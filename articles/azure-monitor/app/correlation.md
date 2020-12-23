@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827623"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607909"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -55,7 +55,7 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 在对外部服务发出 `GET /api/stock/value` 调用时，需要知道该服务器的标识，以便对 `dependency.target` 字段进行相应的设置。 如果外部服务不支持监视，则会将 `target` 设置为服务的主机名（例如 `stock-prices-api.com`）。 但是，如果该服务通过返回预定义的 HTTP 标头来标识自身，则 `target` 会包含服务标识，使 Application Insights 能够通过查询该服务中的遥测数据来生成分布式跟踪。
 
-## <a name="correlation-headers-using-w3c-tracecontext"></a>使用 W3C TraceContext 的相关标头
+## <a name="correlation-headers-using-w3c-tracecontext"></a>使用 W3C TraceContext 的关联标头
 
 Application Insights 正在过渡到 [W3C Trace-Context](https://w3c.github.io/trace-context/)，该协议定义：
 
@@ -71,20 +71,19 @@ Application Insights 正在过渡到 [W3C Trace-Context](https://w3c.github.io/t
 
 Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)。 它使用 `Request-Context` 名称值对来传播直接调用方或被调用方使用的属性集合。 Application Insights SDK 使用此标头设置 `dependency.target` 和 `request.source` 字段。
 
-[W3C 跟踪上下文](https://w3c.github.io/trace-context/)和 Application Insights 数据模型按以下方式映射：
+[W3C Trace-Context](https://w3c.github.io/trace-context/) 和 Application Insights 数据模型按以下方式映射：
 
 | Application Insights                   | W3C TraceContext                                      |
 |------------------------------------    |-------------------------------------------------|
-| `Request` 和 `Dependency` 的 `Id`     | [父 id](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Request` 和 `Dependency` 的 `Id`     | [parent-id](https://w3c.github.io/trace-context/#parent-id)                                     |
 | `Operation_Id`                         | [trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
-| `Operation_ParentId`                   | 此跨度的父范围的[父 id](https://w3c.github.io/trace-context/#parent-id) 。 如果这是根跨度，则此字段必须为空。     |
-
+| `Operation_ParentId`                   | 此范围的父范围的 [parent-id](https://w3c.github.io/trace-context/#parent-id)。 如果这是根范围，此字段必须为空。     |
 
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。
 
-### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>为 .NET 应用启用 W3C 分布式跟踪支持
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>启用对 .NET 应用的 W3C 分布式跟踪支持
 
-默认情况下，在所有最近 .NET Framework/.NET Core Sdk 中启用了基于 W3C TraceContext 的分布式跟踪，并与旧的请求 Id 协议向后兼容。
+在所有最新的 .NET Framework/.NET Core SDK 中默认启用基于 W3C TraceContext 的分布式跟踪，并提供与旧 Request-Id 协议的后向兼容性。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
 
@@ -103,7 +102,7 @@ Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.co
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - 对于 Spring Boot 应用，请添加以下属性：
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -133,40 +132,27 @@ Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.co
 
 此功能在 `Microsoft.ApplicationInsights.JavaScript` 中。 此项默认禁用。 若要启用它，请使用 `distributedTracingMode` 配置。提供 AI_AND_W3C 是为了与 Application Insights 检测的任何旧式服务向后兼容：
 
-- **npm 设置（如果使用代码片段设置，则忽略）**
+- **[基于 npm 的设置](./javascript.md#npm-based-setup)**
 
-  ```javascript
-  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
-
-  const appInsights = new ApplicationInsights({ config: {
-    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+添加以下配置：
+  ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
-    /* ...other configuration options... */
-  } });
-  appInsights.loadAppInsights();
   ```
-  
-- **代码片段设置（如果使用 npm 设置，则忽略）**
 
+- **[基于代码片段的设置](./javascript.md#snippet-based-setup)**
+
+添加以下配置：
   ```
-  <script type="text/javascript">
-  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-  (
-    {
-      instrumentationKey:"INSTRUMENTATION_KEY",
       distributedTracingMode: 2 // DistributedTracingModes.W3C
-      /* ...other configuration options... */
-    }
-  );
-  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-  </script>
   ```
+> [!IMPORTANT] 
+> 若要查看启用关联所需的所有配置，请参阅 [JavaScript 关联文档](./javascript.md#enable-correlation)。
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 中的遥测关联
 
-OpenCensus Python 支持 [W3C 跟踪上下文](https://w3c.github.io/trace-context/) ，无需其他配置。
+OpenCensus Python 支持 [W3C Trace-Context](https://w3c.github.io/trace-context/)，无需额外配置。
 
-作为参考，可以在 [此处](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace)找到 OpenCensus 数据模型。
+作为参考，可在[此处](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace)找到 OpenCensus 数据模型。
 
 ### <a name="incoming-request-correlation"></a>传入请求关联
 
@@ -250,9 +236,9 @@ logger.warning('After the span')
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 
-.NET 运行时支持通过[活动](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)和[DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)的帮助进行分发
+.NET 运行时支持借助 [Activity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) 和 [DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) 进行分发
 
-Application Insights .NET SDK 使用 `DiagnosticSource` 和 `Activity` 来收集和关联遥测数据。
+Application Insights .NET SDK 使用 `DiagnosticSource` 和 `Activity` 收集和关联遥测数据。
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java 中的遥测关联
@@ -273,10 +259,8 @@ Application Insights .NET SDK 使用 `DiagnosticSource` 和 `Activity` 来收集
 
     ```json
     {
-      "instrumentationSettings": {
-        "preview": {
-          "roleName": "my cloud role name"
-        }
+      "role": {
+        "name": "my cloud role name"
       }
     }
     ```

@@ -1,17 +1,17 @@
 ---
 title: SSL/TLS 连接 - Azure Database for MySQL
 description: 有关配置 Azure Database for MySQL 和关联应用程序以正确使用 SSL 连接的信息
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 6fb0b6f38869192e89bb849950e8822a157b23c8
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439942"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241933"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的 SSL/TLS 连接
 
@@ -20,8 +20,11 @@ Azure Database for MySQL 支持使用安全套接字层 (SSL) 将数据库服务
 > [!NOTE]
 > 更新 `require_secure_transport` 服务器参数值不会影响 MySQL 服务的行为。 使用本文中概述的 SSL 和 TLS 增强功能来保护与数据库的连接。
 
+>[!NOTE]
+> 根据客户的反馈，我们已在2021年2月15日到 (02/15/2021) 扩展了现有巴尔的摩根 CA 的根证书弃用。
+
 > [!IMPORTANT] 
-> SSL 根证书设置为在10月26日开始过期，2020 (10/26/2020) 。 请更新您的应用程序以使用 [新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要了解详细信息，请参阅 [计划的证书更新](concepts-certificate-rotation.md)
+> SSL 根证书设置为 2021 年 2 月 15 日 (2021/02/15) 到期。 请更新应用程序以使用[新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要了解详细信息，请参阅[计划内证书更新](concepts-certificate-rotation.md)
 
 ## <a name="ssl-default-settings"></a>SSL 默认设置
 
@@ -62,11 +65,11 @@ Azure Database for MySQL 提供了为客户端连接强制使用 TLS 版本的�
 
 若要了解如何为 Azure Database for MySQL 设置 TLS 设置，请参阅 [如何配置 TLS 设置](howto-tls-configurations.md)。
 
-## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器的密码支持
+## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器提供的密码支持
 
-作为 SSL/TLS 通信的一部分，将验证密码套件，并且仅允许支持密码满足与数据库 serer 的通信。 密码套件验证在 [网关层](concepts-connectivity-architecture.md#connectivity-architecture) 中控制，而不是在节点本身上显式控制。 如果密码套件与下面列出的套件之一不匹配，将拒绝传入的客户端连接。
+根据 SSL/TLS 通信的要求，密码套件会被验证，只有受支持的密码套件才能与数据库服务器通信。 密码套件验证在[网关层](concepts-connectivity-architecture.md#connectivity-architecture)中控制，而不是在节点本身上显式控制。 如果密码套件与下面列出的某个套件不匹配，系统会拒绝传入的客户端连接。
 
-### <a name="cipher-suite-supported"></a>支持密码套件
+### <a name="cipher-suite-supported"></a>支持的密码套件
 
 *   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 *   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256

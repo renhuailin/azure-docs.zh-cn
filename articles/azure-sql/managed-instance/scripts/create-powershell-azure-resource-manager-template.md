@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 6758aed67949032bb93086527623b60af33e716e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7c364fe7fa0ac4dd70a01a75478289ea861dee7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079540"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790825"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>将 PowerShell 与 Azure 资源管理器模板配合使用，以创建托管实例
 
@@ -46,7 +46,7 @@ Azure PowerShell 命令可以使用预定义的 Azure 资源管理器模板启�
 此示例假定已为托管实例[创建了有效的网络环境](../virtual-network-subnet-create-arm-template.md)或[修改了现有的 VNet](../vnet-existing-add-subnet.md)。 如有必要，可以使用单独的[ Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)准备网络环境。 
 
 
-此示例使用 cmdlet [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)，因此请确保已安装以下 PowerShell 模块：
+此示例使用 cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)，因此请确保已安装以下 PowerShell 模块：
 
 ```powershell
 Install-Module Az.Network

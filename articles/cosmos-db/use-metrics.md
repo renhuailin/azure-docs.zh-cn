@@ -5,19 +5,21 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568006"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996978"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指标。 Azure 门户提供这些指标的聚合视图。 也可通过 Azure Monitor API 查看 Azure Cosmos DB 指标。 指标的维度值（例如容器名称）不区分大小写。 因此，在对这些维度值进行字符串比较时，需要使用不区分大小写的比较。 若要了解如何查看 Azure Monitor 中的指标，请参阅[获取 Azure Monitor 中的指标](cosmos-db-azure-monitor-metrics.md)一文。
+Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指标。 Azure 门户提供这些指标的聚合视图。 也可通过 Azure Monitor API 查看 Azure Cosmos DB 指标。 指标的维度值（例如容器名称）不区分大小写。 因此，在对这些维度值进行字符串比较时，需要使用不区分大小写的比较。 若要了解如何查看 Azure Monitor 中的指标，请参阅[获取 Azure Monitor 中的指标](./monitor-cosmos-db.md)一文。
 
 本文介绍常见用例，以及如何使用 Azure Cosmos DB 指标来分析和调试这些问题。 指标每 5 分钟收集一次且保留 7 天。
 
@@ -41,7 +43,7 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 * **一致性指标** - 此指标显示所选一致性模型的最终一致性。 对于多区域帐户，此指标还显示所选区域之间的复制延迟。
 
-* **系统指标** -此指标显示主分区提供的元数据请求数。 此指标还有助于确定限制的请求数。
+* **系统指标** - 此指标显示主分区处理的元数据请求数。 此指标还有助于确定限制的请求数。
 
 以下部分介绍可以使用 Azure Cosmos DB 指标的常见场景。 
 
@@ -51,27 +53,27 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 最常见的错误状态代码为 429（速率限制）。 此错误意味着对 Azure Cosmos DB 的请求超过预配的吞吐量。 此问题最常见的解决方案是为给定集合[纵向扩展 RU](./set-throughput.md)。
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="每分钟的请求数":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>确定跨分区的吞吐量分布
 
 对任何可伸缩应用程序而言，均必须具有良好的分区键基数。 若要确定任何由分区细分为分区容器的吞吐量分布，请导航到 [Azure 门户](https://portal.azure.com)中的“指标”边栏选项卡。 在“吞吐量”选项卡中，存储细目显示在“各物理分区占用的最大 RU 数/秒”图表中   。 下图显示一个示例介绍因最左侧的倾斜分区而产生的不良数据分布。
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="单个分区使用率高":::
 
-吞吐量分布不均可能导致热分区，进而造成请求受阻和需要重新分区  。 若要深入了解如何在 Azure Cosmos DB 中进行分区，请参阅[在 Azure Cosmos DB 中进行分区和缩放](./partition-data.md)。
+吞吐量分布不均可能导致热分区，进而造成请求受阻和需要重新分区  。 若要深入了解如何在 Azure Cosmos DB 中进行分区，请参阅[在 Azure Cosmos DB 中进行分区和缩放](./partitioning-overview.md)。
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>确定跨分区的存储分布
 
 对任何可伸缩应用程序而言，均必须具有良好的分区基数。 若要确定任何按分区细分为分区容器的存储分布，请前往 [Azure 门户](https://portal.azure.com)中的“指标”边栏选项卡。 在“存储”选项卡中，存储细分显示在顶部分区键图表所占用的“数据 + 索引”存储中。 下图说明了数据存储的不良分布，如最左侧的倾斜分区所示。
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="不良数据分布示例":::
 
 可单击图表上的分区，深入查看当前造成分布倾斜的分区键。
 
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="分区键使分布倾斜":::
 
-确定导致分布倾斜的分区键之后，可能需使用进一步分布的分区键重新执行容器分区。 若要深入了解如何在 Azure Cosmos DB 中进行分区，请参阅[在 Azure Cosmos DB 中进行分区和缩放](./partition-data.md)。
+确定导致分布倾斜的分区键之后，可能需使用进一步分布的分区键重新执行容器分区。 若要深入了解如何在 Azure Cosmos DB 中进行分区，请参阅[在 Azure Cosmos DB 中进行分区和缩放](./partitioning-overview.md)。
 
 ## <a name="compare-data-size-against-index-size"></a>比较数据与索引的大小
 
@@ -112,6 +114,6 @@ QueryMetrics 提供执行各查询组件所用时长的详细信息  。 导致�
 
 前文介绍了如何使用 Azure 门户中提供的指标来监视和调试问题。 以下文章进一步介绍了如何提高数据库性能：
 
-* 若要了解如何查看 Azure Monitor 中的指标，请参阅[获取 Azure Monitor 中的指标](cosmos-db-azure-monitor-metrics.md)一文。 
+* 若要了解如何查看 Azure Monitor 中的指标，请参阅[获取 Azure Monitor 中的指标](./monitor-cosmos-db.md)一文。 
 * [执行 Azure Cosmos DB 缩放和性能测试](performance-testing.md)
 * [Azure Cosmos DB 性能提示](performance-tips.md)

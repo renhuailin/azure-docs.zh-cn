@@ -8,16 +8,16 @@ metadata:
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: landing-page
-  author: MashaMSFT
-  ms.author: mathoma
-  ms.reviewer: sstein
-  ms.date: 05/27/2020
-  ms.openlocfilehash: 86c1553142e1314b11c665de3a2641aa8e3cc40e
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  author: stevestein
+  ms.author: sstein
+  ms.reviewer: 
+  ms.date: 10/13/2020
+  ms.openlocfilehash: 2ef30f2ed2bdbf761110a9530c9a8cf3aa7c4ce2
+  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91317032"
+  ms.lasthandoff: 11/13/2020
+  ms.locfileid: "94593614"
 landingContent:
 - title: Azure SQL 数据库
   linkLists:
@@ -49,6 +49,8 @@ landingContent:
       url: migrate-to-database-from-sql-server.md
     - text: 与 SQL Server 之间的 T-SQL 差异
       url: transact-sql-tsql-differences-sql-server.md
+    - text: 预留容量
+      url: reserved-capacity-overview.md
 - title: 业务连续性
   linkLists:
   - linkListType: how-to-guide
@@ -104,7 +106,7 @@ landingContent:
     - text: 面向初学者的 Azure SQL
       url: https://aka.ms/azuresql4beginners
     - text: Azure SQL 基础知识
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+      url: /learn/paths/azure-sql-fundamentals/
     - text: Azure SQL 实操练习
       url: https://aka.ms/asqlworkshop
     - text: Azure SQL 集训营
@@ -138,11 +140,11 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/
 - title: 可伸缩性
   linkLists:
   - linkListType: how-to-guide

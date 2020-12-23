@@ -3,18 +3,20 @@ title: 为 Cosmos DB 创建多个独立的 Azure Functions 触发器
 description: 了解如何配置多个独立的适用于 Cosmos DB 的 Azure Functions 触发器以创建事件驱动的体系结构。
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019974"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336667"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文介绍如何配置多个适用于 Cosmos DB 的 Azure Functions 触发器，以并行工作并独立地对更改做出反应。
 
@@ -24,7 +26,7 @@ ms.locfileid: "89019974"
 
 使用 [Azure Functions](../azure-functions/functions-overview.md) 生成无服务器体系结构时，[建议](../azure-functions/functions-best-practices.md#avoid-long-running-functions)创建协同工作的小型函数集，而不是长时间运行的大型函数。
 
-在使用[适用于 Cosmos DB 的 Azure Functions 触发器](./change-feed-functions.md)生成基于事件的无服务器流时，只要特定 [Azure Cosmos 容器](./databases-containers-items.md#azure-cosmos-containers)中存在新事件，就会遇到要执行多项操作的方案。 如果要触发的操作彼此独立，理想的解决方案是为每个要执行的操作创建一个适用于 Cosmos DB 的 Azure Functions 触发器，所有触发器侦听同一 Azure Cosmos 容器上的更改  。
+在使用[适用于 Cosmos DB 的 Azure Functions 触发器](./change-feed-functions.md)生成基于事件的无服务器流时，只要特定 [Azure Cosmos 容器](./account-databases-containers-items.md#azure-cosmos-containers)中存在新事件，就会遇到要执行多项操作的方案。 如果要触发的操作彼此独立，理想的解决方案是为每个要执行的操作创建一个适用于 Cosmos DB 的 Azure Functions 触发器，所有触发器侦听同一 Azure Cosmos 容器上的更改  。
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>优化多个触发器的容器
 

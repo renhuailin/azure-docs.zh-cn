@@ -7,15 +7,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ab6d6511d1e2cec82b321003c9d663249ddcf49
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721347"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740220"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>团队数据科学流程组管理员任务
 
@@ -57,7 +57,7 @@ ms.locfileid: "76721347"
    
    ![创建项目](./media/group-manager-tasks/create-project.png)
 
-GroupCommon 项目的摘要页随即打开   。 页面 URL 是*https： \/ / \<servername> / \<organization-name> /GroupCommon*。
+GroupCommon 项目的摘要页随即打开   。 页面 URL 是 *https： \/ / \<servername> / \<organization-name> /GroupCommon*。
 
 ![项目摘要页](./media/group-manager-tasks/project-summary.png)
 
@@ -127,9 +127,7 @@ Azure Repos 可为组托管以下类型的存储库：
    
 1. 在“存储库”页的顶部，在下拉列表中选择“GroupUtilities”存储库   。
    
-1. 重复导入过程，将 Microsoft TDSP 团队 Utilities 存储库 (https:\//github.com/Azure/Azure-TDSP-Utilities.git) 的内容导入 GroupUtilities 存储库    。 
-   
-现在，两个组存储库中都包含 Microsoft TDSP 团队的相应存储库中的所有文件，.git  目录中的文件除外。 
+现在，两个组存储库中都包含 Microsoft TDSP 团队的相应存储库中的所有文件，.git 目录中的文件除外。 
 
 ## <a name="customize-the-contents-of-the-group-repositories"></a>自定义组存储库的内容
 
@@ -139,25 +137,25 @@ Azure Repos 可为组托管以下类型的存储库：
 
 自定义存储库内容：
 
-1. 在 GroupCommon 项目的摘要页上，选择“存储库”    。 
+1. 在 GroupCommon 项目的摘要页上，选择“存储库”。 
    
 1. 在页面顶部，选择要自定义的存储库。
 
 1. 在存储库目录结构中，导航到要更改的文件夹或文件。 
    
-   - 若要创建新的文件夹或文件，请选择“新建”旁边的箭头  。 
+   - 若要创建新的文件夹或文件，请选择“新建”旁边的箭头。 
      
      ![创建新文件](./media/group-manager-tasks/new-file.png)
      
-   - 若要上传文件，请选择“上传文件”  。 
+   - 若要上传文件，请选择“上传文件”。 
      
      ![上传文件](./media/group-manager-tasks/upload-files.png)
      
-   - 若要编辑现有文件，请导航到该文件，然后选择“编辑”  。 
+   - 若要编辑现有文件，请导航到该文件，然后选择“编辑”。 
      
      ![编辑文件](./media/group-manager-tasks/edit-file.png)
      
-1. 添加或编辑文件后，选择“提交”  。
+1. 添加或编辑文件后，选择“提交”。
    
    ![提交更改](./media/group-manager-tasks/commit.png)
 
@@ -166,31 +164,31 @@ Azure Repos 可为组托管以下类型的存储库：
 如果要使用本地计算机或 DSVM 进行更改并将更改推送到组存储库，请确保满足使用 Git 和 DSVM 的先决条件：
 
 - 拥有 Azure 订阅（如果要创建 DSVM）。
-- 计算机上安装有 Git。 如果要使用 DSVM，则需预安装 Git。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
-- 如果要使用 DSVM，需要在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](/azure/machine-learning/data-science-virtual-machine/)。
-- 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”    。 从安装程序页下载 .exe 安装程序并运行它  。 
-- 对于 Linux DSVM，需要在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的“创建 SSH 公钥”  部分。 
+- 计算机上安装的 Git。 如果要使用 DSVM，则需预安装 Git。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
+- 如果要使用 DSVM，需要在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](../data-science-virtual-machine/index.yml)。
+- 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”。 从安装程序页下载 .exe 安装程序并运行它。 
+- 对于 Linux DSVM，需要在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的“创建 SSH 公钥”部分。 
 
-首先，将存储库复制或克隆到本地计算机  。 
+首先，将存储库复制或克隆到本地计算机。 
    
-1. 在 GroupCommon 项目的摘要页上，选择“存储库”，然后在页面顶部选择要克隆的存储库    。
+1. 在 GroupCommon 项目的摘要页上，选择“存储库”，然后在页面顶部选择要克隆的存储库。
    
-1. 在“存储库”页上，选择右上方的“克隆”  。
+1. 在“存储库”页上，选择右上方的“克隆”。
    
-1. 在“克隆存储库”对话框中，为 HTTP 连接选择“HTTPS”，或为 SSH 连接选择“SSH”，并将命令行下的克隆 URL 复制到剪贴板     。
+1. 在“克隆存储库”对话框中，为 HTTP 连接选择“HTTPS”，或为 SSH 连接选择“SSH”，并将命令行下的克隆 URL 复制到剪贴板。
    
    ![克隆存储库](./media/group-manager-tasks/clone.png)
    
 1. 在本地计算机上创建以下目录：
    
-   - 对于 Windows：C:\GitRepos\GroupCommon 
-   - 对于 Linux：在主目录中创建 $/GitRepos/GroupCommon  
+   - 对于 Windows： **C:\GitRepos\GroupCommon**
+   - 对于 Linux：在主目录中创建 $/GitRepos/GroupCommon 
    
 1. 切换到创建的目录。
    
 1. 在 Git Bash 中，运行命令 `git clone <clone URL>.`
    
-   例如，以下任一命令都可将 GroupUtilities 存储库克隆到本地计算机上的 GroupCommon 目录   。 
+   例如，以下任一命令都可将 GroupUtilities 存储库克隆到本地计算机上的 GroupCommon 目录。 
    
    **HTTPS 连接：**
    
@@ -206,7 +204,7 @@ Azure Repos 可为组托管以下类型的存储库：
 
 在存储库的本地克隆中进行任何所需更改后，可以将更改推送到共享组通用存储库。 
 
-从本地 GroupProjectTemplate 或 GroupUtilities 目录运行以下 Git Bash 命令   。
+从本地 GroupProjectTemplate 或 GroupUtilities 目录运行以下 Git Bash 命令。
 
 ```bash
 git add .
@@ -215,7 +213,7 @@ git push
 ```
 
 > [!NOTE]
-> 如果这是首次提交到 Git 存储库，则需要在运行 `git commit` 命令之前配置全局参数 user.name 和 user.email   。 运行以下两个命令：
+> 如果这是首次提交到 Git 存储库，则需要在运行 `git commit` 命令之前配置全局参数 *user.name* 和 *user.email*。 运行以下两个命令：
 > 
 > `git config --global user.name <your name>`
 > 
@@ -227,30 +225,30 @@ git push
 
 向组添加成员：
 
-1. 在 Azure DevOps 的 GroupCommon 项目主页中，从左侧导航栏中选择“项目设置”   。 
+1. 在 Azure DevOps 的 GroupCommon 项目主页中，从左侧导航栏中选择“项目设置”。 
    
-1. 从“项目设置”左侧导航栏中，选择“团队”，然后在“团队”页上选择“GroupCommon 团队”     。 
+1. 从“项目设置”左侧导航栏中，选择“团队”，然后在“团队”页上选择“GroupCommon 团队”。 
    
    ![配置团队](./media/group-manager-tasks/teams.png)
    
-1. 在“团队资料”页上，选择“添加”   。
+1. 在“团队资料”页上，选择“添加”。
    
    ![添加到 GroupCommon 团队](./media/group-manager-tasks/add-to-team.png)
    
-1. 在“添加用户和组”对话框中，搜索并选择要添加到组的成员，然后选择“保存更改”   。 
+1. 在“添加用户和组”对话框中，搜索并选择要添加到组的成员，然后选择“保存更改”。 
    
    ![添加用户和组](./media/group-manager-tasks/add-users.png)
    
 
 配置成员权限：
 
-1. 从“项目设置”左侧导航栏中，选择“权限”   。 
+1. 在“项目设置”左侧导航窗格中，选择“权限”。 
    
-1. 在“权限”页上，选择要向其中添加成员的组  。 
+1. 在“权限”页上，选择要向其中添加成员的组。 
    
-1. 在该组的页面上选择“成员”，然后选择“添加”   。 
+1. 在该组的页面上选择“成员”，然后选择“添加”。 
    
-1. 在“邀请成员”弹出菜单中，搜索并选择要添加到组的成员，然后选择“保存”   。 
+1. 在“邀请成员”弹出菜单中，搜索并选择要添加到组的成员，然后选择“保存”。 
    
    ![为成员授予权限](./media/group-manager-tasks/grant-permissions.png)
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2ddce7e2f073914e9393eabf12e8b0f4ef347828
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 49027899d66a2192cc311fb4dba66e441155b527
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613658"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206843"
 ---
 # <a name="scene-lighting"></a>场景照明
 
@@ -72,14 +72,14 @@ ms.locfileid: "89613658"
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # LightComponentBase 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
-* [C # PointLightComponent 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
-* [C # SpotLightComponent 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
-* [C # DirectionalLightComponent 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
-* [C + + LightComponentBase 类](https://docs.microsoft.com/cpp/api/remote-rendering/lightcomponentbase)
-* [C + + PointLightComponent 类](https://docs.microsoft.com/cpp/api/remote-rendering/pointlightcomponent)
-* [C + + SpotLightComponent 类](https://docs.microsoft.com/cpp/api/remote-rendering/spotlightcomponent)
-* [C + + DirectionalLightComponent 类](https://docs.microsoft.com/cpp/api/remote-rendering/directionallightcomponent)
+* [C # LightComponentBase 类](/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [C # PointLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [C # SpotLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [C # DirectionalLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [C + + LightComponentBase 类](/cpp/api/remote-rendering/lightcomponentbase)
+* [C + + PointLightComponent 类](/cpp/api/remote-rendering/pointlightcomponent)
+* [C + + SpotLightComponent 类](/cpp/api/remote-rendering/spotlightcomponent)
+* [C + + DirectionalLightComponent 类](/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>后续步骤
 

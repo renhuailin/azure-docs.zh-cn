@@ -7,24 +7,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 09/04/2020
-ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 11/30/2020
+ms.openlocfilehash: 83c575aa40b80d9a8e39263e89a5e7860c8f8774
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484335"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741655"
 ---
-# <a name="publishing-guide-for-container-offers"></a>容器产品/服务的发布指南
+# <a name="publishing-guide-for-azure-container-offers"></a>Azure 容器产品/服务的发布指南
 
-容器可帮助将容器映像发布到 Azure Marketplace。 使用本指南了解此产品/服务的要求。 
+Azure 容器提供了向 Azure Marketplace 发布容器映像的帮助。 使用本指南来了解此产品/服务类型的要求。
 
-容器产品/服务是通过 Azure Marketplace 部署和计费的事务提供。 用户看到的列表选项为 "立即获取"。
+Azure 容器服务是通过 Azure Marketplace 部署并计费的事务产品。 用户看到的列表选项为 "立即获取"。
 
-如果解决方案是设置为基于 Kubernetes 的 Azure 容器服务实例的 Docker 容器映像，请使用 *容器* 产品/服务类型。 
+如果解决方案是设置为基于 Kubernetes 的 Azure 容器实例的 Docker 容器映像，请使用 Azure 容器产品/服务类型。
 
 > [!NOTE]
-> 基于 Kubernetes 的 Azure 容器服务实例的示例包括： Azure Kubernetes 服务或 Azure 容器实例、为基于 Kubernetes 的容器运行时选择的 Azure 客户。  
+> Azure 容器实例是运行时 docker 实例，提供在 Azure 中运行容器的最快且最简单的方式，无需管理任何虚拟机，也无需采用更高级别的服务。 容器实例可直接部署到 Azure 或由 Azure Kubernetes 服务或 Azure Kubernetes 服务引擎进行协调。  
 
 Microsoft 目前支持免费和自带许可 (BYOL) 许可模型。
 
@@ -39,9 +39,6 @@ Microsoft 目前支持免费和自带许可 (BYOL) 许可模型。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未执行此操作，请了解如何[使用 Azure 市场发展云业务](https://azuremarketplace.microsoft.com/sell)。
+- 若要为容器提供准备技术资产，请参阅 [创建 Azure 容器技术资产](create-azure-container-technical-assets.md)。
 
-若要注册并开始使用合作伙伴中心，请执行以下操作：
-
-- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
-- 有关详细信息，请参阅 [创建 Azure 容器提供](./partner-center-portal/create-azure-container-offer.md) 。
+- 若要创建 Azure 容器服务，请参阅 [在 Azure Marketplace 中创建 azure 容器产品](create-azure-container-offer.md) 以获取详细信息。

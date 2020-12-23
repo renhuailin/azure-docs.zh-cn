@@ -1,6 +1,6 @@
 ---
-title: Azure 春季 Cloud 常见问题 |Microsoft Docs
-description: 本文解答了有关 Azure 春季云的常见问题。
+title: 有关 Azure Spring Cloud 的常见问题解答 | Microsoft Docs
+description: 本文解答有关 Azure Spring Cloud 的常见问题。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
@@ -8,75 +8,95 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 99246ecee27f7ded693e2a797f8e98480e350983
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888703"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854523"
 ---
-# <a name="azure-spring-cloud-faq"></a>Azure 春季云常见问题解答
+# <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud 常见问题解答
 
-本文解答了有关 Azure 春季云的常见问题。
+本文解答有关 Azure Spring Cloud 的常见问题。
 
 ## <a name="general"></a>常规
 
 ### <a name="why-azure-spring-cloud"></a>为何要使用 Azure Spring Cloud？
 
-Azure 春季云提供适用于春季云开发人员的平台即服务 (PaaS) 。 Azure 春季云管理你的应用程序基础结构，以便你可以专注于应用程序代码和业务逻辑。 内置于 Azure 春季云中的核心功能包括 Eureka、Config Server、Service Registry Server、Pivotal 生成服务、蓝绿色部署等。 此服务还允许开发人员将其应用程序与其他 Azure 服务（例如 Azure Cosmos DB、Azure Database for MySQL 和 Redis 的 Azure 缓存）绑定。
+Azure Spring Cloud 为 Spring Cloud 开发人员提供平台即服务 (PaaS)。 Azure Spring Cloud 可以管理应用程序基础结构，使你能够专注于应用程序代码和业务逻辑。 Azure Spring Cloud 中内置的核心功能包括 Eureka、配置服务器、服务注册表服务器、Pivotal Build Service、蓝绿部署，等等。 此服务还可让开发人员将其应用程序绑定到 Azure Cosmos DB、 Azure Database for MySQL 和 Azure Cache for Redis 等其他 Azure 服务。
 
-Azure 春季云通过集成 Azure Monitor、Application Insights 和 Log Analytics 增强了开发人员和操作员的应用程序诊断体验。
+Azure Spring Cloud 通过集成 Azure Monitor、Application Insights 和 Log Analytics 来增强开发人员和运营商的应用程序诊断体验。
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Azure Spring Cloud 的安全性如何？
 
-安全和隐私是 Azure 和 Azure 春季云客户的头等大事。 Azure 通过安全加密所有这些数据，帮助确保只有客户可以访问应用程序数据、日志或配置。 
+安全性和隐私性是 Azure 及 Azure Spring Cloud 客户最关注的问题之一。 Azure 将会安全加密所有应用程序数据、日志或配置，有助于确保只有各自的客户才能访问这些数据。 
 
-* Azure 春季云中的服务实例彼此隔离。
-* Azure 春季云提供完整的 TLS/SSL 和证书管理。
+* Azure Spring Cloud 中的服务实例彼此隔离。
+* Azure Spring Cloud 提供完整的 TLS/SSL 和证书管理。
 * 适用于 OpenJDK 和 Spring Cloud 运行时的关键安全修补程序会尽快应用到 Azure Spring Cloud。
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure 春季云在哪些区域可用？
 
-美国东部、美国东部2、美国中部、美国中南部、美国西部2、西欧、北欧、英国南部、东南部和澳大利亚东部。
+美国东部、美国东部2、美国中部、美国中南部、美国中北部、美国西部、美国西部2、西欧、北欧、英国南部、东南亚、澳大利亚东部、加拿大中部和阿拉伯联合酋长国北部。
 
+### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>是否有客户数据存储在指定区域之外？
 
-### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure 春季云的已知限制是什么？
+Azure Spring Cloud 是一种区域服务。 Azure Spring Cloud 中的所有客户数据都存储在指定区域的同一地区内的多个区域，以实现冗余。 若要了解有关地区和区域的详细信息，请参阅 [Azure 中的数据驻留](https://azure.microsoft.com/global-infrastructure/data-residency/)。
 
-Azure 春季云具有以下已知限制：
+### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud 有哪些已知限制？
+
+Azure Spring Cloud 有以下已知限制：
     
-* `spring.application.name` 将被用于创建每个应用程序的应用程序名称重写。
-* `server.port` 默认为端口1025。 如果应用其他任何值，则会将其重写为1025。
-* Azure 门户和 Azure 资源管理器模板不支持上传应用程序包。 仅可通过 Azure CLI 部署应用程序来上载应用程序包。
+* 用于创建每个应用程序的应用程序名称将会覆盖 `spring.application.name`。
+* `server.port` 默认设置为端口 1025。 如果应用其他任何值，则该值将被替代。 请遵从此设置，不要在代码中指定服务器端口。
+* Azure 门户和 Azure 资源管理器模板不支持上传应用程序包。 如需上传应用程序包，仅可通过 Azure CLI 部署应用程序。
 
-### <a name="what-pricing-tiers-are-available"></a>提供哪些定价层？ 
-应使用哪一种，每个层中的限制是多少？
-* Azure 春季云提供两个定价层：基本和标准。 基本层面向开发/测试和试用 Azure 春季 Cloud。 标准层经过优化，可运行一般用途的生产流量。 有关限制和功能级别的比较，请参阅 [Azure 春季云定价详细信息](https://azure.microsoft.com/pricing/details/spring-cloud/) 。
+### <a name="what-pricing-tiers-are-available"></a>有哪些定价层可用？ 
+我应使用哪一种？每个层中的限制是什么？
+* Azure Spring Cloud 提供两个定价层：“基本”和“标准”。 基本层面向开发/测试和试用 Azure Spring Cloud。 标准层经过优化，可运行常规用途生产流量。 有关限制和功能级别的比较，请参阅 [Azure Spring Cloud 定价详细信息](https://azure.microsoft.com/pricing/details/spring-cloud/)。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>如何提供反馈和报告问题？
 
-如果在 Azure 春季云中遇到任何问题，请创建 [Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 若要提交功能请求或提供反馈，请参阅 [Azure 反馈](https://feedback.azure.com/forums/34192--general-feedback)。
+如果在 Azure 春季云中遇到任何问题，请创建 [Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 若要提交功能请求或提供反馈，请参阅 [Azure 反馈](https://feedback.azure.com/forums/34192--general-feedback)。
 
 ## <a name="development"></a>开发
 
-### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>我是一名云开发人员，而是 Azure 的新手。 了解如何开发 Azure 春季云应用程序的最快方法是什么？
+### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>我是一名 Spring Cloud 开发人员，但不熟悉 Azure。 能够最快帮助我了解如何开发 Azure Spring Cloud 应用程序的方法是什么？
 
-若要快速开始使用 Azure 春季云，请按照 [快速入门：使用 Azure 门户启动 Azure 春季 cloud 应用程序](spring-cloud-quickstart.md)中的说明进行操作。
+如需了解开始使用 Azure Spring Cloud 的最快方法，请遵循[快速入门：通过使用 Azure 门户启动 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)中的说明。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud 支持哪些 Java 运行时？
 
 Azure Spring Cloud 支持 Java 8 和 11。 请参阅 [Java 运行时和操作系统版本](#java-runtime-and-os-versions)
+
+### <a name="is-spring-boot-24x-supported"></a>是否支持春季 Boot 2.4. x？
+我们已识别到春季 Boot 2.4 的问题，当前正在与春季社区合作解决此问题。 同时，请包括这两个依赖关系，以便在应用和 Eureka 之间启用 TLS 身份验证。
+
+```xml
+<dependency> 
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-client</artifactId>
+    <version>1.19.4</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.jersey.contribs</groupId>
+    <artifactId>jersey-apache-client4</artifactId>
+    <version>1.19.4</version>
+</dependency>
+```
+
 ::: zone-end
 
-### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>在哪里可以查看春季 Cloud 应用程序日志和指标？
+### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>在哪里可以查看 Spring Cloud 应用程序日志和指标？
 
-在“应用概述”选项卡和“[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics)”选项卡中可以找到指标。
+在“应用概述”选项卡和“[Azure Monitor](../azure-monitor/platform/data-platform-metrics.md#metrics-explorer)”选项卡中可以找到指标。
 
-Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 存储、EventHub 和 [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries)。 Log Analytics 中的表名为 *AppPlatformLogsforSpring*。 若要了解如何启用它，请参阅 [诊断服务](diagnostic-services.md)。
+Azure Spring Cloud 支持将 Spring Cloud 应用程序日志和指标导出到 Azure 存储、事件中心和 [Log Analytics](../azure-monitor/platform/data-platform-logs.md)。 Log Analytics 中的表名称是 AppPlatformLogsforSpring。 若要了解如何启用它，请参阅[诊断服务](diagnostic-services.md)。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支持分布式跟踪？
 
-是的。 有关详细信息，请参阅 [教程：在 Azure 春季云中使用分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)。
+是的。 有关详细信息，请参阅[教程：将分布式跟踪与 Azure Spring Cloud 配合使用](spring-cloud-tutorial-distributed-tracing.md)。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>服务绑定支持哪些资源类型？
@@ -87,15 +107,30 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 * Azure Redis 缓存。
 ::: zone-end
 
-### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>能否在我的应用程序中查看、添加或移动永久性卷？
+### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>是否可以从应用程序内部查看、添加或移动永久性卷？
 
 是的。
 
-### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>删除/移动 Azure 春季云服务实例时，是否也会删除/移动其扩展资源？
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure 春季云实例有多少出站公共 IP 地址？
 
-这取决于拥有扩展资源的资源提供程序的逻辑。 实例的扩展资源 `Microsoft.AppPlatform` 不属于同一命名空间，因此行为因资源提供程序而异。 例如，删除/移动操作不会级联到 **诊断设置** 资源。 如果使用与删除的资源 ID 相同的资源 ID 预配新的 Azure 春季云实例，或者以前的 Azure 春季云实例被移回，则之前的 **诊断设置** 资源将继续扩展它。
+出站公共 IP 地址的数量可能因层和其他因素而异。 
 
-可以使用 Azure CLI 删除春季云的诊断设置：
+| Azure 春季云实例类型 | 默认的出站公共 IP 地址数 |
+| -------------------------------- | ---------------------------------------------- |
+| 基本层实例             | 1                                              |
+| 标准层实例          | 2                                              |
+| VNet 注入实例         | 1                                              |
+
+
+### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>是否可以增加出站公共 IP 地址的数量？
+
+是的，你可以打开 [支持票证](https://azure.microsoft.com/support/faq/)  来请求更多出站公共 IP 地址。
+
+### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>删除/移动 Azure Spring Cloud 服务实例时，是否也会删除/移动其扩展资源？
+
+这取决于拥有扩展资源的资源提供程序的逻辑。 `Microsoft.AppPlatform` 实例的扩展资源不属于同一命名空间，因此行为因资源提供程序而异。 例如，删除/移动操作不会级联到诊断设置资源。 如果为新的 Azure Spring Cloud 实例预配了与已删除实例相同的资源 ID，或者将以前的 Azure Spring Cloud 实例移回，则先前的诊断设置资源将继续对其进行扩展。
+
+可以使用 Azure CLI 删除 Spring Cloud 的诊断设置：
 
 ```azurecli
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
@@ -104,54 +139,54 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 ::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Java 运行时和操作系统版本
 
-### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure 春季云中支持哪些版本的 Java 运行时？
+### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure Spring Cloud 中支持哪些版本的 Java 运行时？
 
-Azure 春季云支持具有最新版本的 Java LTS 版本，当前为2020年6月、Java 8 build 252 和 Java 11 build 7 提供支持。 请参阅 [安装适用于 Azure 的 JDK 和 Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+Azure Spring Cloud 支持具有最新内部版本的 Java LTS 版本，当前支持的版本为 2020年 6 月版本、java 8 和 Java 11。 请参阅[安装适用于 Azure 和 Azure Stack 的 JDK](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>谁构建了这些 Java 运行时？
 
 Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用于 Azure 和 Azure Stack 的 OpenJDK 的免费、多平台、生产就绪型发行版，由 Microsoft 及 Azul Systems 提供支持。 这些版本包含构建和运行 Java SE 应用程序所需的所有组件。
 
-### <a name="how-often-will-java-runtimes-get-updated"></a>Java 运行时的更新频率是多少？
+### <a name="how-often-will-java-runtimes-get-updated"></a>Java 运行时多久更新一次？
 
 这些 LTS 和 MTS JDK 版本提供季度安全更新程序和 Bug 修补程序，并根据需要提供关键的带外更新和修补程序。 此支持包括更新版 Java（例如 Java 11）中报告的针对 Java 7 和 8 的安全更新和 Bug 修复的后向移植。
 
-### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 和 Java 11 LTS 版本将支持多长时间？
+### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 和 Java 11 LTS 版本将受到多长时间的支持？
 
-请参阅 [Azure 和 Azure Stack 的 Java 长期支持](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+请参阅[针对 Azure 和 Azure Stack 的 Java 长期支持](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
-* 在2030年12月之前，将支持 Java 8 LTS。
-* Java 11 LTS 将受支持，直到2027年9月。
+* 对 Java 8 LTS 的支持将持续至 2030 年 12 月。
+* 对 Java 11 LTS 的支持将持续至 2027 年 9 月。
 
-### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>如何下载支持的 Java 运行时以进行本地开发？
+### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>如何下载本地开发支持的 Java 运行时？
 
-请参阅 [安装适用于 Azure 的 JDK 和 Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)。
+请参阅[安装适用于 Azure 和 Azure Stack 的 JDK](/azure/developer/java/fundamentals/java-jdk-install)。
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>对于较旧的 Java 运行时，停用策略是什么？
 
-公开通知将在任何旧的运行时版本停用之前12个月发出。 你将在12个月内迁移到更高版本。
+公开通知将在旧的运行时版本停用之前 12 个月发出。 你可以在 12 个月内迁移到更高版本。
 
-* 订阅管理员将在我们停用 Java 版本后收到电子邮件通知。
-* 将在文档中发布停用信息。
+* 订阅管理员将在我们停用 Java 版本时收到电子邮件通知。
+* 停用信息将在文档中发布。
 
-### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>如何获取 Java 运行时级别的问题支持？
+### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>如何获取对 Java 运行时级别的问题的支持？
 
-可以通过 Azure 支持开支持票证。  请参阅 [如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+可以通过 Azure 支持开支持票证。  请参阅 [如何创建 Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>运行应用的操作系统是什么？
 
-使用最新的 Ubuntu LTS 版本，当前 [ubuntu 20.04 LTS (焦 Fossa) ](https://releases.ubuntu.com/focal/) 为默认操作系统。
+操作系统使用最新的 Ubuntu LTS 版本，目前 [Ubuntu 20.04 LTS (Focal Fossa)](https://releases.ubuntu.com/focal/) 是默认操作系统。
 
-### <a name="how-often-are-os-security-patches-applied"></a>OS 安全修补程序的应用频率是多少？
+### <a name="how-often-are-os-security-patches-applied"></a>操作系统安全修补程序多久应用一次？
 
-适用于 Azure 春季云的安全修补程序每月推出一次生产。
-适用于 Azure 春季的严重安全修补程序 (CVE 评分 >= 9) 尽快推出。
+适用于 Azure Spring Cloud 的安全修补程序每月向生产环境推出。
+适用于 Azure Spring Cloud 的关键安全修补程序（CVE 评分 > = 9）将尽快推出。
 ::: zone-end
 
 ## <a name="deployment"></a>部署
 
-### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure 春季云是否支持蓝绿色部署？
-是的。 有关详细信息，请参阅 [设置过渡环境](spring-cloud-howto-staging-environment.md)。
+### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure Spring Cloud 是否支持蓝绿部署？
+是的。 有关详细信息，请参阅[设置过渡环境](spring-cloud-howto-staging-environment.md)。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>是否可以访问 Kubernetes 来操作应用程序容器？
 
@@ -159,23 +194,23 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支持从源构建容器？
 
-是的。 有关详细信息，请参阅 [从源代码启动春季云应用程序](spring-cloud-quickstart.md)。
+是的。 有关详细信息，请参阅 [从源代码启动 Spring Cloud 应用程序](spring-cloud-quickstart.md)。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支持应用实例中的自动缩放？
 
-不是。
+是的。  有关详细信息，请参阅[设置自动缩放](spring-cloud-tutorial-setup-autoscale.md)。
 
 ::: zone pivot="programming-language-java"
-### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>将现有春季 Cloud 微服务迁移到 Azure 春季云的最佳做法是什么？
+### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>将现有 Spring Cloud 微服务迁移到 Azure Spring Cloud 的最佳做法是什么？
 
-在将现有春季 Cloud 微服务迁移到 Azure 春季云时，最好遵循以下最佳做法：
+在将现有 Spring Cloud 微服务迁移到 Azure Spring Cloud 时，最好遵循以下最佳做法：
 * 需要解析所有应用程序依赖项。
-* 准备好配置条目、环境变量和 JVM 参数，以便可以将它们与 Azure 春季云中的部署进行比较。
-* 如果要使用服务绑定，请访问 Azure 服务并确保已设置适当的访问权限。
-* 建议删除或禁用任何可能与 Azure 春季云管理的服务冲突的嵌入服务，例如我们的服务发现服务、配置服务器等。
-* 建议使用正式的、稳定的 Pivotal 弹簧库。 Pivotal 弹簧库的非正式版本、beta 版本或分叉版本没有服务级别协议 (SLA) 支持。
+* 准备好配置项、环境变量和 JVM 参数，以便可将其与 Azure Spring Cloud 中的部署进行比较。
+* 若要使用服务绑定，请分析你的 Azure 服务，并确保设置适当的访问权限。
+* 我们建议删除或禁用可能与 Azure Spring Cloud 管理的服务（例如，我们的服务发现服务、配置服务器等）相冲突的嵌入式服务。
+* 我们建议使用官方的、稳定的 Pivotal Spring 库。 非正式版、beta 版或克隆版的 Pivotal Spring 库不附带服务级别协议 (SLA) 支持。
 
-迁移后，监视 CPU/RAM 指标和网络流量，以确保适当地缩放应用程序实例。
+迁移后，请监视 CPU/RAM 指标和网络流量，以确保适当缩放应用程序实例。
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"
@@ -193,19 +228,19 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 ## <a name="troubleshooting"></a>疑难解答
 
-### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>服务注册表很少使用会产生什么影响？
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>极少发生的服务注册表不可用情况会产生什么影响？
 
-在极少数情况下，可能会看到一些错误，如 
+在一些极少发生的情况下，你可能会看到一些错误，例如 
 ```
 RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
 ```
-从应用程序的日志。 由于网络不稳定或其他网络问题而导致的弹簧框架导致的此问题非常低。 
+在应用程序的日志中。 这种极少出现的由 Spring 框架引入的问题是由网络不稳定或其他网络问题导致的。 
 
-不会对用户体验产生任何影响，eureka 客户端同时具有检测信号和重试策略来处理此情况。 可以将它视为一个暂时性错误，并将其安全地跳过。
+这应该不会对用户体验产生影响，eureka 客户端具有检测信号和重试策略来解决此问题。 可以将它视为一个暂时性错误，放心地忽略它。
 
-我们将在不久的将来增强此部分，并避免用户的应用程序出现此错误。
+我们将在不久的将来增强这方面，避免用户的应用程序中出现此错误。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你有其他问题，请参阅 [Azure 春季云故障排除指南](spring-cloud-troubleshoot.md)。
+如果有其他问题，请参阅 [Azure Spring Cloud 故障排除指南](spring-cloud-troubleshoot.md)。

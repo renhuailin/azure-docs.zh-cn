@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740371"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654653"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -39,7 +39,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 | 场景 | Azure AD B2C 角色 | 操作说明 |
 | -------- | ----------------- | ------- |
 | 我的应用程序需要 SAML 断言才能完成身份验证。 | **Azure AD B2C 充当标识提供者 (IdP)**<br />Azure AD B2C 充当应用程序的 SAML IdP。 | 本文。 |
-| 我的用户需要使用与 SAML 兼容的标识提供程序（如 ADFS、Salesforce 或 Shibboleth）进行单一登录。  | **Azure AD B2C 充当服务提供程序 (SP)**<br />当连接到 SAML 标识提供者时，Azure AD B2C 充当服务提供商。 它是应用程序与 SAML 标识提供者之间的联合代理。  | <ul><li>[通过自定义策略将使用 ADFS 登录设置为 SAML IdP](identity-provider-adfs2016-custom.md)</li><li>[通过自定义策略设置使用 Salesforce SAML 提供程序进行的登录](identity-provider-salesforce-custom.md)</li></ul> |
+| 我的用户需要使用与 SAML 兼容的标识提供程序（如 ADFS、Salesforce 或 Shibboleth）进行单一登录。  | **Azure AD B2C 充当服务提供程序 (SP)**<br />当连接到 SAML 标识提供者时，Azure AD B2C 充当服务提供商。 它是应用程序与 SAML 标识提供者之间的联合代理。  | <ul><li>[通过自定义策略将使用 ADFS 登录设置为 SAML IdP](identity-provider-adfs.md)</li><li>[通过自定义策略设置使用 Salesforce SAML 提供程序进行的登录](identity-provider-salesforce-saml.md)</li></ul> |
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +51,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 此方案需要三个主要组件：
 
-* SAML 服务提供程序能够发送 SAML 请求，并且能够接收、解码和响应来自 Azure AD B2C 的 SAML 声明。 这也称为信赖方。
+* SAML 服务提供程序能够发送 SAML 请求，并且能够接收、解码和响应来自 Azure AD B2C 的 SAML 声明。 服务提供商也称为信赖方应用程序。
 * 服务提供程序可公共获取的 SAML 元数据终结点。
 * [Azure AD B2C 租户](tutorial-create-tenant.md)
 
@@ -73,7 +73,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 ### <a name="11-prepare-a-self-signed-certificate"></a>1.1 准备自签名证书
 
-如果你还没有证书，则可以在本教程中使用自签名证书。 在 Windows 上，可使用 PowerShell 的 [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 来生成证书。
+如果你还没有证书，则可以在本教程中使用自签名证书。 在 Windows 上，可使用 PowerShell 的 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 来生成证书。
 
 1. 执行此 PowerShell 命令来生成自签名证书。 根据应用程序和 Azure AD B2C 租户名称修改 `-Subject` 参数。 还可调整 `-NotAfter` 日期，为证书指定不同的过期日期。
 
@@ -131,7 +131,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <!-- The issuer contains the policy name; it should be the same name as configured in the relying party application. B2C_1A_signup_signin_SAML is used below. -->
-        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>-->
+        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml</Item>-->
       </Metadata>
       <CryptographicKeys>
         <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -208,7 +208,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 1. 将 `tenant-name` 更新为 Azure AD B2C 租户的名称。
 
-最终的信赖方策略文件应如下所示：
+最终的信赖方策略文件应类似于以下 XML 代码：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -260,7 +260,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 保存更改并上传新的策略文件。 上传两个策略（扩展和信赖方文件）后，打开 Web 浏览器并导航到策略元数据。
 
-Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提供者配置的信息。 元数据定义服务的位置，例如登录和注销、证书、登录方法和其他信息。 以下 URL 提供了 Azure AD B2C 策略元数据。 将 `tenant-name` 替换为 Azure AD B2C 租户的名称，并将 `policy-name` 替换为策略的名称 (ID)：
+Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提供者配置的信息。 元数据定义服务的位置，例如登录和注销、证书、登录方法和其他信息。 以下 URL 提供了 Azure AD B2C 策略元数据。 将替换 `tenant-name` 为 Azure AD B2C 租户的名称，将替换为 `policy-name` 该策略的名称 (ID) B2C_1A_signup_signin_saml，例如：
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -270,7 +270,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 在 Azure AD B2C 中注册应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
@@ -288,7 +288,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 #### <a name="identifieruris"></a>identifierUris
 
-`identifierUris` 是一个字符串集合，其中包含用户定义的 URI，这些 URI 唯一标识其 Azure AD B2C 租户中的 Web 应用。 服务提供程序必须在 SAML 请求的 `Issuer` 元素中设置此值。
+`identifierUris` 是一个字符串集合，其中包含用户定义的 URI，这些 URI 唯一标识其 Azure AD B2C 租户中的 Web 应用。 URI 必须与 SAML 请求的名称匹配 `Issuer` 。 用户定义的 URI 通常与服务提供程序元数据的值相同 `entityID` 。
 
 #### <a name="samlmetadataurl"></a>samlMetadataUrl
 
@@ -335,11 +335,13 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 最后一步是在 SAML 信赖方应用中将 Azure AD B2C 启用为 SAML IdP。 对于不同的应用程序，执行此操作的步骤也会有所不同。 有关详细信息，请参阅应用的文档。
 
+可以在服务提供程序中将元数据配置为 "静态元数据" 或 "动态元数据"。 在静态模式下，你可以从 Azure AD B2C 策略元数据复制全部或部分元数据。 在动态模式下，你可以设置元数据的 URL，并让应用程序动态读取元数据。
+
 通常需要以下部分或全部内容：
 
 * **元数据**：`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **颁发者**： 在元数据文件中使用 entityID
-* **登录 URL/SAML 终结点/SAML URL**：检查元数据文件中的值
+* **颁发者**： SAML 请求 `issuer` 值必须与 `identifierUris` 应用程序注册清单的元素中配置的其中一个 uri 匹配。 如果 `issuer` 元素中不存在 SAML 请求名称 `identifierUris` ，请 [将其添加到应用程序注册清单](#identifieruris)。 例如，`https://contoso.onmicrosoft.com/app-name`。 
+* **登录 url/saml 终结点/Saml url**：检查 XML 元素 Azure AD B2C SAML 策略元数据文件中的值 `<SingleSignOnService>`
 * **证书：** 为 B2C_1A_SamlIdpCert ，但没有私钥。 若要获取证书的公钥：
 
     1. 请转到上面指定的元数据 URL。
@@ -353,7 +355,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 * 更新租户名称
 * 更新策略名称，例如 B2C_1A_signup_signin_saml
-* 指定此颁发者 URI：`https://contoso.onmicrosoft.com/app-name`
+* 指定此颁发者 URI。 `identifierUris`例如，使用在应用程序注册清单的元素中找到的一个 uri `https://contoso.onmicrosoft.com/app-name` 。
 
 选择“登录”，然后会显示用户登录屏幕。 登录后，SAML 断言会发回到示例应用程序。
 
@@ -361,7 +363,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 若要加密发送回服务提供程序的 SAML 断言，Azure AD B2C 将使用服务提供程序公钥证书。 公钥必须存在于上述 ["samlMetadataUrl"](#samlmetadataurl) 中所述的 SAML 元数据中，作为 KeyDescriptor，使用 "Encryption"。
 
-下面是 SAML 元数据 KeyDescriptor 的一个示例，其中使用设置为 "加密"：
+以下 XML 代码是 SAML 元数据 KeyDescriptor 的一个示例，其中使用设置为 Encryption：
 
 ```xml
 <KeyDescriptor use="encryption">
@@ -391,7 +393,9 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>启用标识提供者启动的流 (可选) 
 
-在标识提供程序启动的流中，由标识提供程序启动的登录进程 (Azure AD B2C) ，后者将未经请求的 SAML 响应发送到的信赖方应用) 程序的服务提供 (商。 若要启用标识提供者启动的流，请将 " **IdpInitiatedProfileEnabled** metadata" 项设置为 `true` " [信赖方技术配置文件](relyingparty.md#technicalprofile)"。
+在标识提供程序启动的流中，由标识提供程序启动的登录进程 (Azure AD B2C) ，后者将未经请求的 SAML 响应发送到的信赖方应用) 程序的服务提供 (商。 目前，我们不支持初始标识提供者是外部标识提供者（例如 [AD FS](identity-provider-adfs.md)或 [Salesforce](identity-provider-salesforce-saml.md)）的方案。
+
+若要启用标识提供程序 (Azure AD B2C) 启动的流 ，请 `true` 在[信赖方技术配置文件](relyingparty.md#technicalprofile)中将 IdpInitiatedProfileEnabled metadata 项设置为。
 
 ```xml
 <RelyingParty>
@@ -410,21 +414,21 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 若要登录或通过标识提供者启动的流注册用户，请使用以下 URL：
 
 ```
-https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login?EntityId=app-identifier-uri 
 ```
 
 请替换以下值：
 
 * **租户-名称** 与租户名称
 * **策略-** 包含 SAML 信赖方策略名称的名称
-
+* 在元数据文件中的 **应用标识符 uri** `identifierUris` ，例如`https://contoso.onmicrosoft.com/app-name`
 ## <a name="sample-policy"></a>示例策略
 
 我们提供了一个完整示例策略，可用于通过 SAML 测试应用进行测试。
 
 1. 下载 [SAML-SP 启动的登录示例策略](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated)
 1. 更新 `TenantId` 以匹配租户名称，例如 contoso.b2clogin.com
-1. 保留策略名称 B2C_1A_SAML2_signup_signin
+1. 保留策略名称 *B2C_1A_signup_signin_saml*
 
 ## <a name="supported-and-unsupported-saml-modalities"></a>受支持的和不支持的 SAML 形式
 
@@ -435,8 +439,23 @@ https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic
 * 在应用程序/服务主体对象中指定令牌加密密钥。
 * 标识提供者发起的登录，Azure AD B2C 标识提供者。
 
-当前不支持以下 SAML 信赖方 (RP) 方案：
-* 标识提供者发起的登录，其中标识提供者是外部标识提供者，例如 ADFS。
+## <a name="saml-token"></a>SAML 令牌
+
+SAML 令牌是一个安全令牌，在成功登录后 Azure AD B2C 颁发。 它包含有关用户的信息、该令牌所针对的服务提供商、签名和有效时间。 下表列出了 Azure AD B2C 颁发的 SAML 令牌中的声明和属性。
+
+|元素  |属性  |注释  |
+|---------|---------|---------|
+|`<Response>`| `ID` | 响应的自动生成的唯一标识符。 | 
+|`<Response>`| `InResponseTo` | 此消息响应的 SAML 请求的 ID。 | 
+|`<Response>` | `IssueInstant` | 响应问题的时刻。 时间值采用 UTC 格式进行编码。  若要更改令牌生存期的设置，请设置 `TokenNotBeforeSkewInSeconds` SAML 令牌颁发者技术配置文件的 [元数据](saml-issuer-technical-profile.md#metadata) 。 | 
+|`<Response>` | `Destination`| 一个 URI 引用，它指示已将此响应发送到的地址。 该值与 SAML 请求完全相同 `AssertionConsumerServiceURL` 。 | 
+|`<Response>` `<Issuer>` | |标识令牌颁发者。 这是由 SAML 令牌问题的 `IssuerUri` [元数据](saml-issuer-technical-profile.md#metadata)定义的任意 URI     |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |令牌断言信息的主体，如用户对象 ID。 此值固定不变，无法重新分配或重复使用。 可以使用它来安全地执行授权检查，例如，当使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | 一个 URI 引用，它表示基于字符串的标识符信息的分类。 默认情况下，将忽略此属性。 可以将信赖方 [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) 设置为指定 `NameID` 格式，如 `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` 。 |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |标记变为有效的时间。 时间值采用 UTC 格式进行编码。 应用程序应该使用此声明来验证令牌生存期的有效性。 若要更改令牌生存期的设置，请设置 `TokenNotBeforeSkewInSeconds` SAML 令牌颁发技术配置文件的 [元数据](saml-issuer-technical-profile.md#metadata) 。 |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | 令牌失效的时间。 应用程序应该使用此声明来验证令牌生存期的有效性。 默认值为5分钟后， `NotBefore` 可通过添加 `TokenLifeTimeInSeconds` SAML 令牌问题技术配置文件的 [元数据](saml-issuer-technical-profile.md#metadata) 进行更新。|
+|`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |标识目标受众的 URI 引用。 它标识令牌的目标接收方。 该值与 SAML 请求完全相同 `AssertionConsumerServiceURL` 。|
+|`<Response>``<Assertion>` `<AttributeStatement>` 的集合`<Attribute>` | | 断言集合 (声明) ，如 [信赖方技术配置文件](relyingparty.md#technicalprofile) 输出声明中所述。 可以通过设置输出声明的来配置断言的名称 `PartnerClaimType` 。 |
 
 ## <a name="next-steps"></a>后续步骤
 

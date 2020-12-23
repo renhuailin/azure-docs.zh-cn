@@ -3,22 +3,22 @@ title: 在 Azure 实验室服务中添加用户作为实验室创建者
 description: 本文介绍如何将用户添加到 Azure 实验室服务中的实验室帐户的实验室创建者角色。 实验室创建者可以在此实验室帐户中创建实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399476"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435954"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>向 Azure 实验室服务中的实验室帐户添加实验室创建者
-本文介绍如何将用户作为实验室创建者添加到 Azure 实验室服务中的实验室帐户。 然后，这些使用可以在实验室帐户中创建教室实验室。 
+本文介绍如何将用户作为实验室创建者添加到 Azure 实验室服务中的实验室帐户。 然后，这些使用可以在实验室帐户中创建实验室。 
 
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>将 Microsoft 用户帐户添加到 Lab Creator 角色
 若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 如果打算使用同一用户帐户创建课堂实验室，可以跳过此步骤。 若要使用其他用户帐户创建教室实验室，请执行以下步骤： 
 
-为教师提供为课程创建实验室的权限，并将他们添加为**实验室创建者**角色：
+为教师提供为课程创建实验室的权限，并将他们添加为 **实验室创建者** 角色：
 
-1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加角色分配”************。 
+1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加角色分配”。 
 
     ![“访问控制”->“添加角色分配”按钮](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
 1. 在“添加角色分配”页上，选择“实验室创建者”作为“角色”，选择想要添加到“实验室创建者”角色的用户，然后选择“保存”   。 
@@ -57,7 +57,7 @@ ms.locfileid: "91399476"
 
 ![用 GitHub 链接登录](./media/how-to-configure-student-usage/signin-github.png)
 
-最后，系统将提示他们创建链接到其 GitHub 帐户的 Microsoft 帐户。 当讲师选择 **下一个**时，会自动发生这种情况。  然后，教师会立即登录并连接到教室实验室。
+最后，系统将提示他们创建链接到其 GitHub 帐户的 Microsoft 帐户。 当讲师选择 **下一个** 时，会自动发生这种情况。  然后，教师会立即登录并连接到教室实验室。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -66,4 +66,4 @@ ms.locfileid: "91399476"
 - [以实验室所有者身份创建并管理实验室](how-to-manage-classroom-labs.md)
 - [以实验室所有者身份设置并发布模板](how-to-create-manage-template.md)
 - [以实验室所有者身份配置并控制实验室的使用](how-to-configure-student-usage.md)
-- [以实验室用户身份访问教室实验室](how-to-use-classroom-lab.md)
+- [作为实验室用户，访问实验室](how-to-use-classroom-lab.md)

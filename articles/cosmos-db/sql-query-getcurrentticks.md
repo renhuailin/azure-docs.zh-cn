@@ -3,20 +3,22 @@ title: Azure Cosmos DB 查询语言中的 GetCurrentTicks
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 GetCurrentTicks。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 610c545bf25822d27e0a641a1b2631f899502420
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606933"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340152"
 ---
-# <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB) 
+# <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-返回自00:00:00 星期四（100年 1 1970 月1日）起已经过的毫微秒计时周期数。
+返回自 1970 年 1 月 1 日星期四 00:00:00 以来经过的 100 纳秒时钟周期数。
   
 ## <a name="syntax"></a>语法
   
@@ -26,17 +28,17 @@ GetCurrentTicks ()
 
 ## <a name="return-types"></a>返回类型
 
-返回一个有符号的数字值，从 Unix epoch 开始，当前的100毫微秒计时周期数。 换句话说，GetCurrentTicks 返回自00:00:00 星期四（100年 1 1970 月1日）起已经过的毫微秒计时周期数。
+返回一个有符号的数值，即自 Unix 纪元以来当前已经过的 100 纳秒时钟周期数。 换句话说，GetCurrentTicks 返回自 1970 年 1 月 1 日星期四 00:00:00 以来经过的 100 纳秒时钟周期数。
 
-## <a name="remarks"></a>注解
+## <a name="remarks"></a>备注
 
-GetCurrentTicks ( # A1 是不确定性函数。 返回的结果采用 UTC（协调世界时）格式。
+GetCurrentTicks() 是非确定性的函数。 返回的结果采用 UTC（协调世界时）格式。
 
 此系统函数不会使用索引。
 
 ## <a name="examples"></a>示例
 
-下面的示例返回当前时间，以刻度为单位：
+下面的示例返回当前时间（以时钟周期为单位）：
 
 ```sql
 SELECT GetCurrentTicks() AS CurrentTimeInTicks

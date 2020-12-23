@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031086"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791080"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>在“我的应用”门户中编辑或撤销应用程序权限
 
@@ -30,9 +30,9 @@ ms.locfileid: "90031086"
 
 ## <a name="manage-app-accounts"></a>管理应用帐户
 
-若要查看你或你的管理员同意的应用，请 **选择 "** 我的 **应用** " 门户中的应用，然后选择 " **管理应用程序**"：
+若要查看你或你的管理员同意的应用，请 **选择 "** 我的 **应用** " 门户中的应用，然后选择 " **管理应用程序** "：
 
-![在“我的应用”门户中管理应用程序](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
+![在“我的应用”门户中管理应用程序](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 “权限”窗口的顶部显示个人许可的权限。 应用权限的示例包括能够访问日历、联系人或照相机。
 

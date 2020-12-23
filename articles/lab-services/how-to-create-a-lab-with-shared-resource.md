@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d4bf4127dc163bb5f034e077b84664828374ba87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776436"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647964"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>如何在 Azure 实验室服务中使用共享资源创建实验室
 
@@ -38,12 +38,12 @@ ms.locfileid: "91776436"
 许可证服务器将需要连接到对等互连的虚拟网络，因此，许可证服务器需要位于与实验室帐户相同的区域中。
 
 #### <a name="static-private-ip-and-mac-address"></a>静态专用 IP 和 MAC 地址
-默认情况下，虚拟机具有动态专用 ip，在 [设置任何软件之前，将专用 ip 设置为静态](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal)。 这会将专用 IP 和 MAC 地址设置为静态。  
+默认情况下，虚拟机具有动态专用 ip，在 [设置任何软件之前，将专用 ip 设置为静态](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 这会将专用 IP 和 MAC 地址设置为静态。  
 
 #### <a name="control-access"></a>控制访问
 控制对许可证服务器的访问是关键所在。  VM 安装完成后，仍需要进行维护、故障排除和更新。  下面是几种不同的方法来实现此目的。
-- [在 Azure 安全中心中设置实时 (JIT) 访问。](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
-- [设置网络安全组以限制访问。](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [在 Azure 安全中心中设置实时 (JIT) 访问。](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [设置网络安全组以限制访问。](../virtual-network/network-security-groups-overview.md)
 - [设置堡垒以允许对许可证服务器进行安全访问。](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>实验室帐户

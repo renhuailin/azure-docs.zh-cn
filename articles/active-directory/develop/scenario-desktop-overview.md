@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4effdde131f93ccf430029edc4d87e0627010c8b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257548"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443185"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>方案：用于调用 Web API 的 桌面应用
 
@@ -25,7 +25,7 @@ ms.locfileid: "91257548"
 
 ## <a name="get-started"></a>入门
 
-如果尚未创建第一个应用程序，请先完成快速入门：
+如果尚未创建你的首个应用程序，请完成以下快速入门进行创建：
 
 - [快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API](./quickstart-v2-windows-desktop.md)
 - [快速入门：获取令牌并从 UWP 应用中调用 Microsoft Graph API](./quickstart-v2-uwp.md)
@@ -61,5 +61,4 @@ ms.locfileid: "91257548"
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [桌面应用：应用注册](scenario-desktop-app-registration.md)
+转到本方案中的下一篇文章 " [应用注册](scenario-desktop-app-registration.md)"。

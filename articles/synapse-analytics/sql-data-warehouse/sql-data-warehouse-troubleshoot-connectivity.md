@@ -1,6 +1,6 @@
 ---
 title: 排查连接问题
-description: 排查 Synapse SQL 池中的连接问题。
+description: 排查 (以前的 SQL DW) 专用 SQL 池中的连接问题。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,47 +11,47 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: ea99c2ce1963ec58649fd4c2fbb4d98768da8c6f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362174"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447952"
 ---
-# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>排查 Synapse SQL 池中的连接问题
+# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool-formerly-sql-dw"></a>排查专用 SQL 池中的连接问题 (以前的 SQL DW) 
 
-本文列出了有关连接到 SQL 池数据库的常用故障排除方法。
+本文列出了有关连接到专用 SQL 池数据库 (以前的 SQL DW) 的常见故障排除方法。
 
 ## <a name="check-service-availability"></a>检查服务可用性
 
-检查服务是否可用。 在 Azure 门户中，请转到要尝试连接的 SQL 池。 在左侧 TOC 面板中，单击“诊断并解决问题”。
+检查服务是否可用。 在 Azure 门户中， (以前的 SQL DW) 尝试连接到专用 SQL 池。 在左侧 TOC 面板中，单击“诊断并解决问题”。
 
 ![选择“资源运行状况”](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-此处将显示 SQL 池的状态。 如果该服务未显示为“可用”，请查看其他步骤。
+ (以前的 SQL DW) ，专用 SQL 池的状态将显示在此处。 如果该服务未显示为“可用”，请查看其他步骤。
 
 ![可用服务](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-如果“资源运行状况”显示 SQL 池实例已暂停或正在缩放，请按照指南恢复实例。
+如果资源运行状况显示你的专用 SQL 池 (以前的 SQL DW) 实例已暂停或正在缩放，请按照指南操作以恢复你的实例。
 
-![屏幕截图显示暂停或缩放的 SQL 数据仓库实例。](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
-有关资源运行状况的其他信息可在此处找到。
+![屏幕截图显示暂停或缩放的专用 SQL 池的实例。](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+可以在此处找到有关资源运行状况的其他信息。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>检查已暂停的操作或正在缩放的操作
 
-在门户中查看 SQL 池实例是否已暂停或正在缩放。
+检查门户，查看专用 SQL 池 (以前的 SQL DW) 实例是否已暂停或正在缩放。
 
 ![屏幕截图显示了如何检查数据仓库是否已暂停。](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-如果发现服务已暂停或正在缩放，请检查其是否未处于维护计划期间。 在 SQL 池门户的“概述”部分，可看到所选维护计划。
+如果发现服务已暂停或正在缩放，请检查其是否未处于维护计划期间。 在专用 SQL 池的门户中 (以前的 SQL DW) *概述*，你会看到选择的维护计划。
 
 ![维护计划概述](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-否则，请与 IT 管理员联系以验证此维护不是计划事件。 要恢复 SQL 池实例，请按照[这些步骤](pause-and-resume-compute-portal.md)操作。
+否则，请与 IT 管理员联系以验证此维护不是计划事件。 若要继续 (以前的 SQL DW) 实例的专用 SQL 池，请执行 [以下步骤](pause-and-resume-compute-portal.md)。
 
 ## <a name="check-your-firewall-settings"></a>检查防火墙设置
 
-SQL 池数据库通过端口 1433 进行通信。如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 这种情况下无法连接到[逻辑服务器](../../azure-sql/database/logical-servers.md)，除非 IT 部门打开了端口 1433。 可从[此处](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
+专用 SQL 池 (以前的 SQL DW) 数据库通过端口1433进行通信。如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 这种情况下无法连接到[逻辑服务器](../../azure-sql/database/logical-servers.md)，除非 IT 部门打开了端口 1433。 可从[此处](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>检查 VNet/服务终结点设置
 
@@ -61,7 +61,7 @@ SQL 池数据库通过端口 1433 进行通信。如果尝试从企业网络内�
 
 ### <a name="software"></a>软件
 
-进行检查以确保正在使用最新的工具连接到 SQL 池：
+请检查以确保使用最新的工具连接到专用 SQL 池 (以前的 SQL DW) ：
 
 - SSMS
 - Azure Data Studio
@@ -106,7 +106,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>间歇性连接问题
 
-检查是否在服务器上遇到具有大量排队请求的重型负载。 可能需要纵向扩展 SQL 池以获得更多资源。
+检查是否在服务器上遇到具有大量排队请求的重型负载。 对于其他资源，你可能需要 (以前的 SQL DW) 中增加专用 SQL 池。
 
 ## <a name="common-error-messages"></a>常见错误消息
 

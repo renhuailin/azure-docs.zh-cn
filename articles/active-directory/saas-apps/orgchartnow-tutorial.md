@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a28bfbb7fcfd357dc3aac521db24788607cd2212
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc6b90be8e951c0e30c99d0bb16f85e49cf991f2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543850"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522319"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>教程：Azure Active Directory 与 OrgChart Now 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88543850"
 * 可让用户使用其 Azure AD 帐户自动登录到 OrgChart Now（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -89,7 +89,7 @@ ms.locfileid: "88543850"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -185,9 +185,9 @@ ms.locfileid: "88543850"
 
 若要让 Azure AD 用户登录 OrgChart Now，必须将其预配到 OrgChart Now 中。 
 
-1. OrgChart Now 支持在默认情况下启用的实时预配。 尝试访问 OrgChart Now 期间，如果尚不存在用户，则会创建一个新用户。 仅当 SSO 请求来自已识别的 IDP，并且在用户列表中未找到 SAML 断言中的电子邮件时，实时用户预配功能才会创建**只读**用户。 对于此自动预配功能，需要在 OrgChart Now 中创建标题为“常规”的访问组。  请遵循以下步骤创建访问组：
+1. OrgChart Now 支持在默认情况下启用的实时预配。 尝试访问 OrgChart Now 期间，如果尚不存在用户，则会创建一个新用户。 仅当 SSO 请求来自已识别的 IDP，并且在用户列表中未找到 SAML 断言中的电子邮件时，实时用户预配功能才会创建 **只读** 用户。 对于此自动预配功能，需要在 OrgChart Now 中创建标题为“常规”的访问组。  请遵循以下步骤创建访问组：
 
-    a. 单击 UI 右上角的**齿轮**图标后，转到“管理组”选项。
+    a. 单击 UI 右上角的 **齿轮** 图标后，转到“管理组”选项。
 
     ![OrgChart Now 组](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
@@ -199,11 +199,11 @@ ms.locfileid: "88543850"
 
     ![OrgChart Now 文件夹](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. **锁定**文件夹，以便只有管理员用户可以修改它们。 然后按“确定”。 
+    d. **锁定** 文件夹，以便只有管理员用户可以修改它们。 然后按“确定”。 
 
     ![OrgChart Now 锁定](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
-2. 若要创建**管理员**用户和**读/写**用户，必须手动创建用户，以通过 SSO 获取对其特权级别的访问。 若要预配用户帐户，请执行以下步骤：
+2. 若要创建 **管理员** 用户和 **读/写** 用户，必须手动创建用户，以通过 SSO 获取对其特权级别的访问。 若要预配用户帐户，请执行以下步骤：
 
     a. 以安全管理员身份登录到 OrgChart Now。
 
@@ -215,7 +215,7 @@ ms.locfileid: "88543850"
 
     ![OrgChart Now 管理](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * 在“用户 ID”文本框中输入用户 ID，例如 **brittasimon\@contoso.com**。
+    * 在“用户 ID”文本框中输入用户 ID，例如 **brittasimon\@contoso.com** 。
 
     * 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com。
 
@@ -225,13 +225,12 @@ ms.locfileid: "88543850"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“OrgChart Now”磁贴时，应会自动登录到设置了 SSO 的 OrgChart Now。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“OrgChart Now”磁贴时，应会自动登录到设置了 SSO 的 OrgChart Now。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -10,36 +10,36 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6140260b75580270b365e59358d97e0a54c7b4a7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 42359eb8a2bfdad23589e0302b80e7806b388510
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503933"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913600"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
-本文介绍如何使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 在具有分层命名空间的存储帐户中创建和管理目录、文件和权限。 
+本文介绍如何使用 [Azure 命令行接口 (CLI)](/cli/azure/) 在具有分层命名空间的存储帐户中创建和管理目录、文件和权限。 
 
-[示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  | [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
+[示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md) | [提高反馈](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-> * 已启用分层命名空间 (HNS) 的存储帐户。 请按照[此处](data-lake-storage-quickstart-create-account.md)的说明创建一个存储帐户。
+> * 已启用分层命名空间 (HNS) 的存储帐户。 请按照[此处](../common/storage-account-create.md)的说明创建一个存储帐户。
 > * Azure CLI 版本 `2.6.0` 或更高版本。
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>确保安装正确版本的 Azure CLI
 
-1. 打开 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)，或者，如果已在本地[安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
+1. 打开 [Azure Cloud Shell](../../cloud-shell/overview.md)，或者，如果已在本地[安装](/cli/azure/install-azure-cli) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
 
 2. 使用以下命令验证安装的 Azure CLI 版本是否是 `2.6.0` 或更高版本。
 
    ```azurecli
     az --version
    ```
-   如果 Azure CLI 版本低于 `2.6.0`，则安装更高版本。 请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+   如果 Azure CLI 版本低于 `2.6.0`，则安装更高版本。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="connect-to-the-account"></a>连接到帐户
 
@@ -53,7 +53,7 @@ ms.locfileid: "87503933"
 
    否则，请在浏览器中打开 [https://aka.ms/devicelogin](https://aka.ms/devicelogin)，然后输入终端中显示的授权代码。 然后，在浏览器中使用帐户凭据登录。
 
-   若要详细了解不同的身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](../common/authorize-data-operations-cli.md)。
+   若要详细了解不同的身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md)。
 
 2. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为将托管静态网站的存储帐户的订阅。
 
@@ -64,13 +64,13 @@ ms.locfileid: "87503933"
    将 `<subscription-id>` 占位符值替换为你的订阅 ID。
 
 > [!NOTE]
-> 本文中提供的示例演示 Azure Active Directory (AD) 授权。 若要详细了解身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](../common/authorize-data-operations-cli.md)。
+> 本文中提供的示例演示 Azure Active Directory (AD) 授权。 若要详细了解身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md)。
 
 ## <a name="create-a-container"></a>创建容器
 
 容器充当文件的文件系统。 可以使用 `az storage fs create` 命令创建文件系统。 
 
-此示例创建一个名为的容器 `my-file-system` 。
+此示例创建一个名为 `my-file-system` 的容器。
 
 ```azurecli
 az storage fs create -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -78,7 +78,7 @@ az storage fs create -n my-file-system --account-name mystorageaccount --auth-mo
 
 ## <a name="show-container-properties"></a>显示容器属性
 
-您可以使用命令将容器的属性打印到控制台 `az storage fs show` 。
+可使用 `az storage fs show` 命令将容器的属性输出到控制台。
 
 ```azurecli
 az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -88,7 +88,7 @@ az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode
 
 使用 `az storage fs file list` 命令列出目录内容。
 
-此示例列出了名为的容器的内容 `my-file-system` 。
+此示例列出名为 `my-file-system` 的容器的内容。
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -96,9 +96,9 @@ az storage fs file list -f my-file-system --account-name mystorageaccount --auth
 
 ## <a name="delete-a-container"></a>删除容器
 
-使用命令删除容器 `az storage fs delete` 。
+使用 `az storage fs delete` 命令删除容器。
 
-此示例删除名为的容器 `my-file-system` 。 
+此示例删除一个名为 `my-file-system` 的容器。 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -108,7 +108,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 使用 `az storage fs directory create` 命令创建目录引用。 
 
-此示例将一个名为的目录添加到名为 `my-directory` `my-file-system` 的容器，该容器位于名为的帐户中 `mystorageaccount` 。
+此示例将名为 `my-directory` 的目录添加到名为 `my-file-system` 的容器中，该容器位于名为 `mystorageaccount` 的帐户下。
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -126,13 +126,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 使用 `az storage fs directory move` 命令重命名或移动目录。
 
-此示例将目录从名称重命名 `my-directory` 为 `my-new-directory` 同一容器中的名称。
+此示例在同一容器中将目录的名称 `my-directory` 重命名为 `my-new-directory`。
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-此示例将目录移动到名为的容器 `my-second-file-system` 。
+此示例将目录移到名为 `my-second-file-system` 的容器。
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -150,9 +150,9 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 ## <a name="check-if-a-directory-exists"></a>检查目录是否存在
 
-使用命令确定容器中是否存在特定的目录 `az storage fs directory exists` 。
+使用 `az storage fs directory exists` 命令确定容器中是否存在特定的目录。
 
-此示例显示容器中是否存在名为的目录 `my-directory` `my-file-system` 。 
+此示例显示 `my-file-system` 容器中是否存在名为 `my-directory` 的目录。 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -172,7 +172,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 使用 `az storage fs file list` 命令列出目录内容。
 
-此示例列出名为的目录的内容 `my-directory` ，该目录位于 `my-file-system` 名为的存储帐户的容器中 `mystorageaccount` 。 
+此示例列出名为 `my-directory` 的目录的内容，该目录位于名为 `mystorageaccount` 的存储帐户的 `my-file-system` 容器中。 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -216,12 +216,12 @@ az storage fs file move -p my-file.txt -f my-file-system --new-path my-file-syst
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-permissions"></a>管理权限
+## <a name="manage-access-control-lists-acls"></a>管理访问控制列表 (ACL)
 
 可以获取、设置和更新目录和文件的访问权限。
 
 > [!NOTE]
-> 如果使用 Azure Active Directory (Azure AD) 来授权命令，请确保已为安全主体分配了[存储 Blob 数据所有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改这些权限的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果使用 Azure Active Directory (Azure AD) 来授权命令，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改这些权限的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
 
 ### <a name="get-an-acl"></a>获取 ACL
 
@@ -273,7 +273,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 下图显示了设置文件 ACL 后的输出。
 
-![获取 ACL 输出](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![获取 ACL 输出 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
 在本示例中，负责人用户和负责人组只有读取和写入权限。 所有其他用户都具有写入和执行权限。 有关访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
 
@@ -307,12 +307,15 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ```azurecli
 az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
+
 ```
+
+### <a name="set-an-acl-recursively"></a>以递归方式设置 ACL
+
+你可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。 有关详细信息，请参阅[以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)](recursive-access-control-lists.md)。
 
 ## <a name="see-also"></a>另请参阅
 
 * [示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
 * [已知问题](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-
-

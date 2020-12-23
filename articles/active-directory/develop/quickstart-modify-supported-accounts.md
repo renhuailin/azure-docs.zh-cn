@@ -1,90 +1,61 @@
 ---
-title: 修改 Microsoft 标识平台应用帐户 | Azure
-description: 配置注册到 Microsoft 标识平台的应用程序，更改能够访问应用程序的人或具体帐户。
+title: 如何：更改应用程序支持的帐户类型 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本操作指南中，你将配置注册到 Microsoft 标识平台的应用程序，以更改可以访问该应用程序的人员或帐户。
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.reviewer: marsma, aragra, lenalepa, sureshja
+ms.openlocfilehash: 94a7f4d9ce1471aa1dd6aef3165562a2abc02816
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826853"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453254"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入门：修改应用程序支持的帐户
+# <a name="how-to-modify-the-accounts-supported-by-an-application"></a>如何修改应用程序支持的帐户
 
-在 Microsoft 标识平台中注册应用程序时，可能会希望系统只允许你组织中的用户访问你的应用程序。 或者，可能还希望应用程序可由外部组织中的用户访问，或者可由外部组织中的用户以及不一定属于某个组织的用户（个人帐户）访问。
+在 Microsoft 标识平台上注册应用程序时，你指定了可以访问该应用程序的人员或帐户类型。 例如，你可能只在你的组织中指定了帐户，该组织是一个单租户应用。 或者，你可能在任何组织（包括你的组织）中指定了帐户，该组织是一个多租户应用。
 
-本快速入门介绍如何修改应用程序的配置，更改能够访问应用程序的人或具体帐户。
+在以下各小节中，你将了解如何在 Azure 门户中修改应用的注册，以更改可访问应用程序的用户或帐户类型。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要开始，请确保满足下列先决条件：
-
-* 了解支持的[权限和许可](v2-permissions-and-consent.md)，这是在生成其他用户或应用程序需要使用的应用程序时必须理解的。
-* 拥有一个其中已注册了应用程序的租户。
-  * 如果尚未注册应用，请[了解如何将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
-
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登录到 Azure 门户，并选择应用
-
-在配置应用之前，请执行以下步骤：
-
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务，然后选择“应用注册”。
-1. 找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页或主注册页。
-1. 按步骤[更改应用程序注册以支持不同的帐户](#change-the-application-registration-to-support-different-accounts)。
-1. 如果有单页应用程序，请[启用 OAuth 2.0 隐式授权](#enable-oauth-20-implicit-grant-for-single-page-applications)。
+* [已在你的 Azure AD 租户中注册的应用程序](quickstart-register-app.md)
 
 ## <a name="change-the-application-registration-to-support-different-accounts"></a>更改应用程序注册以支持不同的帐户
 
-如果正在编写一个要供组织外部的客户或合作伙伴使用的应用程序，则需要在 Azure 门户中更新应用程序定义。
+若要为现有应用注册支持的帐户类型指定不同的设置，请执行以下操作：
 
-> [!IMPORTANT]
-> Azure AD 要求多租户应用程序的应用程序 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。 就单租户应用程序而言，应用 ID URI 在该租户中保持唯一便已足够。 就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。 系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。 例如，如果租户的名称为 contoso.onmicrosoft.com，则有效的应用 ID URI 为 `https://contoso.onmicrosoft.com/myapp`。 如果租户具有已验证的域 contoso.com，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。 如果应用程序 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册”，然后选择你的应用程序 。
+1. 现在，指定可使用该应用程序的人员，这有时称为“登录受众”。
 
-### <a name="to-change-who-can-access-your-application"></a>更改谁能够访问你的应用程序
-
-1. 在应用的“概览”页中，选择“身份验证”部分，然后更改在“支持的帐户类型”下选择的值。  
-    * 若要生成业务线 (LOB) 应用程序，请选择“仅此目录中的帐户”。 如果未在目录中注册应用程序，则此选项不可用。
-    * 若要以所有企业和教育客户为目标，请选择“任何组织目录中的帐户”。
-    * 若要以最广泛的客户为目标，请选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
+    | 支持的帐户类型 | 说明 |
+    |-------------------------|-------------|
+    | **仅此组织目录中的帐户** | 如果要生成仅供租户中的用户（或来宾）使用的应用程序，请选择此选项。<br><br>通常称为业务线 (LOB) 应用程序，这是 Microsoft 标识平台中的单租户应用程序。 |
+    | **任何组织目录中的帐户** | 如果希望任何 Azure AD 租户中的用户都能够使用你的应用程序，请选择此选项。 例如，如果要构建打算向多个组织提供的软件即服务 (SaaS) 应用程序，则适合使用此选项。<br><br>这在 Microsoft 标识平台中被称为多租户应用程序。 |
 1. 选择“保存”。
 
-## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>为单页应用程序启用 OAuth 2.0 隐式授权
+### <a name="why-changing-to-multi-tenant-can-fail"></a>更改为多租户可能会失败的原因
 
-通常将单页应用程序 (SPA) 构建为一个在浏览器中运行的 JavaScript 重型前端，该前端调用应用程序的 Web API 后端来执行其业务逻辑。 对于托管在 Azure AD 中的 SPA，可以使用 OAuth 2.0 隐式授权对具有 Azure AD 的用户进行身份验证，并获取可用来保护从应用程序 JavaScript 客户端到其后端 Web API 的调用的令牌。
+由于应用程序 ID URI （应用 ID URI）名称冲突，将应用注册从单租户切换到多租户有时可能会失败。 应用 ID URI 的示例为 `https://contoso.onmicrosoft.com/myapp`。
 
-用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。 若要了解有关隐式授权的详细信息，并确定其是否适合应用程序方案，请了解 Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) 和 [v2.0](v2-oauth2-implicit-grant-flow.md) 中的 OAuth 2.0 隐式授权流。
+应用 ID URI 是在协议消息中标识应用程序的方式之一。 对于单租户应用程序而言，应用 ID URI 仅需在该租户中保持唯一。 对于多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用。 通过要求应用 ID URI 的主机名与 Azure AD 租户的其中一个[已验证发布服务器域](howto-configure-publisher-domain.md)相匹配，来强制实施全局唯一性。
 
-默认情况下，为应用程序禁用了 OAuth 2.0 隐式授权。 可以执行下述步骤，为应用程序启用 OAuth 2.0 隐式授权。
+例如，如果租户的名称是 contoso.onmicrosoft.com，则 `https://contoso.onmicrosoft.com/myapp` 是有效的应用 ID URI。 如果租户具有已验证的域 contoso.com，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。 如果应用 ID URI 不遵循第二种模式 `https://contoso.com/myapp`，则将应用注册转换为多租户会失败。
 
-### <a name="to-enable-oauth-20-implicit-grant"></a>启用 OAuth 2.0 隐式授权
-
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务，然后选择“应用注册”。
-1. 找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页或主注册页。
-1. 在应用的“概览”页中，选择“身份验证”部分。 
-1. 在“高级设置”下找到“隐式授权”部分。 
-1. 选择“ID 令牌”和/或“访问令牌”。 
-1. 选择“保存”。
+有关配置已验证发布服务器域的详细信息，请参阅[配置已验证的域](howto-configure-publisher-domain.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解下述其他相关的应用管理快速入门：
-
-* [将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-* [配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md)
-* [配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
-* [删除注册到 Microsoft 标识平台的应用程序](quickstart-remove-app.md)
-
-了解有关表示已注册应用程序的两个 Azure AD 对象及它们之间的关系的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
-
-深入了解使用 Azure Active Directory 开发应用程序时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
+详细了解[将应用从单租户转换为多租户](howto-convert-app-to-be-multi-tenant.md)的要求。

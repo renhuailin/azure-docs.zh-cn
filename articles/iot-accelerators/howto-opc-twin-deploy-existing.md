@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282113"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071636"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 克隆部署到现有项目
 
 > [!IMPORTANT]
-> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 OPC 克隆模块在 IoT Edge 上运行，并向 OPC 克隆和注册表服务提供多个边缘服务。
 
@@ -33,7 +33,7 @@ OPC UA 设备注册表微服务提供对已注册的 OPC UA 应用程序及其�
 
 ## <a name="prerequisites"></a>先决条件
 
-请确保已安装 PowerShell 和 [AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 扩展。 如果尚未这样做，请克隆此 GitHub 存储库。 在 PowerShell 中运行以下命令：
+请确保已安装 PowerShell 和 [AzureRM powershell](/powershell/azure/azurerm/install-azurerm-ps) 扩展。 如果尚未这样做，请克隆此 GitHub 存储库。 在 PowerShell 中运行以下命令：
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4bff4ee7980002d911426ed46ffef6fc28c43e9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704516"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920756"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -23,19 +23,19 @@ ms.locfileid: "84704516"
 
 ## <a name="retry-policies"></a>重试策略
 
-对于最基本的异常和错误处理，可以在支持的任何操作或触发器（例如，请参阅[HTTP 操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)）中使用*重试策略*。 重试策略指定当原始请求（导致 408、429 或 5xx 响应的任何请求）超时或失败时，操作或触发器是否且如何重试请求。 如果未使用任何其他重试策略，则使用默认策略。
+对于最基本的异常和错误处理，可以在支持的任何操作或触发器（例如，请参阅 [HTTP 操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)）中使用 *重试策略*。 重试策略指定当原始请求（导致 408、429 或 5xx 响应的任何请求）超时或失败时，操作或触发器是否且如何重试请求。 如果未使用任何其他重试策略，则使用默认策略。
 
 重试策略类型如下所示：
 
 | 类型 | 说明 |
 |------|-------------|
-| **Default** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 |
+| **Default** | 此策略可 *按指数级增长* 间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 |
 | **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 |
 | **固定间隔**  | 此策略会等待指定的时间间隔，然后再发送下一个请求。 |
 | 无   | 不重新发送请求。 |
 |||
 
-要了解重试策略限制，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#request-limits)。
+要了解重试策略限制，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#http-limits)。
 
 ### <a name="change-retry-policy"></a>更改重试策略
 
@@ -249,7 +249,7 @@ ms.locfileid: "84704516"
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>评估具有作用域的操作及其结果
 
-与在使用属性执行单独操作后运行步骤类似 `runAfter` ，你可以将操作组合到一个[作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
+与在使用属性执行单独操作后运行步骤类似 `runAfter` ，你可以将操作组合到一个 [作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
 
 若要检查范围的状态，可以使用与用来检查逻辑应用运行状态（例如 `Succeeded`、`Failed` 等等）的条件相同的条件。
 
@@ -267,7 +267,7 @@ ms.locfileid: "84704516"
 
 [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) 函数提供了有关作用域中所有操作的结果的上下文。 `result()` 函数接受单个参数（即作用域的名称），并返回一个数组，其中包含该作用域中的所有操作结果。 这些操作对象包括与 `actions()` 对象相同的属性，例如操作的开始时间、结束时间、状态、输入、相关 ID 和输出。 若要发送作用域内失败的任何操作的上下文，可以轻松将 `@result()` 表达式与 `runAfter` 属性配对。
 
-若要为范围中具有 `Failed` 结果的每个操作运行操作，并将结果数组筛选到失败的操作，可将 `@result()` 表达式与[**筛选器数组**](logic-apps-perform-data-operations.md#filter-array-action)操作和 [**For each**](../logic-apps/logic-apps-control-flow-loops.md) 循环配对。 可以采用筛选的结果数组并使用 `For_each` 循环对每个失败执行操作。
+若要为范围中具有 `Failed` 结果的每个操作运行操作，并将结果数组筛选到失败的操作，可将 `@result()` 表达式与 [**筛选器数组**](logic-apps-perform-data-operations.md#filter-array-action)操作和 [**For each**](../logic-apps/logic-apps-control-flow-loops.md) 循环配对。 可以采用筛选的结果数组并使用 `For_each` 循环对每个失败执行操作。
 
 以下示例（后附详细说明）发送一个 HTTP POST 请求，其中包含范围内“My_Scope”中失败的任何操作的响应正文：
 
@@ -312,11 +312,11 @@ ms.locfileid: "84704516"
 
 下面是描述此示例中发生的情况的详细演练：
 
-1. 要获取“My_Scope”中所有操作的结果，**筛选数组**操作将使用筛选表达式：`@result('My_Scope')`
+1. 要获取“My_Scope”中所有操作的结果，**筛选数组** 操作将使用筛选表达式：`@result('My_Scope')`
 
-1. **筛选数组**的条件是 `@result()` 状态等于的任何项 `Failed` 。 此条件将具有“My_Scope”中所有操作结果的数组筛选为仅包含失败操作结果的数组。
+1. **筛选数组** 的条件是 `@result()` 状态等于的任何项 `Failed` 。 此条件将具有“My_Scope”中所有操作结果的数组筛选为仅包含失败操作结果的数组。
 
-1. 对 `For_each` *筛选的数组*输出执行循环操作。 此步骤针对前面筛选的每个失败操作结果执行操作。
+1. 对 `For_each` *筛选的数组* 输出执行循环操作。 此步骤针对前面筛选的每个失败操作结果执行操作。
 
    如果作用域中的单个操作失败，则循环中的操作 `For_each` 只运行一次。 如果存在多个失败的操作，则将对每个失败执行一次操作。
 
@@ -362,7 +362,7 @@ ms.locfileid: "84704516"
 
 ## <a name="set-up-azure-monitor-logs"></a>设置 Azure Monitor 日志
 
-上述模式非常适合于处理运行中的错误和异常，不过也可以独立于运行本身来标识和响应错误。 [Azure Monitor](../azure-monitor/overview.md)提供了一种将所有工作流事件（包括所有运行和操作状态）发送到[Log Analytics 工作区](../azure-monitor/platform/data-platform-logs.md)、 [Azure 存储帐户](../storage/blobs/storage-blobs-overview.md)或[azure 事件中心](../event-hubs/event-hubs-about.md)的简单方法。
+上述模式非常适合于处理运行中的错误和异常，不过也可以独立于运行本身来标识和响应错误。 [Azure Monitor](../azure-monitor/overview.md) 提供了一种将所有工作流事件（包括所有运行和操作状态）发送到 [Log Analytics 工作区](../azure-monitor/platform/data-platform-logs.md)、 [Azure 存储帐户](../storage/blobs/storage-blobs-overview.md)或 [azure 事件中心](../event-hubs/event-hubs-about.md)的简单方法。
 
 要评估运行状态，可以监视日志和指标，或将它们发布到你习惯使用的任何监视工具中。 一种潜在选项是通过事件中心将所有事件流式传输到 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)。 在流分析中，可以根据诊断日志中的任何异常、平均值或失败编写实时查询。 可以使用流分析将信息发送到其他数据源，例如队列、主题、SQL、Azure Cosmos DB 或 Power BI。
 

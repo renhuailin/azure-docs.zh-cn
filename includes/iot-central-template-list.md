@@ -8,19 +8,21 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 08e4fd82bea6bb1b510b127db8dee7803ee112f5
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376472"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912250"
 ---
 **应用程序模板**
+
+**IoT Central 应用程序模板**
 
 | 模板                 | 名称        | 说明 |
 | ------------------------ | ----------- | ----------- |
 | iotc-预览         | 自定义应用程序 | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
-| iotc-条件           | 店内分析 - 状况监视 | 创建一个应用程序来连接和监视商店环境。 |
+| iotc-条件           | 应用商店内分析-条件监视 | 创建用于连接和监视应用商店环境的应用程序。 |
 | iotc-消耗量         | 水消耗监视 | 创建用于监视和控制水流量的应用程序。 |
 | iotc-分布        | 数字分发中心 | 创建一个应用程序，通过对关键资产和操作进行数字化来改善仓库输出效率。 |
 | iotc-库存           | 智能库存管理 | 创建应用程序以自动执行接收、产品移动、循环计数和跟踪。 |
@@ -33,3 +35,7 @@ ms.locfileid: "91376472"
 | iotc-质量             | 水源质量监视 | 创建一个应用程序，用于以数字方式监视水源质量。 |
 | iotc-存储               | 应用商店内分析–结帐 | 创建一个应用程序，用于监视和管理你的商店内的结帐流。 |
 | iotc               | 连接废物管理 | 创建用于监视垃圾桶和调度字段运算符的应用程序。 |
+
+**自定义应用程序模板**
+
+如果你创建了自己的应用程序模板，则可以使用它来创建新的应用程序。 当系统提示你提供应用程序模板时，请在应用的 [应用程序模板导出](../articles/iot-central/core/howto-use-app-templates.md#create-an-application-template) 部分下，输入在导出的应用的 URL 可共享链接中显示的应用 ID。 

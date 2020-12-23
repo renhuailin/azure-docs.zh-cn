@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 08a3b72bb137713721345ecb52cf4e1bb7afcdc2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a225d4ea19cccea114e47cc61a8055d28e8cd99
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310758"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895284"
 ---
 # <a name="add-controls-to-a-map"></a>向地图添加控件
 
-本文介绍如何将控件添加到地图中。 你还将了解如何创建包含所有控件和 [样式选取器](https://docs.microsoft.com/azure/azure-maps/choose-map-style)的地图。
+本文介绍如何将控件添加到地图中。 你还将了解如何创建包含所有控件和 [样式选取器](./choose-map-style.md)的地图。
 
 ## <a name="add-zoom-control"></a>添加缩放控件
 
@@ -142,4 +142,3 @@ map.controls.add([
 
 > [!div class="nextstepaction"]
 > [添加气泡层](map-add-bubble-layer.md)
-

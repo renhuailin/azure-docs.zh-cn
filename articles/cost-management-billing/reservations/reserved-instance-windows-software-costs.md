@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: e302a8459d3092a5543efda7494c68d6660df39d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 625c40ea17cf20449f1be241a1605a80bf6a73f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690810"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352994"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure 虚拟机预留实例未包含的软件成本
 
@@ -67,7 +67,7 @@ ms.locfileid: "88690810"
 若要详细了解 Azure 预留，请参阅以下文章：
 
 - [什么是 Azure 预留？](save-compute-costs-reservations.md)
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [管理 Azure 预留](manage-reserved-vm-instance.md)
 - [了解预留折扣的应用方式](../manage/understand-vm-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](understand-reserved-instance-usage.md)

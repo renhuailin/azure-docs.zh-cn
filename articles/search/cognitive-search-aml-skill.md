@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924705"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630269"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 认知搜索扩充管道中的 AML 技能
 
 > [!IMPORTANT] 
 > 此技能以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持 .NET SDK。
 
-**Aml**技能使你可以使用自定义[Azure 机器学习](../machine-learning/overview-what-is-azure-ml.md) (AML) 模型来扩展 AI 扩充。 一旦 [定型并部署](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)了 aml 模型， **aml** 技能就会将其集成到 AI 扩充中。
+**Aml** 技能使你可以使用自定义 [Azure 机器学习](../machine-learning/overview-what-is-azure-ml.md) (AML) 模型来扩展 AI 扩充。 一旦 [定型并部署](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)了 aml 模型， **aml** 技能就会将其集成到 AI 扩充中。
 
 与内置技能一样， **AML** 技能具有输入和输出。 输入将以 JSON 对象的形式发送到已部署的 AML 服务，该对象将 JSON 负载作为响应以及成功状态代码输出。 响应应包含 **AML** 技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
 
@@ -33,7 +33,7 @@ ms.locfileid: "88924705"
 
 * [AML 工作区](../machine-learning/concept-workspace.md)
 * 此工作区中具有已[部署模型](../machine-learning/how-to-deploy-azure-kubernetes-service.md)的[AZURE Kubernetes Service AML 计算目标](../machine-learning/concept-compute-target.md)
-  * [计算目标应启用 SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga)。 Azure 认知搜索仅允许访问 **https** 终结点
+  * [计算目标应启用 SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-azure-kubernetes-service)。 Azure 认知搜索仅允许访问 **https** 终结点
   * 不能使用自签名证书。
 
 ## <a name="odatatype"></a>@odata.type  
@@ -45,7 +45,7 @@ Microsoft AmlSkill
 
 | 参数名称 | 说明 |
 |--------------------|-------------|
-| `uri` |  (无需[身份验证或密钥身份验证](#WhatSkillParametersToUse)，) _JSON_有效负载将发送到的[AML 服务的评分 URI](../machine-learning/how-to-consume-web-service.md) 。 只允许使用 **https** URI 方案。 |
+| `uri` |  (无需 [身份验证或密钥身份验证](#WhatSkillParametersToUse)，) _JSON_ 有效负载将发送到的 [AML 服务的评分 URI](../machine-learning/how-to-consume-web-service.md) 。 只允许使用 **https** URI 方案。 |
 | `key` | [密钥身份验证](#WhatSkillParametersToUse)所需的 () [AML 服务的密钥](../machine-learning/how-to-consume-web-service.md#authentication-with-keys)。 |
 | `resourceId` | [令牌身份验证](#WhatSkillParametersToUse)) 需要 (。 AML 服务的 Azure 资源管理器资源 ID。 它应采用 "订阅/{guid}/resourceGroups/{MachineLearningServices/工作区/{工作区名称}/services/{service_name}" 格式。 |
 | `region` | [标记身份验证](#WhatSkillParametersToUse))  (可选。 AML 服务所部署到的 [区域](https://azure.microsoft.com/global-infrastructure/regions/) 。 |
@@ -58,9 +58,9 @@ Microsoft AmlSkill
 
 需要哪些 AML 技能参数取决于 AML 服务使用的身份验证（如果有）。 AML 服务提供三个身份验证选项：
 
-* [基于密钥的身份验证](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment)。 提供了一个静态密钥，用于对来自 AML 技能的评分请求进行身份验证
+* [基于密钥的身份验证](../machine-learning/how-to-authenticate-web-service.md#key-based-authentication)。 提供了一个静态密钥，用于对来自 AML 技能的评分请求进行身份验证
   * 使用 _uri_ 和 _密钥_ 参数
-* [基于令牌的身份验证](../machine-learning/concept-enterprise-security.md#authentication)。 [使用基于令牌的身份验证部署](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens)AML 服务。 Azure 认知搜索服务的 [托管标识](../active-directory/managed-identities-azure-resources/overview.md) 被授予 AML 服务的工作区中的 "读取者" [角色](../machine-learning/how-to-assign-roles.md) 。 然后，AML 技能使用 Azure 认知搜索服务的托管标识针对 AML 服务进行身份验证，无需任何静态密钥。
+* [基于令牌的身份验证](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication)。 [使用基于令牌的身份验证部署](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication)AML 服务。 Azure 认知搜索服务的 [托管标识](../active-directory/managed-identities-azure-resources/overview.md) 被授予 AML 服务的工作区中的 "读取者" [角色](../machine-learning/how-to-assign-roles.md) 。 然后，AML 技能使用 Azure 认知搜索服务的托管标识针对 AML 服务进行身份验证，无需任何静态密钥。
   * 使用 _resourceId_ 参数。
   * 如果 Azure 认知搜索服务与 AML 工作区位于不同的区域，请使用 _region_ 参数设置 aml 服务所部署到的区域
 * 不进行身份验证。 使用 AML 服务不需要任何身份验证

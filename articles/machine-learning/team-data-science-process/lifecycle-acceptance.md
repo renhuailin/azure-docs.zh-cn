@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720514"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305660"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期的客户验收阶段
 
@@ -34,13 +34,13 @@ ms.locfileid: "76720514"
 
 
 ## <a name="goal"></a>目标
-**完成项目可交付结果**：确认生产环境中的管道、模型及其部署满足客户的目标。
+**完成项目可交付结果** ：确认生产环境中的管道、模型及其部署满足客户的目标。
 
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决了两个主要任务：
 
-   * **系统验证**：确认部署的模型和管道满足客户的需求。
-   * **项目提交**：将项目提交到要在生产中运行系统的实体。
+   * **系统验证** ：确认部署的模型和管道满足客户的需求。
+   * **项目提交** ：将项目提交到要在生产中运行系统的实体。
 
 客户应验证系统是否满足自己的业务需求，且能否准确回答问题，以便将系统部署到生产环境中，供客户端应用程序使用。 最终确定所有文档，并进行评审。 已将项目提交到负责操作的实体。 例如，此实体可能是 IT、客户数据科学团队或负责在生产中运行系统的客户代理。 
 
@@ -60,4 +60,4 @@ ms.locfileid: "76720514"
 
 我们还提供了完整的演练，演示特定方案过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
 
-有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。
+有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](./index.yml)。

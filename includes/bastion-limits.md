@@ -9,11 +9,11 @@ ms.date: 03/25/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 40f8f5b234a6aecb1b44e4c565873b3badbd139a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80334826"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183870"
 ---
 | 资源 | 限制 |
 | --- | --- |

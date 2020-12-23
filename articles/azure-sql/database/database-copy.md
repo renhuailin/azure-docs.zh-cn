@@ -4,19 +4,19 @@ description: 在相同或不同的服务器上创建 Azure SQL 数据库中现�
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
-ms.date: 07/29/2020
-ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/30/2020
+ms.openlocfilehash: 53e62d790514bd3fb5bef93788fa78944db28c2c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443793"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127733"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>复制 Azure SQL 数据库中数据库的事务一致性副本
 
@@ -29,7 +29,7 @@ ms.locfileid: "91443793"
 数据库副本是源数据库在发起复制请求后的某个时间点的事务一致快照。 可以为副本选择同一服务器或其他服务器。 还可以选择保留源数据库的备份冗余、服务层和计算大小，或者在相同或不同的服务层中使用不同的备份存储冗余和/或计算大小。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 复制的数据库中的登录名、用户和权限独立于源数据库进行管理。 副本使用异地复制技术创建。 副本种子设定完成后，异地复制链接会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](active-geo-replication-overview.md)。
 
 > [!NOTE]
-> Azure SQL 数据库可配置的备份存储冗余目前仅在东南亚 Azure 区域的公共预览版中提供。 在预览中，如果使用本地冗余或区域冗余备份存储冗余创建了源数据库，则不支持将数据库复制到其他 Azure 区域中的服务器。 
+> Azure SQL 数据库可配置的备份存储冗余目前在巴西南部公共预览版中提供，并且仅在东南亚 Azure 区域公开发布。 在预览中，如果使用本地冗余或区域冗余备份存储冗余创建了源数据库，则不支持将数据库复制到其他 Azure 区域中的服务器。 
 
 ## <a name="logins-in-the-database-copy"></a>数据库副本中的登录名
 
@@ -82,7 +82,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 使用服务器管理员登录名或创建了要复制的数据库的登录名登录到 master 数据库。 若要成功复制数据库，非服务器管理员的登录名必须是 `dbmanager` 角色的成员。 有关登录名和链接到服务器的详细信息，请参阅[管理登录名](logins-create-manage.md)。
 
-使用 [CREATE DATABASE ...AS COPY OF](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) 语句开始复制源数据库。 T-SQL 语句将继续运行，直到数据库复制操作完成。
+使用 [CREATE DATABASE ...AS COPY OF](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) 语句开始复制源数据库。 T-SQL 语句将继续运行，直到数据库复制操作完成。
 
 > [!NOTE]
 > 终止 T-SQL 语句不会终止数据库复制操作。 若要终止该操作，请删除目标数据库。
@@ -100,6 +100,21 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
    ```sql
    -- execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
+   ```
+
+### <a name="copy-to-an-elastic-pool"></a>复制到弹性池
+
+使用服务器管理员登录名或创建了要复制的数据库的登录名登录到 master 数据库。 若要成功复制数据库，非服务器管理员的登录名必须是 `dbmanager` 角色的成员。
+
+此命令将 Database1 复制到名为 pool1 的弹性池中名为 Database2 的新数据库。 根据数据库的大小，复制操作可能需要一些时间才能完成。
+
+Database1 可以是单个或共用的数据库。 支持在不同的层池之间进行复制，但有些跨层副本将不会成功。 例如，你可以将单个或弹性标准 db 复制到常规用途池中，但无法将标准弹性数据库复制到高级池。 
+
+   ```sql
+   -- execute on the master database to start copying
+   CREATE DATABASE "Database2"
+   AS COPY OF "Database1"
+   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) ) ;
    ```
 
 ### <a name="copy-to-a-different-server"></a>复制到其他服务器
@@ -128,13 +143,13 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>监视复制操作的进度
 
-可以通过查询 [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)、[sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database) 和 [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 视图来监视复制过程。 在复制过程中，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **COPYING**。
+可以通过查询 [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)、[sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database) 和 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 视图来监视复制过程。 在复制过程中，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **COPYING** 。
 
-* 如果复制失败，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **SUSPECT**。 对新数据库执行 DROP 语句并稍后重试。
-* 如果复制成功，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **ONLINE**。 复制已完成并且新数据库是一个常规数据库，可独立于源数据库进行更改。
+* 如果复制失败，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **SUSPECT** 。 对新数据库执行 DROP 语句并稍后重试。
+* 如果复制成功，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **ONLINE** 。 复制已完成并且新数据库是一个常规数据库，可独立于源数据库进行更改。
 
 > [!NOTE]
-> 如果决定在复制过程中取消复制，请对新数据库执行 [DROP DATABASE](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) 语句。
+> 如果决定在复制过程中取消复制，请对新数据库执行 [DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql) 语句。
 
 > [!IMPORTANT]
 > 如果需要使用比源小得多的服务目标创建副本，则目标数据库可能没有足够的资源来完成种子设定过程，这可能会导致复制操作失败。 在这种情况下，请使用异地还原请求在不同服务器和/或不同区域中创建副本。 有关详细信息，请参阅[使用数据库备份恢复 Azure SQL 数据库](recovery-using-backups.md#geo-restore)。
@@ -167,7 +182,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 ## <a name="resolve-logins"></a>解析登录名
 
-当新数据库在目标服务器上联机后，使用 [ALTER USER](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) 语句将新数据库中的用户重新映射到目标服务器上的登录名。 若要解析孤立用户，请参阅[孤立用户疑难解答](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)。 另请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](active-geo-replication-security-configure.md)。
+当新数据库在目标服务器上联机后，使用 [ALTER USER](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) 语句将新数据库中的用户重新映射到目标服务器上的登录名。 若要解析孤立用户，请参阅[孤立用户疑难解答](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)。 另请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](active-geo-replication-security-configure.md)。
 
 新数据库中的所有用户都保持他们在源数据库中已有的权限。 启动数据库复制过程的用户成为新数据库的数据库所有者。 复制成功之后，重新映射其他用户之前，只有数据库所有者才能登录到新数据库。
 

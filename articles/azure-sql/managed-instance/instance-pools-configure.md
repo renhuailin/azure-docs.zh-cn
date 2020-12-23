@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91617428"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793103"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>将 Azure SQL 托管实例部署到实例池
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "91617428"
 |在池中的实例中创建数据库|是|是|
 |从 SQL 托管实例删除数据库|是|是|
 
-可用的 [PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)：
+可用的 [PowerShell 命令](/powershell/module/az.sql/)：
 
 |Cmdlet |说明 |
 |:---|:---|
@@ -52,7 +52,7 @@ ms.locfileid: "91617428"
 |[AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | 返回有关 SQL 托管实例池使用情况的信息。 |
 
 
-若要使用 PowerShell，请 [安装最新版本的 Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)，并按照说明 [安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+若要使用 PowerShell，请 [安装最新版本的 Powershell Core](/powershell/scripting/install/installing-powershell#powershell)，并按照说明 [安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 对于与池中的实例和单个实例相关的操作，请使用标准 [托管实例命令](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)，但在对池中的实例使用这些命令时，必须填充 " *实例池名称* " 属性。
 
@@ -259,5 +259,5 @@ $instanceOne | Set-AzSqlInstance -InstancePoolName "pool-mi-001" -PublicDataEndp
 - 有关 VNet 配置的详细信息，请参阅 [SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关使用 Azure 数据库迁移服务进行迁移的教程，请参阅[使用数据库迁移服务进行 SQL 托管实例迁移](../../dms/tutorial-sql-server-to-managed-instance.md)。
-- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅 [使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
+- 有关使用内置故障排除智能对 SQL 托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
 - 有关定价信息，请参阅 [SQL 托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

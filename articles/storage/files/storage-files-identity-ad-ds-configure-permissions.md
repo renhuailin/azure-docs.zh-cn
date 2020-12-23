@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761135"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629166"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：通过 SMB 配置目录和文件级权限 
 
@@ -34,7 +34,7 @@ ms.locfileid: "91761135"
 |     |  读取并执行 |  读取并执行 |
 |     |  读取           |  读取    |
 |     |  写入          |  写入   |
-|存储文件数据 SMB 共享提升参与者 | 完全控制  |  修改、读取、写入、编辑、执行 |
+|存储文件数据 SMB 共享特权参与者 | 完全控制  |  修改、读取、写入、编辑、执行 |
 |     |  修改          |  修改 |
 |     |  读取并执行  |  读取并执行 |
 |     |  读取            |  读取   |
@@ -44,7 +44,7 @@ ms.locfileid: "91761135"
 
 ## <a name="supported-permissions"></a>支持的权限
 
-Azure 文件支持完整的基本和高级 Windows Acl 集。 你可以通过装入并使用 Windows 文件资源管理器、运行 Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) 命令或 [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) 命令来查看和配置 Azure 文件共享中的目录和文件的 Windows acl。 
+Azure 文件支持完整的基本和高级 Windows Acl 集。 你可以通过装入并使用 Windows 文件资源管理器、运行 Windows [icacls](/windows-server/administration/windows-commands/icacls) 命令或 [Set-ACL](/powershell/module/microsoft.powershell.security/set-acl) 命令来查看和配置 Azure 文件共享中的目录和文件的 Windows acl。 
 
 若要使用超级用户权限配置 Acl，必须使用已加入域的 VM 中的存储帐户密钥装载共享。 按照下一部分中的说明从命令提示符装载 Azure 文件共享并配置 Windows Acl。
 
@@ -85,7 +85,7 @@ else
 
 ```
 
-如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件安装错误发布的疑难解答工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我们还提供了有关在阻止端口445时解决方案的 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件安装错误发布的疑难解答工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我们还提供了有关在阻止端口445时解决方案的 [指南](./storage-files-faq.md#on-premises-access) 。 
 
 ## <a name="configure-windows-acls"></a>配置 Windows Acl
 
@@ -97,12 +97,12 @@ else
 
 使用 Windows 文件资源管理器向文件共享下的所有目录和文件（包括根目录）授予完全权限。
 
-1. 打开 Windows 文件资源管理器，右键单击文件/目录，然后选择 " **属性**"。
-1. 选择“安全”**** 选项卡。
+1. 打开 Windows 文件资源管理器，右键单击文件/目录，然后选择 " **属性** "。
+1. 选择“安全”选项卡。
 1. 选择 " **编辑"。** 更改权限。
 1. 您可以更改现有用户的权限，也可以选择 " **添加 ...** " 向新用户授予权限。
 1. 在添加新用户的提示窗口中，在 " **输入要选择的对象名称** " 框中输入要向其授予权限的目标用户名，然后选择 " **检查名称** " 以查找目标用户的完整 UPN 名称。
-1.    选择“确定”****。
+1.    选择“确定”  。
 1.    在 " **安全** " 选项卡中，选择要授予新用户的所有权限。
 1.    选择“应用”。
 
@@ -114,7 +114,7 @@ else
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-若要详细了解如何使用 icacls 来设置 Windows Acl 和不同类型的支持权限，请参阅 [icacls 的命令行参考](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)。
+若要详细了解如何使用 icacls 来设置 Windows Acl 和不同类型的支持权限，请参阅 [icacls 的命令行参考](/windows-server/administration/windows-commands/icacls)。
 
 ## <a name="next-steps"></a>后续步骤
 

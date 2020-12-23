@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Analytics 的内置策略定义
 description: 列出 Azure Data Lake Analytics 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 10/07/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: data-lake-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e603878484128d9d59f633b7117c755bc4965fe4
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6e6355b47752df062914bc755d5840991d0c0dfe
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825027"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987928"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics 的 Azure Policy 内置定义
 

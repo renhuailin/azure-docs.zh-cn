@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071153"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422529"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -20,7 +20,7 @@ PowerShell Azure function (函数) 表示为触发时执行的 PowerShell 脚本
 
 与其他类型的函数一样，PowerShell 脚本函数采用与在文件中定义的所有输入绑定的名称相匹配的参数 `function.json` 。 `TriggerMetadata`还传递了一个参数，该参数包含有关启动函数的触发器的附加信息。
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 还应已完成 PowerShell 的 [函数快速入门](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) ，以创建第一个 powershell 函数。
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 还应已完成 PowerShell 的 [函数快速入门](./create-first-function-vs-code-powershell.md) ，以创建第一个 powershell 函数。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -74,11 +74,11 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| properties   | 说明                                     | 类型     |
+| 属性   | 说明                                     | 类型     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
-| MethodName | 触发的函数的名称     | string   |
-| RandGuid   | 此函数执行的唯一 guid | string   |
+| MethodName | 触发的函数的名称     | 字符串   |
+| RandGuid   | 此函数执行的唯一 guid | 字符串   |
 
 每个触发器类型都有一组不同的元数据。 例如，的 `$TriggerMetadata` `QueueTrigger` 包含、、等 `InsertionTime` `Id` `DequeueCount` 。 有关队列触发器的元数据的详细信息，请参阅 [队列触发器的官方文档](functions-bindings-storage-queue-trigger.md#message-metadata)。 查看正在处理的 [触发器](functions-triggers-bindings.md) 的相关文档，了解触发器元数据内部的内容。
 
@@ -128,7 +128,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 | 名称 | 类型 | 位置 | 说明 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1 | 要设置的输出绑定的名称。 |
+| **`-Name`** | 字符串 | 1 | 要设置的输出绑定的名称。 |
 | **`-Value`** | 对象 | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
 | **`-Clobber`** | SwitchParameter | 名为 |  (可选) 指定时，将强制为指定的输出绑定设置值。 | 
 
@@ -143,9 +143,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 * `PipelineVariable`
 * `OutVariable` 
 
-有关详细信息，请参阅 [About CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 [About CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters)。
 
-#### <a name="push-outputbinding-example-http-responses"></a>OutputBinding 示例： HTTP 响应
+#### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding 示例： HTTP 响应
 
 HTTP 触发器使用名为的输出绑定返回响应 `response` 。 在下面的示例中，的输出绑定的 `response` 值为 "output #1"：
 
@@ -174,7 +174,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>OutputBinding 示例：队列输出绑定
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding 示例：队列输出绑定
 
 `Push-OutputBinding` 用于将数据发送到输出绑定，如 [Azure 队列存储输出绑定](functions-bindings-storage-queue-output.md)。 在下面的示例中，写入队列的消息的值为 "output #1"：
 
@@ -227,7 +227,7 @@ MyQueue                        myData
 
  ( * ) 支持通配符 `Get-OutputBinding` 。
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>日志记录
 
 PowerShell 函数中的日志记录类似于常规的 PowerShell 日志记录。 您可以使用日志记录 cmdlet 来写入每个输出流。 每个 cmdlet 都映射到函数使用的日志级别。
 
@@ -276,7 +276,7 @@ Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日�
 所有触发器和绑定在代码中表示为一些真实的数据类型：
 
 * Hashtable
-* string
+* 字符串
 * byte[]
 * int
 * Double
@@ -295,14 +295,14 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 传递到脚本的请求对象的类型为 `HttpRequestContext` ，它具有以下属性：
 
-| properties  | 说明                                                    | 类型                      |
+| 属性  | 说明                                                    | 类型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | 一个包含请求正文的对象。 `Body` 基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 (object) |
+| **`Body`**    | 一个包含请求正文的对象。 `Body` 基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 |
 | **`Headers`** | 包含请求标头的字典。                | Dictionary<string，string><sup>*</sup> |
-| **`Method`** | 请求的 HTTP 方法。                                | string                    |
+| **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
 | **`Params`**  | 一个包含请求的路由参数的对象。 | Dictionary<string，string><sup>*</sup> |
 | **`Query`** | 一个包含查询参数的对象。                  | Dictionary<string，string><sup>*</sup> |
-| **`Url`** | 请求的 URL。                                        | string                    |
+| **`Url`** | 请求的 URL。                                        | 字符串                    |
 
 <sup>*</sup> 所有 `Dictionary<string,string>` 键都不区分大小写。
 
@@ -310,10 +310,10 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 应发送回的响应对象的类型为 `HttpResponseContext` ，它具有以下属性：
 
-| properties      | 说明                                                 | 类型                      |
+| 属性      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | 一个包含响应正文的对象。           | 对象 (object)                    |
-| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | string                    |
+| **`Body`**  | 一个包含响应正文的对象。           | 对象                    |
+| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
 | **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
 
@@ -414,15 +414,15 @@ param([string] $myBlob)
 
 使用以下步骤可更改函数应用使用的 PowerShell 版本。 可以在 Azure 门户中或使用 PowerShell 执行此操作。
 
-# <a name="portal"></a>[Portal](#tab/portal)
+# <a name="portal"></a>[门户](#tab/portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到你的函数应用。
 
-1. 在“设置”下，选择“配置”**** ****。 在 " **常规设置** " 选项卡中，找到 **PowerShell 版本**。 
+1. 在“设置”下，选择“配置” 。 在 " **常规设置** " 选项卡中，找到 **PowerShell 版本** 。 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="选择 function app 使用的 PowerShell 版本"::: 
 
-1. 选择所需的 **PowerShell Core 版本** ，并选择 " **保存**"。 当警告你等待重新启动时，选择 " **继续**"。 函数应用在所选 PowerShell 版本上重新启动。 
+1. 选择所需的 **PowerShell Core 版本** ，并选择 " **保存** "。 当警告你等待重新启动时，选择 " **继续** "。 函数应用在所选 PowerShell 版本上重新启动。 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -525,7 +525,7 @@ PowerShell 语言辅助角色通常使用几个模块。 这些模块在的最�
 模块的当前列表如下所示：
 
 * 用于处理存档的[Microsoft PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive)： module，如 `.zip` 、 `.nupkg` 和其他。
-* **ThreadJob**：一种基于线程的 PowerShell 作业 api 实现。
+* **ThreadJob** ：一种基于线程的 PowerShell 作业 api 实现。
 
 默认情况下，函数使用这些模块的最新版本。 若要使用特定模块版本，请将该特定版本放置在 `Modules` function app 的文件夹中。
 
@@ -560,7 +560,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 在函数应用的 [应用设置](functions-app-settings.md) 中设置这些环境变量。
 
-根据用例，Durable Functions 可能会显著提高可伸缩性。 若要了解详细信息，请参阅 [Durable Functions 应用程序模式](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)。
+根据用例，Durable Functions 可能会显著提高可伸缩性。 若要了解详细信息，请参阅 [Durable Functions 应用程序模式](./durable/durable-functions-overview.md?tabs=powershell#application-patterns)。
 
 >[!NOTE]
 > 你可能会收到 "请求已排队，因为没有可用的运行空间" 警告，请注意这不是错误。 消息通知你，请求将排队等候，并在上一个请求完成后进行处理。

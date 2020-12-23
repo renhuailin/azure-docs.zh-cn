@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892943"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455334"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Confluence SAML SSO by Microsoft 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88892943"
 * 让用户使用其 Azure AD 帐户自动登录 Confluence SAML SSO by Microsoft。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="description"></a>说明:
 
@@ -159,45 +159,45 @@ ms.locfileid: "88892943"
 
 1. 将鼠标悬停在小齿轮上，并单击“外接程序”。
 
-    ![配置单一登录](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![显示已选择“小齿轮”图标的屏幕截图，其中下拉菜单中突出显示了“加载项”。](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=56503)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/servicesagreement/)涵盖了插件下载。
 
-    ![配置单一登录](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![显示“管理加载项”页的屏幕截图，其中已选择“上传加载项”操作。](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. 要运行 Confluence 反向代理方案或负载均衡器方案，请执行以下步骤：
 
     > [!NOTE]
     > 应先按照以下说明配置服务器，然后安装插件。
 
-    a. 在 JIRA 服务器应用程序的 **server.xml** 文件中的**连接器**端口中添加以下属性。
+    a. 在 JIRA 服务器应用程序的 **server.xml** 文件中的 **连接器** 端口中添加以下属性。
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![配置单一登录](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![显示“server.xml”文件的屏幕截图，其中属性已添加到“连接器”端口。](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
-    b. 根据代理/负载均衡器，在**系统设置**中更改**基本 URL**。
+    b. 根据代理/负载均衡器，在 **系统设置** 中更改 **基本 URL** 。
 
-    ![配置单一登录](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![显示“管理 -设置”页的屏幕截图，其中突出显示了“基本 URL”。](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分 。 单击“配置”配置新的插件。
 
-    ![配置单一登录](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![显示“用户已安装”部分的屏幕截图，其中突出显示了“配置”按钮。](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. 在配置页上执行下列步骤：
 
-    ![配置单一登录](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![显示单一登录配置页的屏幕截图。](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    1. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
+    1. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的 **应用联合元数据 URL** 值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     1. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中“基本 SAML 配置”部分下的“标识符”、“回复 URL”和“登录 URL”文本框中  。
 
     1. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称。
     
-    1. 在**登录按钮说明**中，键入你的组织希望用户在登录屏幕上看到的按钮的说明。
+    1. 在 **登录按钮说明** 中，键入你的组织希望用户在登录屏幕上看到的按钮的说明。
 
     1. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”  。  此 ID 必须是 Confluence 用户 ID。 如果用户 ID 不匹配，系统将不允许用户登录。 
 
@@ -221,7 +221,7 @@ ms.locfileid: "88892943"
     1. 单击“保存”按钮保存设置。
 
        > [!NOTE]
-       > 有关安装和故障排除的详细信息，请访问 [MS Confluence SSO 连接器管理员指南](../ms-confluence-jira-plugin-adminguide.md)， 还可以参阅[常见问题解答](../ms-confluence-jira-plugin-faq.md)以获得帮助。
+       > 有关安装和故障排除的详细信息，请访问 [MS Confluence SSO 连接器管理员指南](./ms-confluence-jira-plugin-adminguide.md)， 还可以参阅[常见问题解答](./ms-confluence-jira-plugin-adminguide.md)以获得帮助。
 
 ### <a name="create-confluence-saml-sso-by-microsoft-test-user"></a>创建 Confluence SAML SSO by Microsoft 测试用户
 
@@ -237,7 +237,7 @@ ms.locfileid: "88892943"
 
 1. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
 
-    ![添加员工](./media/confluencemicrosoft-tutorial/user2.png)
+    ![显示“Confluence 管理”的屏幕截图，其中已选择“添加用户”选项卡并已输入“添加用户”信息。](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. 在“用户名”文本框中，键入用户的电子邮件（例如 B.Simon）。
 
@@ -255,14 +255,14 @@ ms.locfileid: "88892943"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Confluence SAML SSO by Microsoft”磁贴时，应当会自动登录到已为其设置了 SSO 的 Confluence SAML SSO by Microsoft。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“Confluence SAML SSO by Microsoft”磁贴时，应当会自动登录到已为其设置了 SSO 的 Confluence SAML SSO by Microsoft。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [尝试将 Confluence SAML SSO by Microsoft 与 Azure AD 集成](https://aad.portal.azure.com/)

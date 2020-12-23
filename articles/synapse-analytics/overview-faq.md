@@ -1,108 +1,151 @@
 ---
-title: 常见问题解答 - Azure Synapse Analytics（工作区预览版）
-description: Azure Synapse Analytics（工作区预览版）的常见问题解答
+title: 常见问题解答 - Azure Synapse Analytics
+description: Azure Synapse Analytics 常见问题解答
 services: synapse-analytics
-author: ArnoMicrosoft
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 04/15/2020
-ms.author: acomet
+ms.date: 10/25/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87287503"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576020"
 ---
-# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics（工作区预览版）常见问题解答
+# <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics 常见问题解答
 
-本指南解答有关 Synapse Analytics 的最常见问题。
-
-[!INCLUDE [preview](includes/note-preview.md)]
+本指南解答有关 Azure Synapse Analytics 的最常见问题。
 
 ## <a name="general"></a>常规
 
-### <a name="q-what-is-azure-synapse-analytics"></a>问：什么是 Azure Synapse Analytics
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>问：如何使用 RBAC 角色来保护我的工作区？
 
-答：Azure Synapse 是实现 BI、AI 和持续智能的集成式数据平台。 它通过单个平台连接各种分析运行时（例如 SQL 和 Spark），该平台提供了统一的方式来实现以下目的：
+答：Azure Synapse 引入了很多角色及用于分配角色的范围，可以简化保护工作区这一任务。
 
-- 保护分析资源（包括网络），管理对池、数据和开发项目的单一登录访问。
-- 轻松监视和快速优化、应对和调试在任意层的工作区活动中发生的事件。
-- 跨引擎管理元数据。 创建 Spark 表，该表将在 Azure Synapse 数据库中自动提供。
-- 通过统一的用户体验来与数据交互。 Synapse Studio 将大数据开发人员、数据工程师、数据库管理员 (DBA)、数据分析师和数据科学家聚合到了同一个平台。
+Synapse RBAC 角色：
+* Synapse 管理员
+* Synapse SQL 管理员
+* Synapse Spark 管理员
+* Synapse 参与者（预览）
+* Synapse 项目发布者（预览）
+* Synapse 项目用户（预览）
+* Synapse 计算操作员（预览）
+* Synapse 凭据用户（预览）
 
-有关详细信息，请参阅[什么是 Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is)。
+若要保护 Synapse 工作区，请将 RBAC 角色分配给这些 RBAC 范围：
+* 工作区
+* Spark 池
+* 集成运行时
+* 链接服务
+* 凭据
 
-### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>问：Azure Synapse Analytics 有哪些主要组件
+此外，对于专用 SQL 池，你可以使用你熟悉和喜爱的所有安全功能。
 
-答：Azure Synapse 具有以下功能：
+### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>问：如何控制专用 SQL 池、无服务器 SQL 池和无服务器 Spark 池？
 
-- 分析功能是通过 SQL 池或 SQL 按需版本（预览版）（无服务器）提供的。
-- 完全支持 Scala、Python、SparkSQL 和 C# 的 Apache Spark 池（预览版）
-- 提供无代码大数据转换体验的数据流
-- 用于集成数据以及将所有代码开发操作化的数据集成和业务流程
-- 用于通过单个 Web UI 访问所有这些功能的 Studio
+答：可从将 Azure Synapse 与 Azure 订阅级别提供的内置成本分析和成本警报结合开始使用。
 
-### <a name="q-how-does-azure-synapse-analytics-relate-to-azure-sql-data-warehouse"></a>问：Azure Synapse Analytics 与 Azure SQL 数据仓库之间有何关系
+- 专用 SQL 池 - 可以直接查看成本并控制成本，因为将由你创建专用 SQL 池并指定其大小。 可以通过 Azure RBAC 角色进一步控制哪些用户可以创建或缩放专用 SQL 池。
 
-答：Azure Synapse Analytics 是在 Azure SQL 数据仓库基础上演进而来的分析平台，其中包含用作数据仓库解决方案的 SQL 池。 此平台结合了数据探索、引入、转换、准备和一个为分析提供服务的层。
+- 无服务器 SQL 池 - 具有监视和成本管理控件，可通过它们在每天、每周和每月级别限制支出。 有关详细信息，[请参阅无服务器 SQL 池的成本管理](./sql/data-processed.md)。 
 
-## <a name="use-cases"></a>用例
+- 无服务器 Spark 池 - 可以通过 Synapse RBAC 角色限制谁能创建 Spark 池。  
 
-### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>问：如何实现在 Azure Synapse 中重命名已发布的项目（数据集、笔记本、sql 脚本等）？
+### <a name="q-will-synapse-workspace-support-folder-organization-of-objects-and-granularity-at-ga"></a>问：正式发布时，Synapse 工作区是否会支持对象和粒度的文件夹组织？
 
-答：若要重命名已发布的项目文件，请首先克隆该文件，然后将新文件重命名为你喜欢的名称。 需要将项目的所有引用手动更新为新文件名并删除旧文件名。
+答：Synapse 工作区支持用户定义的文件夹。
 
-### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>问：Synapse SQL 池的典型用例是什么
+### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>问：能否将多个 Power BI 工作区链接到单个 Azure Synapse 工作区？
+    
+答：目前，只能将一个 Power BI 工作区链接到一个 Azure Synapse 工作区。 
 
-答：SQL 池从本质上满足了你的数据仓库需求。 从[性价比](https://azure.microsoft.com/services/sql-data-warehouse/compare/)而言，它是领先的数据仓库解决方案。 SQL 池是行业领先的云数据仓库解决方案，因为它可以让你：
+### <a name="q-is-synapse-link-to-cosmos-db-ga"></a>问：针对 Cosmos DB 的 Synapse Link 正式发布了吗？
 
-- 为混合类型的大型工作负荷提供服务，而不会对性能造成影响，这得益于它提供高并发性和工作负荷隔离
-- 通过从网络安全性到精细访问的各种高级功能轻松保护数据
-- 受益于各种生态系统
+答：适用于 Apache Spark 的 Synapse Link 已正式发布。 针对无服务器 SQL 池的 Synapse Link 提供公共预览版。
 
-### <a name="q-what-is-a-good-use-case-for-spark-in-synapse"></a>问：Synapse 中的 Spark 的典型用例是什么
+### <a name="q-does-azure-synapse-workspace-support-cicd"></a>问：Azure Synapse 工作区是否支持 CI/CD？ 
 
-答：我们的首要目标是提供极佳的数据工程体验，从而以批或流的形式通过数据湖转换数据。 Spark 与我们的数据业务流程之间存在简单而又紧密的集成，使开发工作的操作化变得十分简单。
+答：是的！ 所有管道项目、笔记本、SQL 脚本和 Spark 作业定义都将驻留在 GIT 中。 所有池定义都将作为 ARM 模板存储在 GIT 中。 专用 SQL 池对象（架构、表、视图等）将通过具有 CI/CD 支持的数据库项目进行管理。
 
-Spark 的另一个用例是使数据科学家能够：
+## <a name="pipelines"></a>管道
 
-- 提取特征
-- 探索数据
-- 训练模型
+### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>问：如何确保我了解使用了哪些凭据来运行管道？ 
 
-### <a name="q-what-is-a-good-use-case-for-sql-on-demand-in-synapse"></a>问：Synapse 中的 SQL 按需版本的典型用例是什么
+答：使用在链接服务中指定的凭据来执行 Synapse 管道中的每个活动。
 
-答：SQL 按需版本是针对数据湖中的数据运行的查询服务。 它提供熟悉的 T-SQL 语法，用于就地查询数据而无需将数据复制或加载到专用存储，使你能够让对所有数据的访问都变得简单易行。
+### <a name="q-are-ssis-irs-supported-in-synapse-integrate"></a>问：Synapse 集成是否支持 SSIS IR？
 
-用例包括：
+答：暂时没有。 
 
-- 基本发现和探索 - 为数据分析师、越来越多的数据科学家和数据工程师提供一种简单的途径，让他们可以在读取 T-SQL 查询中使用架构来初步洞察其数据湖中驻留的数据
-- 逻辑数据仓库 - 数据分析师可以运用 T-SQL 语言的完全表达性来直接查询和分析 Azure 存储中驻留的数据，并使用熟悉的 BI 工具（例如 Azure Analyses Services、Power BI Premium 等）通过重新运行 Starlight Query 查询来刷新仪表板
-- “单一查询”ETL - 可让数据工程师将基于 Azure 存储的数据从一种格式转换为另一种格式，以大规模并行处理方式执行筛选、聚合等操作，将查询结果保存到 Azure 存储，并使其立即可用于 Starlight Query 或其他相关服务中的进一步处理
+### <a name="q-how-do-i-migrate-existing-pipelines-from-azure-data-factory-to-an-azure-synapse-workspace"></a>问：如何将现有管道从 Azure 数据工厂迁移到 Azure Synapse 工作区？
 
-### <a name="q-what-is-a-good-use-case-for-data-flow-in-synapse"></a>问：Synapse 中的数据流的典型用例是什么
+答：此时，必须通过从原始管道导出 JSON 并将其导入 Synapse 工作区来手动重新创建 Azure 数据工厂管道和相关项目。
 
-答：数据工程师可以使用数据流开发图形化数据转换逻辑，而无需编写代码。 生成的数据流将在数据集成和业务流程中作为活动执行。 可以通过现有的计划、控制、流和监视功能，将数据流活动操作化。
+## <a name="apache-spark"></a>Apache Spark
 
-## <a name="security-and-access"></a>安全性和访问
+### <a name="q-what-is-the-difference-between-apache-spark-for-synapse-and-apache-spark"></a>问：Apache Spark for Synapse 和 Apache Spark 之间有什么区别？
 
-答：端到端单一登录体验是 Synapse Analytics 中的一个重要身份验证过程。 必须通过完整的 AAD 集成来管理和传递标识。
+答：Apache Spark for Synapse 就是 Apache Spark，只是增加了对与（AAD、AzureML 等）其他服务集成的支持，还有更多的库（mssparktuils、Hummingbird）和预优化的性能配置。
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>问：如何获取对 ADLS Gen2 中的文件和文件夹的访问权限
+目前在 Apache Spark 上运行的任何工作负载都可按原样在 MSFT Spark 上运行。 
 
-答：对文件和文件夹的访问权限目前是通过 ADLS Gen2 管理的。 有关详细信息，请参阅 [Data Lake Storage 访问控制](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+### <a name="q-what-versions-of-spark-are-available"></a>问：Spark 有哪些版本可用？
 
-### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>问：是否可以使用第三方商业智能工具来访问 Azure Synapse Analytics
+答：Azure Synapse Apache Spark 完全支持 Spark 2.4。 有关核心组件和当前支持的版本的完整列表，请参阅 [Apache Spark 版本支持](./spark/apache-spark-version-support.md)。
 
-答：是的，可以使用第三方商业应用程序（例如 Tableau 和 Power BI）连接到 SQL 池和 SQL 按需版本。 Spark 支持 IntelliJ。
+### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>问：Azure Synapse Spark 中是否有 DButils 的等效内容？
+
+答：是的，Azure Synapse Apache Spark 提供 mssparkutils 库。 有关该实用工具的完整文档，请参阅 [Microsoft Spark 实用工具简介](./spark/microsoft-spark-utilities.md)。
+
+### <a name="q-how-do-i-set-session-parameters-in-apache-spark"></a>问：如何在 Apache Spark 中设置会话参数？
+
+答：若要设置会话参数，请使用 %%configure magic available。 要使参数生效，需要重启会话。 
+
+### <a name="q-how-do-i-set-cluster-level-parameters-in-a-serverless-spark-pool"></a>问：如何在无服务器 Spark 池中设置群集级别参数？
+
+答：若要设置群集级别参数，可以为 Spark 池提供 spark.conf 文件。 然后，此池将采用配置文件中传递的参数。 
+
+### <a name="q-can-i-run-a-multi-user-spark-cluster-in-azure-synapse-analytics"></a>问：能否在 Azure Synapse Analytics 中运行多用户 Spark 群集？
+ 
+答：Azure Synapse 为特定用例提供专门构建的引擎。 Apache Spark for Synapse 是作为作业服务（而不是群集模型）设计。 有两种情况需要多用户群集模型。
+
+**场景 1：许多用户出于 BI 目的访问用于提供数据的群集。**
+
+完成此任务的最简单方法是，使用 Spark 调整数据，然后利用 Synapse SQL 提供的服务功能，将 Power BI 连接到这些数据集。
+
+**场景 2：让多个开发人员共用一个群集以节约资金。**
+ 
+为满足此场景，应为每个开发人员提供一个无服务器 Spark 池，并将其设置为使用少量 Spark 资源。 由于无服务器 Spark 池在被主动使用之前不会产生任何费用，因此有多个开发人员时可以将成本降到最低。 池共享元数据（Spark 表），因此这些开发人员可以轻松合作。
+
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>问：如何包括、管理和安装库 
+
+答：可以在从 synapse 工作区或 Azure 门户创建 Spark 池时安装外部包。 请参阅[在 Azure Synapse Analytics 中管理 Apache Spark 库](./spark/apache-spark-azure-portal-add-libraries.md)。
+
+## <a name="dedicated-sql-pools"></a>专用 SQL 池
+
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>问：专用 SQL 池和无服务器池之间有什么功能差异
+
+答：可以在 [Synapse SQL 中的 T-SQL 功能差异](./sql/overview-features.md)中找到差异的完整列表。
+
+### <a name="q-now-that-azure-synapse-is-ga-how-do-i-move-my-dedicated-sql-pools-that-were-previously-standalone-into-azure-synapse"></a>问：既然 Azure Synapse 已正式发布，如何将以前独立的专用 SQL 池迁移到 Azure Synapse？ 
+
+答：不存在“移动”或“迁移”。 你可以选择在现有池上启用新的工作区功能。 如果这样做，不会有中断性变更，只是你将可以使用 Synapse Studio、Spark 和无服务器 SQL 池等新功能。
+
+### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>问：专用 SQL 池现在的默认部署是什么？ 
+
+答：默认情况下，所有新的专用 SQL 池都将部署到工作区；但是如果有需要，仍然可以使用独立的外形规格创建专用 SQL 池（以前称为 SQL DW）。 
+
+
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>问：专用 SQL 池和无服务器 SQL 池之间有什么功能差异 
+
+答：可以在 [Synapse SQL 中的 T-SQL 功能差异](./sql/overview-features.md)中找到差异的完整列表。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建工作区](quickstart-create-workspace.md)
-- [使用 Synapse Studio](quickstart-synapse-studio.md)
-- [创建 SQL 池](quickstart-create-sql-pool-portal.md)
-- [使用 SQL 按需版本](quickstart-sql-on-demand.md)
-- [创建 Apache Spark 池](quickstart-create-apache-spark-pool-portal.md) 
+* [Azure Synapse Analytics 入门](get-started.md)
+* [创建工作区](quickstart-create-workspace.md)
+* [使用无服务器 SQL 池](quickstart-sql-on-demand.md)

@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003858"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536073"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
 每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 标识注册表还可用于控制对面向设备的终结点的访问。 本文介绍如何从标识注册表批量导入和导出设备标识。 若要查看 C# 的工作示例并了解在将中心克隆到其他区域时如何使用此功能，请参阅[如何克隆 IoT 中心](iot-hub-how-to-clone.md)。
 
 > [!NOTE]
-> IoT 中心最近添加了数量有限的区域的虚拟网络支持。 此功能保护了导入和导出操作的安全，无需传递密钥即可进行身份验证。  最初，虚拟网络支持仅在以下区域提供： *WestUS2*、 *EastUS*和 *default-machinelearning-southcentralus*。 若要详细了解虚拟网络支持以及用于实现它的 API 调用，请参阅 [IoT 中心对虚拟网络的支持](virtual-network-support.md)。
+> IoT 中心最近添加了数量有限的区域的虚拟网络支持。 此功能保护了导入和导出操作的安全，无需传递密钥即可进行身份验证。  最初，虚拟网络支持仅在以下区域提供： *WestUS2* 、 *EastUS* 和 *default-machinelearning-southcentralus* 。 若要详细了解虚拟网络支持以及用于实现它的 API 调用，请参阅 [IoT 中心对虚拟网络的支持](virtual-network-support.md)。
 
-*作业*的上下文中发生导入和导出操作，可允许对 IoT 中心执行批量服务操作。
+*作业* 的上下文中发生导入和导出操作，可允许对 IoT 中心执行批量服务操作。
 
-**RegistryManager** 类包括使用**作业**框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 这些方法可以导出、导入和同步整个 IoT 中心标识注册表。
+**RegistryManager** 类包括使用 **作业** 框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 这些方法可以导出、导入和同步整个 IoT 中心标识注册表。
 
-本主题讨论如何使用 RegistryManager 类和作业系统执行设备到 IoT 中心的标识注册表的批量导入，以及从 IoT 中心的标识注册表到设备的批量导出。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档](/azure/iot-dps)。
+本主题讨论如何使用 RegistryManager 类和作业系统执行设备到 IoT 中心的标识注册表的批量导入，以及从 IoT 中心的标识注册表到设备的批量导出。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档](../iot-dps/index.yml)。
 
 ## <a name="what-are-jobs"></a>什么是作业？
 
@@ -37,7 +37,7 @@ ms.locfileid: "89003858"
 
 * 向用户返回大量数据。
 
-操作将以异步方式为该 IoT 中心创建**作业**，而不是对操作结果进行单一的 API 调用等待或阻塞。 然后，操作立即返回 **JobProperties** 对象。
+操作将以异步方式为该 IoT 中心创建 **作业** ，而不是对操作结果进行单一的 API 调用等待或阻塞。 然后，操作立即返回 **JobProperties** 对象。
 
 以下 C# 代码段演示如何创建导出作业：
 
@@ -50,7 +50,7 @@ JobProperties exportJob = await
 > [!NOTE]
 > 若要在 C# 代码中使用 **RegistryManager** 类，请将 **Microsoft.Azure.Devices** NuGet 包添加到项目。 **RegistryManager** 类位于 **Microsoft.Azure.Devices** 命名空间。
 
-可使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的**作业**的状态。 若要创建 **RegistryManager** 类的实例，请使用 **CreateFromConnectionString** 方法。
+可使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的 **作业** 的状态。 若要创建 **RegistryManager** 类的实例，请使用 **CreateFromConnectionString** 方法。
 
 ```csharp
 RegistryManager registryManager =
@@ -109,7 +109,7 @@ while(true)
      | SharedAccessBlobPermissions.Delete
    ```
 
-* 指示你是否要在导出数据中排除身份验证密钥的 *布尔值*。 如果为 **false**，则身份验证密钥包含在导出输出中。 否则，密钥导出为 **null**。
+* 指示你是否要在导出数据中排除身份验证密钥的 *布尔值* 。 如果为 **false** ，则身份验证密钥包含在导出输出中。 否则，密钥导出为 **null** 。
 
 下面的 C# 代码段演示了如何启动在导出数据中包含设备身份验证密钥的导出作业，并对完成情况进行轮询：
 
@@ -211,7 +211,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 ## <a name="import-devices"></a>导入设备
 
-通过 **RegistryManager** 类中的 **ImportDevicesAsync** 方法，可以在 IoT 中心标识注册表中执行批量导入和同步操作。 如同 **ExportDevicesAsync** 方法，**ImportDevicesAsync** 方法也使用**作业**框架。
+通过 **RegistryManager** 类中的 **ImportDevicesAsync** 方法，可以在 IoT 中心标识注册表中执行批量导入和同步操作。 如同 **ExportDevicesAsync** 方法， **ImportDevicesAsync** 方法也使用 **作业** 框架。
 
 请小心使用 **ImportDevicesAsync** 方法，因为除了在标识注册表中预配新设备以外，它还可以更新和删除现有设备。
 
@@ -226,7 +226,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
    SharedAccessBlobPermissions.Read
    ```
 
-* 一个*字符串*，包含要用作作业的*输出*的[AZURE 存储](https://azure.microsoft.com/documentation/services/storage/)blob 容器的 URI。 作业在此容器中创建块 Blob，用于存储已完成的导入 **作业**中的任何错误信息。 SAS 令牌必须包含这些权限：
+* 一个 *字符串* ，包含要用作作业的 *输出* 的 [AZURE 存储](https://azure.microsoft.com/documentation/services/storage/)blob 容器的 URI。 作业在此容器中创建块 Blob，用于存储已完成的导入 **作业** 中的任何错误信息。 SAS 令牌必须包含这些权限：
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -264,16 +264,16 @@ JobProperties importJob =
 
 | importMode | 说明 |
 | --- | --- |
-| **createOrUpdate** |如果不存在具有指定 **ID**的设备，则新注册该设备。 <br/>如果设备已存在，则以所提供的输入数据覆盖现有信息，而不管 **ETag** 值为何。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
-| **create** |如果不存在具有指定 **ID**的设备，则新注册该设备。 <br/>如果设备已存在，则在日志文件中写入错误。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
-| **update** |如果具有指定 **ID**的设备已存在，则使用提供的输入数据覆盖现有信息，而不考虑 **ETag** 值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
-| **updateIfMatchETag** |如果具有指定 **ID**的设备已存在，则只有当 **ETag** 匹配时，才会使用提供的输入数据覆盖现有信息。 <br/>如果设备不存在，则在日志文件中写入错误。 <br/>如果 **ETag** 不匹配，则在日志文件中写入错误。 |
-| **createOrUpdateIfMatchETag** |如果不存在具有指定 **ID**的设备，则新注册该设备。 <br/>如果设备已存在，则仅当 **ETag** 匹配时，才以提供的输入数据覆盖现有信息。 <br/>如果 **ETag** 不匹配，则在日志文件中写入错误。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
-| **delete** |如果具有指定 **ID**的设备已存在，则将其删除，而不考虑 **ETag** 值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
-| **deleteIfMatchETag** |如果具有指定 **ID**的设备已存在，则只有当 **ETag** 匹配时才会将其删除。 如果设备不存在，则在日志文件中写入错误。 <br/>如果 ETag 不匹配，则将错误写入日志文件。 |
+| **createOrUpdate** |如果不存在具有指定 ID 的设备，则表示是新注册的设备。 <br/>如果设备已存在，则以所提供的输入数据覆盖现有信息，而不管 **ETag** 值为何。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 ETag，它的处理独立于设备 ETag 的处理。 如果与现有孪生的 ETag 不匹配，则会将错误写入日志文件。 |
+| **create** |如果不存在具有指定 ID 的设备，则表示是新注册的设备。 <br/>如果设备已存在，则在日志文件中写入错误。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 ETag，它的处理独立于设备 ETag 的处理。 如果与现有孪生的 ETag 不匹配，则会将错误写入日志文件。 |
+| **update** |如果具有指定 ID 的设备已存在，则使用提供的输入数据覆盖现有信息，与 ETag 值无关 。 <br/>如果设备不存在，则在日志文件中写入错误。 |
+| **updateIfMatchETag** |如果具有指定 ID 的设备已存在，则只有当 ETag 下匹配时，才使用提供的输入数据覆盖现有信息 。 <br/>如果设备不存在，则在日志文件中写入错误。 <br/>如果 **ETag** 不匹配，则在日志文件中写入错误。 |
+| **createOrUpdateIfMatchETag** |如果不存在具有指定 ID 的设备，则表示是新注册的设备。 <br/>如果设备已存在，则仅当 **ETag** 匹配时，才以提供的输入数据覆盖现有信息。 <br/>如果 **ETag** 不匹配，则在日志文件中写入错误。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 ETag，它的处理独立于设备 ETag 的处理。 如果与现有孪生的 ETag 不匹配，则会将错误写入日志文件。 |
+| **delete** |如果具有指定 ID 的设备已存在，则删除该设备，与 ETag 值无关 。 <br/>如果设备不存在，则在日志文件中写入错误。 |
+| **deleteIfMatchETag** |如果具有指定 ID 的设备已存在，则只有当 ETag 匹配时才删除该设备 。 如果设备不存在，则在日志文件中写入错误。 <br/>如果 ETag 不匹配，则将错误写入日志文件。 |
 
 > [!NOTE]
-> 如果序列化数据未显式定义设备的 **importMode** 标志，则该标志在导入操作过程中默认为 **createOrUpdate**。
+> 如果序列化数据未显式定义设备的 **importMode** 标志，则该标志在导入操作过程中默认为 **createOrUpdate** 。
 
 ## <a name="import-devices-example--bulk-device-provisioning"></a>导入设备示例 – 批量预配设备
 
@@ -399,7 +399,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>获取容器 SAS URI
 
-下面的代码示例演示如何使用 Blob 容器的读取、写入和删除权限生成 [SAS URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md)：
+下面的代码示例演示如何使用 Blob 容器的读取、写入和删除权限生成 [SAS URI](../storage/common/storage-sas-overview.md)：
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -432,14 +432,13 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 若要详细了解如何管理 Azure IoT 中心，请查看以下文章：
 
-* [IoT 中心指标](iot-hub-metrics.md)
-* [IoT 中心日志](iot-hub-monitor-resource-health.md)
+* [监视 IoT 中心](monitor-iot-hub.md)
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南](iot-hub-devguide.md)
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/quickstart-linux.md)
 
 若要了解如何使用 IoT 中心设备预配服务启用零接触实时预配，请参阅： 
 
-* [Azure IoT 中心设备预配服务](/azure/iot-dps)
+* [Azure IoT 中心设备预配服务](../iot-dps/index.yml)

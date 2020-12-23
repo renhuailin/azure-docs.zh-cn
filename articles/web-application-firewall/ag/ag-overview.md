@@ -5,15 +5,15 @@ description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91267017"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621019"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什么是 Azure 应用程序网关上的 Azure Web 应用程序防火墙？
 
@@ -22,9 +22,6 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 应用程序网关上的 WAF 基于开放 Web 应用程序安全项目 (OWASP) 中的[核心规则集 (CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3.1、3.0 或 2.2.9。 WAF 会自动更新以包含针对新漏洞的保护，而无需其他配置。 
 
 下面列出了 WAF 策略中存在的所有 WAF 功能。 可以创建多个策略，并可将它们与应用程序网关或应用程序网关上的单个侦听器或基于路径的路由规则相关联。 这样，如果需要，你可以为应用程序网关后面的每个站点提供单独的策略。 有关 WAF 策略的详细信息，请参阅[创建 WAF 策略](create-waf-policy-ag.md)。
-
-   > [!NOTE]
-   > 每个 URI 的 WAF 策略均为公共预览版。 这意味着此功能受 Microsoft 补充使用条款的约束。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ![应用程序网关 WAF 关系图](../media/ag-overview/waf1.png)
 
@@ -65,8 +62,8 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 - SQL 注入保护。
 - 跨站点脚本保护。
 - 其他常见 Web 攻击防护，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含。
-- 防止 HTTP 协议违反行为。
-- 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）。
+- 防止 HTTP 协议违反行为的保护。
+- 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）的保护。
 - 防范爬网程序和扫描程序。
 - 检测常见应用程序错误配置（例如 Apache 和 IIS 等）。
 - 具有下限和上限的可配置请求大小限制。
@@ -74,6 +71,7 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 - 根据应用程序的具体需求创建自定义规则。
 - 按地理位置筛选流量，以允许或阻止从特定的国家/地区访问你的应用程序。 （预览版）
 - 使用机器人缓解规则集防范应用程序遭到机器人攻击。 （预览版）
+- 检查请求正文中的 JSON 和 XML
 
 ## <a name="waf-policy-and-rules"></a>WAF 策略和规则
 
@@ -135,7 +133,7 @@ OWASP 有两种模式，用于决定是否阻止流量：传统模式和异常�
 
 在异常评分模式下，当防火墙处于阻止模式时，不会立即阻止与任何规则匹配的流量。 规则具有一定的严重性：“严重”、“错误”、“警告”或“通知”。 此严重性会影响请求的数值，该数值称为异常分数。 例如，一个“警告”规则匹配对应的分数为 3。 一个“严重”规则匹配对应的分数为 5。
 
-|严重性  |Value  |
+|严重性  |值  |
 |---------|---------|
 |严重     |5|
 |错误        |4|
@@ -145,7 +143,7 @@ OWASP 有两种模式，用于决定是否阻止流量：传统模式和异常�
 异常分数的阈值为 5，用于阻止流量。 因此，单个“严重”规则匹配足以让应用程序网关 WAF 阻止请求，即使在阻止模式下也是如此。 但一个“警告”规则匹配仅使异常分数增加 3，而这并不足以阻止流量。
 
 > [!NOTE]
-> WAF 规则匹配流量时记录的消息包括操作值“已阻止”。 但实际上只会在异常分数为 5 或更高时阻止流量。  
+> WAF 规则匹配流量时记录的消息包括操作值“已阻止”。 但实际上只会在异常分数为 5 或更高时阻止流量。 有关详细信息，请参阅[排查 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 问题](web-application-firewall-troubleshoot.md#understanding-waf-logs)。 
 
 ### <a name="waf-monitoring"></a>WAF 监视
 
@@ -159,7 +157,7 @@ OWASP 有两种模式，用于决定是否阻止流量：传统模式和异常�
 
 #### <a name="azure-security-center"></a>Azure 安全中心
 
-[安全中心](../../security-center/security-center-intro.md)可帮助防范、检测和应对威胁。 它可提高对 Azure 资源安全性的可见性和控制力度。 应用程序网关已[与安全中心集成](../../application-gateway/application-gateway-integration-security-center.md)。 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它可以建议应用程序网关 WAF 保护这些易受攻击的资源。 直接从安全中心创建防火墙。 这些 WAF 实例已与安全中心集成。 他们将警报和运行状况信息发送到安全中心以进行报告。
+[安全中心](../../security-center/security-center-introduction.md)可帮助防范、检测和应对威胁。 它可提高对 Azure 资源安全性的可见性和控制力度。 应用程序网关已[与安全中心集成](../../application-gateway/application-gateway-integration-security-center.md)。 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它可以建议应用程序网关 WAF 保护这些易受攻击的资源。 直接从安全中心创建防火墙。 这些 WAF 实例已与安全中心集成。 他们将警报和运行状况信息发送到安全中心以进行报告。
 
 ![安全中心概述窗口](../media/ag-overview/figure1.png)
 

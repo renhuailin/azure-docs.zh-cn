@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: db29b6743458a4a3ec87dfec9e367bef0c946a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e899f28cf5b3c11ae5f935d7bc273c566214225
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857004"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606770"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "91857004"
 
 * HDInsight 版本 3.5 和 3.6 提供创建 HDInsight 群集（可访问作为默认存储的 Data Lake Storage Gen1）的选项。
 
-* 创建 HDInsight 群集（可访问作为默认存储的 Data Lake Storage Gen1）的选项不可用于 HDInsight Premium 群集**。
+* 创建 HDInsight 群集（可访问作为默认存储的 Data Lake Storage Gen1）的选项不可用于 HDInsight Premium 群集。
 
 若要通过 PowerShell 来配置可以使用 Data Lake Storage Gen1 的 HDInsight，请遵循后续五个部分中的说明。
 
@@ -37,9 +37,9 @@ ms.locfileid: "91857004"
 
 在开始学习本教程之前，请确保满足以下要求：
 
-* **一个 Azure 订阅**：转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**：参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
-* **Windows 软件开发工具包 (SDK)**：若要安装 Windows SDK，请转到[适用于 Windows 10 的下载内容和工具](https://dev.windows.com/downloads)。 该 SDK 用于创建安全证书。
+* **一个 Azure 订阅**：转到 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure PowerShell 1.0 或更高版本**：参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/)。
+* **Windows 软件开发工具包 (SDK)**：若要安装 Windows SDK，请转到 [适用于 Windows 10 的下载内容和工具](https://dev.windows.com/downloads)。 该 SDK 用于创建安全证书。
 * **Azure Active Directory 服务主体**：本教程介绍如何在 Azure Active Directory (Azure AD) 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
 
     >[!NOTE]
@@ -77,7 +77,7 @@ ms.locfileid: "91857004"
     New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
     ```
 
-    应该会看到如下输出：
+    应看到如下输出：
 
     ```output
     ResourceGroupName : hdiadlgrp
@@ -113,7 +113,7 @@ ms.locfileid: "91857004"
     Tags                        : {}
     ```
 
-4. 要将 Data Lake Storage Gen1 用作默认存储，需要指定一个根路径，在创建群集过程中将复制此路径下的特定于群集的文件。 若要创建根路径（在代码片段中为“/clusters/hdiadlcluster”），请使用以下 cmdlet****：
+4. 要将 Data Lake Storage Gen1 用作默认存储，需要指定一个根路径，在创建群集过程中将复制此路径下的特定于群集的文件。 若要创建根路径（在代码片段中为“/clusters/hdiadlcluster”），请使用以下 cmdlet：
 
     ```azurepowershell
     $myrootdir = "/"
@@ -128,9 +128,9 @@ ms.locfileid: "91857004"
 若要为 Data Lake Storage Gen1 设置 Active Directory 身份验证，请执行以下两个部分中的任务。
 
 ### <a name="create-a-self-signed-certificate"></a>创建自签名证书
-继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须事先创建一个目录例如 C:\mycertdir，会在该目录中创建证书**。
+继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须事先创建一个目录例如 C:\mycertdir，会在该目录中创建证书。
 
-1. 在 PowerShell 窗口中，转到安装 Windows SDK 的位置（通常为 C:\Program Files (x86)\Windows Kits\10\bin\x86），并使用 [MakeCert][makecert] 实用工具创建一个自签名证书和私钥 **。 使用以下命令：
+1. 在 PowerShell 窗口中，转到安装 Windows SDK 的位置（通常为 C:\Program Files (x86)\Windows Kits\10\bin\x86），并使用 [MakeCert][makecert] 实用工具创建一个自签名证书和私钥 。 使用以下命令：
 
     ```azurepowershell
     $certificateFileDir = "<my certificate directory>"
@@ -139,19 +139,19 @@ ms.locfileid: "91857004"
     makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
     ```
 
-    系统会提示输入私钥密码。 成功执行该命令后，指定的证书目录中应会出现 CertFile.cer 和 mykey.pvk********。
+    系统会提示输入私钥密码。 成功执行该命令后，指定的证书目录中应会出现 CertFile.cer 和 mykey.pvk。
 2. 使用 [Pvk2Pfx][pvk2pfx] 实用工具将 MakeCert 创建的.pvk 和.cer 文件转换为.pfx 文件。 运行以下命令：
 
     ```azurepowershell
     pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
     ```
 
-    出现提示时，请输入前面指定的私钥密码。 为 -po 参数指定的值是与 .pfx 文件关联的密码****。 成功完成该命令后，还应在指定的证书目录中看到**CertFile。**
+    出现提示时，请输入前面指定的私钥密码。 为 -po 参数指定的值是与 .pfx 文件关联的密码。 成功完成该命令后，还应在指定的证书目录中看到 **CertFile。**
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>创建 Azure AD 和服务主体
 本部分将为 Azure AD 应用程序创建一个服务主体，将角色分配给该服务主体，然后通过提供证书来以服务主体的身份进行身份验证。 若要在 Azure AD 中创建应用程序，请运行以下命令：
 
-1. 将以下 cmdlet 粘贴到 PowerShell 控制台窗口中。 确保为 -DisplayName 属性指定的值是唯一的****。 -HomePage 和 -IdentiferUris 的值是占位符值，且未经验证********。
+1. 将以下 cmdlet 粘贴到 PowerShell 控制台窗口中。 确保为 -DisplayName 属性指定的值是唯一的。 -HomePage 和 -IdentiferUris 的值是占位符值，且未经验证。
 
     ```azurepowershell
     $certificateFilePath = "$certificateFileDir\CertFile.pfx"
@@ -207,8 +207,8 @@ ms.locfileid: "91857004"
     # Set these variables
 
     $location = "East US 2"
-    $storageAccountName = $dataLakeStorageGen1Name                         # Data Lake Storage Gen1 account name
-        $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
+    $storageAccountName = $dataLakeStorageGen1Name    # Data Lake Storage Gen1 account name
+        $storageRootPath = "<Storage root path you specified earlier>"     # e.g. /clusters/hdiadlcluster
         $clusterName = "<unique cluster name>"
     $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
     $httpCredentials = Get-Credential
@@ -236,7 +236,7 @@ ms.locfileid: "91857004"
     成功完成该 cmdlet 后，应会出现列出群集详细信息的输出。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Storage Gen1
-配置 HDInsight 群集后，可在该群集上运行测试作业，确保该群集可访问 Data Lake Storage Gen1。 若要执行此操作，请运行示例 Hive 作业，以创建一个表，该表使用在* \<cluster root> /example/data/sample.log*上的 Data Lake Storage Gen1 中已经提供的示例数据。
+配置 HDInsight 群集后，可在该群集上运行测试作业，确保该群集可访问 Data Lake Storage Gen1。 若要执行此操作，请运行示例 Hive 作业，以创建一个表，该表使用在 *\<cluster root> /example/data/sample.log* 上的 Data Lake Storage Gen1 中已经提供的示例数据。
 
 在本部分，我们将与创建的 HDInsight Linux 群集建立安全外壳 (SSH) 连接，然后运行示例 Hive 查询。
 
@@ -249,7 +249,7 @@ ms.locfileid: "91857004"
     hive
     ```
 
-2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表****：
+2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表：
 
     ```azurepowershell
     DROP TABLE log4jLogs;
@@ -281,9 +281,9 @@ hdfs dfs -ls adl:///
 
 可以使用 `hdfs dfs -put` 命令将一些文件上传到 Data Lake Storage Gen1，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure 门户：创建使用 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
+[makecert]: /windows-hardware/drivers/devtest/makecert
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

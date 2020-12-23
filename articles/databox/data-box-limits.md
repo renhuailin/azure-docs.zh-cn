@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: b193247fee843796da0cb2fcfc1a874b1a1b72fb
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 00ba711661d69bbaf53ff51fb2cb833d9b1c1ae2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91660915"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660417"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box 限制
 
@@ -28,7 +28,7 @@ ms.locfileid: "91660915"
 - Data Box 最多可存储导入和导出的500000000文件。
 - Data Box 在云中最多支持 512 个容器或共享。 用户共享中的顶层目录将成为云中的容器或 Azure 文件共享。 
 - 由于 ReFS 元数据空间消耗，Data Box 用量容量可能小于 80 TB。
-- Data Box 在 NFS 共享上一次支持最多5个客户端连接。 
+- Data Box 在 NFS 共享上一次最多支持10个客户端连接。
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制
 
@@ -52,7 +52,7 @@ ms.locfileid: "91660915"
 - Data Box 通过 SMB 将数据导出到基于 Windows 的系统，并受文件和文件夹的 SMB 限制的限制。 不会导出名称不受支持的文件和文件夹。
 - 从前缀到容器的映射均为1:1。
 - 文件名的最大大小为1024个字符。 超过此长度的文件名不会被导出。
-- *Xml*文件中的重复前缀 (会导出创建订单) 。 不会忽略重复的前缀。
+- *Xml* 文件中的重复前缀 (会导出创建订单) 。 不会忽略重复的前缀。
 - 页 blob 和容器名称区分大小写。 如果大小写不匹配，将找不到 blob 和/或容器。
  
 

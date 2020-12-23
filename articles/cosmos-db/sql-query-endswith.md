@@ -3,18 +3,20 @@ title: Azure Cosmos DB 查询语言中的 EndsWith
 description: 了解 Azure Cosmos DB 中的 ENDSWITH SQL 系统函数如何返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3d37786c7364b07228d1d8d6540e7b6d8a174eb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0cc93fee8aacc711a797925cb2e2808b73cafd1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322680"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338823"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。  
   

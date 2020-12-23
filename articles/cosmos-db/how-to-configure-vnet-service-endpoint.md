@@ -4,17 +4,22 @@ description: 本文档介绍为 Azure Cosmos DB 设置虚拟网络服务终结�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 995e5a1a87ee332c48641f42c4134e3e58f11cfa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495414"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637177"
 ---
-# <a name="configure-access-from-virtual-networks-vnet"></a>配置从虚拟网络 (VNet) 访问
+# <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>配置从虚拟网络 (VNet 对 Azure Cosmos DB 的访问权限) 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+可将 Azure Cosmos 帐户配置为仅允许从虚拟网络 (VNet) 的特定子网进行访问。 启用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来访问虚拟网络中子网上的 Azure Cosmos DB 后，来自该子网的流量将发送到具有该子网和虚拟网络的标识的 Azure Cosmos DB。 启用 Azure Cosmos DB 服务终结点后，可以通过将子网添加到 Azure Cosmos 帐户来限制对该子网的访问。
+
+默认情况下，如果请求附带有效的授权令牌，则可从任何源访问 Azure Cosmos 帐户。 在 VNet 中添加一个或多个子网后，只有源自这些子网的请求才能获取有效响应。 源自其他任何源的请求将收到 403（禁止访问）响应。 
 
 可将 Azure Cosmos DB 帐户配置为仅允许从 Azure 虚拟网络的特定子网进行访问。 限制使用虚拟网络中子网的连接对 Azure Cosmos DB 帐户的访问：
 
@@ -29,8 +34,6 @@ ms.locfileid: "87495414"
 
 以下部分介绍如何为 Azure Cosmos DB 帐户配置虚拟网络服务终结点。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="configure-a-service-endpoint-by-using-the-azure-portal"></a><a id="configure-using-portal"></a>使用 Azure 门户配置服务终结点
 
 ### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>为现有的 Azure 虚拟网络和子网配置服务终结点
@@ -41,7 +44,7 @@ ms.locfileid: "87495414"
 
 1. 若要授予对现有虚拟网络子网的访问权限，请在“虚拟网络”下面选择“添加现有的 Azure 虚拟网络”。 
 
-1. 选择要从中添加 Azure 虚拟网络的**订阅**。 选择要向其提供 Azure Cosmos DB 帐户访问权限的 Azure **虚拟网络**和**子网**。 接下来选择“启用”，以便为“Microsoft.AzureCosmosDB”启用包含服务终结点的选定网络。 完成后，选择“添加”。
+1. 选择要从中添加 Azure 虚拟网络的 **订阅** 。 选择要向其提供 Azure Cosmos DB 帐户访问权限的 Azure **虚拟网络** 和 **子网** 。 接下来选择“启用”，以便为“Microsoft.AzureCosmosDB”启用包含服务终结点的选定网络。 完成后，选择“添加”。
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="选择虚拟网络和子网":::
 
@@ -69,7 +72,7 @@ ms.locfileid: "87495414"
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="为新虚拟网络选择虚拟网络和子网":::
 
-如果你的 Azure Cosmos DB 帐户被其他 Azure 服务（如 Azure 认知搜索）使用，或者从流分析或 Power BI 访问，你可以通过**从全球 Azure 数据中心内选择 "接受连接**" 来允许访问。
+如果你的 Azure Cosmos DB 帐户被其他 Azure 服务（如 Azure 认知搜索）使用，或者从流分析或 Power BI 访问，你可以通过 **从全球 Azure 数据中心内选择 "接受连接** " 来允许访问。
 
 为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许从 Azure 门户访问”选项。 有关这些选项的详细信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)一文。 启用访问后，选择“保存”以保存设置。
 
@@ -87,12 +90,11 @@ ms.locfileid: "87495414"
 
 ## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>使用 Azure PowerShell 配置服务终结点
 
-> [!NOTE]
-> 使用 PowerShell 或 Azure CLI 时，请务必在参数中指定 IP 筛选器和虚拟网络 ACL 的完整列表，而不仅仅是需要添加的项。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 在 Azure PowerShell 中使用以下步骤配置 Azure Cosmos DB 帐户的服务终结点：  
 
-1. 安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 并[登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。  
+1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并[登录](/powershell/azure/authenticate-azureps)。  
 
 1. 为虚拟网络的现有子网启用服务终结点。  
 
@@ -110,6 +112,9 @@ ms.locfileid: "87495414"
       -AddressPrefix $subnetPrefix `
       -ServiceEndpoint $serviceEndpoint | Set-AzVirtualNetwork
    ```
+
+   > [!NOTE]
+   > 使用 PowerShell 或 Azure CLI 时，请务必在参数中指定 IP 筛选器和虚拟网络 ACL 的完整列表，而不仅仅是需要添加的项。
 
 1. 获取虚拟网络信息。
 
@@ -307,6 +312,54 @@ az network vnet subnet update \
 
 1. 从 Azure Cosmos DB 帐户的防火墙规则中删除子网的 IP 防火墙规则。
 
+## <a name="frequently-asked-questions"></a>常见问题
+
+下面是有关配置从虚拟网络进行访问的一些常见问题：
+
+### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>笔记本和 Mongo/Cassandra Shell 当前是否与启用了虚拟网络的帐户兼容？
+
+目前，不支持在 Cosmos DB 数据资源管理器中使用 [Mongo shell](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) 和 [Cassandra Shell](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) 集成和 [Jupyter 笔记本服务](./cosmosdb-jupyter-notebooks.md)。 此功能目前正在积极开发中。
+
+### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>是否可以在 Azure Cosmos 帐户中同时指定虚拟网络服务终结点和 IP 访问控制策略？ 
+
+可以在 Azure Cosmos 帐户上同时启用虚拟网络服务终结点和 IP 访问控制策略 (也称为防火墙) 。 这两个功能是互补的，共同确保 Azure Cosmos 帐户的隔离性和安全性。 使用 IP 防火墙可确保静态 IP 能够访问你的帐户。 
+
+### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>如何限制对虚拟网络中子网的访问？ 
+
+需要执行两个步骤来限制从子网对 Azure Cosmos 帐户的访问。 首先，允许来自子网的流量将其子网和虚拟网络标识传递给 Azure Cosmos DB。 在子网中为 Azure Cosmos DB 启用服务终结点可实现此目的。 接下来，在 Azure Cosmos 帐户中添加一个规则，以便将此子网指定为可从中访问帐户的源。
+
+### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>虚拟网络 ACL 和 IP 防火墙是否会拒绝请求或连接？ 
+
+添加 IP 防火墙或虚拟网络访问规则后，只有来自受允许源的请求才能获取有效响应。 将拒绝其他请求并返回 403（禁止访问）错误。 必须将 Azure Cosmos 帐户的防火墙与连接级别的防火墙区分开来。 源仍可连接到服务，连接本身不会遭到拒绝。
+
+### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>在子网中为 Azure Cosmos DB 启用服务终结点后，我的请求开始遭到阻止。 发生了什么情况？
+
+在子网中为 Azure Cosmos DB 启用服务终结点后，抵达帐户的流量源将从公共 IP 切换到虚拟网络和子网。 如果 Azure Cosmos 帐户仅包含基于 IP 的防火墙，则已启用服务的子网发出的流量将不再与 IP 防火墙规则相匹配，因此遭到拒绝。 请重温有关从基于 IP 的防火墙无缝迁移到基于虚拟网络的访问控制的步骤。
+
+### <a name="are-additional-azure-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Azure Cosmos 帐户是否需要具有 VNET 服务终结点的其他 Azure RBAC 权限？
+
+在将 VNet 服务终结点添加到 Azure Cosmos 帐户后，若要对帐户设置进行任何更改，需要访问 Azure Cosmos 帐户上配置的所有 VNET 的 `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` 操作。 此权限是必需的，因为授权过程会先验证对资源（例如数据库和虚拟网络资源）的访问权限，然后再对所有属性进行评估。
+ 
+即使用户没有使用 Azure CLI 指定 VNET ACL，授权也会验证对 VNet 资源操作的权限。 目前，Azure Cosmos 帐户的控制平面支持设置 Azure Cosmos 帐户的完整状态。 控制平面调用的其中一个参数是 `virtualNetworkRules`。 如果未指定此参数，Azure CLI 将执行 get database 调用来检索 `virtualNetworkRules`，并在更新调用中使用此值。
+
+### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>对等互连的虚拟网络是否也有权访问 Azure Cosmos 帐户？ 
+只有已添加到 Azure Cosmos 帐户的虚拟网络及其子网才拥有此访问权限。 将对等互连的虚拟网络中的子网添加到帐户之后，对等互连的 VNet 才可以访问该帐户。
+
+### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>最多允许多少个子网访问单个 Cosmos 帐户？ 
+目前，一个 Azure Cosmos 帐户最多允许 256 个子网。
+
+### <a name="can-i-enable-access-from-vpn-and-express-route"></a>是否可以启用从 VPN 和 Express Route 进行访问？ 
+若要在本地通过 ExpressRoute 访问 Azure Cosmos 帐户，需要启用 Microsoft 对等互连。 创建 IP 防火墙或虚拟网络访问规则后，可以在 Azure Cosmos 帐户 IP 防火墙中添加用于 Microsoft 对等互连的公共 IP 地址，以允许本地服务访问 Azure Cosmos 帐户。 
+
+### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>是否需要更新网络安全组 (NSG) 规则？ 
+NSG 规则用于限制与虚拟网络中子网之间的连接。 将 Azure Cosmos DB 的服务终结点添加到子网时，无需在 NSG 中为 Azure Cosmos 帐户打开出站连接。 
+
+### <a name="are-service-endpoints-available-for-all-vnets"></a>服务终结点是否适用于所有 VNet？
+否，只能为 Azure 资源管理器虚拟网络启用服务终结点。 经典虚拟网络不支持服务终结点。
+
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>为 Azure Cosmos DB 启用了服务终结点访问时，我能否“接受从公用 Azure 数据中心内连接”？  
+仅当你希望自己的 Azure Cosmos DB 帐户可供其他 Azure 第一方服务（例如 Azure 数据工厂和 Azure 认知搜索）或给定 Azure 区域中部署的任何服务访问时，才需要这样做。
+
 ## <a name="next-steps"></a>后续步骤
 
-* 若要为 Azure Cosmos DB 配置防火墙，请参阅[防火墙支持](firewall-support.md)一文。
+* 若要为 Azure Cosmos DB 配置防火墙，请参阅[防火墙支持](how-to-configure-firewall.md)一文。

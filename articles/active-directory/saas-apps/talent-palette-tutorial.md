@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1b7cfa03aeb705ea7e7caf3254bc39d9fff722ce
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6e1064e4362175b3de5187ce050f1719ede56bd5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546527"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>教程：Azure Active Directory 与 Talent Palette 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88546527"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Talent Palette（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -90,7 +90,7 @@ ms.locfileid: "88546527"
 
     ![配置单一登录链接](common/select_sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select_saml_option.png)
 
@@ -100,20 +100,20 @@ ms.locfileid: "88546527"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Talent Palette 域和 URL 单一登录信息](common/both_replyurl.png)
+    ![显示“基本 SAML 配置”的屏幕截图，你可以在其中输入“回复 URL”。](common/both_replyurl.png)
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://talent-p.net/saml/acs/<tenantID>`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Talent Palette 域和 URL 单一登录信息](common/both_signonurl.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/both_signonurl.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://talent-p.net/saml/sso/<tenantID>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Talent Palette 客户端支持团队](mailto:talent-support@pa-consul.co.jp)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载**证书(原始)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载 **证书(原始)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificateraw.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "88546527"
 
 ### <a name="configure-talent-palette-single-sign-on"></a>配置 Talent Palette 单一登录
 
-若要在 **Talent Palette** 端配置单一登录，你需要将下载的**证书(原始)** 以及从 Azure 门户复制的相应 URL 发送给 [Talent Palette 支持团队](mailto:talent-support@pa-consul.co.jp)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Talent Palette** 端配置单一登录，你需要将下载的 **证书(原始)** 以及从 Azure 门户复制的相应 URL 发送给 [Talent Palette 支持团队](mailto:talent-support@pa-consul.co.jp)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -184,18 +184,18 @@ ms.locfileid: "88546527"
 
 ### <a name="create-talent-palette-test-user"></a>创建 Talent Palette 测试用户
 
-在本部分中，将在 Talent Palette 中创建一个名为 Britta Simon 的用户。 请与  [Talent Palette 支持团队](mailto:talent-support@pa-consul.co.jp)合作来在 Talent Palette 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Talent Palette 中创建一个名为 Britta Simon 的用户。 请与 [Talent Palette 支持团队](mailto:talent-support@pa-consul.co.jp)协作，将用户添加到 Talent Palette 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Talent Palette 磁贴时，应当会自动登录到你为其设置了 SSO 的 Talent Palette。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Talent Palette 磁贴时，应当会自动登录到你为其设置了 SSO 的 Talent Palette。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

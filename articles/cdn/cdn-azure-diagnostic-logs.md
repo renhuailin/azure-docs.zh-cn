@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191279"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352110"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>诊断日志-Azure 内容分发网络
 
@@ -42,30 +42,30 @@ ms.locfileid: "88191279"
 
 按照以下步骤为你的 Azure CDN 终结点启用日志记录：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 在 Azure 门户中，导航到**All resources**  ->  **你的 cdn 配置文件**中的所有资源
+2. 在 Azure 门户中，导航到 **All resources**  ->  **你的 cdn 配置文件** 中的所有资源
 
 2. 选择要为其启用诊断日志的 CDN 终结点：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 "CDN 终结点"。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 &quot;CDN 终结点&quot;。" border="true":::
 
 3. 在 "**监视**" 部分选择 "**诊断日志**"：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 "诊断日志"。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 &quot;诊断日志&quot;。" border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>使用 Azure 存储启用日志记录
 
 若要使用存储帐户来存储日志，请执行以下步骤：
 
  >[!NOTE] 
- >若要完成这些步骤，需要一个存储帐户。 有关详细信息，请参阅： **[创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** 。
+ >若要完成这些步骤，需要一个存储帐户。 有关详细信息，请参阅： **[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)** 。
     
 1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
  
-2. 选择“存档到存储帐户”****，然后选择“CoreAnalytics”****。 
+2. 选择“存档到存储帐户”，然后选择“CoreAnalytics”。 
 
-3. 对于“保留期(天数)”****，请选择保留天数。 如果保留期为 0 天，则会无限期存储日志。 
+3. 对于“保留期(天数)”，请选择保留天数。 如果保留期为 0 天，则会无限期存储日志。 
 
 4. 选择日志的订阅和存储帐户。
 
@@ -78,7 +78,7 @@ ms.locfileid: "88191279"
 若要对日志使用 Log Analytics，请执行以下步骤：
 
 >[!NOTE] 
->需要使用 log analytics 工作区才能完成这些步骤。 有关详细信息，请参阅： **[在 Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** 。
+>需要使用 log analytics 工作区才能完成这些步骤。 有关详细信息，请参阅： **[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)** 。
     
 1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
 
@@ -95,7 +95,7 @@ ms.locfileid: "88191279"
 若要将事件中心用于日志，请执行以下步骤：
 
 >[!NOTE] 
->需要使用事件中心才能完成这些步骤。 有关详细信息，请参阅： **[快速入门：使用 Azure 门户创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)** 。
+>需要使用事件中心才能完成这些步骤。 有关详细信息，请参阅： **[快速入门：使用 Azure 门户创建事件中心](../event-hubs/event-hubs-create.md)** 。
     
 1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
 
@@ -189,7 +189,7 @@ ms.locfileid: "88191279"
 
 1.  打开 **Microsoft Azure 存储资源管理器**
 2.  找到存储帐户
-3.  展开该存储帐户下的“Blob 容器”节点。****
+3.  展开该存储帐户下的“Blob 容器”节点。
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
 5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=*。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅 [Blob 路径格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
 6.  每个 Blob *PT1H.json* 文件表示特定 CDN 终结点或其自定义域一小时内的分析日志。
@@ -202,7 +202,7 @@ ms.locfileid: "88191279"
 
 ```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
-字段说明：****
+字段说明：
 
 |值|描述|
 |-------|---------|
@@ -229,7 +229,7 @@ ms.locfileid: "88191279"
 
 ## <a name="log-data-delays"></a>日志数据延迟
 
-下表介绍 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 标准/高级版**的日志数据延迟。
+下表介绍 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版** 和 **Verizon 推出的 Azure CDN 标准/高级版** 的日志数据延迟。
 
 Microsoft 日志数据延迟 | Verizon 日志数据延迟 | Akamai 日志数据延迟
 --- | --- | ---
@@ -242,14 +242,14 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 ### <a name="core-analytics-metrics-details"></a>核心分析指标详细信息
 下表显示了的核心分析日志中可用指标的列表：
 
-* **Microsoft Azure CDN Standard**
-* **Akamai 中的 Azure CDN 标准**
+* **来自 Microsoft 的 Azure CDN 标准版**
+* **来自 Akamai 的 Azure CDN 标准版**
 * **Verizon 中的标准/高级 Azure CDN**
 
 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 说明 | Microsoft | Verizon | Akamai |
+|指标                     | 描述 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |
@@ -265,7 +265,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 | RequestCountCacheHit | 导致缓存命中的所有请求的计数。 资产已直接从 POP 提供给客户端。 | 是 | 是 | 否  |
 | RequestCountCacheMiss | 导致缓存未命中的所有请求的计数。 缓存未命中意味着在最靠近客户端的 POP 上找不到该资产，并已从源中检索到该资产。 | 是 | 是 | 否 |
 | RequestCountCacheNoCache | 因边缘上的用户配置而无法缓存的资产的所有请求计数。 | 是 | 是 | 否 |
-| RequestCountCacheUncacheable | 对资产的缓存控制和到期标头阻止缓存的对资产的所有请求计数。 此计数表明它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
+| RequestCountCacheUncacheable | 对资产的 Cache-Control 和 Expires 标头禁止缓存的对资产的所有请求计数。 此计数表明它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
 | RequestCountCacheOthers | 上述未涵盖的具有缓存状态的所有请求的计数。 | 否 | 是 | 否  |
 | EgressTotal | 出站数据传输量（按 GB 计） | 是 |是 |是 |
 | EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量*（按 GB 计）。 | 是 | 是 | 否  |
@@ -276,7 +276,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 | EgressCacheHit | 针对直接从 CDN POP/边缘上 CDN 缓存传递的响应的出站数据传输量。 | 是 | 是 | 否 |
 | EgressCacheMiss。 | 对于在最近的 POP 服务器上找不到的响应的出站数据传输，以及从源服务器检索到的响应。 | 是 | 是 | 否 |
 | EgressCacheNoCache | 因边缘上的用户配置而无法缓存的资产的出站数据传输。 | 是 | 是 | 否 |
-| EgressCacheUncacheable | 无法由资产的缓存控制和或过期标头缓存的资产的出站数据传输。 指示它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
+| EgressCacheUncacheable | 无法通过资产的 Cache-Control 和或 Expires 标头来缓存的资产的出站数据传输。 指示它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
 | EgressCacheOthers | 其他缓存方案的出站数据传输量。 | 否 | 是 | 否 |
 
 * 出站数据传输量是指从 CDN POP 服务器传递到客户端的流量。
@@ -369,14 +369,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 
 ## <a name="additional-resources"></a>其他资源
 
-* [Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-* [通过 Azure CDN 补充门户进行核心分析](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
-* [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
-
-
-
-
-
-
-
+* [Azure 诊断日志](../azure-monitor/platform/platform-logs-overview.md)
+* [通过 Azure CDN 补充门户进行核心分析](./cdn-analyze-usage-patterns.md)
+* [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Log Analytics REST API](/rest/api/loganalytics)

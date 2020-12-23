@@ -1,5 +1,5 @@
 ---
-title: 针对 StorSimple 使用基于角色的访问控制 | Microsoft Docs
+title: 使用 Azure 基于角色的访问控制进行 StorSimple |Microsoft Docs
 description: 介绍如何在 StorSimple 环境中使用 azure RBAC)  (azure 基于角色的访问控制。
 services: storsimple
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920393"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518970"
 ---
-# <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
+# <a name="azure-role-based-access-control-for-storsimple"></a>适用于 StorSimple 的 Azure 基于角色的访问控制
 
-本文简要介绍了如何将 azure RBAC) 的 Azure 基于角色的访问控制用于 StorSimple 设备 (。 RBAC 提供针对 Azure 的细化访问管理。 使用 RBAC 只向 StorSimple 用户授予执行作业所需的适当访问量，而不用向每个人授予不受限制的访问。 若要深入了解 Azure 中访问管理的基础知识，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
+本文简要介绍了如何将 azure RBAC) 的 Azure 基于角色的访问控制用于 StorSimple 设备 (。 Azure RBAC 提供适用于 Azure 的精细访问管理。 使用 Azure RBAC 只向 StorSimple 用户授予正确的访问权限，而无需为每个人提供无限制的访问权限。 有关 Azure 中的访问管理的基础知识的详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
 
 本文适用于在 Azure 门户中运行 Update 3.0 或更高版本的 StorSimple 8000 系列设备。
 
@@ -31,11 +31,11 @@ ms.locfileid: "87920393"
 
 ## <a name="azure-roles-for-storsimple"></a>适用于 StorSimple 的 Azure 角色
 
-可基于角色分配 RBAC。 该角色可确保根据环境中的可用资源授予特定的权限级别。 StorSimple 用户可以选择以下两种类型的角色：内置或自定义。
+可以根据角色分配 Azure RBAC。 该角色可确保根据环境中的可用资源授予特定的权限级别。 StorSimple 用户可以选择以下两种类型的角色：内置或自定义。
 
-* **内置角色** - 内置角色可以是所有者、参与者、读者或用户访问管理员。 有关详细信息，请参阅[Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)。
+* **内置角色** - 内置角色可以是所有者、参与者、读者或用户访问管理员。 有关详细信息，请参阅 [Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)。
 
-* **自定义角色**-如果内置角色不能满足你的需求，则可以为 StorSimple 创建 Azure 自定义角色。 若要创建 Azure 自定义角色，请先使用内置角色，对其进行编辑，然后将其重新导入到环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
+* **自定义角色** -如果内置角色不能满足你的需求，则可以为 StorSimple 创建 Azure 自定义角色。 若要创建 Azure 自定义角色，请先使用内置角色，对其进行编辑，然后将其重新导入到环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
 
 若要在 Azure 门户中查看可用于 StorSimple 设备用户的不同角色，请转到 StorSimple 设备管理器服务，然后转到“访问控制(IAM)”>“角色”****。
 
@@ -58,7 +58,7 @@ ms.locfileid: "87920393"
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. 在 Visual Studio 中打开 JSON 文件。 你会看到，典型的 Azure 角色由三个主要部分组成： **Actions**、 **NotActions**和**AssignableScopes**。
+4. 在 Visual Studio 中打开 JSON 文件。 你会看到，典型的 Azure 角色由三个主要部分组成： **Actions**、 **NotActions**和 **AssignableScopes**。
 
     Actions 节列出了允许此角色执行的所有操作****。 每个操作都是从资源提供程序分配的。 对于 StorSimple 基础结构管理员，请使用 `Microsoft.StorSimple` 资源提供程序。
 
@@ -68,7 +68,7 @@ ms.locfileid: "87920393"
 
     还可查看可用于管理资源提供程序的所有 PowerShell cmdlet。
 
-    在**NotActions**部分中，将列出特定 Azure 角色的所有受限操作。 在此示例中，不会限制任何操作。
+    在 **NotActions** 部分中，将列出特定 Azure 角色的所有受限操作。 在此示例中，不会限制任何操作。
     
     AssignableScopes 下列出了订阅 ID****。 确保 Azure 角色包含使用它的显式订阅 ID。 如果未指定正确的订阅 ID，则不能导入订阅中的角色。
 
@@ -165,7 +165,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请参阅 azure [RBAC) 上的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
 
-1. 请**访问 (IAM) 的 "访问控制**"。 在“访问控制”边栏选项卡上单击“+ 添加”****。
+1. 请 **访问 (IAM) 的 "访问控制 **"。 在“访问控制”边栏选项卡上单击“+ 添加”****。
 
     ![添加对 Azure 角色的访问权限](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
@@ -183,7 +183,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 创建此角色后，可在 Azure 门户中查看与此角色关联的权限。
 
-1. 若要查看与此角色关联的权限，请参阅**访问控制 (IAM) > role > StorSimple 基础结构管理员**。此时会显示此角色中的用户列表。
+1. 若要查看与此角色关联的权限，请参阅 **访问控制 (IAM) > role > StorSimple 基础结构管理员**。此时会显示此角色中的用户列表。
 
 2. 选择 StorSimple 基础结构管理员用户，然后单击“权限”****。
 

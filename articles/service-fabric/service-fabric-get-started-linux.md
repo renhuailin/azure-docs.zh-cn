@@ -2,28 +2,26 @@
 title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
 ms.topic: conceptual
-ms.date: 2/23/2018
+ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086884"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
 若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装用于 Java 和 .NET Core 开发的可选 SDK。 
 
-本文中的步骤假设你在 Linux 上进行本地安装，或者使用 Service Fabric OneBox 容器映像 `mcr.microsoft.com/service-fabric/onebox:latest`。
+本文中的步骤假设你是在 Linux 上本机安装的，或者使用 [Service Fabric OneBox 容器映像](https://hub.docker.com/_/microsoft-service-fabric-onebox)，例如 `mcr.microsoft.com/service-fabric/onebox:u18` 。
 
-不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
+可以通过 Azure Service Fabric 命令行界面 (CLI) 来管理在云中或本地托管的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -42,9 +40,17 @@ ms.locfileid: "91249988"
 
 ## <a name="installation-methods"></a>安装方法
 
-### <a name="script-installation-ubuntu"></a>脚本安装 (Ubuntu)
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 
-为方便起见，我们提供了一个脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK。 在以下部分中执行手动安装步骤。 可以看到正在安装的组件和相关许可证。 运行该脚本即认为你同意所要安装的所有软件的许可条款。
+# <a name="ubuntu"></a>[Ubuntu](#tab/sdksetupubuntu)
+
+## <a name="update-your-apt-sources"></a>更新 APT 源
+若要通过 apt-get 命令行工具安装 SDK 和关联的运行时包，必须首先更新高级打包工具 (APT) 源。
+
+## <a name="script-installation"></a>脚本安装
+
+为方便起见，提供了一个脚本，用于将 Service Fabric 运行时和 Service Fabric 通用 SDK 与 [ **sfctl** CLI](service-fabric-cli.md)一起安装。 运行该脚本即认为你同意所要安装的所有软件的许可条款。 或者，你可以在下一节中运行 [手动安装](#manual-installation) 步骤，其中将显示关联的许可证以及要安装的组件。
 
 成功运行脚本后，可以跳转到[设置本地群集](#set-up-a-local-cluster)。
 
@@ -52,13 +58,8 @@ ms.locfileid: "91249988"
 sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
 ```
 
-### <a name="manual-installation"></a>手动安装
+## <a name="manual-installation"></a>手动安装
 有关手动安装 Service Fabric 运行时和通用 SDK，请遵照本指南的余下部分操作。
-
-## <a name="update-your-apt-sources-or-yum-repositories"></a>更新 APT 源或 Yum 存储库
-若要通过 apt-get 命令行工具安装 SDK 和关联的运行时包，必须首先更新高级打包工具 (APT) 源。
-
-### <a name="ubuntu"></a>Ubuntu
 
 1. 打开终端。
 
@@ -100,8 +101,30 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo apt-get update
     ```
 
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>为本地群集安装并设置 Service Fabric SDK
 
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+更新源后，可安装 SDK。 安装 Service Fabric SDK 包，确认安装，并同意许可协议。
+
+### <a name="ubuntu"></a>Ubuntu
+
+```bash
+sudo apt-get install servicefabricsdkcommon
+```
+
+> [!TIP]
+>   以下命令自动接受 Service Fabric 包的许可证：
+>   ```bash
+>   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
+>   ```
+
+# <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
+
+## <a name="update-your-yum-repositories"></a>更新你的 Yum 存储库
+若要通过 yum 命令行工具安装 SDK 和关联的运行时包，必须首先更新包源。
+
+## <a name="manual-installation-rhel"></a>手动安装 (RHEL) 
+有关手动安装 Service Fabric 运行时和通用 SDK，请遵照本指南的余下部分操作。
 
 1. 打开终端。
 2. 下载并安装 Extra Packages for Enterprise Linux(EPEL)。
@@ -129,50 +152,69 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
     ```
 
-6. 安装 .NET SDK。
-
-    ```bash
-    yum install rh-dotnet20 -y
-    ```
-
-## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>为本地群集安装并设置 Service Fabric SDK
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster-rhel"></a>为本地群集 (RHEL 安装并设置 Service Fabric SDK) 
 
 更新源后，可安装 SDK。 安装 Service Fabric SDK 包，确认安装，并同意许可协议。
-
-### <a name="ubuntu"></a>Ubuntu
-
-```bash
-sudo apt-get install servicefabricsdkcommon
-```
-
-> [!TIP]
->   以下命令自动接受 Service Fabric 包的许可证：
->   ```bash
->   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
->   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
->   ```
-
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
 
 ```bash
 sudo yum install servicefabricsdkcommon
 ```
 
+---
+
+## <a name="included-packages"></a>包含的包
 SDK 安装随附的 Service Fabric 运行时包含下表中所述的包。 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-**Ubuntu** | 2.0.0 | AzulJDK 1.8 | Implicit from npm | 最新 |
+**Ubuntu** | 2.0.7 | AzulJDK 1.8 | Implicit from npm | 最新 |
 **RHEL** | - | OpenJDK 1.8 | Implicit from npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>设置本地群集
-安装完成后，启动本地群集。
+1. 启动本地 Service Fabric 群集以进行开发。
+
+# <a name="container-based-local-cluster"></a>[基于容器的本地群集](#tab/localclusteroneboxcontainer)
+
+启动基于容器的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 群集。
+
+1. 安装小鲸鱼以便能够部署 Docker 容器。
+    ```bash
+    sudo apt-get install moby-engine moby-cli -y
+    ```
+2. 请在主机上用以下设置更新 Docker 守护程序配置，并重新启动 Docker 守护程序。 详细信息： [启用 IPv6 支持](https://docs.docker.com/config/daemon/ipv6/)
+
+    ```json
+    {
+        "ipv6": true,
+        "fixed-cidr-v6": "fd00::/64"
+    }
+    ```
+
+3. 启动群集。<br/>
+    <b>Ubuntu 18.04 LTS：</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
+    ```
+
+    <b>Ubuntu 16.04 LTS：</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 对于特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 页。
+
+# <a name="local-cluster"></a>[本地群集](#tab/localcluster)
+
+使用上述步骤安装 SDK 后，启动本地群集。
 
 1. 运行群集安装程序脚本。
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+
+---
 
 2. 打开 Web 浏览器，转到 **Service Fabric Explorer** (`http://localhost:19080/Explorer`)。 群集启动后，可以看到 Service Fabric Explorer 仪表板。 群集完全设置可能需要几分钟时间。 如果浏览器无法打开该 URL 或者 Service Fabric Explorer 未显示系统已准备就绪，请等待几分钟，然后重试。
 
@@ -217,9 +259,9 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 安装生成器后，可通过运行 `yo azuresfguest` 或 `yo azuresfcontainer` 分别创建来宾可执行文件或容器服务。
 
-## <a name="set-up-net-core-20-development"></a>设置 .NET Core 2.0 开发
+## <a name="set-up-net-core-31-development"></a>设置 .NET Core 3.1 开发
 
-安装[用于 Ubuntu 的 .NET Core 2.0 SDK](https://www.microsoft.com/net/core#linuxubuntu)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 NuGet.org 可为 .NET Core 2.0 Service Fabric 应用程序托管包，目前提供预览版。
+安装 [适用于 Ubuntu 的 .Net Core 3.1 SDK](https://www.microsoft.com/net/core#linuxubuntu) ，开始 [创建 c # Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序的包托管在 NuGet.org 上。
 
 ## <a name="set-up-java-development"></a>设置 Java 开发
 

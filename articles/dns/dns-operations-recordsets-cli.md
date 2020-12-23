@@ -6,16 +6,16 @@ ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
-ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701658"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011553"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure DNS 中的 DNS 记录和记录集
 
@@ -40,7 +40,7 @@ ms.locfileid: "84701658"
 
 请使用 `az network dns record-set <record-type> add-record` 命令创建 DNS 记录（其中 `<record-type>` 为一种记录类型，即 a、srv、txt 等）有关帮助，请参阅 `az network dns record-set --help`。
 
-创建记录时，需指定资源组名称、区域名称、记录集名称、记录类型，以及要创建的记录的详细信息。 给定的记录集名称必须是*相对*名称，这意味着它必须排除区域名称。
+创建记录时，需指定资源组名称、区域名称、记录集名称、记录类型，以及要创建的记录的详细信息。 给定的记录集名称必须是 *相对* 名称，这意味着它必须排除区域名称。
 
 如果记录集不存在，此命令会创建。 如果记录集已存在，此命令会将指定的记录添加到现有记录集。
 
@@ -60,7 +60,7 @@ az network dns record-set a add-record --resource-group myresourcegroup --zone-n
 
 ## <a name="create-a-dns-record-set"></a>创建 DNS 记录集
 
-在上面的示例中，已将 DNS 记录添加到现有记录集，或者*隐式*创建了记录集。 也可以*显式*创建记录集，并在其中添加记录。 Azure DNS 支持“空”记录集，此类记录集可充当占位符，用于在创建 DNS 记录之前保留某个 DNS 名称。 空记录集在 Azure DNS 控制平面可见，但不会显示在 Azure DNS 名称服务器上。
+在上面的示例中，已将 DNS 记录添加到现有记录集，或者 *隐式* 创建了记录集。 也可以 *显式* 创建记录集，并在其中添加记录。 Azure DNS 支持“空”记录集，此类记录集可充当占位符，用于在创建 DNS 记录之前保留某个 DNS 名称。 空记录集在 Azure DNS 控制平面可见，但不会显示在 Azure DNS 名称服务器上。
 
 记录集是使用 `az network dns record-set <record-type> create` 命令创建的。 有关帮助，请参阅 `az network dns record-set <record-type> create --help`。
 
@@ -155,7 +155,7 @@ az network dns record-set txt add-record --resource-group myresourcegroup --zone
 
 若要检索现有的记录集，请使用 `az network dns record-set <record-type> show`。 有关帮助，请参阅 `az network dns record-set <record-type> show --help`。
 
-由于在创建记录或记录集时，给定的记录集名称必须是*相对*名称，因此，该名称必须排除区域名称。 此外，需要指定记录类型、包含该记录集的区域，以及包含该区域的资源组。
+由于在创建记录或记录集时，给定的记录集名称必须是 *相对* 名称，因此，该名称必须排除区域名称。 此外，需要指定记录类型、包含该记录集的区域，以及包含该区域的资源组。
 
 以下示例从资源组 *MyResourceGroup* 中的区域 *contoso.com* 检索 A 类型的 *www* 记录。
 
@@ -268,7 +268,7 @@ az network dns record-set a update --resource-group myresourcegroup --zone-name 
 
 可以使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将特定于应用程序的数据与每个记录集相关联。 若要修改现有记录集的元数据，请使用 `az network dns record-set <record-type> update`。 有关帮助，请参阅 `az network dns record-set <record-type> update --help`。
 
-以下示例说明如何使用“dept=finance”和“environment=production”这两个元数据条目修改记录集。 请注意，所有现有元数据会被给定的值*替换*。
+以下示例说明如何使用“dept=finance”和“environment=production”这两个元数据条目修改记录集。 请注意，所有现有元数据会被给定的值 *替换*。
 
 ```azurecli
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set metadata.dept=finance metadata.environment=production

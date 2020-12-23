@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91617214"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451420"
 ---
 # <a name="what-is-azure-sql-database"></a>什么是 Azure SQL 数据库？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ Azure SQL 数据库是一个完全托管的平台即服务 (PaaS) 数据库引�
 
 使用 Azure SQL 数据库，可以为 Azure 中的应用程序和解决方案创建高度可用且高性能的数据存储层。 SQL 数据库可成为各种新式云应用程序的正确选择，因为它可让你处理关系数据和[非关系结构](../multi-model-features.md)（例如图形、JSON、空间和 XML）。
 
-Azure SQL 数据库是基于 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)的最新稳定版本。 你可以使用高级查询处理功能集，例如[高性能内存中技术](../in-memory-oltp-overview.md)和[智能查询处理](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)。 事实上，SQL Server 的最新功能会先发布到 SQL 数据库，然后再发布到 SQL Server 本身。 无需投入任何修补或升级开销，即可获得 SQL Server 的最新功能，这些功能已在数百万个数据库中进行测试。 
+Azure SQL 数据库是基于 [Microsoft SQL Server 数据库引擎](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)的最新稳定版本。 你可以使用高级查询处理功能集，例如[高性能内存中技术](../in-memory-oltp-overview.md)和[智能查询处理](/sql/relational-databases/performance/intelligent-query-processing?toc=%2fazure%2fsql-database%2ftoc.json)。 事实上，SQL Server 的最新功能会先发布到 SQL 数据库，然后再发布到 SQL Server 本身。 无需投入任何修补或升级开销，即可获得 SQL Server 的最新功能，这些功能已在数百万个数据库中进行测试。 
 
 使用 SQL 数据库可在以下两个不同的购买模型中轻松定义和缩放性能：[基于 vCore 的购买模型](service-tiers-vcore.md)和[基于 DTU 的购买模型](service-tiers-dtu.md)。 SQL 数据库是完全托管型服务，提供内置的可用性、备份和其他常见维护操作。 Microsoft 可以处理 SQL 和操作系统代码的所有修补与更新。 你无需管理底层基础结构。
 
@@ -37,7 +37,7 @@ Azure SQL 数据库是基于 [Microsoft SQL Server 数据库引擎](https://docs
 
 Azure SQL 数据库提供下述适用于数据库的部署选项：
 
-- [单一数据库](single-database-overview.md)表示完全托管的独立数据库。 对于需要单个可靠数据源的新式云应用程序和微服务，可以使用此选项。 单一数据库类似于 [SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)中[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json)。
+- [单一数据库](single-database-overview.md)表示完全托管的独立数据库。 对于需要单个可靠数据源的新式云应用程序和微服务，可以使用此选项。 单一数据库类似于 [SQL Server 数据库引擎](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)中[包含的数据库](/sql/relational-databases/databases/contained-databases?toc=%2fazure%2fsql-database%2ftoc.json)。
 - [弹性池](elastic-pool-overview.md)是[单一数据库](single-database-overview.md)的集合，其中包含一组共享的资源（例如 CPU 或内存）。 可以将单一数据库移入或移出弹性池。
 
 > [!IMPORTANT]
@@ -92,7 +92,7 @@ Azure SQL 数据库提供高级监视和故障排除功能，可帮助你更深�
  - SQL Server 数据库引擎的最新版本提供内置监视功能。 它们可让你找到实时性能见解。 
  - Azure 提供的 PaaS 监视功能，可让你监视大量的数据库实例并对其进行故障排除。
 
-[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store) - 内置的 SQL Server 监视功能，它可以实时记录查询性能，并使你能够识别潜在的性能问题和排名靠前的资源使用者。 自动优化和建议提供有关性能退化以及存在缺失或重复索引的查询的建议。 使用 Azure SQL 数据库中的自动优化可以手动应用脚本来解决问题，或者让 Azure SQL 数据库应用修复措施。 SQL 数据库还可以测试并验证该修复措施是否起了作用，并根据结果保留或还原更改。 除了查询存储和自动优化功能外，还可以使用标准的 [DMV 和 XEvent](monitoring-with-dmvs.md) 来监视工作负荷性能。
+[查询存储](/sql/relational-databases/performance/best-practice-with-the-query-store) - 内置的 SQL Server 监视功能，它可以实时记录查询性能，并使你能够识别潜在的性能问题和排名靠前的资源使用者。 自动优化和建议提供有关性能退化以及存在缺失或重复索引的查询的建议。 使用 Azure SQL 数据库中的自动优化可以手动应用脚本来解决问题，或者让 Azure SQL 数据库应用修复措施。 SQL 数据库还可以测试并验证该修复措施是否起了作用，并根据结果保留或还原更改。 除了查询存储和自动优化功能外，还可以使用标准的 [DMV 和 XEvent](monitoring-with-dmvs.md) 来监视工作负荷性能。
 
 Azure 提供[内置的性能监视](performance-guidance.md)和[警报](alerts-insights-configure-portal.md)工具，将它们与性能评分相结合，可以监视数千个数据库的状态。 使用这些工具，可以根据当前的或预计的性能需求，快速评估纵向扩展或纵向缩减产生的影响。 此外，SQL 数据库可[发出指标和资源日志](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)，以方便进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
@@ -108,7 +108,7 @@ Azure SQL 数据库使你的企业可以在中断期间继续运营。 在传统
 
 灾难恢复假设灾难性事件在局部地区发生，而远地部署了另一个包含数据副本的计算机或计算机组。 在 SQL Server 中，可以使用以异步模式运行的 Always On 可用性组来获取此功能。 人们通常不想等到远端复制完成后再提交事务，因此，在执行计划外故障转移时可能会丢失数据。
 
-高级和业务关键服务层级中的数据库已[执行与可用性组同步类似的操作](high-availability-sla.md#premium-and-business-critical-service-tier-availability)。 较低服务层级中的数据库使用[不同但等效的机制](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability)通过存储提供冗余。 内置逻辑可帮助防范单个计算机发生故障。 使用活动异地复制功能可以在灾难损毁整个区域时提供保护。
+高级和业务关键服务层级中的数据库已[执行与可用性组同步类似的操作](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)。 较低服务层级中的数据库使用[不同但等效的机制](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability)通过存储提供冗余。 内置逻辑可帮助防范单个计算机发生故障。 使用活动异地复制功能可以在灾难损毁整个区域时提供保护。
 
 在单个区域中的单个数据中心建筑物发生服务中断时，Azure 可用性区域会尝试提供保护。 它有助于防止建筑物中发生断电或网络中断。 在 SQL 数据库中，可将不同的副本放在不同的可用性区域（其实是不同的建筑物）中。
 
@@ -158,7 +158,7 @@ SQL 数据库提供针对需要监视的查询的详细见解。 SQL 数据库�
 
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性
 
-SQL 数据库提供一系列[内置安全性和符合性功能](../../active-directory/identity-protection/security-overview.md)，帮助应用程序满足各种安全性和符合性要求。
+SQL 数据库提供一系列[内置安全性和符合性功能](../../active-directory/identity-protection/concept-identity-protection-security-overview.md)，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
 > Microsoft 已根据许多合规性标准认证了 Azure SQL 数据库（所有部署选项）。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，从中找出 SQL 数据库法规认证的最新列表。
@@ -180,7 +180,7 @@ Azure Defender for SQL 是高级 SQL 安全功能的统一包。 它包括管理
 
 ### <a name="data-encryption"></a>数据加密
 
-SQL 数据库可提供加密功能来帮助保护数据。 对于动态数据，它使用[传输层安全性](https://support.microsoft.com/kb/3135244)。 对于静态数据，它使用[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。 对于使用中的数据，它使用 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)。
+SQL 数据库可提供加密功能来帮助保护数据。 对于动态数据，它使用[传输层安全性](https://support.microsoft.com/kb/3135244)。 对于静态数据，它使用[透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。 对于使用中的数据，它使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)。
 
 ### <a name="data-discovery-and-classification"></a>数据发现和分类
 
@@ -198,9 +198,9 @@ SQL 数据库让应用程序的构建和维护更加轻松、高效。 SQL 数�
 |:---|:---|
 |[Azure 门户](https://portal.azure.com/)|用于管理所有 Azure 服务的基于 Web 的应用程序。|
 |[Azure Data Studio](/sql/azure-data-studio/)|一种跨平台数据库工具，在 Windows、macOS 和 Linux 上运行。|
-|[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|用于管理任何 SQL 基础结构（从 SQL Server 到 SQL 数据库，不一而足）的免费可下载客户端应用程序。|
-|[Visual Studio 中的 SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|用于开发 SQL Server 关系数据库、Azure SQL 数据库中的数据库、Integration Services 包、Analysis Services 数据模型和 Reporting Services 报表的免费可下载客户端应用程序。|
-|[Visual Studio Code](https://code.visualstudio.com/docs)|一个可免费下载的开源代码编辑器，适用于 Windows、macOS 和 Linux。 它支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 Azure Synapse Analytics（以前称为“SQL 数据仓库”））。|
+|[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)|用于管理任何 SQL 基础结构（从 SQL Server 到 SQL 数据库，不一而足）的免费可下载客户端应用程序。|
+|[Visual Studio 中的 SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)|用于开发 SQL Server 关系数据库、Azure SQL 数据库中的数据库、Integration Services 包、Analysis Services 数据模型和 Reporting Services 报表的免费可下载客户端应用程序。|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|一个可免费下载的开源代码编辑器，适用于 Windows、macOS 和 Linux。 它支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 Azure Synapse Analytics）。|
 
 SQL 数据库支持在 macOS、Linux 和 Windows 上使用 Python、Java、Node.js、PHP、 Ruby 和 .NET 生成应用程序。 SQL 数据库和 SQL Server 支持相同的[连接库](connect-query-content-reference-guide.md#libraries)。
 
@@ -218,7 +218,7 @@ SQL 数据库支持在 macOS、Linux 和 Windows 上使用 Python、Java、Node.
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server)：询问数据库管理问题。
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server)：询问开发问题。
-- [Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)：询问技术问题。
+- [Microsoft 问答页](/answers/topics/azure-synapse-analytics.html)：询问技术问题。
 - [反馈](https://aka.ms/sqlfeedback)：报告 Bug 和请求功能。
 - [Reddit](https://www.reddit.com/r/SQLServer/)：讨论 SQL Server。
 
@@ -237,4 +237,3 @@ SQL 数据库支持在 macOS、Linux 和 Windows 上使用 Python、Java、Node.
 
 - 有关已公布的新功能的信息，请参阅 [Azure SQL 数据库路线图](https://azure.microsoft.com/roadmap/?category=databases)。
 - 请参阅 [Azure SQL 数据库博客](https://azure.microsoft.com/blog/topics/database)，SQL Server 产品团队成员会在其中发布有关 SQL 数据库新闻和功能的博客。
-

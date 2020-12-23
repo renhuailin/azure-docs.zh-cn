@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530997"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788074"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 Python 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -65,11 +65,11 @@ ms.locfileid: "91530997"
 
    + 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
-   + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
+   + **存储帐户名称** 。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus* 。 
 
-   + **位置**。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
+   + **位置** 。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
 
-   + **帐户类型**。 选择默认设置“StorageV2 (常规用途 v2)”。
+   + **帐户类型** 。 选择默认设置“StorageV2 (常规用途 v2)”。
 
 1. 单击“查看 + 创建”以创建服务。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91530997"
 
 1. 单击“Blob”服务。
 
-1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo*。
+1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo* 。
 
 1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。 选择所有的非图像文件。 应有 7 个文件。 单击“确定”以上传。
 
@@ -117,7 +117,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="创建存储帐户" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="创建存储帐户" border="false":::
 
 所有请求要求在发送到服务的每个请求的标头中指定 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 

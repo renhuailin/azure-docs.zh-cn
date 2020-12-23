@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761475"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542671"
 ---
 # <a name="sizing-guidance"></a>大小调整指南
 
@@ -56,7 +56,7 @@ ms.locfileid: "91761475"
 |**logsdb**|200m|1600Mi|2|1600Mi||
 |**logsui**|100m|500Mi|2|2Gi||
 |**metricsdb**|200m|800Mi|400m|2Gi||
-|**metricsdc**|100m|200Mi|200m|300Mi|Metricsdc 是在群集中的每个 Kubernetes 节点上创建的 daemonset。  表中的数字 _按节点_列出。 如果在创建数据控制器之前在部署配置文件文件中设置 allowNodeMetricsCollection = false，则不会创建 metricsdc daemonset。|
+|**metricsdc**|100m|200Mi|200m|300Mi|Metricsdc 是在群集中的每个 Kubernetes 节点上创建的 daemonset。  表中的数字 _按节点_ 列出。 如果在创建数据控制器之前在部署配置文件文件中设置 allowNodeMetricsCollection = false，则不会创建 metricsdc daemonset。|
 |**metricsui**|20m|200Mi|500m|200Mi||
 |**mgmtproxy**|200m|250Mi|500m|500Mi||
 
@@ -89,6 +89,7 @@ ms.locfileid: "91761475"
 - 核心数：1
 
 创建的每个 SQL 托管实例盒都有三个容器：
+
 |容器名称|CPU 请求|内存请求|CPU 限制|内存限制|备注|
 |---|---|---|---|---|---|
 |fluentbit|100m|100Mi|未指定|未指定|除了为 SQL 托管实例指定的请求 _外_ ，fluentbit 容器资源请求。||
@@ -104,6 +105,7 @@ ms.locfileid: "91761475"
 - 核心数：1
 
 创建的每个 PostgreSQL 超大规模服务器组协调器或辅助角色盒都有三个容器：
+
 |容器名称|CPU 请求|内存请求|CPU 限制|内存限制|备注|
 |---|---|---|---|---|---|
 |fluentbit|100m|100Mi|未指定|未指定|Fluentbit 容器资源请求是针对 PostgreSQL 超大规模服务器组节点指定的请求的 _补充_ 。|
@@ -122,9 +124,9 @@ ms.locfileid: "91761475"
 
 要求：
 
-- **"SQL1"**：1个具有 16 GB RAM 的 SQL 托管实例，4个内核
-- **"SQL2"**：1个包含 256 GB RAM 的 SQL 托管实例，16个内核
-- **"Postgres1"**： 1 PostgreSQL 超大规模服务器组，其中4个辅助角色位于 12 GB RAM，4核
+- **"SQL1"** ：1个具有 16 GB RAM 的 SQL 托管实例，4个内核
+- **"SQL2"** ：1个包含 256 GB RAM 的 SQL 托管实例，16个内核
+- **"Postgres1"** ： 1 PostgreSQL 超大规模服务器组，其中4个辅助角色位于 12 GB RAM，4核
 
 大小调整计算：
 

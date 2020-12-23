@@ -6,40 +6,41 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320891"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080645"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>使用 Azure Policy 实现 Azure Cosmos DB 资源的治理和控制
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 [Azure Policy](../governance/policy/overview.md) 有助于强制实施组织治理标准、评估资源符合性并实现自动修复。 常见的用例包括安全性、成本管理和配置一致性。
 
 Azure Policy 提供内置策略定义。 可以为内置策略定义未解决的方案创建自定义策略定义。 有关更多详细信息，请参阅 [Azure Policy 文档](../governance/policy/overview.md)。
 
 > [!IMPORTANT]
-> Azure 策略是在 Azure 服务的资源提供程序级别上强制实施的。 Cosmos DB Sdk 可以对数据库、容器和吞吐量资源执行大多数管理操作，这些操作会绕过 Cosmos DB 资源提供程序，因此忽略使用 Azure 策略创建的任何策略。 若要确保强制执行策略，请参阅 [阻止 Azure Cosmos DB sdk 中的更改](role-based-access-control.md#prevent-sdk-changes)
+> Azure Policy 是在 Azure 服务的资源提供程序级别上强制实施的。 Cosmos DB SDK 可以对数据库、容器和吞吐量资源执行大多数管理操作，这些操作会跳过 Cosmos DB 的资源提供程序，从而会忽略使用 Azure Policy 创建的任何策略。 为了确保强制执行策略，请参阅[阻止从 Azure Cosmos DB SDK 进行更改](role-based-access-control.md#prevent-sdk-changes)
 
 ## <a name="assign-a-built-in-policy-definition"></a>分配内置策略定义
 
-策略定义描述了资源符合性条件以及在满足某个条件时所产生的效果。 策略分配是根据策略定义创建的__ __。 可以对 Azure Cosmos DB 资源使用内置或自定义策略定义。 策略分配的范围为 Azure 管理组、Azure 订阅或资源组，策略分配将应用于所选范围内的资源。 或者，可以从所选范围中排除特定资源。
+策略定义描述了资源符合性条件以及在满足某个条件时所产生的效果。 策略分配是根据策略定义创建的   。 可以对 Azure Cosmos DB 资源使用内置或自定义策略定义。 策略分配的范围为 Azure 管理组、Azure 订阅或资源组，策略分配将应用于所选范围内的资源。 或者，可以从所选范围中排除特定资源。
 
 可以使用 [Azure 门户](../governance/policy/assign-policy-portal.md)、[Azure PowerShell](../governance/policy/assign-policy-powershell.md)、[Azure CLI](../governance/policy/assign-policy-azurecli.md) 或 [ARM 模板](../governance/policy/assign-policy-template.md)创建策略分配。
 
 若要根据 Azure Cosmos DB 的内置策略定义创建策略分配，请使用[使用 Azure 门户创建策略分配](../governance/policy/assign-policy-portal.md)一文中的步骤。
 
-在选择策略定义的步骤中，在“搜索”字段中输入 `Cosmos DB` 来筛选可用的内置策略定义。 选择一个可用的内置策略定义，然后选择“选择”继续创建策略分配****。
+在选择策略定义的步骤中，在“搜索”字段中输入 `Cosmos DB` 来筛选可用的内置策略定义。 选择一个可用的内置策略定义，然后选择“选择”继续创建策略分配  。
 
 > [!TIP]
-> 你还可以将“可用定义”格窗中显示的内置策略定义名称与 Azure PowerShell、Azure CLI 或 ARM 模板结合使用来创建策略分配****。
+> 你还可以将“可用定义”格窗中显示的内置策略定义名称与 Azure PowerShell、Azure CLI 或 ARM 模板结合使用来创建策略分配  。
 
 :::image type="content" source="./media/policy/available-definitions.png" alt-text="搜索 Azure Cosmos DB 内置策略定义":::
 
 ## <a name="create-a-custom-policy-definition"></a>创建自定义策略定义
 
-对于内置策略未解决的特定方案，可以创建[自定义策略定义](../governance/policy/tutorials/create-custom-policy-definition.md)。 之后，根据自定义策略定义创建策略分配__ __。
+对于内置策略未解决的特定方案，可以创建[自定义策略定义](../governance/policy/tutorials/create-custom-policy-definition.md)。 之后，根据自定义策略定义创建策略分配   。
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>策略规则中的属性类型和属性别名
 
@@ -108,7 +109,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 ## <a name="policy-compliance"></a>策略符合性
 
-创建策略分配后，Azure Policy 将评估分配范围内的资源。 每个资源会接受策略符合性评估__。 策略中指定的效果会应用到不符合的资源__。
+创建策略分配后，Azure Policy 将评估分配范围内的资源。 每个资源会接受策略符合性评估  。 策略中指定的效果会应用到不符合的资源  。
 
 你可以在 [Azure 门户](../governance/policy/how-to/get-compliance-data.md#portal)或通过 [Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line) 或 [Azure Monitor 日志](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs)查看符合性结果和修正详细信息。
 
@@ -126,7 +127,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 - 两个帐户均不遵从帐户需配置多个写入位置的策略
 - 两个帐户均不遵从将资源部署到允许的 Azure 区域的策略。
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="列出的 Azure 策略分配的合规性结果":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="搜索 Azure Cosmos DB 内置策略定义":::
 
 若要修正不合规的资源，请参阅[如何使用 Azure Policy 修正资源](../governance/policy/how-to/remediate-resources.md)。
 
@@ -134,4 +135,4 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 - [查看 Azure Cosmos DB 的示例自定义策略定义](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)，包括针对上述的多个写入位置和 VNet 筛选策略的内容。
 - [在 Azure 门户中创建策略分配](../governance/policy/assign-policy-portal.md)
-- [查看 Azure Cosmos DB 的 Azure Policy 内置策略定义](./policy-samples.md)
+- [查看 Azure Cosmos DB 的 Azure Policy 内置策略定义](./policy-reference.md)

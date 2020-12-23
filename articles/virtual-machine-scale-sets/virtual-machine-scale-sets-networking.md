@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 234834af4fcf4ad809f548d171a4c1c406d85895
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783716"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016686"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -43,7 +43,7 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>带 Azure 负载均衡器的 Azure 虚拟机规模集
-请参阅 [Azure 负载均衡器和虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) ，了解有关如何根据方案配置虚拟机规模集的标准负载均衡器详细信息。
+请参阅 [Azure 负载平衡器和虚拟机规模集](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md)，详细了解如何根据你的场景使用虚拟机规模集配置标准负载平衡器。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：
@@ -148,7 +148,7 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>在规模集中查询虚拟机的公共 IP 地址
 若要通过 CLI 列出分配到规模集虚拟机的公共 IP 地址，请使用 az vmss list-instance-public-ips 命令。
 
-若要使用 PowerShell 列出规模集的公共 IP 地址，请使用_Get-AzPublicIpAddress_ 命令。 例如：
+若要使用 PowerShell 列出规模集的公共 IP 地址，请使用 _Get-AzPublicIpAddress_ 命令。 例如：
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
@@ -160,19 +160,19 @@ Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-也可通过查询 [Azure 资源浏览器](https://resources.azure.com)或者 Azure REST API **** 2017-03-30 或更高版本来显示分配到规模集虚拟机的公共 IP 地址。
+也可通过查询 [Azure 资源浏览器](https://resources.azure.com)或者 Azure REST API 2017-03-30 或更高版本来显示分配到规模集虚拟机的公共 IP 地址。
 
 若要查询 [Azure 资源浏览器](https://resources.azure.com)，请执行以下操作：
 
 1. 在 Web 浏览器中打开 [Azure 资源浏览器](https://resources.azure.com)。
-1. 展开左侧的“订阅”，方法是单击其旁边的 *+*。** 如果在“订阅”下只有一个项，则“订阅”可能已展开。**
+1. 展开左侧的“订阅”，方法是单击其旁边的 *+*。 如果在“订阅”下只有一个项，则“订阅”可能已展开。
 1. 展开订阅。
 1. 展开资源组。
-1. 展开提供程序。**
-1. 展开 *Microsoft.Compute*。
+1. 展开提供程序。
+1. 展开 " *Microsoft. 计算*"。
 1. 展开 *virtualMachineScaleSets*。
 1. 展开规模集。
-1. 单击“publicipaddresses”。**
+1. 单击“publicipaddresses”。
 
 若要查询 Azure REST API，请执行以下操作：
 
@@ -299,7 +299,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>每个规模集的 NSG 和 ASG
-可以使用[网络安全组](../virtual-network/security-overview.md)通过安全规则来筛选 Azure 虚拟网络中出入 Azure 资源的流量。 可以通过[应用程序安全组](../virtual-network/security-overview.md#application-security-groups)来处理 Azure 资源的网络安全问题，并将其作为应用程序结构的扩展组合起来。
+可以使用[网络安全组](../virtual-network/network-security-groups-overview.md)通过安全规则来筛选 Azure 虚拟网络中出入 Azure 资源的流量。 可以通过[应用程序安全组](../virtual-network/network-security-groups-overview.md#application-security-groups)来处理 Azure 资源的网络安全问题，并将其作为应用程序结构的扩展组合起来。
 
 可以直接向规模集应用网络安全组，只需将引用添加到规模集虚拟机属性的网络接口配置节即可。
 

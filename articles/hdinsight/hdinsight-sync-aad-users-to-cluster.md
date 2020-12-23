@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 19466174faeef20b8ac29882b047d74ad2adc5ff
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89504649"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535172"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
-[具有企业安全性套餐 (ESP) 的 HDInsight 群集 ](hdinsight-domain-joined-introduction.md) 可以使用强身份验证与 Azure Active Directory (Azure AD) 用户一起使用，并使用 *azure RBAC (策略) 基于角色的访问控制 * 。 将用户和组添加到 Azure AD 时，可以同步需要访问群集的用户。
+[使用企业安全性套餐 (ESP) 的 HDInsight 群集](./domain-joined/hdinsight-security-overview.md)可对 Azure Active Directory (Azure AD) 用户使用强身份验证，还可使用 Azure 基于角色的访问控制 (Azure RBAC) 策略。 将用户和组添加到 Azure AD 时，可以同步需要访问群集的用户。
 
 ## <a name="prerequisites"></a>先决条件
 
-如果你尚未执行此操作，请[使用企业安全性套餐创建 HDInsight 群集](hdinsight-domain-joined-configure.md)。
+如果你尚未执行此操作，请[使用企业安全性套餐创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。
 
 ## <a name="add-new-azure-ad-users"></a>添加新的 Azure AD 用户
 
@@ -33,7 +33,7 @@ ms.locfileid: "89504649"
 
     ![Azure 门户 - 用户和组 - 所有用户](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
-3. 完成新用户表单。 选择所创建的组，以便分配基于群集的权限。 在此示例中，请创建名为“HiveUsers”的组，以便向其分配新用户。 [示例说明](hdinsight-domain-joined-configure.md)介绍如何创建 ESP 群集，其中包括如何添加 `HiveUsers` 和 `AAD DC Administrators` 这两个组。
+3. 完成新用户表单。 选择所创建的组，以便分配基于群集的权限。 在此示例中，请创建名为“HiveUsers”的组，以便向其分配新用户。 [示例说明](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)介绍如何创建 ESP 群集，其中包括如何添加 `HiveUsers` 和 `AAD DC Administrators` 这两个组。
 
     ![Azure 门户 - 用户窗格 - 选择组](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "89504649"
 1. 此结果显示，状态为“完成”，创建了一个新用户且为该用户指定了成员身份。 在此示例中，用户分配到“HiveUsers”同步的 LDAP 组，因为用户已在 Azure AD 中添加到该组。
 
     > [!NOTE]  
-    > 前一方法仅同步创建群集时在域设置的“访问用户组”属性中指定的 Azure AD 组。 有关详细信息，请参阅[创建 HDInsight 群集](domain-joined/apache-domain-joined-configure.md)。
+    > 前一方法仅同步创建群集时在域设置的“访问用户组”属性中指定的 Azure AD 组。 有关详细信息，请参阅[创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>验证新添加的 Azure AD 用户
 
@@ -148,6 +148,6 @@ ms.locfileid: "89504649"
 
 ## <a name="see-also"></a>另请参阅
 
-* [使用 ESP 在 HDInsight 中配置 Apache Hive 策略](hdinsight-domain-joined-run-hive.md)
-* [管理 ESP HDInsight 群集](hdinsight-domain-joined-manage.md)
+* [使用 ESP 在 HDInsight 中配置 Apache Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
+* [管理 ESP HDInsight 群集](./domain-joined/apache-domain-joined-manage.md)
 * [授权用户访问 Apache Ambari](hdinsight-authorize-users-to-ambari.md)

@@ -6,19 +6,19 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c0d9b6042ae695caa73d926653f237b756bf4971
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933346"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366717"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器中的高可用性概念
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
 
-Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务器部署提供具有自动故障转移功能的高可用性配置。 当部署在区域冗余配置中时，灵活的服务器会自动预配和管理不同可用性区域中的备用副本。 使用 PostgreSQL 流式复制时，数据会在 **同步** 模式下复制到备用副本服务器。 
+Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务器部署提供具有自动故障转移功能的高可用性配置。 当采用区域冗余配置进行部署时，灵活服务器会自动在不同的可用性区域中预配和管理备用副本。 使用 PostgreSQL 流式复制时，数据会在 **同步** 模式下复制到备用副本服务器。 
 
 区域冗余配置在计划事件（例如用户启动的缩放计算操作）期间以及计划内事件（例如，基础硬件和软件故障、网络故障和可用性区域故障）期间启用自动故障转移功能，无数据丢失。 
 
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务�
 
 ## <a name="zone-redundant-high-availability-architecture"></a>区域冗余高可用性体系结构
 
-您可以选择区域和可用性区域来部署主数据库服务器。 备用副本服务器在与主服务器具有相同配置的不同可用性区域中进行设置，包括计算层、计算大小、存储大小和网络配置。 使用 PostgreSQL 流式复制将事务日志以同步模式复制到备用副本。 自动备份会定期从主数据库服务器执行，而事务日志会持续从备用副本存档到备份存储。 
+可以选择区域和可用性区域来部署主数据库服务器。 备用副本服务器在不同的可用性区域中进行预配，其配置与主服务器相同，包括计算层、计算大小、存储大小和网络配置。 使用 PostgreSQL 流式复制将事务日志以同步模式复制到备用副本。 自动备份会定期从主数据库服务器执行，而事务日志会持续从备用副本存档到备份存储。 
 
 高可用性配置的运行状况将在门户上持续监视和报告。 区域冗余高可用性状态如下所示：
 
@@ -101,17 +101,19 @@ Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务�
 -   仅在有多个区域可用的区域中支持高可用性。
 -   由于同步复制到另一个可用性区域，应用程序可能会遇到提升的写入和提交延迟。
 
--   备用副本不能用于只读查询。
+-   备用副本不能用于读取查询。
 
--   故障转移时，可能需要长达两分钟或更长时间才能完成故障转移。
+-   故障转移过程可能需要超过120秒的时间，具体取决于主服务器上的工作负荷和活动。
 
--   重新启动主数据库服务器以选取静态参数更改也会重启备用副本。
+-   重新启动主数据库服务器也会重启备用副本。 
 
 -   不支持配置其他读取副本。
 
 -   在托管维护时段无法计划配置客户启动的管理任务。
 
--   计划事件（如规模计算和规模存储）在备用模式下发生，并在主服务器上进行。 服务未进行故障转移。 
+-   计划事件（如缩放计算和缩放存储）先在备用服务器中进行，然后在主服务器中进行。 对于这些计划的操作，服务器不会进行故障转移。 
+
+-  如果使用 HA 配置灵活的服务器配置逻辑解码或逻辑复制，则在故障转移到备用服务器时，不会将逻辑复制槽复制到备用服务器。  
 
 ## <a name="next-steps"></a>后续步骤
 

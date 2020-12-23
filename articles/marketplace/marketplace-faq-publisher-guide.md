@@ -4,15 +4,15 @@ description: 获取有关 Azure 市场和 Microsoft AppSource 的常见问题的
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91707976"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660213"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>有关 Microsoft 商用 marketplace 的常见问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "91707976"
 
 ## <a name="general"></a>常规
 
-### <a name="what-is-the-microsoft-commercial-marketplace"></a>什么是 Microsoft 商用 marketplace？
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>什么是 Microsoft 商业市场？
 
 商业市场将商业机构和政府机构与我们的合作伙伴构建的解决方案联系起来。 我们的合作伙伴在合作伙伴中心创建和管理产品/服务，并且客户可以通过产品内体验（例如 Microsoft AppSource、Azure Marketplace、云解决方案提供商计划中的经销商以及销售团队通过共同销售计划）来发现和购买解决方案。
 
@@ -46,7 +46,7 @@ Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场是否收取发布费用？
 
-不，在我们的商业市场发布产品/服务无需支付任何费用。 我们只保留一小部分销售额，作为交易费用，并将其投入市场奖励计划、平台创新和商业市场运营。 对于 [AZURE IP 共同销售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized 产品/服务，以及与一个 Microsoft 团队应用或至少两 Microsoft 365 加载项 (Excel、PowerPoint、Word、Outlook 和 SharePoint) 相关联的 AppSource，此交易费用将减少。
+不，在我们的商业市场发布产品/服务无需支付任何费用。 我们只保留一小部分销售额，作为交易费用，并将其投入市场奖励计划、平台创新和商业市场运营。 对于 [AZURE IP 共同销售](./marketplace-co-sell.md) incentivized 产品/服务，以及与一个 Microsoft 团队应用或至少两 Microsoft 365 加载项 (Excel、PowerPoint、Word、Outlook 和 SharePoint) 相关联的 AppSource，此交易费用将减少。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>如何注册成为 Microsoft 商业市场的发布者？
 
@@ -60,7 +60,7 @@ Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 
 
 - 对于你自动提供的解决方案，无论是属于付费、自带许可 (BYOL) 还是免费，我们都会敦促客户“立即获取”。
 - 支持体验版（演示）的产品/服务将请求客户进行“体验”。 
-- 软件即服务 (SaaS) 产品/服务，可在商业市场外提供 *免费试用*版。
+- 软件即服务 (SaaS) 产品/服务，可在商业市场外提供 *免费试用* 版。
 - 简单的列表可让客户请求“与我联系”。
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>如何在商业市场创建产品/服务？
@@ -87,7 +87,7 @@ Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 
 
 作为发布者，你需要为软件解决方案设置使用条款，客户必须接受这些条款后才能完成购买流程。 为了简化和加速这一流程，我们提供了一份标准协定，你可以选择将其包含在你的条款和条件中。 这样，客户可以一次性查看标准协定，获得法律和采购团队的批准，然后集中精力审阅针对每个产品/服务改动的条款。
 
-你可以创建适用于所有客户的更改，也可以针对特定客户进行更改。 你还可以完全自定义条款和条件，并可将其输入到文本框或托管在将显示为网址的网站上。
+你可以创建适用于所有客户的更改，也可以针对特定客户进行更改。 你还可以完全自定义你的条款和条件，这些条款和条件可输入到合作伙伴中心的文本框中。
 
 要了解详细信息，请参阅 [Microsoft 商业市场的标准协定](standard-contract.md)。
 
@@ -106,7 +106,7 @@ Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 
 
 必须具有 Azure Active Directory (Azure AD) 全局管理员权限，才能在基础目录中创建新用户帐户或邀请来宾帐户。 合作伙伴中心将 Azure AD 应用于标识模型，组织的 Azure AD 实例通常由其 IT 或安全团队管理和控制。
 
-要了解详细信息，请参阅[分配用户角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
+要了解详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
 ### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>客户是否需要订阅 Microsoft Azure 云服务？
 
@@ -140,7 +140,7 @@ Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>我的产品/服务是否可以同时出现在 Microsoft AppSource 和 Azure 市场中？
 
-Microsoft AppSource 是为企业和行业解决方案提供的平台，而 Azure 市场是为 IT 和开发人员解决方案设计的。 提供的产品/服务基于你在产品/服务创建过程中选择的类别和行业，每个在线商店都提供产品/服务。 在极少数情况下，该产品/服务与这两个在线商店的用户有关，它可以同时出现在两者中。
+Microsoft AppSource 是为企业和行业解决方案提供的平台，而 Azure 市场是为 IT 和开发人员解决方案设计的。 提供的产品/服务基于你在产品/服务创建过程中选择的类别和行业，每个在线商店都提供产品/服务。 在极少数情况下，产品/服务与两个在线商店的用户都相关，它便可以同时在两个在线商店中显示。
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>什么是云解决方案提供商计划？
 
@@ -303,7 +303,7 @@ Microsoft AppSource 支持信用卡付款。 Azure 市场支持信用卡付款�
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>商业市场是否支持退货和退款？
 
-若要接收退款，客户可以在指定期限内取消订阅。 对于月度订阅，该期限为 24 小时，对于年度订阅，该期限为 14 天。 根据使用解决方案后的使用量计费的产品/服务不支持退款。
+在某些情况下，客户可使用退款，并收取特定费用。 必须在购买或续订24小时内收到每月计费的定期费用的请求。 同样，必须在购买或续订14天内收到每年计费的定期费用的请求。 这种类型的退款不适用于从虚拟机产品/服务或计费) 的使用 (产生的费用。
 
 ## <a name="resources"></a>资源
 
@@ -311,7 +311,7 @@ Microsoft AppSource 支持信用卡付款。 Azure 市场支持信用卡付款�
 
 以下是一些可助你入门的资源：
 
-- [什么是 Microsoft 商用 marketplace？](overview.md)
+- [什么是 Microsoft 商业市场？](overview.md)
 - [Microsoft 商业市场合作伙伴中心](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>如何与 Microsoft 和其他合作伙伴联系？

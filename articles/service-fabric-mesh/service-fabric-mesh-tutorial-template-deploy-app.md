@@ -1,17 +1,17 @@
 ---
 title: 教程 - 将应用部署到 Azure Service Fabric 网格
 description: 本教程介绍如何使用模板将应用程序部署到 Service Fabric 网格。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248384"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499826"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -104,6 +104,11 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 
 要将映像推送到 ACR 实例，首先必须具有容器映像。 如果尚不具有任何本地容器映像，请使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 Docker 中心拉取 [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 映像。
 
+>[!NOTE]
+> 自 2020 年 11 月 2 日起，[下载速率限制](https://docs.docker.com/docker-hub/download-rate-limit/)将应用于 Docker 免费计划帐户对 Docker Hub 发出的匿名和经过身份验证的请求，并且由 IP 地址强制执行。 
+> 
+> 这些命令使用 Docker Hub 中的公共映像。 请注意，速率可能会受到限制。 有关更多详细信息，请参阅[通过 Docker Hub 进行身份验证](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)。
+
 拉取 Windows 映像：
 
 ```bash
@@ -156,7 +161,7 @@ seabreeze/azure-mesh-todo-webfrontend
 seabreeze/azure-mesh-todo-service
 ```
 
-以下示例列出了 azure-mesh-todo-service  存储库中的标记。
+以下示例列出了 azure-mesh-todo-service 存储库中的标记。
 
 ```azurecli
 az acr repository show-tags --name myContainerRegistry --repository seabreeze/azure-mesh-todo-service --output table
@@ -195,10 +200,10 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 
 本教程使用待办事项示例作为示例。  下载 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)和 [mesh_rp.windows.parameter.json 参数](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)文件，而不是生成新的模板和参数文件。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 当模板中有希望在部署应用程序后进行更改的值，或者希望可以选择在每个部署的基础上进行更改时（如果计划重用此模板进行其他部署），最佳做法是参数化这些值。 执行此操作的正确方法是在部署模板的顶部创建“参数”部分，在其中可以指定参数名称和属性，稍后将在部署模板中引用这些内容。 每个参数定义包括类型、defaultValue和一个带有说明的可选元数据部分。
 
-参数部分在部署模板的顶部定义，就在资源  部分之前：
+参数部分在部署模板的顶部定义，就在资源部分之前：
 
 ```json
 {
@@ -342,8 +347,8 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 |registryPassword|之前在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的密码。 模板中的此参数是安全字符串，不会显示在部署状态或 `az mesh service show` 命令中。|
 |registryUserName|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的用户名。|
 |registryServer|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的注册表服务器名称。|
-|frontEndImage|前端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709` 。|
-|serviceImage|后端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709` 。|
+|frontEndImage|前端服务的容器映像。  例如 `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`。|
+|serviceImage|后端服务的容器映像。  例如 `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`。|
 
 若要部署应用程序，请运行以下内容：
 
@@ -373,7 +378,7 @@ az mesh deployment create --resource-group myResourceGroup --template-file c:\te
   }
 ```
 
-## <a name="open-the-application"></a>打开应用程序
+## <a name="open-the-application"></a>打开应用
 
 在应用程序成功部署后，获取服务终结点的公共 IP 地址。 部署命令将返回服务终结点的公共 IP 地址。 （可选）还可以通过查询网络资源来查找服务终结点的公共 IP 地址。 此应用程序的网络资源名称是 `todolistappNetwork`，使用以下命令提取与其相关的信息。 
 
@@ -408,4 +413,4 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 转到下一教程：
 > [!div class="nextstepaction"]
-> [扩展 Service Fabric 网格中运行的应用程序](service-fabric-mesh-tutorial-template-scale-services.md)
+> [缩放在 Service Fabric 网格中运行的应用程序](service-fabric-mesh-tutorial-template-scale-services.md)

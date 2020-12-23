@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 963021e26036969a51f77641376c693e94ac5061
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b880762d43cd4e105b79613aadb476611228a47e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460334"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536600"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91460334"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/dotnet)
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/)，其中包含 **ASP.NET 和 Web 开发**以及 **Azure 开发**工作负载。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)，其中包含 **ASP.NET 和 Web 开发** 以及 **Azure 开发** 工作负载。
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
@@ -39,7 +39,7 @@ ms.locfileid: "91460334"
 
     d. 验证是否已选择“.NET Framework 4.5.2”或更高版本。
 
-    e. 在“名称”框中，为项目提供一个名称。 在此示例中，我们使用了 **ContosoTeamStats**。
+    e. 在“名称”框中，为项目提供一个名称。 在此示例中，我们使用了 **ContosoTeamStats** 。
 
     f. 选择“确定” 。
    
@@ -59,7 +59,7 @@ ms.locfileid: "91460334"
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>编辑 *CacheSecrets.config* 文件的步骤
 
-1. 在计算机上创建名为 *CacheSecrets.config* 的文件。将其放到不会连同示例应用程序的源代码一起签入的位置。 在本快速入门中，*CacheSecrets.config* 文件的路径为 *C:\AppSecrets\CacheSecrets.config*。
+1. 在计算机上创建名为 *CacheSecrets.config* 的文件。将其放到不会连同示例应用程序的源代码一起签入的位置。 在本快速入门中， *CacheSecrets.config* 文件的路径为 *C:\AppSecrets\CacheSecrets.config* 。
 
 1. 编辑 *CacheSecrets.config* 文件。 然后添加以下内容：
 
@@ -189,7 +189,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
     ```
 
-4. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹。  然后打开 *_Layout.cshtml* 文件。
+4. 在 **解决方案资源管理器** 中，展开“视图” > “共享”文件夹。  然后打开 *_Layout.cshtml* 文件。
 
     将：
     
@@ -249,7 +249,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
 
-默认情况下，项目配置为在 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) 本地托管应用，以进行测试和调试。
+默认情况下，项目配置为在 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 本地托管应用，以进行测试和调试。
 
 ### <a name="to-run-the-app-locally"></a>在本地运行应用的步骤
 1. 在 Visual Studio 中选择“调试” > “开始调试”，在本地生成并启动用于测试和调试的应用。 
@@ -270,7 +270,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
     ![发布](./media/cache-web-app-howto/cache-publish-app.png)
 
-2. 依次选择“Microsoft Azure 应用服务”、“新建”、“发布”。**** **** ****
+2. 依次选择“Microsoft Azure 应用服务”、“新建”、“发布”。   
 
     ![发布到应用服务](./media/cache-web-app-howto/cache-publish-to-app-service.png)
 
@@ -280,8 +280,8 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
     | ------- | :---------------: | ----------- |
     | **应用名称** | 使用默认值。 | 应用名称是应用部署到 Azure 时对应的主机名。 如果需要让该名称保持唯一，可在其后添加一个时间戳后缀。 |
     | **订阅** | 选择自己的 Azure 订阅。 | 将对此订阅收取任何相关的托管费用。 如果有多个 Azure 订阅，请验证是否选择了所需的订阅。|
-    | **资源组** | 使用在其中创建了此缓存的资源组（例如，*TestResourceGroup*）。 | 该资源组用于将所有资源作为一个组管理。 以后想要删除此应用时，可以直接删除该组。 |
-    | **应用服务计划** | 选择“新建”，然后创建名为 *TestingPlan* 的新应用服务计划。 <br />使用创建缓存时所用的相同**位置**。 <br />选择“免费”作为大小。 | 应用服务计划为要运行的 Web 应用定义一组计算资源。 |
+    | **资源组** | 使用在其中创建了此缓存的资源组（例如， *TestResourceGroup* ）。 | 该资源组用于将所有资源作为一个组管理。 以后想要删除此应用时，可以直接删除该组。 |
+    | **应用服务计划** | 选择“新建”，然后创建名为 *TestingPlan* 的新应用服务计划。 <br />使用创建缓存时所用的相同 **位置** 。 <br />选择“免费”作为大小。 | 应用服务计划为要运行的 Web 应用定义一组计算资源。 |
 
     ![“应用服务”对话框](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 

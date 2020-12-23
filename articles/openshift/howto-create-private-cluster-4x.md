@@ -4,16 +4,16 @@ description: 了解如何创建运行 OpenShift 4 的 Azure Red Hat OpenShift �
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: ms-jasondel
-ms.author: jasondel
+author: georgewallace
+ms.author: gwallace
 keywords: aro、openshift、az aro、red hat、cli
-ms.custom: mvc
-ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505330"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928053"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>创建 Azure Red Hat OpenShift 4 专用群集
 
@@ -192,7 +192,7 @@ az aro create \
 执行 `az aro create` 命令之后，创建群集通常需要大约 35 分钟。
 
 >[!IMPORTANT]
-> 如果选择指定自定义域（例如 **foo.example.com**），则 OpenShift 控制台将在诸如 `https://console-openshift-console.apps.foo.example.com` 之类的 URL（而不是内置域 `https://console-openshift-console.apps.<random>.<location>.aroapp.io`）上提供。
+> 如果选择指定自定义域（例如 **foo.example.com** ），则 OpenShift 控制台将在诸如 `https://console-openshift-console.apps.foo.example.com` 之类的 URL（而不是内置域 `https://console-openshift-console.apps.<random>.<location>.aroapp.io`）上提供。
 >
 > 默认情况下，OpenShift 对 `*.apps.<random>.<location>.aroapp.io` 上创建的所有路由使用自签名证书。  如果在连接到群集后选择自定义 DNS，则需按照 OpenShift 文档[为入口控制器配置自定义 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html)，并[为 API 服务器配置自定义 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)。
 
@@ -229,7 +229,7 @@ az aro list-credentials \
 
 在浏览器中启动控制台 URL，使用 `kubeadmin` 凭据登录。
 
-![Azure Red Hat OpenShift 登录屏幕](media/aro4-login.png)
+![显示 Azure Red Hat OpenShift 登录屏幕的屏幕截图。](media/aro4-login.png)
 
 ## <a name="install-the-openshift-cli"></a>安装 OpenShift CLI
 

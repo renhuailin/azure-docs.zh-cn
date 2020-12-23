@@ -4,12 +4,12 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: 6d1f3d6badde82a78fb143452a45ece4ff1ebb11
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7dbcfddc116b1f28c91fc9bf7c0b62ba94e34656
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "67173033"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022094"
 ---
 > [!div class="op_single_selector"]
 > * [NET](../articles/service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
@@ -18,7 +18,6 @@ ms.locfileid: "67173033"
 > * [PHP](../articles/service-bus-messaging/service-bus-php-how-to-use-queues.md)
 > * [Python](../articles/service-bus-messaging/service-bus-python-how-to-use-queues.md)
 > * [Ruby](../articles/service-bus-messaging/service-bus-ruby-how-to-use-queues.md)
-> * [REST](../articles/service-bus-messaging/service-bus-brokered-tutorial-rest.md)
+> * [REST](../articles/service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
 > 
-> 
-
+>

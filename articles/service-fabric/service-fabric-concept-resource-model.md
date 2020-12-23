@@ -3,13 +3,12 @@ title: Azure Service Fabric 应用程序资源模型
 description: 本文概述如何使用 Azure 资源管理器管理 Azure Service Fabric 应用程序。
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.custom: sfrev
-ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f4fbd775ab479437c350dc24b9b5511f7a614c8b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258742"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576088"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 应用程序资源模型
 
@@ -55,7 +54,7 @@ ms.locfileid: "86258742"
 可以通过将公共访问级别设置为“专用”来保护群集中的资源。 可以通过多种方式授予访问权限：
 
 * 使用 [Azure Active Directory](../storage/common/storage-auth-aad-app.md) 授予对 Blob 和队列的访问权限。
-* [在 Azure 门户中使用 RBAC](../storage/common/storage-auth-aad-rbac-portal.md) 授予对 Azure Blob 和队列数据的访问权限。
+* [在 Azure 门户中使用 AZURE RBAC](../storage/common/storage-auth-aad-rbac-portal.md)授予对 azure blob 和队列数据的访问权限。
 * 使用[共享访问签名](/rest/api/storageservices/delegate-access-with-shared-access-signature)委派访问权限。
 
 以下屏幕截图中的示例使用对 Blob 的匿名读取访问。
@@ -90,6 +89,7 @@ ms.locfileid: "86258742"
 > 必须使用群集名称更新 *UserApp.Parameters.json* 文件。
 >
 >
+
 
 | 参数              | 说明                                 | 示例                                                      | 注释                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -137,6 +137,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ```
 
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>使用资源管理器升级 Service Fabric 应用程序
+
+
+> [!IMPORTANT]
+> 必须从相应 ApplicationManifest.xml 文件的 DefaultServices 节中删除通过 ARM JSON 定义部署的任何服务。
+
 
 你可能会出于以下某一原因升级已部署到 Service Fabric 群集的应用程序：
 

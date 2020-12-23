@@ -1,7 +1,7 @@
 ---
-title: 设置定型 & 推理计算目标
+title: 设置训练和推理计算目标
 titleSuffix: Azure Machine Learning
-description: 向工作区)  (计算目标添加计算资源，以便用于机器学习培训和推理
+description: 将计算资源（计算目标）添加到工作区，用于机器学习训练和推理
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -10,17 +10,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cc4256ae0591e9fc82dcdce7c66514710fad3f57
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: c25f3965775c6518629c92ccc371855d9178e648
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711152"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033708"
 ---
-# <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型定型和部署的计算目标
+# <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型训练和部署的计算目标
 
-了解如何将 Azure 计算资源附加到 Azure 机器学习工作区。  然后，你可以在机器学习任务中将这些资源用作定型和推理 [计算目标](concept-compute-target.md) 。
+了解如何将 Azure 计算资源附加到 Azure 机器学习工作区。  然后，可以将这些资源用作机器学习任务中的训练和推理[计算目标](concept-compute-target.md)。
 
 本文介绍如何将工作区设置为使用这些计算资源：
 
@@ -43,24 +43,24 @@ ms.locfileid: "91711152"
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
+* [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 ## <a name="limitations"></a>限制
 
-* 不要从工作区**创建多个同时同时与相同计算的附件**。 例如，使用两个不同的名称将一个 Azure Kubernetes Service 群集附加到工作区。 每个新附件都会破坏先前存在的附件。
+* 请勿在工作区中为同一计算创建多个同步附件。 例如，使用两个不同的名称将一个 Azure Kubernetes 服务群集附加到工作区。 每个新附件都会破坏先前存在的附件。
 
-    如果要重新连接计算目标，例如更改 TLS 或其他群集配置设置，则必须先删除现有的附件。
+    如果要重新附加计算目标来实现某个目的（例如，更改 TLS 或其他群集配置设置），则必须先删除现有附件。
 
 ## <a name="whats-a-compute-target"></a>什么是计算目标？
 
-使用 Azure 机器学习可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  你还可以使用模型部署的计算目标，如 ["部署模型的位置和方式"](how-to-deploy-and-where.md)中所述。
+使用 Azure 机器学习可以在不同的资源或环境（统称为 [__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以使用计算目标进行模型部署，如[部署模型的位置和方式](how-to-deploy-and-where.md)中所述。
 
 
 ## <a name="local-computer"></a><a id="local"></a>本地计算机
 
-使用本地计算机进行 **培训**时，无需创建计算目标。  只需从本地计算机[提交训练运行](how-to-set-up-training-targets.md)。
+使用本地计算机进行训练时，无需创建计算目标。  只需从本地计算机[提交训练运行](how-to-set-up-training-targets.md)。
 
-使用本地计算机进行 **推断**时，必须安装 Docker。 若要执行部署，请使用 [LocalWebservice.deploy_configuration ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-) 来定义 web 服务将使用的端口。 然后按照使用 [Azure 机器学习部署模型](how-to-deploy-and-where.md)中所述，使用常规部署过程。
+使用本地计算机进行推理时，必须安装 Docker。 若要执行部署，请使用 [LocalWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) 来定义 Web 服务将使用的端口。 然后使用[通过 Azure 机器学习部署模型](how-to-deploy-and-where.md)中所述的常规部署流程。
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>远程虚拟机
 
@@ -68,9 +68,9 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 可以使用系统生成的 conda 环境、现有的 Python 环境或 Docker 容器。 若要在 Docker 容器中执行，必须在 VM 上运行 Docker 引擎。 需要一个比本地计算机更灵活的基于云的开发/试验环境时，此功能特别有用。
 
-请对此方案使用 Data Science Virtual Machine (DSVM) 作为 Azure VM。 此 VM 在 Azure 中预配置了数据科学和 AI 开发环境。 此 VM 提供精选的工具和框架用于满足整个机器学习开发生命周期的需求。 有关如何将 DSVM 与 Azure 机器学习配合使用的详细信息，请参阅[配置开发环境](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm)。
+请对此方案使用 Data Science Virtual Machine (DSVM) 作为 Azure VM。 此 VM 在 Azure 中预配置了数据科学和 AI 开发环境。 此 VM 提供精选的工具和框架用于满足整个机器学习开发生命周期的需求。 有关如何将 DSVM 与 Azure 机器学习配合使用的详细信息，请参阅[配置开发环境](./how-to-configure-environment.md#dsvm)。
 
-1. **创建**：创建 DSVM，然后使用它来训练模型。 若要创建此资源，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)。
+1. **创建**：创建 DSVM，然后使用它来训练模型。 若要创建此资源，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](./data-science-virtual-machine/dsvm-ubuntu-intro.md)。
 
     > [!WARNING]
     > Azure 机器学习仅支持运行 Ubuntu 的虚拟机。 创建 VM 或选择现有 VM 时，必须选择使用 Ubuntu 的 VM。
@@ -100,7 +100,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
    或者，可以[使用 Azure 机器学习工作室](how-to-create-attach-compute-studio.md#attached-compute)将 DSVM 附加到工作区。
 
     > [!WARNING]
-    > 不要从工作区为同一 DSVM 创建多个同时同步的附件。 每个新附件都会破坏先前存在的附件。
+    > 请勿在工作区中为同一 DSVM 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
 1. **配置**：为 DSVM 计算目标创建运行配置。 Docker 与 conda 用于在 DSVM 上创建和配置训练环境。
 
@@ -128,7 +128,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Apache Spark 可用于训练模型。
 
-1. **创建**：先创建 HDInsight 群集，然后使用它来训练模型。 若要在 HDInsight 群集中创建 Spark，请参阅[在 HDInsight 中创建 Spark 群集](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql)。 
+1. **创建**：先创建 HDInsight 群集，然后使用它来训练模型。 若要在 HDInsight 群集中创建 Spark，请参阅[在 HDInsight 中创建 Spark 群集](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 
 
     > [!WARNING]
     > Azure 机器学习要求 HDInsight 群集具有公共 IP 地址。
@@ -163,7 +163,7 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
    或者，可以[使用 Azure 机器学习工作室](how-to-create-attach-compute-studio.md#attached-compute)将 HDInsight 群集附加到工作区。
 
     > [!WARNING]
-    > 不要从工作区为同一 HDInsight 创建多个同时同步的附件。 每个新附件都会破坏先前存在的附件。
+    > 请勿在工作区中为同一 HDInsight 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
 1. **配置**：为 HDI 计算目标创建运行配置。 
 
@@ -213,13 +213,13 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
 > [!WARNING]
-> 不要同时从工作区创建同一 Azure Batch 的多个附件。 每个新附件都会破坏先前存在的附件。
+> 请勿在工作区中为同一 Azure Batch 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
 Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用作 Azure 机器学习管道的计算目标。
 
-请先创建 Azure Databricks 工作区，然后再使用该工作区。 若要创建工作区资源，请参阅[在 Azure Databricks 中运行 Spark 作业](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)文档。
+请先创建 Azure Databricks 工作区，然后再使用该工作区。 若要创建工作区资源，请参阅[在 Azure Databricks 中运行 Spark 作业](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)文档。
 
 要将 Azure Databricks 附加为计算目标，请提供以下信息：
 
@@ -269,13 +269,13 @@ except ComputeTargetException:
 有关更详细的示例，请参阅 GitHub 上的 [示例笔记本](https://aka.ms/pl-databricks)。
 
 > [!WARNING]
-> 不要同时从工作区创建同一 Azure Databricks 的多个附件。 每个新附件都会破坏先前存在的附件。
+> 请勿在工作区中为同一 Azure Databricks 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics 是 Azure 云中的大数据分析平台。 它可以用作 Azure 机器学习管道的计算目标。
 
-使用该平台之前，请先创建 Azure Data Lake Analytics 帐户。 若要创建此资源，请参阅 [Azure Data Lake Analytics 入门](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)文档。
+使用该平台之前，请先创建 Azure Data Lake Analytics 帐户。 若要创建此资源，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)文档。
 
 若要将 Data Lake Analytics 附加为计算目标，必须使用 Azure 机器学习 SDK 并提供以下信息：
 
@@ -322,18 +322,18 @@ except ComputeTargetException:
 有关更详细的示例，请参阅 GitHub 上的 [示例笔记本](https://aka.ms/pl-adla)。
 
 > [!WARNING]
-> 不要从工作区为同一 ADLA 创建多个同时同步的附件。 每个新附件都会破坏先前存在的附件。
+> 请勿在工作区中为同一 ADLA 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
 > [!TIP]
-> Azure 机器学习管道只能处理 Data Lake Analytics 帐户的默认数据存储中存储的数据。 如果需要处理的数据不在默认存储中，可以在训练之前使用 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) 复制数据。
+> Azure 机器学习管道只能处理 Data Lake Analytics 帐户的默认数据存储中存储的数据。 如果需要处理的数据不在默认存储中，可以在训练之前使用 [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) 复制数据。
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Azure 容器实例
 
-部署模型时，动态创建 (ACI) 的 Azure 容器实例。 不能以任何其他方式创建和将 ACI 附加到工作区。 有关详细信息，请参阅 [将模型部署到 Azure 容器实例](how-to-deploy-azure-container-instance.md)。
+Azure 容器实例 (ACI) 是在部署模型时动态创建的。 不能以任何其他方式创建 ACI 和将其附加到工作区。 有关详细信息，请参阅[将模型部署到 Azure 容器实例](how-to-deploy-azure-container-instance.md)。
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
-当与 Azure 机器学习一起使用时，Azure Kubernetes Service (AKS) 允许使用各种配置选项。 有关详细信息，请参阅 [如何创建和附加 Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)。
+与 Azure 机器学习一起使用时，Azure Kubernetes 服务 (AKS) 支持多种配置选项。 有关详细信息，请参阅[如何创建和附加 Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)。
 
 
 ## <a name="notebook-examples"></a>Notebook 示例
@@ -346,8 +346,8 @@ except ComputeTargetException:
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用计算资源来 [配置和提交定型运行](how-to-set-up-training-targets.md)。
+* 使用计算资源来[配置并提交训练运行](how-to-set-up-training-targets.md)。
 * [教程：训练模型](tutorial-train-models-with-aml.md)使用一个托管计算目标来训练模型。
 * 若要构建更好的模型，请了解如何[高效地优化超参数](how-to-tune-hyperparameters.md)。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
-* [通过 Azure 虚拟网络使用 Azure 机器学习](how-to-enable-virtual-network.md)
+* [通过 Azure 虚拟网络使用 Azure 机器学习](./how-to-network-security-overview.md)

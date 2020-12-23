@@ -4,12 +4,12 @@ description: 有关如何在 Azure 订阅和资源组之间移动恢复服务保
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773359"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325768"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 
@@ -17,11 +17,7 @@ ms.locfileid: "91773359"
 
 ## <a name="supported-regions"></a>支持的区域
 
-澳大利亚东部支持恢复服务保管库的资源移动，澳大利亚东南部、加拿大中部、加拿大东部、南东亚、东亚、美国中南部、美国中北部、美国东部、美国东部2、美国中南部、美国东部、美国西部、美国中南部、美国西部、美国西部2、巴西南部、印度中部、韩国南部、日本东部、日本西部、韩国中部、韩国南部、北欧、西欧、南非北部、南非西部、英国南部和英国西部。
-
-## <a name="unsupported-regions"></a>不受支持的区域
-
-法国中部、法国南部、德国东北部、德国中部、US Gov 爱荷华州、中国北部、中国 North2、中国东部、中国东部2
+所有公共区域和主权区域均受支持，但法国中部、法国南部、德国东北部、德国中部、中国北部、中国 North2、中国东部和中国东部2除外。
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>移动恢复服务保管库的先决条件
 
@@ -34,7 +30,7 @@ ms.locfileid: "91773359"
 - 如果 VM 不会跨订阅移动到恢复服务保管库或新资源组，则当前 VM 恢复点将在保管库中保持不变，直到它们过期。
 - 不管 VM 是否连同保管库一起移动，都始终可以从保管库中保留的备份历史记录还原该 VM。
 - Azure 磁盘加密要求密钥保管库和 VM 位于同一 Azure 区域和订阅中。
-- 若要移动包含托管磁盘的虚拟机，请参阅[此文](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)。
+- 若要移动包含托管磁盘的虚拟机，请参阅[此文](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 用于移动通过经典模型部署的资源的选项会有所不同，这取决于你是要将资源移到订阅中，还是移动到新的订阅。 有关详细信息，请参阅[此文](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 跨订阅移动保管库或将其移到新资源组后，为保管库定义的备份策略将会保留。
 - 只能移动包含以下任何类型的备份项的保管库。 在移动保管库之前，需要停止下面未列出的任何类型的备份项目，并将数据永久删除。
@@ -46,14 +42,14 @@ ms.locfileid: "91773359"
 
 > [!NOTE]
 > 不支持跨 Azure 区域移动 Azure 备份的恢复服务保管库。<br><br>
-> 如果已配置任何 Vm (Azure IaaS、Hyper-v、VMware) 或物理计算机使用 **Azure Site Recovery**进行灾难恢复，则移动操作将被阻止。 如果要为 Azure Site Recovery 移动保管库，请参阅 [此文](../site-recovery/move-vaults-across-regions.md) ，了解如何手动移动保管库。
+> 如果已配置任何 Vm (Azure IaaS、Hyper-v、VMware) 或物理计算机使用 **Azure Site Recovery** 进行灾难恢复，则移动操作将被阻止。 如果要为 Azure Site Recovery 移动保管库，请参阅 [此文](../site-recovery/move-vaults-across-regions.md) ，了解如何手动移动保管库。
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>使用 Azure 门户将恢复服务保管库移到不同的资源组
 
 若要将恢复服务保管库及其关联的资源移到不同的资源组，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 打开“恢复服务保管库”列表，并选择要移动的保管库。**** 当保管库仪表板打开时，其外观如下图所示。
+2. 打开“恢复服务保管库”列表，并选择要移动的保管库。 当保管库仪表板打开时，其外观如下图所示。
 
    ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
@@ -61,7 +57,7 @@ ms.locfileid: "91773359"
 
    ![“概要”信息选项卡](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. 在保管库概述菜单中，选择**资源组**旁边的 "**更改**" 以打开 "**移动资源**" 窗格。
+3. 在保管库概述菜单中，选择 **资源组** 旁边的 "**更改**" 以打开 "**移动资源**" 窗格。
 
    ![更改资源组](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
@@ -94,16 +90,16 @@ ms.locfileid: "91773359"
 
    ![更改订阅](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
-4. 选择要移动的资源。此处我们建议使用“全选”选项来选择列出的所有可选资源。****
+4. 选择要移动的资源。此处我们建议使用“全选”选项来选择列出的所有可选资源。
 
    ![移动资源](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
-5. 在“订阅”下拉列表中选择目标订阅，保管库将移到该订阅。****
+5. 在“订阅”下拉列表中选择目标订阅，保管库将移到该订阅。
 6. 要添加目标资源组，请在 " **资源组** " 下拉列表中选择现有资源组，或选择 " **创建新组** " 选项。
 
    ![添加订阅](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. 选择**我了解，在将其更新为使用新的资源 id 选项进行确认，然后选择 "确定" 之前，与移动资源关联的工具和脚本将不起作用**。 **OK**
+7. 选择 **我了解，在将其更新为使用新的资源 id 选项进行确认，然后选择 "确定" 之前，与移动资源关联的工具和脚本将不起作用**。 **OK**
 
 > [!NOTE]
 > 跨订阅备份 (RS vault 和受保护的 Vm 在不同的订阅中) 不是受支持的方案。 此外，还不能在保管库移动操作过程中修改本地冗余存储 (LRS) 到全局冗余存储的存储冗余选项 (GRS) ，反之亦然。
@@ -178,7 +174,7 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
   - 只能为旧保管库中未过期的恢复点还原已备份的数据。
   - 将需要在新的保管库中创建数据的新初始副本。
 
-- 对于 Azure VM，可以 [停止保护，保留](backup-azure-manage-vms.md#stop-protecting-a-vm) 旧保管库中 vm 的数据，将 vm 移动到另一个资源组，然后在新保管库中保护 vm。 请参阅将 VM 移到其他资源组的[指南和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)。
+- 对于 Azure VM，可以 [停止保护，保留](backup-azure-manage-vms.md#stop-protecting-a-vm) 旧保管库中 vm 的数据，将 vm 移动到另一个资源组，然后在新保管库中保护 vm。 请参阅将 VM 移到其他资源组的[指南和限制](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md)。
 
   同一时间只能在一个保管库中保护 VM。 但是，可以在新的保管库中保护新资源组中的 VM，因为它被视为不同 VM。
 

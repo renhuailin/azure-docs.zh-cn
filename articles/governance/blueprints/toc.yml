@@ -31,6 +31,9 @@
     - name: 使用蓝图资源锁保护新资源
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: Learn：使用 Azure 蓝图管理多个订阅
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: 示例
   items:
     - name: 索引

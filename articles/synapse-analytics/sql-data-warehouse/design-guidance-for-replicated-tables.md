@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0cf40990d59aff984226244f520e6f8f937713fd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181329"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456494"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>有关在 Synapse SQL 池中使用复制表的设计指南
 
@@ -26,19 +26,19 @@ ms.locfileid: "86181329"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设读者熟悉 SQL 池中的数据分布和数据移动概念。  有关详细信息，请参阅[体系结构](massively-parallel-processing-mpp-architecture.md)一文。
+本文假设读者熟悉 SQL 池中的数据分布和数据移动概念。    有关详细信息，请参阅[体系结构](massively-parallel-processing-mpp-architecture.md)一文。
 
-作为表设计的一部分，请尽可能多地去了解你的数据及其查询方式。例如，请考虑以下问题：
+作为表设计的一部分，请尽可能多地去了解你的数据及其查询方式。  例如，请考虑以下问题：
 
 - 表有多大？
 - 表的刷新频率是多少？
-- SQL 池数据库中是否包含事实数据表和维度表？
+- 是否在 SQL 池中具有事实数据表和维度表？
 
 ## <a name="what-is-a-replicated-table"></a>什么是复制的表？
 
 复制的表具有可在每个计算节点上访问的完整表副本。 复制表后，在执行联接或聚合前将无需在计算节点之间传输数据。 由于表具有多个副本，因此当表压缩后的大小小于 2 GB 时，复制的表性能最佳。  2 GB 不是硬性限制。  如果数据为静态数据，不会更改，则可复制更大的表。
 
-下图显示了可在每个计算节点上访问的复制表。 在 SQL 池中，复制表完整复制到每个计算节点上的分发数据库。
+下图显示了可在每个计算节点上访问的复制表。 在 SQL 池中，将复制的表完全复制到每个计算节点上的分发数据库中。
 
 ![复制表](./media/design-guidance-for-replicated-tables/replicated-table.png "复制表")  
 
@@ -51,8 +51,8 @@ ms.locfileid: "86181329"
 
 在下列情况下，复制的表可能不会产生最佳查询性能：
 
-- 表具有频繁的插入、更新和删除操作。这些数据操作语言 (DML) 操作要求重新生成复制表。频繁地重新生成会导致性能降低。
-- SQL 池数据库会频繁缩放。 缩放 SQL 池数据库会更改计算节点数，这会重新生成复制表。
+- 表具有频繁的插入、更新和删除操作。 这些数据操作语言 (DML) 操作要求重新生成复制表。 频繁地重新生成会导致性能降低。
+- SQL 池会频繁缩放。 缩放 SQL 池会更改计算节点的数目，这会导致重新生成复制的表。
 - 表具有大量列，但数据操作通常仅访问少量的列。 在这种情况下，与复制整个表相比，将表分发，然后对经常访问的列创建索引可能更为高效。 当查询需要进行数据移动时，SQL 池仅移动所请求列中的数据。
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>将复制的表与简单的查询谓词一起使用
@@ -126,7 +126,7 @@ WHERE d.FiscalYear = 2004
 
 SQL 池通过维护表的主版本来实现复制表。 它将主版本复制到每个计算节点上的第一个分发数据库。 发生更改时，会先更新主版本，然后重新生成每个计算节点上的表。 重新生成复制表包括将表复制到每个计算节点，然后生成索引。  例如，DW2000c 上的复制表有 5 个数据副本。  每个计算节点上均存在主控副本和完整副本。  所有数据均存储在分发数据库中。 SQL 池使用此模型来支持更快的数据修改语句和灵活的缩放操作。
 
-在以下情况之后，针对复制的表的第一个查询触发异步重新生成：
+在发生以下情况后，异步重新生成由对复制表的第一次查询触发：
 
 - 加载或修改了数据
 - Synapse SQL 实例缩放到了其他级别
@@ -174,8 +174,8 @@ SQL 池通过维护表的主版本来实现复制表。 它将主版本复制到
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]
-  FROM sys.tables t  
-  JOIN sys.pdw_replicated_table_cache_state c  
+  FROM sys.tables t  
+  JOIN sys.pdw_replicated_table_cache_state c  
     ON c.object_id = t.object_id
   JOIN sys.pdw_table_distribution_properties p
     ON p.object_id = t.object_id

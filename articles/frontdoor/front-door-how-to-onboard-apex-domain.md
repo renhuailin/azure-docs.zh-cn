@@ -5,14 +5,14 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 11/13/2020
 ms.author: duau
-ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 55eefe7a7490df050aa7ebc2bb41fbadcc8d8279
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819084"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646332"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>在 Front Door 上载入根或顶点域
 Azure 前门使用 CNAME 记录来验证自定义域的加入的域所有权。 前门不会公开与前门配置文件关联的前端 IP 地址。 如果要将顶点域载入 Azure 前门，则无法将其映射到 IP 地址。
@@ -34,15 +34,15 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 
 1. 创建或编辑区域顶点的记录。
 
-1. 选择记录**类型***作为记录*，然后选择 *"是" 作为 "* **别名记录集**"。 **别名类型** 应设置为 " *Azure 资源*"。
+1. 选择记录 **类型***作为记录*，然后选择 *"是" 作为 "* **别名记录集**"。 **别名类型** 应设置为 " *Azure 资源*"。
 
 1. 选择用于托管前门配置文件的 Azure 订阅。 然后从 " **Azure 资源** " 下拉列表中选择前门资源。
 
 1. 选择 **"确定"** 提交更改。
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-apex-alias-record.png" alt-text="区域顶点的别名记录&quot;:::
+    :::image type="content" source="./media/front-door-apex-domain/front-door-apex-alias-record.png" alt-text="区域顶点的别名记录":::
 
-1. 上面的步骤将创建一个指向前门资源的区域顶点记录，还会创建一个的 CNAME 记录映射 &quot;afdverify" (`afdverify.contosonews.com`) 例如，将用于在前门配置文件中加入域的。
+1. 上面的步骤将创建一个指向前门资源的区域顶点记录，还会创建一个的 CNAME 记录映射 "afdverify" (`afdverify.contosonews.com`) 例如，将用于在前门配置文件中加入域的。
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>在前门上载入自定义域
 
@@ -54,19 +54,26 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 
 1. 选择 " **保存** " 以提交更改。
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="区域顶点的别名记录&quot;:::
-
-1. 上面的步骤将创建一个指向前门资源的区域顶点记录，还会创建一个的 CNAME 记录映射 &quot;afdverify":::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="自定义域菜单":::
 
 ## <a name="enable-https-on-your-custom-domain"></a>在自定义域上启用 HTTPS
 
-1. 选择已添加的自定义域，并在自定义域 **HTTPS**部分下，将状态更改为 " **已启用**"。
+1. 选择已添加的自定义域，并在自定义域 **HTTPS** 部分下，将状态更改为 " **已启用**"。
 
 1. 选择  **证书管理类型** *"使用我自己的证书"*。
 
-   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="区域顶点的别名记录&quot;:::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="自定义域 HTTPS 设置":::    
 
-1. 上面的步骤将创建一个指向前门资源的区域顶点记录，还会创建一个的 CNAME 记录映射 &quot;afdverify" 几分钟后，然后再次选择自定义域，查看证书设置的进度。 
+   > [!WARNING]
+   > 顶点或根域目前不支持前门托管证书管理类型。 用于在顶点或根域上为前门启用 HTTPS 的唯一选项是使用托管在 Azure Key Vault 上的自定义 TLS/SSL 证书。
+
+1. 在继续下一步之前，请确保已设置了前门的适当权限以访问密钥保管库（如 UI 中所述）。
+
+1. 从当前订阅中选择 **Key Vault 帐户** ，然后选择相应的 **机密** 和 **机密版本** 以映射到正确的证书。
+
+1. 选择 " **更新** " 以保存所选内容，然后选择 " **保存**"。
+
+1. 选择 " **刷新** " 几分钟后，然后再次选择自定义域，查看证书设置的进度。 
 
 > [!WARNING]
 > 确保已为顶点域创建了适当的路由规则，或已将域添加到现有路由规则。

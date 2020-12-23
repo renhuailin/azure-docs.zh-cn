@@ -3,12 +3,12 @@ title: 管理已签名的映像
 description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任实现 Docker 内容信任，是高级服务层的一项功能。
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: cfe337a0f46e37ed616664e8e0645e319bcfb519
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409158"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148581"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -40,7 +40,7 @@ Azure 容器注册表实现了 Docker 的[内容信任][docker-content-trust]模
 
 若要为注册表启用内容信任，请先在 Azure 门户中导航到注册表。 在“策略”下选择“内容信任” > “启用” > “保存”。 你还可以在 Azure CLI 中使用 [az acr config content trust update][az-acr-config-content-trust-update] 命令。
 
-![屏幕截图显示 Azure 门户中注册表的启用内容信任。][content-trust-01-portal]
+![屏幕截图显示如何在 Azure 门户中为注册表启用内容信任。][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>启用客户端内容信任
 
@@ -115,7 +115,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` 可以是服务主体的 **appId**、**objectId** 或其 **servicePrincipalName** 之一。 若要详细了解如何使用服务主体和 Azure 容器注册表，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
 
 > [!IMPORTANT]
-> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证身份角色的信息，请参阅 [使用 RBAC 和 Azure CLI 管理对 azure 资源的访问权限](../role-based-access-control/role-assignments-cli.md) 和 [排查 azure RBAC 问题](../role-based-access-control/troubleshooting.md)。
+> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证身份角色的信息，请参阅 [使用 Azure CLI 添加或删除 azure 角色分配](../role-based-access-control/role-assignments-cli.md) 和 [Azure RBAC 故障排除](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送受信任的映像
 

@@ -5,13 +5,13 @@ author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
-ms.custom: mvc
-ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 319107127b79383fc3b49f0eeb856a0e6c5b09f8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368883"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747761"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
@@ -134,7 +134,7 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 单击“部署新函数”并搜索 Figlet 。 选择 Figlet 函数，然后单击“部署”。
 
-![屏幕截图显示 "部署新函数" 对话框，其中包含搜索行中的文本 "figlet"。](media/container-service-serverless/figlet.png)
+![屏幕截图显示了“部署新函数”对话框，其中的搜索行中有文本“figlet”。](media/container-service-serverless/figlet.png)
 
 使用 curl 来调用该函数。 将下例中的 IP 地址替换为 OpenFaas 网关的 IP 地址。
 

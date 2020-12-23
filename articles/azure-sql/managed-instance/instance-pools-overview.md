@@ -12,19 +12,19 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325158"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347058"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>什么是 Azure SQL 托管实例池 (预览版) ？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方式，将较小 SQL Server 实例大规模迁移到云。
 
-可以通过实例池按照总的迁移要求对计算资源进行预配置。 然后即可根据预配置的计算级别部署多个单独的托管实例。 例如，如果预先预配8个 Vcore，则可以部署两个 vCore 和一个 vCore 实例，然后将数据库迁移到这些实例。 在实例池可用之前，更小且更少计算密集型工作负荷常常需要在迁移到云时合并到更大的托管实例。 需要将数据库组迁移到大型实例通常需要仔细的容量规划和资源监管、附加的安全注意事项，以及一些额外的数据合并在实例级别工作。
+可以通过实例池按照总的迁移要求对计算资源进行预配置。 然后即可根据预配置的计算级别部署多个单独的托管实例。 例如，如果预先预配 8 Vcore，则可以部署 2 2-vCore 和 1 4-vCore 实例，然后将数据库迁移到这些实例。 在实例池可用之前，更小且更少计算密集型工作负荷常常需要在迁移到云时合并到更大的托管实例。 需要将数据库组迁移到大型实例通常需要仔细的容量规划和资源监管、附加的安全注意事项，以及一些额外的数据合并在实例级别工作。
 
 此外，实例池支持本机 VNet 集成，因此你可以在同一子网中部署多个实例池和多个单个实例。
 
@@ -32,7 +32,7 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 
 实例池具有以下优势：
 
-1. 承载2个 vCore 实例的能力。 * \* 仅适用于实例池中的实例*。
+1. 承载2个 vCore 实例的能力。 *\* 仅适用于实例池中的实例*。
 2. 可预测且快速的实例部署时间 (最多5分钟) 。
 3. 最小 IP 地址分配。
 
@@ -53,15 +53,15 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 以下列表提供了应考虑实例池的主要用例：
 
 - 同时迁移 *一组 SQL Server 实例* ，其中多数大小较小 (例如2个或4个 vcore) 。
-- *可预测和短实例创建或缩放*的情况非常重要。 例如，在需要实例级功能的多租户 SaaS 应用程序环境中部署新租户。
+- *可预测和短实例创建或缩放* 的情况非常重要。 例如，在需要实例级功能的多租户 SaaS 应用程序环境中部署新租户。
 - 具有 *固定成本* 或 *支出限制* 的情况非常重要。 例如，运行固定 (的共享开发测试或演示环境，或者不经常更改) 大小，在需要时定期部署托管实例。
 - VNet 子网中的 *最小 IP 地址分配* 非常重要的方案。 池中的所有实例都共享一个虚拟机，因此，分配的 IP 地址的数量低于单个实例的情况。
 
 ## <a name="architecture"></a>体系结构
 
-实例池具有类似于常规 (*单个*) 托管实例的体系结构。 为了支持 [Azure 虚拟网络中的部署](../../virtual-network/virtual-network-for-azure-services.md)   并为客户提供隔离和安全性，实例池还依赖于 [虚拟群集](connectivity-architecture-overview.md#high-level-connectivity-architecture)。 虚拟群集表示在客户的虚拟网络子网中部署的一组专用虚拟机。
+实例池具有类似于常规 (*单个*) 托管实例的体系结构。 为了支持 [Azure 虚拟网络中的部署](../../virtual-network/virtual-network-for-azure-services.md) 并为客户提供隔离和安全性，实例池还依赖于 [虚拟群集](connectivity-architecture-overview.md#high-level-connectivity-architecture)。 虚拟群集表示在客户的虚拟网络子网中部署的一组专用虚拟机。
 
-这两个部署模型之间的主要区别在于，实例池允许多个 SQL Server 进程部署在同一虚拟机节点上（这是使用 [Windows 作业对象](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)管理的资源），而单个实例在虚拟机节点上始终是唯一的。
+这两个部署模型之间的主要区别在于，实例池允许多个 SQL Server 进程部署在同一虚拟机节点上（这是使用 [Windows 作业对象](/windows/desktop/ProcThread/job-objects)管理的资源），而单个实例在虚拟机节点上始终是唯一的。
 
 下图显示了在同一子网中部署的实例池和两个单独的实例，并阐释了这两种部署模型的主要体系结构详细信息：
 
@@ -76,9 +76,12 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 - 实例池仅在 Gen5 硬件上可用。
 - 池中的托管实例具有专用的 CPU 和 RAM，因此，所有实例中的 Vcore 聚合数量必须小于或等于分配给池的 Vcore 数。
 - 所有 [实例级别的限制](resource-limits.md#service-tier-characteristics) 都适用于在池中创建的实例。
-- 除了实例级别限制之外，还在 *实例池级别*施加了两个限制：
+- 除了实例级别限制之外，还在 *实例池级别* 施加了两个限制：
   - 每个池的总存储大小 (8 TB) 。
-  - 每个池 (100) 的数据库总数。
+  - 每个池的用户数据库总数。 此限制取决于 pool Vcore 值：
+    - 8 Vcore 池最多支持200个数据库，
+    - 16 Vcore 池最多支持400个数据库，
+    - 24和更大的 Vcore 池最多支持500个数据库。
 - 无法为实例池中部署的实例设置 AAD 管理员，因此无法使用 AAD 身份验证。
 
 存储分配总数和所有实例中的数据库数量必须小于或等于实例池公开的限制。
@@ -86,8 +89,9 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 - 实例池支持8、16、24、32、40、64和 80 Vcore。
 - 池中的托管实例支持2、4、8、16、24、32、40、64和 80 Vcore。
 - 池内的托管实例支持 32 GB 到 8 TB 的存储大小，只不过：
-  - 2 vCore 实例支持 32 GB 到 640 GB 的大小
-  - 4 vCore 实例支持 32 GB 和 2 TB 的大小
+  - 2 vCore 实例支持 32 GB 到 640 GB 的大小。
+  - 4 vCore 实例支持 32 GB 和 2 TB 的大小。
+- 对于每个实例，池中的托管实例的最大限制为100个用户数据库，除了2个 vCore 实例，每个实例最多支持50个用户数据库。
 
 [服务层属性](resource-limits.md#service-tier-characteristics)与实例池资源关联，因此池中的所有实例必须与池的服务层相同。 目前，只有常规用途的服务层可用 (请参阅以下部分，了解当前预览) 中的限制。
 
@@ -121,7 +125,7 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 
 为 [Azure 门户](https://portal.azure.com)中的实例池创建和管理支持请求。
 
-如果遇到与 (创建或删除) 相关的实例池部署的问题，请确保在 "**问题子类型**" 字段中指定**实例池**。
+如果遇到与 (创建或删除) 相关的实例池部署的问题，请确保在 "**问题子类型**" 字段中指定 **实例池**。
 
 ![实例池支持请求](./media/instance-pools-overview/support-request.png)
 
@@ -147,7 +151,7 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 
 如果在可 [用于开发测试权益的订阅](https://azure.microsoft.com/pricing/dev-test/)上创建实例池，则可在 Azure SQL 托管实例上自动获得最高55% 的折扣率。
 
-有关实例池定价的完整详细信息，请参阅[SQL 托管实例定价页](https://azure.microsoft.com/pricing/details/sql-database/managed/)上的*实例池*部分。
+有关实例池定价的完整详细信息，请参阅 [SQL 托管实例定价页](https://azure.microsoft.com/pricing/details/sql-database/managed/)上的 *实例池* 部分。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -157,5 +161,5 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 - 有关 VNet 配置的详细信息，请参阅 [SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关使用 Azure 数据库迁移服务进行迁移的教程，请参阅[使用数据库迁移服务进行 SQL 托管实例迁移](../../dms/tutorial-sql-server-to-managed-instance.md)。
-- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅 [使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
+- 有关使用内置故障排除智能对 SQL 托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
 - 有关定价信息，请参阅 [SQL 托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

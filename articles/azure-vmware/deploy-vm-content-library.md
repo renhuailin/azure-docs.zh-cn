@@ -3,12 +3,12 @@ title: 创建用于在 Azure VMware 解决方案中部署 Vm 的内容库
 description: 在 Azure VMware 解决方案私有云中创建用于部署 VM 的内容库。
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575817"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461679"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>创建用于在 Azure VMware 解决方案中部署 Vm 的内容库
 
@@ -18,7 +18,7 @@ ms.locfileid: "91575817"
 
 ## <a name="prerequisites"></a>先决条件
 
-学习本教程需要具备 NSX-T 逻辑交换机段和托管式 DHCP 服务。  有关详细信息，请参阅 [如何管理 Azure VMWare 解决方案](manage-dhcp.md) 一文中的 DHCP。
+学习本教程需要具备 NSX-T 逻辑交换机段和托管式 DHCP 服务。  有关详细信息，请参阅 [如何管理 Azure VMware 解决方案](manage-dhcp.md) 一文中的 DHCP。
 
 ## <a name="create-a-content-library"></a>创建内容库
 
@@ -92,7 +92,7 @@ ms.locfileid: "91575817"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果计划使用混合云扩展 (HCX) 将 VM 工作负荷迁移到私有云，请按照[安装 HCX 以使用 Azure VMware 解决方案](tutorial-deploy-vmware-hcx.md)这一流程操作。
+如果计划使用 VMware HCX 将 VM 工作负荷迁移到私有云，请使用 [部署和配置 VMWARE HCX](tutorial-deploy-vmware-hcx.md) 过程。
 
 <!-- LINKS - external-->
 

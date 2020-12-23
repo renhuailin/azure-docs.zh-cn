@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628188"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014554"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>如何：部署计算 web 应用程序的人员
 
@@ -31,7 +31,7 @@ ms.locfileid: "91628188"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/cognitive-services/)
-* 基本了解 Azure IoT Edge 部署配置和 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)
+* 基本了解 Azure IoT Edge 部署配置和 [Azure IoT 中心](../../iot-hub/index.yml)
 * 已配置的 [主计算机](spatial-analysis-container.md)。
 
 ## <a name="deploy-the-spatial-analysis-container"></a>部署空间分析容器
@@ -63,14 +63,16 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>在主计算机上的 Azure IoT Edge 上部署容器
 
-使用 Azure CLI 将空间分析容器作为 IoT 模块部署在主计算机上。 部署过程需要部署清单文件，其中概述了部署所需的容器、变量和配置。 可在 GitHub 上找到示例 [部署清单](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) ，其中包括 *空间分析* 容器的基本部署配置。 
+使用 Azure CLI 将空间分析容器作为 IoT 模块部署在主计算机上。 部署过程需要部署清单文件，其中概述了部署所需的容器、变量和配置。 可在 GitHub 上找到 [Azure Stack 边缘特定部署清单](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) 和 [非 Azure Stack 边缘特定部署清单](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) 的示例，其中包括 *空间分析* 容器的基本部署配置。 
+
+或者，你可以使用适用于 Visual Studio Code 的 Azure IoT 扩展在 IoT 中心执行操作。 请 [从 Visual Studio Code 部署 Azure IoT Edge 模块](../../iot-edge/how-to-deploy-modules-vscode.md) 以了解详细信息。
 
 > [!NOTE] 
-> *空间分析-telegraf*和*空间分析-诊断*容器是可选的。 您可以决定将其从 *DeploymentManifest.js* 的文件中删除。 有关详细信息，请参阅 [遥测和故障排除](./spatial-analysis-logging.md) 一文。 可在[Github](https://go.microsoft.com/fwlink/?linkid=2142179)上找到*有关*文件的示例DeploymentManifest.js 
+> *空间分析-telegraf* 和 *空间分析-诊断* 容器是可选的。 您可以决定将其从 *DeploymentManifest.js* 的文件中删除。 有关详细信息，请参阅 [遥测和故障排除](./spatial-analysis-logging.md) 一文。 可以在 Github 上的文件中找到两个 *DeploymentManifest.js* 示例，用于 [Azure Stack 边缘设备](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [台式计算机](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)
 
 ### <a name="set-environment-variables"></a>设置环境变量
 
-在上面链接的文件的示例*DeploymentManifest.js*中已设置了 IoT Edge 模块的大部分**环境变量**。 在文件中，搜索 `BILLING_ENDPOINT` 和 `API_KEY` 环境变量，如下所示。 将值替换为前面创建的终结点 URI 和 API 密钥。 确保 EULA 值设置为 "接受"。 
+IoT Edge 模块的大部分 **环境变量** 已经在上链接的文件的示例 *DeploymentManifest.js* 中进行了设置。 在文件中，搜索 `BILLING_ENDPOINT` 和 `API_KEY` 环境变量，如下所示。 将值替换为前面创建的终结点 URI 和 API 密钥。 确保 EULA 值设置为 "接受"。 
 
 ```json
 "EULA": { 
@@ -89,7 +91,7 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 完成 *空间分析* 容器的初始配置后，下一步是配置操作参数，并将其添加到部署中。 
 
-第一步是更新示例 [部署清单](https://go.microsoft.com/fwlink/?linkid=2142179) 并为其配置 operationId， `cognitiveservices.vision.spatialanalysis-personcount` 如下所示：
+第一步是更新上面链接的示例部署清单并配置 operationId， `cognitiveservices.vision.spatialanalysis-personcount` 如下所示：
 
 
 ```json
@@ -107,7 +109,7 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 },
 ```
 
-更新 [部署清单](https://go.microsoft.com/fwlink/?linkid=2142179) 后，请按照照相机制造商的说明安装照相机、配置照相机 url，并配置用户名和密码。 
+更新部署清单后，请按照照相机制造商的说明安装照相机、配置照相机 url，并配置用户名和密码。 
 
 接下来，将设置 `VIDEO_URL` 为照相机的 RTSP url，以及用于连接到相机的凭据。
 
@@ -122,7 +124,7 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="execute-the-deployment"></a>执行部署
 
-[部署清单](https://go.microsoft.com/fwlink/?linkid=2142179)完成后，请在 Azure CLI 中使用此命令，将主计算机上的容器作为 IoT Edge 模块部署。
+部署清单完成后，请在 Azure CLI 中使用此命令，将主计算机上的容器作为 IoT Edge 模块部署。
 
 ```azurecli
 az login
@@ -141,11 +143,11 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ### <a name="validate-that-the-deployment-was-successful"></a>验证部署是否成功
 
-在 Azure 门户的 IoT 中心实例中的空间分析模块 IoT Edge 模块设置中找到 " *运行时状态* "。 *运行时状态*的**所需值**和**报告的值**应为 `Running` 。 请参阅下面的内容，了解 Azure 门户上的外观。
+在 Azure 门户的 IoT 中心实例中的空间分析模块 IoT Edge 模块设置中找到 " *运行时状态* "。 *运行时状态* 的 **所需值** 和 **报告的值** 应为 `Running` 。 请参阅下面的内容，了解 Azure 门户上的外观。
 
 ![部署验证示例](./media/spatial-analysis/deployment-verification.png)
 
-此时，空间分析容器正在运行操作。 它为操作发出 AI insights `cognitiveservices.vision.spatialanalysis-personcount` ，并将这些见解作为遥测路由到 Azure IoT 中心实例。 若要配置其他相机，可以更新 [部署清单](https://go.microsoft.com/fwlink/?linkid=2142179) 文件并再次执行部署。
+此时，空间分析容器正在运行操作。 它为操作发出 AI insights `cognitiveservices.vision.spatialanalysis-personcount` ，并将这些见解作为遥测路由到 Azure IoT 中心实例。 若要配置其他相机，可以更新部署清单文件并再次执行部署。
 
 ## <a name="person-counting-web-application"></a>计算 Web 应用程序的人员
 
@@ -156,7 +158,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 此应用的容器窗体在 Azure 容器注册表中提供。 使用以下 docker pull 命令下载它。 请与 Microsoft 联系 projectarchon@microsoft.com 以获取访问令牌。
 
 ```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
+docker login rtvsofficial.azurecr.io -u <token name> -p <password>
 docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
 ```
 
@@ -190,6 +192,9 @@ docker push [desired local image name]
 请在 Azure Web 应用中进行操作并验证部署是否成功，以及 Web 应用是否正在运行。 导航到配置的 url： `<yourapp>.azurewebsites.net` 查看正在运行的应用程序。
 
 ![测试部署](./media/spatial-analysis/solution-app-output.png)
+
+## <a name="get-the-personcount-source-code"></a>获取 PersonCount 源代码
+若要查看或修改此应用程序的源代码，可 [在 Github 上](https://github.com/Azure-Samples/cognitive-services-spatial-analysis)找到。
 
 ## <a name="next-steps"></a>后续步骤
 

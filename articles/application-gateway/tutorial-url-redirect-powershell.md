@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: a9606bfe8b4719ed4ab3c51fc177f331b754f7a1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595243"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397043"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持基于 URL 路径的重定向的应用程序网关
 
-创建[应用程序网关](application-gateway-introduction.md)时，可以使用 Azure PowerShell 配置[基于 URL 的路由规则](application-gateway-url-route-overview.md)。 在本文中，将使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建 URL 路由规则，以确保 Web 流量重定向到相应的后端池。
+创建[应用程序网关](./overview.md)时，可以使用 Azure PowerShell 配置[基于 URL 的路由规则](./url-route-overview.md)。 在本文中，将使用[虚拟机规模集](../virtual-machine-scale-sets/overview.md)创建后端池。 然后创建 URL 路由规则，以确保 Web 流量重定向到相应的后端池。
 
 在本文中，学习如何：
 
@@ -173,7 +173,7 @@ New-AzApplicationGateway `
 
 ### <a name="add-backend-pools-and-ports"></a>添加后端池和端口
 
-可以使用 [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) 向应用程序网关添加后端池。 在此示例中，将创建 *imagesBackendPool* 和 *videoBackendPool*。 使用 [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport) 添加池的前端端口。 然后使用 [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway) 提交对应用程序网关所做的更改。
+可以使用 [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) 向应用程序网关添加后端池。 在此示例中，将创建 *imagesBackendPool* 和 *videoBackendPool* 。 使用 [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport) 添加池的前端端口。 然后使用 [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway) 提交对应用程序网关所做的更改。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -390,7 +390,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
 
-在此示例中，将创建三个虚拟机规模集以支持所创建的三个后端池。 创建的规模集分别名为 *myvmss1*、*myvmss2* 和 *myvmss3*。 每个规模集包含两个在其上安装了 IIS 的虚拟机实例。 配置 IP 设置时将规模集分配给后端池。
+在此示例中，将创建三个虚拟机规模集以支持所创建的三个后端池。 创建的规模集分别名为 *myvmss1* 、 *myvmss2* 和 *myvmss3* 。 每个规模集包含两个在其上安装了 IIS 的虚拟机实例。 配置 IP 设置时将规模集分配给后端池。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -518,4 +518,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [详细了解应用程序网关的作用](application-gateway-introduction.md)
+> [详细了解应用程序网关的作用](./overview.md)

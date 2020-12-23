@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77895fd81bd37e304d422aea64da0298fc1673ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0c8a42edad08308095469039c048f8dd8552af
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85356468"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413456"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>排查对象不与 Azure Active Directory 同步的问题
 
@@ -69,7 +69,7 @@ ms.locfileid: "85356468"
 
 ![Synchronization Service Manager 的屏幕截图，其中已选择“操作”选项卡](./media/tshoot-connect-object-not-syncing/operations.png)  
 
-“操作”选项卡的上半部分按时间顺序显示所有运行  。 默认情况下，操作日志保留最后七天的相关信息，但可以使用[计划程序](how-to-connect-sync-feature-scheduler.md)来更改此设置。 查找所有未显示**成功**状态的运行。 可以单击标题来更改排序。
+“操作”选项卡的上半部分按时间顺序显示所有运行  。 默认情况下，操作日志保留最后七天的相关信息，但可以使用[计划程序](how-to-connect-sync-feature-scheduler.md)来更改此设置。 查找所有未显示 **成功** 状态的运行。 可以单击标题来更改排序。
 
 “状态”列包含最重要的信息，并显示最严重的运行问题。  下面是按调查优先级顺序显示的最常见状态的快速摘要（其中 * 表示多个可能的错误字符串）。
 
@@ -87,11 +87,11 @@ ms.locfileid: "85356468"
 出现错误时，Synchronization Service Manager 将以链接形式显示出错的对象和错误本身，单击这些链接可获取更多信息。
 
 ![Synchronization Service Manager 中的错误屏幕截图](./media/tshoot-connect-object-not-syncing/errorsync.png)  
-首先选择错误字符串。 （在上图中，错误字符串为 **sync-rule-error-function-triggered**。）随后会先看到对象概述。 若要查看实际的错误，请选择“堆栈跟踪”。  此跟踪提供错误的调试级别信息。
+首先选择错误字符串。 （在上图中，错误字符串为 **sync-rule-error-function-triggered** 。）随后会先看到对象概述。 若要查看实际的错误，请选择“堆栈跟踪”。  此跟踪提供错误的调试级别信息。
 
 右键单击“调用堆栈信息”框，单击“全选”，然后选择“复制”。    然后复制堆栈，并在偏爱的编辑器（例如记事本）中查看此错误。
 
-如果错误来自 **SyncRulesEngine**，则调用堆栈信息首先会列出对象上的所有属性。 向下滚动，直到看到 **InnerException =>** 标题为止。  
+如果错误来自 **SyncRulesEngine** ，则调用堆栈信息首先会列出对象上的所有属性。 向下滚动，直到看到 **InnerException =>** 标题为止。  
 
   ![Synchronization Service Manager 的屏幕截图，其中显示了 InnerException = > 标题下的错误信息](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   
@@ -100,7 +100,7 @@ ms.locfileid: "85356468"
 如果错误中未提供足够的信息，请查看数据本身。 选择包含对象标识符的链接，继续对[连接器空间导入的对象](#cs-import)进行故障排除。
 
 ## <a name="connector-space-object-properties"></a>连接器空间对象属性
-如果[**操作**](#operations)选项卡中未显示任何错误，请跟踪从 Active Directory 到 Metaverse 再到 Azure AD 的连接器空间对象。 在此路径中，应能找到问题所在。
+如果 [**操作**](#operations)选项卡中未显示任何错误，请跟踪从 Active Directory 到 Metaverse 再到 Azure AD 的连接器空间对象。 在此路径中，应能找到问题所在。
 
 ### <a name="searching-for-an-object-in-the-cs"></a>搜索 CS 中的对象
 
@@ -116,7 +116,7 @@ ms.locfileid: "85356468"
 
 ![连接器空间搜索中孤立对象的屏幕截图](./media/tshoot-connect-object-not-syncing/cssearchorphan.png) 
  
-这些对象是由其他同步引擎或具有不同筛选配置的同步引擎创建的。 不再管理这些孤立对象。 查看此列表并考虑使用 [Azure AD PowerShell](https://aka.ms/aadposh) cmdlet 删除这些对象。
+这些对象是由其他同步引擎或具有不同筛选配置的同步引擎创建的。 不再管理这些孤立对象。 查看此列表并考虑使用 [Azure AD PowerShell](/previous-versions/azure/jj151815(v=azure.100)) cmdlet 删除这些对象。
 
 ### <a name="cs-import"></a>CS 导入
 打开 CS 对象时，顶部会出现多个选项卡。 “导入”选项卡显示导入后暂存的数据。   
@@ -138,7 +138,7 @@ ms.locfileid: "85356468"
 
 ![“连接器空间对象属性”窗口中“沿袭”选项卡上的沿袭窗口屏幕截图](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
 
-在上图中还可以看到，在“PasswordSync”列中，入站连接器空间可进行密码更改，因为有一个同步规则的值为 **True**。  此密码将通过出站规则发送到 Azure AD。
+在上图中还可以看到，在“PasswordSync”列中，入站连接器空间可进行密码更改，因为有一个同步规则的值为 **True** 。  此密码将通过出站规则发送到 Azure AD。
 
 在“沿袭”选项卡中，可以选择 [**Metaverse 对象属性**](#mv-attributes)转到 Metaverse。 
 
@@ -158,7 +158,7 @@ ms.locfileid: "85356468"
 通常，最好从源 Active Directory 连接器空间开始搜索。 但是也可以从 metaverse 开始搜索。
 
 ### <a name="searching-for-an-object-in-the-mv"></a>搜索 MV 中的对象
-在 Synchronization Service Manager 中选择“Metaverse 搜索”，如下图所示。  创建一个查找用户的查询。 搜索公共属性，例如 **accountName** (**sAMAccountName**) 和 **userPrincipalName**。 有关详细信息，请参阅 [Sync Service Manager Metaverse 搜索](how-to-connect-sync-service-manager-ui-mvsearch.md)。
+在 Synchronization Service Manager 中选择“Metaverse 搜索”，如下图所示。  创建一个查找用户的查询。 搜索公共属性，例如 **accountName** ( **sAMAccountName** ) 和 **userPrincipalName** 。 有关详细信息，请参阅 [Sync Service Manager Metaverse 搜索](how-to-connect-sync-service-manager-ui-mvsearch.md)。
 
 ![Synchronization Service Manager 的屏幕截图，其中已选择“Metaverse 搜索”选项卡](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
@@ -191,8 +191,8 @@ ms.locfileid: "85356468"
 ![“Metaverse 对象属性”窗口的屏幕截图，其中已选择“属性”选项卡](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
 如果对象不同步，请提出有关 Metaverse 中的以下属性的问题：
-- 属性 **cloudFiltered** 是否存在并设置为 **True**？ 如果是，则已根据[基于属性的筛选](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)中的步骤对其进行筛选。
-- 属性 **sourceAnchor** 是否存在？ 如果不存在，是否拥有帐户资源林拓扑？ 如果对象被标识为链接的邮箱（属性 **msExchRecipientTypeDetails** 的值为 **2**），则由具有已启用的 Active Directory 帐户的林提供 **sourceAnchor**。 请确保已正确导入和同步主帐户。 主帐户必须在对象的[连接器](#mv-connectors)中列出。
+- 属性 **cloudFiltered** 是否存在并设置为 **True** ？ 如果是，则已根据[基于属性的筛选](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)中的步骤对其进行筛选。
+- 属性 **sourceAnchor** 是否存在？ 如果不存在，是否拥有帐户资源林拓扑？ 如果对象被标识为链接的邮箱（属性 **msExchRecipientTypeDetails** 的值为 **2** ），则由具有已启用的 Active Directory 帐户的林提供 **sourceAnchor** 。 请确保已正确导入和同步主帐户。 主帐户必须在对象的[连接器](#mv-connectors)中列出。
 
 ### <a name="mv-connectors"></a>MV 连接器
 “连接器”选项卡显示所有具有对象表示形式的连接器空间  。 

@@ -1,21 +1,21 @@
 ---
 title: 教程：使用设计器预测汽车价格
 titleSuffix: Azure Machine Learning
-description: 了解如何使用拖放式界面来训练、评分和部署机器学习模型。 本教程是有关使用线性回归预测汽车价格的、由两个部分构成的教程系列的第一部分。
+description: 训练机器学习模型，使用线性回归预测汽车价格。 本教程是由两个部分构成的系列教程的第一部分。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896694"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575969"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教程：使用设计器预测汽车价格
 
@@ -48,7 +48,10 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
 ### <a name="create-a-new-workspace"></a>创建新的工作区
 
-若要使用设计器，首先需要一个 Azure 机器学习工作区。 工作区是 Azure 机器学习的顶级资源，提供一个中心位置用于处理 Azure 机器学习中创建的所有项目。
+需要一个 Azure 机器学习工作区来使用设计器。 工作区是 Azure 机器学习的顶级资源，提供一个中心位置用于处理 Azure 机器学习中创建的所有项目。 有关创建工作区的说明，请参阅[创建和管理 Azure 机器学习工作区](how-to-manage-workspace.md)。
+
+> [!NOTE]
+> 如果工作区使用虚拟网络，则必须执行其他配置步骤才能使用设计器。 有关详细信息，请参阅[在 Azure 虚拟网络中使用 Azure 机器学习工作室](how-to-enable-studio-virtual-network.md)
 
 ### <a name="create-the-pipeline"></a>创建管道
 
@@ -66,16 +69,16 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
 管道在计算目标上运行，该目标是附加到工作区的计算资源。 创建计算目标后，就可以在以后的运行中重用它。
 
-可为整个管道设置**默认计算目标**，告知每个模块要默认使用同一个计算目标。 但是，可以基于每个模块指定计算目标。
+可为整个管道设置 **默认计算目标**，告知每个模块要默认使用同一个计算目标。 但是，可以基于每个模块指定计算目标。
 
-1. 在管道名称旁边，选择画布顶部的**齿轮图标** ![齿轮图标的屏幕截图](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) 打开“设置”窗格。
+1. 在管道名称旁边，选择画布顶部的 **齿轮图标** ![齿轮图标的屏幕截图](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) 打开“设置”窗格。
 
 1. 在画布右侧的“设置”窗格中，选择“选择计算目标”。 
 
     如果已有可用的计算目标，则可以选择它来运行此管道。
 
     > [!NOTE]
-    > 设计器只能在 Azure 机器学习计算目标和 Azure 机器学习计算实例目标上运行训练试验，但其他计算目标不会显示。
+    > 此设计器只能在 Azure 机器学习计算目标上运行训练试验，而不会显示其他计算目标。
 
 1. 输入计算资源的名称。
 
@@ -223,7 +226,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
     :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="显示“训练模型”模块的正确配置的屏幕截图。“线性回归”模块将连接到“训练模型”模块的左端口，“拆分数据”模块将连接到“训练模型”的右端口。":::
 
-1. 选择**训练模型**模块。
+1. 选择 **训练模型** 模块。
 
 1. 在画布右侧的模块详细信息窗格中，选择“编辑列”选择器。
 
@@ -275,7 +278,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
     
     可以在画布的右上角查看运行状态和详细信息。
     
-    如果是第一次运行，则管道可能需要长达 20 分钟的时间才能完成运行。 默认计算设置中的最小节点大小为 0，这意味着设计器必须在空闲后分配资源。 由于计算资源已分配，因此，重复的管道运行花费的时间会更少。 此外，设计器还对每个模块使用缓存的结果，以便进一步提高效率。
+    如果这是第一次运行，则管道可能需要长达 20 分钟的时间才能完成运行。 默认计算设置中的最小节点大小为 0，这意味着设计器必须在空闲后分配资源。 由于计算资源已分配，因此，重复的管道运行花费的时间会更少。 此外，设计器还对每个模块使用缓存的结果，以便进一步提高效率。
 
 ### <a name="view-scored-labels"></a>查看评分标签
 

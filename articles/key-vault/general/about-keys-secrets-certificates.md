@@ -1,22 +1,23 @@
 ---
-title: Azure Key Vault REST API 概述
+title: Azure Key Vault 密钥、机密和证书概述
 description: Azure Key Vault REST 接口概述以及密钥、机密和证书的开发人员详细信息。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b2d3753cd31b54c500b2757520f2634eb1b2794a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983275"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327077"
 ---
-# <a name="azure-key-vault-rest-api-overview"></a>Azure Key Vault REST API 概述
+# <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault 密钥、机密和证书概述
 
 凭借 Azure Key Vault，Microsoft Azure 应用程序和用户能够存储和使用多种类型的机密/密钥数据。 Key Vault 资源提供程序支持两种资源类型：保管库和托管 HSM。
 
@@ -74,6 +75,7 @@ HSM 保护的密钥|/keys|支持|支持
 
 可以通过指定版本对 Key Vault 中的对象进行寻址，或者通过忽略版本对对象的当前版本进行操作。 例如，给定名称为 `MasterKey` 的密钥，执行操作而不指定版本会导致系统使用最新的可用版本。 使用特定于版本的标识符执行操作会导致系统使用该特定版本的对象。  
 
+### <a name="vault-name-and-object-name"></a>保管库名和对象名
 Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系统中都不存在两个具有相同 URL 的对象。 对象的完整 URL 称为对象标识符。 URL 由标识 Key Vault 的前缀、对象类型、用户提供的对象名称和对象版本组成。 对象名称不区分大小写且不可变。 不包括对象版本的标识符称为基本标识符。  
 
 有关详细信息，请参阅[身份验证、请求和响应](authentication-requests-and-responses.md)
@@ -89,7 +91,7 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 
 其中：  
 
-| 元素 | 说明 |  
+| 元素 | 描述 |  
 |-|-|  
 |`vault-name` 或 `hsm-name`|Microsoft Azure Key Vault 服务中的保管库或托管 HSM 池的名称。<br /><br />保管库名称和托管 HSM 池名称由用户选择，并且是全局唯一的。<br /><br />保管库名称和托管 HSM 池名称必须是 3-24 个字符的字符串，且仅包含 0-9、a-z、A-Z 和 -。|  
 |`object-type`|对象的类型（“密钥”、“机密”或“证书”）。|  

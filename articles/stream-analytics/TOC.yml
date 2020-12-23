@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是流分析？
+    - name: 欢迎使用流分析
       href: stream-analytics-introduction.md
     - name: 流分析群集
       href: cluster-overview.md
@@ -135,7 +135,7 @@
       href: stream-analytics-window-functions.md
     - name: 地理空间函数
       href: stream-analytics-geospatial-functions.md
-    - name: 兼容性级别
+    - name: 兼容级别
       href: stream-analytics-compatibility-level.md
     - name: 通用查询模式
       href: stream-analytics-stream-analytics-query-patterns.md
@@ -189,10 +189,13 @@
             - name: Blob 存储
               href: blob-output-managed-identity.md
               displayName: 'managed identity, identities, authenticate'
+            - name: 事件中心
+              href: event-hubs-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
             - name: Power BI
               href: powerbi-output-managed-identity.md
               displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL DB
+            - name: Azure SQL 和 Azure Synapse
               href: sql-database-output-managed-identity.md
               displayName: 'managed identity, identities, authenticate'
         - name: 加密数据
@@ -224,7 +227,7 @@
           href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
         - name: 处理 Azure SQL 数据库
-          href: ../sql-database/sql-database-stream-analytics.md
+          href: ../azure-sql/database/stream-data-stream-analytics-integration.md
           maintainContext: true
         - name: 地理空间方案
           href: geospatial-scenarios.md
@@ -686,7 +689,7 @@
     - name: 反馈论坛
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-stream-analytics.html'
+      href: /answers/topics/azure-stream-analytics.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
     - name: 定价计算器

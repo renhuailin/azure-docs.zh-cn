@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177085"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422954"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>本地调试 PowerShell Azure Functions
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-此函数应用与完成 [PowerShell 快速入门](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)时获取的应用类似。
+此函数应用与完成 [PowerShell 快速入门](./create-first-function-vs-code-powershell.md)时获取的应用类似。
 
 中的函数代码 `run.ps1` 类似于以下脚本：
 
@@ -95,10 +95,10 @@ if($name) {
 若要在 Visual Studio Code 中调试 PowerShell 函数，则必须安装以下各项：
 
 * [适用于 Visual Studio Code 的 PowerShell 扩展](/powershell/scripting/components/vscode/using-vscode)
-* [适用于 Visual Studio Code 的 Azure Functions 扩展](functions-create-first-function-vs-code.md)
+* [适用于 Visual Studio Code 的 Azure Functions 扩展](./create-first-function-cli-powershell.md)
 * [PowerShell Core 6.2 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-安装这些依赖项后，加载现有的 PowerShell 函数项目，或者 [创建第一个 Powershell 函数项目](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)。
+安装这些依赖项后，加载现有的 PowerShell 函数项目，或者 [创建第一个 Powershell 函数项目](./create-first-function-vs-code-powershell.md)。
 
 >[!NOTE]
 > 如果你的项目没有所需的配置文件，则系统会提示你添加它们。
@@ -109,9 +109,9 @@ PowerShell Core 与 Windows PowerShell 并行安装。 将 PowerShell Core 设�
 
 1. 按 F1 显示命令托盘，然后搜索 `Session` 。
 
-1. 选择 **PowerShell：显示会话菜单**。
+1. 选择 **PowerShell：显示会话菜单** 。
 
-1. 如果 **当前会话** 不是 **PowerShell core 6**，请选择 " **切换到： PowerShell core 6**"。
+1. 如果 **当前会话** 不是 **PowerShell core 6** ，请选择 " **切换到： PowerShell core 6** "。
 
 打开 PowerShell 文件后，会看到该版本在窗口右下角显示为绿色。 选择此文本还会显示 "会话" 菜单。 若要了解详细信息，请参阅 [选择用于扩展的 PowerShell 版本](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)。
 
@@ -119,7 +119,7 @@ PowerShell Core 与 Windows PowerShell 并行安装。 将 PowerShell Core 设�
 
 验证 `Wait-Debugger` 是否在要附加调试器的函数中进行了设置。  `Wait-Debugger`添加后，可以使用 Visual Studio Code 调试函数应用。
 
-选择 " **调试** " 窗格，并 **附加到 PowerShell 函数**。
+选择 " **调试** " 窗格，并 **附加到 PowerShell 函数** 。
 
 ![调试器](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
 

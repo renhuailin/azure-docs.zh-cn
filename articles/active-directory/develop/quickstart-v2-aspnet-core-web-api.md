@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: dc0cdca2355403bc8f5409d9a6ca7f4ae89caf25
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943451"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562009"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>快速入门：使用 Microsoft 标识平台保护 ASP.NET Core Web API
 
-在本快速入门中，你将使用代码示例来了解如何保护 ASP.NET Core web API，使其只能被授权的帐户访问。 帐户可以是任何 Azure Active Directory (Azure AD) 实例中的个人帐户（hotmail.com、outlook.com 等）以及工作和学校帐户。
+在本快速入门中，我们将下载一个 ASP.NET Core Web API 代码示例并查看其代码，该代码将对资源的访问权限限制为仅授权帐户。 该示例支持对任何 Azure Active Directory (Azure AD) 组织中的个人 Microsoft 帐户和帐户进行授权。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>先决条件

@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 78a81a2d392363ac45979fd28138f838653a2358
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 28c0be40387f411286230f94c19fa23a80e650af
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380679"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746397"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>如何添加 SaaS 产品/服务的技术详细信息
 
 本文介绍如何输入有助于 Microsoft 商用 marketplace 连接到解决方案的技术详细信息。 此连接使我们能够为客户预配你的产品/服务，前提是他们选择获取并管理你的产品。 有关这些设置的详细信息，请参阅 [技术信息](plan-saas-offer.md#technical-information)。
 
 > [!NOTE]
-> 如果选择单独处理事务，则不会看到此选项。 相反，请跳到 [如何推销 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
+> 如果选择单独处理事务，则不会看到此选项。 相反，请跳到 [如何出售 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
 
 ## <a name="technical-configuration"></a>技术配置
 
@@ -38,7 +38,7 @@ ms.locfileid: "89380679"
 
 - **Azure Active Directory 租户 id** (必需) –若要查找 Azure Active Directory (Azure AD 应用的租户 id，请在) 中转到 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 边栏选项卡。 在 " **显示名称** " 列中，选择应用。 然后查找 (列出的 **目录 (租户) ID** 号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
 
-- **Azure Active Directory 应用程序 id** (必需) –若要查找 [应用程序 id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，请在 Azure Active Directory 中转到 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 边栏选项卡。 在 " **显示名称** " 列中，选择应用。 然后查找 (列出的应用程序 (客户端) ID 号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
+- **Azure Active Directory 应用程序 id** (必需) –若要查找 [应用程序 id](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请在 Azure Active Directory 中转到 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 边栏选项卡。 在 " **显示名称** " 列中，选择应用。 然后查找 (列出的应用程序 (客户端) ID 号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
 
 选择 " **保存草稿** "，然后继续下一步选项卡：计划概述。
 

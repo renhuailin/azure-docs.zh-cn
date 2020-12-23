@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 70c77caebfd8f9bfd36c7384255cf7b66416a379
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550090"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012027"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Darwinbox 集成
 
@@ -25,7 +25,7 @@ ms.locfileid: "88550090"
 * 在 Azure AD 中控制谁有权访问 Darwinbox。
 * 让用户使用其 Azure AD 帐户自动登录到 Darwinbox。
 * 在一个中心位置（Azure 门户）管理帐户。
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88550090"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Darwinbox 支持 SP 发起的 SSO****
+* Darwinbox 支持 SP 发起的 SSO
 
 ## <a name="adding-darwinbox-from-the-gallery"></a>从库中添加 Darwinbox
 
@@ -51,13 +51,13 @@ ms.locfileid: "88550090"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分的搜索框中，键入“Darwinbox”********。
-1. 从结果面板中选择“Darwinbox”，然后添加该应用****。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Darwinbox”。
+1. 从结果面板中选择“Darwinbox”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-darwinbox"></a>配置和测试 Darwinbox 的 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置和测试 Darwinbox 的 Azure AD SSO****。 若要运行 SSO，需要在 Azure AD 用户与 Darwinbox 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 Darwinbox 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Darwinbox 相关用户之间建立链接关系。
 
 若要配置和测试 Darwinbox 的 Azure AD SSO，请完成以下构建基块：
 
@@ -72,7 +72,7 @@ ms.locfileid: "88550090"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Darwinbox”应用程序集成页上，找到“管理”部分，选择“单一登录”************。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Darwinbox”应用程序集成页上，找到“管理”部分，选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -131,31 +131,31 @@ ms.locfileid: "88550090"
 
 ### <a name="create-darwinbox-test-user"></a>创建 Darwinbox 测试用户
 
-在本部分中，将在 Darwinbox 中创建名为 B.Simon 的用户。 与  [Darwinbox 支持团队](https://darwinbox.com/contact-us.php)协作，将用户添加到 Darwinbox 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Darwinbox 中创建名为 B.Simon 的用户。 与 [Darwinbox 支持团队](https://darwinbox.com/contact-us.php)协作，在 Darwinbox 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Darwinbox 磁贴时，应当会自动登录到设置了 SSO 的 Darwinbox。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Darwinbox 磁贴时，应当会自动登录到设置了 SSO 的 Darwinbox。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="test-sso-for-darwinbox-mobile"></a>测试 Darwinbox 的 SSO（移动版）
 
 1. 打开 Darwinbox 移动应用程序。 立即单击“输入组织 URL”，在文本框中输入你的组织 URL，然后单击箭头按钮。
 
-    ![Darwinbox 移动应用](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![显示“Darwinbox”移动应用的屏幕截图，其中选择了“输入组织 URL”，并突出显示了一个示例组织和箭头按钮。](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. 如果你有多域，则单击你的域。
 
-    ![Darwinbox 移动应用](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![显示“选择域”屏幕的屏幕截图，其中已选择一个示例域。](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. 将 Azure AD 电子邮件输入 Darwinbox 应用程序，然后单击“下一步”。
 
-    ![Darwinbox 移动应用](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![屏幕截图显示“登录”屏幕并突出显示“下一步”按钮。](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. 将 Azure AD 密码输入 Darwinbox 应用程序，然后单击“登录”。
 
-    ![Darwinbox 移动应用](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![屏幕截图显示“输入密码”屏幕并突出显示“下一步”按钮。](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. 最后，在登录成功后，将显示应用程序主页。
 
@@ -163,11 +163,10 @@ ms.locfileid: "88550090"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [通过 Azure AD 试用 Darwinbox](https://aad.portal.azure.com/)
-

@@ -12,11 +12,11 @@ ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-js
 ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268615"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994972"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在应用程序中嵌入视频索引器小组件
 
@@ -35,7 +35,7 @@ ms.locfileid: "91268615"
 |`widgets` | 用逗号分隔的字符串 | 允许您控制要呈现的见解。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` 仅呈现人员和关键字 UI insights。<br/>可用选项：人脉、animatedCharacters、关键字、标签、情绪、情感、主题、关键帧、脚本、ocr、发言人、场景和 namedEntities。|
 |`controls`|用逗号分隔的字符串|允许您控制要呈现的控件。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` 仅呈现搜索选项和 "下载" 按钮。<br/>可用选项： "搜索"、"下载"、"预设" 和 "语言"。|
 |`language`| (语言名称的短语言代码) |控制见解语言。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
-|`locale` | 短语言代码 | 控制 UI 的语言。 默认值为 `en`。 <br/>示例：`locale=de`。|
+|`locale` | 短语言代码 | 控制 UI 的语言。 默认值是 `en`。 <br/>示例：`locale=de`。|
 |`tab` | 默认选定的选项卡 | 控制默认呈现的 " **见解** " 选项卡。 <br/>示例： `tab=timeline` 在选择 " **时间线** " 选项卡的情况上呈现见解。|
 |`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则 `trial` 应将其用于位置值。 `trial` 参数的默认值 `location` 。| 
 
@@ -49,8 +49,8 @@ ms.locfileid: "91268615"
 |`captions` | 语言代码 | 在加载小组件时提取指定语言的标题，在 " **标题** " 菜单中可用。<br/> 示例：`captions=en-US`。 |
 |`showCaptions` | 布尔值 | 使播放器与已启用的字幕一起加载。<br/> 示例：`showCaptions=true`。 |
 |`type`| | 激活音频播放机外观 () 中删除视频部分。<br/> 示例：`type=audio`。 |
-|`autoplay` | 布尔值 | 指示播放机是否应在加载时开始播放视频。 默认值为 `true`。<br/> 示例：`autoplay=false`。 |
-|`language`/`locale` | 语言代码 | 控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
+|`autoplay` | 布尔值 | 指示播放机是否应在加载时开始播放视频。 默认值是 `true`。<br/> 示例：`autoplay=false`。 |
+|`language`/`locale` | 语言代码 | 控制播放器语言。 默认值是 `en-US`。<br/>示例：`language=de-DE`。|
 |`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则 `trial` 应将其用于位置值。 `trial` 参数的默认值 `location` 。| 
 
 ### <a name="editor-widget"></a>编辑器小组件
@@ -60,8 +60,8 @@ ms.locfileid: "91268615"
 |名称|定义|说明|
 |---|---|---|
 |`accessToken`<sup>*</sup> | String | 提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件要求 `accessToken` 参数。 |
-|`language` | 语言代码 | 控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。 |
-|`locale` | 短语言代码 | 控制 insights 语言。 默认值为 `en`。<br/>示例：`language=de`。 |
+|`language` | 语言代码 | 控制播放器语言。 默认值是 `en-US`。<br/>示例：`language=de-DE`。 |
+|`locale` | 短语言代码 | 控制 insights 语言。 默认值是 `en`。<br/>示例：`language=de`。 |
 |`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则 `trial` 应将其用于位置值。 `trial` 参数的默认值 `location` 。| 
 
 <sup>*</sup>所有者应小心提供 `accessToken` 。
@@ -79,8 +79,8 @@ ms.locfileid: "91268615"
 
 1. 登录到 [视频索引器](https://www.videoindexer.ai/) 网站。
 1. 选择要使用的视频，并按 " **播放**"。
-1. 选择想要 (**认知见解**、 **播放器**或 **编辑器**) 的小组件类型。
-1. 单击 " ** &lt; / &gt; 嵌入**"。
+1. 选择想要 (**认知见解**、 **播放器** 或 **编辑器**) 的小组件类型。
+1. 单击 " **&lt; / &gt; 嵌入**"。
 5. 复制嵌入代码 (出现在 " **将嵌入的代码复制** 到 **共享 & 嵌入** " 对话框) 中。
 6. 将代码添加到应用。
 

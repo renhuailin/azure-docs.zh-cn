@@ -8,11 +8,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322421"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000345"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
@@ -37,7 +37,7 @@ ms.locfileid: "91322421"
 
 ## <a name="how-we-solved-the-problem"></a>我们如何解决问题
 
-我们选择 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") 作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
+我们选择 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") 作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行 **插入** 和 **查询**。 我们还可以在 API 应用中为各个操作定义架构。  
 
 另一个要求是清除特定日期之后的记录。 Cosmos DB 具有一个名为 [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "生存时间") (TTL) 的属性，使用该属性可以为每个记录或集合设置“生存时间”  值。 这样便无需在 Cosmos DB 中手动删除记录。
 
@@ -399,7 +399,7 @@ ms.locfileid: "91322421"
 若要查看这些错误，可以创建 MVC Web 应用，显示来自 Cosmos DB 的错误记录。 当前版本包含“列表”  、“详细信息”  、“编辑”  和“删除”  操作。
 
 > [!NOTE]
-> “编辑”操作：Cosmos DB 对整个文档进行替换。 **列表**和**详细信息**视图中显示的记录只是示例。 它们不是实际的患者约会记录。
+> “编辑”操作：Cosmos DB 对整个文档进行替换。 **列表** 和 **详细信息** 视图中显示的记录只是示例。 它们不是实际的患者约会记录。
 
 下面是使用前面所述的方法创建的 MVC 应用详细信息的示例。
 

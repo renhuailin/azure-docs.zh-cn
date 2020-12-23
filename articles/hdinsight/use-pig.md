@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 8fd42169ab6ccb144215e1b6ad2ece09ff55c07f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9474a1845898e3fda0c810314f41f6f4deabc96b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072842"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538725"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用
 
@@ -30,11 +30,11 @@ Apache Pig 是一个平台，用于使用名为 *Pig Latin* 的过程语言为 A
 
 通过 Pig Latin 语言，可以描述从原始输入开始，经过一个或多个转换，最终生成所需输出的数据流。 Pig Latin 程序遵循下述常规模式：
 
-* **加载**：从文件系统中读取要操作的数据。
+* **加载** ：从文件系统中读取要操作的数据。
 
-* **转换**：操作该数据。
+* **转换** ：操作该数据。
 
-* **转储或存储**：将数据输出到屏幕或将其存储后再进行处理。
+* **转储或存储** ：将数据输出到屏幕或将其存储后再进行处理。
 
 ### <a name="user-defined-functions"></a>用户定义的函数
 
@@ -95,15 +95,15 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。 使用下表来�
 
 * [将数据上传到 HDInsight](hdinsight-upload-data.md)
 * [将 Apache Hive 和 HDInsight 配合使用](./hadoop/hdinsight-use-hive.md)
-* [将 Apache Sqoop 与 HDInsight 配合使用](hdinsight-use-sqoop.md)
+* [将 Apache Sqoop 与 HDInsight 配合使用](./hadoop/hdinsight-use-sqoop.md)
 * [将 MapReduce 作业与 HDInsight 配合使用](./hadoop/hdinsight-use-mapreduce.md)
 
 [apachepig-home]: https://pig.apache.org/
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: https://curl.haxx.se/
-[pigtask]: https://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
-[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[pigtask]: /sql/integration-services/control-flow/azure-hdinsight-pig-task?viewFallbackFrom=sql-server-2014
+[connectionmanager]: /sql/integration-services/connection-manager/azure-subscription-connection-manager?viewFallbackFrom=sql-server-2014
+[ssispack]: /sql/integration-services/azure-feature-pack-for-integration-services-ssis?viewFallbackFrom=sql-server-2014
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 
 [hdinsight-use-hive]:../hdinsight-use-hive.md

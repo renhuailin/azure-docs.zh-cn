@@ -3,20 +3,19 @@ title: 了解如何使用 Azure 应用配置的快速入门
 description: 在本快速入门中，使用 Azure 应用程序配置创建 Java Spring 应用，集中存储和管理与代码分离的应用程序设置。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: e3bc26b8f4d66c95f6f777af06d71172a4b882b9
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.author: alkemper
+ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767638"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932024"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Java Spring 应用
 
@@ -25,7 +24,7 @@ ms.locfileid: "91767638"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-- 受支持的 [Java 开发工具包 (JDK)](https://docs.microsoft.com/java/azure/jdk)，版本为 8。
+- 受支持的 [Java 开发工具包 (JDK)](/java/azure/jdk)，版本为 8。
 - [Apache Maven](https://maven.apache.org/download.cgi) 版本 3.0 或更高版本。
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
@@ -188,7 +187,7 @@ ms.locfileid: "91767638"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何创建新的应用程序配置存储区，并将其用于 Java Spring 应用。 有关详细信息，请参阅 [Azure 上的 Spring](https://docs.microsoft.com/java/azure/spring-framework/)。 若要了解如何使 Java Spring 应用能够动态刷新配置设置，请继续学习下一个教程。
+本快速入门介绍了如何创建新的应用程序配置存储区，并将其用于 Java Spring 应用。 有关详细信息，请参阅 [Azure 上的 Spring](/java/azure/spring-framework/)。 若要了解如何使 Java Spring 应用能够动态刷新配置设置，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]
 > [启用动态配置](./enable-dynamic-configuration-java-spring-app.md)

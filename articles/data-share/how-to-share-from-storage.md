@@ -1,19 +1,19 @@
 ---
-title: 共享和接收来自 Azure Blob 存储和 Azure Data Lake Storage 的数据
+title: 从 Azure Blob 和 Azure Data Lake Storage 共享和接收数据
 description: 了解如何从 Azure Blob 存储和 Azure Data Lake Storage 共享和接收数据
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: a54a9d4c50852fe78fd245723dd29f487d58f4b1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 12/16/2020
+ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270012"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617079"
 ---
-# <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>共享和接收来自 Azure Blob 存储和 Azure Data Lake Storage 的数据
+# <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>从 Azure Blob 和 Azure Data Lake Storage 共享和接收数据
 
 [!INCLUDE[appliesto-storage](includes/appliesto-storage.md)]
 
@@ -21,7 +21,7 @@ Azure 数据共享支持从存储帐户进行基于快照的共享。 本文介�
 
 Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 可以将从这些源共享的数据接收到 Azure Data Lake Gen2 或 Azure Blob 存储。
 
-在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 将覆盖具有相同名称的现有文件。
+在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 快照期间将覆盖具有相同名称的现有文件。 不会在目标上删除从源删除的文件。 源中的空子文件夹不会复制到目标。 
 
 ## <a name="share-data"></a>共享数据
 
@@ -33,7 +33,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 ### <a name="prerequisites-for-source-storage-account"></a>源存储帐户的先决条件
 
-* Azure 存储帐户：如果还没有 Azure 存储帐户，可以创建 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](../storage/common/storage-account-create.md)
 * 向存储帐户进行写入的权限，此权限位于 *Microsoft.Storage/storageAccounts/write* 中。 “参与者”角色有此权限。
 * 向存储帐户添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。 
 
@@ -45,11 +45,11 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 在 Azure 资源组中创建 Azure Data Share 资源。
 
-1. 选择门户左上角的 "菜单" 按钮，然后选择 " **创建资源** (" 和 ") "。
+1. 选择门户左上角的菜单按钮，然后选择“创建资源”(+)。
 
-1. 搜索“Data Share”。**
+1. 搜索“Data Share”。 
 
-1. 选择 "数据共享"，然后选择 " **创建**"。
+1. 选择“Data Share”，然后选择“创建”  。
 
 1. 根据以下信息填写 Azure Data Share 资源的基本详细信息。 
 
@@ -63,7 +63,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 1. 选择“审阅 + 创建”，然后选择“创建”来预配数据共享帐户 。 预配新的 Data Share 帐户通常需要大约 2 分钟或更少的时间。 
 
-1. 部署完成后，选择“转到资源”。
+1. 部署完成后，选择“转到资源”。 
 
 ### <a name="create-a-share"></a>创建共享
 
@@ -71,9 +71,9 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
     ![共享数据](./media/share-receive-data.png "共享数据") 
 
-1. 选择“开始共享数据”。
+1. 选择“开始共享数据”  。
 
-1. 选择“创建”。   
+1. 选择“创建”  。   
 
 1. 填写共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 
@@ -81,7 +81,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 1. 选择“继续”。
 
-1. 若要将数据集添加到共享中，请选择 " **添加数据集**"。 
+1. 若要向共享添加数据集，请选择“添加数据集”。 
 
     ![向共享添加数据集](./media/datasets.png "数据集")
 
@@ -124,7 +124,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 ### <a name="prerequisites-for-target-storage-account"></a>目标存储帐户的先决条件
 
-* 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。 
+* 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](../storage/common/storage-account-create.md)。 
 * 向存储帐户进行写入的权限，此权限位于 *Microsoft.Storage/storageAccounts/write* 中。 “参与者”角色有此权限。 
 * 向存储帐户添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。  
 
@@ -161,7 +161,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
    这会转到数据共享帐户中的已接收共享。 
 
-   如果不想接受邀请，请选择“拒绝”。** 
+   如果不想接受邀请，请选择“拒绝”。 
 
 ### <a name="configure-received-share"></a>配置已接收共享
 按照以下步骤配置要接收数据的位置。
@@ -185,7 +185,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
    ![触发快照](./media/trigger-snapshot.png "触发快照") 
 
-1. 如果上次运行状态为“成功”，请转到目标数据存储来查看接收的数据。** 选择“数据集”，然后单击“目标路径”中的链接。**** 
+1. 如果上次运行状态为“成功”，请转到目标数据存储来查看接收的数据。 选择“数据集”，然后单击“目标路径”中的链接。 
 
    ![使用者数据集](./media/consumer-datasets.png "使用者数据集映射") 
 
@@ -194,4 +194,3 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 ## <a name="next-steps"></a>后续步骤
 已了解如何使用 Azure 数据共享服务从存储帐户共享和接收数据。 若要了解有关其他数据源的共享的详细信息，请继续阅读 [支持的数据存储](supported-data-stores.md)。
-

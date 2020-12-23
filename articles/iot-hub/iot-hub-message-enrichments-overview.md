@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767194"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541513"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>用于设备到云的 IoT 中心消息的消息根据
 
-“消息扩充”是 IoT 中心在将消息发送到指定的终结点之前，使用附加的信息为消息添加戳记的功能。**** 使用消息扩充的原因之一是包含可用于简化下游处理的数据。 例如，使用设备孪生标记扩充设备遥测消息可以减少客户对此信息发出设备孪生 API 调用所造成的负载。
+“消息扩充”是 IoT 中心在将消息发送到指定的终结点之前，使用附加的信息为消息添加戳记的功能。  使用消息扩充的原因之一是包含可用于简化下游处理的数据。 例如，使用设备孪生标记扩充设备遥测消息可以减少客户对此信息发出设备孪生 API 调用所造成的负载。
 
 ![消息扩充流](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -29,15 +29,15 @@ ms.locfileid: "91767194"
 
 * 要对其应用扩充的一个或多个[终结点](iot-hub-devguide-endpoints.md)。
 
-**键**是一个字符串。 键只能包含字母数字字符或以下特殊字符：连字符 (`-`)、下划线 (`_`)和句点 (`.`)。
+**键** 是一个字符串。 键只能包含字母数字字符或以下特殊字符：连字符 (`-`)、下划线 (`_`)和句点 (`.`)。
 
-**值**可以是以下任一示例：
+**值** 可以是以下任一示例：
 
 * 任意静态字符串。 不允许条件、逻辑、操作和函数等动态值。 例如，如果你开发由多个客户使用的 SaaS 应用程序，可为每个客户分配一个标识符，并使该标识符在应用程序中可用。 当该应用程序运行时，IoT 中心会使用客户的标识符来戳记设备遥测消息，从而可为每个客户以不同的方式处理消息。
 
-* 发送消息的 IoT 中心的名称。 此值为 *$iothubname*。
+* 发送消息的 IoT 中心的名称。 此值为 *$iothubname* 。
 
-* 设备孪生中的信息，例如其路径。 示例包括 *$twin.tags.field* 和 *$twin.tags.latitude*。
+* 设备孪生中的信息，例如其路径。 示例包括 *$twin.tags.field* 和 *$twin.tags.latitude* 。
 
    > [!NOTE]
    > 目前，只有 $iothubname、$twin.tags、$twin.properties.desired 和 $twin.properties.reported 是消息扩充支持的变量。
@@ -63,8 +63,8 @@ ms.locfileid: "91767194"
 | **方法** | **命令** |
 | ----- | -----| 
 | 门户 | [Azure 门户](https://portal.azure.com) | 请参阅 [message 根据教程](tutorial-message-enrichments.md) | 
-| Azure CLI   | [az iot 中心消息-扩充](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
-| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
+| Azure CLI   | [az iot 中心消息-扩充](/cli/azure/iot/hub/message-enrichment) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 添加消息根据不会将延迟添加到消息路由。
 
@@ -84,7 +84,7 @@ ms.locfileid: "91767194"
 
 * 对设备孪生所做的更新最长可能需要在五分钟后才反映在相应的扩充值中。
 
-* 总消息大小（包括扩充）不能超过 256 KB。 如果消息大小超过 256 KB，IoT 中心会丢弃消息。 如果丢弃了消息，可以使用 [IoT 中心指标](iot-hub-metrics.md)来识别和调试错误。 例如，可以监视 d2c.telemetry.egress.invalid。
+* 总消息大小（包括扩充）不能超过 256 KB。 如果消息大小超过 256 KB，IoT 中心会丢弃消息。 如果丢弃了消息，可以使用 [IoT 中心指标](monitor-iot-hub-reference.md#metrics)来识别和调试错误。 例如，你可以在 [路由度量值](monitor-iot-hub-reference.md#routing-metrics)中监视 ( *D2c 无效* ) 指标的 *遥测消息* 。 若要了解详细信息，请参阅 [监视 IoT 中心](monitor-iot-hub.md)。
 
 * 消息根据不适用于数字克隆更改事件。
 

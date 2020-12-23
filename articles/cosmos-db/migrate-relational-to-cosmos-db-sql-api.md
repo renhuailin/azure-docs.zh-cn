@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023136"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096740"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>将一对多关系数据迁移到 Azure Cosmos DB SQL API 帐户中
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 若要从关系数据库迁移到 Azure Cosmos DB SQL API，可能需要更改数据模型以进行优化。
 
@@ -25,7 +26,7 @@ ms.locfileid: "86023136"
 假设 SQL 数据库中包含以下两个表：Orders 和 OrderDetails。
 
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="订单详细信息" border="false" :::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="显示 SQL 数据库中 Orders 和 OrderDetails 表的屏幕截图。" border="false" :::
 
 我们希望在迁移期间，将此一对多关系合并到一个 JSON 文档中。 为此，我们可以按如下所示，使用“FOR JSON”创建一个 T-SQL 查询：
 
@@ -54,7 +55,7 @@ FROM Orders o;
 
 可通过以下方式之一解决当前的这种限制：
 
-* **使用包含两个复制活动的 Azure 数据工厂**： 
+* **使用包含两个复制活动的 Azure 数据工厂** ： 
   1. 将 SQL 中的 JSON 格式的数据提取到位于中间 Blob 存储位置的某个文本文件，并 
   2. 将 JSON 文本文件中的数据加载到 Azure Cosmos DB 中的某个容器。
 
@@ -96,38 +97,38 @@ SELECT [value] FROM OPENJSON(
 对于 SqlJsonToBlobText 复制活动的接收器，我们选择“分隔文本”，并使用动态生成的唯一文件名（例如，'@concat(pipeline().RunId,'.json'）将其指向 Azure Blob 存储中的特定文件夹。
 由于我们的文本文件实际上并不是“分隔的”，并且我们不希望使用逗号将其分析成单独的列，而是要保留双引号 (")，因此我们将“列分隔符”设置为制表符 ("\t") 或数据中未出现其他字符，并将“引号字符”设置为“无引号字符”。
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="ADF 复制":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="突出显示列分隔符和引号字符设置的屏幕截图。":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>复制活动 #2：BlobJsonToCosmos
 
 接下来，我们修改 ADF 管道：添加第二个复制活动，用于在 Azure Blob 存储中查找第一个活动创建的文本文件。 第二个复制活动将结果作为“JSON”源进行处理，将文本文件中找到的每个 JSON 行作为一个文档插入到 Cosmos DB 接收器中。
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="ADF 复制":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="突出显示 JSON 源文件和文件路径字段的屏幕截图。":::
 
 （可选）我们还将一个“删除”活动添加到了管道，以便在每次运行之前删除 /Orders/ 文件夹中剩余的所有旧文件。 现在，我们的 ADF 管道如下所示：
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="ADF 复制":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="突出显示 &quot;删除&quot; 活动的屏幕截图。":::
 
 触发上述管道后，会看到中间 Azure Blob 存储位置创建了一个文件，其中的每行包含一个 JSON 对象：
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="ADF 复制":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="显示包含 JSON 对象的已创建文件的屏幕截图。":::
 
 我们还会看到 Orders 文档，其中适当嵌入的 OrderDetails 已插入到 Cosmos DB 集合中：
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="ADF 复制":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="作为 Cosmos DB 文档一部分显示订单详细信息的屏幕截图":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
-我们还可以在[Azure Databricks](https://azure.microsoft.com/services/databricks/)中使用 Spark，将 SQL 数据库源中的数据复制到 Azure Cosmos DB 目标，而无需在 Azure Blob 存储中创建中间文本/JSON 文件。 
+我们还可以在 [Azure Databricks](https://azure.microsoft.com/services/databricks/) 中使用 Spark，将 SQL 数据库源中的数据复制到 Azure Cosmos DB 目标，而无需在 Azure Blob 存储中创建中间文本/JSON 文件。 
 
 > [!NOTE]
 > 为清楚起见，以下代码片段中的代码片段显式嵌入了虚拟数据库密码，但你应始终使用 Azure Databricks 的机密。
 >
 
-首先，创建所需的[SQL 连接器](https://docs.databricks.com/data/data-sources/sql-databases-azure.html)并将[Azure Cosmos DB 连接器](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)库连接到 Azure Databricks 群集。 重新启动群集以确保加载库。
+首先，创建所需的 [SQL 连接器](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) 并将 [Azure Cosmos DB 连接器](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) 库连接到 Azure Databricks 群集。 重新启动群集以确保加载库。
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="屏幕截图，显示在何处创建所需的 SQL 连接器并将 Azure Cosmos DB 连接器库连接到 Azure Databricks 群集。":::
 
 接下来，我们为 Scala 和 Python 提供了两个示例。 
 
@@ -150,7 +151,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="显示数据帧中的 SQL 查询输出的屏幕截图。":::
 
 接下来，我们将连接到 Cosmos DB 数据库和集合：
 
@@ -207,12 +208,12 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="突出显示用于保存到 Cosmos DB 集合的正确数组的屏幕截图。":::
 
 
 ### <a name="python"></a>Python
 
-作为替代方法，你可能需要在 Spark 中执行 JSON 转换（如果源数据库不支持 "FOR JSON" 或类似的操作），或者你可能希望对非常大的数据集使用并行操作。 这里提供了一个 PySpark 示例。 首先配置第一个单元中的源数据库和目标数据库连接：
+作为替代方法，如果源数据库不支持 "FOR JSON" 或类似的操作) ，则可能需要在 Spark (中执行 JSON 转换，或者可能希望对非常大的数据集使用并行操作。 这里提供了一个 PySpark 示例。 首先配置第一个单元中的源数据库和目标数据库连接：
 
 ```python
 import uuid
@@ -244,7 +245,7 @@ writeConfig = {
 }
 ```
 
-接下来，我们将在源数据库（在本例中为 SQL Server）查询订单和订单详细信息记录，并将结果放入 Spark Dataframes。 我们还将创建一个列表，其中包含所有订单 Id 和并行操作的线程池：
+然后，在这种情况下，我们将查询源数据库 (SQL Server 为订单和订单详细信息记录) ，并将结果放入 Spark Dataframes。 我们还将创建一个列表，其中包含所有订单 Id 和并行操作的线程池：
 
 ```python
 import json
@@ -340,5 +341,5 @@ pool.map(writeOrder, orderids)
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
 
 ## <a name="next-steps"></a>后续步骤
-* 了解 [Azure Cosmos DB 中的数据建模](https://docs.microsoft.com/azure/cosmos-db/modeling-data)
-* 了解[如何在 Azure Cosmos DB 中为数据建模和分区](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example)
+* 了解 [Azure Cosmos DB 中的数据建模](./modeling-data.md)
+* 了解[如何在 Azure Cosmos DB 中为数据建模和分区](./how-to-model-partition-example.md)

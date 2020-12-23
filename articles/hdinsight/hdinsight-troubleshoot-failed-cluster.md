@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895320"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022694"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
 
@@ -56,7 +56,7 @@ Azure 门户可以提供此信息：
 
 ![HDInsight - Azure 门户信息](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
-还可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)：
+还可以使用 [Azure CLI](/cli/azure/)：
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -90,8 +90,8 @@ HDInsight 依赖于多个 Azure 服务。 它在 Azure HDInsight 中运行虚拟
 
 #### <a name="check-azure-service-usage-limits"></a>检查 Azure 服务使用限制
 
-在启动大型群集或同时启动多个群集时，如果超出 Azure 服务限制，则群集可能发生故障。 服务限制因 Azure 订阅而异。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
-可以使用[资源管理器提高核心配额请求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)，向 Microsoft 请求增加可用 HDInsight 资源（例如 VM 核心和 VM 实例）的数量。
+在启动大型群集或同时启动多个群集时，如果超出 Azure 服务限制，则群集可能发生故障。 服务限制因 Azure 订阅而异。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+可以使用[资源管理器提高核心配额请求](../azure-portal/supportability/resource-manager-core-quotas-request.md)，向 Microsoft 请求增加可用 HDInsight 资源（例如 VM 核心和 VM 实例）的数量。
 
 #### <a name="check-the-release-version"></a>检查发行版本
 
@@ -262,7 +262,7 @@ HDInsight 群集中预配置了相关服务（例如 Hadoop、Hive、HBase 等�
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
-* [分析 HDInsight 日志](hdinsight-debug-jobs.md)
+* [分析 HDInsight 日志](./hdinsight-troubleshoot-guide.md)
 * [在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [HDInsight 上的 Apache Spark 群集的已知问题](hdinsight-apache-spark-known-issues.md)
+* [HDInsight 上的 Apache Spark 群集的已知问题](./spark/apache-spark-known-issues.md)

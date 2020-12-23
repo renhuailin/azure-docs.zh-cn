@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259124"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335207"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>教程：通过 SMB 从 Azure Data Box 复制数据（预览版）
 
@@ -50,11 +50,11 @@ ms.locfileid: "86259124"
 
 1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 选择“获取凭据”，获取与存储帐户关联的共享的访问凭据。 
 
-    ![获取共享凭据 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![获取共享凭据](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. 在“访问共享和复制数据”对话框中，复制对应于该共享的“用户名”和“密码”。  选择“确定”。
     
-    ![获取共享凭据 2](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
+    ![获取共享凭据、访问共享并复制数据](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
 3. 若要从主机访问与存储帐户关联的共享（在以下示例中为“exportbvtdataset2”），请打开命令窗口。 在命令提示符处，键入：
 
@@ -73,16 +73,16 @@ ms.locfileid: "86259124"
     The command completed successfully.
     ```
 
-4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 选择“确定”以打开文件资源管理器。
+5. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 选择“确定”以打开文件资源管理器。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![通过文件资源管理器连接到共享，输入设备 IP](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     此时应能看到文件夹形式的共享。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
+    ![通过文件资源管理器连接到共享，查看共享](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
-如果使用 Linux 客户端，请使用以下命令装载 SMB 共享。 下面的“vers”参数是 Linux 主机支持的 SMB 版本。 在下面的命令中插入相应版本。 有关 Data Box 支持的 SMB 版本，请参阅 [Linux 客户端支持的文件系统](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
+如果使用 Linux 客户端，请使用以下命令装载 SMB 共享。 下面的“vers”参数是 Linux 主机支持的 SMB 版本。 在下面的命令中插入相应版本。 有关 Data Box 支持的 SMB 版本，请参阅 [Linux 客户端支持的文件系统](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 
 
 ```console
 sudo mount -t nfs -o vers=2.1 169.254.143.85:/exportbvtdataset2_BlockBlob /home/databoxubuntuhost/databox
@@ -119,4 +119,3 @@ sudo mount -t nfs -o vers=2.1 169.254.143.85:/exportbvtdataset2_BlockBlob /home/
 
 > [!div class="nextstepaction"]
 > [将 Azure Data Box 寄送到 Microsoft](./data-box-deploy-export-picked-up.md)
-

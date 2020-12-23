@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 58002140cd6ec0cd90eefc506dc743be05e7be7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b9733eeb0d9941f6e23dcc9c0fa4dba60f4e4d30
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274455"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561023"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
 
@@ -54,7 +54,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
    - **资源组**：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的。
    - **应用程序网关名称**：输入 *myAppGateway* 作为应用程序网关的名称。
-   - **层**：选择“WAF V2”****。
+   - **层**：选择“WAF V2”。
 
      ![新建应用程序网关：基础知识](../media/application-gateway-web-application-firewall-portal/application-gateway-create-basics.png)
 
@@ -80,7 +80,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 1. 在“前端”选项卡上，验证“IP 地址类型”是否设置为“公共”    。 <br>可根据用例将前端 IP 配置为公共或专用 IP。 本示例将选择公共前端 IP。
    > [!NOTE]
-   > 对于应用程序网关 v2 SKU，只能选择**公共**前端 IP 配置。 目前尚未为此 v2 SKU 启用专用前端 IP 配置。
+   > 对于应用程序网关 v2 SKU，只能选择 **公共** 前端 IP 配置。 目前尚未为此 v2 SKU 启用专用前端 IP 配置。
 
 2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定” 。 
 
@@ -162,7 +162,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
     - **密码**：输入 *Azure123456!* 作为管理员密码。
 4. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
 5. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
-6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
+6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为 **虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
 7. 在“管理”选项卡上，将“启动诊断”设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
 8. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
 9. 等待虚拟机创建完成，然后再继续操作。
@@ -171,7 +171,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 本示例在虚拟机上安装 IIS，只为验证 Azure 是否已成功创建应用程序网关。
 
-1. 打开 [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)。 为此，请在 Azure 门户的顶部导航栏中选择“Cloud Shell”，然后从下拉列表中选择“PowerShell”。 
+1. 打开 [Azure PowerShell](../../cloud-shell/quickstart-powershell.md)。 为此，请在 Azure 门户的顶部导航栏中选择“Cloud Shell”，然后从下拉列表中选择“PowerShell”。 
 
     ![安装自定义扩展](../media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
@@ -215,22 +215,22 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 在本文中，应用程序网关使用存储帐户来存储用于检测和防范目的的数据。 也可以使用 Azure Monitor 日志或事件中心来记录数据。
 
-1. 选择 Azure 门户左上角的“创建资源”****。
+1. 选择 Azure 门户左上角的“创建资源”。
 1. 选择“存储”，然后选择“存储帐户” 。
-1. 对于“资源组”**，选择 **myResourceGroupAG** 作为资源组。
+1. 对于“资源组”，选择 **myResourceGroupAG** 作为资源组。
 1. 键入 *myagstore1* 作为存储帐户的名称。
-1. 接受其他设置的默认值，然后选择“查看 + 创建”****。
+1. 接受其他设置的默认值，然后选择“查看 + 创建”。
 1. 检查设置，然后选择“创建”。
 
 ### <a name="configure-diagnostics"></a>配置诊断
 
 配置诊断以将数据记录到 ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog 和 ApplicationGatewayFirewallLog 日志中。
 
-1. 在左侧菜单中，选择“所有资源”****，然后选择“myAppGateway”**。
+1. 在左侧菜单中，选择“所有资源”，然后选择“myAppGateway”。
 2. 在“监视”下，选择“诊断设置”。
-3. 选择“添加诊断设置”****。
+3. 选择“添加诊断设置”。
 4. 输入 *myDiagnosticsSettings* 作为诊断设置的名称。
-5. 选择“存档到存储帐户”****，然后选择“配置”**** 以选择前面创建的 *myagstore1* 存储帐户，然后选择“确定”****。
+5. 选择“存档到存储帐户”，然后选择“配置”以选择前面创建的 *myagstore1* 存储帐户，然后选择“确定”。
 6. 选择要收集和保留的应用程序网关日志。
 7. 选择“保存”  。
 
@@ -238,7 +238,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 ## <a name="create-and-link-a-web-application-firewall-policy"></a>创建并链接 Web 应用程序防火墙策略
 
-所有 WAF 自定义和设置都位于名为 WAF 策略的独立对象中。 策略必须与应用程序网关相关联。 要创建 WAF 策略，请参阅[创建 WAF 策略](create-waf-policy-ag.md)。 创建策略后，可在“关联的应用程序网关”选项卡的 WAF 策略中将策略关联到 WAF（或单个侦听器）****。 
+所有 WAF 自定义和设置都位于名为 WAF 策略的独立对象中。 策略必须与应用程序网关相关联。 要创建 WAF 策略，请参阅[创建 WAF 策略](create-waf-policy-ag.md)。 创建策略后，可在“关联的应用程序网关”选项卡的 WAF 策略中将策略关联到 WAF（或单个侦听器）。 
 
 ![关联的应用程序网关](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
 
@@ -246,9 +246,9 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 虽然不需 IIS 即可创建应用程序网关，但安装了它以验证 Azure 是否已成功创建应用程序网关。 使用 IIS 测试应用程序网关：
 
-1. 在应用程序网关的“概述”页上找到其公共 IP 地址。****![记下应用程序网关的公共 IP 地址](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
+1. 在应用程序网关的“概述”页上找到其公共 IP 地址。![记下应用程序网关的公共 IP 地址](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
 
-   或者，可选择“所有资源”，在搜索框中输入“myAGPublicIPAddress”**，然后在搜索结果中将其选中。**** Azure 会在“概览”页上显示公共 IP 地址。
+   或者，可选择“所有资源”，在搜索框中输入“myAGPublicIPAddress”，然后在搜索结果中将其选中。 Azure 会在“概览”页上显示公共 IP 地址。
 1. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 1. 检查响应。 有效响应验证应用程序网关是否已成功创建，以及是否能够成功连接后端。
 

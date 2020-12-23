@@ -4,33 +4,33 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: d8c6b79dca97de3dd46eb9c677f2c94191f276b0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0cd514c852e13b83a679821ca2d940e4ed112bd8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304078"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558167"
 ---
 使用函数触发器来响应发送到事件中心事件流的事件。 若要设置触发器，必须具有基础事件中心的读取访问权限。 触发函数时，传递给函数的消息充当字符串类型。
 
 ## <a name="scaling"></a>扩展
 
-事件触发的函数的每个实例由单个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例提供支持。 触发器（由事件中心提供支持）确保只有一个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例能够在给定分区上获得租约。
+事件触发的函数的每个实例由单个 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) 实例提供支持。 触发器（由事件中心提供支持）确保只有一个 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) 实例能够在给定分区上获得租约。
 
 例如，考虑如下所述的一个事件中心：
 
 * 10 个分区
 * 在所有分区之间平均分配 1000 个事件，每个分区中有 100 条消息
 
-首次启用函数时，只有一个函数实例。 我们将第一个函数实例命名为 `Function_0`。 `Function_0` 函数具有单个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例，此实例在所有十个分区上都有租约。 此实例从分区 0-9 读取事件。 从此时开始，将发生下列情况之一：
+首次启用函数时，只有一个函数实例。 我们将第一个函数实例命名为 `Function_0`。 `Function_0` 函数具有单个 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) 实例，此实例在所有十个分区上都有租约。 此实例从分区 0-9 读取事件。 从此时开始，将发生下列情况之一：
 
 * **不需要新的函数实例**：在 Functions 的缩放逻辑生效之前，`Function_0` 能够处理所有 1,000 个事件。 在这种情况下，所有 1,000 条消息都由 `Function_0` 处理。
 
-* **添加其他函数实例**：如果 Functions 缩放逻辑确定 `Function_0` 的消息数超出了它的处理能力，则会创建新的函数应用实例 (`Function_1`)。 此新函数也有一个关联的 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例。 基础事件中心检测到新主机实例在尝试读取消息时，会在主机实例之间对分区进行负载均衡。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
+* **添加其他函数实例**：如果 Functions 缩放逻辑确定 `Function_0` 的消息数超出了它的处理能力，则会创建新的函数应用实例 (`Function_1`)。 此新函数也有一个关联的 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) 实例。 基础事件中心检测到新主机实例在尝试读取消息时，会在主机实例之间对分区进行负载均衡。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
 
 * **额外添加 N 个函数实例**：如果 Functions 缩放逻辑确定 `Function_0` 和 `Function_1` 的消息数超出了它们的处理能力，则会创建新的 `Functions_N` 函数应用实例。  会一直创建应用，直到 `N` 大于事件中心分区数为止。 在我们的示例中，事件中心再次对分区进行负载均衡，在本例中是在实例 `Function_0`...`Functions_9` 之间进行的。
 
-缩放时，`N` 实例是一个大于事件中心分区数的数字。 此模式用于确保 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例可供用来在其他实例释放锁时在分区上获取锁。 你只需为执行函数实例时使用的资源付费。 换句话说，不需要为过度预配的资源付费。
+缩放时，`N` 实例是一个大于事件中心分区数的数字。 此模式用于确保 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) 实例可供用来在其他实例释放锁时在分区上获取锁。 你只需为执行函数实例时使用的资源付费。 换句话说，不需要为过度预配的资源付费。
 
 当所有函数执行都完成时（不管是否有错误），则会将检查点添加到关联的存储帐户。 检查点设置成功后，永远不会再次检索所有 1,000 条消息。
 
@@ -259,7 +259,7 @@ module.exports = function (context, eventHubMessages) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)**。 此函数将读取[事件元数据](#event-metadata)并记录消息。
+以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)。 此函数将读取[事件元数据](#event-metadata)并记录消息。
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
@@ -343,7 +343,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 Java [函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用 [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) 注释。 带有这些注释的参数会导致函数在事件到达时运行。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+在 Java [函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用 [EventHubTrigger](/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) 注释。 带有这些注释的参数会导致函数在事件到达时运行。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
 ---
 
@@ -366,11 +366,11 @@ Python 不支持特性。
 
 ## <a name="event-metadata"></a>事件元数据
 
-事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 元数据属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 属性来自 [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) 类。
+事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 元数据属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 属性来自 [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) 类。
 
 |属性|类型|说明|
 |--------|----|-----------|
-|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 实例。|
+|`PartitionContext`|[PartitionContext](/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 实例。|
 |`EnqueuedTimeUtc`|`DateTime`|排队时间 (UTC)。|
 |`Offset`|`string`|数据相对于事件中心分区流的偏移量。 偏移量是事件中心流中的事件的标记或标识符。 该标识符在事件中心流的分区中是惟一的。|
 |`PartitionKey`|`string`|事件数据应该发送到的分区。|

@@ -10,13 +10,13 @@ ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 04/14/2020
-ms.openlocfilehash: a9ff0219a9b811cae15f9b34ec85240d303ab841
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 12/16/2020
+ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450272"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617300"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,7 +76,7 @@ ms.locfileid: "91450272"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 以下各部分展示了如何使用 PowerShell 配置长期备份保留、查看 Azure 存储中的备份，以及从 Azure 存储中的备份进行还原。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91450272"
 > [!NOTE]
 > “SQL Server 参与者”角色没有删除 LTR 备份的权限。
 
-可以在订阅或资源组范围内授予 RBAC 权限。 但是，若要访问属于已删除服务器的 LTR 备份，必须在该服务器的“订阅”范围内授予此权限。
+可以在 *订阅* 或 *资源组* 作用域中授予 Azure RBAC 权限。 但是，若要访问属于已删除服务器的 LTR 备份，必须在该服务器的“订阅”范围内授予此权限。
 
 - Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
@@ -200,6 +200,10 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 > [!NOTE]
 > 从此处，可使用 SQL Server Management Studio 连接到已还原的数据库，执行所需任务，例如从恢复的数据库中提取一部分数据，复制到现有数据库或删除现有数据库，并将已还原的数据库重命名为现有数据库名。 请参阅[时间点还原](recovery-using-backups.md#point-in-time-restore)。
+
+## <a name="limitations"></a>限制
+- 从 LTR 备份进行还原时，"读取缩放" 属性处于禁用状态。 若要启用，请对还原的数据库进行读取缩放，并在创建数据库后对其进行更新。
+- 从 LTR 备份进行还原时，需要指定目标服务级别目标，该备份是在数据库位于弹性池中时创建的。 
 
 ## <a name="next-steps"></a>后续步骤
 

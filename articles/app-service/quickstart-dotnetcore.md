@@ -3,39 +3,40 @@ title: 快速入门：创建 C# ASP.NET Core 应用
 description: 了解如何通过部署首个 ASP.NET Core 应用，在 Azure 应用服务中运行 Web 应用。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 09/24/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
+ms.date: 11/23/2020
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aa8eb945ba77e1a4ac5215acf3bdbc12cac0c4c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d7b7d8845eda87132cbfa7981c20c39bb210aa5c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91661119"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032688"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入门：在 Azure 中创建 ASP.NET Core Web 应用
 
 ::: zone pivot="platform-windows"  
 
-本快速入门介绍如何创建第一个 ASP.NET Core Web 应用并将其部署到 [Azure 应用服务](overview.md)。 
+本快速入门介绍如何创建第一个 ASP.NET Core Web 应用并将其部署到 [Azure 应用服务](overview.md)。 应用服务支持 .NET 5.0 应用。
 
 完成后，你将获得一个 Azure 资源组，其中包含一个应用服务托管计划，以及一个部署了 Web 应用程序的应用服务。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/dotnet/)。
-- 本快速入门将应用部署到 Windows 上的应用服务。 若要部署 Linux 上的应用服务，请参阅[在应用服务中创建 .NET Core Web 应用](./quickstart-dotnetcore.md)。
 - 安装带有 ASP.NET 和 Web 开发工作负荷的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a>。
 
   如果已安装 Visual Studio 2019：
 
-  - 通过选择“帮助” > “检查更新”，在 Visual Studio 中安装最新更新。
+  - 通过选择“帮助” > “检查更新”，在 Visual Studio 中安装最新更新。 最新的更新包含 .NET 5.0 SDK。
   - 通过选择“工具” > “获取工具和功能”，添加工作负荷。
 
 
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
 遵循以下步骤在 Visual Studio 中创建 ASP.NET Core Web 应用：
+
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 1. 打开 Visual Studio 并选择“创建新项目”。
 
@@ -53,6 +54,28 @@ ms.locfileid: "91661119"
 
    ![Web 应用在本地运行](./media/quickstart-dotnetcore/web-app-running-locally.png)
 
+# <a name="net-50"></a>[.NET 5.0](#tab/net50)
+
+1. 打开 Visual Studio 并选择“创建新项目”。
+
+1. 在“创建新项目”中选择“ASP.NET Core Web 应用程序”，确认“C#”列在所选内容的语言中，然后选择“下一步”。
+
+1. 在“配置新项目”中，将 Web 应用程序项目命名为 *myFirstAzureWebApp*，然后选择“创建”。
+
+   ![配置 Web 应用项目](./media/quickstart-dotnetcore/configure-web-app-project.png)
+
+1. 对于 .NET 5.0 应用，请在下拉列表中选择“ASP.NET Core 5.0”。
+
+1. 可将任何类型的 ASP.NET Core Web 应用部署到 Azure，但对于本快速入门，请选择“ASP.NET Core Web 应用”模板。 确保“身份验证”设置为“无身份验证”，并且未选择其他选项。 然后选择“创建”。
+
+   ![创建新的 ASP.NET Core Web 应用](./media/quickstart-dotnetcore/create-aspnet-core-web-app-5.png) 
+   
+1. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以在本地运行 Web 应用。
+
+   ![Web 应用在本地运行](./media/quickstart-dotnetcore/web-app-running-locally.png)
+
+---
+
 ## <a name="publish-your-web-app"></a>发布 Web 应用
 
 若要发布 Web 应用，必须先创建并配置一个可将应用发布到的新应用服务。 
@@ -64,17 +87,21 @@ ms.locfileid: "91661119"
 
 遵循以下步骤创建应用服务并发布 Web 应用：
 
-1. 在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。 如果你尚未从 Visual Studio 登录到 Azure 帐户，请选择“添加帐户”或“登录”。 也可以创建免费 Azure 帐户。
+1. 在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。 
 
-1. 在“选择发布目标”对话框中，依次选择“应用服务”、“新建”、“创建配置文件”。
+1. 在“发布”中，选择“Azure”，然后单击“下一步”  。
 
-   ![选取发布目标](./media/quickstart-dotnetcore/pick-publish-target-vs2019.png)
+1. 你的选项取决于你是否已登录 Azure 以及是否有一个链接到 Azure 帐户的 Visual Studio 帐户。 选择“添加帐户”或“登录”以登录 Azure 订阅。 如果你已经登录，请选择所需的帐户。
 
-1. 在“应用服务:新建”对话框中为应用提供全局唯一的**名称**，可以接受默认名称，也可以输入新名称。 有效字符为：`a-z`、`A-Z`、`0-9` 和 `-`。 此**名称**用作 Web 应用的 URL 前缀，采用 `http://<app_name>.azurewebsites.net` 格式。
+   ![登录 Azure](./media/quickstart-dotnetcore/sign-in-azure-vs2019.png)
+
+1. 在“应用服务实例”的右侧，单击“+” 。
+
+   ![新的应用服务应用](./media/quickstart-dotnetcore/publish-new-app-service.png)
 
 1. 对于“订阅”，请接受列出的订阅，或从下拉列表中选择一个新订阅。
 
-1. 在“资源组”中选择“新建”。 在“新资源组名称”中，输入“myResourceGroup”并选择“确定”。 
+1. 对于“资源组”，选择“新建”。 在“新资源组名称”中，输入“myResourceGroup”并选择“确定”。 
 
 1. 对于“托管计划”，请选择“新建”。 
 
@@ -88,27 +115,27 @@ ms.locfileid: "91661119"
    
    ![创建新的托管计划](./media/quickstart-dotnetcore/create-new-hosting-plan-vs2019.png)
 
-1. 将“Application Insights”保留设置为“无”。
+1. 在 **名称** 中，输入仅包含有效字符 `a-z`、`A-Z`、`0-9` 和 `-` 的唯一应用名称。 可以接受自动生成的唯一名称。 Web 应用的 URL 为 `http://<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用名称。
 
-1. 在“应用服务:新建”对话框中，选择“创建”开始创建 Azure 资源。
+2. 选择“创建”以创建 Azure 资源。
 
-   ![创建新的应用服务](./media/quickstart-dotnetcore/create-new-app-service-vs2019.png)
+   ![创建应用资源](./media/quickstart-dotnetcore/web-app-name-vs2019.png)
 
-1. 完成向导中的操作后，选择“发布”。
+   向导完成后，便为你创建了 Azure 资源，你就可以进行发布了。
 
-   ![将 Web 应用发布到 Azure](./media/quickstart-dotnetcore/publish-web-app-vs2019.png)
+3. 选择“完成”关闭向导。
 
-   Visual Studio 会将 ASP.NET Core Web 应用发布到 Azure，并在默认浏览器中启动该应用。 
+1. 在“发布”页中，单击“发布”。 Visual Studio 将生成、打包应用并将其发布到 Azure，然后在默认浏览器中启动该应用。
 
    ![已发布 Azure 中运行的 ASP.NET Web 应用](./media/quickstart-dotnetcore/web-app-running-live.png)
 
-**祝贺你！** 你的 ASP.NET Core Web 应用已在 Azure 应用服务中实时运行！
+祝贺你！  你的 ASP.NET Core Web 应用已在 Azure 应用服务中实时运行！
 
 ## <a name="update-the-app-and-redeploy"></a>更新应用并重新部署
 
 遵循以下步骤更新并重新部署 Web 应用：
 
-1. 在**解决方案资源管理器**中你的项目下，打开“页” > “Index.cshtml”。
+1. 在 **解决方案资源管理器** 中你的项目下，打开“页” > “Index.cshtml”。
 
 1. 将整个 `<div>` 标记替换为以下代码：
 
@@ -123,11 +150,11 @@ ms.locfileid: "91661119"
 
 1. 在“发布”摘要页中选择“发布” 。
 
-   ![发布对 Web 应用的更新](./media/quickstart-dotnetcore/publish-update-to-web-app-vs2019.png)
+   <!-- ![Publish update to web app](./media/quickstart-dotnetcore/publish-update-to-web-app-vs2019.png) -->
 
-发布完成后，Visual Studio 将启动浏览器并转到 Web 应用的 URL。
+    发布完成后，Visual Studio 将启动浏览器并转到 Web 应用的 URL。
 
-![已更新 Azure 中运行的 ASP.NET Web 应用](./media/quickstart-dotnetcore/updated-web-app-running-live.png)
+    ![已更新 Azure 中运行的 ASP.NET Web 应用](./media/quickstart-dotnetcore/updated-web-app-running-live.png)
 
 ## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
@@ -168,12 +195,23 @@ Web 应用的“概述”页包含用于基本管理（例如浏览、停止、�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="set-up-your-initial-environment"></a>设置初始环境
 
-完成本快速入门教程需要：
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-* <a href="https://git-scm.com/" target="_blank">安装 Git</a>
-* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
+若要完成本快速入门教程，需先执行以下操作：
+
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>。
+* 安装最新的 Azure CLI。
+
+# <a name="net-50"></a>[.NET 5.0](#tab/net50)
+
+若要完成本快速入门教程，需先执行以下操作：
+
+* <a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">安装最新的 .NET 5.0 SDK</a>。
+* 安装最新的 Azure CLI。
+
+---
 
 [存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
@@ -196,8 +234,6 @@ dotnet new web
 
 在本地运行应用程序，以便你能了解将它部署到 Azure 时它的外观应该是什么样的。 
 
-还原 NuGet 包并运行该应用。
-
 ```bash
 dotnet run
 ```
@@ -208,76 +244,56 @@ dotnet run
 
 ![使用浏览器进行测试](media/quickstart-dotnetcore/dotnet-browse-local.png)
 
-在终端窗口中，按 **Ctrl+C** 退出 Web 服务器。 为 .NET Core 项目初始化 Git 存储库。
+[存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
-```bash
-git init
-git add .
-git commit -m "first commit"
+## <a name="sign-into-azure"></a>登录 Azure
+在终端窗口中，通过以下命令登录到 Azure：
+
+```azurecli
+az login
 ```
 
-[存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+## <a name="deploy-the-app"></a>部署应用
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+使用 `az webapp up` 命令在本地文件夹 (hellodotnetcore) 中部署代码：
 
-[存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
-
-[存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux.md)]
-
-[存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux.md)]
-
-[存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-## <a name="create-a-web-app"></a>创建 Web 应用
-
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
-
-浏览到新建的应用。 将 &lt;app name> 替换为你的应用名称  。
-
-```bash
-https://<app-name>.azurewebsites.net
+```azurecli
+az webapp up --sku F1 --name <app-name> --os-type linux
 ```
 
-新应用应该如下所示：
+- 如果无法识别 `az` 命令，请确保按照[设置初始环境](#set-up-your-initial-environment)中所述安装 Azure CLI。
+- 将 `<app-name>` 替换为在整个 Azure 中均唯一的名称（有效字符为 `a-z`、`0-9` 和 `-`）。 良好的模式是结合使用公司名称和应用标识符。
+- `--sku F1` 参数在“免费”定价层上创建 Web 应用。 省略此参数可使用更快的高级层，这会按小时计费。
+- 可以选择包含参数 `--location <location-name>`，其中 `<location-name>` 是可用的 Azure 区域。 可以运行 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。
 
-![空应用页](media/quickstart-dotnetcore/dotnet-browse-created.png)
+此命令可能需要花费几分钟时间完成。 运行时，它提供以下相关信息：创建资源组、应用服务计划和托管应用，配置日志记录，然后执行 ZIP 部署。 然后，它将显示消息“可以在 http://&lt;app-name&gt;.azurewebsites.net（这是 Azure 上应用的 URL）启动应用”。
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-<pre>
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 285 bytes | 95.00 KiB/s, done.
-Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
-remote: Deploy Async
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'd6b54472f7'.
-remote: Repository path is /home/site/repository
-remote: Running oryx build...
-remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
-remote: You can report issues at https://github.com/Microsoft/Oryx/issues
-remote:
-remote: Oryx Version      : 0.2.20200114.13, Commit: 204922f30f8e8d41f5241b8c218425ef89106d1d, ReleaseTagName: 20200114.13
-remote: Build Operation ID: |imoMY2y77/s=.40ca2a87_
-remote: Repository Commit : d6b54472f7e8e9fd885ffafaa64522e74cf370e1
-.
-.
-.
-remote: Deployment successful.
-remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/d6b54472f7e8e9fd885ffafaa64522e74cf370e1/log'
-To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
-   d87e6ca..d6b5447  master -> master
-</pre>
+![az webapp up 命令的示例输出](./media/quickstart-dotnetcore/az-webapp-up-output-3.1.png)
+
+# <a name="net-50"></a>[.NET 5.0](#tab/net50)
+
+<!-- Deploy the code in your local folder (*hellodotnetcore*) using the `az webapp up` command:
+
+```azurecli
+az webapp up --sku B1 --name <app-name> --os-type linux
+```
+
+- If the `az` command isn't recognized, be sure you have the Azure CLI installed as described in [Set up your initial environment](#set-up-your-initial-environment).
+- Replace `<app-name>` with a name that's unique across all of Azure (*valid characters are `a-z`, `0-9`, and `-`*). A good pattern is to use a combination of your company name and an app identifier.
+- The `--sku B1` argument creates the web app in the Basic pricing tier, which incurs an hourly cost. Omit this argument to use a faster premium tier, which costs more.
+- You can optionally include the argument `--location <location-name>` where `<location-name>` is an available Azure region. You can retrieve a list of allowable regions for your Azure account by running the [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) command.
+
+The command may take a few minutes to complete. While running, it provides messages about creating the resource group, the App Service plan and hosting app, configuring logging, then performing ZIP deployment. It then gives the message, "You can launch the app at http://&lt;app-name&gt;.azurewebsites.net", which is the app's URL on Azure. -->
+
+![az webapp up 命令的示例输出](./media/quickstart-dotnetcore/az-webapp-up-output-5.0.png)
+
+---
 
 [存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
+[!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>浏览到应用
 
@@ -303,12 +319,13 @@ http://<app_name>.azurewebsites.net
 await context.Response.WriteAsync("Hello Azure!");
 ```
 
-提交在 Git 中所做的更改，然后将代码更改推送到 Azure。
+保存更改，然后再次使用 `az webapp up` 命令重新部署应用：
 
-```bash
-git commit -am "updated output"
-git push azure master
+```azurecli
+az webapp up --os-type linux
 ```
+
+此命令使用本地缓存在 .azure/config 文件中的值，包括应用名称、资源组和应用服务计划。
 
 完成部署后，切换回在“浏览到应用”  步骤中打开的浏览器窗口，并点击“刷新”。
 
@@ -320,13 +337,13 @@ git push azure master
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击**应用程序服务**，然后单击 Azure 应用的名称。
+在左侧菜单中单击 **应用程序服务**，然后单击 Azure 应用的名称。
 
-:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="“应用程序服务”页面的屏幕截图，显示已选择一个示例 Web 应用。":::
+:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list-up.png" alt-text="“应用程序服务”的屏幕截图，显示已选择一个示例 Azure 应用。":::
 
 这里我们可以看到应用的“概述”页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
-![Azure 门户中的应用服务页](media/quickstart-dotnetcore/portal-app-overview.png)
+![Azure 门户中的应用服务页](media/quickstart-dotnetcore/portal-app-overview-up.png)
 
 左侧菜单提供了用于配置应用的不同页面。 
 

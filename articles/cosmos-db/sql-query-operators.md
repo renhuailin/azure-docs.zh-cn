@@ -3,17 +3,19 @@ title: Azure Cosmos DB 的 SQL 查询运算符
 description: 了解 Azure Cosmos DB 支持的 SQL 运算符，例如相等、比较和逻辑运算符。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c1409bd7f098c24efbb4196d78c6dffb6048119b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498831"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335410"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的运算符
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文详细介绍 Azure Cosmos DB 支持的各种运算符。
 
@@ -35,7 +37,7 @@ ms.locfileid: "87498831"
 
 如果标量表达式的结果为 `Undefined`，则不会将该项包含在结果中，因为 `Undefined` 不等于 `true`。
 
-例如，下面的查询在数字和字符串值之间进行比较 `Undefined` 。 因此，筛选器不包含任何结果。
+例如，以下查询在数字和字符串值之间进行的比较生成 `Undefined`。 因此，筛选器不包含任何结果。
 
 ```sql
 SELECT *
@@ -49,23 +51,23 @@ WHERE 7 = 'a'
 
 **OR 运算符**
 
-`true`当任何一个条件为时返回 `true` 。
+在任一条件为 `true` 时返回 `true`。
 
-|  | **True** | **False** | **尚未** |
+|  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |正确 |错误 |未定义 |
-| **未定义** |正确 |未定义 |未定义 |
+| **False** |True |错误 |Undefined |
+| **未定义** |True |未定义 |未定义 |
 
 **AND 运算符**
 
-`true`当两个表达式都为时返回 `true` 。
+在两个表达式均为 `true` 时返回 `true`。
 
-|  | **True** | **False** | **尚未** |
+|  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
-| **True** |正确 |False |未定义 |
-| **False** |False |错误 |错误 |
-| **未定义** |Undefined |错误 |未定义 |
+| **True** |True |False |Undefined |
+| **False** |False |False |False |
+| **未定义** |Undefined |错误 |Undefined |
 
 **NOT 运算符**
 
@@ -74,12 +76,12 @@ WHERE 7 = 'a'
 |  | **NOT** |
 | --- | --- |
 | **True** |错误 |
-| **False** |正确 |
-| **未定义** |未定义 |
+| **False** |True |
+| **未定义** |Undefined |
 
 **运算符优先级**
 
-逻辑运算符 `OR` 、 `AND` 和 `NOT` 的优先级如下：
+逻辑运算符 `OR`、`AND` 和 `NOT` 的优先级如下所示：
 
 | **“运算符”** | **Priority** |
 | --- | --- |

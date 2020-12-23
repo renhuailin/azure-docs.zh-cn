@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 04137fef640da46ca8876811e127e109a8c3d445
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378791"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348298"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>在商业应用商店中构建事务 SaaS 产品/服务的登陆页面
 
@@ -46,25 +46,25 @@ ms.locfileid: "89378791"
 
 ## <a name="create-an-azure-ad-app-registration"></a>创建 Azure AD 应用注册
 
-商业应用商店与 Azure AD 完全集成。 买家会接收到使用 Azure AD 帐户进行身份验证的 marketplace， [或 Microsoft 帐户 (MSA) ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)。 购买后，买家从商业应用商店进入登陆页面 URL，以激活和管理其 SaaS 应用程序的订阅。 必须让买家通过 Azure AD SSO 登录到你的应用程序。  (产品/服务的 [技术配置](plan-saas-offer.md#technical-information) 页中指定了登陆页 URL。
+商业应用商店与 Azure AD 完全集成。 买家会接收到使用 Azure AD 帐户进行身份验证的 marketplace， [或 Microsoft 帐户 (MSA) ](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 购买后，买家从商业应用商店进入登陆页面 URL，以激活和管理其 SaaS 应用程序的订阅。 必须让买家通过 Azure AD SSO 登录到你的应用程序。  (产品/服务的 [技术配置](plan-saas-offer.md#technical-information) 页中指定了登陆页 URL。
 
 使用该标识的第一步是确保登录页注册为 Azure AD 应用程序。 通过注册应用程序，可以使用 Azure AD 对用户进行身份验证并请求访问用户资源。 它可以被视为应用程序的定义，该定义允许服务根据应用的设置了解如何向应用程序颁发令牌。
 
 ### <a name="register-a-new-application-using-the-azure-portal"></a>使用 Azure 门户注册新应用程序
 
-若要开始操作，请按照 [注册新应用程序](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的说明进行操作。 若要让其他公司的用户访问该应用，必须在系统询问谁可以使用该应用程序时，选择一个多租户选项。
+若要开始操作，请按照 [注册新应用程序](../active-directory/develop/quickstart-register-app.md)的说明进行操作。 若要让其他公司的用户访问该应用，必须在系统询问谁可以使用该应用程序时，选择一个多租户选项。
 
-如果要查询 Microsoft Graph API，请 [将新应用程序配置为访问 Web api](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)。 当你为此应用程序选择 API 权限时， **用户** 的默认值就足以收集有关买家的基本信息，使载入过程平滑和自动执行。 不要请求标记为 **需要管理员同意**的任何 API 权限，因为这会阻止所有非管理员用户访问登录页。
+如果要查询 Microsoft Graph API，请 [将新应用程序配置为访问 Web api](../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 当你为此应用程序选择 API 权限时， **用户** 的默认值就足以收集有关买家的基本信息，使载入过程平滑和自动执行。 不要请求标记为 **需要管理员同意** 的任何 API 权限，因为这会阻止所有非管理员用户访问登录页。
 
-如果你需要将提升的权限作为载入或预配过程的一部分，请考虑使用 Azure AD 的 [增量许可](https://aka.ms/incremental-consent) 功能，以便从 marketplace 发送的所有买家最初都能够与登陆页面交互。
+如果你需要将提升的权限作为载入或预配过程的一部分，请考虑使用 Azure AD 的 [增量许可](../active-directory/azuread-dev/azure-ad-endpoint-comparison.md) 功能，以便从 marketplace 发送的所有买家最初都能够与登陆页面交互。
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>使用代码示例作为起点
 
 我们提供了几个示例应用，用于实现一个启用了 Azure AD 登录的简单网站。 在 Azure AD 中注册应用程序后，" **快速入门** " 边栏选项卡会提供常见应用程序类型和开发堆栈的列表，如图1所示。 选择与你的环境匹配的项，并按照下载和设置的说明进行操作。
 
-***图1： Azure 门户中的快速启动边栏选项卡***
+**_图1： Azure 门户 _ 中的快速入门边栏选项卡_*
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="阐释了 Azure 门户中的 快速入门 边栏选项卡。":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="阐释了 Azure 门户中的 &quot;快速入门&quot; 边栏选项卡。":::
 
 下载代码并设置开发环境后，在应用程序中更改配置设置，以反映你在前面的过程中记录的应用程序 ID、租户 ID 和客户端机密。 请注意，具体步骤会有所不同，具体取决于所使用的示例。
 
@@ -75,7 +75,7 @@ ms.locfileid: "89378791"
 - 首先，在此时间点介绍了多租户登录页应用程序，但没有联系 SaaS 履单 Api 的功能除外。 此功能将被卸载到另一应用程序，如下所述。
 - 其次，是一种应用程序，负责与 SaaS 履单 Api 进行通信。 此应用程序应为单租户，且仅供你的组织使用，可以建立访问控制列表，以仅限从此应用对 Api 的访问权限。
 
-这使解决方案能够在观察 [问题原则分离](https://docs.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles#separation-of-concerns) 的情况下工作。 例如，登陆页面使用第一个注册 Azure AD 应用来登录用户。 用户登录后，登陆页面将使用第二个 Azure AD 来请求访问令牌，以调用 SaaS 履单 API 并调用解析操作。
+这使解决方案能够在观察 [问题原则分离](/dotnet/architecture/modern-web-apps-azure/architectural-principles#separation-of-concerns) 的情况下工作。 例如，登陆页面使用第一个注册 Azure AD 应用来登录用户。 用户登录后，登陆页面将使用第二个 Azure AD 来请求访问令牌，以调用 SaaS 履单 API 并调用解析操作。
 
 ## <a name="resolve-the-marketplace-purchase-identification-token"></a>解析 marketplace 购买标识令牌
 
@@ -94,9 +94,9 @@ SaaS 履单 Api 实现了 [解析](./partner-center-portal/pc-saas-fulfillment-a
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>从 ID 令牌中编码的声明读取信息
 
-作为 [OpenID connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) 流程的一部分，在将买家发送到登陆页面时，Azure AD 会向请求添加一个 [ID 令牌](https://docs.microsoft.com/azure/active-directory/develop/id-tokens) 。 此标记包含多个基本信息，它们在激活过程中可能有用，包括此表中所述的信息。
+作为 [OpenID connect](../active-directory/develop/v2-protocols-oidc.md) 流程的一部分，在将买家发送到登陆页面时，Azure AD 会向请求添加一个 [ID 令牌](../active-directory/develop/id-tokens.md) 。 此标记包含多个基本信息，它们在激活过程中可能有用，包括此表中所述的信息。
 
-| 值 | 说明 |
+| 值 | 描述 |
 | ------------ | ------------- |
 | aud | 此令牌的目标受众。 在这种情况下，它应匹配你的应用程序 ID 并进行验证。 |
 | preferred_username | 访问用户的主用户名。 这可能是电子邮件地址、电话号码或其他标识符。 |
@@ -109,7 +109,7 @@ SaaS 履单 Api 实现了 [解析](./partner-center-portal/pc-saas-fulfillment-a
 
 ## <a name="use-the-microsoft-graph-api"></a>使用 Microsoft Graph API
 
-ID 令牌包含用于识别买方的基本信息，但您的激活过程可能需要更多详细信息（例如买方公司）来完成载入过程。 使用 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api) 请求此信息，以避免强制用户再次输入这些详细信息。 标准 **用户。读取** 权限在默认情况下包括以下信息。
+ID 令牌包含用于识别买方的基本信息，但您的激活过程可能需要更多详细信息（例如买方公司）来完成载入过程。 使用 [MICROSOFT GRAPH API](/graph/use-the-api) 请求此信息，以避免强制用户再次输入这些详细信息。 默认情况下，标准 _ *用户读取* 权限包括以下信息。
 
 | 值 | 说明 |
 | ------------ | ------------- |
@@ -122,9 +122,9 @@ ID 令牌包含用于识别买方的基本信息，但您的激活过程可能�
 | surname | 用户的姓氏。 |
 |||
 
-可以选择其他属性（例如用户公司的名称或用户在国家)  (的位置），以便在请求中包括。 有关更多详细信息，请参阅 [用户资源类型的属性](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties) 。
+可以选择其他属性（例如用户公司的名称或用户在国家)  (的位置），以便在请求中包括。 有关更多详细信息，请参阅 [用户资源类型的属性](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties) 。
 
-注册到 Azure AD 的大多数应用都授予委派的权限，以便从其公司 Azure AD 租户读取用户的信息。 对该信息 Microsoft Graph 的任何请求都必须附带用于身份验证的访问令牌。 生成访问令牌的具体步骤将取决于所使用的技术堆栈，但示例代码将包含示例。 有关详细信息，请参阅 [代表用户获取访问权限](https://docs.microsoft.com/graph/auth-v2-user)。
+注册到 Azure AD 的大多数应用都授予委派的权限，以便从其公司 Azure AD 租户读取用户的信息。 对该信息 Microsoft Graph 的任何请求都必须附带用于身份验证的访问令牌。 生成访问令牌的具体步骤将取决于所使用的技术堆栈，但示例代码将包含示例。 有关详细信息，请参阅 [代表用户获取访问权限](/graph/auth-v2-user)。
 
 > [!NOTE]
 > 具有租户 ID) 的 MSA 租户 (中的帐户 ``9188040d-6c67-4c5b-b112-36a304b66dad`` 将不会返回超过已用 ID 令牌收集的信息。 因此，您可以跳过此对这些帐户的图形 API 调用。

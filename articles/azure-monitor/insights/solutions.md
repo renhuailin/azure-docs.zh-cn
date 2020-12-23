@@ -5,13 +5,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/07/2020
-ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 10/16/2020
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085988"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186858"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
@@ -19,16 +20,16 @@ Azure Monitor 中的监视解决方案提供对特定 Azure 应用程序或服�
 
 ## <a name="use-monitoring-solutions"></a>使用监视解决方案
 
-Azure Monitor 中的 "解决方案 **概述** " 页显示 Log Analytics 工作区中安装的每个解决方案的磁贴。 若要打开此页，请在 [Azure 门户](https://ms.portal.azure.com)中转到“Azure Monitor”。 在“见解”菜单下，选择“更多”以打开“见解中心”，然后单击“Log Analytics 工作区”。
+Azure Monitor 的解决方案“概述”页针对 Log Analytics 工作区中安装的每个解决方案都会显示一个磁贴。 若要打开此页，请在 [Azure 门户](https://ms.portal.azure.com)中转到“Azure Monitor”。 在“见解”菜单下，选择“更多”以打开“见解中心”，然后单击“Log Analytics 工作区”。
 
 [![见解中心](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
 
 使用屏幕顶部的下拉框更改工作区或用于磁贴的时间范围。 单击解决方案的磁贴，以打开它的视图，其中包含它收集的数据的更详细分析。
 
-[![屏幕截图显示具有所选解决方案的 "Azure 门户" 菜单和 "解决方案" 窗格中显示的解决方案。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
+[![屏幕截图显示 Azure 门户菜单，其中已选择“解决方案”，并且“解决方案”窗格显示了多个解决方案。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-监视解决方案可以包含多种类型的 Azure 资源。可以像查看其他任何资源一样查看解决方案包含的任何资源。 例如，解决方案中包含的任何日志查询都列在[查询资源管理器](../log-query/get-started-portal.md#load-queries)中的“解决方案查询”下，可在使用[日志查询](../log-query/log-query-overview.md)执行临时分析时使用这些查询。
+监视解决方案可以包含多种类型的 Azure 资源。可以像查看其他任何资源一样查看解决方案包含的任何资源。 例如，解决方案中包含的所有日志查询都列在 [查询资源管理器](../log-query/log-analytics-tutorial.md)中的 "**解决方案查询**" 下。 使用 [日志查询](../log-query/log-query-overview.md)执行即席分析时，可以使用这些查询。
 
 ## <a name="list-installed-monitoring-solutions"></a>列出已安装的监视解决方案
 
@@ -59,6 +60,21 @@ az monitor log-analytics solution list --subscription MySubscription
 
 # List all log-analytics solutions in a resource group
 az monitor log-analytics solution list --resource-group MyResourceGroup
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+使用 [Get-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution) cmdlet 列出订阅中安装的监视解决方案。 在运行这些命令之前，请遵循[安装监视解决方案](#install-a-monitoring-solution)中找到的先决条件。
+
+```azurepowershell-interactive
+# List all log-analytics solutions in the current subscription.
+Get-AzMonitorLogAnalyticsSolution
+
+# List all log-analytics solutions for a specific subscription
+Get-AzMonitorLogAnalyticsSolution -SubscriptionId 00000000-0000-0000-0000-000000000000
+
+# List all log-analytics solutions in a resource group
+Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 ```
 
 * * *
@@ -95,11 +111,11 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
 1. 安装 Azure CLI
 
-   需要[安装 Azure CLI](/cli/azure/install-azure-cli)，然后才能运行 CLI 引用命令。  如果愿意，还可以使用 Azure Cloud Shell 来完成本文中的步骤。  Azure Cloud Shell 是一种通过浏览器使用的交互式 Shell 环境。  使用以下方法之一开始 Cloud Shell：
+   需要[安装 Azure CLI](/cli/azure/install-azure-cli)，然后才能运行 CLI 引用命令。  如果愿意，还可以使用 Azure Cloud Shell 来完成本文中的步骤。  Azure Cloud Shell 是一种可以通过浏览器使用的交互式 shell 环境。  使用下列方法之一开始使用 Cloud Shell：
 
-   - 通过转到打开 Cloud Shell [https://shell.azure.com](https://shell.azure.com)
+   - 通过转到 [https://shell.azure.com](https://shell.azure.com) 打开 Cloud Shell
 
-   - 选择菜单栏上[Azure 门户](https://portal.azure.com)中右上角的 " **Cloud Shell** " 按钮
+   - 选择 [Azure 门户](https://portal.azure.com)右上角菜单栏上的 Cloud Shell 按钮
 
 1. 登录。
 
@@ -151,6 +167,54 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
                                            Microsoft.OperationalInsights/workspaces/{WorkspaceName}"
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+### <a name="prepare-your-environment"></a>准备环境
+
+1. 安装 Azure PowerShell
+
+   在运行 Azure PowerShell 引用命令之前，需要[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果愿意，还可以使用 Azure Cloud Shell 来完成本文中的步骤。 Azure Cloud Shell 是一种可以通过浏览器使用的交互式 shell 环境。 使用下列方法之一开始使用 Cloud Shell：
+
+   - 通过转到 [https://shell.azure.com](https://shell.azure.com) 打开 Cloud Shell
+
+   - 选择 [Azure 门户](https://portal.azure.com)右上角菜单栏上的 Cloud Shell 按钮
+
+   > [!IMPORTANT]
+   > 尽管 Az.MonitoringSolutions PowerShell 模块为预览版，但必须使用 `Install-Module` cmdlet 单独安装它。 此 PowerShell 模块正式发布后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中默认提供。
+
+   ```azurepowershell-interactive
+   Install-Module -Name Az.MonitoringSolutions
+   ```
+
+1. 登录。
+
+   如果使用的是本地安装的 PowerShell，请使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 登录。 按照 PowerShell 中显示的步骤操作，完成身份验证过程。
+
+   ```azurepowershell
+   Connect-AzAccount
+   ```
+
+### <a name="install-a-solution-with-azure-powershell"></a>通过 Azure PowerShell 安装解决方案
+
+安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。 借助 Azure PowerShell，可使用 [Az.MonitoringSolutions](/powershell/module/az.monitoringsolutions) PowerShell 模块中的 cmdlet 管理工作区。 请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
+
+使用 [New-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution) cmdlet 安装监视解决方案。 方括号中的参数是可选的。
+
+```azurepowershell
+New-AzMonitorLogAnalyticsSolution -ResourceGroupName <string> -Type <string> -Location <string>
+-WorkspaceResourceId <string> [-SubscriptionId <string>] [-Tag <hashtable>]
+[-DefaultProfile <psobject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+[-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <uri>] [-ProxyCredential <pscredential>]
+[-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+下面的示例为 Log Analytics 工作区创建监视 Log Analytics 解决方案。
+
+```azurepowershell-interactive
+$workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName MyResourceGroup -Name WorkspaceName
+New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResourceGroup -Location $workspace.Location -WorkspaceResourceId $workspace.ResourceId
+```
+
 * * *
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
@@ -160,7 +224,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 * 解决方案的每项安装只能使用一个 Log Analytics 工作区和一个自动化帐户。 可将解决方案单独安装到多个工作区。
 * 如果解决方案需要自动化帐户，则必须将 Log Analytics 工作区和自动化帐户相互链接。 一个 Log Analytics 工作区只能链接到一个自动化帐户，而一个自动化帐户也只能链接到一个 Log Analytics 工作区。
 
-通过 Azure Marketplace 安装解决方案时，系统将提示你输入工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
+通过 Azure 市场安装解决方案时，系统会提示提供一个工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>验证 Log Analytics 工作区和自动化帐户之间的链接
 
@@ -185,6 +249,14 @@ az monitor log-analytics solution delete --name
                                          --resource-group
                                          [--no-wait]
                                          [--yes]
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+若要使用 Azure PowerShell 删除已安装的解决方案，请使用 [Remove-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/remove-azmonitorloganalyticssolution) cmdlet。
+
+```azurepowershell-interactive
+Remove-AzMonitorLogAnalyticsSolution  -ResourceGroupName MyResourceGroup -Name WorkspaceName
 ```
 
 * * *

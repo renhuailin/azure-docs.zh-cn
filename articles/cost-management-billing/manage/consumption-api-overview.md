@@ -8,12 +8,12 @@ ms.subservice: cost-management
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 07595eed70850ce5270a261d588a33b68ff964fe
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: b00b5a46a0cdeb95c357da521326fe2bb678490b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371926"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132612"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure 使用情况 API 概述
 
@@ -38,7 +38,7 @@ Azure 使用情况 API 允许访问以下内容：
 该 API 包括：
 
 -   **计量级别使用情况数据** - 查看各种数据，包括使用情况成本、发出费用的计量，以及与费用相关的 Azure 资源。 所有使用情况详细信息记录都映射到每日 Bucket。
--   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+-   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [Azure PowerShell cmdlet](/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 -   **筛选** - 使用以下筛选器将 API 结果集裁剪成较小的一组使用情况详细信息记录：
     - 使用结束/使用开始
     - 资源组
@@ -46,7 +46,7 @@ Azure 使用情况 API 允许访问以下内容：
 -   **数据聚合** - 通过 OData 应用表达式，按标记或筛选器属性聚合使用情况详细信息
 -   **不同产品/服务类型的使用情况** - 使用情况详细信息目前可供企业和 Web Direct 客户使用。
 
-有关详细信息，请参阅[使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails) 的技术规范。
+有关详细信息，请参阅[使用情况详细信息 API](/rest/api/consumption/usagedetails) 的技术规范。
 
 ## <a name="marketplace-charges-api"></a>市场费用 API
 
@@ -55,14 +55,14 @@ Azure 使用情况 API 允许访问以下内容：
 该 API 包括：
 
 -   **计量级别使用情况数据** - 查看各种数据，包括市场使用情况成本、发出费用的计量，以及与费用相关的资源。 所有使用情况详细信息记录都映射到每日 Bucket。
--   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+-   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [Azure PowerShell cmdlet](/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 -   **筛选** - 使用以下筛选器将 API 结果集裁剪成较小的一组市场记录：
     - 使用开始/使用结束
     - 资源组
     - 资源名称
 -   **不同产品/服务类型的使用情况** - 市场信息目前可供企业和 Web Direct 客户使用。
 
-有关详细信息，请参阅[市场费用 API](https://docs.microsoft.com/rest/api/consumption/marketplaces) 的技术规范。
+有关详细信息，请参阅[市场费用 API](/rest/api/consumption/marketplaces) 的技术规范。
 
 ## <a name="balances-api"></a>余额 API
 
@@ -70,11 +70,11 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+-   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [Azure PowerShell cmdlet](/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 -   **仅企业客户** - 此 API 只供 EA 客户使用。
     - 客户必须具有企业管理员权限才能调用此 API
 
-有关详细信息，请参阅[余额 API](https://docs.microsoft.com/rest/api/consumption/balances) 的技术规范。
+有关详细信息，请参阅[余额 API](/rest/api/consumption/balances) 的技术规范。
 
 ## <a name="budgets-api"></a>预算 API
 
@@ -82,7 +82,7 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+-   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [Azure PowerShell cmdlet](/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 -   **仅企业客户** - 此 API 只供 EA 客户使用。
 -   **可配置的通知** - 指定预算超额时要通知的用户。
 -   **基于使用情况或成本的预算** - 根据方案所需的使用情况或成本创建预算。
@@ -92,7 +92,7 @@ Azure 使用情况 API 允许访问以下内容：
     - 计量
 -   **可配置的预算时间段** - 指定预算重置的频率和预算的有效时间。
 
-有关详细信息，请参阅[预算 API](https://docs.microsoft.com/rest/api/consumption/budgets) 的技术规范。
+有关详细信息，请参阅[预算 API](/rest/api/consumption/budgets) 的技术规范。
 
 ## <a name="reservation-recommendations-api"></a>预留建议 API
 
@@ -100,13 +100,13 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+-   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [Azure PowerShell cmdlet](/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 -   **筛选** - 使用以下筛选器调整建议结果：
     - 范围
     - 回溯期间
 -   **不同产品/服务类型的预留信息** - 预留信息目前可供企业和 Web Direct 客户使用。
 
-有关详细信息，请参阅[预留建议 API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations) 的技术规范。
+有关详细信息，请参阅[预留建议 API](/rest/api/consumption/reservationrecommendations) 的技术规范。
 
 ## <a name="reservation-details-api"></a>预留详细信息 API
 
@@ -114,12 +114,12 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+-   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [Azure PowerShell cmdlet](/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 -   **筛选** - 使用以下筛选器将 API 结果集裁剪成较小的一组预留：
     - 日期范围
 -   **不同产品/服务类型的预留信息** - 预留信息目前可供企业和 Web Direct 客户使用。
 
-有关详细信息，请参阅[预留详细信息 API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails) 的技术规范。
+有关详细信息，请参阅[预留详细信息 API](/rest/api/consumption/reservationsdetails) 的技术规范。
 
 ## <a name="reservation-summaries-api"></a>预留摘要 API
 
@@ -127,23 +127,23 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+-   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [Azure PowerShell cmdlet](/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 -   **筛选** - 将每日粒度与以下筛选器配合使用，以便调整结果：
     - 使用日期
 -   **不同产品/服务类型的预留信息** - 预留信息目前可供企业和 Web Direct 客户使用。
 -   **每日或每月聚合** - 调用方可以指定其需要的预留摘要数据是采用每日粒度还是每月粒度。
 
-有关详细信息，请参阅[预留摘要 API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries) 的技术规范。
+有关详细信息，请参阅[预留摘要 API](/rest/api/consumption/reservationssummaries) 的技术规范。
 
 ## <a name="price-sheet-api"></a>价目表 API
 企业客户可以使用此 API 检索所有计量的自定义定价。 企业可以将此信息与使用情况详细信息和市场使用情况信息结合起来，根据使用情况和市场数据来计算成本。
 
 该 API 包括：
 
--   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+-   **Azure 基于角色的访问控制 (Azure RBAC)** - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](../../role-based-access-control/role-assignments-cli.md) 或 [Azure PowerShell cmdlet](/powershell/azure/) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 -   **仅企业客户** - 此 API 只供 EA 客户使用。 Web Direct 客户应使用 RateCard API 来获取定价。
 
-有关详细信息，请参阅[价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet) 的技术规范。
+有关详细信息，请参阅[价目表 API](/rest/api/consumption/pricesheet) 的技术规范。
 
 ## <a name="scenarios"></a>方案
 

@@ -1,17 +1,17 @@
 ---
 title: 查询存储 - Azure Database for MySQL
 description: 了解 Azure Database for MySQL 中的查询存储功能，该功能用于跟踪一段时间内的性能。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 70e1e5d06ef025801322e15e589d26e31f116fc3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766124"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535072"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>通过查询存储监视 Azure Database for MySQL 性能
 
@@ -36,12 +36,12 @@ Azure Database for MySQL 中的查询存储功能提供了一种方法来跟踪�
 1. 登录到 Azure 门户，选择你的 Azure Database for MySQL 服务器。
 1. 在菜单的“设置”部分中选择“服务器参数” 。
 1. 搜索 query_store_capture_mode 参数。
-1. 将值设置为 ALL，然后**保存**。
+1. 将值设置为 ALL，然后 **保存** 。
 
 若要在查询存储中启用等待统计信息，请执行以下操作：
 
 1. 搜索 query_store_wait_sampling_capture_mode 参数。
-1. 将值设置为 ALL，然后**保存**。
+1. 将值设置为 ALL，然后 **保存** 。
 
 留出最多 20 分钟以便第一批数据保存到 mysql 数据库中。
 
@@ -75,7 +75,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 以下是一些示例，说明如何使用查询存储中的等待统计信息获得有关工作负载的更多见解：
 
-| **观测** | **操作** |
+| **观测** | **Action** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。 |
 |高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。 |
@@ -102,9 +102,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 | query_store_wait_sampling_frequency | 更改等待采样的频率，以秒为单位。 5 到 300 秒。 | 30 | 5-300 |
 
 > [!NOTE]
-> 目前，**query_store_capture_mode** 将取代此配置，这意味着，**query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 都必须启用 ALL，才能正常查询等待统计信息。 如果关闭 **query_store_capture_mode**，则等待统计信息也会关闭，因为等待统计信息利用已启用的 performance_schema，以及查询存储捕获的 query_text。
+> 目前， **query_store_capture_mode** 将取代此配置，这意味着， **query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 都必须启用 ALL，才能正常查询等待统计信息。 如果关闭 **query_store_capture_mode** ，则等待统计信息也会关闭，因为等待统计信息利用已启用的 performance_schema，以及查询存储捕获的 query_text。
 
-使用  [Azure 门户](howto-server-parameters.md)或  [Azure CLI](howto-configure-server-parameters-using-cli.md) 获取或设置参数的不同值。  
+使用 [Azure 门户](howto-server-parameters.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 获取或设置参数的不同值。
 
 ## <a name="views-and-functions"></a>视图和函数
 
@@ -127,10 +127,10 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `execution_count` | bigint(20)| 是| 针对此时间戳 ID/在配置的间隔时间段内执行该查询的次数|
 | `warning_count` | bigint(20)| 是| 此查询在该时间间隔内生成的警告数|
 | `error_count` | bigint(20)| 是| 此查询在该时间间隔内生成的错误数|
-| `sum_timer_wait` | double| YES| 此查询在该时间间隔内的总执行时间|
-| `avg_timer_wait` | double| YES| 此查询在该时间间隔内的平均执行时间|
-| `min_timer_wait` | double| YES| 此查询的最小执行时间|
-| `max_timer_wait` | double| YES| 最大执行时间|
+| `sum_timer_wait` | Double| YES| 此查询在该时间间隔内的总执行时间|
+| `avg_timer_wait` | Double| YES| 此查询在该时间间隔内的平均执行时间|
+| `min_timer_wait` | Double| YES| 此查询的最小执行时间|
+| `max_timer_wait` | Double| YES| 最大执行时间|
 | `sum_lock_time` | bigint(20)| 是| 在此时间范围内对此查询执行的所有锁花费的总时间|
 | `sum_rows_affected` | bigint(20)| 是| 受影响的行数|
 | `sum_rows_sent` | bigint(20)| 是| 发送到客户端的行数|
@@ -159,7 +159,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `event_type` | varchar(32) | 是| 等待事件的类别 |
 | `event_name` | varchar(128) | 是| 等待事件的名称 |
 | `count_star` | bigint(20) | 是| 在查询间隔内采样的等待事件数 |
-| `sum_timer_wait_ms` | double | 是| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
+| `sum_timer_wait_ms` | Double | 是| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
 
 ### <a name="functions"></a>函数
 

@@ -7,12 +7,12 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: f9c7412afcc191470902cc256586f9db21f8e78c
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91852090"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126714"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>IoT Central 常见问题
 
@@ -62,7 +62,7 @@ Azure IoT Central 使用 Azure IoT 中心作为启用设备连接的云网关。
 - 设备管理。
 - 安全的设备连接。
 
-若要详细了解 IoT 中心，请参阅 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)。
+若要详细了解 IoT 中心，请参阅 [Azure IoT 中心](../../iot-hub/index.yml)。
 
 **在哪里可以了解有关设备预配服务 (DPS) 的详细信息？**
 

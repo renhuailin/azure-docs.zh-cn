@@ -8,27 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202290"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387048"
 ---
 # <a name="display-controls"></a>显示控件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**显示控件**是一个具有特殊功能的用户界面元素，可以与 Azure Active Directory B2C (Azure AD B2C) 后端服务进行交互。 它允许用户在页面上执行某些操作，这些操作在后端调用[验证技术配置文件](validation-technical-profile.md)。 显示控件显示在页面上，由[自断言技术配置文件](self-asserted-technical-profile.md)引用。
+**显示控件** 是一个具有特殊功能的用户界面元素，可以与 Azure Active Directory B2C (Azure AD B2C) 后端服务进行交互。 它允许用户在页面上执行某些操作，这些操作在后端调用[验证技术配置文件](validation-technical-profile.md)。 显示控件显示在页面上，由[自断言技术配置文件](self-asserted-technical-profile.md)引用。
 
 下图展示了一个自断言注册页面，其中包含两个用于验证主要电子邮件地址和辅助电子邮件地址的显示控件。
 
 ![呈现了显示控件的示例](media/display-controls/display-control-email.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -55,9 +53,9 @@ ms.locfileid: "85202290"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** 用于预填充要从用户那里收集的声明的值。 |
-| DisplayClaims | 0:1 | **DisplayClaims** 用于表示要从用户那里收集的声明。 |
-| OutputClaims | 0:1 | **OutputClaims** 用于表示要暂时为此 **DisplayControl** 保存的声明。 |
+| InputClaims | 0:1 | **InputClaims** 用于预填充要从用户那里收集的声明的值。 有关详细信息，请参阅 [InputClaims](technicalprofiles.md#input-claims) 元素。 |
+| DisplayClaims | 0:1 | **DisplayClaims** 用于表示要从用户那里收集的声明。 有关详细信息，请参阅 [DisplayClaim](technicalprofiles.md#displayclaim) 元素。|
+| OutputClaims | 0:1 | **OutputClaims** 用于表示要暂时为此 **DisplayControl** 保存的声明。 有关详细信息，请参阅 [OutputClaims](technicalprofiles.md#output-claims) 元素。|
 | 操作 | 0:1 | **Actions** 用于列出要针对在前端发生的用户操作调用的验证技术配置文件。 |
 
 ### <a name="input-claims"></a>输入声明
@@ -78,9 +76,9 @@ ms.locfileid: "85202290"
 
 每种类型的显示控件都需要一组不同的显示声明、[输出声明](#output-claims)，以及要执行的[操作](#display-control-actions)。
 
-与在[自断言技术配置文件](self-asserted-technical-profile.md#display-claims)中定义的**显示声明**类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个**操作**所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
+与在 [自断言技术配置文件](self-asserted-technical-profile.md#display-claims)中定义的 **显示声明** 类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个 **操作** 所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
 
-某些显示声明是某些类型的显示控件所必需的。 例如，**VerificationCode** 是 **VerificationControl** 类型的显示控件所必需的。 请使用 **ControlClaimType** 属性指定为该必需声明指定了哪个 DisplayClaim。 例如：
+某些显示声明是某些类型的显示控件所必需的。 例如，**VerificationCode** 是 **VerificationControl** 类型的显示控件所必需的。 请使用 **ControlClaimType** 属性指定为该必需声明指定了哪个 DisplayClaim。 例如： 。
 
 ```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -88,17 +86,100 @@ ms.locfileid: "85202290"
 
 ### <a name="output-claims"></a>输出声明
 
-显示控件的**输出声明**不会发送到下一个业务流程步骤。 它们仅暂时保存以用于当前显示控件会话。 这些暂时声明可在同一显示控件的不同操作之间共享。
+显示控件的 **输出声明** 不会发送到下一个业务流程步骤。 它们仅暂时保存以用于当前显示控件会话。 这些暂时声明可在同一显示控件的不同操作之间共享。
 
 若要将输出声明传播到下一个业务流程步骤，请使用引用此显示控件的实际自断言技术配置文件的 **OutputClaims**。
 
 ### <a name="display-control-actions"></a>显示控件操作
 
-显示控件的**操作**是用户在客户端（浏览器）执行特定操作时在 Azure AD B2C 后端发生的过程。 例如，当用户选择页面上的某个按钮时要执行的验证。
+显示控件的 **操作** 是用户在客户端（浏览器）执行特定操作时在 Azure AD B2C 后端发生的过程。 例如，当用户选择页面上的某个按钮时要执行的验证。
 
-操作定义**验证技术配置文件**的列表。 它们用于验证显示控件的部分或全部显示声明。 验证技术配置文件将验证用户输入，并可能向用户返回错误。 可以在显示控件操作中使用 **ContinueOnError**、**ContinueOnSuccess** 和 **Preconditions**，使用方式类似于在自断言技术配置文件中的[验证技术配置文件](validation-technical-profile.md)中使用它们的方式。
+操作定义 **验证技术配置文件** 的列表。 它们用于验证显示控件的部分或全部显示声明。 验证技术配置文件将验证用户输入，并可能向用户返回错误。 可以在显示控件操作中使用 **ContinueOnError**、**ContinueOnSuccess** 和 **Preconditions**，使用方式类似于在自断言技术配置文件中的 [验证技术配置文件](validation-technical-profile.md)中使用它们的方式。
 
-下面的示例根据用户选择的 **mfaType** 声明通过电子邮件或短信来发送代码。
+#### <a name="actions"></a>操作
+
+Actions 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| 操作 | 1:n | 要执行的操作的列表。 |
+
+#### <a name="action"></a>操作
+
+Action 元素包含以下属性：
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| ID | 是 | 操作的类型。 可能的值：`SendCode` 或 `VerifyCode`。 `SendCode` 值向用户发送代码。 此操作可能包含两个验证技术配置文件：一个用于生成代码，另一个用于发送代码。 `VerifyCode` 值验证用户在输入文本框中键入的代码。 |
+
+Action 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| ValidationClaimsExchange | 1:1 | 用于验证引用技术配置文件的部分或所有显示声明的技术配置文件的标识符。 被引用技术配置文件的所有输入声明必须出现在引用技术配置文件的显示声明中。 |
+
+#### <a name="validationclaimsexchange"></a>ValidationClaimsExchange
+
+ValidationClaimsExchange 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| ValidationTechnicalProfile | 1:n | 要用于验证引用技术配置文件的部分或所有显示声明的技术配置文件。 |
+
+ValidationTechnicalProfile 元素包含以下属性：
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| ReferenceId | 是 | 已在策略或父策略中定义的技术配置文件的标识符。 |
+|ContinueOnError|否| 指示在此验证技术配置文件引发错误时，任何后续验证技术配置文件是否应继续进行验证。 可能的值：`true` 或 `false`（默认值，进一步验证配置文件的处理会停止，并且返回错误）。 |
+|ContinueOnSuccess | 否 | 指示在此验证技术配置文件成功时，任何后续验证配置文件是否应继续进行验证。 可能的值：`true` 或 `false`。 默认值是 `true`，表示进一步验证配置文件的处理会继续进行。 |
+
+ValidationTechnicalProfile 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| Preconditions | 0:1 | 为执行验证技术配置文件而必须满足执行的前置条件的列表。 |
+
+Precondition 元素包含以下属性：
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| `Type` | 是 | 要对前置条件执行的检查或查询的类型。 可能的值：`ClaimsExist` 或 `ClaimEquals`。 如果指定的声明存在于用户的当前声明集中，则 `ClaimsExist` 指定应执行的操作。 如果指定的声明存在并且其值等于指定的值，则 `ClaimEquals` 指定应执行的操作。 |
+| `ExecuteActionsIf` | 是 | 指示在测试为 true 或 false 时是否应执行前置条件中的操作。 |
+
+Precondition 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| Value | 1:n | 检查使用的数据。 如果此检查的类型是 `ClaimsExist`，则此字段指定要进行查询的 ClaimTypeReferenceId。 如果检查的类型是 `ClaimEquals`，则此字段指定要进行查询的 ClaimTypeReferenceId。 指定要在另一个值元素中检查的值。|
+| 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 Action 的值设置为 `SkipThisValidationTechnicalProfile`，它指定不应执行关联的验证技术配置文件。 |
+
+以下示例使用 [Azure AD SSPR 技术配置文件](aad-sspr-technical-profile.md)发送和验证电子邮件地址。
+
+```xml
+<DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
+  <InputClaims></InputClaims>
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="email" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="verificationCode" ControlClaimType="VerificationCode" Required="true" />
+  </DisplayClaims>
+  <OutputClaims></OutputClaims>
+  <Actions>
+    <Action Id="SendCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-SendCode" />
+      </ValidationClaimsExchange>
+    </Action>
+    <Action Id="VerifyCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-VerifyCode" />
+      </ValidationClaimsExchange>
+    </Action>
+  </Actions>
+</DisplayControl>
+```
+
+以下示例根据用户选择的具有前提条件的 mfaType 声明通过电子邮件或短信来发送代码。
 
 ```xml
 <Action Id="SendCode">
@@ -141,3 +222,10 @@ ms.locfileid: "85202290"
     <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
     <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+有关使用显示控件的示例，请参阅： 
+
+- [通过 Mailjet 进行自定义电子邮件验证](custom-email-mailjet.md)
+- [通过 SendGrid 进行自定义电子邮件验证](custom-email-sendgrid.md)

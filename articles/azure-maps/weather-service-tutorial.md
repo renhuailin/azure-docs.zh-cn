@@ -1,33 +1,37 @@
 ---
-title: 教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接 | Microsoft Azure Maps
-description: 本教程介绍了如何使用 Azure Notebooks (Python) 将传感器数据与 Microsoft Azure Maps 天气服务提供的天气预报数据相联接。
+title: 教程：结合使用 Azure Notebooks (Python) 与 Microsoft Azure Maps，将传感器数据与天气预报数据相联接
+description: 本教程介绍如何使用 Azure Notebooks (Python) 将传感器数据与 Microsoft Azure Maps 天气服务提供的天气预报数据相联接。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/29/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6d2ede8ab49b22a22d8959ce296182a2210640d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851639"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905462"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接
 
-风力发电是可以替代化石燃料的，有助于应对气候变化的一种能源。 因为风天生就不稳定，所以风力发电运营商需要建立机器学习 (ML) 模型来预测风力发电能力。 为满足电力需求，保证电网稳定运行，需要进行此预测。 本教程逐步讲解如何将 Azure Maps 天气预报数据与用于天气读数的演示数据结合使用。 可以通过调用 Azure Maps 天气服务来请求天气预报数据。
+> [!IMPORTANT]
+> Azure Maps 天气服务目前以公共预览版提供。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+风力发电是可以替代化石燃料的，有助于应对气候变化的一种能源。 因为风天生就不稳定，所以风力发电运营商需要建立机器学习 (ML) 模型来预测风力发电能力。 为满足电力需求，保证电网稳定运行，需要进行此预测。 本教程逐步讲解如何将 Azure Maps 天气预报数据与用于天气读数的演示数据结合使用。 可以通过调用 Azure Maps 天气服务（预览版）来请求天气预报数据。
 
 在本教程中，将：
 
 > [!div class="checklist"]
-> * 在云中的 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) 中处理数据文件。
+> * 在云中的 [Azure Notebooks](../notebooks/index.yml) 中处理数据文件。
 > * 从该文件加载演示数据。
 > * 在 Python 中调用 Azure Maps REST API。
 > * 在地图上呈现位置数据。
-> * 使用 Azure Maps 的[每日预报](https://aka.ms/AzureMapsWeatherDailyForecast)天气数据来扩充演示数据。
+> * 使用 Azure Maps 的[每日预报](/rest/api/maps/weather/getdailyforecastpreview)天气数据来扩充演示数据。
 > * 在图中绘制预报数据。
 
 
@@ -41,7 +45,7 @@ ms.locfileid: "87851639"
 
 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
-若要熟悉 Azure Notebooks 并了解如何开始使用它，请参考[创建 Azure 笔记本](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)中的说明。
+若要熟悉 Azure Notebooks 并了解如何开始使用它，请参考[创建 Azure 笔记本](./tutorial-ev-routing.md#create-an-azure-notebooks-project)中的说明。
 
 > [!Note]
 > 可以从 [Maps 天气 Jupyter 笔记本存储库](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)下载此项目的 Jupyter 笔记本文件。
@@ -68,7 +72,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>请求每日预报数据
 
-在我们的方案中，我们希望请求每个传感器位置的每日预报数据。 以下脚本调用 Azure Maps 天气服务的[每日预报 API](https://aka.ms/AzureMapsWeatherDailyForecast)。 此 API 返回每个风力涡轮机在未来 15 天（自当前日期算起）的每日天气预报。
+在我们的方案中，我们希望请求每个传感器位置的每日预报数据。 以下脚本调用 Azure Maps 天气服务（预览版）的[每日预报 API](/rest/api/maps/weather/getdailyforecastpreview)。 此 API 返回每个风力涡轮机在未来 15 天（自当前日期算起）的每日天气预报。
 
 
 ```python
@@ -82,7 +86,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps weather service to get daily forecast data for 15 days from current date
+# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):
@@ -107,7 +111,7 @@ for i in range(0, len(coords), 2):
 await session.close()
 ```
 
-以下脚本通过调用 Azure Maps [获取地图图像服务](https://docs.microsoft.com/rest/api/maps/render/getmapimage)在地图上呈现涡轮机位置。
+以下脚本通过调用 Azure Maps [获取地图图像服务](/rest/api/maps/render/getmapimage)在地图上呈现涡轮机位置。
 
 ```python
 # Render the turbine locations on the map by calling the Azure Maps Get Map Image service
@@ -182,18 +186,20 @@ windsPlot.set_ylabel("Wind direction")
 
 ![风速图](./media/weather-service-tutorial/speed-date-plot.png) ![风向图](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
-
-## <a name="next-steps"></a>后续步骤
-
 在本教程中，你已了解了如何调用 Azure Maps REST API 来获取天气预报数据。 你还了解了如何在图表上将数据可视化。
 
-若要详细了解如何在 Azure Notebooks 中调用 Azure Maps REST API，请参阅[使用 Azure Notebooks 规划电动车路线](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing)。
+若要详细了解如何在 Azure Notebooks 中调用 Azure Maps REST API，请参阅[使用 Azure Notebooks 规划电动车路线](./tutorial-ev-routing.md)。
 
 若要了解本教程中使用的 Azure Maps API，请参阅：
 
-* [每日预报](https://aka.ms/AzureMapsWeatherDailyForecast)
-* [呈现器 - 获取地图图像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [每日预报](/rest/api/maps/weather/getdailyforecastpreview)
+* [呈现器 - 获取地图图像](/rest/api/maps/render/getmapimage)
 
-有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)。
+有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](./consumption-model.md)。
 
-若要详细了解 Azure Notebooks，请参阅 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)。
+## <a name="next-steps"></a>后续步骤
+
+若要详细了解 Azure Notebooks，请参阅：
+
+> [!div class="nextstepaction"]
+> [Azure Notebook](../notebooks/index.yml)

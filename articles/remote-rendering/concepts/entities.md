@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: bfcfa4c5ed57489c56ebf845d238198944150a96
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613923"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202882"
 ---
 # <a name="entities"></a>实体
 
@@ -139,10 +139,10 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # 实体类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
-* [C # RemoteManager CreateEntity ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
-* [C + + 实体类](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
-* [C + + RemoteManager：： CreateEntity ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
+* [C # 实体类](/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C # RemoteManager CreateEntity ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C + + 实体类](/cpp/api/remote-rendering/entity)
+* [C + + RemoteManager：： CreateEntity ( # B1 ](/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>后续步骤
 

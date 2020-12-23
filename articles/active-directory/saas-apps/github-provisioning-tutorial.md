@@ -1,21 +1,21 @@
 ---
-title: 教程：适用于 GitHub 的用户预配-Azure AD
+title: 教程：GitHub 的用户预配 - Azure AD
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 GitHub 和取消其预配。
 services: active-directory
-author: ArvindHarinder1
+author: Zhchia
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
-ms.date: 03/27/2019
-ms.author: arvinh
-ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 10/21/2020
+ms.author: Zhchia
+ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857528"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359256"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教程：为 GitHub 配置自动用户预配
 
@@ -27,13 +27,13 @@ ms.locfileid: "91857528"
 
 * Azure Active Directory 租户
 * 一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织
-* GitHub 中具有组织管理员权限的用户帐户
-* [为 GitHub 企业云组织配置的 SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
-* 确保为你的组织提供了 OAuth 访问权限，如[此处](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述
-* 仅当在组织级别启用了 SSO 时，才支持 SCIM 预配到单个组织
+* GitHub 中具有组织的管理员权限的用户帐户
+* [为 GitHub Enterprise Cloud 组织配置的 SAML](./github-tutorial.md)
+* 请确保已为组织提供 OAuth 访问权限，如[此处](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述
+* 仅在组织级别启用 SSO 时，才支持单个组织的 SCIM 预配
 
 > [!NOTE]
-> Azure AD 预配集成依赖于 github [SCIM API](https://developer.github.com/v3/scim/)，该 API 可供 github 企业级 [云](https://help.github.com/articles/github-s-products/#github-enterprise) 客户在 [github 企业计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)中使用。
+> Azure AD 预配集成依赖于可供 [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) 客户在 [GitHub 企业计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)中使用的 [GitHub SCIM API](https://developer.github.com/v3/scim/)。
 
 ## <a name="assigning-users-to-github"></a>将用户分配到 GitHub
 
@@ -47,7 +47,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * 建议将单个 Azure AD 用户分配到 GitHub 以测试预配配置。 其他用户和/或组可以稍后分配。
 
-* 如果将用户分配到 GitHub，必须在分配对话框中选择“用户”角色或其他特定于应用程序的有效角色（如果有）****。 “默认访问权限”角色不可用于预配，将跳过这些用户****。
+* 如果将用户分配到 GitHub，必须在分配对话框中选择“用户”角色或其他特定于应用程序的有效角色（如果有）。 “默认访问权限”角色不可用于预配，将跳过这些用户。
 
 ## <a name="configuring-user-provisioning-to-github"></a>为 GitHub 配置用户预配
 
@@ -55,39 +55,39 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>在 Azure AD 中为 GitHub 配置自动用户帐户预配
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”**** 部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-2. 如果已为 GitHub 配置单一登录，请使用搜索字段搜索 GitHub 实例。 否则，请选择“添加”并在应用程序库中搜索“GitHub”********。 从搜索结果中选择 GitHub，并将其添加到应用程序列表。
+2. 如果已为 GitHub 配置单一登录，请使用搜索字段搜索 GitHub 实例。 否则，请选择“添加”并在应用程序库中搜索“GitHub”。 从搜索结果中选择 GitHub，并将其添加到应用程序列表。
 
-3. 选择 GitHub 实例，并选择“预配”选项卡****。
+3. 选择 GitHub 实例，并选择“预配”选项卡。
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![GitHub 预配](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. 在“管理员凭据”**** 部分下，单击“授权”****。 此操作将在新的浏览器窗口中打开“GitHub 授权”对话框。 请注意，你需要确保已获得批准访问权限。 按 [此处](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述的说明进行操作。
+5. 在“管理员凭据”部分下，单击“授权”。 此操作将在新的浏览器窗口中打开“GitHub 授权”对话框。 请注意，需要确保已获得批准可以进行访问授权。 按照[此处](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)的说明进行操作。
 
-6. 在新窗口中，使用管理员帐户登录到 GitHub。 在显示的授权对话框中，选择要启用预配的 GitHub 团队，并选择“授权”****。 完成后，返回到 Azure 门户完成预配配置。
+6. 在新窗口中，使用管理员帐户登录到 GitHub。 在显示的授权对话框中，选择要启用预配的 GitHub 团队，并选择“授权”。 完成后，返回到 Azure 门户完成预配配置。
 
     ![屏幕截图显示 GitHub 的登录页。](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. 在 Azure 门户中，输入“租户 URL”并单击“测试连接”，确保 Azure AD 可以连接到 GitHub 应用********。 如果连接失败，请确保 GitHub 帐户具有管理员权限，且输入的“租户 URl”正确无误，然后再次尝试“授权”步骤（可以按规则：`https://api.github.com/scim/v2/organizations/<Organization_name>` 来编写“租户 URL”，可在 GitHub 帐户：“设置” > “组织”下找到你的组织）****************。
+7. 在 Azure 门户中，输入“租户 URL”并单击“测试连接”，确保 Azure AD 可以连接到 GitHub 应用。 如果连接失败，请确保 GitHub 帐户具有管理员权限，且输入的“租户 URl”正确无误，然后再次尝试“授权”步骤（可以按规则：`https://api.github.com/scim/v2/organizations/<Organization_name>` 来编写“租户 URL”，可在 GitHub 帐户：“设置” > “组织”下找到你的组织）。
 
-    ![屏幕截图显示 GitHub 中的组织页面。](./media/github-provisioning-tutorial/GitHub3.png)
+    ![屏幕截图显示 GitHub 中的组织页。](./media/github-provisioning-tutorial/GitHub3.png)
 
-8. 在“通知电子邮件”字段中输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”****。
+8. 在“通知电子邮件”字段中输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
 
-9. 单击“保存”。
+9. 单击“ **保存**”。
 
-10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GitHub”****。
+10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GitHub”。
 
-11. 在“属性映射”部分，查看从 Azure AD 同步到 GitHub 的用户属性****。 选为“匹配”属性的特性用于匹配 GitHub 中的用户帐户以执行更新操作****。 选择“保存”按钮以提交任何更改。
+11. 在“属性映射”部分，查看从 Azure AD 同步到 GitHub 的用户属性。 选为“匹配”属性的特性用于匹配 GitHub 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-12. 要为 GitHub 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”************
+12. 要为 GitHub 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-13. 单击“保存”。
+13. 单击“ **保存**”。
 
-此操作会对“用户和组”部分中分配到 GitHub 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务执行的所有操作****。
+此操作会对“用户和组”部分中分配到 GitHub 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 

@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 84cbdfbf4d34e1779fc119e4b6a92a3bbec88bdc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0ad73d7086a2066517c24a8b10a7f54503535942
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925124"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490289"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>教程：使用适用于 C# 的必应视觉搜索 SDK 裁剪图像
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 使用必应视觉搜索 SDK，可以在查找相似的在线图像之前裁剪图像。 此应用程序从包含多个人物的图像中裁剪单个人物，并返回包含在线找到的相似图像的搜索结果。
 
@@ -114,4 +119,4 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 > [创建视觉搜索单页 Web 应用](tutorial-bing-visual-search-single-page-app.md)
 
 ## <a name="see-also"></a>另请参阅
-> [什么是必应视觉搜索 API？](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)
+> [什么是必应视觉搜索 API？](./overview.md)

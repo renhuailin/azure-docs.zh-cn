@@ -1,17 +1,17 @@
 ---
 title: 管理存储过程 - Azure Database for MySQL
 description: 了解 Azure Database for MySQL 中的哪些存储过程可用于帮助你配置数据传入复制、设置时区和终止查询。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e67130516410f64c32eadbf15857ca3ec4c976fc
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 7a1aa061bb8c8be3a676e0e5bb690b2a9749b6c8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542472"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536126"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL 管理存储过程
 
@@ -31,7 +31,7 @@ Azure Database for MySQL 服务器上提供了可帮助管理 MySQL 服务器的
 |*mysql.az_replication _remove_master*|空值|空值|删除源和副本之间的复制关系。|
 |mysql.az_replication_skip_counter|空值|空值|跳过一个复制错误。|
 
-若要设置 Azure Database for MySQL 中的源和副本之间的数据传入复制，请参阅 [如何配置数据传入复制](howto-data-in-replication.md)。
+若要在 Azure Database for MySQL 中的源和副本之间设置数据传入复制，请参阅[如何配置数据传入复制](howto-data-in-replication.md)。
 
 ## <a name="other-stored-procedures"></a>其他存储过程
 

@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058744"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700668"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure 负载均衡器的 IPv6 概述
 
 
 >[!NOTE] 
->此内容已由[适用于 Azure VNet 的 IPv6 概述](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)取代。 Azure 建议新的 IPv6 部署使用适用于 Azure 虚拟网络的新 IPv6 功能。
+>此内容已由[适用于 Azure VNet 的 IPv6 概述](../virtual-network/ipv6-overview.md)取代。 Azure 建议新的 IPv6 部署使用适用于 Azure 虚拟网络的新 IPv6 功能。
 
 >[!NOTE]
->Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)。
+>Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](./load-balancer-overview.md)。
 
 面向 Internet 的基本 SKU 负载均衡器可以使用 IPv6 地址进行部署。 除了 IPv4 连接以外，这还可以实现以下功能：
 
@@ -77,9 +77,9 @@ ms.locfileid: "90058744"
 * Azure VM 无法通过 IPv6 连接到其他 VM、其他 Azure 服务或本地设备， 只能通过 IPv6 来与 Azure 负载均衡器通信。 但是，它们可以使用 IPv4 来与其他这些资源通信。
 * 双堆栈 (IPv4+IPv6) 部署支持 IPv4 的网络安全组 (NSG) 保护。 NSG 不适用于 IPv6 终结点。
 * VM 上的 IPv6 终结点不会直接在 Internet 上公开， 而是位于负载均衡器的后面。 通过 IPv6 只能访问负载均衡器规则中指定的端口。
-* **当前不支持**更改 IPv6 的 IdleTimeout 参数。 该参数默认为 4 分钟。
-* **当前不支持**更改 IPv6 的 loadDistributionMethod 参数。
-* 基本负载均衡器的 IPv6 已锁定到 **动态** SKU。  标准负载均衡器的 IPv6 已锁定到 **静态** SKU。
+* **当前不支持** 更改 IPv6 的 IdleTimeout 参数。 该参数默认为 4 分钟。
+* **当前不支持** 更改 IPv6 的 loadDistributionMethod 参数。
+* 基本负载均衡器的 IPv6 已锁定为动态 SKU。  标准负载均衡器的 IPv6 已锁定为静态 SKU。
 * 不支持 NAT64（将 IPv6 转换为 IPv4）。
 * 当前不支持将引用 IPv6 子网的辅助 NIC 附加到后端池  。
 

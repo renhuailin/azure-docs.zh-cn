@@ -7,17 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
-ms.custom: seodec18
-ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: seodec18, "seo-nov-2020"
+ms.openlocfilehash: c8c479050b434904de57397e5e7d73594090e031
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510277"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336108"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。
+Azure Cosmos DB 中的 "更改源" 是按其出现顺序对容器所做的更改的持久记录。 Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 保存的更改可以以异步和增量方式进行处理，并且输出可以分布在一个或多个使用者上进行并行处理。
 
 详细了解[更改源设计模式](change-feed-design-patterns.md)。
 
@@ -56,7 +57,7 @@ Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器�
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>更改源和 _etag、_lsn 或 _ts
 
-_etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是仅为更改源添加的批 ID；它表示事务 ID。 许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是内部标识符，用于并发控制。 _Etag 属性说明项的版本，而 ETag 属性用于对源进行排序。
+_etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是仅为更改源添加的批 ID；它表示事务 ID。 许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是内部标识符，用于并发控制。 _etag 属性指示项的版本，而 ETag 属性用于对源进行排序。
 
 ## <a name="working-with-change-feed"></a>使用更改源
 

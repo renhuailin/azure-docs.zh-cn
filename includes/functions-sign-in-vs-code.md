@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
 ms.openlocfilehash: 187c900ad2fa82cfae358fc5c43ab9e08f1fc1bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408522"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008143"
 ---
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

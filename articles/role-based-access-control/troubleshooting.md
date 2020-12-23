@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/18/2020
+ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665984"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184257"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题
 
@@ -59,15 +59,16 @@ $ras.Count
     az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
 
-    如果收到错误“权限不足，无法完成操作”，则很可能是因为 Azure CLI 尝试在 Azure AD 中查找被分派人标识，但服务主体在默认情况下无法读取 Azure AD。
+    如果出现错误 "权限不足，无法完成操作"，则很可能是因为 Azure CLI 正在尝试查找 Azure AD 中的工作负责人标识，并且服务主体在默认情况下无法读取 Azure AD。
 
-    可通过两种方式解决此错误。 第一种方法是将[目录读取器](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色分配给服务主体，以便它能够读取目录中的数据。
+    可通过两种方式解决此错误。 第一种方法是将[目录读取器](../active-directory/roles/permissions-reference.md#directory-readers)角色分配给服务主体，以便它能够读取目录中的数据。
 
     第二种方法是使用 `--assignee-object-id` 参数而不是 `--assignee` 来创建角色分配。 通过使用 `--assignee-object-id`，Azure CLI 将跳过 Azure AD 查找。 你需要获取要为其分配角色的用户、组或应用程序的对象 ID。 有关详细信息，请参阅[使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)。
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+- 如果尝试删除订阅的最后一个所有者角色分配，则可能会看到错误 "无法删除最后一个 RBAC 管理员分配"。 不支持删除订阅的最后一个所有者角色分配，以避免 orphaning 订阅。 如果要取消订阅，请参阅 [取消 Azure 订阅](../cost-management-billing/manage/cancel-azure-subscription.md)。
 
 ## <a name="problems-with-custom-roles"></a>自定义角色出现问题
 
@@ -86,7 +87,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>将订阅转移到另一目录
 
-- 如果需要有关如何将订阅传输到不同 Azure AD 目录的步骤，请参阅将 [Azure 订阅转移到不同的 Azure AD 目录](transfer-subscription.md)。
+- 如需了解将订阅转移到另一 Azure AD 目录的步骤，请参阅[将 Azure 订阅转移到另一 Azure AD 目录](transfer-subscription.md)。
 - 如果将订阅转移到另一 Azure AD 目录，所有角色分配将从源 Azure AD 目录中永久删除，而不会迁移到目标 Azure AD 目录。 必须在目标目录中重新创建角色分配。 此外，还需手动重新创建 Azure 资源的托管标识。 有关详细信息，请参阅[托管标识的 FAQ 和已知问题](../active-directory/managed-identities-azure-resources/known-issues.md)。
 - 如果你是 Azure AD 全局管理员并且在目录之间转移某个订阅后对其没有访问权限，请使用“Azure 资源的访问权限管理”开关暂时[提升你的访问权限](elevate-access-global-admin.md)来获取对订阅的访问权限。
 
@@ -99,17 +100,17 @@ $ras.Count
 - 如果尝试创建资源时收到权限错误“具有此对象 id 的客户端无权在此作用域内执行操作(代码:AuthorizationFailed)”，请检查你当前登录时使用的用户是否分配有在所选作用域内对资源具有写入权限的角色。 例如，若要管理某个资源组中的虚拟机，则你应当在该资源组（或父作用域）中具有[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色。 有关每个内置角色的权限列表，请参阅 [Azure 内置角色](built-in-roles.md)。
 - 如果尝试创建或更新支持票证时收到权限错误“无权创建支持票证”，请检查你当前登录时使用的用户是否分配有具有 `Microsoft.Support/supportTickets/write` 权限的角色，例如[支持请求参与者](built-in-roles.md#support-request-contributor)。
 
-## <a name="move-resources-with-role-assignments"></a>移动资源并分配角色
+## <a name="move-resources-with-role-assignments"></a>移动具有角色分配的资源
 
-如果将已分配 Azure 角色的资源直接分配给资源 (或子资源) ，则不会移动角色分配，也不会将其变成孤立角色。 移动之后，必须重新创建角色分配。 最终，将自动删除孤立角色分配，但最佳做法是在移动资源之前删除角色分配。
+如果移动的资源具有直接分配给该资源（或子资源）的 Azure 角色，则该角色分配不会移动，将会变成孤立状态。 移动后必须重新创建角色分配。 最终会自动删除孤立的角色分配，但最好是在移动资源之前删除角色分配。
 
-有关如何移动资源的信息，请参阅 [将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+若要了解如何移动资源，请参阅[将资源移到新资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 ## <a name="role-assignments-with-identity-not-found"></a>未找到标识的角色分配
 
 在 Azure 门户的角色分配列表中，你可能会注意到安全主体（用户、组、服务主体或托管标识）列为“未找到标识”，类型为“未知” 。
 
-![Azure 角色分配中未找到标识](./media/troubleshooting/unknown-security-principal.png)
+![Azure 角色分配中列出“未找到标识”](./media/troubleshooting/unknown-security-principal.png)
 
 找不到标识的原因有两个：
 
@@ -150,7 +151,7 @@ CanDelegate        : False
 }
 ```
 
-在删除安全主体的情况下，保留这些角色分配没有问题。 如果需要，可以使用与其他角色分配相似的步骤删除这些角色分配。 有关如何删除角色分配的信息，请参阅 [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) 或 [Azure CLI](role-assignments-cli.md#remove-role-assignment)
+在删除安全主体的情况下，保留这些角色分配没有问题。 如果需要，可以使用与其他角色分配相似的步骤删除这些角色分配。 有关如何删除角色分配的信息，请参阅 [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) 或 [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 
 在 PowerShell 中，如果尝试通过对象 ID 和角色定义名称来删除角色分配，而多个角色分配与参数相匹配，则会出现错误消息：“提供的信息未映射到角色分配”。 以下输出显示了错误消息示例：
 
@@ -179,7 +180,7 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 添加或�
 
 ## <a name="web-app-features-that-require-write-access"></a>需要写访问权限的 Web 应用功能
 
-如果为用户授予单个 Web 应用的只读访问权限，某些功能可能会被禁用，这可能不是你所期望的。 以下管理功能需要对 Web 应用具有**写**访问权限（参与者或所有者），并且在任何只读方案中不可用。
+如果为用户授予单个 Web 应用的只读访问权限，某些功能可能会被禁用，这可能不是你所期望的。 以下管理功能需要对 Web 应用具有 **写** 访问权限（参与者或所有者），并且在任何只读方案中不可用。
 
 * 命令（例如启动、停止等。）
 * 更改设置（如常规配置、缩放设置、备份设置和监视设置）

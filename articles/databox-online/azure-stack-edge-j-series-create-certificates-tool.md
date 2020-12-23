@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 11/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ab9559e1e8265b3adf08b36d1a8097a00297c61a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891097"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96606984"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack 中心就绪检查程序工具为 Azure Stack Edge Pro 创建证书 
 
@@ -23,7 +23,7 @@ ms.locfileid: "90891097"
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack 集线器就绪检查程序工具
 
-使用 Azure Stack 集线器准备情况检查程序工具来创建证书签名请求 () 用于 Azure Stack 边缘 Pro 设备部署的 Csr。 你可以在为 Azure Stack Edge Pro 设备放置订单并等待设备到达后创建这些请求。 
+使用 Azure Stack 集线器准备情况检查程序工具来创建证书签名请求 () 用于 Azure Stack 边缘 Pro 设备部署的 Csr。 你可以在为 Azure Stack Edge Pro 设备下订单并等待设备到达后创建这些请求。
 
 > [!NOTE]
 > 此工具仅用于测试或开发目的，不适用于生产设备。 
@@ -37,12 +37,12 @@ ms.locfileid: "90891097"
 - VPN 证书
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 若要为 Azure Stack Edge Pro 设备部署创建 Csr，请确保： 
 
 - 你有运行 Windows 10 或 Windows Server 2016 或更高版本的客户端。 
-- 已从此系统上 [的 PowerShell 库中](https://aka.ms/AzsReadinessChecker) 下载了 Microsoft Azure Stack 集线器就绪检查器工具1.2002.1133.85。 可能需要搜索此包。 只有此版本的工具才能为 Azure Stack Edge Pro 设备创建证书。
+- 您已从该系统上 [的 PowerShell 库](https://aka.ms/AzsReadinessChecker) 下载了 Microsoft Azure Stack 集线器就绪检查器工具。
 - 你具有以下证书信息：
   - 设备名称
   - 节点序列号
@@ -56,22 +56,22 @@ ms.locfileid: "90891097"
 2. 安装 Azure Stack 集线器就绪检查程序工具。 在 PowerShell 提示符下，键入： 
 
     ```azurepowershell
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2002.1133.85 -Force
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
-    若要验证已安装的版本，请键入：  
+    若要获取已安装的版本，请键入：  
 
     ```azurepowershell
     Get-InstalledModule -Name Microsoft.AzureStack.ReadinessChecker  | ft Name, Version 
     ```
 
-3. 如果证书不存在，则为所有证书创建一个目录。 键入： 
+3. 为所有证书创建一个目录（如果尚未安装）。 类型： 
     
     ```azurepowershell
     New-Item "C:\certrequest" -ItemType Directory
     ``` 
     
-4. 若要创建证书请求，请提供以下信息。 如果要生成 VPN 证书，则其中某些输入不适用。 
+4. 若要创建证书请求，请提供以下信息。 如果要生成 VPN 证书，则其中某些输入不适用。
     
     |输入 |说明  |
     |---------|---------|
@@ -107,7 +107,7 @@ ms.locfileid: "90891097"
     ```
 
     
-5. 你会在上面的 OutputRequestPath 参数中指定的目录下找到证书请求文件。 使用参数时 `MultipleCSR` ，将看到4个文件，其中包含 `.req` 扩展名。 文件如下所示：
+5. 你会在上面的 OutputRequestPath 参数中指定的目录中找到证书请求文件。 使用参数时 `MultipleCSR` ，将看到以下四个文件，其中包含 `.req` 扩展名：
 
     
     |文件名  |证书请求的类型  |
@@ -115,17 +115,17 @@ ms.locfileid: "90891097"
     |从 `DeviceName`     |本地 web UI 证书请求      |
     |从 `NodeSerialNumber`     |节点证书请求         |
     |自 `login` 起     |Azure 资源管理器终结点证书请求       |
-    |自 `wildcard` 起     |Blob 存储证书请求;它包含通配符，因为它涵盖了你可以在设备上创建的所有存储帐户。          |
+    |自 `wildcard` 起     |Blob 存储证书申请。 它包含通配符，因为它涵盖了你可以在设备上创建的所有存储帐户。          |
     |自 `AzureStackEdgeVPNCertificate` 起     |VPN 客户端证书请求。         |
 
     还会看到一个 INF 文件夹。 这包含一个管理。 <边缘-devicename> 信息文件以明文形式说明证书详细信息。  
 
 
-6. 将这些文件提交给证书颁发机构 (内部或公用) 。 请确保你的 CA 使用生成的请求生成证书，该请求符合 [节点证书](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、 [终结点证书](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)和 [本地 UI 证书](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)的 Azure Stack Edge Pro 证书要求。
+6. 将这些文件提交给证书颁发机构 (内部或公用) 。 确保 CA 使用生成的请求生成证书，该证书符合 [节点证书](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、 [终结点证书](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)和 [本地 UI 证书](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)的 Azure Stack 边缘 Pro 证书要求。
 
 ## <a name="prepare-certificates-for-deployment"></a>为部署准备证书
 
-您从证书颁发机构获取的证书文件 (CA) 必须导入和导出，其属性与 Azure Stack Edge Pro 设备证书要求相匹配。 在生成证书签名请求的同一系统上完成以下步骤。
+从证书颁发机构获取的证书文件 (CA) 必须导入和导出，其属性与 Azure Stack Edge Pro 设备的证书要求相匹配。 在生成证书签名请求的同一系统上完成以下步骤。
 
 - 若要导入证书，请按照在 [访问 Azure Stack Edge Pro 设备的客户端上的 "导入证书](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)" 中的步骤操作。
 
@@ -142,11 +142,11 @@ ms.locfileid: "90891097"
 
     `New-AzsCertificateFolder -CertificateType AzureStackEdge -OutputPath "$ENV:USERPROFILE\Documents\AzureStackCSR"`
 
-3. 将 PFX 密码转换为安全字符串。 键入：       
+3. 将 PFX 密码转换为安全字符串。 类型：       
 
     `$pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString` 
 
-4. 接下来，验证证书。 键入：
+4. 接下来，验证证书。 类型：
 
     `Invoke-AzsCertificateValidation -CertificateType AzureStackEdge -DeviceName mytea1 -NodeSerialNumber VM1500-00025 -externalFQDN azurestackedge.contoso.com -CertificatePath $ENV:USERPROFILE\Documents\AzureStackCSR\AzureStackEdge -pfxPassword $pfxPassword`
 

@@ -3,18 +3,18 @@ title: Azure 服务总线身份验证和授权 | Microsoft Docs
 description: 使用共享访问签名 (SAS) 身份验证向服务总线验证应用程序。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066854"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517274"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 可通过两种方式验证和授权对 Azure 服务总线资源的访问：Azure Activity Directory (Azure AD) 和共享访问签名 (SAS)。 本文将详细介绍如何使用这两种类型的安全机制。 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-服务总线资源的 Azure AD 集成提供了基于角色的访问控制 (RBAC)，用于对客户端的资源访问进行细粒度控制。 可以使用基于角色的访问控制 (RBAC) 授予对安全主体（可以是用户、组或应用程序服务主体）的权限。 安全主体经 Azure AD 进行身份验证后会返回 OAuth 2.0 令牌。 令牌可用于授权访问服务总线资源（队列、主题等）的请求。
+服务总线资源 Azure AD 集成提供了 Azure 基于角色的访问控制 (Azure RBAC) ，以便对客户端访问资源进行精细控制。 可以使用 Azure RBAC 向安全主体授予权限，这可能是用户、组或应用程序服务主体。 安全主体经 Azure AD 进行身份验证后会返回 OAuth 2.0 令牌。 令牌可用于授权访问服务总线资源（队列、主题等）的请求。
 
 有关使用 Azure AD 进行身份验证的详细信息，请参阅以下文章：
 

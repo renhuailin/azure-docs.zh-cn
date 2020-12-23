@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd81e5f87aaf4a28676b79863df60b71707849e9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91305715"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656507"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入门：向 Azure Active Directory (Azure AD) 租户添加应用程序
 
@@ -55,10 +55,10 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
     :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="屏幕截图显示 SSO 类型选择器。" lightbox="media/add-application-portal/sso-types.png":::
 
     - 如果应用开发人员使用 OIDC 标准实现 SSO，则选择“注册”。 系统会显示一个设置页面。 接下来，请参阅介绍如何设置基于 OIDC 的单一登录的快速入门。
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="屏幕截图显示 SSO 类型选择器。":::
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="屏幕截图显示添加基于 OIDC 的 SSO 应用。":::
 
     - 如果应用开发人员使用 SAML 标准实现 SSO，则选择“创建”。 此时会显示一个入门页面，其中包含为组织配置应用程序所需的选项。 在表单中，可以根据组织的需要来编辑应用程序的名称。 接下来，请参阅介绍如何设置基于 SAML 的单一登录的快速入门。
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="屏幕截图显示 SSO 类型选择器。":::
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="屏幕截图显示添加基于 SAML 的 SSO 应用。":::
 
 
 > [!IMPORTANT]
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 已完成添加应用程序的操作。 接下来的快速入门介绍如何更改徽标和编辑应用程序的其他属性。
 
 > [!TIP]
-> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](/graph/application-saml-sso-configure-api)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

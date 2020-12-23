@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e0cfa4227ba5d7c38449d3cf1304add5ae5c1f
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 89abdcf4c76c92c2ed967594527d323b2cd8be32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718877"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741178"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>教程：为 Azure Active Directory 密码保护配置自定义受禁密码
 
@@ -72,7 +72,7 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 
     * 自定义受禁密码列表最多可以包含 1000 个字词。
     * 自定义禁止密码列表不区分大小写。
-    * 自定义受禁密码列表考虑常见的似形字符，例如“o”和“0”，或者“a”和“@”。
+    * 自定义受禁密码列表考虑常见的似形字符，例如“o”和“0”，或者“a”和“\@”。
     * 最小字符串长度为 4 个字符，最大字符串长度为 16 个字符。
 
     按以下示例所示指定自己的自定义受禁密码
@@ -124,4 +124,4 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 > * 使用受禁密码测试密码更改
 
 > [!div class="nextstepaction"]
-> [启用基于风险的 Azure 多重身份验证](./tutorial-enable-azure-mfa.md)
+> [启用基于风险的 Azure AD 多重身份验证](./tutorial-enable-azure-mfa.md)

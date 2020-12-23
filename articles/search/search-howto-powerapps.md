@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 11/17/2020
+ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530686"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008559"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教程：从 Power Apps 查询认知搜索索引
 
@@ -33,7 +33,7 @@ ms.locfileid: "90530686"
 
 * [Power Apps 帐户](https://make.powerapps.com)
 
-* [Hotels-sample 索引](search-get-started-portal.md)
+* 搜索服务上托管的 [Hotels-sample 索引](search-get-started-portal.md)
 
 * [查询 API 密钥](search-security-api-keys.md#find-existing-keys)
 
@@ -76,9 +76,9 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
 
    * 对于“URL”，请输入对你的搜索索引的示例查询（`search=*` 返回所有文档，`$select=` 可让你选择字段）。 “API 版本”是必需的。 完全指定后，URL 可能如下所示：`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
-   * 对于“标头”，请键入 `Content-Type`。 
+   * 对于“标头”，请键入 `Content-Type`。 你将在后续步骤中将值设置为 `application/json`。
 
-     Power Apps 将使用语法从查询中提取参数。 请注意，我们显式定义了搜索字段。 
+     Power Apps 使用 URL 中的语法从查询中提取参数：随着向导的进展，search、select 和 api-version 参数将变为可配置。
 
        :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="从示例导入" border="true":::
 
@@ -111,11 +111,11 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
       - {name: Content-Type, in: header, required: false, type: string}
     ```
 
-1. 返回到“3.请求”步骤，并向下滚动到“响应”部分。 单击“添加默认响应”。 此操作至关重要，因为它会帮助 Power Apps 了解响应的架构。 
+1. 切换回向导并返回到“3.请求”步骤。 向下滚动到“响应”部分。 单击“添加默认响应”。 此操作至关重要，因为它会帮助 Power Apps 了解响应的架构。 
 
 1. 粘贴示例响应。 通过 Azure 门户中的“搜索浏览器”可以轻松捕获示例响应。 在“搜索浏览器”中，应该输入针对请求所提供的相同查询，但还要添加 $top=2，以将结果限制为仅包括两个文档：`search=*&$select=HotelName,Description,Address/City&$top=2`。 
 
-   Power Apps 只需要几条结果即可检测到架构。
+   Power Apps 只需要几条结果即可检测到架构。 现在可以将以下响应复制到向导中，前提是你使用的是 hotels-sample-index。
 
     ```JSON
     {
@@ -144,7 +144,11 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
     > [!TIP] 
     > 可以输入的 JSON 响应存在字符限制，因此建议在粘贴 JSON 之前先将其简化。 响应的架构和格式比值本身更重要。 例如，可以简化“说明”字段，使其仅包含第一个句子。
 
-1. 单击右上角的“创建连接器”。
+1. 单击“导入”以添加默认响应。
+
+1. 单击右上角的“创建连接器”以保存定义。
+
+1. 单击“关闭”以关闭连接器。
 
 ## <a name="2---test-the-connection"></a>2 - 测试连接
 
@@ -154,7 +158,7 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
 
 1. 在最左侧，单击“自定义连接器”。
 
-1. 按名称（在本教程中为“AzureSearchQuery”）搜索连接器。
+1. 在列表中（在本教程中为 "AzureSearchQuery"）找到你的连接器。
 
 1. 选择该连接器，展开操作列表，然后选择“查看属性”。
 

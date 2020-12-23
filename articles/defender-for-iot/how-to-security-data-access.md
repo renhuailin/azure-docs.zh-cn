@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: e56cf54e1bf1483309cb7aac8519bb281ca2bc06
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4f65da4f9a4f7ade94d76e99d57439e62b3c808
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934161"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092051"
 ---
 # <a name="access-your-security-data"></a>访问安全数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "90934161"
 1. 选择用于 IoT 的警报或建议。
 1. 单击 " **进一步调查**"，然后单击 **查看具有此警报的设备单击此处并查看 DeviceId 列**。
 
-有关从 Log Analytics 查询数据的详细信息，请参阅 [Log Analytics 中的查询入门](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries)。
+有关从 Log Analytics 查询数据的详细信息，请参阅 [Log Analytics 中的查询入门](/azure/azure-monitor/log-query/get-started-queries)。
 
 ## <a name="security-alerts"></a>安全警报
 
@@ -64,11 +64,11 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 说明                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 描述                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-11-18T18：10：29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 强力攻击成功           | 已成功对设备执行暴力攻击        |    {"完整源地址"： "[ \" 10.165.12.18： \" ]"，"用户名"： "[ \" \" ]"，"DeviceId"： "IoT-设备-Linux"}                                                                       |
-| 2018-11-19T12：40：31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 设备上的本地登录成功      | 检测到成功的本地登录到设备     | {"远程地址"： "？"、"远程端口"： ""、"本地端口"： ""、"登录 Shell"： "/bin/su"、"登录过程 Id"： "28207"、"用户名"： "攻击者"、"DeviceId"： "IoT-设备-Linux"} |
-| 2018-11-19T12：40：31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 设备上的本地登录尝试失败  | 检测到设备的本地登录尝试失败 |    {"远程地址"： "？"、"远程端口"： ""、"本地端口"： ""、"登录 Shell"： "/bin/su"、"登录过程 Id"： "22644"、"用户名"： "攻击者"、"DeviceId"： "IoT-设备-Linux"} |
+| 2018-11-18T18：10：29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 高          | 强力攻击成功           | 已成功对设备执行暴力攻击        |    {"完整源地址"： "[ \" 10.165.12.18： \" ]"，"用户名"： "[ \" \" ]"，"DeviceId"： "IoT-设备-Linux"}                                                                       |
+| 2018-11-19T12：40：31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 高          | 设备上的本地登录成功      | 检测到成功的本地登录到设备     | {"远程地址"： "？"、"远程端口"： ""、"本地端口"： ""、"登录 Shell"： "/bin/su"、"登录过程 Id"： "28207"、"用户名"： "攻击者"、"DeviceId"： "IoT-设备-Linux"} |
+| 2018-11-19T12：40：31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 高          | 设备上的本地登录尝试失败  | 检测到设备的本地登录尝试失败 |    {"远程地址"： "？"、"远程端口"： ""、"本地端口"： ""、"登录 Shell"： "/bin/su"、"登录过程 Id"： "22644"、"用户名"： "攻击者"、"DeviceId"： "IoT-设备-Linux"} |
 
 ### <a name="device-summary"></a>设备摘要
 
@@ -87,12 +87,12 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Count |
+| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 计数 |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 强力攻击成功           | 9   |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中        | 设备上的本地登录尝试失败  | 242 |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 设备上的本地登录成功      | 31  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中        | 加密硬币挖掘器                     | 4   |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 高          | 强力攻击成功           | 9   |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型        | 设备上的本地登录尝试失败  | 242 |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 高          | 设备上的本地登录成功      | 31  |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型        | 加密硬币挖掘器                     | 4   |
 
 ### <a name="iot-hub-summary"></a>IoT 中心摘要
 
@@ -113,10 +113,10 @@ SecurityAlert
 
 | IoTHubId                                                                                                       | AlertSeverity | DisplayName                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | 高          | 强力攻击成功           | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | 中        | 设备上的本地登录尝试失败  | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | 高          | 设备上的本地登录成功      | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | 中        | 加密硬币挖掘器                     | 1          |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | 高          | 强力攻击成功           | 1          |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | 中型        | 设备上的本地登录尝试失败  | 1          |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | 高          | 设备上的本地登录成功      | 1          |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | 中型        | 加密硬币挖掘器                     | 1          |
 
 ## <a name="security-recommendations"></a>安全建议
 
@@ -144,10 +144,10 @@ SecurityRecommendation
 | take 2
 ```
 
-| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 说明 | RecommendationAdditionalData |
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 描述 | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10：21：06.060 |    /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中 | 可用 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
-| 2019-03-22T10：50：27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中 | 可用 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
+| 2019-03-22T10：21：06.060 |    /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型 | 可用 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
+| 2019-03-22T10：50：27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型 | 可用 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
 
 ### <a name="device-summary"></a>设备摘要
 
@@ -164,12 +164,12 @@ SecurityRecommendation
 | summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Count |
+| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | 计数 |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 2   |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中        | 1 |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 1  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中        | 4   |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 高          | 2   |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型        | 1 |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 高          | 1  |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group><iot_hub> | <device_name> | 中型        | 4   |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 923e8d1ffc3e606c16226b4b2ccbdcfaf4d3e9f1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75431612"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123415"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure 流分析的输出错误策略
 本文介绍可在 Azure 流分析中配置的输出数据错误处理策略。
@@ -34,4 +34,4 @@ Azure 流分析会丢弃任何导致数据转换错误的输出事件。 无法�
 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 流分析故障排除指南](stream-analytics-troubleshooting-guide.md)
+[Azure 流分析故障排除指南](./stream-analytics-troubleshoot-query.md)

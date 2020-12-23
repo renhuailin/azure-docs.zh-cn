@@ -14,12 +14,12 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d632d078db55696dad7bb05e72368b13610b5978
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b016987162cc8202b7ad28d4dd8e5ab2953469d1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091413"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024239"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>为 Azure 上的 Stretch Database 启用透明数据加密 (TDE)
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的�
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开数据库
 2. 在数据库边栏选项卡中，单击“设置”  按钮
-3. 选择 Azure 门户的**透明数据加密**选项 ![ 屏幕截图，并显示 "设置" 边栏选项卡。 在 "常规" 部分中，将突出显示 "透明数据加密"。][1]
+3. 选择 Azure 门户的 **透明数据加密** 选项 ![ 屏幕截图，并显示 "设置" 边栏选项卡。 在 "常规" 部分中，将突出显示 "透明数据加密"。][1]
 4. 选择 "**打开**" 设置，然后选择 "**保存** 
     ![ Azure 门户屏幕截图，并显示" 透明数据加密 "边栏选项卡。 启用数据加密，并突出显示 "保存" 按钮。][2]
 
@@ -46,11 +46,11 @@ TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的�
 
 1. 在 [Azure 门户](https://portal.azure.com)
 2. 在数据库边栏选项卡中，单击“设置”按钮 
-3. 选择“**透明数据加密**选项
+3. 选择“**透明数据加密** 选项
 4. 选择“**关闭**”设置，并选择“**保存**”
 
 <!--Anchors-->
-[透明数据加密 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[透明数据加密 (TDE)]: /sql/relational-databases/security/encryption/transparent-data-encryption
 
 
 <!--Image references-->

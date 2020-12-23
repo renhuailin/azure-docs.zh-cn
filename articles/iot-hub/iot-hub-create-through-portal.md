@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404951"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536039"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -36,13 +36,13 @@ ms.locfileid: "91404951"
 
 下面是一些可以为 IoT 中心设置的属性：
 
-**定价和缩放**：可使用此属性迁移到其他层或设置 IoT 中心单元数。 
+**定价和缩放** ：可使用此属性迁移到其他层或设置 IoT 中心单元数。 
 
-**操作监视**：打开或关闭不同的监视类别，如与设备到云消息或云到设备消息相关的事件的日志记录。
+**操作监视** ：打开或关闭不同的监视类别，如与设备到云消息或云到设备消息相关的事件的日志记录。
 
-**IP 筛选器**：可指定 IoT 中心会接受或拒绝的 IP 地址范围。
+**IP 筛选器** ：可指定 IoT 中心会接受或拒绝的 IP 地址范围。
 
-**属性**：提供可在其他位置复制和使用的属性的列表，如资源 ID、资源组、位置等。
+**属性** ：提供可在其他位置复制和使用的属性的列表，如资源 ID、资源组、位置等。
 
 ### <a name="shared-access-policies"></a>共享访问策略
 
@@ -86,7 +86,7 @@ ms.locfileid: "91404951"
 
 单击“选取容器”  以选择存储帐户和容器。 如果已选择这些字段，会返回终结点窗格。 其余字段均采用默认值，并单击“创建”  创建存储帐户的终结点并将其添加到路由规则。
 
-**数据源**选择“设备遥测消息”。 
+**数据源** 选择“设备遥测消息”。 
 
 接下来，添加一个路由查询。 在此示例中，具有名为 `level` 的应用程序属性且其值等于 `critical` 的消息被路由到存储帐户。
 
@@ -125,5 +125,4 @@ ms.locfileid: "91404951"
 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [IoT 中心消息路由](tutorial-routing.md)
-* [IoT 中心指标](iot-hub-metrics.md)
-* [操作监视](iot-hub-operations-monitoring.md)
+* [监视 IoT 中心](monitor-iot-hub.md)

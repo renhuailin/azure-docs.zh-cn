@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: 05780a5628f920b8fb4f0c73794046f23e895c58
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c2461fa9eb2c326141d244fbc576355226f891dd
+  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89182235"
+  ms.lasthandoff: 11/20/2020
+  ms.locfileid: "94962699"
 landingContent:
 - title: 关于 Azure 数据库迁移服务
   linkLists:
@@ -124,11 +124,11 @@ landingContent:
     - text: 数据库迁移指南
       url: https://datamigration.microsoft.com/
     - text: 数据迁移助手
-      url: https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017
+      url: /sql/dma/dma-overview?view=sql-server-2017
     - text: SQL Server Migration Assistant
-      url: https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+      url: /sql/ssma/sql-server-migration-assistant?view=sql-server-2017
     - text: 数据库实验助手
-      url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+      url: /sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
     - text: 数据访问迁移工具包
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
 - title: 将 Oracle 迁移到 Azure

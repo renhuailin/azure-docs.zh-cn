@@ -1,32 +1,42 @@
 ---
 title: ServicePrincipalSelector UI 元素
-description: 描述 Azure 门户的 ServicePrincipalSelector UI 元素。 提供一个下拉列表，用于选择应用程序标识符和文本框，以输入密码或证书指纹。
+description: 介绍 Azure 门户的 Microsoft.Common.ServicePrincipalSelector UI 元素。 提供一个控件，用于选择应用程序和文本框，以输入密码或证书指纹。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
-ms.openlocfilehash: 73b242754bfae53b6df5abd9c2c8dee33b973dad
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 2fdbbad467d8c762db485fc7935e9cef78313fd0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575990"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184444"
 ---
-# <a name="microsoftcommonserviceprincipalselector-ui-element"></a>ServicePrincipalSelector UI 元素
+# <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft.Common.ServicePrincipalSelector UI 元素
 
-允许用户选择现有服务主体或注册新服务主体的控件。 选择 " **新建**" 时，将执行注册新应用程序的步骤。 选择现有应用程序时，控件将提供一个文本框来输入密码或证书指纹。
+允许用户选择现有 [服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 或注册新应用程序的控件。 选择 " **新建**" 时，请按照步骤注册新的应用程序。 选择现有应用程序时，此控件将提供一个文本框，用于输入密码或证书指纹。
 
-## <a name="ui-sample"></a>UI 示例
+## <a name="ui-samples"></a>UI 示例
 
-默认视图由属性中的值确定 `defaultValue` 。 如果 `principalId` 属性包含有效的全局唯一标识符 (GUID) ，则控件会搜索应用程序的对象 ID。 如果用户没有从下拉列表中进行选择，则会应用默认值。
+可以使用默认应用程序、创建新的应用程序或使用现有的应用程序。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-initial.png" alt-text="ServicePrincipalSelector 初始视图&quot;:::
+### <a name="use-default-application-or-create-new"></a>使用默认应用程序或创建新的应用程序
 
-从下拉列表中选择 &quot; **新建** &quot; 或 &quot;现有应用程序标识符&quot; 时，将显示 " **身份验证类型** "，以在文本框中输入密码或证书指纹。
+默认视图取决于属性中的值 `defaultValue` ， **服务主体类型** 设置为 " **新建**"。 如果 `principalId` 属性包含有效的全局唯一标识符 (GUID) ，则控件会搜索应用程序的 `objectId` 。 如果用户不从控件中进行选择，则会应用默认值。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-selection.png" alt-text="ServicePrincipalSelector 初始视图&quot;:::
+如果要注册新应用程序，请选择 " **更改选择** " 并显示 " **注册应用程序** " 对话框。 输入 " **名称**"、" **支持的帐户类型**"，然后选择 " **注册** " 按钮。
 
-从下拉列表中选择 &quot; **新建** &quot; 或 &quot;现有应用程序标识符&quot; 时，将显示 ":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-default.png" alt-text="ServicePrincipalSelector 初始视图。":::
+
+注册新应用程序后，请使用 **身份验证类型** 输入密码或证书指纹。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-authenticate.png" alt-text="ServicePrincipalSelector authentication。":::
+
+### <a name="use-existing-application"></a>使用现有应用程序
+
+若要使用现有应用程序，请选择 "**选择现有**"，然后选择 **"选择"。** 使用 " **选择应用程序** " 对话框可以搜索应用程序的名称。 在结果中，选择应用程序，然后选择 " **选择** " 按钮。 选择应用程序后，该控件将显示 " **身份验证类型** " 以输入密码或证书指纹。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-existing.png" alt-text="ServicePrincipalSelector 选择现有应用程序。":::
 
 ## <a name="schema"></a>架构
 
@@ -35,14 +45,12 @@ ms.locfileid: "91575990"
   "name": "ServicePrincipal",
   "type": "Microsoft.Common.ServicePrincipalSelector",
   "label": {
-    "principalId": "App Id",
     "password": "Password",
     "certificateThumbprint": "Certificate thumbprint",
     "authenticationType": "Authentication Type",
     "sectionHeader": "Service Principal"
   },
   "toolTip": {
-    "principalId": "App Id",
     "password": "Password",
     "certificateThumbprint": "Certificate thumbprint",
     "authenticationType": "Authentication Type"
@@ -65,21 +73,21 @@ ms.locfileid: "91575990"
 
 ## <a name="remarks"></a>备注
 
-- 必需的属性包括：
+- 必需的属性如下所示：
   - `name`
   - `type`
   - `label`
-  - `defaultValue`：指定默认 `principalId` 和 `name` 。
+  - `defaultValue`：指定默认的 `principalId` 和 `name`。
 
-- 可选属性包括：
-  - `toolTip`：将工具提示附加 `infoBalloon` 到每个标签。
+- 可选属性如下所示：
+  - `toolTip`：将工具提示 `infoBalloon` 附加到每个标签。
   - `visible`：隐藏或显示控件。
   - `options`：指定是否应使证书指纹选项可用。
-  - `constraints`：用于密码验证的 Regex 约束。
+  - `constraints`：用于密码验证的正则表达式约束。
 
 ## <a name="example"></a>示例
 
-下面是控件的一个示例 `Microsoft.Common.ServicePrincipalSelector` 。 `defaultValue`属性将设置 `principalId` 为 `<default guid>` 默认应用程序标识符 GUID 的占位符。
+下面是 `Microsoft.Common.ServicePrincipalSelector` 控件的一个示例。 `defaultValue` 属性将 `principalId` 设置为 `<default guid>`（默认应用程序标识符 GUID 的占位符）。
 
 ```json
 {
@@ -97,14 +105,12 @@ ms.locfileid: "91575990"
             "name": "ServicePrincipal",
             "type": "Microsoft.Common.ServicePrincipalSelector",
             "label": {
-              "principalId": "App Id",
               "password": "Password",
               "certificateThumbprint": "Certificate thumbprint",
               "authenticationType": "Authentication Type",
               "sectionHeader": "Service Principal"
             },
             "toolTip": {
-              "principalId": "App Id",
               "password": "Password",
               "certificateThumbprint": "Certificate thumbprint",
               "authenticationType": "Authentication Type"
@@ -140,9 +146,9 @@ ms.locfileid: "91575990"
 
 ## <a name="example-output"></a>示例输出
 
-`appId`是你选择或创建的应用程序注册的 Id。 `objectId`是为所选应用程序注册配置的服务主体的 objectIds 数组。
+`appId` 是所选的或所创建的应用程序注册的 ID。 `objectId`是为所选应用程序注册配置的服务主体的对象 id 的数组。
 
-如果未从下拉列表中进行选择，则 `newOrExisting` 属性值为 **new**：
+如果没有从控件中进行选择，则 `newOrExisting` 属性值为 **new**：
 
 ```json
 {
@@ -167,7 +173,7 @@ ms.locfileid: "91575990"
 }
 ```
 
-从下拉列表中选择 " **新建** " 或 "现有应用程序标识符" 时， `newOrExisting` 属性值为 " **现有**"：
+当从控件中选择 " **新建** " 或 "现有应用程序" 时， `newOrExisting` 属性值为 " **现有**"：
 
 ```json
 {

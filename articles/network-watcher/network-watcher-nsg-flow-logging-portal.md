@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 89258b05831170ff502cde80577f3a6851659bf2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 385d43e46cd3f9465c0fbf9a02eeae356f48fac4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986319"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966524"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -111,7 +111,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
 9. 选择在步骤 3 中创建的存储帐户。
    > [!NOTE]
-   > NSG 流日志不适用于已启用[分层命名空间](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)的存储帐户。
+   > NSG 流日志不适用于已启用[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)的存储帐户。
 1. 在门户左上角选择“所有服务”。 在“筛选器”框中，键入“网络观察程序”。 搜索结果中出现“网络观察程序”后，将其选中。
 10. 将“保留期(天)”设置为 5，然后选择“保存”。 
 
@@ -215,11 +215,11 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 | T            | 协议               | 流的协议是 TCP (T) 还是 UDP (U)。                                  |
 | O            | 方向              | 流是入站 (I) 还是出站 (O)。                                     |
 | A            | 操作                 | 是允许 (A) 流还是拒绝 (D) 流。  
-| C            | 流状态**仅限版本 2** | 捕获流的状态。 可能的状态包括 **B**：创建流时开始。 未提供统计信息。 **C**：继续执行正在进行的流。 以 5 分钟的时间间隔提供统计信息。 **E**：在流终止时结束。 已提供统计信息。 |
-| 30 | 发送的数据包数 - 源到目标**仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包的总数。 |
-| 16978 | 发送的字节数 - 源到目标**仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。 |
-| 24 | 发送的数据包数 - 目标到源**仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 或 UDP 数据包的总数。 |
-| 14008| 发送的字节数 - 目标到源**仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 和 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。|
+| C            | 流状态 **仅限版本 2** | 捕获流的状态。 可能的状态包括 **B**：创建流时开始。 未提供统计信息。 **C**：继续执行正在进行的流。 以 5 分钟的时间间隔提供统计信息。 **E**：在流终止时结束。 已提供统计信息。 |
+| 30 | 发送的数据包数 - 源到目标 **仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包的总数。 |
+| 16978 | 发送的字节数 - 源到目标 **仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。 |
+| 24 | 发送的数据包数 - 目标到源 **仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 或 UDP 数据包的总数。 |
+| 14008| 发送的字节数 - 目标到源 **仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 和 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。|
 
 ## <a name="next-steps"></a>后续步骤
 

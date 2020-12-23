@@ -1,7 +1,7 @@
 ---
 title: 添加应用角色并从令牌获取它们 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何在注册到 Azure Active Directory 的应用程序中添加应用角色、如何向这些角色分配用户和组，以及如何在令牌的 `roles` 声明中接收它们。
+description: 了解如何在注册到 Azure Active Directory 的应用程序中添加应用角色、如何向这些角色分配用户和组，以及如何在令牌的“角色”声明中接收它们。
 services: active-directory
 author: kalyankrishna1
 manager: CelesteDG
@@ -9,62 +9,96 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 11/13/2020
 ms.author: kkrishna
-ms.reviewer: kkrishna, jmprieur
+ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: be5cb1c1e6ff428b3c4d4305c915e07d3880839c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258381"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614925"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
+# <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
 基于角色的访问控制 (RBAC) 是一种常用的机制，用于在应用程序中强制进行授权。 使用 RBAC 时，管理员将权限授予角色而不是单个用户或组。 然后，管理员再将角色分配给不同的用户和组，以便控制用户对特定内容和功能的访问。
 
 将 RBAC 与应用程序角色和角色声明配合使用，开发人员就可以安全地在应用中强制实施授权，相当轻松。
 
-另一种方法是使用 Azure AD 组和组声明，如 [WebApp-GroupClaims-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet) 中所示。 Azure AD 组和应用程序角色绝不会互相排斥，它们可以配合使用，进行更精细的访问控制。
+另一种方法是使用 Azure AD 组和组声明，如 GitHub 上的 [active-directory-aspnetcore-webapp-openidconnect-v2](https://aka.ms/groupssample) 代码示例中所示。 Azure AD 组和应用程序角色不会互相排斥；它们可以配合使用，进行更精细的访问控制。
 
 ## <a name="declare-roles-for-an-application"></a>为应用程序声明角色
 
-这些应用程序角色在 [Azure 门户](https://portal.azure.com)的应用程序注册清单中定义。  当用户登录到应用程序时，Azure AD 会针对每个角色发出一个 `roles` 声明。这些角色包括单独授予用户的，以及通过组成员身份获得的。  可以通过门户的 UI 为用户或组分配角色，也可以使用 [Microsoft Graph](/graph/azuread-identity-access-management-concept-overview) 以编程方式进行分配。
+使用 [Azure 门户](https://portal.azure.com)定义应用角色。 应用程序角色通常在应用程序注册（表示服务、应用程序或 API）上定义。 当用户登录到应用程序时，Azure AD `roles` 会为每个角色发出一个声明，指出已将用户或服务主体分别授予用户及其组成员身份。 这可用于实现基于声明的授权。 应用角色可以分配 [给一个用户或一组用户](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app)。 还可以将应用程序角色分配给另一个应用程序的服务主体，或分配给 [托管标识的服务主体](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)。
 
-### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 门户声明应用角色
+> [!IMPORTANT]
+> 目前，如果将服务主体添加到组，然后将应用角色分配给该组，则 Azure AD 不会将声明添加到 `roles` 它颁发的令牌中。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标。
-1. 在“收藏夹”或“所有目录”列表中，选择要在其中注册应用程序的 Active Directory 租户。 
-1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
-1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表 。
-1. 选择一个应用程序，以便在其中定义应用角色。 然后选择“清单”。
-1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
+可以通过两种方法使用 Azure 门户来声明应用角色：
 
-     > [!NOTE]
-     > 此清单中的每个应用角色定义必须在清单上下文中有不同的有效 GUID（针对 `id` 属性）。
-     >
-     > 每个应用角色定义的 `value` 属性应该与应用程序的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果包含空格，则在保存清单时会收到错误。
+* [应用角色 UI](#app-roles-ui--preview) | 预览
+* [应用清单编辑器](#app-manifest-editor)
 
+你添加的角色数量计入 Azure Active Directory 强制实施的应用程序清单限制。 有关这些限制的信息，请参阅 [Azure Active Directory 应用清单参考](reference-app-manifest.md)的[清单限制](./reference-app-manifest.md#manifest-limits)部分。
+
+### <a name="app-roles-ui--preview"></a>应用角色 UI | 预览
+
+> [!IMPORTANT]
+> 应用角色门户 UI 功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+
+若要使用 Azure 门户的用户界面创建应用角色，请执行以下操作：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要向其添加应用角色的应用注册的 Azure Active Directory 租户。
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册”，然后选择要在其中定义应用角色的应用程序 。
+1. 选择“应用角色 | 预览”，然后选择“创建应用角色” 。
+
+   :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-overview-pane.png" alt-text="Azure 门户中应用注册的应用角色窗格":::
+1. 在“创建应用角色”窗格中，输入角色的设置。 图像下面的表格描述每个设置及其参数。
+
+    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Azure 门户中应用注册的“应用角色创建上下文”窗格":::
+
+    | 字段 | 说明 | 示例 |
+    |-------|-------------|---------|
+    | **显示名称** | 管理员同意和应用分配体验中显示的应用角色显示名称。 此值可以包含空格。 | `Survey Writer` |
+    | **允许的成员类型** | 指定是否可以将此应用角色分配给用户和/或应用程序。<br/><br/>可供 `applications` 使用时，应用角色会在应用注册的“管理”部分 >“API 权限”>“添加权限”>“我的 API”>“选择 API”>“应用程序权限”中显示为应用程序权限 。 | `Users/Groups` |
+    | **值** | 指定应用程序在令牌中所需的角色声明的值。 该值应与应用程序代码中引用的字符串完全匹配。 该值不能包含空格。 | `Survey.Create` |
+    | **说明** | 在管理应用分配和同意体验期间显示的应用角色的更详细说明。 | `Writers can create surveys.` |
+    | **要启用此应用角色吗？** | 指定是否启用应用角色。 若要删除应用角色，请取消选中此复选框，并在尝试删除操作之前应用更改。 | *已选中* |
+
+1. 选择“应用”以保存所做的更改。
+
+### <a name="app-manifest-editor"></a>应用清单编辑器
+
+如需通过直接编辑清单来添加角色，请执行以下操作：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要向其添加应用角色的应用注册的 Azure Active Directory 租户。
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册”，然后选择要在其中定义应用角色的应用程序 。
+1. 再次在“管理”下选择“清单” 。
+1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加应用程序角色。 可以针对 `users` 和/或 `applications` 来定义应用角色。 以下 JSON 代码片段演示了这两者的示例。
 1. 保存清单。
 
-### <a name="examples"></a>示例
+清单中的每个应用角色定义的 `id` 值必须具有唯一 GUID。
 
-以下示例显示的 `appRoles` 可以分配给 `users`。
+每个应用角色定义的 `value` 属性应该与应用程序的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果包含空格，则在保存清单时会收到错误。
 
-> [!NOTE]
->`id` 必须是唯一的 GUID。
+#### <a name="example-user-app-role"></a>示例：用户应用角色
 
-```Json
-"appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
+此示例定义了一个名为 `Writer` 的应用角色，可将其分配给 `User`：
+
+```json
+"appId": "8763f1c4-0000-0000-0000-158e9ef97d6a",
 "appRoles": [
     {
       "allowedMemberTypes": [
         "User"
       ],
       "displayName": "Writer",
-      "id": "d1c2ade8-98f8-45fd-aa4a-6d06b947c66f",
+      "id": "d1c2ade8-0000-0000-0000-6d06b947c66f",
       "isEnabled": true,
       "description": "Writers Have the ability to create tasks.",
       "value": "Writer"
@@ -73,20 +107,21 @@ ms.locfileid: "91258381"
 "availableToOtherTenants": false,
 ```
 
-> [!NOTE]
->`displayName` 可以包含空格。
+#### <a name="example-application-app-role"></a>示例：应用程序应用角色
 
-可以针对 `users` 和/或 `applications` 来定义应用角色。 可供 `applications` 使用时，应用角色会在“管理”部分 >“API 权限”>“添加权限”>“我的 API”>“选择 API”>“应用程序权限”下显示为应用程序权限。  以下示例显示一个以 `Application` 为目标的应用角色。
+可供 `applications` 使用时，应用角色会在应用注册的“管理”部分 >“API 权限”>“添加权限”>“我的 API”>“选择 API”>“应用程序权限”中显示为应用程序权限 。
 
-```Json
-"appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
+此示例显示一个以 `Application` 为目标的应用角色：
+
+```json
+"appId": "8763f1c4-0000-0000-0000-158e9ef97d6a",
 "appRoles": [
     {
       "allowedMemberTypes": [
         "Application"
       ],
       "displayName": "ConsumerApps",
-      "id": "47fbb575-859a-4941-89c9-0f7a6c30beac",
+      "id": "47fbb575-0000-0000-0000-0f7a6c30beac",
       "isEnabled": true,
       "description": "Consumer apps have access to the consumer data.",
       "value": "Consumer"
@@ -95,39 +130,85 @@ ms.locfileid: "91258381"
 "availableToOtherTenants": false,
 ```
 
-定义的角色数会影响应用程序清单具有的限制。 它们已在[清单限制](./reference-app-manifest.md#manifest-limits)页面上进行了详细讨论。
+## <a name="assign-users-and-groups-to-roles"></a>将用户和组分配到角色
 
-### <a name="assign-users-and-groups-to-roles"></a>将用户和组分配到角色
+在应用程序中添加应用角色以后，即可将此角色分配给用户和组。 可以通过门户的 UI 为用户或组分配角色，也可以使用 [Microsoft Graph](/graph/api/user-post-approleassignments) 以编程方式进行分配。 当分配到各种应用角色的用户登录到应用程序时，其令牌会在 `roles` 声明中具有其分配的角色。
 
-在应用程序中添加应用角色以后，即可将这些角色分配给用户和组。
+若要使用 Azure 门户将用户和组分配给角色，请执行以下操作：
 
-1. 使用 **Azure Active Directory** 左侧导航菜单，在“Azure Active Directory”窗格中选择“企业应用程序” 。
-1. 选择“所有应用程序”，查看所有应用程序的列表。
-
-     如果看不到希望其显示在这里的应用程序，请使用“所有应用程序”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。
-
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure Active Directory 的左侧导航菜单中选择“企业应用程序” 。
+1. 选择“所有应用程序”，查看所有应用程序的列表。 如果应用程序未显示在列表中，请使用“所有应用程序”列表顶部的筛选器来限制此列表，或者在列表中向下滚动寻找你的应用程序。
 1. 选择一个应用程序，以便在其中为角色分配用户或安全组。
-1. 在应用程序的左侧导航菜单中选择“用户和组”窗格。
-1. 在“用户和组”列表顶部选择“添加用户”按钮，以便打开“添加分配”窗格。  
-1. 在“添加分配”窗格中，选择“用户和组”选择器。
+1. 在“管理”下，选择“用户和组”。
+1. 选择“添加用户”，打开“添加分配”窗格 。
+1. 在“添加分配”窗格中，选择“用户和组”选择器。 随即显示用户和安全组的列表。 可以搜索特定用户或组，并选择列表中显示的多个用户和组。
+1. 选择用户和组后，请选择“选择”按钮以继续。
+1. 在“添加分配”窗格中选择“选择角色” 。 随即显示已为应用程序定义的所有角色。
+1. 选择一个角色，然后选择“选择”按钮。
+1. 选择“分配”按钮可完成将用户和组分配到应用的操作。
 
-     将会显示用户和安全组的列表和一个文本框，后者用于搜索和查找特定用户或组。 此屏幕允许一次选择多个用户和组。
+确认已添加的用户和组显示在“用户和组”列表中。
 
-1. 选择好用户和组以后，按底部的“选择”按钮即可转到下一部分。
-1. 在“添加分配”窗格中，选择“选择角色”选择器。 此前在应用清单中声明的所有角色都会显示。
-1. 选择一个角色，然后按“选择”按钮。
-1. 按底部的“分配”按钮即可完成将用户和组分配到应用的操作。
-1. 确认已添加的用户和组显示在更新的“用户和组”列表中。
+## <a name="assign-app-roles-to-applications"></a>向应用程序分配应用角色
 
-### <a name="receive-roles-in-tokens"></a>接收令牌中的角色
+在应用程序中添加应用角色后，可以使用 Azure 门户或以编程方式使用 [Microsoft Graph](/graph/api/user-post-approleassignments) 将应用角色分配给客户端应用。
 
-当分配到各种应用角色的用户登录到应用程序时，其令牌会在 `roles` 声明中具有其分配的角色。
+将应用角色分配给应用程序时，将创建应用程序权限。 应用程序权限通常由需要进行身份验证和经授权的 API 调用的守护程序应用或后端服务使用，而无需用户的交互。
+
+若要使用 Azure 门户将应用角色分配给应用程序，请执行以下操作：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure Active Directory 的左侧导航菜单中，选择“应用注册” 。
+1. 选择“所有应用程序”，查看所有应用程序的列表。 如果应用程序未显示在列表中，请使用“所有应用程序”列表顶部的筛选器来限制此列表，或者在列表中向下滚动寻找你的应用程序。
+1. 选择要向其分配应用角色的应用程序。
+1. 选择“API 权限” > “添加权限” 。
+1. 选择“我的 API”选项卡，然后选择为其定义了应用角色的应用。
+1. 选择“应用程序权限”。
+1. 选择要分配的角色。
+1. 选择“添加权限”按钮完成角色添加。
+
+新添加的角色应显示在应用注册的“API 权限”窗格中。
+
+#### <a name="grant-admin-consent"></a>授予管理员同意
+
+由于这些是应用程序权限，而不是委派的权限，因此管理员必须授予同意，才能使用分配给应用程序的应用角色。
+
+1. 在应用注册的“API 权限”窗格中，选择“为 \<tenant name\> 授予管理员同意” 。
+1. 当系统提示授予所请求权限的同意时，选择“是”。
+
+“状态”列应反映已为 \<tenant name\> 授予同意 。
+
+## <a name="use-app-roles-in-your-web-api"></a>在 Web API 中使用应用角色
+
+定义应用角色并将其分配给用户、组或应用程序后，下一步是向 Web API 添加代码，以便在调用 API 时检查这些角色。 也就是说，当客户端应用请求你决定需要授权的 API 操作时，API 的代码必须验证范围是否在客户端应用调用中提供的访问令牌中。
+
+若要了解如何将授权添加到 Web API，请参阅[受保护的 Web API：验证范围和应用角色](scenario-protected-web-api-verification-scope-app-roles.md)。
+
+## <a name="app-roles-vs-groups"></a>应用角色和组
+
+尽管可以使用应用角色或组进行授权，但它们之间的关键差异可能会影响你将哪一种用于你的场景的决定。
+
+| 应用角色                                                                          | 组                                                      |
+|------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| 它们特定于应用程序，并在应用注册中定义。 它们随应用程序一起移动。 | 它们不是特定于应用，而是特定于 Azure AD 租户。 |
+| 删除应用注册时，应用角色会被删除。                      | 即使删除了应用，组也会保持不变。            |
+| 在 `roles` 声明中提供。                                                     | 在 `groups` 声明中提供。                                 |
+
+开发人员可以使用应用角色来控制用户是否可以登录到应用，或者应用是否可以获取 Web API 的访问令牌。 为了将此安全控件扩展到组，开发人员和管理员还可以将安全组分配给应用角色。
+
+当开发人员想要描述和控制其应用中的授权参数时，应用角色是首选。 例如，使用组进行授权的应用将在下一个租户中中断，因为组 ID 和名称可能不同。 使用应用角色的应用处于安全状态。 事实上，出于同样的原因，将组分配给应用角色在 SaaS 应用中非常流行。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将使用应用角色和角色声明的授权添加到 ASP.NET Core Web 应用](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [在具有 Microsoft 标识平台的应用程序中实现授权 (视频) ](https://www.youtube.com/watch?v=LRoc-na27l0)
-- [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory 应用清单](./reference-app-manifest.md)
-- [Azure AD 访问令牌](access-tokens.md)
-- [Azure AD `id_tokens`](id-tokens.md)
+通过以下资源详细了解应用角色。
+
+* GitHub 上的代码示例
+  * [使用组和组声明向 ASP.NET Core Web 应用添加授权](https://aka.ms/groupssample)
+  * [Angular 单页应用程序 (SPA) 调用 .NET Core Web API 并使用应用角色和安全组](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md)
+* 参考文档
+  * [Azure AD 应用清单](./reference-app-manifest.md)
+  * [Azure AD 访问令牌](access-tokens.md)
+  * [Azure AD ID 令牌](id-tokens.md)
+  * [向应用提供可选声明](active-directory-optional-claims.md)
+* 视频： [在应用程序中通过 Microsoft 标识平台实现授权](https://www.youtube.com/watch?v=LRoc-na27l0) (1:01:15) 

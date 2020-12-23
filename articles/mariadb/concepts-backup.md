@@ -1,17 +1,17 @@
 ---
 title: 备份和还原 - Azure Database for MariaDB
 description: 了解如何自动备份和还原 Azure Database for MariaDB 服务器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: fee1285cfb5faefbcb8f7151186d42725d34af0a
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224503"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541736"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行备份和还原
 
@@ -25,39 +25,42 @@ Azure Database for MariaDB 可以进行完整备份、差异备份和事务日�
 
 ### <a name="backup-frequency"></a>备份频率
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>具有最多 4 TB 存储空间的服务器
+#### <a name="servers-with-up-to-4-tb-storage"></a>存储容量最大 4 TB 的服务器
 
-对于支持最多 4 TB 存储空间的服务器，每周进行一次完整备份。 差异备份一天发生两次。 每五分钟执行一次事务日志备份。
+对于支持最多 4 TB 存储容量的服务器，每周进行一次完整备份。 差异备份一天进行两次。 事务日志备份每五分钟进行一次。
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>具有高达 16 TB 存储空间的服务器
-在 [Azure 区域](concepts-pricing-tiers.md#storage)的子集中，所有新预配的服务器都可支持高达 16 TB 的存储。 这些大型存储服务器上的备份基于快照。 在创建服务器后立即计划第一次完整的快照备份。 此第一个完整快照备份将保留为服务器的基准备份。 后续的快照备份仅为差异备份。 
+#### <a name="servers-with-up-to-16-tb-storage"></a>存储容量最大 16 TB 的服务器
+在 [Azure 区域](concepts-pricing-tiers.md#storage)的子集中，所有新预配的服务器最多可以支持 16 TB 的存储容量。 这些大型存储服务器上的备份是基于快照的。 第一次完整快照备份在创建服务器后立即进行计划。 第一次完整快照备份将作为服务器的基准备份保留。 后续快照备份仅为差异备份。 
 
-差异快照备份每天至少发生一次。 差异快照备份不按固定计划进行。 差异快照备份每24小时进行一次，除非 MariaDB) 中的事务日志 (binlog 超过 50 GB。 一天内，最多允许6个差异快照。 
+一天至少进行一次差异快照备份。 差异快照备份不按固定计划进行。 差异快照备份每24小时进行一次，除非 MariaDB) 中的事务日志 (binlog 超过 50 GB。 一天内，最多允许有 6 张差异快照。 
 
-每五分钟执行一次事务日志备份。 
+事务日志备份每五分钟进行一次。 
 
-### <a name="backup-retention"></a>备份保留期
+### <a name="backup-retention"></a>备份保留
 
-根据服务器上的 "备份保留期" 设置保留备份。 你可以选择7到35天的保留期。 默认保持期为7天。 可以通过使用 [Azure 门户](howto-restore-server-portal.md#set-backup-configuration) 或 [Azure CLI](howto-restore-server-cli.md#set-backup-configuration)更新备份配置，在创建服务器或更高版本期间设置保留期。 
+根据服务器上的备份保持期设置来保留备份。 可以选择 7 到 35 天的保留期。 默认保持期为 7 天。 可以在服务器创建期间或以后通过使用 [Azure 门户](howto-restore-server-portal.md#set-backup-configuration)或 [Azure CLI](howto-restore-server-cli.md#set-backup-configuration) 更新备份配置来设置保留期。 
 
-备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 备份保留期也可以从还原角度被视为恢复窗口。 在备份保留期内执行时间点还原所需的所有备份将保留在备份存储中。 例如，如果 "备份保留期" 设置为 "7 天"，则会将恢复时段视为 "最后7天"。 在这种情况下，将保留在过去7天内还原服务器所需的所有备份。 具有7天的备份保留时段：
-- 具有最多 4 TB 存储空间的服务器将保留最多2个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
--   具有高达 16 TB 存储的服务器将保留完整的数据库快照、所有差异快照和事务日志备份，过去8天。
+备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 从恢复的角度来看，备份保留期也可以视为恢复时段。 在备份保留期间内执行时间点还原所需的所有备份都保留在备份存储中。 例如，如果备份保留期设置为 7 天，则可认为恢复时段是最近 7 天。 在这种情况下，将保留在过去 7 天内还原服务器所需的所有备份。 备份保留期为 7 天：
+- 存储容量最大达 4 TB 的服务器将保留最多 2 个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
+-   存储容量最大达 16 TB 的服务器将保留完整数据库快照、所有差异快照和过去 8 天的事务日志备份。
+
+#### <a name="long-term-retention-of-backups"></a>长期保留备份
+目前尚不支持长期保留35天的备份。 你可以选择使用 mysqldump 来执行备份并将其存储起来以供长期保留。 我们的支持团队针对发表介绍如何实现此 [目的的分步](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) 指导。 
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
-使用 Azure Database for MariaDB 时，可以灵活地在“常规用途”层和“内存优化”层中选择本地冗余或异地冗余备份存储。 当备份存储在异地冗余备份存储中时，这些备份不仅会存储在托管服务器所在的区域中，还会复制到[配对的数据中心](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 这样可以在发生灾难时提供更好的保护，并且可以将服务器还原到其他区域。 “基本”层仅提供本地冗余备份存储。
+使用 Azure Database for MariaDB 时，可以灵活地在“常规用途”层和“内存优化”层中选择本地冗余或异地冗余备份存储。 当备份存储在异地冗余备份存储中时，这些备份不仅会存储在托管服务器所在的区域中，还会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)。 这样可以在发生灾难时提供更好的保护，并且可以将服务器还原到其他区域。 “基本”层仅提供本地冗余备份存储。
 
-> [!IMPORTANT]
-> 只能在服务器创建期间为备份配置本地冗余或异地冗余存储。 预配服务器以后，不能更改备份存储冗余选项。
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>从本地冗余迁移到异地冗余备份存储
+只能在服务器创建期间为备份配置本地冗余或异地冗余存储。 预配服务器以后，不能更改备份存储冗余选项。 若要将备份存储从本地冗余存储移到异地冗余存储，请创建新的服务器并使用 [转储和还原](howto-migrate-dump-restore.md) 来迁移数据，这是唯一受支持的选项。
 
 ### <a name="backup-storage-cost"></a>备份存储成本
 
-Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何其他备份存储按每月 GB 的费率收费。 例如，如果你预配了一个具有 250 GB 存储空间的服务器，则可为服务器备份提供 250 GB 的额外存储，无需额外付费。 对于超过 250 GB 的备份，使用的存储按 [定价模式](https://azure.microsoft.com/pricing/details/mariadb/)收费。 
+Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 超出的备份存储使用量按每月每 GB 标准收费。 例如，如果为服务器配置了 250 GB 的存储空间，则可以为服务器备份提供 250 GB 的额外存储空间，而不另外收费。 备份所消耗的存储量超过 250GB 将按照[定价模型](https://azure.microsoft.com/pricing/details/mariadb/)收费。 
 
-可以通过 Azure 门户使用 Azure Monitor 中的 [备份存储使用](concepts-monitoring.md) 的指标来监视服务器使用的备份存储空间。 "使用的备份存储" 指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份占用的存储量。 备份的频率为服务管理，并在前面进行了说明。 服务器上的事务活动繁重会导致备份存储使用量增加，而不考虑总数据库大小。 对于异地冗余存储，备份存储使用情况是本地冗余存储的两倍。 
+可以通过使用 Azure 门户中提供的 Azure Monitor 中的[已使用的备份存储](concepts-monitoring.md)指标来监视服务器使用的备份存储。 使用的备份存储指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份所消耗的存储的总和。 备份的频率由服务进行管控，已在前面进行了说明。 无论数据库的总大小如何，如果服务器上的事务性活动繁重，都会导致备份存储使用率增加。 对于异地冗余存储，备份存储使用率是本地冗余存储的两倍。 
 
-控制备份存储成本的主要方法是设置适当的备份保留期，并选择适当的备份冗余选项来满足所需的恢复目标。 可以选择 7 到 35 天的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。
+控制备份存储成本的主要方法是设置适当的备份保留期，并选择正确的备份冗余选项以满足恢复目标。 可以选择 7 到 35 天的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。
 
 ## <a name="restore"></a>还原
 
@@ -65,13 +68,13 @@ Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储�
 
 可以使用两种类型的还原：
 
-- **时间点还原**可通过任一备份冗余选项使用，并利用完整备份和事务日志备份的组合在原始服务器所在区域中创建一个新服务器。
-- **异地还原**仅在你为服务器配置了异地冗余存储时可用，它允许你利用最近进行的备份将服务器还原到其他区域。
+- **时间点还原** 可通过任一备份冗余选项使用，并利用完整备份和事务日志备份的组合在原始服务器所在区域中创建一个新服务器。
+- **异地还原** 仅在你为服务器配置了异地冗余存储时可用，它允许你利用最近进行的备份将服务器还原到其他区域。
 
 估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
 
 > [!IMPORTANT]
-> 已删除的服务器**无法**还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 已删除的服务器 **无法** 还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
@@ -83,11 +86,16 @@ Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储�
 
 ### <a name="geo-restore"></a>异地还原
 
-如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持多达 4 TB 存储的服务器可以还原到异地配对区域，也可以还原到支持高达 16 TB 存储的任何区域。 对于支持高达 16 TB 存储空间的服务器，还可以在支持 16 TB 服务器的任何区域还原异地备份。 查看 [Azure Database for MariaDB 的定价层](concepts-pricing-tiers.md) 以获取受支持区域的列表。
+如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持存储容量最大达 4 TB 的服务器可以还原到异地配对区域，也可以还原到支持存储容量最大达 16 TB 的任何区域。 对于支持存储容量最大达 16 TB 的服务器，也可以在支持 16 TB 服务器的任何区域中还原异地备份。 查看 [Azure Database for MariaDB 的定价层](concepts-pricing-tiers.md) 以获取受支持区域的列表。
 
 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 异地还原利用服务器的最新备份。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
 
+> [!IMPORTANT]
+>如果对新创建的服务器执行异地还原，则初始备份同步所需的时间可能超过24小时，具体取决于数据大小，因为初始的完整快照备份复制时间要高得多。 后续快照备份是增量复制，因此，在创建服务器24小时后，还原速度会更快。 如果你正在评估异地还原以定义 RTO，我们建议你在创建服务器 **24 小时后** 等待并评估异地还原，以便更好地进行评估。
+
 在异地还原过程中，可以更改的服务器配置包括计算的代、vCore、备份保持期和备份冗余选项。 不支持在异地还原过程中更改定价层（“基本”、“常规用途”或“内存优化”）或存储大小。
+
+估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
 
 ### <a name="perform-post-restore-tasks"></a>执行还原后任务
 

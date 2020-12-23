@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387671"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928709"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自定义策略
 
@@ -29,15 +29,15 @@ Azure PowerShell 提供了多个 cmdlet 来基于命令行和脚本对 Azure AD 
 
 ## <a name="prerequisites"></a>必备条件
 
-* [Azure AD B2C 租户](tutorial-create-tenant.md)，以及目录中具有 [B2C IEF 策略管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的用户的凭据
+* [Azure AD B2C 租户](tutorial-create-tenant.md)，以及目录中具有 [B2C IEF 策略管理员](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)角色的用户的凭据
 * 已上传到租户的[自定义策略](custom-policy-get-started.md)
-* [用于 Graph 的 Azure AD PowerShell **预览版模块**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [用于 Graph 的 Azure AD PowerShell **预览版模块**](/powershell/azure/active-directory/install-adv2)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>将 PowerShell 会话连接到 B2C 租户
 
 若要处理 Azure AD B2C 租户中的自定义策略，首先需要使用 [Connect-AzureAD][Connect-AzureAD] 命令将 PowerShell 会话连接到租户。
 
-执行以下命令，并将 `{b2c-tenant-name}` 替换为你的 Azure AD B2C 租户的名称。 使用目录中分配有 [B2C IEF 策略管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的帐户进行登录。
+执行以下命令，并将 `{b2c-tenant-name}` 替换为你的 Azure AD B2C 租户的名称。 使用目录中分配有 [B2C IEF 策略管理员](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)角色的帐户进行登录。
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
@@ -191,15 +191,15 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-有关自定义策略疑难解答的信息，请参阅[排查 Azure AD B2C 自定义策略和标识体验框架](active-directory-b2c-guide-troubleshooting-custom.md)。
+有关自定义策略疑难解答的信息，请参阅 [排查 Azure AD B2C 自定义策略和标识体验框架](./troubleshoot-custom-policies.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何使用 PowerShell 将自定义策略部署为持续集成/持续交付（CI/CD）管道的一部分，请参阅[从 Azure DevOps 管道部署自定义策略](deploy-custom-policies-devops.md)。
+若要了解如何使用 PowerShell 将自定义策略作为持续集成/持续交付 (CI/CD) 管道的一部分进行部署，请参阅 [从 Azure DevOps 管道部署自定义策略](deploy-custom-policies-devops.md)。
 
 <!-- LINKS - External -->
-[Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy
-[Get-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy
-[New-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/new-azureadmstrustframeworkpolicy
-[Remove-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/remove-azureadmstrustframeworkpolicy
-[Set-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/set-azureadmstrustframeworkpolicy
+[Connect-AzureAD]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy
+[Get-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy
+[New-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/new-azureadmstrustframeworkpolicy
+[Remove-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/remove-azureadmstrustframeworkpolicy
+[Set-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/set-azureadmstrustframeworkpolicy

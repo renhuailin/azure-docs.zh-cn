@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60456548"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488385"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>将存储资源管理器与 Azure 文件存储配合使用
 
@@ -31,7 +31,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 - [下载并安装存储资源管理器](https://www.storageexplorer.com/)
 
-- [连接到 Azure 存储帐户或服务](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [连接到 Azure 存储帐户或服务](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>创建文件共享
 
@@ -47,7 +47,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     ![创建文件共享](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. 此时会在“文件共享”文件夹下显示一个文本框。  输入文件共享的名称。 如需文件共享命名规则和限制的列表，请参阅[共享命名规则](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs)部分。
+1. 此时会在“文件共享”文件夹下显示一个文本框。  输入文件共享的名称。 如需文件共享命名规则和限制的列表，请参阅[共享命名规则](./storage/blobs/storage-quickstart-blobs-dotnet.md)部分。
 
     ![共享命名](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -73,11 +73,11 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 1. 主窗格会显示该文件共享的内容。
     
-    ![共享的内容](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![存储资源管理器中文件共享的主窗格屏幕截图，其中显示共享的内容。](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>删除文件共享
 
-可以根据需要轻松地创建和删除文件共享。 （若要了解如何删除各个文件，请参阅[管理文件共享中的文件](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)部分。）
+可以根据需要轻松地创建和删除文件共享。 （若要了解如何删除各个文件，请参阅[管理文件共享中的文件](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)部分。）
 
 以下步骤演示了如何在存储资源管理器中删除文件共享：
 
@@ -97,7 +97,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 ## <a name="copy-a-file-share"></a>复制文件共享
 
-可以通过存储资源管理器将文件共享复制到剪贴板，然后再将该文件共享粘贴到另一存储帐户中。 （若要了解如何复制各个文件，请参阅[管理文件共享中的文件](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)部分。）
+可以通过存储资源管理器将文件共享复制到剪贴板，然后再将该文件共享粘贴到另一存储帐户中。 （若要了解如何复制各个文件，请参阅[管理文件共享中的文件](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)部分。）
 
 以下步骤演示了如何将文件共享从一个存储帐户复制到另一个存储帐户。
 
@@ -117,7 +117,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 ## <a name="get-the-sas-for-a-file-share"></a>获取文件共享的 SAS
 
-[共享访问签名 (SAS)](https://docs.microsoft.com//azure/storage/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 这意味着可以授权客户端在指定时间段内，以一组指定权限有限地访问存储帐户中的对象，而不必共享帐户访问密钥。
+[共享访问签名 (SAS)](./storage/common/storage-sas-overview.md) 用于对存储帐户中的资源进行委托访问。 这意味着可以授权客户端在指定时间段内，以一组指定权限有限地访问存储帐户中的对象，而不必共享帐户访问密钥。
 
 以下步骤演示了如何为文件共享创建 SAS：
 
@@ -191,7 +191,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 1.  主窗格会显示该文件共享的内容。
 
-    ![共享的内容](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![存储资源管理器中文件共享“myazurefileshare”的主窗格屏幕截图，其中显示共享的内容，且已选择第一个文件夹。](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  主窗格会显示该文件共享的内容。
 

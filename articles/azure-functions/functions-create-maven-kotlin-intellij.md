@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09dd868dc9e05241943899654d7c8bb427a8f268
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87055448"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104829"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>快速入门：使用 Kotlin 和 IntelliJ 创建第一个 HTTP 触发的函数
 
@@ -23,7 +23,7 @@ ms.locfileid: "87055448"
 
 若要使用 Kotlin 和 IntelliJ 开发函数，请安装以下软件：
 
-- [Java 开发人员工具包](https://aka.ms/azure-jdks) (JDK) 版本 8
+- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) 版本 8
 - [Apache Maven](https://maven.apache.org) 3.0 或更高版本
 - 带有 Maven 的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download) 社区版或旗舰版
 - [Azure CLI](/cli/azure)

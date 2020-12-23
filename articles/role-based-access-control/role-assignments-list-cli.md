@@ -11,26 +11,26 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9087722b54a805a0c217c236263bdcb39e5456e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e44437bb926e8d2d1ffcd3134bbc63538a112ff0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986253"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648304"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 列出 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure CLI 列出角色分配。
 
 > [!NOTE]
-> 如果你的组织对使用[Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
+> 如果你的组织对使用 [Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
 
 ## <a name="prerequisites"></a>先决条件
 
-- [Bash Azure Cloud Shell](/azure/cloud-shell/overview)或[Azure CLI](/cli/azure)
+- [Bash Azure Cloud Shell](../cloud-shell/overview.md) 或 [Azure CLI](/cli/azure)
 
 ## <a name="list-role-assignments-for-a-user"></a>列出用户的角色分配
 
@@ -163,15 +163,15 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>列出托管标识的角色分配
 
-1. 获取系统分配的或用户分配的托管标识的对象 ID。
+1. 获取系统分配的或用户分配的托管标识的主体 ID。
 
-    若要获取用户分配的托管标识的对象 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 或 [az identity list](/cli/azure/identity#az-identity-list)。
+    若要获取用户分配的托管标识的主体 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 或 [az identity list](/cli/azure/identity#az-identity-list)。
 
     ```azurecli
     az ad sp list --display-name "{name}" --query [].objectId --output tsv
     ```
 
-    若要获取系统分配的托管标识的对象 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)。
+    若要获取系统分配的托管标识的主体 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)。
 
     ```azurecli
     az ad sp list --display-name "{vmname}" --query [].objectId --output tsv

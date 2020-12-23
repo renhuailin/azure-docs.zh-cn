@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552783"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "92459673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88552783"
 * 可让用户使用其 Azure AD 帐户自动登录到 ITRP（单一登录）。
 * 可在一个中心位置（即 Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -94,7 +94,7 @@ ms.locfileid: "88552783"
 
 3. 在“设置 SAML 单一登录”页上，选择“编辑”图标打开“基本 SAML 配置”对话框：   
 
-    ![“编辑”图标](common/edit-urls.png)
+    ![屏幕截图显示“使用 SAML 设置单一登录”页面，其中选中了“编辑”图标。](common/edit-urls.png)
 
 4. 在“基本 SAML 配置”对话框中执行以下步骤。 
 
@@ -113,7 +113,7 @@ ms.locfileid: "88552783"
 
 5. 在“SAML 签名证书”  部分中，选择“编辑”  图标以打开“SAML 签名证书”  对话框：
 
-    ![“编辑”图标](common/edit-certificate.png)
+    ![屏幕截图显示“SAML 签名证书”页，其中“编辑”图标处于选中状态。](common/edit-certificate.png)
 
 6. 在“SAML 签名证书”对话框中，复制并保存“指纹”值   ：
 
@@ -135,17 +135,17 @@ ms.locfileid: "88552783"
 
 1. 在窗口顶部，选择“设置”图标： 
 
-    ![“设置”图标](./media/itrp-tutorial/ic775570.png "“设置”图标")
+    ![设置”图标](./media/itrp-tutorial/ic775570.png "“设置”图标")
 
 1. 在左窗格中，选择“单一登录”  ：
 
-    ![选择“单一登录”](./media/itrp-tutorial/ic775571.png "选择“单一登录”")
+    ![选择“单一登录](./media/itrp-tutorial/ic775571.png "选择“单一登录”")
 
 1. 在“单一登录”配置部分中，执行以下步骤。 
 
-    ![“单一登录”部分](./media/itrp-tutorial/ic775572.png "“单一登录”部分")
+    ![屏幕截图显示已选中“启用”的“单一登录”部分。](./media/itrp-tutorial/ic775572.png "“单一登录”部分")
 
-    ![“单一登录”部分](./media/itrp-tutorial/ic775573.png "“单一登录”部分")
+    ![屏幕截图显示“单一登录”部分，可在其中添加此步骤中所述的信息。](./media/itrp-tutorial/ic775573.png "“单一登录”部分")
 
     1. 选择“启用”。 
 
@@ -242,12 +242,12 @@ ms.locfileid: "88552783"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“ITRP”磁贴时，应会自动登录到设置了 SSO 的 ITRP 实例。 有关访问面板的详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在访问面板中选择“ITRP”磁贴时，应会自动登录到设置了 SSO 的 ITRP 实例。 有关访问面板的详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

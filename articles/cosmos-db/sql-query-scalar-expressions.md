@@ -3,17 +3,19 @@ title: Azure Cosmos DB SQL 查询中的标量表达式
 description: 了解 Azure Cosmos DB 的标量表达式 SQL 语法。 本文还介绍了如何使用运算符将标量表达式组合成复杂表达式。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870728"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339625"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查询中的标量表达式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [SELECT 子句](sql-query-select.md)支持标量表达式。 标量表达式是符号和运算符的组合，经计算后可获得单个值。 标量表达式的示例包括：常量、属性引用、数组元素引用、别名引用或函数调用。 可以使用运算符将标量表达式组合成复杂表达式。
 
@@ -55,7 +57,7 @@ ms.locfileid: "74870728"
 - `input_alias`  
   
    表示由 `FROM` 子句引入，由 `input_alias` 定义的值。  
-  该值不得是“未定义”****–输入中的“未定义”值将被跳过****。  
+  该值不得是“未定义”–输入中的“未定义”值将被跳过。  
   
 - `<scalar_expression>.property_name`  
   

@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 中的服务器评估来评估要迁移到 Azure VM 的 VMware VM
 description: 了解如何使用服务器评估来评估要迁移到 Azure VM 的 VMware VM。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 01db7128cd990098caa25ba2cd79f2f2a2b28d78
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: aad1e2a1c8d7ce6a1b6219c42893b1f4a59c6f42
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90107961"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753138"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>教程：评估 VMware VM 以便迁移到 Azure VM
 

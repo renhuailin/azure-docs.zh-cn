@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fa8a6643f1b7bd60fbf6e5950234e0381666177e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925536"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605218"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>使用日志排查 Azure Data Box Disk 中的验证问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "87925536"
 
 ## <a name="validation-tool-log-files"></a>验证工具日志文件
 
-使用[验证工具](data-box-disk-deploy-copy-data.md#validate-data)验证磁盘上的数据时，会生成一个 *error.xml* 文件来记录任何错误。 该日志文件位于驱动器的 `Drive:\DataBoxDiskImport\logs` 文件夹中。 当你运行验证时，系统会提供错误日志的链接。
+使用 [验证工具](data-box-disk-deploy-copy-data.md#validate-data)验证磁盘上的数据时，会生成一个 *error.xml* 文件来记录任何错误。 该日志文件位于驱动器的 `Drive:\DataBoxDiskImport\logs` 文件夹中。 当你运行验证时，系统会提供错误日志的链接。
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -51,21 +51,21 @@ ms.locfileid: "87925536"
 - 下面是当容器名称无效时生成的错误日志示例。 在磁盘上的 `BlockBlob`、`PageBlob` 或 `AzureFile` 文件夹下创建的文件夹将成为 Azure 存储帐户中的容器。 容器的名称必须遵守 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。
 
     ```xml
-        <?xml version="1.0" encoding="utf-8"?>
-        <ErrorLog Version="2018-10-01">
-          <SessionId>bbsession</SessionId>
-          <ItemType>BlockBlob</ItemType>
-          <SourceDirectory>E:\BlockBlob</SourceDirectory>
-          <Errors>
-            <Error Code="InvalidShareContainerFormat">
-              <List>
-                <Container Name="Azu-reFile" />
-                <Container Name="bbcont ainer1" />
-              </List>
-              <Count>2</Count>
-            </Error>
-          </Errors>
-          <Warnings />
+    <?xml version="1.0" encoding="utf-8"?>
+    <ErrorLog Version="2018-10-01">
+        <SessionId>bbsession</SessionId>
+        <ItemType>BlockBlob</ItemType>
+        <SourceDirectory>E:\BlockBlob</SourceDirectory>
+        <Errors>
+        <Error Code="InvalidShareContainerFormat">
+            <List>
+            <Container Name="Azu-reFile" />
+            <Container Name="bbcont ainer1" />
+            </List>
+            <Count>2</Count>
+        </Error>
+        </Errors>
+        <Warnings />
     </ErrorLog>
     ```
 

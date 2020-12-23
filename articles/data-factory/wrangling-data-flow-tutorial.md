@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的整理数据流入门
 description: 有关如何使用整理数据流在 Azure 数据工厂中准备数据的教程
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: e9a4f7266522fc17c33e2086af6cb7367bbed39e
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 5ee1069ca24dc16a52d30450c0f2163130f549cb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650674"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494896"
 ---
 # <a name="prepare-data-with-wrangling-data-flow"></a>用整理数据流准备数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "91650674"
 
 另一种方法是在管道画布的 "活动" 窗格中。 打开 " **移动和转换** " 可折叠面板，并将 **数据流** 活动拖到画布上。
 
-在这两种方法中，在打开的侧窗格中，选择 " **创建新** 数据流" 并选择 " **整理**数据流"。 单击“确定”。
+在这两种方法中，在打开的侧窗格中，选择 " **创建新** 数据流" 并选择 " **整理** 数据流"。 单击“确定”。
 
 ![突出显示整理数据流选项的屏幕截图。](media/wrangling-data-flow/tutorial1.png)
 

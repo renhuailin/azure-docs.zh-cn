@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839684"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536872"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何为 Azure Redis 缓存设置异地复制
 
@@ -51,11 +51,11 @@ ms.locfileid: "91839684"
 
 ## <a name="add-a-geo-replication-link"></a>添加异地复制链接
 
-1. 若要将两个缓存链接到一起以进行异地复制，请先在要用作主链接缓存的缓存的“资源”菜单中单击“异地复制”。**** 接下来，在“异地复制”边栏选项卡中单击“添加缓存复制链接”。********
+1. 若要将两个缓存链接到一起以进行异地复制，请先在要用作主链接缓存的缓存的“资源”菜单中单击“异地复制”。  接下来，在“异地复制”边栏选项卡中单击“添加缓存复制链接”。 
 
     ![添加链接](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. 在“兼容的缓存”列表中，单击所需辅助缓存的名称。**** 如果列表中未显示辅助缓存，请确认是否符合辅助缓存的[异地复制先决条件](#geo-replication-prerequisites)。 若要按区域筛选缓存，请在地图中单击相应的区域，以便仅显示“兼容的缓存”列表中的缓存。****
+2. 在“兼容的缓存”列表中，单击所需辅助缓存的名称。  如果列表中未显示辅助缓存，请确认是否符合辅助缓存的[异地复制先决条件](#geo-replication-prerequisites)。 若要按区域筛选缓存，请在地图中单击相应的区域，以便仅显示“兼容的缓存”列表中的缓存。 
 
     ![异地复制兼容缓存](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
@@ -63,19 +63,19 @@ ms.locfileid: "91839684"
 
     ![异地复制上下文菜单](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. 单击“链接”将两个缓存链接在一起并开始复制过程。****
+3. 单击“链接”将两个缓存链接在一起并开始复制过程。 
 
     ![链接缓存](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. 可以在“异地复制”边栏选项卡上查看复制过程的进度。****
+4. 可以在“异地复制”边栏选项卡上查看复制过程的进度。 
 
     ![链接状态](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    还可以在主缓存和辅助缓存的“概述”边栏选项卡上查看链接状态。****
+    还可以在主缓存和辅助缓存的“概述”边栏选项卡上查看链接状态。 
 
     ![突出显示了如何查看主缓存和辅助缓存的链接状态的屏幕截图。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    复制过程完成后，“链接状态”改为“成功”。********
+    复制过程完成后，“链接状态”改为“成功”。 
 
     ![缓存状态](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -145,8 +145,8 @@ ms.locfileid: "91839684"
 
 - 支持在同一 VNET 中的缓存间进行异地复制。
 - 也支持在不同 VNET 中的缓存之间进行异地复制。
-  - 如果 VNET 位于同一区域，则可以使用 [VNET 对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)或 [VPN 网关 VNET 到 VNET 连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)来连接 VNET。
-  - 如果 Vnet 在不同的区域，则支持使用 VNET 对等互连进行异地复制，但 VNET 1 (区域 1) 中的客户端 VM 将无法通过其 DNS 名称访问 VNET 2 (区域 2) 中的缓存，因为存在基本内部负载均衡器的约束。 有关 VNET 对等互连约束的详细信息，请参阅[虚拟网络 - 对等互连 - 要求和约束](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)。 建议的解决方法是使用 VPN 网关 VNET 到 VNET 连接。
+  - 如果 VNET 位于同一区域，则可以使用 [VNET 对等互连](../virtual-network/virtual-network-peering-overview.md)或 [VPN 网关 VNET 到 VNET 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)来连接 VNET。
+  - 如果 Vnet 在不同的区域，则支持使用 VNET 对等互连进行异地复制，但 VNET 1 (区域 1) 中的客户端 VM 将无法通过其 DNS 名称访问 VNET 2 (区域 2) 中的缓存，因为存在基本内部负载均衡器的约束。 有关 VNET 对等互连约束的详细信息，请参阅[虚拟网络 - 对等互连 - 要求和约束](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 建议的解决方法是使用 VPN 网关 VNET 到 VNET 连接。
   
 使用[此 Azure 模板](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)可以快速将两个异地复制的缓存部署到通过 VPN 网关 VNET 到 VNET 连接进行连接的 VNET 中。
 
@@ -166,7 +166,7 @@ ms.locfileid: "91839684"
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>是否可以使用 PowerShell 或 Azure CLI管理异地复制？
 
-是的，可以使用 Azure 门户、PowerShell 或 Azure CLI 管理异地复制。 有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)或 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest)。
+是的，可以使用 Azure 门户、PowerShell 或 Azure CLI 管理异地复制。 有关详细信息，请参阅 [PowerShell 文档](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)或 [Azure CLI 文档](/cli/azure/redis/server-link?view=azure-cli-latest)。
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>跨 Azure 区域复制数据的费用是多少？
 
@@ -188,7 +188,7 @@ ms.locfileid: "91839684"
 
 ### <a name="can-i-configure-a-firewall-with-geo-replication"></a>是否可以使用异地复制来配置防火墙？
 
-是的，可以使用异地复制来配置 [防火墙](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) 。 要使异地复制与防火墙一起工作，请确保将辅助缓存的 IP 地址添加到主缓存的防火墙规则。
+是的，可以使用异地复制来配置 [防火墙](./cache-configure.md#firewall) 。 要使异地复制与防火墙一起工作，请确保将辅助缓存的 IP 地址添加到主缓存的防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 

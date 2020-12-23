@@ -35,6 +35,8 @@
       href: identify-threats-with-entity-behavior-analytics.md
     - name: 将威胁情报导入 Azure Sentinel
       href: import-threat-intelligence.md
+    - name: 使用具有播放列表的外部数据
+      href: watchlists.md
     - name: 跨表规范化数据
       href: normalization.md
     - name: 安全性
@@ -94,6 +96,8 @@
               href: connect-barracuda.md
             - name: Barracuda CloudGen 防火墙
               href: connect-barracuda-cloudgen-firewall.md
+            - name: Beyond Security beSECURE
+              href: connect-besecure.md
             - name: Citrix Analytics (Security)
               href: connect-citrix-analytics.md
             - name: F5 BIG-IP
@@ -146,6 +150,10 @@
                       href: connect-checkpoint.md
                     - name: Cisco ASA
                       href: connect-cisco.md
+                    - name: Citrix WAF
+                      href: connect-citrix-waf.md
+                    - name: CyberArk Enterprise Password Vault
+                      href: connect-cyberark.md
                     - name: ExtraHop Reveal(x)
                       href: connect-extrahop.md
                     - name: F5 ASM
@@ -170,6 +178,8 @@
           href: connect-threat-intelligence.md
         - name: 连接 Azure Stack VM
           href: connect-azure-stack.md
+        - name: 监视数据连接器运行状况
+          href: monitor-data-connector-health.md
     - name: 启用用户和实体行为分析
       href: enable-entity-behavior-analytics.md
     - name: 管理多个租户 (MSSP)
@@ -191,12 +201,14 @@
           href: bookmarks.md
         - name: 使用实时流搜寻
           href: livestream.md
+        - name: 通过 REST-API 管理搜寻查询
+          href: hunting-with-rest-api.md
     - name: 删除 Azure Sentinel
       href: offboard.md
 - name: 参考（新增！）
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/securityinsights/'
+      href: /rest/api/securityinsights/
     - name: 网络规范化架构
       href: normalization-schema.md
 - name: 资源
@@ -206,7 +218,7 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: Azure 安全性、隐私性与合规性博客
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+      href: /archive/blogs/azuresecurity/
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 定价

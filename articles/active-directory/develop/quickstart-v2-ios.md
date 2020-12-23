@@ -1,6 +1,7 @@
 ---
-title: Microsoft 标识平台 iOS 和 macOS 快速入门 | Azure
-description: 了解如何在 iOS 或 macOS 应用程序中将用户登录并查询 Microsoft Graph。
+title: 快速入门：向 iOS 或 macOS 应用添加 Microsoft 登录功能 | Azure
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍 iOS 或 macOS 应用如何让用户登录、从 Microsoft 标识平台获取访问令牌以及调用 Microsoft Graph API。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,26 +13,29 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3ea3c3990a9319a81c841de8a7109850fcab5179
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115248"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993901"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
-本快速入门包含了一个代码示例，该示例演示了本机 iOS 或 macOS 应用程序如何使用 Microsoft 标识平台将个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
+在本快速入门中，你将下载并运行一个代码示例，该示例演示本机 iOS 或 macOS 应用程序如何让用户登录并获取访问令牌来调用 Microsoft Graph API。
 
-本快速入门适用于 iOS 和 macOS 应用。 某些步骤只是 iOS 应用所需的。 这些步骤会指出它们仅适用于 iOS。
+本快速入门适用于 iOS 和 macOS 应用。 某些步骤仅为 iOS 应用所需，并将如下所示进行说明。
+
+## <a name="prerequisites"></a>先决条件
+
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* XCode 10+
+* iOS 10+
+* macOS 10.12+
+
+## <a name="how-the-sample-works"></a>示例工作原理
 
 ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-ios/ios-intro.svg)
-
-> [!NOTE]
-> **先决条件**
-> * XCode 10+
-> * iOS 10+
-> * macOS 10.12+
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -58,7 +62,7 @@ ms.locfileid: "88115248"
 >      - 跳过此页上的其他配置。
 >      - 选择 `Register`。
 > 1. 在“管理”部分选择 `Authentication` > `Add Platform` > `iOS`。
->      - 输入应用程序的捆绑包标识符。 捆绑标识符只是一个用于唯一标识应用程序的唯一字符串，例如 `com.<yourname>.identitysample.MSALMacOS`。 记下所用的值。
+>      - 输入应用程序的“捆绑标识符”。 捆绑标识符只是一个用于唯一标识应用程序的唯一字符串，例如 `com.<yourname>.identitysample.MSALMacOS`。 记下所用的值。
 >      - 请注意，iOS 配置也适用于 macOS 应用程序。
 > 1. 选择 `Configure` 并保存“MSAL 配置”详细信息，供稍后在本快速入门中使用。
 > [!div renderon="portal" class="sxs-lookup"]
@@ -70,16 +74,16 @@ ms.locfileid: "88115248"
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-ios/green-check.png) 应用程序已使用这些属性进行了配置
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>步骤 2：下载示例项目
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [下载用于 iOS 的代码示例]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [下载用于 macOS 的代码示例]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>步骤 2：下载示例项目
-> 
+>
 > - [下载用于 iOS 的代码示例](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [下载用于 macOS 的代码示例](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -97,7 +101,7 @@ ms.locfileid: "88115248"
 >#### <a name="step-4-configure-your-project"></a>步骤 4：配置项目
 > 如果选择了上面的“选项 1”，则可跳过这些步骤。
 > 1. 解压缩 zip 文件并在 XCode 中打开该项目。
-> 1. 编辑 **ViewController.swift** 并将以“let kClientID”开头的行替换为以下代码片段。 记住将 `kClientID` 的值更新为客户端 ID，该 ID 是你在本快速入门的前面部分通过门户注册应用时保存的：
+> 1. 编辑“ViewController.swift”并将以“let kClientID”开头的行替换为以下代码片段。 记住将 `kClientID` 的值更新为客户端 ID，该 ID 是你在本快速入门的前面部分通过门户注册应用时保存的：
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -111,9 +115,9 @@ ms.locfileid: "88115248"
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
-> 1. 打开项目设置。 在“标识”部分，输入以前在门户中输入的**捆绑标识符**。
+> 1. 打开项目设置。 在“标识”部分，输入以前在门户中输入的 **捆绑标识符**。
 > 1. 右键单击“Info.plist”，然后选择“打开为” > “源代码”。
-> 1. 在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的***捆绑 ID***。
+> 1. 在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的“捆绑 ID”。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -175,8 +179,8 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 > |其中： | 说明 |
 > |---------|---------|
-> | `clientId` | 在 *portal.azure.com* 中注册的应用程序的应用程序 ID |
-> | `authority` | Microsoft 标识平台终结点。 在大多数情况下，这将是 *https<span/>://login.microsoftonline.com/common* |
+> | `clientId` | 在 portal.azure.com 中注册的应用程序的应用程序 ID |
+> | `authority` | Microsoft 标识平台终结点。 在大多数情况下，这是 `https://login.microsoftonline.com/common` |
 > | `redirectUri` | 应用程序的重定向 URI。 可以传递“nil”以使用默认值，也可以使用自定义重定向 URI。 |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>（仅适用于 iOS）其他应用要求
@@ -209,7 +213,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
     }
  ```
 
-最后，应用必须在 ***Info.plist*** 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
+最后，应用必须在 Info.plist 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -227,7 +231,7 @@ MSAL 有两种用来获取令牌的方法：`acquireToken` 和 `acquireTokenSile
 
 有些情况下，需要用户与 Microsoft 标识平台交互。 在这些情况下，最终用户可能需要选择其帐户、输入其凭据，或者同意应用的权限。 例如，
 
-* 用户首次登录应用程序
+用户首次登录应用程序
 * 用户在重置其密码时需输入其凭据。
 * 应用程序首次请求访问资源时
 * 需要 MFA 或其他条件访问策略时
@@ -262,13 +266,11 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 > | `scopes` | 包含所请求的范围（即针对 Microsoft Graph 的 `[ "user.read" ]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`) 的 `[ "<Application ID URL>/scope" ]`） |
 > | `account` | 请求令牌时对应的帐户。 本快速入门介绍单帐户应用程序。 如果要构建多帐户应用，则需要定义相关逻辑，以使用 `accountsFromDeviceForParameters:completionBlock:` 并传递正确的 `accountIdentifier` 来标识用于令牌请求的帐户 |
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-试用 iOS 和 macOS 教程，了解有关如何构建应用程序的完整分步指南，包括本快速入门的完整说明。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>了解如何创建本快速入门中使用的应用程序
+继续学习分步教程，在该教程中，你将生成一个从 Microsoft 标识平台获取访问令牌并使用它来调用 Microsoft Graph API 的 iOS 或 macOS 应用。
 
 > [!div class="nextstepaction"]
-> [适用于 iOS 和 macOS 的调用图 API 教程](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [教程：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph](tutorial-v2-ios.md)

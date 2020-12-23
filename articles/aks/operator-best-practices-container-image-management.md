@@ -4,12 +4,12 @@ description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理和保
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 018dc1802d4f0b4b498d3993b8753990598a16ba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4d90ac5b8ab44925b73be2f22cd7a79458da9f5a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251138"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073545"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法
 
@@ -23,7 +23,7 @@ ms.locfileid: "86251138"
 
 还可以阅读[群集安全性][best-practices-cluster-security]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
 
-你还可以使用[安全中心中的容器安全性][security-center-containers]来帮助扫描容器中的漏洞。  此外， [Azure 容器注册表][security-center-acr]与安全中心集成，可帮助保护映像和注册表免受漏洞的影响。
+还可以使用[安全中心的容器安全性][security-center-containers]来扫描容器以发现漏洞。  安全中心还有 [Azure 容器注册表集成][security-center-acr]，防止映像和注册表受漏洞的影响。
 
 ## <a name="secure-the-images-and-run-time"></a>保护映像和运行时
 
@@ -61,4 +61,4 @@ Azure 容器注册表任务也可以在更新基础映像时自动更新容器�
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
 [security-center-containers]: ../security-center/container-security.md
-[security-center-acr]: ../security-center/azure-container-registry-integration.md
+[security-center-acr]: ../security-center/defender-for-container-registries-introduction.md

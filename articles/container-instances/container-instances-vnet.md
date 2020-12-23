@@ -3,13 +3,13 @@ title: 将容器组部署到 Azure 虚拟网络
 description: 了解如何使用 Azure 命令行接口将容器组部署到新的或现有的 Azure 虚拟网络。
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: e5a31742956c2ba9bd15026f7667c971c20694a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303002"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746905"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -40,7 +40,7 @@ ms.locfileid: "91303002"
 
 ### <a name="example"></a>示例
 
-以下 [az container create][az-container-create] 命令指定新虚拟网络和子网的设置。 提供[支持](container-instances-region-availability.md#availability---virtual-network-deployment)在虚拟网络中部署容器组的区域中创建的资源组的名称。 此命令将部署公共 Microsoft [aci-helloworld][aci-helloworld] 容器，该容器运行一个提供静态网页的小型 Node.js Web 服务器。 在下一部分，我们要将另一个容器组部署到同一子网，并测试这两个容器实例之间的通信。
+以下 [az container create][az-container-create] 命令指定新虚拟网络和子网的设置。 提供[支持](container-instances-region-availability.md)在虚拟网络中部署容器组的区域中创建的资源组的名称。 此命令将部署公共 Microsoft [aci-helloworld][aci-helloworld] 容器，该容器运行一个提供静态网页的小型 Node.js Web 服务器。 在下一部分，我们要将另一个容器组部署到同一子网，并测试这两个容器实例之间的通信。
 
 ```azurecli
 az container create \
@@ -204,7 +204,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 执行该脚本之前，请将 `RES_GROUP` 变量设置为包含所要删除的虚拟网络和子网的资源组的名称。 如果未使用之前建议的 `aci-vnet` 名称，请更新虚拟网络的名称。 此脚本已针对 Bash Shell 格式化。 若要使用其他 shell（例如 PowerShell 或命令提示符），需要相应地调整变量赋值和访问器。
 
 > [!WARNING]
-> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。 一旦删除，**这些资源就不可恢复**。
+> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。 一旦删除， **这些资源就不可恢复** 。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group

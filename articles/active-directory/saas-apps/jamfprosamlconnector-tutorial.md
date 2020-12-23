@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
-ms.openlocfilehash: 780421d93916c7da7897dfa15d09dc895cf56280
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 48818c300f1ac9ff41f78f39f08e41f95b379b31
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552656"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459560"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>教程：Azure Active Directory SSO 与 Jamf Pro 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552656"
 * 让用户使用其 Azure AD 帐户自动登录到 Jamf Pro。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要详细了解 SaaS 应用与 Azure AD 的集成，请参阅[使用 Azure Active Directory 进行单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要详细了解 SaaS 应用与 Azure AD 的集成，请参阅[使用 Azure Active Directory 进行单一登录](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88552656"
 本教程在测试环境中配置并测试 Azure AD SSO。 
 
 * Jamf Pro 支持 **SP** 和 **IdP** 发起的 SSO。
-* 配置 Jamf Pro 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Jamf Pro 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>从库中添加 Jamf Pro
 
@@ -50,7 +50,7 @@ ms.locfileid: "88552656"
 1. 在左窗格中，选择“Azure Active Directory”服务。 
 1. 转到“企业应用程序”，并选择“所有应用程序”。  
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，输入 *Jamf Pro*。 
+1. 在“从库中添加”部分的搜索框中，输入 *Jamf Pro* 。 
 1. 在结果面板中选择“Jamf Pro”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-sso-in-azure-ad-for-jamf-pro"></a>在 Jamf Pro 的 Azure AD 中配置并测试 SSO
@@ -182,7 +182,7 @@ ms.locfileid: "88552656"
 
 1. 以管理员身份登录到 Jamf Pro 公司站点。
 
-2. 选择页面右上角的**设置**图标。
+2. 选择页面右上角的 **设置** 图标。
 
     ![Jamf Pro 中的“设置”图标](./media/jamfprosamlconnector-tutorial/configure1.png)
 
@@ -220,14 +220,14 @@ ms.locfileid: "88552656"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Jamf Pro”磁贴时，应会自动登录到配置了 SSO 的 Jamf Pro 帐户。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Jamf Pro”磁贴时，应会自动登录到配置了 SSO 的 Jamf Pro 帐户。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关将 SaaS 应用程序与 Azure Active Directory 集成的教程](./tutorial-list.md)
 
-- [单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 - [在 Azure AD 中试用 Jamf Pro](https://aad.portal.azure.com/)

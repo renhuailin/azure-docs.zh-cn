@@ -1,17 +1,17 @@
 ---
 title: 定价层 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 的各种定价层，包括计算代系、存储类型、存储大小、vCore 数、内存和备份保留期。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 8/13/2020
-ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 10/14/2020
+ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225710"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536279"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
@@ -68,10 +68,13 @@ ms.locfileid: "88225710"
 | 存储类型 | Azure 高级存储 | Azure 高级存储 |
 | 存储大小 | 32 GB 到 16 TB| 32到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS |
+| IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!IMPORTANT]
-> 大型存储目前在以下区域中处于公共预览阶段：美国东部、美国东部2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东部、美国西部2和美国中部。
+> 大型存储目前在以下区域中处于公共预览阶段：美国东部、美国东部2、巴西南部、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部、日本东部、澳大利亚东部、澳大利亚东部、加拿大东部、美国西部和加拿大中部。
+>
+> 所有其他区域支持最大4TB 的存储，最高可达 6000 IOPS。
+>
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
@@ -93,7 +96,7 @@ ms.locfileid: "88225710"
 
 ## <a name="backup"></a>Backup
 
-Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 超出此数量的任何备份存储都按每月 GB 的费率计费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250 GB 的备份的存储按 [定价模式](https://azure.microsoft.com/pricing/details/mariadb/)收费。 若要了解影响备份存储使用情况、监视和控制备份存储成本的因素，可参阅 [备份文档](concepts-backup.md)。
+Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何备份存储量超过此数量将按每月 GB 量收费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250GB 的备份存储量按[定价模型](https://azure.microsoft.com/pricing/details/mariadb/)收费。 若要了解影响备份存储使用率的因素、监视和控制备份存储成本，可以参考[备份文档](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6013ed47196e2300f56f0066c634da2a64fdee8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526861"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741484"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>在 Windows 登录屏幕上启用 Azure Active Directory 自助式密码重置
 
@@ -40,7 +40,7 @@ ms.locfileid: "90526861"
 - 已加入混合 Azure AD 的计算机必须能够通过网络连接到域控制器才能使用新密码以及更新缓存的凭据。 这意味着，设备必须位于组织的内部网络或 VPN 中，并且必须能够通过网络访问本地域控制器。
 - 如果使用映像，请确保在运行 sysprep 之前先为内置 Administrator 清除 Web 缓存，然后再执行 CopyProfile 步骤。 有关此步骤的详细信息，请参阅支持文章[使用自定义默认用户配置文件时性能较差](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)。
 - 已知以下设置会干扰在 Windows 10 设备上使用和重置密码的功能：
-    - 如果 v1909 之前 Windows 10 版本中的策略需要 Ctrl + Alt + Del，则 **重置密码** 将不起作用。
+    - 在 v1909 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，则“重置密码”将无效。
     - 如果锁屏通知已关闭，则“重置密码”将无效。
     - HideFastUserSwitching 设置为“已启用”或 1
     - DontDisplayLastUserName 设置为“已启用”或 1
@@ -75,7 +75,7 @@ ms.locfileid: "90526861"
 #### <a name="create-a-device-configuration-policy-in-intune"></a>在 Intune 中创建设备配置策略
 
 1. 登录到 [Azure 门户](https://portal.azure.com) 并选择 **Intune**。
-1. 转到 "**设备配置**  >  " "**配置文件**"，然后选择 " **+ 创建配置**文件"，创建新的设备配置文件
+1. 转到 "**设备配置**  >  " "**配置文件**"，然后选择 " **+ 创建配置** 文件"，创建新的设备配置文件
    - 对于 **平台** ，请选择 *Windows 10 和更高版本*
    - 对于 "**配置文件类型**"，选择 "*自定义*"
 1. 选择 " **创建**"，然后为配置文件提供一个有意义的名称，例如 *Windows 10 登录屏幕 SSPR*
@@ -85,8 +85,8 @@ ms.locfileid: "90526861"
       - 提供一个有意义的名称来说明该设置的作用，如 *ADD SSPR link*。
       - 根据需要提供对设置的有意义的说明。
       - **OMA-URI** 设置为 `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset`
-      - **数据类型**设置为**整数**
-      - **值**设置为 **1**
+      - **数据类型** 设置为 **整数**
+      - **值** 设置为 **1**
 
     依次选择 " **添加**"、" **下一步**"。
 1. 可以将策略分配给特定的用户、设备或组。 根据需要为环境分配配置文件，理想情况下为设备的测试组，然后选择 " **下一步**"。

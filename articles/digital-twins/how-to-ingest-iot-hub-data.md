@@ -7,27 +7,27 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d2606f793c7ab2e3ac29b1eb869e60a2c8e634ad
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983384"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145916"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>将 IoT 中心遥测数据引入 Azure 数字孪生
 
 Azure 数字孪生由 IoT 设备和其他来源的数据驱动。 要在 Azure 数字孪生中使用的设备数据的常见来源为 [IoT 中心](../iot-hub/about-iot-hub.md)。
 
-将数据引入 Azure 数字孪生的过程是设置外部计算资源（如 [Azure 函数](../azure-functions/functions-overview.md)），该资源接收数据并使用 [DigitalTwins api](how-to-use-apis-sdks.md) 相应地设置属性或在 [数字孪生](concepts-twins-graph.md) 上触发遥测事件。 
+将数据引入 Azure 数字孪生的过程是设置外部计算资源（如 [Azure 函数](../azure-functions/functions-overview.md)），该资源接收数据并使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins) 相应地设置属性或在 [数字孪生](concepts-twins-graph.md) 上触发遥测事件。 
 
 本操作方法文档演练如何编写可从 IoT 中心引入遥测数据的 Azure 函数。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 继续此示例之前，需要将以下资源设置为系统必备组件：
-* **IoT 中心**。 有关说明，请参阅[此 Iot 中心快速入门](../iot-hub/quickstart-send-telemetry-cli.md)中的*创建 iot 中心*部分。
-* 使用正确的权限调用数字克隆实例的**Azure 函数**。 有关说明，请参阅 [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)。 
-* 将接收设备遥测数据的**Azure 数字孪生实例**。 有关说明，请参阅 [*如何：设置 Azure 数字孪生实例和身份验证*](./how-to-set-up-instance-portal.md)。
+* **IoT 中心** 。 有关说明，请参阅 [此 Iot 中心快速入门](../iot-hub/quickstart-send-telemetry-cli.md)中的 *创建 iot 中心* 部分。
+* 使用正确的权限调用数字克隆实例的 **Azure 函数** 。 有关说明，请参阅 [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)。 
+* 将接收设备遥测数据的 **Azure 数字孪生实例** 。 有关说明，请参阅 [*如何：设置 Azure 数字孪生实例和身份验证*](./how-to-set-up-instance-portal.md)。
 
 ### <a name="example-telemetry-scenario"></a>遥测方案示例
 
@@ -62,21 +62,17 @@ Azure 数字孪生由 IoT 设备和其他来源的数据驱动。 要在 Azure �
 }
 ```
 
-若要将 **此模型上传到孪生实例**，请打开 Azure CLI，并运行以下命令：
+若要将 **此模型上传到孪生实例** ，请打开 Azure CLI，并运行以下命令：
 
-```azurecli
+```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+然后，需要 **使用此模型创建一个** 克隆。 使用以下命令创建一个克隆并将0.0 设置为初始温度值。
 
-然后，需要 **使用此模型创建一个**克隆。 使用以下命令创建一个克隆并将0.0 设置为初始温度值。
-
-```azurecli
+```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 成功的 "创建" 命令的输出应如下所示：
 ```json
@@ -121,15 +117,15 @@ var temperature = deviceMessage["body"]["Temperature"];
 
 ```csharp
 //Update twin using device temperature
-var uou = new UpdateOperationsUtility();
-uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+var updateTwinData = new JsonPatchDocument();
+updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
 ...
 ```
 
 ### <a name="update-your-azure-function-code"></a>更新 Azure function 代码
 
-现在，你已了解先前示例中的代码，请从 Visual Studio 中的 " [*先决条件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) " 部分打开 Azure 函数。  (如果没有 Azure 函数，请访问先决条件中的链接立即创建一个) 。
+现在，你已了解先前示例中的代码，请从 Visual Studio 中的 " [*先决条件*](#prerequisites) " 部分打开 Azure 函数。  (如果没有 Azure 函数，请访问先决条件中的链接立即创建一个) 。
 
 将 Azure 函数的代码替换为此示例代码。
 
@@ -180,9 +176,9 @@ namespace IotHubtoTwins
                     log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
 
                     //Update twin using device temperature
-                    var uou = new UpdateOperationsUtility();
-                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                    var updateTwinData = new JsonPatchDocument();
+                    updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
                 }
             }
             catch (Exception e)
@@ -193,7 +189,7 @@ namespace IotHubtoTwins
     }
 }
 ```
-保存函数代码，并将函数应用发布到 Azure。 为此，请参阅[*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)的[*"发布 Function App"*](https://docs.microsoft.com/azure/digital-twins/how-to-create-azure-function#publish-the-function-app-to-azure)部分。
+保存函数代码，并将函数应用发布到 Azure。 为此，请参阅 [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)的 [*"发布 Function App"*](./how-to-create-azure-function.md#publish-the-function-app-to-azure)部分。
 
 成功发布后，将在 Visual Studio 命令窗口中看到输出，如下所示：
 
@@ -209,40 +205,22 @@ namespace IotHubtoTwins
 ```
 你还可以在 [Azure 门户](https://portal.azure.com/)中验证发布过程的状态。 搜索 _资源组_ 并导航到 " _活动日志_ "，并在列表中查找 " _获取 web 应用发布配置文件_ "，并验证状态是否为 "成功"。
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="显示发布过程状态的 Azure 门户的屏幕截图。":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="显示流程图的关系图。在此图表中，IoT 中心设备通过 IoT 中心将温度遥测发送到 Azure 功能，该功能可更新 Azure 数字孪生中的克隆温度属性。":::
 
 ## <a name="connect-your-function-to-iot-hub"></a>将函数连接到 IoT 中心
 
 设置中心数据的事件目标。
-在 [Azure 门户](https://portal.azure.com/)中，导航到在 " [*先决条件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) " 部分中创建的 IoT 中心实例。 在 " **事件**" 下，为 Azure 函数创建订阅。
+在 [Azure 门户](https://portal.azure.com/)中，导航到在 " [*先决条件*](#prerequisites) " 部分中创建的 IoT 中心实例。 在 " **事件** " 下，为 Azure 函数创建订阅。
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="显示添加事件订阅的 Azure 门户屏幕截图。":::
-
-在 " **创建事件订阅** " 页中，按如下所示填写字段：
-  1. 在 " **名称**" 下，将订阅命名为你所需的名称。
-  2. 在 " **事件架构**" 下，选择 " _事件网格架构_"。
-  3. 在 " **事件类型**" 下，选择 " _设备遥测_ " 复选框，并取消选中其他事件类型。
-  4. 在 " **终结点类型**" 下，选择 " _Azure function_"。
-  5. 在 " **终结点**" 下，选择 " _选择终结点_ " 链接来创建终结点。
+:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="显示流程图的关系图。在此图表中，IoT 中心设备通过 IoT 中心将温度遥测发送到 Azure 功能，该功能可更新 Azure 数字孪生中的克隆温度属性。" 链接来创建终结点。
     
-:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="用于创建事件订阅详细信息 Azure 门户的屏幕截图":::
-
-在打开的 " _选择 Azure 函数_ " 页上，验证以下详细信息。
- 1. **订阅**： Azure 订阅
- 2. **资源组**：资源组
- 3. **函数应用**：函数应用名称
- 4. **槽**： _生产_
- 5. **函数**：从下拉列表中选择 Azure 函数。
-
-选择 " _确认选择_ " 按钮保存详细信息。            
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="显示流程图的关系图。在此图表中，IoT 中心设备通过 IoT 中心将温度遥测发送到 Azure 功能，该功能可更新 Azure 数字孪生中的克隆温度属性。" 按钮保存详细信息。            
       
-:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="用于选择 Azure 函数的 Azure 门户屏幕截图":::
-
-选择 " _创建_ " 按钮创建事件订阅。
+:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="显示流程图的关系图。在此图表中，IoT 中心设备通过 IoT 中心将温度遥测发送到 Azure 功能，该功能可更新 Azure 数字孪生中的克隆温度属性。" 按钮创建事件订阅。
 
 ## <a name="send-simulated-iot-data"></a>发送模拟 IoT 数据
 
-若要测试新的入口函数，请使用 [*教程：连接端到端解决方案*](./tutorial-end-to-end.md)中的设备模拟器。 该教程由用 c # 编写的示例项目驱动。 示例代码位于此处： [Azure 数字孪生示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 将使用该存储库中的 **devicesimulator.exe** 项目。
+若要测试新的入口函数，请使用 [*教程：连接端到端解决方案*](./tutorial-end-to-end.md)中的设备模拟器。 该教程由用 c # 编写的示例项目驱动。 示例代码位于此处： [Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 将使用该存储库中的 **devicesimulator.exe** 项目。
 
 在端到端教程中，完成以下步骤：
 1. [*在 IoT 中心注册模拟设备*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
@@ -252,9 +230,7 @@ namespace IotHubtoTwins
 
 在运行上面的设备模拟器时，将更改数字克隆的温度值。 在 Azure CLI 中运行以下命令以查看温度值。
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
-```azurecli
+```azurecli-interactive
 az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
 ```
 

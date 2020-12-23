@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 310a42d25ce7fb7970777e8f36abbbee562ab01d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523867"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608929"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>教程：将 Way We Do 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523867"
 * 让用户使用其 Azure AD 帐户自动登录到 Way We Do。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88523867"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Way We Do 支持 **SP** 发起的 SSO
-* Way We Do 支持**实时**用户预配
+* Way We Do 支持 **实时** 用户预配
 
 ## <a name="adding-way-we-do-from-the-gallery"></a>从库添加 Way We Do
 
@@ -117,56 +117,56 @@ ms.locfileid: "88523867"
 
     ![Way We Do 保存](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. 单击“打开单一登录”切换为“是”，启用单一登录   。
+    1. 单击“打开单一登录”切换为“是”，启用单一登录。
 
-    b. 在“单一登录名称”文本框中，输入名称  。
+    1. 在“单一登录名称”文本框中，输入名称。
 
-    c. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
+    1. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
-    d. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    1. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    e. 通过单击“证书”旁的“选择”按钮上传证书   。
+    1. 通过单击“证书”旁的“选择”按钮上传证书。
 
-    f. **可选设置** -
-    
-    * 启用密码 - 禁用此选项时，常规密码应用于 Way We Do，这样用户只能使用单一登录。
+    1. **可选设置** -
 
-    * 启用自动预配 - 启用此选项时，登录用的电子邮件地址将自动与 Way We Do 中的用户列表进行比较。 如果电子邮件地址与 Way We Do 中的活动用户不匹配，则会为登录人员添加新的用户帐户并请求任何缺失的信息。
+        * 启用密码 - 禁用此选项时，常规密码应用于 Way We Do，这样用户只能使用单一登录。
 
-      > [!NOTE]
-      > 通过单一登录添加的用户被添加为普通用户，且系统不会为其分配角色。 Administrator 可作为编辑器或管理员进入并修改其安全角色，还可以分配一个或多个组织结构图角色。
+        * 启用自动预配 - 启用此选项时，登录用的电子邮件地址将自动与 Way We Do 中的用户列表进行比较。 如果电子邮件地址与 Way We Do 中的活动用户不匹配，则会为登录人员添加新的用户帐户并请求任何缺失的信息。
 
-    g. 单击“保存”保留设置  。
+          > [!NOTE]
+          > 通过单一登录添加的用户被添加为普通用户，且系统不会为其分配角色。 Administrator 可作为编辑器或管理员进入并修改其安全角色，还可以分配一个或多个组织结构图角色。
+
+    1. 单击“保存”保留设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 B.Simon 访问 Way We Do 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Way We Do”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Way We Do”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="create-way-we-do-test-user"></a>创建 Way We Do 测试用户
 
@@ -177,12 +177,12 @@ ms.locfileid: "88523867"
 
 ### <a name="test-sso"></a>测试 SSO
 
-选择访问面板中的“Way We Do”磁贴时，应当会自动登录到设置了 SSO 的 Way We Do。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+选择访问面板中的“Way We Do”磁贴时，应当会自动登录到设置了 SSO 的 Way We Do。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

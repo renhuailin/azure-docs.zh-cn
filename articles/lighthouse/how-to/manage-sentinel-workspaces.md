@@ -3,12 +3,12 @@ title: 大规模管理 Azure Sentinel 工作区
 description: 了解如何在委派的客户资源上有效地管理 Azure Sentinel。
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596936"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424103"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大规模管理 Azure Sentinel 工作区
 
@@ -39,7 +39,7 @@ Azure Sentinel 提供安全分析和威胁情报，为警报检测、威胁可�
 > [!NOTE]
 > 可以管理位于不同 [区域](../../availability-zones/az-overview.md#regions)的委托资源。 但是，不支持跨 [全国云和](../../active-directory/develop/authentication-national-cloud.md) Azure 公有云或跨两个不同的国家云的订阅委派。
 
-## <a name="granular-role-based-access-control-rbac"></a> (RBAC) 细化基于角色的访问控制
+## <a name="granular-azure-role-based-access-control-azure-rbac"></a> (Azure RBAC) 的精细 Azure 基于角色的访问控制
 
 MSSP 将管理的每个客户订阅都必须 [载入 Azure Lighthouse](onboard-customer.md)。 这允许管理租户中的指定用户在客户租户中部署的 Azure Sentinel 工作区上访问和执行管理操作。
 

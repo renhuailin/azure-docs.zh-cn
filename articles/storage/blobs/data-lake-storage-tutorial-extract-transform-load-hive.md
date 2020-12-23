@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045291"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912648"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
 本教程执行 ETL 操作：提取、转换和加载数据。 有了原始 CSV 数据文件以后，将其导入 Azure HDInsight 群集，使用 Apache Hive 对其进行转换，然后使用 Apache Sqoop 将其加载到 Azure SQL 数据库。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 提取数据并将其上传到 HDInsight 群集。
@@ -32,17 +32,17 @@ ms.locfileid: "86045291"
 
 * **一个针对 HDInsight 配置的 Azure Data Lake Storage Gen2 存储帐户**
 
-    请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。
+    请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 * **HDInsight 上基于 Linux 的 Hadoop 群集**
 
-    请参阅[快速入门：通过 Azure 门户在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)。
+    请参阅[快速入门：通过 Azure 门户在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)。
 
-* **Azure SQL 数据库**：使用 Azure SQL 数据库作为目标数据存储。 如果 Azure SQL 数据库中没有数据库，请参阅[通过 Azure 门户在 Azure SQL 数据库中创建数据库](../../sql-database/sql-database-get-started.md)。
+* **Azure SQL 数据库**：使用 Azure SQL 数据库作为目标数据存储。 如果 Azure SQL 数据库中没有数据库，请参阅[通过 Azure 门户在 Azure SQL 数据库中创建数据库](../../azure-sql/database/single-database-create-quickstart.md)。
 
-* **Azure CLI**：如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* **Azure CLI**：如果尚未安装 Azure CLI，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-* **安全外壳 (SSH) 客户端**：有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
+* **安全外壳 (SSH) 客户端**：有关详细信息，请参阅 [使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="download-the-flight-data"></a>下载航班数据
 
@@ -50,7 +50,7 @@ ms.locfileid: "86045291"
 
 2. 在该页面上，选择以下值：
 
-   | 名称 | 值 |
+   | 名称 | Value |
    | --- | --- |
    | 筛选年份 |2013 |
    | 筛选期间 |1 月 |
@@ -220,7 +220,7 @@ ms.locfileid: "86045291"
 
    此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
-7. 若要退出 Beeline，请在提示符处输入 `!quit`。
+7. 若要退出 Beeline，请在提示符处输入 `!quit` 。
 
 ## <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
@@ -236,7 +236,7 @@ ms.locfileid: "86045291"
 
     ![获取 Azure SQL 服务器详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器详细信息")
 
-    有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](https://www.freetds.org/)。
+    可通过多种方式连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集使用 [FreeTDS](https://www.freetds.org/) 。
 
 5. 若要安装 FreeTDS，请使用以下命令从 SSH 连接到群集：
 
@@ -278,7 +278,7 @@ ms.locfileid: "86045291"
    GO
    ```
 
-8. 输入 `GO` 语句后，将评估前面的语句。
+8. 输入 `GO` 语句后，会评估前面的语句。
 
    此查询创建一个名为 **delays** 且具有聚集索引的表。
 
@@ -344,4 +344,4 @@ ms.locfileid: "86045291"
 若要了解使用 HDInsight 中的数据的更多方式，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

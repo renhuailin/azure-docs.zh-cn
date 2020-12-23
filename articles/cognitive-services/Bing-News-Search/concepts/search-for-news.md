@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: ecf01720126a9bf5da4aabb08653e62b42265d36
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710586"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351344"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>使用必应新闻搜索 API 搜索新闻
+
+> [!WARNING]
+> 必应搜索 API 将从认知服务迁移到必应搜索服务。 从 2020 年 10 月 30 日开始，必应搜索的任何新实例都需按照[此处](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的过程进行预配。
+> 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
+> 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 使用必应图像搜索 API，可以轻松将必应的认知新闻搜索功能集成到应用程序中。
 
@@ -27,7 +32,7 @@ ms.locfileid: "84710586"
 
 如果提供供用户输入搜索词的搜索框，请使用[必应自动推荐 API](../../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 此 API 根据用户键入的部分搜索词返回建议的查询字符串。
 
-用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`**。
+用户输入搜索词以后，URL 在设置 [q](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 ## <a name="get-general-news"></a>获取一般新闻
 
@@ -45,13 +50,13 @@ Host: api.cognitive.microsoft.com
 
 如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID。
 
-若要从特定的域获取新闻，请使用 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
+若要从特定的域获取新闻，请使用 [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) 查询运算符。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-下面的 JSON 示例显示了对上一查询的响应。 作为必应搜索 API 的[使用和显示要求](../useanddisplayrequirements.md)的一部分，你必须按照响应中提供的顺序显示每篇新闻文章。 如果该文章有群集的文章，则应表明存在相关的文章并在用户提出请求时显示它们。
+下面的 JSON 示例显示了对上一查询的响应。 作为必应搜索 API 的[使用和显示要求](../../bing-web-search/use-display-requirements.md)的一部分，你必须按照响应中提供的顺序显示每篇新闻文章。 如果该文章有群集的文章，则应表明存在相关的文章并在用户提出请求时显示它们。
 
 ```json
 {
@@ -99,9 +104,9 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies
 }
 ```
 
-[news](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) 应答列出必应认为与查询相关的新闻文章。 `totalEstimatedMatches` 字段包含一个估计数，是对可以查看的文章数的估计。 若要了解如何按页浏览这些文章，请参阅[翻页新闻](../paging-news.md)。
+[news](/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) 应答列出必应认为与查询相关的新闻文章。 `totalEstimatedMatches` 字段包含一个估计数，是对可以查看的文章数的估计。 若要了解如何按页浏览这些文章，请参阅[翻页新闻](../../bing-web-search/paging-search-results.md)。
 
-该列表中的每篇[新闻](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle)包含该文章的名称、说明及其在宿主网站上的 URL。 如果文章包含图像，则该对象包括图像的缩略图。 使用 `name` 和 `url` 可以创建一个超链接，用于将用户转到宿主站点上的新闻。 如果文章包含图像，也请使用 `url` 为图像嵌入可单击的链接。 请务必使用 `provider` 来指定文章的属性。
+该列表中的每篇[新闻](/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle)包含该文章的名称、说明及其在宿主网站上的 URL。 如果文章包含图像，则该对象包括图像的缩略图。 使用 `name` 和 `url` 可以创建一个超链接，用于将用户转到宿主站点上的新闻。 如果文章包含图像，也请使用 `url` 为图像嵌入可单击的链接。 请务必使用 `provider` 来指定文章的属性。
 
 如果必应可以确定新闻文章的类别，则文章会包含 `category` 字段。
 
@@ -135,7 +140,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-请使用 [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查询参数来指定要获取的文章的类别。 如需可以指定的新闻类别的列表，请参阅 [News Categories by Market](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market)（按市场划分的新闻类别）。
+请使用 [category](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查询参数来指定要获取的文章的类别。 如需可以指定的新闻类别的列表，请参阅 [News Categories by Market](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market)（按市场划分的新闻类别）。
 
 按类别获取新闻的响应与获取普通新闻的响应几乎相同。 区别是，文章全都来自指定的类别。
 
@@ -153,11 +158,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-请勿包括 [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查询参数。
+请勿包括 [category](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查询参数。
 
 获取标题新闻的响应与获取当天的头条新闻的响应相同。 如果文章为标题文章，其 `headline` 字段会设置为 **true**。
 
-默认情况下，响应包含最多 12 篇标题文章。 若要更改需返回的标题文章的数目，请指定 [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) 查询参数。 就每个新闻类别来说，响应还包括最多四篇非标题文章。
+默认情况下，响应包含最多 12 篇标题文章。 若要更改需返回的标题文章的数目，请指定 [headlineCount](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) 查询参数。 就每个新闻类别来说，响应还包括最多四篇非标题文章。
 
 响应将群集文章计为一篇文章。 由于一个群集可能有多篇文章，因此就每个类别来说，响应可能包含 12 篇以上的标题文章，4 篇以上的非标题文章。
 
@@ -179,7 +184,7 @@ Host: api.cognitive.microsoft.com
 > [!NOTE]
 > 热门主题仅在美国和中国市场提供。
 
-以下 JSON 是对上一请求的响应。 每篇热门新闻文章包含一个相关的图像、突发新闻标志，以及一个链接到该文章的必应搜索结果的 URL。 请使用 `webSearchUrl` 字段中的 URL 将用户带到必应搜索结果页。 也可自行使用查询文本来调用 [Web 搜索 API](../../bing-web-search/search-the-web.md)，以便显示结果。
+以下 JSON 是对上一请求的响应。 每篇热门新闻文章包含一个相关的图像、突发新闻标志，以及一个链接到该文章的必应搜索结果的 URL。 请使用 `webSearchUrl` 字段中的 URL 将用户带到必应搜索结果页。 也可自行使用查询文本来调用 [Web 搜索 API](../../bing-web-search/overview.md)，以便显示结果。
 
 ```json
 {
@@ -223,7 +228,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-news"></a>获取相关新闻
 
-如果有其他文章与某篇新闻文章相关，则该新闻文章可能包含 [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles) 字段。 下面显示的文章包含群集文章。
+如果有其他文章与某篇新闻文章相关，则该新闻文章可能包含 [clusteredArticles](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles) 字段。 下面显示的文章包含群集文章。
 
 ```json
     {
@@ -264,4 +269,4 @@ Host: api.cognitive.microsoft.com
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何分页列出必应新闻搜索结果](../paging-news.md)
+> [如何分页列出必应新闻搜索结果](../../bing-web-search/paging-search-results.md)

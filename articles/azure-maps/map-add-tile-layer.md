@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 8450fbd5287c88431f21753a9c88e8603455f844
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b3619995739c51d68b00f37ebea3a38680a6b6e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91310418"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890971"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>将图块层添加到地图
 
 本文介绍如何覆盖地图上的图块层。 通过图块层可以在 Azure Maps 基本地图图块顶部附加图像。 有关 Azure Maps 平铺系统的详细信息，请参阅 [缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)。
 
-图块层从服务器的磁贴中加载。 这些映像可以是预呈现的或动态呈现的。 使用图块层识别的命名约定，预先呈现的图像与服务器上的任何其他图像存储在一起。 动态呈现的图像使用服务将图像加载到接近实时的时间。 Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer) 类支持三个不同的平铺服务命名约定： 
+图块层从服务器的磁贴中加载。 这些映像可以是预呈现的或动态呈现的。 使用图块层识别的命名约定，预先呈现的图像与服务器上的任何其他图像存储在一起。 动态呈现的图像使用服务将图像加载到接近实时的时间。 Azure Maps [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) 类支持三个不同的平铺服务命名约定： 
 
 * X、Y、缩放表示法-X 是列、Y 是磁贴网格中磁贴的行位置，而缩放表示法基于缩放级别。
 * Quadkey 表示法-将 x、y 和缩放信息合并为一个字符串值。 此字符串值将成为单个磁贴的唯一标识符。
 * 边界框-指定边界方框坐标格式的图像： `{west},{south},{east},{north}` 。 此格式通常由 [Web 映射服务 (WMS) ](https://www.opengeospatial.org/standards/wms)使用。
 
 > [!TIP]
-> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer) 是直观显示地图上的大型数据集的好办法。 矢量数据不仅可以从图像生成，还可以作为图块层呈现。 通过将矢量数据呈现为图块层，地图控件只需加载小于其所表示的矢量数据的文件大小的磁贴。 此方法通常用于在地图上呈现数百万行数据。
+> [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) 是直观显示地图上的大型数据集的好办法。 矢量数据不仅可以从图像生成，还可以作为图块层呈现。 通过将矢量数据呈现为图块层，地图控件只需加载小于其所表示的矢量数据的文件大小的磁贴。 此方法通常用于在地图上呈现数百万行数据。
 
 传递到磁贴层的磁贴 URL 必须是指向 TileJSON 资源的 http 或 https URL，或者使用以下参数的磁贴 URL 模板： 
 
@@ -74,10 +74,10 @@ map.layers.add(new atlas.layer.TileLayer({
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+> [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
 
 > [!div class="nextstepaction"]
-> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+> [TileLayerOptions](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

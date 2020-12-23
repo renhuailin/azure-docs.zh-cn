@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: ad09cdc2c0054c9d9a58e6bfa00252862f1e8c0f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757806"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028217"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark 的数据存储优化
 
@@ -23,7 +23,7 @@ ms.locfileid: "88757806"
 
 Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 Spark 可以借助外部数据源进行扩展，以支持更多格式 — 有关详细信息，请参阅 [Apache Spark 包](https://spark-packages.org)。
 
-最能提高性能的格式是采用 *Snappy 压缩*的 Parquet，这是 Spark 2.x 中的默认格式。 Parquet 以分列格式存储数据，并在 Spark 中得到了高度优化。
+最能提高性能的格式是采用 *Snappy 压缩* 的 Parquet，这是 Spark 2.x 中的默认格式。 Parquet 以分列格式存储数据，并在 Spark 中得到了高度优化。
 
 ## <a name="choose-data-abstraction"></a>选择数据抽象
 
@@ -67,7 +67,7 @@ Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 S
 
 ## <a name="use-the-cache"></a>使用缓存
 
-Spark 提供自己的本机缓存机制，可通过各种方法（比如 `.persist()`、`.cache()` 和 `CACHE TABLE`）使用。 这种本机缓存适用于小型数据集以及需要缓存中间结果的 ETL 管道。 但是，Spark 本机缓存目前并非很适用于分区，因为缓存表不保留分区数据。 *存储层缓存*是一种更通用且更可靠的缓存技术。
+Spark 提供自己的本机缓存机制，可通过各种方法（比如 `.persist()`、`.cache()` 和 `CACHE TABLE`）使用。 这种本机缓存适用于小型数据集以及需要缓存中间结果的 ETL 管道。 但是，Spark 本机缓存目前并非很适用于分区，因为缓存表不保留分区数据。 *存储层缓存* 是一种更通用且更可靠的缓存技术。
 
 * 本机 Spark 缓存（不推荐）
     * 适用于小型数据集。

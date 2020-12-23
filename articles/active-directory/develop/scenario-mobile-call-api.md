@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: d7cad0592c5c4c0487f582ce5405c275b94b7bd0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771734"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444021"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>从移动应用调用 Web API
 
@@ -119,9 +119,9 @@ task.resume()
 
 如果需要多次调用同一 API，或者需要调用多个 API，请在构建应用时考虑以下主题：
 
-- **增量同意**：Microsoft 标识平台允许应用在需要权限时（而不是在开始时）获取用户同意。 每次应用准备好调用 API 时，它应只请求所需的作用域。
+- **增量同意** ：Microsoft 标识平台允许应用在需要权限时（而不是在开始时）获取用户同意。 每次应用准备好调用 API 时，它应只请求所需的作用域。
 
-- **条件访问**：当发出多个 API 请求时，在某些情况下可能必须满足其他条件访问要求。 如果第一个请求没有条件访问策略，并且你的应用尝试以无提示方式访问要求条件访问的新 API，这样就会导致所需满足的要求增加。 若要解决此问题，请务必捕获无提示请求中的错误，并准备好发送交互式请求。  有关详细信息，请参阅[条件访问指导](../azuread-dev/conditional-access-dev-guide.md)。
+- **条件访问** ：当发出多个 API 请求时，在某些情况下可能必须满足其他条件访问要求。 如果第一个请求没有条件访问策略，并且你的应用尝试以无提示方式访问要求条件访问的新 API，这样就会导致所需满足的要求增加。 若要解决此问题，请务必捕获无提示请求中的错误，并准备好发送交互式请求。  有关详细信息，请参阅[条件访问指导](../azuread-dev/conditional-access-dev-guide.md)。
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>使用增量同意和条件访问调用多个 API
 
@@ -159,5 +159,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [移到生产环境](scenario-mobile-production.md)
+转到本方案中的下一篇文章， [转到 "生产](scenario-mobile-production.md)"。

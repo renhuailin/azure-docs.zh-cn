@@ -4,23 +4,22 @@ titleSuffix: Azure App Configuration
 description: 本教程介绍如何动态更新 ASP.NET Core 应用的配置数据
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/24/2019
-ms.author: lcozzens
+ms.date: 09/1/2020
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300283"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930545"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
@@ -57,7 +56,7 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
 1. 选择“应用”。 
 
 > [!NOTE]
-> 如果不使用 Sentinel 密钥，则需手动注册要监视的每个密钥。
+> 如果不使用 Sentinel 密钥，则需手动注册要监视的每个密钥。
 
 ## <a name="reload-data-from-app-configuration"></a>从应用配置重载数据
 
@@ -161,7 +160,7 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     ```
     ---
     > [!Tip]
-    > 若要了解有关读取配置值时的选项模式的详细信息，请参阅  [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
+    > 若要了解有关读取配置值时的选项模式的详细信息，请参阅 [ASP.NET Core 中的选项模式](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
 
 4. 更新 `Configure` 方法以添加 `UseAzureAppConfiguration` 中间件，从而允许在 ASP.NET Core Web 应用继续接收请求的同时，更新已为刷新操作注册的配置设置。
 
@@ -221,6 +220,9 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     ---
     
     该中间件使用 `Program.cs` 的 `AddAzureAppConfiguration` 方法中指定的刷新配置，以针对 ASP.NET Core Web 应用收到的每个请求触发刷新。 对于每个请求，均会触发刷新操作，并且客户端库会检查已注册的配置设置的缓存值是否过期。 如果它已过期，则会刷新它。
+
+    > [!NOTE]
+    > 若要确保配置已刷新，请尽早将中间件添加到请求管道中，以免应用程序中的其他中间件使该中间件短路。
 
 ## <a name="use-the-latest-configuration-data"></a>使用最新的配置数据
 

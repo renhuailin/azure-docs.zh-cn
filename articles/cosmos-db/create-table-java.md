@@ -9,20 +9,21 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a430af4bd0cb8ec0db468ed4bfe605ce1fd3b8c2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 48335e577ed248a42914bdaa1b1e662daf2d26cc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322782"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090161"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB 表 API 数据
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
 > * [Java](create-table-java.md)
 > * [Node.js](create-table-nodejs.md)
-> * [Python](create-table-python.md)
+> * [Python](./table-storage-how-to-use-python.md)
 > 
 
 在本快速入门中，我们创建一个 Azure Cosmos DB 表 API 帐户，并使用从 GitHub 克隆的数据资源管理器和 Java 应用创建表和条目。 Azure Cosmos DB 是一种多模型数据库服务，你可以借助其全球分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
@@ -163,7 +164,7 @@ ms.locfileid: "87322782"
 
 2. 使用右侧的复制按钮，复制主连接字符串。
 
-3. 打开 *C:\git-samples\storage-table-java-getting-started\src\main\resources* 文件夹中的 *config.properties*。 
+3. 打开 *C:\git-samples\storage-table-java-getting-started\src\main\resources* 文件夹中的 *config.properties* 。 
 
 5. 注释掉第 1 行，并取消注释掉第 2 行。 前两行现在应如下所示。
 

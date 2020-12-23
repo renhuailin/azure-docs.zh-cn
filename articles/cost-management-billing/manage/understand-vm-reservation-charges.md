@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bda93712dd9a7501fbfddf0e75b8ae3c0088ed55
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686439"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341234"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>如何将 Azure 预留折扣应用于虚拟机
 
@@ -57,7 +57,7 @@ ms.locfileid: "88686439"
 
 ## <a name="discount-can-apply-to-different-sizes"></a>折扣适用于不同大小
 
-如果购买预留 VM 实例，并选择“针对实例大小灵活性进行优化”，则折扣覆盖范围适用于所选择的 VM 大小。 它还适用于相同系列实例大小灵活性组中的其他 VM 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+如果购买预留 VM 实例，并选择“针对实例大小灵活性进行优化”，则折扣覆盖范围适用于所选择的 VM 大小。 它还适用于相同系列实例大小灵活性组中的其他 VM 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)。
 
 ## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>高级存储 VM 无法获得非高级折扣
 
@@ -75,7 +75,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 实例大小灵活性设置确定哪些服务可获得预留实例折扣。
 
-无论该设置是打开还是关闭，预留折扣在 *ConsumedService* 为 `Microsoft.Compute` 时会自动应用到任何匹配的 VM 使用量。 因此，请检查使用情况数据中的 ConsumedService** 值。 示例包括：
+无论该设置是打开还是关闭，预留折扣在 *ConsumedService* 为 `Microsoft.Compute` 时会自动应用到任何匹配的 VM 使用量。 因此，请检查使用情况数据中的 ConsumedService 值。 示例包括：
 
 - 虚拟机
 - 虚拟机规模集
@@ -84,7 +84,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - Azure Kubernetes 服务 (AKS)
 - Service Fabric
 
-打开此设置后，当 ConsumedService** 为以下任一项时，预留折扣将自动应用于匹配的 VM 使用量：
+打开此设置后，当 ConsumedService 为以下任一项时，预留折扣将自动应用于匹配的 VM 使用量：
 
 - Microsoft.Compute
 - Microsoft.ClassicCompute
@@ -92,7 +92,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-检查使用情况数据中的 ConsumedService** 值，以确定该使用是否符合预留折扣的条件。
+检查使用情况数据中的 ConsumedService 值，以确定该使用是否符合预留折扣的条件。
 
 有关实例大小灵活性的详细信息，请参阅[虚拟机预留实例的虚拟机大小灵活性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)。
 
@@ -106,7 +106,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
 - [什么是 Azure 预留？](../reservations/save-compute-costs-reservations.md)
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 预留](../reservations/manage-reserved-vm-instance.md)
 - [了解即用即付订阅的预留使用情况](../reservations/understand-reserved-instance-usage.md)

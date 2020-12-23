@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278611"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088091"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>监视 key vault 服务的 Azure Monitor Key Vault
 Key Vault 的 Azure Monitor 通过提供 Key Vault 请求、性能、故障和延迟的统一视图，全面监视密钥保管库。
@@ -20,9 +20,9 @@ Key Vault 的 Azure Monitor 通过提供 Key Vault 请求、性能、故障和�
 ## <a name="introduction-to-azure-monitor-for-key-vault"></a>Key Vault Azure Monitor 简介
 
 在深入了解此体验之前，应该了解它如何呈现和可视化信息。
--    **大规模透视图**：可显示基于请求的性能快照视图、故障详情以及操作和延迟概览。
--   **深化分析**：可对特定密钥保管库执行详细分析。
--    **可自定义**：可在其中更改要查看、修改的指标，或设置与限制相符的阈值，并保存你自己的工作簿。 可以将工作簿中的图表固定到 Azure 面板。
+-    **大规模透视图** ：可显示基于请求的性能快照视图、故障详情以及操作和延迟概览。
+-   **深化分析** ：可对特定密钥保管库执行详细分析。
+-    **可自定义** ：可在其中更改要查看、修改的指标，或设置与限制相符的阈值，并保存你自己的工作簿。 可以将工作簿中的图表固定到 Azure 面板。
 
 用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 所有用户都可以访问基于指标的监视数据，但包含基于日志的可视化效果可能要求用户[对其 Azure 密钥保管库启用日志记录](../../key-vault/general/logging.md)。
 
@@ -34,7 +34,7 @@ Key Vault 的 Azure Monitor 通过提供 Key Vault 请求、性能、故障和�
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)
 
-2. 从 "Azure 门户中的左窗格中选择" **监视器** "，然后在" 见解 "部分，选择" **Key**vault "。
+2. 从 "Azure 门户中的左窗格中选择" **监视器** "，然后在" 见解 "部分，选择" **Key** vault "。
 
 ![“概览”体验的屏幕截图，其中显示了多个关系图](./media/key-vaults-insights-overview/overview.png)
 
@@ -90,7 +90,7 @@ Key Vault 的 Azure Monitor 通过提供 Key Vault 请求、性能、故障和�
 
 借助“操作”工作簿，用户可深入了解所有事务的完整详细信息，可以使用顶层磁贴按“结果状态”筛选这些事务。
 
-![“操作”视图的屏幕截图](./media/key-vaults-insights-overview/info.png)
+![显示包含所有事务的完整详细信息的操作工作簿的屏幕截图。](./media/key-vaults-insights-overview/info.png)
 
 用户还可以根据上表中的特定事务类型来确定视图的作用域，这会动态更新下表，用户可以在弹出的上下文窗格中查看完整的操作详细信息。
 

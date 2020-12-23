@@ -1,6 +1,6 @@
 ---
-title: 提高列存储索引性能
-description: 降低内存需求或增加可用内存，使每个行组中的行数最大化。
+title: 提高专用 SQL 池的列存储索引性能
+description: 减少内存需求或增加可用内存，使专用 SQL 池中每个行组中的行数最大化。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 85a9c758f46150c422b55c6ac5cf7e62a429c74f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797762"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453712"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
+# <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>最大化专用 SQL 池中列存储索引的行组质量 
 
 行组质量由行组中的行数决定。 增加可用内存可以使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
 
@@ -75,9 +75,6 @@ select *
 from cte;
 ```
 
->[!TIP]
-> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
-
 trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示没有修整，且行组的质量为最佳）。 下列修整原因指示行组的过早修整：
 
 - BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批负荷，使之包含更多的行。 另外，请重新评估分区方案，避免其太过细化，因为行组无法跨越分区边界。
@@ -102,7 +99,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用 *词典* 来存储文本模式。 词典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
 
-有关列存储内存需求的深入讨论，请参阅视频 [SYNAPSE SQL 池缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有关列存储内存需求的深入讨论，请参阅视频 [专用 SQL 池缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 
@@ -125,7 +122,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>避免过度分区
 
-列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse Analytics 中的 SQL 池，由于数据是分布式的并且每次分布都会进行分区，因此分区数会快速增加。
+列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse 分析中的专用 SQL 池，分区数量会迅速增长，因为数据会分布，并对每个分布进行分区。
 
 如果表中分区过多，可能没有足够行来填充行组。 如果缺少行，在压缩过程中不会产生内存不足的情况， 但是这会导致行组无法实现最佳列存储查询性能。
 
@@ -168,4 +165,4 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解提升 SQL 池性能的更多方法，请参阅[性能概述](cheat-sheet.md)。
+若要查找更多方法来改善专用 SQL 池的性能，请参阅 [性能概述](cheat-sheet.md)。

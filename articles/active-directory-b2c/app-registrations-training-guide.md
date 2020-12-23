@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433902"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109090"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新应用注册体验
 
@@ -39,31 +39,31 @@ Azure AD B2C 应用注册体验在适用于所有 Azure AD 租户的常规[应�
 
 ## <a name="key-new-features"></a>主要的新功能
 
--   **统一的应用列表**会在一个便利位置显示所有使用 Azure AD B2C 和 Azure AD 进行身份验证的应用程序。 此外，可以利用已可用于 Azure AD 应用程序的功能，包括“创建时间”、“证书和密码”状态、搜索栏等等 。
+-   **统一的应用列表** 会在一个便利位置显示所有使用 Azure AD B2C 和 Azure AD 进行身份验证的应用程序。 此外，可以利用已可用于 Azure AD 应用程序的功能，包括“创建时间”、“证书和密码”状态、搜索栏等等 。
 
--   **组合的应用注册**可帮助你快速注册应用，无论该应用是面向客户的还是用于访问 Microsoft Graph 的应用。
+-   **组合的应用注册** 可帮助你快速注册应用，无论该应用是面向客户的还是用于访问 Microsoft Graph 的应用。
 
-- **终结点**窗格有助于快速识别方案的相关终结点，包括 OpenID connect 配置、SAML 元数据、Microsoft Graph API 和 [OAuth 2.0 用户流终结点](tokens-overview.md#endpoints)。
+- **终结点** 窗格有助于快速识别方案的相关终结点，包括 OpenID connect 配置、SAML 元数据、Microsoft Graph API 和 [OAuth 2.0 用户流终结点](tokens-overview.md#endpoints)。
 
-- **API 权限**和**公开 API** 提供更广泛的范围、权限和同意管理。 现在还可将 MS Graph 和 Azure AD Graph 权限分配给应用。
+- **API 权限** 和 **公开 API** 提供更广泛的范围、权限和同意管理。 现在还可将 MS Graph 和 Azure AD Graph 权限分配给应用。
 
--   **所有者**和**清单**现可用于使用 Azure AD B2C 进行身份验证的应用。 可为注册添加所有者，并[使用清单编辑器](../active-directory/develop/reference-app-manifest.md)直接编辑应用程序属性。
+-   **所有者** 和 **清单** 现可用于使用 Azure AD B2C 进行身份验证的应用。 可为注册添加所有者，并[使用清单编辑器](../active-directory/develop/reference-app-manifest.md)直接编辑应用程序属性。
 
 
 ## <a name="new-supported-account-types"></a>新的受支持的帐户类型
 
 在新体验中，从以下选项中选择支持帐户类型：
-- 仅此组织目录中的帐户。
-- 任何组织目录中的帐户 (任何 Azure AD 目录–多租户) 。
-- 任何组织目录或任何标识提供者中的帐户。 可用于通过 Azure AD B2C 对用户进行身份验证。
+- 仅此组织目录中的帐户
+- 任何组织目录中的帐户 (任何 Azure AD 目录–多租户) 
+- 任何标识提供者或组织目录中的帐户(用于通过用户流对用户进行身份验证)
 
 若要了解不同的帐户类型，请选择创建体验中的“帮我选择”。
 
-在旧体验中，创建的应用始终是面向客户的应用程序。 对于这些应用，将账户类型设置为“任何组织目录中或任何标识提供者中的帐户 **。** 用于通过 Azure AD B2C 对用户进行身份验证”。
+在旧体验中，创建的应用始终是面向客户的应用程序。 对于这些应用，帐户类型将设置为“任何标识提供者或组织目录中的帐户(用于通过用户流对用户进行身份验证)”。
 > [!NOTE]
 > 若要对此应用程序的用户进行身份验证，需要此选项才能运行 Azure AD B2C 用户流。 了解[如何注册应用程序以便能使用用户流。](tutorial-register-applications.md)
 
-你还可以使用此选项将 Azure AD B2C 用作 SAML 服务提供程序。 [了解详细信息](identity-provider-adfs2016-custom.md)。
+还可以使用此选项，以便使用 Azure AD B2C 作为 SAML 服务提供程序。 [了解详细信息](identity-provider-adfs.md)。
 
 ## <a name="applications-for-devops-scenarios"></a>适用于 DevOps 方案的应用程序
 可使用其他帐户类型来创建用于管理 DevOps 方案（如使用 Microsoft Graph 上传 Identity Experience Framework 策略或预配用户）的应用。 了解[如何注册 Microsoft Graph 应用程序来管理 Azure AD B2C 资源](microsoft-graph-get-started.md)。
@@ -96,13 +96,12 @@ iOS/macOS 和 Android 平台是公共客户端 。 它们提供了一种简单�
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>不适用于 Azure AD B2C 租户的功能
 以下 Azure AD 应用注册功能不适用或不可用于 Azure AD B2C 租户：
-- **角色和管理员** - 这需要 Azure AD Premium P1 或 P2 许可证，但该许可证目前不可用于 Azure AD B2C。
-- **品牌** - UI/UX 自定义在“公司品牌”体验中配置或作为用户流的一部分进行配置。 了解如何[自定义 Azure Active Directory B2C 中的用户界面](customize-ui-overview.md)。
-- **发布服务器域验证** -你的应用程序在 *onmicrosoft.com*上注册，后者不是已验证的域。 此外，发布服务器域主要用于授予用户同意，这对于 Azure AD B2C 应用进行用户身份验证并不适用。 [详细了解发布服务器域](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain)。
+- **角色和管理员** - 当前不可用于 Azure AD B2C。
+- **品牌** - UI/UX 自定义在“公司品牌”体验中配置或作为用户流的一部分进行配置。 了解如何[自定义 Azure Active Directory B2C 中的用户界面](customize-ui-with-html.md)。
+- **发布服务器域验证** -你的应用程序在 *onmicrosoft.com* 上注册，后者不是已验证的域。 此外，发布服务器域主要用于授予用户同意，这对于 Azure AD B2C 应用进行用户身份验证并不适用。 [详细了解发布服务器域](../active-directory/develop/howto-configure-publisher-domain.md)。
 - **令牌配置** - 令牌配置为用户流而不是应用的一部分。
-- **快速入门**体验目前不适用于 Azure AD B2C 租户。
-- **集成助手**边栏选项卡目前不适用于 Azure AD B2C 租户。
-
+- **快速入门** 体验目前不适用于 Azure AD B2C 租户。
+<!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
 
 ## <a name="limitations"></a>限制
 新体验具有以下限制：
@@ -117,5 +116,5 @@ iOS/macOS 和 Android 平台是公共客户端 。 它们提供了一种简单�
 * 了解[如何注册 Web API](add-web-api-application.md)。
 * 了解[如何注册本机客户端应用程序](add-native-application.md)。
 * 了解[如何注册 Microsoft Graph 应用程序来管理 Azure AD B2C 资源](microsoft-graph-get-started.md)。
-* 了解 [如何使用 Azure AD B2C 作为 SAML 服务提供程序。](identity-provider-adfs2016-custom.md)
+* 了解 [如何使用 Azure AD B2C 作为 SAML 服务提供程序。](identity-provider-adfs.md)
 * 了解[应用程序类型](application-types.md)。

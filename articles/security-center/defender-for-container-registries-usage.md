@@ -1,49 +1,38 @@
 ---
 title: 如何对容器注册表使用 Azure Defender
-description: 了解如何使用 Azure Defender 容器注册表来扫描注册表中的映像
+description: 了解如何使用用于容器注册表的 Azure Defender 扫描 Linux 托管注册表中的 Linux 映像
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532595"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96014562"
 ---
-# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用 Azure Defender 容器注册表来扫描映像是否存在漏洞
+# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞
 
 本页说明如何使用内置漏洞扫描程序扫描 Azure 资源管理器 Azure 容器注册表中存储的容器映像。
 
-启用 **容器注册表的 Azure Defender** 后，会立即扫描推送到注册表的任何映像。 此外，还会扫描过去30天内提取的任何图像。 
+启用适用于容器注册表的 Azure Defender 时，会立即扫描推送到注册表的任何映像。 此外，还会扫描过去30天内提取的任何图像。 
 
 当扫描程序向安全中心报告漏洞时，安全中心会将结果和相关信息显示为建议。 此外，这些发现还包括相关信息，如修正步骤、相关标识符、CVSS 评分等。 您可以查看一个或多个订阅或特定注册表的已识别漏洞。
 
-## <a name="availability"></a>可用性
-
-|方面|详细信息|
-|----|:----|
-|发布状态：|正式发布 (GA)|
-|定价：|**容器注册表的 Azure Defender**按[定价页](security-center-pricing.md)中所示的方式计费|
-|支持的注册表和映像：|![是 ](./media/icons/yes-icon.png) 可以从公共 internet 访问并提供外壳访问的 Linux 托管 ACR 注册表。<br>![无 ](./media/icons/no-icon.png) Windows 承载的 ACR 注册表。<br>![无 ](./media/icons/no-icon.png) "专用" 注册表项-安全中心要求可以从公共 internet 访问注册表。 安全中心当前无法使用防火墙、服务终结点或专用终结点（如 Azure Private Link）连接或扫描访问权限。<br>![没有任何 ](./media/icons/no-icon.png) 超级最简单映像（例如 [Docker 暂存](https://hub.docker.com/_/scratch/) 映像）或仅包含应用程序和其运行时依赖项的 "Distroless" 映像，无需包管理器、shell 或 OS。|
-|所需角色和权限：|**安全读取器** 和 [Azure 容器注册表读取器角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
-|||
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
-## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>标识 Azure 容器注册表中的映像中的漏洞 
+## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>标识 Azure 容器注册表映像中的漏洞 
 
-1. 若要对存储在 Azure 资源管理器 Azure 容器注册表中的映像启用漏洞扫描，请执行以下操作：
+若要对存储在 Azure 资源管理器 Azure 容器注册表中的映像启用漏洞扫描，请执行以下操作：
 
-    1. 为你的订阅启用 **容器注册表的 Azure Defender** 。
+1. 为你的订阅启用 **容器注册表的 Azure Defender** 。 安全中心现已准备好扫描注册表中的映像。
 
-        安全中心现已准备好扫描注册表中的映像。
-
-        >[!NOTE]
-        > 此功能按映像收费。
+    >[!NOTE]
+    > 此功能按映像收费。
 
 1. 每次推送或导入都会触发映像扫描，如果在过去的30天内请求映像，则为。 
 
@@ -64,7 +53,7 @@ ms.locfileid: "91532595"
 
 ## <a name="view-and-remediate-findings"></a>查看和修正发现
 
-1. 若要查看发现结果，请访问“建议”页面。 如果发现问题，你将看到**应修正 Azure 容器注册表映像中**的建议漏洞
+1. 若要查看发现结果，请访问“建议”页面。 如果发现问题，你将看到 **应修正 Azure 容器注册表映像中** 的建议漏洞
 
     ![解决问题的建议 ](media/monitor-container-security/acr-finding.png)
 
@@ -115,9 +104,12 @@ ms.locfileid: "91532595"
 
 ## <a name="disable-specific-findings-preview"></a> (预览禁用特定发现) 
 
-如果组织需要忽略查找而不是对其进行修正，则可以选择禁用它。 禁用的结果不会影响安全分数或产生不需要的噪音。
+> [!NOTE]
+> [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
-当查找与在禁用规则中定义的条件相匹配时，它不会显示在结果列表中。 典型方案包括：
+如果组织需要忽略发现结果，而不是修正漏洞，则可以选择禁用发现结果。 禁用发现结果不会影响安全分数，也不会产生有害的噪音。
+
+当发现结果与在禁用规则中定义的条件相匹配时，它不会显示在发现结果列表中。 典型方案包括：
 
 - 禁用严重性低于中型的发现结果
 - 禁用非可修补的结果
@@ -132,7 +124,7 @@ ms.locfileid: "91532595"
 您可以使用下列任一条件： 
 
 - 查找 ID 
-- Category
+- 类别
 - 安全检查 
 - CVSS v3 评分
 - 严重性 
@@ -145,19 +137,16 @@ ms.locfileid: "91532595"
 1. 定义条件。
 1. 选择 " **应用规则**"。
 
-    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现创建禁用规则&quot;:::
+    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现创建禁用规则":::
 
 1. 查看、替代或删除规则： 
-    1. 选择 &quot; **禁用规则**&quot;。
-    1. 在 &quot;作用域" 列表中，具有活动规则的订阅显示为 "已 **应用规则**"。
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="为注册表上的 VA 发现创建禁用规则&quot;:::
-
-1. 查看、替代或删除规则： 
-    1. 选择 &quot; **禁用规则**&quot;。
-    1. 在 &quot;作用域" ) 。
+    1. 选择 " **禁用规则**"。
+    1. 在 "作用域" 列表中，具有活动规则的订阅显示为 "已 **应用规则**"。
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="修改或删除现有规则":::
+    1. 若要查看或删除规则，请选择省略号菜单 ( "..." ) 。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解有关 Azure Defender 的详细信息](azure-defender.md)
+> [详细了解 Azure Defender](azure-defender.md)

@@ -1,84 +1,51 @@
 ---
-title: Azure Data Lake Storage Gen2 中的访问控制概述 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen2 中访问控制的工作原理。 支持 Azure 基于角色的访问控制 (Azure RBAC) 和类似 POSIX 的 ACL。
+title: Azure Data Lake Storage Gen2 中的访问控制列表 | Microsoft Docs
+description: 了解 Azure Data Lake Storage Gen2 中的 POSIX 样式的 ACL 访问控制列表如何工作。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2418a8813e7b9de603b7e7cdc11fc756d73ac2a4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716103"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350749"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
+# <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制列表 (ACL)
 
-Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持 Azure 基于角色的访问控制 (Azure RBAC) 和类似 POSIX 的访问控制列表 (ACL)。 本文汇总了 Data Lake Storage Gen2 访问控制模型的基本知识。
+Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持 Azure 基于角色的访问控制 (Azure RBAC) 和类似 POSIX 的访问控制列表 (ACL)。 本文介绍了 Data Lake Storage Gen2 中的访问控制列表。 若要了解如何结合使用 Azure RBAC 和 ACL，以及系统如何评估它们以做出授权决策，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](data-lake-storage-access-control-model.md)。
 
-<a id="azure-role-based-access-control-rbac"></a>
+<a id="access-control-lists-on-files-and-directories"></a>
 
-## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
+## <a name="about-acls"></a>关于 ACL
 
-Azure RBAC 使用角色分配有效地将权限集应用到 *安全主体*。 安全主体是一个对象，表示 Azure Active Directory (AD) 中定义的用于请求访问 Azure 资源的用户、组、服务主体或托管标识。
-
-一般情况下，这些 Azure 资源限制为顶级资源（例如：Azure 存储帐户）。 就 Azure 存储以及随后的 Azure Data Lake Storage Gen2 而言，此机制已扩展到容器（文件系统）资源。
-
-若要了解如何将角色分配给存储帐户范围内的安全主体，请参阅 [使用 Azure 门户分配 Azure 角色以访问 blob 和队列数据](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+可将[安全主体](../../role-based-access-control/overview.md#security-principal)关联到对文件和目录的访问权限级别。 这些关联在访问控制列表 (ACL) 中捕获。 存储帐户中的每个文件和目录都有一个访问控制列表。 当安全主体尝试对文件或目录执行操作时，ACL 检查将确定安全主体（用户、组、服务主体或托管标识）是否具有执行该操作所需的正确权限级别。
 
 > [!NOTE]
-> 来宾用户无法创建角色分配。
+> ACL 仅应用于同一个租户中的安全主体，不应用于使用共享密钥或共享访问签名 (SAS) 令牌身份验证的用户。 那是因为没有与调用方关联的标识，因此不能执行基于安全主体权限的授权。  
 
-### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>角色分配对文件和目录级访问控制列表的影响
-
-虽然使用 Azure 角色分配是一种强大的访问权限控制机制，但相对于 ACL，这种机制并不精细。 Azure RBAC 的最小粒度为容器级别，其计算优先级高于 Acl。 因此，如果将角色分配给容器范围内的某个安全主体，则无论 ACL 分配如何，该安全主体对于该容器中的所有目录和文件都具有与该角色关联的授权级别。
-
-通过 [内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或自定义角色向安全主体授予 Azure RBAC 数据权限时，将首先评估请求的授权。 如果请求的操作通过安全主体的 Azure 角色分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果安全主体没有 Azure 角色分配或请求的操作与分配的权限不匹配，则通过执行 ACL 检查来确定安全主体是否有权执行请求的操作。
-
-> [!NOTE]
-> 如果为安全主体分配了“存储 Blob 数据所有者”内置角色，则会将安全主体视为“超级用户”并向其授予对所有转变操作（包括设置目录或文件的所有者，以及设置他们不是所有者的目录或文件的 ACL）的完全访问权限。 超级用户访问是唯一获准的更改资源所有者的方式。
-
-## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>共享密钥和共享访问签名 (SAS) 身份验证
-
-Azure Data Lake Storage Gen2 支持使用共享密钥和 SAS 方法进行身份验证。 这两种身份验证方法的特点是没有与调用方关联的标识，因此不能执行基于安全主体权限的身份验证。
-
-就共享密钥这一种方法而言，调用方有效地获得了“超级用户”访问权限，这意味着对所有资源上所有操作（包括设置所有者和更高 ACL）的完全访问权限。
-
-SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到所有授权决策，但不执行额外的 ACL 检查。
-
-## <a name="access-control-lists-on-files-and-directories"></a>文件和目录上的访问控制列表
-
-可将安全主体关联到文件和目录的访问级别。 这些关联在访问控制列表 (ACL) 中捕获。 存储帐户中的每个文件和目录都有一个访问控制列表。
-
-> [!NOTE]
-> ACL 仅适用于同一租户中的安全主体。 
-
-如果在存储帐户级别将角色分配到某个安全主体，则可以使用访问控制列表授予该安全主体对特定文件和目录的提升访问权限。
-
-无法使用访问控制列表来提供比角色分配授予的级别更低的访问级别。 例如，如果将[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)角色分配到了某个安全主体，则无法使用访问控制列表来防止该安全主体写入目录。
-
-
-### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>使用访问控制列表设置文件和目录级权限
+## <a name="how-to-set-acls"></a>如何设置 ACL
 
 若要设置文件和目录级权限，请参阅以下任一文章：
 
 | 环境 | 项目 |
 |--------|-----------|
 |Azure 存储资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md#managing-access)|
-|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-dotnet.md)|
-|Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-java.md)|
-|Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-python.md)|
-|PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure CLI|[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-cli.md)|
-|REST API |[路径 - 更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
+|Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
+|Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
+|PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
+|Azure CLI|[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|REST API |[路径 - 更新](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > 如果安全主体是服务主体，则必须使用该服务主体的对象 ID，而不能使用相关应用注册的对象 ID。 若要获取服务主体的对象 ID，请打开 Azure CLI，然后使用此命令：`az ad sp show --id <Your App ID> --query objectId`。 请务必将 `<Your App ID>` 占位符替换为应用注册的应用 ID。
 
-### <a name="types-of-access-control-lists"></a>访问控制列表的类型
+## <a name="types-of-acls"></a>ACL 的类型
 
 访问控制列表有两种类型：访问 ACL 和默认 ACL。 
 
@@ -91,7 +58,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 > [!NOTE]
 > 更改父级的默认 ACL 不影响现有子项的访问 ACL 或默认 ACL。
 
-### <a name="levels-of-permission"></a>权限级别
+## <a name="levels-of-permission"></a>权限级别
 
 容器对象权限为“读取”、“写入”和“执行”，可对文件和目录使用这些权限，如下表所示：  
 
@@ -102,9 +69,9 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 | **执行 (X)** | 不表示 Data Lake Storage Gen2 上下文中的任何内容 | 需要遍历目录的子项 |
 
 > [!NOTE]
-> 如果你使用的是仅使用 Acl (没有 Azure RBAC) 来授予权限，则若要向安全主体授予对文件的读取或写入权限，你需要为该容器以及导致该文件的文件夹层次结构中的每个文件夹授予安全主体 **执行** 权限。
+> 如果仅使用 ACL（不使用 Azure RBAC）授予权限，则要授予安全主体对文件的读取或写入访问权限，需要授予安全主体对容器以及通向该文件的文件夹层次结构中每个文件夹的“执行”权限。
 
-#### <a name="short-forms-for-permissions"></a>权限的简短形式
+### <a name="short-forms-for-permissions"></a>权限的简短形式
 
 **RWX** 用于表示“读取 + 写入 + 执行”。 还有更精简的数字形式，“读取=4”，“写入=2”，“执行=1”，其总和表示各种不同的权限。   下面是一些示例。
 
@@ -115,13 +82,18 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 | 4            | `R--`        | 读取                   |
 | 0            | `---`        | 无权限         |
 
-#### <a name="permissions-inheritance"></a>权限继承
+### <a name="permissions-inheritance"></a>权限继承
 
 在 Data Lake Storage Gen2 使用的 POSIX 样式的模型中，项的权限存储在项本身中。 换而言之，如果是在已创建子项后设置的权限，则不能从父项继承项的权限。 只有于创建子项前在父项上设置了默认权限时，才能继承权限。
 
-### <a name="common-scenarios-related-to-permissions"></a>与权限相关的常见方案
+## <a name="common-scenarios-related-to-acl-permissions"></a>与 ACL 权限相关的常见场景
 
-下表列出了一些常见方案，可帮助你了解对存储帐户执行特定操作所需的权限。
+下表显示了让安全主体执行“操作”列中列出的操作所需的 ACL 条目。 
+
+此表显示的列代表虚构目录层次结构的每个级别。 容器的根目录 (`\`)、名为 **Oregon** 的子目录、Oregon 目录的名为 **Portland** 的子目录以及 Portland 目录中名为 **Data.txt** 的文本文件分别对应一个列。 
+
+> [!IMPORTANT]
+> 此表假设你 **仅** 使用没有任何 Azure 角色分配的 acl。 若要查看组合使用 Azure RBAC 和 ACL 的类似表，请参阅[权限表：组合使用 Azure RBAC 和 ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)。
 
 |    操作             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -136,7 +108,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 > [!NOTE]
 > 只要以上两个条件成立，删除文件时就不需要文件的写入权限。
 
-### <a name="users-and-identities"></a>用户和标识
+## <a name="users-and-identities"></a>用户和标识
 
 每个文件和目录都有这些标识的不同权限：
 
@@ -150,7 +122,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 用户和组的标识是 Azure Active Directory (Azure AD) 标识。 因此，除非另有规定，否则“用户”在 Data Lake Storage Gen2 的上下文中可以表示 Azure AD 用户、服务主体、托管标识或安全组。
 
-#### <a name="the-owning-user"></a>拥有用户
+### <a name="the-owning-user"></a>拥有用户
 
 创建项的用户自动成为该项的拥有用户。 拥有用户可以：
 
@@ -160,25 +132,25 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 > [!NOTE]
 > 拥有用户无法更改某个文件或目录的拥有用户。 只有超级用户可以更改文件或目录的拥有用户。
 
-#### <a name="the-owning-group"></a>拥有组
+### <a name="the-owning-group"></a>拥有组
 
 在 POSIX ACL 中，每个用户都与“主组”关联。 例如，用户“Alice”可能属于“finance”组。 Alice 还可能属于多个组，但始终有一个组指定为她的主组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
 
-##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>为新的文件或目录分配拥有组
+#### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>为新的文件或目录分配拥有组
 
 * **情况 1**：根目录“/”。 此目录是在创建 Data Lake Storage Gen2 容器时创建的。 在这种情况下，如果容器是使用 OAuth 创建的，则拥有组将设置为创建容器的用户。 如果容器是使用共享密钥、帐户 SAS 或服务 SAS 创建的，则所有者和拥有组将设置为 $superuser。
 * **情况 2**（所有其他情况）：创建新项时，从父目录复制拥有组。
 
-##### <a name="changing-the-owning-group"></a>更改拥有组
+#### <a name="changing-the-owning-group"></a>更改拥有组
 
 拥有组可由以下用户更改：
 * 任何超级用户。
 * 拥有用户，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 拥有组无法更改某个文件或目录的 ACL。  虽然拥有组设置为在根目录那一种情况（即上面的**案例 1**）中创建了帐户的用户，但单个用户帐户不能有效地用于通过拥有组提供权限。 可以将此权限分配给有效的用户组（如果适用）。
+> 拥有组无法更改某个文件或目录的 ACL。  虽然拥有组设置为在根目录那一种情况（即上面的 **案例 1**）中创建了帐户的用户，但单个用户帐户不能有效地用于通过拥有组提供权限。 可以将此权限分配给有效的用户组（如果适用）。
 
-### <a name="access-check-algorithm"></a>访问检查算法
+## <a name="access-check-algorithm"></a>访问检查算法
 
 以下伪代码显示了存储帐户的访问检查算法。
 
@@ -190,61 +162,68 @@ def access_check( user, desired_perms, path ) :
   # path is the file or directory
   # Note: the "sticky bit" isn't illustrated in this algorithm
   
-# Handle super users.
+  # Handle super users.
   if (is_superuser(user)) :
     return True
 
-# Handle the owning user. Note that mask isn't used.
-entry = get_acl_entry( path, OWNER )
-if (user == entry.identity)
-    return ( (desired_perms & entry.permissions) == desired_perms )
+  # Handle the owning user. Note that mask isn't used.
+  entry = get_acl_entry( path, OWNER )
+  if (user == entry.identity)
+      return ( (desired_perms & entry.permissions) == desired_perms )
 
-# Handle the named users. Note that mask IS used.
-entries = get_acl_entries( path, NAMED_USER )
-for entry in entries:
-    if (user == entry.identity ) :
-        mask = get_mask( path )
-        return ( (desired_perms & entry.permissions & mask) == desired_perms)
+  # Handle the named users. Note that mask IS used.
+  entries = get_acl_entries( path, NAMED_USER )
+  for entry in entries:
+      if (user == entry.identity ) :
+          mask = get_mask( path )
+          return ( (desired_perms & entry.permissions & mask) == desired_perms)
 
-# Handle named groups and owning group
-member_count = 0
-perms = 0
-entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
-mask = get_mask( path )
-for entry in entries:
-if (user_is_member_of_group(user, entry.identity)) :
-    if ((desired_perms & entry.permissions & mask) == desired_perms)
-        return True 
+  # Handle named groups and owning group
+  member_count = 0
+  perms = 0
+  entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
+  mask = get_mask( path )
+  for entry in entries:
+    if (user_is_member_of_group(user, entry.identity)) :
+        if ((desired_perms & entry.permissions & mask) == desired_perms)
+            return True 
         
-# Handle other
-perms = get_perms_for_other(path)
-mask = get_mask( path )
-return ( (desired_perms & perms & mask ) == desired_perms)
+  # Handle other
+  perms = get_perms_for_other(path)
+  mask = get_mask( path )
+  return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-#### <a name="the-mask"></a>掩码
+### <a name="the-mask"></a>掩码
 
 如访问检查算法中所示，掩码会限制对命名用户、拥有组和命名组的访问权限。  
 
-> [!NOTE]
-> 对于新的 Data Lake Storage Gen2 容器，根目录 ("/") 的访问 ACL 的掩码默认为 750（对于目录）和 640（对于文件）。 文件不接收 X 位，因为它与只存储系统中的文件无关。
->
-> 可能会在每次调用时指定掩码。 这就使不同的使用系统（例如群集）能够为文件操作使用不同的有效掩码。 如果根据特定请求指定了掩码，则该掩码完全替代默认掩码。
+对于新的 Data Lake Storage Gen2 容器，根目录（“/”）的访问 ACL 的掩码默认为 **750**（适用于目录）和 **640**（适用于文件）。 下表显示了这些权限级别的符号表示法。
 
-#### <a name="the-sticky-bit"></a>粘滞位
+|实体|目录|文件|
+|--|--|--|
+|拥有用户|`rwx`|`r-w`|
+|拥有组|`r-x`|`r--`|
+|其他|`---`|`---`|
+
+文件不接收 X 位，因为它与只存储系统中的文件无关。 
+
+可能会在每次调用时指定掩码。 这就使不同的使用系统（例如群集）能够为文件操作使用不同的有效掩码。 如果根据特定请求指定了掩码，则该掩码完全替代默认掩码。
+
+### <a name="the-sticky-bit"></a>粘滞位
 
 粘滞位是 POSIX 容器的更高级功能。 在 Data Lake Storage Gen2 的上下文中，不太可能需要粘滞位。 总之，如果目录上已启用粘滞位，子项只能由子项的拥有用户删除或重命名。
 
 粘滞位不会显示在 Azure 门户中。
 
-### <a name="default-permissions-on-new-files-and-directories"></a>新文件和目录的默认权限
+## <a name="default-permissions-on-new-files-and-directories"></a>新文件和目录的默认权限
 
 在现有目录下创建新文件或目录时，父目录的默认 ACL 会确定：
 
 - 子目录的默认 ACL 和访问 ACL。
 - 子文件的访问 ACL（文件没有默认 ACL）。
 
-#### <a name="umask"></a>umask
+### <a name="umask"></a>umask
 
 创建文件或目录时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父目录上一个 9 位的值，它包含“拥有用户”、“拥有组”和“其他”的 RWX 值  。
 
@@ -256,7 +235,7 @@ Azure Data Lake Storage Gen2 的 umask 是设置为 007 的常量值。 此值�
 | umask.owning_group  |    0         |   `---`      | 对于拥有组，将父项的默认 ACL 复制到子项的访问 ACL | 
 | umask.other         |    7         |   `RWX`      | 对于其他，删除子项的访问 ACL 的所有权限 |
 
-Azure Data Lake Storage Gen2 使用的 umask 值有效表示默认情况下，不会在新的子级上传输 **其他** 的值，除非在父目录中定义了默认 ACL。 在这种情况下，umask 将被有效地忽略，并且默认 ACL 定义的权限将应用于子项目。 
+Azure Data Lake Storage Gen2 使用的 umask 值实际上表示默认情况下永远不会在新子项上传输“other”的值，除非在父目录上定义了默认的 ACL。 在这种情况下，umask 实际上会被忽略，默认 ACL 定义的权限将应用于子项。 
 
 以下伪代码显示了在为子项创建 ACL 时如何应用 umask。
 
@@ -276,17 +255,35 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="common-questions-about-acls-in-data-lake-storage-gen2"></a>有关 Data Lake Storage Gen2 中 ACL 的常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
 否。 只要开启了分层命名空间 (HNS) 功能，存储帐户就能通过 ACL 进行访问控制。
 
-即使关闭了 HNS 功能，Azure RBAC 授权规则仍适用。
+如果关闭了 HNS 功能，Azure RBAC 授权规则仍适用。
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>应用 ACL 的最佳方式是什么？
 
-始终将 Azure AD 安全组用作 ACL 中分配的主体。 拒绝直接分配各个用户或服务主体。 使用此结构，你可以添加和删除用户或服务主体，不需要向整个目录结构重新应用 ACL。 而只需要从相应的 Azure AD 安全组添加或删除它们。 请记住，ACL 不是继承的，重新应用 ACL 需要更新每个文件和子目录上的 ACL。 
+[!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-groups.md)] 
+
+### <a name="how-are-azure-rbac-and-acl-permissions-evaluated"></a>如何评估 Azure RBAC 和 ACL 权限？
+
+若要了解系统如何将 Azure RBAC 和 ACL 一起评估，以便针对存储帐户资源做出授权决策，请参阅[如何评估权限](data-lake-storage-access-control-model.md#how-permissions-are-evaluated)。
+
+### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Azure 角色分配和 ACL 条目的限制是什么？
+
+下表提供了在使用 Azure RBAC 管理“粗粒度”权限（应用于存储帐户或容器的权限）以及使用 ACL 管理“细粒度”权限（应用于文件和目录的权限）时要考虑的限制的汇总视图。 使用安全组进行 ACL 分配。 通过使用组，你不太可能超出每个订阅的角色分配的最大数量，以及每个文件或目录的 ACL 条目的最大数量。 
+
+[!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
+
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-azure-rbac"></a>Data Lake Storage Gen2 是否支持 Azure RBAC 继承？
+
+Azure 角色分配确实可以继承。 分配从订阅、资源组和存储帐户资源向下传递到容器资源。
+
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 是否支持 ACL 继承？
+
+可以使用默认 ACL 来设置父目录下创建的新子目录和文件的 ACL。 若要更新现有子项的 ACL，你需要以递归方式为所需的目录层次结构添加、更新或删除 ACL。 有关详细信息，请参阅[以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)](recursive-access-control-lists.md)。 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>以递归方式删除目录及其内容需要哪些权限？
 
@@ -330,11 +327,11 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 获取服务主体的正确 OID 后，转到存储资源管理器的“管理访问权限”页，以添加该 OID 并为其分配适当的的权限。 请务必选择“保存”。
 
-### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 是否支持 ACL 继承？
+### <a name="can-i-set-the-acl-of-a-container"></a>是否可以设置容器的 ACL？
 
-Azure 角色分配确实可以继承。 分配从订阅、资源组和存储帐户资源向下传递到容器资源。
+错误。 容器没有 ACL。 但是，你可以设置容器的根目录的 ACL。 每个容器都有一个根目录，该目录与容器同名。 例如，如果将容器命名为 `my-container`，则根目录名为 `myContainer/`。 
 
-ACL 不支持继承。 但是，可以使用默认 ACL 来设置父目录下创建的子目录和文件的 ACL。 
+Azure 存储 REST API 包含一个名为[设置容器 ACL](/rest/api/storageservices/set-container-acl) 的操作，但该操作不能用来设置容器或容器根目录的 ACL， 而只能用来指示容器中的 blob [是否可以公开访问](anonymous-read-access-configure.md)。 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>在哪里可以了解 POSIX 访问控制模型的详细信息？
 
@@ -349,4 +346,4 @@ ACL 不支持继承。 但是，可以使用默认 ACL 来设置父目录下创�
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure Data Lake Storage Gen2 概述](../blobs/data-lake-storage-introduction.md)
+- [Azure Data Lake Storage Gen2 中的访问控制模型](data-lake-storage-access-control-model.md)

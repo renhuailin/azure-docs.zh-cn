@@ -7,15 +7,15 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958246"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763802"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
-本文帮助排查 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中应用性能缓慢的问题。
+本文帮助排查 [Azure 应用服务](./overview.md)中应用性能缓慢的问题。
 
 如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
 
@@ -82,7 +82,7 @@ ms.locfileid: "88958246"
 - 源代码编辑器，如 [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx)。 
 - 连接的资源（如连接到应用的 MySQL 数据库）的管理工具。
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 是也可用的性能监视站点扩展。 若要使用 Application Insights，请使用 SDK 重新生成代码。 还可以安装用于访问其他数据的扩展。 SDK 可用于编写代码，以便更详细地监视应用的使用情况和性能。 有关详细信息，请参阅[在 Web 应用程序中监视性能](../azure-monitor/app/web-monitor-performance.md)。
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 是也可用的性能监视站点扩展。 若要使用 Application Insights，请使用 SDK 重新生成代码。 还可以安装用于访问其他数据的扩展。 SDK 可用于编写代码，以便更详细地监视应用的使用情况和性能。 有关详细信息，请参阅[在 Web 应用程序中监视性能](../azure-monitor/app/app-insights-overview.md)。
 
 <a name="collect"></a>
 
@@ -133,7 +133,7 @@ Kudu 提供的一些信息和功能包括：
 * 应用程序的环境设置
 * 日志流
 * 诊断转储
-* 调试控制台，可以在其中运行 Powershell cmdlet 和基本 DOS 命令。
+* 调试控制台，可在其中运行 PowerShell cmdlet 和基本 DOS 命令。
 
 Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可以使用 Kudu 和 SysInternals 工具 Procdump 创建内存转储。 这些内存转储是进程的快照，通常可帮助排查较复杂的应用问题。
 
@@ -161,4 +161,4 @@ AutoHeal 会根据你选择的设置（例如配置更改、请求、基于内�
 
  ![重启应用以解决性能问题](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)。
+你还可以使用 Azure PowerShell 来管理你的应用程序。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)。

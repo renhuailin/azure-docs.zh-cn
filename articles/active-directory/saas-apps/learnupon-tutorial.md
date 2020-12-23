@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 297395fbd0a7fd3fc8959eed5c0aeabd7b8e5751
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535092"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458670"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>教程：Azure Active Directory 与 LearnUpon 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88535092"
 * 可让用户使用其 Azure AD 帐户自动登录到 LearnUpon（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -93,7 +93,7 @@ ms.locfileid: "88535092"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -130,15 +130,15 @@ ms.locfileid: "88535092"
 
 1. 单击“设置”选项卡。 
 
-    ![配置单一登录](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![屏幕截图显示了“设置”选项卡。](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. 单击“单一登录 - SAML”，并单击“常规设置”以配置 SAML 设置。  
    
-    ![配置单一登录](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![屏幕截图显示选择了“单一登录 - SAML”，其中选择了“常规设置”。](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. 在“常规设置”  部分中，执行以下步骤：
    
-    ![配置单一登录](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![屏幕截图显示了“常规设置”部分，你可以在其中输入所述值。](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. 选择“启用”。 
 
@@ -146,7 +146,7 @@ ms.locfileid: "88535092"
 
     c. 将“跳过条件”  选择为“否”  。
 
-    d. 在“SAML 令牌 Post 参数名称”文本框中，键入上面指定的 SAML 使用者 URL 的请求 post 参数的名称（例如 **SAMLResponse**），该参数包含要验证和进行身份验证的 SAML 断言。
+    d. 在“SAML 令牌 Post 参数名称”文本框中，键入上面指定的 SAML 使用者 URL 的请求 post 参数的名称（例如 **SAMLResponse** ），该参数包含要验证和进行身份验证的 SAML 断言。
 
     e. 在“名称标识符格式”  文本框中，键入相应的值以指明用户标识符（电子邮件）在 SAML 断言中所处的位置，例如 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
   
@@ -158,7 +158,7 @@ ms.locfileid: "88535092"
 
 1. 单击“用户设置”  ，并执行以下步骤：
 
-     ![配置单一登录](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![屏幕截图显示了“用户设置”部分，你可以在其中输入所述值。](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. 在“名字标识符格式”文本框中  ，键入相应的值，指明用户名字在 SAML 断言中所处的位置，例如：`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
   
@@ -222,12 +222,12 @@ ms.locfileid: "88535092"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 LearnUpon 磁贴时，应当会自动登录到为其设置了 SSO 的 LearnUpon。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 LearnUpon 磁贴时，应当会自动登录到为其设置了 SSO 的 LearnUpon。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

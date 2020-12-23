@@ -8,22 +8,22 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 190aaae81d51434b57b5aaa6817a443dc541d26e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5acb8e347046780c84f0aa324b997abb5e2aa840
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069130"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629217"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
-在存储帐户中启用大型文件共享时，文件共享最大可以扩展到 100 TiB。 可以在现有存储帐户中为现有的文件共享启用此缩放。
+当你在存储帐户上启用大型文件共享时，文件共享最多可扩展到 100 TiB，同时还增加了标准共享的 IOPS 和吞吐量限制。 你还可以在现有的文件共享的现有存储帐户上启用此缩放。 有关详细信息，请参阅 [文件共享和文件缩放目标](storage-files-scale-targets.md#azure-files-scale-targets) 。 
 
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- 如果你打算使用 Azure CLI，请[安装最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- 如果要使用 Azure PowerShell 模块，请 [安装最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0)。
+- 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 如果你打算使用 Azure PowerShell 模块，请[安装最新版本](/powershell/azure/install-az-ps?view=azps-4.6.0)。
 
 ## <a name="restrictions"></a>限制
 
@@ -35,7 +35,7 @@ ms.locfileid: "89069130"
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户中，选择“所有服务”。 
 1. 在资源列表中输入“存储帐户”。 键入时，列表会根据输入的内容进行筛选。 选择“存储帐户”。
 1. 在显示的“存储帐户”窗口中，选择“添加”。 
@@ -46,7 +46,7 @@ ms.locfileid: "89069130"
 
 1. 然后，输入存储帐户的名称。 该名称在 Azure 中必须唯一。 该名称的长度必须是 3 到 24 个字符，只能包含数字和小写字母。
 1. 选择存储帐户的位置。
-1. 将复制设置为 **本地冗余存储** 或 **区域冗余存储**。
+1. 将复制设置为 **本地冗余存储** 或 **区域冗余存储** 。
 1. 将以下字段保留其默认值：
 
    |字段  |Value  |
@@ -65,7 +65,7 @@ ms.locfileid: "89069130"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-首先[安装最新版本的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，以便可以启用大型文件共享。
+首先[安装最新版本的 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)，以便可以启用大型文件共享。
 
 若要创建启用了大文件共享的存储帐户，请使用以下命令。 请将 `<yourStorageAccountName>`、`<yourResourceGroup>` 和 `<yourDesiredRegion>` 替换为自己的信息。
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-首先[安装最新版本的 PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)，以便可以启用大型文件共享。
+首先[安装最新版本的 PowerShell](/powershell/azure/install-az-ps?view=azps-3.0.0)，以便可以启用大型文件共享。
 
 若要创建启用了大文件共享的存储帐户，请使用以下命令。 请将 `<yourStorageAccountName>`、`<yourResourceGroup>` 和 `<yourDesiredRegion>` 替换为自己的信息。
 

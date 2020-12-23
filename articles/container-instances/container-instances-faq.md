@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818494"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516964"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -61,7 +61,7 @@ ms.locfileid: "91818494"
 
 这实际上取决于工作负荷。 请从较小的数量着手，并测试容器的性能如何。 [监视 CPU 和内存资源用量](container-instances-monitor.md)，然后根据在容器中部署的进程类型增加核心或内存。
 
-另外，请务必检查所部署到的区域的[资源可用性](container-instances-region-availability.md#availability---general)，以确定每个容器组的可用 CPU 核心数和内存上限。 
+另外，请务必检查所部署到的区域的[资源可用性](container-instances-region-availability.md)，以确定每个容器组的可用 CPU 核心数和内存上限。 
 
 > [!NOTE]
 > 服务的底层基础结构使用了容器组的少量资源。 容器将能够访问分配给该组的大部分而不是全部资源。 因此，为组中的容器请求资源时，请规划一个小型资源缓冲区。
@@ -80,7 +80,7 @@ Azure 容器实例旨在用作无服务器按需容器服务，因此，我们�
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>ACI 何时在特定的区域推出？
 
-[此处](container-instances-region-availability.md#availability---general)发布了当前推出的区域。 如果你在特定的区域需要满足某项要求，请联系 Azure 支持部门。
+[此处](container-instances-region-availability.md)发布了当前推出的区域。 如果你在特定的区域需要满足某项要求，请联系 Azure 支持部门。
 
 ## <a name="features-and-scenarios"></a>功能和方案
 

@@ -15,12 +15,16 @@
       href: quick-create-powershell.md
     - name: 门户
       href: quick-create-portal.md
+    - name: .NET
+      href: quick-create-net.md
+    - name: Node.js
+      href: quick-create-node.md
     - name: Python
       href: quick-create-python.md
 - name: 示例
   items:
     - name: Key Vault 代码示例
-      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
+      href: /samples/browse/?expanded=azure&products=azure-key-vault
 - name: 教程
   items:
     - name: 导入证书
@@ -37,6 +41,8 @@
       href: create-certificate.md
     - name: 创建证书签名请求
       href: create-certificate-signing-request.md
+    - name: 证书访问控制
+      href: certificate-access-control.md
 - name: 操作指南
   items:
     - name: 将 Key Vault 与 DigiCert CA 集成
@@ -56,7 +62,7 @@
     - name: Java
       href: /java/api/overview/azure/keyvault?view=azure-java-stable
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest'
+      href: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
     - name: Python
       href: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
     - name: REST
@@ -84,6 +90,6 @@
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=key-vault'
     - name: 博客
-      href: 'https://blogs.technet.com/b/kv/'
+      href: /archive/blogs/kv/
     - name: 产品反馈
       href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

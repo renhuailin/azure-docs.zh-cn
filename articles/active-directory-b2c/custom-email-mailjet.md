@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29e82a67b85356cfc15e806bb331330b3f272a04
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b74de2bdf1f6239f1006c820579a336946939421
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584958"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949575"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>通过 Mailjet 进行自定义电子邮件验证
 
 使用 Azure Active Directory B2C (Azure AD B2C) 中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用当前在预览版中的 [DisplayControls](display-controls.md) () 和第三方电子邮件提供商 Mailjet，你可以使用自己的电子邮件模板， *从：* 地址和主题，以及支持 (OTP) 设置的本地化和自定义一次性密码。
 
-自定义电子邮件验证要求使用第三方电子邮件提供程序，例如 [Mailjet](https://Mailjet.com)、 [SendGrid](custom-email.md)或 [SparkPost](https://sparkpost.com)、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序 (包括你自己的) 。 本文介绍如何设置使用 Mailjet 的解决方案。
+自定义电子邮件验证要求使用第三方电子邮件提供程序，例如 [Mailjet](https://Mailjet.com)、 [SendGrid](./custom-email-sendgrid.md)或 [SparkPost](https://sparkpost.com)、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序 (包括你自己的) 。 本文介绍如何设置使用 Mailjet 的解决方案。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "88584958"
 
 1. 按照 [创建 Mailjet 帐户](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)中的设置说明进行操作。
 1. 若要能够发送电子邮件，请 [注册并验证](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use) 发件人电子邮件地址或域。
-2. 导航到 [API 密钥管理页](https://app.mailjet.com/account/api_keys)。 记录**API 密钥****和密钥，以便**在后面的步骤中使用。 创建帐户时，会自动生成这两个密钥。  
+2. 导航到 [API 密钥管理页](https://app.mailjet.com/account/api_keys)。 记录 **API 密钥****和密钥，以便** 在后面的步骤中使用。 创建帐户时，会自动生成这两个密钥。  
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>创建 Azure AD B2C 策略密钥
 
@@ -44,13 +44,13 @@ ms.locfileid: "88584958"
 1. 在 " **概述** " 页上，选择 " **标识体验框架**"。
 1. 选择“策略密钥”，然后选择“添加” 。
 1. 对于 **选项**，请选择 " **手动**"。
-1. 输入策略密钥的**名称**。 例如，`MailjetApiKey` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`MailjetApiKey`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在 " **密钥**" 中，输入你之前记录的 Mailjet **API 密钥** 。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于 **选项**，请选择 " **手动**"。
-1. 输入策略密钥的**名称**。 例如，`MailjetSecretKey` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`MailjetSecretKey`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在 " **密钥**" 中，输入你之前记录 **的 Mailjet 密钥** 。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。
@@ -228,15 +228,15 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 ## <a name="add-datauri-content-definition"></a>添加 DataUri 内容定义
 
-在中的声明转换下 `<BuildingBlocks>` ，添加以下 [ContentDefinition](contentdefinitions.md) 以引用版本2.0.0 数据 URI：
+在中的声明转换下 `<BuildingBlocks>` ，添加以下 [ContentDefinition](contentdefinitions.md) 以引用版本2.1.0 数据 URI：
 
 ```XML
 <ContentDefinitions>
  <ContentDefinition Id="api.localaccountsignup">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
   </ContentDefinition>
   <ContentDefinition Id="api.localaccountpasswordreset">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
   </ContentDefinition>
 </ContentDefinitions>
 ```
@@ -374,8 +374,8 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
       <Metadata>
         <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
@@ -391,8 +391,8 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
     <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
       <Metadata>
         <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
@@ -479,14 +479,14 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
     ```xml
     <ContentDefinitions>
       <ContentDefinition Id="api.localaccountsignup">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
         <LocalizedResourcesReferences MergeBehavior="Prepend">
           <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
           <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
         </LocalizedResourcesReferences>
       </ContentDefinition>
       <ContentDefinition Id="api.localaccountpasswordreset">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.0</DataUri>
         <LocalizedResourcesReferences MergeBehavior="Prepend">
           <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
           <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
@@ -502,6 +502,41 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
       <InputClaimsTransformation ReferenceId="GetLocalizedStringsForEmail" />
     </InputClaimsTransformations>
     ```
+    
+## <a name="optional-localize-the-ui"></a>可有可无本地化 UI
+
+使用 Localization 元素可在用户旅程的策略中支持多个区域设置或语言。 通过策略中的本地化支持，可以为 [验证显示控制用户界面元素](localization-string-ids.md#verification-display-control-user-interface-elements)和 [一次性密码错误消息](localization-string-ids.md#one-time-password-error-messages)提供特定于语言的字符串。 将以下 LocalizedString 添加到 LocalizedResources 中。 
+
+```XML
+<LocalizedResources Id="api.custom-email.en">
+  <LocalizedStrings>
+    ...
+    <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+    <!-- Claims-->
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="DisplayName">Verification Code</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="UserHelpText">Verification code received in the email.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="AdminHelpText">Verification code received in the email.</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Eamil</LocalizedString>
+    <!-- Email validation error messages-->
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">The verification has failed, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+添加本地化字符串后，从 LocalAccountSignUpWithLogonEmail 和 LocalAccountDiscoveryUsingEmailAddress 技术配置文件中删除 OTP 验证错误消息元数据。
 
 ## <a name="next-steps"></a>后续步骤
 

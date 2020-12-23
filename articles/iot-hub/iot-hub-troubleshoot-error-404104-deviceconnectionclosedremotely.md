@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758729"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538249"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -24,15 +24,15 @@ ms.locfileid: "81758729"
 
 ### <a name="symptom-1"></a>症状 1
 
-设备按固定间隔（例如每 65 分钟）断开连接，并且你会在 IoT 中心诊断日志中看到 **404104 DeviceConnectionClosedRemotely**。 有时，你还会看到 **401003 IoTHubUnauthorized** 和不到一分钟后出现的成功设备连接事件。
+设备会按固定间隔 (每65分钟断开连接，例如) ，你会在 IoT 中心资源日志中看到 **404104 个 DeviceConnectionClosedRemotely** 。 有时，你还会看到 **401003 IoTHubUnauthorized** 和不到一分钟后出现的成功设备连接事件。
 
 ### <a name="symptom-2"></a>症状 2
 
-设备随机断开连接，并且你会在 IoT 中心诊断日志中看到 **404104 DeviceConnectionClosedRemotely**。
+设备会随机断开连接，并且会在 IoT 中心资源日志中看到 **404104 DeviceConnectionClosedRemotely** 。
 
 ### <a name="symptom-3"></a>症状 3
 
-许多设备同时断开连接时，你会在[“连接的设备”指标](iot-hub-metrics.md)中看到一个 dip，在诊断日志中有比平常更多的 **404104 DeviceConnectionClosedRemotely** 和 [500xxx 内部错误](iot-hub-troubleshoot-error-500xxx-internal-errors.md)。
+许多设备同时断开连接时，会在连接的设备中看到一个 dip [ (connectedDeviceCount) 指标](monitor-iot-hub-reference.md)，并且 Azure Monitor 日志中存在比平时更多的 **404104 DeviceConnectionClosedRemotely** 和 [500xxx 内部错误](iot-hub-troubleshoot-error-500xxx-internal-errors.md) 。
 
 ## <a name="causes"></a>原因
 

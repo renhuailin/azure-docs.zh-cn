@@ -3,16 +3,16 @@ title: Microsoft Azure 恢复服务 (MARS) 代理– FAQ
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182507"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917352"
 ---
-# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务 (MARS) 代理
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题解答 - Microsoft Azure 恢复服务 (MARS) 代理
 
-本文解答了有关将数据备份到 [Azure 备份](backup-overview.md) 服务中的 MICROSOFT AZURE 恢复服务 (MARS) 代理的常见问题。
+本文解答了与使用 [Azure 备份](backup-overview.md)服务中的 Microsoft Azure 恢复服务 (MARS) 代理对数据进行备份相关的常见问题。
 
 ## <a name="configure-backups"></a>配置备份
 
@@ -22,7 +22,7 @@ ms.locfileid: "89182507"
 
 ### <a name="where-can-i-download-the-vault-credentials-file"></a>在哪里可以下载保管库凭据文件？
 
-在 Azure 门户中，导航到保管库的 " **属性** "。 在 " **备份凭据**" 下，选中 " **已使用最新的恢复服务代理**" 复选框。 选择“下载”。
+在 Azure 门户中，导航到保管库的“属性”。 在“备份凭据”下，选中“已使用最新恢复服务代理”复选框 。 选择“下载”  。
 
 ![下载凭据](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
@@ -30,9 +30,9 @@ ms.locfileid: "89182507"
 
 保管库凭据会在 10 天后过期。 如果凭据文件过期，请重新从 Azure 门户下载该文件。
 
-### <a name="what-characters-are-allowed-for-the-passphrase"></a>密码允许使用哪些字符？
+### <a name="what-characters-are-allowed-for-the-passphrase"></a>通行短语允许使用哪些字符？
 
-该通行短语应使用 ASCII 字符集中的字符，其 [ascii 值小于或等于 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)。
+通行短语应使用 ASCII 字符集中的字符，且 [ASCII 值少于或等于 127](/office/vba/language/reference/user-interface-help/character-set-0127)。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>可以从哪些驱动器备份文件和文件夹？
 
@@ -72,6 +72,10 @@ ms.locfileid: "89182507"
 
 是的，使用 MARS 控制台安装 MARS 代理和配置备份要求用户是受保护服务器上的本地管理员。
 
+### <a name="what-is-the-impact-on-mars-agent-backups-of-transferring-the-vault-subscription-to-a-different-azure-ad-directory"></a>对将保管库订阅传输到不同 Azure AD 目录的 MARS 代理备份有何影响？
+
+Azure AD 目录的更改不会影响 MARS 代理备份。 
+
 ## <a name="manage-backups"></a>管理备份
 
 ### <a name="what-happens-if-i-rename-a-windows-machine-configured-for-backup"></a>如果我重命名了为备份配置的 Windows 计算机，将会发生什么情况？
@@ -101,11 +105,11 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder"></a>针对缓存文件夹的最小大小要求是什么？
 
-缓存文件夹的大小决定了要备份的数据量。
+缓存文件夹的大小取决于要备份的数据量。
 
 * 缓存文件夹卷的可用空间应当至少为备份数据总大小的 5-10%。
 * 如果卷的可用空间少于 5%，请增大卷大小，或遵循[这些步骤](#how-do-i-change-the-cache-location-for-the-mars-agent)将缓存文件夹移到具有足够空间的卷。
-* 如果备份 Windows 系统状态，则在包含缓存文件夹的卷上将需要额外的 30-35 GB 可用空间。
+* 如果备份 Windows 系统状态，包含缓存文件夹的卷中需有额外的 30-35 GB 可用空间。
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何检查暂存文件夹是否有效并可访问？
 
@@ -122,7 +126,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 1. 通过在权限提升的命令提示符下运行以下命令来停止备份引擎：
 
     ```Net stop obengine```
-2. 如果已配置系统状态备份，请打开 "磁盘管理"，然后卸载磁盘 (s) 的名称格式为 `"CBSSBVol_<ID>"` 。
+2. 如果已配置系统状态备份，请打开“磁盘管理”，然后卸载名称采用 `"CBSSBVol_<ID>"` 格式的磁盘。
 3. 默认情况下，暂存文件夹位于 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` 中
 4. 将整个 `\Scratch` 文件夹复制到具有足够空间的另一驱动器。 请务必复制内容，而不是移动内容。
 5. 使用最近移动的暂存文件夹的路径更新以下注册表项。
@@ -180,12 +184,12 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 考虑以下情况：
 
-* 如果你在同一台计算机上卸载并重新注册该代理，
-  * *相同的密码*，则可以还原已备份的数据。
-  * *不同密码*，则无法还原已备份的数据。
-* 如果在 *其他计算机* 上安装代理，
-  * 原始计算机)  (使用*相同的密码*，则可以还原已备份的数据。
-  * *不同密码*，则无法还原已备份的数据。
+* 如果在同一台原始计算机上卸载并重新注册代理时使用了：
+  * 相同的通行短语，则可以还原已备份的数据。
+  * 不同的通行短语，则无法还原已备份的数据。
+* 如果在不同的计算机上安装代理时使用了：
+  * 相同的通行短语（在原始计算机中使用的通行短语），则可以还原已备份的数据。
+  * 不同的通行短语，则无法还原已备份的数据。
 * 如果原始计算机已损坏（阻止你通过 MARS 控制台重新生成通行短语），但你可以还原或访问 MARS 代理使用的原始暂存文件夹，则你也许可以还原（如果忘记了密码）。 若要获取更多帮助，请联系客户支持人员。
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>如果丢失了原始计算机（在其中创建备份的计算机），如何予以恢复？
@@ -197,9 +201,9 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 | 丢失 |可用 |可以在另一台计算机上安装并注册 MARS 代理，该计算机包含你在注册原始计算机期间提供的相同通行短语。 选择“恢复选项” > “另一位置”执行还原。  有关详细信息，请参阅[此文](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 | 丢失 |丢失 |无法恢复数据或数据不可用 |
 
-### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>我的备份作业运行失败或运行时间过长。 我的保留期已过。 是否仍可以还原？
+### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>我的备份作业已失败或长时间未运行。 我的保留期已过。 我是否还可以还原？
 
-作为一种安全措施，Azure 备份将保留最新的恢复点，即使该恢复点超过保留期也是如此。 备份恢复和全新恢复点变为可用后，将根据指定的保留期删除旧的恢复点。
+为安全起见，Azure 备份将保留最近的恢复点，即使其保留期已过。 备份恢复且新恢复点可用后，将根据指定的保留期删除较旧的恢复点。
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果取消正在进行的还原作业，会发生什么情况？
 
@@ -209,7 +213,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 * MARS 代理可以备份针对文件、文件夹和卷上设置的 ACL
 * 对于卷还原恢复选项，MARS 代理将提供一个选项，用于跳过还原所要恢复的文件或文件夹的 ACL 权限。
-* 对于 "单个文件和文件夹" 恢复选项，MARS 代理将用 ACL 权限还原 (没有用于跳过 ACL 还原) 的选项。
+* 对于单个文件和文件夹的恢复选项，MARS 代理将还原 ACL 权限（不提供跳过 ACL 还原的选项）。
 
 ## <a name="next-steps"></a>后续步骤
 

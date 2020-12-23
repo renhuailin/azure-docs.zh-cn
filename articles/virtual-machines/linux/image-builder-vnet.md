@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: f216b6fa3a0e43c1c0313baa4f8414546a74d8f0
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: cbff2358dcf8685298e31f18c430c35ec7de4948
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068104"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437331"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>使用适用于 Linux Vm 的 Azure 映像生成器，允许访问现有的 Azure VNET
 
@@ -23,7 +23,7 @@ ms.locfileid: "88068104"
 > Azure 映像生成器目前提供公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="register-the-features"></a>注册功能
 
@@ -132,7 +132,7 @@ az network vnet subnet update \
   --disable-private-link-service-network-policies true 
 ```
 
-有关映像生成器网络的详细信息，请参阅[Azure 映像生成器服务网络选项](image-builder-networking.md)。
+有关映像生成器网络的详细信息，请参阅 [Azure 映像生成器服务网络选项](image-builder-networking.md)。
 
 ## <a name="modify-the-example-template-and-create-role"></a>修改示例模板并创建角色
 
@@ -163,7 +163,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>设置资源组的权限
 
-映像生成器将使用提供的[用户标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
+映像生成器将使用提供的[用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
 
 ```bash
 # create user assigned identity for image builder
@@ -207,7 +207,7 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/$vnetRgName
 ```
 
-有关权限的详细信息，请参阅[使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md)或[使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)。
+有关权限的详细信息，请参阅 [使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md) 或 [使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)。
 
 ## <a name="create-the-image"></a>创建映像
 
@@ -271,7 +271,7 @@ ssh aibuser@<publicIpAddress>
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果现在想要尝试 recustomizing 映像版本来创建同一映像的新版本，请跳过后续步骤，并继续[使用 Azure 映像生成器创建另一个映像版本](image-builder-gallery-update-image-version.md)。
+如果现在想要尝试 recustomizing 映像版本来创建同一映像的新版本，请跳过后续步骤，并继续 [使用 Azure 映像生成器创建另一个映像版本](image-builder-gallery-update-image-version.md)。
 
 
 以下操作将删除创建的映像以及所有其他资源文件。 删除这些资源前，请确保已完成此部署。

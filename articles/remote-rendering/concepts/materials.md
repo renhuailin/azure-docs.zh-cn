@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8f3a0d0ec79624fb709bb80b8392e2ad8d6f7ce
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 8dca22303edc3b75625df88dac98557c6a2e6162
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613871"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202846"
 ---
 # <a name="materials"></a>材料
 
@@ -84,14 +84,14 @@ void SetMaterialColorToGreen(ApiHandle<Material> material)
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # 材料类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.material)
-* [C # ColorMaterial 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
-* [C # PbrMaterial 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C # RemoteManager CreateMaterial ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
-* [C + + 材料类](https://docs.microsoft.com/cpp/api/remote-rendering/material)
-* [C + + ColorMaterial 类](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
-* [C + + PbrMaterial 类](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
-* [C + + RemoteManager：： CreateMaterial ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C # 材料类](/dotnet/api/microsoft.azure.remoterendering.material)
+* [C # ColorMaterial 类](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C # PbrMaterial 类](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C # RemoteManager CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C + + 材料类](/cpp/api/remote-rendering/material)
+* [C + + ColorMaterial 类](/cpp/api/remote-rendering/colormaterial)
+* [C + + PbrMaterial 类](/cpp/api/remote-rendering/pbrmaterial)
+* [C + + RemoteManager：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>后续步骤
 

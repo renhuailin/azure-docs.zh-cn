@@ -1,6 +1,6 @@
 ---
 title: 教程：在地图上搜索附近位置 | Microsoft Azure Maps
-description: 了解如何在地图上搜索兴趣点。 请参阅如何使用 Azure Maps Web SDK 向地图添加搜索功能和交互式弹出框。
+description: 有关如何在地图上搜索兴趣点的教程。 请参阅如何使用 Azure Maps Web SDK 向地图添加搜索功能和交互式弹出框。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085070"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896654"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 搜索附近兴趣点
 
@@ -26,44 +26,14 @@ ms.locfileid: "90085070"
 > * 使用 Map Control API 创建新网页
 > * 使用 Maps 搜索服务查找附近的兴趣点
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
-
-登录 [Azure 门户](https://portal.azure.com)。
+## <a name="prerequisites"></a>先决条件
 
 <a id="createaccount"></a>
-
-## <a name="create-an-account-with-azure-maps"></a>通过 Azure Maps 创建帐户
-
-使用以下步骤创建新的 Maps 帐户：
-
-1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。
-2. 在“在市场中搜索”框中，键入“Maps”   。
-3. 从“结果”中，选择“Maps”   。 单击地图下面显示的“创建”按钮。
-4. 在“创建 Maps 帐户”页上，输入以下值  ：
-    * 要用于此帐户的订阅。
-    * 此帐户的资源组名称。 可以选择新建或使用现有的资源组。
-    * 新帐户的名称。
-    * 此帐户的定价层  。
-    * 阅读许可证和隐私声明，并选择复选框接受这些条款   。
-    * 单击“创建”  按钮。
-
-![在 Azure 门户中创建 Azure Maps 帐户](./media/tutorial-search-location/create-account.png)
-
 <a id="getkey"></a>
 
-## <a name="get-the-primary-key-for-your-account"></a>获取帐户的主密钥
-
-成功创建 Maps 帐户后，检索查询 Maps API 的密钥。 建议在调用 Azure Maps 服务时使用帐户的主密钥作为订阅密钥。
-
-1. 在门户中打开 Maps 帐户。
-2. 在设置部分中，选择“身份验证”  。
-3. 将“主密钥”复制到剪贴板。 本地保存它以便稍后在本教程中使用。
-
-![在 Azure 门户中获取主密钥](./media/tutorial-search-location/get-key.png)
-
-有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+1. 登录 [Azure 门户](https://portal.azure.com)。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+2. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 <a id="createmap"></a>
 
@@ -71,7 +41,7 @@ ms.locfileid: "90085070"
 
 Map Control API 是一个便利的客户端库。 使用此 API，可以轻松将 Maps 集成到你的 Web 应用程序中。 它消除了单纯 REST 服务调用的复杂性，并可以通过可自定义的组件提高工作效率。 以下步骤说明如何使用 Map Control API 创建一个嵌入式静态 HTML 页面。
 
-1. 在本地计算机上，创建一个新文件并将其命名为 **MapSearch.html**。
+1. 在本地计算机上，创建一个新文件并将其命名为 **MapSearch.html** 。
 2. 将以下 HTML 组件添加到该文件：
 
    ```HTML
@@ -169,7 +139,7 @@ Map Control API 是一个便利的客户端库。 使用此 API，可以轻松�
 
 ## <a name="add-search-capabilities"></a>添加搜索功能
 
-本部分演示如何使用 Maps [Search API](https://docs.microsoft.com/rest/api/maps/search) 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 下面介绍的“服务模块”可以用来通过地图搜索 API 搜索位置。
+本部分演示如何使用 Maps [Search API](/rest/api/maps/search) 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 下面介绍的“服务模块”可以用来通过地图搜索 API 搜索位置。
 
 ### <a name="service-module"></a>服务模块
 
@@ -186,7 +156,7 @@ Map Control API 是一个便利的客户端库。 使用此 API，可以轻松�
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)实例。 `searchURL` 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
+   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](/javascript/api/azure-maps-rest/atlas.service.pipeline)实例。 `searchURL` 表示 Azure Maps [搜索](/rest/api/maps/search)操作的 URL。
 
 2. 接下来添加以下脚本块，以便生成搜索查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址、位置和兴趣点 (POI)。 此代码在提供的经纬度的指定半径内搜索邻近的加油站。 然后使用 `geojson.getFeatures()` 方法提取响应中的 GeoJSON 特征集合，并将其添加到数据源，这将自动通过符号层在地图上呈现数据。 脚本的最后一部分使用地图的 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性通过结果的边框设置地图相机视图。
 
@@ -275,21 +245,9 @@ Map Control API 是一个便利的客户端库。 使用此 API，可以轻松�
 
     ![Azure 地图控件和搜索服务](./media/tutorial-search-location/popup-map.png)
 
+若要查看本教程的完整代码，请单击[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)。 若要查看实时示例，请单击[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+
 ## <a name="next-steps"></a>后续步骤
-
-在本教程中，你了解了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 通过 Azure Maps 创建帐户
-> * 获取帐户的主密钥
-> * 使用地图控件 API 创建新网页
-> * 使用搜索服务查找附近的兴趣点
-
-> [!div class="nextstepaction"]
-> [查看完整源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-> [!div class="nextstepaction"]
-> [查看实时示例](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 下一教程演示如何显示两个地点之间的路线。
 

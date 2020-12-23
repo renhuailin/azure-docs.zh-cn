@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL Edge 中通过 ONNX 进行机器学习和 AI
+title: '在 Azure SQL Edge 中使用 ONNX 实现机器学习和 AI '
 description: Azure SQL Edge 中的机器学习支持开放式神经网络 Exchange (ONNX) 格式的模型。 ONNX 是一种开放的格式，可用于在不同的机器学习框架和工具之间交换模型。
 keywords: 部署 SQL Edge
 services: sql-edge
@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5dc3d44ac4396897fd43831d51ee628bb06048cb
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907142"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392055"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>在 SQL Edge 中将机器学习和 AI 与 ONNX 结合使用
+# <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>在 SQL Edge 中通过 ONNX 进行机器学习和 AI
 
 Azure SQL Edge 中的机器学习支持 [开放式神经网络 Exchange (ONNX) ](https://onnx.ai/) 格式的模型。 ONNX 是一种开放的格式，可用于在不同的[机器学习框架和工具](https://onnx.ai/supported-tools)之间交换模型。
 
@@ -28,7 +28,7 @@ Azure SQL Edge 中的机器学习支持 [开放式神经网络 Exchange (ONNX) ]
 
 获取 ONNX 格式模型的途径：
 
-- 模型生成服务：[Azure 机器学习中的自动化机器学习](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和 [Azure 自定义视觉服务](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)等服务支持直接导出 ONNX 格式的已训练模型。
+- 模型生成服务：[Azure 机器学习中的自动化机器学习](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和 [Azure 自定义视觉服务](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md)等服务支持直接导出 ONNX 格式的已训练模型。
 
 - [转换和/或导出现有模型](https://github.com/onnx/tutorials#converting-to-onnx-format)：多个训练框架（例如 [PyTorch](https://pytorch.org/docs/stable/onnx.html)、Chainer 和 Caffe2）支持对 ONNX 的本机导出功能，这样你就可以将已训练模型保存为特定版本的 ONNX 格式。 对于不支持本机导出的框架，有独立的 ONNX 转换器可安装包，可便于你将已训练的模型从不同的机器学习框架转换为 ONNX 格式。
 
@@ -45,10 +45,10 @@ Azure SQL Edge 中的机器学习支持 [开放式神经网络 Exchange (ONNX) ]
 
 目前，并非所有的 ONNX 模型都受到 Azure SQL Edge 的支持。 此支持仅限于具有以下数值数据类型的模型：
 
-- [int 和 bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
-- [real 和 float](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql)。
+- [int 和 bigint](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
+- [real 和 float](/sql/t-sql/data-types/float-and-real-transact-sql)。
   
-通过使用 [CAST 和 CONVERT](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)，可以将其他数值类型转换为支持的类型。
+通过使用 [CAST 和 CONVERT](/sql/t-sql/functions/cast-and-convert-transact-sql)，可以将其他数值类型转换为支持的类型。
 
 应对模型输入进行结构化处理，以便模型的每个输入都对应于表中的一列。 例如，如果使用 pandas 数据帧来训练模型，那么每个输入都应该是模型中的单独一列。
 

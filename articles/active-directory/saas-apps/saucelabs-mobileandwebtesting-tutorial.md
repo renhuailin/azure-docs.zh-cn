@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8dd5ca148474a1fe1464217f60c79e3815a5b26d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547896"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>教程：Azure Active Directory 与 Sauce Labs - Mobile and Web Testing 的集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88547896"
 * 可让用户使用其 Azure AD 帐户自动登录到 Sauce Labs - Mobile and Web Testing（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -62,7 +62,7 @@ ms.locfileid: "88547896"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入 **Sauce Labs - Mobile and Web Testing**，在结果面板中选择“Sauce Labs - Mobile and Web Testing”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中，键入 **Sauce Labs - Mobile and Web Testing** ，在结果面板中选择“Sauce Labs - Mobile and Web Testing”，然后单击“添加”按钮添加该应用程序。  
 
     ![结果列表中的 Sauce Labs - Mobile and Web Testing](common/search-new-app.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "88547896"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -122,15 +122,15 @@ ms.locfileid: "88547896"
 
 2. 单击“用户”图标并选择“团队管理”选项卡。  
 
-    ![配置单一登录](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
+    ![屏幕截图显示选择了“用户”图标和“团队管理”下拉菜单。](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
-3. 在文本框中输入**域名**。
+3. 在文本框中输入 **域名** 。
 
-    ![配置单一登录](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
+    ![屏幕截图显示了文本框中的示例域名。](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
 4. 单击“配置”选项卡。 
 
-    ![配置单一登录](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
+    ![屏幕截图显示在“已启用单一登录”下选择了“配置”选项卡。](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
 5. 在“配置单一登录”部分执行以下步骤。 
 
@@ -198,19 +198,18 @@ ms.locfileid: "88547896"
 在此部分中，在 Sauce Labs - Mobile and Web Testing 中创建名为 Britta Simon 的用户。 Sauce Labs - Mobile and Web Testing 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Sauce Labs - Mobile and Web Testing 中尚不存在用户，则会在身份验证后创建一个新用户。
 
 > [!Note]
-> 如需手动创建用户，请联系  [Sauce Labs - Mobile and Web Testing 支持团队](mailto:support@saucelabs.com)。
+> 如需手动创建用户，请联系 [Sauce Labs - Mobile and Web Testing 支持团队](mailto:support@saucelabs.com)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Sauce Labs - Mobile and Web Testing”磁贴时，应会自动登录到为其设置了 SSO 的 Sauce Labs - Mobile and Web Testing。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“Sauce Labs - Mobile and Web Testing”磁贴时，应会自动登录到为其设置了 SSO 的 Sauce Labs - Mobile and Web Testing。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

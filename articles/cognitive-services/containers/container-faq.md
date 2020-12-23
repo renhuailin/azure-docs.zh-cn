@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900051"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960744"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 认知服务容器常见问题解答 (FAQ)
 
@@ -22,15 +22,15 @@ ms.locfileid: "90900051"
 
 **问：认知服务容器提供哪些功能？**
 
-**答:** Azure 认知服务容器可让开发人员使用 Azure 中提供的相同智能 API，但除此之外，还提供容器化的[优势](../cognitive-services-container-support.md#features-and-benefits)。 某些容器以封闭预览版的形式提供，可能需要通过应用程序进行访问。 其他容器公开以非封闭预览版或正式版的形式发布。 可在 [Azure 认知服务中的容器支持](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)一文中找到容器及其可用性的完整列表。 你还可以查看 [Docker 中心](https://hub.docker.com/_/microsoft-azure-cognitive-services)中的容器。
+**答:** Azure 认知服务容器可让开发人员使用 Azure 中提供的相同智能 API，但除此之外，还提供容器化的 [优势](../cognitive-services-container-support.md#features-and-benefits)。 某些容器以封闭预览版的形式提供，可能需要通过应用程序进行访问。 其他容器公开以非封闭预览版或正式版的形式发布。 可在 [Azure 认知服务中的容器支持](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)一文中找到容器及其可用性的完整列表。 还可以在 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) 中查看容器。
 
 **问：认知服务云与容器之间是否有任何差异？**
 
 **答:** 认知服务容器是认知服务云的替代方案。 容器提供的功能与相应的云服务相同。 客户可在本地或 Azure 中部署容器。 容器与相应云服务的核心 AI 技术、定价层、API 密钥和 API 签名是相同的。 容器的[这些功能和优势](../cognitive-services-container-support.md#features-and-benefits)使得它们比其对应的云服务更受欢迎。
 
-**问：如何实现访问并使用封闭预览容器？**
+**问：如何访问和使用门控式预览版容器？**
 
-**答：** 以前，封闭预览容器承载于 `containerpreview.azurecr.io` 存储库中。 从9月22日2020开始，这些容器托管在 Microsoft 容器注册表上，下载它们不需要你使用 docker login 命令。 如果你的 Azure 资源是使用已批准的 Azure 订阅 ID 创建的，则可以运行封闭预览容器。 如果你的 Azure 订阅在完成 [请求窗体](https://aka.ms/csgate)后尚未获得批准，你将无法运行该容器。
+**答:** 以前，门控式预览版容器托管在 `containerpreview.azurecr.io` 存储库中。 从 2020 年 9 月 22 日开始，这些容器托管在 Microsoft 容器注册表中，下载它们不需要使用 docker login 命令。 如果 Azure 资源是使用已批准的 Azure 订阅 ID 创建的，你将能够运行门控式预览版容器。 如果 Azure 订阅在你完成[请求表单](https://aka.ms/csgate)后尚未获得批准，你将无法运行该容器。
 
 
 **问：容器是否适用于所有认知服务，接下来期待会推出哪一套容器？**
@@ -50,7 +50,7 @@ ms.locfileid: "90900051"
 
 **答：** 并非每个人都熟悉术语 "主权 cloud"，因此让我们从定义开始：
 
-> "主权 cloud" 由 [Azure 政府](../../azure-government/documentation-government-welcome.md)版、 [Azure 德国](../../germany/germany-welcome.md)和 [azure 中国世纪互联](https://docs.microsoft.com/azure/china/overview-operations) 云组成。
+> "主权 cloud" 由 [Azure 政府](../../azure-government/documentation-government-welcome.md)版、 [Azure 德国](../../germany/germany-welcome.md)和 [azure 中国世纪互联](/azure/china/overview-operations) 云组成。
 
 遗憾的是，主权云中并 *不* 本机支持认知服务容器。 容器可以在这些云中运行，但会从公有云中提取，并需要将使用情况数据发送到公共终结点。
 
@@ -80,21 +80,21 @@ ms.locfileid: "90900051"
 
 **问：如何提供产品反馈和功能建议？**
 
-**答:** 我们鼓励客户公开[表达其关注的问题](https://cognitive.uservoice.com/)，并在可能有问题重叠时投票赞同其他人提出的问题。 用户语音工具可用于产品反馈和功能建议。
+**答:** 我们鼓励客户公开 [表达其关注的问题](https://cognitive.uservoice.com/)，并在可能有问题重叠时投票赞同其他人提出的问题。 用户语音工具可用于产品反馈和功能建议。
 
-**问：认知服务容器返回哪些状态消息和错误？**
+**问：认知服务容器返回了哪些状态消息和错误？**
 
-**答：** 有关状态消息和错误的列表，请参阅下表。
+**答:** 有关状态消息和错误的列表，请参阅下表。
 
 |状态  | 说明  |
 |---------|---------|
 | `Valid` | API 密钥有效，无需执行任何操作。 |
-| `Invalid` |   你的 API 密钥无效。 必须提供有效的 API 密钥才能运行容器。 请在 Azure 认知服务资源的 " **密钥和终结点** " 部分中找到 API 密钥和服务区域，并在 Azure 门户。 |
-| `Mismatch` | 你为不同种类的认知服务资源提供了 API 密钥或终结点。 在 Azure 认知服务资源的 " **密钥和终结点** " 部分中查找 API 密钥和服务区域。 |
-| `CouldNotConnect` | 容器无法连接到计费终结点。 检查 `Retry-After` 该值，并在发出附加请求之前等待此时间段结束。 |
-| `OutOfQuota` | API 密钥超出了配额。 你可以升级定价层，或者等待可用的额外配额。 在 Azure 认知服务资源的 " **定价层** " 部分的 "Azure 门户中找到你的层。 |
-| `BillingEndpointBusy` | 计费终结点当前正忙。 检查 `Retry-After` 该值，并在发出附加请求之前等待此时间段结束。 |
-| `ContainerUseUnauthorized` | 提供的 API 密钥无权与此容器一起使用。 你可能使用的是封闭容器，因此请确保你的 Azure 订阅 ID 通过提交 [联机请求](https://aka.ms/csgate)获得批准。 |
+| `Invalid` |   API 密钥无效。 必须提供有效的 API 密钥才能运行容器。 在 Azure 门户的 Azure 认知服务资源的“密钥和终结点”部分找到你的 API 密钥和服务区域。 |
+| `Mismatch` | 你已为不同种类的认知服务资源提供了 API 密钥或终结点。 在 Azure 认知服务资源的“密钥和终结点”部分找到你的 API 密钥和服务区域。 |
+| `CouldNotConnect` | 容器无法连接到计费终结点。 请检查 `Retry-After` 值并等待此时间段结束，然后再发出其他请求。 |
+| `OutOfQuota` | API 密钥超出配额。 可以升级定价层，或者等待其他配额可用。 在 Azure 门户的 Azure 认知服务资源的“定价层”部分找到你的层级。 |
+| `BillingEndpointBusy` | 计费终结点当前正忙。 请检查 `Retry-After` 值并等待此时间段结束，然后再发出其他请求。 |
+| `ContainerUseUnauthorized` | 提供的 API 密钥无权用于此容器。 你可能使用的是门控式容器，因此请确保 Azure 订阅 ID 已在你提交[在线请求](https://aka.ms/csgate)后获得批准。 |
 | `Unknown` | 服务器当前无法处理帐单请求。 |
 
 

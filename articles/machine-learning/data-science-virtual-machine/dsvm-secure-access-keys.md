@@ -10,20 +10,20 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477317"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309149"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>在 Azure Data Science Virtual Machine 上安全存储访问凭据
 
 通常，云应用程序中的代码包含用于对云服务进行身份验证的凭据。 如何管理和保护这些凭据是构建云应用程序的已知挑战。 理想情况下，凭据应永远不会出现在开发者工作站上，也永远不会被签入源代码管理系统中。
 
-[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)功能为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 可以使用此标识向支持 Azure AD 身份验证的任何服务进行身份验证，而无需在代码中放入任何凭据。
+[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)功能为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 可以使用此标识向支持 Azure AD 身份验证的任何服务进行身份验证，而无需在代码中放入任何凭据。
 
-保护凭据的一个常见方法是结合使用 Windows Installer (MSI) 和 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)（一项安全存储机密和加密密钥的托管 Azure 服务）。 可以使用托管标识访问密钥保管库，然后从该密钥保管库检索授权机密和加密密钥。
+保护凭据的一个常见方法是结合使用 Windows Installer (MSI) 和 [Azure Key Vault](../../key-vault/index.yml)（一项安全存储机密和加密密钥的托管 Azure 服务）。 可以使用托管标识访问密钥保管库，然后从该密钥保管库检索授权机密和加密密钥。
 
 Azure 资源的托管标识和 Key Vault 文档包含用于深入了解这些服务信息的综合资源。 本文的其余部分将介绍数据科学虚拟机 (DSVM) 上 MSI 和 Key Vault 的基本使用步骤，以访问 Azure 资源。 
 

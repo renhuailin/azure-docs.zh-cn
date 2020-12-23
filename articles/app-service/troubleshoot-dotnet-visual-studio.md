@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983011"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147738"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
 ## <a name="overview"></a>概述
-本教程介绍如何使用 Visual Studio 工具，通过远程运行[调试模式](/visualstudio/debugger/)或查看应用程序日志和 Web 服务器日志，帮助调试[应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中的应用。
+本教程介绍如何使用 Visual Studio 工具，通过远程运行[调试模式](/visualstudio/debugger/)或查看应用程序日志和 Web 服务器日志，帮助调试[应用服务](./overview.md)中的应用。
 
 学习内容：
 
@@ -49,7 +49,7 @@ ms.locfileid: "90983011"
    >
    >
 
-    有关从 Visual Studio 连接至 Azure 资源的详细信息，请参阅[管理帐户、订阅和管理角色](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)。
+    有关从 Visual Studio 连接至 Azure 资源的详细信息，请参阅[管理帐户、订阅和管理角色](../role-based-access-control/role-assignments-portal.md)。
 2. 在“服务资源管理器”中，展开“Azure”，并展开“应用服务”。
 3. 展开包含在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中创建的应用的资源组，右键单击该应用节点，并单击“查看设置”。
 
@@ -70,15 +70,15 @@ ms.locfileid: "90983011"
 
 **'/' 应用程序中出现服务器错误：**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="在 web 浏览器中显示 "/" 应用程序错误中出现服务器错误的屏幕截图。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
 **发生错误：**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="显示在 web 浏览器中出现的一般性错误示例的屏幕截图。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
 **网站无法显示页面**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="显示网站的屏幕截图无法在 web 浏览器中显示页面错误。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
 找出错误原因的最简捷方法通常是启用详细错误消息，之前保留的屏幕快照中的第一个快照会告诉你如何做。 而实现此目的需要在部署的 Web.config 文件中进行更改。 可以编辑项目中的 *Web.config* 文件，并重新部署该项目，或创建 [Web.config 转换](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)并部署调试版本，但还有一个更快捷的方式：在“解决方案资源管理器”中，可以通过使用*远程视图*功能直接查看并编辑远程应用中的文件。
 
@@ -125,7 +125,7 @@ ms.locfileid: "90983011"
     }
     ```
 
-1. 在 `ViewBag.Message` 行上[设置一个断点](https://docs.microsoft.com/visualstudio/debugger/)。
+1. 在 `ViewBag.Message` 行上[设置一个断点](/visualstudio/debugger/)。
 
 1. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
 
@@ -139,7 +139,7 @@ ms.locfileid: "90983011"
 
 1. 在“服务器资源管理器”中，右键单击应用，并单击“附加调试器” 。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="显示选定应用，然后单击 "附加调试器" 服务器资源管理器窗口的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
     浏览器自动打开运行在 Azure 中的主页。 可能需要等待大约 20 秒，以便 Azure 针对调试设置服务器。 此延迟只在 48 小时内首次于应用上运行调试模式时出现。 如果在同一时段再次开始调试，不会发生延迟。
 
@@ -176,7 +176,7 @@ ms.locfileid: "90983011"
 
 2. 在 ContosoAdsWebJob 项目中，打开 *Functions.cs*。
 
-3. 在 `GnerateThumbnail` 方法的第一个语句中[设置一个断点](https://docs.microsoft.com/visualstudio/debugger/)。
+3. 在 `GnerateThumbnail` 方法的第一个语句中[设置一个断点](/visualstudio/debugger/)。
 
     ![设置断点](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "90983011"
 
 8. 单击“附加调试器”。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="显示在下拉菜单中选择 ContosoAdsWebJob 的屏幕服务器资源管理器截图，并选中 "附加调试器"。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
     浏览器自动打开运行在 Azure 中的主页。 可能需要等待大约 20 秒，以便 Azure 针对调试设置服务器。 此延迟只在 48 小时内首次于应用上运行调试模式时出现。 如果在同一时段再次开始调试，不会发生延迟。
 
@@ -241,7 +241,7 @@ ms.locfileid: "90983011"
       <httpRuntime targetFramework="4.5" />
     </system.web>
     ```
-* 如果发现调试程序没有针对希望调试的代码展开行动，可能需要更改“仅我的代码”设置。  有关详细信息，请参阅[指定是否仅使用 Visual Studio 中的“仅我的代码”调试用户代码](https://docs.microsoft.com/visualstudio/debugger/just-my-code)。
+* 如果发现调试程序没有针对希望调试的代码展开行动，可能需要更改“仅我的代码”设置。  有关详细信息，请参阅[指定是否仅使用 Visual Studio 中的“仅我的代码”调试用户代码](/visualstudio/debugger/just-my-code)。
 * 启用远程调试功能时，服务器上会出现一个计时器，48 小时后该功能自动关闭。 这一 48 小时的限制是出于安全性与性能的考虑。 可以根据需要轻松地多次重启该功能。 我们建议，在不主动进行调试的时候，保持其处于禁用状态。
 * 可以手动将调试器附加到任何进程，而不仅仅是应用进程 (w3wp.exe)。 有关如何在 Visual Studio 中使用调试模式的信息，请参阅[在 Visual Studio 中进行调试](/visualstudio/debugger/debugging-in-visual-studio)。
 
@@ -330,7 +330,7 @@ ms.locfileid: "90983011"
     ```
 
 `WebPageTraceListener` 允许通过浏览至 `/trace.axd` 查看跟踪输出。
-1. 将<a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">跟踪元素</a>添加到 Web.config file 文件中的 `<system.web>` 下面，如下所示：
+1. 将<a href="/previous-versions/dotnet/netframework-4.0/6915t83k(v=vs.100)">跟踪元素</a>添加到 Web.config file 文件中的 `<system.web>` 下面，如下所示：
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -340,11 +340,11 @@ ms.locfileid: "90983011"
 1. 在浏览器窗口的地址栏中，将 trace.axd 添加到 URL，然后按 Enter（URL 类似于 `http://localhost:53370/trace.axd`）。
 1. 在“应用程序跟踪”页面上，单击第一行中（非浏览器链接中）的“查看详细信息”。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Web 浏览器中应用程序跟踪页的屏幕截图，显示第一行中所选的视图详细信息。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
     “请求细节”页面显示，在“跟踪信息”部分会看到添加到 `Index` 方法的跟踪语句的输出。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Web 浏览器中 "请求详细信息" 页的屏幕截图，其中显示了 "跟踪信息" 部分中突出显示的消息。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
     默认情况下，`trace.axd` 仅供本地使用。 如果希望可以从远程应用使用，可将 `localOnly="false"` 添加到 *Web.config* 文件中的 `trace` 元素，如以下示例所示：
 
@@ -361,11 +361,11 @@ ms.locfileid: "90983011"
     在 Visual Studio 发布更新后，会打开一个主页的浏览器窗口（假设没有清除“连接”选项卡上的“目标 URL”）。
 3. 在“服务器资源管理器”中，右键单击应用，并选择“查看流式处理日志” 。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="右键单击应用后服务器资源管理器屏幕截图，并在新窗口中选择 "查看流式传输日志"。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
     “输出”窗口显示已连接至日志流式传输服务，每过一分钟没有要显示的日志，就添加一个通知行。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text=""输出" 窗口的屏幕截图，其中显示了与带有通知行的日志流式处理服务的连接示例。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
 4. 在显示应用程序主页的浏览器窗口，单击“联系人”。
 
@@ -394,7 +394,7 @@ ms.locfileid: "90983011"
 ### <a name="output-window-features"></a>输出窗口特性
 “输出”窗口的“Microsoft Azure 日志”选项卡上有若干按钮和一个文本框 ：
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="显示 "输出" 窗口中 "Microsoft Azure 日志" 选项卡的按钮和文本框的屏幕截图。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
 这些控件执行以下功能：
 
@@ -458,15 +458,15 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
 
 1. 在“输出”窗口中单击“下载流式处理日志”。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text=""输出" 窗口的屏幕截图，其中突出显示了 "下载流式日志" 按钮。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
     “文件资源管理器”打开，其中显示 *Downloads* 文件夹中已下载文件处于选定状态。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="文件资源管理器中的 "下载" 文件夹的屏幕截图，其中选择了下载的文件。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
 2. 提取该 *.zip* 文件，会看到以下文件夹结构：
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="提取文件后 .zip 文件文件夹结构的屏幕截图。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="在 web 浏览器中显示 &quot;/&quot; 应用程序错误中出现服务器错误的屏幕截图。":::
 
    * 应用程序跟踪日志位于 *LogFiles\Application* 文件夹的 *.txt* 文件中。
    * Web 服务器日志位于 *LogFiles\http\RawLogs* 文件夹的 *.log* 文件中。 可以使用诸如 [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) 之类的工具查看并处理这些文件。
@@ -505,7 +505,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production web app you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The web app (which you'll create later) should run in a region as close as possible to the browsers accessing your web app in order to minimize latency.
 3. Set the **Replication** drop-down list to **Locally redundant**.
    
-    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-create-storage-account.md).
+    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-account-create.md).
 4. Click **Create**.
 
     ![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    
@@ -624,7 +624,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 若要针对特定故障排除问题寻求帮助，可在以下论坛之一开启话题讨论：
 
 * [ASP.NET 站点上的 Azure 论坛](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET)。
-* [Microsoft 上的 Azure 论坛问答](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
+* [Microsoft 上的 Azure 论坛问答](/answers/topics/azure-webapps.html)。
 * [StackOverflow.com](https://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>在 Visual Studio 中进行调试

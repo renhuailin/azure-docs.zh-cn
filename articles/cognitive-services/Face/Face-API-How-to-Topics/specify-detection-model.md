@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3278a1522fe3967dd1de5551e90732e63b7666f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931550"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913477"
 ---
 # <a name="specify-a-face-detection-model"></a>指定人脸检测模型
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>使用指定的模型将人脸添加到 Person
 
-人脸服务可以提取图像中的人脸数据，并通过[Person group 人员-添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 将其与**person**对象相关联。 在此 API 调用中，可以像在 [Face - Detect] 中一样指定检测模型。
+人脸服务可以提取图像中的人脸数据，并通过 [Person group 人员-添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 将其与 **person** 对象相关联。 在此 API 调用中，可以像在 [Face - Detect] 中一样指定检测模型。
 
 请查看适用于 .NET 客户端库的以下代码示例。
 
@@ -72,7 +72,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-此代码将创建 ID 为 `mypersongroupid` 的 **PersonGroup**，并将一个 **Person** 对象添加到其中。 然后，它使用 `detection_02` 模型将一个 Face 对象添加到此 **Person** 对象。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
+此代码将创建 ID 为 `mypersongroupid` 的 **PersonGroup** ，并将一个 **Person** 对象添加到其中。 然后，它使用 `detection_02` 模型将一个 Face 对象添加到此 **Person** 对象。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
 
 > [!NOTE]
 > 无需对 **Person** 对象中的所有人脸使用相同的检测模型，并且在检测新人脸时，无需使用相同的检测模型来与 **Person** 对象进行比较（例如，在 [Face - Identify] API 中）。
@@ -88,7 +88,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-此代码将创建名为 `My face collection` 的 **FaceList**，并使用 `detection_02` 模型将一个 Face 对象添加到其中。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
+此代码将创建名为 `My face collection` 的 **FaceList** ，并使用 `detection_02` 模型将一个 Face 对象添加到其中。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
 
 > [!NOTE]
 > 无需对 **FaceList** 对象中的所有人脸使用相同的检测模型，并且在检测新人脸时，无需使用相同的检测模型来与 **FaceList** 对象进行比较
@@ -110,9 +110,9 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 本文已介绍如何指定要与不同人脸 API 配合使用的检测模型。 接下来，请遵循相应的快速入门开始使用人脸识别。
 
-* [面部 .NET SDK](../Quickstarts/csharp-sdk.md)
-* [面部 Python SDK](../Quickstarts/python-sdk.md)
-* [面部转向 SDK](../Quickstarts/go-sdk.md)
+* [面部 .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [面部 Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [面部转向 SDK](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [人脸 - 检测]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

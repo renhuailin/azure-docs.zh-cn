@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: 59e862fe04e7bf715e6e44c783f2cf9c0ecbc7c3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c37637ba1cb5154bbd56f7fd22bbbca62b8c3438
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376499"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187496"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -18,7 +18,7 @@ ms.locfileid: "91376499"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../overview.md#try-the-speech-service-for-free)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md)
-> * 创建连接到 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
+> * 创建连接到 [Direct Line 语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的机器人
 > * 请确保你有权访问麦克风，以便进行音频捕获
 >
   > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "91376499"
 通过添加以下行，使用最新的 SDK 版本更新 go.mod 文件
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.13.0
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.14.0
 )
 ```
 
@@ -108,7 +108,7 @@ func main() {
    > 请参阅[语音助手支持的区域列表](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)，确保你的资源部署在其中一个区域中。
 
    > [!NOTE]
-   > 有关配置机器人的信息，请参阅 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文档。
+   > 有关配置机器人的信息，请参阅 [Direct Line 语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文档。
 
 ## <a name="code-explanation"></a>代码说明
 需要语音订阅密钥和区域才能创建语音配置对象。 实例化语音识别器对象需要配置对象。

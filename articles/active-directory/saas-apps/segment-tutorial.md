@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 1fa8f6f0382312951905476ad6fee06e180c6f35
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543136"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021548"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Segment 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543136"
 * 让用户使用其 Azure AD 帐户自动登录到 Segment。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,9 +40,9 @@ ms.locfileid: "88543136"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Segment 支持 **SP 和 IDP** 发起的 SSO
-* Segment 支持**实时**用户预配
+* Segment 支持 **实时** 用户预配
 
-* 配置 Segment 后，可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Segment 后，可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-segment-from-the-gallery"></a>从库中添加 Segment
 
@@ -136,19 +136,19 @@ ms.locfileid: "88543136"
 
 1. 单击“设置”图标并向下滚动到“身份验证”，然后单击“连接”。  
 
-    ![Segment 配置](./media/segment-tutorial/segment1.PNG)
+    ![屏幕截图显示选择了“设置”图标，然后从“身份验证”菜单中选择了“连接”。](./media/segment-tutorial/segment1.PNG)
 
 1. 单击“添加新连接”。
 
-    ![Segment 配置](./media/segment-tutorial/segment2.PNG)
+    ![屏幕截图显示了“连接”部分，其中选择了“新增连接”按钮。](./media/segment-tutorial/segment2.PNG)
 
 1. 选择“SAML 2.0”作为要配置的连接，然后单击“选择连接”按钮。 
 
-    ![Segment 配置](./media/segment-tutorial/segment3.PNG)
+    ![屏幕截图显示了“选择连接”部分，其中选择了“ SAML 2.0”和“选择连接”按钮。](./media/segment-tutorial/segment3.PNG)
 
 1. 在下面的页上，执行以下步骤：
 
-    ![Segment 配置](./media/segment-tutorial/segment4.PNG)
+    ![屏幕截图显示了“配置标识提供者”页，其中突出显示了“单一登录 URL”和“受众 URL”文本框，并选择了下一步”按钮。](./media/segment-tutorial/segment4.PNG)
 
     a. 复制“单一登录 URL”值，将其粘贴到“回复 URL”框中，位于 Azure 门户的“基本 SAML 配置”对话框中。  
 
@@ -172,19 +172,18 @@ ms.locfileid: "88543136"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Segment 磁贴时，会自动登录到要为其设置了 SSO 的 Segment。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Segment 磁贴时，会自动登录到要为其设置了 SSO 的 Segment。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
 - [试用 Segment 的 Azure AD](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制功能保护 Segment](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [如何通过高级可见性和控制功能保护 Segment](/cloud-app-security/proxy-intro-aad)

@@ -7,16 +7,16 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 784ecd5c0539ee0dc84c8afd6b85dbc10a154982
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318872"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206877"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>将 Azure 监视数据流式传输到事件中心或外部合作伙伴
 
-Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将数据用于不同的监视方案以外，可能还需要将其发送到环境中的其他监视工具。 大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用[Azure 事件中心](../../event-hubs/index.yml)。 本文提供了有关如何执行此操作的简要说明，并列出了可用于发送数据的一些合作伙伴。 有些与 Azure Monitor 有特殊的集成，可以托管在 Azure 上。  
+Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将数据用于不同的监视方案以外，可能还需要将其发送到环境中的其他监视工具。 在大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用 [Azure 事件中心](../../event-hubs/index.yml)。 本文简述了如何执行此操作，然后列出了一些可以在其中发送数据的合作伙伴。 部分与 Azure Monitor 具有特殊的集成，并且可能托管在 Azure 上。  
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
@@ -51,14 +51,14 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 | 工具 | 在 Azure 中托管 | 说明 |
 |:---|:---| :---|
 |  IBM QRadar | 否 | Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可以在 [QRadar DSM 配置](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中详细了解与 Azure 的集成。 |
-| Splunk | 否 | [适用于 Splunk 的 Azure Monitor 加载项](https://splunkbase.splunk.com/app/3534/)是在 Splunkbase 中提供的一个开源项目。 相关文档已在 [适用于 Splunk 的 Azure Monitor 加载项](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)中提供。<br><br> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以使用[适用于 Splunk 的 Azure 函数](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心内的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
+| Splunk | 否 | [Splunk 的 Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) 是在 Splunkbase 中可用的开源项目。 <br><br> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以使用[适用于 Splunk 的 Azure 函数](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心内的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
 | SumoLogic | 否 | [从事件中心收集 Azure 审核应用的日志](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)中提供了有关设置 SumoLogic，以使用事件中心数据的说明。 |
 | ArcSight | 否 | ArcSight Azure 事件中心智能连接器作为 [ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。 |
 | Syslog 服务器 | 否 | 若要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可以使用[基于 Azure 函数的解决方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
 | LogRhythm | 否| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm，以从事件中心收集日志的说明。 
 |Logz.io | 是 | 有关详细信息，请参阅[开始使用用于在 Azure 上运行的 Java 应用的 Logz.io 进行监视和日志记录](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
-其他合作伙伴也可以使用。 有关所有 Azure Monitor 合作伙伴及其功能的更完整列表，请参阅[Azure Monitor 合作伙伴集成](partners.md)。
+其他合作伙伴也可用。 有关所有 Azure Monitor 合作伙伴及其功能的更完整列表，请参阅 [Azure Monitor 合作伙伴集成](partners.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](./activity-log.md#legacy-collection-methods)

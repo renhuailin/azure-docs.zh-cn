@@ -1,23 +1,19 @@
 ---
 title: Azure 上的 Oracle 数据库的参考体系结构 |Microsoft Docs
 description: 引用用于在 Microsoft Azure 虚拟机上运行 Oracle Database Enterprise Edition 数据库的体系结构。
-services: virtual-machines-linux
 author: dbakevlar
-manager: ''
-tags: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274429"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486736"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
 
@@ -33,7 +29,7 @@ ms.locfileid: "91274429"
 
 ## <a name="high-availability-for-oracle-databases"></a>Oracle 数据库的高可用性
 
-在云中实现高可用性是每个组织规划和设计的重要组成部分。 Microsoft Azure 提供 [可用性区域](../../../availability-zones/az-overview.md) 和可用性集 (在可用性区域不可用) 的区域中使用。 详细了解如何 [管理虚拟机的可用性](../../../virtual-machines/linux/manage-availability.md) ，以便为云设计。
+在云中实现高可用性是每个组织规划和设计的重要组成部分。 Microsoft Azure 提供 [可用性区域](../../../availability-zones/az-overview.md) 和可用性集 (在可用性区域不可用) 的区域中使用。 详细了解如何 [管理虚拟机的可用性](../../manage-availability.md) ，以便为云设计。
 
 除了云本机工具和产品/服务，Oracle 还提供了高可用性解决方案，如[Oracle 数据防护](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)、具有可在 Azure 上设置的 FSFO、[分片](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)和[GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html)的[数据防护](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)。 本指南介绍其中每个解决方案的参考体系结构。
 
@@ -43,7 +39,7 @@ ms.locfileid: "91274429"
 
 Oracle 真正应用程序群集 (RAC) 是 Oracle 的一种解决方案，它通过多个实例访问一个数据库存储 (共享-所有体系结构模式) 来帮助客户实现高吞吐量。 尽管 Oracle RAC 还可以用于本地高可用性，但不能单独使用 Oracle RAC 来实现云中的高可用性，因为它仅针对实例级别的故障，而不是针对机架级别或数据中心级故障提供保护。 出于此原因，Oracle 建议对数据库使用 Oracle Data Guard (单个实例或 RAC) 高可用性。 客户通常需要使用高 SLA 来运行其任务关键型应用程序。 Oracle RAC 当前未通过 Azure 的 Oracle 认证或支持。 但是，Azure 提供诸如 Azure 等功能可用性区域和计划内维护时段，以帮助防范实例级故障。 除此之外，客户还可以使用 Oracle 数据防护、Oracle GoldenGate 和 Oracle 分片等技术来提高性能和复原能力，方法是保护其数据库不受机架级别的影响，以及数据中心级别和异地政治故障。
 
-当跨多个 [可用性区域](../../../availability-zones/az-overview.md) 和 Oracle Data Guard 或 GoldenGate 运行 oracle 数据库时，客户可以获得99.99% 的运行时间 SLA。 在可用性区域尚不存在的 Azure 区域中，客户可使用 [可用性集](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 并获得99.95% 的运行时间 SLA。
+当跨多个 [可用性区域](../../../availability-zones/az-overview.md) 和 Oracle Data Guard 或 GoldenGate 运行 oracle 数据库时，客户可以获得99.99% 的运行时间 SLA。 在可用性区域尚不存在的 Azure 区域中，客户可使用 [可用性集](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 并获得99.95% 的运行时间 SLA。
 
 >注意：你的运行时间目标可能远远高于 Microsoft 提供的运行时间 SLA。
 
@@ -71,13 +67,13 @@ Oracle Data Guard 确保了企业数据的高可用性、数据保护和灾难�
 > 活动数据防护需要额外的许可。 使用 Far 同步功能也需要此许可证。 请与您的 Oracle 代表联系以讨论许可的含义。
 
 #### <a name="oracle-data-guard-with-fsfo"></a>Oracle Data Guard with FSFO
-使用快速启动故障转移的 Oracle 数据防护 (FSFO) 可以通过在单独的计算机上设置代理来提供额外的复原能力。 Data Guard broker 和辅助数据库都运行观察程序，并观察主数据库的停机时间。 这也允许在 Data Guard 观察程序设置中提供冗余。 
+具有 Fast-Start 故障转移 (FSFO) 的 Oracle 数据防护可以通过在单独的计算机上设置代理来提供额外的复原能力。 Data Guard broker 和辅助数据库都运行观察程序，并观察主数据库的停机时间。 这也允许在 Data Guard 观察程序设置中提供冗余。 
 
 在 Oracle Database 版本12.2 及更高版本中，还可以使用单个 Oracle 数据防护代理配置来配置多个观察程序。 如果一个观察程序和辅助数据库遇到停机时间，则此设置可提供额外的可用性。 Data Guard Broker 是轻型的，可以托管在相对较小的虚拟机上。 若要详细了解 Data Guard Broker 及其优点，请访问本主题的 [Oracle 文档](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) 。
 
 下图是在 Azure 上使用具有可用性区域的 Oracle 数据防护的建议体系结构。 此体系结构允许获得99.99% 的 VM 运行时间 SLA。
 
-![Oracle Database 将可用性区域与 Data Guard Broker 一起使用-FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
+![此图显示了在 Azure 上将 Oracle 数据防护与可用性区域配合使用时建议使用的体系结构。](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
 在上图中，客户端系统通过 web 向 Oracle 后端访问自定义应用程序。 Web 前端是在负载均衡器中配置的。 Web 前端向适当的应用程序服务器进行调用以处理工作。 应用程序服务器查询主 Oracle 数据库。 Oracle 数据库已使用超线程的 [内存优化虚拟机](../../sizes-memory.md) 进行配置，该虚拟机具有 [受约束的核心个 vcpu](../../../virtual-machines/constrained-vcpu.md) ，可节省许可成本并最大限度地提高性能。 多个高级或超磁盘 (托管磁盘) 用于性能和高可用性。
 
@@ -113,7 +109,7 @@ Oracle 数据防护远同步为 Oracle 数据库提供零数据丢失保护功�
 
 GoldenGate 在企业的多个异类平台之间实现数据的交换和操作。 它将提交的事务的事务完整性与现有基础结构的开销降至最低。 它的模块化体系结构使你可以灵活地在各种拓扑中提取并复制所选数据记录、事务更改和 DDL (数据定义语言) 的更改。
 
-Oracle GoldenGate 允许您通过提供双向复制来配置数据库的高可用性。 这允许设置**多主****配置或主动-主动配置**。 以下关系图是 Azure 上 Oracle GoldenGate 主动-主动设置的建议体系结构。 在下面的体系结构中，Oracle 数据库已使用超线程的 [内存优化虚拟机](../../sizes-memory.md) 进行了配置，其中包含 [受约束的核心个 vcpu](../../../virtual-machines/constrained-vcpu.md) ，可节省许可成本并最大限度地提高性能。 多个高级或超磁盘 (托管磁盘) 用于性能和可用性。
+Oracle GoldenGate 允许您通过提供双向复制来配置数据库的高可用性。 这允许设置 **多主****配置或主动-主动配置**。 以下关系图是 Azure 上 Oracle GoldenGate 主动-主动设置的建议体系结构。 在下面的体系结构中，Oracle 数据库已使用超线程的 [内存优化虚拟机](../../sizes-memory.md) 进行了配置，其中包含 [受约束的核心个 vcpu](../../../virtual-machines/constrained-vcpu.md) ，可节省许可成本并最大限度地提高性能。 多个高级或超磁盘 (托管磁盘) 用于性能和可用性。
 
 ![Oracle Database 将可用性区域与 Data Guard Broker 一起使用-FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -152,7 +148,7 @@ Oracle 分片主要包含以下组件。 有关这些组件的详细信息，请
 
 - **全局服务** -全局服务与常规数据库服务类似。 除了数据库服务的所有属性外，全局服务还具有分片数据库的属性，例如客户端与分片之间的区域相关性和复制滞后容差。 只需创建一个全局服务即可在分片数据库中读取/写入数据。 使用 Active Data Guard 并设置分片的只读副本时，可以为只读工作负荷创建另一个 gGobal 服务。 客户端可以使用这些全局服务连接到数据库。
 
-- **分片数据库** -分片数据库是 Oracle 数据库。 每个数据库都是使用 Oracle Data Guard 在 Broker 配置中进行复制的，该配置通过快速启动故障转移 (FSFO) 启用。 无需在每个分片上设置 Data Guard 故障转移和复制。 这是在创建共享数据库时自动配置和部署的。 如果特定的分片失败，Oracle 共享会自动将数据库连接从主数据库连接到备用数据库。
+- **分片数据库** -分片数据库是 Oracle 数据库。 每个数据库都使用 Oracle Data Guard 在 Broker 配置中进行复制，并且 Fast-Start 故障转移 (FSFO) 启用。 无需在每个分片上设置 Data Guard 故障转移和复制。 这是在创建共享数据库时自动配置和部署的。 如果特定的分片失败，Oracle 共享会自动将数据库连接从主数据库连接到备用数据库。
 
 可以部署和管理具有两个接口的 Oracle 分片数据库： Oracle 企业管理器云控件 GUI 和/或 `GDSCTL` 命令行实用工具。 你甚至可以使用云控制来监视不同的分片的可用性和性能。 该 `GDSCTL DEPLOY` 命令会自动创建分片及其相应的侦听器。 此外，此命令会自动部署管理员指定的用于分片级高可用性的复制配置。
 
@@ -160,7 +156,7 @@ Oracle 分片主要包含以下组件。 有关这些组件的详细信息，请
 
 * 系统管理的分片-使用分区跨分片自动分发
 * 用户定义的分片-允许您指定数据到分片的映射，当存在法规或数据本地化要求时，此操作很有效) 
-* 复合分片-针对不同_shardspaces_的系统托管和用户定义的分片的组合
+* 复合分片-针对不同 _shardspaces_ 的系统托管和用户定义的分片的组合
 * 表子分区-类似于常规分区表。
 
 阅读有关 Oracle 文档中不同 [分片方法](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-methods.html) 的详细信息。
@@ -209,14 +205,14 @@ Oracle 数据防护可用于分片与系统管理的用户定义的分片方法�
 
 ## <a name="patching-and-maintenance"></a>修补和维护
 
-将 Oracle 工作负荷部署到 Azure 时，Microsoft 将负责所有主机操作系统级修补。 任何计划的操作系统级别的维护将提前传达给客户，以允许客户进行此计划内维护。 从不同时修补两个不同可用性区域的两个服务器。 有关 VM 维护和修补的详细信息，请参阅 [管理虚拟机的可用性](../../../virtual-machines/linux/manage-availability.md) 。 
+将 Oracle 工作负荷部署到 Azure 时，Microsoft 将负责所有主机操作系统级修补。 任何计划的操作系统级别的维护将提前传达给客户，以允许客户进行此计划内维护。 从不同时修补两个不同可用性区域的两个服务器。 有关 VM 维护和修补的详细信息，请参阅 [管理虚拟机的可用性](../../manage-availability.md) 。 
 
-可以使用 [Azure 自动化更新管理](../../../automation/update-management/update-mgmt-overview.md)来自动修补虚拟机操作系统。 修补和维护 Oracle 数据库可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 或 [Azure 自动化更新管理](../../../automation/update-management/update-mgmt-overview.md) 自动执行和计划，以最大程度地减少停机时间。 若要了解如何在 Oracle 数据库的上下文中使用，请参阅 [持续交付和蓝色/绿色部署](/azure/devops/learn/what-is-continuous-delivery) 。
+可以使用 [Azure 自动化更新管理](../../../automation/update-management/overview.md)来自动修补虚拟机操作系统。 修补和维护 Oracle 数据库可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 或 [Azure 自动化更新管理](../../../automation/update-management/overview.md) 自动执行和计划，以最大程度地减少停机时间。 若要了解如何在 Oracle 数据库的上下文中使用，请参阅 [持续交付和蓝色/绿色部署](/azure/devops/learn/what-is-continuous-delivery) 。
 
 ## <a name="architecture-and-design-considerations"></a>体系结构和设计注意事项
 
 - 请考虑对 Oracle Database VM 使用[受约束核心个 vcpu](../../../virtual-machines/constrained-vcpu.md)的超线程[内存优化虚拟机](../../sizes-memory.md)，以节省许可成本，并最大限度地提高性能。  (托管磁盘使用多个高级或超磁盘) 性能和可用性。
-- 使用托管磁盘时，磁盘/设备名称可能会在重新启动时更改。 建议你使用设备 UUID 而不是名称来确保在重新启动后保留你的安装。 可在[此处](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab)找到详细信息。
+- 使用托管磁盘时，磁盘/设备名称可能会在重新启动时更改。 建议你使用设备 UUID 而不是名称来确保在重新启动后保留你的安装。 可在[此处](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)找到详细信息。
 - 使用可用性区域在区域中实现高可用性。
 - 请考虑使用 (适用于 Oracle 数据库的) 或高级磁盘时使用的超磁盘。
 - 请考虑使用 Oracle Data Guard 在另一个 Azure 区域中设置备用 Oracle 数据库。
@@ -232,6 +228,6 @@ Oracle 数据防护可用于分片与系统管理的用户定义的分片方法�
 
 - [Oracle 数据防护简介](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Oracle Data Guard Broker 概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [为主动-主动高可用性配置 Oracle GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [为 Active-Active 高可用性配置 Oracle GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Oracle 分片概述](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Oracle 活动数据防护远无距离同步零个数据](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

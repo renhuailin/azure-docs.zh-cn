@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74527f57340f850b60dd00dcd054992c423a49c7
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fd292fa6b4f613e0a5f5a80e0cd87675f529baf5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038977"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516165"
 ---
 # <a name="migrate-manually-from-windows-virtual-desktop-classic"></a>从 Windows 虚拟桌面 (经典) 手动迁移
 
@@ -35,7 +35,7 @@ Windows 虚拟桌面的最近一次更新会将服务中的转换标记为完整
 - 通过 Azure 门户管理 Windows 虚拟桌面。
 - 将 Azure Active Directory (AD) 用户组分配到应用程序组。
 - 使用改进后的 Log Analytics 功能对你的部署进行故障排除。
-- 使用 Azure 本机基于角色的访问控制来管理管理访问权限。
+- 使用 azure 基于角色的访问控制 (Azure RBAC) 来管理管理访问权限。
 
 ## <a name="when-should-i-migrate"></a>应该在何时迁移？
 

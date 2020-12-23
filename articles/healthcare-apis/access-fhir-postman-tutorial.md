@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844841"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145644"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 访问 Azure API for FHIR
 
@@ -121,7 +121,7 @@ ms.locfileid: "87844841"
 
 点击“发送”，你应可看到患者已成功创建：
 
-![已创建患者](media/tutorial-postman/postman-patient-created.png)
+![显示患者已成功创建的屏幕截图。](media/tutorial-postman/postman-patient-created.png)
 
 如果重复患者搜索，现在应会看到患者记录：
 

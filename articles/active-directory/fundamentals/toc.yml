@@ -49,6 +49,78 @@
           href: active-directory-architecture.md
         - name: 将所有应用与 Azure AD 集成
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: 身份验证和预配协议
+          items:
+            - name: 概述
+              href: auth-sync-overview.md
+            - name: 基于标头的身份验证
+              href: auth-header-based.md
+            - name: LDAP 身份验证
+              href: auth-ldap.md
+            - name: OAuth 2.0 身份验证
+              href: auth-oauth2.md
+            - name: Open ID Connect 身份验证
+              href: auth-oidc.md
+            - name: 基于密码的身份验证
+              href: auth-password-based-sso.md
+            - name: RADIUS 身份验证
+              href: auth-radius.md
+            - name: 远程桌面网关身份验证
+              href: auth-remote-desktop-gateway.md
+            - name: SAML 身份验证
+              href: auth-saml.md
+            - name: SSH 身份验证
+              href: auth-ssh.md
+            - name: Windows 身份验证 - KCD
+              href: auth-kcd.md
+            - name: 目录同步
+              href: sync-directory.md
+            - name: LDAP 同步
+              href: sync-ldap.md
+            - name: SCIM 同步
+              href: sync-scim.md
+        - name: 针对复原能力构建
+          items:
+            - name: 概述
+              href: resilience-overview.md
+            - name: 基础结构指导
+              items:
+                - name: 基础结构概述
+                  href: resilience-in-infrastructure.md
+                - name: 凭据管理
+                  href: resilience-in-credentials.md
+                - name: 设备状态
+                  href: resilience-with-device-states.md
+                - name: 连续访问评估
+                  href: resilience-with-continuous-access-evaluation.md
+                - name: 外部用户身份验证
+                  href: resilience-b2b-authentication.md
+                - name: 混合身份验证
+                  href: resilience-in-hybrid.md
+                - name: 应用程序代理
+                  href: resilience-on-premises-access.md
+            - name: Azure AD B2C 指导
+              items:
+                - name: Azure AD B2C 复原能力简介
+                  href: resilience-b2c.md
+                - name: 最终用户体验
+                  href: resilient-end-user-experience.md
+                - name: 与外部进程的接口
+                  href: resilient-external-processes.md
+                - name: Azure AD B2C 开发人员最佳做法
+                  href: resilience-b2c-developer-best-practices.md
+                - name: 监视和分析
+                  href: resilience-with-monitoring-alerting.md
+            - name: 应用程序开发指导
+              items:
+                - name: 开发概述
+                  href: resilience-app-development-overview.md
+                - name: 客户端应用程序
+                  href: resilience-client-app.md
+                - name: 守护程序应用程序
+                  href: resilience-daemon-app.md
+        - name: Azure 中使用的证书颁发机构
+          href: certificate-authorities.md
     - name: 部署指南
       items:
         - name: 部署 30 天、90 天及之后的时间
@@ -88,6 +160,8 @@
           href: customize-branding.md
         - name: 配置“保持登录状态?”
           href: keep-me-signed-in.md
+        - name: 如何查找租户 ID
+          href: active-directory-how-to-find-tenant.md
         - name: 关联 Azure 订阅
           href: active-directory-how-subscriptions-associated-directory.md
         - name: 添加隐私信息

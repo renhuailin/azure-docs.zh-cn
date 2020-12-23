@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662166"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858767"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -34,18 +34,26 @@ ms.locfileid: "89662166"
   * [Azure 门户](https://portal.azure.com)。
   * [Office 门户](https://portal.office.com)。
 * [添加并验证域](../fundamentals/add-custom-domain.md)，该域是计划在 Azure AD 中使用的。 例如，如果计划对用户使用 contoso.com，请确保此域已经过验证，并且未仅使用 contoso.onmicrosoft.com 默认域。
-* 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制增加到 30 万个对象。 如果 Azure AD 中需要更多的对象，则请创建支持案例来请求增大此限制。 如果需要500000个以上的对象，则需要许可证，如 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性。
+* 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制增加到 30 万个对象。 如果 Azure AD 中需要更多的对象，则请创建支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要具备许可证，例如 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性。
 
 ### <a name="prepare-your-on-premises-data"></a>准备本地数据
-* 在同步到 Azure AD 和 Microsoft 365 之前，请使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 来确定目录中的错误，如重复项和格式设置问题。
+* 使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 识别目录中的错误，如重复项和格式设置问题，然后同步到 Azure AD 和 Microsoft 365。
 * 查看[可以在 Azure AD 中启用的可选同步功能](how-to-connect-syncservice-features.md)并评估应启用哪些功能。
 
 ### <a name="on-premises-active-directory"></a>本地 Active Directory
 * Active Directory 架构版本与林功能级别必须是 Windows Server 2003 或更高版本。 只要符合架构版本和林级别的要求，域控制器就能运行任何版本。
-* 若打算使用密码写回功能，必须在 Windows Server 2008 R2 或更高版本上安装域控制器。
+* 若打算使用密码写回功能，必须在 Windows Server 2012 或更高版本上安装域控制器。
 * Azure AD 使用的域控制器必须可写。 不支持使用只读域控制器 (RODC)，Azure AD Connect 不遵循任何写入重定向。
 * 不支持通过“以点分隔的”（名称包含句点“.”）NetBIOS 名称来使用本地林或域。
 * 建议[启用 Active Directory 回收站](how-to-connect-sync-recycle-bin.md)。
+
+### <a name="powershell-execution-policy"></a>PowerShell 执行策略
+Azure Active Directory Connect 在安装过程中运行已签名的 PowerShell 脚本。 确保 PowerShell 执行策略允许运行脚本。
+
+安装期间建议的执行策略为“RemoteSigned”。
+
+有关设置 PowerShell 执行策略的详细信息，请参阅 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy)。
+
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect 服务器
 Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的管理访问权限得到适当的保护非常重要。 按照[保护特权访问](/windows-server/identity/securing-privileged-access/securing-privileged-access)中的指南进行操作。 
@@ -73,8 +81,8 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 - 将 Azure AD Connect 服务器的管理访问限制仅限于域管理员或其他受到严格控制的安全组。
 - [为所有具有特权访问权限的人员创建专用帐户](/windows-server/identity/securing-privileged-access/securing-privileged-access)。 管理员不应该使用高特权帐户浏览网页、查看电子邮件和执行日常工作效率任务。
 - 遵循[保护特权访问](/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的指南进行操作。 
-- 拒绝对 AADConnect 服务器使用 NTLM 身份验证。 下面是执行此操作的一些方法： [在 AADConnect 服务器上限制 ntlm](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) 并 [在域上限制 ntlm](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- 确保每台计算机都有唯一的本地管理员密码。 有关详细信息，请参阅[本地管理员密码解决方案 (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps)，该解决方案可在每个工作站上配置唯一的随机密码，并将其存储在受 ACL 保护的 Active Directory 中。 只有符合条件的授权用户才可以读取或请求重置这些本地管理员帐户密码。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)获取用于工作站和服务器的 LAPS。 有关使用 LAPS 和特权访问工作站 (PAW) 操作环境的附加指导，请参阅[基于干净源原则的操作标准](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
+- 拒绝对 AADConnect 服务器使用 NTLM 身份验证。 下面是执行此操作的一些方法：[在 AADConnect 服务器上限制 NTLM](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) 和[在域上限制 NTLM](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
+- 确保每台计算机都有唯一的本地管理员密码。 有关详细信息，请参阅[本地管理员密码解决方案 (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps)，该解决方案可在每个工作站上配置唯一的随机密码，并将其存储在受 ACL 保护的 Active Directory 中。 只有符合条件的授权用户才可以读取或请求重置这些本地管理员帐户密码。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=46899)获取用于工作站和服务器的 LAPS。 有关使用 LAPS 和特权访问工作站 (PAW) 操作环境的附加指导，请参阅[基于干净源原则的操作标准](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
 - 为具有组织信息系统的特权访问权限的所有人员实现专用的[特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)。 
 - 按照以下[附加指南](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)操作，以减少 Active Directory 环境的攻击面。
 
@@ -94,7 +102,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 ### <a name="connectivity"></a>连接
 * Azure AD Connect 服务器需要 Intranet 和 Internet 的 DNS 解析。 DNS 服务器必须能够将名称解析成本地 Active Directory 以及 Azure AD 终结点。
 * 如果 Intranet 有防火墙，且需要开放 Azure AD Connect 服务器与域控制器之间的端口，请参阅 [Azure AD Connect 端口](reference-connect-ports.md)，了解详细信息。
-* 如果代理或防火墙限制了可访问的 URL，则必须打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。
+* 如果代理或防火墙限制了可访问的 URL，则必须打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。 另请参阅[在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)。
   * 如果使用的是德国或 Microsoft Azure 政府云中的 Microsoft 云，请参阅 Url 的 [Azure AD Connect 同步服务实例注意事项](reference-connect-instances.md) 。
 * Azure AD Connect（1.1.614.0 版及更高版本）默认情况下使用 TLS 1.2 对同步引擎和 Azure AD 之间的通信进行加密。 如果 TLS 1.2 在基础操作系统上不可用，Azure AD Connect 会递增地回退到较旧的协议（TLS 1.1 和 TLS 1.0）。
 * 在 1.1.614.0 版以前，Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎和 Azure AD 之间的通信进行加密。 若要更改为 TLS 1.2，请按照[为 Azure AD connect 启用 TLS 1.2](#enable-tls-12-for-azure-ad-connect) 中的步骤进行操作。

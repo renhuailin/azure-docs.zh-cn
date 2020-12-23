@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77560214"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006553"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box Heavy（预览版）
 
@@ -57,14 +57,14 @@ ms.locfileid: "77560214"
     
     |字段                          |值    |
     |-------------------------------|---------|
-    |**作业名称**                       |作业的唯一名称，少于 230 个字符。 作业名称中不允许以下字符：\<、\>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
+    |**作业名称**                       |作业的唯一名称，少于 230 个字符。 作业名称中不允许以下字符：\<, \>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
     |**源位置**                |使用 `\\<ServerIPAddress>\<ShareName>` 或 `\\<ServerName>\<ShareName>` 格式提供数据源的 SMB 路径。        |
     |**用户名**                       |用于访问数据源的用户名，采用 `\\<DomainName><UserName>` 格式。 如果本地管理员正在连接，他们将需要显式的安全权限。 右键单击文件夹，选择“属性”  ，然后选择“安全性”  。 这应该会在“安全性”  选项卡中添加本地管理员。       |
     |**密码**                       |用于访问数据源的密码。           |
     |**目标存储帐户**    |从列表中选择要将数据上传到的目标存储帐户。         |
     |**目标类型**       |从列表中选择目标存储类型：“块 Blob”、“页 Blob”或“Azure 文件”。           |
     |**目标容器/共享**    |输入目标存储帐户中要将数据上传到的容器或共享的名称。 该名称可以是共享名称或容器名称。 例如，使用 `myshare` 或 `mycontainer`。 也可以输入 `sharename\directory_name` 或 `containername\virtual_directory_name` 格式的名称。        |
-    |**复制文件匹配模式**    | 可按以下两种方式输入文件名匹配模式：<ul><li>**使用通配符表达式：** 通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 `.vhd` 的所有文件。 类似地，`*.dl?` 匹配扩展名为 `.dl` 或以 `.dl` 开头的所有文件，例如 `.dll`。 同理，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式：** 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
+    |**复制文件匹配模式**    | 可按以下两种方式输入文件名匹配模式：<ul><li>**使用通配符表达式：** 通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 `.vhd` 的所有文件。 类似地，`*.dl?` 匹配扩展名为 `.dl` 或以 `.dl` 开头的所有文件，例如 `.dll`。 同理，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式：** 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
     |**文件优化**              |启用此功能后，引入期间会打包小于 1 MB 的文件。 打包可以加快小型文件的数据复制速度。 如果文件数远远超出目录数，则打包还可以显著节省时间。        |
  
 4. 选择“开始”  。 随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
@@ -147,4 +147,3 @@ ms.locfileid: "77560214"
 
 > [!div class="nextstepaction"]
 > [将 Azure Data Box Heavy 设备寄送到 Microsoft](./data-box-heavy-deploy-picked-up.md)
-

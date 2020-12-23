@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086396"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895539"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps 路由服务的最佳做法
 
-Azure Maps [路线服务](https://docs.microsoft.com/rest/api/maps/route) 中的路由方向和路由矩阵 api 可用于计算每个请求的路由 (eta) 的预计到达时间。 路由 Api 考虑诸如实时流量信息和历史流量数据之类的因素，如一周中请求日期和时间的典型路上。 这些 API 会根据时间或距离依次或按最佳顺序返回可用于多个目的地的最短或最快路线。 用户还可以请求查看器、骑车和商业汽车（如卡车）的专用路线和详细信息。 在本文中，我们将分享 Azure Maps [路线服务](https://docs.microsoft.com/rest/api/maps/route)的最佳实践，并了解操作方法：
+Azure Maps [路线服务](/rest/api/maps/route) 中的路由方向和路由矩阵 api 可用于计算每个请求的路由 (eta) 的预计到达时间。 路由 Api 考虑诸如实时流量信息和历史流量数据之类的因素，如一周中请求日期和时间的典型路上。 这些 API 会根据时间或距离依次或按最佳顺序返回可用于多个目的地的最短或最快路线。 用户还可以请求查看器、骑车和商业汽车（如卡车）的专用路线和详细信息。 在本文中，我们将分享 Azure Maps [路线服务](/rest/api/maps/route)的最佳实践，并了解操作方法：
 
-> [!div class="checklist"]
-> * 在路线方向 Api 和矩阵路由 API 之间进行选择
-> * 根据实时和历史流量数据请求历史和预测行程时间
-> * 为整个路由和路由的每个阶段请求路由详细信息，如时间和距离
-> * 商业车辆的请求路线，如卡车
-> * 按路线请求流量信息，如堵塞和收费信息
-> * 请求包含一个或多个停止 (waypoints 的路由) 
-> * 优化一个或多个停止的路由，获取访问每个 stop (waypoint 的最佳顺序) 
-> * 使用支持点优化备选路由。 例如，提供通过电力公司收费工作站的备用路由。
-> * 将 [路线服务](https://docs.microsoft.com/rest/api/maps/route) 与 AZURE MAPS Web SDK 一起使用
+ * 在路线方向 Api 和矩阵路由 API 之间进行选择
+ * 根据实时和历史交通数据请求历史和预测行程时间
+ * 为整个路由和路由的每个阶段请求路由详细信息，如时间和距离
+ * 商业车辆的请求路线，如卡车
+ * 按路线请求流量信息，如堵塞和收费信息
+ * 请求包含一个或多个停止 (waypoints 的路由) 
+ * 优化一个或多个停止的路由，获取访问每个 stop (waypoint 的最佳顺序) 
+ * 使用支持点优化备选路由。 例如，提供通过电力公司收费工作站的备用路由。
+ * 将 [路线服务](/rest/api/maps/route) 与 AZURE MAPS Web SDK 一起使用
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -91,7 +90,7 @@ Azure Maps [路线服务](https://docs.microsoft.com/rest/api/maps/route) 中的
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=51.368752,-0.118332:51.385426,-0.128929&travelMode=car&traffic=true&departAt=2025-03-29T08:00:20&computeTravelTimeFor=all
 ```
 
-响应包含一个摘要元素，如下所示。 由于将出发时间设置为未来，因此 **trafficDelayInSeconds** 值为零。 **TravelTimeInSeconds**值是使用依赖时间的历史流量数据计算的。 因此，在这种情况下， **travelTimeInSeconds** 值等于 **historicTrafficTravelTimeInSeconds** 值。
+响应包含一个摘要元素，如下所示。 由于将出发时间设置为未来，因此 **trafficDelayInSeconds** 值为零。 **TravelTimeInSeconds** 值是使用依赖时间的历史流量数据计算的。 因此，在这种情况下， **travelTimeInSeconds** 值等于 **historicTrafficTravelTimeInSeconds** 值。
 
 ```json
 "summary": {
@@ -114,7 +113,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-响应包含摘要，如下所示。 由于拥塞， **trafficDelaysInSeconds** 值大于零。 它还大于 **historicTrafficTravelTimeInSeconds**。
+响应包含摘要，如下所示。 由于拥塞， **trafficDelaysInSeconds** 值大于零。 它还大于 **historicTrafficTravelTimeInSeconds** 。
 
 ```json
 "summary": {
@@ -141,7 +140,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ![展开点元素](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-路由方向 Api 支持可以通过指定 **instructionsType** 参数来使用的不同格式的指令。 若要格式化说明以便轻松进行计算机处理，请使用 **instructionsType = 编码**。 使用 **instructionsType = 标记** 为用户显示文本说明。 此外，还可以将指令的格式设置为文本，其中指令的某些元素将被标记出来，并且说明中提供了特殊的格式设置。 有关详细信息，请参阅 [支持的指令类型的列表](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)。
+路由方向 Api 支持可以通过指定 **instructionsType** 参数来使用的不同格式的指令。 若要格式化说明以便轻松进行计算机处理，请使用 **instructionsType = 编码** 。 使用 **instructionsType = 标记** 为用户显示文本说明。 此外，还可以将指令的格式设置为文本，其中指令的某些元素将被标记出来，并且说明中提供了特殊的格式设置。 有关详细信息，请参阅 [支持的指令类型的列表](/rest/api/maps/route/postroutedirections#routeinstructionstype)。
 
 请求指令时，响应将返回名为的新元素 `guidance` 。 `guidance`元素包含两条信息：依次旋转方向和摘要说明。
 
@@ -187,7 +186,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ## <a name="request-traffic-information-along-a-route"></a>沿路由请求流量信息
 
-使用 Azure Maps 路由方向 Api，开发人员可以通过在请求中包含参数来请求每个部分类型的详细信息 `sectionType` 。 例如，您可以为每个交通堵塞段请求速度信息。 请参阅 [sectionType 键的值列表](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) ，了解你可以请求的各种详细信息。
+使用 Azure Maps 路由方向 Api，开发人员可以通过在请求中包含参数来请求每个部分类型的详细信息 `sectionType` 。 例如，您可以为每个交通堵塞段请求速度信息。 请参阅 [sectionType 键的值列表](/rest/api/maps/route/getroutedirections#sectiontype) ，了解你可以请求的各种详细信息。
 
 ### <a name="sample-query"></a>示例查询
 
@@ -205,17 +204,17 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ![在地图上呈现的彩色部分](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
-## <a name="calculate-and-optimize-a-multi-stop-route"></a>计算和优化多终止路由
+## <a name="calculate-and-optimize-a-multi-stop-route"></a>计算和优化包含多个停靠站的路线
 
 Azure Maps 当前提供两种形式的路由优化：
 
-* 基于请求的路由类型进行优化，而不会更改 waypoints 的顺序。 可在此处找到 [受支持的路由类型](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routetype)
+* 基于请求的路由类型进行优化，而不会更改 waypoints 的顺序。 可在此处找到 [受支持的路由类型](/rest/api/maps/route/postroutedirections#routetype)
 
 * 旅行式销售商优化，它更改 waypoints 的顺序，以获得每个停止的最佳顺序
 
 对于多停止路由，在单个路由请求中最多可以指定 150 waypoints。 起始坐标位置和结束坐标位置可以相同，这与往返行程的情况相同。 但需要至少提供一个额外的 waypoint 来进行路由计算。 Waypoints 可以在源坐标和目标坐标之间的位置添加到查询中。
 
-如果要优化访问给定 waypoints 的最佳顺序，则需要指定 **computeBestOrder = true**。 此方案也称为旅行推销员优化问题。
+如果要优化访问给定 waypoints 的最佳顺序，则需要指定 **computeBestOrder = true** 。 此方案也称为旅行推销员优化问题。
 
 ### <a name="sample-query"></a>示例查询
 
@@ -263,11 +262,11 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 在某些情况下，您可能需要重新构建路由，以便为引用路由计算零个或更多备用路由。 例如，你可能想要显示传递零售商店的客户备用路由。 在这种情况下，需要使用支持点来偏向位置。 下面是用于偏向位置的步骤：
 
 1. 按原样计算路由，并从路由响应中获取路径
-2. 使用路由路径来查找路由路径或路由路径附近所需的位置。 例如，你可以使用 Azure Maps [兴趣点 API](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) 或在数据库中查询你自己的数据。  
+2. 使用路由路径来查找路由路径或路由路径附近所需的位置。 例如，你可以使用 Azure Maps [兴趣点 API](/rest/api/maps/search/getsearchpoi) 或在数据库中查询你自己的数据。  
 3. 根据与路线起点的距离对位置排序
-4. 将这些位置作为新的路由请求中的支持点添加到 [发布路由方向 API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)。 若要了解有关支持点的详细信息，请参阅 [后路线方向 API 文档](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints)。 
+4. 将这些位置作为新的路由请求中的支持点添加到 [发布路由方向 API](/rest/api/maps/route/postroutedirections)。 若要了解有关支持点的详细信息，请参阅 [后路线方向 API 文档](/rest/api/maps/route/postroutedirections#supportingpoints)。 
 
-在调用 " [后处理路线方向 API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)" 时，可以设置最小偏差时间或距离约束以及支持点。 如果希望提供备用路由，但又想要限制旅行时间，请使用这些参数。 当使用这些约束时，备选路由将在给定时间或距离所在的原始点处跟随引用路由。 换句话说，其他路由根据给定的约束从引用路由分叉。
+在调用 " [后处理路线方向 API](/rest/api/maps/route/postroutedirections)" 时，可以设置最小偏差时间或距离约束以及支持点。 如果希望提供备用路由，但又想要限制旅行时间，请使用这些参数。 当使用这些约束时，备选路由将在给定时间或距离所在的原始点处跟随引用路由。 换句话说，其他路由根据给定的约束从引用路由分叉。
 
 下图是一个示例，其中显示了具有指定的时间和距离的偏差限制的备用路由。
 
@@ -275,20 +274,20 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>在 web 应用中使用路由服务
 
-Azure Maps Web SDK 提供 [服务模块](https://docs.microsoft.com/javascript/api/azure-maps-rest/)。 此模块是一个帮助程序库，使用 JavaScript 或 TypeScript 可以轻松地在 web 或 Node.js 应用程序中使用 Azure Maps REST Api。 服务模块可用于在地图上呈现返回的路由。 模块自动确定要与 GET 和 POST 请求一起使用的 API。
+Azure Maps Web SDK 提供 [服务模块](/javascript/api/azure-maps-rest/)。 此模块是一个帮助程序库，使用 JavaScript 或 TypeScript 可以轻松地在 web 或 Node.js 应用程序中使用 Azure Maps REST Api。 服务模块可用于在地图上呈现返回的路由。 模块自动确定要与 GET 和 POST 请求一起使用的 API。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解详细信息，请参阅：
 
 > [!div class="nextstepaction"]
-> [Azure Maps 路由服务](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure Maps 路线服务](/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
-> [如何使用服务模块](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [如何使用服务模块](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [在地图上显示路线](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [在地图上显示路线](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Azure Maps NPM 包](https://www.npmjs.com/package/azure-maps-rest  )

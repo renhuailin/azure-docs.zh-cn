@@ -3,19 +3,19 @@ title: 快速入门：指标顾问 Web 门户
 titleSuffix: Azure Cognitive Services
 description: 了解如何开始使用指标顾问 Web 门户。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
-ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 0453ec9eac2b73b5372c143b23d6db98f65e38aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.author: mbullwin
+ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944085"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348630"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>快速入门：使用 Web 门户监视你的首个指标
 
@@ -38,6 +38,13 @@ ms.locfileid: "90944085"
 > * 如果想要使用 REST API 与服务进行交互，需要从创建的资源获取密钥和终结点。 可以在创建的资源的“密钥和终结点”选项卡中找到它们。
 
 本文档使用 SQL 数据库作为创建首个监视器的示例。
+
+## <a name="sign-in-to-your-workspace"></a>登录到工作区
+
+创建资源后，登录到[指标顾问门户](https://go.microsoft.com/fwlink/?linkid=2143774)。 选择工作区以开始监视指标。 
+ 
+目前可以在每个可用区域创建一个指标顾问资源。 你可以随时在指标顾问门户中切换工作区。
+
 
 ## <a name="onboard-time-series-data"></a>载入时序数据
 
@@ -148,5 +155,5 @@ Webhook 是通过编程方式从指标顾问服务获取异常通知的入口点
 - [加入数据馈送](../how-tos/onboard-your-data.md)
     - [管理数据馈送](../how-tos/manage-data-feeds.md)
     - [不同数据源的配置](../data-feeds-from-different-sources.md)
-- [使用 REST API 或客户端库](rest-api.md)
+- [使用 REST API 或客户端库](./rest-api-and-client-library.md)
 - [配置指标并微调检测配置](../how-tos/configure-metrics.md)

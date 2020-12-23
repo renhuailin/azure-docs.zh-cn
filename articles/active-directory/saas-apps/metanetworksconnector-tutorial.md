@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b14a75dba2860c9dee58e40673d3299fdde277e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528839"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516836"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>教程：Azure Active Directory 与 Meta Networks 连接器集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88528839"
 * 可让用户使用其 Azure AD 帐户自动登录 Meta Networks Connector（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必备条件
@@ -91,7 +91,7 @@ ms.locfileid: "88528839"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "88528839"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Meta Networks 连接器域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
@@ -109,7 +109,7 @@ ms.locfileid: "88528839"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Meta Networks 连接器域和 URL 单一登录信息](common/both-advanced-urls.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/both-advanced-urls.png)
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`。
 
@@ -120,7 +120,7 @@ ms.locfileid: "88528839"
 
 6. Meta Networks Connector 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
     
 7. 除了上述属性，Meta Networks Connector 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
@@ -134,9 +134,9 @@ ms.locfileid: "88528839"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![屏幕截图显示“用户声明”以及“添加新声明”选项。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "88528839"
 
     g. 单击“保存”  。
 
-8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -173,19 +173,19 @@ ms.locfileid: "88528839"
     
 2. 转到“管理员”，然后选择“设置”   。
     
-    ![配置单一登录](./media/metanetworksconnector-tutorial/configure3.png)
+    ![屏幕截图显示从“管理”菜单选择了“设置”。](./media/metanetworksconnector-tutorial/configure3.png)
     
 3. 请确保“记录 Internet 流量”和“强制开启 VPN MFA”设置为关闭   。
     
-    ![配置单一登录](./media/metanetworksconnector-tutorial/configure1.png)
+    ![屏幕截图显示正在关闭这些设置。](./media/metanetworksconnector-tutorial/configure1.png)
     
 4. 转到“管理员”，然后选择“SAML”   。
     
-    ![配置单一登录](./media/metanetworksconnector-tutorial/configure4.png)
+    ![屏幕截图显示从“管理”菜单选择了“SAML”。](./media/metanetworksconnector-tutorial/configure4.png)
     
 5. 在“详细信息”页面上执行以下步骤  ：
     
-    ![配置单一登录](./media/metanetworksconnector-tutorial/configure2.png)
+    ![屏幕截图显示了“详细信息”页面，你可以在其中输入所述值。](./media/metanetworksconnector-tutorial/configure2.png)
     
     a. 复制“SSO URL”值并将其粘贴到“Meta Networks 连接器域和 URL”部分中的“登录 URL”文本框中    。
     
@@ -197,7 +197,7 @@ ms.locfileid: "88528839"
     
 6. 在“常规”  选项卡中，执行以下步骤：
 
-    ![配置单一登录](./media/metanetworksconnector-tutorial/configure5.png)
+    ![屏幕截图显示了“常规”页面，你可以在其中输入所述值。](./media/metanetworksconnector-tutorial/configure5.png)
 
     a. 在“标识提供者单一登录 URL”中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -269,13 +269,12 @@ ms.locfileid: "88528839"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Meta Networks Connector 磁贴时，应会自动登录到为其设置了 SSO 的 Meta Networks Connector。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Meta Networks Connector 磁贴时，应会自动登录到为其设置了 SSO 的 Meta Networks Connector。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

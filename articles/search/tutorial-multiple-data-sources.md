@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c9d9c43ae1be755ccb30fc377692257a81332ea8
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819797"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593716"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教程：使用 .NET SDK 从多个数据源编制索引
 
-Azure 认知搜索可以导入、分析多个数据源的数据，并将其编制成单个合并的搜索索引。 这适合以下情况：其中结构化数据是使用来自文本、HTML 或 JSON 文档等其他源的结构化程度较低或甚至纯文本数据来聚合的。
+Azure 认知搜索可以导入、分析来自多个数据源的数据，并将其编制到单个合并的搜索索引中。 
 
-本教程介绍如何为来自 Azure Cosmos DB 数据源的酒店数据编制索引并将其与来自 Azure Blob 存储文档的酒店房间详细信息整合。 其结果将是包含复杂数据类型的合并的酒店搜索索引。
+本教程使用 C# 和适用于 .NET 的 Azure SDK 中的 [Azure.Search.Documents](/dotnet/api/overview/azure/search) 客户端库来对 Azure Cosmos 数据库中的示例酒店数据编制索引，并将其与从 Azure Blob 存储文档中提取的酒店房间详细信息合并。 结果将是一个包含酒店文档的组合酒店搜索索引，其中房间是一种复杂数据类型。
 
-本教程使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search)。 你将在本教程中执行以下任务：
+你将在本教程中执行以下任务：
 
 > [!div class="checklist"]
 > * 上传示例数据和创建数据源
@@ -33,19 +33,26 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+## <a name="overview"></a>概述
+
+本教程使用新的客户端库 [Azure.Search.Documents](/dotnet/api/overview/azure/search)（版本 11.x）来创建和运行多个索引器。 在本教程中，你将设置两个 Azure 数据源，以便你可以配置一个索引器，该索引器从这两个数据源中提取数据以填充单个搜索索引。 这两个数据集必须有一组相同的值才支持合并。 在此示例中，该字段是一个 ID。 只要有一个公共字段支持映射，索引器就可以合并来自不同资源的数据：来自 Azure SQL 的结构化数据、来自 Blob 存储的非结构化数据，或者 Azure 上[支持的数据源](search-indexer-overview.md#supported-data-sources)的任意组合。
+
+可以在以下项目中找到本教程中代码的完成版本：
+
+* [multiple-data-sources/v11 (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources/v11)
+
+本教程已更新，以便可以使用 Azure.Search.Documents（版本 11）包。 有关 .NET SDK 的早期版本，请参阅 GitHub 上的 [Microsoft.Azure.Search（版本 10）代码示例](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources/v10)。
+
 ## <a name="prerequisites"></a>先决条件
 
 + [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
 + [Azure 存储](../storage/common/storage-account-create.md)
-+ [Visual Studio 2019](https://visualstudio.microsoft.com/)
++ [Visual Studio](https://visualstudio.microsoft.com/)
++ [Azure 认知搜索（版本 11.x）NuGet 包](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [创建](search-create-service-portal.md)或[查找现有搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
 > [!Note]
 > 可在本教程中使用免费服务。 免费搜索服务限制为三个索引、三个索引器和三个数据源。 本教程每样创建一个。 在开始之前，请确保服务中有足够的空间可接受新资源。
-
-## <a name="download-files"></a>下载文件
-
-本教程的源代码位于 [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub 存储库的 [multiple-data-sources](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources) 文件夹中。
 
 ## <a name="1---create-services"></a>1 - 创建服务
 
@@ -65,17 +72,19 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 1. 输入名称 **hotel-rooms-db**。 对于剩余的设置，请接受默认值。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="配置数据库" border="false":::
 
-1. 创建新容器。 使用刚刚创建的现有数据库。 输入**hotels** 作为容器名称，输入 **/HotelId** 作为分区键。
+1. 创建新容器。 使用刚刚创建的现有数据库。 输入 **hotels** 作为容器名称，输入 **/HotelId** 作为分区键。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="添加容器" border="false":::
 
 1. 选择“hotels”下的“项”，然后单击命令栏上的“上传项”。    导航到项目文件夹中的 **cosmosdb/HotelsDataSubset_CosmosDb.json** 文件并将其选中。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="上传到 Azure Cosmos DB 集合" border="false":::
 
 1. 使用“刷新”按钮来刷新酒店集合中的项的视图。 此时应会列出七个新数据库文档。
+
+1. 将连接字符串从“密钥”页复制到“记事本”中。 在稍后的步骤中，需要将此值用于“appsettings.json”。 如果未使用建议的数据库名称“hotel-rooms-db”，请同时复制数据库名称。
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 
@@ -83,58 +92,56 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 1. [创建 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)，名为“hotel-rooms”  ，用于存储示例酒店房间 JSON 文件。 可将“公共访问级别”设为任何有效值。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="创建一个 blob 容器" border="false":::
 
 1. 创建容器后，将其打开，然后在命令栏中选择“上传”  。 导航到包含示例文件的文件夹。 选择所有这些文件，然后单击“上传”  。
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="上传文件" border="false":::
 
-上传完成后，这些文件应会显示在数据容器的列表中。
+1. 将存储帐户名和连接字符串从“访问密钥”页复制到记事本。 在稍后的步骤中，需要将这两个值用于“appsettings.json”。
 
 ### <a name="azure-cognitive-search"></a>Azure 认知搜索
 
-第三个组件是可以[在门户中创建](search-create-service-portal.md)的 Azure 认知搜索。 可使用免费层完成本演练。 
+第三个组件是可以[在门户中创建](search-create-service-portal.md)的 Azure 认知搜索。 
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>获取 Azure 认知搜索的管理 API 密钥和 URL
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>复制 Azure 认知搜索的管理员 API 密钥和 URL
 
-必须有 Azure 认知搜索服务 URL 和访问密钥，才能与此服务交互。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
+需要服务 URL 和访问密钥，才能向你的搜索服务进行身份验证。
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-   此外，获取查询密钥。 最好使用只读权限发出查询请求。
-
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="创建新数据库" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 ## <a name="2---set-up-your-environment"></a>2 - 设置环境
 
-1. 启动 Visual Studio 2019，在“工具”菜单中，依次选择“NuGet 包管理器”、“管理解决方案...的 NuGet 包”。    
+1. 启动 Visual Studio，在“工具”菜单中，依次选择“NuGet 包管理器”、“管理解决方案...的 NuGet 包”。   
 
-1. 在“浏览”选项卡中，  找到并安装 **Microsoft.Azure.Search**（9.0.1 或更高版本）。 需要再单击几个对话框来完成安装。
+1. 在“浏览”选项卡中，找到并安装 Azure.Search.Documents（11.0 或更高版本） 。 需要再单击几个对话框来完成安装。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="创建新数据库" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="使用 NuGet 添加 Azure 库" border="false":::
 
-1. 搜索 **Microsoft.Extensions.Configuration.Json** NuGet 包并安装它。
+1. 搜索 Microsoft.Extensions.Configuration 和 Microsoft.Extensions.Configuration.Json NuGet 包并安装它们 。
 
-1. 打开解决方案文件 **AzureSearchMultipleDataSources.sln**。
+1. 打开解决方案文件 /v11/AzureSearchMultipleDataSources.sln。
 
 1. 在解决方案资源管理器中，编辑 **appsettings.json** 文件以添加连接信息。  
 
     ```json
     {
-      "SearchServiceName": "Put your search service name here",
-      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-      "BlobStorageAccountName": "Put your Azure Storage account name here",
-      "BlobStorageConnectionString": "Put your Azure Blob Storage connection string here",
-      "CosmosDBConnectionString": "Put your Cosmos DB connection string here",
+      "SearchServiceUri": "<YourSearchServiceURL>",
+      "SearchServiceAdminApiKey": "<YourSearchServiceAdminApiKey>",
+      "BlobStorageAccountName": "<YourBlobStorageAccountName>",
+      "BlobStorageConnectionString": "<YourBlobStorageConnectionString>",
+      "CosmosDBConnectionString": "<YourCosmosDBConnectionString>",
       "CosmosDBDatabaseName": "hotel-rooms-db"
     }
     ```
 
-前两个条目使用 Azure 认知搜索服务的 URL 和管理密钥。 如果终结点为 `https://mydemo.search.windows.net`（例如），则要提供的服务名称为 `mydemo`。
+前两个条目是搜索服务的 URL 和管理密钥。 使用完整终结点，例如 `https://mydemo.search.windows.net`。
 
 其余条目指定 Azure Blob 存储和 Azure Cosmos DB 数据源的帐户名称和连接字符串信息。
 
@@ -148,14 +155,14 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 通常需要进行一些前期规划，为索引确定有意义的文档键，并确保它存在于两个数据源中。 在本演示中，Cosmos DB 中每家酒店的 `HotelId` 键也存在于 Blob 存储中的客房 JSON Blob 内。
 
-在索引编制过程中，Azure 认知搜索索引器可以使用字段映射来重命名数据字段甚至重新设置其格式，以便可以将源数据定向到正确的索引字段。 例如，在 Cosmos DB 中，酒店标识符名为 **`HotelId`** 。 但在酒店客房的 JSON Blob 文件中，酒店标识符名为 **`Id`** 。 程序通过将 Blob 中的 **`Id`** 字段映射到索引中的 **`HotelId`** 键字段来处理这种情况。
+在索引编制过程中，Azure 认知搜索索引器可以使用字段映射来重命名数据字段甚至重新设置其格式，以便可以将源数据定向到正确的索引字段。 例如，在 Cosmos DB 中，酒店标识符名为 **`HotelId`** 。 但在酒店客房的 JSON Blob 文件中，酒店标识符名为 **`Id`** 。 程序通过将 Blob 中的 `Id` 字段映射到索引器中的 `HotelId` 密钥字段来处理这种情况。
 
 > [!NOTE]
 > 大多数情况下，自动生成的文档键（如某些索引器默认创建的），不会为合并的索引提供有用的文档键。 一般而言，会需要使用数据源中已存在的或可轻松添加到数据源中的有意义且唯一的键值。
 
 ## <a name="4---explore-the-code"></a>4 - 浏览代码
 
-指定数据和配置设置后，AzureSearchMultipleDataSources.sln  中的示例程序应已可以生成并运行。
+指定数据和配置设置后，/v11/AzureSearchMultipleDataSources.sln 中的示例程序应已可以生成并运行。
 
 此简单的 C#/.NET 控制台应用程序执行以下任务：
 
@@ -172,35 +179,38 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 ### <a name="create-an-index"></a>创建索引
 
-此示例程序使用 .NET SDK 来定义和创建 Azure 认知搜索索引。 它利用 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) 类，从 C# 数据模型类来生成索引结构。
+此示例程序使用 [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) 来定义和创建 Azure 认知搜索索引。 它利用 [FieldBuilder](/dotnet/api/azure.search.documents.indexes.fieldbuilder) 类，从 C# 数据模型类来生成索引结构。
 
 数据模型由“酒店”类定义，该类还包含对“地址”和“房间”类的引用。 FieldBuilder 向下钻取多个类定义，从而为索引生成复杂的数据结构。 元数据标记用于定义每个字段的属性，例如字段是否可搜索或可排序。
 
-以下 Hotel.cs  文件中的片段显示如何指定单个字段和对另一个数据模型类的引用。
+程序在创建新索引器之前会先删除具有相同名称的任何现有索引，以应对你想要多次运行此示例的情况。
+
+Hotel.cs 文件中的以下代码片段显示了单个字段，后跟对另一个数据模型类 Room[] 的引用，而该类是在 Room.cs 文件（未显示）中定义的 。
 
 ```csharp
-. . . 
-[IsSearchable, IsFilterable, IsSortable]
+. . .
+[SimpleField(IsFilterable = true, IsKey = true)]
+public string HotelId { get; set; }
+
+[SearchableField(IsFilterable = true, IsSortable = true)]
 public string HotelName { get; set; }
 . . .
 public Room[] Rooms { get; set; }
 . . .
 ```
 
-在 Program.cs  文件中，索引是使用由 `FieldBuilder.BuildForType<Hotel>()` 方法生成的名称和字段集合来定义的，并按下示方法创建：
+在 Program.cs 文件中，使用由 `FieldBuilder.Build` 方法生成的名称和字段集合定义了 [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex)，并通过以下方式创建了它：
 
 ```csharp
-private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
     // Create a new search index structure that matches the properties of the Hotel class.
     // The Address and Room classes are referenced from the Hotel class. The FieldBuilder
     // will enumerate these to create a complex data structure for the index.
-    var definition = new Index()
-    {
-        Name = indexName,
-        Fields = FieldBuilder.BuildForType<Hotel>()
-    };
-    await searchService.Indexes.CreateAsync(definition);
+    FieldBuilder builder = new FieldBuilder();
+    var definition = new SearchIndex(indexName, builder.Build(typeof(Hotel)));
+
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
@@ -208,137 +218,144 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 
 接下来，主程序包含用于为酒店数据创建 Azure Cosmos DB 数据源的逻辑。
 
-首先，它将 Azure Cosmos DB 数据库名称连接到连接字符串。 然后，它定义数据源对象，包括特定于 Azure Cosmos DB 源的设置，如 [useChangeDetection] 属性。
+首先，它将 Azure Cosmos DB 数据库名称连接到连接字符串。 然后，它定义一个 [SearchIndexerDataSourceConnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) 对象。
 
-  ```csharp
-private static async Task CreateAndRunCosmosDbIndexer(string indexName, SearchServiceClient searchService)
+```csharp
+private static async Task CreateAndRunCosmosDbIndexerAsync(string indexName, SearchIndexerClient indexerClient)
 {
     // Append the database name to the connection string
-    string cosmosConnectString = 
+    string cosmosConnectString =
         configuration["CosmosDBConnectionString"]
-        + ";Database=" 
+        + ";Database="
         + configuration["CosmosDBDatabaseName"];
 
-    DataSource cosmosDbDataSource = DataSource.CosmosDb(
-        name: configuration["CosmosDBDatabaseName"], 
-        cosmosDbConnectionString: cosmosConnectString,
-        collectionName: "hotels",
-        useChangeDetection: true);
+    SearchIndexerDataSourceConnection cosmosDbDataSource = new SearchIndexerDataSourceConnection(
+        name: configuration["CosmosDBDatabaseName"],
+        type: SearchIndexerDataSourceType.CosmosDb,
+        connectionString: cosmosConnectString,
+        container: new SearchIndexerDataContainer("hotels"));
 
-    // The Azure Cosmos DB data source does not need to be deleted if it already exists,
+    // The Cosmos DB data source does not need to be deleted if it already exists,
     // but the connection string might need to be updated if it has changed.
-    await searchService.DataSources.CreateOrUpdateAsync(cosmosDbDataSource);
-  ```
+    await indexerClient.CreateOrUpdateDataSourceConnectionAsync(cosmosDbDataSource);
+```
 
 创建数据源后，该程序会设置一个名为 hotel-rooms-cosmos-indexer  的 Azure Cosmos DB 索引器。
 
-```csharp
-    Indexer cosmosDbIndexer = new Indexer(
-        name: "hotel-rooms-cosmos-indexer",
-        dataSourceName: cosmosDbDataSource.Name,
-        targetIndexName: indexName,
-        schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-    
-    // Indexers keep metadata about how much they have already indexed.
-    // If we already ran this sample, the indexer will remember that it already
-    // indexed the sample data and not run again.
-    // To avoid this, reset the indexer if it exists.
-    bool exists = await searchService.Indexers.ExistsAsync(cosmosDbIndexer.Name);
-    if (exists)
-    {
-        await searchService.Indexers.ResetAsync(cosmosDbIndexer.Name);
-    }
-    await searchService.Indexers.CreateOrUpdateAsync(cosmosDbIndexer);
-```
-程序在创建新索引器之前会先删除具有相同名称的任何现有索引器，以应对你想要多次运行此示例的情况。
+该程序将更新具有相同名称的所有现有索引器，并使用上述代码的内容覆盖现有索引器。 它还包含重置和运行操作，因此你可以多次运行此示例。
 
-此示例为索引器定义了一个日程计划，以使其每天运行一次。 如果不希望索引器在将来再次自动运行，可以从该调用中删除该计划属性。
-
-### <a name="index-azure-cosmos-db-data"></a>为 Azure Cosmos DB 数据编制索引
-
-创建数据源和索引器之后，用于运行索引器的代码就很简单了：
+以下示例为索引器定义了一个计划，以使其每天运行一次。 如果不希望索引器在将来再次自动运行，可以从该调用中删除该计划属性。
 
 ```csharp
-    try
-    {
-        await searchService.Indexers.RunAsync(cosmosDbIndexer.Name);
-    }
-    catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-    {
-        Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-    }
+SearchIndexer cosmosDbIndexer = new SearchIndexer(
+    name: "hotel-rooms-cosmos-indexer",
+    dataSourceName: cosmosDbDataSource.Name,
+    targetIndexName: indexName)
+{
+    Schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+};
+
+// Indexers keep metadata about how much they have already indexed.
+// If we already ran the indexer, it "remembers" and does not run again.
+// To avoid this, reset the indexer if it exists.
+try
+{
+    await indexerClient.GetIndexerAsync(cosmosDbIndexer.Name);
+    // Reset the indexer if it exists.
+    await indexerClient.ResetIndexerAsync(cosmosDbIndexer.Name);
+}
+catch (RequestFailedException ex) when (ex.Status == 404)
+{
+    // If the indexer does not exist, 404 will be thrown.
+}
+
+await indexerClient.CreateOrUpdateIndexerAsync(cosmosDbIndexer);
+
+Console.WriteLine("Running Cosmos DB indexer...\n");
+
+try
+{
+    // Run the indexer.
+    await indexerClient.RunIndexerAsync(cosmosDbIndexer.Name);
+}
+catch (RequestFailedException ex) when (ex.Status == 429)
+{
+    Console.WriteLine("Failed to run indexer: {0}", ex.Message);
+}
 ```
 
 此示例包含一个简单的 try-catch 块来报告执行过程中可能发生的任何错误。
 
-Azure Cosmos DB 索引器运行后，搜索索引将包含一套完整的示例酒店文档。 但是每家酒店的房间字段将是空数组，因为 Azure Cosmos DB 数据源未包含房间详细信息。 接下来，该程序将从 Blob 存储进行拉取，来加载和合并房间数据。
+Azure Cosmos DB 索引器运行后，搜索索引将包含一套完整的示例酒店文档。 但是每家酒店的房间字段将是空数组，因为 Azure Cosmos DB 数据源省略了房间详细信息。 接下来，该程序将从 Blob 存储进行拉取，来加载和合并房间数据。
 
 ### <a name="create-blob-storage-data-source-and-indexer"></a>创建 Blob 存储数据源和索引器
 
-为获取房间详细信息，程序会先设置一个 Blob 存储数据源，用于引用一组单独的 JSON blob 文件。
+为获取房间详细信息，该程序先设置一个 Blob 存储数据源，用于引用一组单独的 JSON blob 文件。
 
 ```csharp
-private static async Task CreateAndRunBlobIndexer(string indexName, SearchServiceClient searchService)
+private static async Task CreateAndRunBlobIndexerAsync(string indexName, SearchIndexerClient indexerClient)
 {
-    DataSource blobDataSource = DataSource.AzureBlobStorage(
+    SearchIndexerDataSourceConnection blobDataSource = new SearchIndexerDataSourceConnection(
         name: configuration["BlobStorageAccountName"],
-        storageConnectionString: configuration["BlobStorageConnectionString"],
-        containerName: "hotel-rooms");
+        type: SearchIndexerDataSourceType.AzureBlob,
+        connectionString: configuration["BlobStorageConnectionString"],
+        container: new SearchIndexerDataContainer("hotel-rooms"));
 
     // The blob data source does not need to be deleted if it already exists,
     // but the connection string might need to be updated if it has changed.
-    await searchService.DataSources.CreateOrUpdateAsync(blobDataSource);
+    await indexerClient.CreateOrUpdateDataSourceConnectionAsync(blobDataSource);
 ```
 
-创建数据源后，该程序会设置一个名为 hotel-rooms-blob-indexer  的 blob 索引器。
-
-```csharp
-    // Add a field mapping to match the Id field in the documents to 
-    // the HotelId key field in the index
-    List<FieldMapping> map = new List<FieldMapping> {
-        new FieldMapping("Id", "HotelId")
-    };
-
-    Indexer blobIndexer = new Indexer(
-        name: "hotel-rooms-blob-indexer",
-        dataSourceName: blobDataSource.Name,
-        targetIndexName: indexName,
-        fieldMappings: map,
-        parameters: new IndexingParameters().ParseJson(),
-        schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-
-    // Reset the indexer if it already exists
-    bool exists = await searchService.Indexers.ExistsAsync(blobIndexer.Name);
-    if (exists)
-    {
-        await searchService.Indexers.ResetAsync(blobIndexer.Name);
-    }
-    await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
-```
+创建数据源后，该程序会设置一个名为 hotel-rooms-blob-indexer 的 blob 索引器，如下所示。
 
 JSON Blob 包含名为 **`Id`** 而不是 **`HotelId`** 的键字段。 该代码使用 `FieldMapping` 类来指示索引器将 **`Id`** 字段值定向到索引中的 **`HotelId`** 文档键。
 
-Blob 存储索引器可使用能标识要使用的分析模式的参数。 该分析模式不同于 blob，后者表示单个文档或相同 blob 中的多个文档。 在此示例中，每个 blob 表示单个索引文档，因此代码使用 `IndexingParameters.ParseJson()` 参数。
-
-有关 JSON blob 的索引器分析参数的详细信息，请参阅[为 JSON blob 编制索引](search-howto-index-json-blobs.md)。 有关使用 .NET SDK 指定这些参数的详细信息，请参阅 [IndexerParametersExtension](/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) 类。
-
-程序在创建新索引器之前会先删除具有相同名称的任何现有索引器，以应对你想要多次运行此示例的情况。
+Blob 存储索引器可以使用 [IndexingParameters](/dotnet/api/azure.search.documents.indexes.models.indexingparameters) 来指定解析模式。 应根据 blob 表示单个文档还是同一 blob 中的多个文档来设置不同的解析模式。 在此示例中，每个 blob 表示单个 JSON 文档，因此代码使用 `json` 解析模式。 有关 JSON blob 的索引器分析参数的详细信息，请参阅[为 JSON blob 编制索引](search-howto-index-json-blobs.md)。
 
 此示例为索引器定义了一个日程计划，以使其每天运行一次。 如果不希望索引器在将来再次自动运行，可以从该调用中删除该计划属性。
 
-### <a name="index-blob-data"></a>为 Blob 数据编制索引
-
-创建 Blob 存储数据源和索引器之后，用于运行索引器的代码就很简单了：
-
 ```csharp
-    try
+// Map the Id field in the Room documents to the HotelId key field in the index
+List<FieldMapping> map = new List<FieldMapping> {
+    new FieldMapping("Id")
     {
-        await searchService.Indexers.RunAsync(cosmosDbIndexer.Name);
+        TargetFieldName =  "HotelId"
     }
-    catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-    {
-        Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-    }
+};
+
+IndexingParameters parameters = new IndexingParameters();
+parameters.Configuration.Add("parsingMode", "json");
+
+SearchIndexer blobIndexer = new SearchIndexer(
+    name: "hotel-rooms-blob-indexer",
+    dataSourceName: blobDataSource.Name,
+    targetIndexName: indexName)
+{
+    Parameters = parameters,
+    Schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+};
+
+blobIndexer.FieldMappings.Add(new FieldMapping("Id") { TargetFieldName = "HotelId" });
+
+// Reset the indexer if it already exists
+try
+{
+    await indexerClient.GetIndexerAsync(blobIndexer.Name);
+    await indexerClient.ResetIndexerAsync(blobIndexer.Name);
+}
+catch (RequestFailedException ex) when (ex.Status == 404) { }
+
+await indexerClient.CreateOrUpdateIndexerAsync(blobIndexer);
+
+try
+{
+    // Run the indexer.
+    await searchService.Indexers.RunAsync(blobIndexer.Name);
+}
+catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+{
+    Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
+}
 ```
 
 由于索引已使用 Azure Cosmos DB 数据库的酒店数据进行了填充，blob 索引器会更新索引中的现有文档，并添加房间的详细信息。
@@ -352,7 +369,7 @@ Blob 存储索引器可使用能标识要使用的分析模式的参数。 该�
 
 在 Azure 门户中，打开搜索服务的“概述”页，在“索引”列表中找到“hotel-rooms-sample”索引    。
 
-  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="创建新数据库" border="false":::
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Azure 认知搜索索引列表" border="false":::
 
 单击列表中的 hotel-rooms-sample 索引。 随即会显示索引的“搜索资源管理器”界面。 输入一个词（如“奢华”）进行查询。 得到的结果中至少会显示一个文档，此文档的房间数组中会显示一系列房间对象。
 
@@ -360,7 +377,7 @@ Blob 存储索引器可使用能标识要使用的分析模式的参数。 该�
 
 在开发的前期试验阶段，设计迭代的最实用方法是，删除 Azure 认知搜索中的对象，并允许代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
 
-本教程的示例代码将检查现有对象并将其删除，使你能够重新运行代码。
+此示例代码将检查现有对象并将其删除或更新，使你能够重新运行程序。
 
 也可以使用门户来删除索引、索引器和数据源。
 

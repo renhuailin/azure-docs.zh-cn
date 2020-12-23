@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
-ms.date: 09/26/2019
-ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 11/13/2020
+ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448795"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989422"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自动数据库备份进行恢复 - Azure SQL 托管实例和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,11 +60,11 @@ ms.locfileid: "91448795"
 没有任何内置的方法可以还原整个服务器。 有关如何完成此任务的示例，请参阅 [Azure SQL 数据库：完整服务器恢复](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)。
 
 > [!IMPORTANT]
-> 若要使用自动备份进行恢复，你必须是订阅中 SQL Server 参与者角色或 SQL 托管实例参与者角色（具体取决于恢复目标）的成员，或者你必须是订阅所有者。 有关详细信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。 可以使用 Azure 门户、PowerShell 或 REST API 进行恢复。 不能使用 Transact-SQL。
+> 若要使用自动备份进行恢复，你必须是订阅中 SQL Server 参与者角色或 SQL 托管实例参与者角色（具体取决于恢复目标）的成员，或者你必须是订阅所有者。 有关详细信息，请参阅 [AZURE RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。 可以使用 Azure 门户、PowerShell 或 REST API 进行恢复。 不能使用 Transact-SQL。
 
 ## <a name="point-in-time-restore"></a>时间点还原
 
-可以使用 Azure 门户、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.)，将独立数据库、共用数据库或实例数据库还原到早期的时间点。 该请求可以指定还原的数据库的任何服务层级或计算大小。 确保要将数据库还原到其中的服务器上有足够的资源。 
+可以使用 Azure 门户、[PowerShell](/powershell/module/az.sql/restore-azsqldatabase) 或 [REST API](/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.)，将独立数据库、共用数据库或实例数据库还原到早期的时间点。 该请求可以指定还原的数据库的任何服务层级或计算大小。 确保要将数据库还原到其中的服务器上有足够的资源。 
 
 完成后，还原过程将在原始数据库所在的同一台服务器上创建新数据库。 还原的数据库将基于其服务层级和计算大小按标准费率计费。 在数据库还原完成之前，不会产生费用。
 
@@ -72,7 +72,7 @@ ms.locfileid: "91448795"
 
 - **数据库替换**
 
-  如果你打算用还原的数据库替换原始数据库，则应该指定原始数据库的计算大小和服务层级。 然后，您可以使用 T-sql 中的 [ALTER database](/sql/t-sql/statements/alter-database-azure-sql-database) 命令来重命名原始数据库，并为还原的数据库指定原始名称。
+  如果你打算用还原的数据库替换原始数据库，则应该指定原始数据库的计算大小和服务层级。 然后，可以使用 T-SQL 中的 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) 命令来重命名原始数据库，并为还原的数据库指定原有的名称。
 
 - **数据恢复**
 
@@ -99,7 +99,7 @@ ms.locfileid: "91448795"
 
 ## <a name="deleted-database-restore"></a>已删除的数据库还原
 
-可将已删除的数据库还原到同一服务器或同一托管实例上的删除时间或早期的时间点。 可以通过 Azure 门户、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) 或 [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) 完成此操作。 通过从备份创建新数据库来还原已删除的数据库。
+可将已删除的数据库还原到同一服务器或同一托管实例上的删除时间或早期的时间点。 可以通过 Azure 门户、[PowerShell](/powershell/module/az.sql/restore-azsqldatabase) 或 [REST (createMode=Restore)](/rest/api/sql/databases/createorupdate) 完成此操作。 通过从备份创建新数据库来还原已删除的数据库。
 
 > [!IMPORTANT]
 > 如果删除服务器或托管实例，其所有数据库也会一并删除，并且无法恢复。 无法还原已删除的服务器或托管实例。
@@ -107,6 +107,9 @@ ms.locfileid: "91448795"
 ### <a name="deleted-database-restore-by-using-the-azure-portal"></a>使用 Azure 门户还原已删除的数据库
 
 通过 Azure 门户还原在服务器或托管实例资源中删除的数据库。
+
+> [!TIP]
+> 最近删除的数据库可能需要几分钟的时间才会出现在 Azure 门户中的 " **已删除数据库** " 页上，或 [以编程方式](#programmatic-recovery-using-automated-backups)显示删除的数据库时。
 
 #### <a name="sql-database"></a>SQL 数据库
 
@@ -191,7 +194,7 @@ ms.locfileid: "91448795"
 不能对异地辅助数据库执行时间点还原。 只能对主数据库执行此操作。 有关使用异地还原在中断后恢复的详细信息，请参阅[在中断后恢复](../../key-vault/general/disaster-recovery-guidance.md)。
 
 > [!IMPORTANT]
-> 异地还原是 SQL 数据库和 SQL 托管实例中提供的最基本的灾难恢复解决方案。 它依赖于自动创建异地复制的备份，其中包含恢复点目标 (RPO) 最多1小时，估计恢复时间最多为12小时。 它不保证在发生区域性的服务中断后，目标区域可提供足够的容量来还原数据库，因为此时的需求可能会急剧上升。 如果应用程序使用相对较小的数据库并且不是业务关键型应用程序，则异地还原是适当的灾难恢复解决方案。 
+> 异地还原是 SQL 数据库和 SQL 托管实例中提供的最基本的灾难恢复解决方案。 它依赖于自动创建的异地复制备份，其恢复点目标 (RPO) 最长为 1 小时，估计恢复时间最长为 12 小时。 它不保证在发生区域性的服务中断后，目标区域可提供足够的容量来还原数据库，因为此时的需求可能会急剧上升。 如果应用程序使用相对较小的数据库并且不是业务关键型应用程序，则异地还原是适当的灾难恢复解决方案。 
 >
 > 对于需要大型数据库且必须确保业务连续性的业务关键型应用程序，请使用[自动故障转移组](auto-failover-group-overview.md)。 此功能提供的 RPO 和恢复时间目标要低得多，并且始终可以保证容量。 
 >
@@ -205,7 +208,7 @@ ms.locfileid: "91448795"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 SQL 数据库和 SQL 托管实例的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 Azure 资源管理器模块中的命令参数大体上是相同的。
+> PowerShell Azure 资源管理器模块仍受 SQL 数据库和 SQL 托管实例的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 Azure 资源管理器模块中的命令参数大体上是相同的。
 
 #### <a name="sql-database"></a>SQL 数据库
 
@@ -237,8 +240,8 @@ ms.locfileid: "91448795"
 
 | API | 说明 |
 | --- | --- |
-| [REST (createMode=Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |还原数据库。 |
-| [获取创建或更新数据库状态](https://docs.microsoft.com/rest/api/sql/operations) |在还原操作过程中返回状态。 |
+| [REST (createMode=Recovery)](/rest/api/sql/databases) |还原数据库。 |
+| [获取创建或更新数据库状态](/rest/api/sql/operations) |在还原操作过程中返回状态。 |
 
 ### <a name="azure-cli"></a>Azure CLI
 

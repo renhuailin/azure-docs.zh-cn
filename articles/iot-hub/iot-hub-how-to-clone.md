@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75429150"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151659"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域
 
 本文探讨克隆 IoT 中心的方法，并提供在开始之前需要回答的一些问题。 下面是克隆 IoT 中心的几个可能原因：
  
-* 你要将公司从一个区域移到另一个区域（如从欧洲到北美（反之亦然），并且你希望你的资源和数据地理位置接近于你的新位置，因此你需要移动中心。
+* 你将公司从一个区域移到另一个区域（如从欧洲到北美 (，反之亦然) ，并且你希望你的资源和数据在地理位置接近于你的新位置，因此你需要移动中心。
 
 * 要为开发环境和生产环境设置中心。
 
@@ -385,7 +385,7 @@ ms.locfileid: "75429150"
 
 启动并运行克隆后，接下来需要将原始中心内的所有设备复制到该克隆。 
 
-可通过多种方法来实现此目的。 具体方法取决于最初是否使用[设备预配服务 (DPS)](/azure/iot-dps/about-iot-dps) 预配了设备。 如果是，则操作并不困难。 如果不是，操作可能十分复杂。 
+可通过多种方法来实现此目的。 具体方法取决于最初是否使用[设备预配服务 (DPS)](../iot-dps/about-iot-dps.md) 预配了设备。 如果是，则操作并不困难。 如果不是，操作可能十分复杂。 
 
 如果未使用 DPS 预配设备，可以跳过下一部分，并开始[使用导入/导出功能将设备移到新中心](#using-import-export-to-move-the-devices-to-the-new-hub)。
 
@@ -601,4 +601,4 @@ ms.locfileid: "75429150"
 
 * [IoT 中心设备管理概述](iot-hub-device-management-overview.md)
 
-* 若要部署示例应用程序，请参阅 [.NET Core 应用程序部署](https://docs.microsoft.com/dotnet/core/deploying/index)。
+* 若要部署示例应用程序，请参阅 [.NET Core 应用程序部署](/dotnet/core/deploying/index)。

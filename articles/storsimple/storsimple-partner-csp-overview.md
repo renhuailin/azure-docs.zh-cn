@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 358399426798ac20897d207c93a8874357e8b781
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: c96dcc2bae03b1bd05fb3d1512dba757f180eed8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88181994"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964909"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>什么是适用于云解决方案提供商的 StorSimple 计划？
 
@@ -30,7 +30,7 @@ Microsoft Azure StorSimple 是一种独特的企业存储方法，具有真正�
 
 适用于云解决方案提供商 (CSP) 的 StorSimple 虚拟阵列让合作伙伴能够利用这一机会。 合作伙伴拥有包含直接配置、计费和 Microsoft 云服务支持的端到端客户生命周期。 简而言之，合作伙伴现在可以将 StorSimple 连同其服务一并交付给客户。
 
-有关适用于 CSP 的 StorSimple 的详细信息，请访问 [Azure CSP 概述](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)页。
+有关适用于 CSP 的 StorSimple 的详细信息，请访问 [Azure CSP 概述](/azure/cloud-solution-provider/overview/azure-csp-overview)页。
 
 有关计费、定价、奖励和获取 CSP 支持的详细信息，请访问 [CSP 中的 StorSimple：常见问题](storsimple-partner-csp-faq.md)。 
 

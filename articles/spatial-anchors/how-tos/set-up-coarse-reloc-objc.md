@@ -1,19 +1,19 @@
 ---
 title: Objective-C 中的粗略重新局部化
 description: 深入解释了如何使用 Objective-C 中的粗略重新局部化来创建和查找定位点。
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 251f0d8609921bd1d0222d9e30c537ecbb2a04bd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9c50b324bddd2c57f65225c02b0745ed3ad1244a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76548265"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96018012"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-objective-c"></a>如何使用 Objective-C 中的粗略重新局部化来创建和查找定位点
 
